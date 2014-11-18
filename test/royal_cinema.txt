@@ -1,3 +1,29 @@
+{{Infobox venue
+| name = Royal Cinema
+| nickname            =
+| former names        = The Pylon, The Golden Princess
+| logo_image          =
+| logo_caption        =
+| image               = Royal_Cinema.JPG
+| image_size          = 250px
+| caption             = The Royal Cinema in 2009
+| iso_region          =
+| address             = 608 [[College Street (Toronto)|College Street]]
+| location            = [[Toronto]], [[Ontario]]
+| coordinates         =
+| type                =
+| genre               =
+| broke_ground        =
+| built               =
+| opened              = 1939
+| renovated           =
+| expanded            =
+| cost                =
+| architect           = Benjamin Swartz
+| website             = {{URL|theroyal.to}}
+| publictransit       =
+| capacity            = 390<ref name="theroyal"/>
+}}
 The '''Royal Cinema'''  is an [[Art Moderne]] event venue and [[movie theater|cinema]] in [[Toronto]], [[Canada]]. It was built in 1939 and owned by Miss Ray Levinsky.<ref name="theroyal">{{cite web|title=About - theroyal.to|url=http://www.theroyal.to/about/}}</ref>
 
 When it was built in 1939, it was called '''The Pylon''', with an accompanying large sign at the front of the theatre. It included a roller-skating rink at the rear of the theatre, and a dance hall on the second floor.<ref name="taylor">{{cite web|title=Toronto’s old movie theatres—the Royal Theatre (the Pylon)|url=http://tayloronhistory.com/2013/12/30/torontos-old-movie-theatresthe-royal-theatre-the-pylon/}}</ref>

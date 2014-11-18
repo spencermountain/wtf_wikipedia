@@ -1,3 +1,5 @@
+//turns wikimedia script into json
+//@spencermountain
 var parser=(function(){
 
     function recursive_replace(str,re){
@@ -46,6 +48,10 @@ var parser=(function(){
         return o
     }
 
+    function trim_whitespace(str){
+      return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+    }
+
     function reconcile_links(line){
         // categories, images, files
         line=line.replace(/\[\[\]\](\w*)/g, "$1$2")
@@ -64,6 +70,20 @@ var parser=(function(){
         return line
     }
 
+    function fetch_infobox(str){
+        var obj={}
+        var str= str.match(/\{\{Infobox [\s\S]*?\}\}/i)[0]
+        str.replace(/\r/g,'').split(/\n/).forEach(function(l){
+            if(l.match(/^\|/)){
+                var key= trim_whitespace(l.match(/^\| ?([^ ]*) /)[1])
+                var value= trim_whitespace(l.match(/=(.*)$/)[1])
+                if(key && value){
+                  obj[key]=value
+              }
+            }
+        })
+        return obj
+    }
 
     function preprocess(wiki){
       //remove all recursive template stuff
@@ -71,7 +91,7 @@ var parser=(function(){
       wiki= recursive_replace(wiki, re)
 
       // images & files can be recursive too (but not categories)
-      // var re= /\[\[(File:|Image:)[^\[\]]*?\]\]/gi
+      // var re= /\[\[(File:|Image:)[^\[\]]*?\]\]/gi  //NOT WORKING. FUCK
       // wiki= recursive_replace(wiki, re)
 
       //remove tables
@@ -91,6 +111,9 @@ var parser=(function(){
 
     var parser=function(wiki){
 
+      //get and parse an infobox
+      var infobox=fetch_infobox(wiki)
+      //kill off th3 craziness
       wiki=preprocess(wiki)
       //get list of links, categories
       var data=fetch_links(wiki)
@@ -124,6 +147,8 @@ var parser=(function(){
             return
         }
 
+        line=trim_whitespace(line)
+
         //still alive, add it to the section
         if(line){
             if(!output[section]){
@@ -135,7 +160,8 @@ var parser=(function(){
       // return output
       return {
         text:output,
-        data:data
+        data:data,
+        infobox:infobox
       }
 
     }
@@ -153,4 +179,5 @@ var parser=(function(){
 
 // str="Germany.<ref>\nhttps://www.christianaction.org/civicrm/contribute/transact?reset=1&id=22, Accessed September 3, 2011.</ref> fun"
 // str="hello [[Image:Toronto Star Building.JPG|right|thumb|250px|[[One Yonge Street]] – Current head office, built in 1970]] world"
+// str="hi {{Infobox person\n|name = Royal Cinema\n}} world"
 // console.log(parser(str))

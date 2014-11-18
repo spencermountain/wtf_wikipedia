@@ -1,13 +1,15 @@
+#Parsing Wikipedia script is basically NP-Hard
 
-m ok, lets write our own parser what culd go rong
+parsing wikimedia script is the wurst, this library is simply trying its best.
 
-wikimedia script is the wurst, this library is simply trying its best.
+it turns a wikipedia article into a parsed JSON object, and handles the ad-hoc recursive templates shinanigans ad infinitum.
 
 its a manic combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView) and [txtwiki](https://github.com/joaomsa/txtwiki.js)
 
+m ok, lets write our own parser what culd go rong
 #Output
 Sample output of [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
-
+````javascript
   {
     "text": {
       "intro": [
@@ -36,3 +38,8 @@ Sample output of [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
       "images": []
     }
   }
+````
+
+Don't be mad at me, be mad at them
+
+MIT
