@@ -1,0 +1,273 @@
+{{Use mdy dates|date=April 2012}}
+{{pp-move-indef}}
+{{original research|date=August 2014}}
+{{Infobox newspaper
+| logo =
+| image = [[File:Toronto Star frontpage.jpg|220px|border]]
+| caption = The January 23, 2013, front page of ''The Toronto Star''
+| type = [[Daily newspaper]]
+| format = [[Broadsheet]]|
+| foundation = 1892, as the ''Evening Star''
+| ceased publication =
+| price = CAD 0.75 Monday-Friday<br />CAD 2.00 Saturday<br />CAD 1.00 Sunday<br />(Prices may be higher outside the [[Greater Toronto Area|GTA]])
+| owners = [[Star Media Group]] ([[Torstar|Torstar Corporation]])
+| publisher = John D. Cruickshank
+| editor = [[Michael Cooke]]
+| managing editor = Jane Davenport
+| political  = [[Social liberalism]]<ref name="Toronto Star endorses the NDP">{{cite news|url=http://www.thestar.com/opinion/editorials/article/983376--toronto-star-endorses-the-ndp|title=Toronto Star endorses the NDP|date=April 30, 2011|work=Toronto Star|accessdate=April 30, 2011}}</ref><ref name="But vote strategically">{{cite news|url=http://www.thestar.com/opinion/editorialopinion/article/983380|title=But vote strategically|date=April 30, 2011|work=Toronto Star|accessdate=April 30, 2011}}</ref><ref>{{cite web|url=http://www.worldpress.org/newspapers/AMERICAS/Canada.cfm|title=World Newspapers and Magazines: Canada|accessdate =November 2, 2007|publisher=Worldpress.org|year=2007}}</ref><ref>{{cite news|url=http://www.thestar.com/FederalElection/article/515895|title=Star's choice: Dion, Liberals|date=October 11, 2008|work=Toronto Star|accessdate=October 12, 2008}}</ref>
+|headquarters = [[One Yonge Street]], [[Toronto]], Ontario, Canada
+|circulation = 381,310 weekdays<br/>546,819 Saturdays<br/>337,846 Sundays in 2010<ref name="Circ">[[BPA Worldwide|Canadian Circulations Audit Board]] [http://www.bpaww.com/Bpaww_com/Pages/CirculationReports.aspx Circulation Report] for January to December 2010. Retrieved February 16, 2012. {{Reg}}</ref>
+| ISSN = 0319-0781
+| oclc = 137342540
+| website = [http://www.thestar.com thestar.com]
+}}
+
+The '''''Toronto Star''''' is a [[Canada|Canadian]] [[broadsheet]] [[daily newspaper]]. In 2011, it was Canada's [[list of newspapers in Canada by circulation|highest-circulation newspaper]], although also the one with the [[list of newspapers in Canada by circulation|second-largest decline in readership]] between 2007 and 2011 among Canada's top 25 newspapers. It is owned by Toronto Star Newspapers Ltd., a division of [[Star Media Group]], a subsidiary of [[Torstar]] Corporation.
+
+==History==
+The ''Star'' (originally known as the ''Evening Star'' and then the ''Toronto Daily Star'' ) was created in 1892 by striking ''Afternoon News'' printers and writers, led by future [[Mayor of Toronto]] and social reformer [[Horatio Clarence Hocken]], who became the newspaper's founder, along with another future mayor, [[James Simpson (politician)|Jimmy Simpson]]. The paper did poorly in its first few years. It prospered under [[Joseph E. Atkinson|Joseph "Holy Joe" Atkinson]], editor from 1899 until his death in 1948.
+
+Atkinson had a social conscience. He championed many causes that would come to be associated with the modern [[welfare state]]: [[old age pension]]s, [[Unemployment benefits|unemployment insurance]], and [[health care]]. The [[Government of Canada]] Digital Collections website describes Atkinson as "a ‘radical’ in the best sense of that term…. The ''Star'' was unique among North American newspapers in its consistent, ongoing advocacy of the interests of ordinary people. The friendship of Atkinson, the publisher, with [[William Lyon Mackenzie King|Mackenzie King]], the [[Prime Minister of Canada|prime minister]], was a major influence on the development of Canadian social policy."<ref>[http://www.collectionscanada.gc.ca/ Bienvenue au site Web Bibliothèque et Archives Canada / Welcome to the Library and Archives Canada website]. Collectionscanada.gc.ca (2012-08-30). Retrieved on 2013-08-17.</ref>
+
+Atkinson became the controlling [[shareholder]] of the ''Star''. The ''Toronto Daily Star'' was frequently criticized for practising the [[yellow journalism]] of its era. For decades, the paper included heavy doses of crime and sensationalism, along with advocating social change. From 1910 to 1973, the ''Star'' published a weekend supplement, the ''[[Star Weekly]]''.
+
+Its early opposition and criticism of the [[Nazi Party|Nazi regime]]<ref>''More than Just Games: Canada and the 1936 Olympics'', http://vhec.org/1936_olympics/the_nazi_state/a_canadian_observer, Accessed September 3, 2011.</ref> saw the paper become one of the first North American papers to be banned in Germany.<ref>
+https://www.christianaction.org/civicrm/contribute/transact?reset=1&id=22, Accessed September 3, 2011.</ref>
+
+In 1971, the newspaper was renamed ''The Toronto Star'' and moved to a modern office tower at [[One Yonge Street]] by [[Queens Quay (Toronto)|Queens Quay]]. The original ''Star'' Building at [[Old Toronto Star Building|80 King Street West]] was demolished to make room for First Canadian Place. The new building originally housed the paper's presses. In 1992, the printing plant was moved to the [[Ontario Highway 407|Highway 407]] & [[Ontario Highway 400|400]] interchange in [[Vaughan]]. In September 2002, the logo was changed, and "The" was dropped from the papers. During the [[Northeast blackout of 2003|2003 blackout]], the ''Star'' printed the paper at a press in [[Welland]], [[Ontario]].
+
+Until the mid-2000s, the front page of the ''Toronto Star'' had no advertising.
+
+On May 28, 2007, the ''Star'' unveiled a redesigned paper that features larger type, narrower pages, fewer and shorter articles, renamed sections, more prominence to local news, and less so to international news, columnists, and opinion pieces.<ref>{{cite news| url=http://www.thestar.com/News/article/218300 | work=The Star | location=Toronto | title=You spoke, we listened: Here are the changes | date=May 28, 2007 | accessdate=May 25, 2010 | first=J. Fred | last=****z}}</ref> However, on January 1, 2009, The ''Star'' reverted to its previous format. ''Star P.M.'', a free newspaper in [[Portable Document Format|PDF]] format that could be downloaded from the newspaper's website each weekday afternoon, was discontinued in October 2007, thirteen months after its launch.
+
+===Paywall===
+
+In October 2012, the ''Star'' announced its intention to implement a [[paywall]] on its website, thestar.com,<ref>[http://www.thestar.com/news/article/1278881--the-star-to-launch-digital-subscription The Star to launch digital subscription]</ref> which was made effective on August 13, 2013. Readers with daily home delivery have free access to all its digital content. Those without a digital subscription can view up to ten articles a month.<ref>[http://www.thestar.com/news/2013/08/13/toronto_star_launches_digital_subscriptions.html Toronto Star launches digital subscriptions: Publisher]</ref><ref>[http://www.cbc.ca/news/business/story/2013/08/13/business-toronto-star-paywall.html Toronto Star moving behind paywall]</ref> The paywall does not apply to its sister sites, such as wheels.ca (automotive news and classifieds) or [[Workopolis]] (career search).
+
+==Atkinson Principles==
+[[Image:Toronto Star Building.JPG|right|thumb|250px|[[One Yonge Street]] – Current head office, built in 1970]]
+Shortly before his death in 1948, Atkinson transferred ownership of the paper to a charitable organization given the mandate of continuing the paper's liberal tradition.<ref>{{Cite news
+| last = Powell
+| first = Betsy
+| title = Atkinson's will kept Star's resolve - thestar.com
+| accessdate =January 12, 2011
+| date = November 6, 2002
+| url = http://www.thestar.com/article/542589--atkinson-s-will-kept-star-s-resolve
+| location=Toronto
+| work=The Star
+}}</ref> In 1949, the Province of Ontario passed a law (which was repealed in 2009)<ref>{{cite web|title = ''Charitable Gifts Act'' (R.S.O. 1990, c. C.8)|url = http://www.e-laws.gov.on.ca/html/repealedstatutes/english/elaws_rep_statutes_90c08_e.htm|accessdate = August 2, 2013}}</ref> barring charitable organizations from owning large parts of profit-making businesses<ref>{{cite web
+| last = Bourgeois
+| first = Donald J.
+| title = The Charitable Gifts Act: A Commentary
+| accessdate =January 12, 2011
+| url = http://www.carters.ca/pub/bulletin/charity/2009/chylb174.htm
+}}</ref> that effectively required the ''Star'' to be sold. The five trustees of the charitable organization circumvented the law by buying the paper themselves and swearing before the [[Supreme Court of Ontario]] to continue the Atkinson Principles:<ref>{{cite web|title = Atkinson Principles|url = http://www.torstar.com/html/social-responsibility/Atkinson_Principles/index.cfm|publisher = [[Torstar]]|accessdate = August 2, 2013}}</ref>
+
+:* A strong, united and independent Canada
+:* Social justice
+:* Individual and civil liberties
+:* Community and civic engagement
+:* The rights of working people
+:* The necessary role of government
+
+Descendants of the original owners, known as "the five families",  still control the voting shares of [[Torstar]],<ref>''Torstar Corporation 2011 Information Circular, p.2'', http://www.torstar.com/images/file/Information%20Circular/informationcircular.pdf, Accessed February 28, 2012.</ref> and the Atkinson Principles continue to guide the paper to this day. In February 2006, ''Star'' media columnist [[Antonia Zerbisias]] wrote on her blog:
+
+{{cquote|
+Besides, we are the ''Star'' which means we all have the Atkinson Principles {{emdash}} and its multi-culti values {{emdash}} tattooed on our butts. Fine with me. At least we are upfront about our values, and they almost always work in favour of building a better Canada.<ref>{{cite web|author = [[Antonia Zerbisias]]|title = Kartoon Kontroversy Kontinues|url = http://thestar.blogs.com/azerb/2006/02/kartoon_kontrov.html|date = February 20, 2006|accessdate = August 2, 2013}}</ref>
+}}
+
+==Editorial position==
+Its precise position in the political spectrum&nbsp;— especially in relation to one of its principal competitors, ''[[The Globe and Mail]]''&nbsp;— is at times disputed but the Star is generally considered to be the most liberal of Canada's major papers.<ref>[http://sixthestate.net/?page_id=1794 The Sixth Estate » Media Bias]. Sixthestate.net (2011-05-28). Retrieved on 2013-08-17.</ref>{{better source|date=July 2013}}  Long a voice of Canadian nationalism, the paper opposed [[free trade]] with the United States in the 1980s and has recently{{When|date=March 2009}} expressed concern about U.S. takeovers of Canadian firms.
+
+Editorial positions have taken a more moderate stance after the rise of the ''[[Toronto Sun]]'', often to the surprise of habitual readers. The ''Star'' was an early opponent of the [[Iraq War]] and sharply criticized most policies of [[George W. Bush]], but supported Canadian participation in U.S. continental missile defense.{{Citation needed|date=January 2011}} Editorials have denounced [[political correctness]] at Canadian universities,{{Citation needed|date=January 2011}} opposed [[proportional representation]],{{Citation needed|date=January 2011}} and yet called for more restrictive [[Copyright|copyright laws]].{{Citation needed|date=January 2011}}
+
+In the early 2000s, the newspaper has promoted "a new deal for cities".
+
+The paper usually endorses the [[Liberal Party of Canada|Liberal Party]] federally. The ''Star'' was the only major daily to do so in the [[Canadian federal election, 2006|2006]] and the [[Canadian federal election, 2008|2008 federal elections]] while [[Newspaper endorsements in the Canadian federal election, 2006|many of the other major papers endorsed the Conservatives]]. The ''Star'' endorsed the social democratic [[New Democratic Party]] (NDP) leader [[Ed Broadbent]] in 1979 and it has been over forty years since it last endorsed the [[Progressive Conservative Party of Canada|Progressive Conservative]] party under leader [[Robert Stanfield]] in 1972. The paper endorsed the [[Progressive Conservative Party of Ontario]] in some of the provincial elections from the 1940s to the 1980s, and endorsed strategic voting to try to defeat [[Mike Harris]] in 1999, which they failed to do.{{Citation needed|date=January 2011}}
+
+Though Toronto mayoral elections are non-partisan, during the [[Toronto mayoral election, 2010|2010 mayoral election]], it endorsed [[George Smitherman]], who before the election was a provincial cabinet member of McGuinty's Liberal government.<ref>{{cite news|title=The Star's choices for Toronto mayor: George Smitherman|url=http://www.thestar.com/opinion/editorials/article/876268|work=Toronto Star|accessdate=October 26, 2010|date=October 17, 2010}}</ref> In the [[Toronto mayoral election, 2014|2014 mayoral election]], as with the other major Toronto-based daily newspapers, it endorsed [[John Tory]].
+
+The Toronto Star [[Newspaper endorsements in the Canadian federal election, 2011|endorsed the NDP]] for the [[Canadian federal election, 2011|2011 federal election]],<ref name="2011endorsement">{{cite news|url=http://www.thestar.com/opinion/editorials/article/983376--toronto-star-endorses-the-ndp|title=Toronto Star endorses the NDP|work=Toronto Star|date=April 30, 2011|accessdate=May 1, 2011}}</ref> stating that its platform "puts people first" and that [[Jack Layton]] has won the trust of many voters. To avoid [[Vote splitting|vote-splitting]] that could inadvertently help the Conservatives under [[Stephen Harper]], which it saw as the worst outcome for the country, the paper also recommended Canadians [[Tactical voting|vote strategically]] by voting for "the progressive candidate best placed to win" in certain ridings.<ref name="strategicvoting">{{cite news|url=http://www.thestar.com/opinion/editorialopinion/article/983380|title=But vote strategically|work=Toronto Star|date=April 30, 2011|accessdate=May 1, 2011}}</ref>
+
+==Features==
+[[Image:1930s Toronto KingStreetWnearYork.jpg|thumb|right|250px|The [[Old Toronto Star Building]], 80 King West in the 1930s]]
+[[Image:Toronto Star paperboy Whitby.jpg|thumb|Toronto Star paperboy in [[Whitby, Ontario|Whitby]] in 1940]]
+The ''Star'' is one of only two Canadian newspapers that employs a "[[public editor]]" ([[ombudsman]]) and was the first to do so.  Its newsroom policy and journalistic standards guide is also published online.<ref>[http://www.thestar.com/opinion/publiceditor/article/1098344 Toronto Star Newsroom Policy and Journalistic Standards Guide | Toronto Star]. Thestar.com (2011-12-07). Retrieved on 2013-08-17.</ref>
+
+Other notable features include:
+* a community editorial board, whose members write opinion articles that sometimes criticize the paper
+* an annual competition honouring Toronto's best employers
+* an in-depth world news section called "World Weekly" on Saturdays, with a column by [[Tony Burman]] (this section is only available to residential subscriptions without any additional payment and the section contains no advertisements)
+* optional supplements on Friday/Saturday ("That's Puzzling!" (puzzle booklet with [[University of Toronto]] [[semiotics]] and [[linguistic anthropology]] professor [[Marcel Danesi]] as featured contributor)), Saturday (Starweek (television listings)), and Sunday (abridged version of ''[[The New York Times]]'' international section, ''New York Times'' Crosswords, editorials, and book reviews) ("That's Puzzling!", the "Starweek", and ''The New York Times'' supplements require separate additional payment)
+
+The ''Star'' states that it favours an inclusive, "[[big tent]]" approach, not wishing to attract one group of readers at the expense of others. It publishes special sections for [[Chinese New Year]] and [[Pride Week (Toronto)|Gay Pride Week]], along with regular features on real estate (including condominiums), shopping, automobiles (as Wheels), and travel destinations.
+
+==Competitive position==
+{{Unreferenced section|date=May 2010}}
+The advent of the ''[[National Post]]'' in 1998 shook up the Toronto newspaper market. In the upheaval that followed, editorial spending increased and there was much hiring and firing of editors and publishers. Toronto newspapers have yet to undergo the large-scale layoffs that have occurred at most other newspapers in Canada and the United States.
+
+The ''Toronto Star'' has been profitable in most recent years. The residual strength of the ''Star'' is its commanding circulation lead in Ontario. The paper remains a "must buy" for most advertisers. Some competing papers consistently lose money, are only marginally profitable, or do not break out earnings in a way that makes comparison possible. However, the ''Star'' has long been criticized for inflating circulation through bulk sales at discount rates.
+
+Margins have declined and some losses have been recorded. In 2006, several financial analysts expressed dissatisfaction with The ''Star'''s performance and downgraded their recommendations on the stock of its parent company, Torstar. In October 2006, the publisher and editor-in-chief of The ''Star'' were replaced amid reports of boardroom battles about the direction of the company.  A redesigned paper launched in May 2007. It featured 17% less space for editorial content and a greater emphasis on local coverage. However, the paper reverted to its pre-May 2007 design on January 1, 2009.
+
+==Publishers==
+*[[Joseph E. Atkinson]] (1899–1948)
+*[[Joseph S. Atkinson]] (1948–1966)
+*[[Beland Honderich]] (1966–1988)
+*[[David R. Jolley]] (1988–1994)
+*[[John Honderich]] (1995–2004)
+*[[Michael Goldbloom]] (2004–2006)
+*[[Jagoda Pike]] (2006–2008)
+*[[Donald Babick]] (2008)
+*[[John Cruickshank (Toronto Star publisher)|John Cruickshank]] (2009–present)
+
+==Notable journalists and columnists (past and present)==
+{{Div col|cols=3}}
+*[[Pierre Berton]]
+*Debra Black
+*Margaret L. Bream
+*[[Tony Burman]]
+*[[Morley Callaghan]]
+*[[June Callwood]]
+*[[Greg Clark (journalist)|Greg Clark]]
+*[[Jeremy Clarkson]]
+*Martin Regg Cohn
+*Daniel Dale
+*Susan Delacourt
+*[[Rosie DiManno]]
+*Kevin Donovan<!--Please do not add a link, as he links to an English footballer-->
+*[[Robyn Doolittle]]
+*[[Milt Dunnell]]
+*[[Joe Fiorito]]
+*[[Graham Fraser]]
+*[[Michael Geist]]
+*[[Carol Goar]]
+*[[Alison Gordon]]
+*[[Richard Gwyn]]
+*Tim Harper
+*[[Chantal Hébert]]
+*[[Ernest Hemingway]]<ref>A collection of Hemingway's work in the Star was published as ''[[Dateline: Toronto]]''</ref>
+*Bob Hepburn
+*[[Kim Hughes (radio)|Kim Hughes]]<ref name=twsA2ft55>{{cite news
+ |author= Kim Hughes
+ |title= The soundtrack of a generation
+ |work=Toronto Star
+ |date= May 18, 2008
+ |url= http://www.thestar.com/entertainment/Books/article/426145
+ |accessdate=September 28, 2010
+}}</ref><ref name=twsA2ft55fs>{{cite news
+ |author= Kim Hughes
+ |title= They loved, lusted, lost
+ |work=Toronto Star
+ |date=  July 8, 2007
+ |url= http://www.thestar.com/entertainment/article/233539
+ |accessdate=September 28, 2010
+}}</ref>
+*Peter Howell
+*Christopher Hume
+*[[Royson James]]
+*[[Marc Kielburger|Marc]] and [[Craig Kielburger]]
+*Tess Kalinowski
+*Nicholas Keung
+*[[Naomi Klein]]
+*[[Michele Landsberg]]
+*[[Duncan Macpherson]]
+*[[Linda McQuaig]]
+*[[Earl McRae]]
+*[[Heather Mallick]]
+*Dow Marmur
+*[[Lou Marsh]]
+*Adam Mayers
+*Vijay Menon
+*Corey Mintz
+*Raju Mudhar
+*[[Peter C. Newman]]
+*[[Cleo Paskal]]
+*[[Angelo Persichilli]]<ref name=taber>[http://www.theglobeandmail.com/news/politics/ottawa-notebook/harper-finds-new-communication-director-in-ranks-of-ethnic-media/article2148647/ "Harper finds new communication director in ranks of ethnic media"]. ''[[The Globe and Mail]]'', August 31, 2011.</ref>
+*Mitch Potter<!--Please do not add a link, as he links to an American track and field athlete-->
+*[[Ben Rayner]]<ref name=Gordon>{{cite web|last=Gordon|first=Cameron|title=Toronto's Star...  Ben Rayner  In a rockcritics.com interview|url=http://rockcriticsarchives.com/interviews/benrayner/benrayner.html|publisher=Rockcritics.com|accessdate=8 September 2013}}</ref><ref>{{cite news|title=Ben Rayner|url=http://www.thestar.com/authors.rayner_ben.html|accessdate=8 September 2013|newspaper=Toronto Star}}</ref>
+*Rob Salem
+*Rick Salutin
+*[[Robert W. Service|Robert Service]]
+*[[Haroon Siddiqui]]
+*[[Gordon Sinclair]]
+*[[Randy Starkman]]
+*Gillian Steward
+*[[Walter Stewart (journalist)|Walter Stewart]]
+*[[Charles Templeton]]
+*[[Ellie Tesher]]
+*[[James Travers (journalist)|James Travers]]
+*Thomas Walkom
+*Rick Westhead
+*[[Antonia Zerbisias]]
+{{Div col end}}
+
+===Notable cartoonists===
+{{Div col|cols=3}}
+* [[Walter Ball (cartoonist)|Walter Ball]]
+* [[Sid Barron]]
+* Les Callan
+* Patrick Corrigan
+* [[Jimmy Frise]]
+* [[Duncan Macpherson]]
+* Theo Moudakis
+* [[Dušan Petričić]]
+* [[Joe Shuster]]
+* [[Ben Wicks]]
+{{Div col end}}
+
+==Sing Tao (Canada)==
+In 1998,<ref name="Lost in Translation">{{cite news|url=http://www.torontolife.com/features/lost-translation/|title=Lost in Translation|date=August 2008|work=Toronto Life|accessdate=Feb 22, 2013}}</ref> the Toronto Star purchased a majority stake in [[Sing Tao Daily (Canada)|Sing Tao's Canadian newspaper]], which it jointly owns with [[Sing Tao News Corporation]].<ref name="Star Media Group">{{cite web|url=http://www.torstar.com/html/our-business/Star_Media_Group/index.cfm|accessdate=Feb 22, 2013|title=Star Media Group|publisher=Torstar Corporation}}</ref> Sing Tao (Canada) encountered controversy in April 2008 after media watchers discovered the paper had altered a translated ''Toronto Star'' article about the [[2008 Summer Olympics|2008 Beijing Olympic Games]] protests to adhere to Chinese government's official line.<ref name="Lost in Translation" /> Sing Tao's then editor Wilson Chan was fired over this.<ref name="Editor Dismissed">{{cite news|url=http://www.theepochtimes.com/n2/canada/canadian-editor-dismissed-over-pro-beijing-edits-15031.html
+|title=Editor Dismissed Over Pro-Beijing Edits, Say Sources|date=April 9, 2009|work=The Epoch Times|accessdate=Feb 22, 2013}}</ref>
+
+==In popular culture==
+[[Joe Shuster]], one of the two creators of [[DC Comics]] [[superhero]] [[Superman]], worked for the ''Star'' as a paperboy in the 1920s. Shuster named [[Clark Kent]]'s paper ''The [[Daily Star (DC Comics)|Daily Star]]'' in honour of The ''Toronto Daily Star.'' The name of Kent's paper was later changed to ''The [[Daily Planet]]''.
+
+==See also==
+{{Portal|Toronto|Journalism}}
+*[[Old Toronto Star Building]]
+*[[One Yonge Street]] – Current office space of the paper
+*[[Star Media Group]]
+*[[Metroland Media Group]] – Largest division of company
+*[[Torstar]] – Parent company to the ''Toronto Star''
+*[[Grant v. Torstar Corp.]]
+*[[List of newspapers in Canada]]
+*[[Timeline of Rob Ford video scandal]] (as the ''Toronto Star'' plays a major role in uncovering the scandal, along with other media)
+
+==References==
+{{Reflist|30em}}
+
+==Further reading==
+{{refbegin}}
+*{{cite book|last= Harkness|first= Ross|title= J.E. Atkinson of the Star|year= 1963|location= Toronto|publisher= [[University of Toronto Press]]|oclc= 1402965}}
+*{{cite book|last= Templeton|first= Charles|authorlink= Charles Templeton|title= Charles Templeton, an anecdotal memoir|chapter= Inside the Toronto Star|chapterurl= http://www.templetons.com/charles/memoir/chap5.html |accessdate=February 13, 2010|year= 1983|publisher= [[McClelland & Stewart]]|location= Toronto|isbn= 978-0-7710-8545-1|oclc= 11158533}}
+*{{cite web
+| last = Vincent
+| first = Trista
+| title = Manufacturing Concern :: Ryerson Review of Journalism
+| accessdate =January 6, 2011
+| date = March 1999
+| url = http://www.rrj.ca/m3946/
+}}
+*{{cite book|last=Walkom|first= Thomas L|title= Rae Days|year= 1994|location= Toronto|publisher= [[Key Porter Books]]|isbn= 978-1-55013-598-5|oclc= 30669140}}
+{{refend}}
+
+==External links==
+{{Commons category|Toronto Star}}
+*{{Official website|http://www.thestar.com}}
+*[http://www.thestar.com/iphone Official mobile site]
+*[http://www.youtube.com/user/TorontoStarVideo ''The Toronto Star''] at ''YouTube''
+* [http://collections.ic.gc.ca/heirloom_series/volume4/88-91.htm Atkinson Biography, Government of Canada website]
+*''[http://www.thestar.com/aboutUs/history History of the Toronto Star]''
+*[http://www.thestar.com/aboutUs/atkinson The Atkinson Principles]
+*[http://www.thecanadianencyclopedia.com/index.cfm?PgNm=TCE&Params=A1ARTA0007662 ''Star Weekly''] in ''[[The Canadian Encyclopedia]]''
+
+{{Torstar}}
+<!-- Please do not add the Superman template, as the Toronto Star is tangentially related to Superman -->
+
+[[Category:Publications established in 1892]]
+[[Category:Newspapers published in Toronto]]
+[[Category:Torstar publications]]
+[[Category:Toronto Star|*]]
+[[Category:Websites utilizing paywalls]]
+[[Category:Daily newspapers published in Canada]]
