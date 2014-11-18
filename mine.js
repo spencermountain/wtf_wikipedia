@@ -132,7 +132,7 @@ var parser=(function(){
             output[section].push(line)
         }
       })
-      return output
+      // return output
       return {
         text:output,
         data:data
