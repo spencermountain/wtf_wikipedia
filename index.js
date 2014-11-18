@@ -70,7 +70,7 @@ InstaView.convert = function(wiki)
 {
   var categories=[]
   var links=[]
-
+  wiki=wiki.replace(/\{\{.*?\}\}/g, " ") //ugly!
 	var 	ll = (typeof wiki == 'string')? wiki.replace(/\r/g,'').split(/\n/): wiki, // lines of wikicode
 		o='',	// output
 		p=0,	// para flag
@@ -132,10 +132,10 @@ InstaView.convert = function(wiki)
 
 				var pi = prev.charAt(i)
 
-				if (pi=='*') ps('</ul>')
-				else if (pi=='#') ps('</ol>')
+				if (pi=='*') ps('')
+				else if (pi=='#') ps('')
 				// close a dl only if the new item is not a dl item (:, ; or empty)
-				else switch (l_match[1].charAt(i)) { case'':case'*':case'#': ps('</dl>') }
+				else switch (l_match[1].charAt(i)) { case'':case'*':case'#': ps('') }
 			}
 
 			// open new lists
@@ -143,19 +143,19 @@ InstaView.convert = function(wiki)
 
 				var li = l_match[1].charAt(i)
 
-				if (li=='*') ps('<ul>')
-				else if (li=='#') ps('<ol>')
+				if (li=='*') ps('')
+				else if (li=='#') ps('')
 				// open a new dl only if the prev item is not a dl item (:, ; or empty)
-				else switch(prev.charAt(i)) { case'':case'*':case'#': ps('<dl>') }
+				else switch(prev.charAt(i)) { case'':case'*':case'#': ps('') }
 			}
 
 			switch (l_match[1].charAt(l_match[1].length-1)) {
 
 				case '*': case '#':
-					ps('<li>' + parse_inline_nowiki(l_match[2])); break
+					ps(''); break
 
 				case ';':
-					ps('<dt>')
+					ps('')
 
 					var dt_match
 
@@ -170,7 +170,7 @@ InstaView.convert = function(wiki)
 					break
 
 				case ':':
-					ps('<dd>' + parse_inline_nowiki(l_match[2]))
+					ps('')
 			}
 
 			prev=l_match[1]
@@ -178,12 +178,12 @@ InstaView.convert = function(wiki)
 
 		// close remaining lists
 		for (var i=prev.length-1; i>=0; i--)
-			ps(f('</?>', (prev.charAt(i)=='*')? 'ul': ((prev.charAt(i)=='#')? 'ol': 'dl')))
+			ps(f('', (prev.charAt(i)=='*')? '': ((prev.charAt(i)=='#')? '': '')))
 	}
 
 	function parse_table()
 	{
-		endl(f('<table?>', $(/^\{\|( .*)$/)? $r[1]: ''))
+		endl(f(''))
 
 		for (;remain();) if ($('|')) switch (_(1)) {
 			case '}': endl('</table>'); return
@@ -243,9 +243,7 @@ InstaView.convert = function(wiki)
 
 	function parse_pre()
 	{
-		ps('<pre>')
 		do endl(parse_inline_nowiki(ll[0].substring(1)) + "\n"); while (remain() && $(' '))
-		ps('</pre>')
 	}
 
 	function parse_block_image()
@@ -500,8 +498,12 @@ InstaView.convert = function(wiki)
 
 		// text formatting
 		return str.
+		  //references
+			replace(/< ?ref[ >].*?<\/ ?ref ?>/g, " ").
+			replace(/< ?ref .*?\/ ?>/g, " ").
+			//templates
+			replace(/\{\{.*?\}\}/g, " ").
 
-			replace(/< ?ref .*?<\/ref>/g, " ").
 
 			// [[:Category:...]], [[:Image:...]], etc...
 			replace(RegExp('\\[\\[:((?:'+InstaView.conf.locale.category+'|'+InstaView.conf.locale.image+'|'+InstaView.conf.wiki.interwiki+'):.*?)\\]\\]','gi'), "").
@@ -543,7 +545,7 @@ InstaView.convert = function(wiki)
 	// begin parsing
 	for (;remain();) if ($(/^(={1,6})(.*)\1(.*)$/)) {
 		p=0
-		endl(f('<h?>?</h?>?', $r[1].length, parse_inline_nowiki($r[2]), $r[1].length, $r[3]))
+		endl(f('', ''))
 
 	} else if ($(/^[*#:;]/)) {
 		p=0
@@ -559,7 +561,7 @@ InstaView.convert = function(wiki)
 
 	} else if ($(/^----+$/)) {
 		p=0
-		endl('<hr>')
+		endl('')
 
 	} else if ($(InstaView.BLOCK_IMAGE)) {
 		p=0
@@ -569,10 +571,10 @@ InstaView.convert = function(wiki)
 
 		// handle paragraphs
 		if ($$('')) {
-			if (p = (remain()>1 && ll[1]==(''))) endl('<p><br>')
+			if (p = (remain()>1 && ll[1]==(''))) endl('')
 		} else {
 			if(!p) {
-				ps('<p>')
+				ps('')
 				p=1
 			}
 			ps(parse_inline_nowiki(ll[0]) + ' ')
@@ -596,5 +598,6 @@ InstaView.convert = function(wiki)
 return InstaView;
 })()
 
-var s='Miss Ray Levinsky.<ref name="theroyal">{{cite web|title=About - theroyal.to|url=http://www.theroyal.to/about/}}</ref> <p>When it was built in 1939,'
-console.log(module.exports.convert(s))
+// var s='Miss Ray Levinsky.<ref name="theroyal">{{cite web|title=About - theroyal.to|url=http://www.theroyal.to/about/}}</ref> <p>When it was built in 1939,'
+// s='fun times {{Infobox newspaper | logo = | image = 220px|border | caption = The January 23, 2013, front page of The Toronto Star | type = Daily newspaper | format = Broadsheet| | foundation = 1892, as the Evening Star | ceased publication = | price = CAD 0.75 Monday-Friday<br />CAD 2.00 Saturday<br />CAD 1.00 Sunday<br />(Prices may be higher outside the GTA) | owners = Star Media Group (Torstar Corporation) | publisher = John D. Cruickshank | editor = Michael Cooke | managing editor = Jane Davenport | political  = Social liberalism     |headquarters = One Yonge Street, Toronto, Ontario, Canada |circulation = 381,310 weekdays<br/>546,819 Saturdays<br/>337,846 Sundays in 2010  | ISSN = 0319-0781 | oclc = 137342540 | website = thestar.com }} The Toronto Star is a Canadian '
+// console.log(module.exports.convert(s))
