@@ -238,32 +238,34 @@ var parser=(function(){
       //next, map each line into
       var output={}
       var section="Intro"
-      lines.forEach(function(line){
-        if(!section){
-            return
-        }
-        //list
-        if(line.match(/^[\*#:;\|]/)){
-            return
-        }
-        //headings
-        if(line.match(/^={1,5}[^=]{1,200}={1,5}$/)){
-            section=line.match(/^={1,5}([^=]{2,200}?)={1,5}$/)[1] || ''
-            //ban some sections
-            if(section.match(/^(references|see also|external links|further reading)$/i)){
-                section=null
-            }
-            return
-        }
+      lines.forEach(function(part){
+        sentence_parser(part).forEach(function(line){
+          if(!section){
+              return
+          }
+          //ignore list
+          if(line.match(/^[\*#:;\|]/)){
+              return
+          }
+          //headings
+          if(line.match(/^={1,5}[^=]{1,200}={1,5}$/)){
+              section=line.match(/^={1,5}([^=]{2,200}?)={1,5}$/)[1] || ''
+              //ban some sections
+              if(section.match(/^(references|see also|external links|further reading)$/i)){
+                  section=null
+              }
+              return
+          }
 
-        //still alive, add it to the section
-        line=parse_line(line)
-        if(line && line.text){
-            if(!output[section]){
-                output[section]=[]
-            }
-            output[section].push(line)
-        }
+          //still alive, add it to the section
+          line=parse_line(line)
+          if(line && line.text){
+              if(!output[section]){
+                  output[section]=[]
+              }
+              output[section].push(line)
+          }
+        })
       })
       // return output
       return {
@@ -288,7 +290,7 @@ var parser=(function(){
 function from_file(page){
   fs=require("fs")
   var str = fs.readFileSync(__dirname+"/tests/"+page+".txt", 'utf-8')
-  var data=parser(str).text['Intro']
+  var data=parser(str)
   console.log(JSON.stringify(data, null, 2));
 }
 function from_api(page){
@@ -301,4 +303,6 @@ function from_api(page){
 function run_tests(){
   require("./tests/test")()
 }
-from_file("Toronto")
+// from_file("Toronto")
+
+
