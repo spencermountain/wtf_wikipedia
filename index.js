@@ -28,36 +28,49 @@ var parser=(function(){
     // console.log(recursive_replace(str, re))
     var helpers={
       capitalise:function(str){
-        return str.charAt(0).toUpperCase() + str.slice(1);
+        if(str && typeof str=="string"){
+          return str.charAt(0).toUpperCase() + str.slice(1);
+        }
       },
        onlyUnique:function(value, index, self) {
         return self.indexOf(value) === index;
       },
       trim_whitespace: function(str){
-        return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '').replace(/  /, ' ');
+        if(str && typeof str=="string"){
+          return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '').replace(/  /, ' ');
+        }
       }
     }
 
     //grab an array of internal links in the text
     function fetch_links(str){
       var links=[]
-      var tmp=str.match(/\[\[(.{2,60}?)\]\](\w*)/g)//regular links
+      var tmp=str.match(/\[\[(.{2,80}?)\]\](\w{0,10})/g)//regular links
       if(tmp){
           tmp.forEach(function(s){
               var link, txt;
               if(s.match(/\|/)){  //replacement link [[link|text]]
-                s=s.replace(/\[\[(.{2,60}?)\]\](\w*)/g,"$1$2") //remove ['s and keep suffix
-                link=s.replace(/(.{2,40})\|.*/,"$1")//replaced links
-                txt=s.replace(/.{2,40}?\|/,'')
+                s=s.replace(/\[\[(.{2,80}?)\]\](\w{0,10})/g,"$1$2") //remove ['s and keep suffix
+                link=s.replace(/(.{2,60})\|.{0,200}/,"$1")//replaced links
+                txt=s.replace(/.{2,60}?\|/,'')
+                //handle funky case of [[toronto|]]
+                if(!txt && link.match(/\|$/)){
+                  link=link.replace(/\|$/,'')
+                  txt=link
+                }
               }else{ // standard link [[link]]
-                link=s.replace(/\[\[(.{2,40}?)\]\](\w*)/g,"$1") //remove ['s
+                link=s.replace(/\[\[(.{2,60}?)\]\](\w{0,10})/g,"$1") //remove ['s
               }
               //kill off non-wikipedia namespaces
               if(link.match(/^:?(category|image|file|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i)){
                   return
               }
-
-              link=link.replace(/#[^ ]{1,100}/,'')//remove anchors
+              //kill off just anchor links [[#history]]
+              if(link.match(/^#/i)){
+                  return
+              }
+              //remove anchors from end [[toronto#history]]
+              link=link.replace(/#[^ ]{1,100}/,'')
               link=helpers.capitalise(link)
               var arr=[link]
               if(txt){arr.push(txt)}
@@ -71,7 +84,7 @@ var parser=(function(){
 
     function fetch_categories(wiki){
       var cats=[]
-      var tmp=wiki.match(/\[\[:?category:(.{2,60}?)\]\](\w*)/gi)//regular links
+      var tmp=wiki.match(/\[\[:?category:(.{2,60}?)\]\](\w{0,10})/gi)//regular links
       if(tmp){
           tmp.forEach(function(c){
             c=c.replace(/^\[\[:?category:/i,'')
@@ -87,16 +100,15 @@ var parser=(function(){
     //return only rendered text of wiki links
     function resolve_links(line){
         // categories, images, files
-        var re= /\[\[:?Category:[^\[\]]{2,60}\]\]/g
+        var re= /\[\[:?Category:[^\[\]]{2,80}\]\]/g
         line=line.replace(re, "")
 
         // [[Common links]]
-        line=line.replace(/\[\[:?([^|]{2,60}?)\]\](\w{0,5})/g, "$1$2")
+        line=line.replace(/\[\[:?([^|]{2,80}?)\]\](\w{0,5})/g, "$1$2")
         // [[Replaced|Links]]
-        line=line.replace(/\[\[:?(.{2,60}?)\|([^\]]+?)\]\](\w{0,5})/g, "$2$3")
+        line=line.replace(/\[\[:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, "$2$3")
         // External links
         line=line.replace(/\[(https?|news|ftp|mailto|gopher|irc):\/\/[^ ]{4,1500}\]/g, "")
-        // line=line.replace(/(^| )(https?|news|ftp|mailto|gopher|irc):(\/*)([^ $]*)/g, "$1")
         return line
     }
 
@@ -106,8 +118,10 @@ var parser=(function(){
         if(str && str[0]){
           str[0].replace(/\r/g,'').split(/\n/).forEach(function(l){
               if(l.match(/^\|/)){
-                  var key= helpers.trim_whitespace(l.match(/^\| ?([^ ]*) /)[1])
-                  var value= helpers.trim_whitespace(l.match(/=(.*)$/)[1])
+                  var key= l.match(/^\| ?([^ ]{1,200}) /) || {}
+                  key= helpers.trim_whitespace(key || '')
+                  var value= l.match(/=(.{1,500})$/) || []
+                  value=helpers.trim_whitespace(value[1] || '')
                   if(key && value){
                     obj[key]=value
                 }
@@ -120,20 +134,29 @@ var parser=(function(){
     function preprocess(wiki){
       //remove comments
       wiki= wiki.replace(/<!--[^>]{0,2000}-->/g,'')
-      wiki=wiki.replace('__NOTOC__','')
-      wiki=wiki.replace('__NOEDITSECTION__','')
+      wiki=wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/ig,'')
+      //signitures
+      wiki=wiki.replace(/~~{1,3}/,'')
+      //horizontal rule
+      wiki=wiki.replace(/--{1,3}/,'')
+      //space
+      wiki=wiki.replace(/&nbsp;/g,' ')
       //kill off interwiki links
-      wiki=wiki.replace(/\[\[([a-z][a-z]|simple):.{2,60}\]\]/i,'')
+      wiki=wiki.replace(/\[\[([a-z][a-z]|simple|war|ceb|min):.{2,60}\]\]/i,'')
       //bold/italics
-      wiki=wiki.replace(/''*([^']*)''*/g,'$1')
+      wiki=wiki.replace(/''{0,3}([^']{0,200})''{0,3}/g,'$1')
+      //give it the inglorious send-off it deserves..
+      wiki=kill_xml(wiki)
+
       //references (yes we're regexing some xml. blow me)
       //nowiki..
       //score..
       //table..
+      //div..
       wiki=wiki.replace(/< ?ref[a-z0-9=" ]{0,20}>[\s\S]{0,40}?<\/ ?ref ?>/g, " ")//<ref>...</ref>
       wiki=wiki.replace(/< ?ref [a-z0-9=" ]{2,20}\/>/g, " ")//<ref name="asd"/>
       //remove tables
-      wiki= wiki.replace(/\{\|[\s\S]*?\|\}/g,'')
+      wiki= wiki.replace(/\{\|[\s\S]{1,8000}?\|\}/g,'')
 
       return wiki
     }
@@ -147,13 +170,14 @@ var parser=(function(){
     }
 
     function postprocess(line){
+
         //fix links
         line= resolve_links(line)
         //oops, recursive image bug
         if(line.match(/^(thumb|right|left)\|/i)){
             return
         }
-        //noinclude, random-ass xml tags, for god-knows...
+        //random-ass html tags, for god-knows... <s>, <u>, <pre>, noinclude, ...
         line=line.replace(/<[a-z \/]{0,40}>/i)
         //some IPA pronounciations leave blank junk parenteses
         line=line.replace(/\([^a-z]{0,8}\)/,'')
@@ -165,6 +189,22 @@ var parser=(function(){
     function parse_redirect(wiki){
       return wiki.match(/#redirect \[\[(.{2,60}?)\]\]/i)[1]
     }
+
+    //some xml elements are just junk, and demand full inglorious death by regular exp
+    //other xml elements, like <em>, are plucked out afterwards
+    function kill_xml(wiki){
+      //luckily, refs can't be recursive..
+      wiki=wiki.replace(/<ref>[\s\S]{0,500}?<\/ref>/g,'')// <ref></ref>
+      wiki=wiki.replace(/<ref [^>]{0,200}?\/>/g,'')// <ref name=""/>
+      wiki=wiki.replace(/<ref [^>]{0,200}?>[\s\S]{0,500}?<\/ref>/g,'')// <ref name=""></ref>
+      //other types of xml that we want to trash completely
+      wiki=wiki.replace(/<(table|code|dl|hiero|math|score) ?[^>]{0,200}?>[\s\S]{0,500}<\/(table|code|dl|hiero|math|score)>/,'')// <table name=""><tr>hi</tr></table>
+      return wiki
+    }
+    // console.log(kill_xml("hello <ref>nono!</ref> world1. hello <ref name='hullo'>nono!</ref> world2. hello <ref name='hullo'/>world3.  hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4. hello<ref name=''/> world5 <ref name=''>nono</ref>, man.}}"))
+    // console.log(kill_xml("hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4"))
+    // console.log(kill_xml('hello<ref name="theroyal"/> world <ref>nono</ref>, man}}'))
+    // console.log(kill_xml('hello<ref name="theroyal"/> world5 <ref name="">nono</ref>, man}}'))
 
 
     var parser=function(wiki){
@@ -183,7 +223,7 @@ var parser=(function(){
       var infobox=fetch_infobox(wiki)
 
       //remove all recursive template stuff
-      var re= /\{\{[^\{\}]*\}\}/g
+      var re= /\{\{[^\{\}]{0,5000}\}\}/g
       wiki= recursive_replace(wiki, re)
 
       //NOT WORKING. FUCK
@@ -203,11 +243,11 @@ var parser=(function(){
             return
         }
         //list
-        if(line.match(/^[\*#:\|]/)){
+        if(line.match(/^[\*#:;\|]/)){
             return
         }
         //headings
-        if(line.match(/^={1,5}[^=]*={1,5}$/)){
+        if(line.match(/^={1,5}[^=]{1,200}={1,5}$/)){
             section=line.match(/^={1,5}([^=]{2,200}?)={1,5}$/)[1] || ''
             //ban some sections
             if(section.match(/^(references|see also|external links|further reading)$/i)){
@@ -247,7 +287,7 @@ var parser=(function(){
 
 function from_file(page){
   fs=require("fs")
-  var str = fs.readFileSync(__dirname+"/tests/royal_cinema.txt", 'utf-8')
+  var str = fs.readFileSync(__dirname+"/tests/"+page+".txt", 'utf-8')
   var data=parser(str).text['Intro']
   console.log(JSON.stringify(data, null, 2));
 }

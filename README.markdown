@@ -1,8 +1,8 @@
 ##Parsing Wikipedia script is basically NP-Hard
 
-its the wurst. I'm just trying my best.
+its [really the wurst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax). I'm just trying my best.
 
-it turns a wikipedia article into a parsed JSON object, and handles the ad-hoc recursive templates shinanigans ad infinitum.
+it turns a wikipedia article into a parsed JSON object, and handles many ad-hoc recursive templates shinanigans ad infinitum.
 
 its a shoulder-shrugging combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView) and [txtwiki](https://github.com/joaomsa/txtwiki.js)
 
