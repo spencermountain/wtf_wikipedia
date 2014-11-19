@@ -31,7 +31,7 @@ var parser=(function(){
         return self.indexOf(value) === index;
       },
       trim_whitespace: function(str){
-        return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+        return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '').replace(/  /, ' ');
       }
     }
 
@@ -104,7 +104,7 @@ var parser=(function(){
       wiki=wiki.replace('__NOEDITSECTION__','')
       //bold/italics
       wiki=wiki.replace(/''*([^']*)''*/g,'$1')
-      //references (yes we're regexing some xml. deal with it)
+      //references (yes we're regexing some xml. blow me)
       wiki=wiki.replace(/< ?ref[a-z0-9=" ]{0,20}>[\s\S]{0,40}?<\/ ?ref ?>/g, " ")//<ref>...</ref>
       wiki=wiki.replace(/< ?ref [a-z0-9=" ]{2,20}\/>/g, " ")//<ref name="asd"/>
       //remove tables
