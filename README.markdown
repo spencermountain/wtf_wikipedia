@@ -1,13 +1,12 @@
-#Parsing Wikipedia script is basically NP-Hard
+##Parsing Wikipedia script is basically NP-Hard
 
-parsing wikimedia script is the wurst, this library is simply trying its best.
+its the wurst. this library is trying its best.
 
 it turns a wikipedia article into a parsed JSON object, and handles the ad-hoc recursive templates shinanigans ad infinitum.
 
-its a manic combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView) and [txtwiki](https://github.com/joaomsa/txtwiki.js)
+its a shoulder-shrugging combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView) and [txtwiki](https://github.com/joaomsa/txtwiki.js)
 
 m ok, lets write our own parser what culd go rong
-#Install
 ```bash
 npm install wtf_wikipedia
 ````

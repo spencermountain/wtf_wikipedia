@@ -1,4 +1,5 @@
 //turns wikimedia script into json
+// https://github.com/spencermountain/wtf_wikipedia
 //@spencermountain
 var parser=(function(){
     "use strict";
@@ -61,7 +62,7 @@ var parser=(function(){
         return o
     }
 
-
+    //return only rendered text of wiki links
     function reconcile_links(line){
         // categories, images, files
         line=line.replace(/\[\[\]\](\w*)/g, "$1$2")
