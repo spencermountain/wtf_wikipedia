@@ -2,6 +2,7 @@
 //@spencermountain
 var parser=(function(){
     "use strict";
+
     function recursive_replace(str,re){
       //http://blog.stevenlevithan.com/archives/reverse-recursive-pattern
         var output = [];
@@ -22,9 +23,16 @@ var parser=(function(){
     // var str="hello [[img|this is[[john]] he is nice]] world [[yes]]"
     // var re= /\[\[[^\[\]]*\]\]/
     // console.log(recursive_replace(str, re))
-
-    function onlyUnique(value, index, self) {
-      return self.indexOf(value) === index;
+    var helpers={
+      capitalise:function(str){
+        return str.charAt(0).toUpperCase() + string.slice(1);
+      },
+       onlyUnique:function(value, index, self) {
+        return self.indexOf(value) === index;
+      },
+      trim_whitespace: function(str){
+        return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+      }
     }
 
     function fetch_links(str){
@@ -49,13 +57,10 @@ var parser=(function(){
                 o.links.push(s)
             })
         }
-        o.links=o.links.filter(onlyUnique)
+        o.links=o.links.filter(helpers.onlyUnique)
         return o
     }
 
-    function trim_whitespace(str){
-      return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-    }
 
     function reconcile_links(line){
         // categories, images, files
@@ -81,8 +86,8 @@ var parser=(function(){
         if(str && str[0]){
           str[0].replace(/\r/g,'').split(/\n/).forEach(function(l){
               if(l.match(/^\|/)){
-                  var key= trim_whitespace(l.match(/^\| ?([^ ]*) /)[1])
-                  var value= trim_whitespace(l.match(/=(.*)$/)[1])
+                  var key= helpers.trim_whitespace(l.match(/^\| ?([^ ]*) /)[1])
+                  var value= helpers.trim_whitespace(l.match(/=(.*)$/)[1])
                   if(key && value){
                     obj[key]=value
                 }
@@ -93,39 +98,43 @@ var parser=(function(){
     }
 
     function preprocess(wiki){
-      //remove all recursive template stuff
-      var re= /\{\{[^\{\}]*\}\}/g
-      wiki= recursive_replace(wiki, re)
-
-      // images & files can be recursive too (but not categories)
-      // var re= /\[\[(File:|Image:)[^\[\]]*?\]\]/gi  //NOT WORKING. FUCK
-      // wiki= recursive_replace(wiki, re)
-
-      //remove tables
-      wiki= wiki.replace(/\{\|[\s\S]*?\|\}/g,'')
       //remove comments
       wiki= wiki.replace(/<!--[^>]*-->/g,'')
       wiki=wiki.replace('__NOTOC__','')
       wiki=wiki.replace('__NOEDITSECTION__','')
       //bold/italics
       wiki=wiki.replace(/''*([^']*)''*/g,'$1')
-      //references
-      wiki=wiki.replace(/< ?ref[ >][\s\S]*?<\/ ?ref ?>/g, " ")
-      wiki=wiki.replace(/< ?ref [\s\S]*?\/ ?>/g, " ")
+      //references (yes we're regexing some xml. deal with it)
+      wiki=wiki.replace(/< ?ref[a-z0-9=" ]{0,20}>[\s\S]{0,40}?<\/ ?ref ?>/g, " ")//<ref>...</ref>
+      wiki=wiki.replace(/< ?ref [a-z0-9=" ]{2,20}\/>/g, " ")//<ref name="asd"/>
+      //remove tables
+      wiki= wiki.replace(/\{\|[\s\S]*?\|\}/g,'')
 
       return wiki
     }
 
     var parser=function(wiki){
 
+      //first, kill off th3 craziness
+      wiki= preprocess(wiki)
+
       //get and parse an infobox
       var infobox=fetch_infobox(wiki)
-      //kill off th3 craziness
-      wiki=preprocess(wiki)
+
+      //remove all recursive template stuff
+      var re= /\{\{[^\{\}]*\}\}/g
+      wiki= recursive_replace(wiki, re)
+
+      //NOT WORKING. FUCK
+      // images & files can be recursive too (but not categories)
+      // var re= /\[\[(File:|Image:)[^\[\]]*?\]\]/gi
+      // wiki= recursive_replace(wiki, re)
+
       //get list of links, categories
       var data=fetch_links(wiki)
       var lines= wiki.replace(/\r/g,'').split(/\n/)
 
+      //next, map each line into
       var output={}
       var section="Intro"
       lines.forEach(function(line){
@@ -137,11 +146,11 @@ var parser=(function(){
             return
         }
         //headings
-        if(line.match(/^=*[^=]*=/)){
-            section=line.match(/^=*([^=]*?)=/)[1] || ''
+        if(line.match(/^={1,5}[^=]*={1,5}$/)){
+            section=line.match(/^={1,5}([^=]{2,200}?)={1,5}$/)[1] || ''
             //ban some sections
             if(section.match(/^(references|see also|external links|further reading)$/i)){
-                // section=null
+                section=null
             }
             return
         }
@@ -153,7 +162,7 @@ var parser=(function(){
             return
         }
 
-        line=trim_whitespace(line)
+        line=helpers.trim_whitespace(line)
 
         //still alive, add it to the section
         if(line){
@@ -173,20 +182,23 @@ var parser=(function(){
     }
 
     if (typeof module !== 'undefined' && module.exports) {
-    module.exports = parser;
+      module.exports = parser;
     }
-
 
     return parser
 })()
 
 
-fs=require("fs")
-var str = fs.readFileSync(__dirname+"/tests/toronto_star.txt", 'utf-8')
-var data=parser(str)
-console.log(JSON.stringify(data, null, 2));
+// require("./tests/test")()
+// fs=require("fs")
+// var str = fs.readFileSync(__dirname+"/tests/royal_cinema.txt", 'utf-8')
+// var str = fs.readFileSync(__dirname+"/tests/jodie_emery.txt", 'utf-8')
+// var data=parser(str)
+// console.log(JSON.stringify(data, null, 2));
 
 // str="Germany.<ref>\nhttps://www.christianaction.org/civicrm/contribute/transact?reset=1&id=22, Accessed September 3, 2011.</ref> fun"
 // str="hello [[Image:Toronto Star Building.JPG|right|thumb|250px|[[One Yonge Street]] – Current head office, built in 1970]] world"
 // str="hi {{Infobox person\n|name = Royal Cinema\n}} world"
+// str='Emery is a vegetarian,<ref name="princess"></ref> and former user of cocaine.'
+// console.log(str.replace(/< ?ref .*>[\s\S]{2,40}?<\/ ?ref ?>/g, " "))
 // console.log(parser(str))
