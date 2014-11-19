@@ -3,7 +3,9 @@
 //@spencermountain
 var parser=(function(){
     "use strict";
-
+    if (typeof module !== 'undefined' && module.exports) {
+      var sentence_parser= require("./sentence_parser")
+    }
     function recursive_replace(str,re){
       //http://blog.stevenlevithan.com/archives/reverse-recursive-pattern
         var output = [];
@@ -26,7 +28,7 @@ var parser=(function(){
     // console.log(recursive_replace(str, re))
     var helpers={
       capitalise:function(str){
-        return str.charAt(0).toUpperCase() + string.slice(1);
+        return str.charAt(0).toUpperCase() + str.slice(1);
       },
        onlyUnique:function(value, index, self) {
         return self.indexOf(value) === index;
@@ -36,48 +38,65 @@ var parser=(function(){
       }
     }
 
+    //grab an array of internal links in the text
     function fetch_links(str){
-      var o={links:[], categories:[], images:[]}
-      //fetch links
-      var tmp=str.match(/\[\[(.*?)\]\](\w*)/g)//regular links
-        if(tmp){
-            tmp.forEach(function(s){
-                s=s.replace(/\[\[(.*?)\]\](\w*)/g,"$1")
-                s=s.replace(/(.*)\|.*/,"$1")//replaced links
-                if(s.match(/^category:/i)){
-                    o.categories.push(s)
-                    return
-                }
-                if(s.match(/^image:/i)){
-                    o.images.push(s)
-                    return
-                }
-                if(s.match(/^image:/i)){
-                    return
-                }
-                o.links.push(s)
-            })
+      var links=[]
+      var tmp=str.match(/\[\[(.{2,60}?)\]\](\w*)/g)//regular links
+      if(tmp){
+          tmp.forEach(function(s){
+              var link, txt;
+              if(s.match(/\|/)){  //replacement link [[link|text]]
+                s=s.replace(/\[\[(.{2,60}?)\]\](\w*)/g,"$1$2") //remove ['s and keep suffix
+                link=s.replace(/(.{2,40})\|.*/,"$1")//replaced links
+                txt=s.replace(/.{2,40}?\|/,'')
+              }else{ // standard link [[link]]
+                link=s.replace(/\[\[(.{2,40}?)\]\](\w*)/g,"$1") //remove ['s
+              }
+              //kill off non-wikipedia namespaces
+              if(link.match(/^:?(category|image|file|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i)){
+                  return
+              }
+
+              link=link.replace(/#[^ ]{1,100}/,'')//remove anchors
+              link=helpers.capitalise(link)
+              var arr=[link]
+              if(txt){arr.push(txt)}
+              links.push(arr)
+          })
+      }
+      links=links.filter(helpers.onlyUnique)
+      return links
+    }
+    // console.log(fetch_links("it is [[Tony Hawk|Tony]]s moher in [[Toronto]]s"))
+
+    function fetch_categories(wiki){
+      var cats=[]
+      var tmp=wiki.match(/\[\[:?category:(.{2,60}?)\]\](\w*)/gi)//regular links
+      if(tmp){
+          tmp.forEach(function(c){
+            c=c.replace(/^\[\[:?category:/i,'')
+            c=c.replace(/\|?\]\]$/i,'')
+            if(c && !c.match(/[\[\]]/)){
+              cats.push(c)
+            }
+          })
         }
-        o.links=o.links.filter(helpers.onlyUnique)
-        return o
+      return cats
     }
 
     //return only rendered text of wiki links
-    function reconcile_links(line){
+    function resolve_links(line){
         // categories, images, files
-        line=line.replace(/\[\[\]\](\w*)/g, "$1$2")
-        var re= /\[\[Category:[^\[\]]*\]\]/g
+        var re= /\[\[:?Category:[^\[\]]{2,60}\]\]/g
         line=line.replace(re, "")
 
         // [[Common links]]
-        line=line.replace(/\[\[([^|]*?)\]\](\w*)/g, "$1$2")
+        line=line.replace(/\[\[:?([^|]{2,60}?)\]\](\w{0,5})/g, "$1$2")
         // [[Replaced|Links]]
-        line=line.replace(/\[\[(.*?)\|([^\]]+?)\]\](\w*)/g, "$2$3")
+        line=line.replace(/\[\[:?(.{2,60}?)\|([^\]]+?)\]\](\w{0,5})/g, "$2$3")
         // External links
-        line=line.replace(/\[(https?|news|ftp|mailto|gopher|irc):(\/*)([^\]]*?) (.*?)\]/g, "$4")
-        line=line.replace(/\[http:\/\/(.*?)\]/g, "")
-        line=line.replace(/\[(news|ftp|mailto|gopher|irc):(\/*)(.*?)\]/g, "")
-        line=line.replace(/(^| )(https?|news|ftp|mailto|gopher|irc):(\/*)([^ $]*)/g, "$1")
+        line=line.replace(/\[(https?|news|ftp|mailto|gopher|irc):\/\/[^ ]{4,1500}\]/g, "")
+        // line=line.replace(/(^| )(https?|news|ftp|mailto|gopher|irc):(\/*)([^ $]*)/g, "$1")
         return line
     }
 
@@ -100,12 +119,17 @@ var parser=(function(){
 
     function preprocess(wiki){
       //remove comments
-      wiki= wiki.replace(/<!--[^>]*-->/g,'')
+      wiki= wiki.replace(/<!--[^>]{0,2000}-->/g,'')
       wiki=wiki.replace('__NOTOC__','')
       wiki=wiki.replace('__NOEDITSECTION__','')
+      //kill off interwiki links
+      wiki=wiki.replace(/\[\[([a-z][a-z]|simple):.{2,60}\]\]/i,'')
       //bold/italics
       wiki=wiki.replace(/''*([^']*)''*/g,'$1')
       //references (yes we're regexing some xml. blow me)
+      //nowiki..
+      //score..
+      //table..
       wiki=wiki.replace(/< ?ref[a-z0-9=" ]{0,20}>[\s\S]{0,40}?<\/ ?ref ?>/g, " ")//<ref>...</ref>
       wiki=wiki.replace(/< ?ref [a-z0-9=" ]{2,20}\/>/g, " ")//<ref name="asd"/>
       //remove tables
@@ -113,10 +137,46 @@ var parser=(function(){
 
       return wiki
     }
+    // console.log(preprocess("hi [[as:Plancton]] there"))
+
+    function parse_line(line){
+      return {
+        text:postprocess(line),
+        links:fetch_links(line)
+      }
+    }
+
+    function postprocess(line){
+        //fix links
+        line= resolve_links(line)
+        //oops, recursive image bug
+        if(line.match(/^(thumb|right|left)\|/i)){
+            return
+        }
+        //noinclude, random-ass xml tags, for god-knows...
+        line=line.replace(/<[a-z \/]{0,40}>/i)
+        //some IPA pronounciations leave blank junk parenteses
+        line=line.replace(/\([^a-z]{0,8}\)/,'')
+        line=helpers.trim_whitespace(line)
+
+        return line
+    }
+
+    function parse_redirect(wiki){
+      return wiki.match(/#redirect \[\[(.{2,60}?)\]\]/i)[1]
+    }
+
 
     var parser=function(wiki){
 
-      //first, kill off th3 craziness
+      //detect if page is just redirect, and die
+      if(wiki.match(/^#redirect \[\[.{2,60}?\]\]/i)){
+        return {
+          redirect:parse_redirect(wiki)
+        }
+      }
+
+      //kill off th3 craziness
       wiki= preprocess(wiki)
 
       //get and parse an infobox
@@ -132,7 +192,7 @@ var parser=(function(){
       // wiki= recursive_replace(wiki, re)
 
       //get list of links, categories
-      var data=fetch_links(wiki)
+      var cats=fetch_categories(wiki)
       var lines= wiki.replace(/\r/g,'').split(/\n/)
 
       //next, map each line into
@@ -155,18 +215,10 @@ var parser=(function(){
             }
             return
         }
-        //fix links
-        line= reconcile_links(line)
-
-        //oops, recursive image bug
-        if(line.match(/^(thumb|right|left)\|/i)){
-            return
-        }
-
-        line=helpers.trim_whitespace(line)
 
         //still alive, add it to the section
-        if(line){
+        line=parse_line(line)
+        if(line && line.text){
             if(!output[section]){
                 output[section]=[]
             }
@@ -176,7 +228,9 @@ var parser=(function(){
       // return output
       return {
         text:output,
-        data:data,
+        data:{
+          categories:cats,
+        },
         infobox:infobox
       }
 
@@ -190,16 +244,21 @@ var parser=(function(){
 })()
 
 
-// require("./tests/test")()
-// fs=require("fs")
-// var str = fs.readFileSync(__dirname+"/tests/royal_cinema.txt", 'utf-8')
-// var str = fs.readFileSync(__dirname+"/tests/jodie_emery.txt", 'utf-8')
-// var data=parser(str)
-// console.log(JSON.stringify(data, null, 2));
 
-// str="Germany.<ref>\nhttps://www.christianaction.org/civicrm/contribute/transact?reset=1&id=22, Accessed September 3, 2011.</ref> fun"
-// str="hello [[Image:Toronto Star Building.JPG|right|thumb|250px|[[One Yonge Street]] – Current head office, built in 1970]] world"
-// str="hi {{Infobox person\n|name = Royal Cinema\n}} world"
-// str='Emery is a vegetarian,<ref name="princess"></ref> and former user of cocaine.'
-// console.log(str.replace(/< ?ref .*>[\s\S]{2,40}?<\/ ?ref ?>/g, " "))
-// console.log(parser(str))
+function from_file(page){
+  fs=require("fs")
+  var str = fs.readFileSync(__dirname+"/tests/royal_cinema.txt", 'utf-8')
+  var data=parser(str).text['Intro']
+  console.log(JSON.stringify(data, null, 2));
+}
+function from_api(page){
+  var fetch=require("./fetch_text")
+  fetch(page, function(str){
+    console.log(parser(str).text['Intro'])
+  })
+
+}
+function run_tests(){
+  require("./tests/test")()
+}
+from_file("Toronto")

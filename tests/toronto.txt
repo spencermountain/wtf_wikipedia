@@ -1,0 +1,811 @@
+{{About|the city in Canada}}
+{{Redirect|City of Toronto|the municipal government|Municipal government of Toronto|the historical part of the city prior to the 1998 amalgamation|Old Toronto}}
+{{Use Canadian English|date=July 2014}}
+{{pp-semi-indef}}
+{{pp-move-indef}}
+{{Use mdy dates|date=April 2012}}
+{{Infobox settlement
+|name = Toronto
+|official_name = City of Toronto
+|settlement_type = [[List of cities in Ontario|City]] ([[List of municipalities in Ontario#Single-tier municipalities|single-tier]])
+|nickname = [[Name of Toronto|T.O., T-Dot, Hogtown, The Queen City, Toronto the Good, The City Within a Park]]<!-- Do not add Centre of the Universe, since there are no valid citations for that term, and it is originally a popular nickname for NYC not Toronto --><!-- Do not add El Toro, since it is just a marketing ploy by Eye Weekly (later re-branded as the Grid) --><!-- Do not add York, Upper Canada, since it is a historical name, not a nickname --><!-- Do not add The 6, since it is a promotional name used by Drake and his fans -->
+|motto = Diversity Our Strength
+|image_skyline = Montage of Toronto 7.jpg <!-- Please do not change the infobox image without starting a discussion on the talk page and reaching consensus -->
+|image_caption = From top left: [[Downtown Toronto]] featuring the [[CN Tower]] and [[Financial District, Toronto|Financial District]] from the [[Toronto Islands]], [[Toronto City Hall|City Hall]], the [[Ontario Legislative Building]], [[Casa Loma]], [[Prince Edward Viaduct]], and the [[Scarborough Bluffs]]
+|image_flag = Toronto Flag.svg
+|flag_link = Flag of Toronto
+|flag_size = 125px
+|image_shield = Toronto Coat of Arms.jpg
+|shield_link = Coat of arms of Toronto
+|shield_size = 85px
+|image_blank_emblem = City of Toronto Logo.png
+|image_map = Toronto Location in Ontario.png
+|mapsize = 220px
+|map_caption = Location of Toronto and its [[census metropolitan area]] in the province of [[Ontario]]
+|pushpin_map = Canada
+|pushpin_map_caption = Location of Toronto in Canada
+|coordinates_region = CA-ON
+|subdivision_type = Country
+|subdivision_name = {{flag|Canada}}
+|subdivision_type1 = [[Provinces and territories of Canada|Province]]
+|subdivision_name1 = {{flag|Ontario}}
+|subdivision_type2 = [[Amalgamation of Toronto|Districts]]
+|subdivision_name2 = [[East York]], [[Etobicoke]], [[North York]], [[Old Toronto]], [[Scarborough, Ontario|Scarborough]], [[York, Ontario|York]]
+|government_type = [[Mayor-council government|Mayor-council]]
+|leader_title = [[Mayor of Toronto|Mayor]]
+|leader_name = [[Rob Ford]] <!--Don't change to John Tory until December 1, 2014-->
+|leader_title1 = Deputy Mayor
+|leader_name1 = [[Norm Kelly]]
+|leader_title2 = Council
+|leader_name2 = [[Toronto City Council]]
+|leader_title3 = [[Member of Parliament (Canada)|MPs]]
+|leader_name3 ={{Collapsible list
+|title = List of MPs
+|frame_style = border:none; padding: 0;
+|title_style =
+|list_style = text-align:left;display:none;
+|1=[[Mark Adler (politician)]]
+|2=[[Carolyn Bennett]]
+|3=[[John Carmichael (politician)|John Carmichael]]
+|4=[[Andrew Cash]]
+|5=[[Corneliu Chisu]]
+|6=[[Joe Daniel]]
+|7=[[Kirsty Duncan]]
+|8=[[Chrystia Freeland]]
+|9=[[Dan Harris (politician)|Dan Harris]]
+|10=[[Roxanne James]]
+|11=[[Jim Karygiannis]]
+|12=[[Matthew Kellway]]
+|13=[[Chungsen Leung]]
+|14=[[John McKay (politician)|John McKay]]
+|15=[[Peggy Nash]]
+|16=[[Joe Oliver (politician)|Joe Oliver]]
+|17=[[Ted Opitz]]
+|18=[[Craig Scott (politician)|Craig Scott]]
+|19=[[Judy Sgro]]
+|20=[[Rathika Sitsabaiesan]]
+|21=[[Mike Sullivan (Canadian politician)|Mike Sullivan]]
+|22=[[Bernard Trottier]]
+|23=[[Adam Vaughan]]
+}}
+|leader_title4 = [[Member of Provincial Parliament (Ontario)|MPPs]]
+|leader_name4 ={{Collapsible list
+|title = List of MPPs
+|frame_style = border:none; padding: 0;
+|title_style = <!-- (optional) -->
+|list_style = text-align:left;display:none;
+|1=[[Laura Albanese]]
+|2=[[Bas Balkissoon]]
+|3=[[Lorenzo Berardinetti]]
+|4=[[Donna Cansfield]]
+|5=[[Michael Colle|Mike Colle]]
+|6=[[Michael Coteau]]
+|7=[[Cheri DiNovo]]
+|8=[[Brad Duguid]]
+|9=[[Doug Holyday]]
+|10=[[Eric Hoskins]]
+|11=[[Mitzie Hunter]]
+|12=[[Monte Kwinter]]
+|13=[[Rosario Marchese]]
+|14=[[Glen Murray (politician)|Glen Murray]]
+|15=[[Soo Wong]]
+|16=[[Michael Prue]]
+|17=[[Shafiq Qaadri]]
+|18=[[Jonah Schein]]
+|19=[[Mario Sergio (politician)|Mario Sergio]]
+|20=[[Peter Tabuns]]
+|21=[[Kathleen Wynne]]
+|22=[[David Zimmer]]
+}}
+|settled_title = Settled
+|settled_date = 1750 (as [[Fort Rouillé]])<ref>{{cite web|url=http://geonames.nrcan.gc.ca/education/toronto_e.php |title=The real story of how Toronto got its name &#124; Earth Sciences |publisher=Geonames.nrcan.gc.ca |date=September 18, 2007 |accessdate=February 10, 2012}}</ref>
+|established_title = Established
+|established_date = August 27, 1793 (as [[York, Upper Canada|York]])
+|established_title1 = [[Municipal corporation|Incorporated]]
+|established_date1 = March 6, 1834 (as Toronto)
+|established_title2 = [[Merger (politics)|Amalgamated]]
+|established_date2 = January 1, 1998 (from [[Metropolitan Toronto]])
+|area_magnitude =
+|unit_pref = Metric
+|area_magnitude =
+|area_total_km2 = 630
+|area_metro_km2 = 7125
+|area_urban_km2 = 1749
+|elevation_m = 76
+|area_footnotes =<ref name="SC2011cd">{{SCref |unit=cd |3520}}</ref>
+|population_note =
+|population_footnotes =
+|population_as_of = 2011
+|population_total = 2,615,060<!-- Do not change this figure until the 2016 census is released, see talk page --> ([[List of the 100 largest municipalities in Canada by population|1st]])
+|population_density_km2 = 4149
+|population_metro = 5,583,064 ([[List of the 100 largest metropolitan areas in Canada|1st]])<!-- Do not change this figure until the 2016 census is released, see talk page -->
+|population_urban = 5,132,794 ([[List of the 100 largest urban areas in Canada|1st]])<!-- Do not change this figure until the 2016 census is released, see talk page -->
+|population_demonym = Torontonian
+|population_footnotes =<ref name="SC2011cd" />
+|timezone = [[Eastern Time Zone|EST]]
+|utc_offset = -5
+|timezone_DST = [[Eastern Daylight Time|EDT]]
+|utc_offset_DST = -4
+|postal_code_type = Postal code span
+|postal_code = [[List of M postal codes of Canada|M]]
+|area_code = [[Area codes 416, 647 and 437|416, 437, 647]]
+|website = {{URL|http://www.toronto.ca/}}
+|latd=43 |latm=42 |lats= |latNS=N
+|longd=79 |longm=24 |longs= |longEW=W|coordinates_display=1
+|blank_name = [[National Topographic System|NTS]] Map
+|blank_info = 030M11
+|blank1_name = [[Geographical Names Board of Canada|GNBC]] Code
+|blank1_info = FEUZB
+}}
+'''Toronto''' ({{IPAc-en|t|ɵ|ˈ|r|ɒ|n|t|oʊ}}, {{IPAc-en|local|ˈ|t|r|ɒ|n|oʊ}}) is the [[List of the 100 largest municipalities in Canada by population|most populous city]] in [[Canada]] and the [[Provinces and territories of Canada|provincial]] [[capital city|capital]] of [[Ontario]]. It is located in [[Southern Ontario]] on the northwestern shore of [[Lake Ontario]]. The [[history of Toronto]] began in the late 18th century when the [[The Crown|British Crown]] [[Toronto Purchase|purchased]] its land from the [[Mississaugas of the New Credit First Nation|Mississaugas of the New Credit]]. The settlement established there became [[York, Upper Canada|York]], which [[Lieutenant Governor of Upper Canada|lieutenant governor]] [[John Graves Simcoe]] designated as the capital of [[Upper Canada]]. The city was ransacked in the [[Battle of York]] during the [[War of 1812]]. In 1834, York became a city and [[Name of Toronto|renamed]] to Toronto. It was damaged in two huge fires in [[Great Fire of Toronto (1849)|1849]] and [[Great Fire of Toronto (1904)|1904]]. Since 1954, the city occasionally expanded its borders through [[Amalgamation of Toronto|amalgamation]] with surrounding municipalities, most recently occurring in 1998.
+
+According to the [[Canada 2011 Census|2011 Census]], the city has 2.6&nbsp;million residents, making it the [[List of North American cities by population|fifth-most populous city in North America]]. However, in 2012, the [[Municipal government of Toronto|municipal government]] published a population estimate of 2,791,140, which led to media reports claiming Toronto as the fourth most populous city in North America and the most populous [[Great Lakes Megalopolis|Great Lakes city]], surpassing [[Chicago]].<ref>{{cite web|author=Friday, April 18, 2014 7:40 PM EDT Facebook Twitter RSS |url=http://www.thestar.com/news/city_hall/2013/03/05/torontos_population_overtakes_chicago.html |title=Toronto’s population overtakes Chicago &#124; Toronto Star |publisher=Thestar.com |date=March 5, 2013 |accessdate=April 18, 2014}}</ref><ref>{{cite web|last=Peat |first=Don |url=http://www.torontosun.com/2013/03/05/toronto-now-fourth-largest-city-in-north-america |title=Toronto now fourth largest city in North America &#124; Toronto & GTA &#124; News |publisher=Toronto Sun |accessdate=April 18, 2014}}</ref> The [[census metropolitan area]] (CMA) had a population of 5,583,064,<!-- Do not change this figure until the 2016 census is released --><ref name="SC2011cma">{{SCref |unit=cma |535}}</ref> and the [[Greater Toronto Area]] (GTA) had a population of 6,054,191 in the 2011 Census.<ref name=2011censusdiv>{{cite web | url = http://www12.statcan.gc.ca/census-recensement/2011/dp-pd/hlt-fst/pd-pl/Table-Tableau.cfm?LANG=Eng&T=702&PR=35&S=51&O=A&RPP=25| title = Population and dwelling counts, for population centres, 2011 and 2006 censuses|work=[[Statistics Canada]], 2011 Census of Population|date = February 8, 2011|accessdate =February 8, 2007}}</ref> Toronto is at the heart of the Greater Toronto Area, and of the densely populated region in [[Southern Ontario]] known as the [[Golden Horseshoe]]. Its [[cosmopolitanism|cosmopolitan]] and international population<ref name=diverse_city>{{cite book|last = Flew|first = Janine|coauthors = Humphries, Lynn; Press, Limelight; McPhee, Margaret|title = The Children's Visual World Atlas|publisher=Fog City Press|year = 2004|location = Sydney, Australia|page = 76|url =|id =|isbn = 1-74089-317-4 }}</ref> reflects its role as an important destination for [[Immigration to Canada|immigrants to Canada]].<ref name="toronto_diversity" /> Toronto is one of the world's most diverse cities<!--but not necessarily the most diverse city--> by percentage of non-native-born residents, with about 49% of the population born outside Canada.<ref name=diverse_city/><ref name="toronto_diversity">{{cite web|url=http://www.cic.gc.ca/english/policy/fed-prov/can-ont-toronto-mou.html|title=Canada-Ontario-Toronto Memorandum of Understanding on Immigration and Settlement (electronic version)|author=Citizenship and Immigration Canada|date=September 2006|accessdate=March 1, 2007|archiveurl=http://web.archive.org/web/20070311043934/http://www.cic.gc.ca/english/policy/fed-prov/can-ont-toronto-mou.html|archivedate=August 25, 2008}}</ref><ref name=facts_of_Toronto>{{cite web|url = http://classic-web.archive.org/web/20070929162756/http://allabout-toronto.com/|title = City of Toronto, Ontario|accessdate =July 6, 2007}}</ref>
+
+As Canada's commercial capital, it is home to the [[Toronto Stock Exchange]] and the headquarters of Canada's [[Big Five (banks)|five largest banks]].<ref>http://www.fraserinstitute.org/WorkArea/DownloadAsset.aspx?id=2520</ref> Leading economic sectors in the city include finance, business services, telecommunications, aerospace, transportation, media, arts, publishing, software production, medical research, education, tourism, and engineering.<ref name=TorontoEconomy>[http://www.toronto.ca/ City of Toronto] (2007) – [http://www.toronto.ca/invest-in-toronto/tor_overview.htm Toronto economic overview], [http://www.toronto.ca/invest-in-toronto/clusteroverview.htm Key industry clusters] and [http://www.toronto.ca/invest-in-toronto/pdf/economy.pdf A Diversified Economy]{{dead link|date=February 2012}}. Retrieved 2007-03-01.</ref><ref>{{cite web|url=http://www.toronto.ca/business_publications/tocompetes.htm|title=Toronto Competes|author=ICF Consulting|date=February 2000|accessdate=March 1, 2007}}{{dead link|date=February 2012}}</ref> Toronto is considered an [[global city|alpha world city]] by the [[Globalization and World Cities Research Network]] and is placed among the Global Leaders in the [[Global Financial Centres Index]].<ref>"[http://mail.architexturez.net/+/In-Enaction/archive/msg00800.shtml What makes a global city?]", (2007)</ref><ref>[http://www.citymayors.com/economics/financial-cities.html Citymayors.com], ''[[Toronto Star]]'' (2004). Retrieved 2007-07-08.</ref> The city is also consistently rated as one of the [[world's most liveable cities]] by the [[Economist Intelligence Unit]] and the [[List of cities by quality of living|Mercer Quality of Living Survey]].<ref name=best>{{cite news|url=http://www.cnn.com/2005/WORLD/europe/10/04/eui.survey/index.html|title=Vancouver is 'best city to live'|publisher=CNN|date=October 5, 2005|accessdate=March 5, 2007}}</ref><ref name=quality>{{cite web|url=http://www.mercerhr.com/attachment.dyn?idContent=1216315&filePath=/attachments/English/QOL_Survey2006_table.pdf|format=PDF|title=Mercer 2006 Quality of Living Survey|author=Mercer Human Resource Consulting|year=2006|accessdate=March 5, 2007}}</ref>
+
+==History==
+{{Main|History of Toronto|Name of Toronto|Amalgamation of Toronto}}
+
+===Before 1800===
+When Europeans first arrived at the site of present-day Toronto, the vicinity was inhabited by the [[Iroquois people]],<ref>{{cite book|last=Myrvold|first=Myrvold|title=The people of Scarborough : a history|year=1997|publisher=City of Scarborough Public Library Board|location=Toronto|isbn=0968308600|pages=12–18}}</ref> who by then had displaced the [[Wyandot people]] people that had occupied the region for centuries before c. 1500.<ref>See R. F. Williamson, ed., ''Toronto: An Illustrated History of its First 12,000 Years'' (Toronto: James Lorimer, 2008), ch. 2, with reference to the [[Mantle Site, Wendat (Huron) Ancestral Village|Mantle Site]].</ref> The name ''Toronto'' is likely derived from the Iroquois word ''tkaronto'', meaning "place where trees stand in the water".<ref name=etymology>{{cite web|url=http://geonames.nrcan.gc.ca/education/toronto_e.php|title=The real story of how Toronto got its name|publisher=[[Natural Resources Canada]] (2005)|accessdate=December 8, 2006}}</ref> This refers to the northern end of what is now [[Lake Simcoe]], where the Huron had planted tree saplings to corral fish. A [[portage]] route from Lake Ontario to [[Lake Huron]] running through this point, the [[Toronto Carrying-Place Trail]], led to widespread use of the name. In the 1660s the [[Iroquois settlement of the northern shores of Lake Ontario|Iroquois established two villages]] within what is today Toronto, [[Ganatsekwyagon]] on the banks of the [[Rouge River (Ontario)|Rouge River]] and [[Teiaiagon]]on the banks of the [[Humber River (Ontario)|Humber River]]. By 1701, the [[Mississaugas|Mississauga]] had displaced the Iroquois, who abandoned the Toronto area at the end of the [[Beaver Wars]].<ref>{{cite book|last=Schmalz|first=Peter S.|title=The Ojibwa of Southern Ontario|year=1991|publisher=University of Toronto Press{{!}}|location=Toronto|isbn=978-0802067784}}</ref>
+
+French traders founded [[Fort Rouillé]] on the current [[Exhibition Place|Exhibition grounds]] in 1750, but abandoned it in 1759.<ref name=rouille>[http://schools.tdsb.on.ca/jarvisci/toronto/rouille.htm Fort Rouillé], Jarvis Collegiate Institute (2006). Retrieved 2006-12-08.</ref> During the [[American Revolutionary War]], the region saw an influx of [[British Empire|British]] settlers as [[United Empire Loyalist]]s fled for the unsettled lands north of Lake Ontario. In 1787, the British negotiated the [[Toronto Purchase]] with the [[Mississaugas]] of [[Mississaugas of the New Credit First Nation|New Credit]], thereby securing more than a quarter million acres (1000&nbsp;km<sup>2</sup>) of land in the Toronto area.<ref name=British>[http://www.toronto.ca/culture/history/history-natives-newcomers.htm Natives and newcomers, 1600–1793], City of Toronto (2006). Retrieved 2006-12-08.</ref>
+
+In 1793, Governor [[John Graves Simcoe]] established the town of [[York, Upper Canada|York]] on the existing settlement, naming it after [[Prince Frederick, Duke of York and Albany]]. Simcoe chose the town to replace [[Niagara-on-the-Lake|Newark]] as the capital of [[Upper Canada]],<ref>{{cite web
+|url=http://www.ontario.ca/en/your_government/004690
+|title=History of Ontario's Legislative Buildings|publisher=Government of Ontario
+|accessdate=July 13, 2007}}{{dead link|date=May 2011}}</ref> believing that the new site would be less vulnerable to attack by the US.<ref name="[[Fort York]]">{{cite web|url=http://www.fortyork.ca|title=Welcome to the birthplace of Toronto|publisher=Friends of Fort York (2006)|accessdate=December 8, 2006}}</ref> [[Fort York]] was constructed at the entrance of the town's natural harbour, sheltered by a long sandbar peninsula. The town's settlement formed at the eastern end of the harbour behind the peninsula, near the present-day intersection of [[Parliament Street (Toronto)|Parliament Street]] and [[Front Street (Toronto)|Front Street]] (in the [[Corktown, Toronto|Corktown]]–[[St. Lawrence, Toronto|St. Lawrence]] area).
+
+===1800–1945===
+[[File:Toronto 1894large.jpg|left|thumb|Map of Toronto, 1894]]
+In 1813, as part of the [[War of 1812]], the [[Battle of York]] ended in the town's capture and plunder by US forces.<ref>{{cite web|url=http://www.udata.com/users/hsbaker/york.htm|archiveurl=http://web.archive.org/web/20070820093114/http://www.udata.com/users/hsbaker/york.htm|archivedate=August 20, 2007|title=Battle of York|accessdate=July 10, 2007}}</ref> The surrender of the town was negotiated by [[John Strachan]]. US soldiers destroyed much of Fort York and set fire to the parliament buildings during their five-day occupation. The sacking of York was a primary motivation for the [[Burning of Washington]] by British troops later in the war.
+York was incorporated as the City of Toronto on March 6, 1834, reverting to its original native name.
+
+The population of only 9,000 included escaped [[African American]] slaves, some of whom were brought by the Loyalists, including [[Mohawk people|Mohawk]] leader [[Joseph Brant]].<ref name=black>[http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=53c9757ae6b31410VgnVCM10000071d60f89RCRD&vgnextchannel=6c21226b48c21410VgnVCM10000071d60f89RCRD Black history at the City of Toronto Archives], City of Toronto (2009). Retrieved 2009-03-13.</ref> [[Slavery in Canada|Slavery]] was banned outright in Upper Canada in 1834. Reformist politician [[William Lyon Mackenzie]] became the first Mayor of Toronto and led the unsuccessful [[Upper Canada Rebellion]] of 1837 against the British colonial government. The city grew rapidly through the remainder of the 19th century, as a major destination for immigrants to Canada. The first significant population influx occurred when the [[Great Famine (Ireland)|Great Irish Famine]] brought a large number of Irish to the city, some of them transient and most of them Catholic. By 1851, the Irish-born population had become the largest single ethnic group in the city. Smaller numbers of [[Protestantism|Protestant]] Irish immigrants were welcomed by the existing Scottish and English population, giving the [[Orange Order]] significant and long-lasting influence over Toronto society.
+
+Toronto was twice for brief periods the capital of the united [[Province of Canada]]: first from 1849 to 1852, following unrest in Montreal, and later 1856–1858 after which Quebec became the capital until 1866 (one year before [[Canadian Confederation|Confederation]]); since then, the capital of Canada has remained [[Ottawa]].<ref>{{cite web|url=http://www.statoids.com/uca.html |title=Canada Provinces |publisher=Statoids.com |accessdate=April 17, 2010}}</ref> As it had been for Upper Canada from 1793, Toronto became the capital of the province of Ontario after its official creation in 1867, the seat of government located at the Ontario Legislature located at [[Queen's Park (Toronto)|Queen's Park]]. Because of its provincial capital status, the city was also the location of [[Government House (Ontario)|Government House]], the residence of the [[viceroy|vice-regal]] representative of [[Monarchy of Canada|the Crown]] [[Monarchy in Ontario|in right of Ontario]].
+[[File:Old Union Station Toronto.jpg|thumb|[[Old Union Station (Toronto)|Old Union Station]] Toronto, 1907]]
+[[File:Yonge Street crowd celebrating the end of the Boer War.jpg|thumb|left|[[Yonge Street]] in 1900]]
+In the 19th century, an extensive sewage system was built, and streets became illuminated with [[gas lighting]] as a regular service. Long-distance railway lines were constructed, including a route completed in 1854 linking Toronto with the Upper Great Lakes. The [[Grand Trunk Railway]] and the [[Northern Railway of Canada]] joined in the building of the first [[Original Union Station (Toronto)|Union Station]] in downtown. The advent of the railway dramatically increased the numbers of immigrants arriving, commerce and industry, as had the Lake Ontario steamers and schooners entering port before which enabled Toronto to become a major gateway linking the world to the interior of the North American continent.
+
+[[File:1TorontoFire1904.jpg|thumb|left|The [[Great Fire of Toronto (1904)|Great Toronto Fire of 1904]]]]
+Toronto became the largest alcohol distillation (in particular, spirits) centre in North America; the [[Gooderham and Worts]] Distillery operations became the world's largest whiskey factory by the 1860s. A preserved section of this once dominant local industry remains in the [[Distillery District]], the harbour allowed for sure access to grain and sugar imports used in processing. Expanding port and rail facilities brought in Northern Timber for export and imported Pennsylvania coal, industry dominated the waterfront for the next 100 years.
+
+Horse-drawn [[streetcars]] gave way to electric streetcars in 1891, when the city granted the operation of the transit franchise to the [[Toronto Railway|Toronto Railway Company]]. The public transit system passed into public ownership in 1921 as the [[Toronto Transportation Commission]], later renamed the [[Toronto Transit Commission]]. The system now has the third-highest ridership of any city public transportation system in North America.<ref name="autogenerated1">[http://www.ctv.ca/servlet/ArticleNews/story/CTVNews/1122072619227_40/?hub=CTVNewsAt11 Toronto transit chief says searches unlikely] (2005). Retrieved 2007-02-03.</ref>
+
+The [[Great Fire of Toronto (1904)|Great Toronto Fire of 1904]] destroyed a large section of downtown Toronto, but the city was quickly rebuilt. The fire caused more than $10&nbsp;million in damage, and resulted in more stringent fire safety laws and expansion of the city's fire department.
+
+[[File:Toronto Harbour, 1919.jpg|thumb|right|[[Toronto Harbour]], 1919; [[Union Station (Toronto)|Union Station]] can be seen under construction]]
+The city received new immigrant groups beginning in the late 19th century into early 20th century, particularly Germans, French, Italians, and Jews from various parts of Eastern Europe. They were soon followed by Chinese, Russians, Poles, and immigrants from other Eastern European nations. As the Irish before them, many of these new migrants lived in overcrowded shanty type slums, such as "[[The Ward, Toronto|the Ward]]" which was centred on [[Bay Street]], now the heart of the country's finances. Despite its fast paced growth, by the 1920s, Toronto's population and economic importance in Canada remained second to the much longer established [[Montreal]]. However, by 1934, the [[Toronto Stock Exchange]] had become the largest in the country.
+
+===Since 1945===
+[[File:VE Day celebrations on Bay Street 1945.jpg|thumb|left|V-E Day celebrations on Bay Street, May 1945]]
+Following the Second World War, refugees from war-torn Europe and Chinese job-seekers arrived, as well as construction labourers, particularly from Italy and Portugal. Following the elimination of racially based immigration policies by the late 1960s, immigration began from all parts of the world. Toronto's population grew to more than one million in 1951 when large-scale suburbanization began, and doubled to two million by 1971. By the 1980s, Toronto had surpassed Montreal as Canada's most populous city and the chief economic hub. During this time, in part owing to the political uncertainty raised by the resurgence of the [[Quebec sovereignty movement]], many national and multinational corporations moved their head offices from Montreal to Toronto and [[Western Canada|Western Canadian]] cities.<ref>[http://www.findarticles.com/p/articles/mi_qa3683/is_200201/ai_n9069631/pg_1 Westward ho? The shifting geography of corporate power in Canada]{{dead link|date=February 2012}}, Journal of Canadian Studies (2002). Retrieved 2007-01-14.</ref>
+
+In 1954, the City of Toronto and 12 surrounding municipalities were federated into a [[regional municipality|regional government]] known as [[Metropolitan Toronto]].<ref>[http://www.e-laws.gov.on.ca/html/repealedstatutes/english/elaws_rep_statutes_90m62_e.htm Municipality of Metropolitan Toronto Act], [[Government of Ontario]] (2000). Retrieved 2006-12-29.</ref> The postwar boom had resulted in rapid suburban development, and it was believed that a coordinated land use strategy and shared services would provide greater efficiency for the region. The metropolitan government began to manage services that crossed municipal boundaries, including highways, police services, water and [[Public transport|public transit]]. In that year, a half-century after the Great Fire of 1904, disaster struck the city again when [[Hurricane Hazel]] brought intense winds and flash flooding. In the Toronto area, 81 people were killed, nearly 1,900 families were left homeless, and the hurricane caused more than $25&nbsp;million in damage.<ref name=hurricane>[http://www.collectionscanada.gc.ca/sos/002028-3200-e.html SOS! Canadian Disasters] Library and Archives Canada (2006). Retrieved 2008-12-19.</ref>
+
+In 1967, the seven smallest municipalities of Metropolitan Toronto were merged into their larger neighbours, resulting in a six-municipality configuration that included the [[Old Toronto|old City of Toronto]] and the surrounding municipalities of [[East York]], [[Etobicoke]], [[North York]], [[Scarborough, Ontario|Scarborough]], and [[York, Ontario|York]]. In 1998, the provincial government of Conservative Mike Harris dissolved the metropolitan government despite vigorous opposition from the component municipalities and overwhelming rejection in a municipal plebiscite. All six municipalities were [[Merger (politics)|amalgamated]] into a single municipality, creating the current City of Toronto, with [[Mel Lastman]] as its first mayor (after being mayor of North York). [[David Miller (Canadian politician)|David Miller]] was the second mayor, and [[Rob Ford]] is the third, and [[John Tory]] is the current mayor.
+
+On March 6, 2009, the city celebrated its 175th anniversary of its inception as the City of Toronto in 1834. Toronto hosted the [[2010 G-20 Toronto summit|4th G-20 summit]] during June 26–27, 2010, for which the largest security operation in Canadian history and the biggest mass arrest (more than a thousand people) took place amidst large-scale [[2010 G-20 Toronto summit protests|protests]].
+
+On July 8, 2013, severe flash flooding hit Toronto after an afternoon of slow moving, intense thunderstorms. Toronto Hydro estimated that 450,000 people were without power after the storm and Toronto Pearson International Airport reported that {{convert|126|mm|0|abbr=on}} of rain had fallen over 5 hours, more than during Hurricane Hazel.<ref name=Thunderstorm_2013>{{cite news|title=Environment Canada answers the question: Where was Toronto’s severe thunderstorm warning?|url=http://globalnews.ca/news/704499/environment-canada-answers-the-question-where-was-torontos-severe-thunderstorm-warning/|accessdate=18 July 2013|newspaper=Global Toronto|date=9 July 2013}}</ref> Within six months, December 20, 2013, Toronto was brought to a halt by the worst [[December 2013 North American ice storm|ice storm]] in the city's history rivalling the severity caused by the [[North American Ice Storm of 1998|1998 Ice Storm]].  Toronto went on to host [[WorldPride]] in June 2014 and will host the [[Pan American Games]] in [[2015 Pan American Games|2015]].
+
+==Geography==
+{{Main|Geography of Toronto}}
+[[File:Toronto Landsat.jpg|thumb|A simulated-colour image of Toronto taken by the NASA [[Landsat 7]] satellite in 2004.]]
+Toronto covers an area of {{convert|630|km2|sqmi|0}},<ref name=population>[http://www12.statcan.ca/english/census01/products/standard/popdwell/Table-CSD-P.cfm?PR=35&T=2&SR=1&S=3&O=D Population statistics and land area], Statistics Canada (2001). Retrieved 2006-12-05.</ref> with a maximum north-south distance of {{convert|21|km|mi}} and a maximum east-west distance of {{convert|43|km|mi|0|abbr=on}}. It has a {{convert|46|km|mi|0|adj=on}} long [[Toronto waterfront|waterfront]] shoreline, on the northwestern shore of Lake Ontario. The [[Toronto Islands]] and [[Port Lands]] extend out into the lake, allowing for a somewhat sheltered [[Toronto Harbour]] south of the downtown core.<ref name="northwest">{{cite web
+|url=http://www.toronto.ca/attractions/getting_here.htm
+|title=Getting Here
+|work=Visiting Toronto
+|publisher=City of Toronto
+|accessdate=February 14, 2008}}</ref> The city's borders are formed by [[Lake Ontario]] to the south, [[Etobicoke Creek]] and [[Ontario Highway 427|Highway 427]] to the west, [[Steeles Avenue]] to the north and the [[Rouge River (Ontario)|Rouge River]] and the Scarborough-Pickering Townline to the east.
+
+===Topography===
+The city is intersected by three rivers and numerous tributaries: the [[Humber River (Ontario)|Humber River]] in the west end and the [[Don River (Ontario)|Don River]] east of downtown at opposite ends of the [[Toronto Harbour]], and the Rouge River at the city's eastern limits. The harbour was naturally created by sediment buildup from lake currents that created the [[Toronto Islands]]. The many creeks and rivers cutting from north toward the lake created large tracts of densely forested [[Toronto ravine system|ravines]], and provide ideal sites for parks and recreational trails. However, the ravines also interfere with the city's [[grid plan]], and this results in major thoroughfares such as [[Finch Avenue]], [[Leslie Street]], [[Lawrence Avenue]], and [[St. Clair Avenue]] terminating on one side of ravines and continuing on the other side. Other thoroughfares such as the [[Prince Edward Viaduct]] are required to span above the ravines. These deep ravines prove useful for draining the city's storm sewer system during heavy rains, but some sections, particularly near the Don River are prone to sudden, heavy floods.
+
+During the [[last glacial period|last ice age]], the lower part of Toronto was beneath [[Glacial Lake Iroquois]]. Today, a series of [[escarpment]]s mark the lake's former boundary, known as the ''Iroquois Shoreline''. The escarpments are most prominent from [[Victoria Park Avenue]] to the mouth of [[Highland Creek (Toronto)|Highland Creek]], where they form the [[Scarborough Bluffs]]. Other observable sections include the area near St. Clair Avenue West between [[Bathurst Street (Toronto)|Bathurst Street]] and the Don River, and north of [[Davenport Road]] from Caledonia to [[Spadina Avenue|Spadina Road]]; the [[Casa Loma]] grounds sit above this escarpment. Despite its deep ravines, Toronto is not remarkably hilly, but does increase in elevation steadily away from the lake. Elevation differences range from {{convert|75|m|ft|0}} [[Above mean sea level|above sea level]] at the Lake Ontario shore to {{convert|209|m|ft|0|abbr=on}} ASL near the [[York University]] grounds in the city's north end at the intersection of [[Keele Street]] and [[Steeles Avenue]].<ref>{{cite web
+|url=http://www.toronto.ca/toronto_facts/geography.htm
+|title=City of Toronto: Toronto Facts, Toronto's geography
+|publisher=Toronto.ca
+|date=October 23, 2000
+|accessdate=December 6, 2009}}</ref> There are occasional hilly areas; in particular, [[Midtown, Toronto|midtown Toronto]] has a number of rolling hills. Lake Ontario remains occasionally visible from the peaks of these ridges as far north as [[Eglinton Avenue]], {{convert|7|to|8|km|mi}} inland.
+
+Much of the current lakeshore land area fronting the Toronto Harbour is artificial landfill filled during the late 19th century. Until then, the lakefront docks (then known as wharves) were set back farther inland than today. Much of the adjacent [[Port Lands]] are also fill. The Toronto Islands were a natural landspit until a storm in 1858 severed their connection to the mainland, creating a channel later used by shipping interests to access the docks.
+
+===Climate===
+Toronto has a [[humid continental climate]] ([[Köppen climate classification|Köppen]]: Dfa/Dfb), with warm, humid summers and cold winters. The city experiences four distinct seasons, with considerable variance in day to day temperature, particularly during the colder weather season. Owing to urbanization and its proximity to water, Toronto has a fairly low diurnal temperature range (day-night temperature difference). The denser urban scape makes for warmer nights year around and is not as cold throughout the winter as surrounding areas (particularly north of the city); however, it can be noticeably cooler on many spring and early summer afternoons under the influence of a lake breeze. Other low-scale maritime effects on the climate include [[lake-effect snow]], fog and delaying of spring- and fall-like conditions, known as [[seasonal lag]].
+
+Toronto winters sometimes feature cold snaps where maximum temperatures remain below {{convert|-10|C|F|0|abbr=on}}, often made to feel colder by [[wind chill]]. Snowstorms, sometimes mixed with ice and rain, can disrupt work and travel schedules, accumulating snow can fall any time from November until mid-April. However, mild stretches also occur in most winters melting accumulated snow. The summer months are characterized by long stretches of humid weather. Usually in the range from {{convert|23|to|31|C|F|0|abbr=on}}, daytime temperatures occasionally surpass {{convert|35|C|F|0|abbr=on}} accompanied by high humidity making it feel oppressive during these brief periods of hot weather. Spring and autumn are transitional seasons with generally mild or cool temperatures with alternating dry and wet periods.
+
+Precipitation is fairly evenly distributed throughout the year, but summer is usually the wettest season, the bulk falling during thunderstorms. There can be periods of dry weather, but drought-like conditions are rare. The average yearly precipitation is about {{convert|831|mm|in|1|abbr=on}}, with an average annual snowfall of about {{convert|122|cm|in|0|abbr=on}}. Toronto experiences an average of 2,066 sunshine hours, or 45% of daylight hours, varying between a low of 28% in December to 60% in July.{{citation needed|date=November 2014}}
+{{Toronto weatherbox}}
+
+==Cityscape==
+{{wide image|Toronto panorama.jpg|1800px|360-degree panorama of Toronto as seen from the [[CN Tower]]. The [[Toronto Islands]] and the [[Billy Bishop Toronto City Airport]] on [[Lake Ontario]] are visible on the left side of the image while buildings of [[Downtown Toronto]] are visible on the right.}}
+
+===Architecture===
+{{Main|Architecture of Toronto}}
+{{See also|List of tallest buildings in Toronto|Doors Open Toronto|List of oldest buildings and structures in Toronto}}
+[[File:Brookfield Place (Toronto. Canadà).JPG|thumb|upright|Allen Lambert Galleria in [[Brookfield Place (Toronto)|Brookfield Place]]]]
+Lawrence Richards, a member of the faculty of architecture at the [[University of Toronto]], has said "Toronto is a new, brash, rag-tag place—a big mix of periods and styles."<ref>{{cite web|url=http://www.where.ca/Toronto/article_feature~listing_id~95.htm|title=Toronto Architecture}}{{dead link|date=February 2012}}</ref> Toronto buildings vary in design and age with many structures dating back to the mid-19th century, while other prominent buildings were just newly built in the first decade of the 21st century. [[Bay-and-gable]] houses, mainly found in Old Toronto, are a distinct architectural feature of the city. Defining the Toronto skyline is the [[CN Tower]], a telecommunications and tourism hub. Completed in 1976 at a height of {{convert|553.33|m|ftin}}, it was the world's tallest<ref>[http://www.ctv.ca/servlet/ArticleNews/story/CTVNews/20070913/cn_tower_070913/20070913?hub=SciTech Dubai building surpasses CN Tower in height], [[CTV Television Network]] (2007); retrieved September 13, 2007.</ref> freestanding structure until 2007 when it was surpassed by [[Burj Khalifa]]. {{citation needed|date=February 2014}}
+
+Toronto is a city of high-rises, having 1,800 buildings over {{convert|30|m|ft}}.<ref>{{cite web|url=http://skyscraperpage.com/diagrams|title=skyscraperpage.com/diagrams Most of these buildings are residential, whereas the central business district contains commercial office towers. There has been recent attention given for the need to retrofit many of these buildings, which were constructed beginning in the 1950s as residential apartment blocks to accommodate a quickly growing population. As of November 2011, the city had 132 high-rise buildings under construction.|url=http://www.thestar.com/news/article/1064773-highrises-we-re-tops-on-the-continent|publisher=Skyscraperpage.com |accessdate=April 18, 2014}}</ref>
+
+Through the 1960s/70s, significant pieces of Toronto's architectural heritage were demolished to make way for redevelopment or, simply, parking. In contrast, since the 2000s, Toronto has experienced a period of architectural revival, with several buildings by world-renowned architects having opened during the late 2000s. Daniel Libeskind's [[Royal Ontario Museum]] addition, Frank Gehry's remake of the [[Art Gallery of Ontario]], and Will Alsop's distinctive [[OCAD University|Ontario College of Art & Design]] expansion are among the city's new showpieces.<ref>[https://web.archive.org/web/20071111050849/http://www.livewithculture.ca/livewithculture_ca/about/cultural_renaissance_projects/toronto_s_cultural_renaissance "Toronto's Cultural Renaissance"], City of Toronto website (2005); retrieved November 9, 2007.</ref> The historic [[Distillery District]], located on the eastern edge of downtown has been redeveloped into a pedestrian-oriented arts, culture and entertainment neighbourhood. {{citation needed|date=February 2014}}
+
+===Neighbourhoods===
+{{See also|List of neighbourhoods in Toronto|History of neighbourhoods in Toronto}}
+[[File:Annex houses.JPG|thumb|A group of "[[The Annex]]" style houses, a style of house that was popular in Toronto in the late nineteenth century.]]
+The many residential communities of Toronto express a character distinct from that of the skyscrapers in the commercial core. [[Victorian era|Victorian]] and [[Edwardian era|Edwardian-era]] residential buildings can be found in enclaves such as [[Rosedale, Toronto|Rosedale]], [[Cabbagetown, Toronto|Cabbagetown]], [[The Annex]], and [[Yorkville, Toronto|Yorkville]]. [[Wychwood Park]] is historically significant for the architecture of its homes, and for being one of Toronto's earliest planned communities. The Wychwood Park neighbourhood was designated as an Ontario Heritage Conservation district in 1985. The [[Casa Loma (neighbourhood)|Casa Loma]] neighbourhood is named after [[Casa Loma]], a storybook castle built in 1911 complete with gardens, turrets, stables, an elevator, secret passages, and a bowling alley. [[Spadina House]] is a 19th-century [[manor house|manor]] that is now a museum.
+
+The City of Toronto encompasses a geographical area formerly administered by six separate municipalities. These municipalities have each developed a distinct history and identity over the years, and their names remain in common use among Torontonians. Throughout the city there exist hundreds of small neighbourhoods and some larger neighbourhoods covering a few square kilometres. Former municipalities include [[East York]], [[Etobicoke]], [[North York]], [[Old Toronto]], [[Scarborough, Ontario|Scarborough]], and [[York, Ontario|York]].
+
+====Old Toronto====
+[[File:Toronto map.png|thumb|300px|Left|Map of Toronto with major traffic routes. Also shown are the boundaries of [[Metropolitan Toronto|six former municipalities]], which form the current City of Toronto.]]
+The [[Old Toronto|Old City of Toronto]] covers the area generally known as [[Downtown Toronto|downtown]], but also older neighbourhoods to the east, west, and north of downtown. It includes the historic core of Toronto and remains the most densely populated part of the city. The [[Financial District, Toronto|Financial District]] contains the [[First Canadian Place]], [[Toronto-Dominion Centre]], [[Scotia Plaza]], [[Royal Bank Plaza]], [[Commerce Court]] and [[Brookfield Place (Toronto)|Brookfield Place]]. This area includes, among others, the neighbourhoods of [[St. James Town]], [[Garden District, Toronto|Garden District]], [[St. Lawrence, Toronto|St. Lawrence]], [[Corktown, Toronto|Corktown]], and [[Church and Wellesley]]. From that point, the Toronto skyline extends northward along Yonge Street.
+
+Old Toronto is also home to many historically wealthy residential enclaves, such as [[Yorkville, Toronto|Yorkville]], [[Rosedale, Toronto|Rosedale]], [[The Annex]], [[Forest Hill, Toronto|Forest Hill]], [[Lawrence Park, Toronto|Lawrence Park]], [[Lytton Park]], [[Deer Park, Toronto|Deer Park]], [[Moore Park, Toronto|Moore Park]], and [[Casa Loma (neighbourhood)|Casa Loma]], most stretching away from downtown to the north. East and west of Downtown, neighbourhoods such as [[Kensington Market]], [[Chinatown, Toronto|Chinatown]], [[Leslieville]], [[Cabbagetown, Toronto|Cabbagetown]] and [[Riverdale, Toronto|Riverdale]] are home to bustling commercial and cultural areas as well as communities of artists with studio lofts, with many middle and upper class professionals. Other neighbourhoods in the central city retain an ethnic identity, including two smaller Chinatowns, the [[Greektown, Toronto|Greektown]] area, [[Little Italy, Toronto|Little Italy]], [[Trinity–Bellwoods|Portugal Village]], and [[Gerrard Street (Toronto)|Little India]], along with others.
+
+====Suburbs====
+The inner suburbs are contained within the former municipalities of [[York, Ontario|York]] and [[East York]]. These are mature and traditionally working class areas, primarily consisting of post–World War I small, single-family homes and small apartment blocks. Neighbourhoods such as [[Crescent Town]], [[Thorncliffe Park]], [[Weston, Ontario|Weston]], and [[Oakwood–Vaughan]] mainly consist of high-rise apartments, which are home to many new immigrant families. During the 2000s, many neighbourhoods have become ethnically diverse and have undergone [[gentrification]], as a result of increasing population and a housing boom during the late 1990s and first two decades of the 21st century. The first neighbourhoods affected were [[Leaside]] and [[North Toronto]], gradually progressing into the western neighbourhoods in York. Some of the area's housing is in the process of being replaced or remodelled.
+
+The outer suburbs comprising the former municipalities of [[Etobicoke]] (west), [[Scarborough, Ontario|Scarborough]] (east) and [[North York]] (north) largely retain the [[grid plan]] laid before post-war development. Sections were long established and quickly growing towns before the suburban housing boom began and the emergence of Metro Government, existing towns or villages such as [[Mimico]], [[Islington, Ontario|Islington]] and [[New Toronto]] in Etobicoke; [[Willowdale, Toronto|Willowdale]], [[Newtonbrook]] and [[Downsview]] in North York; [[Agincourt, Toronto|Agincourt]], [[Wexford, Toronto|Wexford]] and [[West Hill, Toronto|West Hill]] in Scarborough where suburban development boomed around or between these and other towns beginning in the late 1940s. Upscale neighbourhoods were built such as the [[Bridle Path, Toronto|Bridle Path]] in North York, the area surrounding the Scarborough Bluffs in [[Guildwood]], and most of central Etobicoke, such as [[Humber Valley Village]], and [[The Kingsway]]. One of largest and earliest "planned communities" was [[Don Mills]], parts of which were first built in the 1950s.<ref>"Plan town of 45,000 on Don Mills farms; Will cost 00,000,000", Paul L. Fox, ''[[Toronto Star]]'', March 12, 1953, p. 3. Retrieved 2007-05-02.</ref> Phased development mixing single-detached housing with higher density apartment blocks became more popular as a suburban model of development. Over the late 20th century and early 21st century, [[North York Centre|North York City Centre]], [[Islington-City Centre West|Etobicoke City Centre]] and [[Scarborough City Centre]] have emerged as secondary business districts outside Downtown Toronto. High-rise development in these areas have given the former municipalities distinguishable skylines of their own with high-density transit corridors serving them.
+
+===Industrial===
+[[File:Distillery District, Toronto, Canada, 2006.jpg|thumb|The [[Distillery District]]]]
+In the earlier industrial era of Toronto, industry became concentrated along the [[Toronto Harbour]] and lower [[Don River (Ontario)|Don River]] mouth.
+
+The [[Distillery District]] contains the largest and best-preserved collection of [[Victorian architecture|Victorian]] industrial architecture in North America. Once an alcohol processing centre, related structures along the Harbour include the Canada Malting Co. grain processing towers and the [[Redpath Sugar Refinery]]. Although production of spirits has declined over the decades, Toronto still has a growing [[microbrewery]] industry. The District is a national heritage site; it was listed by ''[[National Geographic (magazine)|National Geographic]]'' magazine as a "top pick" in Canada for travellers. Similar areas that still retain their post-industrial character, but are now largely residential are the [[Fashion District, Toronto|Fashion District]], [[Corktown, Toronto|Corktown]], and parts of [[Riverdale, Toronto|South Riverdale]] and [[Leslieville]]. Toronto still has some active older industrial areas, such as [[Brockton Village]], [[Mimico]] and [[New Toronto]]. In the west end of Old Toronto and York, the [[Weston, Ontario|Weston]]/[[Mount Dennis]] and [[The Junction]] areas still contain factories, meat packing facilities and railyards close to medium density residential.
+
+Beginning in the late 19th century as Toronto sprawled out, industrial areas were set up on the outskirts. Over time, pockets of industrial land mostly followed rail lines and later highway corridors as the city grew outwards. This trend continues to this day, the largest factories and distribution warehouses have mostly moved to the suburban environs of [[Regional Municipality of Peel|Peel]] and [[Regional Municipality of York|York]] Regions; but also within the current city: Etobicoke (concentrated around [[Toronto Pearson International Airport|Pearson Airport]]), North York, and Scarborough. Many of Toronto's [[Brownfield land|former industrial sites]] close to (or in) Downtown have been redeveloped including parts of the [[Toronto waterfront]] and [[Liberty Village]], large-scale development is underway in the [[West Don Lands]].
+
+The still mostly vacated [[Port Lands]] remain largely undeveloped, apart from a [[Portlands Energy Centre|power plant]], a shipping container facility and out-of-commission industrial facilities. There are future plans for development, including residential areas under the guidance of [[Waterfront Toronto]].
+
+===Public spaces===
+{{See also|List of Toronto parks}}
+[[File:Toronto Yellow Circles 2010.jpg|thumb|right|High Park in Toronto, with [[Menashe Kadishman]]'s ''Yellow Circles'' (1967)]]
+Toronto has a diverse array of public spaces, from city squares to public parks overlooking [[Toronto ravine system|ravines]]. A group called the [[Toronto Public Space Committee]] was formed to protect the city's public spaces. [[Nathan Phillips Square]] is the city's main square in downtown, and forms the entrance to [[Toronto City Hall|City Hall]]. [[Yonge-Dundas Square]], a newer, privately owned square near to City Hall, has also gained attention in recent years as one of the busiest gathering spots in the city. Other squares include [[Harbourfront Centre|Harbourfront Square]], on the revitalized [[Toronto waterfront]], and the civic squares at the former city halls of the defunct Metropolitan Toronto, most notably [[Mel Lastman Square]] in North York.
+
+There are many large downtown parks, which include [[Grange Park (Toronto)|Grange Park]], [[Moss Park]], [[Allan Gardens]], [[Little Norway Park]], [[Queen's Park (Toronto)|Queen's Park]], [[Riverdale Park (Toronto)|Riverdale Park]], [[Trinity Bellwoods Park]], [[Christie Pits Park|Christie Pits]], and the [[Leslie Street Spit]], which mainly consists of Tommy Thompson Park and opens on weekends. The [[Toronto Islands]] have several acres of park space, accessible from downtown by ferry. Large parks in the outer areas include [[High Park]], [[Humber Bay Park]], [[Centennial Park (Toronto)|Centennial Park]], [[Downsview Park]], [[Guild Inn|Guildwood Park]], and [[Rouge Park]]. An almost hidden park is the compact [[Cloud Gardens]],<ref>{{cite web
+|url = http://www.lostrivers.ca/points/cloudgrdnpk.htm
+|title = Urban Design: Cloud Garden Park
+|work=Lost Streams, Toronto, Web site
+|accessdate =March 27, 2009
+}}</ref> which has both open areas and a glassed-in greenhouse in downtown Toronto.
+
+Nathan Phillips Square, Harbourfront Centre, and Mel Lastman Square feature popular rinks for public ice-skating. Etobicoke's Colonel Sam Smith Trail opened in 2011 and is Toronto's first skating trail. Centennial Park and [[North York Ski Centre|Earl Bales Park]] offer outdoor skiing and snowboarding slopes with a chair lift, rental facilities, and lessons.
+
+[[Nathan Phillips Square]] is undergoing a major redesign by PLANT Architect Inc., [[Shore Tilbe Irwin + Partners]], Peter Lindsay Schaudt Landscape Architecture Inc., and Adrian Blackwell (winners of the international design competition in 2007). West 8, a Dutch architecture firm, won the Central Waterfront Innovative Design Competition in 2006 to redesign the central part of the [[Toronto waterfront]].<ref>{{cite web
+|url = http://www.toronto.ca/waterfront/newsrel060206.htm
+|title = West 8 Wins Waterfront Corp. Design Competition
+|work=City of Toronto: News releases
+|date = June 2, 2006
+|accessdate =March 18, 2007
+}}</ref><ref>{{cite web
+|url = http://www.dtah.com/waterfront/
+|title = The Multiple Waterfront
+|author=du Toit Allsopp Hiller
+|accessdate =March 18, 2007
+}}</ref> In 1999, Downsview Park initiated an international design competition to realize its vision of creating Canada's first national [[urban park]]. In May 2000, the winning park design was announced: "TREE CITY", by the team of Bruce Mau Design, Office for Metropolitan Architecture, Oleson Worland Architect and Inside/Outside.
+
+==Culture==
+{{Main|Culture in Toronto}}
+{{See also|Recreation in Toronto|Annual events in Toronto|List of cinemas in Toronto}}
+[[File:Toronto Pride Parade 2007.jpg|thumb|right|Toronto's [[Pride Week (Toronto)|gay pride]] celebration is one of the world's largest]]
+[[File:Royal Alex Theatre, Toronto.jpg|thumb|left|180px|The [[Royal Alexandra Theatre]]]]
+[[File:Taste of the Danforth.jpg|thumb|right|The [[Taste of the Danforth]] weekend attracts over 1 million visitors]]
+Toronto theatre and [[performing arts]] scene has more than fifty ballet and dance companies, six opera companies, two symphony orchestras and a host of theatres. The city is home to the [[National Ballet of Canada]], the [[Canadian Opera Company]], the [[Toronto Symphony Orchestra]], the [[Canadian Electronic Ensemble]], and the [[Canadian Stage Company]]. Notable performance venues include the [[Four Seasons Centre|Four Seasons Centre for the Performing Arts]], [[Roy Thomson Hall]], the [[Princess of Wales Theatre]], the [[Royal Alexandra Theatre]], [[Massey Hall]], the [[Toronto Centre for the Arts]], the [[Elgin and Winter Garden Theatres]] and the [[Sony Centre for the Performing Arts]] (originally the "O'Keefe Centre" and formerly the "Hummingbird Centre").
+
+[[Ontario Place]] features the world's first permanent [[IMAX]] movie theatre, the [[Cinesphere]],<ref>[http://www.imax.com/corporate/history/ IMAX.com / Corporate History] Retrieved 2012-12-03.</ref> as well as the [[Molson Amphitheatre]], an open-air venue for music concerts. In spring 2012, Ontario Place closed after a decrease in attendance over the years. Although the Molson Amphitheatre and harbour still operate, the park and Cinesphere are no longer in use.
+
+Each summer, the Canadian Stage Company presents an outdoor [[William Shakespeare|Shakespeare]] production in Toronto's [[High Park]] called "Dream in High Park". [[Canada's Walk of Fame]] acknowledges the achievements of successful Canadians, with a series of stars on designated blocks of sidewalks along King Street and Simcoe Street.
+
+The production of domestic and foreign film and television is a major local industry. Toronto as of 2011 ranks as the third largest production centre for film and television after [[Los Angeles]] and [[New York City]],<ref>{{cite web|url=http://www.toronto.ca/legdocs/mmis/2012/ed/bgrd/backgroundfile-45805.pdf|title=Film and Television Industry: 2011 Year in Review|publisher=City of Toronto|date=September 1, 2012}}</ref> sharing the nickname "[[Hollywood North]]" with Vancouver.<ref>'Sarasota Herald-Tribune''.{{cite web |url= http://news.google.com/newspapers?id=DkUfAAAAIBAJ&sjid=mmcEAAAAIBAJ&dq=toronto%20hollywood%20north&pg=4458%2C1049685|title= Toronto Now Called Hollywood of North ''|accessdate=June 10, 2011}}</ref><ref name="Accessing City Hall">{{cite web|url=http://wx.toronto.ca/inter/it/newsrel.nsf/0/a196b48a551afa4285256df600461208?OpenDocument|title=New numbers confirm Toronto's rank as Hollywood North|publisher=City of Toronto|accessdate=January 1, 2007}}</ref><ref>{{cite news|url = http://www.cbc.ca/arts/story/2004/03/09/quickhits090304.html|title=SARS costs for 'Hollywood North' and more|publisher=CBC News |date= March 9, 2004|accessdate=January 1, 2007|deadurl=yes}} {{Dead link|date=May 2011|bot=RjwilmsiBot}}</ref> The [[Toronto International Film Festival]] is an annual event celebrating the international film industry. Another prestigious film festival is the [[Toronto Student Film Festival]], that screens the works of students ages 12–18 from many different countries across the globe.
+
+Toronto's [[Scotiabank Caribbean Carnival Toronto|Scotiabank Caribbean Carnival]] (also known as Caribana) takes place from mid-July to early August of every summer.<ref name=Caribana>[http://www.caribana.com/ Toronto Caribbean Carnival (Caribana) Festival 2006], WORD Magazine (2006). Retrieved 2006-12-11.</ref> Primarily based on the [[Trinidad and Tobago Carnival]], the first Caribana took place in 1967 when the city's Caribbean community celebrated [[Canadian Centennial|Canada's Centennial]]. More than forty years later, it has grown to attract one million people to Toronto's [[Lake Shore Boulevard]] annually. Tourism for the festival is in the hundred thousands, and each year, the event generates over $400&nbsp;million in revenue into Ontario's economy.<ref>{{cite news|url=http://www.thestar.com/opinion/editorials/article/803506|title=The Caribana success story|work=Toronto Star |date=May 3, 2010|accessdate=June 1, 2010}}</ref>
+
+One of the largest events in the city, [[Pride Week (Toronto)|Pride Week]] takes place in late June, and is one of the largest [[LGBT]] festivals in the world.
+
+===Tourism===
+{{Main|Tourism in Toronto|Attractions in Toronto}}
+[[File:Toronto Eaton Centre on Boxing Day.jpg|right|thumb|upright|[[Toronto Eaton Centre]] is the largest and busiest shopping mall in Toronto.]]
+[[File:Crystal.view.from.west.JPG|left|thumb|[[Royal Ontario Museum]] is one of Canada's leading museums<ref>{{cite web|url=http://www.toronto.ca/attractions/attraction_highlights.htm |title=City of Toronto, Attractions |publisher=Toronto.ca |date=October 23, 2000 |accessdate=October 17, 2010}}</ref>]]
+[[File:Toronto - ON - CN Tower bei Nacht2.jpg|right|thumb|upright|The [[CN Tower]] is a major tourist attraction in Toronto.]]
+
+The [[Royal Ontario Museum]] (ROM) is a museum of world culture and [[natural history]]. The [[Toronto Zoo]],<ref name="aboutzoo">{{cite web|url=http://www.torontozoo.com/AboutTheZoo/|title=About the Toronto Zoo|publisher=[[Toronto Zoo]]|accessdate=October 11, 2007}}</ref><ref name="zoo">{{cite news|url=http://www.theglobeandmail.com/servlet/story/LAC.20030507.TRCOVE7/TPStory/Travel|title=Uncaging the zoo|last=Buhasz|first=Laszlo|work=Globe and Mail |location=Canada |date=May 7, 2003|accessdate=October 11, 2007|location=Toronto}}</ref> is home to over 5,000 animals representing over 460 distinct species. The [[Art Gallery of Ontario]] contains a large collection of Canadian, European, African and [[contemporary art]]work, and also plays host to exhibits from museums and galleries all over the world. The [[Gardiner Museum]] of ceramic art is the only museum in Canada entirely devoted to ceramics, and the Museum's collection contains more than 2,900 ceramic works from Asia, the Americas, and Europe. The city also hosts the [[Ontario Science Centre]], the [[Bata Shoe Museum]], and [[Textile Museum of Canada]]. Other prominent art galleries and museums include [[Design Exchange]], [[Museum of Inuit Art]], [[TIFF Bell Lightbox]], [[Museum of Contemporary Canadian Art]], [[Institute for Contemporary Culture]], [[Toronto Sculpture Garden]], [[CBC Museum]], [[Redpath Sugar Museum]], [[University College, Toronto|University of Toronto Art Centre]], [[Hart House (University of Toronto)|Hart House]], TD Gallery of Inuit Art and the future [[Aga Khan Museum]]. The city also runs its own museums, which includes the [[Spadina House]].
+
+The [[Don Valley Brick Works]] is a former industrial site, which opened in 1889, and was partly restored as a park and heritage site in 1996, with further restoration and reuse being completed in stages since then. The [[Canadian National Exhibition]] is held annually at [[Exhibition Place]], and it is the oldest annual fair in the world. The ex has an average attendance of 1.25&nbsp;million.<ref>[http://www.theex.com/about-the-cne/our-past-present/ CNE – About Us], [[Canadian National Exhibition]] (2006). Retrieved 2006-12-29.</ref>
+
+City shopping area's include the [[Yorkville, Toronto|Yorkville]] neighbourhood, [[Queen Street West|Queen West]], [[Harbourfront]], the [[Toronto Entertainment District|Entertainment District]], the [[Financial District, Toronto|Financial District]], and the [[St. Lawrence, Toronto|St. Lawrence]] Market neighbourhood. The [[Toronto Eaton Centre|Eaton Centre]] is Toronto's most popular tourist attraction with over 52&nbsp;million visitors annually.<ref>[http://www.ydsquare.ca/index.php?option=com_content&task=view&id=22&Itemid=27 Who uses the square (Demographics)], City of Toronto (2007). Retrieved 2008-04-12.</ref>
+
+[[Greektown, Toronto|Greektown]] on the Danforth is home to the annual "[[Taste of the Danforth]]" festival which attracts over one million people in 2½ days.<ref>{{cite web|url=http://www.tasteofthedanforth.com/6history.html|archiveurl=http://web.archive.org/web/20070401235730/http://www.tasteofthedanforth.com/6history.html|archivedate=April 1, 2007|title=Welcome to the Taste of the Danforth|accessdate=July 7, 2007}}</ref> Toronto is also home to [[Casa Loma]], the former estate of [[Henry Pellatt|Sir Henry Pellatt]], a prominent Toronto financier, industrialist and military man. Other notable neighbourhoods and attractions include [[The Beaches]], the [[Toronto Islands]], [[Kensington Market]], [[Fort York]], and the [[Hockey Hall of Fame]].
+
+===Sports===
+{{Main|Toronto sports|Amateur sport in Toronto|List of sports teams in Toronto}}
+[[File:Hockey Hall of Fame, Toronto.jpg|thumb|right|The [[Hockey Hall of Fame]], housed in a former bank erected in 1885, is located downtown]]
+[[File:First-goal-at-BMO.jpg|thumb|left|[[BMO Field]] immediately after [[Danny Dichio]] scored the first goal in [[Toronto FC]] history]]
+[[File:Raptors 0607.JPG|thumb|right|The Toronto Raptors play at the [[Air Canada Centre]]]]
+[[File:Tigersbluejaysapril2008.jpg|thumb|left|[[Toronto Blue Jays]] host the [[Detroit Tigers]] at the [[Rogers Centre]]]]
+Toronto is represented in seven [[Major professional sports leagues in the United States and Canada|major league sports]], with teams in the [[National Hockey League]], [[Major League Baseball]], [[National Basketball Association]], [[Canadian Football League]], [[Major League Soccer]], [[Canadian Women's Hockey League]] and [[W-League]]. The [[National Football League]]'s [[Buffalo Bills]] also play select home games in the city. The city's major sports venues include the [[Air Canada Centre]], [[Rogers Centre]] (formerly SkyDome), [[Ricoh Coliseum]], and [[BMO Field]]. In 2011, Toronto was rated the worst sports city in North America by [[ESPN]], due to years of underperformance of the city's professional teams.<ref>Zarum, Dave. (2011-06-21) [http://www.torontolife.com/informer/toronto-sports/2011/06/21/worst-sports-city/ ESPN names Toronto the worst sports city in North America. That’s right—even worse than Cleveland]. torontolife.com. Retrieved on 2013-07-12.</ref><ref>[http://www.thestar.com/sports/2011/06/20/toronto_rated_worst_city_for_pro_sports_in_espn_standings.html Toronto rated worst city for pro sports in ESPN standings | Toronto Star]. Thestar.com (2011-06-20). Retrieved on 2013-07-12.</ref>
+
+Toronto is home to the [[Toronto Maple Leafs]], one of the [[National Hockey League]]'s [[Original Six]] clubs, and has also served as home to the [[Hockey Hall of Fame]] since 1958. The city had a rich history of hockey championships. Along with the Maple Leafs' 13 [[Stanley Cup]] titles, the [[Toronto Marlboros]] and [[St. Michael's College School]]-based [[Ontario Hockey League]] teams, combined, have won a record 12 [[Memorial Cup]] titles. The [[Toronto Marlies]] of the [[American Hockey League]] also play in Toronto at [[Ricoh Coliseum]] and are the farm team for the Maple Leafs.
+
+The [[Toronto Raptors]] entered the [[National Basketball Association]] in 1995, and have since earned six playoff spots in 19 seasons. The Raptors have won two [[Atlantic Division (NBA)|Atlantic Division]] titles ([[2006–07 NBA season|2007]], [[2013–14 NBA season|2014]]). The Raptors are the only NBA team with their own television channel, [[NBA TV Canada]]. They and the Maple Leafs play their home games at the [[Air Canada Centre]].
+
+
+The [[Toronto Rock]] are the city's [[National Lacrosse League]] team. They won five [[Champion's Cup]] titles in seven years in the late 1990s and early first decade of the 21st century, appearing in an NLL record five straight championship games from 1999 to 2003, and are currently first all-time in the number of Champion's Cups won. The Rock share the [[Air Canada Centre]] with the Maple Leafs and the Raptors.
+
+The city is represented in the [[Canadian Football League]] by the [[Toronto Argonauts]], who have won 16 [[Grey Cup]] titles. Toronto played host to the [[95th Grey Cup]] in 2007, the first held in the city since 1992. Later in 2012, while hosting the 100th Grey Cup but also participants, they won the game to the delight of the home fans. In addition, the city has hosted several [[National Football League]] exhibition games; [[Edward Samuel Rogers|Ted Rogers]] leased the [[Buffalo Bills]] from [[Ralph Wilson]] for the purposes of having the Bills play eight home games in the city between 2008 and 2012. The city is also home to [[Major League Baseball]]'s [[Toronto Blue Jays]], who have won two [[World Series]] titles ([[1992 World Series|1992]], [[1993 World Series|1993]]). Both the Argonauts and Blue Jays (as well as the Bills when they are in town) play their home games at the [[Rogers Centre]], in the downtown core.
+
+Toronto was home to the [[International Bowl]], an [[National Collegiate Athletic Association|NCAA]] sanctioned post-season football game that pitted a [[Mid-American Conference]] team against a [[Big East Conference (1979–2013)|Big East Conference]] team. From 2007 to 2010, the game was played at Rogers Centre annually in January.
+
+Toronto, along with [[Montreal]], hosts an annual Tennis Tournament called the [[Rogers Cup (tennis)|Rogers Cup]] between the months of July and August. In odd-numbered years, the men's tournament is held in Montreal, while the women's tournament is held in Toronto, and vice-versa in even-numbered years.
+
+Besides team sports, the city annually hosted [[Champ Car]]'s Molson Indy Toronto at [[Exhibition Place]] from 1986 to 2007. The race was revived in 2009 as the [[Honda Indy Toronto]], part of the [[IndyCar Series]] schedule. Both [[thoroughbred]] and [[standardbred]] [[horse racing]] events are conducted at [[Woodbine Racetrack]] in [[Rexdale]].
+
+Historic sports clubs of Toronto include [[the Granite Club]] (established in 1836), the [[Royal Canadian Yacht Club]] (established in 1852), the Toronto Cricket Skating and Curling Club (established in pre-1827), the Argonaut Rowing Club (established in 1872), the Toronto Lawn Tennis Club (established in 1881), and the Badminton and Racquet Club (established in 1924).
+
+Toronto was a candidate city for the [[1996 Summer Olympics|1996]] and [[2008 Summer Olympics]], which were awarded to [[Atlanta]] and Beijing respectively. The [[Canadian Olympic Committee]] was considering a Toronto bid for the [[2020 Summer Olympics|2020 Games]],<ref>{{cite news|url=http://www.thestar.com/News/article/234164|title=Third time lucky for T.O. Games bid?, TheStar.com, 2007 | work=The Star | location=Toronto | first=Jim | last=Byers | date=July 10, 2007 | accessdate=May 25, 2010}}</ref> however, in August 2011 it was announced that Toronto would not bid for the 2020 games.<ref>{{cite news| url=http://www.cbc.ca/sports/story/2011/08/11/toronto-olympics.html | work=CBC News | title=Toronto won't bid for 2020 Olympics | date=August 11, 2011 | deadurl=yes}} {{Dead link|date=April 2014|bot=RjwilmsiBot}}</ref> It has been suggested that Toronto may bid for the [[2024 Summer Olympics]].<ref>{{cite web|url=http://www.gamesbids.com/eng/olympic_bids/future_bids_2016/1216135968.html |title=Toronto Considers 2024 Olympic Bid |publisher=Gamesbids.com |accessdate=February 18, 2012}}</ref>
+
+Toronto will be hosting the [[2015 Pan American Games]] in July 2015, and the [[2015 Parapan American Games]] in August 2015. It contested against the cities of [[Lima]], Peru and [[Bogotá]], Colombia.<ref>{{cite web|url=http://www.gamesbids.com/eng/commonwealth_games_bids/1216133774.html|publisher=GameBids.com|title=Toronto 2015 Pan American Games Bid Officially Launched}}</ref>
+
+{| class="wikitable sortable" style="border:1px solid #ddd; background:#fefefe; padding:3px; margin:0; margin:auto;"
+|+ Professional and amateur sports teams in Toronto
+|- <!-- Please do not add the Lingerie Football League, since it is only of niche interest -->
+! scope="col" | Club
+! scope="col" | League
+! scope="col" | Sport
+! scope="col" | Venue
+! scope="col" | Established
+! scope="col" | Championships
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto Argonauts]]
+| [[Canadian Football League|CFL]]
+| [[Canadian football|Football]]
+| [[Rogers Centre]]
+| 1873
+| 16 (Last in [[100th Grey Cup|2012]])
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto Maple Leafs]]
+| [[National Hockey League|NHL]]
+| [[Ice hockey]]
+| [[Air Canada Centre]]
+| 1917
+| 13 (Last in [[1967 Stanley Cup Finals|1967]])
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto Blue Jays]]
+| [[Major League Baseball|MLB]]
+| [[Baseball]]
+| [[Rogers Centre]]
+| 1977
+| 2 (Last in [[1993 World Series|1993]])
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto Raptors]]
+| [[National Basketball Association|NBA]]
+| [[Basketball]]
+| [[Air Canada Centre]]
+| 1995
+| 0
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto FC]]
+| [[Major League Soccer|MLS]]
+| [[Association football|Soccer]]
+| [[BMO Field]]
+| 2007
+| 0
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto Maple Leafs (semi-pro baseball)|Toronto Maple Leafs]]
+| [[Intercounty Baseball League|IBL]]
+| [[Baseball]]
+| [[Christie Pits Park|Christie Pits]]
+| 1969
+| 8
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto Rock]]
+| [[National Lacrosse League|NLL]]
+| [[Box lacrosse]]
+| [[Air Canada Centre]]
+| 1998
+| 6 (last in [[2011 NLL season|2011]])
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto Rebellion]]
+| [[Rugby Canada Super League|RCSL]]
+| [[Rugby union|Rugby]]
+| [[Fletcher's Fields]]
+| 1999
+| 0
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto Marlies]]
+| [[American Hockey League|AHL]]
+| [[Ice hockey]]
+| [[Ricoh Coliseum]]
+| 2005
+| 0
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto City Saints]]
+| [[Canada Rugby League|CRL]]
+| [[Rugby league]]
+| [[Newtonbrook Secondary School]]
+| 2010
+| 0
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto Furies]]
+| [[Canadian Women's Hockey League|CWHL]]
+| [[Women's ice hockey]]
+| [[Lakeshore Lions Arena]]
+| 2007
+| 1
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto Lady Lynx]]
+| [[W-League|USL]]
+| [[Women's association football|Women's soccer]]
+| [[Centennial Park Stadium]]
+| 2005
+| 0
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto Eagles]]
+| [[Ontario Australian Football League|AFLO]]
+| [[Australian rules football|Australian Football]]
+| [[Humber College|Humber College North]]
+| 1989
+| 12
+|-
+! scope="row" style="font-weight: normal; text-align: left;" | [[Toronto Rush]]
+| [[American Ultimate Disc League|AUDL]]
+| [[Ultimate Frisbee]]
+| [[Varsity Stadium]]
+| 2013
+| 1
+|}
+
+===Media===
+{{Main|Media in Toronto}}
+Toronto is Canada's largest media market,<ref>[http://www.mediajobsearchcanada.com/mjsc_press.asp Media Job Search Canada]{{Dead link|url=http://www.mediajobsearchcanada.com/mjsc_press.asp|date=March 2009}} Media Job Search Canada (2003). Retrieved 2007-05-08.</ref> and has four conventional dailies, two [[Alternative newspaper|alt-weeklies]], and three free commuter papers in a greater metropolitan area of about 6&nbsp;million inhabitants. The ''[[Toronto Star]]'' and the ''[[Toronto Sun]]'' are the prominent daily city newspapers, while national dailies, ''[[The Globe and Mail]]'' and the ''[[National Post]]'' are also headquartered in the city. The ''Toronto Star'', ''The Globe and Mail'', and ''National Post'' are broadsheet newspapers. ''[[Metro International|Metro]]'' and ''[[24 Hours (newspaper)|24 Hours]]'' are distributed as free commuter newspapers. The city's two most prominent general-interest weeklies are ''[[Now (newspaper)|Now]]'' and ''[[The Grid (newspaper)|The Grid]]''.
+
+Toronto contains the headquarters of the major English-language Canadian television networks [[CBC Television|CBC]], [[CTV Television Network|CTV]], [[City (TV network)|City]], [[Global Television Network|Global]], [[The Sports Network]] (TSN) and [[Sportsnet]]. [[MuchMusic]], [[MuchMore]] and [[MTV (Canada)|MTV Canada]] are the main music television channels based in the city, though they no longer primarily show music videos as a result of [[channel drift]].
+
+==Economy==
+{{Main|Economy of Toronto}}
+Toronto is an international centre for business and finance. Generally considered the financial capital of Canada, Toronto has a high concentration of banks and brokerage firms on [[Bay Street]], in the [[Financial District, Toronto|Financial District]]. The [[Toronto Stock Exchange]] is the world's [[List of stock exchanges|seventh-largest]] stock exchange by market capitalization.<ref>[http://www.investinontario.com/resources/documents/media/MEDT_Ad_Collection.pdf Market Statistics]{{dead link|date=May 2011}} Toronto Stock Exchange (2006). Retrieved 2007-05-11.</ref> The five largest financial institutions of Canada, collectively known as the [[Big Five (banks)|Big Five]], have national offices in Toronto.<ref name="TorontoEconomy" />
+
+The city is an important centre for the media, publishing, telecommunication, information technology and film production industries; it is home to [[Bell Media]], [[Rogers Communications]], and [[Torstar]]. Other prominent Canadian corporations in the Greater Toronto Area include [[Magna International]], [[Celestica]], [[Manulife Financial]], [[Sun Life Financial]], the [[Hudson's Bay Company]], and major hotel companies and operators, such as [[Four Seasons Hotels and Resorts|Four Seasons Hotels]] and [[Fairmont Hotels and Resorts]].
+
+Although much of the region's manufacturing activities take place outside the city limits, Toronto continues to be a wholesale and distribution point for the industrial sector. The city's strategic position along the [[Quebec City – Windsor Corridor]] and its road and rail connections help support the nearby production of motor vehicles, iron, steel, food, machinery, chemicals and paper. The completion of the [[Saint Lawrence Seaway]] in 1959 gave ships access to the [[Great Lakes]] from the Atlantic Ocean.
+
+The city's net debt stood at $4.4 billion as of the end of 2010 and has a AA credit rating.<ref name="Torontodebt">{{cite news|last=Moloney|first=Paul|title=Toronto debt $4.4B and rising|url=http://www.thestar.com/news/article/1015702--toronto-debt-4-4b-and-rising|accessdate=August 12, 2011|newspaper=[[Toronto Star]]|date=June 27, 2011}}</ref> Toronto is expected to pay $400 million of the debt in 2011.<ref name="Torontodebt"/> The city's debt increased by $721 million in 2010.<ref name="Torontodebt"/> The city’s unemployment rate was 8.1% in November 2011, down from 8.3% year over year.<ref>{{cite web|url=http://www40.statcan.ca/l01/cst01/lfss04f-eng.htm|title=Labour force characteristics, unadjusted, by census metropolitan area|publisher=[[Statistics Canada]]|date=December 2, 2011|accessdate=December 26, 2011}}</ref> The [[cost of living]] in Toronto was [[List of most expensive cities for expatriate employees|ranked highest in Canada]] {{As of|2011|alt=in 2011}}.<ref>{{cite news|title=Toronto beats Vancouver as most costly city|publisher=CTV|date=July 12, 2011|url=http://www.ctv.ca/CTVNews/TopStories/20110712/toronto-rent-costliest-city-passes-vancouver-110712/|accessdate=July 12, 2011}}</ref>
+
+==Demographics==
+{{Main|Demographics of Toronto}}
+[[File:TTC CLRV College St @ Montrose Ave.jpg|thumb|Developed in the early 1900s, [[Little Italy, Toronto|Little Italy]] is one of the city's oldest extant ethnic neighbourhoods.<ref>[http://www12.statcan.ca/english/census06/data/topics/RetrieveProductTable.cfm?ALEVEL=3&APATH=3&CATNO=97-555-XCB2006007&DETAIL=0&DIM=&DS=99&FL=0&FREE=0&GAL=0&GC=99&GK=NA&GRP=1&IPS=97-555-XCB2006007&METH=0&ORDER=1&PID=89186&PTYPE=88971&RL=0&S=1&ShowAll=No&StartRow=1&SUB=701&Temporal=2006&Theme=70&VID=0&VNAMEE=&VNAMEF=&GID=838003 Detailed Mother Tongue], Toronto CMA 2006, Retrieved 2009-08-08.</ref>]]
+The city's population grew by 4% (96,073 residents) between 1996 and 2001, 1% (21,787 residents) between 2001 and 2006, and 4.3% (111,779 residents) between 2006 and 2011. Persons aged 14 years and under made up 17.5% of the population, and those aged 65 years and over made up 13.6%. The [[median]] age was 36.9 years. Foreign-born people made up 49.9% of the population.<ref name="2006diversity">{{cite news|url=http://www.thestar.com/News/GTA/article/282694|title=A city of unmatched diversity|author=Francine Kopun|author2=Nicholas Keung |work=Toronto Star|date=December 5, 2007|accessdate=October 7, 2008}}</ref> The city's gender population is 48% male and 52% female.<ref>{{cite web|url=http://www.toronto.ca/demographics/pdf/2006_age_and_sex_backgrounder_with_maps.pdf|title=Toronto.ca|format=PDF|accessdate=April 17, 2010}}</ref> Women outnumber men in all age groups over 20.<ref>{{cite news|author=Canada|url=http://www.theglobeandmail.com/life/still-single-time-to-move-west/article771391|title=Still Single, Time To Move West|work=Globe and Mail|location=Canada|date=July 18, 2007|accessdate=April 17, 2010|location=Toronto}}</ref> As of 2011, 49.1% of the residents of the city proper belong to a [[visible minority]] group,<ref name="www12.statcan.gc.ca">{{cite web|url=http://www12.statcan.gc.ca/nhs-enm/2011/dp-pd/prof/details/page.cfm?Lang=E&Geo1=CSD&Code1=3520005&Data=Count&SearchText=Toronto&SearchType=Begins&SearchPR=01&A1=All&B1=All&GeoLevel=PR&GeoCode=3520005&TABID=1 |title=National Household Survey (NHS) Profile, 2011 |publisher=2.statcan.gc.ca |accessdate=April 18, 2014}}</ref> and visible minorities are projected to comprise a majority in the [[Greater Toronto Area#Census metropolitan area|Toronto CMA]] by 2017.<ref name=minorityprojection>[http://www.statcan.ca:80/Daily/English/050322/d050322b.htm Canada's visible minority population in 2017], Statistics Canada (2005); retrieved December 5, 2006.</ref> In 1981, Toronto's visible minority population was 13.6%.<ref>"[http://www.ceris.metropolis.net/wp-content/uploads/pdf/research_publication/working_papers/wp6.pdf Toronto in Transition: Demographic Change in the Late Twentieth Century]". ([[Portable Document Format|PDF]]). CERIS – The Ontario Metropolis Centre.</ref>
+
+According to the [[United Nations Development Programme]], Toronto has the second-highest percentage of constant foreign-born population among world cities, after [[Miami, Florida]]. While Miami's foreign-born population has traditionally consisted primarily of [[Cuba]]ns and other Latin Americans, no single nationality or culture dominates Toronto's immigrant population, placing it among the most diverse cities in the world.<ref name="2006diversity"/> By 2031, Toronto's current visible minority population will have increased to 63%, changing the definition of visible minority in the city.<ref name="Visible minority">[http://www.thestar.com/news/gta/article/777547--visible-minority-will-mean-white-by-2031] Toronto Star (Wed March 10, 2010)</ref> Over 100,000 immigrants arrive in the Greater Toronto Area annually.<ref>"[http://www.theglobeandmail.com/news/national/time-to-lead/multiculturalism/a-few-frank-words-about-immigration/article1746816 "A few frank words about immigration"], ''The Globe and Mail''. October 7, 2010; accessed February 8, 2014.</ref>
+
+In the [[Canada 2011 Census|2011 Canadian census]], the most common ethnic origins in the city of Toronto were as follows:
+{| class="wikitable"
+|-
+! [[Ethnic origins of people in Canada|Ethnic Origin]] !! Population !! Percentage
+|-
+| [[English Canadian|English]] || 333,220 || 12.9
+|-
+| [[Chinese Canadian|Chinese]] || 308,690 || 12.0
+|-
+| [[Canadian]] || 291,665 || 11.3
+|-
+| [[Irish Canadian|Irish]] || 250,460 || 9.7
+|-
+| [[Scottish Canadian|Scottish]] || 245,545 || 9.5
+|-
+| [[Indo-Canadians|East Indian]] || 195,590 || 7.6
+|-
+| [[Italian Canadian|Italian]] || 177,065 || 6.9
+|-
+| [[Filipino Canadian|Filipino]] || 140,420 || 5.5
+|-
+| [[German Canadian|German]] || 119,030 || 4.6
+|-
+| [[French Canadian|French]] || 115,300 || 4.5
+|-
+| [[Tamil Canadian|Tamil]] || 109,100 || 4.3
+|-
+| [[Polish Canadian|Polish]] || 98,315 || 3.8
+|-
+| [[Portuguese Canadian|Portuguese]] || 93,050 || 3.6
+|-
+| [[Jamaican Canadian|Jamaican]] || 81,380 || 3.2
+|-
+| [[Somali Canadians|Somali]] || 80,000 || 3.0<ref>[http://www1.toronto.ca/City%20Of%20Toronto/Shelter%20Support%20&%20Housing%20Administration/Files/pdf/I/5-22-2014-minutes-irhc.pdf Immigrant and Refugee Housing Committee]</ref>
+|-
+| [[Jewish Canadian|Jewish]] || 78,860 || 3.1
+|-
+| [[Ukrainian Canadian|Ukrainian]] || 64,875 || 2.5
+|-
+| [[Russian Canadian|Russian]] || 62,850 || 2.4
+|}
+Source: [http://www12.statcan.gc.ca/nhs-enm/2011/dp-pd/prof/details/page.cfm?Lang=E&Geo1=CSD&Code1=3520005&Data=Count&SearchText=Toronto&SearchType=Begins&SearchPR=01&A1=All&B1=All&GeoLevel=PR&GeoCode=3520005&TABID=1 2011 NHS Profile]
+
+Toronto is a racially diverse city, the racial make up is:<ref name="www12.statcan.gc.ca"/>
+* 50.2% [[European Canadian|White]]
+* 12.7% [[East Asia]]n;'' 10.8% [[Chinese Canadian|Chinese]], 1.4% [[Korean Canadian|Korean]], 0.5% [[Japanese Canadians|Japanese]]''
+* 12.3% [[South Asian Canadian|South Asian]]
+* 8.5% [[Black Canadians|Black]]
+* 7.0% [[Southeast Asia]]n; ''5.1% [[Filipino Canadian|Filipino]] ''
+* 2.8% [[Latin American Canadian|Latin American]]
+* 2.0% [[West Asian people|West Asian]]
+* 1.1% [[Arab Canadians|Arab]]
+* 0.7% [[Aboriginal peoples in Canada|Aboriginal]], of which ''0.5% are [[First Nations]] and 0.2% are [[Métis people (Canada)|Metis]]''
+* 1.5% [[Multiracial]]; '' 1.7% including Metis''
+* 1.3% Other
+
+This diversity is reflected in Toronto's ethnic neighbourhoods, which include [[Chinatown, Toronto|Chinatown]], [[Corso Italia (Toronto)|Corso Italia]], [[Greektown, Toronto|Greektown]], [[Kensington Market]], [[Koreatown, Toronto|Koreatown]], [[Gerrard Street (Toronto)|Little India]], [[Little Italy, Toronto|Little Italy]], [[Eglinton West|Little Jamaica]], [[Little Portugal, Toronto|Little Portugal]] and [[Roncesvalles, Toronto|Roncesvalles]].
+
+In 2011, the most commonly reported religion in Toronto was [[Christianity]], with 54.1% of the population adhering to this group. The census reports that a plurality, 28.2%, of the city's population is Catholic, followed by [[Protestantism|Protestant]] (11.9%), [[Orthodox Christianity|Christian Orthodox]] at (4.3%), and other Christian denominations (9.7%). With the city's significant number of [[Methodism|Methodist]] Christians, Toronto was sometimes referred to as the [[Methodist Rome]]. Other religions in the city are [[Islam]] (8.2%), [[Hinduism]] (5.6%), Judaism (3.8%), [[Buddhism]] (2.7%), and [[Sikhism]] (0.8%). Those with no religious affiliation made up 24.2% of Toronto's population.<ref name="www12.statcan.gc.ca"/>
+
+While English is the predominant language spoken by Torontonians, many other languages have considerable numbers of local speakers.<ref name=lan3>[http://www12.statcan.ca:80/english/census06/data/topics/RetrieveProductTable.cfm?ALEVEL=3&APATH=3&CATNO=&DETAIL=0&DIM=&DS=99&FL=0&FREE=0&GAL=0&GC=99&GK=NA&GRP=1&IPS=&METH=0&ORDER=1&PID=89189&PTYPE=88971&RL=0&S=1&SUB=0&ShowAll=No&StartRow=1&Temporal=2006&Theme=70&VID=0&VNAMEE=&VNAMEF=&GID=838003 Various Languages Spoken – Toronto] [[Census metropolitan area|CMA]], Statistics Canada (2006); retrieved September 9, 2009.</ref> The varieties of Chinese and Italian are the second and third most widely spoken languages at work.<ref name=lan>[http://www12.statcan.ca/english/census01/products/highlight/LanguageWork/Page.cfm?Lang=E&Geo=CMA&View=2&Table=1&Code=535&Sort=2&B1=&B2=1 Language used at work by mother tongue in Toronto] [[Census metropolitan area|CMA]], Statistics Canada (2001). Retrieved 2006-12-05.</ref><ref name=lang2>[http://www12.statcan.ca/english/census01/products/highlight/LanguageWork/Page.cfm?Lang=E&Geo=CSD&View=4&Code=3520005&Table=1&StartRec=1&Sort=5&B1=Toronto&B2=1 Language used at work by mother tongue (City of Toronto)], Statistics Canada (2001); retrieved 2006-12-05.</ref> The city's [[9-1-1]] emergency services are equipped to respond in over 150 languages.<ref name="911service">{{cite web|title =City of Toronto: Emergency Services– 9–1–1 = EMERGENCY in any language|publisher=City of Toronto|url=http://www.toronto.ca/emerg/911.htm|accessdate =January 5, 2007}}</ref>
+
+==Government==
+{{Main|Municipal government of Toronto}}
+{{further2|[[Politics of Toronto]] and [[Public services in Toronto]]}}
+[[File:Canada Toronto Wards location map.svg|thumb|Toronto's Electoral Wards]]
+
+Toronto is a [[single-tier municipality]] governed by a [[Mayor–council government|mayor–council system]]. The structure of the municipal government is stipulated by the [[City of Toronto Act]]. The [[Mayor of Toronto]] is elected by direct popular vote to serve as the [[Head of government|chief executive]] of the city. The [[Toronto City Council]] is a [[unicameralism|unicameral]] legislative body, comprising 44 councillors representing geographical [[Ward (country subdivision)|wards]] throughout the city. The mayor and members of the city council serve four-year terms without [[term limit]]s. (Until the [[Toronto municipal election, 2006|2006 municipal election]], the mayor and city councillors served three-year terms.) However, on November 18, 2013, council voted to modify the city's government by transferring many executive powers from mayor [[Rob Ford]] to the deputy mayor, [[Norm Kelly]], and itself.<ref>http://www.thestar.com/news/city_hall/2013/11/18/taking_the_keys_from_mayor_rob_ford_how_toronto_councillors_voted.html</ref>
+
+At the start of the 2007 term, the city council will have seven standing committees, each consisting of a Chairman, a vice-chair and four other councillors. The Mayor names the committee chairs and the remaining membership of the committees is appointed by City Council.<ref name="committees">{{cite web
+|url = http://www.newswire.ca/en/releases/archive/December2006/06/c4652.html
+|archiveurl = http://web.archive.org/web/20070930221940/http://www.newswire.ca/en/releases/archive/December2006/06/c4652.html
+|archivedate = September 30, 2007
+|title = City Council names Speaker and members to Standing Committees, Agencies, Boards and Commissions
+|publisher=[[CNW Group]]
+|date = December 6, 2006
+|accessdate =March 18, 2007
+}}</ref> An executive committee is formed by the chairs of each of standing committee, along with the mayor, the deputy mayor and four other councillors. Councillors are also appointed to oversee the [[Toronto Transit Commission]] and the [[Toronto Police Services Board]].
+
+The city has four community councils that consider local matters. City Council has delegated final decision-making authority on local, routine matters, while others—like planning and zoning issues—are recommended to the city council. Each city councillor serves as a member on a community council.
+
+There are about 40 subcommittees and advisory committees appointed by the city council. These bodies are made up of city councillors and private citizen volunteers. Examples include the Pedestrian Committee, Waste Diversion Task Force 2010, and the [[Task Force to Bring Back the Don]].<ref>{{cite web
+|url = http://www.toronto.ca/committees/directory.htm
+|title = Directory of committees, task forces and round tables
+|publisher=City of Toronto
+|accessdate =March 18, 2007
+}}</ref>
+
+Toronto had an operating budget of [[Canadian dollar|C$]]7.6&nbsp;billion in 2006.<ref>{{cite web
+|url = http://www.toronto.ca/budget2006/index.htm
+|title = 2006 City Budget
+|publisher=City of Toronto
+|year = 2006
+|accessdate =March 18, 2007
+}}</ref> The city receives funding from the [[Government of Ontario]] in addition to tax revenues and user fees, spending 36% on provincially mandated programmes, 53% on major municipal purposes such as the [[Toronto Public Library]] and the [[Toronto Zoo]], and 11% on capital financing and non-programme expenditures.<ref>{{cite web
+|url = http://www.toronto.ca/budget2006/pdf/2006operatingbackgrounder_revised.pdf
+|format=PDF|title = 2006 Operating Budget
+|publisher=City of Toronto
+|year = 2006
+|accessdate =March 18, 2007
+}}</ref>
+{{wide image|Nathan Phillips square - Toronto.jpg|1000px|alt=Nathan Phillips Square|Nathan Phillips Square}}
+
+==Crime==
+{{Main|Crime in Toronto}}
+{{See also|Crime in Canada|Gun politics in Canada}}
+The low [[crime statistics|crime rate]]<ref name=crime>{{cite web
+|url=http://www.statcan.ca/Daily/English/050721/d050721a.htm
+|title=Crime statistics
+|author=Statistics Canada, ''The Daily''
+|date=July 21, 2006
+|accessdate=March 5, 2007}}{{dead link|date=February 2012}}</ref> in Toronto has resulted in the city having a reputation as one of the safest major cities in North America.<ref name=crime1>[http://www.torontoisms.com/guide/crime.htm Torontoisms – Crime and Safety<!-- Bot generated title -->]{{dead link|date=February 2012}}</ref><ref name=crime2/> For instance, in 2007, the [[homicide]] rate for Toronto was 3.3 per 100,000 people, compared with [[Atlanta]] (19.7), Boston (10.3), Los Angeles (10.0), New York City (6.3), [[Vancouver]] (3.1), and [[Montreal]] (2.6). Toronto's robbery rate also ranks low, with 207.1 robberies per 100,000 people, compared with Los Angeles (348.5), Vancouver (266.2), New York City (265.9), and Montreal (235.3).<ref>{{cite web|url=http://www.fbi.gov/ucr/08aprelim/table_4.html |title=FBI statistics 2008 |publisher=Fbi.gov |accessdate=April 17, 2010}} {{Dead link|date=October 2010|bot=H3llBot}}</ref><ref>{{cite web|last=Topping |first=David |url=http://torontoist.com/2008/07/metrocide_historical_homicides.php |title=Metrocide: A History of Violence |publisher=Torontoist |date=July 22, 2008 |accessdate=April 17, 2010}}</ref><ref>{{cite web|url=http://www.vancouversun.com/news/Vancouver+murder+rate+North+American+standards/1494291/story.html |title=Story – News |work=Vancouver Sun |location=Canada |date=March 15, 2009 |accessdate=April 17, 2010}}{{Dead link|date=July 2010}}</ref><ref>{{cite web|url=http://www.spvm.qc.ca/upload/documentations/Bilan_chiffres_Anglais.pdf |title=Bilan chiffres_A_new |format=PDF |accessdate=April 17, 2010}}</ref><ref>{{cite web|url=http://vancouver.ca/police/Planning/StatsDistrict/2007/20022007AnnualSummary.pdf|archiveurl=http://www.webcitation.org/5qh4Zlfk0|archivedate=June 23, 2010 |title=Vancouver.ca |format=PDF |accessdate=April 17, 2010}}</ref><ref>{{cite web|url=http://www.torontopolice.on.ca/publications/files/reports/2007statsreport.pdf |title=2007annrep_draft_daily_2008_03_26.xlsm |format=PDF |accessdate=April 17, 2010}}</ref> Toronto has a comparable rate of [[motor vehicle theft|car theft]] to various US cities, although it is not among the highest in Canada.<ref name=crime/>
+
+Toronto recorded its largest number of homicides in 1991 with 89, a rate of 3.9 per 100,000.<ref name=guncontrol>{{cite web|url=http://www.guncontrol.ca/English/Home/Works/gangsandguns.pdf |title=GunControl.ca |format=PDF |accessdate=October 17, 2010}}</ref><ref>{{cite web|url=http://www.ctv.ca/servlet/ArticleNews/story/CTVNews/20071227/double_murder_071227?s_name=&no_ads= |title=Double murder occurred on Christmas Day: police |publisher=Ctv.ca |date=December 27, 2007 |accessdate=April 17, 2010}}</ref> In 2005, Toronto media coined the term "Year of the Gun", because there was a record number of gun-related homicides, 52, out of 80 homicides in total.<ref name=crime2>{{cite web|url=http://www.ctv.ca/servlet/ArticleNews/story/CTVNews/20071226/toronto_murderrate_071226/20071226?hub=TopStories |title=Despite rise, police say T.O. murder rate 'low' |publisher=Ctv.ca |date=December 26, 2007 |accessdate=April 17, 2010}}</ref><ref>{{cite web|url=http://toronto.ctv.ca/servlet/an/local/CTVNews/20051227/homicide_year_051227/20051227?hub=TorontoHome |title=CTV Toronto – Toronto sets a new record for gun-related carnage – CTV News, Shows and Sports – Canadian Television |publisher=Toronto.ctv.ca |accessdate=April 17, 2010}}</ref> The total number of homicides dropped to 70 in 2006, that year, nearly 2,000 people in Toronto were victims of a violent gun-related crime, about one-quarter of the national total.<ref>{{cite web|url=http://www.canada.com/vancouversun/news/story.html?k=19079&id=4b651ab1-e729-44a9-86d3-79a1ddc84689|title=Gun crime in Metro Vancouver highest per capita in Canada}}</ref> 84 homicides were committed in 2007, roughly half of them involved guns. Gang-related incidents have also been on the rise; between the years of 1997 and 2005, over 300 gang-related homicides have occurred. As a result, the Ontario government developed an anti-gun strategy.<ref>{{cite web|url=http://www.attorneygeneral.jus.gov.on.ca/english/news/2005/20051025-gunviolence-bg.asp |title=Ministry of the Attorney General – Backgrounder |publisher=Attorneygeneral.jus.gov.on.ca |date=October 25, 2005 |accessdate=April 17, 2010}}</ref> In 2011, Toronto's murder rate plummeted to 45 murders—nearly a 26% drop from the previous year. The 45 homicides were the lowest number the city has recorded since 1986.<ref>{{cite web|last=Doucette |first=Chris |url=http://www.torontosun.com/2011/12/31/toronto-murder-rate-plummets-in-2011 |title=Toronto murder rate plummets in 2011 |work=Toronto Sun |date=December 31, 2011 |accessdate=February 18, 2012}}</ref>
+
+==Education==
+{{Main|Education in Toronto}}
+[[File:Uoft universitycollege.jpg|thumb|left|University College at the [[University of Toronto]]]]
+Toronto has a number of post-secondary academic institutions. The [[University of Toronto]], established in 1827 and is Canada's largest university, has two satellite campuses, [[University of Toronto Scarborough|one of which]] is located in the city's eastern district of [[Scarborough, Ontario|Scarborough]] while [[University of Toronto Mississauga|the other]] is located in the neighbouring city of [[Mississauga]]. [[York University]], Canada's third-largest university founded in 1959, is located in the northwest part of the city. Toronto is also home to [[Ryerson University]], [[OCAD University]], and the [[University of Guelph-Humber]].
+
+There are four diploma and degree granting [[community college|colleges]] in Toronto. These are [[Seneca College]], [[Humber College]], [[Centennial College]] and [[George Brown College]]. The city is also home to a satellite campus of the francophone [[Collège Boréal]].
+
+[[The Royal Conservatory of Music]], which includes [[the Glenn Gould School]], is a school of music located downtown. The [[Canadian Film Centre]] is a film, television and new media training institute founded by filmmaker [[Norman Jewison]]. [[Tyndale University College and Seminary]] is a Christian post-secondary institution and Canada's largest seminary.
+
+The [[Toronto District School Board]] (TDSB) operates 558 public schools. Of these, 451 are elementary and 102 are secondary (high) schools. Additionally, the [[Toronto Catholic District School Board]] manages the city's publicly funded Roman Catholic schools, while the [[Conseil scolaire de district du Centre-Sud-Ouest]] and the [[Conseil scolaire de district catholique Centre-Sud]] manages public and Roman Catholic French-language schools, respectively. There are also numerous private university-preparatory schools including the [[University of Toronto Schools]], the [[Upper Canada College]] and [[Havergal College]].
+
+The [[Toronto Public Library]]<ref>{{cite web|url=http://www.torontopubliclibrary.ca/media/key-facts/ |title=Key Facts: Media : Toronto Public Library |publisher=Torontopubliclibrary.ca |accessdate=October 17, 2010}}</ref> consists of 99 branches with more than 11&nbsp;million items in its collection.<ref>"[http://www.oclc.org/news/releases/20069.htm Toronto Public Library contributes 63 millionth record]" [[Online Computer Library Center|OCLC]] (2006-02-03). Retrieved 2007-07-08.</ref>
+
+==Infrastructure==
+
+===Health and medicine===
+{{Main|Health in Toronto}}
+{{See also|List of hospitals in Toronto|XVI International AIDS Conference, 2006}}
+[[File:Toronto - ON - Toronto General Hospital.jpg|thumb|right|[[Toronto General Hospital]]]]
+Toronto is home to 20 public hospitals, including the [[Hospital for Sick Children]], [[Mount Sinai Hospital, Toronto|Mount Sinai Hospital]], [[St. Michael's Hospital (Toronto)|St. Michael's Hospital]], [[North York General Hospital]], [[Toronto General Hospital]], [[Toronto Western Hospital]], [[St. Joseph's Health Centre]], [[Rouge Valley Health System]], [[The Scarborough Hospital]], [[Sunnybrook Health Sciences Centre]], [[Centre for Addiction and Mental Health]] (CAMH), and [[Princess Margaret Cancer Centre]], as well as the [[University of Toronto Faculty of Medicine]].
+
+In 2007, Toronto was reported as having some of the longer average ER wait times in Ontario. Toronto hospitals at the time employed a system of triage to ensure life-threatening injuries receive rapid treatment.<ref name="Study sheds light on ER wait times in Ontario" >{{cite news|url=http://www.cbc.ca/canada/toronto/story/2007/01/25/er-waits.html |title=Study sheds light on ER wait times in Ontario |publisher=Canadian Broadcasting Corporation |date=January 25, 2007 |accessdate=April 17, 2010 |deadurl=yes}} {{Dead link|date=April 2014|bot=RjwilmsiBot}}</ref> After initial screening, initial assessments by physicians were completed within the waiting rooms themselves for greater efficiency, within a median of 1.2 hours. Tests, consultations, and initial treatments were also provided within waiting rooms. 50% of patients waited 4 hours before being transferred from the emergency room to another room.<ref name="Study sheds light on ER wait times in Ontario"/> The least-urgent 10% of cases wait over 12 hours.<ref name="Study sheds light on ER wait times in Ontario"/> The extended waiting-room times experienced by some patients were attributed to an overall shortage of acute care beds.<ref name="Study sheds light on ER wait times in Ontario"/>
+
+Toronto's [[Discovery District]]<ref name=district>[http://www.torontodiscoverydistrict.ca/Page.asp?IdPage=5760&WebAddress=DiscoveryDistrict/ Toronto Discovery District FAQ], Toronto Discovery District (2006). Retrieved 2006-12-05.</ref> is a centre of research in [[biomedicine]]. It is located on a {{convert|2.5|km2|acre|adj=on}} research park that is integrated into Toronto's downtown core. It is also home to the [[MaRS Discovery District|Medical and Related Sciences Centre (MaRS)]],<ref name=mars>[http://www.marsdd.com/ Medical and Related Sciences Centre], Medical and Related Sciences Centre (2006). Retrieved 2006-12-05.</ref> which was created in 2000 to capitalize on the research and innovation strength of the Province of Ontario. Another institute is the McLaughlin Centre for Molecular Medicine (MCMM).<ref name=mole>[http://www.mclaughlin.utoronto.ca/Page4.aspx McLaughlin Centre for Molecular Medicine (MCMM)], McLaughlin Centre for Molecular Medicine (2006). Retrieved 2006-12-05.</ref>
+
+Toronto also has some specialized hospitals located outside of the downtown core. These hospitals include [[Baycrest]] for geriatric care and [[Holland Bloorview Kids Rehabilitation Hospital]] for children with disabilities.
+
+Toronto is also host to a wide variety of health-focused non-profit organizations that work to address specific illnesses for Toronto, Ontario and Canadian residents. Organizations include [[The Crohn's and Colitis Foundation of Canada]], the [[Heart and Stroke Foundation]], the [[Canadian Cancer Society]], the [[Alzheimer Society of Canada]], [[Alzheimer Society of Ontario]] and [[Alzheimer Society of Toronto]]<!--Don't remove this red link, since an article may be created-->, all situated in the same office at [[Yonge and Eglinton]], the [[Leukemia & Lymphoma Society of Canada]], the [[Canadian Breast Cancer Foundation]], the [[Canadian Foundation for AIDS Research]], [[Cystic Fibrosis Canada]], the [[Canadian Mental Health Association]], the [[ALS Society of Canada]] and many others. The organizations work to help people within the GTA, Ontario or Canada who are affected by these illnesses. As well, most engage in fundraising to promote research, services and public awareness.
+
+===Transportation===
+[[File:Lakeshore West GO Train Westbound.jpg|thumb|A [[GO Train]] along the [[Lakeshore West line]] at [[Sunnyside, Toronto|Sunnyside]] in Toronto.]]
+[[File:International airport toronto pearson.jpg|thumb|[[Toronto Pearson International Airport]]]]
+[[File:Gardiner Expressway Downtown Toronto.jpg|thumb|The [[Gardiner Expressway]] in downtown Toronto]]
+{{Main|Transportation in Toronto}}<!--Please do not insert subway/RT map-->
+Toronto's transport forms the hub of the road, rail and air networks in the [[Greater Toronto Area]] and much of southern [[Ontario]]. There are many forms of [[transport]] in the city of Toronto, including [[400-series highways|highway]]s and [[public transit in Toronto|public transit]]. Toronto also has an extensive [[Cycling in Toronto|network of bicycle lanes]] and multi-use trails and paths.
+
+====Public transportation====
+{{Main|Public transportation in Toronto}}
+Toronto's main public transportation system is operated by the [[Toronto Transit Commission]] (TTC).<ref name="autogenerated1" /> The backbone of its public transport network is the [[Toronto rapid transit]] system, which includes three heavy-rail rapid transit lines and a mainly elevated [[Scarborough RT|light-metro rapid transit line that runs in Scarborough]]. The TTC also operates a network of [[Toronto Transit Commission buses|buses]] and [[Toronto streetcar system|streetcars]]. There have been numerous plans to extend the subway and implement light-rail lines, but many efforts have been thwarted by budgetary concerns. Since July 2011, the only subway-related work is the [[Yonge–University–Spadina line|Spadina]] subway extension north of [[Downsview (TTC)|Downsview Station]] to Vaughan Metropolitan Centre.
+
+The Government of Ontario also operates an interregional rail and bus transit system called [[GO Transit]] in the Greater Toronto Area. GO Transit carries over 250,000 passengers every weekday (2013) and 57 million annually, with a majority of them travelling to or from [[Union Station (Toronto)|Union Station]].<ref name="GO Numbers">{{cite web | title = Info to GO | publisher=GO Transit | url = http://www.gotransit.com/public/en/docs/publications/Info%20To%20GO_2011.pdf | format = PDF | accessdate =May 24, 2011}}</ref><ref>{{cite news |url=http://www.theglobeandmail.com/servlet/story/LAC.20071124.UNION24/TPStory/TPNational/Ontario/
+|title=Underground mall in store for Union Station makeover |date=November 2007 |accessdate=November 24, 2007 |location=Toronto |work=Globe and Mail |location=Canada |location=Canada |deadurl=yes}} {{Dead link|date=August 2012|bot=RjwilmsiBot}}</ref>
+
+====Airports====
+Canada's busiest airport, [[Toronto Pearson International Airport]] ([[International Air Transport Association airport code|IATA]]: YYZ), straddles the city's western boundary with the suburban city of [[Mississauga]]. Limited commercial and passenger service is also offered from the [[Billy Bishop Toronto City Airport]], on the [[Toronto Islands]], southwest of downtown. [[Toronto/Buttonville Municipal Airport]] in [[Markham, Ontario|Markham]] provides [[general aviation]] facilities. [[Toronto/Downsview Airport]], near the city's north end, is owned by [[de Havilland Canada]] and serves the [[Bombardier Aerospace]] aircraft factory.
+
+There are a number of municipal [[limited-access road|expressways]] and [[Highways in Ontario|provincial highways]] that serve Toronto and the Greater Toronto Area. In particular, [[Ontario Highway 401|Highway 401]] bisects the city from west to east, bypassing the downtown core. It is the busiest road in North America,<ref name="fhwa">{{cite report
+|title = Long-Life Concrete Pavements in Europe and Canada
+|first = Hanna
+|last = Maier
+|publisher=Federal Highway Administration
+|date = October 9, 2007
+|section = Chapter 2
+|url = http://international.fhwa.dot.gov/pubs/pl07027/llcp_07_02.cfm
+|accessdate =May 01, 2010
+|quote = The key high-volume highways in Ontario are the 400-series highways in the southern part of the province. The most important of these is the 401, the busiest highway in North America, with average annual daily traffic (AADT) of more than 425,000 vehicles in 2004, and daily traffic sometimes exceeding 500,000 vehicles.}}</ref>
+and one of the busiest highways in the world.<ref>{{cite web
+|url = http://ogov.newswire.ca/ontario/GPOE/2002/08/06/c0057.html?lmatch=&lang=_e.html
+|title = Ontario government investing $401&nbsp;million to upgrade Highway 401
+|publisher=[[Ministry of Transportation of Ontario|Ontario Ministry of Transportation]]
+|date = August 6, 2002
+|accessdate =March 18, 2007
+|quote = Highway 401 is one of the busiest highways in the world and represents a vital link in Ontario's transportation infrastructure, carrying more than 400,000 vehicles per day through Toronto.
+|archiveurl = http://web.archive.org/web/20070914064434/http://ogov.newswire.ca/ontario/GPOE/2002/08/06/c0057.html?lmatch=&lang=_e.html <!-- Bot retrieved archive --> |archivedate = September 14, 2007}}</ref><ref>{{cite web
+|url = http://www.urbanplanet.org/forums/index.php?showtopic=3459
+|title = GTA Economy Dinged by Every Crash on the 401 – North America's Busiest Freeway
+|author=Brian Gray
+|work=[[Toronto Sun]], transcribed at Urban Planet
+|date = April 10, 2004
+|accessdate =March 18, 2007
+|quote = The "phenomenal" number of vehicles on Hwy. 401 as it cuts through Toronto makes it the busiest freeway in the world...
+}}</ref> The main municipal expressways in Toronto include the [[Gardiner Expressway]], the [[Don Valley Parkway]], and to some extent, [[Allen Road]]. The Greater Toronto Area suffers from chronic traffic congestion problems, and Toronto has the second worst traffic congestion in Canada after [[Vancouver]].<ref>http://www.tomtom.com/lib/doc/congestionindex/2013-0322-TomTom-CongestionIndex-2012-Annual-NAM-mi.pdf</ref>
+
+====Road system====
+The grid of major city streets was laid out by a [[concession road]] system, in which major arterial roads are {{convert|6600|ft|km|1|abbr=on}} apart (with some exceptions, particularly in Scarborough and Etobicoke, as they were originally separate townships). Major east-west arterial roads are generally parallel with the Lake Ontario shoreline, and major north-south arterial roads are roughly perpendicular to the shoreline, though slightly angled north of Eglinton Avenue. This arrangement is sometimes broken by geographical accidents, most notably the Don River ravines.
+
+Toronto's grid north is approximately 18.5° to the west of true north.
+
+==International relations==
+{{Main|Sister cities of Toronto}}
+{{Col-begin}}
+{{Col-2}}
+;Partnership cities<ref name="IAP">{{cite web|url=http://www.toronto.ca/invest-in-toronto/international-alliance-program.htm |title=Toronto's International Alliance Program |publisher=Toronto.ca |date=October 23, 2000 |accessdate=October 17, 2010}}</ref>
+* {{flagicon|PRC}} [[Chongqing]], China (1986)
+* {{flagicon|USA}} [[Chicago]], United States (1991)
+* {{flagicon|GER}} [[Frankfurt]], Germany (1989)
+* {{flagicon|POR}} [[Lisbon]], Portugal<ref name="Lisbon twinnings">{{cite web|url=http://www.anmp.pt/anmp/pro/mun1/gem101l0.php?cod_ent=M1100|title=Lisboa - Geminações de Cidades e Vilas|accessdate=August 23, 2013|work=Associação Nacional de Municípios Portugueses [National Association of Portuguese Municipalities]|language=Portuguese|trans_title=Lisbon - Twinning of Cities and Towns}}</ref><ref name="Lisbon twinnings 2">{{cite web|url=http://www.cm-lisboa.pt/municipio/relacoes-internacionais|title=Acordos de Geminação, de Cooperação e/ou Amizade da Cidade de Lisboa|accessdate=August 23, 2013|work=Camara Municipal de Lisboa|language=Portuguese|trans_title=Lisbon - Twinning Agreements, Cooperation and Friendship}}</ref>
+* {{flagicon|ITA}} [[Milan]], Italy (2002)
+* {{flagicon|BRA}} [[São Paulo]], Brazil<ref name="São Paulo twinnings">{{cite web|url=http://www3.prefeitura.sp.gov.br/cadlem/secretarias/negocios_juridicos/cadlem/integra.asp?alt=11072007L%20144710000|title = Pesquisa de Legislação Municipal - No 14471|accessdate=August 23, 2013|work=Prefeitura da Cidade de São Paulo [Municipality of the City of São Paulo]|language=Portuguese|trans_title=Research Municipal Legislation - No 14471|archiveurl=http://web.archive.org/web/20111018123138/http://www3.prefeitura.sp.gov.br/cadlem/secretarias/negocios_juridicos/cadlem/integra.asp?alt=11072007L%20144710000|archivedate = October 18, 2011}}</ref><ref name="São Paulo WikiSource">[http://pt.wikisource.org/wiki/Lei_Municipal_de_S%C3%A3o_Paulo_14471_de_2007 Lei Municipal de São Paulo 14471 de 2007] WikiSource {{pt icon}}</ref>
+{{Col-2}}
+;Friendship cities<ref name="IAP" />
+* {{flagicon|VIE}} [[Ho Chi Minh City]], Vietnam (2006)
+* {{flagicon|UKR}} [[Kiev|Kyiv]], Ukraine (1991)
+* {{flagicon|ECU}} [[Quito]], Ecuador (2006)
+* {{flagicon|JPN}} [[Sagamihara]], Japan (1991)
+* {{flagicon|POL}} [[Warsaw]], Poland (1990)
+{{Col-end}}
+
+==See also==
+{{Portal|Toronto|Ontario|Canada}}
+* [[Great Lakes Megalopolis]]
+* [[Largest cities in the Americas]]
+* [[List of metropolitan areas in the Americas]]
+* [[List of people from Toronto]]
+* [[OPENCities]]
+* [[Outline of Toronto]] (extensive topic list)
+<!-- Do not add Greater Toronto Area or Golden Horseshoe, since both are linked many times in the article itself -->
+
+==References==
+{{reflist|30em}}
+
+===Bibliography===
+{{refbegin|30em}}
+* {{Cite book
+|last = Fulford
+|first = Robert
+|year = 1995
+|title = Accidental city: the transformation of Toronto
+|publisher=Macfarlane, Walter & Ross
+|location = Toronto
+|isbn = 0-921912-91-9
+}} Also ISBN 1-55199-010-5 (paperback).
+* {{Cite book
+|last = Rayburn
+|first = Alan
+|year = 2001
+|title = Naming Canada: stories about Canadian place names
+|publisher=University of Toronto Press
+|location = Toronto
+|edition = 2nd
+|isbn = 0-8020-8293-9
+|url=http://books.google.ca/books?id=aiUZMOypNB4C&lpg=PP1&dq=Naming%20Canada%3A%20stories%20about%20Canadian%20place%20names&pg=PP1#v=onepage&q&f=true
+}}
+* {{Cite book
+|last = Phillips
+|first = Robert
+|coauthors = Bram, Leon & Dickey, Norma
+|year = 1971
+|title = Funk & Wagnalls New Encyclopedia
+|publisher=Funk & Wagnalls
+|location = New York
+|volume = Vol. 23
+|isbn= 0-8343-0025-7
+}}
+* {{cite web
+|last = Careless
+|first = J.M.S.
+|authorlink =J. M. S. Careless
+|url = http://www.thecanadianencyclopedia.com/index.cfm?PgNm=TCE&Params=A1ARTA0008050
+|title = Toronto
+|work=[[The Canadian Encyclopedia]]
+|publisher=Historica Foundation of Canada
+|accessdate =December 3, 2005
+}}
+* {{cite web
+|year = 2003
+|url = http://www12.statcan.ca/english/profil01/CP01/Details/Page.cfm?Lang=E&Geo1=CSD&Code1=3520005&Geo2=PR&Code2=35&Data=Count&SearchText=toronto&SearchType=Begins&SearchPR=01&B1=All&Custom=
+|title = Toronto
+|work=Statistics Canada. 2002. 2001 Community Profiles.
+|publisher=[[Statistics Canada]] Catalogue no. 93F0053XIE
+|accessdate =December 3, 2005
+}}
+* {{cite web|url=http://www.toronto.ca/economic_profile/index.htm|title=Toronto's Economic Profile|publisher=City of Toronto|accessdate=May 30, 2006}}
+* {{cite web
+|year = 2007
+|title = Ultimate Inline Skating Guide to Toronto v1.5
+|url = http://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&output=nl&msid=105047441964785653381.0000011358da39f6cf7dd
+|format = Google Earth
+|accessdate =July 7, 2007
+}}
+* The novel "[[In the Skin of a Lion]]" by [[Michael Ondaatje]] depicts Toronto in the 1920s, giving prominence to the construction of Toronto landmarks, such as the [[Prince Edward Viaduct]] and the [[R. C. Harris Water Treatment Plant]], and focusing on the lives of the immigrant workers.
+* {{cite book|author=Carolyn Whitzman|title=Suburb, slum, urban village: transformations in Toronto's Parkdale neighbourhood, 1875–2002|url=http://books.google.com/books?id=dcyQvnb0EiEC|date=May 15, 2009|publisher=UBC Press|isbn=978-0-7748-1535-2}}
+* {{cite book|author=Richard Harris|title=Unplanned Suburbs: Toronto's American Tragedy, 1900 to 1950|url=http://books.google.com/books?id=EF2uN3v0i9gC|date=October 7, 1999|publisher=JHU Press|isbn=978-0-8018-6282-3}}
+* {{cite book|url=http://books.google.ca/books?id=7V5-PlPhwnAC&lpg=PP1&dq=Toronto&pg=PP1#v=onepage&q&f=true|title=Toronto to 1918: An Illustrated History|first=J. M. S|last= Careless|publisher=J. Lorimer and National Museum of Man|year=1984|isbn=0-88862-665-7}}
+* {{cite book|url=http://books.google.ca/books?id=ToQcKz0DFM4C&lpg=PP1&dq=Toronto&pg=PP1#v=onepage&q&f=true|title=Toronto: the way we were|first=Mike|last=Filey|publisher=Dundurn Press|year= 2008|isbn=978-1-55002-842-3}}
+* {{cite book|url=http://books.google.ca/books?id=9INeDSqwJ1MC&lpg=PA1&dq=Toronto&pg=PA1#v=onepage&q&f=true|title=Toronto: The Unknown City|first1=Howard |last1=Akler|first2= Sarah |last2=Hood|publisher=Arsenal Pulp Press|year=2003|isbn=1-55152-146-6}}
+{{refend}}
+
+==External links==
+{{Sister project links|Toronto|v=no|n=Portal:Toronto, Ontario|s=no|b=no}}
+* {{Official website|http://www.toronto.ca/}}, the official City of Toronto web site
+* [http://www.torontotourism.com/ Tourism Toronto], by the Toronto Convention & Visitors Association
+
+{{Geographic location
+|Center=Toronto
+|North=[[Vaughan]], [[Markham, Ontario|Markham]]
+|Northeast=
+|East=[[Pickering, Ontario|Pickering]]
+|Southeast=
+|South=''[[Lake Ontario]]''
+|Southwest=
+|West=[[Mississauga]]
+|Northwest=[[Brampton]]
+}}
+{{Navboxes|list =
+{{Toronto}}
+{{Greater Toronto Area}}
+{{Subdivisions of Ontario}}
+{{Canada capitals}}
+{{Census metropolitan areas by size}}
+{{Paralympic Summer Games Host Cities}}
+{{G-20 leaders' summits}}
+{{Pan American Games host cities}}
+}}
+
+{{DEFAULTSORT:Toronto}}
+[[Category:Toronto| ]]
+[[Category:1834 establishments in Canada]]
+[[Category:Former colonial capitals in Canada]]
+[[Category:Populated places established in 1793]]
+[[Category:Populated places on the Great Lakes]]
+[[Category:Populated places on the Underground Railroad]]
+[[Category:Port settlements in Ontario]]

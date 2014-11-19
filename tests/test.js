@@ -8,7 +8,6 @@ var tests=[
     assert:function(data){
       console.assert(data.infobox.opened==1939)
       console.assert(data.text.Intro.length>=5)
-      console.assert(data.data.links.length==6)
       console.assert(data.data.categories.length==4)
     }
   },
@@ -18,9 +17,8 @@ var tests=[
       console.assert(data.infobox.publisher=='John D. Cruickshank')
       console.assert(data.text.Intro.length>=1)
       console.assert(data.text.History.length>=7)
-      console.assert(data.data.links.length>32)
       console.assert(data.data.categories.length==6)
-      console.assert(data.data.images.length==3)
+      // console.assert(data.data.images.length==3)
     }
   },
   {
@@ -29,9 +27,14 @@ var tests=[
       // console.assert(data.infobox.nationality=='Canadian')
       console.assert(data.text.Intro.length>=1)
       console.assert(data.text['Political career'].length>=5)
-      console.assert(data.data.links.length>=12)
       console.assert(data.data.categories.length==8)
-      console.assert(data.data.images.length==0)
+      // console.assert(data.data.images.length==0)
+    }
+  },
+  {
+    file:"redirect",
+    assert:function(data){
+      console.assert(data.redirect=='Toronto')
     }
   },
 ]

@@ -1,6 +1,6 @@
 ##Parsing Wikipedia script is basically NP-Hard
 
-its the wurst. this library is trying its best.
+its the wurst. I'm just trying my best.
 
 it turns a wikipedia article into a parsed JSON object, and handles the ad-hoc recursive templates shinanigans ad infinitum.
 
