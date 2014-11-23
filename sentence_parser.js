@@ -31,7 +31,9 @@ var sentence_parser = function(text) {
 if (typeof module !== "undefined" && module.exports) {
   module.exports = sentence_parser;
 }
-// console.log(sentences('Tony is nice. He lives in Japan.').length == 2)
-// console.log(sentences('I like that Color').length == 1)
-// console.log(sentences("Soviet bonds to be sold in the U.S. market. Everyone wins.").length == 2)
-// console.log(sentences("Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that's fine, etc. and you can attend Feb. 8th. Bye").length == 3)
+// console.log(sentence_parser('Tony is nice. He lives in Japan.').length == 2)
+// console.log(sentence_parser('I like that Color').length == 1)
+// console.log(sentence_parser("Soviet bonds to be sold in the U.S. market. Everyone wins.").length == 2)
+// console.log(sentence_parser("Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that's fine, etc. and you can attend Feb. 8th. Bye").length == 3)
+// s="Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York"
+// console.log(sentence_parser(s))
