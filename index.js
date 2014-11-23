@@ -26,6 +26,46 @@ var parser=(function(){
     // var str="hello [[img|this is[[john]] he is nice]] world [[yes]]"
     // var re= /\[\[[^\[\]]*\]\]/
     // console.log(recursive_replace(str, re))
+
+
+
+    //find all the pairs of '[[...[[..]]...]]' in the text
+    //used to properly root out recursive template calls, [[.. [[...]] ]]
+    function recursive_matches(opener, closer, text){
+      var out=[]
+      var last=[]
+      var chars=text.split('')
+      var open=0
+      for(var i=0; i<chars.length; i++){
+        // console.log(chars[i] + "  "+open)
+        if(chars[i]==opener && chars[i+1] && chars[i+1]==opener){
+          open+=1
+        }
+        if(open>=0){
+          last.push(chars[i])
+        }
+        if(open<=0 && last.length>0){
+          //first, fix botched parse
+          var open_count=last.filter(function(s){return s==opener})
+          var close_count=last.filter(function(s){return s==closer})
+          if(open_count.length > close_count.length){
+            last.push(closer)
+          }
+          out.push(last.join(''))
+          last=[]
+        }
+        if(chars[i]==closer && chars[i+1] && chars[i+1]==closer){ //this introduces a bug for "...]]]]"
+          open-=1
+          if(open<0){
+            open=0
+          }
+        }
+      }
+      return out
+    }
+
+
+
     var helpers={
       capitalise:function(str){
         if(str && typeof str=="string"){
@@ -132,6 +172,23 @@ var parser=(function(){
     }
 
     function preprocess(wiki){
+      //reduce the recursive situations first
+      //first, remove {{ recursions
+      var matches=recursive_matches( '{', '}', wiki)
+      matches.forEach(function(s){
+        if(s.match(/\{\{(cite|infobox|sister|geographic|navboxes)[ \|:]/i)){
+          wiki=wiki.replace(s,'')
+        }
+      })
+      //second, remove [[ recursions
+      var matches=recursive_matches( '[', ']', wiki)
+      matches.forEach(function(s){
+        if(s.match(/\[\[(file|Category|image)/i)){
+          wiki=wiki.replace(s,'')
+        }
+      })
+      //now that the scary recursion issues are gone, we can trust simple regex methods
+
       //remove comments
       wiki= wiki.replace(/<!--[^>]{0,2000}-->/g,'')
       wiki=wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/ig,'')
@@ -157,6 +214,8 @@ var parser=(function(){
       wiki=wiki.replace(/< ?ref [a-z0-9=" ]{2,20}\/>/g, " ")//<ref name="asd"/>
       //remove tables
       wiki= wiki.replace(/\{\|[\s\S]{1,8000}?\|\}/g,'')
+      //kill the rest of templates
+      wiki=wiki.replace(/\{\{.*?\}\}/g,'')
 
       return wiki
     }
@@ -222,15 +281,6 @@ var parser=(function(){
       //get and parse an infobox
       var infobox=fetch_infobox(wiki)
 
-      //remove all recursive template stuff
-      var re= /\{\{[^\{\}]{0,5000}\}\}/g
-      wiki= recursive_replace(wiki, re)
-
-      //NOT WORKING. FUCK
-      // images & files can be recursive too (but not categories)
-      // var re= /\[\[(File:|Image:)[^\[\]]*?\]\]/gi
-      // wiki= recursive_replace(wiki, re)
-
       //get list of links, categories
       var cats=fetch_categories(wiki)
       var lines= wiki.replace(/\r/g,'').split(/\n/)
@@ -291,6 +341,7 @@ function from_file(page){
   fs=require("fs")
   var str = fs.readFileSync(__dirname+"/tests/"+page+".txt", 'utf-8')
   var data=parser(str)
+  // data=Object.keys(data.text).map(function(k){return data.text[k].map(function(a){return a.text})})
   console.log(JSON.stringify(data, null, 2));
 }
 function from_api(page){
@@ -303,6 +354,11 @@ function from_api(page){
 function run_tests(){
   require("./tests/test")()
 }
-// from_file("Toronto")
+from_file("Toronto")
 
+// wiki= "hello {{Col-1}} world"
+// wiki="Toronto ({{IPAc-en|t|ɵ|ˈ|r|ɒ|n|t|oʊ}}, {{IPAc-en|local|ˈ|t|r|ɒ|n|oʊ}}) is the most populous city in Canada and the provincial capital of Ontario.",
+
+// wiki=wiki.replace(/\{\{.*?\}\}/,'')
+// console.log(wiki)
 
