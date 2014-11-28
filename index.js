@@ -234,7 +234,7 @@ var wtf_wikipedia=(function(){
       wiki=wiki.replace(/<ref [^>]{0,200}?\/>/gi,' ')// <ref name=""/>
       wiki=wiki.replace(/<ref [^>]{0,200}?>[\s\S]{0,500}?<\/ref>/ig,' ')// <ref name=""></ref>
       //other types of xml that we want to trash completely
-      wiki=wiki.replace(/<(table|code|dl|hiero|math|score|data) ?[^>]{0,200}?>[\s\S]{0,500}<\/(table|code|dl|hiero|math|score|data)>/gi,' ')// <table name=""><tr>hi</tr></table>
+      wiki=wiki.replace(/< ?(table|code|dl|hiero|math|score|data|gallery) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|dl|hiero|math|score|data|gallery) ?>/gi,' ')// <table name=""><tr>hi</tr></table>
 
       //some xml-like fragments we can also kill
       //
