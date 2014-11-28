@@ -89,12 +89,17 @@ var parser=(function(){
               //remove anchors from end [[toronto#history]]
               link=link.replace(/#[^ ]{1,100}/,'')
               link=helpers.capitalise(link)
-              var arr=[link]
-              if(txt){arr.push(txt)}
-              links.push(arr)
+              var obj={
+                page:link,
+                src: txt
+              }
+              links.push(obj)
           })
       }
       links=links.filter(helpers.onlyUnique)
+      if(links.length==0){
+        return undefined
+      }
       return links
     }
     // console.log(fetch_links("it is [[Tony Hawk|Tony]]s moher in [[Toronto]]s"))
@@ -105,7 +110,7 @@ var parser=(function(){
       if(tmp){
           tmp.forEach(function(c){
             c=c.replace(/^\[\[:?category:/i,'')
-            c=c.replace(/\|?\]\]$/i,'')
+            c=c.replace(/\|?[ \*]?\]\]$/i,'')
             if(c && !c.match(/[\[\]]/)){
               cats.push(c)
             }
@@ -129,6 +134,12 @@ var parser=(function(){
         return line
     }
 
+    function parse_image(img){
+      img= img.match(/(file|image):.*?[\|\]]/i) || ['']
+      img=img[0].replace(/\|$/,'')
+      return img
+    }
+
     function parse_infobox(str){
         var obj={}
         // var str= str.match(/\{\{Infobox [\s\S]*?\}\}/i)
@@ -142,7 +153,12 @@ var parser=(function(){
                   var value= l.match(/=(.{1,500})$/) || []
                   value=helpers.trim_whitespace(value[1] || '')
                   if(key && value){
-                    obj[key]=value
+                    obj[key]=parse_line(value)
+                    //turn number strings into integers
+                    if(obj[key].text.match(/^[0-9,]*$/)){
+                      obj[key].text= obj[key].text.replace(/,/g)
+                      obj[key].text= parseInt(obj[key].text)
+                    }
                 }
               }
           })
@@ -167,13 +183,6 @@ var parser=(function(){
       //give it the inglorious send-off it deserves..
       wiki=kill_xml(wiki)
 
-      //references (yes we're regexing some xml. blow me)
-      //nowiki..
-      //score..
-      //table..
-      //div..
-      wiki=wiki.replace(/< ?ref[a-z0-9=" ]{0,20}>[\s\S]{0,40}?<\/ ?ref ?>/g, " ")//<ref>...</ref>
-      wiki=wiki.replace(/< ?ref [a-z0-9=" ]{2,20}\/>/g, " ")//<ref name="asd"/>
       //remove tables
       wiki= wiki.replace(/\{\|[\s\S]{1,8000}?\|\}/g,'')
 
@@ -181,6 +190,10 @@ var parser=(function(){
       return wiki
     }
     // console.log(preprocess("hi [[as:Plancton]] there"))
+    // console.log(preprocess("hi [[as:Plancton]] there"))
+      // console.log(preprocess('hello <br/> world'))
+      // console.log(preprocess("hello <asd f> world </h2>"))
+
 
     function parse_line(line){
       return {
@@ -197,8 +210,6 @@ var parser=(function(){
         if(line.match(/^(thumb|right|left)\|/i)){
             return
         }
-        //random-ass html tags, for god-knows... <s>, <u>, <pre>, noinclude, ...
-        line=line.replace(/<[a-z \/]{0,40}>/i)
         //some IPA pronounciations leave blank junk parenteses
         line=line.replace(/\([^a-z]{0,8}\)/,'')
         line=helpers.trim_whitespace(line)
@@ -213,31 +224,73 @@ var parser=(function(){
     //some xml elements are just junk, and demand full inglorious death by regular exp
     //other xml elements, like <em>, are plucked out afterwards
     function kill_xml(wiki){
+      //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
       //luckily, refs can't be recursive..
-      wiki=wiki.replace(/<ref>[\s\S]{0,500}?<\/ref>/gi,'')// <ref></ref>
-      wiki=wiki.replace(/<ref [^>]{0,200}?\/>/gi,'')// <ref name=""/>
-      wiki=wiki.replace(/<ref [^>]{0,200}?>[\s\S]{0,500}?<\/ref>/ig,'')// <ref name=""></ref>
+      wiki=wiki.replace(/<ref>[\s\S]{0,500}?<\/ref>/gi,' ')// <ref></ref>
+      wiki=wiki.replace(/<ref [^>]{0,200}?\/>/gi,' ')// <ref name=""/>
+      wiki=wiki.replace(/<ref [^>]{0,200}?>[\s\S]{0,500}?<\/ref>/ig,' ')// <ref name=""></ref>
       //other types of xml that we want to trash completely
-      wiki=wiki.replace(/<(table|code|dl|hiero|math|score) ?[^>]{0,200}?>[\s\S]{0,500}<\/(table|code|dl|hiero|math|score)>/gi,'')// <table name=""><tr>hi</tr></table>
+      wiki=wiki.replace(/<(table|code|dl|hiero|math|score|data) ?[^>]{0,200}?>[\s\S]{0,500}<\/(table|code|dl|hiero|math|score|data)>/gi,' ')// <table name=""><tr>hi</tr></table>
+
+      //some xml-like fragments we can also kill
+      //
+      wiki=wiki.replace(/< ?(ref|span|div|table|data) [a-z0-9=" ]{2,20}\/ ?>/g, " ")//<ref name="asd"/>
+      //some formatting xml, we'll keep their insides though
+      wiki=wiki.replace(/<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?>/g, " ")//<sub>, </sub>
+      wiki=wiki.replace(/<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s)[ \/]?>/g, " ")//<abbr>, </abbr>
+      wiki=wiki.replace(/<[ \/]?h[0-9][ \/]?>/g, " ")//<h2>, </h2>
+      //a more generic + dangerous xml-tag removal
+      wiki=wiki.replace(/<[ \/]?[a-z0-9]{1,8}[ \/]?>/g, " ")//<samp>
+
       return wiki
     }
     // console.log(kill_xml("hello <ref>nono!</ref> world1. hello <ref name='hullo'>nono!</ref> world2. hello <ref name='hullo'/>world3.  hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4. hello<ref name=''/> world5 <ref name=''>nono</ref>, man.}}"))
     // console.log(kill_xml("hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4"))
     // console.log(kill_xml('hello<ref name="theroyal"/> world <ref>nono</ref>, man}}'))
-    // console.log(kill_xml('hello<ref name="theroyal"/> world5 <ref name="">nono</ref>, man}}'))
+    // console.log(kill_xml('hello<ref name="theroyal"/> world5 <ref name="">nono</ref>, man'))
+    // console.log(kill_xml("hello <asd f> world </h2>"))
+    // console.log(kill_xml("North America,<ref name=\"fhwa\"> and one of"))
 
+    // templates that need parsing and replacing for inline text
+    //https://en.wikipedia.org/wiki/Category:Magic_word_templates
+    var word_templates= function(wiki){
+      //we can be sneaky with this template, as it's often found inside other templates
+      wiki=wiki.replace(/\{\{URL\|([^ ]{4,100}?)\}\}/gi, "$1")
+      //this one needs to be handled manually
+      wiki=wiki.replace(/\{\{convert\|([0-9]*?)\|([^\|]*).*?\}\}/gi, "$1 $2")
+      //date-time templates
+      var d= new Date()
+      wiki=wiki.replace(/\{\{(CURRENT|LOCAL)DAY(2)?\}\}/gi, d.getDate())
+      var months=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      wiki=wiki.replace(/\{\{(CURRENT|LOCAL)MONTH(NAME|ABBREV)?\}\}/gi, months[d.getMonth()])
+      wiki=wiki.replace(/\{\{(CURRENT|LOCAL)YEAR\}\}/gi, d.getFullYear())
+      var days= [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+      wiki=wiki.replace(/\{\{(CURRENT|LOCAL)DAYNAME\}\}/gi, days[d.getDay()])
+      //formatting templates
+      wiki=wiki.replace(/\{\{(lc|uc|formatnum):(.*?)\}\}/gi, "$2")
+      wiki=wiki.replace(/\{\{pull quote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, "$1")
+
+      return wiki
+    }
+    // console.log(word_templates("hello {{CURRENTDAY}} world"))
+    // console.log(word_templates("hello {{CURRENTMONTH}} world"))
+    // console.log(word_templates("hello {{CURRENTYEAR}} world"))
+    // console.log(word_templates("hello {{LOCALDAYNAME}} world"))
+    // console.log(word_templates("hello {{lc:88}} world"))
+    // console.log(word_templates("hello {{pull quote|Life is like\n|author=[[asdf]]}} world"))
 
     var parser=function(wiki){
       var infobox=''
       var images=[]
       var categories=[];
-
       //detect if page is just redirect, and die
       if(wiki.match(/^#redirect \[\[.{2,60}?\]\]/i)){
         return {
           redirect:parse_redirect(wiki)
         }
       }
+      //parse templates like {{currentday}}
+      wiki= word_templates(wiki)
 
       //kill off th3 craziness
       wiki= preprocess(wiki)
@@ -257,7 +310,7 @@ var parser=(function(){
       matches=recursive_matches( '[', ']', wiki)
       matches.forEach(function(s){
         if(s.match(/\[\[(file|image)/i)){
-          images.push(s)
+          images.push(parse_image(s))
           wiki=wiki.replace(s,'')
         }
       })
@@ -304,7 +357,7 @@ var parser=(function(){
       })
 
       //add additional image from infobox, if applicable
-      if(infobox['image']){
+      if(infobox['image'] && infobox['image'].text){
         images.push(infobox['image'])
       }
 
@@ -353,17 +406,26 @@ function run_tests(){
   require("./tests/test")()
 }
 // from_file("Toronto")
+// from_file("Toronto_Star")
 // from_file("Royal_Cinema")
-from_file("Jodie_Emery")
+// from_file("Jodie_Emery")
+// var str="rter million acres (1000&nbsp;km<sup>2</sup>) of land "
+// var str= "having 1,800 buildings over {{convert|30|m|ft}}.<ref>{{cite web|url=http://skyscraperpage.com/diagrams|title=skyscraperpage.com/diagrams Most of these buildings are residential, whereas the central business district contains commercial office towers. There has been recent attention given for the need to retrofit many of these buildings, which were constructed beginning in the 1950s as residential apartment blocks to accommodate a quickly growing population. As of November 2011, the city had 132 high-rise buildings under construction.|url=http://www.thestar.com/news/article/1064773-highrises-we-re-tops-on-the-continent|publisher=Skyscraperpage.com |accessdate=April 18, 2014}}</ref>"
+// str="hello <h2> world </h2>"
+// str="hello <asd f> world </h2>"
+// str="North America,<ref name=\"fhwa\"> and one of"
+// var data=parser(str)
+// console.log(data.text.Intro[0])
+// wiki="{{convert|2|km|mi}}"
 
-// wiki= "hello {{Col-1}} world"
-// wiki="Toronto ({{IPAc-en|t|ɵ|ˈ|r|ɒ|n|t|oʊ}}, {{IPAc-en|local|ˈ|t|r|ɒ|n|oʊ}}) is the most populous city in Canada and the provincial capital of Ontario.",
-// wiki=wiki.replace(/\{\{.*?\}\}/,'')
-// console.log(wiki)
+
 
 
 //  TODO:
 //  [[St. Kitts]] sentence bug
 //  parse [[image: ..]]  and make href
-//  ./toronto undefined bug
 //  format infobox results better
+//  console.log(kill_xml("North America,<ref name=\"fhwa\"> and one of"))
+
+
+
