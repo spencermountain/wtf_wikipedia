@@ -1,4 +1,5 @@
 var request=require("request")
+var wtf_wikipedia= require("./index")
 
 var fetch=function(page, cb){
   var url='http://en.wikipedia.org/w/index.php?action=raw&title='+page
@@ -8,11 +9,14 @@ var fetch=function(page, cb){
     if(error){
       console.log(error)
     }
-    cb(body);
+    var data= wtf_wikipedia(body)
+    cb(data);
   });
 }
 
 if(typeof module !== 'undefined' && module.exports) {
   module.exports = fetch;
 }
-// fetch("Toronto",function(r){console.log(r)})
+// fetch("Radiohead",function(r){
+//   console.log(JSON.stringify(r, null, 2));
+// })

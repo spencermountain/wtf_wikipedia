@@ -1,0 +1,47 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="./wikiscript.js"></script>
+
+
+<style>
+  h2{color:grey;}
+  .c{color:#858585; font-size:15px;}
+  a{color:steelblue;}
+  .r{color:steelblue; position:relative; left:70px;}
+</style>
+
+
+<script>
+$(window).load(function(){
+
+  $("#title").keyup(function(){
+    var txt= $("#title").val()
+    console.log(txt)
+  })
+
+$.ajax( {
+    'url': 'http://en.wikipedia.org/w/api.php',
+    'data': {
+        'action': 'query',
+        'meta': 'userinfo',
+        'format': 'jsonp',
+        'origin': 'https://localhost:8888'
+    },
+    'xhrFields': {
+        'withCredentials': true
+    },
+    'done': function( data ) {
+        console.log(data)
+    },
+    'dataType': 'jsonp'
+} );
+
+})
+</script>
+
+
+
+<h1><a href="https://github.com/spencermountain/wtf_wikipedia">Wtf_wikipedia.js demo</a></h1>
+<h3>type a wikipedia title</h3>
+<input id="title"/>
+<pre id="result"></pre>

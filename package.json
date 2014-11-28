@@ -1,8 +1,8 @@
 {
-    "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
     "name": "wtf_wikipedia",
     "description": "parse wikiscript into json",
-    "version": "0.0.2",
+    "version": "0.0.3",
+    "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
     "repository": {
         "type": "git",
         "url": "git://github.com/spencermountain/wtf_wikipedia.git"
@@ -11,7 +11,19 @@
     "engines": [
         "node >= 0.3.6"
     ],
+    "keywords":[
+      "wikipedia",
+      "wikimedia markup",
+      "wikiscript"
+    ],
     "devDependencies": {
-        "request":"*"
-    }
+        "request":"*",
+        "grunt-contrib-uglify":"*",
+        "grunt-contrib-concat":"*"
+    },
+    "scripts": {
+        "test": "node tests/test.js",
+        "start": "node index.js"
+    },
+    "license": "MIT"
 }
