@@ -1,6 +1,6 @@
 ##Parsing Wikipedia script is basically NP-Hard
 
-its [really the wurst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax). I'm just trying my best.
+its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax). I'm just trying my best.
 
 it turns a wikipedia article into a parsed JSON object, and handles many ad-hoc recursive templates shinanigans ad infinitum.
 
@@ -10,6 +10,16 @@ m ok, lets write our own parser what culd go rong
 ```bash
 npm install wtf_wikipedia
 ````
+
+#What it does
+* Handles recursive templates and links- like [[.. [[...]] ]]
+* Return per-sentence plaintext
+* Parse and format internal links
+* Properly resolve {{CURRENTMONTH}} and {{CONVERT ..}} type templates
+* Parse infoboxes into a pretty key-value obj
+* Parse images, files, and categories
+* Eliminate majority of xml, latex, css, and 'Egyptian hierogliphics'! cruft
+
 #Output
 Sample output of [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
 ````javascript
