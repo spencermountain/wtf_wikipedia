@@ -2,7 +2,7 @@
 
 its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).   I'm just trying my best.
 
-'''wtf_wikipedia''' turns a wikipedia article into a well-built JSON object, and handles many ad-hoc recursive template shinanigans ad infinitum.
+**wtf_wikipedia** turns a wikipedia article into a well-built JSON object, and handles many ad-hoc recursive template shinanigans ad infinitum.
 
 ```bash
 npm install wtf_wikipedia
@@ -12,52 +12,26 @@ var wikipedia = require("wtf_wikipedia")
 wikipedia.from_api("Toronto", function(markup){
   var obj= wikipedia.parse(markup)
   console.log(obj)
-    /*{text:
-       { Intro:
-          [ [Object],
-            [Object],
-            ...
-         'Before 1800':
-          [ [Object],
-            ...
-      data:
-       { categories:
-          [ 'Former colonial capitals in Canada',
-            'Populated places established in 1793',
-             ...
-         images:
-          [ 'File:Toronto 1894large.jpg',
-            'File:Old Union Station Toronto.jpg',
-             ...
-         infobox: {
-            official_name: [Object],
-            nickname: [Object],
-            motto: [Object],
-            ...
-        }
-     }
-    */
 })
 ````
 if you only want some nice plaintext, and no junk:
 ````javascript
 var text= wikipedia.plaintext(markup)
 ````
-if you're scripting this with something else, install -g, and:
+if you're scripting this from the shell, install -g, and:
 ````shell
 wikipedia_plaintext Toronto Blue Jays
 # "Toronto is the most populous city in Canada and the provincial capital..."
 wikipedia Toronto Blue Jays
-# {huge json}
+# {big json}
 ````
 
 
-Rolling your own parser is always a bad idea, but this library is the least-bad.
-If you're grepping a wikipedia dump, check out [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb)
+Rolling your own parser is always a bad idea, but this library is the least-bad out there.
 
 #What it does
-* Detects and parses redirects and disambig pages
-* Parse infoboxes into a pretty key-value obj
+* Detects and parses redirects and disambiguation pages
+* Parse infoboxes into a formatted key-value object
 * Handles recursive templates and links- like [[.. [[...]] ]]
 * Per-sentence plaintext
 * Parse and format internal links
@@ -242,5 +216,8 @@ Sample Output for [Whistling]()
 ````
 
 Don't be mad at me, be mad at them
+
+
+If you're grepping a wikipedia dump, check out [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb)
 
 MIT
