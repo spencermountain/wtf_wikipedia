@@ -15,8 +15,9 @@ var wikipedia = require("wtf_wikipedia")
 //fetch wikipedia markup from api..
 wikipedia.from_api("Toronto", function(markup){
   var obj= wikipedia.parse(markup)
-  console.log(obj)
   // {text:[...], data:{...}}
+  var mayor= obj.data.infobox.leader_name
+  // "John Tory"
 })
 ````
 if you only want some nice plaintext, and no junk:
@@ -72,9 +73,6 @@ Sample output for [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
           },
           {
             "page": "Toronto"
-          },
-          {
-            "page": "Canada"
           }
         ]
       },
@@ -110,17 +108,6 @@ Sample output for [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
           {
             "page": "College Street (Toronto)",
             "src": "College Street"
-          }
-        ]
-      },
-      "location": {
-        "text": "Toronto, Ontario",
-        "links": [
-          {
-            "page": "Toronto"
-          },
-          {
-            "page": "Ontario"
           }
         ]
       },
