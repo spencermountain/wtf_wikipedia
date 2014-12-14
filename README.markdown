@@ -1,8 +1,10 @@
 ##Parsing Wikipedia markup is basically NP-Hard
 
-its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).   I'm just trying my best.
+its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).   I'm trying my best.
 
-**wtf_wikipedia** turns wikipedia article markupt into a well-built JSON object, and handles many vile recursive template shinanigans.
+**wtf_wikipedia** turns wikipedia article markup into a well-built JSON object, and handles many vile recursive template shinanigans and regular-expressionisms.
+
+Making your own parser is never a good idea, but this library is a very detailed and deliberate creature. With it, you can gork through a wikipedia dump and maintain a reasonable expectation of respect.
 
 ```bash
 npm install wtf_wikipedia
@@ -10,10 +12,11 @@ npm install wtf_wikipedia
 then:
 ````javascript
 var wikipedia = require("wtf_wikipedia")
+//fetch wikipedia markup from api..
 wikipedia.from_api("Toronto", function(markup){
   var obj= wikipedia.parse(markup)
   console.log(obj)
-  // {text:{ Intro:{}, Climate:{} }, data:{infobox:{}, categories:[], images:[]} }
+  // {text:[...], data:{...}}
 })
 ````
 if you only want some nice plaintext, and no junk:
@@ -30,33 +33,29 @@ wikipedia Toronto Blue Jays
 ````
 
 
-Rolling your own parser is always a bad idea, but this library is the least-bad out there.
-
 #What it does
-* Detects and parses redirects and disambiguation pages
-* Parse infoboxes into a formatted key-value object
+* Detects and parses **redirects** and **disambiguation** pages
+* Parse **infoboxes** into a formatted key-value object
 * Handles recursive templates and links- like [[.. [[...]] ]]
 * Per-sentence plaintext
 * Parse and format internal links
 * Properly resolve the {{CURRENTMONTH}} and {{CONVERT ..}} type templates
-* Parse images, files, and categories
-* Eliminate majority of xml, latex, css, and 'Egyptian hierogliphics'! cruft
+* Parse **images**, files, and **categories**
+* Eliminate majority of xml, latex, css, and 'Egyptian hierogliphics' templating cruft
 
 
-its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView) and [txtwiki](https://github.com/joaomsa/txtwiki.js)
 
 m ok, lets write our own parser what culd go rong
 
+its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView) and [txtwiki](https://github.com/joaomsa/txtwiki.js)
+
 #Methods
-* .parse(markup)
-  turns wikipedia markup into a nice json object
-* .from_api(title, callback)
-  retrieves raw contents of a wikipedia article
-* .plaintext(markup)
-  returns only nice text of the article
+* **.parse(markup)** - turns wikipedia markup into a nice json object
+* **.from_api(title, callback)** -  retrieves raw contents of a wikipedia article
+* **.plaintext(markup)** -  returns only nice text of the article
 
 #Output
-Sample output of [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
+Sample output for [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
 ````javascript
 {
   "text": {
@@ -79,15 +78,7 @@ Sample output of [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
           }
         ]
       },
-      {
-        "text": "It was built in 1939 and owned by Miss Ray Levinsky."
-      },
-      {
-        "text": "When it was built in 1939, it was called The Pylon, with an accompanying large sign at the front of the theatre."
-      },
-      {
-        "text": "It included a roller-skating rink at the rear of the theatre, and a dance hall on the second floor."
-      },
+      ...
       {
         "text": "The Royal was featured in the 2013 film The F Word.",
         "links": [
@@ -107,25 +98,11 @@ Sample output of [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
       "Theatres completed in 1939"
     ],
     "images": [
-      {
-        "text": "Royal_Cinema.JPG"
-      }
+      "Royal_Cinema.JPG"
     ],
     "infobox": {
-      "name": {
-        "text": "Royal Cinema"
-      },
-      "former": {
+      "former_name": {
         "text": "The Pylon, The Golden Princess"
-      },
-      "image": {
-        "text": "Royal_Cinema.JPG"
-      },
-      "image_size": {
-        "text": "250px"
-      },
-      "caption": {
-        "text": "The Royal Cinema in 2009"
       },
       "address": {
         "text": "608 College Street",
@@ -150,15 +127,7 @@ Sample output of [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
       "opened": {
         "text": 1939
       },
-      "architect": {
-        "text": "Benjamin Swartz"
-      },
-      "website": {
-        "text": "theroyal.to"
-      },
-      "capacity": {
-        "text": 390
-      }
+      ...
     }
   }
 }
