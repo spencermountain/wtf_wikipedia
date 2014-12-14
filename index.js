@@ -460,7 +460,7 @@ var wtf_wikipedia=(function(){
 
 // wtf_wikipedia.from_api("Whistler", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
 // wtf_wikipedia.from_api("Whistling", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
-wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
+// wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
 
 // from_file("Toronto")
 // from_file("Toronto_Star")

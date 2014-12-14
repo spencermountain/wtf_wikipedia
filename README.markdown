@@ -2,28 +2,31 @@
 
 its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).   I'm just trying my best.
 
-**wtf_wikipedia** turns a wikipedia article into a well-built JSON object, and handles many ad-hoc recursive template shinanigans ad infinitum.
+**wtf_wikipedia** turns wikipedia article markupt into a well-built JSON object, and handles many vile recursive template shinanigans.
 
 ```bash
 npm install wtf_wikipedia
 ````
+then:
 ````javascript
 var wikipedia = require("wtf_wikipedia")
 wikipedia.from_api("Toronto", function(markup){
   var obj= wikipedia.parse(markup)
   console.log(obj)
+  // {text:{ Intro:{}, Climate:{} }, data:{infobox:{}, categories:[], images:[]} }
 })
 ````
 if you only want some nice plaintext, and no junk:
 ````javascript
 var text= wikipedia.plaintext(markup)
+// "Toronto is the most populous city in Canada and the provincial capital..."
 ````
 if you're scripting this from the shell, install -g, and:
 ````shell
-wikipedia_plaintext Toronto Blue Jays
-# "Toronto is the most populous city in Canada and the provincial capital..."
+wikipedia_plaintext George Clooney
+# George Timothy Clooney (born May 6, 1961) is an American actor ...
 wikipedia Toronto Blue Jays
-# {big json}
+# {text:[...], data:{...}}
 ````
 
 
