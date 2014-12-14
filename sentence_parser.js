@@ -8,7 +8,15 @@ var sentence_parser = function(text) {
   var unbalanced=function(str){
     var open= str.match(/\[\[/) || []
     var closed= str.match(/\]\]/) || []
-    return open.length > closed.length
+    if(open.length > closed.length){
+      return true
+    }
+    //make sure quotes are closed too
+    var quotes=str.match(/"/g)
+    if(quotes && (quotes.length % 2)!=0 && str.length<900){
+      return true
+    }
+    return false
   }
 
   // first, do a greedy split
@@ -21,7 +29,7 @@ var sentence_parser = function(text) {
     if (tmp[i]) {
       tmp[i] = tmp[i].replace(/^\s+|\s+$/g, "");
       //if this does not look like a good sentence, prepend to next one
-      if (tmp[i].match(abbrev) || tmp[i].match(/[ |\.][A-Z]\.?$/) || unbalanced(tmp[i])) {
+      if (tmp[i].match(abbrev) || tmp[i].match(/[ |\.][A-Z]\.?$/i) || unbalanced(tmp[i])) {
         tmp[parseInt(i) + 1] = tmp[i] + " " + tmp[parseInt(i) + 1];
       } else {
         sentences.push(tmp[i]);
@@ -33,6 +41,7 @@ var sentence_parser = function(text) {
   var clean = [];
   for (i in sentences) {
     sentences[i] = sentences[i].replace(/^\s+|\s+$/g, "");
+    sentences[i] = sentences[i].replace(/  /g, " ");
     if (sentences[i]) {
       clean.push(sentences[i]);
     }
@@ -52,3 +61,7 @@ if (typeof module !== "undefined" && module.exports) {
 // console.log(sentence_parser("Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that's fine, etc. and you can attend Feb. 8th. Bye").length==3)
 // console.log(sentence_parser("Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York").length==1)
 // console.log(sentence_parser("he said ... oh yeah. I did").length==2)
+
+//morgan freeman
+// console.log(sentence_parser("a staged reenactment of [[Perry v. Brown]] world"))
+// console.log(sentence_parser("This language allowed people (e.g. shepherds) to communicate"))

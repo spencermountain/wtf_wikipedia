@@ -134,9 +134,12 @@ var wtf_wikipedia=(function(){
         // [[Replaced|Links]]
         line=line.replace(/\[\[:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, "$2$3")
         // External links
-        line=line.replace(/\[(https?|news|ftp|mailto|gopher|irc):\/\/[^ ]{4,1500}\]/g, "")
+        line=line.replace(/\[(https?|news|ftp|mailto|gopher|irc):\/\/[^\]\| ]{4,1500}([\| ].*?)?\]/g, "$2")
         return line
     }
+     // console.log(resolve_links("[http://www.whistler.ca www.whistler.ca]"))
+
+
 
     function parse_image(img){
       img= img.match(/(file|image):.*?[\|\]]/i) || ['']
@@ -156,10 +159,10 @@ var wtf_wikipedia=(function(){
                   key= helpers.trim_whitespace(key[1] || '')
                   var value= l.match(/=(.{1,500})$/) || []
                   value=helpers.trim_whitespace(value[1] || '')
-                  if(key && value){
+                  if(key && value && !value.match(/^[\|<]/) && !value.match(/=/)){
                     obj[key]=parse_line(value)
                     //turn number strings into integers
-                    if(obj[key].text.match(/^[0-9,]*$/)){
+                    if(obj[key].text && obj[key].text.match(/^[0-9,]*$/)){
                       obj[key].text= obj[key].text.replace(/,/g)
                       obj[key].text= parseInt(obj[key].text)
                     }
@@ -273,6 +276,7 @@ var wtf_wikipedia=(function(){
       //formatting templates
       wiki=wiki.replace(/\{\{(lc|uc|formatnum):(.*?)\}\}/gi, "$2")
       wiki=wiki.replace(/\{\{pull quote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, "$1")
+      wiki=wiki.replace(/\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, "$1")
 
       return wiki
     }
@@ -283,15 +287,41 @@ var wtf_wikipedia=(function(){
     // console.log(word_templates("hello {{lc:88}} world"))
     // console.log(word_templates("hello {{pull quote|Life is like\n|author=[[asdf]]}} world"))
 
-    var wtf_wikipedia=function(wiki){
+    //return a list of probable pages for this disambig page
+    var parse_disambig=function(wiki){
+      var pages=[]
+      var lines= wiki.replace(/\r/g,'').split(/\n/)
+      lines.forEach(function(str){
+        //if there's an early link in the list
+        if(str.match(/^\*.{0,40}\[\[.*\]\]/)){
+          var links=fetch_links(str)
+          if(links[0] && links[0].page){
+            pages.push(links[0].page)
+          }
+        }
+      })
+      return {
+        type:"disambiguation",
+        pages:pages
+      }
+    }
+
+
+    var main=function(wiki){
       var infobox=''
       var images=[]
       var categories=[];
+      wiki=wiki||''
       //detect if page is just redirect, and die
       if(wiki.match(/^#redirect \[\[.{2,60}?\]\]/i)){
         return {
+          type:"redirect",
           redirect:parse_redirect(wiki)
         }
+      }
+      //detect if page is disambiguator page
+      if(wiki.match(/\{\{ ?(disambig|disambiguation|dab|disamb)(\|[a-z =]*?)? ?\}\}/i) || wiki.match(/^.{3,25} may refer to/i)){
+        return parse_disambig(wiki)
       }
       //parse templates like {{currentday}}
       wiki= word_templates(wiki)
@@ -306,7 +336,7 @@ var wtf_wikipedia=(function(){
         if(s.match(/\{\{infobox /i) && !infobox){
           infobox= parse_infobox(s)
         }
-        if(s.match(/\{\{(cite|infobox|sister|geographic|navboxes|listen)[ \|:\n]/i)){
+        if(s.match(/\{\{(cite|infobox|sister|geographic|navboxes|listen|historical)[ \|:\n]/i)){
           wiki=wiki.replace(s,'')
         }
       })
@@ -331,29 +361,30 @@ var wtf_wikipedia=(function(){
       var output={}
       var section="Intro"
       lines.forEach(function(part){
+        if(!section){
+            return
+        }
+        //remove some nonsense wp lines
+        //
+        //ignore list
+        if(part.match(/^[\*#:;\|]/)){
+            return
+        }
+        //ignore only-punctuation
+        if(!part.match(/[a-z0-9]/i)){
+            return
+        }
+        //headings
+        if(part.match(/^={1,5}[^=]{1,200}={1,5}$/)){
+            section=part.match(/^={1,5}([^=]{2,200}?)={1,5}$/)[1] || ''
+            //ban some sections
+            if(section.match(/^(references|see also|external links|further reading)$/i)){
+                section=null
+            }
+            return
+        }
+        //still alive, add it to the section
         sentence_parser(part).forEach(function(line){
-          if(!section){
-              return
-          }
-          //ignore list
-          if(line.match(/^[\*#:;\|]/)){
-              return
-          }
-          //ignore only-punctuation
-          if(!line.match(/[a-z0-9]/i)){
-              return
-          }
-          //headings
-          if(line.match(/^={1,5}[^=]{1,200}={1,5}$/)){
-              section=line.match(/^={1,5}([^=]{2,200}?)={1,5}$/)[1] || ''
-              //ban some sections
-              if(section.match(/^(references|see also|external links|further reading)$/i)){
-                  section=null
-              }
-              return
-          }
-
-          //still alive, add it to the section
           line=parse_line(line)
           if(line && line.text){
               if(!output[section]){
@@ -377,18 +408,18 @@ var wtf_wikipedia=(function(){
         text:output,
         data:{
           categories:cats,
-          images:images
-        },
-        infobox:infobox
+          images:images,
+          infobox:infobox
+        }
       }
 
     }
 
     if (typeof module !== 'undefined' && module.exports) {
-      module.exports = wtf_wikipedia;
+      module.exports = main;
     }
 
-    return wtf_wikipedia
+    return main
 })()
 
 
@@ -410,14 +441,19 @@ var wtf_wikipedia=(function(){
 
 // function from_api(page){
 //   var fetch=require("./fetch_text")
-//   fetch(page, function(str){
-//     console.log(parser(str).text['Intro'])
+//   fetch(page, function(data){
+//     // data=plaintext(data)
+//     console.log(JSON.stringify(data, null, 2));
 //   })
 // }
+// from_api("Whistler")//disambig
+// from_api("Whistler, British Columbia")
+// from_api("Whistling")
+// from_api("Clark Kent")
 // function run_tests(){
 //   require("./tests/test")()
 // }
-
+// console.log(wtf_wikipedia("Another group of whistlers were the Mazateco Indians of Oaxaca, Mexico.[http://books.google.com/books/about/Whistled_languages.html?id=l1RiAAAAMAAJ Busnel & Classe 1976]").text)
 
 // from_file("Toronto")
 // from_file("Toronto_Star")
