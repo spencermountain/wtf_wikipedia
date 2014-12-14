@@ -2,9 +2,11 @@
 
 its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).   I'm trying my best.
 
-**wtf_wikipedia** turns wikipedia article markup into a well-built JSON object, and handles many vile recursive template shinanigans and regular-expressionisms.
+**wtf_wikipedia** turns wikipedia article markup into **JSON**, and handles many vile recursive template shinanigans, [half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template variants, and illicit wiki-esque shorthands.
 
-Making your own parser is never a good idea, but this library is a very detailed and deliberate creature. With it, you can gork through a wikipedia dump and maintain a reasonable expectation of respect.
+*Making your own parser is never a good idea*, but this library is a very detailed and deliberate creature.
+
+My friend, blast-through your wikipedia dump and maintain that unflawed style.
 
 ```bash
 npm install wtf_wikipedia
