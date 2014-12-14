@@ -5,6 +5,7 @@ var wtf_wikipedia=(function(){
     "use strict";
     if (typeof module !== 'undefined' && module.exports) {
       var sentence_parser= require("./sentence_parser")
+      var fetch=require("./fetch_text")
     }
 
     //find all the pairs of '[[...[[..]]...]]' in the text
@@ -308,7 +309,7 @@ var wtf_wikipedia=(function(){
 
 
     var main=function(wiki){
-      var infobox=''
+      var infobox={}
       var images=[]
       var categories=[];
       wiki=wiki||''
@@ -333,7 +334,7 @@ var wtf_wikipedia=(function(){
       //remove {{template {{}} }} recursions
       var matches=recursive_matches( '{', '}', wiki)
       matches.forEach(function(s){
-        if(s.match(/\{\{infobox /i) && !infobox){
+        if(s.match(/\{\{infobox /i) && Object.keys(infobox).length==0){
           infobox= parse_infobox(s)
         }
         if(s.match(/\{\{(cite|infobox|sister|geographic|navboxes|listen|historical)[ \|:\n]/i)){
@@ -405,6 +406,7 @@ var wtf_wikipedia=(function(){
       }
 
       return {
+        type:"page",
         text:output,
         data:{
           categories:cats,
@@ -415,59 +417,55 @@ var wtf_wikipedia=(function(){
 
     }
 
-    if (typeof module !== 'undefined' && module.exports) {
-      module.exports = main;
+    var from_api=function(page, cb){
+      cb= cb || console.log
+      if(!fetch){//no http method, on the client side
+        return cb(null)
+      }
+      fetch(page, cb)
     }
 
-    return main
+    var plaintext=function(str){
+      var data= main(str)
+      return Object.keys(data.text).map(function(k){
+        return data.text[k].map(function(a){
+          return a.text
+        }).join(" ")
+      }).join("\n")
+    }
+
+
+    var methods={
+        from_api:from_api,
+        parse:main,
+        plaintext:plaintext,
+      }
+
+    if (typeof module !== 'undefined' && module.exports) {
+      module.exports = methods
+    }
+
+    return methods
 })()
 
-
-// var plaintext=function(data){
-//   return Object.keys(data.text).map(function(k){
-//     return data.text[k].map(function(a){
-//       return a.text
-//     }).join(" ")
-//   })
-// }
 
 // function from_file(page){
 //   fs=require("fs")
 //   var str = fs.readFileSync(__dirname+"/tests/"+page+".txt", 'utf-8')
-//   var data=wtf_wikipedia(str)
+//   var data=wtf_wikipedia.parse(str)
 //   // data=plaintext(data)
 //   console.log(JSON.stringify(data, null, 2));
 // }
 
-// function from_api(page){
-//   var fetch=require("./fetch_text")
-//   fetch(page, function(data){
-//     // data=plaintext(data)
-//     console.log(JSON.stringify(data, null, 2));
-//   })
-// }
-// from_api("Whistler")//disambig
-// from_api("Whistler, British Columbia")
-// from_api("Whistling")
-// from_api("Clark Kent")
-// function run_tests(){
-//   require("./tests/test")()
-// }
-// console.log(wtf_wikipedia("Another group of whistlers were the Mazateco Indians of Oaxaca, Mexico.[http://books.google.com/books/about/Whistled_languages.html?id=l1RiAAAAMAAJ Busnel & Classe 1976]").text)
+
+// wtf_wikipedia.from_api("Whistler", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
+// wtf_wikipedia.from_api("Whistling", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
+wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
 
 // from_file("Toronto")
 // from_file("Toronto_Star")
 // from_file("Royal_Cinema")
 // from_file("Jodie_Emery")
-// var str="rter million acres (1000&nbsp;km<sup>2</sup>) of land "
-// var str= "having 1,800 buildings over {{convert|30|m|ft}}.<ref>{{cite web|url=http://skyscraperpage.com/diagrams|title=skyscraperpage.com/diagrams Most of these buildings are residential, whereas the central business district contains commercial office towers. There has been recent attention given for the need to retrofit many of these buildings, which were constructed beginning in the 1950s as residential apartment blocks to accommodate a quickly growing population. As of November 2011, the city had 132 high-rise buildings under construction.|url=http://www.thestar.com/news/article/1064773-highrises-we-re-tops-on-the-continent|publisher=Skyscraperpage.com |accessdate=April 18, 2014}}</ref>"
-// str="hello <h2> world </h2>"
-// str="hello <asd f> world </h2>"
-// str="North America,<ref name=\"fhwa\"> and one of"
-// var data=parser(str)
-// console.log(data.text.Intro[0])
-// wiki="{{convert|2|km|mi}}"
-
 
 
 

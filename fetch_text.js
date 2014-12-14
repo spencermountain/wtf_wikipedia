@@ -1,5 +1,4 @@
 var request=require("request")
-var wtf_wikipedia= require("./index")
 
 var fetch=function(page, cb){
   var url='http://en.wikipedia.org/w/index.php?action=raw&title='+page
@@ -9,8 +8,7 @@ var fetch=function(page, cb){
     if(error){
       console.log(error)
     }
-    var data= wtf_wikipedia(body)
-    cb(data);
+    cb(body);
   });
 }
 

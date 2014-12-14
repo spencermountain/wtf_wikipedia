@@ -1,6 +1,6 @@
 var path      = require('path')
 var fs= require("fs")
-var parser= require("../index")
+var parser= require("../index").parse
 
 var tests=[
   {

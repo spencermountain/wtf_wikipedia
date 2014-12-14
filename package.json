@@ -1,7 +1,7 @@
 {
     "name": "wtf_wikipedia",
     "description": "parse wikiscript into json",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
     "repository": {
         "type": "git",
@@ -26,7 +26,8 @@
         "start": "node index.js"
     },
     "bin": {
-      "wikipedia": "./bin/bin.js"
+      "wikipedia": "./bin/parse.js",
+      "wikipedia_plaintext": "./bin/plaintext.js"
     },
     "license": "MIT"
 }
