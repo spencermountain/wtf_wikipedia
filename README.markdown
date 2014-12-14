@@ -31,12 +31,11 @@ var text= wikipedia.plaintext(markup)
 * Detects and parses **redirects** and **disambiguation** pages
 * Parse **infoboxes** into a formatted key-value object
 * Handles recursive templates and links- like [[.. [[...]] ]]
-* Per-sentence plaintext
+* **Per-sentence** plaintext and link resolution
 * Parse and format internal links
-* Properly resolve the {{CURRENTMONTH}} and {{CONVERT ..}} type templates
+* Properly resolve {{CURRENTMONTH}} and {{CONVERT ..}} type templates
 * Parse **images**, files, and **categories**
-* Eliminate majority of xml, latex, css, and 'Egyptian hierogliphics' templating cruft
-
+* Eliminate xml, latex, css, table-sorting, and 'Egyptian hierogliphics' cruft
 
 
 m ok, lets write our own parser what culd go rong
@@ -52,6 +51,7 @@ if you're scripting this from the shell, install -g, and:
 ````shell
 wikipedia_plaintext George Clooney
 # George Timothy Clooney (born May 6, 1961) is an American actor ...
+
 wikipedia Toronto Blue Jays
 # {text:[...], data:{...}}
 ````
