@@ -4,7 +4,7 @@ its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).   I
 
 **wtf_wikipedia** turns wikipedia article markup into **JSON**, and handles many vile recursive template shinanigans, [half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template variants, and illicit wiki-esque shorthands.
 
-Making your own parser is never a good idea, but this library is a very detailed and deliberate creature.
+Making your own parser is never a good idea, but this library is a very detailed and deliberate creature. Place your faith well within.
 
 ```bash
 npm install wtf_wikipedia
@@ -24,13 +24,6 @@ if you only want some nice plaintext, and no junk:
 ````javascript
 var text= wikipedia.plaintext(markup)
 // "Toronto is the most populous city in Canada and the provincial capital..."
-````
-if you're scripting this from the shell, install -g, and:
-````shell
-wikipedia_plaintext George Clooney
-# George Timothy Clooney (born May 6, 1961) is an American actor ...
-wikipedia Toronto Blue Jays
-# {text:[...], data:{...}}
 ````
 
 
@@ -55,6 +48,13 @@ its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaV
 * **.from_api(title, callback)** -  retrieves raw contents of a wikipedia article
 * **.plaintext(markup)** -  returns only nice text of the article
 
+if you're scripting this from the shell, install -g, and:
+````shell
+wikipedia_plaintext George Clooney
+# George Timothy Clooney (born May 6, 1961) is an American actor ...
+wikipedia Toronto Blue Jays
+# {text:[...], data:{...}}
+````
 #Output
 Sample output for [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
 ````javascript
