@@ -84,7 +84,7 @@ var wtf_wikipedia=(function(){
                 link=s.replace(/\[\[(.{2,60}?)\]\](\w{0,10})/g,"$1") //remove ['s
               }
               //kill off non-wikipedia namespaces
-              if(link.match(/^:?(category|catégorie|Kategorie|Categoría|Categoria|تصنيف|image|file|image|fichier|datei|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i)){
+              if(link.match(/^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i)){
                   return
               }
               //kill off just anchor links [[#history]]
@@ -111,10 +111,10 @@ var wtf_wikipedia=(function(){
 
     function fetch_categories(wiki){
       var cats=[]
-      var tmp=wiki.match(/\[\[:?(category|catégorie|Kategorie|Categoría|Categoria|تصنيف):(.{2,60}?)\]\](\w{0,10})/gi)//regular links
+      var tmp=wiki.match(/\[\[:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف):(.{2,60}?)\]\](\w{0,10})/gi)//regular links
       if(tmp){
           tmp.forEach(function(c){
-            c=c.replace(/^\[\[:?(category|catégorie|Kategorie|Categoría|Categoria|تصنيف):/i,'')
+            c=c.replace(/^\[\[:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف):/i,'')
             c=c.replace(/\|?[ \*]?\]\]$/i,'')
             if(c && !c.match(/[\[\]]/)){
               cats.push(c)
@@ -127,7 +127,7 @@ var wtf_wikipedia=(function(){
     //return only rendered text of wiki links
     function resolve_links(line){
         // categories, images, files
-        var re= /\[\[:?Category:[^\[\]]{2,80}\]\]/g
+        var re= /\[\[:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف):[^\]\]]{2,80}\]\]/gi
         line=line.replace(re, "")
 
         // [[Common links]]
@@ -156,10 +156,14 @@ var wtf_wikipedia=(function(){
           str=str.replace(/\{\{Collapsible list[^\}]{10,1000}\}\}/g,'')
           str.replace(/\r/g,'').split(/\n/).forEach(function(l){
               if(l.match(/^\|/)){
-                  var key= l.match(/^\| ?([^ ]{1,200}) /) || {}
+                  var key= l.match(/^\| ?(.{1,200}?)[ =]/) || []
                   key= helpers.trim_whitespace(key[1] || '')
                   var value= l.match(/=(.{1,500})$/) || []
                   value=helpers.trim_whitespace(value[1] || '')
+                  //this is necessary for mongodb, im sorry
+                  if(key && key.match(/[\.]/)){
+                    key=null
+                  }
                   if(key && value && !value.match(/^[\|<]/) && !value.match(/=/)){
                     obj[key]=parse_line(value)
                     //turn number strings into integers
@@ -175,6 +179,10 @@ var wtf_wikipedia=(function(){
     }
 
     function preprocess(wiki){
+      //the dump requires us to unescape xml
+      // unescape = [['>', '&gt;'],[ '<', '&lt;'],[ "'", '&apos;'],[ '"', '&quot;'],[ '&', '&amp;']]
+      // unescape.forEach(function(a){wiki=wiki.replace(new RegExp(a[1],'g'), a[0])})
+
       //remove comments
       wiki= wiki.replace(/<!--[^>]{0,2000}-->/g,'')
       wiki=wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/ig,'')
@@ -296,7 +304,7 @@ var wtf_wikipedia=(function(){
         //if there's an early link in the list
         if(str.match(/^\*.{0,40}\[\[.*\]\]/)){
           var links=fetch_links(str)
-          if(links[0] && links[0].page){
+          if(links && links[0] && links[0].page){
             pages.push(links[0].page)
           }
         }
@@ -334,17 +342,17 @@ var wtf_wikipedia=(function(){
       //remove {{template {{}} }} recursions
       var matches=recursive_matches( '{', '}', wiki)
       matches.forEach(function(s){
-        if(s.match(/\{\{(infobox|ficha) /i) && Object.keys(infobox).length==0){
+        if(s.match(/\{\{(infobox|ficha|Канадский|Inligtingskas|لغة) /i) && Object.keys(infobox).length==0){
           infobox= parse_infobox(s)
         }
-        if(s.match(/\{\{(cite|infobox|sister|geographic|navboxes|listen|historical|citeweb|citenews|lien|clima|cita|Internetquelle|article|weather)[ \|:\n]/i)){
+        if(s.match(/\{\{(cite|infobox|Inligtingskas|sister|geographic|navboxes|listen|historical|citeweb|citenews|lien|clima|cita|Internetquelle|article|weather)[ \|:\n]/i)){
           wiki=wiki.replace(s,'')
         }
       })
       //second, remove [[file:...[[]] ]] recursions
       matches=recursive_matches( '[', ']', wiki)
       matches.forEach(function(s){
-        if(s.match(/\[\[(file|image|fichier|datei)/i)){
+        if(s.match(/\[\[(file|image|fichier|datei|plik)/i)){
           images.push(parse_image(s))
           wiki=wiki.replace(s,'')
         }
@@ -356,10 +364,10 @@ var wtf_wikipedia=(function(){
 
       //get list of links, categories
       var cats=fetch_categories(wiki)
-      var lines= wiki.replace(/\r/g,'').split(/\n/)
 
-      //next, map each line into
+      //next, map each line into a parsable sentence
       var output={}
+      var lines= wiki.replace(/\r/g,'').split(/\n/)
       var section="Intro"
       lines.forEach(function(part){
         if(!section){
@@ -377,10 +385,13 @@ var wtf_wikipedia=(function(){
         }
         //headings
         if(part.match(/^={1,5}[^=]{1,200}={1,5}$/)){
-            section=part.match(/^={1,5}([^=]{2,200}?)={1,5}$/)[1] || ''
+            section=part.match(/^={1,5}([^=]{2,200}?)={1,5}$/) || []
+            section= section[1]||''
+            section=section.replace(/\./g, ' ') // this is necessary for mongo, i'm sorry
+            section=helpers.trim_whitespace(section)
             //ban some sections
-            if(section.match(/^(references|see also|external links|further reading|Notes et références|Voir aussi|Liens externes)$/i)){
-                section=null
+            if(section && section.match(/^(references|see also|external links|further reading|Notes et références|Voir aussi|Liens externes)$/i)){
+                section=undefined
             }
             return
         }
@@ -447,25 +458,26 @@ var wtf_wikipedia=(function(){
 })()
 
 
-// function from_file(page){
-//   fs=require("fs")
-//   var str = fs.readFileSync(__dirname+"/tests/"+page+".txt", 'utf-8')
-//   var data=wtf_wikipedia.parse(str)
-//   // data=plaintext(data)
-//   console.log(JSON.stringify(data, null, 2));
-// }
-
-
 // wtf_wikipedia.from_api("Whistler", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
 // wtf_wikipedia.from_api("Whistling", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
 // wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s).data.infobox.leader_name)})//disambig
-// wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
+// wtf_wikipedia.from_api("Athens", function(s){  console.log(wtf_wikipedia.parse(s)) })//disambig
+
+// function from_file(page){
+//   fs=require("fs")
+//   var str = fs.readFileSync(__dirname+"/tests/"+page+".txt", 'utf-8')
+//   // console.log(wtf_wikipedia.plaintext(str))
+//   var data=wtf_wikipedia.parse(str)
+//   console.log(JSON.stringify(data, null, 2));
+// }
 
 // from_file("Toronto")
 // from_file("Toronto_Star")
 // from_file("Royal_Cinema")
 // from_file("Jodie_Emery")
 // from_file("Redirect")
+// from_file("Africaans")
+// from_file("Anarchism")
 
 
 

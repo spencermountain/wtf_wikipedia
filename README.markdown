@@ -25,7 +25,7 @@ if you only want some nice plaintext, and no junk:
 var text= wikipedia.plaintext(markup)
 // "Toronto is the most populous city in Canada and the provincial capital..."
 ````
-
+This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb), letting you parse a wikipedia dump in nodejs easily.
 
 #What it does
 * Detects and parses **redirects** and **disambiguation** pages
@@ -174,7 +174,5 @@ Sample Output for [Whistling]()
 
 Don't be mad at me, be mad at them
 
-
-If you're grepping a wikipedia dump, check out [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb)
 
 MIT
