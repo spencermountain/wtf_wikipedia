@@ -7,29 +7,29 @@ var tests=[
     file:"royal_cinema",
     assert:function(data){
       // console.log(data)
-      console.assert(data.data.infobox.opened.text==1939, "INFOBOX")
+      console.assert(data.infobox.opened.text==1939, "INFOBOX")
       console.assert(data.text.Intro.length>=5, "intro length")
-      console.assert(data.data.categories.length==4, "categories length")
+      console.assert(data.categories.length==4, "categories length")
     }
   },
   {
     file:"toronto_star",
     assert:function(data){
-      console.assert(data.data.infobox.publisher.text=='John D. Cruickshank')
+      console.assert(data.infobox.publisher.text=='John D. Cruickshank')
       console.assert(data.text.Intro.length>=1)
       console.assert(data.text.History.length>=7)
-      console.assert(data.data.categories.length==6)
-      // console.assert(data.data.images.length==3)
+      console.assert(data.categories.length==6)
+      // console.assert(data.images.length==3)
     }
   },
   {
     file:"jodie_emery",
     assert:function(data){
-      console.assert(data.data.infobox.nationality.text=='Canadian')
+      console.assert(data.infobox.nationality.text=='Canadian')
       console.assert(data.text.Intro.length>=1)
       console.assert(data.text['Political career'].length>=5)
-      console.assert(data.data.categories.length==8)
-      console.assert(data.data.images.length==1)
+      console.assert(data.categories.length==8)
+      console.assert(data.images.length==1)
     }
   },
   {

@@ -84,7 +84,7 @@ var wtf_wikipedia=(function(){
                 link=s.replace(/\[\[(.{2,60}?)\]\](\w{0,10})/g,"$1") //remove ['s
               }
               //kill off non-wikipedia namespaces
-              if(link.match(/^:?(category|image|file|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i)){
+              if(link.match(/^:?(category|catégorie|Kategorie|Categoría|Categoria|تصنيف|image|file|image|fichier|datei|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i)){
                   return
               }
               //kill off just anchor links [[#history]]
@@ -344,7 +344,7 @@ var wtf_wikipedia=(function(){
       //second, remove [[file:...[[]] ]] recursions
       matches=recursive_matches( '[', ']', wiki)
       matches.forEach(function(s){
-        if(s.match(/\[\[(file|image|fichier|Datei)/i)){
+        if(s.match(/\[\[(file|image|fichier|datei)/i)){
           images.push(parse_image(s))
           wiki=wiki.replace(s,'')
         }
@@ -408,11 +408,9 @@ var wtf_wikipedia=(function(){
       return {
         type:"page",
         text:output,
-        data:{
-          categories:cats,
-          images:images,
-          infobox:infobox
-        }
+        categories:cats,
+        images:images,
+        infobox:infobox
       }
 
     }
@@ -461,6 +459,7 @@ var wtf_wikipedia=(function(){
 // wtf_wikipedia.from_api("Whistler", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
 // wtf_wikipedia.from_api("Whistling", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
 // wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s).data.infobox.leader_name)})//disambig
+// wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
 
 // from_file("Toronto")
 // from_file("Toronto_Star")

@@ -15,8 +15,8 @@ var wikipedia = require("wtf_wikipedia")
 //fetch wikipedia markup from api..
 wikipedia.from_api("Toronto", function(markup){
   var obj= wikipedia.parse(markup)
-  // {text:[...], data:{...}}
-  var mayor= obj.data.infobox.leader_name
+  // {text:[...], infobox:{}, categories:[...], images:[] }
+  var mayor= obj.infobox.leader_name
   // "John Tory"
 })
 ````
@@ -53,7 +53,8 @@ wikipedia_plaintext George Clooney
 # George Timothy Clooney (born May 6, 1961) is an American actor ...
 
 wikipedia Toronto Blue Jays
-# {text:[...], data:{...}}
+# {text:[...], infobox:{}, categories:[...], images:[] }
+
 ````
 #Output
 Sample output for [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
@@ -88,34 +89,32 @@ Sample output for [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
       }
     ]
   },
-  "data": {
-    "categories": [
-      "National Historic Sites in Ontario",
-      "Cinemas and movie theatres in Toronto",
-      "Streamline Moderne architecture in Canada",
-      "Theatres completed in 1939"
-    ],
-    "images": [
-      "Royal_Cinema.JPG"
-    ],
-    "infobox": {
-      "former_name": {
-        "text": "The Pylon, The Golden Princess"
-      },
-      "address": {
-        "text": "608 College Street",
-        "links": [
-          {
-            "page": "College Street (Toronto)",
-            "src": "College Street"
-          }
-        ]
-      },
-      "opened": {
-        "text": 1939
-      },
-      ...
-    }
+  "categories": [
+    "National Historic Sites in Ontario",
+    "Cinemas and movie theatres in Toronto",
+    "Streamline Moderne architecture in Canada",
+    "Theatres completed in 1939"
+  ],
+  "images": [
+    "Royal_Cinema.JPG"
+  ],
+  "infobox": {
+    "former_name": {
+      "text": "The Pylon, The Golden Princess"
+    },
+    "address": {
+      "text": "608 College Street",
+      "links": [
+        {
+          "page": "College Street (Toronto)",
+          "src": "College Street"
+        }
+      ]
+    },
+    "opened": {
+      "text": 1939
+    },
+    ...
   }
 }
 ````
@@ -168,10 +167,9 @@ Sample Output for [Whistling]()
         [Object],
         [Object] ],
      ' Whistling competitions': [ [Object], [Object], [Object], [Object] ] },
-  data:
-   { categories: [ 'Oral communication', 'Vocal music', 'Vocal skills' ],
+     categories: [ 'Oral communication', 'Vocal music', 'Vocal skills' ],
      images: [ 'Image:Duveneck Whistling Boy.jpg' ],
-     infobox: {} } }
+     infobox: {} }
 ````
 
 Don't be mad at me, be mad at them
