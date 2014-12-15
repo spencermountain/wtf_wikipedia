@@ -111,10 +111,10 @@ var wtf_wikipedia=(function(){
 
     function fetch_categories(wiki){
       var cats=[]
-      var tmp=wiki.match(/\[\[:?category:(.{2,60}?)\]\](\w{0,10})/gi)//regular links
+      var tmp=wiki.match(/\[\[:?(category|catégorie|Kategorie|Categoría|Categoria|تصنيف):(.{2,60}?)\]\](\w{0,10})/gi)//regular links
       if(tmp){
           tmp.forEach(function(c){
-            c=c.replace(/^\[\[:?category:/i,'')
+            c=c.replace(/^\[\[:?(category|catégorie|Kategorie|Categoría|Categoria|تصنيف):/i,'')
             c=c.replace(/\|?[ \*]?\]\]$/i,'')
             if(c && !c.match(/[\[\]]/)){
               cats.push(c)
@@ -226,7 +226,7 @@ var wtf_wikipedia=(function(){
     }
 
     function parse_redirect(wiki){
-      return wiki.match(/#redirect \[\[(.{2,60}?)\]\]/i)[1]
+      return wiki.match(/#(redirect|weiterleitung|redirecci[oó]n) \[\[(.{2,60}?)\]\]/i)[2]
     }
 
     //some xml elements are just junk, and demand full inglorious death by regular exp
@@ -314,7 +314,7 @@ var wtf_wikipedia=(function(){
       var categories=[];
       wiki=wiki||''
       //detect if page is just redirect, and die
-      if(wiki.match(/^#redirect \[\[.{2,60}?\]\]/i)){
+      if(wiki.match(/^#(redirect|weiterleitung|redirecci[oó]n) \[\[.{2,60}?\]\]/i)){
         return {
           type:"redirect",
           redirect:parse_redirect(wiki)
@@ -334,17 +334,17 @@ var wtf_wikipedia=(function(){
       //remove {{template {{}} }} recursions
       var matches=recursive_matches( '{', '}', wiki)
       matches.forEach(function(s){
-        if(s.match(/\{\{infobox /i) && Object.keys(infobox).length==0){
+        if(s.match(/\{\{(infobox|ficha) /i) && Object.keys(infobox).length==0){
           infobox= parse_infobox(s)
         }
-        if(s.match(/\{\{(cite|infobox|sister|geographic|navboxes|listen|historical)[ \|:\n]/i)){
+        if(s.match(/\{\{(cite|infobox|sister|geographic|navboxes|listen|historical|citeweb|citenews|lien|clima|cita|Internetquelle|article|weather)[ \|:\n]/i)){
           wiki=wiki.replace(s,'')
         }
       })
       //second, remove [[file:...[[]] ]] recursions
       matches=recursive_matches( '[', ']', wiki)
       matches.forEach(function(s){
-        if(s.match(/\[\[(file|image)/i)){
+        if(s.match(/\[\[(file|image|fichier|Datei)/i)){
           images.push(parse_image(s))
           wiki=wiki.replace(s,'')
         }
@@ -379,7 +379,7 @@ var wtf_wikipedia=(function(){
         if(part.match(/^={1,5}[^=]{1,200}={1,5}$/)){
             section=part.match(/^={1,5}([^=]{2,200}?)={1,5}$/)[1] || ''
             //ban some sections
-            if(section.match(/^(references|see also|external links|further reading)$/i)){
+            if(section.match(/^(references|see also|external links|further reading|Notes et références|Voir aussi|Liens externes)$/i)){
                 section=null
             }
             return
@@ -399,7 +399,7 @@ var wtf_wikipedia=(function(){
       //add additional image from infobox, if applicable
       if(infobox['image'] && infobox['image'].text){
         var img=infobox['image'].text || ''
-        if(!img.match(/^(image|file)/i)){
+        if(!img.match(/^(image|file|fichier|Datei)/i)){
           img="File:"+img
         }
         images.push(img)
@@ -460,12 +460,13 @@ var wtf_wikipedia=(function(){
 
 // wtf_wikipedia.from_api("Whistler", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
 // wtf_wikipedia.from_api("Whistling", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
-// wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
+// wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s).data.infobox.leader_name)})//disambig
 
 // from_file("Toronto")
 // from_file("Toronto_Star")
 // from_file("Royal_Cinema")
 // from_file("Jodie_Emery")
+// from_file("Redirect")
 
 
 
