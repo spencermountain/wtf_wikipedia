@@ -1,0 +1,71 @@
+{{British film list}}
+{{Expand list|type=Film|date=January 2014}}
+
+A list of '''British''' films scheduled for release in '''[[2014 in film|2014]]'''
+
+==2014==
+{{Compact ToC|num=yes|extlinks=yes|nobreak=yes}}
+{{-}}
+{| class="wikitable sortable" style="width:100%;"
+|-
+! Title !! Director !! Cast <small>(Subject of documentary)</small> !! Genre !! Notes !! Release date
+|-
+| <span id="#"></span> ''[['71 (film)|'71]]'' || Yann Demange || [[Jack O'Connell (actor)|Jack O'Connell]], [[Sean Harris]], [[Paul Anderson (actor)|Paul Anderson]], [[Charlie Murphy (actress)|Charlie Murphy]], [[David Wilmot]], [[Paul Popplewell]] || [[Drama film|Drama]] || [[StudioCanal UK]] || {{dts||10|17}}
+|-
+|<span id="A"></span> ''[[All Is by My Side]]'' || [[John Ridley]] || [[André Benjamin]], [[Hayley Atwell]], [[Burn Gorman]], [[Imogen Poots]], [[Ruth Negga]] || [[Drama film|Drama]] || Content Media || {{dts||08|08}}
+|-
+| ''{{sortname|A|Long Way Down|dab=film}}'' || Pascal Chaumeil || [[Toni Collette]], [[Pierce Brosnan]], [[Aaron Paul]], [[Imogen Poots]] || [[Comedy film|Comedy]] || [[Lionsgate]]<br/>Based on the novel of the [[A Long Way Down|same name]] by [[Nick Hornby]] || {{dts||03|21}}
+|-
+|<span id="B"></span>''[[Before I Go to Sleep (film)|Before I Go to Sleep]]'' || [[Rowan Joffé]] || [[Nicole Kidman]], [[Colin Firth]], [[Mark Strong]], [[Anne-Marie Duff]], [[Dean-Charles Chapman]] || [[Thriller film|Thriller]] || [[StudioCanal UK]]<br/>Based on the novel of the [[Before I Go to Sleep|same name]] by [[S. J. Watson]] || {{dts||09|05}}
+|-
+|<span id="C"></span>''[[Cuban Fury]]'' || [[James Griffiths (director)|James Griffiths]] || [[Nick Frost]], [[Rashida Jones]], [[Olivia Colman]], [[Chris O'Dowd]], [[Wendi McLendon-Covey]], [[Alexandra Roach]] || [[Romantic comedy film|Romantic comedy]] || [[StudioCanal]] || {{dts||02|14}}
+|-
+|<span id="F"></span>''[[Frank (film)|Frank]]'' || [[Lenny Abrahamson]] || [[Domhnall Gleeson]], [[Maggie Gyllenhaal]], [[Scoot McNairy]], [[Michael Fassbender]] || [[Comedy film|Comedy]], [[Drama film|Drama]] || Magnolia Pictures || {{dts||05|09}}
+|-
+|<span id="G"></span>|''{{sortname|The|Grand Budapest Hotel}}'' || [[Wes Anderson]] || [[Ralph Fiennes]], [[F. Murray Abraham]], [[Mathieu Amalric]], [[Adrien Brody]], [[Willem Dafoe]], [[Jeff Goldblum]], [[Harvey Keitel]], [[Jude Law]], [[Bill Murray]], [[Edward Norton]], [[Saoirse Ronan]], [[Jason Schwartzman]], [[Léa Seydoux]], [[Tilda Swinton]], [[Tom Wilkinson]], [[Owen Wilson]], [[Tony Revolori]] || [[Comedy film|Comedy]] || [[Fox Searchlight Pictures]] || {{dts||03|07}}
+|-
+|<span id="K"></span> ''[[The Imitation Game]]'' || [[Morten Tyldum]] || [[Benedict Cumberbatch]], [[Keira Knightley]], [[Matthew Goode]], [[Mark Strong]], [[Charles Dance]] || [[Historical]], [[Biographical film|Biographical]], [[Thriller film|Thriller]] || [[Studiocanal]] || {{dts||11|14}}
+|-
+|<span id="I"></span> ''{{sortname|The|Inbetweeners 2}}'' || [[Damon Beesley]], [[Iain Morris]] || [[Simon Bird]], [[James Buckley (actor)|James Buckley]], [[Blake Harrison]], [[Joe Thomas (actor)|Joe Thomas]] || [[Comedy film|Comedy]] || [[Film4 Productions]]<br/>Preceded by [[The Inbetweeners Movie]] (2011) || {{dts||08|06}}
+|-
+|<span id="J"></span> ''[[Jimmy's Hall]]'' || [[Ken Loach]] || [[Barry Ward (actor)|Barry Ward]], [[Simone Kirby]], [[Jim Norton (Irish actor)|Jim Norton]] || [[Drama film|Drama]] || Entertainment One || {{dts||05|30}}
+|-
+|<span id="K"></span> ''[[Kingsman: The Secret Service]]'' || [[Matthew Vaughn]] || [[Colin Firth]], [[Michael Caine]], [[Samuel L. Jackson]], [[Jack Davenport]], [[Mark Hamill]] || [[Action film|Action]], [[Comedy film|Comedy]] || [[20th Century Fox]]<br/>Based on the comics ''[[The Secret Service (comics)|The Secret Service]]'' by [[Dave Gibbons]] || {{dts||10|17}}
+|-
+|<span id="L"></span> ''[[Love, Rosie (film)|Love, Rosie]]'' || Christian Ditter || [[Lily Collins]], [[Sam Claflin]], [[Tamsin Egerton]], [[Suki Waterhouse]], [[Jaime Winstone]] || [[Drama film|Drama]] || [[Lionsgate]]<br/>Based on the novel ''[[Where Rainbows End]]'' by [[Cecelia Ahern]] || {{dts||10|17}}
+|-
+|<span id="M"></span> ''[[Monsters: Dark Continent]]'' || Tom Green || [[Johnny Harris (actor)|Johnny Harris]], Sam Keeley, [[Joe Dempsie]] || [[Science fiction film|Sci-Fi]] || [[Vertigo Films]]<br/>Preceded by ''[[Monsters (2010 film)|Monsters]]'' (2010) || {{dts||09|26}}
+|-
+|''{{sortname|A|Most Wanted Man|dab=film}}'' || [[Anton Corbijn]] || [[Philip Seymour Hoffman]], [[Rachel McAdams]], [[Robin Wright]], [[Willem Dafoe]], [[Grigoriy Dobrygin]] || [[Thriller film|Thriller]] || [[Entertainment One]]<br/>Based on the novel of the [[A Most Wanted Man|same name]] by [[John le Carré]] || {{dts||09|05}}
+|-
+| ''[[Mr. Turner (film)|Mr. Turner]]'' || [[Mike Leigh]] || [[Timothy Spall]], [[Lesley Manville]], [[Roger Ashton-Griffiths]], [[Joshua McGuire]], Dorothy Atkinson || [[Drama film|Drama]] || [[Entertainment One]] || {{dts||10|31}}
+|-
+| ''[[Mrs. Brown's Boys D'Movie]]'' || Ben Kellett || [[Brendan O'Carroll]], Jennifer Gibney, Danny O'Carroll, Eilish O'Carroll, [[Nick Nevern]], Paddy Houlihan, Dermot O'Neill || [[Comedy film|Comedy]] || [[Universal Pictures]]<br/>Based on the television series ''[[Mrs Brown's Boys]]'' || {{dts||06|27}}
+|-
+| <span id="P"></span> ''[[Paddington (film)|Paddington]]'' || [[Paul King (director)|Paul King]] || [[Hugh Bonneville]], [[Nicole Kidman]], [[Colin Firth]], [[Julie Walters]], [[Jim Broadbent]], [[Peter Capaldi]] || [[Family film|Family]] || [[StudioCanal UK]]<br/>Based on the media of the [[Paddington Bear|same name]] || {{dts||12|12}}
+|-
+| ''[[Plastic (film)|Plastic]]'' || [[Julian Gilbey]] || [[Ed Speleers]], [[Alfie Allen]], [[Will Poulter]], [[Sebastian de Souza]], [[Emma Rigby]], [[Thomas Kretschmann]] || [[Action film|Action]], [[Comedy film|Comedy]] || [[Paramount Pictures]] || {{dts||05|02}}
+|-
+| ''[[Postman Pat: The Movie]]'' || [[Mike Disa]] || [[Stephen Mangan]], [[Jim Broadbent]], [[Rupert Grint]], [[David Tennant]] || [[Animated film|Animated]], [[Comedy film|Comedy]] || [[Lionsgate|Lions Gate Entertainment]], [[Icon Productions]]<br/>Based on the television series of the [[Postman Pat|same name]] || {{dts||05|23}}
+|-
+| ''[[Pride (2014 film)|Pride]]'' || [[Matthew Warchus]] || [[Bill Nighy]], [[Ben Schnetzer]], [[Joseph Gilgun]], [[Freddie Fox (actor)|Freddie Fox]] || [[Drama film|Drama]] || BBC Films || {{dts||09|12}}
+|-
+| ''[[Pudsey: The Movie]]'' || [[Nick Moore (film director)|Nick Moore]] || [[David Walliams]], [[John Sessions]], [[Jessica Hynes]], [[Izzy Meikle-Small]], Malachy Knights || [[Comedy film|Comedy]] || [[Vertigo Films]] || {{dts||07|18}}
+|-
+| <span id="Q"></span> ''{{sortname|The|Quiet Ones|dab=2014 film}}'' || John Pogue || [[Jared Harris]], [[Sam Claflin]], [[Olivia Cooke]], [[Erin Richards]] || [[Horror film|Horror]] || [[Lionsgate]] || {{dts||04|10}}
+|-
+| <span id="R"></span> ''{{sortname|The|Riot Club}}'' || [[Lone Scherfig]] || [[Max Irons]], [[Sam Claflin]], [[Douglas Booth]], [[Freddie Fox (actor)|Freddie Fox]] || [[Drama film|Drama]] || [[Universal Pictures]]<br/>Based on the play ''[[Posh (play)|Posh]]'' || {{dts||09|19}}
+|-
+| <span id="T"></span> ''[[Top Dog (2014 film)|Top Dog]]'' || [[Martin Kemp]] || [[Leo Gregory]], [[Ricci Harnett]], [[Vincent Regan]], George Russo || [[Drama film|Drama]] || [[Universal Pictures]] || {{dts||06|01}}
+|-
+| <span id="W"></span> ''[[Walking on Sunshine (film)|Walking on Sunshine]]'' || Max Giwa || [[Annabel Scholey]], [[Giulio Berruti]], [[Leona Lewis]], [[Katy Brand]] || [[Drama film|Drama]], [[Musical film|Musical]] || [[Vertigo Films]] || {{dts||06|27}}
+|}
+
+{{Cinema of the United Kingdom}}
+{{2014 films}}
+{{Films by country}}
+
+{{DEFAULTSORT:British Films of 2014}}
+[[Category:Lists of British films by year|2014]]
+[[Category:2014 in British cinema|Films]]
+[[Category:Lists of 2014 films by country or language]]

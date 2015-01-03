@@ -199,10 +199,6 @@ var wtf_wikipedia=(function(){
       //give it the inglorious send-off it deserves..
       wiki=kill_xml(wiki)
 
-      //remove tables
-      wiki= wiki.replace(/\{\|[\s\S]{1,8000}?\|\}/g,'')
-
-
       return wiki
     }
     // console.log(preprocess("hi [[as:Plancton]] there"))
@@ -234,7 +230,7 @@ var wtf_wikipedia=(function(){
     }
 
     function parse_redirect(wiki){
-      return wiki.match(/#(redirect|weiterleitung|redirecci[oó]n) \[\[(.{2,60}?)\]\]/i)[2]
+      return wiki.match(/#(redirect|redirection|weiterleitung|redirecci[oó]n|重定向|YÖNLENDİRM?E?|Преусмери|AÝDAW|АЙДАУ|tilvísun|OHJAUS|UUDELLEENOHJAUS|تغییر_مسیر|تغییرمسیر|PŘESMĚRUJ|перанакіраваньне|DOORVERWIJZING) \[\[(.{2,60}?)\]\]/i)[2]
     }
 
     //some xml elements are just junk, and demand full inglorious death by regular exp
@@ -246,7 +242,8 @@ var wtf_wikipedia=(function(){
       wiki=wiki.replace(/<ref [^>]{0,200}?\/>/gi,' ')// <ref name=""/>
       wiki=wiki.replace(/<ref [^>]{0,200}?>[\s\S]{0,500}?<\/ref>/ig,' ')// <ref name=""></ref>
       //other types of xml that we want to trash completely
-      wiki=wiki.replace(/< ?(table|code|dl|hiero|math|score|data|gallery) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|dl|hiero|math|score|data|gallery) ?>/gi,' ')// <table name=""><tr>hi</tr></table>
+
+      wiki=wiki.replace(/< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi,' ')// <table name=""><tr>hi</tr></table>
 
       //some xml-like fragments we can also kill
       //
@@ -286,6 +283,15 @@ var wtf_wikipedia=(function(){
       wiki=wiki.replace(/\{\{(lc|uc|formatnum):(.*?)\}\}/gi, "$2")
       wiki=wiki.replace(/\{\{pull quote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, "$1")
       wiki=wiki.replace(/\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, "$1")
+      if(wiki.match(/\{\{dts\|/)){
+        var date=(wiki.match(/\{\{dts\|(.*?)[\}\|]/)||[])[1]||''
+        date= new Date(date)
+        if(date){
+          wiki=wiki.replace(/\{\{dts\|.*?\}\}/gi, date.toDateString())
+        }else{
+          wiki=wiki.replace(/\{\{dts\|.*?\}\}/gi,' ')
+        }
+      }
 
       return wiki
     }
@@ -315,14 +321,54 @@ var wtf_wikipedia=(function(){
       }
     }
 
+    //turn a {|...table string into an array of arrays
+    var parse_table=function(wiki){
+      var table=[]
+      var lines= wiki.replace(/\r/g,'').split(/\n/)
+      lines.forEach(function(str){
+          //die
+          if(str.match(/^\|\}/)){
+            return
+          }
+          //make new row
+          if(str.match(/^\|-/)){
+            table.push([])
+            return
+          }
+          //this is some kind of comment
+          if(str.match(/^\|\+/)){
+            return
+          }
+          //juicy line
+          if(str.match(/^[\!\|]/)){
+            //make a new row
+            if(!table[table.length-1]){
+              table[table.length-1]=[]
+            }
+            var want= (str.match(/\|(.*)/)||[])[1]||''
+            want= helpers.trim_whitespace(want)||''
+            //handle the || shorthand..
+            if(want.match(/[!\|]{2}/)){
+              want.split(/[!\|]{2}/g).forEach(function(s){
+                s=helpers.trim_whitespace(s)
+                table[table.length-1].push(s)
+              })
+            }else{
+              table[table.length-1].push(want)
+            }
+          }
+      })
+      return table
+    }
 
     var main=function(wiki){
       var infobox={}
       var images=[]
       var categories=[];
+      var tables=[]
       wiki=wiki||''
       //detect if page is just redirect, and die
-      if(wiki.match(/^#(redirect|weiterleitung|redirecci[oó]n) \[\[.{2,60}?\]\]/i)){
+      if(wiki.match(/^#(redirect|redirection|weiterleitung|redirecci[oó]n|重定向|YÖNLENDİRM?E?|Преусмери|AÝDAW|АЙДАУ|tilvísun|OHJAUS|UUDELLEENOHJAUS|تغییر_مسیر|تغییرمسیر|PŘESMĚRUJ|перанакіраваньне|DOORVERWIJZING) \[\[.{2,60}?\]\]/i)){
         return {
           type:"redirect",
           redirect:parse_redirect(wiki)
@@ -337,6 +383,12 @@ var wtf_wikipedia=(function(){
 
       //kill off th3 craziness
       wiki= preprocess(wiki)
+
+      //find tables
+      tables= wiki.match(/\{\|[\s\S]{1,8000}?\|\}/g,'') || []
+      tables= tables.map(function(s){return parse_table(s)})
+      //remove tables
+      wiki= wiki.replace(/\{\|[\s\S]{1,8000}?\|\}/g,'')
 
       //reduce the scary recursive situations
       //remove {{template {{}} }} recursions
@@ -421,7 +473,8 @@ var wtf_wikipedia=(function(){
         text:output,
         categories:cats,
         images:images,
-        infobox:infobox
+        infobox:infobox,
+        tables:tables
       }
 
     }
@@ -463,14 +516,15 @@ var wtf_wikipedia=(function(){
 // wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s).data.infobox.leader_name)})//disambig
 // wtf_wikipedia.from_api("Athens", function(s){  console.log(wtf_wikipedia.parse(s)) })//disambig
 
-// function from_file(page){
-//   fs=require("fs")
-//   var str = fs.readFileSync(__dirname+"/tests/"+page+".txt", 'utf-8')
-//   // console.log(wtf_wikipedia.plaintext(str))
-//   var data=wtf_wikipedia.parse(str)
-//   console.log(JSON.stringify(data, null, 2));
-// }
+function from_file(page){
+  fs=require("fs")
+  var str = fs.readFileSync(__dirname+"/tests/"+page+".txt", 'utf-8')
+  // console.log(wtf_wikipedia.plaintext(str))
+  var data=wtf_wikipedia.parse(str)
+  console.log(JSON.stringify(data.tables, null, 2));
+}
 
+from_file("list")
 // from_file("Toronto")
 // from_file("Toronto_Star")
 // from_file("Royal_Cinema")
