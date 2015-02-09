@@ -7,6 +7,42 @@ var wtf_wikipedia=(function(){
       var sentence_parser= require("./sentence_parser")
       var fetch=require("./fetch_text")
     }
+    //needs more languages
+    var disambig_words=[
+      "disambig",//en
+      "disambiguation",//en
+      "dab",//en
+      "disamb",//en
+      "Begriffsklärung",//de
+      "ujednoznacznienie",//pl
+      "Doorverwijspagina",//nl
+      "消歧义",//zh
+      "desambiguación",//es
+      "Dubbelsinnig",//af
+      "disambigua",//it
+      "Desambiguação",//pt
+      "Homonymie",//fr
+      "неоднозначность",//ru
+      ]
+    //needs more languages
+    var infobox_words=[
+      "infobox",
+      "ficha",
+      "Канадский",
+      "Inligtingskas",
+      "Inligtingskas3",//af
+      "لغة"
+    ]
+    var category_words=[
+      "category",
+      "catégorie",
+      "Kategorie",
+      "Categoría",
+      "Categoria",
+      "Categorie",
+      "Kategoria",
+      "تصنيف"
+    ]
 
     //find all the pairs of '[[...[[..]]...]]' in the text
     //used to properly root out recursive template calls, [[.. [[...]] ]]
@@ -111,10 +147,12 @@ var wtf_wikipedia=(function(){
 
     function fetch_categories(wiki){
       var cats=[]
-      var tmp=wiki.match(/\[\[:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف):(.{2,60}?)\]\](\w{0,10})/gi)//regular links
+      var reg=new RegExp("\\[\\[:?("+category_words.join("|")+"):(.{2,60}?)\]\](\w{0,10})", "ig")
+      var tmp=wiki.match(reg)//regular links
       if(tmp){
+          var reg2=new RegExp("^\\[\\[:?("+category_words.slice(0,3).join("|")+"):", "ig")
           tmp.forEach(function(c){
-            c=c.replace(/^\[\[:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف):/i,'')
+            c=c.replace(reg2, '')
             c=c.replace(/\|?[ \*]?\]\]$/i,'')
             if(c && !c.match(/[\[\]]/)){
               cats.push(c)
@@ -285,8 +323,9 @@ var wtf_wikipedia=(function(){
       wiki=wiki.replace(/\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, "$1")
       if(wiki.match(/\{\{dts\|/)){
         var date=(wiki.match(/\{\{dts\|(.*?)[\}\|]/)||[])[1]||''
+        console.log(date)
         date= new Date(date)
-        if(date){
+        if(date && date.getTime() ){
           wiki=wiki.replace(/\{\{dts\|.*?\}\}/gi, date.toDateString())
         }else{
           wiki=wiki.replace(/\{\{dts\|.*?\}\}/gi,' ')
@@ -375,7 +414,8 @@ var wtf_wikipedia=(function(){
         }
       }
       //detect if page is disambiguator page
-      if(wiki.match(/\{\{ ?(disambig|disambiguation|dab|disamb)(\|[a-z =]*?)? ?\}\}/i) || wiki.match(/^.{3,25} may refer to/i)){
+      var template_reg=new RegExp("\\{\\{ ?("+disambig_words.join("|")+")(\\|[a-z =]*?)? ?\\}\\}","i")
+      if(wiki.match(template_reg)  ){ //|| wiki.match(/^.{3,25} may refer to/i)|| wiki.match(/^.{3,25} ist der Name mehrerer /i)
         return parse_disambig(wiki)
       }
       //parse templates like {{currentday}}
@@ -394,7 +434,8 @@ var wtf_wikipedia=(function(){
       //remove {{template {{}} }} recursions
       var matches=recursive_matches( '{', '}', wiki)
       matches.forEach(function(s){
-        if(s.match(/\{\{(infobox|ficha|Канадский|Inligtingskas|لغة) /i) && Object.keys(infobox).length==0){
+        var infobox_reg=new RegExp("\{\{("+infobox_words.join("|")+")[: ]", "ig")
+        if(s.match(infobox_reg, "ig") && Object.keys(infobox).length==0){
           infobox= parse_infobox(s)
         }
         if(s.match(/\{\{(cite|infobox|Inligtingskas|sister|geographic|navboxes|listen|historical|citeweb|citenews|lien|clima|cita|Internetquelle|article|weather)[ \|:\n]/i)){
@@ -479,12 +520,17 @@ var wtf_wikipedia=(function(){
 
     }
 
-    var from_api=function(page, cb){
+    var from_api=function(page, lang, cb){
+      if(typeof lang=="function"){
+        cb= lang
+        lang="en"
+      }
       cb= cb || console.log
+      lang=lang||"en"
       if(!fetch){//no http method, on the client side
         return cb(null)
       }
-      fetch(page, cb)
+      fetch(page, lang, cb)
     }
 
     var plaintext=function(str){
@@ -513,18 +559,20 @@ var wtf_wikipedia=(function(){
 
 // wtf_wikipedia.from_api("Whistler", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
 // wtf_wikipedia.from_api("Whistling", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
-// wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s).data.infobox.leader_name)})//disambig
-// wtf_wikipedia.from_api("Athens", function(s){  console.log(wtf_wikipedia.parse(s)) })//disambig
+// wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s).infobox.leader_name)})//disambig
+// wtf_wikipedia.from_api("Athens", 'de', function(s){ console.log(wtf_wikipedia.parse(s)) })//disambig
+// wtf_wikipedia.from_api("John Smith", 'en', function(s){ console.log(s);console.log(wtf_wikipedia.parse(s)) })//disambig
+// wtf_wikipedia.from_api("11B", 'en', function(s){ console.log(s);console.log(wtf_wikipedia.parse(s)) })//disambig
 
-function from_file(page){
-  fs=require("fs")
-  var str = fs.readFileSync(__dirname+"/tests/"+page+".txt", 'utf-8')
-  // console.log(wtf_wikipedia.plaintext(str))
-  var data=wtf_wikipedia.parse(str)
-  console.log(JSON.stringify(data.tables, null, 2));
-}
+// function from_file(page){
+//   fs=require("fs")
+//   var str = fs.readFileSync(__dirname+"/tests/"+page+".txt", 'utf-8')
+//   // console.log(wtf_wikipedia.plaintext(str))
+//   var data=wtf_wikipedia.parse(str)
+//   console.log(JSON.stringify(data.categories, null, 2));
+// }
 
-from_file("list")
+// from_file("list")
 // from_file("Toronto")
 // from_file("Toronto_Star")
 // from_file("Royal_Cinema")
