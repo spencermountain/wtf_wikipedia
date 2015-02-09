@@ -13,7 +13,7 @@ then:
 ````javascript
 var wikipedia = require("wtf_wikipedia")
 //fetch wikipedia markup from api..
-wikipedia.from_api("Toronto", function(markup){
+wikipedia.from_api("Toronto", "en", function(markup){
   var obj= wikipedia.parse(markup)
   // {text:[...], infobox:{}, categories:[...], images:[] }
   var mayor= obj.infobox.leader_name
@@ -25,6 +25,14 @@ if you only want some nice plaintext, and no junk:
 var text= wikipedia.plaintext(markup)
 // "Toronto is the most populous city in Canada and the provincial capital..."
 ````
+
+to call non-english wikipedia apis, add it as the second paramater to from_api
+```javascript
+wikipedia.from_api("Toronto", "de", function(markup){
+  var text= wikipedia.plaintext(markup)
+  //Toronto ist mit 2,6 Millionen Einwohnern..
+})
+```
 This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb), letting you parse a wikipedia dump in nodejs easily.
 
 #What it does
