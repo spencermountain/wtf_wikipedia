@@ -9,7 +9,7 @@
     },
     "main": "index.js",
     "engines": [
-        "node >= 0.3.6"
+        "node >= 0.4.0"
     ],
     "keywords":[
       "wikipedia",
