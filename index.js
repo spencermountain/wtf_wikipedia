@@ -520,17 +520,17 @@ var wtf_wikipedia=(function(){
 
     }
 
-    var from_api=function(page, lang, cb){
-      if(typeof lang=="function"){
-        cb= lang
-        lang="en"
+    var from_api=function(page, lang_or_wikiid, cb){
+      if(typeof lang_or_wikiid=="function"){
+        cb= lang_or_wikiid
+        lang_or_wikiid="en"
       }
       cb= cb || console.log
-      lang=lang||"en"
+      lang_or_wikiid=lang_or_wikiid||"en"
       if(!fetch){//no http method, on the client side
         return cb(null)
       }
-      fetch(page, lang, cb)
+      fetch(page, lang_or_wikiid, cb)
     }
 
     var plaintext=function(str){
