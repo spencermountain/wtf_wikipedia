@@ -35,6 +35,8 @@ wikipedia.from_api("Toronto", "de", function(markup){
 ```
 This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb), letting you parse a wikipedia dump in nodejs easily.
 
+[![npm version](https://badge.fury.io/js/wtf_wikipedia.svg)](http://badge.fury.io/js/wtf_wikipedia)
+
 #What it does
 * Detects and parses **redirects** and **disambiguation** pages
 * Parse **infoboxes** into a formatted key-value object

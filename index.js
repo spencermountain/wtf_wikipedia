@@ -534,7 +534,8 @@ var wtf_wikipedia=(function(){
     }
 
     var plaintext=function(str){
-      var data= main(str)
+      var data= main(str) || {}
+      data.text= data.text || {};
       return Object.keys(data.text).map(function(k){
         return data.text[k].map(function(a){
           return a.text
