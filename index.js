@@ -13,36 +13,58 @@ var wtf_wikipedia=(function(){
       "disambiguation",//en
       "dab",//en
       "disamb",//en
-      "Begriffsklärung",//de
+      "begriffsklärung",//de
       "ujednoznacznienie",//pl
-      "Doorverwijspagina",//nl
+      "doorverwijspagina",//nl
       "消歧义",//zh
       "desambiguación",//es
-      "Dubbelsinnig",//af
+      "dubbelsinnig",//af
       "disambigua",//it
-      "Desambiguação",//pt
-      "Homonymie",//fr
+      "desambiguação",//pt
+      "homonymie",//fr
       "неоднозначность",//ru
       ]
     //needs more languages
     var infobox_words=[
       "infobox",
       "ficha",
-      "Канадский",
-      "Inligtingskas",
-      "Inligtingskas3",//af
+      "канадский",
+      "inligtingskas",
+      "inligtingskas3",//af
       "لغة"
     ]
     var category_words=[
       "category",
       "catégorie",
-      "Kategorie",
-      "Categoría",
-      "Categoria",
-      "Categorie",
-      "Kategoria",
+      "kategorie",
+      "categoría",
+      "categoria",
+      "categorie",
+      "kategoria",
       "تصنيف"
     ]
+    var redirect_words=[
+      "redirect",
+      "redirection",
+      "weiterleitung",
+      "redirecci[oó]n",
+      "重定向",
+      "yönlendirm?e?",
+      "преусмери",
+      "aýdaw",
+      "айдау",
+      "tilvísun",
+      "ohjaus",
+      "uudelleenohjaus",
+      "تغییر_مسیر",
+      "تغییرمسیر",
+      "přesměruj",
+      "перанакіраваньне",
+      "doorverwijzing"
+    ]
+    //pulls target link out of redirect page
+    var REDIRECT_REGEX=new RegExp("^ ?#("+redirect_words.join('|')+") ?\\[\\[(.{2,60}?)\\]\\]","i")
+
 
     //find all the pairs of '[[...[[..]]...]]' in the text
     //used to properly root out recursive template calls, [[.. [[...]] ]]
@@ -267,8 +289,9 @@ var wtf_wikipedia=(function(){
         return line
     }
 
+    //grab the target link from a redirect page
     function parse_redirect(wiki){
-      return wiki.match(/#(redirect|redirection|weiterleitung|redirecci[oó]n|重定向|YÖNLENDİRM?E?|Преусмери|AÝDAW|АЙДАУ|tilvísun|OHJAUS|UUDELLEENOHJAUS|تغییر_مسیر|تغییرمسیر|PŘESMĚRUJ|перанакіраваньне|DOORVERWIJZING) \[\[(.{2,60}?)\]\]/i)[2]
+      return (wiki.match(REDIRECT_REGEX)||[])[2]
     }
 
     //some xml elements are just junk, and demand full inglorious death by regular exp
@@ -406,11 +429,11 @@ var wtf_wikipedia=(function(){
       var categories=[];
       var tables=[]
       wiki=wiki||''
-      //detect if page is just redirect, and die
-      if(wiki.match(/^#(redirect|redirection|weiterleitung|redirecci[oó]n|重定向|YÖNLENDİRM?E?|Преусмери|AÝDAW|АЙДАУ|tilvísun|OHJAUS|UUDELLEENOHJAUS|تغییر_مسیر|تغییرمسیر|PŘESMĚRUJ|перанакіраваньне|DOORVERWIJZING) \[\[.{2,60}?\]\]/i)){
+      //detect if page is just redirect, and return
+      if(wiki.match(REDIRECT_REGEX)){
         return {
           type:"redirect",
-          redirect:parse_redirect(wiki)
+          redirect: (wiki.match(REDIRECT_REGEX)||[])[2]
         }
       }
       //detect if page is disambiguator page
@@ -567,10 +590,10 @@ var wtf_wikipedia=(function(){
 
 // function from_file(page){
 //   fs=require("fs")
-//   var str = fs.readFileSync(__dirname+"/tests/"+page+".txt", 'utf-8')
+//   var str = fs.readFileSync(__dirname+"/tests/cache/"+page+".txt", 'utf-8')
 //   // console.log(wtf_wikipedia.plaintext(str))
 //   var data=wtf_wikipedia.parse(str)
-//   console.log(JSON.stringify(data.categories, null, 2));
+//   console.log(JSON.stringify(data, null, 2));
 // }
 
 // from_file("list")
