@@ -22,9 +22,7 @@
   },
   "devDependencies": {
     "grunt-contrib-uglify": "*",
-    "grunt-contrib-concat": "*",
-    "prfun": "*",
-    "es6-shim": "*"
+    "grunt-contrib-concat": "*"
   },
   "scripts": {
     "test": "node tests/test.js",
