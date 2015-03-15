@@ -54,7 +54,7 @@ its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaV
 
 #Methods
 * **.parse(markup)** - turns wikipedia markup into a nice json object
-* **.from_api(title, lang_or_wikiid, callback)** -  retrieves raw contents of a wikipedia article - or other mediawiki wiki identified by its dbname in http://en.wikipedia.org/w/api.php?action=sitematrix&format=json
+* **.from_api(title, lang_or_wikiid, callback)** -  retrieves raw contents of a wikipedia article - or other mediawiki wiki identified by its [dbname](http://en.wikipedia.org/w/api.php?action=sitematrix&format=json)
 * **.plaintext(markup)** -  returns only nice text of the article
 
 if you're scripting this from the shell, install -g, and:
