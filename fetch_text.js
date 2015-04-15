@@ -1,5 +1,5 @@
 var request= require("request")
-var site_map= require("./site_map")
+var site_map= require("./lib/site_map")
 
 var fetch=function(page, lang_or_wikiid, cb){
   lang_or_wikiid = lang_or_wikiid || 'en';

@@ -4,7 +4,7 @@
 var wtf_wikipedia=(function(){
     "use strict";
     if (typeof module !== 'undefined' && module.exports) {
-      var sentence_parser= require("./sentence_parser")
+      var sentence_parser= require("./lib/sentence_parser")
       var fetch=require("./fetch_text")
     }
     //needs more languages
