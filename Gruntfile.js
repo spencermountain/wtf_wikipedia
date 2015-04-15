@@ -5,10 +5,10 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         concat: {
             options: {
-                banner: '/*! <%= pkg.name %> \n by @spencermountain\n <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                banner: '/*! <%= pkg.name %> \n by @spencermountain\n <%= grunt.template.today("yyyy-mm-dd") %> <%= pkg.license %> */\n',
             },
             dist: {
-                src: ['./sentence_parser.js', './index.js'],
+                src: ['./lib/sentence_parser.js', './index.js'],
                 dest: './client_side/wikiscript.js'
             }
         },

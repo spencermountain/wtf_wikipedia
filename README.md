@@ -59,10 +59,10 @@ its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaV
 
 if you're scripting this from the shell, install -g, and:
 ````shell
-wikipedia_plaintext George Clooney
+$ wikipedia_plaintext George Clooney
 # George Timothy Clooney (born May 6, 1961) is an American actor ...
 
-wikipedia Toronto Blue Jays
+$ wikipedia Toronto Blue Jays
 # {text:[...], infobox:{}, categories:[...], images:[] }
 
 ````
@@ -133,7 +133,7 @@ Sample Output for [Whistling]()
 ````javascript
 { type: 'page',
   text:
-   { Intro: [ [Object], [Object], [Object], [Object] ],
+   { 'Intro': [ [Object], [Object], [Object], [Object] ],
      'Musical/melodic whistling':
       [ [Object],
         [Object],
@@ -163,8 +163,8 @@ Sample Output for [Whistling]()
         [Object],
         [Object],
         [Object] ],
-     Sport: [ [Object], [Object], [Object], [Object], [Object] ],
-     Superstition:
+     'Sport': [ [Object], [Object], [Object], [Object], [Object] ],
+     'Superstition':
       [ [Object],
         [Object],
         [Object],
@@ -176,10 +176,11 @@ Sample Output for [Whistling]()
         [Object],
         [Object],
         [Object] ],
-     ' Whistling competitions': [ [Object], [Object], [Object], [Object] ] },
-     categories: [ 'Oral communication', 'Vocal music', 'Vocal skills' ],
-     images: [ 'Image:Duveneck Whistling Boy.jpg' ],
-     infobox: {} }
+     ' Whistling competitions': [ [Object], [Object], [Object], [Object] ]
+     },
+     'categories': [ 'Oral communication', 'Vocal music', 'Vocal skills' ],
+     'images': [ 'Image:Duveneck Whistling Boy.jpg' ],
+     'infobox': {} }
 ````
 
 Don't be mad at me, be mad at them
