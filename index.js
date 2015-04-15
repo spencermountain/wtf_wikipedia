@@ -23,6 +23,7 @@ var wtf_wikipedia=(function(){
       "desambiguação",//pt
       "homonymie",//fr
       "неоднозначность",//ru
+      "anlam ayrımı",//tr
       ]
     //needs more languages
     var infobox_words=[
@@ -31,7 +32,9 @@ var wtf_wikipedia=(function(){
       "канадский",
       "inligtingskas",
       "inligtingskas3",//af
-      "لغة"
+      "لغة",
+      "bilgi kutusu",//tr
+      "yerleşim bilgi kutusu"
     ]
     var category_words=[
       "category",
@@ -41,7 +44,8 @@ var wtf_wikipedia=(function(){
       "categoria",
       "categorie",
       "kategoria",
-      "تصنيف"
+      "تصنيف",
+      "kategori"//tr
     ]
     var redirect_words=[
       "redirect",
@@ -60,7 +64,8 @@ var wtf_wikipedia=(function(){
       "تغییرمسیر",
       "přesměruj",
       "перанакіраваньне",
-      "doorverwijzing"
+      "doorverwijzing",
+      "yönlendirme"
     ]
     //pulls target link out of redirect page
     var REDIRECT_REGEX=new RegExp("^ ?#("+redirect_words.join('|')+") ?\\[\\[(.{2,60}?)\\]\\]","i")
@@ -172,7 +177,7 @@ var wtf_wikipedia=(function(){
       var reg=new RegExp("\\[\\[:?("+category_words.join("|")+"):(.{2,60}?)\]\](\w{0,10})", "ig")
       var tmp=wiki.match(reg)//regular links
       if(tmp){
-          var reg2=new RegExp("^\\[\\[:?("+category_words.slice(0,3).join("|")+"):", "ig")
+          var reg2=new RegExp("^\\[\\[:?("+category_words.join("|")+"):", "ig")
           tmp.forEach(function(c){
             c=c.replace(reg2, '')
             c=c.replace(/\|?[ \*]?\]\]$/i,'')
@@ -456,8 +461,8 @@ var wtf_wikipedia=(function(){
       //reduce the scary recursive situations
       //remove {{template {{}} }} recursions
       var matches=recursive_matches( '{', '}', wiki)
+      var infobox_reg=new RegExp("\{\{("+infobox_words.join("|")+")[: \n]", "ig")
       matches.forEach(function(s){
-        var infobox_reg=new RegExp("\{\{("+infobox_words.join("|")+")[: ]", "ig")
         if(s.match(infobox_reg, "ig") && Object.keys(infobox).length==0){
           infobox= parse_infobox(s)
         }
@@ -587,6 +592,7 @@ var wtf_wikipedia=(function(){
 // wtf_wikipedia.from_api("Athens", 'de', function(s){ console.log(wtf_wikipedia.parse(s)) })//disambig
 // wtf_wikipedia.from_api("John Smith", 'en', function(s){ console.log(s);console.log(wtf_wikipedia.parse(s)) })//disambig
 // wtf_wikipedia.from_api("11B", 'en', function(s){ console.log(s);console.log(wtf_wikipedia.parse(s)) })//disambig
+// wtf_wikipedia.from_api("Toronto", 'tr', function(s){console.log(wtf_wikipedia.parse(s)) })//disambig
 
 // function from_file(page){
 //   fs=require("fs")
