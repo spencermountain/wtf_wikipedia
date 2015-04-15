@@ -33,7 +33,11 @@ wikipedia.from_api("Toronto", "de", function(markup){
   //Toronto ist mit 2,6 Millionen Einwohnern..
 })
 ```
+
+Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It reliably turns wikiscript into HTML, but not valid XML. That means to use it, you need a [wikiscript -> virtual DOM -> screen-scraping] flow, but getting structured data out of it is a challenge.
+
 This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb), letting you parse a wikipedia dump in nodejs easily.
+
 
 [![npm version](https://badge.fury.io/js/wtf_wikipedia.svg)](http://badge.fury.io/js/wtf_wikipedia)
 
@@ -50,7 +54,7 @@ This library is built to work well with [wikipedia-to-mongo](https://github.com/
 
 m ok, lets write our own parser what culd go rong
 
-its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView) and [txtwiki](https://github.com/joaomsa/txtwiki.js)
+its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView), [txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
 
 #Methods
 * **.parse(markup)** - turns wikipedia markup into a nice json object
