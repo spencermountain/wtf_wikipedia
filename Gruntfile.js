@@ -8,7 +8,7 @@ module.exports = function(grunt) {
                 banner: '/*! <%= pkg.name %> \n by @spencermountain\n <%= grunt.template.today("yyyy-mm-dd") %> <%= pkg.license %> */\n',
             },
             dist: {
-                src: ['./lib/sentence_parser.js', './index.js'],
+                src: ['./i18n.js', './lib/sentence_parser.js', './lib/site_map.js', './lib/fetch_text.js', './index.js'],
                 dest: './client_side/wikiscript.js'
             }
         },

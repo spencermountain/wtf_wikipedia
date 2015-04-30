@@ -2,74 +2,13 @@
 // https://github.com/spencermountain/wtf_wikipedia
 //@spencermountain
 var wtf_wikipedia=(function(){
-    "use strict";
     if (typeof module !== 'undefined' && module.exports) {
-      var sentence_parser= require("./lib/sentence_parser")
-      var fetch=require("./fetch_text")
+      sentence_parser= require("./lib/sentence_parser")
+      fetch=require("./lib/fetch_text")
+      i18n=require("./i18n")
     }
-    //needs more languages
-    var disambig_words=[
-      "disambig",//en
-      "disambiguation",//en
-      "dab",//en
-      "disamb",//en
-      "begriffsklärung",//de
-      "ujednoznacznienie",//pl
-      "doorverwijspagina",//nl
-      "消歧义",//zh
-      "desambiguación",//es
-      "dubbelsinnig",//af
-      "disambigua",//it
-      "desambiguação",//pt
-      "homonymie",//fr
-      "неоднозначность",//ru
-      "anlam ayrımı",//tr
-      ]
-    //needs more languages
-    var infobox_words=[
-      "infobox",
-      "ficha",
-      "канадский",
-      "inligtingskas",
-      "inligtingskas3",//af
-      "لغة",
-      "bilgi kutusu",//tr
-      "yerleşim bilgi kutusu"
-    ]
-    var category_words=[
-      "category",
-      "catégorie",
-      "kategorie",
-      "categoría",
-      "categoria",
-      "categorie",
-      "kategoria",
-      "تصنيف",
-      "kategori"//tr
-    ]
-    var redirect_words=[
-      "redirect",
-      "redirection",
-      "weiterleitung",
-      "redirecci[oó]n",
-      "重定向",
-      "yönlendirm?e?",
-      "преусмери",
-      "aýdaw",
-      "айдау",
-      "tilvísun",
-      "ohjaus",
-      "uudelleenohjaus",
-      "تغییر_مسیر",
-      "تغییرمسیر",
-      "přesměruj",
-      "перанакіраваньне",
-      "doorverwijzing",
-      "yönlendirme"
-    ]
     //pulls target link out of redirect page
-    var REDIRECT_REGEX=new RegExp("^ ?#("+redirect_words.join('|')+") ?\\[\\[(.{2,60}?)\\]\\]","i")
-
+    var REDIRECT_REGEX=new RegExp("^ ?#("+i18n.redirects.join('|')+") ?\\[\\[(.{2,60}?)\\]\\]","i")
 
     //find all the pairs of '[[...[[..]]...]]' in the text
     //used to properly root out recursive template calls, [[.. [[...]] ]]
@@ -174,10 +113,10 @@ var wtf_wikipedia=(function(){
 
     function fetch_categories(wiki){
       var cats=[]
-      var reg=new RegExp("\\[\\[:?("+category_words.join("|")+"):(.{2,60}?)\]\](\w{0,10})", "ig")
+      var reg=new RegExp("\\[\\[:?("+i18n.categories.join("|")+"):(.{2,60}?)\]\](\w{0,10})", "ig")
       var tmp=wiki.match(reg)//regular links
       if(tmp){
-          var reg2=new RegExp("^\\[\\[:?("+category_words.join("|")+"):", "ig")
+          var reg2=new RegExp("^\\[\\[:?("+i18n.categories.join("|")+"):", "ig")
           tmp.forEach(function(c){
             c=c.replace(reg2, '')
             c=c.replace(/\|?[ \*]?\]\]$/i,'')
@@ -442,7 +381,7 @@ var wtf_wikipedia=(function(){
         }
       }
       //detect if page is disambiguator page
-      var template_reg=new RegExp("\\{\\{ ?("+disambig_words.join("|")+")(\\|[a-z =]*?)? ?\\}\\}","i")
+      var template_reg=new RegExp("\\{\\{ ?("+i18n.disambigs.join("|")+")(\\|[a-z =]*?)? ?\\}\\}","i")
       if(wiki.match(template_reg)  ){ //|| wiki.match(/^.{3,25} may refer to/i)|| wiki.match(/^.{3,25} ist der Name mehrerer /i)
         return parse_disambig(wiki)
       }
@@ -461,7 +400,7 @@ var wtf_wikipedia=(function(){
       //reduce the scary recursive situations
       //remove {{template {{}} }} recursions
       var matches=recursive_matches( '{', '}', wiki)
-      var infobox_reg=new RegExp("\{\{("+infobox_words.join("|")+")[: \n]", "ig")
+      var infobox_reg=new RegExp("\{\{("+i18n.infoboxes.join("|")+")[: \n]", "ig")
       matches.forEach(function(s){
         if(s.match(infobox_reg, "ig") && Object.keys(infobox).length==0){
           infobox= parse_infobox(s)
@@ -591,15 +530,15 @@ var wtf_wikipedia=(function(){
 // wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s).infobox.leader_name)})//disambig
 // wtf_wikipedia.from_api("Athens", 'de', function(s){ console.log(wtf_wikipedia.parse(s)) })//disambig
 // wtf_wikipedia.from_api("John Smith", 'en', function(s){ console.log(s);console.log(wtf_wikipedia.parse(s)) })//disambig
-// wtf_wikipedia.from_api("11B", 'en', function(s){ console.log(s);console.log(wtf_wikipedia.parse(s)) })//disambig
+// wtf_wikipedia.from_api("Jodie Emery", 'en', function(str){   console.log(wtf_wikipedia.plaintext(str)) })//
 // wtf_wikipedia.from_api("Toronto", 'tr', function(s){console.log(wtf_wikipedia.parse(s)) })//disambig
 
 // function from_file(page){
 //   fs=require("fs")
 //   var str = fs.readFileSync(__dirname+"/tests/cache/"+page+".txt", 'utf-8')
-//   // console.log(wtf_wikipedia.plaintext(str))
-//   var data=wtf_wikipedia.parse(str)
-//   console.log(JSON.stringify(data, null, 2));
+//   console.log(wtf_wikipedia.plaintext(str))
+//   // var data=wtf_wikipedia.parse(str)
+//   // console.log(JSON.stringify(data, null, 2));
 // }
 
 // from_file("list")

@@ -1,0 +1,144 @@
+// wikipedia special terms lifted and augmented from parsoid parser april 2015
+// (not even close to being complete)
+var i18n={
+  "files": [
+    "файл",
+    "fitxer",
+    "soubor",
+    "datei",
+    "file",
+    "archivo",
+    "پرونده",
+    "tiedosto",
+    "mynd",
+    "su'wret",
+    "fichier",
+    "bestand",
+    "датотека",
+    "dosya"
+  ],
+  "templates": [
+    "шаблён",
+    "plantilla",
+    "šablona",
+    "vorlage",
+    "template",
+    "الگو",
+    "malline",
+    "snið",
+    "shablon",
+    "modèle",
+    "sjabloon",
+    "шаблон",
+    "şablon"
+  ],
+  "categories": [
+    "катэгорыя",
+    "categoria",
+    "kategorie",
+    "category",
+    "categoría",
+    "رده",
+    "luokka",
+    "flokkur",
+    "kategoriya",
+    "catégorie",
+    "categorie",
+    "категорија",
+    "kategori",
+    "kategoria",
+    "تصنيف"
+  ],
+  "redirects": [
+    "перанакіраваньне",
+    "redirect",
+    "přesměruj",
+    "weiterleitung",
+    "redirección",
+    "redireccion",
+    "تغییر_مسیر",
+    "تغییرمسیر",
+    "ohjaus",
+    "uudelleenohjaus",
+    "tilvísun",
+    "aýdaw",
+    "айдау",
+    "redirection",
+    "doorverwijzing",
+    "преусмери",
+    "преусмјери",
+    "yönlendi̇rme",
+    "yönlendi̇r",
+    "重定向",
+    "redirección",
+    "redireccion",
+    "重定向",
+    "yönlendirm?e?",
+    "تغییر_مسیر",
+    "تغییرمسیر",
+    "перанакіраваньне",
+    "yönlendirme"
+  ],
+  "specials": [
+    "спэцыяльныя",
+    "especial",
+    "speciální",
+    "spezial",
+    "special",
+    "ویژه",
+    "toiminnot",
+    "kerfissíða",
+    "arnawlı",
+    "spécial",
+    "speciaal",
+    "посебно",
+    "özel"
+  ],
+  "users": [
+    "удзельнік",
+    "usuari",
+    "uživatel",
+    "benutzer",
+    "user",
+    "usuario",
+    "کاربر",
+    "käyttäjä",
+    "notandi",
+    "paydalanıwshı",
+    "utilisateur",
+    "gebruiker",
+    "корисник",
+    "kullanıcı"
+  ],
+  "disambigs":[
+      "disambig",//en
+      "disambiguation",//en
+      "dab",//en
+      "disamb",//en
+      "begriffsklärung",//de
+      "ujednoznacznienie",//pl
+      "doorverwijspagina",//nl
+      "消歧义",//zh
+      "desambiguación",//es
+      "dubbelsinnig",//af
+      "disambigua",//it
+      "desambiguação",//pt
+      "homonymie",//fr
+      "неоднозначность",//ru
+      "anlam ayrımı",//tr
+  ],
+  "infoboxes":[
+      "infobox",
+      "ficha",
+      "канадский",
+      "inligtingskas",
+      "inligtingskas3",//af
+      "لغة",
+      "bilgi kutusu",//tr
+      "yerleşim bilgi kutusu"
+    ]
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports=i18n
+}
