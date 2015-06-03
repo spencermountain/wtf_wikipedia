@@ -354,7 +354,7 @@ var wtf_wikipedia=(function(){
             if(!table[table.length-1]){
               table[table.length-1]=[]
             }
-            var want= (str.match(/\|(.*)/)||[])[1]||''
+            var want= (str.match(/\|(.*)/)||[])[1]|''
             want= helpers.trim_whitespace(want)||''
             //handle the || shorthand..
             if(want.match(/[!\|]{2}/)){
@@ -408,7 +408,7 @@ var wtf_wikipedia=(function(){
         if(s.match(infobox_reg, "ig") && Object.keys(infobox).length==0){
           infobox= parse_infobox(s)
         }
-        if(s.match(/\{\{(cite|infobox|Inligtingskas|sister|geographic|navboxes|listen|historical|citeweb|citenews|lien|clima|cita|Internetquelle|article|weather)[ \|:\n]/i)){
+        if(s.match(/\{\{(Gallery|Taxobox|cite|infobox|Inligtingskas|sister|geographic|navboxes|listen|historical|citeweb|citenews|lien|clima|cita|Internetquelle|article|weather)[ \|:\n]/i)){
           wiki=wiki.replace(s,'')
         }
       })
