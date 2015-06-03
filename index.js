@@ -230,6 +230,9 @@ var wtf_wikipedia=(function(){
         line=line.replace(/\([^a-z]{0,8}\)/,'')
         line=helpers.trim_whitespace(line)
 
+        // put new lines back in
+        line=line+"\n";
+
         return line
     }
 
@@ -436,9 +439,14 @@ var wtf_wikipedia=(function(){
         //remove some nonsense wp lines
         //
         //ignore list
+        if(part.match(/^[#:;\|]/)){
+            return
+        }
+/*
         if(part.match(/^[\*#:;\|]/)){
             return
         }
+*/
         //ignore only-punctuation
         if(!part.match(/[a-z0-9]/i)){
             return
