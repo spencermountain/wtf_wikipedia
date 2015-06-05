@@ -6,6 +6,7 @@ var wtf_wikipedia=(function(){
       sentence_parser= require("./lib/sentence_parser")
       fetch=require("./lib/fetch_text")
       i18n=require("./i18n")
+      languages=require("./languages")
     }
     //pulls target link out of redirect page
     var REDIRECT_REGEX=new RegExp("^ ?#("+i18n.redirects.join('|')+") ?\\[\\[(.{2,60}?)\\]\\]","i")
@@ -18,7 +19,6 @@ var wtf_wikipedia=(function(){
       var chars=text.split('')
       var open=0
       for(var i=0; i<chars.length; i++){
-        // console.log(chars[i] + "  "+open)
         if(chars[i]==opener && chars[i+1] && chars[i+1]==opener){
           open+=1
         }
@@ -27,8 +27,8 @@ var wtf_wikipedia=(function(){
         }
         if(open<=0 && last.length>0){
           //first, fix botched parse
-          var open_count=last.filter(function(s){return s==opener})
-          var close_count=last.filter(function(s){return s==closer})
+          var open_count=last.filter(function(s){return s==opener});
+          var close_count=last.filter(function(s){return s==closer});
           if(open_count.length > close_count.length){
             last.push(closer)
           }
@@ -207,8 +207,8 @@ var wtf_wikipedia=(function(){
     }
     // console.log(preprocess("hi [[as:Plancton]] there"))
     // console.log(preprocess("hi [[as:Plancton]] there"))
-      // console.log(preprocess('hello <br/> world'))
-      // console.log(preprocess("hello <asd f> world </h2>"))
+    // console.log(preprocess('hello <br/> world'))
+    // console.log(preprocess("hello <asd f> world </h2>"))
 
 
     function parse_line(line){
@@ -231,7 +231,7 @@ var wtf_wikipedia=(function(){
         line=helpers.trim_whitespace(line)
 
         // put new lines back in
-        line=line+"\n";
+        // line=line+"\n";
 
         return line
     }
@@ -293,7 +293,6 @@ var wtf_wikipedia=(function(){
       wiki=wiki.replace(/\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, "$1")
       if(wiki.match(/\{\{dts\|/)){
         var date=(wiki.match(/\{\{dts\|(.*?)[\}\|]/)||[])[1]||''
-        console.log(date)
         date= new Date(date)
         if(date && date.getTime() ){
           wiki=wiki.replace(/\{\{dts\|.*?\}\}/gi, date.toDateString())
@@ -301,7 +300,21 @@ var wtf_wikipedia=(function(){
           wiki=wiki.replace(/\{\{dts\|.*?\}\}/gi,' ')
         }
       }
-
+      //common templates in wiktionary
+      wiki=wiki.replace(/\{\{term\|(.*?)\|.*?\}\}/gi, "'$1'")
+      wiki=wiki.replace(/\{\{IPA\|(.*?)\|.*?\}\}/gi, "$1")
+      wiki=wiki.replace(/\{\{sense\|(.*?)\|?.*?\}\}/gi, "($1)")
+      wiki=wiki.replace(/\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, "'$1'")
+      //replace languages in 'etyl' tags
+      if(wiki.match(/\{\{etyl\|/)){//doesn't support multiple-ones per sentence..
+        var lang=wiki.match(/\{\{etyl\|(.*?)\|.*?\}\}/i)[1] || ''
+        lang=lang.toLowerCase()
+        if(lang && languages[lang]){
+          wiki=wiki.replace(/\{\{etyl\|(.*?)\|.*?\}\}/gi, languages[lang].english_title)
+        }else{
+          wiki=wiki.replace(/\{\{etyl\|(.*?)\|.*?\}\}/gi, "($1)")
+        }
+      }
       return wiki
     }
     // console.log(word_templates("hello {{CURRENTDAY}} world"))
@@ -310,6 +323,8 @@ var wtf_wikipedia=(function(){
     // console.log(word_templates("hello {{LOCALDAYNAME}} world"))
     // console.log(word_templates("hello {{lc:88}} world"))
     // console.log(word_templates("hello {{pull quote|Life is like\n|author=[[asdf]]}} world"))
+    // console.log(word_templates("hi {{etyl|la|-}} there"))
+    // console.log(word_templates("{{etyl|la|-}} cognate with {{etyl|is|-}} {{term|hugga||to comfort|lang=is}},"))
 
     //return a list of probable pages for this disambig page
     var parse_disambig=function(wiki){
@@ -354,7 +369,7 @@ var wtf_wikipedia=(function(){
             if(!table[table.length-1]){
               table[table.length-1]=[]
             }
-            var want= (str.match(/\|(.*)/)||[])[1]|''
+            var want= (str.match(/\|(.*)/)||[])[1]||''
             want= helpers.trim_whitespace(want)||''
             //handle the || shorthand..
             if(want.match(/[!\|]{2}/)){
@@ -375,6 +390,7 @@ var wtf_wikipedia=(function(){
       var images=[]
       var categories=[];
       var tables=[]
+      var translations={}
       wiki=wiki||''
       //detect if page is just redirect, and return
       if(wiki.match(REDIRECT_REGEX)){
@@ -420,6 +436,17 @@ var wtf_wikipedia=(function(){
           wiki=wiki.replace(s,'')
         }
       })
+      //third, wiktionary-style interlanguage links
+      matches.forEach(function(s){
+        if(s.match(/\[\[[a-z][a-z]\:.*/i)){
+          var lang=s.match(/\[\[([a-z][a-z]):/i)[1]
+          if(lang && languages[lang]){
+            translations[lang]=s.match(/^\[\[([a-z][a-z]):(.*?)\]\]/i)[2]
+          }
+          wiki=wiki.replace(s,'')
+        }
+      })
+
       //now that the scary recursion issues are gone, we can trust simple regex methods
 
       //kill the rest of templates
@@ -432,33 +459,44 @@ var wtf_wikipedia=(function(){
       var output={}
       var lines= wiki.replace(/\r/g,'').split(/\n/)
       var section="Intro"
+      var number=1
       lines.forEach(function(part){
         if(!section){
             return
         }
+
+        //add # numberings formatting
+        if(part.match(/^ ?\#[^:,\|]{4}/i)){
+          part=part.replace(/^ ?#*/, number+") ")
+          number+=1
+        }else{
+          number=1
+        }
+        //add bullet-points formatting
+        if(part.match(/^\*+[^:,\|]{4}/)){
+          part=part+"\n"
+        }
+
         //remove some nonsense wp lines
         //
         //ignore list
-        if(part.match(/^[#:;\|]/)){
+        if(part.match(/^[#\*:;\|]/)){
             return
         }
-/*
-        if(part.match(/^[\*#:;\|]/)){
-            return
-        }
-*/
+
         //ignore only-punctuation
         if(!part.match(/[a-z0-9]/i)){
             return
         }
         //headings
+        var ban_headings=new RegExp("^ ?("+i18n.sources.join('|')+") ?$","i")//remove things like 'external links'
         if(part.match(/^={1,5}[^=]{1,200}={1,5}$/)){
             section=part.match(/^={1,5}([^=]{2,200}?)={1,5}$/) || []
             section= section[1]||''
             section=section.replace(/\./g, ' ') // this is necessary for mongo, i'm sorry
             section=helpers.trim_whitespace(section)
             //ban some sections
-            if(section && section.match(/^(references|see also|external links|further reading|Notes et références|Voir aussi|Liens externes)$/i)){
+            if(section && section.match(ban_headings)){
                 section=undefined
             }
             return
@@ -490,7 +528,8 @@ var wtf_wikipedia=(function(){
         categories:cats,
         images:images,
         infobox:infobox,
-        tables:tables
+        tables:tables,
+        translations:translations,
       }
 
     }
@@ -566,3 +605,9 @@ var wtf_wikipedia=(function(){
 //  console.log(kill_xml("North America,<ref name=\"fhwa\"> and one of"))
 // ... sentence
 // "latd=43"
+
+// wtf_wikipedia.from_api("hug", 'enwiktionary', function(s){
+//   console.log(JSON.stringify(wtf_wikipedia.parse(s),null,2))
+//   // wtf_wikipedia.parse(s)
+// })
+

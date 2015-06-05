@@ -136,7 +136,16 @@ var i18n={
       "لغة",
       "bilgi kutusu",//tr
       "yerleşim bilgi kutusu"
-    ]
+    ],
+  "sources":[//blacklist these headings, as they're not plain-text
+    "references",
+    "see also",
+    "external links",
+    "further reading",
+    "notes et références",
+    "voir aussi",
+    "liens externes"
+  ]
 }
 
 if (typeof module !== 'undefined' && module.exports) {
