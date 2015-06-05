@@ -468,6 +468,7 @@ var wtf_wikipedia=(function(){
         //add # numberings formatting
         if(part.match(/^ ?\#[^:,\|]{4}/i)){
           part=part.replace(/^ ?#*/, number+") ")
+          part=part+"\n"
           number+=1
         }else{
           number=1
