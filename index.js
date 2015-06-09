@@ -517,7 +517,7 @@ var wtf_wikipedia=(function(){
       //add additional image from infobox, if applicable
       if(infobox['image'] && infobox['image'].text){
         var img=infobox['image'].text || ''
-        if(!img.match(/^(image|file|fichier|Datei)/i)){
+        if(typeof img==="string" && !img.match(/^(image|file|fichier|Datei)/i)){
           img="File:"+img
         }
         images.push(img)
