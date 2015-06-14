@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 var wtf_wikipedia = require('../index');
-var fetch = require('../fetch_text');
+var fetch = require('../lib/fetch_text');
 var request=require("request")
 
 var title = process.argv.slice(2, process.argv.length).join(" ");
@@ -11,7 +11,7 @@ if(!title){
 }
 title=title.charAt(0).toUpperCase() + title.slice(1)
 //fetch this topic's wikipedia page
-fetch(title, function(script){
+fetch(title, 'en', function(script){
   var data= wtf_wikipedia.plaintext(script)
   console.log(data);
 })
