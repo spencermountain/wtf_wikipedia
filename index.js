@@ -535,7 +535,7 @@ var wtf_wikipedia=(function(){
 
     }
 
-    var from_api=function(page, lang_or_wikiid, cb){
+    var from_api=function(page_identifier, lang_or_wikiid, cb){
       if(typeof lang_or_wikiid=="function"){
         cb= lang_or_wikiid
         lang_or_wikiid="en"
@@ -545,8 +545,8 @@ var wtf_wikipedia=(function(){
       if(!fetch){//no http method, on the client side
         return cb(null)
       }
-      fetch(page, lang_or_wikiid, cb)
-    }
+      fetch(page_identifier, lang_or_wikiid, cb);
+    };
 
     var plaintext=function(str){
       var data= main(str) || {}

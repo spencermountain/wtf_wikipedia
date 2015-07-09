@@ -34,6 +34,14 @@ wikipedia.from_api("Toronto", "de", function(markup){
 })
 ```
 
+you may also pass the wikipedia page id as parameter instead of the page title:
+```javascript
+wikipedia.from_api(64646, "de", function(markup){
+  //...
+})
+```
+
+
 Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It reliably turns wikiscript into HTML, but not valid XML. That means to use it, you need a [wikiscript -> virtual DOM -> screen-scraping] flow, but getting structured data out of it is a challenge.
 
 This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb), letting you parse a wikipedia dump in nodejs easily.
