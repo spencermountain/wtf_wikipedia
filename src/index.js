@@ -13,29 +13,15 @@ var wtf_wikipedia = (function () {
   var parse_categories = require("./parse_categories")
   var parse_disambig = require("./parse_disambig")
   var parse_infobox = require("./parse_infobox")
+  var parse_infobox_template = require("./parse_infobox_template")
   var parse_image = require("./parse_image")
   var kill_xml = require("./kill_xml")
+  var word_templates = require("./word_templates")
     //pulls target link out of redirect page
   var REDIRECT_REGEX = new RegExp("^ ?#(" + i18n.redirects.join('|') + ") ?\\[\\[(.{2,60}?)\\]\\]", "i")
 
-
-  function parse_infobox_template(str) {
-    var template = ''
-    if(str) {
-      var infobox_template_reg = new RegExp("\{\{(?:" + i18n.infoboxes.join("|") + ")\\s*(.*)", "i")
-      var matches = str.match(infobox_template_reg)
-      if(matches && matches.length > 1) {
-        template = matches[1]
-      }
-    }
-    return template
-  }
-
   function preprocess(wiki) {
     //the dump requires us to unescape xml
-    // unescape = [['>', '&gt;'],[ '<', '&lt;'],[ "'", '&apos;'],[ '"', '&quot;'],[ '&', '&amp;']]
-    // unescape.forEach(function(a){wiki=wiki.replace(new RegExp(a[1],'g'), a[0])})
-
     //remove comments
     wiki = wiki.replace(/<!--[^>]{0,2000}-->/g, '')
     wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/ig, '')
@@ -66,61 +52,6 @@ var wtf_wikipedia = (function () {
 
   //some xml elements are just junk, and demand full inglorious death by regular exp
   //other xml elements, like <em>, are plucked out afterwards
-
-  // templates that need parsing and replacing for inline text
-  //https://en.wikipedia.org/wiki/Category:Magic_word_templates
-  var word_templates = function (wiki) {
-      //we can be sneaky with this template, as it's often found inside other templates
-      wiki = wiki.replace(/\{\{URL\|([^ ]{4,100}?)\}\}/gi, "$1")
-        //this one needs to be handled manually
-      wiki = wiki.replace(/\{\{convert\|([0-9]*?)\|([^\|]*).*?\}\}/gi, "$1 $2")
-        //date-time templates
-      var d = new Date()
-      wiki = wiki.replace(/\{\{(CURRENT|LOCAL)DAY(2)?\}\}/gi, d.getDate())
-      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-      wiki = wiki.replace(/\{\{(CURRENT|LOCAL)MONTH(NAME|ABBREV)?\}\}/gi, months[d.getMonth()])
-      wiki = wiki.replace(/\{\{(CURRENT|LOCAL)YEAR\}\}/gi, d.getFullYear())
-      var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-      wiki = wiki.replace(/\{\{(CURRENT|LOCAL)DAYNAME\}\}/gi, days[d.getDay()])
-        //formatting templates
-      wiki = wiki.replace(/\{\{(lc|uc|formatnum):(.*?)\}\}/gi, "$2")
-      wiki = wiki.replace(/\{\{pull quote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, "$1")
-      wiki = wiki.replace(/\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, "$1")
-      if(wiki.match(/\{\{dts\|/)) {
-        var date = (wiki.match(/\{\{dts\|(.*?)[\}\|]/) || [])[1] || ''
-        date = new Date(date)
-        if(date && date.getTime()) {
-          wiki = wiki.replace(/\{\{dts\|.*?\}\}/gi, date.toDateString())
-        } else {
-          wiki = wiki.replace(/\{\{dts\|.*?\}\}/gi, ' ')
-        }
-      }
-      //common templates in wiktionary
-      wiki = wiki.replace(/\{\{term\|(.*?)\|.*?\}\}/gi, "'$1'")
-      wiki = wiki.replace(/\{\{IPA\|(.*?)\|.*?\}\}/gi, "$1")
-      wiki = wiki.replace(/\{\{sense\|(.*?)\|?.*?\}\}/gi, "($1)")
-      wiki = wiki.replace(/\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, "'$1'")
-        //replace languages in 'etyl' tags
-      if(wiki.match(/\{\{etyl\|/)) { //doesn't support multiple-ones per sentence..
-        var lang = wiki.match(/\{\{etyl\|(.*?)\|.*?\}\}/i)[1] || ''
-        lang = lang.toLowerCase()
-        if(lang && languages[lang]) {
-          wiki = wiki.replace(/\{\{etyl\|(.*?)\|.*?\}\}/gi, languages[lang].english_title)
-        } else {
-          wiki = wiki.replace(/\{\{etyl\|(.*?)\|.*?\}\}/gi, "($1)")
-        }
-      }
-      return wiki
-    }
-    // console.log(word_templates("hello {{CURRENTDAY}} world"))
-    // console.log(word_templates("hello {{CURRENTMONTH}} world"))
-    // console.log(word_templates("hello {{CURRENTYEAR}} world"))
-    // console.log(word_templates("hello {{LOCALDAYNAME}} world"))
-    // console.log(word_templates("hello {{lc:88}} world"))
-    // console.log(word_templates("hello {{pull quote|Life is like\n|author=[[asdf]]}} world"))
-    // console.log(word_templates("hi {{etyl|la|-}} there"))
-    // console.log(word_templates("{{etyl|la|-}} cognate with {{etyl|is|-}} {{term|hugga||to comfort|lang=is}},"))
-
   var main = function (wiki) {
     var infobox = {}
     var infobox_template = ''
@@ -216,9 +147,8 @@ var wtf_wikipedia = (function () {
       if(part.match(/^\*+[^:,\|]{4}/)) {
         part = part + "\n"
       }
-
       //remove some nonsense wp lines
-      //
+
       //ignore list
       if(part.match(/^[#\*:;\|]/)) {
         return
@@ -228,6 +158,7 @@ var wtf_wikipedia = (function () {
       if(!part.match(/[a-z0-9]/i)) {
         return
       }
+
       //headings
       var ban_headings = new RegExp("^ ?(" + i18n.sources.join('|') + ") ?$", "i") //remove things like 'external links'
       if(part.match(/^={1,5}[^=]{1,200}={1,5}$/)) {
@@ -318,19 +249,12 @@ if (typeof window!=="undefined") { //is this right?
 module.exports = wtf_wikipedia;
 
 // wtf_wikipedia.from_api("Whistler", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
-// wtf_wikipedia.from_api("Whistling", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
-// wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s).infobox.leader_name)})//disambig
-// wtf_wikipedia.from_api("Athens", 'de', function(s){ console.log(wtf_wikipedia.parse(s)) })//disambig
-// wtf_wikipedia.from_api("John Smith", 'en', function(s){ console.log(s);console.log(wtf_wikipedia.parse(s)) })//disambig
-// wtf_wikipedia.from_api("Jodie Emery", 'en', function(str){   console.log(wtf_wikipedia.plaintext(str)) })//
-// wtf_wikipedia.from_api("Toronto", 'tr', function(s){console.log(wtf_wikipedia.parse(s)) })//disambig
+// wtf_wikipedia.from_api("Toronto", 'tr', function(s){console.log(wtf_wikipedia.parse(s)) })
 
 // function from_file(page){
-//   fs=require("fs")
-//   var str = fs.readFileSync(__dirname+"/tests/cache/"+page+".txt", 'utf-8')
+//   var str = require("fs").readFileSync(__dirname+"/tests/cache/"+page+".txt", 'utf-8')
 //   console.log(wtf_wikipedia.plaintext(str))
-//   // var data=wtf_wikipedia.parse(str)
-//   // console.log(JSON.stringify(data, null, 2));
+//   console.log(JSON.stringify(wtf_wikipedia.parse(str), null, 2));
 // }
 
 // from_file("list")
@@ -342,14 +266,6 @@ module.exports = wtf_wikipedia;
 // from_file("Africaans")
 // from_file("Anarchism")
 
-//  TODO:
-//  [[St. Kitts]] sentence bug
-//  parse [[image: ..]]  and make href
-//  console.log(kill_xml("North America,<ref name=\"fhwa\"> and one of"))
-// ... sentence
-// "latd=43"
-
 // wtf_wikipedia.from_api("List_of_British_films_of_2014", function (s) {
 //   console.log(JSON.stringify(wtf_wikipedia.parse(s), null, 2))
-//     // wtf_wikipedia.parse(s)
 // })
