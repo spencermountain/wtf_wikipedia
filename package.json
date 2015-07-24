@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "grunt-contrib-uglify": "*",
-    "grunt-contrib-concat": "*",
     "grunt-browserify": "~3.8.*",
     "nodeunit":"0.9.*"
   },

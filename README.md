@@ -195,6 +195,15 @@ Sample Output for [Whistling]()
      'infobox': {} }
 ````
 
+## Contributing
+Never-ender projects like these need all-hands, and I'm a pretty friendly dude.
+```
+npm install
+npm test
+grunt #to package-up client-side
+```
+
+
 Don't be mad at me, be mad at them
 
 

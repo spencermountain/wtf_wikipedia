@@ -2,13 +2,11 @@
 // https://github.com/spencermountain/wtf_wikipedia
 //@spencermountain
 var wtf_wikipedia = (function () {
-  if(typeof module !== 'undefined' && module.exports) {
-    sentence_parser = require("./lib/sentence_parser")
-    fetch = require("./lib/fetch_text")
-    i18n = require("./i18n")
-    languages = require("./languages")
-  }
-  //pulls target link out of redirect page
+  var sentence_parser = require("./lib/sentence_parser")
+  var fetch = require("./lib/fetch_text")
+  var i18n = require("./i18n")
+  var languages = require("./languages")
+    //pulls target link out of redirect page
   var REDIRECT_REGEX = new RegExp("^ ?#(" + i18n.redirects.join('|') + ") ?\\[\\[(.{2,60}?)\\]\\]", "i")
 
   //find all the pairs of '[[...[[..]]...]]' in the text
@@ -555,7 +553,7 @@ var wtf_wikipedia = (function () {
       cb = lang_or_wikiid
       lang_or_wikiid = "en"
     }
-    cb = cb || console.log
+    cb = cb || function () {}
     lang_or_wikiid = lang_or_wikiid || "en"
     if(!fetch) { //no http method, on the client side
       return cb(null)
@@ -585,6 +583,12 @@ var wtf_wikipedia = (function () {
 
   return methods
 })()
+
+//export it for client-side
+if (typeof window!=="undefined") { //is this right?
+  window.wtf_wikipedia = wtf_wikipedia;
+}
+module.exports = wtf_wikipedia;
 
 // wtf_wikipedia.from_api("Whistler", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
 // wtf_wikipedia.from_api("Whistling", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
