@@ -10,36 +10,38 @@ var fetch=function(file){
 
 Tests['royal_cinema'] = function(test) {
    var data=parser(fetch("royal_cinema"))
-   test.ok( data.infobox.opened.text, "INFOBOX");
-   test.ok( data.text.Intro.length, 5);
-   test.ok( data.categories.length, 4);
+   test.equal(data.infobox.opened.text, '1939');
    test.equal(data.infobox_template, 'venue')
+   test.equal(data.text.Intro.length, 10);
+   test.equal(data.categories.length, 4);
    test.done();
 };
 
 Tests['toronto_star'] = function(test) {
    var data=parser(fetch("toronto_star"))
-   test.ok( data.infobox.publisher.text, 'John D. Cruickshank');
-   test.ok( data.text.History.length, 7);
-   test.ok( data.categories.length, 6);
+   test.equal(data.infobox.publisher.text, 'John D. Cruickshank');
    test.equal(data.infobox_template, 'newspaper')
+   test.equal(data.text.History.length, 21);
+   test.equal(data.categories.length, 6);
    test.done();
 };
 
 Tests['jodie_emery'] = function(test) {
   var data=parser(fetch("jodie_emery"))
-  test.ok(data.infobox.nationality.text, 'Canadian')
+  test.equal(data.infobox.nationality.text, 'Canadian')
   test.equal(data.infobox_template, 'person')
   test.ok(data.text.Intro.length>=1)
   test.ok(data.text['Political career'].length>=5)
-  test.ok(data.categories.length, 8)
-  test.ok(data.images.length, 1)
+  test.equal(data.categories.length, 8)
+  test.equal(data.images.length, 1)
   test.done();
 };
 
 Tests['redirect'] = function(test) {
   var data=parser(fetch("redirect"))
-  test.ok(data.redirect, 'Toronto')
+  test.equal(data.type, 'redirect')
+  test.equal(data.redirect, 'Toronto')
+  test.ok(data.infobox == null)
   test.ok(data.infobox_template == null)
   test.done();
 };
