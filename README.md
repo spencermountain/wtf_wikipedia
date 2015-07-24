@@ -8,13 +8,13 @@ Making your own parser is never a good idea, but this library is a very detailed
 
 ```bash
 npm install wtf_wikipedia
-````
+```
 then:
 ````javascript
-var wikipedia = require("wtf_wikipedia")
+var wtf_wikipedia = require("wtf_wikipedia")
 //fetch wikipedia markup from api..
-wikipedia.from_api("Toronto", "en", function(markup){
-  var obj= wikipedia.parse(markup)
+wtf_wikipedia.from_api("Toronto", "en", function(markup){
+  var obj= wtf_wikipedia.parse(markup)
   // {text:[...], infobox:{}, categories:[...], images:[] }
   var mayor= obj.infobox.leader_name
   // "John Tory"
@@ -22,27 +22,27 @@ wikipedia.from_api("Toronto", "en", function(markup){
 ````
 if you only want some nice plaintext, and no junk:
 ````javascript
-var text= wikipedia.plaintext(markup)
+var text= wtf_wikipedia.plaintext(markup)
 // "Toronto is the most populous city in Canada and the provincial capital..."
 ````
 
 to call non-english wikipedia apis, add it as the second paramater to from_api
 ```javascript
-wikipedia.from_api("Toronto", "de", function(markup){
-  var text= wikipedia.plaintext(markup)
+wtf_wikipedia.from_api("Toronto", "de", function(markup){
+  var text= wtf_wikipedia.plaintext(markup)
   //Toronto ist mit 2,6 Millionen Einwohnern..
 })
 ```
 
 you may also pass the wikipedia page id as parameter instead of the page title:
 ```javascript
-wikipedia.from_api(64646, "de", function(markup){
+wtf_wikipedia.from_api(64646, "de", function(markup){
   //...
 })
 ```
 
 
-Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It reliably turns wikiscript into HTML, but not valid XML. That means to use it, you need a [wikiscript -> virtual DOM -> screen-scraping] flow, but getting structured data out of it is a challenge.
+Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It reliably turns wikiscript into HTML, but not valid XML. To use it for mining, you need a [wikiscript -> virtual DOM -> screen-scraping] flow, but getting structured data this way is a challenge.
 
 This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb), letting you parse a wikipedia dump in nodejs easily.
 
