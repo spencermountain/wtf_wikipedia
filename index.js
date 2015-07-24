@@ -119,7 +119,8 @@ var wtf_wikipedia=(function(){
           var reg2=new RegExp("^\\[\\[:?("+i18n.categories.join("|")+"):", "ig")
           tmp.forEach(function(c){
             c=c.replace(reg2, '')
-            c=c.replace(/\|?[ \*]?\]\]$/i,'')
+            c=c.replace(/\|?[ \*]?\]\]$/i,'')//parse fancy onces..
+            c=c.replace(/\|.*/,'')//everything after the '|' is metadata
             if(c && !c.match(/[\[\]]/)){
               cats.push(c)
             }
@@ -626,7 +627,7 @@ var wtf_wikipedia=(function(){
 // ... sentence
 // "latd=43"
 
-// wtf_wikipedia.from_api("hug", 'enwiktionary', function(s){
+// wtf_wikipedia.from_api("List_of_British_films_of_2014", function(s){
 //   console.log(JSON.stringify(wtf_wikipedia.parse(s),null,2))
 //   // wtf_wikipedia.parse(s)
 // })
