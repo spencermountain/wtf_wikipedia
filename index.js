@@ -182,6 +182,18 @@ var wtf_wikipedia=(function(){
         return obj
     }
 
+    function parse_infobox_template(str){
+      var template= ''
+      if(str){
+        var infobox_template_reg=new RegExp("\{\{(?:"+i18n.infoboxes.join("|")+")\\s*(.*)", "i")
+        var matches= str.match(infobox_template_reg)
+        if (matches && matches.length > 1) {
+          template= matches[1]
+        }
+      }
+      return template
+    }
+
     function preprocess(wiki){
       //the dump requires us to unescape xml
       // unescape = [['>', '&gt;'],[ '<', '&lt;'],[ "'", '&apos;'],[ '"', '&quot;'],[ '&', '&amp;']]
@@ -391,6 +403,7 @@ var wtf_wikipedia=(function(){
 
     var main=function(wiki){
       var infobox={}
+      var infobox_template=''
       var images=[]
       var categories=[];
       var tables=[]
@@ -427,6 +440,7 @@ var wtf_wikipedia=(function(){
       matches.forEach(function(s){
         if(s.match(infobox_reg, "ig") && Object.keys(infobox).length==0){
           infobox= parse_infobox(s)
+          infobox_template= parse_infobox_template(s)
         }
         if(s.match(/\{\{(Gallery|Taxobox|cite|infobox|Inligtingskas|sister|geographic|navboxes|listen|historical|citeweb|citenews|lien|clima|cita|Internetquelle|article|weather)[ \|:\n]/i)){
           wiki=wiki.replace(s,'')
@@ -533,6 +547,7 @@ var wtf_wikipedia=(function(){
         categories:cats,
         images:images,
         infobox:infobox,
+        infobox_template:infobox_template,
         tables:tables,
         translations:translations,
       }
