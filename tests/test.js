@@ -1,6 +1,6 @@
 var path = require('path')
 var fs = require("fs")
-var parser = require("../index").parse
+var parser = require("../src/index").parse
 var Tests = module.exports;
 
 //read cached file

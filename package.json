@@ -27,7 +27,7 @@
   },
   "scripts": {
     "test": " nodeunit tests/test.js",
-    "start": "node index.js"
+    "start": "node ./src/index.js"
   },
   "bin": {
     "wikipedia": "./bin/parse.js",

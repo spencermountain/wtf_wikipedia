@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 'use strict';
-var wtf_wikipedia = require('../index');
-var fetch = require('../lib/fetch_text');
+var wtf_wikipedia = require('../src/index');
+var fetch = require('../src/lib/fetch_text');
 
 var title = process.argv.slice(2, process.argv.length).join(" ");
 if(!title) {

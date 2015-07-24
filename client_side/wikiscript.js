@@ -1,2966 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-// wikipedia special terms lifted and augmented from parsoid parser april 2015
-// (not even close to being complete)
-var i18n={
-  "files": [
-    "файл",
-    "fitxer",
-    "soubor",
-    "datei",
-    "file",
-    "archivo",
-    "پرونده",
-    "tiedosto",
-    "mynd",
-    "su'wret",
-    "fichier",
-    "bestand",
-    "датотека",
-    "dosya"
-  ],
-  "templates": [
-    "шаблён",
-    "plantilla",
-    "šablona",
-    "vorlage",
-    "template",
-    "الگو",
-    "malline",
-    "snið",
-    "shablon",
-    "modèle",
-    "sjabloon",
-    "шаблон",
-    "şablon"
-  ],
-  "categories": [
-    "катэгорыя",
-    "categoria",
-    "kategorie",
-    "category",
-    "categoría",
-    "رده",
-    "luokka",
-    "flokkur",
-    "kategoriya",
-    "catégorie",
-    "categorie",
-    "категорија",
-    "kategori",
-    "kategoria",
-    "تصنيف"
-  ],
-  "redirects": [
-    "перанакіраваньне",
-    "redirect",
-    "přesměruj",
-    "weiterleitung",
-    "redirección",
-    "redireccion",
-    "تغییر_مسیر",
-    "تغییرمسیر",
-    "ohjaus",
-    "uudelleenohjaus",
-    "tilvísun",
-    "aýdaw",
-    "айдау",
-    "redirection",
-    "doorverwijzing",
-    "преусмери",
-    "преусмјери",
-    "yönlendi̇rme",
-    "yönlendi̇r",
-    "重定向",
-    "redirección",
-    "redireccion",
-    "重定向",
-    "yönlendirm?e?",
-    "تغییر_مسیر",
-    "تغییرمسیر",
-    "перанакіраваньне",
-    "yönlendirme"
-  ],
-  "specials": [
-    "спэцыяльныя",
-    "especial",
-    "speciální",
-    "spezial",
-    "special",
-    "ویژه",
-    "toiminnot",
-    "kerfissíða",
-    "arnawlı",
-    "spécial",
-    "speciaal",
-    "посебно",
-    "özel"
-  ],
-  "users": [
-    "удзельнік",
-    "usuari",
-    "uživatel",
-    "benutzer",
-    "user",
-    "usuario",
-    "کاربر",
-    "käyttäjä",
-    "notandi",
-    "paydalanıwshı",
-    "utilisateur",
-    "gebruiker",
-    "корисник",
-    "kullanıcı"
-  ],
-  "disambigs":[
-      "disambig",//en
-      "disambiguation",//en
-      "dab",//en
-      "disamb",//en
-      "begriffsklärung",//de
-      "ujednoznacznienie",//pl
-      "doorverwijspagina",//nl
-      "消歧义",//zh
-      "desambiguación",//es
-      "dubbelsinnig",//af
-      "disambigua",//it
-      "desambiguação",//pt
-      "homonymie",//fr
-      "неоднозначность",//ru
-      "anlam ayrımı",//tr
-  ],
-  "infoboxes":[
-      "infobox",
-      "ficha",
-      "канадский",
-      "inligtingskas",
-      "inligtingskas3",//af
-      "لغة",
-      "bilgi kutusu",//tr
-      "yerleşim bilgi kutusu"
-    ],
-  "sources":[//blacklist these headings, as they're not plain-text
-    "references",
-    "see also",
-    "external links",
-    "further reading",
-    "notes et références",
-    "voir aussi",
-    "liens externes"
-  ]
-}
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports=i18n
-}
 
 },{}],2:[function(require,module,exports){
-//turns wikimedia script into json
-// https://github.com/spencermountain/wtf_wikipedia
-//@spencermountain
-var wtf_wikipedia = (function () {
-  var sentence_parser = require("./lib/sentence_parser")
-  var fetch = require("./lib/fetch_text")
-  var i18n = require("./i18n")
-  var languages = require("./languages")
-    //pulls target link out of redirect page
-  var REDIRECT_REGEX = new RegExp("^ ?#(" + i18n.redirects.join('|') + ") ?\\[\\[(.{2,60}?)\\]\\]", "i")
-
-  //find all the pairs of '[[...[[..]]...]]' in the text
-  //used to properly root out recursive template calls, [[.. [[...]] ]]
-  function recursive_matches(opener, closer, text) {
-    var out = []
-    var last = []
-    var chars = text.split('')
-    var open = 0
-    for(var i = 0; i < chars.length; i++) {
-      if(chars[i] === opener && chars[i + 1] && chars[i + 1] === opener) {
-        open += 1
-      }
-      if(open >= 0) {
-        last.push(chars[i])
-      }
-      if(open <= 0 && last.length > 0) {
-        //first, fix botched parse
-        var open_count = last.filter(function (s) {
-          return s === opener
-        });
-        var close_count = last.filter(function (s) {
-          return s === closer
-        });
-        if(open_count.length > close_count.length) {
-          last.push(closer)
-        }
-        out.push(last.join(''))
-        last = []
-      }
-      if(chars[i] === closer && chars[i + 1] && chars[i + 1] === closer) { //this introduces a bug for "...]]]]"
-        open -= 1
-        if(open < 0) {
-          open = 0
-        }
-      }
-    }
-    return out
-  }
-
-  var helpers = {
-    capitalise: function (str) {
-      if(str && typeof str === "string") {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-      }
-    },
-    onlyUnique: function (value, index, self) {
-      return self.indexOf(value) === index;
-    },
-    trim_whitespace: function (str) {
-      if(str && typeof str === "string") {
-        str = str.replace(/^\s\s*/, '')
-        str = str.replace(/\s\s*$/, '')
-        str = str.replace(/ {2}/, ' ')
-        str = str.replace(/\s, /, ', ')
-        return str
-      }
-    }
-  }
-
-  //grab an array of internal links in the text
-  function fetch_links(str) {
-    var links = []
-    var tmp = str.match(/\[\[(.{2,80}?)\]\](\w{0,10})/g) //regular links
-    if(tmp) {
-      tmp.forEach(function (s) {
-        var link, txt;
-        if(s.match(/\|/)) { //replacement link [[link|text]]
-          s = s.replace(/\[\[(.{2,80}?)\]\](\w{0,10})/g, "$1$2") //remove ['s and keep suffix
-          link = s.replace(/(.{2,60})\|.{0,200}/, "$1") //replaced links
-          txt = s.replace(/.{2,60}?\|/, '')
-            //handle funky case of [[toronto|]]
-          if(!txt && link.match(/\|$/)) {
-            link = link.replace(/\|$/, '')
-            txt = link
-          }
-        } else { // standard link [[link]]
-          link = s.replace(/\[\[(.{2,60}?)\]\](\w{0,10})/g, "$1") //remove ['s
-        }
-        //kill off non-wikipedia namespaces
-        if(link.match(/^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i)) {
-          return
-        }
-        //kill off just anchor links [[#history]]
-        if(link.match(/^#/i)) {
-          return
-        }
-        //remove anchors from end [[toronto#history]]
-        link = link.replace(/#[^ ]{1,100}/, '')
-        link = helpers.capitalise(link)
-        var obj = {
-          page: link,
-          src: txt
-        }
-        links.push(obj)
-      })
-    }
-    links = links.filter(helpers.onlyUnique)
-    if(links.length === 0) {
-      return undefined
-    }
-    return links
-  }
-  // console.log(fetch_links("it is [[Tony Hawk|Tony]]s moher in [[Toronto]]s"))
-
-  function fetch_categories(wiki) {
-    var cats = []
-    var reg = new RegExp("\\[\\[:?(" + i18n.categories.join("|") + "):(.{2,60}?)\]\](\w{0,10})", "ig")
-    var tmp = wiki.match(reg) //regular links
-    if(tmp) {
-      var reg2 = new RegExp("^\\[\\[:?(" + i18n.categories.join("|") + "):", "ig")
-      tmp.forEach(function (c) {
-        c = c.replace(reg2, '')
-        c = c.replace(/\|?[ \*]?\]\]$/i, '') //parse fancy onces..
-        c = c.replace(/\|.*/, '') //everything after the '|' is metadata
-        if(c && !c.match(/[\[\]]/)) {
-          cats.push(c)
-        }
-      })
-    }
-    return cats
-  }
-
-  //return only rendered text of wiki links
-  function resolve_links(line) {
-    // categories, images, files
-    var re = /\[\[:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف):[^\]\]]{2,80}\]\]/gi
-    line = line.replace(re, "")
-
-    // [[Common links]]
-    line = line.replace(/\[\[:?([^|]{2,80}?)\]\](\w{0,5})/g, "$1$2")
-      // [[Replaced|Links]]
-    line = line.replace(/\[\[:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, "$2$3")
-      // External links
-    line = line.replace(/\[(https?|news|ftp|mailto|gopher|irc):\/\/[^\]\| ]{4,1500}([\| ].*?)?\]/g, "$2")
-    return line
-  }
-  // console.log(resolve_links("[http://www.whistler.ca www.whistler.ca]"))
-
-  function parse_image(img) {
-    img = img.match(/(file|image):.*?[\|\]]/i) || ['']
-    img = img[0].replace(/\|$/, '')
-    return img
-  }
-
-  function parse_infobox(str) {
-    var obj = {}
-      // var str= str.match(/\{\{Infobox [\s\S]*?\}\}/i)
-    if(str) {
-      //this collapsible list stuff is just a headache
-      str = str.replace(/\{\{Collapsible list[^\}]{10,1000}\}\}/g, '')
-      str.replace(/\r/g, '').split(/\n/).forEach(function (l) {
-        if(l.match(/^\|/)) {
-          var key = l.match(/^\| ?(.{1,200}?)[ =]/) || []
-          key = helpers.trim_whitespace(key[1] || '')
-          var value = l.match(/=(.{1,500})$/) || []
-          value = helpers.trim_whitespace(value[1] || '')
-            //this is necessary for mongodb, im sorry
-          if(key && key.match(/[\.]/)) {
-            key = null
-          }
-          if(key && value && !value.match(/^[\|<]/) && !value.match(/=/)) {
-            obj[key] = parse_line(value)
-              //turn number strings into integers
-            if(obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
-              obj[key].text = obj[key].text.replace(/,/g)
-              obj[key].text = parseInt(obj[key].text)
-            }
-          }
-        }
-      })
-    }
-    return obj
-  }
-  var kill_xml = function (wiki) {
-      //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
-      //luckily, refs can't be recursive..
-      wiki = wiki.replace(/<ref>[\s\S]{0,500}?<\/ref>/gi, ' ') // <ref></ref>
-      wiki = wiki.replace(/<ref [^>]{0,200}?\/>/gi, ' ') // <ref name=""/>
-      wiki = wiki.replace(/<ref [^>]{0,200}?>[\s\S]{0,500}?<\/ref>/ig, ' ') // <ref name=""></ref>
-        //other types of xml that we want to trash completely
-
-      wiki = wiki.replace(/< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi, ' ') // <table name=""><tr>hi</tr></table>
-
-      //some xml-like fragments we can also kill
-      //
-      wiki = wiki.replace(/< ?(ref|span|div|table|data) [a-z0-9=" ]{2,20}\/ ?>/g, " ") //<ref name="asd"/>
-        //some formatting xml, we'll keep their insides though
-      wiki = wiki.replace(/<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?>/g, " ") //<sub>, </sub>
-      wiki = wiki.replace(/<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s)[ \/]?>/g, " ") //<abbr>, </abbr>
-      wiki = wiki.replace(/<[ \/]?h[0-9][ \/]?>/g, " ") //<h2>, </h2>
-        //a more generic + dangerous xml-tag removal
-      wiki = wiki.replace(/<[ \/]?[a-z0-9]{1,8}[ \/]?>/g, " ") //<samp>
-
-      return wiki
-    }
-    // console.log(kill_xml("hello <ref>nono!</ref> world1. hello <ref name='hullo'>nono!</ref> world2. hello <ref name='hullo'/>world3.  hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4. hello<ref name=''/> world5 <ref name=''>nono</ref>, man.}}"))
-    // console.log(kill_xml("hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4"))
-    // console.log(kill_xml('hello<ref name="theroyal"/> world <ref>nono</ref>, man}}'))
-    // console.log(kill_xml('hello<ref name="theroyal"/> world5 <ref name="">nono</ref>, man'))
-    // console.log(kill_xml("hello <asd f> world </h2>"))
-    // console.log(kill_xml("North America,<ref name=\"fhwa\"> and one of"))
-  function parse_infobox_template(str) {
-    var template = ''
-    if(str) {
-      var infobox_template_reg = new RegExp("\{\{(?:" + i18n.infoboxes.join("|") + ")\\s*(.*)", "i")
-      var matches = str.match(infobox_template_reg)
-      if(matches && matches.length > 1) {
-        template = matches[1]
-      }
-    }
-    return template
-  }
-
-  function preprocess(wiki) {
-    //the dump requires us to unescape xml
-    // unescape = [['>', '&gt;'],[ '<', '&lt;'],[ "'", '&apos;'],[ '"', '&quot;'],[ '&', '&amp;']]
-    // unescape.forEach(function(a){wiki=wiki.replace(new RegExp(a[1],'g'), a[0])})
-
-    //remove comments
-    wiki = wiki.replace(/<!--[^>]{0,2000}-->/g, '')
-    wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/ig, '')
-      //signitures
-    wiki = wiki.replace(/~~{1,3}/, '')
-      //horizontal rule
-    wiki = wiki.replace(/--{1,3}/, '')
-      //space
-    wiki = wiki.replace(/&nbsp;/g, ' ')
-      //kill off interwiki links
-    wiki = wiki.replace(/\[\[([a-z][a-z]|simple|war|ceb|min):.{2,60}\]\]/i, '')
-      //bold and italics combined
-    wiki = wiki.replace(/''{4}([^']{0,200})''{4}/g, '$1');
-    //bold
-    wiki = wiki.replace(/''{2}([^']{0,200})''{2}/g, '$1');
-    //italic
-    wiki = wiki.replace(/''([^']{0,200})''/g, '$1')
-      //give it the inglorious send-off it deserves..
-    wiki = kill_xml(wiki)
-
-    return wiki
-  }
-  // console.log(preprocess("hi [[as:Plancton]] there"))
-  // console.log(preprocess("hi [[as:Plancton]] there"))
-  // console.log(preprocess('hello <br/> world'))
-  // console.log(preprocess("hello <asd f> world </h2>"))
-
-  function parse_line(line) {
-    return {
-      text: postprocess(line),
-      links: fetch_links(line)
-    }
-  }
-
-  function postprocess(line) {
-
-    //fix links
-    line = resolve_links(line)
-      //oops, recursive image bug
-    if(line.match(/^(thumb|right|left)\|/i)) {
-      return null
-    }
-    //some IPA pronounciations leave blank junk parenteses
-    line = line.replace(/\([^a-z]{0,8}\)/, '')
-    line = helpers.trim_whitespace(line)
-
-    // put new lines back in
-    // line=line+"\n";
-
-    return line
-  }
-
-  //some xml elements are just junk, and demand full inglorious death by regular exp
-  //other xml elements, like <em>, are plucked out afterwards
-
-  // templates that need parsing and replacing for inline text
-  //https://en.wikipedia.org/wiki/Category:Magic_word_templates
-  var word_templates = function (wiki) {
-      //we can be sneaky with this template, as it's often found inside other templates
-      wiki = wiki.replace(/\{\{URL\|([^ ]{4,100}?)\}\}/gi, "$1")
-        //this one needs to be handled manually
-      wiki = wiki.replace(/\{\{convert\|([0-9]*?)\|([^\|]*).*?\}\}/gi, "$1 $2")
-        //date-time templates
-      var d = new Date()
-      wiki = wiki.replace(/\{\{(CURRENT|LOCAL)DAY(2)?\}\}/gi, d.getDate())
-      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-      wiki = wiki.replace(/\{\{(CURRENT|LOCAL)MONTH(NAME|ABBREV)?\}\}/gi, months[d.getMonth()])
-      wiki = wiki.replace(/\{\{(CURRENT|LOCAL)YEAR\}\}/gi, d.getFullYear())
-      var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-      wiki = wiki.replace(/\{\{(CURRENT|LOCAL)DAYNAME\}\}/gi, days[d.getDay()])
-        //formatting templates
-      wiki = wiki.replace(/\{\{(lc|uc|formatnum):(.*?)\}\}/gi, "$2")
-      wiki = wiki.replace(/\{\{pull quote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, "$1")
-      wiki = wiki.replace(/\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, "$1")
-      if(wiki.match(/\{\{dts\|/)) {
-        var date = (wiki.match(/\{\{dts\|(.*?)[\}\|]/) || [])[1] || ''
-        date = new Date(date)
-        if(date && date.getTime()) {
-          wiki = wiki.replace(/\{\{dts\|.*?\}\}/gi, date.toDateString())
-        } else {
-          wiki = wiki.replace(/\{\{dts\|.*?\}\}/gi, ' ')
-        }
-      }
-      //common templates in wiktionary
-      wiki = wiki.replace(/\{\{term\|(.*?)\|.*?\}\}/gi, "'$1'")
-      wiki = wiki.replace(/\{\{IPA\|(.*?)\|.*?\}\}/gi, "$1")
-      wiki = wiki.replace(/\{\{sense\|(.*?)\|?.*?\}\}/gi, "($1)")
-      wiki = wiki.replace(/\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, "'$1'")
-        //replace languages in 'etyl' tags
-      if(wiki.match(/\{\{etyl\|/)) { //doesn't support multiple-ones per sentence..
-        var lang = wiki.match(/\{\{etyl\|(.*?)\|.*?\}\}/i)[1] || ''
-        lang = lang.toLowerCase()
-        if(lang && languages[lang]) {
-          wiki = wiki.replace(/\{\{etyl\|(.*?)\|.*?\}\}/gi, languages[lang].english_title)
-        } else {
-          wiki = wiki.replace(/\{\{etyl\|(.*?)\|.*?\}\}/gi, "($1)")
-        }
-      }
-      return wiki
-    }
-    // console.log(word_templates("hello {{CURRENTDAY}} world"))
-    // console.log(word_templates("hello {{CURRENTMONTH}} world"))
-    // console.log(word_templates("hello {{CURRENTYEAR}} world"))
-    // console.log(word_templates("hello {{LOCALDAYNAME}} world"))
-    // console.log(word_templates("hello {{lc:88}} world"))
-    // console.log(word_templates("hello {{pull quote|Life is like\n|author=[[asdf]]}} world"))
-    // console.log(word_templates("hi {{etyl|la|-}} there"))
-    // console.log(word_templates("{{etyl|la|-}} cognate with {{etyl|is|-}} {{term|hugga||to comfort|lang=is}},"))
-
-  //return a list of probable pages for this disambig page
-  var parse_disambig = function (wiki) {
-    var pages = []
-    var lines = wiki.replace(/\r/g, '').split(/\n/)
-    lines.forEach(function (str) {
-      //if there's an early link in the list
-      if(str.match(/^\*.{0,40}\[\[.*\]\]/)) {
-        var links = fetch_links(str)
-        if(links && links[0] && links[0].page) {
-          pages.push(links[0].page)
-        }
-      }
-    })
-    return {
-      type: "disambiguation",
-      pages: pages
-    }
-  }
-
-  //turn a {|...table string into an array of arrays
-  var parse_table = function (wiki) {
-    var table = []
-    var lines = wiki.replace(/\r/g, '').split(/\n/)
-    lines.forEach(function (str) {
-      //die
-      if(str.match(/^\|\}/)) {
-        return
-      }
-      //make new row
-      if(str.match(/^\|-/)) {
-        table.push([])
-        return
-      }
-      //this is some kind of comment
-      if(str.match(/^\|\+/)) {
-        return
-      }
-      //juicy line
-      if(str.match(/^[\!\|]/)) {
-        //make a new row
-        if(!table[table.length - 1]) {
-          table[table.length - 1] = []
-        }
-        var want = (str.match(/\|(.*)/) || [])[1] || ''
-        want = helpers.trim_whitespace(want) || ''
-          //handle the || shorthand..
-        if(want.match(/[!\|]{2}/)) {
-          want.split(/[!\|]{2}/g).forEach(function (s) {
-            s = helpers.trim_whitespace(s)
-            table[table.length - 1].push(s)
-          })
-        } else {
-          table[table.length - 1].push(want)
-        }
-      }
-    })
-    return table
-  }
-
-  var main = function (wiki) {
-    var infobox = {}
-    var infobox_template = ''
-    var images = []
-    var tables = []
-    var translations = {}
-    wiki = wiki || ''
-      //detect if page is just redirect, and return
-    if(wiki.match(REDIRECT_REGEX)) {
-      return {
-        type: "redirect",
-        redirect: (wiki.match(REDIRECT_REGEX) || [])[2]
-      }
-    }
-    //detect if page is disambiguator page
-    var template_reg = new RegExp("\\{\\{ ?(" + i18n.disambigs.join("|") + ")(\\|[a-z =]*?)? ?\\}\\}", "i")
-    if(wiki.match(template_reg)) { //|| wiki.match(/^.{3,25} may refer to/i)|| wiki.match(/^.{3,25} ist der Name mehrerer /i)
-      return parse_disambig(wiki)
-    }
-    //parse templates like {{currentday}}
-    wiki = word_templates(wiki)
-
-    //kill off th3 craziness
-    wiki = preprocess(wiki)
-
-    //find tables
-    tables = wiki.match(/\{\|[\s\S]{1,8000}?\|\}/g, '') || []
-    tables = tables.map(function (s) {
-        return parse_table(s)
-      })
-      //remove tables
-    wiki = wiki.replace(/\{\|[\s\S]{1,8000}?\|\}/g, '')
-
-    //reduce the scary recursive situations
-    //remove {{template {{}} }} recursions
-    var matches = recursive_matches('{', '}', wiki)
-    var infobox_reg = new RegExp("\{\{(" + i18n.infoboxes.join("|") + ")[: \n]", "ig")
-    matches.forEach(function (s) {
-        if(s.match(infobox_reg, "ig") && Object.keys(infobox).length === 0) {
-          infobox = parse_infobox(s)
-          infobox_template = parse_infobox_template(s)
-        }
-        if(s.match(/\{\{(Gallery|Taxobox|cite|infobox|Inligtingskas|sister|geographic|navboxes|listen|historical|citeweb|citenews|lien|clima|cita|Internetquelle|article|weather)[ \|:\n]/i)) {
-          wiki = wiki.replace(s, '')
-        }
-      })
-      //second, remove [[file:...[[]] ]] recursions
-    matches = recursive_matches('[', ']', wiki)
-    matches.forEach(function (s) {
-        if(s.match(/\[\[(file|image|fichier|datei|plik)/i)) {
-          images.push(parse_image(s))
-          wiki = wiki.replace(s, '')
-        }
-      })
-      //third, wiktionary-style interlanguage links
-    matches.forEach(function (s) {
-      if(s.match(/\[\[[a-z][a-z]\:.*/i)) {
-        var lang = s.match(/\[\[([a-z][a-z]):/i)[1]
-        if(lang && languages[lang]) {
-          translations[lang] = s.match(/^\[\[([a-z][a-z]):(.*?)\]\]/i)[2]
-        }
-        wiki = wiki.replace(s, '')
-      }
-    })
-
-    //now that the scary recursion issues are gone, we can trust simple regex methods
-
-    //kill the rest of templates
-    wiki = wiki.replace(/\{\{.*?\}\}/g, '')
-
-    //get list of links, categories
-    var cats = fetch_categories(wiki)
-
-    //next, map each line into a parsable sentence
-    var output = {}
-    var lines = wiki.replace(/\r/g, '').split(/\n/)
-    var section = "Intro"
-    var number = 1
-    lines.forEach(function (part) {
-      if(!section) {
-        return
-      }
-
-      //add # numberings formatting
-      if(part.match(/^ ?\#[^:,\|]{4}/i)) {
-        part = part.replace(/^ ?#*/, number + ") ")
-        part = part + "\n"
-        number += 1
-      } else {
-        number = 1
-      }
-      //add bullet-points formatting
-      if(part.match(/^\*+[^:,\|]{4}/)) {
-        part = part + "\n"
-      }
-
-      //remove some nonsense wp lines
-      //
-      //ignore list
-      if(part.match(/^[#\*:;\|]/)) {
-        return
-      }
-
-      //ignore only-punctuation
-      if(!part.match(/[a-z0-9]/i)) {
-        return
-      }
-      //headings
-      var ban_headings = new RegExp("^ ?(" + i18n.sources.join('|') + ") ?$", "i") //remove things like 'external links'
-      if(part.match(/^={1,5}[^=]{1,200}={1,5}$/)) {
-        section = part.match(/^={1,5}([^=]{2,200}?)={1,5}$/) || []
-        section = section[1] || ''
-        section = section.replace(/\./g, ' ') // this is necessary for mongo, i'm sorry
-        section = helpers.trim_whitespace(section)
-          //ban some sections
-        if(section && section.match(ban_headings)) {
-          section = undefined
-        }
-        return
-      }
-      //still alive, add it to the section
-      sentence_parser(part).forEach(function (line) {
-        line = parse_line(line)
-        if(line && line.text) {
-          if(!output[section]) {
-            output[section] = []
-          }
-          output[section].push(line)
-        }
-      })
-    })
-
-    //add additional image from infobox, if applicable
-    if(infobox['image'] && infobox['image'].text) {
-      var img = infobox['image'].text || ''
-      if(typeof img === "string" && !img.match(/^(image|file|fichier|Datei)/i)) {
-        img = "File:" + img
-      }
-      images.push(img)
-    }
-
-    return {
-      type: "page",
-      text: output,
-      categories: cats,
-      images: images,
-      infobox: infobox,
-      infobox_template: infobox_template,
-      tables: tables,
-      translations: translations,
-    }
-
-  }
-
-  var from_api = function (page_identifier, lang_or_wikiid, cb) {
-    if(typeof lang_or_wikiid === "function") {
-      cb = lang_or_wikiid
-      lang_or_wikiid = "en"
-    }
-    cb = cb || function () {}
-    lang_or_wikiid = lang_or_wikiid || "en"
-    if(!fetch) { //no http method, on the client side
-      return cb(null)
-    }
-    fetch(page_identifier, lang_or_wikiid, cb);
-  };
-
-  var plaintext = function (str) {
-    var data = main(str) || {}
-    data.text = data.text || {};
-    return Object.keys(data.text).map(function (k) {
-      return data.text[k].map(function (a) {
-        return a.text
-      }).join(" ")
-    }).join("\n")
-  }
-
-  var methods = {
-    from_api: from_api,
-    parse: main,
-    plaintext: plaintext,
-  }
-
-  if(typeof module !== 'undefined' && module.exports) {
-    module.exports = methods
-  }
-
-  return methods
-})()
-
-//export it for client-side
-if (typeof window!=="undefined") { //is this right?
-  window.wtf_wikipedia = wtf_wikipedia;
-}
-module.exports = wtf_wikipedia;
-
-// wtf_wikipedia.from_api("Whistler", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
-// wtf_wikipedia.from_api("Whistling", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
-// wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s).infobox.leader_name)})//disambig
-// wtf_wikipedia.from_api("Athens", 'de', function(s){ console.log(wtf_wikipedia.parse(s)) })//disambig
-// wtf_wikipedia.from_api("John Smith", 'en', function(s){ console.log(s);console.log(wtf_wikipedia.parse(s)) })//disambig
-// wtf_wikipedia.from_api("Jodie Emery", 'en', function(str){   console.log(wtf_wikipedia.plaintext(str)) })//
-// wtf_wikipedia.from_api("Toronto", 'tr', function(s){console.log(wtf_wikipedia.parse(s)) })//disambig
-
-// function from_file(page){
-//   fs=require("fs")
-//   var str = fs.readFileSync(__dirname+"/tests/cache/"+page+".txt", 'utf-8')
-//   console.log(wtf_wikipedia.plaintext(str))
-//   // var data=wtf_wikipedia.parse(str)
-//   // console.log(JSON.stringify(data, null, 2));
-// }
-
-// from_file("list")
-// from_file("Toronto")
-// from_file("Toronto_Star")
-// from_file("Royal_Cinema")
-// from_file("Jodie_Emery")
-// from_file("Redirect")
-// from_file("Africaans")
-// from_file("Anarchism")
-
-//  TODO:
-//  [[St. Kitts]] sentence bug
-//  parse [[image: ..]]  and make href
-//  console.log(kill_xml("North America,<ref name=\"fhwa\"> and one of"))
-// ... sentence
-// "latd=43"
-
-// wtf_wikipedia.from_api("List_of_British_films_of_2014", function (s) {
-//   console.log(JSON.stringify(wtf_wikipedia.parse(s), null, 2))
-//     // wtf_wikipedia.parse(s)
-// })
-
-},{"./i18n":1,"./languages":3,"./lib/fetch_text":4,"./lib/sentence_parser":5}],3:[function(require,module,exports){
-module.exports={
-  "aa": {
-    "english_title": "Afar",
-    "direction": "ltr",
-    "local_title": "Afar"
-  },
-  "ab": {
-    "english_title": "Abkhazian",
-    "direction": "ltr",
-    "local_title": "Аҧсуа"
-  },
-  "af": {
-    "english_title": "Afrikaans",
-    "direction": "ltr",
-    "local_title": "Afrikaans"
-  },
-  "ak": {
-    "english_title": "Akan",
-    "direction": "ltr",
-    "local_title": "Akana"
-  },
-  "als": {
-    "english_title": "Alemannic",
-    "direction": "ltr",
-    "local_title": "Alemannisch"
-  },
-  "am": {
-    "english_title": "Amharic",
-    "direction": "ltr",
-    "local_title": "አማርኛ"
-  },
-  "an": {
-    "english_title": "Aragonese",
-    "direction": "ltr",
-    "local_title": "Aragonés"
-  },
-  "ang": {
-    "english_title": "Anglo-Saxon",
-    "direction": "ltr",
-    "local_title": "Englisc"
-  },
-  "ar": {
-    "english_title": "Arabic",
-    "direction": "rtl",
-    "local_title": "العربية"
-  },
-  "arc": {
-    "english_title": "Aramaic",
-    "direction": "rtl",
-    "local_title": "ܣܘܪܬ"
-  },
-  "as": {
-    "english_title": "Assamese",
-    "direction": "ltr",
-    "local_title": "অসমীয়া"
-  },
-  "ast": {
-    "english_title": "Asturian",
-    "direction": "ltr",
-    "local_title": "Asturianu"
-  },
-  "av": {
-    "english_title": "Avar",
-    "direction": "ltr",
-    "local_title": "Авар"
-  },
-  "ay": {
-    "english_title": "Aymara",
-    "direction": "ltr",
-    "local_title": "Aymar"
-  },
-  "az": {
-    "english_title": "Azerbaijani",
-    "direction": "ltr",
-    "local_title": "Azərbaycanca"
-  },
-  "ba": {
-    "english_title": "Bashkir",
-    "direction": "ltr",
-    "local_title": "Башҡорт"
-  },
-  "bar": {
-    "english_title": "Bavarian",
-    "direction": "ltr",
-    "local_title": "Boarisch"
-  },
-  "bat-smg": {
-    "english_title": "Samogitian",
-    "direction": "ltr",
-    "local_title": "Žemaitėška"
-  },
-  "bcl": {
-    "english_title": "Bikol",
-    "direction": "ltr",
-    "local_title": "Bikol"
-  },
-  "be": {
-    "english_title": "Belarusian",
-    "direction": "ltr",
-    "local_title": "Беларуская"
-  },
-  "be-x-old": {
-    "english_title": "Belarusian",
-    "direction": "(Taraškievica)",
-    "local_title": "ltr"
-  },
-  "bg": {
-    "english_title": "Bulgarian",
-    "direction": "ltr",
-    "local_title": "Български"
-  },
-  "bh": {
-    "english_title": "Bihari",
-    "direction": "ltr",
-    "local_title": "भोजपुरी"
-  },
-  "bi": {
-    "english_title": "Bislama",
-    "direction": "ltr",
-    "local_title": "Bislama"
-  },
-  "bm": {
-    "english_title": "Bambara",
-    "direction": "ltr",
-    "local_title": "Bamanankan"
-  },
-  "bn": {
-    "english_title": "Bengali",
-    "direction": "ltr",
-    "local_title": "বাংলা"
-  },
-  "bo": {
-    "english_title": "Tibetan",
-    "direction": "ltr",
-    "local_title": "བོད་ཡིག"
-  },
-  "bpy": {
-    "english_title": "Bishnupriya",
-    "direction": "Manipuri",
-    "local_title": "ltr"
-  },
-  "br": {
-    "english_title": "Breton",
-    "direction": "ltr",
-    "local_title": "Brezhoneg"
-  },
-  "bs": {
-    "english_title": "Bosnian",
-    "direction": "ltr",
-    "local_title": "Bosanski"
-  },
-  "bug": {
-    "english_title": "Buginese",
-    "direction": "ltr",
-    "local_title": "ᨅᨔ"
-  },
-  "bxr": {
-    "english_title": "Buriat",
-    "direction": "(Russia)",
-    "local_title": "ltr"
-  },
-  "ca": {
-    "english_title": "Catalan",
-    "direction": "ltr",
-    "local_title": "Català"
-  },
-  "cdo": {
-    "english_title": "Min",
-    "direction": "Dong",
-    "local_title": "Chinese"
-  },
-  "ce": {
-    "english_title": "Chechen",
-    "direction": "ltr",
-    "local_title": "Нохчийн"
-  },
-  "ceb": {
-    "english_title": "Cebuano",
-    "direction": "ltr",
-    "local_title": "Sinugboanong"
-  },
-  "ch": {
-    "english_title": "Chamorro",
-    "direction": "ltr",
-    "local_title": "Chamoru"
-  },
-  "cho": {
-    "english_title": "Choctaw",
-    "direction": "ltr",
-    "local_title": "Choctaw"
-  },
-  "chr": {
-    "english_title": "Cherokee",
-    "direction": "ltr",
-    "local_title": "ᏣᎳᎩ"
-  },
-  "chy": {
-    "english_title": "Cheyenne",
-    "direction": "ltr",
-    "local_title": "Tsetsêhestâhese"
-  },
-  "co": {
-    "english_title": "Corsican",
-    "direction": "ltr",
-    "local_title": "Corsu"
-  },
-  "cr": {
-    "english_title": "Cree",
-    "direction": "ltr",
-    "local_title": "Nehiyaw"
-  },
-  "cs": {
-    "english_title": "Czech",
-    "direction": "ltr",
-    "local_title": "Česky"
-  },
-  "csb": {
-    "english_title": "Kashubian",
-    "direction": "ltr",
-    "local_title": "Kaszëbsczi"
-  },
-  "cu": {
-    "english_title": "Old",
-    "direction": "Church",
-    "local_title": "Slavonic"
-  },
-  "cv": {
-    "english_title": "Chuvash",
-    "direction": "ltr",
-    "local_title": "Чăваш"
-  },
-  "cy": {
-    "english_title": "Welsh",
-    "direction": "ltr",
-    "local_title": "Cymraeg"
-  },
-  "da": {
-    "english_title": "Danish",
-    "direction": "ltr",
-    "local_title": "Dansk"
-  },
-  "de": {
-    "english_title": "German",
-    "direction": "ltr",
-    "local_title": "Deutsch"
-  },
-  "diq": {
-    "english_title": "Dimli",
-    "direction": "ltr",
-    "local_title": "Zazaki"
-  },
-  "dsb": {
-    "english_title": "Lower",
-    "direction": "Sorbian",
-    "local_title": "ltr"
-  },
-  "dv": {
-    "english_title": "Divehi",
-    "direction": "rtl",
-    "local_title": "ދިވެހިބަސް"
-  },
-  "dz": {
-    "english_title": "Dzongkha",
-    "direction": "ltr",
-    "local_title": "ཇོང་ཁ"
-  },
-  "ee": {
-    "english_title": "Ewe",
-    "direction": "ltr",
-    "local_title": "Ɛʋɛ"
-  },
-  "far": {
-    "english_title": "Farsi",
-    "direction": "ltr",
-    "local_title": "فارسی"
-  },
-  "el": {
-    "english_title": "Greek",
-    "direction": "ltr",
-    "local_title": "Ελληνικά"
-  },
-  "en": {
-    "english_title": "English",
-    "direction": "ltr",
-    "local_title": "English"
-  },
-  "eo": {
-    "english_title": "Esperanto",
-    "direction": "ltr",
-    "local_title": "Esperanto"
-  },
-  "es": {
-    "english_title": "Spanish",
-    "direction": "ltr",
-    "local_title": "Español"
-  },
-  "et": {
-    "english_title": "Estonian",
-    "direction": "ltr",
-    "local_title": "Eesti"
-  },
-  "eu": {
-    "english_title": "Basque",
-    "direction": "ltr",
-    "local_title": "Euskara"
-  },
-  "ext": {
-    "english_title": "Extremaduran",
-    "direction": "ltr",
-    "local_title": "Estremeñu"
-  },
-  "ff": {
-    "english_title": "Peul",
-    "direction": "ltr",
-    "local_title": "Fulfulde"
-  },
-  "fi": {
-    "english_title": "Finnish",
-    "direction": "ltr",
-    "local_title": "Suomi"
-  },
-  "fiu-vro": {
-    "english_title": "Võro",
-    "direction": "ltr",
-    "local_title": "Võro"
-  },
-  "fj": {
-    "english_title": "Fijian",
-    "direction": "ltr",
-    "local_title": "Na"
-  },
-  "fo": {
-    "english_title": "Faroese",
-    "direction": "ltr",
-    "local_title": "Føroyskt"
-  },
-  "fr": {
-    "english_title": "French",
-    "direction": "ltr",
-    "local_title": "Français"
-  },
-  "frp": {
-    "english_title": "Arpitan",
-    "direction": "ltr",
-    "local_title": "Arpitan"
-  },
-  "fur": {
-    "english_title": "Friulian",
-    "direction": "ltr",
-    "local_title": "Furlan"
-  },
-  "fy": {
-    "english_title": "West",
-    "direction": "Frisian",
-    "local_title": "ltr"
-  },
-  "ga": {
-    "english_title": "Irish",
-    "direction": "ltr",
-    "local_title": "Gaeilge"
-  },
-  "gan": {
-    "english_title": "Gan",
-    "direction": "Chinese",
-    "local_title": "ltr"
-  },
-  "gd": {
-    "english_title": "Scottish",
-    "direction": "Gaelic",
-    "local_title": "ltr"
-  },
-  "gil": {
-    "english_title": "Gilbertese",
-    "direction": "ltr",
-    "local_title": "Taetae"
-  },
-  "gl": {
-    "english_title": "Galician",
-    "direction": "ltr",
-    "local_title": "Galego"
-  },
-  "gn": {
-    "english_title": "Guarani",
-    "direction": "ltr",
-    "local_title": "Avañe'ẽ"
-  },
-  "got": {
-    "english_title": "Gothic",
-    "direction": "ltr",
-    "local_title": "gutisk"
-  },
-  "gu": {
-    "english_title": "Gujarati",
-    "direction": "ltr",
-    "local_title": "ગુજરાતી"
-  },
-  "gv": {
-    "english_title": "Manx",
-    "direction": "ltr",
-    "local_title": "Gaelg"
-  },
-  "ha": {
-    "english_title": "Hausa",
-    "direction": "rtl",
-    "local_title": "هَوُسَ"
-  },
-  "hak": {
-    "english_title": "Hakka",
-    "direction": "Chinese",
-    "local_title": "ltr"
-  },
-  "haw": {
-    "english_title": "Hawaiian",
-    "direction": "ltr",
-    "local_title": "Hawai`i"
-  },
-  "he": {
-    "english_title": "Hebrew",
-    "direction": "rtl",
-    "local_title": "עברית"
-  },
-  "hi": {
-    "english_title": "Hindi",
-    "direction": "ltr",
-    "local_title": "हिन्दी"
-  },
-  "ho": {
-    "english_title": "Hiri",
-    "direction": "Motu",
-    "local_title": "ltr"
-  },
-  "hr": {
-    "english_title": "Croatian",
-    "direction": "ltr",
-    "local_title": "Hrvatski"
-  },
-  "ht": {
-    "english_title": "Haitian",
-    "direction": "ltr",
-    "local_title": "Krèyol"
-  },
-  "hu": {
-    "english_title": "Hungarian",
-    "direction": "ltr",
-    "local_title": "Magyar"
-  },
-  "hy": {
-    "english_title": "Armenian",
-    "direction": "ltr",
-    "local_title": "Հայերեն"
-  },
-  "hz": {
-    "english_title": "Herero",
-    "direction": "ltr",
-    "local_title": "Otsiherero"
-  },
-  "ia": {
-    "english_title": "Interlingua",
-    "direction": "ltr",
-    "local_title": "Interlingua"
-  },
-  "id": {
-    "english_title": "Indonesian",
-    "direction": "ltr",
-    "local_title": "Bahasa"
-  },
-  "ie": {
-    "english_title": "Interlingue",
-    "direction": "ltr",
-    "local_title": "Interlingue"
-  },
-  "ig": {
-    "english_title": "Igbo",
-    "direction": "ltr",
-    "local_title": "Igbo"
-  },
-  "ii": {
-    "english_title": "Sichuan",
-    "direction": "Yi",
-    "local_title": "ltr"
-  },
-  "ik": {
-    "english_title": "Inupiak",
-    "direction": "ltr",
-    "local_title": "Iñupiak"
-  },
-  "ilo": {
-    "english_title": "Ilokano",
-    "direction": "ltr",
-    "local_title": "Ilokano"
-  },
-  "io": {
-    "english_title": "Ido",
-    "direction": "ltr",
-    "local_title": "Ido"
-  },
-  "is": {
-    "english_title": "Icelandic",
-    "direction": "ltr",
-    "local_title": "Íslenska"
-  },
-  "it": {
-    "english_title": "Italian",
-    "direction": "ltr",
-    "local_title": "Italiano"
-  },
-  "iu": {
-    "english_title": "Inuktitut",
-    "direction": "ltr",
-    "local_title": "ᐃᓄᒃᑎᑐᑦ"
-  },
-  "ja": {
-    "english_title": "Japanese",
-    "direction": "ltr",
-    "local_title": "日本語"
-  },
-  "jbo": {
-    "english_title": "Lojban",
-    "direction": "ltr",
-    "local_title": "Lojban"
-  },
-  "jv": {
-    "english_title": "Javanese",
-    "direction": "ltr",
-    "local_title": "Basa"
-  },
-  "ka": {
-    "english_title": "Georgian",
-    "direction": "ltr",
-    "local_title": "ქართული"
-  },
-  "kg": {
-    "english_title": "Kongo",
-    "direction": "ltr",
-    "local_title": "KiKongo"
-  },
-  "ki": {
-    "english_title": "Kikuyu",
-    "direction": "ltr",
-    "local_title": "Gĩkũyũ"
-  },
-  "kj": {
-    "english_title": "Kuanyama",
-    "direction": "ltr",
-    "local_title": "Kuanyama"
-  },
-  "kk": {
-    "english_title": "Kazakh",
-    "direction": "ltr",
-    "local_title": "Қазақша"
-  },
-  "kl": {
-    "english_title": "Greenlandic",
-    "direction": "ltr",
-    "local_title": "Kalaallisut"
-  },
-  "km": {
-    "english_title": "Cambodian",
-    "direction": "ltr",
-    "local_title": "ភាសាខ្មែរ"
-  },
-  "kn": {
-    "english_title": "Kannada",
-    "direction": "ltr",
-    "local_title": "ಕನ್ನಡ"
-  },
-  "khw": {
-    "english_title": "Khowar",
-    "direction": "rtl",
-    "local_title": "کھوار"
-  },
-  "ko": {
-    "english_title": "Korean",
-    "direction": "ltr",
-    "local_title": "한국어"
-  },
-  "kr": {
-    "english_title": "Kanuri",
-    "direction": "ltr",
-    "local_title": "Kanuri"
-  },
-  "ks": {
-    "english_title": "Kashmiri",
-    "direction": "rtl",
-    "local_title": "कश्मीरी"
-  },
-  "ksh": {
-    "english_title": "Ripuarian",
-    "direction": "ltr",
-    "local_title": "Ripoarisch"
-  },
-  "ku": {
-    "english_title": "Kurdish",
-    "direction": "rtl",
-    "local_title": "Kurdî"
-  },
-  "kv": {
-    "english_title": "Komi",
-    "direction": "ltr",
-    "local_title": "Коми"
-  },
-  "kw": {
-    "english_title": "Cornish",
-    "direction": "ltr",
-    "local_title": "Kernewek"
-  },
-  "ky": {
-    "english_title": "Kirghiz",
-    "direction": "ltr",
-    "local_title": "Kırgızca"
-  },
-  "la": {
-    "english_title": "Latin",
-    "direction": "ltr",
-    "local_title": "Latina"
-  },
-  "lad": {
-    "english_title": "Ladino",
-    "direction": "ltr",
-    "local_title": "Dzhudezmo"
-  },
-  "lan": {
-    "english_title": "Lango",
-    "direction": "ltr",
-    "local_title": "Leb"
-  },
-  "lb": {
-    "english_title": "Luxembourgish",
-    "direction": "ltr",
-    "local_title": "Lëtzebuergesch"
-  },
-  "lg": {
-    "english_title": "Ganda",
-    "direction": "ltr",
-    "local_title": "Luganda"
-  },
-  "li": {
-    "english_title": "Limburgian",
-    "direction": "ltr",
-    "local_title": "Limburgs"
-  },
-  "lij": {
-    "english_title": "Ligurian",
-    "direction": "ltr",
-    "local_title": "Líguru"
-  },
-  "lmo": {
-    "english_title": "Lombard",
-    "direction": "ltr",
-    "local_title": "Lumbaart"
-  },
-  "ln": {
-    "english_title": "Lingala",
-    "direction": "ltr",
-    "local_title": "Lingála"
-  },
-  "lo": {
-    "english_title": "Laotian",
-    "direction": "ltr",
-    "local_title": "ລາວ"
-  },
-  "lt": {
-    "english_title": "Lithuanian",
-    "direction": "ltr",
-    "local_title": "Lietuvių"
-  },
-  "lv": {
-    "english_title": "Latvian",
-    "direction": "ltr",
-    "local_title": "Latviešu"
-  },
-  "map-bms": {
-    "english_title": "Banyumasan",
-    "direction": "ltr",
-    "local_title": "Basa"
-  },
-  "mg": {
-    "english_title": "Malagasy",
-    "direction": "ltr",
-    "local_title": "Malagasy"
-  },
-  "man": {
-    "english_title": "Mandarin",
-    "direction": "ltr",
-    "local_title": "官話"
-  },
-  "mh": {
-    "english_title": "Marshallese",
-    "direction": "ltr",
-    "local_title": "Kajin"
-  },
-  "mi": {
-    "english_title": "Maori",
-    "direction": "ltr",
-    "local_title": "Māori"
-  },
-  "min": {
-    "english_title": "Minangkabau",
-    "direction": "ltr",
-    "local_title": "Minangkabau"
-  },
-  "mk": {
-    "english_title": "Macedonian",
-    "direction": "ltr",
-    "local_title": "Македонски"
-  },
-  "ml": {
-    "english_title": "Malayalam",
-    "direction": "ltr",
-    "local_title": "മലയാളം"
-  },
-  "mn": {
-    "english_title": "Mongolian",
-    "direction": "ltr",
-    "local_title": "Монгол"
-  },
-  "mo": {
-    "english_title": "Moldovan",
-    "direction": "ltr",
-    "local_title": "Moldovenească"
-  },
-  "mr": {
-    "english_title": "Marathi",
-    "direction": "ltr",
-    "local_title": "मराठी"
-  },
-  "ms": {
-    "english_title": "Malay",
-    "direction": "ltr",
-    "local_title": "Bahasa"
-  },
-  "mt": {
-    "english_title": "Maltese",
-    "direction": "ltr",
-    "local_title": "bil-Malti"
-  },
-  "mus": {
-    "english_title": "Creek",
-    "direction": "ltr",
-    "local_title": "Muskogee"
-  },
-  "my": {
-    "english_title": "Burmese",
-    "direction": "ltr",
-    "local_title": "Myanmasa"
-  },
-  "na": {
-    "english_title": "Nauruan",
-    "direction": "ltr",
-    "local_title": "Dorerin"
-  },
-  "nah": {
-    "english_title": "Nahuatl",
-    "direction": "ltr",
-    "local_title": "Nahuatl"
-  },
-  "nap": {
-    "english_title": "Neapolitan",
-    "direction": "ltr",
-    "local_title": "Nnapulitano"
-  },
-  "nd": {
-    "english_title": "North",
-    "direction": "Ndebele",
-    "local_title": "ltr"
-  },
-  "nds": {
-    "english_title": "Low German",
-    "direction": "ltr",
-    "local_title": "Plattdüütsch"
-  },
-  "nds-nl": {
-    "english_title": "Dutch",
-    "direction": "Low",
-    "local_title": "Saxon"
-  },
-  "ne": {
-    "english_title": "Nepali",
-    "direction": "ltr",
-    "local_title": "नेपाली"
-  },
-  "new": {
-    "english_title": "Newar",
-    "direction": "ltr",
-    "local_title": "नेपालभाषा"
-  },
-  "ng": {
-    "english_title": "Ndonga",
-    "direction": "ltr",
-    "local_title": "Oshiwambo"
-  },
-  "nl": {
-    "english_title": "Dutch",
-    "direction": "ltr",
-    "local_title": "Nederlands"
-  },
-  "nn": {
-    "english_title": "Norwegian",
-    "direction": "Nynorsk",
-    "local_title": "ltr"
-  },
-  "no": {
-    "english_title": "Norwegian",
-    "direction": "ltr",
-    "local_title": "Norsk"
-  },
-  "nr": {
-    "english_title": "South",
-    "direction": "Ndebele",
-    "local_title": "ltr"
-  },
-  "nso": {
-    "english_title": "Northern",
-    "direction": "Sotho",
-    "local_title": "ltr"
-  },
-  "nrm": {
-    "english_title": "Norman",
-    "direction": "ltr",
-    "local_title": "Nouormand"
-  },
-  "nv": {
-    "english_title": "Navajo",
-    "direction": "ltr",
-    "local_title": "Diné"
-  },
-  "ny": {
-    "english_title": "Chichewa",
-    "direction": "ltr",
-    "local_title": "Chi-Chewa"
-  },
-  "oc": {
-    "english_title": "Occitan",
-    "direction": "ltr",
-    "local_title": "Occitan"
-  },
-  "oj": {
-    "english_title": "Ojibwa",
-    "direction": "ltr",
-    "local_title": "ᐊᓂᔑᓈᐯᒧᐎᓐ"
-  },
-  "om": {
-    "english_title": "Oromo",
-    "direction": "ltr",
-    "local_title": "Oromoo"
-  },
-  "or": {
-    "english_title": "Oriya",
-    "direction": "ltr",
-    "local_title": "ଓଡ଼ିଆ"
-  },
-  "os": {
-    "english_title": "Ossetian",
-    "direction": "ltr",
-    "local_title": "Иронау"
-  },
-  "pa": {
-    "english_title": "Panjabi",
-    "direction": "ltr",
-    "local_title": "ਪੰਜਾਬੀ"
-  },
-  "pag": {
-    "english_title": "Pangasinan",
-    "direction": "ltr",
-    "local_title": "Pangasinan"
-  },
-  "pam": {
-    "english_title": "Kapampangan",
-    "direction": "ltr",
-    "local_title": "Kapampangan"
-  },
-  "pap": {
-    "english_title": "Papiamentu",
-    "direction": "ltr",
-    "local_title": "Papiamentu"
-  },
-  "pdc": {
-    "english_title": "Pennsylvania",
-    "direction": "German",
-    "local_title": "ltr"
-  },
-  "pi": {
-    "english_title": "Pali",
-    "direction": "ltr",
-    "local_title": "Pāli"
-  },
-  "pih": {
-    "english_title": "Norfolk",
-    "direction": "ltr",
-    "local_title": "Norfuk"
-  },
-  "pl": {
-    "english_title": "Polish",
-    "direction": "ltr",
-    "local_title": "Polski"
-  },
-  "pms": {
-    "english_title": "Piedmontese",
-    "direction": "ltr",
-    "local_title": "Piemontèis"
-  },
-  "ps": {
-    "english_title": "Pashto",
-    "direction": "rtl",
-    "local_title": "پښتو"
-  },
-  "pt": {
-    "english_title": "Portuguese",
-    "direction": "ltr",
-    "local_title": "Português"
-  },
-  "qu": {
-    "english_title": "Quechua",
-    "direction": "ltr",
-    "local_title": "Runa"
-  },
-  "rm": {
-    "english_title": "Raeto",
-    "direction": "Romance",
-    "local_title": "ltr"
-  },
-  "rmy": {
-    "english_title": "Romani",
-    "direction": "ltr",
-    "local_title": "Romani"
-  },
-  "rn": {
-    "english_title": "Kirundi",
-    "direction": "ltr",
-    "local_title": "Kirundi"
-  },
-  "ro": {
-    "english_title": "Romanian",
-    "direction": "ltr",
-    "local_title": "Română"
-  },
-  "roa-rup": {
-    "english_title": "Aromanian",
-    "direction": "ltr",
-    "local_title": "Armâneashti"
-  },
-  "ru": {
-    "english_title": "Russian",
-    "direction": "ltr",
-    "local_title": "Русский"
-  },
-  "rw": {
-    "english_title": "Rwandi",
-    "direction": "ltr",
-    "local_title": "Kinyarwandi"
-  },
-  "sa": {
-    "english_title": "Sanskrit",
-    "direction": "ltr",
-    "local_title": "संस्कृतम्"
-  },
-  "sc": {
-    "english_title": "Sardinian",
-    "direction": "ltr",
-    "local_title": "Sardu"
-  },
-  "scn": {
-    "english_title": "Sicilian",
-    "direction": "ltr",
-    "local_title": "Sicilianu"
-  },
-  "sco": {
-    "english_title": "Scots",
-    "direction": "ltr",
-    "local_title": "Scots"
-  },
-  "sd": {
-    "english_title": "Sindhi",
-    "direction": "ltr",
-    "local_title": "सिनधि"
-  },
-  "se": {
-    "english_title": "Northern",
-    "direction": "Sami",
-    "local_title": "ltr"
-  },
-  "sg": {
-    "english_title": "Sango",
-    "direction": "ltr",
-    "local_title": "Sängö"
-  },
-  "sh": {
-    "english_title": "Serbo-Croatian",
-    "direction": "ltr",
-    "local_title": "Srpskohrvatski"
-  },
-  "si": {
-    "english_title": "Sinhalese",
-    "direction": "ltr",
-    "local_title": "සිංහල"
-  },
-  "simple": {
-    "english_title": "Simple",
-    "direction": "English",
-    "local_title": "ltr"
-  },
-  "sk": {
-    "english_title": "Slovak",
-    "direction": "ltr",
-    "local_title": "Slovenčina"
-  },
-  "sl": {
-    "english_title": "Slovenian",
-    "direction": "ltr",
-    "local_title": "Slovenščina"
-  },
-  "sm": {
-    "english_title": "Samoan",
-    "direction": "ltr",
-    "local_title": "Gagana"
-  },
-  "sn": {
-    "english_title": "Shona",
-    "direction": "ltr",
-    "local_title": "chiShona"
-  },
-  "so": {
-    "english_title": "Somalia",
-    "direction": "ltr",
-    "local_title": "Soomaaliga"
-  },
-  "sq": {
-    "english_title": "Albanian",
-    "direction": "ltr",
-    "local_title": "Shqip"
-  },
-  "sr": {
-    "english_title": "Serbian",
-    "direction": "ltr",
-    "local_title": "Српски"
-  },
-  "ss": {
-    "english_title": "Swati",
-    "direction": "ltr",
-    "local_title": "SiSwati"
-  },
-  "st": {
-    "english_title": "Southern",
-    "direction": "Sotho",
-    "local_title": "ltr"
-  },
-  "su": {
-    "english_title": "Sundanese",
-    "direction": "ltr",
-    "local_title": "Basa"
-  },
-  "sv": {
-    "english_title": "Swedish",
-    "direction": "ltr",
-    "local_title": "Svenska"
-  },
-  "sw": {
-    "english_title": "Swahili",
-    "direction": "ltr",
-    "local_title": "Kiswahili"
-  },
-  "ta": {
-    "english_title": "Tamil",
-    "direction": "ltr",
-    "local_title": "தமிழ்"
-  },
-  "te": {
-    "english_title": "Telugu",
-    "direction": "ltr",
-    "local_title": "తెలుగు"
-  },
-  "tet": {
-    "english_title": "Tetum",
-    "direction": "ltr",
-    "local_title": "Tetun"
-  },
-  "tg": {
-    "english_title": "Tajik",
-    "direction": "ltr",
-    "local_title": "Тоҷикӣ"
-  },
-  "th": {
-    "english_title": "Thai",
-    "direction": "ltr",
-    "local_title": "ไทย"
-  },
-  "ti": {
-    "english_title": "Tigrinya",
-    "direction": "ltr",
-    "local_title": "ትግርኛ"
-  },
-  "tk": {
-    "english_title": "Turkmen",
-    "direction": "ltr",
-    "local_title": "Туркмен"
-  },
-  "tl": {
-    "english_title": "Tagalog",
-    "direction": "ltr",
-    "local_title": "Tagalog"
-  },
-  "tlh": {
-    "english_title": "Klingon",
-    "direction": "ltr",
-    "local_title": "tlhIngan-Hol"
-  },
-  "tn": {
-    "english_title": "Tswana",
-    "direction": "ltr",
-    "local_title": "Setswana"
-  },
-  "to": {
-    "english_title": "Tonga",
-    "direction": "ltr",
-    "local_title": "Lea"
-  },
-  "tpi": {
-    "english_title": "Tok",
-    "direction": "Pisin",
-    "local_title": "ltr"
-  },
-  "tr": {
-    "english_title": "Turkish",
-    "direction": "ltr",
-    "local_title": "Türkçe"
-  },
-  "ts": {
-    "english_title": "Tsonga",
-    "direction": "ltr",
-    "local_title": "Xitsonga"
-  },
-  "tt": {
-    "english_title": "Tatar",
-    "direction": "ltr",
-    "local_title": "Tatarça"
-  },
-  "tum": {
-    "english_title": "Tumbuka",
-    "direction": "ltr",
-    "local_title": "chiTumbuka"
-  },
-  "tw": {
-    "english_title": "Twi",
-    "direction": "ltr",
-    "local_title": "Twi"
-  },
-  "ty": {
-    "english_title": "Tahitian",
-    "direction": "ltr",
-    "local_title": "Reo"
-  },
-  "udm": {
-    "english_title": "Udmurt",
-    "direction": "ltr",
-    "local_title": "Удмурт"
-  },
-  "ug": {
-    "english_title": "Uyghur",
-    "direction": "ltr",
-    "local_title": "Uyƣurqə"
-  },
-  "uk": {
-    "english_title": "Ukrainian",
-    "direction": "ltr",
-    "local_title": "Українська"
-  },
-  "ur": {
-    "english_title": "Urdu",
-    "direction": "rtl",
-    "local_title": "اردو"
-  },
-  "uz": {
-    "english_title": "Uzbek",
-    "direction": "ltr",
-    "local_title": "Ўзбек"
-  },
-  "ve": {
-    "english_title": "Venda",
-    "direction": "ltr",
-    "local_title": "Tshivenḓa"
-  },
-  "vi": {
-    "english_title": "Vietnamese",
-    "direction": "ltr",
-    "local_title": "Việtnam"
-  },
-  "vec": {
-    "english_title": "Venetian",
-    "direction": "ltr",
-    "local_title": "Vèneto"
-  },
-  "vls": {
-    "english_title": "West",
-    "direction": "Flemish",
-    "local_title": "ltr"
-  },
-  "vo": {
-    "english_title": "Volapük",
-    "direction": "ltr",
-    "local_title": "Volapük"
-  },
-  "wa": {
-    "english_title": "Walloon",
-    "direction": "ltr",
-    "local_title": "Walon"
-  },
-  "war": {
-    "english_title": "Waray-Waray",
-    "direction": "ltr",
-    "local_title": "Winaray"
-  },
-  "wo": {
-    "english_title": "Wolof",
-    "direction": "ltr",
-    "local_title": "Wollof"
-  },
-  "xal": {
-    "english_title": "Kalmyk",
-    "direction": "ltr",
-    "local_title": "Хальмг"
-  },
-  "xh": {
-    "english_title": "Xhosa",
-    "direction": "ltr",
-    "local_title": "isiXhosa"
-  },
-  "yi": {
-    "english_title": "Yiddish",
-    "direction": "rtl",
-    "local_title": "ייִדיש"
-  },
-  "yo": {
-    "english_title": "Yoruba",
-    "direction": "ltr",
-    "local_title": "Yorùbá"
-  },
-  "za": {
-    "english_title": "Zhuang",
-    "direction": "ltr",
-    "local_title": "Cuengh"
-  },
-  "zh": {
-    "english_title": "Chinese",
-    "direction": "ltr",
-    "local_title": "中文"
-  },
-  "zh-classical": {
-    "english_title": "Classical",
-    "direction": "Chinese",
-    "local_title": "ltr"
-  },
-  "zh-min-nan": {
-    "english_title": "Minnan",
-    "direction": "ltr",
-    "local_title": "Bân-lâm-gú"
-  },
-  "zh-yue": {
-    "english_title": "Cantonese",
-    "direction": "ltr",
-    "local_title": "粵語"
-  },
-  "zu": {
-    "english_title": "Zulu",
-    "direction": "ltr",
-    "local_title": "isiZulu"
-  }
-}
-
-},{}],4:[function(require,module,exports){
-//grab the content of any article, off the api
-var request = require('request');
-var site_map = require("./site_map");
-
-var fetch = function (page_identifier, lang_or_wikiid, cb) {
-  lang_or_wikiid = lang_or_wikiid || 'en';
-  var identifier_type = 'title';
-  if(page_identifier.match(/^[0-9]*$/) && page_identifier.length > 3) {
-    identifier_type = 'curid'
-  }
-  var url;
-  if(site_map[lang_or_wikiid]) {
-    url = site_map[lang_or_wikiid] + '/w/index.php?action=raw&' + identifier_type + '=' + page_identifier;
-  } else {
-    url = 'http://' + lang_or_wikiid + '.wikipedia.org/w/index.php?action=raw&' + identifier_type + '=' + page_identifier;
-  }
-  request({
-    uri: url,
-  }, function (error, response, body) {
-    cb(body);
-  });
-};
-
-module.exports = fetch;
-
-// fetch("Radiohead", 'en', function(r){ // 'afwiki'
-//   console.log(JSON.stringify(r, null, 2));
-// })
-
-},{"./site_map":6,"request":202}],5:[function(require,module,exports){
-//split text into sentences, using regex
-//@spencermountain MIT
-
-var sentence_parser = function (text) {
-  var i;
-
-  // if this looks like a period within a wikipedia link, return false
-  var unbalanced = function (str) {
-    var open = str.match(/\[\[/) || []
-    var closed = str.match(/\]\]/) || []
-    if(open.length > closed.length) {
-      return true
-    }
-    //make sure quotes are closed too
-    var quotes = str.match(/"/g)
-    if(quotes && (quotes.length % 2) !== 0 && str.length < 900) {
-      return true
-    }
-    return false
-  }
-
-  // first, do a greedy split
-  var tmp = text.split(/(\S.+?[.\?])(?=\s+|$|")/g);
-  var sentences = [];
-  var abbrevs = ["jr", "mr", "mrs", "ms", "dr", "prof", "sr", "sen", "corp", "calif", "rep", "gov", "atty", "supt", "det", "rev", "col", "gen", "lt", "cmdr", "adm", "capt", "sgt", "cpl", "maj", "dept", "univ", "assn", "bros", "inc", "ltd", "co", "corp", "arc", "al", "ave", "blvd", "cl", "ct", "cres", "exp", "rd", "st", "dist", "mt", "ft", "fy", "hwy", "la", "pd", "pl", "plz", "tce", "Ala", "Ariz", "Ark", "Cal", "Calif", "Col", "Colo", "Conn", "Del", "Fed", "Fla", "Ga", "Ida", "Id", "Ill", "Ind", "Ia", "Kan", "Kans", "Ken", "Ky", "La", "Me", "Md", "Mass", "Mich", "Minn", "Miss", "Mo", "Mont", "Neb", "Nebr", "Nev", "Mex", "Okla", "Ok", "Ore", "Penna", "Penn", "Pa", "Dak", "Tenn", "Tex", "Ut", "Vt", "Va", "Wash", "Wis", "Wisc", "Wy", "Wyo", "USAFA", "Alta", "Ont", "QuÔøΩ", "Sask", "Yuk", "jan", "feb", "mar", "apr", "jun", "jul", "aug", "sep", "oct", "nov", "dec", "sept", "vs", "etc", "esp", "llb", "md", "bl", "phd", "ma", "ba", "miss", "misses", "mister", "sir", "esq", "mstr", "lit", "fl", "ex", "eg", "sep", "sept", ".."];
-  var abbrev = new RegExp("(^| )(" + abbrevs.join("|") + ")[.] ?$", "i");
-  //loop through and evaluate greedy splits
-  for(i = 0; i < tmp.length; i++) {
-    if(tmp[i]) {
-      tmp[i] = tmp[i].replace(/^\s+|\s+$/g, "");
-      //if this does not look like a good sentence, prepend to next one
-      if(tmp[i].match(abbrev) || tmp[i].match(/[ |\.][A-Z]\.?$/i) || unbalanced(tmp[i])) {
-        tmp[parseInt(i, 10) + 1] = tmp[i] + " " + tmp[parseInt(i, 10) + 1];
-      } else {
-        sentences.push(tmp[i]);
-        tmp[i] = "";
-      }
-    }
-  }
-  //post-process the text
-  var clean = [];
-  for(i = 0; i < sentences.length; i++) {
-    //trim whitespace
-    sentences[i] = sentences[i].replace(/^\s+|\s+$/g, "");
-    sentences[i] = sentences[i].replace(/ {2}/g, " ");
-    if(sentences[i]) {
-      clean.push(sentences[i]);
-    }
-  }
-  // if there's no proper sentence, just return [text]
-  if(clean.length === 0) {
-    return [text]
-  }
-  return clean;
-}
-module.exports = sentence_parser;
-// console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2)
-// console.log(sentence_parser('I like that Color').length === 1)
-// console.log(sentence_parser("Soviet bonds to be sold in the U.S. market. Everyone wins.").length === 2)
-// console.log(sentence_parser("Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that's fine, etc. and you can attend Feb. 8th. Bye").length === 3)
-// console.log(sentence_parser("Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York").length === 1)
-// console.log(sentence_parser("he said ... oh yeah. I did").length === 2)
-
-//morgan freeman
-// console.log(sentence_parser("a staged reenactment of [[Perry v. Brown]] world"))
-// console.log(sentence_parser("This language allowed people (e.g. shepherds) to communicate"))
-
-},{}],6:[function(require,module,exports){
-//from https://en.wikipedia.org/w/api.php?action=sitematrix&format=json
-var site_map={
-  "aawiki": "http://aa.wikipedia.org",
-  "aawiktionary": "http://aa.wiktionary.org",
-  "aawikibooks": "http://aa.wikibooks.org",
-  "abwiki": "http://ab.wikipedia.org",
-  "abwiktionary": "http://ab.wiktionary.org",
-  "acewiki": "http://ace.wikipedia.org",
-  "afwiki": "http://af.wikipedia.org",
-  "afwiktionary": "http://af.wiktionary.org",
-  "afwikibooks": "http://af.wikibooks.org",
-  "afwikiquote": "http://af.wikiquote.org",
-  "akwiki": "http://ak.wikipedia.org",
-  "akwiktionary": "http://ak.wiktionary.org",
-  "akwikibooks": "http://ak.wikibooks.org",
-  "alswiki": "http://als.wikipedia.org",
-  "alswiktionary": "http://als.wiktionary.org",
-  "alswikibooks": "http://als.wikibooks.org",
-  "alswikiquote": "http://als.wikiquote.org",
-  "amwiki": "http://am.wikipedia.org",
-  "amwiktionary": "http://am.wiktionary.org",
-  "amwikiquote": "http://am.wikiquote.org",
-  "anwiki": "http://an.wikipedia.org",
-  "anwiktionary": "http://an.wiktionary.org",
-  "angwiki": "http://ang.wikipedia.org",
-  "angwiktionary": "http://ang.wiktionary.org",
-  "angwikibooks": "http://ang.wikibooks.org",
-  "angwikiquote": "http://ang.wikiquote.org",
-  "angwikisource": "http://ang.wikisource.org",
-  "arwiki": "http://ar.wikipedia.org",
-  "arwiktionary": "http://ar.wiktionary.org",
-  "arwikibooks": "http://ar.wikibooks.org",
-  "arwikinews": "http://ar.wikinews.org",
-  "arwikiquote": "http://ar.wikiquote.org",
-  "arwikisource": "http://ar.wikisource.org",
-  "arwikiversity": "http://ar.wikiversity.org",
-  "arcwiki": "http://arc.wikipedia.org",
-  "arzwiki": "http://arz.wikipedia.org",
-  "aswiki": "http://as.wikipedia.org",
-  "aswiktionary": "http://as.wiktionary.org",
-  "aswikibooks": "http://as.wikibooks.org",
-  "aswikisource": "http://as.wikisource.org",
-  "astwiki": "http://ast.wikipedia.org",
-  "astwiktionary": "http://ast.wiktionary.org",
-  "astwikibooks": "http://ast.wikibooks.org",
-  "astwikiquote": "http://ast.wikiquote.org",
-  "avwiki": "http://av.wikipedia.org",
-  "avwiktionary": "http://av.wiktionary.org",
-  "aywiki": "http://ay.wikipedia.org",
-  "aywiktionary": "http://ay.wiktionary.org",
-  "aywikibooks": "http://ay.wikibooks.org",
-  "azwiki": "http://az.wikipedia.org",
-  "azwiktionary": "http://az.wiktionary.org",
-  "azwikibooks": "http://az.wikibooks.org",
-  "azwikiquote": "http://az.wikiquote.org",
-  "azwikisource": "http://az.wikisource.org",
-  "bawiki": "http://ba.wikipedia.org",
-  "bawikibooks": "http://ba.wikibooks.org",
-  "barwiki": "http://bar.wikipedia.org",
-  "bat_smgwiki": "http://bat-smg.wikipedia.org",
-  "bclwiki": "http://bcl.wikipedia.org",
-  "bewiki": "http://be.wikipedia.org",
-  "bewiktionary": "http://be.wiktionary.org",
-  "bewikibooks": "http://be.wikibooks.org",
-  "bewikiquote": "http://be.wikiquote.org",
-  "bewikisource": "http://be.wikisource.org",
-  "be_x_oldwiki": "http://be-x-old.wikipedia.org",
-  "bgwiki": "http://bg.wikipedia.org",
-  "bgwiktionary": "http://bg.wiktionary.org",
-  "bgwikibooks": "http://bg.wikibooks.org",
-  "bgwikinews": "http://bg.wikinews.org",
-  "bgwikiquote": "http://bg.wikiquote.org",
-  "bgwikisource": "http://bg.wikisource.org",
-  "bhwiki": "http://bh.wikipedia.org",
-  "bhwiktionary": "http://bh.wiktionary.org",
-  "biwiki": "http://bi.wikipedia.org",
-  "biwiktionary": "http://bi.wiktionary.org",
-  "biwikibooks": "http://bi.wikibooks.org",
-  "bjnwiki": "http://bjn.wikipedia.org",
-  "bmwiki": "http://bm.wikipedia.org",
-  "bmwiktionary": "http://bm.wiktionary.org",
-  "bmwikibooks": "http://bm.wikibooks.org",
-  "bmwikiquote": "http://bm.wikiquote.org",
-  "bnwiki": "http://bn.wikipedia.org",
-  "bnwiktionary": "http://bn.wiktionary.org",
-  "bnwikibooks": "http://bn.wikibooks.org",
-  "bnwikisource": "http://bn.wikisource.org",
-  "bowiki": "http://bo.wikipedia.org",
-  "bowiktionary": "http://bo.wiktionary.org",
-  "bowikibooks": "http://bo.wikibooks.org",
-  "bpywiki": "http://bpy.wikipedia.org",
-  "brwiki": "http://br.wikipedia.org",
-  "brwiktionary": "http://br.wiktionary.org",
-  "brwikiquote": "http://br.wikiquote.org",
-  "brwikisource": "http://br.wikisource.org",
-  "bswiki": "http://bs.wikipedia.org",
-  "bswiktionary": "http://bs.wiktionary.org",
-  "bswikibooks": "http://bs.wikibooks.org",
-  "bswikinews": "http://bs.wikinews.org",
-  "bswikiquote": "http://bs.wikiquote.org",
-  "bswikisource": "http://bs.wikisource.org",
-  "bugwiki": "http://bug.wikipedia.org",
-  "bxrwiki": "http://bxr.wikipedia.org",
-  "cawiki": "http://ca.wikipedia.org",
-  "cawiktionary": "http://ca.wiktionary.org",
-  "cawikibooks": "http://ca.wikibooks.org",
-  "cawikinews": "http://ca.wikinews.org",
-  "cawikiquote": "http://ca.wikiquote.org",
-  "cawikisource": "http://ca.wikisource.org",
-  "cbk_zamwiki": "http://cbk-zam.wikipedia.org",
-  "cdowiki": "http://cdo.wikipedia.org",
-  "cewiki": "http://ce.wikipedia.org",
-  "cebwiki": "http://ceb.wikipedia.org",
-  "chwiki": "http://ch.wikipedia.org",
-  "chwiktionary": "http://ch.wiktionary.org",
-  "chwikibooks": "http://ch.wikibooks.org",
-  "chowiki": "http://cho.wikipedia.org",
-  "chrwiki": "http://chr.wikipedia.org",
-  "chrwiktionary": "http://chr.wiktionary.org",
-  "chywiki": "http://chy.wikipedia.org",
-  "ckbwiki": "http://ckb.wikipedia.org",
-  "cowiki": "http://co.wikipedia.org",
-  "cowiktionary": "http://co.wiktionary.org",
-  "cowikibooks": "http://co.wikibooks.org",
-  "cowikiquote": "http://co.wikiquote.org",
-  "crwiki": "http://cr.wikipedia.org",
-  "crwiktionary": "http://cr.wiktionary.org",
-  "crwikiquote": "http://cr.wikiquote.org",
-  "crhwiki": "http://crh.wikipedia.org",
-  "cswiki": "http://cs.wikipedia.org",
-  "cswiktionary": "http://cs.wiktionary.org",
-  "cswikibooks": "http://cs.wikibooks.org",
-  "cswikinews": "http://cs.wikinews.org",
-  "cswikiquote": "http://cs.wikiquote.org",
-  "cswikisource": "http://cs.wikisource.org",
-  "cswikiversity": "http://cs.wikiversity.org",
-  "csbwiki": "http://csb.wikipedia.org",
-  "csbwiktionary": "http://csb.wiktionary.org",
-  "cuwiki": "http://cu.wikipedia.org",
-  "cvwiki": "http://cv.wikipedia.org",
-  "cvwikibooks": "http://cv.wikibooks.org",
-  "cywiki": "http://cy.wikipedia.org",
-  "cywiktionary": "http://cy.wiktionary.org",
-  "cywikibooks": "http://cy.wikibooks.org",
-  "cywikiquote": "http://cy.wikiquote.org",
-  "cywikisource": "http://cy.wikisource.org",
-  "dawiki": "http://da.wikipedia.org",
-  "dawiktionary": "http://da.wiktionary.org",
-  "dawikibooks": "http://da.wikibooks.org",
-  "dawikiquote": "http://da.wikiquote.org",
-  "dawikisource": "http://da.wikisource.org",
-  "dewiki": "http://de.wikipedia.org",
-  "dewiktionary": "http://de.wiktionary.org",
-  "dewikibooks": "http://de.wikibooks.org",
-  "dewikinews": "http://de.wikinews.org",
-  "dewikiquote": "http://de.wikiquote.org",
-  "dewikisource": "http://de.wikisource.org",
-  "dewikiversity": "http://de.wikiversity.org",
-  "dewikivoyage": "http://de.wikivoyage.org",
-  "diqwiki": "http://diq.wikipedia.org",
-  "dsbwiki": "http://dsb.wikipedia.org",
-  "dvwiki": "http://dv.wikipedia.org",
-  "dvwiktionary": "http://dv.wiktionary.org",
-  "dzwiki": "http://dz.wikipedia.org",
-  "dzwiktionary": "http://dz.wiktionary.org",
-  "eewiki": "http://ee.wikipedia.org",
-  "elwiki": "http://el.wikipedia.org",
-  "elwiktionary": "http://el.wiktionary.org",
-  "elwikibooks": "http://el.wikibooks.org",
-  "elwikinews": "http://el.wikinews.org",
-  "elwikiquote": "http://el.wikiquote.org",
-  "elwikisource": "http://el.wikisource.org",
-  "elwikiversity": "http://el.wikiversity.org",
-  "elwikivoyage": "http://el.wikivoyage.org",
-  "emlwiki": "http://eml.wikipedia.org",
-  "enwiki": "http://en.wikipedia.org",
-  "enwiktionary": "http://en.wiktionary.org",
-  "enwikibooks": "http://en.wikibooks.org",
-  "enwikinews": "http://en.wikinews.org",
-  "enwikiquote": "http://en.wikiquote.org",
-  "enwikisource": "http://en.wikisource.org",
-  "enwikiversity": "http://en.wikiversity.org",
-  "enwikivoyage": "http://en.wikivoyage.org",
-  "eowiki": "http://eo.wikipedia.org",
-  "eowiktionary": "http://eo.wiktionary.org",
-  "eowikibooks": "http://eo.wikibooks.org",
-  "eowikinews": "http://eo.wikinews.org",
-  "eowikiquote": "http://eo.wikiquote.org",
-  "eowikisource": "http://eo.wikisource.org",
-  "eswiki": "http://es.wikipedia.org",
-  "eswiktionary": "http://es.wiktionary.org",
-  "eswikibooks": "http://es.wikibooks.org",
-  "eswikinews": "http://es.wikinews.org",
-  "eswikiquote": "http://es.wikiquote.org",
-  "eswikisource": "http://es.wikisource.org",
-  "eswikiversity": "http://es.wikiversity.org",
-  "eswikivoyage": "http://es.wikivoyage.org",
-  "etwiki": "http://et.wikipedia.org",
-  "etwiktionary": "http://et.wiktionary.org",
-  "etwikibooks": "http://et.wikibooks.org",
-  "etwikiquote": "http://et.wikiquote.org",
-  "etwikisource": "http://et.wikisource.org",
-  "euwiki": "http://eu.wikipedia.org",
-  "euwiktionary": "http://eu.wiktionary.org",
-  "euwikibooks": "http://eu.wikibooks.org",
-  "euwikiquote": "http://eu.wikiquote.org",
-  "extwiki": "http://ext.wikipedia.org",
-  "fawiki": "http://fa.wikipedia.org",
-  "fawiktionary": "http://fa.wiktionary.org",
-  "fawikibooks": "http://fa.wikibooks.org",
-  "fawikinews": "http://fa.wikinews.org",
-  "fawikiquote": "http://fa.wikiquote.org",
-  "fawikisource": "http://fa.wikisource.org",
-  "fawikivoyage": "http://fa.wikivoyage.org",
-  "ffwiki": "http://ff.wikipedia.org",
-  "fiwiki": "http://fi.wikipedia.org",
-  "fiwiktionary": "http://fi.wiktionary.org",
-  "fiwikibooks": "http://fi.wikibooks.org",
-  "fiwikinews": "http://fi.wikinews.org",
-  "fiwikiquote": "http://fi.wikiquote.org",
-  "fiwikisource": "http://fi.wikisource.org",
-  "fiwikiversity": "http://fi.wikiversity.org",
-  "fiu_vrowiki": "http://fiu-vro.wikipedia.org",
-  "fjwiki": "http://fj.wikipedia.org",
-  "fjwiktionary": "http://fj.wiktionary.org",
-  "fowiki": "http://fo.wikipedia.org",
-  "fowiktionary": "http://fo.wiktionary.org",
-  "fowikisource": "http://fo.wikisource.org",
-  "frwiki": "http://fr.wikipedia.org",
-  "frwiktionary": "http://fr.wiktionary.org",
-  "frwikibooks": "http://fr.wikibooks.org",
-  "frwikinews": "http://fr.wikinews.org",
-  "frwikiquote": "http://fr.wikiquote.org",
-  "frwikisource": "http://fr.wikisource.org",
-  "frwikiversity": "http://fr.wikiversity.org",
-  "frwikivoyage": "http://fr.wikivoyage.org",
-  "frpwiki": "http://frp.wikipedia.org",
-  "frrwiki": "http://frr.wikipedia.org",
-  "furwiki": "http://fur.wikipedia.org",
-  "fywiki": "http://fy.wikipedia.org",
-  "fywiktionary": "http://fy.wiktionary.org",
-  "fywikibooks": "http://fy.wikibooks.org",
-  "gawiki": "http://ga.wikipedia.org",
-  "gawiktionary": "http://ga.wiktionary.org",
-  "gawikibooks": "http://ga.wikibooks.org",
-  "gawikiquote": "http://ga.wikiquote.org",
-  "gagwiki": "http://gag.wikipedia.org",
-  "ganwiki": "http://gan.wikipedia.org",
-  "gdwiki": "http://gd.wikipedia.org",
-  "gdwiktionary": "http://gd.wiktionary.org",
-  "glwiki": "http://gl.wikipedia.org",
-  "glwiktionary": "http://gl.wiktionary.org",
-  "glwikibooks": "http://gl.wikibooks.org",
-  "glwikiquote": "http://gl.wikiquote.org",
-  "glwikisource": "http://gl.wikisource.org",
-  "glkwiki": "http://glk.wikipedia.org",
-  "gnwiki": "http://gn.wikipedia.org",
-  "gnwiktionary": "http://gn.wiktionary.org",
-  "gnwikibooks": "http://gn.wikibooks.org",
-  "gotwiki": "http://got.wikipedia.org",
-  "gotwikibooks": "http://got.wikibooks.org",
-  "guwiki": "http://gu.wikipedia.org",
-  "guwiktionary": "http://gu.wiktionary.org",
-  "guwikibooks": "http://gu.wikibooks.org",
-  "guwikiquote": "http://gu.wikiquote.org",
-  "guwikisource": "http://gu.wikisource.org",
-  "gvwiki": "http://gv.wikipedia.org",
-  "gvwiktionary": "http://gv.wiktionary.org",
-  "hawiki": "http://ha.wikipedia.org",
-  "hawiktionary": "http://ha.wiktionary.org",
-  "hakwiki": "http://hak.wikipedia.org",
-  "hawwiki": "http://haw.wikipedia.org",
-  "hewiki": "http://he.wikipedia.org",
-  "hewiktionary": "http://he.wiktionary.org",
-  "hewikibooks": "http://he.wikibooks.org",
-  "hewikinews": "http://he.wikinews.org",
-  "hewikiquote": "http://he.wikiquote.org",
-  "hewikisource": "http://he.wikisource.org",
-  "hewikivoyage": "http://he.wikivoyage.org",
-  "hiwiki": "http://hi.wikipedia.org",
-  "hiwiktionary": "http://hi.wiktionary.org",
-  "hiwikibooks": "http://hi.wikibooks.org",
-  "hiwikiquote": "http://hi.wikiquote.org",
-  "hifwiki": "http://hif.wikipedia.org",
-  "howiki": "http://ho.wikipedia.org",
-  "hrwiki": "http://hr.wikipedia.org",
-  "hrwiktionary": "http://hr.wiktionary.org",
-  "hrwikibooks": "http://hr.wikibooks.org",
-  "hrwikiquote": "http://hr.wikiquote.org",
-  "hrwikisource": "http://hr.wikisource.org",
-  "hsbwiki": "http://hsb.wikipedia.org",
-  "hsbwiktionary": "http://hsb.wiktionary.org",
-  "htwiki": "http://ht.wikipedia.org",
-  "htwikisource": "http://ht.wikisource.org",
-  "huwiki": "http://hu.wikipedia.org",
-  "huwiktionary": "http://hu.wiktionary.org",
-  "huwikibooks": "http://hu.wikibooks.org",
-  "huwikinews": "http://hu.wikinews.org",
-  "huwikiquote": "http://hu.wikiquote.org",
-  "huwikisource": "http://hu.wikisource.org",
-  "hywiki": "http://hy.wikipedia.org",
-  "hywiktionary": "http://hy.wiktionary.org",
-  "hywikibooks": "http://hy.wikibooks.org",
-  "hywikiquote": "http://hy.wikiquote.org",
-  "hywikisource": "http://hy.wikisource.org",
-  "hzwiki": "http://hz.wikipedia.org",
-  "iawiki": "http://ia.wikipedia.org",
-  "iawiktionary": "http://ia.wiktionary.org",
-  "iawikibooks": "http://ia.wikibooks.org",
-  "idwiki": "http://id.wikipedia.org",
-  "idwiktionary": "http://id.wiktionary.org",
-  "idwikibooks": "http://id.wikibooks.org",
-  "idwikiquote": "http://id.wikiquote.org",
-  "idwikisource": "http://id.wikisource.org",
-  "iewiki": "http://ie.wikipedia.org",
-  "iewiktionary": "http://ie.wiktionary.org",
-  "iewikibooks": "http://ie.wikibooks.org",
-  "igwiki": "http://ig.wikipedia.org",
-  "iiwiki": "http://ii.wikipedia.org",
-  "ikwiki": "http://ik.wikipedia.org",
-  "ikwiktionary": "http://ik.wiktionary.org",
-  "ilowiki": "http://ilo.wikipedia.org",
-  "iowiki": "http://io.wikipedia.org",
-  "iowiktionary": "http://io.wiktionary.org",
-  "iswiki": "http://is.wikipedia.org",
-  "iswiktionary": "http://is.wiktionary.org",
-  "iswikibooks": "http://is.wikibooks.org",
-  "iswikiquote": "http://is.wikiquote.org",
-  "iswikisource": "http://is.wikisource.org",
-  "itwiki": "http://it.wikipedia.org",
-  "itwiktionary": "http://it.wiktionary.org",
-  "itwikibooks": "http://it.wikibooks.org",
-  "itwikinews": "http://it.wikinews.org",
-  "itwikiquote": "http://it.wikiquote.org",
-  "itwikisource": "http://it.wikisource.org",
-  "itwikiversity": "http://it.wikiversity.org",
-  "itwikivoyage": "http://it.wikivoyage.org",
-  "iuwiki": "http://iu.wikipedia.org",
-  "iuwiktionary": "http://iu.wiktionary.org",
-  "jawiki": "http://ja.wikipedia.org",
-  "jawiktionary": "http://ja.wiktionary.org",
-  "jawikibooks": "http://ja.wikibooks.org",
-  "jawikinews": "http://ja.wikinews.org",
-  "jawikiquote": "http://ja.wikiquote.org",
-  "jawikisource": "http://ja.wikisource.org",
-  "jawikiversity": "http://ja.wikiversity.org",
-  "jbowiki": "http://jbo.wikipedia.org",
-  "jbowiktionary": "http://jbo.wiktionary.org",
-  "jvwiki": "http://jv.wikipedia.org",
-  "jvwiktionary": "http://jv.wiktionary.org",
-  "kawiki": "http://ka.wikipedia.org",
-  "kawiktionary": "http://ka.wiktionary.org",
-  "kawikibooks": "http://ka.wikibooks.org",
-  "kawikiquote": "http://ka.wikiquote.org",
-  "kaawiki": "http://kaa.wikipedia.org",
-  "kabwiki": "http://kab.wikipedia.org",
-  "kbdwiki": "http://kbd.wikipedia.org",
-  "kgwiki": "http://kg.wikipedia.org",
-  "kiwiki": "http://ki.wikipedia.org",
-  "kjwiki": "http://kj.wikipedia.org",
-  "kkwiki": "http://kk.wikipedia.org",
-  "kkwiktionary": "http://kk.wiktionary.org",
-  "kkwikibooks": "http://kk.wikibooks.org",
-  "kkwikiquote": "http://kk.wikiquote.org",
-  "klwiki": "http://kl.wikipedia.org",
-  "klwiktionary": "http://kl.wiktionary.org",
-  "kmwiki": "http://km.wikipedia.org",
-  "kmwiktionary": "http://km.wiktionary.org",
-  "kmwikibooks": "http://km.wikibooks.org",
-  "knwiki": "http://kn.wikipedia.org",
-  "knwiktionary": "http://kn.wiktionary.org",
-  "knwikibooks": "http://kn.wikibooks.org",
-  "knwikiquote": "http://kn.wikiquote.org",
-  "knwikisource": "http://kn.wikisource.org",
-  "kowiki": "http://ko.wikipedia.org",
-  "kowiktionary": "http://ko.wiktionary.org",
-  "kowikibooks": "http://ko.wikibooks.org",
-  "kowikinews": "http://ko.wikinews.org",
-  "kowikiquote": "http://ko.wikiquote.org",
-  "kowikisource": "http://ko.wikisource.org",
-  "kowikiversity": "http://ko.wikiversity.org",
-  "koiwiki": "http://koi.wikipedia.org",
-  "krwiki": "http://kr.wikipedia.org",
-  "krwikiquote": "http://kr.wikiquote.org",
-  "krcwiki": "http://krc.wikipedia.org",
-  "kswiki": "http://ks.wikipedia.org",
-  "kswiktionary": "http://ks.wiktionary.org",
-  "kswikibooks": "http://ks.wikibooks.org",
-  "kswikiquote": "http://ks.wikiquote.org",
-  "kshwiki": "http://ksh.wikipedia.org",
-  "kuwiki": "http://ku.wikipedia.org",
-  "kuwiktionary": "http://ku.wiktionary.org",
-  "kuwikibooks": "http://ku.wikibooks.org",
-  "kuwikiquote": "http://ku.wikiquote.org",
-  "kvwiki": "http://kv.wikipedia.org",
-  "kwwiki": "http://kw.wikipedia.org",
-  "kwwiktionary": "http://kw.wiktionary.org",
-  "kwwikiquote": "http://kw.wikiquote.org",
-  "kywiki": "http://ky.wikipedia.org",
-  "kywiktionary": "http://ky.wiktionary.org",
-  "kywikibooks": "http://ky.wikibooks.org",
-  "kywikiquote": "http://ky.wikiquote.org",
-  "lawiki": "http://la.wikipedia.org",
-  "lawiktionary": "http://la.wiktionary.org",
-  "lawikibooks": "http://la.wikibooks.org",
-  "lawikiquote": "http://la.wikiquote.org",
-  "lawikisource": "http://la.wikisource.org",
-  "ladwiki": "http://lad.wikipedia.org",
-  "lbwiki": "http://lb.wikipedia.org",
-  "lbwiktionary": "http://lb.wiktionary.org",
-  "lbwikibooks": "http://lb.wikibooks.org",
-  "lbwikiquote": "http://lb.wikiquote.org",
-  "lbewiki": "http://lbe.wikipedia.org",
-  "lezwiki": "http://lez.wikipedia.org",
-  "lgwiki": "http://lg.wikipedia.org",
-  "liwiki": "http://li.wikipedia.org",
-  "liwiktionary": "http://li.wiktionary.org",
-  "liwikibooks": "http://li.wikibooks.org",
-  "liwikiquote": "http://li.wikiquote.org",
-  "liwikisource": "http://li.wikisource.org",
-  "lijwiki": "http://lij.wikipedia.org",
-  "lmowiki": "http://lmo.wikipedia.org",
-  "lnwiki": "http://ln.wikipedia.org",
-  "lnwiktionary": "http://ln.wiktionary.org",
-  "lnwikibooks": "http://ln.wikibooks.org",
-  "lowiki": "http://lo.wikipedia.org",
-  "lowiktionary": "http://lo.wiktionary.org",
-  "ltwiki": "http://lt.wikipedia.org",
-  "ltwiktionary": "http://lt.wiktionary.org",
-  "ltwikibooks": "http://lt.wikibooks.org",
-  "ltwikiquote": "http://lt.wikiquote.org",
-  "ltwikisource": "http://lt.wikisource.org",
-  "ltgwiki": "http://ltg.wikipedia.org",
-  "lvwiki": "http://lv.wikipedia.org",
-  "lvwiktionary": "http://lv.wiktionary.org",
-  "lvwikibooks": "http://lv.wikibooks.org",
-  "maiwiki": "http://mai.wikipedia.org",
-  "map_bmswiki": "http://map-bms.wikipedia.org",
-  "mdfwiki": "http://mdf.wikipedia.org",
-  "mgwiki": "http://mg.wikipedia.org",
-  "mgwiktionary": "http://mg.wiktionary.org",
-  "mgwikibooks": "http://mg.wikibooks.org",
-  "mhwiki": "http://mh.wikipedia.org",
-  "mhwiktionary": "http://mh.wiktionary.org",
-  "mhrwiki": "http://mhr.wikipedia.org",
-  "miwiki": "http://mi.wikipedia.org",
-  "miwiktionary": "http://mi.wiktionary.org",
-  "miwikibooks": "http://mi.wikibooks.org",
-  "minwiki": "http://min.wikipedia.org",
-  "mkwiki": "http://mk.wikipedia.org",
-  "mkwiktionary": "http://mk.wiktionary.org",
-  "mkwikibooks": "http://mk.wikibooks.org",
-  "mkwikisource": "http://mk.wikisource.org",
-  "mlwiki": "http://ml.wikipedia.org",
-  "mlwiktionary": "http://ml.wiktionary.org",
-  "mlwikibooks": "http://ml.wikibooks.org",
-  "mlwikiquote": "http://ml.wikiquote.org",
-  "mlwikisource": "http://ml.wikisource.org",
-  "mnwiki": "http://mn.wikipedia.org",
-  "mnwiktionary": "http://mn.wiktionary.org",
-  "mnwikibooks": "http://mn.wikibooks.org",
-  "mowiki": "http://mo.wikipedia.org",
-  "mowiktionary": "http://mo.wiktionary.org",
-  "mrwiki": "http://mr.wikipedia.org",
-  "mrwiktionary": "http://mr.wiktionary.org",
-  "mrwikibooks": "http://mr.wikibooks.org",
-  "mrwikiquote": "http://mr.wikiquote.org",
-  "mrwikisource": "http://mr.wikisource.org",
-  "mrjwiki": "http://mrj.wikipedia.org",
-  "mswiki": "http://ms.wikipedia.org",
-  "mswiktionary": "http://ms.wiktionary.org",
-  "mswikibooks": "http://ms.wikibooks.org",
-  "mtwiki": "http://mt.wikipedia.org",
-  "mtwiktionary": "http://mt.wiktionary.org",
-  "muswiki": "http://mus.wikipedia.org",
-  "mwlwiki": "http://mwl.wikipedia.org",
-  "mywiki": "http://my.wikipedia.org",
-  "mywiktionary": "http://my.wiktionary.org",
-  "mywikibooks": "http://my.wikibooks.org",
-  "myvwiki": "http://myv.wikipedia.org",
-  "mznwiki": "http://mzn.wikipedia.org",
-  "nawiki": "http://na.wikipedia.org",
-  "nawiktionary": "http://na.wiktionary.org",
-  "nawikibooks": "http://na.wikibooks.org",
-  "nawikiquote": "http://na.wikiquote.org",
-  "nahwiki": "http://nah.wikipedia.org",
-  "nahwiktionary": "http://nah.wiktionary.org",
-  "nahwikibooks": "http://nah.wikibooks.org",
-  "napwiki": "http://nap.wikipedia.org",
-  "ndswiki": "http://nds.wikipedia.org",
-  "ndswiktionary": "http://nds.wiktionary.org",
-  "ndswikibooks": "http://nds.wikibooks.org",
-  "ndswikiquote": "http://nds.wikiquote.org",
-  "nds_nlwiki": "http://nds-nl.wikipedia.org",
-  "newiki": "http://ne.wikipedia.org",
-  "newiktionary": "http://ne.wiktionary.org",
-  "newikibooks": "http://ne.wikibooks.org",
-  "newwiki": "http://new.wikipedia.org",
-  "ngwiki": "http://ng.wikipedia.org",
-  "nlwiki": "http://nl.wikipedia.org",
-  "nlwiktionary": "http://nl.wiktionary.org",
-  "nlwikibooks": "http://nl.wikibooks.org",
-  "nlwikinews": "http://nl.wikinews.org",
-  "nlwikiquote": "http://nl.wikiquote.org",
-  "nlwikisource": "http://nl.wikisource.org",
-  "nlwikivoyage": "http://nl.wikivoyage.org",
-  "nnwiki": "http://nn.wikipedia.org",
-  "nnwiktionary": "http://nn.wiktionary.org",
-  "nnwikiquote": "http://nn.wikiquote.org",
-  "nowiki": "http://no.wikipedia.org",
-  "nowiktionary": "http://no.wiktionary.org",
-  "nowikibooks": "http://no.wikibooks.org",
-  "nowikinews": "http://no.wikinews.org",
-  "nowikiquote": "http://no.wikiquote.org",
-  "nowikisource": "http://no.wikisource.org",
-  "novwiki": "http://nov.wikipedia.org",
-  "nrmwiki": "http://nrm.wikipedia.org",
-  "nsowiki": "http://nso.wikipedia.org",
-  "nvwiki": "http://nv.wikipedia.org",
-  "nywiki": "http://ny.wikipedia.org",
-  "ocwiki": "http://oc.wikipedia.org",
-  "ocwiktionary": "http://oc.wiktionary.org",
-  "ocwikibooks": "http://oc.wikibooks.org",
-  "omwiki": "http://om.wikipedia.org",
-  "omwiktionary": "http://om.wiktionary.org",
-  "orwiki": "http://or.wikipedia.org",
-  "orwiktionary": "http://or.wiktionary.org",
-  "orwikisource": "http://or.wikisource.org",
-  "oswiki": "http://os.wikipedia.org",
-  "pawiki": "http://pa.wikipedia.org",
-  "pawiktionary": "http://pa.wiktionary.org",
-  "pawikibooks": "http://pa.wikibooks.org",
-  "pagwiki": "http://pag.wikipedia.org",
-  "pamwiki": "http://pam.wikipedia.org",
-  "papwiki": "http://pap.wikipedia.org",
-  "pcdwiki": "http://pcd.wikipedia.org",
-  "pdcwiki": "http://pdc.wikipedia.org",
-  "pflwiki": "http://pfl.wikipedia.org",
-  "piwiki": "http://pi.wikipedia.org",
-  "piwiktionary": "http://pi.wiktionary.org",
-  "pihwiki": "http://pih.wikipedia.org",
-  "plwiki": "http://pl.wikipedia.org",
-  "plwiktionary": "http://pl.wiktionary.org",
-  "plwikibooks": "http://pl.wikibooks.org",
-  "plwikinews": "http://pl.wikinews.org",
-  "plwikiquote": "http://pl.wikiquote.org",
-  "plwikisource": "http://pl.wikisource.org",
-  "plwikivoyage": "http://pl.wikivoyage.org",
-  "pmswiki": "http://pms.wikipedia.org",
-  "pnbwiki": "http://pnb.wikipedia.org",
-  "pnbwiktionary": "http://pnb.wiktionary.org",
-  "pntwiki": "http://pnt.wikipedia.org",
-  "pswiki": "http://ps.wikipedia.org",
-  "pswiktionary": "http://ps.wiktionary.org",
-  "pswikibooks": "http://ps.wikibooks.org",
-  "ptwiki": "http://pt.wikipedia.org",
-  "ptwiktionary": "http://pt.wiktionary.org",
-  "ptwikibooks": "http://pt.wikibooks.org",
-  "ptwikinews": "http://pt.wikinews.org",
-  "ptwikiquote": "http://pt.wikiquote.org",
-  "ptwikisource": "http://pt.wikisource.org",
-  "ptwikiversity": "http://pt.wikiversity.org",
-  "ptwikivoyage": "http://pt.wikivoyage.org",
-  "quwiki": "http://qu.wikipedia.org",
-  "quwiktionary": "http://qu.wiktionary.org",
-  "quwikibooks": "http://qu.wikibooks.org",
-  "quwikiquote": "http://qu.wikiquote.org",
-  "rmwiki": "http://rm.wikipedia.org",
-  "rmwiktionary": "http://rm.wiktionary.org",
-  "rmwikibooks": "http://rm.wikibooks.org",
-  "rmywiki": "http://rmy.wikipedia.org",
-  "rnwiki": "http://rn.wikipedia.org",
-  "rnwiktionary": "http://rn.wiktionary.org",
-  "rowiki": "http://ro.wikipedia.org",
-  "rowiktionary": "http://ro.wiktionary.org",
-  "rowikibooks": "http://ro.wikibooks.org",
-  "rowikinews": "http://ro.wikinews.org",
-  "rowikiquote": "http://ro.wikiquote.org",
-  "rowikisource": "http://ro.wikisource.org",
-  "rowikivoyage": "http://ro.wikivoyage.org",
-  "roa_rupwiki": "http://roa-rup.wikipedia.org",
-  "roa_rupwiktionary": "http://roa-rup.wiktionary.org",
-  "roa_tarawiki": "http://roa-tara.wikipedia.org",
-  "ruwiki": "https://ru.wikipedia.org",
-  "ruwiktionary": "https://ru.wiktionary.org",
-  "ruwikibooks": "https://ru.wikibooks.org",
-  "ruwikinews": "https://ru.wikinews.org",
-  "ruwikiquote": "https://ru.wikiquote.org",
-  "ruwikisource": "https://ru.wikisource.org",
-  "ruwikiversity": "https://ru.wikiversity.org",
-  "ruwikivoyage": "https://ru.wikivoyage.org",
-  "ruewiki": "http://rue.wikipedia.org",
-  "rwwiki": "http://rw.wikipedia.org",
-  "rwwiktionary": "http://rw.wiktionary.org",
-  "sawiki": "http://sa.wikipedia.org",
-  "sawiktionary": "http://sa.wiktionary.org",
-  "sawikibooks": "http://sa.wikibooks.org",
-  "sawikiquote": "http://sa.wikiquote.org",
-  "sawikisource": "http://sa.wikisource.org",
-  "sahwiki": "http://sah.wikipedia.org",
-  "sahwikisource": "http://sah.wikisource.org",
-  "scwiki": "http://sc.wikipedia.org",
-  "scwiktionary": "http://sc.wiktionary.org",
-  "scnwiki": "http://scn.wikipedia.org",
-  "scnwiktionary": "http://scn.wiktionary.org",
-  "scowiki": "http://sco.wikipedia.org",
-  "sdwiki": "http://sd.wikipedia.org",
-  "sdwiktionary": "http://sd.wiktionary.org",
-  "sdwikinews": "http://sd.wikinews.org",
-  "sewiki": "http://se.wikipedia.org",
-  "sewikibooks": "http://se.wikibooks.org",
-  "sgwiki": "http://sg.wikipedia.org",
-  "sgwiktionary": "http://sg.wiktionary.org",
-  "shwiki": "http://sh.wikipedia.org",
-  "shwiktionary": "http://sh.wiktionary.org",
-  "siwiki": "http://si.wikipedia.org",
-  "siwiktionary": "http://si.wiktionary.org",
-  "siwikibooks": "http://si.wikibooks.org",
-  "simplewiki": "http://simple.wikipedia.org",
-  "simplewiktionary": "http://simple.wiktionary.org",
-  "simplewikibooks": "http://simple.wikibooks.org",
-  "simplewikiquote": "http://simple.wikiquote.org",
-  "skwiki": "http://sk.wikipedia.org",
-  "skwiktionary": "http://sk.wiktionary.org",
-  "skwikibooks": "http://sk.wikibooks.org",
-  "skwikiquote": "http://sk.wikiquote.org",
-  "skwikisource": "http://sk.wikisource.org",
-  "slwiki": "http://sl.wikipedia.org",
-  "slwiktionary": "http://sl.wiktionary.org",
-  "slwikibooks": "http://sl.wikibooks.org",
-  "slwikiquote": "http://sl.wikiquote.org",
-  "slwikisource": "http://sl.wikisource.org",
-  "slwikiversity": "http://sl.wikiversity.org",
-  "smwiki": "http://sm.wikipedia.org",
-  "smwiktionary": "http://sm.wiktionary.org",
-  "snwiki": "http://sn.wikipedia.org",
-  "snwiktionary": "http://sn.wiktionary.org",
-  "sowiki": "http://so.wikipedia.org",
-  "sowiktionary": "http://so.wiktionary.org",
-  "sqwiki": "http://sq.wikipedia.org",
-  "sqwiktionary": "http://sq.wiktionary.org",
-  "sqwikibooks": "http://sq.wikibooks.org",
-  "sqwikinews": "http://sq.wikinews.org",
-  "sqwikiquote": "http://sq.wikiquote.org",
-  "srwiki": "http://sr.wikipedia.org",
-  "srwiktionary": "http://sr.wiktionary.org",
-  "srwikibooks": "http://sr.wikibooks.org",
-  "srwikinews": "http://sr.wikinews.org",
-  "srwikiquote": "http://sr.wikiquote.org",
-  "srwikisource": "http://sr.wikisource.org",
-  "srnwiki": "http://srn.wikipedia.org",
-  "sswiki": "http://ss.wikipedia.org",
-  "sswiktionary": "http://ss.wiktionary.org",
-  "stwiki": "http://st.wikipedia.org",
-  "stwiktionary": "http://st.wiktionary.org",
-  "stqwiki": "http://stq.wikipedia.org",
-  "suwiki": "http://su.wikipedia.org",
-  "suwiktionary": "http://su.wiktionary.org",
-  "suwikibooks": "http://su.wikibooks.org",
-  "suwikiquote": "http://su.wikiquote.org",
-  "svwiki": "http://sv.wikipedia.org",
-  "svwiktionary": "http://sv.wiktionary.org",
-  "svwikibooks": "http://sv.wikibooks.org",
-  "svwikinews": "http://sv.wikinews.org",
-  "svwikiquote": "http://sv.wikiquote.org",
-  "svwikisource": "http://sv.wikisource.org",
-  "svwikiversity": "http://sv.wikiversity.org",
-  "svwikivoyage": "http://sv.wikivoyage.org",
-  "swwiki": "http://sw.wikipedia.org",
-  "swwiktionary": "http://sw.wiktionary.org",
-  "swwikibooks": "http://sw.wikibooks.org",
-  "szlwiki": "http://szl.wikipedia.org",
-  "tawiki": "http://ta.wikipedia.org",
-  "tawiktionary": "http://ta.wiktionary.org",
-  "tawikibooks": "http://ta.wikibooks.org",
-  "tawikinews": "http://ta.wikinews.org",
-  "tawikiquote": "http://ta.wikiquote.org",
-  "tawikisource": "http://ta.wikisource.org",
-  "tewiki": "http://te.wikipedia.org",
-  "tewiktionary": "http://te.wiktionary.org",
-  "tewikibooks": "http://te.wikibooks.org",
-  "tewikiquote": "http://te.wikiquote.org",
-  "tewikisource": "http://te.wikisource.org",
-  "tetwiki": "http://tet.wikipedia.org",
-  "tgwiki": "http://tg.wikipedia.org",
-  "tgwiktionary": "http://tg.wiktionary.org",
-  "tgwikibooks": "http://tg.wikibooks.org",
-  "thwiki": "http://th.wikipedia.org",
-  "thwiktionary": "http://th.wiktionary.org",
-  "thwikibooks": "http://th.wikibooks.org",
-  "thwikinews": "http://th.wikinews.org",
-  "thwikiquote": "http://th.wikiquote.org",
-  "thwikisource": "http://th.wikisource.org",
-  "tiwiki": "http://ti.wikipedia.org",
-  "tiwiktionary": "http://ti.wiktionary.org",
-  "tkwiki": "http://tk.wikipedia.org",
-  "tkwiktionary": "http://tk.wiktionary.org",
-  "tkwikibooks": "http://tk.wikibooks.org",
-  "tkwikiquote": "http://tk.wikiquote.org",
-  "tlwiki": "http://tl.wikipedia.org",
-  "tlwiktionary": "http://tl.wiktionary.org",
-  "tlwikibooks": "http://tl.wikibooks.org",
-  "tnwiki": "http://tn.wikipedia.org",
-  "tnwiktionary": "http://tn.wiktionary.org",
-  "towiki": "http://to.wikipedia.org",
-  "towiktionary": "http://to.wiktionary.org",
-  "tpiwiki": "http://tpi.wikipedia.org",
-  "tpiwiktionary": "http://tpi.wiktionary.org",
-  "trwiki": "http://tr.wikipedia.org",
-  "trwiktionary": "http://tr.wiktionary.org",
-  "trwikibooks": "http://tr.wikibooks.org",
-  "trwikinews": "http://tr.wikinews.org",
-  "trwikiquote": "http://tr.wikiquote.org",
-  "trwikisource": "http://tr.wikisource.org",
-  "tswiki": "http://ts.wikipedia.org",
-  "tswiktionary": "http://ts.wiktionary.org",
-  "ttwiki": "http://tt.wikipedia.org",
-  "ttwiktionary": "http://tt.wiktionary.org",
-  "ttwikibooks": "http://tt.wikibooks.org",
-  "ttwikiquote": "http://tt.wikiquote.org",
-  "tumwiki": "http://tum.wikipedia.org",
-  "twwiki": "http://tw.wikipedia.org",
-  "twwiktionary": "http://tw.wiktionary.org",
-  "tywiki": "http://ty.wikipedia.org",
-  "tyvwiki": "http://tyv.wikipedia.org",
-  "udmwiki": "http://udm.wikipedia.org",
-  "ugwiki": "http://ug.wikipedia.org",
-  "ugwiktionary": "http://ug.wiktionary.org",
-  "ugwikibooks": "http://ug.wikibooks.org",
-  "ugwikiquote": "http://ug.wikiquote.org",
-  "ukwiki": "http://uk.wikipedia.org",
-  "ukwiktionary": "http://uk.wiktionary.org",
-  "ukwikibooks": "http://uk.wikibooks.org",
-  "ukwikinews": "http://uk.wikinews.org",
-  "ukwikiquote": "http://uk.wikiquote.org",
-  "ukwikisource": "http://uk.wikisource.org",
-  "ukwikivoyage": "http://uk.wikivoyage.org",
-  "urwiki": "http://ur.wikipedia.org",
-  "urwiktionary": "http://ur.wiktionary.org",
-  "urwikibooks": "http://ur.wikibooks.org",
-  "urwikiquote": "http://ur.wikiquote.org",
-  "uzwiki": "https://uz.wikipedia.org",
-  "uzwiktionary": "http://uz.wiktionary.org",
-  "uzwikibooks": "http://uz.wikibooks.org",
-  "uzwikiquote": "http://uz.wikiquote.org",
-  "vewiki": "http://ve.wikipedia.org",
-  "vecwiki": "http://vec.wikipedia.org",
-  "vecwiktionary": "http://vec.wiktionary.org",
-  "vecwikisource": "http://vec.wikisource.org",
-  "vepwiki": "http://vep.wikipedia.org",
-  "viwiki": "http://vi.wikipedia.org",
-  "viwiktionary": "http://vi.wiktionary.org",
-  "viwikibooks": "http://vi.wikibooks.org",
-  "viwikiquote": "http://vi.wikiquote.org",
-  "viwikisource": "http://vi.wikisource.org",
-  "viwikivoyage": "http://vi.wikivoyage.org",
-  "vlswiki": "http://vls.wikipedia.org",
-  "vowiki": "http://vo.wikipedia.org",
-  "vowiktionary": "http://vo.wiktionary.org",
-  "vowikibooks": "http://vo.wikibooks.org",
-  "vowikiquote": "http://vo.wikiquote.org",
-  "wawiki": "http://wa.wikipedia.org",
-  "wawiktionary": "http://wa.wiktionary.org",
-  "wawikibooks": "http://wa.wikibooks.org",
-  "warwiki": "http://war.wikipedia.org",
-  "wowiki": "http://wo.wikipedia.org",
-  "wowiktionary": "http://wo.wiktionary.org",
-  "wowikiquote": "http://wo.wikiquote.org",
-  "wuuwiki": "http://wuu.wikipedia.org",
-  "xalwiki": "http://xal.wikipedia.org",
-  "xhwiki": "http://xh.wikipedia.org",
-  "xhwiktionary": "http://xh.wiktionary.org",
-  "xhwikibooks": "http://xh.wikibooks.org",
-  "xmfwiki": "http://xmf.wikipedia.org",
-  "yiwiki": "http://yi.wikipedia.org",
-  "yiwiktionary": "http://yi.wiktionary.org",
-  "yiwikisource": "http://yi.wikisource.org",
-  "yowiki": "http://yo.wikipedia.org",
-  "yowiktionary": "http://yo.wiktionary.org",
-  "yowikibooks": "http://yo.wikibooks.org",
-  "zawiki": "http://za.wikipedia.org",
-  "zawiktionary": "http://za.wiktionary.org",
-  "zawikibooks": "http://za.wikibooks.org",
-  "zawikiquote": "http://za.wikiquote.org",
-  "zeawiki": "http://zea.wikipedia.org",
-  "zhwiki": "http://zh.wikipedia.org",
-  "zhwiktionary": "http://zh.wiktionary.org",
-  "zhwikibooks": "http://zh.wikibooks.org",
-  "zhwikinews": "http://zh.wikinews.org",
-  "zhwikiquote": "http://zh.wikiquote.org",
-  "zhwikisource": "http://zh.wikisource.org",
-  "zhwikivoyage": "http://zh.wikivoyage.org",
-  "zh_classicalwiki": "http://zh-classical.wikipedia.org",
-  "zh_min_nanwiki": "http://zh-min-nan.wikipedia.org",
-  "zh_min_nanwiktionary": "http://zh-min-nan.wiktionary.org",
-  "zh_min_nanwikibooks": "http://zh-min-nan.wikibooks.org",
-  "zh_min_nanwikiquote": "http://zh-min-nan.wikiquote.org",
-  "zh_min_nanwikisource": "http://zh-min-nan.wikisource.org",
-  "zh_yuewiki": "http://zh-yue.wikipedia.org",
-  "zuwiki": "http://zu.wikipedia.org",
-  "zuwiktionary": "http://zu.wiktionary.org",
-  "zuwikibooks": "http://zu.wikibooks.org"
-}
-if(typeof module !== 'undefined' && module.exports) {
-  module.exports = site_map;
-}
-
-},{}],7:[function(require,module,exports){
-
-},{}],8:[function(require,module,exports){
 // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
 //
 // THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
@@ -3321,9 +361,9 @@ var objectKeys = Object.keys || function (obj) {
   return keys;
 };
 
-},{"util/":199}],9:[function(require,module,exports){
-arguments[4][7][0].apply(exports,arguments)
-},{"dup":7}],10:[function(require,module,exports){
+},{"util/":193}],3:[function(require,module,exports){
+arguments[4][1][0].apply(exports,arguments)
+},{"dup":1}],4:[function(require,module,exports){
 'use strict';
 
 
@@ -3427,7 +467,7 @@ exports.setTyped = function (on) {
 
 exports.setTyped(TYPED_OK);
 
-},{}],11:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 // Note: adler32 takes 12% for level 0 and 2% for level 6.
@@ -3461,7 +501,7 @@ function adler32(adler, buf, len, pos) {
 
 module.exports = adler32;
 
-},{}],12:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = {
 
   /* Allowed flush values; see deflate() and inflate() below for details */
@@ -3510,7 +550,7 @@ module.exports = {
   //Z_NULL:                 null // Use -1 or null inline, depending on var type
 };
 
-},{}],13:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 // Note: we can't get significant speed boost here.
@@ -3553,7 +593,7 @@ function crc32(crc, buf, len, pos) {
 
 module.exports = crc32;
 
-},{}],14:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 var utils   = require('../utils/common');
@@ -5320,7 +2360,7 @@ exports.deflatePrime = deflatePrime;
 exports.deflateTune = deflateTune;
 */
 
-},{"../utils/common":10,"./adler32":11,"./crc32":13,"./messages":18,"./trees":19}],15:[function(require,module,exports){
+},{"../utils/common":4,"./adler32":5,"./crc32":7,"./messages":12,"./trees":13}],9:[function(require,module,exports){
 'use strict';
 
 // See state defs from inflate.js
@@ -5647,7 +2687,7 @@ module.exports = function inflate_fast(strm, start) {
   return;
 };
 
-},{}],16:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 
@@ -7152,7 +4192,7 @@ exports.inflateSyncPoint = inflateSyncPoint;
 exports.inflateUndermine = inflateUndermine;
 */
 
-},{"../utils/common":10,"./adler32":11,"./crc32":13,"./inffast":15,"./inftrees":17}],17:[function(require,module,exports){
+},{"../utils/common":4,"./adler32":5,"./crc32":7,"./inffast":9,"./inftrees":11}],11:[function(require,module,exports){
 'use strict';
 
 
@@ -7481,7 +4521,7 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
   return 0;
 };
 
-},{"../utils/common":10}],18:[function(require,module,exports){
+},{"../utils/common":4}],12:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -7496,7 +4536,7 @@ module.exports = {
   '-6':   'incompatible version' /* Z_VERSION_ERROR (-6) */
 };
 
-},{}],19:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 
@@ -8697,7 +5737,7 @@ exports._tr_flush_block  = _tr_flush_block;
 exports._tr_tally = _tr_tally;
 exports._tr_align = _tr_align;
 
-},{"../utils/common":10}],20:[function(require,module,exports){
+},{"../utils/common":4}],14:[function(require,module,exports){
 'use strict';
 
 
@@ -8728,7 +5768,7 @@ function ZStream() {
 
 module.exports = ZStream;
 
-},{}],21:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 (function (process,Buffer){
 var msg = require('pako/lib/zlib/messages');
 var zstream = require('pako/lib/zlib/zstream');
@@ -8968,7 +6008,7 @@ Zlib.prototype._error = function(status) {
 exports.Zlib = Zlib;
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"_process":179,"buffer":23,"pako/lib/zlib/constants":12,"pako/lib/zlib/deflate.js":14,"pako/lib/zlib/inflate.js":16,"pako/lib/zlib/messages":18,"pako/lib/zlib/zstream":20}],22:[function(require,module,exports){
+},{"_process":173,"buffer":17,"pako/lib/zlib/constants":6,"pako/lib/zlib/deflate.js":8,"pako/lib/zlib/inflate.js":10,"pako/lib/zlib/messages":12,"pako/lib/zlib/zstream":14}],16:[function(require,module,exports){
 (function (process,Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -9582,7 +6622,7 @@ util.inherits(InflateRaw, Zlib);
 util.inherits(Unzip, Zlib);
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"./binding":21,"_process":179,"_stream_transform":193,"assert":8,"buffer":23,"util":199}],23:[function(require,module,exports){
+},{"./binding":15,"_process":173,"_stream_transform":187,"assert":2,"buffer":17,"util":193}],17:[function(require,module,exports){
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -11021,7 +8061,7 @@ function decodeUtf8Char (str) {
   }
 }
 
-},{"base64-js":24,"ieee754":25,"is-array":26}],24:[function(require,module,exports){
+},{"base64-js":18,"ieee754":19,"is-array":20}],18:[function(require,module,exports){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 ;(function (exports) {
@@ -11147,7 +8187,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 	exports.fromByteArray = uint8ToBase64
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
-},{}],25:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -11233,7 +8273,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],26:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 
 /**
  * isArray
@@ -11268,7 +8308,7 @@ module.exports = isArray || function (val) {
   return !! val && '[object Array]' == str.call(val);
 };
 
-},{}],27:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 (function (global){
 /*global window, global*/
 var util = require("util")
@@ -11358,14 +8398,14 @@ function consoleAssert(expression) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"assert":8,"date-now":28,"util":199}],28:[function(require,module,exports){
+},{"assert":2,"date-now":22,"util":193}],22:[function(require,module,exports){
 module.exports = now
 
 function now() {
     return new Date().getTime()
 }
 
-},{}],29:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes')
@@ -11446,7 +8486,7 @@ var publicEncrypt = require('public-encrypt');
   }
 })
 
-},{"browserify-aes":33,"browserify-sign":49,"browserify-sign/algos":48,"create-ecdh":97,"create-hash":120,"create-hmac":132,"diffie-hellman":133,"pbkdf2":140,"public-encrypt":141,"randombytes":169}],30:[function(require,module,exports){
+},{"browserify-aes":27,"browserify-sign":43,"browserify-sign/algos":42,"create-ecdh":91,"create-hash":114,"create-hmac":126,"diffie-hellman":127,"pbkdf2":134,"public-encrypt":135,"randombytes":163}],24:[function(require,module,exports){
 (function (Buffer){
 var md5 = require('create-hash/md5')
 module.exports = EVP_BytesToKey
@@ -11512,7 +8552,7 @@ function EVP_BytesToKey (password, keyLen, ivLen) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"create-hash/md5":122}],31:[function(require,module,exports){
+},{"buffer":17,"create-hash/md5":116}],25:[function(require,module,exports){
 (function (Buffer){
 // based on the aes implimentation in triple sec
 // https://github.com/keybase/triplesec
@@ -11693,7 +8733,7 @@ AES.prototype._doCryptBlock = function (M, keySchedule, SUB_MIX, SBOX) {
 exports.AES = AES
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23}],32:[function(require,module,exports){
+},{"buffer":17}],26:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('./cipherBase')
@@ -11794,7 +8834,7 @@ function xorTest (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":31,"./cipherBase":34,"./ghash":37,"buffer":23,"buffer-xor":46,"inherits":176}],33:[function(require,module,exports){
+},{"./aes":25,"./cipherBase":28,"./ghash":31,"buffer":17,"buffer-xor":40,"inherits":170}],27:[function(require,module,exports){
 var ciphers = require('./encrypter')
 exports.createCipher = exports.Cipher = ciphers.createCipher
 exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv
@@ -11807,7 +8847,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"./decrypter":35,"./encrypter":36,"./modes":38}],34:[function(require,module,exports){
+},{"./decrypter":29,"./encrypter":30,"./modes":32}],28:[function(require,module,exports){
 (function (Buffer){
 var Transform = require('stream').Transform
 var inherits = require('inherits')
@@ -11877,7 +8917,7 @@ CipherBase.prototype._toString = function (value, enc, final) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"inherits":176,"stream":195}],35:[function(require,module,exports){
+},{"buffer":17,"inherits":170,"stream":189}],29:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('./cipherBase')
@@ -12017,7 +9057,7 @@ exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
 }).call(this,require("buffer").Buffer)
-},{"./EVP_BytesToKey":30,"./aes":31,"./authCipher":32,"./cipherBase":34,"./modes":38,"./modes/cbc":39,"./modes/cfb":40,"./modes/cfb1":41,"./modes/cfb8":42,"./modes/ctr":43,"./modes/ecb":44,"./modes/ofb":45,"./streamCipher":47,"buffer":23,"inherits":176}],36:[function(require,module,exports){
+},{"./EVP_BytesToKey":24,"./aes":25,"./authCipher":26,"./cipherBase":28,"./modes":32,"./modes/cbc":33,"./modes/cfb":34,"./modes/cfb1":35,"./modes/cfb8":36,"./modes/ctr":37,"./modes/ecb":38,"./modes/ofb":39,"./streamCipher":41,"buffer":17,"inherits":170}],30:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('./cipherBase')
@@ -12142,7 +9182,7 @@ exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
 }).call(this,require("buffer").Buffer)
-},{"./EVP_BytesToKey":30,"./aes":31,"./authCipher":32,"./cipherBase":34,"./modes":38,"./modes/cbc":39,"./modes/cfb":40,"./modes/cfb1":41,"./modes/cfb8":42,"./modes/ctr":43,"./modes/ecb":44,"./modes/ofb":45,"./streamCipher":47,"buffer":23,"inherits":176}],37:[function(require,module,exports){
+},{"./EVP_BytesToKey":24,"./aes":25,"./authCipher":26,"./cipherBase":28,"./modes":32,"./modes/cbc":33,"./modes/cfb":34,"./modes/cfb1":35,"./modes/cfb8":36,"./modes/ctr":37,"./modes/ecb":38,"./modes/ofb":39,"./streamCipher":41,"buffer":17,"inherits":170}],31:[function(require,module,exports){
 (function (Buffer){
 var zeros = new Buffer(16)
 zeros.fill(0)
@@ -12244,7 +9284,7 @@ function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23}],38:[function(require,module,exports){
+},{"buffer":17}],32:[function(require,module,exports){
 exports['aes-128-ecb'] = {
   cipher: 'AES',
   key: 128,
@@ -12417,7 +9457,7 @@ exports['aes-256-gcm'] = {
   type: 'auth'
 }
 
-},{}],39:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 var xor = require('buffer-xor')
 
 exports.encrypt = function (self, block) {
@@ -12436,7 +9476,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad)
 }
 
-},{"buffer-xor":46}],40:[function(require,module,exports){
+},{"buffer-xor":40}],34:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -12471,7 +9511,7 @@ function encryptStart (self, data, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"buffer-xor":46}],41:[function(require,module,exports){
+},{"buffer":17,"buffer-xor":40}],35:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad
@@ -12509,7 +9549,7 @@ function shiftIn (buffer, value) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23}],42:[function(require,module,exports){
+},{"buffer":17}],36:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad = self._cipher.encryptBlock(self._prev)
@@ -12528,7 +9568,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23}],43:[function(require,module,exports){
+},{"buffer":17}],37:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -12563,7 +9603,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"buffer-xor":46}],44:[function(require,module,exports){
+},{"buffer":17,"buffer-xor":40}],38:[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -12571,7 +9611,7 @@ exports.decrypt = function (self, block) {
   return self._cipher.decryptBlock(block)
 }
 
-},{}],45:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -12591,7 +9631,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"buffer-xor":46}],46:[function(require,module,exports){
+},{"buffer":17,"buffer-xor":40}],40:[function(require,module,exports){
 (function (Buffer){
 module.exports = function xor (a, b) {
   var length = Math.min(a.length, b.length)
@@ -12605,7 +9645,7 @@ module.exports = function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23}],47:[function(require,module,exports){
+},{"buffer":17}],41:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('./cipherBase')
@@ -12634,7 +9674,7 @@ StreamCipher.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":31,"./cipherBase":34,"buffer":23,"inherits":176}],48:[function(require,module,exports){
+},{"./aes":25,"./cipherBase":28,"buffer":17,"inherits":170}],42:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 exports['RSA-SHA224'] = exports.sha224WithRSAEncryption = {
@@ -12709,7 +9749,7 @@ exports['RSA-MD5'] = exports.md5WithRSAEncryption = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23}],49:[function(require,module,exports){
+},{"buffer":17}],43:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var sign = require('./sign')
@@ -12806,7 +9846,7 @@ Verify.prototype.verify = function verifyMethod (key, sig, enc) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./algos":48,"./sign":94,"./verify":95,"buffer":23,"create-hash":120,"inherits":176,"stream":195}],50:[function(require,module,exports){
+},{"./algos":42,"./sign":88,"./verify":89,"buffer":17,"create-hash":114,"inherits":170,"stream":189}],44:[function(require,module,exports){
 'use strict'
 exports['1.3.132.0.10'] = 'secp256k1'
 
@@ -12816,7 +9856,7 @@ exports['1.2.840.10045.3.1.1'] = 'p192'
 
 exports['1.2.840.10045.3.1.7'] = 'p256'
 
-},{}],51:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 (function (module, exports) {
 
 'use strict';
@@ -15136,7 +12176,7 @@ Mont.prototype.invm = function invm(a) {
 
 })(typeof module === 'undefined' || module, this);
 
-},{}],52:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 var randomBytes = require('randombytes');
@@ -15185,7 +12225,7 @@ function getr(priv) {
   return r;
 }
 }).call(this,require("buffer").Buffer)
-},{"bn.js":51,"buffer":23,"randombytes":169}],53:[function(require,module,exports){
+},{"bn.js":45,"buffer":17,"randombytes":163}],47:[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -15200,7 +12240,7 @@ elliptic.curves = require('./elliptic/curves');
 // Protocols
 elliptic.ec = require('./elliptic/ec');
 
-},{"../package.json":73,"./elliptic/curve":56,"./elliptic/curves":59,"./elliptic/ec":60,"./elliptic/hmac-drbg":63,"./elliptic/utils":65,"brorand":66}],54:[function(require,module,exports){
+},{"../package.json":67,"./elliptic/curve":50,"./elliptic/curves":53,"./elliptic/ec":54,"./elliptic/hmac-drbg":57,"./elliptic/utils":59,"brorand":60}],48:[function(require,module,exports){
 'use strict';
 
 var bn = require('bn.js');
@@ -15517,7 +12557,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../../elliptic":53,"bn.js":51}],55:[function(require,module,exports){
+},{"../../elliptic":47,"bn.js":45}],49:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -15890,7 +12930,7 @@ Point.prototype.getY = function getY() {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../../elliptic":53,"../curve":56,"bn.js":51,"inherits":176}],56:[function(require,module,exports){
+},{"../../elliptic":47,"../curve":50,"bn.js":45,"inherits":170}],50:[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -15900,7 +12940,7 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-},{"./base":54,"./edwards":55,"./mont":57,"./short":58}],57:[function(require,module,exports){
+},{"./base":48,"./edwards":49,"./mont":51,"./short":52}],51:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -16063,7 +13103,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../curve":56,"bn.js":51,"inherits":176}],58:[function(require,module,exports){
+},{"../curve":50,"bn.js":45,"inherits":170}],52:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -16972,7 +14012,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../../elliptic":53,"../curve":56,"bn.js":51,"inherits":176}],59:[function(require,module,exports){
+},{"../../elliptic":47,"../curve":50,"bn.js":45,"inherits":170}],53:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -17131,7 +14171,7 @@ defineCurve('secp256k1', {
   ]
 });
 
-},{"../elliptic":53,"./precomputed/secp256k1":64,"hash.js":67}],60:[function(require,module,exports){
+},{"../elliptic":47,"./precomputed/secp256k1":58,"hash.js":61}],54:[function(require,module,exports){
 'use strict';
 
 var bn = require('bn.js');
@@ -17342,7 +14382,7 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../../elliptic":53,"./key":61,"./signature":62,"bn.js":51}],61:[function(require,module,exports){
+},{"../../elliptic":47,"./key":55,"./signature":56,"bn.js":45}],55:[function(require,module,exports){
 'use strict';
 
 var bn = require('bn.js');
@@ -17494,7 +14534,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"../../elliptic":53,"bn.js":51}],62:[function(require,module,exports){
+},{"../../elliptic":47,"bn.js":45}],56:[function(require,module,exports){
 'use strict';
 
 var bn = require('bn.js');
@@ -17566,7 +14606,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../../elliptic":53,"bn.js":51}],63:[function(require,module,exports){
+},{"../../elliptic":47,"bn.js":45}],57:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -17682,7 +14722,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
   return utils.encode(res, enc);
 };
 
-},{"../elliptic":53,"hash.js":67}],64:[function(require,module,exports){
+},{"../elliptic":47,"hash.js":61}],58:[function(require,module,exports){
 module.exports = {
   doubles: {
     step: 4,
@@ -18464,7 +15504,7 @@ module.exports = {
   }
 };
 
-},{}],65:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -18616,7 +15656,7 @@ function getJSF(k1, k2) {
 }
 utils.getJSF = getJSF;
 
-},{}],66:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 var r;
 
 module.exports = function rand(len) {
@@ -18675,7 +15715,7 @@ if (typeof window === 'object') {
   }
 }
 
-},{}],67:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 var hash = exports;
 
 hash.utils = require('./hash/utils');
@@ -18692,7 +15732,7 @@ hash.sha384 = hash.sha.sha384;
 hash.sha512 = hash.sha.sha512;
 hash.ripemd160 = hash.ripemd.ripemd160;
 
-},{"./hash/common":68,"./hash/hmac":69,"./hash/ripemd":70,"./hash/sha":71,"./hash/utils":72}],68:[function(require,module,exports){
+},{"./hash/common":62,"./hash/hmac":63,"./hash/ripemd":64,"./hash/sha":65,"./hash/utils":66}],62:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -18785,7 +15825,7 @@ BlockHash.prototype._pad = function pad() {
   return res;
 };
 
-},{"../hash":67}],69:[function(require,module,exports){
+},{"../hash":61}],63:[function(require,module,exports){
 var hmac = exports;
 
 var hash = require('../hash');
@@ -18835,7 +15875,7 @@ Hmac.prototype.digest = function digest(enc) {
   return this.outer.digest(enc);
 };
 
-},{"../hash":67}],70:[function(require,module,exports){
+},{"../hash":61}],64:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 
@@ -18981,7 +16021,7 @@ var sh = [
   8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
 ];
 
-},{"../hash":67}],71:[function(require,module,exports){
+},{"../hash":61}],65:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -19547,7 +16587,7 @@ function g1_512_lo(xh, xl) {
   return r;
 }
 
-},{"../hash":67}],72:[function(require,module,exports){
+},{"../hash":61}],66:[function(require,module,exports){
 var utils = exports;
 var inherits = require('inherits');
 
@@ -19806,7 +16846,7 @@ function shr64_lo(ah, al, num) {
 };
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":176}],73:[function(require,module,exports){
+},{"inherits":170}],67:[function(require,module,exports){
 module.exports={
   "name": "elliptic",
   "version": "3.1.0",
@@ -19872,7 +16912,7 @@ module.exports={
   "readme": "ERROR: No README data found!"
 }
 
-},{}],74:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 (function (Buffer){
 var createHash = require('create-hash');
 module.exports = function evp(password, salt, keyLen) {
@@ -19914,7 +16954,7 @@ module.exports = function evp(password, salt, keyLen) {
   return key;
 };
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"create-hash":120}],75:[function(require,module,exports){
+},{"buffer":17,"create-hash":114}],69:[function(require,module,exports){
 module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
 "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -19928,7 +16968,7 @@ module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
 "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
 }
-},{}],76:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
 // Fedor, you are amazing.
 
@@ -20047,7 +17087,7 @@ exports.signature = asn1.define('signature', function() {
   );
 });
 
-},{"asn1.js":79}],77:[function(require,module,exports){
+},{"asn1.js":73}],71:[function(require,module,exports){
 (function (Buffer){
 // adapted from https://github.com/apatil/pemstrip
 var findProc = /Proc-Type: 4,ENCRYPTED\r?\nDEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\r?\n\r?\n([0-9A-z\n\r\+\/\=]+)\r?\n/m;
@@ -20091,7 +17131,7 @@ function wrap (str) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./EVP_BytesToKey":74,"browserify-aes":33,"buffer":23}],78:[function(require,module,exports){
+},{"./EVP_BytesToKey":68,"browserify-aes":27,"buffer":17}],72:[function(require,module,exports){
 (function (Buffer){
 var asn1 = require('./asn1');
 var aesid = require('./aesid.json');
@@ -20196,7 +17236,7 @@ function decrypt(data, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aesid.json":75,"./asn1":76,"./fixProc":77,"browserify-aes":33,"buffer":23,"pbkdf2":140}],79:[function(require,module,exports){
+},{"./aesid.json":69,"./asn1":70,"./fixProc":71,"browserify-aes":27,"buffer":17,"pbkdf2":134}],73:[function(require,module,exports){
 var asn1 = exports;
 
 asn1.bignum = require('bn.js');
@@ -20207,7 +17247,7 @@ asn1.constants = require('./asn1/constants');
 asn1.decoders = require('./asn1/decoders');
 asn1.encoders = require('./asn1/encoders');
 
-},{"./asn1/api":80,"./asn1/base":82,"./asn1/constants":86,"./asn1/decoders":88,"./asn1/encoders":91,"bn.js":51}],80:[function(require,module,exports){
+},{"./asn1/api":74,"./asn1/base":76,"./asn1/constants":80,"./asn1/decoders":82,"./asn1/encoders":85,"bn.js":45}],74:[function(require,module,exports){
 var asn1 = require('../asn1');
 var inherits = require('inherits');
 
@@ -20268,7 +17308,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":79,"inherits":176,"vm":200}],81:[function(require,module,exports){
+},{"../asn1":73,"inherits":170,"vm":194}],75:[function(require,module,exports){
 var inherits = require('inherits');
 var Reporter = require('../base').Reporter;
 var Buffer = require('buffer').Buffer;
@@ -20386,7 +17426,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
   return out;
 };
 
-},{"../base":82,"buffer":23,"inherits":176}],82:[function(require,module,exports){
+},{"../base":76,"buffer":17,"inherits":170}],76:[function(require,module,exports){
 var base = exports;
 
 base.Reporter = require('./reporter').Reporter;
@@ -20394,7 +17434,7 @@ base.DecoderBuffer = require('./buffer').DecoderBuffer;
 base.EncoderBuffer = require('./buffer').EncoderBuffer;
 base.Node = require('./node');
 
-},{"./buffer":81,"./node":83,"./reporter":84}],83:[function(require,module,exports){
+},{"./buffer":75,"./node":77,"./reporter":78}],77:[function(require,module,exports){
 var Reporter = require('../base').Reporter;
 var EncoderBuffer = require('../base').EncoderBuffer;
 var assert = require('minimalistic-assert');
@@ -20990,7 +18030,7 @@ Node.prototype._encodePrimitive = function encodePrimitive(tag, data) {
     throw new Error('Unsupported tag: ' + tag);
 };
 
-},{"../base":82,"minimalistic-assert":93}],84:[function(require,module,exports){
+},{"../base":76,"minimalistic-assert":87}],78:[function(require,module,exports){
 var inherits = require('inherits');
 
 function Reporter(options) {
@@ -21094,7 +18134,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
   return this;
 };
 
-},{"inherits":176}],85:[function(require,module,exports){
+},{"inherits":170}],79:[function(require,module,exports){
 var constants = require('../constants');
 
 exports.tagClass = {
@@ -21138,7 +18178,7 @@ exports.tag = {
 };
 exports.tagByName = constants._reverse(exports.tag);
 
-},{"../constants":86}],86:[function(require,module,exports){
+},{"../constants":80}],80:[function(require,module,exports){
 var constants = exports;
 
 // Helper
@@ -21159,7 +18199,7 @@ constants._reverse = function reverse(map) {
 
 constants.der = require('./der');
 
-},{"./der":85}],87:[function(require,module,exports){
+},{"./der":79}],81:[function(require,module,exports){
 var inherits = require('inherits');
 
 var asn1 = require('../../asn1');
@@ -21450,13 +18490,13 @@ function derDecodeLen(buf, primitive, fail) {
   return len;
 }
 
-},{"../../asn1":79,"inherits":176}],88:[function(require,module,exports){
+},{"../../asn1":73,"inherits":170}],82:[function(require,module,exports){
 var decoders = exports;
 
 decoders.der = require('./der');
 decoders.pem = require('./pem');
 
-},{"./der":87,"./pem":89}],89:[function(require,module,exports){
+},{"./der":81,"./pem":83}],83:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -21508,7 +18548,7 @@ PEMDecoder.prototype.decode = function decode(data, options) {
   return DERDecoder.prototype.decode.call(this, input, options);
 };
 
-},{"../../asn1":79,"./der":87,"buffer":23,"inherits":176}],90:[function(require,module,exports){
+},{"../../asn1":73,"./der":81,"buffer":17,"inherits":170}],84:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -21782,13 +18822,13 @@ function encodeTag(tag, primitive, cls, reporter) {
   return res;
 }
 
-},{"../../asn1":79,"buffer":23,"inherits":176}],91:[function(require,module,exports){
+},{"../../asn1":73,"buffer":17,"inherits":170}],85:[function(require,module,exports){
 var encoders = exports;
 
 encoders.der = require('./der');
 encoders.pem = require('./pem');
 
-},{"./der":90,"./pem":92}],92:[function(require,module,exports){
+},{"./der":84,"./pem":86}],86:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -21813,7 +18853,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
   return out.join('\n');
 };
 
-},{"../../asn1":79,"./der":90,"buffer":23,"inherits":176}],93:[function(require,module,exports){
+},{"../../asn1":73,"./der":84,"buffer":17,"inherits":170}],87:[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -21826,7 +18866,7 @@ assert.equal = function assertEqual(l, r, msg) {
     throw new Error(msg || ('Assertion failed: ' + l + ' != ' + r));
 };
 
-},{}],94:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var parseKeys = require('parse-asn1')
@@ -22004,7 +19044,7 @@ function makeR (g, k, p, q) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":50,"bn.js":51,"browserify-rsa":52,"buffer":23,"create-hmac":132,"elliptic":53,"parse-asn1":78}],95:[function(require,module,exports){
+},{"./curves":44,"bn.js":45,"browserify-rsa":46,"buffer":17,"create-hmac":126,"elliptic":47,"parse-asn1":72}],89:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
@@ -22108,7 +19148,7 @@ function checkValue (b, q) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":50,"bn.js":51,"buffer":23,"elliptic":53,"parse-asn1":78}],96:[function(require,module,exports){
+},{"./curves":44,"bn.js":45,"buffer":17,"elliptic":47,"parse-asn1":72}],90:[function(require,module,exports){
 (function (Buffer){
 var elliptic = require('elliptic');
 var BN = require('bn.js');
@@ -22224,53 +19264,53 @@ function formatReturnValue(bn, enc, len) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":98,"buffer":23,"elliptic":99}],97:[function(require,module,exports){
+},{"bn.js":92,"buffer":17,"elliptic":93}],91:[function(require,module,exports){
 var createECDH = require('crypto').createECDH;
 
 module.exports = createECDH || require('./browser');
-},{"./browser":96,"crypto":29}],98:[function(require,module,exports){
+},{"./browser":90,"crypto":23}],92:[function(require,module,exports){
+arguments[4][45][0].apply(exports,arguments)
+},{"dup":45}],93:[function(require,module,exports){
+arguments[4][47][0].apply(exports,arguments)
+},{"../package.json":113,"./elliptic/curve":96,"./elliptic/curves":99,"./elliptic/ec":100,"./elliptic/hmac-drbg":103,"./elliptic/utils":105,"brorand":106,"dup":47}],94:[function(require,module,exports){
+arguments[4][48][0].apply(exports,arguments)
+},{"../../elliptic":93,"bn.js":92,"dup":48}],95:[function(require,module,exports){
+arguments[4][49][0].apply(exports,arguments)
+},{"../../elliptic":93,"../curve":96,"bn.js":92,"dup":49,"inherits":170}],96:[function(require,module,exports){
+arguments[4][50][0].apply(exports,arguments)
+},{"./base":94,"./edwards":95,"./mont":97,"./short":98,"dup":50}],97:[function(require,module,exports){
 arguments[4][51][0].apply(exports,arguments)
-},{"dup":51}],99:[function(require,module,exports){
+},{"../curve":96,"bn.js":92,"dup":51,"inherits":170}],98:[function(require,module,exports){
+arguments[4][52][0].apply(exports,arguments)
+},{"../../elliptic":93,"../curve":96,"bn.js":92,"dup":52,"inherits":170}],99:[function(require,module,exports){
 arguments[4][53][0].apply(exports,arguments)
-},{"../package.json":119,"./elliptic/curve":102,"./elliptic/curves":105,"./elliptic/ec":106,"./elliptic/hmac-drbg":109,"./elliptic/utils":111,"brorand":112,"dup":53}],100:[function(require,module,exports){
+},{"../elliptic":93,"./precomputed/secp256k1":104,"dup":53,"hash.js":107}],100:[function(require,module,exports){
 arguments[4][54][0].apply(exports,arguments)
-},{"../../elliptic":99,"bn.js":98,"dup":54}],101:[function(require,module,exports){
+},{"../../elliptic":93,"./key":101,"./signature":102,"bn.js":92,"dup":54}],101:[function(require,module,exports){
 arguments[4][55][0].apply(exports,arguments)
-},{"../../elliptic":99,"../curve":102,"bn.js":98,"dup":55,"inherits":176}],102:[function(require,module,exports){
+},{"../../elliptic":93,"bn.js":92,"dup":55}],102:[function(require,module,exports){
 arguments[4][56][0].apply(exports,arguments)
-},{"./base":100,"./edwards":101,"./mont":103,"./short":104,"dup":56}],103:[function(require,module,exports){
+},{"../../elliptic":93,"bn.js":92,"dup":56}],103:[function(require,module,exports){
 arguments[4][57][0].apply(exports,arguments)
-},{"../curve":102,"bn.js":98,"dup":57,"inherits":176}],104:[function(require,module,exports){
+},{"../elliptic":93,"dup":57,"hash.js":107}],104:[function(require,module,exports){
 arguments[4][58][0].apply(exports,arguments)
-},{"../../elliptic":99,"../curve":102,"bn.js":98,"dup":58,"inherits":176}],105:[function(require,module,exports){
+},{"dup":58}],105:[function(require,module,exports){
 arguments[4][59][0].apply(exports,arguments)
-},{"../elliptic":99,"./precomputed/secp256k1":110,"dup":59,"hash.js":113}],106:[function(require,module,exports){
+},{"dup":59}],106:[function(require,module,exports){
 arguments[4][60][0].apply(exports,arguments)
-},{"../../elliptic":99,"./key":107,"./signature":108,"bn.js":98,"dup":60}],107:[function(require,module,exports){
+},{"dup":60}],107:[function(require,module,exports){
 arguments[4][61][0].apply(exports,arguments)
-},{"../../elliptic":99,"bn.js":98,"dup":61}],108:[function(require,module,exports){
+},{"./hash/common":108,"./hash/hmac":109,"./hash/ripemd":110,"./hash/sha":111,"./hash/utils":112,"dup":61}],108:[function(require,module,exports){
 arguments[4][62][0].apply(exports,arguments)
-},{"../../elliptic":99,"bn.js":98,"dup":62}],109:[function(require,module,exports){
+},{"../hash":107,"dup":62}],109:[function(require,module,exports){
 arguments[4][63][0].apply(exports,arguments)
-},{"../elliptic":99,"dup":63,"hash.js":113}],110:[function(require,module,exports){
+},{"../hash":107,"dup":63}],110:[function(require,module,exports){
 arguments[4][64][0].apply(exports,arguments)
-},{"dup":64}],111:[function(require,module,exports){
+},{"../hash":107,"dup":64}],111:[function(require,module,exports){
 arguments[4][65][0].apply(exports,arguments)
-},{"dup":65}],112:[function(require,module,exports){
+},{"../hash":107,"dup":65}],112:[function(require,module,exports){
 arguments[4][66][0].apply(exports,arguments)
-},{"dup":66}],113:[function(require,module,exports){
-arguments[4][67][0].apply(exports,arguments)
-},{"./hash/common":114,"./hash/hmac":115,"./hash/ripemd":116,"./hash/sha":117,"./hash/utils":118,"dup":67}],114:[function(require,module,exports){
-arguments[4][68][0].apply(exports,arguments)
-},{"../hash":113,"dup":68}],115:[function(require,module,exports){
-arguments[4][69][0].apply(exports,arguments)
-},{"../hash":113,"dup":69}],116:[function(require,module,exports){
-arguments[4][70][0].apply(exports,arguments)
-},{"../hash":113,"dup":70}],117:[function(require,module,exports){
-arguments[4][71][0].apply(exports,arguments)
-},{"../hash":113,"dup":71}],118:[function(require,module,exports){
-arguments[4][72][0].apply(exports,arguments)
-},{"dup":72,"inherits":176}],119:[function(require,module,exports){
+},{"dup":66,"inherits":170}],113:[function(require,module,exports){
 module.exports={
   "name": "elliptic",
   "version": "3.1.0",
@@ -22335,7 +19375,7 @@ module.exports={
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-3.1.0.tgz"
 }
 
-},{}],120:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var inherits = require('inherits')
@@ -22428,7 +19468,7 @@ module.exports = function createHash (alg) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./md5":122,"buffer":23,"inherits":176,"ripemd160":123,"sha.js":125,"stream":195}],121:[function(require,module,exports){
+},{"./md5":116,"buffer":17,"inherits":170,"ripemd160":117,"sha.js":119,"stream":189}],115:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var intSize = 4;
@@ -22465,7 +19505,7 @@ function hash(buf, fn, hashSize, bigEndian) {
 }
 exports.hash = hash;
 }).call(this,require("buffer").Buffer)
-},{"buffer":23}],122:[function(require,module,exports){
+},{"buffer":17}],116:[function(require,module,exports){
 'use strict';
 /*
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
@@ -22622,7 +19662,7 @@ function bit_rol(num, cnt)
 module.exports = function md5(buf) {
   return helpers.hash(buf, core_md5, 16);
 };
-},{"./helpers":121}],123:[function(require,module,exports){
+},{"./helpers":115}],117:[function(require,module,exports){
 (function (Buffer){
 /*
 CryptoJS v3.1.2
@@ -22836,7 +19876,7 @@ function ripemd160 (message) {
 module.exports = ripemd160
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23}],124:[function(require,module,exports){
+},{"buffer":17}],118:[function(require,module,exports){
 (function (Buffer){
 // prototype class for hash functions
 function Hash (blockSize, finalSize) {
@@ -22909,7 +19949,7 @@ Hash.prototype._update = function () {
 module.exports = Hash
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23}],125:[function(require,module,exports){
+},{"buffer":17}],119:[function(require,module,exports){
 var exports = module.exports = function SHA (algorithm) {
   algorithm = algorithm.toLowerCase()
 
@@ -22926,7 +19966,7 @@ exports.sha256 = require('./sha256')
 exports.sha384 = require('./sha384')
 exports.sha512 = require('./sha512')
 
-},{"./sha":126,"./sha1":127,"./sha224":128,"./sha256":129,"./sha384":130,"./sha512":131}],126:[function(require,module,exports){
+},{"./sha":120,"./sha1":121,"./sha224":122,"./sha256":123,"./sha384":124,"./sha512":125}],120:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -23029,7 +20069,7 @@ module.exports = Sha
 
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":124,"buffer":23,"inherits":176}],127:[function(require,module,exports){
+},{"./hash":118,"buffer":17,"inherits":170}],121:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -23128,7 +20168,7 @@ Sha1.prototype._hash = function () {
 module.exports = Sha1
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":124,"buffer":23,"inherits":176}],128:[function(require,module,exports){
+},{"./hash":118,"buffer":17,"inherits":170}],122:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -23184,7 +20224,7 @@ Sha224.prototype._hash = function () {
 module.exports = Sha224
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":124,"./sha256":129,"buffer":23,"inherits":176}],129:[function(require,module,exports){
+},{"./hash":118,"./sha256":123,"buffer":17,"inherits":170}],123:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -23337,7 +20377,7 @@ Sha256.prototype._hash = function () {
 module.exports = Sha256
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":124,"buffer":23,"inherits":176}],130:[function(require,module,exports){
+},{"./hash":118,"buffer":17,"inherits":170}],124:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var SHA512 = require('./sha512')
@@ -23397,7 +20437,7 @@ Sha384.prototype._hash = function () {
 module.exports = Sha384
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":124,"./sha512":131,"buffer":23,"inherits":176}],131:[function(require,module,exports){
+},{"./hash":118,"./sha512":125,"buffer":17,"inherits":170}],125:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var Hash = require('./hash')
@@ -23646,7 +20686,7 @@ Sha512.prototype._hash = function () {
 module.exports = Sha512
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":124,"buffer":23,"inherits":176}],132:[function(require,module,exports){
+},{"./hash":118,"buffer":17,"inherits":170}],126:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var createHash = require('create-hash/browser');
@@ -23718,7 +20758,7 @@ module.exports = function createHmac(alg, key) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"create-hash/browser":120,"inherits":176,"stream":195}],133:[function(require,module,exports){
+},{"buffer":17,"create-hash/browser":114,"inherits":170,"stream":189}],127:[function(require,module,exports){
 (function (Buffer){
 var generatePrime = require('./lib/generatePrime');
 var primes = require('./lib/primes');
@@ -23762,7 +20802,7 @@ exports.DiffieHellmanGroup = exports.createDiffieHellmanGroup = exports.getDiffi
 exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman;
 
 }).call(this,require("buffer").Buffer)
-},{"./lib/dh":134,"./lib/generatePrime":135,"./lib/primes":136,"buffer":23}],134:[function(require,module,exports){
+},{"./lib/dh":128,"./lib/generatePrime":129,"./lib/primes":130,"buffer":17}],128:[function(require,module,exports){
 (function (Buffer){
 var BN = require('bn.js');
 var MillerRabin = require('miller-rabin');
@@ -23932,7 +20972,7 @@ function formatReturnValue(bn, enc) {
   }
 }
 }).call(this,require("buffer").Buffer)
-},{"./generatePrime":135,"bn.js":137,"buffer":23,"miller-rabin":138,"randombytes":169}],135:[function(require,module,exports){
+},{"./generatePrime":129,"bn.js":131,"buffer":17,"miller-rabin":132,"randombytes":163}],129:[function(require,module,exports){
 var randomBytes = require('randombytes');
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
@@ -24065,7 +21105,7 @@ function findPrime(bits, gen) {
   }
 
 }
-},{"bn.js":137,"miller-rabin":138,"randombytes":169}],136:[function(require,module,exports){
+},{"bn.js":131,"miller-rabin":132,"randombytes":163}],130:[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -24100,9 +21140,9 @@ module.exports={
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
     }
 }
-},{}],137:[function(require,module,exports){
-arguments[4][51][0].apply(exports,arguments)
-},{"dup":51}],138:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
+arguments[4][45][0].apply(exports,arguments)
+},{"dup":45}],132:[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -24217,9 +21257,9 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":137,"brorand":139}],139:[function(require,module,exports){
-arguments[4][66][0].apply(exports,arguments)
-},{"dup":66}],140:[function(require,module,exports){
+},{"bn.js":131,"brorand":133}],133:[function(require,module,exports){
+arguments[4][60][0].apply(exports,arguments)
+},{"dup":60}],134:[function(require,module,exports){
 (function (Buffer){
 var createHmac = require('create-hmac')
 var MAX_ALLOC = Math.pow(2, 30) - 1 // default in iojs
@@ -24303,7 +21343,7 @@ function pbkdf2Sync (password, salt, iterations, keylen, digest) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"create-hmac":132}],141:[function(require,module,exports){
+},{"buffer":17,"create-hmac":126}],135:[function(require,module,exports){
 exports.publicEncrypt = require('./publicEncrypt');
 exports.privateDecrypt = require('./privateDecrypt');
 
@@ -24314,7 +21354,7 @@ exports.privateEncrypt = function privateEncrypt(key, buf) {
 exports.publicDecrypt = function publicDecrypt(key, buf) {
   return exports.privateDecrypt(key, buf, true);
 };
-},{"./privateDecrypt":165,"./publicEncrypt":166}],142:[function(require,module,exports){
+},{"./privateDecrypt":159,"./publicEncrypt":160}],136:[function(require,module,exports){
 (function (Buffer){
 var createHash = require('create-hash');
 module.exports = function (seed, len) {
@@ -24333,51 +21373,51 @@ function i2ops(c) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"create-hash":120}],143:[function(require,module,exports){
-arguments[4][51][0].apply(exports,arguments)
-},{"dup":51}],144:[function(require,module,exports){
-arguments[4][52][0].apply(exports,arguments)
-},{"bn.js":143,"buffer":23,"dup":52,"randombytes":169}],145:[function(require,module,exports){
+},{"buffer":17,"create-hash":114}],137:[function(require,module,exports){
+arguments[4][45][0].apply(exports,arguments)
+},{"dup":45}],138:[function(require,module,exports){
+arguments[4][46][0].apply(exports,arguments)
+},{"bn.js":137,"buffer":17,"dup":46,"randombytes":163}],139:[function(require,module,exports){
+arguments[4][68][0].apply(exports,arguments)
+},{"buffer":17,"create-hash":114,"dup":68}],140:[function(require,module,exports){
+arguments[4][69][0].apply(exports,arguments)
+},{"dup":69}],141:[function(require,module,exports){
+arguments[4][70][0].apply(exports,arguments)
+},{"asn1.js":144,"dup":70}],142:[function(require,module,exports){
+arguments[4][71][0].apply(exports,arguments)
+},{"./EVP_BytesToKey":139,"browserify-aes":27,"buffer":17,"dup":71}],143:[function(require,module,exports){
+arguments[4][72][0].apply(exports,arguments)
+},{"./aesid.json":140,"./asn1":141,"./fixProc":142,"browserify-aes":27,"buffer":17,"dup":72,"pbkdf2":134}],144:[function(require,module,exports){
+arguments[4][73][0].apply(exports,arguments)
+},{"./asn1/api":145,"./asn1/base":147,"./asn1/constants":151,"./asn1/decoders":153,"./asn1/encoders":156,"bn.js":137,"dup":73}],145:[function(require,module,exports){
 arguments[4][74][0].apply(exports,arguments)
-},{"buffer":23,"create-hash":120,"dup":74}],146:[function(require,module,exports){
+},{"../asn1":144,"dup":74,"inherits":170,"vm":194}],146:[function(require,module,exports){
 arguments[4][75][0].apply(exports,arguments)
-},{"dup":75}],147:[function(require,module,exports){
+},{"../base":147,"buffer":17,"dup":75,"inherits":170}],147:[function(require,module,exports){
 arguments[4][76][0].apply(exports,arguments)
-},{"asn1.js":150,"dup":76}],148:[function(require,module,exports){
+},{"./buffer":146,"./node":148,"./reporter":149,"dup":76}],148:[function(require,module,exports){
 arguments[4][77][0].apply(exports,arguments)
-},{"./EVP_BytesToKey":145,"browserify-aes":33,"buffer":23,"dup":77}],149:[function(require,module,exports){
+},{"../base":147,"dup":77,"minimalistic-assert":158}],149:[function(require,module,exports){
 arguments[4][78][0].apply(exports,arguments)
-},{"./aesid.json":146,"./asn1":147,"./fixProc":148,"browserify-aes":33,"buffer":23,"dup":78,"pbkdf2":140}],150:[function(require,module,exports){
+},{"dup":78,"inherits":170}],150:[function(require,module,exports){
 arguments[4][79][0].apply(exports,arguments)
-},{"./asn1/api":151,"./asn1/base":153,"./asn1/constants":157,"./asn1/decoders":159,"./asn1/encoders":162,"bn.js":143,"dup":79}],151:[function(require,module,exports){
+},{"../constants":151,"dup":79}],151:[function(require,module,exports){
 arguments[4][80][0].apply(exports,arguments)
-},{"../asn1":150,"dup":80,"inherits":176,"vm":200}],152:[function(require,module,exports){
+},{"./der":150,"dup":80}],152:[function(require,module,exports){
 arguments[4][81][0].apply(exports,arguments)
-},{"../base":153,"buffer":23,"dup":81,"inherits":176}],153:[function(require,module,exports){
+},{"../../asn1":144,"dup":81,"inherits":170}],153:[function(require,module,exports){
 arguments[4][82][0].apply(exports,arguments)
-},{"./buffer":152,"./node":154,"./reporter":155,"dup":82}],154:[function(require,module,exports){
+},{"./der":152,"./pem":154,"dup":82}],154:[function(require,module,exports){
 arguments[4][83][0].apply(exports,arguments)
-},{"../base":153,"dup":83,"minimalistic-assert":164}],155:[function(require,module,exports){
+},{"../../asn1":144,"./der":152,"buffer":17,"dup":83,"inherits":170}],155:[function(require,module,exports){
 arguments[4][84][0].apply(exports,arguments)
-},{"dup":84,"inherits":176}],156:[function(require,module,exports){
+},{"../../asn1":144,"buffer":17,"dup":84,"inherits":170}],156:[function(require,module,exports){
 arguments[4][85][0].apply(exports,arguments)
-},{"../constants":157,"dup":85}],157:[function(require,module,exports){
+},{"./der":155,"./pem":157,"dup":85}],157:[function(require,module,exports){
 arguments[4][86][0].apply(exports,arguments)
-},{"./der":156,"dup":86}],158:[function(require,module,exports){
+},{"../../asn1":144,"./der":155,"buffer":17,"dup":86,"inherits":170}],158:[function(require,module,exports){
 arguments[4][87][0].apply(exports,arguments)
-},{"../../asn1":150,"dup":87,"inherits":176}],159:[function(require,module,exports){
-arguments[4][88][0].apply(exports,arguments)
-},{"./der":158,"./pem":160,"dup":88}],160:[function(require,module,exports){
-arguments[4][89][0].apply(exports,arguments)
-},{"../../asn1":150,"./der":158,"buffer":23,"dup":89,"inherits":176}],161:[function(require,module,exports){
-arguments[4][90][0].apply(exports,arguments)
-},{"../../asn1":150,"buffer":23,"dup":90,"inherits":176}],162:[function(require,module,exports){
-arguments[4][91][0].apply(exports,arguments)
-},{"./der":161,"./pem":163,"dup":91}],163:[function(require,module,exports){
-arguments[4][92][0].apply(exports,arguments)
-},{"../../asn1":150,"./der":161,"buffer":23,"dup":92,"inherits":176}],164:[function(require,module,exports){
-arguments[4][93][0].apply(exports,arguments)
-},{"dup":93}],165:[function(require,module,exports){
+},{"dup":87}],159:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var mgf = require('./mgf');
@@ -24488,7 +21528,7 @@ function compare(a, b){
   return dif;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":142,"./withPublic":167,"./xor":168,"bn.js":143,"browserify-rsa":144,"buffer":23,"create-hash":120,"parse-asn1":149}],166:[function(require,module,exports){
+},{"./mgf":136,"./withPublic":161,"./xor":162,"bn.js":137,"browserify-rsa":138,"buffer":17,"create-hash":114,"parse-asn1":143}],160:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var randomBytes = require('randombytes');
@@ -24586,7 +21626,7 @@ function nonZero(len, crypto) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":142,"./withPublic":167,"./xor":168,"bn.js":143,"browserify-rsa":144,"buffer":23,"create-hash":120,"parse-asn1":149,"randombytes":169}],167:[function(require,module,exports){
+},{"./mgf":136,"./withPublic":161,"./xor":162,"bn.js":137,"browserify-rsa":138,"buffer":17,"create-hash":114,"parse-asn1":143,"randombytes":163}],161:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 function withPublic(paddedMsg, key) {
@@ -24599,7 +21639,7 @@ function withPublic(paddedMsg, key) {
 
 module.exports = withPublic;
 }).call(this,require("buffer").Buffer)
-},{"bn.js":143,"buffer":23}],168:[function(require,module,exports){
+},{"bn.js":137,"buffer":17}],162:[function(require,module,exports){
 module.exports = function xor(a, b) {
   var len = a.length;
   var i = -1;
@@ -24608,7 +21648,7 @@ module.exports = function xor(a, b) {
   }
   return a
 };
-},{}],169:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 (function (process,global,Buffer){
 'use strict';
 
@@ -24640,7 +21680,7 @@ function oldBrowser() {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"_process":179,"buffer":23}],170:[function(require,module,exports){
+},{"_process":173,"buffer":17}],164:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -24943,7 +21983,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],171:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 var http = module.exports;
 var EventEmitter = require('events').EventEmitter;
 var Request = require('./lib/request');
@@ -25089,7 +22129,7 @@ http.STATUS_CODES = {
     510 : 'Not Extended',               // RFC 2774
     511 : 'Network Authentication Required' // RFC 6585
 };
-},{"./lib/request":172,"events":170,"url":197}],172:[function(require,module,exports){
+},{"./lib/request":166,"events":164,"url":191}],166:[function(require,module,exports){
 var Stream = require('stream');
 var Response = require('./response');
 var Base64 = require('Base64');
@@ -25300,7 +22340,7 @@ var isXHR2Compatible = function (obj) {
     if (typeof FormData !== 'undefined' && obj instanceof FormData) return true;
 };
 
-},{"./response":173,"Base64":174,"inherits":176,"stream":195}],173:[function(require,module,exports){
+},{"./response":167,"Base64":168,"inherits":170,"stream":189}],167:[function(require,module,exports){
 var Stream = require('stream');
 var util = require('util');
 
@@ -25422,7 +22462,7 @@ var isArray = Array.isArray || function (xs) {
     return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{"stream":195,"util":199}],174:[function(require,module,exports){
+},{"stream":189,"util":193}],168:[function(require,module,exports){
 ;(function () {
 
   var object = typeof exports != 'undefined' ? exports : this; // #8: web workers
@@ -25484,7 +22524,7 @@ var isArray = Array.isArray || function (xs) {
 
 }());
 
-},{}],175:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 var http = require('http');
 
 var https = module.exports;
@@ -25499,7 +22539,7 @@ https.request = function (params, cb) {
     return http.request.call(this, params, cb);
 }
 
-},{"http":171}],176:[function(require,module,exports){
+},{"http":165}],170:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -25524,12 +22564,12 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],177:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 module.exports = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
 
-},{}],178:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -25757,7 +22797,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":179}],179:[function(require,module,exports){
+},{"_process":173}],173:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -25849,7 +22889,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],180:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.3.2 by @mathias */
 ;(function(root) {
@@ -26383,7 +23423,7 @@ process.umask = function() { return 0; };
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],181:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -26469,7 +23509,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],182:[function(require,module,exports){
+},{}],176:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -26556,16 +23596,16 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],183:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":181,"./encode":182}],184:[function(require,module,exports){
+},{"./decode":175,"./encode":176}],178:[function(require,module,exports){
 module.exports = require("./lib/_stream_duplex.js")
 
-},{"./lib/_stream_duplex.js":185}],185:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":179}],179:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -26658,7 +23698,7 @@ function forEach (xs, f) {
 }
 
 }).call(this,require('_process'))
-},{"./_stream_readable":187,"./_stream_writable":189,"_process":179,"core-util-is":190,"inherits":176}],186:[function(require,module,exports){
+},{"./_stream_readable":181,"./_stream_writable":183,"_process":173,"core-util-is":184,"inherits":170}],180:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -26706,7 +23746,7 @@ PassThrough.prototype._transform = function(chunk, encoding, cb) {
   cb(null, chunk);
 };
 
-},{"./_stream_transform":188,"core-util-is":190,"inherits":176}],187:[function(require,module,exports){
+},{"./_stream_transform":182,"core-util-is":184,"inherits":170}],181:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -27661,7 +24701,7 @@ function indexOf (xs, x) {
 }
 
 }).call(this,require('_process'))
-},{"./_stream_duplex":185,"_process":179,"buffer":23,"core-util-is":190,"events":170,"inherits":176,"isarray":177,"stream":195,"string_decoder/":196,"util":9}],188:[function(require,module,exports){
+},{"./_stream_duplex":179,"_process":173,"buffer":17,"core-util-is":184,"events":164,"inherits":170,"isarray":171,"stream":189,"string_decoder/":190,"util":3}],182:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -27872,7 +24912,7 @@ function done(stream, er) {
   return stream.push(null);
 }
 
-},{"./_stream_duplex":185,"core-util-is":190,"inherits":176}],189:[function(require,module,exports){
+},{"./_stream_duplex":179,"core-util-is":184,"inherits":170}],183:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -28353,7 +25393,7 @@ function endWritable(stream, state, cb) {
 }
 
 }).call(this,require('_process'))
-},{"./_stream_duplex":185,"_process":179,"buffer":23,"core-util-is":190,"inherits":176,"stream":195}],190:[function(require,module,exports){
+},{"./_stream_duplex":179,"_process":173,"buffer":17,"core-util-is":184,"inherits":170,"stream":189}],184:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -28463,10 +25503,10 @@ function objectToString(o) {
   return Object.prototype.toString.call(o);
 }
 }).call(this,require("buffer").Buffer)
-},{"buffer":23}],191:[function(require,module,exports){
+},{"buffer":17}],185:[function(require,module,exports){
 module.exports = require("./lib/_stream_passthrough.js")
 
-},{"./lib/_stream_passthrough.js":186}],192:[function(require,module,exports){
+},{"./lib/_stream_passthrough.js":180}],186:[function(require,module,exports){
 exports = module.exports = require('./lib/_stream_readable.js');
 exports.Stream = require('stream');
 exports.Readable = exports;
@@ -28475,13 +25515,13 @@ exports.Duplex = require('./lib/_stream_duplex.js');
 exports.Transform = require('./lib/_stream_transform.js');
 exports.PassThrough = require('./lib/_stream_passthrough.js');
 
-},{"./lib/_stream_duplex.js":185,"./lib/_stream_passthrough.js":186,"./lib/_stream_readable.js":187,"./lib/_stream_transform.js":188,"./lib/_stream_writable.js":189,"stream":195}],193:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":179,"./lib/_stream_passthrough.js":180,"./lib/_stream_readable.js":181,"./lib/_stream_transform.js":182,"./lib/_stream_writable.js":183,"stream":189}],187:[function(require,module,exports){
 module.exports = require("./lib/_stream_transform.js")
 
-},{"./lib/_stream_transform.js":188}],194:[function(require,module,exports){
+},{"./lib/_stream_transform.js":182}],188:[function(require,module,exports){
 module.exports = require("./lib/_stream_writable.js")
 
-},{"./lib/_stream_writable.js":189}],195:[function(require,module,exports){
+},{"./lib/_stream_writable.js":183}],189:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -28610,7 +25650,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":170,"inherits":176,"readable-stream/duplex.js":184,"readable-stream/passthrough.js":191,"readable-stream/readable.js":192,"readable-stream/transform.js":193,"readable-stream/writable.js":194}],196:[function(require,module,exports){
+},{"events":164,"inherits":170,"readable-stream/duplex.js":178,"readable-stream/passthrough.js":185,"readable-stream/readable.js":186,"readable-stream/transform.js":187,"readable-stream/writable.js":188}],190:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -28833,7 +25873,7 @@ function base64DetectIncompleteChar(buffer) {
   this.charLength = this.charReceived ? 3 : 0;
 }
 
-},{"buffer":23}],197:[function(require,module,exports){
+},{"buffer":17}],191:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -29542,14 +26582,14 @@ function isNullOrUndefined(arg) {
   return  arg == null;
 }
 
-},{"punycode":180,"querystring":183}],198:[function(require,module,exports){
+},{"punycode":174,"querystring":177}],192:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],199:[function(require,module,exports){
+},{}],193:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -30139,7 +27179,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":198,"_process":179,"inherits":176}],200:[function(require,module,exports){
+},{"./support/isBuffer":192,"_process":173,"inherits":170}],194:[function(require,module,exports){
 var indexOf = require('indexof');
 
 var Object_keys = function (obj) {
@@ -30279,7 +27319,7 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{"indexof":201}],201:[function(require,module,exports){
+},{"indexof":195}],195:[function(require,module,exports){
 
 var indexOf = [].indexOf;
 
@@ -30290,7 +27330,7 @@ module.exports = function(arr, obj){
   }
   return -1;
 };
-},{}],202:[function(require,module,exports){
+},{}],196:[function(require,module,exports){
 // Copyright 2010-2012 Mikeal Rogers
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -30451,7 +27491,7 @@ Object.defineProperty(request, 'debug', {
   }
 })
 
-},{"./lib/cookies":204,"./lib/helpers":208,"./request":292,"util":199}],203:[function(require,module,exports){
+},{"./lib/cookies":198,"./lib/helpers":202,"./request":286,"util":193}],197:[function(require,module,exports){
 'use strict'
 
 var caseless = require('caseless')
@@ -30606,7 +27646,7 @@ Auth.prototype.onResponse = function (response) {
 
 exports.Auth = Auth
 
-},{"./helpers":208,"caseless":223,"node-uuid":277}],204:[function(require,module,exports){
+},{"./helpers":202,"caseless":217,"node-uuid":271}],198:[function(require,module,exports){
 'use strict'
 
 var tough = require('tough-cookie')
@@ -30647,7 +27687,7 @@ exports.jar = function(store) {
   return new RequestJar(store)
 }
 
-},{"tough-cookie":285}],205:[function(require,module,exports){
+},{"tough-cookie":279}],199:[function(require,module,exports){
 'use strict'
 
 module.exports =
@@ -30659,7 +27699,7 @@ function copy (obj) {
   return o
 }
 
-},{}],206:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 (function (process){
 'use strict'
 
@@ -30742,7 +27782,7 @@ function getProxyFromURI(uri) {
 module.exports = getProxyFromURI
 
 }).call(this,require('_process'))
-},{"_process":179}],207:[function(require,module,exports){
+},{"_process":173}],201:[function(require,module,exports){
 'use strict'
 
 var fs = require('fs')
@@ -30949,7 +27989,7 @@ Har.prototype.options = function (options) {
 
 exports.Har = Har
 
-},{"fs":7,"har-validator":239,"querystring":183,"util":199}],208:[function(require,module,exports){
+},{"fs":1,"har-validator":233,"querystring":177,"util":193}],202:[function(require,module,exports){
 (function (process,Buffer){
 'use strict'
 
@@ -31008,7 +28048,7 @@ exports.toBase64              = toBase64
 exports.defer                 = deferMethod()
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"_process":179,"buffer":23,"crypto":29,"json-stringify-safe":273}],209:[function(require,module,exports){
+},{"_process":173,"buffer":17,"crypto":23,"json-stringify-safe":267}],203:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 
@@ -31121,7 +28161,7 @@ Multipart.prototype.onRequest = function (options) {
 exports.Multipart = Multipart
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"combined-stream":224,"isstream":272,"node-uuid":277}],210:[function(require,module,exports){
+},{"buffer":17,"combined-stream":218,"isstream":266,"node-uuid":271}],204:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 
@@ -31269,7 +28309,7 @@ OAuth.prototype.onRequest = function (_oauth) {
 exports.OAuth = OAuth
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"caseless":223,"crypto":29,"node-uuid":277,"oauth-sign":278,"qs":279}],211:[function(require,module,exports){
+},{"buffer":17,"caseless":217,"crypto":23,"node-uuid":271,"oauth-sign":272,"qs":273}],205:[function(require,module,exports){
 'use strict'
 
 var qs = require('qs')
@@ -31322,7 +28362,7 @@ Querystring.prototype.unescape = querystring.unescape
 
 exports.Querystring = Querystring
 
-},{"qs":279,"querystring":183}],212:[function(require,module,exports){
+},{"qs":273,"querystring":177}],206:[function(require,module,exports){
 'use strict'
 
 var url = require('url')
@@ -31477,7 +28517,7 @@ Redirect.prototype.onResponse = function (response) {
 
 exports.Redirect = Redirect
 
-},{"url":197}],213:[function(require,module,exports){
+},{"url":191}],207:[function(require,module,exports){
 
 /*!
  * knox - auth
@@ -31681,7 +28721,7 @@ function canonicalizeResource (resource) {
 }
 module.exports.canonicalizeResource = canonicalizeResource
 
-},{"crypto":29,"url":197}],214:[function(require,module,exports){
+},{"crypto":23,"url":191}],208:[function(require,module,exports){
 (function (Buffer){
 var DuplexStream = require('readable-stream/duplex')
   , util         = require('util')
@@ -31901,11 +28941,11 @@ BufferList.prototype.destroy = function () {
 module.exports = BufferList
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"readable-stream/duplex":215,"util":199}],215:[function(require,module,exports){
-arguments[4][184][0].apply(exports,arguments)
-},{"./lib/_stream_duplex.js":216,"dup":184}],216:[function(require,module,exports){
-arguments[4][185][0].apply(exports,arguments)
-},{"./_stream_readable":217,"./_stream_writable":218,"_process":179,"core-util-is":219,"dup":185,"inherits":220}],217:[function(require,module,exports){
+},{"buffer":17,"readable-stream/duplex":209,"util":193}],209:[function(require,module,exports){
+arguments[4][178][0].apply(exports,arguments)
+},{"./lib/_stream_duplex.js":210,"dup":178}],210:[function(require,module,exports){
+arguments[4][179][0].apply(exports,arguments)
+},{"./_stream_readable":211,"./_stream_writable":212,"_process":173,"core-util-is":213,"dup":179,"inherits":214}],211:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -32891,7 +29931,7 @@ function indexOf (xs, x) {
 }
 
 }).call(this,require('_process'))
-},{"_process":179,"buffer":23,"core-util-is":219,"events":170,"inherits":220,"isarray":221,"stream":195,"string_decoder/":222}],218:[function(require,module,exports){
+},{"_process":173,"buffer":17,"core-util-is":213,"events":164,"inherits":214,"isarray":215,"stream":189,"string_decoder/":216}],212:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -33281,15 +30321,15 @@ function endWritable(stream, state, cb) {
 }
 
 }).call(this,require('_process'))
-},{"./_stream_duplex":216,"_process":179,"buffer":23,"core-util-is":219,"inherits":220,"stream":195}],219:[function(require,module,exports){
+},{"./_stream_duplex":210,"_process":173,"buffer":17,"core-util-is":213,"inherits":214,"stream":189}],213:[function(require,module,exports){
+arguments[4][184][0].apply(exports,arguments)
+},{"buffer":17,"dup":184}],214:[function(require,module,exports){
+arguments[4][170][0].apply(exports,arguments)
+},{"dup":170}],215:[function(require,module,exports){
+arguments[4][171][0].apply(exports,arguments)
+},{"dup":171}],216:[function(require,module,exports){
 arguments[4][190][0].apply(exports,arguments)
-},{"buffer":23,"dup":190}],220:[function(require,module,exports){
-arguments[4][176][0].apply(exports,arguments)
-},{"dup":176}],221:[function(require,module,exports){
-arguments[4][177][0].apply(exports,arguments)
-},{"dup":177}],222:[function(require,module,exports){
-arguments[4][196][0].apply(exports,arguments)
-},{"buffer":23,"dup":196}],223:[function(require,module,exports){
+},{"buffer":17,"dup":190}],217:[function(require,module,exports){
 function Caseless (dict) {
   this.dict = dict || {}
 }
@@ -33356,7 +30396,7 @@ module.exports.httpify = function (resp, headers) {
   return c
 }
 
-},{}],224:[function(require,module,exports){
+},{}],218:[function(require,module,exports){
 (function (Buffer){
 var util = require('util');
 var Stream = require('stream').Stream;
@@ -33548,7 +30588,7 @@ CombinedStream.prototype._emitError = function(err) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"delayed-stream":225,"stream":195,"util":199}],225:[function(require,module,exports){
+},{"buffer":17,"delayed-stream":219,"stream":189,"util":193}],219:[function(require,module,exports){
 var Stream = require('stream').Stream;
 var util = require('util');
 
@@ -33657,7 +30697,7 @@ DelayedStream.prototype._checkIfMaxDataSizeExceeded = function() {
   this.emit('error', new Error(message));
 };
 
-},{"stream":195,"util":199}],226:[function(require,module,exports){
+},{"stream":189,"util":193}],220:[function(require,module,exports){
 module.exports = ForeverAgent
 ForeverAgent.SSL = ForeverAgentSSL
 
@@ -33797,7 +30837,7 @@ function createConnectionSSL (port, host, options) {
   return tls.connect(options);
 }
 
-},{"http":171,"https":175,"net":7,"tls":7,"util":199}],227:[function(require,module,exports){
+},{"http":165,"https":169,"net":1,"tls":1,"util":193}],221:[function(require,module,exports){
 (function (process,Buffer){
 var CombinedStream = require('combined-stream');
 var util = require('util');
@@ -34152,7 +31192,7 @@ function populate(dst, src) {
 }
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"_process":179,"async":228,"buffer":23,"combined-stream":229,"fs":7,"http":171,"https":175,"mime-types":274,"path":178,"url":197,"util":199}],228:[function(require,module,exports){
+},{"_process":173,"async":222,"buffer":17,"combined-stream":223,"fs":1,"http":165,"https":169,"mime-types":268,"path":172,"url":191,"util":193}],222:[function(require,module,exports){
 (function (process){
 /*!
  * async
@@ -35279,9 +32319,9 @@ function populate(dst, src) {
 }());
 
 }).call(this,require('_process'))
-},{"_process":179}],229:[function(require,module,exports){
-arguments[4][224][0].apply(exports,arguments)
-},{"buffer":23,"delayed-stream":230,"dup":224,"stream":195,"util":199}],230:[function(require,module,exports){
+},{"_process":173}],223:[function(require,module,exports){
+arguments[4][218][0].apply(exports,arguments)
+},{"buffer":17,"delayed-stream":224,"dup":218,"stream":189,"util":193}],224:[function(require,module,exports){
 var Stream = require('stream').Stream;
 var util = require('util');
 
@@ -35382,7 +32422,7 @@ DelayedStream.prototype._checkIfMaxDataSizeExceeded = function() {
   this.emit('error', new Error(message));
 };
 
-},{"stream":195,"util":199}],231:[function(require,module,exports){
+},{"stream":189,"util":193}],225:[function(require,module,exports){
 exports['date-time'] = /^\d{4}-(?:0[0-9]{1}|1[0-2]{1})-[0-9]{2}[tT ]\d{2}:\d{2}:\d{2}(\.\d+)?([zZ]|[+-]\d{2}:\d{2})$/
 exports['date'] = /^\d{4}-(?:0[0-9]{1}|1[0-2]{1})-[0-9]{2}$/
 exports['time'] = /^\d{2}:\d{2}:\d{2}$/
@@ -35398,7 +32438,7 @@ exports['style'] = /\s*(.+?):\s*([^;]+);?/g
 exports['phone'] = /^\+(?:[0-9] ?){6,14}[0-9]$/
 exports['utc-millisec'] = /^[0-9]+(\.?[0-9]+)?$/
 
-},{}],232:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 var genobj = require('generate-object-property')
 var genfun = require('generate-function')
 var jsonpointer = require('jsonpointer')
@@ -35969,7 +33009,7 @@ module.exports.filter = function(schema, opts) {
   }
 }
 
-},{"./formats":231,"generate-function":233,"generate-object-property":234,"jsonpointer":236,"xtend":237}],233:[function(require,module,exports){
+},{"./formats":225,"generate-function":227,"generate-object-property":228,"jsonpointer":230,"xtend":231}],227:[function(require,module,exports){
 var util = require('util')
 
 var INDENT_START = /[\{\[]/
@@ -36032,7 +33072,7 @@ module.exports = function() {
   return line
 }
 
-},{"util":199}],234:[function(require,module,exports){
+},{"util":193}],228:[function(require,module,exports){
 var isProperty = require('is-property')
 
 var gen = function(obj, prop) {
@@ -36046,13 +33086,13 @@ gen.property = function (prop) {
 
 module.exports = gen
 
-},{"is-property":235}],235:[function(require,module,exports){
+},{"is-property":229}],229:[function(require,module,exports){
 "use strict"
 function isProperty(str) {
   return /^[$A-Z\_a-z\xaa\xb5\xba\xc0-\xd6\xd8-\xf6\xf8-\u02c1\u02c6-\u02d1\u02e0-\u02e4\u02ec\u02ee\u0370-\u0374\u0376\u0377\u037a-\u037d\u0386\u0388-\u038a\u038c\u038e-\u03a1\u03a3-\u03f5\u03f7-\u0481\u048a-\u0527\u0531-\u0556\u0559\u0561-\u0587\u05d0-\u05ea\u05f0-\u05f2\u0620-\u064a\u066e\u066f\u0671-\u06d3\u06d5\u06e5\u06e6\u06ee\u06ef\u06fa-\u06fc\u06ff\u0710\u0712-\u072f\u074d-\u07a5\u07b1\u07ca-\u07ea\u07f4\u07f5\u07fa\u0800-\u0815\u081a\u0824\u0828\u0840-\u0858\u08a0\u08a2-\u08ac\u0904-\u0939\u093d\u0950\u0958-\u0961\u0971-\u0977\u0979-\u097f\u0985-\u098c\u098f\u0990\u0993-\u09a8\u09aa-\u09b0\u09b2\u09b6-\u09b9\u09bd\u09ce\u09dc\u09dd\u09df-\u09e1\u09f0\u09f1\u0a05-\u0a0a\u0a0f\u0a10\u0a13-\u0a28\u0a2a-\u0a30\u0a32\u0a33\u0a35\u0a36\u0a38\u0a39\u0a59-\u0a5c\u0a5e\u0a72-\u0a74\u0a85-\u0a8d\u0a8f-\u0a91\u0a93-\u0aa8\u0aaa-\u0ab0\u0ab2\u0ab3\u0ab5-\u0ab9\u0abd\u0ad0\u0ae0\u0ae1\u0b05-\u0b0c\u0b0f\u0b10\u0b13-\u0b28\u0b2a-\u0b30\u0b32\u0b33\u0b35-\u0b39\u0b3d\u0b5c\u0b5d\u0b5f-\u0b61\u0b71\u0b83\u0b85-\u0b8a\u0b8e-\u0b90\u0b92-\u0b95\u0b99\u0b9a\u0b9c\u0b9e\u0b9f\u0ba3\u0ba4\u0ba8-\u0baa\u0bae-\u0bb9\u0bd0\u0c05-\u0c0c\u0c0e-\u0c10\u0c12-\u0c28\u0c2a-\u0c33\u0c35-\u0c39\u0c3d\u0c58\u0c59\u0c60\u0c61\u0c85-\u0c8c\u0c8e-\u0c90\u0c92-\u0ca8\u0caa-\u0cb3\u0cb5-\u0cb9\u0cbd\u0cde\u0ce0\u0ce1\u0cf1\u0cf2\u0d05-\u0d0c\u0d0e-\u0d10\u0d12-\u0d3a\u0d3d\u0d4e\u0d60\u0d61\u0d7a-\u0d7f\u0d85-\u0d96\u0d9a-\u0db1\u0db3-\u0dbb\u0dbd\u0dc0-\u0dc6\u0e01-\u0e30\u0e32\u0e33\u0e40-\u0e46\u0e81\u0e82\u0e84\u0e87\u0e88\u0e8a\u0e8d\u0e94-\u0e97\u0e99-\u0e9f\u0ea1-\u0ea3\u0ea5\u0ea7\u0eaa\u0eab\u0ead-\u0eb0\u0eb2\u0eb3\u0ebd\u0ec0-\u0ec4\u0ec6\u0edc-\u0edf\u0f00\u0f40-\u0f47\u0f49-\u0f6c\u0f88-\u0f8c\u1000-\u102a\u103f\u1050-\u1055\u105a-\u105d\u1061\u1065\u1066\u106e-\u1070\u1075-\u1081\u108e\u10a0-\u10c5\u10c7\u10cd\u10d0-\u10fa\u10fc-\u1248\u124a-\u124d\u1250-\u1256\u1258\u125a-\u125d\u1260-\u1288\u128a-\u128d\u1290-\u12b0\u12b2-\u12b5\u12b8-\u12be\u12c0\u12c2-\u12c5\u12c8-\u12d6\u12d8-\u1310\u1312-\u1315\u1318-\u135a\u1380-\u138f\u13a0-\u13f4\u1401-\u166c\u166f-\u167f\u1681-\u169a\u16a0-\u16ea\u16ee-\u16f0\u1700-\u170c\u170e-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176c\u176e-\u1770\u1780-\u17b3\u17d7\u17dc\u1820-\u1877\u1880-\u18a8\u18aa\u18b0-\u18f5\u1900-\u191c\u1950-\u196d\u1970-\u1974\u1980-\u19ab\u19c1-\u19c7\u1a00-\u1a16\u1a20-\u1a54\u1aa7\u1b05-\u1b33\u1b45-\u1b4b\u1b83-\u1ba0\u1bae\u1baf\u1bba-\u1be5\u1c00-\u1c23\u1c4d-\u1c4f\u1c5a-\u1c7d\u1ce9-\u1cec\u1cee-\u1cf1\u1cf5\u1cf6\u1d00-\u1dbf\u1e00-\u1f15\u1f18-\u1f1d\u1f20-\u1f45\u1f48-\u1f4d\u1f50-\u1f57\u1f59\u1f5b\u1f5d\u1f5f-\u1f7d\u1f80-\u1fb4\u1fb6-\u1fbc\u1fbe\u1fc2-\u1fc4\u1fc6-\u1fcc\u1fd0-\u1fd3\u1fd6-\u1fdb\u1fe0-\u1fec\u1ff2-\u1ff4\u1ff6-\u1ffc\u2071\u207f\u2090-\u209c\u2102\u2107\u210a-\u2113\u2115\u2119-\u211d\u2124\u2126\u2128\u212a-\u212d\u212f-\u2139\u213c-\u213f\u2145-\u2149\u214e\u2160-\u2188\u2c00-\u2c2e\u2c30-\u2c5e\u2c60-\u2ce4\u2ceb-\u2cee\u2cf2\u2cf3\u2d00-\u2d25\u2d27\u2d2d\u2d30-\u2d67\u2d6f\u2d80-\u2d96\u2da0-\u2da6\u2da8-\u2dae\u2db0-\u2db6\u2db8-\u2dbe\u2dc0-\u2dc6\u2dc8-\u2dce\u2dd0-\u2dd6\u2dd8-\u2dde\u2e2f\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303c\u3041-\u3096\u309d-\u309f\u30a1-\u30fa\u30fc-\u30ff\u3105-\u312d\u3131-\u318e\u31a0-\u31ba\u31f0-\u31ff\u3400-\u4db5\u4e00-\u9fcc\ua000-\ua48c\ua4d0-\ua4fd\ua500-\ua60c\ua610-\ua61f\ua62a\ua62b\ua640-\ua66e\ua67f-\ua697\ua6a0-\ua6ef\ua717-\ua71f\ua722-\ua788\ua78b-\ua78e\ua790-\ua793\ua7a0-\ua7aa\ua7f8-\ua801\ua803-\ua805\ua807-\ua80a\ua80c-\ua822\ua840-\ua873\ua882-\ua8b3\ua8f2-\ua8f7\ua8fb\ua90a-\ua925\ua930-\ua946\ua960-\ua97c\ua984-\ua9b2\ua9cf\uaa00-\uaa28\uaa40-\uaa42\uaa44-\uaa4b\uaa60-\uaa76\uaa7a\uaa80-\uaaaf\uaab1\uaab5\uaab6\uaab9-\uaabd\uaac0\uaac2\uaadb-\uaadd\uaae0-\uaaea\uaaf2-\uaaf4\uab01-\uab06\uab09-\uab0e\uab11-\uab16\uab20-\uab26\uab28-\uab2e\uabc0-\uabe2\uac00-\ud7a3\ud7b0-\ud7c6\ud7cb-\ud7fb\uf900-\ufa6d\ufa70-\ufad9\ufb00-\ufb06\ufb13-\ufb17\ufb1d\ufb1f-\ufb28\ufb2a-\ufb36\ufb38-\ufb3c\ufb3e\ufb40\ufb41\ufb43\ufb44\ufb46-\ufbb1\ufbd3-\ufd3d\ufd50-\ufd8f\ufd92-\ufdc7\ufdf0-\ufdfb\ufe70-\ufe74\ufe76-\ufefc\uff21-\uff3a\uff41-\uff5a\uff66-\uffbe\uffc2-\uffc7\uffca-\uffcf\uffd2-\uffd7\uffda-\uffdc][$A-Z\_a-z\xaa\xb5\xba\xc0-\xd6\xd8-\xf6\xf8-\u02c1\u02c6-\u02d1\u02e0-\u02e4\u02ec\u02ee\u0370-\u0374\u0376\u0377\u037a-\u037d\u0386\u0388-\u038a\u038c\u038e-\u03a1\u03a3-\u03f5\u03f7-\u0481\u048a-\u0527\u0531-\u0556\u0559\u0561-\u0587\u05d0-\u05ea\u05f0-\u05f2\u0620-\u064a\u066e\u066f\u0671-\u06d3\u06d5\u06e5\u06e6\u06ee\u06ef\u06fa-\u06fc\u06ff\u0710\u0712-\u072f\u074d-\u07a5\u07b1\u07ca-\u07ea\u07f4\u07f5\u07fa\u0800-\u0815\u081a\u0824\u0828\u0840-\u0858\u08a0\u08a2-\u08ac\u0904-\u0939\u093d\u0950\u0958-\u0961\u0971-\u0977\u0979-\u097f\u0985-\u098c\u098f\u0990\u0993-\u09a8\u09aa-\u09b0\u09b2\u09b6-\u09b9\u09bd\u09ce\u09dc\u09dd\u09df-\u09e1\u09f0\u09f1\u0a05-\u0a0a\u0a0f\u0a10\u0a13-\u0a28\u0a2a-\u0a30\u0a32\u0a33\u0a35\u0a36\u0a38\u0a39\u0a59-\u0a5c\u0a5e\u0a72-\u0a74\u0a85-\u0a8d\u0a8f-\u0a91\u0a93-\u0aa8\u0aaa-\u0ab0\u0ab2\u0ab3\u0ab5-\u0ab9\u0abd\u0ad0\u0ae0\u0ae1\u0b05-\u0b0c\u0b0f\u0b10\u0b13-\u0b28\u0b2a-\u0b30\u0b32\u0b33\u0b35-\u0b39\u0b3d\u0b5c\u0b5d\u0b5f-\u0b61\u0b71\u0b83\u0b85-\u0b8a\u0b8e-\u0b90\u0b92-\u0b95\u0b99\u0b9a\u0b9c\u0b9e\u0b9f\u0ba3\u0ba4\u0ba8-\u0baa\u0bae-\u0bb9\u0bd0\u0c05-\u0c0c\u0c0e-\u0c10\u0c12-\u0c28\u0c2a-\u0c33\u0c35-\u0c39\u0c3d\u0c58\u0c59\u0c60\u0c61\u0c85-\u0c8c\u0c8e-\u0c90\u0c92-\u0ca8\u0caa-\u0cb3\u0cb5-\u0cb9\u0cbd\u0cde\u0ce0\u0ce1\u0cf1\u0cf2\u0d05-\u0d0c\u0d0e-\u0d10\u0d12-\u0d3a\u0d3d\u0d4e\u0d60\u0d61\u0d7a-\u0d7f\u0d85-\u0d96\u0d9a-\u0db1\u0db3-\u0dbb\u0dbd\u0dc0-\u0dc6\u0e01-\u0e30\u0e32\u0e33\u0e40-\u0e46\u0e81\u0e82\u0e84\u0e87\u0e88\u0e8a\u0e8d\u0e94-\u0e97\u0e99-\u0e9f\u0ea1-\u0ea3\u0ea5\u0ea7\u0eaa\u0eab\u0ead-\u0eb0\u0eb2\u0eb3\u0ebd\u0ec0-\u0ec4\u0ec6\u0edc-\u0edf\u0f00\u0f40-\u0f47\u0f49-\u0f6c\u0f88-\u0f8c\u1000-\u102a\u103f\u1050-\u1055\u105a-\u105d\u1061\u1065\u1066\u106e-\u1070\u1075-\u1081\u108e\u10a0-\u10c5\u10c7\u10cd\u10d0-\u10fa\u10fc-\u1248\u124a-\u124d\u1250-\u1256\u1258\u125a-\u125d\u1260-\u1288\u128a-\u128d\u1290-\u12b0\u12b2-\u12b5\u12b8-\u12be\u12c0\u12c2-\u12c5\u12c8-\u12d6\u12d8-\u1310\u1312-\u1315\u1318-\u135a\u1380-\u138f\u13a0-\u13f4\u1401-\u166c\u166f-\u167f\u1681-\u169a\u16a0-\u16ea\u16ee-\u16f0\u1700-\u170c\u170e-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176c\u176e-\u1770\u1780-\u17b3\u17d7\u17dc\u1820-\u1877\u1880-\u18a8\u18aa\u18b0-\u18f5\u1900-\u191c\u1950-\u196d\u1970-\u1974\u1980-\u19ab\u19c1-\u19c7\u1a00-\u1a16\u1a20-\u1a54\u1aa7\u1b05-\u1b33\u1b45-\u1b4b\u1b83-\u1ba0\u1bae\u1baf\u1bba-\u1be5\u1c00-\u1c23\u1c4d-\u1c4f\u1c5a-\u1c7d\u1ce9-\u1cec\u1cee-\u1cf1\u1cf5\u1cf6\u1d00-\u1dbf\u1e00-\u1f15\u1f18-\u1f1d\u1f20-\u1f45\u1f48-\u1f4d\u1f50-\u1f57\u1f59\u1f5b\u1f5d\u1f5f-\u1f7d\u1f80-\u1fb4\u1fb6-\u1fbc\u1fbe\u1fc2-\u1fc4\u1fc6-\u1fcc\u1fd0-\u1fd3\u1fd6-\u1fdb\u1fe0-\u1fec\u1ff2-\u1ff4\u1ff6-\u1ffc\u2071\u207f\u2090-\u209c\u2102\u2107\u210a-\u2113\u2115\u2119-\u211d\u2124\u2126\u2128\u212a-\u212d\u212f-\u2139\u213c-\u213f\u2145-\u2149\u214e\u2160-\u2188\u2c00-\u2c2e\u2c30-\u2c5e\u2c60-\u2ce4\u2ceb-\u2cee\u2cf2\u2cf3\u2d00-\u2d25\u2d27\u2d2d\u2d30-\u2d67\u2d6f\u2d80-\u2d96\u2da0-\u2da6\u2da8-\u2dae\u2db0-\u2db6\u2db8-\u2dbe\u2dc0-\u2dc6\u2dc8-\u2dce\u2dd0-\u2dd6\u2dd8-\u2dde\u2e2f\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303c\u3041-\u3096\u309d-\u309f\u30a1-\u30fa\u30fc-\u30ff\u3105-\u312d\u3131-\u318e\u31a0-\u31ba\u31f0-\u31ff\u3400-\u4db5\u4e00-\u9fcc\ua000-\ua48c\ua4d0-\ua4fd\ua500-\ua60c\ua610-\ua61f\ua62a\ua62b\ua640-\ua66e\ua67f-\ua697\ua6a0-\ua6ef\ua717-\ua71f\ua722-\ua788\ua78b-\ua78e\ua790-\ua793\ua7a0-\ua7aa\ua7f8-\ua801\ua803-\ua805\ua807-\ua80a\ua80c-\ua822\ua840-\ua873\ua882-\ua8b3\ua8f2-\ua8f7\ua8fb\ua90a-\ua925\ua930-\ua946\ua960-\ua97c\ua984-\ua9b2\ua9cf\uaa00-\uaa28\uaa40-\uaa42\uaa44-\uaa4b\uaa60-\uaa76\uaa7a\uaa80-\uaaaf\uaab1\uaab5\uaab6\uaab9-\uaabd\uaac0\uaac2\uaadb-\uaadd\uaae0-\uaaea\uaaf2-\uaaf4\uab01-\uab06\uab09-\uab0e\uab11-\uab16\uab20-\uab26\uab28-\uab2e\uabc0-\uabe2\uac00-\ud7a3\ud7b0-\ud7c6\ud7cb-\ud7fb\uf900-\ufa6d\ufa70-\ufad9\ufb00-\ufb06\ufb13-\ufb17\ufb1d\ufb1f-\ufb28\ufb2a-\ufb36\ufb38-\ufb3c\ufb3e\ufb40\ufb41\ufb43\ufb44\ufb46-\ufbb1\ufbd3-\ufd3d\ufd50-\ufd8f\ufd92-\ufdc7\ufdf0-\ufdfb\ufe70-\ufe74\ufe76-\ufefc\uff21-\uff3a\uff41-\uff5a\uff66-\uffbe\uffc2-\uffc7\uffca-\uffcf\uffd2-\uffd7\uffda-\uffdc0-9\u0300-\u036f\u0483-\u0487\u0591-\u05bd\u05bf\u05c1\u05c2\u05c4\u05c5\u05c7\u0610-\u061a\u064b-\u0669\u0670\u06d6-\u06dc\u06df-\u06e4\u06e7\u06e8\u06ea-\u06ed\u06f0-\u06f9\u0711\u0730-\u074a\u07a6-\u07b0\u07c0-\u07c9\u07eb-\u07f3\u0816-\u0819\u081b-\u0823\u0825-\u0827\u0829-\u082d\u0859-\u085b\u08e4-\u08fe\u0900-\u0903\u093a-\u093c\u093e-\u094f\u0951-\u0957\u0962\u0963\u0966-\u096f\u0981-\u0983\u09bc\u09be-\u09c4\u09c7\u09c8\u09cb-\u09cd\u09d7\u09e2\u09e3\u09e6-\u09ef\u0a01-\u0a03\u0a3c\u0a3e-\u0a42\u0a47\u0a48\u0a4b-\u0a4d\u0a51\u0a66-\u0a71\u0a75\u0a81-\u0a83\u0abc\u0abe-\u0ac5\u0ac7-\u0ac9\u0acb-\u0acd\u0ae2\u0ae3\u0ae6-\u0aef\u0b01-\u0b03\u0b3c\u0b3e-\u0b44\u0b47\u0b48\u0b4b-\u0b4d\u0b56\u0b57\u0b62\u0b63\u0b66-\u0b6f\u0b82\u0bbe-\u0bc2\u0bc6-\u0bc8\u0bca-\u0bcd\u0bd7\u0be6-\u0bef\u0c01-\u0c03\u0c3e-\u0c44\u0c46-\u0c48\u0c4a-\u0c4d\u0c55\u0c56\u0c62\u0c63\u0c66-\u0c6f\u0c82\u0c83\u0cbc\u0cbe-\u0cc4\u0cc6-\u0cc8\u0cca-\u0ccd\u0cd5\u0cd6\u0ce2\u0ce3\u0ce6-\u0cef\u0d02\u0d03\u0d3e-\u0d44\u0d46-\u0d48\u0d4a-\u0d4d\u0d57\u0d62\u0d63\u0d66-\u0d6f\u0d82\u0d83\u0dca\u0dcf-\u0dd4\u0dd6\u0dd8-\u0ddf\u0df2\u0df3\u0e31\u0e34-\u0e3a\u0e47-\u0e4e\u0e50-\u0e59\u0eb1\u0eb4-\u0eb9\u0ebb\u0ebc\u0ec8-\u0ecd\u0ed0-\u0ed9\u0f18\u0f19\u0f20-\u0f29\u0f35\u0f37\u0f39\u0f3e\u0f3f\u0f71-\u0f84\u0f86\u0f87\u0f8d-\u0f97\u0f99-\u0fbc\u0fc6\u102b-\u103e\u1040-\u1049\u1056-\u1059\u105e-\u1060\u1062-\u1064\u1067-\u106d\u1071-\u1074\u1082-\u108d\u108f-\u109d\u135d-\u135f\u1712-\u1714\u1732-\u1734\u1752\u1753\u1772\u1773\u17b4-\u17d3\u17dd\u17e0-\u17e9\u180b-\u180d\u1810-\u1819\u18a9\u1920-\u192b\u1930-\u193b\u1946-\u194f\u19b0-\u19c0\u19c8\u19c9\u19d0-\u19d9\u1a17-\u1a1b\u1a55-\u1a5e\u1a60-\u1a7c\u1a7f-\u1a89\u1a90-\u1a99\u1b00-\u1b04\u1b34-\u1b44\u1b50-\u1b59\u1b6b-\u1b73\u1b80-\u1b82\u1ba1-\u1bad\u1bb0-\u1bb9\u1be6-\u1bf3\u1c24-\u1c37\u1c40-\u1c49\u1c50-\u1c59\u1cd0-\u1cd2\u1cd4-\u1ce8\u1ced\u1cf2-\u1cf4\u1dc0-\u1de6\u1dfc-\u1dff\u200c\u200d\u203f\u2040\u2054\u20d0-\u20dc\u20e1\u20e5-\u20f0\u2cef-\u2cf1\u2d7f\u2de0-\u2dff\u302a-\u302f\u3099\u309a\ua620-\ua629\ua66f\ua674-\ua67d\ua69f\ua6f0\ua6f1\ua802\ua806\ua80b\ua823-\ua827\ua880\ua881\ua8b4-\ua8c4\ua8d0-\ua8d9\ua8e0-\ua8f1\ua900-\ua909\ua926-\ua92d\ua947-\ua953\ua980-\ua983\ua9b3-\ua9c0\ua9d0-\ua9d9\uaa29-\uaa36\uaa43\uaa4c\uaa4d\uaa50-\uaa59\uaa7b\uaab0\uaab2-\uaab4\uaab7\uaab8\uaabe\uaabf\uaac1\uaaeb-\uaaef\uaaf5\uaaf6\uabe3-\uabea\uabec\uabed\uabf0-\uabf9\ufb1e\ufe00-\ufe0f\ufe20-\ufe26\ufe33\ufe34\ufe4d-\ufe4f\uff10-\uff19\uff3f]*$/.test(str)
 }
 module.exports = isProperty
-},{}],236:[function(require,module,exports){
+},{}],230:[function(require,module,exports){
 var console = require("console");
 
 var untilde = function(str) {
@@ -36133,7 +33173,7 @@ var set = function(obj, pointer, value) {
 exports.get = get
 exports.set = set
 
-},{"console":27}],237:[function(require,module,exports){
+},{"console":21}],231:[function(require,module,exports){
 module.exports = extend
 
 function extend() {
@@ -36152,7 +33192,7 @@ function extend() {
     return target
 }
 
-},{}],238:[function(require,module,exports){
+},{}],232:[function(require,module,exports){
 'use strict'
 
 function ValidationError (errors) {
@@ -36164,7 +33204,7 @@ ValidationError.prototype = Error.prototype
 
 module.exports = ValidationError
 
-},{}],239:[function(require,module,exports){
+},{}],233:[function(require,module,exports){
 'use strict'
 
 var schemas = require('./schemas')
@@ -36205,7 +33245,7 @@ Object.keys(schemas).map(function (name) {
   }
 })
 
-},{"./error":238,"./schemas":247,"is-my-json-valid":232}],240:[function(require,module,exports){
+},{"./error":232,"./schemas":241,"is-my-json-valid":226}],234:[function(require,module,exports){
 module.exports={
   "properties": {
     "beforeRequest": {
@@ -36220,7 +33260,7 @@ module.exports={
   }
 }
 
-},{}],241:[function(require,module,exports){
+},{}],235:[function(require,module,exports){
 module.exports={
   "oneOf": [{
     "type": "object",
@@ -36253,7 +33293,7 @@ module.exports={
   }]
 }
 
-},{}],242:[function(require,module,exports){
+},{}],236:[function(require,module,exports){
 module.exports={
   "type": "object",
   "required": [
@@ -36282,7 +33322,7 @@ module.exports={
   }
 }
 
-},{}],243:[function(require,module,exports){
+},{}],237:[function(require,module,exports){
 module.exports={
   "type": "object",
   "required": [
@@ -36318,7 +33358,7 @@ module.exports={
   }
 }
 
-},{}],244:[function(require,module,exports){
+},{}],238:[function(require,module,exports){
 module.exports={
   "type": "object",
   "required": [
@@ -36338,7 +33378,7 @@ module.exports={
   }
 }
 
-},{}],245:[function(require,module,exports){
+},{}],239:[function(require,module,exports){
 module.exports={
   "type": "object",
   "optional": true,
@@ -36388,7 +33428,7 @@ module.exports={
   }
 }
 
-},{}],246:[function(require,module,exports){
+},{}],240:[function(require,module,exports){
 module.exports={
   "type": "object",
   "required": [
@@ -36401,7 +33441,7 @@ module.exports={
   }
 }
 
-},{}],247:[function(require,module,exports){
+},{}],241:[function(require,module,exports){
 'use strict'
 
 var schemas = {
@@ -36452,7 +33492,7 @@ schemas.har.properties.log = schemas.log
 
 module.exports = schemas
 
-},{"./cache.json":240,"./cacheEntry.json":241,"./content.json":242,"./cookie.json":243,"./creator.json":244,"./entry.json":245,"./har.json":246,"./log.json":248,"./page.json":249,"./pageTimings.json":250,"./postData.json":251,"./record.json":252,"./request.json":253,"./response.json":254,"./timings.json":255}],248:[function(require,module,exports){
+},{"./cache.json":234,"./cacheEntry.json":235,"./content.json":236,"./cookie.json":237,"./creator.json":238,"./entry.json":239,"./har.json":240,"./log.json":242,"./page.json":243,"./pageTimings.json":244,"./postData.json":245,"./record.json":246,"./request.json":247,"./response.json":248,"./timings.json":249}],242:[function(require,module,exports){
 module.exports={
   "type": "object",
   "required": [
@@ -36488,7 +33528,7 @@ module.exports={
   }
 }
 
-},{}],249:[function(require,module,exports){
+},{}],243:[function(require,module,exports){
 module.exports={
   "type": "object",
   "optional": true,
@@ -36520,7 +33560,7 @@ module.exports={
   }
 }
 
-},{}],250:[function(require,module,exports){
+},{}],244:[function(require,module,exports){
 module.exports={
   "type": "object",
   "properties": {
@@ -36538,7 +33578,7 @@ module.exports={
   }
 }
 
-},{}],251:[function(require,module,exports){
+},{}],245:[function(require,module,exports){
 module.exports={
   "type": "object",
   "optional": true,
@@ -36581,7 +33621,7 @@ module.exports={
   }
 }
 
-},{}],252:[function(require,module,exports){
+},{}],246:[function(require,module,exports){
 module.exports={
   "type": "object",
   "required": [
@@ -36601,7 +33641,7 @@ module.exports={
   }
 }
 
-},{}],253:[function(require,module,exports){
+},{}],247:[function(require,module,exports){
 module.exports={
   "type": "object",
   "required": [
@@ -36658,7 +33698,7 @@ module.exports={
   }
 }
 
-},{}],254:[function(require,module,exports){
+},{}],248:[function(require,module,exports){
 module.exports={
   "type": "object",
   "required": [
@@ -36712,7 +33752,7 @@ module.exports={
   }
 }
 
-},{}],255:[function(require,module,exports){
+},{}],249:[function(require,module,exports){
 module.exports={
   "required": [
     "send",
@@ -36754,7 +33794,7 @@ module.exports={
   }
 }
 
-},{}],256:[function(require,module,exports){
+},{}],250:[function(require,module,exports){
 /*
     HTTP Hawk Authentication Scheme
     Copyright (c) 2012-2014, Eran Hammer <eran@hammer.io>
@@ -37397,7 +34437,7 @@ if (typeof module !== 'undefined' && module.exports) {
 
 // $lab:coverage:on$
 
-},{}],257:[function(require,module,exports){
+},{}],251:[function(require,module,exports){
 // Copyright 2015 Joyent, Inc.
 
 var parser = require('./parser');
@@ -37426,7 +34466,7 @@ module.exports = {
   verifyHMAC: verify.verifyHMAC
 };
 
-},{"./parser":258,"./signer":259,"./util":260,"./verify":261}],258:[function(require,module,exports){
+},{"./parser":252,"./signer":253,"./util":254,"./verify":255}],252:[function(require,module,exports){
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
 var assert = require('assert-plus');
@@ -37732,7 +34772,7 @@ module.exports = {
 
 };
 
-},{"assert-plus":268,"util":199}],259:[function(require,module,exports){
+},{"assert-plus":262,"util":193}],253:[function(require,module,exports){
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
 var assert = require('assert-plus');
@@ -37912,7 +34952,7 @@ module.exports = {
 
 };
 
-},{"assert-plus":268,"crypto":29,"http":171,"util":199}],260:[function(require,module,exports){
+},{"assert-plus":262,"crypto":23,"http":165,"util":193}],254:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
@@ -38222,7 +35262,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"asn1":267,"assert-plus":268,"buffer":23,"crypto":29,"ctype":271}],261:[function(require,module,exports){
+},{"asn1":261,"assert-plus":262,"buffer":17,"crypto":23,"ctype":265}],255:[function(require,module,exports){
 // Copyright 2015 Joyent, Inc.
 
 var assert = require('assert-plus');
@@ -38280,7 +35320,7 @@ module.exports = {
   }
 };
 
-},{"assert-plus":268,"crypto":29}],262:[function(require,module,exports){
+},{"assert-plus":262,"crypto":23}],256:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 
@@ -38295,7 +35335,7 @@ module.exports = {
 
 };
 
-},{}],263:[function(require,module,exports){
+},{}],257:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 var errors = require('./errors');
@@ -38324,7 +35364,7 @@ for (var e in errors) {
     module.exports[e] = errors[e];
 }
 
-},{"./errors":262,"./reader":264,"./types":265,"./writer":266}],264:[function(require,module,exports){
+},{"./errors":256,"./reader":258,"./types":259,"./writer":260}],258:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
@@ -38595,7 +35635,7 @@ Reader.prototype._readTag = function(tag) {
 module.exports = Reader;
 
 }).call(this,require("buffer").Buffer)
-},{"./errors":262,"./types":265,"assert":8,"buffer":23}],265:[function(require,module,exports){
+},{"./errors":256,"./types":259,"assert":2,"buffer":17}],259:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 
@@ -38633,7 +35673,7 @@ module.exports = {
   Context: 128
 };
 
-},{}],266:[function(require,module,exports){
+},{}],260:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
@@ -38954,7 +35994,7 @@ Writer.prototype._ensure = function(len) {
 module.exports = Writer;
 
 }).call(this,require("buffer").Buffer)
-},{"./errors":262,"./types":265,"assert":8,"buffer":23}],267:[function(require,module,exports){
+},{"./errors":256,"./types":259,"assert":2,"buffer":17}],261:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 // If you have no idea what ASN.1 or BER is, see this:
@@ -38976,7 +36016,7 @@ module.exports = {
 
 };
 
-},{"./ber/index":263}],268:[function(require,module,exports){
+},{"./ber/index":257}],262:[function(require,module,exports){
 (function (process,Buffer){
 // Copyright (c) 2012, Mark Cavage. All rights reserved.
 
@@ -39225,7 +36265,7 @@ Object.keys(assert).forEach(function (k) {
 });
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"_process":179,"assert":8,"buffer":23,"stream":195,"util":199}],269:[function(require,module,exports){
+},{"_process":173,"assert":2,"buffer":17,"stream":189,"util":193}],263:[function(require,module,exports){
 /*
  * ctf.js
  *
@@ -39472,7 +36512,7 @@ function ctfParseJson(json, ctype)
 
 exports.ctfParseJson = ctfParseJson;
 
-},{"assert":8}],270:[function(require,module,exports){
+},{"assert":2}],264:[function(require,module,exports){
 /*
  * rm - Feb 2011
  * ctio.js:
@@ -40959,7 +37999,7 @@ exports.rdouble = rdouble;
 exports.wfloat = wfloat;
 exports.wdouble = wdouble;
 
-},{"assert":8}],271:[function(require,module,exports){
+},{"assert":2}],265:[function(require,module,exports){
 (function (Buffer){
 /*
  * rm - Feb 2011
@@ -41907,7 +38947,7 @@ exports.wfloat = mod_ctio.wfloat;
 exports.wdouble = mod_ctio.wdouble;
 
 }).call(this,require("buffer").Buffer)
-},{"./ctf.js":269,"./ctio.js":270,"assert":8,"buffer":23}],272:[function(require,module,exports){
+},{"./ctf.js":263,"./ctio.js":264,"assert":2,"buffer":17}],266:[function(require,module,exports){
 var stream = require('stream')
 
 
@@ -41936,7 +38976,7 @@ module.exports.isReadable = isReadable
 module.exports.isWritable = isWritable
 module.exports.isDuplex   = isDuplex
 
-},{"stream":195}],273:[function(require,module,exports){
+},{"stream":189}],267:[function(require,module,exports){
 exports = module.exports = stringify
 exports.getSerialize = serializer
 
@@ -41965,7 +39005,7 @@ function serializer(replacer, cycleReplacer) {
   }
 }
 
-},{}],274:[function(require,module,exports){
+},{}],268:[function(require,module,exports){
 
 var db = require('mime-db')
 
@@ -42030,7 +39070,7 @@ exports.contentType = function (type) {
   return type
 }
 
-},{"mime-db":276}],275:[function(require,module,exports){
+},{"mime-db":270}],269:[function(require,module,exports){
 module.exports={
   "application/1d-interleaved-parityfec": {
     "source": "iana"
@@ -48377,7 +45417,7 @@ module.exports={
   }
 }
 
-},{}],276:[function(require,module,exports){
+},{}],270:[function(require,module,exports){
 /*!
  * mime-db
  * Copyright(c) 2014 Jonathan Ong
@@ -48390,7 +45430,7 @@ module.exports={
 
 module.exports = require('./db.json')
 
-},{"./db.json":275}],277:[function(require,module,exports){
+},{"./db.json":269}],271:[function(require,module,exports){
 //     uuid.js
 //
 //     Copyright (c) 2010-2012 Robert Kieffer
@@ -48639,7 +45679,7 @@ module.exports = require('./db.json')
   }
 }).call(this);
 
-},{}],278:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 var crypto = require('crypto')
   , qs = require('querystring')
   ;
@@ -48775,10 +45815,10 @@ exports.plaintext = plaintext
 exports.sign = sign
 exports.rfc3986 = rfc3986
 
-},{"crypto":29,"querystring":183}],279:[function(require,module,exports){
+},{"crypto":23,"querystring":177}],273:[function(require,module,exports){
 module.exports = require('./lib/');
 
-},{"./lib/":280}],280:[function(require,module,exports){
+},{"./lib/":274}],274:[function(require,module,exports){
 // Load modules
 
 var Stringify = require('./stringify');
@@ -48795,7 +45835,7 @@ module.exports = {
     parse: Parse
 };
 
-},{"./parse":281,"./stringify":282}],281:[function(require,module,exports){
+},{"./parse":275,"./stringify":276}],275:[function(require,module,exports){
 // Load modules
 
 var Utils = require('./utils');
@@ -48963,7 +46003,7 @@ module.exports = function (str, options) {
     return Utils.compact(obj);
 };
 
-},{"./utils":283}],282:[function(require,module,exports){
+},{"./utils":277}],276:[function(require,module,exports){
 // Load modules
 
 var Utils = require('./utils');
@@ -49086,7 +46126,7 @@ module.exports = function (obj, options) {
     return keys.join(delimiter);
 };
 
-},{"./utils":283}],283:[function(require,module,exports){
+},{"./utils":277}],277:[function(require,module,exports){
 // Load modules
 
 
@@ -49278,7 +46318,7 @@ exports.isBuffer = function (obj) {
               obj.constructor.isBuffer(obj));
 };
 
-},{}],284:[function(require,module,exports){
+},{}],278:[function(require,module,exports){
 (function (Buffer){
 var util = require('util')
 var Stream = require('stream')
@@ -49384,7 +46424,7 @@ function alignedWrite(buffer) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"stream":195,"string_decoder":196,"util":199}],285:[function(require,module,exports){
+},{"buffer":17,"stream":189,"string_decoder":190,"util":193}],279:[function(require,module,exports){
 /*!
  * Copyright (c) 2015, Salesforce.com, Inc.
  * All rights reserved.
@@ -50474,7 +47514,7 @@ module.exports = {
   canonicalDomain: canonicalDomain
 };
 
-},{"./memstore":286,"./pathMatch":287,"./permuteDomain":288,"./pubsuffix":289,"./store":290,"net":7,"punycode":180,"url":197}],286:[function(require,module,exports){
+},{"./memstore":280,"./pathMatch":281,"./permuteDomain":282,"./pubsuffix":283,"./store":284,"net":1,"punycode":174,"url":191}],280:[function(require,module,exports){
 /*!
  * Copyright (c) 2015, Salesforce.com, Inc.
  * All rights reserved.
@@ -50618,7 +47658,7 @@ MemoryCookieStore.prototype.removeCookies = function removeCookies(domain, path,
   return cb(null);
 };
 
-},{"./pathMatch":287,"./permuteDomain":288,"./store":290,"util":199}],287:[function(require,module,exports){
+},{"./pathMatch":281,"./permuteDomain":282,"./store":284,"util":193}],281:[function(require,module,exports){
 /*!
  * Copyright (c) 2015, Salesforce.com, Inc.
  * All rights reserved.
@@ -50681,7 +47721,7 @@ function pathMatch (reqPath, cookiePath) {
 
 exports.pathMatch = pathMatch;
 
-},{}],288:[function(require,module,exports){
+},{}],282:[function(require,module,exports){
 /*!
  * Copyright (c) 2015, Salesforce.com, Inc.
  * All rights reserved.
@@ -50739,7 +47779,7 @@ function permuteDomain (domain) {
 
 exports.permuteDomain = permuteDomain;
 
-},{"./pubsuffix":289}],289:[function(require,module,exports){
+},{"./pubsuffix":283}],283:[function(require,module,exports){
 /****************************************************
  * AUTOMATICALLY GENERATED by generate-pubsuffix.js *
  *                  DO NOT EDIT!                    *
@@ -50839,7 +47879,7 @@ var index = module.exports.index = Object.freeze(
 
 // END of automatically generated file
 
-},{"punycode":180}],290:[function(require,module,exports){
+},{"punycode":174}],284:[function(require,module,exports){
 /*!
  * Copyright (c) 2015, Salesforce.com, Inc.
  * All rights reserved.
@@ -50908,7 +47948,7 @@ Store.prototype.removeCookies = function removeCookies(domain, path, cb) {
   throw new Error('removeCookies is not implemented');
 };
 
-},{}],291:[function(require,module,exports){
+},{}],285:[function(require,module,exports){
 (function (process,Buffer){
 'use strict'
 
@@ -51148,7 +48188,7 @@ if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
 exports.debug = debug // for test
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"_process":179,"assert":8,"buffer":23,"events":170,"http":171,"https":175,"net":7,"tls":7,"util":199}],292:[function(require,module,exports){
+},{"_process":173,"assert":2,"buffer":17,"events":164,"http":165,"https":169,"net":1,"tls":1,"util":193}],286:[function(require,module,exports){
 (function (process,Buffer){
 'use strict'
 
@@ -52708,4 +49748,2964 @@ Request.prototype.toJSON = requestToJSON
 module.exports = Request
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"./lib/auth":203,"./lib/cookies":204,"./lib/copy":205,"./lib/getProxyFromURI":206,"./lib/har":207,"./lib/helpers":208,"./lib/multipart":209,"./lib/oauth":210,"./lib/querystring":211,"./lib/redirect":212,"_process":179,"aws-sign2":213,"bl":214,"buffer":23,"caseless":223,"forever-agent":226,"form-data":227,"hawk":256,"http":171,"http-signature":257,"https":175,"mime-types":274,"stream":195,"stringstream":284,"tunnel-agent":291,"url":197,"util":199,"zlib":22}]},{},[2]);
+},{"./lib/auth":197,"./lib/cookies":198,"./lib/copy":199,"./lib/getProxyFromURI":200,"./lib/har":201,"./lib/helpers":202,"./lib/multipart":203,"./lib/oauth":204,"./lib/querystring":205,"./lib/redirect":206,"_process":173,"aws-sign2":207,"bl":208,"buffer":17,"caseless":217,"forever-agent":220,"form-data":221,"hawk":250,"http":165,"http-signature":251,"https":169,"mime-types":268,"stream":189,"stringstream":278,"tunnel-agent":285,"url":191,"util":193,"zlib":16}],287:[function(require,module,exports){
+// wikipedia special terms lifted and augmented from parsoid parser april 2015
+// (not even close to being complete)
+var i18n={
+  "files": [
+    "файл",
+    "fitxer",
+    "soubor",
+    "datei",
+    "file",
+    "archivo",
+    "پرونده",
+    "tiedosto",
+    "mynd",
+    "su'wret",
+    "fichier",
+    "bestand",
+    "датотека",
+    "dosya"
+  ],
+  "templates": [
+    "шаблён",
+    "plantilla",
+    "šablona",
+    "vorlage",
+    "template",
+    "الگو",
+    "malline",
+    "snið",
+    "shablon",
+    "modèle",
+    "sjabloon",
+    "шаблон",
+    "şablon"
+  ],
+  "categories": [
+    "катэгорыя",
+    "categoria",
+    "kategorie",
+    "category",
+    "categoría",
+    "رده",
+    "luokka",
+    "flokkur",
+    "kategoriya",
+    "catégorie",
+    "categorie",
+    "категорија",
+    "kategori",
+    "kategoria",
+    "تصنيف"
+  ],
+  "redirects": [
+    "перанакіраваньне",
+    "redirect",
+    "přesměruj",
+    "weiterleitung",
+    "redirección",
+    "redireccion",
+    "تغییر_مسیر",
+    "تغییرمسیر",
+    "ohjaus",
+    "uudelleenohjaus",
+    "tilvísun",
+    "aýdaw",
+    "айдау",
+    "redirection",
+    "doorverwijzing",
+    "преусмери",
+    "преусмјери",
+    "yönlendi̇rme",
+    "yönlendi̇r",
+    "重定向",
+    "redirección",
+    "redireccion",
+    "重定向",
+    "yönlendirm?e?",
+    "تغییر_مسیر",
+    "تغییرمسیر",
+    "перанакіраваньне",
+    "yönlendirme"
+  ],
+  "specials": [
+    "спэцыяльныя",
+    "especial",
+    "speciální",
+    "spezial",
+    "special",
+    "ویژه",
+    "toiminnot",
+    "kerfissíða",
+    "arnawlı",
+    "spécial",
+    "speciaal",
+    "посебно",
+    "özel"
+  ],
+  "users": [
+    "удзельнік",
+    "usuari",
+    "uživatel",
+    "benutzer",
+    "user",
+    "usuario",
+    "کاربر",
+    "käyttäjä",
+    "notandi",
+    "paydalanıwshı",
+    "utilisateur",
+    "gebruiker",
+    "корисник",
+    "kullanıcı"
+  ],
+  "disambigs":[
+      "disambig",//en
+      "disambiguation",//en
+      "dab",//en
+      "disamb",//en
+      "begriffsklärung",//de
+      "ujednoznacznienie",//pl
+      "doorverwijspagina",//nl
+      "消歧义",//zh
+      "desambiguación",//es
+      "dubbelsinnig",//af
+      "disambigua",//it
+      "desambiguação",//pt
+      "homonymie",//fr
+      "неоднозначность",//ru
+      "anlam ayrımı",//tr
+  ],
+  "infoboxes":[
+      "infobox",
+      "ficha",
+      "канадский",
+      "inligtingskas",
+      "inligtingskas3",//af
+      "لغة",
+      "bilgi kutusu",//tr
+      "yerleşim bilgi kutusu"
+    ],
+  "sources":[//blacklist these headings, as they're not plain-text
+    "references",
+    "see also",
+    "external links",
+    "further reading",
+    "notes et références",
+    "voir aussi",
+    "liens externes"
+  ]
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports=i18n
+}
+
+},{}],288:[function(require,module,exports){
+//turns wikimedia script into json
+// https://github.com/spencermountain/wtf_wikipedia
+//@spencermountain
+var wtf_wikipedia = (function () {
+  var sentence_parser = require("./lib/sentence_parser")
+  var fetch = require("./lib/fetch_text")
+  var i18n = require("./i18n")
+  var languages = require("./languages")
+    //pulls target link out of redirect page
+  var REDIRECT_REGEX = new RegExp("^ ?#(" + i18n.redirects.join('|') + ") ?\\[\\[(.{2,60}?)\\]\\]", "i")
+
+  //find all the pairs of '[[...[[..]]...]]' in the text
+  //used to properly root out recursive template calls, [[.. [[...]] ]]
+  function recursive_matches(opener, closer, text) {
+    var out = []
+    var last = []
+    var chars = text.split('')
+    var open = 0
+    for(var i = 0; i < chars.length; i++) {
+      if(chars[i] === opener && chars[i + 1] && chars[i + 1] === opener) {
+        open += 1
+      }
+      if(open >= 0) {
+        last.push(chars[i])
+      }
+      if(open <= 0 && last.length > 0) {
+        //first, fix botched parse
+        var open_count = last.filter(function (s) {
+          return s === opener
+        });
+        var close_count = last.filter(function (s) {
+          return s === closer
+        });
+        if(open_count.length > close_count.length) {
+          last.push(closer)
+        }
+        out.push(last.join(''))
+        last = []
+      }
+      if(chars[i] === closer && chars[i + 1] && chars[i + 1] === closer) { //this introduces a bug for "...]]]]"
+        open -= 1
+        if(open < 0) {
+          open = 0
+        }
+      }
+    }
+    return out
+  }
+
+  var helpers = {
+    capitalise: function (str) {
+      if(str && typeof str === "string") {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+    },
+    onlyUnique: function (value, index, self) {
+      return self.indexOf(value) === index;
+    },
+    trim_whitespace: function (str) {
+      if(str && typeof str === "string") {
+        str = str.replace(/^\s\s*/, '')
+        str = str.replace(/\s\s*$/, '')
+        str = str.replace(/ {2}/, ' ')
+        str = str.replace(/\s, /, ', ')
+        return str
+      }
+    }
+  }
+
+  //grab an array of internal links in the text
+  function fetch_links(str) {
+    var links = []
+    var tmp = str.match(/\[\[(.{2,80}?)\]\](\w{0,10})/g) //regular links
+    if(tmp) {
+      tmp.forEach(function (s) {
+        var link, txt;
+        if(s.match(/\|/)) { //replacement link [[link|text]]
+          s = s.replace(/\[\[(.{2,80}?)\]\](\w{0,10})/g, "$1$2") //remove ['s and keep suffix
+          link = s.replace(/(.{2,60})\|.{0,200}/, "$1") //replaced links
+          txt = s.replace(/.{2,60}?\|/, '')
+            //handle funky case of [[toronto|]]
+          if(!txt && link.match(/\|$/)) {
+            link = link.replace(/\|$/, '')
+            txt = link
+          }
+        } else { // standard link [[link]]
+          link = s.replace(/\[\[(.{2,60}?)\]\](\w{0,10})/g, "$1") //remove ['s
+        }
+        //kill off non-wikipedia namespaces
+        if(link.match(/^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i)) {
+          return
+        }
+        //kill off just anchor links [[#history]]
+        if(link.match(/^#/i)) {
+          return
+        }
+        //remove anchors from end [[toronto#history]]
+        link = link.replace(/#[^ ]{1,100}/, '')
+        link = helpers.capitalise(link)
+        var obj = {
+          page: link,
+          src: txt
+        }
+        links.push(obj)
+      })
+    }
+    links = links.filter(helpers.onlyUnique)
+    if(links.length === 0) {
+      return undefined
+    }
+    return links
+  }
+  // console.log(fetch_links("it is [[Tony Hawk|Tony]]s moher in [[Toronto]]s"))
+
+  function fetch_categories(wiki) {
+    var cats = []
+    var reg = new RegExp("\\[\\[:?(" + i18n.categories.join("|") + "):(.{2,60}?)\]\](\w{0,10})", "ig")
+    var tmp = wiki.match(reg) //regular links
+    if(tmp) {
+      var reg2 = new RegExp("^\\[\\[:?(" + i18n.categories.join("|") + "):", "ig")
+      tmp.forEach(function (c) {
+        c = c.replace(reg2, '')
+        c = c.replace(/\|?[ \*]?\]\]$/i, '') //parse fancy onces..
+        c = c.replace(/\|.*/, '') //everything after the '|' is metadata
+        if(c && !c.match(/[\[\]]/)) {
+          cats.push(c)
+        }
+      })
+    }
+    return cats
+  }
+
+  //return only rendered text of wiki links
+  function resolve_links(line) {
+    // categories, images, files
+    var re = /\[\[:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف):[^\]\]]{2,80}\]\]/gi
+    line = line.replace(re, "")
+
+    // [[Common links]]
+    line = line.replace(/\[\[:?([^|]{2,80}?)\]\](\w{0,5})/g, "$1$2")
+      // [[Replaced|Links]]
+    line = line.replace(/\[\[:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, "$2$3")
+      // External links
+    line = line.replace(/\[(https?|news|ftp|mailto|gopher|irc):\/\/[^\]\| ]{4,1500}([\| ].*?)?\]/g, "$2")
+    return line
+  }
+  // console.log(resolve_links("[http://www.whistler.ca www.whistler.ca]"))
+
+  function parse_image(img) {
+    img = img.match(/(file|image):.*?[\|\]]/i) || ['']
+    img = img[0].replace(/\|$/, '')
+    return img
+  }
+
+  function parse_infobox(str) {
+    var obj = {}
+      // var str= str.match(/\{\{Infobox [\s\S]*?\}\}/i)
+    if(str) {
+      //this collapsible list stuff is just a headache
+      str = str.replace(/\{\{Collapsible list[^\}]{10,1000}\}\}/g, '')
+      str.replace(/\r/g, '').split(/\n/).forEach(function (l) {
+        if(l.match(/^\|/)) {
+          var key = l.match(/^\| ?(.{1,200}?)[ =]/) || []
+          key = helpers.trim_whitespace(key[1] || '')
+          var value = l.match(/=(.{1,500})$/) || []
+          value = helpers.trim_whitespace(value[1] || '')
+            //this is necessary for mongodb, im sorry
+          if(key && key.match(/[\.]/)) {
+            key = null
+          }
+          if(key && value && !value.match(/^[\|<]/) && !value.match(/=/)) {
+            obj[key] = parse_line(value)
+              //turn number strings into integers
+            if(obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
+              obj[key].text = obj[key].text.replace(/,/g)
+              obj[key].text = parseInt(obj[key].text)
+            }
+          }
+        }
+      })
+    }
+    return obj
+  }
+  var kill_xml = function (wiki) {
+      //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
+      //luckily, refs can't be recursive..
+      wiki = wiki.replace(/<ref>[\s\S]{0,500}?<\/ref>/gi, ' ') // <ref></ref>
+      wiki = wiki.replace(/<ref [^>]{0,200}?\/>/gi, ' ') // <ref name=""/>
+      wiki = wiki.replace(/<ref [^>]{0,200}?>[\s\S]{0,500}?<\/ref>/ig, ' ') // <ref name=""></ref>
+        //other types of xml that we want to trash completely
+
+      wiki = wiki.replace(/< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi, ' ') // <table name=""><tr>hi</tr></table>
+
+      //some xml-like fragments we can also kill
+      //
+      wiki = wiki.replace(/< ?(ref|span|div|table|data) [a-z0-9=" ]{2,20}\/ ?>/g, " ") //<ref name="asd"/>
+        //some formatting xml, we'll keep their insides though
+      wiki = wiki.replace(/<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?>/g, " ") //<sub>, </sub>
+      wiki = wiki.replace(/<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s)[ \/]?>/g, " ") //<abbr>, </abbr>
+      wiki = wiki.replace(/<[ \/]?h[0-9][ \/]?>/g, " ") //<h2>, </h2>
+        //a more generic + dangerous xml-tag removal
+      wiki = wiki.replace(/<[ \/]?[a-z0-9]{1,8}[ \/]?>/g, " ") //<samp>
+
+      return wiki
+    }
+    // console.log(kill_xml("hello <ref>nono!</ref> world1. hello <ref name='hullo'>nono!</ref> world2. hello <ref name='hullo'/>world3.  hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4. hello<ref name=''/> world5 <ref name=''>nono</ref>, man.}}"))
+    // console.log(kill_xml("hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4"))
+    // console.log(kill_xml('hello<ref name="theroyal"/> world <ref>nono</ref>, man}}'))
+    // console.log(kill_xml('hello<ref name="theroyal"/> world5 <ref name="">nono</ref>, man'))
+    // console.log(kill_xml("hello <asd f> world </h2>"))
+    // console.log(kill_xml("North America,<ref name=\"fhwa\"> and one of"))
+  function parse_infobox_template(str) {
+    var template = ''
+    if(str) {
+      var infobox_template_reg = new RegExp("\{\{(?:" + i18n.infoboxes.join("|") + ")\\s*(.*)", "i")
+      var matches = str.match(infobox_template_reg)
+      if(matches && matches.length > 1) {
+        template = matches[1]
+      }
+    }
+    return template
+  }
+
+  function preprocess(wiki) {
+    //the dump requires us to unescape xml
+    // unescape = [['>', '&gt;'],[ '<', '&lt;'],[ "'", '&apos;'],[ '"', '&quot;'],[ '&', '&amp;']]
+    // unescape.forEach(function(a){wiki=wiki.replace(new RegExp(a[1],'g'), a[0])})
+
+    //remove comments
+    wiki = wiki.replace(/<!--[^>]{0,2000}-->/g, '')
+    wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/ig, '')
+      //signitures
+    wiki = wiki.replace(/~~{1,3}/, '')
+      //horizontal rule
+    wiki = wiki.replace(/--{1,3}/, '')
+      //space
+    wiki = wiki.replace(/&nbsp;/g, ' ')
+      //kill off interwiki links
+    wiki = wiki.replace(/\[\[([a-z][a-z]|simple|war|ceb|min):.{2,60}\]\]/i, '')
+      //bold and italics combined
+    wiki = wiki.replace(/''{4}([^']{0,200})''{4}/g, '$1');
+    //bold
+    wiki = wiki.replace(/''{2}([^']{0,200})''{2}/g, '$1');
+    //italic
+    wiki = wiki.replace(/''([^']{0,200})''/g, '$1')
+      //give it the inglorious send-off it deserves..
+    wiki = kill_xml(wiki)
+
+    return wiki
+  }
+  // console.log(preprocess("hi [[as:Plancton]] there"))
+  // console.log(preprocess("hi [[as:Plancton]] there"))
+  // console.log(preprocess('hello <br/> world'))
+  // console.log(preprocess("hello <asd f> world </h2>"))
+
+  function parse_line(line) {
+    return {
+      text: postprocess(line),
+      links: fetch_links(line)
+    }
+  }
+
+  function postprocess(line) {
+
+    //fix links
+    line = resolve_links(line)
+      //oops, recursive image bug
+    if(line.match(/^(thumb|right|left)\|/i)) {
+      return null
+    }
+    //some IPA pronounciations leave blank junk parenteses
+    line = line.replace(/\([^a-z]{0,8}\)/, '')
+    line = helpers.trim_whitespace(line)
+
+    // put new lines back in
+    // line=line+"\n";
+
+    return line
+  }
+
+  //some xml elements are just junk, and demand full inglorious death by regular exp
+  //other xml elements, like <em>, are plucked out afterwards
+
+  // templates that need parsing and replacing for inline text
+  //https://en.wikipedia.org/wiki/Category:Magic_word_templates
+  var word_templates = function (wiki) {
+      //we can be sneaky with this template, as it's often found inside other templates
+      wiki = wiki.replace(/\{\{URL\|([^ ]{4,100}?)\}\}/gi, "$1")
+        //this one needs to be handled manually
+      wiki = wiki.replace(/\{\{convert\|([0-9]*?)\|([^\|]*).*?\}\}/gi, "$1 $2")
+        //date-time templates
+      var d = new Date()
+      wiki = wiki.replace(/\{\{(CURRENT|LOCAL)DAY(2)?\}\}/gi, d.getDate())
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      wiki = wiki.replace(/\{\{(CURRENT|LOCAL)MONTH(NAME|ABBREV)?\}\}/gi, months[d.getMonth()])
+      wiki = wiki.replace(/\{\{(CURRENT|LOCAL)YEAR\}\}/gi, d.getFullYear())
+      var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+      wiki = wiki.replace(/\{\{(CURRENT|LOCAL)DAYNAME\}\}/gi, days[d.getDay()])
+        //formatting templates
+      wiki = wiki.replace(/\{\{(lc|uc|formatnum):(.*?)\}\}/gi, "$2")
+      wiki = wiki.replace(/\{\{pull quote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, "$1")
+      wiki = wiki.replace(/\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, "$1")
+      if(wiki.match(/\{\{dts\|/)) {
+        var date = (wiki.match(/\{\{dts\|(.*?)[\}\|]/) || [])[1] || ''
+        date = new Date(date)
+        if(date && date.getTime()) {
+          wiki = wiki.replace(/\{\{dts\|.*?\}\}/gi, date.toDateString())
+        } else {
+          wiki = wiki.replace(/\{\{dts\|.*?\}\}/gi, ' ')
+        }
+      }
+      //common templates in wiktionary
+      wiki = wiki.replace(/\{\{term\|(.*?)\|.*?\}\}/gi, "'$1'")
+      wiki = wiki.replace(/\{\{IPA\|(.*?)\|.*?\}\}/gi, "$1")
+      wiki = wiki.replace(/\{\{sense\|(.*?)\|?.*?\}\}/gi, "($1)")
+      wiki = wiki.replace(/\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, "'$1'")
+        //replace languages in 'etyl' tags
+      if(wiki.match(/\{\{etyl\|/)) { //doesn't support multiple-ones per sentence..
+        var lang = wiki.match(/\{\{etyl\|(.*?)\|.*?\}\}/i)[1] || ''
+        lang = lang.toLowerCase()
+        if(lang && languages[lang]) {
+          wiki = wiki.replace(/\{\{etyl\|(.*?)\|.*?\}\}/gi, languages[lang].english_title)
+        } else {
+          wiki = wiki.replace(/\{\{etyl\|(.*?)\|.*?\}\}/gi, "($1)")
+        }
+      }
+      return wiki
+    }
+    // console.log(word_templates("hello {{CURRENTDAY}} world"))
+    // console.log(word_templates("hello {{CURRENTMONTH}} world"))
+    // console.log(word_templates("hello {{CURRENTYEAR}} world"))
+    // console.log(word_templates("hello {{LOCALDAYNAME}} world"))
+    // console.log(word_templates("hello {{lc:88}} world"))
+    // console.log(word_templates("hello {{pull quote|Life is like\n|author=[[asdf]]}} world"))
+    // console.log(word_templates("hi {{etyl|la|-}} there"))
+    // console.log(word_templates("{{etyl|la|-}} cognate with {{etyl|is|-}} {{term|hugga||to comfort|lang=is}},"))
+
+  //return a list of probable pages for this disambig page
+  var parse_disambig = function (wiki) {
+    var pages = []
+    var lines = wiki.replace(/\r/g, '').split(/\n/)
+    lines.forEach(function (str) {
+      //if there's an early link in the list
+      if(str.match(/^\*.{0,40}\[\[.*\]\]/)) {
+        var links = fetch_links(str)
+        if(links && links[0] && links[0].page) {
+          pages.push(links[0].page)
+        }
+      }
+    })
+    return {
+      type: "disambiguation",
+      pages: pages
+    }
+  }
+
+  //turn a {|...table string into an array of arrays
+  var parse_table = function (wiki) {
+    var table = []
+    var lines = wiki.replace(/\r/g, '').split(/\n/)
+    lines.forEach(function (str) {
+      //die
+      if(str.match(/^\|\}/)) {
+        return
+      }
+      //make new row
+      if(str.match(/^\|-/)) {
+        table.push([])
+        return
+      }
+      //this is some kind of comment
+      if(str.match(/^\|\+/)) {
+        return
+      }
+      //juicy line
+      if(str.match(/^[\!\|]/)) {
+        //make a new row
+        if(!table[table.length - 1]) {
+          table[table.length - 1] = []
+        }
+        var want = (str.match(/\|(.*)/) || [])[1] || ''
+        want = helpers.trim_whitespace(want) || ''
+          //handle the || shorthand..
+        if(want.match(/[!\|]{2}/)) {
+          want.split(/[!\|]{2}/g).forEach(function (s) {
+            s = helpers.trim_whitespace(s)
+            table[table.length - 1].push(s)
+          })
+        } else {
+          table[table.length - 1].push(want)
+        }
+      }
+    })
+    return table
+  }
+
+  var main = function (wiki) {
+    var infobox = {}
+    var infobox_template = ''
+    var images = []
+    var tables = []
+    var translations = {}
+    wiki = wiki || ''
+      //detect if page is just redirect, and return
+    if(wiki.match(REDIRECT_REGEX)) {
+      return {
+        type: "redirect",
+        redirect: (wiki.match(REDIRECT_REGEX) || [])[2]
+      }
+    }
+    //detect if page is disambiguator page
+    var template_reg = new RegExp("\\{\\{ ?(" + i18n.disambigs.join("|") + ")(\\|[a-z =]*?)? ?\\}\\}", "i")
+    if(wiki.match(template_reg)) { //|| wiki.match(/^.{3,25} may refer to/i)|| wiki.match(/^.{3,25} ist der Name mehrerer /i)
+      return parse_disambig(wiki)
+    }
+    //parse templates like {{currentday}}
+    wiki = word_templates(wiki)
+
+    //kill off th3 craziness
+    wiki = preprocess(wiki)
+
+    //find tables
+    tables = wiki.match(/\{\|[\s\S]{1,8000}?\|\}/g, '') || []
+    tables = tables.map(function (s) {
+        return parse_table(s)
+      })
+      //remove tables
+    wiki = wiki.replace(/\{\|[\s\S]{1,8000}?\|\}/g, '')
+
+    //reduce the scary recursive situations
+    //remove {{template {{}} }} recursions
+    var matches = recursive_matches('{', '}', wiki)
+    var infobox_reg = new RegExp("\{\{(" + i18n.infoboxes.join("|") + ")[: \n]", "ig")
+    matches.forEach(function (s) {
+        if(s.match(infobox_reg, "ig") && Object.keys(infobox).length === 0) {
+          infobox = parse_infobox(s)
+          infobox_template = parse_infobox_template(s)
+        }
+        if(s.match(/\{\{(Gallery|Taxobox|cite|infobox|Inligtingskas|sister|geographic|navboxes|listen|historical|citeweb|citenews|lien|clima|cita|Internetquelle|article|weather)[ \|:\n]/i)) {
+          wiki = wiki.replace(s, '')
+        }
+      })
+      //second, remove [[file:...[[]] ]] recursions
+    matches = recursive_matches('[', ']', wiki)
+    matches.forEach(function (s) {
+        if(s.match(/\[\[(file|image|fichier|datei|plik)/i)) {
+          images.push(parse_image(s))
+          wiki = wiki.replace(s, '')
+        }
+      })
+      //third, wiktionary-style interlanguage links
+    matches.forEach(function (s) {
+      if(s.match(/\[\[[a-z][a-z]\:.*/i)) {
+        var lang = s.match(/\[\[([a-z][a-z]):/i)[1]
+        if(lang && languages[lang]) {
+          translations[lang] = s.match(/^\[\[([a-z][a-z]):(.*?)\]\]/i)[2]
+        }
+        wiki = wiki.replace(s, '')
+      }
+    })
+
+    //now that the scary recursion issues are gone, we can trust simple regex methods
+
+    //kill the rest of templates
+    wiki = wiki.replace(/\{\{.*?\}\}/g, '')
+
+    //get list of links, categories
+    var cats = fetch_categories(wiki)
+
+    //next, map each line into a parsable sentence
+    var output = {}
+    var lines = wiki.replace(/\r/g, '').split(/\n/)
+    var section = "Intro"
+    var number = 1
+    lines.forEach(function (part) {
+      if(!section) {
+        return
+      }
+
+      //add # numberings formatting
+      if(part.match(/^ ?\#[^:,\|]{4}/i)) {
+        part = part.replace(/^ ?#*/, number + ") ")
+        part = part + "\n"
+        number += 1
+      } else {
+        number = 1
+      }
+      //add bullet-points formatting
+      if(part.match(/^\*+[^:,\|]{4}/)) {
+        part = part + "\n"
+      }
+
+      //remove some nonsense wp lines
+      //
+      //ignore list
+      if(part.match(/^[#\*:;\|]/)) {
+        return
+      }
+
+      //ignore only-punctuation
+      if(!part.match(/[a-z0-9]/i)) {
+        return
+      }
+      //headings
+      var ban_headings = new RegExp("^ ?(" + i18n.sources.join('|') + ") ?$", "i") //remove things like 'external links'
+      if(part.match(/^={1,5}[^=]{1,200}={1,5}$/)) {
+        section = part.match(/^={1,5}([^=]{2,200}?)={1,5}$/) || []
+        section = section[1] || ''
+        section = section.replace(/\./g, ' ') // this is necessary for mongo, i'm sorry
+        section = helpers.trim_whitespace(section)
+          //ban some sections
+        if(section && section.match(ban_headings)) {
+          section = undefined
+        }
+        return
+      }
+      //still alive, add it to the section
+      sentence_parser(part).forEach(function (line) {
+        line = parse_line(line)
+        if(line && line.text) {
+          if(!output[section]) {
+            output[section] = []
+          }
+          output[section].push(line)
+        }
+      })
+    })
+
+    //add additional image from infobox, if applicable
+    if(infobox['image'] && infobox['image'].text) {
+      var img = infobox['image'].text || ''
+      if(typeof img === "string" && !img.match(/^(image|file|fichier|Datei)/i)) {
+        img = "File:" + img
+      }
+      images.push(img)
+    }
+
+    return {
+      type: "page",
+      text: output,
+      categories: cats,
+      images: images,
+      infobox: infobox,
+      infobox_template: infobox_template,
+      tables: tables,
+      translations: translations,
+    }
+
+  }
+
+  var from_api = function (page_identifier, lang_or_wikiid, cb) {
+    if(typeof lang_or_wikiid === "function") {
+      cb = lang_or_wikiid
+      lang_or_wikiid = "en"
+    }
+    cb = cb || function () {}
+    lang_or_wikiid = lang_or_wikiid || "en"
+    if(!fetch) { //no http method, on the client side
+      return cb(null)
+    }
+    fetch(page_identifier, lang_or_wikiid, cb);
+  };
+
+  var plaintext = function (str) {
+    var data = main(str) || {}
+    data.text = data.text || {};
+    return Object.keys(data.text).map(function (k) {
+      return data.text[k].map(function (a) {
+        return a.text
+      }).join(" ")
+    }).join("\n")
+  }
+
+  var methods = {
+    from_api: from_api,
+    parse: main,
+    plaintext: plaintext,
+  }
+
+  if(typeof module !== 'undefined' && module.exports) {
+    module.exports = methods
+  }
+
+  return methods
+})()
+
+//export it for client-side
+if (typeof window!=="undefined") { //is this right?
+  window.wtf_wikipedia = wtf_wikipedia;
+}
+module.exports = wtf_wikipedia;
+
+// wtf_wikipedia.from_api("Whistler", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
+// wtf_wikipedia.from_api("Whistling", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
+// wtf_wikipedia.from_api("Toronto", function(s){console.log(wtf_wikipedia.parse(s).infobox.leader_name)})//disambig
+// wtf_wikipedia.from_api("Athens", 'de', function(s){ console.log(wtf_wikipedia.parse(s)) })//disambig
+// wtf_wikipedia.from_api("John Smith", 'en', function(s){ console.log(s);console.log(wtf_wikipedia.parse(s)) })//disambig
+// wtf_wikipedia.from_api("Jodie Emery", 'en', function(str){   console.log(wtf_wikipedia.plaintext(str)) })//
+// wtf_wikipedia.from_api("Toronto", 'tr', function(s){console.log(wtf_wikipedia.parse(s)) })//disambig
+
+// function from_file(page){
+//   fs=require("fs")
+//   var str = fs.readFileSync(__dirname+"/tests/cache/"+page+".txt", 'utf-8')
+//   console.log(wtf_wikipedia.plaintext(str))
+//   // var data=wtf_wikipedia.parse(str)
+//   // console.log(JSON.stringify(data, null, 2));
+// }
+
+// from_file("list")
+// from_file("Toronto")
+// from_file("Toronto_Star")
+// from_file("Royal_Cinema")
+// from_file("Jodie_Emery")
+// from_file("Redirect")
+// from_file("Africaans")
+// from_file("Anarchism")
+
+//  TODO:
+//  [[St. Kitts]] sentence bug
+//  parse [[image: ..]]  and make href
+//  console.log(kill_xml("North America,<ref name=\"fhwa\"> and one of"))
+// ... sentence
+// "latd=43"
+
+// wtf_wikipedia.from_api("List_of_British_films_of_2014", function (s) {
+//   console.log(JSON.stringify(wtf_wikipedia.parse(s), null, 2))
+//     // wtf_wikipedia.parse(s)
+// })
+
+},{"./i18n":287,"./languages":289,"./lib/fetch_text":290,"./lib/sentence_parser":291}],289:[function(require,module,exports){
+module.exports={
+  "aa": {
+    "english_title": "Afar",
+    "direction": "ltr",
+    "local_title": "Afar"
+  },
+  "ab": {
+    "english_title": "Abkhazian",
+    "direction": "ltr",
+    "local_title": "Аҧсуа"
+  },
+  "af": {
+    "english_title": "Afrikaans",
+    "direction": "ltr",
+    "local_title": "Afrikaans"
+  },
+  "ak": {
+    "english_title": "Akan",
+    "direction": "ltr",
+    "local_title": "Akana"
+  },
+  "als": {
+    "english_title": "Alemannic",
+    "direction": "ltr",
+    "local_title": "Alemannisch"
+  },
+  "am": {
+    "english_title": "Amharic",
+    "direction": "ltr",
+    "local_title": "አማርኛ"
+  },
+  "an": {
+    "english_title": "Aragonese",
+    "direction": "ltr",
+    "local_title": "Aragonés"
+  },
+  "ang": {
+    "english_title": "Anglo-Saxon",
+    "direction": "ltr",
+    "local_title": "Englisc"
+  },
+  "ar": {
+    "english_title": "Arabic",
+    "direction": "rtl",
+    "local_title": "العربية"
+  },
+  "arc": {
+    "english_title": "Aramaic",
+    "direction": "rtl",
+    "local_title": "ܣܘܪܬ"
+  },
+  "as": {
+    "english_title": "Assamese",
+    "direction": "ltr",
+    "local_title": "অসমীয়া"
+  },
+  "ast": {
+    "english_title": "Asturian",
+    "direction": "ltr",
+    "local_title": "Asturianu"
+  },
+  "av": {
+    "english_title": "Avar",
+    "direction": "ltr",
+    "local_title": "Авар"
+  },
+  "ay": {
+    "english_title": "Aymara",
+    "direction": "ltr",
+    "local_title": "Aymar"
+  },
+  "az": {
+    "english_title": "Azerbaijani",
+    "direction": "ltr",
+    "local_title": "Azərbaycanca"
+  },
+  "ba": {
+    "english_title": "Bashkir",
+    "direction": "ltr",
+    "local_title": "Башҡорт"
+  },
+  "bar": {
+    "english_title": "Bavarian",
+    "direction": "ltr",
+    "local_title": "Boarisch"
+  },
+  "bat-smg": {
+    "english_title": "Samogitian",
+    "direction": "ltr",
+    "local_title": "Žemaitėška"
+  },
+  "bcl": {
+    "english_title": "Bikol",
+    "direction": "ltr",
+    "local_title": "Bikol"
+  },
+  "be": {
+    "english_title": "Belarusian",
+    "direction": "ltr",
+    "local_title": "Беларуская"
+  },
+  "be-x-old": {
+    "english_title": "Belarusian",
+    "direction": "(Taraškievica)",
+    "local_title": "ltr"
+  },
+  "bg": {
+    "english_title": "Bulgarian",
+    "direction": "ltr",
+    "local_title": "Български"
+  },
+  "bh": {
+    "english_title": "Bihari",
+    "direction": "ltr",
+    "local_title": "भोजपुरी"
+  },
+  "bi": {
+    "english_title": "Bislama",
+    "direction": "ltr",
+    "local_title": "Bislama"
+  },
+  "bm": {
+    "english_title": "Bambara",
+    "direction": "ltr",
+    "local_title": "Bamanankan"
+  },
+  "bn": {
+    "english_title": "Bengali",
+    "direction": "ltr",
+    "local_title": "বাংলা"
+  },
+  "bo": {
+    "english_title": "Tibetan",
+    "direction": "ltr",
+    "local_title": "བོད་ཡིག"
+  },
+  "bpy": {
+    "english_title": "Bishnupriya",
+    "direction": "Manipuri",
+    "local_title": "ltr"
+  },
+  "br": {
+    "english_title": "Breton",
+    "direction": "ltr",
+    "local_title": "Brezhoneg"
+  },
+  "bs": {
+    "english_title": "Bosnian",
+    "direction": "ltr",
+    "local_title": "Bosanski"
+  },
+  "bug": {
+    "english_title": "Buginese",
+    "direction": "ltr",
+    "local_title": "ᨅᨔ"
+  },
+  "bxr": {
+    "english_title": "Buriat",
+    "direction": "(Russia)",
+    "local_title": "ltr"
+  },
+  "ca": {
+    "english_title": "Catalan",
+    "direction": "ltr",
+    "local_title": "Català"
+  },
+  "cdo": {
+    "english_title": "Min",
+    "direction": "Dong",
+    "local_title": "Chinese"
+  },
+  "ce": {
+    "english_title": "Chechen",
+    "direction": "ltr",
+    "local_title": "Нохчийн"
+  },
+  "ceb": {
+    "english_title": "Cebuano",
+    "direction": "ltr",
+    "local_title": "Sinugboanong"
+  },
+  "ch": {
+    "english_title": "Chamorro",
+    "direction": "ltr",
+    "local_title": "Chamoru"
+  },
+  "cho": {
+    "english_title": "Choctaw",
+    "direction": "ltr",
+    "local_title": "Choctaw"
+  },
+  "chr": {
+    "english_title": "Cherokee",
+    "direction": "ltr",
+    "local_title": "ᏣᎳᎩ"
+  },
+  "chy": {
+    "english_title": "Cheyenne",
+    "direction": "ltr",
+    "local_title": "Tsetsêhestâhese"
+  },
+  "co": {
+    "english_title": "Corsican",
+    "direction": "ltr",
+    "local_title": "Corsu"
+  },
+  "cr": {
+    "english_title": "Cree",
+    "direction": "ltr",
+    "local_title": "Nehiyaw"
+  },
+  "cs": {
+    "english_title": "Czech",
+    "direction": "ltr",
+    "local_title": "Česky"
+  },
+  "csb": {
+    "english_title": "Kashubian",
+    "direction": "ltr",
+    "local_title": "Kaszëbsczi"
+  },
+  "cu": {
+    "english_title": "Old",
+    "direction": "Church",
+    "local_title": "Slavonic"
+  },
+  "cv": {
+    "english_title": "Chuvash",
+    "direction": "ltr",
+    "local_title": "Чăваш"
+  },
+  "cy": {
+    "english_title": "Welsh",
+    "direction": "ltr",
+    "local_title": "Cymraeg"
+  },
+  "da": {
+    "english_title": "Danish",
+    "direction": "ltr",
+    "local_title": "Dansk"
+  },
+  "de": {
+    "english_title": "German",
+    "direction": "ltr",
+    "local_title": "Deutsch"
+  },
+  "diq": {
+    "english_title": "Dimli",
+    "direction": "ltr",
+    "local_title": "Zazaki"
+  },
+  "dsb": {
+    "english_title": "Lower",
+    "direction": "Sorbian",
+    "local_title": "ltr"
+  },
+  "dv": {
+    "english_title": "Divehi",
+    "direction": "rtl",
+    "local_title": "ދިވެހިބަސް"
+  },
+  "dz": {
+    "english_title": "Dzongkha",
+    "direction": "ltr",
+    "local_title": "ཇོང་ཁ"
+  },
+  "ee": {
+    "english_title": "Ewe",
+    "direction": "ltr",
+    "local_title": "Ɛʋɛ"
+  },
+  "far": {
+    "english_title": "Farsi",
+    "direction": "ltr",
+    "local_title": "فارسی"
+  },
+  "el": {
+    "english_title": "Greek",
+    "direction": "ltr",
+    "local_title": "Ελληνικά"
+  },
+  "en": {
+    "english_title": "English",
+    "direction": "ltr",
+    "local_title": "English"
+  },
+  "eo": {
+    "english_title": "Esperanto",
+    "direction": "ltr",
+    "local_title": "Esperanto"
+  },
+  "es": {
+    "english_title": "Spanish",
+    "direction": "ltr",
+    "local_title": "Español"
+  },
+  "et": {
+    "english_title": "Estonian",
+    "direction": "ltr",
+    "local_title": "Eesti"
+  },
+  "eu": {
+    "english_title": "Basque",
+    "direction": "ltr",
+    "local_title": "Euskara"
+  },
+  "ext": {
+    "english_title": "Extremaduran",
+    "direction": "ltr",
+    "local_title": "Estremeñu"
+  },
+  "ff": {
+    "english_title": "Peul",
+    "direction": "ltr",
+    "local_title": "Fulfulde"
+  },
+  "fi": {
+    "english_title": "Finnish",
+    "direction": "ltr",
+    "local_title": "Suomi"
+  },
+  "fiu-vro": {
+    "english_title": "Võro",
+    "direction": "ltr",
+    "local_title": "Võro"
+  },
+  "fj": {
+    "english_title": "Fijian",
+    "direction": "ltr",
+    "local_title": "Na"
+  },
+  "fo": {
+    "english_title": "Faroese",
+    "direction": "ltr",
+    "local_title": "Føroyskt"
+  },
+  "fr": {
+    "english_title": "French",
+    "direction": "ltr",
+    "local_title": "Français"
+  },
+  "frp": {
+    "english_title": "Arpitan",
+    "direction": "ltr",
+    "local_title": "Arpitan"
+  },
+  "fur": {
+    "english_title": "Friulian",
+    "direction": "ltr",
+    "local_title": "Furlan"
+  },
+  "fy": {
+    "english_title": "West",
+    "direction": "Frisian",
+    "local_title": "ltr"
+  },
+  "ga": {
+    "english_title": "Irish",
+    "direction": "ltr",
+    "local_title": "Gaeilge"
+  },
+  "gan": {
+    "english_title": "Gan",
+    "direction": "Chinese",
+    "local_title": "ltr"
+  },
+  "gd": {
+    "english_title": "Scottish",
+    "direction": "Gaelic",
+    "local_title": "ltr"
+  },
+  "gil": {
+    "english_title": "Gilbertese",
+    "direction": "ltr",
+    "local_title": "Taetae"
+  },
+  "gl": {
+    "english_title": "Galician",
+    "direction": "ltr",
+    "local_title": "Galego"
+  },
+  "gn": {
+    "english_title": "Guarani",
+    "direction": "ltr",
+    "local_title": "Avañe'ẽ"
+  },
+  "got": {
+    "english_title": "Gothic",
+    "direction": "ltr",
+    "local_title": "gutisk"
+  },
+  "gu": {
+    "english_title": "Gujarati",
+    "direction": "ltr",
+    "local_title": "ગુજરાતી"
+  },
+  "gv": {
+    "english_title": "Manx",
+    "direction": "ltr",
+    "local_title": "Gaelg"
+  },
+  "ha": {
+    "english_title": "Hausa",
+    "direction": "rtl",
+    "local_title": "هَوُسَ"
+  },
+  "hak": {
+    "english_title": "Hakka",
+    "direction": "Chinese",
+    "local_title": "ltr"
+  },
+  "haw": {
+    "english_title": "Hawaiian",
+    "direction": "ltr",
+    "local_title": "Hawai`i"
+  },
+  "he": {
+    "english_title": "Hebrew",
+    "direction": "rtl",
+    "local_title": "עברית"
+  },
+  "hi": {
+    "english_title": "Hindi",
+    "direction": "ltr",
+    "local_title": "हिन्दी"
+  },
+  "ho": {
+    "english_title": "Hiri",
+    "direction": "Motu",
+    "local_title": "ltr"
+  },
+  "hr": {
+    "english_title": "Croatian",
+    "direction": "ltr",
+    "local_title": "Hrvatski"
+  },
+  "ht": {
+    "english_title": "Haitian",
+    "direction": "ltr",
+    "local_title": "Krèyol"
+  },
+  "hu": {
+    "english_title": "Hungarian",
+    "direction": "ltr",
+    "local_title": "Magyar"
+  },
+  "hy": {
+    "english_title": "Armenian",
+    "direction": "ltr",
+    "local_title": "Հայերեն"
+  },
+  "hz": {
+    "english_title": "Herero",
+    "direction": "ltr",
+    "local_title": "Otsiherero"
+  },
+  "ia": {
+    "english_title": "Interlingua",
+    "direction": "ltr",
+    "local_title": "Interlingua"
+  },
+  "id": {
+    "english_title": "Indonesian",
+    "direction": "ltr",
+    "local_title": "Bahasa"
+  },
+  "ie": {
+    "english_title": "Interlingue",
+    "direction": "ltr",
+    "local_title": "Interlingue"
+  },
+  "ig": {
+    "english_title": "Igbo",
+    "direction": "ltr",
+    "local_title": "Igbo"
+  },
+  "ii": {
+    "english_title": "Sichuan",
+    "direction": "Yi",
+    "local_title": "ltr"
+  },
+  "ik": {
+    "english_title": "Inupiak",
+    "direction": "ltr",
+    "local_title": "Iñupiak"
+  },
+  "ilo": {
+    "english_title": "Ilokano",
+    "direction": "ltr",
+    "local_title": "Ilokano"
+  },
+  "io": {
+    "english_title": "Ido",
+    "direction": "ltr",
+    "local_title": "Ido"
+  },
+  "is": {
+    "english_title": "Icelandic",
+    "direction": "ltr",
+    "local_title": "Íslenska"
+  },
+  "it": {
+    "english_title": "Italian",
+    "direction": "ltr",
+    "local_title": "Italiano"
+  },
+  "iu": {
+    "english_title": "Inuktitut",
+    "direction": "ltr",
+    "local_title": "ᐃᓄᒃᑎᑐᑦ"
+  },
+  "ja": {
+    "english_title": "Japanese",
+    "direction": "ltr",
+    "local_title": "日本語"
+  },
+  "jbo": {
+    "english_title": "Lojban",
+    "direction": "ltr",
+    "local_title": "Lojban"
+  },
+  "jv": {
+    "english_title": "Javanese",
+    "direction": "ltr",
+    "local_title": "Basa"
+  },
+  "ka": {
+    "english_title": "Georgian",
+    "direction": "ltr",
+    "local_title": "ქართული"
+  },
+  "kg": {
+    "english_title": "Kongo",
+    "direction": "ltr",
+    "local_title": "KiKongo"
+  },
+  "ki": {
+    "english_title": "Kikuyu",
+    "direction": "ltr",
+    "local_title": "Gĩkũyũ"
+  },
+  "kj": {
+    "english_title": "Kuanyama",
+    "direction": "ltr",
+    "local_title": "Kuanyama"
+  },
+  "kk": {
+    "english_title": "Kazakh",
+    "direction": "ltr",
+    "local_title": "Қазақша"
+  },
+  "kl": {
+    "english_title": "Greenlandic",
+    "direction": "ltr",
+    "local_title": "Kalaallisut"
+  },
+  "km": {
+    "english_title": "Cambodian",
+    "direction": "ltr",
+    "local_title": "ភាសាខ្មែរ"
+  },
+  "kn": {
+    "english_title": "Kannada",
+    "direction": "ltr",
+    "local_title": "ಕನ್ನಡ"
+  },
+  "khw": {
+    "english_title": "Khowar",
+    "direction": "rtl",
+    "local_title": "کھوار"
+  },
+  "ko": {
+    "english_title": "Korean",
+    "direction": "ltr",
+    "local_title": "한국어"
+  },
+  "kr": {
+    "english_title": "Kanuri",
+    "direction": "ltr",
+    "local_title": "Kanuri"
+  },
+  "ks": {
+    "english_title": "Kashmiri",
+    "direction": "rtl",
+    "local_title": "कश्मीरी"
+  },
+  "ksh": {
+    "english_title": "Ripuarian",
+    "direction": "ltr",
+    "local_title": "Ripoarisch"
+  },
+  "ku": {
+    "english_title": "Kurdish",
+    "direction": "rtl",
+    "local_title": "Kurdî"
+  },
+  "kv": {
+    "english_title": "Komi",
+    "direction": "ltr",
+    "local_title": "Коми"
+  },
+  "kw": {
+    "english_title": "Cornish",
+    "direction": "ltr",
+    "local_title": "Kernewek"
+  },
+  "ky": {
+    "english_title": "Kirghiz",
+    "direction": "ltr",
+    "local_title": "Kırgızca"
+  },
+  "la": {
+    "english_title": "Latin",
+    "direction": "ltr",
+    "local_title": "Latina"
+  },
+  "lad": {
+    "english_title": "Ladino",
+    "direction": "ltr",
+    "local_title": "Dzhudezmo"
+  },
+  "lan": {
+    "english_title": "Lango",
+    "direction": "ltr",
+    "local_title": "Leb"
+  },
+  "lb": {
+    "english_title": "Luxembourgish",
+    "direction": "ltr",
+    "local_title": "Lëtzebuergesch"
+  },
+  "lg": {
+    "english_title": "Ganda",
+    "direction": "ltr",
+    "local_title": "Luganda"
+  },
+  "li": {
+    "english_title": "Limburgian",
+    "direction": "ltr",
+    "local_title": "Limburgs"
+  },
+  "lij": {
+    "english_title": "Ligurian",
+    "direction": "ltr",
+    "local_title": "Líguru"
+  },
+  "lmo": {
+    "english_title": "Lombard",
+    "direction": "ltr",
+    "local_title": "Lumbaart"
+  },
+  "ln": {
+    "english_title": "Lingala",
+    "direction": "ltr",
+    "local_title": "Lingála"
+  },
+  "lo": {
+    "english_title": "Laotian",
+    "direction": "ltr",
+    "local_title": "ລາວ"
+  },
+  "lt": {
+    "english_title": "Lithuanian",
+    "direction": "ltr",
+    "local_title": "Lietuvių"
+  },
+  "lv": {
+    "english_title": "Latvian",
+    "direction": "ltr",
+    "local_title": "Latviešu"
+  },
+  "map-bms": {
+    "english_title": "Banyumasan",
+    "direction": "ltr",
+    "local_title": "Basa"
+  },
+  "mg": {
+    "english_title": "Malagasy",
+    "direction": "ltr",
+    "local_title": "Malagasy"
+  },
+  "man": {
+    "english_title": "Mandarin",
+    "direction": "ltr",
+    "local_title": "官話"
+  },
+  "mh": {
+    "english_title": "Marshallese",
+    "direction": "ltr",
+    "local_title": "Kajin"
+  },
+  "mi": {
+    "english_title": "Maori",
+    "direction": "ltr",
+    "local_title": "Māori"
+  },
+  "min": {
+    "english_title": "Minangkabau",
+    "direction": "ltr",
+    "local_title": "Minangkabau"
+  },
+  "mk": {
+    "english_title": "Macedonian",
+    "direction": "ltr",
+    "local_title": "Македонски"
+  },
+  "ml": {
+    "english_title": "Malayalam",
+    "direction": "ltr",
+    "local_title": "മലയാളം"
+  },
+  "mn": {
+    "english_title": "Mongolian",
+    "direction": "ltr",
+    "local_title": "Монгол"
+  },
+  "mo": {
+    "english_title": "Moldovan",
+    "direction": "ltr",
+    "local_title": "Moldovenească"
+  },
+  "mr": {
+    "english_title": "Marathi",
+    "direction": "ltr",
+    "local_title": "मराठी"
+  },
+  "ms": {
+    "english_title": "Malay",
+    "direction": "ltr",
+    "local_title": "Bahasa"
+  },
+  "mt": {
+    "english_title": "Maltese",
+    "direction": "ltr",
+    "local_title": "bil-Malti"
+  },
+  "mus": {
+    "english_title": "Creek",
+    "direction": "ltr",
+    "local_title": "Muskogee"
+  },
+  "my": {
+    "english_title": "Burmese",
+    "direction": "ltr",
+    "local_title": "Myanmasa"
+  },
+  "na": {
+    "english_title": "Nauruan",
+    "direction": "ltr",
+    "local_title": "Dorerin"
+  },
+  "nah": {
+    "english_title": "Nahuatl",
+    "direction": "ltr",
+    "local_title": "Nahuatl"
+  },
+  "nap": {
+    "english_title": "Neapolitan",
+    "direction": "ltr",
+    "local_title": "Nnapulitano"
+  },
+  "nd": {
+    "english_title": "North",
+    "direction": "Ndebele",
+    "local_title": "ltr"
+  },
+  "nds": {
+    "english_title": "Low German",
+    "direction": "ltr",
+    "local_title": "Plattdüütsch"
+  },
+  "nds-nl": {
+    "english_title": "Dutch",
+    "direction": "Low",
+    "local_title": "Saxon"
+  },
+  "ne": {
+    "english_title": "Nepali",
+    "direction": "ltr",
+    "local_title": "नेपाली"
+  },
+  "new": {
+    "english_title": "Newar",
+    "direction": "ltr",
+    "local_title": "नेपालभाषा"
+  },
+  "ng": {
+    "english_title": "Ndonga",
+    "direction": "ltr",
+    "local_title": "Oshiwambo"
+  },
+  "nl": {
+    "english_title": "Dutch",
+    "direction": "ltr",
+    "local_title": "Nederlands"
+  },
+  "nn": {
+    "english_title": "Norwegian",
+    "direction": "Nynorsk",
+    "local_title": "ltr"
+  },
+  "no": {
+    "english_title": "Norwegian",
+    "direction": "ltr",
+    "local_title": "Norsk"
+  },
+  "nr": {
+    "english_title": "South",
+    "direction": "Ndebele",
+    "local_title": "ltr"
+  },
+  "nso": {
+    "english_title": "Northern",
+    "direction": "Sotho",
+    "local_title": "ltr"
+  },
+  "nrm": {
+    "english_title": "Norman",
+    "direction": "ltr",
+    "local_title": "Nouormand"
+  },
+  "nv": {
+    "english_title": "Navajo",
+    "direction": "ltr",
+    "local_title": "Diné"
+  },
+  "ny": {
+    "english_title": "Chichewa",
+    "direction": "ltr",
+    "local_title": "Chi-Chewa"
+  },
+  "oc": {
+    "english_title": "Occitan",
+    "direction": "ltr",
+    "local_title": "Occitan"
+  },
+  "oj": {
+    "english_title": "Ojibwa",
+    "direction": "ltr",
+    "local_title": "ᐊᓂᔑᓈᐯᒧᐎᓐ"
+  },
+  "om": {
+    "english_title": "Oromo",
+    "direction": "ltr",
+    "local_title": "Oromoo"
+  },
+  "or": {
+    "english_title": "Oriya",
+    "direction": "ltr",
+    "local_title": "ଓଡ଼ିଆ"
+  },
+  "os": {
+    "english_title": "Ossetian",
+    "direction": "ltr",
+    "local_title": "Иронау"
+  },
+  "pa": {
+    "english_title": "Panjabi",
+    "direction": "ltr",
+    "local_title": "ਪੰਜਾਬੀ"
+  },
+  "pag": {
+    "english_title": "Pangasinan",
+    "direction": "ltr",
+    "local_title": "Pangasinan"
+  },
+  "pam": {
+    "english_title": "Kapampangan",
+    "direction": "ltr",
+    "local_title": "Kapampangan"
+  },
+  "pap": {
+    "english_title": "Papiamentu",
+    "direction": "ltr",
+    "local_title": "Papiamentu"
+  },
+  "pdc": {
+    "english_title": "Pennsylvania",
+    "direction": "German",
+    "local_title": "ltr"
+  },
+  "pi": {
+    "english_title": "Pali",
+    "direction": "ltr",
+    "local_title": "Pāli"
+  },
+  "pih": {
+    "english_title": "Norfolk",
+    "direction": "ltr",
+    "local_title": "Norfuk"
+  },
+  "pl": {
+    "english_title": "Polish",
+    "direction": "ltr",
+    "local_title": "Polski"
+  },
+  "pms": {
+    "english_title": "Piedmontese",
+    "direction": "ltr",
+    "local_title": "Piemontèis"
+  },
+  "ps": {
+    "english_title": "Pashto",
+    "direction": "rtl",
+    "local_title": "پښتو"
+  },
+  "pt": {
+    "english_title": "Portuguese",
+    "direction": "ltr",
+    "local_title": "Português"
+  },
+  "qu": {
+    "english_title": "Quechua",
+    "direction": "ltr",
+    "local_title": "Runa"
+  },
+  "rm": {
+    "english_title": "Raeto",
+    "direction": "Romance",
+    "local_title": "ltr"
+  },
+  "rmy": {
+    "english_title": "Romani",
+    "direction": "ltr",
+    "local_title": "Romani"
+  },
+  "rn": {
+    "english_title": "Kirundi",
+    "direction": "ltr",
+    "local_title": "Kirundi"
+  },
+  "ro": {
+    "english_title": "Romanian",
+    "direction": "ltr",
+    "local_title": "Română"
+  },
+  "roa-rup": {
+    "english_title": "Aromanian",
+    "direction": "ltr",
+    "local_title": "Armâneashti"
+  },
+  "ru": {
+    "english_title": "Russian",
+    "direction": "ltr",
+    "local_title": "Русский"
+  },
+  "rw": {
+    "english_title": "Rwandi",
+    "direction": "ltr",
+    "local_title": "Kinyarwandi"
+  },
+  "sa": {
+    "english_title": "Sanskrit",
+    "direction": "ltr",
+    "local_title": "संस्कृतम्"
+  },
+  "sc": {
+    "english_title": "Sardinian",
+    "direction": "ltr",
+    "local_title": "Sardu"
+  },
+  "scn": {
+    "english_title": "Sicilian",
+    "direction": "ltr",
+    "local_title": "Sicilianu"
+  },
+  "sco": {
+    "english_title": "Scots",
+    "direction": "ltr",
+    "local_title": "Scots"
+  },
+  "sd": {
+    "english_title": "Sindhi",
+    "direction": "ltr",
+    "local_title": "सिनधि"
+  },
+  "se": {
+    "english_title": "Northern",
+    "direction": "Sami",
+    "local_title": "ltr"
+  },
+  "sg": {
+    "english_title": "Sango",
+    "direction": "ltr",
+    "local_title": "Sängö"
+  },
+  "sh": {
+    "english_title": "Serbo-Croatian",
+    "direction": "ltr",
+    "local_title": "Srpskohrvatski"
+  },
+  "si": {
+    "english_title": "Sinhalese",
+    "direction": "ltr",
+    "local_title": "සිංහල"
+  },
+  "simple": {
+    "english_title": "Simple",
+    "direction": "English",
+    "local_title": "ltr"
+  },
+  "sk": {
+    "english_title": "Slovak",
+    "direction": "ltr",
+    "local_title": "Slovenčina"
+  },
+  "sl": {
+    "english_title": "Slovenian",
+    "direction": "ltr",
+    "local_title": "Slovenščina"
+  },
+  "sm": {
+    "english_title": "Samoan",
+    "direction": "ltr",
+    "local_title": "Gagana"
+  },
+  "sn": {
+    "english_title": "Shona",
+    "direction": "ltr",
+    "local_title": "chiShona"
+  },
+  "so": {
+    "english_title": "Somalia",
+    "direction": "ltr",
+    "local_title": "Soomaaliga"
+  },
+  "sq": {
+    "english_title": "Albanian",
+    "direction": "ltr",
+    "local_title": "Shqip"
+  },
+  "sr": {
+    "english_title": "Serbian",
+    "direction": "ltr",
+    "local_title": "Српски"
+  },
+  "ss": {
+    "english_title": "Swati",
+    "direction": "ltr",
+    "local_title": "SiSwati"
+  },
+  "st": {
+    "english_title": "Southern",
+    "direction": "Sotho",
+    "local_title": "ltr"
+  },
+  "su": {
+    "english_title": "Sundanese",
+    "direction": "ltr",
+    "local_title": "Basa"
+  },
+  "sv": {
+    "english_title": "Swedish",
+    "direction": "ltr",
+    "local_title": "Svenska"
+  },
+  "sw": {
+    "english_title": "Swahili",
+    "direction": "ltr",
+    "local_title": "Kiswahili"
+  },
+  "ta": {
+    "english_title": "Tamil",
+    "direction": "ltr",
+    "local_title": "தமிழ்"
+  },
+  "te": {
+    "english_title": "Telugu",
+    "direction": "ltr",
+    "local_title": "తెలుగు"
+  },
+  "tet": {
+    "english_title": "Tetum",
+    "direction": "ltr",
+    "local_title": "Tetun"
+  },
+  "tg": {
+    "english_title": "Tajik",
+    "direction": "ltr",
+    "local_title": "Тоҷикӣ"
+  },
+  "th": {
+    "english_title": "Thai",
+    "direction": "ltr",
+    "local_title": "ไทย"
+  },
+  "ti": {
+    "english_title": "Tigrinya",
+    "direction": "ltr",
+    "local_title": "ትግርኛ"
+  },
+  "tk": {
+    "english_title": "Turkmen",
+    "direction": "ltr",
+    "local_title": "Туркмен"
+  },
+  "tl": {
+    "english_title": "Tagalog",
+    "direction": "ltr",
+    "local_title": "Tagalog"
+  },
+  "tlh": {
+    "english_title": "Klingon",
+    "direction": "ltr",
+    "local_title": "tlhIngan-Hol"
+  },
+  "tn": {
+    "english_title": "Tswana",
+    "direction": "ltr",
+    "local_title": "Setswana"
+  },
+  "to": {
+    "english_title": "Tonga",
+    "direction": "ltr",
+    "local_title": "Lea"
+  },
+  "tpi": {
+    "english_title": "Tok",
+    "direction": "Pisin",
+    "local_title": "ltr"
+  },
+  "tr": {
+    "english_title": "Turkish",
+    "direction": "ltr",
+    "local_title": "Türkçe"
+  },
+  "ts": {
+    "english_title": "Tsonga",
+    "direction": "ltr",
+    "local_title": "Xitsonga"
+  },
+  "tt": {
+    "english_title": "Tatar",
+    "direction": "ltr",
+    "local_title": "Tatarça"
+  },
+  "tum": {
+    "english_title": "Tumbuka",
+    "direction": "ltr",
+    "local_title": "chiTumbuka"
+  },
+  "tw": {
+    "english_title": "Twi",
+    "direction": "ltr",
+    "local_title": "Twi"
+  },
+  "ty": {
+    "english_title": "Tahitian",
+    "direction": "ltr",
+    "local_title": "Reo"
+  },
+  "udm": {
+    "english_title": "Udmurt",
+    "direction": "ltr",
+    "local_title": "Удмурт"
+  },
+  "ug": {
+    "english_title": "Uyghur",
+    "direction": "ltr",
+    "local_title": "Uyƣurqə"
+  },
+  "uk": {
+    "english_title": "Ukrainian",
+    "direction": "ltr",
+    "local_title": "Українська"
+  },
+  "ur": {
+    "english_title": "Urdu",
+    "direction": "rtl",
+    "local_title": "اردو"
+  },
+  "uz": {
+    "english_title": "Uzbek",
+    "direction": "ltr",
+    "local_title": "Ўзбек"
+  },
+  "ve": {
+    "english_title": "Venda",
+    "direction": "ltr",
+    "local_title": "Tshivenḓa"
+  },
+  "vi": {
+    "english_title": "Vietnamese",
+    "direction": "ltr",
+    "local_title": "Việtnam"
+  },
+  "vec": {
+    "english_title": "Venetian",
+    "direction": "ltr",
+    "local_title": "Vèneto"
+  },
+  "vls": {
+    "english_title": "West",
+    "direction": "Flemish",
+    "local_title": "ltr"
+  },
+  "vo": {
+    "english_title": "Volapük",
+    "direction": "ltr",
+    "local_title": "Volapük"
+  },
+  "wa": {
+    "english_title": "Walloon",
+    "direction": "ltr",
+    "local_title": "Walon"
+  },
+  "war": {
+    "english_title": "Waray-Waray",
+    "direction": "ltr",
+    "local_title": "Winaray"
+  },
+  "wo": {
+    "english_title": "Wolof",
+    "direction": "ltr",
+    "local_title": "Wollof"
+  },
+  "xal": {
+    "english_title": "Kalmyk",
+    "direction": "ltr",
+    "local_title": "Хальмг"
+  },
+  "xh": {
+    "english_title": "Xhosa",
+    "direction": "ltr",
+    "local_title": "isiXhosa"
+  },
+  "yi": {
+    "english_title": "Yiddish",
+    "direction": "rtl",
+    "local_title": "ייִדיש"
+  },
+  "yo": {
+    "english_title": "Yoruba",
+    "direction": "ltr",
+    "local_title": "Yorùbá"
+  },
+  "za": {
+    "english_title": "Zhuang",
+    "direction": "ltr",
+    "local_title": "Cuengh"
+  },
+  "zh": {
+    "english_title": "Chinese",
+    "direction": "ltr",
+    "local_title": "中文"
+  },
+  "zh-classical": {
+    "english_title": "Classical",
+    "direction": "Chinese",
+    "local_title": "ltr"
+  },
+  "zh-min-nan": {
+    "english_title": "Minnan",
+    "direction": "ltr",
+    "local_title": "Bân-lâm-gú"
+  },
+  "zh-yue": {
+    "english_title": "Cantonese",
+    "direction": "ltr",
+    "local_title": "粵語"
+  },
+  "zu": {
+    "english_title": "Zulu",
+    "direction": "ltr",
+    "local_title": "isiZulu"
+  }
+}
+
+},{}],290:[function(require,module,exports){
+//grab the content of any article, off the api
+var request = require('request');
+var site_map = require("./site_map");
+
+var fetch = function (page_identifier, lang_or_wikiid, cb) {
+  lang_or_wikiid = lang_or_wikiid || 'en';
+  var identifier_type = 'title';
+  if(page_identifier.match(/^[0-9]*$/) && page_identifier.length > 3) {
+    identifier_type = 'curid'
+  }
+  var url;
+  if(site_map[lang_or_wikiid]) {
+    url = site_map[lang_or_wikiid] + '/w/index.php?action=raw&' + identifier_type + '=' + page_identifier;
+  } else {
+    url = 'http://' + lang_or_wikiid + '.wikipedia.org/w/index.php?action=raw&' + identifier_type + '=' + page_identifier;
+  }
+  request({
+    uri: url,
+  }, function (error, response, body) {
+    cb(body);
+  });
+};
+
+module.exports = fetch;
+
+// fetch("Radiohead", 'en', function(r){ // 'afwiki'
+//   console.log(JSON.stringify(r, null, 2));
+// })
+
+},{"./site_map":292,"request":196}],291:[function(require,module,exports){
+//split text into sentences, using regex
+//@spencermountain MIT
+
+var sentence_parser = function (text) {
+  var i;
+
+  // if this looks like a period within a wikipedia link, return false
+  var unbalanced = function (str) {
+    var open = str.match(/\[\[/) || []
+    var closed = str.match(/\]\]/) || []
+    if(open.length > closed.length) {
+      return true
+    }
+    //make sure quotes are closed too
+    var quotes = str.match(/"/g)
+    if(quotes && (quotes.length % 2) !== 0 && str.length < 900) {
+      return true
+    }
+    return false
+  }
+
+  // first, do a greedy split
+  var tmp = text.split(/(\S.+?[.\?])(?=\s+|$|")/g);
+  var sentences = [];
+  var abbrevs = ["jr", "mr", "mrs", "ms", "dr", "prof", "sr", "sen", "corp", "calif", "rep", "gov", "atty", "supt", "det", "rev", "col", "gen", "lt", "cmdr", "adm", "capt", "sgt", "cpl", "maj", "dept", "univ", "assn", "bros", "inc", "ltd", "co", "corp", "arc", "al", "ave", "blvd", "cl", "ct", "cres", "exp", "rd", "st", "dist", "mt", "ft", "fy", "hwy", "la", "pd", "pl", "plz", "tce", "Ala", "Ariz", "Ark", "Cal", "Calif", "Col", "Colo", "Conn", "Del", "Fed", "Fla", "Ga", "Ida", "Id", "Ill", "Ind", "Ia", "Kan", "Kans", "Ken", "Ky", "La", "Me", "Md", "Mass", "Mich", "Minn", "Miss", "Mo", "Mont", "Neb", "Nebr", "Nev", "Mex", "Okla", "Ok", "Ore", "Penna", "Penn", "Pa", "Dak", "Tenn", "Tex", "Ut", "Vt", "Va", "Wash", "Wis", "Wisc", "Wy", "Wyo", "USAFA", "Alta", "Ont", "QuÔøΩ", "Sask", "Yuk", "jan", "feb", "mar", "apr", "jun", "jul", "aug", "sep", "oct", "nov", "dec", "sept", "vs", "etc", "esp", "llb", "md", "bl", "phd", "ma", "ba", "miss", "misses", "mister", "sir", "esq", "mstr", "lit", "fl", "ex", "eg", "sep", "sept", ".."];
+  var abbrev = new RegExp("(^| )(" + abbrevs.join("|") + ")[.] ?$", "i");
+  //loop through and evaluate greedy splits
+  for(i = 0; i < tmp.length; i++) {
+    if(tmp[i]) {
+      tmp[i] = tmp[i].replace(/^\s+|\s+$/g, "");
+      //if this does not look like a good sentence, prepend to next one
+      if(tmp[i].match(abbrev) || tmp[i].match(/[ |\.][A-Z]\.?$/i) || unbalanced(tmp[i])) {
+        tmp[parseInt(i, 10) + 1] = tmp[i] + " " + tmp[parseInt(i, 10) + 1];
+      } else {
+        sentences.push(tmp[i]);
+        tmp[i] = "";
+      }
+    }
+  }
+  //post-process the text
+  var clean = [];
+  for(i = 0; i < sentences.length; i++) {
+    //trim whitespace
+    sentences[i] = sentences[i].replace(/^\s+|\s+$/g, "");
+    sentences[i] = sentences[i].replace(/ {2}/g, " ");
+    if(sentences[i]) {
+      clean.push(sentences[i]);
+    }
+  }
+  // if there's no proper sentence, just return [text]
+  if(clean.length === 0) {
+    return [text]
+  }
+  return clean;
+}
+module.exports = sentence_parser;
+// console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2)
+// console.log(sentence_parser('I like that Color').length === 1)
+// console.log(sentence_parser("Soviet bonds to be sold in the U.S. market. Everyone wins.").length === 2)
+// console.log(sentence_parser("Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that's fine, etc. and you can attend Feb. 8th. Bye").length === 3)
+// console.log(sentence_parser("Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York").length === 1)
+// console.log(sentence_parser("he said ... oh yeah. I did").length === 2)
+
+//morgan freeman
+// console.log(sentence_parser("a staged reenactment of [[Perry v. Brown]] world"))
+// console.log(sentence_parser("This language allowed people (e.g. shepherds) to communicate"))
+
+},{}],292:[function(require,module,exports){
+//from https://en.wikipedia.org/w/api.php?action=sitematrix&format=json
+var site_map={
+  "aawiki": "http://aa.wikipedia.org",
+  "aawiktionary": "http://aa.wiktionary.org",
+  "aawikibooks": "http://aa.wikibooks.org",
+  "abwiki": "http://ab.wikipedia.org",
+  "abwiktionary": "http://ab.wiktionary.org",
+  "acewiki": "http://ace.wikipedia.org",
+  "afwiki": "http://af.wikipedia.org",
+  "afwiktionary": "http://af.wiktionary.org",
+  "afwikibooks": "http://af.wikibooks.org",
+  "afwikiquote": "http://af.wikiquote.org",
+  "akwiki": "http://ak.wikipedia.org",
+  "akwiktionary": "http://ak.wiktionary.org",
+  "akwikibooks": "http://ak.wikibooks.org",
+  "alswiki": "http://als.wikipedia.org",
+  "alswiktionary": "http://als.wiktionary.org",
+  "alswikibooks": "http://als.wikibooks.org",
+  "alswikiquote": "http://als.wikiquote.org",
+  "amwiki": "http://am.wikipedia.org",
+  "amwiktionary": "http://am.wiktionary.org",
+  "amwikiquote": "http://am.wikiquote.org",
+  "anwiki": "http://an.wikipedia.org",
+  "anwiktionary": "http://an.wiktionary.org",
+  "angwiki": "http://ang.wikipedia.org",
+  "angwiktionary": "http://ang.wiktionary.org",
+  "angwikibooks": "http://ang.wikibooks.org",
+  "angwikiquote": "http://ang.wikiquote.org",
+  "angwikisource": "http://ang.wikisource.org",
+  "arwiki": "http://ar.wikipedia.org",
+  "arwiktionary": "http://ar.wiktionary.org",
+  "arwikibooks": "http://ar.wikibooks.org",
+  "arwikinews": "http://ar.wikinews.org",
+  "arwikiquote": "http://ar.wikiquote.org",
+  "arwikisource": "http://ar.wikisource.org",
+  "arwikiversity": "http://ar.wikiversity.org",
+  "arcwiki": "http://arc.wikipedia.org",
+  "arzwiki": "http://arz.wikipedia.org",
+  "aswiki": "http://as.wikipedia.org",
+  "aswiktionary": "http://as.wiktionary.org",
+  "aswikibooks": "http://as.wikibooks.org",
+  "aswikisource": "http://as.wikisource.org",
+  "astwiki": "http://ast.wikipedia.org",
+  "astwiktionary": "http://ast.wiktionary.org",
+  "astwikibooks": "http://ast.wikibooks.org",
+  "astwikiquote": "http://ast.wikiquote.org",
+  "avwiki": "http://av.wikipedia.org",
+  "avwiktionary": "http://av.wiktionary.org",
+  "aywiki": "http://ay.wikipedia.org",
+  "aywiktionary": "http://ay.wiktionary.org",
+  "aywikibooks": "http://ay.wikibooks.org",
+  "azwiki": "http://az.wikipedia.org",
+  "azwiktionary": "http://az.wiktionary.org",
+  "azwikibooks": "http://az.wikibooks.org",
+  "azwikiquote": "http://az.wikiquote.org",
+  "azwikisource": "http://az.wikisource.org",
+  "bawiki": "http://ba.wikipedia.org",
+  "bawikibooks": "http://ba.wikibooks.org",
+  "barwiki": "http://bar.wikipedia.org",
+  "bat_smgwiki": "http://bat-smg.wikipedia.org",
+  "bclwiki": "http://bcl.wikipedia.org",
+  "bewiki": "http://be.wikipedia.org",
+  "bewiktionary": "http://be.wiktionary.org",
+  "bewikibooks": "http://be.wikibooks.org",
+  "bewikiquote": "http://be.wikiquote.org",
+  "bewikisource": "http://be.wikisource.org",
+  "be_x_oldwiki": "http://be-x-old.wikipedia.org",
+  "bgwiki": "http://bg.wikipedia.org",
+  "bgwiktionary": "http://bg.wiktionary.org",
+  "bgwikibooks": "http://bg.wikibooks.org",
+  "bgwikinews": "http://bg.wikinews.org",
+  "bgwikiquote": "http://bg.wikiquote.org",
+  "bgwikisource": "http://bg.wikisource.org",
+  "bhwiki": "http://bh.wikipedia.org",
+  "bhwiktionary": "http://bh.wiktionary.org",
+  "biwiki": "http://bi.wikipedia.org",
+  "biwiktionary": "http://bi.wiktionary.org",
+  "biwikibooks": "http://bi.wikibooks.org",
+  "bjnwiki": "http://bjn.wikipedia.org",
+  "bmwiki": "http://bm.wikipedia.org",
+  "bmwiktionary": "http://bm.wiktionary.org",
+  "bmwikibooks": "http://bm.wikibooks.org",
+  "bmwikiquote": "http://bm.wikiquote.org",
+  "bnwiki": "http://bn.wikipedia.org",
+  "bnwiktionary": "http://bn.wiktionary.org",
+  "bnwikibooks": "http://bn.wikibooks.org",
+  "bnwikisource": "http://bn.wikisource.org",
+  "bowiki": "http://bo.wikipedia.org",
+  "bowiktionary": "http://bo.wiktionary.org",
+  "bowikibooks": "http://bo.wikibooks.org",
+  "bpywiki": "http://bpy.wikipedia.org",
+  "brwiki": "http://br.wikipedia.org",
+  "brwiktionary": "http://br.wiktionary.org",
+  "brwikiquote": "http://br.wikiquote.org",
+  "brwikisource": "http://br.wikisource.org",
+  "bswiki": "http://bs.wikipedia.org",
+  "bswiktionary": "http://bs.wiktionary.org",
+  "bswikibooks": "http://bs.wikibooks.org",
+  "bswikinews": "http://bs.wikinews.org",
+  "bswikiquote": "http://bs.wikiquote.org",
+  "bswikisource": "http://bs.wikisource.org",
+  "bugwiki": "http://bug.wikipedia.org",
+  "bxrwiki": "http://bxr.wikipedia.org",
+  "cawiki": "http://ca.wikipedia.org",
+  "cawiktionary": "http://ca.wiktionary.org",
+  "cawikibooks": "http://ca.wikibooks.org",
+  "cawikinews": "http://ca.wikinews.org",
+  "cawikiquote": "http://ca.wikiquote.org",
+  "cawikisource": "http://ca.wikisource.org",
+  "cbk_zamwiki": "http://cbk-zam.wikipedia.org",
+  "cdowiki": "http://cdo.wikipedia.org",
+  "cewiki": "http://ce.wikipedia.org",
+  "cebwiki": "http://ceb.wikipedia.org",
+  "chwiki": "http://ch.wikipedia.org",
+  "chwiktionary": "http://ch.wiktionary.org",
+  "chwikibooks": "http://ch.wikibooks.org",
+  "chowiki": "http://cho.wikipedia.org",
+  "chrwiki": "http://chr.wikipedia.org",
+  "chrwiktionary": "http://chr.wiktionary.org",
+  "chywiki": "http://chy.wikipedia.org",
+  "ckbwiki": "http://ckb.wikipedia.org",
+  "cowiki": "http://co.wikipedia.org",
+  "cowiktionary": "http://co.wiktionary.org",
+  "cowikibooks": "http://co.wikibooks.org",
+  "cowikiquote": "http://co.wikiquote.org",
+  "crwiki": "http://cr.wikipedia.org",
+  "crwiktionary": "http://cr.wiktionary.org",
+  "crwikiquote": "http://cr.wikiquote.org",
+  "crhwiki": "http://crh.wikipedia.org",
+  "cswiki": "http://cs.wikipedia.org",
+  "cswiktionary": "http://cs.wiktionary.org",
+  "cswikibooks": "http://cs.wikibooks.org",
+  "cswikinews": "http://cs.wikinews.org",
+  "cswikiquote": "http://cs.wikiquote.org",
+  "cswikisource": "http://cs.wikisource.org",
+  "cswikiversity": "http://cs.wikiversity.org",
+  "csbwiki": "http://csb.wikipedia.org",
+  "csbwiktionary": "http://csb.wiktionary.org",
+  "cuwiki": "http://cu.wikipedia.org",
+  "cvwiki": "http://cv.wikipedia.org",
+  "cvwikibooks": "http://cv.wikibooks.org",
+  "cywiki": "http://cy.wikipedia.org",
+  "cywiktionary": "http://cy.wiktionary.org",
+  "cywikibooks": "http://cy.wikibooks.org",
+  "cywikiquote": "http://cy.wikiquote.org",
+  "cywikisource": "http://cy.wikisource.org",
+  "dawiki": "http://da.wikipedia.org",
+  "dawiktionary": "http://da.wiktionary.org",
+  "dawikibooks": "http://da.wikibooks.org",
+  "dawikiquote": "http://da.wikiquote.org",
+  "dawikisource": "http://da.wikisource.org",
+  "dewiki": "http://de.wikipedia.org",
+  "dewiktionary": "http://de.wiktionary.org",
+  "dewikibooks": "http://de.wikibooks.org",
+  "dewikinews": "http://de.wikinews.org",
+  "dewikiquote": "http://de.wikiquote.org",
+  "dewikisource": "http://de.wikisource.org",
+  "dewikiversity": "http://de.wikiversity.org",
+  "dewikivoyage": "http://de.wikivoyage.org",
+  "diqwiki": "http://diq.wikipedia.org",
+  "dsbwiki": "http://dsb.wikipedia.org",
+  "dvwiki": "http://dv.wikipedia.org",
+  "dvwiktionary": "http://dv.wiktionary.org",
+  "dzwiki": "http://dz.wikipedia.org",
+  "dzwiktionary": "http://dz.wiktionary.org",
+  "eewiki": "http://ee.wikipedia.org",
+  "elwiki": "http://el.wikipedia.org",
+  "elwiktionary": "http://el.wiktionary.org",
+  "elwikibooks": "http://el.wikibooks.org",
+  "elwikinews": "http://el.wikinews.org",
+  "elwikiquote": "http://el.wikiquote.org",
+  "elwikisource": "http://el.wikisource.org",
+  "elwikiversity": "http://el.wikiversity.org",
+  "elwikivoyage": "http://el.wikivoyage.org",
+  "emlwiki": "http://eml.wikipedia.org",
+  "enwiki": "http://en.wikipedia.org",
+  "enwiktionary": "http://en.wiktionary.org",
+  "enwikibooks": "http://en.wikibooks.org",
+  "enwikinews": "http://en.wikinews.org",
+  "enwikiquote": "http://en.wikiquote.org",
+  "enwikisource": "http://en.wikisource.org",
+  "enwikiversity": "http://en.wikiversity.org",
+  "enwikivoyage": "http://en.wikivoyage.org",
+  "eowiki": "http://eo.wikipedia.org",
+  "eowiktionary": "http://eo.wiktionary.org",
+  "eowikibooks": "http://eo.wikibooks.org",
+  "eowikinews": "http://eo.wikinews.org",
+  "eowikiquote": "http://eo.wikiquote.org",
+  "eowikisource": "http://eo.wikisource.org",
+  "eswiki": "http://es.wikipedia.org",
+  "eswiktionary": "http://es.wiktionary.org",
+  "eswikibooks": "http://es.wikibooks.org",
+  "eswikinews": "http://es.wikinews.org",
+  "eswikiquote": "http://es.wikiquote.org",
+  "eswikisource": "http://es.wikisource.org",
+  "eswikiversity": "http://es.wikiversity.org",
+  "eswikivoyage": "http://es.wikivoyage.org",
+  "etwiki": "http://et.wikipedia.org",
+  "etwiktionary": "http://et.wiktionary.org",
+  "etwikibooks": "http://et.wikibooks.org",
+  "etwikiquote": "http://et.wikiquote.org",
+  "etwikisource": "http://et.wikisource.org",
+  "euwiki": "http://eu.wikipedia.org",
+  "euwiktionary": "http://eu.wiktionary.org",
+  "euwikibooks": "http://eu.wikibooks.org",
+  "euwikiquote": "http://eu.wikiquote.org",
+  "extwiki": "http://ext.wikipedia.org",
+  "fawiki": "http://fa.wikipedia.org",
+  "fawiktionary": "http://fa.wiktionary.org",
+  "fawikibooks": "http://fa.wikibooks.org",
+  "fawikinews": "http://fa.wikinews.org",
+  "fawikiquote": "http://fa.wikiquote.org",
+  "fawikisource": "http://fa.wikisource.org",
+  "fawikivoyage": "http://fa.wikivoyage.org",
+  "ffwiki": "http://ff.wikipedia.org",
+  "fiwiki": "http://fi.wikipedia.org",
+  "fiwiktionary": "http://fi.wiktionary.org",
+  "fiwikibooks": "http://fi.wikibooks.org",
+  "fiwikinews": "http://fi.wikinews.org",
+  "fiwikiquote": "http://fi.wikiquote.org",
+  "fiwikisource": "http://fi.wikisource.org",
+  "fiwikiversity": "http://fi.wikiversity.org",
+  "fiu_vrowiki": "http://fiu-vro.wikipedia.org",
+  "fjwiki": "http://fj.wikipedia.org",
+  "fjwiktionary": "http://fj.wiktionary.org",
+  "fowiki": "http://fo.wikipedia.org",
+  "fowiktionary": "http://fo.wiktionary.org",
+  "fowikisource": "http://fo.wikisource.org",
+  "frwiki": "http://fr.wikipedia.org",
+  "frwiktionary": "http://fr.wiktionary.org",
+  "frwikibooks": "http://fr.wikibooks.org",
+  "frwikinews": "http://fr.wikinews.org",
+  "frwikiquote": "http://fr.wikiquote.org",
+  "frwikisource": "http://fr.wikisource.org",
+  "frwikiversity": "http://fr.wikiversity.org",
+  "frwikivoyage": "http://fr.wikivoyage.org",
+  "frpwiki": "http://frp.wikipedia.org",
+  "frrwiki": "http://frr.wikipedia.org",
+  "furwiki": "http://fur.wikipedia.org",
+  "fywiki": "http://fy.wikipedia.org",
+  "fywiktionary": "http://fy.wiktionary.org",
+  "fywikibooks": "http://fy.wikibooks.org",
+  "gawiki": "http://ga.wikipedia.org",
+  "gawiktionary": "http://ga.wiktionary.org",
+  "gawikibooks": "http://ga.wikibooks.org",
+  "gawikiquote": "http://ga.wikiquote.org",
+  "gagwiki": "http://gag.wikipedia.org",
+  "ganwiki": "http://gan.wikipedia.org",
+  "gdwiki": "http://gd.wikipedia.org",
+  "gdwiktionary": "http://gd.wiktionary.org",
+  "glwiki": "http://gl.wikipedia.org",
+  "glwiktionary": "http://gl.wiktionary.org",
+  "glwikibooks": "http://gl.wikibooks.org",
+  "glwikiquote": "http://gl.wikiquote.org",
+  "glwikisource": "http://gl.wikisource.org",
+  "glkwiki": "http://glk.wikipedia.org",
+  "gnwiki": "http://gn.wikipedia.org",
+  "gnwiktionary": "http://gn.wiktionary.org",
+  "gnwikibooks": "http://gn.wikibooks.org",
+  "gotwiki": "http://got.wikipedia.org",
+  "gotwikibooks": "http://got.wikibooks.org",
+  "guwiki": "http://gu.wikipedia.org",
+  "guwiktionary": "http://gu.wiktionary.org",
+  "guwikibooks": "http://gu.wikibooks.org",
+  "guwikiquote": "http://gu.wikiquote.org",
+  "guwikisource": "http://gu.wikisource.org",
+  "gvwiki": "http://gv.wikipedia.org",
+  "gvwiktionary": "http://gv.wiktionary.org",
+  "hawiki": "http://ha.wikipedia.org",
+  "hawiktionary": "http://ha.wiktionary.org",
+  "hakwiki": "http://hak.wikipedia.org",
+  "hawwiki": "http://haw.wikipedia.org",
+  "hewiki": "http://he.wikipedia.org",
+  "hewiktionary": "http://he.wiktionary.org",
+  "hewikibooks": "http://he.wikibooks.org",
+  "hewikinews": "http://he.wikinews.org",
+  "hewikiquote": "http://he.wikiquote.org",
+  "hewikisource": "http://he.wikisource.org",
+  "hewikivoyage": "http://he.wikivoyage.org",
+  "hiwiki": "http://hi.wikipedia.org",
+  "hiwiktionary": "http://hi.wiktionary.org",
+  "hiwikibooks": "http://hi.wikibooks.org",
+  "hiwikiquote": "http://hi.wikiquote.org",
+  "hifwiki": "http://hif.wikipedia.org",
+  "howiki": "http://ho.wikipedia.org",
+  "hrwiki": "http://hr.wikipedia.org",
+  "hrwiktionary": "http://hr.wiktionary.org",
+  "hrwikibooks": "http://hr.wikibooks.org",
+  "hrwikiquote": "http://hr.wikiquote.org",
+  "hrwikisource": "http://hr.wikisource.org",
+  "hsbwiki": "http://hsb.wikipedia.org",
+  "hsbwiktionary": "http://hsb.wiktionary.org",
+  "htwiki": "http://ht.wikipedia.org",
+  "htwikisource": "http://ht.wikisource.org",
+  "huwiki": "http://hu.wikipedia.org",
+  "huwiktionary": "http://hu.wiktionary.org",
+  "huwikibooks": "http://hu.wikibooks.org",
+  "huwikinews": "http://hu.wikinews.org",
+  "huwikiquote": "http://hu.wikiquote.org",
+  "huwikisource": "http://hu.wikisource.org",
+  "hywiki": "http://hy.wikipedia.org",
+  "hywiktionary": "http://hy.wiktionary.org",
+  "hywikibooks": "http://hy.wikibooks.org",
+  "hywikiquote": "http://hy.wikiquote.org",
+  "hywikisource": "http://hy.wikisource.org",
+  "hzwiki": "http://hz.wikipedia.org",
+  "iawiki": "http://ia.wikipedia.org",
+  "iawiktionary": "http://ia.wiktionary.org",
+  "iawikibooks": "http://ia.wikibooks.org",
+  "idwiki": "http://id.wikipedia.org",
+  "idwiktionary": "http://id.wiktionary.org",
+  "idwikibooks": "http://id.wikibooks.org",
+  "idwikiquote": "http://id.wikiquote.org",
+  "idwikisource": "http://id.wikisource.org",
+  "iewiki": "http://ie.wikipedia.org",
+  "iewiktionary": "http://ie.wiktionary.org",
+  "iewikibooks": "http://ie.wikibooks.org",
+  "igwiki": "http://ig.wikipedia.org",
+  "iiwiki": "http://ii.wikipedia.org",
+  "ikwiki": "http://ik.wikipedia.org",
+  "ikwiktionary": "http://ik.wiktionary.org",
+  "ilowiki": "http://ilo.wikipedia.org",
+  "iowiki": "http://io.wikipedia.org",
+  "iowiktionary": "http://io.wiktionary.org",
+  "iswiki": "http://is.wikipedia.org",
+  "iswiktionary": "http://is.wiktionary.org",
+  "iswikibooks": "http://is.wikibooks.org",
+  "iswikiquote": "http://is.wikiquote.org",
+  "iswikisource": "http://is.wikisource.org",
+  "itwiki": "http://it.wikipedia.org",
+  "itwiktionary": "http://it.wiktionary.org",
+  "itwikibooks": "http://it.wikibooks.org",
+  "itwikinews": "http://it.wikinews.org",
+  "itwikiquote": "http://it.wikiquote.org",
+  "itwikisource": "http://it.wikisource.org",
+  "itwikiversity": "http://it.wikiversity.org",
+  "itwikivoyage": "http://it.wikivoyage.org",
+  "iuwiki": "http://iu.wikipedia.org",
+  "iuwiktionary": "http://iu.wiktionary.org",
+  "jawiki": "http://ja.wikipedia.org",
+  "jawiktionary": "http://ja.wiktionary.org",
+  "jawikibooks": "http://ja.wikibooks.org",
+  "jawikinews": "http://ja.wikinews.org",
+  "jawikiquote": "http://ja.wikiquote.org",
+  "jawikisource": "http://ja.wikisource.org",
+  "jawikiversity": "http://ja.wikiversity.org",
+  "jbowiki": "http://jbo.wikipedia.org",
+  "jbowiktionary": "http://jbo.wiktionary.org",
+  "jvwiki": "http://jv.wikipedia.org",
+  "jvwiktionary": "http://jv.wiktionary.org",
+  "kawiki": "http://ka.wikipedia.org",
+  "kawiktionary": "http://ka.wiktionary.org",
+  "kawikibooks": "http://ka.wikibooks.org",
+  "kawikiquote": "http://ka.wikiquote.org",
+  "kaawiki": "http://kaa.wikipedia.org",
+  "kabwiki": "http://kab.wikipedia.org",
+  "kbdwiki": "http://kbd.wikipedia.org",
+  "kgwiki": "http://kg.wikipedia.org",
+  "kiwiki": "http://ki.wikipedia.org",
+  "kjwiki": "http://kj.wikipedia.org",
+  "kkwiki": "http://kk.wikipedia.org",
+  "kkwiktionary": "http://kk.wiktionary.org",
+  "kkwikibooks": "http://kk.wikibooks.org",
+  "kkwikiquote": "http://kk.wikiquote.org",
+  "klwiki": "http://kl.wikipedia.org",
+  "klwiktionary": "http://kl.wiktionary.org",
+  "kmwiki": "http://km.wikipedia.org",
+  "kmwiktionary": "http://km.wiktionary.org",
+  "kmwikibooks": "http://km.wikibooks.org",
+  "knwiki": "http://kn.wikipedia.org",
+  "knwiktionary": "http://kn.wiktionary.org",
+  "knwikibooks": "http://kn.wikibooks.org",
+  "knwikiquote": "http://kn.wikiquote.org",
+  "knwikisource": "http://kn.wikisource.org",
+  "kowiki": "http://ko.wikipedia.org",
+  "kowiktionary": "http://ko.wiktionary.org",
+  "kowikibooks": "http://ko.wikibooks.org",
+  "kowikinews": "http://ko.wikinews.org",
+  "kowikiquote": "http://ko.wikiquote.org",
+  "kowikisource": "http://ko.wikisource.org",
+  "kowikiversity": "http://ko.wikiversity.org",
+  "koiwiki": "http://koi.wikipedia.org",
+  "krwiki": "http://kr.wikipedia.org",
+  "krwikiquote": "http://kr.wikiquote.org",
+  "krcwiki": "http://krc.wikipedia.org",
+  "kswiki": "http://ks.wikipedia.org",
+  "kswiktionary": "http://ks.wiktionary.org",
+  "kswikibooks": "http://ks.wikibooks.org",
+  "kswikiquote": "http://ks.wikiquote.org",
+  "kshwiki": "http://ksh.wikipedia.org",
+  "kuwiki": "http://ku.wikipedia.org",
+  "kuwiktionary": "http://ku.wiktionary.org",
+  "kuwikibooks": "http://ku.wikibooks.org",
+  "kuwikiquote": "http://ku.wikiquote.org",
+  "kvwiki": "http://kv.wikipedia.org",
+  "kwwiki": "http://kw.wikipedia.org",
+  "kwwiktionary": "http://kw.wiktionary.org",
+  "kwwikiquote": "http://kw.wikiquote.org",
+  "kywiki": "http://ky.wikipedia.org",
+  "kywiktionary": "http://ky.wiktionary.org",
+  "kywikibooks": "http://ky.wikibooks.org",
+  "kywikiquote": "http://ky.wikiquote.org",
+  "lawiki": "http://la.wikipedia.org",
+  "lawiktionary": "http://la.wiktionary.org",
+  "lawikibooks": "http://la.wikibooks.org",
+  "lawikiquote": "http://la.wikiquote.org",
+  "lawikisource": "http://la.wikisource.org",
+  "ladwiki": "http://lad.wikipedia.org",
+  "lbwiki": "http://lb.wikipedia.org",
+  "lbwiktionary": "http://lb.wiktionary.org",
+  "lbwikibooks": "http://lb.wikibooks.org",
+  "lbwikiquote": "http://lb.wikiquote.org",
+  "lbewiki": "http://lbe.wikipedia.org",
+  "lezwiki": "http://lez.wikipedia.org",
+  "lgwiki": "http://lg.wikipedia.org",
+  "liwiki": "http://li.wikipedia.org",
+  "liwiktionary": "http://li.wiktionary.org",
+  "liwikibooks": "http://li.wikibooks.org",
+  "liwikiquote": "http://li.wikiquote.org",
+  "liwikisource": "http://li.wikisource.org",
+  "lijwiki": "http://lij.wikipedia.org",
+  "lmowiki": "http://lmo.wikipedia.org",
+  "lnwiki": "http://ln.wikipedia.org",
+  "lnwiktionary": "http://ln.wiktionary.org",
+  "lnwikibooks": "http://ln.wikibooks.org",
+  "lowiki": "http://lo.wikipedia.org",
+  "lowiktionary": "http://lo.wiktionary.org",
+  "ltwiki": "http://lt.wikipedia.org",
+  "ltwiktionary": "http://lt.wiktionary.org",
+  "ltwikibooks": "http://lt.wikibooks.org",
+  "ltwikiquote": "http://lt.wikiquote.org",
+  "ltwikisource": "http://lt.wikisource.org",
+  "ltgwiki": "http://ltg.wikipedia.org",
+  "lvwiki": "http://lv.wikipedia.org",
+  "lvwiktionary": "http://lv.wiktionary.org",
+  "lvwikibooks": "http://lv.wikibooks.org",
+  "maiwiki": "http://mai.wikipedia.org",
+  "map_bmswiki": "http://map-bms.wikipedia.org",
+  "mdfwiki": "http://mdf.wikipedia.org",
+  "mgwiki": "http://mg.wikipedia.org",
+  "mgwiktionary": "http://mg.wiktionary.org",
+  "mgwikibooks": "http://mg.wikibooks.org",
+  "mhwiki": "http://mh.wikipedia.org",
+  "mhwiktionary": "http://mh.wiktionary.org",
+  "mhrwiki": "http://mhr.wikipedia.org",
+  "miwiki": "http://mi.wikipedia.org",
+  "miwiktionary": "http://mi.wiktionary.org",
+  "miwikibooks": "http://mi.wikibooks.org",
+  "minwiki": "http://min.wikipedia.org",
+  "mkwiki": "http://mk.wikipedia.org",
+  "mkwiktionary": "http://mk.wiktionary.org",
+  "mkwikibooks": "http://mk.wikibooks.org",
+  "mkwikisource": "http://mk.wikisource.org",
+  "mlwiki": "http://ml.wikipedia.org",
+  "mlwiktionary": "http://ml.wiktionary.org",
+  "mlwikibooks": "http://ml.wikibooks.org",
+  "mlwikiquote": "http://ml.wikiquote.org",
+  "mlwikisource": "http://ml.wikisource.org",
+  "mnwiki": "http://mn.wikipedia.org",
+  "mnwiktionary": "http://mn.wiktionary.org",
+  "mnwikibooks": "http://mn.wikibooks.org",
+  "mowiki": "http://mo.wikipedia.org",
+  "mowiktionary": "http://mo.wiktionary.org",
+  "mrwiki": "http://mr.wikipedia.org",
+  "mrwiktionary": "http://mr.wiktionary.org",
+  "mrwikibooks": "http://mr.wikibooks.org",
+  "mrwikiquote": "http://mr.wikiquote.org",
+  "mrwikisource": "http://mr.wikisource.org",
+  "mrjwiki": "http://mrj.wikipedia.org",
+  "mswiki": "http://ms.wikipedia.org",
+  "mswiktionary": "http://ms.wiktionary.org",
+  "mswikibooks": "http://ms.wikibooks.org",
+  "mtwiki": "http://mt.wikipedia.org",
+  "mtwiktionary": "http://mt.wiktionary.org",
+  "muswiki": "http://mus.wikipedia.org",
+  "mwlwiki": "http://mwl.wikipedia.org",
+  "mywiki": "http://my.wikipedia.org",
+  "mywiktionary": "http://my.wiktionary.org",
+  "mywikibooks": "http://my.wikibooks.org",
+  "myvwiki": "http://myv.wikipedia.org",
+  "mznwiki": "http://mzn.wikipedia.org",
+  "nawiki": "http://na.wikipedia.org",
+  "nawiktionary": "http://na.wiktionary.org",
+  "nawikibooks": "http://na.wikibooks.org",
+  "nawikiquote": "http://na.wikiquote.org",
+  "nahwiki": "http://nah.wikipedia.org",
+  "nahwiktionary": "http://nah.wiktionary.org",
+  "nahwikibooks": "http://nah.wikibooks.org",
+  "napwiki": "http://nap.wikipedia.org",
+  "ndswiki": "http://nds.wikipedia.org",
+  "ndswiktionary": "http://nds.wiktionary.org",
+  "ndswikibooks": "http://nds.wikibooks.org",
+  "ndswikiquote": "http://nds.wikiquote.org",
+  "nds_nlwiki": "http://nds-nl.wikipedia.org",
+  "newiki": "http://ne.wikipedia.org",
+  "newiktionary": "http://ne.wiktionary.org",
+  "newikibooks": "http://ne.wikibooks.org",
+  "newwiki": "http://new.wikipedia.org",
+  "ngwiki": "http://ng.wikipedia.org",
+  "nlwiki": "http://nl.wikipedia.org",
+  "nlwiktionary": "http://nl.wiktionary.org",
+  "nlwikibooks": "http://nl.wikibooks.org",
+  "nlwikinews": "http://nl.wikinews.org",
+  "nlwikiquote": "http://nl.wikiquote.org",
+  "nlwikisource": "http://nl.wikisource.org",
+  "nlwikivoyage": "http://nl.wikivoyage.org",
+  "nnwiki": "http://nn.wikipedia.org",
+  "nnwiktionary": "http://nn.wiktionary.org",
+  "nnwikiquote": "http://nn.wikiquote.org",
+  "nowiki": "http://no.wikipedia.org",
+  "nowiktionary": "http://no.wiktionary.org",
+  "nowikibooks": "http://no.wikibooks.org",
+  "nowikinews": "http://no.wikinews.org",
+  "nowikiquote": "http://no.wikiquote.org",
+  "nowikisource": "http://no.wikisource.org",
+  "novwiki": "http://nov.wikipedia.org",
+  "nrmwiki": "http://nrm.wikipedia.org",
+  "nsowiki": "http://nso.wikipedia.org",
+  "nvwiki": "http://nv.wikipedia.org",
+  "nywiki": "http://ny.wikipedia.org",
+  "ocwiki": "http://oc.wikipedia.org",
+  "ocwiktionary": "http://oc.wiktionary.org",
+  "ocwikibooks": "http://oc.wikibooks.org",
+  "omwiki": "http://om.wikipedia.org",
+  "omwiktionary": "http://om.wiktionary.org",
+  "orwiki": "http://or.wikipedia.org",
+  "orwiktionary": "http://or.wiktionary.org",
+  "orwikisource": "http://or.wikisource.org",
+  "oswiki": "http://os.wikipedia.org",
+  "pawiki": "http://pa.wikipedia.org",
+  "pawiktionary": "http://pa.wiktionary.org",
+  "pawikibooks": "http://pa.wikibooks.org",
+  "pagwiki": "http://pag.wikipedia.org",
+  "pamwiki": "http://pam.wikipedia.org",
+  "papwiki": "http://pap.wikipedia.org",
+  "pcdwiki": "http://pcd.wikipedia.org",
+  "pdcwiki": "http://pdc.wikipedia.org",
+  "pflwiki": "http://pfl.wikipedia.org",
+  "piwiki": "http://pi.wikipedia.org",
+  "piwiktionary": "http://pi.wiktionary.org",
+  "pihwiki": "http://pih.wikipedia.org",
+  "plwiki": "http://pl.wikipedia.org",
+  "plwiktionary": "http://pl.wiktionary.org",
+  "plwikibooks": "http://pl.wikibooks.org",
+  "plwikinews": "http://pl.wikinews.org",
+  "plwikiquote": "http://pl.wikiquote.org",
+  "plwikisource": "http://pl.wikisource.org",
+  "plwikivoyage": "http://pl.wikivoyage.org",
+  "pmswiki": "http://pms.wikipedia.org",
+  "pnbwiki": "http://pnb.wikipedia.org",
+  "pnbwiktionary": "http://pnb.wiktionary.org",
+  "pntwiki": "http://pnt.wikipedia.org",
+  "pswiki": "http://ps.wikipedia.org",
+  "pswiktionary": "http://ps.wiktionary.org",
+  "pswikibooks": "http://ps.wikibooks.org",
+  "ptwiki": "http://pt.wikipedia.org",
+  "ptwiktionary": "http://pt.wiktionary.org",
+  "ptwikibooks": "http://pt.wikibooks.org",
+  "ptwikinews": "http://pt.wikinews.org",
+  "ptwikiquote": "http://pt.wikiquote.org",
+  "ptwikisource": "http://pt.wikisource.org",
+  "ptwikiversity": "http://pt.wikiversity.org",
+  "ptwikivoyage": "http://pt.wikivoyage.org",
+  "quwiki": "http://qu.wikipedia.org",
+  "quwiktionary": "http://qu.wiktionary.org",
+  "quwikibooks": "http://qu.wikibooks.org",
+  "quwikiquote": "http://qu.wikiquote.org",
+  "rmwiki": "http://rm.wikipedia.org",
+  "rmwiktionary": "http://rm.wiktionary.org",
+  "rmwikibooks": "http://rm.wikibooks.org",
+  "rmywiki": "http://rmy.wikipedia.org",
+  "rnwiki": "http://rn.wikipedia.org",
+  "rnwiktionary": "http://rn.wiktionary.org",
+  "rowiki": "http://ro.wikipedia.org",
+  "rowiktionary": "http://ro.wiktionary.org",
+  "rowikibooks": "http://ro.wikibooks.org",
+  "rowikinews": "http://ro.wikinews.org",
+  "rowikiquote": "http://ro.wikiquote.org",
+  "rowikisource": "http://ro.wikisource.org",
+  "rowikivoyage": "http://ro.wikivoyage.org",
+  "roa_rupwiki": "http://roa-rup.wikipedia.org",
+  "roa_rupwiktionary": "http://roa-rup.wiktionary.org",
+  "roa_tarawiki": "http://roa-tara.wikipedia.org",
+  "ruwiki": "https://ru.wikipedia.org",
+  "ruwiktionary": "https://ru.wiktionary.org",
+  "ruwikibooks": "https://ru.wikibooks.org",
+  "ruwikinews": "https://ru.wikinews.org",
+  "ruwikiquote": "https://ru.wikiquote.org",
+  "ruwikisource": "https://ru.wikisource.org",
+  "ruwikiversity": "https://ru.wikiversity.org",
+  "ruwikivoyage": "https://ru.wikivoyage.org",
+  "ruewiki": "http://rue.wikipedia.org",
+  "rwwiki": "http://rw.wikipedia.org",
+  "rwwiktionary": "http://rw.wiktionary.org",
+  "sawiki": "http://sa.wikipedia.org",
+  "sawiktionary": "http://sa.wiktionary.org",
+  "sawikibooks": "http://sa.wikibooks.org",
+  "sawikiquote": "http://sa.wikiquote.org",
+  "sawikisource": "http://sa.wikisource.org",
+  "sahwiki": "http://sah.wikipedia.org",
+  "sahwikisource": "http://sah.wikisource.org",
+  "scwiki": "http://sc.wikipedia.org",
+  "scwiktionary": "http://sc.wiktionary.org",
+  "scnwiki": "http://scn.wikipedia.org",
+  "scnwiktionary": "http://scn.wiktionary.org",
+  "scowiki": "http://sco.wikipedia.org",
+  "sdwiki": "http://sd.wikipedia.org",
+  "sdwiktionary": "http://sd.wiktionary.org",
+  "sdwikinews": "http://sd.wikinews.org",
+  "sewiki": "http://se.wikipedia.org",
+  "sewikibooks": "http://se.wikibooks.org",
+  "sgwiki": "http://sg.wikipedia.org",
+  "sgwiktionary": "http://sg.wiktionary.org",
+  "shwiki": "http://sh.wikipedia.org",
+  "shwiktionary": "http://sh.wiktionary.org",
+  "siwiki": "http://si.wikipedia.org",
+  "siwiktionary": "http://si.wiktionary.org",
+  "siwikibooks": "http://si.wikibooks.org",
+  "simplewiki": "http://simple.wikipedia.org",
+  "simplewiktionary": "http://simple.wiktionary.org",
+  "simplewikibooks": "http://simple.wikibooks.org",
+  "simplewikiquote": "http://simple.wikiquote.org",
+  "skwiki": "http://sk.wikipedia.org",
+  "skwiktionary": "http://sk.wiktionary.org",
+  "skwikibooks": "http://sk.wikibooks.org",
+  "skwikiquote": "http://sk.wikiquote.org",
+  "skwikisource": "http://sk.wikisource.org",
+  "slwiki": "http://sl.wikipedia.org",
+  "slwiktionary": "http://sl.wiktionary.org",
+  "slwikibooks": "http://sl.wikibooks.org",
+  "slwikiquote": "http://sl.wikiquote.org",
+  "slwikisource": "http://sl.wikisource.org",
+  "slwikiversity": "http://sl.wikiversity.org",
+  "smwiki": "http://sm.wikipedia.org",
+  "smwiktionary": "http://sm.wiktionary.org",
+  "snwiki": "http://sn.wikipedia.org",
+  "snwiktionary": "http://sn.wiktionary.org",
+  "sowiki": "http://so.wikipedia.org",
+  "sowiktionary": "http://so.wiktionary.org",
+  "sqwiki": "http://sq.wikipedia.org",
+  "sqwiktionary": "http://sq.wiktionary.org",
+  "sqwikibooks": "http://sq.wikibooks.org",
+  "sqwikinews": "http://sq.wikinews.org",
+  "sqwikiquote": "http://sq.wikiquote.org",
+  "srwiki": "http://sr.wikipedia.org",
+  "srwiktionary": "http://sr.wiktionary.org",
+  "srwikibooks": "http://sr.wikibooks.org",
+  "srwikinews": "http://sr.wikinews.org",
+  "srwikiquote": "http://sr.wikiquote.org",
+  "srwikisource": "http://sr.wikisource.org",
+  "srnwiki": "http://srn.wikipedia.org",
+  "sswiki": "http://ss.wikipedia.org",
+  "sswiktionary": "http://ss.wiktionary.org",
+  "stwiki": "http://st.wikipedia.org",
+  "stwiktionary": "http://st.wiktionary.org",
+  "stqwiki": "http://stq.wikipedia.org",
+  "suwiki": "http://su.wikipedia.org",
+  "suwiktionary": "http://su.wiktionary.org",
+  "suwikibooks": "http://su.wikibooks.org",
+  "suwikiquote": "http://su.wikiquote.org",
+  "svwiki": "http://sv.wikipedia.org",
+  "svwiktionary": "http://sv.wiktionary.org",
+  "svwikibooks": "http://sv.wikibooks.org",
+  "svwikinews": "http://sv.wikinews.org",
+  "svwikiquote": "http://sv.wikiquote.org",
+  "svwikisource": "http://sv.wikisource.org",
+  "svwikiversity": "http://sv.wikiversity.org",
+  "svwikivoyage": "http://sv.wikivoyage.org",
+  "swwiki": "http://sw.wikipedia.org",
+  "swwiktionary": "http://sw.wiktionary.org",
+  "swwikibooks": "http://sw.wikibooks.org",
+  "szlwiki": "http://szl.wikipedia.org",
+  "tawiki": "http://ta.wikipedia.org",
+  "tawiktionary": "http://ta.wiktionary.org",
+  "tawikibooks": "http://ta.wikibooks.org",
+  "tawikinews": "http://ta.wikinews.org",
+  "tawikiquote": "http://ta.wikiquote.org",
+  "tawikisource": "http://ta.wikisource.org",
+  "tewiki": "http://te.wikipedia.org",
+  "tewiktionary": "http://te.wiktionary.org",
+  "tewikibooks": "http://te.wikibooks.org",
+  "tewikiquote": "http://te.wikiquote.org",
+  "tewikisource": "http://te.wikisource.org",
+  "tetwiki": "http://tet.wikipedia.org",
+  "tgwiki": "http://tg.wikipedia.org",
+  "tgwiktionary": "http://tg.wiktionary.org",
+  "tgwikibooks": "http://tg.wikibooks.org",
+  "thwiki": "http://th.wikipedia.org",
+  "thwiktionary": "http://th.wiktionary.org",
+  "thwikibooks": "http://th.wikibooks.org",
+  "thwikinews": "http://th.wikinews.org",
+  "thwikiquote": "http://th.wikiquote.org",
+  "thwikisource": "http://th.wikisource.org",
+  "tiwiki": "http://ti.wikipedia.org",
+  "tiwiktionary": "http://ti.wiktionary.org",
+  "tkwiki": "http://tk.wikipedia.org",
+  "tkwiktionary": "http://tk.wiktionary.org",
+  "tkwikibooks": "http://tk.wikibooks.org",
+  "tkwikiquote": "http://tk.wikiquote.org",
+  "tlwiki": "http://tl.wikipedia.org",
+  "tlwiktionary": "http://tl.wiktionary.org",
+  "tlwikibooks": "http://tl.wikibooks.org",
+  "tnwiki": "http://tn.wikipedia.org",
+  "tnwiktionary": "http://tn.wiktionary.org",
+  "towiki": "http://to.wikipedia.org",
+  "towiktionary": "http://to.wiktionary.org",
+  "tpiwiki": "http://tpi.wikipedia.org",
+  "tpiwiktionary": "http://tpi.wiktionary.org",
+  "trwiki": "http://tr.wikipedia.org",
+  "trwiktionary": "http://tr.wiktionary.org",
+  "trwikibooks": "http://tr.wikibooks.org",
+  "trwikinews": "http://tr.wikinews.org",
+  "trwikiquote": "http://tr.wikiquote.org",
+  "trwikisource": "http://tr.wikisource.org",
+  "tswiki": "http://ts.wikipedia.org",
+  "tswiktionary": "http://ts.wiktionary.org",
+  "ttwiki": "http://tt.wikipedia.org",
+  "ttwiktionary": "http://tt.wiktionary.org",
+  "ttwikibooks": "http://tt.wikibooks.org",
+  "ttwikiquote": "http://tt.wikiquote.org",
+  "tumwiki": "http://tum.wikipedia.org",
+  "twwiki": "http://tw.wikipedia.org",
+  "twwiktionary": "http://tw.wiktionary.org",
+  "tywiki": "http://ty.wikipedia.org",
+  "tyvwiki": "http://tyv.wikipedia.org",
+  "udmwiki": "http://udm.wikipedia.org",
+  "ugwiki": "http://ug.wikipedia.org",
+  "ugwiktionary": "http://ug.wiktionary.org",
+  "ugwikibooks": "http://ug.wikibooks.org",
+  "ugwikiquote": "http://ug.wikiquote.org",
+  "ukwiki": "http://uk.wikipedia.org",
+  "ukwiktionary": "http://uk.wiktionary.org",
+  "ukwikibooks": "http://uk.wikibooks.org",
+  "ukwikinews": "http://uk.wikinews.org",
+  "ukwikiquote": "http://uk.wikiquote.org",
+  "ukwikisource": "http://uk.wikisource.org",
+  "ukwikivoyage": "http://uk.wikivoyage.org",
+  "urwiki": "http://ur.wikipedia.org",
+  "urwiktionary": "http://ur.wiktionary.org",
+  "urwikibooks": "http://ur.wikibooks.org",
+  "urwikiquote": "http://ur.wikiquote.org",
+  "uzwiki": "https://uz.wikipedia.org",
+  "uzwiktionary": "http://uz.wiktionary.org",
+  "uzwikibooks": "http://uz.wikibooks.org",
+  "uzwikiquote": "http://uz.wikiquote.org",
+  "vewiki": "http://ve.wikipedia.org",
+  "vecwiki": "http://vec.wikipedia.org",
+  "vecwiktionary": "http://vec.wiktionary.org",
+  "vecwikisource": "http://vec.wikisource.org",
+  "vepwiki": "http://vep.wikipedia.org",
+  "viwiki": "http://vi.wikipedia.org",
+  "viwiktionary": "http://vi.wiktionary.org",
+  "viwikibooks": "http://vi.wikibooks.org",
+  "viwikiquote": "http://vi.wikiquote.org",
+  "viwikisource": "http://vi.wikisource.org",
+  "viwikivoyage": "http://vi.wikivoyage.org",
+  "vlswiki": "http://vls.wikipedia.org",
+  "vowiki": "http://vo.wikipedia.org",
+  "vowiktionary": "http://vo.wiktionary.org",
+  "vowikibooks": "http://vo.wikibooks.org",
+  "vowikiquote": "http://vo.wikiquote.org",
+  "wawiki": "http://wa.wikipedia.org",
+  "wawiktionary": "http://wa.wiktionary.org",
+  "wawikibooks": "http://wa.wikibooks.org",
+  "warwiki": "http://war.wikipedia.org",
+  "wowiki": "http://wo.wikipedia.org",
+  "wowiktionary": "http://wo.wiktionary.org",
+  "wowikiquote": "http://wo.wikiquote.org",
+  "wuuwiki": "http://wuu.wikipedia.org",
+  "xalwiki": "http://xal.wikipedia.org",
+  "xhwiki": "http://xh.wikipedia.org",
+  "xhwiktionary": "http://xh.wiktionary.org",
+  "xhwikibooks": "http://xh.wikibooks.org",
+  "xmfwiki": "http://xmf.wikipedia.org",
+  "yiwiki": "http://yi.wikipedia.org",
+  "yiwiktionary": "http://yi.wiktionary.org",
+  "yiwikisource": "http://yi.wikisource.org",
+  "yowiki": "http://yo.wikipedia.org",
+  "yowiktionary": "http://yo.wiktionary.org",
+  "yowikibooks": "http://yo.wikibooks.org",
+  "zawiki": "http://za.wikipedia.org",
+  "zawiktionary": "http://za.wiktionary.org",
+  "zawikibooks": "http://za.wikibooks.org",
+  "zawikiquote": "http://za.wikiquote.org",
+  "zeawiki": "http://zea.wikipedia.org",
+  "zhwiki": "http://zh.wikipedia.org",
+  "zhwiktionary": "http://zh.wiktionary.org",
+  "zhwikibooks": "http://zh.wikibooks.org",
+  "zhwikinews": "http://zh.wikinews.org",
+  "zhwikiquote": "http://zh.wikiquote.org",
+  "zhwikisource": "http://zh.wikisource.org",
+  "zhwikivoyage": "http://zh.wikivoyage.org",
+  "zh_classicalwiki": "http://zh-classical.wikipedia.org",
+  "zh_min_nanwiki": "http://zh-min-nan.wikipedia.org",
+  "zh_min_nanwiktionary": "http://zh-min-nan.wiktionary.org",
+  "zh_min_nanwikibooks": "http://zh-min-nan.wikibooks.org",
+  "zh_min_nanwikiquote": "http://zh-min-nan.wikiquote.org",
+  "zh_min_nanwikisource": "http://zh-min-nan.wikisource.org",
+  "zh_yuewiki": "http://zh-yue.wikipedia.org",
+  "zuwiki": "http://zu.wikipedia.org",
+  "zuwiktionary": "http://zu.wiktionary.org",
+  "zuwikibooks": "http://zu.wikibooks.org"
+}
+if(typeof module !== 'undefined' && module.exports) {
+  module.exports = site_map;
+}
+
+},{}]},{},[288]);

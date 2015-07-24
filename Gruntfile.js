@@ -11,7 +11,7 @@ module.exports = function (grunt) {
     },
     "browserify": {
       client: {
-        src: './index.js',
+        src: './src/index.js',
         dest: './client_side/wikiscript.js',
         options: {
           "standalone": true

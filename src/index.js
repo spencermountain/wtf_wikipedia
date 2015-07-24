@@ -4,8 +4,8 @@
 var wtf_wikipedia = (function () {
   var sentence_parser = require("./lib/sentence_parser")
   var fetch = require("./lib/fetch_text")
-  var i18n = require("./i18n")
-  var languages = require("./languages")
+  var i18n = require("./data/i18n")
+  var languages = require("./data/languages")
     //pulls target link out of redirect page
   var REDIRECT_REGEX = new RegExp("^ ?#(" + i18n.redirects.join('|') + ") ?\\[\\[(.{2,60}?)\\]\\]", "i")
 
