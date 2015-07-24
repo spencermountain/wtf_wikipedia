@@ -6,209 +6,19 @@ var wtf_wikipedia = (function () {
   var fetch = require("./lib/fetch_text")
   var i18n = require("./data/i18n")
   var languages = require("./data/languages")
+  var helpers = require("./lib/helpers")
+  var parse_table = require("./parse_table")
+  var recursive_matches = require("./recursive_matches")
+  var parse_line = require("./parse_line")
+  var parse_categories = require("./parse_categories")
+  var parse_disambig = require("./parse_disambig")
+  var parse_infobox = require("./parse_infobox")
+  var parse_image = require("./parse_image")
+  var kill_xml = require("./kill_xml")
     //pulls target link out of redirect page
   var REDIRECT_REGEX = new RegExp("^ ?#(" + i18n.redirects.join('|') + ") ?\\[\\[(.{2,60}?)\\]\\]", "i")
 
-  //find all the pairs of '[[...[[..]]...]]' in the text
-  //used to properly root out recursive template calls, [[.. [[...]] ]]
-  function recursive_matches(opener, closer, text) {
-    var out = []
-    var last = []
-    var chars = text.split('')
-    var open = 0
-    for(var i = 0; i < chars.length; i++) {
-      if(chars[i] === opener && chars[i + 1] && chars[i + 1] === opener) {
-        open += 1
-      }
-      if(open >= 0) {
-        last.push(chars[i])
-      }
-      if(open <= 0 && last.length > 0) {
-        //first, fix botched parse
-        var open_count = last.filter(function (s) {
-          return s === opener
-        });
-        var close_count = last.filter(function (s) {
-          return s === closer
-        });
-        if(open_count.length > close_count.length) {
-          last.push(closer)
-        }
-        out.push(last.join(''))
-        last = []
-      }
-      if(chars[i] === closer && chars[i + 1] && chars[i + 1] === closer) { //this introduces a bug for "...]]]]"
-        open -= 1
-        if(open < 0) {
-          open = 0
-        }
-      }
-    }
-    return out
-  }
 
-  var helpers = {
-    capitalise: function (str) {
-      if(str && typeof str === "string") {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-      }
-    },
-    onlyUnique: function (value, index, self) {
-      return self.indexOf(value) === index;
-    },
-    trim_whitespace: function (str) {
-      if(str && typeof str === "string") {
-        str = str.replace(/^\s\s*/, '')
-        str = str.replace(/\s\s*$/, '')
-        str = str.replace(/ {2}/, ' ')
-        str = str.replace(/\s, /, ', ')
-        return str
-      }
-    }
-  }
-
-  //grab an array of internal links in the text
-  function fetch_links(str) {
-    var links = []
-    var tmp = str.match(/\[\[(.{2,80}?)\]\](\w{0,10})/g) //regular links
-    if(tmp) {
-      tmp.forEach(function (s) {
-        var link, txt;
-        if(s.match(/\|/)) { //replacement link [[link|text]]
-          s = s.replace(/\[\[(.{2,80}?)\]\](\w{0,10})/g, "$1$2") //remove ['s and keep suffix
-          link = s.replace(/(.{2,60})\|.{0,200}/, "$1") //replaced links
-          txt = s.replace(/.{2,60}?\|/, '')
-            //handle funky case of [[toronto|]]
-          if(!txt && link.match(/\|$/)) {
-            link = link.replace(/\|$/, '')
-            txt = link
-          }
-        } else { // standard link [[link]]
-          link = s.replace(/\[\[(.{2,60}?)\]\](\w{0,10})/g, "$1") //remove ['s
-        }
-        //kill off non-wikipedia namespaces
-        if(link.match(/^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i)) {
-          return
-        }
-        //kill off just anchor links [[#history]]
-        if(link.match(/^#/i)) {
-          return
-        }
-        //remove anchors from end [[toronto#history]]
-        link = link.replace(/#[^ ]{1,100}/, '')
-        link = helpers.capitalise(link)
-        var obj = {
-          page: link,
-          src: txt
-        }
-        links.push(obj)
-      })
-    }
-    links = links.filter(helpers.onlyUnique)
-    if(links.length === 0) {
-      return undefined
-    }
-    return links
-  }
-  // console.log(fetch_links("it is [[Tony Hawk|Tony]]s moher in [[Toronto]]s"))
-
-  function fetch_categories(wiki) {
-    var cats = []
-    var reg = new RegExp("\\[\\[:?(" + i18n.categories.join("|") + "):(.{2,60}?)\]\](\w{0,10})", "ig")
-    var tmp = wiki.match(reg) //regular links
-    if(tmp) {
-      var reg2 = new RegExp("^\\[\\[:?(" + i18n.categories.join("|") + "):", "ig")
-      tmp.forEach(function (c) {
-        c = c.replace(reg2, '')
-        c = c.replace(/\|?[ \*]?\]\]$/i, '') //parse fancy onces..
-        c = c.replace(/\|.*/, '') //everything after the '|' is metadata
-        if(c && !c.match(/[\[\]]/)) {
-          cats.push(c)
-        }
-      })
-    }
-    return cats
-  }
-
-  //return only rendered text of wiki links
-  function resolve_links(line) {
-    // categories, images, files
-    var re = /\[\[:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف):[^\]\]]{2,80}\]\]/gi
-    line = line.replace(re, "")
-
-    // [[Common links]]
-    line = line.replace(/\[\[:?([^|]{2,80}?)\]\](\w{0,5})/g, "$1$2")
-      // [[Replaced|Links]]
-    line = line.replace(/\[\[:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, "$2$3")
-      // External links
-    line = line.replace(/\[(https?|news|ftp|mailto|gopher|irc):\/\/[^\]\| ]{4,1500}([\| ].*?)?\]/g, "$2")
-    return line
-  }
-  // console.log(resolve_links("[http://www.whistler.ca www.whistler.ca]"))
-
-  function parse_image(img) {
-    img = img.match(/(file|image):.*?[\|\]]/i) || ['']
-    img = img[0].replace(/\|$/, '')
-    return img
-  }
-
-  function parse_infobox(str) {
-    var obj = {}
-      // var str= str.match(/\{\{Infobox [\s\S]*?\}\}/i)
-    if(str) {
-      //this collapsible list stuff is just a headache
-      str = str.replace(/\{\{Collapsible list[^\}]{10,1000}\}\}/g, '')
-      str.replace(/\r/g, '').split(/\n/).forEach(function (l) {
-        if(l.match(/^\|/)) {
-          var key = l.match(/^\| ?(.{1,200}?)[ =]/) || []
-          key = helpers.trim_whitespace(key[1] || '')
-          var value = l.match(/=(.{1,500})$/) || []
-          value = helpers.trim_whitespace(value[1] || '')
-            //this is necessary for mongodb, im sorry
-          if(key && key.match(/[\.]/)) {
-            key = null
-          }
-          if(key && value && !value.match(/^[\|<]/) && !value.match(/=/)) {
-            obj[key] = parse_line(value)
-              //turn number strings into integers
-            if(obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
-              obj[key].text = obj[key].text.replace(/,/g)
-              obj[key].text = parseInt(obj[key].text)
-            }
-          }
-        }
-      })
-    }
-    return obj
-  }
-  var kill_xml = function (wiki) {
-      //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
-      //luckily, refs can't be recursive..
-      wiki = wiki.replace(/<ref>[\s\S]{0,500}?<\/ref>/gi, ' ') // <ref></ref>
-      wiki = wiki.replace(/<ref [^>]{0,200}?\/>/gi, ' ') // <ref name=""/>
-      wiki = wiki.replace(/<ref [^>]{0,200}?>[\s\S]{0,500}?<\/ref>/ig, ' ') // <ref name=""></ref>
-        //other types of xml that we want to trash completely
-
-      wiki = wiki.replace(/< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi, ' ') // <table name=""><tr>hi</tr></table>
-
-      //some xml-like fragments we can also kill
-      //
-      wiki = wiki.replace(/< ?(ref|span|div|table|data) [a-z0-9=" ]{2,20}\/ ?>/g, " ") //<ref name="asd"/>
-        //some formatting xml, we'll keep their insides though
-      wiki = wiki.replace(/<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?>/g, " ") //<sub>, </sub>
-      wiki = wiki.replace(/<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s)[ \/]?>/g, " ") //<abbr>, </abbr>
-      wiki = wiki.replace(/<[ \/]?h[0-9][ \/]?>/g, " ") //<h2>, </h2>
-        //a more generic + dangerous xml-tag removal
-      wiki = wiki.replace(/<[ \/]?[a-z0-9]{1,8}[ \/]?>/g, " ") //<samp>
-
-      return wiki
-    }
-    // console.log(kill_xml("hello <ref>nono!</ref> world1. hello <ref name='hullo'>nono!</ref> world2. hello <ref name='hullo'/>world3.  hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4. hello<ref name=''/> world5 <ref name=''>nono</ref>, man.}}"))
-    // console.log(kill_xml("hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4"))
-    // console.log(kill_xml('hello<ref name="theroyal"/> world <ref>nono</ref>, man}}'))
-    // console.log(kill_xml('hello<ref name="theroyal"/> world5 <ref name="">nono</ref>, man'))
-    // console.log(kill_xml("hello <asd f> world </h2>"))
-    // console.log(kill_xml("North America,<ref name=\"fhwa\"> and one of"))
   function parse_infobox_template(str) {
     var template = ''
     if(str) {
@@ -253,30 +63,6 @@ var wtf_wikipedia = (function () {
   // console.log(preprocess('hello <br/> world'))
   // console.log(preprocess("hello <asd f> world </h2>"))
 
-  function parse_line(line) {
-    return {
-      text: postprocess(line),
-      links: fetch_links(line)
-    }
-  }
-
-  function postprocess(line) {
-
-    //fix links
-    line = resolve_links(line)
-      //oops, recursive image bug
-    if(line.match(/^(thumb|right|left)\|/i)) {
-      return null
-    }
-    //some IPA pronounciations leave blank junk parenteses
-    line = line.replace(/\([^a-z]{0,8}\)/, '')
-    line = helpers.trim_whitespace(line)
-
-    // put new lines back in
-    // line=line+"\n";
-
-    return line
-  }
 
   //some xml elements are just junk, and demand full inglorious death by regular exp
   //other xml elements, like <em>, are plucked out afterwards
@@ -334,65 +120,6 @@ var wtf_wikipedia = (function () {
     // console.log(word_templates("hello {{pull quote|Life is like\n|author=[[asdf]]}} world"))
     // console.log(word_templates("hi {{etyl|la|-}} there"))
     // console.log(word_templates("{{etyl|la|-}} cognate with {{etyl|is|-}} {{term|hugga||to comfort|lang=is}},"))
-
-  //return a list of probable pages for this disambig page
-  var parse_disambig = function (wiki) {
-    var pages = []
-    var lines = wiki.replace(/\r/g, '').split(/\n/)
-    lines.forEach(function (str) {
-      //if there's an early link in the list
-      if(str.match(/^\*.{0,40}\[\[.*\]\]/)) {
-        var links = fetch_links(str)
-        if(links && links[0] && links[0].page) {
-          pages.push(links[0].page)
-        }
-      }
-    })
-    return {
-      type: "disambiguation",
-      pages: pages
-    }
-  }
-
-  //turn a {|...table string into an array of arrays
-  var parse_table = function (wiki) {
-    var table = []
-    var lines = wiki.replace(/\r/g, '').split(/\n/)
-    lines.forEach(function (str) {
-      //die
-      if(str.match(/^\|\}/)) {
-        return
-      }
-      //make new row
-      if(str.match(/^\|-/)) {
-        table.push([])
-        return
-      }
-      //this is some kind of comment
-      if(str.match(/^\|\+/)) {
-        return
-      }
-      //juicy line
-      if(str.match(/^[\!\|]/)) {
-        //make a new row
-        if(!table[table.length - 1]) {
-          table[table.length - 1] = []
-        }
-        var want = (str.match(/\|(.*)/) || [])[1] || ''
-        want = helpers.trim_whitespace(want) || ''
-          //handle the || shorthand..
-        if(want.match(/[!\|]{2}/)) {
-          want.split(/[!\|]{2}/g).forEach(function (s) {
-            s = helpers.trim_whitespace(s)
-            table[table.length - 1].push(s)
-          })
-        } else {
-          table[table.length - 1].push(want)
-        }
-      }
-    })
-    return table
-  }
 
   var main = function (wiki) {
     var infobox = {}
@@ -465,7 +192,7 @@ var wtf_wikipedia = (function () {
     wiki = wiki.replace(/\{\{.*?\}\}/g, '')
 
     //get list of links, categories
-    var cats = fetch_categories(wiki)
+    var cats = parse_categories(wiki)
 
     //next, map each line into a parsable sentence
     var output = {}
