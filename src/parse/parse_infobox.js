@@ -1,9 +1,8 @@
-var helpers = require("./lib/helpers")
+var helpers = require("../lib/helpers")
 var parse_line = require("./parse_line")
 
 function parse_infobox(str) {
   var obj = {}
-    // var str= str.match(/\{\{Infobox [\s\S]*?\}\}/i)
   if(str) {
     //this collapsible list stuff is just a headache
     str = str.replace(/\{\{Collapsible list[^\}]{10,1000}\}\}/g, '')
@@ -13,7 +12,7 @@ function parse_infobox(str) {
         key = helpers.trim_whitespace(key[1] || '')
         var value = l.match(/=(.{1,500})$/) || []
         value = helpers.trim_whitespace(value[1] || '')
-          //this is necessary for mongodb, im sorry
+        //this is necessary for mongodb, im sorry
         if(key && key.match(/[\.]/)) {
           key = null
         }
@@ -22,7 +21,7 @@ function parse_infobox(str) {
             //turn number strings into integers
           if(obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
             obj[key].text = obj[key].text.replace(/,/g)
-            obj[key].text = parseInt(obj[key].text)
+            obj[key].text = parseInt(obj[key].text, 10)
           }
         }
       }

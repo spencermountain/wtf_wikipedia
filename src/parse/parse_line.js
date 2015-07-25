@@ -1,4 +1,4 @@
-var helpers = require("./lib/helpers")
+var helpers = require("../lib/helpers")
 var parse_links = require("./parse_links")
 
 

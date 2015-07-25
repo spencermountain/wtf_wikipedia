@@ -5,16 +5,17 @@ var wtf_wikipedia = (function () {
   var sentence_parser = require("./lib/sentence_parser")
   var fetch = require("./lib/fetch_text")
   var i18n = require("./data/i18n")
-  var languages = require("./data/languages")
   var helpers = require("./lib/helpers")
-  var parse_table = require("./parse_table")
+  var languages = require("./data/languages")
+  //parsers
+  var parse_table = require("./parse/parse_table")
+  var parse_line = require("./parse/parse_line")
+  var parse_categories = require("./parse/parse_categories")
+  var parse_disambig = require("./parse/parse_disambig")
+  var parse_infobox = require("./parse/parse_infobox")
+  var parse_infobox_template = require("./parse/parse_infobox_template")
+  var parse_image = require("./parse/parse_image")
   var recursive_matches = require("./recursive_matches")
-  var parse_line = require("./parse_line")
-  var parse_categories = require("./parse_categories")
-  var parse_disambig = require("./parse_disambig")
-  var parse_infobox = require("./parse_infobox")
-  var parse_infobox_template = require("./parse_infobox_template")
-  var parse_image = require("./parse_image")
   var kill_xml = require("./kill_xml")
   var word_templates = require("./word_templates")
     //pulls target link out of redirect page
@@ -134,7 +135,6 @@ var wtf_wikipedia = (function () {
       if(!section) {
         return
       }
-
       //add # numberings formatting
       if(part.match(/^ ?\#[^:,\|]{4}/i)) {
         part = part.replace(/^ ?#*/, number + ") ")
@@ -153,12 +153,10 @@ var wtf_wikipedia = (function () {
       if(part.match(/^[#\*:;\|]/)) {
         return
       }
-
       //ignore only-punctuation
       if(!part.match(/[a-z0-9]/i)) {
         return
       }
-
       //headings
       var ban_headings = new RegExp("^ ?(" + i18n.sources.join('|') + ") ?$", "i") //remove things like 'external links'
       if(part.match(/^={1,5}[^=]{1,200}={1,5}$/)) {

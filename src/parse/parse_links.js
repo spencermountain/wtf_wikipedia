@@ -1,4 +1,4 @@
-var helpers = require("./lib/helpers")
+var helpers = require("../lib/helpers")
 //grab an array of internal links in the text
 var parse_links = function (str) {
   var links = []

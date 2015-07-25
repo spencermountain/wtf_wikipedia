@@ -1,3 +1,5 @@
+var languages = require("./data/languages")
+
 // templates that need parsing and replacing for inline text
 //https://en.wikipedia.org/wiki/Category:Magic_word_templates
 var word_templates = function (wiki) {

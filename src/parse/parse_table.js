@@ -1,4 +1,4 @@
-var helpers = require("./lib/helpers")
+var helpers = require("../lib/helpers")
 //turn a {|...table string into an array of arrays
 var parse_table = function (wiki) {
   var table = []

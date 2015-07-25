@@ -51988,16 +51988,17 @@ var wtf_wikipedia = (function () {
   var sentence_parser = require("./lib/sentence_parser")
   var fetch = require("./lib/fetch_text")
   var i18n = require("./data/i18n")
-  var languages = require("./data/languages")
   var helpers = require("./lib/helpers")
-  var parse_table = require("./parse_table")
+  var languages = require("./data/languages")
+  //parsers
+  var parse_table = require("./parse/parse_table")
+  var parse_line = require("./parse/parse_line")
+  var parse_categories = require("./parse/parse_categories")
+  var parse_disambig = require("./parse/parse_disambig")
+  var parse_infobox = require("./parse/parse_infobox")
+  var parse_infobox_template = require("./parse/parse_infobox_template")
+  var parse_image = require("./parse/parse_image")
   var recursive_matches = require("./recursive_matches")
-  var parse_line = require("./parse_line")
-  var parse_categories = require("./parse_categories")
-  var parse_disambig = require("./parse_disambig")
-  var parse_infobox = require("./parse_infobox")
-  var parse_infobox_template = require("./parse_infobox_template")
-  var parse_image = require("./parse_image")
   var kill_xml = require("./kill_xml")
   var word_templates = require("./word_templates")
     //pulls target link out of redirect page
@@ -52117,7 +52118,6 @@ var wtf_wikipedia = (function () {
       if(!section) {
         return
       }
-
       //add # numberings formatting
       if(part.match(/^ ?\#[^:,\|]{4}/i)) {
         part = part.replace(/^ ?#*/, number + ") ")
@@ -52136,12 +52136,10 @@ var wtf_wikipedia = (function () {
       if(part.match(/^[#\*:;\|]/)) {
         return
       }
-
       //ignore only-punctuation
       if(!part.match(/[a-z0-9]/i)) {
         return
       }
-
       //headings
       var ban_headings = new RegExp("^ ?(" + i18n.sources.join('|') + ") ?$", "i") //remove things like 'external links'
       if(part.match(/^={1,5}[^=]{1,200}={1,5}$/)) {
@@ -52253,9 +52251,10 @@ module.exports = wtf_wikipedia;
 //   console.log(JSON.stringify(wtf_wikipedia.parse(s), null, 2))
 // })
 
-},{"./data/i18n":287,"./data/languages":288,"./kill_xml":291,"./lib/fetch_text":292,"./lib/helpers":293,"./lib/sentence_parser":294,"./parse_categories":295,"./parse_disambig":296,"./parse_image":297,"./parse_infobox":298,"./parse_infobox_template":299,"./parse_line":300,"./parse_table":302,"./recursive_matches":303,"./word_templates":304}],291:[function(require,module,exports){
+},{"./data/i18n":287,"./data/languages":288,"./kill_xml":291,"./lib/fetch_text":292,"./lib/helpers":293,"./lib/sentence_parser":294,"./parse/parse_categories":295,"./parse/parse_disambig":296,"./parse/parse_image":297,"./parse/parse_infobox":298,"./parse/parse_infobox_template":299,"./parse/parse_line":300,"./parse/parse_table":302,"./recursive_matches":303,"./word_templates":304}],291:[function(require,module,exports){
+//https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
+
 var kill_xml = function (wiki) {
-    //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
     //luckily, refs can't be recursive..
     wiki = wiki.replace(/<ref>[\s\S]{0,500}?<\/ref>/gi, ' ') // <ref></ref>
     wiki = wiki.replace(/<ref [^>]{0,200}?\/>/gi, ' ') // <ref name=""/>
@@ -52405,7 +52404,7 @@ module.exports = sentence_parser;
 // console.log(sentence_parser("This language allowed people (e.g. shepherds) to communicate"))
 
 },{}],295:[function(require,module,exports){
-var i18n = require("./data/i18n")
+var i18n = require("../data/i18n")
 
 function parse_categories(wiki) {
   var cats = []
@@ -52426,7 +52425,7 @@ function parse_categories(wiki) {
 }
 module.exports = parse_categories
 
-},{"./data/i18n":287}],296:[function(require,module,exports){
+},{"../data/i18n":287}],296:[function(require,module,exports){
 var parse_links = require("./parse_links")
 
 //return a list of probable pages for this disambig page
@@ -52450,6 +52449,7 @@ var parse_disambig = function (wiki) {
 module.exports = parse_disambig
 
 },{"./parse_links":301}],297:[function(require,module,exports){
+//images are usually [[image:my_pic.jpg]]
 function parse_image(img) {
   img = img.match(/(file|image):.*?[\|\]]/i) || ['']
   img = img[0].replace(/\|$/, '')
@@ -52458,12 +52458,11 @@ function parse_image(img) {
 module.exports = parse_image
 
 },{}],298:[function(require,module,exports){
-var helpers = require("./lib/helpers")
+var helpers = require("../lib/helpers")
 var parse_line = require("./parse_line")
 
 function parse_infobox(str) {
   var obj = {}
-    // var str= str.match(/\{\{Infobox [\s\S]*?\}\}/i)
   if(str) {
     //this collapsible list stuff is just a headache
     str = str.replace(/\{\{Collapsible list[^\}]{10,1000}\}\}/g, '')
@@ -52473,7 +52472,7 @@ function parse_infobox(str) {
         key = helpers.trim_whitespace(key[1] || '')
         var value = l.match(/=(.{1,500})$/) || []
         value = helpers.trim_whitespace(value[1] || '')
-          //this is necessary for mongodb, im sorry
+        //this is necessary for mongodb, im sorry
         if(key && key.match(/[\.]/)) {
           key = null
         }
@@ -52482,7 +52481,7 @@ function parse_infobox(str) {
             //turn number strings into integers
           if(obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
             obj[key].text = obj[key].text.replace(/,/g)
-            obj[key].text = parseInt(obj[key].text)
+            obj[key].text = parseInt(obj[key].text, 10)
           }
         }
       }
@@ -52492,8 +52491,8 @@ function parse_infobox(str) {
 }
 module.exports = parse_infobox
 
-},{"./lib/helpers":293,"./parse_line":300}],299:[function(require,module,exports){
-var i18n = require("./data/i18n")
+},{"../lib/helpers":293,"./parse_line":300}],299:[function(require,module,exports){
+var i18n = require("../data/i18n")
 
 function parse_infobox_template(str) {
   var template = ''
@@ -52508,8 +52507,8 @@ function parse_infobox_template(str) {
 }
 module.exports = parse_infobox_template
 
-},{"./data/i18n":287}],300:[function(require,module,exports){
-var helpers = require("./lib/helpers")
+},{"../data/i18n":287}],300:[function(require,module,exports){
+var helpers = require("../lib/helpers")
 var parse_links = require("./parse_links")
 
 
@@ -52557,8 +52556,8 @@ function parse_line(line) {
 // console.log(fetch_links("it is [[Tony Hawk|Tony]]s moher in [[Toronto]]s"))
 module.exports = parse_line
 
-},{"./lib/helpers":293,"./parse_links":301}],301:[function(require,module,exports){
-var helpers = require("./lib/helpers")
+},{"../lib/helpers":293,"./parse_links":301}],301:[function(require,module,exports){
+var helpers = require("../lib/helpers")
 //grab an array of internal links in the text
 var parse_links = function (str) {
   var links = []
@@ -52604,8 +52603,8 @@ var parse_links = function (str) {
 }
 module.exports = parse_links
 
-},{"./lib/helpers":293}],302:[function(require,module,exports){
-var helpers = require("./lib/helpers")
+},{"../lib/helpers":293}],302:[function(require,module,exports){
+var helpers = require("../lib/helpers")
 //turn a {|...table string into an array of arrays
 var parse_table = function (wiki) {
   var table = []
@@ -52647,7 +52646,7 @@ var parse_table = function (wiki) {
 }
 module.exports = parse_table
 
-},{"./lib/helpers":293}],303:[function(require,module,exports){
+},{"../lib/helpers":293}],303:[function(require,module,exports){
 //find all the pairs of '[[...[[..]]...]]' in the text
 //used to properly root out recursive template calls, [[.. [[...]] ]]
 function recursive_matches(opener, closer, text) {
@@ -52688,6 +52687,8 @@ function recursive_matches(opener, closer, text) {
 module.exports = recursive_matches
 
 },{}],304:[function(require,module,exports){
+var languages = require("./data/languages")
+
 // templates that need parsing and replacing for inline text
 //https://en.wikipedia.org/wiki/Category:Magic_word_templates
 var word_templates = function (wiki) {
@@ -52744,4 +52745,4 @@ var word_templates = function (wiki) {
 
 module.exports = word_templates
 
-},{}]},{},[290]);
+},{"./data/languages":288}]},{},[290]);

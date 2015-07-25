@@ -1,4 +1,4 @@
-var i18n = require("./data/i18n")
+var i18n = require("../data/i18n")
 
 function parse_infobox_template(str) {
   var template = ''

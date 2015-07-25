@@ -1,5 +1,6 @@
+//https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
+
 var kill_xml = function (wiki) {
-    //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
     //luckily, refs can't be recursive..
     wiki = wiki.replace(/<ref>[\s\S]{0,500}?<\/ref>/gi, ' ') // <ref></ref>
     wiki = wiki.replace(/<ref [^>]{0,200}?\/>/gi, ' ') // <ref name=""/>
