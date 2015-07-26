@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "engines": [
     "node >= 0.4.1"
   ],
