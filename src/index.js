@@ -255,10 +255,7 @@ module.exports = wtf_wikipedia;
 //   console.log(parsed);
 // });
 
-// var s = "Each year, however, there are a few days where the temperature rises above 32 C}}. Some years have even witnessed long periods of harsh summer weather, such as the [[2003 European heat wave for weeks, surged up to 40 °C}} on some days and seldom cooled down at night.{{sfn"
-// var s = "{{convert|32|C}}"
-// var parsed = wtf_wikipedia.parse(s); // causes the crash
-// console.log(parsed.text.Intro);
+// var s = "Each year, however, there are a few days where the temperature rises above 32 C. Some years have even witnessed long periods of harsh summer weather, such as the [[2003 European heat wave for weeks, surged up to 40 °C}} on some days and seldom cooled down at night.{{sfn"
 
 
 
