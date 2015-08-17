@@ -1,7 +1,7 @@
 //turns wikimedia script into json
 // https://github.com/spencermountain/wtf_wikipedia
 //@spencermountain
-var wtf_wikipedia = (function () {
+var wtf_wikipedia = (function() {
   var sentence_parser = require("./lib/sentence_parser")
   var fetch = require("./lib/fetch_text")
   var i18n = require("./data/i18n")
@@ -18,7 +18,7 @@ var wtf_wikipedia = (function () {
   var recursive_matches = require("./recursive_matches")
   var kill_xml = require("./kill_xml")
   var word_templates = require("./word_templates")
-    //pulls target link out of redirect page
+  //pulls target link out of redirect page
   var REDIRECT_REGEX = new RegExp("^ ?#(" + i18n.redirects.join('|') + ") ?\\[\\[(.{2,60}?)\\]\\]", "i")
 
   function preprocess(wiki) {
@@ -26,21 +26,21 @@ var wtf_wikipedia = (function () {
     //remove comments
     wiki = wiki.replace(/<!--[^>]{0,2000}-->/g, '')
     wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/ig, '')
-      //signitures
+    //signitures
     wiki = wiki.replace(/~~{1,3}/, '')
-      //horizontal rule
+    //horizontal rule
     wiki = wiki.replace(/--{1,3}/, '')
-      //space
+    //space
     wiki = wiki.replace(/&nbsp;/g, ' ')
-      //kill off interwiki links
+    //kill off interwiki links
     wiki = wiki.replace(/\[\[([a-z][a-z]|simple|war|ceb|min):.{2,60}\]\]/i, '')
-      //bold and italics combined
+    //bold and italics combined
     wiki = wiki.replace(/''{4}([^']{0,200})''{4}/g, '$1');
     //bold
     wiki = wiki.replace(/''{2}([^']{0,200})''{2}/g, '$1');
     //italic
     wiki = wiki.replace(/''([^']{0,200})''/g, '$1')
-      //give it the inglorious send-off it deserves..
+    //give it the inglorious send-off it deserves..
     wiki = kill_xml(wiki)
 
     return wiki
@@ -53,15 +53,15 @@ var wtf_wikipedia = (function () {
 
   //some xml elements are just junk, and demand full inglorious death by regular exp
   //other xml elements, like <em>, are plucked out afterwards
-  var main = function (wiki) {
+  var main = function(wiki) {
     var infobox = {}
     var infobox_template = ''
     var images = []
     var tables = []
     var translations = {}
     wiki = wiki || ''
-      //detect if page is just redirect, and return
-    if(wiki.match(REDIRECT_REGEX)) {
+    //detect if page is just redirect, and return
+    if (wiki.match(REDIRECT_REGEX)) {
       return {
         type: "redirect",
         redirect: (wiki.match(REDIRECT_REGEX) || [])[2]
@@ -69,49 +69,49 @@ var wtf_wikipedia = (function () {
     }
     //detect if page is disambiguator page
     var template_reg = new RegExp("\\{\\{ ?(" + i18n.disambigs.join("|") + ")(\\|[a-z =]*?)? ?\\}\\}", "i")
-    if(wiki.match(template_reg)) { //|| wiki.match(/^.{3,25} may refer to/i)|| wiki.match(/^.{3,25} ist der Name mehrerer /i)
+    if (wiki.match(template_reg)) { //|| wiki.match(/^.{3,25} may refer to/i)|| wiki.match(/^.{3,25} ist der Name mehrerer /i)
       return parse_disambig(wiki)
     }
     //parse templates like {{currentday}}
     wiki = word_templates(wiki)
-
     //kill off th3 craziness
     wiki = preprocess(wiki)
 
     //find tables
     tables = wiki.match(/\{\|[\s\S]{1,8000}?\|\}/g, '') || []
-    tables = tables.map(function (s) {
-        return parse_table(s)
-      })
-      //remove tables
+    tables = tables.map(function(s) {
+      return parse_table(s)
+    })
+    //remove tables
     wiki = wiki.replace(/\{\|[\s\S]{1,8000}?\|\}/g, '')
 
     //reduce the scary recursive situations
     //remove {{template {{}} }} recursions
     var matches = recursive_matches('{', '}', wiki)
     var infobox_reg = new RegExp("\{\{(" + i18n.infoboxes.join("|") + ")[: \n]", "ig")
-    matches.forEach(function (s) {
-        if(s.match(infobox_reg, "ig") && Object.keys(infobox).length === 0) {
-          infobox = parse_infobox(s)
-          infobox_template = parse_infobox_template(s)
-        }
-        if(s.match(/\{\{(Gallery|Taxobox|cite|infobox|Inligtingskas|sister|geographic|navboxes|listen|historical|citeweb|citenews|lien|clima|cita|Internetquelle|article|weather)[ \|:\n]/i)) {
-          wiki = wiki.replace(s, '')
-        }
-      })
-      //second, remove [[file:...[[]] ]] recursions
+    matches.forEach(function(s) {
+      if (s.match(infobox_reg, "ig") && Object.keys(infobox).length === 0) {
+        infobox = parse_infobox(s)
+        infobox_template = parse_infobox_template(s)
+      }
+      if (s.match(/\{\{(Gallery|Taxobox|cite|infobox|Inligtingskas|sister|geographic|navboxes|listen|historical|citeweb|citenews|lien|clima|cita|Internetquelle|article|weather)[ \|:\n]/i)) {
+        wiki = wiki.replace(s, '')
+      }
+    })
+
+    //second, remove [[file:...[[]] ]] recursions
     matches = recursive_matches('[', ']', wiki)
-    matches.forEach(function (s) {
-        if(s.match(/\[\[(file|image|fichier|datei|plik)/i)) {
-          images.push(parse_image(s))
-          wiki = wiki.replace(s, '')
-        }
-      })
-      //third, wiktionary-style interlanguage links
-    matches.forEach(function (s) {
-      if(s.match(/\[\[[a-z][a-z]\:.*/i)) {
+    matches.forEach(function(s) {
+      if (s.match(/\[\[(file|image|fichier|datei|plik)/i)) {
+        images.push(parse_image(s))
+        wiki = wiki.replace(s, '')
+      }
+    })
+    //third, wiktionary-style interlanguage links
+    matches.forEach(function(s) {
+      if (s.match(/\[\[[a-z][a-z]\:.*/i)) {
         var lang = s.match(/\[\[([a-z][a-z]):/i)[1]
-        if(lang && languages[lang]) {
+        if (lang && languages[lang]) {
           translations[lang] = s.match(/^\[\[([a-z][a-z]):(.*?)\]\]/i)[2]
         }
         wiki = wiki.replace(s, '')
@@ -125,18 +125,17 @@ var wtf_wikipedia = (function () {
 
     //get list of links, categories
     var cats = parse_categories(wiki)
-
     //next, map each line into a parsable sentence
     var output = {}
     var lines = wiki.replace(/\r/g, '').split(/\n/)
     var section = "Intro"
     var number = 1
-    lines.forEach(function (part) {
-      if(!section) {
+    lines.forEach(function(part) {
+      if (!section) {
         return
       }
       //add # numberings formatting
-      if(part.match(/^ ?\#[^:,\|]{4}/i)) {
+      if (part.match(/^ ?\#[^:,\|]{4}/i)) {
         part = part.replace(/^ ?#*/, number + ") ")
         part = part + "\n"
         number += 1
@@ -144,48 +143,47 @@ var wtf_wikipedia = (function () {
         number = 1
       }
       //add bullet-points formatting
-      if(part.match(/^\*+[^:,\|]{4}/)) {
+      if (part.match(/^\*+[^:,\|]{4}/)) {
         part = part + "\n"
       }
       //remove some nonsense wp lines
 
       //ignore list
-      if(part.match(/^[#\*:;\|]/)) {
+      if (part.match(/^[#\*:;\|]/)) {
         return
       }
       //ignore only-punctuation
-      if(!part.match(/[a-z0-9]/i)) {
+      if (!part.match(/[a-z0-9]/i)) {
         return
       }
       //headings
       var ban_headings = new RegExp("^ ?(" + i18n.sources.join('|') + ") ?$", "i") //remove things like 'external links'
-      if(part.match(/^={1,5}[^=]{1,200}={1,5}$/)) {
+      if (part.match(/^={1,5}[^=]{1,200}={1,5}$/)) {
         section = part.match(/^={1,5}([^=]{2,200}?)={1,5}$/) || []
         section = section[1] || ''
         section = section.replace(/\./g, ' ') // this is necessary for mongo, i'm sorry
         section = helpers.trim_whitespace(section)
-          //ban some sections
-        if(section && section.match(ban_headings)) {
+        //ban some sections
+        if (section && section.match(ban_headings)) {
           section = undefined
         }
         return
       }
       //still alive, add it to the section
-      sentence_parser(part).forEach(function (line) {
+      sentence_parser(part).forEach(function(line) {
         line = parse_line(line)
-        if(line && line.text) {
-          if(!output[section]) {
+        if (line && line.text) {
+          if (!output[section]) {
             output[section] = []
           }
           output[section].push(line)
         }
       })
     })
-
     //add additional image from infobox, if applicable
-    if(infobox['image'] && infobox['image'].text) {
+    if (infobox['image'] && infobox['image'].text) {
       var img = infobox['image'].text || ''
-      if(typeof img === "string" && !img.match(/^(image|file|fichier|Datei)/i)) {
+      if (typeof img === "string" && !img.match(/^(image|file|fichier|Datei)/i)) {
         img = "File:" + img
       }
       images.push(img)
@@ -204,24 +202,24 @@ var wtf_wikipedia = (function () {
 
   }
 
-  var from_api = function (page_identifier, lang_or_wikiid, cb) {
-    if(typeof lang_or_wikiid === "function") {
+  var from_api = function(page_identifier, lang_or_wikiid, cb) {
+    if (typeof lang_or_wikiid === "function") {
       cb = lang_or_wikiid
       lang_or_wikiid = "en"
     }
-    cb = cb || function () {}
+    cb = cb || function() {}
     lang_or_wikiid = lang_or_wikiid || "en"
-    if(!fetch) { //no http method, on the client side
+    if (!fetch) { //no http method, on the client side
       return cb(null)
     }
     fetch(page_identifier, lang_or_wikiid, cb);
   };
 
-  var plaintext = function (str) {
+  var plaintext = function(str) {
     var data = main(str) || {}
     data.text = data.text || {};
-    return Object.keys(data.text).map(function (k) {
-      return data.text[k].map(function (a) {
+    return Object.keys(data.text).map(function(k) {
+      return data.text[k].map(function(a) {
         return a.text
       }).join(" ")
     }).join("\n")
@@ -233,7 +231,7 @@ var wtf_wikipedia = (function () {
     plaintext: plaintext,
   }
 
-  if(typeof module !== 'undefined' && module.exports) {
+  if (typeof module !== 'undefined' && module.exports) {
     module.exports = methods
   }
 
@@ -241,13 +239,28 @@ var wtf_wikipedia = (function () {
 })()
 
 //export it for client-side
-if (typeof window!=="undefined") { //is this right?
+if (typeof window !== "undefined") { //is this right?
   window.wtf_wikipedia = wtf_wikipedia;
 }
 module.exports = wtf_wikipedia;
 
 // wtf_wikipedia.from_api("Whistler", function(s){console.log(wtf_wikipedia.parse(s))})//disambig
 // wtf_wikipedia.from_api("Toronto", 'tr', function(s){console.log(wtf_wikipedia.parse(s)) })
+// wtf_wikipedia.from_api("Tomb_Raider_(2013_video_game)", 'en', function(s) {
+//   console.log(wtf_wikipedia.parse(s).infobox)
+// })
+
+// wtf_wikipedia.from_api("Paris", function(page) {
+//   var parsed = wtf_wikipedia.parse(page); // causes the crash
+//   console.log(parsed);
+// });
+
+// var s = "Each year, however, there are a few days where the temperature rises above 32 C}}. Some years have even witnessed long periods of harsh summer weather, such as the [[2003 European heat wave for weeks, surged up to 40 °C}} on some days and seldom cooled down at night.{{sfn"
+// var s = "{{convert|32|C}}"
+// var parsed = wtf_wikipedia.parse(s); // causes the crash
+// console.log(parsed.text.Intro);
+
+
 
 // function from_file(page){
 //   var str = require("fs").readFileSync(__dirname+"/tests/cache/"+page+".txt", 'utf-8')
