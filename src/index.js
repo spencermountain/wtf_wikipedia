@@ -94,7 +94,7 @@ var wtf_wikipedia = (function() {
         infobox = parse_infobox(s)
         infobox_template = parse_infobox_template(s)
       }
-      if (s.match(/\{\{(Gallery|Taxobox|cite|infobox|Inligtingskas|sister|geographic|navboxes|listen|historical|citeweb|citenews|lien|clima|cita|Internetquelle|article|weather)[ \|:\n]/i)) {
+      if (s.match(infobox_reg)) {
         wiki = wiki.replace(s, '')
       }
     })
@@ -277,6 +277,6 @@ module.exports = wtf_wikipedia;
 // wtf_wikipedia.from_api("List_of_British_films_of_2014", function (s) {
 //   console.log(JSON.stringify(wtf_wikipedia.parse(s), null, 2))
 // })
-wtf_wikipedia.from_api("El deseo (telenovela)", "es", function (s) {
-  console.log(JSON.stringify(wtf_wikipedia.parse(s), null, 2))
-})
+// wtf_wikipedia.from_api("El deseo (telenovela)", "es", function (s) {
+//   console.log(JSON.stringify(wtf_wikipedia.parse(s), null, 2))
+// })

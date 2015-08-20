@@ -18,6 +18,7 @@ var kill_xml = function (wiki) {
     wiki = wiki.replace(/<[ \/]?h[0-9][ \/]?>/g, " ") //<h2>, </h2>
       //a more generic + dangerous xml-tag removal
     wiki = wiki.replace(/<[ \/]?[a-z0-9]{1,8}[ \/]?>/g, " ") //<samp>
+    wiki = wiki.replace(/< ?br ?\/>/g, " ") //<br />
 
     return wiki
   }
@@ -27,4 +28,5 @@ var kill_xml = function (wiki) {
   // console.log(kill_xml('hello<ref name="theroyal"/> world5 <ref name="">nono</ref>, man'))
   // console.log(kill_xml("hello <asd f> world </h2>"))
   // console.log(kill_xml("North America,<ref name=\"fhwa\"> and one of"))
+  // console.log(kill_xml("North America,<br /> and one of"))
 module.exports = kill_xml
