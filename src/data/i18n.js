@@ -135,7 +135,8 @@ var i18n={
       "inligtingskas3",//af
       "لغة",
       "bilgi kutusu",//tr
-      "yerleşim bilgi kutusu"
+      "yerleşim bilgi kutusu",
+      "infoboks" //nn, no
     ],
   "sources":[//blacklist these headings, as they're not plain-text
     "references",
