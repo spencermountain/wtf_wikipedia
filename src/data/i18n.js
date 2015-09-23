@@ -129,7 +129,7 @@ var i18n={
       "desambiguação",//pt
       "homonymie",//fr
       "неоднозначность",//ru
-      "anlam ayrımı",//tr
+      "anlam ayrımı"//tr
   ],
   "infoboxes":[
       "infobox",
@@ -151,7 +151,7 @@ var i18n={
     "voir aussi",
     "liens externes"
   ]
-}
+};
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports=i18n

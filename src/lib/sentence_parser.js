@@ -6,18 +6,18 @@ var sentence_parser = function(text) {
 
   // if this looks like a period within a wikipedia link, return false
   var unbalanced = function(str) {
-    var open = str.match(/\[\[/) || []
-    var closed = str.match(/\]\]/) || []
+    var open = str.match(/\[\[/) || [];
+    var closed = str.match(/\]\]/) || [];
     if (open.length > closed.length) {
       return true
     }
     //make sure quotes are closed too
-    var quotes = str.match(/"/g)
+    var quotes = str.match(/"/g);
     if (quotes && (quotes.length % 2) !== 0 && str.length < 900) {
       return true
     }
     return false
-  }
+  };
 
   // first, do a greedy split
   var tmp = text.split(/(\S.+?[.\?])(?=\s+|$|")/g);
@@ -53,7 +53,7 @@ var sentence_parser = function(text) {
     return [text]
   }
   return clean;
-}
+};
 module.exports = sentence_parser;
 // console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2)
 // console.log(sentence_parser('I like that Color').length === 1)
