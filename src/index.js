@@ -102,7 +102,7 @@ var wtf_wikipedia = (function() {
     //second, remove [[file:...[[]] ]] recursions
     matches = recursive_matches('[', ']', wiki)
     matches.forEach(function(s) {
-      if (s.match(/\[\[(file|image|fichier|datei|plik)/i)) {
+      if (s.match(new RegExp("\\[\\[(" + i18n.images.concat(i18n.files).join('|') + ")", "i"))) {
         images.push(parse_image(s))
         wiki = wiki.replace(s, '')
       }
@@ -183,7 +183,7 @@ var wtf_wikipedia = (function() {
     //add additional image from infobox, if applicable
     if (infobox['image'] && infobox['image'].text) {
       var img = infobox['image'].text || ''
-      if (typeof img === "string" && !img.match(/^(image|file|fichier|Datei)/i)) {
+      if (typeof img === "string" && !img.match(new RegExp("^(" + i18n.images.concat(i18n.files).join('|') + ")", "i"))) {
         img = "File:" + img
       }
       images.push(img)
