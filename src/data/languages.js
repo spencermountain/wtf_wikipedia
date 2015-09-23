@@ -1264,4 +1264,4 @@ module.exports={
     "direction": "ltr",
     "local_title": "isiZulu"
   }
-}
+};
