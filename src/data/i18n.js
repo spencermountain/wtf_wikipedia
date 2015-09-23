@@ -15,7 +15,11 @@ var i18n={
     "fichier",
     "bestand",
     "датотека",
-    "dosya"
+    "dosya",
+    "fil"
+  ],
+  "images": [
+      "image"
   ],
   "templates": [
     "шаблён",

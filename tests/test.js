@@ -45,3 +45,14 @@ Tests['redirect'] = function (test) {
   test.ok(data.infobox_template == null)
   test.done();
 };
+
+Tests['nn/statoil'] = function (test) {
+  var data = parser(fetch("nn/statoil"))
+  test.equal(data.infobox.namn.text, 'Statoil ASA')
+  test.equal(data.infobox_template, 'verksemd')
+  test.ok(data.text.Intro.length >= 1)
+  test.equal(data.categories.length, 4)
+  test.equal(data.images.length, 1)
+  test.equal(data.images[0], 'Fil:Statoil-Estonia.jpg')
+  test.done();
+};
