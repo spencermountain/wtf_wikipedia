@@ -1,11 +1,12 @@
 var helpers = require("../lib/helpers")
 var parse_links = require("./parse_links")
+var i18n = require("../data/i18n")
 
 
 //return only rendered text of wiki links
 function resolve_links(line) {
   // categories, images, files
-  var re = /\[\[:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف):[^\]\]]{2,80}\]\]/gi
+  var re = new RegExp("\\[\\[:?(" +  i18n.categories.join("|") + "):[^\\]\\]]{2,80}\\]\\]", "gi")
   line = line.replace(re, "")
 
   // [[Common links]]
