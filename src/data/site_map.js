@@ -800,7 +800,7 @@ var site_map={
   "zuwiki": "http://zu.wikipedia.org",
   "zuwiktionary": "http://zu.wiktionary.org",
   "zuwikibooks": "http://zu.wikibooks.org"
-}
+};
 if(typeof module !== 'undefined' && module.exports) {
   module.exports = site_map;
 }

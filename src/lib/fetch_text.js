@@ -15,7 +15,7 @@ var fetch = function (page_identifier, lang_or_wikiid, cb) {
     url = 'http://' + lang_or_wikiid + '.wikipedia.org/w/index.php?action=raw&' + identifier_type + '=' + page_identifier;
   }
   request({
-    uri: url,
+    uri: url
   }, function (error, response, body) {
     cb(body);
   });
