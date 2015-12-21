@@ -24,9 +24,11 @@
     "grunt-contrib-uglify": "*",
     "grunt-browserify": "~3.8.*",
     "mocha": "2.2.x",
+    "istanbul": "^0.4.1",
     "should": "7.0.x",
     "grunt-mocha-test": "0.12.x",
-    "grunt-mocha-test":"0.*.*"
+    "grunt-mocha-test":"0.*.*",
+    "grunt-mocha-istanbul": "3.*.*"
   },
   "scripts": {
     "test": " nodeunit tests/test.js",

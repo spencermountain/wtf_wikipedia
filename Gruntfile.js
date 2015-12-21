@@ -29,13 +29,26 @@ module.exports = function(grunt) {
         },
         src: ['tests/*.js']
       }
-    }
+    },
+
+    mocha_istanbul: {
+      coverageSpecial: {
+        src: 'tests/*.js',
+        options: {
+          reportFormats: ['html'],
+          quiet: true,
+          coverageFolder: './tests/coverage',
+        }
+      }
+    },
   });
 
   grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-mocha-istanbul');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.registerTask('default', ['browserify', 'uglify']);
   grunt.registerTask('test', ['mochaTest']);
+  grunt.registerTask('coverage', ['mocha_istanbul']);
 
 };
