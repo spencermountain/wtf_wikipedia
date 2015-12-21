@@ -8,6 +8,7 @@ var wtf_wikipedia = (function() {
   var helpers = require("./lib/helpers");
   var languages = require("./data/languages");
   //parsers
+  var redirects = require("./parse/parse_redirects");
   var parse_table = require("./parse/parse_table");
   var parse_line = require("./parse/parse_line");
   var parse_categories = require("./parse/parse_categories");
@@ -18,8 +19,6 @@ var wtf_wikipedia = (function() {
   var recursive_matches = require("./recursive_matches");
   var kill_xml = require("./kill_xml");
   var word_templates = require("./word_templates");
-  //pulls target link out of redirect page
-  var REDIRECT_REGEX = new RegExp("^ ?#(" + i18n.redirects.join("|") + ") ?\\[\\[(.{2,60}?)\\]\\]", "i");
 
   function preprocess(wiki) {
     //the dump requires us to unescape xml
@@ -61,11 +60,8 @@ var wtf_wikipedia = (function() {
     var translations = {};
     wiki = wiki || "";
     //detect if page is just redirect, and return
-    if (wiki.match(REDIRECT_REGEX)) {
-      return {
-        type: "redirect",
-        redirect: (wiki.match(REDIRECT_REGEX) || [])[2]
-      };
+    if (redirects.is_redirect(wiki)) {
+      return redirects.parse_redirect(wiki)
     }
     //detect if page is disambiguator page
     var template_reg = new RegExp("\\{\\{ ?(" + i18n.disambigs.join("|") + ")(\\|[a-z =]*?)? ?\\}\\}", "i");
@@ -250,7 +246,7 @@ module.exports = wtf_wikipedia;
 //   console.log(wtf_wikipedia.parse(s).infobox)
 // })
 
-// wtf_wikipedia.from_api("Paris", function(page) {
+// wtf_wikipedia.from_api("On A Friday", function(page) {
 //   var parsed = wtf_wikipedia.parse(page); // causes the crash
 //   console.log(parsed);
 // });
