@@ -40,7 +40,7 @@ wtf_wikipedia.from_api(64646, "de", function(markup){
   //...
 })
 ```
-
+the from_api method follows redirects.
 
 Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It reliably turns wikiscript into HTML, but not valid XML. To use it for mining, you need a [wikiscript -> virtual DOM -> screen-scraping] flow, but getting structured data this way is a challenge.
 

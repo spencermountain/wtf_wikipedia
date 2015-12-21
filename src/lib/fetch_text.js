@@ -1,6 +1,7 @@
 //grab the content of any article, off the api
 var request = require('request');
 var site_map = require("../data/site_map");
+var redirects = require("../parse/parse_redirects");
 
 var fetch = function(page_identifier, lang_or_wikiid, cb) {
   lang_or_wikiid = lang_or_wikiid || 'en';
@@ -17,7 +18,15 @@ var fetch = function(page_identifier, lang_or_wikiid, cb) {
   request({
     uri: url
   }, function(error, response, body) {
-    cb(body);
+    if (error) {
+      console.warn(error)
+    }
+    if (redirects.is_redirect(body)) {
+      var result = redirects.parse_redirect(body)
+      fetch(result.redirect, lang_or_wikiid, cb)
+    } else {
+      cb(body);
+    }
   });
 };
 
