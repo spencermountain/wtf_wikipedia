@@ -93,6 +93,11 @@ var wtf_wikipedia = (function() {
       if (s.match(infobox_reg)) {
         wiki = wiki.replace(s, "");
       }
+      //if it's not a known template, but it's recursive, remove it
+      //(because it will be misread later-on)
+      if (s.match(/^\{\{/)) {
+        wiki = wiki.replace(s, "");
+      }
     });
 
     //second, remove [[file:...[[]] ]] recursions
@@ -276,3 +281,4 @@ module.exports = wtf_wikipedia;
 // wtf_wikipedia.from_api("El deseo (telenovela)", "es", function (s) {
 //   console.log(JSON.stringify(wtf_wikipedia.parse(s), null, 2))
 // })
+// console.log(wtf_wikipedia.parse("Jeb bush is a president. {{nowrap|{{small|(1995–present)}}}} He lives in Texas.").text)
