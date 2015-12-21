@@ -1,4 +1,4 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
@@ -17,11 +17,25 @@ module.exports = function (grunt) {
           "standalone": true
         }
       }
+    },
+
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec',
+          clearRequireCache: true,
+          colors: true,
+          growl: false
+        },
+        src: ['tests/*.js']
+      }
     }
   });
 
+  grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.registerTask('default', ['browserify', 'uglify']);
+  grunt.registerTask('test', ['mochaTest']);
 
 };
