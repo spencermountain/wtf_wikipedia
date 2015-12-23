@@ -18,7 +18,7 @@
     "wikiscript"
   ],
   "dependencies": {
-    "request": "*"
+    "request": "2.*.*"
   },
   "devDependencies": {
     "grunt-contrib-uglify": "*",
@@ -31,8 +31,7 @@
     "grunt-mocha-istanbul": "3.*.*"
   },
   "scripts": {
-    "test": " nodeunit tests/test.js",
-    "start": "grunt test"
+    "test": "grunt test"
   },
   "bin": {
     "wikipedia": "./bin/parse.js",
