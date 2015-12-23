@@ -1,13 +1,26 @@
 "use strict";
 var redirects = require("../src/parse/parse_redirects");
-// var parse_table = require("./parse/parse_table");
 var parse_line = require("../src/parse/parse_line");
 var parse_categories = require("../src/parse/parse_categories");
-// var parse_disambig = require("./parse/parse_disambig");
-var parse_infobox = require("../src/parse/parse_infobox");
-// var parse_infobox_template = require("./parse/parse_infobox_template");
+var cleanup_misc = require("../src/parse/cleanup_misc");
 var parse_image = require("../src/parse/parse_image");
-//
+var kill_xml = require("../src/parse/kill_xml");
+
+// describe("misc cleanup", function() {
+//   let tests = [
+//     ["hi [[as:Plancton]] there", "hi  there"],
+//     ["hello <br/> world", "hello  world"],
+//   ];
+//   tests.forEach(function(t) {
+//     it(t[0], function(done) {
+//       let s = cleanup_misc(t[0]);
+//       console.log(s);
+//       s.redirect.should.equal(t[1]);
+//       done();
+//     });
+//   });
+// });
+
 describe("redirects", function() {
   let tests = [
     ["#REDIRECT[[Tony Danza]]", "Tony Danza"],
@@ -80,30 +93,24 @@ describe("parse_image", function() {
   });
 });
 
-let hurricane = `{{Infobox Hurricane
-| Name=Tropical Storm Edouard
-| Type=Tropical storm
-| Year=2002
-| Basin=Atl
-| Image location=Tropical Storm Edouard 2002.jpg
-| Image name=Tropical Storm Edouard near peak intensity
-| Formed=September 1, 2002
-| Dissipated=September 6, 2002
-| 1-min winds=55
-| Pressure=1002
-| Damages=
-| Inflated=
-| Fatalities=None
-| Areas=[[Florida]]
-| Hurricane season=[[2002 Atlantic hurricane season]]
-}}`;
-describe("parse_infobox", function() {
-  it("hurricane", function(done) {
-    let o = parse_infobox(hurricane);
-    o.Name.text.should.be.equal("Tropical Storm Edouard");
-    o.Dissipated.text.should.be.equal("September 6, 2002");
-    o["Hurricane season"].text.should.be.equal("2002 Atlantic hurricane season");
-    o.Areas.links[0].page.should.be.equal("Florida");
-    done();
+
+describe("xml", function() {
+  let tests = [
+    ["North America,<ref name=\"fhwa\"/> and one of", "North America, and one of"],
+    ["North America,<br /> and one of", "North America, and one of"],
+    ["hello <h2>world</h2>", "hello world"],
+    [`hello<ref name="theroyal"/> world5, <ref name="">nono</ref> man`, "hello world5, man"],
+    ["hello <ref>nono!</ref> world1.", "hello world1."],
+    ["hello <ref name='hullo'>nono!</ref> world2.", "hello world2."],
+    ["hello <ref name='hullo'/>world3.", "hello world3."],
+    ["hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4.", "hello  world4."],
+    ["hello<ref name=''/> world5", "hello world5"],
+  ];
+  tests.forEach(function(t) {
+    it(t[0], function(done) {
+      let s = kill_xml(t[0]);
+      s.should.equal(t[1]);
+      done();
+    });
   });
 });

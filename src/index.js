@@ -17,38 +17,8 @@ var wtf_wikipedia = (function() {
   var parse_infobox_template = require("./parse/parse_infobox_template");
   var parse_image = require("./parse/parse_image");
   var recursive_matches = require("./recursive_matches");
-  var kill_xml = require("./kill_xml");
+  var preprocess = require("./parse/cleanup_misc");
   var word_templates = require("./word_templates");
-
-  function preprocess(wiki) {
-    //the dump requires us to unescape xml
-    //remove comments
-    wiki = wiki.replace(/<!--[^>]{0,2000}-->/g, "");
-    wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/ig, "");
-    //signitures
-    wiki = wiki.replace(/~~{1,3}/, "");
-    //horizontal rule
-    wiki = wiki.replace(/--{1,3}/, "");
-    //space
-    wiki = wiki.replace(/&nbsp;/g, " ");
-    //kill off interwiki links
-    wiki = wiki.replace(/\[\[([a-z][a-z]|simple|war|ceb|min):.{2,60}\]\]/i, "");
-    //bold and italics combined
-    wiki = wiki.replace(/''{4}([^']{0,200})''{4}/g, "$1");
-    //bold
-    wiki = wiki.replace(/''{2}([^']{0,200})''{2}/g, "$1");
-    //italic
-    wiki = wiki.replace(/''([^']{0,200})''/g, "$1");
-    //give it the inglorious send-off it deserves..
-    wiki = kill_xml(wiki);
-
-    return wiki;
-  }
-  // console.log(preprocess("hi [[as:Plancton]] there"))
-  // console.log(preprocess("hi [[as:Plancton]] there"))
-  // console.log(preprocess('hello <br/> world'))
-  // console.log(preprocess("hello <asd f> world </h2>"))
-
 
   //some xml elements are just junk, and demand full inglorious death by regular exp
   //other xml elements, like <em>, are plucked out afterwards
@@ -61,7 +31,7 @@ var wtf_wikipedia = (function() {
     wiki = wiki || "";
     //detect if page is just redirect, and return
     if (redirects.is_redirect(wiki)) {
-      return redirects.parse_redirect(wiki)
+      return redirects.parse_redirect(wiki);
     }
     //detect if page is disambiguator page
     var template_reg = new RegExp("\\{\\{ ?(" + i18n.disambigs.join("|") + ")(\\|[a-z =]*?)? ?\\}\\}", "i");

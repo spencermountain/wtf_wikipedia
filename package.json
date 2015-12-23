@@ -31,7 +31,8 @@
     "grunt-mocha-istanbul": "3.*.*"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "start":"node ./src/index.js"
   },
   "bin": {
     "wikipedia": "./bin/parse.js",
