@@ -245,10 +245,8 @@ module.exports = wtf_wikipedia;
 // from_file("Africaans")
 // from_file("Anarchism")
 
-// wtf_wikipedia.from_api("List_of_British_films_of_2014", function (s) {
-//   console.log(JSON.stringify(wtf_wikipedia.parse(s), null, 2))
-// })
-// wtf_wikipedia.from_api("El deseo (telenovela)", "es", function (s) {
+// wtf_wikipedia.from_api("Transportation in the Philippines", "en", function (s) {
 //   console.log(JSON.stringify(wtf_wikipedia.parse(s), null, 2))
 // })
 // console.log(wtf_wikipedia.parse("Jeb bush is a president. {{nowrap|{{small|(1995–present)}}}} He lives in Texas.").text)
+// console.log(wtf_wikipedia.parse("Jeb bush is a president. {{WikiProject ...}} He lives in Texas.").text)

@@ -25,23 +25,6 @@ if you only want some nice plaintext, and no junk:
 var text= wtf_wikipedia.plaintext(markup)
 // "Toronto is the most populous city in Canada and the provincial capital..."
 ````
-
-to call non-english wikipedia apis, add it as the second paramater to from_api
-```javascript
-wtf_wikipedia.from_api("Toronto", "de", function(markup){
-  var text= wtf_wikipedia.plaintext(markup)
-  //Toronto ist mit 2,6 Millionen Einwohnern..
-})
-```
-
-you may also pass the wikipedia page id as parameter instead of the page title:
-```javascript
-wtf_wikipedia.from_api(64646, "de", function(markup){
-  //...
-})
-```
-the from_api method follows redirects.
-
 Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It reliably turns wikiscript into HTML, but not valid XML. To use it for mining, you need a [wikiscript -> virtual DOM -> screen-scraping] flow, but getting structured data this way is a challenge.
 
 This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb), letting you parse a wikipedia dump in nodejs easily.
@@ -65,9 +48,28 @@ m ok, lets write our own parser what culd go rong
 its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView), [txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
 
 #Methods
-* **.parse(markup)** - turns wikipedia markup into a nice json object
-* **.from_api(title, lang_or_wikiid, callback)** -  retrieves raw contents of a wikipedia article - or other mediawiki wiki identified by its [dbname](http://en.wikipedia.org/w/api.php?action=sitematrix&format=json)
-* **.plaintext(markup)** -  returns only nice text of the article
+## **.parse(markup)**
+turns wikipedia markup into a nice json object
+## **.from_api(title, lang_or_wikiid, callback)**
+retrieves raw contents of a wikipedia article - or other mediawiki wiki identified by its [dbname](http://en.wikipedia.org/w/api.php?action=sitematrix&format=json)
+
+to call non-english wikipedia apis, add it as the second paramater to from_api
+```javascript
+wtf_wikipedia.from_api("Toronto", "de", function(markup){
+  var text= wtf_wikipedia.plaintext(markup)
+  //Toronto ist mit 2,6 Millionen Einwohnern..
+})
+```
+
+you may also pass the wikipedia page id as parameter instead of the page title:
+```javascript
+wtf_wikipedia.from_api(64646, "de", function(markup){
+  //...
+})
+```
+the from_api method follows redirects.
+##**.plaintext(markup)**
+returns only nice text of the article
 
 if you're scripting this from the shell, install -g, and:
 ````shell
@@ -78,7 +80,7 @@ $ wikipedia Toronto Blue Jays
 # {text:[...], infobox:{}, categories:[...], images:[] }
 
 ````
-#Output
+#Sample Output
 Sample output for [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
 ````javascript
 {
@@ -203,8 +205,6 @@ npm test
 grunt #to package-up client-side
 ```
 
-
 Don't be mad at me, be mad at them
-
 
 MIT
