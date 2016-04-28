@@ -18,14 +18,16 @@ var fetch = function(page_identifier, lang_or_wikiid, cb) {
   request({
     uri: url
   }, function(error, response, body) {
-    if (error) {
+   if (error) {
       console.warn(error)
-    }
-    if (redirects.is_redirect(body)) {
-      var result = redirects.parse_redirect(body)
-      fetch(result.redirect, lang_or_wikiid, cb)
+      return cb(null);
     } else {
-      cb(body);
+      if (redirects.is_redirect(body)) {
+        var result = redirects.parse_redirect(body)
+        fetch(result.redirect, lang_or_wikiid, cb)
+      } else {
+        cb(body);
+      }
     }
   });
 };
