@@ -21,7 +21,7 @@ function recursive_matches(opener, closer, text) {
     if (open >= 0) {
       last.push(chars[i])
     }
-    if (open == 0 && last.length > 0) {
+    if (open === 0 && last.length > 0) {
       //first, fix botched parse
       var open_count = last.filter(function(s) {
         return s === opener

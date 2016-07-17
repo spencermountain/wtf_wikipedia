@@ -22,19 +22,19 @@ var sentence_parser = function(text) {
   // first, do a greedy split
   var tmp = text.split(/(\S.+?[.\?])(?=\s+|$|")/g);
   var sentences = [];
-  var abbrevs = ["jr", "mr", "mrs", "ms", "dr", "prof", "sr", "sen", "corp", "calif", "rep", "gov", "atty", "supt", "det", "rev", "col", "gen", "lt", "cmdr", "adm", "capt", "sgt", "cpl", "maj", "dept", "univ", "assn", "bros", "inc", "ltd", "co", "corp", "arc", "al", "ave", "blvd", "cl", "ct", "cres", "exp", "rd", "st", "dist", "mt", "ft", "fy", "hwy", "la", "pd", "pl", "plz", "tce", "Ala", "Ariz", "Ark", "Cal", "Calif", "Col", "Colo", "Conn", "Del", "Fed", "Fla", "Ga", "Ida", "Id", "Ill", "Ind", "Ia", "Kan", "Kans", "Ken", "Ky", "La", "Me", "Md", "Mass", "Mich", "Minn", "Miss", "Mo", "Mont", "Neb", "Nebr", "Nev", "Mex", "Okla", "Ok", "Ore", "Penna", "Penn", "Pa", "Dak", "Tenn", "Tex", "Ut", "Vt", "Va", "Wash", "Wis", "Wisc", "Wy", "Wyo", "USAFA", "Alta", "Ont", "QuÔøΩ", "Sask", "Yuk", "jan", "feb", "mar", "apr", "jun", "jul", "aug", "sep", "oct", "nov", "dec", "sept", "vs", "etc", "esp", "llb", "md", "bl", "phd", "ma", "ba", "miss", "misses", "mister", "sir", "esq", "mstr", "lit", "fl", "ex", "eg", "sep", "sept", ".."];
-  var abbrev = new RegExp("(^| )(" + abbrevs.join("|") + ")[.] ?$", "i");
+  var abbrevs = ['jr', 'mr', 'mrs', 'ms', 'dr', 'prof', 'sr', 'sen', 'corp', 'calif', 'rep', 'gov', 'atty', 'supt', 'det', 'rev', 'col', 'gen', 'lt', 'cmdr', 'adm', 'capt', 'sgt', 'cpl', 'maj', 'dept', 'univ', 'assn', 'bros', 'inc', 'ltd', 'co', 'corp', 'arc', 'al', 'ave', 'blvd', 'cl', 'ct', 'cres', 'exp', 'rd', 'st', 'dist', 'mt', 'ft', 'fy', 'hwy', 'la', 'pd', 'pl', 'plz', 'tce', 'Ala', 'Ariz', 'Ark', 'Cal', 'Calif', 'Col', 'Colo', 'Conn', 'Del', 'Fed', 'Fla', 'Ga', 'Ida', 'Id', 'Ill', 'Ind', 'Ia', 'Kan', 'Kans', 'Ken', 'Ky', 'La', 'Me', 'Md', 'Mass', 'Mich', 'Minn', 'Miss', 'Mo', 'Mont', 'Neb', 'Nebr', 'Nev', 'Mex', 'Okla', 'Ok', 'Ore', 'Penna', 'Penn', 'Pa', 'Dak', 'Tenn', 'Tex', 'Ut', 'Vt', 'Va', 'Wash', 'Wis', 'Wisc', 'Wy', 'Wyo', 'USAFA', 'Alta', 'Ont', 'QuÔøΩ', 'Sask', 'Yuk', 'jan', 'feb', 'mar', 'apr', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'sept', 'vs', 'etc', 'esp', 'llb', 'md', 'bl', 'phd', 'ma', 'ba', 'miss', 'misses', 'mister', 'sir', 'esq', 'mstr', 'lit', 'fl', 'ex', 'eg', 'sep', 'sept', '..'];
+  var abbrev = new RegExp('(^| )(' + abbrevs.join('|') + ')[.] ?$', 'i');
   //loop through and evaluate greedy splits
   var l = tmp.length;
   for (i = 0; i < l; i++) {
     if (tmp[i]) {
-      tmp[i] = tmp[i].replace(/^\s+|\s+$/g, "");
+      tmp[i] = tmp[i].replace(/^\s+|\s+$/g, '');
       //if this does not look like a good sentence, prepend to next one
       if (tmp[i + 1] !== undefined && tmp[i].match(abbrev) || tmp[i].match(/[ |\.][A-Z]\.?$/i) || unbalanced(tmp[i])) {
-        tmp[i + 1] = tmp[i] + " " + tmp[i + 1];
+        tmp[i + 1] = tmp[i] + ' ' + tmp[i + 1];
       } else {
         sentences.push(tmp[i]);
-        tmp[i] = "";
+        tmp[i] = '';
       }
     }
   }
@@ -42,8 +42,8 @@ var sentence_parser = function(text) {
   var clean = [];
   for (i = 0; i < sentences.length; i++) {
     //trim whitespace
-    sentences[i] = sentences[i].replace(/^\s+|\s+$/g, "");
-    sentences[i] = sentences[i].replace(/ {2}/g, " ");
+    sentences[i] = sentences[i].replace(/^\s+|\s+$/g, '');
+    sentences[i] = sentences[i].replace(/ {2}/g, ' ');
     if (sentences[i]) {
       clean.push(sentences[i]);
     }

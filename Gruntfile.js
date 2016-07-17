@@ -2,19 +2,29 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    pkg: grunt.file.readJSON("package.json"),
-    uglify: {
-      do: {
-        src: ["./client_side/wikiscript.js"],
-        dest: "./client_side/wikiscript.min.js"
+    pkg: grunt.file.readJSON('package.json'),
+
+    watch: {
+      files: ['./src/**', './scratch.js', './Gruntfile.js'],
+      tasks: ['run:scratch']
+    },
+    run: {
+      scratch: {
+        exec: 'node ./scratch.js --debug'
       }
     },
-    "browserify": {
+    uglify: {
+      do: {
+        src: ['./client_side/wikiscript.js'],
+        dest: './client_side/wikiscript.min.js'
+      }
+    },
+    'browserify': {
       client: {
-        src: "./src/index.js",
-        dest: "./client_side/wikiscript.js",
+        src: './src/index.js',
+        dest: './client_side/wikiscript.js',
         options: {
-          "standalone": true
+          'standalone': true
         }
       }
     },
@@ -22,33 +32,35 @@ module.exports = function(grunt) {
     mochaTest: {
       test: {
         options: {
-          reporter: "spec",
+          reporter: 'spec',
           clearRequireCache: true,
           colors: true,
           growl: false
         },
-        src: ["./tests/*.js"]
+        src: ['./tests/*.js']
       }
     },
 
     mocha_istanbul: {
       coverageSpecial: {
-        src: "tests/*.js",
+        src: 'tests/*.js',
         options: {
-          reportFormats: ["html"],
+          reportFormats: ['html'],
           quiet: true,
-          coverageFolder: "./tests/coverage",
+          coverageFolder: './tests/coverage'
         }
       }
-    },
+    }
   });
 
-  grunt.loadNpmTasks("grunt-mocha-test");
-  grunt.loadNpmTasks("grunt-mocha-istanbul");
-  grunt.loadNpmTasks("grunt-contrib-uglify");
-  grunt.loadNpmTasks("grunt-browserify");
-  grunt.registerTask("default", ["browserify", "uglify"]);
-  grunt.registerTask("test", ["mochaTest"]);
-  grunt.registerTask("coverage", ["mocha_istanbul"]);
+  grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-run');
+  grunt.loadNpmTasks('grunt-mocha-istanbul');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-browserify');
+  grunt.registerTask('default', ['browserify', 'uglify']);
+  grunt.registerTask('test', ['mochaTest']);
+  grunt.registerTask('coverage', ['mocha_istanbul']);
 
 };
