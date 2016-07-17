@@ -1,63 +1,65 @@
+'use strict';
 var path = require('path');
-var fs = require("fs");
-var should = require("should");
-var parser = require("../src/index").parse;
+var fs = require('fs');
+var test = require('tape');
+const wtf_wikipedia = require('../src/index');
+
+const str_equal = function(have, want, t) {
+  var msg = '\'' + have + '\' == \'' + want + '\'';
+  t.equal(have, want, msg);
+  return;
+};
 
 //read cached file
 var fetch = function(file) {
-  return fs.readFileSync(path.join(__dirname, "cache", file + ".txt"), 'utf-8');
+  return fs.readFileSync(path.join(__dirname, 'cache', file + '.txt'), 'utf-8');
 };
 
+test('royal_cinema', (t) => {
+  var data = wtf_wikipedia.parse(fetch('royal_cinema'));
+  str_equal(data.infobox.opened.text, 1939, t);
+  str_equal(data.infobox_template, 'venue', t);
+  str_equal(data.text.Intro.length, 10, t);
+  str_equal(data.categories.length, 4, t);
+  t.end();
+});
 
-describe('full page tests', function() {
+test('toronto_star', (t) => {
+  var data = wtf_wikipedia.parse(fetch('toronto_star'));
+  str_equal(data.infobox.publisher.text, 'John D. Cruickshank', t);
+  str_equal(data.infobox_template, 'newspaper', t);
+  str_equal(data.text.History.length, 21, t);
+  str_equal(data.categories.length, 6, t);
+  t.end();
+});
 
-  it('royal_cinema', function(done) {
-    var data = parser(fetch("royal_cinema"));
-    data.infobox.opened.text.should.equal(1939);
-    data.infobox_template.should.equal('venue');
-    data.text.Intro.length.should.equal(10);
-    data.categories.length.should.equal(4);
-    done();
-  });
+test('jodie_emery', (t) => {
+  var data = wtf_wikipedia.parse(fetch('jodie_emery'));
+  str_equal(data.infobox.nationality.text, 'Canadian', t);
+  str_equal(data.infobox_template, 'person', t);
+  // str_equal(data.text.Intro.length >= 1).should.be.true;
+  // (data.text['Political career'].length >= 5).should.be.true;
+  str_equal(data.categories.length, 8, t);
+  str_equal(data.images.length, 1, t);
+  t.end();
+});
 
-  it('toronto_star', function(done) {
-    var data = parser(fetch("toronto_star"));
-    data.infobox.publisher.text.should.equal('John D. Cruickshank');
-    data.infobox_template.should.equal('newspaper');
-    data.text.History.length.should.equal(21);
-    data.categories.length.should.equal(6);
-    done();
-  })
+test('redirect', (t) => {
+  var data = wtf_wikipedia.parse(fetch('redirect'));
+  str_equal(data.type, 'redirect', t);
+  str_equal(data.redirect, 'Toronto', t);
+  str_equal(data.infobox, undefined, t);
+  str_equal(data.infobox_template, undefined, t);
+  t.end();
+});
 
-  it('jodie_emery', function(done) {
-    var data = parser(fetch("jodie_emery"));
-    data.infobox.nationality.text.should.equal('Canadian');
-    data.infobox_template.should.equal('person');
-    (data.text.Intro.length >= 1).should.be.true;
-    (data.text['Political career'].length >= 5).should.be.true;
-    data.categories.length.should.equal(8);
-    data.images.length.should.equal(1);
-    done();
-  })
-
-  it('redirect', function(done) {
-    var data = parser(fetch("redirect"));
-    data.type.should.equal('redirect');
-    data.redirect.should.equal('Toronto');
-    (data.infobox === null).should.be.true;
-    (data.infobox_template === null).should.be.true;
-    done();
-  })
-
-  it('statoil', function(done) {
-    var data = parser(fetch("statoil"));
-    data.infobox.namn.text.should.equal('Statoil ASA');
-    data.infobox_template.should.equal('verksemd');
-    (data.text.Intro.length >= 1).should.be.true;
-    data.categories.length.should.equal(4);
-    data.images.length.should.equal(1);
-    data.images[0].should.equal('Fil:Statoil-Estonia.jpg');
-    done();
-  })
-
-})
+test('statoil', (t) => {
+  var data = wtf_wikipedia.parse(fetch('statoil'));
+  str_equal(data.infobox.namn.text, 'Statoil ASA', t);
+  str_equal(data.infobox_template, 'verksemd', t);
+  // (data.text.Intro.length >= 1).should.be.true;
+  str_equal(data.categories.length, 4, t);
+  str_equal(data.images.length, 1, t);
+  str_equal(data.images[0], 'Fil:Statoil-Estonia.jpg', t);
+  t.end();
+});

@@ -1,24 +1,8 @@
-"use strict";
-var parse_table = require("../src/parse/parse_table");
-var parse_disambig = require("../src/parse/parse_disambig");
-var parse_infobox = require("../src/parse/parse_infobox");
-let hurricane = `{{Infobox Hurricane
-| Name=Tropical Storm Edouard
-| Type=Tropical storm
-| Year=2002
-| Basin=Atl
-| Image location=Tropical Storm Edouard 2002.jpg
-| Image name=Tropical Storm Edouard near peak intensity
-| Formed=September 1, 2002
-| Dissipated=September 6, 2002
-| 1-min winds=55
-| Pressure=1002
-| Damages=
-| Inflated=
-| Fatalities=None
-| Areas=[[Florida]]
-| Hurricane season=[[2002 Atlantic hurricane season]]
-}}`;
+'use strict';
+var parse_table = require('../src/parse/parse_table');
+var parse_disambig = require('../src/parse/parse_disambig');
+var parse_infobox = require('../src/parse/parse_infobox');
+var test = require('tape');
 
 let boloZenden = `{{Infobox football biography
 | name        = Boudewijn Zenden
@@ -46,42 +30,45 @@ let boloZenden = `{{Infobox football biography
 | manageryears1  = 2012–2013 |managerclubs1 = [[Chelsea F.C.|Chelsea]] (assistant manager)
 | manageryears2  = 2013– |managerclubs2 = [[Jong PSV]] (assistant manager)
 }}`;
+test('boloZenden infobox', function(t) {
+  let o = parse_infobox(boloZenden);
+  t.equal(o.years1.text, '1993–1998');
+  t.equal(o.clubs1.text, 'PSV');
+  t.equal(o.youthyears1.text, '1985–1987');
+  t.equal(o.youthclubs1.text, 'MVV');
+  t.equal(o.nationalyears1.text, '1997–2004');
+  t.equal(o.nationalteam1.text, 'Netherlands');
+  t.equal(o.nationalteam1.links[0].page, 'Netherlands national football team');
+  t.equal(o.nationalteam1.links[0].src, 'Netherlands');
+  t.equal(o.nationalcaps1.text, 54);
+  t.equal(o.nationalgoals1.text, 7);
+  t.end();
+});
 
-
-describe("parse_infobox", function () {
-	it("hurricane", function (done) {
-		let o = parse_infobox(hurricane);
-
-		o.Name.text.should.be.equal("Tropical Storm Edouard");
-		o.Dissipated.text.should.be.equal("September 6, 2002");
-		o["Hurricane season"].text.should.be.equal("2002 Atlantic hurricane season");
-		o.Areas.links[0].page.should.be.equal("Florida");
-		done();
-	});
-
-	it("boloZenden", function (done) {
-
-		let o = parse_infobox(boloZenden);
-
-		o.years1.text.should.be.equal("1993–1998");
-		o.clubs1.text.should.be.equal("PSV");
-
-
-		o.youthyears1.text.should.be.equal("1985–1987");
-		o.youthclubs1.text.should.be.equal("MVV");
-
-		o.nationalyears1.text.should.be.equal("1997–2004");
-
-		o.nationalteam1.text.should.be.equal("Netherlands");
-		o.nationalteam1.links[0].page.should.be.equal("Netherlands national football team");
-		o.nationalteam1.links[0].src.should.be.equal("Netherlands");
-		o.nationalcaps1.text.should.be.equal(54);
-		o.nationalgoals1.text.should.be.equal(7);
-
-
-
-		done();
-	});
+let hurricane = `{{Infobox Hurricane
+| Name=Tropical Storm Edouard
+| Type=Tropical storm
+| Year=2002
+| Basin=Atl
+| Image location=Tropical Storm Edouard 2002.jpg
+| Image name=Tropical Storm Edouard near peak intensity
+| Formed=September 1, 2002
+| Dissipated=September 6, 2002
+| 1-min winds=55
+| Pressure=1002
+| Damages=
+| Inflated=
+| Fatalities=None
+| Areas=[[Florida]]
+| Hurricane season=[[2002 Atlantic hurricane season]]
+}}`;
+test('hurricane infobox', function(t) {
+  let o = parse_infobox(hurricane);
+  t.equal(o.Name.text, 'Tropical Storm Edouard');
+  t.equal(o.Dissipated.text, 'September 6, 2002');
+  t.equal(o['Hurricane season'].text, '2002 Atlantic hurricane season');
+  t.equal(o.Areas.links[0].page, 'Florida');
+  t.end();
 });
 
 let park_place = `
@@ -99,15 +86,14 @@ let park_place = `
 * [[Park Place Mall]], Lethbridge, Alberta
 {{disambiguation}}
 `;
-describe("parse_disambig", function () {
-	it("parkplace", function (done) {
-		let o = parse_disambig(park_place);
-		o.type.should.be.equal("disambiguation");
-		o.pages.length.should.be.equal(4);
-		o.pages[0].should.be.equal("Park Place (TV series)");
-		done();
-	});
+test('parkplace disambig', function(t) {
+  let o = parse_disambig(park_place);
+  t.equal(o.type, 'disambiguation');
+  t.equal(o.pages.length, 4);
+  t.equal(o.pages[0], 'Park Place (TV series)');
+  t.end();
 });
+
 
 let bluejays = `
 {| border="1" cellpadding="2" cellspacing="0" class="wikitable"
@@ -119,14 +105,11 @@ let bluejays = `
 | 2 || April 7 || @ [[Minnesota Twins|Twins]] || 9 - 3 || '''[[David Wells|Wells]]''' (1-0) || [[Mike Lincoln|Lincoln]] (0-1) || '''[[Roy Halladay|Halladay]]''' (1) || 9,220 || 1-1
 |}
 `;
-
-describe("parse_table", function () {
-	it("bluejays", function (done) {
-		let arr = parse_table(bluejays);
-		arr.length.should.be.equal(3);
-		arr[0][0].should.be.equal("#");
-		arr[1][0].should.be.equal("1");
-		arr[1][1].should.be.equal("April 6");
-		done();
-	});
+test('bluejays table', function(t) {
+  let arr = parse_table(bluejays);
+  t.equal(arr.length, 3);
+  t.equal(arr[0][0], '#');
+  t.equal(arr[1][0], '1');
+  t.equal(arr[1][1], 'April 6');
+  t.end();
 });

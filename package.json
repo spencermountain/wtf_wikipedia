@@ -7,9 +7,18 @@
     "type": "git",
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
-  "main": "src/index.js",
+  "main": "./builds/wtf_wikipedia.js",
+  "scripts": {
+    "start": "grunt demo",
+    "test": "tape ./tests/*_tests.js | tap-spec",
+    "build": "grunt build"
+  },
+  "bin": {
+    "wikipedia": "./bin/parse.js",
+    "wikipedia_plaintext": "./bin/plaintext.js"
+  },
   "engines": [
-    "node >= 0.4.1"
+    "node >= 0.4.0"
   ],
   "keywords": [
     "wikipedia",
@@ -21,23 +30,20 @@
     "request": "2.*.*"
   },
   "devDependencies": {
-    "grunt-browserify": "~3.8.*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-mocha-istanbul": "3.*.*",
-    "grunt-mocha-test": "0.*.*",
-    "grunt-run": "^0.6.0",
-    "istanbul": "^0.4.1",
-    "mocha": "2.2.x",
-    "should": "7.0.x"
-  },
-  "scripts": {
-    "test": "grunt test",
-    "start": "node ./src/index.js"
-  },
-  "bin": {
-    "wikipedia": "./bin/parse.js",
-    "wikipedia_plaintext": "./bin/plaintext.js"
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-preset-es2015": "6.9.0",
+    "babelify": "7.3.0",
+    "browserify": "13.0.1",
+    "grunt-cli": "1.2.0",
+    "grunt-contrib-watch": "1.0.0",
+    "grunt-eslint": "19.0.0",
+    "grunt-filesize": "0.0.7",
+    "grunt-run": "0.6.0",
+    "http-server": "0.9.0",
+    "nlp-corpus": "latest",
+    "tap-spec": "4.1.1",
+    "tape": "4.6.0",
+    "uglify-js": "2.7.0"
   },
   "license": "MIT"
 }
