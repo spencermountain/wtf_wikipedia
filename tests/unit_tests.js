@@ -5,7 +5,28 @@ var parse_line = require('../src/parse/parse_line');
 var parse_categories = require('../src/parse/parse_categories');
 var cleanup_misc = require('../src/parse/cleanup_misc');
 var parse_image = require('../src/parse/parse_image');
+var sentence_parser = require('../src/lib/sentence_parser');
 var kill_xml = require('../src/parse/kill_xml');
+
+test('sentence parser', (t) => {
+  [
+    ['Tony is nice. He lives in Japan.', 2],
+    ['I like that Color', 1],
+    ['Soviet bonds to be sold in the U.S. market. Everyone wins.', 2],
+    ['Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that\'s fine, etc. and you can attend Feb. 8th. Bye', 3],
+    ['Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York', 1],
+    ['he said ... oh yeah. I did', 2],
+    ['32 C', 1],
+    ['dom, kon. XIX w.', 2],
+    ['a staged reenactment of [[Perry v. Brown]] world', 1],
+  ].forEach((a) => {
+    let s = sentence_parser(a[0]);
+    let msg = a[1] + ' sentences  - "' + a[0] + '"';
+    t.equal(s.length, a[1], msg);
+  });
+  t.end();
+});
+
 
 test('misc cleanup', (t) => {
   [

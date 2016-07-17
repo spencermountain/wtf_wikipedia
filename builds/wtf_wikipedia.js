@@ -1,4 +1,4 @@
-/* wtf_wikipedia v0.4.0 */
+/* wtf_wikipedia v0.4.1 */
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.wtf_wikipedia = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 
 },{}],2:[function(_dereq_,module,exports){
@@ -63744,7 +63744,6 @@ var wtf_wikipedia = function () {
     wiki = word_templates(wiki);
     //kill off th3 craziness
     wiki = preprocess(wiki);
-
     //find tables
     tables = wiki.match(/\{\|[\s\S]{1,8000}?\|\}/g, '') || [];
     tables = tables.map(function (s) {
@@ -63981,76 +63980,121 @@ var helpers = {
 module.exports = helpers;
 
 },{}],387:[function(_dereq_,module,exports){
-'use strict';
-
 //split text into sentences, using regex
 //@spencermountain MIT
 
-var sentence_parser = function sentence_parser(text) {
-  var i;
+//(Rule-based sentence boundary segmentation) - chop given text into its proper sentences.
+// Ignore periods/questions/exclamations used in acronyms/abbreviations/numbers, etc.
+// @spencermountain 2015 MIT
+'use strict';
 
-  // if this looks like a period within a wikipedia link, return false
-  var unbalanced = function unbalanced(str) {
-    var open = str.match(/\[\[/) || [];
-    var closed = str.match(/\]\]/) || [];
-    if (open.length > closed.length) {
-      return true;
-    }
-    //make sure quotes are closed too
-    var quotes = str.match(/"/g);
-    if (quotes && quotes.length % 2 !== 0 && str.length < 900) {
-      return true;
-    }
+var abbreviations = ['jr', 'mr', 'mrs', 'ms', 'dr', 'prof', 'sr', 'sen', 'corp', 'calif', 'rep', 'gov', 'atty', 'supt', 'det', 'rev', 'col', 'gen', 'lt', 'cmdr', 'adm', 'capt', 'sgt', 'cpl', 'maj', 'dept', 'univ', 'assn', 'bros', 'inc', 'ltd', 'co', 'corp', 'arc', 'al', 'ave', 'blvd', 'cl', 'ct', 'cres', 'exp', 'rd', 'st', 'dist', 'mt', 'ft', 'fy', 'hwy', 'la', 'pd', 'pl', 'plz', 'tce', 'Ala', 'Ariz', 'Ark', 'Cal', 'Calif', 'Col', 'Colo', 'Conn', 'Del', 'Fed', 'Fla', 'Ga', 'Ida', 'Id', 'Ill', 'Ind', 'Ia', 'Kan', 'Kans', 'Ken', 'Ky', 'La', 'Me', 'Md', 'Mass', 'Mich', 'Minn', 'Miss', 'Mo', 'Mont', 'Neb', 'Nebr', 'Nev', 'Mex', 'Okla', 'Ok', 'Ore', 'Penna', 'Penn', 'Pa', 'Dak', 'Tenn', 'Tex', 'Ut', 'Vt', 'Va', 'Wash', 'Wis', 'Wisc', 'Wy', 'Wyo', 'USAFA', 'Alta', 'Ont', 'QuÔøΩ', 'Sask', 'Yuk', 'jan', 'feb', 'mar', 'apr', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'sept', 'vs', 'etc', 'esp', 'llb', 'md', 'bl', 'phd', 'ma', 'ba', 'miss', 'misses', 'mister', 'sir', 'esq', 'mstr', 'lit', 'fl', 'ex', 'eg', 'sep', 'sept', '..'];
+
+//turn a nested array into one array
+var flatten = function flatten(arr) {
+  var all = [];
+  arr.forEach(function (a) {
+    all = all.concat(a);
+  });
+  return all;
+};
+
+var naiive_split = function naiive_split(text) {
+  //first, split by newline
+  var splits = text.split(/(\n+)/);
+  //split by period, question-mark, and exclamation-mark
+  splits = splits.map(function (str) {
+    return str.split(/(\S.+?[.!?])(?=\s+|$)/g);
+  });
+  return flatten(splits);
+};
+
+// if this looks like a period within a wikipedia link, return false
+var isBalanced = function isBalanced(str) {
+  str = str || '';
+  var open = str.split(/\[\[/) || [];
+  var closed = str.split(/\]\]/) || [];
+  if (open.length > closed.length) {
     return false;
+  }
+  //make sure quotes are closed too
+  var quotes = str.match(/"/g);
+  if (quotes && quotes.length % 2 !== 0 && str.length < 900) {
+    return false;
+  }
+  return true;
+};
+
+var sentence_parser = function sentence_parser(text) {
+  var sentences = [];
+  //first do a greedy-split..
+  var chunks = [];
+  //ensure it 'smells like' a sentence
+  if (!text || typeof text !== 'string' || !text.match(/\w/)) {
+    return sentences;
+  }
+  // This was the splitter regex updated to fix quoted punctuation marks.
+  // let splits = text.split(/(\S.+?[.\?!])(?=\s+|$|")/g);
+  // todo: look for side effects in this regex replacement:
+  var splits = naiive_split(text);
+  //filter-out the grap ones
+  for (var i = 0; i < splits.length; i++) {
+    var s = splits[i];
+    if (!s || s === '') {
+      continue;
+    }
+    //this is meaningful whitespace
+    if (!s.match(/\S/)) {
+      //add it to the last one
+      if (chunks[chunks.length - 1]) {
+        chunks[chunks.length - 1] += s;
+        continue;
+      } else if (splits[i + 1]) {
+        //add it to the next one
+        splits[i + 1] = s + splits[i + 1];
+        continue;
+      }
+      //else, only whitespace, no terms, no sentence
+    }
+    chunks.push(s);
+  }
+
+  //detection of non-sentence chunks
+  // const abbrev_reg   = new RegExp('\\b(' + abbreviations.join('|') + ')[.!?] ?$', 'i');
+  var abbrev_reg = new RegExp('(^| )(' + abbreviations.join('|') + ')[.!?] ?$', 'i');
+  var acronym_reg = new RegExp('[ |\.][A-Z]\.? +?$', 'i');
+  var elipses_reg = new RegExp('\\.\\.\\.* +?$');
+
+  var isSentence = function isSentence(hmm) {
+    if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg)) {
+      return false;
+    }
+    if (!isBalanced(hmm)) {
+      return false;
+    }
+    return true;
   };
 
-  // first, do a greedy split
-  var tmp = text.split(/(\S.+?[.\?])(?=\s+|$|")/g);
-  var sentences = [];
-  var abbrevs = ['jr', 'mr', 'mrs', 'ms', 'dr', 'prof', 'sr', 'sen', 'corp', 'calif', 'rep', 'gov', 'atty', 'supt', 'det', 'rev', 'col', 'gen', 'lt', 'cmdr', 'adm', 'capt', 'sgt', 'cpl', 'maj', 'dept', 'univ', 'assn', 'bros', 'inc', 'ltd', 'co', 'corp', 'arc', 'al', 'ave', 'blvd', 'cl', 'ct', 'cres', 'exp', 'rd', 'st', 'dist', 'mt', 'ft', 'fy', 'hwy', 'la', 'pd', 'pl', 'plz', 'tce', 'Ala', 'Ariz', 'Ark', 'Cal', 'Calif', 'Col', 'Colo', 'Conn', 'Del', 'Fed', 'Fla', 'Ga', 'Ida', 'Id', 'Ill', 'Ind', 'Ia', 'Kan', 'Kans', 'Ken', 'Ky', 'La', 'Me', 'Md', 'Mass', 'Mich', 'Minn', 'Miss', 'Mo', 'Mont', 'Neb', 'Nebr', 'Nev', 'Mex', 'Okla', 'Ok', 'Ore', 'Penna', 'Penn', 'Pa', 'Dak', 'Tenn', 'Tex', 'Ut', 'Vt', 'Va', 'Wash', 'Wis', 'Wisc', 'Wy', 'Wyo', 'USAFA', 'Alta', 'Ont', 'QuÔøΩ', 'Sask', 'Yuk', 'jan', 'feb', 'mar', 'apr', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'sept', 'vs', 'etc', 'esp', 'llb', 'md', 'bl', 'phd', 'ma', 'ba', 'miss', 'misses', 'mister', 'sir', 'esq', 'mstr', 'lit', 'fl', 'ex', 'eg', 'sep', 'sept', '..'];
-  var abbrev = new RegExp('(^| )(' + abbrevs.join('|') + ')[.] ?$', 'i');
-  //loop through and evaluate greedy splits
-  var l = tmp.length;
-  for (i = 0; i < l; i++) {
-    if (tmp[i]) {
-      tmp[i] = tmp[i].replace(/^\s+|\s+$/g, '');
-      //if this does not look like a good sentence, prepend to next one
-      if (tmp[i + 1] !== undefined && tmp[i].match(abbrev) || tmp[i].match(/[ |\.][A-Z]\.?$/i) || unbalanced(tmp[i])) {
-        tmp[i + 1] = tmp[i] + ' ' + tmp[i + 1];
-      } else {
-        sentences.push(tmp[i]);
-        tmp[i] = '';
-      }
+  //loop through these chunks, and join the non-sentence chunks back together..
+  for (var _i = 0; _i < chunks.length; _i++) {
+    //should this chunk be combined with the next one?
+    if (chunks[_i + 1] && !isSentence(chunks[_i])) {
+      chunks[_i + 1] = chunks[_i] + (chunks[_i + 1] || ''); //.replace(/ +/g, ' ');
+    } else if (chunks[_i] && chunks[_i].length > 0) {
+      //this chunk is a proper sentence..
+      sentences.push(chunks[_i]);
+      chunks[_i] = '';
     }
   }
-  //post-process the text
-  var clean = [];
-  for (i = 0; i < sentences.length; i++) {
-    //trim whitespace
-    sentences[i] = sentences[i].replace(/^\s+|\s+$/g, '');
-    sentences[i] = sentences[i].replace(/ {2}/g, ' ');
-    if (sentences[i]) {
-      clean.push(sentences[i]);
-    }
-  }
-  // if there's no proper sentence, just return [text]
-  if (clean.length === 0) {
+  //if we never got a sentence, return the given text
+  if (sentences.length === 0) {
     return [text];
   }
-  return clean;
+  return sentences;
 };
-module.exports = sentence_parser;
-// console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2)
-// console.log(sentence_parser('I like that Color').length === 1)
-// console.log(sentence_parser("Soviet bonds to be sold in the U.S. market. Everyone wins.").length === 2)
-// console.log(sentence_parser("Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that's fine, etc. and you can attend Feb. 8th. Bye").length === 3)
-// console.log(sentence_parser("Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York").length === 1)
-// console.log(sentence_parser("he said ... oh yeah. I did").length === 2)
-// console.log(sentence_parser("32 C").length === 1)
-// console.log(sentence_parser("32 C"))
 
-//morgan freeman
-// console.log(sentence_parser("a staged reenactment of [[Perry v. Brown]] world"))
+module.exports = sentence_parser;
+// console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2);
 
 },{}],388:[function(_dereq_,module,exports){
 "use strict";

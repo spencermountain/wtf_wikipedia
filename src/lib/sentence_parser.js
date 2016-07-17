@@ -112,13 +112,3 @@ const sentence_parser = function(text) {
 
 module.exports = sentence_parser;
 // console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2);
-// console.log(sentence_parser('I like that Color').length === 1);
-// console.log(sentence_parser('Soviet bonds to be sold in the U.S. market. Everyone wins.').length === 2);
-// console.log(sentence_parser('Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that\'s fine, etc. and you can attend Feb. 8th. Bye').length === 3);
-// console.log(sentence_parser('Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York').length === 1);
-// console.log(sentence_parser('he said ... oh yeah. I did').length === 2);
-// console.log(sentence_parser('32 C').length === 1);
-// console.log(sentence_parser('dom, kon. XIX w.').length === 2);
-
-//morgan freeman
-// console.log(sentence_parser("a staged reenactment of [[Perry v. Brown]] world"))

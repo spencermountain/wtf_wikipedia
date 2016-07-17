@@ -71,7 +71,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-filesize');
   grunt.registerTask('test', ['run:test']);
+  grunt.registerTask('demo', ['run:demo']);
   grunt.registerTask('browser_test', ['run:browser_test']);
+  grunt.registerTask('test_browser', ['run:browser_test']);
   grunt.registerTask('default', ['test']);
   grunt.registerTask('build', ['run:test', 'run:lint', 'run:cleanup', 'run:init', 'run:build', 'run:uglify', 'filesize']);
 

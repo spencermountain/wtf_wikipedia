@@ -6,7 +6,28 @@ var parse_line = require('../src/parse/parse_line');
 var parse_categories = require('../src/parse/parse_categories');
 var cleanup_misc = require('../src/parse/cleanup_misc');
 var parse_image = require('../src/parse/parse_image');
+var sentence_parser = require('../src/lib/sentence_parser');
 var kill_xml = require('../src/parse/kill_xml');
+
+test('sentence parser', (t) => {
+  [
+    ['Tony is nice. He lives in Japan.', 2],
+    ['I like that Color', 1],
+    ['Soviet bonds to be sold in the U.S. market. Everyone wins.', 2],
+    ['Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that\'s fine, etc. and you can attend Feb. 8th. Bye', 3],
+    ['Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York', 1],
+    ['he said ... oh yeah. I did', 2],
+    ['32 C', 1],
+    ['dom, kon. XIX w.', 2],
+    ['a staged reenactment of [[Perry v. Brown]] world', 1],
+  ].forEach((a) => {
+    let s = sentence_parser(a[0]);
+    let msg = a[1] + ' sentences  - "' + a[0] + '"';
+    t.equal(s.length, a[1], msg);
+  });
+  t.end();
+});
+
 
 test('misc cleanup', (t) => {
   [
@@ -101,7 +122,7 @@ test('xml', (t) => {
   t.end();
 });
 
-},{"../src/parse/cleanup_misc":35,"../src/parse/kill_xml":36,"../src/parse/parse_categories":37,"../src/parse/parse_image":38,"../src/parse/parse_line":39,"../src/parse/parse_redirects":41,"tape":2}],2:[function(require,module,exports){
+},{"../src/lib/sentence_parser":35,"../src/parse/cleanup_misc":36,"../src/parse/kill_xml":37,"../src/parse/parse_categories":38,"../src/parse/parse_image":39,"../src/parse/parse_line":40,"../src/parse/parse_redirects":42,"tape":2}],2:[function(require,module,exports){
 (function (process){
 var defined = require('defined');
 var createDefaultStream = require('./lib/default_stream');
@@ -255,7 +276,7 @@ function createHarness (conf_) {
 }
 
 }).call(this,require('_process'))
-},{"./lib/default_stream":3,"./lib/results":4,"./lib/test":5,"_process":52,"defined":9,"through":32}],3:[function(require,module,exports){
+},{"./lib/default_stream":3,"./lib/results":4,"./lib/test":5,"_process":53,"defined":9,"through":32}],3:[function(require,module,exports){
 (function (process){
 var through = require('through');
 var fs = require('fs');
@@ -290,7 +311,7 @@ module.exports = function () {
 };
 
 }).call(this,require('_process'))
-},{"_process":52,"fs":42,"through":32}],4:[function(require,module,exports){
+},{"_process":53,"fs":43,"through":32}],4:[function(require,module,exports){
 (function (process){
 var EventEmitter = require('events').EventEmitter;
 var inherits = require('inherits');
@@ -481,7 +502,7 @@ function invalidYaml (str) {
 }
 
 }).call(this,require('_process'))
-},{"_process":52,"events":48,"function-bind":11,"has":12,"inherits":13,"object-inspect":14,"resumer":15,"through":32}],5:[function(require,module,exports){
+},{"_process":53,"events":49,"function-bind":11,"has":12,"inherits":13,"object-inspect":14,"resumer":15,"through":32}],5:[function(require,module,exports){
 (function (process,__dirname){
 var deepEqual = require('deep-equal');
 var defined = require('defined');
@@ -988,7 +1009,7 @@ Test.skip = function (name_, _opts, _cb) {
 
 
 }).call(this,require('_process'),"/node_modules/tape/lib")
-},{"_process":52,"deep-equal":6,"defined":9,"events":48,"has":12,"inherits":13,"path":51,"string.prototype.trim":17}],6:[function(require,module,exports){
+},{"_process":53,"deep-equal":6,"defined":9,"events":49,"has":12,"inherits":13,"path":52,"string.prototype.trim":17}],6:[function(require,module,exports){
 var pSlice = Array.prototype.slice;
 var objectKeys = require('./lib/keys.js');
 var isArguments = require('./lib/is_arguments.js');
@@ -1451,7 +1472,7 @@ module.exports = function (write, end) {
 };
 
 }).call(this,require('_process'))
-},{"_process":52,"through":32}],16:[function(require,module,exports){
+},{"_process":53,"through":32}],16:[function(require,module,exports){
 'use strict';
 
 var bind = require('function-bind');
@@ -2039,7 +2060,7 @@ function through (write, end, opts) {
 
 
 }).call(this,require('_process'))
-},{"_process":52,"stream":64}],33:[function(require,module,exports){
+},{"_process":53,"stream":65}],33:[function(require,module,exports){
 // wikipedia special terms lifted and augmented from parsoid parser april 2015
 // (not even close to being complete)
 var i18n = {
@@ -2224,6 +2245,122 @@ var helpers = {
 module.exports = helpers;
 
 },{}],35:[function(require,module,exports){
+//split text into sentences, using regex
+//@spencermountain MIT
+
+//(Rule-based sentence boundary segmentation) - chop given text into its proper sentences.
+// Ignore periods/questions/exclamations used in acronyms/abbreviations/numbers, etc.
+// @spencermountain 2015 MIT
+'use strict';
+let abbreviations = ['jr', 'mr', 'mrs', 'ms', 'dr', 'prof', 'sr', 'sen', 'corp', 'calif', 'rep', 'gov', 'atty', 'supt', 'det', 'rev', 'col', 'gen', 'lt', 'cmdr', 'adm', 'capt', 'sgt', 'cpl', 'maj', 'dept', 'univ', 'assn', 'bros', 'inc', 'ltd', 'co', 'corp', 'arc', 'al', 'ave', 'blvd', 'cl', 'ct', 'cres', 'exp', 'rd', 'st', 'dist', 'mt', 'ft', 'fy', 'hwy', 'la', 'pd', 'pl', 'plz', 'tce', 'Ala', 'Ariz', 'Ark', 'Cal', 'Calif', 'Col', 'Colo', 'Conn', 'Del', 'Fed', 'Fla', 'Ga', 'Ida', 'Id', 'Ill', 'Ind', 'Ia', 'Kan', 'Kans', 'Ken', 'Ky', 'La', 'Me', 'Md', 'Mass', 'Mich', 'Minn', 'Miss', 'Mo', 'Mont', 'Neb', 'Nebr', 'Nev', 'Mex', 'Okla', 'Ok', 'Ore', 'Penna', 'Penn', 'Pa', 'Dak', 'Tenn', 'Tex', 'Ut', 'Vt', 'Va', 'Wash', 'Wis', 'Wisc', 'Wy', 'Wyo', 'USAFA', 'Alta', 'Ont', 'QuÔøΩ', 'Sask', 'Yuk', 'jan', 'feb', 'mar', 'apr', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'sept', 'vs', 'etc', 'esp', 'llb', 'md', 'bl', 'phd', 'ma', 'ba', 'miss', 'misses', 'mister', 'sir', 'esq', 'mstr', 'lit', 'fl', 'ex', 'eg', 'sep', 'sept', '..'];
+
+//turn a nested array into one array
+const flatten = function(arr) {
+  let all = [];
+  arr.forEach(function(a) {
+    all = all.concat(a);
+  });
+  return all;
+};
+
+const naiive_split = function(text) {
+  //first, split by newline
+  let splits = text.split(/(\n+)/);
+  //split by period, question-mark, and exclamation-mark
+  splits = splits.map(function(str) {
+    return str.split(/(\S.+?[.!?])(?=\s+|$)/g);
+  });
+  return flatten(splits);
+};
+
+// if this looks like a period within a wikipedia link, return false
+var isBalanced = function(str) {
+  str = str || '';
+  var open = str.split(/\[\[/) || [];
+  var closed = str.split(/\]\]/) || [];
+  if (open.length > closed.length) {
+    return false;
+  }
+  //make sure quotes are closed too
+  var quotes = str.match(/"/g);
+  if (quotes && (quotes.length % 2) !== 0 && str.length < 900) {
+    return false;
+  }
+  return true;
+};
+
+const sentence_parser = function(text) {
+  const sentences = [];
+  //first do a greedy-split..
+  let chunks = [];
+  //ensure it 'smells like' a sentence
+  if (!text || typeof text !== 'string' || !text.match(/\w/)) {
+    return sentences;
+  }
+  // This was the splitter regex updated to fix quoted punctuation marks.
+  // let splits = text.split(/(\S.+?[.\?!])(?=\s+|$|")/g);
+  // todo: look for side effects in this regex replacement:
+  let splits = naiive_split(text);
+  //filter-out the grap ones
+  for (let i = 0; i < splits.length; i++) {
+    let s = splits[i];
+    if (!s || s === '') {
+      continue;
+    }
+    //this is meaningful whitespace
+    if (!s.match(/\S/)) {
+      //add it to the last one
+      if (chunks[chunks.length - 1]) {
+        chunks[chunks.length - 1] += s;
+        continue;
+      } else if (splits[i + 1]) { //add it to the next one
+        splits[i + 1] = s + splits[i + 1];
+        continue;
+      }
+    //else, only whitespace, no terms, no sentence
+    }
+    chunks.push(s);
+  }
+
+  //detection of non-sentence chunks
+  // const abbrev_reg   = new RegExp('\\b(' + abbreviations.join('|') + ')[.!?] ?$', 'i');
+  const abbrev_reg = new RegExp('(^| )(' + abbreviations.join('|') + ')[.!?] ?$', 'i');
+  const acronym_reg = new RegExp('[ |\.][A-Z]\.? +?$', 'i');
+  const elipses_reg = new RegExp('\\.\\.\\.* +?$');
+
+  const isSentence = function(hmm) {
+    if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg)) {
+      return false;
+    }
+    if (!isBalanced(hmm)) {
+      return false;
+    }
+    return true;
+  };
+
+  //loop through these chunks, and join the non-sentence chunks back together..
+  for (let i = 0; i < chunks.length; i++) {
+    //should this chunk be combined with the next one?
+    if (chunks[i + 1] && !isSentence(chunks[i])) {
+      chunks[i + 1] = (chunks[i] + (chunks[i + 1] || '')); //.replace(/ +/g, ' ');
+    } else if (chunks[i] && chunks[i].length > 0) { //this chunk is a proper sentence..
+      sentences.push(chunks[i]);
+      chunks[i] = '';
+    }
+
+  }
+  //if we never got a sentence, return the given text
+  if (sentences.length === 0) {
+    return [text];
+  }
+  return sentences;
+};
+
+
+module.exports = sentence_parser;
+// console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2);
+
+},{}],36:[function(require,module,exports){
 
 var kill_xml = require("./kill_xml");
 
@@ -2256,7 +2393,7 @@ module.exports = cleanup_misc;
 // console.log(cleanup_misc('hello <br/> world'))
 // console.log(cleanup_misc("hello <asd f> world </h2>"))
 
-},{"./kill_xml":36}],36:[function(require,module,exports){
+},{"./kill_xml":37}],37:[function(require,module,exports){
 //okay, i know you're not supposed to regex html, but...
 //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
 
@@ -2290,7 +2427,7 @@ var kill_xml = function(wiki) {
 // console.log(kill_xml("North America,<br /> and one of"))
 module.exports = kill_xml;
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 var i18n = require("../data/i18n");
 
 function parse_categories(wiki) {
@@ -2312,7 +2449,7 @@ function parse_categories(wiki) {
 }
 module.exports = parse_categories;
 
-},{"../data/i18n":33}],38:[function(require,module,exports){
+},{"../data/i18n":33}],39:[function(require,module,exports){
 var i18n = require("../data/i18n");
 //images are usually [[image:my_pic.jpg]]
 
@@ -2326,7 +2463,7 @@ module.exports = parse_image;
 
 // console.log(parse_image("[[image:my_pic.jpg]]"));
 
-},{"../data/i18n":33}],39:[function(require,module,exports){
+},{"../data/i18n":33}],40:[function(require,module,exports){
 var helpers = require("../lib/helpers");
 var parse_links = require("./parse_links");
 var i18n = require("../data/i18n");
@@ -2375,7 +2512,7 @@ function parse_line(line) {
 // console.log(fetch_links("it is [[Tony Hawk|Tony]]s moher in [[Toronto]]s"))
 module.exports = parse_line;
 
-},{"../data/i18n":33,"../lib/helpers":34,"./parse_links":40}],40:[function(require,module,exports){
+},{"../data/i18n":33,"../lib/helpers":34,"./parse_links":41}],41:[function(require,module,exports){
 var helpers = require("../lib/helpers");
 //grab an array of internal links in the text
 var parse_links = function (str) {
@@ -2422,7 +2559,7 @@ var parse_links = function (str) {
 };
 module.exports = parse_links;
 
-},{"../lib/helpers":34}],41:[function(require,module,exports){
+},{"../lib/helpers":34}],42:[function(require,module,exports){
 var i18n = require("../data/i18n");
 //pulls target link out of redirect page
 var REDIRECT_REGEX = new RegExp("^ ?#(" + i18n.redirects.join("|") + ") *?\\[\\[(.{2,60}?)\\]\\]", "i");
@@ -2440,11 +2577,11 @@ exports.parse_redirect = function(wiki) {
   };
 };
 
-},{"../data/i18n":33}],42:[function(require,module,exports){
+},{"../data/i18n":33}],43:[function(require,module,exports){
 
-},{}],43:[function(require,module,exports){
-arguments[4][42][0].apply(exports,arguments)
-},{"dup":42}],44:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
+arguments[4][43][0].apply(exports,arguments)
+},{"dup":43}],45:[function(require,module,exports){
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -3860,7 +3997,7 @@ function decodeUtf8Char (str) {
   }
 }
 
-},{"base64-js":45,"ieee754":46,"is-array":47}],45:[function(require,module,exports){
+},{"base64-js":46,"ieee754":47,"is-array":48}],46:[function(require,module,exports){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 ;(function (exports) {
@@ -3986,7 +4123,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 	exports.fromByteArray = uint8ToBase64
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m,
       eLen = nBytes * 8 - mLen - 1,
@@ -4072,7 +4209,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 
 /**
  * isArray
@@ -4107,7 +4244,7 @@ module.exports = isArray || function (val) {
   return !! val && '[object Array]' == str.call(val);
 };
 
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -4410,14 +4547,14 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 arguments[4][13][0].apply(exports,arguments)
-},{"dup":13}],50:[function(require,module,exports){
+},{"dup":13}],51:[function(require,module,exports){
 module.exports = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
 
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -4645,7 +4782,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":52}],52:[function(require,module,exports){
+},{"_process":53}],53:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -4737,10 +4874,10 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],53:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 module.exports = require("./lib/_stream_duplex.js")
 
-},{"./lib/_stream_duplex.js":54}],54:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":55}],55:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -4833,7 +4970,7 @@ function forEach (xs, f) {
 }
 
 }).call(this,require('_process'))
-},{"./_stream_readable":56,"./_stream_writable":58,"_process":52,"core-util-is":59,"inherits":49}],55:[function(require,module,exports){
+},{"./_stream_readable":57,"./_stream_writable":59,"_process":53,"core-util-is":60,"inherits":50}],56:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -4881,7 +5018,7 @@ PassThrough.prototype._transform = function(chunk, encoding, cb) {
   cb(null, chunk);
 };
 
-},{"./_stream_transform":57,"core-util-is":59,"inherits":49}],56:[function(require,module,exports){
+},{"./_stream_transform":58,"core-util-is":60,"inherits":50}],57:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -5836,7 +5973,7 @@ function indexOf (xs, x) {
 }
 
 }).call(this,require('_process'))
-},{"./_stream_duplex":54,"_process":52,"buffer":44,"core-util-is":59,"events":48,"inherits":49,"isarray":50,"stream":64,"string_decoder/":65,"util":43}],57:[function(require,module,exports){
+},{"./_stream_duplex":55,"_process":53,"buffer":45,"core-util-is":60,"events":49,"inherits":50,"isarray":51,"stream":65,"string_decoder/":66,"util":44}],58:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -6047,7 +6184,7 @@ function done(stream, er) {
   return stream.push(null);
 }
 
-},{"./_stream_duplex":54,"core-util-is":59,"inherits":49}],58:[function(require,module,exports){
+},{"./_stream_duplex":55,"core-util-is":60,"inherits":50}],59:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -6528,7 +6665,7 @@ function endWritable(stream, state, cb) {
 }
 
 }).call(this,require('_process'))
-},{"./_stream_duplex":54,"_process":52,"buffer":44,"core-util-is":59,"inherits":49,"stream":64}],59:[function(require,module,exports){
+},{"./_stream_duplex":55,"_process":53,"buffer":45,"core-util-is":60,"inherits":50,"stream":65}],60:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -6638,10 +6775,10 @@ function objectToString(o) {
   return Object.prototype.toString.call(o);
 }
 }).call(this,require("buffer").Buffer)
-},{"buffer":44}],60:[function(require,module,exports){
+},{"buffer":45}],61:[function(require,module,exports){
 module.exports = require("./lib/_stream_passthrough.js")
 
-},{"./lib/_stream_passthrough.js":55}],61:[function(require,module,exports){
+},{"./lib/_stream_passthrough.js":56}],62:[function(require,module,exports){
 exports = module.exports = require('./lib/_stream_readable.js');
 exports.Stream = require('stream');
 exports.Readable = exports;
@@ -6650,13 +6787,13 @@ exports.Duplex = require('./lib/_stream_duplex.js');
 exports.Transform = require('./lib/_stream_transform.js');
 exports.PassThrough = require('./lib/_stream_passthrough.js');
 
-},{"./lib/_stream_duplex.js":54,"./lib/_stream_passthrough.js":55,"./lib/_stream_readable.js":56,"./lib/_stream_transform.js":57,"./lib/_stream_writable.js":58,"stream":64}],62:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":55,"./lib/_stream_passthrough.js":56,"./lib/_stream_readable.js":57,"./lib/_stream_transform.js":58,"./lib/_stream_writable.js":59,"stream":65}],63:[function(require,module,exports){
 module.exports = require("./lib/_stream_transform.js")
 
-},{"./lib/_stream_transform.js":57}],63:[function(require,module,exports){
+},{"./lib/_stream_transform.js":58}],64:[function(require,module,exports){
 module.exports = require("./lib/_stream_writable.js")
 
-},{"./lib/_stream_writable.js":58}],64:[function(require,module,exports){
+},{"./lib/_stream_writable.js":59}],65:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -6785,7 +6922,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":48,"inherits":49,"readable-stream/duplex.js":53,"readable-stream/passthrough.js":60,"readable-stream/readable.js":61,"readable-stream/transform.js":62,"readable-stream/writable.js":63}],65:[function(require,module,exports){
+},{"events":49,"inherits":50,"readable-stream/duplex.js":54,"readable-stream/passthrough.js":61,"readable-stream/readable.js":62,"readable-stream/transform.js":63,"readable-stream/writable.js":64}],66:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -7008,4 +7145,4 @@ function base64DetectIncompleteChar(buffer) {
   this.charLength = this.charReceived ? 3 : 0;
 }
 
-},{"buffer":44}]},{},[1]);
+},{"buffer":45}]},{},[1]);
