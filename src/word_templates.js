@@ -6,7 +6,7 @@ var word_templates = function(wiki) {
   //we can be sneaky with this template, as it's often found inside other templates
   wiki = wiki.replace(/\{\{URL\|([^ ]{4,100}?)\}\}/gi, '$1');
   //this one needs to be handled manually
-  wiki = wiki.replace(/\{\{convert\|([0-9]*?)\|([^\|]*).*?\}\}/gi, '$1 $2');
+  wiki = wiki.replace(/\{\{convert\|([0-9]*?)\|([^\|]*?)\}\}/gi, '$1 $2');
   //date-time templates
   var d = new Date();
   wiki = wiki.replace(/\{\{(CURRENT|LOCAL)DAY(2)?\}\}/gi, d.getDate());
@@ -23,9 +23,9 @@ var word_templates = function(wiki) {
     var date = (wiki.match(/\{\{dts\|(.*?)[\}\|]/) || [])[1] || '';
     date = new Date(date);
     if (date && date.getTime()) {
-      wiki = wiki.replace(/\{\{dts\|.*?\}\}/gi, date.toDateString())
+      wiki = wiki.replace(/\{\{dts\|.*?\}\}/gi, date.toDateString());
     } else {
-      wiki = wiki.replace(/\{\{dts\|.*?\}\}/gi, ' ')
+      wiki = wiki.replace(/\{\{dts\|.*?\}\}/gi, ' ');
     }
   }
   //common templates in wiktionary
@@ -38,12 +38,12 @@ var word_templates = function(wiki) {
     var lang = wiki.match(/\{\{etyl\|(.*?)\|.*?\}\}/i)[1] || '';
     lang = lang.toLowerCase();
     if (lang && languages[lang]) {
-      wiki = wiki.replace(/\{\{etyl\|(.*?)\|.*?\}\}/gi, languages[lang].english_title)
+      wiki = wiki.replace(/\{\{etyl\|(.*?)\|.*?\}\}/gi, languages[lang].english_title);
     } else {
-      wiki = wiki.replace(/\{\{etyl\|(.*?)\|.*?\}\}/gi, '($1)')
+      wiki = wiki.replace(/\{\{etyl\|(.*?)\|.*?\}\}/gi, '($1)');
     }
   }
-  return wiki
+  return wiki;
 };
 // console.log(word_templates("hello {{CURRENTDAY}} world"))
 // console.log(word_templates("hello {{CURRENTMONTH}} world"))
