@@ -7,7 +7,7 @@ var fetch = function(page_identifier, lang_or_wikiid, cb) {
   lang_or_wikiid = lang_or_wikiid || 'en';
   var identifier_type = 'title';
   if (page_identifier.match(/^[0-9]*$/) && page_identifier.length > 3) {
-    identifier_type = 'curid'
+    identifier_type = 'curid';
   }
   var url;
   if (site_map[lang_or_wikiid]) {
@@ -19,15 +19,13 @@ var fetch = function(page_identifier, lang_or_wikiid, cb) {
     uri: url
   }, function(error, response, body) {
     if (error) {
-      console.warn(error)
+      console.warn(error);
       cb(null);
+    } else if (redirects.is_redirect(body)) {
+      var result = redirects.parse_redirect(body);
+      fetch(result.redirect, lang_or_wikiid, cb);
     } else {
-      if (redirects.is_redirect(body)) {
-        var result = redirects.parse_redirect(body)
-        fetch(result.redirect, lang_or_wikiid, cb)
-      } else {
-        cb(body);
-      }
+      cb(body);
     }
   });
 };

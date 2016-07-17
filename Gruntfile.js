@@ -2,6 +2,7 @@ module.exports = function(grunt) {
   //paths to binaries, so no globals are needed
   var browserify = './node_modules/.bin/browserify';
   var derequire = './node_modules/.bin/derequire';
+  var eslint = './node_modules/.bin/eslint';
   var tape = './node_modules/tape/bin/tape';
   var tapSpec = './node_modules/tap-spec/bin/cmd.js';
   var fileServer = './node_modules/.bin/http-server';
@@ -36,7 +37,7 @@ module.exports = function(grunt) {
         exec: tape + ' ./tests/*_tests.js | ' + tapSpec
       },
       browser_test: {
-        exec: 'browserify ./test/unit_test/**/*_test.js -o ./test/browser_test/compiled_tests.js && ' + fileServer + ' test/browser_test -o -c-1'
+        exec: 'browserify ./tests/unit_tests.js -o ./demo/tests/compiled_tests.js && ' + fileServer + ' demo/tests -o -c-1'
       },
       prerelease: { //test all versions serverside, client-side
         exec: tape + ' ./test/prerelease/index.js | ' + tapSpec
@@ -46,18 +47,32 @@ module.exports = function(grunt) {
       },
       main: {
         exec: 'node ./scratch.js --debug'
+      },
+      lint: {
+        exec: eslint + ' ./src/**'
+      }
+    },
+
+    filesize: {
+      base: {
+        files: [{
+          src: [compressed]
+        }],
+        options: {
+          ouput: [{
+            stdout: true
+          }]
+        }
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-run');
-  grunt.loadNpmTasks('grunt-mocha-istanbul');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-browserify');
-  grunt.registerTask('default', ['browserify', 'uglify']);
-  grunt.registerTask('test', ['mochaTest']);
-  grunt.registerTask('coverage', ['mocha_istanbul']);
+  grunt.loadNpmTasks('grunt-filesize');
+  grunt.registerTask('test', ['run:test']);
+  grunt.registerTask('browser_test', ['run:browser_test']);
+  grunt.registerTask('default', ['test']);
+  grunt.registerTask('build', ['run:test', 'run:lint', 'run:cleanup', 'run:init', 'run:build', 'run:uglify', 'filesize']);
 
 };
