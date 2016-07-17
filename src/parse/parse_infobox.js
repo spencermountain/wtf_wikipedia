@@ -8,13 +8,13 @@ function parse_infobox(str) {
 
     if (str) {
         //this collapsible list stuff is just a headache
-        str = str.replace(/\{\{Collapsible list[^\}]{10,1000}\}\}/g, "");
+        str = str.replace(/\{\{Collapsible list[^}]{10,1000}\}\}/g, "");
 
 
         let stringBuilder = [];
 
         let lastChar;
-        let parDepth = false;
+        let parDepth = -2; // first two {{
         for (let i = 0, len = str.length; i < len; i++) {
 
             if ((parDepth === 0) && str[i] === '|' && lastChar !== '\n') {
@@ -63,3 +63,4 @@ function parse_infobox(str) {
     return obj;
 }
 module.exports = parse_infobox;
+
