@@ -2,9 +2,11 @@
 
 its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).   I'm trying my best.
 
-**wtf_wikipedia** turns wikipedia article markup into **JSON**, and handles many vile recursive template shinanigans, [half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template variants, and illicit wiki-esque shorthands.
+**wtf_wikipedia** turns *wikipedia article markup* into **JSON**.
 
-Making your own parser is never a good idea, but this library is a very detailed and deliberate creature. Place your faith well within.
+It handles many vile recursive template shinanigans, [half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template variants, and illicit wiki-esque shorthands.
+
+Making your own parser is never a good idea, but this library is a very detailed and deliberate creature. Place your faith well within. :four_leaf_clover:
 
 ```bash
 npm install wtf_wikipedia
@@ -12,10 +14,13 @@ npm install wtf_wikipedia
 then:
 ````javascript
 var wtf_wikipedia = require("wtf_wikipedia")
+
+wtf_wikipedia.parse(someWikiScript)
+// {text:[...], infobox:{}, categories:[...], images:[] }
+
 //fetch wikipedia markup from api..
 wtf_wikipedia.from_api("Toronto", "en", function(markup){
   var obj= wtf_wikipedia.parse(markup)
-  // {text:[...], infobox:{}, categories:[...], images:[] }
   var mayor= obj.infobox.leader_name
   // "John Tory"
 })
@@ -25,6 +30,8 @@ if you only want some nice plaintext, and no junk:
 var text= wtf_wikipedia.plaintext(markup)
 // "Toronto is the most populous city in Canada and the provincial capital..."
 ````
+## [Demo!](https://rawgit.com/spencermountain/wtf_wikipedia/master/demo/index.html#)
+
 Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It reliably turns wikiscript into HTML, but not valid XML. To use it for mining, you need a [wikiscript -> virtual DOM -> screen-scraping] flow, but getting structured data this way is a challenge.
 
 This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb), letting you parse a wikipedia dump in nodejs easily.
