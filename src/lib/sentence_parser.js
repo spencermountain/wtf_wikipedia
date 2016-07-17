@@ -27,19 +27,19 @@ const naiive_split = function(text) {
 };
 
 // if this looks like a period within a wikipedia link, return false
-var isUnbalanced = function(str) {
+var isBalanced = function(str) {
   str = str || '';
-  var open = str.match(/\[\[/) || [];
-  var closed = str.match(/\]\]/) || [];
+  var open = str.split(/\[\[/) || [];
+  var closed = str.split(/\]\]/) || [];
   if (open.length > closed.length) {
-    return true;
+    return false;
   }
   //make sure quotes are closed too
   var quotes = str.match(/"/g);
   if (quotes && (quotes.length % 2) !== 0 && str.length < 900) {
-    return true;
+    return false;
   }
-  return false;
+  return true;
 };
 
 const sentence_parser = function(text) {
@@ -80,12 +80,23 @@ const sentence_parser = function(text) {
   const abbrev_reg = new RegExp('(^| )(' + abbreviations.join('|') + ')[.!?] ?$', 'i');
   const acronym_reg = new RegExp('[ |\.][A-Z]\.? +?$', 'i');
   const elipses_reg = new RegExp('\\.\\.\\.* +?$');
+
+  const isSentence = function(hmm) {
+    if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg)) {
+      return false;
+    }
+    if (!isBalanced(hmm)) {
+      return false;
+    }
+    return true;
+  };
+
   //loop through these chunks, and join the non-sentence chunks back together..
   for (let i = 0; i < chunks.length; i++) {
     //should this chunk be combined with the next one?
-    if (chunks[i + 1] && (chunks[i].match(abbrev_reg) || chunks[i].match(acronym_reg) || chunks[i].match(elipses_reg))) {
+    if (chunks[i + 1] && !isSentence(chunks[i])) {
       chunks[i + 1] = (chunks[i] + (chunks[i + 1] || '')); //.replace(/ +/g, ' ');
-    } else if (chunks[i] && chunks[i].length > 0 && !isUnbalanced(chunks[1])) { //this chunk is a proper sentence..
+    } else if (chunks[i] && chunks[i].length > 0) { //this chunk is a proper sentence..
       sentences.push(chunks[i]);
       chunks[i] = '';
     }
@@ -100,15 +111,14 @@ const sentence_parser = function(text) {
 
 
 module.exports = sentence_parser;
-// console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2)
-// console.log(sentence_parser('I like that Color').length === 1)
-// console.log(sentence_parser("Soviet bonds to be sold in the U.S. market. Everyone wins.").length === 2)
-// console.log(sentence_parser("Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that's fine, etc. and you can attend Feb. 8th. Bye").length === 3)
-// console.log(sentence_parser("Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York").length === 1)
-// console.log(sentence_parser("he said ... oh yeah. I did").length === 2)
-// console.log(sentence_parser("32 C").length === 1)
-// console.log(sentence_parser("32 C"))
-// console.log(sentence_parser('dom, kon. XIX w.'));
+// console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2);
+// console.log(sentence_parser('I like that Color').length === 1);
+// console.log(sentence_parser('Soviet bonds to be sold in the U.S. market. Everyone wins.').length === 2);
+// console.log(sentence_parser('Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that\'s fine, etc. and you can attend Feb. 8th. Bye').length === 3);
+// console.log(sentence_parser('Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York').length === 1);
+// console.log(sentence_parser('he said ... oh yeah. I did').length === 2);
+// console.log(sentence_parser('32 C').length === 1);
+// console.log(sentence_parser('dom, kon. XIX w.').length === 2);
 
 //morgan freeman
 // console.log(sentence_parser("a staged reenactment of [[Perry v. Brown]] world"))
