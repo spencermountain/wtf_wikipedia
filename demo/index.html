@@ -5,25 +5,51 @@
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="./builds/wtf_wikipedia.js"></script>
     <style>
-      h2{color:grey;}
+      h1{
+        color:#d76d6b;
+        margin:30px;
+      }
+      h2{color:steelblue;}
       .c{color:#858585; font-size:15px;}
-      a{color:steelblue;}
+      a{
+        color:#d76d6b;
+        text-decoration:none;
+      }
       .r{color:steelblue; position:relative; left:70px;}
+      #wikiscript{
+        border:1px solid steelblue;
+        border-radius:5px;
+        margin:30px;
+      }
     </style>
     <script>
       $(window).load(function(){
+
+        var make_list=function(arr){
+          console.log(arr)
+          arr = arr || []
+          return arr.reduce(function(str,a){
+            return str+='<li>'+a+'</li>'
+          },'')
+        }
 
         var wikiscript=$("#wikiscript").text()
         var text= wtf_wikipedia.plaintext(wikiscript)
         $("#text").html(text);
         var obj= wtf_wikipedia.parse(wikiscript);
         console.log(obj)
-        $("#result").html(JSON.stringify(obj,null,2));
+        $("#categories").html('<ul>'+make_list(obj.categories)+'</ul>');
+        $("#images").html('<ul>'+make_list(obj.images)+'</ul>');
+        // $("#translations").html('<ul>'+make_list(obj.translations)+'</ul>');
+        $("#infobox").html(JSON.stringify(obj.infobox,null,2));
       })
     </script>
   </head>
   <body>
-    <h1><a href="https://github.com/spencermountain/wtf_wikipedia">Wtf_wikipedia.js demo</a></h1>
+    <div>
+      <a href="https://github.com/spencermountain/wtf_wikipedia">wtf_wikipedia</a>
+      <span style="padding-left:15px; color:grey;"> - parsing demo</span>
+    </div>
     <pre id="wikiscript" style="max-height:200px; overflow:auto;">
       {{Infobox venue
       | name = Royal Cinema
@@ -75,7 +101,33 @@
       [[Category:Streamline Moderne architecture in Canada]]
       [[Category:Theatres completed in 1939]]
     </pre>
-    <div id="text"></div>
-    <pre id="result"></pre>
+
+    <ul>
+      <h2>PlainText:</h2>
+      <ul>
+        <div id="text"></div>
+      </ul>
+
+      <h2>Categories:</h2>
+      <ul>
+        <div id="categories"></div>
+      </ul>
+
+      <h2>Images:</h2>
+      <ul>
+        <div id="images"></div>
+      </ul>
+
+      <h2>Translations:</h2>
+      <ul>
+        <div id="translations"></div>
+      </ul>
+
+      <h2>Infobox:</h2>
+      <ul>
+        <pre id="infobox"></pre>
+      </ul>
+    </ul>
+
   </body>
 <html>
