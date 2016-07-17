@@ -60,5 +60,5 @@ let tmp = `
 | logo = [[File:University of Alabama (logo).png|250px]]
 }}
 `;
-console.log(wtf_wikipedia.parse(tmp).infobox.athletics);
+console.log(wtf_wikipedia.parse(tmp).infobox.campus);
 // console.log(wtf_wikipedia.parse('Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York').text.Intro);
