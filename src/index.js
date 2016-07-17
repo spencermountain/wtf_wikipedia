@@ -42,7 +42,6 @@ var wtf_wikipedia = (function() {
     wiki = word_templates(wiki);
     //kill off th3 craziness
     wiki = preprocess(wiki);
-
     //find tables
     tables = wiki.match(/\{\|[\s\S]{1,8000}?\|\}/g, '') || [];
     tables = tables.map(function(s) {
