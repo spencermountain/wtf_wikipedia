@@ -1,13 +1,13 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
-  "main": "./builds/wtf_wikipedia.js",
+  "main": "./src/index.js",
   "scripts": {
     "start": "grunt demo",
     "test": "tape ./tests/*_tests.js | tap-spec",
@@ -27,7 +27,7 @@
     "wikiscript"
   ],
   "dependencies": {
-    "request": "2.*.*"
+    "request": "^2.73.0"
   },
   "devDependencies": {
     "babel-plugin-transform-object-assign": "^6.8.0",

@@ -46,7 +46,7 @@ module.exports = function(grunt) {
         exec: fileServer + ' demo -o -c-1'
       },
       main: {
-        exec: 'node ./scratch.js --debug'
+        exec: 'node ./scratch.js'
       },
       lint: {
         exec: eslint + ' ./src/**'
