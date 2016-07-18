@@ -4,6 +4,7 @@
 var wtf_wikipedia = (function() {
   var sentence_parser = require('./lib/sentence_parser');
   var fetch = require('./lib/fetch_text');
+  var make_image = require('./lib/make_image');
   var i18n = require('./data/i18n');
   var helpers = require('./lib/helpers');
   var languages = require('./data/languages');
@@ -158,7 +159,8 @@ var wtf_wikipedia = (function() {
       }
       images.push(img);
     }
-
+    //add url, etc to image
+    images = images.map(make_image);
     return {
       type: 'page',
       text: output,
