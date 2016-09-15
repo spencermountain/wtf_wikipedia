@@ -97,7 +97,8 @@ var wtf_wikipedia = (function() {
     //get list of links, categories
     var cats = parse_categories(wiki);
     //next, map each line into a parsable sentence
-    var output = {};
+    // var output = {};
+    var output = new Map();
     var lines = wiki.replace(/\r/g, '').split(/\n/);
     var section = 'Intro';
     var number = 1;
@@ -144,10 +145,13 @@ var wtf_wikipedia = (function() {
       sentence_parser(part).forEach(function(line) {
         line = parse_line(line);
         if (line && line.text) {
-          if (!output[section]) {
-            output[section] = [];
+          // if (!output[section]) {
+            if(!output.get(section)){
+            // output[section] = [];
+            output.set(section, []);
           }
-          output[section].push(line);
+          // output[section].push(line);
+          output.get(section).push(line);
         }
       });
     });
@@ -190,11 +194,18 @@ var wtf_wikipedia = (function() {
   var plaintext = function(str) {
     var data = main(str) || {};
     data.text = data.text || {};
-    return Object.keys(data.text).map(function(k) {
-      return data.text[k].map(function(a) {
-        return a.text;
-      }).join(' ');
-    }).join('\n');
+    var text = '';
+    data.text.forEach( function (v, k) {
+        text += v.map(function(a) {
+          return a.text;
+        }).join(' ') + '\n';
+    });
+    return text;
+    // return Object.keys(data.text).map(function(k) {
+    //   return data.text[k].map(function(a) {
+    //     return a.text;
+    //   }).join(' ');
+    // }).join('\n');
   };
 
   var methods = {
