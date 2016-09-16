@@ -19,7 +19,8 @@ test('royal_cinema', (t) => {
   var data = wtf_wikipedia.parse(fetch('royal_cinema'));
   str_equal(data.infobox.opened.text, 1939, t);
   str_equal(data.infobox_template, 'venue', t);
-  str_equal(data.text.Intro.length, 10, t);
+  // str_equal(data.text.Intro.length, 10, t);
+  str_equal(data.text.get('Intro').length, 10, t);
   str_equal(data.categories.length, 4, t);
   t.end();
 });
@@ -28,7 +29,8 @@ test('toronto_star', (t) => {
   var data = wtf_wikipedia.parse(fetch('toronto_star'));
   str_equal(data.infobox.publisher.text, 'John D. Cruickshank', t);
   str_equal(data.infobox_template, 'newspaper', t);
-  str_equal(data.text.History.length, 21, t);
+  // str_equal(data.text.History.length, 21, t);
+  str_equal(data.text.get('History').length, 21, t);
   str_equal(data.categories.length, 6, t);
   t.end();
 });
