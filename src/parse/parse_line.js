@@ -26,8 +26,7 @@ function postprocess(line) {
   if (line.match(/^(thumb|right|left)\|/i)) {
     return null;
   }
-  //some IPA pronounciations leave blank junk parenteses
-  line = line.replace(/\([^a-z]{0,8}\)/, "");
+
   line = helpers.trim_whitespace(line);
 
   // put new lines back in
