@@ -9,36 +9,36 @@ function recursive_matches(opener, closer, text) {
   for (var i = 0; i < chars.length; i++) {
     //incriment open tag
     if (chars[i] === opener) {
-      open += 1
+      open += 1;
     }
     //decrement close tag
     if (chars[i] === closer) {
       open -= 1;
       if (open < 0) {
-        open = 0
+        open = 0;
       }
     }
     if (open >= 0) {
-      last.push(chars[i])
+      last.push(chars[i]);
     }
     if (open === 0 && last.length > 0) {
       //first, fix botched parse
       var open_count = last.filter(function(s) {
-        return s === opener
+        return s === opener;
       });
       var close_count = last.filter(function(s) {
-        return s === closer
+        return s === closer;
       });
       //is it botched?
       if (open_count.length > close_count.length) {
-        last.push(closer)
+        last.push(closer);
       }
       //looks good, keep it
       out.push(last.join(''));
-      last = []
+      last = [];
     }
   }
-  return out
+  return out;
 }
 module.exports = recursive_matches;
 

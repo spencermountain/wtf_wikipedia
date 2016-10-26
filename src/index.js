@@ -146,7 +146,7 @@ var wtf_wikipedia = (function() {
         line = parse_line(line);
         if (line && line.text) {
           // if (!output[section]) {
-            if(!output.get(section)){
+          if (!output.get(section)) {
             // output[section] = [];
             output.set(section, []);
           }
@@ -195,17 +195,12 @@ var wtf_wikipedia = (function() {
     var data = main(str) || {};
     data.text = data.text || {};
     var text = '';
-    data.text.forEach( function (v, k) {
-        text += v.map(function(a) {
+    data.text.forEach(function (v) {
+      text += v.map(function(a) {
           return a.text;
         }).join(' ') + '\n';
     });
     return text;
-    // return Object.keys(data.text).map(function(k) {
-    //   return data.text[k].map(function(a) {
-    //     return a.text;
-    //   }).join(' ');
-    // }).join('\n');
   };
 
   var methods = {

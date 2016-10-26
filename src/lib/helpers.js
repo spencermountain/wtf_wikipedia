@@ -3,7 +3,7 @@ var helpers = {
     if (str && typeof str === 'string') {
       return str.charAt(0).toUpperCase() + str.slice(1);
     }
-    return ''
+    return '';
   },
   onlyUnique: function(value, index, self) {
     return self.indexOf(value) === index;
@@ -14,9 +14,9 @@ var helpers = {
       str = str.replace(/\s\s*$/, '');
       str = str.replace(/ {2}/, ' ');
       str = str.replace(/\s, /, ', ');
-      return str
+      return str;
     }
-    return ''
+    return '';
   }
 };
 module.exports = helpers;

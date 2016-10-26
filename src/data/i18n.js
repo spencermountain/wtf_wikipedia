@@ -154,5 +154,5 @@ var i18n = {
 };
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = i18n
+  module.exports = i18n;
 }
