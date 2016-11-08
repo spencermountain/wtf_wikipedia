@@ -27,7 +27,7 @@
     "wikiscript"
   ],
   "dependencies": {
-    "md5": "^2.1.0",
+    "jshashes": "^1.0.5",
     "request": "^2.73.0"
   },
   "devDependencies": {
