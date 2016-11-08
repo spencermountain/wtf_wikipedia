@@ -193,7 +193,7 @@ var wtf_wikipedia = (function() {
 
   var plaintext = function(str) {
     var data = main(str) || {};
-    data.text = data.text || {};
+    data.text = data.text || [];
     var text = '';
     data.text.forEach(function (v) {
       text += v.map(function(a) {

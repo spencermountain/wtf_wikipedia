@@ -10,6 +10,7 @@ const make_image = function(file) {
   //spaces to underscores
   title = title.replace(/ /g, '_');
   let hash = md5(title) || '';
+  console.log(hash);
   let path = hash.substr(0, 1) + '/' + hash.substr(0, 2) + '/';
   title = encodeURIComponent(title);
   path += title;
@@ -27,3 +28,4 @@ module.exports = make_image;
 // console.log(make_image('Spelterini_Blüemlisalp.jpg'));
 // console.log(make_image('Charlatans.jpg'));
 // make_image('File:Abingdonschool.jpg');
+//1e44ecfe85c6446438da2a01a2bf9e4c

@@ -8,10 +8,10 @@ let parse = wtf_wikipedia.parse;
 //   console.log(wtf_wikipedia.parse(s).infobox)
 // })
 //
-wtf_wikipedia.from_api('On A Friday', function(page) {
-  var parsed = wtf_wikipedia.parse(page); // causes the crash
-  console.log(parsed.images);
-});
+// wtf_wikipedia.from_api('On A Friday', function(page) {
+//   var parsed = wtf_wikipedia.parse(page); // causes the crash
+//   console.log(parsed.images);
+// });
 
 // function from_file(page){
 //   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
@@ -33,3 +33,5 @@ wtf_wikipedia.from_api('On A Friday', function(page) {
 //   console.log(obj.infobox);
 // })
 // require('./src/lib/make_image');
+
+console.log(wtf_wikipedia.parse('blah'));
