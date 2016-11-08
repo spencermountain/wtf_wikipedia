@@ -1,5 +1,5 @@
 'use strict';
-const Hashes = require('jshashes');
+const Hashes = require('./hashes');
 //the wikimedia image url is a little silly:
 //https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F
 
