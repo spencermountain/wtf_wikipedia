@@ -46,18 +46,6 @@ test('toronto_star with list', (t) => {
   t.end();
 });
 
-// test('royal_cinema with list', (t) => {
-//   var data = wtf_wikipedia.parse(fetch('royal_cinema'), {ignoreLists: false});
-//   str_equal(data.infobox.opened.text, 1939, t);
-//   str_equal(data.infobox_template, 'venue', t);
-//   // str_equal(data.text.Intro.length, 10, t);
-//   str_equal(data.text.get('Intro').length, 10, t);
-//   str_equal(data.categories.length, 4, t);
-//   // str_equal(data.text.get('See also'), undefined, t);
-//   console.log(data.text.get('See also'));
-//   t.end();
-// });
-
 test('jodie_emery', (t) => {
   var data = wtf_wikipedia.parse(fetch('jodie_emery'));
   str_equal(data.infobox.nationality.text, 'Canadian', t);
