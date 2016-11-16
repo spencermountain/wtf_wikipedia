@@ -21,9 +21,15 @@ var wtf_wikipedia = (function() {
   var preprocess = require('./parse/cleanup_misc');
   var word_templates = require('./word_templates');
 
+  // options
+  var defaultParseOptions = {
+    ignoreLists: true
+  };
+
   //some xml elements are just junk, and demand full inglorious death by regular exp
   //other xml elements, like <em>, are plucked out afterwards
-  var main = function(wiki) {
+  var main = function(wiki, options) {
+    options = Object.assign({}, defaultParseOptions, options);
     var infobox = {};
     var infobox_template = '';
     var images = [];
@@ -120,10 +126,13 @@ var wtf_wikipedia = (function() {
       }
       //remove some nonsense wp lines
 
-      //ignore list
-      if (part.match(/^[#\*:;\|]/)) {
-        return;
+      if (options.ignoreLists) {
+        //ignore list
+        if (part.match(/^[#\*:;\|]/)) {
+          return;
+        }
       }
+
       //ignore only-punctuation
       if (!part.match(/[a-z0-9]/i)) {
         return;

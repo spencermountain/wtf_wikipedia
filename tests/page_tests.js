@@ -32,8 +32,31 @@ test('toronto_star', (t) => {
   // str_equal(data.text.History.length, 21, t);
   str_equal(data.text.get('History').length, 21, t);
   str_equal(data.categories.length, 6, t);
+  str_equal(data.text.get('Notable cartoonists'), undefined, t);
   t.end();
 });
+
+test('toronto_star with list', (t) => {
+  var data = wtf_wikipedia.parse(fetch('toronto_star'), {ignoreLists: false});
+  str_equal(data.infobox.publisher.text, 'John D. Cruickshank', t);
+  str_equal(data.infobox_template, 'newspaper', t);
+  str_equal(data.text.get('History').length, 21, t);
+  str_equal(data.categories.length, 6, t);
+  str_equal(data.text.get('Notable cartoonists').length, 10, t);
+  t.end();
+});
+
+// test('royal_cinema with list', (t) => {
+//   var data = wtf_wikipedia.parse(fetch('royal_cinema'), {ignoreLists: false});
+//   str_equal(data.infobox.opened.text, 1939, t);
+//   str_equal(data.infobox_template, 'venue', t);
+//   // str_equal(data.text.Intro.length, 10, t);
+//   str_equal(data.text.get('Intro').length, 10, t);
+//   str_equal(data.categories.length, 4, t);
+//   // str_equal(data.text.get('See also'), undefined, t);
+//   console.log(data.text.get('See also'));
+//   t.end();
+// });
 
 test('jodie_emery', (t) => {
   var data = wtf_wikipedia.parse(fetch('jodie_emery'));
