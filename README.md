@@ -55,8 +55,15 @@ m ok, lets write our own parser what culd go rong
 its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView), [txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
 
 #Methods
-## **.parse(markup)**
+## **.parse(markup, options)**
 turns wikipedia markup into a nice json object
+
+options is optional. The only option currently supported is 'ignoreLists' which defaults to true.
+```javascript
+wtf_wikipedia.parse(someWikiScript, { ignoreLists: false })
+// {text:[...], infobox:{}, categories:[...], images:[] }
+```
+
 ## **.from_api(title, lang_or_wikiid, callback)**
 retrieves raw contents of a wikipedia article - or other mediawiki wiki identified by its [dbname](http://en.wikipedia.org/w/api.php?action=sitematrix&format=json)
 

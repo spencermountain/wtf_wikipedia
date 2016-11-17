@@ -32,6 +32,17 @@ test('toronto_star', (t) => {
   // str_equal(data.text.History.length, 21, t);
   str_equal(data.text.get('History').length, 21, t);
   str_equal(data.categories.length, 6, t);
+  str_equal(data.text.get('Notable cartoonists'), undefined, t);
+  t.end();
+});
+
+test('toronto_star with list', (t) => {
+  var data = wtf_wikipedia.parse(fetch('toronto_star'), {ignoreLists: false});
+  str_equal(data.infobox.publisher.text, 'John D. Cruickshank', t);
+  str_equal(data.infobox_template, 'newspaper', t);
+  str_equal(data.text.get('History').length, 21, t);
+  str_equal(data.categories.length, 6, t);
+  str_equal(data.text.get('Notable cartoonists').length, 10, t);
   t.end();
 });
 
