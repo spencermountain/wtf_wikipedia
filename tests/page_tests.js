@@ -77,3 +77,13 @@ test('statoil', (t) => {
   str_equal(data.images[0].url, 'https://upload.wikimedia.org/wikipedia/commons/8/87/Statoil-Estonia.jpg', t);
   t.end();
 });
+
+test('raith rovers', (t) => {
+  var data = wtf_wikipedia.parse(fetch('raith_rovers'));
+  str_equal(data.infobox.clubname.text, 'Raith Rovers', t);
+  str_equal(data.categories.length, 10, t);
+  str_equal(data.images.length, 2, t);
+  str_equal(data.images[0].file, 'File:Stark\'s Park - geograph.org.uk - 204446.jpg', t);
+  str_equal(data.images[0].url, 'https://upload.wikimedia.org/wikipedia/commons/3/38/Stark\'s_Park_-_geograph.org.uk_-_204446.jpg', t);
+  t.end();
+});
