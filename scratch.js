@@ -8,10 +8,10 @@ let parse = wtf_wikipedia.parse;
 //   console.log(wtf_wikipedia.parse(s).infobox)
 // })
 //
-wtf_wikipedia.from_api('Radiohead', function(page) {
-  var parsed = wtf_wikipedia.parse(page); // causes the crash
-  console.log(parsed.images);
-});
+// wtf_wikipedia.from_api('Raoul Dautry', 'fr',function(page) {
+//   var parsed = wtf_wikipedia.parse(page); // causes the crash
+//   console.log(parsed.text.get('Intro'));
+// });
 
 // function from_file(page){
 //   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
@@ -34,4 +34,6 @@ wtf_wikipedia.from_api('Radiohead', function(page) {
 // })
 // require('./src/lib/make_image');
 
-console.log(wtf_wikipedia.parse('blah'));
+let str=`'''Raoul Dautry''' est un ingénieur, dirigeant d'entreprises publiques et homme politique [[France|français]], né le {{date|16|septembre|1880}} à [[Montluçon]] `
+let o=wtf_wikipedia.parse(str)
+console.log(o.text.get('Intro')[0]);

@@ -28,6 +28,11 @@ var word_templates = function(wiki) {
       wiki = wiki.replace(/\{\{dts\|.*?\}\}/gi, ' ');
     }
   }
+  if (wiki.match(/\{\{date\|.*?\}\}/)) {
+    var date = (wiki.match(/\{\{date\|(.*?)\|(.*?)\|(.*?)\}\}/) || []) || [];
+    var dateString=date[1]+' '+date[2]+' '+date[3]
+    wiki=wiki.replace(/\{\{date\|.*?\}\}/gi, dateString)
+  }
   //common templates in wiktionary
   wiki = wiki.replace(/\{\{term\|(.*?)\|.*?\}\}/gi, '\'$1\'');
   wiki = wiki.replace(/\{\{IPA\|(.*?)\|.*?\}\}/gi, '$1');
