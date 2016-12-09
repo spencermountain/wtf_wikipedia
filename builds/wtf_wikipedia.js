@@ -1,4 +1,4 @@
-/* wtf_wikipedia v0.6.1
+/* wtf_wikipedia v0.7.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -3716,9 +3716,15 @@ var wtf_wikipedia = function () {
   var preprocess = _dereq_('./parse/cleanup_misc');
   var word_templates = _dereq_('./word_templates');
 
+  // options
+  var defaultParseOptions = {
+    ignoreLists: true
+  };
+
   //some xml elements are just junk, and demand full inglorious death by regular exp
   //other xml elements, like <em>, are plucked out afterwards
-  var main = function main(wiki) {
+  var main = function main(wiki, options) {
+    options = Object.assign({}, defaultParseOptions, options);
     var infobox = {};
     var infobox_template = '';
     var images = [];
@@ -3816,10 +3822,13 @@ var wtf_wikipedia = function () {
       }
       //remove some nonsense wp lines
 
-      //ignore list
-      if (part.match(/^[#\*:;\|]/)) {
-        return;
+      if (options.ignoreLists) {
+        //ignore list
+        if (part.match(/^[#\*:;\|]/)) {
+          return;
+        }
       }
+
       //ignore only-punctuation
       if (!part.match(/[a-z0-9]/i)) {
         return;
@@ -6079,6 +6088,8 @@ function resolve_links(line) {
 
   // [[Common links]]
   line = line.replace(/\[\[:?([^|]{2,80}?)\]\](\w{0,5})/g, "$1$2");
+  // [[File:with|Size]]
+  line = line.replace(/\[\[File:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, "$1");
   // [[Replaced|Links]]
   line = line.replace(/\[\[:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, "$2$3");
   // External links
@@ -6312,6 +6323,11 @@ var word_templates = function word_templates(wiki) {
     } else {
       wiki = wiki.replace(/\{\{dts\|.*?\}\}/gi, ' ');
     }
+  }
+  if (wiki.match(/\{\{date\|.*?\}\}/)) {
+    var date = wiki.match(/\{\{date\|(.*?)\|(.*?)\|(.*?)\}\}/) || [] || [];
+    var dateString = date[1] + ' ' + date[2] + ' ' + date[3];
+    wiki = wiki.replace(/\{\{date\|.*?\}\}/gi, dateString);
   }
   //common templates in wiktionary
   wiki = wiki.replace(/\{\{term\|(.*?)\|.*?\}\}/gi, '\'$1\'');
