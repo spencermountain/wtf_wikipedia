@@ -51,7 +51,7 @@ function parse_infobox(str) {
                 obj[key] = parse_line(value);
                 //turn number strings into integers
                 if (obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
-                    obj[key].text = obj[key].text.replace(/,/g);
+                    obj[key].text = obj[key].text.replace(/,/, '');
                     obj[key].text = parseInt(obj[key].text, 10);
                 }
             }
