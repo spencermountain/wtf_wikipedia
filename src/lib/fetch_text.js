@@ -5,16 +5,19 @@ var redirects = require('../parse/parse_redirects');
 
 var fetch = function(page_identifier, lang_or_wikiid, cb) {
   lang_or_wikiid = lang_or_wikiid || 'en';
-  var identifier_type = 'title';
+  var identifier_type = 'titles';
   if (page_identifier.match(/^[0-9]*$/) && page_identifier.length > 3) {
     identifier_type = 'curid';
   }
   var url;
   if (site_map[lang_or_wikiid]) {
-    url = site_map[lang_or_wikiid] + '/w/index.php?action=raw&' + identifier_type + '=' + page_identifier;
+    url = site_map[lang_or_wikiid] + '/w/api.php';
   } else {
-    url = 'http://' + lang_or_wikiid + '.wikipedia.org/w/index.php?action=raw&' + identifier_type + '=' + page_identifier;
+    url = 'http://' + lang_or_wikiid + '.wikipedia.org/w/api.php';
   }
+  //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
+  url += '?action=query&prop=revisions&rvlimit=1&rvprop=content&format=json&origin=*';
+  url += '&' + identifier_type + '=' + page_identifier;
 
   request
     .get(url)
@@ -22,17 +25,27 @@ var fetch = function(page_identifier, lang_or_wikiid, cb) {
       if (err) {
         console.warn(err);
         cb(null);
-      } else if (redirects.is_redirect(res.text)) {
-        var result = redirects.parse_redirect(res.text);
-        fetch(result.redirect, lang_or_wikiid, cb);
-      } else {
-        cb(res.text);
+        return;
+      }
+      let pages = res.body.query.pages || {};
+      let id = Object.keys(pages)[0];
+      if (id) {
+        let page = pages[id];
+        if (page.revisions[0]) {
+          let text = page.revisions[0]['*'];
+          if (redirects.is_redirect(text)) {
+            var result = redirects.parse_redirect(text);
+            fetch(result.redirect, lang_or_wikiid, cb); //recursive
+            return;
+          }
+          cb(text);
+        }
       }
     });
 };
 
 module.exports = fetch;
 
-// fetch("On A Friday", 'en', function(r) { // 'afwiki'
+// fetch('On_A_Friday', 'en', function(r) { // 'afwiki'
 //   console.log(JSON.stringify(r, null, 2));
-// })
+// });

@@ -1,4 +1,4 @@
-/* wtf_wikipedia v0.7.1
+/* wtf_wikipedia v0.8.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -3933,35 +3933,48 @@ var redirects = _dereq_('../parse/parse_redirects');
 
 var fetch = function fetch(page_identifier, lang_or_wikiid, cb) {
   lang_or_wikiid = lang_or_wikiid || 'en';
-  var identifier_type = 'title';
+  var identifier_type = 'titles';
   if (page_identifier.match(/^[0-9]*$/) && page_identifier.length > 3) {
     identifier_type = 'curid';
   }
   var url;
   if (site_map[lang_or_wikiid]) {
-    url = site_map[lang_or_wikiid] + '/w/index.php?action=raw&' + identifier_type + '=' + page_identifier;
+    url = site_map[lang_or_wikiid] + '/w/api.php';
   } else {
-    url = 'http://' + lang_or_wikiid + '.wikipedia.org/w/index.php?action=raw&' + identifier_type + '=' + page_identifier;
+    url = 'http://' + lang_or_wikiid + '.wikipedia.org/w/api.php';
   }
+  //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
+  url += '?action=query&prop=revisions&rvlimit=1&rvprop=content&format=json&origin=*';
+  url += '&' + identifier_type + '=' + page_identifier;
 
   request.get(url).end(function (err, res) {
     if (err) {
       console.warn(err);
       cb(null);
-    } else if (redirects.is_redirect(res.text)) {
-      var result = redirects.parse_redirect(res.text);
-      fetch(result.redirect, lang_or_wikiid, cb);
-    } else {
-      cb(res.text);
+      return;
+    }
+    var pages = res.body.query.pages || {};
+    var id = Object.keys(pages)[0];
+    if (id) {
+      var page = pages[id];
+      if (page.revisions[0]) {
+        var text = page.revisions[0]['*'];
+        if (redirects.is_redirect(text)) {
+          var result = redirects.parse_redirect(text);
+          fetch(result.redirect, lang_or_wikiid, cb); //recursive
+          return;
+        }
+        cb(text);
+      }
     }
   });
 };
 
 module.exports = fetch;
 
-// fetch("On A Friday", 'en', function(r) { // 'afwiki'
+// fetch('On_A_Friday', 'en', function(r) { // 'afwiki'
 //   console.log(JSON.stringify(r, null, 2));
-// })
+// });
 
 },{"../data/site_map":8,"../parse/parse_redirects":24,"superagent":2}],11:[function(_dereq_,module,exports){
 (function (global){
@@ -6044,7 +6057,7 @@ function parse_infobox(str) {
                 obj[key] = parse_line(value);
                 //turn number strings into integers
                 if (obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
-                    obj[key].text = obj[key].text.replace(/,/g);
+                    obj[key].text = obj[key].text.replace(/,/, '');
                     obj[key].text = parseInt(obj[key].text, 10);
                 }
             }
