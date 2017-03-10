@@ -3941,7 +3941,7 @@ var fetch = function fetch(page_identifier, lang_or_wikiid, cb) {
   if (site_map[lang_or_wikiid]) {
     url = site_map[lang_or_wikiid] + '/w/api.php';
   } else {
-    url = '://' + lang_or_wikiid + '.wikipedia.org/w/api.php';
+    url = 'https://' + lang_or_wikiid + '.wikipedia.org/w/api.php';
   }
   //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
   url += '?action=query&prop=revisions&rvlimit=1&rvprop=content&format=json&origin=*';
