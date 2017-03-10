@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>wtf_wikipedia</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+
+    </style>
+  </head>
+  <body>
+    wtf_wikipedia.from_api() demo
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="../builds/wtf_wikipedia.js"></script>
+    <script>
+    // wtf_wikipedia.from_api('Radiohead', function(r){
+    //   console.log(r)
+    // })
+    $(window).ready(function(){
+      var url="https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvlimit=1&rvprop=content&format=json&origin=*&titles=Radiohead"
+      $.get(url, function(data){
+        var str=data.query.pages['38252'].revisions[0]['*']
+        console.log(wtf_wikipedia.parse(str))
+      })
+    })
+    </script>
+  </body>
+<html>
