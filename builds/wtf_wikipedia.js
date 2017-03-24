@@ -1,4 +1,4 @@
-/* wtf_wikipedia v0.8.6
+/* wtf_wikipedia v0.8.7
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -3765,9 +3765,16 @@ var wtf_wikipedia = function () {
       if (s.match(infobox_reg)) {
         wiki = wiki.replace(s, '');
       }
-      //if it's not a known template, but it's recursive, remove it
-      //(because it will be misread later-on)
+      //rest of them...
       if (s.match(/^\{\{/)) {
+        //support nowrap
+        var nowrap = s.match(/^\{\{nowrap\|(.*?)\}\}$/);
+        if (nowrap) {
+          wiki = wiki.replace(s, nowrap[1]);
+          return;
+        }
+        //if it's not a known template, but it's recursive, remove it
+        //(because it will be misread later-on)
         wiki = wiki.replace(s, '');
       }
     });
@@ -6301,7 +6308,7 @@ function recursive_matches(opener, closer, text) {
 }
 module.exports = recursive_matches;
 
-// console.log(recursive_matches("{", "}", "he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas"))
+// console.log(recursive_matches('{', '}', 'he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas'));
 // console.log(recursive_matches("{", "}", "this is fun {{nowrap{{small1995–present}}}} and it works"))
 
 },{}],27:[function(_dereq_,module,exports){
@@ -6328,6 +6335,11 @@ var word_templates = function word_templates(wiki) {
   wiki = wiki.replace(/\{\{(lc|uc|formatnum):(.*?)\}\}/gi, '$2');
   wiki = wiki.replace(/\{\{pull quote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
   wiki = wiki.replace(/\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
+
+  //font-size
+  wiki = wiki.replace(/\{\{(small|smaller|midsize|larger|big|bigger|large|huge|resize)\|([\s\S]*?)\}\}/gi, '$2');
+  //{{font|size=x%|text}}
+
   if (wiki.match(/\{\{dts\|/)) {
     var date = (wiki.match(/\{\{dts\|(.*?)[\}\|]/) || [])[1] || '';
     date = new Date(date);
