@@ -1,8 +1,9 @@
 'use strict';
-const wtf_wikipedia = require('./src/index');
+const wtf = require('./src/index');
+console.log(wtf.parse('blah'));
 // const wtf_wikipedia = require('./builds/wtf_wikipedia');
 // const wtf_wikipedia = require('./build');
-let parse = wtf_wikipedia.parse;
+// let parse = wtf_wikipedia.parse;
 
 // wtf_wikipedia.from_api("Tomb_Raider_(2013_video_game)", 'en', function(s) {
 //   console.log(wtf_wikipedia.parse(s).infobox)
@@ -28,12 +29,7 @@ let parse = wtf_wikipedia.parse;
 // from_file("Africaans")
 // from_file("Anarchism")
 
-// wtf_wikipedia.from_api('Toronto', 'fr', function(markup) {
+// wtf_wikipedia.from_api('blah', 'fr', function(markup) {
 //   var obj = wtf_wikipedia.parse(markup);
 //   console.log(obj.infobox);
-// })
-// require('./src/lib/make_image');
-
-let str=`'''Raoul Dautry''' est un ingénieur, dirigeant d'entreprises publiques et homme politique [[France|français]], né le {{date|16|septembre|1880}} à [[Montluçon]] `
-let o=wtf_wikipedia.parse(str)
-console.log(o.text.get('Intro')[0]);
+// });

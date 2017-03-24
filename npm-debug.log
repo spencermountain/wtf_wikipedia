@@ -1,0 +1,22 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/spencer/.nvm/versions/node/v4.6.1/bin/node',
+1 verbose cli   '/home/spencer/.nvm/versions/node/v4.6.1/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'watch' ]
+2 info using npm@2.15.9
+3 info using node@v4.6.1
+4 verbose stack Error: missing script: watch
+4 verbose stack     at run (/home/spencer/.nvm/versions/node/v4.6.1/lib/node_modules/npm/lib/run-script.js:142:19)
+4 verbose stack     at /home/spencer/.nvm/versions/node/v4.6.1/lib/node_modules/npm/lib/run-script.js:58:5
+4 verbose stack     at /home/spencer/.nvm/versions/node/v4.6.1/lib/node_modules/npm/node_modules/read-package-json/read-json.js:356:5
+4 verbose stack     at handleExists (/home/spencer/.nvm/versions/node/v4.6.1/lib/node_modules/npm/node_modules/read-package-json/read-json.js:329:20)
+4 verbose stack     at FSReqWrap.cb [as oncomplete] (fs.js:212:19)
+5 verbose cwd /home/spencer/mountain/wtf_wikipedia
+6 error Linux 4.4.0-59-generic
+7 error argv "/home/spencer/.nvm/versions/node/v4.6.1/bin/node" "/home/spencer/.nvm/versions/node/v4.6.1/bin/npm" "run" "watch"
+8 error node v4.6.1
+9 error npm  v2.15.9
+10 error missing script: watch
+11 error If you need help, you may report this error at:
+11 error     <https://github.com/npm/npm/issues>
+12 verbose exit [ 1, true ]

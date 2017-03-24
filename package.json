@@ -18,6 +18,10 @@
     "wikipedia": "./bin/parse.js",
     "wikipedia_plaintext": "./bin/plaintext.js"
   },
+  "files":[
+    "builds",
+    "bin"
+  ],
   "engines": [
     "node >= 0.4.0"
   ],
