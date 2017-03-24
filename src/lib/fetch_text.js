@@ -1,3 +1,4 @@
+'use strict';
 //grab the content of any article, off the api
 var request = require('superagent');
 var site_map = require('../data/site_map');
@@ -27,12 +28,12 @@ var fetch = function(page_identifier, lang_or_wikiid, cb) {
         cb(null);
         return;
       }
-      let pages = res.body.query.pages || {};
-      let id = Object.keys(pages)[0];
+      var pages = res.body.query.pages || {};
+      var id = Object.keys(pages)[0];
       if (id) {
-        let page = pages[id];
-        if (page.revisions[0]) {
-          let text = page.revisions[0]['*'];
+        var page = pages[id];
+        if (page && page.revisions && page.revisions[0]) {
+          var text = page.revisions[0]['*'];
           if (redirects.is_redirect(text)) {
             var result = redirects.parse_redirect(text);
             fetch(result.redirect, lang_or_wikiid, cb); //recursive
