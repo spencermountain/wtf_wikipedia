@@ -33,6 +33,15 @@ const wtf = require('./src/index');
 //   console.log(obj);
 // });
 
-let str = `between {{convert|15|and|25|°C|°F}}, `;
+let str = `
+===gdbserver===
+hi there
+
+===x===
+Displays memory at the specified virtual address using the specified format.
+
+===xp===
+here too
+`;
 //and a fair amount of sunshine.{{sfn|Lawrence|Gondrand|2010|p=309}} Each year, however, there are a few days where the temperature rises above {{convert|32|C}}. Some years have even witnessed long periods of harsh summer weather, such as the [[2003 European heat wave|heat wave of 2003]] when temperatures exceeded {{convert|30|°C}} for weeks, surged up to {{convert|40|°C}} on some days and seldom cooled down at night.`;
-console.log(wtf.parse(str).text.get('Intro'));
+console.log(wtf.parse(str).text.get('asdf'));

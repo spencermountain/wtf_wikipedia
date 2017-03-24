@@ -140,7 +140,7 @@ var wtf_wikipedia = (function() {
       //headings
       var ban_headings = new RegExp('^ ?(' + i18n.sources.join('|') + ') ?$', 'i'); //remove things like 'external links'
       if (part.match(/^={1,5}[^=]{1,200}={1,5}$/)) {
-        section = part.match(/^={1,5}([^=]{2,200}?)={1,5}$/) || [];
+        section = part.match(/^={1,5}([^=]{1,200}?)={1,5}$/) || [];
         section = section[1] || '';
         section = section.replace(/\./g, ' '); // this is necessary for mongo, i'm sorry
         section = helpers.trim_whitespace(section);
