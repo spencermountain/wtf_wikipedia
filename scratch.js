@@ -1,15 +1,14 @@
 'use strict';
 const wtf = require('./src/index');
-console.log(wtf.parse('blah'));
 // const wtf_wikipedia = require('./builds/wtf_wikipedia');
 // const wtf_wikipedia = require('./build');
-// let parse = wtf_wikipedia.parse;
+// let parse = wtf.parse;
 
-// wtf_wikipedia.from_api("Tomb_Raider_(2013_video_game)", 'en', function(s) {
+// wtf.from_api("Tomb_Raider_(2013_video_game)", 'en', function(s) {
 //   console.log(wtf_wikipedia.parse(s).infobox)
 // })
 //
-// wtf_wikipedia.from_api('Raoul Dautry', 'fr',function(page) {
+// wtf.from_api('Raoul Dautry', 'fr',function(page) {
 //   var parsed = wtf_wikipedia.parse(page); // causes the crash
 //   console.log(parsed.text.get('Intro'));
 // });
@@ -29,7 +28,7 @@ console.log(wtf.parse('blah'));
 // from_file("Africaans")
 // from_file("Anarchism")
 
-// wtf_wikipedia.from_api('blah', 'fr', function(markup) {
-//   var obj = wtf_wikipedia.parse(markup);
-//   console.log(obj.infobox);
-// });
+wtf.from_api('Jérôme Cahuzac', 'fr', function(markup) {
+  var obj = wtf.parse(markup);
+  console.log(obj.infobox.image);
+});
