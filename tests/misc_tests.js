@@ -17,5 +17,6 @@ here too
   t.ok(text.get('gdbserver'), 'first heading exists');
   t.ok(text.get('x'), 'x exists');
   t.ok(text.get('xp'), 'xp exists');
+  t.equal(text.get('foo'), undefined, 'foo doesnt exist');
   t.end();
 });

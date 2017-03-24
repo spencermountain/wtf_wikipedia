@@ -1,4 +1,4 @@
-/* wtf_wikipedia v0.8.4
+/* wtf_wikipedia v0.8.5
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -3836,7 +3836,7 @@ var wtf_wikipedia = function () {
       //headings
       var ban_headings = new RegExp('^ ?(' + i18n.sources.join('|') + ') ?$', 'i'); //remove things like 'external links'
       if (part.match(/^={1,5}[^=]{1,200}={1,5}$/)) {
-        section = part.match(/^={1,5}([^=]{2,200}?)={1,5}$/) || [];
+        section = part.match(/^={1,5}([^=]{1,200}?)={1,5}$/) || [];
         section = section[1] || '';
         section = section.replace(/\./g, ' '); // this is necessary for mongo, i'm sorry
         section = helpers.trim_whitespace(section);
@@ -6315,7 +6315,7 @@ var word_templates = function word_templates(wiki) {
   //we can be sneaky with this template, as it's often found inside other templates
   wiki = wiki.replace(/\{\{URL\|([^ ]{4,100}?)\}\}/gi, '$1');
   //this one needs to be handled manually
-  wiki = wiki.replace(/\{\{convert\|([0-9]*?)\|([^\|]*?)\}\}/gi, '$1 $2');
+  wiki = wiki.replace(/\{\{convert\|([0-9]*?)\|([^\|]*?)\}\}/gi, '$1 $2'); //TODO: support https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
   //date-time templates
   var d = new Date();
   wiki = wiki.replace(/\{\{(CURRENT|LOCAL)DAY(2)?\}\}/gi, d.getDate());
