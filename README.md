@@ -1,4 +1,4 @@
-##Parsing Wikipedia markup is basically NP-Hard
+## Parsing Wikipedia markup is basically NP-Hard
 
 its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).   I'm trying my best.
 
@@ -39,7 +39,7 @@ This library is built to work well with [wikipedia-to-mongo](https://github.com/
 
 [![npm version](https://badge.fury.io/js/wtf_wikipedia.svg)](http://badge.fury.io/js/wtf_wikipedia)
 
-#What it does
+# What it does
 * Detects and parses **redirects** and **disambiguation** pages
 * Parse **infoboxes** into a formatted key-value object
 * Handles recursive templates and links- like [[.. [[...]] ]]
@@ -54,7 +54,7 @@ m ok, lets write our own parser what culd go rong
 
 its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView), [txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
 
-#Methods
+# Methods
 ## **.parse(markup, options)**
 turns wikipedia markup into a nice json object
 
@@ -82,7 +82,7 @@ wtf_wikipedia.from_api(64646, "de", function(markup){
 })
 ```
 the from_api method follows redirects.
-##**.plaintext(markup)**
+## **.plaintext(markup)**
 returns only nice text of the article
 
 if you're scripting this from the shell, install -g, and:
@@ -94,7 +94,7 @@ $ wikipedia Toronto Blue Jays
 # {text:[...], infobox:{}, categories:[...], images:[] }
 
 ````
-#Sample Output
+# Sample Output
 Sample output for [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
 ````javascript
 {
@@ -216,7 +216,7 @@ Never-ender projects like these need all-hands, and I'm a pretty friendly dude.
 ```
 npm install
 npm test
-grunt #to package-up client-side
+npm run build #to package-up client-side
 ```
 
 Don't be mad at me, be mad at them
