@@ -1,7 +1,7 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "files":[
     "builds",
+    "src",
     "bin"
   ],
   "engines": [
