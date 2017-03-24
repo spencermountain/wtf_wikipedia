@@ -69,9 +69,16 @@ var wtf_wikipedia = (function() {
       if (s.match(infobox_reg)) {
         wiki = wiki.replace(s, '');
       }
-      //if it's not a known template, but it's recursive, remove it
-      //(because it will be misread later-on)
+      //rest of them...
       if (s.match(/^\{\{/)) {
+        //support nowrap
+        var nowrap = s.match(/^\{\{nowrap\|(.*?)\}\}$/);
+        if (nowrap) {
+          wiki = wiki.replace(s, nowrap[1]);
+          return;
+        }
+        //if it's not a known template, but it's recursive, remove it
+        //(because it will be misread later-on)
         wiki = wiki.replace(s, '');
       }
     });

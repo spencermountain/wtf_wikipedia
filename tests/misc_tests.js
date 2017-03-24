@@ -20,3 +20,15 @@ here too
   t.equal(text.get('foo'), undefined, 'foo doesnt exist');
   t.end();
 });
+
+test('font-size', (t) => {
+  let str = 'hello {{small|(1995-1997)}} world';
+  t.equal(wtf.plaintext(str), 'hello (1995-1997) world\n', '{{small}}');
+
+  str = 'hello {{huge|world}}';
+  t.equal(wtf.plaintext(str), 'hello world\n', '{{huge}}');
+
+  str = `hello {{nowrap|{{small|(1995–present)}}}} world`;
+  t.equal(wtf.plaintext(str), 'hello (1995–present) world\n', '{{nowrap}}');
+  t.end();
+});

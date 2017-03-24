@@ -42,5 +42,5 @@ function recursive_matches(opener, closer, text) {
 }
 module.exports = recursive_matches;
 
-// console.log(recursive_matches("{", "}", "he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas"))
+// console.log(recursive_matches('{', '}', 'he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas'));
 // console.log(recursive_matches("{", "}", "this is fun {{nowrap{{small1995–present}}}} and it works"))

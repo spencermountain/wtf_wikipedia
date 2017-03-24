@@ -33,15 +33,7 @@ const wtf = require('./src/index');
 //   console.log(obj);
 // });
 
-let str = `
-===gdbserver===
-hi there
-
-===x===
-Displays memory at the specified virtual address using the specified format.
-
-===xp===
-here too
-`;
+let str = `hello {{nowrap|{{small|(1995–present)}}}} world`;
+// let str = `hello {{small|(1995–present)}} world`;
 //and a fair amount of sunshine.{{sfn|Lawrence|Gondrand|2010|p=309}} Each year, however, there are a few days where the temperature rises above {{convert|32|C}}. Some years have even witnessed long periods of harsh summer weather, such as the [[2003 European heat wave|heat wave of 2003]] when temperatures exceeded {{convert|30|°C}} for weeks, surged up to {{convert|40|°C}} on some days and seldom cooled down at night.`;
-console.log(wtf.parse(str).text.get('asdf'));
+console.log(wtf.parse(str).text);

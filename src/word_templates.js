@@ -19,6 +19,11 @@ var word_templates = function(wiki) {
   wiki = wiki.replace(/\{\{(lc|uc|formatnum):(.*?)\}\}/gi, '$2');
   wiki = wiki.replace(/\{\{pull quote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
   wiki = wiki.replace(/\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
+
+  //font-size
+  wiki = wiki.replace(/\{\{(small|smaller|midsize|larger|big|bigger|large|huge|resize)\|([\s\S]*?)\}\}/gi, '$2');
+  //{{font|size=x%|text}}
+
   if (wiki.match(/\{\{dts\|/)) {
     var date = (wiki.match(/\{\{dts\|(.*?)[\}\|]/) || [])[1] || '';
     date = new Date(date);
