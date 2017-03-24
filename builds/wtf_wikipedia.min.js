@@ -1,4 +1,4 @@
-/* wtf_wikipedia v0.8.3
+/* wtf_wikipedia v0.8.4
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
