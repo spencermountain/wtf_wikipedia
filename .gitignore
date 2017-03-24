@@ -2,3 +2,4 @@ node_modules
 .git
 coverage
 viz
+npm-debug.log

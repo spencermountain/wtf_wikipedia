@@ -6,7 +6,7 @@ var word_templates = function(wiki) {
   //we can be sneaky with this template, as it's often found inside other templates
   wiki = wiki.replace(/\{\{URL\|([^ ]{4,100}?)\}\}/gi, '$1');
   //this one needs to be handled manually
-  wiki = wiki.replace(/\{\{convert\|([0-9]*?)\|([^\|]*?)\}\}/gi, '$1 $2');
+  wiki = wiki.replace(/\{\{convert\|([0-9]*?)\|([^\|]*?)\}\}/gi, '$1 $2'); //TODO: support https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
   //date-time templates
   var d = new Date();
   wiki = wiki.replace(/\{\{(CURRENT|LOCAL)DAY(2)?\}\}/gi, d.getDate());
@@ -30,8 +30,8 @@ var word_templates = function(wiki) {
   }
   if (wiki.match(/\{\{date\|.*?\}\}/)) {
     var date = (wiki.match(/\{\{date\|(.*?)\|(.*?)\|(.*?)\}\}/) || []) || [];
-    var dateString=date[1]+' '+date[2]+' '+date[3]
-    wiki=wiki.replace(/\{\{date\|.*?\}\}/gi, dateString)
+    var dateString = date[1] + ' ' + date[2] + ' ' + date[3];
+    wiki = wiki.replace(/\{\{date\|.*?\}\}/gi, dateString);
   }
   //common templates in wiktionary
   wiki = wiki.replace(/\{\{term\|(.*?)\|.*?\}\}/gi, '\'$1\'');
