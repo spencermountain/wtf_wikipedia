@@ -40,6 +40,8 @@ var fetch = function(page_identifier, lang_or_wikiid, cb) {
             return;
           }
           cb(text);
+        } else {
+          cb(null);
         }
       }
     });
