@@ -18,7 +18,7 @@ var fetch = function(page_identifier, lang_or_wikiid, cb) {
   }
   //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
   url += '?action=query&prop=revisions&rvlimit=1&rvprop=content&format=json&origin=*';
-  url += '&' + identifier_type + '=' + page_identifier;
+  url += '&' + identifier_type + '=' + encodeURIComponent(page_identifier);
 
   request
     .get(url)
