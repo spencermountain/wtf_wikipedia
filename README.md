@@ -1,6 +1,6 @@
 ## Parsing Wikipedia markup is basically NP-Hard
 
-its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).   I'm trying my best.
+its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).  I'm trying my best.
 
 **wtf_wikipedia** turns wikipedia article markup into **JSON**.
 
