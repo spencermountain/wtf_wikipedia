@@ -58,9 +58,12 @@ its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaV
 ## **.parse(markup, options)**
 turns wikipedia markup into a nice json object
 
-options is optional. The only option currently supported is 'ignoreLists' which defaults to true.
+options is optional. The options supported are
+* 'ignoreLists' which defaults to true.
+* 'appendSectionLabelsWithParent' which defaults to false. When turned on, the parse function will not just use the header of a section as the key in the map, but if there is a parent header that has no text of itself, the key will be amended to reflect Parent Header Name : Section Name"
+
 ```javascript
-wtf_wikipedia.parse(someWikiScript, { ignoreLists: false })
+wtf_wikipedia.parse(someWikiScript, { ignoreLists: false, appendSectionLabelsWithParent: true })
 // {text:[...], infobox:{}, categories:[...], images:[] }
 ```
 
