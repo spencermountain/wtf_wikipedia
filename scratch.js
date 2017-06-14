@@ -23,7 +23,7 @@ function from_file(page) {
 
 // from_file("list")
 // from_file("Toronto")
-from_file('Toronto_Star');
+// from_file('Toronto_Star');
 // from_file('royal_cinema');
 // from_file('Jodie_Emery');
 // from_file("Redirect")
@@ -35,6 +35,6 @@ from_file('Toronto_Star');
 //   console.log(obj);
 // });
 
-// let str = `he is [http://cool.com really nice] and [[fun|weird]] [[everyday]].`;
-// let doc = wtf.parse(str);
-// console.log(JSON.stringify(doc.sections, null, 2));
+let str = `tony hawk [http://www.whistler.ca]`;
+let doc = wtf.parse(str);
+console.log(JSON.stringify(doc.sections, null, 2));

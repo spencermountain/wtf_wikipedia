@@ -1,7 +1,7 @@
 'use strict';
 var test = require('tape');
 var wtf = require('../src/');
-var parse_line = require('../src/parse/text/line');
+var parse_line = require('../src/parse/text');
 var cleanup_misc = require('../src/parse/cleanup/misc');
 var sentence_parser = require('../src/lib/sentence_parser');
 
@@ -63,9 +63,9 @@ test('parse_line_text', t => {
     ['tony hawk in [http://www.whistler.ca whistler]', 'tony hawk in whistler'],
     ['it is [[Tony Hawk|Tony]]s mother in [[Toronto]]s', 'it is Tonys mother in Torontos']
   ].forEach(a => {
-    let o = parse_line(a[0]);
-    var msg = "'" + a[0] + "' -> '" + o.text + "'";
-    t.equal(o.text, a[1], msg);
+    let text = wtf.plaintext(a[0]);
+    var msg = "'" + a[0] + "' -> '" + text + "'";
+    t.equal(text, a[1], msg);
   });
   t.end();
 });

@@ -38,7 +38,7 @@ test('boloZenden infobox', function(t) {
   t.equal(o.nationalyears1.text, '1997–2004');
   t.equal(o.nationalteam1.text, 'Netherlands');
   t.equal(o.nationalteam1.links[0].page, 'Netherlands national football team');
-  t.equal(o.nationalteam1.links[0].src, 'Netherlands');
+  t.equal(o.nationalteam1.links[0].text, 'Netherlands');
   t.equal(o.nationalcaps1.text, 54);
   t.equal(o.nationalgoals1.text, 7);
   t.end();

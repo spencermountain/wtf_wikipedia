@@ -1,18 +1,20 @@
 const helpers = require('../../lib/helpers');
 const link_reg = /\[\[(.{2,80}?)\]\](\w{0,10})/g;
 const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i;
-const external_link = /\[(https?|news|ftp|mailto|gopher|irc):\/\/[^\]\| ]{4,1500}([\| ].*?)?\]/g;
+const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
 
 const external_links = function(links, str) {
-  str.replace(external_link, function(link, protocol, text) {
+  str.replace(external_link, function(all, protocol, link) {
+    let text = '';
     let m = link.match(/\[([^\| ]+)/);
     if (m && m[1]) {
-      links.push({
-        type: 'external',
-        site: m[1],
-        text: text.replace(/^[\| ]/, '')
-      });
+      text = m[1];
     }
+    links.push({
+      type: 'external',
+      site: protocol + link,
+      text: text
+    });
     return text;
   });
   return links;
