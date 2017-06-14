@@ -1,5 +1,4 @@
 const i18n = require('../data/i18n');
-const languages = require('../data/languages');
 const sentence_parser = require('../lib/sentence_parser');
 const make_image = require('../lib/make_image');
 const helpers = require('../lib/helpers');
@@ -7,24 +6,18 @@ const helpers = require('../lib/helpers');
 //parsing functions
 const parse_tables = require('./table');
 const parse_categories = require('./categories');
-const parse_infobox = require('./infobox');
-const parse_infobox_template = require('./infobox_template');
-const parse_image = require('./image');
+const parse_recursion = require('./recursion');
 
 const redirects = require('./page/redirects');
 const parse_disambig = require('./page/disambig');
 const parse_line = require('./text/line');
 const word_templates = require('./cleanup/word_templates');
-const recursive_matches = require('./cleanup/recursive_matches');
 const preprocess = require('./cleanup/misc');
 
 //regexs
 const template_reg = new RegExp('\\{\\{ ?(' + i18n.disambigs.join('|') + ')(\\|[a-z =]*?)? ?\\}\\}', 'i');
-const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 const ban_headings = new RegExp('^ ?(' + i18n.sources.join('|') + ') ?$', 'i'); //remove things like 'external links'
-const fileRegex = new RegExp('\\[\\[(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
 const img_regex = new RegExp('^(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
-const noWrap_reg = /^\{\{nowrap\|(.*?)\}\}$/;
 
 // options
 const defaultParseOptions = {
@@ -63,50 +56,7 @@ const main = function(wiki, options) {
   //parse the tables
   wiki = parse_tables(r, wiki);
 
-  //reduce the scary recursive situations
-  //remove {{template {{}} }} recursions
-  let matches = recursive_matches('{', '}', wiki);
-  matches.forEach(function(s) {
-    if (s.match(infobox_reg, 'ig') && Object.keys(r.infobox).length === 0) {
-      r.infobox = parse_infobox(s);
-      r.infobox_template = parse_infobox_template(s);
-    }
-    if (s.match(infobox_reg)) {
-      wiki = wiki.replace(s, '');
-    }
-    //rest of them...
-    if (s.match(/^\{\{/)) {
-      //support nowrap
-      const nowrap = s.match(noWrap_reg);
-      if (nowrap) {
-        wiki = wiki.replace(s, nowrap[1]);
-        return;
-      }
-      //if it's not a known template, but it's recursive, remove it
-      //(because it will be misread later-on)
-      wiki = wiki.replace(s, '');
-    }
-  });
-
-  //second, remove [[file:...[[]] ]] recursions
-  matches = recursive_matches('[', ']', wiki);
-  matches.forEach(function(s) {
-    if (s.match(fileRegex)) {
-      r.images.push(parse_image(s));
-      wiki = wiki.replace(s, '');
-    }
-  });
-  //third, wiktionary-style interlanguage links
-  matches.forEach(function(s) {
-    if (s.match(/\[\[([a-z][a-z]):(.*?)\]\]/i) !== null) {
-      const lang = s.match(/\[\[([a-z][a-z]):/i)[1];
-      if (lang && languages[lang]) {
-        r.translations[lang] = s.match(/\[\[([a-z][a-z]):(.*?)\]\]/i)[2];
-      }
-      wiki = wiki.replace(s, '');
-    }
-  });
-
+  wiki = parse_recursion(r, wiki);
   //now that the scary recursion issues are gone, we can trust simple regex methods
 
   //kill the rest of templates
