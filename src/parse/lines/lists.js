@@ -1,34 +1,31 @@
 const list_reg = /^[#\*:;\|]+/;
 const bullet_reg = /^\*+[^:,\|]{4}/;
 const number_reg = /^ ?\#[^:,\|]{4}/;
+const parseLine = require('../text');
 
-//add implicit numberings to # formatting
-const handleLists = function(lines) {
+const isList = function(line) {
+  return list_reg.test(line) || bullet_reg.test(line) || number_reg.test(line);
+};
+
+const cleanList = function(list) {
   let number = 1;
-  lines.forEach(function(line) {
+  for (var i = 0; i < list.length; i++) {
+    var line = list[i];
     //add # numberings formatting
     if (line.match(number_reg)) {
       line = line.replace(/^ ?#*/, number + ') ');
       line = line + '\n';
       number += 1;
-      return;
-    } else {
+    } else if (line.match(list_reg)) {
       number = 1;
-    }
-    //support bullet-points formatting
-    if (line.match(bullet_reg)) {
-      line = line + '\n';
-    }
-    //support lists
-    if (line.match(list_reg)) {
       line = line.replace(list_reg, '');
     }
-  });
-  return lines;
+    list[i] = parseLine(line);
+  }
+  return list;
 };
 
-const parseLists = function(r, wiki) {
-  return wiki;
+module.exports = {
+  isList: isList,
+  cleanList: cleanList
 };
-
-module.exports = parseLists;

@@ -1,5 +1,7 @@
 //interpret ==heading== lines
 const fns = require('../../lib/helpers');
+const list = require('./lists');
+const parseSentences = require('./sentence');
 const heading_reg = /^(={1,5})([^=]{1,200}?)={1,5}$/;
 
 const parseHeading = function(head) {
@@ -12,13 +14,13 @@ const parseHeading = function(head) {
   return {
     title: title,
     depth: depth,
-    lines: []
+    sentences: []
   };
 };
 
 const sections = function(lines) {
   let arr = [parseHeading([])];
-  for (var i = 0; i < lines.length; i++) {
+  for (let i = 0; i < lines.length; i++) {
     let line = lines[i];
     //empty lines
     if (!line) {
@@ -30,7 +32,21 @@ const sections = function(lines) {
       arr.push(parseHeading(header));
       continue;
     }
-    arr[arr.length - 1].lines.push(line);
+    //list or sentence?
+    let section = arr[arr.length - 1];
+    if (line && list.isList(line)) {
+      section.list = section.list || [];
+      section.list.push(line);
+    } else {
+      let sentenceArr = parseSentences(line);
+      section.sentences = section.sentences.concat(sentenceArr);
+    }
+  }
+  for (let i = 0; i < arr.length; i++) {
+    var section = arr[i];
+    if (section.list) {
+      section.list = list.cleanList(section.list);
+    }
   }
   return arr;
 };

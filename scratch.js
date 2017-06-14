@@ -17,14 +17,15 @@ function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
   // return wtf.plaintext(str)
   let r = wtf.parse(str, {});
-  console.log(r.sections);
+  console.log(r.sections[5]);
+  // console.log(JSON.stringify(r.sections, null, 2));
 }
 
 // from_file("list")
 // from_file("Toronto")
 // from_file('Toronto_Star');
 // from_file('royal_cinema');
-from_file('Jodie_Emery');
+// from_file('Jodie_Emery');
 // from_file("Redirect")
 // from_file("Africaans")
 // from_file('Anarchism');
@@ -34,7 +35,6 @@ from_file('Jodie_Emery');
 //   console.log(obj);
 // });
 
-// let str = `hello {{nowrap|{{small|(1995–present)}}}} world`;
-// let str = `hello {{small|(1995–present)}} world`;
-//and a fair amount of sunshine.{{sfn|Lawrence|Gondrand|2010|p=309}} Each year, however, there are a few days where the temperature rises above {{convert|32|C}}. Some years have even witnessed long periods of harsh summer weather, such as the [[2003 European heat wave|heat wave of 2003]] when temperatures exceeded {{convert|30|°C}} for weeks, surged up to {{convert|40|°C}} on some days and seldom cooled down at night.`;
-// console.log(wtf.parse(str));
+let str = `he is [http://cool.com really nice] and [[fun|weird]] [[everyday]].`;
+let doc = wtf.parse(str);
+console.log(JSON.stringify(doc.sections, null, 2));
