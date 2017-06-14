@@ -16,7 +16,8 @@ const wtf = require('./src/index');
 function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
   // return wtf.plaintext(str)
-  console.log(wtf.parse(str, {}).text);
+  let r = wtf.parse(str, {});
+  console.log(r.sections);
 }
 
 // from_file("list")

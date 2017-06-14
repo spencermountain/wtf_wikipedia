@@ -5,7 +5,7 @@ const preprocess = require('./cleanup/misc');
 const parse_tables = require('./table');
 const parse_categories = require('./categories');
 const parse_recursion = require('./recursive');
-const parse_text = require('./text');
+const parse_lines = require('./lines');
 
 //convert wikiscript markup lang to json
 const main = function(wiki) {
@@ -20,7 +20,7 @@ const main = function(wiki) {
   }
   let r = {
     type: 'page',
-    text: {},
+    sections: {},
     categories: [],
     images: [],
     infobox: {},
@@ -41,8 +41,8 @@ const main = function(wiki) {
   wiki = wiki.replace(/\{\{.*?\}\}/g, '');
   //get list of links, categories
   wiki = parse_categories(r, wiki);
-  //parse all the headings, and their texts
-  wiki = parse_text(r, wiki);
+  //parse all the headings, and their texts/sentences
+  wiki = parse_lines(r, wiki);
 
   return r;
 };

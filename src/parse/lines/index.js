@@ -8,7 +8,8 @@ const sections = require('./sections');
 const parseText = function(r, wiki) {
   //next, map each line into a parsable sentence
   let lines = wiki.replace(/\r/g, '').split(/\n/);
-  r.text = sections(lines);
+
+  r.sections = sections(lines);
 
   // lines.forEach(function(part) {
   //   if (!section) {
