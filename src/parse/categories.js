@@ -2,8 +2,8 @@ const i18n = require('../data/i18n');
 const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,60}?)]](w{0,10})', 'ig');
 const cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n.categories.join('|') + '):', 'ig');
 
-const parse_categories = function(wiki) {
-  let cats = [];
+const parse_categories = function(r, wiki) {
+  r.categories = [];
   let tmp = wiki.match(cat_reg); //regular links
   if (tmp) {
     tmp.forEach(function(c) {
@@ -11,10 +11,10 @@ const parse_categories = function(wiki) {
       c = c.replace(/\|?[ \*]?\]\]$/i, ''); //parse fancy onces..
       c = c.replace(/\|.*/, ''); //everything after the '|' is metadata
       if (c && !c.match(/[\[\]]/)) {
-        cats.push(c);
+        r.categories.push(c);
       }
     });
   }
-  return cats;
+  return wiki;
 };
 module.exports = parse_categories;

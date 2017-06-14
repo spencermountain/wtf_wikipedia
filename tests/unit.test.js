@@ -2,7 +2,7 @@
 var test = require('tape');
 var redirects = require('../src/parse/page/redirects');
 var parse_line = require('../src/parse/text/line');
-var parse_categories = require('../src/parse/categories');
+var wtf = require('../src/');
 var cleanup_misc = require('../src/parse/cleanup/misc');
 var parse_image = require('../src/parse/image');
 var sentence_parser = require('../src/lib/sentence_parser');
@@ -81,8 +81,8 @@ test('parse_categories', t => {
     [' [[Category:Tony Danza|metadata]]  [[category:Formal Wear]] ', ['Tony Danza', 'Formal Wear']],
     ['[[categoría:Tony Danza|metadata]]  ', ['Tony Danza']]
   ].forEach(a => {
-    let o = parse_categories(a[0]);
-    t.deepEqual(o, a[1]);
+    let cats = wtf.parse(a[0]).categories;
+    t.deepEqual(cats, a[1]);
   });
   t.end();
 });

@@ -1,4 +1,10 @@
+const i18n = require('../../data/i18n');
 const parse_links = require('../text/links');
+const template_reg = new RegExp('\\{\\{ ?(' + i18n.disambigs.join('|') + ')(\\|[a-z =]*?)? ?\\}\\}', 'i');
+
+const is_disambig = function(wiki) {
+  return template_reg.test(wiki);
+};
 
 //return a list of probable pages for this disambig page
 const parse_disambig = function(wiki) {
@@ -18,4 +24,7 @@ const parse_disambig = function(wiki) {
     pages: pages
   };
 };
-module.exports = parse_disambig;
+module.exports = {
+  is_disambig: is_disambig,
+  parse_disambig: parse_disambig
+};
