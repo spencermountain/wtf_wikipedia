@@ -1,7 +1,5 @@
 'use strict';
-var parse_table = require('../src/parse/table');
-var parse_disambig = require('../src/parse/page/disambig');
-var parse_infobox = require('../src/parse/infobox');
+var wtf = require('../src/');
 var test = require('tape');
 
 let boloZenden = `{{Infobox football biography
@@ -30,8 +28,9 @@ let boloZenden = `{{Infobox football biography
 | manageryears1  = 2012–2013 |managerclubs1 = [[Chelsea F.C.|Chelsea]] (assistant manager)
 | manageryears2  = 2013– |managerclubs2 = [[Jong PSV]] (assistant manager)
 }}`;
+
 test('boloZenden infobox', function(t) {
-  let o = parse_infobox(boloZenden);
+  let o = wtf.parse(boloZenden).infobox;
   t.equal(o.years1.text, '1993–1998');
   t.equal(o.clubs1.text, 'PSV');
   t.equal(o.youthyears1.text, '1985–1987');
@@ -63,7 +62,7 @@ let hurricane = `{{Infobox Hurricane
 | Hurricane season=[[2002 Atlantic hurricane season]]
 }}`;
 test('hurricane infobox', function(t) {
-  let o = parse_infobox(hurricane);
+  let o = wtf.parse(hurricane).infobox;
   t.equal(o.Name.text, 'Tropical Storm Edouard');
   t.equal(o.Dissipated.text, 'September 6, 2002');
   t.equal(o['Hurricane season'].text, '2002 Atlantic hurricane season');
@@ -87,7 +86,7 @@ let park_place = `
 {{disambiguation}}
 `;
 test('parkplace disambig', function(t) {
-  let o = parse_disambig(park_place);
+  let o = wtf.parse(park_place);
   t.equal(o.type, 'disambiguation');
   t.equal(o.pages.length, 4);
   t.equal(o.pages[0], 'Park Place (TV series)');
@@ -105,7 +104,7 @@ let bluejays = `
 |}
 `;
 test('bluejays table', function(t) {
-  let arr = parse_table(bluejays);
+  let arr = wtf.parse(bluejays).tables[0];
   t.equal(arr.length, 3);
   t.equal(arr[0][0], '#');
   t.equal(arr[1][0], '1');
@@ -143,7 +142,7 @@ let alabama = `
 }}
 `;
 test('Alabama infobox', function(t) {
-  let infobox = parse_infobox(alabama);
+  let infobox = wtf.parse(alabama).infobox;
   t.equal(infobox.athletics.text, 'NCAA Division I – SEC', 'athletics =' + infobox.athletics.text);
   t.equal(infobox.country.text, 'U.S.', 'country =' + infobox.country.text);
   t.equal(infobox.president.text, 'Stuart R. Bell', 'president =' + infobox.president.text);

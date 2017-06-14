@@ -5,7 +5,7 @@ const make_image = require('../lib/make_image');
 const helpers = require('../lib/helpers');
 
 //parsing functions
-const parse_table = require('./table');
+const parse_tables = require('./table');
 const parse_categories = require('./categories');
 const parse_infobox = require('./infobox');
 const parse_infobox_template = require('./infobox_template');
@@ -24,7 +24,6 @@ const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig
 const ban_headings = new RegExp('^ ?(' + i18n.sources.join('|') + ') ?$', 'i'); //remove things like 'external links'
 const fileRegex = new RegExp('\\[\\[(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
 const img_regex = new RegExp('^(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
-const table_reg = /\{\|[\s\S]{1,8000}?\|\}/g;
 const noWrap_reg = /^\{\{nowrap\|(.*?)\}\}$/;
 
 // options
@@ -59,15 +58,10 @@ const main = function(wiki, options) {
   };
   //parse templates like {{currentday}}
   wiki = word_templates(wiki);
-  //kill off th3 craziness
+  //kill off (some) craziness
   wiki = preprocess(wiki);
-  //find tables
-  r.tables = wiki.match(table_reg, '') || [];
-  r.tables = r.tables.map(function(s) {
-    return parse_table(s);
-  });
-  //remove tables
-  wiki = wiki.replace(/\{\|[\s\S]{1,8000}?\|\}/g, '');
+  //parse the tables
+  wiki = parse_tables(r, wiki);
 
   //reduce the scary recursive situations
   //remove {{template {{}} }} recursions

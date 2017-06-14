@@ -1,4 +1,5 @@
 const helpers = require('../lib/helpers');
+const table_reg = /\{\|[\s\S]{1,8000}?\|\}/g;
 
 //turn a {|...table string into an array of arrays
 const parse_table = function(wiki) {
@@ -39,4 +40,14 @@ const parse_table = function(wiki) {
   });
   return table;
 };
-module.exports = parse_table;
+
+const findTables = function(r, wiki) {
+  r.tables = wiki.match(table_reg, '') || [];
+  r.tables = r.tables.map(function(str) {
+    return parse_table(str);
+  });
+  //remove tables
+  wiki = wiki.replace(/\{\|[\s\S]{1,8000}?\|\}/g, '');
+  return wiki;
+};
+module.exports = findTables;
