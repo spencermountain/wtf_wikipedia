@@ -23,11 +23,10 @@ const from_api = function(page_identifier, lang_or_wikiid, cb) {
 const plaintext = function(str) {
   let data = parse(str) || {};
   data.text = data.text || [];
-  let text = '';
-  Object.keys(data.text).forEach(function(k) {
-    text += data.text[k].map(a => a.text).join(' ') + '\n';
+  let arr = Object.keys(data.text).map(k => {
+    return data.text[k].map(a => a.text).join(' ');
   });
-  return text;
+  return arr.join('\n');
 };
 
 module.exports = {

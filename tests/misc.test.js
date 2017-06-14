@@ -23,12 +23,12 @@ here too
 
 test('font-size', t => {
   let str = 'hello {{small|(1995-1997)}} world';
-  t.equal(wtf.plaintext(str), 'hello (1995-1997) world\n', '{{small}}');
+  t.equal(wtf.plaintext(str), 'hello (1995-1997) world', '{{small}}');
 
   str = 'hello {{huge|world}}';
-  t.equal(wtf.plaintext(str), 'hello world\n', '{{huge}}');
+  t.equal(wtf.plaintext(str), 'hello world', '{{huge}}');
 
   str = `hello {{nowrap|{{small|(1995–present)}}}} world`;
-  t.equal(wtf.plaintext(str), 'hello (1995–present) world\n', '{{nowrap}}');
+  t.equal(wtf.plaintext(str), 'hello (1995–present) world', '{{nowrap}}');
   t.end();
 });

@@ -1,10 +1,9 @@
 'use strict';
 var test = require('tape');
-var parse_line = require('../src/parse/text/line');
 var wtf = require('../src/');
+var parse_line = require('../src/parse/text/line');
 var cleanup_misc = require('../src/parse/cleanup/misc');
 var sentence_parser = require('../src/lib/sentence_parser');
-var kill_xml = require('../src/parse/cleanup/kill_xml');
 
 test('sentence parser', t => {
   [
@@ -110,10 +109,10 @@ test('xml', t => {
     ['hello <ref>nono!</ref> world1.', 'hello world1.'],
     ["hello <ref name='hullo'>nono!</ref> world2.", 'hello world2.'],
     ["hello <ref name='hullo'/>world3.", 'hello world3.'],
-    ["hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4.", 'hello  world4.'],
+    ["hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4.", 'hello world4.'],
     ["hello<ref name=''/> world5", 'hello world5']
   ].forEach(a => {
-    let s = kill_xml(a[0]);
+    let s = wtf.plaintext(a[0]);
     t.equal(s, a[1]);
   });
   t.end();
