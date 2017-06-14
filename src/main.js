@@ -22,6 +22,8 @@ const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig
 const ban_headings = new RegExp('^ ?(' + i18n.sources.join('|') + ') ?$', 'i'); //remove things like 'external links'
 const fileRegex = new RegExp('\\[\\[(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
 const img_regex = new RegExp('^(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
+const table_reg = /\{\|[\s\S]{1,8000}?\|\}/g;
+const noWrap_reg = /^\{\{nowrap\|(.*?)\}\}$/;
 
 // options
 const defaultParseOptions = {
@@ -31,7 +33,18 @@ const defaultParseOptions = {
 //some xml elements are just junk, and demand full inglorious death by regular exp
 //other xml elements, like <em>, are plucked out afterwards
 const main = function(wiki, options) {
+  wiki = wiki || '';
   options = Object.assign({}, defaultParseOptions, options);
+  //detect if page is just redirect, and return
+  if (redirects.is_redirect(wiki)) {
+    return redirects.parse_redirect(wiki);
+  }
+  //detect if page is disambiguator page
+  if (wiki.match(template_reg)) {
+    //|| wiki.match(/^.{3,25} may refer to/i)|| wiki.match(/^.{3,25} ist der Name mehrerer /i)
+    return parse_disambig(wiki);
+  }
+
   let r = {
     type: 'page',
     text: {},
@@ -42,22 +55,12 @@ const main = function(wiki, options) {
     tables: [],
     translations: {}
   };
-  wiki = wiki || '';
-  //detect if page is just redirect, and return
-  if (redirects.is_redirect(wiki)) {
-    return redirects.parse_redirect(wiki);
-  }
-  //detect if page is disambiguator page
-  if (wiki.match(template_reg)) {
-    //|| wiki.match(/^.{3,25} may refer to/i)|| wiki.match(/^.{3,25} ist der Name mehrerer /i)
-    return parse_disambig(wiki);
-  }
   //parse templates like {{currentday}}
   wiki = word_templates(wiki);
   //kill off th3 craziness
   wiki = preprocess(wiki);
   //find tables
-  r.tables = wiki.match(/\{\|[\s\S]{1,8000}?\|\}/g, '') || [];
+  r.tables = wiki.match(table_reg, '') || [];
   r.tables = r.tables.map(function(s) {
     return parse_table(s);
   });
@@ -78,7 +81,7 @@ const main = function(wiki, options) {
     //rest of them...
     if (s.match(/^\{\{/)) {
       //support nowrap
-      const nowrap = s.match(/^\{\{nowrap\|(.*?)\}\}$/);
+      const nowrap = s.match(noWrap_reg);
       if (nowrap) {
         wiki = wiki.replace(s, nowrap[1]);
         return;

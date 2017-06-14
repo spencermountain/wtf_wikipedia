@@ -1,11 +1,11 @@
-var i18n = require("../data/i18n");
+const i18n = require('../data/i18n');
+const infobox_template_reg = new RegExp('{{(?:' + i18n.infoboxes.join('|') + ')\\s*(.*)', 'i');
 
 function parse_infobox_template(str) {
-  var template = '';
-  if(str) {
-    var infobox_template_reg = new RegExp("\{\{(?:" + i18n.infoboxes.join("|") + ")\\s*(.*)", "i");
-    var matches = str.match(infobox_template_reg);
-    if(matches && matches.length > 1) {
+  let template = '';
+  if (str) {
+    const matches = str.match(infobox_template_reg);
+    if (matches && matches.length > 1) {
       template = matches[1];
     }
   }

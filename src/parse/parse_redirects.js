@@ -1,16 +1,21 @@
-var i18n = require("../data/i18n");
+const i18n = require('../data/i18n');
 //pulls target link out of redirect page
-var REDIRECT_REGEX = new RegExp("^ ?#(" + i18n.redirects.join("|") + ") *?\\[\\[(.{2,60}?)\\]\\]", "i");
+const REDIRECT_REGEX = new RegExp('^ ?#(' + i18n.redirects.join('|') + ') *?\\[\\[(.{2,60}?)\\]\\]', 'i');
 
-exports.is_redirect = function(wiki) {
+const is_redirect = function(wiki) {
   return wiki.match(REDIRECT_REGEX);
 };
 
-exports.parse_redirect = function(wiki) {
-  var article = (wiki.match(REDIRECT_REGEX) || [])[2] || "";
-  article = article.replace(/#.*/, "");
+const parse_redirect = function(wiki) {
+  let article = (wiki.match(REDIRECT_REGEX) || [])[2] || '';
+  article = article.replace(/#.*/, '');
   return {
-    type: "redirect",
+    type: 'redirect',
     redirect: article
   };
+};
+
+module.exports = {
+  is_redirect: is_redirect,
+  parse_redirect: parse_redirect
 };
