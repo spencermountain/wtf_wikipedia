@@ -1,5 +1,4 @@
 const sentence_parser = require('./lib/sentence_parser');
-const fetch = require('./lib/fetch_text');
 const make_image = require('./lib/make_image');
 const i18n = require('./data/i18n');
 const helpers = require('./lib/helpers');
@@ -21,6 +20,8 @@ const word_templates = require('./word_templates');
 const template_reg = new RegExp('\\{\\{ ?(' + i18n.disambigs.join('|') + ')(\\|[a-z =]*?)? ?\\}\\}', 'i');
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 const ban_headings = new RegExp('^ ?(' + i18n.sources.join('|') + ') ?$', 'i'); //remove things like 'external links'
+const fileRegex = new RegExp('\\[\\[(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
+const img_regex = new RegExp('^(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
 
 // options
 const defaultParseOptions = {
@@ -86,7 +87,7 @@ const main = function(wiki, options) {
   //second, remove [[file:...[[]] ]] recursions
   matches = recursive_matches('[', ']', wiki);
   matches.forEach(function(s) {
-    if (s.match(new RegExp('\\[\\[(' + i18n.images.concat(i18n.files).join('|') + ')', 'i'))) {
+    if (s.match(fileRegex)) {
       images.push(parse_image(s));
       wiki = wiki.replace(s, '');
     }
@@ -112,7 +113,7 @@ const main = function(wiki, options) {
   //next, map each line into a parsable sentence
   // const output = {};
   let output = {};
-  const lines = wiki.replace(/\r/g, '').split(/\n/);
+  let lines = wiki.replace(/\r/g, '').split(/\n/);
   let section = 'Intro';
   let number = 1;
 
@@ -158,27 +159,25 @@ const main = function(wiki, options) {
       return;
     }
 
-    const sectionLabel = section;
-
     //still alive, add it to the section
     sentence_parser(part).forEach(function(line) {
       line = parse_line(line);
 
       if (line && line.text) {
         // if (!output[section]) {
-        if (!output[sectionLabel]) {
+        if (!output[section]) {
           // output[section] = [];
-          output[sectionLabel] = [];
+          output[section] = [];
         }
         // output[section].push(line);
-        output[sectionLabel].push(line);
+        output[section].push(line);
       }
     });
   });
   //add additional image from infobox, if applicable
   if (infobox['image'] && infobox['image'].text) {
     let img = infobox['image'].text || '';
-    if (typeof img === 'string' && !img.match(new RegExp('^(' + i18n.images.concat(i18n.files).join('|') + ')', 'i'))) {
+    if (typeof img === 'string' && !img.match(img_regex)) {
       img = 'File:' + img;
     }
     images.push(img);

@@ -1,8 +1,10 @@
 //turns wikimedia script into json
 // https://github.com/spencermountain/wtf_wikipedia
 //@spencermountain
+const fetch = require('./lib/fetch_text');
 const main = require('./main');
 
+//from a page title or id, fetch the wikiscript
 const from_api = function(page_identifier, lang_or_wikiid, cb) {
   if (typeof lang_or_wikiid === 'function') {
     cb = lang_or_wikiid;
@@ -17,10 +19,11 @@ const from_api = function(page_identifier, lang_or_wikiid, cb) {
   return fetch(page_identifier, lang_or_wikiid, cb);
 };
 
+//turn wiki-markup into a nicely-formatted text
 const plaintext = function(str) {
-  var data = main(str) || {};
+  let data = main(str) || {};
   data.text = data.text || [];
-  var text = '';
+  let text = '';
   Object.keys(data.text).forEach(function(k) {
     text += data.text[k].map(a => a.text).join(' ') + '\n';
   });
