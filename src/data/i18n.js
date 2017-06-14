@@ -1,7 +1,7 @@
 // wikipedia special terms lifted and augmented from parsoid parser april 2015
 // (not even close to being complete)
-var i18n = {
-  'files': [
+const i18n = {
+  files: [
     'файл',
     'fitxer',
     'soubor',
@@ -11,17 +11,15 @@ var i18n = {
     'پرونده',
     'tiedosto',
     'mynd',
-    'su\'wret',
+    "su'wret",
     'fichier',
     'bestand',
     'датотека',
     'dosya',
     'fil'
   ],
-  'images': [
-    'image'
-  ],
-  'templates': [
+  images: ['image'],
+  templates: [
     'шаблён',
     'plantilla',
     'šablona',
@@ -36,7 +34,7 @@ var i18n = {
     'шаблон',
     'şablon'
   ],
-  'categories': [
+  categories: [
     'катэгорыя',
     'categoria',
     'kategorie',
@@ -53,7 +51,7 @@ var i18n = {
     'kategoria',
     'تصنيف'
   ],
-  'redirects': [
+  redirects: [
     'перанакіраваньне',
     'redirect',
     'přesměruj',
@@ -83,7 +81,7 @@ var i18n = {
     'перанакіраваньне',
     'yönlendirme'
   ],
-  'specials': [
+  specials: [
     'спэцыяльныя',
     'especial',
     'speciální',
@@ -98,7 +96,7 @@ var i18n = {
     'посебно',
     'özel'
   ],
-  'users': [
+  users: [
     'удзельнік',
     'usuari',
     'uživatel',
@@ -114,7 +112,7 @@ var i18n = {
     'корисник',
     'kullanıcı'
   ],
-  'disambigs': [
+  disambigs: [
     'disambig', //en
     'disambiguation', //en
     'dab', //en
@@ -131,7 +129,7 @@ var i18n = {
     'неоднозначность', //ru
     'anlam ayrımı' //tr
   ],
-  'infoboxes': [
+  infoboxes: [
     'infobox',
     'ficha',
     'канадский',
@@ -142,7 +140,8 @@ var i18n = {
     'yerleşim bilgi kutusu',
     'infoboks' //nn, no
   ],
-  'sources': [ //blacklist these headings, as they're not plain-text
+  sources: [
+    //blacklist these headings, as they're not plain-text
     'references',
     'see also',
     'external links',
