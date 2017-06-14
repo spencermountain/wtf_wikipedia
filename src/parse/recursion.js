@@ -1,9 +1,11 @@
 const i18n = require('../data/i18n');
+const languages = require('../data/languages');
+const recursive_matches = require('./cleanup/recursive_matches');
+
 const parse_infobox = require('./infobox');
 const parse_infobox_template = require('./infobox_template');
 const parse_image = require('./image');
-const languages = require('../data/languages');
-const recursive_matches = require('./cleanup/recursive_matches');
+
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 const fileRegex = new RegExp('\\[\\[(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
 const noWrap_reg = /^\{\{nowrap\|(.*?)\}\}$/;
@@ -42,6 +44,7 @@ const parse_recursive = function(r, wiki) {
       wiki = wiki.replace(s, '');
     }
   });
+
   //third, wiktionary-style interlanguage links
   matches.forEach(function(s) {
     if (s.match(/\[\[([a-z][a-z]):(.*?)\]\]/i) !== null) {
@@ -52,6 +55,7 @@ const parse_recursive = function(r, wiki) {
       wiki = wiki.replace(s, '');
     }
   });
+
   return wiki;
 };
 

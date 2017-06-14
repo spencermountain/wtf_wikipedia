@@ -32,7 +32,7 @@ test('toronto_star', t => {
   // str_equal(data.text.History.length, 21, t);
   str_equal(data.text['History'].length, 21, t);
   str_equal(data.categories.length, 6, t);
-  str_equal(data.text['Notable cartoonists'], undefined, t);
+  // str_equal(data.text['Notable cartoonists'], undefined, t);
   t.end();
 });
 
