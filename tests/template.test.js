@@ -1,7 +1,7 @@
 'use strict';
-var parse_table = require('../src/parse/parse_table');
-var parse_disambig = require('../src/parse/parse_disambig');
-var parse_infobox = require('../src/parse/parse_infobox');
+var parse_table = require('../src/parse/table');
+var parse_disambig = require('../src/parse/disambig');
+var parse_infobox = require('../src/parse/infobox');
 var test = require('tape');
 
 let boloZenden = `{{Infobox football biography
@@ -93,7 +93,6 @@ test('parkplace disambig', function(t) {
   t.equal(o.pages[0], 'Park Place (TV series)');
   t.end();
 });
-
 
 let bluejays = `
 {| border="1" cellpadding="2" cellspacing="0" class="wikitable"

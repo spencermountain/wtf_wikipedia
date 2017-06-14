@@ -2,7 +2,7 @@
 //grab the content of any article, off the api
 const request = require('superagent');
 const site_map = require('../data/site_map');
-const redirects = require('../parse/parse_redirects');
+const redirects = require('../parse/redirects');
 
 const fetch = function(page_identifier, lang_or_wikiid, cb) {
   lang_or_wikiid = lang_or_wikiid || 'en';

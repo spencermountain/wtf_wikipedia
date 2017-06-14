@@ -5,15 +5,14 @@ const make_image = require('../lib/make_image');
 const helpers = require('../lib/helpers');
 
 //parsing functions
-const redirects = require('./parse_redirects');
-const parse_table = require('./parse_table');
-const parse_line = require('./parse_line');
-const parse_categories = require('./parse_categories');
-const parse_disambig = require('./parse_disambig');
-const parse_infobox = require('./parse_infobox');
-const parse_infobox_template = require('./parse_infobox_template');
-const parse_image = require('./parse_image');
-
+const redirects = require('./redirects');
+const parse_table = require('./table');
+const parse_categories = require('./categories');
+const parse_disambig = require('./disambig');
+const parse_infobox = require('./infobox');
+const parse_infobox_template = require('./infobox_template');
+const parse_image = require('./image');
+const parse_line = require('./text/line');
 const word_templates = require('./cleanup/word_templates');
 const recursive_matches = require('./cleanup/recursive_matches');
 const preprocess = require('./cleanup/misc');

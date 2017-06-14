@@ -1,10 +1,10 @@
 'use strict';
 var test = require('tape');
-var redirects = require('../src/parse/parse_redirects');
-var parse_line = require('../src/parse/parse_line');
-var parse_categories = require('../src/parse/parse_categories');
+var redirects = require('../src/parse/redirects');
+var parse_line = require('../src/parse/text/line');
+var parse_categories = require('../src/parse/categories');
 var cleanup_misc = require('../src/parse/cleanup/misc');
-var parse_image = require('../src/parse/parse_image');
+var parse_image = require('../src/parse/image');
 var sentence_parser = require('../src/lib/sentence_parser');
 var kill_xml = require('../src/parse/cleanup/kill_xml');
 
