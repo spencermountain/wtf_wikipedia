@@ -1,10 +1,8 @@
 'use strict';
 var test = require('tape');
-var redirects = require('../src/parse/page/redirects');
 var parse_line = require('../src/parse/text/line');
 var wtf = require('../src/');
 var cleanup_misc = require('../src/parse/cleanup/misc');
-var parse_image = require('../src/parse/image');
 var sentence_parser = require('../src/lib/sentence_parser');
 var kill_xml = require('../src/parse/cleanup/kill_xml');
 
@@ -48,7 +46,7 @@ test('redirects', t => {
     ['#přesměruj [[Tony Danza#funfun]] ', 'Tony Danza'],
     ['#تغییر_مسیر [[Farming]] ', 'Farming']
   ].forEach(a => {
-    let o = redirects.parse_redirect(a[0]);
+    let o = wtf.parse(a[0]);
     var msg = "'" + a[0] + "' -> '" + o.redirect + "'";
     t.equal(o.redirect, a[1], msg);
   });
@@ -97,8 +95,8 @@ test('parse_image', t => {
       'Image:Edouard Recon (2002).jpg'
     ]
   ].forEach(a => {
-    let o = parse_image(a[0]);
-    t.deepEqual(o, a[1]);
+    let arr = wtf.parse(a[0]).images.map(o => o.file);
+    t.deepEqual(arr[0], a[1]);
   });
   t.end();
 });

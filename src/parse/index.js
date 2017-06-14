@@ -10,7 +10,7 @@ const preprocess = require('./cleanup/misc');
 
 const parse_tables = require('./table');
 const parse_categories = require('./categories');
-const parse_recursion = require('./recursion');
+const parse_recursion = require('./recursive');
 const parse_text = require('./text');
 
 //regexs

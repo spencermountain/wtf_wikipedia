@@ -1,6 +1,6 @@
-const i18n = require('../data/i18n');
-const languages = require('../data/languages');
-const recursive_matches = require('./cleanup/recursive_matches');
+const i18n = require('../../data/i18n');
+const languages = require('../../data/languages');
+const recursive_matches = require('./recursive_matches');
 
 const parse_infobox = require('./infobox');
 const parse_infobox_template = require('./infobox_template');

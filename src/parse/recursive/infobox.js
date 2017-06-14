@@ -1,6 +1,6 @@
 'use strict';
-const helpers = require('../lib/helpers');
-const parse_line = require('./text/line');
+const helpers = require('../../lib/helpers');
+const parse_line = require('../text/line');
 
 const line_reg = /\n *\|([^=]*)=(.*)/g;
 
