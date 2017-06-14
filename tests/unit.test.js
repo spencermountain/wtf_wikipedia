@@ -1,6 +1,6 @@
 'use strict';
 var test = require('tape');
-var redirects = require('../src/parse/redirects');
+var redirects = require('../src/parse/page/redirects');
 var parse_line = require('../src/parse/text/line');
 var parse_categories = require('../src/parse/categories');
 var cleanup_misc = require('../src/parse/cleanup/misc');

@@ -1,6 +1,6 @@
 'use strict';
 var parse_table = require('../src/parse/table');
-var parse_disambig = require('../src/parse/disambig');
+var parse_disambig = require('../src/parse/page/disambig');
 var parse_infobox = require('../src/parse/infobox');
 var test = require('tape');
 

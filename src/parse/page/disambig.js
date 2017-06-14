@@ -1,4 +1,4 @@
-const parse_links = require('./text/links');
+const parse_links = require('../text/links');
 
 //return a list of probable pages for this disambig page
 const parse_disambig = function(wiki) {
