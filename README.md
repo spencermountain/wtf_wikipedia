@@ -55,15 +55,11 @@ m ok, lets write our own parser what culd go rong
 its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView), [txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
 
 # Methods
-## **.parse(markup, options)**
+## **.parse(markup)**
 turns wikipedia markup into a nice json object
 
-options is optional. The options supported are
-* 'ignoreLists' which defaults to true.
-* 'appendSectionLabelsWithParent' which defaults to false. When turned on, the parse function will not just use the header of a section as the key in the map, but if there is a parent header that has no text of itself, the key will be amended to reflect Parent Header Name : Section Name"
-
 ```javascript
-wtf_wikipedia.parse(someWikiScript, { ignoreLists: false, appendSectionLabelsWithParent: true })
+wtf_wikipedia.parse(someWikiScript)
 // {text:[...], infobox:{}, categories:[...], images:[] }
 ```
 
