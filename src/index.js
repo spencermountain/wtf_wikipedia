@@ -22,11 +22,10 @@ const from_api = function(page_identifier, lang_or_wikiid, cb) {
 //turn wiki-markup into a nicely-formatted text
 const plaintext = function(str) {
   let data = parse(str) || {};
-  data.text = data.text || [];
-  let arr = Object.keys(data.text).map(k => {
-    return data.text[k].map(a => a.text).join(' ');
+  let arr = Object.keys(data.sections).map(k => {
+    return data.sections[k].sentences.map(a => a.text).join(' ');
   });
-  return arr.join('\n');
+  return arr.join('\n\n');
 };
 
 module.exports = {

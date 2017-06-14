@@ -4,6 +4,7 @@ const wtf = require('../src/index');
 
 test('small headings', t => {
   let str = `
+hello
 ===gdbserver===
 hi there
 
@@ -13,11 +14,11 @@ Displays memory at the specified virtual address using the specified format.
 ===xp===
 here too
   `;
-  let text = wtf.parse(str).text;
-  t.ok(text['gdbserver'], 'first heading exists');
-  t.ok(text['x'], 'x exists');
-  t.ok(text['xp'], 'xp exists');
-  t.equal(text['foo'], undefined, 'foo doesnt exist');
+  let sections = wtf.parse(str).sections;
+  t.equal(sections[1].title, 'gdbserver', 'first heading exists');
+  t.equal(sections[2].title, 'x', 'x exists');
+  t.ok(sections[3].title, 'xp', 'xp exists');
+  t.equal(sections[4], undefined, 'foo doesnt exist');
   t.end();
 });
 

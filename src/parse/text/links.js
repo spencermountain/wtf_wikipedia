@@ -8,6 +8,7 @@ const external_links = function(links, str) {
     let m = link.match(/\[([^\| ]+)/);
     if (m && m[1]) {
       links.push({
+        type: 'external',
         site: m[1],
         text: text.replace(/^[\| ]/, '')
       });

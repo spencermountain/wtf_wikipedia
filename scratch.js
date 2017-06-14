@@ -15,15 +15,15 @@ const wtf = require('./src/index');
 
 function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
-  // return wtf.plaintext(str)
+  // console.log(wtf.plaintext(str));
   let r = wtf.parse(str, {});
-  console.log(r.sections[5]);
+  console.log(r.sections);
   // console.log(JSON.stringify(r.sections, null, 2));
 }
 
 // from_file("list")
 // from_file("Toronto")
-// from_file('Toronto_Star');
+from_file('Toronto_Star');
 // from_file('royal_cinema');
 // from_file('Jodie_Emery');
 // from_file("Redirect")
@@ -35,6 +35,6 @@ function from_file(page) {
 //   console.log(obj);
 // });
 
-let str = `he is [http://cool.com really nice] and [[fun|weird]] [[everyday]].`;
-let doc = wtf.parse(str);
-console.log(JSON.stringify(doc.sections, null, 2));
+// let str = `he is [http://cool.com really nice] and [[fun|weird]] [[everyday]].`;
+// let doc = wtf.parse(str);
+// console.log(JSON.stringify(doc.sections, null, 2));
