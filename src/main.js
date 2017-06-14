@@ -32,11 +32,16 @@ const defaultParseOptions = {
 //other xml elements, like <em>, are plucked out afterwards
 const main = function(wiki, options) {
   options = Object.assign({}, defaultParseOptions, options);
-  let infobox = {};
-  let infobox_template = '';
-  let images = [];
-  let tables;
-  let translations = {};
+  let r = {
+    type: 'page',
+    text: {},
+    categories: [],
+    images: [],
+    infobox: {},
+    infobox_template: {},
+    tables: [],
+    translations: {}
+  };
   wiki = wiki || '';
   //detect if page is just redirect, and return
   if (redirects.is_redirect(wiki)) {
@@ -52,8 +57,8 @@ const main = function(wiki, options) {
   //kill off th3 craziness
   wiki = preprocess(wiki);
   //find tables
-  tables = wiki.match(/\{\|[\s\S]{1,8000}?\|\}/g, '') || [];
-  tables = tables.map(function(s) {
+  r.tables = wiki.match(/\{\|[\s\S]{1,8000}?\|\}/g, '') || [];
+  r.tables = r.tables.map(function(s) {
     return parse_table(s);
   });
   //remove tables
@@ -63,9 +68,9 @@ const main = function(wiki, options) {
   //remove {{template {{}} }} recursions
   let matches = recursive_matches('{', '}', wiki);
   matches.forEach(function(s) {
-    if (s.match(infobox_reg, 'ig') && Object.keys(infobox).length === 0) {
-      infobox = parse_infobox(s);
-      infobox_template = parse_infobox_template(s);
+    if (s.match(infobox_reg, 'ig') && Object.keys(r.infobox).length === 0) {
+      r.infobox = parse_infobox(s);
+      r.infobox_template = parse_infobox_template(s);
     }
     if (s.match(infobox_reg)) {
       wiki = wiki.replace(s, '');
@@ -88,7 +93,7 @@ const main = function(wiki, options) {
   matches = recursive_matches('[', ']', wiki);
   matches.forEach(function(s) {
     if (s.match(fileRegex)) {
-      images.push(parse_image(s));
+      r.images.push(parse_image(s));
       wiki = wiki.replace(s, '');
     }
   });
@@ -97,7 +102,7 @@ const main = function(wiki, options) {
     if (s.match(/\[\[([a-z][a-z]):(.*?)\]\]/i) !== null) {
       const lang = s.match(/\[\[([a-z][a-z]):/i)[1];
       if (lang && languages[lang]) {
-        translations[lang] = s.match(/\[\[([a-z][a-z]):(.*?)\]\]/i)[2];
+        r.translations[lang] = s.match(/\[\[([a-z][a-z]):(.*?)\]\]/i)[2];
       }
       wiki = wiki.replace(s, '');
     }
@@ -109,10 +114,8 @@ const main = function(wiki, options) {
   wiki = wiki.replace(/\{\{.*?\}\}/g, '');
 
   //get list of links, categories
-  const cats = parse_categories(wiki);
+  r.categories = parse_categories(wiki);
   //next, map each line into a parsable sentence
-  // const output = {};
-  let output = {};
   let lines = wiki.replace(/\r/g, '').split(/\n/);
   let section = 'Intro';
   let number = 1;
@@ -164,36 +167,24 @@ const main = function(wiki, options) {
       line = parse_line(line);
 
       if (line && line.text) {
-        // if (!output[section]) {
-        if (!output[section]) {
-          // output[section] = [];
-          output[section] = [];
+        if (!r.text[section]) {
+          r.text[section] = [];
         }
-        // output[section].push(line);
-        output[section].push(line);
+        r.text[section].push(line);
       }
     });
   });
   //add additional image from infobox, if applicable
-  if (infobox['image'] && infobox['image'].text) {
-    let img = infobox['image'].text || '';
+  if (r.infobox['image'] && r.infobox['image'].text) {
+    let img = r.infobox['image'].text || '';
     if (typeof img === 'string' && !img.match(img_regex)) {
       img = 'File:' + img;
     }
-    images.push(img);
+    r.images.push(img);
   }
   //add url, etc to image
-  images = images.map(make_image);
-  return {
-    type: 'page',
-    text: output,
-    categories: cats,
-    images: images,
-    infobox: infobox,
-    infobox_template: infobox_template,
-    tables: tables,
-    translations: translations
-  };
+  r.images = r.images.map(make_image);
+  return r;
 };
 
 module.exports = main;
