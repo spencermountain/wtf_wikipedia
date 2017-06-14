@@ -2,7 +2,7 @@
 // https://github.com/spencermountain/wtf_wikipedia
 //@spencermountain
 const fetch = require('./lib/fetch_text');
-const main = require('./main');
+const parse = require('./parse');
 
 //from a page title or id, fetch the wikiscript
 const from_api = function(page_identifier, lang_or_wikiid, cb) {
@@ -21,7 +21,7 @@ const from_api = function(page_identifier, lang_or_wikiid, cb) {
 
 //turn wiki-markup into a nicely-formatted text
 const plaintext = function(str) {
-  let data = main(str) || {};
+  let data = parse(str) || {};
   data.text = data.text || [];
   let text = '';
   Object.keys(data.text).forEach(function(k) {
@@ -32,6 +32,6 @@ const plaintext = function(str) {
 
 module.exports = {
   from_api: from_api,
-  parse: main,
+  parse: parse,
   plaintext: plaintext
 };

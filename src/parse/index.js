@@ -1,20 +1,22 @@
-const sentence_parser = require('./lib/sentence_parser');
-const make_image = require('./lib/make_image');
-const i18n = require('./data/i18n');
-const helpers = require('./lib/helpers');
-const languages = require('./data/languages');
-//parsers
-const redirects = require('./parse/parse_redirects');
-const parse_table = require('./parse/parse_table');
-const parse_line = require('./parse/parse_line');
-const parse_categories = require('./parse/parse_categories');
-const parse_disambig = require('./parse/parse_disambig');
-const parse_infobox = require('./parse/parse_infobox');
-const parse_infobox_template = require('./parse/parse_infobox_template');
-const parse_image = require('./parse/parse_image');
-const recursive_matches = require('./recursive_matches');
-const preprocess = require('./parse/cleanup_misc');
-const word_templates = require('./word_templates');
+const i18n = require('../data/i18n');
+const languages = require('../data/languages');
+const sentence_parser = require('../lib/sentence_parser');
+const make_image = require('../lib/make_image');
+const helpers = require('../lib/helpers');
+
+//parsing functions
+const redirects = require('./parse_redirects');
+const parse_table = require('./parse_table');
+const parse_line = require('./parse_line');
+const parse_categories = require('./parse_categories');
+const parse_disambig = require('./parse_disambig');
+const parse_infobox = require('./parse_infobox');
+const parse_infobox_template = require('./parse_infobox_template');
+const parse_image = require('./parse_image');
+
+const word_templates = require('./cleanup/word_templates');
+const recursive_matches = require('./cleanup/recursive_matches');
+const preprocess = require('./cleanup/misc');
 
 //regexs
 const template_reg = new RegExp('\\{\\{ ?(' + i18n.disambigs.join('|') + ')(\\|[a-z =]*?)? ?\\}\\}', 'i');
