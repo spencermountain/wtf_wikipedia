@@ -43,7 +43,8 @@ var wtf_wikipedia = (function() {
     }
     //detect if page is disambiguator page
     var template_reg = new RegExp('\\{\\{ ?(' + i18n.disambigs.join('|') + ')(\\|[a-z =]*?)? ?\\}\\}', 'i');
-    if (wiki.match(template_reg)) { //|| wiki.match(/^.{3,25} may refer to/i)|| wiki.match(/^.{3,25} ist der Name mehrerer /i)
+    if (wiki.match(template_reg)) {
+      //|| wiki.match(/^.{3,25} may refer to/i)|| wiki.match(/^.{3,25} ist der Name mehrerer /i)
       return parse_disambig(wiki);
     }
     //parse templates like {{currentday}}
@@ -61,7 +62,7 @@ var wtf_wikipedia = (function() {
     //reduce the scary recursive situations
     //remove {{template {{}} }} recursions
     var matches = recursive_matches('{', '}', wiki);
-    var infobox_reg = new RegExp('\{\{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
+    var infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
     matches.forEach(function(s) {
       if (s.match(infobox_reg, 'ig') && Object.keys(infobox).length === 0) {
         infobox = parse_infobox(s);
@@ -112,13 +113,13 @@ var wtf_wikipedia = (function() {
     var cats = parse_categories(wiki);
     //next, map each line into a parsable sentence
     // var output = {};
-    var output = new Map();
+    var output = {};
     var lines = wiki.replace(/\r/g, '').split(/\n/);
     var section = 'Intro';
     var sectionStack = []; // only relevant when appendSectionLabelsWithParent === true
     var number = 1;
     // Turns = Intro = into 1, == Summary == into 2 etc;
-    var countHeaderNumber = function (section) {
+    var countHeaderNumber = function(section) {
       var aSection = section.match(/^={1,5}/);
 
       if (Array.isArray(aSection) && aSection.length !== 0) {
@@ -126,16 +127,19 @@ var wtf_wikipedia = (function() {
       } else {
         return null;
       }
-    }
+    };
 
-    var isEmptyParentSection = function (section, potentialParent) {
-        if (countHeaderNumber(section.sectionNameWithEquals) - 1 === countHeaderNumber(potentialParent.sectionNameWithEquals)) {
-            return !potentialParent.hasText;
-        } else {
-            return false;
-        }
-        return
-    }
+    var isEmptyParentSection = function(section, potentialParent) {
+      if (
+        countHeaderNumber(section.sectionNameWithEquals) - 1 ===
+        countHeaderNumber(potentialParent.sectionNameWithEquals)
+      ) {
+        return !potentialParent.hasText;
+      } else {
+        return false;
+      }
+      return;
+    };
 
     lines.forEach(function(part) {
       if (!section) {
@@ -201,13 +205,22 @@ var wtf_wikipedia = (function() {
         }
 
         // Don't get influenced by siblings, remove the siblings from the stack till we find a parent node
-        while (sectionStack.length > 1 && countHeaderNumber(sectionStack[sectionStack.length - 1].sectionNameWithEquals) === countHeaderNumber(sectionStack[sectionStack.length - 2].sectionNameWithEquals)) {
+        while (
+          sectionStack.length > 1 &&
+          countHeaderNumber(sectionStack[sectionStack.length - 1].sectionNameWithEquals) ===
+            countHeaderNumber(sectionStack[sectionStack.length - 2].sectionNameWithEquals)
+        ) {
           sectionStack.splice(-2, 1);
         }
 
         // Check our previous (now) non-sibling node, is it without content text and exactly one level up? Then append the section label with it
-        if (options.appendSectionLabelsWithParent === true && sectionStack.length > 1 && isEmptyParentSection(sectionStack[sectionStack.length - 1], sectionStack[sectionStack.length - 2])) {
-            sectionLabel = sectionStack[sectionStack.length - 2].name + " : " + sectionStack[sectionStack.length - 1].name;
+        if (
+          options.appendSectionLabelsWithParent === true &&
+          sectionStack.length > 1 &&
+          isEmptyParentSection(sectionStack[sectionStack.length - 1], sectionStack[sectionStack.length - 2])
+        ) {
+          sectionLabel =
+            sectionStack[sectionStack.length - 2].name + ' : ' + sectionStack[sectionStack.length - 1].name;
         }
       }
 
@@ -217,19 +230,22 @@ var wtf_wikipedia = (function() {
 
         if (line && line.text) {
           // if (!output[section]) {
-          if (!output.get(sectionLabel)) {
+          if (!output[sectionLabel]) {
             // output[section] = [];
-            output.set(sectionLabel, []);
+            output[sectionLabel] = [];
           }
           // output[section].push(line);
-          output.get(sectionLabel).push(line);
+          output[sectionLabel].push(line);
         }
       });
     });
     //add additional image from infobox, if applicable
     if (infobox['image'] && infobox['image'].text) {
       var img = infobox['image'].text || '';
-      if (typeof img === 'string' && !img.match(new RegExp('^(' + i18n.images.concat(i18n.files).join('|') + ')', 'i'))) {
+      if (
+        typeof img === 'string' &&
+        !img.match(new RegExp('^(' + i18n.images.concat(i18n.files).join('|') + ')', 'i'))
+      ) {
         img = 'File:' + img;
       }
       images.push(img);
@@ -246,7 +262,6 @@ var wtf_wikipedia = (function() {
       tables: tables,
       translations: translations
     };
-
   };
 
   var from_api = function(page_identifier, lang_or_wikiid, cb) {
@@ -256,7 +271,8 @@ var wtf_wikipedia = (function() {
     }
     cb = cb || function() {};
     lang_or_wikiid = lang_or_wikiid || 'en';
-    if (!fetch) { //no http method, on the client side
+    if (!fetch) {
+      //no http method, on the client side
       return cb(null);
     }
     return fetch(page_identifier, lang_or_wikiid, cb);
@@ -266,10 +282,8 @@ var wtf_wikipedia = (function() {
     var data = main(str) || {};
     data.text = data.text || [];
     var text = '';
-    data.text.forEach(function (v) {
-      text += v.map(function(a) {
-          return a.text;
-        }).join(' ') + '\n';
+    Object.keys(data.text).forEach(function(k) {
+      text += data.text[k].map(a => a.text).join(' ') + '\n';
     });
     return text;
   };

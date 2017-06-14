@@ -2,7 +2,7 @@
 var test = require('tape');
 const wtf = require('../src/index');
 
-test('small headings', (t) => {
+test('small headings', t => {
   let str = `
 ===gdbserver===
 hi there
@@ -14,14 +14,14 @@ Displays memory at the specified virtual address using the specified format.
 here too
   `;
   let text = wtf.parse(str).text;
-  t.ok(text.get('gdbserver'), 'first heading exists');
-  t.ok(text.get('x'), 'x exists');
-  t.ok(text.get('xp'), 'xp exists');
-  t.equal(text.get('foo'), undefined, 'foo doesnt exist');
+  t.ok(text['gdbserver'], 'first heading exists');
+  t.ok(text['x'], 'x exists');
+  t.ok(text['xp'], 'xp exists');
+  t.equal(text['foo'], undefined, 'foo doesnt exist');
   t.end();
 });
 
-test('font-size', (t) => {
+test('font-size', t => {
   let str = 'hello {{small|(1995-1997)}} world';
   t.equal(wtf.plaintext(str), 'hello (1995-1997) world\n', '{{small}}');
 
