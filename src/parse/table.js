@@ -47,7 +47,7 @@ const findTables = function(r, wiki) {
     return parse_table(str);
   });
   //remove tables
-  wiki = wiki.replace(/\{\|[\s\S]{1,8000}?\|\}/g, '');
+  wiki = wiki.replace(table_reg, '');
   return wiki;
 };
 module.exports = findTables;

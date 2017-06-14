@@ -1,23 +1,13 @@
-const i18n = require('../data/i18n');
-const make_image = require('../lib/make_image');
-
-//parsing functions
 const redirects = require('./page/redirects');
 const disambig = require('./page/disambig');
-
 const word_templates = require('./cleanup/word_templates');
 const preprocess = require('./cleanup/misc');
-
 const parse_tables = require('./table');
 const parse_categories = require('./categories');
 const parse_recursion = require('./recursive');
 const parse_text = require('./text');
 
-//regexs
-const img_regex = new RegExp('^(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
-
-//some xml elements are just junk, and demand full inglorious death by regular exp
-//other xml elements, like <em>, are plucked out afterwards
+//convert wikiscript markup lang to json
 const main = function(wiki) {
   wiki = wiki || '';
   //detect if page is just redirect, and return
@@ -28,7 +18,6 @@ const main = function(wiki) {
   if (disambig.is_disambig(wiki)) {
     return disambig.parse_disambig(wiki);
   }
-
   let r = {
     type: 'page',
     text: {},
@@ -54,16 +43,7 @@ const main = function(wiki) {
   wiki = parse_categories(r, wiki);
   //parse all the headings, and their texts
   wiki = parse_text(r, wiki);
-  //add additional image from infobox, if applicable
-  if (r.infobox['image'] && r.infobox['image'].text) {
-    let img = r.infobox['image'].text || '';
-    if (typeof img === 'string' && !img.match(img_regex)) {
-      img = 'File:' + img;
-    }
-    r.images.push(img);
-  }
-  //add url, etc to image
-  r.images = r.images.map(make_image);
+
   return r;
 };
 

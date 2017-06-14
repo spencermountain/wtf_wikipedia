@@ -1,6 +1,6 @@
 const i18n = require('../../data/i18n');
 const languages = require('../../data/languages');
-const recursive_matches = require('./recursive_matches');
+const find_recursive = require('./find');
 
 const parse_infobox = require('./infobox');
 const parse_infobox_template = require('./infobox_template');
@@ -8,12 +8,13 @@ const parse_image = require('./image');
 
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 const fileRegex = new RegExp('\\[\\[(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
+const img_regex = new RegExp('^(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
 const noWrap_reg = /^\{\{nowrap\|(.*?)\}\}$/;
 
 //reduce the scary recursive situations
 const parse_recursive = function(r, wiki) {
   //remove {{template {{}} }} recursions
-  let matches = recursive_matches('{', '}', wiki);
+  let matches = find_recursive('{', '}', wiki);
   matches.forEach(function(s) {
     if (s.match(infobox_reg, 'ig') && Object.keys(r.infobox).length === 0) {
       r.infobox = parse_infobox(s);
@@ -37,7 +38,7 @@ const parse_recursive = function(r, wiki) {
   });
 
   //second, remove [[file:...[[]] ]] recursions
-  matches = recursive_matches('[', ']', wiki);
+  matches = find_recursive('[', ']', wiki);
   matches.forEach(function(s) {
     if (s.match(fileRegex)) {
       r.images.push(parse_image(s));
@@ -55,6 +56,15 @@ const parse_recursive = function(r, wiki) {
       wiki = wiki.replace(s, '');
     }
   });
+
+  //add additional image from infobox, if applicable
+  if (r.infobox['image'] && r.infobox['image'].text) {
+    let img = r.infobox['image'].text || '';
+    if (typeof img === 'string' && !img.match(img_regex)) {
+      img = 'File:' + img;
+    }
+    r.images.push(img);
+  }
 
   return wiki;
 };
