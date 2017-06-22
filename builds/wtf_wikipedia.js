@@ -6743,15 +6743,43 @@ function parse_infobox_template(str) {
 module.exports = parse_infobox_template;
 
 },{"../../data/i18n":11}],34:[function(_dereq_,module,exports){
-'use strict';
+"use strict";
 
-var helpers = _dereq_('../lib/helpers');
+var helpers = _dereq_("../lib/helpers");
+var parse_line = _dereq_("./text");
+
 var table_reg = /\{\|[\s\S]{1,8000}?\|\}/g;
+
+var parseHeading = function parseHeading(str) {
+  str = str.replace(/^\! +/, "");
+  if (str.match(/\|/)) {
+    str = str.replace(/.+\| ?/, ""); //class="unsortable"|title
+  }
+  str = parse_line(str).text;
+  return str;
+};
 
 //turn a {|...table string into an array of arrays
 var parse_table = function parse_table(wiki) {
   var table = [];
-  var lines = wiki.replace(/\r/g, '').split(/\n/);
+  var headings = [];
+  var lines = wiki.replace(/\r/g, "").split(/\n/);
+
+  //find headings first
+  for (var i = 0; i < lines.length; i++) {
+    var str = lines[i];
+    //header
+    if (str.match(/^\!/)) {
+      str = parseHeading(str);
+      if (!str) {
+        str = "col-" + headings.length;
+      }
+      headings.push(str);
+    } else if (str.match(/^\| /)) {
+      break;
+    }
+  }
+
   lines.forEach(function (str) {
     //die here
     if (str.match(/^\|\}/)) {
@@ -6766,14 +6794,18 @@ var parse_table = function parse_table(wiki) {
     if (str.match(/^\|\+/)) {
       return;
     }
+    //header
+    if (str.match(/^\!/)) {
+      return;
+    }
     //juicy line
-    if (str.match(/^[\!\|]/)) {
+    if (str.match(/^\|/)) {
       //make a new row
       if (!table[table.length - 1]) {
         table[table.length - 1] = [];
       }
-      var want = (str.match(/\|(.*)/) || [])[1] || '';
-      want = helpers.trim_whitespace(want) || '';
+      var want = (str.match(/\|(.*)/) || [])[1] || "";
+      want = helpers.trim_whitespace(want) || "";
       //handle the || shorthand..
       if (want.match(/[!\|]{2}/)) {
         want.split(/[!\|]{2}/g).forEach(function (s) {
@@ -6785,40 +6817,53 @@ var parse_table = function parse_table(wiki) {
       }
     }
   });
+  //remove top one, if it's empty
+  if (table[0] && Object.keys(table[0]).length === 0) {
+    table.shift();
+  }
+  //index them by their header
+  table = table.map(function (arr) {
+    var obj = {};
+    arr.forEach(function (a, i) {
+      var head = headings[i] || "col-" + i;
+      obj[head] = parse_line(a);
+    });
+    return obj;
+  });
   return table;
 };
 
 var findTables = function findTables(r, wiki) {
-  r.tables = wiki.match(table_reg, '') || [];
+  r.tables = wiki.match(table_reg, "") || [];
   r.tables = r.tables.map(function (str) {
     return parse_table(str);
   });
   //remove tables
-  wiki = wiki.replace(table_reg, '');
+  wiki = wiki.replace(table_reg, "");
   return wiki;
 };
 module.exports = findTables;
 
-},{"../lib/helpers":16}],35:[function(_dereq_,module,exports){
-'use strict';
+},{"../lib/helpers":16,"./text":35}],35:[function(_dereq_,module,exports){
+"use strict";
 
-var helpers = _dereq_('../../lib/helpers');
-var parse_links = _dereq_('./links');
-var i18n = _dereq_('../../data/i18n');
-var cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]', 'gi');
+var helpers = _dereq_("../../lib/helpers");
+var parse_links = _dereq_("./links");
+var i18n = _dereq_("../../data/i18n");
+var cat_reg = new RegExp("\\[\\[:?(" + i18n.categories.join("|") + "):[^\\]\\]]{2,80}\\]\\]", "gi");
 
 //return only rendered text of wiki links
 var resolve_links = function resolve_links(line) {
   // categories, images, files
-  line = line.replace(cat_reg, '');
+  line = line.replace(cat_reg, "");
   // [[Common links]]
-  line = line.replace(/\[\[:?([^|]{2,80}?)\]\](\w{0,5})/g, '$1$2');
+  line = line.replace(/\[\[:?([^|]{2,80}?)\]\](\w{0,5})/g, "$1$2");
   // [[File:with|Size]]
-  line = line.replace(/\[\[File:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$1');
+  line = line.replace(/\[\[File:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, "$1");
   // [[Replaced|Links]]
-  line = line.replace(/\[\[:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$2$3');
+  line = line.replace(/\[\[:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, "$2$3");
   // External links
-  line = line.replace(/\[(https?|news|ftp|mailto|gopher|irc):\/\/[^\]\| ]{4,1500}([\| ].*?)?\]/g, '$2');
+  line = line.replace(/\[(https?|news|ftp|mailto|gopher|irc):\/\/[^\]\| ]{4,1500}([\| ].*?)?\]/g, "$2");
   return line;
 };
 // console.log(resolve_links("[http://www.whistler.ca www.whistler.ca]"))
@@ -6835,10 +6880,14 @@ function postprocess(line) {
 }
 
 function parse_line(line) {
-  return {
-    text: postprocess(line),
-    links: parse_links(line)
+  var obj = {
+    text: postprocess(line)
   };
+  var links = parse_links(line);
+  if (links) {
+    obj.links = links;
+  }
+  return obj;
 }
 
 module.exports = parse_line;
