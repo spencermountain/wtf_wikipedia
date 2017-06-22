@@ -1,19 +1,32 @@
-var languages = require('./data/languages');
+const languages = require('../../data/languages');
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+];
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 // templates that need parsing and replacing for inline text
 //https://en.wikipedia.org/wiki/Category:Magic_word_templates
-var word_templates = function(wiki) {
+const word_templates = function(wiki) {
   //we can be sneaky with this template, as it's often found inside other templates
   wiki = wiki.replace(/\{\{URL\|([^ ]{4,100}?)\}\}/gi, '$1');
   //this one needs to be handled manually
   wiki = wiki.replace(/\{\{convert\|([0-9]*?)\|([^\|]*?)\}\}/gi, '$1 $2'); //TODO: support https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
   //date-time templates
-  var d = new Date();
+  let d = new Date();
   wiki = wiki.replace(/\{\{(CURRENT|LOCAL)DAY(2)?\}\}/gi, d.getDate());
-  var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   wiki = wiki.replace(/\{\{(CURRENT|LOCAL)MONTH(NAME|ABBREV)?\}\}/gi, months[d.getMonth()]);
   wiki = wiki.replace(/\{\{(CURRENT|LOCAL)YEAR\}\}/gi, d.getFullYear());
-  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   wiki = wiki.replace(/\{\{(CURRENT|LOCAL)DAYNAME\}\}/gi, days[d.getDay()]);
   //formatting templates
   wiki = wiki.replace(/\{\{(lc|uc|formatnum):(.*?)\}\}/gi, '$2');
@@ -25,7 +38,7 @@ var word_templates = function(wiki) {
   //{{font|size=x%|text}}
 
   if (wiki.match(/\{\{dts\|/)) {
-    var date = (wiki.match(/\{\{dts\|(.*?)[\}\|]/) || [])[1] || '';
+    let date = (wiki.match(/\{\{dts\|(.*?)[\}\|]/) || [])[1] || '';
     date = new Date(date);
     if (date && date.getTime()) {
       wiki = wiki.replace(/\{\{dts\|.*?\}\}/gi, date.toDateString());
@@ -34,17 +47,18 @@ var word_templates = function(wiki) {
     }
   }
   if (wiki.match(/\{\{date\|.*?\}\}/)) {
-    var date = (wiki.match(/\{\{date\|(.*?)\|(.*?)\|(.*?)\}\}/) || []) || [];
-    var dateString = date[1] + ' ' + date[2] + ' ' + date[3];
+    let date = wiki.match(/\{\{date\|(.*?)\|(.*?)\|(.*?)\}\}/) || [] || [];
+    let dateString = date[1] + ' ' + date[2] + ' ' + date[3];
     wiki = wiki.replace(/\{\{date\|.*?\}\}/gi, dateString);
   }
   //common templates in wiktionary
-  wiki = wiki.replace(/\{\{term\|(.*?)\|.*?\}\}/gi, '\'$1\'');
+  wiki = wiki.replace(/\{\{term\|(.*?)\|.*?\}\}/gi, "'$1'");
   wiki = wiki.replace(/\{\{IPA\|(.*?)\|.*?\}\}/gi, '$1');
   wiki = wiki.replace(/\{\{sense\|(.*?)\|?.*?\}\}/gi, '($1)');
-  wiki = wiki.replace(/\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, '\'$1\'');
+  wiki = wiki.replace(/\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, "'$1'");
   //replace languages in 'etyl' tags
-  if (wiki.match(/\{\{etyl\|/)) { //doesn't support multiple-ones per sentence..
+  if (wiki.match(/\{\{etyl\|/)) {
+    //doesn't support multiple-ones per sentence..
     var lang = wiki.match(/\{\{etyl\|(.*?)\|.*?\}\}/i)[1] || '';
     lang = lang.toLowerCase();
     if (lang && languages[lang]) {

@@ -1,14 +1,17 @@
 //okay, i know you're not supposed to regex html, but...
 //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
 
-var kill_xml = function(wiki) {
+const kill_xml = function(wiki) {
   //luckily, refs can't be recursive..
   wiki = wiki.replace(/ ?<ref>[\s\S]{0,750}?<\/ref> ?/gi, ' '); // <ref></ref>
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' '); // <ref name=""/>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>[\s\S]{0,500}?<\/ref> ?/ig, ' '); // <ref name=""></ref>
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>[\s\S]{0,500}?<\/ref> ?/gi, ' '); // <ref name=""></ref>
   //other types of xml that we want to trash completely
 
-  wiki = wiki.replace(/< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi, ' '); // <table name=""><tr>hi</tr></table>
+  wiki = wiki.replace(
+    /< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi,
+    ' '
+  ); // <table name=""><tr>hi</tr></table>
 
   //some xml-like fragments we can also kill
   //

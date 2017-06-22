@@ -16,7 +16,7 @@ then:
 var wtf_wikipedia = require("wtf_wikipedia")
 
 wtf_wikipedia.parse(someWikiScript)
-// {text:[...], infobox:{}, categories:[...], images:[] }
+// {sections:[...], infobox:{}, categories:[...], images:[] }
 
 //fetch wikipedia markup from api..
 wtf_wikipedia.from_api("Toronto", "en", function(markup){
@@ -55,15 +55,11 @@ m ok, lets write our own parser what culd go rong
 its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView), [txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
 
 # Methods
-## **.parse(markup, options)**
+## **.parse(markup)**
 turns wikipedia markup into a nice json object
 
-options is optional. The options supported are
-* 'ignoreLists' which defaults to true.
-* 'appendSectionLabelsWithParent' which defaults to false. When turned on, the parse function will not just use the header of a section as the key in the map, but if there is a parent header that has no text of itself, the key will be amended to reflect Parent Header Name : Section Name"
-
 ```javascript
-wtf_wikipedia.parse(someWikiScript, { ignoreLists: false, appendSectionLabelsWithParent: true })
+wtf_wikipedia.parse(someWikiScript)
 // {text:[...], infobox:{}, categories:[...], images:[] }
 ```
 
@@ -101,122 +97,94 @@ $ wikipedia Toronto Blue Jays
 Sample output for [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
 ````javascript
 {
-  "text": {
-    "Intro": [
-      {
-        "text": "The Royal Cinema is an Art Moderne event venue and cinema in Toronto, Canada.",
-        "links": [
-          {
-            "page": "Art Moderne"
-          },
-          {
-            "page": "Movie theater",
-            "src": "cinema"
-          },
-          {
-            "page": "Toronto"
-          }
-        ]
-      },
-      ...
-      {
-        "text": "The Royal was featured in the 2013 film The F Word.",
-        "links": [
-          {
-            "page": "The F Word (2013 film)",
-            "src": "The F Word"
-          }
-        ]
-      }
-    ]
-  },
-  "categories": [
-    "National Historic Sites in Ontario",
-    "Cinemas and movie theatres in Toronto",
-    "Streamline Moderne architecture in Canada",
-    "Theatres completed in 1939"
-  ],
-  "images": [
-    "Royal_Cinema.JPG"
-  ],
-  "infobox": {
-    "former_name": {
-      "text": "The Pylon, The Golden Princess"
-    },
-    "address": {
-      "text": "608 College Street",
-      "links": [
+  type: 'page',
+  sections: [
+    {
+      title: '',//(intro)
+      depth: 1,
+      sentences: [
         {
-          "page": "College Street (Toronto)",
-          "src": "College Street"
+          text: 'The Royal Cinema is an Art Moderne event venue and cinema in Toronto, Canada.',
+          links: [
+            {
+              page: 'Streamline Moderne', // (a href)
+              text: 'Art Moderne'         // (link text)
+            },
+            {
+              page: 'Toronto',
+              text: 'Toronto'
+            },
+            {
+              page: 'Canada',
+              text: 'Canada'
+            }
+          ]
+        },
+        {
+          text: 'It was built in 1939 and owned by Miss Ray Levinsky.'
         }
       ]
     },
-    "opened": {
-      "text": 1939
+    {
+      title: 'History',
+      depth: 1,
+      sentences: [
+        {
+          text:
+            'When it was built in 1939, it was called The Pylon, with an accompanying large sign at the front of the theatre.'
+        }
+      ]
+    }
+  ],
+  categories: [
+    'National Historic Sites in Ontario',
+    'Cinemas and movie theatres in Toronto',
+    'Streamline Moderne architecture in Canada',
+    'Theatres completed in 1939'
+  ],
+  images: ['Royal_Cinema.JPG'],
+  infobox: {
+    former_name: {
+      text: 'The Pylon, The Golden Princess'
     },
-    ...
+    address: {
+      text: '608 College Street',
+      links: [
+        {
+          page: 'College Street (Toronto)',
+          src: 'College Street'
+        }
+      ]
+    },
+    opened: {
+      text: 1939
+    }
+    // ...
   }
+};
+````
+
+Sample Output for [Whistling](https://en.wikipedia.org/w/index.php?title=Whistling)
+````javascript
+{ type: 'page',
+  sections:[
+   { title:'Intro', depth:1, sentences: [ [Object], [Object], [Object], [Object] ]},
+   { title:'Musical/melodic whistling', depth:1, sentences: [ [Object], [Object], [Object], [Object] ]},
+   { title:'Functional whistling', depth:1, sentences: [ [Object], [Object], [Object], [Object] ]},
+   { title:'Whistling as a form of communication', depth:2, sentences: [ [Object], [Object], [Object], [Object] ]},
+   { title:'Sport', depth:2, sentences: [ [Object], [Object], [Object], [Object] ]},
+   { title:'See Also', depth:1, list: [ [Object], [Object] ]},
+  ],
+  categories: [ 'Oral communication', 'Vocal music', 'Vocal skills' ],
+  images: [ 'Image:Duveneck Whistling Boy.jpg' ],
+  infobox: {} 
 }
 ````
 
-Sample Output for [Whistling]()
-````javascript
-{ type: 'page',
-  text:
-   { 'Intro': [ [Object], [Object], [Object], [Object] ],
-     'Musical/melodic whistling':
-      [ [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object] ],
-     'Functional whistling': [ [Object], [Object], [Object], [Object], [Object], [Object] ],
-     'Whistling as a form of communication':
-      [ [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object] ],
-     'Sport': [ [Object], [Object], [Object], [Object], [Object] ],
-     'Superstition':
-      [ [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object] ],
-     ' Whistling competitions': [ [Object], [Object], [Object], [Object] ]
-     },
-     'categories': [ 'Oral communication', 'Vocal music', 'Vocal skills' ],
-     'images': [ 'Image:Duveneck Whistling Boy.jpg' ],
-     'infobox': {} }
-````
-
 ## Contributing
-Never-ender projects like these need all-hands, and I'm a pretty friendly dude.
-```
+Never-ender projects like these need all-hands, and I'm a pretty friendly maintainer. (promise)
+
+```bash
 npm install
 npm test
 npm run build #to package-up client-side

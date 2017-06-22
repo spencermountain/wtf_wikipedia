@@ -1,8 +1,6 @@
-'use strict';
-var parse_table = require('../src/parse/parse_table');
-var parse_disambig = require('../src/parse/parse_disambig');
-var parse_infobox = require('../src/parse/parse_infobox');
-var test = require('tape');
+"use strict";
+var wtf = require("../src/");
+var test = require("tape");
 
 let boloZenden = `{{Infobox football biography
 | name        = Boudewijn Zenden
@@ -30,16 +28,17 @@ let boloZenden = `{{Infobox football biography
 | manageryears1  = 2012–2013 |managerclubs1 = [[Chelsea F.C.|Chelsea]] (assistant manager)
 | manageryears2  = 2013– |managerclubs2 = [[Jong PSV]] (assistant manager)
 }}`;
-test('boloZenden infobox', function(t) {
-  let o = parse_infobox(boloZenden);
-  t.equal(o.years1.text, '1993–1998');
-  t.equal(o.clubs1.text, 'PSV');
-  t.equal(o.youthyears1.text, '1985–1987');
-  t.equal(o.youthclubs1.text, 'MVV');
-  t.equal(o.nationalyears1.text, '1997–2004');
-  t.equal(o.nationalteam1.text, 'Netherlands');
-  t.equal(o.nationalteam1.links[0].page, 'Netherlands national football team');
-  t.equal(o.nationalteam1.links[0].src, 'Netherlands');
+
+test("boloZenden infobox", function(t) {
+  let o = wtf.parse(boloZenden).infobox;
+  t.equal(o.years1.text, "1993–1998");
+  t.equal(o.clubs1.text, "PSV");
+  t.equal(o.youthyears1.text, "1985–1987");
+  t.equal(o.youthclubs1.text, "MVV");
+  t.equal(o.nationalyears1.text, "1997–2004");
+  t.equal(o.nationalteam1.text, "Netherlands");
+  t.equal(o.nationalteam1.links[0].page, "Netherlands national football team");
+  t.equal(o.nationalteam1.links[0].text, "Netherlands");
   t.equal(o.nationalcaps1.text, 54);
   t.equal(o.nationalgoals1.text, 7);
   t.end();
@@ -62,12 +61,12 @@ let hurricane = `{{Infobox Hurricane
 | Areas=[[Florida]]
 | Hurricane season=[[2002 Atlantic hurricane season]]
 }}`;
-test('hurricane infobox', function(t) {
-  let o = parse_infobox(hurricane);
-  t.equal(o.Name.text, 'Tropical Storm Edouard');
-  t.equal(o.Dissipated.text, 'September 6, 2002');
-  t.equal(o['Hurricane season'].text, '2002 Atlantic hurricane season');
-  t.equal(o.Areas.links[0].page, 'Florida');
+test("hurricane infobox", function(t) {
+  let o = wtf.parse(hurricane).infobox;
+  t.equal(o.Name.text, "Tropical Storm Edouard");
+  t.equal(o.Dissipated.text, "September 6, 2002");
+  t.equal(o["Hurricane season"].text, "2002 Atlantic hurricane season");
+  t.equal(o.Areas.links[0].page, "Florida");
   t.end();
 });
 
@@ -86,31 +85,35 @@ let park_place = `
 * [[Park Place Mall]], Lethbridge, Alberta
 {{disambiguation}}
 `;
-test('parkplace disambig', function(t) {
-  let o = parse_disambig(park_place);
-  t.equal(o.type, 'disambiguation');
+test("parkplace disambig", function(t) {
+  let o = wtf.parse(park_place);
+  t.equal(o.type, "disambiguation");
   t.equal(o.pages.length, 4);
-  t.equal(o.pages[0], 'Park Place (TV series)');
+  t.equal(o.pages[0], "Park Place (TV series)");
   t.end();
 });
-
 
 let bluejays = `
 {| border="1" cellpadding="2" cellspacing="0" class="wikitable"
 |-
-! bgcolor="#DDDDFF" width="4%" | #
+! bgcolor="#DDDDFF" width="4%" | Number
+! bgcolor="#D12DFF" width="4%" | Date
+! bgcolor="#D12DFF" width="4%" | Team
 |- align="center" bgcolor="ffbbbb"
 | 1 || April 6 || @ [[Minnesota Twins|Twins]] || 6 - 1 || [[Brad Radke|Radke]] (1-0) || '''[[Pat Hentgen|Hentgen]]''' (0-1) || || 45,601 || 0-1
 |- align="center" bgcolor="bbffbb"
 | 2 || April 7 || @ [[Minnesota Twins|Twins]] || 9 - 3 || '''[[David Wells|Wells]]''' (1-0) || [[Mike Lincoln|Lincoln]] (0-1) || '''[[Roy Halladay|Halladay]]''' (1) || 9,220 || 1-1
 |}
 `;
-test('bluejays table', function(t) {
-  let arr = parse_table(bluejays);
-  t.equal(arr.length, 3);
-  t.equal(arr[0][0], '#');
-  t.equal(arr[1][0], '1');
-  t.equal(arr[1][1], 'April 6');
+test("bluejays table", function(t) {
+  let arr = wtf.parse(bluejays).tables[0];
+  t.equal(arr.length, 2);
+  t.equal(arr[0]["Number"].text, "1");
+  t.equal(arr[0]["Date"].text, "April 6");
+  t.equal(arr[0]["Team"].text, "@ Twins");
+  t.equal(arr[1]["Number"].text, "2");
+  t.equal(arr[1]["Date"].text, "April 7");
+  t.equal(arr[1]["col-3"].text, "9 - 3");
   t.end();
 });
 
@@ -143,11 +146,11 @@ let alabama = `
 | logo = [[File:University of Alabama (logo).png|250px]]
 }}
 `;
-test('Alabama infobox', function(t) {
-  let infobox = parse_infobox(alabama);
-  t.equal(infobox.athletics.text, 'NCAA Division I – SEC', 'athletics =' + infobox.athletics.text);
-  t.equal(infobox.country.text, 'U.S.', 'country =' + infobox.country.text);
-  t.equal(infobox.president.text, 'Stuart R. Bell', 'president =' + infobox.president.text);
+test("Alabama infobox", function(t) {
+  let infobox = wtf.parse(alabama).infobox;
+  t.equal(infobox.athletics.text, "NCAA Division I – SEC", "athletics =" + infobox.athletics.text);
+  t.equal(infobox.country.text, "U.S.", "country =" + infobox.country.text);
+  t.equal(infobox.president.text, "Stuart R. Bell", "president =" + infobox.president.text);
   // t.equal(infobox.campus.text, 'Urban (small city); 1970 acre', 'campus = ' + infobox.campus.text);
   t.end();
 });

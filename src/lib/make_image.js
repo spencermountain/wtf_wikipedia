@@ -1,5 +1,5 @@
 'use strict';
-const Hashes = require('./hashes');
+const Hashes = require('jshashes');
 //the wikimedia image url is a little silly:
 //https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F
 
@@ -9,6 +9,7 @@ const make_image = function(file) {
   title = title.charAt(0).toUpperCase() + title.substring(1);
   //spaces to underscores
   title = title.replace(/ /g, '_');
+
   let hash = new Hashes.MD5().hex(title);
   let path = hash.substr(0, 1) + '/' + hash.substr(0, 2) + '/';
   title = encodeURIComponent(title);

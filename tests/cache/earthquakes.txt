@@ -1,0 +1,466 @@
+This is a list of '''earthquakes in Canada''':
+
+== List ==
+{{Expand list|date=March 2016}}
+{| class="wikitable sortable" style="text-align: center;"
+|- bgcolor="#ececec"
+! Date
+! Time‡
+! Place
+! [[Latitude|Lat]]
+! [[Longitude|Lon]]
+! Deaths
+! [[Moment magnitude scale|''M'']]
+!
+! ''I'' <!-- Intensity (EMS, Mercalli, MSK, Rossi–Forel) -->
+! class="unsortable"|Comments
+! class="unsortable"|
+|-
+| [[1663 Charlevoix earthquake|1663-02-05]]
+| 17:30 (local time)
+| [[Charlevoix]]–[[Kamouraska, Quebec|Kamouraska]] Region, [[Quebec|QC]]
+| 47.60
+| -70.10
+|
+| 7.0
+| [[moment magnitude scale|M<sub>w</sub>]]
+| [[Mercalli intensity scale|X]]
+|
+| <ref name="NRC">{{cite web|url=http://earthquakescanada.nrcan.gc.ca/historic-historique/map-carte-eng.php|title=Important Canadian Earthquakes|last=Natural Resources Canada|work=Earthquakes Canada|accessdate=2 December 2011}}</ref>
+|-
+| [[1700 Cascadia earthquake|1700-01-26]]
+| 21:00 (local time)
+| [[Pacific Northwest]]
+| 48.50
+| -125.00
+|
+| 8.7&ndash;9.2
+| M<sub>w</sub>
+|
+| This earthquake was linked to the "orphan tsunami" in Japan
+| <ref name="NRC"/>
+|-
+| [[1732 Montreal earthquake|1732-09-16]]
+| 11:00 (local time)
+| [[Montreal]], QC
+| 45.50
+| -73.60
+|
+| 5.8
+| M<sub>w</sub>
+|
+|
+| <ref name="NRC"/>
+|-
+| 1791-12-06
+| 20:00 (local time)
+| Charlevoix
+| 47.4
+| -70.5
+|
+| 6.0
+|
+|
+|
+| <ref name="NRC"/>
+|-
+| 1860-10-17
+| 06:15 (local time)
+| Charlevoix, QC
+| 47.5
+| -70.1
+|
+| 6.0
+|
+|
+|
+| <ref name="NRC"/>
+|-
+| 1870-10-20
+| 11:30 (local time)
+| Charlevoix, QC
+| 47.4
+| -70.5
+|
+| 6.5
+|
+|
+|
+| <ref name="NRC"/>
+|-
+| [[1872 North Cascades earthquake|1872-12-15]]
+| 05:37
+| Washington State
+| 47.76
+| -119.90
+|
+| 6.5–7.0
+| M<sub>w</sub>
+| [[Mercalli intensity scale|VIII]]
+|
+| <ref name="NRC"/>
+|-
+| 1899-09-04
+| 00:22
+| Yukon–Alaska border
+| 60.00
+| -140.00
+|
+| 8.2
+| M<sub>s</sub>
+|
+|
+| <ref name="NRC"/>
+|-
+| [[1918 Vancouver Island earthquake|1918-12-06]]
+| 08:41:08
+| [[Vancouver Island]], BC
+| 49.44
+| -126.22
+|
+| 7.2
+| M<sub>w</sub>
+| [[Mercalli intensity scale|VIII]]
+|
+| <ref name="NRC"/>
+|-
+| [[1925 Charlevoix–Kamouraska earthquake|1925-03-01]]
+| 02:19:20
+| Charlevoix–Kamouraska, QC
+| 47.8
+| -69.8
+|
+| 6.2
+| M<sub>w</sub>
+| [[Mercalli intensity scale|VIII]]
+|
+| <ref name="NRC"/>
+|-
+| 1929-05-26
+| 22:39:54
+| South of [[Haida Gwaii|Queen Charlotte Islands]], BC
+| 51.51
+| -130.74
+|
+| 7.0
+| M<sub>w</sub>
+|
+|
+| <ref name="NRC"/>
+|-
+| [[1929 Grand Banks earthquake|1929-11-18]]
+| 20:32
+| [[Grand Banks of Newfoundland]]
+| 44.5
+| -56.30
+| 28
+| 7.2
+| M<sub>w</sub>
+| [[Rossi–Forel scale|VI]]
+| Triggered a major underwater slump that caused a large tsunami, which devastated some coastal communities on Newfoundland
+| <ref name="NRC"/>
+|-
+| [[1933 Baffin Bay earthquake|1933-11-20]]
+| 23:21:32
+| [[Baffin Bay]]
+| 73.0
+| -70.75
+|
+| 7.3–7.4
+| M<sub>w</sub>
+|
+| Largest known earthquake north of the [[Arctic Circle]]
+| <ref name="NRC"/>
+|-
+| [[1935 Timiskaming earthquake|1935-11-01]]
+| 06:03:40
+| Timiskaming
+| 46.78
+| 79.07
+|
+| 6.1
+| M<sub>w</sub>
+| [[Mercalli intensity scale|VII]]
+|
+| <ref name="NRC"/>
+|-
+| [[1944 Cornwall–Massena earthquake|1944-09-05]]
+| 04:38:45
+| [[Cornwall, Ontario|Cornwall]], ON/[[Massena, New York|Massena]], NY
+| 44.97
+| -74.90
+|
+| 5.8
+| M<sub>w</sub>
+| [[Mercalli intensity scale|VII]]
+|
+| <ref name="NRC"/>
+|-
+| [[1946 Vancouver Island earthquake|1946-06-23]]
+| 17:13:26
+| Vancouver Island, BC
+| 49.76
+| -125.34
+| 2
+| 7.3
+| M<sub>s</sub>
+| [[Mercalli intensity scale|VIII]]
+|
+| <ref name="NRC"/>
+|-
+| [[1949 Queen Charlotte Islands earthquake|1949-08-22]]
+| 04:01:12
+| Queen Charlotte Islands, BC
+| 53.62
+| -133.27
+|
+| 8.1
+| M<sub>w</sub>
+| [[Mercalli intensity scale|VIII]]
+|
+| <ref name="NRC"/>
+|-
+| [[1958 Lituya Bay megatsunami|1958-07-09]]
+| 06:15
+| Lituya Bay, Alaska
+| 58.6
+| -137.10
+| 5
+| 8.3
+| M<sub>w</sub>
+| [[Mercalli intensity scale|XI]]
+| Triggered a rockfall that caused a tsunami with a runup of {{convert|524|m}}
+| <ref name="NRC"/>
+|-
+| 1970-06-24
+| 13:09:08
+| Queen Charlotte Islands, BC
+| 51.77
+| -130.76
+|
+| 7.4
+| M<sub>w</sub>
+|
+|
+| <ref name="NRC"/>
+|-
+| 1979-02-28
+| 13:27 (local time)
+| Southern Yukon–Alaska Border
+| 60.59
+| -141.47
+|
+| 7.2
+| M<sub>w</sub>
+|
+|
+| <ref name="NRC"/>
+|-
+| 1982-01-09
+| 08:53
+| [[Miramichi, New Brunswick|Miramichi]], NB
+| 47.00
+| -66.60
+|
+| 5.7
+|
+|
+| A pair of earthquakes, two days apart
+| <ref name="NRC"/>
+|-
+| [[1985 Nahanni earthquakes|1985-12-23]]
+| 23:16 (local time)
+| The Nahanni region
+| 62.19
+| -124.24
+|
+| 6.9
+| M<sub>w</sub>
+|
+| The strongest of a sequence of major earthquakes
+| <ref name="NRC"/>
+|-
+| [[1988 Saguenay earthquake|1988-11-25]]
+| 23:46:04
+| Saguenay
+| 48.12
+| -71.18
+|
+| 5.9
+| M<sub>w</sub>
+| [[Mercalli intensity scale|VII]]
+|
+| <ref name="NRC"/>
+|-
+| [[1989 Ungava earthquake|1989-12-25]]
+| 14:24
+| Ungava Region
+| 60.12
+| -73.60
+|
+| 6.3
+| M<sub>s</sub>
+|
+|  This was the first earthquake in eastern North America confirmed to have produced surface faulting
+| <ref name="NRC"/>
+|-
+| [[1997 Cap-Rouge earthquake|1997-11-05]]
+| 02:34:33
+| Quebec City, QC<br>
+| 46.80
+| -71.42
+| 1
+| 5.1
+| M<sub>n</sub>
+|
+|
+| <ref name="NRC_search"/>
+|-
+| [[2000 Kipawa earthquake|2000-01-01]]
+| 11:22:58
+| Temiscamingue Region
+| 46.84
+| -78.93
+|
+| 5.2
+| M<sub>n</sub>
+| [[Mercalli intensity scale|VI]]
+|
+| <ref name="NRC_search"/>
+|-
+| [[2001 Nisqually earthquake|2001-02-28]]
+| 18:54:32
+| [[Puget Sound]]
+| 47.15
+| -122.71
+| 1 (USA)
+| 6.8
+| M<sub>w</sub>
+|
+|
+| <ref name="NRC_search">{{cite web|url=http://www.earthquakescanada.nrcan.gc.ca/stndon/NEDB-BNDS/bull-en.php?time_start=1990%2F01%2F01+00%3A00%3A00&time_end=2011%2F12%2F31+24%3A00%3A00&depth_min=0&depth_max=100&mag_min=3.4&mag_max=10.0&shape_type=region&radius_center_lat=50&radius_center_lon=-95&radius_radius=1000&region_north=90&region_south=41&region_east=-40&region_west=-150&eq_type_L=1&display_list=1&list_sort=date&list_order=a&tpl_output=html&submited=1|title=Search results for earthquakes M>3.4, 1990-2011|last=Natural Resources Canada|work=Search the Earthquake Database|accessdate=8 November 2016}}</ref>
+|-
+| 2004-11-02
+| 10:02:11
+| Vancouver Island, BC
+| 49.15
+| -129.00
+|
+| 6.6
+| M<sub>w</sub>
+|
+|
+| <ref name="NRC_search"/>
+|-
+| [[2007–2008 Nazko earthquakes|2007-10-09]]
+|
+| The [[Nazko]] region
+| 52.88
+| -124.8
+|
+| 4.0 (or less)
+|
+| [[Mercalli intensity scale|I]]
+| The first of a [[earthquake swarm|swarm of earthquakes]] that went on until 12 June 2008
+| <ref name="NRC_search"/>
+|-
+| 2008-01-05
+| 11:01:01
+| Queen Charlotte Islands, BC
+| 51.07
+| -131.06
+|
+| 6.5
+| M<sub>w</sub>
+|
+| Followed by a magnitude 6.4 earthquake just over 40 minutes later
+| <ref name="NRC_search"/>
+|-
+| 2009-11-17
+| 15:30:41
+| Queen Charlotte Islands, BC
+| 51.82
+| -131.78
+|
+| 6.5
+| M<sub>w</sub>
+|
+|
+| <ref name="NRC_search"/>
+|-
+| [[2010 Central Canada earthquake|2010-06-23]]
+| 13:41:41 EDT
+| Central Canada
+| 45.9
+| -75.5
+|
+| 5.0
+| M<sub>w</sub>
+| [[Mercalli intensity scale|VI]]
+|
+|<ref name="NRC_search" />
+|-
+| 2011-09-09
+| 19:31:34
+| [[Vancouver Island]]
+| 49.49
+| -126.97
+|
+| 6.4
+| M<sub>w</sub>
+|
+| This earthquake, which lasted 20–30 seconds, was the strongest to hit the region in nearly 7 years. It occurred on a [[Earthquake#Earthquake fault types|secondary strike-slip]] structure and not on the plate boundary itself
+| <ref>{{cite news|last=Mann|first=Ted|title=Vancouver Looks to New Zealand to Prepare for Quakes|url=http://www.theatlanticwire.com/global/2011/09/vancouver-looks-new-zealand-prepare-quakes/42324/|accessdate=18 September 2011|newspaper=The Atlantic Wire|date=10 September 2011}}</ref>
+|-
+|2012-08-19
+|
+|279&nbsp;km WSW of [[Tofino]], BC (offshore)
+|
+|
+|
+| 5.2
+|
+|
+|
+|<ref name=earthquakescanada-recent/>
+|-
+| [[2012 Haida Gwaii earthquake|2012-10-27]]
+|20:04 (local time)
+| [[Haida Gwaii]]
+|
+|
+|
+|7.7
+|
+| [[Mercalli intensity scale|V]]
+|
+|<ref name=earthquakescanada-index-eng/>
+|-
+|}
+
+Abbreviations used:
+<small>
+* M<sub>w</sub> [[Moment magnitude scale]]
+* M<sub>L</sub> [[Richter magnitude scale]]
+* M<sub>s</sub> [[Surface wave magnitude]] scale
+* M<sub>n</sub> Nuttli magnitude scale—a version of the Richter scale specifically for use in eastern North America<ref name="NRC_FAQ">{{cite web|url=http://earthquakescanada.nrcan.gc.ca/info-gen/faq-eng.php#ml_and_mn|title=Frequently Asked Questions about Earthquakes (FAQ)|last=Natural Resources Canada|date=12 August 2011|accessdate=3 December 2011}}</ref></small>
+
+==See also==
+*[[Hydraulic fracturing in Canada]]
+
+==References==
+{{Reflist|
+<ref name=earthquakescanada-recent>http://www.earthquakescanada.nrcan.gc.ca/recent/index-eng.php/</ref>
+<ref name=earthquakescanada-index-eng>http://www.earthquakescanada.nrcan.gc.ca/index-eng.php</ref>
+}}
+
+==External links==
+*Natural Resources Canada [http://www.earthquakescanada.nrcan.gc.ca/index-eng.php Earthquakes Canada]
+*Earthquakes Canada [http://www.earthquakescanada.nrcan.gc.ca/recent/index-eng.php/ Recent earthquakes]
+
+{{DEFAULTSORT:List Of Earthquakes In Canada}}
+[[Category:Earthquakes in Canada| ]]
+[[Category:Canada geography-related lists|Earthquakes]]
+[[Category:Lists of earthquakes by country|Canada]]
+[[Category:Canada history-related lists|disasters]]
+[[Category:Lists of disasters in Canada]]

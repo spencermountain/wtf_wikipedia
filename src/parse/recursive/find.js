@@ -1,7 +1,7 @@
 //find all the pairs of '[[...[[..]]...]]' in the text
 //used to properly root out recursive template calls, [[.. [[...]] ]]
 //basically just adds open tags, and subtracts closing tags
-function recursive_matches(opener, closer, text) {
+function find_recursive(opener, closer, text) {
   var out = [];
   var last = [];
   var chars = text.split('');
@@ -40,7 +40,7 @@ function recursive_matches(opener, closer, text) {
   }
   return out;
 }
-module.exports = recursive_matches;
+module.exports = find_recursive;
 
-// console.log(recursive_matches('{', '}', 'he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas'));
-// console.log(recursive_matches("{", "}", "this is fun {{nowrap{{small1995–present}}}} and it works"))
+// console.log(find_recursive('{', '}', 'he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas'));
+// console.log(find_recursive("{", "}", "this is fun {{nowrap{{small1995–present}}}} and it works"))
