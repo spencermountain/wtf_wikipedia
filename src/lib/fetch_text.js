@@ -26,21 +26,27 @@ const fetch = function(page_identifier, lang_or_wikiid, cb) {
       cb(null);
       return;
     }
-    var pages = res.body.query.pages || {};
-    var id = Object.keys(pages)[0];
-    if (id) {
-      var page = pages[id];
-      if (page && page.revisions && page.revisions[0]) {
-        var text = page.revisions[0]['*'];
-        if (redirects.is_redirect(text)) {
-          var result = redirects.parse_redirect(text);
-          fetch(result.redirect, lang_or_wikiid, cb); //recursive
-          return;
+    try {
+      var pages = res.body.query.pages || {};
+      var id = Object.keys(pages)[0];
+      if (id) {
+        var page = pages[id];
+        if (page && page.revisions && page.revisions[0]) {
+          var text = page.revisions[0]['*'];
+          if (redirects.is_redirect(text)) {
+            var result = redirects.parse_redirect(text);
+            fetch(result.redirect, lang_or_wikiid, cb); //recursive
+            return;
+          }
+          cb(text);
+        } else {
+          cb(null);
         }
-        cb(text);
-      } else {
-        cb(null);
       }
+    }
+    catch (e) {
+      // Sometimes this breaks
+      cb(e);
     }
   });
 };
