@@ -1,4 +1,4 @@
-/* wtf_wikipedia v1.0.0
+/* wtf_wikipedia v1.0.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -5920,7 +5920,7 @@ var fetch = function fetch(page_identifier, lang_or_wikiid, cb) {
   url += '&' + identifier_type + '=' + encodeURIComponent(page_identifier);
 
   request.get(url).end(function (err, res) {
-    if (err) {
+    if (err || !res.body.query) {
       console.warn(err);
       cb(null);
       return;
