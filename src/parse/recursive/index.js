@@ -14,11 +14,13 @@ const noWrap_reg = /^\{\{nowrap\|(.*?)\}\}$/;
 //reduce the scary recursive situations
 const parse_recursive = function(r, wiki) {
   //remove {{template {{}} }} recursions
+  r.infoboxes=[];
   let matches = find_recursive('{', '}', wiki);
   matches.forEach(function(s) {
-    if (s.match(infobox_reg, 'ig') && Object.keys(r.infobox).length === 0) {
-      r.infobox = parse_infobox(s);
-      r.infobox_template = parse_infobox_template(s);
+    if (s.match(infobox_reg, 'ig')) {
+      var infobox = parse_infobox(s);
+      infobox.template = parse_infobox_template(s);
+      r.infoboxes.push(infobox);
     }
     if (s.match(infobox_reg)) {
       wiki = wiki.replace(s, '');
