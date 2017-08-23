@@ -19,8 +19,17 @@
     "wikipedia": "./bin/parse.js",
     "wikipedia_plaintext": "./bin/plaintext.js"
   },
-  "files": ["builds", "src", "bin"],
-  "keywords": ["wikipedia", "wikimedia", "wikipedia markup", "wikiscript"],
+  "files": [
+    "builds",
+    "src",
+    "bin"
+  ],
+  "keywords": [
+    "wikipedia",
+    "wikimedia",
+    "wikipedia markup",
+    "wikiscript"
+  ],
   "dependencies": {
     "jshashes": "^1.0.6",
     "superagent": "^3.5.2"
