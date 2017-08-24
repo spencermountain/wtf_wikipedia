@@ -1,12 +1,12 @@
-'use strict'
-var test = require('tape')
-var wtf = require('../src/')
+'use strict';
+var test = require('tape');
+var wtf = require('../src/');
 // var parse_line = require('../src/parse/text');
-var cleanup_misc = require('../src/parse/cleanup/misc')
-var sentence_parser = require('../src/lib/sentence_parser')
+var cleanup_misc = require('../src/parse/cleanup/misc');
+var sentence_parser = require('../src/lib/sentence_parser');
 
 test('sentence parser', t => {
-  ;[
+  [
     ['Tony is nice. He lives in Japan.', 2],
     ['I like that Color', 1],
     ['Soviet bonds to be sold in the U.S. market. Everyone wins.', 2],
@@ -20,23 +20,23 @@ test('sentence parser', t => {
     ['dom, kon. XIX w.', 2],
     ['a staged reenactment of [[Perry v. Brown]] world', 1]
   ].forEach(a => {
-    let s = sentence_parser(a[0])
-    let msg = a[1] + ' sentences  - "' + a[0] + '"'
-    t.equal(s.length, a[1], msg)
-  })
-  t.end()
-})
+    let s = sentence_parser(a[0]);
+    let msg = a[1] + ' sentences  - "' + a[0] + '"';
+    t.equal(s.length, a[1], msg);
+  });
+  t.end();
+});
 
 test('misc cleanup', t => {
-  ;[['hi [[as:Plancton]] there', 'hi  there'], ['hello <br/> world', 'hello world']].forEach(a => {
-    let s = cleanup_misc(a[0])
-    t.equal(s, a[1])
-  })
-  t.end()
-})
+  [['hi [[as:Plancton]] there', 'hi  there'], ['hello <br/> world', 'hello world']].forEach(a => {
+    let s = cleanup_misc(a[0]);
+    t.equal(s, a[1]);
+  });
+  t.end();
+});
 
 test('redirects', t => {
-  ;[
+  [
     ['#REDIRECT[[Tony Danza]]', 'Tony Danza'],
     ['#REDIRECT [[Tony Danza]]', 'Tony Danza'],
     ['#REDIRECT   [[Tony Danza]] ', 'Tony Danza'],
@@ -45,15 +45,15 @@ test('redirects', t => {
     ['#přesměruj [[Tony Danza#funfun]] ', 'Tony Danza'],
     ['#تغییر_مسیر [[Farming]] ', 'Farming']
   ].forEach(a => {
-    let o = wtf.parse(a[0])
-    var msg = "'" + a[0] + "' -> '" + o.redirect + "'"
-    t.equal(o.redirect, a[1], msg)
-  })
-  t.end()
-})
+    let o = wtf.parse(a[0]);
+    var msg = "'" + a[0] + "' -> '" + o.redirect + "'";
+    t.equal(o.redirect, a[1], msg);
+  });
+  t.end();
+});
 
 test('parse_line_text', t => {
-  ;[
+  [
     ['tony hawk', 'tony hawk'],
     [' tony hawk ', 'tony hawk'],
     ['it is [[tony hawk]] ', 'it is tony hawk'],
@@ -63,29 +63,29 @@ test('parse_line_text', t => {
     ['tony hawk in [http://www.whistler.ca whistler]', 'tony hawk in whistler'],
     ['it is [[Tony Hawk|Tony]]s mother in [[Toronto]]s', 'it is Tonys mother in Torontos']
   ].forEach(a => {
-    let text = wtf.plaintext(a[0])
-    var msg = "'" + a[0] + "' -> '" + text + "'"
-    t.equal(text, a[1], msg)
-  })
-  t.end()
-})
+    let text = wtf.plaintext(a[0]);
+    var msg = "'" + a[0] + "' -> '" + text + "'";
+    t.equal(text, a[1], msg);
+  });
+  t.end();
+});
 
 test('parse_categories', t => {
-  ;[
+  [
     ['[[Category:Tony Danza]]', ['Tony Danza']],
     ['[[Category:Tony Danza]][[Category:Formal Wear]]', ['Tony Danza', 'Formal Wear']],
     [' [[Category:Tony Danza]]  [[Category:Formal Wear]] ', ['Tony Danza', 'Formal Wear']],
     [' [[Category:Tony Danza|metadata]]  [[category:Formal Wear]] ', ['Tony Danza', 'Formal Wear']],
     ['[[categoría:Tony Danza|metadata]]  ', ['Tony Danza']]
   ].forEach(a => {
-    let cats = wtf.parse(a[0]).categories
-    t.deepEqual(cats, a[1])
-  })
-  t.end()
-})
+    let cats = wtf.parse(a[0]).categories;
+    t.deepEqual(cats, a[1]);
+  });
+  t.end();
+});
 
 test('parse_image', t => {
-  ;[
+  [
     ['[[File:Tony Danza]]', 'File:Tony Danza'],
     ['[[Image:Tony Danza]]', 'Image:Tony Danza'],
     ['[[Image:Tony Danza|left]]', 'Image:Tony Danza'],
@@ -94,14 +94,14 @@ test('parse_image', t => {
       'Image:Edouard Recon (2002).jpg'
     ]
   ].forEach(a => {
-    let arr = wtf.parse(a[0]).images.map(o => o.file)
-    t.deepEqual(arr[0], a[1])
-  })
-  t.end()
-})
+    let arr = wtf.parse(a[0]).images.map(o => o.file);
+    t.deepEqual(arr[0], a[1]);
+  });
+  t.end();
+});
 
 test('xml', t => {
-  ;[
+  [
     ['North America,<ref name="fhwa"/> and one of', 'North America, and one of'],
     ['North America,<br /> and one of', 'North America, and one of'],
     ['hello <h2>world</h2>', 'hello world'],
@@ -111,9 +111,9 @@ test('xml', t => {
     ["hello <ref name='hullo'/>world3.", 'hello world3.'],
     ["hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4.", 'hello world4.'],
     ["hello<ref name=''/> world5", 'hello world5']
-  ].forEach(a => {
-    let s = wtf.plaintext(a[0])
-    t.equal(s, a[1])
-  })
-  t.end()
-})
+  ].forEach((a, i) => {
+    let s = wtf.plaintext(a[0]);
+    t.equal(s, a[1], 'xml' + i);
+  });
+  t.end();
+});
