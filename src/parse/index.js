@@ -24,7 +24,6 @@ const main = function(wiki) {
     categories: [],
     images: [],
     infoboxes: [],
-    infobox_template: {},
     tables: [],
     interwiki: {}
   };

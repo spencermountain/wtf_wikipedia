@@ -3,7 +3,6 @@ const i18n = require('../../data/i18n');
 const find_recursive = require('./find');
 
 const parse_infobox = require('./infobox');
-const parse_infobox_template = require('./infobox_template');
 const parse_image = require('./image');
 
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
@@ -19,7 +18,6 @@ const parse_recursive = function(r, wiki) {
   matches.forEach(function(s) {
     if (s.match(infobox_reg, 'ig')) {
       var infobox = parse_infobox(s);
-      infobox.template = parse_infobox_template(s);
       r.infoboxes.push(infobox);
     }
     if (s.match(infobox_reg)) {

@@ -1,8 +1,18 @@
 'use strict';
 const helpers = require('../../lib/helpers');
 const parse_line = require('../text');
+const i18n = require('../../data/i18n');
+const infobox_template_reg = new RegExp('{{(?:' + i18n.infoboxes.join('|') + ')\\s*(.*)', 'i');
 
 const line_reg = /\n *\|([^=]*)=(.*)/g;
+
+const getTemplate = function(str) {
+  let m = str.match(infobox_template_reg);
+  if (m && m[1]) {
+    return m[1];
+  }
+  return null;
+};
 
 const parse_infobox = function(str) {
   if (!str) {
@@ -13,6 +23,8 @@ const parse_infobox = function(str) {
   let lastChar;
   //this collapsible list stuff is just a headache
   str = str.replace(/\{\{Collapsible list[^}]{10,1000}\}\}/g, '');
+
+  const template = getTemplate(str); //get the infobox name
 
   let parDepth = -2; // first two {{
   for (let i = 0, len = str.length; i < len; i++) {
@@ -49,6 +61,6 @@ const parse_infobox = function(str) {
       }
     }
   }
-  return obj;
+  return { template: template, data: obj };
 };
 module.exports = parse_infobox;

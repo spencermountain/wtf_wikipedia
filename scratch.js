@@ -21,10 +21,10 @@ function from_file(page) {
 // from_file("Africaans")
 // from_file('Anarchism');
 
-// wtf.from_api('Toronto', 'en', function(markup) {
-//   var obj = wtf.parse(markup);
-//   console.log(obj);
-// });
+wtf.from_api('Radiohead', 'en', function(markup) {
+  var obj = wtf.parse(markup);
+  console.log(obj.infoboxes);
+});
 
 // {
 //   type:'', //'page'/redirect/category/template
@@ -37,5 +37,5 @@ function from_file(page) {
 //       lists:'',
 //     }]
 // }
-var str = 'hello [[wikinews:Radiohead]] world  [[Category:Films]]';
-console.log(wtf.parse(str));
+// var str = 'hello [[wikinews:Radiohead]] world  [[Category:Films]]';
+// console.log(wtf.parse(str));

@@ -17,7 +17,7 @@ var findSection = function(data, title) {
 
 test('royal_cinema', t => {
   var data = wtf_wikipedia.parse(fetch('royal_cinema'));
-  t.equal(data.infoboxes[0].opened.text, 1939, '');
+  t.equal(data.infoboxes[0].data.opened.text, 1939, '');
   t.equal(data.infoboxes[0].template, 'venue', '');
   t.equal(data.sections[0].sentences.length, 10, 'sentence-length');
   t.equal(data.sections[0].sentences.length, 10, 'sentence-length');
@@ -27,7 +27,7 @@ test('royal_cinema', t => {
 
 test('toronto_star', t => {
   var data = wtf_wikipedia.parse(fetch('toronto_star'));
-  t.equal(data.infoboxes[0].publisher.text, 'John D. Cruickshank', '');
+  t.equal(data.infoboxes[0].data.publisher.text, 'John D. Cruickshank', '');
   t.equal(data.infoboxes[0].template, 'newspaper', '');
   var section = findSection(data, 'History');
   t.equal(section.sentences.length, 21, 'sentence-length');
@@ -38,7 +38,7 @@ test('toronto_star', t => {
 
 test('toronto_star with list', t => {
   var data = wtf_wikipedia.parse(fetch('toronto_star'), { ignoreLists: false });
-  t.equal(data.infoboxes[0].publisher.text, 'John D. Cruickshank', '');
+  t.equal(data.infoboxes[0].data.publisher.text, 'John D. Cruickshank', '');
   t.equal(data.infoboxes[0].template, 'newspaper', '');
   var section = findSection(data, 'History');
   t.equal(section.sentences.length, 21, 'history-length');
@@ -50,7 +50,7 @@ test('toronto_star with list', t => {
 
 test('jodie_emery', t => {
   var data = wtf_wikipedia.parse(fetch('jodie_emery'));
-  t.equal(data.infoboxes[0].nationality.text, 'Canadian', '');
+  t.equal(data.infoboxes[0].data.nationality.text, 'Canadian', '');
   t.equal(data.infoboxes[0].template, 'person', '');
   t.equal(data.sections[0].sentences.length >= 1, true, 'intro-length');
   t.equal(data.sections[1].sentences.length >= 1, true, 'career-length');
@@ -70,7 +70,7 @@ test('redirect', t => {
 
 test('statoil', t => {
   var data = wtf_wikipedia.parse(fetch('statoil'));
-  t.equal(data.infoboxes[0].namn.text, 'Statoil ASA', '');
+  t.equal(data.infoboxes[0].data.namn.text, 'Statoil ASA', '');
   t.equal(data.infoboxes[0].template, 'verksemd', '');
   // (data.text.Intro.length >= 1).should.be.true;
   t.equal(data.categories.length, 4, 'cat-length');
@@ -82,7 +82,7 @@ test('statoil', t => {
 
 test('raith rovers', t => {
   var data = wtf_wikipedia.parse(fetch('raith_rovers'));
-  t.equal(data.infoboxes[0].clubname.text, 'Raith Rovers', '');
+  t.equal(data.infoboxes[0].data.clubname.text, 'Raith Rovers', '');
   t.equal(data.categories.length, 10, 'cat-length');
   t.equal(data.images.length, 2, 'img-length');
   t.equal(data.images[0].file, "File:Stark's Park - geograph.org.uk - 204446.jpg", t);
