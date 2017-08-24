@@ -1,8 +1,32 @@
-## Parsing Wikipedia markup is basically NP-Hard
-
-its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).  I'm trying my best.
-
+<div align="center">
+  <a href="https://www.codacy.com/app/spencerkelly86/wtf_wikipedia">
+    <img src="https://api.codacy.com/project/badge/grade/e84f69487c9348ba9cd8e31031a05a4f" />
+  </a>
+  <a href="https://npmjs.org/package/wtf_wikipedia">
+    <img src="https://img.shields.io/npm/v/wtf_wikipedia.svg?style=flat-square" />
+  </a>
+  <a href="https://nodejs.org/api/documentation.html#documentation_stability_index">
+    <img src="https://img.shields.io/badge/stability-stable-green.svg?style=flat-square" />
+  </a>
+  <a href="https://www.codacy.com/app/spencerkelly86/wtf_wikipedia">
+    <img src="https://api.codacy.com/project/badge/Coverage/e84f69487c9348ba9cd8e31031a05a4f" />
+  </a>
+  <div>wikipedia markup parser</div>
+  <sub>
+    by
+    <a href="https://github.com/spencermountain">Spencer Kelly</a> and
+    <a href="https://github.com/spencermountain/wtf_wikipedia/graphs/contributors">
+      many contributors
+    </a>
+  </sub>
+</div>
+<p></p>
 **wtf_wikipedia** turns wikipedia article markup into **JSON**.
+
+<h2 align="center">Parsing Wikipedia markup is basically NP-Hard</h2>
+<div align="center">
+  its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).  I'm trying my best.
+</div>
 
 It handles many vile recursive template shinanigans, [half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template variants, and illicit wiki-esque shorthands.
 
@@ -15,7 +39,7 @@ then:
 ````javascript
 var wtf_wikipedia = require("wtf_wikipedia")
 
-wtf_wikipedia.parse(someWikiScript)
+wtf_wikipedia.parse(myWikiScript)
 // {sections:[...], infobox:{}, categories:[...], images:[] }
 
 //fetch wikipedia markup from api..
@@ -32,12 +56,11 @@ var text= wtf_wikipedia.plaintext(markup)
 ````
 ## [Demo!](https://rawgit.com/spencermountain/wtf_wikipedia/master/demo/index.html#)
 
-Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It reliably turns wikiscript into HTML, but not valid XML. To use it for mining, you need a [wikiscript -> virtual DOM -> screen-scraping] flow, but getting structured data this way is a challenge.
+Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It reliably turns wikiscript into HTML, but not valid XML. To use it for data-mining, you probablu need a [wikiscript -> virtual DOM -> screen-scraping] flow, but getting structured data this way is a complex + also slow.
 
-This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb), letting you parse a wikipedia dump in nodejs easily.
+This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb), letting you parse a whole wikipedia dump on a laptop in a couple minutes.
 
-
-[![npm version](https://badge.fury.io/js/wtf_wikipedia.svg)](http://badge.fury.io/js/wtf_wikipedia)
+its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView), [txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
 
 # What it does
 * Detects and parses **redirects** and **disambiguation** pages
@@ -51,8 +74,6 @@ This library is built to work well with [wikipedia-to-mongo](https://github.com/
 
 
 m ok, lets write our own parser what culd go rong
-
-its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView), [txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
 
 # Methods
 ## **.parse(markup)**
@@ -177,7 +198,7 @@ Sample Output for [Whistling](https://en.wikipedia.org/w/index.php?title=Whistli
   ],
   categories: [ 'Oral communication', 'Vocal music', 'Vocal skills' ],
   images: [ 'Image:Duveneck Whistling Boy.jpg' ],
-  infobox: {} 
+  infobox: {}
 }
 ````
 

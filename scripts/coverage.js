@@ -6,8 +6,8 @@ var tapMin = './node_modules/tap-min/bin/tap-min';
 var test = tape + ' "./tests/**/*.test.js" ';
 
 //to upload to codacity, set the api key as $CODACY_PROJECT_TOKEN
+process.env['CODACY_PROJECT_TOKEN'] = '07903b1db5f440a2a3caf49fc40ba995'; //i don't really care if you steal this.
 //export CODACY_PROJECT_TOKEN=<myToken>
-
 //run all the tests
 console.log('\n 🏃  running coverage tests..');
 // exec(nyc + ' --reporter=text-lcov ' + test + ' > coverage.lcov');
