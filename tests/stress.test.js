@@ -2,7 +2,7 @@
 var test = require('tape');
 var wtf = require('../src/index');
 
-test('stress-test', t => {
+test('stress-test-en', t => {
   var arr = [
     'Bodmin',
     'Anwar_Kamal_Khan',
@@ -52,6 +52,32 @@ test('stress-test', t => {
   var done = 0;
   arr.forEach(title => {
     wtf.from_api(title, 'en', function(markup) {
+      wtf.parse(markup);
+      wtf.plaintext(markup);
+      done += 1;
+      t.ok(true, title);
+      if (done >= arr.length) {
+        t.end();
+      }
+    });
+  });
+});
+
+test('stress-test-de', t => {
+  var arr = [
+    'Bazooka',
+    'BBDO',
+    'Liste der argentinischen Botschafter in Chile',
+    'Mozilla Firefox',
+    'HMS Irresistible',
+    'Keilwelle',
+    'Sara C. Bisel',
+    'Wendy Mogel',
+    'Maurische Netzwühle'
+  ];
+  var done = 0;
+  arr.forEach(title => {
+    wtf.from_api(title, 'de', function(markup) {
       wtf.parse(markup);
       wtf.plaintext(markup);
       done += 1;
