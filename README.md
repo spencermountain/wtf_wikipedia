@@ -21,11 +21,12 @@
   </sub>
 </div>
 <p></p>
+
 **wtf_wikipedia** turns wikipedia article markup into **JSON**.
 
 <h2 align="center">Parsing Wikipedia markup is basically NP-Hard</h2>
 <div align="center">
-  its [really the worst](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).  I'm trying my best.
+  its <a href="https://en.wikipedia.org/wiki/Help:WikiHiero_syntax">really the worst</a>.  I'm trying my best.
 </div>
 
 It handles many vile recursive template shinanigans, [half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template variants, and illicit wiki-esque shorthands.
