@@ -52,9 +52,9 @@
 
   var parse = function() {
     var wikiscript = $('#wikiscript').val();
-    var text = wtf_wikipedia.plaintext(wikiscript);
+    var text = wtf.plaintext(wikiscript);
     $('#text').html(text);
-    var obj = wtf_wikipedia.parse(wikiscript);
+    var obj = wtf.parse(wikiscript);
     console.log(obj);
     $('#categories').html('<ul>' + make_list(obj.categories) + '</ul>');
     $('#images').html('<ul>' + makeImg(obj.images) + '</ul>');

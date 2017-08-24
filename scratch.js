@@ -27,14 +27,25 @@ wtf.from_api('Radiohead', 'en', function(markup) {
 });
 
 // {
-//   type:'', //'page'/redirect/category/template
-//   infoboxes:[], //parsed key-value for each infobox template
-//   categories:[], //list of parsed categories
-//   interwiki:{},
-//   sections:[{
-//       title:'',
-//       images:'',
-//       lists:'',
+//   type: '', //page/redirect/category/template
+//   infoboxes: [{
+//     template: '', //template name
+//     data: {} //key-value data
+//   }],
+//   categories: [], //parsed categories
+//   images: [], //image files + their md5 urls
+//   interwiki: {},
+//   sections: [{ //each heading
+//       title: '',
+//       images: '',
+//       lists: '',
+//       sentences: [{ //each sentence
+//         text: ''
+//         links: [{
+//           text: '',
+//           link: '' //(if different)
+//         }]
+//       }]
 //     }]
 // }
 // var str = 'hello [[wikinews:Radiohead]] world  [[Category:Films]]';

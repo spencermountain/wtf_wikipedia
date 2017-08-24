@@ -7,3 +7,4 @@
 * remove top-level `infobox_template`
 * change initial depth to 0
 * change 'translations' to 'interwiki'
+* change library export name to `wtf`

@@ -38,21 +38,42 @@ npm install wtf_wikipedia
 ```
 then:
 ````javascript
-var wtf_wikipedia = require("wtf_wikipedia")
+var wtf = require("wtf_wikipedia")
 
-wtf_wikipedia.parse(myWikiScript)
-// {sections:[...], infobox:{}, categories:[...], images:[] }
+wtf.parse(markup)
+// {
+//   type: '', //page/redirect/category..
+//   infoboxes: [{
+//     template: '', //template name
+//     data: {} //key-value data
+//   }],
+//   categories: [], //parsed categories
+//   images: [], //image files + their md5 urls
+//   interwiki: {},
+//   sections: [{ //each heading
+//       title: '',
+//       images: '',
+//       lists: '',
+//       sentences: [{ //each sentence
+//         text: ''
+//         links: [{
+//           text: '',
+//           link: '' //(if different)
+//         }]
+//       }]
+//     }]
+// }
 
 //fetch wikipedia markup from api..
-wtf_wikipedia.from_api("Toronto", "en", function(markup){
-  var obj= wtf_wikipedia.parse(markup)
-  var mayor= obj.infobox.leader_name
+wtf.from_api("Toronto", "en", function(markup){
+  var data= wtf.parse(markup)
+  var mayor= data.infoboxes[0].data.leader_name
   // "John Tory"
 })
 ````
 if you only want some nice plaintext, and no junk:
 ````javascript
-var text= wtf_wikipedia.plaintext(markup)
+var text= wtf.plaintext(markup)
 // "Toronto is the most populous city in Canada and the provincial capital..."
 ````
 ## [Demo!](https://rawgit.com/spencermountain/wtf_wikipedia/master/demo/index.html#)
@@ -81,7 +102,7 @@ m ok, lets write our own parser what culd go rong
 turns wikipedia markup into a nice json object
 
 ```javascript
-wtf_wikipedia.parse(someWikiScript)
+wtf.parse(someWikiScript)
 // {text:[...], infobox:{}, categories:[...], images:[] }
 ```
 
@@ -90,15 +111,15 @@ retrieves raw contents of a wikipedia article - or other mediawiki wiki identifi
 
 to call non-english wikipedia apis, add it as the second paramater to from_api
 ```javascript
-wtf_wikipedia.from_api("Toronto", "de", function(markup){
-  var text= wtf_wikipedia.plaintext(markup)
+wtf.from_api("Toronto", "de", function(markup){
+  var text= wtf.plaintext(markup)
   //Toronto ist mit 2,6 Millionen Einwohnern..
 })
 ```
 
 you may also pass the wikipedia page id as parameter instead of the page title:
 ```javascript
-wtf_wikipedia.from_api(64646, "de", function(markup){
+wtf.from_api(64646, "de", function(markup){
   //...
 })
 ```
