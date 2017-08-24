@@ -972,7 +972,7 @@ Emitter.prototype.hasListeners = function(event){
         x[((len + 64 >> 9) << 4) + 15] = len;
 
         for (i = 0; i < x.length; i += 16) {
-          olda = a,
+          olda = a;
           oldb = b;
           oldc = c;
           oldd = d;
@@ -1954,7 +1954,6 @@ if (typeof window !== 'undefined') { // Browser window
 var Emitter = _dereq_('component-emitter');
 var RequestBase = _dereq_('./request-base');
 var isObject = _dereq_('./is-object');
-var isFunction = _dereq_('./is-function');
 var ResponseBase = _dereq_('./response-base');
 var shouldRetry = _dereq_('./should-retry');
 
@@ -1999,7 +1998,7 @@ request.getXHR = function () {
     try { return new ActiveXObject('Msxml2.XMLHTTP.3.0'); } catch(e) {}
     try { return new ActiveXObject('Msxml2.XMLHTTP'); } catch(e) {}
   }
-  throw Error("Browser-only verison of superagent could not find XHR");
+  throw Error("Browser-only version of superagent could not find XHR");
 };
 
 /**
@@ -2109,7 +2108,7 @@ request.parseString = parseString;
 request.types = {
   html: 'text/html',
   json: 'application/json',
-  xml: 'application/xml',
+  xml: 'text/xml',
   urlencoded: 'application/x-www-form-urlencoded',
   'form': 'application/x-www-form-urlencoded',
   'form-data': 'application/x-www-form-urlencoded'
@@ -2465,10 +2464,10 @@ Request.prototype.auth = function(user, pass, options){
       this.username = user;
       this.password = pass;
     break;
-      
+
     case 'bearer': // usage would be .auth(accessToken, { type: 'bearer' })
       this.set('Authorization', 'Bearer ' + user);
-    break;  
+    break;
   }
   return this;
 };
@@ -2583,32 +2582,6 @@ Request.prototype.pipe = Request.prototype.write = function(){
 };
 
 /**
- * Compose querystring to append to req.url
- *
- * @api private
- */
-
-Request.prototype._appendQueryString = function(){
-  var query = this._query.join('&');
-  if (query) {
-    this.url += (this.url.indexOf('?') >= 0 ? '&' : '?') + query;
-  }
-
-  if (this._sort) {
-    var index = this.url.indexOf('?');
-    if (index >= 0) {
-      var queryArr = this.url.substring(index + 1).split('&');
-      if (isFunction(this._sort)) {
-        queryArr.sort(this._sort);
-      } else {
-        queryArr.sort();
-      }
-      this.url = this.url.substring(0, index) + '?' + queryArr.join('&');
-    }
-  }
-};
-
-/**
  * Check if `obj` is a host object,
  * we don't want to serialize these :)
  *
@@ -2640,7 +2613,7 @@ Request.prototype.end = function(fn){
   this._callback = fn || noop;
 
   // querystring
-  this._appendQueryString();
+  this._finalizeQueryString();
 
   return this._end();
 };
@@ -2773,7 +2746,7 @@ request.get = function(url, data, fn){
 request.head = function(url, data, fn){
   var req = request('HEAD', url);
   if ('function' == typeof data) fn = data, data = null;
-  if (data) req.send(data);
+  if (data) req.query(data);
   if (fn) req.end(fn);
   return req;
 };
@@ -2871,24 +2844,7 @@ request.put = function(url, data, fn){
   return req;
 };
 
-},{"./is-function":4,"./is-object":5,"./request-base":6,"./response-base":7,"./should-retry":8,"component-emitter":1}],4:[function(_dereq_,module,exports){
-/**
- * Check if `fn` is a function.
- *
- * @param {Function} fn
- * @return {Boolean}
- * @api private
- */
-var isObject = _dereq_('./is-object');
-
-function isFunction(fn) {
-  var tag = isObject(fn) ? Object.prototype.toString.call(fn) : '';
-  return tag === '[object Function]';
-}
-
-module.exports = isFunction;
-
-},{"./is-object":5}],5:[function(_dereq_,module,exports){
+},{"./is-object":4,"./request-base":5,"./response-base":6,"./should-retry":7,"component-emitter":1}],4:[function(_dereq_,module,exports){
 /**
  * Check if `obj` is an object.
  *
@@ -2903,7 +2859,7 @@ function isObject(obj) {
 
 module.exports = isObject;
 
-},{}],6:[function(_dereq_,module,exports){
+},{}],5:[function(_dereq_,module,exports){
 /**
  * Module of mixed-in functions shared between node and client code
  */
@@ -3014,7 +2970,7 @@ RequestBase.prototype.serialize = function serialize(fn){
  *
  * Value of 0 or false means no timeout.
  *
- * @param {Number|Object} ms or {response, read, deadline}
+ * @param {Number|Object} ms or {response, deadline}
  * @return {Request} for chaining
  * @api public
  */
@@ -3461,6 +3417,35 @@ RequestBase.prototype.sortQuery = function(sort) {
 };
 
 /**
+ * Compose querystring to append to req.url
+ *
+ * @api private
+ */
+RequestBase.prototype._finalizeQueryString = function(){
+  var query = this._query.join('&');
+  if (query) {
+    this.url += (this.url.indexOf('?') >= 0 ? '&' : '?') + query;
+  }
+  this._query.length = 0; // Makes the call idempotent
+
+  if (this._sort) {
+    var index = this.url.indexOf('?');
+    if (index >= 0) {
+      var queryArr = this.url.substring(index + 1).split('&');
+      if ('function' === typeof this._sort) {
+        queryArr.sort(this._sort);
+      } else {
+        queryArr.sort();
+      }
+      this.url = this.url.substring(0, index) + '?' + queryArr.join('&');
+    }
+  }
+};
+
+// For backwards compat only
+RequestBase.prototype._appendQueryString = function() {console.trace("Unsupported");}
+
+/**
  * Invoke callback with timeout error.
  *
  * @api private
@@ -3496,7 +3481,7 @@ RequestBase.prototype._setTimeouts = function() {
   }
 }
 
-},{"./is-object":5}],7:[function(_dereq_,module,exports){
+},{"./is-object":4}],6:[function(_dereq_,module,exports){
 
 /**
  * Module dependencies.
@@ -3631,7 +3616,7 @@ ResponseBase.prototype._setStatusProperties = function(status){
     this.notFound = 404 == status;
 };
 
-},{"./utils":9}],8:[function(_dereq_,module,exports){
+},{"./utils":8}],7:[function(_dereq_,module,exports){
 var ERROR_CODES = [
   'ECONNRESET',
   'ETIMEDOUT',
@@ -3656,7 +3641,7 @@ module.exports = function shouldRetry(err, res) {
   return false;
 };
 
-},{}],9:[function(_dereq_,module,exports){
+},{}],8:[function(_dereq_,module,exports){
 
 /**
  * Return the mime type for the given `str`.
@@ -3725,13 +3710,13 @@ exports.cleanHeader = function(header, shouldStripCookie){
   }
   return header;
 };
-},{}],10:[function(_dereq_,module,exports){
+},{}],9:[function(_dereq_,module,exports){
 'use strict';
 
 //these are used for the sentence-splitter
 module.exports = ['jr', 'mr', 'mrs', 'ms', 'dr', 'prof', 'sr', 'sen', 'corp', 'calif', 'rep', 'gov', 'atty', 'supt', 'det', 'rev', 'col', 'gen', 'lt', 'cmdr', 'adm', 'capt', 'sgt', 'cpl', 'maj', 'dept', 'univ', 'assn', 'bros', 'inc', 'ltd', 'co', 'corp', 'arc', 'al', 'ave', 'blvd', 'cl', 'ct', 'cres', 'exp', 'rd', 'st', 'dist', 'mt', 'ft', 'fy', 'hwy', 'la', 'pd', 'pl', 'plz', 'tce', 'Ala', 'Ariz', 'Ark', 'Cal', 'Calif', 'Col', 'Colo', 'Conn', 'Del', 'Fed', 'Fla', 'Ga', 'Ida', 'Id', 'Ill', 'Ind', 'Ia', 'Kan', 'Kans', 'Ken', 'Ky', 'La', 'Me', 'Md', 'Mass', 'Mich', 'Minn', 'Miss', 'Mo', 'Mont', 'Neb', 'Nebr', 'Nev', 'Mex', 'Okla', 'Ok', 'Ore', 'Penna', 'Penn', 'Pa', 'Dak', 'Tenn', 'Tex', 'Ut', 'Vt', 'Va', 'Wash', 'Wis', 'Wisc', 'Wy', 'Wyo', 'USAFA', 'Alta', 'Ont', 'QuÔøΩ', 'Sask', 'Yuk', 'jan', 'feb', 'mar', 'apr', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'sept', 'vs', 'etc', 'esp', 'llb', 'md', 'bl', 'phd', 'ma', 'ba', 'miss', 'misses', 'mister', 'sir', 'esq', 'mstr', 'lit', 'fl', 'ex', 'eg', 'sep', 'sept', '..'];
 
-},{}],11:[function(_dereq_,module,exports){
+},{}],10:[function(_dereq_,module,exports){
 'use strict';
 
 // wikipedia special terms lifted and augmented from parsoid parser april 2015
@@ -3773,7 +3758,7 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports = i18n;
 }
 
-},{}],12:[function(_dereq_,module,exports){
+},{}],11:[function(_dereq_,module,exports){
 'use strict';
 
 module.exports = {
@@ -5044,7 +5029,7 @@ module.exports = {
   }
 };
 
-},{}],13:[function(_dereq_,module,exports){
+},{}],12:[function(_dereq_,module,exports){
 'use strict';
 
 //from https://en.wikipedia.org/w/api.php?action=sitematrix&format=json
@@ -5854,7 +5839,7 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports = site_map;
 }
 
-},{}],14:[function(_dereq_,module,exports){
+},{}],13:[function(_dereq_,module,exports){
 'use strict';
 
 //turns wikimedia script into json
@@ -5895,7 +5880,7 @@ module.exports = {
   plaintext: plaintext
 };
 
-},{"./lib/fetch_text":15,"./parse":23}],15:[function(_dereq_,module,exports){
+},{"./lib/fetch_text":14,"./parse":22}],14:[function(_dereq_,module,exports){
 'use strict';
 //grab the content of any article, off the api
 
@@ -5950,7 +5935,7 @@ module.exports = fetch;
 //   console.log(JSON.stringify(r, null, 2));
 // });
 
-},{"../data/site_map":13,"../parse/page/redirects":28,"superagent":3}],16:[function(_dereq_,module,exports){
+},{"../data/site_map":12,"../parse/page/redirects":27,"superagent":3}],15:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = {
@@ -5976,7 +5961,7 @@ var helpers = {
 };
 module.exports = helpers;
 
-},{}],17:[function(_dereq_,module,exports){
+},{}],16:[function(_dereq_,module,exports){
 'use strict';
 
 var Hashes = _dereq_('jshashes');
@@ -6010,7 +5995,7 @@ module.exports = make_image;
 // make_image('File:Abingdonschool.jpg');
 //1e44ecfe85c6446438da2a01a2bf9e4c
 
-},{"jshashes":2}],18:[function(_dereq_,module,exports){
+},{"jshashes":2}],17:[function(_dereq_,module,exports){
 //split text into sentences, using regex
 //@spencermountain MIT
 
@@ -6125,7 +6110,7 @@ var sentence_parser = function sentence_parser(text) {
 module.exports = sentence_parser;
 // console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2);
 
-},{"../data/abbreviations":10}],19:[function(_dereq_,module,exports){
+},{"../data/abbreviations":9}],18:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../data/i18n');
@@ -6149,7 +6134,7 @@ var parse_categories = function parse_categories(r, wiki) {
 };
 module.exports = parse_categories;
 
-},{"../data/i18n":11}],20:[function(_dereq_,module,exports){
+},{"../data/i18n":10}],19:[function(_dereq_,module,exports){
 'use strict';
 
 //okay, i know you're not supposed to regex html, but...
@@ -6185,7 +6170,7 @@ var kill_xml = function kill_xml(wiki) {
 // console.log(kill_xml("North America,<br /> and one of"))
 module.exports = kill_xml;
 
-},{}],21:[function(_dereq_,module,exports){
+},{}],20:[function(_dereq_,module,exports){
 'use strict';
 
 var kill_xml = _dereq_('./kill_xml');
@@ -6219,7 +6204,7 @@ module.exports = cleanup_misc;
 // console.log(cleanup_misc('hello <br/> world'))
 // console.log(cleanup_misc("hello <asd f> world </h2>"))
 
-},{"./kill_xml":20}],22:[function(_dereq_,module,exports){
+},{"./kill_xml":19}],21:[function(_dereq_,module,exports){
 'use strict';
 
 var languages = _dereq_('../../data/languages');
@@ -6291,7 +6276,7 @@ var word_templates = function word_templates(wiki) {
 
 module.exports = word_templates;
 
-},{"../../data/languages":12}],23:[function(_dereq_,module,exports){
+},{"../../data/languages":11}],22:[function(_dereq_,module,exports){
 'use strict';
 
 var redirects = _dereq_('./page/redirects');
@@ -6319,13 +6304,12 @@ var main = function main(wiki) {
     sections: {},
     categories: [],
     images: [],
-    infobox: {},
+    infoboxes: [],
     infobox_template: {},
     tables: [],
     translations: {}
-  };
-  //parse templates like {{currentday}}
-  wiki = word_templates(wiki);
+    //parse templates like {{currentday}}
+  };wiki = word_templates(wiki);
   //kill off (some) craziness
   wiki = preprocess(wiki);
   //parse the tables
@@ -6345,7 +6329,7 @@ var main = function main(wiki) {
 
 module.exports = main;
 
-},{"./categories":19,"./cleanup/misc":21,"./cleanup/word_templates":22,"./lines":24,"./page/disambig":27,"./page/redirects":28,"./recursive":31,"./table":34}],24:[function(_dereq_,module,exports){
+},{"./categories":18,"./cleanup/misc":20,"./cleanup/word_templates":21,"./lines":23,"./page/disambig":26,"./page/redirects":27,"./recursive":30,"./table":33}],23:[function(_dereq_,module,exports){
 'use strict';
 
 //interpret ==heading== lines
@@ -6412,7 +6396,7 @@ var parseText = function parseText(r, wiki) {
 
 module.exports = parseText;
 
-},{"../../lib/helpers":16,"./lists":25,"./sentence":26}],25:[function(_dereq_,module,exports){
+},{"../../lib/helpers":15,"./lists":24,"./sentence":25}],24:[function(_dereq_,module,exports){
 'use strict';
 
 var list_reg = /^[#\*:;\|]+/;
@@ -6447,7 +6431,7 @@ module.exports = {
   cleanList: cleanList
 };
 
-},{"../text":35}],26:[function(_dereq_,module,exports){
+},{"../text":34}],25:[function(_dereq_,module,exports){
 'use strict';
 
 var sentence_parser = _dereq_('../../lib/sentence_parser');
@@ -6463,7 +6447,7 @@ var parseSentences = function parseSentences(line) {
 };
 module.exports = parseSentences;
 
-},{"../../lib/sentence_parser":18,"../text":35}],27:[function(_dereq_,module,exports){
+},{"../../lib/sentence_parser":17,"../text":34}],26:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6497,7 +6481,7 @@ module.exports = {
   parse_disambig: parse_disambig
 };
 
-},{"../../data/i18n":11,"../text/links":36}],28:[function(_dereq_,module,exports){
+},{"../../data/i18n":10,"../text/links":35}],27:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6522,7 +6506,7 @@ module.exports = {
   parse_redirect: parse_redirect
 };
 
-},{"../../data/i18n":11}],29:[function(_dereq_,module,exports){
+},{"../../data/i18n":10}],28:[function(_dereq_,module,exports){
 'use strict';
 
 //find all the pairs of '[[...[[..]]...]]' in the text
@@ -6572,7 +6556,7 @@ module.exports = find_recursive;
 // console.log(find_recursive('{', '}', 'he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas'));
 // console.log(find_recursive("{", "}", "this is fun {{nowrap{{small1995–present}}}} and it works"))
 
-},{}],30:[function(_dereq_,module,exports){
+},{}],29:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6591,7 +6575,7 @@ module.exports = parse_image;
 
 // console.log(parse_image("[[image:my_pic.jpg]]"));
 
-},{"../../data/i18n":11,"../../lib/make_image":17}],31:[function(_dereq_,module,exports){
+},{"../../data/i18n":10,"../../lib/make_image":16}],30:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6610,11 +6594,13 @@ var noWrap_reg = /^\{\{nowrap\|(.*?)\}\}$/;
 //reduce the scary recursive situations
 var parse_recursive = function parse_recursive(r, wiki) {
   //remove {{template {{}} }} recursions
+  r.infoboxes = [];
   var matches = find_recursive('{', '}', wiki);
   matches.forEach(function (s) {
-    if (s.match(infobox_reg, 'ig') && Object.keys(r.infobox).length === 0) {
-      r.infobox = parse_infobox(s);
-      r.infobox_template = parse_infobox_template(s);
+    if (s.match(infobox_reg, 'ig')) {
+      var infobox = parse_infobox(s);
+      infobox.template = parse_infobox_template(s);
+      r.infoboxes.push(infobox);
     }
     if (s.match(infobox_reg)) {
       wiki = wiki.replace(s, '');
@@ -6654,8 +6640,8 @@ var parse_recursive = function parse_recursive(r, wiki) {
   });
 
   //add additional image from infobox, if applicable
-  if (r.infobox['image'] && r.infobox['image'].text) {
-    var img = r.infobox['image'].text || '';
+  if (r.infoboxes[0] && r.infoboxes[0]['image'] && r.infoboxes[0]['image'].text) {
+    var img = r.infoboxes[0]['image'].text || '';
     if (typeof img === 'string' && !img.match(img_regex)) {
       img = 'File:' + img;
     }
@@ -6667,7 +6653,7 @@ var parse_recursive = function parse_recursive(r, wiki) {
 
 module.exports = parse_recursive;
 
-},{"../../data/i18n":11,"../../data/languages":12,"./find":29,"./image":30,"./infobox":32,"./infobox_template":33}],32:[function(_dereq_,module,exports){
+},{"../../data/i18n":10,"../../data/languages":11,"./find":28,"./image":29,"./infobox":31,"./infobox_template":32}],31:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../../lib/helpers');
@@ -6724,7 +6710,7 @@ var parse_infobox = function parse_infobox(str) {
 };
 module.exports = parse_infobox;
 
-},{"../../lib/helpers":16,"../text":35}],33:[function(_dereq_,module,exports){
+},{"../../lib/helpers":15,"../text":34}],32:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6742,7 +6728,7 @@ function parse_infobox_template(str) {
 }
 module.exports = parse_infobox_template;
 
-},{"../../data/i18n":11}],34:[function(_dereq_,module,exports){
+},{"../../data/i18n":10}],33:[function(_dereq_,module,exports){
 "use strict";
 
 var helpers = _dereq_("../lib/helpers");
@@ -6844,7 +6830,7 @@ var findTables = function findTables(r, wiki) {
 };
 module.exports = findTables;
 
-},{"../lib/helpers":16,"./text":35}],35:[function(_dereq_,module,exports){
+},{"../lib/helpers":15,"./text":34}],34:[function(_dereq_,module,exports){
 "use strict";
 
 var helpers = _dereq_("../../lib/helpers");
@@ -6892,7 +6878,7 @@ function parse_line(line) {
 
 module.exports = parse_line;
 
-},{"../../data/i18n":11,"../../lib/helpers":16,"./links":36}],36:[function(_dereq_,module,exports){
+},{"../../data/i18n":10,"../../lib/helpers":15,"./links":35}],35:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../../lib/helpers');
@@ -6970,5 +6956,5 @@ var parse_links = function parse_links(str) {
 };
 module.exports = parse_links;
 
-},{"../../lib/helpers":16}]},{},[14])(14)
+},{"../../lib/helpers":15}]},{},[13])(13)
 });

@@ -32,7 +32,7 @@ echo(banner).to(compressed);
 
 //browserify + derequire
 var cmd = browserify + ' ./src/index.js --standalone wtf_wikipedia';
-cmd += ' -t [ babelify --presets [ es2015 stage-2 ] ]';
+cmd += ' -t [ babelify --presets [ es2015 ] ]';
 cmd += ' | ' + derequire;
 cmd += ' >> ' + uncompressed;
 // console.log(cmd);

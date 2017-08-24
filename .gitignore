@@ -4,3 +4,4 @@ coverage
 viz
 npm-debug.log
 package-lock.json
+.nyc_output
