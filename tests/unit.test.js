@@ -117,3 +117,11 @@ test('xml', t => {
   });
   t.end();
 });
+test('interwiki', t => {
+  var str = 'hello [[wikinews:Radiohead]] world  [[Category:Films]]';
+  var obj = wtf.parse(str);
+  t.equal(obj.interwiki.wikinews, 'Radiohead', 'interwiki-link');
+  t.equal(obj.categories.length, 1, 'cat-length');
+  t.equal(obj.categories[0], 'Films', 'cat-match');
+  t.end();
+});

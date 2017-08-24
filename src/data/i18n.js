@@ -1,6 +1,6 @@
 // wikipedia special terms lifted and augmented from parsoid parser april 2015
 // (not even close to being complete)
-const i18n = {
+let i18n = {
   files: [
     'файл',
     'fitxer',
@@ -151,6 +151,14 @@ const i18n = {
     'liens externes'
   ]
 };
+
+let dictionary = {};
+Object.keys(i18n).forEach(k => {
+  i18n[k].forEach(w => {
+    dictionary[w] = true;
+  });
+});
+i18n.dictionary = dictionary;
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = i18n;

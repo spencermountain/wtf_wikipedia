@@ -34,54 +34,53 @@
       }
     </style>
     <script>
-      $(window).ready(function(){
+    $(window).ready(function() {
+  var make_list = function(arr) {
+    console.log(arr);
+    arr = arr || [];
+    return arr.reduce(function(str, o) {
+      return (str += '<li>' + o + '</li>');
+    }, '');
+  };
+  var makeImg = function(arr) {
+    console.log(arr);
+    arr = arr || [];
+    return arr.reduce(function(str, o) {
+      return (str += '<img style="width:100px;" src="' + o.url + '"/>');
+    }, '');
+  };
 
-        var make_list=function(arr){
-          console.log(arr)
-          arr = arr || []
-          return arr.reduce(function(str,o){
-            return str+='<li>'+o+'</li>'
-          },'')
-        }
-        var makeImg=function(arr){
-          console.log(arr)
-          arr = arr || []
-          return arr.reduce(function(str,o){
-            return str+='<img style="width:100px;" src="'+o.url+'"/>'
-          },'')
-        }
+  var parse = function() {
+    var wikiscript = $('#wikiscript').val();
+    var text = wtf_wikipedia.plaintext(wikiscript);
+    $('#text').html(text);
+    var obj = wtf_wikipedia.parse(wikiscript);
+    console.log(obj);
+    $('#categories').html('<ul>' + make_list(obj.categories) + '</ul>');
+    $('#images').html('<ul>' + makeImg(obj.images) + '</ul>');
+    $('#interwiki').html('<ul><pre>' + JSON.stringify(obj.interwiki, null, 2) + '</pre></ul>');
+    $('#infobox').html(JSON.stringify(obj.infobox, null, 2));
+  };
 
-        var parse=function(){
-          var wikiscript=$("#wikiscript").val()
-          var text= wtf_wikipedia.plaintext(wikiscript)
-          $("#text").html(text);
-          var obj= wtf_wikipedia.parse(wikiscript);
-          console.log(obj)
-          $("#categories").html('<ul>'+make_list(obj.categories)+'</ul>');
-          $("#images").html('<ul>'+makeImg(obj.images)+'</ul>');
-          $("#translations").html('<ul><pre>'+JSON.stringify(obj.translations,null,2)+'</pre></ul>');
-          $("#infobox").html(JSON.stringify(obj.infobox,null,2));
-        }
+  var el = document.getElementById('wikiscript');
+  parse();
 
-        var el = document.getElementById("wikiscript");
-        parse()
+  var pages = Object.keys(window.demo_pages).reduce(function(str, p) {
+    return str + '<a href="#" class="page">' + p + '</a>';
+  }, '');
+  $('#pages').html(pages);
 
-        var pages=Object.keys(window.demo_pages).reduce(function(str,p){
-          return str +'<a href="#" class="page">'+p+'</a>'
-        },'')
-        $("#pages").html(pages)
+  $('.page').click(function(e) {
+    console.log(e.target.text);
+    var str = e.target.text;
+    el.value = window.demo_pages[str];
+    parse();
+  });
 
-        $(".page").click(function(e){
-          console.log(e.target.text)
-          var str=e.target.text
-          el.value=window.demo_pages[str]
-          parse()
-        })
-
-        el.addEventListener("input", parse, false);
-        $(".page:first").click()
-      })
-    </script>
+  el.addEventListener('input', parse, false);
+  $('.page:first').click();
+});
+</script>
   </head>
   <body>
     <div>
@@ -110,9 +109,9 @@
         <div id="images"></div>
       </ul>
 
-      <h2>Translations:</h2>
+      <h2>Interwiki:</h2>
       <ul>
-        <div id="translations"></div>
+        <div id="interwiki"></div>
       </ul>
 
       <h2>Infobox:</h2>
