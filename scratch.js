@@ -1,5 +1,5 @@
-'use strict'
-const wtf = require('./src/index')
+'use strict';
+const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 // let parse = wtf.parse;
@@ -14,10 +14,10 @@ const wtf = require('./src/index')
 // });
 
 function from_file(page) {
-  let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8')
-  // console.log(wtf.plaintext(str));
-  let r = wtf.parse(str, {})
-  console.log(r)
+  let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
+  console.log(wtf.plaintext(str));
+  // let r = wtf.parse(str, {});
+  // console.log(r);
   // console.log(JSON.stringify(r.sections, null, 2));
 }
 
@@ -26,7 +26,7 @@ function from_file(page) {
 // from_file("bluejays");
 // from_file("Toronto")
 // from_file('Toronto_Star');
-from_file('royal_cinema')
+from_file('royal_cinema');
 // from_file('Jodie_Emery');
 // from_file('Redirect')
 // from_file("Africaans")
