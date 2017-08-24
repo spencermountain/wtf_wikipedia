@@ -23,7 +23,7 @@ function from_file(page) {
 
 wtf.from_api('Radiohead', 'en', function(markup) {
   var obj = wtf.parse(markup);
-  console.log(obj.infoboxes);
+  console.log(obj);
 });
 
 // {

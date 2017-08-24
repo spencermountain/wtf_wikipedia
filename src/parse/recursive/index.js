@@ -59,8 +59,8 @@ const parse_recursive = function(r, wiki) {
   });
 
   //add additional image from infobox, if applicable
-  if (r.infoboxes[0] && r.infoboxes[0]['image'] && r.infoboxes[0]['image'].text) {
-    let img = r.infoboxes[0]['image'].text || '';
+  if (r.infoboxes[0] && r.infoboxes[0].data && r.infoboxes[0].data['image'] && r.infoboxes[0].data['image'].text) {
+    let img = r.infoboxes[0].data['image'].text || '';
     if (typeof img === 'string' && !img.match(img_regex)) {
       img = 'File:' + img;
     }
