@@ -1,12 +1,12 @@
-const helpers = require("../lib/helpers");
-const parse_line = require("./text");
+const helpers = require('../lib/helpers');
+const parse_line = require('./text');
 
-const table_reg = /\{\|[\s\S]{1,8000}?\|\}/g;
+const table_reg = /\{\|[\s\S]{1,12000}?\|\}/g;
 
 const parseHeading = function(str) {
-  str = str.replace(/^\! +/, "");
+  str = str.replace(/^\! +/, '');
   if (str.match(/\|/)) {
-    str = str.replace(/.+\| ?/, ""); //class="unsortable"|title
+    str = str.replace(/.+\| ?/, ''); //class="unsortable"|title
   }
   str = parse_line(str).text;
   return str;
@@ -16,7 +16,7 @@ const parseHeading = function(str) {
 const parse_table = function(wiki) {
   let table = [];
   let headings = [];
-  const lines = wiki.replace(/\r/g, "").split(/\n/);
+  const lines = wiki.replace(/\r/g, '').split(/\n/);
 
   //find headings first
   for (let i = 0; i < lines.length; i++) {
@@ -25,7 +25,7 @@ const parse_table = function(wiki) {
     if (str.match(/^\!/)) {
       str = parseHeading(str);
       if (!str) {
-        str = "col-" + headings.length;
+        str = 'col-' + headings.length;
       }
       headings.push(str);
     } else if (str.match(/^\| /)) {
@@ -57,8 +57,8 @@ const parse_table = function(wiki) {
       if (!table[table.length - 1]) {
         table[table.length - 1] = [];
       }
-      let want = (str.match(/\|(.*)/) || [])[1] || "";
-      want = helpers.trim_whitespace(want) || "";
+      let want = (str.match(/\|(.*)/) || [])[1] || '';
+      want = helpers.trim_whitespace(want) || '';
       //handle the || shorthand..
       if (want.match(/[!\|]{2}/)) {
         want.split(/[!\|]{2}/g).forEach(function(s) {
@@ -78,7 +78,7 @@ const parse_table = function(wiki) {
   table = table.map(arr => {
     let obj = {};
     arr.forEach((a, i) => {
-      let head = headings[i] || "col-" + i;
+      let head = headings[i] || 'col-' + i;
       obj[head] = parse_line(a);
     });
     return obj;
@@ -87,12 +87,12 @@ const parse_table = function(wiki) {
 };
 
 const findTables = function(r, wiki) {
-  r.tables = wiki.match(table_reg, "") || [];
+  r.tables = wiki.match(table_reg, '') || [];
   r.tables = r.tables.map(function(str) {
     return parse_table(str);
   });
   //remove tables
-  wiki = wiki.replace(table_reg, "");
+  wiki = wiki.replace(table_reg, '');
   return wiki;
 };
 module.exports = findTables;
