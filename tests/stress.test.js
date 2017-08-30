@@ -1,6 +1,14 @@
 'use strict';
 var test = require('tape');
+var fs = require('fs');
+var path = require('path');
 var wtf = require('../src/index');
+
+//read cached file
+var fetch = function(file) {
+  file = file.replace(/ /g, '-');
+  return fs.readFileSync(path.join(__dirname, 'cache', file + '.txt'), 'utf-8');
+};
 
 test('stress-test-en', t => {
   var arr = [
@@ -47,24 +55,8 @@ test('stress-test-en', t => {
     'Remote Data Services',
     'RNDIS',
     'Routing and Remote Access Service',
-    'Runtime Callable Wrapper'
-  ];
-  var done = 0;
-  arr.forEach(title => {
-    wtf.from_api(title, 'en', function(markup) {
-      wtf.parse(markup);
-      wtf.plaintext(markup);
-      done += 1;
-      t.ok(true, title);
-      if (done >= arr.length) {
-        t.end();
-      }
-    });
-  });
-});
-
-test('stress-test-de', t => {
-  var arr = [
+    'Runtime Callable Wrapper',
+    //german ones
     'Bazooka',
     'BBDO',
     'Liste der argentinischen Botschafter in Chile',
@@ -75,16 +67,16 @@ test('stress-test-de', t => {
     'Wendy Mogel',
     'Maurische Netzwühle'
   ];
-  var done = 0;
   arr.forEach(title => {
-    wtf.from_api(title, 'de', function(markup) {
-      wtf.parse(markup);
-      wtf.plaintext(markup);
-      done += 1;
-      t.ok(true, title);
-      if (done >= arr.length) {
-        t.end();
-      }
-    });
+    var markup = fetch(title);
+    var doc = wtf.parse(markup);
+    t.ok(true, title);
+    t.ok(doc.categories.length > 0, ' - - cat-length');
+    t.ok(doc.sections.length > 0, ' - - section-length');
+    var intro = doc.sections[0];
+    t.ok(intro.sentences.length > 0, ' - - sentences-length');
+    t.ok(intro.sentences[0].text.length > 0, ' - - intro-text');
+    t.ok(intro.sentences[0].text.match(/[a-z]/), ' - - intro-has words');
   });
+  t.end();
 });
