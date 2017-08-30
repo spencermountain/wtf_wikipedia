@@ -1,0 +1,56 @@
+{{Infobox NFL biography
+| name = Charlie Milstead
+| birth_date = {{birth date and age|1937|11|21}}
+| birth_place = [[Tyler, Texas]]
+| death_date = 
+| death_place = 
+| number = 12
+| position = [[Quarterback]]<br>[[Defensive back]]
+| height_ft = 6
+| height_in = 2
+| weight_lb = 190
+| college = [[Texas A&M University|Texas A&M]]
+|draftyear=1960
+|draftround=14
+|draftpick=160
+| pastteams =
+*[[Houston Oilers]] (1960–1961)
+| highlights = 
+* 2× [[American Football League|AFL]] champion ([[1960 American Football League Championship Game|1960]], [[1961 American Football League Championship Game|1961]])
+| statlabel1 = Games played
+| statvalue1 = 22
+| statlabel2 = Passing yards
+| statvalue2 = 43
+| statlabel3 = [[Interception]]s
+| statvalue3 = 2
+| statlabel4 = Punts
+| statvalue4 = 66
+| statlabel5 = Punting yards
+| statvalue5 = 2,365
+}}
+'''Charles Frank Milstead''' (born November 21, 1937 in [[Tyler, Texas]]) is a former [[American football]] [[quarterback]] and [[defensive back]] for the [[Houston Oilers]] of the [[American Football League]].  He played [[college football]] at [[Texas A&M University]] and was [[NFL Draft|drafted]] in the fourteenth round of the [[1960 NFL Draft]] by the [[Washington Redskins]].<ref>[http://www.pro-football-reference.com/players/M/MilsCh20.htm Charlie Milstead]. pro-football-reference.com</ref>
+
+==Career==
+Milstead played 22 games in his career, having minimal time as quarterback while spending time as a punter and defensive back. He threw seven career passes and had four total completions and 43 yards. On defense, he had 2 interceptions. On rushing, he ran for 3 yards on 3 carries. He had 66 punts for 2,365 yards for a 35.8 yard average. His punts and punt yards were both 4th in the league for 1960.
+
+==References==
+{{reflist}}
+
+{{Redskins1960DraftPicks}}
+{{1960 Houston Oilers}}
+{{1961 Houston Oilers}}
+
+{{DEFAULTSORT:Milstead, Charlie}}
+[[Category:1937 births]]
+[[Category:Living people]]
+[[Category:American football defensive backs]]
+[[Category:American football quarterbacks]]
+[[Category:Houston Oilers players]]
+[[Category:Texas A&M Aggies football players]]
+[[Category:People from Tyler, Texas]]
+[[Category:Players of American football from Texas]]
+[[Category:American Football League players]]
+
+
+{{quarterback-1930s-stub}}
+{{defensiveback-1930s-stub}}

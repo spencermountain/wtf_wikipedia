@@ -1,0 +1,49 @@
+{{Infobox Korean name
+|title=Goryeo ware
+|img=Korea - Seoul - National Museum - Incense Burner 0252-06a.jpg
+|imgwidth=180px
+|caption=[[Censer]] with kingfisher glaze, [[Goryeo dynasty]] ([[National Treasure (South Korea)|National Treasure]] No. 95)
+|hangul=고려도자기, 고려청자, 고려자기
+|hanja={{linktext|高麗|陶磁器}}, {{linktext|高麗|靑磁}}, {{linktext|高麗|磁器}}
+|rr=Goryeo dojagi, Goryeo cheongja, Goryeo jagi
+|mr=Koryŏ tojagi, Koryŏ ch'ŏja,  Koryŏ chagi
+}}
+'''Goryeo ware''' (고려도자기 ; Goryeo dojagi) refers to all types of [[Korean pottery]] and [[porcelain]]s produced during the [[Goryeo]] dynasty.<ref name="Nate Brit">{{cite web|url=http://100.empas.com/dicsearch/pentry.html?s=B&i=113092&v=44 |script-title=ko:고려도자기 (高麗陶磁器) |publisher=[[Empas]]/ [[Britannica]]|author=Choi, Geon (최건 崔健)|accessdate=2009-10-06 |language=Korean}}</ref><ref name="EncyKorea">{{cite web|url=http://100.nate.com/dicsearch/pentry.html?s=K&i=266187&v=43 |script-title=ko:고려자기 (高麗磁器) |publisher=[[Empas]]/ [[Encyclopedia of Korean Culture]] |accessdate=2009-10-06 |language=Korean}}</ref> Goryeo most often however refers to [[celadon]] (greenware).
+
+== History ==
+The [[Gangjin Kiln Sites]] produced a large number of wares.
+
+An artist of the post-war era who specialised in it was [[Living National Treasure (South Korea)|Living National Treasure]] [[Yu Geun-Hyeong]].<ref>[https://www.britishmuseum.org/research/search_the_collection_database/term_details.aspx?bioId=140564 British Museum - Term details<!-- Bot generated title -->]</ref> His work was documented in the short film ''[[Koryo Celadon]]'' in 1979.<ref>[http://www.imdb.com/title/tt0079414/ Koryo Celadon (1979) - IMDb<!-- Bot generated title -->]</ref>
+
+Many celadon pieces from Goryeo are listed as [[National Treasure (South Korea)|National Treasures of South Korea]].
+
+==Gallery==
+<gallery>
+File:청자 어룡 모양 주전자.jpg|Dragon kettle, 12th century (National Treasure No. 61)
+File:Goryeo_Celadon.jpg|''Maebyeong'' vase with ''sanggam'' engraved cranes (National Treasure No. 68)
+File:청자_거북이_모양_주자.jpg|Pitcher in the shape of a [[Dragon Turtle]] (National Treasure No. 96)
+File:청자 상감 모란 넝쿨 무늬 조롱박 모양 주전자.jpg|Pitcher (National Treasure No. 116)
+File:Korea-Goryeo Dynasty-Wine ewer in the shape of a seated immortal-01.jpg|Wine ewer in the shape of a seated immortal (National Treasure No. 167)
+</gallery>
+
+==See also==
+*[[Korean pottery and porcelain]]
+*[[Buncheong]]
+*[[Joseon white porcelain]]
+
+==References==
+{{reflist}}
+
+==External links==
+{{Commonscat|Goryeo porcelain}}
+* [http://www.metmuseum.org/TOAH/HD/cela/hd_cela.htm Koryô Celadon] at the [[Metropolitan Museum of Art]] online
+* [https://www.youtube.com/watch?v=Fq8eBghuOLA Koryo Celadon (Korean Ceramics) on YouTube]
+
+{{Korean ceramics}}
+
+[[Category:Goryeo]]
+[[Category:Korean pottery]]
+
+
+{{Korea-stub}}
+{{Ceramics-stub}}

@@ -1,0 +1,72 @@
+{{Infobox baseball biography
+|name=Jerry Mumphrey
+|image=
+|position=[[Outfielder]]
+|bats=Switch
+|throws=Right
+|birth_date={{Birth date and age|1952|9|9}}
+|birth_place=[[Tyler, Texas]]
+|debutleague = MLB
+|debutdate=September 10
+|debutyear=1974
+|debutteam=St. Louis Cardinals
+|finalleague = MLB
+|finaldate=September 30
+|finalyear=1988
+|finalteam=Chicago Cubs
+|statleague = MLB
+|stat1label=[[Batting average]]
+|stat1value=.289
+|stat2label=[[Home run]]s
+|stat2value=70
+|stat3label=[[Runs batted in]]
+|stat3value=575
+|teams=
+* [[St. Louis Cardinals]] ({{Baseball year|1974}}–{{Baseball year|1979}})
+* [[San Diego Padres]] ({{Baseball year|1980}})
+* [[New York Yankees]] ({{Baseball year|1981}}–{{Baseball year|1983}})
+* [[Houston Astros]] ({{Baseball year|1983}}–{{Baseball year|1985}})
+* [[Chicago Cubs]] ({{Baseball year|1986}}–{{Baseball year|1988}})
+|highlights=
+* [[Major League Baseball All-Star Game|All-Star]] ([[1984 Major League Baseball All-Star Game|1984]])
+}}
+'''Jerry Wayne Mumphrey''' (born September 9, 1952) is a former [[Major League Baseball]] outfielder who played for the [[St. Louis Cardinals]] (1974–79), [[San Diego Padres]] (1980), [[New York Yankees]] (1981–83), [[Houston Astros]] (1983–85) and [[Chicago Cubs]] (1986–88). Mumphrey finished 20th in voting for the 1981 American League MVP and was the Astros All-Star Game representative in 1984.
+
+Along with San Diego Padres' teammates [[Gene Richards (baseball)|Gene Richards]] and [[Ozzie Smith]], he was part of the first trio from the same team in MLB history to each steal 50 or more bases in a season (1980).
+
+When Mumphrey was traded to the Cubs in December 1985, Cubs General Manager [[Dallas Green (baseball)|Dallas Green]] said: "By acquiring Jerry Mumphrey, we got someone who can play three outfield positions and play all three very well."<ref>{{cite web|last=Hannon |first=Tom |title=Jerry Mumphrey |url=http://www.thebaseballpage.com/players/mumphje01 |publisher=The Baseball Page |accessdate=2011-09-09 |deadurl=yes |archiveurl=https://web.archive.org/web/20110718023438/http://www.thebaseballpage.com/players/mumphje01 |archivedate=2011-07-18 |df= }}</ref>
+
+== Personal life ==
+
+Mumphrey and his wife, Gloria, live in [[Tyler, Texas]].<ref>http://obituaries.tylerpaper.com/obituaries/tylerpaper/obituary.aspx?n=roscoe-mumphrey&pid=164591195</ref>
+
+==See also==
+*[[List of Major League Baseball career stolen bases leaders]]
+
+== References ==
+{{reflist}}
+
+==External links==
+{{Baseballstats |br=m/mumphje01}} or https://web.archive.org/web/20110718023438/http://www.thebaseballpage.com/players/mumphje01 The Baseball Page
+
+{{DEFAULTSORT:Mumphrey, Jerry}}
+[[Category:1952 births]]
+[[Category:Living people]]
+[[Category:African-American baseball players]]
+[[Category:St. Louis Cardinals players]]
+[[Category:San Diego Padres players]]
+[[Category:New York Yankees players]]
+[[Category:Houston Astros players]]
+[[Category:Chicago Cubs players]]
+[[Category:Major League Baseball center fielders]]
+[[Category:Baseball players from Texas]]
+[[Category:National League All-Stars]]
+[[Category:Gulf Coast Cardinals players]]
+[[Category:St. Petersburg Cardinals players]]
+[[Category:Cedar Rapids Cardinals players]]
+[[Category:Arkansas Travelers players]]
+[[Category:Tulsa Oilers (baseball) players]]
+[[Category:People from Tyler, Texas]]
+
+
+{{US-baseball-outfielder-1950s-stub}}
