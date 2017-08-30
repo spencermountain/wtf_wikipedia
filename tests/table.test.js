@@ -11,7 +11,7 @@ var fetch = function(file) {
 
 test('bluejays table', t => {
   var bluejays = fetch('bluejays');
-  let arr = wtf.parse(bluejays).tables[0];
+  let arr = wtf.parse(bluejays).sections[0].tables[0];
   t.equal(arr.length, 8);
   t.equal(arr[0]['Level'].text, 'AAA', 'level-col');
   t.equal(arr[0]['Team'].text, 'Buffalo Bisons', 'team-col');

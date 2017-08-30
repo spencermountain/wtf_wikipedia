@@ -106,7 +106,7 @@ let bluejays = `
 |}
 `;
 test('bluejays table', function(t) {
-  let arr = wtf.parse(bluejays).tables[0];
+  let arr = wtf.parse(bluejays).sections[0].tables[0];
   t.equal(arr.length, 2);
   t.equal(arr[0]['Number'].text, '1');
   t.equal(arr[0]['Date'].text, 'April 6');

@@ -22,6 +22,7 @@ const flatten = function(arr) {
 const naiive_split = function(text) {
   //first, split by newline
   let splits = text.split(/(\n+)/);
+  splits = splits.filter(s => s.match(/\S/));
   //split by period, question-mark, and exclamation-mark
   splits = splits.map(function(str) {
     return str.split(/(\S.+?[.!?])(?=\s+|$)/g);
@@ -46,7 +47,7 @@ const isBalanced = function(str) {
 };
 
 const sentence_parser = function(text) {
-  const sentences = [];
+  let sentences = [];
   //first do a greedy-split..
   let chunks = [];
   //ensure it 'smells like' a sentence
