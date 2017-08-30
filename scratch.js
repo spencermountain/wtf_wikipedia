@@ -6,7 +6,7 @@ function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
   // console.log(wtf.plaintext(str));
   let r = wtf.parse(str);
-  console.log(r.translations);
+  console.log(r);
   // console.log(JSON.stringify(r.sections, null, 2));
 }
 
@@ -14,17 +14,17 @@ function from_file(page) {
 // from_file("earthquakes");
 // from_file("bluejays");
 // from_file('Toronto');
-// from_file('Toronto_Star');
+from_file('Toronto_Star');
 // from_file('Radiohead');
 // from_file('Jodie_Emery');
 // from_file('Redirect')
 // from_file("Africaans")
-// from_file('Anarchism');
+// from_file('rnli_stations');
 
-wtf.from_api('Radiohead', 'en', function(markup) {
-  var obj = wtf.parse(markup);
-  console.log(obj);
-});
+// wtf.from_api('Radiohead', 'en', function(markup) {
+//   var obj = wtf.parse(markup);
+//   console.log(obj);
+// });
 
 // {
 //   type: '', //page/redirect/category/template
@@ -39,6 +39,7 @@ wtf.from_api('Radiohead', 'en', function(markup) {
 //       title: '',
 //       images: '',
 //       lists: '',
+//       tables: '',
 //       sentences: [{ //each sentence
 //         text: ''
 //         links: [{

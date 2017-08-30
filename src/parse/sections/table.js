@@ -1,5 +1,5 @@
-const helpers = require('../lib/helpers');
-const parse_line = require('./text');
+const helpers = require('../../lib/helpers');
+const parse_line = require('../text');
 
 const table_reg = /\{\|[\s\S]{1,12000}?\|\}/g;
 
