@@ -6,7 +6,6 @@ const parse = {
   table: require('./table'),
   sentence: require('./sentence/sentence')
 };
-
 const section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})\n/g;
 
 const parseSection = function(section, wiki) {

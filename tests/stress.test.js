@@ -70,13 +70,21 @@ test('stress-test-en', t => {
   arr.forEach(title => {
     var markup = fetch(title);
     var doc = wtf.parse(markup);
+    //basic is-valid tests for the page parsing
     t.ok(true, title);
+    t.ok(doc.type === 'page', ' - - type:page');
     t.ok(doc.categories.length > 0, ' - - cat-length');
     t.ok(doc.sections.length > 0, ' - - section-length');
     var intro = doc.sections[0];
+    t.ok(intro.title === '', ' - - intro-title-empty');
+    t.ok(intro.depth === 0, ' - - depth=0');
     t.ok(intro.sentences.length > 0, ' - - sentences-length');
     t.ok(intro.sentences[0].text.length > 0, ' - - intro-text');
     t.ok(intro.sentences[0].text.match(/[a-z]/), ' - - intro-has words');
+
+    var plain = wtf.plaintext(markup);
+    t.ok(plain.length > 40, ' - - plaintext-length');
+    t.ok(plain.match(/[a-z]/), ' - - plaintext-has words');
   });
   t.end();
 });
