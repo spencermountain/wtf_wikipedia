@@ -4,11 +4,10 @@ const parse_line = require('./sentence/line');
 const table_reg = /\{\|[\s\S]{1,12000}?\|\}/g;
 
 const parseHeading = function(str) {
-  str = str.replace(/^\! +/, '');
+  str = parse_line(str).text;
   if (str.match(/\|/)) {
     str = str.replace(/.+\| ?/, ''); //class="unsortable"|title
   }
-  str = parse_line(str).text;
   return str;
 };
 
@@ -23,11 +22,19 @@ const parse_table = function(wiki) {
     let str = lines[i];
     //header
     if (str.match(/^\!/)) {
-      str = parseHeading(str);
-      if (!str) {
-        str = 'col-' + headings.length;
+      str = str.replace(/^\! +/, '');
+      //handle inline '!!' format
+      if (str.match(/ \!\! /)) {
+        let heads = str.split(/ \!\! /);
+        headings = heads.map(parseHeading);
+      } else {
+        //handle different headings, different lines
+        str = parseHeading(str);
+        if (!str) {
+          str = 'col-' + headings.length;
+        }
+        headings.push(str);
       }
-      headings.push(str);
     } else if (str.match(/^\| /)) {
       break;
     }

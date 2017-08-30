@@ -5,6 +5,7 @@ const parse_infobox = require('./infobox');
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 const noWrap_reg = /^\{\{nowrap\|(.*?)\}\}$/;
 const main_reg = /^\{\{main( article)?\|(.*?)\}\}$/i;
+const wide_img = /^\{\{wide image\|(.*?)\}\}$/i;
 
 //reduce the scary recursive situations
 const parse_recursive = function(r, wiki) {
@@ -31,6 +32,10 @@ const parse_recursive = function(r, wiki) {
       if (main_reg.test(s) === true) {
         return;
       }
+      const wide = s.match(wide_img);
+      if (wide) {
+        return;
+      }
       //if it's not a known template, but it's recursive, remove it
       //(because it will be misread later-on)
       wiki = wiki.replace(s, '');
@@ -38,7 +43,7 @@ const parse_recursive = function(r, wiki) {
   });
   // //ok, now that the scary recursion issues are gone, we can trust simple regex methods..
   // //kill the rest of templates
-  wiki = wiki.replace(/\{\{(^main).*?\}\}/g, '');
+  wiki = wiki.replace(/\{\{(^(main|wide)).*?\}\}/g, '');
 
   return wiki;
 };

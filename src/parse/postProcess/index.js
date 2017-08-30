@@ -15,6 +15,13 @@ const postProcess = function(r) {
   }
   //loop around and add the others
   r.sections.forEach(s => {
+    //image from {{wide image|...}} template
+    if (s.templates && s.templates.wide_image) {
+      let img = s.templates.wide_image[0];
+      img = '[[File:' + img + ']]';
+      img = parseImage(img);
+      r.images.push(img);
+    }
     if (s.images) {
       s.images.forEach(img => r.images.push(img));
     }

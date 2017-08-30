@@ -6,14 +6,14 @@ function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
   // console.log(wtf.plaintext(str));
   let r = wtf.parse(str);
-  console.log(r.sections[1]);
+  console.log(r.sections[20].tables[0]);
   // console.log(JSON.stringify(r.sections, null, 2));
 }
 
 // from_file('list');
 // from_file("earthquakes");
 // from_file("bluejays");
-from_file('Toronto');
+// from_file('Toronto');
 // from_file('Toronto_Star');
 // from_file('Radiohead');
 // from_file('Jodie_Emery');
@@ -49,10 +49,15 @@ from_file('Toronto');
 //       }]
 //     }]
 // }
-// var str = `hello there [[germany]]!. [[File:hunterThompson.jpg]]
-// * one fun
-// * two cool [[germany]]
-// * three last
-// and also hello there.
-// `;
-// console.log(wtf.parse(str));
+var str = `hello.
+{| class="wikitable"
+|-
+! [[Ethnic origins of people in Canada|Ethnic Origin]] !! Population !! Percentage
+|-
+| [[English Canadian|English]] || 333,220 || 12.9
+|-
+| [[Chinese Canadian|Chinese]] || 308,690 || 12.0
+|-
+| [[Canadian]] || 291,665 || 11.3
+|}`;
+console.log(wtf.parse(str).sections[0].tables[0]);
