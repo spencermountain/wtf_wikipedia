@@ -37,8 +37,6 @@ const main = function(wiki) {
   //parse all the headings, and their texts/sentences
   r.sections = parse.section(wiki);
 
-  // get categories from last section
-  // wiki = parse_categories(r, wiki);
   r = postProcess(r);
 
   return r;

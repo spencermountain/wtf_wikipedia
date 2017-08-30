@@ -6,7 +6,7 @@ function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
   // console.log(wtf.plaintext(str));
   let r = wtf.parse(str);
-  console.log(r.sections[20].tables[0]);
+  console.log(r.sections[9]);
   // console.log(JSON.stringify(r.sections, null, 2));
 }
 
@@ -14,7 +14,7 @@ function from_file(page) {
 // from_file("earthquakes");
 // from_file("bluejays");
 // from_file('Toronto');
-// from_file('Toronto_Star');
+from_file('Toronto_Star');
 // from_file('Radiohead');
 // from_file('Jodie_Emery');
 // from_file('Redirect')
@@ -49,15 +49,6 @@ function from_file(page) {
 //       }]
 //     }]
 // }
-var str = `hello.
-{| class="wikitable"
-|-
-! [[Ethnic origins of people in Canada|Ethnic Origin]] !! Population !! Percentage
-|-
-| [[English Canadian|English]] || 333,220 || 12.9
-|-
-| [[Chinese Canadian|Chinese]] || 308,690 || 12.0
-|-
-| [[Canadian]] || 291,665 || 11.3
-|}`;
-console.log(wtf.parse(str).sections[0].tables[0]);
+// var str = `this diversity is reflected in Toronto's ethnic neighbourhoods, which include [[Chinatown, Toronto|Chinatown]], [[Corso Italia (Toronto)|Corso Italia]], [[Greektown, Toronto|Greektown]], [[Kensington Market]], [[Koreatown, Toronto|Koreatown]], [[Gerrard Street (Toronto)|Little India]], [[Little Italy, Toronto|Little Italy]], [[Eglinton West|Little Jamaica]], [[Little Portugal, Toronto|Little Portugal]] and [[Roncesvalles, Toronto|Roncesvalles]].
+// `;
+// console.log(wtf.parse(str).sections[0]);

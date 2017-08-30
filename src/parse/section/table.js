@@ -28,7 +28,7 @@ const parse_table = function(wiki) {
         let heads = str.split(/ \!\! /);
         headings = heads.map(parseHeading);
       } else {
-        //handle different headings, different lines
+        //handle heading-per-line
         str = parseHeading(str);
         if (!str) {
           str = 'col-' + headings.length;
