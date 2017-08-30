@@ -53,7 +53,7 @@ const word_templates = function(wiki) {
   }
   //common templates in wiktionary
   wiki = wiki.replace(/\{\{term\|(.*?)\|.*?\}\}/gi, "'$1'");
-  wiki = wiki.replace(/\{\{IPA\|(.*?)\|.*?\}\}/gi, '$1');
+  wiki = wiki.replace(/\{\{IPA(c-en)?\|(.*?)\|(.*?)\}\},?/gi, '');
   wiki = wiki.replace(/\{\{sense\|(.*?)\|?.*?\}\}/gi, '($1)');
   wiki = wiki.replace(/\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, "'$1'");
   //replace languages in 'etyl' tags

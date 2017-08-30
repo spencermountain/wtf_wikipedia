@@ -6,17 +6,17 @@ function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
   // console.log(wtf.plaintext(str));
   let r = wtf.parse(str);
-  console.log(r);
+  console.log(r.sections[1]);
   // console.log(JSON.stringify(r.sections, null, 2));
 }
 
 // from_file('list');
 // from_file("earthquakes");
 // from_file("bluejays");
-// from_file('Toronto');
+from_file('Toronto');
 // from_file('Toronto_Star');
 // from_file('Radiohead');
-from_file('Jodie_Emery');
+// from_file('Jodie_Emery');
 // from_file('Redirect')
 // from_file("Africaans")
 // from_file('rnli_stations');

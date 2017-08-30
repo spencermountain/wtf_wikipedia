@@ -47,7 +47,9 @@ const parseList = function(r, wiki) {
       theRest.push(lines[i]);
     }
   }
-  r.lists = lists;
+  if (lists.length > 0) {
+    r.lists = lists;
+  }
   return theRest.join('\n');
 };
 module.exports = parseList;
