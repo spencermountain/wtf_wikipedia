@@ -16,7 +16,7 @@ function from_file(page) {
 // from_file('Toronto');
 // from_file('Toronto_Star');
 // from_file('Radiohead');
-// from_file('Jodie_Emery');
+from_file('Jodie_Emery');
 // from_file('Redirect')
 // from_file("Africaans")
 // from_file('rnli_stations');
@@ -49,10 +49,10 @@ function from_file(page) {
 //       }]
 //     }]
 // }
-var str = `hello there. [[File:hunterThompson.jpg]]
-* one fun
-* two cool [[germany]]
-* three last
-and also hello there.
-`;
-console.log(wtf.parse(str).sections[0]);
+// var str = `hello there [[germany]]!. [[File:hunterThompson.jpg]]
+// * one fun
+// * two cool [[germany]]
+// * three last
+// and also hello there.
+// `;
+// console.log(wtf.parse(str));

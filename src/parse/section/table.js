@@ -87,10 +87,13 @@ const parse_table = function(wiki) {
 };
 
 const findTables = function(r, wiki) {
-  r.tables = wiki.match(table_reg, '') || [];
-  r.tables = r.tables.map(function(str) {
+  let tables = wiki.match(table_reg, '') || [];
+  tables = tables.map(function(str) {
     return parse_table(str);
   });
+  if (tables.length > 0) {
+    r.tables = tables;
+  }
   //remove tables
   wiki = wiki.replace(table_reg, '');
   return wiki;

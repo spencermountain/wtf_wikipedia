@@ -1,6 +1,6 @@
+const Hashes = require('jshashes');
 const i18n = require('../../../data/i18n');
 const file_reg = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
-const Hashes = require('jshashes');
 
 //the wikimedia image url is a little silly:
 //https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F

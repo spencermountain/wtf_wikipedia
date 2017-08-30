@@ -1,16 +1,24 @@
 const i18n = require('../../data/i18n');
+const parseImage = require('../section/image/image');
 const img_regex = new RegExp('^(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
 
 //cleanup after ourselves
 const postProcess = function(r) {
-  // add additional image from infobox, if applicable
+  // add image from infobox, if applicable
   if (r.infoboxes[0] && r.infoboxes[0].data && r.infoboxes[0].data['image'] && r.infoboxes[0].data['image'].text) {
     let img = r.infoboxes[0].data['image'].text || '';
-    if (typeof img === 'string' && !img.match(img_regex)) {
-      img = 'File:' + img;
+    if (img && typeof img === 'string' && !img.match(img_regex)) {
+      img = '[[File:' + img + ']]';
+      img = parseImage(img);
+      r.images.push(img);
     }
-    r.images.push(img);
   }
+  //loop around and add the others
+  r.sections.forEach(s => {
+    if (s.images) {
+      s.images.forEach(img => r.images.push(img));
+    }
+  });
   return r;
 };
 module.exports = postProcess;

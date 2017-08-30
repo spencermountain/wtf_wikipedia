@@ -1,9 +1,6 @@
 const i18n = require('../../data/i18n');
-// const languages = require('../../data/languages');
 const find_recursive = require('../../lib/recursive_match');
-
 const parse_infobox = require('./infobox');
-// const parse_image = require('./image');
 
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 const noWrap_reg = /^\{\{nowrap\|(.*?)\}\}$/;
@@ -34,6 +31,9 @@ const parse_recursive = function(r, wiki) {
       wiki = wiki.replace(s, '');
     }
   });
+  // //ok, now that the scary recursion issues are gone, we can trust simple regex methods..
+  // //kill the rest of templates
+  wiki = wiki.replace(/\{\{.*?\}\}/g, '');
 
   return wiki;
 };

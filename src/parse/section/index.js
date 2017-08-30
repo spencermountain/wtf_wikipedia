@@ -16,9 +16,8 @@ const parseSection = function(section, wiki) {
   wiki = parse.list(section, wiki);
   // //parse+remove scary '[[ [[]] ]]' stuff
   wiki = parse.image(section, wiki);
-  // //ok, now that the scary recursion issues are gone, we can trust simple regex methods..
-  // //kill the rest of templates
-  wiki = wiki.replace(/\{\{.*?\}\}/g, '');
+  //do each sentence
+  wiki = parse.sentence(section, wiki);
   // section.wiki = wiki;
   return section;
 };
