@@ -1,7 +1,9 @@
 const redirects = require('./page/redirects');
 const disambig = require('./page/disambig');
 const preProcess = require('./preProcess');
+const postProcess = require('./postProcess');
 const parse_sections = require('./section');
+const infobox = require('./infobox');
 
 //convert wikiscript markup lang to json
 const main = function(wiki) {
@@ -25,11 +27,14 @@ const main = function(wiki) {
 
   //give ourselves a little head-start
   wiki = preProcess(wiki);
+  //pull-out infoboxes and stuff
+  wiki = infobox(r, wiki);
   //parse all the headings, and their texts/sentences
   r.sections = parse_sections(wiki);
 
   // get categories from last section
   // wiki = parse_categories(r, wiki);
+  r = postProcess(r);
 
   return r;
 };

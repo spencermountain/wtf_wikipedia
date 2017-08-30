@@ -1,6 +1,6 @@
 'use strict';
 const helpers = require('../../lib/helpers');
-const parse_line = require('../text');
+const parse_line = require('../section/sentence/line');
 const i18n = require('../../data/i18n');
 const infobox_template_reg = new RegExp('{{(?:' + i18n.infoboxes.join('|') + ')\\s*(.*)', 'i');
 

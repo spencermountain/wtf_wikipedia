@@ -1,8 +1,8 @@
 //interpret ==heading== lines
 const parse = {
+  heading: require('./heading'),
   list: require('./list'),
   table: require('./table'),
-  heading: require('./heading'),
   sentence: require('./sentence/sentence')
 };
 
@@ -18,10 +18,11 @@ const parseSection = function(section, wiki) {
   // //ok, now that the scary recursion issues are gone, we can trust simple regex methods..
   // //kill the rest of templates
   wiki = wiki.replace(/\{\{.*?\}\}/g, '');
+  // section.wiki = wiki;
   return section;
 };
 
-const splitSection = function(wiki) {
+const makeSections = function(wiki) {
   let split = wiki.split(section_reg);
   let sections = [];
   for (let i = 0; i < split.length; i += 2) {
@@ -34,4 +35,4 @@ const splitSection = function(wiki) {
   return sections;
 };
 
-module.exports = splitSection;
+module.exports = makeSections;
