@@ -1,5 +1,5 @@
-const sentence_parser = require('../../lib/sentence_parser');
-const parseLine = require('../text');
+const sentence_parser = require('./sentence_parser');
+const parseLine = require('./line');
 
 const parseSentences = function(line) {
   let arr = [];

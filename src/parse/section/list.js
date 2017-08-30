@@ -1,7 +1,7 @@
 const list_reg = /^[#\*:;\|]+/;
 const bullet_reg = /^\*+[^:,\|]{4}/;
 const number_reg = /^ ?\#[^:,\|]{4}/;
-const parseLine = require('../text');
+const parseLine = require('./sentence/line');
 
 const isList = function(line) {
   return list_reg.test(line) || bullet_reg.test(line) || number_reg.test(line);

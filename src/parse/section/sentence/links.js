@@ -1,4 +1,4 @@
-const helpers = require('../../lib/helpers');
+const helpers = require('../../../lib/helpers');
 const link_reg = /\[\[(.{2,80}?)\]\](\w{0,10})/g;
 const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i;
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
