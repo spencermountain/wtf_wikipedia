@@ -10,18 +10,18 @@ function from_file(page) {
   // console.log(JSON.stringify(r.sections, null, 2));
 }
 
-// from_file("list")
+// from_file('list');
 // from_file("earthquakes");
 // from_file("bluejays");
 // from_file('Toronto');
-from_file('Toronto_Star');
+// from_file('Toronto_Star');
 // from_file('Radiohead');
 // from_file('Jodie_Emery');
 // from_file('Redirect')
 // from_file("Africaans")
 // from_file('rnli_stations');
 
-// wtf.from_api('Radiohead', 'en', function(markup) {
+// wtf.from_api('List_of_earthquakes_in_2011', 'en', function(markup) {
 //   var obj = wtf.parse(markup);
 //   console.log(obj);
 // });
@@ -49,5 +49,10 @@ from_file('Toronto_Star');
 //       }]
 //     }]
 // }
-// var str = 'hello [[wikinews:Radiohead]] world  [[Category:Films]]';
-// console.log(wtf.parse(str));
+var str = `hello there. [[File:hunterThompson.jpg]]
+* one fun
+* two cool [[germany]]
+* three last
+and also hello there.
+`;
+console.log(wtf.parse(str).sections[0]);

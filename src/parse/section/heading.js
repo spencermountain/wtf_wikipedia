@@ -2,7 +2,7 @@ const fns = require('../../lib/helpers');
 const heading_reg = /^(={1,5})([^=]{1,200}?)={1,5}$/;
 
 //interpret depth, title of headings like '==See also=='
-const parseHeading = function(str) {
+const parseHeading = function(r, str) {
   let heading = str.match(heading_reg);
   if (!heading) {
     return {
@@ -16,9 +16,8 @@ const parseHeading = function(str) {
   if (heading[1]) {
     depth = heading[1].length - 1;
   }
-  return {
-    title: title,
-    depth: depth
-  };
+  r.title = title;
+  r.depth = depth;
+  return r;
 };
 module.exports = parseHeading;
