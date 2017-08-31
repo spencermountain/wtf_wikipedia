@@ -3711,12 +3711,73 @@ exports.cleanHeader = function(header, shouldStripCookie){
   return header;
 };
 },{}],9:[function(_dereq_,module,exports){
+module.exports={
+  "name": "wtf_wikipedia",
+  "description": "parse wikiscript into json",
+  "version": "2.0.0",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/spencermountain/wtf_wikipedia.git"
+  },
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node ./scripts/demo.js",
+    "test": "node ./scripts/test.js",
+    "postpublish": "node ./scripts/coverage.js",
+    "coverage": "node ./scripts/coverage.js",
+    "browserTest": "node ./scripts/browserTest.js",
+    "watch": "node ./scripts/watch.js",
+    "demo": "node ./scripts/demo.js",
+    "build": "node ./scripts/build.js"
+  },
+  "bin": {
+    "wikipedia": "./bin/parse.js",
+    "wikipedia_plaintext": "./bin/plaintext.js"
+  },
+  "files": [
+    "builds",
+    "src",
+    "bin"
+  ],
+  "keywords": [
+    "wikipedia",
+    "wikimedia",
+    "wikipedia markup",
+    "wikiscript"
+  ],
+  "dependencies": {
+    "jshashes": "^1.0.6",
+    "superagent": "^3.5.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-preset-es2015": "6.24.1",
+    "babelify": "7.3.0",
+    "browserify": "14.4.0",
+    "codacy-coverage": "^2.0.0",
+    "derequire": "^2.0.3",
+    "eslint": "^4.5.0",
+    "gaze": "^1.1.1",
+    "http-server": "^0.10.0",
+    "nyc": "^8.4.0",
+    "shelljs": "^0.7.2",
+    "tap-min": "^1.2.1",
+    "tap-spec": "4.1.1",
+    "tape": "4.8.0",
+    "uglify-js": "3.0.28"
+  },
+  "license": "MIT"
+}
+
+},{}],10:[function(_dereq_,module,exports){
 'use strict';
 
 //these are used for the sentence-splitter
 module.exports = ['jr', 'mr', 'mrs', 'ms', 'dr', 'prof', 'sr', 'sen', 'corp', 'calif', 'rep', 'gov', 'atty', 'supt', 'det', 'rev', 'col', 'gen', 'lt', 'cmdr', 'adm', 'capt', 'sgt', 'cpl', 'maj', 'dept', 'univ', 'assn', 'bros', 'inc', 'ltd', 'co', 'corp', 'arc', 'al', 'ave', 'blvd', 'cl', 'ct', 'cres', 'exp', 'rd', 'st', 'dist', 'mt', 'ft', 'fy', 'hwy', 'la', 'pd', 'pl', 'plz', 'tce', 'Ala', 'Ariz', 'Ark', 'Cal', 'Calif', 'Col', 'Colo', 'Conn', 'Del', 'Fed', 'Fla', 'Ga', 'Ida', 'Id', 'Ill', 'Ind', 'Ia', 'Kan', 'Kans', 'Ken', 'Ky', 'La', 'Me', 'Md', 'Mass', 'Mich', 'Minn', 'Miss', 'Mo', 'Mont', 'Neb', 'Nebr', 'Nev', 'Mex', 'Okla', 'Ok', 'Ore', 'Penna', 'Penn', 'Pa', 'Dak', 'Tenn', 'Tex', 'Ut', 'Vt', 'Va', 'Wash', 'Wis', 'Wisc', 'Wy', 'Wyo', 'USAFA', 'Alta', 'Ont', 'QuÔøΩ', 'Sask', 'Yuk', 'jan', 'feb', 'mar', 'apr', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'sept', 'vs', 'etc', 'esp', 'llb', 'md', 'bl', 'phd', 'ma', 'ba', 'miss', 'misses', 'mister', 'sir', 'esq', 'mstr', 'lit', 'fl', 'ex', 'eg', 'sep', 'sept', '..'];
 
-},{}],10:[function(_dereq_,module,exports){
+},{}],11:[function(_dereq_,module,exports){
 'use strict';
 
 // wikipedia special terms lifted and augmented from parsoid parser april 2015
@@ -3766,7 +3827,7 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports = i18n;
 }
 
-},{}],11:[function(_dereq_,module,exports){
+},{}],12:[function(_dereq_,module,exports){
 'use strict';
 
 module.exports = {
@@ -5037,7 +5098,7 @@ module.exports = {
   }
 };
 
-},{}],12:[function(_dereq_,module,exports){
+},{}],13:[function(_dereq_,module,exports){
 'use strict';
 
 //from https://en.wikipedia.org/w/api.php?action=sitematrix&format=json
@@ -5847,7 +5908,7 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports = site_map;
 }
 
-},{}],13:[function(_dereq_,module,exports){
+},{}],14:[function(_dereq_,module,exports){
 'use strict';
 
 //turns wikimedia script into json
@@ -5855,6 +5916,7 @@ if (typeof module !== 'undefined' && module.exports) {
 //@spencermountain
 var fetch = _dereq_('./lib/fetch_text');
 var parse = _dereq_('./parse');
+var version = _dereq_('../package').version;
 
 //from a page title or id, fetch the wikiscript
 var from_api = function from_api(page_identifier, lang_or_wikiid, cb) {
@@ -5885,10 +5947,11 @@ var plaintext = function plaintext(str) {
 module.exports = {
   from_api: from_api,
   parse: parse,
-  plaintext: plaintext
+  plaintext: plaintext,
+  version: version
 };
 
-},{"./lib/fetch_text":14,"./parse":18}],14:[function(_dereq_,module,exports){
+},{"../package":9,"./lib/fetch_text":15,"./parse":19}],15:[function(_dereq_,module,exports){
 'use strict';
 //grab the content of any article, off the api
 
@@ -5943,7 +6006,7 @@ module.exports = fetch;
 //   console.log(JSON.stringify(r, null, 2));
 // });
 
-},{"../data/site_map":12,"../parse/page/redirects":22,"superagent":3}],15:[function(_dereq_,module,exports){
+},{"../data/site_map":13,"../parse/page/redirects":23,"superagent":3}],16:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = {
@@ -5969,7 +6032,7 @@ var helpers = {
 };
 module.exports = helpers;
 
-},{}],16:[function(_dereq_,module,exports){
+},{}],17:[function(_dereq_,module,exports){
 'use strict';
 
 //find all the pairs of '[[...[[..]]...]]' in the text
@@ -6019,7 +6082,7 @@ module.exports = find_recursive;
 // console.log(find_recursive('{', '}', 'he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas'));
 // console.log(find_recursive("{", "}", "this is fun {{nowrap{{small1995–present}}}} and it works"))
 
-},{}],17:[function(_dereq_,module,exports){
+},{}],18:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../data/i18n');
@@ -6044,7 +6107,7 @@ var parse_categories = function parse_categories(r, wiki) {
 };
 module.exports = parse_categories;
 
-},{"../data/i18n":10}],18:[function(_dereq_,module,exports){
+},{"../data/i18n":11}],19:[function(_dereq_,module,exports){
 'use strict';
 
 var redirects = _dereq_('./page/redirects');
@@ -6093,7 +6156,7 @@ var main = function main(wiki) {
 
 module.exports = main;
 
-},{"./categories":17,"./infobox":19,"./page/disambig":21,"./page/redirects":22,"./postProcess":23,"./preProcess":24,"./section":30}],19:[function(_dereq_,module,exports){
+},{"./categories":18,"./infobox":20,"./page/disambig":22,"./page/redirects":23,"./postProcess":24,"./preProcess":25,"./section":31}],20:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6148,7 +6211,7 @@ var parse_recursive = function parse_recursive(r, wiki) {
 
 module.exports = parse_recursive;
 
-},{"../../data/i18n":10,"../../lib/recursive_match":16,"./infobox":20}],20:[function(_dereq_,module,exports){
+},{"../../data/i18n":11,"../../lib/recursive_match":17,"./infobox":21}],21:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../../lib/helpers');
@@ -6217,7 +6280,7 @@ var parse_infobox = function parse_infobox(str) {
 };
 module.exports = parse_infobox;
 
-},{"../../data/i18n":10,"../../lib/helpers":15,"../section/sentence/line":32}],21:[function(_dereq_,module,exports){
+},{"../../data/i18n":11,"../../lib/helpers":16,"../section/sentence/line":33}],22:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6251,7 +6314,7 @@ module.exports = {
   parse_disambig: parse_disambig
 };
 
-},{"../../data/i18n":10,"../section/sentence/links":33}],22:[function(_dereq_,module,exports){
+},{"../../data/i18n":11,"../section/sentence/links":34}],23:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6276,7 +6339,7 @@ module.exports = {
   parse_redirect: parse_redirect
 };
 
-},{"../../data/i18n":10}],23:[function(_dereq_,module,exports){
+},{"../../data/i18n":11}],24:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6313,7 +6376,7 @@ var postProcess = function postProcess(r) {
 };
 module.exports = postProcess;
 
-},{"../../data/i18n":10,"../section/image/image":28}],24:[function(_dereq_,module,exports){
+},{"../../data/i18n":11,"../section/image/image":29}],25:[function(_dereq_,module,exports){
 'use strict';
 
 var kill_xml = _dereq_('./kill_xml');
@@ -6353,7 +6416,7 @@ module.exports = preProcess;
 // console.log(preProcess('hello <br/> world'))
 // console.log(preProcess("hello <asd f> world </h2>"))
 
-},{"./kill_xml":25,"./word_templates":26}],25:[function(_dereq_,module,exports){
+},{"./kill_xml":26,"./word_templates":27}],26:[function(_dereq_,module,exports){
 'use strict';
 
 //okay, i know you're not supposed to regex html, but...
@@ -6389,7 +6452,7 @@ var kill_xml = function kill_xml(wiki) {
 // console.log(kill_xml("North America,<br /> and one of"))
 module.exports = kill_xml;
 
-},{}],26:[function(_dereq_,module,exports){
+},{}],27:[function(_dereq_,module,exports){
 'use strict';
 
 var languages = _dereq_('../../data/languages');
@@ -6461,7 +6524,7 @@ var word_templates = function word_templates(wiki) {
 
 module.exports = word_templates;
 
-},{"../../data/languages":11}],27:[function(_dereq_,module,exports){
+},{"../../data/languages":12}],28:[function(_dereq_,module,exports){
 'use strict';
 
 var fns = _dereq_('../../lib/helpers');
@@ -6488,7 +6551,7 @@ var parseHeading = function parseHeading(r, str) {
 };
 module.exports = parseHeading;
 
-},{"../../lib/helpers":15}],28:[function(_dereq_,module,exports){
+},{"../../lib/helpers":16}],29:[function(_dereq_,module,exports){
 'use strict';
 
 var Hashes = _dereq_('jshashes');
@@ -6529,7 +6592,7 @@ module.exports = parse_image;
 
 // console.log(parse_image("[[image:my_pic.jpg]]"));
 
-},{"../../../data/i18n":10,"jshashes":2}],29:[function(_dereq_,module,exports){
+},{"../../../data/i18n":11,"jshashes":2}],30:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../../data/i18n');
@@ -6564,7 +6627,7 @@ var parseImages = function parseImages(r, wiki) {
 };
 module.exports = parseImages;
 
-},{"../../../data/i18n":10,"../../../lib/recursive_match":16,"./image":28}],30:[function(_dereq_,module,exports){
+},{"../../../data/i18n":11,"../../../lib/recursive_match":17,"./image":29}],31:[function(_dereq_,module,exports){
 'use strict';
 
 //interpret ==heading== lines
@@ -6612,7 +6675,7 @@ var makeSections = function makeSections(wiki) {
 
 module.exports = makeSections;
 
-},{"./heading":27,"./image":29,"./list":31,"./sentence/sentence":34,"./table":36,"./template":37}],31:[function(_dereq_,module,exports){
+},{"./heading":28,"./image":30,"./list":32,"./sentence/sentence":35,"./table":37,"./template":38}],32:[function(_dereq_,module,exports){
 'use strict';
 
 var list_reg = /^[#\*:;\|]+/;
@@ -6689,7 +6752,7 @@ var parseList = function parseList(r, wiki) {
 };
 module.exports = parseList;
 
-},{"./sentence/line":32}],32:[function(_dereq_,module,exports){
+},{"./sentence/line":33}],33:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../../../lib/helpers');
@@ -6737,7 +6800,7 @@ function parse_line(line) {
 
 module.exports = parse_line;
 
-},{"../../../data/i18n":10,"../../../lib/helpers":15,"./links":33}],33:[function(_dereq_,module,exports){
+},{"../../../data/i18n":11,"../../../lib/helpers":16,"./links":34}],34:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../../../lib/helpers');
@@ -6815,7 +6878,7 @@ var parse_links = function parse_links(str) {
 };
 module.exports = parse_links;
 
-},{"../../../lib/helpers":15}],34:[function(_dereq_,module,exports){
+},{"../../../lib/helpers":16}],35:[function(_dereq_,module,exports){
 'use strict';
 
 var sentence_parser = _dereq_('./sentence_parser');
@@ -6829,7 +6892,7 @@ var parseSentences = function parseSentences(r, wiki) {
 };
 module.exports = parseSentences;
 
-},{"./line":32,"./sentence_parser":35}],35:[function(_dereq_,module,exports){
+},{"./line":33,"./sentence_parser":36}],36:[function(_dereq_,module,exports){
 //split text into sentences, using regex
 //@spencermountain MIT
 
@@ -6947,7 +7010,7 @@ var sentence_parser = function sentence_parser(text) {
 module.exports = sentence_parser;
 // console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2);
 
-},{"../../../data/abbreviations":9}],36:[function(_dereq_,module,exports){
+},{"../../../data/abbreviations":10}],37:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../../lib/helpers');
@@ -7059,7 +7122,7 @@ var findTables = function findTables(r, wiki) {
 };
 module.exports = findTables;
 
-},{"../../lib/helpers":15,"./sentence/line":32}],37:[function(_dereq_,module,exports){
+},{"../../lib/helpers":16,"./sentence/line":33}],38:[function(_dereq_,module,exports){
 'use strict';
 
 var regs = {
@@ -7090,5 +7153,5 @@ var parseTemplates = function parseTemplates(r, wiki) {
 };
 module.exports = parseTemplates;
 
-},{}]},{},[13])(13)
+},{}]},{},[14])(14)
 });

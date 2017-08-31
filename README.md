@@ -82,6 +82,19 @@ wtf.from_api("Toronto Blue Jays", "en", function(markup){
   // "The Toronto Blue Jays are a Canadian professional baseball team..."
 })
 ````
+
+#####⚡️ Client-side too!
+```html
+<script src="https://unpkg.com/wtf_wikipedia@latest/builds/wtf_wikipedia.min.js"></script>
+<script>
+  //follow the "On a Friday" -> "Radiohead" redirect
+  wtf.from_api("On a Friday", "en", function(markup){
+    console.log(wtf.plaintext(markup))
+    // "Radiohead are an English rock band from Abingdon..."
+  })
+</script>
+```
+
 <h2 align="center">
   <a href="https://rawgit.com/spencermountain/wtf_wikipedia/master/demo/index.html">Demo!</a>
 </h2>

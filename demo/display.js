@@ -1,4 +1,6 @@
 $(window).ready(function() {
+  $('#version').html(wtf.version);
+
   var make_list = function(arr) {
     arr = arr || [];
     return arr.reduce(function(str, o) {

@@ -3,6 +3,7 @@
 //@spencermountain
 const fetch = require('./lib/fetch_text');
 const parse = require('./parse');
+const version = require('../package').version;
 
 //from a page title or id, fetch the wikiscript
 const from_api = function(page_identifier, lang_or_wikiid, cb) {
@@ -31,5 +32,6 @@ const plaintext = function(str) {
 module.exports = {
   from_api: from_api,
   parse: parse,
-  plaintext: plaintext
+  plaintext: plaintext,
+  version: version
 };
