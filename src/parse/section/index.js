@@ -7,7 +7,7 @@ const parse = {
   template: require('./template'),
   sentence: require('./sentence/sentence')
 };
-const section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})\n/g;
+const section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})/g;
 
 const parseSection = function(section, wiki) {
   // //parse the tables
@@ -25,7 +25,7 @@ const parseSection = function(section, wiki) {
 };
 
 const makeSections = function(wiki) {
-  let split = wiki.split(section_reg);
+  let split = wiki.split(section_reg); //.filter(s => s);
   let sections = [];
   for (let i = 0; i < split.length; i += 2) {
     let title = split[i - 1] || '';

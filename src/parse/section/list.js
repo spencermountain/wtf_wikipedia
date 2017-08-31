@@ -30,15 +30,17 @@ const cleanList = function(list) {
 };
 
 const grabList = function(lines, i) {
-  for (let o = i + 1; o < lines.length; o++) {
-    if (!isList(lines[o])) {
-      let all = lines.slice(i, o);
-      all = all.filter(a => a && has_word.test(a));
-      all = cleanList(all);
-      return all;
+  let sub = [];
+  for (let o = i; o < lines.length; o++) {
+    if (isList(lines[o])) {
+      sub.push(lines[o]);
+    } else {
+      break;
     }
   }
-  return [];
+  sub = sub.filter(a => a && has_word.test(a));
+  sub = cleanList(sub);
+  return sub;
 };
 
 const parseList = function(r, wiki) {

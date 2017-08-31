@@ -43,7 +43,6 @@ test('toronto_star with list', t => {
   t.equal(section.sentences.length, 21, 'history-length');
   t.equal(data.categories.length, 6, 'cat-length');
   section = findSection(data, 'Notable cartoonists');
-  console.log(section);
   t.equal(section.lists[0].length, 10, 'cartoonist-length');
   t.end();
 });
