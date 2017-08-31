@@ -6,25 +6,27 @@ function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
   // console.log(wtf.plaintext(str));
   let r = wtf.parse(str);
-  console.log(r.sections);
+  console.log(r);
   // console.log(JSON.stringify(r.sections, null, 2));
 }
 
 // from_file('list');
 // from_file("earthquakes");
-// from_file("bluejays");
+// from_file('bluejays');
+// from_file('redirect');
 // from_file('Toronto');
 // from_file('Toronto_Star');
 // from_file('Radiohead');
 // from_file('Jodie_Emery');
 // from_file('Redirect')
 // from_file("Africaans")
-from_file('rnli_stations');
+// from_file('rnli_stations');
 
-// wtf.from_api('List_of_earthquakes_in_2011', 'en', function(markup) {
-//   var obj = wtf.parse(markup);
-//   console.log(obj);
-// });
+wtf.from_api('Whistling', 'en', function(markup) {
+  var obj = wtf.parse(markup);
+  console.log(obj);
+  // console.log(wtf.plaintext(markup));
+});
 
 // {
 //   type: '', //page/redirect/category/template

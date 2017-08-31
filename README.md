@@ -22,16 +22,20 @@
 </div>
 <p></p>
 
-**wtf_wikipedia** turns wikipedia article markup into **JSON**.
-
-<h2 align="center">Parsing Wikipedia markup is basically NP-Hard</h2>
 <div align="center">
-  its <a href="https://en.wikipedia.org/wiki/Help:WikiHiero_syntax">really the worst</a>.  I'm trying my best.
+**wtf_wikipedia** turns wikipedia's weird markup into **JSON**
+<div>so getting data is easier.</div>
+
+<h2 align="center">Don't be mad at me, be mad at them.</h2>
+
+<div align="center">Parsing wikiscript is basically NP-Hard.</div>
+
+  <sub>its <a href="https://en.wikipedia.org/wiki/Help:WikiHiero_syntax">really the worst</a>.  I'm really trying my best.</sub>
 </div>
 
-It handles many vile recursive template shinanigans, [half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template variants, and illicit wiki-esque shorthands.
+**wtf_wikipedia** handles vile recursive template shinanigans, [half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template variants, and illicit wiki-esque shorthands.
 
-Making your own parser is never a good idea, but this library is a very detailed and deliberate creature. :four_leaf_clover:
+Making your own parser is never a good idea, `what could go rong?!`, but this library is a very detailed and deliberate creature. :four_leaf_clover:
 
 ```bash
 npm install wtf_wikipedia
@@ -40,50 +44,47 @@ then:
 ````javascript
 var wtf = require("wtf_wikipedia")
 
-wtf.parse(markup)
-// {
-//   type: '', //page/redirect/category..
-//   infoboxes: [{
-//     template: '', //template name
-//     data: {} //key-value data
-//   }],
-//   categories: [], //parsed categories
-//   images: [], //image files + their md5 urls
-//   interwiki: {},
-//   sections: [{ //each heading
-//       title: '',
-//       images: '',
-//       lists: '',
-//       sentences: [{ //each sentence
-//         text: ''
-//         links: [{
-//           text: '',
-//           link: '' //(if different)
-//         }]
-//       }]
-//     }]
-// }
-
-//fetch wikipedia markup from api..
+//hit the api
 wtf.from_api("Toronto", "en", function(markup){
-  var data= wtf.parse(markup)
-  var mayor= data.infoboxes[0].data.leader_name
+  var data = wtf.parse(markup);
+  // {
+  //   type: '',
+  //   infoboxes: [{
+  //     template: '',
+  //     data: {}
+  //   }],
+  //   images: [],   // files + md5 urls
+  //   sections: [{  //(each heading)
+  //       title: '',
+  //       images: '',
+  //       lists: '',
+  //       sentences: [{ //(each sentence)
+  //         text: ''
+  //         links: [{
+  //           text: '',
+  //           link: ''
+  //         }]
+  //       }]
+  //    }],
+  //   categories: [],
+  //   interwiki: {},
+  // }
+  console.log(data.infoboxes[0].data.leader_name)
   // "John Tory"
 })
 ````
-if you only want some nice plaintext, and no junk:
+yeah, the structure is a little verbose - but with a couple loops you should find everything you want.
+
+**wtf_wikipedia** also offers a plaintext method, that returns only paragraphs of nice text, and no junk:
 ````javascript
-var text= wtf.plaintext(markup)
-// "Toronto is the most populous city in Canada and the provincial capital..."
+wtf.from_api("Toronto Blue Jays", "en", function(markup){
+  var text= wtf.plaintext(markup)
+  // "The Toronto Blue Jays are a Canadian professional baseball team..."
+})
 ````
-## [Demo!](https://rawgit.com/spencermountain/wtf_wikipedia/master/demo/index.html#)
-
-Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It reliably turns wikiscript into HTML, but not valid XML. To use it for data-mining, you probablu need a [wikiscript -> virtual DOM -> screen-scraping] flow, but getting structured data this way is a complex + also slow.
-
-This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb), letting you parse a whole wikipedia dump on a laptop in a couple minutes.
-
-its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView), [txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
-
+<h2 align="center">
+  <a href="https://rawgit.com/spencermountain/wtf_wikipedia/master/demo/index.html">Demo!</a>
+</h2>
 # What it does
 * Detects and parses **redirects** and **disambiguation** pages
 * Parse **infoboxes** into a formatted key-value object
@@ -94,16 +95,30 @@ its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaV
 * Parse **images**, files, and **categories**
 * Eliminate xml, latex, css, table-sorting, and 'Egyptian hierogliphics' cruft
 
+its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView), [txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
 
-m ok, lets write our own parser what culd go rong
+#### But what about...
+##### Parsoid:
+Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It reliably turns wikiscript into HTML, but not valid XML.
+
+To use it for data-mining, you'll' need to:
+```
+parsoid(wikiscript) -> pretend DOM -> screen-scraping
+```
+but getting structured data this way (say, sentences or infobox data), is a complex + weird process still. This library has 'borrowed' a lot of stuff from the parsoid project❤️
+
+##### XML datadumps:
+This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb), letting you parse a whole wikipedia dump on a laptop in a couple minutes.
+
 
 # Methods
 ## **.parse(markup)**
 turns wikipedia markup into a nice json object
 
 ```javascript
-wtf.parse(someWikiScript)
-// {text:[...], infobox:{}, categories:[...], images:[] }
+var wiki='==In Popular Culture==\n*harry potter\'s wand\n* the simpsons fence'
+wtf.parse(wiki)
+// {type:'', sections:[...], infobox:{}, categories:[...], images:[] }
 ```
 
 ## **.from_api(title, lang_or_wikiid, callback)**
@@ -126,8 +141,14 @@ wtf.from_api(64646, "de", function(markup){
 the from_api method follows redirects.
 ## **.plaintext(markup)**
 returns only nice text of the article
+```js
+var wiki="[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>"
+var text= wtf.plaintext(wiki)
+//"Boston's baseball field has a 37ft wall."
+```
 
-if you're scripting this from the shell, install -g, and:
+## **CLI**
+if you're scripting this from the shell, or another language, install with a `-g`, and then:
 ````shell
 $ wikipedia_plaintext George Clooney
 # George Timothy Clooney (born May 6, 1961) is an American actor ...
@@ -139,100 +160,81 @@ $ wikipedia Toronto Blue Jays
 # Sample Output
 Sample output for [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
 ````javascript
-{
-  type: 'page',
-  sections: [
-    {
-      title: '',//(intro)
-      depth: 1,
-      sentences: [
-        {
-          text: 'The Royal Cinema is an Art Moderne event venue and cinema in Toronto, Canada.',
-          links: [
-            {
-              page: 'Streamline Moderne', // (a href)
-              text: 'Art Moderne'         // (link text)
-            },
-            {
-              page: 'Toronto',
-              text: 'Toronto'
-            },
-            {
-              page: 'Canada',
-              text: 'Canada'
-            }
-          ]
-        },
-        {
-          text: 'It was built in 1939 and owned by Miss Ray Levinsky.'
-        }
-      ]
-    },
-    {
-      title: 'History',
-      depth: 1,
-      sentences: [
-        {
-          text:
-            'When it was built in 1939, it was called The Pylon, with an accompanying large sign at the front of the theatre.'
-        }
-      ]
-    }
-  ],
-  categories: [
-    'National Historic Sites in Ontario',
-    'Cinemas and movie theatres in Toronto',
-    'Streamline Moderne architecture in Canada',
-    'Theatres completed in 1939'
-  ],
-  images: ['Royal_Cinema.JPG'],
-  infobox: {
-    former_name: {
-      text: 'The Pylon, The Golden Princess'
-    },
-    address: {
-      text: '608 College Street',
-      links: [
-        {
-          page: 'College Street (Toronto)',
-          src: 'College Street'
-        }
-      ]
-    },
-    opened: {
-      text: 1939
-    }
-    // ...
-  }
-};
+{ type: 'page',
+  sections:[ { title: '', depth: 0, sentences: [Array] },
+     { title: 'See also', depth: 1, sentences: [Array] },
+     { title: 'References', depth: 1, sentences: []
+   }],
+  infoboxes: [ {
+    template: 'venue',
+    data:
+     { name: { text: 'Royal Cinema' },
+       'former names': { text: 'The Pylon The Golden Princess' },
+       image: { text: 'The Royal Cinema.jpg' },
+       image_size: { text: '200px' },
+       caption: { text: 'The Royal Cinema in 2017.' },
+       address: { text: '608 College Street', links: [Array] },
+       location: { text: 'Toronto, Ontario', links: [Array] },
+       opened: { text: 1939 },
+       architect: { text: 'Benjamin Swartz' },
+       website: { text: 'theroyal.to' },
+       capacity: { text: 390 } }
+    }],
+  interwiki: {},
+  categories:[ 'City of Toronto Heritage Properties',
+     'Cinemas and movie theatres in Toronto',
+     'Streamline Moderne architecture in Canada',
+     'Theatres completed in 1939',
+     '1939 establishments in Ontario'
+   ],
+  images:[{ url: 'https://upload.wikimedia.org/wikipedia/commons/a/af/The_Royal_Cinema.jpg',
+       file: 'File:The Royal Cinema.jpg',
+       thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/The_Royal_Cinema.jpg/300px-The_Royal_Cinema.jpg' }
+     ]
+   }
 ````
 
 Sample Output for [Whistling](https://en.wikipedia.org/w/index.php?title=Whistling)
 ````javascript
 { type: 'page',
-  sections:[
-   { title:'Intro', depth:1, sentences: [ [Object], [Object], [Object], [Object] ]},
-   { title:'Musical/melodic whistling', depth:1, sentences: [ [Object], [Object], [Object], [Object] ]},
-   { title:'Functional whistling', depth:1, sentences: [ [Object], [Object], [Object], [Object] ]},
-   { title:'Whistling as a form of communication', depth:2, sentences: [ [Object], [Object], [Object], [Object] ]},
-   { title:'Sport', depth:2, sentences: [ [Object], [Object], [Object], [Object] ]},
-   { title:'See Also', depth:1, list: [ [Object], [Object] ]},
-  ],
+  sections:
+   [ { title: '', depth: 0, images: [Array], sentences: [Array] },
+     { title: 'Techniques',
+       depth: 1,
+       images: [Array],
+       sentences: [Array] },
+     { title: 'Competitions', depth: 1, sentences: [Array] },
+     { title: 'As communication', depth: 1, sentences: [Array] },
+     { title: 'In music',
+       depth: 1,
+       images: [Array],
+       sentences: [Array] },
+     { title: 'By spectators', depth: 1, sentences: [Array] },
+     { title: 'Superstitions', depth: 1, sentences: [Array] },
+     { title: 'Children\'s television cartoon shows',
+       depth: 1,
+       lists: [Array],
+       sentences: [] },
+     { title: 'See also', depth: 1, lists: [Array], sentences: [] },
+     { title: 'References', depth: 1, sentences: [] },
+     { title: 'External links',
+       depth: 1,
+       lists: [Array],
+       sentences: [] } ],
+  infoboxes: [],
+  interwiki: {},
   categories: [ 'Oral communication', 'Vocal music', 'Vocal skills' ],
-  images: [ 'Image:Duveneck Whistling Boy.jpg' ],
-  infobox: {}
+  images: [Array]
 }
 ````
 
 ## Contributing
-Never-ender projects like these need all-hands, and I'm a pretty friendly maintainer. (promise)
+Never-ender projects like these are only good with many-hands, and I try to be a friendly maintainer. (promise!)
 
 ```bash
 npm install
 npm test
 npm run build #to package-up client-side
 ```
-
-Don't be mad at me, be mad at them
 
 MIT
