@@ -2,118 +2,31 @@
   <head>
     <title>wtf_wikipedia</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <script type="text/javascript" src="./docs.js"></script>
-    <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="../builds/wtf_wikipedia.js"></script>
-    <style>
-      h1{
-        color:#d76d6b;
-        margin:30px;
-      }
-      h2{color:steelblue;}
-      .c{color:#858585; font-size:15px;}
-      a{
-        color:#d76d6b;
-        text-decoration:none;
-      }
-      #text{
-        border:1px solid lightgrey;
-        border-radius:5px;
-        /*overflow:scroll;*/
-        max-width:90%;
-        font-family:helvetica;
-      }
-      .r{color:steelblue; position:relative; left:70px;}
-
-      #wikiscript{
-        border:1px solid steelblue;
-        font-size:11px;
-        border-radius:5px;
-        width:90%;
-        height:250px;
-        margin:0px 3% 10px 3%;
-        overflow:auto;
-      }
-      .page{
-        padding-left:25px;
-        color:steelblue;
-        text-decoration:underline;
-      }
-    </style>
-    <script>
-    $(window).ready(function() {
-  var make_list = function(arr) {
-    arr = arr || [];
-    return arr.reduce(function(str, o) {
-      return (str += '<li>' + o + '</li>');
-    }, '');
-  };
-  var makeImg = function(arr) {
-    arr = arr || [];
-    return arr.reduce(function(str, o) {
-      return (str += '<img style="width:100px;" src="' + o.url + '"/>');
-    }, '');
-  };
-  var makeSections = function(arr) {
-    return arr.reduce(function(str, o) {
-      let title = o.title || ' <sub>(intro)</sub>';
-      let lists = o.lists || [];
-      let tables = o.lists || [];
-      let info =
-        '<div style="color:steelblue;">' +
-        o.sentences.length +
-        ' sentences - - ' +
-        tables.length +
-        ' tables - - ' +
-        lists.length +
-        ' lists </div>';
-      return (str += '<div><h4 style="color:#DE6169;">' + title + ':</h4><ul>' + info + '</ul></div>');
-    }, '');
-  };
-  var parse = function() {
-    var wikiscript = $('#wikiscript').val();
-    var text = wtf.plaintext(wikiscript);
-    $('#text').html(text);
-    var obj = wtf.parse(wikiscript);
-    console.log(obj);
-    $('#sections').html('<ul>' + makeSections(obj.sections) + '</ul>');
-    $('#categories').html('<ul>' + make_list(obj.categories) + '</ul>');
-    $('#images').html('<ul>' + makeImg(obj.images) + '</ul>');
-    $('#infobox').html(JSON.stringify(obj.infobox, null, 2));
-  };
-
-  var el = document.getElementById('wikiscript');
-  parse();
-
-  var pages = Object.keys(window.demo_pages).reduce(function(str, p) {
-    return str + '<a href="#" class="page">' + p + '</a>';
-  }, '');
-  $('#pages').html(pages);
-
-  $('.page').click(function(e) {
-    console.log(e.target.text);
-    var str = e.target.text;
-    el.value = window.demo_pages[str];
-    parse();
-  });
-
-  el.addEventListener('input', parse, false);
-  $('.page:first').click();
-});
-</script>
+    <link rel="stylesheet" type="text/css" href="./index.css">
   </head>
   <body>
-    <div>
-      <a href="https://github.com/spencermountain/wtf_wikipedia">wtf_wikipedia</a>
-      <span style="padding-left:15px; color:grey;"> - parsing demo</span>
+
+    <div style="margin:80px;">
+      <a style="font-size:32px; color:#198E3B;  margin-left:80px;" href="https://github.com/spencermountain/wtf_wikipedia">wtf_wikipedia</a>
+      <span style="font-size:22px; padding-left:15px; color:grey;">is a wikipedia markup parser</span>
+      <div style="margin-left:80px; font-size:17px; padding-left:15px; color:lightgrey;">it runs in javascript and also in the browser</div>
     </div>
-    <ul>
-      demo pages:
-      <div id="pages"></div>
-    </ul>
 
+    <div style="text-align:center;">
+      <div style="color:grey;"><i>try a wikipedia article</i></div>
+      <input id="title" value="On a Friday"/>
+      <input type="button" value="fetch" id="fetch"/>
+      <div style="color:grey;"><i>supports cross-origin fetches, and follows of redirects</i></div>
+      <ul>
+        <div id="pages"></div>
+      </ul>
+    </div>
+    <hr style="margin:80px; color:grey;"/>
     <ul>
-
+      <h2>Infobox:</h2>
+      <ul>
+        <div id="infobox" style="font-size:20px;"></div>
+      </ul>
 
       <h2>Sections:</h2>
       <ul>
@@ -138,5 +51,10 @@
 
     <div style="color:lightgrey;">raw wikiscript:</div>
     <textarea id="wikiscript" value=''></textarea>
+
+    <script type="text/javascript" src="./docs.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="../builds/wtf_wikipedia.js"></script>
+    <script type="text/javascript" src="./display.js"></script>
   </body>
 <html>
