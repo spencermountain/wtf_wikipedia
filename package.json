@@ -1,7 +1,7 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -15,6 +15,7 @@
     "coverage": "node ./scripts/coverage.js",
     "browserTest": "node ./scripts/browserTest.js",
     "watch": "node ./scripts/watch.js",
+    "demo": "node ./scripts/demo.js",
     "build": "node ./scripts/build.js"
   },
   "bin": {
@@ -46,6 +47,7 @@
     "derequire": "^2.0.3",
     "eslint": "^4.5.0",
     "gaze": "^1.1.1",
+    "http-server": "^0.10.0",
     "nyc": "^8.4.0",
     "shelljs": "^0.7.2",
     "tap-min": "^1.2.1",

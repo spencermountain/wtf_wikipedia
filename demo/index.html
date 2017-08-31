@@ -16,6 +16,13 @@
         color:#d76d6b;
         text-decoration:none;
       }
+      #text{
+        border:1px solid lightgrey;
+        border-radius:5px;
+        /*overflow:scroll;*/
+        max-width:90%;
+        font-family:helvetica;
+      }
       .r{color:steelblue; position:relative; left:70px;}
 
       #wikiscript{
@@ -36,29 +43,42 @@
     <script>
     $(window).ready(function() {
   var make_list = function(arr) {
-    console.log(arr);
     arr = arr || [];
     return arr.reduce(function(str, o) {
       return (str += '<li>' + o + '</li>');
     }, '');
   };
   var makeImg = function(arr) {
-    console.log(arr);
     arr = arr || [];
     return arr.reduce(function(str, o) {
       return (str += '<img style="width:100px;" src="' + o.url + '"/>');
     }, '');
   };
-
+  var makeSections = function(arr) {
+    return arr.reduce(function(str, o) {
+      let title = o.title || ' <sub>(intro)</sub>';
+      let lists = o.lists || [];
+      let tables = o.lists || [];
+      let info =
+        '<div style="color:steelblue;">' +
+        o.sentences.length +
+        ' sentences - - ' +
+        tables.length +
+        ' tables - - ' +
+        lists.length +
+        ' lists </div>';
+      return (str += '<div><h4 style="color:#DE6169;">' + title + ':</h4><ul>' + info + '</ul></div>');
+    }, '');
+  };
   var parse = function() {
     var wikiscript = $('#wikiscript').val();
     var text = wtf.plaintext(wikiscript);
     $('#text').html(text);
     var obj = wtf.parse(wikiscript);
     console.log(obj);
+    $('#sections').html('<ul>' + makeSections(obj.sections) + '</ul>');
     $('#categories').html('<ul>' + make_list(obj.categories) + '</ul>');
     $('#images').html('<ul>' + makeImg(obj.images) + '</ul>');
-    $('#interwiki').html('<ul><pre>' + JSON.stringify(obj.interwiki, null, 2) + '</pre></ul>');
     $('#infobox').html(JSON.stringify(obj.infobox, null, 2));
   };
 
@@ -91,12 +111,13 @@
       demo pages:
       <div id="pages"></div>
     </ul>
-    <textarea id="wikiscript" value=''></textarea>
 
     <ul>
-      <h2>PlainText:</h2>
+
+
+      <h2>Sections:</h2>
       <ul>
-        <div id="text"></div>
+        <div id="sections" style="font-size:20px;"></div>
       </ul>
 
       <h2>Categories:</h2>
@@ -109,16 +130,13 @@
         <div id="images"></div>
       </ul>
 
-      <h2>Interwiki:</h2>
+      <h2>PlainText:</h2>
       <ul>
-        <div id="interwiki"></div>
-      </ul>
-
-      <h2>Infobox:</h2>
-      <ul>
-        <pre id="infobox"></pre>
+        <pre style="white-space: pre-wrap; word-break: keep-all;" id="text"></pre>
       </ul>
     </ul>
 
+    <div style="color:lightgrey;">raw wikiscript:</div>
+    <textarea id="wikiscript" value=''></textarea>
   </body>
 <html>

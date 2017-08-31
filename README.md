@@ -234,6 +234,7 @@ Never-ender projects like these are only good with many-hands, and I try to be a
 ```bash
 npm install
 npm test
+npm run demo
 npm run build #to package-up client-side
 ```
 
