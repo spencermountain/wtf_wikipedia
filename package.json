@@ -15,24 +15,14 @@
     "coverage": "node ./scripts/coverage.js",
     "browserTest": "node ./scripts/browserTest.js",
     "watch": "node ./scripts/watch.js",
-    "demo": "node ./scripts/demo.js",
     "build": "node ./scripts/build.js"
   },
   "bin": {
     "wikipedia": "./bin/parse.js",
     "wikipedia_plaintext": "./bin/plaintext.js"
   },
-  "files": [
-    "builds",
-    "src",
-    "bin"
-  ],
-  "keywords": [
-    "wikipedia",
-    "wikimedia",
-    "wikipedia markup",
-    "wikiscript"
-  ],
+  "files": ["builds", "src", "bin"],
+  "keywords": ["wikipedia", "wikimedia", "wikipedia markup", "wikiscript"],
   "dependencies": {
     "jshashes": "^1.0.6",
     "superagent": "^3.5.2"
@@ -47,7 +37,6 @@
     "derequire": "^2.0.3",
     "eslint": "^4.5.0",
     "gaze": "^1.1.1",
-    "http-server": "^0.10.0",
     "nyc": "^8.4.0",
     "shelljs": "^0.7.2",
     "tap-min": "^1.2.1",
