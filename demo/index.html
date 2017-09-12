@@ -2,101 +2,47 @@
   <head>
     <title>wtf_wikipedia</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <script type="text/javascript" src="./docs.js"></script>
-    <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="../builds/wtf_wikipedia.js"></script>
-    <style>
-      h1{
-        color:#d76d6b;
-        margin:30px;
-      }
-      h2{color:steelblue;}
-      .c{color:#858585; font-size:15px;}
-      a{
-        color:#d76d6b;
-        text-decoration:none;
-      }
-      .r{color:steelblue; position:relative; left:70px;}
-
-      #wikiscript{
-        border:1px solid steelblue;
-        font-size:11px;
-        border-radius:5px;
-        width:90%;
-        height:250px;
-        margin:0px 3% 10px 3%;
-        overflow:auto;
-      }
-      .page{
-        padding-left:25px;
-        color:steelblue;
-        text-decoration:underline;
-      }
-    </style>
-    <script>
-    $(window).ready(function() {
-  var make_list = function(arr) {
-    console.log(arr);
-    arr = arr || [];
-    return arr.reduce(function(str, o) {
-      return (str += '<li>' + o + '</li>');
-    }, '');
-  };
-  var makeImg = function(arr) {
-    console.log(arr);
-    arr = arr || [];
-    return arr.reduce(function(str, o) {
-      return (str += '<img style="width:100px;" src="' + o.url + '"/>');
-    }, '');
-  };
-
-  var parse = function() {
-    var wikiscript = $('#wikiscript').val();
-    var text = wtf.plaintext(wikiscript);
-    $('#text').html(text);
-    var obj = wtf.parse(wikiscript);
-    console.log(obj);
-    $('#categories').html('<ul>' + make_list(obj.categories) + '</ul>');
-    $('#images').html('<ul>' + makeImg(obj.images) + '</ul>');
-    $('#interwiki').html('<ul><pre>' + JSON.stringify(obj.interwiki, null, 2) + '</pre></ul>');
-    $('#infobox').html(JSON.stringify(obj.infobox, null, 2));
-  };
-
-  var el = document.getElementById('wikiscript');
-  parse();
-
-  var pages = Object.keys(window.demo_pages).reduce(function(str, p) {
-    return str + '<a href="#" class="page">' + p + '</a>';
-  }, '');
-  $('#pages').html(pages);
-
-  $('.page').click(function(e) {
-    console.log(e.target.text);
-    var str = e.target.text;
-    el.value = window.demo_pages[str];
-    parse();
-  });
-
-  el.addEventListener('input', parse, false);
-  $('.page:first').click();
-});
-</script>
+    <link rel="stylesheet" type="text/css" href="./index.css">
   </head>
   <body>
-    <div>
-      <a href="https://github.com/spencermountain/wtf_wikipedia">wtf_wikipedia</a>
-      <span style="padding-left:15px; color:grey;"> - parsing demo</span>
-    </div>
-    <ul>
-      demo pages:
-      <div id="pages"></div>
-    </ul>
-    <textarea id="wikiscript" value=''></textarea>
 
-    <ul>
-      <h2>PlainText:</h2>
+    <div style="margin:80px;">
+      <a style="font-size:32px; color:#DE6169;  margin-left:80px;" href="https://github.com/spencermountain/wtf_wikipedia">wtf_wikipedia</a>
+      <a href="https://www.npmjs.com/package/wtf_wikipedia" id="version" style="color:lightgrey; margin-left:15px;"></a>
+      <span style="font-size:22px; padding-left:15px; color:grey;">is a wikipedia markup parser</span>
+      <div style="font-size:22px; padding-left:15px; color:grey;">it is a comically-difficult thing to do.</div>
+      <p></p>
+      <div style="margin-left:80px; font-size:22px; padding-left:15px; color:lightgrey;">it runs <span style="color:steelblue;">in javascript</span> and also in the browser</div>
+      <p></p>
+      <div style="margin-left:60px; font-size:22px; padding-left:15px; color:darkgrey;">it may make its information more useful</div>
+    </div>
+
+    <form style="text-align:center;">
+      <div style="color:lightgrey;"><i>try a wikipedia article</i></div>
+      <input id="title" value="On a Friday"/>
+      <select id="lang" style="font-size:25px; color:grey;">
+        <option value="en" selected="selected" label="en">en</option>
+        <option value="de" label="de">de</option>
+        <option value="fr" label="fr">fr</option>
+        <option value="ar" label="ar">ar</option>
+        <option value="ja" label="ja">ja</option>
+      </select>
+      <input type="submit" style="font-size:50px; width: 100px; color:#DE6169;" value="fetch" id="fetch"/>
+      <div style="color:lightgrey;"><i>supports x-origin &amp; redirects</i></div>
       <ul>
-        <div id="text"></div>
+        <div id="pages"></div>
+      </ul>
+    </form>
+    <hr style="margin:80px; color:grey;"/>
+    <ul>
+      <h2>Infobox:</h2>
+      <ul>
+        <div id="infobox" style="font-size:20px;"></div>
+      </ul>
+
+      <h2>Sections:</h2>
+      <ul>
+        <div id="sections" style="font-size:20px;"></div>
       </ul>
 
       <h2>Categories:</h2>
@@ -109,16 +55,18 @@
         <div id="images"></div>
       </ul>
 
-      <h2>Interwiki:</h2>
+      <h2>PlainText:</h2>
       <ul>
-        <div id="interwiki"></div>
-      </ul>
-
-      <h2>Infobox:</h2>
-      <ul>
-        <pre id="infobox"></pre>
+        <pre style="white-space: pre-wrap; word-break: keep-all;" id="text"></pre>
       </ul>
     </ul>
 
+    <div style="color:lightgrey;">raw wikiscript:</div>
+    <textarea id="wikiscript" value=''></textarea>
+
+    <script type="text/javascript" src="./pages.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="../builds/wtf_wikipedia.js"></script>
+    <script type="text/javascript" src="./display.js"></script>
   </body>
 <html>

@@ -1,0 +1,47 @@
+h1 {
+  color: #d76d6b;
+  margin: 30px;
+}
+h2 {
+  color: steelblue;
+}
+.c {
+  color: #858585;
+  font-size: 15px;
+}
+a {
+  color: #d76d6b;
+  text-decoration: none;
+}
+#text {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  /*overflow:scroll;*/
+  max-width: 90%;
+  font-family: helvetica;
+}
+#title {
+  font-size: 35px;
+  color: steelblue;
+  margin-left: 100px;
+}
+.r {
+  color: steelblue;
+  position: relative;
+  left: 70px;
+}
+
+#wikiscript {
+  border: 1px solid steelblue;
+  font-size: 11px;
+  border-radius: 5px;
+  width: 90%;
+  height: 250px;
+  margin: 0px 3% 10px 3%;
+  overflow: auto;
+}
+.page {
+  padding-left: 25px;
+  color: steelblue;
+  text-decoration: underline;
+}

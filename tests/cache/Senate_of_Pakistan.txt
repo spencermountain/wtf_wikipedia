@@ -1,0 +1,184 @@
+{{for|current members of the Senate|List of senators in the 14th Parliament of Pakistan}}
+{{Infobox legislature
+| name               = Senate of Pakistan<br>{{Nastaliq|'''ایوانِ بالا پاکستان'''}} 
+| native_name        = 
+| native_name_lang   = 
+| transcription_name = 
+| legislature        = 
+| coa_pic            = Coat_of_arms_of_Pakistan.svg 
+| coa_caption        = 
+| coa_res            = 108px 
+| coa_alt            = 
+| logo_pic           = 
+| logo_caption       = 
+| logo_res           = 
+| logo_alt           = 
+| house_type         = [[Upper House]] 
+| body               = Parliament of Pakistan 
+| houses             = 
+| term_limits        = None
+| foundation         = <!-- {{Start date|YYYY|MM|DD}} -->
+| disbanded          = <!-- {{End date|YYYY|MM|DD}} -->
+| preceded_by        = 
+| succeeded_by       = 
+| new_session        = {{start date|2015|03|05}} 
+| leader1_type       = [[Chairman of the Senate of Pakistan|Chairman]] 
+| leader1            = [[Raza Rabbani]] 
+| party1             = ([[Pakistan Peoples Party|PPP]]) 
+| election1          = 12 March 2015 
+| leader2_type       = [[Chairman of the Senate of Pakistan|Deputy Chairman]] 
+| leader2            = [[Abdul Ghafoor Haideri|A.G. Haideri]]
+| party2             = ([[Jamiat Ulema-e-Islam (F)|JUI]])
+| election2          = 12 March 2015
+| leader3_type       = [[Leader of the House (Pakistan)|House Leader]] 
+| leader3            = [[Raja Zafar ul Haq|Raja Zafar-ul-Haq]] 
+| party3             = ([[Pakistan Muslim League (N)|PML-N]])
+| election3          = 12 March 2015 
+| leader4_type       = [[Leader of the Opposition (Pakistan)|Opposition Leader]]  
+| leader4            = [[Aitzaz Ahsan]]  
+| party4             = ([[Pakistan Peoples Party|PPP]])  
+| election4          = 12 March 2015  
+| leader5_type       = 
+| leader5            = 
+| party5             = 
+| election5          = 
+| leader6_type       = 
+| leader6            = 
+| party6             = 
+| election6          = 
+| leader7_type       = 
+| leader7            = 
+| party7             = 
+| election7          = 
+| members            =
+| seats              = '''104'''<br>{{PakSen|vacancy}}
+| house1             = 
+| house2             = 
+| structure1         = Senate of Pakistan, 2015.svg
+| structure1_res     = 300px
+| structure1_alt     = 
+| structure2         = 
+| structure2_res     = 
+| structure2_alt     = 
+| political_groups1  = 
+*{{colorbox|{{Pakistan Muslim League (N)/meta/color}}|border=darkgray}} [[Pakistan Muslim League (N)|PML-N]] ({{PakSen|PMLN}})
+*{{colorbox|{{Pakistan Peoples Party/meta/color}}|border=darkgray}} [[Pakistan Peoples Party|PPP]] ({{PakSen|PPP}})
+*{{colorbox|{{Muttahida Qaumi Movement/meta/color}}|border=darkgray}} [[Muttahida Qaumi Movement|MQM]] ({{PakSen|MQM}})
+*{{colorbox|{{Pakistan Tehreek-e-Insaf/meta/color}}|border=darkgray}} [[Pakistan Tehreek-e-Insaf|PTI]] ({{PakSen|PTI}})
+*{{colorbox|{{Awami National Party/meta/color}}|border=darkgray}} [[Awami National Party|ANP]] ({{PakSen|ANP}})
+*{{colorbox|{{JUI-F/meta/color}}|border=darkgray}} [[Jamiat Ulema-e-Islam|JUI]] ({{PakSen|JUIF}})
+*{{colorbox|{{Pakistan Muslim League (Q)/meta/color}}|border=darkgray}} [[Pakistan Muslim League (Q)|PML-Q]] ({{PakSen|PMLQ}})
+*{{colorbox|#008000|border=darkgray}} [[National Party (Pakistan)|NP]] ({{PakSen|NP}})
+*{{colorbox|orange|border=darkgray}} [[Pakhtunkhwa Milli Awami Party|PkMAP]] ({{PakSen|PMAP}})
+*{{colorbox|#00A99D|border=darkgray}} [[Balochistan National Party Awami|ABNP]] ({{PakSen|BNPA}})
+*{{colorbox|#FFF71C|border=darkgray}} [[Balochistan National Party|BNP]] ({{PakSen|BNPM}})
+*{{colorbox|{{Jamaat-e-Islami/meta/color}}|border=darkgray}} [[Jamaat-e-Islami Pakistan|JI]] ({{PakSen|JIP}})
+*{{colorbox|{{Pakistan Muslim League (F)/meta/color}}|border=darkgray}} [[Pakistan Muslim League (F)|PML-F]] ({{PakSen|PMLF}})
+*{{colorbox|#FF29F1|border=darkgray}} [[Independent politician|Independents]] ({{PakSen|Ind}})
+| political_groups2  = 
+| committees1        = 
+| committees2        = 
+| joint_committees   = 
+| voting_system1     =[[Single transferable vote]]
+| voting_system2     = 
+| last_election1     =[[Pakistani Senate election, 2015|5 March 2015]]
+| last_election2     = 
+| next_election1     =[[Pakistani Senate election, 2018|5 March 2018]]
+| next_election2     = 
+| session_room       = 
+| session_res        = 
+| session_alt        = 
+| meeting_place      ={{br separated entries |Senate Secretariat |[[Parliament of Pakistan|Parliament Building]] |[[Islamabad]], [[Pakistan]]}} 
+| website            = {{URL|http://www.senate.gov.pk/}}
+| footnotes          = 
+| motto              = 
+}}Senate is most respectful institution in pakistan.{{Politics of Pakistan}}
+
+The '''Senate of Pakistan''' ({{lang-ur|{{nq|ایوانِ بالا پاکستان}}}}, {{transl|ur|ALA-LC|''Aiwān-i bālā Pākistān''}}, {{IPA-ur|ɛːʋɑːn-e bɑːlɑ ˌpɑːkɪst̪ɑːn|IPA}}), is the [[upper house|upper legislative]] chamber of the [[bicameral]] [[legislature]] of [[Pakistan]], and together with the [[National Assembly (Pakistan)|National Assembly]] makes up the [[Parliament of Pakistan]].
+
+First convened in 1973, the Senate's composition and powers are established by the [http://pakistani.org/pakistan/constitution/part3.ch2.html Article 59] of the [[Constitution of Pakistan|Constitution]] of [[Pakistan]].<ref name="Brief History of Senate">{{cite web|last1=Brief History of Senate|title=Brief History of Senate|url=http://www.senate.gov.pk/en/content.php?id=3|website=http://www.senate.gov.pk|publisher=Brief History of Senate|accessdate=23 May 2015}}</ref> Each [[Administrative units of Pakistan|four provinces]] are represented by fourteen senators and eight senators from the [[Federally Administered Tribal Areas|tribal areas]] regardless of population, who serve staggered six-year terms.<ref>[Article 59(1)(a)-59(1)(c) in Chapter 2: The Parliament of Part III: The Federation of Pakistan in the [[Constitution of Pakistan]]</ref> The Senate secretariat is located in the east wing of the [[Parliament of Pakistan|Parliament Building]]; the [[National Assembly (Pakistan)|National Assembly]] convenes in the west wing of the same building.<!--- According to Google maps, the senate secretariat is located on the eastern wing and national assembly secretariat on the western wing.---><ref name="Google maps">{{cite web|last1=Google maps|title=Parliament House, Pakistan|url=https://www.google.com/maps/place/Senate+of+Pakistan/@33.7305652,73.0973847,18z/data=!4m2!3m1!1s0x38dfc086ee47fdb1:0x4b10777576603ac0|website=https://www.google.com/maps/|publisher=Google maps|accessdate=23 May 2015}}</ref> 
+
+The Senate has several exclusive powers not granted to the [[National Assembly (Pakistan)|National Assembly]], including the powers of making parliamentary [[Bill (law)|bills]] as a being enforced into [[Pakistani law|law]]. Elections are held every three years for one half of the [[Senate]] and each Senator has a term of six years.<ref>[Article 59(3)(a) in Chapter 2: The Parliament of Part III: The Federation of Pakistan in the [[Constitution of Pakistan]]</ref> The [[Constitution of Pakistan|Constitution]] does not allow for the dissolution of the Senate.<ref>[Article 59(3) in Chapter 2: The Parliament of Part III: The Federation of Pakistan in the [[Constitution of Pakistan]]</ref>
+
+== History ==
+After Independence, the first [[Constituent Assembly of Pakistan]], elected in December 1947 after partition, was assigned the task of framing the [[Constitution of Pakistan]]. This Assembly passed the [[Objectives Resolution]] on 12 March 1949, laying down principles which later became substantive part of the Constitution of Pakistan. However, before it could accomplish the task of framing the constitution, it was dissolved in October, 1954. Thereafter, the [[Governor General of Pakistan|Governor General]], convened the Second Constituent Assembly in May, 1955, which framed and passed the first Constitution of Pakistan on 29 February 1956. That Constitution was promulgated on 23 March 1956, which provided for a parliamentary form of Government with a [[unicameral]] legislature. However, from 14 August 1947 to 1 March 1956 the [[Government of India Act 1935]], was retained as the Constitution of Pakistan.
+
+On October 7, 1958, Martial Law was promulgated and the Constitution abrogated. The Military Government appointed a Constitution Commission in February, 1960 which framed the 1962 Constitution. That Constitution provided for a Presidential form of Government with a unicameral legislature. The 1962 Constitution was abrogated on 25 March 1969. The Civil Government, which came to power in December 1971 pursuant to 1970 elections, gave the nation an interim Constitution in the year 1972.
+
+The 1970 Assembly framed the 1973 Constitution which was unanimously passed on 12 April and promulgated on 14 August 1973. The 1973 Constitution provides for a parliamentary form of Government with a [[bicameral]] legislature, comprising the [[National Assembly of Pakistan|National Assembly]] and the Senate.
+
+The membership of the Senate, which was originally 45, was raised to 63 in 1977 and to 87 in 1985. The government of Gen. [[Pervez Musharraf]] raised the membership of the Senate from 87 to 100 through the Legal Framework Order (LFO), 2002, enforced on 21 August 2002 and the government of [[Asif Ali Zardari]] raised the membership of the Senate from 100 to 104 through the 19th amendment in 2011 (four minority members from four provinces).
+
+== Purpose and role ==
+The main purpose for the creation of the Senate of Pakistan was to give equal representation to all the [[Subdivisions of Pakistan|federating units]] since the membership of the National Assembly was based on the population of each province. Equal provincial membership in the Senate, thus, balances the provincial inequality in the National Assembly.
+
+There are one hundred and four senatorial seats. There are 18 women Senators; Pakistani constitution requires that there be at least 17 women Senators. Members of the Senate are elected according to Article 59 of the Constitution.
+
+===President and Parliament===
+Under Article 50 of the Constitution, the Majlis-i-Shoora (Parliament) of Pakistan consists of the President and two Houses to be known respectively as the National Assembly and the Senate. The President is elected by members of both Houses of the Parliament and the Provincial Assemblies. The President may be removed from office or impeached through a resolution, passed by not less than two-thirds of the total membership of the Parliament in a joint sitting of the two Houses, convened for the purpose. 
+In the event that the office of the President becomes vacant, the [[Chairman of the Senate of Pakistan|Chairman of the Senate]] acts as President till such time that the position may be filled through a byelection. This also occurs when the President, by reason of absence or any other incapacity, is unable to effectively exercise their office.
+
+===Relations between the Houses===
+Unless both the Houses pass a Bill and it receives President's assent it cannot become a law except in the case of a money bill which is the sole prerogative of the National Assembly. Through an amendment, the role of a Mediation Committee, composed of eight members of each House, has been introduced to evolve consensus on Bills, in case there is a disagreement between the two houses.
+
+===Cabinet===
+The Constitution provides that there shall be a Cabinet headed by the Prime Minister which is collectively responsible to the National Assembly. The Prime Minister is chosen from the National Assembly. The Federal Ministers and Ministers of State are appointed from amongst the members of Parliament. However, the number of Federal Ministers and Ministers of State who are members of Senate, shall not at any time, exceed one fourth of the numbers of Federal Ministers.
+
+{| class="sortable wikitable"
+|-
+! Province/Territory !! General seats !! Technocrats/Ulema !! Women !! Non-Muslim !! Total
+|-
+| Balochistan || 14|| 4|| 4|| 1|| 23
+|-
+| Khyber Pakhtunkhwa|| 14|| 4|| 4|| 1|| 23
+|-
+| Sindh|| 14|| 4|| 4|| 1|| 23
+|-
+| Punjab|| 14|| 4|| 4|| 1|| 23
+|-
+| Tribal Areas (FATA)|| 8|| || || || 8
+|-
+| Islamabad Capital Territory|| 2|| 1||1 || || 4
+|-
+| Total|| 66|| 17||17 ||4 || 104
+|}
+* Four seats for non-Muslims increased through the Constitution (Eighteenth Amendment) Act, 2010 (Act No. X of 2010).
+
+==Appointment==
+(1) The Senate shall consist of 104 members, of whom: 
+:(a) 14 shall be elected by the members of each Provincial Assembly;
+:(b) eight shall be elected by direct and free vote from the Federally Administered Tribal Areas, in such manner as the President may, by Order, and by law prescribe;
+:(c) two on general seats, and one woman and one technocrat including [[aalim]] shall be elected from the Federal Capital in such manner as the President may, by Order, prescribe;
+:(d) four women shall be elected by the members of each Provcial Assembly;
+:(e) four technocrats including [[ulema]] shall be elected by the members of each Provincial Assembly.
+:(f) one seat in the senate is reserved for minorities in each province."
+(2) Election to fill seats in the Senate allocated to each Province shall be held in accordance with the system of proportional representation by means of the single transferable vote.
+
+(3) The Senate shall not be subject to dissolution but the term of its members of parliments, who shall retire as follows, shall be six years:- 
+:(a) of the members referred to in paragraph (a) of clause (1), seven shall retire after the expiration of the first three years and seven shall retire after the expiration of the next three years.
+:(b) of the members referred to in paragraph (b) of the aforesaid clause, four shall retire after the expiration of the first three years and four shall retire after the expiration of the next three years
+:(c) of the members referred to in paragraph (c) of the aforesaid clause,-
+::(i) one elected on general seat shall retire after the expiration of the first three years and the other one shall retire after the expiration of the next three years, and
+::(ii) one elected on the seat reserved for technocrat shall retire after first three years and the one elected on the seat reserved for woman shall retire after the expiration of the next three years;
+:(d) of the members referred to in paragraph (d) of the aforesaid clause, two shall retire after the expiration of the three years and two shall retire after the expiration of the next three years; and
+:(e) of the members referred to in paragraph (e) of the aforesaid clause, two shall retire after the expiration of the first three years and two shall retire after the expiration of the next three years: Provided that the term of office of a person elected to fill a casual vacancy shall be the unexpired term of the member whose vacancy he has filled.
+
+==See also==
+*[[Chairman of the Senate of Pakistan]]
+*[[List of senators of Pakistan]]
+*[[List of committees of the Senate of Pakistan]]
+*[[National Assembly of Pakistan]]
+
+==References==
+{{Reflist|30em}}
+
+== External links ==
+* [http://www.senate.gov.pk/en/index.php?id=-1&cattitle=Home Official web site of the Senate of Pakistan]
+
+{{National upper houses}}
+{{Chairman Senate Pakistan}}
+
+{{DEFAULTSORT:Senate Of Pakistan}}
+[[Category:Senate of Pakistan|*]]
+[[Category:Parliament of Pakistan]]
+[[Category:National upper houses|Pakistan]]

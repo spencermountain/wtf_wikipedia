@@ -1,0 +1,36 @@
+{{enzyme
+| Name = alanine-oxo-acid transaminase
+| EC_number = 2.6.1.12
+| CAS_number = 9030-41-5
+| IUBMB_EC_number = 2/6/1/12
+| GO_code = 0047635
+| image = 
+| width = 
+| caption = 
+}}
+In [[enzymology]], an '''alanine-oxo-acid transaminase''' ({{EC number|2.6.1.12}}) is an [[enzyme]] that [[catalysis|catalyzes]] the [[chemical reaction]]
+
+:L-alanine + a 2-oxo acid <math>\rightleftharpoons</math> pyruvate + an L-amino acid
+
+Thus, the two [[substrate (biochemistry)|substrates]] of this enzyme are [[L-alanine]] and [[2-oxo acid]], whereas its two [[product (chemistry)|products]] are [[pyruvate]] and [[L-amino acid]].
+
+This enzyme belongs to the family of [[transferase]]s, specifically the [[transaminases]], which transfer nitrogenous groups.  The [[List of enzymes|systematic name]] of this enzyme class is '''L-alanine:2-oxo-acid aminotransferase'''. Other names in common use include '''L-alanine-alpha-keto acid aminotransferase''', '''leucine-alanine transaminase''', '''alanine-keto acid aminotransferase''', and '''alanine-oxo acid aminotransferase'''.  This enzyme participates in [[alanine and aspartate metabolism]].  It employs one [[cofactor (biochemistry)|cofactor]], [[pyridoxal phosphate]].
+
+==References==
+{{reflist|1}}
+* {{cite journal |vauthors=ALTENBERN RA, HOUSEWRIGHT RD | year = 1953 | title = Transaminases in smooth Brucella abortus, strain 19 | journal = J. Biol. Chem.  | volume = 204 | pages = 159&ndash;67  | pmid = 13084587 | issue = 1 | url=http://www.jbc.org/content/204/1/159.full.pdf | format=PDF}}
+* {{cite journal | author = Rowsell EV | year = 1956 | title = Transaminations with pyruvate and other alpha-keto acids | journal = Biochem. J.  | volume = 64 | issue = 2 | pages = 246&ndash;252 | pmid = 13363834 | pmc = 1199724 }}
+* {{cite journal | author = Sallach HJ | year = 1956 | title = Formation of serine from hydroxypyruvate and L-alanine | journal = J. Biol. Chem.  | volume = 223| issue=2 | url=http://www.jbc.org/content/223/2/1101.full.pdf | format=PDF | pages = 1101&ndash;1108 }}
+* {{cite journal |vauthors=Wilson DG, King KW, Burris RH | year = 1954 | title = Transaminase reactions in plants | journal = J. Biol. Chem.  | volume = 208 | issue=2 | pages = 863&ndash;874 | url=http://www.jbc.org/content/208/2/863.full.pdf | format=PDF}}
+
+{{Nitrogenous transferases}}
+{{Enzymes}}
+{{Portal bar|Molecular and Cellular Biology|border=no}}
+
+{{DEFAULTSORT:Alanine-oxo-acid transaminase}}
+[[Category:EC 2.6.1]]
+[[Category:Pyridoxal phosphate enzymes]]
+[[Category:Enzymes of unknown structure]]
+
+
+{{2.6-enzyme-stub}}

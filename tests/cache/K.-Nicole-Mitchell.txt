@@ -1,0 +1,64 @@
+{{Infobox Judge
+| name = K. Nicole Mitchell
+| imagesize = 
+| caption = 
+| office = U.S. Magistrate Judge of the [[United States District Court for the Eastern District of Texas]]
+| termstart = August 16, 2013
+| termend = 
+| nominator = 
+| appointer = 
+| predecessor   = Judith Guthrie
+| successor = 
+| office2 = 
+| termstart2 = 
+| termend2 = 
+| nominator2 = 
+| appointer2 = 
+| predecessor2 = 
+| successor2 = 
+|birth_date  = 
+| birth_place = 
+| death_date = 
+| death_place = 
+| spouse = 
+| alma_mater = [[Texas A&M]] (B.A., M.A.)<br>[[Baylor Law School]] (J.D.)
+| religion = 
+}}
+
+'''K. Nicole Mitchell''' (full name: '''Katie Nicole Mitchell''' and also known as '''Nicole Mitchell''') is currently a [[U.S. Magistrate Judge]] of the [[United States District Court for the Eastern District of Texas]].
+
+==Education==
+Mitchell was born and raised in [[Victoria, Texas]] and graduated from [[St. Joseph High School (Victoria, Texas)|St. Joseph High School]], participating in [[4-H]] while growing up and receiving a [[4-H]] scholarship.<ref name=Watts>[https://www.victoriaadvocate.com/news/2013/aug/10/federal_judge_ew_081113_216876/ Elena Watts, Victoria Advocate, At 35, St. Joseph High alumna becomes federal judge (video)]</ref><ref name=Breedlove>[https://www.law360.com/articles/468029/meet-the-eastern-district-of-texas-new-magistrate-judge Scott Breedlove, Meet The Eastern District Of Texas' New Magistrate Judge, Law360]</ref> Mitchell received a bachelor's degree (initially majoring in [[Biochemistry]] and [[Genetics]] and graduating with a major in [[Psychology]] and a minor in [[Biology]], [[Chemistry]] and [[Genetics]]) and a master's degree ([[NASPA - Student Affairs Administrators in Higher Education|Student Affairs Administration in Higher Education]]) from [[Texas A&M University]].<ref name=Watts/><ref name=Baylor>[http://www.baylor.edu/law/news.php?action=story&story=136160 Baylor Law School News, Nicole Mitchell (JD '06) appointed U.S. Magistrate Judge for the Eastern District of Texas]</ref> At Texas A&M, Mitchell served as a director of the Aggie Orientation Leader Program that helped over 10,000 new students transition to the university.<ref name=Watts/>In 2001, after receiving her master's degree, [[Baylor University]] hired Mitchell as its first coordinator of New Student Programs as part of its "Baylor 2012" vision.<ref name=Watts/><ref name=Baylor/>
+
+Mitchell then received her [[Juris Doctor]] (J.D.) degree from [[Baylor Law School]] in 2006, where she graduated near the top of her class (6th),<ref name=Watts/> served as Senior Executive Editor of the ''Baylor Law Review'' and the Managing Editor of ''Baylor Law Review's'' Texas Practice Edition, and was active on various moot court and mock trial teams.<ref name=Watts/><ref name=edtx>[http://www.edtexbar.com/wp-content/uploads/2015/10/MitchcellBio.pdf Eastern District of Texas, Mitchell Bio]</ref>
+
+==Career==
+After graduating from law school, Mitchell served as a [[Law clerk#United States|judicial law clerk]] to then Chief Judge of the [[U.S. District Court for the Eastern District of Texas]], the Honorable [[Leonard Davis (judge)|Leonard Davis]] from 2006-2007.<ref name=edtx/> After clerking for Judge Davis, Mitchell joined the [[Houston, Texas|Houston]] office of the law firm [[Fulbright & Jaworski]] (now known as Norton Rose Fulbright), working primarily in the healthcare litigation or [[Health law]] litigation section, but also working on patent litigation and patent prosecution as a registered [[patent attorney]] before the [[United States Patent & Trademark Office]].<ref name=edtx/> After working for three years at Fulbright, Mitchell returned to the chambers of Judge [[Leonard Davis (judge)|Leonard Davis]] and served as his Chief Staff Attorney.<ref name=edtx/><ref name=Breedlove/>
+
+Mitchell was sworn in as a [[U.S. Magistrate Judge]] on August 16, 2013.<ref name=FedCir>[http://www.cafc.uscourts.gov/mediators/honorable-k-nicole-mitchell K. Nicole Mitchell, Federal Circuit Mediator Bios]</ref>
+
+==See also==
+*[[United States District Court for the Eastern District of Texas]]
+*[[United States Court of Appeals for the Fifth Circuit]]
+
+==References==
+{{reflist|30em}}
+
+==External links==
+*[http://www.txed.uscourts.gov/page1.shtml?location=info:judge&judge=14 The Honorable K. Nicole Mitchell, United States District Court for the Eastern District of Texas]
+*[https://www.law360.com/articles/468029/meet-the-eastern-district-of-texas-new-magistrate-judge Law360 Q&A with Judge Mitchell]
+*[http://www.baylor.edu/law/news.php?action=story&story=136160 Baylor Law School News: Nicole Mitchell (JD '06) appointed U.S. Magistrate Judge for the Eastern District of Texas]
+*[https://www.victoriaadvocate.com/news/2013/aug/10/federal_judge_ew_081113_216876/ Victoria Advocate - At 35, St. Joseph High alumna becomes federal judge]
+*[http://www.edtexbar.com/wp-content/uploads/2015/10/MitchcellBio.pdf Eastern District of Texas - K. Nicole Mitchell Biography]
+
+{{DEFAULTSORT:Mitchell, K. Nicole}}
+[[Category:American lawyers]]
+[[Category:Texas A&M University alumni]]
+[[Category:Baylor Law School alumni]]
+[[Category:Judges of the United States District Court for the Eastern District of Texas]]
+[[Category:United States magistrate judges]]
+[[Category:People from Tyler, Texas]]
+[[Category:People from Victoria, Texas]]
+[[Category:21st-century American judges]]
+[[Category:Year of birth missing (living people)]]
+[[Category:Living people]]

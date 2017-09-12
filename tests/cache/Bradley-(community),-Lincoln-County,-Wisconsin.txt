@@ -1,0 +1,92 @@
+{{Infobox settlement
+|official_name = Bradley, Wisconsin
+|settlement_type = [[Unincorporated area|Unincorporated community]] 
+|nickname = 
+|motto =
+
+<!-- Images -->
+|image_skyline = 
+|imagesize = 
+|image_caption = 
+|image_flag = 
+|image_seal =
+
+<!-- Maps -->
+|image_map = 
+|mapsize = 
+|map_caption = 
+|image_map1 = 
+|mapsize1 = 
+|map_caption1 = 
+|pushpin_map = Wisconsin#USA
+
+<!-- Location -->
+|subdivision_type = [[List of countries|Country]]
+|subdivision_name = [[United States]]
+|subdivision_type1 = [[Political divisions of the United States|State]]
+|subdivision_name1 = [[Wisconsin]]
+|subdivision_type2 = [[List of counties in Wisconsin|County]]
+|subdivision_name2 = [[Lincoln County, Wisconsin|Lincoln]]
+
+<!-- Government -->
+|government_footnotes = 
+|government_type = 
+|leader_title = 
+|leader_name = 
+|leader_title1 = 
+|leader_name1 = 
+|established_title = 
+|established_date =
+
+<!-- Area -->
+|unit_pref  =  
+|area_footnotes = 
+|area_magnitude = 
+|area_total_km2 = 
+|area_land_km2 = 
+|area_water_km2 = 
+|area_total_sq_mi = 
+|area_land_sq_mi = 
+|area_water_sq_mi =
+
+<!-- Population -->
+|population_as_of = 
+|population_footnotes = 
+|population_total = 
+|population_density_km2 = 
+|population_density_sq_mi =
+
+<!-- General information -->
+|timezone = [[Central Time Zone|Central (CST)]]
+|utc_offset = -6
+|timezone_DST = CDT
+|utc_offset_DST = -5
+|elevation_footnotes = 
+|elevation_m = 
+|elevation_ft = 1470
+|coordinates      = {{coord|45|32|22|N|89|45|19|W|region:US-WI|display=inline,title}}
+
+<!-- Area/postal codes & others -->
+|postal_code_type = 
+|postal_code = 
+|area_code = [[Area codes 715 and 534|715 & 534]]
+|blank_name = [[Geographic Names Information System|GNIS]] feature ID
+|blank_info = 1562127<ref>{{cite gnis|1562127|Bradley}}</ref>
+|blank1_name =
+|blank1_info = 
+|website = 
+|footnotes = 
+}}
+
+'''Bradley''' is an [[Unincorporated area|unincorporated community]] located in the town of [[Bradley, Wisconsin|Bradley]], [[Lincoln County, Wisconsin|Lincoln County]], [[Wisconsin]], [[United States]]. Bradley is located on County Highway Y near [[U.S. Route 8]], {{convert|5|mi|km}} north-northwest of [[Tomahawk, Wisconsin|Tomahawk]].
+
+==References==
+{{reflist}}
+
+{{Lincoln County, Wisconsin}}
+
+[[Category:Unincorporated communities in Lincoln County, Wisconsin]]
+[[Category:Unincorporated communities in Wisconsin]]
+
+
+{{LincolnCountyWI-geo-stub}}

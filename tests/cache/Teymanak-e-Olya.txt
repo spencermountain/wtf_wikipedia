@@ -1,0 +1,47 @@
+{{Infobox settlement
+|official_name =Teymanak-e Olya
+|native_name =تيمنك عليا
+|settlement_type        = village
+|pushpin_map            =Iran
+|mapsize                =150px
+|subdivision_type       = [[List of countries|Country]]
+|subdivision_name = {{flag|Iran}}
+|subdivision_type1 =[[Provinces of Iran|Province]]
+|subdivision_name1 =[[Razavi Khorasan Province|Razavi Khorasan]]
+|subdivision_type2 =[[Counties of Iran|County]]
+|subdivision_name2 = [[Torbat-e Jam County|Torbat-e Jam]]
+|subdivision_type3 =[[Bakhsh]]
+|subdivision_name3 =[[Central District (Torbat-e Jam County)|Central]]
+|subdivision_type4 =[[Rural Districts of Iran|Rural District]]
+|subdivision_name4 =[[Jolgeh-ye Musaabad Rural District|Jolgeh-ye Musaabad]]
+|leader_title           = 
+|leader_name            = 
+|established_title      =
+|established_date       = 
+|area_total_km2           = 
+|area_footnotes           = 
+|population_as_of         = 2006
+|population_total =559
+|population_density_km2   =auto
+|timezone               = [[Iran Standard Time|IRST]]
+|utc_offset             = +3:30
+|timezone_DST           = [[Iran Daylight Time|IRDT]]
+|utc_offset_DST         = +4:30
+|coordinates            = {{coord|35|30|12|N|60|35|37|E|region:IR|display=inline,title}}
+|elevation_m            = 
+|area_code              = 
+|website                = 
+|footnotes              =
+}}
+'''Teymanak-e Olya''' ({{lang-fa|تيمنك عليا}}, also [[Romanize]]d as '''Teymanak-e ‘Olyā''' and '''Teymanak ‘Olyā'''; also known as '''Teymanak''' and '''Teymanak-e Bālā''')<ref>{{GEOnet3|-3087388|Teymanak-e Olya}}</ref> is a village in [[Jolgeh-ye Musaabad Rural District]], in the [[Central District (Torbat-e Jam County)|Central District]] of [[Torbat-e Jam County]], [[Razavi Khorasan Province]], [[Iran]]. At the 2006 census, its population was 559, in 117 families.<ref>{{IranCensus2006|09}}</ref>
+
+== References ==
+{{reflist}}
+
+{{Torbat-e Jam County}}
+
+{{Portal|Iran}}
+
+[[Category:Populated places in Torbat-e Jam County]]
+
+{{TorbatJam-geo-stub}}

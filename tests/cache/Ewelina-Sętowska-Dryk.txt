@@ -1,0 +1,114 @@
+'''Ewelina Sętowska-Dryk''' (born 5 March 1980 in [[Puławy]]) is a [[Poland|Polish]] middle distance runner who specializes in the [[800 metres]].
+
+She finished fifth at the [[2005 Summer Universiade]] in Izmir and sixth at the [[2006 IAAF World Indoor Championships]] in Moscow, the latter in an indoor personal best indoor time of 2:02.39 minutes. She won a bronze medal in [[4 x 400 metres relay]] at the [[2006 European Championships in Athletics|2006 European Championships]], together with teammates [[Monika Bejnar]], [[Grażyna Prokopek]] and [[Anna Jesień]].
+
+Her personal best time over 800 m is 1:58.96 minutes, achieved in August 2006 in [[Rieti]].
+
+==Competition record==
+{| {{AchievementTable|Event=yes}}
+|-
+!colspan="6"|Representing {{POL}}
+|-
+|rowspan=2|2003
+|rowspan=2|[[Athletics at the 2003 Summer Universiade|Universiade]]
+|rowspan=2|[[Daegu, South Korea]]
+|7th
+|400 m hurdles
+|[[Athletics at the 2003 Summer Universiade – Women's 400 metres hurdles|57.92]]
+|-
+|bgcolor="silver" | 2nd
+|4x400 m relay
+|[[Athletics at the 2003 Summer Universiade – Women's 4 × 400 metres relay|3:38.17]]
+|-
+|rowspan=4|2005
+|[[2005 European Athletics Indoor Championships|European Indoor Championships]]
+|[[Madrid, Spain]]
+|12th (sf)
+|800 m
+|[[2005 European Athletics Indoor Championships – Women's 800 metres|2:11.43]]
+|-
+|[[2005 World Championships in Athletics|World Championships]]
+|[[Helsinki, Finland]]
+|18th (sf)
+|800 m
+|[[2005 World Championships in Athletics – Women's 800 metres|2:02.02]]
+|-
+|rowspan=2|[[Athletics at the 2005 Summer Universiade|Universiade]]
+|rowspan=2|[[Izmir, Turkey]]
+|5th
+|800 m
+|[[Athletics at the 2005 Summer Universiade – Women's 800 metres|2:02.30]]
+|-
+|bgcolor=silver|2nd
+|4x400 m relay
+|[[Athletics at the 2005 Summer Universiade – Women's 4 × 400 metres relay|3:27.71]]
+|-
+|rowspan=3|2006
+|[[2006 IAAF World Indoor Championships|World Indoor Championships]]
+|[[Moscow, Russia]]
+|6th
+|800 m
+|[[2006 IAAF World Indoor Championships – Women's 800 metres|2:02.39]]
+|-
+|rowspan=2|[[2006 European Athletics Championships|European Championships]]
+|rowspan=2|[[Gothenburg, Sweden]]
+|9th (sf)
+|800 m
+|[[2006 European Athletics Championships – Women's 800 metres|2:00.60]]
+|-
+|bgcolor=cc9966|3rd
+|4x400 m relay
+|[[2006 European Athletics Championships – Women's 4 × 400 metres relay|3:27.77]]
+|-
+|rowspan=3|2007
+|[[2007 European Athletics Indoor Championships|European Indoor Championships]]
+|[[Birmingham, United Kingdom]]
+|14th (h)
+|800 m
+|[[2007 European Athletics Indoor Championships – Women's 800 metres|2:04.66]]
+|-
+|rowspan=2|[[2007 World Championships in Athletics|World Championships]]
+|rowspan=2|[[Osaka, Japan]]
+|20th (sf)
+|800 m
+|[[2007 World Championships in Athletics – Women's 800 metres|2:01.02]]
+|-
+|6th
+|4x400 m relay
+|[[2007 World Championships in Athletics – Women's 4 × 400 metres relay|3:26.49]]
+|-
+|rowspan=2|2008
+|rowspan=2|[[2008 IAAF World Indoor Championships|World Indoor Championships]]
+|rowspan=2|[[Valencia, Spain]]
+|9th (sf)
+|800 m
+|[[2008 IAAF World Indoor Championships – Women's 800 metres|2:02.38]]
+|-
+|6th
+|4x400 m relay
+|[[2008 IAAF World Indoor Championships – Women's 4 × 400 metres relay|3:36.97]]
+|-
+|2012
+|[[2012 European Athletics Championships|European Championships]]
+|[[Helsinki, Finland]]
+|13th (h)
+|800 m
+|[[2012 European Athletics Championships – Women's 800 metres|2:04.30]]
+|}
+
+==External links==
+* {{iaaf name|id=195488|name=Ewelina Sętowska}}
+
+<br>
+
+{{DEFAULTSORT:Setowska, Ewelina}}
+[[Category:1980 births]]
+[[Category:Living people]]
+[[Category:Polish female middle-distance runners]]
+[[Category:People from Puławy]]
+[[Category:European Athletics Championships medalists]]
+[[Category:Universiade medalists in athletics (track and field)]]
+[[Category:Sportspeople from Lublin Voivodeship]]
+
+
+{{Poland-athletics-bio-stub}}

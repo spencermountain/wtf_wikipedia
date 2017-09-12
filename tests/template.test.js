@@ -106,7 +106,7 @@ let bluejays = `
 |}
 `;
 test('bluejays table', function(t) {
-  let arr = wtf.parse(bluejays).tables[0];
+  let arr = wtf.parse(bluejays).sections[0].tables[0];
   t.equal(arr.length, 2);
   t.equal(arr[0]['Number'].text, '1');
   t.equal(arr[0]['Date'].text, 'April 6');
@@ -152,5 +152,49 @@ test('Alabama infobox', function(t) {
   t.equal(infobox.country.text, 'U.S.', 'country =' + infobox.country.text);
   t.equal(infobox.president.text, 'Stuart R. Bell', 'president =' + infobox.president.text);
   // t.equal(infobox.campus.text, 'Urban (small city); 1970 acre', 'campus = ' + infobox.campus.text);
+  t.end();
+});
+
+var radiohead = `{{Infobox musical artist
+| name = Radiohead
+| image = Radiohead.jpg
+| caption = Radiohead in 2006; from left to right: [[Thom Yorke]], [[Jonny Greenwood]], [[Colin Greenwood]], [[Ed O'Brien]] and [[Phil Selway]]
+| image_size = 270
+| landscape = Yes
+| background = group_or_band
+| origin = [[Abingdon-on-Thames|Abingdon, Oxfordshire]], England
+| genre = {{flatlist|
+* [[Art rock]]
+* [[alternative rock]]<!--genres sourced on talk page; do not add without consulting talk page with sourced information-->
+* [[electronica]]
+* [[experimental rock]]
+}}
+| years_active = 1985–present
+| associated_acts = {{flatlist|
+* [[Atoms for Peace (band)|Atoms for Peace]]
+* [[7 Worlds Collide]]
+}}
+| label = {{flatlist|
+* [[XL Recordings|XL]]
+* [[Ticker Tape Ltd.]]
+* [[Hostess Entertainment|Hostess]]
+* [[TBD Records|TBD]]
+* [[Parlophone]]
+* [[Capitol Records|Capitol]]
+}}
+| website = {{URL|radiohead.com}}
+| current_members =
+* [[Thom Yorke]]
+* [[Jonny Greenwood]]
+* [[Colin Greenwood]]
+* [[Ed O'Brien]]
+* [[Philip Selway]]
+}} `;
+test('Radiohead infobox', function(t) {
+  let infobox = wtf.parse(radiohead).infoboxes[0].data;
+  console.log(infobox);
+  t.equal(infobox.current_members.text.match(/Greenwood/g).length, 2, 'current members');
+  t.equal(infobox.genre.text, 'Art rock, alternative rock, electronica, experimental rock', 'genre');
+  t.equal(infobox.associated_acts.text, 'Atoms for Peace, 7 Worlds Collide', 'associated-acts');
   t.end();
 });

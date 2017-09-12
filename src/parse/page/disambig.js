@@ -1,5 +1,5 @@
 const i18n = require('../../data/i18n');
-const parse_links = require('../text/links');
+const parse_links = require('../section/sentence/links');
 const template_reg = new RegExp('\\{\\{ ?(' + i18n.disambigs.join('|') + ')(\\|[a-z =]*?)? ?\\}\\}', 'i');
 
 const is_disambig = function(wiki) {

@@ -1,11 +1,12 @@
 const redirects = require('./page/redirects');
 const disambig = require('./page/disambig');
-const word_templates = require('./cleanup/word_templates');
-const preprocess = require('./cleanup/misc');
-const parse_tables = require('./table');
-const parse_categories = require('./categories');
-const parse_recursion = require('./recursive');
-const parse_lines = require('./lines');
+const preProcess = require('./preProcess');
+const postProcess = require('./postProcess');
+const parse = {
+  section: require('./section'),
+  infobox: require('./infobox'),
+  categories: require('./categories')
+};
 
 //convert wikiscript markup lang to json
 const main = function(wiki) {
@@ -20,28 +21,23 @@ const main = function(wiki) {
   }
   let r = {
     type: 'page',
-    sections: {},
-    categories: [],
-    images: [],
+    sections: [],
     infoboxes: [],
-    tables: [],
-    interwiki: {}
+    interwiki: {},
+    categories: [],
+    images: []
   };
-  //parse templates like {{currentday}}
-  wiki = word_templates(wiki);
-  //kill off (some) craziness
-  wiki = preprocess(wiki);
-  //parse the tables
-  wiki = parse_tables(r, wiki);
-  //parse+remove scary '[[ [[]] ]]' stuff
-  wiki = parse_recursion(r, wiki);
-  //ok, now that the scary recursion issues are gone, we can trust simple regex methods..
-  //kill the rest of templates
-  wiki = wiki.replace(/\{\{.*?\}\}/g, '');
-  //get list of links, categories
-  wiki = parse_categories(r, wiki);
+
+  //give ourselves a little head-start
+  wiki = preProcess(wiki);
+  //pull-out infoboxes and stuff
+  wiki = parse.infobox(r, wiki);
+  //pull-out [[category:whatevers]]
+  wiki = parse.categories(r, wiki);
   //parse all the headings, and their texts/sentences
-  wiki = parse_lines(r, wiki);
+  r.sections = parse.section(wiki);
+
+  r = postProcess(r);
 
   return r;
 };

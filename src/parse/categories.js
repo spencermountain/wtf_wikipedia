@@ -15,6 +15,7 @@ const parse_categories = function(r, wiki) {
       }
     });
   }
+  wiki = wiki.replace(cat_reg, '');
   return wiki;
 };
 module.exports = parse_categories;

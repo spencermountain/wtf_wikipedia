@@ -1,0 +1,732 @@
+{{Weiterleitungshinweis|Firefox}}
+{{Infobox Software
+| Logo = [[Datei:Mozilla Firefox logo 2013.svg|90px|Logo von Mozilla Firefox]]
+| Screenshot = [[Datei:Firefox 50.1.0.PNG|320px|Mozilla Firefox 50.1.0 unter Windows 10]]
+| Beschreibung = Mozilla Firefox 50.1.0 unter [[Microsoft Windows 10|Windows 10]]
+| Maintainer =
+| Programmiersprache = [[C (Programmiersprache)|C]], [[C++]], [[JavaScript]], [[XML User Interface Language]], [[XML Binding Language]], [[Rust (Programmiersprache)|Rust]]<ref>{{cite web |url=https://www.quora.com/Is-it-true-that-Mozilla-wants-to-rewrite-Firefox-in-Rust-language-for-security-reasons/answer/Steve-Klabnik |title=Is it true that Mozilla wants to rewrite Firefox in Rust language for security reasons? |first=Steve |last=Klabnik|work=[[Quora]]}}, abgerufen am 13. Juni 2016</ref>
+| Hersteller = [[Mozilla Corporation]]
+| Erscheinungsjahr = 2002
+| AktuelleVersion = 55.0.3
+| AktuelleVersionFreigabeDatum = {{Datum|25|08|2017}}
+| Betriebssystem = [[Android (Betriebssystem)|Android]]<br />[[Firefox OS]]<br />[[iOS (Betriebssystem)|iOS]]<br />[[Linux]]<br />[[macOS]]<br />[[Microsoft Windows|Windows]]
+| Kategorie = [[Webbrowser]]
+| Lizenz = [[Mehrfachlizenzierung]]: [[Mozilla Public License|MPL]]/[[GNU General Public License|GPL]]/[[GNU Lesser General Public License|LGPL]]
+| Deutsch = ja
+| Website = [https://www.mozilla.org/de/firefox/new/ www.mozilla.org]
+}}
+
+'''Mozilla Firefox''' ([[Amerikanisches Englisch|amerikanisch-englische]] Aussprache [{{IPA|moʊˈzɪlə ˈfaɪɹfɑks}}]), auch kurz ''Firefox'' genannt, ist ein [[Freie Software|freier]] [[Webbrowser]] des [[Mozilla#Mozilla-Projekt|Mozilla-Projektes]]. Er wurde im September 2002 veröffentlicht.<ref>{{Internetquelle |url=https://www.mozilla.org/en-US/about/history/details/ |titel=History of the Mozilla Project |werk=Mozilla |sprache=en-US |zugriff=2016-04-03}}</ref> Er gehörte im Mai 2017 mit einem Anteil von 12,76 Prozent an der weltweiten Internetnutzung ohne mobile Geräte zu den zwei meistgenutzten Webbrowsern.<ref name="welt">{{Internetquelle |url=http://gs.statcounter.com/browser-market-share/desktop-tablet-console/worldwide/#monthly-201508-201705 |titel=Desktop, Tablet & Console Browser Market Share Worldwide. Aug 2015 to May 2017 |hrsg=StatCounter |zugriff=2017-06-15}}</ref> Bezogen auf Europa liegt er mit einem Anteil von 17,42&nbsp;Prozent ebenfalls auf Platz zwei.<ref name="europa">{{Internetquelle |url=http://gs.statcounter.com/browser-market-share/desktop-tablet-console/europe/#monthly-201508-201705 |titel=Desktop, Tablet & Console Browser Market Share in Europe. Aug 2015 to May 2017 |hrsg=StatCounter |zugriff=2017-06-15}}</ref> In Deutschland war er mehrere Jahre bis September 2016 der meistgenutzte Webbrowser (mobile Geräte ausgenommen). Im Mai 2017 belegte er mit einem Marktanteil von 31,84&nbsp;Prozent den zweiten Platz hinter [[Google Chrome]].<ref name="deutschland">{{Internetquelle |url=http://gs.statcounter.com/browser-market-share/desktop-tablet-console/germany/#monthly-201508-201705 |titel=Desktop, Tablet & Console Browser Market Share in Germany. Aug 2015 to May 2017 |hrsg=StatCounter |zugriff=2017-06-15}}</ref>
+
+== Geschichte ==
+Das Mozilla-Firefox-Projekt, damals noch unter dem Namen Phoenix, wurde von [[Dave Hyatt]] und [[Blake Ross]] als experimentelle Abzweigung der [[Mozilla Application Suite]] initiiert, die auf Quellcode des [[Netscape Navigator|Netscape Communicators]] basiert<!--, der durch Schwierigkeiten bei der Integration von [[CSS]] und [[JavaScript]] Anschluss an die modernen Browser verlor-->. Die erste Veröffentlichung einer lauffähigen Version des Programms nannte sich Phoenix 0.1 und erfolgte am 23.&nbsp;September 2002.
+
+Im Jahr 2003 entschieden sich die Entwickler der Mozilla Application Suite zu einer strategischen Kehrtwende.<ref>Brendan Eich, David Hyatt: [http://www-archive.mozilla.org/roadmap/roadmap-02-Apr-2003.html Mozilla Development Roadmap], 9.&nbsp;November 2014 (englisch).</ref> Das lag unter anderem an der Entscheidung von [[Apple]], den eigenen Webbrowser [[Apple Safari|Safari]] auf dem [[KHTML]]-Renderer und nicht auf dem [[Gecko (Software)|Gecko]]-Renderer, der von Mozilla entwickelt wird, aufzubauen.
+
+Während die Mozilla-Entwickler zuvor darauf bedacht waren, möglichst alle wichtigen Internetfunktionen wie Webbrowser, [[E-Mail]]-Programm, [[Adressbuch]] und [[HTML-Editor]] in einem Programmpaket (Mozilla Application Suite) zusammenzufassen, strebten sie nun die Veröffentlichung einzelner, voneinander unabhängiger [[Komponente (Software)|Komponenten]] an. Das Ziel der Entwicklung war ein schneller Programmstart und ein geringerer Speicher- und Rechenzeitbedarf. Gleichzeitig sollte die Entwicklung der einzelnen Komponenten ausgebaut und vorangetrieben werden.
+
+Die Webbrowser-Funktion übernahm ''Firefox''. Die E-Mail-Funktion wurde unter dem Namen ''[[Mozilla Thunderbird|Thunderbird]]'' ausgelagert. Der Kalender wurde unter dem Namen ''[[Mozilla Sunbird|Sunbird]]'' entwickelt, welcher jedoch 2010 zugunsten der Thunderbird-Erweiterung ''[[Lightning (Software)|Lightning]]'' eingestellt wurde. Der HTML-Editor wurde bis 2006 als ''Nvu'', bis 2010 als ''[[KompoZer]]'' weiterentwickelt. Die offizielle Mozilla Application Suite 1.7 erhielt nur noch Sicherheitsaktualisierungen. Allerdings arbeitet seit Mitte 2005 ein Community-Projekt an der Weiterentwicklung der Application Suite unter dem Namen ''[[SeaMonkey]]''.
+
+Mit [[XULRunner]] existiert eine Plattform, die die von Firefox, Thunderbird und anderen Programmen gemeinsam genutzten Funktionen enthält und damit den benötigten Speicherplatz und die Größe der Installationspakete verringern soll. Dieses Ziel wird für die offiziellen Release-Versionen nicht weiterverfolgt, stattdessen installiert sich ab Firefox 3 jede Anwendung eine eigene, private XULRunner-Umgebung.<ref>{{Internetquelle |url=//bugzilla.mozilla.org/show_bug.cgi?id=315452 |zugriff=2014-11-09 |titel=Bug 315452 – Build Firefox on top of XULRunner |autor=Darin Fisher |sprache=en}}</ref><ref>{{Internetquelle |url=//developer.mozilla.org/en/XULRunner |zugriff=2014-11-09 |titel=XULRunner |sprache=en}}</ref>
+
+== Name ==
+[[Datei:Mozilla-Phoenix-Logo.png|mini|Phoenix-Logo (2002)]]
+[[Datei:Mozilla Phoenix Logo.png|mini|Firebird-Logo (2003)]]
+[[Datei:Vulpes vulpes laying in snow.jpg|mini|Der [[Rotfuchs]] – die Inspiration für das Firefox-Logo]]
+
+Ursprünglich wurde Mozilla Firefox unter dem Namen [[Phönix (Mythologie)|Phoenix]] entwickelt, allerdings musste dieser Name aufgrund einer Klage des US-amerikanischen [[BIOS]]-Herstellers [[Phoenix Technologies]] geändert werden. Zunächst wurde der Browser in ''Mozilla Firebird'', aufgrund der Namensgleichheit mit der [[Open Source|Open-Source]]-Datenbank [[Firebird (Datenbank)|Firebird]] mit Version 0.8 (9. Februar 2004) schließlich in ''Mozilla Firefox'' umbenannt.
+
+''Firefox'' ist die wörtliche englische Übersetzung der chinesischen Bezeichnung {{zh|v=huǒ hú 火狐|b=Feuerfuchs|kurz=}}. Damit wird im Allgemeinen der [[Rotfuchs]] ''(red fox)'', aber auch der rotbraune [[Kleiner Panda|kleine Panda]] ''(red panda)'' bezeichnet. Zunächst wurde der Name gewählt, ohne sich auf eine der beiden Tierarten festzulegen. Der kleine Panda hatte jedoch in den Augen von Designer [[Jon Hicks]] keinen besonderen optischen Reiz, daher ließ er sich bei der Gestaltung des Logos von einer japanischen, mit „Firefox“ untertitelten Rotfuchszeichnung inspirieren.<ref>[http://www.hicksdesign.co.uk/journal/branding-firefox branding firefox] (englisch), Artikel bei ''Hicksdesign'' vom 9. Februar 2004.</ref>
+
+Bis Version 1.5 von Firefox wurde ''Fx'' bzw. ''fx'' als die bevorzugte Abkürzung für den Browser in den Release-Notes genannt,<ref>[//www.mozilla.org/en-US/firefox/releases/1.5.html Mozilla Firefox 1.5 Release Notes] (englisch), Meldung bei ''Mozilla'' vom 29. November 2005.</ref> in späteren Release-Notes wurde dieser Hinweis weggelassen. Darüber hinaus wird jedoch auch die inoffizielle Abkürzung ''FF'' genutzt.<ref>[http://www.bing.com/search?q=ff+firefox ≈10,1 Mio. Treffer] für „ff firefox“ und [http://www.bing.com/search?q=fx+firefox ≈1,6 Mio. Treffer] für „fx firefox“; Stand: 9. November 2014.</ref>
+
+Nach einem [[Namensstreit zwischen Debian und Mozilla|Namensstreit]] mit dem [[Debian]]-Projekt über die Nutzungsbedingungen für die [[Marke (Recht)|Warenzeichen]] von [[Mozilla]] erhielt die in der Debian-Distribution enthaltene und leicht angepasste Firefox-Fassung den Namen ''Iceweasel''. Andere Mozilla-Programme erhielten ebenfalls neue Namen, die allesamt mit ''Ice'' beginnen. Erst Anfang 2016 wurden diese Streitigkeiten beigelegt, und das Debian-Projekt verwendet seitdem wieder die ursprünglichen Namen.<ref>[https://www.heise.de/newsticker/meldung/Debian-gibt-Webbrowser-Iceweasel-auf-und-setzt-wieder-auf-Firefox-3132680.html Heise open:Debian gibt Webbrowser Iceweasel auf; Stand: 13. März 2016]</ref>
+
+== Funktionen und Eigenschaften ==
+[[Datei:Firefox 18 Mac OS X Mountain Lion.png|mini|Mozilla Firefox 18.0.2 unter [[OS X Mountain Lion|Mac OS X Mountain Lion]]]]
+
+Ebenso wie die Mozilla Application Suite verwendet Firefox den [[Gecko (Software)|Gecko-Renderer]], ein programmübergreifendes Modul zur Darstellung von [[Hypertext Markup Language|HTML]]-Seiten, und die [[Extensible Markup Language|XML]]-basierte Beschreibungssprache [[XML User Interface Language|XUL]] zur Gestaltung der [[Grafische Benutzeroberfläche|grafischen Benutzeroberfläche]]. Möglicherweise wird Firefox in Zukunft nicht mehr XUL verwenden.<ref>https://discourse.mozilla-community.org/t/xul-future/2436/2</ref>
+
+Firefox kann durch Motive ({{enS|themes}}), die die komplette Benutzerschnittstelle verändern können, und durch ''Personas'', die zwar gegenüber den Motiven in ihrem Funktionsumfang beschränkt, aber besonders leicht zu installieren und verwenden sind, optisch an den Geschmack des Anwenders angepasst werden. Mit Erweiterungen (englisch „Add-ons“) können zudem zahlreiche Funktionen, wie z.&nbsp;B [[Mausgeste]]n, [[Werbeblocker]] und [[Webentwickler]]-Werkzeuge, hinzugefügt werden.
+
+Ab Version 0.9 enthält Firefox ein neues Standardmotiv namens „Winstripe“, das „Qute“ als Standardmotiv ersetzt, um so allen Versionen von Firefox ein einheitliches, allenfalls an die Gegebenheiten der jeweiligen Plattform angepasstes Erscheinungsbild zu verleihen. „Winstripe“ basiert auf dem ab Version 0.8 unter Mac OS X eingesetzten „Pinstripe“-Motiv, das von Kevin Gerich und Stephen Horlander im Hinblick auf Apples Vorgaben zur Benutzerschnittstelle ''Apple [[Human Interface Guideline]]s'' entwickelt wurde.
+
+Firefox unterstützt [[Tabbed Browsing]], worunter die Darstellung von mehreren, jeweils mit [[Registerkarte|Tabs]] versehenen Webseiten innerhalb eines einzelnen Anwendungsfensters verstanden wird. Ab der Version 4.0 ist es möglich, über die Funktion ''Panorama'' Tabs zu gruppieren und diese Gruppen visuell darzustellen. Mit Version 45 wurde dieses Feature aufgrund geringer Nutzung wieder entfernt.
+
+Des Weiteren werden [[RSS (Web-Feed)|RSS]]-[[Web-Feed]]s in Form von ''dynamischen Lesezeichen'' unterstützt. Diese aktualisieren sich beim Start des Browsers und verkörpern eine sich selbst aktualisierende Linkliste, die in einzelnen Ordnern organisiert wird. So sieht der Anwender immer auf einen Blick aktuelle Einträge einer Nachrichtenseite oder eines [[Blog]]s. Eine Anzeige der RSS-Daten in Form einer lesbaren Webseite ist ab Version 2.0 auch ohne zusätzliche Plug-ins möglich.
+
+Firefox wird gegenwärtig in 86 Sprachen angeboten, darunter auch Deutsch. Das Programm ist [[freie Software]] und wird unter der [[GNU General Public License]] (GPL) veröffentlicht. Für die kompilierten Installationspakete gilt die GPL jedoch aus Sicht der [[Mozilla Foundation]] nur eingeschränkt. Ab Version 3 wurde bei der Installation des Browsers der Benutzer aufgefordert, einer [[Endbenutzer-Lizenzvertrag|Endbenutzer-Lizenzvereinbarung]] (EULA) zuzustimmen. Nach massiver Kritik an diesem Vorgehen, insbesondere aus dem Linux-Lager, wurde die EULA durch eine „Lernen Sie Ihre Rechte kennen“-Informationsleiste ersetzt, die bei der ersten Installation eingeblendet wird. Diese kann auch über die Adresszeile durch Eingabe von ''about:rights'' aufgerufen werden.<ref name="Licensing-Policies">{{Internetquelle |url=http://www.mozilla.org/foundation/licensing.html |titel=Mozilla Licensing Policies |werk=mozilla.org |zugriff=2012-01-05 |sprache=en}}</ref>
+
+Um Suchvorgänge vereinfacht über die Adressleiste abzuwickeln, können Schlüsselwörter (Shortcuts) für das Suchen definiert werden. Die Schlüsselwortsuche ist eine leichte Abwandlung der Möglichkeit, Lesezeichen Shortcuts/Schlüsselwörter zuzuweisen.<ref>Using keyword searches: ''[http://kb.mozillazine.org/Using_keyword_searches Firefox mozillazine.org]'', Anleitung zum Erstellen von Schlüsselwortsuchen (englisch).</ref>
+
+In Firefox ist ein [[Easter Egg]] eingebaut. Wenn in die Adressleiste <tt>about:mozilla</tt> eingegeben wird, erscheint [[Das Buch Mozilla]].
+
+=== Erweiterungen ===
+{{Hauptartikel|Firefox-Erweiterung}}
+[[Datei:Mozilla Firefox 4 Custom.png|mini|Bildschirmfoto von Firefox 4.0 unter [[Ubuntu]] mit alternativem Theme und sichtbaren Erweiterungen „AdblockPlus“, „NoScript“, „FoxClocks“ und „Flagfox“]]
+
+Firefox bietet die Möglichkeit, verschiedene Erweiterungen (englisch ''Add-ons'') und „Themes“ zu installieren, um Anwendungsfunktionen oder weitere Optionen bereitzustellen, die nicht vom eigentlichen Browser angeboten werden, oder um sein Erscheinungsbild zu verändern. Einige dieser Zusatzfunktionen werden absichtlich nicht in den Funktionsumfang des Browsers aufgenommen, damit ein verhältnismäßig schlanker Browser erhalten bleibt und auch um das Firefox-Projekt übersichtlicher zu gestalten.<!-- Es müsste einige Aussagen seitens Mozilla gegeben haben, die als Referenzen hier aufgezählt werden sollten. --> Bei den Erweiterungen handelte es sich bisher um Dateien im [[ZIP-Dateiformat|ZIP-Format]], die in [[XML User Interface Language|XUL]] und [[JavaScript]] geschriebene Programme enthalten. Die Verwendung von XUL und JavaScript macht diese Funktionen plattformunabhängig. Mit Firefox 4 wurde eine neue ''Add-on-API'' (bisher „[[Jetpack (Firefox-Projekt)|Jetpack]]“) genannte [[Programmierschnittstelle|Schnittstelle]] für Erweiterungen eingeführt, die sich ausschließlich auf die Websprachen [[Hypertext Markup Language|HTML]], JavaScript und [[Cascading Style Sheets|CSS]] stützt und die Installation sowie das Entfernen von Erweiterungen ohne Browserneustart ermöglichen soll.<ref>[https://www.heise.de/newsticker/meldung/Letzte-Beta-der-Add-on-API-fuer-Firefox-erschienen-1238684.html Letzte Beta der Add-on-API für Firefox erschienen], Artikel bei ''[[Heise online]]'' vom 6.&nbsp;Mai 2011.</ref> Mit ''[[WebExtensions]]'' gibt es seit Version 48 ein neues Erweiterungsformat, das eine weitgehende Kompatibilität mit anderen Browsern besitzt.
+
+=== Marketplace ===
+Unter der Bezeichnung ''Firefox Marketplace'' wurde im Oktober 2012 eine Plattform gestartet, auf der Firefox-Nutzer [[Apps|Anwendungen]] für ihren Browser herunterladen können. Der Marketplace war zunächst nur unter Firefox für Android verfügbar, soll später aber auch auf anderen Betriebssystemen nutzbar sein. Ähnlich dem [[Google Chrome|Chrome Web Store]] basieren alle dort erhältlichen Programme auf [[Webstandard]]s, sind also nicht abhängig von der jeweiligen Architektur. Zur Vorstellung waren im Firefox Marketplace unter anderem [[Twitter]] und [[SoundCloud]] erhältlich.<ref>{{Internetquelle |url=http://t3n.de/news/firefox-marketplace-mozilla-421542/ |titel=Firefox Marketplace: Mozilla öffnet eigenen Appstore |autor=Andreas Floemer |werk=[[T3N Magazin|t3n Magazin]] |datum=2012-10-19 |zugriff=2012-10-21}}</ref>
+
+== Technische Merkmale ==
+[[Datei:Firefox16-Linux.png|mini|Firefox 16.0 unter [[Ubuntu]] 12.04.1]]
+
+Firefox steht aktuell für die [[Betriebssystem]]e ''[[Microsoft Windows|Windows]]'' (ab ''[[Microsoft Windows XP|Windows XP]]'' SP2), ''[[Linux]]'' und ''[[macOS]]'' ab Version 10.9<ref name="release_notes_49">{{Internetquelle |url=https://www.mozilla.org/en-US/firefox/49.0/releasenotes/ |titel=Firefox – Notes (49.0) – Mozilla |hrsg=Mozilla Foundation |datum=2016-09-20 |zugriff=2016-10-08 |sprache=en}}</ref> (ESR zur Zeit auch noch ab Mac OS X 10.6) zur Verfügung. Die Linux-Version benötigt zusätzlich verschiedene [[Paketverwaltung|Pakete]] und [[Programmbibliothek|Bibliotheken]] Dritter, die zusammen mit Firefox selbst bei der Mehrzahl der [[Linux-Distribution|Distributionen]] bereits mitgeliefert werden.
+Nach Herstellerangaben sind die empfohlenen Systemvoraussetzungen für Windows und Linux ein [[Intel Pentium 4]], der [[SSE2]] unterstützt, 512&nbsp;[[Byte|MB]] [[Arbeitsspeicher|RAM]] und 200&nbsp;MB [[Festplatte]]nspeicher. Ab Firefox 49 wird eine SSE2-fähige CPU zwingend vorausgesetzt<ref>{{Internetquelle|url=https://www.mozilla.org/en-US/firefox/49.0/releasenotes/|titel=Firefox —  Notes (49.0)|sprache=en-US|zugriff=2017-07-21}}</ref>. Die Versionen für Mac benötigen einen [[Intel#x86-Prozessoren|Intel x86-Prozessor]] und ebenfalls 512&nbsp;MB RAM und 200&nbsp;MB Festplattenspeicher.<ref>{{Internetquelle |url=//www.mozilla.org/en-US/firefox/33.0/system-requirements/ |titel=Firefox 33.0 System Requirements |werk=mozilla.org |zugriff=2014-11-09}}</ref>
+
+Außer den oben genannten offiziell von Mozilla unterstützten Versionen gibt es Portierungen für [[Solaris (Betriebssystem)|Solaris]] (sowohl für [[X86-Prozessor|x86]]- als auch [[Sun SPARC|Sun-SPARC]]-[[Prozessor]]en), [[OS/2]] und [[AIX]] von [[IBM]], [[FreeBSD]], [[OpenBSD]], [[PC-BSD]], [[SkyOS]], [[BeOS]] und [[ZETA]] sowie [[RISC OS]]. Eine Portierung auf weitere Plattformen ist durch die Quelloffenheit möglich. Mittlerweile ist auch eine [[#Firefox, Portable Edition|Portable Edition]] für die Nutzung auf externen Speichermedien (zum Beispiel [[Externe Festplatte|externen Festplatten]], [[USB-Massenspeicher#USB-Speicher-Stick|USB-Sticks]] oder [[Speicherkarte]]n) für Windows erhältlich. Darüber hinaus sind für verschiedene Plattformen [[#Inoffizielle, optimierte Versionen|optimierte Versionen]] verfügbar, die eine schnellere Reaktionszeit und geringeren Speicherbedarf zu erreichen versuchen. Für [[Smartphone]]s hat Mozilla [[Mozilla Firefox Mobile|Firefox Mobile]] entwickelt, welcher unter [[Android (Betriebssystem)|Android]] läuft.<ref>{{Internetquelle |url=https://support.mozilla.org/de/kb/funktioniert-firefox-mit-meinem-mobilgeraet |titel=Funktioniert Firefox mit meinem Mobilgerät? |werk=mozilla.com |zugriff=2014-11-09}}</ref>
+
+Um Mozilla Firefox auch besser auf Windows-8-Tablets und anderen Windows-8-Geräten nutzen zu können, hat Mozilla außerdem eine Modern-UI-Version, vorher als ''Metro'' bekannt, angekündigt. Diese sollte, wie alle Apps für Windows 8, für [[Touchscreen]]s optimiert sein. Aufgrund des geringen öffentlichen Interesses an Modern UI und somit auch an einer für diese Oberfläche optimierten Version und einer geringen Anzahl an Beta-Testern wurde die Entwicklung eingestellt und das Projekt abgebrochen.<ref>{{Internetquelle |url=http://it-republik.de/dotnet/news/Mozilla-Firefox-demnaechst-auch-im-Metro-Style-061792.html |titel=Mozilla Firefox demnächst auch im Metro Style |zugriff=2014-11-09}}</ref><ref>{{Internetquelle |url=http://www.chip.de/news/Firefox-Mozilla-gibt-Browser-fuer-Windows-8-auf_68627930.html |titel=Firefox: Mozilla gibt Browser für Windows 8 auf |zugriff=2014-11-09}}</ref>
+
+Bei einer Untersuchung der Unterstützung der [[World Wide Web Consortium|W3C]]-Standards (sogenannte Empfehlungen) erreichte Firefox in der Version 35 eine Quote von 90 % der getesteten Eigenschaften. Zum Vergleich: [[Apple Safari|Safari 8]] erreichte 90 % der Eigenschaften, 92 % [[Google Chrome]] 40 sowie [[Opera (Browser)|Opera]] 26 und 85 % [[Internet Explorer]] 11.<ref>Alexis Deveria: [http://caniuse.com/#statuses=rec Can I use … Support tables for HTML5, CSS3, etc], abgerufen am 24. Januar 2015.</ref>
+
+Mozilla plant, die Unterstützung für Windows XP und Windows Vista auslaufen zu lassen. Firefox 53 soll beide Plattformen nicht mehr unterstützen. Die Installationen würden bei der Aktualisierung ab der Version 52 automatisch auf die ESR-Version migriert.<ref>{{Internetquelle |url=https://www.soeren-hentzschel.at/firefox/firefox-keine-feature-updates-mehr-fuer-windows-xp-vista-ab-maerz-2017/ |titel=Firefox: keine Feature-Updates mehr für Windows XP/Vista ab März 2017 |autor= |hrsg= |werk=soeren-hentzschel.at |datum=2016-09-26 |zugriff=2016-10-05}}</ref>
+
+== Versionen und Versionsgeschichte ==
+Früher wurde jeweils nach der Veröffentlichung einer neuen Hauptversion die vorherige noch eine Zeit lang mit Aktualisierungen versorgt.<ref name="mozillawiki-rm" /> Im März 2010 wurde mit Version 3.0.19 die Unterstützung und Weiterentwicklung des Zweiges 3.0<ref>{{Internetquelle |url=https://wiki.mozilla.org/Platform/2010-03-16 |titel=Weekly Platform Status Meeting 2010-03-16 |datum=2010-03-16 |zugriff=2010-03-17 |zitat=There will be no more updates for Firefox 3.0.x |sprache=en}}</ref> und im April 2012 mit Version 3.6.28 die des Zweiges 3.6<ref>{{Internetquelle |url=//support.mozilla.org/de/kb/firefox-36-wird-nicht-mehr-unterstuetzt |titel=Firefox 3.6 wird nicht mehr unterstützt |zugriff=2014-11-09}}</ref> eingestellt und ein neuer Versionszyklus eingeführt.
+
+Seitdem erschienen Sicherheits- und Stabilitätsaktualisierungen nur noch in Ausnahmefällen. Stattdessen wurde die nächste Hauptversion mit neuen oder aktualisierten sowie geänderten Funktionen zugleich als Sicherheits- und Stabilitätsaktualisierung behandelt. Dieses Vorgehen rief Kritik hervor, da es „Unternehmen nicht zumutbar (sei), alle sechs Wochen auf eine neue Browser-Version umzustellen, nur um Sicherheitslecks zu stopfen“.<ref name="heise-ix" /><ref name="heise-open" /> Hingegen sahen Befürworter dieses Vorgehens in der schnellen Versorgung mit neuen Funktionen und Unterstützung neuer Webtechniken auch Vorteile, vor allem für Heimanwender.<ref name="heise-open" />
+
+Als Reaktion auf die Kritik veröffentlichte die Mozilla Corporation für Unternehmen, Bildungseinrichtungen und Behörden Anfang 2012 mit Version Firefox 10 ESR wiederum eine sogenannte ''{{lang|en|Extended-Support-Release}}''-Ausgabe (deutsch: Version mit verlängerter Unterstützung). Sie enthielt, wie davor Version 3.6, keine neuen Funktionen, sondern allein Fehler- und Sicherheitsupdates. Mit jeder siebten Firefox-Hauptversion –&nbsp;also im Abstand von etwa 54 Wochen – wird das bisherige ESR durch eine neue Version ersetzt. So erschienen bislang die Firefox-ESR-Versionen 17 (Ende 2012), 24 (Herbst 2013), 31 (Juli 2014), 45 (April 2016) und 52 (März 2017).<ref name="mozillawiki-esr" />
+
+=== Wichtige Versionen ===
+{{Hauptartikel|Versionsgeschichte von Mozilla Firefox}}
+Folgende Tabelle enthält nur die wichtigsten Versionen von Mozilla Firefox, ab Version 4 insbesondere die sogenannten ESR-Versionen ''(Extended Support Release),'' die über einen längeren Zeitraum mit Sicherheitsaktualisierungen versorgt werden. Eine detaillierte Auflistung aller veröffentlichten Hauptversionen, einschließlich der Vorabversionen und der Sicherheits- und Stabilitätsaktualisierungen, ist [[Versionsgeschichte von Mozilla Firefox|im Hauptartikel]] verfügbar.
+
+{| class="wikitable"
+|- class="hintergrundfarbe5"
+! Browsername
+! [[Gecko (Software)|Gecko]]-<br />Version
+! Version
+! [[Versionsgeschichte von Mozilla Firefox#Herkunft der Codenamen|Codename]]
+! Veröffentlichung{{FN|a}}
+! Anmerkungen und relevante Änderungen
+|-
+| '''Phoenix'''
+| 1.2
+| {{Version |o |0.1}}
+| ''[[San Francisco Bay Area|Pescadero]]''
+| {{FormatDate|2002-09-23|nbsp}}
+| Erste Version;<ref>{{Internetquelle |url=http://www.mozilla.com/en-US/firefox/releases/0.1.html |titel=Phoenix&nbsp;0.1 (Pescadero) Release Notes and FAQ |hrsg=Mozilla.com |sprache=en |datum=2002-09-23 |zugriff=2011-05-18}}</ref> anpassbare Symbolleiste, Schnellsuche, gleichzeitige Darstellung mehrerer Dokumente innerhalb eines Anwendungsfensters ''([[Tabbed Browsing]])''.
+|-
+| '''Firebird'''
+| 1.5
+| {{Version |o |0.6}}
+| ''[[Glendale (Kalifornien)|Glendale]]''
+| {{FormatDate|2003-05-17|nbsp}}
+| Neuerungen:<ref>{{Internetquelle |url=http://www.mozilla.com/en-US/firefox/releases/0.6.html |titel=Mozilla Firebird&nbsp;0.6 Release Notes |hrsg=Mozilla.com |sprache=en |datum=2003-05-17 |zugriff=2011-05-18}}</ref> Namensänderung in „Firebird“, neues Standardmotiv ''(Theme)'' namens „Qute“, Verbesserungen der Benutzeroberfläche, erste Version für [[macOS]].
+|-
+| rowspan="2" | '''Firefox'''
+| 1.6
+| {{Version |o |0.8}}
+| ''[[Royal Oak (Neuseeland)|Royal Oak]]''
+| {{FormatDate|2004-02-09|nbsp}}
+| Neuerungen:<ref>{{Internetquelle |url=http://www.mozilla.com/en-US/firefox/releases/0.8.html |titel=Mozilla Firefox&nbsp;0.8 (Royal Oak) Release Notes |hrsg=Mozilla.com |sprache=en |datum=2004-02-09 |zugriff=2011-05-18}}</ref> Namensänderung in „Firefox“, Installationsprogramm für Windows, Verbesserungen der Benutzeroberfläche, neues Standardmotiv ''(Theme)'' für Mac OS X namens „Pinstripe“.
+|-
+| 1.7
+| {{Version |o |1.0}}
+| ''[[Phoenix (Arizona)|Phoenix]]''
+| {{FormatDate|2004-11-09|nbsp}}
+| Neuerungen:<ref>{{Internetquelle |url=http://www.mozilla.com/en-US/firefox/releases/1.0.html |titel=Mozilla Firefox&nbsp;1.0 Release Notes |hrsg=Mozilla.com |sprache=en |datum=2004-11-09 |zugriff=2011-05-18}}</ref> [[RSS (Web-Feed)|RSS]]-[[Web-Feed]]s, Suchleiste, Funktion zum Suchen nach [[Plug-in]]s.
+|-
+| '''Firefox&nbsp;1.5'''
+| 1.8
+| {{Version |o |1.5}}
+| ''[[Deer Park (New York)|Deer Park]]''
+| {{FormatDate|2005-11-29|nbsp}}
+| Neuerungen:<ref>{{Internetquelle |url=http://www.mozilla.com/en-US/firefox/releases/1.5.html |titel=Mozilla Firefox&nbsp;1.5 Release Notes |hrsg=Mozilla.com |sprache=en |datum=2005-11-29 |zugriff=2011-05-18}}</ref> Unterstützung für [[Scalable Vector Graphics|SVG]] und [[Canvas (HTML-Element)|Canvas]], Verbesserungen in [[JavaScript]] 1.5 und [[Cascading Style Sheets|CSS]]&nbsp;2/3, neue Funktionen „Private Daten löschen“ und „Fehlerhafte Website melden“, schnellere Navigation, Verschieben von Tabs per ''[[Drag and Drop]],'' verbesserter [[Pop-up-Blocker]], neues Update-System, Anpassungen der Benutzeroberfläche an Windows XP.
+|-
+| '''Firefox&nbsp;2'''
+| 1.8.1
+| {{Version |o |2.0}}
+| ''[[Bon Echo Provincial Park|Bon Echo]]''
+| {{FormatDate|2006-10-24|nbsp}}
+| Neuerungen:<ref>{{Internetquelle |url=http://www.mozilla.com/en-US/firefox/2.0/releasenotes/ |titel=Mozilla Firefox&nbsp;2 Release Notes |hrsg=Mozilla.com |sprache=en |datum=2006-10-24 |zugriff=2011-05-18}}</ref> integrierter [[Phishing]]-Schutz, Rechtschreibprüfung, automatisches Wiederherstellen der letzten Sitzung nach Browser-Absturz ''(Session Restore)'', automatische Suchvorschläge, überarbeitete Update-Funktion und [[Feedreader]]-Integration.
+|-
+| '''Firefox&nbsp;3'''
+| 1.9
+| {{Version |o |3.0}}
+| ''[[Nationalpark Gran Paradiso|Gran Paradiso]]''
+| {{FormatDate|2008-06-17|nbsp}}
+| Neuerungen:<ref>{{Internetquelle |url=http://www.mozilla-europe.org/de/firefox/3.0/releasenotes/ |titel=Mozilla Firefox&nbsp;3&nbsp;– Versionshinweise |hrsg=Mozilla Europe |datum=2008-06-17 |zugriff=2010-07-25 |sprache=en}}</ref> neue plattformspezifische Standardmotive ''(Themes)'' für die Benutzeroberfläche, Verbesserungen der Benutzeroberfläche, Umstellung auf die Grafikbibliothek [[Cairo (Grafikbibliothek)|Cairo]], Unterstützung des [[Animated Portable Network Graphics|APNG]]-Grafikformats und von [[Farbprofil]]en, verbesserter Schutz vor Schadsoftware, verbesserte Geschwindigkeit der [[JavaScript]]-[[Engine]].
+|-
+| '''Firefox&nbsp;3.5'''
+| 1.9.1
+| {{Version |o |3.5}}
+| ''[[Shiretoko-Nationalpark|Shiretoko]]''
+| {{FormatDate|2009-06-30|nbsp}}
+| Neuerungen:<ref>{{Internetquelle |url=http://www.mozilla-europe.org/de/firefox/3.5/releasenotes/ |titel=Mozilla Firefox&nbsp;3.5&nbsp;– Versionshinweise |hrsg=Mozilla Europe |datum=2009-06-30 |zugriff=2010-07-25 |sprache=en}}</ref> verbesserte Unterstützung von [[Webstandard]]s, Unterstützung der [[HTML5]]-Elemente <tt><nowiki><canvas></nowiki></tt>, <tt><nowiki><audio></nowiki></tt> und <tt><nowiki><video></nowiki></tt> in Verbindung mit nativer Unterstützung der [[Codec]]s [[Vorbis]] und [[Theora]] im [[Ogg]]-[[Containerformat]], Realisierung der in HTML5 definierten Methoden zur Offline-Datenspeicherung, Integration von standortbezogenem [[Browsing]], verbesserte Kontrolle der Privatsphäre, neue [[JavaScript]]-[[Engine]] ''[[SpiderMonkey#TraceMonkey|TraceMonkey]]''.
+|-
+| rowspan="2" | '''Firefox&nbsp;3.6'''
+| rowspan="2" | 1.9.2
+| {{Version |o |3.6}}
+| rowspan="2" | ''[[Nationalpark Tsingy de Namoroka|Namoroka]]''
+| {{FormatDate|2010-01-21|nbsp}}
+| Neuerungen:<ref>{{Internetquelle |url=http://www.mozilla-europe.org/de/firefox/3.6/releasenotes/ |titel=Mozilla Firefox&nbsp;3.6&nbsp;– Versionshinweise |hrsg=Mozilla Europe |datum=2010-01-21 |zugriff=2010-07-25 |sprache=en}}</ref> verbesserte Unterstützung von [[Webstandard]]s, Integration der ''Personas''-Erweiterung zum schnellen Wechseln von Browserstilen, Unterstützung für [[Bewegungssensor]]en, verbesserte Geschwindigkeit von Browser und JavaScript-Engine, Schutz vor inkompatiblen oder fehlerhaften Plug-ins, verbesserte Unterstützung für [[HTML5]], Unterstützung des [[Web Open Font Format]]s.
+|-
+| {{Version |o |3.6.28}}
+| {{FormatDate|2012-03-13|nbsp}}
+| Letzte Version vor Verzicht auf Unterversionen bei der Nummerierung; wie spätere ESR parallel zu neueren Versionszweigen gepflegt; Sicherheits- und Stabilitätsaktualisierung.
+|-
+| '''Firefox&nbsp;4'''
+| 2.0
+| {{Version |o |4.0}}
+| ''[[Nationalpark Tumucumaque|Tumucumaque]]''
+| {{FormatDate|2011-03-22|nbsp}}
+| Neuerungen:<ref>{{Internetquelle |url=http://www.mozilla.com/en-US/firefox/4.0/releasenotes/ |titel=Mozilla Firefox&nbsp;4 Release Notes |hrsg=Mozilla.com |sprache=en |datum=2011-03-22 |zugriff=2011-03-24}}</ref> weitgehend überarbeitete Benutzeroberfläche, Integration der Erweiterungen ''Sync'' (früher ''Weave Sync'' genannt) und ''Panorama'' (früher ''TabCandy'' genannt), Webentwicklerwerkzeug „Web-Konsole“ zum Aufspüren von Fehlern in Webseiten, neue JavaScript-Engine ''[[SpiderMonkey#JägerMonkey|JägerMonkey]],'' hardwarebeschleunigte Darstellung von Benutzeroberfläche und Webinhalten, neuer [[HTML5]]-[[Parser]], Unterstützung von [[WebM]], [[WebGL]] und ''[[Multi-Touch-Screen|Multi-Touch]]''-Gesten, allgemeine Verbesserungen von Geschwindigkeit und Stabilität; Apple-Computer mit [[PowerPC]]-Architektur werden nicht mehr unterstützt;<ref>{{Internetquelle |url=http://www.mozilla.com/en-US/firefox/4.0/system-requirements/ |titel=Mozilla Firefox&nbsp;4 System Requirements |hrsg=Mozilla.com |sprache=en |zugriff=2011-06-01}}</ref> dafür erste offizielle 64-Bit-Version für Mac OS X und Linux.<ref>{{Internetquelle |url=https://wiki.mozilla.org/index.php?title=Firefox/4/Platforms&oldid=250687 |titel=Firefox&nbsp;4 Platforms |hrsg=Mozilla Wiki |sprache=en |datum=2010-09-02 |zugriff=2011-01-27}}</ref>
+|-
+| '''Firefox&nbsp;10'''
+| rowspan="2" | 10.0
+| {{Version |o |10.0}}
+| rowspan="2" |
+| {{FormatDate|2012-01-31|nbsp}}<ref name="RapidRelease">{{Internetquelle |url=https://wiki.mozilla.org/RapidRelease/Calendar#Future_branch_dates |titel=Kalender zum beschleunigten Entwicklungsprozess |hrsg=Mozilla Wiki |sprache=en |zugriff=2016-09-21}}</ref>
+| Neuerungen:<ref name="ReleaseTracking">{{Internetquelle |url=https://wiki.mozilla.org/Features/Release_Tracking |titel=Mozilla Firefox Release Tracking |hrsg=Mozilla.org |zugriff=2011-07-22 |sprache=en}}</ref> Verbesserung der Kompatibilität von Add-ons („Silent Update“), kleinere Fehler sollen via nachinstalliertes Add-on behoben werden und so kein komplettes Update mit neuer Versionsnummer voraussetzen, Integration eines Code-Editors direkt in Firefox („Orion code editor“), weitere Verbesserungen an der Web-Konsole, Möglichkeit der Untersuchung und Bearbeitung von [[Cascading Style Sheets|CSS]]-Eigenschaften eines HTML-Elements durch Webentwickler, Verbesserungen der Geschwindigkeit beim Seitenaufbau, Implementierung von [[Antialiasing (Computergrafik)|Antialiasing]] für [[WebGL]], Implementierung der „Full Screen APIs“ zur Darstellung von Webanwendungen im [[Vollbildmodus]], Implementierung von 3D-Transformationen mittels [[Cascading Style Sheets|CSS3]], Verbesserungen im Setup des Synchronisierungsdienstes. Firefox 10 ist die erste ESR-Version (Extended Support Release) speziell für Firmen, akademische Einrichtungen und Behörden. Sie bietet neun Monate Updates mit Fixes für kritische und sicherheitsrelevante Fehler.<ref>[https://www.heise.de/newsticker/meldung/Firefox-fuer-Unternehmen-1406981.html Firefox für Unternehmen], heise.de, abgerufen am 10. Januar 2012.</ref>
+|-
+| '''Firefox&nbsp;ESR&nbsp;10'''
+| {{Version |o |10.0.12}}
+| {{FormatDate|2013-1-8|nbsp}}
+| Sicherheitsaktualisierungen;<ref>{{Internetquelle |url=//www.mozilla.org/en-US/firefox/10.0.12/releasenotes/ |titel=Firefox ESR 10.0.12 Notes – Desktop |hrsg=Mozilla.org |datum=2013-01-08 |zugriff=2013-02-25 |sprache=en}}</ref> zuvor erschienen die Aktualisierungen ''10.0.1'' bis ''10.0.11''. Letzte „ESR“-Version für [[Microsoft Windows 2000|Windows 2000]] und XP&nbsp;(SP2).
+|-
+| '''Firefox&nbsp;17'''
+| rowspan="2" | 17.0
+| {{Version |o |17.0}}
+| rowspan="2" |
+| {{FormatDate|2012-11-20|nbsp}}
+| Neuerungen: Unterstützung für [[Microsoft Windows 8|Windows 8]] und für die Mitteilungszentrale von [[OS X Mountain Lion]], „Click-to-play“-Plugin-Blocker, größere Icons in der Awesome-Bar, Integration einer HSTS-Hosts-Liste,<ref>{{Internetquelle |url=//www.mozilla.org/en-US/firefox/17.0/system-requirements/ |titel=System Requirements |hrsg=Mozilla |zugriff=2012-10-25 |sprache=en}}</ref><ref>[http://www.chip.de/news/Firefox-17-Facebook-Sidebar-und-mehr-Sicherheit_58495831.html Firefox 17: Facebook-Sidebar und mehr Sicherheit]</ref> Sandbox-Technik (Schutz vor iframes), Social-API-Schnittstelle (Facebook-Integration), Leistungsverbesserungen, Sicherheitsaktualisierungen.
+|-
+| '''Firefox&nbsp;ESR&nbsp;17'''
+| {{Version |o |17.0.11}}
+| {{FormatDate|2013-11-15|nbsp}}
+| Sicherheitsaktualisierungen;<ref>{{Internetquelle |url=https://www.mozilla.org/en-US/firefox/17.0.10/releasenotes/ |titel=Firefox ESR 17.0.10 Notes – Desktop |hrsg=Mozilla Foundation |zugriff=2014-09-13 |sprache=en}}</ref> zuvor erschienen die Aktualisierungen ''17.0.2'' bis ''17.0.10''.
+|-
+| '''Firefox&nbsp;24'''
+| rowspan="2" | 24.0
+| {{Version |o |24.0}}
+| rowspan="2" |
+| {{FormatDate|2013-09-17|nbsp}}
+| Neuerungen: Alle Tabs rechts vom Mausklick können nun geschlossen werden; Chat-Fenster lassen sich nun separat darstellen; Verbesserung der Browser-Konsole; Verbesserung beim Rendern von SVG-Dateien<ref>{{Internetquelle |url=https://www.mozilla.org/en-US/firefox/24.0/releasenotes/ |titel=Firefox Notes – Desktop |hrsg=Mozilla Foundation |zugriff=2014-09-13 |sprache=en}}</ref>
+|-
+| '''Firefox&nbsp;ESR&nbsp;24'''
+| {{Version |o |24.8.1}}
+| {{FormatDate|2014-09-24|nbsp}}
+| Außerplanmäßige Sicherheitsaktualisierungen zur ESR-Version auf Basis der Version 24.0<ref>{{Internetquelle |url=https://www.mozilla.org/en-US/firefox/24.8.1/releasenotes/ |titel=Firefox – Notes (24.8.1) |hrsg=Mozilla Foundation |zugriff=2014-09-24 |sprache=en}}</ref>
+|-
+| '''Firefox&nbsp;31'''
+| rowspan="2" | 31.0
+| {{Version |o |31.0}}
+| rowspan="2" |
+| {{FormatDate|2014-07-22|nbsp}}
+| Seit Firefox 27 ist das Verschlüsselungsprotokoll [[Transport Layer Security|TLS]] 1.2 standardmäßig aktiviert.<ref>{{Literatur|Titel=Firefox 27: Bessere Verschlüsselung, Social-API erweitert - Golem.de|Online=https://www.golem.de/news/firefox-27-bessere-verschluesselung-social-api-erweitert-1402-104354.html|Abruf=2017-03-18}}</ref> Ab Version 28 kann Firefox [[VP9]] und [[Opus (Audioformat)|Opus]] decodieren.<ref>{{Literatur|Titel=Mozilla: Firefox 28 mit VP9-Unterstützung - Golem.de|Online=https://www.golem.de/news/mozilla-firefox-28-mit-vp9-unterstuetzung-1403-105229.html|Abruf=2017-03-18}}</ref> In Firefox 29 wurde die Bedienoberfläche stark überarbeitet; das neue Design orientierte sich an Googles Webbrowser [[Google Chrome|Chrome]] und wurde ''Australis'' genannt.<ref>{{Internetquelle|url=https://www.heise.de/newsticker/meldung/Firefox-29-mit-neuer-Bedienoberflaeche-2179025.html|titel=Firefox 29 mit neuer Bedienoberfläche|autor=heise online|zugriff=2017-03-18}}</ref>
+|-
+| '''Firefox&nbsp;ESR&nbsp;31'''
+| {{Version |o |31.8.0}}
+| {{FormatDate|2015-07-02|&nbsp;}}
+| Letzte Sicherheitsaktualisierungen zur ESR-Version auf Basis der Version 31.0<ref>{{Internetquelle |url=https://www.mozilla.org/en-US/firefox/31.8.0/releasenotes/ |titel=Firefox Extended Support Release – Notes (31.8.0) – Mozilla |hrsg=Mozilla Foundation |zugriff=2015-07-02 |sprache=en}}</ref>
+|-
+| '''Firefox 38'''
+| rowspan="2"|38.0
+| {{Version|o|38.0}}
+| rowspan="2" |
+| {{Datum|12|05|2015}}
+| In Firefox 33 wurde [[Cisco Systems|Ciscos]] offenen [[H.264]]-Codec integriert;<ref>{{Internetquelle|url=https://www.heise.de/ix/meldung/Firefox-33-integriert-Ciscos-offenen-H-264-Codec-2424180.html|titel=Firefox 33 integriert Ciscos offenen H.264-Codec|autor=iX|zugriff=2017-03-06}}</ref> in Version 34 der [[WebRTC]]-Client „Hello“.<ref>{{Internetquelle|url=https://www.heise.de/newsticker/meldung/Hello-Firefox-34-bringt-WebRTC-Client-mit-2471951.html|titel="Hello": Firefox 34 bringt WebRTC-Client mit|autor=heise online|zugriff=2017-03-06}}</ref> Seit Firefox 36 wird [[HTTP/2]] unterstützt.<ref>{{Literatur|Titel=Mozilla: Firefox 36 kann HTTP/2 - Golem.de|Online=https://www.golem.de/news/mozilla-firefox-36-kann-http-2-1502-112509.html|Abruf=2017-03-18}}</ref> Ab Version 37 setzt Firefox auf eine zentrale [[Zertifikatsperrliste|Sperrliste]] für nicht vertrauenswürdige [[Digitales Zertifikat|Zertifikate]].<ref>{{Internetquelle|url=https://www.heise.de/newsticker/meldung/Firefox-37-Mehr-Sicherheit-mit-zentralen-Sperrlisten-2593298.html|titel=Firefox 37: Mehr Sicherheit mit zentralen Sperrlisten|autor=heise online|zugriff=2017-03-06}}</ref> In Version 38 wurde eine [[digitale Rechteverwaltung]] für geschützte HTML5-Videos integriert.<ref>{{Internetquelle|url=https://www.heise.de/newsticker/meldung/Firefox-38-mit-Digitaler-Rechteverwaltung-DRM-2648152.html|titel=Firefox 38 mit Digitaler Rechteverwaltung (DRM)|autor=heise online|zugriff=2017-03-06}}</ref>
+|-
+| '''Firefox&nbsp;ESR&nbsp;38'''
+| {{Version|o|38.8.0}}
+| {{FormatDate|2016-04-26|&nbsp;}}
+| Letzte Sicherheitsaktualisierungen zur ESR-Version auf Basis der Version 38.0<ref>{{Internetquelle |url=https://www.mozilla.org/en-US/firefox/38.8.0/releasenotes/ |titel=Firefox Extended Support Release – Notes (38.8.0) – Mozilla |hrsg=Mozilla Foundation |datum=2016-04-26 |zugriff=2016-04-26 |sprache=en}}</ref>
+|-
+| '''Firefox 45'''
+| rowspan="2" | 45.0
+| {{Version|o|45.0}}
+| rowspan="2" |
+| {{FormatDate|2016-03-08|&nbsp;}}
+| In Version 39 wurden veraltete Verschlüsselungsverfahren entfernt (SSLv3 und RC4).<ref>{{Internetquelle|url=https://www.heise.de/newsticker/meldung/Firefox-39-entfernt-SSLv3-und-RC4-2734444.html|titel=Firefox 39 entfernt SSLv3 und RC4|autor=heise online|zugriff=2017-03-06}}</ref> Ab Version 40 warnt Firefox vor [[Digitale Signatur|unsignierten]] Erweiterungen und bringt eine leicht Veränderte Oberfläche für Windows 10 mit.<ref>{{Internetquelle|url=https://www.heise.de/newsticker/meldung/Firefox-40-warnt-vor-Malware-und-fehlenden-Add-on-Signaturen-2776879.html|titel=Firefox 40 warnt vor Malware und fehlenden Add-on-Signaturen|autor=heise online|zugriff=2017-03-06}}</ref> In Firefox 42 wurde ein Schutz vor [[Nutzerverfolgung]] durch Werbenetzwerke hinzugefügt.<ref>{{Internetquelle|url=https://www.heise.de/newsticker/meldung/Firefox-42-blockiert-Tracker-2868184.html|titel=Mozilla Firefox 42 mit Tracking Protection|autor=heise online|zugriff=2017-03-06}}</ref> Ab Version 43 werden unsignierte Erweiterungen blockiert.<ref>{{Internetquelle|url=https://www.heise.de/newsticker/meldung/Firefox-43-blockiert-unsignierte-Erweiterungen-3044709.html|titel=Firefox 43 blockiert unsignierte Erweiterungen|autor=heise online|zugriff=2017-03-06}}</ref> Firefox 45 entfernte die Funktion, [[Tabbed Browsing|Tabs]] zu gruppieren und brachte Verbesserungen bei der Synchronisierung von Tabs.<ref>{{Internetquelle|url=https://www.heise.de/newsticker/meldung/Webbrowser-Firefox-45-Ohne-Tab-Gruppen-mit-verbesserter-Tab-Synchronisation-3131187.html|titel=Webbrowser Firefox 45: Ohne Tab-Gruppen, mit verbesserter Tab-Synchronisation|autor=heise online|zugriff=2017-03-06}}</ref>
+|-
+| '''Firefox&nbsp;ESR&nbsp;45'''
+| {{Version|o|45.9.0}}
+| {{FormatDate|2017-04-19|&nbsp;}}
+| Letzte Sicherheitsaktualisierungen zur ESR-Version auf Basis der Version 45.0<ref>{{Internetquelle |url=https://www.mozilla.org/en-US/firefox/45.9.0/releasenotes/ |titel=Firefox Extended Support Release – Notes (45.9.0) – Mozilla |hrsg=Mozilla Foundation |datum=2017-04-19 |zugriff=2017-04-19 |sprache=en}}</ref>
+|-
+| '''Firefox&nbsp;52'''
+| rowspan="2"|52.0
+| {{Version|o|52.0}}
+| rowspan="2"|
+| {{FormatDate|2017-03-07|&nbsp;}}
+| In Firefox 48 wurde die neue Multi[[Prozess (Informatik)|prozess]]-<nowiki/>Architektur (e10s) bei manchen Nutzern aktiviert, in Version 49 wurde die Unterstützung ausgeweitet.<ref>{{Literatur|Titel=Mozilla: Firefox 48 bringt Multi-Prozess-Architektur für wenige - Golem.de|Online=https://www.golem.de/news/mozilla-firefox-48-bringt-multi-prozess-architektur-fuer-wenige-1608-122472.html|Abruf=2017-03-06}}</ref><ref name="FF49">{{Internetquelle|url=https://www.welt.de/wirtschaft/webwelt/article158123215/Firefox-49-laeuft-nicht-mehr-auf-aelteren-Macs.html|titel=Firefox 49 im Check: Die neuen Funktionen im Mozilla-Browser - WELT|autor=|hrsg=|werk=|datum=|sprache=|zugriff=2017-03-06}}</ref> Zudem wurde in Version 49 der WebRTC-Client „Hello“ wieder entfernt.<ref name="FF49" /> Ab Version 51 werden [[Free Lossless Audio Codec|FLAC]]- und [[WebGL]] 2 unterstützt. Zudem blendet Firefox seit dieser Version auf Seiten ohne sichere Verbindung, die die Eingabe von Anmeldedaten verlangen, künftig einen Warnhinweis ein.<ref>{{Internetquelle|url=https://www.heise.de/newsticker/meldung/Firefox-51-warnt-vor-unsicheren-Log-ins-3606572.html|titel=Firefox 51 warnt vor unsicheren Log-ins|autor=heise online|zugriff=2017-03-06}}</ref> Firefox 52 brachte die Unterstützung für [[WebAssembly]] und entfernte die Unterstützung für [[NPAPI]]-Plugins außer [[Adobe Flash|Flash]].<ref>{{Internetquelle|url=https://www.heise.de/developer/meldung/Firefox-52-hat-WebAssembly-an-Bord-3646590.html|titel=Firefox 52 hat WebAssembly an Bord|autor=heise Developer|zugriff=2017-03-08}}</ref>
+|-
+| rowspan="1" |'''Firefox&nbsp;ESR&nbsp;52'''
+| {{Version |co |52.3.0}}
+| {{FormatDate|2017-08-08|nbsp}}
+| Neueste Aktualisierung der ESR-Version auf Basis von Firefox 52.<ref>{{Internetquelle |url=https://www.mozilla.org/en-US/firefox/52.1.1/releasenotes/ |titel=Firefox Extended Support Release – Notes (52.1.1) – Mozilla |hrsg=Mozilla Foundation |datum=2017-05-05 |zugriff=2017-05-05 |sprache=en}}</ref> Die ESR-Version unterstützt weiterhin NPAPI-Plugins und wird mit deaktiviertem WebAssembly ausgeliefert. Es handelt sich um die letzte Version mit Unterstützung von Windows XP und Vista, sodass Nutzer dieser Betriebssysteme automatisch auf die ESR-Version umgestellt werden.<ref name=":0">{{Internetquelle|url=https://www.computerbase.de/2017-03/mozilla-firefox-52-flash-npapi/|titel=Firefox 52 schließt NPAPI-Plug-ins außer Flash aus|autor=|hrsg=|werk=ComputerBase|datum=2017-03-07|sprache=|zugriff=2017-03-08}}</ref>
+|-
+| rowspan="4" |'''Firefox&nbsp;55'''
+| rowspan="4" |55.0
+| {{Version |o |55.0}}
+| rowspan="4"|
+| {{FormatDate|2017-08-08|nbsp}}
+|Der Compositor, der für die Darstellung von Webseiten verantwortlich ist, wurde in Version 53 in einen eigenen Prozess ausgelagert (''Projekt Quantum''). Dies soll die Stabilität erhöhen. Die Unterstützung für Windows Vista und XP, sowie für 32-Bit-Versionen von Mac OS X, entfällt ab dieser Version.<ref>{{Internetquelle|url=https://www.heise.de/newsticker/meldung/Firefox-53-Schneller-schlanker-und-stabiler-3689049.html|titel=Firefox 53: Schneller, schlanker und stabiler|autor=heise online|zugriff=2017-04-21}}</ref> Firefox 54 baute die Multiprozess-Architektur weiter aus.<ref>{{Internetquelle|url=https://www.heise.de/newsticker/meldung/Firefox-54-mit-Multiprozess-Architektur-3743113.html|titel=Firefox 54 mit Multiprozess-Architektur|autor=heise online|zugriff=2017-06-15}}</ref>
+|-
+| {{Version |o |55.0.1}}
+| {{FormatDate|2017-08-10|&nbsp;}}
+| Außerplanmäßige Fehlerbehebungen<ref>{{Internetquelle |url=https://www.mozilla.org/en-US/firefox/55.0.1/releasenotes/ |titel=Firefox – Notes (55.0.1) – Mozilla |hrsg=Mozilla Foundation |datum=2017-08-10 |zugriff=2017-08-16 |sprache=en}}</ref>
+|-
+| {{Version |o |55.0.2}}
+| {{FormatDate|2017-08-16|&nbsp;}}
+| Außerplanmäßige Fehlerbehebungen<ref>{{Internetquelle |url=https://www.mozilla.org/en-US/firefox/55.0.2/releasenotes/ |titel=Firefox – Notes (55.0.2) – Mozilla |hrsg=Mozilla Foundation |datum=2017-08-16 |zugriff=2017-08-16 |sprache=en}}</ref>
+|-
+| {{Version |c |55.0.3}}
+| {{FormatDate|2017-08-25|&nbsp;}}
+| Außerplanmäßige Fehlerbehebungen<ref>{{Internetquelle |url=https://www.mozilla.org/en-US/firefox/55.0.3/releasenotes/ |titel=Firefox – Notes (55.0.3) – Mozilla |hrsg=Mozilla Foundation |datum=2017-08-25 |zugriff=2017-08-26 |sprache=en}}</ref>
+|-
+! colspan="6" | Daten der nächsten geplanten Veröffentlichung<ref name="RapidRelease" />
+|-
+| rowspan="1" |'''Firefox&nbsp;56'''
+| rowspan="1" |56.0
+| {{Version |p|56.0}}
+|
+| {{FormatDate|2017-09-26|nbsp}}
+| 
+|-
+| colspan="6" | {{Version |l |zeige=111111}}
+|}
+
+{{FNZ|a|Datumsangaben nach [[Zeitzone#Zonenzeit UTC−9h bis UTC−6h|PST/PDT]], gemäß dem Sitz der Mozilla Foundation in [[Mountain View (Santa Clara County, Kalifornien)|Mountain View]], [[Kalifornien]].}}
+
+=== Portable Ausgabe ===
+Die offizielle Ausgabe von Mozilla Firefox erfordert im Normalfall eine Installation auf dem Zielsystem. Das erschwert allerdings den rechnerübergreifenden Einsatz mit [[Wechseldatenträger]]n (beispielsweise mit einem [[USB-Stick]]), die es unter anderem ermöglichen, Firefox mit dem gleichen Profil, das heißt den gleichen [[Lesezeichen (Internet)|Lesezeichen]], Verlauf, Formulareingaben, Passwörtern, Einstellungen und so weiter, an Büro- und Heimcomputer einzusetzen. Aus diesem Grund wird von [[PortableApps]] eine inoffizielle, [[Portable Software|portable]] Ausgabe von Firefox angeboten – Mozilla Firefox, Portable Edition<ref name="FF-PE">[http://portableapps.com/de/apps/internet/firefox_portable Mozilla Firefox, Portable Edition] – Unterseite bei ''[[PortableApps]]''</ref> –, die so weit angepasst wurde, dass sie direkt auf einen Wechseldatenträger entpackt werden kann und auf diesem nutzbar ist. Dabei verbleiben die sensiblen Daten auf dem Wechseldatenträger und müssen nicht auf der lokalen Festplatte des genutzten Rechners zurückbleiben.<ref name="FF-PE" /> Ein ähnliches Verhalten ist auch durch die Manipulation des Firefox-Profilpfades in der Programmkonfiguration (<code>about:config</code>) möglich.
+
+=== {{Anker|64-Bit-Version}} 64-Bit-Variante ===
+Bereits im Jahre 2009 existierten von [[Linux-Distribution|Linux-Distributoren]] erstellte 64-Bit-Varianten von Firefox für [[Linux]].<ref>{{Internetquelle |url=https://bugzilla.mozilla.org/show_bug.cgi?id=527907 |titel=Expose x86_64 Linux builds on the download pages |titelerg=Bug 527907 |autor=Andre Costa |hrsg=Mozilla |werk=Bugzilla@Mozilla |datum=2009-11-11 |zugriff=2015-03-04 |sprache=en}}</ref>
+
+Neben der offiziellen 32-Bit-Variante von Firefox bot Mozilla für [[Windows]] zu Testzwecken eine 64-Bit-Variante der ''Developer Edition'' zum Download an. Die erste Beta-Version dieser Variante wurde mit Firefox 38 am 3. April 2015 veröffentlicht.<ref>{{Internetquelle |url=https://www.mozilla.org/en-US/firefox/38.0beta/releasenotes/ |titel=Firefox Beta Notes Version 38.0beta, first offered to Beta channel users on April 3, 2015 |hrsg=Mozilla |zugriff=2014-04-09}}</ref><ref>{{Internetquelle |url=https://www.soeren-hentzschel.at/firefox/mozilla-veroeffentlicht-64-bit-beta-von-firefox-fuer-windows/ |titel=Mozilla veröffentlicht 64-Bit-Beta von Firefox für Windows |datum=2015-04-06 |zugriff=2015-12-28}}</ref> Gleichzeitig boten Projekte wie „Waterfox“<ref>{{Literatur|Titel=Statt Firefox: 64-Bit-Browser Waterfox 18.0.1 erschienen - Golem.de|Online=http://www.golem.de/news/statt-firefox-64-bit-browser-waterfox-18-0-1-erschienen-1301-97061.html|Abruf=2017-01-24}}</ref>, „Cyberfox“<ref>{{Literatur|Titel=Cyberfox: Neuer 64 Bit-Firefox-Klon im Check|Sammelwerk=CHIP Online|Online=http://www.chip.de/news/Cyberfox-Neuer-64-Bit-Firefox-Klon-im-Check_61549782.html|Abruf=2017-01-24}}</ref> oder „Pale Moon“<ref>{{Literatur|Titel=Pale Moon 5: Brandneuer Browser auf Basis des Firefox 5 will schneller und sicherer sein|Sammelwerk=t3n News|Online=http://t3n.de/news/pale-moon-5-brandneuer-browser-basis-firefox-5-schneller-316913/|Abruf=2017-01-24}}</ref> aus dem Quellcode von Firefox erzeugte, inoffizielle 64-Bit-Versionen an.
+
+Seit Version 42 veröffentlicht Mozilla stabile 64-Bit-Versionen von Firefox für [[Microsoft Windows|Windows]]. Diese unterstützen, anders als die 32-Bit-Varianten, keine [[NPAPI]]-Plugins mehr.<ref>[https://www.welt.de/wirtschaft/webwelt/article148410028/Firefox-42-blockiert-nun-auch-Tracker-Software.html Mozilla-Browser: Firefox 42], Welt.de, abgerufen am 4. November 2015</ref>
+
+=== Inoffizielle Versionen {{Anker|optimierte Builds}} ===
+Mozilla selbst nimmt keine Codeoptimierungen für spezielle Prozessoren vor. Von Mozilla Firefox existieren, ebenso wie von [[Mozilla Thunderbird]], jedoch zahlreiche inoffizielle Versionen (Builds) für verschiedene Betriebssysteme.
+
+Ein Grund ist die Optimierung für bestimmte Plattformen (etwa [[Streaming SIMD Extensions 2|SSE2]]-Builds für [[Intel Pentium 4|Pentium-4]]-Prozessoren). In Kombination mit Techniken wie der profilgesteuerten Optimierung, die neuere C++-Compiler unterstützen,<ref>{{Internetquelle |url=https://developer.mozilla.org/en/Building_with_Profile-Guided_Optimization |titel=Mozilla Developer Center: Building with Profile-Guided Optimization |datum=2010-03-20 |zugriff=2010-04-15 |sprache=en}}</ref> lassen sich Reaktionszeit und Speicherbedarf deutlich verbessern, mithin steigt die Geschwindigkeit des Browsers. Dennoch ist auch die Verwendung solcher inoffizieller Versionen kein Garant für ein schnelleres Surfen, vereinzelt kommt es auch zu Geschwindigkeitseinbußen.<ref>{{Internetquelle |url=http://www.firefox-browser.de/wiki/Geschwindigkeit_optimieren |titel=FirefoxWiki: Geschwindigkeit optimieren – Optimierte Builds |zugriff=2010-04-15 |archiv-datum=2009-02-26 |archiv-url=https://web.archive.org/web/20090226203658/http://www.firefox-browser.de/wiki/Geschwindigkeit_optimieren}}</ref>
+
+== Sicherheit und Datenschutz ==
+[[Datei:AttackeFirefox15.png|mini|Warnmeldung über eine „als attackierend gemeldete Website“ im Firefox 15]]
+[[Datei:Firefox-Warnmeldung 10.0.2.png|mini|Warnmeldung wegen Zertifikatsfehler aus Firefox 10.0.2]]
+
+Bei einem Absturz des Programms wird ein Bericht erstellt. Er enthält unter anderem die Namen der installierten Add-ons und Informationen zum verwendeten System (Prozessorbezeichnung, verwendetes Betriebssystem usw.) Die Angabe der Website, um die es konkret geht, kann durch den Benutzer hingegen unterdrückt werden. Dieser Bericht ist für die Entwickler bestimmt, um mögliche Fehler auszubessern. Das Versenden muss vom Benutzer explizit bestätigt werden.<ref>{{Internetquelle |url=//support.mozilla.org/de/kb/mozilla-absturzmelder |titel=Mozilla-Absturzmelder |zugriff=2014-11-09}}</ref>
+
+Zum Schutz vor [[Phishing]] und [[Malware]] werden besuchte Internetseiten und [[Elektronische Signatur|Signaturen]] vom Benutzer heruntergeladener Anwendungsprogramme automatisch mit einer lokal gespeicherten Liste verdächtig gemeldeter Seiten und Dateien eines anderen Herstellers, in der Voreinstellung [[Google]], abgeglichen, die ungefähr halbstündig aktualisiert wird.<ref>[https://support.mozilla.org/de/kb/wie-funktioniert-schutz-vor-betrugsversuchen-und-schadprogrammen Wie funktioniert der eingebaute Schutz vor Betrugsversuchen (Phishing) und Schadprogrammen?], Mozilla Corporation, abgerufen am 28. Juli 2015.</ref>
+
+Die automatische Softwareaktualisierung des Programms speichert ein [[Cookie]] namens „aus“, das einen einzigartigen numerischen Wert zur Unterscheidung der einzelnen Firefox-Installationen enthält. Es besteht die Möglichkeit, dies in den Einstellungen zu unterbinden.
+
+Um Drittinhalte zu blockieren gleicht Firefox URLs mit einer Liste des Unternehmens ''Disconnect.Me'' ab.<ref>[https://www.heise.de/ct/artikel/Interview-mit-Mark-Mayo-Firefox-erfindet-sich-neu-2856497.html Interview mit Mark Mayo: Firefox erfindet sich neu], ct 27.10.2015</ref>
+
+== Kritik ==
+2015 hat Mozilla den Firefox-Browser für [[Windows 10]] angepasst. Windows 10 bietet u.&nbsp;a. eine integrierte Internetsuche. Die von dieser Suchfunktion verwendete Suchmaschine lässt sich nicht direkt über die Windows-Einstellungen auswählen. Mozilla wurde dafür kritisiert, dass diese Suchmaschine umgestellt wird, sobald Firefox als Standardbrowser in Verwendung ist und dessen eigene Standardsuchmaschine von der von Windows bevorzugten<!-- standardmäßig ist das Bing --> abweicht. Der Benutzer kann dieser Änderung nicht zustimmen oder sie ablehnen, er wird noch nicht einmal auf diese Umstellung hingewiesen.<ref>{{Internetquelle |url=http://www.golem.de/news/windows-10-firefox-40-modifiziert-ungefragt-die-systemweite-websuche-1508-115749.html |werk=golem.de |titel=Windows 10: Firefox 40 modifiziert ungefragt die systemweite Websuche |zugriff=2015-08-16}}</ref>
+
+2014 wurde Mozilla dafür kritisiert, dass eine Unterstützung für [[Encrypted Media Extensions]], einen [[Kopierschutz]] für Multimedia, in Firefox für Windows integriert wurde. Mozilla argumentierte, dieser Kopierschutz werde bei vielen großen [[Streaming Media|Streaming]]-Diensten genutzt und es sei nötig, ihn zu unterstützen, damit Firefox im Vergleich mit anderen Webbrowsern, in denen diese Unterstützung bereits durchgängig implementiert sei, nicht ins Hintertreffen gerate. Kritiker verwiesen darauf, dass für die Implementierung des Kopierschutzes Quellcode verwendet werde, der nicht [[quelloffen]] sei. Dies verletze die Grundsätze von Open-Source-Software.<ref>{{Internetquelle |url=http://www.spiegel.de/netzwelt/netzpolitik/encrypted-media-extensions-im-firefox-kopierschutz-fuer-videos-a-969811.html |werk=Spiegel Online |titel=Widerstand zwecklos: Auch Firefox bekommt Video-Kopierschutz |zugriff=2014-05-16}}</ref> Die [[Mozilla Foundation]] wurde auch dafür kritisiert, dass sie für hohe finanzielle Zuwendungen von Google ihre früheren Ideale gefährde oder bereits aufgegeben habe.<ref>{{Internetquelle |url=https://www.heise.de/newsticker/meldung/Kommentar-Mozilla-und-das-schmutzige-Geld-von-Google-2055527.html |autor=Martin Holland |werk=heise.de |titel=Mozilla-und-das-schmutzige-Geld-von-Google |zugriff=2015-01-11}}</ref>
+
+Ältere Versionen von Mozilla Firefox wurden wiederholt wegen eines als zu hoch empfundenen Bedarfs an [[Systemressource]]n kritisiert. Die Entwickler gaben an, dass dieses Verhalten zum Teil gewollt sei, so würden ab Version 1.5 zur schnelleren Navigation mehr geöffnete Seiten zwischengespeichert, wenn auf dem System ausreichend Ressourcen verfügbar seien.<ref>{{Internetquelle |url=http://weblogs.mozillazine.org/ben/archives/009749.html |titel=About the Firefox „memory leak“ |sprache=en |datum=2006-02-14 |zugriff=2011-07-26 |autor=Ben Goodger |archiv-url=https://web.archive.org/web/20070323005727/http://weblogs.mozillazine.org/ben/archives/009749.html |archiv-datum=2007-03-23}}</ref> Die Version 3.0 des Browsers wurde unter anderem auf die Verringerung des Ressourcenverbrauchs hin optimiert.<ref>{{Internetquelle |url=http://www.mozilla-europe.org/de/firefox/3.0/releasenotes/ |titel=Firefox 3 Versionshinweise |datum=2008-06-17 |zugriff=2009-03-17 |hrsg=[[Mozilla Foundation]] |sprache=en}}</ref><ref>{{Internetquelle |url=http://ejohn.org/blog/firefox-3-memory-use/ |titel=Firefox 3 Memory Use |datum=2008-03-13 |zugriff=2009-03-17 |sprache=en |autor=John Resig}}</ref> Der Erfolg dieser Maßnahmen wurde in einem Vergleichstest des IT-Nachrichten-Portals ''ZDNet.de'' bestätigt.<ref>{{Internetquelle |url=http://www.zdnet.de/enterprise/sw/0,39023278,39189761,00.htm |titel=Performance-Check: IE, Firefox, Opera und Safari im Benchmark-Test |datum=2008-04-18 |zugriff=2009-03-17 |hrsg=ZDNet.de |autor=Kai Schmerer}}</ref> Aus einem von der Website Lifehacker.com veröffentlichten Benchmark ging eine Vorabversion von Mozilla Firefox 4.0 als der am wenigsten Arbeitsspeicher benötigende Browser hervor.<ref>{{Internetquelle |url=http://lifehacker.com/#!5711040/browser-speed-tests-ie-9-firefox-4-beta-chromes-crankshaft-and-opera-11-beta |titel=Browser Speed Tests: IE 9 Beta, Firefox 4 Beta, Chrome’s Crankshaft, and Opera 11 Beta |autor=Kevin Purdy |datum=2010-12-10 |zugriff=2011-03-23 |sprache=en}}</ref>
+
+== Verbreitung ==
+[[Datei:Usage share of web browsers (Source StatCounter).svg|mini|Marktanteile der Webbrowser nach Angaben von [[StatCounter]]]]
+Die genaue [[Webbrowser#Marktanteile und deren Messung|Verbreitung eines Webbrowsers]] lässt sich nur schwer verlässlich messen. Unterschiedliche Statistiken haben für die Verbreitung von Firefox folgende Werte ergeben:
+
+{| class="wikitable zebra float-right" style="text-align:right;"
+|- class="hintergrundfarbe5"
+! Quartal
+! style="width:9em;"| NetApplications<ref name="verbrNetApplications">{{Internetquelle |url=https://marketshare.hitslink.com/report.aspx?qprid=1&qpaf=&qpcustom=Firefox&qpcustomb=0 |titel=Firefox Market Share on Desktop |hrsg=NetApplications |sprache=en |zugriff=2012-07-01}}<br />und {{Internetquelle |url=https://marketshare.hitslink.com/report.aspx?qprid=1&qpaf=&qpcustom=Firefox&qpcustomb=1 |titel=Firefox Market Share on Mobile/Tablet |autor=NetApplications |sprache=en |zugriff=2012-07-01}}<br />(Gewichtung gemäß: {{Internetquelle |url=https://marketshare.hitslink.com/report.aspx?qprid=61 |titel=Browsing by Device Category |hrsg=NetApplications |sprache=en |zugriff=2011-09-01}})</ref>
+! style="width:9em;"| Webtrekk<ref>{{Internetquelle |url=https://www.webtrekk.com/de/ueber-uns/news-presse/news/ |titel=News |autor=Webtrekk.de |zugriff=2016-07-17}} (Ab Q3/2012 gewichtet mit dem ebenfalls angegebenen Anteil der Desktop-Webbrowser.)</ref><br /><span style="font-weight: normal; font-size: 80%;">(v.&nbsp;a. deutschsprachige Seiten)</span>
+! style="width:9em;"| W3Counter<ref name="verbrW3Counter">{{Internetquelle |url=http://www.w3counter.com/globalstats.php |titel=Global Web Stats |hrsg=W3Counter.com |sprache=en |zugriff=2010-07-24}}</ref>
+! style="width:9em;"| StatCounter<ref>{{Internetquelle |url=http://gs.statcounter.com/ |titel=Top 5 Browsers-StatCounter Global Stats |hrsg=StatCounter.com |sprache=en |zugriff=2010-07-24}}</ref>
+|-
+| style="text-align: left;"| Q4/2004
+| 3,63 %
+| rowspan="4"|
+| rowspan="10"|
+| rowspan="15"|
+|-
+| style="text-align: left;"| Q1/2005
+| 6,16 %
+|-
+| style="text-align: left;"| Q2/2005
+| 8,05 %
+|-
+| style="text-align: left;"| Q3/2005
+| 8,22 %
+|-
+| style="text-align: left;"| Q4/2005
+| 9,00 %
+| 17,52 %
+|-
+| style="text-align: left;"| Q1/2006
+| 9,77 %
+| 18,19 %
+|-
+| style="text-align: left;"| Q2/2006
+| 10,67 %
+| 20,18 %
+|-
+| style="text-align: left;"| Q3/2006
+| 11,88 %
+| 21,60 %
+|-
+| style="text-align: left;"| Q4/2006
+| 13,51 %
+| 22,37 %
+|-
+| style="text-align: left;"| Q1/2007
+| 14,35 %
+| 25,12 %
+|-
+| style="text-align: left;"| Q2/2007
+| 14,91 %
+| 26,18 %
+| 24,82 %
+|-
+| style="text-align: left;"| Q3/2007
+| 14,70 %
+| 27,08 %
+| 25,33 %
+|-
+| style="text-align: left;"| Q4/2007
+| 15,56 %
+| 28,79 %
+| 27,68 %
+|-
+| style="text-align: left;"| Q1/2008
+| 16,86 %
+| 29,36 %
+| 28,39 %
+|-
+| style="text-align: left;"| Q2/2008
+| 18,11 %
+| 31,41 %
+| 28,89 %
+|-
+| style="text-align: left;"| Q3/2008
+| 19,07 %
+| 32,53 %
+| 31,05 %
+| 26,00 %
+|-
+| style="text-align: left;"| Q4/2008
+| 20,83 %
+| 35,54 %
+| 30,41 %
+| 25,35 %
+|-
+| style="text-align: left;"| Q1/2009
+| 22,66 %
+| 36,26 %
+| 30,90 %
+| 29,17 %
+|-
+| style="text-align: left;"| Q2/2009
+| 23,01 %
+| 37,58 %
+| 31,18 %
+| 30,05 %
+|-
+| style="text-align: left;"| Q3/2009
+| 23,07 %
+| 39,86 %
+| 31,65 %
+| 30,99 %
+|-
+| style="text-align: left;"| Q4/2009
+| '''24,61 %'''
+| 42,53 %
+| 32,00 %
+| '''31,56 %'''
+|-
+| style="text-align: left;"| Q1/2010
+| 24,45 %
+| 43,33 %
+| '''32,30 %'''
+| 30,65 %
+|-
+| style="text-align: left;"| Q2/2010
+| 24,14 %
+| 43,47 %
+| 32,20 %
+| 30,35 %
+|-
+| style="text-align: left;"| Q3/2010
+| 22,73 %
+| 40,80 %
+| 30,40 %
+| 30,39 %
+|-
+| style="text-align: left;"| Q4/2010
+| 22,80 %
+| 36,36 %
+| 31,27 %
+| 29,50 %
+|-
+| style="text-align: left;"| Q1/2011
+| 22,10 %
+| 39,72 %
+| 30,57 %
+| 28,57 %
+|-
+| style="text-align: left;"| Q2/2011
+| 21,67 %
+| 40,60 %
+| 28,67 %
+| 26,49 %
+|-
+| style="text-align: left;"| Q3/2011
+| 21,19 %
+| 39,90 %
+| 26,83 %
+| 24,98 %
+|-
+| style="text-align: left;"| Q4/2011
+| 20,62 %
+| 39,00 %
+| 25,73 %
+| 23,25 %
+|-
+| style="text-align: left;"| Q1/2012
+| 19,11 %
+| 36,90 %
+| 24,50 %
+| 22,75 %
+|-
+| style="text-align: left;"| Q2/2012
+| 18,39 %
+| 35,10 %
+| 23,50 %
+| 22,02 %
+|-
+| style="text-align: left;"| Q3/2012
+| 18,23 %
+| 33,40 %
+| 22,90 %
+| 19,85 %
+|-
+| style="text-align: left;"| Q4/2012
+| 17,90 %
+|
+| 21,17 %
+| 18,88 %
+|-
+| style="text-align: left;"| Q1/2013
+| 17,51 %
+| 37,00 %
+| 19,67 %
+| 18,04 %
+|-
+| style="text-align: left;"| Q2/2013
+| 19,15 %
+|
+| 19,80 %
+| 17,00 %
+|-
+| style="text-align: left;"| Q3/2013
+| 18,60 %
+|
+| 17,60 %
+| 15,31 %
+|-
+| style="text-align: left;"| Q4/2013
+| 18,35 %
+|
+| 18,10 %
+| 14,83 %
+|-
+| style="text-align: left;"| Q1/2014
+| 17,26 %
+|
+| 18,20 %
+| 14,35 %
+|-
+| style="text-align: left;"| Q2/2014
+| 15,54 %
+|
+| 16,90 %
+| 13,28 %
+|-
+| style="text-align: left;"| Q3/2014
+| 14,18 %
+|
+| 16,40 %
+| 12,45 %
+|-
+| style="text-align: left;"| Q4/2014
+| 11,91 %
+|
+| 15,70 %
+| 11,27 %
+|-
+| style="text-align: left;"| Q1/2015
+| 11,89 %
+|
+| 14,70 %
+| 11,74 %
+|-
+| style="text-align: left;"| Q2/2015
+| 12,06 %
+|
+| 13,50 %
+| 10,72 %
+|-
+| style="text-align: left;"| Q3/2015
+| 11,46 %
+|
+| 12,50 %
+| 9,83 %
+|-
+| style="text-align: left;"| Q4/2015
+| 12,13 %
+| '''45,10 %'''
+| 11,40 %
+| 8,83 %
+|-
+| style="text-align: left;"| Q1/2016
+| 10,54 %
+| 43,09 %
+| 10,00 %
+| 8,54 %
+|-
+| style="text-align: left;"| Q2/2016
+| 7,98 %
+| 42,69 %
+| 10,90 %
+| 8,31 %
+|-
+| style="text-align: left;"| Q3/2016
+| 9,19 %
+| 38,71 %
+| 13,10 %
+| 7,57 %
+|-
+| style="text-align: left;"| Q4/2016
+| 12,22 %
+| 39,11 %
+| 10,40 %
+| 6,72 %
+|-
+| style="text-align: left;"| Q1/2017
+| 11,79 %
+|
+| 7,30 %
+| 6,67 %
+|-
+|}
+
+Laut einer Untersuchung des französischen Unternehmens ''AT Internet Institute'' benutzten im März 2008 35&nbsp;Prozent der deutschen Surfer Mozilla Firefox. In Österreich konnte sich der Browser einen Anteil von 32,6&nbsp;Prozent und in der Schweiz einen Anteil von 26,4&nbsp;Prozent sichern. Spitzenreiter waren Finnland (45,9&nbsp;Prozent), Polen (44&nbsp;Prozent) und Slowenien (43,7&nbsp;Prozent).<ref>{{Internetquelle |url=http://www.atinternet-institute.com/en-us/browsers-barometer/firefox-march-2008/index-1-2-3-127.html |titel=Mozilla Firefox on the verge of gaining 29 % use share in the European countries |datum=2008-04-30 |zugriff=2009-03-03 |sprache=en |hrsg=AT Internet Institute}}</ref>
+
+Das deutsche [[Informationstechnik|IT]]- und [[Telekommunikation|TK]]-Nachrichtenportal [[Golem.de]] ermittelte im Oktober 2009 unter seinen Lesern einen Marktanteil von 58,3&nbsp;Prozent.<ref>{{Internetquelle |url=http://www.golem.de/0911/71054-2.html |titel=Firefox wird fünf (S.&nbsp;2/2) |datum=2009-11-09 |zugriff=2009-11-09 |hrsg=[[Golem.de]]}}</ref> Nach eigenen Angaben richtet sich das Angebot von Golem.de aber primär an „''professionelle Computeranwender''“, die Zahlen sind also nicht repräsentativ.<ref>{{Internetquelle |url=http://www.golem.de/sonstiges/impressum.html |titel=Impressum |hrsg=[[Golem.de]] |zugriff=2009-03-02}}</ref>
+
+Auch der IT-Nachrichtendienst [[Heise online]] verzeichnet einen überproportional hohen Anteil alternativer Webbrowser unter seinen Lesern. Im Juli 2007 bevorzugten erstmals mehr als die Hälfte der Heise-online-Leser Mozilla Firefox.<ref>{{Internetquelle |url=https://www.heise.de/netze/meldung/Firefox-gewinnt-in-Europa-hinzu-151445.html |titel=Firefox gewinnt in Europa hinzu |datum=2007-07-16 |zugriff=2009-05-05 |hrsg=[[Heise online]]}}</ref>
+
+Im deutschsprachigen Raum ist Firefox seit Mitte 2009 der meistgenutzte Browser.<ref>[http://www.w3b.org/technik/firefox-setzt-langjahriger-internet-explorer-dominanz-ein-ende.html Browserwatch: Firefox setzt langjähriger Internet Explorer-Dominanz ein Ende], Artikel mit Umfrageergebnissen bei ''w3b.org'' vom 1.&nbsp;Dezember 2009</ref> Im April 2013 hielt er in Deutschland einen Marktanteil von 39,3&nbsp;Prozent und lag damit vor dem [[Internet Explorer]] von [[Microsoft]] (22&nbsp;Prozent).<ref>{{Internetquelle |hrsg=webmasterpro.de |url=http://www.webmasterpro.de/portal/webanalyse-aktuell.html |titel=Verbreitung verschiedener Browserversionen |werk=Webanalyse – Aktuelle Browser-Marktanteile in Deutschland |datum=2013-01-12 |zugriff=2013-01-12}}</ref>
+
+Im Jahr 2010 hatte Firefox weltweit einen Marktanteil von über 30&nbsp;Prozent. Seitdem geht der Anteil kontinuierlich zurück; im Mai 2015 betrug er 16,3&nbsp;Prozent.<ref name="welt" />
+
+=== Downloadzahlen ===
+Um die Verbreitung des freien Browsers Firefox zu fördern und sich im [[Browserkrieg#Der zweite Browserkrieg|Browserkrieg]] behaupten zu können, veranstaltete Mozilla mehrere sogenannte „Download Days“, die das Ziel hatten, möglichst viele Downloads in einer möglichst kurzen Zeit zu erreichen. Mehrmals konnte sich das Projekt dabei selbst übertreffen. Es hält den [[Weltrekord]] der meisten Software-Downloads innerhalb von 24&nbsp;Stunden.
+
+Anlässlich der Herausgabe der ersten Vorschauversion des Firefox 1.0 im September 2004 setzte sich Mozilla das Ziel, eine Million Downloads in zehn Tagen zu erreichen; bereits nach vier Tagen gelang dies. Mit der Veröffentlichung der endgültigen Version 1.0 im November 2004 wurde diese Marke bereits am ersten Tag durchbrochen. Knapp ein halbes Jahr später, am 19. Oktober 2005, wurden insgesamt 100 Millionen Downloads gezählt.
+Die Version 2.0 wurde nach Angaben des Herstellers innerhalb von 24&nbsp;Stunden nach Freigabe von über zwei Millionen Menschen heruntergeladen.<ref name="ff20Downloads24Hours">{{Internetquelle |url=https://www.heise.de/newsticker/meldung/2-Millionen-Downloads-von-Firefox-2-0-in-den-ersten-24-Stunden-112857.html |titel=2 Millionen Downloads von Firefox 2.0 in den ersten 24 Stunden |datum=2006-10-29 |zugriff=2014-11-09 |autor=Axel Vahldiek |hrsg=heise.de}}</ref>
+
+Im Zuge der Veröffentlichung der Version 3.0 rief Mozilla im Sommer 2008 zum „Download Day“ auf, um damit den [[Weltrekord]] der meisten Software-Downloads innerhalb von 24&nbsp;Stunden aufzustellen. Dieses Ziel wurde mit weltweit 8.002.530 Downloads erreicht und in das [[Guinness-Buch der Rekorde]] aufgenommen.<ref>{{Internetquelle |url=http://blog.mozilla.org/press/2008/07/mozilla-sets-new-guinness-world-record-with-firefox-3-downloads/ |titel=Mozilla sets new Guinness World Record with Firefox 3 downloads |datum=2008-07-02 |zugriff=2014-11-09 |sprache=en |hrsg=Mozilla}}</ref>
+
+Während die Zahl der Downloads zur Veröffentlichung der Version 1.0 noch exponentiell stieg, entwickelte sie seitdem einen eher linearen Verlauf. Bis April 2010 wurden über 1,3 Milliarden Downloads verzeichnet.<ref name="Firefox4 downloads">{{Internetquelle |url=http://www.spreadfirefox.com/news_events |titel=News & Events |zugriff=2010-04-10 |sprache=en |autor=SpreadFirefox.com |archiv-url=https://web.archive.org/web/20100412083156/http://www.spreadfirefox.com/news_events |archiv-datum=2010-04-12}}</ref>
+
+== Finanzierung und Werbung ==
+[[Datei:Firefox-FAZ-Anzeige1.svg|mini|Firefox-Anzeige in der [[Frankfurter Allgemeine Zeitung|Frankfurter Allgemeinen Zeitung]]]]
+
+Die [[Mozilla Foundation]] hatte 2010 Jahreseinnahmen von 123 Millionen US-Dollar, davon etwa 100 Millionen aus einem [[Sponsoring]]vertrag mit [[Google Inc.|Google]].<ref>[http://www.mozilla.org/en-US/foundation/annualreport/2010/faq/ ''The State of Mozilla Annual Report''], Mozilla, abgerufen am 21. Dezember 2011 (englisch).</ref> Im Dezember 2011 wurde der Vertrag bis zum Jahr 2014 verlängert. Festgelegt ist eine jährliche Zahlung in Höhe von etwa 300 Millionen Dollar. Im Gegenzug veröffentlicht Mozilla seine Browser mit Google als Standardsuchmaschine.<ref>{{Internetquelle |url=//blog.mozilla.org/blog/2011/12/20/mozilla-and-google-sign-new-agreement-for-default-search-in-firefox/ |titel=Mozilla and Google Sign New Agreement for Default Search in Firefox |zugriff=2014-11-09 |sprache=en}}</ref><ref>{{Internetquelle |url=http://allthingsd.com/20111222/google-will-pay-mozilla-almost-300m-per-year-in-search-deal-besting-microsoft-and-yahoo/ |titel=Google Will Pay Mozilla Almost $300M Per Year in Search Deal, Besting Microsoft and Yahoo |zugriff=2014-11-09 |sprache=en}}</ref> Darüber hinaus wirkten IT-Fachkräfte von Google bei der Entwicklung von Mozillas Webbrowsern mit.
+
+Zur offiziellen Freigabe der Version 1.0 schaltete die US-Initiative Spread Firefox<ref>{{Internetquelle |url=http://blog.mozilla.org/blog/2007/09/07/four-hundred-million-firefox-downloads/ |titel=Four Hundred Million Firefox Downloads |zugriff=2014-11-09 |sprache=en}}</ref> am 16. Dezember 2004 eine doppelseitige Anzeige in der [[The New York Times|New York Times]], die über Spenden finanziert wurde. Mehr als 10.000 Personen oder Familien spendeten innerhalb von zehn Tagen jeweils zwischen 10 und 45 Dollar, wofür sie namentlich in der Anzeige erwähnt wurden. Insgesamt kamen so 250.000 Dollar zusammen.
+
+In Deutschland wurde durch einen Aufruf unter dem Namen „Firefox kommt“ eine Werbeaktion durch Spenden finanziert. Die Anzeige erschien am 2. Dezember 2004 in der [[Frankfurter Allgemeine Zeitung|Frankfurter Allgemeinen Zeitung]]<ref>{{Internetquelle |url=http://www.foxload.com/files/2011/01/feuer-firefox-anzeige-faz.pdf |titel=FEUER! |zugriff=2014-11-09 |format=PDF}}</ref> und anderen überregionalen Zeitungen.
+
+Seit 2014 versucht Mozilla, seine finanzielle Abhängigkeit von Google zu verringern. Anfang 2014 kündigte Darren Herman an, Firefox werde in Zukunft Werbung in den [[Tiles]] anzeigen, sie solle allerdings klar gekennzeichnet werden.<ref>{{Internetquelle |url=https://blog.mozilla.org/advancingcontent/2014/02/11/publisher-transformation-with-users-at-the-center/ |datum=2014-02-12 |zugriff=2014-11-20 |titel=Publisher Transformation with Users at the Center |autor=Darren Herman |sprache=en |werk=Blog des Mozilla Content Service}}</ref> Mitte November 2014 zeigte daraufhin die stabile Version des Firefox erstmals auch bei bestehenden Nutzern Werbung in den Tiles an, bei Nutzern der Vorabversionen und neuen Nutzern war das schon früher der Fall.<ref>{{Internetquelle |url=http://www.golem.de/news/mozilla-firefox-zeigt-erstmals-werbung-in-neuen-tabs-1411-110574.html |titel=Firefox zeigt erstmals Werbung in neuen Tabs |autor=Friedhelm Greis |werk=Golem.de |datum=2014-11-16 |zugriff=2014-11-20}}</ref> Auch wurde Ende November 2014 die Standardsuchmaschine von Firefox in den Regionen USA ([[Yahoo]]), Russland ([[Yandex]]) und China ([[Baidu]]) geändert.<ref>{{Internetquelle |url=http://www.pro-linux.de/news/1/21755/mozilla-und-yahoo-arbeiten-enger-zusammen.html |titel=Mozilla und Yahoo arbeiten enger zusammen |datum=2014-11-20 |zugriff=2014-11-20 |autor=Mirko Lindner |werk=pro-linux.de}}</ref> Im November 2015 hieß es, aktuell habe Mozilla gar keine Kooperation mit Google bei den Suchmaschinen.<ref>http://www.cnet.com/news/firefox-maker-mozilla-we-dont-need-googles-money-anymore/</ref>
+
+== Siehe auch ==
+* [[Liste von Webbrowsern]]
+
+== Literatur ==
+<!-- nach Autor alphabetisch sortiert -->
+* {{Literatur
+   |Autor=Michael Kolberg
+   |Titel=Mozillas Firefox, [[Mozilla Thunderbird|Thunderbird]] und [[Lightning (Software)|Lightning]]
+   |TitelErg=Internet, Mail und mehr
+   |Verlag=[[Markt+Technik Verlag|Markt + Technik]]
+   |Ort=München
+   |Datum=2008
+   |ISBN=978-3-8272-4424-6}}
+
+== Weblinks ==
+{{Commonscat|3=S}}
+* [http://www.mozilla.org/de/firefox/new/ Webbrowser Firefox auf Deutsch] – offizielle deutsche Website
+* [https://addons.mozilla.org/de/firefox/ Firefox-Erweiterungen] – offizielle Programm-Erweiterungen für den ''Mozilla Firefox''
+* [http://www.getpersonas.com/de/ Offizielle Personas-Erweiterungswebsite]
+* [https://support.mozilla.org/t5/Mozilla-Hilfe-Deutsch/ct-p/de?profile.language=de Offizielle Firefox-Onlinehilfe]
+* [https://marketplace.firefox.com/ Firefox Marketplace]
+* [https://www.mozilla.com/de/firefox/channel/ Offizielle Downloadseite von Entwicklerversionen des ''Mozilla Firefox'']
+* [https://www.camp-firefox.de/ Camp Firefox – Die Firefox-Community] – offizielle deutsche Firefox-Community-Website mit aktuellen Informationen rund um den Browser Firefox
+* [https://www.mozilla.org/de/firefox/organizations/ Firefox ESR] für Unternehmen und große Organisationen
+* [https://developer.mozilla.org/de/Firefox/Nutzung_in_Unternehmen/ Firefox in einem Unternehmen nutzen] enthält unter anderem Hinweise zur Konfiguration des ''Mozilla Firefox'' ähnlich der Möglichkeiten mit [[Microsoft Windows|Windows]] [[Group Policy Object]] (GPO)
+
+== Einzelnachweise ==
+<references>
+<ref name="heise-ix">
+{{Internetquelle
+ |url=https://www.heise.de/ix/meldung/Diskussionen-ueber-Versionspolitik-von-Firefox-1268009.html
+ |titel=Diskussionen über Versionspolitik von Firefox
+ |hrsg=heise iX – Magazin für professionelle Informationstechnik
+ |datum=2011-06-25
+ |zugriff=2011-07-03}}
+</ref>
+<ref name="heise-open">
+{{Internetquelle
+ |url=https://www.heise.de/ct/artikel/Die-Woche-Firefox-und-die-Updates-1270840.html
+ |autor=Thorsten Leemhuis
+ |titel=Die Woche: Firefox und die Updates
+ |hrsg=heise open
+ |datum=2011-06-30
+ |zugriff=2011-07-03}}
+</ref>
+<ref name="mozillawiki-esr">
+{{Internetquelle
+ |url=https://wiki.mozilla.org/Enterprise/Firefox/ExtendedSupport:Proposal
+ |titel=Enterprise/Firefox/ExtendedSupport:Proposal
+ |hrsg=MozillaWiki
+ |datum=2012-04-26
+ |zugriff=2013-10-10}}
+</ref>
+<ref name="mozillawiki-rm">
+{{Internetquelle
+ |url=https://wiki.mozilla.org/Firefox/Roadmap
+ |titel=Release-Roadmap
+ |titelerg=Version 0.3
+ |hrsg=MozillaWiki
+ |sprache=en
+ |datum=November 2007
+ |zugriff=(unbekannt)}}
+</ref>
+</references>
+
+{{NaviBlock
+|Navigationsleiste Mozilla-Programme
+}}
+
+{{Lesenswert|25. Juli 2005|7956994}}
+
+{{Normdaten|TYP=s|GND=4824793-5|LCCN=no/2005/45743|VIAF=180493249}}
+
+[[Kategorie:Mozilla|Firefox]]
+[[Kategorie:Freier Webbrowser]]
+[[Kategorie:Unix-Software]]
+[[Kategorie:Linux-Software]]
+[[Kategorie:MacOS-Software]]
+[[Kategorie:OS/2-Software]]
+[[Kategorie:Windows-Software]]
+[[Kategorie:Solaris-Software]]
+[[Kategorie:BeOS-Software]]
+[[Kategorie:Fuchs als Namensgeber]]

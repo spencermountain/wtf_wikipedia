@@ -6,25 +6,28 @@ function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
   // console.log(wtf.plaintext(str));
   let r = wtf.parse(str);
-  console.log(r.translations);
+  console.log(r.infoboxes[0]);
   // console.log(JSON.stringify(r.sections, null, 2));
 }
 
-// from_file("list")
+// from_file('list');
 // from_file("earthquakes");
-// from_file("bluejays");
+// from_file('bluejays');
+// from_file('redirect');
 // from_file('Toronto');
+// from_file('royal_cinema');
 // from_file('Toronto_Star');
 // from_file('Radiohead');
 // from_file('Jodie_Emery');
 // from_file('Redirect')
 // from_file("Africaans")
-// from_file('Anarchism');
+// from_file('rnli_stations');
 
-wtf.from_api('Radiohead', 'en', function(markup) {
-  var obj = wtf.parse(markup);
-  console.log(obj);
-});
+// wtf.from_api('Radiohead', 'en', function(markup) {
+//   var obj = wtf.parse(markup);
+//   console.log(obj.infoboxes[0].data);
+//   // console.log(wtf.plaintext(markup));
+// });
 
 // {
 //   type: '', //page/redirect/category/template
@@ -39,6 +42,7 @@ wtf.from_api('Radiohead', 'en', function(markup) {
 //       title: '',
 //       images: '',
 //       lists: '',
+//       tables: '',
 //       sentences: [{ //each sentence
 //         text: ''
 //         links: [{
@@ -48,5 +52,15 @@ wtf.from_api('Radiohead', 'en', function(markup) {
 //       }]
 //     }]
 // }
-// var str = 'hello [[wikinews:Radiohead]] world  [[Category:Films]]';
-// console.log(wtf.parse(str));
+var str = `{{colonnes|taille=|nombre=2|
+* [[Joy Fielding]], romancière.
+* [[Joe Shuster]], dessinateur de comics.
+* [[Glenn Gould]], pianiste, compositeur, écrivain, homme de radio et réalisateur.
+* [[Christopher Plummer]], acteur.
+* [[David Cronenberg]], réalisateur et scénariste.
+* [[Steve Shutt]], ancien joueur professionnel de hockey sur glace.
+* [[Kathleen Wynne]], femme politique et actuelle Première ministre de l'Ontario.
+* [[Catherine O'Hara]], actrice.
+}} `;
+let obj = wtf.parse(str);
+console.log(obj);

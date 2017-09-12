@@ -20,7 +20,6 @@ test('royal_cinema', t => {
   t.equal(data.infoboxes[0].data.opened.text, 1939, '');
   t.equal(data.infoboxes[0].template, 'venue', '');
   t.equal(data.sections[0].sentences.length, 10, 'sentence-length');
-  t.equal(data.sections[0].sentences.length, 10, 'sentence-length');
   t.equal(data.categories.length, 4, 'cat-length');
   t.end();
 });
@@ -37,14 +36,14 @@ test('toronto_star', t => {
 });
 
 test('toronto_star with list', t => {
-  var data = wtf_wikipedia.parse(fetch('toronto_star'), { ignoreLists: false });
+  var data = wtf_wikipedia.parse(fetch('toronto_star'));
   t.equal(data.infoboxes[0].data.publisher.text, 'John D. Cruickshank', '');
   t.equal(data.infoboxes[0].template, 'newspaper', '');
   var section = findSection(data, 'History');
   t.equal(section.sentences.length, 21, 'history-length');
   t.equal(data.categories.length, 6, 'cat-length');
   section = findSection(data, 'Notable cartoonists');
-  t.equal(section.list.length, 10, 'cartoonist-length');
+  t.equal(section.lists[0].length, 10, 'cartoonist-length');
   t.end();
 });
 
@@ -85,11 +84,11 @@ test('raith rovers', t => {
   t.equal(data.infoboxes[0].data.clubname.text, 'Raith Rovers', '');
   t.equal(data.categories.length, 10, 'cat-length');
   t.equal(data.images.length, 2, 'img-length');
-  t.equal(data.images[0].file, "File:Stark's Park - geograph.org.uk - 204446.jpg", t);
+  t.equal(data.images[1].file, "File:Stark's Park - geograph.org.uk - 204446.jpg", 'img-file');
   t.equal(
-    data.images[0].url,
+    data.images[1].url,
     "https://upload.wikimedia.org/wikipedia/commons/3/38/Stark's_Park_-_geograph.org.uk_-_204446.jpg",
-    t
+    'image-url'
   );
   t.end();
 });

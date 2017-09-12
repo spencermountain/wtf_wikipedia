@@ -2,8 +2,8 @@
 var test = require('tape');
 var wtf = require('../src/');
 // var parse_line = require('../src/parse/text');
-var cleanup_misc = require('../src/parse/cleanup/misc');
-var sentence_parser = require('../src/lib/sentence_parser');
+var cleanup_misc = require('../src/parse/preProcess');
+var sentence_parser = require('../src/parse/section/sentence/sentence_parser');
 
 test('sentence parser', t => {
   [
@@ -120,7 +120,7 @@ test('xml', t => {
 test('interwiki', t => {
   var str = 'hello [[wikinews:Radiohead]] world  [[Category:Films]]';
   var obj = wtf.parse(str);
-  t.equal(obj.interwiki.wikinews, 'Radiohead', 'interwiki-link');
+  t.equal(obj.sections[0].interwiki.wikinews, 'Radiohead', 'interwiki-link');
   t.equal(obj.categories.length, 1, 'cat-length');
   t.equal(obj.categories[0], 'Films', 'cat-match');
   t.end();

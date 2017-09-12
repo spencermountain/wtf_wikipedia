@@ -1,0 +1,19 @@
+{{Refimprove|date=October 2011}}
+The '''Remote Network Driver Interface Specification (RNDIS)''' is a [[Microsoft]] [[proprietary protocol]] used mostly on top of [[USB]]. It provides a virtual [[Ethernet]] link to most versions of the [[Microsoft Windows|Windows]], [[Linux]], and [[FreeBSD]] operating systems. A partial RNDIS specification is available from Microsoft, but Windows implementations have been observed to issue requests not included in that specification, and to have undocumented constraints.<ref>See, for example, {{Citation | title = comments in the host-side Linux implementation | url=http://lxr.linux.no/#linux+v3.4.4/drivers/net/usb/rndis_host.c#L31}}</ref>
+
+The protocol is tightly coupled to Microsoft's programming interfaces and models, most notably the [[Network Driver Interface Specification]] (NDIS), which are  alien to operating systems other than Windows.  This complicates implementing RNDIS on non-Microsoft operating systems, but Linux,<ref>{{cite web|url=https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=64e049102d3de3e61409cb6019403a9e689dfda6|title=kernel/git/torvalds/linux.git - Linux kernel source tree|website=git.kernel.org}}</ref> FreeBSD,<ref>{{cite web|url=https://svnweb.freebsd.org/base?view=revision&revision=261541|title=[base] Revision 261541|website=svnweb.freebsd.org}}</ref> NetBSD<ref>{{cite web|url=https://marc.info/?l=netbsd-source-changes&m=131119199610743|title='CVS commit: src/sys/dev/usb' - MARC|website=marc.info}}</ref> and OpenBSD<ref>{{cite web|url=https://marc.info/?l=openbsd-cvs&m=126748674430960|title='CVS: cvs.openbsd.org: src' - MARC|website=marc.info}}</ref> implement RNDIS natively.
+
+The [[USB Implementers Forum]] (USB-IF) defines at least three non-proprietary [[USB communications device class]] (CDC) protocols with comparable "virtual Ethernet" functionality; one of them (CDC-ECM) predates RNDIS and is widely used for interoperability with non-Microsoft operating systems, but does not work with Windows.
+
+Some versions of [[Android (operating system)|Android]] include RNDIS USB functionality, while more recent versions (such as Nexus 6P in September 2016) do not.
+
+==Notes and references==
+{{Reflist}}
+
+==External links==
+* [http://msdn.microsoft.com/en-us/library/windows/hardware/gg463293.aspx Remote NDIS (RNDIS) and Windows]
+
+==See also==
+* [[Ethernet over USB]]
+
+[[Category:Microsoft application programming interfaces]]
