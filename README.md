@@ -5,9 +5,6 @@
   <a href="https://npmjs.org/package/wtf_wikipedia">
     <img src="https://img.shields.io/npm/v/wtf_wikipedia.svg?style=flat-square" />
   </a>
-  <a href="https://nodejs.org/api/documentation.html#documentation_stability_index">
-    <img src="https://img.shields.io/badge/stability-stable-green.svg?style=flat-square" />
-  </a>
   <a href="https://www.codacy.com/app/spencerkelly86/wtf_wikipedia">
     <img src="https://api.codacy.com/project/badge/Coverage/e84f69487c9348ba9cd8e31031a05a4f" />
   </a>
@@ -47,31 +44,33 @@ var wtf = require("wtf_wikipedia")
 //hit the api
 wtf.from_api("Toronto", "en", function(markup){
   var data = wtf.parse(markup);
-  // {
-  //   type: '',
-  //   infoboxes: [{
-  //     template: '',
-  //     data: {}
-  //   }],
-  //   images: [],   // files + md5 urls
-  //   sections: [{  //(each heading)
-  //       title: '',
-  //       images: '',
-  //       lists: '',
-  //       sentences: [{ //(each sentence)
-  //         text: ''
-  //         links: [{
-  //           text: '',
-  //           link: ''
-  //         }]
-  //       }]
-  //    }],
-  //   categories: [],
-  //   interwiki: {},
-  // }
   console.log(data.infoboxes[0].data.leader_name)
   // "John Tory"
 })
+
+//result format -
+var result = {
+  type: '',
+  infoboxes: [{
+    template: '',
+    data: {}
+  }],
+  images: [],   // files + md5 urls
+  sections: [{  //(each heading)
+      title: '',
+      images: '',
+      lists: '',
+      sentences: [{ //(each sentence)
+        text: ''
+        links: [{
+          text: '',
+          link: ''
+        }]
+      }]
+   }],
+  categories: [],
+  interwiki: {},
+}
 ````
 yeah, the structure is a little verbose - but with a couple loops you should find everything you want.
 
@@ -87,8 +86,7 @@ wtf.from_api("Toronto Blue Jays", "en", function(markup){
 ```html
 <script src="https://unpkg.com/wtf_wikipedia@latest/builds/wtf_wikipedia.min.js"></script>
 <script>
-  //follow the "On a Friday" -> "Radiohead" redirect
-  wtf.from_api("On a Friday", "en", function(markup){
+  wtf.from_api("On a Friday", "en", function(markup){// -> "Radiohead" redirect
     console.log(wtf.plaintext(markup))
     // "Radiohead are an English rock band from Abingdon..."
   })
