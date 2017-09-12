@@ -1,5 +1,5 @@
 'use strict';
-const helpers = require('../../lib/helpers');
+const trim = require('../../lib/helpers').trim_whitespace;
 const parse_line = require('../section/sentence/line');
 const i18n = require('../../data/i18n');
 const infobox_template_reg = new RegExp('{{(?:' + i18n.infoboxes.join('|') + ')\\s*(.*)', 'i');
@@ -18,7 +18,6 @@ const parse_infobox = function(str) {
   if (!str) {
     return {};
   }
-  let obj = {};
   let stringBuilder = [];
   let lastChar;
   //this collapsible list stuff is just a headache
@@ -41,26 +40,59 @@ const parse_infobox = function(str) {
   }
 
   str = stringBuilder.join('');
+  //remove top+bottom
+  str = str.replace(/^ *?\{\{.+[|\n]/, '');
+  str = str.replace(/\}\} *?$/, '');
+  let lines = str.split(/\n\*?/);
 
-  let regexMatch;
-  while ((regexMatch = line_reg.exec(str)) !== null) {
-    let key = helpers.trim_whitespace(regexMatch[1] || '') || '';
-    let value = helpers.trim_whitespace(regexMatch[2] || '') || '';
-
-    //this is necessary for mongodb, im sorry
-    if (key && key.match(/[\.]/)) {
-      key = null;
-    }
-
-    if (key && value) {
-      obj[key] = parse_line(value);
-      //turn number strings into integers
-      if (obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
-        obj[key].text = obj[key].text.replace(/,/, '');
-        obj[key].text = parseInt(obj[key].text, 10);
+  let obj = {};
+  let key = null;
+  for (let i = 0; i < lines.length; i++) {
+    let l = lines[i];
+    let keyMatch = l.match(/\| *?([^=]+)=(.+)?/i);
+    if (keyMatch && keyMatch[1]) {
+      key = trim(keyMatch[1]);
+      if (keyMatch[2]) {
+        obj[key] = trim(keyMatch[2]);
+      } else {
+        obj[key] = '';
       }
+    } else if (key) {
+      obj[key] += l;
     }
   }
+  //post-process values
+  Object.keys(obj).forEach(key => {
+    if (!obj[key]) {
+      delete obj[key];
+      return;
+    }
+    obj[key] = parse_line(obj[key]);
+    if (obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
+      obj[key].text = obj[key].text.replace(/,/, '');
+      obj[key].text = parseInt(obj[key].text, 10);
+    }
+  });
+  // //remove top+bottom
+  // if(lines.length>1 && lines[0].match()
+  // console.log(regexMatch);
+  // console.log('\n\n\n');
+  // while ((regexMatch = line_reg.exec(str)) !== null) {
+  //   // console.log(str + '----');
+  //   let key = helpers.trim_whitespace(regexMatch[1] || '') || '';
+  //   let value = helpers.trim_whitespace(regexMatch[2] || '') || '';
+  //
+  //   //this is necessary for mongodb, im sorry
+  //   key = key.replace(/\./, '');
+  //   if (key && value) {
+  //     obj[key] = parse_line(value);
+  //     //turn number strings into integers
+  //     if (obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
+  //       obj[key].text = obj[key].text.replace(/,/, '');
+  //       obj[key].text = parseInt(obj[key].text, 10);
+  //     }
+  //   }
+  // }
   return { template: template, data: obj };
 };
 module.exports = parse_infobox;
