@@ -105,5 +105,5 @@ $(window).ready(function() {
 
   el.addEventListener('input', parse, false);
   // $('.page:first').click();
-  $('#fetch').click();
+  // $('#fetch').click();
 });
