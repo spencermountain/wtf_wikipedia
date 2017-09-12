@@ -6214,12 +6214,10 @@ module.exports = parse_recursive;
 },{"../../data/i18n":11,"../../lib/recursive_match":17,"./infobox":21}],21:[function(_dereq_,module,exports){
 'use strict';
 
-var helpers = _dereq_('../../lib/helpers');
+var trim = _dereq_('../../lib/helpers').trim_whitespace;
 var parse_line = _dereq_('../section/sentence/line');
 var i18n = _dereq_('../../data/i18n');
 var infobox_template_reg = new RegExp('{{(?:' + i18n.infoboxes.join('|') + ')\\s*(.*)', 'i');
-
-var line_reg = /\n *\|([^=]*)=(.*)/g;
 
 var getTemplate = function getTemplate(str) {
   var m = str.match(infobox_template_reg);
@@ -6233,7 +6231,6 @@ var parse_infobox = function parse_infobox(str) {
   if (!str) {
     return {};
   }
-  var obj = {};
   var stringBuilder = [];
   var lastChar = void 0;
   //this collapsible list stuff is just a headache
@@ -6256,26 +6253,59 @@ var parse_infobox = function parse_infobox(str) {
   }
 
   str = stringBuilder.join('');
+  //remove top+bottom
+  str = str.replace(/^ *?\{\{.+[|\n]/, '');
+  str = str.replace(/\}\} *?$/, '');
+  var lines = str.split(/\n\*?/);
 
-  var regexMatch = void 0;
-  while ((regexMatch = line_reg.exec(str)) !== null) {
-    var key = helpers.trim_whitespace(regexMatch[1] || '') || '';
-    var value = helpers.trim_whitespace(regexMatch[2] || '') || '';
-
-    //this is necessary for mongodb, im sorry
-    if (key && key.match(/[\.]/)) {
-      key = null;
-    }
-
-    if (key && value) {
-      obj[key] = parse_line(value);
-      //turn number strings into integers
-      if (obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
-        obj[key].text = obj[key].text.replace(/,/, '');
-        obj[key].text = parseInt(obj[key].text, 10);
+  var obj = {};
+  var key = null;
+  for (var _i = 0; _i < lines.length; _i++) {
+    var l = lines[_i];
+    var keyMatch = l.match(/\| *?([^=]+)=(.+)?/i);
+    if (keyMatch && keyMatch[1]) {
+      key = trim(keyMatch[1]);
+      if (keyMatch[2]) {
+        obj[key] = trim(keyMatch[2]);
+      } else {
+        obj[key] = '';
       }
+    } else if (key) {
+      obj[key] += l;
     }
   }
+  //post-process values
+  Object.keys(obj).forEach(function (k) {
+    if (!obj[k]) {
+      delete obj[k];
+      return;
+    }
+    obj[k] = parse_line(obj[k]);
+    if (obj[k].text && obj[k].text.match(/^[0-9,]*$/)) {
+      obj[k].text = obj[k].text.replace(/,/, '');
+      obj[k].text = parseInt(obj[k].text, 10);
+    }
+  });
+  // //remove top+bottom
+  // if(lines.length>1 && lines[0].match()
+  // console.log(regexMatch);
+  // console.log('\n\n\n');
+  // while ((regexMatch = line_reg.exec(str)) !== null) {
+  //   // console.log(str + '----');
+  //   let key = helpers.trim_whitespace(regexMatch[1] || '') || '';
+  //   let value = helpers.trim_whitespace(regexMatch[2] || '') || '';
+  //
+  //   //this is necessary for mongodb, im sorry
+  //   key = key.replace(/\./, '');
+  //   if (key && value) {
+  //     obj[key] = parse_line(value);
+  //     //turn number strings into integers
+  //     if (obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
+  //       obj[key].text = obj[key].text.replace(/,/, '');
+  //       obj[key].text = parseInt(obj[key].text, 10);
+  //     }
+  //   }
+  // }
   return { template: template, data: obj };
 };
 module.exports = parse_infobox;
@@ -6476,6 +6506,16 @@ var word_templates = function word_templates(wiki) {
   wiki = wiki.replace(/\{\{(lc|uc|formatnum):(.*?)\}\}/gi, '$2');
   wiki = wiki.replace(/\{\{pull quote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
   wiki = wiki.replace(/\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
+
+  //flatlist -> commas
+  wiki = wiki.replace(/\{\{flatlist ?\|([^}]+)\}\}/gi, function (a, b) {
+    var arr = b.split(/\s+[* ]+? ?/g);
+    arr = arr.filter(function (line) {
+      return line;
+    });
+    return arr.join(', ');
+  });
+  // wiki = wiki.replace(/\{\{flatlist\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
 
   //font-size
   wiki = wiki.replace(/\{\{(small|smaller|midsize|larger|big|bigger|large|huge|resize)\|([\s\S]*?)\}\}/gi, '$2');

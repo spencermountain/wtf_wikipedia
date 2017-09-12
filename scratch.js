@@ -52,11 +52,15 @@ function from_file(page) {
 //       }]
 //     }]
 // }
-var str = `{{Infobox musical artist
-| label = {{flatlist|
-* flatlist here
-}}
-| website = hi
+var str = `{{colonnes|taille=|nombre=2|
+* [[Joy Fielding]], romancière.
+* [[Joe Shuster]], dessinateur de comics.
+* [[Glenn Gould]], pianiste, compositeur, écrivain, homme de radio et réalisateur.
+* [[Christopher Plummer]], acteur.
+* [[David Cronenberg]], réalisateur et scénariste.
+* [[Steve Shutt]], ancien joueur professionnel de hockey sur glace.
+* [[Kathleen Wynne]], femme politique et actuelle Première ministre de l'Ontario.
+* [[Catherine O'Hara]], actrice.
 }} `;
-let obj = wtf.parse(str).infoboxes[0].data;
+let obj = wtf.parse(str);
 console.log(obj);

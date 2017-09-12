@@ -1,5 +1,5 @@
 $(window).ready(function() {
-  $('#version').html(wtf.version);
+  $('#version').html('(' + wtf.version + ')');
 
   var make_list = function(arr) {
     arr = arr || [];
@@ -18,10 +18,16 @@ $(window).ready(function() {
     return arr.reduce(function(str, o) {
       let values = Object.keys(o.data)
         .map(k => {
-          return '<div>' + k + ' : &nbsp; <span style="color:lightsteelblue;">' + o.data[k].text + '</span></div>';
+          return (
+            '<div style="color:lightgrey;">' +
+            k +
+            ' : &nbsp; <span style="color:lightsteelblue;">' +
+            o.data[k].text +
+            '</span></div>'
+          );
         })
         .join('');
-      str += '<div><div style="color:#DE6169;">' + o.template + ':</div><ul>' + values + '</ul></div>';
+      str += '<div><div style="color:#DBADB4;">' + o.template + ':</div><ul>' + values + '</ul></div>';
       return str;
     }, '');
   };
@@ -29,16 +35,33 @@ $(window).ready(function() {
     return arr.reduce(function(str, o) {
       let title = o.title || ' <sub>(intro)</sub>';
       let lists = o.lists || [];
-      let tables = o.lists || [];
-      let info =
-        '<div style="color:steelblue;">' +
-        o.sentences.length +
-        ' sentences - - ' +
-        tables.length +
-        ' tables - - ' +
-        lists.length +
-        ' lists </div>';
-      return (str += '<div><h4 style="color:#DE6169;">' + title + ':</h4><ul>' + info + '</ul></div>');
+      let links = [];
+      o.sentences.forEach(function(s) {
+        if (s.links) {
+          s.links.forEach(l => links.push('[' + l.page + ']'));
+        }
+      });
+      lists.forEach(list => {
+        list.forEach(row => {
+          (row.links || []).forEach(l => links.push('[' + l.page + ']'));
+        });
+      });
+      let info = '<div style="color:steelblue;">';
+      if (o.sentences.length) {
+        info += '      ' + o.sentences.length + ' sentences ';
+      }
+      if (o.images) {
+        info += '      ' + o.images.length + ' images ';
+      }
+      if (links.length > 0) {
+        info += '      ' + links.length + ' links ';
+      }
+      if (lists.length > 0) {
+        info += '      ' + lists.length + ' lists ';
+      }
+      info += '</div>';
+      info += '<ul style="color:#DBADB4; font-size:14px;">' + links.slice(0, 12).join('      ') + '..</ul>';
+      return (str += '<div><h4 style="color:grey;">' + title + ':</h4><ul>' + info + '</ul></div>');
     }, '');
   };
   var parse = function() {
@@ -60,6 +83,7 @@ $(window).ready(function() {
   var pages = Object.keys(window.demo_pages).reduce(function(str, p) {
     return str + '<a href="#" class="page">' + p + '</a>';
   }, '');
+  pages = '<span style="color:grey;">Examples: </span>' + pages;
   $('#pages').html(pages);
 
   $('.page').click(function(e) {
@@ -71,8 +95,9 @@ $(window).ready(function() {
 
   $('#fetch').on('click', function() {
     var title = $('#title').val();
-    console.log('fetching ' + title);
-    wtf.from_api(title, function(wiki) {
+    var lang = $('#lang').val();
+    console.log('fetching ' + title + ' - in ' + lang);
+    wtf.from_api(title, lang, function(wiki) {
       $('#wikiscript').val(wiki);
       parse();
     });

@@ -7,21 +7,32 @@
   <body>
 
     <div style="margin:80px;">
-      <a style="font-size:32px; color:#198E3B;  margin-left:80px;" href="https://github.com/spencermountain/wtf_wikipedia">wtf_wikipedia</a>
-      <span id="version" style="color:lightgrey; margin-left:15px;"></span>
+      <a style="font-size:32px; color:#DE6169;  margin-left:80px;" href="https://github.com/spencermountain/wtf_wikipedia">wtf_wikipedia</a>
+      <a href="https://www.npmjs.com/package/wtf_wikipedia" id="version" style="color:lightgrey; margin-left:15px;"></a>
       <span style="font-size:22px; padding-left:15px; color:grey;">is a wikipedia markup parser</span>
-      <div style="margin-left:80px; font-size:17px; padding-left:15px; color:lightgrey;">it runs in javascript and also in the browser</div>
+      <div style="font-size:22px; padding-left:15px; color:grey;">it is a comically-difficult thing to do.</div>
+      <p></p>
+      <div style="margin-left:80px; font-size:22px; padding-left:15px; color:lightgrey;">it runs <span style="color:steelblue;">in javascript</span> and also in the browser</div>
+      <p></p>
+      <div style="margin-left:60px; font-size:22px; padding-left:15px; color:darkgrey;">it may make its information more useful</div>
     </div>
 
-    <div style="text-align:center;">
-      <div style="color:grey;"><i>try a wikipedia article</i></div>
+    <form style="text-align:center;">
+      <div style="color:lightgrey;"><i>try a wikipedia article</i></div>
       <input id="title" value="On a Friday"/>
-      <input type="button" value="fetch" id="fetch"/>
-      <div style="color:grey;"><i>supports cross-origin fetches, and follows of redirects</i></div>
+      <select id="lang" style="font-size:25px; color:grey;">
+        <option value="en" selected="selected" label="en">en</option>
+        <option value="de" label="de">de</option>
+        <option value="fr" label="fr">fr</option>
+        <option value="ar" label="ar">ar</option>
+        <option value="ja" label="ja">ja</option>
+      </select>
+      <input type="submit" style="font-size:50px; width: 100px; color:#DE6169;" value="fetch" id="fetch"/>
+      <div style="color:lightgrey;"><i>supports x-origin &amp; redirects</i></div>
       <ul>
         <div id="pages"></div>
       </ul>
-    </div>
+    </form>
     <hr style="margin:80px; color:grey;"/>
     <ul>
       <h2>Infobox:</h2>
