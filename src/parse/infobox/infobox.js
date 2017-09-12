@@ -4,8 +4,6 @@ const parse_line = require('../section/sentence/line');
 const i18n = require('../../data/i18n');
 const infobox_template_reg = new RegExp('{{(?:' + i18n.infoboxes.join('|') + ')\\s*(.*)', 'i');
 
-const line_reg = /\n *\|([^=]*)=(.*)/g;
-
 const getTemplate = function(str) {
   let m = str.match(infobox_template_reg);
   if (m && m[1]) {
@@ -62,15 +60,15 @@ const parse_infobox = function(str) {
     }
   }
   //post-process values
-  Object.keys(obj).forEach(key => {
-    if (!obj[key]) {
-      delete obj[key];
+  Object.keys(obj).forEach(k => {
+    if (!obj[k]) {
+      delete obj[k];
       return;
     }
-    obj[key] = parse_line(obj[key]);
-    if (obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
-      obj[key].text = obj[key].text.replace(/,/, '');
-      obj[key].text = parseInt(obj[key].text, 10);
+    obj[k] = parse_line(obj[k]);
+    if (obj[k].text && obj[k].text.match(/^[0-9,]*$/)) {
+      obj[k].text = obj[k].text.replace(/,/, '');
+      obj[k].text = parseInt(obj[k].text, 10);
     }
   });
   // //remove top+bottom
