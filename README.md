@@ -50,7 +50,7 @@ wtf.from_api("Toronto", "en", function(markup){
 ```
 
 the result format:
-```json
+```js
 {
   "type": "",
   "infoboxes": [{
@@ -96,7 +96,7 @@ wtf.from_api("Toronto Blue Jays", "en", function(markup){
 ```
 
 <h2 align="center">
-  <a href="https://rawgit.com/spencermountain/wtf_wikipedia/master/demo/index.html">Demo!</a>
+  <a href="https://spencermountain.github.io/wtf_wikipedia/">Demo!</a>
 </h2>
 
 # What it does
@@ -248,7 +248,6 @@ Never-ender projects like these are only good with many-hands, and I try to be a
 ```bash
 npm install
 npm test
-npm run demo
 npm run build #to package-up client-side
 ```
 
