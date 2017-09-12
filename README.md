@@ -23,17 +23,17 @@
 <p></p>
 
 <div align="center">
-**wtf_wikipedia** turns wikipedia's weird markup into **JSON**
-<div>so getting data is easier.</div>
+  <b>wtf_wikipedia</b> turns wikipedia's weird markup into <b>JSON</b>
+  <div>so getting data is easier.</div>
 
-<h2 align="center">Don't be mad at me, be mad at them.</h2>
+  <h2 align="center">Don't be mad at me, be mad at them.</h2>
 
-<div align="center">Parsing wikiscript is basically NP-Hard.</div>
+  <div align="center">Parsing wikiscript is basically NP-Hard.</div>
 
   <sub>its <a href="https://en.wikipedia.org/wiki/Help:WikiHiero_syntax">really the worst</a>.  I'm really trying my best.</sub>
 </div>
 
-**wtf_wikipedia** handles vile recursive template shinanigans, [half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template variants, and illicit wiki-esque shorthands.
+**wtf_wikipedia** supports vile recursive template shinanigans, [half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template variants, and illicit wiki-esque shorthands.
 
 Making your own parser is never a good idea, `what could go rong?!`, but this library is a very detailed and deliberate creature. :four_leaf_clover:
 
@@ -83,7 +83,7 @@ wtf.from_api("Toronto Blue Jays", "en", function(markup){
 })
 ````
 
-#####⚡️ Client-side too!
+##### ⚡️ Client-side too!
 ```html
 <script src="https://unpkg.com/wtf_wikipedia@latest/builds/wtf_wikipedia.min.js"></script>
 <script>
@@ -98,6 +98,7 @@ wtf.from_api("Toronto Blue Jays", "en", function(markup){
 <h2 align="center">
   <a href="https://rawgit.com/spencermountain/wtf_wikipedia/master/demo/index.html">Demo!</a>
 </h2>
+
 # What it does
 * Detects and parses **redirects** and **disambiguation** pages
 * Parse **infoboxes** into a formatted key-value object
