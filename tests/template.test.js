@@ -1,6 +1,6 @@
-'use strict';
-var wtf = require('../src/');
-var test = require('tape');
+'use strict'
+var wtf = require('../src/')
+var test = require('tape')
 
 let boloZenden = `{{Infobox football biography
 | name        = Boudewijn Zenden
@@ -27,22 +27,22 @@ let boloZenden = `{{Infobox football biography
 | nationalyears1 = 1997–2004 |nationalteam1 = [[Netherlands national football team|Netherlands]] |nationalcaps1 = 54 |nationalgoals1 = 7
 | manageryears1  = 2012–2013 |managerclubs1 = [[Chelsea F.C.|Chelsea]] (assistant manager)
 | manageryears2  = 2013– |managerclubs2 = [[Jong PSV]] (assistant manager)
-}}`;
+}}`
 
 test('boloZenden infobox', function(t) {
-  let o = wtf.parse(boloZenden).infoboxes[0].data;
-  t.equal(o.years1.text, '1993–1998');
-  t.equal(o.clubs1.text, 'PSV');
-  t.equal(o.youthyears1.text, '1985–1987');
-  t.equal(o.youthclubs1.text, 'MVV');
-  t.equal(o.nationalyears1.text, '1997–2004');
-  t.equal(o.nationalteam1.text, 'Netherlands');
-  t.equal(o.nationalteam1.links[0].page, 'Netherlands national football team');
-  t.equal(o.nationalteam1.links[0].text, 'Netherlands');
-  t.equal(o.nationalcaps1.text, 54);
-  t.equal(o.nationalgoals1.text, 7);
-  t.end();
-});
+  let o = wtf.parse(boloZenden).infoboxes[0].data
+  t.equal(o.years1.text, '1993–1998')
+  t.equal(o.clubs1.text, 'PSV')
+  t.equal(o.youthyears1.text, '1985–1987')
+  t.equal(o.youthclubs1.text, 'MVV')
+  t.equal(o.nationalyears1.text, '1997–2004')
+  t.equal(o.nationalteam1.text, 'Netherlands')
+  t.equal(o.nationalteam1.links[0].page, 'Netherlands national football team')
+  t.equal(o.nationalteam1.links[0].text, 'Netherlands')
+  t.equal(o.nationalcaps1.text, 54)
+  t.equal(o.nationalgoals1.text, 7)
+  t.end()
+})
 
 let hurricane = `{{Infobox Hurricane
 | Name=Tropical Storm Edouard
@@ -60,15 +60,15 @@ let hurricane = `{{Infobox Hurricane
 | Fatalities=None
 | Areas=[[Florida]]
 | Hurricane season=[[2002 Atlantic hurricane season]]
-}}`;
+}}`
 test('hurricane infobox', function(t) {
-  let o = wtf.parse(hurricane).infoboxes[0].data;
-  t.equal(o.Name.text, 'Tropical Storm Edouard');
-  t.equal(o.Dissipated.text, 'September 6, 2002');
-  t.equal(o['Hurricane season'].text, '2002 Atlantic hurricane season');
-  t.equal(o.Areas.links[0].page, 'Florida');
-  t.end();
-});
+  let o = wtf.parse(hurricane).infoboxes[0].data
+  t.equal(o.Name.text, 'Tropical Storm Edouard')
+  t.equal(o.Dissipated.text, 'September 6, 2002')
+  t.equal(o['Hurricane season'].text, '2002 Atlantic hurricane season')
+  t.equal(o.Areas.links[0].page, 'Florida')
+  t.end()
+})
 
 let park_place = `
 '''Park Place''' may refer to:
@@ -84,14 +84,14 @@ let park_place = `
 * [[Park Place (Vancouver)]], a skyscraper
 * [[Park Place Mall]], Lethbridge, Alberta
 {{disambiguation}}
-`;
+`
 test('parkplace disambig', function(t) {
-  let o = wtf.parse(park_place);
-  t.equal(o.type, 'disambiguation');
-  t.equal(o.pages.length, 4);
-  t.equal(o.pages[0], 'Park Place (TV series)');
-  t.end();
-});
+  let o = wtf.parse(park_place)
+  t.equal(o.type, 'disambiguation')
+  t.equal(o.pages.length, 4)
+  t.equal(o.pages[0], 'Park Place (TV series)')
+  t.end()
+})
 
 let bluejays = `
 {| border="1" cellpadding="2" cellspacing="0" class="wikitable"
@@ -104,18 +104,18 @@ let bluejays = `
 |- align="center" bgcolor="bbffbb"
 | 2 || April 7 || @ [[Minnesota Twins|Twins]] || 9 - 3 || '''[[David Wells|Wells]]''' (1-0) || [[Mike Lincoln|Lincoln]] (0-1) || '''[[Roy Halladay|Halladay]]''' (1) || 9,220 || 1-1
 |}
-`;
+`
 test('bluejays table', function(t) {
-  let arr = wtf.parse(bluejays).sections[0].tables[0];
-  t.equal(arr.length, 2);
-  t.equal(arr[0]['Number'].text, '1');
-  t.equal(arr[0]['Date'].text, 'April 6');
-  t.equal(arr[0]['Team'].text, '@ Twins');
-  t.equal(arr[1]['Number'].text, '2');
-  t.equal(arr[1]['Date'].text, 'April 7');
-  t.equal(arr[1]['col-3'].text, '9 - 3');
-  t.end();
-});
+  let arr = wtf.parse(bluejays).sections[0].tables[0]
+  t.equal(arr.length, 2)
+  t.equal(arr[0]['Number'].text, '1')
+  t.equal(arr[0]['Date'].text, 'April 6')
+  t.equal(arr[0]['Team'].text, '@ Twins')
+  t.equal(arr[1]['Number'].text, '2')
+  t.equal(arr[1]['Date'].text, 'April 7')
+  t.equal(arr[1]['col-3'].text, '9 - 3')
+  t.end()
+})
 
 let alabama = `
 {{Infobox university
@@ -145,12 +145,60 @@ let alabama = `
 | website = {{url|www.ua.edu}}
 | logo = [[File:University of Alabama (logo).png|250px]]
 }}
-`;
+`
 test('Alabama infobox', function(t) {
-  let infobox = wtf.parse(alabama).infoboxes[0].data;
-  t.equal(infobox.athletics.text, 'NCAA Division I – SEC', 'athletics =' + infobox.athletics.text);
-  t.equal(infobox.country.text, 'U.S.', 'country =' + infobox.country.text);
-  t.equal(infobox.president.text, 'Stuart R. Bell', 'president =' + infobox.president.text);
+  let infobox = wtf.parse(alabama).infoboxes[0].data
+  t.equal(infobox.athletics.text, 'NCAA Division I – SEC', 'athletics =' + infobox.athletics.text)
+  t.equal(infobox.country.text, 'U.S.', 'country =' + infobox.country.text)
+  t.equal(infobox.president.text, 'Stuart R. Bell', 'president =' + infobox.president.text)
   // t.equal(infobox.campus.text, 'Urban (small city); 1970 acre', 'campus = ' + infobox.campus.text);
-  t.end();
-});
+  t.end()
+})
+
+var radiohead = `{{Infobox musical artist
+| name = Radiohead
+| image = Radiohead.jpg
+| caption = Radiohead in 2006; from left to right: [[Thom Yorke]], [[Jonny Greenwood]], [[Colin Greenwood]], [[Ed O'Brien]] and [[Phil Selway]]
+| image_size = 270
+| landscape = Yes
+| background = group_or_band
+| origin = [[Abingdon-on-Thames|Abingdon, Oxfordshire]], England
+| genre = {{flatlist|
+* [[Art rock]]
+* [[alternative rock]]<!--genres sourced on talk page; do not add without consulting talk page with sourced information-->
+* [[electronica]]
+* [[experimental rock]]
+}}
+| years_active = 1985–present
+| associated_acts = {{flatlist|
+* [[Atoms for Peace (band)|Atoms for Peace]]
+* [[7 Worlds Collide]]
+}}
+| label = {{flatlist|
+* [[XL Recordings|XL]]
+* [[Ticker Tape Ltd.]]
+* [[Hostess Entertainment|Hostess]]
+* [[TBD Records|TBD]]
+* [[Parlophone]]
+* [[Capitol Records|Capitol]]
+}}
+| website = {{URL|radiohead.com}}
+| current_members =
+* [[Thom Yorke]]
+* [[Jonny Greenwood]]
+* [[Colin Greenwood]]
+* [[Ed O'Brien]]
+* [[Philip Selway]]
+}} `
+test('Radiohead infobox', function(t) {
+  let infobox = wtf.parse(radiohead).infoboxes[0].data
+  console.log(infobox)
+  t.equal(
+    infobox.current_members.text,
+    "Thom Yorke, Jonny Greenwood, Colin Greenwood, Ed O'Brien, Philip Selway",
+    'current members'
+  )
+  t.equal(infobox.genre.text, 'Art rock, alternative rock, electronica, experimental rock', 'genre')
+  t.equal(infobox.associated_acts.text, 'Atoms for Peace, 17 Worlds Collide', 'associated-acts')
+  t.end()
+})
