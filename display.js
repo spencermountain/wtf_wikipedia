@@ -87,7 +87,6 @@ $(window).ready(function() {
   $('#pages').html(pages);
 
   $('.page').click(function(e) {
-    console.log(e.target.text);
     var str = e.target.text;
     el.value = window.demo_pages[str];
     parse();
@@ -101,9 +100,10 @@ $(window).ready(function() {
       $('#wikiscript').val(wiki);
       parse();
     });
+    return false;
   });
 
   el.addEventListener('input', parse, false);
   // $('.page:first').click();
-  // $('#fetch').click();
+  $('#fetch').click();
 });
