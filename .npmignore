@@ -1,7 +1,0 @@
-tests/
-demo/
-scripts/
-.babelrc
-.esformatter
-.eslintrc
-scratch.js

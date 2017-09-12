@@ -1,9 +1,0 @@
-
-The '''Remote Application Programming Interface''' (RAPI) is a [[Remote Procedure Call]] (RPC) mechanism in which the [[Pocket PC]] is the server and the PC application is the client. In other words, RAPI allows PC applications to call functions that are executed on the Pocket PC. With RAPI, the [[Windows Registry|registry]], [[file system]], database, and configuration of the Pocket PC device are available to the PC application.
-
-{{Microsoft APIs}}
-
-[[Category:Microsoft application programming interfaces]]
-
-
-{{microsoft-software-stub}}

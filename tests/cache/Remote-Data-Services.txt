@@ -1,6 +1,0 @@
-'''Remote Data Services''' ('''RDS''', formerly known as Advanced Data Connector or ADC) is a [[Microsoft]] technology used in conjunction with [[ActiveX Data Objects]] (ADO) that allowed the retrieval of a set of [[data]] from a [[database]] [[Server (computing)|server]], which the client then altered in some way and then sent back to the server for further processing. With the popular adoption of [[Transact-SQL]], which extends [[SQL]] with such [[programming language|programming]] constructs as [[Control flow#Loops|loop]]s and [[Conditional (programming)|conditional statement]]s, this became less necessary and it was eventually deprecated in [[Microsoft Data Access Components]] version 2.7. Microsoft produced [[SOAP]] Toolkit 2.0, which allows clients to do this via an open [[XML]]-based standard.
-
-==External links==
-* [http://msdn.microsoft.com/library/default.asp?url=/library/en-us/ado270/htm/mdmscsection2_rds.asp MSDN Remote Data Service (RDS) description]
-
-[[Category:Microsoft application programming interfaces]]

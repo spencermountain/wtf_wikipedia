@@ -16,7 +16,7 @@ $(window).ready(function() {
   var makeInfoboxes = function(arr) {
     arr = arr || [];
     return arr.reduce(function(str, o) {
-      let values = Object.keys(o.data)
+      var values = Object.keys(o.data)
         .map(k => {
           return (
             '<div style="color:lightgrey;">' +
@@ -33,9 +33,9 @@ $(window).ready(function() {
   };
   var makeSections = function(arr) {
     return arr.reduce(function(str, o) {
-      let title = o.title || ' <sub>(intro)</sub>';
-      let lists = o.lists || [];
-      let links = [];
+      var title = o.title || ' <sub>(intro)</sub>';
+      var lists = o.lists || [];
+      var links = [];
       o.sentences.forEach(function(s) {
         if (s.links) {
           s.links.forEach(l => links.push('[' + l.page + ']'));
@@ -46,7 +46,7 @@ $(window).ready(function() {
           (row.links || []).forEach(l => links.push('[' + l.page + ']'));
         });
       });
-      let info = '<div style="color:steelblue;">';
+      var info = '<div style="color:steelblue;">';
       if (o.sentences.length) {
         info += '      ' + o.sentences.length + ' sentences ';
       }
