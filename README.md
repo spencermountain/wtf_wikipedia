@@ -38,7 +38,7 @@ Making your own parser is never a good idea, `what could go rong?!`, but this li
 npm install wtf_wikipedia
 ```
 then:
-````javascript
+```javascript
 var wtf = require("wtf_wikipedia")
 
 //hit the api
@@ -47,31 +47,33 @@ wtf.from_api("Toronto", "en", function(markup){
   console.log(data.infoboxes[0].data.leader_name)
   // "John Tory"
 })
+```
 
-//result format -
-var result = {
-  type: '',
-  infoboxes: [{
-    template: '',
-    data: {}
+the result format:
+```json
+{
+  "type": "",
+  "infoboxes": [{
+    "template": "",
+    "data": {}
   }],
-  images: [],   // files + md5 urls
-  sections: [{  //(each heading)
-      title: '',
-      images: '',
-      lists: '',
-      sentences: [{ //(each sentence)
-        text: ''
-        links: [{
-          text: '',
-          link: ''
+  "images": [],   // files + md5 urls
+  "sections": [{  //(each heading)
+      "title": "",
+      "images": "",
+      "lists": "",
+      "sentences": [{ //(each sentence)
+        "text": ""
+        "links": [{
+          "text": "",
+          "link": ""
         }]
       }]
    }],
-  categories: [],
-  interwiki: {},
+  "categories": [],
+  "interwiki": {},
 }
-````
+```
 yeah, the structure is a little verbose - but with a couple loops you should find everything you want.
 
 **wtf_wikipedia** also offers a plaintext method, that returns only paragraphs of nice text, and no junk:
