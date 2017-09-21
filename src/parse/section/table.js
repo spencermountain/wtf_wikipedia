@@ -13,9 +13,8 @@ const parseHeading = function(str) {
 
 //turn a {|...table string into an array of arrays
 const parse_table = function(wiki) {
-  let table = [];
   let headings = [];
-  const lines = wiki.replace(/\r/g, '').split(/\n/);
+  let lines = wiki.replace(/\r/g, '').split(/\n/);
 
   //find headings first
   for (let i = 0; i < lines.length; i++) {
@@ -34,33 +33,43 @@ const parse_table = function(wiki) {
           str = 'col-' + headings.length;
         }
         headings.push(str);
+        lines[i] = null; //remove it
       }
+    } else if (headings.length > 0 && str.match(/^\|-/)) {
+      break; //done here
     } else if (str.match(/^\| /)) {
-      break;
+      break; //done here
     }
   }
+  lines = lines.filter(l => l);
 
+  // console.log(lines);
+  let table = [[]];
   lines.forEach(function(str) {
-    //die here
+    //end of table, end here
     if (str.match(/^\|\}/)) {
+      return;
+    }
+    //this is some kind of comment/summary
+    if (str.match(/^\|\+/)) {
       return;
     }
     //make new row
     if (str.match(/^\|-/)) {
-      table.push([]);
-      return;
-    }
-    //this is some kind of comment
-    if (str.match(/^\|\+/)) {
+      if (table[0].length > 0) {
+        table.push([]);
+      }
       return;
     }
     //header
     if (str.match(/^\!/)) {
+      // console.log(str);
+      //todo: handle weird 'scope="row"' syntax?
       return;
     }
     //juicy line
     if (str.match(/^\|/)) {
-      //make a new row
+      //make the first row
       if (!table[table.length - 1]) {
         table[table.length - 1] = [];
       }

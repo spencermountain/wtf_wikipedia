@@ -52,15 +52,67 @@ function from_file(page) {
 //       }]
 //     }]
 // }
-var str = `{{colonnes|taille=|nombre=2|
-* [[Joy Fielding]], romancière.
-* [[Joe Shuster]], dessinateur de comics.
-* [[Glenn Gould]], pianiste, compositeur, écrivain, homme de radio et réalisateur.
-* [[Christopher Plummer]], acteur.
-* [[David Cronenberg]], réalisateur et scénariste.
-* [[Steve Shutt]], ancien joueur professionnel de hockey sur glace.
-* [[Kathleen Wynne]], femme politique et actuelle Première ministre de l'Ontario.
-* [[Catherine O'Hara]], actrice.
-}} `;
+
+// var simple = `{| class="wikitable"
+// |+ The table's caption
+// ! h1
+// ! h2
+// ! h3
+// |-
+// ! Row1
+// | Cell 1B  || Cell 1C
+// |-
+// ! Row2
+// | Cell 2B
+// | Cell 2C
+// |}`;
+
+let str = `{| class="wikitable"
+|-
+! style="text-align:center; {{Baseball primary style|Toronto Blue Jays|border=2}};"|Level
+! style="text-align:center; {{Baseball primary style|Toronto Blue Jays|border=2}};"|Team
+! style="text-align:center; {{Baseball primary style|Toronto Blue Jays|border=2}};"|League
+! style="text-align:center; {{Baseball primary style|Toronto Blue Jays|border=2}};"|Location
+|-
+| ''AAA''
+| [[Buffalo Bisons]]
+| [[International League]]
+| [[Buffalo, New York|Buffalo]], New York<ref>{{cite web|url=http://buffalonews.com/apps/pbcs.dll/article?AID=/20120917/SPORTS/120919102/1003|title=Herd signs with Blue Jays for two years|last=Harrington|first=Mike|date=17 September 2012|work=[[The Buffalo News]]|accessdate=18 September 2012}}</ref>
+|-
+| ''AA''
+| [[New Hampshire Fisher Cats]]
+| [[Eastern League (baseball)|Eastern League]]
+| [[Manchester, New Hampshire|Manchester]], New Hampshire
+|-
+| ''Advanced A''
+| [[Dunedin Blue Jays]]
+| [[Florida State League]]
+| [[Dunedin, Florida|Dunedin]], Florida
+|-
+| ''A''
+| [[Lansing Lugnuts]]
+| [[Midwest League]]
+| [[Lansing, Michigan|Lansing]], Michigan
+|-
+|''Short Season A''
+| [[Vancouver Canadians]]
+| [[Northwest League]]
+| [[Vancouver]], British Columbia
+|-
+|''Rookie-Advanced''
+| [[Bluefield Blue Jays]]
+| [[Appalachian League]]
+| [[Bluefield micropolitan area|Bluefield]], Virginia/West Virginia<!--The team represents both Bluefields. Its park is physically located in Virginia, although the park is operated by the West Virginia city.-->
+|-
+|rowspan=2|''Rookie''
+| [[Gulf Coast League Blue Jays|GCL Blue Jays]]
+| [[Gulf Coast League]]
+| Dunedin, Florida
+|-
+| [[Dominican Summer League Blue Jays|DSL Blue Jays]]
+| [[Dominican Summer League]]
+| [[San Pedro de Macorís]], [[Dominican Republic]]
+|}`;
 let obj = wtf.parse(str);
-console.log(obj);
+let table = obj.sections[0].tables[0];
+console.log(table);
