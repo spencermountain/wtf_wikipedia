@@ -35,9 +35,11 @@ const parse_table = function(wiki) {
         headings.push(str);
         lines[i] = null; //remove it
       }
-    } else if (headings.length > 0 && str.match(/^\|-/)) {
+    } else if (headings.length > 0 && str.match(/^|-/)) {
+      lines = lines.slice(i, lines.length);
       break; //done here
     } else if (str.match(/^\| /)) {
+      lines = lines.slice(i, lines.length);
       break; //done here
     }
   }
@@ -61,10 +63,12 @@ const parse_table = function(wiki) {
       }
       return;
     }
-    //header
+    // handle weird '! ' row-header syntax
     if (str.match(/^\!/)) {
-      // console.log(str);
-      //todo: handle weird 'scope="row"' syntax?
+      str = str.replace(/^\! +/, '');
+      str = parseHeading(str);
+      str = helpers.trim_whitespace(str);
+      table[table.length - 1].push(str);
       return;
     }
     //juicy line

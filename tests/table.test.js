@@ -92,57 +92,56 @@ test('simple table', t => {
   t.end();
 });
 
-// test('multiplication table', t => {
-//   var mult = `{| class="wikitable" style="text-align: center; width: 200px; height: 200px;"
-// |+ Multiplication table
-// |-
-// ! ×
-// ! 1
-// ! 2
-// ! 3
-// |-
-// ! 1
-// | 1 || 2 || 3
-// |-
-// ! 2
-// | 2 || 4 || 6
-// |-
-// ! 3
-// | 3 || 6 || 9
-// |-
-// ! 4
-// | 4 || 8 || 12
-// |-
-// ! 5
-// | 5 || 10 || 15
-// |}`;
-//   var obj = wtf.parse(mult);
-//   var table = obj.sections[0].tables[0];
-//   t.equal(table[0]['1'].text, '1', '1x1');
-//   t.equal(table[1]['1'].text, '2', '1x2');
-//   t.equal(table[1]['2'].text, '4', '2x2');
-//   t.end();
-// });
+test('multiplication table', t => {
+  var mult = `{| class="wikitable" style="text-align: center; width: 200px; height: 200px;"
+|+ Multiplication table
+|-
+! ×
+! 1
+! 2
+! 3
+|-
+! 1
+| 1 || 2 || 3
+|-
+! 2
+| 2 || 4 || 6
+|-
+! 3
+| 3 || 6 || 9
+|-
+! 4
+| 4 || 8 || 12
+|-
+! 5
+| 5 || 10 || 15
+|}`;
+  var obj = wtf.parse(mult);
+  var table = obj.sections[0].tables[0];
+  t.equal(table[0]['1'].text, '1', '1x1');
+  t.equal(table[1]['1'].text, '2', '1x2');
+  t.equal(table[1]['2'].text, '4', '2x2');
+  t.end();
+});
 
-// test('inline-table-test', t => {
-//   var inline = `{| class="wikitable"
-// |+ style="text-align: left;" | Data reported for 2014–2015, by region<ref name="Garcia 2005" />
-// |-
-// ! scope="col" | Year !! scope="col" | Africa !! scope="col" | Americas !! scope="col" | Asia & Pacific !! scope="col" | Europe
-// |-
-// ! scope="row" | 2014
-// | 2,300 || 8,950 || ''9,325'' || 4,200
-// |-
-// ! scope="row" | 2015
-// | 2,725 || ''9,200'' || 8,850 || 4,775
-// |}`;
-//   let obj = wtf.parse(inline);
-//   let table = obj.sections[0].tables[0];
-//   console.log(table7);
-//   t.equal(table[0].Year.text, '2014', 'first year');
-//   t.equal(table[0].Africa.text, '2,300', 'africa first-row');
-//   t.equal(table[0].Americas.text, '8,950', 'america first-row');
-//   t.equal(table[1].Europe.text, '4,775', 'europe second-row');
-//   console.log(table);
-//   t.end();
-// });
+test('inline-table-test', t => {
+  var inline = `{| class="wikitable"
+|+ style="text-align: left;" | Data reported for 2014–2015, by region<ref name="Garcia 2005" />
+|-
+! scope="col" | Year !! scope="col" | Africa !! scope="col" | Americas !! scope="col" | Asia & Pacific !! scope="col" | Europe
+|-
+! scope="row" | 2014
+| 2,300 || 8,950 || ''9,325'' || 4,200
+|-
+! scope="row" | 2015
+| 2,725 || ''9,200'' || 8,850 || 4,775
+|}`;
+  let obj = wtf.parse(inline);
+  let table = obj.sections[0].tables[0];
+  t.equal(table[0].Year.text, '2014', 'first year');
+  t.equal(table[0].Africa.text, '2,300', 'africa first-row');
+  t.equal(table[0].Americas.text, '8,950', 'america first-row');
+  t.equal(table[1].Europe.text, '4,775', 'europe second-row');
+  console.log(table);
+  t.end();
+});

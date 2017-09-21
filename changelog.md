@@ -9,3 +9,5 @@
 * change initial depth to 0
 * change 'translations' property to 'interwiki'
 * support {{main}} and {{wide image|}} templates
+## 2.1.0
+* support table '! row' row heading syntax
