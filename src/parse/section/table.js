@@ -4,7 +4,7 @@ const parse_line = require('./sentence/line');
 const table_reg = /\{\|[\s\S]{1,12000}?\|\}/g;
 
 const parseHeading = function(str) {
-  str = parse_line(str).text;
+  str = parse_line(str).text || '';
   if (str.match(/\|/)) {
     str = str.replace(/.+\| ?/, ''); //class="unsortable"|title
   }

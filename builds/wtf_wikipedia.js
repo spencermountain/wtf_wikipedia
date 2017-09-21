@@ -1,4 +1,4 @@
-/* wtf_wikipedia v2.0.0
+/* wtf_wikipedia v2.1.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -3714,7 +3714,7 @@ exports.cleanHeader = function(header, shouldStripCookie){
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -3728,24 +3728,14 @@ module.exports={
     "coverage": "node ./scripts/coverage.js",
     "browserTest": "node ./scripts/browserTest.js",
     "watch": "node ./scripts/watch.js",
-    "demo": "node ./scripts/demo.js",
     "build": "node ./scripts/build.js"
   },
   "bin": {
     "wikipedia": "./bin/parse.js",
     "wikipedia_plaintext": "./bin/plaintext.js"
   },
-  "files": [
-    "builds",
-    "src",
-    "bin"
-  ],
-  "keywords": [
-    "wikipedia",
-    "wikimedia",
-    "wikipedia markup",
-    "wikiscript"
-  ],
+  "files": ["builds", "src", "bin"],
+  "keywords": ["wikipedia", "wikimedia", "wikipedia markup", "wikiscript"],
   "dependencies": {
     "jshashes": "^1.0.6",
     "superagent": "^3.5.2"
@@ -3760,7 +3750,6 @@ module.exports={
     "derequire": "^2.0.3",
     "eslint": "^4.5.0",
     "gaze": "^1.1.1",
-    "http-server": "^0.10.0",
     "nyc": "^8.4.0",
     "shelljs": "^0.7.2",
     "tap-min": "^1.2.1",
@@ -7059,7 +7048,7 @@ var parse_line = _dereq_('./sentence/line');
 var table_reg = /\{\|[\s\S]{1,12000}?\|\}/g;
 
 var parseHeading = function parseHeading(str) {
-  str = parse_line(str).text;
+  str = parse_line(str).text || '';
   if (str.match(/\|/)) {
     str = str.replace(/.+\| ?/, ''); //class="unsortable"|title
   }
@@ -7068,7 +7057,6 @@ var parseHeading = function parseHeading(str) {
 
 //turn a {|...table string into an array of arrays
 var parse_table = function parse_table(wiki) {
-  var table = [];
   var headings = [];
   var lines = wiki.replace(/\r/g, '').split(/\n/);
 
@@ -7089,37 +7077,54 @@ var parse_table = function parse_table(wiki) {
           str = 'col-' + headings.length;
         }
         headings.push(str);
+        lines[i] = null; //remove it
       }
+    } else if (headings.length > 0 && str.match(/^|-/)) {
+      lines = lines.slice(i, lines.length);
+      break; //done here
     } else if (str.match(/^\| /)) {
-      break;
+      lines = lines.slice(i, lines.length);
+      break; //done here
     }
   }
+  lines = lines.filter(function (l) {
+    return l;
+  });
 
+  // console.log(lines);
+  var table = [[]];
   lines.forEach(function (str) {
-    //die here
+    //end of table, end here
     if (str.match(/^\|\}/)) {
+      return;
+    }
+    //this is some kind of comment/summary
+    if (str.match(/^\|\+/)) {
       return;
     }
     //make new row
     if (str.match(/^\|-/)) {
-      table.push([]);
+      if (table[0].length > 0) {
+        table.push([]);
+      }
       return;
     }
-    //this is some kind of comment
-    if (str.match(/^\|\+/)) {
-      return;
-    }
-    //header
+    // handle weird '! ' row-header syntax
     if (str.match(/^\!/)) {
+      str = str.replace(/^\! +/, '');
+      str = parseHeading(str);
+      str = helpers.trim_whitespace(str);
+      table[table.length - 1].push(str);
       return;
     }
     //juicy line
     if (str.match(/^\|/)) {
-      //make a new row
-      if (!table[table.length - 1]) {
-        table[table.length - 1] = [];
-      }
       var want = (str.match(/\|(.*)/) || [])[1] || '';
+      //handle weird 'rowspan="2" |' syntax
+      if (want.match(/. \| /)) {
+        //this needs additional cleanup
+        want = parseHeading(want);
+      }
       want = helpers.trim_whitespace(want) || '';
       //handle the || shorthand..
       if (want.match(/[!\|]{2}/)) {
