@@ -53,16 +53,21 @@ function from_file(page) {
 //     }]
 // }
 
-var str = `{| class="wikitable"
-|+ style="text-align: left;" | Data reported for 2014–2015, by region<ref name="Garcia 2005" />
+var str = `{| class="wikitable floatright"
+| Col 1, row 1
+| rowspan="2" | Col 2, row 1 (and 2)
+| Col 3, row 1
 |-
-! scope="col" | Year !! scope="col" | Africa !! scope="col" | Americas !! scope="col" | Asia & Pacific !! scope="col" | Europe
+| Col 1, row 2
+| Col 3, row 2
+|}
+{| class="wikitable floatleft"
+| Col 1, row 1
+| rowspan="2" | Col 2, row 1 (and 2)
+| Col 3, row 1
 |-
-! scope="row" | 2014
-| 2,300 || 8,950 || ''9,325'' || 4,200
-|-
-! scope="row" | 2015
-| 2,725 || ''9,200'' || 8,850 || 4,775
+| Col 1, row 2
+| Col 3, row 2
 |}`;
 
 let obj = wtf.parse(str);

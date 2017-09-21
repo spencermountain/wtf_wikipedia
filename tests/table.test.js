@@ -66,7 +66,7 @@ test('rnli stations', t => {
 
 // https://en.wikipedia.org/wiki/Help:Table
 test('simple table', t => {
-  var simple = `{| class="wikitable"
+  let simple = `{| class="wikitable"
 |-
 ! Header 1
 ! Header 2
@@ -93,7 +93,7 @@ test('simple table', t => {
 });
 
 test('multiplication table', t => {
-  var mult = `{| class="wikitable" style="text-align: center; width: 200px; height: 200px;"
+  let mult = `{| class="wikitable" style="text-align: center; width: 200px; height: 200px;"
 |+ Multiplication table
 |-
 ! ×
@@ -125,7 +125,7 @@ test('multiplication table', t => {
 });
 
 test('inline-table-test', t => {
-  var inline = `{| class="wikitable"
+  let inline = `{| class="wikitable"
 |+ style="text-align: left;" | Data reported for 2014–2015, by region<ref name="Garcia 2005" />
 |-
 ! scope="col" | Year !! scope="col" | Africa !! scope="col" | Americas !! scope="col" | Asia & Pacific !! scope="col" | Europe
@@ -142,6 +142,67 @@ test('inline-table-test', t => {
   t.equal(table[0].Africa.text, '2,300', 'africa first-row');
   t.equal(table[0].Americas.text, '8,950', 'america first-row');
   t.equal(table[1].Europe.text, '4,775', 'europe second-row');
+  t.end();
+});
+
+test('floating-tables-test', t => {
+  //we don't (and probably can't) fully support this rn
+  let floating = `{| class="wikitable floatright"
+| Col 1, row 1
+| rowspan="2" | Col 2, row 1 (and 2)
+| Col 3, row 1
+|-
+| Col 1, row 2
+| Col 3, row 2
+|}
+{| class="wikitable floatleft"
+| Col 1, row 1
+| rowspan="2" | Col 2, row 1 (and 2)
+| Col 3, row 1
+|-
+| Col 1, row 2
+| Col 3, row 2
+|}`;
+  let obj = wtf.parse(floating);
+  t.equal(obj.sections[0].tables.length, 2, 'two tables');
+  console.log(obj.sections[0].tables);
+  let table = obj.sections[0].tables[0];
   console.log(table);
+  t.equal(table[0]['col-0'].text, 'Col 1, row 1', '1,1');
+  t.end();
+});
+
+test('wikisortable-tables-test', t => {
+  //we don't (and probably can't) fully support this rn
+  let sortable = `{| class="wikitable sortable"
+|+ Sortable table
+|-
+! scope="col" | Alphabetic
+! scope="col" | Numeric
+! scope="col" | Date
+! scope="col" class="unsortable" | Unsortable
+|-
+| d || 20 || 2008-11-24 || This
+|-
+| b || 8 || 2004-03-01 || column
+|-
+| a || 6 || 1979-07-23 || cannot
+|-
+| c || 4 || 1492-12-08 || be
+|-
+| e || 0 || 1601-08-13 || sorted.
+|}`;
+  let obj = wtf.parse(sortable);
+  t.equal(obj.sections[0].tables.length, 1, 'one table');
+  let table = obj.sections[0].tables[0];
+  console.log(obj.sections[0]);
+  t.equal(table[0]['Alphabetic'].text, 'd', '1,1');
+  t.equal(table[0]['Numeric'].text, '20', '1,2');
+  t.equal(table[0]['Date'].text, '2008-11-24', '1,3');
+  t.equal(table[0]['Unsortable'].text, 'This', '1,4');
+  t.equal(table[1]['Alphabetic'].text, 'b', '2,1');
+  t.equal(table[2]['Alphabetic'].text, 'a', '3,1');
+  t.equal(table[3]['Alphabetic'].text, 'c', '4,1');
+  t.equal(table[4]['Alphabetic'].text, 'e', '5,1');
   t.end();
 });

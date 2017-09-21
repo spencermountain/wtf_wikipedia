@@ -73,11 +73,12 @@ const parse_table = function(wiki) {
     }
     //juicy line
     if (str.match(/^\|/)) {
-      //make the first row
-      if (!table[table.length - 1]) {
-        table[table.length - 1] = [];
-      }
       let want = (str.match(/\|(.*)/) || [])[1] || '';
+      //handle weird 'rowspan="2" |' syntax
+      if (want.match(/. \| /)) {
+        //this needs additional cleanup
+        want = parseHeading(want);
+      }
       want = helpers.trim_whitespace(want) || '';
       //handle the || shorthand..
       if (want.match(/[!\|]{2}/)) {
