@@ -3,7 +3,7 @@
 //@spencermountain
 const fetch = require('./lib/fetch_text');
 const parse = require('./parse');
-const version = require('../package').version;
+const version = require('../package.json').version;
 
 //from a page title or id, fetch the wikiscript
 const from_api = function(page_identifier, lang_or_wikiid, cb) {
