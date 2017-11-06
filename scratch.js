@@ -54,19 +54,21 @@ function from_file(page) {
 //     }]
 // }
 
-var str = `hello {{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}} world`;
-// var str = `hello {{myTempl|fun stuff!}} world`;
+// var str = `hello {{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}} world`;
+var str = `hello {{myTempl|fun stuff!}} world`;
 // var str = `hello {{main|fun}} world`;
 // var str = `
 // {{Main|Royal National Lifeboat Institution lifeboats}}
 // The types of boats`;
-// wtf.custom({
-//   mine: (tmpl) => {
-//     if (/^\{\{myTempl/.test(tmpl)) {
-//       return 'hooha!';
-//     }
-//     return null;
-//   }
-// });
-let obj = wtf.parse(str);
+wtf.custom({
+  mine: (tmpl, wiki) => {
+    if (/^\{\{myTempl/.test(tmpl)) {
+      let m = tmpl.match(/^\{\{myTempl\|(.+?)\}\}$/);
+      wiki = wiki.replace(tmpl, m[1]);
+      return 'hooha!';
+    }
+    return null;
+  }
+});
+let obj = wtf.plaintext(str);
 console.log(obj);
