@@ -9,7 +9,8 @@ const parse = {
 };
 
 //convert wikiscript markup lang to json
-const main = function(wiki) {
+const main = function(wiki, options) {
+  options = options || {};
   wiki = wiki || '';
   //detect if page is just redirect, and return
   if (redirects.is_redirect(wiki)) {
@@ -25,17 +26,21 @@ const main = function(wiki) {
     infoboxes: [],
     interwiki: {},
     categories: [],
-    images: []
+    images: [],
+    coordinates: [],
   };
+  if (options.custom) {
+    r.custom = {};
+  }
 
   //give ourselves a little head-start
   wiki = preProcess(wiki);
   //pull-out infoboxes and stuff
-  wiki = parse.infobox(r, wiki);
+  wiki = parse.infobox(r, wiki, options);
   //pull-out [[category:whatevers]]
   wiki = parse.categories(r, wiki);
   //parse all the headings, and their texts/sentences
-  r.sections = parse.section(wiki);
+  r.sections = parse.section(r, wiki);
 
   r = postProcess(r);
 

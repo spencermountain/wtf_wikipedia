@@ -6,8 +6,9 @@ function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
   // console.log(wtf.plaintext(str));
   let r = wtf.parse(str);
-  console.log(r.infoboxes[0]);
+  // console.log(r.infoboxes[0]);
   // console.log(JSON.stringify(r.sections, null, 2));
+  return r;
 }
 
 // from_file('list');
@@ -53,23 +54,19 @@ function from_file(page) {
 //     }]
 // }
 
-var str = `{| class="wikitable floatright"
-| Col 1, row 1
-| rowspan="2" | Col 2, row 1 (and 2)
-| Col 3, row 1
-|-
-| Col 1, row 2
-| Col 3, row 2
-|}
-{| class="wikitable floatleft"
-| Col 1, row 1
-| rowspan="2" | Col 2, row 1 (and 2)
-| Col 3, row 1
-|-
-| Col 1, row 2
-| Col 3, row 2
-|}`;
-
+var str = `hello {{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}} world`;
+// var str = `hello {{myTempl|fun stuff!}} world`;
+// var str = `hello {{main|fun}} world`;
+// var str = `
+// {{Main|Royal National Lifeboat Institution lifeboats}}
+// The types of boats`;
+// wtf.custom({
+//   mine: (tmpl) => {
+//     if (/^\{\{myTempl/.test(tmpl)) {
+//       return 'hooha!';
+//     }
+//     return null;
+//   }
+// });
 let obj = wtf.parse(str);
-let table = obj.sections[0].tables[0];
-console.log(table);
+console.log(obj);

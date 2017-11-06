@@ -9,13 +9,13 @@ const parse = {
 };
 const section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})/g;
 
-const parseSection = function(section, wiki) {
+const parseSection = function(section, wiki, r) {
   // //parse the tables
   wiki = parse.table(section, wiki);
   // //parse the lists
   wiki = parse.list(section, wiki);
   //supoprted things like {{main}}
-  wiki = parse.template(section, wiki);
+  wiki = parse.template(section, wiki, r);
   // //parse+remove scary '[[ [[]] ]]' stuff
   wiki = parse.image(section, wiki);
   //do each sentence
@@ -24,7 +24,7 @@ const parseSection = function(section, wiki) {
   return section;
 };
 
-const makeSections = function(wiki) {
+const makeSections = function(r, wiki) {
   let split = wiki.split(section_reg); //.filter(s => s);
   let sections = [];
   for (let i = 0; i < split.length; i += 2) {
@@ -35,7 +35,7 @@ const makeSections = function(wiki) {
       depth: null
     };
     section = parse.heading(section, title);
-    section = parseSection(section, txt);
+    section = parseSection(section, txt, r);
     sections.push(section);
   }
   return sections;

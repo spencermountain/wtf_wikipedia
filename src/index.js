@@ -5,6 +5,9 @@ const fetch = require('./lib/fetch_text');
 const parse = require('./parse');
 const version = require('../package').version;
 
+//use a global var for lazy customization
+let options = {};
+
 //from a page title or id, fetch the wikiscript
 const from_api = function(page_identifier, lang_or_wikiid, cb) {
   if (typeof lang_or_wikiid === 'function') {
@@ -29,9 +32,14 @@ const plaintext = function(str) {
   return arr.join('\n\n');
 };
 
+const customize = function(obj) {
+  options.custom = obj;
+};
+
 module.exports = {
   from_api: from_api,
-  parse: parse,
   plaintext: plaintext,
-  version: version
+  version: version,
+  custom: customize,
+  parse: (str) => parse(str, options)
 };
