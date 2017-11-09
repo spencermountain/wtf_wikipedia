@@ -2,6 +2,7 @@
 //major thank you to https://github.com/gmaclennan/parse-dms
 //and https://github.com/WSDOT-GIS/dms-js 👏
 
+//accepts an array of descending Degree, Minute, Second values, with a hemisphere at the end
 //must have N/S/E/W as last thing
 function parseDms(arr) {
   let hemisphere = arr.pop();

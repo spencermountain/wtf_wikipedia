@@ -1,43 +1,55 @@
-
+const convertGeo = require('../../lib/convertGeo');
+const hemispheres = {
+  n: true,
+  s: true,
+  w: true,
+  e: true,
+};
 // {{coord|latitude|longitude|coordinate parameters|template parameters}}
 // {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
 // {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
 // {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
-let isLat = {
-  n: true,
-  s: true
-};
-let isLon = {
-  e: true,
-  w: true
-};
-
 const parseCoord = function(str) {
   let obj = {
     lat: null,
-    lon: null,
-    format: null
+    lon: null
   };
   let arr = str.split('|');
   //turn numbers into numbers, normalize N/s
-  arr = arr.map(s => {
+  let nums = [];
+  for(let i = 0; i < arr.length; i += 1) {
+    let s = arr[i];
+    //make it a number
     let num = parseFloat(s);
     if (num || num === 0) {
-      return num;
-    }
-    if (isLat[s.toLowerCase()]) {
-      return 'lat';
-    }
-    if (isLon[s.toLowerCase()]) {
-      return 'lon';
+      arr[i] = num;
+      nums.push(num);
     }
     if (s.match(/^region:/i)) {
       obj.region = s.replace(/^region:/i, '');
+      continue;
     }
-    return null;
-  });
-  arr = arr.filter(s => s);
-  console.log(arr);
+    if (s.match(/^notes:/i)) {
+      obj.notes = s.replace(/^notes:/i, '');
+      continue;
+    }
+    //DMS-format
+    if (hemispheres[s.toLowerCase()]) {
+      if (obj.lat !== null) {
+        obj.lon = arr.slice(0, i + 1);
+      } else {
+        obj.lat = arr.slice(0, i + 1);
+        arr = arr.slice(i + 1, arr.length);
+        i = 0;
+      }
+    }
+  }
+  if (obj.lat) {
+    obj.lat = convertGeo(obj.lat);
+  }
+  if (obj.lon) {
+    obj.lon = convertGeo(obj.lon);
+  }
   return obj;
 };
 module.exports = parseCoord;

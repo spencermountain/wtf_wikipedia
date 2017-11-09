@@ -33,9 +33,7 @@
     "wikiscript"
   ],
   "dependencies": {
-    "dms-conversion": "^3.0.0",
     "jshashes": "^1.0.6",
-    "parse-dms": "0.0.3",
     "superagent": "^3.5.2"
   },
   "devDependencies": {

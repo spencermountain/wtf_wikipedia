@@ -71,8 +71,8 @@ var str = `hello {{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}} wor
 //     return null;
 //   }
 // });
-// let obj = wtf.parse(str);
-// console.log(obj.coordinates);
+let obj = wtf.parse(str);
+console.log(obj.coordinates);
 
 
 // var dms = require('dms-conversion');
@@ -80,6 +80,6 @@ var str = `hello {{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}} wor
 // var dmsCoords = dmsStrings.map(dms.parseDms); // [-122.902336120571, 46.9845854731319]
 // console.log(dms);
 
-var parseDMS = require('parse-dms');
+// var parseDMS = require('parse-dms');
 // 57|18|22|N|4|27|32|W
-console.log(parseDMS(`57°18'22"N 4°27'32"W`));
+// console.log(parseDMS(`57°18'22"N 4°27'32"W`));
