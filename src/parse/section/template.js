@@ -1,31 +1,8 @@
+const parseCoord = require('./coordinates');
 const regs = {
   main: /\{\{main( article)?\|(.*?)\}\}/i,
   wide_image: /\{\{wide image\|(.*?)\}\}/i,
   coord: /\{\{coord\|(.*?)\}\}/i
-};
-const dirMap = {
-  N: 'north',
-  n: 'north',
-  S: 'south',
-  s: 'south',
-  E: 'east',
-  e: 'east',
-  w: 'west',
-  W: 'west',
-};
-const parseCoord = function(str) {
-  let arr = str.split('|');
-  arr = arr.map(s => {
-    if (/[a-zA-Z]/.test(s) === true) {
-      return s;
-    }
-    return parseFloat(s, 10);
-  });
-  //support three formats
-  //{{Coord|44.112|N|87.913|W|display=title}}
-  //{{Coord|57|18|22|N|4|27|32|W|display=title}}
-  //{{Coord|44.112|-87.913|display=title}}
-  return arr;
 };
 
 //just some easy, supported ones

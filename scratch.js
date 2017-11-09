@@ -54,21 +54,32 @@ function from_file(page) {
 //     }]
 // }
 
-// var str = `hello {{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}} world`;
-var str = `hello {{myTempl|fun stuff!}} world`;
+// Latitude (N/S) must appear before longitude (E/W)
+var str = `hello {{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}} world`;
+// var str = `hello {{myTempl|fun stuff!}} world`;
 // var str = `hello {{main|fun}} world`;
 // var str = `
 // {{Main|Royal National Lifeboat Institution lifeboats}}
 // The types of boats`;
-wtf.custom({
-  mine: (tmpl, wiki) => {
-    if (/^\{\{myTempl/.test(tmpl)) {
-      let m = tmpl.match(/^\{\{myTempl\|(.+?)\}\}$/);
-      wiki = wiki.replace(tmpl, m[1]);
-      return 'hooha!';
-    }
-    return null;
-  }
-});
-let obj = wtf.plaintext(str);
-console.log(obj);
+// wtf.custom({
+//   mine: (tmpl, wiki) => {
+//     if (/^\{\{myTempl/.test(tmpl)) {
+//       let m = tmpl.match(/^\{\{myTempl\|(.+?)\}\}$/);
+//       wiki = wiki.replace(tmpl, m[1]);
+//       return 'hooha!';
+//     }
+//     return null;
+//   }
+// });
+// let obj = wtf.parse(str);
+// console.log(obj.coordinates);
+
+
+// var dms = require('dms-conversion');
+// var dmsStrings = ['46°59′5″ N', '122°54′8″ W'];
+// var dmsCoords = dmsStrings.map(dms.parseDms); // [-122.902336120571, 46.9845854731319]
+// console.log(dms);
+
+var parseDMS = require('parse-dms');
+// 57|18|22|N|4|27|32|W
+console.log(parseDMS(`57°18'22"N 4°27'32"W`));
