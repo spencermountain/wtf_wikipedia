@@ -18,9 +18,9 @@ const parse_recursive = function(r, wiki, options) {
   let matches = find_recursive('{', '}', wiki).filter(s => s[0] && s[1] && s[0] === '{' && s[1] === '{');
   matches.forEach(function(tmpl) {
     if (tmpl.match(infobox_reg, 'ig')) {
-      let infobox = parse_infobox(s);
+      let infobox = parse_infobox(tmpl);
       r.infoboxes.push(infobox);
-      wiki = wiki.replace(s, '');
+      wiki = wiki.replace(tmpl, '');
       return;
     }
     //keep these ones, we'll parse them later
