@@ -1,14 +1,14 @@
 const convertGeo = require('../../lib/convertGeo');
+// {{coord|latitude|longitude|coordinate parameters|template parameters}}
+// {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
 const hemispheres = {
   n: true,
   s: true,
   w: true,
   e: true,
 };
-// {{coord|latitude|longitude|coordinate parameters|template parameters}}
-// {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
-// {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
-// {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
 const parseCoord = function(str) {
   let obj = {
     lat: null,
@@ -24,31 +24,31 @@ const parseCoord = function(str) {
     if (num || num === 0) {
       arr[i] = num;
       nums.push(num);
-    }
-    if (s.match(/^region:/i)) {
+    } else if (s.match(/^region:/i)) {
       obj.region = s.replace(/^region:/i, '');
       continue;
-    }
-    if (s.match(/^notes:/i)) {
+    } else if (s.match(/^notes:/i)) {
       obj.notes = s.replace(/^notes:/i, '');
       continue;
     }
     //DMS-format
     if (hemispheres[s.toLowerCase()]) {
       if (obj.lat !== null) {
-        obj.lon = arr.slice(0, i + 1);
+        nums.push(s);
+        obj.lon = convertGeo(nums);
       } else {
-        obj.lat = arr.slice(0, i + 1);
+        nums.push(s);
+        obj.lat = convertGeo(nums);
         arr = arr.slice(i + 1, arr.length);
+        nums = [];
         i = 0;
       }
     }
   }
-  if (obj.lat) {
-    obj.lat = convertGeo(obj.lat);
-  }
-  if (obj.lon) {
-    obj.lon = convertGeo(obj.lon);
+  //this is an original `lat|lon` format
+  if (!obj.lon && nums.length === 2) {
+    obj.lat = nums[0];
+    obj.lon = nums[1];
   }
   return obj;
 };

@@ -2,14 +2,14 @@
 const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
-function from_file(page) {
-  let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
-  // console.log(wtf.plaintext(str));
-  let r = wtf.parse(str);
-  // console.log(r.infoboxes[0]);
-  // console.log(JSON.stringify(r.sections, null, 2));
-  return r;
-}
+// function from_file(page) {
+//   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
+//   // console.log(wtf.plaintext(str));
+//   let r = wtf.parse(str);
+//   // console.log(r.infoboxes[0]);
+//   // console.log(JSON.stringify(r.sections, null, 2));
+//   return r;
+// }
 
 // from_file('list');
 // from_file("earthquakes");
@@ -55,7 +55,9 @@ function from_file(page) {
 // }
 
 // Latitude (N/S) must appear before longitude (E/W)
-var str = `hello {{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}} world`;
+// var str = `hello {{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}} world`;
+// var str = `hello {{coord|43.2|-42.9|region:CA-ON|display=inline,title}} world`;
+var str = `hello {{Coord|44.112|N|87.913|S|display=title}} world`;
 // var str = `hello {{myTempl|fun stuff!}} world`;
 // var str = `hello {{main|fun}} world`;
 // var str = `
@@ -72,8 +74,12 @@ var str = `hello {{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}} wor
 //   }
 // });
 let obj = wtf.parse(str);
-console.log(obj.coordinates);
+// console.log(obj.coordinates);
 
+wtf.from_api('List_of_largest_cities', 'en', function(markup) {
+  var data = wtf.parse(markup);
+  console.log(data.sections[5].lists);
+});
 
 // var dms = require('dms-conversion');
 // var dmsStrings = ['46°59′5″ N', '122°54′8″ W'];

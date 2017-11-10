@@ -5,19 +5,19 @@ var wtf = require('../src/index');
 test('coord formats', t => {
   var str = `{{Coord|44.112|-87.913|display=title}}`;
   var obj = wtf.parse(str).coordinates[0];
-  t.equal(obj.lat, 44.112, 'fmt-1-north');
-  t.equal(obj.lng, 87.913, 'fmt-1-west');
+  t.equal(obj.lat, 44.112, 'fmt-1-lat');
+  t.equal(obj.lon, -87.913, 'fmt-1-lon');
 
-  // str = `hello {{Coord|44.112|N|87.913|W|display=title}} world`;
-  // obj = wtf.parse(str).coordinates[0];
-  // t.equal(obj.north, 44.112, 'fmt-2-north');
-  // t.equal(obj.west, 87.913, 'fmt-2-west');
+  str = `hello {{Coord|44.112|N|87.913|S|display=title}} world`;
+  obj = wtf.parse(str).coordinates[0];
+  t.equal(obj.lat, 44.112, 'fmt-2-lat');
+  t.equal(obj.lon, 87.913, 'fmt-2-lon');
 
   //minutes/seconds
   // str = `hello {{Coord|57|18|22|N|4|27|32|W|display=title}} world`;
   // obj = wtf.parse(str).coordinates[0];
-  // t.equal(obj.north, 44.112, 'fmt-1-north');
-  // t.equal(obj.west, 87.913, 'fmt-1-west');
+  // t.equal(obj.lat, 44.112, 'fmt-3-lat');
+  // t.equal(obj.lon, 87.913, 'fmt-3-lon');
   t.end();
 });
 
@@ -30,7 +30,7 @@ test('Parse DMS', function(t) {
     lon: -1 * (2 + 15 / 60 + 39.6 / 3600)
   };
   t.equal(obj.lat, want.lat, 'DMS-1-lat');
-  t.equal(obj.lng, want.long, 'DMS-1-lon');
+  t.equal(obj.lon, want.long, 'DMS-1-lon');
   t.end();
 });
 test('Parse DMS-missing', function(t) {
@@ -41,6 +41,6 @@ test('Parse DMS-missing', function(t) {
     lon: -2
   };
   t.equal(obj.lat, want.lat, 'DMS-2-lat');
-  t.equal(obj.lng, want.long, 'DMS-2-lon');
+  t.equal(obj.lon, want.long, 'DMS-2-lon');
   t.end();
 });
