@@ -57,7 +57,7 @@ const wtf = require('./src/index');
 // Latitude (N/S) must appear before longitude (E/W)
 // var str = `hello {{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}} world`;
 // var str = `hello {{coord|43.2|-42.9|region:CA-ON|display=inline,title}} world`;
-var str = `hello {{Coord|44.112|N|87.913|S|display=title}} world`;
+// var str = `hello {{Coord|44.112|N|87.913|S|display=title}} world`;
 // var str = `hello {{myTempl|fun stuff!}} world`;
 // var str = `hello {{main|fun}} world`;
 // var str = `
@@ -73,13 +73,13 @@ var str = `hello {{Coord|44.112|N|87.913|S|display=title}} world`;
 //     return null;
 //   }
 // });
-let obj = wtf.parse(str);
+// let obj = wtf.parse(str);
 // console.log(obj.coordinates);
 
-wtf.from_api('List_of_largest_cities', 'en', function(markup) {
-  var data = wtf.parse(markup);
-  console.log(data.sections[5].lists);
-});
+// wtf.from_api('List_of_largest_cities', 'en', function(markup) {
+//   var data = wtf.parse(markup);
+//   console.log(data.sections[5].lists);
+// });
 
 // var dms = require('dms-conversion');
 // var dmsStrings = ['46°59′5″ N', '122°54′8″ W'];
@@ -89,3 +89,8 @@ wtf.from_api('List_of_largest_cities', 'en', function(markup) {
 // var parseDMS = require('parse-dms');
 // 57|18|22|N|4|27|32|W
 // console.log(parseDMS(`57°18'22"N 4°27'32"W`));
+
+
+var str = `hi {{coord|59|12|7.7|N|02|15|39.6|W}} there`;
+var obj = wtf.parse(str).coordinates[0];
+console.log(obj);

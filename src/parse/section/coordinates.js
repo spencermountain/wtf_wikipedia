@@ -1,4 +1,13 @@
 const convertGeo = require('../../lib/convertGeo');
+
+const round = function(num) {
+  if (typeof num !== 'number') {
+    return num;
+  }
+  let places = 100000;
+  return Math.round(num * places) / places;
+};
+
 // {{coord|latitude|longitude|coordinate parameters|template parameters}}
 // {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
 // {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
@@ -39,7 +48,7 @@ const parseCoord = function(str) {
       } else {
         nums.push(s);
         obj.lat = convertGeo(nums);
-        arr = arr.slice(i + 1, arr.length);
+        arr = arr.slice(i, arr.length);
         nums = [];
         i = 0;
       }
@@ -50,6 +59,8 @@ const parseCoord = function(str) {
     obj.lat = nums[0];
     obj.lon = nums[1];
   }
+  obj.lat = round(obj.lat);
+  obj.lon = round(obj.lon);
   return obj;
 };
 module.exports = parseCoord;
