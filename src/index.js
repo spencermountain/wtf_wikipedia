@@ -41,5 +41,5 @@ module.exports = {
   plaintext: plaintext,
   version: version,
   custom: customize,
-  parse: (str) => parse(str, options)
+  parse: (str,options) => parse(str, options)
 };
