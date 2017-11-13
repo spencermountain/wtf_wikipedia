@@ -165,9 +165,9 @@ test('floating-tables-test', t => {
 |}`;
   let obj = wtf.parse(floating);
   t.equal(obj.sections[0].tables.length, 2, 'two tables');
-  console.log(obj.sections[0].tables);
+  // console.log(obj.sections[0].tables);
   let table = obj.sections[0].tables[0];
-  console.log(table);
+  // console.log(table);
   t.equal(table[0]['col-0'].text, 'Col 1, row 1', '1,1');
   t.end();
 });

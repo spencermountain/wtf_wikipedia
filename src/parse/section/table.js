@@ -1,7 +1,7 @@
 const helpers = require('../../lib/helpers');
 const parse_line = require('./sentence/line');
 
-const table_reg = /\{\|[\s\S]{1,12000}?\|\}/g;
+const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70kchars.
 
 const parseHeading = function(str) {
   str = parse_line(str).text || '';
