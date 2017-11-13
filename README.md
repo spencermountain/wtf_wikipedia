@@ -71,6 +71,7 @@ the result format:
       }]
    }],
   "categories": [],
+  "coordinates": [],
   "interwiki": {},
 }
 ```
@@ -105,8 +106,10 @@ wtf.from_api("Toronto Blue Jays", "en", function(markup){
 * Handles recursive templates and links- like [[.. [[...]] ]]
 * **Per-sentence** plaintext and link resolution
 * Parse and format internal links
+* creates [image thumbnail urls](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) from **File:XYZ.png** filenames
 * Properly resolve {{CURRENTMONTH}} and {{CONVERT ..}} type templates
 * Parse **images**, files, and **categories**
+* converts 'DMS-formatted' (59°12\'7.7"N) geo-coordinates to lat/lng
 * Eliminate xml, latex, css, table-sorting, and 'Egyptian hierogliphics' cruft
 
 its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView), [txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).

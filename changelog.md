@@ -11,3 +11,6 @@
 * support {{main}} and {{wide image|}} templates
 ## 2.1.0
 * support table '! row' row heading syntax, and other forms
+## 2.2.0
+* support for {{coords}} geo-coordinate parsing+conversion
+* early-support for custom template-parsing
