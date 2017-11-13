@@ -1,5 +1,5 @@
 'use strict';
-var wtf = require('../src/');
+var wtf = require('./lib');
 var test = require('tape');
 
 let boloZenden = `{{Infobox football biography

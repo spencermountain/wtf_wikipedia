@@ -2,7 +2,7 @@
 var test = require('tape');
 var path = require('path');
 var fs = require('fs');
-const wtf = require('../src/index');
+const wtf = require('./lib');
 
 //read cached file
 var fetch = function(file) {

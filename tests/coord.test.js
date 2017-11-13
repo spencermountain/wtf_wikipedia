@@ -1,6 +1,6 @@
 'use strict';
 var test = require('tape');
-var wtf = require('../src/index');
+var wtf = require('./lib');
 
 test('coord formats', t => {
   var str = `{{Coord|44.112|-87.913|display=title}}`;

@@ -1,6 +1,6 @@
 'use strict';
 var test = require('tape');
-const wtf = require('../src/index');
+const wtf = require('./lib');
 
 test('small headings', t => {
   let str = `

@@ -1,6 +1,6 @@
 'use strict';
 var test = require('tape');
-var wtf = require('../src/');
+var wtf = require('./lib');
 
 test('sentence parser', t => {
   [
