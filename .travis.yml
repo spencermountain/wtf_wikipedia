@@ -3,10 +3,7 @@ sudo: false
 language: node_js
 
 node_js:
-  - stable
-  - 7
-  - 6
-  - 5
+  - 8
   - 4
 
 cache:
@@ -16,5 +13,4 @@ cache:
 install: npm install
 
 script:
-  - npm run test
-  - npm run build
+  - npm run testb
