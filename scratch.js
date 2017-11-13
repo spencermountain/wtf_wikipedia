@@ -91,6 +91,23 @@ const wtf = require('./src/index');
 // console.log(parseDMS(`57°18'22"N 4°27'32"W`));
 
 
-var str = `hi {{coord|59|12|7.7|N|02|15|39.6|W}} there`;
-var obj = wtf.parse(str).coordinates[0];
+// var str = `hi {{coord|59|12|7.7|N|02|15|39.6|W}} there`;
+// var obj = wtf.parse(str).coordinates[0];
+// console.log(obj);
+
+// let str = `The [http://w110.bcn.cat/portal/site/Eixample Fun] is the quarter designed`;
+// var obj = wtf.parse(str);
+// console.log(obj.sections[0].sentences[0]);
+
+let str = `hello {{mytmpl|fun times}} world`;
+let obj = wtf.parse(str).custom;
+
+wtf.custom({
+  mytmpl: (tmpl) => {
+    let m = tmpl.match(/^\{\{mytmpl\|(.+)\}\}$/) || {};
+    // wiki = wiki.replace(tmpl, m[1]);
+    return m[1];
+  }
+});
+obj = wtf.parse(str).custom;
 console.log(obj);

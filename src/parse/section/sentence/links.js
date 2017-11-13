@@ -4,16 +4,11 @@ const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Cat
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
 
 const external_links = function(links, str) {
-  str.replace(external_link, function(all, protocol, link) {
-    let text = '';
-    let m = link.match(/\[([^\| ]+)/);
-    if (m && m[1]) {
-      text = m[1];
-    }
+  str.replace(external_link, function(all, protocol, link, text) {
     links.push({
       type: 'external',
       site: protocol + link,
-      text: text
+      text: text.trim()
     });
     return text;
   });
@@ -23,7 +18,8 @@ const external_links = function(links, str) {
 const internal_links = function(links, str) {
   //regular links
   str.replace(link_reg, function(_, s) {
-    var link, txt;
+    var link,
+      txt;
     if (s.match(/\|/)) {
       //replacement link [[link|text]]
       s = s.replace(/\[\[(.{2,80}?)\]\](\w{0,10})/g, '$1$2'); //remove ['s and keep suffix
