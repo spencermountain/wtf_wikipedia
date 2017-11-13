@@ -10,12 +10,11 @@ test('custom templates', t => {
   wtf.custom({
     mytmpl: (tmpl) => {
       let m = tmpl.match(/^\{\{mytmpl\|(.+)\}\}$/) || {};
-      // wiki = wiki.replace(tmpl, m[1]);
       return m[1];
     }
   });
   obj = wtf.parse(str).custom;
-  t.equal(obj.mytmpl, 'fun times', 'has custom responses now');
+  t.equal(obj.mytmpl[0], 'fun times', 'has custom responses now');
 
   t.end();
 });

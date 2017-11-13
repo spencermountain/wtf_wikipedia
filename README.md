@@ -164,6 +164,23 @@ var text= wtf.plaintext(wiki)
 //"Boston's baseball field has a 37ft wall."
 ```
 
+## **.custom({})**
+if you're trying to parse a weird template, or an obscure wiki syntax somewhere, this library supports a customization step, where you can pass-in random parsers to run, before your result is generated.
+```js
+var str = `{{myTempl|cool data!}} Whistling is a sport in some countries...`;
+wtf.custom({
+  mine: (str) => {
+    let m = str.match(/^\{\{myTempl\|(.+?)\}\}$/);
+    if (m) {
+      return m[1];
+    }
+  }
+});
+wtf.parse(str)
+//{title:'Whistling', custom: {mine:['cool data!']} }
+```
+this way, you can extend the library with your own regexes, and all that.
+
 ## **CLI**
 if you're scripting this from the shell, or another language, install with a `-g`, and then:
 ````shell

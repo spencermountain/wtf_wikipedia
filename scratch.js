@@ -28,14 +28,11 @@ const wtf = require('./src/index');
 
 // var str = `hello {{myTempl|fun stuff!}} world`;
 // var str = `hello {{main|fun}} world`;
-var str = `
-{{myTempl|some cool data!}}
-The types of boats`;
+var str = `{{myTempl|cool data!}} Whistling is a sport in some countries...`;
 wtf.custom({
-  mine: (tmpl, wiki) => {
-    if (/^\{\{myTempl/.test(tmpl)) {
-      let m = tmpl.match(/^\{\{myTempl\|(.+?)\}\}$/);
-      // wiki = wiki.replace(tmpl, m[1]);
+  mine: (tmpl) => {
+    let m = tmpl.match(/^\{\{myTempl\|(.+?)\}\}$/);
+    if (m) {
       return m[1];
     }
     return null;

@@ -41,7 +41,8 @@ const parse_recursive = function(r, wiki, options) {
       Object.keys(options.custom).forEach((k) => {
         let val = options.custom[k](tmpl, wiki);
         if (val || val === false) { //dont store all the nulls
-          r.custom[k] = val;
+          r.custom[k] = r.custom[k] || [];
+          r.custom[k].push(val);
         }
       });
     }
