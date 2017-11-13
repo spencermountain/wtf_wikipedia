@@ -55,9 +55,16 @@ const wtf = require('./src/index');
 // }
 
 // Latitude (N/S) must appear before longitude (E/W)
-// var str = `hello {{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}} world`;
+var str = `{{Infobox settlement
+|name = Toronto
+|coordinates = {{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}}
+}}`;
 // var str = `hello {{coord|43.2|-42.9|region:CA-ON|display=inline,title}} world`;
 // var str = `hello {{Coord|44.112|N|87.913|S|display=title}} world`;
+let obj = wtf.parse(str);
+console.log(obj.coordinates);
+console.log(obj.infoboxes[0].data);
+
 // var str = `hello {{myTempl|fun stuff!}} world`;
 // var str = `hello {{main|fun}} world`;
 // var str = `
@@ -73,14 +80,3 @@ const wtf = require('./src/index');
 //     return null;
 //   }
 // });
-// let obj = wtf.parse(str);
-// console.log(obj.coordinates);
-//
-wtf.from_api('List_of_largest_cities', 'en', function(markup) {
-  var data = wtf.parse(markup);
-  console.log(data.sections[5].tables);
-});
-
-
-// var data = wtf.parse(str);
-// console.log(data.sections[0]);

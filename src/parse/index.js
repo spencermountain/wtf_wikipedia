@@ -28,8 +28,8 @@ const main = function(wiki, options) {
     categories: [],
     images: [],
     coordinates: [],
-    page_identifier:null,
-    lang_or_wikiid:null
+    page_identifier: null,
+    lang_or_wikiid: null
   };
   if (options.custom) {
     r.custom = {};
@@ -39,9 +39,9 @@ const main = function(wiki, options) {
   }
   if (options.lang_or_wikiid) {
     r.lang_or_wikiid = options.lang_or_wikiid;
-  } 
+  }
   //give ourselves a little head-start
-  wiki = preProcess(wiki);
+  wiki = preProcess(r, wiki);
   //pull-out infoboxes and stuff
   wiki = parse.infobox(r, wiki, options);
   //pull-out [[category:whatevers]]

@@ -1,9 +1,6 @@
 'use strict';
 var test = require('tape');
 var wtf = require('../src/');
-// var parse_line = require('../src/parse/text');
-var cleanup_misc = require('../src/parse/preProcess');
-var sentence_parser = require('../src/parse/section/sentence/sentence_parser');
 
 test('sentence parser', t => {
   [
@@ -11,7 +8,7 @@ test('sentence parser', t => {
     ['I like that Color', 1],
     ['Soviet bonds to be sold in the U.S. market. Everyone wins.', 2],
     [
-      "Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that's fine, etc. and you can attend Feb. 8th. Bye",
+      'Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that\'s fine, etc. and you can attend Feb. 8th. Bye',
       3
     ],
     ['Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York', 1],
@@ -20,7 +17,7 @@ test('sentence parser', t => {
     ['dom, kon. XIX w.', 2],
     ['a staged reenactment of [[Perry v. Brown]] world', 1]
   ].forEach(a => {
-    let s = sentence_parser(a[0]);
+    let s = wtf.parse(a[0]).sections[0].sentences;
     let msg = a[1] + ' sentences  - "' + a[0] + '"';
     t.equal(s.length, a[1], msg);
   });
@@ -28,8 +25,8 @@ test('sentence parser', t => {
 });
 
 test('misc cleanup', t => {
-  [['hi [[as:Plancton]] there', 'hi  there'], ['hello <br/> world', 'hello world']].forEach(a => {
-    let s = cleanup_misc(a[0]);
+  [['hi [[as:Plancton]] there', 'hi there'], ['hello <br/> world', 'hello world']].forEach(a => {
+    let s = wtf.plaintext(a[0]);
     t.equal(s, a[1]);
   });
   t.end();
@@ -46,7 +43,7 @@ test('redirects', t => {
     ['#تغییر_مسیر [[Farming]] ', 'Farming']
   ].forEach(a => {
     let o = wtf.parse(a[0]);
-    var msg = "'" + a[0] + "' -> '" + o.redirect + "'";
+    var msg = '\'' + a[0] + '\' -> \'' + o.redirect + '\'';
     t.equal(o.redirect, a[1], msg);
   });
   t.end();
@@ -64,7 +61,7 @@ test('parse_line_text', t => {
     ['it is [[Tony Hawk|Tony]]s mother in [[Toronto]]s', 'it is Tonys mother in Torontos']
   ].forEach(a => {
     let text = wtf.plaintext(a[0]);
-    var msg = "'" + a[0] + "' -> '" + text + "'";
+    var msg = '\'' + a[0] + '\' -> \'' + text + '\'';
     t.equal(text, a[1], msg);
   });
   t.end();
@@ -107,10 +104,10 @@ test('xml', t => {
     ['hello <h2>world</h2>', 'hello world'],
     [`hello<ref name="theroyal"/> world5, <ref name="">nono</ref> man`, 'hello world5, man'],
     ['hello <ref>nono!</ref> world1.', 'hello world1.'],
-    ["hello <ref name='hullo'>nono!</ref> world2.", 'hello world2.'],
-    ["hello <ref name='hullo'/>world3.", 'hello world3.'],
-    ["hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4.", 'hello world4.'],
-    ["hello<ref name=''/> world5", 'hello world5']
+    ['hello <ref name=\'hullo\'>nono!</ref> world2.', 'hello world2.'],
+    ['hello <ref name=\'hullo\'/>world3.', 'hello world3.'],
+    ['hello <table name=\'\'><tr><td>hi<ref>nono!</ref></td></tr></table>world4.', 'hello world4.'],
+    ['hello<ref name=\'\'/> world5', 'hello world5']
   ].forEach((a, i) => {
     let s = wtf.plaintext(a[0]);
     t.equal(s, a[1], 'xml' + i);

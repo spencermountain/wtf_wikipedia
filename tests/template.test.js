@@ -192,7 +192,6 @@ var radiohead = `{{Infobox musical artist
 }} `;
 test('Radiohead infobox', function(t) {
   let infobox = wtf.parse(radiohead).infoboxes[0].data;
-  console.log(infobox);
   t.equal(infobox.current_members.text.match(/Greenwood/g).length, 2, 'current members');
   t.equal(infobox.genre.text, 'Art rock, alternative rock, electronica, experimental rock', 'genre');
   t.equal(infobox.associated_acts.text, 'Atoms for Peace, 7 Worlds Collide', 'associated-acts');

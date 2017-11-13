@@ -1,4 +1,6 @@
 const languages = require('../../data/languages');
+const parseCoord = require('./coordinates');
+
 const months = [
   'January',
   'February',
@@ -17,7 +19,7 @@ const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
 
 // templates that need parsing and replacing for inline text
 //https://en.wikipedia.org/wiki/Category:Magic_word_templates
-const word_templates = function(wiki) {
+const word_templates = function(wiki, r) {
   //we can be sneaky with this template, as it's often found inside other templates
   wiki = wiki.replace(/\{\{URL\|([^ ]{4,100}?)\}\}/gi, '$1');
   //this one needs to be handled manually
@@ -32,6 +34,13 @@ const word_templates = function(wiki) {
   wiki = wiki.replace(/\{\{(lc|uc|formatnum):(.*?)\}\}/gi, '$2');
   wiki = wiki.replace(/\{\{pull quote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
   wiki = wiki.replace(/\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
+
+  //{{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}}
+  let coord = wiki.match(/\{\{coord\|(.*?)\}\}/i);
+  if (coord !== null) {
+    r.coordinates.push(parseCoord(coord[1]));
+    wiki = wiki.replace(coord[0], '');
+  }
 
   //flatlist -> commas
   wiki = wiki.replace(/\{\{flatlist ?\|([^}]+)\}\}/gi, function(a, b) {
@@ -60,10 +69,10 @@ const word_templates = function(wiki) {
     wiki = wiki.replace(/\{\{date\|.*?\}\}/gi, dateString);
   }
   //common templates in wiktionary
-  wiki = wiki.replace(/\{\{term\|(.*?)\|.*?\}\}/gi, "'$1'");
+  wiki = wiki.replace(/\{\{term\|(.*?)\|.*?\}\}/gi, '\'$1\'');
   wiki = wiki.replace(/\{\{IPA(c-en)?\|(.*?)\|(.*?)\}\},?/gi, '');
   wiki = wiki.replace(/\{\{sense\|(.*?)\|?.*?\}\}/gi, '($1)');
-  wiki = wiki.replace(/\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, "'$1'");
+  wiki = wiki.replace(/\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, '\'$1\'');
   //replace languages in 'etyl' tags
   if (wiki.match(/\{\{etyl\|/)) {
     //doesn't support multiple-ones per sentence..

@@ -1,4 +1,15 @@
 const convertGeo = require('../../lib/convertGeo');
+// {{coord|latitude|longitude|coordinate parameters|template parameters}}
+// {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
+
+const hemispheres = {
+  n: true,
+  s: true,
+  w: true,
+  e: true,
+};
 
 const round = function(num) {
   if (typeof num !== 'number') {
@@ -8,16 +19,6 @@ const round = function(num) {
   return Math.round(num * places) / places;
 };
 
-// {{coord|latitude|longitude|coordinate parameters|template parameters}}
-// {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
-// {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
-// {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
-const hemispheres = {
-  n: true,
-  s: true,
-  w: true,
-  e: true,
-};
 const parseCoord = function(str) {
   let obj = {
     lat: null,
