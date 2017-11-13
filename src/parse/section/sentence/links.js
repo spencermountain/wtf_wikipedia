@@ -5,6 +5,7 @@ const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,150
 
 const external_links = function(links, str) {
   str.replace(external_link, function(all, protocol, link, text) {
+    text = text || '';
     links.push({
       type: 'external',
       site: protocol + link,
