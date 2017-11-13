@@ -28,11 +28,18 @@ const main = function(wiki, options) {
     categories: [],
     images: [],
     coordinates: [],
+    page_identifier:null,
+    lang_or_wikiid:null
   };
   if (options.custom) {
     r.custom = {};
   }
-
+  if (options.page_identifier) {
+    r.page_identifier = options.page_identifier;
+  }
+  if (options.lang_or_wikiid) {
+    r.lang_or_wikiid = options.lang_or_wikiid;
+  } 
   //give ourselves a little head-start
   wiki = preProcess(wiki);
   //pull-out infoboxes and stuff

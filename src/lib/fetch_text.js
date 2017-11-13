@@ -37,7 +37,7 @@ const fetch = function(page_identifier, lang_or_wikiid, cb) {
           fetch(result.redirect, lang_or_wikiid, cb); //recursive
           return;
         }
-        cb(text);
+        cb(text,page_identifier,lang_or_wikiid);
       } else {
         cb(null);
       }
