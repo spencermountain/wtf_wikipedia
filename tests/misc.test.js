@@ -33,3 +33,20 @@ test('font-size', t => {
   t.equal(wtf.plaintext(str), 'hello (1995–present) world', '{{nowrap}}');
   t.end();
 });
+
+test('external links', t => {
+  let str = `The [http://w110.bcn.cat/portal/site/Eixample] is the quarter designed`;
+  let obj = wtf.parse(str);
+  let link = obj.sections[0].sentences[0].links[0];
+  t.equal(link.text, '', 'link-text');
+  t.equal(link.site, 'http://w110.bcn.cat/portal/site/Eixample', 'link-site');
+  t.equal(link.type, 'external', 'link-type');
+
+  str = `The [http://w110.bcn.cat/portal/site/Eixample Fun Times] is the quarter designed`;
+  obj = wtf.parse(str);
+  link = obj.sections[0].sentences[0].links[0];
+  t.equal(link.text, 'Fun Times', 'link-text');
+  t.equal(link.site, 'http://w110.bcn.cat/portal/site/Eixample', 'link-site');
+  t.equal(link.type, 'external', 'link-type');
+  t.end();
+});
