@@ -41,5 +41,9 @@ module.exports = {
   plaintext: plaintext,
   version: version,
   custom: customize,
-  parse: (str) => parse(str, options)
+  parse: (str, obj) => {
+    obj = obj || {};
+    obj = Object.assign(obj, options); //grab 'custom' persistent options
+    return parse(str, obj);
+  }
 };

@@ -1,4 +1,4 @@
-/* wtf_wikipedia v2.2.0
+/* wtf_wikipedia v2.2.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -3714,7 +3714,7 @@ exports.cleanHeader = function(header, shouldStripCookie){
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -3726,7 +3726,7 @@ module.exports={
     "test": "node ./scripts/test.js",
     "postpublish": "node ./scripts/coverage.js",
     "coverage": "node ./scripts/coverage.js",
-    "browserTest": "node ./scripts/browserTest.js",
+    "testb": "TESTENV=prod node ./scripts/test.js",
     "watch": "node ./scripts/watch.js",
     "build": "node ./scripts/build.js"
   },
@@ -5954,8 +5954,10 @@ module.exports = {
   plaintext: plaintext,
   version: version,
   custom: customize,
-  parse: function parse(str) {
-    return _parse(str, options);
+  parse: function parse(str, obj) {
+    obj = obj || {};
+    obj = Object.assign(obj, options); //grab 'custom' persistent options
+    return _parse(str, obj);
   }
 };
 

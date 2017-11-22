@@ -28,14 +28,20 @@ const wtf = require('./src/index');
 
 // var str = `hello {{myTempl|fun stuff!}} world`;
 // var str = `hello {{main|fun}} world`;
-var str = `{{myTempl|cool data!}} Whistling is a sport in some countries...`;
-wtf.custom({
-  mine: (tmpl) => {
-    let m = tmpl.match(/^\{\{myTempl\|(.+?)\}\}$/);
-    if (m) {
-      return m[1];
-    }
-    return null;
-  }
-});
-console.log(wtf.parse(str));
+// var str = `{{myTempl|cool data!}} Whistling is a sport in some countries...`;
+// wtf.custom({
+//   mine: (tmpl) => {
+//     let m = tmpl.match(/^\{\{myTempl\|(.+?)\}\}$/);
+//     if (m) {
+//       return m[1];
+//     }
+//     return null;
+//   }
+// });
+// console.log(wtf.parse(str));
+
+
+console.log(wtf.parse('blha blah', {
+  page_identifier: 234,
+  lang_or_wikiid: 'de'
+}));
