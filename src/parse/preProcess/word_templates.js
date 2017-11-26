@@ -64,14 +64,14 @@ const word_templates = function(wiki, r) {
       tmpl = tmpl.replace(/^\{\{date\|.*?\}\}/gi, dateString);
     }
     //common templates in wiktionary
-    tmpl = tmpl.replace(/^\{\{term\|(.*?)\|.*?\}\}/gi, '\'$1\'');
+    tmpl = tmpl.replace(/^\{\{term\|(.*?)\|.*?\}\}/gi, "'$1'");
     tmpl = tmpl.replace(/^\{\{IPA(c-en)?\|(.*?)\|(.*?)\}\},?/gi, '');
     tmpl = tmpl.replace(/^\{\{sense\|(.*?)\|?.*?\}\}/gi, '($1)');
-    tmpl = tmpl.replace(/v\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, '\'$1\'');
+    tmpl = tmpl.replace(/v\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, "'$1'");
     //replace languages in 'etyl' tags
     if (tmpl.match(/^\{\{etyl\|/)) {
       //doesn't support multiple-ones per sentence..
-      var lang = tmpl.match(/^\{\{etyl\|(.*?)\|.*?\}\}/i)[1] || '';
+      var lang = (tmpl.match(/^\{\{etyl\|(.*?)\|.*?\}\}/i) || [])[1] || '';
       lang = lang.toLowerCase();
       if (lang && languages[lang]) {
         tmpl = tmpl.replace(/^\{\{etyl\|(.*?)\|.*?\}\}/gi, languages[lang].english_title);

@@ -17,11 +17,11 @@ const parseImages = function(r, wiki) {
   //third, wiktionary-style interlanguage links
   matches.forEach(function(s) {
     if (s.match(/\[\[([a-z]+):(.*?)\]\]/i) !== null) {
-      let site = s.match(/\[\[([a-z]+):/i)[1];
+      let site = (s.match(/\[\[([a-z]+):/i) || [])[1] || '';
       site = site.toLowerCase();
       if (site && i18n.dictionary[site] === undefined) {
         r.interwiki = r.interwiki || {};
-        r.interwiki[site] = s.match(/\[\[([a-z]+):(.*?)\]\]/i)[2];
+        r.interwiki[site] = (s.match(/\[\[([a-z]+):(.*?)\]\]/i) || [])[2];
         wiki = wiki.replace(s, '');
       }
     }

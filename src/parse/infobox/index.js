@@ -29,8 +29,10 @@ const parse_recursive = function(r, wiki, options) {
       name = name[1].trim().toLowerCase();
       //sorta-keep nowrap template
       if (name === 'nowrap') {
-        let inside = tmpl.match(/^\{\{nowrap *?\|(.*?)\}\}$/)[1];
-        wiki = wiki.replace(tmpl, inside);
+        let inside = tmpl.match(/^\{\{nowrap *?\|(.*?)\}\}$/);
+        if (inside) {
+          wiki = wiki.replace(tmpl, inside[1]);
+        }
       }
       if (keep[name] === true) {
         return;
