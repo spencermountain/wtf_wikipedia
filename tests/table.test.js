@@ -195,7 +195,6 @@ test('wikisortable-tables-test', t => {
   let obj = wtf.parse(sortable);
   t.equal(obj.sections[0].tables.length, 1, 'one table');
   let table = obj.sections[0].tables[0];
-  console.log(obj.sections[0]);
   t.equal(table[0]['Alphabetic'].text, 'd', '1,1');
   t.equal(table[0]['Numeric'].text, '20', '1,2');
   t.equal(table[0]['Date'].text, '2008-11-24', '1,3');

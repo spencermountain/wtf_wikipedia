@@ -5,10 +5,10 @@ const parse_infobox = require('./infobox');
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 //dont remove these ones
 const keep = {
-  'main': true,
+  main: true,
   'main article': true,
   'wide image': true,
-  'coord': true
+  coord: true
 };
 
 //reduce the scary recursive situations
@@ -29,7 +29,7 @@ const parse_recursive = function(r, wiki, options) {
       name = name[1].trim().toLowerCase();
       //sorta-keep nowrap template
       if (name === 'nowrap') {
-        let inside = tmpl.match(/^\{\{nowrap\|(.*?)\}\}$/)[1];
+        let inside = tmpl.match(/^\{\{nowrap *?\|(.*?)\}\}$/)[1];
         wiki = wiki.replace(tmpl, inside);
       }
       if (keep[name] === true) {
@@ -38,9 +38,10 @@ const parse_recursive = function(r, wiki, options) {
     }
     //let everybody add a custom parser for this template
     if (options.custom) {
-      Object.keys(options.custom).forEach((k) => {
+      Object.keys(options.custom).forEach(k => {
         let val = options.custom[k](tmpl, wiki);
-        if (val || val === false) { //dont store all the nulls
+        if (val || val === false) {
+          //dont store all the nulls
           r.custom[k] = r.custom[k] || [];
           r.custom[k].push(val);
         }
@@ -52,7 +53,7 @@ const parse_recursive = function(r, wiki, options) {
   });
   // //ok, now that the scary recursion issues are gone, we can trust simple regex methods..
   // //kill the rest of templates
-  wiki = wiki.replace(/\{\{(^(main|wide)).*?\}\}/g, '');
+  wiki = wiki.replace(/\{\{ *?(^(main|wide)).*?\}\}/g, '');
 
   return wiki;
 };

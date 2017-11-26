@@ -21,10 +21,11 @@ const wtf = require('./src/index');
 // from_file("Africaans")
 // from_file('rnli_stations');
 
-// wtf.from_api('Radiohead', 'en', function(markup) {
-//   var obj = wtf.parse(markup);
-//   console.log(obj.infoboxes[0].data);
-// });
+wtf.from_api('Ibn al-Haytham', 'en', function(markup) {
+  console.log(markup);
+  var obj = wtf.parse(markup);
+  // console.log(obj);
+});
 
 // var str = `hello {{myTempl|fun stuff!}} world`;
 // var str = `hello {{main|fun}} world`;
@@ -40,8 +41,7 @@ const wtf = require('./src/index');
 // });
 // console.log(wtf.parse(str));
 
-
-console.log(wtf.parse('blha blah', {
-  page_identifier: 234,
-  lang_or_wikiid: 'de'
-}));
+// console.log(wtf.parse('blha blah', {
+//   page_identifier: 234,
+//   lang_or_wikiid: 'de'
+// }));

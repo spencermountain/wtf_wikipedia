@@ -17,6 +17,7 @@ test('stress-test-en', t => {
     'Alanine—oxo-acid-transaminase',
     'Alexander-Y-Type',
     'Allen-R.-Morris',
+    'al_Haytham',
     'Alsea-(company)',
     'Altimont-Butler',
     'Antique-(band)',
