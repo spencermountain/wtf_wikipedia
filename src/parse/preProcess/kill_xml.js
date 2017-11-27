@@ -1,11 +1,21 @@
+const parseCitation = require('../infobox/citation');
 //okay, i know you're not supposed to regex html, but...
 //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
 
-const kill_xml = function(wiki) {
+const kill_xml = function(wiki, r) {
   //luckily, refs can't be recursive..
-  wiki = wiki.replace(/ ?<ref>[\s\S]{0,750}?<\/ref> ?/gi, ' '); // <ref></ref>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' '); // <ref name=""/>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>[\s\S]{0,500}?<\/ref> ?/gi, ' '); // <ref name=""></ref>
+  // <ref></ref>
+  wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function(a, b) {
+    wiki = parseCitation(b, wiki, r);
+    return ' ';
+  });
+  // <ref name=""/>
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ');
+  // <ref name=""></ref>
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,500}?)<\/ref> ?/gi, function(a, b) {
+    wiki = parseCitation(b, wiki, r);
+    return ' ';
+  });
   //other types of xml that we want to trash completely
 
   wiki = wiki.replace(

@@ -14,7 +14,7 @@
     "postpublish": "node ./scripts/coverage.js",
     "coverage": "node ./scripts/coverage.js",
     "testb": "TESTENV=prod node ./scripts/test.js",
-    "watch": "node ./scripts/watch.js",
+    "watch": "amble ./scratch.js",
     "build": "node ./scripts/build.js"
   },
   "bin": {
@@ -28,6 +28,7 @@
     "superagent": "^3.5.2"
   },
   "devDependencies": {
+    "amble": "0.0.5",
     "babel-cli": "^6.10.1",
     "babel-plugin-transform-object-assign": "^6.8.0",
     "babel-preset-es2015": "6.24.1",

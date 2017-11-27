@@ -28,6 +28,7 @@ const main = function(wiki, options) {
     categories: [],
     images: [],
     coordinates: [],
+    citations: [],
     page_identifier: null,
     lang_or_wikiid: null
   };

@@ -20,26 +20,15 @@ const wtf = require('./src/index');
 // from_file('Redirect')
 // from_file("Africaans")
 // from_file('rnli_stations');
-
-wtf.from_api('Ibn al-Haytham', 'en', function(markup) {
-  console.log(markup);
+//Ibn al-Haytham
+wtf.from_api('Jodie_Emery', 'en', function(markup) {
   var obj = wtf.parse(markup);
-  // console.log(obj);
+  console.log(obj.citations);
 });
 
-// var str = `hello {{myTempl|fun stuff!}} world`;
-// var str = `hello {{main|fun}} world`;
-// var str = `{{myTempl|cool data!}} Whistling is a sport in some countries...`;
-// wtf.custom({
-//   mine: (tmpl) => {
-//     let m = tmpl.match(/^\{\{myTempl\|(.+?)\}\}$/);
-//     if (m) {
-//       return m[1];
-//     }
-//     return null;
-//   }
-// });
-// console.log(wtf.parse(str));
+// var str = `Emery is a vegetarian,<ref>{{cite web|title=The princess of pot|url=http://thewalrus.ca/the-princess-of-pot/}}</ref>`;
+// console.log(wtf.parse(str).citations);
+// console.log(wtf.plaintext(str));
 
 // console.log(wtf.parse('blha blah', {
 //   page_identifier: 234,

@@ -1,6 +1,7 @@
 const i18n = require('../../data/i18n');
-const find_recursive = require('../../lib/recursive_match');
-const parse_infobox = require('./infobox');
+const findRecursive = require('../../lib/recursive_match');
+const parseInfobox = require('./infobox');
+const parseCitation = require('./citation');
 
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 //dont remove these ones
@@ -15,18 +16,29 @@ const keep = {
 const parse_recursive = function(r, wiki, options) {
   //remove {{template {{}} }} recursions
   r.infoboxes = [];
-  let matches = find_recursive('{', '}', wiki).filter(s => s[0] && s[1] && s[0] === '{' && s[1] === '{');
+  let matches = findRecursive('{', '}', wiki).filter(s => s[0] && s[1] && s[0] === '{' && s[1] === '{');
   matches.forEach(function(tmpl) {
     if (tmpl.match(infobox_reg, 'ig')) {
-      let infobox = parse_infobox(tmpl);
+      let infobox = parseInfobox(tmpl);
       r.infoboxes.push(infobox);
       wiki = wiki.replace(tmpl, '');
       return;
     }
     //keep these ones, we'll parse them later
-    let name = tmpl.match(/^\{\{([^:|\n]+)/);
+    let name = tmpl.match(/^\{\{([^:|\n ]+)/);
     if (name !== null) {
       name = name[1].trim().toLowerCase();
+      //
+      if (/^\{\{ ?citation needed/i.test(tmpl) === true) {
+        name = 'citation needed';
+      }
+
+      //parse {{cite web ...}} (it appears every language)
+      if (name === 'cite' || name === 'citation') {
+        wiki = parseCitation(tmpl, wiki, r);
+        return;
+      }
+
       //sorta-keep nowrap template
       if (name === 'nowrap') {
         let inside = tmpl.match(/^\{\{nowrap *?\|(.*?)\}\}$/);

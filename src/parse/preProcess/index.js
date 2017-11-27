@@ -25,7 +25,7 @@ function preProcess(r, wiki) {
   //expand inline templates like {{date}}
   wiki = wordTemplates(wiki, r);
   //give it the inglorious send-off it deserves..
-  wiki = kill_xml(wiki);
+  wiki = kill_xml(wiki, r);
   //({{template}},{{template}}) leaves empty parentheses
   wiki = wiki.replace(/\( \)/g, '');
   return wiki;

@@ -1,7 +1,7 @@
 // const parseCoord = require('./coordinates');
 const regs = {
   main: /\{\{main( article)?\|(.*?)\}\}/i,
-  wide_image: /\{\{wide image\|(.*?)\}\}/i,
+  wide_image: /\{\{wide image\|(.*?)\}\}/i
 };
 
 //just some easy, supported ones
