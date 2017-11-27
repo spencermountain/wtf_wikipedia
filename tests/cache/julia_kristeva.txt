@@ -1,0 +1,190 @@
+{{Infobox philosopher
+| name = Julia Kristeva
+| image=Kristeva IMG 5888.jpg |image_size=
+| caption = Julia Kristeva in Paris, 2008
+| birth_name = Юлия Кръстева
+| birth_date = {{birth date and age|1941|6|24|df=y}}
+| birth_place = [[Sliven]], [[Kingdom of Bulgaria|Bulgaria]]
+| alma_mater  = [[University of Sofia]]
+| residence = France
+| nationality = French{{\}}[[Bulgaria]]n
+| era = [[Contemporary philosophy]]
+| region = [[Western philosophy]]
+| school_tradition = {{ublist |[[Psychoanalysis]] |[[Structuralism]] |[[Poststructuralism]]}}
+| main_interests = {{ublist |[[Philosophy of language]] |{{hlist|[[Semiotics]]|[[Literary criticism]]}} |[[Philosophy and literature|Philosophy of literature]] |{{hlist|[[Psychoanalysis]]}} |[[Feminism in France|Feminism]]}}
+| religion =
+|spouse = [[Philippe Sollers]]
+| influences = {{hlist |[[Mikhail Bakhtin]] |[[Jacques Lacan]] |[[Roland Barthes]] |[[Jacques Derrida]] |[[Lucien Goldmann]] |[[Hannah Arendt]] |[[Georges Bataille]]<ref>Creech, James, [http://www.jstor.org/stable/464723?seq=1#page_scan_tab_contents "Julia Kristeva's Bataille: reading as triumph,"] ''Diacritics'', '''5'''(1), Spring 1975, pp. 62-68.</ref>}}
+| influenced = {{hlist |}}
+| notable_ideas = {{ublist |{{longitem|[[#The "semiotic"|The "semiotic"]] of the pre-[[mirror stage]]}}|Nature of [[abjection]]}}
+| awards = {{ublist |{{longitem|[[Holberg International Memorial Prize]]}}|{{longitem|[[Hannah Arendt Prize|Hannah Arendt Award for Political Thought]]}}|[[The VIZE 97 Prize|VIZE 97 Prize]]}}
+| website = [http://kristeva.fr/ kristeva.fr]
+}}
+{{Psychoanalysis}}
+
+'''Julia Kristeva''' ({{IPA-fr|kʁisteva|lang}}; {{lang-bg|Юлия Кръстева}}; born 24 June 1941) is a  [[Bulgarians|Bulgarian]]-French [[philosopher]], [[literary critic]], [[psychoanalysis|psychoanalyst]], [[French feminist|feminist]], and, most recently, [[novelist]], who has lived in France since the mid-1960s.  She is now a professor emeritus at the  [[University Paris Diderot]]. The author of more than 30 books, including  ''Revolution in Poetic Language'', ''Tales of Love'', ''Black Sun: Depression and Melancholia'', ''Proust and the Sense of Time'', the trilogy ''Female Genius'', she has been awarded Commander of the Legion of Honor, Commander of the Order of Merit, the Holberg Prize, the Hannah Arendt Prize, and the Vaclav Havel Prize.
+
+Kristeva became influential in international critical analysis, [[cultural studies]] and [[feminism]] after publishing her first book, ''Semeiotikè'', in 1969. Her sizeable body of work includes books and essays which address [[intertextuality]], the [[semiotic]], and [[abjection]], in the fields of [[linguistics]], literary theory and criticism, [[psychoanalysis]], biography and autobiography, political and cultural analysis, art and art history. She is prominent in [[structuralism|structuralist]] and [[poststructuralist]] thought.
+
+Kristeva is also the founder of the [[Simone de Beauvoir Prize]] committee.<ref>[http://www.campaign4equality.info/english/spip.php?article440 Simone de Beauvoir Prize 2009 goes to the One Million Signatures Campaign in Iran], Change for Equality</ref>
+
+==Life==
+Born in [[Sliven]], [[Kingdom of Bulgaria|Bulgaria]] to Christian parents, Kristeva is the daughter of a church accountant. Kristeva and her sister attended a Francophone school run by [[Dominican Republic|Dominican]] nuns. Kristeva became acquainted with the work of [[Mikhail Bakhtin]] at this time in Bulgaria. Kristeva went on to study at the [[University of Sofia]], and while a postgraduate there obtained a research fellowship that enabled her to move to France in December 1965, when she was 24.<ref name="ChapmanRoutledge">Siobhan Chapman, Christopher Routledge, ''Key thinkers in linguistics and the philosophy of language'', Oxford University Press US, 2005, {{ISBN|0-19-518767-9}}, [https://books.google.com/books?id=VfrRiCQr4NAC&pg=PA166&lpg=PA166&source=bl&ots=mWY_IOLbHB&sig=rw5ohdVUBP3wlYz1OFa6Lhv5syk&hl=en&ei=HS4QSufhLpWZjAe-6uipBg&sa=X&oi=book_result&ct=result&resnum=7#PPA166,M1 Google Print, p. 166]</ref> She continued her education at several French universities, studying under [[Lucien Goldmann]] and [[Roland Barthes]], among other scholars.<ref>Nilo Kauppi, ''Radicalism in French Culture: A Sociology of French Theory in the 1960s'', Burlington, VT, 2010, p. 25.</ref><ref name="Schrift">{{cite book |last=Schrift |first=Alan D. |editor= |others= |title=Twentieth-century French Philosophy: Key Themes and Thinkers |airdate= |origyear= |month= |url= |edition= |series= |year=2006 |publisher=Blackwell Publishing |isbn=1-4051-3217-5 |pages=147}}</ref> On August 2, 1967, Kristeva married the novelist [[Philippe Sollers]],<ref>Benoît Peeters, ''Derrida: A Biography,'' Cambridge: Polity Press, 2013, pp. 176-77.</ref> ''né'' Philippe Joyaux.
+
+Kristeva taught at [[Columbia University]] in the early 1970s, and remains a Visiting Professor.<ref>Riding, Alan, [https://www.nytimes.com/2001/07/14/arts/correcting-her-idea-of-politically-correct.html?pagewanted=all Correcting Her Idea of Politically Correct]. New York Times. 14 June 2001.</ref>  She has also published under the married name Julia Joyaux.<ref name=locauth>{{citation|url=http://id.loc.gov/authorities/names/n50045983.html|title=Library of Congress authority record for Julia Kristeva|publisher=[[Library of Congress]]}}</ref><ref>{{citation|url=http://data.bnf.fr/11910116/julia_kristeva/|title=BNF data page|publisher=[[Bibliothèque nationale de France]]}}</ref><ref>{{citation|url=http://hvolat.netai.net/Kristeva/kristlan.htm|title=Julia Kristeva: A Bibliography|author=Hélène Volat}} (bibliography page for ''Le Langage, cet inconnu'' (1969), published under the name Julia Joyaux).</ref>
+
+==Work==
+After joining the '[[Tel Quel]] group' founded by Sollers, Kristeva  focused on the politics of language and became an active member of the group. She trained in psychoanalysis, and earned her degree in 1979. In some ways, her work can be seen as trying to adapt a [[psychoanalytic]] approach to the [[poststructuralist]] criticism. For example, her view of the [[Subject (philosophy)|subject]], and its construction, shares similarities with [[Sigmund Freud]] and [[Lacan]].  However, Kristeva rejects any understanding of the subject in a structuralist sense; instead, she favors a subject always "[[Process philosophy|in process]]" or "on trial".<ref>{{cite book|last=McAfee|first=Noêlle|title=Julia Kristeva|year=2004|publisher=Routledge|location=London|isbn=0-203-63434-9|page=38|url=https://books.google.com/books?id=1F4oOL1PACMC&pg=PA38&lpg=PA38&dq=sujet+en+proces+on+trial&source=bl&ots=Pznawz_E9-&sig=mpwA6v1rhMKk3izt3ph5SdArfgk&hl=en&sa=X&ei=S9aMUfS3EcqH0AW7qoDYBQ&ved=0CDwQ6AEwAg#v=onepage&q=sujet%20en%20proces%20on%20trial&f=false}}</ref>  In this way, she contributes to the poststructuralist critique of essentialized structures, whilst preserving the teachings of psychoanalysis. She travelled to China in the 1970s and later wrote ''[[About Chinese Women]]'' (1977).<ref>[http://ms.cc.sunysb.edu/~hvolat/kristeva/krist01.htm State University of New York at Stony Brook]</ref><ref>[http://www.tate.org.uk/context-comment/video/julia-kristeva-on-genie-feminine-and-art Tate Britain Online Event: Julia Kristeva]</ref><ref>[http://www.pileface.com/sollers/article.php3?id_article=49 Who's who in ''Les samouraïs'' by [[Kathleen O'Grady]]]</ref><ref>[http://www.lacan.com/perfume/kristeva.htm An Interview with Josefina Ayerza - Flash Art Magazine]</ref><ref>[http://books.guardian.co.uk/departments/generalfiction/story/0,,1730440,00.html Guardian article: March 14, 2006]</ref><ref>[http://www.kristeva.fr Julia Kristeva - site officiel]</ref>
+
+===The "semiotic" and the "symbolic"===<!--Linked from infobox above-->
+One of Kristeva's most important contributions is that signification is composed of two elements, the symbolic and the ''semiotic'', the latter being distinct from the discipline of [[semiotics]] founded by [[Ferdinand de Saussure]]. As explained by Augustine Perumalil, Kristeva's "semiotic is closely related to the infantile [[pre-Oedipal]] referred to in the works of Freud, [[Otto Rank]], [[Melanie Klein]], British [[Object Relation]] psychoanalysis, and Lacan's pre-[[mirror stage]]. It is an emotional field, tied to the [[instincts]], which dwells in the fissures and [[prosody (linguistics)|prosody]] of language rather than in the [[Denotation (Semiotics)|denotative meanings]] of words."<ref>{{cite book|last=Perumalil|first=Augustine|title=The History of Women in Philosophy}}</ref> Furthermore, according to Birgit Schippers, the semiotic is a realm associated with the musical, the poetic, the rhythmic, and that which lacks structure and meaning. It is closely tied to the "feminine", and represents the undifferentiated state of the pre-Mirror Stage infant.<ref>{{cite book|last=Schippers|first=Birgit|title=Julia Kristeva and Feminist Thought|date=2011}}</ref>
+
+Upon entering the Mirror Stage, the child learns to distinguish between self and other, and enters the realm of shared cultural meaning, known as [[The Symbolic|the symbolic]]. In ''Desire in Language'' (1980), Kristeva describes the symbolic as the space in which the development of language allows the child to become a "speaking subject," and to develop a sense of identity separate from the mother. This process of separation is known as abjection, whereby the child must reject and move away from the mother in order to enter into the world of language, culture, meaning, and the social. This realm of language is called the symbolic and is contrasted with the semiotic in that it is associated with the masculine, the law, and structure. Kristeva departs from Lacan in the idea that even after entering the symbolic, the subject continues to oscillate between the semiotic and the symbolic. Therefore, rather than arriving at a fixed identity, the subject is permanently "in process". Because female children continue to identify to some degree with the mother figure, they are especially likely to retain a close connection to the semiotic. This continued identification with the mother may result in what Kristeva refers to in ''[[Black Sun (Kristeva book)|Black Sun]]'' (1989) as [[melancholia]] ([[Major depressive disorder|depression]]), given that female children simultaneously reject and identify with the mother figure.
+
+It has also been suggested (e.g., Creed, 1993) that the degradation of women and women's bodies in popular culture (and particularly, for example, in [[slasher film]]s) emerges because of the threat to identity that the mother's body poses: it is a reminder of time spent in the undifferentiated state of the semiotic, where one has no concept of self or identity. After abjecting the mother, subjects retain an [[Unconscious mind|unconscious]] fascination with the semiotic, desiring to reunite with the mother, while at the same time fearing the loss of identity that accompanies it. [[Misogyny in horror films|Slasher films]] thus provide a way for audience members to safely reenact the process of abjection by vicariously expelling and destroying the mother figure.
+
+Kristeva is also known for her adoption of [[Plato]]’s idea of the ''[[Khôra|chora]]'', meaning "a nourishing maternal space" (Schippers, 2011). Kristeva’s idea of the ''chora'' has been interpreted in several ways: as a reference to the uterus, as a metaphor for the relationship between the mother and child, and as the temporal period preceding the Mirror Stage. In her essay ''Motherhood According to [[Giovanni Bellini]]'' from ''Desire in Language'' (1980), Kristeva refers to the ''chora'' as a "non-expressive totality formed by drives and their stases in a motility that is full of movement as it is regulated." She goes on to suggest that it is the mother's body that mediates between the ''chora'' and the symbolic realm: the mother has access to culture and meaning, yet also forms a totalizing bond with the child.
+
+Kristeva is also noted for her work on the concept of [[intertextuality]].
+
+===Anthropology and psychology===<!--This is a great example of how 'Theory' can be explained clearly, and with reference to the theoreticians' work-->
+Kristeva argues that [[anthropology]] and [[psychology]], or the connection between the social and the subject, do not represent each other, but rather follow the same logic: the survival of the group and the subject. Furthermore, in her analysis of [[Oedipus]], she claims that the speaking subject cannot exist on his/her own, but that he/she "stands on the fragile threshold as if stranded on account of an impossible demarcation" (''[[Powers of Horror]]'', p.&nbsp;85).
+
+In her comparison between the two disciplines, Kristeva claims that the way in which an individual excludes the abject mother as a means of forming an identity, is the same way in which societies are constructed. On a broader scale, cultures exclude the maternal and the feminine, and by this come into being.{{clarify|date=April 2012}}
+
+==Feminist==
+Kristeva has been regarded as a key proponent of [[French feminism]] together with [[Simone de Beauvoir]], [[Hélène Cixous]], and [[Luce Irigaray]].<ref>Vanda Zajko and Miriam Leonard (eds.), ''Laughing with Medusa''. Oxford University Press, 2006. {{ISBN|0-19-927438-X}}</ref><ref>[[Griselda Pollock]], ''Inscriptions in the feminine''. In: ''Inside the Visible'' edited by Catherine de Zegher. MIT Press, 1996.</ref> Kristeva has had a remarkable influence on feminism and feminist literary studies<ref>''Parallax, n. 8'', [Vol. 4(3)], 1998.</ref><ref>Humm, Maggie, ''Modernist Women and Visual Cultures''. Rutgers University Press, 2003. {{ISBN|0-8135-3266-3}}</ref> in the US and the UK, as well as on readings into contemporary art<ref>[[Griselda Pollock]], ''Encounters in the Virtual Feminist Museum''. Routledge, 2007.</ref><ref>Humm, Maggie, ''Feminism and Film''. Indiana University press, 1997. {{ISBN|0-253-33334-2}}</ref> although her relation to feminist circles and movements in France has been quite controversial. Kristeva made a famous disambiguation of three types of feminism in "Women's Time" in ''New Maladies of the Soul'' (1993); while rejecting the first two types, including that of Beauvoir, her stands are sometimes considered rejecting feminism altogether. Kristeva proposed the idea of multiple sexual identities against the joined code {{clarify|date=April 2012}} of "unified feminine language".
+
+===Denunciation of identity politics===
+Kristeva argues her writings have been misunderstood by American feminist academics. In Kristeva's view, it was not enough simply to dissect the structure of language in order to find its hidden meaning. Language should also be viewed through the prisms of history and of individual psychic and sexual experiences. This [[Post-structuralism|post-structuralist]] approach enabled specific social groups to trace the source of their oppression to the very language they used. However, Kristeva believes that it is harmful to posit collective identity above individual identity, and that this political assertion of sexual, ethnic, and religious identities is ultimately [[Totalitarianism|totalitarian]].<ref>Riding, Alan, [https://www.nytimes.com/2001/07/14/arts/correcting-her-idea-of-politically-correct.html?pagewanted=all Correcting Her Idea of Politically Correct]. ''New York Times''. June 14, 2001</ref>
+
+==Novelist==
+Kristeva wrote a number of novels that resemble detective stories. While the books maintain narrative suspense and develop a stylized surface, her readers also encounter ideas intrinsic to her theoretical projects.  Her characters reveal themselves mainly through psychological devices, making her type of fiction mostly resemble the later work of [[Fyodor Dostoevsky|Dostoevsky]].  Her fictional oeuvre, which includes ''The Old Man and the Wolves'', ''Murder in Byzantium'', and ''Possessions'', while often allegorical, also approaches the autobiographical in some passages, especially with one of the protagonists of ''Possessions'', Stephanie Delacour—a French journalist—who can be seen as Kristeva's alter ego. ''Murder in Byzantium'' deals with themes from orthodox Christianity and politics; she referred to it as "a kind of anti-[[The Da Vinci Code|Da Vinci Code]]".<ref name=sutherland>{{cite news|url=https://www.theguardian.com/ideas/story/0,,1730437,00.html|title= The ideas interview: Julia Kristeva; Why is a great critic ashamed of being fashionable?|first=John|last=Sutherland|newspaper=[[The Guardian]]|date=14 March 2006|accessdate=23 November 2014}}</ref>
+
+==Honors==
+For her "innovative explorations of questions on the intersection of language, culture and literature", Kristeva was awarded the [[Holberg International Memorial Prize]] in 2004. She won the 2006 [[Hannah Arendt Prize]] for Political Thought.  She has also been awarded Commander of the Legion of Honor, Commander of the Order of Merit, and the Vaclav Havel Prize.<ref>http://www.holbergprisen.no/en/julia-kristeva/french-order</ref>
+
+==Scholarly reception==
+[[Roman Jakobson]] said that "Both readers and listeners, whether agreeing or in stubborn disagreement with Julia Kristeva, feel indeed attracted to her contagious voice and to her genuine gift of questioning generally adopted 'axioms,' and her contrary gift of releasing various 'damned questions' from their traditional question marks."<ref>''Desire in Language: A Semiotic Approach to Literature and Art'', Columbia University Press, 1980 (In Preface)</ref>
+
+[[Roland Barthes]] comments that "Julia Kristeva changes the place of things: she always destroys the last prejudice, the one you thought you could be reassured by, could be take &#91;sic&#93; pride in; what she displaces is the already-said, the déja-dit, i.e., the instance of the signified, i.e., stupidity; what she subverts is authority -the authority of monologic science, of filiation."<ref>Roland Barthes, ''The Rustle of language'', p 168</ref>
+
+[[Ian Almond]] criticizes Kristeva's ethnocentrism. He cites [[Gayatri Spivak]]'s conclusion that Kristeva's book ''About Chinese Women'' "belongs to that very eighteenth century [that] Kristeva scorns" after pinpointing "the brief, expansive, often completely ungrounded way in which she writes about  two thousand years of a culture she is unfamiliar with".<ref>Ian Almond, ''The New Orientalists: Postmodern Representations of Islam from Foucault to Baudrillard'', I.B.Tauris, 2007, p. 132</ref> Almond notes the absence of sophistication in Kristeva's remarks concerning the Muslim world and the dismissive terminology she uses to describe its culture and believers.<ref>Ian Almond, ''The New Orientalists: Postmodern Representations of Islam from Foucault to Baudrillard'', I.B.Tauris, 2007</ref> He criticizes Kristeva's opposition which juxtaposes "Islamic societies" against "democracies where life is still fairly  pleasant" by pointing out that Kristeva displays no awareness of the complex and nuanced debate ongoing among women theorists in the Muslim world, and that she does not refer to anything other than the Rushdie fatwa in dismissing the entire Muslim faith as "reactionary and persecutory".<ref>Ian Almond, ''The New Orientalists: Postmodern Representations of Islam from Foucault to Baudrillard'', I.B.Tauris, 2007, pp. 154–55</ref>
+
+In ''[[Intellectual Impostures]]'' (1997), physics professors [[Alan Sokal]] and [[Jean Bricmont]] devote a chapter to Kristeva's use of mathematics in her writings. They argue that Kristeva fails to show the relevance of the mathematical concepts she discusses to linguistics and the other fields she studies, and that no such relevance exists.<ref>[[Alan Sokal]] and [[Jean Bricmont]], ''Intellectual Impostures'', Profile Books, 1998, p. 47</ref>
+
+==Selected writings==
+*''Séméiôtiké: recherches pour une sémanalyse,'' Paris: Edition du Seuil, 1969. (English translation: ''Desire in Language: A Semiotic Approach to Literature and Art,'' Oxford: Blackwell, 1980.)
+*''La Révolution Du Langage Poétique: L'avant-Garde À La Fin Du Xixe Siècle, Lautréamont Et Mallarmé.'' Paris: Éditions du Seuil, 1974. (Abridged English translation: ''[[Revolution in Poetic Language]],'' New York: Columbia University Press, 1984.)
+*''About Chinese Women.'' London: Boyars, 1977.
+*''[[Powers of Horror| Powers of Horror: An Essay on Abjection.]]'' New York: Columbia University Press, 1982.
+*''The Kristeva Reader.'' (ed. Toril Moi) Oxford: Basil Blackwell, 1986.
+*''In the Beginning Was Love: Psychoanalysis and Faith.'' New York: Columbia University Press, 1987.
+*''Black Sun: Depression and Melancholia.'' New York: Columbia University Press, 1989.
+*''Strangers to Ourselves.'' New York: Columbia University Press,1991.
+*''Nations without Nationalism''. New York: Columbia University Press, 1993.
+*''New Maladies of the Soul.'' New York: Columbia University Press, 1995.
+* "Experiencing the Phallus as Extraneous." ''parallax'' issue 8, 1998.
+*''Crisis of the European Subject.'' New York: Other Press, 2000.
+*Reading the Bible. In: David Jobling, Tina Pippin & Ronald Schleifer (eds). ''The Postmodern Bible Reader.'' (pp.&nbsp;92–101). Oxford: Blackwell, 2001.
+*''Female Genius: Life, Madness, Words: Hannah Arendt, Melanie Klein, Colette: A Trilogy.'' 3 vols. New York: Columbia University Press, 2001.
+*''Hannah Arendt: Life is a Narrative.''  Toronto: [[University of Toronto Press]], 2001.
+*''Hatred and Forgiveness.'' New York: Columbia University Press, 2010.
+*''The Severed Head: Capital Visions.'' New York: Columbia University Press, 2011.
+*''Marriage as a Fine Art'' (with [[Philippe Sollers]]). New York: Columbia University Press, 2016.
+
+'''Other books on Julia Kristeva:'''
+* Irene Ivantcheva-Merjanska,  ''Ecrire dans la langue de l'autre. Assia Djebar et Julia Kristeva''. Paris: L'Harmattan, 2015.
+* Jennifer Radden, ''The Nature of Melancholy: From Aristotle to Kristeva'', Oxford University Press, 2000.
+* Megan Becker-Leckrone, ''Julia Kristeva And Literary Theory'', Palgrave Macmillan, 2005.
+* Sara Beardsworth, ''Julia Kristeva, Psychoanalysis and Modernity'', Suny Press, 2004. (2006 Goethe Award Psychoanalytic Scholarship, finalist for the best book published in 2004.)
+* Kelly Ives, ''Julia Kristeva: Art, Love, Melancholy, Philosophy, Semiotics and Psychoanalysis'', Crescent Moon Publishing Édition, 2010.
+* [[Kelly Oliver]], ''Ethics, Politics, and Difference in Julia Kristeva's Writing'', Routledge Édition, 1993.
+* Kelly Oliver, ''Reading Kristeva: Unraveling the Double-bind'', Indiana University Press, 1993.
+* John Lechte, Maria Margaroni, ''Julia Kristeva: Live Theory '', Continuum International Publishing Group Ltd, 2005.
+* Noëlle McAfee, ''Julia Kristeva'', Routledge, 2003.
+* Griselda Pollock (Guest Editor) ''Julia Kristeva 1966-1996'', ''Parallax'' Issue 8, 1998.
+* Anna Smith, ''Julia Kristeva: Readings of Exile and Estrangement'', Palgrave Macmillan, 1996.
+* David Crownfield, ''Body/Text in Julia Kristeva: Religion, Women, and Psychoanalysis'', State University of New York Press, 1992.
+
+===Novels===
+*''The Samurai: A Novel.'' New York: Columbia University Press, 1992.
+*''The Old Man and the Wolves.'' New York: Columbia University Press, 1994.
+*''Possessions: A Novel.'' New York: Columbia University Press, 1998.
+*''Murder in Byzantium.'' New York: Columbia University Press, 2006.
+*''Teresa, My Love: An Imagined Life of the Saint of Avila.'' New York: Columbia University Press, 2015.
+
+==See also==
+{{Columns-list||
+*[[Capacity to be alone]]
+*''[[Écriture féminine]]''
+*[[Khôra]]
+*[[List of thinkers influenced by deconstruction]]
+}}
+
+==Notes==
+{{Reflist}}
+
+==External links==
+{{wikiquote}}
+* {{Official|http://kristeva.fr/}}
+* [http://www.holbergprisen.no/julia-kristeva/holbergprisens-symposium-2004-julia-kristeva.html Holberg Prize]
+* [http://www.exberliner.com/articles/%22one-needs-to-believe%2C-but-what%27s-more-important-is-to-question-what-we-believe%22/index.html Interview with Julia Kristeva in Exberliner Magazine]
+* [http://hvolat.netai.net/Kristeva/kristeva.htm Julia Kristeva: A Bibliography] by Hélène Volat
+* Goodnow, Katherine J.(2015). ''[http://www.berghahnbooks.com/title.php?rowtag=GoodnowKristeva Kristeva in Focus: From Theory to Film Analysis]'' [[Berghahn Books]].
+
+{{Feminist theory}}
+{{The VIZE 97 Prize}}
+
+{{Authority control}}
+
+{{DEFAULTSORT:Kristeva, Julia}}
+[[Category:1941 births]]
+[[Category:Living people]]
+[[Category:20th-century French philosophers]]
+[[Category:21st-century French philosophers]]
+[[Category:21st-century French writers]]
+[[Category:20th-century Bulgarian women writers]]
+[[Category:20th-century Bulgarian writers]]
+[[Category:21st-century Bulgarian women writers]]
+[[Category:21st-century Bulgarian writers]]
+[[Category:20th-century French women writers]]
+[[Category:20th-century French writers]]
+[[Category:21st-century French women writers]]
+[[Category:People from Sliven]]
+[[Category:University of Paris faculty]]
+[[Category:Bulgarian emigrants to France]]
+[[Category:Bulgarian literary critics]]
+[[Category:Bulgarian literary theorists]]
+[[Category:Bulgarian communists]]
+[[Category:Bulgarian novelists]]
+[[Category:Bulgarian philosophers]]
+[[Category:Bulgarian women writers]]
+[[Category:French literary critics]]
+[[Category:French literary theorists]]
+[[Category:French Maoists]]
+[[Category:French psychoanalysts]]
+[[Category:French women novelists]]
+[[Category:French feminists]]
+[[Category:Bulgarian feminists]]
+[[Category:Poststructuralists]]
+[[Category:French semioticians]]
+[[Category:Bulgarian semioticians]]
+[[Category:Feminist theorists]]
+[[Category:Feminist writers]]
+[[Category:Philosophers of sexuality]]
+[[Category:Postmodern feminists]]
+[[Category:Psychoanalytic theory]]
+[[Category:Women and psychology]]
+[[Category:Continental philosophers]]
+[[Category:French women philosophers]]
+[[Category:Women sociologists]]
+[[Category:Officiers of the Légion d'honneur]]
+[[Category:Commandeurs of the Ordre national du Mérite]]
+[[Category:Holberg Prize laureates]]
+[[Category:Columbia University faculty]]
+[[Category:Bulgarian writers]]
+[[Category:French philosophers]]
+[[Category:Women critics]]
+[[Category:Bulgarian women philosophers]]
+[[Category:Communist women writers]]

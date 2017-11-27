@@ -11,7 +11,7 @@ function from_file(page) {
 }
 // from_file('list');
 // from_file("earthquakes");
-from_file('al_Haytham');
+// from_file('al_Haytham');
 // from_file('redirect');
 // from_file('Toronto');
 // from_file('royal_cinema');
@@ -22,13 +22,13 @@ from_file('al_Haytham');
 // from_file("Africaans")
 // from_file('rnli_stations');
 //Ibn al-Haytham
-// wtf.from_api('bluejays', 'en', function(markup) {
+// wtf.from_api('Julia Kristeva', 'en', function(markup) {
 //   var obj = wtf.parse(markup);
 //   console.log(obj.citations);
 // });
 
-// var str = `Emery is a vegetarian,<ref>{{cite web|title=The princess of pot|url=http://thewalrus.ca/the-princess-of-pot/}}</ref>`;
-// console.log(wtf.parse(str).citations);
+var str = `in 1826.<ref name="brake">Brake (2009)</ref>  `;
+console.log(wtf.parse(str).citations);
 // console.log(wtf.plaintext(str));
 
 // console.log(wtf.parse('blha blah', {

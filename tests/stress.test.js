@@ -77,9 +77,25 @@ test('stress-test-en', t => {
     'rnli_stations',
     'royal_cinema',
     'statoil',
+    'julia_kristeva',
     'toronto',
     'toronto_star'
   ];
+  var noCitation = {
+    list: true,
+    africaans: true,
+    'Sara-C.-Bisel': true,
+    'Runtime-Callable-Wrapper': true,
+    'Remote-Application-Programming-Interface': true,
+    'Remote-Data-Services': true,
+    'Neil-McLean-(saxophonist)': true,
+    'Magnar-Sætre': true,
+    'Liste-der-argentinischen-Botschafter-in-Chile': true,
+    Keilwelle: true,
+    'HMS-Irresistible': true,
+    'Ewelina-Setowska-Dryk': true,
+    'Alexander-Y-Type': true
+  };
   arr.forEach(title => {
     var markup = fetch(title);
     var doc = wtf.parse(markup);
@@ -94,8 +110,11 @@ test('stress-test-en', t => {
     t.ok(intro.sentences.length > 0, ' - - sentences-length');
     t.ok(intro.sentences[0].text.length > 0, ' - - intro-text');
     t.ok(intro.sentences[0].text.match(/[a-z]/), ' - - intro-has words');
-    // t.ok(doc.citations.length > 0, ' has a citation');
-
+    if (noCitation[title] === true) {
+      t.ok(doc.citations.length === 0, title + ' has no citation');
+    } else {
+      t.ok(doc.citations.length > 0, title + ' has a citation');
+    }
     var plain = wtf.plaintext(markup);
     t.ok(plain.length > 40, ' - - plaintext-length');
     t.ok(plain.match(/[a-z]/), ' - - plaintext-has words');

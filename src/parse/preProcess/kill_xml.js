@@ -1,19 +1,47 @@
 const parseCitation = require('../infobox/citation');
+const parseLine = require('../section/sentence/line');
 //okay, i know you're not supposed to regex html, but...
 //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
+
+const hasCitation = function(str) {
+  return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false;
+};
+//handle unstructured ones - <ref>some text</ref>
+const parseInline = function(str, r) {
+  let obj = parseLine(str) || {};
+  let cite = {
+    cite: 'inline',
+    text: obj.text
+  };
+  if (obj.links && obj.links.length) {
+    let extern = obj.links.find(f => f.site);
+    if (extern) {
+      cite.url = extern.site;
+    }
+  }
+  r.citations.push(cite);
+};
 
 const kill_xml = function(wiki, r) {
   //luckily, refs can't be recursive..
   // <ref></ref>
-  wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function(a, b) {
-    wiki = parseCitation(b, wiki, r);
+  wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function(a, tmpl) {
+    if (hasCitation(tmpl)) {
+      wiki = parseCitation(tmpl, wiki, r);
+    } else {
+      parseInline(tmpl, r);
+    }
     return ' ';
   });
   // <ref name=""/>
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ');
   // <ref name=""></ref>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,500}?)<\/ref> ?/gi, function(a, b) {
-    wiki = parseCitation(b, wiki, r);
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,500}?)<\/ref> ?/gi, function(a, tmpl) {
+    if (hasCitation(tmpl)) {
+      wiki = parseCitation(tmpl, wiki, r);
+    } else {
+      parseInline(tmpl, r);
+    }
     return ' ';
   });
   //other types of xml that we want to trash completely
