@@ -1,4 +1,4 @@
-/* wtf_wikipedia v2.3.0
+/* wtf_wikipedia v2.4.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -3714,7 +3714,7 @@ exports.cleanHeader = function(header, shouldStripCookie){
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -6628,21 +6628,52 @@ module.exports = preProcess;
 'use strict';
 
 var parseCitation = _dereq_('../infobox/citation');
+var parseLine = _dereq_('../section/sentence/line');
 //okay, i know you're not supposed to regex html, but...
 //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
+
+var hasCitation = function hasCitation(str) {
+  return (/^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false
+  );
+};
+//handle unstructured ones - <ref>some text</ref>
+var parseInline = function parseInline(str, r) {
+  var obj = parseLine(str) || {};
+  var cite = {
+    cite: 'inline',
+    text: obj.text
+  };
+  if (obj.links && obj.links.length) {
+    var extern = obj.links.find(function (f) {
+      return f.site;
+    });
+    if (extern) {
+      cite.url = extern.site;
+    }
+  }
+  r.citations.push(cite);
+};
 
 var kill_xml = function kill_xml(wiki, r) {
   //luckily, refs can't be recursive..
   // <ref></ref>
-  wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function (a, b) {
-    wiki = parseCitation(b, wiki, r);
+  wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function (a, tmpl) {
+    if (hasCitation(tmpl)) {
+      wiki = parseCitation(tmpl, wiki, r);
+    } else {
+      parseInline(tmpl, r);
+    }
     return ' ';
   });
   // <ref name=""/>
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ');
   // <ref name=""></ref>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,500}?)<\/ref> ?/gi, function (a, b) {
-    wiki = parseCitation(b, wiki, r);
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,500}?)<\/ref> ?/gi, function (a, tmpl) {
+    if (hasCitation(tmpl)) {
+      wiki = parseCitation(tmpl, wiki, r);
+    } else {
+      parseInline(tmpl, r);
+    }
     return ' ';
   });
   //other types of xml that we want to trash completely
@@ -6670,7 +6701,7 @@ var kill_xml = function kill_xml(wiki, r) {
 // console.log(kill_xml("North America,<br /> and one of"))
 module.exports = kill_xml;
 
-},{"../infobox/citation":21}],30:[function(_dereq_,module,exports){
+},{"../infobox/citation":21,"../section/sentence/line":36}],30:[function(_dereq_,module,exports){
 'use strict';
 
 var languages = _dereq_('../../data/languages');

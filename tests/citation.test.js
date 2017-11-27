@@ -38,6 +38,14 @@ test('inline-test', t => {
   t.end();
 });
 
+test('inline-test2', t => {
+  var str = `in 1826.<ref name="brake">Brake (2009)</ref>  `;
+  var arr = wtf.parse(str).citations;
+  t.equal(1, arr.length, 'found-inline-citations');
+  t.equal('Brake (2009)', arr[0].text, 'inline-text');
+  t.end();
+});
+
 test('inline harder-citation', t => {
   var str = `<ref name="ChapmanRoutledge">Siobhan Chapman, {{ISBN|0-19-518767-9}}, [https://books.google.com/books?id=Vfr Google Print, p. 166]</ref> She continued her education after.`;
   var arr = wtf.parse(str).citations;
