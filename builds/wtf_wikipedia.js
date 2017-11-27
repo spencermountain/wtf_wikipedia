@@ -1,4 +1,4 @@
-/* wtf_wikipedia v2.2.1
+/* wtf_wikipedia v2.3.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -3714,7 +3714,7 @@ exports.cleanHeader = function(header, shouldStripCookie){
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -3727,29 +3727,21 @@ module.exports={
     "postpublish": "node ./scripts/coverage.js",
     "coverage": "node ./scripts/coverage.js",
     "testb": "TESTENV=prod node ./scripts/test.js",
-    "watch": "node ./scripts/watch.js",
+    "watch": "amble ./scratch.js",
     "build": "node ./scripts/build.js"
   },
   "bin": {
     "wikipedia": "./bin/parse.js",
     "wikipedia_plaintext": "./bin/plaintext.js"
   },
-  "files": [
-    "builds",
-    "src",
-    "bin"
-  ],
-  "keywords": [
-    "wikipedia",
-    "wikimedia",
-    "wikipedia markup",
-    "wikiscript"
-  ],
+  "files": ["builds", "src", "bin"],
+  "keywords": ["wikipedia", "wikimedia", "wikipedia markup", "wikiscript"],
   "dependencies": {
     "jshashes": "^1.0.6",
     "superagent": "^3.5.2"
   },
   "devDependencies": {
+    "amble": "0.0.5",
     "babel-cli": "^6.10.1",
     "babel-plugin-transform-object-assign": "^6.8.0",
     "babel-preset-es2015": "6.24.1",
@@ -6044,7 +6036,7 @@ module.exports = fetch;
 //   console.log(JSON.stringify(r, null, 2));
 // });
 
-},{"../data/site_map":13,"../parse/page/redirects":24,"superagent":3}],17:[function(_dereq_,module,exports){
+},{"../data/site_map":13,"../parse/page/redirects":25,"superagent":3}],17:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = {
@@ -6178,6 +6170,7 @@ var main = function main(wiki, options) {
     categories: [],
     images: [],
     coordinates: [],
+    citations: [],
     page_identifier: null,
     lang_or_wikiid: null
   };
@@ -6206,44 +6199,96 @@ var main = function main(wiki, options) {
 
 module.exports = main;
 
-},{"./categories":19,"./infobox":21,"./page/disambig":23,"./page/redirects":24,"./postProcess":25,"./preProcess":27,"./section":33}],21:[function(_dereq_,module,exports){
+},{"./categories":19,"./infobox":22,"./page/disambig":24,"./page/redirects":25,"./postProcess":26,"./preProcess":28,"./section":34}],21:[function(_dereq_,module,exports){
+'use strict';
+
+//
+var parseCitation = function parseCitation(str, wiki, r) {
+  //remove it from main
+  wiki = wiki.replace(str, '');
+  //trim start {{ and
+  //trim end }}
+  str = str.replace(/^\{\{ *?/, '');
+  str = str.replace(/ *?\}\} *?$/, '');
+  //start parsing citation into json
+  var obj = {};
+  var lines = str.split(/\|/g);
+  //first line is 'cite web'
+  var type = lines[0].match(/cite ([a-z_]+)/i) || [];
+  if (type[1]) {
+    obj.cite = type[1] || null;
+  }
+  for (var i = 1; i < lines.length; i += 1) {
+    var arr = lines[i].split(/=/);
+    var key = arr[0].trim();
+    var val = arr.slice(1, arr.length).join('=').trim();
+    if (key && val) {
+      //turn numbers into numbers
+      if (/^[0-9.]+$/.test(val)) {
+        val = parseFloat(val);
+      }
+      obj[key] = val;
+    }
+  }
+  if (Object.keys(obj).length > 0) {
+    r.citations.push(obj);
+  }
+  return wiki;
+};
+module.exports = parseCitation;
+
+},{}],22:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
-var find_recursive = _dereq_('../../lib/recursive_match');
-var parse_infobox = _dereq_('./infobox');
+var findRecursive = _dereq_('../../lib/recursive_match');
+var parseInfobox = _dereq_('./infobox');
+var parseCitation = _dereq_('./citation');
 
 var infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 //dont remove these ones
 var keep = {
-  'main': true,
+  main: true,
   'main article': true,
   'wide image': true,
-  'coord': true
+  coord: true
 };
 
 //reduce the scary recursive situations
 var parse_recursive = function parse_recursive(r, wiki, options) {
   //remove {{template {{}} }} recursions
   r.infoboxes = [];
-  var matches = find_recursive('{', '}', wiki).filter(function (s) {
+  var matches = findRecursive('{', '}', wiki).filter(function (s) {
     return s[0] && s[1] && s[0] === '{' && s[1] === '{';
   });
   matches.forEach(function (tmpl) {
     if (tmpl.match(infobox_reg, 'ig')) {
-      var infobox = parse_infobox(tmpl);
+      var infobox = parseInfobox(tmpl);
       r.infoboxes.push(infobox);
       wiki = wiki.replace(tmpl, '');
       return;
     }
     //keep these ones, we'll parse them later
-    var name = tmpl.match(/^\{\{([^:|\n]+)/);
+    var name = tmpl.match(/^\{\{([^:|\n ]+)/);
     if (name !== null) {
       name = name[1].trim().toLowerCase();
+      //
+      if (/^\{\{ ?citation needed/i.test(tmpl) === true) {
+        name = 'citation needed';
+      }
+
+      //parse {{cite web ...}} (it appears every language)
+      if (name === 'cite' || name === 'citation') {
+        wiki = parseCitation(tmpl, wiki, r);
+        return;
+      }
+
       //sorta-keep nowrap template
       if (name === 'nowrap') {
-        var inside = tmpl.match(/^\{\{nowrap\|(.*?)\}\}$/)[1];
-        wiki = wiki.replace(tmpl, inside);
+        var inside = tmpl.match(/^\{\{nowrap *?\|(.*?)\}\}$/);
+        if (inside) {
+          wiki = wiki.replace(tmpl, inside[1]);
+        }
       }
       if (keep[name] === true) {
         return;
@@ -6266,14 +6311,14 @@ var parse_recursive = function parse_recursive(r, wiki, options) {
   });
   // //ok, now that the scary recursion issues are gone, we can trust simple regex methods..
   // //kill the rest of templates
-  wiki = wiki.replace(/\{\{(^(main|wide)).*?\}\}/g, '');
+  wiki = wiki.replace(/\{\{ *?(^(main|wide)).*?\}\}/g, '');
 
   return wiki;
 };
 
 module.exports = parse_recursive;
 
-},{"../../data/i18n":11,"../../lib/recursive_match":18,"./infobox":22}],22:[function(_dereq_,module,exports){
+},{"../../data/i18n":11,"../../lib/recursive_match":18,"./citation":21,"./infobox":23}],23:[function(_dereq_,module,exports){
 'use strict';
 
 var trim = _dereq_('../../lib/helpers').trim_whitespace;
@@ -6372,7 +6417,7 @@ var parse_infobox = function parse_infobox(str) {
 };
 module.exports = parse_infobox;
 
-},{"../../data/i18n":11,"../../lib/helpers":17,"../section/sentence/line":35}],23:[function(_dereq_,module,exports){
+},{"../../data/i18n":11,"../../lib/helpers":17,"../section/sentence/line":36}],24:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6406,7 +6451,7 @@ module.exports = {
   parse_disambig: parse_disambig
 };
 
-},{"../../data/i18n":11,"../section/sentence/links":36}],24:[function(_dereq_,module,exports){
+},{"../../data/i18n":11,"../section/sentence/links":37}],25:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6431,7 +6476,7 @@ module.exports = {
   parse_redirect: parse_redirect
 };
 
-},{"../../data/i18n":11}],25:[function(_dereq_,module,exports){
+},{"../../data/i18n":11}],26:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6468,7 +6513,7 @@ var postProcess = function postProcess(r) {
 };
 module.exports = postProcess;
 
-},{"../../data/i18n":11,"../section/image/image":31}],26:[function(_dereq_,module,exports){
+},{"../../data/i18n":11,"../section/image/image":32}],27:[function(_dereq_,module,exports){
 'use strict';
 
 var convertGeo = _dereq_('../../lib/convertGeo');
@@ -6539,7 +6584,7 @@ var parseCoord = function parseCoord(str) {
 };
 module.exports = parseCoord;
 
-},{"../../lib/convertGeo":15}],27:[function(_dereq_,module,exports){
+},{"../../lib/convertGeo":15}],28:[function(_dereq_,module,exports){
 'use strict';
 
 var kill_xml = _dereq_('./kill_xml');
@@ -6569,7 +6614,7 @@ function preProcess(r, wiki) {
   //expand inline templates like {{date}}
   wiki = wordTemplates(wiki, r);
   //give it the inglorious send-off it deserves..
-  wiki = kill_xml(wiki);
+  wiki = kill_xml(wiki, r);
   //({{template}},{{template}}) leaves empty parentheses
   wiki = wiki.replace(/\( \)/g, '');
   return wiki;
@@ -6579,17 +6624,27 @@ module.exports = preProcess;
 // console.log(preProcess('hello <br/> world'))
 // console.log(preProcess("hello <asd f> world </h2>"))
 
-},{"./kill_xml":28,"./word_templates":29}],28:[function(_dereq_,module,exports){
+},{"./kill_xml":29,"./word_templates":30}],29:[function(_dereq_,module,exports){
 'use strict';
 
+var parseCitation = _dereq_('../infobox/citation');
 //okay, i know you're not supposed to regex html, but...
 //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
 
-var kill_xml = function kill_xml(wiki) {
+var kill_xml = function kill_xml(wiki, r) {
   //luckily, refs can't be recursive..
-  wiki = wiki.replace(/ ?<ref>[\s\S]{0,750}?<\/ref> ?/gi, ' '); // <ref></ref>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' '); // <ref name=""/>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>[\s\S]{0,500}?<\/ref> ?/gi, ' '); // <ref name=""></ref>
+  // <ref></ref>
+  wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function (a, b) {
+    wiki = parseCitation(b, wiki, r);
+    return ' ';
+  });
+  // <ref name=""/>
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ');
+  // <ref name=""></ref>
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,500}?)<\/ref> ?/gi, function (a, b) {
+    wiki = parseCitation(b, wiki, r);
+    return ' ';
+  });
   //other types of xml that we want to trash completely
 
   wiki = wiki.replace(/< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi, ' '); // <table name=""><tr>hi</tr></table>
@@ -6615,7 +6670,7 @@ var kill_xml = function kill_xml(wiki) {
 // console.log(kill_xml("North America,<br /> and one of"))
 module.exports = kill_xml;
 
-},{}],29:[function(_dereq_,module,exports){
+},{"../infobox/citation":21}],30:[function(_dereq_,module,exports){
 'use strict';
 
 var languages = _dereq_('../../data/languages');
@@ -6671,14 +6726,14 @@ var word_templates = function word_templates(wiki, r) {
       tmpl = tmpl.replace(/^\{\{date\|.*?\}\}/gi, dateString);
     }
     //common templates in wiktionary
-    tmpl = tmpl.replace(/^\{\{term\|(.*?)\|.*?\}\}/gi, '\'$1\'');
+    tmpl = tmpl.replace(/^\{\{term\|(.*?)\|.*?\}\}/gi, "'$1'");
     tmpl = tmpl.replace(/^\{\{IPA(c-en)?\|(.*?)\|(.*?)\}\},?/gi, '');
     tmpl = tmpl.replace(/^\{\{sense\|(.*?)\|?.*?\}\}/gi, '($1)');
-    tmpl = tmpl.replace(/v\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, '\'$1\'');
+    tmpl = tmpl.replace(/v\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, "'$1'");
     //replace languages in 'etyl' tags
     if (tmpl.match(/^\{\{etyl\|/)) {
       //doesn't support multiple-ones per sentence..
-      var lang = tmpl.match(/^\{\{etyl\|(.*?)\|.*?\}\}/i)[1] || '';
+      var lang = (tmpl.match(/^\{\{etyl\|(.*?)\|.*?\}\}/i) || [])[1] || '';
       lang = lang.toLowerCase();
       if (lang && languages[lang]) {
         tmpl = tmpl.replace(/^\{\{etyl\|(.*?)\|.*?\}\}/gi, languages[lang].english_title);
@@ -6710,7 +6765,7 @@ var word_templates = function word_templates(wiki, r) {
 
 module.exports = word_templates;
 
-},{"../../data/languages":12,"./coordinates":26}],30:[function(_dereq_,module,exports){
+},{"../../data/languages":12,"./coordinates":27}],31:[function(_dereq_,module,exports){
 'use strict';
 
 var fns = _dereq_('../../lib/helpers');
@@ -6737,7 +6792,7 @@ var parseHeading = function parseHeading(r, str) {
 };
 module.exports = parseHeading;
 
-},{"../../lib/helpers":17}],31:[function(_dereq_,module,exports){
+},{"../../lib/helpers":17}],32:[function(_dereq_,module,exports){
 'use strict';
 
 var Hashes = _dereq_('jshashes');
@@ -6778,7 +6833,7 @@ module.exports = parse_image;
 
 // console.log(parse_image("[[image:my_pic.jpg]]"));
 
-},{"../../../data/i18n":11,"jshashes":2}],32:[function(_dereq_,module,exports){
+},{"../../../data/i18n":11,"jshashes":2}],33:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../../data/i18n');
@@ -6800,11 +6855,11 @@ var parseImages = function parseImages(r, wiki) {
   //third, wiktionary-style interlanguage links
   matches.forEach(function (s) {
     if (s.match(/\[\[([a-z]+):(.*?)\]\]/i) !== null) {
-      var site = s.match(/\[\[([a-z]+):/i)[1];
+      var site = (s.match(/\[\[([a-z]+):/i) || [])[1] || '';
       site = site.toLowerCase();
       if (site && i18n.dictionary[site] === undefined) {
         r.interwiki = r.interwiki || {};
-        r.interwiki[site] = s.match(/\[\[([a-z]+):(.*?)\]\]/i)[2];
+        r.interwiki[site] = (s.match(/\[\[([a-z]+):(.*?)\]\]/i) || [])[2];
         wiki = wiki.replace(s, '');
       }
     }
@@ -6813,7 +6868,7 @@ var parseImages = function parseImages(r, wiki) {
 };
 module.exports = parseImages;
 
-},{"../../../data/i18n":11,"../../../lib/recursive_match":18,"./image":31}],33:[function(_dereq_,module,exports){
+},{"../../../data/i18n":11,"../../../lib/recursive_match":18,"./image":32}],34:[function(_dereq_,module,exports){
 'use strict';
 
 //interpret ==heading== lines
@@ -6861,7 +6916,7 @@ var makeSections = function makeSections(r, wiki) {
 
 module.exports = makeSections;
 
-},{"./heading":30,"./image":32,"./list":34,"./sentence/sentence":37,"./table":39,"./template":40}],34:[function(_dereq_,module,exports){
+},{"./heading":31,"./image":33,"./list":35,"./sentence/sentence":38,"./table":40,"./template":41}],35:[function(_dereq_,module,exports){
 'use strict';
 
 var list_reg = /^[#\*:;\|]+/;
@@ -6938,7 +6993,7 @@ var parseList = function parseList(r, wiki) {
 };
 module.exports = parseList;
 
-},{"./sentence/line":35}],35:[function(_dereq_,module,exports){
+},{"./sentence/line":36}],36:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../../../lib/helpers');
@@ -6986,7 +7041,7 @@ function parse_line(line) {
 
 module.exports = parse_line;
 
-},{"../../../data/i18n":11,"../../../lib/helpers":17,"./links":36}],36:[function(_dereq_,module,exports){
+},{"../../../data/i18n":11,"../../../lib/helpers":17,"./links":37}],37:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../../../lib/helpers');
@@ -7060,7 +7115,7 @@ var parse_links = function parse_links(str) {
 };
 module.exports = parse_links;
 
-},{"../../../lib/helpers":17}],37:[function(_dereq_,module,exports){
+},{"../../../lib/helpers":17}],38:[function(_dereq_,module,exports){
 'use strict';
 
 var sentence_parser = _dereq_('./sentence_parser');
@@ -7074,7 +7129,7 @@ var parseSentences = function parseSentences(r, wiki) {
 };
 module.exports = parseSentences;
 
-},{"./line":35,"./sentence_parser":38}],38:[function(_dereq_,module,exports){
+},{"./line":36,"./sentence_parser":39}],39:[function(_dereq_,module,exports){
 //split text into sentences, using regex
 //@spencermountain MIT
 
@@ -7192,7 +7247,7 @@ var sentence_parser = function sentence_parser(text) {
 module.exports = sentence_parser;
 // console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2);
 
-},{"../../../data/abbreviations":10}],39:[function(_dereq_,module,exports){
+},{"../../../data/abbreviations":10}],40:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../../lib/helpers');
@@ -7320,7 +7375,7 @@ var findTables = function findTables(r, wiki) {
 };
 module.exports = findTables;
 
-},{"../../lib/helpers":17,"./sentence/line":35}],40:[function(_dereq_,module,exports){
+},{"../../lib/helpers":17,"./sentence/line":36}],41:[function(_dereq_,module,exports){
 'use strict';
 
 // const parseCoord = require('./coordinates');

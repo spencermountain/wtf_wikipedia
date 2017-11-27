@@ -27,29 +27,37 @@
 
   <div align="center">Parsing wikiscript is basically NP-Hard.</div>
 
-  <sub>its <a href="https://en.wikipedia.org/wiki/Help:WikiHiero_syntax">really the worst</a>.  I'm really trying my best.</sub>
+<sub>its <a href="https://en.wikipedia.org/wiki/Help:WikiHiero_syntax">really the worst</a>. I'm really trying my
+best.</sub>
+
 </div>
 
-**wtf_wikipedia** supports vile recursive template shinanigans, [half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template variants, and illicit wiki-esque shorthands.
+**wtf_wikipedia** supports vile recursive template shinanigans,
+[half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template
+variants, and illicit wiki-esque shorthands.
 
-Making your own parser is never a good idea, `what could go rong?!`, but this library is a very detailed and deliberate creature. :four_leaf_clover:
+Making your own parser is never a good idea, `what could go rong?!`, but this library is a very detailed and deliberate
+creature. :four_leaf_clover:
 
 ```bash
 npm install wtf_wikipedia
 ```
+
 then:
+
 ```javascript
-var wtf = require("wtf_wikipedia")
+var wtf = require('wtf_wikipedia');
 
 //hit the api
-wtf.from_api("Toronto", "en", function(markup){
+wtf.from_api('Toronto', 'en', function(markup) {
   var data = wtf.parse(markup);
-  console.log(data.infoboxes[0].data.leader_name)
+  console.log(data.infoboxes[0].data.leader_name);
   // "John Tory"
-})
+});
 ```
 
 the result format:
+
 ```js
 {
   "type": "",
@@ -72,20 +80,24 @@ the result format:
    }],
   "categories": [],
   "coordinates": [],
+  "citations": [],
   "interwiki": {},
 }
 ```
+
 yeah, the structure is a little verbose - but with a couple loops you should find everything you want.
 
 **wtf_wikipedia** also offers a plaintext method, that returns only paragraphs of nice text, and no junk:
-````javascript
-wtf.from_api("Toronto Blue Jays", "en", function(markup){
-  var text= wtf.plaintext(markup)
+
+```javascript
+wtf.from_api('Toronto Blue Jays', 'en', function(markup) {
+  var text = wtf.plaintext(markup);
   // "The Toronto Blue Jays are a Canadian professional baseball team..."
-})
-````
+});
+```
 
 ##### ⚡️ Client-side too!
+
 ```html
 <script src="https://unpkg.com/wtf_wikipedia@latest/builds/wtf_wikipedia.min.js"></script>
 <script>
@@ -101,99 +113,131 @@ wtf.from_api("Toronto Blue Jays", "en", function(markup){
 </h2>
 
 # What it does
+
 * Detects and parses **redirects** and **disambiguation** pages
 * Parse **infoboxes** into a formatted key-value object
 * Handles recursive templates and links- like [[.. [[...]] ]]
 * **Per-sentence** plaintext and link resolution
 * Parse and format internal links
-* creates [image thumbnail urls](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) from **File:XYZ.png** filenames
+* creates
+  [image thumbnail urls](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F)
+  from **File:XYZ.png** filenames
 * Properly resolve {{CURRENTMONTH}} and {{CONVERT ..}} type templates
 * Parse **images**, files, and **categories**
 * converts 'DMS-formatted' (59°12\'7.7"N) geo-coordinates to lat/lng
+* parses citation metadata
 * Eliminate xml, latex, css, table-sorting, and 'Egyptian hierogliphics' cruft
 
-its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView), [txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
+its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView),
+[txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from
+[Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
 
 #### But what about...
+
 ##### Parsoid:
-Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It reliably turns wikiscript into HTML, but not valid XML.
+
+Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It
+reliably turns wikiscript into HTML, but not valid XML.
 
 To use it for data-mining, you'll' need to:
+
 ```
 parsoid(wikiscript) -> pretend DOM -> screen-scraping
 ```
-but getting structured data this way (say, sentences or infobox data), is a complex + weird process still. This library has 'borrowed' a lot of stuff from the parsoid project❤️
+
+but getting structured data this way (say, sentences or infobox data), is a complex + weird process still. This library
+has 'borrowed' a lot of stuff from the parsoid project❤️
 
 ##### XML datadumps:
-This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb), letting you parse a whole wikipedia dump on a laptop in a couple minutes.
 
+This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb),
+letting you parse a whole wikipedia dump on a laptop in a couple minutes.
 
 # Methods
+
 ## **.parse(markup)**
+
 turns wikipedia markup into a nice json object
 
 ```javascript
-var wiki='==In Popular Culture==\n*harry potter\'s wand\n* the simpsons fence'
-wtf.parse(wiki)
+var wiki = "==In Popular Culture==\n*harry potter's wand\n* the simpsons fence";
+wtf.parse(wiki);
 // {type:'', sections:[...], infobox:{}, categories:[...], images:[] }
 ```
 
 ## **.from_api(title, lang_or_wikiid, callback)**
-retrieves raw contents of a wikipedia article - or other mediawiki wiki identified by its [dbname](http://en.wikipedia.org/w/api.php?action=sitematrix&format=json)
+
+retrieves raw contents of a wikipedia article - or other mediawiki wiki identified by its
+[dbname](http://en.wikipedia.org/w/api.php?action=sitematrix&format=json)
 
 to call non-english wikipedia apis, add it as the second paramater to from_api
+
 ```javascript
-wtf.from_api("Toronto", "de", function(markup){
-  var text= wtf.plaintext(markup)
+wtf.from_api('Toronto', 'de', function(markup) {
+  var text = wtf.plaintext(markup);
   //Toronto ist mit 2,6 Millionen Einwohnern..
-})
+});
 ```
 
 you may also pass the wikipedia page id as parameter instead of the page title:
+
 ```javascript
-wtf.from_api(64646, "de", function(markup){
+wtf.from_api(64646, 'de', function(markup) {
   //...
-})
+});
 ```
+
 the from_api method follows redirects.
+
 ## **.plaintext(markup)**
+
 returns only nice text of the article
+
 ```js
-var wiki="[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>"
-var text= wtf.plaintext(wiki)
+var wiki =
+  "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>";
+var text = wtf.plaintext(wiki);
 //"Boston's baseball field has a 37ft wall."
 ```
 
 ## **.custom({})**
-if you're trying to parse a weird template, or an obscure wiki syntax somewhere, this library supports a customization step, where you can pass-in random parsers to run, before your result is generated.
+
+if you're trying to parse a weird template, or an obscure wiki syntax somewhere, this library supports a customization
+step, where you can pass-in random parsers to run, before your result is generated.
+
 ```js
 var str = `{{myTempl|cool data!}} Whistling is a sport in some countries...`;
 wtf.custom({
-  mine: (str) => {
+  mine: str => {
     let m = str.match(/^\{\{myTempl\|(.+?)\}\}$/);
     if (m) {
       return m[1];
     }
   }
 });
-wtf.parse(str)
+wtf.parse(str);
 //{title:'Whistling', custom: {mine:['cool data!']} }
 ```
+
 this way, you can extend the library with your own regexes, and all that.
 
 ## **CLI**
+
 if you're scripting this from the shell, or another language, install with a `-g`, and then:
-````shell
+
+```shell
 $ wikipedia_plaintext George Clooney
 # George Timothy Clooney (born May 6, 1961) is an American actor ...
 
 $ wikipedia Toronto Blue Jays
 # {text:[...], infobox:{}, categories:[...], images:[] }
+```
 
-````
 # Sample Output
+
 Sample output for [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
-````javascript
+
+```javascript
 { type: 'page',
   sections:[ { title: '', depth: 0, sentences: [Array] },
      { title: 'See also', depth: 1, sentences: [Array] },
@@ -226,10 +270,11 @@ Sample output for [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
        thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/The_Royal_Cinema.jpg/300px-The_Royal_Cinema.jpg' }
      ]
    }
-````
+```
 
 Sample Output for [Whistling](https://en.wikipedia.org/w/index.php?title=Whistling)
-````javascript
+
+```javascript
 { type: 'page',
   sections:
    [ { title: '', depth: 0, images: [Array], sentences: [Array] },
@@ -256,13 +301,15 @@ Sample Output for [Whistling](https://en.wikipedia.org/w/index.php?title=Whistli
        lists: [Array],
        sentences: [] } ],
   infoboxes: [],
+  citations: [],
   interwiki: {},
   categories: [ 'Oral communication', 'Vocal music', 'Vocal skills' ],
   images: [Array]
 }
-````
+```
 
 ## Contributing
+
 Never-ender projects like these are only good with many-hands, and I try to be a friendly maintainer. (promise!)
 
 ```bash

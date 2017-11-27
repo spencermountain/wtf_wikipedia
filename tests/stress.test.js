@@ -94,6 +94,7 @@ test('stress-test-en', t => {
     t.ok(intro.sentences.length > 0, ' - - sentences-length');
     t.ok(intro.sentences[0].text.length > 0, ' - - intro-text');
     t.ok(intro.sentences[0].text.match(/[a-z]/), ' - - intro-has words');
+    // t.ok(doc.citations.length > 0, ' has a citation');
 
     var plain = wtf.plaintext(markup);
     t.ok(plain.length > 40, ' - - plaintext-length');
