@@ -26,7 +26,7 @@ const fetch = function(page_identifier, lang_or_wikiid, cb) {
       cb(null);
       return;
     }
-    var pages = res.body.query.pages || {};
+    var pages = (res && res.body && res.body.query) ? res.body.query.pages : {};
     var id = Object.keys(pages)[0];
     if (id) {
       var page = pages[id];
