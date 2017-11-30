@@ -17,7 +17,7 @@ const months = [
 ];
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 //these are easy, inline templates we can do without too-much trouble.
-const inline = /\{\{(url|convert|current|local|lc|uc|formatnum|pull|cquote|coord|small|smaller|midsize|larger|big|bigger|large|huge|resize|dts|date|term|ipa|sense|t|etyl)(.*?)\}\}/gi;
+const inline = /\{\{(url|convert|current|local|lc|uc|formatnum|pull|cquote|coord|small|smaller|midsize|larger|big|bigger|large|huge|resize|dts|date|term|ipa|ill|sense|t|etyl|sfnref)(.*?)\}\}/gi;
 
 // templates that need parsing and replacing for inline text
 //https://en.wikipedia.org/wiki/Category:Magic_word_templates
@@ -38,7 +38,9 @@ const word_templates = function(wiki, r) {
     tmpl = tmpl.replace(/^\{\{(lc|uc|formatnum):(.*?)\}\}/gi, '$2');
     tmpl = tmpl.replace(/^\{\{pull quote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
     tmpl = tmpl.replace(/^\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
-
+    //interlanguage-link
+    tmpl = tmpl.replace(/^\{\{ill\|([^|]+).*?\}\}/gi, '$1');
+    //'harvard references'
     //{{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}}
     let coord = tmpl.match(/^\{\{coord\|(.*?)\}\}/i);
     if (coord !== null) {
@@ -64,10 +66,10 @@ const word_templates = function(wiki, r) {
       tmpl = tmpl.replace(/^\{\{date\|.*?\}\}/gi, dateString);
     }
     //common templates in wiktionary
-    tmpl = tmpl.replace(/^\{\{term\|(.*?)\|.*?\}\}/gi, "'$1'");
+    tmpl = tmpl.replace(/^\{\{term\|(.*?)\|.*?\}\}/gi, '\'$1\'');
     tmpl = tmpl.replace(/^\{\{IPA(c-en)?\|(.*?)\|(.*?)\}\},?/gi, '');
     tmpl = tmpl.replace(/^\{\{sense\|(.*?)\|?.*?\}\}/gi, '($1)');
-    tmpl = tmpl.replace(/v\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, "'$1'");
+    tmpl = tmpl.replace(/v\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, '\'$1\'');
     //replace languages in 'etyl' tags
     if (tmpl.match(/^\{\{etyl\|/)) {
       //doesn't support multiple-ones per sentence..

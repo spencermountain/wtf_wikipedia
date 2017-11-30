@@ -122,3 +122,9 @@ test('interwiki', t => {
   t.equal(obj.categories[0], 'Films', 'cat-match');
   t.end();
 });
+test('inline-templates', t => {
+  var str = `hello {{ill|Article title|language code}} world {{Sfn|Rolling Stone|2004}}`;
+  var have = wtf.plaintext(str);
+  t.equal('hello Article title world', have, 'harvard-references');
+  t.end();
+});

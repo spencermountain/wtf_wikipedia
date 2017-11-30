@@ -48,7 +48,7 @@ const main = function(wiki, options) {
   //pull-out [[category:whatevers]]
   wiki = parse.categories(r, wiki);
   //parse all the headings, and their texts/sentences
-  r.sections = parse.section(r, wiki);
+  r.sections = parse.section(r, wiki) || [];
 
   r = postProcess(r);
 

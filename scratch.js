@@ -22,10 +22,16 @@ function from_file(page) {
 // from_file("Africaans")
 // from_file('rnli_stations');
 //Ibn al-Haytham
-wtf.from_api('Love You More (Ginuwine song)', 'en', function(markup) {
+
+// Akdam, Alanya 9314940
+// Akçatı, Alanya 9314941
+// Alacami, Alanya 9314942
+// List of compositions by Franz Schubert 9314943
+
+wtf.from_api('List of compositions by Franz Schubert', 'en', function(markup) {
   var obj = wtf.parse(markup);
-  console.log(obj);
+  console.log(obj.sections[2].lists[0]);
 });
 
-// var str = `in 1826.<ref name="brake">Brake (2009)</ref>  `;
-// console.log(wtf.parse(str).citations);
+// var str = `hello {{ill|Article title|language code}} world {{Sfn|Rolling Stone|2004}}`;
+// console.log(wtf.plaintext(str));
