@@ -1,4 +1,4 @@
-/* wtf_wikipedia v2.4.0
+/* wtf_wikipedia v2.4.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -3714,7 +3714,7 @@ exports.cleanHeader = function(header, shouldStripCookie){
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -6011,7 +6011,7 @@ var fetch = function fetch(page_identifier, lang_or_wikiid, cb) {
       cb(null);
       return;
     }
-    var pages = res.body.query.pages || {};
+    var pages = res && res.body && res.body.query ? res.body.query.pages : {};
     var id = Object.keys(pages)[0];
     if (id) {
       var page = pages[id];

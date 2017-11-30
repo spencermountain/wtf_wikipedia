@@ -22,16 +22,10 @@ function from_file(page) {
 // from_file("Africaans")
 // from_file('rnli_stations');
 //Ibn al-Haytham
-// wtf.from_api('Julia Kristeva', 'en', function(markup) {
-//   var obj = wtf.parse(markup);
-//   console.log(obj.citations);
-// });
+wtf.from_api('Love You More (Ginuwine song)', 'en', function(markup) {
+  var obj = wtf.parse(markup);
+  console.log(obj);
+});
 
-var str = `in 1826.<ref name="brake">Brake (2009)</ref>  `;
-console.log(wtf.parse(str).citations);
-// console.log(wtf.plaintext(str));
-
-// console.log(wtf.parse('blha blah', {
-//   page_identifier: 234,
-//   lang_or_wikiid: 'de'
-// }));
+// var str = `in 1826.<ref name="brake">Brake (2009)</ref>  `;
+// console.log(wtf.parse(str).citations);
