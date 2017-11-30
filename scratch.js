@@ -28,10 +28,11 @@ function from_file(page) {
 // Alacami, Alanya 9314942
 // List of compositions by Franz Schubert 9314943
 
-wtf.from_api('List of compositions by Franz Schubert', 'en', function(markup) {
-  var obj = wtf.parse(markup);
-  console.log(obj.sections[2].lists[0]);
-});
+// wtf.from_api('List of compositions by Franz Schubert', 'en', function(markup) {
+//   var obj = wtf.parse(markup);
+//   console.log(obj.sections[2].lists[0]);
+// });
 
-// var str = `hello {{ill|Article title|language code}} world {{Sfn|Rolling Stone|2004}}`;
-// console.log(wtf.plaintext(str));
+var str = `
+#REDIRECT [[The Beatles]]`;
+console.log(wtf.parse(str));
