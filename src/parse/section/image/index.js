@@ -1,4 +1,5 @@
 const i18n = require('../../../data/i18n');
+const languages = require('../../../data/languages');
 const find_recursive = require('../../../lib/recursive_match');
 const parse_image = require('./image');
 const fileRegex = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
@@ -19,7 +20,7 @@ const parseImages = function(r, wiki) {
     if (s.match(/\[\[([a-z]+):(.*?)\]\]/i) !== null) {
       let site = (s.match(/\[\[([a-z]+):/i) || [])[1] || '';
       site = site.toLowerCase();
-      if (site && i18n.dictionary[site] === undefined) {
+      if (site && i18n.dictionary[site] === undefined && languages[site] != undefined) {
         r.interwiki = r.interwiki || {};
         r.interwiki[site] = (s.match(/\[\[([a-z]+):(.*?)\]\]/i) || [])[2];
         wiki = wiki.replace(s, '');
