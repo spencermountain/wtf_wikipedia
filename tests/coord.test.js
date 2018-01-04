@@ -13,6 +13,11 @@ test('coord formats', t => {
   t.equal(obj.lat, 44.112, 'fmt-2-lat');
   t.equal(obj.lon, -87.913, 'fmt-2-lon');
 
+  str = `hello {{Coord|51|30|N|0|7|W|type:city}} world`;
+  obj = wtf.parse(str).coordinates[0];
+  t.equal(obj.lat, 51.5, 'fmt-2-with-zero-lat');
+  t.equal(obj.lon, -0.11667, 'fmt-2-with-zero-lon');
+
   //minutes/seconds
   str = `hello {{Coord|57|18|22|N|4|27|32|W|display=title}} world`;
   obj = wtf.parse(str).coordinates[0];

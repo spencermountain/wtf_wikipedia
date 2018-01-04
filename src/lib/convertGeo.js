@@ -9,7 +9,7 @@ function parseDms(arr) {
   var degrees = Number(arr[0] || 0);
   var minutes = Number(arr[1] || 0);
   var seconds = Number(arr[2] || 0);
-  if (typeof hemisphere !== 'string' || !degrees) {
+  if (typeof hemisphere !== 'string' || isNaN(degrees)) {
     return null;
   }
   var sign = 1;
