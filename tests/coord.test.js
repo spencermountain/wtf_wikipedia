@@ -18,6 +18,11 @@ test('coord formats', t => {
   t.equal(obj.lat, 51.5, 'fmt-2-with-zero-lat');
   t.equal(obj.lon, -0.11667, 'fmt-2-with-zero-lon');
 
+  str = `hello {{coord|9|26|44|S|160|01|13|E |display=title}} world`;
+  obj = wtf.parse(str).coordinates[0];
+  t.equal(obj.lat, -9.44556, 'fmt-2-with-space-lat');
+  t.equal(obj.lon, 160.02028, 'fmt-2-with-space-lon');
+
   //minutes/seconds
   str = `hello {{Coord|57|18|22|N|4|27|32|W|display=title}} world`;
   obj = wtf.parse(str).coordinates[0];
