@@ -20,10 +20,12 @@ const parseImages = function(r, wiki) {
     if (s.match(/\[\[([a-z]+):(.*?)\]\]/i) !== null) {
       let site = (s.match(/\[\[([a-z]+):/i) || [])[1] || '';
       site = site.toLowerCase();
-      if (site && i18n.dictionary[site] === undefined && languages[site] != undefined) {
+      if (site && i18n.dictionary[site] === undefined) {
         r.interwiki = r.interwiki || {};
         r.interwiki[site] = (s.match(/\[\[([a-z]+):(.*?)\]\]/i) || [])[2];
-        wiki = wiki.replace(s, '');
+        if (languages[site] != undefined) {
+          wiki = wiki.replace(s, '');
+        }
       }
     }
   });
