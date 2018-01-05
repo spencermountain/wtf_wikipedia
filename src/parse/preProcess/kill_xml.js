@@ -36,7 +36,7 @@ const kill_xml = function(wiki, r) {
   // <ref name=""/>
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ');
   // <ref name=""></ref>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,500}?)<\/ref> ?/gi, function(a, tmpl) {
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1000}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
       wiki = parseCitation(tmpl, wiki, r);
     } else {
