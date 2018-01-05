@@ -28,7 +28,7 @@ const parseCoord = function(str) {
   //turn numbers into numbers, normalize N/s
   let nums = [];
   for(let i = 0; i < arr.length; i += 1) {
-    let s = arr[i];
+    let s = arr[i].trim();
     //make it a number
     let num = parseFloat(s);
     if (num || num === 0) {
