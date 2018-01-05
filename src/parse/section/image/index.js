@@ -15,17 +15,18 @@ const parseImages = function(r, wiki) {
     }
   });
 
+  var namespaceList = r.page_identifier != undefined ? r.page_identifier.match(/^(.*?):.*$/) : [];
+  var namespace = namespaceList.length > 1 ? namespaceList[1].toLowerCase() : "";
+
   //third, wiktionary-style interlanguage links
   matches.forEach(function(s) {
     if (s.match(/\[\[([a-z]+):(.*?)\]\]/i) !== null) {
       let site = (s.match(/\[\[([a-z]+):/i) || [])[1] || '';
       site = site.toLowerCase();
-      if (site && i18n.dictionary[site] === undefined) {
+      if (site && i18n.dictionary[site] === undefined && site !== namespace) {
         r.interwiki = r.interwiki || {};
         r.interwiki[site] = (s.match(/\[\[([a-z]+):(.*?)\]\]/i) || [])[2];
-        if (languages[site] != undefined) {
-          wiki = wiki.replace(s, '');
-        }
+        wiki = wiki.replace(s, '');
       }
     }
   });
