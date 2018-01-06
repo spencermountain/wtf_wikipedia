@@ -74,7 +74,7 @@ the result format:
         "text": ""
         "links": [{
           "text": "",
-          "link": ""
+          "page": ""
         }]
       }]
    }],
