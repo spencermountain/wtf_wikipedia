@@ -19,7 +19,7 @@ const parse_infobox = function(str) {
   let stringBuilder = [];
   let lastChar;
   //this collapsible list stuff is just a headache
-  str = str.replace(/\{\{Collapsible list[^}]{10,1000}\}\}/g, '');
+  str = str.replace(/\{\{Collapsible list[^}]{10,5000}\}\}/ig, '');
 
   const template = getTemplate(str); //get the infobox name
 
