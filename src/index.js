@@ -24,8 +24,9 @@ const from_api = function(page_identifier, lang_or_wikiid, cb) {
 };
 
 //turn wiki-markup into a nicely-formatted text
-const plaintext = function(str, options) {
-  let data = parse(str, options) || {};
+const plaintext = function(str, optionsP) {
+  optionsP = optionsP === undefined ? options : optionsP;
+  let data = parse(str, optionsP) || {};
   data.sections = data.sections || [];
   let arr = data.sections.map(d => {
     return d.sentences.map(a => a.text).join(' ');
