@@ -1,6 +1,7 @@
 'use strict';
 const trim = require('../../lib/helpers').trim_whitespace;
 const parse_line = require('../section/sentence/line');
+const findRecursive = require('../../lib/recursive_match');
 const i18n = require('../../data/i18n');
 const infobox_template_reg = new RegExp('{{(?:' + i18n.infoboxes.join('|') + ')\\s*(.*)', 'i');
 
@@ -19,7 +20,10 @@ const parse_infobox = function(str) {
   let stringBuilder = [];
   let lastChar;
   //this collapsible list stuff is just a headache
-  str = str.replace(/\{\{Collapsible list[^}]{10,5000}\}\}/ig, '');
+  if (/\{\{collapsible list/i.test(str)) {
+    let list = findRecursive('{', '}', str.substr(2, str.length - 2)).filter((f) => /\{\{Collapsible list/i.test(f));
+    str = str.replace(list[0], '');
+  }
 
   const template = getTemplate(str); //get the infobox name
 
@@ -91,6 +95,9 @@ const parse_infobox = function(str) {
   //     }
   //   }
   // }
-  return { template: template, data: obj };
+  return {
+    template: template,
+    data: obj
+  };
 };
 module.exports = parse_infobox;
