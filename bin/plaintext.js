@@ -9,7 +9,12 @@ if (!title) {
 }
 title = title.charAt(0).toUpperCase() + title.slice(1);
 //fetch this topic's wikipedia page
-wtf.from_api(title, 'en', function (script) {
-  var data = wtf.plaintext(script);
+wtf.from_api(title, 'en', function (script, page_identifier, lang_or_wikiid) {
+  var o = {
+    page_identifier:page_identifier,
+    lang_or_wikiid:lang_or_wikiid
+  };
+
+  var data = wtf.plaintext(script, o);
   console.log(data);
 });
