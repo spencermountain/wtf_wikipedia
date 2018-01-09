@@ -50,3 +50,9 @@ test('external links', t => {
   t.equal(link.type, 'external', 'link-type');
   t.end();
 });
+
+test('refn template', t => {
+  var str = `hello {{refn|group=groupname|name=name|Contents of the footnote}} world`;
+  t.equal(wtf.parse(str).sections[0].sentences[0].text, 'hello world');
+  t.end();
+});

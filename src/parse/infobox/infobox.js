@@ -20,8 +20,9 @@ const parse_infobox = function(str) {
   let stringBuilder = [];
   let lastChar;
   //this collapsible list stuff is just a headache
-  if (/\{\{collapsible list/i.test(str)) {
-    let list = findRecursive('{', '}', str.substr(2, str.length - 2)).filter((f) => /\{\{Collapsible list/i.test(f));
+  let listReg = /\{\{ ?(collapsible|hlist|ublist|plainlist|Unbulleted list|flatlist)/i;
+  if (listReg.test(str)) {
+    let list = findRecursive('{', '}', str.substr(2, str.length - 2)).filter((f) => listReg.test(f));
     str = str.replace(list[0], '');
   }
 

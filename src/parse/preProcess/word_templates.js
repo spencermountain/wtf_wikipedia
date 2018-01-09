@@ -40,6 +40,8 @@ const word_templates = function(wiki, r) {
     tmpl = tmpl.replace(/^\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
     //interlanguage-link
     tmpl = tmpl.replace(/^\{\{ill\|([^|]+).*?\}\}/gi, '$1');
+    //footnote syntax
+    tmpl = tmpl.replace(/^\{\{refn\|([^|]+).*?\}\}/gi, '$1');
     //'harvard references'
     //{{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}}
     let coord = tmpl.match(/^\{\{coord\|(.*?)\}\}/i);
