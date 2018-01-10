@@ -14,3 +14,8 @@
 ## 2.2.0
 * support for {{coords}} geo-coordinate parsing+conversion
 * early-support for custom template-parsing
+## 2.5.0
+* co-ordinate parsing fix
+* support longer ref tags
+* smarter disambiguation for interwiki links vs pages containing ':'
+* more support for various list syntaxes

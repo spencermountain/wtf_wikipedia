@@ -42,6 +42,8 @@ const word_templates = function(wiki, r) {
     tmpl = tmpl.replace(/^\{\{ill\|([^|]+).*?\}\}/gi, '$1');
     //footnote syntax
     tmpl = tmpl.replace(/^\{\{refn\|([^|]+).*?\}\}/gi, '$1');
+    //'tag' escaped thing.
+    tmpl = tmpl.replace(/^\{\{#?tag\|([^|]+).*?\}\}/gi, '');
     //'harvard references'
     //{{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}}
     let coord = tmpl.match(/^\{\{coord\|(.*?)\}\}/i);
@@ -85,9 +87,15 @@ const word_templates = function(wiki, r) {
     }
     return tmpl;
   });
-  //flatlist -> commas
-  wiki = wiki.replace(/\{\{flatlist ?\|([^}]+)\}\}/gi, function(a, b) {
-    let arr = b.split(/\s+[* ]+? ?/g);
+  //flatlist -> commas  -- hlist?
+  wiki = wiki.replace(/\{\{(flatlist|hlist) ?\|([^}]+)\}\}/gi, function(a, b, c) {
+    let arr = c.split(/\s+[* ]+? ?/g);
+    arr = arr.filter(line => line);
+    return arr.join(', ');
+  });
+  //plainlist -> newlines
+  wiki = wiki.replace(/\{\{(plainlist|ublist|unbulleted list) ?\|([^}]+)\}\}/gi, function(a, b, c) {
+    let arr = c.split(/\s+[* ]+? ?/g);
     arr = arr.filter(line => line);
     return arr.join(', ');
   });

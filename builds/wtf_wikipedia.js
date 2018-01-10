@@ -1,4 +1,4 @@
-/* wtf_wikipedia v2.4.2
+/* wtf_wikipedia v2.5.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -3714,7 +3714,7 @@ exports.cleanHeader = function(header, shouldStripCookie){
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "2.4.2",
+  "version": "2.5.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -5927,8 +5927,9 @@ var from_api = function from_api(page_identifier, lang_or_wikiid, cb) {
 };
 
 //turn wiki-markup into a nicely-formatted text
-var plaintext = function plaintext(str) {
-  var data = _parse(str, options) || {};
+var plaintext = function plaintext(str, optionsP) {
+  optionsP = optionsP === undefined ? options : optionsP;
+  var data = _parse(str, optionsP) || {};
   data.sections = data.sections || [];
   var arr = data.sections.map(function (d) {
     return d.sentences.map(function (a) {
@@ -5968,7 +5969,7 @@ function parseDms(arr) {
   var degrees = Number(arr[0] || 0);
   var minutes = Number(arr[1] || 0);
   var seconds = Number(arr[2] || 0);
-  if (typeof hemisphere !== 'string' || !degrees) {
+  if (typeof hemisphere !== 'string' || isNaN(degrees)) {
     return null;
   }
   var sign = 1;
@@ -6191,7 +6192,7 @@ var main = function main(wiki, options) {
   //pull-out [[category:whatevers]]
   wiki = parse.categories(r, wiki);
   //parse all the headings, and their texts/sentences
-  r.sections = parse.section(r, wiki) || [];
+  r.sections = parse.section(r, wiki, options) || [];
 
   r = postProcess(r);
 
@@ -6324,6 +6325,7 @@ module.exports = parse_recursive;
 
 var trim = _dereq_('../../lib/helpers').trim_whitespace;
 var parse_line = _dereq_('../section/sentence/line');
+var findRecursive = _dereq_('../../lib/recursive_match');
 var i18n = _dereq_('../../data/i18n');
 var infobox_template_reg = new RegExp('{{(?:' + i18n.infoboxes.join('|') + ')\\s*(.*)', 'i');
 
@@ -6342,7 +6344,13 @@ var parse_infobox = function parse_infobox(str) {
   var stringBuilder = [];
   var lastChar = void 0;
   //this collapsible list stuff is just a headache
-  str = str.replace(/\{\{Collapsible list[^}]{10,1000}\}\}/g, '');
+  var listReg = /\{\{ ?(collapsible|hlist|ublist|plainlist|Unbulleted list|flatlist)/i;
+  if (listReg.test(str)) {
+    var list = findRecursive('{', '}', str.substr(2, str.length - 2)).filter(function (f) {
+      return listReg.test(f);
+    });
+    str = str.replace(list[0], '');
+  }
 
   var template = getTemplate(str); //get the infobox name
 
@@ -6414,11 +6422,14 @@ var parse_infobox = function parse_infobox(str) {
   //     }
   //   }
   // }
-  return { template: template, data: obj };
+  return {
+    template: template,
+    data: obj
+  };
 };
 module.exports = parse_infobox;
 
-},{"../../data/i18n":11,"../../lib/helpers":17,"../section/sentence/line":36}],24:[function(_dereq_,module,exports){
+},{"../../data/i18n":11,"../../lib/helpers":17,"../../lib/recursive_match":18,"../section/sentence/line":36}],24:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6457,7 +6468,7 @@ module.exports = {
 
 var i18n = _dereq_('../../data/i18n');
 //pulls target link out of redirect page
-var REDIRECT_REGEX = new RegExp('^ ?#(' + i18n.redirects.join('|') + ') *?\\[\\[(.{2,60}?)\\]\\]', 'i');
+var REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + i18n.redirects.join('|') + ') *?\\[\\[(.{2,60}?)\\]\\]', 'i');
 
 var is_redirect = function is_redirect(wiki) {
   return wiki.match(REDIRECT_REGEX);
@@ -6547,7 +6558,7 @@ var parseCoord = function parseCoord(str) {
   //turn numbers into numbers, normalize N/s
   var nums = [];
   for (var i = 0; i < arr.length; i += 1) {
-    var s = arr[i];
+    var s = arr[i].trim();
     //make it a number
     var num = parseFloat(s);
     if (num || num === 0) {
@@ -6669,7 +6680,7 @@ var kill_xml = function kill_xml(wiki, r) {
   // <ref name=""/>
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ');
   // <ref name=""></ref>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,500}?)<\/ref> ?/gi, function (a, tmpl) {
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1000}?)<\/ref> ?/gi, function (a, tmpl) {
     if (hasCitation(tmpl)) {
       wiki = parseCitation(tmpl, wiki, r);
     } else {
@@ -6734,6 +6745,10 @@ var word_templates = function word_templates(wiki, r) {
     tmpl = tmpl.replace(/^\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
     //interlanguage-link
     tmpl = tmpl.replace(/^\{\{ill\|([^|]+).*?\}\}/gi, '$1');
+    //footnote syntax
+    tmpl = tmpl.replace(/^\{\{refn\|([^|]+).*?\}\}/gi, '$1');
+    //'tag' escaped thing.
+    tmpl = tmpl.replace(/^\{\{#?tag\|([^|]+).*?\}\}/gi, '');
     //'harvard references'
     //{{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}}
     var coord = tmpl.match(/^\{\{coord\|(.*?)\}\}/i);
@@ -6777,9 +6792,17 @@ var word_templates = function word_templates(wiki, r) {
     }
     return tmpl;
   });
-  //flatlist -> commas
-  wiki = wiki.replace(/\{\{flatlist ?\|([^}]+)\}\}/gi, function (a, b) {
-    var arr = b.split(/\s+[* ]+? ?/g);
+  //flatlist -> commas  -- hlist?
+  wiki = wiki.replace(/\{\{(flatlist|hlist) ?\|([^}]+)\}\}/gi, function (a, b, c) {
+    var arr = c.split(/\s+[* ]+? ?/g);
+    arr = arr.filter(function (line) {
+      return line;
+    });
+    return arr.join(', ');
+  });
+  //plainlist -> newlines
+  wiki = wiki.replace(/\{\{(plainlist|ublist|unbulleted list) ?\|([^}]+)\}\}/gi, function (a, b, c) {
+    var arr = c.split(/\s+[* ]+? ?/g);
     arr = arr.filter(function (line) {
       return line;
     });
@@ -6875,7 +6898,7 @@ var find_recursive = _dereq_('../../../lib/recursive_match');
 var parse_image = _dereq_('./image');
 var fileRegex = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
 
-var parseImages = function parseImages(r, wiki) {
+var parseImages = function parseImages(r, wiki, options) {
   //second, remove [[file:...[[]] ]] recursions
   var matches = find_recursive('[', ']', wiki);
   matches.forEach(function (s) {
@@ -6891,7 +6914,7 @@ var parseImages = function parseImages(r, wiki) {
     if (s.match(/\[\[([a-z]+):(.*?)\]\]/i) !== null) {
       var site = (s.match(/\[\[([a-z]+):/i) || [])[1] || '';
       site = site.toLowerCase();
-      if (site && i18n.dictionary[site] === undefined) {
+      if (site && i18n.dictionary[site] === undefined && !(options.namespace !== undefined && options.namespace === site)) {
         r.interwiki = r.interwiki || {};
         r.interwiki[site] = (s.match(/\[\[([a-z]+):(.*?)\]\]/i) || [])[2];
         wiki = wiki.replace(s, '');
@@ -6916,7 +6939,7 @@ var parse = {
 };
 var section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})/g;
 
-var parseSection = function parseSection(section, wiki, r) {
+var parseSection = function parseSection(section, wiki, r, options) {
   // //parse the tables
   wiki = parse.table(section, wiki);
   // //parse the lists
@@ -6924,14 +6947,14 @@ var parseSection = function parseSection(section, wiki, r) {
   //supoprted things like {{main}}
   wiki = parse.template(section, wiki, r);
   // //parse+remove scary '[[ [[]] ]]' stuff
-  wiki = parse.image(section, wiki);
+  wiki = parse.image(section, wiki, options);
   //do each sentence
   wiki = parse.sentence(section, wiki);
   // section.wiki = wiki;
   return section;
 };
 
-var makeSections = function makeSections(r, wiki) {
+var makeSections = function makeSections(r, wiki, options) {
   var split = wiki.split(section_reg); //.filter(s => s);
   var sections = [];
   for (var i = 0; i < split.length; i += 2) {
@@ -6942,7 +6965,7 @@ var makeSections = function makeSections(r, wiki) {
       depth: null
     };
     section = parse.heading(section, title);
-    section = parseSection(section, txt, r);
+    section = parseSection(section, txt, r, options);
     sections.push(section);
   }
   return sections;

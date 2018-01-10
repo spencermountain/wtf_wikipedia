@@ -51,8 +51,11 @@ test('external links', t => {
   t.end();
 });
 
-test('refn template', t => {
+test('misc template', t => {
   var str = `hello {{refn|group=groupname|name=name|Contents of the footnote}} world`;
+  t.equal(wtf.parse(str).sections[0].sentences[0].text, 'hello world');
+
+  str = `hello {{tag|ref|content=haha}} world`;
   t.equal(wtf.parse(str).sections[0].sentences[0].text, 'hello world');
   t.end();
 });
