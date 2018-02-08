@@ -7,6 +7,7 @@ const defaults = {
   infoboxes: true,
   tables: true,
   lists: true,
+  title: true,
   images: true,
   links: true,
   formatting: true,
@@ -30,7 +31,7 @@ const doImage = (image) => {
 const doSection = (section, options) => {
   let md = '';
   //make the header
-  if (section.title) {
+  if (options.title === true && section.title) {
     let header = '##';
     for(let i = 0; i < section.depth; i += 1) {
       header += '#';

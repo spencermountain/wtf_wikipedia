@@ -5,8 +5,9 @@ const wtf = require('./src/index');
 
 function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
-  let md = wtf.markdown(str);
-  console.log(md);
+  // let md = wtf.markdown(str);
+  let html = wtf.html(str);
+  console.log(html);
 }
 // from_file('list');
 // from_file('bluejays');

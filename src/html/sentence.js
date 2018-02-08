@@ -1,23 +1,24 @@
 
-//create links, bold, italic in markdown
-const doSentence = (sentence, options) => {
-  let md = sentence.text;
+// create links, bold, italic in html
+const doSentence = function(sentence, options) {
+  let text = sentence.text;
   //turn links back into links
   if (sentence.links && options.links === true) {
     sentence.links.forEach((link) => {
       let href = '';
-      //if it's an external link, we good
+      let classNames = 'link';
       if (link.site) {
+        //use an external link
         href = link.site;
+        link += ' external';
       } else {
         //otherwise, make it a relative internal link
         href = link.page || link.text;
         href = './' + href.replace(/ /g, '_');
       }
-      let mdLink = '[' + link.text + '](' + href + ')';
-      md = md.replace(link.text, mdLink);
+      text = text.replace(link.text, '<a class="' + classNames + '" href="' + href + '">' + link.text + '</a>');
     });
   }
-  return md;
+  return text;
 };
 module.exports = doSentence;
