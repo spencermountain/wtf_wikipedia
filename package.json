@@ -21,29 +21,38 @@
     "wikipedia": "./bin/parse.js",
     "wikipedia_plaintext": "./bin/plaintext.js"
   },
-  "files": ["builds", "src", "bin"],
-  "keywords": ["wikipedia", "wikimedia", "wikipedia markup", "wikiscript"],
+  "files": [
+    "builds",
+    "src",
+    "bin"
+  ],
+  "keywords": [
+    "wikipedia",
+    "wikimedia",
+    "wikipedia markup",
+    "wikiscript"
+  ],
   "dependencies": {
     "jshashes": "^1.0.6",
-    "superagent": "^3.5.2"
+    "superagent": "^3.8.2"
   },
   "devDependencies": {
     "amble": "0.0.5",
     "babel-cli": "^6.10.1",
     "babel-plugin-transform-object-assign": "^6.8.0",
     "babel-preset-es2015": "6.24.1",
-    "babelify": "7.3.0",
+    "babelify": "8.0.0",
     "browserify": "14.4.0",
     "codacy-coverage": "^2.0.0",
     "derequire": "^2.0.3",
-    "eslint": "^4.5.0",
+    "eslint": "^4.17.0",
     "gaze": "^1.1.1",
     "nyc": "^8.4.0",
-    "shelljs": "^0.7.2",
+    "shelljs": "^0.8.1",
     "tap-min": "^1.2.1",
     "tap-spec": "4.1.1",
     "tape": "4.8.0",
-    "uglify-js": "3.0.28"
+    "uglify-js": "3.3.9"
   },
   "license": "MIT"
 }
