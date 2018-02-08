@@ -9,11 +9,11 @@ function from_file(page) {
   console.log(md);
 }
 // from_file('list');
-from_file('bluejays');
+// from_file('bluejays');
 // from_file('earthquakes');
 // from_file('al_Haytham');
 // from_file('redirect');
-// from_file('Toronto');
+from_file('Toronto');
 // from_file('royal_cinema');
 // from_file('Toronto_Star');
 // from_file('Radiohead');

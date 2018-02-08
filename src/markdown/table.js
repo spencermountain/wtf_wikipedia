@@ -1,5 +1,5 @@
 const doSentence = require('./sentence');
-const cellWidth = 15;
+const pad = require('./pad');
 /* this is a markdown table:
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
@@ -7,16 +7,6 @@ const cellWidth = 15;
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
 */
-
-//center-pad each cell, to make the table more legible
-const pad = (str) => {
-  let diff = cellWidth - str.length;
-  diff = parseInt(diff / 2, 10);
-  for(let i = 0; i < diff; i += 1) {
-    str = ' ' + str + ' ';
-  }
-  return str;
-};
 
 const makeRow = (arr) => {
   arr = arr.map(pad);

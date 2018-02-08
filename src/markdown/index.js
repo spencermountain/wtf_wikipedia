@@ -1,5 +1,6 @@
 const parse = require('../parse');
 const doTable = require('./table');
+const doInfobox = require('./infobox');
 const doSentence = require('./sentence');
 
 const defaults = {
@@ -10,11 +11,6 @@ const defaults = {
   links: true,
   formatting: true,
   sentences: true,
-};
-
-const doInfobox = (infobox, options) => {
-  let md = '';
-  return md;
 };
 
 const doList = (list, options) => {
@@ -44,14 +40,18 @@ const doSection = (section, options) => {
   //put any images under the header
   if (section.images && options.images === true) {
     md += section.images.map((img) => doImage(img)).join('\n');
+    md += '\n';
   }
   //make a mardown table
   if (section.tables && options.tables === true) {
+    md += '\n';
     md += section.tables.map((table) => doTable(table, options)).join('\n');
+    md += '\n';
   }
   //make a mardown bullet-list
   if (section.lists && options.lists === true) {
     md += section.lists.map((list) => doList(list, options)).join('\n');
+    md += '\n';
   }
   //finally, write the sentence text.
   if (section.sentences && options.sentences === true) {
