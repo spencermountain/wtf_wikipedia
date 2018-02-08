@@ -19,3 +19,7 @@
 * support longer ref tags
 * smarter disambiguation for interwiki links vs pages containing ':'
 * more support for various list syntaxes
+
+## 3.0.0
+* support for markdown output
+* add page 'title' to response, where possible.

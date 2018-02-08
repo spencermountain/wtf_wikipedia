@@ -1,4 +1,7 @@
-const parse = require('./parse');
+const parse = require('../parse');
+const doTable = require('./table');
+const doSentence = require('./sentence');
+
 const defaults = {
   infoboxes: true,
   tables: true,
@@ -13,39 +16,19 @@ const doInfobox = (infobox, options) => {
   let md = '';
   return md;
 };
-const doTable = (table) => {
-  let md = '';
-  return md;
-};
-const doImage = (image) => {
-  let md = '';
-  return md;
-};
-const doList = (list) => {
-  let md = '';
-  return md;
+
+const doList = (list, options) => {
+  return list.map((o) => {
+    let str = doSentence(o, options);
+    return ' * ' + str;
+  }).join('\n');
 };
 
-const doSentence = (sentence, options) => {
-  let md = sentence.text;
-  if (sentence.links) {
-    //turn links back into links
-    if (options.links === true) {
-      sentence.links.forEach((link) => {
-        let href = '';
-        //if it's an external link, we good
-        if (link.site) {
-          href = link.site;
-        } else {
-          //otherwise, make it a relative internal link
-          href = './' + link.page.replace(/ /g, '_');
-        }
-        let mdLink = '[' + link.text + '](' + href + ')';
-        md = md.replace(link.text, mdLink);
-      });
-    }
-  }
-  return md;
+//markdown images are like this: ![alt text](href)
+const doImage = (image) => {
+  let alt = image.file.replace(/^(file|image):/i, '');
+  alt = alt.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
+  return '![' + alt + '](' + image.thumb + ')';
 };
 
 const doSection = (section, options) => {
@@ -60,15 +43,15 @@ const doSection = (section, options) => {
   }
   //put any images under the header
   if (section.images && options.images === true) {
-    section.images.forEach((img) => {
-      md += doImage(img);
-    });
+    md += section.images.map((img) => doImage(img)).join('\n');
+  }
+  //make a mardown table
+  if (section.tables && options.tables === true) {
+    md += section.tables.map((table) => doTable(table, options)).join('\n');
   }
   //make a mardown bullet-list
   if (section.lists && options.lists === true) {
-    section.lists.forEach((list) => {
-      md += doList(list);
-    });
+    md += section.lists.map((list) => doList(list, options)).join('\n');
   }
   //finally, write the sentence text.
   if (section.sentences && options.sentences === true) {
