@@ -22,4 +22,6 @@
 
 ## 3.0.0
 * support for markdown output
+* support for html output
 * add page 'title' to response, where possible.
+* better support for capturing the `[[link]]'s` syntax

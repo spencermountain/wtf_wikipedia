@@ -1,5 +1,5 @@
 const helpers = require('../../../lib/helpers');
-const link_reg = /\[\[(.{2,80}?)\]\](\w{0,10})/g;
+const link_reg = /\[\[(.{2,80}?)\]\]('s)?(\w{0,10})/g;
 const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i;
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
 
@@ -18,7 +18,7 @@ const external_links = function(links, str) {
 
 const internal_links = function(links, str) {
   //regular links
-  str.replace(link_reg, function(_, s) {
+  str.replace(link_reg, function(_, s, apostrophe) {
     var link,
       txt;
     if (s.match(/\|/)) {
@@ -49,6 +49,10 @@ const internal_links = function(links, str) {
       page: helpers.capitalise(link),
       text: txt || link
     };
+    //finally, support [[link]]'s apostrophe
+    if (apostrophe) {
+      obj.text += apostrophe;
+    }
     links.push(obj);
     return s;
   });

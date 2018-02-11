@@ -4,18 +4,18 @@ const formatting = function(obj) {
   let bolds = [];
   let italics = [];
   let wiki = obj.text || '';
-  //bold and italics combined
+  //bold and italics combined 5 's
   wiki = wiki.replace(/''{4}([^']{0,200})''{4}/g, (a, b) => {
     bolds.push(b);
     italics.push(b);
     return b;
   });
-  //bold
+  //'''bold'''
   wiki = wiki.replace(/''{2}([^']{0,200})''{2}/g, (a, b) => {
     bolds.push(b);
     return b;
   });
-  //italic
+  //''italic''
   wiki = wiki.replace(/''([^']{0,200})''/g, (a, b) => {
     italics.push(b);
     return b;
