@@ -9,6 +9,7 @@ const abbreviations = require('../../../data/abbreviations');
 const abbrev_reg = new RegExp('(^| )(' + abbreviations.join('|') + ')[.!?] ?$', 'i');
 const acronym_reg = new RegExp('[ |.][A-Z].? +?$', 'i');
 const elipses_reg = new RegExp('\\.\\.\\.* +?$');
+const hasWord = new RegExp('[a-z][a-z]', 'i');
 
 //turn a nested array into one array
 const flatten = function(arr) {
@@ -75,7 +76,6 @@ const sentence_parser = function(text) {
         splits[i + 1] = s + splits[i + 1];
         continue;
       }
-      //else, only whitespace, no terms, no sentence
     }
     chunks.push(s);
   }
@@ -83,6 +83,10 @@ const sentence_parser = function(text) {
   //detection of non-sentence chunks
   const isSentence = function(hmm) {
     if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg)) {
+      return false;
+    }
+    //too short? - no consecutive letters
+    if (hasWord.test(hmm) === false) {
       return false;
     }
     if (!isBalanced(hmm)) {

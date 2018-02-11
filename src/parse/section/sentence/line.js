@@ -1,5 +1,6 @@
 const helpers = require('../../../lib/helpers');
-const parse_links = require('./links');
+const parseLinks = require('./links');
+const parseFmt = require('./formatting');
 const i18n = require('../../../data/i18n');
 const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]', 'gi');
 
@@ -34,10 +35,13 @@ function parse_line(line) {
   let obj = {
     text: postprocess(line)
   };
-  let links = parse_links(line);
+  //pull-out the [[links]]
+  let links = parseLinks(line);
   if (links) {
     obj.links = links;
   }
+  //pull-out the bolds and ''italics''
+  obj = parseFmt(obj);
   return obj;
 }
 
