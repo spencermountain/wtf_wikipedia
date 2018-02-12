@@ -67,7 +67,7 @@ const toMarkdown = function(str, options) {
   let md = '';
   //add the title on the top
   if (data.title) {
-    md += '# ' + data.title;
+    md += '# ' + data.title + '\n';
   }
   //render infoboxes (up at the top)
   if (options.infoboxes === true && data.infoboxes) {
