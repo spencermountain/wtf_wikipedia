@@ -1,8 +1,15 @@
 
-//sometimes text-replacements can be ambiguous
+//sometimes text-replacements can be ambiguous - words used multiple times..
 const bestReplace = function(md, text, result) {
+  //try a word-boundary replace
   let reg = new RegExp('\\b' + text + '\\b');
-  md = md.replace(reg, result);
+  if (reg.test(md) === true) {
+    md = md.replace(reg, result);
+  } else {
+    //otherwise, fall-back to a much messier, dangerous replacement
+    console.warn('missing \'' + text + '\'');
+  // md = md.replace(text, result);
+  }
   return md;
 };
 
@@ -30,11 +37,18 @@ const doSentence = (sentence, options) => {
     sentence.links.forEach((link) => {
       md = doLink(md, link);
     });
-    if (sentence.fmt.bold) {
-      sentence.fmt.bold.forEach((b) => {
-        console.log(b);
-      });
-    }
+  }
+  //turn bolds into **bold**
+  if (sentence.fmt.bold) {
+    sentence.fmt.bold.forEach((b) => {
+      md = bestReplace(md, b, '**' + b + '**');
+    });
+  }
+  //support *italics*
+  if (sentence.fmt.italic) {
+    sentence.fmt.italic.forEach((i) => {
+      md = bestReplace(md, i, '*' + i + '*');
+    });
   }
   return md;
 };

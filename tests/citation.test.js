@@ -11,8 +11,10 @@ test('basic-citation', t => {
   t.equal('http://thewalrus.ca/the-princess-of-pot/', arr[0].url, 'url');
   t.end();
 });
+
 test('complex-citation', t => {
-  var str = `Emery is a vegetarian,<ref name="fun">{{ cite web|foo =    bar\n| url=http://cool.com/?fun=cool/}}</ref>`;
+  var str = `Emery is a vegetarian,<ref name="fun">{{ cite web|foo =    bar
+| url=http://cool.com/?fun=cool/}}</ref>`;
   var arr = wtf.parse(str).citations;
   t.equal(1, arr.length, 'found-one-citation');
   t.equal('web', arr[0].cite, 'cite web');
@@ -20,6 +22,7 @@ test('complex-citation', t => {
   t.equal('http://cool.com/?fun=cool/', arr[0].url, 'url');
   t.end();
 });
+
 test('multiple-citations', t => {
   var str = `hello {{citation |url=cool.com/?fun=yes/   }}{{CITE book |title=the killer and the cartoons }}`;
   var arr = wtf.parse(str).citations;

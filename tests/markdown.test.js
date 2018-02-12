@@ -14,10 +14,19 @@ test('basic-markdown', t => {
   md = wtf.markdown('hello [[Image:1930s Toronto KingStreetWnearYork.jpg|thumb|right|250px]] world');
   t.equal(md, `![1930s Toronto KingStreetWnearYork](https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/1930s_Toronto_KingStreetWnearYork.jpg/300px-1930s_Toronto_KingStreetWnearYork.jpg)
 hello world`, 'image');
+
+  md = wtf.markdown(`he is ''really good''`);
+  t.equal(md, 'he is *really good*', 'multi-word italic');
+
+  md = wtf.markdown(`he is '''really good'''`);
+  t.equal(md, 'he is **really good**', 'multi-word bold');
+
+  md = wtf.markdown(`he is '''''really good'''''`);
+  t.equal(md, 'he is ***really good***', 'bold+italics');
   t.end();
 });
 
-test('tricky-markdown', t => {
+test('markdown-tricks', t => {
   let md = wtf.markdown('the is [[he]] nice');
   t.equal(md, 'the is [he](./He) nice', 'matches whole-word');
 
@@ -26,6 +35,9 @@ test('tricky-markdown', t => {
 
   md = wtf.markdown('stim\'s is [[tim]]\'s son');
   t.equal(md, 'stim\'s is [tim\'s](./Tim) son', 'matches with apostrophe');
+
+  md = wtf.markdown(`we put the '''e''' in team`);
+  t.equal(md, 'we put the **e** in team', 'fmt supports smartReplace');
 
   t.end();
 });

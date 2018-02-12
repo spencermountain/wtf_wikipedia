@@ -32,5 +32,4 @@ function from_file(page) {
 // from_file('K.-Nicole-Mitchell');
 // from_file('United-Kingdom');
 
-console.log(wtf.parse('stim\'s is [[tim]]\'s son').sections[0].sentences[0]);
-// console.log(wtf.markdown('stim\'s is [[tim]]\'s son'));
+console.log(wtf.markdown(`he is '''''really good'''''`));
