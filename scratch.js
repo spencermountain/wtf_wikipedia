@@ -27,11 +27,10 @@ function from_file(page) {
 // from_file('Toronto');
 // from_file('royal_cinema');
 // from_file('Toronto_Star');
+from_file('royal_cinema');
 // from_file('Radiohead');
 // from_file('Jodie_Emery');
 // from_file('Redirect')
 // from_file("Africaans")
 // from_file('K.-Nicole-Mitchell');
 // from_file('United-Kingdom');
-
-console.log(wtf.markdown(`he is '''really good'''`));
