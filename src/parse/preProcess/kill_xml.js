@@ -7,7 +7,10 @@ const hasCitation = function(str) {
   return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false;
 };
 //handle unstructured ones - <ref>some text</ref>
-const parseInline = function(str, r) {
+const parseInline = function(str, r, options) {
+  if (options.citations === false) {
+    return;
+  }
   let obj = parseLine(str) || {};
   let cite = {
     cite: 'inline',
@@ -22,14 +25,14 @@ const parseInline = function(str, r) {
   r.citations.push(cite);
 };
 
-const kill_xml = function(wiki, r) {
+const kill_xml = function(wiki, r, options) {
   //luckily, refs can't be recursive..
   // <ref></ref>
   wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
-      wiki = parseCitation(tmpl, wiki, r);
+      wiki = parseCitation(tmpl, wiki, r, options);
     } else {
-      parseInline(tmpl, r);
+      parseInline(tmpl, r, options);
     }
     return ' ';
   });
@@ -38,21 +41,15 @@ const kill_xml = function(wiki, r) {
   // <ref name=""></ref>
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1000}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
-      wiki = parseCitation(tmpl, wiki, r);
+      wiki = parseCitation(tmpl, wiki, r, options);
     } else {
-      parseInline(tmpl, r);
+      parseInline(tmpl, r, options);
     }
     return ' ';
   });
   //other types of xml that we want to trash completely
-
-  wiki = wiki.replace(
-    /< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi,
-    ' '
-  ); // <table name=""><tr>hi</tr></table>
-
+  wiki = wiki.replace(/< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi, ' '); // <table name=""><tr>hi</tr></table>
   //some xml-like fragments we can also kill
-  //
   wiki = wiki.replace(/ ?< ?(ref|span|div|table|data) [a-z0-9=" ]{2,20}\/ ?> ?/g, ' '); //<ref name="asd"/>
   //some formatting xml, we'll keep their insides though
   wiki = wiki.replace(/ ?<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?> ?/g, ' '); //<sub>, </sub>

@@ -1,7 +1,10 @@
 //
-const parseCitation = function(str, wiki, r) {
+const parseCitation = function(str, wiki, r, options) {
   //remove it from main
   wiki = wiki.replace(str, '');
+  if (options.citations === false) {
+    return wiki;
+  }
   //trim start {{ and
   //trim end }}
   str = str.replace(/^\{\{ *?/, '');

@@ -32,10 +32,9 @@ const parse_recursive = function(r, wiki, options) {
       if (/^\{\{ ?citation needed/i.test(tmpl) === true) {
         name = 'citation needed';
       }
-
       //parse {{cite web ...}} (it appears every language)
       if (name === 'cite' || name === 'citation') {
-        wiki = parseCitation(tmpl, wiki, r);
+        wiki = parseCitation(tmpl, wiki, r, options);
         return;
       }
 

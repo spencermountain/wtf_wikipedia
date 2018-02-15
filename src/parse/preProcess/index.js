@@ -2,7 +2,7 @@ const kill_xml = require('./kill_xml');
 const wordTemplates = require('./word_templates');
 
 //this mostly-formatting stuff can be cleaned-up first, to make life easier
-function preProcess(r, wiki) {
+function preProcess(r, wiki, options) {
   //remove comments
   wiki = wiki.replace(/<!--[^>]{0,2000}-->/g, '');
   wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, '');
@@ -19,7 +19,7 @@ function preProcess(r, wiki) {
   //expand inline templates like {{date}}
   wiki = wordTemplates(wiki, r);
   //give it the inglorious send-off it deserves..
-  wiki = kill_xml(wiki, r);
+  wiki = kill_xml(wiki, r, options);
   //({{template}},{{template}}) leaves empty parentheses
   wiki = wiki.replace(/\( \)/g, '');
   return wiki;

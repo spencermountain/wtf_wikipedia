@@ -5,12 +5,14 @@ const wtf = require('./src/index');
 
 function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
-  let md = wtf.markdown(str, {
-    infoboxes: false
-  });
-// let html = wtf.html(str);
-// console.log(wtf.parse(page));
-// console.log(md);
+  let options = {
+    images: false,
+    categories: false,
+    citations: false,
+    infoboxes: false,
+  };
+  let r = wtf.parse(str, options);
+  console.log(r);
 }
 
 // wtf.from_api('Hardi class destroyer', 'en', function(markup) {
@@ -32,7 +34,4 @@ function from_file(page) {
 // from_file('K.-Nicole-Mitchell');
 // from_file('United-Kingdom');
 
-console.log(wtf.markdown(`and the ''[[National Post]]''`));
-
-// console.log(wtf.markdown(`and [[Teiaiagon]]ons the banks`));
-// console.log(wtf.markdown(`including [[400-series highways|highway]]s`));
+console.log(wtf.markdown(`he is '''really good'''`));

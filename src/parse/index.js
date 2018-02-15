@@ -28,9 +28,7 @@ const main = function(wiki, options) {
     categories: [],
     images: [],
     coordinates: [],
-    citations: [],
-    page_identifier: null,
-    lang_or_wikiid: null
+    citations: []
   };
   if (options.custom) {
     r.custom = {};
@@ -42,11 +40,13 @@ const main = function(wiki, options) {
     r.lang_or_wikiid = options.lang_or_wikiid;
   }
   //give ourselves a little head-start
-  wiki = preProcess(r, wiki);
+  wiki = preProcess(r, wiki, options);
   //pull-out infoboxes and stuff
   wiki = parse.infobox(r, wiki, options);
   //pull-out [[category:whatevers]]
-  wiki = parse.categories(r, wiki);
+  if (options.categories !== false) {
+    wiki = parse.categories(r, wiki);
+  }
   //parse all the headings, and their texts/sentences
   r.sections = parse.section(r, wiki, options) || [];
 
