@@ -7,7 +7,6 @@ const regs = {
 //just some easy, supported ones
 const parseTemplates = function(section, wiki) {
   let templates = {};
-
   //{{main|toronto}}
   let main = wiki.match(regs.main);
   if (main) {

@@ -5,12 +5,7 @@ const parseCitation = require('./citation');
 
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 //dont remove these ones
-const keep = {
-  main: true,
-  'main article': true,
-  'wide image': true,
-  coord: true
-};
+const keep = require('../section/templates/list');
 
 //reduce the scary recursive situations
 const parse_recursive = function(r, wiki, options) {
@@ -30,6 +25,7 @@ const parse_recursive = function(r, wiki, options) {
     let name = tmpl.match(/^\{\{([^:|\n ]+)/);
     if (name !== null) {
       name = name[1].trim().toLowerCase();
+      name = name.replace(/-/g, ' ');
       //
       if (/^\{\{ ?citation needed/i.test(tmpl) === true) {
         name = 'citation needed';
@@ -47,7 +43,7 @@ const parse_recursive = function(r, wiki, options) {
           wiki = wiki.replace(tmpl, inside[1]);
         }
       }
-      if (keep[name] === true) {
+      if (keep.hasOwnProperty(name) === true) {
         return;
       }
     }

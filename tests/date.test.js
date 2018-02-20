@@ -2,7 +2,7 @@
 var test = require('tape');
 const wtf = require('./lib');
 
-test('birth/death date templates', t => {
+test('birth/death templates', t => {
   let arr = [
     ['{{Birth date|1993|2|24}}', 'February 24, 1993'],
     ['{{Birth date|1993|2|4|df=yes}}', 'February 4, 1993'],
