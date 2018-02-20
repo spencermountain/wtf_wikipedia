@@ -5,7 +5,7 @@ const parseCitation = require('./citation');
 
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 //dont remove these ones
-const keep = require('../section/templates/list');
+const keep = require('../section/sentence/templates/list');
 
 //reduce the scary recursive situations
 const parse_recursive = function(r, wiki, options) {

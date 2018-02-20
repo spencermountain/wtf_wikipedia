@@ -35,4 +35,4 @@ function from_file(page) {
 // from_file('K.-Nicole-Mitchell');
 // from_file('United-Kingdom');
 
-console.log(wtf.parse('born in {{Birth-date|1919|12|4|df=yes}}').sections[0].sentences[0]);
+console.log(wtf.parse('{{main|cool}} he was born in {{Birth date|1919|12|4|df=yes}}. \n{{wide image|yes.png}} It was cool!').sections[0].sentences[0]);

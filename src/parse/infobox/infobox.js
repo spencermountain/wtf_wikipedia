@@ -1,6 +1,5 @@
-'use strict';
 const trim = require('../../lib/helpers').trim_whitespace;
-const parse_line = require('../section/sentence/line');
+const parseLine = require('../section/sentence').parseLine;
 const findRecursive = require('../../lib/recursive_match');
 const i18n = require('../../data/i18n');
 const infobox_template_reg = new RegExp('{{(?:' + i18n.infoboxes.join('|') + ')\\s*(.*)', 'i');
@@ -70,7 +69,7 @@ const parse_infobox = function(str) {
       delete obj[k];
       return;
     }
-    obj[k] = parse_line(obj[k]);
+    obj[k] = parseLine(obj[k]);
     if (obj[k].text && obj[k].text.match(/^[0-9,]*$/)) {
       obj[k].text = obj[k].text.replace(/,/, '');
       obj[k].text = parseInt(obj[k].text, 10);

@@ -1,6 +1,8 @@
 const helpers = require('../../../lib/helpers');
 const parseLinks = require('./links');
 const parseFmt = require('./formatting');
+const templates = require('./templates');
+const sentenceParser = require('./sentence-parser');
 const i18n = require('../../../data/i18n');
 const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]', 'gi');
 
@@ -31,7 +33,7 @@ function postprocess(line) {
   return line;
 }
 
-function parse_line(line) {
+function parseLine(line) {
   let obj = {
     text: postprocess(line)
   };
@@ -42,7 +44,19 @@ function parse_line(line) {
   }
   //pull-out the bolds and ''italics''
   obj = parseFmt(obj);
+  //pull-out things like {{start date|...}}
+  obj = templates(obj);
   return obj;
 }
 
-module.exports = parse_line;
+const parseSentences = function(r, wiki) {
+  let sentences = sentenceParser(wiki);
+  sentences = sentences.map(parseLine);
+  r.sentences = sentences;
+  return r;
+};
+
+module.exports = {
+  eachSentence: parseSentences,
+  parseLine: parseLine
+};

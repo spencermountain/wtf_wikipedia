@@ -1,5 +1,5 @@
-const parse = require('../parse');
-const doSentence = require('./sentence');
+const parse = require('../../parse');
+const doSentence = require('./sentence').doSentence;
 // const doInfobox = require('../doInfobox');
 
 const defaults = {
