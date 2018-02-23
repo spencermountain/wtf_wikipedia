@@ -44,6 +44,8 @@ const word_templates = function(wiki, r) {
     tmpl = tmpl.replace(/^\{\{refn\|([^|]+).*?\}\}/gi, '$1');
     //'tag' escaped thing.
     tmpl = tmpl.replace(/^\{\{#?tag\|([^|]+).*?\}\}/gi, '');
+    // these are nuts {{OldStyleDate}}
+    tmpl = tmpl.replace(/^\{\{OldStyleDate\|([^|]+).*?\}\}/gi, '');
     //'harvard references'
     //{{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}}
     let coord = tmpl.match(/^\{\{coord\|(.*?)\}\}/i);

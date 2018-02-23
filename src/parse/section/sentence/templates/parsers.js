@@ -47,11 +47,6 @@ const parsers = {
   natural_date: (tmpl, obj) => {
     let arr = tmpl.split('|');
     let str = arr[1] || '';
-    // support  '{{Birth-date and age|1941-04-12|Twelfth of April, 1941}}'
-    if (arr[2]) {
-      str = arr[2];
-    }
-
     // - just a year
     let date = {};
     if (/^[0-9]{4}$/.test(arr[1])) {
@@ -67,7 +62,7 @@ const parsers = {
     }
     obj.dates = obj.dates || [];
     obj.dates.push(date);
-    return str;
+    return str.trim();
   }
 };
 module.exports = parsers;

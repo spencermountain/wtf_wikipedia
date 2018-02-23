@@ -6,10 +6,10 @@ test('generic date templates', t => {
   let arr = [
     ['{{Birth date|1993|2|24}}', 'February 24, 1993'],
     ['{{Birth date|1993|2|4|df=yes}}', 'February 4, 1993'],
-    ['{{Birth-date|1919|12|4|df=yes}}', 'December 4, 1919'],
+    ['{{Birth date|1919|12|4|df=yes}}', 'December 4, 1919'],
     ['{{Death date|1993|2|4}}', 'February 4, 1993'],
-    ['{{Death-date|1919|12|4|df=yes}}', 'December 4, 1919'],
-    ['{{Death-date|1642|1|30|mf=yes}}', 'January 30, 1642'],
+    ['{{Death date|1919|12|4|df=yes}}', 'December 4, 1919'],
+    ['{{Death date|1642|1|30|mf=yes}}', 'January 30, 1642'],
 
     ['{{dob|1997|3|14|df=yes}}', 'March 14, 1997'],
     ['{{Bda|1992|3|4|df=yes}}', 'March 4, 1992'],
@@ -26,13 +26,22 @@ test('generic date templates', t => {
   t.end();
 });
 
-test('other date templates', t => {
+test('hyphenated language-date templates', t => {
   let arr = [
-    ['{{Birth-date and age|1941-04-12|Twelfth of April, 1941}}', 'Twelfth of April, 1941'],
+    ['{{start-date|December 7, 1942}}', 'December 7, 1942'],
+    ['{{birth-date|7 December 1941}}', '7 December 1941'],
+    ['{{end-date|7 December 1941}}', '7 December 1941'],
+    ['{{start-date|5:43PM HST, December 7th, 1941|tz=y}}', '5:43PM HST, December 7th, 1941'],
+    ['{{start-date|December 8, 1941 12:50PM Australia/Adelaide|tz=y}}', 'December 8, 1941 12:50PM Australia/Adelaide'],
+    // ['{{Birth-date and age|1941-04-12|Twelfth of April, 1941}}', 'Twelfth of April, 1941'],
     ['{{Birth-date and age|April 12, 1941}}', 'April 12, 1941'],
     ['{{Birth-date and age|12 April 1941}}', '12 April 1941'],
     ['{{Birth-date and age|1941}}', '1941'],
-    ['{{Birth-date and age|1941-04-12|Twelfth of April, 1941}}', 'Twelfth of April, 1941'],
+    ['{{start-date|7 March 2011}}', '7 March 2011'],
+    ['born on {{birth-date|17 June 1941}}', 'born on 17 June 1941'],
+    ['{{end-date|December 8 2000}}', 'December 8 2000'],
+    ['around {{start-date|5:43PM HST, December 7th, 1941|tz=y}} this century', 'around 5:43PM HST, December 7th, 1941 this century'],
+    ['{{start-date| December 8, 1941 12:30PM Asia/Manila }}', 'December 8, 1941 12:30PM Asia/Manila'],
     // ['{{Death-date and given age|2018|2|5|df=yes}}', 'February 5, 2018'],
     // ['{{birth date and age2 |1988|6|10 |1961|7|4 |df=y}}', '4 July 1961'],
     // ['{{Birth year and age|1963}}', '1963'],
@@ -53,11 +62,6 @@ test('other date templates', t => {
     // ['{{BirthDeathAge|{{^}}|1976|{{^}}|{{^}}|2007|1|1}}', 'January 1, 2007'],
     //
     //
-    // ['{{start-date|7 December 1941}}', '7 December 1941'],
-    // ['{{birth-date|7 December 1941}}', '7 December 1941'],
-    // ['{{end-date|7 December 1941}}', '7 December 1941'],
-    // ['{{start-date|5:43PM HST, December 7th, 1941|tz=y}}', '5:43PM HST, December 7th, 1941'],
-    // ['{{start-date|December 8, 1941 12:30PM Asia/Manila }}', 'December 8, 1941 12:30PM Asia/Manila'],
 
     // ['{{Birth date based on age at death |age |1986|03|28}}', 'March 28, 1986'],
     // ['{{birth based on age as of date | 50 | 2017 | 02 | 16}}', '1966/1967']

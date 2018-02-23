@@ -23,8 +23,7 @@ const parse_recursive = function(r, wiki, options) {
     let name = tmpl.match(/^\{\{([^:|\n ]+)/);
     if (name !== null) {
       name = name[1].trim().toLowerCase();
-      name = name.replace(/-/g, ' ');
-      //
+
       if (/^\{\{ ?citation needed/i.test(tmpl) === true) {
         name = 'citation needed';
       }

@@ -36,4 +36,4 @@ const wtf = require('./src/index');
 // from_file('United-Kingdom');
 
 
-console.log(wtf.parse('he was born in {{Birth-date and age|12 April 1941}}.').sections[0].sentences[0]);
+console.log(wtf.parse('born {{start-date|December 8, 1941 12:30PM Asia/Manila }}').sections[0].sentences[0]);
