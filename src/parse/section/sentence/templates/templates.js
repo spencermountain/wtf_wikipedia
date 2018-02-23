@@ -14,11 +14,16 @@ const keep = {
   'end date': 'date',
   'birth date': 'date',
   'death date': 'date',
+  'start date and age': 'date',
+  'end date and age': 'date',
   'birth date and age': 'date',
   'death date and age': 'date',
   'birth date and given age': 'date',
   'death date and given age': 'date',
-  //this is insane
+  'birth year and age': 'one_value',
+  'death year and age': 'one_value',
+
+  //this is insane (hyphen ones are different)
   'start-date': 'natural_date',
   'end-date': 'natural_date',
   'birth-date': 'natural_date',

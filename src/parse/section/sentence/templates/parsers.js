@@ -63,6 +63,12 @@ const parsers = {
     obj.dates = obj.dates || [];
     obj.dates.push(date);
     return str.trim();
+  },
+
+  one_value: (tmpl, obj) => {
+    let arr = tmpl.split('|');
+    let str = arr[1] || '';
+    return str;
   }
 };
 module.exports = parsers;
