@@ -36,4 +36,4 @@ const wtf = require('./src/index');
 // from_file('United-Kingdom');
 
 
-console.log(wtf.parse('{{Start date and age|1997|03|26}}').sections[0].sentences[0]);
+console.log(wtf.parse('{{start date|1993|02|24|08|||+01:00}}').sections[0].sentences[0]);

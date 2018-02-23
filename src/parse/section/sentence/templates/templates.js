@@ -20,8 +20,8 @@ const keep = {
   'death date and age': 'date',
   'birth date and given age': 'date',
   'death date and given age': 'date',
-  'birth year and age': 'one_value',
-  'death year and age': 'one_value',
+  'birth year and age': 'one_year',
+  'death year and age': 'one_year',
 
   //this is insane (hyphen ones are different)
   'start-date': 'natural_date',
@@ -33,6 +33,8 @@ const keep = {
   'death-date and age': 'natural_date',
   'death-date and given age': 'natural_date',
 
+  'birthdeathage': 'two_dates',
+
 
 
   // 'birth date and age2': 'date',
@@ -43,7 +45,6 @@ const keep = {
   // 'start date': 'date',
   // 'end date': 'date',
   // 'start date and age': 'date',
-  // birthdeathage: 'date',
   dob: 'date',
   bda: 'date',
   // 'age': 'date',
