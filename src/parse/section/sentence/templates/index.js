@@ -7,6 +7,7 @@ const getName = function(tmpl) {
   tmpl = tmpl.replace(/\}\}$/, '');
   let name = tmpl.split(/\|/)[0] || '';
   name = name.toLowerCase().trim();
+  // name = name.replace(/-/g, ' ');
   return name;
 };
 

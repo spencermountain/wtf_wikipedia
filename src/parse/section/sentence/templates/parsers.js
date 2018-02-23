@@ -41,6 +41,33 @@ const parsers = {
     obj.dates = obj.dates || [];
     obj.dates.push(date);
     return str;
+  },
+
+  //support parsing of 'February 10, 1992'
+  natural_date: (tmpl, obj) => {
+    let arr = tmpl.split('|');
+    let str = arr[1] || '';
+    // support  '{{Birth-date and age|1941-04-12|Twelfth of April, 1941}}'
+    if (arr[2]) {
+      str = arr[2];
+    }
+
+    // - just a year
+    let date = {};
+    if (/^[0-9]{4}$/.test(arr[1])) {
+      date.year = parseInt(arr[1], 10);
+    } else {
+      //parse the date, using the js date object (for now?)
+      let d = new Date(arr[1]);
+      if (isNaN(d.getTime()) === false) {
+        date.year = d.getFullYear();
+        date.month = d.getMonth() + 1;
+        date.date = d.getDate();
+      }
+    }
+    obj.dates = obj.dates || [];
+    obj.dates.push(date);
+    return str;
   }
 };
 module.exports = parsers;

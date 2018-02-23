@@ -44,13 +44,13 @@ const doSentence = (sentence, options) => {
     });
   }
   //turn bolds into **bold**
-  if (sentence.fmt.bold) {
+  if (sentence.fmt && sentence.fmt.bold) {
     sentence.fmt.bold.forEach((b) => {
       md = bestReplace(md, b, '**' + b + '**');
     });
   }
   //support *italics*
-  if (sentence.fmt.italic) {
+  if (sentence.fmt && sentence.fmt.italic) {
     sentence.fmt.italic.forEach((i) => {
       md = bestReplace(md, i, '*' + i + '*');
     });
