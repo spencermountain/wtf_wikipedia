@@ -1,9 +1,9 @@
 //templates we support
 const keep = {
-  main: true,
+  'main': true,
   'main article': true,
   'wide image': true,
-  coord: true,
+  'coord': true,
 
   //date/age/time templates
   'start': 'date',
@@ -34,27 +34,18 @@ const keep = {
   'death-date and given age': 'natural_date',
 
   'birthdeathage': 'two_dates',
-
-
-
+  'dob': 'date',
+  'bda': 'date',
   // 'birth date and age2': 'date',
-  // 'birth date and given age': 'date',
-  // 'death date and age': 'date',
-  // 'death date and given age': 'date',
-  // 'death year and age': 'date',
-  // 'start date': 'date',
-  // 'end date': 'date',
-  // 'start date and age': 'date',
-  dob: 'date',
-  bda: 'date',
-  // 'age': 'date',
 
-  // 'age nts': true,
-  // 'age in years, months and days': true,
-  // 'age in years and months': true,
-  // 'age in years and days': true,
+  'age': 'age',
+  'age nts': 'age',
+  'age in years': 'diff-y',
+  'age in years and months': 'diff-ym',
+  'age in years, months and days': 'diff-ymd',
+  'age in years and days': 'diff-yd',
+  'age in days': 'diff-d',
   // 'age in years, months, weeks and days': true,
-  // 'age in days': true,
   // 'age as of date': true,
 
 

@@ -1,22 +1,4 @@
-//escape a string like 'fun*2.Co' for a regExpr
-function escapeRegExp(str) {
-  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
-}
-
-//sometimes text-replacements can be ambiguous - words used multiple times..
-const bestReplace = function(md, text, result) {
-  text = escapeRegExp(text);
-  //try a word-boundary replace
-  let reg = new RegExp('\\b' + text + '\\b');
-  if (reg.test(md) === true) {
-    md = md.replace(reg, result);
-  } else {
-    //otherwise, fall-back to a much messier, dangerous replacement
-    // console.warn('missing \'' + text + '\'');
-    md = md.replace(text, result);
-  }
-  return md;
-};
+const smartReplace = require('../lib').smartReplace;
 
 // add `[text](href)` to the text
 const doLink = function(md, link) {
@@ -30,7 +12,7 @@ const doLink = function(md, link) {
     href = './' + href.replace(/ /g, '_');
   }
   let mdLink = '[' + link.text + '](' + href + ')';
-  md = bestReplace(md, link.text, mdLink);
+  md = smartReplace(md, link.text, mdLink);
   return md;
 };
 
@@ -46,13 +28,13 @@ const doSentence = (sentence, options) => {
   //turn bolds into **bold**
   if (sentence.fmt && sentence.fmt.bold) {
     sentence.fmt.bold.forEach((b) => {
-      md = bestReplace(md, b, '**' + b + '**');
+      md = smartReplace(md, b, '**' + b + '**');
     });
   }
   //support *italics*
   if (sentence.fmt && sentence.fmt.italic) {
     sentence.fmt.italic.forEach((i) => {
-      md = bestReplace(md, i, '*' + i + '*');
+      md = smartReplace(md, i, '*' + i + '*');
     });
   }
   return md;

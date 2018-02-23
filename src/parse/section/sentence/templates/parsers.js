@@ -1,75 +1,22 @@
-const months = [
-  undefined, //1-based months.. :/
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+const dates = require('./dates');
+const ymd = dates.ymd;
+const toText = dates.toText;
+const delta = require('./delta_date');
 
-//parse year|month|date numbers
-const ymd = function(arr) {
-  let obj = {};
-  let units = ['year', 'month', 'date', 'hour', 'minute', 'second'];
-  for(let i = 0; i < units.length; i += 1) {
-    if (!arr[i] && arr[1] !== 0) {
-      continue;
-    }
-    obj[units[i]] = parseInt(arr[i], 10);
-    if (isNaN(obj[units[i]])) {
-      delete obj[units[i]];
-    }
+const getBoth = function(tmpl) {
+  let arr = tmpl.split('|');
+  let from = ymd(arr.slice(1, 4));
+  let to = arr.slice(4, 7);
+  //assume now, if 'to' is empty
+  if (to.length === 0) {
+    let d = new Date();
+    to = [d.getFullYear(), d.getMonth(), d.getDate()];
   }
-  //try for timezone,too ftw
-  let last = arr[arr.length - 1] || '';
-  if (last.toLowerCase() === 'z') {
-    obj.tz = 'UTC';
-  } else if (/[+-][0-9]+:[0-9]/.test(last)) {
-    obj.tz = arr[6];
-  }
-  return obj;
-};
-
-//zero-pad a number
-const pad = function(num) {
-  if (num < 10) {
-    return '0' + num;
-  }
-  return String(num);
-};
-
-const toText = function(date) {
-  //eg '1995'
-  let str = String(date.year) || '';
-  if (date.month !== undefined && months.hasOwnProperty(date.month) === true) {
-    if (date.date === undefined) {
-      //January 1995
-      str = `${months[date.month]} ${date.year}`;
-    } else {
-      //January 5, 1995
-      str = `${months[date.month]} ${date.date}, ${date.year}`;
-      //add times, if available
-      if (date.hour !== undefined && date.minute !== undefined) {
-        let time = `${pad(date.hour)}:${pad(date.minute)}`;
-        if (date.second !== undefined) {
-          time = time + ':' + pad(date.second);
-        }
-        str = time + ', ' + str;
-      //add timezone, if there, at the end in brackets
-      }
-      if (date.tz) {
-        str += ` (${date.tz})`;
-      }
-    }
-  }
-  return str;
+  to = ymd(to);
+  return {
+    from: from,
+    to: to
+  };
 };
 
 const parsers = {
@@ -135,6 +82,91 @@ const parsers = {
     obj.dates = obj.dates || [];
     obj.dates.push(date);
     return toText(date);
-  }
+  },
+
+  'age': (tmpl) => {
+    let d = getBoth(tmpl);
+    let diff = delta(d.from, d.to);
+    return diff.years || 0;
+  },
+
+  'diff-y': (tmpl) => {
+    let d = getBoth(tmpl);
+    let diff = delta(d.from, d.to);
+    if (diff.years === 1) {
+      return diff.years + ' year';
+    }
+    return (diff.years || 0) + ' years';
+  },
+  'diff-ym': (tmpl) => {
+    let d = getBoth(tmpl);
+    let diff = delta(d.from, d.to);
+    let arr = [];
+    if (diff.years === 1) {
+      arr.push(diff.years + ' year');
+    } else if (diff.years && diff.years !== 0) {
+      arr.push(diff.years + ' years');
+    }
+    if (diff.months === 1) {
+      arr.push('1 month');
+    } else if (diff.months && diff.months !== 0) {
+      arr.push(diff.months + ' months');
+    }
+    return arr.join(', ');
+  },
+  'diff-ymd': (tmpl) => {
+    let d = getBoth(tmpl);
+    let diff = delta(d.from, d.to);
+    let arr = [];
+    if (diff.years === 1) {
+      arr.push(diff.years + ' year');
+    } else if (diff.years && diff.years !== 0) {
+      arr.push(diff.years + ' years');
+    }
+    if (diff.months === 1) {
+      arr.push('1 month');
+    } else if (diff.months && diff.months !== 0) {
+      arr.push(diff.months + ' months');
+    }
+    if (diff.days === 1) {
+      arr.push('1 day');
+    } else if (diff.days && diff.days !== 0) {
+      arr.push(diff.days + ' days');
+    }
+    return arr.join(', ');
+  },
+  'diff-yd': (tmpl) => {
+    let d = getBoth(tmpl);
+    let diff = delta(d.from, d.to);
+    let arr = [];
+    if (diff.years === 1) {
+      arr.push(diff.years + ' year');
+    } else if (diff.years && diff.years !== 0) {
+      arr.push(diff.years + ' years');
+    }
+    //ergh...
+    diff.days += (diff.months || 0) * 30;
+    if (diff.days === 1) {
+      arr.push('1 day');
+    } else if (diff.days && diff.days !== 0) {
+      arr.push(diff.days + ' days');
+    }
+    return arr.join(', ');
+  },
+  'diff-d': (tmpl) => {
+    let d = getBoth(tmpl);
+    let diff = delta(d.from, d.to);
+    let arr = [];
+    //ergh...
+    diff.days += (diff.years || 0) * 365;
+    diff.days += (diff.months || 0) * 30;
+    if (diff.days === 1) {
+      arr.push('1 day');
+    } else if (diff.days && diff.days !== 0) {
+      arr.push(diff.days + ' days');
+    }
+    return arr.join(', ');
+  },
+
 };
 module.exports = parsers;

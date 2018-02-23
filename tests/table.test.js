@@ -40,7 +40,6 @@ test('rnli stations', t => {
   t.equal(key.tables, undefined, 'key-no-tables');
 
   let lifeboat = doc.sections[2];
-  console.log(doc.sections[2]);
   t.equal(lifeboat.depth, 2, 'lifeboat-depth');
   t.equal(lifeboat.templates.main[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main');
   t.equal(lifeboat.lists[0].length, 3, 'lifeboat-list');
