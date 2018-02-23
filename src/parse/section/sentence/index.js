@@ -11,7 +11,7 @@ const resolve_links = function(line) {
   // categories, images, files
   line = line.replace(cat_reg, '');
   // [[Common links]]
-  line = line.replace(/\[\[:?([^|]{2,80}?)\]\](\w{0,5})/g, '$1$2');
+  line = line.replace(/\[\[:?([^|]{1,80}?)\]\](\w{0,5})/g, '$1$2');
   // [[File:with|Size]]
   line = line.replace(/\[\[File:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$1');
   // [[Replaced|Links]]

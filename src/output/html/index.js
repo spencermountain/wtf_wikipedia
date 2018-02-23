@@ -50,9 +50,9 @@ const toHtml = function(str, options) {
   let data = parse(str, options);
   let html = '';
   //add the title on the top
-  if (options.title === true && data.title) {
-    html += '<h1>' + data.title + '</h1>\n';
-  }
+  // if (options.title === true && data.title) {
+  //   html += '<h1>' + data.title + '</h1>\n';
+  // }
   //render infoboxes (up at the top)
   // if (options.infoboxes === true && data.infoboxes) {
   //   md += data.infoboxes.map(o => doInfobox(o, options)).join('\n');

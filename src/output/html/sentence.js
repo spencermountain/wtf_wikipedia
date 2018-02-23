@@ -22,6 +22,20 @@ const doSentence = function(sentence, options) {
       text = smartReplace(text, link.text, tag);
     });
   }
+  if (sentence.fmt) {
+    if (sentence.fmt.bold) {
+      sentence.fmt.bold.forEach((str) => {
+        let tag = '<b>' + str + '</b>';
+        text = smartReplace(text, str, tag);
+      });
+    }
+    if (sentence.fmt.italic) {
+      sentence.fmt.italic.forEach((str) => {
+        let tag = '<i>' + str + '</i>';
+        text = smartReplace(text, str, tag);
+      });
+    }
+  }
   return text;
 };
 module.exports = doSentence;

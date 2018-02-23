@@ -36,4 +36,4 @@ const wtf = require('./src/index');
 // from_file('United-Kingdom');
 
 
-console.log(wtf.plaintext('that cat is [[aasdf]] cool dude'));
+console.log(wtf.html(`i ''''think'''' so`));
