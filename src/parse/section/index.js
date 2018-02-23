@@ -4,7 +4,7 @@ const parse = {
   list: require('./list'),
   image: require('./image'),
   table: require('./table'),
-  // templates: require('./section_templates'),
+  templates: require('./section_templates'),
   eachSentence: require('./sentence').eachSentence
 };
 const section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})/g;
@@ -14,12 +14,12 @@ const parseSection = function(section, wiki, r, options) {
   wiki = parse.table(section, wiki);
   // //parse the lists
   wiki = parse.list(section, wiki);
+  //supoprted things like {{main}}
+  wiki = parse.templates(section, wiki);
   // //parse+remove scary '[[ [[]] ]]' stuff
   wiki = parse.image(section, wiki, options);
   //do each sentence
   wiki = parse.eachSentence(section, wiki);
-  //supoprted things like {{main}}
-  // wiki = parse.templates(section, wiki, r);
   // section.wiki = wiki;
   return section;
 };

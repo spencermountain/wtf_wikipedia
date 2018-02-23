@@ -2,10 +2,8 @@ const i18n = require('../../data/i18n');
 const findRecursive = require('../../lib/recursive_match');
 const parseInfobox = require('./infobox');
 const parseCitation = require('./citation');
-
+const keep = require('../section/sentence/templates/templates'); //dont remove these ones
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
-//dont remove these ones
-const keep = require('../section/sentence/templates/list');
 
 //reduce the scary recursive situations
 const parse_recursive = function(r, wiki, options) {
@@ -65,7 +63,6 @@ const parse_recursive = function(r, wiki, options) {
   // //ok, now that the scary recursion issues are gone, we can trust simple regex methods..
   // //kill the rest of templates
   wiki = wiki.replace(/\{\{ *?(^(main|wide)).*?\}\}/g, '');
-
   return wiki;
 };
 

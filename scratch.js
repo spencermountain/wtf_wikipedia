@@ -3,17 +3,17 @@ const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-function from_file(page) {
-  let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
-  let options = {
-    images: false,
-    categories: false,
-    citations: false,
-    infoboxes: false,
-  };
-  let r = wtf.parse(str, options);
-  console.log(r);
-}
+// function from_file(page) {
+//   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
+//   let options = {
+//     images: false,
+//     categories: false,
+//     citations: false,
+//     infoboxes: false,
+//   };
+//   let r = wtf.parse(str, options);
+//   console.log(r);
+// }
 
 // wtf.from_api('Hardi class destroyer', 'en', function(markup) {
 //   var obj = wtf.parse(markup);
@@ -35,4 +35,5 @@ function from_file(page) {
 // from_file('K.-Nicole-Mitchell');
 // from_file('United-Kingdom');
 
-console.log(wtf.parse('{{main|cool}} he was born in {{Birth date|1919|12|4|df=yes}}. \n{{wide image|yes.png}} It was cool!').sections[0].sentences[0]);
+
+console.log(wtf.parse('he was born in {{start|1993|2|4|df=yes}}.').sections[0].sentences[0]);
