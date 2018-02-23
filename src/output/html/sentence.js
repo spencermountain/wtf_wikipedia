@@ -1,3 +1,4 @@
+const smartReplace = require('../lib').smartReplace;
 
 // create links, bold, italic in html
 const doSentence = function(sentence, options) {
@@ -16,7 +17,9 @@ const doSentence = function(sentence, options) {
         href = link.page || link.text;
         href = './' + href.replace(/ /g, '_');
       }
-      text = text.replace(link.text, '<a class="' + classNames + '" href="' + href + '">' + link.text + '</a>');
+      let tag = '<a class="' + classNames + '" href="' + href + '">';
+      tag += link.text + '</a>';
+      text = smartReplace(text, link.text, tag);
     });
   }
   return text;

@@ -1,7 +1,7 @@
 const helpers = require('../../../lib/helpers');
 const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i;
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
-const link_reg = /\[\[(.{2,80}?)\]\]([a-z']+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]'s"
+const link_reg = /\[\[(.{0,80}?)\]\]([a-z']+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]'s"
 
 const external_links = function(links, str) {
   str.replace(external_link, function(all, protocol, link, text) {
@@ -19,8 +19,8 @@ const external_links = function(links, str) {
 const internal_links = function(links, str) {
   //regular links
   str.replace(link_reg, function(_, s, apostrophe) {
-    var link,
-      txt;
+    var txt = '';
+    var link = s;
     if (s.match(/\|/)) {
       //replacement link [[link|text]]
       s = s.replace(/\[\[(.{2,80}?)\]\](\w{0,10})/g, '$1$2'); //remove ['s and keep suffix
@@ -31,9 +31,6 @@ const internal_links = function(links, str) {
         link = link.replace(/\|$/, '');
         txt = link;
       }
-    } else {
-      // standard link [[link]]
-      link = s.replace(/\[\[(.{2,60}?)\]\](\w{0,10})/g, '$1'); //remove ['s
     }
     //kill off non-wikipedia namespaces
     if (link.match(ignore_links)) {
