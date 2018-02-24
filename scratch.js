@@ -7,8 +7,8 @@ function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
   let options = {
   };
-  let r = wtf.markdown(str, options);
-// console.log(r);
+  let r = wtf.parse(str, options);
+  console.log(r.sections[0].tables);
 // console.log(r);
 }
 
@@ -21,7 +21,7 @@ function from_file(page) {
 // from_file('earthquakes');
 // from_file('al_Haytham');
 // from_file('redirect');
-// from_file('Toronto');
+from_file('raith_rovers');
 // from_file('royal_cinema');
 // from_file('Toronto_Star');
 // from_file('royal_cinema');
@@ -34,4 +34,4 @@ function from_file(page) {
 // from_file('Dollar-Point,-California');
 
 
-console.log(wtf.html(`pre-[[mirror stage]]`));
+// console.log(wtf.html(`pre-[[mirror stage]]`));
