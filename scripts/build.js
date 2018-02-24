@@ -31,7 +31,7 @@ echo(banner).to(uncompressed);
 echo(banner).to(compressed);
 
 //browserify + derequire
-var cmd = browserify + ' ./src/index.js --standalone wtf';
+var cmd = browserify + ' ./src/index.js --standalone wtf --debug';
 cmd += ' -t [ babelify --presets [ es2015 ] ]';
 cmd += ' | ' + derequire;
 cmd += ' >> ' + uncompressed;

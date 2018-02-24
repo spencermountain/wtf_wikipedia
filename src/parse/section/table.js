@@ -1,10 +1,10 @@
 const helpers = require('../../lib/helpers');
-const parse_line = require('./sentence/line');
+const parseLine = require('./sentence/').parseLine;
 
 const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70kchars.
 
 const parseHeading = function(str) {
-  str = parse_line(str).text || '';
+  str = parseLine(str).text || '';
   if (str.match(/\|/)) {
     str = str.replace(/.+\| ?/, ''); //class="unsortable"|title
   }
@@ -100,7 +100,7 @@ const parse_table = function(wiki) {
     let obj = {};
     arr.forEach((a, i) => {
       let head = headings[i] || 'col-' + i;
-      obj[head] = parse_line(a);
+      obj[head] = parseLine(a);
     });
     return obj;
   });

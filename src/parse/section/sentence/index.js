@@ -1,5 +1,8 @@
 const helpers = require('../../../lib/helpers');
-const parse_links = require('./links');
+const parseLinks = require('./links');
+const parseFmt = require('./formatting');
+const templates = require('./templates');
+const sentenceParser = require('./sentence-parser');
 const i18n = require('../../../data/i18n');
 const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]', 'gi');
 
@@ -8,7 +11,7 @@ const resolve_links = function(line) {
   // categories, images, files
   line = line.replace(cat_reg, '');
   // [[Common links]]
-  line = line.replace(/\[\[:?([^|]{2,80}?)\]\](\w{0,5})/g, '$1$2');
+  line = line.replace(/\[\[:?([^|]{1,80}?)\]\](\w{0,5})/g, '$1$2');
   // [[File:with|Size]]
   line = line.replace(/\[\[File:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$1');
   // [[Replaced|Links]]
@@ -30,15 +33,30 @@ function postprocess(line) {
   return line;
 }
 
-function parse_line(line) {
+function parseLine(line) {
   let obj = {
     text: postprocess(line)
   };
-  let links = parse_links(line);
+  //pull-out the [[links]]
+  let links = parseLinks(line);
   if (links) {
     obj.links = links;
   }
+  //pull-out the bolds and ''italics''
+  obj = parseFmt(obj);
+  //pull-out things like {{start date|...}}
+  obj = templates(obj);
   return obj;
 }
 
-module.exports = parse_line;
+const parseSentences = function(r, wiki) {
+  let sentences = sentenceParser(wiki);
+  sentences = sentences.map(parseLine);
+  r.sentences = sentences;
+  return r;
+};
+
+module.exports = {
+  eachSentence: parseSentences,
+  parseLine: parseLine
+};

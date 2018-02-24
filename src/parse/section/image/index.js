@@ -9,7 +9,9 @@ const parseImages = function(r, wiki, options) {
   matches.forEach(function(s) {
     if (s.match(fileRegex)) {
       r.images = r.images || [];
-      r.images.push(parse_image(s));
+      if (options.images !== false) {
+        r.images.push(parse_image(s));
+      }
       wiki = wiki.replace(s, '');
     }
   });
@@ -19,7 +21,7 @@ const parseImages = function(r, wiki, options) {
     if (s.match(/\[\[([a-z]+):(.*?)\]\]/i) !== null) {
       let site = (s.match(/\[\[([a-z]+):/i) || [])[1] || '';
       site = site.toLowerCase();
-      if (site && i18n.dictionary[site] === undefined && !(options.namespace !== undefined && options.namespace === site) ) {
+      if (site && i18n.dictionary[site] === undefined && !(options.namespace !== undefined && options.namespace === site)) {
         r.interwiki = r.interwiki || {};
         r.interwiki[site] = (s.match(/\[\[([a-z]+):(.*?)\]\]/i) || [])[2];
         wiki = wiki.replace(s, '');

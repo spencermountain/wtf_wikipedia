@@ -1,9 +1,9 @@
 'use strict';
 var test = require('tape');
-const wtf = require('./lib');
+var wtf = require('./lib');
 
 test('small headings', t => {
-  let str = `
+  var str = `
 hello
 ===gdbserver===
 hi there
@@ -14,7 +14,7 @@ Displays memory at the specified virtual address using the specified format.
 ===xp===
 here too
   `;
-  let sections = wtf.parse(str).sections;
+  var sections = wtf.parse(str).sections;
   t.equal(sections[1].title, 'gdbserver', 'first heading exists');
   t.equal(sections[2].title, 'x', 'x exists');
   t.ok(sections[3].title, 'xp', 'xp exists');
@@ -23,7 +23,7 @@ here too
 });
 
 test('font-size', t => {
-  let str = 'hello {{small|(1995-1997)}} world';
+  var str = 'hello {{small|(1995-1997)}} world';
   t.equal(wtf.plaintext(str), 'hello (1995-1997) world', '{{small}}');
 
   str = 'hello {{huge|world}}';
@@ -35,9 +35,9 @@ test('font-size', t => {
 });
 
 test('external links', t => {
-  let str = `The [http://w110.bcn.cat/portal/site/Eixample] is the quarter designed`;
-  let obj = wtf.parse(str);
-  let link = obj.sections[0].sentences[0].links[0];
+  var str = `The [http://w110.bcn.cat/portal/site/Eixample] is the quarter designed`;
+  var obj = wtf.parse(str);
+  var link = obj.sections[0].sentences[0].links[0];
   t.equal(link.text, '', 'link-text');
   t.equal(link.site, 'http://w110.bcn.cat/portal/site/Eixample', 'link-site');
   t.equal(link.type, 'external', 'link-type');

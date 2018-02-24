@@ -13,7 +13,7 @@ const postProcess = function(r) {
       r.images.push(img);
     }
   }
-  //loop around and add the others
+  //loop around and add the other images
   r.sections.forEach(s => {
     //image from {{wide image|...}} template
     if (s.templates && s.templates.wide_image) {
@@ -26,6 +26,14 @@ const postProcess = function(r) {
       s.images.forEach(img => r.images.push(img));
     }
   });
+
+  //try to guess the page's title (from the bold first-line)
+  if (r.sections[0] && r.sections[0].sentences[0]) {
+    let s = r.sections[0].sentences[0];
+    if (s.fmt && s.fmt.bold && s.fmt.bold[0]) {
+      r.title = r.title || s.fmt.bold[0];
+    }
+  }
   return r;
 };
 module.exports = postProcess;

@@ -2,15 +2,8 @@ const i18n = require('../../data/i18n');
 const findRecursive = require('../../lib/recursive_match');
 const parseInfobox = require('./infobox');
 const parseCitation = require('./citation');
-
+const keep = require('../section/sentence/templates/templates'); //dont remove these ones
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
-//dont remove these ones
-const keep = {
-  main: true,
-  'main article': true,
-  'wide image': true,
-  coord: true
-};
 
 //reduce the scary recursive situations
 const parse_recursive = function(r, wiki, options) {
@@ -19,8 +12,10 @@ const parse_recursive = function(r, wiki, options) {
   let matches = findRecursive('{', '}', wiki).filter(s => s[0] && s[1] && s[0] === '{' && s[1] === '{');
   matches.forEach(function(tmpl) {
     if (tmpl.match(infobox_reg, 'ig')) {
-      let infobox = parseInfobox(tmpl);
-      r.infoboxes.push(infobox);
+      if (options.infoboxes !== false) {
+        let infobox = parseInfobox(tmpl);
+        r.infoboxes.push(infobox);
+      }
       wiki = wiki.replace(tmpl, '');
       return;
     }
@@ -28,14 +23,13 @@ const parse_recursive = function(r, wiki, options) {
     let name = tmpl.match(/^\{\{([^:|\n ]+)/);
     if (name !== null) {
       name = name[1].trim().toLowerCase();
-      //
+
       if (/^\{\{ ?citation needed/i.test(tmpl) === true) {
         name = 'citation needed';
       }
-
       //parse {{cite web ...}} (it appears every language)
       if (name === 'cite' || name === 'citation') {
-        wiki = parseCitation(tmpl, wiki, r);
+        wiki = parseCitation(tmpl, wiki, r, options);
         return;
       }
 
@@ -46,7 +40,7 @@ const parse_recursive = function(r, wiki, options) {
           wiki = wiki.replace(tmpl, inside[1]);
         }
       }
-      if (keep[name] === true) {
+      if (keep.hasOwnProperty(name) === true) {
         return;
       }
     }
@@ -68,7 +62,6 @@ const parse_recursive = function(r, wiki, options) {
   // //ok, now that the scary recursion issues are gone, we can trust simple regex methods..
   // //kill the rest of templates
   wiki = wiki.replace(/\{\{ *?(^(main|wide)).*?\}\}/g, '');
-
   return wiki;
 };
 

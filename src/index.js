@@ -3,6 +3,8 @@
 //@spencermountain
 const fetch = require('./lib/fetch_text');
 const parse = require('./parse');
+const markdown = require('./output/markdown');
+const html = require('./output/html');
 const version = require('../package').version;
 
 //use a global var for lazy customization
@@ -41,6 +43,8 @@ const customize = function(obj) {
 module.exports = {
   from_api: from_api,
   plaintext: plaintext,
+  markdown: markdown,
+  html: html,
   version: version,
   custom: customize,
   parse: (str, obj) => {

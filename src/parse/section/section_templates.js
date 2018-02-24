@@ -4,7 +4,7 @@ const regs = {
   wide_image: /\{\{wide image\|(.*?)\}\}/i
 };
 
-//just some easy, supported ones
+//these templates apply only to this section,and we wont find them, say, inside a infobox
 const parseTemplates = function(section, wiki) {
   let templates = {};
 

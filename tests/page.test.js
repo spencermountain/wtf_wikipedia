@@ -2,7 +2,7 @@
 var path = require('path');
 var fs = require('fs');
 var test = require('tape');
-const wtf_wikipedia = require('./lib');
+var wtf_wikipedia = require('./lib');
 
 //read cached file
 var fetch = function(file) {
@@ -26,7 +26,7 @@ test('royal_cinema', t => {
 
 test('toronto_star', t => {
   var data = wtf_wikipedia.parse(fetch('toronto_star'));
-  t.equal(data.infoboxes[0].data.publisher.text, 'John D. Cruickshank', '');
+  t.equal(data.infoboxes[0].data.publisher.text, 'John D. Cruickshank', 'publisher.text');
   t.equal(data.infoboxes[0].template, 'newspaper', '');
   var section = findSection(data, 'History');
   t.equal(section.sentences.length, 21, 'sentence-length');
@@ -37,7 +37,7 @@ test('toronto_star', t => {
 
 test('toronto_star with list', t => {
   var data = wtf_wikipedia.parse(fetch('toronto_star'));
-  t.equal(data.infoboxes[0].data.publisher.text, 'John D. Cruickshank', '');
+  t.equal(data.infoboxes[0].data.publisher.text, 'John D. Cruickshank', 'publisher.text');
   t.equal(data.infoboxes[0].template, 'newspaper', '');
   var section = findSection(data, 'History');
   t.equal(section.sentences.length, 21, 'history-length');

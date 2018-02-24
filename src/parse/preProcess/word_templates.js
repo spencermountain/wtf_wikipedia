@@ -17,11 +17,12 @@ const months = [
 ];
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 //these are easy, inline templates we can do without too-much trouble.
-const inline = /\{\{(url|convert|current|local|lc|uc|formatnum|pull|cquote|coord|small|smaller|midsize|larger|big|bigger|large|huge|resize|dts|date|term|ipa|ill|sense|t|etyl|sfnref)(.*?)\}\}/gi;
+const inline = /\{\{(url|convert|current|local|lc|uc|formatnum|pull|cquote|coord|small|smaller|midsize|larger|big|bigger|large|huge|resize|dts|date|term|ipa|ill|sense|t|etyl|sfnref|OldStyleDate)(.*?)\}\}/gi;
 
 // templates that need parsing and replacing for inline text
 //https://en.wikipedia.org/wiki/Category:Magic_word_templates
 const word_templates = function(wiki, r) {
+
   //greedy-pass at easier, inline-templates
   wiki = wiki.replace(inline, function(tmpl) {
     //we can be sneaky with this template, as it's often found inside other templates
@@ -44,6 +45,8 @@ const word_templates = function(wiki, r) {
     tmpl = tmpl.replace(/^\{\{refn\|([^|]+).*?\}\}/gi, '$1');
     //'tag' escaped thing.
     tmpl = tmpl.replace(/^\{\{#?tag\|([^|]+).*?\}\}/gi, '');
+    // these are nuts {{OldStyleDate}}
+    tmpl = tmpl.replace(/^\{\{OldStyleDate\|([^|]+).*?\}\}/gi, '');
     //'harvard references'
     //{{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}}
     let coord = tmpl.match(/^\{\{coord\|(.*?)\}\}/i);

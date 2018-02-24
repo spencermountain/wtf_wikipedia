@@ -19,3 +19,11 @@
 * support longer ref tags
 * smarter disambiguation for interwiki links vs pages containing ':'
 * more support for various list syntaxes
+
+## 2.6.0
+* support for markdown output
+* support for html output
+* add page 'title' to response, where possible.
+* better support for capturing the `[[link]]'s` syntax
+* opt-out of citation, infobox, image ... parsing
+* support a whack of date/time/age templates
