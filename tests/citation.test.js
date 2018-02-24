@@ -1,6 +1,6 @@
 'use strict';
 var test = require('tape');
-const wtf = require('./lib');
+var wtf = require('./lib');
 
 test('basic-citation', t => {
   var str = `Emery is a vegetarian,<ref>{{cite web|title=The princess of pot|url=http://thewalrus.ca/the-princess-of-pot/}}</ref>`;

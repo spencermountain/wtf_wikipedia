@@ -1,15 +1,15 @@
 'use strict';
 var test = require('tape');
-const wtf = require('./lib');
+var wtf = require('./lib');
 
 test('custom templates', t => {
-  let str = `hello {{mytmpl|fun times}} world`;
-  let obj = wtf.parse(str).custom;
+  var str = `hello {{mytmpl|fun times}} world`;
+  var obj = wtf.parse(str).custom;
   t.equal(obj, undefined, 'no-custom responses at first');
 
   wtf.custom({
     mytmpl: (tmpl) => {
-      let m = tmpl.match(/^\{\{mytmpl\|(.+)\}\}$/) || {};
+      var m = tmpl.match(/^\{\{mytmpl\|(.+)\}\}$/) || {};
       return m[1];
     }
   });

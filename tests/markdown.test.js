@@ -1,6 +1,6 @@
 'use strict';
 var test = require('tape');
-const wtf = require('./lib');
+var wtf = require('./lib');
 
 // var fetch = function(file) {
 //   file = file.replace(/ /g, '-');
@@ -8,7 +8,7 @@ const wtf = require('./lib');
 // };
 
 test('basic-markdown', t => {
-  let md = wtf.markdown('he is [[Spencer Kelly|so cool]] and [http://cool.com fresh]');
+  var md = wtf.markdown('he is [[Spencer Kelly|so cool]] and [http://cool.com fresh]');
   t.equal(md, 'he is [so cool](./Spencer_Kelly) and [fresh](http://cool.com)', 'internal, external links');
 
   md = wtf.markdown('hello [[Image:1930s Toronto KingStreetWnearYork.jpg|thumb|right|250px]] world');
@@ -30,7 +30,7 @@ hello world`, 'image');
 });
 
 test('markdown-tricks', t => {
-  let md = wtf.markdown('the is [[he]] nice');
+  var md = wtf.markdown('the is [[he]] nice');
   t.equal(md, 'the is [he](./He) nice', 'matches whole-word');
 
   md = wtf.markdown('the is [[he]]. nice');

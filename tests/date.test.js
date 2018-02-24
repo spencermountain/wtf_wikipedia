@@ -1,9 +1,9 @@
 'use strict';
 var test = require('tape');
-const wtf = require('./lib');
+var wtf = require('./lib');
 
 test('structured date templates', t => {
-  let arr = [
+  var arr = [
     ['{{Birth date|1993|2|24}}', 'February 24, 1993'],
     ['{{Birth date|1993|2|4|df=yes}}', 'February 4, 1993'],
     ['{{Birth date|1919|12|4|df=yes}}', 'December 4, 1919'],
@@ -49,14 +49,14 @@ test('structured date templates', t => {
 
   ];
   arr.forEach((a) => {
-    let str = wtf.plaintext(a[0]);
+    var str = wtf.plaintext(a[0]);
     t.equal(str, a[1], a[0] + ' ' + str);
   });
   t.end();
 });
 
 test('hyphenated language-date templates', t => {
-  let arr = [
+  var arr = [
     ['{{start-date|December 7, 1942}}', 'December 7, 1942'],
     ['{{birth-date|7 December 1941}}', '7 December 1941'],
     ['{{end-date|7 December 1941}}', '7 December 1941'],
@@ -82,15 +82,15 @@ test('hyphenated language-date templates', t => {
   // ['{{birth based on age as of date | 50 | 2017 | 02 | 16}}', '1966/1967']
   ];
   arr.forEach((a) => {
-    let str = wtf.plaintext(a[0]);
+    var str = wtf.plaintext(a[0]);
     t.equal(str, a[1], a[0]);
   });
   t.end();
 });
 
 test('date-data', t => {
-  let obj = wtf.parse('hello {{start date|1993|02|24|08|30}} world').sections[0].sentences[0];
-  let date = obj.dates[0];
+  var obj = wtf.parse('hello {{start date|1993|02|24|08|30}} world').sections[0].sentences[0];
+  var date = obj.dates[0];
   t.equal(date.year, 1993, 'got-year');
   t.equal(date.month, 2, 'got-month');
   t.equal(date.date, 24, 'got-date');
@@ -101,7 +101,7 @@ test('date-data', t => {
 });
 
 test('age templates', t => {
-  let arr = [
+  var arr = [
     ['{{Age|1989|7|23|2003|7|14}}', '13'],
     ['{{Age|1989|7|23|2018|2|28}}', '28'],
     ['{{Age|1989|7|23}}', '28'], //working but untestable
@@ -133,7 +133,7 @@ test('age templates', t => {
   //     ['{{Age as of date|50|2016|February|16}}', '52'],
   ];
   arr.forEach((a) => {
-    let str = wtf.plaintext(a[0]);
+    var str = wtf.plaintext(a[0]);
     t.equal(str, a[1], a[0]);
   });
   t.end();
