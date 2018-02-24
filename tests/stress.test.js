@@ -117,7 +117,13 @@ test('stress-test-en', t => {
     }
     var plain = wtf.plaintext(markup);
     t.ok(plain.length > 40, ' - - plaintext-length');
-    t.ok(plain.match(/[a-z]/), ' - - plaintext-has words');
+
+    var md = wtf.markdown(markup);
+    t.ok(md.length > 40, ' - - markdown-length');
+
+    var html = wtf.html(markup);
+    t.ok(html.length > 40, ' - - html-length');
+    t.ok(html.match(/\</), ' - - html-has tag');
   });
   t.end();
 });

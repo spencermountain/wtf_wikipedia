@@ -11,7 +11,7 @@ const doSentence = function(sentence, options) {
       if (link.site) {
         //use an external link
         href = link.site;
-        link += ' external';
+        classNames += ' external';
       } else {
         //otherwise, make it a relative internal link
         href = link.page || link.text;

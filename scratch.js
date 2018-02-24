@@ -3,21 +3,18 @@ const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-// function from_file(page) {
-//   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
-//   let options = {
-//     images: false,
-//     categories: false,
-//     citations: false,
-//     infoboxes: false,
-//   };
-//   let r = wtf.parse(str, options);
-//   console.log(r);
-// }
+function from_file(page) {
+  let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
+  let options = {
+  };
+  let r = wtf.markdown(str, options);
+// console.log(r);
+// console.log(r);
+}
 
-// wtf.from_api('Hardi class destroyer', 'en', function(markup) {
+// wtf.from_api('Aldous Huxley', 'en', function(markup) {
 //   var obj = wtf.parse(markup);
-//   console.log(obj.sections[0].tables[0][0]);
+//   console.log(obj.infoboxes[0].data.birth_date);
 // });
 // from_file('list');
 // from_file('bluejays');
@@ -34,6 +31,12 @@ const wtf = require('./src/index');
 // from_file("Africaans")
 // from_file('K.-Nicole-Mitchell');
 // from_file('United-Kingdom');
+// from_file('Dollar-Point,-California');
 
 
-console.log(wtf.html(`i ''''think'''' so`));
+// console.log(wtf.html(`
+// hello
+// ==External links==
+// [http://www.helenapaparizou.com/ Helena Paparizou official site]
+//
+// `));

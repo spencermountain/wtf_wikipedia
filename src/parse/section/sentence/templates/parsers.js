@@ -25,6 +25,10 @@ const parsers = {
   date: (tmpl, obj) => {
     let arr = tmpl.split('|');
     arr = arr.slice(1, 8);
+    //support 'df=yes|1894|7|26'
+    if (arr[0] && /^df=/.test(arr[0])) {
+      arr.shift();
+    }
     let date = ymd(arr);
     date.text = toText(date); //make the replacement string
     obj.dates = obj.dates || [];

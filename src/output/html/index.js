@@ -32,11 +32,11 @@ const doSection = (section, options) => {
     html += '\n';
   }
   //make a html table
-  if (section.tables && options.tables === true) {
-  }
-  //make a html bullet-list
-  if (section.lists && options.lists === true) {
-  }
+  // if (section.tables && options.tables === true) {
+  // }
+  // //make a html bullet-list
+  // if (section.lists && options.lists === true) {
+  // }
   //finally, write the sentence text.
   if (section.sentences && options.sentences === true) {
     html += '  <p>' + section.sentences.map((s) => doSentence(s, options)).join(' ') + '</p>';
