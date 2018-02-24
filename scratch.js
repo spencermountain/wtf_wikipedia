@@ -34,9 +34,4 @@ function from_file(page) {
 // from_file('Dollar-Point,-California');
 
 
-// console.log(wtf.html(`
-// hello
-// ==External links==
-// [http://www.helenapaparizou.com/ Helena Paparizou official site]
-//
-// `));
+console.log(wtf.html(`pre-[[mirror stage]]`));
