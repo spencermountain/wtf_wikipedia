@@ -112,6 +112,7 @@ const findTables = function(r, wiki) {
   tables = tables.map(function(str) {
     return parse_table(str);
   });
+  tables = tables.filter((t) => t && t.length > 0);
   if (tables.length > 0) {
     r.tables = tables;
   }

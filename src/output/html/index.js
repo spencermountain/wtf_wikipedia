@@ -1,5 +1,7 @@
 const parse = require('../../parse');
+const doInfobox = require('./infobox');
 const doSentence = require('./sentence');
+const doTable = require('./table');
 
 const defaults = {
   infoboxes: true,
@@ -18,6 +20,15 @@ const makeImage = (image) => {
   return '  <img src="' + image.thumb + '" alt="' + alt + '"/>';
 };
 
+const doList = (list) => {
+  let html = '<ul>\n';
+  list.forEach((o) => {
+    html += '  <li>' + o.text + '</li>\n';
+  });
+  html += '<ul>\n';
+  return html;
+};
+
 const doSection = (section, options) => {
   let html = '';
   //make the header
@@ -32,11 +43,13 @@ const doSection = (section, options) => {
     html += '\n';
   }
   //make a html table
-  // if (section.tables && options.tables === true) {
-  // }
+  if (section.tables && options.tables === true) {
+    html += section.tables.map((t) => doTable(t, options)).join('\n');
+  }
   // //make a html bullet-list
-  // if (section.lists && options.lists === true) {
-  // }
+  if (section.lists && options.lists === true) {
+    html += section.lists.map((list) => doList(list, options)).join('\n');
+  }
   //finally, write the sentence text.
   if (section.sentences && options.sentences === true) {
     html += '  <p>' + section.sentences.map((s) => doSentence(s, options)).join(' ') + '</p>';
@@ -54,9 +67,9 @@ const toHtml = function(str, options) {
   //   html += '<h1>' + data.title + '</h1>\n';
   // }
   //render infoboxes (up at the top)
-  // if (options.infoboxes === true && data.infoboxes) {
-  //   md += data.infoboxes.map(o => doInfobox(o, options)).join('\n');
-  // }
+  if (options.infoboxes === true && data.infoboxes) {
+    html += data.infoboxes.map(o => doInfobox(o, options)).join('\n');
+  }
   //render each section
   html += data.sections.map(s => doSection(s, options)).join('\n');
   return html;

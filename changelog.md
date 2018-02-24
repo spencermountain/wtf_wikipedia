@@ -27,3 +27,5 @@
 * better support for capturing the `[[link]]'s` syntax
 * opt-out of citation, infobox, image ... parsing
 * support a whack of date/time/age templates
+## 2.6.1
+* better html output tables/infoboxes
