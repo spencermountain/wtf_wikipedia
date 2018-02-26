@@ -34,6 +34,7 @@
   ],
   "dependencies": {
     "jshashes": "^1.0.6",
+    "node-fetch": "^2.0.0",
     "superagent": "^3.8.2"
   },
   "devDependencies": {

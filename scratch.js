@@ -3,18 +3,17 @@ const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-function from_file(page) {
-  let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
-  let options = {
-  };
-  let r = wtf.parse(str, options);
-  console.log(r.sections[0].tables);
-// console.log(r);
-}
+// function from_file(page) {
+//   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
+//   let options = {};
+//   let r = wtf(str, options);
+//   console.log(r);
+// // console.log(r);
+// }
 
 // wtf.from_api('Aldous Huxley', 'en', function(markup) {
-//   var obj = wtf.parse(markup);
-//   console.log(obj.infoboxes[0].data.birth_date);
+//   var obj = wtf.fet(markup);
+//   console.log(obj);
 // });
 // from_file('list');
 // from_file('bluejays');
@@ -34,10 +33,5 @@ function from_file(page) {
 // from_file('Dollar-Point,-California');
 
 
-// console.log(wtf.html(`pre-[[mirror stage]]`));
-
-
-var fs = require('fs');
-var txt = fs.readFileSync('/Users/spencer/data/wikipedia/enwiki-latest-all-titles'); //.toString();
-var arr = txt.split('\n');
-console.log(arr.length);
+// console.log(wtf(`pre-[[mirror stage]]`));
+console.log(wtf.fetch('Aldous Huxley', 'en'));
