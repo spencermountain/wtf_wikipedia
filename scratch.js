@@ -34,4 +34,6 @@ const wtf = require('./src/index');
 
 
 // console.log(wtf(`pre-[[mirror stage]]`));
-console.log(wtf.fetch('Aldous Huxley', 'en'));
+wtf.fetch('Aldous Huxley', 'en').then((doc) => {
+  console.log(doc);
+});

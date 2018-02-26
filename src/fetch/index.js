@@ -1,6 +1,7 @@
 //grab the content of any article, off the api
-const site_map = require('../data/site_map');
 const fetch = require('node-fetch');
+const site_map = require('../data/site_map');
+const Document = require('../Document');
 // const redirects = require('../parse/page/redirects');
 const isNumber = /^[0-9]*$/;
 
@@ -22,40 +23,46 @@ const makeUrl = function(title, lang) {
   return url;
 };
 
-//
+//this data-format from mediawiki api is nutso
+const postProcess = function(data) {
+  let pages = Object.keys(data.query.pages)[0];
+  let page = data.query.pages[pages] || {};
+  let text = page.revisions[0]['*'];
+  let options = {
+    title: page.title,
+    pageID: page.pageid,
+  };
+  return new Document(text, options);
+};
+
+const throwErr = (r, cb) => {
+  if (cb && typeof cb === 'function') {
+    return cb(response, {});
+  }
+  return {};
+};
+
+const getData = function(url) {
+  return fetch(url).then((response) => {
+    if (response.status !== 200) {
+      throwErr(response, callback);
+    }
+    return response.json();
+  });
+};
+
 const getPage = function(title, lang, callback) {
   let url = makeUrl(title, lang);
-  let p = fetch(url);
-
-  const throwErr = (r, cb) => {
-    if (cb && typeof cb === 'function') {
-      return cb(response, {});
-    }
-    return {};
-  };
-
-  p.then((response) => {
-    if (response.status !== 200) {
-      return throwErr(response, callback);
-    }
-    return response.json().then(function(data) {
-      let pages = Object.keys(data.query.pages)[0]; //this is nuts
-      let page = data.query.pages[pages] || {};
-      let obj = {
-        title: page.title,
-        pid: page.pageid,
-        text: page.revisions[0]['*']
-      };
-      //support a callback-style, if it's there
+  return new Promise(function(resolve, reject) {
+    let p = getData(url);
+    p.then(postProcess).then((doc) => {
+      //support 'err-back' format
       if (callback && typeof callback === 'function') {
-        return callback(null, obj);
+        callback(null, doc);
       }
-      return obj;
+      resolve(doc);
     });
+    p.catch(reject);
   });
-  p.catch(function(err) {
-    return throwErr(err, callback);
-  });
-  return p;
 };
 module.exports = getPage;
