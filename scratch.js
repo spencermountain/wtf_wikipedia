@@ -21,7 +21,7 @@ function from_file(page) {
 // from_file('earthquakes');
 // from_file('al_Haytham');
 // from_file('redirect');
-from_file('raith_rovers');
+// from_file('raith_rovers');
 // from_file('royal_cinema');
 // from_file('Toronto_Star');
 // from_file('royal_cinema');
@@ -35,3 +35,9 @@ from_file('raith_rovers');
 
 
 // console.log(wtf.html(`pre-[[mirror stage]]`));
+
+
+var fs = require('fs');
+var txt = fs.readFileSync('/Users/spencer/data/wikipedia/enwiki-latest-all-titles'); //.toString();
+var arr = txt.split('\n');
+console.log(arr.length);

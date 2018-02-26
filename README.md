@@ -20,24 +20,25 @@
 <p></p>
 
 <div align="center">
-  <b>wtf_wikipedia</b> turns wikipedia's weird markup into <b>JSON</b>
+  <b>wtf_wikipedia</b> turns wikipedia's ad-hoc markup into <b>JSON</b>.
   <div>so getting data is easier.</div>
-
-  <h2 align="center">Don't be mad at me, be mad at them.</h2>
-
-  <div align="center">Parsing wikiscript is basically NP-Hard.</div>
-
-<sub>its <a href="https://en.wikipedia.org/wiki/Help:WikiHiero_syntax">really the worst</a>. I'm really trying my
-best.</sub>
-
+  <h2 align="center">Don't do this at home.</h2>
+  <sup>really!</sup>
 </div>
+Wikipedia's custom markup is among the strangest and most illicit data formats you can find anywhere.
+* en-wikipedia has 1.5m custom templates (as of 2018)
+* don't ignore the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).
+* or confuse [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) with [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
+* or the [partial-implementation of inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
+* the nesting of syntax-similar templates,
+* the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) of image paths
+* custom encoding of unicode, whitespace, and punctuation
+* [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values inside left-to-right templates.
 
-**wtf_wikipedia** supports vile recursive template shinanigans,
-[half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template
-variants, and illicit wiki-esque shorthands.
+**wtf_wikipedia** supports many recursive template shenanigans, depreciated and obscure template
+variants, and illicit wiki-esque shorthands. It will try it's best, even when wikipedia editors make errors.
 
-Making your own parser is never a good idea, `what could go rong?!`, but this library is a very detailed and deliberate
-creature. :four_leaf_clover:
+Making your own parser is never a good idea, but this library aims to be the most comprehensive and straight-forward way to get the data you want out of wikipedia.
 
 ```bash
 npm install wtf_wikipedia
@@ -87,6 +88,11 @@ the result format:
 
 yeah, the structure is a little verbose - but with a couple loops you should find everything you want.
 
+if you know what data you want, you can tell it to skip some needless parsing, by passing-in some options:
+```js
+wtf.parse(myWiki, {citations:false, infoboxes:false, images:false})
+```
+
 **wtf_wikipedia** also offers a plaintext method, that returns only paragraphs of nice text, and no junk:
 
 ```javascript
@@ -94,6 +100,13 @@ wtf.from_api('Toronto Blue Jays', 'en', function(markup) {
   var text = wtf.plaintext(markup);
   // "The Toronto Blue Jays are a Canadian professional baseball team..."
 });
+```
+these work too!
+```js
+var html = wtf.html(wiki)
+// The <a href="./Toronto_Blue_Jays">Toronto Blue Jays</a>....
+var md = wtf.markdown(wiki)
+// The **[Toronto Blue Jays](./Toronto_Blue_Jays)** ...
 ```
 
 ##### ⚡️ Client-side too!
