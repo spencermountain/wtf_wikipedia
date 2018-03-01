@@ -17,7 +17,7 @@ test('sentence parser', t => {
     ['dom, kon. XIX w.', 2],
     ['a staged reenactment of [[Perry v. Brown]] world', 1]
   ].forEach(a => {
-    var s = wtf.parse(a[0]).sections[0].sentences;
+    var s = wtf(a[0]).sections[0].sentences;
     var msg = a[1] + ' sentences  - "' + a[0] + '"';
     t.equal(s.length, a[1], msg);
   });
@@ -42,7 +42,7 @@ test('redirects', t => {
     ['#přesměruj [[Tony Danza#funfun]] ', 'Tony Danza'],
     ['#تغییر_مسیر [[Farming]] ', 'Farming']
   ].forEach(a => {
-    var o = wtf.parse(a[0]);
+    var o = wtf(a[0]);
     var msg = '\'' + a[0] + '\' -> \'' + o.redirect + '\'';
     t.equal(o.redirect, a[1], msg);
   });
@@ -75,7 +75,7 @@ test('parse_categories', t => {
     [' [[Category:Tony Danza|metadata]]  [[category:Formal Wear]] ', ['Tony Danza', 'Formal Wear']],
     ['[[categoría:Tony Danza|metadata]]  ', ['Tony Danza']]
   ].forEach(a => {
-    var cats = wtf.parse(a[0]).categories;
+    var cats = wtf(a[0]).categories;
     t.deepEqual(cats, a[1]);
   });
   t.end();
@@ -91,7 +91,7 @@ test('parse_image', t => {
       'Image:Edouard Recon (2002).jpg'
     ]
   ].forEach(a => {
-    var arr = wtf.parse(a[0]).images.map(o => o.file);
+    var arr = wtf(a[0]).images.map(o => o.file);
     t.deepEqual(arr[0], a[1]);
   });
   t.end();
@@ -116,7 +116,7 @@ test('xml', t => {
 });
 test('interwiki', t => {
   var str = 'hello [[wikinews:Radiohead]] world  [[Category:Films]]';
-  var obj = wtf.parse(str);
+  var obj = wtf(str);
   t.equal(obj.sections[0].interwiki.wikinews, 'Radiohead', 'interwiki-link');
   t.equal(obj.categories.length, 1, 'cat-length');
   t.equal(obj.categories[0], 'Films', 'cat-match');

@@ -1,4 +1,4 @@
-const helpers = require('../../../../lib/helpers');
+const helpers = require('../../lib/helpers');
 const parseLinks = require('./links');
 const parseFmt = require('./formatting');
 const templates = require('./templates');

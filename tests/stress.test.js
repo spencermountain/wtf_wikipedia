@@ -98,7 +98,7 @@ test('stress-test-en', t => {
   };
   arr.forEach(title => {
     var markup = fetch(title);
-    var doc = wtf.parse(markup);
+    var doc = wtf(markup);
     //basic is-valid tests for the page parsing
     t.ok(true, title);
     t.ok(doc.type === 'page', ' - - type:page');

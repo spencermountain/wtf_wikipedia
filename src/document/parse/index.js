@@ -13,11 +13,11 @@ const main = function(wiki, options) {
   options = options || {};
   wiki = wiki || '';
   //detect if page is just redirect, and return
-  if (redirects.is_redirect(wiki)) {
+  if (redirects.is_redirect(wiki) === true) {
     return redirects.parse_redirect(wiki);
   }
   //detect if page is just disambiguator page, and return
-  if (disambig.is_disambig(wiki)) {
+  if (disambig.is_disambig(wiki) === true) {
     return disambig.parse_disambig(wiki);
   }
   let r = {
@@ -26,7 +26,6 @@ const main = function(wiki, options) {
     infoboxes: [],
     interwiki: {},
     categories: [],
-    images: [],
     coordinates: [],
     citations: []
   };

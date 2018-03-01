@@ -30,7 +30,7 @@ var boloZenden = `{{Infobox football biography
 }}`;
 
 test('boloZenden infobox', function(t) {
-  var o = wtf.parse(boloZenden).infoboxes[0].data;
+  var o = wtf(boloZenden).infoboxes[0].data;
   t.equal(o.years1.text, '1993–1998');
   t.equal(o.clubs1.text, 'PSV');
   t.equal(o.youthyears1.text, '1985–1987');
@@ -62,7 +62,7 @@ var hurricane = `{{Infobox Hurricane
 | Hurricane season=[[2002 Atlantic hurricane season]]
 }}`;
 test('hurricane infobox', function(t) {
-  var o = wtf.parse(hurricane).infoboxes[0].data;
+  var o = wtf(hurricane).infoboxes[0].data;
   t.equal(o.Name.text, 'Tropical Storm Edouard');
   t.equal(o.Dissipated.text, 'September 6, 2002');
   t.equal(o['Hurricane season'].text, '2002 Atlantic hurricane season');
@@ -86,7 +86,7 @@ var park_place = `
 {{disambiguation}}
 `;
 test('parkplace disambig', function(t) {
-  var o = wtf.parse(park_place);
+  var o = wtf(park_place);
   t.equal(o.type, 'disambiguation');
   t.equal(o.pages.length, 4);
   t.equal(o.pages[0], 'Park Place (TV series)');
@@ -106,7 +106,7 @@ var bluejays = `
 |}
 `;
 test('bluejays table', function(t) {
-  var arr = wtf.parse(bluejays).sections[0].tables[0];
+  var arr = wtf(bluejays).sections[0].tables[0];
   t.equal(arr.length, 2);
   t.equal(arr[0]['Number'].text, '1');
   t.equal(arr[0]['Date'].text, 'April 6');
@@ -147,7 +147,7 @@ var alabama = `
 }}
 `;
 test('Alabama infobox', function(t) {
-  var infobox = wtf.parse(alabama).infoboxes[0].data;
+  var infobox = wtf(alabama).infoboxes[0].data;
   t.equal(infobox.athletics.text, 'NCAA Division I – SEC', 'athletics =' + infobox.athletics.text);
   t.equal(infobox.country.text, 'U.S.', 'country =' + infobox.country.text);
   t.equal(infobox.president.text, 'Stuart R. Bell', 'president =' + infobox.president.text);
@@ -191,7 +191,7 @@ var radiohead = `{{Infobox musical artist
 * [[Philip Selway]]
 }} `;
 test('Radiohead infobox', function(t) {
-  var infobox = wtf.parse(radiohead).infoboxes[0].data;
+  var infobox = wtf(radiohead).infoboxes[0].data;
   t.equal(infobox.current_members.text.match(/Greenwood/g).length, 2, 'current members');
   t.equal(infobox.genre.text, 'Art rock, alternative rock, electronica, experimental rock', 'genre');
   t.equal(infobox.associated_acts.text, 'Atoms for Peace, 7 Worlds Collide', 'associated-acts');

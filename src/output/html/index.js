@@ -1,4 +1,3 @@
-const parse = require('../../document/parse');
 const doInfobox = require('./infobox');
 const doSentence = require('./sentence');
 const doTable = require('./table');
@@ -58,9 +57,9 @@ const doSection = (section, options) => {
   return '<div class="section">\n' + html + '</div>\n';
 };
 //
-const toHtml = function(str, options) {
+const toHtml = function(doc, options) {
   options = Object.assign(defaults, options);
-  let data = parse(str, options);
+  let data = doc.data;
   let html = '';
   //add the title on the top
   // if (options.title === true && data.title) {

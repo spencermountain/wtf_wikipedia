@@ -11,7 +11,7 @@ var fetch = function(file) {
 
 test('bluejays table', t => {
   var bluejays = fetch('bluejays');
-  var arr = wtf.parse(bluejays).sections[0].tables[0];
+  var arr = wtf(bluejays).sections[0].tables[0];
   t.equal(arr.length, 8, 'table-length-bluejays');
   t.equal(arr[0]['Level'].text, 'AAA', 'level-col');
   t.equal(arr[0]['Team'].text, 'Buffalo Bisons', 'team-col');
@@ -22,7 +22,7 @@ test('bluejays table', t => {
 
 test('rnli stations', t => {
   var wiki = fetch('rnli_stations');
-  var doc = wtf.parse(wiki);
+  var doc = wtf(wiki);
   t.equal(doc.categories.length, 5, 'cat-length');
 
   var intro = doc.sections[0];
@@ -80,7 +80,7 @@ test('simple table', t => {
 | row 2, cell 2
 | row 2, cell 3
 |}`;
-  var obj = wtf.parse(simple);
+  var obj = wtf(simple);
   var table = obj.sections[0].tables[0];
   t.equal(table.length, 2, '2 rows');
   t.equal(table[0]['Header 1'].text, 'row 1, cell 1', '1,1');
@@ -116,7 +116,7 @@ test('multiplication table', t => {
 ! 5
 | 5 || 10 || 15
 |}`;
-  var obj = wtf.parse(mult);
+  var obj = wtf(mult);
   var table = obj.sections[0].tables[0];
   t.equal(table[0]['1'].text, '1', '1x1');
   t.equal(table[1]['1'].text, '2', '1x2');
@@ -136,7 +136,7 @@ test('inline-table-test', t => {
 ! scope="row" | 2015
 | 2,725 || ''9,200'' || 8,850 || 4,775
 |}`;
-  var obj = wtf.parse(inline);
+  var obj = wtf(inline);
   var table = obj.sections[0].tables[0];
   t.equal(table[0].Year.text, '2014', 'first year');
   t.equal(table[0].Africa.text, '2,300', 'africa first-row');
@@ -163,7 +163,7 @@ test('floating-tables-test', t => {
 | Col 1, row 2
 | Col 3, row 2
 |}`;
-  var obj = wtf.parse(floating);
+  var obj = wtf(floating);
   t.equal(obj.sections[0].tables.length, 2, 'two tables');
   // console.log(obj.sections[0].tables);
   var table = obj.sections[0].tables[0];
@@ -192,7 +192,7 @@ test('wikisortable-tables-test', t => {
 |-
 | e || 0 || 1601-08-13 || sorted.
 |}`;
-  var obj = wtf.parse(sortable);
+  var obj = wtf(sortable);
   t.equal(obj.sections[0].tables.length, 1, 'one table');
   var table = obj.sections[0].tables[0];
   t.equal(table[0]['Alphabetic'].text, 'd', '1,1');

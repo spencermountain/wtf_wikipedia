@@ -1,4 +1,4 @@
-const fns = require('../../../lib/helpers');
+const fns = require('../lib/helpers');
 const heading_reg = /^(={1,5})([^=]{1,200}?)={1,5}$/;
 
 //interpret depth, title of headings like '==See also=='

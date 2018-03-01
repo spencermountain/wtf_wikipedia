@@ -1,4 +1,3 @@
-const parse = require('../../document/parse');
 const doTable = require('./table');
 const doInfobox = require('./infobox');
 const doSentence = require('./sentence');
@@ -61,9 +60,9 @@ const doSection = (section, options) => {
   return md;
 };
 
-const toMarkdown = function(str, options) {
+const toMarkdown = function(doc, options) {
   options = Object.assign(defaults, options);
-  let data = parse(str, options);
+  let data = doc.data;
   let md = '';
   //add the title on the top
   // if (data.title) {

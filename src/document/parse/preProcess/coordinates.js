@@ -1,4 +1,4 @@
-const convertGeo = require('../../../lib/convertGeo');
+const convertGeo = require('./convertGeo');
 // {{coord|latitude|longitude|coordinate parameters|template parameters}}
 // {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
 // {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}

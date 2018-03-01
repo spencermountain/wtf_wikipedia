@@ -4,7 +4,7 @@ var wtf = require('./lib');
 
 test('custom templates', t => {
   var str = `hello {{mytmpl|fun times}} world`;
-  var obj = wtf.parse(str).custom;
+  var obj = wtf(str).custom;
   t.equal(obj, undefined, 'no-custom responses at first');
 
   wtf.custom({
@@ -13,7 +13,7 @@ test('custom templates', t => {
       return m[1];
     }
   });
-  obj = wtf.parse(str).custom;
+  obj = wtf(str).custom;
   t.equal(obj.mytmpl[0], 'fun times', 'has custom responses now');
 
   t.end();
