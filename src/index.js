@@ -1,4 +1,4 @@
-const Document = require('./Document');
+const Document = require('./document/Document');
 const fetch = require('./fetch');
 const version = require('../package').version;
 

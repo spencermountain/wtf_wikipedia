@@ -1,6 +1,6 @@
 const parse = require('./parse');
-const toMarkdown = require('./output/markdown');
-const toHTML = require('./output/html');
+const toMarkdown = require('../output/markdown');
+const toHTML = require('../output/html');
 
 //
 const Document = function(wiki, options) {

@@ -1,4 +1,4 @@
-const parse = require('../../parse');
+const parse = require('../../document/parse');
 const doTable = require('./table');
 const doInfobox = require('./infobox');
 const doSentence = require('./sentence');

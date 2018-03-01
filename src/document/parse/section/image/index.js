@@ -1,5 +1,5 @@
-const i18n = require('../../../data/i18n');
-const find_recursive = require('../../../lib/recursive_match');
+const i18n = require('../../../../data/i18n');
+const find_recursive = require('../../../../lib/recursive_match');
 const parse_image = require('./image');
 const fileRegex = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
 

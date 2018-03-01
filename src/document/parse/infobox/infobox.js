@@ -1,7 +1,7 @@
-const trim = require('../../lib/helpers').trim_whitespace;
+const trim = require('../../../lib/helpers').trim_whitespace;
+const findRecursive = require('../../../lib/recursive_match');
+const i18n = require('../../../data/i18n');
 const parseLine = require('../section/sentence').parseLine;
-const findRecursive = require('../../lib/recursive_match');
-const i18n = require('../../data/i18n');
 const infobox_template_reg = new RegExp('{{(?:' + i18n.infoboxes.join('|') + ')\\s*(.*)', 'i');
 
 const getTemplate = function(str) {

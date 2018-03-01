@@ -3,13 +3,12 @@ const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-// function from_file(page) {
-//   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
-//   let options = {};
-//   let r = wtf(str, options);
-//   console.log(r);
-// // console.log(r);
-// }
+function from_file(page) {
+  let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
+  let options = {};
+  let r = wtf(str, options);
+  console.log(r);
+}
 
 // wtf.from_api('Aldous Huxley', 'en', function(markup) {
 //   var obj = wtf.fet(markup);
@@ -23,7 +22,7 @@ const wtf = require('./src/index');
 // from_file('raith_rovers');
 // from_file('royal_cinema');
 // from_file('Toronto_Star');
-// from_file('royal_cinema');
+from_file('royal_cinema');
 // from_file('Radiohead');
 // from_file('Jodie_Emery');
 // from_file('Redirect')
@@ -34,6 +33,6 @@ const wtf = require('./src/index');
 
 
 // console.log(wtf(`pre-[[mirror stage]]`));
-wtf.fetch('Aldous Huxley', 'en').then((doc) => {
-  console.log(doc);
-});
+// wtf.fetch('Aldous Huxley', 'en').then((doc) => {
+//   console.log(doc);
+// });

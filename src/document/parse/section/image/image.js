@@ -1,5 +1,5 @@
 const Hashes = require('jshashes');
-const i18n = require('../../../data/i18n');
+const i18n = require('../../../../data/i18n');
 const file_reg = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
 
 //the wikimedia image url is a little silly:

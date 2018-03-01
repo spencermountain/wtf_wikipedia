@@ -1,4 +1,4 @@
-const helpers = require('../../lib/helpers');
+const helpers = require('../../../lib/helpers');
 const parseLine = require('./sentence/').parseLine;
 
 const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70kchars.
