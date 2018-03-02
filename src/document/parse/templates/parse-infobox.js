@@ -2,12 +2,14 @@ const trim = require('../lib/helpers').trim_whitespace;
 const findRecursive = require('../lib/recursive_match');
 const i18n = require('../../../data/i18n');
 const parseLine = require('../section/sentence').parseLine;
-const infobox_template_reg = new RegExp('{{(?:' + i18n.infoboxes.join('|') + ')\\s*(.*)', 'i');
+const i18_infobox = i18n.infoboxes.join('|');
+// const infobox_template_reg = new RegExp('{{(infobox) +([^\|\n]+)', 'i');
+const infobox_template_reg = new RegExp('{{(' + i18_infobox + ') +([^\|\n]+)', 'i');
 
-const getTemplate = function(str) {
+const getTemplateName = function(str) {
   let m = str.match(infobox_template_reg);
   if (m && m[1]) {
-    return m[1];
+    return m[2].trim();
   }
   return null;
 };
@@ -25,7 +27,7 @@ const parse_infobox = function(str) {
     str = str.replace(list[0], '');
   }
 
-  const template = getTemplate(str); //get the infobox name
+  const templateName = getTemplateName(str); //get the infobox name
 
   let parDepth = -2; // first two {{
   for (let i = 0, len = str.length; i < len; i++) {
@@ -96,7 +98,7 @@ const parse_infobox = function(str) {
   //   }
   // }
   return {
-    template: template,
+    template: templateName,
     data: obj
   };
 };

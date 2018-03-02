@@ -1,10 +1,12 @@
 const Section = require('./Section');
+const find_recursive = require('../lib/recursive_match');
 
 //interpret ==heading== lines
 const parse = {
   heading: require('./heading'),
   list: require('./list'),
   image: require('./image'),
+  interwiki: require('./interwiki'),
   table: require('./table'),
   templates: require('./section_templates'),
   eachSentence: require('./sentence').eachSentence
@@ -19,7 +21,10 @@ const parseSection = function(section, wiki, r, options) {
   //supoprted things like {{main}}
   wiki = parse.templates(section, wiki);
   // //parse+remove scary '[[ [[]] ]]' stuff
-  wiki = parse.image(section, wiki, options);
+  //second, remove [[file:...[[]] ]] recursions
+  let matches = find_recursive('[', ']', wiki);
+  wiki = parse.image(matches, section, wiki, options);
+  wiki = parse.interwiki(matches, section, wiki, options);
   //do each sentence
   wiki = parse.eachSentence(section, wiki);
   // section.wiki = wiki;

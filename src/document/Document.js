@@ -1,5 +1,4 @@
 const parse = require('./parse');
-const getImages = require('./images');
 const toMarkdown = require('../output/markdown');
 const toHtml = require('../output/html');
 
@@ -16,7 +15,10 @@ const methods = {
   isDisambiguation : function() {
     return this.data.type === 'disambiguation';
   },
-  // followRedirect : function() {
+  // redirectTo : function() {
+  //   return p
+  // },
+  // disambigpages : function() {
   //   return p
   // },
   categories : function(n) {
@@ -44,7 +46,12 @@ const methods = {
     return arr;
   },
   images : function(n) {
-    let arr = getImages(this);
+    let arr = [];
+    this.sections().forEach((sec) => {
+      sec.images().forEach((img) => {
+        arr.push(img);
+      });
+    });
     if (n !== undefined) {
       return arr[n];
     }

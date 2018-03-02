@@ -3,7 +3,7 @@ const toHtml = require('../../../output/html/infobox');
 //a formal key-value data table about a topic
 const Infobox = function(obj) {
   this.template = obj.template;
-  this.type = this.template; //duplicate
+  // this.type = this.template; //duplicate
   this.data = obj.data;
 };
 
