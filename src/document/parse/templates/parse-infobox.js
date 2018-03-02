@@ -1,12 +1,13 @@
 const trim = require('../lib/helpers').trim_whitespace;
 const findRecursive = require('../lib/recursive_match');
 const i18n = require('../../../data/i18n');
-const parseImage = require('../section/image/parse-image');
+const Image = require('../section/image/Image');
 const parseLine = require('../section/sentence').parseLine;
 const i18_infobox = i18n.infoboxes.join('|');
 // const infobox_template_reg = new RegExp('{{(infobox) +([^\|\n]+)', 'i');
 const infobox_template_reg = new RegExp('{{(' + i18_infobox + ') +([^\|\n]+)', 'i');
 
+//which infobox is this? eg '{{Infobox author|...}}'
 const getTemplateName = function(str) {
   let m = str.match(infobox_template_reg);
   if (m && m[1]) {
@@ -74,7 +75,7 @@ const parse_infobox = function(str) {
     }
     //handle the 'image' property in a special-way
     if (k === 'image') {
-      obj[k] = parseImage(obj[k]);
+      obj[k] = new Image(obj[k]);
       obj[k].text = '';
     } else {
       obj[k] = parseLine(obj[k]);
@@ -84,26 +85,6 @@ const parse_infobox = function(str) {
       obj[k].text = parseInt(obj[k].text, 10);
     }
   });
-  // //remove top+bottom
-  // if(lines.length>1 && lines[0].match()
-  // console.log(regexMatch);
-  // console.log('\n\n\n');
-  // while ((regexMatch = line_reg.exec(str)) !== null) {
-  //   // console.log(str + '----');
-  //   let key = helpers.trim_whitespace(regexMatch[1] || '') || '';
-  //   let value = helpers.trim_whitespace(regexMatch[2] || '') || '';
-  //
-  //   //this is necessary for mongodb, im sorry
-  //   key = key.replace(/\./, '');
-  //   if (key && value) {
-  //     obj[key] = parse_line(value);
-  //     //turn number strings into integers
-  //     if (obj[key].text && obj[key].text.match(/^[0-9,]*$/)) {
-  //       obj[key].text = obj[key].text.replace(/,/, '');
-  //       obj[key].text = parseInt(obj[key].text, 10);
-  //     }
-  //   }
-  // }
   return {
     template: templateName,
     data: obj
