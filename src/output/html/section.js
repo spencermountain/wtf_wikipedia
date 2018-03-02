@@ -1,11 +1,6 @@
 const doSentence = require('./sentence');
 const doTable = require('./table');
-
-const makeImage = (image) => {
-  let alt = image.file.replace(/^(file|image):/i, '');
-  alt = alt.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
-  return '  <img src="' + image.thumb + '" alt="' + alt + '"/>';
-};
+const makeImage = require('./image');
 
 const doList = (list) => {
   let html = '<ul>\n';

@@ -87,9 +87,9 @@ var park_place = `
 `;
 test('parkplace disambig', function(t) {
   var o = wtf(park_place);
-  t.equal(o.type, 'disambiguation');
-  t.equal(o.pages.length, 4);
-  t.equal(o.pages[0], 'Park Place (TV series)');
+  t.equal(o.isDisambiguation(), true, 'is-disambiguation');
+  t.equal(o.links().length, 4);
+  t.equal(o.links(0), 'Park Place (TV series)');
   t.end();
 });
 

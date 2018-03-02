@@ -118,7 +118,7 @@ test('xml', t => {
 test('interwiki', t => {
   var str = 'hello [[wikinews:Radiohead]] world  [[Category:Films]]';
   var obj = wtf(str);
-  t.equal(obj.sections(0).interwiki.wikinews, 'Radiohead', 'interwiki-link');
+  t.equal(obj.sections(0).interwiki().wikinews, 'Radiohead', 'interwiki-link');
   t.equal(obj.categories().length, 1, 'cat-length');
   t.equal(obj.categories(0), 'Films', 'cat-match');
   t.end();

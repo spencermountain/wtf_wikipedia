@@ -23,22 +23,28 @@ const methods = {
     if (n !== undefined) {
       return this.data.tables[n];
     }
-    return this.data.tables;
+    return this.data.tables || [];
   },
   templates: function() {
-    return this.data.templates;
+    return this.data.templates || [];
   },
   lists: function(n) {
     if (n !== undefined) {
       return this.data.lists[n];
     }
-    return this.data.lists;
+    return this.data.lists || [];
+  },
+  interwiki: function(n) {
+    if (n !== undefined) {
+      return this.data.interwiki[n];
+    }
+    return this.data.interwiki || [];
   },
   images: function(n) {
     if (n !== undefined) {
       return this.data.images[n];
     }
-    return this.data.images;
+    return this.data.images || [];
   },
   children: function() {},
   parent: function() {},

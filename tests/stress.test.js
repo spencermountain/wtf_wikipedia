@@ -101,7 +101,8 @@ test('stress-test-en', t => {
     var doc = wtf(markup);
     //basic is-valid tests for the page parsing
     t.ok(true, title);
-    t.ok(doc.type === 'page', ' - - type:page');
+    t.equal(doc.isRedirect(), false, ' - - not-redirect');
+    t.equal(doc.isDisambig(), false, ' - - not-disambiguation');
     t.ok(doc.categories().length > 0, ' - - cat-length');
     t.ok(doc.sections().length > 0, ' - - section-length');
     var intro = doc.sections(0);

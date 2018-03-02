@@ -1,6 +1,7 @@
 const i18n = require('../../data/i18n');
 const parseImage = require('../parse/section/image/image');
 const img_regex = new RegExp('^(' + i18n.images.concat(i18n.files).join('|') + ')', 'i');
+const Image = require('./Image');
 
 //grab all images from the document and fully-parse them
 const getImages = function(doc) {
@@ -12,6 +13,7 @@ const getImages = function(doc) {
     if (img && typeof img === 'string' && !img.match(img_regex)) {
       img = '[[File:' + img + ']]';
       img = parseImage(img);
+      img = new Image(img);
       images.push(img);
     }
   }

@@ -13,6 +13,9 @@ const methods = {
   isRedirect : function() {
     return this.data.type === 'redirect';
   },
+  isDisambiguation : function() {
+    return this.data.type === 'disambiguation';
+  },
   // followRedirect : function() {
   //   return p
   // },
@@ -20,13 +23,13 @@ const methods = {
     if (n !== undefined) {
       return this.data.categories[n];
     }
-    return this.data.categories;
+    return this.data.categories || [];
   },
   sections : function(n) {
     if (n !== undefined) {
       return this.data.sections[n];
     }
-    return this.data.sections;
+    return this.data.sections || [];
   },
   sentences : function(n) {
     let arr = [];
@@ -77,19 +80,19 @@ const methods = {
     if (n !== undefined) {
       return this.data.citations[n];
     }
-    return this.data.citations;
+    return this.data.citations || [];
   },
   infoboxes : function(n) {
     if (n !== undefined) {
       return this.data.infoboxes[n];
     }
-    return this.data.infoboxes;
+    return this.data.infoboxes || [];
   },
   coordinates : function(n) {
     if (n !== undefined) {
       return this.data.coordinates[n];
     }
-    return this.data.coordinates;
+    return this.data.coordinates || [];
   },
   toPlaintext : function(options) {
     options = options || {};
@@ -111,5 +114,6 @@ Object.keys(methods).forEach((k) => {
 });
 //alias this one
 Document.prototype.toHTML = Document.prototype.toHtml;
+Document.prototype.isDisambig = Document.prototype.isDisambiguation;
 
 module.exports = Document;
