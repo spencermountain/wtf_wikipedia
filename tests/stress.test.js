@@ -5,7 +5,7 @@ var path = require('path');
 var wtf = require('./lib');
 
 //read cached file
-var fetch = function(file) {
+var feadFile = function(file) {
   file = file.replace(/ /g, '-');
   return fs.readFileSync(path.join(__dirname, 'cache', file + '.txt'), 'utf-8');
 };
@@ -97,31 +97,31 @@ test('stress-test-en', t => {
     'Alexander-Y-Type': true
   };
   arr.forEach(title => {
-    var markup = fetch(title);
+    var markup = feadFile(title);
     var doc = wtf(markup);
     //basic is-valid tests for the page parsing
     t.ok(true, title);
     t.ok(doc.type === 'page', ' - - type:page');
-    t.ok(doc.categories.length > 0, ' - - cat-length');
-    t.ok(doc.sections.length > 0, ' - - section-length');
-    var intro = doc.sections[0];
+    t.ok(doc.categories().length > 0, ' - - cat-length');
+    t.ok(doc.sections().length > 0, ' - - section-length');
+    var intro = doc.sections(0);
     t.ok(intro.title === '', ' - - intro-title-empty');
     t.ok(intro.depth === 0, ' - - depth=0');
     t.ok(intro.sentences.length > 0, ' - - sentences-length');
     t.ok(intro.sentences[0].text.length > 0, ' - - intro-text');
     t.ok(intro.sentences[0].text.match(/[a-z]/), ' - - intro-has words');
     if (noCitation[title] === true) {
-      t.ok(doc.citations.length === 0, title + ' has no citation');
+      t.ok(doc.citations().length === 0, title + ' has no citation');
     } else {
-      t.ok(doc.citations.length > 0, title + ' has a citation');
+      t.ok(doc.citations().length > 0, title + ' has a citation');
     }
-    var plain = wtf.plaintext(markup);
+    var plain = wtf(markup).toPlaintext();
     t.ok(plain.length > 40, ' - - plaintext-length');
 
-    var md = wtf.markdown(markup);
+    var md = wtf(markup).toMarkdown();
     t.ok(md.length > 40, ' - - markdown-length');
 
-    var html = wtf.html(markup);
+    var html = wtf(markup).toHtml();
     t.ok(html.length > 40, ' - - html-length');
     t.ok(html.match(/\</), ' - - html-has tag');
   });

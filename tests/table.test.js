@@ -5,13 +5,13 @@ var fs = require('fs');
 var wtf = require('./lib');
 
 //read cached file
-var fetch = function(file) {
+var readFile = function(file) {
   return fs.readFileSync(path.join(__dirname, 'cache', file + '.txt'), 'utf-8');
 };
 
 test('bluejays table', t => {
-  var bluejays = fetch('bluejays');
-  var arr = wtf(bluejays).sections[0].tables[0];
+  var bluejays = readFile('bluejays');
+  var arr = wtf(bluejays).tables(0);
   t.equal(arr.length, 8, 'table-length-bluejays');
   t.equal(arr[0]['Level'].text, 'AAA', 'level-col');
   t.equal(arr[0]['Team'].text, 'Buffalo Bisons', 'team-col');
@@ -21,16 +21,16 @@ test('bluejays table', t => {
 });
 
 test('rnli stations', t => {
-  var wiki = fetch('rnli_stations');
+  var wiki = readFile('rnli_stations');
   var doc = wtf(wiki);
-  t.equal(doc.categories.length, 5, 'cat-length');
+  t.equal(doc.categories().length, 5, 'cat-length');
 
-  var intro = doc.sections[0];
+  var intro = doc.sections(0);
   t.equal(intro.title, '', 'intro-title');
   t.equal(intro.images.length > 0, true, 'intro-image-length');
   t.equal(intro.sentences.length > 0, true, 'intro-sentence-length');
 
-  var key = doc.sections[1];
+  var key = doc.sections(1);
   t.equal(key.depth, 1, 'key-depth');
   t.equal(key.title, 'Key', 'key-title');
   t.equal(key.sentences.length, 0, 'key-no-sentences');
@@ -39,7 +39,7 @@ test('rnli stations', t => {
   t.equal(key.lists, undefined, 'key-no-lists');
   t.equal(key.tables, undefined, 'key-no-tables');
 
-  var lifeboat = doc.sections[2];
+  var lifeboat = doc.sections(2);
   t.equal(lifeboat.depth, 2, 'lifeboat-depth');
   t.equal(lifeboat.templates.main[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main');
   t.equal(lifeboat.lists[0].length, 3, 'lifeboat-list');
@@ -47,7 +47,7 @@ test('rnli stations', t => {
   t.equal(lifeboat.images, undefined, 'lifeboat-no-images');
   t.equal(lifeboat.tables, undefined, 'lifeboat-no-tables');
 
-  var east = doc.sections[6];
+  var east = doc.sections(6);
   t.equal(east.title, 'East Division', 'East Division');
   t.equal(east.images, undefined, 'East-no-images');
   t.equal(east.lists, undefined, 'East-no-lists');
@@ -57,7 +57,7 @@ test('rnli stations', t => {
   t.equal(table[0].Location.text, 'Hunstanton, Norfolk', 'east-table-data');
   t.equal(table[41]['Launch method'].text, 'Carriage', 'east-table-data-end');
 
-  var south = doc.sections[7];
+  var south = doc.sections(7);
   var sTable = south.tables[0];
   t.equal(sTable.length, 35, 'south-table-rows');
   t.equal(sTable[0].Location.text, 'Mudeford, Dorset', 'south-table-data');
@@ -81,7 +81,7 @@ test('simple table', t => {
 | row 2, cell 3
 |}`;
   var obj = wtf(simple);
-  var table = obj.sections[0].tables[0];
+  var table = obj.tables(0);
   t.equal(table.length, 2, '2 rows');
   t.equal(table[0]['Header 1'].text, 'row 1, cell 1', '1,1');
   t.equal(table[0]['Header 2'].text, 'row 1, cell 2', '1,2');
@@ -117,7 +117,7 @@ test('multiplication table', t => {
 | 5 || 10 || 15
 |}`;
   var obj = wtf(mult);
-  var table = obj.sections[0].tables[0];
+  var table = obj.tables(0);
   t.equal(table[0]['1'].text, '1', '1x1');
   t.equal(table[1]['1'].text, '2', '1x2');
   t.equal(table[1]['2'].text, '4', '2x2');
@@ -137,7 +137,7 @@ test('inline-table-test', t => {
 | 2,725 || ''9,200'' || 8,850 || 4,775
 |}`;
   var obj = wtf(inline);
-  var table = obj.sections[0].tables[0];
+  var table = obj.tables(0);
   t.equal(table[0].Year.text, '2014', 'first year');
   t.equal(table[0].Africa.text, '2,300', 'africa first-row');
   t.equal(table[0].Americas.text, '8,950', 'america first-row');
@@ -164,9 +164,9 @@ test('floating-tables-test', t => {
 | Col 3, row 2
 |}`;
   var obj = wtf(floating);
-  t.equal(obj.sections[0].tables.length, 2, 'two tables');
+  t.equal(obj.tables().length, 2, 'two tables');
   // console.log(obj.sections[0].tables);
-  var table = obj.sections[0].tables[0];
+  var table = obj.tables(0);
   // console.log(table);
   t.equal(table[0]['col-0'].text, 'Col 1, row 1', '1,1');
   t.end();
@@ -193,8 +193,8 @@ test('wikisortable-tables-test', t => {
 | e || 0 || 1601-08-13 || sorted.
 |}`;
   var obj = wtf(sortable);
-  t.equal(obj.sections[0].tables.length, 1, 'one table');
-  var table = obj.sections[0].tables[0];
+  t.equal(obj.tables().length, 1, 'one table');
+  var table = obj.tables(0);
   t.equal(table[0]['Alphabetic'].text, 'd', '1,1');
   t.equal(table[0]['Numeric'].text, '20', '1,2');
   t.equal(table[0]['Date'].text, '2008-11-24', '1,3');

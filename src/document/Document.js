@@ -60,6 +60,20 @@ const methods = {
     }
     return arr;
   },
+  tables : function(n) {
+    let arr = [];
+    this.sections().forEach((sec) => {
+      if (sec.tables) {
+        sec.tables.forEach((t) => {
+          arr.push(t);
+        });
+      }
+    });
+    if (n !== undefined) {
+      return arr[n];
+    }
+    return arr;
+  },
   citations : function(n) {
     if (n !== undefined) {
       return this.data.citations[n];
