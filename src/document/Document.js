@@ -47,6 +47,12 @@ const methods = {
   },
   images : function(n) {
     let arr = [];
+    //grab image from infobox, first
+    this.infoboxes().forEach((info) => {
+      if (info.data.image) {
+        arr.push(info.data.image);
+      }
+    });
     this.sections().forEach((sec) => {
       sec.images().forEach((img) => {
         arr.push(img);

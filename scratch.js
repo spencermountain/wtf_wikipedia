@@ -7,7 +7,7 @@ function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
   let options = {};
   let r = wtf(str, options);
-  console.log(r.infoboxes());
+  console.log(r.images());
 }
 
 // wtf.from_api('Aldous Huxley', 'en', function(markup) {

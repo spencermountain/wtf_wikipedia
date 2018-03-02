@@ -1,6 +1,7 @@
 const trim = require('../lib/helpers').trim_whitespace;
 const findRecursive = require('../lib/recursive_match');
 const i18n = require('../../../data/i18n');
+const parseImage = require('../section/image/parse-image');
 const parseLine = require('../section/sentence').parseLine;
 const i18_infobox = i18n.infoboxes.join('|');
 // const infobox_template_reg = new RegExp('{{(infobox) +([^\|\n]+)', 'i');
@@ -71,7 +72,13 @@ const parse_infobox = function(str) {
       delete obj[k];
       return;
     }
-    obj[k] = parseLine(obj[k]);
+    //handle the 'image' property in a special-way
+    if (k === 'image') {
+      obj[k] = parseImage(obj[k]);
+      obj[k].text = '';
+    } else {
+      obj[k] = parseLine(obj[k]);
+    }
     if (obj[k].text && obj[k].text.match(/^[0-9,]*$/)) {
       obj[k].text = obj[k].text.replace(/,/, '');
       obj[k].text = parseInt(obj[k].text, 10);

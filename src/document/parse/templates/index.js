@@ -1,9 +1,10 @@
 const i18n = require('../../../data/i18n');
 const findRecursive = require('../lib/recursive_match');
+const keep = require('../section/sentence/templates/templates'); //dont remove these ones
 const parseInfobox = require('./parse-infobox');
 const parseCitation = require('./citation');
 const Infobox = require('./infobox');
-const keep = require('../section/sentence/templates/templates'); //dont remove these ones
+
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 
 //reduce the scary recursive situations
