@@ -1,7 +1,8 @@
 const i18n = require('../../../data/i18n');
 const findRecursive = require('../lib/recursive_match');
-const parseInfobox = require('./infobox');
+const parseInfobox = require('./parse-infobox');
 const parseCitation = require('./citation');
+const Infobox = require('./infobox');
 const keep = require('../section/sentence/templates/templates'); //dont remove these ones
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 
@@ -14,6 +15,7 @@ const parse_recursive = function(r, wiki, options) {
     if (tmpl.match(infobox_reg, 'ig')) {
       if (options.infoboxes !== false) {
         let infobox = parseInfobox(tmpl);
+        infobox = new Infobox(infobox, r);
         r.infoboxes.push(infobox);
       }
       wiki = wiki.replace(tmpl, '');

@@ -1,4 +1,4 @@
-const parseCitation = require('../infobox/citation');
+const parseCitation = require('../templates/citation');
 const parseLine = require('../section/sentence').parseLine;
 //okay, i know you're not supposed to regex html, but...
 //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext

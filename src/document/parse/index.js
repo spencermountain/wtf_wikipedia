@@ -4,7 +4,7 @@ const preProcess = require('./preProcess');
 const postProcess = require('./postProcess');
 const parse = {
   section: require('./section'),
-  infobox: require('./infobox'),
+  templates: require('./templates'),
   categories: require('./categories')
 };
 
@@ -41,7 +41,7 @@ const main = function(wiki, options) {
   //give ourselves a little head-start
   wiki = preProcess(r, wiki, options);
   //pull-out infoboxes and stuff
-  wiki = parse.infobox(r, wiki, options);
+  wiki = parse.templates(r, wiki, options);
   //pull-out [[category:whatevers]]
   if (options.categories !== false) {
     wiki = parse.categories(r, wiki);
