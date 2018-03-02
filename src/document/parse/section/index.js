@@ -1,3 +1,5 @@
+const Section = require('./Section');
+
 //interpret ==heading== lines
 const parse = {
   heading: require('./heading'),
@@ -21,6 +23,7 @@ const parseSection = function(section, wiki, r, options) {
   //do each sentence
   wiki = parse.eachSentence(section, wiki);
   // section.wiki = wiki;
+  section = new Section(section);
   return section;
 };
 

@@ -3,6 +3,7 @@ const toHtml = require('../../../output/html/infobox');
 //a formal key-value data table about a topic
 const Infobox = function(obj) {
   this.template = obj.template;
+  this.type = this.template; //duplicate
   this.data = obj.data;
 };
 
@@ -20,6 +21,12 @@ const methods = {
   },
   toJSON : function() {
     return this.data;
+  },
+  keyValue : function() {
+    return Object.keys(this.data).reduce((h, k) => {
+      h[k] = this.data[k].text;
+      return h;
+    }, {});
   }
 };
 

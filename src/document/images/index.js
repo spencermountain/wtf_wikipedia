@@ -19,14 +19,14 @@ const getImages = function(doc) {
   //loop around each section and add its images
   doc.sections().forEach(s => {
     //try an image from {{wide image|...}} template
-    if (s.templates && s.templates.wide_image) {
-      let img = s.templates.wide_image[0];
+    if (s.templates() && s.templates().wide_image) {
+      let img = s.templates().wide_image[0];
       img = '[[File:' + img + ']]';
       img = parseImage(img);
       r.images.push(img);
     }
-    if (s.images) {
-      s.images.forEach(img => images.push(img));
+    if (s.images()) {
+      s.images().forEach(img => images.push(img));
     }
   });
   return images;

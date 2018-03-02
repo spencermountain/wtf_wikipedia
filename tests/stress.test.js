@@ -107,9 +107,9 @@ test('stress-test-en', t => {
     var intro = doc.sections(0);
     t.ok(intro.title === '', ' - - intro-title-empty');
     t.ok(intro.depth === 0, ' - - depth=0');
-    t.ok(intro.sentences.length > 0, ' - - sentences-length');
-    t.ok(intro.sentences[0].text.length > 0, ' - - intro-text');
-    t.ok(intro.sentences[0].text.match(/[a-z]/), ' - - intro-has words');
+    t.ok(intro.sentences().length > 0, ' - - sentences-length');
+    t.ok(intro.sentences(0).text.length > 0, ' - - intro-text');
+    t.ok(intro.sentences(0).text.match(/[a-z]/), ' - - intro-has words');
     if (noCitation[title] === true) {
       t.ok(doc.citations().length === 0, title + ' has no citation');
     } else {

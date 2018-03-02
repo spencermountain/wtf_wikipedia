@@ -1,6 +1,5 @@
 const parse = require('./parse');
 const getImages = require('./images');
-const toPlaintext = require('../output/plaintext');
 const toMarkdown = require('../output/markdown');
 const toHtml = require('../output/html');
 
@@ -32,7 +31,7 @@ const methods = {
   sentences : function(n) {
     let arr = [];
     this.sections().forEach((sec) => {
-      sec.sentences.forEach((s) => {
+      sec.sentences().forEach((s) => {
         arr.push(s);
       });
     });
@@ -63,8 +62,8 @@ const methods = {
   tables : function(n) {
     let arr = [];
     this.sections().forEach((sec) => {
-      if (sec.tables) {
-        sec.tables.forEach((t) => {
+      if (sec.tables()) {
+        sec.tables().forEach((t) => {
           arr.push(t);
         });
       }
@@ -94,7 +93,8 @@ const methods = {
   },
   toPlaintext : function(options) {
     options = options || {};
-    return toPlaintext(this, options);
+    let arr = this.sections().map(sec => sec.toPlaintext(options));
+    return arr.join('\n\n');
   },
   toMarkdown : function(options) {
     options = options || {};
