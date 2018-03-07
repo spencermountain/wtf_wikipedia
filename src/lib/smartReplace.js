@@ -26,6 +26,4 @@ const smartReplace = function(all, text, result) {
   return all;
 };
 
-module.exports = {
-  smartReplace: smartReplace
-};
+module.exports = smartReplace;

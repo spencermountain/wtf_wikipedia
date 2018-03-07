@@ -1,4 +1,4 @@
-const smartReplace = require('../lib').smartReplace;
+const smartReplace = require('../../lib/smartReplace');
 
 // add `[text](href)` to the text
 const doLink = function(md, link) {

@@ -1,5 +1,5 @@
-const redirects = require('./page/redirects');
-const disambig = require('./page/disambig');
+const redirects = require('./redirects');
+const disambig = require('./disambig');
 const preProcess = require('./preProcess');
 const parse = {
   section: require('../section'),
