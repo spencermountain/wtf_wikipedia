@@ -22,11 +22,12 @@ const main = function(wiki, options) {
     citations: []
   };
   //detect if page is just redirect, and return
-  if (redirects.is_redirect(wiki) === true) {
+  if (redirects.isRedirect(wiki) === true) {
     r.type = 'redirect';
+    wiki = redirects.parse(wiki);
   }
   //detect if page is just disambiguator page, and return
-  if (disambig.is_disambig(wiki) === true) {
+  if (disambig.isDisambig(wiki) === true) {
     r.type = 'disambiguation';
   }
   if (options.custom) {

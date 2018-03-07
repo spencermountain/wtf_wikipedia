@@ -17,14 +17,14 @@ const doLink = function(md, link) {
 };
 
 //create links, bold, italic in markdown
-const doSentence = (sentence, options) => {
+const doSentence = (sentence) => {
   let md = sentence.text();
   //turn links back into links
-  if (options.links === true) {
-    sentence.links().forEach((link) => {
-      md = doLink(md, link);
-    });
-  }
+  // if (options.links === true) {
+  sentence.links().forEach((link) => {
+    md = doLink(md, link);
+  });
+  // }
   //turn bolds into **bold**
   sentence.bold().forEach((b) => {
     md = smartReplace(md, b, '**' + b + '**');

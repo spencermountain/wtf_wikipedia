@@ -60,9 +60,9 @@ test('jodie_emery', t => {
 
 test('redirect', t => {
   var doc = wtf(readFile('redirect'));
-  t.equal(doc.type, 'redirect', 'is-redirect');
-  t.equal(doc.redirect, 'Toronto', 'redirect-place');
-  // t.equal(doc.infoboxes(0), undefined, t)
+  t.equal(doc.isRedirect(), true, 'is-redirect');
+  t.equal(doc.links(0).page, 'Toronto', 'redirect-place');
+  t.equal(doc.infoboxes(0), undefined, t);
   // t.equal(doc.infoboxes(0).template, undefined, t)
   t.end();
 });

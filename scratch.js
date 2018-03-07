@@ -44,20 +44,4 @@ function from_file(page) {
 // console.log(wtf(`i 'think' so`).toHtml());
 
 
-var str = `
-'''Park Place''' may refer to:
-{{TOC right}}
-
-== Media ==
-* [[Park Place (TV series)|Park Place]], a 1981 CBS sitcom
-
-== Places ==
-
-=== Canada ===
-* [[Park Place (Ontario)]], a park in the city of Barrie
-* [[Park Place (Vancouver)]], a skyscraper
-* [[Park Place Mall]], Lethbridge, Alberta
-{{disambiguation}}
-`;
-
-console.log(wtf(str).links());
+console.log('|' + wtf('he is [[Spencer Kelly|so cool]] and [http://cool.com fresh]').toMarkdown());

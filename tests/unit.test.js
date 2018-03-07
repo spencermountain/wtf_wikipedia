@@ -44,7 +44,7 @@ test('redirects', t => {
   ].forEach(a => {
     var o = wtf(a[0]);
     var msg = '\'' + a[0] + '\' -> \'' + o.redirect + '\'';
-    t.equal(o.redirect, a[1], msg);
+    t.equal(o.links(0).page, a[1], msg);
   });
   t.end();
 });
