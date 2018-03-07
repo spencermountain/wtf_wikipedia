@@ -31,8 +31,10 @@ const parsers = {
     }
     let date = ymd(arr);
     date.text = toText(date); //make the replacement string
-    obj.dates = obj.dates || [];
-    obj.dates.push(date);
+    if (date.text) {
+      obj.dates = obj.dates || [];
+      obj.dates.push(date);
+    }
     return date.text;
   },
 

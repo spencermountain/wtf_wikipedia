@@ -2,7 +2,7 @@
 const doImage = (image) => {
   let alt = image.file.replace(/^(file|image):/i, '');
   alt = alt.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
-  return '![' + alt + '](' + image.thumb + ')';
+  return '![' + alt + '](' + image.thumbnail() + ')';
 };
 
 module.exports = doImage;

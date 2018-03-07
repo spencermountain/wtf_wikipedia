@@ -1,5 +1,6 @@
 const helpers = require('../lib/helpers');
 const parseLine = require('./sentence/').parseLine;
+const Sentence = require('./sentence/Sentence');
 
 const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70kchars.
 
@@ -101,6 +102,7 @@ const parse_table = function(wiki) {
     arr.forEach((a, i) => {
       let head = headings[i] || 'col-' + i;
       obj[head] = parseLine(a);
+      obj[head] = new Sentence(obj[head]);
     });
     return obj;
   });

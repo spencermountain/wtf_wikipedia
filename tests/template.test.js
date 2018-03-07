@@ -37,8 +37,8 @@ test('boloZenden infobox', function(t) {
   t.equal(o.youthclubs1.text, 'MVV');
   t.equal(o.nationalyears1.text, '1997–2004');
   t.equal(o.nationalteam1.text, 'Netherlands');
-  t.equal(o.nationalteam1.links[0].page, 'Netherlands national football team');
-  t.equal(o.nationalteam1.links[0].text, 'Netherlands');
+  t.equal(o.nationalteam1.links(0).page, 'Netherlands national football team');
+  t.equal(o.nationalteam1.links(0).text, 'Netherlands');
   t.equal(o.nationalcaps1.text, 54);
   t.equal(o.nationalgoals1.text, 7);
   t.end();
@@ -66,7 +66,7 @@ test('hurricane infobox', function(t) {
   t.equal(o.Name.text, 'Tropical Storm Edouard');
   t.equal(o.Dissipated.text, 'September 6, 2002');
   t.equal(o['Hurricane season'].text, '2002 Atlantic hurricane season');
-  t.equal(o.Areas.links[0].page, 'Florida');
+  t.equal(o.Areas.links(0).page, 'Florida');
   t.end();
 });
 
@@ -192,8 +192,8 @@ var radiohead = `{{Infobox musical artist
 }} `;
 test('Radiohead infobox', function(t) {
   var infobox = wtf(radiohead).infoboxes(0).data;
-  t.equal(infobox.current_members.text.match(/Greenwood/g).length, 2, 'current members');
-  t.equal(infobox.genre.text, 'Art rock, alternative rock, electronica, experimental rock', 'genre');
-  t.equal(infobox.associated_acts.text, 'Atoms for Peace, 7 Worlds Collide', 'associated-acts');
+  t.equal(infobox.current_members.text().match(/Greenwood/g).length, 2, 'current members');
+  t.equal(infobox.genre.text(), 'Art rock, alternative rock, electronica, experimental rock', 'genre');
+  t.equal(infobox.associated_acts.text(), 'Atoms for Peace, 7 Worlds Collide', 'associated-acts');
   t.end();
 });

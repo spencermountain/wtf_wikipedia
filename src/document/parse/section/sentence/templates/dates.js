@@ -15,16 +15,31 @@ const months = [
   'December',
 ];
 
+const monthName = months.reduce((h, str, i) => {
+  if (i === 0) {
+    return h;
+  }
+  h[str.toLowerCase()] = i;
+  return h;
+}, {});
+
 //parse year|month|date numbers
 const ymd = function(arr) {
   let obj = {};
   let units = ['year', 'month', 'date', 'hour', 'minute', 'second'];
+  //parse each unit in sequence..
   for(let i = 0; i < units.length; i += 1) {
+    //skip it
     if (!arr[i] && arr[1] !== 0) {
       continue;
     }
-    obj[units[i]] = parseInt(arr[i], 10);
-    if (isNaN(obj[units[i]])) {
+    let num = parseInt(arr[i], 10);
+    if (isNaN(num) === false) {
+      obj[units[i]] = num; //we good.
+    } else if (units[i] === 'month' && monthName.hasOwnProperty(arr[i])) { //try for month-name, like 'january
+      let month = monthName[arr[i]];
+      obj[units[i]] = month;
+    } else { //we dead. so skip this unit
       delete obj[units[i]];
     }
   }
@@ -49,7 +64,7 @@ const pad = function(num) {
 
 const toText = function(date) {
   //eg '1995'
-  let str = String(date.year) || '';
+  let str = String(date.year || '');
   if (date.month !== undefined && months.hasOwnProperty(date.month) === true) {
     if (date.date === undefined) {
       //January 1995

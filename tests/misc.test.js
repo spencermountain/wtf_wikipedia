@@ -37,14 +37,14 @@ test('font-size', t => {
 test('external links', t => {
   var str = `The [http://w110.bcn.cat/portal/site/Eixample] is the quarter designed`;
   var obj = wtf(str);
-  var link = obj.sentences(0).links[0];
+  var link = obj.sentences(0).links(0);
   t.equal(link.text, '', 'link-text');
   t.equal(link.site, 'http://w110.bcn.cat/portal/site/Eixample', 'link-site');
   t.equal(link.type, 'external', 'link-type');
 
   str = `The [http://w110.bcn.cat/portal/site/Eixample Fun Times] is the quarter designed`;
   obj = wtf(str);
-  link = obj.sentences(0).links[0];
+  link = obj.sentences(0).links(0);
   t.equal(link.text, 'Fun Times', 'link-text');
   t.equal(link.site, 'http://w110.bcn.cat/portal/site/Eixample', 'link-site');
   t.equal(link.type, 'external', 'link-type');
@@ -53,9 +53,9 @@ test('external links', t => {
 
 test('misc template', t => {
   var str = `hello {{refn|group=groupname|name=name|Contents of the footnote}} world`;
-  t.equal(wtf(str).sentences(0).text, 'hello world');
+  t.equal(wtf(str).sentences(0).text(), 'hello world');
 
   str = `hello {{tag|ref|content=haha}} world`;
-  t.equal(wtf(str).sentences(0).text, 'hello world');
+  t.equal(wtf(str).sentences(0).toPlaintext(), 'hello world');
   t.end();
 });

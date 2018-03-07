@@ -75,5 +75,7 @@ const methods = {
 Object.keys(methods).forEach((k) => {
   Image.prototype[k] = methods[k];
 });
-Image.prototype.src = Image.prototype.url; //alias
+//aliases
+Image.prototype.src = Image.prototype.url;
+Image.prototype.thumb = Image.prototype.thumbnail;
 module.exports = Image;

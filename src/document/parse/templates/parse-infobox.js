@@ -3,6 +3,7 @@ const findRecursive = require('../lib/recursive_match');
 const i18n = require('../../../data/i18n');
 const Image = require('../section/image/Image');
 const parseLine = require('../section/sentence').parseLine;
+const Sentence = require('../section/sentence/Sentence');
 const i18_infobox = i18n.infoboxes.join('|');
 // const infobox_template_reg = new RegExp('{{(infobox) +([^\|\n]+)', 'i');
 const infobox_template_reg = new RegExp('{{(' + i18_infobox + ') +([^\|\n]+)', 'i');
@@ -84,6 +85,8 @@ const parse_infobox = function(str) {
       obj[k].text = obj[k].text.replace(/,/, '');
       obj[k].text = parseInt(obj[k].text, 10);
     }
+    //turn values into Sentence objects for easy use
+    obj[k] = new Sentence(obj[k]);
   });
   return {
     template: templateName,

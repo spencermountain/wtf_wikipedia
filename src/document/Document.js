@@ -1,6 +1,7 @@
 const parse = require('./parse');
 const toMarkdown = require('../output/markdown');
 const toHtml = require('../output/html');
+const defaults = require('./defaults');
 
 //
 const Document = function(wiki, options) {
@@ -108,16 +109,16 @@ const methods = {
     return this.data.coordinates || [];
   },
   toPlaintext : function(options) {
-    options = options || {};
+    options = Object.assign(defaults, options || {});
     let arr = this.sections().map(sec => sec.toPlaintext(options));
     return arr.join('\n\n');
   },
   toMarkdown : function(options) {
-    options = options || {};
+    options = Object.assign(defaults, options || {});
     return toMarkdown(this, options);
   },
   toHtml : function(options) {
-    options = options || {};
+    options = Object.assign(defaults, options || {});
     return toHtml(this, options);
   }
 };

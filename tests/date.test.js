@@ -16,6 +16,8 @@ test('structured date templates', t => {
 
     ['{{Birth date and age|1993|2|4|df=yes}}', 'February 4, 1993'],
     ['{{Birth date and age|1992|1|14|df=yes}}', 'January 14, 1992'],
+    ['{{Birth date and age|1993|january|14|df=yes}}', 'January 14, 1993'],
+    ['{{Birth date and age|1902|december|01|df=yes}}', 'December 1, 1902'],
     ['{{Death date and given age|1993|2|4|df=yes}}', 'February 4, 1993'],
     ['{{Birth date and age|1941}}', '1941'],
 
@@ -90,7 +92,7 @@ test('hyphenated language-date templates', t => {
 
 test('date-data', t => {
   var obj = wtf('hello {{start date|1993|02|24|08|30}} world').sentences(0);
-  var date = obj.dates[0];
+  var date = obj.dates(0);
   t.equal(date.year, 1993, 'got-year');
   t.equal(date.month, 2, 'got-month');
   t.equal(date.date, 24, 'got-date');

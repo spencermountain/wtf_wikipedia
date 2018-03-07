@@ -3,6 +3,7 @@ const bullet_reg = /^\*+[^:,\|]{4}/;
 const number_reg = /^ ?\#[^:,\|]{4}/;
 const has_word = /[a-z]/i;
 const parseLine = require('./sentence/').parseLine;
+const Sentence = require('./sentence/Sentence');
 
 // does it start with a bullet point or something?
 const isList = function(line) {
@@ -25,6 +26,7 @@ const cleanList = function(list) {
       line = line.replace(list_reg, '');
     }
     list[i] = parseLine(line);
+    list[i] = new Sentence(list[i]);
   }
   return list;
 };

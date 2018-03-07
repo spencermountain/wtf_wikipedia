@@ -1,20 +1,8 @@
 const doInfobox = require('./infobox');
 const doSection = require('./section');
 
-const defaults = {
-  infoboxes: true,
-  tables: true,
-  lists: true,
-  title: true,
-  images: true,
-  links: true,
-  formatting: true,
-  sentences: true,
-};
-
 //
 const toHtml = function(doc, options) {
-  options = Object.assign(defaults, options);
   let data = doc.data;
   let html = '';
   //add the title on the top

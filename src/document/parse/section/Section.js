@@ -1,5 +1,7 @@
 const toMarkdown = require('../../../output/markdown/section');
 const toHtml = require('../../../output/html/section');
+const Sentence = require('./sentence/Sentence');
+const defaults = require('../../defaults');
 
 //the stuff between headings - 'History' section for example
 const Section = function(data) {
@@ -14,10 +16,14 @@ const methods = {
     return this.data.depth;
   },
   sentences: function(n) {
+    let arr = this.data.sentences.map((s) => {
+      s = new Sentence(s);
+      return s;
+    });
     if (n !== undefined) {
-      return this.data.sentences[n];
+      return arr[n];
     }
-    return this.data.sentences || [];
+    return arr || [];
   },
   tables: function(n) {
     if (n !== undefined) {
@@ -50,15 +56,16 @@ const methods = {
   parent: function() {},
 
   toMarkdown : function(options) {
-    options = options || {};
+    options = Object.assign(defaults, options || {});
     return toMarkdown(this, options);
   },
   toHtml : function(options) {
-    options = options || {};
+    options = Object.assign(defaults, options || {});
     return toHtml(this, options);
   },
-  toPlaintext : function() {
-    return this.sentences().map(a => a.text).join(' ');
+  toPlaintext : function(options) {
+    options = Object.assign(defaults, options || {});
+    return this.sentences().map(s => s.toPlaintext(options)).join(' ');
   },
   toJSON : function() {
     return this.data;

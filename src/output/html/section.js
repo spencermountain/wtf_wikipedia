@@ -20,12 +20,15 @@ const doSection = (section, options) => {
     html += '\n';
   }
   //put any images under the header
-  if (section.images() && options.images === true) {
-    html += section.images().map((image) => makeImage(image)).join('\n');
-    html += '\n';
+  if (options.images === true) {
+    let imgs = section.images();
+    if (imgs.length > 0) {
+      html += imgs.map((image) => makeImage(image)).join('\n');
+      html += '\n';
+    }
   }
   //make a html table
-  if (section.tables() && options.tables === true) {
+  if (options.tables === true) {
     html += section.tables().map((t) => doTable(t, options)).join('\n');
   }
   // //make a html bullet-list
@@ -33,9 +36,10 @@ const doSection = (section, options) => {
     html += section.lists().map((list) => doList(list, options)).join('\n');
   }
   //finally, write the sentence text.
-  if (section.sentences() && options.sentences === true) {
-    html += '  <p>' + section.sentences().map((s) => doSentence(s, options)).join(' ') + '</p>';
-    html += '\n';
+  if (options.sentences === true) {
+    html += '  <div class="text">\n    ';
+    html += section.sentences().map((s) => doSentence(s, options)).join(' ');
+    html += '\n  </div>\n';
   }
   return '<div class="section">\n' + html + '</div>\n';
 };
