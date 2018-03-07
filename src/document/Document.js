@@ -66,8 +66,8 @@ const methods = {
   },
   links : function(n) {
     let arr = [];
-    this.sentences().forEach((s) => {
-      s.links.forEach((l) => {
+    this.sections().forEach((sec) => {
+      sec.links().forEach((l) => {
         arr.push(l);
       });
     });

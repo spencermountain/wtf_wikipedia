@@ -64,4 +64,5 @@ Object.keys(methods).forEach((k) => {
 Sentence.prototype.italic = Sentence.prototype.italics;
 Sentence.prototype.bold = Sentence.prototype.bolds;
 Sentence.prototype.text = Sentence.prototype.toPlaintext;
+
 module.exports = Sentence;

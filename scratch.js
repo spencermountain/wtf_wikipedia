@@ -7,7 +7,7 @@ function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
   let options = {};
   let r = wtf(str, options);
-  console.log(r.sections(13).toMarkdown());
+  console.log(r.sentences(13).text());
 // r.images(0).exists().then(console.log);
 // r.images(0).exists(console.log);
 }
@@ -20,7 +20,7 @@ function from_file(page) {
 // from_file('redirect');
 // from_file('raith_rovers');
 // from_file('royal_cinema');
-from_file('Allen-R.-Morris');
+// from_file('Allen-R.-Morris');
 // from_file('Toronto_Star');
 // from_file('Toronto');
 // from_file('royal_cinema');
@@ -42,3 +42,22 @@ from_file('Allen-R.-Morris');
 //   console.log(doc);
 // });
 // console.log(wtf(`i 'think' so`).toHtml());
+
+
+var str = `
+'''Park Place''' may refer to:
+{{TOC right}}
+
+== Media ==
+* [[Park Place (TV series)|Park Place]], a 1981 CBS sitcom
+
+== Places ==
+
+=== Canada ===
+* [[Park Place (Ontario)]], a park in the city of Barrie
+* [[Park Place (Vancouver)]], a skyscraper
+* [[Park Place Mall]], Lethbridge, Alberta
+{{disambiguation}}
+`;
+
+console.log(wtf(str).links());

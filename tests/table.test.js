@@ -13,10 +13,10 @@ test('bluejays table', t => {
   var bluejays = readFile('bluejays');
   var arr = wtf(bluejays).tables(0);
   t.equal(arr.length, 8, 'table-length-bluejays');
-  t.equal(arr[0]['Level'].text, 'AAA', 'level-col');
-  t.equal(arr[0]['Team'].text, 'Buffalo Bisons', 'team-col');
-  t.equal(arr[0]['League'].text, 'International League', 'league-col');
-  t.equal(arr[1]['Location'].text, 'Manchester, New Hampshire', 'location-col');
+  t.equal(arr[0]['Level'].text(), 'AAA', 'level-col');
+  t.equal(arr[0]['Team'].text(), 'Buffalo Bisons', 'team-col');
+  t.equal(arr[0]['League'].text(), 'International League', 'league-col');
+  t.equal(arr[1]['Location'].text(), 'Manchester, New Hampshire', 'location-col');
   t.end();
 });
 
@@ -34,33 +34,33 @@ test('rnli stations', t => {
   t.equal(key.depth, 1, 'key-depth');
   t.equal(key.title, 'Key', 'key-title');
   t.equal(key.sentences().length, 0, 'key-no-sentences');
-  t.equal(key.images(), undefined, 'key-no-images');
-  t.equal(key.templates(), undefined, 'key-no-templates');
-  t.equal(key.lists(), undefined, 'key-no-lists');
-  t.equal(key.tables(), undefined, 'key-no-tables');
+  t.deepEqual(key.images(), [], 'key-no-images');
+  t.deepEqual(key.templates(), [], 'key-no-templates');
+  t.deepEqual(key.lists(), [], 'key-no-lists');
+  t.deepEqual(key.tables(), [], 'key-no-tables');
 
   var lifeboat = doc.sections(2);
   t.equal(lifeboat.depth, 2, 'lifeboat-depth');
   t.equal(lifeboat.templates().main[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main');
   t.equal(lifeboat.lists(0).length, 3, 'lifeboat-list');
   t.equal(lifeboat.sentences().length, 3, 'lifeboat-sentences');
-  t.equal(lifeboat.images(), undefined, 'lifeboat-no-images');
-  t.equal(lifeboat.tables(), undefined, 'lifeboat-no-tables');
+  t.deepEqual(lifeboat.images(), [], 'lifeboat-no-images');
+  t.deepEqual(lifeboat.tables(), [], 'lifeboat-no-tables');
 
   var east = doc.sections(6);
   t.equal(east.title, 'East Division', 'East Division');
-  t.equal(east.images(), undefined, 'East-no-images');
-  t.equal(east.lists(), undefined, 'East-no-lists');
+  t.deepEqual(east.images(), [], 'East-no-images');
+  t.deepEqual(east.lists(), [], 'East-no-lists');
   t.equal(east.sentences().length, 0, 'east-sentences');
   var table = east.tables(0);
   t.equal(table.length, 42, 'east table-rows');
-  t.equal(table[0].Location.text, 'Hunstanton, Norfolk', 'east-table-data');
-  t.equal(table[41]['Launch method'].text, 'Carriage', 'east-table-data-end');
+  t.equal(table[0].Location.text(), 'Hunstanton, Norfolk', 'east-table-data');
+  t.equal(table[41]['Launch method'].text(), 'Carriage', 'east-table-data-end');
 
   var south = doc.sections(7);
   var sTable = south.tables(0);
   t.equal(sTable.length, 35, 'south-table-rows');
-  t.equal(sTable[0].Location.text, 'Mudeford, Dorset', 'south-table-data');
+  t.equal(sTable[0].Location.text(), 'Mudeford, Dorset', 'south-table-data');
   t.end();
 });
 
@@ -83,12 +83,12 @@ test('simple table', t => {
   var obj = wtf(simple);
   var table = obj.tables(0);
   t.equal(table.length, 2, '2 rows');
-  t.equal(table[0]['Header 1'].text, 'row 1, cell 1', '1,1');
-  t.equal(table[0]['Header 2'].text, 'row 1, cell 2', '1,2');
-  t.equal(table[0]['Header 3'].text, 'row 1, cell 3', '1,3');
-  t.equal(table[1]['Header 1'].text, 'row 2, cell 1', '2,1');
-  t.equal(table[1]['Header 2'].text, 'row 2, cell 2', '2,2');
-  t.equal(table[1]['Header 3'].text, 'row 2, cell 3', '2,3');
+  t.equal(table[0]['Header 1'].text(), 'row 1, cell 1', '1,1');
+  t.equal(table[0]['Header 2'].text(), 'row 1, cell 2', '1,2');
+  t.equal(table[0]['Header 3'].text(), 'row 1, cell 3', '1,3');
+  t.equal(table[1]['Header 1'].text(), 'row 2, cell 1', '2,1');
+  t.equal(table[1]['Header 2'].text(), 'row 2, cell 2', '2,2');
+  t.equal(table[1]['Header 3'].text(), 'row 2, cell 3', '2,3');
   t.end();
 });
 
@@ -118,9 +118,9 @@ test('multiplication table', t => {
 |}`;
   var obj = wtf(mult);
   var table = obj.tables(0);
-  t.equal(table[0]['1'].text, '1', '1x1');
-  t.equal(table[1]['1'].text, '2', '1x2');
-  t.equal(table[1]['2'].text, '4', '2x2');
+  t.equal(table[0]['1'].text(), '1', '1x1');
+  t.equal(table[1]['1'].text(), '2', '1x2');
+  t.equal(table[1]['2'].text(), '4', '2x2');
   t.end();
 });
 
@@ -138,10 +138,10 @@ test('inline-table-test', t => {
 |}`;
   var obj = wtf(inline);
   var table = obj.tables(0);
-  t.equal(table[0].Year.text, '2014', 'first year');
-  t.equal(table[0].Africa.text, '2,300', 'africa first-row');
-  t.equal(table[0].Americas.text, '8,950', 'america first-row');
-  t.equal(table[1].Europe.text, '4,775', 'europe second-row');
+  t.equal(table[0].Year.text(), '2014', 'first year');
+  t.equal(table[0].Africa.text(), '2,300', 'africa first-row');
+  t.equal(table[0].Americas.text(), '8,950', 'america first-row');
+  t.equal(table[1].Europe.text(), '4,775', 'europe second-row');
   t.end();
 });
 
@@ -168,7 +168,7 @@ test('floating-tables-test', t => {
   // console.log(obj.sections[0].tables);
   var table = obj.tables(0);
   // console.log(table);
-  t.equal(table[0]['col-0'].text, 'Col 1, row 1', '1,1');
+  t.equal(table[0]['col-0'].text(), 'Col 1, row 1', '1,1');
   t.end();
 });
 
@@ -195,13 +195,13 @@ test('wikisortable-tables-test', t => {
   var obj = wtf(sortable);
   t.equal(obj.tables().length, 1, 'one table');
   var table = obj.tables(0);
-  t.equal(table[0]['Alphabetic'].text, 'd', '1,1');
-  t.equal(table[0]['Numeric'].text, '20', '1,2');
-  t.equal(table[0]['Date'].text, '2008-11-24', '1,3');
-  t.equal(table[0]['Unsortable'].text, 'This', '1,4');
-  t.equal(table[1]['Alphabetic'].text, 'b', '2,1');
-  t.equal(table[2]['Alphabetic'].text, 'a', '3,1');
-  t.equal(table[3]['Alphabetic'].text, 'c', '4,1');
-  t.equal(table[4]['Alphabetic'].text, 'e', '5,1');
+  t.equal(table[0]['Alphabetic'].text(), 'd', '1,1');
+  t.equal(table[0]['Numeric'].text(), '20', '1,2');
+  t.equal(table[0]['Date'].text(), '2008-11-24', '1,3');
+  t.equal(table[0]['Unsortable'].text(), 'This', '1,4');
+  t.equal(table[1]['Alphabetic'].text(), 'b', '2,1');
+  t.equal(table[2]['Alphabetic'].text(), 'a', '3,1');
+  t.equal(table[3]['Alphabetic'].text(), 'c', '4,1');
+  t.equal(table[4]['Alphabetic'].text(), 'e', '5,1');
   t.end();
 });

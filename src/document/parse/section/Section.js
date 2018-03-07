@@ -25,6 +25,25 @@ const methods = {
     }
     return arr || [];
   },
+  links: function(n) {
+    let arr = [];
+    this.lists().forEach((list) => {
+      list.forEach((s) => {
+        s.links().forEach((link) => arr.push(link));
+      });
+    });
+    //todo: add links from tables..
+    // this.tables().forEach((t) => {
+    //   t.links().forEach((link) => arr.push(link));
+    // });
+    this.sentences().forEach((s) => {
+      s.links().forEach((link) => arr.push(link));
+    });
+    if (n !== undefined) {
+      return arr[n];
+    }
+    return arr;
+  },
   tables: function(n) {
     if (n !== undefined) {
       return this.data.tables[n];

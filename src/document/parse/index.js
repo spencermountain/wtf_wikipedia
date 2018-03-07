@@ -12,14 +12,6 @@ const parse = {
 const main = function(wiki, options) {
   options = options || {};
   wiki = wiki || '';
-  //detect if page is just redirect, and return
-  if (redirects.is_redirect(wiki) === true) {
-    return redirects.parse_redirect(wiki);
-  }
-  //detect if page is just disambiguator page, and return
-  if (disambig.is_disambig(wiki) === true) {
-    return disambig.parse_disambig(wiki);
-  }
   let r = {
     type: 'page',
     sections: [],
@@ -29,6 +21,14 @@ const main = function(wiki, options) {
     coordinates: [],
     citations: []
   };
+  //detect if page is just redirect, and return
+  if (redirects.is_redirect(wiki) === true) {
+    r.type = 'redirect';
+  }
+  //detect if page is just disambiguator page, and return
+  if (disambig.is_disambig(wiki) === true) {
+    r.type = 'disambiguation';
+  }
   if (options.custom) {
     r.custom = {};
   }
