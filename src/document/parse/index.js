@@ -3,7 +3,7 @@ const disambig = require('./page/disambig');
 const preProcess = require('./preProcess');
 const postProcess = require('./postProcess');
 const parse = {
-  section: require('./section'),
+  section: require('../../section'),
   templates: require('./templates'),
   categories: require('./categories')
 };

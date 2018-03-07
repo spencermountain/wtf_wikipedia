@@ -9,7 +9,7 @@ const parse = {
   interwiki: require('./interwiki'),
   table: require('./table'),
   templates: require('./templates'),
-  eachSentence: require('./sentence').eachSentence
+  eachSentence: require('../sentence').eachSentence
 };
 const section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})/g;
 

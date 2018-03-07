@@ -1,5 +1,5 @@
-const toHtml = require('../../../../output/html/sentence');
-const toMarkdown = require('../../../../output/markdown/sentence');
+const toHtml = require('../output/html/sentence');
+const toMarkdown = require('../output/markdown/sentence');
 
 //where we store the formatting, link, date information
 const Sentence = function(data) {

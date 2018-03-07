@@ -1,6 +1,6 @@
 const i18n = require('../../../data/i18n');
-const findRecursive = require('../lib/recursive_match');
-const keep = require('../section/sentence/templates/templates'); //dont remove these ones
+const findRecursive = require('../../../lib/recursive_match');
+const keep = require('../../../sentence/templates/templates'); //dont remove these ones
 const parseInfobox = require('./parse-infobox');
 const parseCitation = require('./citation');
 const Infobox = require('./infobox');

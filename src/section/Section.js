@@ -1,7 +1,7 @@
-const toMarkdown = require('../../../output/markdown/section');
-const toHtml = require('../../../output/html/section');
-const Sentence = require('./sentence/Sentence');
-const defaults = require('../../defaults');
+const toMarkdown = require('../output/markdown/section');
+const toHtml = require('../output/html/section');
+const Sentence = require('../sentence/Sentence');
+const defaults = require('../lib/defaults');
 
 //the stuff between headings - 'History' section for example
 const Section = function(data) {

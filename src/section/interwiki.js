@@ -1,4 +1,4 @@
-const i18n = require('../../../data/i18n');
+const i18n = require('../data/i18n');
 //
 const interwiki = function(matches, r, wiki, options) {
   //third, wiktionary-style interlanguage links

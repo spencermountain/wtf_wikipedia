@@ -1,4 +1,4 @@
-const i18n = require('../../../../data/i18n');
+const i18n = require('../../data/i18n');
 const parseImage = require('./parse-image');
 const fileRegex = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
 

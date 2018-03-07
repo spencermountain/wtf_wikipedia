@@ -1,9 +1,9 @@
-const helpers = require('../../lib/helpers');
+const helpers = require('../lib/helpers');
 const parseLinks = require('./links');
 const parseFmt = require('./formatting');
 const templates = require('./templates');
 const sentenceParser = require('./sentence-parser');
-const i18n = require('../../../../data/i18n');
+const i18n = require('../data/i18n');
 const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]', 'gi');
 
 //return only rendered text of wiki links
