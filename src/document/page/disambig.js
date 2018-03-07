@@ -1,4 +1,4 @@
-const i18n = require('../../../data/i18n');
+const i18n = require('../../data/i18n');
 const template_reg = new RegExp('\\{\\{ ?(' + i18n.disambigs.join('|') + ')(\\|[a-z =]*?)? ?\\}\\}', 'i');
 
 const isDisambig = function(wiki) {

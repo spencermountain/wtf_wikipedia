@@ -1,4 +1,4 @@
-const parse = require('./parse');
+const parse = require('./index');
 const toMarkdown = require('../output/markdown');
 const toHtml = require('../output/html');
 const defaults = require('../lib/defaults');

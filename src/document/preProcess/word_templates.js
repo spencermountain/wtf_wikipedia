@@ -1,4 +1,4 @@
-const languages = require('../../../data/languages');
+const languages = require('../../data/languages');
 const parseCoord = require('./coordinates');
 
 const months = [

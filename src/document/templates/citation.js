@@ -1,4 +1,4 @@
-//
+//grab the {{cite web}} templates, etc
 const parseCitation = function(str, wiki, r, options) {
   //remove it from main
   wiki = wiki.replace(str, '');

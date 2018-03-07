@@ -1,9 +1,9 @@
-const trim = require('../../../lib/helpers').trim_whitespace;
-const findRecursive = require('../../../lib/recursive_match');
-const i18n = require('../../../data/i18n');
-const Image = require('../../../section/image/Image');
-const parseLine = require('../../../sentence').parseLine;
-const Sentence = require('../../../sentence/Sentence');
+const trim = require('../../lib/helpers').trim_whitespace;
+const findRecursive = require('../../lib/recursive_match');
+const i18n = require('../../data/i18n');
+const Image = require('../../section/image/Image');
+const parseLine = require('../../sentence').parseLine;
+const Sentence = require('../../sentence/Sentence');
 const i18_infobox = i18n.infoboxes.join('|');
 // const infobox_template_reg = new RegExp('{{(infobox) +([^\|\n]+)', 'i');
 const infobox_template_reg = new RegExp('{{(' + i18_infobox + ') +([^\|\n]+)', 'i');

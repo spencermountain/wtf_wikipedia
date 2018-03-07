@@ -1,5 +1,5 @@
-const toMarkdown = require('../../../output/markdown/infobox');
-const toHtml = require('../../../output/html/infobox');
+const toMarkdown = require('../../output/markdown/infobox');
+const toHtml = require('../../output/html/infobox');
 //a formal key-value data table about a topic
 const Infobox = function(obj) {
   this.template = obj.template;

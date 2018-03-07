@@ -1,9 +1,8 @@
 const redirects = require('./page/redirects');
 const disambig = require('./page/disambig');
 const preProcess = require('./preProcess');
-const postProcess = require('./postProcess');
 const parse = {
-  section: require('../../section'),
+  section: require('../section'),
   templates: require('./templates'),
   categories: require('./categories')
 };
@@ -49,8 +48,6 @@ const main = function(wiki, options) {
   }
   //parse all the headings, and their texts/sentences
   r.sections = parse.section(r, wiki, options) || [];
-
-  r = postProcess(r);
 
   return r;
 };
