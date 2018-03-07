@@ -7,7 +7,7 @@ function from_file(page) {
   let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
   let options = {};
   let r = wtf(str, options);
-  console.log(r.sentences(13).text());
+  console.log(r.sections('history'));
 // r.images(0).exists().then(console.log);
 // r.images(0).exists(console.log);
 }
@@ -22,7 +22,7 @@ function from_file(page) {
 // from_file('royal_cinema');
 // from_file('Allen-R.-Morris');
 // from_file('Toronto_Star');
-// from_file('Toronto');
+from_file('Toronto');
 // from_file('royal_cinema');
 // from_file('Radiohead');
 // from_file('Jodie_Emery');
@@ -44,4 +44,4 @@ function from_file(page) {
 // console.log(wtf(`i 'think' so`).toHtml());
 
 
-console.log('|' + wtf('he is [[Spencer Kelly|so cool]] and [http://cool.com fresh]').toMarkdown());
+// console.log('|' + wtf('he is [[Spencer Kelly|so cool]] and [http://cool.com fresh]').toMarkdown());

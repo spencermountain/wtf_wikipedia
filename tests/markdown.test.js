@@ -2,11 +2,6 @@
 var test = require('tape');
 var wtf = require('./lib');
 
-// var fetch = function(file) {
-//   file = file.replace(/ /g, '-');
-//   return fs.readFileSync(path.join(__dirname, 'cache', file + '.txt'), 'utf-8');
-// };
-
 test('basic-markdown', t => {
   var md = wtf('he is [[Spencer Kelly|so cool]] and [http://cool.com fresh]').toMarkdown();
   t.equal(md, 'he is [so cool](./Spencer_Kelly) and [fresh](http://cool.com)', 'internal, external links');

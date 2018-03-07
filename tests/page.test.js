@@ -9,12 +9,6 @@ var readFile = function(file) {
   return fs.readFileSync(path.join(__dirname, 'cache', file + '.txt'), 'utf-8');
 };
 
-var findSection = function(doc, title) {
-  return doc.sections().find(function(s) {
-    return s.title === title;
-  });
-};
-
 test('royal_cinema', t => {
   var doc = wtf(readFile('royal_cinema'));
   t.equal(doc.infoboxes(0).data.opened.text(), 1939, 'opened');
@@ -28,7 +22,7 @@ test('toronto_star', t => {
   var doc = wtf(readFile('toronto_star'));
   t.equal(doc.infoboxes(0).data.publisher.text(), 'John D. Cruickshank', 'publisher.text');
   t.equal(doc.infoboxes(0).template, 'newspaper', '');
-  var section = findSection(doc, 'History');
+  var section = doc.sections('history');
   t.equal(section.sentences().length, 21, 'sentence-length');
   t.equal(doc.categories().length, 6, 'sentence-length');
   // t.equal(doc.text['Notable cartoonists'], undefined, t);
@@ -39,10 +33,10 @@ test('toronto_star with list', t => {
   var doc = wtf(readFile('toronto_star'));
   t.equal(doc.infoboxes(0).data.publisher.text(), 'John D. Cruickshank', 'publisher.text');
   t.equal(doc.infoboxes(0).template, 'newspaper', '');
-  var section = findSection(doc, 'History');
+  var section = doc.sections('history');
   t.equal(section.sentences().length, 21, 'history-length');
   t.equal(doc.categories().length, 6, 'cat-length');
-  section = findSection(doc, 'Notable cartoonists');
+  section = doc.sections('Notable cartoonists');
   t.equal(section.lists(0).length, 10, 'cartoonist-length');
   t.end();
 });

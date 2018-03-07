@@ -29,10 +29,18 @@ const methods = {
     return this.data.categories || [];
   },
   sections : function(n) {
-    if (n !== undefined) {
-      return this.data.sections[n];
+    let arr = this.data.sections || [];
+    //grab a specific section, by its title
+    if (typeof n === 'string') {
+      let str = n.toLowerCase().trim();
+      return arr.find((s) => {
+        return s.title.toLowerCase() === str;
+      });
     }
-    return this.data.sections || [];
+    if (n !== undefined) {
+      return arr[n];
+    }
+    return arr;
   },
   sentences : function(n) {
     let arr = [];
