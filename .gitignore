@@ -1,7 +1,0 @@
-node_modules
-.git
-coverage
-viz
-npm-debug.log
-package-lock.json
-.nyc_output
