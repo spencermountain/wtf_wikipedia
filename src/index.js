@@ -3,9 +3,9 @@
 //@spencermountain
 const fetch = require('./lib/fetch_text');
 const parse = require('./parse');
-const latex = require('./output/latex');
+const latex    = require('./output/latex');
 const markdown = require('./output/markdown');
-const html = require('./output/html');
+const html     = require('./output/html');
 const version = require('../package').version;
 
 //use a global var for lazy customization

@@ -116,7 +116,8 @@ You can retrieve the Wiki markdown from different MediaWiki products of the Wiki
 ```javascript
 var wtf = require('wtf_wikipedia');
 
-//call the API and process the  markup 'pMarkup' in the callback function of the API
+// Fetch the article about '3D Modelling' in english Wikiversity from the domain https://en.wikiversity.org
+// call the API and process the  markup 'pMarkup' in the callback function of the API
 wtf.from_api('3D Modelling', 'enwikiversity', function(pMarkup) {
   // do something with wiki markup return by the callback function in the parameter pMarkup (String)
 });
@@ -130,10 +131,8 @@ If you want to fetch Wiki markdown with a different language (e.g. german Wikive
 * `dewikiversity`: https://de.wikiversity.org',
 * `dewikivoyage`: https://de.wikivoyage.org'
 
-
-
 ## Cross Compilation of Wiki Source
-The step in
+The library offers cross compilation into other formats.
 
 ### Plain Text Export
 
@@ -143,6 +142,42 @@ The step in
 wtf.from_api('Toronto Blue Jays', 'en', function(markup) {
   var text = wtf.plaintext(markup);
   // "The Toronto Blue Jays are a Canadian professional baseball team..."
+});
+```
+### Markdown Export
+
+`wtf_wikipedia` also offers a markdown method, that returns converted into MarkDown syntax. The following code downloads the [article about 3D Modelling](https://en.wikiversity.org/wiki/3D_Modelling) from the english Wikiversity:
+
+```javascript
+wtf.from_api('3D Modelling', 'enwikiversity', function(markup) {
+  var text = wtf.markdown(markup);
+  // converts the Wikiversity article about "3D Modelling"
+  // from the english domain https://en.wikiversity.org
+  // https://en.wikiversity.org/wiki/3D_Modelling
+});
+```
+### HTML Export
+
+`wtf_wikipedia` also offers a HTML method, that returns converted article into HTML syntax. The following code downloads the [article about 3D Modelling](https://en.wikiversity.org/wiki/3D_Modelling) from the english Wikiversity:
+
+```javascript
+wtf.from_api('3D Modelling', 'enwikiversity', function(markup) {
+  var text = wtf.html(markup);
+  // converts the Wikiversity article about "3D Modelling"
+  // from the english domain https://en.wikiversity.org
+  // https://en.wikiversity.org/wiki/3D_Modelling
+});
+```
+### LaTeX Export
+
+`wtf_wikipedia` also offers a LaTeX method, that returns converted article into LaTeX syntax. The following code downloads the [article about 3D Modelling](https://en.wikiversity.org/wiki/3D_Modelling) from the english Wikiversity:
+
+```javascript
+wtf.from_api('Topo', 'dewikiversity', function(markup) {
+  var text = wtf.latex(markup);
+  // converts the Wikiversity article about "3D Modelling"
+  // from the english domain https://en.wikiversity.org
+  // https://en.wikiversity.org/wiki/3D_Modelling
 });
 ```
 
