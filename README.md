@@ -39,16 +39,23 @@ variants, and illicit wiki-esque shorthands.
 Making your own parser is never a good idea, `what could go rong?!`, but this library is a very detailed and deliberate
 creature. :four_leaf_clover:
 
+## Install and Quick Start
+If you want to check out the `wtf_wikipedia` source code just clone the package with `git`.
 ```bash
+git clone https://github.com/spencermountain/wtf_wikipedia.git
+cd wtf_wikipedia
 npm install wtf_wikipedia
 ```
-
-then:
+If you want to use the `wtf_wikipedia` in your NodeJS project.
+```bash
+npm install wtf_wikipedia --save
+```
+The `--save` option adds the library to the list of required packages of your project. Then you can create a NodeJS script `wikitest.js` with the following content:
 
 ```javascript
 var wtf = require('wtf_wikipedia');
 
-//hit the api
+//call the API and parse the markup into JSON 'data'
 wtf.from_api('Toronto', 'en', function(markup) {
   var data = wtf.parse(markup);
   console.log(data.infoboxes[0].data.leader_name);
@@ -85,9 +92,52 @@ the result format:
 }
 ```
 
-yeah, the structure is a little verbose - but with a couple loops you should find everything you want.
+The structure of the JSON is a little verbose - but with a couple loops you should find everything you want.
 
-**wtf_wikipedia** also offers a plaintext method, that returns only paragraphs of nice text, and no junk:
+## Download of Wiki Source
+If you just want the source text of an MediaWiki article, call the API in the browser. The following example just download an article about Toronto from the english Wikiversity.
+```javascript
+var wtf = require('wtf_wikipedia');
+
+//call the API and process the  markup 'pMarkup' in the callback function of the API
+wtf.from_api('Toronto', 'en', function(pMarkup) {
+  // do something with wiki markup return by the callback function in the parameter pMarkup (String)
+});
+```
+### WikiID: Language and Domainname
+You can retrieve the Wiki markdown from different MediaWiki products of the WikiFoundation. The domain name includes the Wiki product (e.g. Wikipedia or Wikiversity) and a language. The WikiID encoded the language and the domain determines the API that is called for fetching the source Wiki. The following WikiIDs are referring to the following domain name.   
+* `enwiki`: https://en.wikipedia.org
+* `enwikibooks`: https://en.wikibooks.org',
+* `enwikinews`: https://en.wikinews.org',
+* `enwikiquote`: https://en.wikiquote.org',
+* `enwikisource`: https://en.wikisource.org',
+* `enwikiversity`: https://en.wikiversity.org',
+* `enwikivoyage`: https://en.wikivoyage.org'
+```javascript
+var wtf = require('wtf_wikipedia');
+
+//call the API and process the  markup 'pMarkup' in the callback function of the API
+wtf.from_api('3D Modelling', 'enwikiversity', function(pMarkup) {
+  // do something with wiki markup return by the callback function in the parameter pMarkup (String)
+});
+```
+If you want to fetch Wiki markdown with a different language (e.g. german Wikiversity) use the appropriate language ID (e.g. `de` for german).
+* `dewiki`: https://de.wikipedia.org
+* `dewikibooks`: https://de.wikibooks.org',
+* `dewikinews`: https://de.wikinews.org',
+* `dewikiquote`: https://de.wikiquote.org',
+* `dewikisource`: https://de.wikisource.org',
+* `dewikiversity`: https://de.wikiversity.org',
+* `dewikivoyage`: https://de.wikivoyage.org'
+
+
+
+## Cross Compilation of Wiki Source
+The step in
+
+### Plain Text Export
+
+`wtf_wikipedia` also offers a plaintext method, that returns only paragraphs of nice text, and no junk:
 
 ```javascript
 wtf.from_api('Toronto Blue Jays', 'en', function(markup) {
@@ -107,10 +157,17 @@ wtf.from_api('Toronto Blue Jays', 'en', function(markup) {
   })
 </script>
 ```
-
+The client-side application of `wtf_wikipedia.js` allows a client-side processing of the Wiki markdown. The downloaded Wiki source can be processed with Javascript in the browser and new web-based content can be generated dynamically based on the Wiki-Source.  
 <h2 align="center">
   <a href="https://spencermountain.github.io/wtf_wikipedia/">Demo!</a>
 </h2>
+Furthermore format cross-compilation from wiki source into
+* plain text,
+* Markdown,
+* HTML,
+* LaTeX
+* ...
+is supported. The LaTeX output format is helpful to generate WikiBooks on the client side.
 
 # What it does
 
