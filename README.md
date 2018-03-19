@@ -355,11 +355,15 @@ wtf.from_api("Swarm intelligence", 'en', function (wikimarkdown, page_identifier
 The JSON hash `data` contains all parsed citation from the Wiki Markdown article in `data.citations`, which is an array of all collected citations during the `wtf.parse(...)`-Call.
 
 ## Helpful Links for Citation Handling in JavaScript
-* https://citation.js.org/demo/ how to convert citations with a specific style into an output format.
-* [HandleBarsJS](https://handlebarsjs.com/) as a template engine might be helpful to convert JSON data about a citation into a specific output format.
+* Use the template mechanismn of the MediaWiki to render a output in a specific format. `wtf_wikipedia` is able to resolve a template.
+* (Alternative) https://citation.js.org/demo/ how to convert citations with a specific style into an output format.
+* (Alternative) [HandleBarsJS](https://handlebarsjs.com/) as a template engine might be helpful to convert JSON data about a citation into a specific output format.
 
-## ToDo Citation Management
+## Citation Management (ToDo)
 The citations in the parse JSON by `wtf_wikipedia.js` needs some post-processing.
+
+### Alteration of the current JSON format
+The current JSON format for the citation array is a result of the storage of citations in the Wiki markdown language
 ```javascript
 citations : [
   {
@@ -399,7 +403,7 @@ The citations in the parse JSON by `wtf_wikipedia.js` needs some post-processing
 ```javascript
 citations : [
   {
-      "id": "Q23571040",
+      "id": "C1D20180327T1503",
       "type": "book",
       "title": "Swarm Intelligence: From Natural to Artificial Systems",
       "author":[
@@ -420,7 +424,7 @@ citations : [
      "isbn": "0-19-513159-2"
    },
    {
-     "id": "Q23571041",
+     "id": "C1D20180327T1503",
      "type": "journal",
      "author":[
        {
@@ -450,13 +454,80 @@ citations : [
 ```
 After this conversion is done, the citations can be cross-compiled in the output format with a template or added to a BibTeX-file that is used for creating a LaTeX document.
 
-## HTML Citations
+* Create an attribute `author` in all bibliographic records in the author array `citations`,
+```javascript
+  var c = data.citations;
+  for (var i = 0; i < c.length; i++) {
+    // add to author array to all bibitem records b=c[i]
+    c[i]["author"] = [];
+    var b = c[i];
+    // add an unique ID for bibitem records b=c[i]
+    if (!(b.hasOwnProperty("id"))) {
+      // if bibitem has no id-key add the
+      b[id] =
+    }
+    var count = 1;
+    var family = "";
+    var given = "";
+    var delkeys = [];
+    var key = "";
+    for (var k in c[i]) {
+      key = "first"+count;
+      if (b.hasOwnProperty(key)) {
+        // store given name
+        given = b[key];
+        // store the key for delete
+        delkeys.push(key);
+      } else {
+        given = ""  
+      };
+      key = "last"+count;
+      if (b.hasOwnProperty(key)) {
+        // store family name
+        family =  c[i]][key];
+        // store the key for delete
+        delkeys.push(key);
+        // add author to author array with family and given name
+        (b["author"]).push({"family":family,"given",given})
+      };
+      count++;
+    };
+    // clean up key/value pairs
+    // remove first1, last1, ... as key/value pairs from bibitem records b=c[i]
+    for (var i = 0; i < delkeys.length; i++) {
+      // delete first
+      delete c[i][delkeys[i]];
+    };
+  }
+```
+* HandleBarsJS can be used to generated the citation in a specific format. E.g. the content of the `data.citations[i]["title"]` will replace the key marker `{{title}}` in a HTML template. The wrapped HTML-tags will render the title in italics.
+
+```html
+... <i>{{title}}</i>, ({{year}}), {{journal}} ...
+```
+
+## HTML Citations - Replacement of Reflist-Marker
 In the Wiki Markdown the reference are stored either at the very end of Wiki markdown text or at the reference marker `{{Reflist|2}}` as the two column reference list of all citations found in the Wiki markdown article. The compilation of the citations in the parsed JSON file of `wtf_wikipedia` will be converted e.g. with a [HandleBarsJS](https://handlebarsjs.com/) template into an appropriate output format. A citation reference `(Bertin2009)` will be inserted that links to a HTML page anchor in the reference list:
 
 
 ## LaTeX Citations - BibTex or Bibliography
-LaTeX has its own citation management system BiBTex of the same procedure can be applied as for HTML and a bibliography can be added to the end of the LaTeX file to add the citation.
+LaTeX has its own citation management system BibTex. If you want to use the BibTex, convert the collected citation in the array `data.citations`.
+```javascript
+wtf.from_api("Swarm intelligence", 'en', function (wikimarkdown, page_identifier, lang_or_wikiid) {
+  var options = {
+    page_identifier:page_identifier,
+    lang_or_wikiid:lang_or_wikiid
+  };
+var data = wtf.parse(wikimarkdown,options);
+console.log(JSON.stringify(data, null, 2));
+});
+```
+### Convert Citations in BibTex-Database or Bibliography
+The JSON hash `data` contains an array with all parsed citations from the Wiki Markdown article. Loop over `data.citations` and convert all bibitem records from the array of all collected citations into the BibTex format (e.g. with [HandleBarsJS](https://handlebarsjs.com/) ).
+Without BibTex it is possible to render the citation in the array `data.citations` into an `bibitem` in the bibliography. This is the same procedure without a database and explicit list of collected citations similar to an direct approach mentioned for HTML. The bibliography can be added to the end of the LaTeX file to add the citation.
 (see [Bibiography in LaTeX](https://www.sharelatex.com/learn/Bibliography_management_with_bibtex) )
+
+## Citation and References
 
 # What it does
 
