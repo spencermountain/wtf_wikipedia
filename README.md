@@ -352,6 +352,8 @@ wtf.from_api("Swarm intelligence", 'en', function (wikimarkdown, page_identifier
   console.log(JSON.stringify(data, null, 2));
 });
 ```
+The JSON hash `data` contains all parsed citation from the Wiki Markdown article in `data.citations`, which is an array of all collected citations during the `wtf.parse(...)`-Call.
+
 ## Helpful Links for Citation Handling in JavaScript
 * https://citation.js.org/demo/ how to convert citations with a specific style into an output format.
 * [HandleBarsJS](https://handlebarsjs.com/) as a template engine might be helpful to convert JSON data about a citation into a specific output format.
