@@ -59,9 +59,14 @@ creature. :four_leaf_clover:
 - [Client-side Wiki Markdown Processing](#client-side-wiki-markdown-processing)
 - [Citation Management](#citation-management)
   - [Helpful Links for Citation Handling in JavaScript](#helpful-links-for-citation-handling-in-javascript)
-  - [ToDo Citation Management](#todo-citation-management)
-  - [HTML Citations](#html-citations)
+  - [Where to add the Citation Management - Output Format](#where-to-add-the-citation-management---output-format)
+  - [LaTeX Citation Handling](#latex-citation-handling)
+  - [Citation JSON Post-Processing (ToDo)](#citation-json-post-processing-todo)
+    - [Alteration of the current JSON format](#alteration-of-the-current-json-format)
+  - [HTML Citations - Replacement of Reflist-Marker](#html-citations---replacement-of-reflist-marker)
   - [LaTeX Citations - BibTex or Bibliography](#latex-citations---bibtex-or-bibliography)
+    - [Convert Citations in BibTex-Database or Bibliography](#convert-citations-in-bibtex-database-or-bibliography)
+  - [Citation and References](#citation-and-references)
 - [What it does](#what-it-does)
   - [But what about...](#but-what-about)
     - [Parsoid:](#parsoid)
@@ -361,8 +366,52 @@ The JSON hash `data` contains all parsed citation from the Wiki Markdown article
 
 ## Where to add the Citation Management - Output Format
 The way how citations are handled is depending on the Output Format and the preferences of the user of `wtf_wikipedia`
-* export all citations in a BibTeX-format
-* generate a bibliography and inject this bibliography into the output text at the marker
+* export all citations in a BibTeX-format (use [FileSaver.js](https://www.npmjs.com/package/filesaver.js) by Eli Grey to generate a file save as Download for exporting generated BibTex-files in a browser).
+* generate a bibliography and inject this bibliography into the output text at the marker `{{Reflist|2}}`.
+```latex
+\bibliography{mybib}{}
+\bibliographystyle{apalike}
+```
+The replacement inserts all cited literature in the bibliography.
+* create a citation helper function that is performed whenever a citation is found. It determines, what to inject at the location where the location is found in the Wiki markdown text.
+
+**Conclusion:** A solution for the citation management could be a `citation.js` for all output formats in `/src/output` (e.g. `/src/output/latex/citation.js`). This library processes
+* the reference list at the marker `{{Reflist|2}}` or at the end of the document and
+* replaces all citations with an appropriate marker that handles the citation in the corresponding output format.
+
+## LaTeX Citation Handling
+Replace the citation in Wiki Markdown with a cite-command in LaTeX that uses the `id` of the citation record.
+```javascript
+citations : [
+  {
+      "id": "C1D20180327T1503",
+      "type": "book",
+      "title": "Swarm Intelligence: From Natural to Artificial Systems",
+      "author":[
+        {
+          "given": "Eric",
+          "family": "Bonabeau",
+        },
+        {
+          "given": "Marco",
+          "family": "Dorigo",
+        },
+        {
+          "given": "Guy",
+          "family": "Theraulaz",
+        }
+    ],
+     "year": 1999,
+     "isbn": "0-19-513159-2"
+   },
+   ....
+]
+```
+The citation mechanism of BibTex will work if the citations in the JSON array is part of the BibTeX database of your LaTeX enviroment. So alteration and/or export of the collected citations in `wtf_wikipedia` is necessary.
+```latex
+\cite{C1D20180327T1503}
+```
+The cite command will be replaced by LaTeX according to your selected citation style (e.g. APA with `(Bonabeau, 1999)`).
 
 ## Citation JSON Post-Processing (ToDo)
 The citations in the parse JSON by `wtf_wikipedia.js` needs some post-processing.
@@ -500,7 +549,7 @@ After this conversion is done, the citations can be cross-compiled in the output
     // clean up key/value pairs
     // remove first1, last1, ... as key/value pairs from bibitem records b=c[i]
     for (var i = 0; i < delkeys.length; i++) {
-      // delete first
+      // delete keys first1, last1, first2, last2, ... if they exist.
       delete c[i][delkeys[i]];
     };
   }
