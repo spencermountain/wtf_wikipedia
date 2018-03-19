@@ -376,8 +376,11 @@ The replacement inserts all cited literature in the bibliography.
 * create a citation helper function that is performed whenever a citation is found. It determines, what to inject at the location where the location is found in the Wiki markdown text.
 
 **Conclusion:** A solution for the citation management could be a `citation.js` for all output formats in `/src/output` (e.g. `/src/output/latex/citation.js`). This library processes
-* the reference list at the marker `{{Reflist|2}}` or at the end of the document and
-* replaces all citations with an appropriate marker that handles the citation in the corresponding output format.
+* **(RefList)** the reference list at the marker `{{Reflist|2}}` or at the end of the document and
+* **(Ref-Tag)** replaces all citations with an appropriate marker that handles the citation in the corresponding output format - e.g. `(OER, 2013)`.
+```html
+<ref>{{cite web|title=What is OER?|url=http://wiki.creativecommons.org/What_is_OER|work=wiki.creativecommons.org|publisher=Creative Commons|accessdate=18 April 2013}}</ref>
+```
 
 ## LaTeX Citation Handling
 Replace the citation in Wiki Markdown with a cite-command in LaTeX that uses the `id` of the citation record.
