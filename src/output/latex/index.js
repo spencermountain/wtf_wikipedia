@@ -28,7 +28,7 @@ const makeImage = (image) => {
 const doList = (list) => {
   let out = '\\begin{itemize}\n';
   list.forEach((o) => {
-    out += '  \\item' + o.text + '\n';
+    out += '  \\item ' + o.text + '\n';
   });
   out += '\\end{itemize}\n';
   return out;
@@ -36,9 +36,10 @@ const doList = (list) => {
 
 const doSection = (section, options) => {
   let out = '';
+  let num = 1
   //make the header
   if (options.title === true && section.title) {
-    let num = 1 + section.depth;
+    num = 1 + section.depth;
     var vOpen = "\n";
     var vClose = "}";
     switch (num) {
@@ -64,7 +65,7 @@ const doSection = (section, options) => {
       break;
       default:
         vOpen += "\n% section with depth="+num+" undefined - use subparagraph instead\n\\subparagraph{";
-        vClose = "} \\\\ \n";  
+        vClose = "} \\\\ \n";
     }
     out += vOpen + section.title + vClose;
     out += '\n';
@@ -84,11 +85,14 @@ const doSection = (section, options) => {
   }
   //finally, write the sentence text.
   if (section.sentences && options.sentences === true) {
-    out += '\n\n% BEGIN Paragraph\n' + section.sentences.map((s) => doSentence(s, options)).join(' ') + '\n% END Paragraph';
+    //out += '\n\n% BEGIN Paragraph\n'
+    out +=  section.sentences.map((s) => doSentence(s, options)).join(' ')
+    //out += '\n% END Paragraph';
     out += '\n';
   };
   var title_tag = ' SECTION depth='+num +" - TITLE: " + section.title + "\n";
-  out = '\n% BEGIN' + title_tag +  out + '\n% END' + title_tag;
+  // wrap a section comment
+  //out = '\n% BEGIN' + title_tag + out + '\n% END' + title_tag;
   return out;
 };
 //
