@@ -359,7 +359,12 @@ The JSON hash `data` contains all parsed citation from the Wiki Markdown article
 * (Alternative) https://citation.js.org/demo/ how to convert citations with a specific style into an output format.
 * (Alternative) [HandleBarsJS](https://handlebarsjs.com/) as a template engine might be helpful to convert JSON data about a citation into a specific output format.
 
-## Citation Management (ToDo)
+## Where to add the Citation Management - Output Format
+The way how citations are handled is depending on the Output Format and the preferences of the user of `wtf_wikipedia`
+* export all citations in a BibTeX-format
+* generate a bibliography and inject this bibliography into the output text at the marker
+
+## Citation JSON Post-Processing (ToDo)
 The citations in the parse JSON by `wtf_wikipedia.js` needs some post-processing.
 
 ### Alteration of the current JSON format
@@ -528,6 +533,13 @@ Without BibTex it is possible to render the citation in the array `data.citation
 (see [Bibiography in LaTeX](https://www.sharelatex.com/learn/Bibliography_management_with_bibtex) )
 
 ## Citation and References
+In the Wiki markdown syntax the citation is inserted in the Wiki text at a position where the citation is mentioned. Later in the HTML generated output in the MediaWiki the collected citations are listed at the very end of the document or (if applicable) at the marker position (e.g. `{{Reflist|2}}`) in the Wiki markdown source.
+
+In LaTeX this marker can be replaced by the appropriate LaTeX command (see http://www.bibtex.org/Using/ )
+```latex
+\bibliography{mybib}{}
+\bibliographystyle{plain}
+```
 
 # What it does
 
