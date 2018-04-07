@@ -2,6 +2,7 @@ const parse = require('../../parse');
 const doTable = require('./table');
 const doInfobox = require('./infobox');
 const doSentence = require('./sentence');
+const doMath = require('./math');
 
 const defaults = {
   infoboxes: true,

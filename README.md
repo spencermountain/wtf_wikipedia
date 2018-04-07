@@ -46,6 +46,7 @@ creature. :four_leaf_clover:
 - [Install and Quick Start](#install-and-quick-start)
 - [Download of Wiki Markdown](#download-of-wiki-markdown)
   - [WikiID: Language and Domainname](#wikiid-language-and-domainname)
+  - [Extended Wiki ID i](#extended-wiki-id-i)
 - [Cross Compilation of Wiki Source](#cross-compilation-of-wiki-source)
   - [Plain Text Export](#plain-text-export)
   - [Markdown Export](#markdown-export)
@@ -66,20 +67,27 @@ creature. :four_leaf_clover:
   - [LaTeX Citations - BibTex or Bibliography](#latex-citations---bibtex-or-bibliography)
     - [Convert Citations in BibTex-Database or Bibliography](#convert-citations-in-bibtex-database-or-bibliography)
   - [Citation and References](#citation-and-references)
+- [Mathematical Expressions](#mathematical-expressions)
+  - [Inline Math and Display Math in Separate Lines](#inline-math-and-display-math-in-separate-lines)
+  - [Regular Expressions to determine Inline and Display Math (ToDo)](#regular-expressions-to-determine-inline-and-display-math-todo)
+  - [Handling Mathematical Expressions in Export Formats](#handling-mathematical-expressions-in-export-formats)
+    - [HTML and MathJax](#html-and-mathjax)
+  - [MarkDown and Katex](#markdown-and-katex)
 - [What it does](#what-it-does)
   - [But what about...](#but-what-about)
     - [Parsoid:](#parsoid)
     - [XML datadumps:](#xml-datadumps)
 - [Methods](#methods)
-  - [**.parse(wikimarkup)**](#parsewikimarkup)
+  - [**.parse(pWikiSource)**](#parsepwikisource)
   - [**.from_api(title, lang_or_wikiid, callback)**](#from_apititle-lang_or_wikiid-callback)
-  - [**.plaintext(wikimarkup)**](#plaintextwikimarkup)
+  - [**.plaintext(pWikiSource)**](#plaintextpwikisource)
   - [**.custom({})**](#custom)
   - [**CLI**](#cli)
     - [LaTeX](#latex)
     - [Global scripting, downloading and cross-compilation](#global-scripting-downloading-and-cross-compilation)
 - [Sample Output](#sample-output)
-  - [Contributing](#contributing)
+- [To Do](#to-do)
+- [Contributing](#contributing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -101,8 +109,8 @@ The `--save` option adds the library to the list of required packages of your pr
 var wtf = require('wtf_wikipedia');
 
 //call the API and parse the markup into JSON 'data'
-wtf.from_api('Toronto', 'en', function(wikimarkup) {
-  var data = wtf.parse(wikimarkup);
+wtf.from_api('Toronto', 'en', function(pWikiSource) {
+  var data = wtf.parse(pWikiSource);
   console.log(data.infoboxes[0].data.leader_name);
   // "John Tory"
 });
@@ -144,11 +152,13 @@ If you just want the source text of an MediaWiki article, call the API in the br
 ```javascript
 var wtf = require('wtf_wikipedia');
 
-//call the API and process the  markup 'pMarkup' in the callback function of the API
-wtf.from_api('Toronto', 'en', function(pMarkup) {
-  // do something with wiki markup return by the callback function in the parameter pMarkup (String)
+//call the API and process the  markup 'pWikiSource' in the callback function of the API
+wtf.from_api('Toronto', 'en', function(pWikiSource) {
+  // do something with wiki markup return by the callback function in the parameter pWikiSource (String)
 });
 ```
+**Remark:** To distinguish local variables from parameters of functions a preceeding `p` can used to indicate that (e.g. `pWikiSource`). This denomination of parameters variables is just a support for reading the code without any impact on the Javascript interpretation of code.
+
 ## WikiID: Language and Domainname
 You can retrieve the Wiki markdown from different MediaWiki products of the WikiFoundation. The domain name includes the Wiki product (e.g. Wikipedia or Wikiversity) and a language. The WikiID encoded the language and the domain determines the API that is called for fetching the source Wiki. The following WikiIDs are referring to the following domain name.   
 * `en`: https://en.wikipedia.org   
@@ -168,9 +178,9 @@ If you use just the language identifier `en` then `wtf_wikipedia` assumes that t
 var wtf = require('wtf_wikipedia');
 
 // Fetch the article about '3D Modelling' in english Wikiversity from the domain https://en.wikiversity.org
-// call the API and process the  markup 'pMarkup' in the callback function of the API
-wtf.from_api('3D Modelling', 'enwikiversity', function(pMarkup) {
-  // do something with wiki markup return by the callback function in the parameter pMarkup (String)
+// call the API and process the  markup 'pWikiSource' in the callback function of the API
+wtf.from_api('3D Modelling', 'enwikiversity', function(pWikiSource) {
+  // do something with wiki markup return by the callback function in the parameter pWikiSource (String)
 });
 ```
 If you want to fetch Wiki markdown with a different language (e.g. german Wikiversity) use the appropriate language ID (e.g. `de` for german).
@@ -190,6 +200,7 @@ In previous versions of `wtf_wikipedia` the wiki identifier (`wikiid`) used for 
 * `enwikipedia`: https://en.wikipedia.org
 * `dewikipedia`: https://de.wikipedia.org
 
+The additional entries for a consistent WikiID mapping are added with a [regular expression](https://gist.github.com/niebert/8bc998abde0f8d733e98794a6938c714) (Perl-like)
 
 # Cross Compilation of Wiki Source
 The library offers cross compilation into other formats.
@@ -351,10 +362,10 @@ The client-side application of `wtf_wikipedia.js` allows the browser to download
 </font>
 
 Furthermore format cross-compilation from wiki source into
-* plain text,
-* Markdown,
-* HTML,
-* LaTeX
+* [plain text](https://github.com/spencermountain/wtf_wikipedia/blob/master/src/index.js),
+* [Markdown](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/output/markdown),
+* [HTML](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/output/html),
+* [LaTeX](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/output/latex)
 * ...
 is supported. The LaTeX output format is helpful to generate WikiBooks on the client side.
 
@@ -609,7 +620,10 @@ In LaTeX this marker can be replaced by the appropriate LaTeX command (see http:
 Mathematical expressions are used in many scientific and educational content (not only core mathematical disciplines like Calculus, Algebra, Geometry, Statistics,...). Mathematical expressions are used when specific content can be described in precise form of a finite combination of symbols that is well-formed according to rules that depend on the context in which the expression is used. A precise description of the methodology may include mathematical expression by which the results are determined.
 Removing the mathematical expressions from the MediaWiki content may result in an incomprehensive text fragement. 
 
-This section describes the basic principles of handling mathematical expressions.
+This section describes the basic principles of handling mathematical expressions. The export functions are defined as library `math.js` in the subdirectories of `/src/output/`.
+
+
+<span style="color: red">Important Remark:</span> Currently the export functions are defined already but the export of the parsed syntax tree of the document will not call these functions,
 
 ## Inline Math and Display Math in Separate Lines
 In the german Wikiversity article about [mathematical Norms and Topology](https://de.wikiversity.org/wiki/Normen,_Metriken,_Topologie) you will recognize 
@@ -622,6 +636,26 @@ The next line is a BLOCK expression in a separate line.
 :<math> f(x) </math>
 This is the text below the BLOCK expression.
 ```
+The following functions are defined as library `/src/output/latex/math.js` and both functions declare the export of the mathematical expression provided in the parameter `pMath` in [LaTeX syntax](https://en.wikibooks.org/wiki/LaTeX/Mathematics).
+```javascript
+// handle inline mathematical expression
+const doMathInline = (pMath, options) => {
+  // pMath is internal LaTeX code for the mathematical expression e.g. "f(x)"
+  // pMath does not contain the wrapped <math>-tags from the MediaWiki source
+ let out = '$' + pMath + '$';
+  return out ;
+};
+
+// handle mathematical expression displayed in a separate line
+const doMathBlock = (pMath, options) => {
+  let out = '\[' + pMath + '\]';
+  return out + ' ';
+};
+```
+Every export format has a subdirectory in `/src/output/` and all subdirectories have a `math.js` library with mainly two functions 
+* `doMathInline(pMath, options)` to handle inline mathematical expressions and
+* `doMathBlock(pMath, options)` to handle mathematical expressions is separate lines as a block.
+
 
 ## Regular Expressions to determine Inline and Display Math (ToDo)
 Regular expressions can be used to determine what display format of the mathematical expression is intended by the authors of the Wiki MarkDown article.
@@ -630,8 +664,12 @@ Regular expressions can be used to determine what display format of the mathemat
   * the mathematical expression in LaTeX syntax itself and 
   * closing `math`-Tag
 * (`INLINE`) after replacement of `BLOCK` expressions the remained mathematical expressions wrapped in `math`-tags can be treated as `INLINE` math.
+The export functions are defined in `/src/output/` under the respective export formats e.g.
+* `/src/output/latex` for LaTeX,
+* `/src/output/html` for HTML,
+* `/src/output/markdown` for MarkDown with (KaTeX for rendering the mathematical expressions)
 
-## Handling Mathematical Expressions in Export Formats (ToDo)
+## Handling Mathematical Expressions in Export Formats 
 
 Inline with the export design with helper functions the processing of the mathematical expressions can be done with
 * helper function (similar to sentences, ... (see folder `/src/output` in the `wtf_wikipedia` repository) (NOT IMPLEMENTED) or
@@ -648,7 +686,7 @@ The next line is a BLOCK expression in a separate line.
 This is the text below the BLOCK expression.
 ```
 
-### HTML and MathJax (ToDo)
+### HTML and MathJax 
 The easiest way to export MediaWiki markdown article into HTML with mathematical expression is [MathJax](https://www.mathjax.org/), due to the fact, that MathJax can render mathematical expressions in the Wiki Markdown article is written in LaTeX syntax. Therefore a cross-compilation of the latex syntax is not necessary.
 * (`INLINE`) inline mathematical expressions are wrapped with TWO Dollar symbols, that replaces the opening and closing `math`-tags.
 * (`BLOCK`) separated mathematical expression are wrapped with a blackslash followed by an opening respectively closing square brackets.
@@ -906,7 +944,16 @@ Sample Output for [Whistling](https://en.wikipedia.org/w/index.php?title=Whistli
 }
 ```
 
-## Contributing
+# To Do
+* Mathematical Expressions: The helper functions for the export formats are defined in `src/ouput/` in the resp. directory for the format ( e.g. `src/ouput/latex/math.js` for LaTeX export), but they were not called currently. TODO: Parsing must parse mathematical BLOCK and INLINE expressions and the export must call the respective the export helper functions defined e.g. in `/src/output/latex/math.js` for LaTeX output)
+
+# Contributing
+
+If you want to contribute with new output formats (e.g. defined in [PanDoc](https://www.pandoc.org/try) ) then 
+* login with your GitHub account or [create an account](https://help.github.com/articles/signing-up-for-a-new-github-account/) for you 
+* [fork](https://help.github.com/articles/fork-a-repo/) the current `wtf_wikipedia` repository and add e.g. a new export format in `/src/output/`,
+* Build and test the generated library with `npm `
+* create a Pull Request for the maintainer Spencer Kelly to integrate the new export format the original `wtf_wikipedia` respository.
 
 Never-ender projects like these are only good with many-hands, and I try to be a friendly maintainer. (promise!)
 
