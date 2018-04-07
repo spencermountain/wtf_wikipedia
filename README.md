@@ -1,4 +1,3 @@
-family
 <div align="center">
   <a href="https://www.codacy.com/app/spencerkelly86/wtf_wikipedia">
     <img src="https://api.codacy.com/project/badge/grade/e84f69487c9348ba9cd8e31031a05a4f" />
@@ -152,13 +151,18 @@ wtf.from_api('Toronto', 'en', function(pMarkup) {
 ```
 ## WikiID: Language and Domainname
 You can retrieve the Wiki markdown from different MediaWiki products of the WikiFoundation. The domain name includes the Wiki product (e.g. Wikipedia or Wikiversity) and a language. The WikiID encoded the language and the domain determines the API that is called for fetching the source Wiki. The following WikiIDs are referring to the following domain name.   
+* `en`: https://en.wikipedia.org   
 * `enwiki`: https://en.wikipedia.org
+* `enwikipedia`: https://en.wikipedia.org
 * `enwikibooks`: https://en.wikibooks.org',
 * `enwikinews`: https://en.wikinews.org',
 * `enwikiquote`: https://en.wikiquote.org',
 * `enwikisource`: https://en.wikisource.org',
 * `enwikiversity`: https://en.wikiversity.org',
 * `enwikivoyage`: https://en.wikivoyage.org'
+
+If you use just the language identifier `en` then `wtf_wikipedia` assumes that the wiki is `Wikipedia`. The same is applied if you just use `enwiki`. Due to the fact that the Wiki Foundation has severval MediaWikis with a different content scope, also `enwiki` is mapped to the english Wikipedia.
+
 
 ```javascript
 var wtf = require('wtf_wikipedia');
@@ -170,13 +174,22 @@ wtf.from_api('3D Modelling', 'enwikiversity', function(pMarkup) {
 });
 ```
 If you want to fetch Wiki markdown with a different language (e.g. german Wikiversity) use the appropriate language ID (e.g. `de` for german).
+* `de`: https://de.wikipedia.org
 * `dewiki`: https://de.wikipedia.org
+* `dewikipedia`: https://de.wikipedia.org
 * `dewikibooks`: https://de.wikibooks.org',
 * `dewikinews`: https://de.wikinews.org',
 * `dewikiquote`: https://de.wikiquote.org',
 * `dewikisource`: https://de.wikisource.org',
 * `dewikiversity`: https://de.wikiversity.org',
 * `dewikivoyage`: https://de.wikivoyage.org'
+
+## Extended Wiki ID i
+In previous versions of `wtf_wikipedia` the wiki identifier (`wikiid`) used for `Wikipedia` the product specification `wiki`. To be consistent with wiki product specification part in the domain name `wikipedia` the following wiki IDs are added to list of Wiki ID mapping (defined in the folder `src/data/site_map.js`).
+
+* `enwikipedia`: https://en.wikipedia.org
+* `dewikipedia`: https://de.wikipedia.org
+
 
 # Cross Compilation of Wiki Source
 The library offers cross compilation into other formats.
@@ -186,8 +199,8 @@ The library offers cross compilation into other formats.
 `wtf_wikipedia` also offers a plaintext method, that returns only paragraphs of nice text, and no junk:
 
 ```javascript
-wtf.from_api('Toronto Blue Jays', 'en', function(wikimarkup) {
-  var text = wtf.plaintext(wikimarkup);
+wtf.from_api('Toronto Blue Jays', 'en', function(pWikiSource) {
+  var text = wtf.plaintext(pWikiSource);
   // "The Toronto Blue Jays are a Canadian professional baseball team..."
 });
 ```
@@ -196,8 +209,8 @@ wtf.from_api('Toronto Blue Jays', 'en', function(wikimarkup) {
 `wtf_wikipedia` also offers a markdown method, that returns converted into MarkDown syntax. The following code downloads the [article about 3D Modelling](https://en.wikiversity.org/wiki/3D_Modelling) from the english Wikiversity:
 
 ```javascript
-wtf.from_api('3D Modelling', 'enwikiversity', function(wikimarkup) {
-  var text = wtf.markdown(wikimarkup);
+wtf.from_api('3D Modelling', 'enwikiversity', function(pWikiSource) {
+  var text = wtf.markdown(pWikiSource);
   // converts the Wikiversity article about "3D Modelling"
   // from the english domain https://en.wikiversity.org
   // https://en.wikiversity.org/wiki/3D_Modelling
@@ -208,8 +221,8 @@ wtf.from_api('3D Modelling', 'enwikiversity', function(wikimarkup) {
 `wtf_wikipedia` also offers a HTML method, that returns converted article into HTML syntax. The following code downloads the [article about 3D Modelling](https://en.wikiversity.org/wiki/3D_Modelling) from the english Wikiversity:
 
 ```javascript
-wtf.from_api('3D Modelling', 'enwikiversity', function(wikimarkup) {
-  var text = wtf.html(wikimarkup);
+wtf.from_api('3D Modelling', 'enwikiversity', function(pWikiSource) {
+  var text = wtf.html(pWikiSource);
   // converts the Wikiversity article about "3D Modelling"
   // from the english domain https://en.wikiversity.org
   // https://en.wikiversity.org/wiki/3D_Modelling
@@ -220,8 +233,8 @@ wtf.from_api('3D Modelling', 'enwikiversity', function(wikimarkup) {
 `wtf_wikipedia` also offers a LaTeX method, that returns converted article into LaTeX syntax. The following code downloads the [article about 3D Modelling](https://en.wikiversity.org/wiki/3D_Modelling) from the english Wikiversity:
 
 ```javascript
-wtf.from_api('3D_Modelling', 'enwikiversity', function(wikimarkup) {
-  var text = wtf.latex(wikimarkup);
+wtf.from_api('3D_Modelling', 'enwikiversity', function(pWikiSource) {
+  var text = wtf.latex(pWikiSource);
   // converts the Wikiversity article about "3D Modelling"
   // from the english domain https://en.wikiversity.org
   // https://en.wikiversity.org/wiki/3D_Modelling
@@ -325,8 +338,8 @@ module.exports = {
 ```html
 <script src="https://unpkg.com/wtf_wikipedia@latest/builds/wtf_wikipedia.min.js"></script>
 <script>
-  wtf.from_api("On a Friday", "en", function(wikimarkup){// -> "Radiohead" redirect
-    console.log(wtf.plaintext(wikimarkup))
+  wtf.from_api("On a Friday", "en", function(pWikiSource){// -> "Radiohead" redirect
+    console.log(wtf.plaintext(pWikiSource))
     // "Radiohead are an English rock band from Abingdon..."
   })
 </script>
@@ -592,6 +605,103 @@ In LaTeX this marker can be replaced by the appropriate LaTeX command (see http:
 \bibliography{mybib}{}
 \bibliographystyle{plain}
 ```
+# Mathematical Expressions
+Mathematical expressions are used in many scientific and educational content (not only core mathematical disciplines like Calculus, Algebra, Geometry, Statistics,...). Mathematical expressions are used when specific content can be described in precise form of a finite combination of symbols that is well-formed according to rules that depend on the context in which the expression is used. A precise description of the methodology may include mathematical expression by which the results are determined.
+Removing the mathematical expressions from the MediaWiki content may result in an incomprehensive text fragement. 
+
+This section describes the basic principles of handling mathematical expressions.
+
+## Inline Math and Display Math in Separate Lines
+In the german Wikiversity article about [mathematical Norms and Topology](https://de.wikiversity.org/wiki/Normen,_Metriken,_Topologie) you will recognize 
+* (`INLINE`) inline mathematical expressions in the text and 
+* (`BLOCK`) separated mathematical expression in a single line.
+These two different applications of mathematical expressions can be distinguished by a leading colon ":" in the first column of Wiki Markdown article. In the following example `f(x)` is representation of a [mathematical expression in LaTeX](https://www.mediawiki.org/wiki/Extension:Math/Help:Formula).
+```html
+This expression <math> f(x) </math> is a mathematical INLINE expression. 
+The next line is a BLOCK expression in a separate line.
+:<math> f(x) </math>
+This is the text below the BLOCK expression.
+```
+
+## Regular Expressions to determine Inline and Display Math (ToDo)
+Regular expressions can be used to determine what display format of the mathematical expression is intended by the authors of the Wiki MarkDown article.
+* (`BLOCK`) First determine the DisplayMath by a regular expression with a 
+  * newline, colon and `math`-tag opening the block with the mathematical expression in LaTeX syntax,
+  * the mathematical expression in LaTeX syntax itself and 
+  * closing `math`-Tag
+* (`INLINE`) after replacement of `BLOCK` expressions the remained mathematical expressions wrapped in `math`-tags can be treated as `INLINE` math.
+
+## Handling Mathematical Expressions in Export Formats (ToDo)
+
+Inline with the export design with helper functions the processing of the mathematical expressions can be done with
+* helper function (similar to sentences, ... (see folder `/src/output` in the `wtf_wikipedia` repository) (NOT IMPLEMENTED) or
+* as work around do the preprocessing of the Wiki Markdown sources befor performing the export of the markdown source so that the mathematical expressions are not removed.
+### LaTeX
+The easiest export format is LaTeX due to the fact, that the mathematical expressions in the Wiki Markdown article is written in LaTeX syntax. Therefore a cross-compilation of the latex syntax is not necessary.
+* (`INLINE`) inline mathematical expressions are wrapped with TWO Dollar symbols, that replaces the opening and closing `math`-tags.
+* (`BLOCK`) separated mathematical expression are wrapped with a blackslash followed by an opening respectively closing square brackets.
+The following latex code shows the converted Wiki markdown text in latex syntax:
+```latex
+This expression $ f(x) $ is a mathematical INLINE expression. 
+The next line is a BLOCK expression in a separate line.
+\[ f(x) \]
+This is the text below the BLOCK expression.
+```
+
+### HTML and MathJax (ToDo)
+The easiest way to export MediaWiki markdown article into HTML with mathematical expression is [MathJax](https://www.mathjax.org/), due to the fact, that MathJax can render mathematical expressions in the Wiki Markdown article is written in LaTeX syntax. Therefore a cross-compilation of the latex syntax is not necessary.
+* (`INLINE`) inline mathematical expressions are wrapped with TWO Dollar symbols, that replaces the opening and closing `math`-tags.
+* (`BLOCK`) separated mathematical expression are wrapped with a blackslash followed by an opening respectively closing square brackets.
+To allow mathematical expression rendering with MathJax 
+* insert the [MathJax library as script tag in the output HTML file](https://www.mathjax.org/#gettingstarted) (for online use remote CDN - for offline use and integrate MathJax download a [MathJax ZIP copy and unzip on your computer](https://github.com/mathjax/MathJax/archive/master.zip) )  
+* replace the opening and closing tags for `INLINE` and `BLOCK` with the following symbols
+  * (`INLINE`) inline mathematical expressions are wrapped with a blackslash followed by an opening respectively closing bracket.
+  * (`BLOCK`) line separated mathematical expression are wrapped with a blackslash followed by an opening respectively closing square brackets.
+The following latex code shows the converted Wiki markdown text in HTML syntax including the HTML header.
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>MathJax TeX Test Page</title>
+  <script type="text/javascript" async
+  	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body>
+This expression \( f(x) \) is a mathematical INLINE expression. 
+The next line is a BLOCK expression in a separate line.
+\[ f(x) \]
+This is the text below the BLOCK expression.
+</body>
+</html>
+```
+
+With a [local MathJax installation](http://docs.mathjax.org/en/latest/start.html#installing-your-own-copy-of-mathjax) on your harddrive or server replace the [MathJax CDN link](http://docs.mathjax.org/en/latest/start.html) by the [appropriate path](http://docs.mathjax.org/en/latest/start.html#installing-your-own-copy-of-mathjax) 
+e.g. as a subfolder `mathjax` in which the HTML-file is stored the script tag source will be:
+
+```html
+  <script type="text/javascript" async
+  	src="mathjax/latest.js?config=TeX-MML-AM_CHTML">
+  </script>
+```
+
+## MarkDown and Katex
+The easiest way to export MediaWiki article into MarkDown with mathematical expression is [KaTeX-Library](http://waylonflinn.github.io/markdown-it-katex/), due to the fact, that KaTeX can render mathematical expressions in LaTeX syntax in the Wiki Markdown. Therefore the mathematical expressions in the wiki article are just wrapped with a dollor symbol and KaTeX will render the syntax in markdown nicely for your output. Therefore a cross-compilation of the latex syntax is not necessary if you use .
+* (`INLINE`) inline mathematical expressions are wrapped with TWO Dollar symbols, that replaces the opening and closing `math`-tags.
+* (`BLOCK`) separated mathematical block expression are wrapped with a blackslash followed by an opening respectively closing square brackets.
+To allow mathematical expression rendering with MathJax 
+* insert the [MathJax library as script tag in the output HTML file](https://www.mathjax.org/#gettingstarted) (for online use remote CDN - for offline use and integrate MathJax download a [MathJax ZIP copy and unzip on your computer](https://github.com/mathjax/MathJax/archive/master.zip) )  
+* replace the opening and closing tags for `INLINE` and `BLOCK` with the following symbols
+  * (`INLINE`) inline mathematical expressions are wrapped with ONE Dollar symbol.
+  * (`BLOCK`) line separated mathematical block expression are wrapped with TWO Dollar Symbols.
+The following latex code shows the converted Wiki markdown text in HTML syntax including the HTML header.
+```markdown
+This expression $ f(x) $ is a mathematical INLINE expression. 
+The next line is a BLOCK expression in a separate line.
+$$ f(x) $$
+This is the text below the BLOCK expression.
+```
+
 
 # What it does
 
@@ -636,7 +746,7 @@ letting you parse a whole wikipedia dump on a laptop in a couple minutes.
 
 # Methods
 
-## **.parse(wikimarkup)**
+## **.parse(pWikiSource)**
 
 turns wikipedia markup into a nice json object
 
@@ -654,8 +764,8 @@ retrieves raw contents of a wikipedia article - or other mediawiki wiki identifi
 to call non-english wikipedia apis, add it as the second paramater to from_api
 
 ```javascript
-wtf.from_api('Toronto', 'de', function(wikimarkup) {
-  var text = wtf.plaintext(wikimarkup);
+wtf.from_api('Toronto', 'de', function(pWikiSource) {
+  var text = wtf.plaintext(pWikiSource);
   //Toronto ist mit 2,6 Millionen Einwohnern..
 });
 ```
@@ -663,14 +773,14 @@ wtf.from_api('Toronto', 'de', function(wikimarkup) {
 you may also pass the wikipedia page id as parameter instead of the page title:
 
 ```javascript
-wtf.from_api(64646, 'de', function(wikimarkup) {
+wtf.from_api(64646, 'de', function(pWikiSource) {
   //...
 });
 ```
 
 the from_api method follows redirects.
 
-## **.plaintext(wikimarkup)**
+## **.plaintext(pWikiSource)**
 
 returns only nice text of the article
 
