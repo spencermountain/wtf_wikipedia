@@ -86,7 +86,7 @@ creature. :four_leaf_clover:
     - [LaTeX](#latex)
     - [Global scripting, downloading and cross-compilation](#global-scripting-downloading-and-cross-compilation)
 - [Sample Output](#sample-output)
-- [To Do](#to-do)
+- [ToDo](#todo)
 - [Contributing](#contributing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -944,7 +944,7 @@ Sample Output for [Whistling](https://en.wikipedia.org/w/index.php?title=Whistli
 }
 ```
 
-# To Do
+# ToDo
 * Mathematical Expressions: The helper functions for the export formats are defined in `src/ouput/` in the resp. directory for the format ( e.g. `src/ouput/latex/math.js` for LaTeX export), but they were not called currently. TODO: Parsing must parse mathematical BLOCK and INLINE expressions and the export must call the respective the export helper functions defined e.g. in `/src/output/latex/math.js` for LaTeX output)
 
 # Contributing
