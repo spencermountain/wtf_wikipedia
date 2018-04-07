@@ -88,6 +88,8 @@ creature. :four_leaf_clover:
 - [Sample Output](#sample-output)
 - [ToDo](#todo)
 - [Contributing](#contributing)
+  - [Fork, Improve, Pull Request](#fork-improve-pull-request)
+  - [Maintainer Comment](#maintainer-comment)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -949,12 +951,15 @@ Sample Output for [Whistling](https://en.wikipedia.org/w/index.php?title=Whistli
 
 # Contributing
 
+## Fork, Improve, Pull Request
 If you want to contribute with new output formats (e.g. defined in [PanDoc](https://www.pandoc.org/try) ) then 
 * login with your GitHub account or [create an account](https://help.github.com/articles/signing-up-for-a-new-github-account/) for you 
 * [fork](https://help.github.com/articles/fork-a-repo/) the current `wtf_wikipedia` repository and add e.g. a new export format in `/src/output/`,
-* Build and test the generated library with `npm `
-* create a Pull Request for the maintainer Spencer Kelly to integrate the new export format the original `wtf_wikipedia` respository.
+* Build and test the generated library with `npm run build`
+* If you update the `README.md` with a new export format run `doctoc README.md` to update the table of contents.
+* create a [Pull Request](https://help.github.com/articles/creating-a-pull-request/) for the maintainer Spencer Kelly to integrate the new export format the original `wtf_wikipedia` respository.
 
+## Maintainer Comment
 Never-ender projects like these are only good with many-hands, and I try to be a friendly maintainer. (promise!)
 
 ```bash
@@ -962,7 +967,8 @@ npm install
 npm test
 npm run build #to package-up client-side
 ```
-***DocToc*** is used to create a helpful table of contents in the README (see [DocToc-Installation]https://github.com/thlorenz/doctoc#installation) for further details on [NPM DocToc](https://www.npmjs.com/package/doctoc) ). Run `doctoc README.md` for updating the table of contents in the `README.md`.
+## Table of Contents in README.md
+`DocToc` is used to create a helpful table of contents in the README (see [DocToc-Installation]https://github.com/thlorenz/doctoc#installation) for further details on [NPM DocToc](https://www.npmjs.com/package/doctoc) ). Run `doctoc README.md` for updating the table of contents in the `README.md`.
 
 
 MIT
