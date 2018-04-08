@@ -210,7 +210,7 @@ If you want to fetch Wiki markdown with a different language (e.g. german Wikive
 * `dewikiversity`: https://de.wikiversity.org',
 * `dewikivoyage`: https://de.wikivoyage.org'
 
-## Extended Wiki ID i
+## Extended Wiki ID in site_map.js
 In previous versions of `wtf_wikipedia` the wiki identifier (`wikiid`) used for `Wikipedia` the product specification `wiki`. To be consistent with wiki product specification part in the domain name `wikipedia` the following wiki IDs are added to list of Wiki ID mapping (defined in the folder `src/data/site_map.js`).
 
 * `enwikipedia`: https://en.wikipedia.org
