@@ -32,12 +32,18 @@ best.</sub>
 
 </div>
 
-**wtf_wikipedia** supports vile recursive template shinanigans,
+The library `wtf_wikipedia` can 
+* download/fetch Wiki articles in source text from [Wikipedia](https://www.wikipedia.org), [Wikiversity](https://www.wikiversit.org), ...,
+* parse the content structure and content elements into a JSON file and 
+* convert the source text into different output formats. 
+`wtf_wikipedia` supports vile recursive template shinanigans,
 [half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template
 variants, and illicit wiki-esque shorthands.
 
-Making your own parser is never a good idea, `what could go rong?!`, but this library is a very detailed and deliberate
-creature. :four_leaf_clover:
+In general making your own parser is never a good idea, but this library is a very detailed and deliberate
+creature with the ability to support a variety of export formats generated those formats just in the browser or your multiplattform NodeJS application. :four_leaf_clover: 
+
+`wtf_wikipedia` can used to create tailored Wiki-Book in a browser according to requirements of the user by aggregating selected articles with `wtf_wikipedia` from Wikipedia/Wikiversity and bundle them into single document in the browser.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -55,6 +61,8 @@ creature. :four_leaf_clover:
   - [Preprocessing of Wiki Markdown](#preprocessing-of-wiki-markdown)
   - [Define new Export formats](#define-new-export-formats)
   - [Create Office Documents](#create-office-documents)
+    - [Open Document Format ODT](#open-document-format-odt)
+    - [Word Export with Javascript Libraries](#word-export-with-javascript-libraries)
     - [Create directory for new output format](#create-directory-for-new-output-format)
     - [Add the new output format as method](#add-the-new-output-format-as-method)
 - [Client-side Wiki Markdown Processing](#client-side-wiki-markdown-processing)
@@ -292,11 +300,11 @@ This section explains how developers can extend the capabilities of `wtf_wikiped
 
 If you want to create new additional export formats, [try PanDoc document conversion](https://pandoc.org/try) to get an idea what formats can be useful and are used currently in PanDoc (see https://pandoc.org). Select as [input format  `MediaWiki` in the PanDoc Webinterface](https://pandoc.org/try) and copy a MediaWiki source text into the left input textarea. Select an output format and press convert.
 
-The following sections describe the definition of a new export format in 4 steps:
+The following sections describe the definition of a new export format in 4-5 steps:
 
-* Create directory for new output format in `/src/output` e.g. `/src/output/odf` for Open Document Format for Office suites.
-* Clone e.g. the export libraries from LaTeX and adapt them to your new export format.
-* require the new export format in `/src/index.js` e.g. by 
+* (1) Create directory for new output format in `/src/output` e.g. `/src/output/odf` for Open Document Format for Office suites.
+* (2) Clone e.g. the export libraries from LaTeX and adapt them to your new export format.
+* (3) require the new export format in `/src/index.js` e.g. by 
 ```javascript 
 const odf     = require('./output/odt');
 ```
@@ -314,13 +322,15 @@ module.exports = {
   }
 };
 ```
-* run test and build for the extended `wtf_wikipedia`
-* (optional) create a Pull request on the original `wtf_wikipedia` repository of GitHub by Spencer Kelly to share the code with the community
+* (4) run test and build for the extended `wtf_wikipedia`
+* (5 optional) create a Pull request on the original `wtf_wikipedia` repository of GitHub by Spencer Kelly to share the code with the community
 
 ## Create Office Documents
 If you try [PanDoc document conversion](https://pandoc.org/try) the key to generate Office documents is the export format ODF.
 [LibreOffice](https://en.wikipedia.org/wiki/LibreOffice) can load and save even the [OpenDocument Format](http://opendocumentformat.org/) and LibreOffice can load and save MICR0S0FT Office formats. So exporting to Open Document Format will be good option to start with in `wtf_wikipedia`. The following description are a summary of aspects that support developers in bringing the Office export format e.g. to web-based environment like the [ODF-Editor](http://webodf.org/demos/).
 OpenDocument Format provides a comprehensive way forward for `wtf_wikipedia` to exchange documents from a `MediaWiki` source text reliably and effortlessly to different formats, products and devices. Regarding the different Wikis of the [Wiki Foundation](https://en.wikipedia.org/wiki/Wikimedia_Foundation) as a [Content Sink](https://en.wikiversity.org/wiki/Educational_Content_Sink) e.g. the educational content in [Wikiversity](https://en.wikiversity.org) is no longer restricted to a single export format (like PDF) open ups access to other specific editors, products or vendors for all your needs. With `wtf_wikipedia` and an ODF export format the users have the opportunity to choose the 'best fit' application of the Wiki content. This section focuses on Office products.
+
+### Open Document Format ODT
 Some important information to support Office Documents in the future
 * see [WebODF](http://webodf.org/) how to [edit ODF documents on the web or display slides](http://webodf.org/demos/). Current limitation of WebODF is, that does not render mathematical expressions, but alteration in [WebODF editor](http://webodf.org/demos/) does not remove the mathematical expressions from the ODF file (state 2018/04/07). WebODF does not render the mathematical expressions but this may be solved in the WebODF-Editor by using [MathJax](https://www.mathjax.org/) or [KaTeX](https://khan.github.io/KaTeX/) in the future.
 * The `ODT`-Format is the default export format of LibreOffice/OpenOffice. Supporting the [Open Community Approach](https://en.wikiversity.org/wiki/Open_Community_Approach) OpenSource office products are used to avoid commercial dependencies for using generated Office products. 
@@ -330,7 +340,19 @@ Some important information to support Office Documents in the future
   * Remark: Zipping the folder content again will create a parsing error when you load the zipped office document again in `LibreOffice`. This may be caused by an inappropriate order in the generated ZIP-file. The file `mimetype` [must be the first file in the ZIP-archive](https://crcok.wordpress.com/2014/10/25/unzip-and-zip-openoffice-org-odt-files/).
   * The best way to generate ODT-files is to generate an ODT-template `mytemplate.odt` with LibreOffice and all the styles you want to apply for the document and place a marker at specific content areas, where you want to replace the cross-compiled content with `wtf_wikipedia` in `content.xml`. The file  `content.xml` will be updated in ODT-ZIP-file. Also marker replacement is possible in ODF-files (see also [WebODF demos](http://webodf.org/demos/). 
 * [JSZip](https://stuk.github.io/jszip/): JSZip can be used to update and add certain files in a given ODT template (e.g. `mytemplate.odt`). Handling ZIP-files in a cross-compilation WebApp with `wtf_wikipedia` that runs in your browser and generates an editor environment for the cross-compiled Wiki source text (like the [WebODF editor](http://www.webodf.org/demo/ci/wodotexteditor-0.5.9/localeditor.html)). The updating the ODT template as ZIP-file can be handled with [JSZip](https://stuk.github.io/jszip/) by replacing the `content.xml` in a ZIP-archive. `content.xml` can be generated with `wtf_wikipedia` when the `odf`-export format is added to `/src/output/odf` (ToDo: Please create a pull request if you have done that).
+* **LibreOffice Export:** Loading ODT-files in [LibreOffice](https://en.wikipedia.org/wiki/LibreOffice) allows to export the ODT-Format to
+  * Office documents `doc`- and `docx`-format,  
+  * Text files (`.txt`),
+  * HTML files (`.html`),
+  * Rich Text files (`.rtf`),
+  * PDF files (`.pdf`) and even
+  * PNG files (`.png`).
+* Planing of the ODT support can be down in this README and collaborative implementation can be organized with Pull Requests PR.
+* Helpful Libraries: [node-odt](https://www.npmjs.com/package/node-odt), [odt](https://www.npmjs.com/package/odt) 
 
+### Word Export with Javascript Libraries
+* `wtf_wikipedia` supports HTML export,
+* the library `html-docx-js` supports [cross-compilation of HTML into docx-format](https://www.npmjs.com/package/html-docx-js)
 
 ### Create directory for new output format
 First go to the subdirectory `/src/output`. We will show, how a new export format can be added to `wtf_wikipedia`.
@@ -663,7 +685,22 @@ Removing the mathematical expressions from the MediaWiki content may result in a
 This section describes the basic principles of handling mathematical expressions. The export functions are defined as library `math.js` in the subdirectories of `/src/output/`.
 
 
-<span style="color: red">Important Remark:</span> Currently the export functions are defined already but the export of the parsed syntax tree of the document will not call these functions,
+<span style="color: red">Important Remark:</span> Currently the export functions are defined already but the export of the parsed syntax tree of the document will not call these functions. A regular expression must distinguish the inline math from block math.
+The following code finds all `math`-tags 
+```javascript
+var scripttext = "before text  <math> f(x) = x^2 </math> middle text \n:<math> g(x) = sin(x)+cos(x) </math> \n after text"
+var re_all = /<math>(.*)<\/math>/gim;
+var re_block = /\n[:]+<math>(.*)<\/math>/gim; 
+// block RE: newline "\n" with  one or more indent symbols ":". 
+// ":" shifts the mathematical expression in the block to the right, when placed directly behind newline
+
+var match;
+while (match = re_all.exec(scripttext)) {
+  // full match is in match[0], whereas captured groups (i.e. the LaTeX math expression) are in match[1].
+  console.log(match[1]);
+}
+```
+
 
 ## Inline Math and Display Math in Separate Lines
 In the german Wikiversity article about [mathematical Norms and Topology](https://de.wikiversity.org/wiki/Normen,_Metriken,_Topologie) you will recognize 
