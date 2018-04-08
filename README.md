@@ -41,9 +41,13 @@ The library `wtf_wikipedia` can
 variants, and illicit wiki-esque shorthands.
 
 In general making your own parser is never a good idea, but this library is a very detailed and deliberate
-creature with the ability to support a variety of export formats generated those formats just in the browser or your multiplattform NodeJS application. :four_leaf_clover: 
+creature with the ability to support a variety of export formats generated those formats just in the browser or your multiplatform NodeJS application. :four_leaf_clover: 
+
+* **[Wikiversity Article with Mathematical Expression](https://de.wikiversity.org/wiki/Normen,_Metriken,_Topologie)**
+* **[Export Format RevealJS Presentation](https://niebert.github.io/FA1Reveal/FA1/topologie1/Normen_Metriken_Topologie_reveal.html)** - currently static export with [PanDocElectron](https://en.wikiversity.org/wiki/PanDocElectron) - can be generated on the fly with `wtf_wikipedia` with RevealJS export format.
 
 `wtf_wikipedia` can used to create tailored Wiki-Book in a browser according to requirements of the user by aggregating selected articles with `wtf_wikipedia` from Wikipedia/Wikiversity and bundle them into single document in the browser.
+
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
