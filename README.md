@@ -312,7 +312,7 @@ The following sections describe the definition of a new export format in 4-5 ste
 ```javascript 
 const odf     = require('./output/odt');
 ```
-: and extend the module exports at the very end of  the export libraries
+   and extend the module exports at the very end of  the export libraries
 ```javascript 
 module.exports = {
   from_api: from_api,
