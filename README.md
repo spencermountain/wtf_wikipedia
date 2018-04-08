@@ -804,7 +804,7 @@ e.g. as a subfolder `mathjax` in which the HTML-file is stored the script tag so
   </script>
 ```
 
-## MarkDown and Katex
+### MarkDown and Katex
 The easiest way to export MediaWiki article into MarkDown with mathematical expressions is [KaTeX-Library](http://waylonflinn.github.io/markdown-it-katex/), due to the fact, that [KaTeX](https://khan.github.io/KaTeX/) can render mathematical expressions in LaTeX syntax in the Wiki Markdown. Therefore the mathematical expressions in the wiki article are just wrapped with a dollor symbol and [KaTeX](https://khan.github.io/KaTeX/) will render the syntax in markdown nicely for your output. Therefore a cross-compilation of the latex syntax is not necessary if you use .
 * (`INLINE`) inline mathematical expressions are wrapped with TWO Dollar symbols, that replaces the opening and closing `math`-tags.
 * (`BLOCK`) separated mathematical block expression are wrapped with a blackslash followed by an opening respectively closing square brackets.
