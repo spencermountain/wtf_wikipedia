@@ -68,7 +68,7 @@ const site_map = {
   aywikibooks: 'https://ay.wikibooks.org',
   azwiki: 'https://az.wikipedia.org',
   azwikipedia: 'https://az.wikipedia.org',
-  azwikipedia: 'https://ar.wikipedia.org',
+  arwikipedia: 'https://ar.wikipedia.org',
   azwiktionary: 'https://az.wiktionary.org',
   azwikibooks: 'https://az.wikibooks.org',
   azwikiquote: 'https://az.wikiquote.org',
