@@ -54,6 +54,7 @@ creature. :four_leaf_clover:
   - [LaTeX Export](#latex-export)
   - [Preprocessing of Wiki Markdown](#preprocessing-of-wiki-markdown)
   - [Define new Export formats](#define-new-export-formats)
+  - [Create Office Documents](#create-office-documents)
     - [Create directory for new output format](#create-directory-for-new-output-format)
     - [Add the new output format as method](#add-the-new-output-format-as-method)
 - [Client-side Wiki Markdown Processing](#client-side-wiki-markdown-processing)
@@ -90,6 +91,7 @@ creature. :four_leaf_clover:
 - [Contributing](#contributing)
   - [Fork, Improve, Pull Request](#fork-improve-pull-request)
   - [Maintainer Comment](#maintainer-comment)
+  - [Table of Contents in README.md](#table-of-contents-in-readmemd)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -295,13 +297,29 @@ The following sections describe the definition of a new export format in 4 steps
 * Create directory for new output format
 * Add the new output format as method
 
+## Create Office Documents
+If you try [PanDoc document conversion](https://pandoc.org/try) the key to generate Office documents is the export format ODF.
+[LibreOffice](https://en.wikipedia.org/wiki/LibreOffice) can load and save even the [OpenDocument Format](http://opendocumentformat.org/) and LibreOffice can load and save MICR0S0FT Office formats. So exporting to Open Document Format will be good option to start with in `wtf_wikipedia`. The following description are a summary of aspects that support developers in bringing the Office export format e.g. to web-based environment like the [ODF-Editor](http://webodf.org/demos/).
+OpenDocument Format provides a comprehensive way forward for `wtf_wikipedia` to exchange documents from a `MediaWiki` source text reliably and effortlessly to different formats, products and devices. Regarding the different Wikis of the [Wiki Foundation](https://en.wikipedia.org/wiki/Wikimedia_Foundation) as a [Content Sink](https://en.wikiversity.org/wiki/Educational_Content_Sink) e.g. the educational content in [Wikiversity](https://en.wikiversity.org) is no longer restricted to a single export format (like PDF) open ups access to other specific editors, products or vendors for all your needs. With `wtf_wikipedia` and an ODF export format the users have the opportunity to choose the 'best fit' application of the Wiki content. This section focuses on Office products.
+Some important information to support Office Documents in the future
+* see [WebODF](http://webodf.org/) how to [edit ODF documents on the web or display slides](http://webodf.org/demos/). Current limitation of WebODF is, that does not render mathematical expressions, but alteration in [WebODF editor](http://webodf.org/demos/) does not remove the mathematical expressions from the ODF file (state 2018/04/07). WebODF does not render the mathematical expressions but this may be solved in the WebODF-Editor by using [MathJax](https://www.mathjax.org/) or [KaTeX](https://khan.github.io/KaTeX/) in the future.
+* The `ODT`-Format is the default export format of LibreOffice/OpenOffice. Supporting the [Open Community Approach](https://en.wikiversity.org/wiki/Open_Community_Approach) OpenSource office products are used to avoid commercial dependencies for using generated Office products. 
+  * The `ODT`-Format of LibreOffice is basically a [ZIP-File](https://en.wikipedia.org/wiki/Zip_(file_format)).
+  * Unzip shows the folder structure within the ZIP-format. Create a subdirectory e.g.  with the name `zipout/`  and call `unzip mytext.odt -d zipout` (Linux, MacOSX).
+  * The main text content is stored in `content.xml` as the main file for defining the content of Office document
+  * Remark: Zipping the folder content again will create a parsing error when you load the zipped office document again in `LibreOffice`. This may be caused by an inappropriate order in the generated ZIP-file. The file `mimetype` [must be the first file in the ZIP-archive](https://crcok.wordpress.com/2014/10/25/unzip-and-zip-openoffice-org-odt-files/).
+  * The best way to generate ODT-files is to generate an ODT-template `mytemplate.odt` with LibreOffice and all the styles you want to apply for the document and place a marker at specific content areas, where you want to replace the cross-compiled content with `wtf_wikipedia` in `content.xml`. The file  `content.xml` will be updated in ODT-ZIP-file. Also marker replacement is possible in ODF-files (see also [WebODF demos](http://webodf.org/demos/). 
+* [JSZip](https://stuk.github.io/jszip/): JSZip can be used to update and add certain files in a given ODT template (e.g. `mytemplate.odt`). Handling ZIP-files in a cross-compilation WebApp with `wtf_wikipedia` that runs in your browser and generates an editor environment for the cross-compiled Wiki source text (like the [WebODF editor](http://www.webodf.org/demo/ci/wodotexteditor-0.5.9/localeditor.html)). The updating the ODT template as ZIP-file can be handled with [JSZip](https://stuk.github.io/jszip/) by replacing the `content.xml` in a ZIP-archive. `content.xml` can be generated with `wtf_wikipedia` when the `odf`-export format is added to `/src/output/odf` (ToDo: Please create a pull request if you have done that).
+
+
 ### Create directory for new output format
 First go to the subdirectory `/src/output`. We will show, how a new export format can be added to `wtf_wikipedia`.
 Create a new subdirectory (e.g. `/src/output/latex`) to support a new export format. Copy the files
 * `index.js`,
 * `infobox.js`,
 * `sentence.js`,
-* `table.js`
+* `table.js`,
+* `math.js` (not supported in all formats of &lt;2.6.1 - see [ToDo](#todo))
 from the subdirectory `/src/output/html` into the new subdirectory for the export format (e.g. `/src/output/latex`). Adapt these function step by step, so that the exported code generates the sentences and tables in an appropriate syntax of the new format.
 
 At the very end of the file `/src/output/latex/index.js` the new export function is defined. Alter the method name
