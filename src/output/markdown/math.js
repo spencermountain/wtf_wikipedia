@@ -23,7 +23,7 @@ const doMathInline = (pMath, options) => {
 
 // handle mathematical expression displayed in a separate line
 const doMathBlock = (pMath, options) => {
- let out = '\n$' + pMath + '$\n';
+ let out = '$$' + pMath + '$$';
   return out;
 };
 
