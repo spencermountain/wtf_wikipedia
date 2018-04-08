@@ -610,9 +610,11 @@ After this conversion is done, the citations can be cross-compiled in the output
     var b = c[i];
     // add an unique ID for bibitem records b=c[i]
     if (!(b.hasOwnProperty("id"))) {
-      // if bibitem has no id-key add the
-      b[id] =
-    }
+      // if bibitem has no id-key add a unique id
+      const now = new Date();
+      b["id"] = "T"+now.getTime()+"R"+i;
+      // e.g. T1508330494000R2
+    };
     var count = 1;
     var family = "";
     var given = "";
