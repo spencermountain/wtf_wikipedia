@@ -14,13 +14,13 @@ This is the text below the BLOCK expression.
 const doMathInline = (pMath, options) => {
   // pMath is internal LaTeX code for the mathematical expression e.g. "f(x)"
   // pMath does not contain the wrapped <math>-tags from the MediaWiki source
-  let out = '<span class="math inline">\(' + pMath + '\)</span>';
+  let out = '<span class="math inline">\\(' + pMath + '\\)</span>';
   return out ;
 };
 
 // handle mathematical expression displayed in a separate line
 const doMathBlock = (pMath, options) => {
-  let out = '\n<p><span class="math display">\[' + pMath + '\]</span></p>';
+  let out = '\n<p><span class="math display">\\[' + pMath + '\\]</span></p>';
   return out + '\n';
 };
 

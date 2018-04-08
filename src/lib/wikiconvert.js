@@ -464,6 +464,7 @@ function WikiConvert () {
 		var vClass = "image";
 		var vURL = "";
 		var vCaption = "";
+		var tokens;
 	  while(tokens = image.exec(pWikiCode)) {
 			vTitle = "";
 			vAltText = "";
