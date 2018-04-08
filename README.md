@@ -85,7 +85,7 @@ creature with the ability to support a variety of export formats generated those
   - [Regular Expressions to determine Inline and Display Math (ToDo)](#regular-expressions-to-determine-inline-and-display-math-todo)
   - [Handling Mathematical Expressions in Export Formats](#handling-mathematical-expressions-in-export-formats)
     - [HTML and MathJax](#html-and-mathjax)
-  - [MarkDown and Katex](#markdown-and-katex)
+    - [MarkDown and Katex](#markdown-and-katex)
 - [What it does](#what-it-does)
   - [But what about...](#but-what-about)
     - [Parsoid:](#parsoid)
