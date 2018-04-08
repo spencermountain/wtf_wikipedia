@@ -1047,7 +1047,7 @@ npm test
 npm run build #to package-up client-side
 ```
 ## Table of Contents in README.md
-`DocToc` is used to create a helpful table of contents in the README (see [DocToc-Installation]https://github.com/thlorenz/doctoc#installation) for further details on [NPM DocToc](https://www.npmjs.com/package/doctoc) ). Run `doctoc README.md` for updating the table of contents in the `README.md`.
+`DocToc` is used to create a helpful table of contents in the README (see [DocToc-Installation](https://github.com/thlorenz/doctoc#installation) for further details on [NPM DocToc](https://www.npmjs.com/package/doctoc) ). Run `doctoc README.md` for updating the table of contents in the `README.md`.
 
 
 MIT
