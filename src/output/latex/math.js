@@ -1,9 +1,9 @@
-/* 
+/*
 EXPORT LaTeX
 ------------
 The following MediaWiki source text containd embedded mathematical expressions inline and as separated line ":<math>...":
 
-This expression <math> f(x) </math> is a mathematical INLINE expression. 
+This expression <math> f(x) </math> is a mathematical INLINE expression.
 The next line is a BLOCK expression in a separate line.
 :<math> f(x) </math>
 This is the text below the BLOCK expression.
@@ -20,7 +20,7 @@ const doMathInline = (pMath, options) => {
 
 // handle mathematical expression displayed in a separate line
 const doMathBlock = (pMath, options) => {
-  let out = '\[' + pMath + '\]';
+  let out = '\\[' + pMath + '\\]';
   return out + ' ';
 };
 
