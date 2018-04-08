@@ -477,13 +477,13 @@ function WikiConvert () {
 			if (vLinkSplit.length == 1) {
 				//replace_str = '___IMG_OPEN___File:' + vURL + '___IMG_CLOSE___';
 				//replace_str = '<section data-background-image="'+vURL+'" data-background-size="cover"></section>\n';
-				replace_str = '<imgXXX src="' + vURL + '" >';
+				replace_str = '<img src="' + vURL + '" >';
 				pWikiCode = pWikiCode.replace(tokens[0], replace_str);
 			} else {
 				if (vLinkSplit.length == 2) {
 					vCaption = this.checkCaption(vLinkSplit[1]);
 					//replace_str = '___IMG_OPEN___File:' + vURL + '|' + vCaption + '___IMG_CLOSE___';
-					replace_str = '<imgXXX src="' + vURL + '" alt="'+vCaption+'">';
+					replace_str = '<img src="' + vURL + '" alt="'+vCaption+'">';
 					pWikiCode = pWikiCode.replace(tokens[0], replace_str);
 				} else {
 					var vMediaParam = "";
@@ -497,7 +497,7 @@ function WikiConvert () {
 						};
 					};
 					//replace_str = '___IMG_OPEN___File:' + vURL + vMediaParam + '|' + vCaption + '___IMG_CLOSE___';
-					replace_str = '<imgXXX src="' + vURL + '" alt="'+vCaption+'"'+vSize+'>';
+					replace_str = '<img src="' + vURL + '" alt="'+vCaption+'"'+vSize+'>';
 					pWikiCode = pWikiCode.replace(tokens[0], replace_str);
 				}
 			}; // else if vLineSplit.length
