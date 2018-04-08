@@ -294,8 +294,28 @@ If you want to create new additional export formats, [try PanDoc document conver
 
 The following sections describe the definition of a new export format in 4 steps:
 
-* Create directory for new output format
-* Add the new output format as method
+* Create directory for new output format in `/src/output` e.g. `/src/output/odf` for Open Document Format for Office suites.
+* Clone e.g. the export libraries from LaTeX and adapt them to your new export format.
+* require the new export format in `/src/index.js` e.g. by 
+```javascript 
+const odf     = require('./output/odt');
+```
+: and extend the module exports at the very end of  the export libraries
+```javascript 
+module.exports = {
+  from_api: from_api,
+   ...
+  odf: odf,
+  ...		
+  parse: (str, obj) => {
+    obj = obj || {};
+    obj = Object.assign(obj, options); //grab 'custom' persistent options
+    return parse(str, obj);
+  }
+};
+```
+* run test and build for the extended `wtf_wikipedia`
+* (optional) create a Pull request on the original `wtf_wikipedia` repository of GitHub by Spencer Kelly to share the code with the community
 
 ## Create Office Documents
 If you try [PanDoc document conversion](https://pandoc.org/try) the key to generate Office documents is the export format ODF.
