@@ -32,19 +32,16 @@ best.</sub>
 
 </div>
 
-The library `wtf_wikipedia` can 
+The library `wtf_wikipedia` can
 * download/fetch Wiki articles in source text from [Wikipedia](https://www.wikipedia.org), [Wikiversity](https://www.wikiversit.org), ...,
-* parse the content structure and content elements into a JSON file and 
-* convert the source text into different output formats. 
+* parse the content structure and content elements into a JSON file and
+* convert the source text into different output formats.
 `wtf_wikipedia` supports vile recursive template shinanigans,
 [half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template
 variants, and illicit wiki-esque shorthands.
 
 In general making your own parser is never a good idea, but this library is a very detailed and deliberate
-creature with the ability to support a variety of export formats generated those formats just in the browser or your multiplatform NodeJS application. :four_leaf_clover: 
-
-* **[Wikiversity Article with Mathematical Expression](https://de.wikiversity.org/wiki/Normen,_Metriken,_Topologie)**
-* **[Export Format RevealJS Presentation](https://niebert.github.io/FA1Reveal/FA1/topologie1/Normen_Metriken_Topologie_reveal.html)** - currently static export with [PanDocElectron](https://en.wikiversity.org/wiki/PanDocElectron) - can be generated on the fly with `wtf_wikipedia` with RevealJS export format.
+creature with the ability to support a variety of export formats generated those formats just in the browser or your multiplatform NodeJS application. :four_leaf_clover:
 
 `wtf_wikipedia` can used to create tailored Wiki-Book in a browser according to requirements of the user by aggregating selected articles with `wtf_wikipedia` from Wikipedia/Wikiversity and bundle them into single document in the browser.
 
@@ -54,9 +51,11 @@ creature with the ability to support a variety of export formats generated those
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Install and Quick Start](#install-and-quick-start)
+- [Applications of wtf_wikipedia](#applications-of-wtf_wikipedia)
+  - [Wiki2Reveal - on the fly cross compilation into a Presentation](#wiki2reveal---on-the-fly-cross-compilation-into-a-presentation)
 - [Download of Wiki Markdown](#download-of-wiki-markdown)
   - [WikiID: Language and Domainname](#wikiid-language-and-domainname)
-  - [Extended Wiki ID i](#extended-wiki-id-i)
+  - [Extended Wiki ID in site_map.js](#extended-wiki-id-in-site_mapjs)
 - [Cross Compilation of Wiki Source](#cross-compilation-of-wiki-source)
   - [Plain Text Export](#plain-text-export)
   - [Markdown Export](#markdown-export)
@@ -162,6 +161,13 @@ the result format:
 ```
 
 The structure of the JSON is a little verbose - but with a couple loops you should find everything you want.
+
+# Applications of wtf_wikipedia
+
+## Wiki2Reveal - on the fly cross compilation into a Presentation
+* **[Wikiversity Article with Mathematical Expression](https://de.wikiversity.org/wiki/Normen,_Metriken,_Topologie)**
+* **[Export Format RevealJS Presentation](https://niebert.github.io/FA1Reveal/FA1/topologie1/Normen_Metriken_Topologie_reveal.html)** - currently static export with [PanDocElectron](https://en.wikiversity.org/wiki/PanDocElectron) - can be generated on the fly with `wtf_wikipedia` with RevealJS export format.
+* [Wiki2Reveal](https://niebert.github.io/Wiki2Reveal) as online demo to create dynamically from Wiki source text a reveal presentation.
 
 # Download of Wiki Markdown
 If you just want the source text of an MediaWiki article, call the API in the browser. The following example just download an article about Toronto from the english Wikiversity.
@@ -308,12 +314,12 @@ The following sections describe the definition of a new export format in 4-5 ste
 
 * (1) Create directory for new output format in `/src/output` e.g. `/src/output/odf` for Open Document Format for Office suites.
 * (2) Clone e.g. the export libraries from LaTeX and adapt them to your new export format.
-* (3) require the new export format in `/src/index.js` e.g. by 
-```javascript 
+* (3) require the new export format in `/src/index.js` e.g. by
+```javascript
 const odf     = require('./output/odt');
 ```
    and extend the module exports at the very end of  the export libraries
-```javascript 
+```javascript
 module.exports = {
   from_api: from_api,
    ...
@@ -337,12 +343,12 @@ OpenDocument Format provides a comprehensive way forward for `wtf_wikipedia` to 
 ### Open Document Format ODT
 Some important information to support Office Documents in the future
 * see [WebODF](http://webodf.org/) how to [edit ODF documents on the web or display slides](http://webodf.org/demos/). Current limitation of WebODF is, that does not render mathematical expressions, but alteration in [WebODF editor](http://webodf.org/demos/) does not remove the mathematical expressions from the ODF file (state 2018/04/07). WebODF does not render the mathematical expressions but this may be solved in the WebODF-Editor by using [MathJax](https://www.mathjax.org/) or [KaTeX](https://khan.github.io/KaTeX/) in the future.
-* The `ODT`-Format is the default export format of LibreOffice/OpenOffice. Supporting the [Open Community Approach](https://en.wikiversity.org/wiki/Open_Community_Approach) OpenSource office products are used to avoid commercial dependencies for using generated Office products. 
+* The `ODT`-Format is the default export format of LibreOffice/OpenOffice. Supporting the [Open Community Approach](https://en.wikiversity.org/wiki/Open_Community_Approach) OpenSource office products are used to avoid commercial dependencies for using generated Office products.
   * The `ODT`-Format of LibreOffice is basically a [ZIP-File](https://en.wikipedia.org/wiki/Zip_(file_format)).
   * Unzip shows the folder structure within the ZIP-format. Create a subdirectory e.g.  with the name `zipout/`  and call `unzip mytext.odt -d zipout` (Linux, MacOSX).
   * The main text content is stored in `content.xml` as the main file for defining the content of Office document
   * Remark: Zipping the folder content again will create a parsing error when you load the zipped office document again in `LibreOffice`. This may be caused by an inappropriate order in the generated ZIP-file. The file `mimetype` [must be the first file in the ZIP-archive](https://crcok.wordpress.com/2014/10/25/unzip-and-zip-openoffice-org-odt-files/).
-  * The best way to generate ODT-files is to generate an ODT-template `mytemplate.odt` with LibreOffice and all the styles you want to apply for the document and place a marker at specific content areas, where you want to replace the cross-compiled content with `wtf_wikipedia` in `content.xml`. The file  `content.xml` will be updated in ODT-ZIP-file. Also marker replacement is possible in ODF-files (see also [WebODF demos](http://webodf.org/demos/). 
+  * The best way to generate ODT-files is to generate an ODT-template `mytemplate.odt` with LibreOffice and all the styles you want to apply for the document and place a marker at specific content areas, where you want to replace the cross-compiled content with `wtf_wikipedia` in `content.xml`. The file  `content.xml` will be updated in ODT-ZIP-file. Also marker replacement is possible in ODF-files (see also [WebODF demos](http://webodf.org/demos/).
 * [JSZip](https://stuk.github.io/jszip/): JSZip can be used to update and add certain files in a given ODT template (e.g. `mytemplate.odt`). Handling ZIP-files in a cross-compilation WebApp with `wtf_wikipedia` that runs in your browser and generates an editor environment for the cross-compiled Wiki source text (like the [WebODF editor](http://www.webodf.org/demo/ci/wodotexteditor-0.5.9/localeditor.html)). The updating the ODT template as ZIP-file can be handled with [JSZip](https://stuk.github.io/jszip/) by replacing the `content.xml` in a ZIP-archive. `content.xml` can be generated with `wtf_wikipedia` when the `odf`-export format is added to `/src/output/odf` (ToDo: Please create a pull request if you have done that).
 * **LibreOffice Export:** Loading ODT-files in [LibreOffice](https://en.wikipedia.org/wiki/LibreOffice) allows to export the ODT-Format to
   * Office documents `doc`- and `docx`-format,  
@@ -352,7 +358,7 @@ Some important information to support Office Documents in the future
   * PDF files (`.pdf`) and even
   * PNG files (`.png`).
 * Planing of the ODT support can be down in this README and collaborative implementation can be organized with Pull Requests PR.
-* Helpful Libraries: [node-odt](https://www.npmjs.com/package/node-odt), [odt](https://www.npmjs.com/package/odt) 
+* Helpful Libraries: [node-odt](https://www.npmjs.com/package/node-odt), [odt](https://www.npmjs.com/package/odt)
 
 ### Word Export with Javascript Libraries
 * `wtf_wikipedia` supports HTML export,
@@ -686,18 +692,18 @@ In LaTeX this marker can be replaced by the appropriate LaTeX command (see http:
 ```
 # Mathematical Expressions
 Mathematical expressions are used in many scientific and educational content (not only core mathematical disciplines like Calculus, Algebra, Geometry, Statistics,...). Mathematical expressions are used when specific content can be described in precise form of a finite combination of symbols that is well-formed according to rules that depend on the context in which the expression is used. A precise description of the methodology may include mathematical expression by which the results are determined.
-Removing the mathematical expressions from the MediaWiki content may result in an incomprehensive text fragement. 
+Removing the mathematical expressions from the MediaWiki content may result in an incomprehensive text fragement.
 
 This section describes the basic principles of handling mathematical expressions. The export functions are defined as library `math.js` in the subdirectories of `/src/output/`.
 
 
 <span style="color: red">Important Remark:</span> Currently the export functions are defined already but the export of the parsed syntax tree of the document will not call these functions. A regular expression must distinguish the inline math from block math.
-The following code finds all `math`-tags 
+The following code finds all `math`-tags
 ```javascript
 var scripttext = "before text  <math> f(x) = x^2 </math> middle text \n:<math> g(x) = sin(x)+cos(x) </math> \n after text"
 var re_all = /<math>(.*)<\/math>/gim;
-var re_block = /\n[:]+<math>(.*)<\/math>/gim; 
-// block RE: newline "\n" with  one or more indent symbols ":". 
+var re_block = /\n[:]+<math>(.*)<\/math>/gim;
+// block RE: newline "\n" with  one or more indent symbols ":".
 // ":" shifts the mathematical expression in the block to the right, when placed directly behind newline
 
 var match;
@@ -709,12 +715,12 @@ while (match = re_all.exec(scripttext)) {
 
 
 ## Inline Math and Display Math in Separate Lines
-In the german Wikiversity article about [mathematical Norms and Topology](https://de.wikiversity.org/wiki/Normen,_Metriken,_Topologie) you will recognize 
-* (`INLINE`) inline mathematical expressions in the text and 
+In the german Wikiversity article about [mathematical Norms and Topology](https://de.wikiversity.org/wiki/Normen,_Metriken,_Topologie) you will recognize
+* (`INLINE`) inline mathematical expressions in the text and
 * (`BLOCK`) separated mathematical expression in a single line.
 These two different applications of mathematical expressions can be distinguished by a leading colon ":" in the first column of Wiki Markdown article. In the following example `f(x)` is representation of a [mathematical expression in LaTeX](https://www.mediawiki.org/wiki/Extension:Math/Help:Formula).
 ```html
-This expression <math> f(x) </math> is a mathematical INLINE expression. 
+This expression <math> f(x) </math> is a mathematical INLINE expression.
 The next line is a BLOCK expression in a separate line.
 :<math> f(x) </math>
 This is the text below the BLOCK expression.
@@ -735,16 +741,16 @@ const doMathBlock = (pMath, options) => {
   return out + ' ';
 };
 ```
-Every export format has a subdirectory in `/src/output/` and all subdirectories have a `math.js` library with mainly two functions 
+Every export format has a subdirectory in `/src/output/` and all subdirectories have a `math.js` library with mainly two functions
 * `doMathInline(pMath, options)` to handle inline mathematical expressions and
 * `doMathBlock(pMath, options)` to handle mathematical expressions is separate lines as a block.
 
 
 ## Regular Expressions to determine Inline and Display Math (ToDo)
 Regular expressions can be used to determine what display format of the mathematical expression is intended by the authors of the Wiki MarkDown article.
-* (`BLOCK`) First determine the DisplayMath by a regular expression with a 
+* (`BLOCK`) First determine the DisplayMath by a regular expression with a
   * newline, colon and `math`-tag opening the block with the mathematical expression in LaTeX syntax,
-  * the mathematical expression in LaTeX syntax itself and 
+  * the mathematical expression in LaTeX syntax itself and
   * closing `math`-Tag
 * (`INLINE`) after replacement of `BLOCK` expressions the remained mathematical expressions wrapped in `math`-tags can be treated as `INLINE` math.
 The export functions are defined in `/src/output/` under the respective export formats e.g.
@@ -752,7 +758,7 @@ The export functions are defined in `/src/output/` under the respective export f
 * `/src/output/html` for HTML,
 * `/src/output/markdown` for MarkDown with (KaTeX for rendering the mathematical expressions)
 
-## Handling Mathematical Expressions in Export Formats 
+## Handling Mathematical Expressions in Export Formats
 
 Inline with the export design with helper functions the processing of the mathematical expressions can be done with
 * helper function (similar to sentences, ... (see folder `/src/output` in the `wtf_wikipedia` repository) (NOT IMPLEMENTED) or
@@ -763,17 +769,17 @@ The easiest export format is LaTeX due to the fact, that the mathematical expres
 * (`BLOCK`) separated mathematical expression are wrapped with a blackslash followed by an opening respectively closing square brackets.
 The following latex code shows the converted Wiki markdown text in latex syntax:
 ```latex
-This expression $ f(x) $ is a mathematical INLINE expression. 
+This expression $ f(x) $ is a mathematical INLINE expression.
 The next line is a BLOCK expression in a separate line.
 \[ f(x) \]
 This is the text below the BLOCK expression.
 ```
 
-### HTML and MathJax 
+### HTML and MathJax
 The easiest way to export MediaWiki markdown article into HTML with mathematical expression is [MathJax](https://www.mathjax.org/), due to the fact, that MathJax can render mathematical expressions in the Wiki Markdown article is written in LaTeX syntax. Therefore a cross-compilation of the latex syntax is not necessary.
 * (`INLINE`) inline mathematical expressions are wrapped with TWO Dollar symbols, that replaces the opening and closing `math`-tags.
 * (`BLOCK`) separated mathematical expression are wrapped with a blackslash followed by an opening respectively closing square brackets.
-To allow mathematical expression rendering with MathJax 
+To allow mathematical expression rendering with MathJax
 * insert the [MathJax library as script tag in the output HTML file](https://www.mathjax.org/#gettingstarted) (for online use remote CDN - for offline use and integrate MathJax download a [MathJax ZIP copy and unzip on your computer](https://github.com/mathjax/MathJax/archive/master.zip) )  
 * replace the opening and closing tags for `INLINE` and `BLOCK` with the following symbols
   * (`INLINE`) inline mathematical expressions are wrapped with a blackslash followed by an opening respectively closing bracket.
@@ -789,7 +795,7 @@ The following latex code shows the converted Wiki markdown text in HTML syntax i
   </script>
 </head>
 <body>
-This expression \( f(x) \) is a mathematical INLINE expression. 
+This expression \( f(x) \) is a mathematical INLINE expression.
 The next line is a BLOCK expression in a separate line.
 \[ f(x) \]
 This is the text below the BLOCK expression.
@@ -797,7 +803,7 @@ This is the text below the BLOCK expression.
 </html>
 ```
 
-With a [local MathJax installation](http://docs.mathjax.org/en/latest/start.html#installing-your-own-copy-of-mathjax) on your harddrive or server replace the [MathJax CDN link](http://docs.mathjax.org/en/latest/start.html) by the [appropriate path](http://docs.mathjax.org/en/latest/start.html#installing-your-own-copy-of-mathjax) 
+With a [local MathJax installation](http://docs.mathjax.org/en/latest/start.html#installing-your-own-copy-of-mathjax) on your harddrive or server replace the [MathJax CDN link](http://docs.mathjax.org/en/latest/start.html) by the [appropriate path](http://docs.mathjax.org/en/latest/start.html#installing-your-own-copy-of-mathjax)
 e.g. as a subfolder `mathjax` in which the HTML-file is stored the script tag source will be:
 
 ```html
@@ -810,14 +816,14 @@ e.g. as a subfolder `mathjax` in which the HTML-file is stored the script tag so
 The easiest way to export MediaWiki article into MarkDown with mathematical expressions is [KaTeX-Library](http://waylonflinn.github.io/markdown-it-katex/), due to the fact, that [KaTeX](https://khan.github.io/KaTeX/) can render mathematical expressions in LaTeX syntax in the Wiki Markdown. Therefore the mathematical expressions in the wiki article are just wrapped with a dollor symbol and [KaTeX](https://khan.github.io/KaTeX/) will render the syntax in markdown nicely for your output. Therefore a cross-compilation of the latex syntax is not necessary if you use .
 * (`INLINE`) inline mathematical expressions are wrapped with TWO Dollar symbols, that replaces the opening and closing `math`-tags.
 * (`BLOCK`) separated mathematical block expression are wrapped with a blackslash followed by an opening respectively closing square brackets.
-To allow mathematical expression rendering with MathJax 
+To allow mathematical expression rendering with MathJax
 * insert the [MathJax library as script tag in the output HTML file](https://www.mathjax.org/#gettingstarted) (for online use remote CDN - for offline use and integrate MathJax download a [MathJax ZIP copy and unzip on your computer](https://github.com/mathjax/MathJax/archive/master.zip) )  
 * replace the opening and closing tags for `INLINE` and `BLOCK` with the following symbols
   * (`INLINE`) inline mathematical expressions are wrapped with ONE Dollar symbol.
   * (`BLOCK`) line separated mathematical block expression are wrapped with TWO Dollar Symbols.
 The following latex code shows the converted Wiki markdown text in HTML syntax including the HTML header.
 ```markdown
-This expression $ f(x) $ is a mathematical INLINE expression. 
+This expression $ f(x) $ is a mathematical INLINE expression.
 The next line is a BLOCK expression in a separate line.
 $$ f(x) $$
 This is the text below the BLOCK expression.
@@ -1033,8 +1039,8 @@ Sample Output for [Whistling](https://en.wikipedia.org/w/index.php?title=Whistli
 # Contributing
 
 ## Fork, Improve, Pull Request
-If you want to contribute with new output formats (e.g. defined in [PanDoc](https://www.pandoc.org/try) ) then 
-* login with your GitHub account or [create an account](https://help.github.com/articles/signing-up-for-a-new-github-account/) for you 
+If you want to contribute with new output formats (e.g. defined in [PanDoc](https://www.pandoc.org/try) ) then
+* login with your GitHub account or [create an account](https://help.github.com/articles/signing-up-for-a-new-github-account/) for you
 * [fork](https://help.github.com/articles/fork-a-repo/) the current `wtf_wikipedia` repository and add e.g. a new export format in `/src/output/`,
 * Build and test the generated library with `npm run build`
 * If you update the `README.md` with a new export format run `doctoc README.md` to update the table of contents.
