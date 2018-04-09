@@ -459,11 +459,14 @@ function WikiConvert () {
 
 		//var image = /\[\[File:(.[^\]|]*)([|]thumb|frame|mini)?([|]alt=.[^\]|]*)?([|].[^\]|]*)?\]\]/g;
 		var image = /\[\[File:(.[^\]]*)\]\]/g;
+		var vSizeRE = /[0-9]+px/;
 		var vTitle = "";
 		var vAltText = "";
 		var vClass = "image";
 		var vURL = "";
 		var vCaption = "";
+		var tokens;
+		var replace_str="";
 	  while(tokens = image.exec(pWikiCode)) {
 			vTitle = "";
 			vAltText = "";
@@ -472,18 +475,30 @@ function WikiConvert () {
 			var vLinkSplit = (tokens[0]).split("|");
 			vURL = this.getWikiMediaURL(vLinkSplit[0]);
 			if (vLinkSplit.length == 1) {
-				pWikiCode = pWikiCode.replace(tokens[0], '___IMG_OPEN___File:' + vURL + '___IMG_CLOS___');
+				//replace_str = '___IMG_OPEN___File:' + vURL + '___IMG_CLOSE___';
+				//replace_str = '<section data-background-image="'+vURL+'" data-background-size="cover"></section>\n';
+				replace_str = '<img src="' + vURL + '" >';
+				pWikiCode = pWikiCode.replace(tokens[0], replace_str);
 			} else {
 				if (vLinkSplit.length == 2) {
 					vCaption = this.checkCaption(vLinkSplit[1]);
-					pWikiCode = pWikiCode.replace(tokens[0], '___IMG_OPEN___File:' + vURL + '|' + vCaption + '___IMG_CLOSE___');
+					//replace_str = '___IMG_OPEN___File:' + vURL + '|' + vCaption + '___IMG_CLOSE___';
+					replace_str = '<img src="' + vURL + '" alt="'+vCaption+'">';
+					pWikiCode = pWikiCode.replace(tokens[0], replace_str);
 				} else {
-					var vMediaParam = "";
+					// var vMediaParam = "";
+					var vSize = "";
 					vCaption = this.checkCaption(vLinkSplit[vLinkSplit.length-1]);
 					for (var i = 1; i < (vLinkSplit.length-1); i++) {
-						vMediaParam += "|"+vLinkSplit[i];
+						// vMediaParam += "|"+vLinkSplit[i];
+						if (vSizeRE.test(vLinkSplit[i])) {
+							vSize = " width='"+vLinkSplit[i]+"'";
+							console.log("URL:"+vURL+" Size="+vLinkSplit[i]);
+						};
 					};
-					pWikiCode = pWikiCode.replace(tokens[0], '___IMG_OPEN___File:' + vURL + vMediaParam + '|' + vCaption + '___IMG_CLOSE___');
+					//replace_str = '___IMG_OPEN___File:' + vURL + vMediaParam + '|' + vCaption + '___IMG_CLOSE___';
+					replace_str = '<img src="' + vURL + '" alt="'+vCaption+'"'+vSize+'>';
+					pWikiCode = pWikiCode.replace(tokens[0], replace_str);
 				}
 			}; // else if vLineSplit.length
 		}; // While tokens

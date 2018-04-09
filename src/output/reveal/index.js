@@ -56,7 +56,7 @@ const doSection = (section, options) => {
     html += '  <p>' + section.sentences.map((s) => doSentence(s, options)).join(' ') + '</p>';
     html += '\n';
   }
-  return '<div class="section">\n' + html + '</div>\n';
+  return '<section class="level2">\n' + html + '</section>\n';
 };
 //
 const toHtml = function(str, options) {

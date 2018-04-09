@@ -6,6 +6,7 @@ const parse = require('./parse');
 const latex    = require('./output/latex');
 const markdown = require('./output/markdown');
 const html     = require('./output/html');
+const reveal     = require('./output/reveal');
 var WikiConvert = require('./lib/wikiconvert');
 var wikiconvert = new WikiConvert();
 if (wikiconvert) {
@@ -71,6 +72,7 @@ module.exports = {
   plaintext: plaintext,
   markdown: markdown,
   html: html,
+  reveal: reveal,
   latex: latex,
   version: version,
   custom: customize,

@@ -5,3 +5,4 @@ viz
 npm-debug.log
 package-lock.json
 .nyc_output
+*.DS_Store
