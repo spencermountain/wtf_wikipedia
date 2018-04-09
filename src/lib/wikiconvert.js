@@ -486,11 +486,11 @@ function WikiConvert () {
 					replace_str = '<img src="' + vURL + '" alt="'+vCaption+'">';
 					pWikiCode = pWikiCode.replace(tokens[0], replace_str);
 				} else {
-					var vMediaParam = "";
+					// var vMediaParam = "";
 					var vSize = "";
 					vCaption = this.checkCaption(vLinkSplit[vLinkSplit.length-1]);
 					for (var i = 1; i < (vLinkSplit.length-1); i++) {
-						vMediaParam += "|"+vLinkSplit[i];
+						// vMediaParam += "|"+vLinkSplit[i];
 						if (vSizeRE.test(vLinkSplit[i])) {
 							vSize = " width='"+vLinkSplit[i]+"'";
 							console.log("URL:"+vURL+" Size="+vLinkSplit[i]);
