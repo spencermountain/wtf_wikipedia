@@ -6,7 +6,7 @@ const dontDo = {
 };
 //
 const infobox = function(obj, options) {
-  let out  = '\n \\vspace*{0.3cm} % InfoBox\n\n';
+  let out  = '\n \\vspace*{0.3cm} % Info Box\n\n';
   out  += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n';
   out  += '  \\hline  %horizontal line\n';
 

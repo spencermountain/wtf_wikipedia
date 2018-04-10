@@ -19,7 +19,7 @@ const doSentence = function(sentence, options) {
         href = link.page || link.text;
         href = './' + href.replace(/ /g, '_');
       }
-      let tag = '<a class="' + classNames + '" href="' + href + '"'+target+'">';
+      let tag = '<a class="' + classNames + '" href="' + href + '"'+target+'>';
       tag += link.text + '</a>';
       text = smartReplace(text, link.text, tag);
     });
