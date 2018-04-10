@@ -17,8 +17,8 @@ wtf.from_api(title, 'en', function (wikimarkdown, page_identifier, lang_or_wikii
     lang_or_wikiid:lang_or_wikiid
   };
   var data = wtf.parse(wikimarkdown,options);
-  console.log(JSON.stringify(data, null, 2));
 
+  //console.log("Wiki JSON:\n"JSON.stringify(data, null, 2));
   wtf.wikiconvert.init('en','wikipedia',vDocJSON);
   wtf.wikiconvert.initArticle(page_identifier);
   // replace local image urls (e.g. [[File:my_image.png]])
@@ -31,5 +31,5 @@ wtf.from_api(title, 'en', function (wikimarkdown, page_identifier, lang_or_wikii
   wikimarkdown = wtf.wikiconvert.post_process(wikimarkdown);
 
   var latex = wtf.latex(wikimarkdown, options);
-  // console.log(latex);
+  console.log(latex);
 });
