@@ -39,6 +39,9 @@ test('markdown-tricks', t => {
   md = wtf.markdown('stim\'s is [[tim]]\'s son');
   t.equal(md, 'stim\'s is [tim\'s](./Tim) son', 'matches with apostrophe');
 
+  md = wtf.markdown('Tim uses [https://www.wikiversity.org Wikiversity content] often');
+  t.equal(md, 'Tim uses [Wikiversity content](https://www.wikiversity.org) often', 'external-link');
+
   md = wtf.markdown(`we put the '''e''' in team`);
   t.equal(md, 'we put the **e** in team', 'fmt supports smartReplace');
 

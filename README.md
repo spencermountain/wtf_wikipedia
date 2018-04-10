@@ -332,8 +332,14 @@ module.exports = {
   }
 };
 ```
-* (4) run test and build for the extended `wtf_wikipedia`
-* (5 optional) create a Pull request on the original `wtf_wikipedia` repository of GitHub by Spencer Kelly to share the code with the community
+* (4) Create or extend the test script in directory `/tests`. A test script for the format `odf` will be named `odf.test.js`. A test script for the HTML based presentation [RevealJS](https://revealjs.com/) format `reveal` will be named `reveal.test.js`. Look at other formats e.g. `html.test.js` to understand the concept of testing mechanism. Basically you create the   
+  * exported a defined text with `wtf` (e.g. `wtf.latex(...)`) and store it in the `have`-variable
+  * define the desired output in the `want` variable,
+  * and the `t.equal(have, want, "test-case-name")` defines the comparision of `have` and `want`.
+  * `html_tidy()`, `latex_tidy()`, ... are removing comments and generate compressed equivalent code for a smarter `t.equal`-comparison. These functions are defined in `tests/lib/index.js`.
+* (5) run test and build for the extended
+ `wtf_wikipedia`
+* (6 optional) create a Pull request on the original `wtf_wikipedia` repository of GitHub by Spencer Kelly to share the code with the community
 
 ## Create Office Documents
 If you try [PanDoc document conversion](https://pandoc.org/try) the key to generate Office documents is the export format ODF.

@@ -2,41 +2,41 @@ const doSentence = require('./sentence');
 
 
 const doTable = function(table, options) {
-  let out  = '\n\\vspace*{0.3cm}\n\n';
-  out  += '% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns'
-  out  += "% Format Align Column: 'l'=left 'r'=right align, 'c'=center, 'p{5cm}'=block with column width 5cm ";
-  out  += '\\begin{tabular}{|'
+  let out  = '\n%\\vspace*{0.3cm}\n';
+  out  += '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns'
+  out  += "\n% Format Align Column: 'l'=left 'r'=right align, 'c'=center, 'p{5cm}'=block with column width 5cm ";
+  out  += '\n\\begin{tabular}{|'
   Object.keys(table[0]).forEach((k) => {
     out  += 'l|';
   });
-  '} \n';
-  out  += '  \\hline  %horizontal line\n';
+  out  += '} \n';
+  out  += '\n  \\hline  %horizontal line\n';
 //make header
-  out  += '  % BEGIN: Table Header';
-  var vSep = " ";
+  out  += '\n  % BEGIN: Table Header';
+  var vSep = '   ';
   Object.keys(table[0]).forEach((k) => {
-    out  += '    ' + vSep + +"\\textbf{" + k + +"} "+ '\n';
-    vSep = " & ";
+    out  += '\n    ' + vSep + '\\textbf{' + k +'}';
+    vSep = ' & ';
   });
-  out  += '\\\\ \n'
-  out  += '  % END: Table Header\n';
-  out  += '  % BEGIN: Table Body';
-  out  += '  \\hline  % ----- table row -----\n';
+  out  += '\\\\ '
+  out  += '\n  % END: Table Header';
+  out  += '\n  % BEGIN: Table Body';
+  out  += '\n  \\hline  % ----- table row -----';
 ////make rows
   table.forEach((o) => {
     vSep = " ";
-    out  += '  % ----- table row -----\n';
+    out  += '\n  % ----- table row -----';
     Object.keys(o).forEach((k) => {
       let val = doSentence(o[k], options);
-      out  += '    ' + vSep + val + '\n';
+      out  += '\n    ' + vSep + val + '';
       vSep = " & ";
     });
-    out  += '  \\\\ \n'; // newline in latex table = two backslash \\
-    out  += '  \\hline  %horizontal line\n';
+    out  += '  \\\\ '; // newline in latex table = two backslash \\
+    out  += '\n  \\hline  %horizontal line';
   });
-  out  += '    % END: Table Body\n';
-  out  += '} % END TABLE\n';
-  out  += '\n\\vspace*{0.3cm}\n\n';
+  out  += '\n    % END: Table Body';
+  out  += '\n} % END TABLE';
+  out  += '\n\n % \\vspace*{0.3cm}';
   return out ;
 };
 module.exports = doTable;

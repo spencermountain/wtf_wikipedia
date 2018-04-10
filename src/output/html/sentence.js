@@ -8,16 +8,18 @@ const doSentence = function(sentence, options) {
     sentence.links.forEach((link) => {
       let href = '';
       let classNames = 'link';
+      let target='';
       if (link.site) {
         //use an external link
         href = link.site;
         classNames += ' external';
+        target=' target="_blank"';
       } else {
         //otherwise, make it a relative internal link
         href = link.page || link.text;
         href = './' + href.replace(/ /g, '_');
       }
-      let tag = '<a class="' + classNames + '" href="' + href + '">';
+      let tag = '<a class="' + classNames + '" href="' + href + '"'+target+'">';
       tag += link.text + '</a>';
       text = smartReplace(text, link.text, tag);
     });
