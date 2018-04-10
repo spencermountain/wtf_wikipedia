@@ -15,7 +15,7 @@ function html_tidy(pSource) {
   pSource = pSource.replace(/<!--[^>]*-->/g,"");
 
   // (2) Newline
-  pSource = pSource.replace(/\n/g,"");
+  //pSource = pSource.replace(/\n/g,"");
   // newline \n does not matter in HTML, but newlines are helpful
   // for a more comprehensive output.
   // Newlines can make the test fail, even if the generated code is OK.
@@ -137,7 +137,8 @@ Final remarks`);
    </li>
  </ul>
  Final remarks</p>
-</div>`;
+</div>
+`;
  t.equal(html_tidy(have), html_tidy(want), 'nested-itemize');
 
  //Nested enumerate in itemize
@@ -163,7 +164,8 @@ Final remarks`);
    </li>
  </ul>
  Final remarks</p>
-</div>`;
+</div>
+`;
  t.equal(html_tidy(have), html_tidy(want), 'nested-itemize-enumerate');
 
 //-------------------
