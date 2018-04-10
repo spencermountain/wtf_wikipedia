@@ -72,8 +72,8 @@ test('basic-reveal', t => {
   have = wtf.reveal(`i '''think''' so`);
   want = `<section class="level2">
   <p>i <b>think</b> so</p>
-  </section>
-  `;
+</section>
+`;
   t.equal(html_tidy(have), html_tidy(want), 'bold');
 
   //4 ticks
@@ -91,6 +91,46 @@ test('basic-reveal', t => {
 </section>
 `;
   t.equal(html_tidy(have), html_tidy(want), 'five-tick');
+
+// thumb images are converted into single slides
+  have = wtf.reveal('that is my image [[File:my_cat.png|thumb|Image "Caption" for Cat]]. Really cool');
+  want = `<section class="level2">
+     that is my image
+  </section>
+  <section class="level2"  data-background="https://en.wikipedia.org/wiki/Special:Redirect/file/my_cat.png">
+    Image "Caption" for Cat
+  </section>
+  <section class="level2">
+     Really cool
+  </section>
+  `;
+  t.equal(html_tidy(have), html_tidy(want), 'image-thumb-slide');
+
+  have = wtf.reveal('==First Slide==\nthat is my image [[File:my_cat.png|thumb|Title on Background Image]]  \n  \n==Third Slide==\nReally cool');
+  want = `<section class="level2">
+    <h2>First Slide</h2>
+     that is my image
+  </section>
+  <section class="level2"  data-background="https://en.wikipedia.org/wiki/Special:Redirect/file/my_cat.png">
+    Title on Background Image
+  </section>
+  <section class="level2">
+    <h2>Third Slide</h2>
+     Really cool
+  </section>
+  `;
+  t.equal(html_tidy(have), html_tidy(want), 'image-thumb-end-section');
+
+  have = wtf.reveal('[[File:my_cat.png|thumb|  ]]  \n  \n==Third Slide==\nReally cool');
+  want = `<section class="level2"  data-background="https://en.wikipedia.org/wiki/Special:Redirect/file/my_cat.png">
+
+  </section>
+  <section class="level2">
+    <h2>Third Slide</h2>
+     Really cool
+  </section>
+  `;
+  t.equal(html_tidy(have), html_tidy(want), 'image-thumb-begin-slide');
 
   t.end();
 });

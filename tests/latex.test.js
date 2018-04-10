@@ -81,27 +81,32 @@ test('basic-latex', t => {
 
     //1 tick
     have = wtf.latex(`i 'think' so`);
-    want = `i 'think' so`;
+    want = `i 'think' so
+`;
     t.equal(latex_tidy(have), latex_tidy(want), 'one-tick');
 
     //2 ticks
     have = wtf.latex(`i ''think'' so`);
-    want = `i \\textbf{think} so`;
+    want = `i \\textit{think} so
+`;
     t.equal(latex_tidy(have), latex_tidy(want), 'italic');
 
     //3 ticks
     have = wtf.latex(`i '''think''' so`);
-    want = `i \\textbf{think} so`;
+    want = `i \\textbf{think} so
+`;
     t.equal(latex_tidy(have), latex_tidy(want), 'bold');
 
     //4 ticks
     have = wtf.latex(`i ''''think'''' so`);
-    want = `i '\\textbf{think}' so`;
+    want = `i '\\textbf{think}' so
+`;
     t.equal(latex_tidy(have), latex_tidy(want), 'four-tick');
 
     //5 ticks
     have = wtf.latex(`i '''''think''''' so`);
-    want = `i \\textit{\\textbf{think}} so`;
+    want = `i \\textbf{\\textit{think}} so
+`;
     t.equal(latex_tidy(have), latex_tidy(want), 'five-tick');
 
     //itemize
@@ -132,7 +137,8 @@ test('basic-latex', t => {
     \\end{itemize}
     \\item Second item
   \\end{itemize}
-  Final remarks`;
+  Final remarks`
+  ;
   t.equal(latex_tidy(have), latex_tidy(want), 'nested-itemize');
 
     //Nested enumerate in itemize
@@ -152,7 +158,8 @@ test('basic-latex', t => {
   \\end{enumerate}
   \\item Second item
   \\end{itemize}
-  Final remarks`;
+  Final remarks
+  `;
 
     t.equal(latex_tidy(have), latex_tidy(want), 'nested-itemize-enumerate');
 

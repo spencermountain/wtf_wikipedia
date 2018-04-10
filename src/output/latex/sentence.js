@@ -30,7 +30,7 @@ const doSentence = function(sentence, options) {
     }
     if (sentence.fmt.italic) {
       sentence.fmt.italic.forEach((str) => {
-        let tag = '\\textit' + str + '}';
+        let tag = '\\textit{' + str + '}';
         text = smartReplace(text, str, tag);
       });
     }
