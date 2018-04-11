@@ -63,6 +63,9 @@ creature with the ability to support a variety of export formats generated those
   - [LaTeX Export](#latex-export)
   - [Preprocessing of Wiki Markdown](#preprocessing-of-wiki-markdown)
   - [Define new Export formats](#define-new-export-formats)
+    - [Workflow for new Exports](#workflow-for-new-exports)
+    - [Handling Relative Links and Inter-Wiki Links in Wiki Source](#handling-relative-links-and-inter-wiki-links-in-wiki-source)
+    - [Defining test cases for the new Format](#defining-test-cases-for-the-new-format)
   - [Create Office Documents](#create-office-documents)
     - [Open Document Format ODT](#open-document-format-odt)
     - [Word Export with Javascript Libraries](#word-export-with-javascript-libraries)
@@ -310,6 +313,7 @@ This section explains how developers can extend the capabilities of `wtf_wikiped
 
 If you want to create new additional export formats, [try PanDoc document conversion](https://pandoc.org/try) to get an idea what formats can be useful and are used currently in PanDoc (see https://pandoc.org). Select as [input format  `MediaWiki` in the PanDoc Webinterface](https://pandoc.org/try) and copy a MediaWiki source text into the left input textarea. Select an output format and press convert.
 
+### Workflow for new Exports
 The following sections describe the definition of a new export format in 4-5 steps:
 
 * (1) Create directory for new output format in `/src/output` e.g. `/src/output/odf` for Open Document Format for Office suites.
@@ -336,11 +340,93 @@ module.exports = {
   * exported a defined text with `wtf` (e.g. `wtf.latex(...)`) and store it in the `have`-variable
   * define the desired output in the `want` variable,
   * and the `t.equal(have, want, "test-case-name")` defines the comparision of `have` and `want`.
-  * `html_tidy()`, `latex_tidy()`, ... are removing comments and generate compressed equivalent code for a smarter `t.equal`-comparison. These functions are defined in `tests/lib/index.js`.
+  * `html_tidy()`, `latex_tidy()`, ... are removing comments and generate compressed equivalent code for a smarter `t.equal`-comparison. These functions are defined in `tests/tidy.js`.
 * (5) run test and build for the extended
  `wtf_wikipedia`
 * (6 optional) create a Pull request on the original `wtf_wikipedia` repository of GitHub by Spencer Kelly to share the code with the community
 
+### Handling Relative Links and Inter-Wiki Links in Wiki Source
+If a source text in Wikipedia or Wikiversity is exported, the file is in general removed out of the relative link context. The library `/src/lib/wikiconvert.js` contains a Javascript class to preprocessing the relative links.
+
+General approach:
+* Wiki source text was fetched e.g. from english Wikiversity then the
+   * the language ID is `en` and
+   * the domain ID is `wikiversity`
+* a relative link replacement should be defined like this:
+   * **Input Wiki Markdown:**
+```markdown
+My [[relative link]] and my german [[w:de:my_link|inter-wiki link] are exported.
+```
+   * **Output HTML:**
+```html
+My <a href="https://en.wikiversity.org/wiki/relative_link" target="_blank">relative link</a> and
+my german <a href="https://de.wikiversity.org/wiki/relative_link" target="_blank">inter-wiki link</a> are exported.
+```
+* Inter-wiki links can be encoded by `domain:language:article` (e.g. `w:de:my_article` which is short for  `wikipedia:de:my_article`) to refer to content that is available in a specific language only (e.g. the english Wikipedia only).
+
+Mapping wiki domain abbreviation with a hash:
+``javscript
+var vDomainMap = {};
+vDomainMap["w"] = "wikipedia";
+vDomainMap["wikipedia"] = "wikipedia";
+vDomainMap["Wikipedia"] = "wikipedia";
+vDomainMap["v"] = "wikiversity";
+vDomainMap["wikiversity"] = "wikiversity";
+vDomainMap["Wikiversity"] = "wikiversity";
+vDomainMap["b"] = "wikibooks";
+vDomainMap["wikibooks"] = "wikibooks";
+vDomainMap["Wikibooks"] = "wikibooks";
+```
+
+The domain map is an associative array that maps a possible domain prefix in an interwiki to an explicit part of the domain name. The explicit part of the domain name (e.g. `wikipedia` for `w`) is necessary to expand relative link to absolute links. This link expanding procedure assures that the relative links still work, when the export file displayed out the MediaWiki server context (e.g. Wikipedia or Wikiversity).  
+
+### Defining test cases for the new Format
+Test cases are defined in the folder `tests/` and have the ending `.test.js` (e.g. `html.test.js` for the HTML test cases). Just by naming the file with that ending `.test.js` the test will be included in the NPM test call `npm run test`. Desired output can be generated for different format by the [PanDoc-Try web-interface](https://pandoc.org/try). Select as input format in [PanDoc-Try web-interface](https://pandoc.org/try) the format MediaWiki and select as output format the new format (e.g. `Reveal` for web-based presentation or `Open Document Format` to generate LibreOffice files based on a template file with all your style).
+
+### Offline Use of Exported File
+Media files like:
+* images,
+* audio,
+* video
+files can be displayed offline (without internet connectivity) if and only if the media files are stored locally on the device as well. The command line tool  `wget` can be used for downloading the media files to the device. The file can be stored into subfolders (e.g. of the generated HTML file) in corresponding subfolders. For example in a subfolder `export/my_html/`
+* `export/my_html/images`,
+* `export/my_html/audio`,
+* `export/my_html/video`
+The selection of the subdirectory can be done with the following function that checks the extension of the file and derives the subdirectory name from it:  
+
+```javascript
+function getExtensionOfFilename(pFilename) {
+  var re = /(?:\.([^.]+))?$/;
+  // re.exec("/path.file/project/output.dzslides.html")[1];  returns  "html"
+  return re.exec(pFilename)[1];   // "html"
+}
+
+
+function getMediaSubDir(pMediaLink) {
+  var vExt = getExtensionOfFilename(pMediaLink);
+  var vSubDir ="images"
+  switch (vExt) {
+    case "wav":
+        vSubDir = "audio"
+    break;
+    case "mp3":
+        vSubDir = "audio"
+    break;
+    case "mid":
+        vSubDir = "audio"
+    break;
+    case "ogg":
+        vSubDir = "video"
+    break;
+    case "webm":
+        vSubDir = "video"
+    break;
+    default:
+        vSubDir = "images"
+  };
+  return vSubDir;
+}
+```
 ## Create Office Documents
 If you try [PanDoc document conversion](https://pandoc.org/try) the key to generate Office documents is the export format ODF.
 [LibreOffice](https://en.wikipedia.org/wiki/LibreOffice) can load and save even the [OpenDocument Format](http://opendocumentformat.org/) and LibreOffice can load and save MICR0S0FT Office formats. So exporting to Open Document Format will be good option to start with in `wtf_wikipedia`. The following description are a summary of aspects that support developers in bringing the Office export format e.g. to web-based environment like the [ODF-Editor](http://webodf.org/demos/).
@@ -355,6 +441,7 @@ Some important information to support Office Documents in the future
   * The main text content is stored in `content.xml` as the main file for defining the content of Office document
   * Remark: Zipping the folder content again will create a parsing error when you load the zipped office document again in `LibreOffice`. This may be caused by an inappropriate order in the generated ZIP-file. The file `mimetype` [must be the first file in the ZIP-archive](https://crcok.wordpress.com/2014/10/25/unzip-and-zip-openoffice-org-odt-files/).
   * The best way to generate ODT-files is to generate an ODT-template `mytemplate.odt` with LibreOffice and all the styles you want to apply for the document and place a marker at specific content areas, where you want to replace the cross-compiled content with `wtf_wikipedia` in `content.xml`. The file  `content.xml` will be updated in ODT-ZIP-file. Also marker replacement is possible in ODF-files (see also [WebODF demos](http://webodf.org/demos/).
+  * Image must be downloaded from the MediaWiki (e.g. with an NPM equivalent of `wget` for fetching the image, audio or video) and add the file to the folder structure in the ZIP. Create a ODT-file with LibreOffice with an image and unzip the ODT-file to learn about way how ODT stores the image in the ODT zip-file.
 * [JSZip](https://stuk.github.io/jszip/): JSZip can be used to update and add certain files in a given ODT template (e.g. `mytemplate.odt`). Handling ZIP-files in a cross-compilation WebApp with `wtf_wikipedia` that runs in your browser and generates an editor environment for the cross-compiled Wiki source text (like the [WebODF editor](http://www.webodf.org/demo/ci/wodotexteditor-0.5.9/localeditor.html)). The updating the ODT template as ZIP-file can be handled with [JSZip](https://stuk.github.io/jszip/) by replacing the `content.xml` in a ZIP-archive. `content.xml` can be generated with `wtf_wikipedia` when the `odf`-export format is added to `/src/output/odf` (ToDo: Please create a pull request if you have done that).
 * **LibreOffice Export:** Loading ODT-files in [LibreOffice](https://en.wikipedia.org/wiki/LibreOffice) allows to export the ODT-Format to
   * Office documents `doc`- and `docx`-format,  
