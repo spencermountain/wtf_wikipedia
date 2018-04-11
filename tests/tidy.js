@@ -82,3 +82,9 @@ function latex_tidy(pSource) {
 
   return pSource
 };
+
+module.exports = {
+  html : html_tidy,
+  latex : latex_tidy,
+  reveal : html_tidy
+}
