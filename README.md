@@ -40,18 +40,26 @@ variants, and illicit wiki-esque shorthands. It will try it's best, even when wi
 
 Making your own parser is never a good idea, but this library aims to be the most comprehensive and straight-forward way to get the data you want out of wikipedia.
 
+
+# Install and Quick Start
+If you want to check out the `wtf_wikipedia` source code just clone the package with `git`.
 ```bash
+git clone https://github.com/spencermountain/wtf_wikipedia.git
+cd wtf_wikipedia
 npm install wtf_wikipedia
 ```
-
-then:
+If you want to use the `wtf_wikipedia` in your NodeJS project.
+```bash
+npm install wtf_wikipedia --save
+```
+The `--save` option adds the library to the list of required packages of your project. Then you can create a NodeJS script `wikitest.js` with the following content:
 
 ```javascript
 var wtf = require('wtf_wikipedia');
 
-//hit the api
-wtf.from_api('Toronto', 'en', function(markup) {
-  var data = wtf.parse(markup);
+//call the API and parse the markup into JSON 'data'
+wtf.from_api('Toronto', 'en', function(pWikiSource) {
+  var data = wtf.parse(pWikiSource);
   console.log(data.infoboxes[0].data.leader_name);
   // "John Tory"
 });
@@ -109,21 +117,31 @@ var md = wtf.markdown(wiki)
 // The **[Toronto Blue Jays](./Toronto_Blue_Jays)** ...
 ```
 
-##### ⚡️ Client-side too!
+# Client-side Wiki Markdown Processing
 
 ```html
 <script src="https://unpkg.com/wtf_wikipedia@latest/builds/wtf_wikipedia.min.js"></script>
 <script>
-  wtf.from_api("On a Friday", "en", function(markup){// -> "Radiohead" redirect
-    console.log(wtf.plaintext(markup))
+  wtf.from_api("On a Friday", "en", function(pWikiSource){// -> "Radiohead" redirect
+    console.log(wtf.plaintext(pWikiSource))
     // "Radiohead are an English rock band from Abingdon..."
   })
 </script>
 ```
+The client-side application of `wtf_wikipedia.js` allows the browser to download and process of the Wiki markdown. The downloaded Wiki source can be processed with Javascript in the browser and new web-based content can be generated dynamically based on the Wiki-Source.
 
-<h2 align="center">
+<font size="+2" align="center">
   <a href="https://spencermountain.github.io/wtf_wikipedia/">Demo!</a>
-</h2>
+</font>
+
+Furthermore format cross-compilation from wiki source into
+* [plain text](https://github.com/spencermountain/wtf_wikipedia/blob/master/src/index.js),
+* [Markdown](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/output/markdown),
+* [HTML](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/output/html),
+* [LaTeX](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/output/latex)
+* ...
+is supported. The LaTeX output format is helpful to generate WikiBooks on the client side.
+
 
 # What it does
 
@@ -145,9 +163,9 @@ its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaV
 [txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from
 [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
 
-#### But what about...
+## But what about...
 
-##### Parsoid:
+### Parsoid:
 
 Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It
 reliably turns wikiscript into HTML, but not valid XML.
@@ -161,14 +179,14 @@ parsoid(wikiscript) -> pretend DOM -> screen-scraping
 but getting structured data this way (say, sentences or infobox data), is a complex + weird process still. This library
 has 'borrowed' a lot of stuff from the parsoid project❤️
 
-##### XML datadumps:
+### XML datadumps:
 
 This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb),
 letting you parse a whole wikipedia dump on a laptop in a couple minutes.
 
 # Methods
 
-## **.parse(markup)**
+## **.parse(pWikiSource)**
 
 turns wikipedia markup into a nice json object
 
@@ -186,8 +204,8 @@ retrieves raw contents of a wikipedia article - or other mediawiki wiki identifi
 to call non-english wikipedia apis, add it as the second paramater to from_api
 
 ```javascript
-wtf.from_api('Toronto', 'de', function(markup) {
-  var text = wtf.plaintext(markup);
+wtf.from_api('Toronto', 'de', function(pWikiSource) {
+  var text = wtf.plaintext(pWikiSource);
   //Toronto ist mit 2,6 Millionen Einwohnern..
 });
 ```
@@ -195,14 +213,14 @@ wtf.from_api('Toronto', 'de', function(markup) {
 you may also pass the wikipedia page id as parameter instead of the page title:
 
 ```javascript
-wtf.from_api(64646, 'de', function(markup) {
+wtf.from_api(64646, 'de', function(pWikiSource) {
   //...
 });
 ```
 
 the from_api method follows redirects.
 
-## **.plaintext(markup)**
+## **.plaintext(pWikiSource)**
 
 returns only nice text of the article
 
@@ -235,7 +253,14 @@ wtf.parse(str);
 this way, you can extend the library with your own regexes, and all that.
 
 ## **CLI**
+In the folder `/bin` you find some js-files that you can run from the shell.
+### LaTeX
+```shell
+node ./bin/latex.js Swarm_intelligence
+```
+This script shows some processing steps in the console.log and shows the cross-compiled LaTeX code in the console as well.
 
+### Global scripting, downloading and cross-compilation
 if you're scripting this from the shell, or another language, install with a `-g`, and then:
 
 ```shell
@@ -321,8 +346,20 @@ Sample Output for [Whistling](https://en.wikipedia.org/w/index.php?title=Whistli
 }
 ```
 
-## Contributing
+# ToDo
+* Mathematical Expressions: The helper functions for the export formats are defined in `src/ouput/` in the resp. directory for the format ( e.g. `src/ouput/latex/math.js` for LaTeX export), but they were not called currently. TODO: Parsing must parse mathematical BLOCK and INLINE expressions and the export must call the respective the export helper functions defined e.g. in `/src/output/latex/math.js` for LaTeX output)
 
+# Contributing
+
+## Fork, Improve, Pull Request
+If you want to contribute with new output formats (e.g. defined in [PanDoc](https://www.pandoc.org/try) ) then
+* login with your GitHub account or [create an account](https://help.github.com/articles/signing-up-for-a-new-github-account/) for you
+* [fork](https://help.github.com/articles/fork-a-repo/) the current `wtf_wikipedia` repository and add e.g. a new export format in `/src/output/`,
+* Build and test the generated library with `npm run build`
+* If you update the `README.md` with a new export format run `doctoc README.md` to update the table of contents.
+* create a [Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) for the maintainer Spencer Kelly to integrate the new export format the original `wtf_wikipedia` respository.
+
+## Maintainer Comment
 Never-ender projects like these are only good with many-hands, and I try to be a friendly maintainer. (promise!)
 
 ```bash
@@ -330,5 +367,8 @@ npm install
 npm test
 npm run build #to package-up client-side
 ```
+## Table of Contents in README.md
+`DocToc` is used to create a helpful table of contents in the README (see [DocToc-Installation](https://github.com/thlorenz/doctoc#installation) for further details on [NPM DocToc](https://www.npmjs.com/package/doctoc) ). Run `doctoc README.md` for updating the table of contents in the `README.md`.
+
 
 MIT

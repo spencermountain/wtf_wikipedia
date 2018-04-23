@@ -1,6 +1,7 @@
 'use strict';
 var test = require('tape');
 var wtf = require('./lib');
+var tidy = require('./tidy');
 
 test('basic-html', t => {
   var have = wtf('that cat is [[a]] cool dude').toHtml();
@@ -10,7 +11,7 @@ test('basic-html', t => {
   </div>
 </div>
 `;
-  t.equal(have, want, 'link');
+t.equal(tidy.html(have), tidy.html(want), 'link');
 
   //1 tick
   have = wtf(`i 'think' so`).toHtml();
@@ -20,7 +21,7 @@ test('basic-html', t => {
   </div>
 </div>
 `;
-  t.equal(have, want, 'bold');
+t.equal(tidy.html(have), tidy.html(want), 'link-blank');
 
 
   //2 ticks
@@ -51,7 +52,7 @@ test('basic-html', t => {
   </div>
 </div>
 `;
-  t.equal(have, want, 'four-tick');
+ t.equal(tidy.html(have), tidy.html(want), 'link-external');
 
   //5 ticks
   have = wtf(`i '''''think''''' so`).toHtml();
@@ -61,7 +62,8 @@ test('basic-html', t => {
   </div>
 </div>
 `;
-  t.equal(have, want, 'five-tick');
+ t.equal(tidy.html(have), tidy.html(want), 'nested-itemize-enumerate');
 
+//-------------------
   t.end();
 });
