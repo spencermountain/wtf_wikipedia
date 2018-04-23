@@ -17,9 +17,5 @@ const fromFile = require('./_fromFile');
 //   console.log(linkArray);
 // });
 
-let str = wtf(`==My Section==
-Leading text
-* First item
-*Second Item
-Closing remark`).toLatex();
-console.log(str);
+let s = wtf(`i ''''think'''' so`).sentences(0);
+console.log(s);

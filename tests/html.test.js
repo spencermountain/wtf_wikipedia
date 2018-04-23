@@ -38,7 +38,7 @@ test('basic-html', t => {
   have = wtf(`i '''think''' so`).toHtml();
   want = `<div class="section">
   <div class="text">
-    <span class="sentence">i <b>'think'</b> so</span>
+    <span class="sentence">i <b>think</b> so</span>
   </div>
 </div>
 `;
@@ -48,7 +48,7 @@ test('basic-html', t => {
   have = wtf(`i ''''think'''' so`).toHtml();
   want = `<div class="section">
   <div class="text">
-    <span class="sentence">i <b>'think'</b> so</span>
+    <span class="sentence">i '<b>think</b>' so</span>
   </div>
 </div>
 `;
@@ -58,7 +58,7 @@ test('basic-html', t => {
   have = wtf(`i '''''think''''' so`).toHtml();
   want = `<div class="section">
   <div class="text">
-    <span class="sentence">i <b><i>'think'</i></b> so</span>
+    <span class="sentence">i <b><i>think</i></b> so</span>
   </div>
 </div>
 `;
