@@ -18,21 +18,35 @@ const makeUrl = function(title, lang) {
     url = site_map[lang] + '/w/api.php';
   }
   //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-  url += '?action=query&prop=revisions&rvlimit=1&rvprop=content&format=json&origin=*';
-  url += '&' + lookup + '=' + encodeURIComponent(title);
+  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&format=json&origin=*';
+  //support multiple titles
+  if (typeof title === 'string') {
+    title = [title];
+  }
+  title = title.map(encodeURIComponent);
+  title = title.join('|');
+  url += '&' + lookup + '=' + title;
   return url;
 };
 
 //this data-format from mediawiki api is nutso
 const postProcess = function(data) {
-  let pages = Object.keys(data.query.pages)[0];
-  let page = data.query.pages[pages] || {};
-  let text = page.revisions[0]['*'];
-  let options = {
-    title: page.title,
-    pageID: page.pageid,
-  };
-  return new Document(text, options);
+  let pages = Object.keys(data.query.pages);
+  let docs = pages.map(id => {
+    let page = data.query.pages[id] || {};
+    let text = page.revisions[0]['*'];
+    let options = {
+      title: page.title,
+      pageID: page.pageid,
+    };
+    return new Document(text, options);
+  });
+  //return an array if there was more than one page given
+  if (docs.length > 1) {
+    return docs;
+  }
+  //just return the first one
+  return docs[0];
 };
 
 const throwErr = (r, cb) => {
@@ -48,7 +62,7 @@ const getData = function(url, options) {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Api-User-Agent': options.userAgent || options['User-Agent'] || 'Random user of the wtf_wikipedia library'
+      'Api-User-Agent': options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'Random user of the wtf_wikipedia library'
     },
   };
   return fetch(url, params).then((response) => {

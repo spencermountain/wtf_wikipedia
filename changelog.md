@@ -29,3 +29,7 @@
 * support a whack of date/time/age templates
 ## 2.6.1
 * better html output tables/infoboxes
+
+## 3.0.0
+* BIG API RE-WRITE!
+* wtf.fetch() uses promises, and native `fetch()` method (when available)

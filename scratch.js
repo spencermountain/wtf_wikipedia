@@ -5,16 +5,17 @@ const fromFile = require('./_fromFile');
 // const wtf = require('./build');
 
 //'|'-separated titles in a titles parameter
+// description(), extract(), summary()
 
+// let doc = fromFile('royal_cinema');
+// console.log(JSON.stringify(doc, null, 2));
 
-let doc = fromFile('royal_cinema');
-console.log(doc);
-
-// wtf.fetch('Aldous Huxley', 'en', {
+// wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
 //   userAgent: 'spencermountain@gmail.com'
-// }).then((doc) => {
-//   console.log(doc.links().map(p => p.page));
+// }).then((docs) => {
+//   let linkArray = docs.map(doc => doc.links());
+//   console.log(linkArray);
 // });
 
-
-// console.log('|' + wtf('he is [[Spencer Kelly|so cool]] and [http://cool.com fresh]').toMarkdown());
+let doc = wtf('he is [[Spencer Kelly|so cool]] and [http://cool.com fresh]');
+console.log(doc);
