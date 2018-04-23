@@ -1,7 +1,7 @@
 'use strict';
 var test = require('tape');
 var wtf = require('./lib');
-var tidy = require('./tidy');
+var tidy = require('./lib/tidy');
 
 test('basic-html', t => {
   var have = wtf('that cat is [[a]] cool dude').toHtml();
@@ -11,7 +11,7 @@ test('basic-html', t => {
   </div>
 </div>
 `;
-t.equal(tidy.html(have), tidy.html(want), 'link');
+  t.equal(tidy.html(have), tidy.html(want), 'link');
 
   //1 tick
   have = wtf(`i 'think' so`).toHtml();
@@ -21,7 +21,7 @@ t.equal(tidy.html(have), tidy.html(want), 'link');
   </div>
 </div>
 `;
-t.equal(tidy.html(have), tidy.html(want), 'link-blank');
+  t.equal(tidy.html(have), tidy.html(want), 'link-blank');
 
 
   //2 ticks
@@ -52,7 +52,7 @@ t.equal(tidy.html(have), tidy.html(want), 'link-blank');
   </div>
 </div>
 `;
- t.equal(tidy.html(have), tidy.html(want), 'link-external');
+  t.equal(tidy.html(have), tidy.html(want), '4 ticks');
 
   //5 ticks
   have = wtf(`i '''''think''''' so`).toHtml();
@@ -62,8 +62,8 @@ t.equal(tidy.html(have), tidy.html(want), 'link-blank');
   </div>
 </div>
 `;
- t.equal(tidy.html(have), tidy.html(want), 'nested-itemize-enumerate');
+  t.equal(tidy.html(have), tidy.html(want), '5-ticks');
 
-//-------------------
+  //-------------------
   t.end();
 });

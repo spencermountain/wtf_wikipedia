@@ -17,5 +17,9 @@ const fromFile = require('./_fromFile');
 //   console.log(linkArray);
 // });
 
-let doc = wtf('he is [[Spencer Kelly|so cool]] and [http://cool.com fresh]');
-console.log(doc);
+let str = wtf(`==My Section==
+Leading text
+* First item
+*Second Item
+Closing remark`).toLatex();
+console.log(str);

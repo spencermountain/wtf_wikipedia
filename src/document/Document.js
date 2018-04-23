@@ -1,6 +1,7 @@
 const parse = require('./index');
 const toMarkdown = require('../output/markdown');
 const toHtml = require('../output/html');
+const toLatex = require('../output/latex');
 const defaults = require('../lib/defaults');
 // const Image = require('../section/image/Image');
 
@@ -125,6 +126,10 @@ const methods = {
   toMarkdown : function(options) {
     options = Object.assign(defaults, options || {});
     return toMarkdown(this, options);
+  },
+  toLatex : function(options) {
+    options = Object.assign(defaults, options || {});
+    return toLatex(this, options);
   },
   toHtml : function(options) {
     options = Object.assign(defaults, options || {});

@@ -58,25 +58,25 @@ module.exports = [
   },
   {
     name: 'toPlaintext',
-    returns: 'Array',
+    returns: 'String',
     description: '',
     aliases: ['plaintext', 'text']
   },
   {
     name: 'toMarkdown',
-    returns: 'Array',
+    returns: 'String',
     description: '',
     aliases: ['markdown']
   },
   {
     name: 'toHtml',
-    returns: 'Array',
+    returns: 'String',
     description: '',
     aliases: ['html', 'toHTML']
   },
   {
     name: 'toLatex',
-    returns: 'Array',
+    returns: 'String',
     description: '',
     aliases: ['latex', 'toLATEX']
   }
