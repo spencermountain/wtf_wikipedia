@@ -32,6 +32,7 @@ const methods = {
   },
   sections : function(n) {
     let arr = this.data.sections || [];
+    arr.forEach((sec) => sec.doc = this);
     //grab a specific section, by its title
     if (typeof n === 'string') {
       let str = n.toLowerCase().trim();

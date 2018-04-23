@@ -7,8 +7,15 @@ const fromFile = require('./_fromFile');
 //'|'-separated titles in a titles parameter
 // description(), extract(), summary()
 
-// let doc = fromFile('royal_cinema');
-// console.log(JSON.stringify(doc, null, 2));
+let doc = fromFile('toronto');
+console.log('\n');
+doc.sections().forEach((sec, i) => {
+  console.log(i, sec.depth, sec.title);
+});
+console.log('\n');
+let sec = doc.sections(5);
+console.log(sec.index());
+
 
 // wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
 //   userAgent: 'spencermountain@gmail.com'
@@ -17,5 +24,5 @@ const fromFile = require('./_fromFile');
 //   console.log(linkArray);
 // });
 
-let s = wtf(`i ''''think'''' so`).sentences(0);
-console.log(s);
+// let s = wtf(`i ''''think'''' so`).sentences(0);
+// console.log(s);

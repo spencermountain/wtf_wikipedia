@@ -8,12 +8,23 @@ const Section = function(data) {
   this.data = data;
   this.title = data.title;
   this.depth = data.depth;
+  this.doc = null;
 // this.sentences = data.sentences;
 };
 
 const methods = {
+  index: function() {
+    if (!this.doc) {
+      return null;
+    }
+    let index = this.doc.sections().indexOf(this);
+    if (index === -1) {
+      return null;
+    }
+    return index;
+  },
   indentation: function() {
-    return this.data.depth;
+    return this.depth;
   },
   sentences: function(n) {
     let arr = this.data.sentences.map((s) => {
@@ -71,8 +82,64 @@ const methods = {
     }
     return this.data.images || [];
   },
-  children: function() {},
-  parent: function() {},
+
+  //move-around sections like in jquery
+  nextSibling: function() {
+    if (!this.doc) {
+      return null;
+    }
+    let sections = this.doc.sections();
+    let index = this.index();
+    for(let i = index + 1; i < sections.length; i += 1) {
+      if (sections[i].depth < this.depth) {
+        return null;
+      }
+      if (sections[i].depth === this.depth) {
+        return sections[i];
+      }
+    }
+    return null;
+  },
+  lastSibling: function() {
+    if (!this.doc) {
+      return null;
+    }
+    let sections = this.doc.sections();
+    let index = this.index();
+    return sections[index - 1] || null;
+  },
+  children: function() {
+    if (!this.doc) {
+      return null;
+    }
+    let sections = this.doc.sections();
+    let index = this.index();
+    let children = [];
+    //(immediately preceding sections with higher depth)
+    if (sections[index + 1] && sections[index + 1].depth > this.depth) {
+      for(let i = index + 1; i < sections.length; i += 1) {
+        if (sections[i].depth > this.depth) {
+          children.push(sections[i]);
+        } else {
+          break;
+        }
+      }
+    }
+    return children;
+  },
+  parent: function() {
+    if (!this.doc) {
+      return null;
+    }
+    let sections = this.doc.sections();
+    let index = this.index();
+    for(let i = index; i >= 0; i -= 1) {
+      if (sections[i].depth < this.depth) {
+        return sections[i];
+      }
+    }
+    return null;
+  },
 
   toMarkdown : function(options) {
     options = Object.assign(defaults, options || {});
@@ -90,7 +157,11 @@ const methods = {
     return this.data;
   },
 };
-
+//aliases
+methods.next = methods.nextSibling;
+methods.last = methods.lastSibling;
+methods.previousSibling = methods.lastSibling;
+methods.previous = methods.lastSibling;
 Object.keys(methods).forEach((k) => {
   Section.prototype[k] = methods[k];
 });

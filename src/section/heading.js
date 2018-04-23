@@ -12,9 +12,9 @@ const parseHeading = function(r, str) {
   }
   let title = heading[2] || '';
   title = fns.trim_whitespace(title);
-  let depth = 1;
+  let depth = 0;
   if (heading[1]) {
-    depth = heading[1].length - 1;
+    depth = heading[1].length - 2;
   }
   r.title = title;
   r.depth = depth;
