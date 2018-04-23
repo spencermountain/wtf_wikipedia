@@ -42,8 +42,16 @@ const throwErr = (r, cb) => {
   return {};
 };
 
-const getData = function(url) {
-  return fetch(url).then((response) => {
+const getData = function(url, options) {
+  // Api-User-Agent
+  let params = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Api-User-Agent': options.userAgent || options['User-Agent'] || 'Random user of the wtf_wikipedia library'
+    },
+  };
+  return fetch(url, params).then((response) => {
     if (response.status !== 200) {
       throwErr(response, callback);
     }
@@ -51,10 +59,15 @@ const getData = function(url) {
   });
 };
 
-const getPage = function(title, lang, callback) {
+const getPage = function(title, lang, options, callback) {
+  if (typeof options === 'function') {
+    callback = options;
+    options = {};
+  }
+  options = options || {};
   let url = makeUrl(title, lang);
   return new Promise(function(resolve, reject) {
-    let p = getData(url);
+    let p = getData(url, options);
     p.then(postProcess).then((doc) => {
       //support 'err-back' format
       if (callback && typeof callback === 'function') {

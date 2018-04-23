@@ -2,6 +2,7 @@ const parse = require('./index');
 const toMarkdown = require('../output/markdown');
 const toHtml = require('../output/html');
 const defaults = require('../lib/defaults');
+// const Image = require('../section/image/Image');
 
 //
 const Document = function(wiki, options) {
@@ -59,7 +60,7 @@ const methods = {
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
       if (info.data.image) {
-        arr.push(info.data.image);
+        arr.push(info.data.image.data);
       }
     });
     this.sections().forEach((sec) => {

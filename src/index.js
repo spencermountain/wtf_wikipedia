@@ -6,8 +6,8 @@ const version = require('../package').version;
 const wtf = function(wiki, options) {
   return new Document(wiki, options);
 };
-wtf.fetch = function(title, lang, cb) {
-  return fetch(title, lang, cb);
+wtf.fetch = function(title, lang, options, cb) {
+  return fetch(title, lang, options, cb);
 };
 wtf.version = version;
 
