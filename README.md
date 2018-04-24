@@ -23,33 +23,32 @@
   <b>wtf_wikipedia</b> turns wikipedia's markup language into <b>JSON</b>,
   <div>so getting data from wikipedia is easier.</div>
 
-  <h2 align="center">🛌 Try to have a good time. 🏠</h2>
+  <h2 align="center">🛀 Try to have a good time.🏠</h2>
   <div><sup>seriously,</sup></div>
-  <div><sup>the english wiki alone has 1m+ custom templates.</sup></div>
 </div>
 
-Wikipedia's markup is among the most curious data formats you can find.
+wikitext is among the <i>most curious data formats</i> you can find.
+<div align="center"><sup><i>(shame we buried all human knowledge in it)</i></sup></div>
 
-Shame that we buried our human record in it.
-* Look upon the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).
+* Look upon [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).
 * Distinguish [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) and [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
-* Regard upon the [partial-implementation of inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
-* the nesting of [syntax-similar](https://twitter.com/spencermountain/status/934907924320792577) templates,
+* Regard the [partial-implementation of inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
+* compute the nesting of [syntax-similar](https://twitter.com/spencermountain/status/934907924320792577) templates,
 * the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) of image paths,
-* custom encoding of whitespace, unicode, and punctuation
+* custom encoding of whitespace, and unicode,
 * [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
 
-**wtf_wikipedia** supports many recursive template shenanigans, depreciated and obscure template
+**wtf_wikipedia** supports recursive template shenanigans, depreciated and obscure template
 variants, and illicit wiki-esque shorthands. It will try it's best, and fail in reasonable ways.
 
-Making your own parser is never a good idea, but this library aims to be the most comprehensive and straight-forward way to get specific data out of wikipedia.
+ - - making your own parser is never a good idea, but this library aims to be the most comprehensive and straight-forward way to get specific data out of wikipedia.
 
 <div align="center">
-  don't be mad at me → <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">be mad at them</a>
+  don't be mad at me → <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something"><i>be mad at them</i></a>
 </div>
 
 # ok then,
-```bash
+```coffee
 npm install wtf_wikipedia
 ```
 
@@ -71,7 +70,7 @@ wtf.fetch('Whistling').then(doc => {
   //['Slide whistle', 'Hand flute', 'Bird vocalization'...]
 });
 ```
-or on the client-side!
+..or on the client-side:
 ```html
 <script src="https://unpkg.com/wtf_wikipedia@latest/builds/wtf_wikipedia.min.js"></script>
 <script>
@@ -106,28 +105,26 @@ its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaV
 ## But what about...
 
 ### Parsoid:
-
 Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It
 reliably turns wikiscript into HTML, but not valid XML.
 
 To use it for data-mining, you'll' need to:
 
 ```
-parsoid(wikiscript) -> pretend DOM -> screen-scraping
+parsoid(wikiText) -> [headless/pretend DOM] -> screen-scraping
 ```
 
-but getting structured data this way (say, sentences or infobox data), is a complex + weird process still. This library
-has 'borrowed' a lot of stuff from the parsoid project❤️
+but getting structured data this way (say, ***sentences*** or ***infobox*** data), is still a complex + weird process. Arguably, you're not even closer than you were with wikitext.
+This library has lovingly❤️ borrowed a lot of code and data from the parsoid project.
 
 ### Full data-dumps:
-
-This library is built to work well with [dumpster-dive](https://github.com/spencermountain/dumpster-dive),
+wtf_wikipedia was built to work with [dumpster-dive](https://github.com/spencermountain/dumpster-dive),
 which lets you parse a whole wikipedia dump on a laptop in a couple hours.
 
 # API
 
 ### **wtf(wikiText)**
-turn your wikimedia markup into a `Document` object
+flip your wikimedia markup into a `Document` object
 
 ```javascript
 import wtf from 'wtf_wikipedia'
@@ -140,8 +137,7 @@ retrieves raw contents of a mediawiki article from the wikipedia action API.
 
 This method supports the **errback** callback form, or returns a [Promise](https://spring.io/understanding/javascript-promises) if one is missing.
 
-to call non-english wikipedia apis, add it as the second paramater, identified by its
-[dbname](http://en.wikipedia.org/w/api.php?action=sitematrix&format=json)
+to call non-english wikipedia apis, add [it's language-name](http://en.wikipedia.org/w/api.php?action=sitematrix&format=json) as the second parameter
 
 ```javascript
 wtf.fetch('Toronto', 'de', function(err, doc) {
