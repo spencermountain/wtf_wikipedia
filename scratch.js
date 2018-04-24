@@ -7,6 +7,8 @@ const wtf = require('./src/index');
 // todo:
 // description(), extract(), summary()
 
+//doc.infoboxes('Venue')
+
 // let doc = fromFile('toronto');
 
 
@@ -20,6 +22,12 @@ const wtf = require('./src/index');
 // let s = wtf(`i ''''think'''' so`).sentences(0);
 // console.log(s);
 
-wtf.fetch('Royal Cinema').then((doc) => {
-  console.log(doc.plaintext());
-}).catch(console.log);
+// wtf.fetch('Whistling').then(doc => {
+//   console.log(doc.sections('see also').links().map(l => l.page));
+// });
+
+wtf.fetch('On a Friday', 'en', function(err, doc) { //"Radiohead" redirect
+  var members = doc.infobox(0).data.current_members.links();
+  members.map(l => l.page);
+//Thom Yorke, Jonny Greenwood, Colin Greenwood...
+});

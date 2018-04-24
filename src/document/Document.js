@@ -45,13 +45,6 @@ const methods = {
     }
     return arr;
   },
-  section(n) {
-    let res = this.sections(n);
-    if (res.length) {
-      return res[0] || null;
-    }
-    return res;
-  },
   sentences : function(n) {
     let arr = [];
     this.sections().forEach((sec) => {
@@ -157,6 +150,20 @@ const methods = {
     });
   }
 };
+
+//add singular-methods
+let plurals = ['sections', 'infoboxes', 'sentences', 'citations', 'coordinates', 'tables', 'links', 'images', 'categories'];
+plurals.forEach((fn) => {
+  let sing = fn.replace(/ies$/, 'y');
+  sing = sing.replace(/e?s$/, '');
+  methods[sing] = function(n) {
+    let res = this[fn](n);
+    if (res.length) {
+      return res[0] || null;
+    }
+    return res;
+  };
+});
 
 Object.keys(methods).forEach((k) => {
   Document.prototype[k] = methods[k];

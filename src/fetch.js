@@ -17,7 +17,7 @@ const makeUrl = function(title, lang) {
     url = site_map[lang] + '/w/api.php';
   }
   //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&format=json&origin=*';
+  url += '?action=query&redirects=true&prop=revisions&rvprop=content&maxlag=5&format=json&origin=*';
   //support multiple titles
   if (typeof title === 'string') {
     title = [title];
@@ -72,12 +72,26 @@ const getData = function(url, options) {
   });
 };
 
-const getPage = function(title, lang, options, callback) {
-  if (typeof options === 'function') {
-    callback = options;
-    options = {};
+const getPage = function(title, a, b, c) {
+  //allow quite! flexible params
+  let options = {};
+  let lang = 'en';
+  let callback = null;
+  if (typeof a === 'function') {
+    callback = a;
+  } else if (typeof a === 'object') {
+    options = a;
+  } else if (typeof a === 'string') {
+    lang = a;
   }
-  options = options || {};
+  if (typeof b === 'function') {
+    callback = b;
+  } else if (typeof b === 'object') {
+    options = b;
+  }
+  if (typeof c === 'function') {
+    callback = c;
+  }
   let url = makeUrl(title, lang);
   let promise = new Promise(function(resolve, reject) {
     let p = getData(url, options);
