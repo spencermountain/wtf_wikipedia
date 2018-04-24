@@ -1,4 +1,3 @@
-const fetch = require('node-fetch');
 const Hashes = require('jshashes');
 const toMarkdown = require('../../output/markdown/image');
 const toHtml = require('../../output/html/image');

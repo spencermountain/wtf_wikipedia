@@ -1,3 +1,4 @@
+require('cross-fetch/polyfill');
 const Document = require('./document/Document');
 const fetch = require('./fetch');
 const version = require('../package').version;

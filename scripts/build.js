@@ -1,39 +1,26 @@
-require('shelljs/global');
-config.silent = true;
-var fs = require('fs');
-//use paths, so libs don't need a -g
-var browserify = './node_modules/.bin/browserify';
-var derequire = './node_modules/derequire/bin/cmd.js';
-var uglify = './node_modules/uglify-js/bin/uglifyjs';
+const Bundler = require('parcel-bundler');
+const Path = require('path');
 
-var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+// Entrypoint file location
+const file = Path.join(__dirname, '../src/index.js');
 
-//final build locations
-var banner = '/* wtf_wikipedia v' + pkg.version + '\n   github.com/spencermountain/wtf_wikipedia\n   MIT\n*/\n';
-var uncompressed = './builds/wtf_wikipedia.js';
-var compressed = './builds/wtf_wikipedia.min.js';
+// Bundler options
+const options = {
+  outDir: './builds', // The out directory to put the build files in, defaults to dist
+  outFile: 'wtf_wikipedia', // The name of the outputFile
+  watch: false, // whether to watch the files and rebuild them on change, defaults to process.env.NODE_ENV !== 'production'
+  cache: false, // Enabled or disables caching, defaults to true
+  minify: true, // Minify files, enabled if process.env.NODE_ENV === 'production'
+  target: 'node', // browser/node/electron, defaults to browser
+  logLevel: 3, // 3 = log everything, 2 = log warnings & errors, 1 = log errors
+  sourceMaps: false, // Enable or disable sourcemaps, defaults to enabled (not supported in minified builds yet)
+  detailedReport: false // Prints a detailed report of the bundles, assets, filesizes and times, defaults to false, reports are only printed if watch is disabled
+};
 
-//cleanup. remove old builds
-exec('rm -rf ./builds && mkdir builds');
-
-//add a header, before our sourcecode
-echo(banner).to(uncompressed);
-echo(banner).to(compressed);
-
-//browserify + derequire
-var cmd = browserify + ' ./src/index.js --standalone wtf --debug';
-cmd += ' -t [ babelify --presets [ env ] ]';
-cmd += ' | ' + derequire;
-cmd += ' >> ' + uncompressed;
-console.log(cmd);
-exec(cmd);
-
-//uglify
-cmd = uglify + ' ' + uncompressed + ' --mangle --compress ';
-cmd += ' >> ' + compressed;
-exec(cmd); // --source-map ' + compressed + '.map'
-
-//print filesizes
-var stats = fs.statSync(compressed);
-var fileSize = (stats['size'] / 1000.0).toFixed(2);
-console.log('\n\n' + fileSize + 'kb');
+// Initialises a bundler using the entrypoint location and options provided
+const bundler = new Bundler(file, options);
+// Run the bundler, this returns the main bundle
+// Use the events if you're using watch mode as this promise will only trigger once and not for every rebuild
+bundler.bundle().then(() => {
+  console.log('done!');
+});
