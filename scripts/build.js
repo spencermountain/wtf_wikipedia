@@ -5,18 +5,8 @@ var fs = require('fs');
 var browserify = './node_modules/.bin/browserify';
 var derequire = './node_modules/derequire/bin/cmd.js';
 var uglify = './node_modules/uglify-js/bin/uglifyjs';
-var eslint = './node_modules/eslint/bin/eslint.js';
 
 var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
-
-//first, run linter
-var child = exec(eslint + ' -c .eslintrc --color ./src/**', {
-  async: true
-});
-child.stdout.on('error', function() {
-  //(exit if linter finds errors)
-  process.exit();
-});
 
 //final build locations
 var banner = '/* wtf_wikipedia v' + pkg.version + '\n   github.com/spencermountain/wtf_wikipedia\n   MIT\n*/\n';
@@ -32,10 +22,10 @@ echo(banner).to(compressed);
 
 //browserify + derequire
 var cmd = browserify + ' ./src/index.js --standalone wtf --debug';
-cmd += ' -t [ babelify --presets [ es2015 ] ]';
+cmd += ' -t [ babelify --presets [ env ] ]';
 cmd += ' | ' + derequire;
 cmd += ' >> ' + uncompressed;
-// console.log(cmd);
+console.log(cmd);
 exec(cmd);
 
 //uglify
