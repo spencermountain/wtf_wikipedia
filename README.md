@@ -13,7 +13,7 @@
     by
     <a href="https://spencermountain.github.io/">Spencer Kelly</a> and
     <a href="https://github.com/spencermountain/wtf_wikipedia/graphs/contributors">
-      many contributors
+      contributors
     </a>
   </sub>
 </div>
@@ -23,9 +23,9 @@
   <b>wtf_wikipedia</b> turns wikipedia's markup language into <b>JSON</b>,
   <div>so getting data from wikipedia is easier.</div>
 
-  <h2 align="center">🏠 Try to have a good time.🛀 </h2>
+  <h2 align="center">🏠 Try to have a good time. 🛀 </h2>
   <div><sup>seriously,</sup></div>
-  wikitext is among the <i>most curious data formats</i> you can find.
+  this is among the <i>most-curious</i> data formats you will ever find.
 </div>
 
 <div align="center"><sup><i>(then we buried our human-record in it)</i></sup></div>
@@ -38,22 +38,24 @@
 * custom encoding of whitespace and punctuation,
 * [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
 
-**wtf_wikipedia** supports recursive template shenanigans, depreciated and obscure template
-variants, and illicit wiki-esque shorthands. It will try it's best, and fail in reasonable ways.
+**wtf_wikipedia** supports many ***recursive shenanigans***, depreciated and obscure template
+variants, and illicit 'wiki-esque' shorthands.
 
-> making your own parser is never a good idea,
+It will try it's best, and fail in reasonable ways.
+
+> → building your own parser is never a good idea →
 >
-> but this library aims to be a **straight-forward** way to get data out of wikipedia.
+> but this library aims to be *****a straight-forward***** way to get data ***out of wikipedia***.
 
 <div align="center">
-  ... so don't be mad at me →
+  <i>... so don't be mad at me,</i>
   <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">
-    <sub>be mad at this</sub>
+    <sub>be mad at this.</sub>
   </a>
 </div>
 
 # ok then,
-<kbd>npm install wtf_wikipedia<kbd>
+<kbd>npm install wtf_wikipedia</kbd>
 
 ```javascript
 var wtf = require('wtf_wikipedia');
