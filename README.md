@@ -28,7 +28,7 @@
   wikitext is among the <i>most curious data formats</i> you can find.
 </div>
 
-<div align="center"><sup><i>(then we buried all human-knowledge in it)</i></sup></div>
+<div align="center"><sup><i>(then we buried our human-record in it)</i></sup></div>
 
 * Look upon the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).
 * Distinguish between [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) and [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
@@ -42,16 +42,18 @@
 variants, and illicit wiki-esque shorthands. It will try it's best, and fail in reasonable ways.
 
 > making your own parser is never a good idea,
-> but this library aims to be a straight-forward way to get data out of wikipedia.
+>
+> but this library aims to be a **straight-forward** way to get data out of wikipedia.
 
 <div align="center">
-  don't be mad at me → <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something"><i>be mad at them</i></a>
+  ... so don't be mad at me →
+  <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">
+    <sub>be mad at this</sub>
+  </a>
 </div>
 
 # ok then,
-```coffee
-npm install wtf_wikipedia
-```
+<kbd>npm install wtf_wikipedia<kbd>
 
 ```javascript
 var wtf = require('wtf_wikipedia');
@@ -247,5 +249,7 @@ wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
 projects like these are only good with many-hands, and I try to be a friendly maintainer. (promise!)
 
 [Join in](./Contributing.md)
+
+Thank you to the [cross-fetch](https://github.com/lquixada/cross-fetch) and [jshashes](https://github.com/h2non/jshashes) libraries.
 
 MIT
