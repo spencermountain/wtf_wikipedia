@@ -23,16 +23,18 @@
   <b>wtf_wikipedia</b> turns wikipedia's markup language into <b>JSON</b>,
   <div>so getting data from wikipedia is easier.</div>
 
-  <h2 align="center">🏠 Try to have a good time.</h2>
-  <sup>en-wiki has 1.5m ad-hoc templates</sup>
+  <h2 align="center">🏠 Try to have a good time. 🏠</h2>
+  <sup>seriously,</sup>
+  the english wiki alone has 1m+ custom templates.
 </div>
 
-Wikipedia's custom markup is among the strangest and most illicit data formats you'll ever find.
+Wikipedia's markup is among the most curious data formats you can find.
+Shame that we've buried all our human knowledge in it, and can't pull it out.
 * check out the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).
 * don't confuse [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) with [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
 * or trip-up on the [partial-implementation of inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
 * the nesting of syntax-similar templates,
-* the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) of image paths
+* the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) of image paths,
 * custom encoding of unicode, whitespace, and punctuation
 * [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
 
@@ -42,7 +44,7 @@ variants, and illicit wiki-esque shorthands. It will try it's best, and fail in 
 Making your own parser is never a good idea, but this library aims to be the most comprehensive and straight-forward way to get specific data out of wikipedia.
 
 <div align="center">
-  don't be mad at me, be mad <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">at them</a>
+  don't be mad at me, <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">be mad at them</a>
 </div>
 
 # ok then,
