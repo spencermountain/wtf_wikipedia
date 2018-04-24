@@ -34,20 +34,20 @@
   ],
   "dependencies": {
     "cross-fetch": "^2.1.0",
-    "es6-promise": "^4.2.4",
-    "isomorphic-fetch": "^2.2.1",
-    "jshashes": "1.0.7",
-    "node-fetch": "2.1.2"
+    "jshashes": "1.0.7"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.7.1",
-    "babel-cli": "^6.26.0",
-    "amble": "0.0.6",
+    "babelify": "^8.0.0",
+    "browserify": "^16.2.0",
     "am-tap-dot": "^1.0.1",
+    "amble": "0.0.6",
+    "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "codacy-coverage": "2.1.1",
+    "derequire": "^2.0.6",
     "nyc": "11.7.1",
-    "tape": "4.9.0"
+    "tape": "4.9.0",
+    "uglify-js": "^3.3.22"
   },
   "license": "MIT"
 }

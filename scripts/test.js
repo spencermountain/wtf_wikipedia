@@ -1,5 +1,5 @@
 require('shelljs/global');
-var tape = './node_modules/tape/bin/tape';
+var tape = './node_modules/.bin/tape';
 var spec = './node_modules/.bin/am-tap-dot --color';
 
 //run tests server-side
