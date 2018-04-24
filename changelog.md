@@ -34,3 +34,4 @@
 * BIG API RE-WRITE!
 * wtf.fetch() uses promises, and native `fetch()` method (when available)
 * section depth values now start at 0
+* refactor shell scripts to `wtf_wikipedia Toronto --plaintext`

@@ -143,6 +143,9 @@ const methods = {
     options = Object.assign(defaults, options || {});
     return toHtml(this, options);
   },
+  toJSON : function() {
+    return this.data;
+  },
   debug: function() {
     console.log('\n');
     this.sections().forEach((sec) => {
@@ -161,5 +164,6 @@ Object.keys(methods).forEach((k) => {
 //alias this one
 Document.prototype.toHTML = Document.prototype.toHtml;
 Document.prototype.isDisambig = Document.prototype.isDisambiguation;
+Document.prototype.toJson = Document.prototype.toJSON;
 
 module.exports = Document;
