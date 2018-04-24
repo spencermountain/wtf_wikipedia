@@ -22,15 +22,15 @@
 <div align="center">
   <b>wtf_wikipedia</b> turns wikipedia's markup language into <b>JSON</b>,
   <div>so getting data from wikipedia is easier.</div>
-  <h2 align="center">Don't do this at home.</h2>
-  <sup>really!</sup>
+
+  <h2 align="center">🏠 Try to have a good time.</h2>
+  <sup>en-wiki has 1.5m ad-hoc templates</sup>
 </div>
 
-Wikipedia's custom markup is among the strangest and most illicit data formats you can find.
-* en-wikipedia has 1.5m custom templates (as of 2018)
-* don't ignore the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).
-* or confuse [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) with [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
-* or the [partial-implementation of inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
+Wikipedia's custom markup is among the strangest and most illicit data formats you'll ever find.
+* check out the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).
+* don't confuse [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) with [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
+* or trip-up on the [partial-implementation of inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
 * the nesting of syntax-similar templates,
 * the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) of image paths
 * custom encoding of unicode, whitespace, and punctuation
@@ -41,6 +41,9 @@ variants, and illicit wiki-esque shorthands. It will try it's best, and fail in 
 
 Making your own parser is never a good idea, but this library aims to be the most comprehensive and straight-forward way to get specific data out of wikipedia.
 
+<div align="center">
+  don't be mad at me, be mad <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">at them</a>
+</div>
 
 # ok then,
 ```bash
@@ -51,33 +54,34 @@ npm install wtf_wikipedia
 var wtf = require('wtf_wikipedia');
 
 wtf.fetch('Whistling').then(doc => {
+
   doc.categories();
   //['Oral communication', 'Vocal music', 'Vocal skills']
 
   doc.sections('As communication').plaintext();
-  // A traditional whistled language named Silbo Gomero..
+  // 'A traditional whistled language named Silbo Gomero..'
 
   doc.images(0).thumb();
-  //https://upload.wikimedia.org..../300px-Duveneck_Whistling_Boy.jpg
+  // 'https://upload.wikimedia.org..../300px-Duveneck_Whistling_Boy.jpg'
 
   doc.sections('See Also').links().map(l => l.page)
-  //['Slide whistle','Hand flute','Bird vocalization'...]
+  //['Slide whistle', 'Hand flute', 'Bird vocalization'...]
 });
 ```
 or on the client-side!
 ```html
 <script src="https://unpkg.com/wtf_wikipedia@latest/builds/wtf_wikipedia.min.js"></script>
 <script>
-  //(follows Radiohead redirect)
+  //(follows redirect)
   wtf.fetch('On a Friday', 'en', function(err, doc) {
-    let infobox = doc.infobox(0).data
-    infobox['current_members'].links().map(l => l.page);
+    var data = doc.infobox(0).data
+    data['current_members'].links().map(l => l.page);
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
   });
 </script>
 ```
-# What it does
 
+# What it does
 * Detects and parses **redirects** and **disambiguation** pages
 * Parse **infoboxes** into a formatted key-value object
 * Handles recursive templates and links- like [[.. [[...]] ]]
@@ -112,15 +116,15 @@ parsoid(wikiscript) -> pretend DOM -> screen-scraping
 but getting structured data this way (say, sentences or infobox data), is a complex + weird process still. This library
 has 'borrowed' a lot of stuff from the parsoid project❤️
 
-### XML datadumps:
+### Full data-dumps:
 
 This library is built to work well with [dumpster-dive](https://github.com/spencermountain/dumpster-dive),
-letting you parse a whole wikipedia dump on a laptop in a couple minutes.
+which lets you parse a whole wikipedia dump on a laptop in a couple hours.
 
 # API
 
 ### **wtf(wikiText)**
-turns wikimedia markup into a handy Document object
+turn your wikimedia markup into a `Document` object
 
 ```javascript
 import wtf from 'wtf_wikipedia'
@@ -131,13 +135,13 @@ wtf("==In Popular Culture==\n*harry potter's wand\n* the simpsons fence");
 ### **wtf.fetch(title, [lang_or_wikiid], [options], [callback])**
 retrieves raw contents of a mediawiki article from the wikipedia action API.
 
-This method supports **errback** callback form, or returns a [Promise object](https://spring.io/understanding/javascript-promises) if one is missing.
+This method supports the **errback** callback form, or returns a [Promise](https://spring.io/understanding/javascript-promises) if one is missing.
 
 to call non-english wikipedia apis, add it as the second paramater, identified by its
 [dbname](http://en.wikipedia.org/w/api.php?action=sitematrix&format=json)
 
 ```javascript
-wtf.fetch('Toronto', 'de', function(doc) {
+wtf.fetch('Toronto', 'de', function(err, doc) {
   doc.plaintext();
   //Toronto ist mit 2,6 Millionen Einwohnern..
 });
