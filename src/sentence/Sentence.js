@@ -44,15 +44,15 @@ const methods = {
     }
     return arr;
   },
-  toMarkdown : function(options) {
+  markdown : function(options) {
     options = options || {};
     return toMarkdown(this, options);
   },
-  toHtml : function(options) {
+  html : function(options) {
     options = options || {};
     return toHtml(this, options);
   },
-  toPlaintext : function() {
+  plaintext : function() {
     return this.data.text || '';
   }
 };
@@ -63,6 +63,6 @@ Object.keys(methods).forEach((k) => {
 //aliases
 Sentence.prototype.italic = Sentence.prototype.italics;
 Sentence.prototype.bold = Sentence.prototype.bolds;
-Sentence.prototype.text = Sentence.prototype.toPlaintext;
+Sentence.prototype.text = Sentence.prototype.plaintext;
 
 module.exports = Sentence;

@@ -24,13 +24,13 @@ here too
 
 test('font-size', t => {
   var str = 'hello {{small|(1995-1997)}} world';
-  t.equal(wtf(str).toPlaintext(), 'hello (1995-1997) world', '{{small}}');
+  t.equal(wtf(str).plaintext(), 'hello (1995-1997) world', '{{small}}');
 
   str = 'hello {{huge|world}}';
-  t.equal(wtf(str).toPlaintext(), 'hello world', '{{huge}}');
+  t.equal(wtf(str).plaintext(), 'hello world', '{{huge}}');
 
   str = `hello {{nowrap|{{small|(1995–present)}}}} world`;
-  t.equal(wtf(str).toPlaintext(), 'hello (1995–present) world', '{{nowrap}}');
+  t.equal(wtf(str).plaintext(), 'hello (1995–present) world', '{{nowrap}}');
   t.end();
 });
 
@@ -56,6 +56,6 @@ test('misc template', t => {
   t.equal(wtf(str).sentences(0).text(), 'hello world');
 
   str = `hello {{tag|ref|content=haha}} world`;
-  t.equal(wtf(str).sentences(0).toPlaintext(), 'hello world');
+  t.equal(wtf(str).sentences(0).plaintext(), 'hello world');
   t.end();
 });

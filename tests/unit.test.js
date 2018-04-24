@@ -26,7 +26,7 @@ test('sentence parser', t => {
 
 test('misc cleanup', t => {
   [['hi [[as:Plancton]] there', 'hi there'], ['hello <br/> world', 'hello world']].forEach(a => {
-    var s = wtf(a[0]).toPlaintext();
+    var s = wtf(a[0]).plaintext();
     t.equal(s, a[1]);
   });
   t.end();
@@ -60,7 +60,7 @@ test('parse_line_text', t => {
     ['tony hawk in [http://www.whistler.ca whistler]', 'tony hawk in whistler'],
     ['it is [[Tony Hawk|Tony]]s mother in [[Toronto]]s', 'it is Tonys mother in Torontos']
   ].forEach(a => {
-    var text = wtf(a[0]).toPlaintext();
+    var text = wtf(a[0]).plaintext();
     var msg = '\'' + a[0] + '\' -> \'' + text + '\'';
     t.equal(text, a[1], msg);
   });
@@ -109,7 +109,7 @@ test('xml', t => {
     ['hello <table name=\'\'><tr><td>hi<ref>nono!</ref></td></tr></table>world4.', 'hello world4.'],
     ['hello<ref name=\'\'/> world5', 'hello world5']
   ].forEach((a, i) => {
-    var s = wtf(a[0]).toPlaintext();
+    var s = wtf(a[0]).plaintext();
     t.equal(s, a[1], 'xml' + i);
   });
   t.end();
@@ -126,7 +126,7 @@ test('interwiki', t => {
 
 test('inline-templates', t => {
   var str = `hello {{ill|Article title|language code}} world {{Sfn|Rolling Stone|2004}}`;
-  var have = wtf(str).toPlaintext();
+  var have = wtf(str).plaintext();
   t.equal('hello Article title world', have, 'harvard-references');
   t.end();
 });

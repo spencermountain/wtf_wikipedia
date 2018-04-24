@@ -116,13 +116,13 @@ test('stress-test-en', t => {
     } else {
       t.ok(doc.citations().length > 0, title + ' has a citation');
     }
-    var plain = wtf(markup).toPlaintext();
+    var plain = wtf(markup).plaintext();
     t.ok(plain.length > 40, ' - - plaintext-length');
 
-    var md = wtf(markup).toMarkdown();
+    var md = wtf(markup).markdown();
     t.ok(md.length > 40, ' - - markdown-length');
 
-    var html = wtf(markup).toHtml();
+    var html = wtf(markup).html();
     t.ok(html.length > 40, ' - - html-length');
     t.ok(html.match(/\</), ' - - html-has tag');
   });

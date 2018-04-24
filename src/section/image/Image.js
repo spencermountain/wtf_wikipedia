@@ -62,11 +62,11 @@ const methods = {
       });
     });
   },
-  toMarkdown : function(options) {
+  markdown : function(options) {
     options = options || {};
     return toMarkdown(this, options);
   },
-  toHtml : function(options) {
+  html : function(options) {
     options = options || {};
     return toHtml(this, options);
   }

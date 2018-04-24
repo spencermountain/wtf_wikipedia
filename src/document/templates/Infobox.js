@@ -8,18 +8,18 @@ const Infobox = function(obj) {
 };
 
 const methods = {
-  toMarkdown : function(options) {
+  markdown : function(options) {
     options = options || {};
     return toMarkdown(this, options);
   },
-  toHtml : function(options) {
+  html : function(options) {
     options = options || {};
     return toHtml(this, options);
   },
-  toPlaintext : function() {
+  plaintext : function() {
     return '';
   },
-  toJSON : function() {
+  json : function() {
     return this.data;
   },
   keyValue : function() {

@@ -2,7 +2,7 @@ const smartReplace = require('../../lib/smartReplace');
 
 // create links, bold, italic in html
 const doSentence = function(sentence, options) {
-  let text = sentence.toPlaintext();
+  let text = sentence.plaintext();
   //turn links back into links
   if (sentence.links && options.links === true) {
     sentence.links().forEach((link) => {

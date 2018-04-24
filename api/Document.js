@@ -62,28 +62,28 @@ module.exports = [
     aliases: ['coords']
   },
   {
-    name: 'toPlaintext',
+    name: 'plaintext',
     returns: 'String',
     description: '',
-    aliases: ['plaintext', 'text']
+    aliases: ['text']
   },
   {
-    name: 'toMarkdown',
+    name: 'markdown',
     returns: 'String',
     description: '',
-    aliases: ['markdown']
+    aliases: ['toMarkdown']
   },
   {
-    name: 'toHtml',
+    name: 'html',
     returns: 'String',
     description: '',
-    aliases: ['html', 'toHTML']
+    aliases: ['toHTML']
   },
   {
-    name: 'toLatex',
+    name: 'latex',
     returns: 'String',
     description: '',
-    aliases: ['latex', 'toLATEX']
+    aliases: ['toLATEX']
   }
 
 ];

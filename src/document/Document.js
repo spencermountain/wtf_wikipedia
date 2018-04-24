@@ -126,24 +126,24 @@ const methods = {
     }
     return this.data.coordinates || [];
   },
-  toPlaintext : function(options) {
+  plaintext : function(options) {
     options = Object.assign(defaults, options || {});
-    let arr = this.sections().map(sec => sec.toPlaintext(options));
+    let arr = this.sections().map(sec => sec.plaintext(options));
     return arr.join('\n\n');
   },
-  toMarkdown : function(options) {
+  markdown : function(options) {
     options = Object.assign(defaults, options || {});
     return toMarkdown(this, options);
   },
-  toLatex : function(options) {
+  latex : function(options) {
     options = Object.assign(defaults, options || {});
     return toLatex(this, options);
   },
-  toHtml : function(options) {
+  html : function(options) {
     options = Object.assign(defaults, options || {});
     return toHtml(this, options);
   },
-  toJSON : function() {
+  json : function() {
     return this.data;
   },
   debug: function() {
@@ -162,8 +162,8 @@ Object.keys(methods).forEach((k) => {
   Document.prototype[k] = methods[k];
 });
 //alias this one
-Document.prototype.toHTML = Document.prototype.toHtml;
+Document.prototype.toHTML = Document.prototype.html;
 Document.prototype.isDisambig = Document.prototype.isDisambiguation;
-Document.prototype.toJson = Document.prototype.toJSON;
+Document.prototype.toJson = Document.prototype.json;
 
 module.exports = Document;

@@ -20,17 +20,17 @@ module.exports = [
     description: '',
   },
   {
-    name: 'toMarkdown',
+    name: 'markdown',
     returns: 'String',
     description: '',
   },
   {
-    name: 'toHtml',
+    name: 'html',
     returns: 'String',
     description: '',
   },
   {
-    name: 'toPlaintext',
+    name: 'plaintext',
     returns: 'String',
     description: '',
   },

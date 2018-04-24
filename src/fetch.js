@@ -80,7 +80,7 @@ const getPage = function(title, lang, options, callback) {
   }
   options = options || {};
   let url = makeUrl(title, lang);
-  return new Promise(function(resolve, reject) {
+  let promise = new Promise(function(resolve, reject) {
     let p = getData(url, options);
     p.then(postProcess).then((doc) => {
       //support 'err-back' format
@@ -91,6 +91,7 @@ const getPage = function(title, lang, options, callback) {
     });
     p.catch(reject);
   });
+  return promise;
 };
 
 

@@ -11,7 +11,7 @@
   <div>wikipedia markup parser</div>
   <sub>
     by
-    <a href="https://github.com/spencermountain">Spencer Kelly</a> and
+    <a href="https://spencermountain.github.io/">Spencer Kelly</a> and
     <a href="https://github.com/spencermountain/wtf_wikipedia/graphs/contributors">
       many contributors
     </a>
@@ -42,23 +42,14 @@ Making your own parser is never a good idea, but this library aims to be the mos
 
 
 # Install and Quick Start
-If you want to check out the `wtf_wikipedia` source code just clone the package with `git`.
 ```bash
-git clone https://github.com/spencermountain/wtf_wikipedia.git
-cd wtf_wikipedia
 npm install wtf_wikipedia
 ```
-If you want to use the `wtf_wikipedia` in your NodeJS project.
-```bash
-npm install wtf_wikipedia --save
-```
-The `--save` option adds the library to the list of required packages of your project. Then you can create a NodeJS script `wikitest.js` with the following content:
 
 ```javascript
 var wtf = require('wtf_wikipedia');
 
-//call the API and parse the markup into JSON 'data'
-wtf.from_api('Toronto', 'en', function(pWikiSource) {
+wtf.fetch('Toronto', 'en', function(pWikiSource) {
   var data = wtf.parse(pWikiSource);
   console.log(data.infoboxes[0].data.leader_name);
   // "John Tory"
@@ -117,7 +108,7 @@ var md = wtf.markdown(wiki)
 // The **[Toronto Blue Jays](./Toronto_Blue_Jays)** ...
 ```
 
-# Client-side Wiki Markdown Processing
+# Client-side
 
 ```html
 <script src="https://unpkg.com/wtf_wikipedia@latest/builds/wtf_wikipedia.min.js"></script>
@@ -346,12 +337,23 @@ Sample Output for [Whistling](https://en.wikipedia.org/w/index.php?title=Whistli
 }
 ```
 
-# ToDo
-* Mathematical Expressions: The helper functions for the export formats are defined in `src/ouput/` in the resp. directory for the format ( e.g. `src/ouput/latex/math.js` for LaTeX export), but they were not called currently. TODO: Parsing must parse mathematical BLOCK and INLINE expressions and the export must call the respective the export helper functions defined e.g. in `/src/output/latex/math.js` for LaTeX output)
+### Good practice:
+The wikipedia api is [pretty welcoming](https://www.mediawiki.org/wiki/API:Etiquette#Request_limit) though recommends three things -
+* 1️⃣ pass a `Api-User-Agent` as something so they can use to easily throttle bad scripts
+* 2️⃣ bundle multiple pages into one request as an array
+* 3️⃣ run it serially, or at least, [slowly](https://www.npmjs.com/package/slow).
+```js
+wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
+  'Api-User-Agent': 'spencermountain@gmail.com'
+}).then((docList) => {
+  let allLinks = docList.map(doc => doc.links());
+  console.log(allLinks);
+});
+```
 
 # Contributing
+Never-ender projects like these are only good with many-hands, and I try to be a friendly maintainer. (promise!)
 
-## Fork, Improve, Pull Request
 If you want to contribute with new output formats (e.g. defined in [PanDoc](https://www.pandoc.org/try) ) then
 * login with your GitHub account or [create an account](https://help.github.com/articles/signing-up-for-a-new-github-account/) for you
 * [fork](https://help.github.com/articles/fork-a-repo/) the current `wtf_wikipedia` repository and add e.g. a new export format in `/src/output/`,
@@ -359,16 +361,12 @@ If you want to contribute with new output formats (e.g. defined in [PanDoc](http
 * If you update the `README.md` with a new export format run `doctoc README.md` to update the table of contents.
 * create a [Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) for the maintainer Spencer Kelly to integrate the new export format the original `wtf_wikipedia` respository.
 
-## Maintainer Comment
-Never-ender projects like these are only good with many-hands, and I try to be a friendly maintainer. (promise!)
 
 ```bash
 npm install
 npm test
 npm run build #to package-up client-side
 ```
-## Table of Contents in README.md
-`DocToc` is used to create a helpful table of contents in the README (see [DocToc-Installation](https://github.com/thlorenz/doctoc#installation) for further details on [NPM DocToc](https://www.npmjs.com/package/doctoc) ). Run `doctoc README.md` for updating the table of contents in the `README.md`.
 
 
 MIT

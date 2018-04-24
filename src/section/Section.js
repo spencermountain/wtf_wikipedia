@@ -168,19 +168,19 @@ const methods = {
     return null;
   },
 
-  toMarkdown : function(options) {
+  markdown : function(options) {
     options = Object.assign(defaults, options || {});
     return toMarkdown(this, options);
   },
-  toHtml : function(options) {
+  html : function(options) {
     options = Object.assign(defaults, options || {});
     return toHtml(this, options);
   },
-  toPlaintext : function(options) {
+  plaintext : function(options) {
     options = Object.assign(defaults, options || {});
-    return this.sentences().map(s => s.toPlaintext(options)).join(' ');
+    return this.sentences().map(s => s.plaintext(options)).join(' ');
   },
-  toJSON : function() {
+  json : function() {
     return this.data;
   },
 };

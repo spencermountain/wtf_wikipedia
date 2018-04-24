@@ -51,7 +51,7 @@ test('structured date templates', t => {
 
   ];
   arr.forEach((a) => {
-    var str = wtf(a[0]).toPlaintext();
+    var str = wtf(a[0]).plaintext();
     t.equal(str, a[1], a[0] + ' ' + str);
   });
   t.end();
@@ -84,7 +84,7 @@ test('hyphenated language-date templates', t => {
   // ['{{birth based on age as of date | 50 | 2017 | 02 | 16}}', '1966/1967']
   ];
   arr.forEach((a) => {
-    var str = wtf(a[0]).toPlaintext();
+    var str = wtf(a[0]).plaintext();
     t.equal(str, a[1], a[0]);
   });
   t.end();
@@ -135,7 +135,7 @@ test('age templates', t => {
   //     ['{{Age as of date|50|2016|February|16}}', '52'],
   ];
   arr.forEach((a) => {
-    var str = wtf(a[0]).toPlaintext();
+    var str = wtf(a[0]).plaintext();
     t.equal(str, a[1], a[0]);
   });
   t.end();
