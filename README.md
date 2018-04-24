@@ -25,17 +25,18 @@
 
   <h2 align="center">🏠 Try to have a good time. 🛀 </h2>
   <div><sup>seriously,</sup></div>
-  this is among the <i>most-curious</i> data formats you will ever find.
+  this is among the <i>most-curious</i> data formats you can find.
 </div>
 
 <div align="center"><sup><i>(then we buried our human-record in it)</i></sup></div>
 
-* Look upon the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).
-* Distinguish between [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) and [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
-* Regard the [partial-implementation of inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
-* compute the nesting of [syntax-similar](https://twitter.com/spencermountain/status/934907924320792577) templates,
+Consider:
+* the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).
+* distinguish [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) and [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
+* the partial-implementation of [inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
+* the nesting of [syntax-similar](https://twitter.com/spencermountain/status/934907924320792577) templates,
 * the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) of image paths,
-* custom encoding of whitespace and punctuation,
+* the custom encoding of whitespace and some punctuation,
 * [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
 
 **wtf_wikipedia** supports many ***recursive shenanigans***, depreciated and obscure template
@@ -45,16 +46,18 @@ It will try it's best, and fail in reasonable ways.
 
 > → building your own parser is never a good idea →
 >
-> but this library aims to be *****a straight-forward***** way to get data ***out of wikipedia***.
+> ← but this library aims to be *****a straight-forward***** way to get data ***out of wikipedia*** ←
 
 <div align="center">
-  <i>... so don't be mad at me,</i>
-  <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">
-    <sub>be mad at this.</sub>
-  </a>
+  <sub>
+    <i>... so don't be mad at me,</i>
+    <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">
+      be mad at this.
+    </a>
+  </sub>
 </div>
 
-# ok then,
+## ok then,
 <kbd>npm install wtf_wikipedia</kbd>
 
 ```javascript
@@ -88,7 +91,7 @@ wtf.fetch('Whistling').then(doc => {
 </script>
 ```
 
-# What it does
+# What it does:
 * Detects and parses **redirects** and **disambiguation** pages
 * Parse **infoboxes** into a formatted key-value object
 * Handles recursive templates and links- like [[.. [[...]] ]]
