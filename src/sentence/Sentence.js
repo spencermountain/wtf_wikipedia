@@ -9,7 +9,7 @@ const Sentence = function(data) {
 const methods = {
   links: function(n) {
     let arr = this.data.links || [];
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return arr[n];
     }
     return arr;
@@ -19,7 +19,7 @@ const methods = {
       return [];
     }
     let arr = this.data.fmt.bold || [];
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return arr[n];
     }
     return arr;
@@ -29,7 +29,7 @@ const methods = {
       return [];
     }
     let arr = this.data.fmt.italic || [];
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return arr[n];
     }
     return arr;
@@ -39,7 +39,7 @@ const methods = {
       return [];
     }
     let arr = this.data.dates || [];
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return arr[n];
     }
     return arr;

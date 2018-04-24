@@ -21,6 +21,11 @@ module.exports = [
     description: '',
   },
   {
+    name: 'section',
+    returns: 'Section',
+    description: 'return the first section matching a given title or index',
+  },
+  {
     name: 'sentences',
     returns: 'Array',
     description: '',

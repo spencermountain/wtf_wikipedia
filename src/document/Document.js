@@ -25,7 +25,7 @@ const methods = {
   //   return p
   // },
   categories : function(n) {
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return this.data.categories[n];
     }
     return this.data.categories || [];
@@ -40,10 +40,17 @@ const methods = {
         return s.title.toLowerCase() === str;
       });
     }
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return arr[n];
     }
     return arr;
+  },
+  section(n) {
+    let res = this.sections(n);
+    if (res.length) {
+      return res[0] || null;
+    }
+    return res;
   },
   sentences : function(n) {
     let arr = [];
@@ -52,7 +59,7 @@ const methods = {
         arr.push(s);
       });
     });
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return arr[n];
     }
     return arr;
@@ -70,7 +77,7 @@ const methods = {
         arr.push(img);
       });
     });
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return arr[n];
     }
     return arr;
@@ -82,7 +89,7 @@ const methods = {
         arr.push(l);
       });
     });
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return arr[n];
     }
     return arr;
@@ -96,25 +103,25 @@ const methods = {
         });
       }
     });
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return arr[n];
     }
     return arr;
   },
   citations : function(n) {
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return this.data.citations[n];
     }
     return this.data.citations || [];
   },
   infoboxes : function(n) {
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return this.data.infoboxes[n];
     }
     return this.data.infoboxes || [];
   },
   coordinates : function(n) {
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return this.data.coordinates[n];
     }
     return this.data.coordinates || [];
@@ -135,6 +142,16 @@ const methods = {
   toHtml : function(options) {
     options = Object.assign(defaults, options || {});
     return toHtml(this, options);
+  },
+  debug: function() {
+    console.log('\n');
+    this.sections().forEach((sec) => {
+      let indent = ' - ';
+      for(let i = 0; i < sec.depth; i += 1) {
+        indent = ' -' + indent;
+      }
+      console.log(indent + (sec.title || '(Intro)'));
+    });
   }
 };
 

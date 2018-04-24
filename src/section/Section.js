@@ -8,9 +8,15 @@ const Section = function(data) {
   this.data = data;
   this.title = data.title;
   this.depth = data.depth;
+  //hide this circular property in console.logs..
+  // Object.defineProperty(this, 'doc', {
+  //   enumerable: false, // hide it from for..in
+  //   value: null
+  // });
   this.doc = null;
 // this.sentences = data.sentences;
 };
+
 
 const methods = {
   index: function() {
@@ -31,7 +37,7 @@ const methods = {
       s = new Sentence(s);
       return s;
     });
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return arr[n];
     }
     return arr || [];
@@ -50,13 +56,13 @@ const methods = {
     this.sentences().forEach((s) => {
       s.links().forEach((link) => arr.push(link));
     });
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return arr[n];
     }
     return arr;
   },
   tables: function(n) {
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return this.data.tables[n];
     }
     return this.data.tables || [];
@@ -65,22 +71,37 @@ const methods = {
     return this.data.templates || [];
   },
   lists: function(n) {
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return this.data.lists[n];
     }
     return this.data.lists || [];
   },
   interwiki: function(n) {
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return this.data.interwiki[n];
     }
     return this.data.interwiki || [];
   },
   images: function(n) {
-    if (n !== undefined) {
+    if (typeof n === 'number') {
       return this.data.images[n];
     }
     return this.data.images || [];
+  },
+
+  //transformations
+  remove: function() {
+    if (!this.doc) {
+      return null;
+    }
+    let bads = {};
+    bads[this.title] = true;
+    //remove children too
+    this.children().forEach((sec) => bads[sec.title] = true);
+    let arr = this.doc.data.sections;
+    arr = arr.filter(sec => bads.hasOwnProperty(sec.title) !== true);
+    this.doc.data.sections = arr;
+    return this.doc;
   },
 
   //move-around sections like in jquery
@@ -108,7 +129,7 @@ const methods = {
     let index = this.index();
     return sections[index - 1] || null;
   },
-  children: function() {
+  children: function(n) {
     if (!this.doc) {
       return null;
     }
@@ -124,6 +145,12 @@ const methods = {
           break;
         }
       }
+    }
+    if (typeof n === 'string') {
+      return children.find(s => s.title === n);
+    }
+    if (typeof n === 'number') {
+      return children[n];
     }
     return children;
   },
@@ -165,4 +192,6 @@ methods.previous = methods.lastSibling;
 Object.keys(methods).forEach((k) => {
   Section.prototype[k] = methods[k];
 });
+
+
 module.exports = Section;

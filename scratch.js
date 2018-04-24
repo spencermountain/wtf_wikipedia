@@ -8,13 +8,14 @@ const fromFile = require('./_fromFile');
 // description(), extract(), summary()
 
 let doc = fromFile('toronto');
-console.log('\n');
-doc.sections().forEach((sec, i) => {
-  console.log(i, sec.depth, sec.title);
-});
-console.log('\n');
-let sec = doc.sections(5);
-console.log(sec.index());
+
+console.log(doc.sections().length);
+let sec = doc.section('See Also');
+sec.remove();
+console.log(sec.title);
+console.log(doc.sections().length);
+
+doc.debug();
 
 
 // wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
