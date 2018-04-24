@@ -25,6 +25,7 @@
   <h2 align="center">Don't do this at home.</h2>
   <sup>really!</sup>
 </div>
+
 Wikipedia's custom markup is among the strangest and most illicit data formats you can find.
 * en-wikipedia has 1.5m custom templates (as of 2018)
 * don't ignore the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).
@@ -41,7 +42,7 @@ variants, and illicit wiki-esque shorthands. It will try it's best, and fail in 
 Making your own parser is never a good idea, but this library aims to be the most comprehensive and straight-forward way to get specific data out of wikipedia.
 
 
-# OK go
+# ok then,
 ```bash
 npm install wtf_wikipedia
 ```

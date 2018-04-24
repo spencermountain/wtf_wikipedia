@@ -1,4 +1,4 @@
-/* wtf_wikipedia v3.0.0-rc1
+/* wtf_wikipedia v3.0.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2238,7 +2238,7 @@
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "3.0.0-rc1",
+  "version": "3.0.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -4768,14 +4768,6 @@ var methods = {
     }
     return arr;
   },
-  section: function section(n) {
-    var res = this.sections(n);
-    if (res.length) {
-      return res[0] || null;
-    }
-    return res;
-  },
-
   sentences: function sentences(n) {
     var arr = [];
     this.sections().forEach(function (sec) {
@@ -4883,6 +4875,20 @@ var methods = {
     });
   }
 };
+
+//add singular-methods
+var plurals = ['sections', 'infoboxes', 'sentences', 'citations', 'coordinates', 'tables', 'links', 'images', 'categories'];
+plurals.forEach(function (fn) {
+  var sing = fn.replace(/ies$/, 'y');
+  sing = sing.replace(/e?s$/, '');
+  methods[sing] = function (n) {
+    var res = this[fn](n);
+    if (res.length) {
+      return res[0] || null;
+    }
+    return res;
+  };
+});
 
 Object.keys(methods).forEach(function (k) {
   Document.prototype[k] = methods[k];
@@ -5605,6 +5611,8 @@ module.exports = parse_infobox;
 },{"../../data/i18n":5,"../../lib/helpers":25,"../../lib/recursive_match":26,"../../section/image/Image":48,"../../sentence":58,"../../sentence/Sentence":56}],22:[function(_dereq_,module,exports){
 'use strict';
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 //grab the content of any article, off the api
 var site_map = _dereq_('./data/site_map');
 var Document = _dereq_('./document/Document');
@@ -5624,7 +5632,7 @@ var makeUrl = function makeUrl(title, lang) {
     url = site_map[lang] + '/w/api.php';
   }
   //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&format=json&origin=*';
+  url += '?action=query&redirects=true&prop=revisions&rvprop=content&maxlag=5&format=json&origin=*';
   //support multiple titles
   if (typeof title === 'string') {
     title = [title];
@@ -5679,12 +5687,26 @@ var getData = function getData(url, options) {
   });
 };
 
-var getPage = function getPage(title, lang, options, callback) {
-  if (typeof options === 'function') {
-    callback = options;
-    options = {};
+var getPage = function getPage(title, a, b, c) {
+  //allow quite! flexible params
+  var options = {};
+  var lang = 'en';
+  var callback = null;
+  if (typeof a === 'function') {
+    callback = a;
+  } else if ((typeof a === 'undefined' ? 'undefined' : _typeof(a)) === 'object') {
+    options = a;
+  } else if (typeof a === 'string') {
+    lang = a;
   }
-  options = options || {};
+  if (typeof b === 'function') {
+    callback = b;
+  } else if ((typeof b === 'undefined' ? 'undefined' : _typeof(b)) === 'object') {
+    options = b;
+  }
+  if (typeof c === 'function') {
+    callback = c;
+  }
   var url = makeUrl(title, lang);
   var promise = new Promise(function (resolve, reject) {
     var p = getData(url, options);
