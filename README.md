@@ -31,10 +31,10 @@
 <div align="center"><sup><i>(then we buried our human-record in it)</i></sup></div>
 
 Consider:
-* the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax).
-* distinguish [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) and [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
+* the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax)
+* [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
 * the partial-implementation of [inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
-* the nesting of [syntax-similar](https://twitter.com/spencermountain/status/934907924320792577) templates,
+* the deep nesting of [similar-syntax](https://twitter.com/spencermountain/status/934907924320792577) templates,
 * the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) of image paths,
 * the custom encoding of whitespace and some punctuation,
 * [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
@@ -46,7 +46,7 @@ It will try it's best, and fail in reasonable ways.
 
 > → building your own parser is never a good idea →
 >
-> ← but this library aims to be *****a straight-forward***** way to get data ***out of wikipedia*** ←
+> ← but this library aims to be *****a straight-forward***** way to get data ***out of wikipedia***
 
 <div align="center">
   <sub>
@@ -57,7 +57,7 @@ It will try it's best, and fail in reasonable ways.
   </sub>
 </div>
 
-## ok then,
+## well ok then,
 <kbd>npm install wtf_wikipedia</kbd>
 
 ```javascript
@@ -100,15 +100,11 @@ wtf.fetch('Whistling').then(doc => {
 * creates
   [image thumbnail urls](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F)
   from **File:XYZ.png** filenames
-* Properly resolve {{CURRENTMONTH}} and {{CONVERT ..}} type templates
-* Parse **images**, files, and **categories**
-* converts 'DMS-formatted' (59°12\'7.7"N) geo-coordinates to lat/lng
+* Properly resolve ***{{CURRENTMONTH}}*** and ***{{CONVERT ..}}*** type templates
+* Parse **images**, **headings**, and **categories**
+* converts 'DMS-formatted' ***(59°12\'7.7"N)*** geo-coordinates to lat/lng
 * parses citation metadata
-* Eliminate xml, latex, css, table-sorting, and 'Egyptian hierogliphics' cruft
-
-its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView),
-[txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from
-[Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
+* Eliminate xml, latex, css, and table-sorting cruft
 
 ## But what about...
 
@@ -256,5 +252,10 @@ projects like these are only good with many-hands, and I try to be a friendly ma
 [Join in](./Contributing.md)
 
 Thank you to the [cross-fetch](https://github.com/lquixada/cross-fetch) and [jshashes](https://github.com/h2non/jshashes) libraries.
+
+See also:
+* [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView)
+* [txtwiki](https://github.com/joaomsa/txtwiki.js)
+* [Parsoid](https://www.mediawiki.org/wiki/Parsoid)
 
 MIT
