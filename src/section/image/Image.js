@@ -1,4 +1,5 @@
 const Hashes = require('jshashes');
+const fetch = require('cross-fetch');
 const toMarkdown = require('../../output/markdown/image');
 const toHtml = require('../../output/html/image');
 const server = 'https://upload.wikimedia.org/wikipedia/commons/';

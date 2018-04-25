@@ -1,9 +1,16 @@
-/* wtf_wikipedia v3.0.0
+/* wtf_wikipedia v3.0.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
 
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.wtf = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(_dereq_,module,exports){
+var __root__ = (function (root) {
+function F() { this.fetch = false; }
+F.prototype = root;
+return new F();
+})(typeof self !== 'undefined' ? self : this);
+(function(self) {
+
 (function(self) {
 
   if (self.fetch) {
@@ -464,6 +471,14 @@
   };
   self.fetch.polyfill = true;
 })(typeof self !== 'undefined' ? self : this);
+}).call(__root__, void(0));
+var fetch = __root__.fetch;
+var Response = fetch.Response = __root__.Response;
+var Request = fetch.Request = __root__.Request;
+var Headers = fetch.Headers = __root__.Headers;
+if (typeof module === 'object' && module.exports) {
+module.exports = fetch;
+}
 
 },{}],2:[function(_dereq_,module,exports){
 (function (global){
@@ -2238,7 +2253,7 @@
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -2257,6 +2272,7 @@ module.exports={
   "bin": {
     "wtf_wikipedia": "./bin/wtf.js"
   },
+  "engines" : { "node" : ">=6.0.0" },
   "files": [
     "builds",
     "api",
@@ -2274,15 +2290,16 @@ module.exports={
     "jshashes": "1.0.7"
   },
   "devDependencies": {
-    "babelify": "^8.0.0",
-    "browserify": "^16.2.0",
-    "am-tap-dot": "^1.0.1",
     "amble": "0.0.6",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
+    "browserify": "^16.2.0",
     "codacy-coverage": "2.1.1",
     "derequire": "^2.0.6",
     "nyc": "11.7.1",
+    "shelljs": "^0.8.1",
+    "tap-dancer": "0.0.2",
     "tape": "4.9.0",
     "uglify-js": "^3.3.22"
   },
@@ -5614,6 +5631,7 @@ module.exports = parse_infobox;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 //grab the content of any article, off the api
+var fetch = _dereq_('cross-fetch');
 var site_map = _dereq_('./data/site_map');
 var Document = _dereq_('./document/Document');
 // const redirects = require('../parse/page/redirects');
@@ -5724,10 +5742,9 @@ var getPage = function getPage(title, a, b, c) {
 
 module.exports = getPage;
 
-},{"./data/site_map":7,"./document/Document":8}],23:[function(_dereq_,module,exports){
+},{"./data/site_map":7,"./document/Document":8,"cross-fetch":1}],23:[function(_dereq_,module,exports){
 'use strict';
 
-_dereq_('cross-fetch/polyfill');
 var Document = _dereq_('./document/Document');
 var fetch = _dereq_('./fetch');
 var version = _dereq_('../package').version;
@@ -5743,7 +5760,7 @@ wtf.version = version;
 
 module.exports = wtf;
 
-},{"../package":3,"./document/Document":8,"./fetch":22,"cross-fetch/polyfill":1}],24:[function(_dereq_,module,exports){
+},{"../package":3,"./document/Document":8,"./fetch":22}],24:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = {
@@ -6826,6 +6843,7 @@ module.exports = parseHeading;
 'use strict';
 
 var Hashes = _dereq_('jshashes');
+var fetch = _dereq_('cross-fetch');
 var toMarkdown = _dereq_('../../output/markdown/image');
 var toHtml = _dereq_('../../output/html/image');
 var server = 'https://upload.wikimedia.org/wikipedia/commons/';
@@ -6910,7 +6928,7 @@ Image.prototype.src = Image.prototype.url;
 Image.prototype.thumb = Image.prototype.thumbnail;
 module.exports = Image;
 
-},{"../../output/html/image":28,"../../output/markdown/image":39,"jshashes":2}],49:[function(_dereq_,module,exports){
+},{"../../output/html/image":28,"../../output/markdown/image":39,"cross-fetch":1,"jshashes":2}],49:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');

@@ -26,8 +26,12 @@ const wtf = require('./src/index');
 //   console.log(doc.sections('see also').links().map(l => l.page));
 // });
 
-wtf.fetch('On a Friday', 'en', function(err, doc) { //"Radiohead" redirect
-  var members = doc.infobox(0).data.current_members.links();
-  console.log(members.map(l => l.page));
-//Thom Yorke, Jonny Greenwood, Colin Greenwood...
-});
+// wtf.fetch('On a Friday', 'en', function(err, doc) { //"Radiohead" redirect
+//   var members = doc.infobox(0).data.current_members.links();
+//   console.log(members.map(l => l.page));
+// //Thom Yorke, Jonny Greenwood, Colin Greenwood...
+// });
+
+wtf.fetch('Jodie Emery').then((doc) => {
+  console.log(doc.categories());
+}).catch(console.log);
