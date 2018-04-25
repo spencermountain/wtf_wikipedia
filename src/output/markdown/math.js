@@ -1,4 +1,4 @@
-/* 
+/*
 EXPORT MarkDown
 ---------------
 See markdown-it-katex at GitHub: https://github.com/waylonflinn/markdown-it-katex
@@ -16,18 +16,18 @@ This is the text below the BLOCK expression.
 
 // handle inline mathematical expression
 const doMathInline = (pMath, options) => {
- let out = '$' + pMath + '$';
+  let out = '$' + pMath + '$';
   // use https://www.npmjs.com/package/markdown-it-katex to render the MathCode
   return out;
 };
 
 // handle mathematical expression displayed in a separate line
 const doMathBlock = (pMath, options) => {
- let out = '$$' + pMath + '$$';
+  let out = '$$' + pMath + '$$';
   return out;
 };
 
 module.exports = {
-	doMathInline  : doMathInline,
-	doMathBlock : doMathBlock
-}
+  doMathInline  : doMathInline,
+  doMathBlock : doMathBlock
+};

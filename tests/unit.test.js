@@ -17,7 +17,7 @@ test('sentence parser', t => {
     ['dom, kon. XIX w.', 2],
     ['a staged reenactment of [[Perry v. Brown]] world', 1]
   ].forEach(a => {
-    var s = wtf.parse(a[0]).sections[0].sentences;
+    var s = wtf(a[0]).sentences();
     var msg = a[1] + ' sentences  - "' + a[0] + '"';
     t.equal(s.length, a[1], msg);
   });
@@ -26,7 +26,7 @@ test('sentence parser', t => {
 
 test('misc cleanup', t => {
   [['hi [[as:Plancton]] there', 'hi there'], ['hello <br/> world', 'hello world']].forEach(a => {
-    var s = wtf.plaintext(a[0]);
+    var s = wtf(a[0]).plaintext();
     t.equal(s, a[1]);
   });
   t.end();
@@ -42,9 +42,9 @@ test('redirects', t => {
     ['#přesměruj [[Tony Danza#funfun]] ', 'Tony Danza'],
     ['#تغییر_مسیر [[Farming]] ', 'Farming']
   ].forEach(a => {
-    var o = wtf.parse(a[0]);
+    var o = wtf(a[0]);
     var msg = '\'' + a[0] + '\' -> \'' + o.redirect + '\'';
-    t.equal(o.redirect, a[1], msg);
+    t.equal(o.links(0).page, a[1], msg);
   });
   t.end();
 });
@@ -60,7 +60,7 @@ test('parse_line_text', t => {
     ['tony hawk in [http://www.whistler.ca whistler]', 'tony hawk in whistler'],
     ['it is [[Tony Hawk|Tony]]s mother in [[Toronto]]s', 'it is Tonys mother in Torontos']
   ].forEach(a => {
-    var text = wtf.plaintext(a[0]);
+    var text = wtf(a[0]).plaintext();
     var msg = '\'' + a[0] + '\' -> \'' + text + '\'';
     t.equal(text, a[1], msg);
   });
@@ -75,7 +75,7 @@ test('parse_categories', t => {
     [' [[Category:Tony Danza|metadata]]  [[category:Formal Wear]] ', ['Tony Danza', 'Formal Wear']],
     ['[[categoría:Tony Danza|metadata]]  ', ['Tony Danza']]
   ].forEach(a => {
-    var cats = wtf.parse(a[0]).categories;
+    var cats = wtf(a[0]).categories();
     t.deepEqual(cats, a[1]);
   });
   t.end();
@@ -91,7 +91,7 @@ test('parse_image', t => {
       'Image:Edouard Recon (2002).jpg'
     ]
   ].forEach(a => {
-    var arr = wtf.parse(a[0]).images.map(o => o.file);
+    var arr = wtf(a[0]).images().map(o => o.file);
     t.deepEqual(arr[0], a[1]);
   });
   t.end();
@@ -109,22 +109,24 @@ test('xml', t => {
     ['hello <table name=\'\'><tr><td>hi<ref>nono!</ref></td></tr></table>world4.', 'hello world4.'],
     ['hello<ref name=\'\'/> world5', 'hello world5']
   ].forEach((a, i) => {
-    var s = wtf.plaintext(a[0]);
+    var s = wtf(a[0]).plaintext();
     t.equal(s, a[1], 'xml' + i);
   });
   t.end();
 });
+
 test('interwiki', t => {
   var str = 'hello [[wikinews:Radiohead]] world  [[Category:Films]]';
-  var obj = wtf.parse(str);
-  t.equal(obj.sections[0].interwiki.wikinews, 'Radiohead', 'interwiki-link');
-  t.equal(obj.categories.length, 1, 'cat-length');
-  t.equal(obj.categories[0], 'Films', 'cat-match');
+  var obj = wtf(str);
+  t.equal(obj.sections(0).interwiki().wikinews, 'Radiohead', 'interwiki-link');
+  t.equal(obj.categories().length, 1, 'cat-length');
+  t.equal(obj.categories(0), 'Films', 'cat-match');
   t.end();
 });
+
 test('inline-templates', t => {
   var str = `hello {{ill|Article title|language code}} world {{Sfn|Rolling Stone|2004}}`;
-  var have = wtf.plaintext(str);
+  var have = wtf(str).plaintext();
   t.equal('hello Article title world', have, 'harvard-references');
   t.end();
 });

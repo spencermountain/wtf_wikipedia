@@ -29,3 +29,16 @@
 * support a whack of date/time/age templates
 ## 2.6.1
 * better html output tables/infoboxes
+
+## 3.0.0
+* BIG API RE-WRITE!
+* move `.parse()` to main `wtf()` method
+* allow repeated processes without a pre-parse of the document
+* wtf.fetch() uses promises, and native `fetch()` method (when available)
+* allow per-section images, lists, tables + templates
+* section depth values now start at 0
+* infobox values now return sentence objects
+* latex output (thanks @niebert!)
+* refactor shell scripts to `wtf_wikipedia Toronto --plaintext`
+* use babel-preset-env cause it's new-new
+* update deps

@@ -1,37 +1,33 @@
 'use strict';
 const wtf = require('./src/index');
+// const fromFile = require('./_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-function from_file(page) {
-  let str = require('fs').readFileSync('./tests/cache/' + page.toLowerCase() + '.txt', 'utf-8');
-  let options = {
-  };
-  let r = wtf.parse(str, options);
-  console.log(r.sections[0].tables);
-// console.log(r);
-}
+// todo:
+// description(), extract(), summary()
 
-// wtf.from_api('Aldous Huxley', 'en', function(markup) {
-//   var obj = wtf.parse(markup);
-//   console.log(obj.infoboxes[0].data.birth_date);
+//doc.infoboxes('Venue')
+
+// let doc = fromFile('toronto');
+
+
+// wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
+//   userAgent: 'spencermountain@gmail.com'
+// }).then((docs) => {
+//   let linkArray = docs.map(doc => doc.links());
+//   console.log(linkArray);
 // });
-// from_file('list');
-// from_file('bluejays');
-// from_file('earthquakes');
-// from_file('al_Haytham');
-// from_file('redirect');
-from_file('raith_rovers');
-// from_file('royal_cinema');
-// from_file('Toronto_Star');
-// from_file('royal_cinema');
-// from_file('Radiohead');
-// from_file('Jodie_Emery');
-// from_file('Redirect')
-// from_file("Africaans")
-// from_file('K.-Nicole-Mitchell');
-// from_file('United-Kingdom');
-// from_file('Dollar-Point,-California');
 
+// let s = wtf(`i ''''think'''' so`).sentences(0);
+// console.log(s);
 
-// console.log(wtf.html(`pre-[[mirror stage]]`));
+// wtf.fetch('Whistling').then(doc => {
+//   console.log(doc.sections('see also').links().map(l => l.page));
+// });
+
+wtf.fetch('On a Friday', 'en', function(err, doc) { //"Radiohead" redirect
+  var members = doc.infobox(0).data.current_members.links();
+  console.log(members.map(l => l.page));
+//Thom Yorke, Jonny Greenwood, Colin Greenwood...
+});

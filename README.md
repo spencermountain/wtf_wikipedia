@@ -11,122 +11,87 @@
   <div>wikipedia markup parser</div>
   <sub>
     by
-    <a href="https://github.com/spencermountain">Spencer Kelly</a> and
+    <a href="https://spencermountain.github.io/">Spencer Kelly</a> and
     <a href="https://github.com/spencermountain/wtf_wikipedia/graphs/contributors">
-      many contributors
+      contributors
     </a>
   </sub>
 </div>
 <p></p>
 
 <div align="center">
-  <b>wtf_wikipedia</b> turns wikipedia's weird markup into <b>JSON</b>
-  <div>so getting data is easier.</div>
+  <b>wtf_wikipedia</b> turns wikipedia's markup language into <b>JSON</b>,
+  <div>so getting data from wikipedia is easier.</div>
 
-  <h2 align="center">Don't be mad at me, be mad at them.</h2>
-
-  <div align="center">Parsing wikiscript is basically NP-Hard.</div>
-
-<sub>its <a href="https://en.wikipedia.org/wiki/Help:WikiHiero_syntax">really the worst</a>. I'm really trying my
-best.</sub>
-
+  <h2 align="center">🏠 Try to have a good time. 🛀 </h2>
+  <div><sup>seriously,</sup></div>
+  this is among the <i>most-curious</i> data formats you can find.
 </div>
 
-The library `wtf_wikipedia` can
-* download/fetch Wiki articles in source text from [Wikipedia](https://www.wikipedia.org), [Wikiversity](https://www.wikiversit.org), ...,
-* parse the content structure and content elements into a JSON file and
-* convert the source text into different output formats.
-`wtf_wikipedia` supports vile recursive template shinanigans,
-[half-XML implimentations](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext), depreciated and obscure template
-variants, and illicit wiki-esque shorthands.
+<div align="center"><sup><i>(then we buried our human-record in it)</i></sup></div>
 
-In general making your own parser is never a good idea, but this library is a very detailed and deliberate
-creature with the ability to support a variety of export formats generated those formats just in the browser or your multiplatform NodeJS application. :four_leaf_clover:
+Consider:
+* the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax)
+* [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
+* the partial-implementation of [inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
+* the deep nesting of [similar-syntax](https://twitter.com/spencermountain/status/934907924320792577) templates,
+* the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) of image paths,
+* the custom encoding of whitespace and some punctuation,
+* [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
 
+**wtf_wikipedia** supports many ***recursive shenanigans***, depreciated and obscure template
+variants, and illicit 'wiki-esque' shorthands.
 
-# Install and Quick Start
-If you want to check out the `wtf_wikipedia` source code just clone the package with `git`.
-```bash
-git clone https://github.com/spencermountain/wtf_wikipedia.git
-cd wtf_wikipedia
-npm install wtf_wikipedia
-```
-If you want to use the `wtf_wikipedia` in your NodeJS project.
-```bash
-npm install wtf_wikipedia --save
-```
-The `--save` option adds the library to the list of required packages of your project. Then you can create a NodeJS script `wikitest.js` with the following content:
+It will try it's best, and fail in reasonable ways.
+
+> → building your own parser is never a good idea →
+>
+> ← but this library aims to be *****a straight-forward***** way to get data ***out of wikipedia***
+
+<div align="center">
+  <sub>
+    <i>... so don't be mad at me,</i>
+    <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">
+      be mad at this.
+    </a>
+  </sub>
+</div>
+
+## well ok then,
+<kbd>npm install wtf_wikipedia</kbd>
 
 ```javascript
 var wtf = require('wtf_wikipedia');
 
-//call the API and parse the markup into JSON 'data'
-wtf.from_api('Toronto', 'en', function(pWikiSource) {
-  var data = wtf.parse(pWikiSource);
-  console.log(data.infoboxes[0].data.leader_name);
-  // "John Tory"
+wtf.fetch('Whistling').then(doc => {
+
+  doc.categories();
+  //['Oral communication', 'Vocal music', 'Vocal skills']
+
+  doc.sections('As communication').plaintext();
+  // 'A traditional whistled language named Silbo Gomero..'
+
+  doc.images(0).thumb();
+  // 'https://upload.wikimedia.org..../300px-Duveneck_Whistling_Boy.jpg'
+
+  doc.sections('See Also').links().map(l => l.page)
+  //['Slide whistle', 'Hand flute', 'Bird vocalization'...]
 });
 ```
-
-the result format:
-
-```js
-{
-  "type": "",
-  "infoboxes": [{
-    "template": "",
-    "data": {}
-  }],
-  "images": [],   // files + md5 urls
-  "sections": [{  //(each heading)
-      "title": "",
-      "images": "",
-      "lists": "",
-      "sentences": [{ //(each sentence)
-        "text": ""
-        "links": [{
-          "text": "",
-          "page": ""
-        }]
-      }]
-   }],
-  "categories": [],
-  "coordinates": [],
-  "citations": [],
-  "interwiki": {},
-}
-```
-
-The structure of the JSON is a little verbose - but with a couple loops you should find everything you want.
-
-# Client-side Wiki Markdown Processing
-
+***on the client-side:***
 ```html
 <script src="https://unpkg.com/wtf_wikipedia@latest/builds/wtf_wikipedia.min.js"></script>
 <script>
-  wtf.from_api("On a Friday", "en", function(pWikiSource){// -> "Radiohead" redirect
-    console.log(wtf.plaintext(pWikiSource))
-    // "Radiohead are an English rock band from Abingdon..."
-  })
+  //(follows redirect)
+  wtf.fetch('On a Friday', 'en', function(err, doc) {
+    var data = doc.infobox(0).data
+    data['current_members'].links().map(l => l.page);
+    //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
+  });
 </script>
 ```
-The client-side application of `wtf_wikipedia.js` allows the browser to download and process of the Wiki markdown. The downloaded Wiki source can be processed with Javascript in the browser and new web-based content can be generated dynamically based on the Wiki-Source.
 
-<font size="+2" align="center">
-  <a href="https://spencermountain.github.io/wtf_wikipedia/">Demo!</a>
-</font>
-
-Furthermore format cross-compilation from wiki source into
-* [plain text](https://github.com/spencermountain/wtf_wikipedia/blob/master/src/index.js),
-* [Markdown](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/output/markdown),
-* [HTML](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/output/html),
-* [LaTeX](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/output/latex)
-* ...
-is supported. The LaTeX output format is helpful to generate WikiBooks on the client side.
-
-
-# What it does
-
+# What it does:
 * Detects and parses **redirects** and **disambiguation** pages
 * Parse **infoboxes** into a formatted key-value object
 * Handles recursive templates and links- like [[.. [[...]] ]]
@@ -135,84 +100,111 @@ is supported. The LaTeX output format is helpful to generate WikiBooks on the cl
 * creates
   [image thumbnail urls](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F)
   from **File:XYZ.png** filenames
-* Properly resolve {{CURRENTMONTH}} and {{CONVERT ..}} type templates
-* Parse **images**, files, and **categories**
-* converts 'DMS-formatted' (59°12\'7.7"N) geo-coordinates to lat/lng
+* Properly resolve ***{{CURRENTMONTH}}*** and ***{{CONVERT ..}}*** type templates
+* Parse **images**, **headings**, and **categories**
+* converts 'DMS-formatted' ***(59°12\'7.7"N)*** geo-coordinates to lat/lng
 * parses citation metadata
-* Eliminate xml, latex, css, table-sorting, and 'Egyptian hierogliphics' cruft
-
-its a combination of [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView),
-[txtwiki](https://github.com/joaomsa/txtwiki.js), and uses the inter-language data from
-[Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid).
+* Eliminate xml, latex, css, and table-sorting cruft
 
 ## But what about...
 
 ### Parsoid:
-
 Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It
 reliably turns wikiscript into HTML, but not valid XML.
 
-To use it for data-mining, you'll' need to:
-
+To use it for data-mining, you'll need to:
 ```
-parsoid(wikiscript) -> pretend DOM -> screen-scraping
+parsoid(wikiText) -> [headless/pretend-DOM] -> screen-scraping
 ```
+which is fine,
 
-but getting structured data this way (say, sentences or infobox data), is a complex + weird process still. This library
-has 'borrowed' a lot of stuff from the parsoid project❤️
+but getting structured data this way (say, ***sentences*** or ***infobox values***), is still a complex + weird process. Arguably, you're not  any closer than you were with wikitext.
+This library has ***lovingly ❤️*** borrowed a lot of code and data from the parsoid project, and thanks its contributors.
 
-### XML datadumps:
+### Full data-dumps:
+wtf_wikipedia was built to work with [dumpster-dive](https://github.com/spencermountain/dumpster-dive),
+which lets you parse a whole wikipedia dump on a laptop in a couple hours. It's definitely the way to go, instead of fetching many pages off the api.
 
-This library is built to work well with [wikipedia-to-mongo](https://github.com/spencermountain/wikipedia-to-mongodb),
-letting you parse a whole wikipedia dump on a laptop in a couple minutes.
+# API
+* **wtf(wikiText, [options])**
+* **wtf.fetch(title, [lang_or_wikiid], [options], [callback])**
 
-# Methods
+### outputs:
+* **doc.plaintext()**
+* **doc.html()**
+* **doc.markdown()**
+* **doc.latex()**
 
-## **.parse(pWikiSource)**
+### Document methods:
+* **doc.isRedirect()** - *boolean*
+* **doc.isDisambiguation()** - *boolean*
+* **doc.categories()**
+* **doc.sections()**
+* **doc.sentences()**
+* **doc.images()**
+* **doc.links()**
+* **doc.tables()**
+* **doc.citations()**
+* **doc.infoboxes()**
+* **doc.coordinates()**
 
-turns wikipedia markup into a nice json object
+### Section methods:
+(a section is any content between **==these kind==** of headers)
+* **sec.indentation()**
+* **sec.sentences()**
+* **sec.links()**
+* **sec.tables()**
+* **sec.templates()**
+* **sec.lists()**
+* **sec.interwiki()**
+* **sec.images()**
+* **sec.index()**
+* **sec.nextSibling()**
+* **sec.lastSibling()**
+* **sec.children()**
+* **sec.parent()**
+* **sec.remove()**
+
+## Examples
+
+### **wtf(wikiText)**
+flip your wikimedia markup into a `Document` object
 
 ```javascript
-var wiki = "==In Popular Culture==\n*harry potter's wand\n* the simpsons fence";
-wtf.parse(wiki);
-// {type:'', sections:[...], infobox:{}, categories:[...], images:[] }
+import wtf from 'wtf_wikipedia'
+wtf("==In Popular Culture==\n*harry potter's wand\n* the simpsons fence");
+// Document {plaintext(), html(), latex()...}
 ```
 
-## **.from_api(title, lang_or_wikiid, callback)**
+### **wtf.fetch(title, [lang_or_wikiid], [options], [callback])**
+retrieves raw contents of a mediawiki article from the wikipedia action API.
 
-retrieves raw contents of a wikipedia article - or other mediawiki wiki identified by its
-[dbname](http://en.wikipedia.org/w/api.php?action=sitematrix&format=json)
+This method supports the **errback** callback form, or returns a [Promise](https://spring.io/understanding/javascript-promises) if one is missing.
 
-to call non-english wikipedia apis, add it as the second paramater to from_api
+to call non-english wikipedia apis, add [it's language-name](http://en.wikipedia.org/w/api.php?action=sitematrix&format=json) as the second parameter
 
 ```javascript
-wtf.from_api('Toronto', 'de', function(pWikiSource) {
-  var text = wtf.plaintext(pWikiSource);
+wtf.fetch('Toronto', 'de', function(err, doc) {
+  doc.plaintext();
   //Toronto ist mit 2,6 Millionen Einwohnern..
 });
 ```
-
 you may also pass the wikipedia page id as parameter instead of the page title:
 
 ```javascript
-wtf.from_api(64646, 'de', function(pWikiSource) {
-  //...
-});
+wtf.fetch(64646, 'de').then(console.log).catch(console.log)
 ```
+the fetch method follows redirects.
 
-the from_api method follows redirects.
-
-## **.plaintext(pWikiSource)**
-
+### **doc.plaintext()**
 returns only nice text of the article
-
 ```js
 var wiki =
   "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>";
-var text = wtf.plaintext(wiki);
+var text = wtf(wiki).plaintext();
 //"Boston's baseball field has a 37ft wall."
 ```
-
+<!--
 ## **.custom({})**
 
 if you're trying to parse a weird template, or an obscure wiki syntax somewhere, this library supports a customization
@@ -232,125 +224,43 @@ wtf.parse(str);
 //{title:'Whistling', custom: {mine:['cool data!']} }
 ```
 
-this way, you can extend the library with your own regexes, and all that.
+this way, you can extend the library with your own regexes, and all that. -->
 
 ## **CLI**
-In the folder `/bin` you find some js-files that you can run from the shell.
-### LaTeX
-```shell
-node ./bin/latex.js Swarm_intelligence
-```
-This script shows some processing steps in the console.log and shows the cross-compiled LaTeX code in the console as well.
-
-### Global scripting, downloading and cross-compilation
-if you're scripting this from the shell, or another language, install with a `-g`, and then:
+if you're scripting this from the shell, or from another language, install with a `-g`, and then run:
 
 ```shell
-$ wikipedia_plaintext George Clooney
+$ wtf_wikipedia George Clooney --plaintext
 # George Timothy Clooney (born May 6, 1961) is an American actor ...
 
-$ wikipedia Toronto Blue Jays
+$ wtf_wikipedia Toronto Blue Jays --json
 # {text:[...], infobox:{}, categories:[...], images:[] }
 ```
 
-# Sample Output
-
-Sample output for [Royal Cinema](https://en.wikipedia.org/wiki/Royal_Cinema)
-
-```javascript
-{ type: 'page',
-  sections:[ { title: '', depth: 0, sentences: [Array] },
-     { title: 'See also', depth: 1, sentences: [Array] },
-     { title: 'References', depth: 1, sentences: []
-   }],
-  infoboxes: [ {
-    template: 'venue',
-    data:
-     { name: { text: 'Royal Cinema' },
-       'former names': { text: 'The Pylon The Golden Princess' },
-       image: { text: 'The Royal Cinema.jpg' },
-       image_size: { text: '200px' },
-       caption: { text: 'The Royal Cinema in 2017.' },
-       address: { text: '608 College Street', links: [Array] },
-       location: { text: 'Toronto, Ontario', links: [Array] },
-       opened: { text: 1939 },
-       architect: { text: 'Benjamin Swartz' },
-       website: { text: 'theroyal.to' },
-       capacity: { text: 390 } }
-    }],
-  interwiki: {},
-  categories:[ 'City of Toronto Heritage Properties',
-     'Cinemas and movie theatres in Toronto',
-     'Streamline Moderne architecture in Canada',
-     'Theatres completed in 1939',
-     '1939 establishments in Ontario'
-   ],
-  images:[{ url: 'https://upload.wikimedia.org/wikipedia/commons/a/af/The_Royal_Cinema.jpg',
-       file: 'File:The Royal Cinema.jpg',
-       thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/The_Royal_Cinema.jpg/300px-The_Royal_Cinema.jpg' }
-     ]
-   }
+### Good practice:
+The wikipedia api is [pretty welcoming](https://www.mediawiki.org/wiki/API:Etiquette#Request_limit) though recommends three things, if you're going to hit it heavily -
+* 1️⃣ pass a `Api-User-Agent` as something so they can use to easily throttle bad scripts
+* 2️⃣ bundle multiple pages into one request as an array
+* 3️⃣ run it serially, or at least, [slowly](https://www.npmjs.com/package/slow).
+```js
+wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
+  'Api-User-Agent': 'spencermountain@gmail.com'
+}).then((docList) => {
+  let allLinks = docList.map(doc => doc.links());
+  console.log(allLinks);
+});
 ```
-
-Sample Output for [Whistling](https://en.wikipedia.org/w/index.php?title=Whistling)
-
-```javascript
-{ type: 'page',
-  sections:
-   [ { title: '', depth: 0, images: [Array], sentences: [Array] },
-     { title: 'Techniques',
-       depth: 1,
-       images: [Array],
-       sentences: [Array] },
-     { title: 'Competitions', depth: 1, sentences: [Array] },
-     { title: 'As communication', depth: 1, sentences: [Array] },
-     { title: 'In music',
-       depth: 1,
-       images: [Array],
-       sentences: [Array] },
-     { title: 'By spectators', depth: 1, sentences: [Array] },
-     { title: 'Superstitions', depth: 1, sentences: [Array] },
-     { title: 'Children\'s television cartoon shows',
-       depth: 1,
-       lists: [Array],
-       sentences: [] },
-     { title: 'See also', depth: 1, lists: [Array], sentences: [] },
-     { title: 'References', depth: 1, sentences: [] },
-     { title: 'External links',
-       depth: 1,
-       lists: [Array],
-       sentences: [] } ],
-  infoboxes: [],
-  citations: [],
-  interwiki: {},
-  categories: [ 'Oral communication', 'Vocal music', 'Vocal skills' ],
-  images: [Array]
-}
-```
-
-# ToDo
-* Mathematical Expressions: The helper functions for the export formats are defined in `src/ouput/` in the resp. directory for the format ( e.g. `src/ouput/latex/math.js` for LaTeX export), but they were not called currently. TODO: Parsing must parse mathematical BLOCK and INLINE expressions and the export must call the respective the export helper functions defined e.g. in `/src/output/latex/math.js` for LaTeX output)
 
 # Contributing
+projects like these are only done with many-hands, and I try to be a friendly and easy maintainer. (promise!)
 
-## Fork, Improve, Pull Request
-If you want to contribute with new output formats (e.g. defined in [PanDoc](https://www.pandoc.org/try) ) then
-* login with your GitHub account or [create an account](https://help.github.com/articles/signing-up-for-a-new-github-account/) for you
-* [fork](https://help.github.com/articles/fork-a-repo/) the current `wtf_wikipedia` repository and add e.g. a new export format in `/src/output/`,
-* Build and test the generated library with `npm run build`
-* If you update the `README.md` with a new export format run `doctoc README.md` to update the table of contents.
-* create a [Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) for the maintainer Spencer Kelly to integrate the new export format the original `wtf_wikipedia` respository.
+[Join in!](./contributing.md)
 
-## Maintainer Comment
-Never-ender projects like these are only good with many-hands, and I try to be a friendly maintainer. (promise!)
+Thank you to the [cross-fetch](https://github.com/lquixada/cross-fetch) and [jshashes](https://github.com/h2non/jshashes) libraries.
 
-```bash
-npm install
-npm test
-npm run build #to package-up client-side
-```
-## Table of Contents in README.md
-`DocToc` is used to create a helpful table of contents in the README (see [DocToc-Installation](https://github.com/thlorenz/doctoc#installation) for further details on [NPM DocToc](https://www.npmjs.com/package/doctoc) ). Run `doctoc README.md` for updating the table of contents in the `README.md`.
-
+See also:
+* [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView)
+* [txtwiki](https://github.com/joaomsa/txtwiki.js)
+* [Parsoid](https://www.mediawiki.org/wiki/Parsoid)
 
 MIT

@@ -1,4 +1,3 @@
-const parse = require('../../parse');
 const doInfobox = require('./infobox');
 const doSentence = require('./sentence');
 const doTable = require('./table');
@@ -37,69 +36,69 @@ const doList = (list) => {
 
 const doSection = (section, options) => {
   let out = '';
-  let num = 1
+  let num = 1;
   //make the header
   if (options.title === true && section.title) {
     num = 1 + section.depth;
-    var vOpen = "\n";
-    var vClose = "}";
+    var vOpen = '\n';
+    var vClose = '}';
     switch (num) {
       case 1:
-        vOpen += "\\chapter{";
-      break;
+        vOpen += '\\chapter{';
+        break;
       case 2:
-        vOpen += "\\section{";
-      break;
+        vOpen += '\\section{';
+        break;
       case 3:
-        vOpen += "\\subsection{";
-      break;
+        vOpen += '\\subsection{';
+        break;
       case 4:
-        vOpen += "\\subsubsection{";
-      break;
+        vOpen += '\\subsubsection{';
+        break;
       case 5:
-        vOpen += "\\paragraph{";
-        vClose = "} \\\\ \n";
-      break;
+        vOpen += '\\paragraph{';
+        vClose = '} \\\\ \n';
+        break;
       case 6:
-        vOpen += "\\subparagraph{";
-        vClose = "} \\\\ \n";
-      break;
+        vOpen += '\\subparagraph{';
+        vClose = '} \\\\ \n';
+        break;
       default:
-        vOpen += "\n% section with depth="+num+" undefined - use subparagraph instead\n\\subparagraph{";
-        vClose = "} \\\\ \n";
+        vOpen += '\n% section with depth=' + num + ' undefined - use subparagraph instead\n\\subparagraph{';
+        vClose = '} \\\\ \n';
     }
     out += vOpen + section.title + vClose;
     out += '\n';
   }
   //put any images under the header
-  if (section.images && options.images === true) {
-    out += section.images.map((image) => makeImage(image)).join('\n');
-    //out += '\n';
+  if (section.images() && options.images === true) {
+    out += section.images().map((image) => makeImage(image)).join('\n');
+  //out += '\n';
   }
   //make a out table
-  if (section.tables && options.tables === true) {
-    out += section.tables.map((t) => doTable(t, options)).join('\n');
+  if (section.tables() && options.tables === true) {
+    out += section.tables().map((t) => doTable(t, options)).join('\n');
   }
   // //make a out bullet-list
-  if (section.lists && options.lists === true) {
-    out += section.lists.map((list) => doList(list, options)).join('\n');
+  if (section.lists() && options.lists === true) {
+    out += section.lists().map((list) => doList(list, options)).join('\n');
   }
   //finally, write the sentence text.
-  if (section.sentences && options.sentences === true) {
+  if (section.sentences() && options.sentences === true) {
     //out += '\n\n% BEGIN Paragraph\n'
-    out +=  section.sentences.map((s) => doSentence(s, options)).join(' ')
+    out += section.sentences().map((s) => doSentence(s, options)).join(' ');
     //out += '\n% END Paragraph';
     out += '\n';
-  };
-  var title_tag = ' SECTION depth='+num +" - TITLE: " + section.title + "\n";
+  }
+  // var title_tag = ' SECTION depth=' + num + ' - TITLE: ' + section.title + '\n';
   // wrap a section comment
   //out = '\n% BEGIN' + title_tag + out + '\n% END' + title_tag;
   return out;
 };
 //
-const toLatex = function(str, options) {
+const toLatex = function(doc, options) {
   options = Object.assign(defaults, options);
-  let data = parse(str, options);
+  let data = doc.data;
   let out = '';
   //add the title on the top
   // if (options.title === true && data.title) {
@@ -110,7 +109,7 @@ const toLatex = function(str, options) {
     out += data.infoboxes.map(o => doInfobox(o, options)).join('\n');
   }
   //render each section
-  out += data.sections.map(s => doSection(s, options)).join('\n');
-  return out ;
+  out += doc.sections().map(s => doSection(s, options)).join('\n');
+  return out;
 };
 module.exports = toLatex;
