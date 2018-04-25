@@ -1,6 +1,6 @@
 'use strict';
 const wtf = require('./src/index');
-// const fromFile = require('./_fromFile');
+// const fromFile = require('./_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
@@ -28,6 +28,6 @@ const wtf = require('./src/index');
 
 wtf.fetch('On a Friday', 'en', function(err, doc) { //"Radiohead" redirect
   var members = doc.infobox(0).data.current_members.links();
-  members.map(l => l.page);
+  console.log(members.map(l => l.page));
 //Thom Yorke, Jonny Greenwood, Colin Greenwood...
 });

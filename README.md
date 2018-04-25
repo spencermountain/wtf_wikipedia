@@ -126,6 +126,46 @@ wtf_wikipedia was built to work with [dumpster-dive](https://github.com/spencerm
 which lets you parse a whole wikipedia dump on a laptop in a couple hours. It's definitely the way to go, instead of fetching many pages off the api.
 
 # API
+* **wtf(wikiText, [options])**
+* **wtf.fetch(title, [lang_or_wikiid], [options], [callback])**
+
+### outputs:
+* **doc.plaintext()**
+* **doc.html()**
+* **doc.markdown()**
+* **doc.latex()**
+
+### Document methods:
+* **doc.isRedirect()** - *boolean*
+* **doc.isDisambiguation()** - *boolean*
+* **doc.categories()**
+* **doc.sections()**
+* **doc.sentences()**
+* **doc.images()**
+* **doc.links()**
+* **doc.tables()**
+* **doc.citations()**
+* **doc.infoboxes()**
+* **doc.coordinates()**
+
+### Section methods:
+(a section is any content between **==these kind==** of headers)
+* **sec.indentation()**
+* **sec.sentences()**
+* **sec.links()**
+* **sec.tables()**
+* **sec.templates()**
+* **sec.lists()**
+* **sec.interwiki()**
+* **sec.images()**
+* **sec.index()**
+* **sec.nextSibling()**
+* **sec.lastSibling()**
+* **sec.children()**
+* **sec.parent()**
+* **sec.remove()**
+
+## Examples
 
 ### **wtf(wikiText)**
 flip your wikimedia markup into a `Document` object
@@ -164,41 +204,6 @@ var wiki =
 var text = wtf(wiki).plaintext();
 //"Boston's baseball field has a 37ft wall."
 ```
-### other outputs:
-* **doc.html()**
-* **doc.markdown()**
-* **doc.latex()**
-
-### Document methods:
-* **doc.isRedirect()** - *boolean*
-* **doc.isDisambiguation()** - *boolean*
-* **doc.categories()**
-* **doc.sections()**
-* **doc.sentences()**
-* **doc.images()**
-* **doc.links()**
-* **doc.tables()**
-* **doc.citations()**
-* **doc.infoboxes()**
-* **doc.coordinates()**
-
-### Section methods:
-(a section is any content between **==these kind==** of headers)
-* **sec.indentation()**
-* **sec.sentences()**
-* **sec.links()**
-* **sec.tables()**
-* **sec.templates()**
-* **sec.lists()**
-* **sec.interwiki()**
-* **sec.images()**
-* **sec.index()**
-* **sec.nextSibling()**
-* **sec.lastSibling()**
-* **sec.children()**
-* **sec.parent()**
-* **sec.remove()**
-
 <!--
 ## **.custom({})**
 
@@ -247,9 +252,9 @@ wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
 ```
 
 # Contributing
-projects like these are only good with many-hands, and I try to be a friendly maintainer. (promise!)
+projects like these are only done with many-hands, and I try to be a friendly and easy maintainer. (promise!)
 
-[Join in](./Contributing.md)
+[Join in!](./contributing.md)
 
 Thank you to the [cross-fetch](https://github.com/lquixada/cross-fetch) and [jshashes](https://github.com/h2non/jshashes) libraries.
 
