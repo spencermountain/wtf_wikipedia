@@ -1,4 +1,4 @@
-/* wtf_wikipedia v3.0.1
+/* wtf_wikipedia v3.0.2
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2253,13 +2253,14 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
-  "main": "./builds/wtf_wikipedia.js",
+  "main": "./src/index.js",
+  "unpkg": "./builds/wtf_wikipedia.min.js",
   "scripts": {
     "start": "node ./scripts/demo.js",
     "test": "node ./scripts/test.js",
@@ -2272,7 +2273,9 @@ module.exports={
   "bin": {
     "wtf_wikipedia": "./bin/wtf.js"
   },
-  "engines" : { "node" : ">=6.0.0" },
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "files": [
     "builds",
     "api",
@@ -2291,17 +2294,17 @@ module.exports={
   },
   "devDependencies": {
     "amble": "0.0.6",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babelify": "^8.0.0",
-    "browserify": "^16.2.0",
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "babelify": "8.0.0",
+    "browserify": "16.2.0",
     "codacy-coverage": "2.1.1",
-    "derequire": "^2.0.6",
+    "derequire": "2.0.6",
     "nyc": "11.7.1",
-    "shelljs": "^0.8.1",
+    "shelljs": "0.8.1",
     "tap-dancer": "0.0.2",
     "tape": "4.9.0",
-    "uglify-js": "^3.3.22"
+    "uglify-js": "3.3.22"
   },
   "license": "MIT"
 }
