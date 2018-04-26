@@ -1,4 +1,4 @@
-/* wtf_wikipedia v3.0.2
+/* wtf_wikipedia v3.0.3
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2253,7 +2253,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
