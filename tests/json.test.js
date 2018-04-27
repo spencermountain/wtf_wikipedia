@@ -42,6 +42,19 @@ test('json-output-options', t => {
   t.end();
 });
 
+test('section-output', t => {
+  var doc = readFile('royal_cinema');
+  var data = doc.section(0).json({
+    links: false,
+    formatting: false,
+  });
+  t.equal(data.depth, 0, 'depth');
+  t.ok(data.sentences[0].text, 'no formatting');
+  t.ok(!data.sentences[0].links, 'no formatting');
+  t.ok(!data.sentences[0].formatting, 'no links');
+  t.end();
+});
+
 test('sentence-output', t => {
   var doc = readFile('royal_cinema');
   var sen = doc.sentences(0);

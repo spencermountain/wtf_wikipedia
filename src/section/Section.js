@@ -12,20 +12,17 @@ const defaults = {
   sentences: true,
 };
 
-
 //the stuff between headings - 'History' section for example
 const Section = function(data) {
   this.data = data;
   this.depth = data.depth;
-  //hide this circular property in console.logs..
-  // Object.defineProperty(this, 'doc', {
-  //   enumerable: false, // hide it from for..in
-  //   value: null
-  // });
   this.doc = null;
-// this.sentences = data.sentences;
+//hide this circular property in console.logs..
+// Object.defineProperty(this, 'doc', {
+//   enumerable: false, // hide it from for..in
+//   value: null
+// });
 };
-
 
 const methods = {
   title: function() {

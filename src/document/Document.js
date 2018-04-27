@@ -39,12 +39,6 @@ const methods = {
   isDisambiguation : function() {
     return this.data.type === 'disambiguation';
   },
-  // redirectTo : function() {
-  //   return p
-  // },
-  // disambigpages : function() {
-  //   return p
-  // },
   categories : function(n) {
     if (typeof n === 'number') {
       return this.data.categories[n];
