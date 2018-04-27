@@ -1,12 +1,21 @@
 const toMarkdown = require('../output/markdown/section');
 const toHtml = require('../output/html/section');
+const toJSON = require('../output/json/section');
 const Sentence = require('../sentence/Sentence');
-const defaults = require('../lib/defaults');
+const setDefaults = require('../lib/setDefaults');
+const defaults = {
+  infoboxes: true,
+  tables: true,
+  lists: true,
+  citations: true,
+  images: true,
+  sentences: true,
+};
+
 
 //the stuff between headings - 'History' section for example
 const Section = function(data) {
   this.data = data;
-  this.title = data.title;
   this.depth = data.depth;
   //hide this circular property in console.logs..
   // Object.defineProperty(this, 'doc', {
@@ -19,6 +28,9 @@ const Section = function(data) {
 
 
 const methods = {
+  title: function() {
+    return this.data.title || '';
+  },
   index: function() {
     if (!this.doc) {
       return null;
@@ -169,19 +181,19 @@ const methods = {
   },
 
   markdown : function(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return toMarkdown(this, options);
   },
   html : function(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return toHtml(this, options);
   },
   plaintext : function(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return this.sentences().map(s => s.plaintext(options)).join(' ');
   },
-  json : function() {
-    return this.data;
+  json : function(options) {
+    return toJSON(this, options);
   },
 };
 //aliases

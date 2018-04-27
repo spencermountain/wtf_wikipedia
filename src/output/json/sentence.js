@@ -1,3 +1,4 @@
+const setDefaults = require('../../lib/setDefaults');
 const defaults = {
   text: true,
   links: true,
@@ -6,8 +7,8 @@ const defaults = {
 };
 
 const toJSON = function(s, options) {
+  options = setDefaults(options, defaults);
   let data = {};
-  options = Object.assign({}, defaults, options);
   if (options.text || options.plaintext) {
     data.text = s.plaintext();
   }

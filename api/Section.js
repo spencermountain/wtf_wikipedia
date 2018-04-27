@@ -1,5 +1,11 @@
 module.exports = [
   {
+    name: 'title',
+    returns: 'String',
+    example: ``,
+    description: '',
+  },
+  {
     name: 'indentation',
     returns: 'Integer',
     example: ``,

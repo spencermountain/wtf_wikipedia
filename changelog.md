@@ -45,3 +45,4 @@
 ## 3.1.0
 * improved .json() results
 * guess a page's title based on bold formatting in first sentence
+* make section.title a function

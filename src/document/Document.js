@@ -3,8 +3,16 @@ const toMarkdown = require('../output/markdown');
 const toHtml = require('../output/html');
 const toJSON = require('../output/json');
 const toLatex = require('../output/latex');
-const defaults = require('../lib/defaults');
-// const Image = require('../section/image/Image');
+const setDefaults = require('../lib/setDefaults');
+
+const defaults = {
+  infoboxes: true,
+  tables: true,
+  lists: true,
+  citations: true,
+  images: true,
+  sentences: true,
+};
 
 //
 const Document = function(wiki, options) {
@@ -50,7 +58,7 @@ const methods = {
     if (typeof n === 'string') {
       let str = n.toLowerCase().trim();
       return arr.find((s) => {
-        return s.title.toLowerCase() === str;
+        return s.title().toLowerCase() === str;
       });
     }
     if (typeof n === 'number') {
@@ -133,20 +141,20 @@ const methods = {
     return this.data.coordinates || [];
   },
   plaintext : function(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     let arr = this.sections().map(sec => sec.plaintext(options));
     return arr.join('\n\n');
   },
   markdown : function(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return toMarkdown(this, options);
   },
   latex : function(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return toLatex(this, options);
   },
   html : function(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return toHtml(this, options);
   },
   json : function(options) {
@@ -159,7 +167,7 @@ const methods = {
       for(let i = 0; i < sec.depth; i += 1) {
         indent = ' -' + indent;
       }
-      console.log(indent + (sec.title || '(Intro)'));
+      console.log(indent + (sec.title() || '(Intro)'));
     });
   }
 };

@@ -7,23 +7,23 @@ test('traverse sections', t => {
   t.equal(doc.sections().length, 35, 'init section count');
 
   var sec = doc.section('History');
-  t.equal(sec.title, 'History', 'init history');
+  t.equal(sec.title(), 'History', 'init history');
 
   sec = sec.nextSibling();
-  t.equal(sec.title, 'Geography', 'skip-over children');
+  t.equal(sec.title(), 'Geography', 'skip-over children');
 
-  let children = sec.children().map(s => s.title);
+  let children = sec.children().map(s => s.title());
   t.deepEqual(['Topography', 'Climate'], children, 'got two children');
 
   sec = sec.children(0);
-  t.equal(sec.title, 'Topography', 'first child');
+  t.equal(sec.title(), 'Topography', 'first child');
   sec = sec.nextSibling();
-  t.equal(sec.title, 'Climate', 'first child');
+  t.equal(sec.title(), 'Climate', 'first child');
 
   sec = sec.parent();
-  t.equal(sec.title, 'Geography', 'skip-over children');
+  t.equal(sec.title(), 'Geography', 'skip-over children');
 
-  t.equal(sec.children('Climate').title, 'Climate', 'second child');
+  t.equal(sec.children('Climate')[0].title(), 'Climate', 'second child');
 
   sec.remove();
   t.equal(doc.sections().length, 32, 'removed self and children');

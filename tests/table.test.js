@@ -18,13 +18,13 @@ test('rnli stations', t => {
   t.equal(doc.categories().length, 5, 'cat-length');
 
   var intro = doc.sections(0);
-  t.equal(intro.title, '', 'intro-title');
+  t.equal(intro.title(), '', 'intro-title');
   t.equal(intro.images().length > 0, true, 'intro-image-length');
   t.equal(intro.sentences().length > 0, true, 'intro-sentence-length');
 
   var key = doc.sections(1);
   t.equal(key.depth, 0, 'key-depth');
-  t.equal(key.title, 'Key', 'key-title');
+  t.equal(key.title(), 'Key', 'key-title');
   t.equal(key.sentences().length, 0, 'key-no-sentences');
   t.deepEqual(key.images(), [], 'key-no-images');
   t.deepEqual(key.templates(), [], 'key-no-templates');
@@ -40,7 +40,7 @@ test('rnli stations', t => {
   t.deepEqual(lifeboat.tables(), [], 'lifeboat-no-tables');
 
   var east = doc.sections(6);
-  t.equal(east.title, 'East Division', 'East Division');
+  t.equal(east.title(), 'East Division', 'East Division');
   t.deepEqual(east.images(), [], 'East-no-images');
   t.deepEqual(east.lists(), [], 'East-no-lists');
   t.equal(east.sentences().length, 0, 'east-sentences');

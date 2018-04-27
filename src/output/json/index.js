@@ -1,3 +1,4 @@
+const setDefaults = require('../../lib/setDefaults');
 const defaults = {
   title: true,
   pageID: true,
@@ -15,7 +16,7 @@ const defaults = {
 
 //an opinionated output of the most-wanted data
 const toJSON = function(doc, options) {
-  options = Object.assign({}, defaults, options);
+  options = setDefaults(options, defaults);
   let data = {};
 
   if (options.title) {
