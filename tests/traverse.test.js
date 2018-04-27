@@ -1,16 +1,9 @@
 'use strict';
 var test = require('tape');
-var fs = require('fs');
-var path = require('path');
-var wtf = require('./lib');
-
-//read cached file
-var readFile = function(file) {
-  return fs.readFileSync(path.join(__dirname, 'cache', file + '.txt'), 'utf-8');
-};
+var readFile = require('./lib/_cachedPage');
 
 test('traverse sections', t => {
-  var doc = wtf(readFile('toronto'));
+  var doc = readFile('toronto');
   t.equal(doc.sections().length, 35, 'init section count');
 
   var sec = doc.section('History');

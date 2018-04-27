@@ -1,14 +1,6 @@
 'use strict';
 var test = require('tape');
-var fs = require('fs');
-var path = require('path');
-var wtf = require('./lib');
-
-//read cached file
-var feadFile = function(file) {
-  file = file.replace(/ /g, '-');
-  return fs.readFileSync(path.join(__dirname, 'cache', file + '.txt'), 'utf-8');
-};
+var readFile = require('./lib/_cachedPage');
 
 test('stress-test-en', t => {
   var arr = [
@@ -97,8 +89,7 @@ test('stress-test-en', t => {
     'Alexander-Y-Type': true
   };
   arr.forEach(title => {
-    var markup = feadFile(title);
-    var doc = wtf(markup);
+    var doc = readFile(title);
     //basic is-valid tests for the page parsing
     t.ok(true, title);
     t.equal(doc.isRedirect(), false, ' - - not-redirect');
@@ -116,13 +107,13 @@ test('stress-test-en', t => {
     } else {
       t.ok(doc.citations().length > 0, title + ' has a citation');
     }
-    var plain = wtf(markup).plaintext();
+    var plain = doc.plaintext();
     t.ok(plain.length > 40, ' - - plaintext-length');
 
-    var md = wtf(markup).markdown();
+    var md = doc.markdown();
     t.ok(md.length > 40, ' - - markdown-length');
 
-    var html = wtf(markup).html();
+    var html = doc.html();
     t.ok(html.length > 40, ' - - html-length');
     t.ok(html.match(/\</), ' - - html-has tag');
   });

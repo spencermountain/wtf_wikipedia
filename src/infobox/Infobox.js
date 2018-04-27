@@ -1,5 +1,5 @@
-const toMarkdown = require('../../output/markdown/infobox');
-const toHtml = require('../../output/html/infobox');
+const toMarkdown = require('../output/markdown/infobox');
+const toHtml = require('../output/html/infobox');
 //a formal key-value data table about a topic
 const Infobox = function(obj) {
   this.template = obj.template;
@@ -20,11 +20,18 @@ const methods = {
     return '';
   },
   json : function() {
-    return this.data;
+    return Object.keys(this.data).reduce((h, k) => {
+      if (this.data[k]) {
+        h[k] = this.data[k].json();
+      }
+      return h;
+    }, {});
   },
   keyValue : function() {
     return Object.keys(this.data).reduce((h, k) => {
-      h[k] = this.data[k].text();
+      if (this.data[k]) {
+        h[k] = this.data[k].text();
+      }
       return h;
     }, {});
   }

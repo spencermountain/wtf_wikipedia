@@ -1,9 +1,9 @@
 const i18n = require('../../data/i18n');
 const findRecursive = require('../../lib/recursive_match');
 const keep = require('../../sentence/templates/templates'); //dont remove these ones
-const parseInfobox = require('./parse-infobox');
+const parseInfobox = require('../../infobox/parse-infobox');
 const parseCitation = require('./citation');
-const Infobox = require('./infobox');
+const Infobox = require('../../infobox/infobox');
 
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 

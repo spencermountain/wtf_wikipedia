@@ -2,13 +2,6 @@
 var test = require('tape');
 var wtf = require('./lib');
 
-// test('traffic-light', t => {
-//   t.equal('left', 'right', 'turning right');
-//   t.equal('blue', 'blue', 'is blue');
-//   t.equal('red', 'green', 'confusing reds + greens');
-//   t.end();
-// });
-
 test('small headings', t => {
   var str = `
 hello

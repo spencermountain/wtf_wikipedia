@@ -54,6 +54,9 @@ const methods = {
   },
   plaintext : function() {
     return this.data.text || '';
+  },
+  json : function() {
+    return this.data;
   }
 };
 

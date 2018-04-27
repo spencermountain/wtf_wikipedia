@@ -13,6 +13,18 @@ const Document = function(wiki, options) {
 };
 
 const methods = {
+  title : function() {
+    if (this.options.title) {
+      return this.options.title;
+    }
+    let guess = null;
+    //guess the title of this page from first sentence bolding
+    let sen = this.sentences(0);
+    if (sen) {
+      guess = sen.bolds(0);
+    }
+    return guess;
+  },
   isRedirect : function() {
     return this.data.type === 'redirect';
   },

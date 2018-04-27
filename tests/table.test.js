@@ -1,17 +1,10 @@
 'use strict';
 var test = require('tape');
-var path = require('path');
-var fs = require('fs');
 var wtf = require('./lib');
-
-//read cached file
-var readFile = function(file) {
-  return fs.readFileSync(path.join(__dirname, 'cache', file + '.txt'), 'utf-8');
-};
+var readFile = require('./lib/_cachedPage');
 
 test('bluejays table', t => {
-  var bluejays = readFile('bluejays');
-  var arr = wtf(bluejays).tables(0);
+  var arr = readFile('bluejays').tables(0);
   t.equal(arr.length, 8, 'table-length-bluejays');
   t.equal(arr[0]['Level'].text(), 'AAA', 'level-col');
   t.equal(arr[0]['Team'].text(), 'Buffalo Bisons', 'team-col');
@@ -21,8 +14,7 @@ test('bluejays table', t => {
 });
 
 test('rnli stations', t => {
-  var wiki = readFile('rnli_stations');
-  var doc = wtf(wiki);
+  var doc = readFile('rnli_stations');
   t.equal(doc.categories().length, 5, 'cat-length');
 
   var intro = doc.sections(0);
