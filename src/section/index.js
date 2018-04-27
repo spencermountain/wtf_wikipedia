@@ -5,7 +5,7 @@ const find_recursive = require('../lib/recursive_match');
 const parse = {
   heading: require('./heading'),
   list: require('./list'),
-  image: require('./image'),
+  image: require('../image'),
   interwiki: require('./interwiki'),
   table: require('./table'),
   templates: require('./templates'),

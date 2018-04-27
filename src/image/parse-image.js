@@ -1,5 +1,5 @@
 const Image = require('./Image');
-const i18n = require('../../data/i18n');
+const i18n = require('../data/i18n');
 const file_reg = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
 
 //images are usually [[image:my_pic.jpg]]

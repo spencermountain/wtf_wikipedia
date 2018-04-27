@@ -32,6 +32,6 @@ const wtf = require('./src/index');
 // //Thom Yorke, Jonny Greenwood, Colin Greenwood...
 // });
 
-wtf.fetch('Jodie Emery').then((doc) => {
-  console.log(doc.categories());
+wtf.fetch('Royal Cinema').then((doc) => {
+  console.log(doc.json());
 }).catch(console.log);

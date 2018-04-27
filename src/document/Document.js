@@ -1,6 +1,7 @@
 const parse = require('./index');
 const toMarkdown = require('../output/markdown');
 const toHtml = require('../output/html');
+const toJSON = require('../output/json');
 const toLatex = require('../output/latex');
 const defaults = require('../lib/defaults');
 // const Image = require('../section/image/Image');
@@ -136,8 +137,8 @@ const methods = {
     options = Object.assign(defaults, options || {});
     return toHtml(this, options);
   },
-  json : function() {
-    return this.data;
+  json : function(options) {
+    return toJSON(this, options);
   },
   debug: function() {
     console.log('\n');
@@ -172,5 +173,6 @@ Object.keys(methods).forEach((k) => {
 Document.prototype.toHTML = Document.prototype.html;
 Document.prototype.isDisambig = Document.prototype.isDisambiguation;
 Document.prototype.toJson = Document.prototype.json;
+Document.prototype.references = Document.prototype.citations;
 
 module.exports = Document;
