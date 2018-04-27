@@ -1,24 +1,33 @@
 const toMarkdown = require('../output/markdown/section');
 const toHtml = require('../output/html/section');
+const toJSON = require('../output/json/section');
 const Sentence = require('../sentence/Sentence');
-const defaults = require('../lib/defaults');
+const setDefaults = require('../lib/setDefaults');
+const defaults = {
+  infoboxes: true,
+  tables: true,
+  lists: true,
+  citations: true,
+  images: true,
+  sentences: true,
+};
 
 //the stuff between headings - 'History' section for example
 const Section = function(data) {
   this.data = data;
-  this.title = data.title;
   this.depth = data.depth;
-  //hide this circular property in console.logs..
-  // Object.defineProperty(this, 'doc', {
-  //   enumerable: false, // hide it from for..in
-  //   value: null
-  // });
   this.doc = null;
-// this.sentences = data.sentences;
+//hide this circular property in console.logs..
+// Object.defineProperty(this, 'doc', {
+//   enumerable: false, // hide it from for..in
+//   value: null
+// });
 };
 
-
 const methods = {
+  title: function() {
+    return this.data.title || '';
+  },
   index: function() {
     if (!this.doc) {
       return null;
@@ -95,11 +104,11 @@ const methods = {
       return null;
     }
     let bads = {};
-    bads[this.title] = true;
+    bads[this.title()] = true;
     //remove children too
-    this.children().forEach((sec) => bads[sec.title] = true);
+    this.children().forEach((sec) => bads[sec.title()] = true);
     let arr = this.doc.data.sections;
-    arr = arr.filter(sec => bads.hasOwnProperty(sec.title) !== true);
+    arr = arr.filter(sec => bads.hasOwnProperty(sec.title()) !== true);
     this.doc.data.sections = arr;
     return this.doc;
   },
@@ -133,6 +142,7 @@ const methods = {
     if (!this.doc) {
       return null;
     }
+
     let sections = this.doc.sections();
     let index = this.index();
     let children = [];
@@ -147,7 +157,9 @@ const methods = {
       }
     }
     if (typeof n === 'string') {
-      return children.find(s => s.title === n);
+      n = n.toLowerCase();
+      children.forEach((c) => console.log(c));
+      return children.find(s => s.title().toLowerCase() === n);
     }
     if (typeof n === 'number') {
       return children[n];
@@ -169,19 +181,19 @@ const methods = {
   },
 
   markdown : function(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return toMarkdown(this, options);
   },
   html : function(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return toHtml(this, options);
   },
   plaintext : function(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return this.sentences().map(s => s.plaintext(options)).join(' ');
   },
-  json : function() {
-    return this.data;
+  json : function(options) {
+    return toJSON(this, options);
   },
 };
 //aliases

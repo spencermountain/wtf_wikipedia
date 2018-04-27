@@ -1,16 +1,9 @@
 'use strict';
-var path = require('path');
-var fs = require('fs');
 var test = require('tape');
-var wtf = require('./lib');
-
-//read cached file
-var readFile = function(file) {
-  return fs.readFileSync(path.join(__dirname, 'cache', file + '.txt'), 'utf-8');
-};
+var readFile = require('./lib/_cachedPage');
 
 test('royal_cinema', t => {
-  var doc = wtf(readFile('royal_cinema'));
+  var doc = readFile('royal_cinema');
   t.equal(doc.infoboxes(0).data.opened.text(), 1939, 'opened');
   t.equal(doc.infoboxes(0).template, 'venue', '');
   t.equal(doc.sections(0).sentences().length, 10, 'sentence-length');
@@ -19,7 +12,7 @@ test('royal_cinema', t => {
 });
 
 test('toronto_star', t => {
-  var doc = wtf(readFile('toronto_star'));
+  var doc = readFile('toronto_star');
   t.equal(doc.infoboxes(0).data.publisher.text(), 'John D. Cruickshank', 'publisher.text');
   t.equal(doc.infoboxes(0).template, 'newspaper', '');
   var section = doc.sections('history');
@@ -30,7 +23,7 @@ test('toronto_star', t => {
 });
 
 test('toronto_star with list', t => {
-  var doc = wtf(readFile('toronto_star'));
+  var doc = readFile('toronto_star');
   t.equal(doc.infoboxes(0).data.publisher.text(), 'John D. Cruickshank', 'publisher.text');
   t.equal(doc.infoboxes(0).template, 'newspaper', '');
   var section = doc.sections('history');
@@ -42,7 +35,7 @@ test('toronto_star with list', t => {
 });
 
 test('jodie_emery', t => {
-  var doc = wtf(readFile('jodie_emery'));
+  var doc = readFile('jodie_emery');
   t.equal(doc.infoboxes(0).data.nationality.text(), 'Canadian', '');
   t.equal(doc.infoboxes(0).template, 'person', '');
   t.equal(doc.sections(0).sentences.length >= 1, true, 'intro-length');
@@ -53,7 +46,7 @@ test('jodie_emery', t => {
 });
 
 test('redirect', t => {
-  var doc = wtf(readFile('redirect'));
+  var doc = readFile('redirect');
   t.equal(doc.isRedirect(), true, 'is-redirect');
   t.equal(doc.links(0).page, 'Toronto', 'redirect-place');
   t.equal(doc.infoboxes(0), undefined, t);
@@ -62,7 +55,7 @@ test('redirect', t => {
 });
 
 test('statoil', t => {
-  var doc = wtf(readFile('statoil'));
+  var doc = readFile('statoil');
   t.equal(doc.infoboxes(0).data.namn.text(), 'Statoil ASA', 'name');
   t.equal(doc.infoboxes(0).template, 'verksemd', 'template');
   // (doc.text.Intro.length >= 1).should.be.true;
@@ -74,7 +67,7 @@ test('statoil', t => {
 });
 
 test('raith rovers', t => {
-  var doc = wtf(readFile('raith_rovers'));
+  var doc = readFile('raith_rovers');
   t.equal(doc.infoboxes(0).data.clubname.text(), 'Raith Rovers', '');
   t.equal(doc.categories().length, 10, 'cat-length');
   t.equal(doc.images().length, 2, 'img-length');

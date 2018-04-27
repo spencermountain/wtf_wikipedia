@@ -1,36 +1,33 @@
 'use strict';
 var test = require('tape');
-var fs = require('fs');
-var path = require('path');
-var wtf = require('./lib');
-
-//read cached file
-var readFile = function(file) {
-  return fs.readFileSync(path.join(__dirname, 'cache', file + '.txt'), 'utf-8');
-};
+var readFile = require('./lib/_cachedPage');
 
 test('traverse sections', t => {
-  var doc = wtf(readFile('toronto'));
+  var doc = readFile('toronto');
   t.equal(doc.sections().length, 35, 'init section count');
 
+  //start with history
   var sec = doc.section('History');
-  t.equal(sec.title, 'History', 'init history');
+  t.equal(sec.title(), 'History', 'init history');
 
+  //skip-over to 0-Geography
   sec = sec.nextSibling();
-  t.equal(sec.title, 'Geography', 'skip-over children');
+  t.equal(sec.title(), 'Geography', 'skip-over children');
 
-  let children = sec.children().map(s => s.title);
+  let children = sec.children().map(s => s.title());
   t.deepEqual(['Topography', 'Climate'], children, 'got two children');
 
+  //go into both children, Topography+Climate
   sec = sec.children(0);
-  t.equal(sec.title, 'Topography', 'first child');
+  t.equal(sec.title(), 'Topography', 'first child');
   sec = sec.nextSibling();
-  t.equal(sec.title, 'Climate', 'first child');
+  t.equal(sec.title(), 'Climate', 'first child');
 
+  //still at Geography..
   sec = sec.parent();
-  t.equal(sec.title, 'Geography', 'skip-over children');
-
-  t.equal(sec.children('Climate').title, 'Climate', 'second child');
+  t.equal(sec.title(), 'Geography', 'skip-over children');
+  //access child by title
+  t.equal(sec.children(1).title(), 'Climate', 'second child');
 
   sec.remove();
   t.equal(doc.sections().length, 32, 'removed self and children');

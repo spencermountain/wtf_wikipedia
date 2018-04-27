@@ -42,3 +42,7 @@
 * refactor shell scripts to `wtf_wikipedia Toronto --plaintext`
 * use babel-preset-env cause it's new-new
 * update deps
+## 3.1.0
+* improved .json() results
+* guess a page's title based on bold formatting in first sentence
+* make section.title a function

@@ -14,9 +14,9 @@ const doList = (list) => {
 const doSection = (section, options) => {
   let html = '';
   //make the header
-  if (options.title === true && section.title) {
+  if (options.title === true && section.title()) {
     let num = 1 + section.depth;
-    html += '  <h' + num + '>' + section.title + '</h' + num + '>';
+    html += '  <h' + num + '>' + section.title() + '</h' + num + '>';
     html += '\n';
   }
   //put any images under the header

@@ -1,17 +1,10 @@
 'use strict';
 var test = require('tape');
-var path = require('path');
-var fs = require('fs');
 var wtf = require('./lib');
-
-//read cached file
-var readFile = function(file) {
-  return fs.readFileSync(path.join(__dirname, 'cache', file + '.txt'), 'utf-8');
-};
+var readFile = require('./lib/_cachedPage');
 
 test('bluejays table', t => {
-  var bluejays = readFile('bluejays');
-  var arr = wtf(bluejays).tables(0);
+  var arr = readFile('bluejays').tables(0);
   t.equal(arr.length, 8, 'table-length-bluejays');
   t.equal(arr[0]['Level'].text(), 'AAA', 'level-col');
   t.equal(arr[0]['Team'].text(), 'Buffalo Bisons', 'team-col');
@@ -21,18 +14,17 @@ test('bluejays table', t => {
 });
 
 test('rnli stations', t => {
-  var wiki = readFile('rnli_stations');
-  var doc = wtf(wiki);
+  var doc = readFile('rnli_stations');
   t.equal(doc.categories().length, 5, 'cat-length');
 
   var intro = doc.sections(0);
-  t.equal(intro.title, '', 'intro-title');
+  t.equal(intro.title(), '', 'intro-title');
   t.equal(intro.images().length > 0, true, 'intro-image-length');
   t.equal(intro.sentences().length > 0, true, 'intro-sentence-length');
 
   var key = doc.sections(1);
   t.equal(key.depth, 0, 'key-depth');
-  t.equal(key.title, 'Key', 'key-title');
+  t.equal(key.title(), 'Key', 'key-title');
   t.equal(key.sentences().length, 0, 'key-no-sentences');
   t.deepEqual(key.images(), [], 'key-no-images');
   t.deepEqual(key.templates(), [], 'key-no-templates');
@@ -48,7 +40,7 @@ test('rnli stations', t => {
   t.deepEqual(lifeboat.tables(), [], 'lifeboat-no-tables');
 
   var east = doc.sections(6);
-  t.equal(east.title, 'East Division', 'East Division');
+  t.equal(east.title(), 'East Division', 'East Division');
   t.deepEqual(east.images(), [], 'East-no-images');
   t.deepEqual(east.lists(), [], 'East-no-lists');
   t.equal(east.sentences().length, 0, 'east-sentences');

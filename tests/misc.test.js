@@ -2,13 +2,6 @@
 var test = require('tape');
 var wtf = require('./lib');
 
-// test('traffic-light', t => {
-//   t.equal('left', 'right', 'turning right');
-//   t.equal('blue', 'blue', 'is blue');
-//   t.equal('red', 'green', 'confusing reds + greens');
-//   t.end();
-// });
-
 test('small headings', t => {
   var str = `
 hello
@@ -22,8 +15,8 @@ Displays memory at the specified virtual address using the specified format.
 here too
   `;
   var sections = wtf(str).sections();
-  t.equal(sections[1].title, 'gdbserver', 'first heading exists');
-  t.equal(sections[2].title, 'x', 'x exists');
+  t.equal(sections[1].title(), 'gdbserver', 'first heading exists');
+  t.equal(sections[2].title(), 'x', 'x exists');
   t.ok(sections[3].title, 'xp', 'xp exists');
   t.equal(sections[4], undefined, 'foo doesnt exist');
   t.end();

@@ -1,7 +1,8 @@
 const doInfobox = require('./infobox');
 const doSentence = require('./sentence');
 const doTable = require('./table');
-const doMath = require('./math');
+const setDefaults = require('../../lib/setDefaults');
+// const doMath = require('./math');
 
 const defaults = {
   infoboxes: true,
@@ -38,7 +39,7 @@ const doSection = (section, options) => {
   let out = '';
   let num = 1;
   //make the header
-  if (options.title === true && section.title) {
+  if (options.title === true && section.title()) {
     num = 1 + section.depth;
     var vOpen = '\n';
     var vClose = '}';
@@ -67,7 +68,7 @@ const doSection = (section, options) => {
         vOpen += '\n% section with depth=' + num + ' undefined - use subparagraph instead\n\\subparagraph{';
         vClose = '} \\\\ \n';
     }
-    out += vOpen + section.title + vClose;
+    out += vOpen + section.title() + vClose;
     out += '\n';
   }
   //put any images under the header
@@ -97,7 +98,7 @@ const doSection = (section, options) => {
 };
 //
 const toLatex = function(doc, options) {
-  options = Object.assign(defaults, options);
+  options = setDefaults(options, defaults);
   let data = doc.data;
   let out = '';
   //add the title on the top

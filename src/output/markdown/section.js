@@ -1,6 +1,15 @@
 const doTable = require('./table');
 const doSentence = require('./sentence');
 const doImage = require('./image');
+const setDefaults = require('../../lib/setDefaults');
+
+const defaults = {
+  title: true,
+  images: true,
+  tables: true,
+  lists: true,
+  sentences: true,
+};
 
 const doList = (list, options) => {
   return list.map((o) => {
@@ -10,14 +19,15 @@ const doList = (list, options) => {
 };
 
 const doSection = (section, options) => {
+  options = setDefaults(options, defaults);
   let md = '';
   //make the header
-  if (options.title === true && section.title) {
+  if (options.title === true && section.title()) {
     let header = '##';
     for(let i = 0; i < section.depth; i += 1) {
       header += '#';
     }
-    md += header + ' ' + section.title + '\n';
+    md += header + ' ' + section.title() + '\n';
   }
   //put any images under the header
   if (options.images === true) {
