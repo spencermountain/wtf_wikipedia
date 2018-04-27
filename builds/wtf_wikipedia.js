@@ -1,4 +1,4 @@
-/* wtf_wikipedia v3.0.3
+/* wtf_wikipedia v3.1.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2253,7 +2253,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -4740,9 +4740,18 @@ if (typeof module !== 'undefined' && module.exports) {
 var parse = _dereq_('./index');
 var toMarkdown = _dereq_('../output/markdown');
 var toHtml = _dereq_('../output/html');
+var toJSON = _dereq_('../output/json');
 var toLatex = _dereq_('../output/latex');
-var defaults = _dereq_('../lib/defaults');
-// const Image = require('../section/image/Image');
+var setDefaults = _dereq_('../lib/setDefaults');
+
+var defaults = {
+  infoboxes: true,
+  tables: true,
+  lists: true,
+  citations: true,
+  images: true,
+  sentences: true
+};
 
 //
 var Document = function Document(wiki, options) {
@@ -4751,18 +4760,24 @@ var Document = function Document(wiki, options) {
 };
 
 var methods = {
+  title: function title() {
+    if (this.options.title) {
+      return this.options.title;
+    }
+    var guess = null;
+    //guess the title of this page from first sentence bolding
+    var sen = this.sentences(0);
+    if (sen) {
+      guess = sen.bolds(0);
+    }
+    return guess;
+  },
   isRedirect: function isRedirect() {
     return this.data.type === 'redirect';
   },
   isDisambiguation: function isDisambiguation() {
     return this.data.type === 'disambiguation';
   },
-  // redirectTo : function() {
-  //   return p
-  // },
-  // disambigpages : function() {
-  //   return p
-  // },
   categories: function categories(n) {
     if (typeof n === 'number') {
       return this.data.categories[n];
@@ -4780,7 +4795,7 @@ var methods = {
     if (typeof n === 'string') {
       var str = n.toLowerCase().trim();
       return arr.find(function (s) {
-        return s.title.toLowerCase() === str;
+        return s.title().toLowerCase() === str;
       });
     }
     if (typeof n === 'number') {
@@ -4863,26 +4878,26 @@ var methods = {
     return this.data.coordinates || [];
   },
   plaintext: function plaintext(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     var arr = this.sections().map(function (sec) {
       return sec.plaintext(options);
     });
     return arr.join('\n\n');
   },
   markdown: function markdown(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return toMarkdown(this, options);
   },
   latex: function latex(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return toLatex(this, options);
   },
   html: function html(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return toHtml(this, options);
   },
-  json: function json() {
-    return this.data;
+  json: function json(options) {
+    return toJSON(this, options);
   },
   debug: function debug() {
     console.log('\n');
@@ -4891,7 +4906,7 @@ var methods = {
       for (var i = 0; i < sec.depth; i += 1) {
         indent = ' -' + indent;
       }
-      console.log(indent + (sec.title || '(Intro)'));
+      console.log(indent + (sec.title() || '(Intro)'));
     });
   }
 };
@@ -4917,10 +4932,11 @@ Object.keys(methods).forEach(function (k) {
 Document.prototype.toHTML = Document.prototype.html;
 Document.prototype.isDisambig = Document.prototype.isDisambiguation;
 Document.prototype.toJson = Document.prototype.json;
+Document.prototype.references = Document.prototype.citations;
 
 module.exports = Document;
 
-},{"../lib/defaults":24,"../output/html":29,"../output/latex":34,"../output/markdown":40,"./index":11}],9:[function(_dereq_,module,exports){
+},{"../lib/setDefaults":29,"../output/html":32,"../output/json":37,"../output/latex":40,"../output/markdown":45,"./index":11}],9:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../data/i18n');
@@ -5018,7 +5034,7 @@ var main = function main(wiki, options) {
 
 module.exports = main;
 
-},{"../section":51,"./categories":9,"./disambig":10,"./preProcess":14,"./redirects":17,"./templates":19}],12:[function(_dereq_,module,exports){
+},{"../section":53,"./categories":9,"./disambig":10,"./preProcess":14,"./redirects":17,"./templates":19}],12:[function(_dereq_,module,exports){
 'use strict';
 
 //converts DMS (decimal-minute-second) geo format to lat/lng format.
@@ -5230,7 +5246,7 @@ var kill_xml = function kill_xml(wiki, r, options) {
 // console.log(kill_xml("North America,<br /> and one of"))
 module.exports = kill_xml;
 
-},{"../../sentence":58,"../templates/citation":18}],16:[function(_dereq_,module,exports){
+},{"../../sentence":60,"../templates/citation":18}],16:[function(_dereq_,module,exports){
 'use strict';
 
 var languages = _dereq_('../../data/languages');
@@ -5413,9 +5429,9 @@ module.exports = parseCitation;
 var i18n = _dereq_('../../data/i18n');
 var findRecursive = _dereq_('../../lib/recursive_match');
 var keep = _dereq_('../../sentence/templates/templates'); //dont remove these ones
-var parseInfobox = _dereq_('./parse-infobox');
+var parseInfobox = _dereq_('../../infobox/parse-infobox');
 var parseCitation = _dereq_('./citation');
-var Infobox = _dereq_('./infobox');
+var Infobox = _dereq_('../../infobox/infobox');
 
 var infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 
@@ -5484,151 +5500,7 @@ var parse_recursive = function parse_recursive(r, wiki, options) {
 
 module.exports = parse_recursive;
 
-},{"../../data/i18n":5,"../../lib/recursive_match":26,"../../sentence/templates/templates":65,"./citation":18,"./infobox":20,"./parse-infobox":21}],20:[function(_dereq_,module,exports){
-'use strict';
-
-var toMarkdown = _dereq_('../../output/markdown/infobox');
-var toHtml = _dereq_('../../output/html/infobox');
-//a formal key-value data table about a topic
-var Infobox = function Infobox(obj) {
-  this.template = obj.template;
-  this.data = obj.data;
-  // this.type = this.template; //duplicate
-};
-
-var methods = {
-  markdown: function markdown(options) {
-    options = options || {};
-    return toMarkdown(this, options);
-  },
-  html: function html(options) {
-    options = options || {};
-    return toHtml(this, options);
-  },
-  plaintext: function plaintext() {
-    return '';
-  },
-  json: function json() {
-    return this.data;
-  },
-  keyValue: function keyValue() {
-    var _this = this;
-
-    return Object.keys(this.data).reduce(function (h, k) {
-      h[k] = _this.data[k].text();
-      return h;
-    }, {});
-  }
-};
-
-Object.keys(methods).forEach(function (k) {
-  Infobox.prototype[k] = methods[k];
-});
-module.exports = Infobox;
-
-},{"../../output/html/infobox":30,"../../output/markdown/infobox":41}],21:[function(_dereq_,module,exports){
-'use strict';
-
-var trim = _dereq_('../../lib/helpers').trim_whitespace;
-var findRecursive = _dereq_('../../lib/recursive_match');
-var i18n = _dereq_('../../data/i18n');
-var Image = _dereq_('../../section/image/Image');
-var parseLine = _dereq_('../../sentence').parseLine;
-var Sentence = _dereq_('../../sentence/Sentence');
-var i18_infobox = i18n.infoboxes.join('|');
-// const infobox_template_reg = new RegExp('{{(infobox) +([^\|\n]+)', 'i');
-var infobox_template_reg = new RegExp('{{(' + i18_infobox + ') +([^\|\n]+)', 'i');
-
-//which infobox is this? eg '{{Infobox author|...}}'
-var getTemplateName = function getTemplateName(str) {
-  var m = str.match(infobox_template_reg);
-  if (m && m[1]) {
-    return m[2].trim();
-  }
-  return null;
-};
-
-var parse_infobox = function parse_infobox(str) {
-  if (!str) {
-    return {};
-  }
-  var stringBuilder = [];
-  var lastChar = void 0;
-  //this collapsible list stuff is just a headache
-  var listReg = /\{\{ ?(collapsible|hlist|ublist|plainlist|Unbulleted list|flatlist)/i;
-  if (listReg.test(str)) {
-    var list = findRecursive('{', '}', str.substr(2, str.length - 2)).filter(function (f) {
-      return listReg.test(f);
-    });
-    str = str.replace(list[0], '');
-  }
-
-  var templateName = getTemplateName(str); //get the infobox name
-
-  var parDepth = -2; // first two {{
-  for (var i = 0, len = str.length; i < len; i++) {
-    if (parDepth === 0 && str[i] === '|' && lastChar !== '\n') {
-      stringBuilder.push('\n');
-    }
-    if (str[i] === '{' || str[i] === '[') {
-      parDepth++;
-    } else if (str[i] === '}' || str[i] === ']') {
-      parDepth--;
-    }
-    lastChar = str[i];
-    stringBuilder.push(lastChar);
-  }
-
-  str = stringBuilder.join('');
-  //remove top+bottom
-  str = str.replace(/^ *?\{\{.+[|\n]/, '');
-  str = str.replace(/\}\} *?$/, '');
-  var lines = str.split(/\n\*?/);
-
-  var obj = {};
-  var key = null;
-  for (var _i = 0; _i < lines.length; _i++) {
-    var l = lines[_i];
-    var keyMatch = l.match(/\| *?([^=]+)=(.+)?/i);
-    if (keyMatch && keyMatch[1]) {
-      key = trim(keyMatch[1]);
-      if (keyMatch[2]) {
-        obj[key] = trim(keyMatch[2]);
-      } else {
-        obj[key] = '';
-      }
-    } else if (key) {
-      obj[key] += l;
-    }
-  }
-  //post-process values
-  Object.keys(obj).forEach(function (k) {
-    if (!obj[k]) {
-      delete obj[k];
-      return;
-    }
-    //handle the 'image' property in a special-way
-    if (k === 'image') {
-      obj[k] = new Image(obj[k]);
-      obj[k].text = '';
-    } else {
-      obj[k] = parseLine(obj[k]);
-    }
-    if (obj[k].text && obj[k].text.match(/^[0-9,]*$/)) {
-      obj[k].text = obj[k].text.replace(/,/, '');
-      obj[k].text = parseInt(obj[k].text, 10);
-    }
-    //turn values into Sentence objects for easy use
-    obj[k] = new Sentence(obj[k]);
-  });
-  return {
-    template: templateName,
-    data: obj
-  };
-};
-module.exports = parse_infobox;
-
-},{"../../data/i18n":5,"../../lib/helpers":25,"../../lib/recursive_match":26,"../../section/image/Image":48,"../../sentence":58,"../../sentence/Sentence":56}],22:[function(_dereq_,module,exports){
+},{"../../data/i18n":5,"../../infobox/infobox":25,"../../infobox/parse-infobox":26,"../../lib/recursive_match":28,"../../sentence/templates/templates":67,"./citation":18}],20:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -5745,7 +5617,152 @@ var getPage = function getPage(title, a, b, c) {
 
 module.exports = getPage;
 
-},{"./data/site_map":7,"./document/Document":8,"cross-fetch":1}],23:[function(_dereq_,module,exports){
+},{"./data/site_map":7,"./document/Document":8,"cross-fetch":1}],21:[function(_dereq_,module,exports){
+'use strict';
+
+var Hashes = _dereq_('jshashes');
+var fetch = _dereq_('cross-fetch');
+var toMarkdown = _dereq_('../output/markdown/image');
+var toHtml = _dereq_('../output/html/image');
+var server = 'https://upload.wikimedia.org/wikipedia/commons/';
+
+var encodeTitle = function encodeTitle(file) {
+  var title = file.replace(/^(image|file?)\:/i, '');
+  //titlecase it
+  title = title.charAt(0).toUpperCase() + title.substring(1);
+  //spaces to underscores
+  title = title.replace(/ /g, '_');
+  return title;
+};
+
+//the wikimedia image url is a little silly:
+//https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F
+var makeSrc = function makeSrc(file) {
+  var title = encodeTitle(file);
+  var hash = new Hashes.MD5().hex(title);
+  var path = hash.substr(0, 1) + '/' + hash.substr(0, 2) + '/';
+  title = encodeURIComponent(title);
+  path += title;
+  return path;
+};
+
+//the class for our image generation functions
+var Image = function Image(file) {
+  this.file = file;
+  this.text = ''; //to be compatible as an infobox value
+};
+
+var methods = {
+  url: function url() {
+    return server + makeSrc(this.file);
+  },
+  thumbnail: function thumbnail(size) {
+    size = size || 300;
+    var path = makeSrc(this.file);
+    var title = encodeTitle(this.file);
+    title = encodeURIComponent(title);
+    return server + 'thumb/' + path + '/' + size + 'px-' + title;
+  },
+  format: function format() {
+    var arr = this.file.split('.');
+    if (arr[arr.length - 1]) {
+      return arr[arr.length - 1].toLowerCase();
+    }
+    return null;
+  },
+  exists: function exists(callback) {
+    var _this = this;
+
+    //check if the image (still) exists
+    return new Promise(function (cb) {
+      fetch(_this.url(), {
+        method: 'HEAD'
+      }).then(function (res) {
+        var exists = res.status === 200;
+        //support callback non-promise form
+        if (callback) {
+          callback(exists);
+        }
+        cb(exists);
+      });
+    });
+  },
+
+  markdown: function markdown(options) {
+    options = options || {};
+    return toMarkdown(this, options);
+  },
+  html: function html(options) {
+    options = options || {};
+    return toHtml(this, options);
+  },
+  json: function json() {
+    return {
+      file: this.file,
+      url: this.url(),
+      thumb: this.thumbnail()
+    };
+  }
+};
+
+Object.keys(methods).forEach(function (k) {
+  Image.prototype[k] = methods[k];
+});
+//aliases
+Image.prototype.src = Image.prototype.url;
+Image.prototype.thumb = Image.prototype.thumbnail;
+module.exports = Image;
+
+},{"../output/html/image":31,"../output/markdown/image":44,"cross-fetch":1,"jshashes":2}],22:[function(_dereq_,module,exports){
+'use strict';
+
+var i18n = _dereq_('../data/i18n');
+var parseImage = _dereq_('./parse-image');
+var fileRegex = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
+
+var parseImages = function parseImages(matches, r, wiki, options) {
+  matches.forEach(function (s) {
+    if (s.match(fileRegex)) {
+      r.images = r.images || [];
+      if (options.images !== false) {
+        r.images.push(parseImage(s));
+      }
+      wiki = wiki.replace(s, '');
+    }
+  });
+  return wiki;
+};
+module.exports = parseImages;
+
+},{"../data/i18n":5,"./parse-image":23}],23:[function(_dereq_,module,exports){
+'use strict';
+
+var Image = _dereq_('./Image');
+var i18n = _dereq_('../data/i18n');
+var file_reg = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
+
+//images are usually [[image:my_pic.jpg]]
+var parse_image = function parse_image(img) {
+  var m = img.match(file_reg) || [''];
+  if (m === null) {
+    return null;
+  }
+  var file = m[0].replace(/[\|\]]$/, '');
+  var title = file.replace(/^(image|file?)\:/i, '');
+  //titlecase it
+  title = title.charAt(0).toUpperCase() + title.substring(1);
+  //spaces to underscores
+  title = title.replace(/ /g, '_');
+  if (title) {
+    return new Image(file);
+  }
+  return null;
+};
+module.exports = parse_image;
+
+// console.log(parse_image("[[image:my_pic.jpg]]"));
+
+},{"../data/i18n":5,"./Image":21}],24:[function(_dereq_,module,exports){
 'use strict';
 
 var Document = _dereq_('./document/Document');
@@ -5763,19 +5780,160 @@ wtf.version = version;
 
 module.exports = wtf;
 
-},{"../package":3,"./document/Document":8,"./fetch":22}],24:[function(_dereq_,module,exports){
-"use strict";
+},{"../package":3,"./document/Document":8,"./fetch":20}],25:[function(_dereq_,module,exports){
+'use strict';
 
-module.exports = {
-  infoboxes: true,
-  tables: true,
-  lists: true,
-  citations: true,
-  images: true,
-  sentences: true
+var toMarkdown = _dereq_('../output/markdown/infobox');
+var toHtml = _dereq_('../output/html/infobox');
+//a formal key-value data table about a topic
+var Infobox = function Infobox(obj) {
+  this.template = obj.template;
+  this.data = obj.data;
+  // this.type = this.template; //duplicate
 };
 
-},{}],25:[function(_dereq_,module,exports){
+var methods = {
+  markdown: function markdown(options) {
+    options = options || {};
+    return toMarkdown(this, options);
+  },
+  html: function html(options) {
+    options = options || {};
+    return toHtml(this, options);
+  },
+  plaintext: function plaintext() {
+    return '';
+  },
+  json: function json() {
+    var _this = this;
+
+    return Object.keys(this.data).reduce(function (h, k) {
+      if (_this.data[k]) {
+        h[k] = _this.data[k].json();
+      }
+      return h;
+    }, {});
+  },
+  keyValue: function keyValue() {
+    var _this2 = this;
+
+    return Object.keys(this.data).reduce(function (h, k) {
+      if (_this2.data[k]) {
+        h[k] = _this2.data[k].text();
+      }
+      return h;
+    }, {});
+  }
+};
+
+Object.keys(methods).forEach(function (k) {
+  Infobox.prototype[k] = methods[k];
+});
+module.exports = Infobox;
+
+},{"../output/html/infobox":33,"../output/markdown/infobox":46}],26:[function(_dereq_,module,exports){
+'use strict';
+
+var trim = _dereq_('../lib/helpers').trim_whitespace;
+var findRecursive = _dereq_('../lib/recursive_match');
+var i18n = _dereq_('../data/i18n');
+var Image = _dereq_('../image/Image');
+var parseLine = _dereq_('../sentence').parseLine;
+var Sentence = _dereq_('../sentence/Sentence');
+var i18_infobox = i18n.infoboxes.join('|');
+// const infobox_template_reg = new RegExp('{{(infobox) +([^\|\n]+)', 'i');
+var infobox_template_reg = new RegExp('{{(' + i18_infobox + ') +([^\|\n]+)', 'i');
+
+//which infobox is this? eg '{{Infobox author|...}}'
+var getTemplateName = function getTemplateName(str) {
+  var m = str.match(infobox_template_reg);
+  if (m && m[1]) {
+    return m[2].trim();
+  }
+  return null;
+};
+
+var parse_infobox = function parse_infobox(str) {
+  if (!str) {
+    return {};
+  }
+  var stringBuilder = [];
+  var lastChar = void 0;
+  //this collapsible list stuff is just a headache
+  var listReg = /\{\{ ?(collapsible|hlist|ublist|plainlist|Unbulleted list|flatlist)/i;
+  if (listReg.test(str)) {
+    var list = findRecursive('{', '}', str.substr(2, str.length - 2)).filter(function (f) {
+      return listReg.test(f);
+    });
+    str = str.replace(list[0], '');
+  }
+
+  var templateName = getTemplateName(str); //get the infobox name
+
+  var parDepth = -2; // first two {{
+  for (var i = 0, len = str.length; i < len; i++) {
+    if (parDepth === 0 && str[i] === '|' && lastChar !== '\n') {
+      stringBuilder.push('\n');
+    }
+    if (str[i] === '{' || str[i] === '[') {
+      parDepth++;
+    } else if (str[i] === '}' || str[i] === ']') {
+      parDepth--;
+    }
+    lastChar = str[i];
+    stringBuilder.push(lastChar);
+  }
+
+  str = stringBuilder.join('');
+  //remove top+bottom
+  str = str.replace(/^ *?\{\{.+[|\n]/, '');
+  str = str.replace(/\}\} *?$/, '');
+  var lines = str.split(/\n\*?/);
+
+  var obj = {};
+  var key = null;
+  for (var _i = 0; _i < lines.length; _i++) {
+    var l = lines[_i];
+    var keyMatch = l.match(/\| *?([^=]+)=(.+)?/i);
+    if (keyMatch && keyMatch[1]) {
+      key = trim(keyMatch[1]);
+      if (keyMatch[2]) {
+        obj[key] = trim(keyMatch[2]);
+      } else {
+        obj[key] = '';
+      }
+    } else if (key) {
+      obj[key] += l;
+    }
+  }
+  //post-process values
+  Object.keys(obj).forEach(function (k) {
+    if (!obj[k]) {
+      delete obj[k];
+      return;
+    }
+    //handle the 'image' property in a special-way
+    if (k === 'image') {
+      obj[k] = new Image(obj[k]);
+      obj[k].text = '';
+    } else {
+      obj[k] = parseLine(obj[k]);
+    }
+    if (obj[k].text && obj[k].text.match(/^[0-9,]*$/)) {
+      obj[k].text = obj[k].text.replace(/,/, '');
+      obj[k].text = parseInt(obj[k].text, 10);
+    }
+    //turn values into Sentence objects for easy use
+    obj[k] = new Sentence(obj[k]);
+  });
+  return {
+    template: templateName,
+    data: obj
+  };
+};
+module.exports = parse_infobox;
+
+},{"../data/i18n":5,"../image/Image":21,"../lib/helpers":27,"../lib/recursive_match":28,"../sentence":60,"../sentence/Sentence":58}],27:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = {
@@ -5801,7 +5959,7 @@ var helpers = {
 };
 module.exports = helpers;
 
-},{}],26:[function(_dereq_,module,exports){
+},{}],28:[function(_dereq_,module,exports){
 'use strict';
 
 //find all the pairs of '[[...[[..]]...]]' in the text
@@ -5851,7 +6009,25 @@ module.exports = find_recursive;
 // console.log(find_recursive('{', '}', 'he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas'));
 // console.log(find_recursive("{", "}", "this is fun {{nowrap{{small1995–present}}}} and it works"))
 
-},{}],27:[function(_dereq_,module,exports){
+},{}],29:[function(_dereq_,module,exports){
+"use strict";
+
+//
+var setDefaults = function setDefaults(options, defaults) {
+  var obj = {};
+  defaults = defaults || {};
+  Object.keys(defaults).forEach(function (k) {
+    obj[k] = defaults[k];
+  });
+  options = options || {};
+  Object.keys(options).forEach(function (k) {
+    obj[k] = options[k];
+  });
+  return obj;
+};
+module.exports = setDefaults;
+
+},{}],30:[function(_dereq_,module,exports){
 'use strict';
 
 //escape a string like 'fun*2.Co' for a regExpr
@@ -5884,7 +6060,7 @@ var smartReplace = function smartReplace(all, text, result) {
 
 module.exports = smartReplace;
 
-},{}],28:[function(_dereq_,module,exports){
+},{}],31:[function(_dereq_,module,exports){
 'use strict';
 
 var makeImage = function makeImage(image) {
@@ -5894,7 +6070,7 @@ var makeImage = function makeImage(image) {
 };
 module.exports = makeImage;
 
-},{}],29:[function(_dereq_,module,exports){
+},{}],32:[function(_dereq_,module,exports){
 'use strict';
 
 var doInfobox = _dereq_('./infobox');
@@ -5922,7 +6098,7 @@ var toHtml = function toHtml(doc, options) {
 };
 module.exports = toHtml;
 
-},{"./infobox":30,"./section":31}],30:[function(_dereq_,module,exports){
+},{"./infobox":33,"./section":34}],33:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -5949,7 +6125,7 @@ var infobox = function infobox(obj, options) {
 };
 module.exports = infobox;
 
-},{"./sentence":32}],31:[function(_dereq_,module,exports){
+},{"./sentence":35}],34:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -5968,9 +6144,9 @@ var doList = function doList(list) {
 var doSection = function doSection(section, options) {
   var html = '';
   //make the header
-  if (options.title === true && section.title) {
+  if (options.title === true && section.title()) {
     var num = 1 + section.depth;
-    html += '  <h' + num + '>' + section.title + '</h' + num + '>';
+    html += '  <h' + num + '>' + section.title() + '</h' + num + '>';
     html += '\n';
   }
   //put any images under the header
@@ -6007,7 +6183,7 @@ var doSection = function doSection(section, options) {
 };
 module.exports = doSection;
 
-},{"./image":28,"./sentence":32,"./table":33}],32:[function(_dereq_,module,exports){
+},{"./image":31,"./sentence":35,"./table":36}],35:[function(_dereq_,module,exports){
 'use strict';
 
 var smartReplace = _dereq_('../../lib/smartReplace');
@@ -6047,7 +6223,7 @@ var doSentence = function doSentence(sentence) {
 };
 module.exports = doSentence;
 
-},{"../../lib/smartReplace":27}],33:[function(_dereq_,module,exports){
+},{"../../lib/smartReplace":30}],36:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6076,13 +6252,167 @@ var doTable = function doTable(table, options) {
 };
 module.exports = doTable;
 
-},{"./sentence":32}],34:[function(_dereq_,module,exports){
+},{"./sentence":35}],37:[function(_dereq_,module,exports){
+'use strict';
+
+var setDefaults = _dereq_('../../lib/setDefaults');
+var defaults = {
+  title: true,
+  pageID: true,
+  categories: true,
+  citations: true,
+  coordinates: true,
+  infoboxes: true,
+  sections: true,
+
+  images: false, //these are already in sections/infoboxes
+  plaintext: false,
+  html: false,
+  markdown: false
+};
+
+//an opinionated output of the most-wanted data
+var toJSON = function toJSON(doc, options) {
+  options = setDefaults(options, defaults);
+  var data = {};
+
+  if (options.title) {
+    data.title = doc.options.title || doc.title();
+  }
+  if (options.pageID && doc.options.pageID) {
+    data.pageID = doc.options.pageID;
+  }
+  if (options.categories) {
+    data.categories = doc.categories();
+  }
+  if (options.citations && doc.citations().length > 0) {
+    data.citations = doc.citations();
+  }
+  if (options.coordinates && doc.coordinates().length > 0) {
+    data.coordinates = doc.coordinates();
+  }
+
+  //these need their own .json() method
+  if (options.infoboxes) {
+    data.infoboxes = doc.infoboxes().map(function (i) {
+      return i.json();
+    });
+  }
+  if (options.images) {
+    data.images = doc.images().map(function (i) {
+      return i.json();
+    });
+  }
+  if (options.sections) {
+    data.sections = doc.sections().map(function (i) {
+      return i.json();
+    });
+  }
+
+  //these are default-off
+  if (options.plaintext) {
+    data.plaintext = doc.plaintext(options);
+  }
+  if (options.markdown) {
+    data.markdown = doc.markdown(options);
+  }
+  if (options.html) {
+    data.html = doc.html(options);
+  }
+  return data;
+};
+module.exports = toJSON;
+
+},{"../../lib/setDefaults":29}],38:[function(_dereq_,module,exports){
+'use strict';
+
+var setDefaults = _dereq_('../../lib/setDefaults');
+var defaults = {
+  title: true,
+  depth: true,
+  sentences: true,
+  links: true,
+  text: true,
+  formatting: true,
+  dates: true,
+  tables: true,
+  lists: true,
+  templates: true,
+  images: true
+};
+//
+var toJSON = function toJSON(s, options) {
+  options = setDefaults(options, defaults);
+  var data = {};
+  if (options.title) {
+    data.title = s.title();
+  }
+  if (options.depth) {
+    data.depth = s.depth;
+  }
+  //these return objects
+  if (options.sentences) {
+    data.sentences = s.sentences().map(function (sen) {
+      return sen.json(options);
+    });
+  }
+  if (options.images && s.images().length > 0) {
+    data.images = s.images().map(function (img) {
+      return img.json(options);
+    });
+  }
+  //more stuff
+  if (options.tables && s.tables().length > 0) {
+    data.tables = s.tables();
+  }
+  if (options.templates && s.templates().length > 0) {
+    data.templates = s.templates();
+  }
+  if (options.lists && s.lists().length > 0) {
+    data.tables = s.lists();
+  }
+  return data;
+};
+module.exports = toJSON;
+
+},{"../../lib/setDefaults":29}],39:[function(_dereq_,module,exports){
+'use strict';
+
+var setDefaults = _dereq_('../../lib/setDefaults');
+var defaults = {
+  text: true,
+  links: true,
+  formatting: true,
+  dates: true
+};
+
+var toJSON = function toJSON(s, options) {
+  options = setDefaults(options, defaults);
+  var data = {};
+  if (options.text || options.plaintext) {
+    data.text = s.plaintext();
+  }
+  if (options.links && s.data.links) {
+    data.links = s.links();
+  }
+  if (options.formatting && s.data.fmt) {
+    data.formatting = s.data.fmt;
+  }
+  if (options.dates && s.data.dates) {
+    data.dates = s.data.dates;
+  }
+  return data;
+};
+module.exports = toJSON;
+
+},{"../../lib/setDefaults":29}],40:[function(_dereq_,module,exports){
 'use strict';
 
 var doInfobox = _dereq_('./infobox');
 var doSentence = _dereq_('./sentence');
 var doTable = _dereq_('./table');
-var doMath = _dereq_('./math');
+var setDefaults = _dereq_('../../lib/setDefaults');
+// const doMath = require('./math');
 
 var defaults = {
   infoboxes: true,
@@ -6119,7 +6449,7 @@ var doSection = function doSection(section, options) {
   var out = '';
   var num = 1;
   //make the header
-  if (options.title === true && section.title) {
+  if (options.title === true && section.title()) {
     num = 1 + section.depth;
     var vOpen = '\n';
     var vClose = '}';
@@ -6148,7 +6478,7 @@ var doSection = function doSection(section, options) {
         vOpen += '\n% section with depth=' + num + ' undefined - use subparagraph instead\n\\subparagraph{';
         vClose = '} \\\\ \n';
     }
-    out += vOpen + section.title + vClose;
+    out += vOpen + section.title() + vClose;
     out += '\n';
   }
   //put any images under the header
@@ -6186,7 +6516,7 @@ var doSection = function doSection(section, options) {
 };
 //
 var toLatex = function toLatex(doc, options) {
-  options = Object.assign(defaults, options);
+  options = setDefaults(options, defaults);
   var data = doc.data;
   var out = '';
   //add the title on the top
@@ -6207,7 +6537,7 @@ var toLatex = function toLatex(doc, options) {
 };
 module.exports = toLatex;
 
-},{"./infobox":35,"./math":36,"./sentence":37,"./table":38}],35:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":29,"./infobox":41,"./sentence":42,"./table":43}],41:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6238,41 +6568,7 @@ var infobox = function infobox(obj, options) {
 };
 module.exports = infobox;
 
-},{"./sentence":37}],36:[function(_dereq_,module,exports){
-'use strict';
-
-/*
-EXPORT LaTeX
-------------
-The following MediaWiki source text containd embedded mathematical expressions inline and as separated line ":<math>...":
-
-This expression <math> f(x) </math> is a mathematical INLINE expression.
-The next line is a BLOCK expression in a separate line.
-:<math> f(x) </math>
-This is the text below the BLOCK expression.
-*/
-
-// handle inline mathematical expression
-var doMathInline = function doMathInline(pMath, options) {
-  // pMath is internal LaTeX code for the mathematical expression e.g. "f(x)"
-  // pMath does not contain the wrapped <math>-tags from the MediaWiki source
-  var out = '$' + pMath + '$';
-  return out;
-};
-
-// handle mathematical expression displayed in a separate line
-var doMathBlock = function doMathBlock(pMath, options) {
-  var out = '\\[' + pMath + '\\]';
-  return out + ' ';
-};
-
-// Export the two functions
-module.exports = {
-  doMathInline: doMathInline,
-  doMathBlock: doMathBlock
-};
-
-},{}],37:[function(_dereq_,module,exports){
+},{"./sentence":42}],42:[function(_dereq_,module,exports){
 'use strict';
 
 var smartReplace = _dereq_('../../lib/smartReplace');
@@ -6314,7 +6610,7 @@ var doSentence = function doSentence(sentence, options) {
 };
 module.exports = doSentence;
 
-},{"../../lib/smartReplace":27}],38:[function(_dereq_,module,exports){
+},{"../../lib/smartReplace":30}],43:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6359,7 +6655,7 @@ var doTable = function doTable(table, options) {
 };
 module.exports = doTable;
 
-},{"./sentence":37}],39:[function(_dereq_,module,exports){
+},{"./sentence":42}],44:[function(_dereq_,module,exports){
 'use strict';
 
 //markdown images are like this: ![alt text](href)
@@ -6371,7 +6667,7 @@ var doImage = function doImage(image) {
 
 module.exports = doImage;
 
-},{}],40:[function(_dereq_,module,exports){
+},{}],45:[function(_dereq_,module,exports){
 'use strict';
 
 var doSection = _dereq_('./section');
@@ -6398,7 +6694,7 @@ var toMarkdown = function toMarkdown(doc, options) {
 };
 module.exports = toMarkdown;
 
-},{"./infobox":41,"./section":43}],41:[function(_dereq_,module,exports){
+},{"./infobox":46,"./section":48}],46:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6425,7 +6721,7 @@ var doInfobox = function doInfobox(obj, options) {
 };
 module.exports = doInfobox;
 
-},{"./pad":42,"./sentence":44}],42:[function(_dereq_,module,exports){
+},{"./pad":47,"./sentence":49}],47:[function(_dereq_,module,exports){
 'use strict';
 
 //center-pad each cell, to make the table more legible
@@ -6445,12 +6741,21 @@ var pad = function pad(str, cellWidth) {
 };
 module.exports = pad;
 
-},{}],43:[function(_dereq_,module,exports){
+},{}],48:[function(_dereq_,module,exports){
 'use strict';
 
 var doTable = _dereq_('./table');
 var doSentence = _dereq_('./sentence');
 var doImage = _dereq_('./image');
+var setDefaults = _dereq_('../../lib/setDefaults');
+
+var defaults = {
+  title: true,
+  images: true,
+  tables: true,
+  lists: true,
+  sentences: true
+};
 
 var doList = function doList(list, options) {
   return list.map(function (o) {
@@ -6460,14 +6765,15 @@ var doList = function doList(list, options) {
 };
 
 var doSection = function doSection(section, options) {
+  options = setDefaults(options, defaults);
   var md = '';
   //make the header
-  if (options.title === true && section.title) {
+  if (options.title === true && section.title()) {
     var header = '##';
     for (var i = 0; i < section.depth; i += 1) {
       header += '#';
     }
-    md += header + ' ' + section.title + '\n';
+    md += header + ' ' + section.title() + '\n';
   }
   //put any images under the header
   if (options.images === true) {
@@ -6510,7 +6816,7 @@ var doSection = function doSection(section, options) {
 };
 module.exports = doSection;
 
-},{"./image":39,"./sentence":44,"./table":45}],44:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":29,"./image":44,"./sentence":49,"./table":50}],49:[function(_dereq_,module,exports){
 'use strict';
 
 var smartReplace = _dereq_('../../lib/smartReplace');
@@ -6552,7 +6858,7 @@ var doSentence = function doSentence(sentence) {
 };
 module.exports = doSentence;
 
-},{"../../lib/smartReplace":27}],45:[function(_dereq_,module,exports){
+},{"../../lib/smartReplace":30}],50:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6604,29 +6910,39 @@ var doTable = function doTable(table, options) {
 };
 module.exports = doTable;
 
-},{"./pad":42,"./sentence":44}],46:[function(_dereq_,module,exports){
+},{"./pad":47,"./sentence":49}],51:[function(_dereq_,module,exports){
 'use strict';
 
 var toMarkdown = _dereq_('../output/markdown/section');
 var toHtml = _dereq_('../output/html/section');
+var toJSON = _dereq_('../output/json/section');
 var Sentence = _dereq_('../sentence/Sentence');
-var defaults = _dereq_('../lib/defaults');
+var setDefaults = _dereq_('../lib/setDefaults');
+var defaults = {
+  infoboxes: true,
+  tables: true,
+  lists: true,
+  citations: true,
+  images: true,
+  sentences: true
+};
 
 //the stuff between headings - 'History' section for example
 var Section = function Section(data) {
   this.data = data;
-  this.title = data.title;
   this.depth = data.depth;
+  this.doc = null;
   //hide this circular property in console.logs..
   // Object.defineProperty(this, 'doc', {
   //   enumerable: false, // hide it from for..in
   //   value: null
   // });
-  this.doc = null;
-  // this.sentences = data.sentences;
 };
 
 var methods = {
+  title: function title() {
+    return this.data.title || '';
+  },
   index: function index() {
     if (!this.doc) {
       return null;
@@ -6707,14 +7023,14 @@ var methods = {
       return null;
     }
     var bads = {};
-    bads[this.title] = true;
+    bads[this.title()] = true;
     //remove children too
     this.children().forEach(function (sec) {
-      return bads[sec.title] = true;
+      return bads[sec.title()] = true;
     });
     var arr = this.doc.data.sections;
     arr = arr.filter(function (sec) {
-      return bads.hasOwnProperty(sec.title) !== true;
+      return bads.hasOwnProperty(sec.title()) !== true;
     });
     this.doc.data.sections = arr;
     return this.doc;
@@ -6749,6 +7065,7 @@ var methods = {
     if (!this.doc) {
       return null;
     }
+
     var sections = this.doc.sections();
     var index = this.index();
     var children = [];
@@ -6763,8 +7080,12 @@ var methods = {
       }
     }
     if (typeof n === 'string') {
+      n = n.toLowerCase();
+      children.forEach(function (c) {
+        return console.log(c);
+      });
       return children.find(function (s) {
-        return s.title === n;
+        return s.title().toLowerCase() === n;
       });
     }
     if (typeof n === 'number') {
@@ -6787,21 +7108,21 @@ var methods = {
   },
 
   markdown: function markdown(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return toMarkdown(this, options);
   },
   html: function html(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return toHtml(this, options);
   },
   plaintext: function plaintext(options) {
-    options = Object.assign(defaults, options || {});
+    options = setDefaults(options, defaults);
     return this.sentences().map(function (s) {
       return s.plaintext(options);
     }).join(' ');
   },
-  json: function json() {
-    return this.data;
+  json: function json(options) {
+    return toJSON(this, options);
   }
 };
 //aliases
@@ -6815,7 +7136,7 @@ Object.keys(methods).forEach(function (k) {
 
 module.exports = Section;
 
-},{"../lib/defaults":24,"../output/html/section":31,"../output/markdown/section":43,"../sentence/Sentence":56}],47:[function(_dereq_,module,exports){
+},{"../lib/setDefaults":29,"../output/html/section":34,"../output/json/section":38,"../output/markdown/section":48,"../sentence/Sentence":58}],52:[function(_dereq_,module,exports){
 'use strict';
 
 var fns = _dereq_('../lib/helpers');
@@ -6842,145 +7163,7 @@ var parseHeading = function parseHeading(r, str) {
 };
 module.exports = parseHeading;
 
-},{"../lib/helpers":25}],48:[function(_dereq_,module,exports){
-'use strict';
-
-var Hashes = _dereq_('jshashes');
-var fetch = _dereq_('cross-fetch');
-var toMarkdown = _dereq_('../../output/markdown/image');
-var toHtml = _dereq_('../../output/html/image');
-var server = 'https://upload.wikimedia.org/wikipedia/commons/';
-
-var encodeTitle = function encodeTitle(file) {
-  var title = file.replace(/^(image|file?)\:/i, '');
-  //titlecase it
-  title = title.charAt(0).toUpperCase() + title.substring(1);
-  //spaces to underscores
-  title = title.replace(/ /g, '_');
-  return title;
-};
-
-//the wikimedia image url is a little silly:
-//https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F
-var makeSrc = function makeSrc(file) {
-  var title = encodeTitle(file);
-  var hash = new Hashes.MD5().hex(title);
-  var path = hash.substr(0, 1) + '/' + hash.substr(0, 2) + '/';
-  title = encodeURIComponent(title);
-  path += title;
-  return path;
-};
-
-//the class for our image generation functions
-var Image = function Image(file) {
-  this.file = file;
-  this.text = ''; //to be compatible as an infobox value
-};
-
-var methods = {
-  url: function url() {
-    return server + makeSrc(this.file);
-  },
-  thumbnail: function thumbnail(size) {
-    size = size || 300;
-    var path = makeSrc(this.file);
-    var title = encodeTitle(this.file);
-    title = encodeURIComponent(title);
-    return server + 'thumb/' + path + '/' + size + 'px-' + title;
-  },
-  format: function format() {
-    var arr = this.file.split('.');
-    if (arr[arr.length - 1]) {
-      return arr[arr.length - 1].toLowerCase();
-    }
-    return null;
-  },
-  exists: function exists(callback) {
-    var _this = this;
-
-    //check if the image (still) exists
-    return new Promise(function (cb) {
-      fetch(_this.url(), {
-        method: 'HEAD'
-      }).then(function (res) {
-        var exists = res.status === 200;
-        //support callback non-promise form
-        if (callback) {
-          callback(exists);
-        }
-        cb(exists);
-      });
-    });
-  },
-
-  markdown: function markdown(options) {
-    options = options || {};
-    return toMarkdown(this, options);
-  },
-  html: function html(options) {
-    options = options || {};
-    return toHtml(this, options);
-  }
-};
-
-Object.keys(methods).forEach(function (k) {
-  Image.prototype[k] = methods[k];
-});
-//aliases
-Image.prototype.src = Image.prototype.url;
-Image.prototype.thumb = Image.prototype.thumbnail;
-module.exports = Image;
-
-},{"../../output/html/image":28,"../../output/markdown/image":39,"cross-fetch":1,"jshashes":2}],49:[function(_dereq_,module,exports){
-'use strict';
-
-var i18n = _dereq_('../../data/i18n');
-var parseImage = _dereq_('./parse-image');
-var fileRegex = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
-
-var parseImages = function parseImages(matches, r, wiki, options) {
-  matches.forEach(function (s) {
-    if (s.match(fileRegex)) {
-      r.images = r.images || [];
-      if (options.images !== false) {
-        r.images.push(parseImage(s));
-      }
-      wiki = wiki.replace(s, '');
-    }
-  });
-  return wiki;
-};
-module.exports = parseImages;
-
-},{"../../data/i18n":5,"./parse-image":50}],50:[function(_dereq_,module,exports){
-'use strict';
-
-var Image = _dereq_('./Image');
-var i18n = _dereq_('../../data/i18n');
-var file_reg = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
-
-//images are usually [[image:my_pic.jpg]]
-var parse_image = function parse_image(img) {
-  var m = img.match(file_reg) || [''];
-  if (m === null) {
-    return null;
-  }
-  var file = m[0].replace(/[\|\]]$/, '');
-  var title = file.replace(/^(image|file?)\:/i, '');
-  //titlecase it
-  title = title.charAt(0).toUpperCase() + title.substring(1);
-  //spaces to underscores
-  title = title.replace(/ /g, '_');
-  if (title) {
-    return new Image(file);
-  }
-  return null;
-};
-module.exports = parse_image;
-
-// console.log(parse_image("[[image:my_pic.jpg]]"));
-
-},{"../../data/i18n":5,"./Image":48}],51:[function(_dereq_,module,exports){
+},{"../lib/helpers":27}],53:[function(_dereq_,module,exports){
 'use strict';
 
 var Section = _dereq_('./Section');
@@ -6990,7 +7173,7 @@ var find_recursive = _dereq_('../lib/recursive_match');
 var parse = {
   heading: _dereq_('./heading'),
   list: _dereq_('./list'),
-  image: _dereq_('./image'),
+  image: _dereq_('../image'),
   interwiki: _dereq_('./interwiki'),
   table: _dereq_('./table'),
   templates: _dereq_('./templates'),
@@ -7036,7 +7219,7 @@ var makeSections = function makeSections(r, wiki, options) {
 
 module.exports = makeSections;
 
-},{"../lib/recursive_match":26,"../sentence":58,"./Section":46,"./heading":47,"./image":49,"./interwiki":52,"./list":53,"./table":54,"./templates":55}],52:[function(_dereq_,module,exports){
+},{"../image":22,"../lib/recursive_match":28,"../sentence":60,"./Section":51,"./heading":52,"./interwiki":54,"./list":55,"./table":56,"./templates":57}],54:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../data/i18n');
@@ -7058,7 +7241,7 @@ var interwiki = function interwiki(matches, r, wiki, options) {
 };
 module.exports = interwiki;
 
-},{"../data/i18n":5}],53:[function(_dereq_,module,exports){
+},{"../data/i18n":5}],55:[function(_dereq_,module,exports){
 'use strict';
 
 var list_reg = /^[#\*:;\|]+/;
@@ -7137,7 +7320,7 @@ var parseList = function parseList(r, wiki) {
 };
 module.exports = parseList;
 
-},{"../sentence/":58,"../sentence/Sentence":56}],54:[function(_dereq_,module,exports){
+},{"../sentence/":60,"../sentence/Sentence":58}],56:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../lib/helpers');
@@ -7270,7 +7453,7 @@ var findTables = function findTables(r, wiki) {
 };
 module.exports = findTables;
 
-},{"../lib/helpers":25,"../sentence/":58,"../sentence/Sentence":56}],55:[function(_dereq_,module,exports){
+},{"../lib/helpers":27,"../sentence/":60,"../sentence/Sentence":58}],57:[function(_dereq_,module,exports){
 'use strict';
 
 // const parseCoord = require('./coordinates');
@@ -7302,11 +7485,12 @@ var parseTemplates = function parseTemplates(section, wiki) {
 };
 module.exports = parseTemplates;
 
-},{}],56:[function(_dereq_,module,exports){
+},{}],58:[function(_dereq_,module,exports){
 'use strict';
 
 var toHtml = _dereq_('../output/html/sentence');
 var toMarkdown = _dereq_('../output/markdown/sentence');
+var toJSON = _dereq_('../output/json/sentence');
 
 //where we store the formatting, link, date information
 var Sentence = function Sentence(data) {
@@ -7361,6 +7545,9 @@ var methods = {
   },
   plaintext: function plaintext() {
     return this.data.text || '';
+  },
+  json: function json(options) {
+    return toJSON(this, options);
   }
 };
 
@@ -7374,7 +7561,7 @@ Sentence.prototype.text = Sentence.prototype.plaintext;
 
 module.exports = Sentence;
 
-},{"../output/html/sentence":32,"../output/markdown/sentence":44}],57:[function(_dereq_,module,exports){
+},{"../output/html/sentence":35,"../output/json/sentence":39,"../output/markdown/sentence":49}],59:[function(_dereq_,module,exports){
 'use strict';
 
 //handle the bold/italics
@@ -7413,7 +7600,7 @@ var formatting = function formatting(obj) {
 };
 module.exports = formatting;
 
-},{}],58:[function(_dereq_,module,exports){
+},{}],60:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../lib/helpers');
@@ -7479,7 +7666,7 @@ module.exports = {
   parseLine: parseLine
 };
 
-},{"../data/i18n":5,"../lib/helpers":25,"./formatting":57,"./links":59,"./sentence-parser":60,"./templates":63}],59:[function(_dereq_,module,exports){
+},{"../data/i18n":5,"../lib/helpers":27,"./formatting":59,"./links":61,"./sentence-parser":62,"./templates":65}],61:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../lib/helpers');
@@ -7555,7 +7742,7 @@ var parse_links = function parse_links(str) {
 };
 module.exports = parse_links;
 
-},{"../lib/helpers":25}],60:[function(_dereq_,module,exports){
+},{"../lib/helpers":27}],62:[function(_dereq_,module,exports){
 'use strict';
 
 //split text into sentences, using regex
@@ -7677,7 +7864,7 @@ var sentence_parser = function sentence_parser(text) {
 module.exports = sentence_parser;
 // console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2);
 
-},{"../data/abbreviations":4}],61:[function(_dereq_,module,exports){
+},{"../data/abbreviations":4}],63:[function(_dereq_,module,exports){
 'use strict';
 
 //assorted parsing methods for date/time templates
@@ -7765,7 +7952,7 @@ module.exports = {
   ymd: ymd
 };
 
-},{}],62:[function(_dereq_,module,exports){
+},{}],64:[function(_dereq_,module,exports){
 "use strict";
 
 //this is allowed to be rough
@@ -7806,7 +7993,7 @@ var delta = function delta(from, to) {
 
 module.exports = delta;
 
-},{}],63:[function(_dereq_,module,exports){
+},{}],65:[function(_dereq_,module,exports){
 'use strict';
 
 var parsers = _dereq_('./parsers');
@@ -7850,7 +8037,7 @@ var parseTemplates = function parseTemplates(obj) {
 };
 module.exports = parseTemplates;
 
-},{"./parsers":64,"./templates":65}],64:[function(_dereq_,module,exports){
+},{"./parsers":66,"./templates":67}],66:[function(_dereq_,module,exports){
 'use strict';
 
 var dates = _dereq_('./dates');
@@ -8032,7 +8219,7 @@ var parsers = {
 };
 module.exports = parsers;
 
-},{"./dates":61,"./delta_date":62}],65:[function(_dereq_,module,exports){
+},{"./dates":63,"./delta_date":64}],67:[function(_dereq_,module,exports){
 'use strict';
 
 //templates we support
@@ -8089,5 +8276,5 @@ var keep = {
 };
 module.exports = keep;
 
-},{}]},{},[23])(23)
+},{}]},{},[24])(24)
 });

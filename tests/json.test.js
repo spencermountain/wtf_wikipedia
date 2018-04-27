@@ -8,8 +8,8 @@ test('json-output-default', t => {
   t.ok(data.categories, 'categories');
   t.ok(data.citations, 'citations');
   t.ok(data.infoboxes, 'infoboxes');
-  t.ok(data.images, 'images');
   t.ok(data.sections, 'sections');
+  t.ok(!data.images, 'images');
   t.end();
 });
 

@@ -104,11 +104,11 @@ const methods = {
       return null;
     }
     let bads = {};
-    bads[this.title] = true;
+    bads[this.title()] = true;
     //remove children too
-    this.children().forEach((sec) => bads[sec.title] = true);
+    this.children().forEach((sec) => bads[sec.title()] = true);
     let arr = this.doc.data.sections;
-    arr = arr.filter(sec => bads.hasOwnProperty(sec.title) !== true);
+    arr = arr.filter(sec => bads.hasOwnProperty(sec.title()) !== true);
     this.doc.data.sections = arr;
     return this.doc;
   },
@@ -142,6 +142,7 @@ const methods = {
     if (!this.doc) {
       return null;
     }
+
     let sections = this.doc.sections();
     let index = this.index();
     let children = [];
@@ -156,7 +157,9 @@ const methods = {
       }
     }
     if (typeof n === 'string') {
-      return children.find(s => s.title === n);
+      n = n.toLowerCase();
+      children.forEach((c) => console.log(c));
+      return children.find(s => s.title().toLowerCase() === n);
     }
     if (typeof n === 'number') {
       return children[n];

@@ -9,12 +9,9 @@ const fromFile = require('./tests/lib/_cachedPage');
 
 //doc.infoboxes('Venue')
 
-let doc = fromFile('royal_cinema');
-console.log(doc.section(0).json({
-  links: false,
-  formatting: false,
-}));
-
+// let doc = fromFile('royal_cinema');
+let doc = fromFile('toronto');
+console.log(doc.sections('Infrastructure').json());
 // wtf.fetch('Royal Cinema').then((doc) => {
 //   console.log(doc.json({
 //     categories: false

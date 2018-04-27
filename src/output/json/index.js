@@ -6,9 +6,9 @@ const defaults = {
   citations: true,
   coordinates: true,
   infoboxes: true,
-  images: true,
   sections: true,
 
+  images: false, //these are already in sections/infoboxes
   plaintext: false,
   html: false,
   markdown: false,
@@ -22,16 +22,16 @@ const toJSON = function(doc, options) {
   if (options.title) {
     data.title = doc.options.title || doc.title();
   }
-  if (options.pageID) {
+  if (options.pageID && doc.options.pageID) {
     data.pageID = doc.options.pageID;
   }
   if (options.categories) {
     data.categories = doc.categories();
   }
-  if (options.citations) {
+  if (options.citations && doc.citations().length > 0) {
     data.citations = doc.citations();
   }
-  if (options.coordinates) {
+  if (options.coordinates && doc.coordinates().length > 0) {
     data.coordinates = doc.coordinates();
   }
 
