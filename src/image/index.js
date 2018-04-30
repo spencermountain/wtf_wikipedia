@@ -7,7 +7,10 @@ const parseImages = function(matches, r, wiki, options) {
     if (s.match(fileRegex)) {
       r.images = r.images || [];
       if (options.images !== false) {
-        r.images.push(parseImage(s));
+        let img = parseImage(s);
+        if (img) {
+          r.images.push(img);
+        }
       }
       wiki = wiki.replace(s, '');
     }
