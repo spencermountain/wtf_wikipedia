@@ -1,6 +1,6 @@
 'use strict';
 const wtf = require('./src/index');
-const fromFile = require('./tests/lib/_cachedPage');
+// const fromFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
