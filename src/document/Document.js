@@ -187,6 +187,7 @@ Object.keys(methods).forEach((k) => {
 Document.prototype.toHTML = Document.prototype.html;
 Document.prototype.isDisambig = Document.prototype.isDisambiguation;
 Document.prototype.toJson = Document.prototype.json;
+Document.prototype.text = Document.prototype.plaintext;
 Document.prototype.references = Document.prototype.citations;
 
 module.exports = Document;

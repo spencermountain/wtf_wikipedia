@@ -11,6 +11,7 @@ const fromFile = require('./tests/lib/_cachedPage');
 
 // let doc = fromFile('royal_cinema');
 // let doc = fromFile('toronto');
+// console.log(doc.sentences(0).text());
 // console.log(doc.sections('Infrastructure').json());
 // // wtf.fetch('Royal Cinema').then((doc) => {
 // //   console.log(doc.json({
@@ -18,32 +19,8 @@ const fromFile = require('./tests/lib/_cachedPage');
 // //   }));
 // // }).catch(console.log);
 
-let wiki = `{{Infobox church
-| name                   = Ávila Cathedral&lt;br /&gt; Catedral del Salvador de Ávila
-| image                  = Ávila Chatedral main view.jpg
-| imagesize              = 180px
-| caption                = Ávila Cathedral
-| location               = [[Ávila]], [[Spain]]
-| country                = Spain
-| denomination           = [[Roman Catholicism]]
-| founder                = Siglo XI - Siglo XV
-| style                  = [[Gothic architecture|Gothic ]], [[Romanesque architecture|Romanesque]]
-}}
-
-[[File:|180px|right]]
-The '''Cathedral of Ávila''' is a [[Romanesque architecture|Romanesque]] and [[Gothic Architecture|Gothic]] church. It is in [[Ávila, Spain|Ávila]]. It is just south of [[Old Castile]], [[Spain]]. It also has a [[cemetery]]. It was built in 1475.
-
-The Cathedral of Ávila was one of 100 finalists for the [[12 Treasures of Spain]] in 2007.&lt;ref&gt;{{cite web|url=http://sobreturismo.es/2007/11/27/lista-de-100-finalistas-de-nuestros-12-tesoros-de-espana/ |title=Lista de 100 finalistas de Nuestros 12 Tesoros de España |publisher=Sobreturismo.es |date=2007-11-27 |accessdate=2014-10-06}}&lt;/ref&gt;
-
-==References==
-{{reflist}}
-
-{{DEFAULTSORT:Avila Cathedral}}
-[[Category:Cathedrals in Spain]]
-
-
-{{multistub|Europe|religion}}
-`;
-console.log(wtf(wiki).json({
-  images: true
-}));
+// console.log(wtf(wiki).json({
+//   images: true
+// }));
+let wiki = `'''Toronto''' ({{IPAc-en|t|ɵ|ˈ|r|ɒ|n|t|oʊ}}, {{IPAc-en|local|ˈ|t|r|ɒ|n|oʊ}}) is the [[List of the 100 largest municipalities in Canada by population|most populous city]] in [[Canada]] and the [[Provinces and territories of Canada|provincial]] [[capital city|capital]] of [[Ontario]]. It is located in [[Southern Ontario]] on the northwestern shore of [[Lake Ontario]]. The [[history of Toronto]] began in the late 18th century when the [[The Crown|British Crown]] [[Toronto Purchase|purchased]] its land from the [[Mississaugas of the New Credit`;
+console.log(wtf(wiki).plaintext());
