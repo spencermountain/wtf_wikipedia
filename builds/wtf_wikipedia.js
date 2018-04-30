@@ -1,4 +1,4 @@
-/* wtf_wikipedia v3.1.0
+/* wtf_wikipedia v3.1.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2253,7 +2253,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -4932,6 +4932,7 @@ Object.keys(methods).forEach(function (k) {
 Document.prototype.toHTML = Document.prototype.html;
 Document.prototype.isDisambig = Document.prototype.isDisambiguation;
 Document.prototype.toJson = Document.prototype.json;
+Document.prototype.text = Document.prototype.plaintext;
 Document.prototype.references = Document.prototype.citations;
 
 module.exports = Document;
@@ -5161,7 +5162,7 @@ function preProcess(r, wiki, options) {
   //give it the inglorious send-off it deserves..
   wiki = kill_xml(wiki, r, options);
   //({{template}},{{template}}) leaves empty parentheses
-  wiki = wiki.replace(/\( \)/g, '');
+  wiki = wiki.replace(/\([,;: ]*\)/g, '');
   return wiki;
 }
 module.exports = preProcess;
@@ -5431,7 +5432,7 @@ var findRecursive = _dereq_('../../lib/recursive_match');
 var keep = _dereq_('../../sentence/templates/templates'); //dont remove these ones
 var parseInfobox = _dereq_('../../infobox/parse-infobox');
 var parseCitation = _dereq_('./citation');
-var Infobox = _dereq_('../../infobox/infobox');
+var Infobox = _dereq_('../../infobox/Infobox');
 
 var infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 
@@ -5500,7 +5501,7 @@ var parse_recursive = function parse_recursive(r, wiki, options) {
 
 module.exports = parse_recursive;
 
-},{"../../data/i18n":5,"../../infobox/infobox":25,"../../infobox/parse-infobox":26,"../../lib/recursive_match":28,"../../sentence/templates/templates":67,"./citation":18}],20:[function(_dereq_,module,exports){
+},{"../../data/i18n":5,"../../infobox/Infobox":25,"../../infobox/parse-infobox":26,"../../lib/recursive_match":28,"../../sentence/templates/templates":67,"./citation":18}],20:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -5725,7 +5726,10 @@ var parseImages = function parseImages(matches, r, wiki, options) {
     if (s.match(fileRegex)) {
       r.images = r.images || [];
       if (options.images !== false) {
-        r.images.push(parseImage(s));
+        var img = parseImage(s);
+        if (img) {
+          r.images.push(img);
+        }
       }
       wiki = wiki.replace(s, '');
     }

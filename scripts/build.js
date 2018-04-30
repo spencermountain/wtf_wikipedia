@@ -25,6 +25,7 @@ var cmd = browserify + ' ./src/index.js --standalone wtf';
 cmd += ' -t [ babelify --presets [ env ] ]';
 cmd += ' | ' + derequire;
 cmd += ' >> ' + uncompressed;
+console.log(cmd);
 exec(cmd);
 
 //uglify
