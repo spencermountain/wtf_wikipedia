@@ -3,7 +3,7 @@ const findRecursive = require('../../lib/recursive_match');
 const keep = require('../../sentence/templates/templates'); //dont remove these ones
 const parseInfobox = require('../../infobox/parse-infobox');
 const parseCitation = require('./citation');
-const Infobox = require('../../infobox/infobox');
+const Infobox = require('../../infobox/Infobox');
 
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
 
