@@ -17,6 +17,7 @@ const defaults = {
 //
 const Document = function(wiki, options) {
   this.options = options || {};
+  this.wiki = wiki;
   this.data = parse(wiki, this.options);
 };
 
