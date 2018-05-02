@@ -15,7 +15,13 @@ const doTable = function(table, options) {
   out  += '\n  % BEGIN: Table Header';
   var vSep = '   ';
   Object.keys(table[0]).forEach((k) => {
-    out  += '\n    ' + vSep + '\\textbf{' + k +'}';
+    out  += '\n    ' + vSep;
+
+    if ((k+"").indexOf("col-") == 0) {
+      out += '\\textbf{' + k +'}';
+    } else {
+      out += '  ';
+    };
     vSep = ' & ';
   });
   out  += '\\\\ '
@@ -35,8 +41,8 @@ const doTable = function(table, options) {
     out  += '\n  \\hline  %horizontal line';
   });
   out  += '\n    % END: Table Body';
-  out  += '\n} % END TABLE';
-  out  += '\n\n % \\vspace*{0.3cm}';
+  out  += '\\end{tabular} \n';
+  out  += '\n\\vspace*{0.3cm}\n\n';
   return out ;
 };
 module.exports = doTable;
