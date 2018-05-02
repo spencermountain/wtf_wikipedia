@@ -17,7 +17,7 @@ const doTable = function(table, options) {
   Object.keys(table[0]).forEach((k) => {
     out  += '\n    ' + vSep;
 
-    if ((k+"").indexOf("col-") == 0) {
+    if (k.indexOf("col-") === 0) {
       out += '\\textbf{' + k +'}';
     } else {
       out += '  ';
