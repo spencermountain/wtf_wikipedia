@@ -17,8 +17,21 @@ const defaults = {
 //
 const Document = function(wiki, options) {
   this.options = options || {};
-  this.wiki = wiki;
   this.data = parse(wiki, this.options);
+  // preserve wiki sources in Document to access
+  this.wiki = wiki;
+  // allow reparsing after alteration of downloaded wiki source
+  // stored in this.wiki
+  // This is necessary for cross-compilation e.g. for Replacement
+  // internal wiki links into expanded external links.
+  //   e.g. [[Water]] into [https://en.wikipedia.org/wiki/Water Water]
+  // with the "reparse" method parsing is still available in for
+  // the generated Document instance by calling
+  // doc.wiki = "new wiki source text";
+  // doc.reparse();
+  this.reparse = function () {
+    this.data = parse(this.wiki, this.options);
+  };
 };
 
 const methods = {
