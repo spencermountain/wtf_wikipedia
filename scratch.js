@@ -26,6 +26,7 @@ const wtf = require('./src/index');
 // console.log(wtf(wiki).json({
 //   images: true
 // }));
+
 let wiki = `
 The '''Lot''' ({{lang-oc|Olt}}) is a river in southern [[France]], tributary of the [[Garonne river]]. The [[Lot (department)|Lot]] department is named after this river.
 

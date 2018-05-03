@@ -370,7 +370,10 @@ return new F();
 
   function parseHeaders(rawHeaders) {
     var headers = new Headers();
-    rawHeaders.split(/\r?\n/).forEach(function(line) {
+    // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
+    // https://tools.ietf.org/html/rfc7230#section-3.2
+    var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ');
+    preProcessedHeaders.split(/\r?\n/).forEach(function(line) {
       var parts = line.split(':');
       var key = parts.shift().trim();
       if (key) {
@@ -389,7 +392,7 @@ return new F();
     }
 
     this.type = 'default';
-    this.status = 'status' in options ? options.status : 200;
+    this.status = options.status === undefined ? 200 : options.status;
     this.ok = this.status >= 200 && this.status < 300;
     this.statusText = 'statusText' in options ? options.statusText : 'OK';
     this.headers = new Headers(options.headers);
@@ -456,6 +459,8 @@ return new F();
 
       if (request.credentials === 'include') {
         xhr.withCredentials = true;
+      } else if (request.credentials === 'omit') {
+        xhr.withCredentials = false;
       }
 
       if ('responseType' in xhr && support.blob) {
@@ -2260,6 +2265,7 @@ module.exports={
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
   "main": "./src/index.js",
+  "browser": "./builds/wtf_wikipedia.min.js",
   "unpkg": "./builds/wtf_wikipedia.min.js",
   "scripts": {
     "start": "node ./scripts/demo.js",
@@ -4756,6 +4762,7 @@ var defaults = {
 //
 var Document = function Document(wiki, options) {
   this.options = options || {};
+  this.wiki = wiki;
   this.data = parse(wiki, this.options);
 };
 
@@ -4937,7 +4944,7 @@ Document.prototype.references = Document.prototype.citations;
 
 module.exports = Document;
 
-},{"../lib/setDefaults":29,"../output/html":32,"../output/json":37,"../output/latex":40,"../output/markdown":45,"./index":11}],9:[function(_dereq_,module,exports){
+},{"../lib/setDefaults":28,"../output/html":32,"../output/json":37,"../output/latex":40,"../output/markdown":45,"./index":11}],9:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../data/i18n');
@@ -5502,7 +5509,7 @@ var parse_recursive = function parse_recursive(r, wiki, options) {
 module.exports = parse_recursive;
 
 },{"../../data/i18n":5,"../../infobox/Infobox":25,"../../infobox/parse-infobox":26,"../../lib/recursive_match":28,"../../sentence/templates/templates":67,"./citation":18}],20:[function(_dereq_,module,exports){
-'use strict';
+
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -5769,24 +5776,6 @@ module.exports = parse_image;
 },{"../data/i18n":5,"./Image":21}],24:[function(_dereq_,module,exports){
 'use strict';
 
-var Document = _dereq_('./document/Document');
-var fetch = _dereq_('./fetch');
-var version = _dereq_('../package').version;
-
-//the main 'factory' exported method
-var wtf = function wtf(wiki, options) {
-  return new Document(wiki, options);
-};
-wtf.fetch = function (title, lang, options, cb) {
-  return fetch(title, lang, options, cb);
-};
-wtf.version = version;
-
-module.exports = wtf;
-
-},{"../package":3,"./document/Document":8,"./fetch":20}],25:[function(_dereq_,module,exports){
-'use strict';
-
 var toMarkdown = _dereq_('../output/markdown/infobox');
 var toHtml = _dereq_('../output/html/infobox');
 //a formal key-value data table about a topic
@@ -5835,7 +5824,7 @@ Object.keys(methods).forEach(function (k) {
 });
 module.exports = Infobox;
 
-},{"../output/html/infobox":33,"../output/markdown/infobox":46}],26:[function(_dereq_,module,exports){
+},{"../output/html/infobox":33,"../output/markdown/infobox":46}],25:[function(_dereq_,module,exports){
 'use strict';
 
 var trim = _dereq_('../lib/helpers').trim_whitespace;
@@ -5937,7 +5926,7 @@ var parse_infobox = function parse_infobox(str) {
 };
 module.exports = parse_infobox;
 
-},{"../data/i18n":5,"../image/Image":21,"../lib/helpers":27,"../lib/recursive_match":28,"../sentence":60,"../sentence/Sentence":58}],27:[function(_dereq_,module,exports){
+},{"../data/i18n":5,"../image/Image":21,"../lib/helpers":26,"../lib/recursive_match":27,"../sentence":60,"../sentence/Sentence":58}],26:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = {
@@ -5963,7 +5952,7 @@ var helpers = {
 };
 module.exports = helpers;
 
-},{}],28:[function(_dereq_,module,exports){
+},{}],27:[function(_dereq_,module,exports){
 'use strict';
 
 //find all the pairs of '[[...[[..]]...]]' in the text
@@ -6013,7 +6002,7 @@ module.exports = find_recursive;
 // console.log(find_recursive('{', '}', 'he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas'));
 // console.log(find_recursive("{", "}", "this is fun {{nowrap{{small1995–present}}}} and it works"))
 
-},{}],29:[function(_dereq_,module,exports){
+},{}],28:[function(_dereq_,module,exports){
 "use strict";
 
 //
@@ -6031,7 +6020,7 @@ var setDefaults = function setDefaults(options, defaults) {
 };
 module.exports = setDefaults;
 
-},{}],30:[function(_dereq_,module,exports){
+},{}],29:[function(_dereq_,module,exports){
 'use strict';
 
 //escape a string like 'fun*2.Co' for a regExpr
@@ -6064,7 +6053,25 @@ var smartReplace = function smartReplace(all, text, result) {
 
 module.exports = smartReplace;
 
-},{}],31:[function(_dereq_,module,exports){
+},{}],30:[function(_dereq_,module,exports){
+'use strict';
+
+var Document = _dereq_('./document/Document');
+var fetch = _dereq_('./fetch');
+var version = _dereq_('../package').version;
+
+//the main 'factory' exported method
+var wtf = function wtf(wiki, options) {
+  return new Document(wiki, options);
+};
+wtf.fetch = function (title, lang, options, cb) {
+  return fetch(title, lang, options, cb);
+};
+wtf.version = version;
+
+module.exports = wtf;
+
+},{"../package":3,"./document/Document":8,"./fetch":20}],31:[function(_dereq_,module,exports){
 'use strict';
 
 var makeImage = function makeImage(image) {
@@ -6227,7 +6234,7 @@ var doSentence = function doSentence(sentence) {
 };
 module.exports = doSentence;
 
-},{"../../lib/smartReplace":30}],36:[function(_dereq_,module,exports){
+},{"../../lib/smartReplace":29}],36:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6327,7 +6334,7 @@ var toJSON = function toJSON(doc, options) {
 };
 module.exports = toJSON;
 
-},{"../../lib/setDefaults":29}],38:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":28}],38:[function(_dereq_,module,exports){
 'use strict';
 
 var setDefaults = _dereq_('../../lib/setDefaults');
@@ -6379,7 +6386,7 @@ var toJSON = function toJSON(s, options) {
 };
 module.exports = toJSON;
 
-},{"../../lib/setDefaults":29}],39:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":28}],39:[function(_dereq_,module,exports){
 'use strict';
 
 var setDefaults = _dereq_('../../lib/setDefaults');
@@ -6409,7 +6416,7 @@ var toJSON = function toJSON(s, options) {
 };
 module.exports = toJSON;
 
-},{"../../lib/setDefaults":29}],40:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":28}],40:[function(_dereq_,module,exports){
 'use strict';
 
 var doInfobox = _dereq_('./infobox');
@@ -6541,7 +6548,7 @@ var toLatex = function toLatex(doc, options) {
 };
 module.exports = toLatex;
 
-},{"../../lib/setDefaults":29,"./infobox":41,"./sentence":42,"./table":43}],41:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":28,"./infobox":41,"./sentence":42,"./table":43}],41:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6614,7 +6621,7 @@ var doSentence = function doSentence(sentence, options) {
 };
 module.exports = doSentence;
 
-},{"../../lib/smartReplace":30}],43:[function(_dereq_,module,exports){
+},{"../../lib/smartReplace":29}],43:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6633,7 +6640,13 @@ var doTable = function doTable(table, options) {
   out += '\n  % BEGIN: Table Header';
   var vSep = '   ';
   Object.keys(table[0]).forEach(function (k) {
-    out += '\n    ' + vSep + '\\textbf{' + k + '}';
+    out += '\n    ' + vSep;
+
+    if (k.indexOf("col-") === 0) {
+      out += '\\textbf{' + k + '}';
+    } else {
+      out += '  ';
+    };
     vSep = ' & ';
   });
   out += '\\\\ ';
@@ -6653,8 +6666,8 @@ var doTable = function doTable(table, options) {
     out += '\n  \\hline  %horizontal line';
   });
   out += '\n    % END: Table Body';
-  out += '\n} % END TABLE';
-  out += '\n\n % \\vspace*{0.3cm}';
+  out += '\\end{tabular} \n';
+  out += '\n\\vspace*{0.3cm}\n\n';
   return out;
 };
 module.exports = doTable;
@@ -6820,7 +6833,7 @@ var doSection = function doSection(section, options) {
 };
 module.exports = doSection;
 
-},{"../../lib/setDefaults":29,"./image":44,"./sentence":49,"./table":50}],49:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":28,"./image":44,"./sentence":49,"./table":50}],49:[function(_dereq_,module,exports){
 'use strict';
 
 var smartReplace = _dereq_('../../lib/smartReplace');
@@ -6862,7 +6875,7 @@ var doSentence = function doSentence(sentence) {
 };
 module.exports = doSentence;
 
-},{"../../lib/smartReplace":30}],50:[function(_dereq_,module,exports){
+},{"../../lib/smartReplace":29}],50:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -7140,7 +7153,7 @@ Object.keys(methods).forEach(function (k) {
 
 module.exports = Section;
 
-},{"../lib/setDefaults":29,"../output/html/section":34,"../output/json/section":38,"../output/markdown/section":48,"../sentence/Sentence":58}],52:[function(_dereq_,module,exports){
+},{"../lib/setDefaults":28,"../output/html/section":34,"../output/json/section":38,"../output/markdown/section":48,"../sentence/Sentence":58}],52:[function(_dereq_,module,exports){
 'use strict';
 
 var fns = _dereq_('../lib/helpers');
@@ -7167,7 +7180,7 @@ var parseHeading = function parseHeading(r, str) {
 };
 module.exports = parseHeading;
 
-},{"../lib/helpers":27}],53:[function(_dereq_,module,exports){
+},{"../lib/helpers":26}],53:[function(_dereq_,module,exports){
 'use strict';
 
 var Section = _dereq_('./Section');
@@ -7223,7 +7236,7 @@ var makeSections = function makeSections(r, wiki, options) {
 
 module.exports = makeSections;
 
-},{"../image":22,"../lib/recursive_match":28,"../sentence":60,"./Section":51,"./heading":52,"./interwiki":54,"./list":55,"./table":56,"./templates":57}],54:[function(_dereq_,module,exports){
+},{"../image":22,"../lib/recursive_match":27,"../sentence":60,"./Section":51,"./heading":52,"./interwiki":54,"./list":55,"./table":56,"./templates":57}],54:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../data/i18n');
@@ -7457,7 +7470,7 @@ var findTables = function findTables(r, wiki) {
 };
 module.exports = findTables;
 
-},{"../lib/helpers":27,"../sentence/":60,"../sentence/Sentence":58}],57:[function(_dereq_,module,exports){
+},{"../lib/helpers":26,"../sentence/":60,"../sentence/Sentence":58}],57:[function(_dereq_,module,exports){
 'use strict';
 
 // const parseCoord = require('./coordinates');
@@ -7670,7 +7683,7 @@ module.exports = {
   parseLine: parseLine
 };
 
-},{"../data/i18n":5,"../lib/helpers":27,"./formatting":59,"./links":61,"./sentence-parser":62,"./templates":65}],61:[function(_dereq_,module,exports){
+},{"../data/i18n":5,"../lib/helpers":26,"./formatting":59,"./links":61,"./sentence-parser":62,"./templates":65}],61:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../lib/helpers');
@@ -7746,7 +7759,7 @@ var parse_links = function parse_links(str) {
 };
 module.exports = parse_links;
 
-},{"../lib/helpers":27}],62:[function(_dereq_,module,exports){
+},{"../lib/helpers":26}],62:[function(_dereq_,module,exports){
 'use strict';
 
 //split text into sentences, using regex
@@ -8280,5 +8293,5 @@ var keep = {
 };
 module.exports = keep;
 
-},{}]},{},[24])(24)
+},{}]},{},[30])(30)
 });
