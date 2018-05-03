@@ -29,7 +29,11 @@ function postprocess(line) {
   if (line.match(/^(thumb|right|left)\|/i)) {
     return null;
   }
+  //remove empty parentheses (sometimes caused by removing templates)
+  line = line.replace(/\([,;: ]*\)/g, '');
+  //dangling punctuation
   line = helpers.trim_whitespace(line);
+  line = line.replace(/ +\.$/, '.');
   return line;
 }
 

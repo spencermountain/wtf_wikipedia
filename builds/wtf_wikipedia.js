@@ -5508,8 +5508,8 @@ var parse_recursive = function parse_recursive(r, wiki, options) {
 
 module.exports = parse_recursive;
 
-},{"../../data/i18n":5,"../../infobox/Infobox":24,"../../infobox/parse-infobox":25,"../../lib/recursive_match":27,"../../sentence/templates/templates":67,"./citation":18}],20:[function(_dereq_,module,exports){
-'use strict';
+},{"../../data/i18n":5,"../../infobox/Infobox":25,"../../infobox/parse-infobox":26,"../../lib/recursive_match":28,"../../sentence/templates/templates":67,"./citation":18}],20:[function(_dereq_,module,exports){
+
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 

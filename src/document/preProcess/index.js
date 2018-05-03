@@ -23,7 +23,8 @@ function preProcess(r, wiki, options) {
   //give it the inglorious send-off it deserves..
   wiki = kill_xml(wiki, r, options);
   //({{template}},{{template}}) leaves empty parentheses
-  wiki = wiki.replace(/\([,;: ]*\)/g, '');
+  wiki = wiki.replace(/\([,;: ]+?\)/g, '');
+
   return wiki;
 }
 module.exports = preProcess;
