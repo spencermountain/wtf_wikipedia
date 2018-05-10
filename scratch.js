@@ -11,6 +11,7 @@ const fromFile = require('./tests/lib/_cachedPage');
 //doc.infoboxes('Venue')
 
 // let doc = fromFile('royal_cinema');
+// console.log(doc.sections());
 // let doc = fromFile('toronto');
 // console.log(doc.sentences(0).text());
 // console.log(doc.sections('Infrastructure').json());
@@ -66,4 +67,4 @@ hello
 | length6         = 4:41
 }}
 hellow world`;
-console.log(wtf(wiki).sections(2));
+// console.log(wtf(wiki).sections(2));

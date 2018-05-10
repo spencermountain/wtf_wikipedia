@@ -22,7 +22,6 @@ const inline = /\{\{(url|convert|current|local|lc|uc|formatnum|pull|cquote|coord
 // templates that need parsing and replacing for inline text
 //https://en.wikipedia.org/wiki/Category:Magic_word_templates
 const word_templates = function(wiki, r) {
-
   //greedy-pass at easier, inline-templates
   wiki = wiki.replace(inline, function(tmpl) {
     //we can be sneaky with this template, as it's often found inside other templates

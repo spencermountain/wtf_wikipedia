@@ -3,7 +3,7 @@ const disambig = require('./disambig');
 const preProcess = require('./preProcess');
 const parse = {
   section: require('../section'),
-  templates: require('./templates'),
+  // templates: require('./templates'),
   categories: require('./categories')
 };
 
@@ -14,7 +14,6 @@ const main = function(wiki, options) {
   let r = {
     type: 'page',
     sections: [],
-    infoboxes: [],
     interwiki: {},
     categories: [],
     coordinates: [],
@@ -41,13 +40,13 @@ const main = function(wiki, options) {
   //give ourselves a little head-start
   wiki = preProcess(r, wiki, options);
   //pull-out infoboxes and stuff
-  wiki = parse.templates(r, wiki, options);
+  // wiki = parse.templates(r, wiki, options);
   //pull-out [[category:whatevers]]
   if (options.categories !== false) {
     wiki = parse.categories(r, wiki);
   }
   //parse all the headings, and their texts/sentences
-  r.sections = parse.section(r, wiki, options) || [];
+  r.sections = parse.section(wiki, options) || [];
 
   return r;
 };

@@ -1,4 +1,5 @@
 const parse = require('./index');
+const sectionMap = require('./_sectionMap');
 const toMarkdown = require('../output/markdown');
 const toHtml = require('../output/html');
 const toJSON = require('../output/json');
@@ -25,6 +26,7 @@ const Document = function(wiki, options) {
     value: wiki
   });
 };
+
 
 const methods = {
   title : function() {
@@ -86,60 +88,29 @@ const methods = {
     return arr;
   },
   images : function(n) {
-    let arr = [];
+    let arr = sectionMap(this, 'images', n);
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
       if (info.data.image) {
-        arr.push(info.data.image.data);
+        arr.unshift(info.data.image.data); //put it at the top
       }
     });
-    this.sections().forEach((sec) => {
-      sec.images().forEach((img) => {
-        arr.push(img);
-      });
-    });
-    if (typeof n === 'number') {
-      return arr[n];
-    }
     return arr;
   },
   links : function(n) {
-    let arr = [];
-    this.sections().forEach((sec) => {
-      sec.links().forEach((l) => {
-        arr.push(l);
-      });
-    });
-    if (typeof n === 'number') {
-      return arr[n];
-    }
-    return arr;
+    return sectionMap(this, 'links', n);
   },
   tables : function(n) {
-    let arr = [];
-    this.sections().forEach((sec) => {
-      if (sec.tables()) {
-        sec.tables().forEach((t) => {
-          arr.push(t);
-        });
-      }
-    });
-    if (typeof n === 'number') {
-      return arr[n];
-    }
-    return arr;
+    return sectionMap(this, 'tables', n);
+  },
+  infoboxes : function(n) {
+    return sectionMap(this, 'infoboxes', n);
   },
   citations : function(n) {
     if (typeof n === 'number') {
       return this.data.citations[n];
     }
     return this.data.citations || [];
-  },
-  infoboxes : function(n) {
-    if (typeof n === 'number') {
-      return this.data.infoboxes[n];
-    }
-    return this.data.infoboxes || [];
   },
   coordinates : function(n) {
     if (typeof n === 'number') {

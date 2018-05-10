@@ -83,8 +83,14 @@ const methods = {
     }
     return this.data.tables || [];
   },
-  templates: function() {
-    return this.data.templates || [];
+  templates: function(n) {
+    return this.data.templates || {};
+  },
+  infoboxes: function(n) {
+    if (typeof n === 'number') {
+      return this.data.infoboxes[n];
+    }
+    return this.data.infoboxes || [];
   },
   lists: function(n) {
     if (typeof n === 'number') {
