@@ -76,7 +76,7 @@ const parse_infobox = function(str) {
     }
     //handle the 'image' property in a special-way
     if (k === 'image') {
-      obj[k] = new Image(obj[k]);
+      obj[k] = new Image(obj[k], '');
       obj[k].text = '';
     } else {
       obj[k] = parseLine(obj[k]);

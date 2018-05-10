@@ -28,7 +28,7 @@ const parseSection = function(section, wiki, r, options) {
   //do each sentence
   wiki = parse.eachSentence(section, wiki);
   // section.wiki = wiki;
-  section = new Section(section, r);
+  section = new Section(section, wiki);
   return section;
 };
 

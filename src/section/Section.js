@@ -13,20 +13,27 @@ const defaults = {
 };
 
 //the stuff between headings - 'History' section for example
-const Section = function(data) {
+const Section = function(data, wiki) {
   this.data = data;
   this.depth = data.depth;
   this.doc = null;
-//hide this circular property in console.logs..
-// Object.defineProperty(this, 'doc', {
-//   enumerable: false, // hide it from for..in
-//   value: null
-// });
+  //hush these properties in console.logs..
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki
+  });
+  Object.defineProperty(this, 'doc', {
+    enumerable: false,
+    value: null
+  });
 };
 
 const methods = {
   title: function() {
     return this.data.title || '';
+  },
+  wikitext: function() {
+    return this.wiki || '';
   },
   index: function() {
     if (!this.doc) {
@@ -201,6 +208,8 @@ methods.next = methods.nextSibling;
 methods.last = methods.lastSibling;
 methods.previousSibling = methods.lastSibling;
 methods.previous = methods.lastSibling;
+methods.original = methods.wikitext;
+methods.wikiscript = methods.wikitext;
 Object.keys(methods).forEach((k) => {
   Section.prototype[k] = methods[k];
 });

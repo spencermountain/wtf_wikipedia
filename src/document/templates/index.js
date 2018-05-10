@@ -16,7 +16,7 @@ const parse_recursive = function(r, wiki, options) {
     if (tmpl.match(infobox_reg, 'ig')) {
       if (options.infoboxes !== false) {
         let infobox = parseInfobox(tmpl);
-        infobox = new Infobox(infobox, r);
+        infobox = new Infobox(infobox, tmpl);
         r.infoboxes.push(infobox);
       }
       wiki = wiki.replace(tmpl, '');

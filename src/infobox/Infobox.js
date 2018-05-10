@@ -1,16 +1,23 @@
 const toMarkdown = require('../output/markdown/infobox');
 const toHtml = require('../output/html/infobox');
 //a formal key-value data table about a topic
-const Infobox = function(obj) {
+const Infobox = function(obj, wiki) {
   this.template = obj.template;
   this.data = obj.data;
-// this.type = this.template; //duplicate
+  //hush these properties in console.logs..
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki
+  });
 };
 
 const methods = {
   markdown : function(options) {
     options = options || {};
     return toMarkdown(this, options);
+  },
+  wikitext : function() {
+    return this.wiki;
   },
   html : function(options) {
     options = options || {};
