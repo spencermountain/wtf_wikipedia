@@ -53,24 +53,24 @@ const methods = {
   isDisambiguation : function() {
     return this.data.type === 'disambiguation';
   },
-  categories : function(n) {
-    if (typeof n === 'number') {
-      return this.data.categories[n];
+  categories : function(clue) {
+    if (typeof clue === 'number') {
+      return this.data.categories[clue];
     }
     return this.data.categories || [];
   },
-  sections : function(n) {
+  sections : function(clue) {
     let arr = this.data.sections || [];
     arr.forEach((sec) => sec.doc = this);
     //grab a specific section, by its title
-    if (typeof n === 'string') {
-      let str = n.toLowerCase().trim();
+    if (typeof clue === 'string') {
+      let str = clue.toLowerCase().trim();
       return arr.find((s) => {
         return s.title().toLowerCase() === str;
       });
     }
-    if (typeof n === 'number') {
-      return arr[n];
+    if (typeof clue === 'number') {
+      return arr[clue];
     }
     return arr;
   },
@@ -86,7 +86,7 @@ const methods = {
     }
     return arr;
   },
-  images : function(n) {
+  images : function(clue) {
     let arr = sectionMap(this, 'images', null);
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
@@ -94,29 +94,29 @@ const methods = {
         arr.unshift(info.data.image.data); //put it at the top
       }
     });
-    if (typeof n === 'number') {
-      return arr[n];
+    if (typeof clue === 'number') {
+      return arr[clue];
     }
     return arr;
   },
-  links : function(n) {
-    return sectionMap(this, 'links', n);
+  links : function(clue) {
+    return sectionMap(this, 'links', clue);
   },
-  tables : function(n) {
-    return sectionMap(this, 'tables', n);
+  tables : function(clue) {
+    return sectionMap(this, 'tables', clue);
   },
-  templates : function(n) {
-    return sectionMap(this, 'templates', n);
+  templates : function(clue) {
+    return sectionMap(this, 'templates', clue);
   },
-  infoboxes : function(n) {
-    return sectionMap(this, 'infoboxes', n);
+  infoboxes : function(clue) {
+    return sectionMap(this, 'infoboxes', clue);
   },
-  citations : function(n) {
-    return sectionMap(this, 'citations', n);
+  citations : function(clue) {
+    return sectionMap(this, 'citations', clue);
   },
-  coordinates : function(n) {
-    if (typeof n === 'number') {
-      return this.data.coordinates[n];
+  coordinates : function(clue) {
+    if (typeof clue === 'number') {
+      return this.data.coordinates[clue];
     }
     return this.data.coordinates || [];
   },

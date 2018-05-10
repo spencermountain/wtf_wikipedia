@@ -1,17 +1,20 @@
 
 //helper for looping around all section of a document
-const sectionMap = function(doc, fn, n) {
+const sectionMap = function(doc, fn, clue) {
   let arr = [];
   doc.sections().forEach((sec) => {
-    let list = sec[fn]();
-    if (list) {
-      list.forEach((t) => {
-        arr.push(t);
-      });
+    let list = [];
+    if (typeof clue === 'string') {
+      list = sec[fn](clue);
+    } else {
+      list = sec[fn]();
     }
+    list.forEach((t) => {
+      arr.push(t);
+    });
   });
-  if (typeof n === 'number') {
-    return arr[n];
+  if (typeof clue === 'number') {
+    return arr[clue];
   }
   return arr;
 };

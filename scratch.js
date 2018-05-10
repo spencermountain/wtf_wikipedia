@@ -58,19 +58,15 @@ const fromFile = require('./tests/lib/_cachedPage');
 // | length6         = 4:41
 // }}
 
-// var str = `
-// {{Main|Royal National Lifeboat Institution lifeboats}}
-// The types of boats provided at each station and the launching methods vary depending on local needs.<ref>{{Cite web|title=cool dude}}</ref>
-// ==History==
-// {{wide_image|heyyyyy.png}}
-// {{tracklist| cool}}
-// {{infobox person
-// |cool = nope
-// }}
-// hello there
-// `;
-// console.log(wtf(str).templates());
-var str = `Emery is a vegetarian,<ref name="fun">{{ cite web|foo =    bar
-| url=http://cool.com/?fun=cool/}}</ref>`;
-var arr = wtf(str).citations();
-console.log(arr);
+var str = `
+{{Main|Royal National Lifeboat Institution lifeboats}}
+The types of boats provided at each station and the launching methods vary depending on local needs.<ref>{{Cite web|title=cool dude}}</ref>
+==History==
+{{wide_image|heyyyyy.png}}
+{{tracklist| cool}}
+{{infobox person
+|cool = nope
+}}
+hello there
+`;
+console.log(wtf(str).templates('citation'));

@@ -197,3 +197,24 @@ test('Radiohead infobox', function(t) {
   t.equal(infobox.associated_acts.text(), 'Atoms for Peace, 7 Worlds Collide', 'associated-acts');
   t.end();
 });
+
+test('templates() list ordering', function(t) {
+  var str = `
+{{Main|Royal National Lifeboat Institution lifeboats}}
+The types of boats provided at each station and the launching methods vary depending on local needs.<ref>{{Cite web|title=cool dude}}</ref>
+==History==
+{{wide_image|heyyyyy.png}}
+{{tracklist| cool}}
+{{infobox person
+|cool = nope
+}}
+hello there
+`;
+  let doc = wtf(str);
+  t.equal(doc.templates().length, 5, 'got several templates');
+  t.equal(doc.templates('citation').length, 1, 'got citation template');
+  t.equal(doc.templates('main').length, 1, 'got main template');
+  t.equal(doc.templates('tracklist').length, 1, 'got tracklist template');
+  t.equal(doc.templates('infobox').length, 1, 'got infobox template');
+  t.end();
+});
