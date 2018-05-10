@@ -1,11 +1,19 @@
 const i18n = require('../../data/i18n');
 const findRecursive = require('../../lib/recursive_match');
-const keep = require('../../sentence/templates/templates'); //dont remove these ones
 const parseInfobox = require('../../infobox/parse-infobox');
 const parseCitation = require('./citation');
 const Infobox = require('../../infobox/Infobox');
-
 const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
+
+//create a list of templates we can understand, and will parse later
+let keep = {};
+const templates = [
+  require('../../sentence/templates/templates'),
+  require('../../section/templates/parsers'),
+];
+templates.forEach((o) => {
+  Object.keys(o).forEach((k) => keep[k] = true);
+});
 
 //reduce the scary recursive situations
 const parse_recursive = function(r, wiki, options) {

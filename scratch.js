@@ -10,7 +10,7 @@ const fromFile = require('./tests/lib/_cachedPage');
 
 //doc.infoboxes('Venue')
 
-let doc = fromFile('royal_cinema');
+// let doc = fromFile('royal_cinema');
 // let doc = fromFile('toronto');
 // console.log(doc.sentences(0).text());
 // console.log(doc.sections('Infrastructure').json());
