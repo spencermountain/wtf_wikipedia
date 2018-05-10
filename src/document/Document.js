@@ -88,13 +88,16 @@ const methods = {
     return arr;
   },
   images : function(n) {
-    let arr = sectionMap(this, 'images', n);
+    let arr = sectionMap(this, 'images', null);
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
       if (info.data.image) {
         arr.unshift(info.data.image.data); //put it at the top
       }
     });
+    if (typeof n === 'number') {
+      return arr[n];
+    }
     return arr;
   },
   links : function(n) {
@@ -107,10 +110,7 @@ const methods = {
     return sectionMap(this, 'infoboxes', n);
   },
   citations : function(n) {
-    if (typeof n === 'number') {
-      return this.data.citations[n];
-    }
-    return this.data.citations || [];
+    return sectionMap(this, 'citations', n);
   },
   coordinates : function(n) {
     if (typeof n === 'number') {

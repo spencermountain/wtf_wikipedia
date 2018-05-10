@@ -33,6 +33,7 @@ const parseCitation = function(str, wiki, r, options) {
     }
   }
   if (Object.keys(obj).length > 0) {
+    r.citations = r.citations || [];
     r.citations.push(obj);
   }
   return wiki;

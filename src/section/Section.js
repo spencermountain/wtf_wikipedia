@@ -110,6 +110,12 @@ const methods = {
     }
     return this.data.images || [];
   },
+  citations: function(n) {
+    if (typeof n === 'number') {
+      return this.data.citations[n];
+    }
+    return this.data.citations || [];
+  },
 
   //transformations
   remove: function() {
@@ -216,6 +222,7 @@ methods.previousSibling = methods.lastSibling;
 methods.previous = methods.lastSibling;
 methods.original = methods.wikitext;
 methods.wikiscript = methods.wikitext;
+methods.references = methods.citations;
 Object.keys(methods).forEach((k) => {
   Section.prototype[k] = methods[k];
 });

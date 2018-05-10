@@ -1,52 +1,7 @@
-const parseCitation = require('../../section/templates/citation');
-const parseLine = require('../../sentence').parseLine;
 //okay, i know you're not supposed to regex html, but...
 //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
-
-const hasCitation = function(str) {
-  return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false;
-};
-//handle unstructured ones - <ref>some text</ref>
-const parseInline = function(str, r, options) {
-  if (options.citations === false) {
-    return;
-  }
-  let obj = parseLine(str) || {};
-  let cite = {
-    cite: 'inline',
-    text: obj.text
-  };
-  if (obj.links && obj.links.length) {
-    let extern = obj.links.find(f => f.site);
-    if (extern) {
-      cite.url = extern.site;
-    }
-  }
-  r.citations.push(cite);
-};
-
-const kill_xml = function(wiki, r, options) {
-  //luckily, refs can't be recursive..
-  // <ref></ref>
-  wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function(a, tmpl) {
-    if (hasCitation(tmpl)) {
-      wiki = parseCitation(tmpl, wiki, r, options);
-    } else {
-      parseInline(tmpl, r, options);
-    }
-    return ' ';
-  });
-  // <ref name=""/>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ');
-  // <ref name=""></ref>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1000}?)<\/ref> ?/gi, function(a, tmpl) {
-    if (hasCitation(tmpl)) {
-      wiki = parseCitation(tmpl, wiki, r, options);
-    } else {
-      parseInline(tmpl, r, options);
-    }
-    return ' ';
-  });
+const kill_xml = function(wiki, r) {
+  //(parse <ref> tags in Section class) - luckily, refs can't be recursive.
   //other types of xml that we want to trash completely
   wiki = wiki.replace(/< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi, ' '); // <table name=""><tr>hi</tr></table>
   //some xml-like fragments we can also kill
@@ -55,8 +10,6 @@ const kill_xml = function(wiki, r, options) {
   wiki = wiki.replace(/ ?<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?> ?/g, ' '); //<sub>, </sub>
   wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s)[ \/]?> ?/g, ' '); //<abbr>, </abbr>
   wiki = wiki.replace(/ ?<[ \/]?h[0-9][ \/]?> ?/g, ' '); //<h2>, </h2>
-  //a more generic + dangerous xml-tag removal
-  wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[ \/]?> ?/g, ' '); //<samp>
   wiki = wiki.replace(/ ?< ?br ?\/> ?/g, ' '); //<br />
   return wiki.trim();
 };

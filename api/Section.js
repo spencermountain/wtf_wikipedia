@@ -60,6 +60,11 @@ module.exports = [
     description: '',
   },
   {
+    name: 'citations',
+    returns: 'Array',
+    description: '',
+  },
+  {
     name: 'index',
     returns: 'Integer',
     example: ``,

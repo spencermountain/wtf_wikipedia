@@ -48,4 +48,5 @@
 * make section.title a function
 ## 3.2.0
 * add `.wikitext()` method to Document, Section, Sentence (thanks @niebert)
-* move infobox parser+data to Section class
+* move infobox parser/data to Section class
+* move citation parser/data to Section class

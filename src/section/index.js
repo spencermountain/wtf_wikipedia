@@ -10,13 +10,15 @@ const parse = {
   interwiki: require('./interwiki'),
   table: require('./table'),
   templates: require('./templates'),
+  references: require('./references'),
   eachSentence: require('../sentence').eachSentence
 };
 const section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})/g;
 
 const doSection = function(section, wiki, options) {
   wiki = parseTemplates(section, wiki, options);
-
+  // //parse the <ref></ref> tags
+  wiki = parse.references(section, wiki, options);
   // //parse the tables
   wiki = parse.table(section, wiki);
   // //parse the lists
