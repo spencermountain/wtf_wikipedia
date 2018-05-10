@@ -36,9 +36,11 @@ test('track-listing', t => {
 }}`;
   var doc = wtf(str);
   let track = doc.templates(0);
-  t.equal(track.data.headline, 0, 'track-headline');
+  t.equal(track.data.headline.text, 'Side one', 'track-headline');
+  t.equal(track.data.title4.text, 'Ob-La-Di, Ob-La-Da', 'title4');
   t.end();
 });
+
 test('track-listing', t => {
   var str = `
 {{Tracklist
@@ -70,6 +72,6 @@ test('track-listing', t => {
 }}`;
   var doc = wtf(str);
   let track = doc.templates(0);
-  t.equal(track.data.headline, 0, 'track-headline');
+  t.equal(track.data.total_length.text, '23:14', 'track-total_length');
   t.end();
 });

@@ -32,26 +32,9 @@ const fromFile = require('./tests/lib/_cachedPage');
 // `;
 
 
-var str = `
-{{Track listing
-| headline        = Side one
+var str = `{{Time ago| Jan 21, 2001 3:45 PM}}`;
 
-| all_writing     = [[Lennon–McCartney]], except where noted
-
-| title1          = [[Back in the U.S.S.R.]]
-| length1         = 2:43
-
-| title2          = [[Dear Prudence]]
-| length2         = 3:56
-}}
-hello there
-`;
-str = `
-==References==
-{{reflist|1}}
-* {{cite journal |vauthors=ALTENBERN RA, HOUSEWRIGHT RD | year = 1953 | title = Transaminases in smooth Brucella abortus, strain 19 | journal = J. Biol. Chem.  | volume = 204 | pages = 159&ndash;67  | pmid = 13084587 | issue = 1 | url=http://www.jbc.org/content/204/1/159.full.pdf | format=PDF}}
-`;
 // var str = `{{CITE book |title=the killer and the cartoons }}`;
-var arr = wtf(str).citations();
+var arr = wtf(str).text();
 console.log(arr);
 // console.log(wtf(str).templates('tracklist'));
