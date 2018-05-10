@@ -13,14 +13,21 @@ const generic = function(tmpl) {
   };
 };
 
+
 const parsers = {
   main: generic,
   wide_image: generic,
+  citation: parseCitation, //same in every language.
+  //https://en.wikipedia.org/wiki/Template:Tracklist
   tracklist: (tmpl) => {
-    return generic(tmpl);
+    return null;
+  // console.log(tmpl);
   },
-  cite: parseCitation, //same in every language.
-  citation: parseCitation,
 };
+//aliases
+parsers['track listing'] = parsers.tracklist;
+parsers['cite'] = parsers.citation;
+parsers['cite arxiv'] = parsers.citation;
+parsers['cite'] = parsers.citation;
 
 module.exports = parsers;
