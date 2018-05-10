@@ -56,6 +56,11 @@ module.exports = [
     description: '',
   },
   {
+    name: 'templates',
+    returns: 'Array',
+    description: '',
+  },
+  {
     name: 'citations',
     returns: 'Array',
     description: '',

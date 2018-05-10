@@ -46,7 +46,8 @@
 * improved .json() results
 * guess a page's title based on bold formatting in first sentence
 * make section.title a function
-## 3.2.0
+
+##4.0.0
 * add `.wikitext()` method to Document, Section, Sentence (thanks @niebert)
-* move infobox parser/data to Section class
-* move citation parser/data to Section class
+* move infobox, citation parser/data to Section class
+* `.templates()` are now an ordered array, instead of an object, and include infoboxes and citations

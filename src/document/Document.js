@@ -27,7 +27,6 @@ const Document = function(wiki, options) {
   });
 };
 
-
 const methods = {
   title : function() {
     if (this.options.title) {
@@ -105,6 +104,9 @@ const methods = {
   },
   tables : function(n) {
     return sectionMap(this, 'tables', n);
+  },
+  templates : function(n) {
+    return sectionMap(this, 'templates', n);
   },
   infoboxes : function(n) {
     return sectionMap(this, 'infoboxes', n);

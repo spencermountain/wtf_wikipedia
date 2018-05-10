@@ -11,7 +11,8 @@ const fromFile = require('./tests/lib/_cachedPage');
 //doc.infoboxes('Venue')
 
 // let doc = fromFile('royal_cinema');
-// console.log(doc.sections());
+// let doc = fromFile('rnli_stations');
+// console.log(doc.sections(2).templates());
 // let doc = fromFile('toronto');
 // console.log(doc.sentences(0).text());
 // console.log(doc.sections('Infrastructure').json());
@@ -57,16 +58,19 @@ const fromFile = require('./tests/lib/_cachedPage');
 // | length6         = 4:41
 // }}
 
-let wiki = `
-[[File:War.png]]
-intro bit
-==History==
-this is the [[second]] section.<ref>[http://coolyeah.yes fun times]</ref>
-
-this is the second paragraph. woo hoo.
-==Discography==
-{{main|lkjsf}}
-hello
-
-hellow world`;
-console.log(wtf(wiki).citations());
+// var str = `
+// {{Main|Royal National Lifeboat Institution lifeboats}}
+// The types of boats provided at each station and the launching methods vary depending on local needs.<ref>{{Cite web|title=cool dude}}</ref>
+// ==History==
+// {{wide_image|heyyyyy.png}}
+// {{tracklist| cool}}
+// {{infobox person
+// |cool = nope
+// }}
+// hello there
+// `;
+// console.log(wtf(str).templates());
+var str = `Emery is a vegetarian,<ref name="fun">{{ cite web|foo =    bar
+| url=http://cool.com/?fun=cool/}}</ref>`;
+var arr = wtf(str).citations();
+console.log(arr);

@@ -1,17 +1,18 @@
 const parseCitation = require('./templates/citation');
 const parseLine = require('../sentence').parseLine;
 
+//structured Cite templates - <ref>{{Cite..</ref>
 const hasCitation = function(str) {
   return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false;
 };
 //handle unstructured ones - <ref>some text</ref>
-const parseInline = function(str, r, options) {
+const parseInline = function(tmpl, r, options) {
   if (options.citations === false) {
     return;
   }
-  let obj = parseLine(str) || {};
+  let obj = parseLine(tmpl) || {};
   let cite = {
-    cite: 'inline',
+    type: 'inline',
     text: obj.text
   };
   if (obj.links && obj.links.length) {
@@ -20,15 +21,21 @@ const parseInline = function(str, r, options) {
       cite.url = extern.site;
     }
   }
-  r.citations = r.citations || [];
-  r.citations.push(cite);
+  r.templates.push({
+    template: 'citation',
+    data: cite
+  });
 };
 
 // parse <ref></ref> xml tags
 const parseRefs = function(r, wiki, options) {
   wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
-      wiki = parseCitation(tmpl, wiki, r, options);
+      let obj = parseCitation(tmpl, options);
+      if (obj) {
+        r.templates.push(obj);
+      }
+    // wiki = wiki.replace(tmpl, '');
     } else {
       parseInline(tmpl, r, options);
     }
@@ -39,7 +46,11 @@ const parseRefs = function(r, wiki, options) {
   // <ref name=""></ref>
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1000}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
-      wiki = parseCitation(tmpl, wiki, r, options);
+      let obj = parseCitation(tmpl, options);
+      if (obj) {
+        r.templates.push(obj);
+      }
+      wiki = wiki.replace(tmpl, '');
     } else {
       parseInline(tmpl, r, options);
     }

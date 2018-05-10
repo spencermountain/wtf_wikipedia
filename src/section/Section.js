@@ -2,6 +2,7 @@ const toMarkdown = require('../output/markdown/section');
 const toHtml = require('../output/html/section');
 const toJSON = require('../output/json/section');
 const Sentence = require('../sentence/Sentence');
+const Infobox = require('../infobox/Infobox');
 const setDefaults = require('../lib/setDefaults');
 const defaults = {
   infoboxes: true,
@@ -77,44 +78,55 @@ const methods = {
     }
     return arr;
   },
-  tables: function(n) {
-    if (typeof n === 'number') {
-      return this.data.tables[n];
+  tables: function(clue) {
+    if (typeof clue === 'number') {
+      return this.data.tables[clue];
     }
     return this.data.tables || [];
   },
-  templates: function(n) {
-    return this.data.templates || {};
-  },
-  infoboxes: function(n) {
-    if (typeof n === 'number') {
-      return this.data.infoboxes[n];
+  templates: function(clue) {
+    if (typeof clue === 'number') {
+      return this.data.templates[clue];
     }
-    return this.data.infoboxes || [];
+    let arr = this.data.templates || [];
+    if (typeof clue === 'string') {
+      return arr.filter(o => o.template === clue);
+    }
+    return arr;
   },
-  lists: function(n) {
-    if (typeof n === 'number') {
-      return this.data.lists[n];
+  infoboxes: function(clue) {
+    let arr = this.templates('infobox');
+    if (typeof clue === 'number') {
+      return new Infobox(arr[clue]);
+    }
+    return arr.map((obj) => {
+      return new Infobox(obj.data);
+    });
+  },
+  lists: function(clue) {
+    if (typeof clue === 'number') {
+      return this.data.lists[clue];
     }
     return this.data.lists || [];
   },
-  interwiki: function(n) {
-    if (typeof n === 'number') {
-      return this.data.interwiki[n];
+  interwiki: function(clue) {
+    if (typeof clue === 'number') {
+      return this.data.interwiki[clue];
     }
     return this.data.interwiki || [];
   },
-  images: function(n) {
-    if (typeof n === 'number') {
-      return this.data.images[n];
+  images: function(clue) {
+    if (typeof clue === 'number') {
+      return this.data.images[clue];
     }
     return this.data.images || [];
   },
-  citations: function(n) {
-    if (typeof n === 'number') {
-      return this.data.citations[n];
+  citations: function(clue) {
+    let arr = this.templates('citation').map(o => o.data);
+    if (typeof clue === 'number') {
+      return arr[clue];
     }
-    return this.data.citations || [];
+    return arr;
   },
 
   //transformations
@@ -177,7 +189,7 @@ const methods = {
     }
     if (typeof n === 'string') {
       n = n.toLowerCase();
-      children.forEach((c) => console.log(c));
+      // children.forEach((c) => console.log(c));
       return children.find(s => s.title().toLowerCase() === n);
     }
     if (typeof n === 'number') {
