@@ -1,20 +1,21 @@
 const trim = require('../lib/helpers').trim_whitespace;
 const findRecursive = require('../lib/recursive_match');
 const i18n = require('../data/i18n');
-const Image = require('../image/Image');
 const parseLine = require('../sentence').parseLine;
 const Sentence = require('../sentence/Sentence');
 const i18_infobox = i18n.infoboxes.join('|');
 // const infobox_template_reg = new RegExp('{{(infobox) +([^\|\n]+)', 'i');
-const infobox_template_reg = new RegExp('{{(' + i18_infobox + ') +([^\|\n]+)', 'i');
+// const infobox_template_reg = new RegExp('{{(subst:)?(' + i18_infobox + ') +([^\|\n]+)', 'i');
+const infobox_reg = new RegExp('{{(subst:)?(' + i18_infobox + ') ([^\|\n]+)', 'i');
 
 //which infobox is this? eg '{{Infobox author|...}}'
 const getTemplateName = function(str) {
-  let m = str.match(infobox_template_reg);
-  if (m && m[1]) {
-    return m[2].trim();
+  let m = str.match(infobox_reg);
+  let name = null;
+  if (m && m[3]) {
+    name = m[3].toLowerCase().trim();
   }
-  return null;
+  return name;
 };
 
 const parse_infobox = function(str) {
@@ -75,12 +76,12 @@ const parse_infobox = function(str) {
       return;
     }
     //handle the 'image' property in a special-way
-    if (k === 'image') {
-      obj[k] = new Image(obj[k], '');
-      obj[k].text = '';
-    } else {
-      obj[k] = parseLine(obj[k]);
-    }
+    // if (k === 'image') {
+    //   obj[k] = new Image(obj[k], '');
+    //   obj[k].text = '';
+    // } else {
+    obj[k] = parseLine(obj[k]);
+    // }
     if (obj[k].text && obj[k].text.match(/^[0-9,]*$/)) {
       obj[k].text = obj[k].text.replace(/,/, '');
       obj[k].text = parseInt(obj[k].text, 10);

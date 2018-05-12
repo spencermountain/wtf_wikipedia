@@ -1,7 +1,7 @@
 const i18n = require('../../data/i18n');
 const findRecursive = require('../../lib/recursive_match');
 const parseInfobox = require('../../infobox/parse-infobox');
-const infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
+const infobox_reg = new RegExp('{{(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i');
 
 //create a list of templates we can understand, and will parse later
 let inlineTemplates = require('../../sentence/templates/templates');
@@ -42,7 +42,7 @@ const findTemplates = function(r, wiki, options) {
   //ok, go through each one...
   matches.forEach(function(tmpl) {
 
-    if (tmpl.match(infobox_reg, 'ig')) {
+    if (infobox_reg.test(tmpl)) {
       if (options.infoboxes !== false) {
         let infobox = parseInfobox(tmpl);
         // infobox = new Infobox(infobox, tmpl);

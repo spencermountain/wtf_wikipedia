@@ -24,8 +24,6 @@ const doSection = function(section, wiki, options) {
   wiki = parse.table(section, wiki);
   // //parse the lists
   wiki = parse.list(section, wiki);
-  //supoprted things like {{main}}
-  wiki = parse.templates(section, wiki);
   // //parse+remove scary '[[ [[]] ]]' stuff
   //second, remove [[file:...[[]] ]] recursions
   let matches = find_recursive('[', ']', wiki);
