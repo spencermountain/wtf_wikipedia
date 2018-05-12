@@ -66,6 +66,9 @@ const methods = {
         s.links().forEach((link) => arr.push(link));
       });
     });
+    this.infoboxes().forEach((templ) => {
+      templ.links().forEach((link) => arr.push(link));
+    });
     //todo: add links from tables..
     // this.tables().forEach((t) => {
     //   t.links().forEach((link) => arr.push(link));
@@ -88,6 +91,7 @@ const methods = {
     if (typeof clue === 'number') {
       return this.data.templates[clue];
     }
+
     let arr = this.data.templates || [];
     if (typeof clue === 'string') {
       clue = clue.toLowerCase();
@@ -101,7 +105,7 @@ const methods = {
       return new Infobox(arr[clue]);
     }
     return arr.map((obj) => {
-      return new Infobox(obj.data);
+      return new Infobox(obj);
     });
   },
   lists: function(clue) {

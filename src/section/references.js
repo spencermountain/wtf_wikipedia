@@ -1,4 +1,4 @@
-const parseCitation = require('./templates/citation');
+const parseCitation = require('./templates/parsers/citation');
 const parseLine = require('../sentence').parseLine;
 
 //structured Cite templates - <ref>{{Cite..</ref>

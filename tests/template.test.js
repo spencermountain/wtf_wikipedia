@@ -39,8 +39,8 @@ test('boloZenden infobox', function(t) {
   t.equal(o.nationalteam1.text(), 'Netherlands');
   t.equal(o.nationalteam1.links(0).page, 'Netherlands national football team');
   t.equal(o.nationalteam1.links(0).text, 'Netherlands');
-  t.equal(o.nationalcaps1.text(), 54);
-  t.equal(o.nationalgoals1.text(), 7);
+  t.equal(o.nationalcaps1.text(), '54');
+  t.equal(o.nationalgoals1.text(), '7');
   t.end();
 });
 
@@ -63,10 +63,10 @@ var hurricane = `{{Infobox Hurricane
 }}`;
 test('hurricane infobox', function(t) {
   var o = wtf(hurricane).infoboxes(0).data;
-  t.equal(o.Name.text(), 'Tropical Storm Edouard');
-  t.equal(o.Dissipated.text(), 'September 6, 2002');
-  t.equal(o['Hurricane season'].text(), '2002 Atlantic hurricane season');
-  t.equal(o.Areas.links(0).page, 'Florida');
+  t.equal(o.name.text(), 'Tropical Storm Edouard');
+  t.equal(o.dissipated.text(), 'September 6, 2002');
+  t.equal(o['hurricane season'].text(), '2002 Atlantic hurricane season');
+  t.equal(o.areas.links(0).page, 'Florida');
   t.end();
 });
 
@@ -204,7 +204,7 @@ test('templates() list ordering', function(t) {
 The types of boats provided at each station and the launching methods vary depending on local needs.<ref>{{Cite web|title=cool dude}}</ref>
 ==History==
 {{wide_image|heyyyyy.png}}
-{{tracklist| cool}}
+{{tracklist| title1=fun times}}
 {{infobox person
 |cool = nope
 }}

@@ -51,3 +51,5 @@
 * add `.wikitext()` method to Document, Section, Sentence (thanks @niebert)
 * move infobox, citation parser/data to Section class
 * `.templates()` are now an ordered array, instead of an object, and include infoboxes and citations
+* add (early) support for 'generic' key-value template parsing
+* normalize/lowercase template/infobox properties - add loose `.get('key')` method to Infobox class

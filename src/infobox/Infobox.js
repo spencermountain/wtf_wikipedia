@@ -4,7 +4,7 @@ const Image = require('../image/Image');
 
 //a formal key-value data table about a topic
 const Infobox = function(obj, wiki) {
-  this.template = obj.template;
+  this._type = obj.type;
   // this.data = obj.data;
   //hush these properties in console.logs..
   Object.defineProperty(this, 'wiki', {
@@ -19,7 +19,14 @@ const Infobox = function(obj, wiki) {
 
 const methods = {
   type: function() {
-    return this.template;
+    return this._type;
+  },
+  links: function() {
+    let links = [];
+    Object.keys(this.data).forEach((k) => {
+      this.data[k].links().forEach((l) => links.push(l));
+    });
+    return links;
   },
   image: function() {
     let obj = this.get('image');
@@ -70,6 +77,8 @@ const methods = {
     }, {});
   }
 };
+//aliases
+methods.template = methods.type;
 
 Object.keys(methods).forEach((k) => {
   Infobox.prototype[k] = methods[k];

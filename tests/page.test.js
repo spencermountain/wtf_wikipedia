@@ -4,17 +4,19 @@ var readFile = require('./lib/_cachedPage');
 
 test('royal_cinema', t => {
   var doc = readFile('royal_cinema');
-  t.equal(doc.infoboxes(0).data.opened.text(), 1939, 'opened');
-  t.equal(doc.infoboxes(0).template, 'venue', '');
+  t.equal(doc.infoboxes(0).template(), 'venue', '');
   t.equal(doc.sections(0).sentences().length, 10, 'sentence-length');
   t.equal(doc.categories().length, 4, 'cat-length');
+
+  t.equal(doc.infoboxes(0).get('opened').text(), '1939', 'year-string');
+  // t.equal(doc.infoboxes(0).keyValue()['opened'], 1939, 'year-number');
   t.end();
 });
 
 test('toronto_star', t => {
   var doc = readFile('toronto_star');
   t.equal(doc.infoboxes(0).data.publisher.text(), 'John D. Cruickshank', 'publisher.text');
-  t.equal(doc.infoboxes(0).template, 'newspaper', '');
+  t.equal(doc.infoboxes(0).template(), 'newspaper', '');
   var section = doc.sections('history');
   t.equal(section.sentences().length, 21, 'sentence-length');
   t.equal(doc.categories().length, 6, 'sentence-length');
@@ -25,7 +27,7 @@ test('toronto_star', t => {
 test('toronto_star with list', t => {
   var doc = readFile('toronto_star');
   t.equal(doc.infoboxes(0).data.publisher.text(), 'John D. Cruickshank', 'publisher.text');
-  t.equal(doc.infoboxes(0).template, 'newspaper', '');
+  t.equal(doc.infoboxes(0).template(), 'newspaper', '');
   var section = doc.sections('history');
   t.equal(section.sentences().length, 21, 'history-length');
   t.equal(doc.categories().length, 6, 'cat-length');
@@ -37,7 +39,7 @@ test('toronto_star with list', t => {
 test('jodie_emery', t => {
   var doc = readFile('jodie_emery');
   t.equal(doc.infoboxes(0).data.nationality.text(), 'Canadian', '');
-  t.equal(doc.infoboxes(0).template, 'person', '');
+  t.equal(doc.infoboxes(0).template(), 'person', '');
   t.equal(doc.sections(0).sentences.length >= 1, true, 'intro-length');
   t.equal(doc.sections(1).sentences.length >= 1, true, 'career-length');
   t.equal(doc.categories().length, 8, 'cat-length');
@@ -57,7 +59,7 @@ test('redirect', t => {
 test('statoil', t => {
   var doc = readFile('statoil');
   t.equal(doc.infoboxes(0).data.namn.text(), 'Statoil ASA', 'name');
-  t.equal(doc.infoboxes(0).template, 'verksemd', 'template');
+  t.equal(doc.infoboxes(0).type(), 'verksemd', 'template');
   // (doc.text.Intro.length >= 1).should.be.true;
   t.equal(doc.categories().length, 4, 'cat-length');
   t.equal(doc.images().length, 1, 'img-length');

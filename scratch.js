@@ -8,11 +8,9 @@ const fromFile = require('./tests/lib/_cachedPage');
 //doc.infoboxes('Venue')
 // let doc = fromFile('royal_cinema');
 
-let str = `{{subst:Infobox Person
-| Name=Tropical Storm Edouard
-| Birthday={{birth|1986|03|28}}
-| image=File:cool.png
-}}`;
-console.log(wtf(str).infoboxes(0));
+// let str = `{{foo |last1= hello [[link|text]] |choo=one}}`;
+var str = `{{citation |url=cool.com/?fun=yes/   }}`;
+var arr = wtf(str).citations();
+console.log(arr[0].url.text());
 // var str = `{{CITE book |title=the killer and the cartoons }}`;
 // console.log(wtf(str).templates('tracklist'));
