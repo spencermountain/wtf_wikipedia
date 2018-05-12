@@ -14,7 +14,6 @@ const findTemplates = function(r, wiki, options) {
   //grab {{template {{}} }} recursions
   let matches = findRecursive('{', '}', wiki);
   matches = matches.filter(s => s[0] && s[1] && s[0] === '{' && s[1] === '{');
-
   //ok, go through each one...
   matches.forEach(function(tmpl) {
     let name = getName(tmpl);

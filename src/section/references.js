@@ -30,7 +30,7 @@ const parseRefs = function(r, wiki, options) {
       if (obj) {
         r.templates.push(obj);
       }
-    // wiki = wiki.replace(tmpl, '');
+      wiki = wiki.replace(tmpl, '');
     } else {
       parseInline(tmpl, r, options);
     }

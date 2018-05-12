@@ -3,7 +3,7 @@ const getName = require('./_getName');
 const maybeKeyValue = /\|.+?[a-z].+?=/; // |foo=
 
 const knownTemplate = function(name) {
-  if (/cite [a-z0-9]/.test(name)) {
+  if (/cite [a-z0-9]/.test(name) || name.toLowerCase().trim() === 'citation') {
     return 'citation';
   }
   return null;

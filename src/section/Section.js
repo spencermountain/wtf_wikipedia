@@ -94,7 +94,7 @@ const methods = {
     let arr = this.data.templates || [];
     if (typeof clue === 'string') {
       clue = clue.toLowerCase();
-      return arr.filter(o => o.template === clue);
+      return arr.filter(o => o.template === clue || o.name === clue);
     }
     return arr;
   },

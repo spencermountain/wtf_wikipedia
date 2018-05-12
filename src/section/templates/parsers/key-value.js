@@ -8,7 +8,10 @@ const keyValue = function(tmpl) {
   let arr = tmpl.split(/\n?\|/);
   //look for broken-up links and fix them :(
   arr.forEach((a, i) => {
-    if (arr[i + 1] && /\[\[[^\]]+$/.test(a)) { // [[link|text]]
+    if (!arr[i + 1]) {
+      return;
+    }
+    if (/\[\[[^\]]+$/.test(a) || /\{\{[^\}]+$/.test(a)) { // [[link|text]] or {{imdb|2386}}
       arr[i + 1] = arr[i] + '|' + arr[i + 1];
       arr[i] = null;
     }
