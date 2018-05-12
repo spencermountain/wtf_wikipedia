@@ -1,5 +1,6 @@
-const parseCitation = require('./templates/parsers/citation');
+const parseGeneric = require('./templates/parsers/generic');
 const parseLine = require('../sentence').parseLine;
+const Sentence = require('../sentence/Sentence');
 
 //structured Cite templates - <ref>{{Cite..</ref>
 const hasCitation = function(str) {
@@ -11,27 +12,21 @@ const parseInline = function(tmpl, r, options) {
     return;
   }
   let obj = parseLine(tmpl) || {};
+  obj = new Sentence(obj);
   let cite = {
-    type: 'inline',
-    text: obj.text
-  };
-  if (obj.links && obj.links.length) {
-    let extern = obj.links.find(f => f.site);
-    if (extern) {
-      cite.url = extern.site;
-    }
-  }
-  r.templates.push({
     template: 'citation',
-    data: cite
-  });
+    type: 'inline',
+    data: {},
+    inline: obj
+  };
+  r.templates.push(cite);
 };
 
 // parse <ref></ref> xml tags
 const parseRefs = function(r, wiki, options) {
   wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
-      let obj = parseCitation(tmpl, options);
+      let obj = parseGeneric(tmpl, options);
       if (obj) {
         r.templates.push(obj);
       }
@@ -46,7 +41,7 @@ const parseRefs = function(r, wiki, options) {
   // <ref name=""></ref>
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1000}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
-      let obj = parseCitation(tmpl, options);
+      let obj = parseGeneric(tmpl, options);
       if (obj) {
         r.templates.push(obj);
       }

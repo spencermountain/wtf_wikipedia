@@ -15,9 +15,7 @@ const getName = function(tmpl) {
   if (name) {
     name = name.trim().toLowerCase();
   }
-  if (/cite [a-z0-9]/.test(name)) {
-    name = 'citation';
-  }
+
   return name;
 };
 // console.log(templateName('{{name|foo}}'));

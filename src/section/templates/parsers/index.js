@@ -28,19 +28,9 @@ const parsers = {
       template: 'citation',
       data: data
     };
-  },
-
-//https://en.wikipedia.org/wiki/Template:Tracklist
-// tracklist: (tmpl) => {
-//   let data = keyValue(tmpl);
-//   return {
-//     template: 'tracklist',
-//     data: data
-//   };
-// }
+  }
 };
 //aliases
-// parsers['track listing'] = parsers.tracklist;
 parsers['cite'] = parsers.citation;
 
 module.exports = parsers;

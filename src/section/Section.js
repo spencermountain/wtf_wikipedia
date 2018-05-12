@@ -91,7 +91,6 @@ const methods = {
     if (typeof clue === 'number') {
       return this.data.templates[clue];
     }
-
     let arr = this.data.templates || [];
     if (typeof clue === 'string') {
       clue = clue.toLowerCase();
@@ -127,7 +126,7 @@ const methods = {
     return this.data.images || [];
   },
   citations: function(clue) {
-    let arr = this.templates('citation').map(o => o.data);
+    let arr = this.templates('citation'); //.map(o => o.data);
     if (typeof clue === 'number') {
       return arr[clue];
     }

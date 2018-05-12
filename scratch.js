@@ -7,10 +7,11 @@ const fromFile = require('./tests/lib/_cachedPage');
 // var str = `{{Time ago| Jan 21, 2001 3:45 PM}}`;
 //doc.infoboxes('Venue')
 // let doc = fromFile('royal_cinema');
+// var str = `Emery is a vegetarian, {{ cite web|foo =    bar| url=http://cool.com/?fun=cool/}}`;
+// wtf(str).templates();
 
-// let str = `{{foo |last1= hello [[link|text]] |choo=one}}`;
-var str = `{{citation |url=cool.com/?fun=yes/   }}`;
-var arr = wtf(str).citations();
-console.log(arr[0].url.text());
-// var str = `{{CITE book |title=the killer and the cartoons }}`;
-// console.log(wtf(str).templates('tracklist'));
+var str = `hello {{cite book |title=fun times }} {{cite book |title=the killer and the cartoons }}`;
+var arr = wtf(str, {
+  citations: false
+}).citations();
+console.log(arr);

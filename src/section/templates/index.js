@@ -1,10 +1,10 @@
 const findRecursive = require('../../lib/recursive_match');
 // const parseInfobox = require('../../infobox/parse-infobox');
 const infoBx = require('./infobox');
-const getName = require('./_getName');
 //create a list of templates we can understand, and will parse later
 let inlineTemplates = require('../../sentence/templates/templates');
 const parsers = require('./parsers');
+const getName = require('./parsers/_getName');
 const keyValue = require('./parsers/key-value');
 const generic = require('./parsers/generic');
 
@@ -59,13 +59,11 @@ const findTemplates = function(r, wiki, options) {
       return;
     }
     //here: add custom parser support?
-    let obj = generic(tmpl);
+    let obj = generic(tmpl, options);
     if (obj) {
-      r.templates.push({
-        template: name,
-        data: obj
-      });
+      r.templates.push(obj);
       wiki = wiki.replace(tmpl, '');
+      return;
     }
 
     //if it's not a known template, but it's recursive, remove it
