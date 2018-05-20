@@ -16,10 +16,11 @@ var str = `{{infobox settlement
 |blank_info = 1562127 {{Coord|57|18|22|N|4|27|32|W|display=title}}
 }}`;
 // {{nowrap|asdfasf}}
-str = `he is {{height|m=1.77|precision=0}}`;
+// str = `he is {{height|m=1.77|precision=0}}`;
+str = `born {{Birth date|1919|12|4|df=yes}}`;
 let doc = wtf(str);
 console.log(doc.plaintext());
-console.log(doc.templates(0).data);
+console.log(doc.templates());
 // console.log(doc.infoboxes(0).get('blank_info'));
 // console.log(doc.citations());
 

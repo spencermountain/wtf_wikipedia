@@ -1,4 +1,4 @@
-const i18n = require('../../data/i18n');
+const i18n = require('../../../data/i18n');
 const is_info = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i');
 //
 const isInfobox = function(tmpl) {

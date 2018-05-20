@@ -1,11 +1,11 @@
 // const parseCitation = require('./citation');
-const keyValue = require('./key-value');
-const parseGeo = require('./geo');
-const getInside = require('./_getInside');
-const pipeSplit = require('./pipeSplit');
+// const parseGeo = require('../geo');
+const keyValue = require('../parsers/key-value');
+const getInside = require('../parsers/inside');
+const pipeSplit = require('../parsers/pipeSplit');
 
 const parsers = {
-  coord: parseGeo,
+  // coord: parseGeo,
   main: getInside,
   wide_image: getInside,
 
@@ -14,7 +14,7 @@ const parsers = {
     let order = ['id', 'title', 'description', 'section'];
     return pipeSplit(tmpl, order);
   },
-  //https://en.wikipedia.org/wiki/Template:Taxon_info 
+  //https://en.wikipedia.org/wiki/Template:Taxon_info
   'taxon info': (tmpl) => {
     let order = ['taxon', 'item'];
     return pipeSplit(tmpl, order);
