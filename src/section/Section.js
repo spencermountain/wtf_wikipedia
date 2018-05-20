@@ -107,6 +107,13 @@ const methods = {
       return new Infobox(obj);
     });
   },
+  coordinates: function(clue) {
+    let arr = this.templates('coord');
+    if (typeof clue === 'number') {
+      return arr[clue];
+    }
+    return arr;
+  },
   lists: function(clue) {
     if (typeof clue === 'number') {
       return this.data.lists[clue];

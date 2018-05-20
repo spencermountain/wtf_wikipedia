@@ -15,6 +15,10 @@ const getName = function(tmpl) {
   if (name) {
     name = name.trim().toLowerCase();
   }
+  //support {{imdb title|id}}
+  if (/^imdb /i.test(name) === true) {
+    name = 'imdb';
+  }
 
   return name;
 };

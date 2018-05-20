@@ -8,6 +8,12 @@ const getName = require('./parsers/_getName');
 const keyValue = require('./parsers/key-value');
 const generic = require('./parsers/generic');
 
+const trim = function(tmpl) {
+  tmpl = tmpl.replace(/^\{\{/, '');
+  tmpl = tmpl.replace(/\}\}$/, '');
+  return tmpl;
+};
+
 //reduce the scary recursive situations
 const findTemplates = function(r, wiki, options) {
 
@@ -45,7 +51,7 @@ const findTemplates = function(r, wiki, options) {
     }
     //parse this template
     if (parsers.hasOwnProperty(name) === true) {
-      let template = parsers[name](tmpl, options);
+      let template = parsers[name](trim(tmpl), options);
       if (template) {
         r.templates.push(template);
       }

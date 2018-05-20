@@ -1,14 +1,8 @@
 // const parseCitation = require('./citation');
 const keyValue = require('./key-value');
-
-const trim = function(tmpl) {
-  tmpl = tmpl.replace(/^\{\{/, '');
-  tmpl = tmpl.replace(/\}\}$/, '');
-  return tmpl;
-};
+const parseGeo = require('./geo');
 
 const grabInside = function(tmpl) {
-  tmpl = trim(tmpl);
   let parts = tmpl.split('|');
   if (typeof parts[1] !== 'string') {
     return null;
@@ -20,8 +14,29 @@ const grabInside = function(tmpl) {
 };
 
 const parsers = {
+  coord: parseGeo,
   main: grabInside,
   wide_image: grabInside,
+
+  imdb: (tmpl) => {
+    let arr = tmpl.split(/\|/g);
+    let obj = {
+      template: 'imdb',
+    };
+    if (arr[0]) {
+      obj.type = arr[0].trim().replace(/^imdb +/i, '');
+    }
+    if (arr[1]) { //id
+      obj.id = arr[1].trim().replace(/^.+= +/i, '');
+    }
+    if (arr[2]) { //title
+      obj.title = arr[2].trim().replace(/^.+= +/i, '');
+    }
+    if (arr[3]) { //description
+      obj.description = arr[3].trim().replace(/^.+= +/i, '');
+    }
+    return obj;
+  },
 
   //same in every language.
   citation: (tmpl, options) => {
@@ -39,7 +54,6 @@ const parsers = {
     if (options.citations === false) {
       return null;
     }
-    tmpl = trim(tmpl);
     let arr = tmpl.split('|');
     return {
       template: 'citation',

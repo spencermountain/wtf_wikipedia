@@ -1,8 +1,4 @@
-const convertGeo = require('./convertGeo');
-// {{coord|latitude|longitude|coordinate parameters|template parameters}}
-// {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
-// {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
-// {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
+const convertDMS = require('./dms-format');
 
 const hemispheres = {
   n: true,
@@ -21,6 +17,7 @@ const round = function(num) {
 
 const parseCoord = function(str) {
   let obj = {
+    template: 'coord',
     lat: null,
     lon: null
   };
@@ -43,15 +40,15 @@ const parseCoord = function(str) {
     }
     //DMS-format
     if (hemispheres[s.toLowerCase()]) {
-      if (obj.lat !== null) {
+      if (obj.lat === null) {
         nums.push(s);
-        obj.lon = convertGeo(nums);
-      } else {
-        nums.push(s);
-        obj.lat = convertGeo(nums);
+        obj.lat = convertDMS(nums);
         arr = arr.slice(i, arr.length);
         nums = [];
         i = 0;
+      } else {
+        nums.push(s);
+        obj.lon = convertDMS(nums);
       }
     }
   }
@@ -64,4 +61,9 @@ const parseCoord = function(str) {
   obj.lon = round(obj.lon);
   return obj;
 };
+
 module.exports = parseCoord;
+// {{coord|latitude|longitude|coordinate parameters|template parameters}}
+// {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}

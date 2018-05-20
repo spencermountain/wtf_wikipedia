@@ -115,10 +115,7 @@ const methods = {
     return sectionMap(this, 'citations', clue);
   },
   coordinates : function(clue) {
-    if (typeof clue === 'number') {
-      return this.data.coordinates[clue];
-    }
-    return this.data.coordinates || [];
+    return sectionMap(this, 'coordinates', clue);
   },
   plaintext : function(options) {
     options = setDefaults(options, defaults);

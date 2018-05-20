@@ -1,5 +1,5 @@
 const languages = require('../../data/languages');
-const parseCoord = require('./coordinates');
+// const parseCoord = require('./coordinates');
 
 const months = [
   'January',
@@ -48,11 +48,11 @@ const word_templates = function(wiki, r) {
     tmpl = tmpl.replace(/^\{\{OldStyleDate\|([^|]+).*?\}\}/gi, '');
     //'harvard references'
     //{{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}}
-    let coord = tmpl.match(/^\{\{coord\|(.*?)\}\}/i);
-    if (coord !== null) {
-      r.coordinates.push(parseCoord(coord[1]));
-      tmpl = tmpl.replace(coord[0], '');
-    }
+    // let coord = tmpl.match(/^\{\{coord\|(.*?)\}\}/i);
+    // if (coord !== null) {
+    //   r.coordinates.push(parseCoord(coord[1]));
+    //   tmpl = tmpl.replace(coord[0], '');
+    // }
     //font-size
     tmpl = tmpl.replace(/^\{\{(small|smaller|midsize|larger|big|bigger|large|huge|resize)\|([\s\S]*?)\}\}/gi, '$2');
     //{{font|size=x%|text}}
