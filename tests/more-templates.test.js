@@ -17,3 +17,11 @@ test('imdb', t => {
   t.equal(obj.title, 'Alpha Dog', 'title');
   t.end();
 });
+
+test('taxon', t => {
+  let str = `{{Taxon info|Felis|parent}}`;
+  var doc = wtf(str);
+  let obj = doc.templates(0);
+  t.equal(obj.taxon, 'Felis', 'taxon');
+  t.end();
+});

@@ -14,6 +14,11 @@ const parsers = {
     let order = ['id', 'title', 'description', 'section'];
     return pipeSplit(tmpl, order);
   },
+  //https://en.wikipedia.org/wiki/Template:Taxon_info 
+  'taxon info': (tmpl) => {
+    let order = ['taxon', 'item'];
+    return pipeSplit(tmpl, order);
+  },
 
   //same in every language.
   citation: (tmpl, options) => {

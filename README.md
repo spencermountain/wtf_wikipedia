@@ -34,9 +34,9 @@ Consider:
 * the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax)
 * [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
 * the partial-implementation of [inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
-* the deep nesting of [similar-syntax](https://twitter.com/spencermountain/status/934907924320792577) templates,
+* the deep nesting of [similar-syntax](https://en.wikipedia.org/wiki/Wikipedia:Database_reports/Templates_transcluded_on_the_most_pages) templates,
 * the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) of image paths,
-* the custom encoding of whitespace and some punctuation,
+* the [custom encoding](https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(technical_restrictions)) of whitespace and punctuation,
 * [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
 
 **wtf_wikipedia** supports many ***recursive shenanigans***, depreciated and obscure template
