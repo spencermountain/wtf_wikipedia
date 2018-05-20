@@ -6,9 +6,8 @@ const dates = require('./dates');
 const geo = require('./geo');
 const inline = require('./inline');
 const misc = require('./misc');
+const generic = require('./generic');
 // const infoboxes = require('./infobox');
-// const keyValue = require('./parsers/key-value');
-// const generic = require('./parsers/generic');
 
 // const strip = function(tmpl) {
 //   tmpl = tmpl.replace(/^\{\{/, '');
@@ -16,8 +15,9 @@ const misc = require('./misc');
 //   return tmpl;
 // };
 
-const doTemplate = function(tmpl, wiki, r, options) {
+const doTemplate = function(tmpl, wiki, r) {
   let name = getName(tmpl);
+
   //date templates
   if (dates.hasOwnProperty(name)) {
     let str = dates[name](tmpl);
@@ -48,6 +48,13 @@ const doTemplate = function(tmpl, wiki, r, options) {
     wiki = wiki.replace(tmpl, '');
     return wiki;
   }
+  let obj = generic(tmpl, name);
+  if (obj) {
+    r.templates.push(obj);
+    wiki = wiki.replace(tmpl, '');
+    return wiki;
+  }
+
   //bury this template, if we don't know it
   console.log(`  - no parser for '${name}' -`);
   console.log('');

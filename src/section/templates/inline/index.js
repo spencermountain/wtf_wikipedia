@@ -38,6 +38,10 @@ const inline = {
     let obj = getInside(tmpl);
     return obj.data;
   },
+  big: (tmpl) => {
+    let obj = getInside(tmpl);
+    return obj.data;
+  },
   //https://en.wikipedia.org/wiki/Template:Height - {{height|ft=6|in=1}}
   height: (tmpl) => {
     let obj = keyValue(tmpl);

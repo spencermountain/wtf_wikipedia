@@ -66,11 +66,11 @@ const parsers = {
   one_year: (tmpl, r) => {
     let arr = tmpl.split('|');
     let str = arr[1] || '';
-    let year = parseInt(str, 10);
-    obj.dates = obj.dates || [];
-    obj.dates.push({
-      year: year
-    });
+    // let year = parseInt(str, 10);
+    // obj.dates = obj.dates || [];
+    // obj.dates.push({
+    // year: year
+    // });
     return str.trim();
   },
 

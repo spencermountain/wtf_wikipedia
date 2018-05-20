@@ -14,9 +14,11 @@ const findFlat = function(wiki) {
   let carry = [];
   let chars = wiki.split('');
   chars.forEach((c) => {
+    //open it
     if (c === open) {
       depth += 1;
     }
+    //close it
     if (depth > 0) {
       if (c === close) {
         depth -= 1;
@@ -29,6 +31,12 @@ const findFlat = function(wiki) {
           }
           return;
         }
+      }
+      //require two '{{' to open it
+      if (depth === 1 && c !== open && c !== close) {
+        depth = 0;
+        carry = [];
+        return;
       }
       carry.push(c);
       return;
