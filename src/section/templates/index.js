@@ -50,8 +50,8 @@ const doTemplate = function(tmpl, wiki, r) {
   }
 
   //bury this template, if we don't know it
-  console.log(`  - no parser for '${name}' -`);
-  console.log('');
+  // console.log(`  - no parser for '${name}' -`);
+  // console.log('');
   wiki = wiki.replace(tmpl, '');
 
   return wiki;

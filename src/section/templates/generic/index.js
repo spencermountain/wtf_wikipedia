@@ -12,7 +12,6 @@ const infoboxType = function(name) {
   return name.trim();
 };
 
-
 //somehow, we parse this template without knowing how to already
 const generic = function(tmpl) {
   let name = getName(tmpl);
