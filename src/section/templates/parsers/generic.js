@@ -8,8 +8,9 @@ const knownTemplate = function(name) {
   }
   return null;
 };
-//
-const genericTemplate = function(tmpl, options) {
+
+//just go for it.
+const genericTemplate = function(tmpl) {
   if (maybeKeyValue.test(tmpl)) {
     let name = getName(tmpl);
     let data = keyValue(tmpl);
@@ -19,9 +20,6 @@ const genericTemplate = function(tmpl, options) {
         data: data
       };
       let template = knownTemplate(name);
-      if (options.citations === false && template === 'citation') {
-        return null;
-      }
       if (template) {
         obj.template = template;
       }

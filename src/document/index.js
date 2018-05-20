@@ -42,9 +42,7 @@ const main = function(wiki, options) {
   //pull-out infoboxes and stuff
   // wiki = parse.templates(r, wiki, options);
   //pull-out [[category:whatevers]]
-  if (options.categories !== false) {
-    wiki = parse.categories(r, wiki);
-  }
+  wiki = parse.categories(r, wiki);
   //parse all the headings, and their texts/sentences
   r.sections = parse.section(wiki, options) || [];
 

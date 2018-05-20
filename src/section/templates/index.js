@@ -9,18 +9,12 @@ const misc = require('./misc');
 const generic = require('./generic');
 // const infoboxes = require('./infobox');
 
-// const strip = function(tmpl) {
-//   tmpl = tmpl.replace(/^\{\{/, '');
-//   tmpl = tmpl.replace(/\}\}$/, '');
-//   return tmpl;
-// };
-
 const doTemplate = function(tmpl, wiki, r) {
   let name = getName(tmpl);
 
   //date templates
   if (dates.hasOwnProperty(name)) {
-    let str = dates[name](tmpl);
+    let str = dates[name](tmpl, r);
     wiki = wiki.replace(tmpl, str);
     return wiki;
   }

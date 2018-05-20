@@ -54,3 +54,8 @@
 * add (early) support for 'generic' key-value template parsing
 * normalize/lowercase template/infobox properties - add loose `.get('key')` method to Infobox class
 * mess-around with citation-template formatting
+#4.1.0
+* 🚨 non-breaking, but sizable change 🚨
+* beginning to support unknown template forms
+* move `date` data from Sentence to Section object.
+* begin rollback of awkward+undocumented parser options param
