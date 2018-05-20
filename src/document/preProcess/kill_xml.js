@@ -1,6 +1,6 @@
 //okay, i know you're not supposed to regex html, but...
 //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
-const kill_xml = function(wiki, r) {
+const kill_xml = function(wiki) {
   //(parse <ref> tags in Section class) - luckily, refs can't be recursive.
   //other types of xml that we want to trash completely
   wiki = wiki.replace(/< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi, ' '); // <table name=""><tr>hi</tr></table>

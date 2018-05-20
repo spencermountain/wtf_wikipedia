@@ -7,10 +7,7 @@ const hasCitation = function(str) {
   return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false;
 };
 //handle unstructured ones - <ref>some text</ref>
-const parseInline = function(tmpl, r, options) {
-  if (options.citations === false) {
-    return;
-  }
+const parseInline = function(tmpl, r) {
   let obj = parseLine(tmpl) || {};
   obj = new Sentence(obj);
   let cite = {
@@ -23,16 +20,16 @@ const parseInline = function(tmpl, r, options) {
 };
 
 // parse <ref></ref> xml tags
-const parseRefs = function(r, wiki, options) {
+const parseRefs = function(r, wiki) {
   wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
-      let obj = parseGeneric(tmpl, options);
+      let obj = parseGeneric(tmpl);
       if (obj) {
         r.templates.push(obj);
       }
       wiki = wiki.replace(tmpl, '');
     } else {
-      parseInline(tmpl, r, options);
+      parseInline(tmpl, r);
     }
     return ' ';
   });
@@ -41,13 +38,13 @@ const parseRefs = function(r, wiki, options) {
   // <ref name=""></ref>
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1000}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
-      let obj = parseGeneric(tmpl, options);
+      let obj = parseGeneric(tmpl);
       if (obj) {
         r.templates.push(obj);
       }
       wiki = wiki.replace(tmpl, '');
     } else {
-      parseInline(tmpl, r, options);
+      parseInline(tmpl, r);
     }
     return ' ';
   });

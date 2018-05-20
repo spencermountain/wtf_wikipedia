@@ -1,5 +1,6 @@
 const i18n = require('../../../data/i18n');
 const keyValue = require('../parsers/key-value');
+const getName = require('../parsers/_getName');
 const is_infobox = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i');
 const is_citation = new RegExp('^(cite |citation)', 'i');
 
@@ -13,7 +14,8 @@ const infoboxType = function(name) {
 
 
 //somehow, we parse this template without knowing how to already
-const generic = function(tmpl, name) {
+const generic = function(tmpl) {
+  let name = getName(tmpl);
   //make sure it looks like a key-value template
   if (maybeKeyValue.test(tmpl) === true) {
     let data = keyValue(tmpl);

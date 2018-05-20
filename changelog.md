@@ -58,4 +58,4 @@
 * 🚨 non-breaking, but sizable change 🚨
 * beginning to support unknown template forms
 * move `date` data from Sentence to Section object.
-* begin rollback of awkward+undocumented parser options param
+* rollback of awkward+undocumented `options` param in parser (but keep options param for output methods)

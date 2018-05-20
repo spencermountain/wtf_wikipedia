@@ -13,6 +13,7 @@ const readFile = require('./tests/lib/_cachedPage');
 var str = `{{infobox settlement
 |blank_name = [[Geographic Names Information System|GNIS]] feature ID
 |blank_info = 1562127<ref>{{cite gnis|1562127|Bradley}}</ref>
+}}
 `;
 let doc = wtf(str);
 // console.log(doc.plaintext());
