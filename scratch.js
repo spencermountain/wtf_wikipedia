@@ -15,7 +15,6 @@ var str = `{{infobox settlement
 |blank_name = [[Geographic Names Information System|GNIS]] feature ID
 |blank_info = 1562127 {{Coord|57|18|22|N|4|27|32|W|display=title}}
 }}`;
-str = `hi {{coord|59|12|7.7|N|02|15|39.6|W}} there`;
 let doc = wtf(str);
 console.log(doc.templates());
 console.log(doc.coordinates());

@@ -7,7 +7,7 @@ function find_recursive(opener, closer, text) {
   var chars = text.split('');
   var open = 0;
   for (var i = 0; i < chars.length; i++) {
-    //incriment open tag
+    //increment open tag
     if (chars[i] === opener) {
       open += 1;
     }
