@@ -22,7 +22,7 @@ const getBoth = function(tmpl) {
 const parsers = {
 
   //generic {{date|year|month|date}} template
-  date: (tmpl, obj) => {
+  date: (tmpl, r) => {
     let arr = tmpl.split('|');
     arr = arr.slice(1, 8);
     //support 'df=yes|1894|7|26'
@@ -32,14 +32,14 @@ const parsers = {
     let date = ymd(arr);
     date.text = toText(date); //make the replacement string
     if (date.text) {
-      obj.dates = obj.dates || [];
-      obj.dates.push(date);
+      // obj.dates = obj.dates || [];
+      // obj.dates.push(date);
     }
     return date.text;
   },
 
   //support parsing of 'February 10, 1992'
-  natural_date: (tmpl, obj) => {
+  natural_date: (tmpl, r) => {
     let arr = tmpl.split('|');
     let str = arr[1] || '';
     // - just a year
@@ -57,13 +57,13 @@ const parsers = {
         date.date = d.getDate();
       }
     }
-    obj.dates = obj.dates || [];
-    obj.dates.push(date);
+    // obj.dates = obj.dates || [];
+    // obj.dates.push(date);
     return str.trim();
   },
 
   //just grab the first value, and assume it's a year
-  one_year: (tmpl, obj) => {
+  one_year: (tmpl, r) => {
     let arr = tmpl.split('|');
     let str = arr[1] || '';
     let year = parseInt(str, 10);
@@ -75,18 +75,18 @@ const parsers = {
   },
 
   //assume 'y|m|d' | 'y|m|d'
-  two_dates: (tmpl, obj) => {
+  two_dates: (tmpl, r) => {
     let arr = tmpl.split('|');
     //'b' means show birth-date, otherwise show death-date
     if (arr[1] === 'B' || arr[1] === 'b') {
       let date = ymd(arr.slice(2, 5));
-      obj.dates = obj.dates || [];
-      obj.dates.push(date);
+      // obj.dates = obj.dates || [];
+      // obj.dates.push(date);
       return toText(date);
     }
     let date = ymd(arr.slice(5, 8));
-    obj.dates = obj.dates || [];
-    obj.dates.push(date);
+    // obj.dates = obj.dates || [];
+    // obj.dates.push(date);
     return toText(date);
   },
 

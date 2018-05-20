@@ -22,9 +22,6 @@ const parsers = {
 
   //same in every language.
   citation: (tmpl, options) => {
-    if (options.citations === false) {
-      return null;
-    }
     let data = keyValue(tmpl);
     return {
       template: 'citation',
@@ -33,9 +30,6 @@ const parsers = {
   },
   //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
   'cite gnis': (tmpl, options) => {
-    if (options.citations === false) {
-      return null;
-    }
     let order = ['id', 'name', 'type'];
     return pipeSplit(tmpl, order);
   }

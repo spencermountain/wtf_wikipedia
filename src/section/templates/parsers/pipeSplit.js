@@ -1,8 +1,15 @@
 const keyVal = /[a-z]{2} *?= *?[a-z0-9]/i;
 
+const strip = function(tmpl) {
+  tmpl = tmpl.replace(/^\{\{/, '');
+  tmpl = tmpl.replace(/\}\}$/, '');
+  return tmpl;
+};
+
 //templates that look like this:
 // {{name|one|two|three}}
 const pipeSplit = function(tmpl, order) {
+  tmpl = strip(tmpl);
   let arr = tmpl.split(/\|/g);
   let obj = {
     template: arr[0].trim().toLowerCase()

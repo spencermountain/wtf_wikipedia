@@ -1,81 +1,123 @@
-const findRecursive = require('../../lib/recursive_match');
-const parsers = require('./misc');
-const infoBx = require('./infobox');
+// const findRecursive = require('../../lib/recursive_match');
 const getName = require('./parsers/_getName');
-const keyValue = require('./parsers/key-value');
-const generic = require('./parsers/generic');
+const getTemplates = require('./getTemplates');
 
-const trim = function(tmpl) {
-  tmpl = tmpl.replace(/^\{\{/, '');
-  tmpl = tmpl.replace(/\}\}$/, '');
-  return tmpl;
-};
+const dates = require('./dates');
+const geo = require('./geo');
+const inline = require('./inline');
+const misc = require('./misc');
+// const infoboxes = require('./infobox');
+// const keyValue = require('./parsers/key-value');
+// const generic = require('./parsers/generic');
 
-//reduce the scary recursive situations
-const findTemplates = function(r, wiki, options) {
+// const strip = function(tmpl) {
+//   tmpl = tmpl.replace(/^\{\{/, '');
+//   tmpl = tmpl.replace(/\}\}$/, '');
+//   return tmpl;
+// };
 
-  //grab {{template {{}} }} recursions
-  let matches = findRecursive('{', '}', wiki);
-  matches = matches.filter(s => s[0] && s[1] && s[0] === '{' && s[1] === '{');
-  //ok, go through each one...
-  matches.forEach(function(tmpl) {
-    let name = getName(tmpl);
-    //this must be junk
-    if (name === null) {
-      wiki = wiki.replace(tmpl, '');
-      return;
-    }
-    //for-sure do all of these guys
-    if (infoBx.isInfobox(name)) {
-      if (options.infoboxes !== false) {
-        r.templates.push({
-          template: 'infobox',
-          type: infoBx.templateName(name),
-          data: keyValue(tmpl)
-        });
-      }
-      wiki = wiki.replace(tmpl, '');
-      return;
-    }
-
-    //sorta-keep this nowrap template
-    if (name === 'nowrap') {
-      let inside = tmpl.match(/^\{\{nowrap *?\|(.*?)\}\}$/);
-      if (inside) {
-        wiki = wiki.replace(tmpl, inside[1]);
-        return;
-      }
-    }
-    //parse this template
-    if (parsers.hasOwnProperty(name) === true) {
-      let template = parsers[name](trim(tmpl), options);
-      if (template) {
-        r.templates.push(template);
-      }
-      //remove it from the wiki document
-      wiki = wiki.replace(tmpl, '');
-      return;
-    }
-    //do these later?
-    // if (inlineTemplates.hasOwnProperty(name) === true) {
-    //   return;
-    // }
-    //here: add custom parser support?
-    let obj = generic(tmpl, options);
+const doTemplate = function(tmpl, wiki, r, options) {
+  let name = getName(tmpl);
+  //date templates
+  if (dates.hasOwnProperty(name)) {
+    let str = dates[name](tmpl);
+    wiki = wiki.replace(tmpl, str);
+    return wiki;
+  }
+  //geo templates
+  if (geo.hasOwnProperty(name)) {
+    let obj = geo[name](tmpl);
     if (obj) {
       r.templates.push(obj);
-      wiki = wiki.replace(tmpl, '');
-      return;
     }
-
-    //if it's not a known template, but it's recursive, remove it
-    //(because it will be misread later-on)
     wiki = wiki.replace(tmpl, '');
-  });
-  // //ok, now that the scary recursion issues are gone, we can trust simple regex methods..
-  // //kill the rest of templates
-  wiki = wiki.replace(/\{\{ *?(^(main|wide)).*?\}\}/g, ''); //TODO:fix me
+    return wiki;
+  }
+  //inline templates
+  if (inline.hasOwnProperty(name)) {
+    let str = inline[name](tmpl);
+    wiki = wiki.replace(tmpl, str);
+    return wiki;
+  }
+  //other ones
+  if (misc.hasOwnProperty(name)) {
+    let obj = misc[name](tmpl);
+    if (obj) {
+      r.templates.push(obj);
+    }
+    wiki = wiki.replace(tmpl, '');
+    return wiki;
+  }
+  //bury this template, if we don't know it
+  console.log(`  - no parser for '${name}' -`);
+  console.log('');
+  wiki = wiki.replace(tmpl, '');
+
   return wiki;
 };
 
-module.exports = findTemplates;
+//reduce the scary recursive situations
+const allTemplates = function(r, wiki, options) {
+  let templates = getTemplates(wiki);
+  //first, do the nested ones
+  templates.nested.forEach((tmpl) => {
+    wiki = doTemplate(tmpl, wiki, r, options);
+  });
+  //then, reparse wiki for the top-level ones
+  templates = getTemplates(wiki);
+  templates.top.forEach((tmpl) => {
+    wiki = doTemplate(tmpl, wiki, r, options);
+  });
+  //grab {{template {{}} }} recursions
+  // let matches = findRecursive('{', '}', wiki);
+  // matches = matches.filter(s => s[0] && s[1] && s[0] === '{' && s[1] === '{');
+  // //ok, go through each one...
+  // matches.forEach(function(tmpl) {
+  //   let name = getName(tmpl);
+  //   //what the-
+  //   if (!name) {
+  //     wiki = wiki.replace(tmpl, '');
+  //     return;
+  //   }
+  //   //for-sure do all of these guys
+  //   if (infoBx.isInfobox(name)) {
+  //     if (options.infoboxes !== false) {
+  //       r.templates.push({
+  //         template: 'infobox',
+  //         type: infoBx.templateName(name),
+  //         data: keyValue(tmpl)
+  //       });
+  //     }
+  //     wiki = wiki.replace(tmpl, '');
+  //     return;
+  //   }
+  //
+  //   //parse this template
+  //   if (parsers.hasOwnProperty(name) === true) {
+  //     let template = parsers[name](trim(tmpl), options);
+  //     if (template) {
+  //       r.templates.push(template);
+  //     }
+  //     //remove it from the wiki document
+  //     wiki = wiki.replace(tmpl, '');
+  //     return;
+  //   }
+  //   //here: add custom parser support?
+  //   let obj = generic(tmpl, options);
+  //   if (obj) {
+  //     r.templates.push(obj);
+  //     wiki = wiki.replace(tmpl, '');
+  //     return;
+  //   }
+  //
+  //   //if it's not a known template, but it's recursive, remove it
+  //   //(because it will be misread later-on)
+  //   wiki = wiki.replace(tmpl, '');
+  // });
+  // // //ok, now that the scary recursion issues are gone, we can trust simple regex methods..
+  // // //kill the rest of templates
+  // wiki = wiki.replace(/\{\{ *?(^(main|wide)).*?\}\}/g, ''); //TODO:fix me
+  return wiki;
+};
+
+module.exports = allTemplates;
