@@ -1,4 +1,5 @@
 const parseGeneric = require('../templates/parsers/generic');
+const parsePipe = require('../templates/misc/')['cite gnis'];
 const parseLine = require('../sentence').parseLine;
 const Sentence = require('../sentence/Sentence');
 
@@ -6,6 +7,17 @@ const Sentence = require('../sentence/Sentence');
 const hasCitation = function(str) {
   return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false;
 };
+
+//might as well parse it, since we're here.
+const parseCitation = function(tmpl) {
+  let obj = parseGeneric(tmpl);
+  if (obj) {
+    return obj;
+  }
+  //support {{cite gnis|98734}} format
+  return parsePipe(tmpl);
+};
+
 //handle unstructured ones - <ref>some text</ref>
 const parseInline = function(tmpl, r) {
   let obj = parseLine(tmpl) || {};
@@ -23,7 +35,7 @@ const parseInline = function(tmpl, r) {
 const parseRefs = function(r, wiki) {
   wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
-      let obj = parseGeneric(tmpl);
+      let obj = parseCitation(tmpl);
       if (obj) {
         r.templates.push(obj);
       }
@@ -38,7 +50,7 @@ const parseRefs = function(r, wiki) {
   // <ref name=""></ref>
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1000}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
-      let obj = parseGeneric(tmpl);
+      let obj = parseCitation(tmpl);
       if (obj) {
         r.templates.push(obj);
       }

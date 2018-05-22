@@ -31,7 +31,10 @@ const parsers = {
   //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
   'cite gnis': (tmpl) => {
     let order = ['id', 'name', 'type'];
-    return pipeSplit(tmpl, order);
+    let obj = pipeSplit(tmpl, order);
+    obj.template = 'citation';
+    obj.type = 'gnis';
+    return obj;
   },
   //https://en.wikipedia.org/wiki/Template:Refn
   // refn: (tmpl) => null,

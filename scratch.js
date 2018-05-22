@@ -26,17 +26,12 @@ const readFile = require('./tests/lib/_cachedPage');
 // var str = `{{Trunc | Lorem ipsum dolor sit amet | 10 }}`; //Lorem ipsu
 // var str = `{{str mid|Abcdefghijklmnopqrstuvwxyz|5|3}}`;
 //var str = `{{plural|1.5|page}}`;
-var str = `{{infobox musical artist
-  | label = {{flatlist|
-  * [[TBD Records|TBD]]
-  * [[Parlophone]]
-  }}
-  | bottom = Yes
-  }}
-}}`;
-
+// var str = `{{Ordered list |entry1 |entry2| ... }}`;
+// var str = `{{hlist|Winner|Runner-up|Third place|item_style=color:blue;|indent=2}}`;
+// var str = `{{unbulleted list|first item|second item|third item|...}}`;
+// var str = `{{block indent |1=The material to be indented here. May include markup, paragraph breaks, etc.}}`;
+str = `hello there {{fun|foo=987234}} {{fun|foo=987234}} template`;
 let doc = wtf(str);
 console.log(doc.plaintext());
-// console.log(doc.templates());
-console.log(doc.templates(0).data.bottom);
+console.log(doc.templates('fun'));
 // console.log(doc.infoboxes(0).data);

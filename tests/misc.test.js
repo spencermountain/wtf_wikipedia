@@ -51,11 +51,43 @@ test('external links', t => {
   t.end();
 });
 
-test('misc template', t => {
-  var str = `hello {{refn|group=groupname|name=name|Contents of the footnote}} world`;
-  t.equal(wtf(str).sentences(0).text(), 'hello world', 'refn');
-
-  str = `hello {{tag|ref|content=haha}} world`;
-  t.equal(wtf(str).sentences(0).plaintext(), 'hello world', 'tag');
+test('misc templates', t => {
+  var arr = [
+    [`hello {{refn|group=groupname|name=name|Contents of the footnote}} world`, 'hello world'],
+    [`hello {{tag|ref|content=haha}} world`, 'hello world'],
+    [`{{convert|70|m}}`, '70 m'],
+    [`{{convert|7|and|8|km}}`, '7 and 8 km'],
+    [`{{convert|7|to|8|mi}}`, '7 to 8 mi'],
+    [`{{ill|Joke|fr|Blague|hu|Vicc|de|Witz}}`, 'Joke'],
+    [`hello {{small|2 February}}`, 'hello 2 February'],
+    [`{{tiw|Hatnote}}`, 'Hatnote'],
+    [`{{date|June 8 2018|mdy}}`, 'June 8 2018'],
+    [`{{l|cs|háček}}`, 'háček'],
+    [`{{IPA|/ˈkærəktɚz/}}`, ''],
+    [`{{IPAc-ar|2|a|l|l|u|gh|a|t_|a|l|3|a|r|a|b|i|y|y|a}}`, ''],
+    [`{{dts|July 1, 1867}}`, 'July 1, 1867'],
+    [`{{dts|2024|Jun|12}}`, 'Jun 12 2024'],
+    [`{{dts|-200}}`, '200 BC'],
+    [`{{dts|2020-10-15|format=dm}}`, '2020-10-15'],
+    [`{{dts|2000-03-02|abbr=on}}`, '2000-03-02'],
+    [`{{tag|ref|content=haha}}`, ''],
+    [`{{tag|div|content=haha}}`, 'haha'],
+    [`{{first word|Foo bar baz}}`, 'Foo'],
+    [`{{Trunc | Lorem ipsum dolor sit amet | 10 }}`, 'Lorem ipsu'],
+    [`{{str mid|Abcdefghijklmnopqrstuvwxyz|5|3}}`, 'efg'],
+    [`{{plural|1|page}}`, '1 page'],
+    [`{{plural|1.5|page}}`, '1.5 pages'],
+    [`{{plural|20|fly}}`, '20 flies'],
+    [`{{Ordered list |entry1 |entry2| entry3 }}`, 'entry1, entry2, entry3'],
+    [`{{hlist|Winner|Runner-up|Third place|item_style=color:blue;|indent=2}}`, 'Winner · Runner-up · Third place'],
+    [`{{unbulleted list|first item|second item|third item}}`, 'first item, second item, third item'],
+    [`{{block indent |1=The material to be indented here. May include markup, paragraph breaks, etc.}}`, 'The material to be indented here. May include markup, paragraph breaks, etc.'],
+  ];
+  arr.forEach((a) => {
+    let str = wtf(a[0]).plaintext();
+    t.equal(str, a[1], a[0].substr(0, 12));
+  });
+  // var str = ` {{Monthyear}}`;
+  // var str = ` {{Time ago| Jan 6 2018|magnitude=weeks}}`;
   t.end();
 });

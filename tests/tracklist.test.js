@@ -71,7 +71,7 @@ test('track-listing', t => {
 | length6         = 4:41
 }}`;
   var doc = wtf(str);
-  let track = doc.templates(0);
+  let track = doc.templates('tracklist')[0];
   t.equal(track.data.total_length.text(), '23:14', 'track-total_length');
   t.end();
 });

@@ -2,7 +2,6 @@ const keyValue = require('../parsers/key-value');
 const getInside = require('../parsers/inside');
 const pipeSplit = require('../parsers/pipeSplit');
 
-
 const strip = function(tmpl) {
   tmpl = tmpl.replace(/^\{\{/, '');
   tmpl = tmpl.replace(/\}\}$/, '');
@@ -47,8 +46,8 @@ const inline = {
   hlist: (tmpl) => {
     let val = strip(tmpl).replace(/^hlist\s?\|/, '');
     let arr = val.split('|');
-    arr = arr.filter((s) => s);
-    return arr.join(', ');
+    arr = arr.filter((s) => s && s.indexOf('=') === -1);
+    return arr.join(' · ');
   },
   //https://en.wikipedia.org/wiki/Template:Term
   term: (tmpl) => {
@@ -147,12 +146,32 @@ const inline = {
     let order = ['one', 'two', 'three'];
     return pipeSplit(tmpl, order).three;
   },
+  'block indent': (tmpl) => {
+    let obj = keyValue(tmpl);
+    if (obj['1']) {
+      return '\n' + obj['1'].text() + '\n';
+    }
+    return '';
+  },
+  'quote': (tmpl) => {
+    let obj = keyValue(tmpl);
+    if (obj.text) {
+      let str = `"${obj.text.text()}"`;
+      if (obj.author) {
+        str += `  - ${obj.author.text()}`;
+        str += '\n';
+      }
+      return str;
+    }
+    return '';
+  }
 };
 //aliases
 inline.flatlist = inline.plainlist;
 
 inline.ublist = inline.plainlist;
-inline['unbulleted list'] = inline.plainlist;
+inline['unbulleted list'] = inline['collapsible list'];
+inline['ordered list'] = inline['collapsible list'];
 
 inline['str left'] = inline.trunc;
 inline['str crop'] = inline.trunc;
