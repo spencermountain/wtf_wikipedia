@@ -27,6 +27,7 @@ const links = [
   'mli',
   'mlix',
   '#invoke',
+  'url' //https://en.wikipedia.org/wiki/Template:URL
 ];
 
 //key-values

@@ -34,9 +34,14 @@ const parsers = {
     return pipeSplit(tmpl, order);
   },
   //https://en.wikipedia.org/wiki/Template:Refn
-  refn: (tmpl) => '',
+  // refn: (tmpl) => null,
+
+
 };
 //aliases
 parsers['cite'] = parsers.citation;
+
+
+
 
 module.exports = parsers;

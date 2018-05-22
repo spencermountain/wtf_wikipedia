@@ -42,7 +42,25 @@ const templates = {
     let order = ['date', 'fmt'];
     return pipeSplit(tmpl, order).date;
   },
-
+  //sortable dates -
+  dts: (tmpl) => {
+    //remove formatting stuff, ewww
+    tmpl = tmpl.replace(/\|format=[ymd]+/i, '');
+    tmpl = tmpl.replace(/\|abbr=(on|off)/i, '');
+    let order = ['year', 'month', 'date', 'bc'];
+    let obj = pipeSplit(tmpl, order);
+    let text = obj.month || '';
+    if (obj.date) {
+      text += ' ' + obj.date;
+    }
+    if (obj.year) {
+      if (obj.year < 0) {
+        obj.year = Math.abs(obj.year) + ' BC';
+      }
+      text += ' ' + obj.year;
+    }
+    return text;
+  },
   //date/age/time templates
   'start': date,
   'end': date,

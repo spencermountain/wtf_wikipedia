@@ -53,9 +53,9 @@ test('external links', t => {
 
 test('misc template', t => {
   var str = `hello {{refn|group=groupname|name=name|Contents of the footnote}} world`;
-  t.equal(wtf(str).sentences(0).text(), 'hello world');
+  t.equal(wtf(str).sentences(0).text(), 'hello world', 'refn');
 
   str = `hello {{tag|ref|content=haha}} world`;
-  t.equal(wtf(str).sentences(0).plaintext(), 'hello world');
+  t.equal(wtf(str).sentences(0).plaintext(), 'hello world', 'tag');
   t.end();
 });

@@ -11,8 +11,8 @@ const strip = function(tmpl) {
 
 const inline = {
 
-  //https://en.wikipedia.org/wiki/Template:Flatlist
-  flatlist: (tmpl) => {
+  //https://en.wikipedia.org/wiki/Template:Plainlist
+  plainlist: (tmpl) => {
     let val = getInside(tmpl).data;
     let arr = val.split(/\s*[\*#]\s*/).filter((s) => s);
     return arr.join(', ');
@@ -75,13 +75,24 @@ const inline = {
     });
     return result.join(' ');
   },
-  //https://en.wikipedia.org/wiki/Template:URL
-  url: (tmpl) => {
-    let order = ['url', 'text'];
-    let obj = pipeSplit(tmpl, order);
-    return obj.text || obj.url;
+
+  //a convulated way to make a xml tag - https://en.wikipedia.org/wiki/Template:Tag
+  tag: (tmpl) => {
+    let obj = keyValue(tmpl);
+    if (obj.content) {
+      let order = ['tagName', 'open'];
+      let tagName = pipeSplit(tmpl, order).tagName;
+      //ignore ref tags and all that
+      if (tagName !== 'span' && tagName !== 'div') {
+        return '';
+      }
+      return obj.content.text();
+    }
+    return '';
   },
 };
 //aliases
-inline.plainlist = inline.flatlist;
+inline.flatlist = inline.plainlist;
+inline.ublist = inline.plainlist;
+inline['unbulleted list'] = inline.plainlist;
 module.exports = inline;

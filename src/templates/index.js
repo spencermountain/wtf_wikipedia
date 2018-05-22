@@ -10,7 +10,7 @@ const generic = require('./generic');
 const links = require('./links');
 const formatting = require('./formatting');
 const interwiki = require('./interwiki');
-// const infoboxes = require('./infobox');
+const ipa = require('./ipa');
 
 const doTemplate = function(tmpl, wiki, r) {
   let name = getName(tmpl);
@@ -23,6 +23,14 @@ const doTemplate = function(tmpl, wiki, r) {
   //geo templates
   if (geo.hasOwnProperty(name)) {
     let obj = geo[name](tmpl);
+    if (obj) {
+      r.templates.push(obj);
+    }
+    wiki = wiki.replace(tmpl, '');
+    return wiki;
+  }
+  if (ipa.hasOwnProperty(name)) {
+    let obj = ipa[name](tmpl);
     if (obj) {
       r.templates.push(obj);
     }
@@ -79,6 +87,7 @@ const doTemplate = function(tmpl, wiki, r) {
 //reduce the scary recursive situations
 const allTemplates = function(r, wiki, options) {
   let templates = getTemplates(wiki);
+  // console.log(templates);
   //first, do the nested ones
   templates.nested.forEach((tmpl) => {
     wiki = doTemplate(tmpl, wiki, r, options);
