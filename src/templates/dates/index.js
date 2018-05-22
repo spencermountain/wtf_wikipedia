@@ -1,5 +1,6 @@
 const parsers = require('./parsers');
 const pipeSplit = require('../parsers/pipeSplit');
+const timeSince = require('./timeSince');
 const date = parsers.date;
 const natural_date = parsers.natural_date;
 
@@ -37,10 +38,29 @@ const templates = {
     let d = new Date();
     return String(d.getFullYear());
   },
+  monthyear: () => {
+    let d = new Date();
+    return months[d.getMonth()] + ' ' + d.getFullYear();
+  },
+  'monthyear-1': () => {
+    let d = new Date();
+    d.setMonth(d.getMonth() - 1);
+    return months[d.getMonth()] + ' ' + d.getFullYear();
+  },
+  'monthyear+1': () => {
+    let d = new Date();
+    d.setMonth(d.getMonth() + 1);
+    return months[d.getMonth()] + ' ' + d.getFullYear();
+  },
   //Explictly-set dates - https://en.wikipedia.org/wiki/Template:Date
   date: (tmpl) => {
     let order = ['date', 'fmt'];
     return pipeSplit(tmpl, order).date;
+  },
+  'time ago': (tmpl) => {
+    let order = ['date', 'fmt'];
+    let time = pipeSplit(tmpl, order).date;
+    return timeSince(time);
   },
   //sortable dates -
   dts: (tmpl) => {

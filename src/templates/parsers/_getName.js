@@ -13,13 +13,13 @@ const getName = function(tmpl) {
     name = (tmpl.match(/^\{\{(.+?)\}\}$/) || [])[1];
   }
   if (name) {
+    name = name.replace(/:.*/, '');
     name = name.trim().toLowerCase();
   }
   //support {{imdb title|id}}
   if (/^imdb /i.test(name) === true) {
     name = 'imdb';
   }
-
   return name;
 };
 // console.log(templateName('{{name|foo}}'));

@@ -20,7 +20,23 @@ const readFile = require('./tests/lib/_cachedPage');
 // var str = `{{dts|2000-03-82|abbr=on}}`;
 // var str = ` {{tag|ref|content=haha}}`;
 // var str = ` {{tag|div|content=haha}}`;
-var str = ` {{Monthyear}}`;
+// var str = ` {{Monthyear}}`;
+// var str = ` {{Time ago| Jan 6 2018|magnitude=weeks}}`;
+// var str = `{{first word|Foo bar baz}} `;
+// var str = `{{Trunc | Lorem ipsum dolor sit amet | 10 }}`; //Lorem ipsu
+// var str = `{{str mid|Abcdefghijklmnopqrstuvwxyz|5|3}}`;
+//var str = `{{plural|1.5|page}}`;
+var str = `{{infobox musical artist
+  | label = {{flatlist|
+  * [[TBD Records|TBD]]
+  * [[Parlophone]]
+  }}
+  | bottom = Yes
+  }}
+}}`;
+
 let doc = wtf(str);
 console.log(doc.plaintext());
-console.log(doc.templates());
+// console.log(doc.templates());
+console.log(doc.templates(0).data.bottom);
+// console.log(doc.infoboxes(0).data);

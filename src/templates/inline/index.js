@@ -11,11 +11,25 @@ const strip = function(tmpl) {
 
 const inline = {
 
-  //https://en.wikipedia.org/wiki/Template:Plainlist
+  //newline-based list - https://en.wikipedia.org/wiki/Template:Plainlist
   plainlist: (tmpl) => {
-    let val = getInside(tmpl).data;
-    let arr = val.split(/\s*[\*#]\s*/).filter((s) => s);
+    tmpl = strip(tmpl);
+    //remove the title
+    let arr = tmpl.split('|');
+    arr = arr.slice(1);
+    tmpl = arr.join('|');
+    //split on newline
+    arr = tmpl.split(/\n ?\* ?/);
+    arr = arr.filter(s => s);
     return arr.join(', ');
+  },
+  //https://en.wikipedia.org/wiki/Template:Collapsible_list
+  'collapsible list': (tmpl) => {
+    let val = strip(tmpl);
+    let arr = val.split('|');
+    arr = arr.map(s => s.trim());
+    arr = arr.filter(str => /^title ?=/i.test(str) === false);
+    return arr.slice(1).join(', ');
   },
   //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
   convert: (tmpl) => {
@@ -90,9 +104,56 @@ const inline = {
     }
     return '';
   },
+  plural: (tmpl) => {
+    let order = ['num', 'word'];
+    let obj = pipeSplit(tmpl, order);
+    let num = Number(obj.num);
+    let word = obj.word;
+    if (num !== 1) {
+      if (/.y$/.test(word)) {
+        word = word.replace(/y$/, 'ies');
+      } else {
+        word += 's';
+      }
+    }
+    return num + ' ' + word;
+  },
+  'first word': (tmpl) => {
+    let str = getInside(tmpl).data || '';
+    return str.split(' ')[0];
+  },
+  'trunc': (tmpl) => {
+    let order = ['str', 'len'];
+    let obj = pipeSplit(tmpl, order);
+    return obj.str.substr(0, obj.len);
+  },
+  'str mid': (tmpl) => {
+    let order = ['str', 'start', 'end'];
+    let obj = pipeSplit(tmpl, order);
+    let start = parseInt(obj.start, 10) - 1;
+    let end = parseInt(obj.end, 10);
+    return obj.str.substr(start, end);
+  },
+  //grab the first, second or third pipe
+  'p1': (tmpl) => {
+    let order = ['one'];
+    return pipeSplit(tmpl, order).one;
+  },
+  'p2': (tmpl) => {
+    let order = ['one', 'two'];
+    return pipeSplit(tmpl, order).two;
+  },
+  'p3': (tmpl) => {
+    let order = ['one', 'two', 'three'];
+    return pipeSplit(tmpl, order).three;
+  },
 };
 //aliases
 inline.flatlist = inline.plainlist;
+
 inline.ublist = inline.plainlist;
 inline['unbulleted list'] = inline.plainlist;
+
+inline['str left'] = inline.trunc;
+inline['str crop'] = inline.trunc;
 module.exports = inline;

@@ -15,6 +15,7 @@ let arr = [
   'large',
   'huge',
   'resize',
+  'delink', //https://en.wikipedia.org/wiki/Template:Delink
 ];
 
 //key-values

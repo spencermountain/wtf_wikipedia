@@ -92,6 +92,7 @@ const allTemplates = function(r, wiki, options) {
   templates.nested.forEach((tmpl) => {
     wiki = doTemplate(tmpl, wiki, r, options);
   });
+  // console.log(wiki);
   //then, reparse wiki for the top-level ones
   templates = getTemplates(wiki);
   templates.top.forEach((tmpl) => {
