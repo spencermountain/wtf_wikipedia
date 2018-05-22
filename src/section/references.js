@@ -1,4 +1,4 @@
-const parseGeneric = require('./templates/parsers/generic');
+const parseGeneric = require('../templates/parsers/generic');
 const parseLine = require('../sentence').parseLine;
 const Sentence = require('../sentence/Sentence');
 

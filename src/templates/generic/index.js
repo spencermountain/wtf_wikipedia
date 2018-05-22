@@ -1,4 +1,4 @@
-const i18n = require('../../../data/i18n');
+const i18n = require('../../data/i18n');
 const keyValue = require('../parsers/key-value');
 const getName = require('../parsers/_getName');
 const is_infobox = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i');

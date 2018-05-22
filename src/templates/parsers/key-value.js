@@ -1,5 +1,5 @@
-const parseLine = require('../../../sentence').parseLine;
-const Sentence = require('../../../sentence/Sentence');
+const parseLine = require('../../sentence').parseLine;
+const Sentence = require('../../sentence/Sentence');
 
 const strip = function(tmpl) {
   tmpl = tmpl.replace(/^\{\{/, '');

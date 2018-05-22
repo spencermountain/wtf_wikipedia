@@ -1,5 +1,4 @@
 const Section = require('./Section');
-const parseTemplates = require('./templates');
 const find_recursive = require('../lib/recursive_match');
 
 //interpret ==heading== lines
@@ -9,8 +8,8 @@ const parse = {
   image: require('../image'),
   interwiki: require('./interwiki'),
   table: require('./table'),
-  templates: require('./templates'),
   references: require('./references'),
+  templates: require('../templates'),
   eachSentence: require('../sentence').eachSentence
 };
 const section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})/g;
@@ -19,7 +18,7 @@ const doSection = function(section, wiki, options) {
   // //parse the <ref></ref> tags
   wiki = parse.references(section, wiki, options);
   //parse-out all {{templates}}
-  wiki = parseTemplates(section, wiki, options);
+  wiki = parse.templates(section, wiki, options);
   // //parse the tables
   wiki = parse.table(section, wiki);
   // //parse the lists
