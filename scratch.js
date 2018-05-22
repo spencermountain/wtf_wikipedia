@@ -3,26 +3,14 @@ const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-// `The '''Lot''' ({{lang-oc|Olt}}) is a river in southern [[France]]`
-// var str = `{{Time ago| Jan 21, 2001 3:45 PM}}`;
-//doc.infoboxes('Venue')
 
-// let doc = fromFile('Bradley-(community),-Lincoln-County,-Wisconsin');
-// console.log(doc.citations());
-
-var str = `{{infobox settlement
-|blank_name = [[Geographic Names Information System|GNIS]] feature ID
-|blank_info = 1562127<ref>{{cite gnis|na=1562127|Bradley}}</ref>
-}}
-`;
+// var str = `{{convert|7|and|8|km}}`;
+// var str = `{{convert|7|to|8|mi}}`;
+// var str = `{{ill|Joke|fr|Blague|hu|Vicc|de|Witz}}`;
+// var str = `hello {{small|2 February}}`;
+// var str = `{{tiw|Hatnote}}`;
+var str = `{{date|June 8 2018|mdy}}`;
+var str = `{{l|cs|háček}}`;
 let doc = wtf(str);
-// console.log(doc.plaintext());
+console.log(doc.plaintext());
 console.log(doc.templates());
-// console.log(doc.infoboxes(0).get('blank_info'));
-// console.log(doc.citations());
-
-// let str = `{{IMDb title | id= 0426883 | title= Alpha Dog }}`;
-// var arr = wtf(str).templates();
-// console.log(arr);
-
-// readFile('bluejays').tables(0);

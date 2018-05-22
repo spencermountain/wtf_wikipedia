@@ -1,46 +1,67 @@
 const keyValue = require('../parsers/key-value');
 const getInside = require('../parsers/inside');
+const pipeSplit = require('../parsers/pipeSplit');
 
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
-];
-const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+const strip = function(tmpl) {
+  tmpl = tmpl.replace(/^\{\{/, '');
+  tmpl = tmpl.replace(/\}\}$/, '');
+  return tmpl;
+};
 
 const inline = {
-  currentday: () => {
-    let d = new Date();
-    return String(d.getDate());
+
+  //https://en.wikipedia.org/wiki/Template:Flatlist
+  flatlist: (tmpl) => {
+    let val = getInside(tmpl).data;
+    let arr = val.split(/\s*[\*#]\s*/).filter((s) => s);
+    return arr.join(', ');
   },
-  currentdayname: () => {
-    let d = new Date();
-    return days[d.getDay()];
+  //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
+  convert: (tmpl) => {
+    let order = ['num', 'two', 'three', 'four'];
+    let obj = pipeSplit(tmpl, order);
+    //todo: support plural units
+    if (obj.two === '-' || obj.two === 'to' || obj.two === 'and') {
+      if (obj.four) {
+        return `${obj.num} ${obj.two} ${obj.three} ${obj.four}`;
+      }
+      return `${obj.num} ${obj.two} ${obj.three}`;
+    }
+    return `${obj.num} ${obj.two}`;
   },
-  currentmonth: () => {
-    let d = new Date();
-    return months[d.getMonth()];
+  hlist: (tmpl) => {
+    let val = strip(tmpl).replace(/^hlist\s?\|/, '');
+    let arr = val.split('|');
+    arr = arr.filter((s) => s);
+    return arr.join(', ');
   },
-  currentyear: () => {
-    let d = new Date();
-    return String(d.getFullYear());
+  //https://en.wikipedia.org/wiki/Template:Term
+  term: (tmpl) => {
+    let order = ['term'];
+    let obj = pipeSplit(tmpl, order);
+    return `${obj.term}:`;
   },
-  nowrap: (tmpl) => {
-    let obj = getInside(tmpl);
-    return obj.data;
+  defn: (tmpl) => {
+    let order = ['desc'];
+    let obj = pipeSplit(tmpl, order);
+    return obj.desc;
   },
-  big: (tmpl) => {
-    let obj = getInside(tmpl);
-    return obj.data;
+  //https://en.wikipedia.org/wiki/Template:Interlanguage_link
+  ill: (tmpl) => {
+    let order = ['text', 'lan1', 'text1', 'lan2', 'text2'];
+    let obj = pipeSplit(tmpl, order);
+    return obj.text;
+  },
+  //https://en.wikipedia.org/wiki/Template:OldStyleDate
+  oldstyledate: (tmpl) => {
+    let order = ['date', 'year'];
+    let obj = pipeSplit(tmpl, order);
+    let str = obj.date;
+    if (obj.year) {
+      str += ' ' + obj.year;
+    }
+    return str;
   },
   //https://en.wikipedia.org/wiki/Template:Height - {{height|ft=6|in=1}}
   height: (tmpl) => {
@@ -53,17 +74,14 @@ const inline = {
       }
     });
     return result.join(' ');
-  }
+  },
+  //https://en.wikipedia.org/wiki/Template:URL
+  url: (tmpl) => {
+    let order = ['url', 'text'];
+    let obj = pipeSplit(tmpl, order);
+    return obj.text || obj.url;
+  },
 };
 //aliases
-//current/local
-inline.localday = inline.currentday;
-inline.localdayname = inline.currentdayname;
-inline.localmonth = inline.currentmonth;
-inline.localyear = inline.currentyear;
-inline.local = inline.current;
-
-inline.currentmonthname = inline.currentmonth;
-inline.currentmonthabbrev = inline.currentmonth;
-
+inline.plainlist = inline.flatlist;
 module.exports = inline;

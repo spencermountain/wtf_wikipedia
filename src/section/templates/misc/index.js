@@ -32,7 +32,9 @@ const parsers = {
   'cite gnis': (tmpl) => {
     let order = ['id', 'name', 'type'];
     return pipeSplit(tmpl, order);
-  }
+  },
+  //https://en.wikipedia.org/wiki/Template:Refn
+  refn: (tmpl) => '',
 };
 //aliases
 parsers['cite'] = parsers.citation;

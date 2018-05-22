@@ -1,9 +1,47 @@
 const parsers = require('./parsers');
+const pipeSplit = require('../parsers/pipeSplit');
 const date = parsers.date;
 const natural_date = parsers.natural_date;
 
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+];
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
 //date- templates we support
 const templates = {
+  currentday: () => {
+    let d = new Date();
+    return String(d.getDate());
+  },
+  currentdayname: () => {
+    let d = new Date();
+    return days[d.getDay()];
+  },
+  currentmonth: () => {
+    let d = new Date();
+    return months[d.getMonth()];
+  },
+  currentyear: () => {
+    let d = new Date();
+    return String(d.getFullYear());
+  },
+  //Explictly-set dates - https://en.wikipedia.org/wiki/Template:Date
+  date: (tmpl) => {
+    let order = ['date', 'fmt'];
+    return pipeSplit(tmpl, order).date;
+  },
 
   //date/age/time templates
   'start': date,
@@ -49,4 +87,11 @@ const templates = {
   // 'age as of date': true,
 
 };
+templates.localday = templates.currentday;
+templates.localdayname = templates.currentdayname;
+templates.localmonth = templates.currentmonth;
+templates.localyear = templates.currentyear;
+templates.local = templates.current;
+templates.currentmonthname = templates.currentmonth;
+templates.currentmonthabbrev = templates.currentmonth;
 module.exports = templates;

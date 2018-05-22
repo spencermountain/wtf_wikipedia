@@ -18,6 +18,8 @@ function preProcess(r, wiki, options) {
   wiki = wiki.replace(/\[\[([a-z][a-z]|simple|war|ceb|min):.{2,60}\]\]/i, '');
   // these '{{^}}' things are nuts, and used as some ilicit spacing thing.
   wiki = wiki.replace(/\{\{\^\}\}/g, '');
+  //yup, oxford comma template
+  wiki = wiki.replace(/\{\{\,\}\}/g, ',');
   //expand inline templates like {{date}}
   wiki = wordTemplates(wiki, r);
   //give it the inglorious send-off it deserves..

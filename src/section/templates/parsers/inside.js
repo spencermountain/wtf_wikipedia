@@ -10,9 +10,11 @@ const grabInside = function(tmpl) {
   if (typeof parts[1] !== 'string') {
     return null;
   }
+  let value = parts[1].trim();
+  value = value.replace(/^[a-z0-9]{1,7}=/, ''); //support 'foo=value'
   return {
     template: parts[0].trim().toLowerCase(),
-    data: parts[1].trim()
+    data: value
   };
 };
 module.exports = grabInside;

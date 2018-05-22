@@ -1,4 +1,4 @@
-const keyVal = /[a-z]{2} *?= *?[a-z0-9]/i;
+const keyVal = /[a-z0-9]+ *?= *?[a-z0-9]/i;
 
 const strip = function(tmpl) {
   tmpl = tmpl.replace(/^\{\{/, '');
