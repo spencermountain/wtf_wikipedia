@@ -48,14 +48,13 @@
 * make section.title a function
 
 ##4.0.0
+* 🚨 probably non-breaking, but sizable change 🚨
 * add `.wikitext()` method to Document, Section, Sentence (thanks @niebert)
 * move infobox, citation parser/data to Section class
 * `.templates()` are now an ordered array, instead of an object, and include infoboxes and citations
 * add (early) support for 'generic' key-value template parsing
 * normalize/lowercase template/infobox properties - add loose `.get('key')` method to Infobox class
 * mess-around with citation-template formatting
-#4.1.0
-* 🚨 non-breaking, but sizable change 🚨
 * beginning to support unknown template forms
 * move `date` data from Sentence to Section object.
 * rollback of awkward+undocumented `options` param in parser (but keep options param for output methods)

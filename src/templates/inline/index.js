@@ -1,12 +1,7 @@
 const keyValue = require('../parsers/key-value');
 const getInside = require('../parsers/inside');
 const pipeSplit = require('../parsers/pipeSplit');
-
-const strip = function(tmpl) {
-  tmpl = tmpl.replace(/^\{\{/, '');
-  tmpl = tmpl.replace(/\}\}$/, '');
-  return tmpl;
-};
+const strip = require('../parsers/_strip');
 
 const inline = {
 

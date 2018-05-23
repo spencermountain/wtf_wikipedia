@@ -18,3 +18,7 @@ console.log(doc.tables());
 // {{Quote
 // |text=Quoted material.
 // }}`;
+
+
+//https://en.wikipedia.org/wiki/Template:Refn
+// refn: (tmpl) => null,

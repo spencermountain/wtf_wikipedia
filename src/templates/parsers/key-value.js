@@ -1,11 +1,6 @@
 const parseLine = require('../../sentence').parseLine;
 const Sentence = require('../../sentence/Sentence');
-
-const strip = function(tmpl) {
-  tmpl = tmpl.replace(/^\{\{/, '');
-  tmpl = tmpl.replace(/\}\}$/, '');
-  return tmpl;
-};
+const strip = require('./_strip');
 
 //turn '| key = value' into an object
 const keyValue = function(tmpl) {

@@ -11,9 +11,15 @@ const links = require('./links');
 const formatting = require('./formatting');
 const interwiki = require('./interwiki');
 const ipa = require('./ipa');
+const ignore = require('./_ignore');
 
 const doTemplate = function(tmpl, wiki, r) {
   let name = getName(tmpl);
+  //we explicitly ignore these templates
+  if (ignore.hasOwnProperty(name)) {
+    wiki = wiki.replace(tmpl, '');
+    return wiki;
+  }
   //date templates
   if (dates.hasOwnProperty(name)) {
     let str = dates[name](tmpl, r);

@@ -1,8 +1,4 @@
-const strip = function(tmpl) {
-  tmpl = tmpl.replace(/^\{\{/, '');
-  tmpl = tmpl.replace(/\}\}$/, '');
-  return tmpl;
-};
+const strip = require('./_strip');
 
 const grabInside = function(tmpl) {
   tmpl = strip(tmpl);

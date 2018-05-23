@@ -1,10 +1,5 @@
 const parseCoord = require('./coord');
-
-const strip = function(tmpl) {
-  tmpl = tmpl.replace(/^\{\{/, '');
-  tmpl = tmpl.replace(/\}\}$/, '');
-  return tmpl;
-};
+const strip = require('../parsers/_strip');
 
 //
 const geoTemplates = {
