@@ -1,4 +1,4 @@
-const keyValue = require('./key-value');
+const keyValue = require('./keyValue');
 const getName = require('./_getName');
 const maybeKeyValue = /\|.+?[a-z].+?=/; // |foo=
 

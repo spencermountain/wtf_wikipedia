@@ -1,7 +1,7 @@
 const i18n = require('../../data/i18n');
 const is_infobox = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i');
 const is_citation = new RegExp('^(cite |citation)', 'i');
-const keyValue = require('../parsers/key-value');
+const keyValue = require('../parsers/keyValue');
 
 const infoboxType = function(name) {
   const reg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ') +?', 'i');

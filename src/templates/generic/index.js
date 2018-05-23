@@ -1,6 +1,6 @@
 const getName = require('../parsers/_getName');
+const pipeList = require('../parsers/pipeList');
 const doKeyValue = require('./KeyValue');
-const doListType = require('./listType');
 
 const maybeKeyValue = /\|.+?[a-z].+?=/; // {{name|foo=bar}}
 
@@ -24,7 +24,7 @@ const generic = function(tmpl) {
     return doKeyValue(tmpl, name);
   }
   if (maybePipeList(tmpl) === true) {
-    return doListType(tmpl, name);
+    return pipeList(tmpl);
   }
   return null;
 };

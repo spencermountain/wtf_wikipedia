@@ -22,7 +22,6 @@ const links = [
   'xpd',
   'para',
   'elc',
-  'tag',
   'xtag',
   'mli',
   'mlix',
@@ -30,7 +29,7 @@ const links = [
   'url' //https://en.wikipedia.org/wiki/Template:URL
 ];
 
-//key-values
+//keyValues
 const linkTemplates = links.reduce((h, k) => {
   h[k] = (tmpl) => {
     let order = ['first', 'second'];

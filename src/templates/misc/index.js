@@ -1,12 +1,14 @@
 // const parseCitation = require('./citation');
 // const parseGeo = require('../geo');
-const keyValue = require('../parsers/key-value');
+const keyValue = require('../parsers/keyValue');
 const getInside = require('../parsers/inside');
 const pipeSplit = require('../parsers/pipeSplit');
 const pipeList = require('../parsers/pipeList');
-const sisterProjects = require('./sisters');
 
 const parsers = {
+
+  'book bar': pipeList,
+
   main: (tmpl) => {
     let obj = getInside(tmpl);
     return {
@@ -49,37 +51,6 @@ const parsers = {
     obj.type = 'gnis';
     return obj;
   },
-  //https://en.wikipedia.org/wiki/Template:Sister_project_links
-  'sister project links': (tmpl) => {
-    let data = keyValue(tmpl);
-    let links = {};
-    Object.keys(sisterProjects).forEach((k) => {
-      if (data.hasOwnProperty(k) === true) {
-        links[sisterProjects[k]] = data[k].text();
-      }
-    });
-    return {
-      template: 'sister project links',
-      links: links
-    };
-  },
-
-  //https://en.wikipedia.org/wiki/Template:Subject_bar
-  'subject bar': (tmpl) => {
-    let data = keyValue(tmpl);
-    Object.keys(data).forEach((k) => {
-      data[k] = data[k].text();
-      if (sisterProjects.hasOwnProperty(k)) {
-        data[sisterProjects[k]] = data[k];
-        delete data[k];
-      }
-    });
-    return {
-      template: 'subject bar',
-      links: data
-    };
-  },
-  'book bar': pipeList,
 
 };
 //aliases

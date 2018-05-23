@@ -8,7 +8,6 @@ const pipeList = function(tmpl) {
   let arr = tmpl.split(/\|/g);
   let obj = {
     template: arr[0].trim().toLowerCase(),
-    list: []
   };
   arr = arr.slice(1);
 
@@ -21,7 +20,7 @@ const pipeList = function(tmpl) {
       arr[i] = arr[i].trim();
     }
   });
-  obj.list = arr;
+  obj.data = arr;
   return obj;
 };
 module.exports = pipeList;
