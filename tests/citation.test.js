@@ -7,8 +7,8 @@ test('basic-citation', t => {
   var arr = wtf(str).citations();
   t.equal(arr.length, 1, 'found-one-citation');
   t.equal(arr[0].name, 'cite web', 'cite web');
-  t.equal(arr[0].data.title.text(), 'The princess of pot', 'title');
-  t.equal(arr[0].data.url.text(), 'http://thewalrus.ca/the-princess-of-pot/', 'url');
+  t.equal(arr[0].data.title, 'The princess of pot', 'title');
+  t.equal(arr[0].data.url, 'http://thewalrus.ca/the-princess-of-pot/', 'url');
   t.end();
 });
 
@@ -18,8 +18,8 @@ test('complex-citation', t => {
   var arr = wtf(str).citations();
   t.equal(arr.length, 1, 'found-one-citation');
   t.equal(arr[0].name, 'cite web', 'cite web');
-  t.equal(arr[0].data.foo.text(), 'bar', 'foo');
-  t.equal(arr[0].data.url.text(), 'http://cool.com/?fun=cool/', 'url');
+  t.equal(arr[0].data.foo, 'bar', 'foo');
+  t.equal(arr[0].data.url, 'http://cool.com/?fun=cool/', 'url');
   t.end();
 });
 
@@ -27,8 +27,8 @@ test('multiple-citations', t => {
   var str = `hello {{citation |url=cool.com/?fun=yes/   }}{{CITE book |title=the killer and the cartoons }}`;
   var arr = wtf(str).citations();
   t.equal(arr.length, 2, 'found-two-citations');
-  t.equal(arr[0].data.url.text(), 'cool.com/?fun=yes/', 'url1');
-  t.equal(arr[1].data.title.text(), 'the killer and the cartoons', 'title2');
+  t.equal(arr[0].data.url, 'cool.com/?fun=yes/', 'url1');
+  t.equal(arr[1].data.title, 'the killer and the cartoons', 'title2');
   t.end();
 });
 

@@ -6,7 +6,8 @@ test('imdb', t => {
   var str = `{{IMDb title | 0426883 | Alpha Dog }}`;
   var doc = wtf(str);
   var obj = doc.templates(0);
-  t.equal(obj.template, 'imdb title', 'imdb');
+  t.equal(obj.template, 'imdb', 'imdb');
+  t.equal(obj.type, 'title', 'title type');
   t.equal(obj.id, '0426883', 'id1');
   t.equal(obj.title, 'Alpha Dog', 'title');
 

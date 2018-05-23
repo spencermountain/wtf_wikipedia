@@ -3,10 +3,8 @@ const Sentence = require('../../sentence/Sentence');
 const strip = require('./_strip');
 
 //turn '| key = value' into an object
-const keyValue = function(tmpl) {
+const keyValue = function(tmpl, isInfobox) {
   tmpl = strip(tmpl);
-  tmpl = tmpl.replace(/^\{\{/, '');
-  tmpl = tmpl.replace(/\}\}$/, '');
   let arr = tmpl.split(/\n?\|/);
   //look for broken-up links and fix them :(
   arr.forEach((a, i) => {
@@ -28,8 +26,15 @@ const keyValue = function(tmpl) {
     let val = parts[1].trim();
     if (key && val) {
       val = parseLine(val);
-      // h[key] = val
-      h[key] = new Sentence(val);
+      if (isInfobox) {
+        h[key] = new Sentence(val); //.json();
+      } else {
+        h[key] = val.text;
+        if (val.links) {
+          h._links = h._links || [];
+          h._links = h._links.concat(val.links);
+        }
+      }
     }
     return h;
   }, {});

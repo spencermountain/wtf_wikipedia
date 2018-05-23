@@ -93,7 +93,7 @@ const inline = {
     let units = ['m', 'cm', 'ft', 'in']; //order matters
     units.forEach((unit) => {
       if (obj.hasOwnProperty(unit) === true) {
-        result.push(obj[unit].text() + unit);
+        result.push(obj[unit] + unit);
       }
     });
     return result.join(' ');
@@ -102,16 +102,16 @@ const inline = {
   'block indent': (tmpl) => {
     let obj = keyValue(tmpl);
     if (obj['1']) {
-      return '\n' + obj['1'].text() + '\n';
+      return '\n' + obj['1'] + '\n';
     }
     return '';
   },
   'quote': (tmpl) => {
     let obj = keyValue(tmpl);
     if (obj.text) {
-      let str = `"${obj.text.text()}"`;
+      let str = `"${obj.text}"`;
       if (obj.author) {
-        str += `  - ${obj.author.text()}`;
+        str += `  - ${obj.author}`;
         str += '\n';
       }
       return str;

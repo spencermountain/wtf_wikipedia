@@ -13,7 +13,7 @@ let templates = {
       if (tagName !== 'span' && tagName !== 'div') {
         return '';
       }
-      return obj.content.text();
+      return obj.content; //.text();
     }
     return '';
   },

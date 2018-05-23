@@ -4,15 +4,25 @@ const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./build');
 
 // var str = `{{tag|ref|content=haha}}`;
-var str = `{{Sfn|Tattersall|1982|pp=43–46}}`;
+// var str = `{{Sfn|Tattersall|1982|pp=43–46}}`;
 // var str = `{{MSW3 | id = 13801049 | pages = 391–393 | heading = Genus ''Nycteris'' | author = Simmons, N. B.}}`;
 // var str = `{{Buddhist crisis|state=collapsed}}`;
 // var str = `{{Lacking ISBN|date=January 2017}}`;
 // var str = `The ring-tailed lemur is known locally in Malagasy as ''{{lang|mg|maky}}'' (pronounced {{IPA-mg|ˈmakʲi̥|}}), `;
 // var str = `{{s-ttl | title = Member of the [[List of United States Representatives from Massachusetts|House of Representatives]] <br /> from [[Massachusetts's 11th congressional district]] | years = 1947–1953 }}`;
+// var str = `{{CongBio|K000107}}`;
+// var str = `{{Internet Archive author |sname=John Fitzgerald [[Kennedy]] |sopt=t}}`;
+var str = `{{Librivox asdf |id=2572}}`;
+
+// var str = `{{discogs artist|artist=John F. Kennedy|date=june 9}}`;
+// str = `{{Discogs artist|artist=소녀시대|name=소녀시대}}`;
+// str = `{{Discogs artist|소녀시대|소녀시대}}`;
+// var str = `{{Find a Grave|574|accessdate=November 17, 2013}}`;
+// var str = `{{Dmoz|Society/History/By_Region/North_America/United_States/Presidents/Kennedy%2C_John_Fitzgerald/}}`;
+// var str = `{{iMDb name|0448123}}`;
 var doc = wtf(str);
 // console.log(doc.plaintext());
-console.log(doc.templates(0));
+console.log(doc.templates());
 // var doc = readFile('toronto');
 
 

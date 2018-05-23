@@ -40,11 +40,6 @@ const parsers = {
     };
   },
 
-  //https://en.wikipedia.org/wiki/Template:IMDb_title
-  imdb: (tmpl) => {
-    let order = ['id', 'title', 'description', 'section'];
-    return pipeSplit(tmpl, order);
-  },
 
   //https://en.wikipedia.org/wiki/Template:Taxon_info
   'taxon info': (tmpl) => {
@@ -110,7 +105,7 @@ const parsers = {
     let links = {};
     Object.keys(sisterProjects).forEach((k) => {
       if (data.hasOwnProperty(k) === true) {
-        links[sisterProjects[k]] = data[k].text();
+        links[sisterProjects[k]] = data[k]; //.text();
       }
     });
     return {

@@ -17,9 +17,9 @@ const getName = function(tmpl) {
     name = name.trim().toLowerCase();
   }
   //support {{imdb title|id}}
-  if (/^imdb /i.test(name) === true) {
-    name = 'imdb';
-  }
+  // if (/^imdb /i.test(name) === true) {
+  //   name = 'imdb';
+  // }
   return name;
 };
 // console.log(templateName('{{name|foo}}'));

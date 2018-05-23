@@ -2,7 +2,7 @@ const getName = require('../parsers/_getName');
 const pipeList = require('../parsers/pipeList');
 const doKeyValue = require('./KeyValue');
 
-const maybeKeyValue = /\|.+?[a-z].+?=/; // {{name|foo=bar}}
+const maybeKeyValue = /\| *?[a-z].+= *?[a-z0-9]{2}/i; // {{name|foo=bar}}
 
 //does it look like {{name|foo|bar}}
 const maybePipeList = (tmpl) => {

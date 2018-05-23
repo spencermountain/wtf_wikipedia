@@ -11,6 +11,14 @@ const infoboxType = function(name) {
 
 //try to parse unknown template as a {{name|key=val|key2=val2}} format
 const doKeyValue = function(tmpl, name) {
+  //handle infoboxes
+  if (is_infobox.test(name)) {
+    return {
+      template: 'infobox',
+      type: infoboxType(name),
+      data: keyValue(tmpl, true)
+    };
+  }
   let data = keyValue(tmpl);
   //handle citation templates
   if (is_citation.test(name)) {
@@ -18,14 +26,6 @@ const doKeyValue = function(tmpl, name) {
     return {
       template: 'citation',
       type: type,
-      data: data
-    };
-  }
-  //handle infoboxes
-  if (is_infobox.test(name)) {
-    return {
-      template: 'infobox',
-      type: infoboxType(name),
       data: data
     };
   }

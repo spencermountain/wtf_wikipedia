@@ -59,3 +59,4 @@
 * move `date` data from Sentence to Section object.
 * rollback of awkward+undocumented `options` param in parser (but keep options param for output methods)
 * add support for about a hundred new templates
+* templates, including citations, no-longer return Sentence objects

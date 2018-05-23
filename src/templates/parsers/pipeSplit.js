@@ -13,11 +13,15 @@ const pipeSplit = function(tmpl, order) {
   order.forEach((k, i) => {
     if (arr[i]) {
       //support gross 'id=234' format inside the value
+      let val = arr[i];
+      let key = k;
       if (keyVal.test(arr[i]) === true) {
-        arr[i] = arr[i].split('=')[1];
+        let both = arr[i].split('=');
+        val = both[1];
+        key = both[0].trim().toLowerCase();
       }
-      arr[i] = arr[i].trim();
-      obj[k] = arr[i];
+      val = val.trim();
+      obj[key] = val;
     }
   });
   return obj;
