@@ -103,7 +103,7 @@ test('stress-test-en', t => {
     t.ok(intro.sentences(0).text().length > 0, ' - - intro-text');
     t.ok(intro.sentences(0).text().match(/[a-z]/), ' - - intro-has words');
     if (noCitation[title] === true) {
-      t.ok(doc.citations().length === 0, title + ' has no citation');
+      t.equal(doc.citations().length, 0, title + ' has no citation');
     } else {
       t.ok(doc.citations().length > 0, title + ' has a citation');
     }

@@ -2,6 +2,7 @@ const toMarkdown = require('../output/markdown/section');
 const toHtml = require('../output/html/section');
 const toJSON = require('../output/json/section');
 const Sentence = require('../sentence/Sentence');
+const Infobox = require('../infobox/Infobox');
 const setDefaults = require('../lib/setDefaults');
 const defaults = {
   infoboxes: true,
@@ -13,20 +14,27 @@ const defaults = {
 };
 
 //the stuff between headings - 'History' section for example
-const Section = function(data) {
+const Section = function(data, wiki) {
   this.data = data;
   this.depth = data.depth;
   this.doc = null;
-//hide this circular property in console.logs..
-// Object.defineProperty(this, 'doc', {
-//   enumerable: false, // hide it from for..in
-//   value: null
-// });
+  //hush these properties in console.logs..
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki
+  });
+  Object.defineProperty(this, 'doc', {
+    enumerable: false,
+    value: null
+  });
 };
 
 const methods = {
   title: function() {
     return this.data.title || '';
+  },
+  wikitext: function() {
+    return this.wiki || '';
   },
   index: function() {
     if (!this.doc) {
@@ -58,6 +66,9 @@ const methods = {
         s.links().forEach((link) => arr.push(link));
       });
     });
+    this.infoboxes().forEach((templ) => {
+      templ.links().forEach((link) => arr.push(link));
+    });
     //todo: add links from tables..
     // this.tables().forEach((t) => {
     //   t.links().forEach((link) => arr.push(link));
@@ -70,32 +81,63 @@ const methods = {
     }
     return arr;
   },
-  tables: function(n) {
-    if (typeof n === 'number') {
-      return this.data.tables[n];
+  tables: function(clue) {
+    if (typeof clue === 'number') {
+      return this.data.tables[clue];
     }
     return this.data.tables || [];
   },
-  templates: function() {
-    return this.data.templates || [];
+  templates: function(clue) {
+    if (typeof clue === 'number') {
+      return this.data.templates[clue];
+    }
+    let arr = this.data.templates || [];
+    if (typeof clue === 'string') {
+      clue = clue.toLowerCase();
+      return arr.filter(o => o.template === clue || o.name === clue);
+    }
+    return arr;
   },
-  lists: function(n) {
-    if (typeof n === 'number') {
-      return this.data.lists[n];
+  infoboxes: function(clue) {
+    let arr = this.templates('infobox');
+    if (typeof clue === 'number') {
+      return new Infobox(arr[clue]);
+    }
+    return arr.map((obj) => {
+      return new Infobox(obj);
+    });
+  },
+  coordinates: function(clue) {
+    let arr = this.templates('coord');
+    if (typeof clue === 'number') {
+      return arr[clue];
+    }
+    return arr;
+  },
+  lists: function(clue) {
+    if (typeof clue === 'number') {
+      return this.data.lists[clue];
     }
     return this.data.lists || [];
   },
-  interwiki: function(n) {
-    if (typeof n === 'number') {
-      return this.data.interwiki[n];
+  interwiki: function(clue) {
+    if (typeof clue === 'number') {
+      return this.data.interwiki[clue];
     }
     return this.data.interwiki || [];
   },
-  images: function(n) {
-    if (typeof n === 'number') {
-      return this.data.images[n];
+  images: function(clue) {
+    if (typeof clue === 'number') {
+      return this.data.images[clue];
     }
     return this.data.images || [];
+  },
+  citations: function(clue) {
+    let arr = this.templates('citation'); //.map(o => o.data);
+    if (typeof clue === 'number') {
+      return arr[clue];
+    }
+    return arr;
   },
 
   //transformations
@@ -158,7 +200,7 @@ const methods = {
     }
     if (typeof n === 'string') {
       n = n.toLowerCase();
-      children.forEach((c) => console.log(c));
+      // children.forEach((c) => console.log(c));
       return children.find(s => s.title().toLowerCase() === n);
     }
     if (typeof n === 'number') {
@@ -201,6 +243,9 @@ methods.next = methods.nextSibling;
 methods.last = methods.lastSibling;
 methods.previousSibling = methods.lastSibling;
 methods.previous = methods.lastSibling;
+methods.original = methods.wikitext;
+methods.wikiscript = methods.wikitext;
+methods.references = methods.citations;
 Object.keys(methods).forEach((k) => {
   Section.prototype[k] = methods[k];
 });

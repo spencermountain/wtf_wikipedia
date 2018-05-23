@@ -34,12 +34,14 @@ const postProcess = function(data) {
   let pages = Object.keys(data.query.pages);
   let docs = pages.map(id => {
     let page = data.query.pages[id] || {};
-    let text = page.revisions[0]['*'];
-    let options = {
-      title: page.title,
-      pageID: page.pageid,
-    };
-    return new Document(text, options);
+    if (!page.hasOwnProperty('missing')) {
+      let text = page.revisions[0]['*'];
+      let options = {
+        title: page.title,
+        pageID: page.pageid,
+      };
+      return new Document(text, options);
+    }
   });
   //return an array if there was more than one page given
   if (docs.length > 1) {

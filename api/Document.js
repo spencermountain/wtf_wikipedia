@@ -16,6 +16,16 @@ module.exports = [
     description: '',
   },
   {
+    name: 'reparse',
+    returns: 'Document',
+    description: 'allow reparsing after alteration of downloaded wiki source',
+  },
+  {
+    name: 'wikitext',
+    returns: 'String',
+    description: 'return the page\'s original wikitext',
+  },
+  {
     name: 'sections',
     returns: 'Array',
     description: '',
@@ -42,6 +52,11 @@ module.exports = [
   },
   {
     name: 'tables',
+    returns: 'Array',
+    description: '',
+  },
+  {
+    name: 'templates',
     returns: 'Array',
     description: '',
   },

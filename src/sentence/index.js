@@ -1,7 +1,7 @@
 const helpers = require('../lib/helpers');
 const parseLinks = require('./links');
 const parseFmt = require('./formatting');
-const templates = require('./templates');
+// const templates = require('./templates');
 const sentenceParser = require('./sentence-parser');
 const i18n = require('../data/i18n');
 const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]', 'gi');
@@ -29,7 +29,11 @@ function postprocess(line) {
   if (line.match(/^(thumb|right|left)\|/i)) {
     return null;
   }
+  //remove empty parentheses (sometimes caused by removing templates)
+  line = line.replace(/\([,;: ]*\)/g, '');
+  //dangling punctuation
   line = helpers.trim_whitespace(line);
+  line = line.replace(/ +\.$/, '.');
   return line;
 }
 
@@ -45,7 +49,7 @@ function parseLine(line) {
   //pull-out the bolds and ''italics''
   obj = parseFmt(obj);
   //pull-out things like {{start date|...}}
-  obj = templates(obj);
+  // obj = templates(obj);
   return obj;
 }
 

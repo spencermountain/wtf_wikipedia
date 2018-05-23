@@ -7,7 +7,8 @@ const parseHeading = function(r, str) {
   if (!heading) {
     return {
       title: '',
-      depth: 0
+      depth: 0,
+      templates: []
     };
   }
   let title = heading[2] || '';
