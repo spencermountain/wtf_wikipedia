@@ -1,7 +1,22 @@
-const pipeSplit = require('../parsers/pipeSplit');
-const keyValue = require('../parsers/keyValue');
-const sisterProjects = require('./sisters');
-
+const pipeSplit = require('./parsers/pipeSplit');
+const keyValue = require('./parsers/keyValue');
+const sisterProjects = {
+  wikt: 'wiktionary',
+  commons: 'commons',
+  c: 'commons',
+  commonscat: 'commonscat',
+  n: 'wikinews',
+  q: 'wikiquote',
+  s: 'wikisource',
+  a: 'wikiauthor',
+  b: 'wikibooks',
+  voy: 'wikivoyage',
+  v: 'wikiversity',
+  d: 'wikidata',
+  species: 'wikispecies',
+  m: 'meta',
+  mw: 'mediawiki'
+};
 //
 const interwikis = {
   /* mostly wiktionary*/

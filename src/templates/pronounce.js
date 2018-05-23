@@ -1,4 +1,4 @@
-const strip = require('../parsers/_strip');
+const strip = require('./parsers/_strip');
 // pronounciation info
 // https://en.wikipedia.org/wiki/Template:IPA
 const ipaTemplates = {
@@ -13,7 +13,7 @@ const ipaTemplates = {
     };
   }
 };
-// - other languages - 
+// - other languages -
 // Polish, {{IPAc-pl}}	{{IPAc-pl|'|sz|cz|e|ć|i|n}} → [ˈʂt͡ʂɛt͡ɕin]
 // Portuguese, {{IPAc-pt}}	{{IPAc-pt|p|o|<|r|t|u|'|g|a|l|lang=pt}} and {{IPAc-pt|b|r|a|'|s|i|l|lang=br}} → [puɾtuˈɣaɫ] and [bɾaˈsiw]
 let i18n = [

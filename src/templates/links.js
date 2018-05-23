@@ -1,4 +1,4 @@
-const pipeSplit = require('../parsers/pipeSplit');
+const pipeSplit = require('./parsers/pipeSplit');
 //these are insane
 // https://en.wikipedia.org/wiki/Template:Tl
 const links = [

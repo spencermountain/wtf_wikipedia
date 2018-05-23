@@ -1,6 +1,6 @@
-const getInside = require('../parsers/inside');
-const pipeSplit = require('../parsers/pipeSplit');
-const keyValue = require('../parsers/keyValue');
+const getInside = require('./parsers/inside');
+const pipeSplit = require('./parsers/pipeSplit');
+const keyValue = require('./parsers/keyValue');
 
 let templates = {
 

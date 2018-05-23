@@ -1,5 +1,5 @@
 const parseGeneric = require('../templates/parsers/generic');
-const parsePipe = require('../templates/misc/')['cite gnis'];
+const parsePipe = require('../templates/misc')['cite gnis'];
 const parseLine = require('../sentence').parseLine;
 const Sentence = require('../sentence/Sentence');
 

@@ -1,6 +1,6 @@
-const keyValue = require('../parsers/keyValue');
-const pipeSplit = require('../parsers/pipeSplit');
-const strip = require('../parsers/_strip');
+const keyValue = require('./parsers/keyValue');
+const pipeSplit = require('./parsers/pipeSplit');
+const strip = require('./parsers/_strip');
 
 const inline = {
 
