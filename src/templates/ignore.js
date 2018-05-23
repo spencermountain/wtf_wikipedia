@@ -37,6 +37,19 @@ const list = [
   'div col',
   'flag',
   'authority control',
+  //https://en.wikipedia.org/wiki/Template:Citation_needed
+  'better source',
+  'citation needed',
+  'clarify',
+  'cite quote',
+  'dead link',
+  'by whom',
+  'dubious',
+  'when',
+  'who',
+  'quantify',
+  'refimprove',
+  'weasel inline',
 ];
 const ignore = list.reduce((h, str) => {
   h[str] = true;

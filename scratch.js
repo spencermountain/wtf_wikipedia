@@ -11,21 +11,32 @@ const readFile = require('./tests/lib/_cachedPage');
 // var str = `The ring-tailed lemur is known locally in Malagasy as ''{{lang|mg|maky}}'' (pronounced {{IPA-mg|ˈmakʲi̥|}}), `;
 // var str = `{{s-ttl | title = Member of the [[List of United States Representatives from Massachusetts|House of Representatives]] <br /> from [[Massachusetts's 11th congressional district]] | years = 1947–1953 }}`;
 // var str = `{{CongBio|K000107}}`;
+// var str = `{{Gutenberg author | id=James,+Henry+(1843-1916) |name=Henry James}}`;
+// var str = `{{Internet Archive author |sname=Gyula Krúdy|birth=1878|death=1933}}`;
+// var str = `{{Goodreads author|1599723.Michael_Grant|Michael Grant}}`;
+// var str = `{{IMDb title | 0426883 | Alpha Dog }}`;
+// var str = `{{Goodreads book|140397|Wings of the Falcon}}`;
+// var str = `{{Goodreads book|id=140397|title=Wings of the Falcon}}`;
 // var str = `{{Internet Archive author |sname=John Fitzgerald [[Kennedy]] |sopt=t}}`;
-var str = `{{Librivox asdf |id=2572}}`;
-
+// var str = `{{Librivox asdf |id=2572}}`;
+// var str = `{{Librivox book |stitle=The Federalist Papers |dtitle=''The Federalist'' papers}}`;
 // var str = `{{discogs artist|artist=John F. Kennedy|date=june 9}}`;
 // str = `{{Discogs artist|artist=소녀시대|name=소녀시대}}`;
 // str = `{{Discogs artist|소녀시대|소녀시대}}`;
 // var str = `{{Find a Grave|574|accessdate=November 17, 2013}}`;
 // var str = `{{Dmoz|Society/History/By_Region/North_America/United_States/Presidents/Kennedy%2C_John_Fitzgerald/}}`;
 // var str = `{{iMDb name|0448123}}`;
-var doc = wtf(str);
+// var str = `{{Twitter | AcadiaU | Acadia University }}`;
+// var str = `{{Facebook|zuck|Mark Zuckerberg}}`;
+// var str = `{{ESPN NFL | 10536 | Trent Edwards }}`;
+// var str = `{{small|(1976–77)}}`;
+// var doc = wtf(str);
 // console.log(doc.plaintext());
-console.log(doc.templates());
+// console.log(doc.templates(0));
+
 // var doc = readFile('toronto');
 
-
-// wtf.fetch('John Kennedy').then(doc => {
-//   console.log(doc.templates().filter(t => t.template !== 'citation'));
-// });
+wtf.fetch('Peter Mansbridge').then(doc => {
+  console.log(doc.plaintext());
+// console.log(doc.templates().filter(t => t.template !== 'citation'));
+});

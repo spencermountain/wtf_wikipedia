@@ -124,6 +124,7 @@ inline.flatlist = inline.plainlist;
 
 inline.ublist = inline.plainlist;
 inline['unbulleted list'] = inline['collapsible list'];
+inline['ubl'] = inline['collapsible list'];
 inline['ordered list'] = inline['collapsible list'];
 
 inline['str left'] = inline.trunc;

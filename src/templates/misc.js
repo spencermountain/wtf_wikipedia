@@ -95,6 +95,11 @@ const parsers = {
   'audio': (tmpl) => {
     let order = ['file', 'text', 'type'];
     let obj = pipeSplit(tmpl, order);
+    return obj;
+  },
+  'spoken wikipedia': (tmpl) => {
+    let order = ['file', 'date'];
+    let obj = pipeSplit(tmpl, order);
     obj.template = 'audio';
     return obj;
   },
@@ -135,5 +140,7 @@ parsers['cite'] = parsers.citation;
 parsers['sfnref'] = parsers.sfn;
 parsers['harvid'] = parsers.sfn;
 parsers['harvnb'] = parsers.sfn;
+parsers['redir'] = parsers.redirect;
+parsers['sisterlinks'] = parsers['sister project links'];
 
 module.exports = parsers;
