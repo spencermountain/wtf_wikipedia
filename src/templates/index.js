@@ -9,12 +9,11 @@ const misc = require('./misc');
 const generic = require('./generic');
 const links = require('./links');
 const formatting = require('./formatting');
-const interwiki = require('./interwiki');
 const pronounce = require('./pronounce');
 const ignore = require('./ignore');
 
 //put them all together
-const inlineParsers = Object.assign({}, dates, inline, links, formatting, interwiki);
+const inlineParsers = Object.assign({}, dates, inline, links, formatting);
 const bigParsers = Object.assign({}, geo, pronounce, misc);
 
 const doTemplate = function(tmpl, wiki, r) {

@@ -9,7 +9,7 @@ const ipaTemplates = {
     return {
       template: 'ipa',
       lang: lang,
-      data: arr.slice(1).join('|')
+      ipa: arr.slice(1).join('')
     };
   }
 };
@@ -30,6 +30,7 @@ let i18n = [
   'ipac-ka',
   'ipac-ko',
   'ipac-mh',
+  'ipa-mg',
   'ipac-mi',
   'ipac-pl',
   'ipac-pt',

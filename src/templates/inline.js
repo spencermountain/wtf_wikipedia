@@ -3,7 +3,6 @@ const pipeSplit = require('./parsers/pipeSplit');
 const strip = require('./parsers/_strip');
 
 const inline = {
-
   //newline-based list - https://en.wikipedia.org/wiki/Template:Plainlist
   plainlist: (tmpl) => {
     tmpl = strip(tmpl);
@@ -59,6 +58,23 @@ const inline = {
     let order = ['text', 'lan1', 'text1', 'lan2', 'text2'];
     let obj = pipeSplit(tmpl, order);
     return obj.text;
+  },
+  lang: (tmpl) => {
+    let order = ['lang', 'text'];
+    let obj = pipeSplit(tmpl, order);
+    return obj.text;
+  },
+  //https://en.wikipedia.org/wiki/Template:Frac
+  frac: (tmpl) => {
+    let order = ['a', 'b', 'c'];
+    let obj = pipeSplit(tmpl, order);
+    if (obj.c) {
+      return `${obj.a} ${obj.b}/${obj.c}`;
+    }
+    if (obj.b) {
+      return `${obj.a}/${obj.b}`;
+    }
+    return `1/${obj.b}`;
   },
   //https://en.wikipedia.org/wiki/Template:OldStyleDate
   oldstyledate: (tmpl) => {

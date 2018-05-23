@@ -27,6 +27,15 @@ const list = [
   'pp-move-indef',
   'pp-semi-indef',
   'pp-vandalism',
+  //https://en.wikipedia.org/wiki/Template:R
+  'r',
+  //out-of-scope still - https://en.wikipedia.org/wiki/Template:Tag
+  '#tag',
+  //https://en.wikipedia.org/wiki/Template:Navboxes
+  'navboxes',
+  'reflist',
+  'div col',
+  'flag',
 ];
 const ignore = list.reduce((h, str) => {
   h[str] = true;

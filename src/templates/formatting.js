@@ -3,7 +3,6 @@ const pipeSplit = require('./parsers/pipeSplit');
 const keyValue = require('./parsers/keyValue');
 
 let templates = {
-
   //a convulated way to make a xml tag - https://en.wikipedia.org/wiki/Template:Tag
   tag: (tmpl) => {
     let obj = keyValue(tmpl);

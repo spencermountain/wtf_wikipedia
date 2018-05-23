@@ -1,4 +1,22 @@
 const pipeSplit = require('./parsers/pipeSplit');
+
+let templates = {
+  /* mostly wiktionary*/
+  etyl: (tmpl) => {
+    let order = ['lang', 'page'];
+    return pipeSplit(tmpl, order).page || '';
+  },
+  mention: (tmpl) => {
+    let order = ['lang', 'page'];
+    return pipeSplit(tmpl, order).page || '';
+  },
+  link: (tmpl) => {
+    let order = ['lang', 'page'];
+    return pipeSplit(tmpl, order).page || '';
+  },
+
+};
+
 //these are insane
 // https://en.wikipedia.org/wiki/Template:Tl
 const links = [
@@ -30,12 +48,17 @@ const links = [
 ];
 
 //keyValues
-const linkTemplates = links.reduce((h, k) => {
-  h[k] = (tmpl) => {
+links.forEach((k) => {
+  templates[k] = (tmpl) => {
     let order = ['first', 'second'];
     let obj = pipeSplit(tmpl, order);
     return obj.second || obj.first;
   };
-  return h;
-}, {});
-module.exports = linkTemplates;
+});
+//aliases
+templates.m = templates.mention;
+templates['m-self'] = templates.mention;
+templates.l = templates.link;
+templates.ll = templates.link;
+templates['l-self'] = templates.link;
+module.exports = templates;
