@@ -36,6 +36,7 @@ const list = [
   'reflist',
   'div col',
   'flag',
+  'authority control',
 ];
 const ignore = list.reduce((h, str) => {
   h[str] = true;

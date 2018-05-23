@@ -30,6 +30,10 @@ const doKeyValue = function(tmpl, name) {
     };
   }
   //generic response
+  //try to bury some annoying ones
+  if (Object.keys(data).length === 1 && (data.date || data.state || data.format)) {
+    return null;
+  }
   return {
     template: name,
     data: data
