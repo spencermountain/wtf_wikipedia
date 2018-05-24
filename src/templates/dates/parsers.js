@@ -59,11 +59,11 @@ const parsers = {
     let str = arr[1] || '';
     // - just a year
     let date = {};
-    if (/^[0-9]{4}$/.test(arr[1])) {
-      date.year = parseInt(arr[1], 10);
+    if (/^[0-9]{4}$/.test(str)) {
+      date.year = parseInt(str, 10);
     } else {
       //parse the date, using the js date object (for now?)
-      let txt = arr[1].replace(/[a-z]+\/[a-z]+/i);
+      let txt = str.replace(/[a-z]+\/[a-z]+/i);
       txt = txt.replace(/[0-9]+:[0-9]+(am|pm)?/i);
       let d = new Date(txt);
       if (isNaN(d.getTime()) === false) {

@@ -36,8 +36,8 @@ const wtf = require('./src/index');
 
 // var doc = readFile('toronto');
 
-wtf.fetch('Srimanthudu').then(doc => {
+wtf.fetch('Gustavo Isaza Mejía').then(doc => {
   // console.log(doc.plaintext());
-  console.log(doc.templates('tracklist')[0]);
+  console.log(doc.json());
 // console.log(doc.templates().filter(t => t.template !== 'citation'));
-});
+}).catch(console.log);
