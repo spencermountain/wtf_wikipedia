@@ -1,4 +1,4 @@
-/* wtf_wikipedia v4.0.0
+/* wtf_wikipedia v4.0.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2253,7 +2253,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -3871,7 +3871,6 @@ var isNumber = /^[0-9]*$/;
 //construct a lookup-url for the wikipedia api
 var makeUrl = function makeUrl(title, lang) {
   lang = lang || 'en';
-
   var lookup = 'titles';
   if (isNumber.test(title) && title.length > 3) {
     lookup = 'curid';
@@ -3897,13 +3896,19 @@ var postProcess = function postProcess(data) {
   var pages = Object.keys(data.query.pages);
   var docs = pages.map(function (id) {
     var page = data.query.pages[id] || {};
-    if (!page.hasOwnProperty('missing')) {
-      var text = page.revisions[0]['*'];
-      var options = {
-        title: page.title,
-        pageID: page.pageid
-      };
+    if (page.hasOwnProperty('missing')) {
+      return null;
+    }
+    var text = page.revisions[0]['*'];
+    var options = {
+      title: page.title,
+      pageID: page.pageid
+    };
+    try {
       return new Document(text, options);
+    } catch (e) {
+      console.error(e);
+      throw e;
     }
   });
   //return an array if there was more than one page given
@@ -3914,15 +3919,7 @@ var postProcess = function postProcess(data) {
   return docs[0];
 };
 
-var throwErr = function throwErr(r, cb) {
-  if (cb && typeof cb === 'function') {
-    return cb(response, {});
-  }
-  return {};
-};
-
 var getData = function getData(url, options) {
-  // Api-User-Agent
   var params = {
     method: 'GET',
     headers: {
@@ -3932,10 +3929,10 @@ var getData = function getData(url, options) {
   };
   return fetch(url, params).then(function (response) {
     if (response.status !== 200) {
-      throwErr(response, callback);
+      throw response;
     }
     return response.json();
-  });
+  }).catch(console.error);
 };
 
 var getPage = function getPage(title, a, b, c) {
@@ -3959,7 +3956,7 @@ var getPage = function getPage(title, a, b, c) {
     callback = c;
   }
   var url = makeUrl(title, lang);
-  var promise = new Promise(function (resolve, reject) {
+  return new Promise(function (resolve, reject) {
     var p = getData(url, options);
     p.then(postProcess).then(function (doc) {
       //support 'err-back' format
@@ -3970,7 +3967,6 @@ var getPage = function getPage(title, a, b, c) {
     });
     p.catch(reject);
   });
-  return promise;
 };
 
 module.exports = getPage;
@@ -6599,11 +6595,11 @@ var parsers = {
     var str = arr[1] || '';
     // - just a year
     var date = {};
-    if (/^[0-9]{4}$/.test(arr[1])) {
-      date.year = parseInt(arr[1], 10);
+    if (/^[0-9]{4}$/.test(str)) {
+      date.year = parseInt(str, 10);
     } else {
       //parse the date, using the js date object (for now?)
-      var txt = arr[1].replace(/[a-z]+\/[a-z]+/i);
+      var txt = str.replace(/[a-z]+\/[a-z]+/i);
       txt = txt.replace(/[0-9]+:[0-9]+(am|pm)?/i);
       var d = new Date(txt);
       if (isNaN(d.getTime()) === false) {
@@ -6908,6 +6904,41 @@ module.exports = templates;
 },{"./parsers/inside":78,"./parsers/keyValue":79,"./parsers/pipeSplit":81}],64:[function(_dereq_,module,exports){
 'use strict';
 
+var getName = _dereq_('../parsers/_getName');
+var pipeList = _dereq_('../parsers/pipeList');
+var doKeyValue = _dereq_('./keyValue');
+
+var maybeKeyValue = /\| *?[a-z].+= *?[a-z0-9]{2}/i; // {{name|foo=bar}}
+
+//does it look like {{name|foo|bar}}
+var maybePipeList = function maybePipeList(tmpl) {
+  var pipes = tmpl.split('|').length;
+  if (pipes > 2) {
+    var equalSigns = tmpl.split('=').length;
+    if (equalSigns <= 2) {
+      return true;
+    }
+  }
+  return false;
+};
+
+//somehow, we parse this template without knowing how to already
+var generic = function generic(tmpl) {
+  var name = getName(tmpl);
+  //make sure it looks like a key-value template
+  if (maybeKeyValue.test(tmpl) === true) {
+    return doKeyValue(tmpl, name);
+  }
+  if (maybePipeList(tmpl) === true) {
+    return pipeList(tmpl);
+  }
+  return null;
+};
+module.exports = generic;
+
+},{"../parsers/_getName":74,"../parsers/pipeList":80,"./keyValue":65}],65:[function(_dereq_,module,exports){
+'use strict';
+
 var i18n = _dereq_('../../data/i18n');
 var is_infobox = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i');
 var is_citation = new RegExp('^(cite |citation)', 'i');
@@ -6951,42 +6982,7 @@ var doKeyValue = function doKeyValue(tmpl, name) {
 };
 module.exports = doKeyValue;
 
-},{"../../data/i18n":5,"../parsers/keyValue":79}],65:[function(_dereq_,module,exports){
-'use strict';
-
-var getName = _dereq_('../parsers/_getName');
-var pipeList = _dereq_('../parsers/pipeList');
-var doKeyValue = _dereq_('./KeyValue');
-
-var maybeKeyValue = /\| *?[a-z].+= *?[a-z0-9]{2}/i; // {{name|foo=bar}}
-
-//does it look like {{name|foo|bar}}
-var maybePipeList = function maybePipeList(tmpl) {
-  var pipes = tmpl.split('|').length;
-  if (pipes > 2) {
-    var equalSigns = tmpl.split('=').length;
-    if (equalSigns <= 2) {
-      return true;
-    }
-  }
-  return false;
-};
-
-//somehow, we parse this template without knowing how to already
-var generic = function generic(tmpl) {
-  var name = getName(tmpl);
-  //make sure it looks like a key-value template
-  if (maybeKeyValue.test(tmpl) === true) {
-    return doKeyValue(tmpl, name);
-  }
-  if (maybePipeList(tmpl) === true) {
-    return pipeList(tmpl);
-  }
-  return null;
-};
-module.exports = generic;
-
-},{"../parsers/_getName":74,"../parsers/pipeList":80,"./KeyValue":64}],66:[function(_dereq_,module,exports){
+},{"../../data/i18n":5,"../parsers/keyValue":79}],66:[function(_dereq_,module,exports){
 'use strict';
 
 var convertDMS = _dereq_('./dms-format');
@@ -7203,7 +7199,7 @@ var allTemplates = function allTemplates(r, wiki, options) {
 
 module.exports = allTemplates;
 
-},{"./dates":59,"./external":62,"./formatting":63,"./generic":65,"./geo":68,"./ignore":69,"./inline":71,"./links":72,"./misc":73,"./parsers/_getName":74,"./parsers/_getTemplates":75,"./pronounce":82}],71:[function(_dereq_,module,exports){
+},{"./dates":59,"./external":62,"./formatting":63,"./generic":64,"./geo":68,"./ignore":69,"./inline":71,"./links":72,"./misc":73,"./parsers/_getName":74,"./parsers/_getTemplates":75,"./pronounce":82}],71:[function(_dereq_,module,exports){
 'use strict';
 
 var keyValue = _dereq_('./parsers/keyValue');

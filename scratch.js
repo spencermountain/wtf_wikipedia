@@ -38,6 +38,6 @@ const wtf = require('./src/index');
 
 wtf.fetch('Gustavo Isaza Mejía').then(doc => {
   // console.log(doc.plaintext());
-  console.log(doc.json());
+  console.log(doc.templates());
 // console.log(doc.templates().filter(t => t.template !== 'citation'));
 }).catch(console.log);
