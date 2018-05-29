@@ -1,6 +1,6 @@
 const getName = require('../parsers/_getName');
 const pipeList = require('../parsers/pipeList');
-const doKeyValue = require('./KeyValue');
+const doKeyValue = require('./keyValue');
 
 const maybeKeyValue = /\| *?[a-z].+= *?[a-z0-9]{2}/i; // {{name|foo=bar}}
 

@@ -1,5 +1,5 @@
 const wtf = require('./src/index');
-const readFile = require('./tests/lib/_cachedPage');
+// const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
@@ -36,7 +36,8 @@ const readFile = require('./tests/lib/_cachedPage');
 
 // var doc = readFile('toronto');
 
-wtf.fetch('Peter Mansbridge').then(doc => {
-  console.log(doc.plaintext());
+wtf.fetch('Gustavo Isaza Mejía').then(doc => {
+  // console.log(doc.plaintext());
+  console.log(doc.templates());
 // console.log(doc.templates().filter(t => t.template !== 'citation'));
-});
+}).catch(console.log);

@@ -11,7 +11,7 @@ obf.env['CODACY_PROJ' + mid + 'EN'] = '07903b1db5f440a2a3caf49fc40ba995'; //i do
 //run all the tests
 console.log('\n 🏃  running coverage tests..');
 // exec(nyc + ' --reporter=text-lcov ' + test + ' > coverage.lcov');
-exec(nyc + ' --reporter=html ' + test + ' | tap-min');
+exec(nyc + ' --reporter=html ' + test + ' | tap-dancer');
 
 //publish results for codacity
 console.log('\n\n\nPublishing results to codacity...\n');
