@@ -13,6 +13,9 @@ const knownTemplate = function(name) {
 const genericTemplate = function(tmpl) {
   if (maybeKeyValue.test(tmpl)) {
     let name = getName(tmpl);
+    if (name === null) {
+      return null;
+    }
     let data = keyValue(tmpl);
     if (data) {
       let obj = {

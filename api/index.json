@@ -1,0 +1,289 @@
+{
+  "Document": [
+    {
+      "name": "isRedirect",
+      "returns": "Boolean",
+      "description": ""
+    },
+    {
+      "name": "isDisambiguation",
+      "returns": "Boolean",
+      "description": "",
+      "aliases": [
+        "isDisambig"
+      ]
+    },
+    {
+      "name": "categories",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "reparse",
+      "returns": "Document",
+      "description": "allow reparsing after alteration of downloaded wiki source"
+    },
+    {
+      "name": "wikitext",
+      "returns": "String",
+      "description": "return the page's original wikitext"
+    },
+    {
+      "name": "sections",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "section",
+      "returns": "Section",
+      "description": "return the first section matching a given title or index"
+    },
+    {
+      "name": "sentences",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "images",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "links",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "tables",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "templates",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "citations",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "infoboxes",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "coordinates",
+      "returns": "Array",
+      "description": "",
+      "aliases": [
+        "coords"
+      ]
+    },
+    {
+      "name": "plaintext",
+      "returns": "String",
+      "description": "",
+      "aliases": [
+        "text"
+      ]
+    },
+    {
+      "name": "markdown",
+      "returns": "String",
+      "description": "",
+      "aliases": [
+        "toMarkdown"
+      ]
+    },
+    {
+      "name": "html",
+      "returns": "String",
+      "description": "",
+      "aliases": [
+        "toHTML"
+      ]
+    },
+    {
+      "name": "latex",
+      "returns": "String",
+      "description": "",
+      "aliases": [
+        "toLATEX"
+      ]
+    }
+  ],
+  "Section": [
+    {
+      "name": "title",
+      "returns": "String",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "indentation",
+      "returns": "Integer",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "sentences",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "links",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "tables",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "templates",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "infoboxes",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "lists",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "interwiki",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "images",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "citations",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "index",
+      "returns": "Integer",
+      "example": "",
+      "description": "which number section is this, in the whole document."
+    },
+    {
+      "name": "nextSibling",
+      "returns": "Section",
+      "example": "",
+      "description": "a section following this one, under the current parent: eg. 1920s → 1930s ",
+      "aliases": [
+        "next"
+      ]
+    },
+    {
+      "name": "lastSibling",
+      "returns": "Section",
+      "example": "",
+      "description": "a section before this one, under the current parent: eg. 1930s → 1920s",
+      "aliases": [
+        "last",
+        "previous",
+        "previousSibling"
+      ]
+    },
+    {
+      "name": "children",
+      "returns": "Array",
+      "example": "",
+      "description": "any sections more specific than this one: eg. History → [PreHistory, 1920s, 1930s]"
+    },
+    {
+      "name": "parent",
+      "returns": "Section",
+      "example": "",
+      "description": "the section, broader than this one: eg. 1920s → History "
+    },
+    {
+      "name": "remove",
+      "returns": "Document",
+      "example": "doc.section('References').remove()",
+      "description": "remove the current section from the document"
+    },
+    {
+      "name": "markdown",
+      "returns": "String",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "html",
+      "returns": "String",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "plaintext",
+      "returns": "String",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "json",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    }
+  ],
+  "Sentence": [
+    {
+      "name": "links",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "bolds",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "italics",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "dates",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "markdown",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "html",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "plaintext",
+      "returns": "String",
+      "description": ""
+    }
+  ]
+}

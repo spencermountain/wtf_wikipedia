@@ -36,8 +36,17 @@ const wtf = require('./src/index');
 
 // var doc = readFile('toronto');
 
-wtf.fetch('Gustavo Isaza Mejía').then(doc => {
+// var str = `{{Infobox
+// | bodystyle   =
+// | birth_name  = Bradley Edward Manning
+// | title       = Chelsea Manning
+// | titlestyle  =
+// }}`;
+// var doc = wtf(str);
+// console.log(doc.templates());
+
+wtf.fetch('Chelsea Manning', 'simple').then(doc => {
   // console.log(doc.plaintext());
-  console.log(doc.templates());
+  console.log(doc.links());
 // console.log(doc.templates().filter(t => t.template !== 'citation'));
-}).catch(console.log);
+});

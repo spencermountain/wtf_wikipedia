@@ -19,7 +19,7 @@ const external_links = function(links, str) {
 const internal_links = function(links, str) {
   //regular links
   str.replace(link_reg, function(_, s, apostrophe) {
-    var txt = '';
+    var txt = null;
     var link = s;
     if (s.match(/\|/)) {
       //replacement link [[link|text]]
@@ -27,7 +27,7 @@ const internal_links = function(links, str) {
       link = s.replace(/(.{2,60})\|.{0,200}/, '$1'); //replaced links
       txt = s.replace(/.{2,60}?\|/, '');
       //handle funky case of [[toronto|]]
-      if (!txt && link.match(/\|$/)) {
+      if (txt === null && link.match(/\|$/)) {
         link = link.replace(/\|$/, '');
         txt = link;
       }
@@ -44,10 +44,13 @@ const internal_links = function(links, str) {
     link = link.replace(/#[^ ]{1,100}/, '');
     var obj = {
       page: helpers.capitalise(link),
-      text: txt || link
     };
+    if (txt !== null && txt !== obj.page) {
+      obj.text = txt;
+    }
     //finally, support [[link]]'s apostrophe
     if (apostrophe) {
+      obj.text = obj.text || obj.page;
       obj.text += apostrophe;
     }
     links.push(obj);
