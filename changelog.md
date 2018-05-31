@@ -60,6 +60,6 @@
 * rollback of awkward+undocumented `options` param in parser (but keep options param for output methods)
 * add support for about a hundred new templates
 * templates, including citations, try to be flat-text, and no-longer return Sentence objects
-##4.1.0
+## 4.1.0
 * remove repeated/redundant text in `.links()` results
 * don't automatically titlecase link srcs anymore
