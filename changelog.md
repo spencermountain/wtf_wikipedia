@@ -47,7 +47,7 @@
 * guess a page's title based on bold formatting in first sentence
 * make section.title a function
 
-##4.0.0
+## 4.0.0
 * 🚨 non-api changing, but large result-format change
 * add `.wikitext()` method to Document, Section, Sentence (thanks @niebert)
 * move infobox, citation parser/data to Section class
