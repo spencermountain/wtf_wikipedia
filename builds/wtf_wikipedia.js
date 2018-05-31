@@ -1,4 +1,4 @@
-/* wtf_wikipedia v4.0.1
+/* wtf_wikipedia v4.1.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2253,7 +2253,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -4495,12 +4495,12 @@ module.exports = doSection;
 'use strict';
 
 var smartReplace = _dereq_('../../lib/smartReplace');
+var helpers = _dereq_('../../lib/helpers');
 
 // create links, bold, italic in html
 var doSentence = function doSentence(sentence) {
   var text = sentence.text();
-  //turn links back into links
-  // if (options.links === true) {
+  //turn links into <a href>
   sentence.links().forEach(function (link) {
     var href = '';
     var classNames = 'link';
@@ -4510,18 +4510,19 @@ var doSentence = function doSentence(sentence) {
       classNames += ' external';
     } else {
       //otherwise, make it a relative internal link
-      href = link.page || link.text;
+      href = helpers.capitalise(link.page);
       href = './' + href.replace(/ /g, '_');
     }
-    var tag = '<a class="' + classNames + '" href="' + href + '">';
-    tag += link.text + '</a>';
-    text = smartReplace(text, link.text, tag);
+    var str = link.text || link.page;
+    var tag = '<a class="' + classNames + '" href="' + href + '">' + str + '</a>';
+    text = smartReplace(text, str, tag);
   });
-  // }
+  //support bolds
   sentence.bold().forEach(function (str) {
     var tag = '<b>' + str + '</b>';
     text = smartReplace(text, str, tag);
   });
+  //do italics
   sentence.italic().forEach(function (str) {
     var tag = '<i>' + str + '</i>';
     text = smartReplace(text, str, tag);
@@ -4531,7 +4532,7 @@ var doSentence = function doSentence(sentence) {
 };
 module.exports = doSentence;
 
-},{"../../lib/smartReplace":23}],30:[function(_dereq_,module,exports){
+},{"../../lib/helpers":20,"../../lib/smartReplace":23}],30:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -4880,7 +4881,7 @@ module.exports = infobox;
 'use strict';
 
 var smartReplace = _dereq_('../../lib/smartReplace');
-
+var helpers = _dereq_('../../lib/helpers');
 // create links, bold, italic in html
 var doSentence = function doSentence(sentence, options) {
   var text = sentence.plaintext();
@@ -4893,11 +4894,12 @@ var doSentence = function doSentence(sentence, options) {
         href = link.site;
       } else {
         //otherwise, make it a relative internal link
-        href = link.page || link.text;
+        href = helpers.capitalise(link.page);
         href = './' + href.replace(/ /g, '_');
       }
-      var tag = '\\href{' + href + '}{' + link.text + '}';
-      text = smartReplace(text, link.text, tag);
+      var str = link.text || link.page;
+      var tag = '\\href{' + href + '}{' + str + '}';
+      text = smartReplace(text, str, tag);
     });
   }
   if (sentence.data.fmt) {
@@ -4918,7 +4920,7 @@ var doSentence = function doSentence(sentence, options) {
 };
 module.exports = doSentence;
 
-},{"../../lib/smartReplace":23}],37:[function(_dereq_,module,exports){
+},{"../../lib/helpers":20,"../../lib/smartReplace":23}],37:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -5134,6 +5136,7 @@ module.exports = doSection;
 'use strict';
 
 var smartReplace = _dereq_('../../lib/smartReplace');
+var helpers = _dereq_('../../lib/helpers');
 
 // add `[text](href)` to the text
 var doLink = function doLink(md, link) {
@@ -5143,11 +5146,12 @@ var doLink = function doLink(md, link) {
     href = link.site;
   } else {
     //otherwise, make it a relative internal link
-    href = link.page || link.text;
+    href = helpers.capitalise(link.page);
     href = './' + href.replace(/ /g, '_');
   }
-  var mdLink = '[' + link.text + '](' + href + ')';
-  md = smartReplace(md, link.text, mdLink);
+  var str = link.text || link.page;
+  var mdLink = '[' + str + '](' + href + ')';
+  md = smartReplace(md, str, mdLink);
   return md;
 };
 
@@ -5172,7 +5176,7 @@ var doSentence = function doSentence(sentence) {
 };
 module.exports = doSentence;
 
-},{"../../lib/smartReplace":23}],44:[function(_dereq_,module,exports){
+},{"../../lib/helpers":20,"../../lib/smartReplace":23}],44:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6081,7 +6085,7 @@ module.exports = {
 },{"../data/i18n":5,"../lib/helpers":20,"./formatting":53,"./links":55,"./sentence-parser":56}],55:[function(_dereq_,module,exports){
 'use strict';
 
-var helpers = _dereq_('../lib/helpers');
+// const helpers = require('../lib/helpers');
 var ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i;
 var external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
 var link_reg = /\[\[(.{0,80}?)\]\]([a-z']+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]'s"
@@ -6102,7 +6106,7 @@ var external_links = function external_links(links, str) {
 var internal_links = function internal_links(links, str) {
   //regular links
   str.replace(link_reg, function (_, s, apostrophe) {
-    var txt = '';
+    var txt = null;
     var link = s;
     if (s.match(/\|/)) {
       //replacement link [[link|text]]
@@ -6110,7 +6114,7 @@ var internal_links = function internal_links(links, str) {
       link = s.replace(/(.{2,60})\|.{0,200}/, '$1'); //replaced links
       txt = s.replace(/.{2,60}?\|/, '');
       //handle funky case of [[toronto|]]
-      if (!txt && link.match(/\|$/)) {
+      if (txt === null && link.match(/\|$/)) {
         link = link.replace(/\|$/, '');
         txt = link;
       }
@@ -6126,11 +6130,14 @@ var internal_links = function internal_links(links, str) {
     //remove anchors from end [[toronto#history]]
     link = link.replace(/#[^ ]{1,100}/, '');
     var obj = {
-      page: helpers.capitalise(link),
-      text: txt || link
+      page: link
     };
+    if (txt !== null && txt !== obj.page) {
+      obj.text = txt;
+    }
     //finally, support [[link]]'s apostrophe
     if (apostrophe) {
+      obj.text = obj.text || obj.page;
       obj.text += apostrophe;
     }
     links.push(obj);
@@ -6154,7 +6161,7 @@ var parse_links = function parse_links(str) {
 };
 module.exports = parse_links;
 
-},{"../lib/helpers":20}],56:[function(_dereq_,module,exports){
+},{}],56:[function(_dereq_,module,exports){
 'use strict';
 
 //split text into sentences, using regex
@@ -6945,7 +6952,7 @@ var is_citation = new RegExp('^(cite |citation)', 'i');
 var keyValue = _dereq_('../parsers/keyValue');
 
 var infoboxType = function infoboxType(name) {
-  var reg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ') +?', 'i');
+  var reg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ') *?', 'i');
   name = name.replace(reg, '');
   return name.trim();
 };
@@ -6953,7 +6960,7 @@ var infoboxType = function infoboxType(name) {
 //try to parse unknown template as a {{name|key=val|key2=val2}} format
 var doKeyValue = function doKeyValue(tmpl, name) {
   //handle infoboxes
-  if (is_infobox.test(name)) {
+  if (name === 'infobox' || is_infobox.test(name)) {
     return {
       template: 'infobox',
       type: infoboxType(name),
@@ -7677,6 +7684,9 @@ var knownTemplate = function knownTemplate(name) {
 var genericTemplate = function genericTemplate(tmpl) {
   if (maybeKeyValue.test(tmpl)) {
     var name = getName(tmpl);
+    if (name === null) {
+      return null;
+    }
     var data = keyValue(tmpl);
     if (data) {
       var obj = {
