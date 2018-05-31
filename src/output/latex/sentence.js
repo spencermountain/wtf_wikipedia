@@ -1,5 +1,5 @@
 const smartReplace = require('../../lib/smartReplace');
-
+const helpers = require('../../lib/helpers');
 // create links, bold, italic in html
 const doSentence = function(sentence, options) {
   let text = sentence.plaintext();
@@ -12,11 +12,12 @@ const doSentence = function(sentence, options) {
         href = link.site;
       } else {
         //otherwise, make it a relative internal link
-        href = link.page || link.text;
+        href = helpers.capitalise(link.page);
         href = './' + href.replace(/ /g, '_');
       }
-      let tag = '\\href{' + href + '}{' + link.text + '}';
-      text = smartReplace(text, link.text, tag);
+      let str = link.text || link.page;
+      let tag = '\\href{' + href + '}{' + str + '}';
+      text = smartReplace(text, str, tag);
     });
   }
   if (sentence.data.fmt) {

@@ -1,4 +1,4 @@
-const helpers = require('../lib/helpers');
+// const helpers = require('../lib/helpers');
 const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i;
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
 const link_reg = /\[\[(.{0,80}?)\]\]([a-z']+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]'s"
@@ -19,7 +19,7 @@ const external_links = function(links, str) {
 const internal_links = function(links, str) {
   //regular links
   str.replace(link_reg, function(_, s, apostrophe) {
-    var txt = '';
+    var txt = null;
     var link = s;
     if (s.match(/\|/)) {
       //replacement link [[link|text]]
@@ -27,7 +27,7 @@ const internal_links = function(links, str) {
       link = s.replace(/(.{2,60})\|.{0,200}/, '$1'); //replaced links
       txt = s.replace(/.{2,60}?\|/, '');
       //handle funky case of [[toronto|]]
-      if (!txt && link.match(/\|$/)) {
+      if (txt === null && link.match(/\|$/)) {
         link = link.replace(/\|$/, '');
         txt = link;
       }
@@ -43,11 +43,14 @@ const internal_links = function(links, str) {
     //remove anchors from end [[toronto#history]]
     link = link.replace(/#[^ ]{1,100}/, '');
     var obj = {
-      page: helpers.capitalise(link),
-      text: txt || link
+      page: link,
     };
+    if (txt !== null && txt !== obj.page) {
+      obj.text = txt;
+    }
     //finally, support [[link]]'s apostrophe
     if (apostrophe) {
+      obj.text = obj.text || obj.page;
       obj.text += apostrophe;
     }
     links.push(obj);

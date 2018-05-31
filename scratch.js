@@ -36,8 +36,9 @@ const wtf = require('./src/index');
 
 // var doc = readFile('toronto');
 
-wtf.fetch('Gustavo Isaza Mejía').then(doc => {
-  // console.log(doc.plaintext());
-  console.log(doc.templates());
-// console.log(doc.templates().filter(t => t.template !== 'citation'));
-}).catch(console.log);
+console.log(wtf('that cat is [[aasdf]] cool dude').html());
+// wtf.fetch('Dusseldorf', 'en').then(doc => {
+//   // console.log(doc.plaintext());
+//   console.log(doc.links());
+// // console.log(doc.templates().filter(t => t.template !== 'citation'));
+// });

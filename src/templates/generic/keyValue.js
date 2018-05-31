@@ -4,7 +4,7 @@ const is_citation = new RegExp('^(cite |citation)', 'i');
 const keyValue = require('../parsers/keyValue');
 
 const infoboxType = function(name) {
-  const reg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ') +?', 'i');
+  const reg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ') *?', 'i');
   name = name.replace(reg, '');
   return name.trim();
 };
@@ -12,7 +12,7 @@ const infoboxType = function(name) {
 //try to parse unknown template as a {{name|key=val|key2=val2}} format
 const doKeyValue = function(tmpl, name) {
   //handle infoboxes
-  if (is_infobox.test(name)) {
+  if (name === 'infobox' || is_infobox.test(name)) {
     return {
       template: 'infobox',
       type: infoboxType(name),

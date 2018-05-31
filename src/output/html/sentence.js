@@ -1,10 +1,10 @@
 const smartReplace = require('../../lib/smartReplace');
+const helpers = require('../../lib/helpers');
 
 // create links, bold, italic in html
 const doSentence = function(sentence) {
   let text = sentence.text();
-  //turn links back into links
-  // if (options.links === true) {
+  //turn links into <a href>
   sentence.links().forEach((link) => {
     let href = '';
     let classNames = 'link';
@@ -14,18 +14,19 @@ const doSentence = function(sentence) {
       classNames += ' external';
     } else {
       //otherwise, make it a relative internal link
-      href = link.page || link.text;
+      href = helpers.capitalise(link.page);
       href = './' + href.replace(/ /g, '_');
     }
-    let tag = '<a class="' + classNames + '" href="' + href + '">';
-    tag += link.text + '</a>';
-    text = smartReplace(text, link.text, tag);
+    let str = link.text || link.page;
+    let tag = `<a class="${classNames}" href="${href}">${str}</a>`;
+    text = smartReplace(text, str, tag);
   });
-  // }
+  //support bolds
   sentence.bold().forEach((str) => {
     let tag = '<b>' + str + '</b>';
     text = smartReplace(text, str, tag);
   });
+  //do italics
   sentence.italic().forEach((str) => {
     let tag = '<i>' + str + '</i>';
     text = smartReplace(text, str, tag);
