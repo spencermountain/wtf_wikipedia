@@ -1,4 +1,4 @@
-/* wtf_wikipedia v4.1.0
+/* wtf_wikipedia v4.1.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2253,7 +2253,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -7564,11 +7564,7 @@ var getName = function getName(tmpl) {
     name = name.replace(/:.*/, '');
     name = name.trim().toLowerCase();
   }
-  //support {{imdb title|id}}
-  // if (/^imdb /i.test(name) === true) {
-  //   name = 'imdb';
-  // }
-  return name;
+  return name || null;
 };
 // console.log(templateName('{{name|foo}}'));
 // console.log(templateName('{{name here}}'));
