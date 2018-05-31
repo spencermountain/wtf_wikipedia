@@ -36,9 +36,10 @@ const wtf = require('./src/index');
 
 // var doc = readFile('toronto');
 
-console.log(wtf('that cat is [[aasdf]] cool dude').html());
+// console.log(wtf('that cat is [[aasdf]] cool dude').html());
 // wtf.fetch('Dusseldorf', 'en').then(doc => {
-//   // console.log(doc.plaintext());
-//   console.log(doc.links());
+wtf.fetch('Belgium', 'simple').then(doc => {
+  //   // console.log(doc.plaintext());
+  console.log(doc.templates());
 // // console.log(doc.templates().filter(t => t.template !== 'citation'));
-// });
+});
