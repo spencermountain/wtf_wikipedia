@@ -8,6 +8,7 @@
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
   "main": "./src/index.js",
+  "browser": "./builds/wtf_wikipedia.min.js",
   "unpkg": "./builds/wtf_wikipedia.min.js",
   "scripts": {
     "start": "node ./scripts/demo.js",
