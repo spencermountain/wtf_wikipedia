@@ -8,12 +8,11 @@ const isNumber = /^[0-9]*$/;
 //construct a lookup-url for the wikipedia api
 const makeUrl = function(title, lang) {
   lang = lang || 'en';
-
   var lookup = 'titles';
   if (isNumber.test(title) && title.length > 3) {
     lookup = 'curid';
   }
-  let url = 'https://' + lang + '.wikipedia.org/w/api.php';
+  let url = `https://${lang}.wikipedia.org/w/api.php`;
   if (site_map[lang]) {
     url = site_map[lang] + '/w/api.php';
   }
@@ -34,12 +33,20 @@ const postProcess = function(data) {
   let pages = Object.keys(data.query.pages);
   let docs = pages.map(id => {
     let page = data.query.pages[id] || {};
+    if (page.hasOwnProperty('missing')) {
+      return null;
+    }
     let text = page.revisions[0]['*'];
     let options = {
       title: page.title,
       pageID: page.pageid,
     };
-    return new Document(text, options);
+    try {
+      return new Document(text, options);
+    } catch (e) {
+      console.error(e);
+      throw e
+    }
   });
   //return an array if there was more than one page given
   if (docs.length > 1) {
@@ -49,15 +56,8 @@ const postProcess = function(data) {
   return docs[0];
 };
 
-const throwErr = (r, cb) => {
-  if (cb && typeof cb === 'function') {
-    return cb(response, {});
-  }
-  return {};
-};
 
 const getData = function(url, options) {
-  // Api-User-Agent
   let params = {
     method: 'GET',
     headers: {
@@ -67,10 +67,10 @@ const getData = function(url, options) {
   };
   return fetch(url, params).then((response) => {
     if (response.status !== 200) {
-      throwErr(response, callback);
+      throw response;
     }
     return response.json();
-  });
+  }).catch(console.error);
 };
 
 const getPage = function(title, a, b, c) {
@@ -94,7 +94,7 @@ const getPage = function(title, a, b, c) {
     callback = c;
   }
   let url = makeUrl(title, lang);
-  let promise = new Promise(function(resolve, reject) {
+  return new Promise(function(resolve, reject) {
     let p = getData(url, options);
     p.then(postProcess).then((doc) => {
       //support 'err-back' format
@@ -105,7 +105,6 @@ const getPage = function(title, a, b, c) {
     });
     p.catch(reject);
   });
-  return promise;
 };
 
 

@@ -1,4 +1,5 @@
 const parse = require('./index');
+const sectionMap = require('./_sectionMap');
 const toMarkdown = require('../output/markdown');
 const toHtml = require('../output/html');
 const toJSON = require('../output/json');
@@ -18,20 +19,12 @@ const defaults = {
 const Document = function(wiki, options) {
   this.options = options || {};
   this.data = parse(wiki, this.options);
+
   // preserve wiki sources in Document to access
-  this.wiki = wiki;
-  // allow reparsing after alteration of downloaded wiki source
-  // stored in this.wiki
-  // This is necessary for cross-compilation e.g. for Replacement
-  // internal wiki links into expanded external links.
-  //   e.g. [[Water]] into [https://en.wikipedia.org/wiki/Water Water]
-  // with the "reparse" method parsing is still available in for
-  // the generated Document instance by calling
-  // doc.wiki = "new wiki source text";
-  // doc.reparse();
-  this.reparse = function () {
-    this.data = parse(this.wiki, this.options);
-  };
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false, // hide it in console.logs
+    value: wiki
+  });
 };
 
 const methods = {
@@ -47,30 +40,37 @@ const methods = {
     }
     return guess;
   },
+  // allow reparsing after alteration of downloaded wiki source
+  reparse : function () {
+    this.data = parse(this.wiki, this.options);
+  },
+  wikitext : function() {
+    return this.wiki;
+  },
   isRedirect : function() {
     return this.data.type === 'redirect';
   },
   isDisambiguation : function() {
     return this.data.type === 'disambiguation';
   },
-  categories : function(n) {
-    if (typeof n === 'number') {
-      return this.data.categories[n];
+  categories : function(clue) {
+    if (typeof clue === 'number') {
+      return this.data.categories[clue];
     }
     return this.data.categories || [];
   },
-  sections : function(n) {
+  sections : function(clue) {
     let arr = this.data.sections || [];
     arr.forEach((sec) => sec.doc = this);
     //grab a specific section, by its title
-    if (typeof n === 'string') {
-      let str = n.toLowerCase().trim();
+    if (typeof clue === 'string') {
+      let str = clue.toLowerCase().trim();
       return arr.find((s) => {
         return s.title().toLowerCase() === str;
       });
     }
-    if (typeof n === 'number') {
-      return arr[n];
+    if (typeof clue === 'number') {
+      return arr[clue];
     }
     return arr;
   },
@@ -86,67 +86,36 @@ const methods = {
     }
     return arr;
   },
-  images : function(n) {
-    let arr = [];
+  images : function(clue) {
+    let arr = sectionMap(this, 'images', null);
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
       if (info.data.image) {
-        arr.push(info.data.image.data);
+        arr.unshift(info.data.image.data); //put it at the top
       }
     });
-    this.sections().forEach((sec) => {
-      sec.images().forEach((img) => {
-        arr.push(img);
-      });
-    });
-    if (typeof n === 'number') {
-      return arr[n];
+    if (typeof clue === 'number') {
+      return arr[clue];
     }
     return arr;
   },
-  links : function(n) {
-    let arr = [];
-    this.sections().forEach((sec) => {
-      sec.links().forEach((l) => {
-        arr.push(l);
-      });
-    });
-    if (typeof n === 'number') {
-      return arr[n];
-    }
-    return arr;
+  links : function(clue) {
+    return sectionMap(this, 'links', clue);
   },
-  tables : function(n) {
-    let arr = [];
-    this.sections().forEach((sec) => {
-      if (sec.tables()) {
-        sec.tables().forEach((t) => {
-          arr.push(t);
-        });
-      }
-    });
-    if (typeof n === 'number') {
-      return arr[n];
-    }
-    return arr;
+  tables : function(clue) {
+    return sectionMap(this, 'tables', clue);
   },
-  citations : function(n) {
-    if (typeof n === 'number') {
-      return this.data.citations[n];
-    }
-    return this.data.citations || [];
+  templates : function(clue) {
+    return sectionMap(this, 'templates', clue);
   },
-  infoboxes : function(n) {
-    if (typeof n === 'number') {
-      return this.data.infoboxes[n];
-    }
-    return this.data.infoboxes || [];
+  infoboxes : function(clue) {
+    return sectionMap(this, 'infoboxes', clue);
   },
-  coordinates : function(n) {
-    if (typeof n === 'number') {
-      return this.data.coordinates[n];
-    }
-    return this.data.coordinates || [];
+  citations : function(clue) {
+    return sectionMap(this, 'citations', clue);
+  },
+  coordinates : function(clue) {
+    return sectionMap(this, 'coordinates', clue);
   },
   plaintext : function(options) {
     options = setDefaults(options, defaults);
@@ -203,5 +172,7 @@ Document.prototype.isDisambig = Document.prototype.isDisambiguation;
 Document.prototype.toJson = Document.prototype.json;
 Document.prototype.text = Document.prototype.plaintext;
 Document.prototype.references = Document.prototype.citations;
+Document.prototype.original = Document.prototype.wikitext;
+Document.prototype.wikiscript = Document.prototype.wikitext;
 
 module.exports = Document;

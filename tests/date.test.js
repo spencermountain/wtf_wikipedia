@@ -90,17 +90,17 @@ test('hyphenated language-date templates', t => {
   t.end();
 });
 
-test('date-data', t => {
-  var obj = wtf('hello {{start date|1993|02|24|08|30}} world').sentences(0);
-  var date = obj.dates(0);
-  t.equal(date.year, 1993, 'got-year');
-  t.equal(date.month, 2, 'got-month');
-  t.equal(date.date, 24, 'got-date');
-  t.equal(date.hour, 8, 'got-hour');
-  t.equal(date.minute, 30, 'got-minute');
-  t.equal(date.text, '08:30, February 24, 1993', 'got-text');
-  t.end();
-});
+// test('date-data', t => {
+//   var obj = wtf('hello {{start date|1993|02|24|08|30}} world').sentences(0);
+//   var date = obj.dates(0);
+//   t.equal(date.year, 1993, 'got-year');
+//   t.equal(date.month, 2, 'got-month');
+//   t.equal(date.date, 24, 'got-date');
+//   t.equal(date.hour, 8, 'got-hour');
+//   t.equal(date.minute, 30, 'got-minute');
+//   t.equal(date.text, '08:30, February 24, 1993', 'got-text');
+//   t.end();
+// });
 
 test('age templates', t => {
   var arr = [

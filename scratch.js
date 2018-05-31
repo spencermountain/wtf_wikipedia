@@ -1,43 +1,43 @@
-'use strict';
 const wtf = require('./src/index');
-// const fromFile = require('./tests/lib/_cachedPage');
+// const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-//  "Susan Allen (May 10, 1951 &amp;ndash; September 7, 2015) was an American harpist...."
-// ""Nils Daniel Carl Bildt, born born 15 July 1949 in Halmstad, Sweden, is a Swedish politician and diplomat who was Prime Minister of Sweden from 1991 to 1994.&lt;ref&gt;&lt..."
-// "'''Toronto''' ({{IPAc-en|t|ɵ|ˈ|r|ɒ|n|t|oʊ}}, {{IPAc-en|local|ˈ|t|r|ɒ|n|oʊ}}) is the [[List of the 100 largest municipalities in Canada by population|most populous city]] in [[Canada]] and the [[Provinces and territories of Canada|provincial]] [[capital city|capital]] of [[Ontario]]. "
-// " '''Andriy Mykolayovych Vasylytchuk''' ({{lang-uk|Андрій Миколайович Василитчук}}; {{lang-ru|Андрей Николаевич Василитчук}}; born 23 October 1965 in [[Lviv]]) is a retired [[Ukraine|Ukrainian]] professional [[Association football|football]]er."
-// todo:
-// description(), extract(), summary()
+// var str = `{{tag|ref|content=haha}}`;
+// var str = `{{Sfn|Tattersall|1982|pp=43–46}}`;
+// var str = `{{MSW3 | id = 13801049 | pages = 391–393 | heading = Genus ''Nycteris'' | author = Simmons, N. B.}}`;
+// var str = `{{Buddhist crisis|state=collapsed}}`;
+// var str = `{{Lacking ISBN|date=January 2017}}`;
+// var str = `The ring-tailed lemur is known locally in Malagasy as ''{{lang|mg|maky}}'' (pronounced {{IPA-mg|ˈmakʲi̥|}}), `;
+// var str = `{{s-ttl | title = Member of the [[List of United States Representatives from Massachusetts|House of Representatives]] <br /> from [[Massachusetts's 11th congressional district]] | years = 1947–1953 }}`;
+// var str = `{{CongBio|K000107}}`;
+// var str = `{{Gutenberg author | id=James,+Henry+(1843-1916) |name=Henry James}}`;
+// var str = `{{Internet Archive author |sname=Gyula Krúdy|birth=1878|death=1933}}`;
+// var str = `{{Goodreads author|1599723.Michael_Grant|Michael Grant}}`;
+// var str = `{{IMDb title | 0426883 | Alpha Dog }}`;
+// var str = `{{Goodreads book|140397|Wings of the Falcon}}`;
+// var str = `{{Goodreads book|id=140397|title=Wings of the Falcon}}`;
+// var str = `{{Internet Archive author |sname=John Fitzgerald [[Kennedy]] |sopt=t}}`;
+// var str = `{{Librivox asdf |id=2572}}`;
+// var str = `{{Librivox book |stitle=The Federalist Papers |dtitle=''The Federalist'' papers}}`;
+// var str = `{{discogs artist|artist=John F. Kennedy|date=june 9}}`;
+// str = `{{Discogs artist|artist=소녀시대|name=소녀시대}}`;
+// str = `{{Discogs artist|소녀시대|소녀시대}}`;
+// var str = `{{Find a Grave|574|accessdate=November 17, 2013}}`;
+// var str = `{{Dmoz|Society/History/By_Region/North_America/United_States/Presidents/Kennedy%2C_John_Fitzgerald/}}`;
+// var str = `{{iMDb name|0448123}}`;
+// var str = `{{Twitter | AcadiaU | Acadia University }}`;
+// var str = `{{Facebook|zuck|Mark Zuckerberg}}`;
+// var str = `{{ESPN NFL | 10536 | Trent Edwards }}`;
+// var str = `{{small|(1976–77)}}`;
+// var doc = wtf(str);
+// console.log(doc.plaintext());
+// console.log(doc.templates(0));
 
-//doc.infoboxes('Venue')
+// var doc = readFile('toronto');
 
-// let doc = fromFile('royal_cinema');
-// let doc = fromFile('toronto');
-// console.log(doc.sentences(0).text());
-// console.log(doc.sections('Infrastructure').json());
-// // wtf.fetch('Royal Cinema').then((doc) => {
-// //   console.log(doc.json({
-// //     categories: false
-// //   }));
-// // }).catch(console.log);
-
-// console.log(wtf(wiki).json({
-//   images: true
-// }));
-
-let wiki = `
-The '''Lot''' ({{lang-oc|Olt}}) is a river in southern [[France]], tributary of the [[Garonne river]]. The [[Lot (department)|Lot]] department is named after this river.
-
-==Geography==
-The Lot river has a length of {{Convert|290.7|km|mi|1|abbr=on}} and a [[drainage basin]] with an area of {{Convert|11400|km2|sqmi|0|abbr=on }}.<ref name="sandre">{{cite web |url=http://services.sandre.eaufrance.fr/Courdo/Fiche/client/fiche_courdo.php?CdSandre=O---0150 |title=Le Lot (O---0150) |publisher=SANDRE - Portail national d'accès aux référentiels sur l'eau |language=French |accessdate=22 May 2014 |date= }}</ref>
-
-Its average yearly [[Discharge (hydrology)|discharge]] ([[volume]] of [[water]] which passes through a section of the river per [[Unit of measurement|unit]] of [[time]]) is 155 [[cubic metre]]s per [[second]] at [[Villeneuve-sur-Lot]].<ref>{{cite web |url=http://www.hydro.eaufrance.fr/stations/O8481520&procedure=synthese |title=Le Lot à Villeneuve-sur-Lot |publisher=Banque Hydro |language=French |accessdate=22 May 2014 |date= }}</ref>
-
-[[Category:Rivers of France]]
-[[Category:Occitanie]]
-[[Category:Auvergne-Rhône-Alpes]]
-[[Category:Nouvelle-Aquitaine]]
-`;
-console.log(wtf(wiki).plaintext());
+wtf.fetch('Gustavo Isaza Mejía').then(doc => {
+  // console.log(doc.plaintext());
+  console.log(doc.templates());
+// console.log(doc.templates().filter(t => t.template !== 'citation'));
+}).catch(console.log);

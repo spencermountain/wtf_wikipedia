@@ -1,4 +1,4 @@
-/* wtf_wikipedia v3.1.1
+/* wtf_wikipedia v4.0.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -370,10 +370,7 @@ return new F();
 
   function parseHeaders(rawHeaders) {
     var headers = new Headers();
-    // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
-    // https://tools.ietf.org/html/rfc7230#section-3.2
-    var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ');
-    preProcessedHeaders.split(/\r?\n/).forEach(function(line) {
+    rawHeaders.split(/\r?\n/).forEach(function(line) {
       var parts = line.split(':');
       var key = parts.shift().trim();
       if (key) {
@@ -392,7 +389,7 @@ return new F();
     }
 
     this.type = 'default';
-    this.status = options.status === undefined ? 200 : options.status;
+    this.status = 'status' in options ? options.status : 200;
     this.ok = this.status >= 200 && this.status < 300;
     this.statusText = 'statusText' in options ? options.statusText : 'OK';
     this.headers = new Headers(options.headers);
@@ -459,8 +456,6 @@ return new F();
 
       if (request.credentials === 'include') {
         xhr.withCredentials = true;
-      } else if (request.credentials === 'omit') {
-        xhr.withCredentials = false;
       }
 
       if ('responseType' in xhr && support.blob) {
@@ -2258,14 +2253,13 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "3.1.1",
+  "version": "4.0.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
   "main": "./src/index.js",
-  "browser": "./builds/wtf_wikipedia.min.js",
   "unpkg": "./builds/wtf_wikipedia.min.js",
   "scripts": {
     "start": "node ./scripts/demo.js",
@@ -2303,14 +2297,14 @@ module.exports={
     "babel-cli": "6.26.0",
     "babel-preset-env": "1.6.1",
     "babelify": "8.0.0",
-    "browserify": "16.2.0",
+    "browserify": "16.2.2",
     "codacy-coverage": "2.1.1",
     "derequire": "2.0.6",
-    "nyc": "11.7.1",
+    "nyc": "11.7.3",
     "shelljs": "0.8.1",
-    "tap-dancer": "0.0.2",
+    "tap-dancer": "0.0.3",
     "tape": "4.9.0",
-    "uglify-js": "3.3.22"
+    "uglify-js": "3.3.24"
   },
   "license": "MIT"
 }
@@ -2372,1277 +2366,6 @@ if (typeof module !== 'undefined' && module.exports) {
 }
 
 },{}],6:[function(_dereq_,module,exports){
-'use strict';
-
-module.exports = {
-  aa: {
-    english_title: 'Afar',
-    direction: 'ltr',
-    local_title: 'Afar'
-  },
-  ab: {
-    english_title: 'Abkhazian',
-    direction: 'ltr',
-    local_title: 'Аҧсуа'
-  },
-  af: {
-    english_title: 'Afrikaans',
-    direction: 'ltr',
-    local_title: 'Afrikaans'
-  },
-  ak: {
-    english_title: 'Akan',
-    direction: 'ltr',
-    local_title: 'Akana'
-  },
-  als: {
-    english_title: 'Alemannic',
-    direction: 'ltr',
-    local_title: 'Alemannisch'
-  },
-  am: {
-    english_title: 'Amharic',
-    direction: 'ltr',
-    local_title: 'አማርኛ'
-  },
-  an: {
-    english_title: 'Aragonese',
-    direction: 'ltr',
-    local_title: 'Aragonés'
-  },
-  ang: {
-    english_title: 'Anglo-Saxon',
-    direction: 'ltr',
-    local_title: 'Englisc'
-  },
-  ar: {
-    english_title: 'Arabic',
-    direction: 'rtl',
-    local_title: 'العربية'
-  },
-  arc: {
-    english_title: 'Aramaic',
-    direction: 'rtl',
-    local_title: 'ܣܘܪܬ'
-  },
-  as: {
-    english_title: 'Assamese',
-    direction: 'ltr',
-    local_title: 'অসমীয়া'
-  },
-  ast: {
-    english_title: 'Asturian',
-    direction: 'ltr',
-    local_title: 'Asturianu'
-  },
-  av: {
-    english_title: 'Avar',
-    direction: 'ltr',
-    local_title: 'Авар'
-  },
-  ay: {
-    english_title: 'Aymara',
-    direction: 'ltr',
-    local_title: 'Aymar'
-  },
-  az: {
-    english_title: 'Azerbaijani',
-    direction: 'ltr',
-    local_title: 'Azərbaycanca'
-  },
-  ba: {
-    english_title: 'Bashkir',
-    direction: 'ltr',
-    local_title: 'Башҡорт'
-  },
-  bar: {
-    english_title: 'Bavarian',
-    direction: 'ltr',
-    local_title: 'Boarisch'
-  },
-  'bat-smg': {
-    english_title: 'Samogitian',
-    direction: 'ltr',
-    local_title: 'Žemaitėška'
-  },
-  bcl: {
-    english_title: 'Bikol',
-    direction: 'ltr',
-    local_title: 'Bikol'
-  },
-  be: {
-    english_title: 'Belarusian',
-    direction: 'ltr',
-    local_title: 'Беларуская'
-  },
-  'be-x-old': {
-    english_title: 'Belarusian',
-    direction: '(Taraškievica)',
-    local_title: 'ltr'
-  },
-  bg: {
-    english_title: 'Bulgarian',
-    direction: 'ltr',
-    local_title: 'Български'
-  },
-  bh: {
-    english_title: 'Bihari',
-    direction: 'ltr',
-    local_title: 'भोजपुरी'
-  },
-  bi: {
-    english_title: 'Bislama',
-    direction: 'ltr',
-    local_title: 'Bislama'
-  },
-  bm: {
-    english_title: 'Bambara',
-    direction: 'ltr',
-    local_title: 'Bamanankan'
-  },
-  bn: {
-    english_title: 'Bengali',
-    direction: 'ltr',
-    local_title: 'বাংলা'
-  },
-  bo: {
-    english_title: 'Tibetan',
-    direction: 'ltr',
-    local_title: 'བོད་ཡིག'
-  },
-  bpy: {
-    english_title: 'Bishnupriya',
-    direction: 'Manipuri',
-    local_title: 'ltr'
-  },
-  br: {
-    english_title: 'Breton',
-    direction: 'ltr',
-    local_title: 'Brezhoneg'
-  },
-  bs: {
-    english_title: 'Bosnian',
-    direction: 'ltr',
-    local_title: 'Bosanski'
-  },
-  bug: {
-    english_title: 'Buginese',
-    direction: 'ltr',
-    local_title: 'ᨅᨔ'
-  },
-  bxr: {
-    english_title: 'Buriat',
-    direction: '(Russia)',
-    local_title: 'ltr'
-  },
-  ca: {
-    english_title: 'Catalan',
-    direction: 'ltr',
-    local_title: 'Català'
-  },
-  cdo: {
-    english_title: 'Min',
-    direction: 'Dong',
-    local_title: 'Chinese'
-  },
-  ce: {
-    english_title: 'Chechen',
-    direction: 'ltr',
-    local_title: 'Нохчийн'
-  },
-  ceb: {
-    english_title: 'Cebuano',
-    direction: 'ltr',
-    local_title: 'Sinugboanong'
-  },
-  ch: {
-    english_title: 'Chamorro',
-    direction: 'ltr',
-    local_title: 'Chamoru'
-  },
-  cho: {
-    english_title: 'Choctaw',
-    direction: 'ltr',
-    local_title: 'Choctaw'
-  },
-  chr: {
-    english_title: 'Cherokee',
-    direction: 'ltr',
-    local_title: 'ᏣᎳᎩ'
-  },
-  chy: {
-    english_title: 'Cheyenne',
-    direction: 'ltr',
-    local_title: 'Tsetsêhestâhese'
-  },
-  co: {
-    english_title: 'Corsican',
-    direction: 'ltr',
-    local_title: 'Corsu'
-  },
-  cr: {
-    english_title: 'Cree',
-    direction: 'ltr',
-    local_title: 'Nehiyaw'
-  },
-  cs: {
-    english_title: 'Czech',
-    direction: 'ltr',
-    local_title: 'Česky'
-  },
-  csb: {
-    english_title: 'Kashubian',
-    direction: 'ltr',
-    local_title: 'Kaszëbsczi'
-  },
-  cu: {
-    english_title: 'Old',
-    direction: 'Church',
-    local_title: 'Slavonic'
-  },
-  cv: {
-    english_title: 'Chuvash',
-    direction: 'ltr',
-    local_title: 'Чăваш'
-  },
-  cy: {
-    english_title: 'Welsh',
-    direction: 'ltr',
-    local_title: 'Cymraeg'
-  },
-  da: {
-    english_title: 'Danish',
-    direction: 'ltr',
-    local_title: 'Dansk'
-  },
-  de: {
-    english_title: 'German',
-    direction: 'ltr',
-    local_title: 'Deutsch'
-  },
-  diq: {
-    english_title: 'Dimli',
-    direction: 'ltr',
-    local_title: 'Zazaki'
-  },
-  dsb: {
-    english_title: 'Lower',
-    direction: 'Sorbian',
-    local_title: 'ltr'
-  },
-  dv: {
-    english_title: 'Divehi',
-    direction: 'rtl',
-    local_title: 'ދިވެހިބަސް'
-  },
-  dz: {
-    english_title: 'Dzongkha',
-    direction: 'ltr',
-    local_title: 'ཇོང་ཁ'
-  },
-  ee: {
-    english_title: 'Ewe',
-    direction: 'ltr',
-    local_title: 'Ɛʋɛ'
-  },
-  far: {
-    english_title: 'Farsi',
-    direction: 'ltr',
-    local_title: 'فارسی'
-  },
-  el: {
-    english_title: 'Greek',
-    direction: 'ltr',
-    local_title: 'Ελληνικά'
-  },
-  en: {
-    english_title: 'English',
-    direction: 'ltr',
-    local_title: 'English'
-  },
-  eo: {
-    english_title: 'Esperanto',
-    direction: 'ltr',
-    local_title: 'Esperanto'
-  },
-  es: {
-    english_title: 'Spanish',
-    direction: 'ltr',
-    local_title: 'Español'
-  },
-  et: {
-    english_title: 'Estonian',
-    direction: 'ltr',
-    local_title: 'Eesti'
-  },
-  eu: {
-    english_title: 'Basque',
-    direction: 'ltr',
-    local_title: 'Euskara'
-  },
-  ext: {
-    english_title: 'Extremaduran',
-    direction: 'ltr',
-    local_title: 'Estremeñu'
-  },
-  ff: {
-    english_title: 'Peul',
-    direction: 'ltr',
-    local_title: 'Fulfulde'
-  },
-  fi: {
-    english_title: 'Finnish',
-    direction: 'ltr',
-    local_title: 'Suomi'
-  },
-  'fiu-vro': {
-    english_title: 'Võro',
-    direction: 'ltr',
-    local_title: 'Võro'
-  },
-  fj: {
-    english_title: 'Fijian',
-    direction: 'ltr',
-    local_title: 'Na'
-  },
-  fo: {
-    english_title: 'Faroese',
-    direction: 'ltr',
-    local_title: 'Føroyskt'
-  },
-  fr: {
-    english_title: 'French',
-    direction: 'ltr',
-    local_title: 'Français'
-  },
-  frp: {
-    english_title: 'Arpitan',
-    direction: 'ltr',
-    local_title: 'Arpitan'
-  },
-  fur: {
-    english_title: 'Friulian',
-    direction: 'ltr',
-    local_title: 'Furlan'
-  },
-  fy: {
-    english_title: 'West',
-    direction: 'Frisian',
-    local_title: 'ltr'
-  },
-  ga: {
-    english_title: 'Irish',
-    direction: 'ltr',
-    local_title: 'Gaeilge'
-  },
-  gan: {
-    english_title: 'Gan',
-    direction: 'Chinese',
-    local_title: 'ltr'
-  },
-  gd: {
-    english_title: 'Scottish',
-    direction: 'Gaelic',
-    local_title: 'ltr'
-  },
-  gil: {
-    english_title: 'Gilbertese',
-    direction: 'ltr',
-    local_title: 'Taetae'
-  },
-  gl: {
-    english_title: 'Galician',
-    direction: 'ltr',
-    local_title: 'Galego'
-  },
-  gn: {
-    english_title: 'Guarani',
-    direction: 'ltr',
-    local_title: "Avañe'ẽ"
-  },
-  got: {
-    english_title: 'Gothic',
-    direction: 'ltr',
-    local_title: 'gutisk'
-  },
-  gu: {
-    english_title: 'Gujarati',
-    direction: 'ltr',
-    local_title: 'ગુજરાતી'
-  },
-  gv: {
-    english_title: 'Manx',
-    direction: 'ltr',
-    local_title: 'Gaelg'
-  },
-  ha: {
-    english_title: 'Hausa',
-    direction: 'rtl',
-    local_title: 'هَوُسَ'
-  },
-  hak: {
-    english_title: 'Hakka',
-    direction: 'Chinese',
-    local_title: 'ltr'
-  },
-  haw: {
-    english_title: 'Hawaiian',
-    direction: 'ltr',
-    local_title: 'Hawai`i'
-  },
-  he: {
-    english_title: 'Hebrew',
-    direction: 'rtl',
-    local_title: 'עברית'
-  },
-  hi: {
-    english_title: 'Hindi',
-    direction: 'ltr',
-    local_title: 'हिन्दी'
-  },
-  ho: {
-    english_title: 'Hiri',
-    direction: 'Motu',
-    local_title: 'ltr'
-  },
-  hr: {
-    english_title: 'Croatian',
-    direction: 'ltr',
-    local_title: 'Hrvatski'
-  },
-  ht: {
-    english_title: 'Haitian',
-    direction: 'ltr',
-    local_title: 'Krèyol'
-  },
-  hu: {
-    english_title: 'Hungarian',
-    direction: 'ltr',
-    local_title: 'Magyar'
-  },
-  hy: {
-    english_title: 'Armenian',
-    direction: 'ltr',
-    local_title: 'Հայերեն'
-  },
-  hz: {
-    english_title: 'Herero',
-    direction: 'ltr',
-    local_title: 'Otsiherero'
-  },
-  ia: {
-    english_title: 'Interlingua',
-    direction: 'ltr',
-    local_title: 'Interlingua'
-  },
-  id: {
-    english_title: 'Indonesian',
-    direction: 'ltr',
-    local_title: 'Bahasa'
-  },
-  ie: {
-    english_title: 'Interlingue',
-    direction: 'ltr',
-    local_title: 'Interlingue'
-  },
-  ig: {
-    english_title: 'Igbo',
-    direction: 'ltr',
-    local_title: 'Igbo'
-  },
-  ii: {
-    english_title: 'Sichuan',
-    direction: 'Yi',
-    local_title: 'ltr'
-  },
-  ik: {
-    english_title: 'Inupiak',
-    direction: 'ltr',
-    local_title: 'Iñupiak'
-  },
-  ilo: {
-    english_title: 'Ilokano',
-    direction: 'ltr',
-    local_title: 'Ilokano'
-  },
-  io: {
-    english_title: 'Ido',
-    direction: 'ltr',
-    local_title: 'Ido'
-  },
-  is: {
-    english_title: 'Icelandic',
-    direction: 'ltr',
-    local_title: 'Íslenska'
-  },
-  it: {
-    english_title: 'Italian',
-    direction: 'ltr',
-    local_title: 'Italiano'
-  },
-  iu: {
-    english_title: 'Inuktitut',
-    direction: 'ltr',
-    local_title: 'ᐃᓄᒃᑎᑐᑦ'
-  },
-  ja: {
-    english_title: 'Japanese',
-    direction: 'ltr',
-    local_title: '日本語'
-  },
-  jbo: {
-    english_title: 'Lojban',
-    direction: 'ltr',
-    local_title: 'Lojban'
-  },
-  jv: {
-    english_title: 'Javanese',
-    direction: 'ltr',
-    local_title: 'Basa'
-  },
-  ka: {
-    english_title: 'Georgian',
-    direction: 'ltr',
-    local_title: 'ქართული'
-  },
-  kg: {
-    english_title: 'Kongo',
-    direction: 'ltr',
-    local_title: 'KiKongo'
-  },
-  ki: {
-    english_title: 'Kikuyu',
-    direction: 'ltr',
-    local_title: 'Gĩkũyũ'
-  },
-  kj: {
-    english_title: 'Kuanyama',
-    direction: 'ltr',
-    local_title: 'Kuanyama'
-  },
-  kk: {
-    english_title: 'Kazakh',
-    direction: 'ltr',
-    local_title: 'Қазақша'
-  },
-  kl: {
-    english_title: 'Greenlandic',
-    direction: 'ltr',
-    local_title: 'Kalaallisut'
-  },
-  km: {
-    english_title: 'Cambodian',
-    direction: 'ltr',
-    local_title: 'ភាសាខ្មែរ'
-  },
-  kn: {
-    english_title: 'Kannada',
-    direction: 'ltr',
-    local_title: 'ಕನ್ನಡ'
-  },
-  khw: {
-    english_title: 'Khowar',
-    direction: 'rtl',
-    local_title: 'کھوار'
-  },
-  ko: {
-    english_title: 'Korean',
-    direction: 'ltr',
-    local_title: '한국어'
-  },
-  kr: {
-    english_title: 'Kanuri',
-    direction: 'ltr',
-    local_title: 'Kanuri'
-  },
-  ks: {
-    english_title: 'Kashmiri',
-    direction: 'rtl',
-    local_title: 'कश्मीरी'
-  },
-  ksh: {
-    english_title: 'Ripuarian',
-    direction: 'ltr',
-    local_title: 'Ripoarisch'
-  },
-  ku: {
-    english_title: 'Kurdish',
-    direction: 'rtl',
-    local_title: 'Kurdî'
-  },
-  kv: {
-    english_title: 'Komi',
-    direction: 'ltr',
-    local_title: 'Коми'
-  },
-  kw: {
-    english_title: 'Cornish',
-    direction: 'ltr',
-    local_title: 'Kernewek'
-  },
-  ky: {
-    english_title: 'Kirghiz',
-    direction: 'ltr',
-    local_title: 'Kırgızca'
-  },
-  la: {
-    english_title: 'Latin',
-    direction: 'ltr',
-    local_title: 'Latina'
-  },
-  lad: {
-    english_title: 'Ladino',
-    direction: 'ltr',
-    local_title: 'Dzhudezmo'
-  },
-  lan: {
-    english_title: 'Lango',
-    direction: 'ltr',
-    local_title: 'Leb'
-  },
-  lb: {
-    english_title: 'Luxembourgish',
-    direction: 'ltr',
-    local_title: 'Lëtzebuergesch'
-  },
-  lg: {
-    english_title: 'Ganda',
-    direction: 'ltr',
-    local_title: 'Luganda'
-  },
-  li: {
-    english_title: 'Limburgian',
-    direction: 'ltr',
-    local_title: 'Limburgs'
-  },
-  lij: {
-    english_title: 'Ligurian',
-    direction: 'ltr',
-    local_title: 'Líguru'
-  },
-  lmo: {
-    english_title: 'Lombard',
-    direction: 'ltr',
-    local_title: 'Lumbaart'
-  },
-  ln: {
-    english_title: 'Lingala',
-    direction: 'ltr',
-    local_title: 'Lingála'
-  },
-  lo: {
-    english_title: 'Laotian',
-    direction: 'ltr',
-    local_title: 'ລາວ'
-  },
-  lt: {
-    english_title: 'Lithuanian',
-    direction: 'ltr',
-    local_title: 'Lietuvių'
-  },
-  lv: {
-    english_title: 'Latvian',
-    direction: 'ltr',
-    local_title: 'Latviešu'
-  },
-  'map-bms': {
-    english_title: 'Banyumasan',
-    direction: 'ltr',
-    local_title: 'Basa'
-  },
-  mg: {
-    english_title: 'Malagasy',
-    direction: 'ltr',
-    local_title: 'Malagasy'
-  },
-  man: {
-    english_title: 'Mandarin',
-    direction: 'ltr',
-    local_title: '官話'
-  },
-  mh: {
-    english_title: 'Marshallese',
-    direction: 'ltr',
-    local_title: 'Kajin'
-  },
-  mi: {
-    english_title: 'Maori',
-    direction: 'ltr',
-    local_title: 'Māori'
-  },
-  min: {
-    english_title: 'Minangkabau',
-    direction: 'ltr',
-    local_title: 'Minangkabau'
-  },
-  mk: {
-    english_title: 'Macedonian',
-    direction: 'ltr',
-    local_title: 'Македонски'
-  },
-  ml: {
-    english_title: 'Malayalam',
-    direction: 'ltr',
-    local_title: 'മലയാളം'
-  },
-  mn: {
-    english_title: 'Mongolian',
-    direction: 'ltr',
-    local_title: 'Монгол'
-  },
-  mo: {
-    english_title: 'Moldovan',
-    direction: 'ltr',
-    local_title: 'Moldovenească'
-  },
-  mr: {
-    english_title: 'Marathi',
-    direction: 'ltr',
-    local_title: 'मराठी'
-  },
-  ms: {
-    english_title: 'Malay',
-    direction: 'ltr',
-    local_title: 'Bahasa'
-  },
-  mt: {
-    english_title: 'Maltese',
-    direction: 'ltr',
-    local_title: 'bil-Malti'
-  },
-  mus: {
-    english_title: 'Creek',
-    direction: 'ltr',
-    local_title: 'Muskogee'
-  },
-  my: {
-    english_title: 'Burmese',
-    direction: 'ltr',
-    local_title: 'Myanmasa'
-  },
-  na: {
-    english_title: 'Nauruan',
-    direction: 'ltr',
-    local_title: 'Dorerin'
-  },
-  nah: {
-    english_title: 'Nahuatl',
-    direction: 'ltr',
-    local_title: 'Nahuatl'
-  },
-  nap: {
-    english_title: 'Neapolitan',
-    direction: 'ltr',
-    local_title: 'Nnapulitano'
-  },
-  nd: {
-    english_title: 'North',
-    direction: 'Ndebele',
-    local_title: 'ltr'
-  },
-  nds: {
-    english_title: 'Low German',
-    direction: 'ltr',
-    local_title: 'Plattdüütsch'
-  },
-  'nds-nl': {
-    english_title: 'Dutch',
-    direction: 'Low',
-    local_title: 'Saxon'
-  },
-  ne: {
-    english_title: 'Nepali',
-    direction: 'ltr',
-    local_title: 'नेपाली'
-  },
-  new: {
-    english_title: 'Newar',
-    direction: 'ltr',
-    local_title: 'नेपालभाषा'
-  },
-  ng: {
-    english_title: 'Ndonga',
-    direction: 'ltr',
-    local_title: 'Oshiwambo'
-  },
-  nl: {
-    english_title: 'Dutch',
-    direction: 'ltr',
-    local_title: 'Nederlands'
-  },
-  nn: {
-    english_title: 'Norwegian',
-    direction: 'Nynorsk',
-    local_title: 'ltr'
-  },
-  no: {
-    english_title: 'Norwegian',
-    direction: 'ltr',
-    local_title: 'Norsk'
-  },
-  nr: {
-    english_title: 'South',
-    direction: 'Ndebele',
-    local_title: 'ltr'
-  },
-  nso: {
-    english_title: 'Northern',
-    direction: 'Sotho',
-    local_title: 'ltr'
-  },
-  nrm: {
-    english_title: 'Norman',
-    direction: 'ltr',
-    local_title: 'Nouormand'
-  },
-  nv: {
-    english_title: 'Navajo',
-    direction: 'ltr',
-    local_title: 'Diné'
-  },
-  ny: {
-    english_title: 'Chichewa',
-    direction: 'ltr',
-    local_title: 'Chi-Chewa'
-  },
-  oc: {
-    english_title: 'Occitan',
-    direction: 'ltr',
-    local_title: 'Occitan'
-  },
-  oj: {
-    english_title: 'Ojibwa',
-    direction: 'ltr',
-    local_title: 'ᐊᓂᔑᓈᐯᒧᐎᓐ'
-  },
-  om: {
-    english_title: 'Oromo',
-    direction: 'ltr',
-    local_title: 'Oromoo'
-  },
-  or: {
-    english_title: 'Oriya',
-    direction: 'ltr',
-    local_title: 'ଓଡ଼ିଆ'
-  },
-  os: {
-    english_title: 'Ossetian',
-    direction: 'ltr',
-    local_title: 'Иронау'
-  },
-  pa: {
-    english_title: 'Panjabi',
-    direction: 'ltr',
-    local_title: 'ਪੰਜਾਬੀ'
-  },
-  pag: {
-    english_title: 'Pangasinan',
-    direction: 'ltr',
-    local_title: 'Pangasinan'
-  },
-  pam: {
-    english_title: 'Kapampangan',
-    direction: 'ltr',
-    local_title: 'Kapampangan'
-  },
-  pap: {
-    english_title: 'Papiamentu',
-    direction: 'ltr',
-    local_title: 'Papiamentu'
-  },
-  pdc: {
-    english_title: 'Pennsylvania',
-    direction: 'German',
-    local_title: 'ltr'
-  },
-  pi: {
-    english_title: 'Pali',
-    direction: 'ltr',
-    local_title: 'Pāli'
-  },
-  pih: {
-    english_title: 'Norfolk',
-    direction: 'ltr',
-    local_title: 'Norfuk'
-  },
-  pl: {
-    english_title: 'Polish',
-    direction: 'ltr',
-    local_title: 'Polski'
-  },
-  pms: {
-    english_title: 'Piedmontese',
-    direction: 'ltr',
-    local_title: 'Piemontèis'
-  },
-  ps: {
-    english_title: 'Pashto',
-    direction: 'rtl',
-    local_title: 'پښتو'
-  },
-  pt: {
-    english_title: 'Portuguese',
-    direction: 'ltr',
-    local_title: 'Português'
-  },
-  qu: {
-    english_title: 'Quechua',
-    direction: 'ltr',
-    local_title: 'Runa'
-  },
-  rm: {
-    english_title: 'Raeto',
-    direction: 'Romance',
-    local_title: 'ltr'
-  },
-  rmy: {
-    english_title: 'Romani',
-    direction: 'ltr',
-    local_title: 'Romani'
-  },
-  rn: {
-    english_title: 'Kirundi',
-    direction: 'ltr',
-    local_title: 'Kirundi'
-  },
-  ro: {
-    english_title: 'Romanian',
-    direction: 'ltr',
-    local_title: 'Română'
-  },
-  'roa-rup': {
-    english_title: 'Aromanian',
-    direction: 'ltr',
-    local_title: 'Armâneashti'
-  },
-  ru: {
-    english_title: 'Russian',
-    direction: 'ltr',
-    local_title: 'Русский'
-  },
-  rw: {
-    english_title: 'Rwandi',
-    direction: 'ltr',
-    local_title: 'Kinyarwandi'
-  },
-  sa: {
-    english_title: 'Sanskrit',
-    direction: 'ltr',
-    local_title: 'संस्कृतम्'
-  },
-  sc: {
-    english_title: 'Sardinian',
-    direction: 'ltr',
-    local_title: 'Sardu'
-  },
-  scn: {
-    english_title: 'Sicilian',
-    direction: 'ltr',
-    local_title: 'Sicilianu'
-  },
-  sco: {
-    english_title: 'Scots',
-    direction: 'ltr',
-    local_title: 'Scots'
-  },
-  sd: {
-    english_title: 'Sindhi',
-    direction: 'ltr',
-    local_title: 'सिनधि'
-  },
-  se: {
-    english_title: 'Northern',
-    direction: 'Sami',
-    local_title: 'ltr'
-  },
-  sg: {
-    english_title: 'Sango',
-    direction: 'ltr',
-    local_title: 'Sängö'
-  },
-  sh: {
-    english_title: 'Serbo-Croatian',
-    direction: 'ltr',
-    local_title: 'Srpskohrvatski'
-  },
-  si: {
-    english_title: 'Sinhalese',
-    direction: 'ltr',
-    local_title: 'සිංහල'
-  },
-  simple: {
-    english_title: 'Simple',
-    direction: 'English',
-    local_title: 'ltr'
-  },
-  sk: {
-    english_title: 'Slovak',
-    direction: 'ltr',
-    local_title: 'Slovenčina'
-  },
-  sl: {
-    english_title: 'Slovenian',
-    direction: 'ltr',
-    local_title: 'Slovenščina'
-  },
-  sm: {
-    english_title: 'Samoan',
-    direction: 'ltr',
-    local_title: 'Gagana'
-  },
-  sn: {
-    english_title: 'Shona',
-    direction: 'ltr',
-    local_title: 'chiShona'
-  },
-  so: {
-    english_title: 'Somalia',
-    direction: 'ltr',
-    local_title: 'Soomaaliga'
-  },
-  sq: {
-    english_title: 'Albanian',
-    direction: 'ltr',
-    local_title: 'Shqip'
-  },
-  sr: {
-    english_title: 'Serbian',
-    direction: 'ltr',
-    local_title: 'Српски'
-  },
-  ss: {
-    english_title: 'Swati',
-    direction: 'ltr',
-    local_title: 'SiSwati'
-  },
-  st: {
-    english_title: 'Southern',
-    direction: 'Sotho',
-    local_title: 'ltr'
-  },
-  su: {
-    english_title: 'Sundanese',
-    direction: 'ltr',
-    local_title: 'Basa'
-  },
-  sv: {
-    english_title: 'Swedish',
-    direction: 'ltr',
-    local_title: 'Svenska'
-  },
-  sw: {
-    english_title: 'Swahili',
-    direction: 'ltr',
-    local_title: 'Kiswahili'
-  },
-  ta: {
-    english_title: 'Tamil',
-    direction: 'ltr',
-    local_title: 'தமிழ்'
-  },
-  te: {
-    english_title: 'Telugu',
-    direction: 'ltr',
-    local_title: 'తెలుగు'
-  },
-  tet: {
-    english_title: 'Tetum',
-    direction: 'ltr',
-    local_title: 'Tetun'
-  },
-  tg: {
-    english_title: 'Tajik',
-    direction: 'ltr',
-    local_title: 'Тоҷикӣ'
-  },
-  th: {
-    english_title: 'Thai',
-    direction: 'ltr',
-    local_title: 'ไทย'
-  },
-  ti: {
-    english_title: 'Tigrinya',
-    direction: 'ltr',
-    local_title: 'ትግርኛ'
-  },
-  tk: {
-    english_title: 'Turkmen',
-    direction: 'ltr',
-    local_title: 'Туркмен'
-  },
-  tl: {
-    english_title: 'Tagalog',
-    direction: 'ltr',
-    local_title: 'Tagalog'
-  },
-  tlh: {
-    english_title: 'Klingon',
-    direction: 'ltr',
-    local_title: 'tlhIngan-Hol'
-  },
-  tn: {
-    english_title: 'Tswana',
-    direction: 'ltr',
-    local_title: 'Setswana'
-  },
-  to: {
-    english_title: 'Tonga',
-    direction: 'ltr',
-    local_title: 'Lea'
-  },
-  tpi: {
-    english_title: 'Tok',
-    direction: 'Pisin',
-    local_title: 'ltr'
-  },
-  tr: {
-    english_title: 'Turkish',
-    direction: 'ltr',
-    local_title: 'Türkçe'
-  },
-  ts: {
-    english_title: 'Tsonga',
-    direction: 'ltr',
-    local_title: 'Xitsonga'
-  },
-  tt: {
-    english_title: 'Tatar',
-    direction: 'ltr',
-    local_title: 'Tatarça'
-  },
-  tum: {
-    english_title: 'Tumbuka',
-    direction: 'ltr',
-    local_title: 'chiTumbuka'
-  },
-  tw: {
-    english_title: 'Twi',
-    direction: 'ltr',
-    local_title: 'Twi'
-  },
-  ty: {
-    english_title: 'Tahitian',
-    direction: 'ltr',
-    local_title: 'Reo'
-  },
-  udm: {
-    english_title: 'Udmurt',
-    direction: 'ltr',
-    local_title: 'Удмурт'
-  },
-  ug: {
-    english_title: 'Uyghur',
-    direction: 'ltr',
-    local_title: 'Uyƣurqə'
-  },
-  uk: {
-    english_title: 'Ukrainian',
-    direction: 'ltr',
-    local_title: 'Українська'
-  },
-  ur: {
-    english_title: 'Urdu',
-    direction: 'rtl',
-    local_title: 'اردو'
-  },
-  uz: {
-    english_title: 'Uzbek',
-    direction: 'ltr',
-    local_title: 'Ўзбек'
-  },
-  ve: {
-    english_title: 'Venda',
-    direction: 'ltr',
-    local_title: 'Tshivenḓa'
-  },
-  vi: {
-    english_title: 'Vietnamese',
-    direction: 'ltr',
-    local_title: 'Việtnam'
-  },
-  vec: {
-    english_title: 'Venetian',
-    direction: 'ltr',
-    local_title: 'Vèneto'
-  },
-  vls: {
-    english_title: 'West',
-    direction: 'Flemish',
-    local_title: 'ltr'
-  },
-  vo: {
-    english_title: 'Volapük',
-    direction: 'ltr',
-    local_title: 'Volapük'
-  },
-  wa: {
-    english_title: 'Walloon',
-    direction: 'ltr',
-    local_title: 'Walon'
-  },
-  war: {
-    english_title: 'Waray-Waray',
-    direction: 'ltr',
-    local_title: 'Winaray'
-  },
-  wo: {
-    english_title: 'Wolof',
-    direction: 'ltr',
-    local_title: 'Wollof'
-  },
-  xal: {
-    english_title: 'Kalmyk',
-    direction: 'ltr',
-    local_title: 'Хальмг'
-  },
-  xh: {
-    english_title: 'Xhosa',
-    direction: 'ltr',
-    local_title: 'isiXhosa'
-  },
-  yi: {
-    english_title: 'Yiddish',
-    direction: 'rtl',
-    local_title: 'ייִדיש'
-  },
-  yo: {
-    english_title: 'Yoruba',
-    direction: 'ltr',
-    local_title: 'Yorùbá'
-  },
-  za: {
-    english_title: 'Zhuang',
-    direction: 'ltr',
-    local_title: 'Cuengh'
-  },
-  zh: {
-    english_title: 'Chinese',
-    direction: 'ltr',
-    local_title: '中文'
-  },
-  'zh-classical': {
-    english_title: 'Classical',
-    direction: 'Chinese',
-    local_title: 'ltr'
-  },
-  'zh-min-nan': {
-    english_title: 'Minnan',
-    direction: 'ltr',
-    local_title: 'Bân-lâm-gú'
-  },
-  'zh-yue': {
-    english_title: 'Cantonese',
-    direction: 'ltr',
-    local_title: '粵語'
-  },
-  zu: {
-    english_title: 'Zulu',
-    direction: 'ltr',
-    local_title: 'isiZulu'
-  }
-};
-
-},{}],7:[function(_dereq_,module,exports){
 'use strict';
 
 //from https://en.wikipedia.org/w/api.php?action=sitematrix&format=json
@@ -4740,10 +3463,11 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports = site_map;
 }
 
-},{}],8:[function(_dereq_,module,exports){
+},{}],7:[function(_dereq_,module,exports){
 'use strict';
 
 var parse = _dereq_('./index');
+var sectionMap = _dereq_('./_sectionMap');
 var toMarkdown = _dereq_('../output/markdown');
 var toHtml = _dereq_('../output/html');
 var toJSON = _dereq_('../output/json');
@@ -4762,8 +3486,13 @@ var defaults = {
 //
 var Document = function Document(wiki, options) {
   this.options = options || {};
-  this.wiki = wiki;
   this.data = parse(wiki, this.options);
+
+  // preserve wiki sources in Document to access
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false, // hide it in console.logs
+    value: wiki
+  });
 };
 
 var methods = {
@@ -4779,19 +3508,26 @@ var methods = {
     }
     return guess;
   },
+  // allow reparsing after alteration of downloaded wiki source
+  reparse: function reparse() {
+    this.data = parse(this.wiki, this.options);
+  },
+  wikitext: function wikitext() {
+    return this.wiki;
+  },
   isRedirect: function isRedirect() {
     return this.data.type === 'redirect';
   },
   isDisambiguation: function isDisambiguation() {
     return this.data.type === 'disambiguation';
   },
-  categories: function categories(n) {
-    if (typeof n === 'number') {
-      return this.data.categories[n];
+  categories: function categories(clue) {
+    if (typeof clue === 'number') {
+      return this.data.categories[clue];
     }
     return this.data.categories || [];
   },
-  sections: function sections(n) {
+  sections: function sections(clue) {
     var _this = this;
 
     var arr = this.data.sections || [];
@@ -4799,14 +3535,14 @@ var methods = {
       return sec.doc = _this;
     });
     //grab a specific section, by its title
-    if (typeof n === 'string') {
-      var str = n.toLowerCase().trim();
+    if (typeof clue === 'string') {
+      var str = clue.toLowerCase().trim();
       return arr.find(function (s) {
         return s.title().toLowerCase() === str;
       });
     }
-    if (typeof n === 'number') {
-      return arr[n];
+    if (typeof clue === 'number') {
+      return arr[clue];
     }
     return arr;
   },
@@ -4822,67 +3558,36 @@ var methods = {
     }
     return arr;
   },
-  images: function images(n) {
-    var arr = [];
+  images: function images(clue) {
+    var arr = sectionMap(this, 'images', null);
     //grab image from infobox, first
     this.infoboxes().forEach(function (info) {
       if (info.data.image) {
-        arr.push(info.data.image.data);
+        arr.unshift(info.data.image.data); //put it at the top
       }
     });
-    this.sections().forEach(function (sec) {
-      sec.images().forEach(function (img) {
-        arr.push(img);
-      });
-    });
-    if (typeof n === 'number') {
-      return arr[n];
+    if (typeof clue === 'number') {
+      return arr[clue];
     }
     return arr;
   },
-  links: function links(n) {
-    var arr = [];
-    this.sections().forEach(function (sec) {
-      sec.links().forEach(function (l) {
-        arr.push(l);
-      });
-    });
-    if (typeof n === 'number') {
-      return arr[n];
-    }
-    return arr;
+  links: function links(clue) {
+    return sectionMap(this, 'links', clue);
   },
-  tables: function tables(n) {
-    var arr = [];
-    this.sections().forEach(function (sec) {
-      if (sec.tables()) {
-        sec.tables().forEach(function (t) {
-          arr.push(t);
-        });
-      }
-    });
-    if (typeof n === 'number') {
-      return arr[n];
-    }
-    return arr;
+  tables: function tables(clue) {
+    return sectionMap(this, 'tables', clue);
   },
-  citations: function citations(n) {
-    if (typeof n === 'number') {
-      return this.data.citations[n];
-    }
-    return this.data.citations || [];
+  templates: function templates(clue) {
+    return sectionMap(this, 'templates', clue);
   },
-  infoboxes: function infoboxes(n) {
-    if (typeof n === 'number') {
-      return this.data.infoboxes[n];
-    }
-    return this.data.infoboxes || [];
+  infoboxes: function infoboxes(clue) {
+    return sectionMap(this, 'infoboxes', clue);
   },
-  coordinates: function coordinates(n) {
-    if (typeof n === 'number') {
-      return this.data.coordinates[n];
-    }
-    return this.data.coordinates || [];
+  citations: function citations(clue) {
+    return sectionMap(this, 'citations', clue);
+  },
+  coordinates: function coordinates(clue) {
+    return sectionMap(this, 'coordinates', clue);
   },
   plaintext: function plaintext(options) {
     options = setDefaults(options, defaults);
@@ -4941,10 +3646,36 @@ Document.prototype.isDisambig = Document.prototype.isDisambiguation;
 Document.prototype.toJson = Document.prototype.json;
 Document.prototype.text = Document.prototype.plaintext;
 Document.prototype.references = Document.prototype.citations;
+Document.prototype.original = Document.prototype.wikitext;
+Document.prototype.wikiscript = Document.prototype.wikitext;
 
 module.exports = Document;
 
-},{"../lib/setDefaults":28,"../output/html":32,"../output/json":37,"../output/latex":40,"../output/markdown":45,"./index":11}],9:[function(_dereq_,module,exports){
+},{"../lib/setDefaults":22,"../output/html":26,"../output/json":31,"../output/latex":34,"../output/markdown":39,"./_sectionMap":8,"./index":11}],8:[function(_dereq_,module,exports){
+'use strict';
+
+//helper for looping around all section of a document
+var sectionMap = function sectionMap(doc, fn, clue) {
+  var arr = [];
+  doc.sections().forEach(function (sec) {
+    var list = [];
+    if (typeof clue === 'string') {
+      list = sec[fn](clue);
+    } else {
+      list = sec[fn]();
+    }
+    list.forEach(function (t) {
+      arr.push(t);
+    });
+  });
+  if (typeof clue === 'number') {
+    return arr[clue];
+  }
+  return arr;
+};
+module.exports = sectionMap;
+
+},{}],9:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../data/i18n');
@@ -4991,7 +3722,7 @@ var disambig = _dereq_('./disambig');
 var preProcess = _dereq_('./preProcess');
 var parse = {
   section: _dereq_('../section'),
-  templates: _dereq_('./templates'),
+  // templates: require('./templates'),
   categories: _dereq_('./categories')
 };
 
@@ -5002,7 +3733,6 @@ var main = function main(wiki, options) {
   var r = {
     type: 'page',
     sections: [],
-    infoboxes: [],
     interwiki: {},
     categories: [],
     coordinates: [],
@@ -5029,123 +3759,21 @@ var main = function main(wiki, options) {
   //give ourselves a little head-start
   wiki = preProcess(r, wiki, options);
   //pull-out infoboxes and stuff
-  wiki = parse.templates(r, wiki, options);
+  // wiki = parse.templates(r, wiki, options);
   //pull-out [[category:whatevers]]
-  if (options.categories !== false) {
-    wiki = parse.categories(r, wiki);
-  }
+  wiki = parse.categories(r, wiki);
   //parse all the headings, and their texts/sentences
-  r.sections = parse.section(r, wiki, options) || [];
+  r.sections = parse.section(wiki, options) || [];
 
   return r;
 };
 
 module.exports = main;
 
-},{"../section":53,"./categories":9,"./disambig":10,"./preProcess":14,"./redirects":17,"./templates":19}],12:[function(_dereq_,module,exports){
-'use strict';
-
-//converts DMS (decimal-minute-second) geo format to lat/lng format.
-//major thank you to https://github.com/gmaclennan/parse-dms
-//and https://github.com/WSDOT-GIS/dms-js 👏
-
-//accepts an array of descending Degree, Minute, Second values, with a hemisphere at the end
-//must have N/S/E/W as last thing
-function parseDms(arr) {
-  var hemisphere = arr.pop();
-  var degrees = Number(arr[0] || 0);
-  var minutes = Number(arr[1] || 0);
-  var seconds = Number(arr[2] || 0);
-  if (typeof hemisphere !== 'string' || isNaN(degrees)) {
-    return null;
-  }
-  var sign = 1;
-  if (/[SW]/i.test(hemisphere)) {
-    sign = -1;
-  }
-  var decDeg = sign * (degrees + minutes / 60 + seconds / 3600);
-  return decDeg;
-}
-module.exports = parseDms;
-// console.log(parseDms([57, 18, 22, 'N']));
-// console.log(parseDms([4, 27, 32, 'W']));
-
-},{}],13:[function(_dereq_,module,exports){
-'use strict';
-
-var convertGeo = _dereq_('./convertGeo');
-// {{coord|latitude|longitude|coordinate parameters|template parameters}}
-// {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
-// {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
-// {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
-
-var hemispheres = {
-  n: true,
-  s: true,
-  w: true,
-  e: true
-};
-
-var round = function round(num) {
-  if (typeof num !== 'number') {
-    return num;
-  }
-  var places = 100000;
-  return Math.round(num * places) / places;
-};
-
-var parseCoord = function parseCoord(str) {
-  var obj = {
-    lat: null,
-    lon: null
-  };
-  var arr = str.split('|');
-  //turn numbers into numbers, normalize N/s
-  var nums = [];
-  for (var i = 0; i < arr.length; i += 1) {
-    var s = arr[i].trim();
-    //make it a number
-    var num = parseFloat(s);
-    if (num || num === 0) {
-      arr[i] = num;
-      nums.push(num);
-    } else if (s.match(/^region:/i)) {
-      obj.region = s.replace(/^region:/i, '');
-      continue;
-    } else if (s.match(/^notes:/i)) {
-      obj.notes = s.replace(/^notes:/i, '');
-      continue;
-    }
-    //DMS-format
-    if (hemispheres[s.toLowerCase()]) {
-      if (obj.lat !== null) {
-        nums.push(s);
-        obj.lon = convertGeo(nums);
-      } else {
-        nums.push(s);
-        obj.lat = convertGeo(nums);
-        arr = arr.slice(i, arr.length);
-        nums = [];
-        i = 0;
-      }
-    }
-  }
-  //this is an original `lat|lon` format
-  if (!obj.lon && nums.length === 2) {
-    obj.lat = nums[0];
-    obj.lon = nums[1];
-  }
-  obj.lat = round(obj.lat);
-  obj.lon = round(obj.lon);
-  return obj;
-};
-module.exports = parseCoord;
-
-},{"./convertGeo":12}],14:[function(_dereq_,module,exports){
+},{"../section":47,"./categories":9,"./disambig":10,"./preProcess":12,"./redirects":14}],12:[function(_dereq_,module,exports){
 'use strict';
 
 var kill_xml = _dereq_('./kill_xml');
-var wordTemplates = _dereq_('./word_templates');
 
 //this mostly-formatting stuff can be cleaned-up first, to make life easier
 function preProcess(r, wiki, options) {
@@ -5164,12 +3792,12 @@ function preProcess(r, wiki, options) {
   wiki = wiki.replace(/\[\[([a-z][a-z]|simple|war|ceb|min):.{2,60}\]\]/i, '');
   // these '{{^}}' things are nuts, and used as some ilicit spacing thing.
   wiki = wiki.replace(/\{\{\^\}\}/g, '');
-  //expand inline templates like {{date}}
-  wiki = wordTemplates(wiki, r);
+  //yup, oxford comma template
+  wiki = wiki.replace(/\{\{\,\}\}/g, ',');
   //give it the inglorious send-off it deserves..
   wiki = kill_xml(wiki, r, options);
   //({{template}},{{template}}) leaves empty parentheses
-  wiki = wiki.replace(/\([,;: ]*\)/g, '');
+  wiki = wiki.replace(/\([,;: ]+?\)/g, '');
   return wiki;
 }
 module.exports = preProcess;
@@ -5177,61 +3805,13 @@ module.exports = preProcess;
 // console.log(preProcess('hello <br/> world'))
 // console.log(preProcess("hello <asd f> world </h2>"))
 
-},{"./kill_xml":15,"./word_templates":16}],15:[function(_dereq_,module,exports){
+},{"./kill_xml":13}],13:[function(_dereq_,module,exports){
 'use strict';
 
-var parseCitation = _dereq_('../templates/citation');
-var parseLine = _dereq_('../../sentence').parseLine;
 //okay, i know you're not supposed to regex html, but...
 //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
-
-var hasCitation = function hasCitation(str) {
-  return (/^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false
-  );
-};
-//handle unstructured ones - <ref>some text</ref>
-var parseInline = function parseInline(str, r, options) {
-  if (options.citations === false) {
-    return;
-  }
-  var obj = parseLine(str) || {};
-  var cite = {
-    cite: 'inline',
-    text: obj.text
-  };
-  if (obj.links && obj.links.length) {
-    var extern = obj.links.find(function (f) {
-      return f.site;
-    });
-    if (extern) {
-      cite.url = extern.site;
-    }
-  }
-  r.citations.push(cite);
-};
-
-var kill_xml = function kill_xml(wiki, r, options) {
-  //luckily, refs can't be recursive..
-  // <ref></ref>
-  wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function (a, tmpl) {
-    if (hasCitation(tmpl)) {
-      wiki = parseCitation(tmpl, wiki, r, options);
-    } else {
-      parseInline(tmpl, r, options);
-    }
-    return ' ';
-  });
-  // <ref name=""/>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ');
-  // <ref name=""></ref>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1000}?)<\/ref> ?/gi, function (a, tmpl) {
-    if (hasCitation(tmpl)) {
-      wiki = parseCitation(tmpl, wiki, r, options);
-    } else {
-      parseInline(tmpl, r, options);
-    }
-    return ' ';
-  });
+var kill_xml = function kill_xml(wiki) {
+  //(parse <ref> tags in Section class) - luckily, refs can't be recursive.
   //other types of xml that we want to trash completely
   wiki = wiki.replace(/< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi, ' '); // <table name=""><tr>hi</tr></table>
   //some xml-like fragments we can also kill
@@ -5240,8 +3820,6 @@ var kill_xml = function kill_xml(wiki, r, options) {
   wiki = wiki.replace(/ ?<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?> ?/g, ' '); //<sub>, </sub>
   wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s)[ \/]?> ?/g, ' '); //<abbr>, </abbr>
   wiki = wiki.replace(/ ?<[ \/]?h[0-9][ \/]?> ?/g, ' '); //<h2>, </h2>
-  //a more generic + dangerous xml-tag removal
-  wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[ \/]?> ?/g, ' '); //<samp>
   wiki = wiki.replace(/ ?< ?br ?\/> ?/g, ' '); //<br />
   return wiki.trim();
 };
@@ -5254,119 +3832,7 @@ var kill_xml = function kill_xml(wiki, r, options) {
 // console.log(kill_xml("North America,<br /> and one of"))
 module.exports = kill_xml;
 
-},{"../../sentence":60,"../templates/citation":18}],16:[function(_dereq_,module,exports){
-'use strict';
-
-var languages = _dereq_('../../data/languages');
-var parseCoord = _dereq_('./coordinates');
-
-var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-//these are easy, inline templates we can do without too-much trouble.
-var inline = /\{\{(url|convert|current|local|lc|uc|formatnum|pull|cquote|coord|small|smaller|midsize|larger|big|bigger|large|huge|resize|dts|date|term|ipa|ill|sense|t|etyl|sfnref|OldStyleDate)(.*?)\}\}/gi;
-
-// templates that need parsing and replacing for inline text
-//https://en.wikipedia.org/wiki/Category:Magic_word_templates
-var word_templates = function word_templates(wiki, r) {
-
-  //greedy-pass at easier, inline-templates
-  wiki = wiki.replace(inline, function (tmpl) {
-    //we can be sneaky with this template, as it's often found inside other templates
-    tmpl = tmpl.replace(/^\{\{URL\|([^ ]{4,100}?)\}\}/gi, '$1');
-    //this one needs to be handled manually
-    tmpl = tmpl.replace(/^\{\{convert\|([0-9]*?)\|([^\|]*?)\}\}/gi, '$1 $2'); //TODO: support https://en.tmplpedia.org/tmpl/Template:Convert#Ranges_of_values
-    //date-time templates
-    var d = new Date();
-    tmpl = tmpl.replace(/^\{\{(CURRENT|LOCAL)DAY(2)?\}\}/gi, d.getDate());
-    tmpl = tmpl.replace(/^\{\{(CURRENT|LOCAL)MONTH(NAME|ABBREV)?\}\}/gi, months[d.getMonth()]);
-    tmpl = tmpl.replace(/^\{\{(CURRENT|LOCAL)YEAR\}\}/gi, d.getFullYear());
-    tmpl = tmpl.replace(/^\{\{(CURRENT|LOCAL)DAYNAME\}\}/gi, days[d.getDay()]);
-    //formatting templates
-    tmpl = tmpl.replace(/^\{\{(lc|uc|formatnum):(.*?)\}\}/gi, '$2');
-    tmpl = tmpl.replace(/^\{\{pull quote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
-    tmpl = tmpl.replace(/^\{\{cquote\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
-    //interlanguage-link
-    tmpl = tmpl.replace(/^\{\{ill\|([^|]+).*?\}\}/gi, '$1');
-    //footnote syntax
-    tmpl = tmpl.replace(/^\{\{refn\|([^|]+).*?\}\}/gi, '$1');
-    //'tag' escaped thing.
-    tmpl = tmpl.replace(/^\{\{#?tag\|([^|]+).*?\}\}/gi, '');
-    // these are nuts {{OldStyleDate}}
-    tmpl = tmpl.replace(/^\{\{OldStyleDate\|([^|]+).*?\}\}/gi, '');
-    //'harvard references'
-    //{{coord|43|42|N|79|24|W|region:CA-ON|display=inline,title}}
-    var coord = tmpl.match(/^\{\{coord\|(.*?)\}\}/i);
-    if (coord !== null) {
-      r.coordinates.push(parseCoord(coord[1]));
-      tmpl = tmpl.replace(coord[0], '');
-    }
-    //font-size
-    tmpl = tmpl.replace(/^\{\{(small|smaller|midsize|larger|big|bigger|large|huge|resize)\|([\s\S]*?)\}\}/gi, '$2');
-    //{{font|size=x%|text}}
-
-    if (tmpl.match(/^\{\{dts\|/)) {
-      var date = (tmpl.match(/^\{\{dts\|(.*?)[\}\|]/) || [])[1] || '';
-      date = new Date(date);
-      if (date && date.getTime()) {
-        tmpl = tmpl.replace(/^\{\{dts\|.*?\}\}/gi, date.toDateString());
-      } else {
-        tmpl = tmpl.replace(/^\{\{dts\|.*?\}\}/gi, ' ');
-      }
-    }
-    if (tmpl.match(/^\{\{date\|.*?\}\}/)) {
-      var _date = tmpl.match(/^\{\{date\|(.*?)\|(.*?)\|(.*?)\}\}/) || [] || [];
-      var dateString = _date[1] + ' ' + _date[2] + ' ' + _date[3];
-      tmpl = tmpl.replace(/^\{\{date\|.*?\}\}/gi, dateString);
-    }
-    //common templates in wiktionary
-    tmpl = tmpl.replace(/^\{\{term\|(.*?)\|.*?\}\}/gi, '\'$1\'');
-    tmpl = tmpl.replace(/^\{\{IPA(c-en)?\|(.*?)\|(.*?)\}\},?/gi, '');
-    tmpl = tmpl.replace(/^\{\{sense\|(.*?)\|?.*?\}\}/gi, '($1)');
-    tmpl = tmpl.replace(/v\{\{t\+?\|...?\|(.*?)(\|.*)?\}\}/gi, '\'$1\'');
-    //replace languages in 'etyl' tags
-    if (tmpl.match(/^\{\{etyl\|/)) {
-      //doesn't support multiple-ones per sentence..
-      var lang = (tmpl.match(/^\{\{etyl\|(.*?)\|.*?\}\}/i) || [])[1] || '';
-      lang = lang.toLowerCase();
-      if (lang && languages[lang]) {
-        tmpl = tmpl.replace(/^\{\{etyl\|(.*?)\|.*?\}\}/gi, languages[lang].english_title);
-      } else {
-        tmpl = tmpl.replace(/^\{\{etyl\|(.*?)\|.*?\}\}/gi, '($1)');
-      }
-    }
-    return tmpl;
-  });
-  //flatlist -> commas  -- hlist?
-  wiki = wiki.replace(/\{\{(flatlist|hlist) ?\|([^}]+)\}\}/gi, function (a, b, c) {
-    var arr = c.split(/\s+[* ]+? ?/g);
-    arr = arr.filter(function (line) {
-      return line;
-    });
-    return arr.join(', ');
-  });
-  //plainlist -> newlines
-  wiki = wiki.replace(/\{\{(plainlist|ublist|unbulleted list) ?\|([^}]+)\}\}/gi, function (a, b, c) {
-    var arr = c.split(/\s+[* ]+? ?/g);
-    arr = arr.filter(function (line) {
-      return line;
-    });
-    return arr.join(', ');
-  });
-  // tmpl = tmpl.replace(/\{\{flatlist\|([\s\S]*?)(\|[\s\S]*?)?\}\}/gi, '$1');
-  return wiki;
-};
-// console.log(word_templates("hello {{CURRENTDAY}} world"))
-// console.log(word_templates("hello {{CURRENTMONTH}} world"))
-// console.log(word_templates("hello {{CURRENTYEAR}} world"))
-// console.log(word_templates("hello {{LOCALDAYNAME}} world"))
-// console.log(word_templates("hello {{lc:88}} world"))
-// console.log(word_templates("hello {{pull quote|Life is like\n|author=[[asdf]]}} world"))
-// console.log(word_templates("hi {{etyl|la|-}} there"))
-// console.log(word_templates("{{etyl|la|-}} cognate with {{etyl|is|-}} {{term|hugga||to comfort|lang=is}},"))
-
-module.exports = word_templates;
-
-},{"../../data/languages":6,"./coordinates":13}],17:[function(_dereq_,module,exports){
+},{}],14:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../data/i18n');
@@ -5390,126 +3856,8 @@ module.exports = {
   parse: parse
 };
 
-},{"../data/i18n":5}],18:[function(_dereq_,module,exports){
+},{"../data/i18n":5}],15:[function(_dereq_,module,exports){
 'use strict';
-
-//grab the {{cite web}} templates, etc
-var parseCitation = function parseCitation(str, wiki, r, options) {
-  //remove it from main
-  wiki = wiki.replace(str, '');
-  if (options.citations === false) {
-    return wiki;
-  }
-  //trim start {{ and
-  //trim end }}
-  str = str.replace(/^\{\{ *?/, '');
-  str = str.replace(/ *?\}\} *?$/, '');
-  //start parsing citation into json
-  var obj = {};
-  var lines = str.split(/\|/g);
-  //first line is 'cite web'
-  var type = lines[0].match(/cite ([a-z_]+)/i) || [];
-  if (type[1]) {
-    obj.cite = type[1] || null;
-  }
-  for (var i = 1; i < lines.length; i += 1) {
-    var arr = lines[i].split(/=/);
-    var key = arr[0].trim();
-    var val = arr.slice(1, arr.length).join('=').trim();
-    if (key && val) {
-      //turn numbers into numbers
-      if (/^[0-9.]+$/.test(val)) {
-        val = parseFloat(val);
-      }
-      obj[key] = val;
-    }
-  }
-  if (Object.keys(obj).length > 0) {
-    r.citations.push(obj);
-  }
-  return wiki;
-};
-module.exports = parseCitation;
-
-},{}],19:[function(_dereq_,module,exports){
-'use strict';
-
-var i18n = _dereq_('../../data/i18n');
-var findRecursive = _dereq_('../../lib/recursive_match');
-var keep = _dereq_('../../sentence/templates/templates'); //dont remove these ones
-var parseInfobox = _dereq_('../../infobox/parse-infobox');
-var parseCitation = _dereq_('./citation');
-var Infobox = _dereq_('../../infobox/Infobox');
-
-var infobox_reg = new RegExp('{{(' + i18n.infoboxes.join('|') + ')[: \n]', 'ig');
-
-//reduce the scary recursive situations
-var parse_recursive = function parse_recursive(r, wiki, options) {
-  //remove {{template {{}} }} recursions
-  r.infoboxes = [];
-  var matches = findRecursive('{', '}', wiki).filter(function (s) {
-    return s[0] && s[1] && s[0] === '{' && s[1] === '{';
-  });
-  matches.forEach(function (tmpl) {
-    if (tmpl.match(infobox_reg, 'ig')) {
-      if (options.infoboxes !== false) {
-        var infobox = parseInfobox(tmpl);
-        infobox = new Infobox(infobox, r);
-        r.infoboxes.push(infobox);
-      }
-      wiki = wiki.replace(tmpl, '');
-      return;
-    }
-    //keep these ones, we'll parse them later
-    var name = tmpl.match(/^\{\{([^:|\n ]+)/);
-    if (name !== null) {
-      name = name[1].trim().toLowerCase();
-
-      if (/^\{\{ ?citation needed/i.test(tmpl) === true) {
-        name = 'citation needed';
-      }
-      //parse {{cite web ...}} (it appears every language)
-      if (name === 'cite' || name === 'citation') {
-        wiki = parseCitation(tmpl, wiki, r, options);
-        return;
-      }
-
-      //sorta-keep nowrap template
-      if (name === 'nowrap') {
-        var inside = tmpl.match(/^\{\{nowrap *?\|(.*?)\}\}$/);
-        if (inside) {
-          wiki = wiki.replace(tmpl, inside[1]);
-        }
-      }
-      if (keep.hasOwnProperty(name) === true) {
-        return;
-      }
-    }
-    //let everybody add a custom parser for this template
-    if (options.custom) {
-      Object.keys(options.custom).forEach(function (k) {
-        var val = options.custom[k](tmpl, wiki);
-        if (val || val === false) {
-          //dont store all the nulls
-          r.custom[k] = r.custom[k] || [];
-          r.custom[k].push(val);
-        }
-      });
-    }
-    //if it's not a known template, but it's recursive, remove it
-    //(because it will be misread later-on)
-    wiki = wiki.replace(tmpl, '');
-  });
-  // //ok, now that the scary recursion issues are gone, we can trust simple regex methods..
-  // //kill the rest of templates
-  wiki = wiki.replace(/\{\{ *?(^(main|wide)).*?\}\}/g, '');
-  return wiki;
-};
-
-module.exports = parse_recursive;
-
-},{"../../data/i18n":5,"../../infobox/Infobox":25,"../../infobox/parse-infobox":26,"../../lib/recursive_match":28,"../../sentence/templates/templates":67,"./citation":18}],20:[function(_dereq_,module,exports){
-
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -5523,7 +3871,6 @@ var isNumber = /^[0-9]*$/;
 //construct a lookup-url for the wikipedia api
 var makeUrl = function makeUrl(title, lang) {
   lang = lang || 'en';
-
   var lookup = 'titles';
   if (isNumber.test(title) && title.length > 3) {
     lookup = 'curid';
@@ -5549,12 +3896,20 @@ var postProcess = function postProcess(data) {
   var pages = Object.keys(data.query.pages);
   var docs = pages.map(function (id) {
     var page = data.query.pages[id] || {};
+    if (page.hasOwnProperty('missing')) {
+      return null;
+    }
     var text = page.revisions[0]['*'];
     var options = {
       title: page.title,
       pageID: page.pageid
     };
-    return new Document(text, options);
+    try {
+      return new Document(text, options);
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
   });
   //return an array if there was more than one page given
   if (docs.length > 1) {
@@ -5564,15 +3919,7 @@ var postProcess = function postProcess(data) {
   return docs[0];
 };
 
-var throwErr = function throwErr(r, cb) {
-  if (cb && typeof cb === 'function') {
-    return cb(response, {});
-  }
-  return {};
-};
-
 var getData = function getData(url, options) {
-  // Api-User-Agent
   var params = {
     method: 'GET',
     headers: {
@@ -5582,10 +3929,10 @@ var getData = function getData(url, options) {
   };
   return fetch(url, params).then(function (response) {
     if (response.status !== 200) {
-      throwErr(response, callback);
+      throw response;
     }
     return response.json();
-  });
+  }).catch(console.error);
 };
 
 var getPage = function getPage(title, a, b, c) {
@@ -5609,7 +3956,7 @@ var getPage = function getPage(title, a, b, c) {
     callback = c;
   }
   var url = makeUrl(title, lang);
-  var promise = new Promise(function (resolve, reject) {
+  return new Promise(function (resolve, reject) {
     var p = getData(url, options);
     p.then(postProcess).then(function (doc) {
       //support 'err-back' format
@@ -5620,12 +3967,11 @@ var getPage = function getPage(title, a, b, c) {
     });
     p.catch(reject);
   });
-  return promise;
 };
 
 module.exports = getPage;
 
-},{"./data/site_map":7,"./document/Document":8,"cross-fetch":1}],21:[function(_dereq_,module,exports){
+},{"./data/site_map":6,"./document/Document":7,"cross-fetch":1}],16:[function(_dereq_,module,exports){
 'use strict';
 
 var Hashes = _dereq_('jshashes');
@@ -5655,12 +4001,20 @@ var makeSrc = function makeSrc(file) {
 };
 
 //the class for our image generation functions
-var Image = function Image(file) {
+var Image = function Image(file, wiki) {
   this.file = file;
   this.text = ''; //to be compatible as an infobox value
+  //hush this property in console.logs..
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki
+  });
 };
 
 var methods = {
+  wikitext: function wikitext() {
+    return this.wiki;
+  },
   url: function url() {
     return server + makeSrc(this.file);
   },
@@ -5721,22 +4075,20 @@ Image.prototype.src = Image.prototype.url;
 Image.prototype.thumb = Image.prototype.thumbnail;
 module.exports = Image;
 
-},{"../output/html/image":31,"../output/markdown/image":44,"cross-fetch":1,"jshashes":2}],22:[function(_dereq_,module,exports){
+},{"../output/html/image":25,"../output/markdown/image":38,"cross-fetch":1,"jshashes":2}],17:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../data/i18n');
 var parseImage = _dereq_('./parse-image');
 var fileRegex = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
 
-var parseImages = function parseImages(matches, r, wiki, options) {
+var parseImages = function parseImages(matches, r, wiki) {
   matches.forEach(function (s) {
     if (s.match(fileRegex)) {
       r.images = r.images || [];
-      if (options.images !== false) {
-        var img = parseImage(s);
-        if (img) {
-          r.images.push(img);
-        }
+      var img = parseImage(s);
+      if (img) {
+        r.images.push(img);
       }
       wiki = wiki.replace(s, '');
     }
@@ -5745,7 +4097,7 @@ var parseImages = function parseImages(matches, r, wiki, options) {
 };
 module.exports = parseImages;
 
-},{"../data/i18n":5,"./parse-image":23}],23:[function(_dereq_,module,exports){
+},{"../data/i18n":5,"./parse-image":18}],18:[function(_dereq_,module,exports){
 'use strict';
 
 var Image = _dereq_('./Image');
@@ -5765,7 +4117,7 @@ var parse_image = function parse_image(img) {
   //spaces to underscores
   title = title.replace(/ /g, '_');
   if (title) {
-    return new Image(file);
+    return new Image(file, img);
   }
   return null;
 };
@@ -5773,22 +4125,67 @@ module.exports = parse_image;
 
 // console.log(parse_image("[[image:my_pic.jpg]]"));
 
-},{"../data/i18n":5,"./Image":21}],24:[function(_dereq_,module,exports){
+},{"../data/i18n":5,"./Image":16}],19:[function(_dereq_,module,exports){
 'use strict';
 
 var toMarkdown = _dereq_('../output/markdown/infobox');
 var toHtml = _dereq_('../output/html/infobox');
+var Image = _dereq_('../image/Image');
+
 //a formal key-value data table about a topic
-var Infobox = function Infobox(obj) {
-  this.template = obj.template;
-  this.data = obj.data;
-  // this.type = this.template; //duplicate
+var Infobox = function Infobox(obj, wiki) {
+  this._type = obj.type;
+  // this.data = obj.data;
+  //hush these properties in console.logs..
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki
+  });
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: obj.data
+  });
 };
 
 var methods = {
+  type: function type() {
+    return this._type;
+  },
+  links: function links() {
+    var _this = this;
+
+    var links = [];
+    Object.keys(this.data).forEach(function (k) {
+      _this.data[k].links().forEach(function (l) {
+        return links.push(l);
+      });
+    });
+    return links;
+  },
+  image: function image() {
+    var obj = this.get('image');
+    if (!obj) {
+      return null;
+    }
+    return new Image(obj.text());
+  },
+  get: function get(key) {
+    key = key.toLowerCase();
+    var keys = Object.keys(this.data);
+    for (var i = 0; i < keys.length; i += 1) {
+      var tmp = keys[i].toLowerCase().trim();
+      if (key === tmp) {
+        return this.data[keys[i]];
+      }
+    }
+    return null;
+  },
   markdown: function markdown(options) {
     options = options || {};
     return toMarkdown(this, options);
+  },
+  wikitext: function wikitext() {
+    return this.wiki;
   },
   html: function html(options) {
     options = options || {};
@@ -5798,135 +4195,35 @@ var methods = {
     return '';
   },
   json: function json() {
-    var _this = this;
+    var _this2 = this;
 
     return Object.keys(this.data).reduce(function (h, k) {
-      if (_this.data[k]) {
-        h[k] = _this.data[k].json();
+      if (_this2.data[k]) {
+        h[k] = _this2.data[k].json();
       }
       return h;
     }, {});
   },
   keyValue: function keyValue() {
-    var _this2 = this;
+    var _this3 = this;
 
     return Object.keys(this.data).reduce(function (h, k) {
-      if (_this2.data[k]) {
-        h[k] = _this2.data[k].text();
+      if (_this3.data[k]) {
+        h[k] = _this3.data[k].text();
       }
       return h;
     }, {});
   }
 };
+//aliases
+methods.template = methods.type;
 
 Object.keys(methods).forEach(function (k) {
   Infobox.prototype[k] = methods[k];
 });
 module.exports = Infobox;
 
-},{"../output/html/infobox":33,"../output/markdown/infobox":46}],25:[function(_dereq_,module,exports){
-'use strict';
-
-var trim = _dereq_('../lib/helpers').trim_whitespace;
-var findRecursive = _dereq_('../lib/recursive_match');
-var i18n = _dereq_('../data/i18n');
-var Image = _dereq_('../image/Image');
-var parseLine = _dereq_('../sentence').parseLine;
-var Sentence = _dereq_('../sentence/Sentence');
-var i18_infobox = i18n.infoboxes.join('|');
-// const infobox_template_reg = new RegExp('{{(infobox) +([^\|\n]+)', 'i');
-var infobox_template_reg = new RegExp('{{(' + i18_infobox + ') +([^\|\n]+)', 'i');
-
-//which infobox is this? eg '{{Infobox author|...}}'
-var getTemplateName = function getTemplateName(str) {
-  var m = str.match(infobox_template_reg);
-  if (m && m[1]) {
-    return m[2].trim();
-  }
-  return null;
-};
-
-var parse_infobox = function parse_infobox(str) {
-  if (!str) {
-    return {};
-  }
-  var stringBuilder = [];
-  var lastChar = void 0;
-  //this collapsible list stuff is just a headache
-  var listReg = /\{\{ ?(collapsible|hlist|ublist|plainlist|Unbulleted list|flatlist)/i;
-  if (listReg.test(str)) {
-    var list = findRecursive('{', '}', str.substr(2, str.length - 2)).filter(function (f) {
-      return listReg.test(f);
-    });
-    str = str.replace(list[0], '');
-  }
-
-  var templateName = getTemplateName(str); //get the infobox name
-
-  var parDepth = -2; // first two {{
-  for (var i = 0, len = str.length; i < len; i++) {
-    if (parDepth === 0 && str[i] === '|' && lastChar !== '\n') {
-      stringBuilder.push('\n');
-    }
-    if (str[i] === '{' || str[i] === '[') {
-      parDepth++;
-    } else if (str[i] === '}' || str[i] === ']') {
-      parDepth--;
-    }
-    lastChar = str[i];
-    stringBuilder.push(lastChar);
-  }
-
-  str = stringBuilder.join('');
-  //remove top+bottom
-  str = str.replace(/^ *?\{\{.+[|\n]/, '');
-  str = str.replace(/\}\} *?$/, '');
-  var lines = str.split(/\n\*?/);
-
-  var obj = {};
-  var key = null;
-  for (var _i = 0; _i < lines.length; _i++) {
-    var l = lines[_i];
-    var keyMatch = l.match(/\| *?([^=]+)=(.+)?/i);
-    if (keyMatch && keyMatch[1]) {
-      key = trim(keyMatch[1]);
-      if (keyMatch[2]) {
-        obj[key] = trim(keyMatch[2]);
-      } else {
-        obj[key] = '';
-      }
-    } else if (key) {
-      obj[key] += l;
-    }
-  }
-  //post-process values
-  Object.keys(obj).forEach(function (k) {
-    if (!obj[k]) {
-      delete obj[k];
-      return;
-    }
-    //handle the 'image' property in a special-way
-    if (k === 'image') {
-      obj[k] = new Image(obj[k]);
-      obj[k].text = '';
-    } else {
-      obj[k] = parseLine(obj[k]);
-    }
-    if (obj[k].text && obj[k].text.match(/^[0-9,]*$/)) {
-      obj[k].text = obj[k].text.replace(/,/, '');
-      obj[k].text = parseInt(obj[k].text, 10);
-    }
-    //turn values into Sentence objects for easy use
-    obj[k] = new Sentence(obj[k]);
-  });
-  return {
-    template: templateName,
-    data: obj
-  };
-};
-module.exports = parse_infobox;
-
-},{"../data/i18n":5,"../image/Image":21,"../lib/helpers":26,"../lib/recursive_match":27,"../sentence":60,"../sentence/Sentence":58}],26:[function(_dereq_,module,exports){
+},{"../image/Image":16,"../output/html/infobox":27,"../output/markdown/infobox":40}],20:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = {
@@ -5952,7 +4249,7 @@ var helpers = {
 };
 module.exports = helpers;
 
-},{}],27:[function(_dereq_,module,exports){
+},{}],21:[function(_dereq_,module,exports){
 'use strict';
 
 //find all the pairs of '[[...[[..]]...]]' in the text
@@ -5964,7 +4261,7 @@ function find_recursive(opener, closer, text) {
   var chars = text.split('');
   var open = 0;
   for (var i = 0; i < chars.length; i++) {
-    //incriment open tag
+    //increment open tag
     if (chars[i] === opener) {
       open += 1;
     }
@@ -6002,7 +4299,7 @@ module.exports = find_recursive;
 // console.log(find_recursive('{', '}', 'he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas'));
 // console.log(find_recursive("{", "}", "this is fun {{nowrap{{small1995–present}}}} and it works"))
 
-},{}],28:[function(_dereq_,module,exports){
+},{}],22:[function(_dereq_,module,exports){
 "use strict";
 
 //
@@ -6020,7 +4317,7 @@ var setDefaults = function setDefaults(options, defaults) {
 };
 module.exports = setDefaults;
 
-},{}],29:[function(_dereq_,module,exports){
+},{}],23:[function(_dereq_,module,exports){
 'use strict';
 
 //escape a string like 'fun*2.Co' for a regExpr
@@ -6053,7 +4350,7 @@ var smartReplace = function smartReplace(all, text, result) {
 
 module.exports = smartReplace;
 
-},{}],30:[function(_dereq_,module,exports){
+},{}],24:[function(_dereq_,module,exports){
 'use strict';
 
 var Document = _dereq_('./document/Document');
@@ -6071,7 +4368,7 @@ wtf.version = version;
 
 module.exports = wtf;
 
-},{"../package":3,"./document/Document":8,"./fetch":20}],31:[function(_dereq_,module,exports){
+},{"../package":3,"./document/Document":7,"./fetch":15}],25:[function(_dereq_,module,exports){
 'use strict';
 
 var makeImage = function makeImage(image) {
@@ -6081,7 +4378,7 @@ var makeImage = function makeImage(image) {
 };
 module.exports = makeImage;
 
-},{}],32:[function(_dereq_,module,exports){
+},{}],26:[function(_dereq_,module,exports){
 'use strict';
 
 var doInfobox = _dereq_('./infobox');
@@ -6109,7 +4406,7 @@ var toHtml = function toHtml(doc, options) {
 };
 module.exports = toHtml;
 
-},{"./infobox":33,"./section":34}],33:[function(_dereq_,module,exports){
+},{"./infobox":27,"./section":28}],27:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6136,7 +4433,7 @@ var infobox = function infobox(obj, options) {
 };
 module.exports = infobox;
 
-},{"./sentence":35}],34:[function(_dereq_,module,exports){
+},{"./sentence":29}],28:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6194,7 +4491,7 @@ var doSection = function doSection(section, options) {
 };
 module.exports = doSection;
 
-},{"./image":31,"./sentence":35,"./table":36}],35:[function(_dereq_,module,exports){
+},{"./image":25,"./sentence":29,"./table":30}],29:[function(_dereq_,module,exports){
 'use strict';
 
 var smartReplace = _dereq_('../../lib/smartReplace');
@@ -6234,7 +4531,7 @@ var doSentence = function doSentence(sentence) {
 };
 module.exports = doSentence;
 
-},{"../../lib/smartReplace":29}],36:[function(_dereq_,module,exports){
+},{"../../lib/smartReplace":23}],30:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6263,7 +4560,7 @@ var doTable = function doTable(table, options) {
 };
 module.exports = doTable;
 
-},{"./sentence":35}],37:[function(_dereq_,module,exports){
+},{"./sentence":29}],31:[function(_dereq_,module,exports){
 'use strict';
 
 var setDefaults = _dereq_('../../lib/setDefaults');
@@ -6334,7 +4631,7 @@ var toJSON = function toJSON(doc, options) {
 };
 module.exports = toJSON;
 
-},{"../../lib/setDefaults":28}],38:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":22}],32:[function(_dereq_,module,exports){
 'use strict';
 
 var setDefaults = _dereq_('../../lib/setDefaults');
@@ -6386,7 +4683,7 @@ var toJSON = function toJSON(s, options) {
 };
 module.exports = toJSON;
 
-},{"../../lib/setDefaults":28}],39:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":22}],33:[function(_dereq_,module,exports){
 'use strict';
 
 var setDefaults = _dereq_('../../lib/setDefaults');
@@ -6416,7 +4713,7 @@ var toJSON = function toJSON(s, options) {
 };
 module.exports = toJSON;
 
-},{"../../lib/setDefaults":28}],40:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":22}],34:[function(_dereq_,module,exports){
 'use strict';
 
 var doInfobox = _dereq_('./infobox');
@@ -6548,7 +4845,7 @@ var toLatex = function toLatex(doc, options) {
 };
 module.exports = toLatex;
 
-},{"../../lib/setDefaults":28,"./infobox":41,"./sentence":42,"./table":43}],41:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":22,"./infobox":35,"./sentence":36,"./table":37}],35:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6579,7 +4876,7 @@ var infobox = function infobox(obj, options) {
 };
 module.exports = infobox;
 
-},{"./sentence":42}],42:[function(_dereq_,module,exports){
+},{"./sentence":36}],36:[function(_dereq_,module,exports){
 'use strict';
 
 var smartReplace = _dereq_('../../lib/smartReplace');
@@ -6621,7 +4918,7 @@ var doSentence = function doSentence(sentence, options) {
 };
 module.exports = doSentence;
 
-},{"../../lib/smartReplace":29}],43:[function(_dereq_,module,exports){
+},{"../../lib/smartReplace":23}],37:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6672,7 +4969,7 @@ var doTable = function doTable(table, options) {
 };
 module.exports = doTable;
 
-},{"./sentence":42}],44:[function(_dereq_,module,exports){
+},{"./sentence":36}],38:[function(_dereq_,module,exports){
 'use strict';
 
 //markdown images are like this: ![alt text](href)
@@ -6684,7 +4981,7 @@ var doImage = function doImage(image) {
 
 module.exports = doImage;
 
-},{}],45:[function(_dereq_,module,exports){
+},{}],39:[function(_dereq_,module,exports){
 'use strict';
 
 var doSection = _dereq_('./section');
@@ -6711,7 +5008,7 @@ var toMarkdown = function toMarkdown(doc, options) {
 };
 module.exports = toMarkdown;
 
-},{"./infobox":46,"./section":48}],46:[function(_dereq_,module,exports){
+},{"./infobox":40,"./section":42}],40:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6738,7 +5035,7 @@ var doInfobox = function doInfobox(obj, options) {
 };
 module.exports = doInfobox;
 
-},{"./pad":47,"./sentence":49}],47:[function(_dereq_,module,exports){
+},{"./pad":41,"./sentence":43}],41:[function(_dereq_,module,exports){
 'use strict';
 
 //center-pad each cell, to make the table more legible
@@ -6758,7 +5055,7 @@ var pad = function pad(str, cellWidth) {
 };
 module.exports = pad;
 
-},{}],48:[function(_dereq_,module,exports){
+},{}],42:[function(_dereq_,module,exports){
 'use strict';
 
 var doTable = _dereq_('./table');
@@ -6833,7 +5130,7 @@ var doSection = function doSection(section, options) {
 };
 module.exports = doSection;
 
-},{"../../lib/setDefaults":28,"./image":44,"./sentence":49,"./table":50}],49:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":22,"./image":38,"./sentence":43,"./table":44}],43:[function(_dereq_,module,exports){
 'use strict';
 
 var smartReplace = _dereq_('../../lib/smartReplace');
@@ -6875,7 +5172,7 @@ var doSentence = function doSentence(sentence) {
 };
 module.exports = doSentence;
 
-},{"../../lib/smartReplace":29}],50:[function(_dereq_,module,exports){
+},{"../../lib/smartReplace":23}],44:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -6927,13 +5224,14 @@ var doTable = function doTable(table, options) {
 };
 module.exports = doTable;
 
-},{"./pad":47,"./sentence":49}],51:[function(_dereq_,module,exports){
+},{"./pad":41,"./sentence":43}],45:[function(_dereq_,module,exports){
 'use strict';
 
 var toMarkdown = _dereq_('../output/markdown/section');
 var toHtml = _dereq_('../output/html/section');
 var toJSON = _dereq_('../output/json/section');
 var Sentence = _dereq_('../sentence/Sentence');
+var Infobox = _dereq_('../infobox/Infobox');
 var setDefaults = _dereq_('../lib/setDefaults');
 var defaults = {
   infoboxes: true,
@@ -6945,20 +5243,27 @@ var defaults = {
 };
 
 //the stuff between headings - 'History' section for example
-var Section = function Section(data) {
+var Section = function Section(data, wiki) {
   this.data = data;
   this.depth = data.depth;
   this.doc = null;
-  //hide this circular property in console.logs..
-  // Object.defineProperty(this, 'doc', {
-  //   enumerable: false, // hide it from for..in
-  //   value: null
-  // });
+  //hush these properties in console.logs..
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki
+  });
+  Object.defineProperty(this, 'doc', {
+    enumerable: false,
+    value: null
+  });
 };
 
 var methods = {
   title: function title() {
     return this.data.title || '';
+  },
+  wikitext: function wikitext() {
+    return this.wiki || '';
   },
   index: function index() {
     if (!this.doc) {
@@ -6992,6 +5297,11 @@ var methods = {
         });
       });
     });
+    this.infoboxes().forEach(function (templ) {
+      templ.links().forEach(function (link) {
+        return arr.push(link);
+      });
+    });
     //todo: add links from tables..
     // this.tables().forEach((t) => {
     //   t.links().forEach((link) => arr.push(link));
@@ -7006,32 +5316,65 @@ var methods = {
     }
     return arr;
   },
-  tables: function tables(n) {
-    if (typeof n === 'number') {
-      return this.data.tables[n];
+  tables: function tables(clue) {
+    if (typeof clue === 'number') {
+      return this.data.tables[clue];
     }
     return this.data.tables || [];
   },
-  templates: function templates() {
-    return this.data.templates || [];
+  templates: function templates(clue) {
+    if (typeof clue === 'number') {
+      return this.data.templates[clue];
+    }
+    var arr = this.data.templates || [];
+    if (typeof clue === 'string') {
+      clue = clue.toLowerCase();
+      return arr.filter(function (o) {
+        return o.template === clue || o.name === clue;
+      });
+    }
+    return arr;
   },
-  lists: function lists(n) {
-    if (typeof n === 'number') {
-      return this.data.lists[n];
+  infoboxes: function infoboxes(clue) {
+    var arr = this.templates('infobox');
+    if (typeof clue === 'number') {
+      return new Infobox(arr[clue]);
+    }
+    return arr.map(function (obj) {
+      return new Infobox(obj);
+    });
+  },
+  coordinates: function coordinates(clue) {
+    var arr = this.templates('coord');
+    if (typeof clue === 'number') {
+      return arr[clue];
+    }
+    return arr;
+  },
+  lists: function lists(clue) {
+    if (typeof clue === 'number') {
+      return this.data.lists[clue];
     }
     return this.data.lists || [];
   },
-  interwiki: function interwiki(n) {
-    if (typeof n === 'number') {
-      return this.data.interwiki[n];
+  interwiki: function interwiki(clue) {
+    if (typeof clue === 'number') {
+      return this.data.interwiki[clue];
     }
     return this.data.interwiki || [];
   },
-  images: function images(n) {
-    if (typeof n === 'number') {
-      return this.data.images[n];
+  images: function images(clue) {
+    if (typeof clue === 'number') {
+      return this.data.images[clue];
     }
     return this.data.images || [];
+  },
+  citations: function citations(clue) {
+    var arr = this.templates('citation'); //.map(o => o.data);
+    if (typeof clue === 'number') {
+      return arr[clue];
+    }
+    return arr;
   },
 
   //transformations
@@ -7098,9 +5441,7 @@ var methods = {
     }
     if (typeof n === 'string') {
       n = n.toLowerCase();
-      children.forEach(function (c) {
-        return console.log(c);
-      });
+      // children.forEach((c) => console.log(c));
       return children.find(function (s) {
         return s.title().toLowerCase() === n;
       });
@@ -7147,13 +5488,16 @@ methods.next = methods.nextSibling;
 methods.last = methods.lastSibling;
 methods.previousSibling = methods.lastSibling;
 methods.previous = methods.lastSibling;
+methods.original = methods.wikitext;
+methods.wikiscript = methods.wikitext;
+methods.references = methods.citations;
 Object.keys(methods).forEach(function (k) {
   Section.prototype[k] = methods[k];
 });
 
 module.exports = Section;
 
-},{"../lib/setDefaults":28,"../output/html/section":34,"../output/json/section":38,"../output/markdown/section":48,"../sentence/Sentence":58}],52:[function(_dereq_,module,exports){
+},{"../infobox/Infobox":19,"../lib/setDefaults":22,"../output/html/section":28,"../output/json/section":32,"../output/markdown/section":42,"../sentence/Sentence":52}],46:[function(_dereq_,module,exports){
 'use strict';
 
 var fns = _dereq_('../lib/helpers');
@@ -7165,7 +5509,8 @@ var parseHeading = function parseHeading(r, str) {
   if (!heading) {
     return {
       title: '',
-      depth: 0
+      depth: 0,
+      templates: []
     };
   }
   var title = heading[2] || '';
@@ -7180,7 +5525,7 @@ var parseHeading = function parseHeading(r, str) {
 };
 module.exports = parseHeading;
 
-},{"../lib/helpers":26}],53:[function(_dereq_,module,exports){
+},{"../lib/helpers":20}],47:[function(_dereq_,module,exports){
 'use strict';
 
 var Section = _dereq_('./Section');
@@ -7193,18 +5538,21 @@ var parse = {
   image: _dereq_('../image'),
   interwiki: _dereq_('./interwiki'),
   table: _dereq_('./table'),
-  templates: _dereq_('./templates'),
+  references: _dereq_('./references'),
+  templates: _dereq_('../templates'),
   eachSentence: _dereq_('../sentence').eachSentence
 };
 var section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})/g;
 
-var parseSection = function parseSection(section, wiki, r, options) {
+var doSection = function doSection(section, wiki, options) {
+  // //parse the <ref></ref> tags
+  wiki = parse.references(section, wiki, options);
+  //parse-out all {{templates}}
+  wiki = parse.templates(section, wiki, options);
   // //parse the tables
   wiki = parse.table(section, wiki);
   // //parse the lists
   wiki = parse.list(section, wiki);
-  //supoprted things like {{main}}
-  wiki = parse.templates(section, wiki);
   // //parse+remove scary '[[ [[]] ]]' stuff
   //second, remove [[file:...[[]] ]] recursions
   var matches = find_recursive('[', ']', wiki);
@@ -7213,30 +5561,33 @@ var parseSection = function parseSection(section, wiki, r, options) {
   //do each sentence
   wiki = parse.eachSentence(section, wiki);
   // section.wiki = wiki;
-  section = new Section(section, r);
+  section = new Section(section, wiki);
   return section;
 };
 
-var makeSections = function makeSections(r, wiki, options) {
+var splitSections = function splitSections(wiki, options) {
   var split = wiki.split(section_reg); //.filter(s => s);
   var sections = [];
   for (var i = 0; i < split.length; i += 2) {
-    var title = split[i - 1] || '';
-    var txt = split[i] || '';
+    var heading = split[i - 1] || '';
+    var content = split[i] || '';
     var section = {
       title: '',
-      depth: null
+      depth: null,
+      templates: []
     };
-    section = parse.heading(section, title);
-    section = parseSection(section, txt, r, options);
+    //figure-out title/depth
+    section = parse.heading(section, heading);
+    //parse it up
+    section = doSection(section, content, options);
     sections.push(section);
   }
   return sections;
 };
 
-module.exports = makeSections;
+module.exports = splitSections;
 
-},{"../image":22,"../lib/recursive_match":27,"../sentence":60,"./Section":51,"./heading":52,"./interwiki":54,"./list":55,"./table":56,"./templates":57}],54:[function(_dereq_,module,exports){
+},{"../image":17,"../lib/recursive_match":21,"../sentence":54,"../templates":70,"./Section":45,"./heading":46,"./interwiki":48,"./list":49,"./references":50,"./table":51}],48:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../data/i18n');
@@ -7258,13 +5609,13 @@ var interwiki = function interwiki(matches, r, wiki, options) {
 };
 module.exports = interwiki;
 
-},{"../data/i18n":5}],55:[function(_dereq_,module,exports){
+},{"../data/i18n":5}],49:[function(_dereq_,module,exports){
 'use strict';
 
 var list_reg = /^[#\*:;\|]+/;
 var bullet_reg = /^\*+[^:,\|]{4}/;
 var number_reg = /^ ?\#[^:,\|]{4}/;
-var has_word = /[a-z]/i;
+var has_word = /[a-z_0-9]/i;
 var parseLine = _dereq_('../sentence/').parseLine;
 var Sentence = _dereq_('../sentence/Sentence');
 
@@ -7337,7 +5688,79 @@ var parseList = function parseList(r, wiki) {
 };
 module.exports = parseList;
 
-},{"../sentence/":60,"../sentence/Sentence":58}],56:[function(_dereq_,module,exports){
+},{"../sentence/":54,"../sentence/Sentence":52}],50:[function(_dereq_,module,exports){
+'use strict';
+
+var parseGeneric = _dereq_('../templates/parsers/generic');
+var parsePipe = _dereq_('../templates/misc')['cite gnis'];
+var parseLine = _dereq_('../sentence').parseLine;
+var Sentence = _dereq_('../sentence/Sentence');
+
+//structured Cite templates - <ref>{{Cite..</ref>
+var hasCitation = function hasCitation(str) {
+  return (/^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false
+  );
+};
+
+//might as well parse it, since we're here.
+var parseCitation = function parseCitation(tmpl) {
+  var obj = parseGeneric(tmpl);
+  if (obj) {
+    return obj;
+  }
+  //support {{cite gnis|98734}} format
+  return parsePipe(tmpl);
+};
+
+//handle unstructured ones - <ref>some text</ref>
+var parseInline = function parseInline(tmpl, r) {
+  var obj = parseLine(tmpl) || {};
+  obj = new Sentence(obj);
+  var cite = {
+    template: 'citation',
+    type: 'inline',
+    data: {},
+    inline: obj
+  };
+  r.templates.push(cite);
+};
+
+// parse <ref></ref> xml tags
+var parseRefs = function parseRefs(r, wiki) {
+  wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function (a, tmpl) {
+    if (hasCitation(tmpl)) {
+      var obj = parseCitation(tmpl);
+      if (obj) {
+        r.templates.push(obj);
+      }
+      wiki = wiki.replace(tmpl, '');
+    } else {
+      parseInline(tmpl, r);
+    }
+    return ' ';
+  });
+  // <ref name=""/>
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ');
+  // <ref name=""></ref>
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1000}?)<\/ref> ?/gi, function (a, tmpl) {
+    if (hasCitation(tmpl)) {
+      var obj = parseCitation(tmpl);
+      if (obj) {
+        r.templates.push(obj);
+      }
+      wiki = wiki.replace(tmpl, '');
+    } else {
+      parseInline(tmpl, r);
+    }
+    return ' ';
+  });
+  //now that we're done with xml, do a generic + dangerous xml-tag removal
+  wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[ \/]?> ?/g, ' '); //<samp>
+  return wiki;
+};
+module.exports = parseRefs;
+
+},{"../sentence":54,"../sentence/Sentence":52,"../templates/misc":73,"../templates/parsers/generic":77}],51:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../lib/helpers');
@@ -7470,39 +5893,7 @@ var findTables = function findTables(r, wiki) {
 };
 module.exports = findTables;
 
-},{"../lib/helpers":26,"../sentence/":60,"../sentence/Sentence":58}],57:[function(_dereq_,module,exports){
-'use strict';
-
-// const parseCoord = require('./coordinates');
-var regs = {
-  main: /\{\{main( article)?\|(.*?)\}\}/i,
-  wide_image: /\{\{wide image\|(.*?)\}\}/i
-};
-
-//these templates apply only to this section,and we wont find them, say, inside a infobox
-var parseTemplates = function parseTemplates(section, wiki) {
-  var templates = {};
-
-  //{{main|toronto}}
-  var main = wiki.match(regs.main);
-  if (main) {
-    templates.main = main[2].split('|');
-    wiki = wiki.replace(regs.main, '');
-  }
-  //{{wide image|file:cool.jpg}}
-  var wide = wiki.match(regs.wide_image);
-  if (wide) {
-    templates.wide_image = wide[1].split('|');
-    wiki = wiki.replace(regs.wide_image, '');
-  }
-  if (Object.keys(templates).length > 0) {
-    section.templates = templates;
-  }
-  return wiki;
-};
-module.exports = parseTemplates;
-
-},{}],58:[function(_dereq_,module,exports){
+},{"../lib/helpers":20,"../sentence/":54,"../sentence/Sentence":52}],52:[function(_dereq_,module,exports){
 'use strict';
 
 var toHtml = _dereq_('../output/html/sentence');
@@ -7578,7 +5969,7 @@ Sentence.prototype.text = Sentence.prototype.plaintext;
 
 module.exports = Sentence;
 
-},{"../output/html/sentence":35,"../output/json/sentence":39,"../output/markdown/sentence":49}],59:[function(_dereq_,module,exports){
+},{"../output/html/sentence":29,"../output/json/sentence":33,"../output/markdown/sentence":43}],53:[function(_dereq_,module,exports){
 'use strict';
 
 //handle the bold/italics
@@ -7617,13 +6008,13 @@ var formatting = function formatting(obj) {
 };
 module.exports = formatting;
 
-},{}],60:[function(_dereq_,module,exports){
+},{}],54:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../lib/helpers');
 var parseLinks = _dereq_('./links');
 var parseFmt = _dereq_('./formatting');
-var templates = _dereq_('./templates');
+// const templates = require('./templates');
 var sentenceParser = _dereq_('./sentence-parser');
 var i18n = _dereq_('../data/i18n');
 var cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]', 'gi');
@@ -7651,7 +6042,11 @@ function postprocess(line) {
   if (line.match(/^(thumb|right|left)\|/i)) {
     return null;
   }
+  //remove empty parentheses (sometimes caused by removing templates)
+  line = line.replace(/\([,;: ]*\)/g, '');
+  //dangling punctuation
   line = helpers.trim_whitespace(line);
+  line = line.replace(/ +\.$/, '.');
   return line;
 }
 
@@ -7667,7 +6062,7 @@ function parseLine(line) {
   //pull-out the bolds and ''italics''
   obj = parseFmt(obj);
   //pull-out things like {{start date|...}}
-  obj = templates(obj);
+  // obj = templates(obj);
   return obj;
 }
 
@@ -7683,7 +6078,7 @@ module.exports = {
   parseLine: parseLine
 };
 
-},{"../data/i18n":5,"../lib/helpers":26,"./formatting":59,"./links":61,"./sentence-parser":62,"./templates":65}],61:[function(_dereq_,module,exports){
+},{"../data/i18n":5,"../lib/helpers":20,"./formatting":53,"./links":55,"./sentence-parser":56}],55:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../lib/helpers');
@@ -7759,7 +6154,7 @@ var parse_links = function parse_links(str) {
 };
 module.exports = parse_links;
 
-},{"../lib/helpers":26}],62:[function(_dereq_,module,exports){
+},{"../lib/helpers":20}],56:[function(_dereq_,module,exports){
 'use strict';
 
 //split text into sentences, using regex
@@ -7881,7 +6276,7 @@ var sentence_parser = function sentence_parser(text) {
 module.exports = sentence_parser;
 // console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2);
 
-},{"../data/abbreviations":4}],63:[function(_dereq_,module,exports){
+},{"../data/abbreviations":4}],57:[function(_dereq_,module,exports){
 'use strict';
 
 //assorted parsing methods for date/time templates
@@ -7969,7 +6364,7 @@ module.exports = {
   ymd: ymd
 };
 
-},{}],64:[function(_dereq_,module,exports){
+},{}],58:[function(_dereq_,module,exports){
 "use strict";
 
 //this is allowed to be rough
@@ -8010,59 +6405,155 @@ var delta = function delta(from, to) {
 
 module.exports = delta;
 
-},{}],65:[function(_dereq_,module,exports){
+},{}],59:[function(_dereq_,module,exports){
 'use strict';
 
 var parsers = _dereq_('./parsers');
-var templates = _dereq_('./templates');
+var pipeSplit = _dereq_('../parsers/pipeSplit');
+var timeSince = _dereq_('./timeSince');
+var date = parsers.date;
+var natural_date = parsers.natural_date;
 
-//get identity of template - Template:Foo
-var getName = function getName(tmpl) {
-  tmpl = tmpl.replace(/^\{\{/, '');
-  tmpl = tmpl.replace(/\}\}$/, '');
-  var name = tmpl.split(/\|/)[0] || '';
-  name = name.toLowerCase().trim();
-  // name = name.replace(/-/g, ' ');
-  return name;
-};
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-//run each remaining {{template}} through our parsers
-var parseTemplates = function parseTemplates(obj) {
-  var list = obj.text.match(/\{\{([^}]+)\}\}/g) || [];
-  list = list.map(function (tmpl) {
-    var name = getName(tmpl);
-    return {
-      name: name,
-      raw: tmpl
-    };
-  });
-  //try parsing each template
-  list.forEach(function (t) {
-    //remove the {{'s & }}'s
-    t.tmpl = t.raw.replace(/^\{\{/, '');
-    t.tmpl = t.tmpl.replace(/\}\}$/, '');
-    if (parsers.hasOwnProperty(templates[t.name]) === true) {
-      var parser = templates[t.name];
-      var result = parsers[parser](t.tmpl, obj);
-      obj.text = obj.text.replace(t.raw, result);
-    } else {
-      //otherwise, just remove it from the text
-      obj.text = obj.text.replace(t.raw, '');
+//date- templates we support
+var templates = {
+  currentday: function currentday() {
+    var d = new Date();
+    return String(d.getDate());
+  },
+  currentdayname: function currentdayname() {
+    var d = new Date();
+    return days[d.getDay()];
+  },
+  currentmonth: function currentmonth() {
+    var d = new Date();
+    return months[d.getMonth()];
+  },
+  currentyear: function currentyear() {
+    var d = new Date();
+    return String(d.getFullYear());
+  },
+  monthyear: function monthyear() {
+    var d = new Date();
+    return months[d.getMonth()] + ' ' + d.getFullYear();
+  },
+  'monthyear-1': function monthyear1() {
+    var d = new Date();
+    d.setMonth(d.getMonth() - 1);
+    return months[d.getMonth()] + ' ' + d.getFullYear();
+  },
+  'monthyear+1': function monthyear1() {
+    var d = new Date();
+    d.setMonth(d.getMonth() + 1);
+    return months[d.getMonth()] + ' ' + d.getFullYear();
+  },
+  //Explictly-set dates - https://en.wikipedia.org/wiki/Template:Date
+  date: function date(tmpl) {
+    var order = ['date', 'fmt'];
+    return pipeSplit(tmpl, order).date;
+  },
+  'time ago': function timeAgo(tmpl) {
+    var order = ['date', 'fmt'];
+    var time = pipeSplit(tmpl, order).date;
+    return timeSince(time);
+  },
+  //sortable dates -
+  dts: function dts(tmpl) {
+    //remove formatting stuff, ewww
+    tmpl = tmpl.replace(/\|format=[ymd]+/i, '');
+    tmpl = tmpl.replace(/\|abbr=(on|off)/i, '');
+    var order = ['year', 'month', 'date', 'bc'];
+    var obj = pipeSplit(tmpl, order);
+    var text = obj.month || '';
+    if (obj.date) {
+      text += ' ' + obj.date;
     }
-  });
-  return obj;
-};
-module.exports = parseTemplates;
+    if (obj.year) {
+      if (obj.year < 0) {
+        obj.year = Math.abs(obj.year) + ' BC';
+      }
+      text += ' ' + obj.year;
+    }
+    return text;
+  },
+  //date/age/time templates
+  'start': date,
+  'end': date,
+  'birth': date,
+  'death': date,
+  'start date': date,
+  'end date': date,
+  'birth date': date,
+  'death date': date,
+  'start date and age': date,
+  'end date and age': date,
+  'birth date and age': date,
+  'death date and age': date,
+  'birth date and given age': date,
+  'death date and given age': date,
+  'birth year and age': parsers.one_year,
+  'death year and age': parsers.one_year,
 
-},{"./parsers":66,"./templates":67}],66:[function(_dereq_,module,exports){
+  //this is insane (hyphen ones are different)
+  'start-date': natural_date,
+  'end-date': natural_date,
+  'birth-date': natural_date,
+  'death-date': natural_date,
+  'birth-date and age': natural_date,
+  'birth-date and given age': natural_date,
+  'death-date and age': natural_date,
+  'death-date and given age': natural_date,
+
+  'birthdeathage': parsers.two_dates,
+  'dob': date,
+  'bda': date,
+  // 'birth date and age2': date,
+
+  'age': parsers.age,
+  'age nts': parsers.age,
+  'age in years': parsers['diff-y'],
+  'age in years and months': parsers['diff-ym'],
+  'age in years, months and days': parsers['diff-ymd'],
+  'age in years and days': parsers['diff-yd'],
+  'age in days': parsers['diff-d']
+  // 'age in years, months, weeks and days': true,
+  // 'age as of date': true,
+
+};
+templates.localday = templates.currentday;
+templates.localdayname = templates.currentdayname;
+templates.localmonth = templates.currentmonth;
+templates.localyear = templates.currentyear;
+templates.local = templates.current;
+templates.currentmonthname = templates.currentmonth;
+templates.currentmonthabbrev = templates.currentmonth;
+module.exports = templates;
+
+},{"../parsers/pipeSplit":81,"./parsers":60,"./timeSince":61}],60:[function(_dereq_,module,exports){
 'use strict';
 
 var dates = _dereq_('./dates');
 var ymd = dates.ymd;
 var toText = dates.toText;
 var delta = _dereq_('./delta_date');
+var strip = function strip(tmpl) {
+  tmpl = tmpl.replace(/^\{\{/, '');
+  tmpl = tmpl.replace(/\}\}$/, '');
+  return tmpl;
+};
+
+//wrap it up as a template
+var template = function template(date) {
+  return {
+    template: 'date',
+    data: date
+  };
+};
 
 var getBoth = function getBoth(tmpl) {
+  tmpl = strip(tmpl);
   var arr = tmpl.split('|');
   var from = ymd(arr.slice(1, 4));
   var to = arr.slice(4, 7);
@@ -8081,7 +6572,8 @@ var getBoth = function getBoth(tmpl) {
 var parsers = {
 
   //generic {{date|year|month|date}} template
-  date: function date(tmpl, obj) {
+  date: function date(tmpl, r) {
+    tmpl = strip(tmpl);
     var arr = tmpl.split('|');
     arr = arr.slice(1, 8);
     //support 'df=yes|1894|7|26'
@@ -8091,23 +6583,23 @@ var parsers = {
     var date = ymd(arr);
     date.text = toText(date); //make the replacement string
     if (date.text) {
-      obj.dates = obj.dates || [];
-      obj.dates.push(date);
+      r.templates.push(template(date));
     }
     return date.text;
   },
 
   //support parsing of 'February 10, 1992'
-  natural_date: function natural_date(tmpl, obj) {
+  natural_date: function natural_date(tmpl, r) {
+    tmpl = strip(tmpl);
     var arr = tmpl.split('|');
     var str = arr[1] || '';
     // - just a year
     var date = {};
-    if (/^[0-9]{4}$/.test(arr[1])) {
-      date.year = parseInt(arr[1], 10);
+    if (/^[0-9]{4}$/.test(str)) {
+      date.year = parseInt(str, 10);
     } else {
       //parse the date, using the js date object (for now?)
-      var txt = arr[1].replace(/[a-z]+\/[a-z]+/i);
+      var txt = str.replace(/[a-z]+\/[a-z]+/i);
       txt = txt.replace(/[0-9]+:[0-9]+(am|pm)?/i);
       var d = new Date(txt);
       if (isNaN(d.getTime()) === false) {
@@ -8116,36 +6608,34 @@ var parsers = {
         date.date = d.getDate();
       }
     }
-    obj.dates = obj.dates || [];
-    obj.dates.push(date);
+    r.templates.push(template(date));
     return str.trim();
   },
 
   //just grab the first value, and assume it's a year
-  one_year: function one_year(tmpl, obj) {
+  one_year: function one_year(tmpl, r) {
+    tmpl = strip(tmpl);
     var arr = tmpl.split('|');
     var str = arr[1] || '';
     var year = parseInt(str, 10);
-    obj.dates = obj.dates || [];
-    obj.dates.push({
+    r.templates.push(template({
       year: year
-    });
+    }));
     return str.trim();
   },
 
   //assume 'y|m|d' | 'y|m|d'
-  two_dates: function two_dates(tmpl, obj) {
+  two_dates: function two_dates(tmpl, r) {
+    tmpl = strip(tmpl);
     var arr = tmpl.split('|');
     //'b' means show birth-date, otherwise show death-date
     if (arr[1] === 'B' || arr[1] === 'b') {
       var _date = ymd(arr.slice(2, 5));
-      obj.dates = obj.dates || [];
-      obj.dates.push(_date);
+      r.templates.push(template(_date));
       return toText(_date);
     }
     var date = ymd(arr.slice(5, 8));
-    obj.dates = obj.dates || [];
-    obj.dates.push(date);
+    r.templates.push(template(date));
     return toText(date);
   },
 
@@ -8236,62 +6726,1133 @@ var parsers = {
 };
 module.exports = parsers;
 
-},{"./dates":63,"./delta_date":64}],67:[function(_dereq_,module,exports){
+},{"./dates":57,"./delta_date":58}],61:[function(_dereq_,module,exports){
 'use strict';
 
-//templates we support
-var keep = {
-  'main': true,
-  'main article': true,
-  'wide image': true,
-  'coord': true,
+//not all too fancy - used in {{timesince}}
+var timeSince = function timeSince(str) {
+  var d = new Date(str);
+  if (isNaN(d.getTime())) {
+    return '';
+  }
+  var now = new Date();
+  var delta = now.getTime() - d.getTime();
+  var predicate = 'ago';
+  if (delta < 0) {
+    predicate = 'from now';
+    delta = Math.abs(delta);
+  }
+  //figure out units
+  var hours = delta / 1000 / 60 / 60;
+  var days = hours / 24;
+  if (days < 365) {
+    return parseInt(days, 10) + ' days ' + predicate;
+  }
+  var years = days / 365;
+  return parseInt(years, 10) + ' years ' + predicate;
+};
+module.exports = timeSince;
 
-  //date/age/time templates
-  'start': 'date',
-  'end': 'date',
-  'birth': 'date',
-  'death': 'date',
-  'start date': 'date',
-  'end date': 'date',
-  'birth date': 'date',
-  'death date': 'date',
-  'start date and age': 'date',
-  'end date and age': 'date',
-  'birth date and age': 'date',
-  'death date and age': 'date',
-  'birth date and given age': 'date',
-  'death date and given age': 'date',
-  'birth year and age': 'one_year',
-  'death year and age': 'one_year',
+},{}],62:[function(_dereq_,module,exports){
+'use strict';
 
-  //this is insane (hyphen ones are different)
-  'start-date': 'natural_date',
-  'end-date': 'natural_date',
-  'birth-date': 'natural_date',
-  'death-date': 'natural_date',
-  'birth-date and age': 'natural_date',
-  'birth-date and given age': 'natural_date',
-  'death-date and age': 'natural_date',
-  'death-date and given age': 'natural_date',
+var pipeSplit = _dereq_('./parsers/pipeSplit');
 
-  'birthdeathage': 'two_dates',
-  'dob': 'date',
-  'bda': 'date',
-  // 'birth date and age2': 'date',
+//this format seems to be a pattern for these
+var generic = function generic(tmpl) {
+  var order = ['id', 'title', 'description', 'section'];
+  return pipeSplit(tmpl, order);
+};
+var idName = function idName(tmpl) {
+  var order = ['id', 'name'];
+  return pipeSplit(tmpl, order);
+};
 
-  'age': 'age',
-  'age nts': 'age',
-  'age in years': 'diff-y',
-  'age in years and months': 'diff-ym',
-  'age in years, months and days': 'diff-ymd',
-  'age in years and days': 'diff-yd',
-  'age in days': 'diff-d'
-  // 'age in years, months, weeks and days': true,
-  // 'age as of date': true,
+//https://en.wikipedia.org/wiki/Category:External_link_templates
+var externals = {
 
+  //https://en.wikipedia.org/wiki/Template:IMDb_title
+  'imdb title': generic,
+  'imdb name': generic,
+  'imdb episode': generic,
+  'imdb event': generic,
+  'discogs artist': generic,
+  'discogs label': generic,
+  'discogs release': generic,
+  'discogs master': generic,
+  'librivox author': generic,
+  'musicbrainz artist': generic,
+  'musicbrainz label': generic,
+  'musicbrainz recording': generic,
+  'musicbrainz release': generic,
+  'musicbrainz work': generic,
+  'youtube': generic,
+  //https://en.wikipedia.org/wiki/Template:DMOZ
+  dmoz: generic,
+  'find a grave': function findAGrave(tmpl) {
+    var order = ['id', 'name', 'work', 'last', 'first', 'date', 'accessdate'];
+    return pipeSplit(tmpl, order);
+  },
+  'congbio': function congbio(tmpl) {
+    var order = ['id', 'name', 'date'];
+    return pipeSplit(tmpl, order);
+  },
+  'hollywood Walk of Fame': function hollywoodWalkOfFame(tmpl) {
+    var order = ['name'];
+    return pipeSplit(tmpl, order);
+  },
+  'goodreads author': idName,
+  'goodreads book': generic,
+  'twitter': idName,
+  'facebook': idName,
+  'instagram': idName,
+  'tumblr': idName,
+  'pinterest': idName,
+  'espn nfl': idName,
+  'espn nhl': idName,
+  'espn fc': idName,
+  'hockeydb': idName,
+  'fifa player': idName,
+  'worldcat': idName,
+  'worldcat id': idName,
+  'nfl player': idName,
+  'ted speaker': idName,
+  'playmate': idName
+};
+//alias
+externals.imdb = externals['imdb name'];
+externals['imdb episodess'] = externals['imdb episode'];
+module.exports = externals;
+
+},{"./parsers/pipeSplit":81}],63:[function(_dereq_,module,exports){
+'use strict';
+
+var getInside = _dereq_('./parsers/inside');
+var pipeSplit = _dereq_('./parsers/pipeSplit');
+var keyValue = _dereq_('./parsers/keyValue');
+
+var templates = {
+  //a convulated way to make a xml tag - https://en.wikipedia.org/wiki/Template:Tag
+  tag: function tag(tmpl) {
+    var obj = keyValue(tmpl);
+    if (obj.content) {
+      var order = ['tagName', 'open'];
+      var tagName = pipeSplit(tmpl, order).tagName;
+      //ignore ref tags and all that
+      if (tagName !== 'span' && tagName !== 'div') {
+        return '';
+      }
+      return obj.content; //.text();
+    }
+    return '';
+  },
+  plural: function plural(tmpl) {
+    var order = ['num', 'word'];
+    var obj = pipeSplit(tmpl, order);
+    var num = Number(obj.num);
+    var word = obj.word;
+    if (num !== 1) {
+      if (/.y$/.test(word)) {
+        word = word.replace(/y$/, 'ies');
+      } else {
+        word += 's';
+      }
+    }
+    return num + ' ' + word;
+  },
+  'first word': function firstWord(tmpl) {
+    var str = getInside(tmpl).data || '';
+    return str.split(' ')[0];
+  },
+  'trunc': function trunc(tmpl) {
+    var order = ['str', 'len'];
+    var obj = pipeSplit(tmpl, order);
+    return obj.str.substr(0, obj.len);
+  },
+  'str mid': function strMid(tmpl) {
+    var order = ['str', 'start', 'end'];
+    var obj = pipeSplit(tmpl, order);
+    var start = parseInt(obj.start, 10) - 1;
+    var end = parseInt(obj.end, 10);
+    return obj.str.substr(start, end);
+  },
+  //grab the first, second or third pipe
+  'p1': function p1(tmpl) {
+    var order = ['one'];
+    return pipeSplit(tmpl, order).one;
+  },
+  'p2': function p2(tmpl) {
+    var order = ['one', 'two'];
+    return pipeSplit(tmpl, order).two;
+  },
+  'p3': function p3(tmpl) {
+    var order = ['one', 'two', 'three'];
+    return pipeSplit(tmpl, order).three;
+  }
+};
+
+//templates that we simply grab their insides as plaintext
+var inline = ['nowrap', 'big', 'cquote', 'pull quote', 'small', 'smaller', 'midsize', 'larger', 'big', 'bigger', 'large', 'huge', 'resize', 'delink'];
+inline.forEach(function (k) {
+  templates[k] = function (tmpl) {
+    return getInside(tmpl).data;
+  };
+});
+
+module.exports = templates;
+
+},{"./parsers/inside":78,"./parsers/keyValue":79,"./parsers/pipeSplit":81}],64:[function(_dereq_,module,exports){
+'use strict';
+
+var getName = _dereq_('../parsers/_getName');
+var pipeList = _dereq_('../parsers/pipeList');
+var doKeyValue = _dereq_('./keyValue');
+
+var maybeKeyValue = /\| *?[a-z].+= *?[a-z0-9]{2}/i; // {{name|foo=bar}}
+
+//does it look like {{name|foo|bar}}
+var maybePipeList = function maybePipeList(tmpl) {
+  var pipes = tmpl.split('|').length;
+  if (pipes > 2) {
+    var equalSigns = tmpl.split('=').length;
+    if (equalSigns <= 2) {
+      return true;
+    }
+  }
+  return false;
+};
+
+//somehow, we parse this template without knowing how to already
+var generic = function generic(tmpl) {
+  var name = getName(tmpl);
+  //make sure it looks like a key-value template
+  if (maybeKeyValue.test(tmpl) === true) {
+    return doKeyValue(tmpl, name);
+  }
+  if (maybePipeList(tmpl) === true) {
+    return pipeList(tmpl);
+  }
+  return null;
+};
+module.exports = generic;
+
+},{"../parsers/_getName":74,"../parsers/pipeList":80,"./keyValue":65}],65:[function(_dereq_,module,exports){
+'use strict';
+
+var i18n = _dereq_('../../data/i18n');
+var is_infobox = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i');
+var is_citation = new RegExp('^(cite |citation)', 'i');
+var keyValue = _dereq_('../parsers/keyValue');
+
+var infoboxType = function infoboxType(name) {
+  var reg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ') +?', 'i');
+  name = name.replace(reg, '');
+  return name.trim();
+};
+
+//try to parse unknown template as a {{name|key=val|key2=val2}} format
+var doKeyValue = function doKeyValue(tmpl, name) {
+  //handle infoboxes
+  if (is_infobox.test(name)) {
+    return {
+      template: 'infobox',
+      type: infoboxType(name),
+      data: keyValue(tmpl, true)
+    };
+  }
+  var data = keyValue(tmpl);
+  //handle citation templates
+  if (is_citation.test(name)) {
+    var type = name.replace(/^cite +/, '').trim();
+    return {
+      template: 'citation',
+      type: type,
+      data: data
+    };
+  }
+  //generic response
+  //try to bury some annoying ones
+  if (Object.keys(data).length === 1 && (data.date || data.state || data.format)) {
+    return null;
+  }
+  return {
+    template: name,
+    data: data
+  };
+};
+module.exports = doKeyValue;
+
+},{"../../data/i18n":5,"../parsers/keyValue":79}],66:[function(_dereq_,module,exports){
+'use strict';
+
+var convertDMS = _dereq_('./dms-format');
+
+var hemispheres = {
+  n: true,
+  s: true,
+  w: true,
+  e: true
+};
+
+var round = function round(num) {
+  if (typeof num !== 'number') {
+    return num;
+  }
+  var places = 100000;
+  return Math.round(num * places) / places;
+};
+
+var parseCoord = function parseCoord(str) {
+  var obj = {
+    template: 'coord',
+    lat: null,
+    lon: null
+  };
+  var arr = str.split('|');
+  //turn numbers into numbers, normalize N/s
+  var nums = [];
+  for (var i = 0; i < arr.length; i += 1) {
+    var s = arr[i].trim();
+    //make it a number
+    var num = parseFloat(s);
+    if (num || num === 0) {
+      arr[i] = num;
+      nums.push(num);
+    } else if (s.match(/^region:/i)) {
+      obj.region = s.replace(/^region:/i, '');
+      continue;
+    } else if (s.match(/^notes:/i)) {
+      obj.notes = s.replace(/^notes:/i, '');
+      continue;
+    }
+    //DMS-format
+    if (hemispheres[s.toLowerCase()]) {
+      if (obj.lat === null) {
+        nums.push(s);
+        obj.lat = convertDMS(nums);
+        arr = arr.slice(i, arr.length);
+        nums = [];
+        i = 0;
+      } else {
+        nums.push(s);
+        obj.lon = convertDMS(nums);
+      }
+    }
+  }
+  //this is an original `lat|lon` format
+  if (!obj.lon && nums.length === 2) {
+    obj.lat = nums[0];
+    obj.lon = nums[1];
+  }
+  obj.lat = round(obj.lat);
+  obj.lon = round(obj.lon);
+  return obj;
+};
+
+module.exports = parseCoord;
+// {{coord|latitude|longitude|coordinate parameters|template parameters}}
+// {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
+
+},{"./dms-format":67}],67:[function(_dereq_,module,exports){
+'use strict';
+
+//converts DMS (decimal-minute-second) geo format to lat/lng format.
+//major thank you to https://github.com/gmaclennan/parse-dms
+//and https://github.com/WSDOT-GIS/dms-js 👏
+
+//accepts an array of descending Degree, Minute, Second values, with a hemisphere at the end
+//must have N/S/E/W as last thing
+function parseDms(arr) {
+  var hemisphere = arr.pop();
+  var degrees = Number(arr[0] || 0);
+  var minutes = Number(arr[1] || 0);
+  var seconds = Number(arr[2] || 0);
+  if (typeof hemisphere !== 'string' || isNaN(degrees)) {
+    return null;
+  }
+  var sign = 1;
+  if (/[SW]/i.test(hemisphere)) {
+    sign = -1;
+  }
+  var decDeg = sign * (degrees + minutes / 60 + seconds / 3600);
+  return decDeg;
+}
+module.exports = parseDms;
+// console.log(parseDms([57, 18, 22, 'N']));
+// console.log(parseDms([4, 27, 32, 'W']));
+
+},{}],68:[function(_dereq_,module,exports){
+'use strict';
+
+var parseCoord = _dereq_('./coord');
+var strip = _dereq_('../parsers/_strip');
+
+//
+var geoTemplates = {
+  coord: function coord(tmpl) {
+    tmpl = strip(tmpl);
+    return parseCoord(tmpl);
+  }
+};
+module.exports = geoTemplates;
+
+},{"../parsers/_strip":76,"./coord":66}],69:[function(_dereq_,module,exports){
+'use strict';
+
+//we explicitly ignore these, because they sometimes have resolve some data
+var list = [
+//https://en.wikipedia.org/wiki/category:templates_with_no_visible_output
+'anchor', 'defaultsort', 'use american english', 'use australian english', 'use bangladeshi english', 'use british english', 'use british english oxford spelling', 'use canadian english', 'use dmy dates', 'use harvard referencing', 'use hong kong english', 'use indian english', 'use irish english', 'use jamaican english', 'use list-defined references', 'use mdy dates', 'use new zealand english', 'use pakistani english', 'use singapore english', 'use south african english', 'void',
+//https://en.wikipedia.org/wiki/Category:Protection_templates
+'pp', 'pp-move-indef', 'pp-semi-indef', 'pp-vandalism',
+//https://en.wikipedia.org/wiki/Template:R
+'r',
+//out-of-scope still - https://en.wikipedia.org/wiki/Template:Tag
+'#tag',
+//https://en.wikipedia.org/wiki/Template:Navboxes
+'navboxes', 'reflist', 'div col', 'flag', 'authority control',
+//https://en.wikipedia.org/wiki/Template:Citation_needed
+'better source', 'citation needed', 'clarify', 'cite quote', 'dead link', 'by whom', 'dubious', 'when', 'who', 'quantify', 'refimprove', 'weasel inline'];
+var ignore = list.reduce(function (h, str) {
+  h[str] = true;
+  return h;
+}, {});
+module.exports = ignore;
+
+},{}],70:[function(_dereq_,module,exports){
+'use strict';
+
+// const findRecursive = require('../../lib/recursive_match');
+var getName = _dereq_('./parsers/_getName');
+var getTemplates = _dereq_('./parsers/_getTemplates');
+
+var dates = _dereq_('./dates');
+var geo = _dereq_('./geo');
+var inline = _dereq_('./inline');
+var misc = _dereq_('./misc');
+var generic = _dereq_('./generic');
+var links = _dereq_('./links');
+var formatting = _dereq_('./formatting');
+var pronounce = _dereq_('./pronounce');
+var external = _dereq_('./external');
+var ignore = _dereq_('./ignore');
+
+//put them all together
+var inlineParsers = Object.assign({}, dates, inline, links, formatting);
+var bigParsers = Object.assign({}, geo, pronounce, misc, external);
+
+var doTemplate = function doTemplate(tmpl, wiki, r) {
+  var name = getName(tmpl);
+  //we explicitly ignore these templates
+  if (ignore.hasOwnProperty(name) === true) {
+    wiki = wiki.replace(tmpl, '');
+    return wiki;
+  }
+  //string-replacement templates
+  if (inlineParsers.hasOwnProperty(name) === true) {
+    var str = inlineParsers[name](tmpl, r);
+    wiki = wiki.replace(tmpl, str);
+    return wiki;
+  }
+  //section-template parsers
+  if (bigParsers.hasOwnProperty(name) === true) {
+    var _obj = bigParsers[name](tmpl);
+    if (_obj) {
+      r.templates.push(_obj);
+    }
+    wiki = wiki.replace(tmpl, '');
+    return wiki;
+  }
+  //fallback parser
+  var obj = generic(tmpl, name);
+  if (obj) {
+    r.templates.push(obj);
+    wiki = wiki.replace(tmpl, '');
+    return wiki;
+  }
+  //bury this template, if we don't know it
+  // console.log(`  - no parser for '${name}' -`);
+  // console.log('');
+  wiki = wiki.replace(tmpl, '');
+
+  return wiki;
+};
+
+//reduce the scary recursive situations
+var allTemplates = function allTemplates(r, wiki, options) {
+  var templates = getTemplates(wiki);
+  // console.log(templates);
+  //first, do the nested ones
+  templates.nested.forEach(function (tmpl) {
+    wiki = doTemplate(tmpl, wiki, r, options);
+  });
+  // console.log(wiki);
+  //then, reparse wiki for the top-level ones
+  templates = getTemplates(wiki);
+  templates.top.forEach(function (tmpl) {
+    wiki = doTemplate(tmpl, wiki, r, options);
+  });
+  return wiki;
+};
+
+module.exports = allTemplates;
+
+},{"./dates":59,"./external":62,"./formatting":63,"./generic":64,"./geo":68,"./ignore":69,"./inline":71,"./links":72,"./misc":73,"./parsers/_getName":74,"./parsers/_getTemplates":75,"./pronounce":82}],71:[function(_dereq_,module,exports){
+'use strict';
+
+var keyValue = _dereq_('./parsers/keyValue');
+var pipeSplit = _dereq_('./parsers/pipeSplit');
+var strip = _dereq_('./parsers/_strip');
+
+var inline = {
+  //newline-based list - https://en.wikipedia.org/wiki/Template:Plainlist
+  plainlist: function plainlist(tmpl) {
+    tmpl = strip(tmpl);
+    //remove the title
+    var arr = tmpl.split('|');
+    arr = arr.slice(1);
+    tmpl = arr.join('|');
+    //split on newline
+    arr = tmpl.split(/\n ?\* ?/);
+    arr = arr.filter(function (s) {
+      return s;
+    });
+    return arr.join(', ');
+  },
+  //https://en.wikipedia.org/wiki/Template:Collapsible_list
+  'collapsible list': function collapsibleList(tmpl) {
+    var val = strip(tmpl);
+    var arr = val.split('|');
+    arr = arr.map(function (s) {
+      return s.trim();
+    });
+    arr = arr.filter(function (str) {
+      return (/^title ?=/i.test(str) === false
+      );
+    });
+    return arr.slice(1).join(', ');
+  },
+  //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
+  convert: function convert(tmpl) {
+    var order = ['num', 'two', 'three', 'four'];
+    var obj = pipeSplit(tmpl, order);
+    //todo: support plural units
+    if (obj.two === '-' || obj.two === 'to' || obj.two === 'and') {
+      if (obj.four) {
+        return obj.num + ' ' + obj.two + ' ' + obj.three + ' ' + obj.four;
+      }
+      return obj.num + ' ' + obj.two + ' ' + obj.three;
+    }
+    return obj.num + ' ' + obj.two;
+  },
+  hlist: function hlist(tmpl) {
+    var val = strip(tmpl).replace(/^hlist\s?\|/, '');
+    var arr = val.split('|');
+    arr = arr.filter(function (s) {
+      return s && s.indexOf('=') === -1;
+    });
+    return arr.join(' · ');
+  },
+  //https://en.wikipedia.org/wiki/Template:Term
+  term: function term(tmpl) {
+    var order = ['term'];
+    var obj = pipeSplit(tmpl, order);
+    return obj.term + ':';
+  },
+  defn: function defn(tmpl) {
+    var order = ['desc'];
+    var obj = pipeSplit(tmpl, order);
+    return obj.desc;
+  },
+  //https://en.wikipedia.org/wiki/Template:Interlanguage_link
+  ill: function ill(tmpl) {
+    var order = ['text', 'lan1', 'text1', 'lan2', 'text2'];
+    var obj = pipeSplit(tmpl, order);
+    return obj.text;
+  },
+  lang: function lang(tmpl) {
+    var order = ['lang', 'text'];
+    var obj = pipeSplit(tmpl, order);
+    return obj.text;
+  },
+  //https://en.wikipedia.org/wiki/Template:Frac
+  frac: function frac(tmpl) {
+    var order = ['a', 'b', 'c'];
+    var obj = pipeSplit(tmpl, order);
+    if (obj.c) {
+      return obj.a + ' ' + obj.b + '/' + obj.c;
+    }
+    if (obj.b) {
+      return obj.a + '/' + obj.b;
+    }
+    return '1/' + obj.b;
+  },
+  //https://en.wikipedia.org/wiki/Template:OldStyleDate
+  oldstyledate: function oldstyledate(tmpl) {
+    var order = ['date', 'year'];
+    var obj = pipeSplit(tmpl, order);
+    var str = obj.date;
+    if (obj.year) {
+      str += ' ' + obj.year;
+    }
+    return str;
+  },
+  //https://en.wikipedia.org/wiki/Template:Height - {{height|ft=6|in=1}}
+  height: function height(tmpl) {
+    var obj = keyValue(tmpl);
+    var result = [];
+    var units = ['m', 'cm', 'ft', 'in']; //order matters
+    units.forEach(function (unit) {
+      if (obj.hasOwnProperty(unit) === true) {
+        result.push(obj[unit] + unit);
+      }
+    });
+    return result.join(' ');
+  },
+
+  'block indent': function blockIndent(tmpl) {
+    var obj = keyValue(tmpl);
+    if (obj['1']) {
+      return '\n' + obj['1'] + '\n';
+    }
+    return '';
+  },
+  'quote': function quote(tmpl) {
+    var obj = keyValue(tmpl);
+    if (obj.text) {
+      var str = '"' + obj.text + '"';
+      if (obj.author) {
+        str += '  - ' + obj.author;
+        str += '\n';
+      }
+      return str;
+    }
+    return '';
+  }
+};
+//aliases
+inline.flatlist = inline.plainlist;
+
+inline.ublist = inline.plainlist;
+inline['unbulleted list'] = inline['collapsible list'];
+inline['ubl'] = inline['collapsible list'];
+inline['ordered list'] = inline['collapsible list'];
+
+inline['str left'] = inline.trunc;
+inline['str crop'] = inline.trunc;
+module.exports = inline;
+
+},{"./parsers/_strip":76,"./parsers/keyValue":79,"./parsers/pipeSplit":81}],72:[function(_dereq_,module,exports){
+'use strict';
+
+var pipeSplit = _dereq_('./parsers/pipeSplit');
+
+var templates = {
+  /* mostly wiktionary*/
+  etyl: function etyl(tmpl) {
+    var order = ['lang', 'page'];
+    return pipeSplit(tmpl, order).page || '';
+  },
+  mention: function mention(tmpl) {
+    var order = ['lang', 'page'];
+    return pipeSplit(tmpl, order).page || '';
+  },
+  link: function link(tmpl) {
+    var order = ['lang', 'page'];
+    return pipeSplit(tmpl, order).page || '';
+  }
 
 };
-module.exports = keep;
 
-},{}]},{},[30])(30)
+//these are insane
+// https://en.wikipedia.org/wiki/Template:Tl
+var links = ['lts', 't', 'tfd links', 'tiw', 'tltt', 'tetl', 'tsetl', 'ti', 'tic', 'tiw', 'tlt', 'ttl', 'twlh', 'tl2', 'tlu', 'demo', 'hatnote', 'xpd', 'para', 'elc', 'xtag', 'mli', 'mlix', '#invoke', 'url' //https://en.wikipedia.org/wiki/Template:URL
+];
+
+//keyValues
+links.forEach(function (k) {
+  templates[k] = function (tmpl) {
+    var order = ['first', 'second'];
+    var obj = pipeSplit(tmpl, order);
+    return obj.second || obj.first;
+  };
+});
+//aliases
+templates.m = templates.mention;
+templates['m-self'] = templates.mention;
+templates.l = templates.link;
+templates.ll = templates.link;
+templates['l-self'] = templates.link;
+module.exports = templates;
+
+},{"./parsers/pipeSplit":81}],73:[function(_dereq_,module,exports){
+'use strict';
+
+var keyValue = _dereq_('./parsers/keyValue');
+var getInside = _dereq_('./parsers/inside');
+var pipeSplit = _dereq_('./parsers/pipeSplit');
+var pipeList = _dereq_('./parsers/pipeList');
+
+var sisterProjects = {
+  wikt: 'wiktionary',
+  commons: 'commons',
+  c: 'commons',
+  commonscat: 'commonscat',
+  n: 'wikinews',
+  q: 'wikiquote',
+  s: 'wikisource',
+  a: 'wikiauthor',
+  b: 'wikibooks',
+  voy: 'wikivoyage',
+  v: 'wikiversity',
+  d: 'wikidata',
+  species: 'wikispecies',
+  m: 'meta',
+  mw: 'mediawiki'
+};
+
+var parsers = {
+
+  'book bar': pipeList,
+
+  main: function main(tmpl) {
+    var obj = getInside(tmpl);
+    return {
+      template: 'main',
+      page: obj.data
+    };
+  },
+  wide_image: function wide_image(tmpl) {
+    var obj = getInside(tmpl);
+    return {
+      template: 'wide_image',
+      image: obj.data
+    };
+  },
+
+  //https://en.wikipedia.org/wiki/Template:Taxon_info
+  'taxon info': function taxonInfo(tmpl) {
+    var order = ['taxon', 'item'];
+    return pipeSplit(tmpl, order);
+  },
+  'uss': function uss(tmpl) {
+    var order = ['ship', 'id'];
+    return pipeSplit(tmpl, order);
+  },
+
+  //same in every language.
+  citation: function citation(tmpl) {
+    var data = keyValue(tmpl);
+    return {
+      template: 'citation',
+      data: data
+    };
+  },
+
+  //https://en.wikipedia.org/wiki/Template:Redirect
+  redirect: function redirect(tmpl) {
+    var data = pipeList(tmpl).data;
+    var links = [];
+    for (var i = 1; i < data.length; i += 2) {
+      links.push({
+        page: data[i + 1],
+        desc: data[i]
+      });
+    }
+    return {
+      template: 'redirect',
+      redirect: data[0],
+      links: links
+    };
+  },
+
+  //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
+  'cite gnis': function citeGnis(tmpl) {
+    var order = ['id', 'name', 'type'];
+    var obj = pipeSplit(tmpl, order);
+    obj.template = 'citation';
+    obj.type = 'gnis';
+    return obj;
+  },
+  'sfn': function sfn(tmpl) {
+    var order = ['author', 'year', 'location'];
+    var obj = pipeSplit(tmpl, order);
+    obj.template = 'citation';
+    obj.type = 'sfn';
+    return obj;
+  },
+  'audio': function audio(tmpl) {
+    var order = ['file', 'text', 'type'];
+    var obj = pipeSplit(tmpl, order);
+    return obj;
+  },
+  'spoken wikipedia': function spokenWikipedia(tmpl) {
+    var order = ['file', 'date'];
+    var obj = pipeSplit(tmpl, order);
+    obj.template = 'audio';
+    return obj;
+  },
+
+  //https://en.wikipedia.org/wiki/Template:Sister_project_links
+  'sister project links': function sisterProjectLinks(tmpl) {
+    var data = keyValue(tmpl);
+    var links = {};
+    Object.keys(sisterProjects).forEach(function (k) {
+      if (data.hasOwnProperty(k) === true) {
+        links[sisterProjects[k]] = data[k]; //.text();
+      }
+    });
+    return {
+      template: 'sister project links',
+      links: links
+    };
+  },
+
+  //https://en.wikipedia.org/wiki/Template:Subject_bar
+  'subject bar': function subjectBar(tmpl) {
+    var data = keyValue(tmpl);
+    Object.keys(data).forEach(function (k) {
+      data[k] = data[k].text();
+      if (sisterProjects.hasOwnProperty(k)) {
+        data[sisterProjects[k]] = data[k];
+        delete data[k];
+      }
+    });
+    return {
+      template: 'subject bar',
+      links: data
+    };
+  }
+};
+//aliases
+parsers['cite'] = parsers.citation;
+parsers['sfnref'] = parsers.sfn;
+parsers['harvid'] = parsers.sfn;
+parsers['harvnb'] = parsers.sfn;
+parsers['redir'] = parsers.redirect;
+parsers['sisterlinks'] = parsers['sister project links'];
+
+module.exports = parsers;
+
+},{"./parsers/inside":78,"./parsers/keyValue":79,"./parsers/pipeList":80,"./parsers/pipeSplit":81}],74:[function(_dereq_,module,exports){
+'use strict';
+
+//get the name of the template
+//templates are usually '{{name|stuff}}'
+var getName = function getName(tmpl) {
+  var name = null;
+  //{{name|foo}}
+  if (/^\{\{[^\n]+\|/.test(tmpl)) {
+    name = (tmpl.match(/^\{\{(.+?)\|/) || [])[1];
+  } else if (tmpl.indexOf('\n') !== -1) {
+    // {{name \n...
+    name = (tmpl.match(/^\{\{(.+?)\n/) || [])[1];
+  } else {
+    //{{name here}}
+    name = (tmpl.match(/^\{\{(.+?)\}\}$/) || [])[1];
+  }
+  if (name) {
+    name = name.replace(/:.*/, '');
+    name = name.trim().toLowerCase();
+  }
+  //support {{imdb title|id}}
+  // if (/^imdb /i.test(name) === true) {
+  //   name = 'imdb';
+  // }
+  return name;
+};
+// console.log(templateName('{{name|foo}}'));
+// console.log(templateName('{{name here}}'));
+// console.log(templateName('{{CITE book |title=the killer and the cartoons }}'));
+// console.log(templateName(`{{name
+// |key=val}}`));
+module.exports = getName;
+
+},{}],75:[function(_dereq_,module,exports){
+'use strict';
+
+var open = '{';
+var close = '}';
+
+var strip = function strip(str) {
+  str = str.replace(/^\{\{/, '');
+  str = str.replace(/\}\}$/, '');
+  return str;
+};
+
+//
+var findFlat = function findFlat(wiki) {
+  var depth = 0;
+  var list = [];
+  var carry = [];
+  var chars = wiki.split('');
+  chars.forEach(function (c) {
+    //open it
+    if (c === open) {
+      depth += 1;
+    }
+    //close it
+    if (depth > 0) {
+      if (c === close) {
+        depth -= 1;
+        if (depth === 0) {
+          var tmpl = carry.join('') + c;
+          carry = [];
+          //last check
+          if (/\{\{/.test(tmpl) && /\}\}/.test(tmpl)) {
+            list.push(tmpl);
+          }
+          return;
+        }
+      }
+      //require two '{{' to open it
+      if (depth === 1 && c !== open && c !== close) {
+        depth = 0;
+        carry = [];
+        return;
+      }
+      carry.push(c);
+      return;
+    }
+  });
+  return list;
+};
+
+//get all nested templates
+var findNested = function findNested(top) {
+  var deep = [];
+  top.forEach(function (str) {
+    if (/\{\{/.test(str.substr(2)) === true) {
+      str = strip(str);
+      findFlat(str).forEach(function (o) {
+        if (o) {
+          deep.push(o);
+        }
+      });
+    }
+  });
+  return deep;
+};
+
+var getTemplates = function getTemplates(wiki) {
+  var list = findFlat(wiki);
+  return {
+    top: list,
+    nested: findNested(list)
+  };
+};
+
+module.exports = getTemplates;
+
+// console.log(getTemplates('he is president. {{nowrap|he is {{age|1980}} years}} he lives in {{date}} texas'));
+
+},{}],76:[function(_dereq_,module,exports){
+'use strict';
+
+//remove the top/bottom off the template
+var strip = function strip(tmpl) {
+  tmpl = tmpl.replace(/^\{\{/, '');
+  tmpl = tmpl.replace(/\}\}$/, '');
+  return tmpl;
+};
+module.exports = strip;
+
+},{}],77:[function(_dereq_,module,exports){
+'use strict';
+
+var keyValue = _dereq_('./keyValue');
+var getName = _dereq_('./_getName');
+var maybeKeyValue = /\|.+?[a-z].+?=/; // |foo=
+
+var knownTemplate = function knownTemplate(name) {
+  if (/cite [a-z0-9]/.test(name) || name.toLowerCase().trim() === 'citation') {
+    return 'citation';
+  }
+  return null;
+};
+
+//just go for it.
+var genericTemplate = function genericTemplate(tmpl) {
+  if (maybeKeyValue.test(tmpl)) {
+    var name = getName(tmpl);
+    var data = keyValue(tmpl);
+    if (data) {
+      var obj = {
+        name: name,
+        data: data
+      };
+      var template = knownTemplate(name);
+      if (template) {
+        obj.template = template;
+      }
+      return obj;
+    }
+  }
+  return null;
+};
+module.exports = genericTemplate;
+
+},{"./_getName":74,"./keyValue":79}],78:[function(_dereq_,module,exports){
+'use strict';
+
+var strip = _dereq_('./_strip');
+
+var grabInside = function grabInside(tmpl) {
+  tmpl = strip(tmpl);
+  var parts = tmpl.split('|');
+  if (typeof parts[1] !== 'string') {
+    return null;
+  }
+  var value = parts[1].trim();
+  value = value.replace(/^[a-z0-9]{1,7}=/, ''); //support 'foo=value'
+  return {
+    template: parts[0].trim().toLowerCase(),
+    data: value
+  };
+};
+module.exports = grabInside;
+
+},{"./_strip":76}],79:[function(_dereq_,module,exports){
+'use strict';
+
+var parseLine = _dereq_('../../sentence').parseLine;
+var Sentence = _dereq_('../../sentence/Sentence');
+var strip = _dereq_('./_strip');
+
+//turn '| key = value' into an object
+var keyValue = function keyValue(tmpl, isInfobox) {
+  tmpl = strip(tmpl);
+  var arr = tmpl.split(/\n?\|/);
+  //look for broken-up links and fix them :(
+  arr.forEach(function (a, i) {
+    if (!arr[i + 1]) {
+      return;
+    }
+    if (/\[\[[^\]]+$/.test(a) || /\{\{[^\}]+$/.test(a)) {
+      // [[link|text]] or {{imdb|2386}}
+      arr[i + 1] = arr[i] + '|' + arr[i + 1];
+      arr[i] = null;
+    }
+  });
+  arr = arr.filter(function (a) {
+    return a && a.indexOf('=') !== -1;
+  });
+  var obj = arr.reduce(function (h, line) {
+    var parts = line.split(/=/);
+    if (parts.length > 2) {
+      parts[1] = parts.slice(1).join('=');
+    }
+    var key = parts[0].toLowerCase().trim();
+    var val = parts[1].trim();
+    if (key && val) {
+      val = parseLine(val);
+      if (isInfobox) {
+        h[key] = new Sentence(val); //.json();
+      } else {
+        h[key] = val.text;
+        if (val.links) {
+          h._links = h._links || [];
+          h._links = h._links.concat(val.links);
+        }
+      }
+    }
+    return h;
+  }, {});
+  return obj;
+};
+module.exports = keyValue;
+
+},{"../../sentence":54,"../../sentence/Sentence":52,"./_strip":76}],80:[function(_dereq_,module,exports){
+'use strict';
+
+var keyVal = /[a-z0-9]+ *?= *?[a-z0-9]/i;
+var strip = _dereq_('./_strip');
+
+//generic unamed lists
+// {{name|one|two|three}}
+var pipeList = function pipeList(tmpl) {
+  tmpl = strip(tmpl);
+  var arr = tmpl.split(/\|/g);
+  var obj = {
+    template: arr[0].trim().toLowerCase()
+  };
+  arr = arr.slice(1);
+
+  arr.forEach(function (k, i) {
+    if (arr[i]) {
+      //support gross 'id=234' format inside the value
+      if (keyVal.test(arr[i]) === true) {
+        arr[i] = arr[i].split('=')[1];
+      }
+      arr[i] = arr[i].trim();
+    }
+  });
+  obj.data = arr;
+  return obj;
+};
+module.exports = pipeList;
+
+},{"./_strip":76}],81:[function(_dereq_,module,exports){
+'use strict';
+
+var keyVal = /[a-z0-9]+ *?= *?[a-z0-9]/i;
+var strip = _dereq_('./_strip');
+
+//templates that look like this:
+// {{name|one|two|three}}
+var pipeSplit = function pipeSplit(tmpl, order) {
+  tmpl = strip(tmpl);
+  var arr = tmpl.split(/\|/g);
+  var obj = {
+    template: arr[0].trim().toLowerCase()
+  };
+  arr.shift();
+  order.forEach(function (k, i) {
+    if (arr[i]) {
+      //support gross 'id=234' format inside the value
+      var val = arr[i];
+      var key = k;
+      if (keyVal.test(arr[i]) === true) {
+        var both = arr[i].split('=');
+        val = both[1];
+        key = both[0].trim().toLowerCase();
+      }
+      val = val.trim();
+      obj[key] = val;
+    }
+  });
+  return obj;
+};
+module.exports = pipeSplit;
+
+},{"./_strip":76}],82:[function(_dereq_,module,exports){
+'use strict';
+
+var strip = _dereq_('./parsers/_strip');
+// pronounciation info
+// https://en.wikipedia.org/wiki/Template:IPA
+var ipaTemplates = {
+  ipa: function ipa(tmpl) {
+    var arr = strip(tmpl).split('|');
+    var lang = arr[0].replace(/^ipa(c-)?/i, '');
+    lang = lang || null;
+    return {
+      template: 'ipa',
+      lang: lang,
+      ipa: arr.slice(1).join('')
+    };
+  }
+};
+// - other languages -
+// Polish, {{IPAc-pl}}	{{IPAc-pl|'|sz|cz|e|ć|i|n}} → [ˈʂt͡ʂɛt͡ɕin]
+// Portuguese, {{IPAc-pt}}	{{IPAc-pt|p|o|<|r|t|u|'|g|a|l|lang=pt}} and {{IPAc-pt|b|r|a|'|s|i|l|lang=br}} → [puɾtuˈɣaɫ] and [bɾaˈsiw]
+var i18n = ['ipac-ar', 'ipac-cmn', 'ipac-en', 'ipac-es', 'ipac-fr', 'ipac-ga', 'ipac-he', 'ipac-hu', 'ipac-it', 'ipac-ja', 'ipac-ka', 'ipac-ko', 'ipac-mh', 'ipa-mg', 'ipac-mi', 'ipac-pl', 'ipac-pt', 'ipac-ro', 'ipac-yue'];
+i18n.forEach(function (k) {
+  return ipaTemplates[k] = ipaTemplates.ipa;
+});
+module.exports = ipaTemplates;
+
+},{"./parsers/_strip":76}]},{},[24])(24)
 });

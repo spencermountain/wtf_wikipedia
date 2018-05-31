@@ -1,5 +1,4 @@
 const kill_xml = require('./kill_xml');
-const wordTemplates = require('./word_templates');
 
 //this mostly-formatting stuff can be cleaned-up first, to make life easier
 function preProcess(r, wiki, options) {
@@ -18,13 +17,12 @@ function preProcess(r, wiki, options) {
   wiki = wiki.replace(/\[\[([a-z][a-z]|simple|war|ceb|min):.{2,60}\]\]/i, '');
   // these '{{^}}' things are nuts, and used as some ilicit spacing thing.
   wiki = wiki.replace(/\{\{\^\}\}/g, '');
-  //expand inline templates like {{date}}
-  wiki = wordTemplates(wiki, r);
+  //yup, oxford comma template
+  wiki = wiki.replace(/\{\{\,\}\}/g, ',');
   //give it the inglorious send-off it deserves..
   wiki = kill_xml(wiki, r, options);
   //({{template}},{{template}}) leaves empty parentheses
   wiki = wiki.replace(/\([,;: ]+?\)/g, '');
-
   return wiki;
 }
 module.exports = preProcess;

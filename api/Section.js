@@ -36,6 +36,12 @@ module.exports = [
     description: '',
   },
   {
+    name: 'infoboxes',
+    returns: 'Array',
+    example: ``,
+    description: '',
+  },
+  {
     name: 'lists',
     returns: 'Array',
     example: ``,
@@ -51,6 +57,11 @@ module.exports = [
     name: 'images',
     returns: 'Array',
     example: ``,
+    description: '',
+  },
+  {
+    name: 'citations',
+    returns: 'Array',
     description: '',
   },
   {

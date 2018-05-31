@@ -3,7 +3,7 @@
     "es6": true
   },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2017,
     "sourceType": "module",
     "ecmaFeatures": { },
   },
@@ -13,6 +13,7 @@
     "prefer-const": 0,
     "no-extra-parens": 0,
     "no-dupe-keys": 2,
+    "no-undef": 2,
     "no-unreachable": 2,
     "eqeqeq": 1,
     "keyword-spacing": 0,
@@ -36,5 +37,19 @@
     "no-octal-escape": 2,
     "no-constant-condition": 1,
     "no-unused-expressions": 2
+  },
+  "globals": {
+    "process": true,
+    "require": true,
+    "console": true,
+    "module": true,
+    "exports": true,
+    "setInterval": true,
+    "setTimeout": true,
+    "global": true,
+    "clearInterval": true,
+    "clearTimeout": true,
+    "__dirname": true,
+    "__pathname": true,
   }
 }
