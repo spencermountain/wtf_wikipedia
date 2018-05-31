@@ -36,17 +36,9 @@ const wtf = require('./src/index');
 
 // var doc = readFile('toronto');
 
-// var str = `{{Infobox
-// | bodystyle   =
-// | birth_name  = Bradley Edward Manning
-// | title       = Chelsea Manning
-// | titlestyle  =
-// }}`;
-// var doc = wtf(str);
-// console.log(doc.templates());
-
-wtf.fetch('Chelsea Manning', 'simple').then(doc => {
-  // console.log(doc.plaintext());
-  console.log(doc.links());
-// console.log(doc.templates().filter(t => t.template !== 'citation'));
-});
+console.log(wtf('that cat is [[aasdf]] cool dude').html());
+// wtf.fetch('Dusseldorf', 'en').then(doc => {
+//   // console.log(doc.plaintext());
+//   console.log(doc.links());
+// // console.log(doc.templates().filter(t => t.template !== 'citation'));
+// });

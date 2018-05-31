@@ -62,3 +62,4 @@
 * templates, including citations, try to be flat-text, and no-longer return Sentence objects
 ##4.1.0
 * remove repeated/redundant text in `.links()` results
+* don't automatically titlecase link srcs anymore
