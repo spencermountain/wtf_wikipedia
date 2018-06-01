@@ -33,7 +33,7 @@ const postProcess = function(data) {
   let pages = Object.keys(data.query.pages);
   let docs = pages.map(id => {
     let page = data.query.pages[id] || {};
-    if (page.hasOwnProperty('missing')) {
+    if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
       return null;
     }
     let text = page.revisions[0]['*'];
