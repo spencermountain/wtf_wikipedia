@@ -16,30 +16,30 @@ const methods = {
     return arr;
   },
   bolds: function(n) {
-    if (!this.data || !this.data.fmt || !this.data.fmt.bold) {
-      return [];
+    let arr = [];
+    if (this.data && this.data.fmt && this.data.fmt.bold) {
+      arr = this.data.fmt.bold || [];
     }
-    let arr = this.data.fmt.bold || [];
     if (typeof n === 'number') {
       return arr[n];
     }
     return arr;
   },
   italics: function(n) {
-    if (!this.data || !this.data.fmt || !this.data.fmt.italic) {
-      return [];
+    let arr = [];
+    if (this.data && this.data.fmt && this.data.fmt.italic) {
+      arr = this.data.fmt.italic || [];
     }
-    let arr = this.data.fmt.italic || [];
     if (typeof n === 'number') {
       return arr[n];
     }
     return arr;
   },
   dates: function(n) {
-    if (!this.data || !this.data.dates) {
-      return [];
+    let arr = [];
+    if (this.data && this.data.dates) {
+      arr = this.data.dates || [];
     }
-    let arr = this.data.dates || [];
     if (typeof n === 'number') {
       return arr[n];
     }

@@ -1,4 +1,4 @@
-/* wtf_wikipedia v4.1.1
+/* wtf_wikipedia v4.2.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2253,7 +2253,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "4.1.1",
+  "version": "4.2.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -5918,30 +5918,30 @@ var methods = {
     return arr;
   },
   bolds: function bolds(n) {
-    if (!this.data || !this.data.fmt || !this.data.fmt.bold) {
-      return [];
+    var arr = [];
+    if (this.data && this.data.fmt && this.data.fmt.bold) {
+      arr = this.data.fmt.bold || [];
     }
-    var arr = this.data.fmt.bold || [];
     if (typeof n === 'number') {
       return arr[n];
     }
     return arr;
   },
   italics: function italics(n) {
-    if (!this.data || !this.data.fmt || !this.data.fmt.italic) {
-      return [];
+    var arr = [];
+    if (this.data && this.data.fmt && this.data.fmt.italic) {
+      arr = this.data.fmt.italic || [];
     }
-    var arr = this.data.fmt.italic || [];
     if (typeof n === 'number') {
       return arr[n];
     }
     return arr;
   },
   dates: function dates(n) {
-    if (!this.data || !this.data.dates) {
-      return [];
+    var arr = [];
+    if (this.data && this.data.dates) {
+      arr = this.data.dates || [];
     }
-    var arr = this.data.dates || [];
     if (typeof n === 'number') {
       return arr[n];
     }
