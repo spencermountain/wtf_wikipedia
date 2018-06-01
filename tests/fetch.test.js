@@ -26,3 +26,27 @@ test('fetch-as-callback', t => {
     t.ok(doc.categories().length > 0, 'callback returned document');
   });
 });
+
+test('fetch-invalid', t => {
+  t.plan(1);
+  var p = wtf.fetch('Taylor%20Swift', 'en', {
+    'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
+  });p.then(function(doc) {
+    t.ok(doc === null, 'invalid character query returns null');
+  });
+  p.catch(function(e) {
+    t.throw(e);
+  });
+});
+
+test('fetch-missing', t => {
+  t.plan(1);
+  var p = wtf.fetch('NonExistentPage', 'en', {
+    'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
+  });p.then(function(doc) {
+    t.ok(doc === null, 'fetching non-existent page returns null');
+  });
+  p.catch(function(e) {
+    t.throw(e);
+  });
+});
