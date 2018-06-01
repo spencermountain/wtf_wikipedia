@@ -63,3 +63,5 @@
 ## 4.1.0
 * remove repeated/redundant text in `.links()` results
 * don't automatically titlecase link srcs anymore
+## 4.2.0
+* return a result or undefined for `sentences.bolds(0)`, and the like

@@ -29,17 +29,17 @@ const wtf = require('./src/index');
 // var str = `{{Twitter | AcadiaU | Acadia University }}`;
 // var str = `{{Facebook|zuck|Mark Zuckerberg}}`;
 // var str = `{{ESPN NFL | 10536 | Trent Edwards }}`;
-// var str = `{{small|(1976–77)}}`;
-// var doc = wtf(str);
-// console.log(doc.plaintext());
+var str = `asdf is cool. lkajsdf`;
+var doc = wtf(str);
+console.log(doc.title());
 // console.log(doc.templates(0));
 
 // var doc = readFile('toronto');
 
 // console.log(wtf('that cat is [[aasdf]] cool dude').html());
 // wtf.fetch('Dusseldorf', 'en').then(doc => {
-wtf.fetch('Belgium', 'simple').then(doc => {
-  //   // console.log(doc.plaintext());
-  console.log(doc.templates());
+// wtf.fetch('Belgium', 'simple').then(doc => {
+//   // console.log(doc.plaintext());
+// console.log(doc.templates());
 // // console.log(doc.templates().filter(t => t.template !== 'citation'));
-});
+// });
