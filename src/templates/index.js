@@ -25,7 +25,7 @@ const doTemplate = function(tmpl, wiki, r) {
     return wiki;
   }
   //string-replacement templates
-  if (inlineParsers.hasOwnProperty(name) === true) {
+  if ((inlineParsers.hasOwnProperty(name) === true ) && (inlineParsers[name])) {
     let str = inlineParsers[name](tmpl, r);
     wiki = wiki.replace(tmpl, str);
     return wiki;
