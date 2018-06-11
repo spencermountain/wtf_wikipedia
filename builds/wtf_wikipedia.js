@@ -1,4 +1,4 @@
-/* wtf_wikipedia v4.2.0
+/* wtf_wikipedia v4.2.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2253,7 +2253,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -3896,7 +3896,7 @@ var postProcess = function postProcess(data) {
   var pages = Object.keys(data.query.pages);
   var docs = pages.map(function (id) {
     var page = data.query.pages[id] || {};
-    if (page.hasOwnProperty('missing')) {
+    if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
       return null;
     }
     var text = page.revisions[0]['*'];
@@ -6902,7 +6902,8 @@ var templates = {
 var inline = ['nowrap', 'big', 'cquote', 'pull quote', 'small', 'smaller', 'midsize', 'larger', 'big', 'bigger', 'large', 'huge', 'resize', 'delink'];
 inline.forEach(function (k) {
   templates[k] = function (tmpl) {
-    return getInside(tmpl).data;
+    var inside = getInside(tmpl);
+    return inside && inside['data'] || '';
   };
 });
 
@@ -7158,7 +7159,7 @@ var doTemplate = function doTemplate(tmpl, wiki, r) {
     return wiki;
   }
   //string-replacement templates
-  if (inlineParsers.hasOwnProperty(name) === true) {
+  if (inlineParsers.hasOwnProperty(name) === true && inlineParsers[name]) {
     var str = inlineParsers[name](tmpl, r);
     wiki = wiki.replace(tmpl, str);
     return wiki;
@@ -7521,7 +7522,6 @@ var parsers = {
   'subject bar': function subjectBar(tmpl) {
     var data = keyValue(tmpl);
     Object.keys(data).forEach(function (k) {
-      data[k] = data[k].text();
       if (sisterProjects.hasOwnProperty(k)) {
         data[sisterProjects[k]] = data[k];
         delete data[k];
