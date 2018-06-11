@@ -80,7 +80,10 @@ let inline = [
   'delink', //https://en.wikipedia.org/wiki/Template:Delink
 ];
 inline.forEach((k) => {
-  templates[k] = (tmpl) => getInside(tmpl).data;
+  templates[k] = (tmpl) => {
+    let inside = getInside(tmpl);
+    return (inside && inside['data']) || '';
+  };
 });
 
 
