@@ -9,6 +9,8 @@ function html_tidy(pSource) {
 
   // (1) Comments in Output
   pSource = pSource.replace(/<!--[^>]*-->/g, '');
+  // comments in the generated output are helpful, but
+  // the comments are irrelevant for the correctness of the generated output
 
   // (2) Newline
   pSource = pSource.replace(/\n/g, '');

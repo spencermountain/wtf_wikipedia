@@ -1,4 +1,5 @@
 const smartReplace = require('../../lib/smartReplace');
+const helpers = require('../../lib/helpers');
 
 // add `[text](href)` to the text
 const doLink = function(md, link) {
@@ -8,8 +9,12 @@ const doLink = function(md, link) {
     href = link.site;
   } else {
     //otherwise, make it a relative internal link
-    href = link.page || link.text;
+    href = helpers.capitalise(link.page);
     href = './' + href.replace(/ /g, '_');
+    // relative links in MediaWiki are defined by [[/My Relative Title/]]
+    // will create a link ".//My_Relative_Title/" remove double slash
+    href = href.replace(/[\/]+/g, '/');
+    // Now even relative links have no double slash in pathname
   }
   let mdLink = '[' + link.text + '](' + href + ')';
   md = smartReplace(md, link.text, mdLink);

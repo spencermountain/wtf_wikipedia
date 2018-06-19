@@ -123,7 +123,6 @@ const parsers = {
   'subject bar': (tmpl) => {
     let data = keyValue(tmpl);
     Object.keys(data).forEach((k) => {
-      data[k] = data[k].text();
       if (sisterProjects.hasOwnProperty(k)) {
         data[sisterProjects[k]] = data[k];
         delete data[k];

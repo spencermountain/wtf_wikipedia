@@ -14,7 +14,7 @@ const defaults = {
 const doList = (list, options) => {
   return list.map((o) => {
     let str = doSentence(o, options);
-    return ' * ' + str;
+    return '* ' + str;
   }).join('\n');
 };
 
@@ -37,7 +37,7 @@ const doSection = (section, options) => {
       md += '\n';
     }
   }
-  //make a mardown table
+  //make a markdown table
   if (options.tables === true) {
     let tables = section.tables();
     if (tables.length > 0) {
