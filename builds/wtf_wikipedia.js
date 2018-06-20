@@ -1,4 +1,4 @@
-/* wtf_wikipedia v4.2.1
+/* wtf_wikipedia v4.2.2
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2253,7 +2253,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "4.2.1",
+  "version": "4.2.2",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -4443,7 +4443,7 @@ var makeImage = _dereq_('./image');
 var doList = function doList(list) {
   var html = '<ul>\n';
   list.forEach(function (o) {
-    html += '  <li>' + o.text + '</li>\n';
+    html += '  <li>' + o.text() + '</li>\n';
   });
   html += '<ul>\n';
   return html;
@@ -5591,7 +5591,7 @@ var splitSections = function splitSections(wiki, options) {
 
 module.exports = splitSections;
 
-},{"../image":17,"../lib/recursive_match":21,"../sentence":54,"../templates":70,"./Section":45,"./heading":46,"./interwiki":48,"./list":49,"./references":50,"./table":51}],48:[function(_dereq_,module,exports){
+},{"../image":17,"../lib/recursive_match":21,"../sentence":54,"../templates":71,"./Section":45,"./heading":46,"./interwiki":48,"./list":49,"./references":50,"./table":51}],48:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../data/i18n');
@@ -5764,7 +5764,7 @@ var parseRefs = function parseRefs(r, wiki) {
 };
 module.exports = parseRefs;
 
-},{"../sentence":54,"../sentence/Sentence":52,"../templates/misc":73,"../templates/parsers/generic":77}],51:[function(_dereq_,module,exports){
+},{"../sentence":54,"../sentence/Sentence":52,"../templates/misc":74,"../templates/parsers/generic":78}],51:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../lib/helpers');
@@ -6286,6 +6286,63 @@ module.exports = sentence_parser;
 },{"../data/abbreviations":4}],57:[function(_dereq_,module,exports){
 'use strict';
 
+var pipeSplit = _dereq_('./parsers/pipeSplit');
+
+var currencyTemplateCodes = {
+  us$: 'US$', // https://en.wikipedia.org/wiki/Template:US$
+  bdt: '৳', // https://en.wikipedia.org/wiki/Template:BDT
+  a$: 'A$', // https://en.wikipedia.org/wiki/Template:AUD
+  ca$: 'CA$', // https://en.wikipedia.org/wiki/Template:CAD
+  cny: 'CN¥', // https://en.wikipedia.org/wiki/Template:CNY
+  hkd: 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
+  gbp: 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
+  '₹': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
+  '¥': '¥', // https://en.wikipedia.org/wiki/Template:JPY
+  jpy: '¥',
+  yen: '¥',
+  '₱': '₱', // https://en.wikipedia.org/wiki/Template:Philippine_peso
+  pkr: '₨' // https://en.wikipedia.org/wiki/Template:Pakistani_Rupee
+};
+
+var templateForCurrency = function templateForCurrency(currency) {
+  return function (tmpl) {
+    var _pipeSplit = pipeSplit(tmpl, ['value', 'year']),
+        year = _pipeSplit.year,
+        value = _pipeSplit.value;
+    // Ignore round, about, link options
+
+
+    if (year) {
+      // Don't perform inflation adjustment
+      return '' + currency + value + ' (' + year + ')';
+    }
+    if (value) {
+      return '' + currency + value;
+    }
+    return currency;
+  };
+};
+
+var currencies = Object.keys(currencyTemplateCodes).reduce(function (result, code) {
+  result[code] = templateForCurrency(currencyTemplateCodes[code]);
+  return result;
+}, {
+  // https://en.wikipedia.org/wiki/Template:Currency
+  currency: function currency(tmpl) {
+    // Ignore first and linked options
+    var _pipeSplit2 = pipeSplit(tmpl, ['amount', 'code']),
+        code = _pipeSplit2.code,
+        amount = _pipeSplit2.amount;
+
+    return '' + code + amount;
+  }
+});
+
+module.exports = currencies;
+
+},{"./parsers/pipeSplit":82}],58:[function(_dereq_,module,exports){
+'use strict';
+
 //assorted parsing methods for date/time templates
 var months = [undefined, //1-based months.. :/
 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -6371,7 +6428,7 @@ module.exports = {
   ymd: ymd
 };
 
-},{}],58:[function(_dereq_,module,exports){
+},{}],59:[function(_dereq_,module,exports){
 "use strict";
 
 //this is allowed to be rough
@@ -6412,7 +6469,7 @@ var delta = function delta(from, to) {
 
 module.exports = delta;
 
-},{}],59:[function(_dereq_,module,exports){
+},{}],60:[function(_dereq_,module,exports){
 'use strict';
 
 var parsers = _dereq_('./parsers');
@@ -6538,7 +6595,7 @@ templates.currentmonthname = templates.currentmonth;
 templates.currentmonthabbrev = templates.currentmonth;
 module.exports = templates;
 
-},{"../parsers/pipeSplit":81,"./parsers":60,"./timeSince":61}],60:[function(_dereq_,module,exports){
+},{"../parsers/pipeSplit":82,"./parsers":61,"./timeSince":62}],61:[function(_dereq_,module,exports){
 'use strict';
 
 var dates = _dereq_('./dates');
@@ -6733,7 +6790,7 @@ var parsers = {
 };
 module.exports = parsers;
 
-},{"./dates":57,"./delta_date":58}],61:[function(_dereq_,module,exports){
+},{"./dates":58,"./delta_date":59}],62:[function(_dereq_,module,exports){
 'use strict';
 
 //not all too fancy - used in {{timesince}}
@@ -6760,7 +6817,7 @@ var timeSince = function timeSince(str) {
 };
 module.exports = timeSince;
 
-},{}],62:[function(_dereq_,module,exports){
+},{}],63:[function(_dereq_,module,exports){
 'use strict';
 
 var pipeSplit = _dereq_('./parsers/pipeSplit');
@@ -6831,7 +6888,7 @@ externals.imdb = externals['imdb name'];
 externals['imdb episodess'] = externals['imdb episode'];
 module.exports = externals;
 
-},{"./parsers/pipeSplit":81}],63:[function(_dereq_,module,exports){
+},{"./parsers/pipeSplit":82}],64:[function(_dereq_,module,exports){
 'use strict';
 
 var getInside = _dereq_('./parsers/inside');
@@ -6909,7 +6966,7 @@ inline.forEach(function (k) {
 
 module.exports = templates;
 
-},{"./parsers/inside":78,"./parsers/keyValue":79,"./parsers/pipeSplit":81}],64:[function(_dereq_,module,exports){
+},{"./parsers/inside":79,"./parsers/keyValue":80,"./parsers/pipeSplit":82}],65:[function(_dereq_,module,exports){
 'use strict';
 
 var getName = _dereq_('../parsers/_getName');
@@ -6944,7 +7001,7 @@ var generic = function generic(tmpl) {
 };
 module.exports = generic;
 
-},{"../parsers/_getName":74,"../parsers/pipeList":80,"./keyValue":65}],65:[function(_dereq_,module,exports){
+},{"../parsers/_getName":75,"../parsers/pipeList":81,"./keyValue":66}],66:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -6990,7 +7047,7 @@ var doKeyValue = function doKeyValue(tmpl, name) {
 };
 module.exports = doKeyValue;
 
-},{"../../data/i18n":5,"../parsers/keyValue":79}],66:[function(_dereq_,module,exports){
+},{"../../data/i18n":5,"../parsers/keyValue":80}],67:[function(_dereq_,module,exports){
 'use strict';
 
 var convertDMS = _dereq_('./dms-format');
@@ -7063,7 +7120,7 @@ module.exports = parseCoord;
 // {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
 // {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
 
-},{"./dms-format":67}],67:[function(_dereq_,module,exports){
+},{"./dms-format":68}],68:[function(_dereq_,module,exports){
 'use strict';
 
 //converts DMS (decimal-minute-second) geo format to lat/lng format.
@@ -7091,7 +7148,7 @@ module.exports = parseDms;
 // console.log(parseDms([57, 18, 22, 'N']));
 // console.log(parseDms([4, 27, 32, 'W']));
 
-},{}],68:[function(_dereq_,module,exports){
+},{}],69:[function(_dereq_,module,exports){
 'use strict';
 
 var parseCoord = _dereq_('./coord');
@@ -7106,7 +7163,7 @@ var geoTemplates = {
 };
 module.exports = geoTemplates;
 
-},{"../parsers/_strip":76,"./coord":66}],69:[function(_dereq_,module,exports){
+},{"../parsers/_strip":77,"./coord":67}],70:[function(_dereq_,module,exports){
 'use strict';
 
 //we explicitly ignore these, because they sometimes have resolve some data
@@ -7129,7 +7186,7 @@ var ignore = list.reduce(function (h, str) {
 }, {});
 module.exports = ignore;
 
-},{}],70:[function(_dereq_,module,exports){
+},{}],71:[function(_dereq_,module,exports){
 'use strict';
 
 // const findRecursive = require('../../lib/recursive_match');
@@ -7139,6 +7196,7 @@ var getTemplates = _dereq_('./parsers/_getTemplates');
 var dates = _dereq_('./dates');
 var geo = _dereq_('./geo');
 var inline = _dereq_('./inline');
+var currencies = _dereq_('./currencies');
 var misc = _dereq_('./misc');
 var generic = _dereq_('./generic');
 var links = _dereq_('./links');
@@ -7148,7 +7206,7 @@ var external = _dereq_('./external');
 var ignore = _dereq_('./ignore');
 
 //put them all together
-var inlineParsers = Object.assign({}, dates, inline, links, formatting);
+var inlineParsers = Object.assign({}, dates, inline, currencies, links, formatting);
 var bigParsers = Object.assign({}, geo, pronounce, misc, external);
 
 var doTemplate = function doTemplate(tmpl, wiki, r) {
@@ -7207,7 +7265,7 @@ var allTemplates = function allTemplates(r, wiki, options) {
 
 module.exports = allTemplates;
 
-},{"./dates":59,"./external":62,"./formatting":63,"./generic":64,"./geo":68,"./ignore":69,"./inline":71,"./links":72,"./misc":73,"./parsers/_getName":74,"./parsers/_getTemplates":75,"./pronounce":82}],71:[function(_dereq_,module,exports){
+},{"./currencies":57,"./dates":60,"./external":63,"./formatting":64,"./generic":65,"./geo":69,"./ignore":70,"./inline":72,"./links":73,"./misc":74,"./parsers/_getName":75,"./parsers/_getTemplates":76,"./pronounce":83}],72:[function(_dereq_,module,exports){
 'use strict';
 
 var keyValue = _dereq_('./parsers/keyValue');
@@ -7352,7 +7410,7 @@ inline['str left'] = inline.trunc;
 inline['str crop'] = inline.trunc;
 module.exports = inline;
 
-},{"./parsers/_strip":76,"./parsers/keyValue":79,"./parsers/pipeSplit":81}],72:[function(_dereq_,module,exports){
+},{"./parsers/_strip":77,"./parsers/keyValue":80,"./parsers/pipeSplit":82}],73:[function(_dereq_,module,exports){
 'use strict';
 
 var pipeSplit = _dereq_('./parsers/pipeSplit');
@@ -7395,7 +7453,7 @@ templates.ll = templates.link;
 templates['l-self'] = templates.link;
 module.exports = templates;
 
-},{"./parsers/pipeSplit":81}],73:[function(_dereq_,module,exports){
+},{"./parsers/pipeSplit":82}],74:[function(_dereq_,module,exports){
 'use strict';
 
 var keyValue = _dereq_('./parsers/keyValue');
@@ -7543,7 +7601,7 @@ parsers['sisterlinks'] = parsers['sister project links'];
 
 module.exports = parsers;
 
-},{"./parsers/inside":78,"./parsers/keyValue":79,"./parsers/pipeList":80,"./parsers/pipeSplit":81}],74:[function(_dereq_,module,exports){
+},{"./parsers/inside":79,"./parsers/keyValue":80,"./parsers/pipeList":81,"./parsers/pipeSplit":82}],75:[function(_dereq_,module,exports){
 'use strict';
 
 //get the name of the template
@@ -7573,7 +7631,7 @@ var getName = function getName(tmpl) {
 // |key=val}}`));
 module.exports = getName;
 
-},{}],75:[function(_dereq_,module,exports){
+},{}],76:[function(_dereq_,module,exports){
 'use strict';
 
 var open = '{';
@@ -7651,7 +7709,7 @@ module.exports = getTemplates;
 
 // console.log(getTemplates('he is president. {{nowrap|he is {{age|1980}} years}} he lives in {{date}} texas'));
 
-},{}],76:[function(_dereq_,module,exports){
+},{}],77:[function(_dereq_,module,exports){
 'use strict';
 
 //remove the top/bottom off the template
@@ -7662,7 +7720,7 @@ var strip = function strip(tmpl) {
 };
 module.exports = strip;
 
-},{}],77:[function(_dereq_,module,exports){
+},{}],78:[function(_dereq_,module,exports){
 'use strict';
 
 var keyValue = _dereq_('./keyValue');
@@ -7700,7 +7758,7 @@ var genericTemplate = function genericTemplate(tmpl) {
 };
 module.exports = genericTemplate;
 
-},{"./_getName":74,"./keyValue":79}],78:[function(_dereq_,module,exports){
+},{"./_getName":75,"./keyValue":80}],79:[function(_dereq_,module,exports){
 'use strict';
 
 var strip = _dereq_('./_strip');
@@ -7720,7 +7778,7 @@ var grabInside = function grabInside(tmpl) {
 };
 module.exports = grabInside;
 
-},{"./_strip":76}],79:[function(_dereq_,module,exports){
+},{"./_strip":77}],80:[function(_dereq_,module,exports){
 'use strict';
 
 var parseLine = _dereq_('../../sentence').parseLine;
@@ -7770,7 +7828,7 @@ var keyValue = function keyValue(tmpl, isInfobox) {
 };
 module.exports = keyValue;
 
-},{"../../sentence":54,"../../sentence/Sentence":52,"./_strip":76}],80:[function(_dereq_,module,exports){
+},{"../../sentence":54,"../../sentence/Sentence":52,"./_strip":77}],81:[function(_dereq_,module,exports){
 'use strict';
 
 var keyVal = /[a-z0-9]+ *?= *?[a-z0-9]/i;
@@ -7800,7 +7858,7 @@ var pipeList = function pipeList(tmpl) {
 };
 module.exports = pipeList;
 
-},{"./_strip":76}],81:[function(_dereq_,module,exports){
+},{"./_strip":77}],82:[function(_dereq_,module,exports){
 'use strict';
 
 var keyVal = /[a-z0-9]+ *?= *?[a-z0-9]/i;
@@ -7833,7 +7891,7 @@ var pipeSplit = function pipeSplit(tmpl, order) {
 };
 module.exports = pipeSplit;
 
-},{"./_strip":76}],82:[function(_dereq_,module,exports){
+},{"./_strip":77}],83:[function(_dereq_,module,exports){
 'use strict';
 
 var strip = _dereq_('./parsers/_strip');
@@ -7860,5 +7918,5 @@ i18n.forEach(function (k) {
 });
 module.exports = ipaTemplates;
 
-},{"./parsers/_strip":76}]},{},[24])(24)
+},{"./parsers/_strip":77}]},{},[24])(24)
 });

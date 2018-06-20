@@ -65,3 +65,5 @@
 * don't automatically titlecase link srcs anymore
 ## 4.2.0
 * return a result or undefined for `sentences.bolds(0)`, and the like
+### 4.2.2
+* support dollar templates
