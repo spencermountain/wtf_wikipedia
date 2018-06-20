@@ -5,6 +5,7 @@ const getTemplates = require('./parsers/_getTemplates');
 const dates = require('./dates');
 const geo = require('./geo');
 const inline = require('./inline');
+const currencies = require('./currencies');
 const misc = require('./misc');
 const generic = require('./generic');
 const links = require('./links');
@@ -14,7 +15,14 @@ const external = require('./external');
 const ignore = require('./ignore');
 
 //put them all together
-const inlineParsers = Object.assign({}, dates, inline, links, formatting);
+const inlineParsers = Object.assign(
+  {},
+  dates,
+  inline,
+  currencies,
+  links,
+  formatting,
+);
 const bigParsers = Object.assign({}, geo, pronounce, misc, external);
 
 const doTemplate = function(tmpl, wiki, r) {
@@ -25,7 +33,7 @@ const doTemplate = function(tmpl, wiki, r) {
     return wiki;
   }
   //string-replacement templates
-  if ((inlineParsers.hasOwnProperty(name) === true ) && (inlineParsers[name])) {
+  if (inlineParsers.hasOwnProperty(name) === true && inlineParsers[name]) {
     let str = inlineParsers[name](tmpl, r);
     wiki = wiki.replace(tmpl, str);
     return wiki;
@@ -59,13 +67,13 @@ const allTemplates = function(r, wiki, options) {
   let templates = getTemplates(wiki);
   // console.log(templates);
   //first, do the nested ones
-  templates.nested.forEach((tmpl) => {
+  templates.nested.forEach(tmpl => {
     wiki = doTemplate(tmpl, wiki, r, options);
   });
   // console.log(wiki);
   //then, reparse wiki for the top-level ones
   templates = getTemplates(wiki);
-  templates.top.forEach((tmpl) => {
+  templates.top.forEach(tmpl => {
     wiki = doTemplate(tmpl, wiki, r, options);
   });
   return wiki;
