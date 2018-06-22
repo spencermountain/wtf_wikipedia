@@ -18,7 +18,11 @@ const pipeSplit = function(tmpl, order) {
       if (keyVal.test(arr[i]) === true) {
         let both = arr[i].split('=');
         val = both[1];
-        key = both[0].trim().toLowerCase();
+        if (isNaN(parseInt(both[0]))) {
+          key = both[0].trim().toLowerCase();
+        } else {
+          key =order[parseInt(both[0]) - 1];
+        }
       }
       val = val.trim();
       obj[key] = val;
