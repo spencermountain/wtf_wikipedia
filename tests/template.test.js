@@ -2,6 +2,16 @@
 var wtf = require('./lib');
 var test = require('tape');
 
+var glossary = `{{term|1=A-show}}
+{{defn|1= A wrestling event where a company's biggest draws wrestle.<ref name=torch/>}}`;
+
+test('glossary of professional wrestling', function(t) {
+  var o = wtf(glossary).sections()[0].sentences();
+  t.equal(o[0].data.text, 'A-show:');
+  t.equal(o[1].data.text, `A wrestling event where a company's biggest draws wrestle.`);
+  t.end();
+});
+
 var boloZenden = `{{Infobox football biography
 | name        = Boudewijn Zenden
 | image       = Zenden.jpg
