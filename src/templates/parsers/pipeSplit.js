@@ -18,10 +18,10 @@ const pipeSplit = function(tmpl, order) {
       if (keyVal.test(arr[i]) === true) {
         let both = arr[i].split('=');
         val = both[1];
-        if (isNaN(parseInt(both[0]))) {
+        if (isNaN(parseInt(both[0], 10))) {
           key = both[0].trim().toLowerCase();
         } else {
-          key =order[parseInt(both[0]) - 1];
+          key =order[parseInt(both[0], 10) - 1];
         }
       }
       val = val.trim();
