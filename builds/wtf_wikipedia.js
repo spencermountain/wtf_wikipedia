@@ -1,4 +1,4 @@
-/* wtf_wikipedia v4.2.2
+/* wtf_wikipedia v4.2.3
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2253,7 +2253,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "4.2.2",
+  "version": "4.2.3",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -3820,7 +3820,7 @@ var kill_xml = function kill_xml(wiki) {
   wiki = wiki.replace(/ ?<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?> ?/g, ' '); //<sub>, </sub>
   wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s)[ \/]?> ?/g, ' '); //<abbr>, </abbr>
   wiki = wiki.replace(/ ?<[ \/]?h[0-9][ \/]?> ?/g, ' '); //<h2>, </h2>
-  wiki = wiki.replace(/ ?< ?br ?\/> ?/g, ' '); //<br />
+  wiki = wiki.replace(/ ?< ?br ?\/> ?/g, '\n'); //<br />
   return wiki.trim();
 };
 // console.log(kill_xml("hello <ref>nono!</ref> world1. hello <ref name='hullo'>nono!</ref> world2. hello <ref name='hullo'/>world3.  hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4. hello<ref name=''/> world5 <ref name=''>nono</ref>, man.}}"))
@@ -5759,7 +5759,7 @@ var parseRefs = function parseRefs(r, wiki) {
     return ' ';
   });
   //now that we're done with xml, do a generic + dangerous xml-tag removal
-  wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[ \/]?> ?/g, ' '); //<samp>
+  wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ \/]?> ?/g, ' '); //<samp name="asd">
   return wiki;
 };
 module.exports = parseRefs;
