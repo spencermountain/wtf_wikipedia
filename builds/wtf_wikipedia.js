@@ -1,4 +1,4 @@
-/* wtf_wikipedia v4.2.3
+/* wtf_wikipedia v4.3.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2253,7 +2253,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "4.2.3",
+  "version": "4.3.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -3813,7 +3813,7 @@ module.exports = preProcess;
 var kill_xml = function kill_xml(wiki) {
   //(parse <ref> tags in Section class) - luckily, refs can't be recursive.
   //other types of xml that we want to trash completely
-  wiki = wiki.replace(/< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]{0,700}< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi, ' '); // <table name=""><tr>hi</tr></table>
+  wiki = wiki.replace(/< ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]*< ?\/ ?(table|code|score|data|categorytree|charinsert|gallery|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi, ' '); // <table name=""><tr>hi</tr></table>
   //some xml-like fragments we can also kill
   wiki = wiki.replace(/ ?< ?(ref|span|div|table|data) [a-z0-9=" ]{2,20}\/ ?> ?/g, ' '); //<ref name="asd"/>
   //some formatting xml, we'll keep their insides though
@@ -7881,7 +7881,11 @@ var pipeSplit = function pipeSplit(tmpl, order) {
       if (keyVal.test(arr[i]) === true) {
         var both = arr[i].split('=');
         val = both[1];
-        key = both[0].trim().toLowerCase();
+        if (isNaN(parseInt(both[0], 10))) {
+          key = both[0].trim().toLowerCase();
+        } else {
+          key = order[parseInt(both[0], 10) - 1];
+        }
       }
       val = val.trim();
       obj[key] = val;
