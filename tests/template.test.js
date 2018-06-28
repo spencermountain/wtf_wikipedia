@@ -2,6 +2,16 @@
 var wtf = require('./lib');
 var test = require('tape');
 
+var glossary = `{{term|1=A-show}}
+{{defn|1= A wrestling event where a company's biggest draws wrestle.<ref name=torch/>}}`;
+
+test('glossary of professional wrestling', function(t) {
+  var o = wtf(glossary).sections()[0].sentences();
+  t.equal(o[0].data.text, 'A-show:');
+  t.equal(o[1].data.text, `A wrestling event where a company's biggest draws wrestle.`);
+  t.end();
+});
+
 var boloZenden = `{{Infobox football biography
 | name        = Boudewijn Zenden
 | image       = Zenden.jpg
@@ -216,5 +226,82 @@ hello there
   t.equal(doc.templates('main').length, 1, 'got main template');
   t.equal(doc.templates('tracklist').length, 1, 'got tracklist template');
   t.equal(doc.templates('infobox').length, 1, 'got infobox template');
+  t.end();
+});
+
+var microsoft = `
+{{Infobox company
+| name = Microsoft Corporation
+| logo = Microsoft logo and wordmark.svg
+| logo_alt = A square divided into four sub-squares, colored red, green, yellow and blue (clockwise), with the company name appearing to its right.
+| image = Microsoft building 17 front door.jpg
+| image_caption = Building 17 on the [[Microsoft Redmond campus]] in [[Redmond, Washington]]
+| type = [[Public company|Public]]
+| traded_as = {{Unbulleted list|{{NASDAQ|MSFT}}|[[NASDAQ-100|NASDAQ-100 component]]|[[Dow Jones Industrial Average|DJIA component]]|[[S&P 100|S&P 100 component]]|[[S&P 500|S&P 500 component]]}}
+| ISIN = US5949181045
+| industry = {{Unbulleted list|[[Computer software]]|[[Computer hardware]]|[[Consumer electronics]]|[[Social networking service]]|[[Cloud computing]]|[[Video game industry|Video games]]|[[Internet]]|[[Corporate venture capital]]}}
+| founded = {{Start date and age|1975|04|04}} in [[Albuquerque, New Mexico|Albuquerque]], [[New Mexico]], U.S.
+| founders = {{Plainlist|
+* [[Bill Gates]]
+* [[Paul Allen]]
+}}
+| hq_location = [[Microsoft Redmond campus]]
+| hq_location_city = [[Redmond, Washington|Redmond]], [[Washington (state)|Washington]]
+| hq_location_country = [[United States|U.S.]]
+| area_served = Worldwide
+| key_people = {{Plainlist|
+* [[John W. Thompson]] ([[Chairman]])
+* [[Brad Smith (American lawyer)|Brad Smith]] ([[President (corporate title)|President]] and [[Chief legal officer|CLO]])
+* [[Satya Nadella]] ([[Chief executive officer|CEO]])
+* [[Bill Gates]] ([[Technical advisor]])
+}}
+| products = {{Flatlist|
+* [[Microsoft Windows|Windows]]
+* [[Microsoft Office|Office]]
+* [[Microsoft Servers|Servers]]
+* [[Skype]]
+* [[Microsoft Visual Studio|Visual Studio]]
+* [[Microsoft Dynamics|Dynamics]]
+* [[Xbox]]
+* [[Microsoft Surface|Surface]]
+* [[Microsoft Mobile|Mobile]]
+* [[List of Microsoft software|more...]]
+}}
+| services = {{Flatlist|
+* [[Microsoft Azure|Azure]]
+* [[Bing (search engine)|Bing]]
+* [[LinkedIn]]
+* [[Microsoft Developer Network|MSDN]]
+* [[Office 365]]
+* [[OneDrive]]
+* [[Outlook.com]]
+* [[Microsoft TechNet|TechNet]]
+* [[Microsoft Wallet|Wallet]]
+* [[Windows Store]]
+* [[Windows Update]]
+* [[Xbox Live]]
+}}
+| revenue = {{Increase}} {{US$|89.95&nbsp;billion|link=yes}}<ref name="xbrlus_1">{{cite web |date=July 21, 2016 |url=https://www.microsoft.com/en-us/Investor/earnings/FY-2017-Q4/press-release-webcast |title=Microsoft Form 10-K, Fiscal Year Ended June 30, 2017 |publisher=[[U.S. Securities and Exchange Commission]] |accessdate=June 18, 2017 |website=https://sec.gov}}</ref>
+| revenue_year = 2017
+| operating_income = {{Increase}} {{US$|22.27&nbsp;billion}}<ref name="xbrlus_1" />
+| income_year = 2017
+| net_income = {{Increase}} {{US$|21.20&nbsp;billion}}<ref name="xbrlus_1" />
+| net_income_year = 2017
+| assets = {{Increase}} {{US$|241.08&nbsp;billion}}<ref name="xbrlus_1" />
+| assets_year = 2017
+| equity = {{Increase}} {{US$|72.39&nbsp;billion}}<ref name="xbrlus_1" />
+| equity_year = 2017
+| num_employees = 124,000<ref name="xbrlus_1" />
+| num_employees_year = 2016
+| subsid = [[List of mergers and acquisitions by Microsoft|List of Microsoft subsidiaries]]
+| website = {{URL|https://microsoft.com}}
+}}
+`;
+
+test('currency parsing', function(t) {
+  var infobox = wtf(microsoft).infoboxes(0).data;
+  t.equal(infobox.revenue.text(), 'US$89.95 billion', 'revenue =' + infobox.revenue.text);
+  t.equal(infobox.operating_income.text(), 'US$22.27 billion', 'operating_income =' + infobox.operating_income.text);
+  t.equal(infobox.net_income.text(), 'US$21.20 billion', 'net_income =' + infobox.net_income.text);
   t.end();
 });
