@@ -38,8 +38,7 @@ const wtf = require('./src/index');
 
 // console.log(wtf('that cat is [[aasdf]] cool dude').html());
 // wtf.fetch('Dusseldorf', 'en').then(doc => {
-wtf.fetch('The Beast of Alice Cooper', 'fr').then(doc => {
-  // console.log(doc.plaintext());
-  console.log(JSON.stringify(doc.json(), null, 2));
-// // console.log(doc.templates().filter(t => t.template !== 'citation'));
-});
+wtf.fetch('Hampden Bridge (Kangaroo Valley)', 'en').then(doc => {
+  console.log(doc.images());
+// console.log(JSON.stringify(doc.json(), null, 2));
+}).catch(console.log);
