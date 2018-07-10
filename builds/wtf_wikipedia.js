@@ -1,4 +1,4 @@
-/* wtf_wikipedia v4.3.0
+/* wtf_wikipedia v4.4.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2253,7 +2253,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "4.3.0",
+  "version": "4.4.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -3563,7 +3563,7 @@ var methods = {
     //grab image from infobox, first
     this.infoboxes().forEach(function (info) {
       if (info.data.image) {
-        arr.unshift(info.data.image.data); //put it at the top
+        arr.unshift(info.image()); //put it at the top
       }
     });
     if (typeof clue === 'number') {
@@ -3651,10 +3651,10 @@ Document.prototype.wikiscript = Document.prototype.wikitext;
 
 module.exports = Document;
 
-},{"../lib/setDefaults":22,"../output/html":26,"../output/json":31,"../output/latex":34,"../output/markdown":39,"./_sectionMap":8,"./index":11}],8:[function(_dereq_,module,exports){
+},{"../lib/setDefaults":23,"../output/html":26,"../output/json":31,"../output/latex":34,"../output/markdown":39,"./_sectionMap":8,"./index":11}],8:[function(_dereq_,module,exports){
 'use strict';
 
-//helper for looping around all section of a document
+//helper for looping around all sections of a document
 var sectionMap = function sectionMap(doc, fn, clue) {
   var arr = [];
   doc.sections().forEach(function (sec) {
@@ -4128,6 +4128,24 @@ module.exports = parse_image;
 },{"../data/i18n":5,"./Image":16}],19:[function(_dereq_,module,exports){
 'use strict';
 
+var Document = _dereq_('./document/Document');
+var fetch = _dereq_('./fetch');
+var version = _dereq_('../package').version;
+
+//the main 'factory' exported method
+var wtf = function wtf(wiki, options) {
+  return new Document(wiki, options);
+};
+wtf.fetch = function (title, lang, options, cb) {
+  return fetch(title, lang, options, cb);
+};
+wtf.version = version;
+
+module.exports = wtf;
+
+},{"../package":3,"./document/Document":7,"./fetch":15}],20:[function(_dereq_,module,exports){
+'use strict';
+
 var toMarkdown = _dereq_('../output/markdown/infobox');
 var toHtml = _dereq_('../output/html/infobox');
 var Image = _dereq_('../image/Image');
@@ -4217,13 +4235,16 @@ var methods = {
 };
 //aliases
 methods.template = methods.type;
+methods.images = methods.image;
+methods.data = methods.keyValue;
 
 Object.keys(methods).forEach(function (k) {
   Infobox.prototype[k] = methods[k];
 });
+Infobox.prototype.data = Infobox.prototype.keyValue;
 module.exports = Infobox;
 
-},{"../image/Image":16,"../output/html/infobox":27,"../output/markdown/infobox":40}],20:[function(_dereq_,module,exports){
+},{"../image/Image":16,"../output/html/infobox":27,"../output/markdown/infobox":40}],21:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = {
@@ -4249,7 +4270,7 @@ var helpers = {
 };
 module.exports = helpers;
 
-},{}],21:[function(_dereq_,module,exports){
+},{}],22:[function(_dereq_,module,exports){
 'use strict';
 
 //find all the pairs of '[[...[[..]]...]]' in the text
@@ -4299,7 +4320,7 @@ module.exports = find_recursive;
 // console.log(find_recursive('{', '}', 'he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas'));
 // console.log(find_recursive("{", "}", "this is fun {{nowrap{{small1995–present}}}} and it works"))
 
-},{}],22:[function(_dereq_,module,exports){
+},{}],23:[function(_dereq_,module,exports){
 "use strict";
 
 //
@@ -4317,7 +4338,7 @@ var setDefaults = function setDefaults(options, defaults) {
 };
 module.exports = setDefaults;
 
-},{}],23:[function(_dereq_,module,exports){
+},{}],24:[function(_dereq_,module,exports){
 'use strict';
 
 //escape a string like 'fun*2.Co' for a regExpr
@@ -4350,25 +4371,7 @@ var smartReplace = function smartReplace(all, text, result) {
 
 module.exports = smartReplace;
 
-},{}],24:[function(_dereq_,module,exports){
-'use strict';
-
-var Document = _dereq_('./document/Document');
-var fetch = _dereq_('./fetch');
-var version = _dereq_('../package').version;
-
-//the main 'factory' exported method
-var wtf = function wtf(wiki, options) {
-  return new Document(wiki, options);
-};
-wtf.fetch = function (title, lang, options, cb) {
-  return fetch(title, lang, options, cb);
-};
-wtf.version = version;
-
-module.exports = wtf;
-
-},{"../package":3,"./document/Document":7,"./fetch":15}],25:[function(_dereq_,module,exports){
+},{}],25:[function(_dereq_,module,exports){
 'use strict';
 
 var makeImage = function makeImage(image) {
@@ -4532,7 +4535,7 @@ var doSentence = function doSentence(sentence) {
 };
 module.exports = doSentence;
 
-},{"../../lib/helpers":20,"../../lib/smartReplace":23}],30:[function(_dereq_,module,exports){
+},{"../../lib/helpers":21,"../../lib/smartReplace":24}],30:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -4632,7 +4635,7 @@ var toJSON = function toJSON(doc, options) {
 };
 module.exports = toJSON;
 
-},{"../../lib/setDefaults":22}],32:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":23}],32:[function(_dereq_,module,exports){
 'use strict';
 
 var setDefaults = _dereq_('../../lib/setDefaults');
@@ -4684,7 +4687,7 @@ var toJSON = function toJSON(s, options) {
 };
 module.exports = toJSON;
 
-},{"../../lib/setDefaults":22}],33:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":23}],33:[function(_dereq_,module,exports){
 'use strict';
 
 var setDefaults = _dereq_('../../lib/setDefaults');
@@ -4714,7 +4717,7 @@ var toJSON = function toJSON(s, options) {
 };
 module.exports = toJSON;
 
-},{"../../lib/setDefaults":22}],34:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":23}],34:[function(_dereq_,module,exports){
 'use strict';
 
 var doInfobox = _dereq_('./infobox');
@@ -4846,7 +4849,7 @@ var toLatex = function toLatex(doc, options) {
 };
 module.exports = toLatex;
 
-},{"../../lib/setDefaults":22,"./infobox":35,"./sentence":36,"./table":37}],35:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":23,"./infobox":35,"./sentence":36,"./table":37}],35:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -4920,7 +4923,7 @@ var doSentence = function doSentence(sentence, options) {
 };
 module.exports = doSentence;
 
-},{"../../lib/helpers":20,"../../lib/smartReplace":23}],37:[function(_dereq_,module,exports){
+},{"../../lib/helpers":21,"../../lib/smartReplace":24}],37:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -5132,7 +5135,7 @@ var doSection = function doSection(section, options) {
 };
 module.exports = doSection;
 
-},{"../../lib/setDefaults":22,"./image":38,"./sentence":43,"./table":44}],43:[function(_dereq_,module,exports){
+},{"../../lib/setDefaults":23,"./image":38,"./sentence":43,"./table":44}],43:[function(_dereq_,module,exports){
 'use strict';
 
 var smartReplace = _dereq_('../../lib/smartReplace');
@@ -5176,7 +5179,7 @@ var doSentence = function doSentence(sentence) {
 };
 module.exports = doSentence;
 
-},{"../../lib/helpers":20,"../../lib/smartReplace":23}],44:[function(_dereq_,module,exports){
+},{"../../lib/helpers":21,"../../lib/smartReplace":24}],44:[function(_dereq_,module,exports){
 'use strict';
 
 var doSentence = _dereq_('./sentence');
@@ -5501,7 +5504,7 @@ Object.keys(methods).forEach(function (k) {
 
 module.exports = Section;
 
-},{"../infobox/Infobox":19,"../lib/setDefaults":22,"../output/html/section":28,"../output/json/section":32,"../output/markdown/section":42,"../sentence/Sentence":52}],46:[function(_dereq_,module,exports){
+},{"../infobox/Infobox":20,"../lib/setDefaults":23,"../output/html/section":28,"../output/json/section":32,"../output/markdown/section":42,"../sentence/Sentence":52}],46:[function(_dereq_,module,exports){
 'use strict';
 
 var fns = _dereq_('../lib/helpers');
@@ -5529,7 +5532,7 @@ var parseHeading = function parseHeading(r, str) {
 };
 module.exports = parseHeading;
 
-},{"../lib/helpers":20}],47:[function(_dereq_,module,exports){
+},{"../lib/helpers":21}],47:[function(_dereq_,module,exports){
 'use strict';
 
 var Section = _dereq_('./Section');
@@ -5591,7 +5594,7 @@ var splitSections = function splitSections(wiki, options) {
 
 module.exports = splitSections;
 
-},{"../image":17,"../lib/recursive_match":21,"../sentence":54,"../templates":71,"./Section":45,"./heading":46,"./interwiki":48,"./list":49,"./references":50,"./table":51}],48:[function(_dereq_,module,exports){
+},{"../image":17,"../lib/recursive_match":22,"../sentence":54,"../templates":71,"./Section":45,"./heading":46,"./interwiki":48,"./list":49,"./references":50,"./table":51}],48:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../data/i18n');
@@ -5897,7 +5900,7 @@ var findTables = function findTables(r, wiki) {
 };
 module.exports = findTables;
 
-},{"../lib/helpers":20,"../sentence/":54,"../sentence/Sentence":52}],52:[function(_dereq_,module,exports){
+},{"../lib/helpers":21,"../sentence/":54,"../sentence/Sentence":52}],52:[function(_dereq_,module,exports){
 'use strict';
 
 var toHtml = _dereq_('../output/html/sentence');
@@ -6082,7 +6085,7 @@ module.exports = {
   parseLine: parseLine
 };
 
-},{"../data/i18n":5,"../lib/helpers":20,"./formatting":53,"./links":55,"./sentence-parser":56}],55:[function(_dereq_,module,exports){
+},{"../data/i18n":5,"../lib/helpers":21,"./formatting":53,"./links":55,"./sentence-parser":56}],55:[function(_dereq_,module,exports){
 'use strict';
 
 // const helpers = require('../lib/helpers');
@@ -7922,5 +7925,5 @@ i18n.forEach(function (k) {
 });
 module.exports = ipaTemplates;
 
-},{"./parsers/_strip":77}]},{},[24])(24)
+},{"./parsers/_strip":77}]},{},[19])(19)
 });
