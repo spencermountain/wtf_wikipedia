@@ -91,7 +91,7 @@ const methods = {
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
       if (info.data.image) {
-        arr.unshift(info.data.image.data); //put it at the top
+        arr.unshift(info.image()); //put it at the top
       }
     });
     if (typeof clue === 'number') {
