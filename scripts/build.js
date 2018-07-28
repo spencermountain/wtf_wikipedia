@@ -22,7 +22,7 @@ echo(banner).to(compressed);
 
 //browserify + derequire
 //var cmd = browserify + ' ./src/index.js --standalone wtf';
-var cmd = browserify + ' ./src/main.js --standalone wtf';
+var cmd = browserify + ' ./src/index.js --standalone wtf';
 cmd += ' -t [ babelify --presets [ env ] ]';
 cmd += ' | ' + derequire;
 cmd += ' >> ' + uncompressed;

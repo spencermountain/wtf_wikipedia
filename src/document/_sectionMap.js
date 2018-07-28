@@ -1,5 +1,5 @@
 
-//helper for looping around all section of a document
+//helper for looping around all sections of a document
 const sectionMap = function(doc, fn, clue) {
   let arr = [];
   doc.sections().forEach((sec) => {

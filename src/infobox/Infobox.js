@@ -79,6 +79,8 @@ const methods = {
 };
 //aliases
 methods.template = methods.type;
+methods.images = methods.image;
+methods.data = methods.keyValue;
 
 Object.keys(methods).forEach((k) => {
   Infobox.prototype[k] = methods[k];

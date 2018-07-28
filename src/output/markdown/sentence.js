@@ -16,8 +16,9 @@ const doLink = function(md, link) {
     href = href.replace(/[\/]+/g, '/');
     // Now even relative links have no double slash in pathname
   }
-  let mdLink = '[' + link.text + '](' + href + ')';
-  md = smartReplace(md, link.text, mdLink);
+  let str = link.text || link.page;
+  let mdLink = '[' + str + '](' + href + ')';
+  md = smartReplace(md, str, mdLink);
   return md;
 };
 
