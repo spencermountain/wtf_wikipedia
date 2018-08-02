@@ -9,10 +9,9 @@ const pipeList = function(tmpl) {
     template: found.name
   };
   let arr = found.list || [];
-
   arr.forEach((k, i) => {
     if (arr[i]) {
-      //support gross 'id=234' format inside the value
+      //support this gross 'id=234' format inside the value
       if (keyVal.test(arr[i]) === true) {
         arr[i] = arr[i].split('=')[1];
       }

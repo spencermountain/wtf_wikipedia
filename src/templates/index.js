@@ -1,4 +1,3 @@
-// const findRecursive = require('../../lib/recursive_match');
 const getName = require('./parsers/_getName');
 const getTemplates = require('./parsers/_getTemplates');
 
