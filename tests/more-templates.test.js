@@ -76,5 +76,17 @@ test('support-nowrap-in-infobox', t => {
   var infobox = wtf(str).infoboxes(0);
   var data = infobox.json();
   t.equal(data.name.text, 'Albert Einstein', 'got infobox datad');
+  // t.equal(data.spouse.text, 'Elsa Löwenthal', 'got tricky marriage value');
+  t.end();
+});
+
+test('inline-templates', t => {
+  var str = `he married {{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}} in Peterburough`;
+  var doc = wtf(str);
+  t.equal(doc.text(), 'he married Elsa Löwenthal (m. 1919-1936) in Peterburough', 'inline marriage text');
+
+  str = `he married {{marriage|Johnny-boy}} in Peterburough`;
+  doc = wtf(str);
+  t.equal(doc.text(), 'he married Johnny-boy in Peterburough', 'marriage-text simple');
   t.end();
 });

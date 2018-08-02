@@ -24,19 +24,23 @@ const inlineParsers = Object.assign(
 );
 const bigParsers = Object.assign({}, geo, pronounce, misc, external);
 
+//this gets all the {{template}} strings and decides how to parse them
 const doTemplate = function(tmpl, wiki, r) {
   let name = getName(tmpl);
+
   //we explicitly ignore these templates
   if (ignore.hasOwnProperty(name) === true) {
     wiki = wiki.replace(tmpl, '');
     return wiki;
   }
+
   //string-replacement templates
   if (inlineParsers.hasOwnProperty(name) === true && inlineParsers[name]) {
     let str = inlineParsers[name](tmpl, r);
     wiki = wiki.replace(tmpl, str);
     return wiki;
   }
+
   //section-template parsers
   if (bigParsers.hasOwnProperty(name) === true) {
     let obj = bigParsers[name](tmpl);
@@ -46,6 +50,7 @@ const doTemplate = function(tmpl, wiki, r) {
     wiki = wiki.replace(tmpl, '');
     return wiki;
   }
+
   //fallback parser
   let obj = generic(tmpl, name);
   if (obj) {
@@ -53,6 +58,7 @@ const doTemplate = function(tmpl, wiki, r) {
     wiki = wiki.replace(tmpl, '');
     return wiki;
   }
+
   //bury this template, if we don't know it
   // console.log(`  - no parser for '${name}' -`);
   // console.log('');

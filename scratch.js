@@ -22,4 +22,5 @@ let str = `
 }}
 `;
 str = `he married {{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}}`;
-console.log(wtf(str).text());
+// console.log(wtf(str).text());
+console.log(wtf(str).infoboxes(0).json());

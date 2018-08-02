@@ -144,11 +144,6 @@ const parsers = {
     return {
       template: 'Good article'
     };
-  },
-  //https://en.wikipedia.org/wiki/Template:Marriage
-  'marriage': (tmpl) => {
-    let data = pipeSplit(tmpl, ['name', 'from', 'to', 'end']);
-    return data;
   }
 };
 //aliases
