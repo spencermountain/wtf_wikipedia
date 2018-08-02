@@ -64,12 +64,10 @@ const doTemplate = function(tmpl, wiki, r) {
 //reduce the scary recursive situations
 const allTemplates = function(r, wiki, options) {
   let templates = getTemplates(wiki);
-  // console.log(templates);
   //first, do the nested ones
   templates.nested.forEach(tmpl => {
     wiki = doTemplate(tmpl, wiki, r, options);
   });
-  // console.log(wiki);
   //then, reparse wiki for the top-level ones
   templates = getTemplates(wiki);
   templates.top.forEach(tmpl => {

@@ -6,6 +6,9 @@ const grabInside = function(tmpl) {
   if (typeof parts[1] !== 'string') {
     return null;
   }
+  //only split on the first pipe:
+  parts[1] = parts.slice(1).join('|');
+
   let value = parts[1].trim();
   value = value.replace(/^[a-z0-9]{1,7}=/, ''); //support 'foo=value'
   return {

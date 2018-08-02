@@ -4,7 +4,7 @@ const parseLine = require('../../sentence').parseLine;
 //try to handle inline-wikitext, (like links) inside the pipe-text
 const tightenUp = function(arr) {
   return arr.map((str) => {
-    if (str.indexOf('[') !== -1) {
+    if (str && str.indexOf('[') !== -1) {
       let s = parseLine(str);
       if (s.links && s.links[0]) {
         return s.links[0].page;
