@@ -42,6 +42,8 @@ Consider:
 **wtf_wikipedia** supports many ***recursive shenanigans***, depreciated and obscure template
 variants, and illicit 'wiki-esque' shorthands.
 
+![image](https://user-images.githubusercontent.com/399657/43598341-75ca8f94-9652-11e8-9b91-cabae4fb1dce.png)
+
 It will try it's best, and fail in reasonable ways.
 
 > → building your own parser is never a good idea →

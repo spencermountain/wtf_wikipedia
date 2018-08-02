@@ -69,3 +69,5 @@
 * support dollar templates
 ### 4.5.0
 * support `section(0).wikitext()`
+* support inline {{marriage}} template
+* dangling semi-colons in first-sentence parentheses
