@@ -67,3 +67,5 @@
 * return a result or undefined for `sentences.bolds(0)`, and the like
 ### 4.2.2
 * support dollar templates
+### 4.5.0
+* support `section(0).wikitext()`
