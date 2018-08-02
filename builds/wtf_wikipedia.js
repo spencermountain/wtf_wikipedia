@@ -1,4 +1,4 @@
-/* wtf_wikipedia v4.4.0
+/* wtf_wikipedia v4.5.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -370,7 +370,10 @@ return new F();
 
   function parseHeaders(rawHeaders) {
     var headers = new Headers();
-    rawHeaders.split(/\r?\n/).forEach(function(line) {
+    // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
+    // https://tools.ietf.org/html/rfc7230#section-3.2
+    var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ');
+    preProcessedHeaders.split(/\r?\n/).forEach(function(line) {
       var parts = line.split(':');
       var key = parts.shift().trim();
       if (key) {
@@ -389,7 +392,7 @@ return new F();
     }
 
     this.type = 'default';
-    this.status = 'status' in options ? options.status : 200;
+    this.status = options.status === undefined ? 200 : options.status;
     this.ok = this.status >= 200 && this.status < 300;
     this.statusText = 'statusText' in options ? options.statusText : 'OK';
     this.headers = new Headers(options.headers);
@@ -456,6 +459,8 @@ return new F();
 
       if (request.credentials === 'include') {
         xhr.withCredentials = true;
+      } else if (request.credentials === 'omit') {
+        xhr.withCredentials = false;
       }
 
       if ('responseType' in xhr && support.blob) {
@@ -2253,7 +2258,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "4.4.0",
+  "version": "4.5.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -2289,22 +2294,22 @@ module.exports={
     "wikiscript"
   ],
   "dependencies": {
-    "cross-fetch": "^2.1.0",
+    "cross-fetch": "2.2.2",
     "jshashes": "1.0.7"
   },
   "devDependencies": {
     "amble": "0.0.6",
     "babel-cli": "6.26.0",
-    "babel-preset-env": "1.6.1",
+    "babel-preset-env": "1.7.0",
     "babelify": "8.0.0",
     "browserify": "16.2.2",
-    "codacy-coverage": "2.1.1",
+    "codacy-coverage": "3.0.0",
     "derequire": "2.0.6",
-    "nyc": "11.7.3",
-    "shelljs": "0.8.1",
+    "nyc": "12.0.2",
+    "shelljs": "0.8.2",
     "tap-dancer": "0.0.3",
-    "tape": "4.9.0",
-    "uglify-js": "3.3.24"
+    "tape": "4.9.1",
+    "uglify-js": "3.4.6"
   },
   "license": "MIT"
 }
@@ -5566,7 +5571,7 @@ var doSection = function doSection(section, wiki, options) {
   wiki = parse.image(matches, section, wiki, options);
   wiki = parse.interwiki(matches, section, wiki, options);
   //do each sentence
-  wiki = parse.eachSentence(section, wiki);
+  parse.eachSentence(section, wiki);
   // section.wiki = wiki;
   section = new Section(section, wiki);
   return section;
@@ -5767,7 +5772,7 @@ var parseRefs = function parseRefs(r, wiki) {
 };
 module.exports = parseRefs;
 
-},{"../sentence":54,"../sentence/Sentence":52,"../templates/misc":74,"../templates/parsers/generic":78}],51:[function(_dereq_,module,exports){
+},{"../sentence":54,"../sentence/Sentence":52,"../templates/misc":74,"../templates/parsers/generic":79}],51:[function(_dereq_,module,exports){
 'use strict';
 
 var helpers = _dereq_('../lib/helpers');
@@ -6051,6 +6056,8 @@ function postprocess(line) {
   }
   //remove empty parentheses (sometimes caused by removing templates)
   line = line.replace(/\([,;: ]*\)/g, '');
+  //these semi-colons in parentheses are particularly troublesome
+  line = line.replace(/\( *(; ?)+/g, '(');
   //dangling punctuation
   line = helpers.trim_whitespace(line);
   line = line.replace(/ +\.$/, '.');
@@ -6343,7 +6350,7 @@ var currencies = Object.keys(currencyTemplateCodes).reduce(function (result, cod
 
 module.exports = currencies;
 
-},{"./parsers/pipeSplit":82}],58:[function(_dereq_,module,exports){
+},{"./parsers/pipeSplit":83}],58:[function(_dereq_,module,exports){
 'use strict';
 
 //assorted parsing methods for date/time templates
@@ -6598,7 +6605,7 @@ templates.currentmonthname = templates.currentmonth;
 templates.currentmonthabbrev = templates.currentmonth;
 module.exports = templates;
 
-},{"../parsers/pipeSplit":82,"./parsers":61,"./timeSince":62}],61:[function(_dereq_,module,exports){
+},{"../parsers/pipeSplit":83,"./parsers":61,"./timeSince":62}],61:[function(_dereq_,module,exports){
 'use strict';
 
 var dates = _dereq_('./dates');
@@ -6891,7 +6898,7 @@ externals.imdb = externals['imdb name'];
 externals['imdb episodess'] = externals['imdb episode'];
 module.exports = externals;
 
-},{"./parsers/pipeSplit":82}],64:[function(_dereq_,module,exports){
+},{"./parsers/pipeSplit":83}],64:[function(_dereq_,module,exports){
 'use strict';
 
 var getInside = _dereq_('./parsers/inside');
@@ -6969,7 +6976,7 @@ inline.forEach(function (k) {
 
 module.exports = templates;
 
-},{"./parsers/inside":79,"./parsers/keyValue":80,"./parsers/pipeSplit":82}],65:[function(_dereq_,module,exports){
+},{"./parsers/inside":80,"./parsers/keyValue":81,"./parsers/pipeSplit":83}],65:[function(_dereq_,module,exports){
 'use strict';
 
 var getName = _dereq_('../parsers/_getName');
@@ -7004,7 +7011,7 @@ var generic = function generic(tmpl) {
 };
 module.exports = generic;
 
-},{"../parsers/_getName":75,"../parsers/pipeList":81,"./keyValue":66}],66:[function(_dereq_,module,exports){
+},{"../parsers/_getName":75,"../parsers/pipeList":82,"./keyValue":66}],66:[function(_dereq_,module,exports){
 'use strict';
 
 var i18n = _dereq_('../../data/i18n');
@@ -7050,7 +7057,7 @@ var doKeyValue = function doKeyValue(tmpl, name) {
 };
 module.exports = doKeyValue;
 
-},{"../../data/i18n":5,"../parsers/keyValue":80}],67:[function(_dereq_,module,exports){
+},{"../../data/i18n":5,"../parsers/keyValue":81}],67:[function(_dereq_,module,exports){
 'use strict';
 
 var convertDMS = _dereq_('./dms-format');
@@ -7166,7 +7173,7 @@ var geoTemplates = {
 };
 module.exports = geoTemplates;
 
-},{"../parsers/_strip":77,"./coord":67}],70:[function(_dereq_,module,exports){
+},{"../parsers/_strip":78,"./coord":67}],70:[function(_dereq_,module,exports){
 'use strict';
 
 //we explicitly ignore these, because they sometimes have resolve some data
@@ -7192,7 +7199,6 @@ module.exports = ignore;
 },{}],71:[function(_dereq_,module,exports){
 'use strict';
 
-// const findRecursive = require('../../lib/recursive_match');
 var getName = _dereq_('./parsers/_getName');
 var getTemplates = _dereq_('./parsers/_getTemplates');
 
@@ -7212,19 +7218,23 @@ var ignore = _dereq_('./ignore');
 var inlineParsers = Object.assign({}, dates, inline, currencies, links, formatting);
 var bigParsers = Object.assign({}, geo, pronounce, misc, external);
 
+//this gets all the {{template}} strings and decides how to parse them
 var doTemplate = function doTemplate(tmpl, wiki, r) {
   var name = getName(tmpl);
+
   //we explicitly ignore these templates
   if (ignore.hasOwnProperty(name) === true) {
     wiki = wiki.replace(tmpl, '');
     return wiki;
   }
+
   //string-replacement templates
   if (inlineParsers.hasOwnProperty(name) === true && inlineParsers[name]) {
     var str = inlineParsers[name](tmpl, r);
     wiki = wiki.replace(tmpl, str);
     return wiki;
   }
+
   //section-template parsers
   if (bigParsers.hasOwnProperty(name) === true) {
     var _obj = bigParsers[name](tmpl);
@@ -7234,6 +7244,7 @@ var doTemplate = function doTemplate(tmpl, wiki, r) {
     wiki = wiki.replace(tmpl, '');
     return wiki;
   }
+
   //fallback parser
   var obj = generic(tmpl, name);
   if (obj) {
@@ -7241,6 +7252,7 @@ var doTemplate = function doTemplate(tmpl, wiki, r) {
     wiki = wiki.replace(tmpl, '');
     return wiki;
   }
+
   //bury this template, if we don't know it
   // console.log(`  - no parser for '${name}' -`);
   // console.log('');
@@ -7252,12 +7264,10 @@ var doTemplate = function doTemplate(tmpl, wiki, r) {
 //reduce the scary recursive situations
 var allTemplates = function allTemplates(r, wiki, options) {
   var templates = getTemplates(wiki);
-  // console.log(templates);
   //first, do the nested ones
   templates.nested.forEach(function (tmpl) {
     wiki = doTemplate(tmpl, wiki, r, options);
   });
-  // console.log(wiki);
   //then, reparse wiki for the top-level ones
   templates = getTemplates(wiki);
   templates.top.forEach(function (tmpl) {
@@ -7268,7 +7278,7 @@ var allTemplates = function allTemplates(r, wiki, options) {
 
 module.exports = allTemplates;
 
-},{"./currencies":57,"./dates":60,"./external":63,"./formatting":64,"./generic":65,"./geo":69,"./ignore":70,"./inline":72,"./links":73,"./misc":74,"./parsers/_getName":75,"./parsers/_getTemplates":76,"./pronounce":83}],72:[function(_dereq_,module,exports){
+},{"./currencies":57,"./dates":60,"./external":63,"./formatting":64,"./generic":65,"./geo":69,"./ignore":70,"./inline":72,"./links":73,"./misc":74,"./parsers/_getName":75,"./parsers/_getTemplates":76,"./pronounce":84}],72:[function(_dereq_,module,exports){
 'use strict';
 
 var keyValue = _dereq_('./parsers/keyValue');
@@ -7399,6 +7409,22 @@ var inline = {
       return str;
     }
     return '';
+  },
+
+  //https://en.wikipedia.org/wiki/Template:Marriage
+  //this one creates a template, and an inline response
+  marriage: function marriage(tmpl, r) {
+    var data = pipeSplit(tmpl, ['name', 'from', 'to', 'end']);
+    r.templates.push(data);
+    var str = '' + (data.name || '');
+    if (data.from) {
+      if (data.to) {
+        str += ' (m. ' + data.from + '-' + data.to + ')';
+      } else {
+        str += ' (m. ' + data.from + ')';
+      }
+    }
+    return str;
   }
 };
 //aliases
@@ -7413,7 +7439,7 @@ inline['str left'] = inline.trunc;
 inline['str crop'] = inline.trunc;
 module.exports = inline;
 
-},{"./parsers/_strip":77,"./parsers/keyValue":80,"./parsers/pipeSplit":82}],73:[function(_dereq_,module,exports){
+},{"./parsers/_strip":78,"./parsers/keyValue":81,"./parsers/pipeSplit":83}],73:[function(_dereq_,module,exports){
 'use strict';
 
 var pipeSplit = _dereq_('./parsers/pipeSplit');
@@ -7456,7 +7482,7 @@ templates.ll = templates.link;
 templates['l-self'] = templates.link;
 module.exports = templates;
 
-},{"./parsers/pipeSplit":82}],74:[function(_dereq_,module,exports){
+},{"./parsers/pipeSplit":83}],74:[function(_dereq_,module,exports){
 'use strict';
 
 var keyValue = _dereq_('./parsers/keyValue');
@@ -7592,6 +7618,18 @@ var parsers = {
       template: 'subject bar',
       links: data
     };
+  },
+  'short description': function shortDescription(tmpl) {
+    var data = pipeList(tmpl);
+    return {
+      template: data.template,
+      description: data.data[0]
+    };
+  },
+  'good article': function goodArticle() {
+    return {
+      template: 'Good article'
+    };
   }
 };
 //aliases
@@ -7604,7 +7642,7 @@ parsers['sisterlinks'] = parsers['sister project links'];
 
 module.exports = parsers;
 
-},{"./parsers/inside":79,"./parsers/keyValue":80,"./parsers/pipeList":81,"./parsers/pipeSplit":82}],75:[function(_dereq_,module,exports){
+},{"./parsers/inside":80,"./parsers/keyValue":81,"./parsers/pipeList":82,"./parsers/pipeSplit":83}],75:[function(_dereq_,module,exports){
 'use strict';
 
 //get the name of the template
@@ -7715,6 +7753,52 @@ module.exports = getTemplates;
 },{}],77:[function(_dereq_,module,exports){
 'use strict';
 
+var strip = _dereq_('./_strip');
+var parseLine = _dereq_('../../sentence').parseLine;
+
+//try to handle inline-wikitext, (like links) inside the pipe-text
+var tightenUp = function tightenUp(arr) {
+  return arr.map(function (str) {
+    if (str && str.indexOf('[') !== -1) {
+      var s = parseLine(str);
+      if (s.links && s.links[0]) {
+        return s.links[0].page;
+      }
+      return s.text;
+    }
+    return str;
+  });
+};
+
+// this splits a text-segment by '|' characters, but does so carefully
+var pipes = function pipes(tmpl) {
+  tmpl = strip(tmpl);
+  var arr = tmpl.split(/\|/g);
+  for (var i = 0; i < arr.length; i += 1) {
+    var str = arr[i];
+    //stitch [[link|text]] pieces back together
+    if (/\[\[[^\]]+$/.test(str) === true && /^[^\[]+\]\]/.test(arr[i + 1]) === true) {
+      arr[i] += '|' + arr[i + 1];
+      arr[i + 1] = null;
+    }
+    //stitch {{imdb|8392}} pieces back together, too
+    if (/\{\{[^\}]+$/.test(str) === true && /^[^\{]+\}\}/.test(arr[i + 1]) === true) {
+      arr[i] += '|' + arr[i + 1];
+      arr[i + 1] = null;
+    }
+  }
+  var name = arr[0] || '';
+  arr = arr.slice(1);
+  return {
+    name: name.trim().toLowerCase(),
+    list: tightenUp(arr)
+  };
+};
+module.exports = pipes;
+
+},{"../../sentence":54,"./_strip":78}],78:[function(_dereq_,module,exports){
+'use strict';
+
 //remove the top/bottom off the template
 var strip = function strip(tmpl) {
   tmpl = tmpl.replace(/^\{\{/, '');
@@ -7723,7 +7807,7 @@ var strip = function strip(tmpl) {
 };
 module.exports = strip;
 
-},{}],78:[function(_dereq_,module,exports){
+},{}],79:[function(_dereq_,module,exports){
 'use strict';
 
 var keyValue = _dereq_('./keyValue');
@@ -7761,7 +7845,7 @@ var genericTemplate = function genericTemplate(tmpl) {
 };
 module.exports = genericTemplate;
 
-},{"./_getName":75,"./keyValue":80}],79:[function(_dereq_,module,exports){
+},{"./_getName":75,"./keyValue":81}],80:[function(_dereq_,module,exports){
 'use strict';
 
 var strip = _dereq_('./_strip');
@@ -7772,6 +7856,9 @@ var grabInside = function grabInside(tmpl) {
   if (typeof parts[1] !== 'string') {
     return null;
   }
+  //only split on the first pipe:
+  parts[1] = parts.slice(1).join('|');
+
   var value = parts[1].trim();
   value = value.replace(/^[a-z0-9]{1,7}=/, ''); //support 'foo=value'
   return {
@@ -7781,7 +7868,7 @@ var grabInside = function grabInside(tmpl) {
 };
 module.exports = grabInside;
 
-},{"./_strip":77}],80:[function(_dereq_,module,exports){
+},{"./_strip":78}],81:[function(_dereq_,module,exports){
 'use strict';
 
 var parseLine = _dereq_('../../sentence').parseLine;
@@ -7813,7 +7900,7 @@ var keyValue = function keyValue(tmpl, isInfobox) {
     }
     var key = parts[0].toLowerCase().trim();
     var val = parts[1].trim();
-    if (key && val) {
+    if (key !== '' && val !== '') {
       val = parseLine(val);
       if (isInfobox) {
         h[key] = new Sentence(val); //.json();
@@ -7831,25 +7918,23 @@ var keyValue = function keyValue(tmpl, isInfobox) {
 };
 module.exports = keyValue;
 
-},{"../../sentence":54,"../../sentence/Sentence":52,"./_strip":77}],81:[function(_dereq_,module,exports){
+},{"../../sentence":54,"../../sentence/Sentence":52,"./_strip":78}],82:[function(_dereq_,module,exports){
 'use strict';
 
 var keyVal = /[a-z0-9]+ *?= *?[a-z0-9]/i;
-var strip = _dereq_('./_strip');
+var pipes = _dereq_('./_pipes');
 
 //generic unamed lists
 // {{name|one|two|three}}
 var pipeList = function pipeList(tmpl) {
-  tmpl = strip(tmpl);
-  var arr = tmpl.split(/\|/g);
+  var found = pipes(tmpl);
   var obj = {
-    template: arr[0].trim().toLowerCase()
+    template: found.name
   };
-  arr = arr.slice(1);
-
+  var arr = found.list || [];
   arr.forEach(function (k, i) {
     if (arr[i]) {
-      //support gross 'id=234' format inside the value
+      //support this gross 'id=234' format inside the value
       if (keyVal.test(arr[i]) === true) {
         arr[i] = arr[i].split('=')[1];
       }
@@ -7861,21 +7946,20 @@ var pipeList = function pipeList(tmpl) {
 };
 module.exports = pipeList;
 
-},{"./_strip":77}],82:[function(_dereq_,module,exports){
+},{"./_pipes":77}],83:[function(_dereq_,module,exports){
 'use strict';
 
 var keyVal = /[a-z0-9]+ *?= *?[a-z0-9]/i;
-var strip = _dereq_('./_strip');
+var pipes = _dereq_('./_pipes');
 
 //templates that look like this:
 // {{name|one|two|three}}
 var pipeSplit = function pipeSplit(tmpl, order) {
-  tmpl = strip(tmpl);
-  var arr = tmpl.split(/\|/g);
+  var found = pipes(tmpl);
   var obj = {
-    template: arr[0].trim().toLowerCase()
+    template: found.name
   };
-  arr.shift();
+  var arr = found.list || [];
   order.forEach(function (k, i) {
     if (arr[i]) {
       //support gross 'id=234' format inside the value
@@ -7898,7 +7982,7 @@ var pipeSplit = function pipeSplit(tmpl, order) {
 };
 module.exports = pipeSplit;
 
-},{"./_strip":77}],83:[function(_dereq_,module,exports){
+},{"./_pipes":77}],84:[function(_dereq_,module,exports){
 'use strict';
 
 var strip = _dereq_('./parsers/_strip');
@@ -7925,5 +8009,5 @@ i18n.forEach(function (k) {
 });
 module.exports = ipaTemplates;
 
-},{"./parsers/_strip":77}]},{},[19])(19)
+},{"./parsers/_strip":78}]},{},[19])(19)
 });
