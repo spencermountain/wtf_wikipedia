@@ -24,7 +24,7 @@ const keyValue = function(tmpl, isInfobox) {
     }
     let key = parts[0].toLowerCase().trim();
     let val = parts[1].trim();
-    if (key && val) {
+    if (key !== '' && val !== '') {
       val = parseLine(val);
       if (isInfobox) {
         h[key] = new Sentence(val); //.json();

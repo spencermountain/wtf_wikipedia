@@ -29,7 +29,7 @@ const doSection = function(section, wiki, options) {
   wiki = parse.image(matches, section, wiki, options);
   wiki = parse.interwiki(matches, section, wiki, options);
   //do each sentence
-  wiki = parse.eachSentence(section, wiki);
+  parse.eachSentence(section, wiki);
   // section.wiki = wiki;
   section = new Section(section, wiki);
   return section;

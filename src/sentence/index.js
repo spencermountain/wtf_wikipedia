@@ -31,6 +31,8 @@ function postprocess(line) {
   }
   //remove empty parentheses (sometimes caused by removing templates)
   line = line.replace(/\([,;: ]*\)/g, '');
+  //these semi-colons in parentheses are particularly troublesome
+  line = line.replace(/\( *(; ?)+/g, '(');
   //dangling punctuation
   line = helpers.trim_whitespace(line);
   line = line.replace(/ +\.$/, '.');

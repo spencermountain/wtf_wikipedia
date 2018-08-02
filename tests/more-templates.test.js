@@ -48,3 +48,45 @@ test('redirect-list', t => {
   t.equal(obj.links.length, 2, 'list-len');
   t.end();
 });
+
+test('templates-in-templates', t => {
+  var str = `{{marriage|[[Mileva Marić]]<br>|1903|1919|end=div}}<br />{{nowrap|{{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}}<ref>{{cite book |editor-last=Heilbron |editor-first=John L. |title=The Oxford Companion to the History of Modern Science |url=https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233 |date=2003 |publisher=Oxford University Press |isbn=978-0-19-974376-6 |page=233}}</ref>{{sfnp|Pais|1982|p=301}}}}`;
+  var templates = wtf(str).templates();
+  t.equal(templates[0].template, 'citation', 'cite-book');
+  t.equal(templates[0].data.url, 'https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233', 'url');
+  t.equal(templates[0].data.isbn, '978-0-19-974376-6', 'isbn');
+  t.equal(templates[1].template, 'marriage', 'marriage1');
+  t.equal(templates[1].name, 'Elsa Löwenthal', 'marriage-1-name');
+  t.equal(templates[2].template, 'sfnp', 'marriage1');
+  t.equal(templates[3].template, 'marriage', 'marriage2');
+  t.equal(templates[3].name, 'Mileva Marić', 'marriage2-name');
+  t.end();
+});
+
+test('support-nowrap-in-infobox', t => {
+  var str = `
+  {{Infobox scientist
+  | name        = Albert Einstein
+  | image       = Einstein 1921 by F Schmutzer - restoration.jpg
+  | spouse      = {{nowrap| {{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}} }}
+  | residence   = Germany, Italy, Switzerland, Austria (present-day Czech Republic), Belgium, United States
+  | signature = Albert Einstein signature 1934.svg
+  }}
+  `;
+  var infobox = wtf(str).infoboxes(0);
+  var data = infobox.json();
+  t.equal(data.name.text, 'Albert Einstein', 'got infobox datad');
+  // t.equal(data.spouse.text, 'Elsa Löwenthal', 'got tricky marriage value');
+  t.end();
+});
+
+test('inline-templates', t => {
+  var str = `he married {{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}} in Peterburough`;
+  var doc = wtf(str);
+  t.equal(doc.text(), 'he married Elsa Löwenthal (m. 1919-1936) in Peterburough', 'inline marriage text');
+
+  str = `he married {{marriage|Johnny-boy}} in Peterburough`;
+  doc = wtf(str);
+  t.equal(doc.text(), 'he married Johnny-boy in Peterburough', 'marriage-text simple');
+  t.end();
+});
