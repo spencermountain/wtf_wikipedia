@@ -1,15 +1,14 @@
 const keyVal = /[a-z0-9]+ *?= *?[a-z0-9]/i;
-const strip = require('./_strip');
+const pipes = require('./_pipes');
 
 //generic unamed lists
 // {{name|one|two|three}}
 const pipeList = function(tmpl) {
-  tmpl = strip(tmpl);
-  let arr = tmpl.split(/\|/g);
+  let found = pipes(tmpl);
   let obj = {
-    template: arr[0].trim().toLowerCase(),
+    template: found.name
   };
-  arr = arr.slice(1);
+  let arr = found.list || [];
 
   arr.forEach((k, i) => {
     if (arr[i]) {

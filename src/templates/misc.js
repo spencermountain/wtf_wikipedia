@@ -133,6 +133,23 @@ const parsers = {
       links: data
     };
   },
+  'short description': (tmpl) => {
+    let data = pipeList(tmpl);
+    return {
+      template: data.template,
+      description: data.data[0]
+    };
+  },
+  'good article': () => {
+    return {
+      template: 'Good article'
+    };
+  },
+  //https://en.wikipedia.org/wiki/Template:Marriage
+  'marriage': (tmpl) => {
+    let data = pipeSplit(tmpl, ['name', 'from', 'to', 'end']);
+    return data;
+  }
 };
 //aliases
 parsers['cite'] = parsers.citation;
