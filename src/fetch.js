@@ -21,6 +21,9 @@ const makeUrl = function(title, lang) {
   //support multiple titles
   if (typeof title === 'string') {
     title = [title];
+  } else if (typeof title === 'number') { //pageids param
+    lookup = 'pageids';
+    title = [title];
   }
   title = title.map(encodeURIComponent);
   title = title.join('|');
