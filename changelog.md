@@ -71,3 +71,6 @@
 * support `section(0).wikitext()`
 * support inline {{marriage}} template
 * dangling semi-colons in first-sentence parentheses
+### 4.6.0
+* `<gallery>` tag support in `.images()`
+*
