@@ -3,10 +3,10 @@ const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-wtf.fetch('Spencer', 'en', function(err, doc) {
-  console.log(doc.plaintext());
-  console.log(doc.isDisambiguation());
-});
+// wtf.fetch('Spencer', 'en', function(err, doc) {
+//   console.log(doc.plaintext());
+//   console.log(doc.isDisambiguation());
+// });
 
 
 
@@ -20,4 +20,9 @@ wtf.fetch('Spencer', 'en', function(err, doc) {
 // | signature = Albert Einstein signature 1934.svg
 // }}
 // `;
-// console.log(wtf(str).infoboxes(0).json());
+str = `
+hello
+== {{anchor|Foo}} Foo [[Bar]] ==
+this is working
+`;
+console.log(wtf(str).sections().map(s => s.json()));

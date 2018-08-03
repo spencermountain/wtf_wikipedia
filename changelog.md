@@ -75,3 +75,4 @@
 * `<gallery>` tag support in `.images()`
 * support pageids again in .fetch()
 * better disambiguation-page detection in english
+* remove wikitext from caption titles
