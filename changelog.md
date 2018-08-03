@@ -73,4 +73,5 @@
 * dangling semi-colons in first-sentence parentheses
 ### 4.6.0
 * `<gallery>` tag support in `.images()`
-*
+* support pageids again in .fetch()
+* better disambiguation-page detection in english

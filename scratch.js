@@ -3,7 +3,7 @@ const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-wtf.fetch(325490, 'en', function(err, doc) {
+wtf.fetch('Spencer', 'en', function(err, doc) {
   console.log(doc.plaintext());
   console.log(doc.isDisambiguation());
 });
