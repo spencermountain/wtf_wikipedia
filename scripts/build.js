@@ -1,5 +1,5 @@
-require('shelljs/global');
-config.silent = true;
+var exec = require('shelljs').exec;
+var echo = require('shelljs').echo;
 var fs = require('fs');
 //use paths, so libs don't need a -g
 var browserify = './node_modules/.bin/browserify';
@@ -7,6 +7,21 @@ var derequire = './node_modules/.bin/derequire';
 var uglify = './node_modules/.bin/uglifyjs';
 
 var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+
+if (pkg.browser !== undefined) {
+  console.log(`
+
+----
+  Yo, please remove the "browser" property from package.json before building
+
+  sorry, somehow this is necessary to build-up the deps properly.
+   - I don't like computers either
+----
+
+-stopping build.-
+  `);
+  process.exit(1);
+}
 
 //final build locations
 var banner = '/* wtf_wikipedia v' + pkg.version + '\n   github.com/spencermountain/wtf_wikipedia\n   MIT\n*/\n';
