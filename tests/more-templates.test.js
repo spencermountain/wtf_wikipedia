@@ -76,7 +76,7 @@ test('support-nowrap-in-infobox', t => {
   var infobox = wtf(str).infoboxes(0);
   var data = infobox.json();
   t.equal(data.name.text, 'Albert Einstein', 'got infobox datad');
-  // t.equal(data.spouse.text, 'Elsa Löwenthal', 'got tricky marriage value');
+  t.equal(data.spouse.text, 'Elsa Löwenthal (m. 1919-1936)', 'got tricky marriage value');
   t.end();
 });
 
@@ -88,5 +88,13 @@ test('inline-templates', t => {
   str = `he married {{marriage|Johnny-boy}} in Peterburough`;
   doc = wtf(str);
   t.equal(doc.text(), 'he married Johnny-boy in Peterburough', 'marriage-text simple');
+  t.end();
+});
+
+test('three-layer-templates', t => {
+  var str = `she married {{nowrap| {{nowrap| {{marriage|Johnny-boy}} }}}}`;
+  var doc = wtf(str);
+  t.equal(doc.text(), 'she married Johnny-boy', '3-template inline');
+  t.equal(doc.templates(0).template, 'marriage', '3-template result');
   t.end();
 });

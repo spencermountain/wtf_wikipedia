@@ -10,11 +10,13 @@ const parse = {
   table: require('./table'),
   references: require('./references'),
   templates: require('../templates'),
+  xmlTemplates: require('./xml-templates'),
   eachSentence: require('../sentence').eachSentence
 };
 const section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})/g;
 
 const doSection = function(section, wiki, options) {
+  wiki = parse.xmlTemplates(section, wiki, options);
   // //parse the <ref></ref> tags
   wiki = parse.references(section, wiki, options);
   //parse-out all {{templates}}

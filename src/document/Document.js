@@ -94,6 +94,12 @@ const methods = {
         arr.unshift(info.image()); //put it at the top
       }
     });
+    //look for 'gallery' templates, too
+    this.templates().forEach((obj) => {
+      if (obj.template === 'gallery') {
+        obj.images.forEach((img) => arr.push(img));
+      }
+    });
     if (typeof clue === 'number') {
       return arr[clue];
     }

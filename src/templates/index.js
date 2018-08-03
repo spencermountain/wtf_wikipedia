@@ -70,12 +70,21 @@ const doTemplate = function(tmpl, wiki, r) {
 //reduce the scary recursive situations
 const allTemplates = function(r, wiki, options) {
   let templates = getTemplates(wiki);
-  //first, do the nested ones
+  //first, do the nested (second level) ones
   templates.nested.forEach(tmpl => {
     wiki = doTemplate(tmpl, wiki, r, options);
   });
   //then, reparse wiki for the top-level ones
   templates = getTemplates(wiki);
+
+  //okay if we have a 3-level-deep template, do it again (but no further)
+  if (templates.nested.length > 0) {
+    templates.nested.forEach(tmpl => {
+      wiki = doTemplate(tmpl, wiki, r, options);
+    });
+    templates = getTemplates(wiki); //this is getting crazy.
+  }
+  //okay, top-level
   templates.top.forEach(tmpl => {
     wiki = doTemplate(tmpl, wiki, r, options);
   });

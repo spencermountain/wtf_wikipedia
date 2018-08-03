@@ -71,3 +71,9 @@
 * support `section(0).wikitext()`
 * support inline {{marriage}} template
 * dangling semi-colons in first-sentence parentheses
+### 4.6.0
+* `<gallery>` tag support in `.images()`
+* support pageids again in .fetch()
+* better disambiguation-page detection in english
+* remove wikitext from caption titles
+* support 3-level templates (whew!)
