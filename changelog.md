@@ -76,3 +76,4 @@
 * support pageids again in .fetch()
 * better disambiguation-page detection in english
 * remove wikitext from caption titles
+* support 3-level templates (whew!)
