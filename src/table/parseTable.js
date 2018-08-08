@@ -2,12 +2,15 @@ const parseLine = require('../sentence/').parseLine;
 const Sentence = require('../sentence/Sentence');
 const findRows = require('./findRows');
 
+//additional table-cruft to remove before parseLine method
 const cleanText = function(str) {
   //anything before a single-pipe is styling, so remove it
   if (str.match(/\|/)) {
     str = str.replace(/.+\| ?/, ''); //class="unsortable"|title
   }
   str = str.replace(/style=".*?"/, '');
+  //'!' is used as a highlighed-column
+  str = str.replace(/^!/, '');
   return str;
 };
 
@@ -36,9 +39,10 @@ const parseTable = function(wiki) {
     let row = {};
     arr.forEach((str, i) => {
       let header = headers[i] || 'col-' + i;
-      str = cleanText(str);
-      row[header] = parseLine(str);
-      row[header] = new Sentence(row[header]);
+      let cell = parseLine(str);
+      cell.text = cleanText(cell.text);
+      cell = new Sentence(cell);
+      row[header] = cell;
     });
     return row;
   });

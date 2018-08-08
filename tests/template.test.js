@@ -2,44 +2,42 @@
 var wtf = require('./lib');
 var test = require('tape');
 
-var glossary = `{{term|1=A-show}}
-{{defn|1= A wrestling event where a company's biggest draws wrestle.<ref name=torch/>}}`;
-
 test('glossary of professional wrestling', function(t) {
+  var glossary = `{{term|1=A-show}}
+  {{defn|1= A wrestling event where a company's biggest draws wrestle.<ref name=torch/>}}`;
   var o = wtf(glossary).sections()[0].sentences();
   t.equal(o[0].data.text, 'A-show:');
   t.equal(o[1].data.text, `A wrestling event where a company's biggest draws wrestle.`);
   t.end();
 });
 
-var boloZenden = `{{Infobox football biography
-| name        = Boudewijn Zenden
-| image       = Zenden.jpg
-| image_size  = 260
-| caption     = Zenden in 2005, playing for Liverpool
-| fullname    = Boudewijn Zenden
-| birth_date  = {{Birth date and age|1976|08|15|df=yes}}
-| birth_place = [[Maastricht]], [[Netherlands]]
-| height      = {{convert|1.68|m|abbr=on}}<ref>http://www.soccerbase.com/players/player.sd?player_id=12662</ref>
-| position    = [[Midfielder]]
-| currentclub =
-| youthyears1 = 1985–1987 |youthclubs1 = [[MVV]]
-| youthyears2 = 1987–1993 |youthclubs2 = [[PSV Eindhoven|PSV]]
-| years1      = 1993–1998 |clubs1 = [[PSV Eindhoven|PSV]]                         |caps1 = 112 |goals1 = 32
-| years2      = 1998–2001 |clubs2 = [[FC Barcelona|Barcelona]]                    |caps2 = 64  |goals2 = 2
-| years3      = 2001–2004 |clubs3 = [[Chelsea F.C.|Chelsea]]                      |caps3 = 43  |goals3 = 4
-| years4      = 2003–2004 |clubs4 = → [[Middlesbrough F.C.|Middlesbrough]] (loan) |caps4 = 31  |goals4 = 4
-| years5      = 2004–2005 |clubs5 = [[Middlesbrough F.C.|Middlesbrough]]          |caps5 = 36  |goals5 = 5
-| years6      = 2005–2007 |clubs6 = [[Liverpool F.C.|Liverpool]]                  |caps6 = 23  |goals6 = 2
-| years7      = 2007–2009 |clubs7 = [[Olympique de Marseille|Marseille]]          |caps7 = 54  |goals7 = 6
-| years8      = 2009–2011 |clubs8 = [[Sunderland A.F.C|Sunderland]]               |caps8 = 47  |goals8 = 4
-| totalcaps   = 410 |totalgoals = 59
-| nationalyears1 = 1997–2004 |nationalteam1 = [[Netherlands national football team|Netherlands]] |nationalcaps1 = 54 |nationalgoals1 = 7
-| manageryears1  = 2012–2013 |managerclubs1 = [[Chelsea F.C.|Chelsea]] (assistant manager)
-| manageryears2  = 2013– |managerclubs2 = [[Jong PSV]] (assistant manager)
-}}`;
-
 test('boloZenden infobox', function(t) {
+  var boloZenden = `{{Infobox football biography
+    | name        = Boudewijn Zenden
+    | image       = Zenden.jpg
+    | image_size  = 260
+    | caption     = Zenden in 2005, playing for Liverpool
+    | fullname    = Boudewijn Zenden
+    | birth_date  = {{Birth date and age|1976|08|15|df=yes}}
+    | birth_place = [[Maastricht]], [[Netherlands]]
+    | height      = {{convert|1.68|m|abbr=on}}<ref>http://www.soccerbase.com/players/player.sd?player_id=12662</ref>
+    | position    = [[Midfielder]]
+    | currentclub =
+    | youthyears1 = 1985–1987 |youthclubs1 = [[MVV]]
+    | youthyears2 = 1987–1993 |youthclubs2 = [[PSV Eindhoven|PSV]]
+    | years1      = 1993–1998 |clubs1 = [[PSV Eindhoven|PSV]]                         |caps1 = 112 |goals1 = 32
+    | years2      = 1998–2001 |clubs2 = [[FC Barcelona|Barcelona]]                    |caps2 = 64  |goals2 = 2
+    | years3      = 2001–2004 |clubs3 = [[Chelsea F.C.|Chelsea]]                      |caps3 = 43  |goals3 = 4
+    | years4      = 2003–2004 |clubs4 = → [[Middlesbrough F.C.|Middlesbrough]] (loan) |caps4 = 31  |goals4 = 4
+    | years5      = 2004–2005 |clubs5 = [[Middlesbrough F.C.|Middlesbrough]]          |caps5 = 36  |goals5 = 5
+    | years6      = 2005–2007 |clubs6 = [[Liverpool F.C.|Liverpool]]                  |caps6 = 23  |goals6 = 2
+    | years7      = 2007–2009 |clubs7 = [[Olympique de Marseille|Marseille]]          |caps7 = 54  |goals7 = 6
+    | years8      = 2009–2011 |clubs8 = [[Sunderland A.F.C|Sunderland]]               |caps8 = 47  |goals8 = 4
+    | totalcaps   = 410 |totalgoals = 59
+    | nationalyears1 = 1997–2004 |nationalteam1 = [[Netherlands national football team|Netherlands]] |nationalcaps1 = 54 |nationalgoals1 = 7
+    | manageryears1  = 2012–2013 |managerclubs1 = [[Chelsea F.C.|Chelsea]] (assistant manager)
+    | manageryears2  = 2013– |managerclubs2 = [[Jong PSV]] (assistant manager)
+  }}`;
   var o = wtf(boloZenden).infoboxes(0).data;
   t.equal(o.years1.text(), '1993–1998');
   t.equal(o.clubs1.text(), 'PSV');
@@ -54,24 +52,25 @@ test('boloZenden infobox', function(t) {
   t.end();
 });
 
-var hurricane = `{{Infobox Hurricane
-| Name=Tropical Storm Edouard
-| Type=Tropical storm
-| Year=2002
-| Basin=Atl
-| Image location=Tropical Storm Edouard 2002.jpg
-| Image name=Tropical Storm Edouard near peak intensity
-| Formed=September 1, 2002
-| Dissipated=September 6, 2002
-| 1-min winds=55
-| Pressure=1002
-| Damages=
-| Inflated=
-| Fatalities=None
-| Areas=[[Florida]]
-| Hurricane season=[[2002 Atlantic hurricane season]]
-}}`;
 test('hurricane infobox', function(t) {
+  var hurricane = `
+{{Infobox Hurricane
+  | Name=Tropical Storm Edouard
+  | Type=Tropical storm
+  | Year=2002
+  | Basin=Atl
+  | Image location=Tropical Storm Edouard 2002.jpg
+  | Image name=Tropical Storm Edouard near peak intensity
+  | Formed=September 1, 2002
+  | Dissipated=September 6, 2002
+  | 1-min winds=55
+  | Pressure=1002
+  | Damages=
+  | Inflated=
+  | Fatalities=None
+  | Areas=[[Florida]]
+  | Hurricane season=[[2002 Atlantic hurricane season]]
+}}`;
   var o = wtf(hurricane).infoboxes(0).data;
   t.equal(o.name.text(), 'Tropical Storm Edouard');
   t.equal(o.dissipated.text(), 'September 6, 2002');
@@ -80,7 +79,8 @@ test('hurricane infobox', function(t) {
   t.end();
 });
 
-var park_place = `
+test('parkplace disambig', function(t) {
+  var park_place = `
 '''Park Place''' may refer to:
 {{TOC right}}
 
@@ -94,8 +94,7 @@ var park_place = `
 * [[Park Place (Vancouver)]], a skyscraper
 * [[Park Place Mall]], Lethbridge, Alberta
 {{disambiguation}}
-`;
-test('parkplace disambig', function(t) {
+  `;
   var o = wtf(park_place);
   t.equal(o.isDisambiguation(), true, 'is-disambiguation');
   t.equal(o.links().length, 4, 'links');
@@ -103,7 +102,8 @@ test('parkplace disambig', function(t) {
   t.end();
 });
 
-var bluejays = `
+test('bluejays table', function(t) {
+  var bluejays = `
 {| border="1" cellpadding="2" cellspacing="0" class="wikitable"
 |-
 ! bgcolor="#DDDDFF" width="4%" | Number
@@ -114,16 +114,15 @@ var bluejays = `
 |- align="center" bgcolor="bbffbb"
 | 2 || April 7 || @ [[Minnesota Twins|Twins]] || 9 - 3 || '''[[David Wells|Wells]]''' (1-0) || [[Mike Lincoln|Lincoln]] (0-1) || '''[[Roy Halladay|Halladay]]''' (1) || 9,220 || 1-1
 |}
-`;
-test('bluejays table', function(t) {
-  var arr = wtf(bluejays).tables(0);
+  `;
+  var arr = wtf(bluejays).tables(0).data;
   t.equal(arr.length, 2);
-  t.equal(arr[0]['Number'].text(), '1');
-  t.equal(arr[0]['Date'].text(), 'April 6');
-  t.equal(arr[0]['Team'].text(), '@ Twins');
-  t.equal(arr[1]['Number'].text(), '2');
-  t.equal(arr[1]['Date'].text(), 'April 7');
-  t.equal(arr[1]['col-3'].text(), '9 - 3');
+  t.equal(arr[0]['Number'].text(), '1', 'number');
+  t.equal(arr[0]['Date'].text(), 'April 6', 'date');
+  t.equal(arr[0]['Team'].text(), '@ Twins', 'team');
+  t.equal(arr[1]['Number'].text(), '2', 'number2');
+  t.equal(arr[1]['Date'].text(), 'April 7', 'date2');
+  t.equal(arr[1]['col-3'].text(), '9 - 3', 'col-3');
   t.end();
 });
 
@@ -165,42 +164,42 @@ test('Alabama infobox', function(t) {
   t.end();
 });
 
-var radiohead = `{{Infobox musical artist
-| name = Radiohead
-| image = Radiohead.jpg
-| caption = Radiohead in 2006; from left to right: [[Thom Yorke]], [[Jonny Greenwood]], [[Colin Greenwood]], [[Ed O'Brien]] and [[Phil Selway]]
-| image_size = 270
-| landscape = Yes
-| background = group_or_band
-| origin = [[Abingdon-on-Thames|Abingdon, Oxfordshire]], England
-| genre = {{flatlist|
-* [[Art rock]]
-* [[alternative rock]]<!--genres sourced on talk page; do not add without consulting talk page with sourced information-->
-* [[electronica]]
-* [[experimental rock]]
-}}
-| years_active = 1985–present
-| associated_acts = {{flatlist|
-* [[Atoms for Peace (band)|Atoms for Peace]]
-* [[7 Worlds Collide]]
-}}
-| label = {{flatlist|
-* [[XL Recordings|XL]]
-* [[Ticker Tape Ltd.]]
-* [[Hostess Entertainment|Hostess]]
-* [[TBD Records|TBD]]
-* [[Parlophone]]
-* [[Capitol Records|Capitol]]
-}}
-| website = {{URL|radiohead.com}}
-| current_members =
-* [[Thom Yorke]]
-* [[Jonny Greenwood]]
-* [[Colin Greenwood]]
-* [[Ed O'Brien]]
-* [[Philip Selway]]
-}} `;
 test('Radiohead infobox', function(t) {
+  var radiohead = `{{Infobox musical artist
+    | name = Radiohead
+    | image = Radiohead.jpg
+    | caption = Radiohead in 2006; from left to right: [[Thom Yorke]], [[Jonny Greenwood]], [[Colin Greenwood]], [[Ed O'Brien]] and [[Phil Selway]]
+    | image_size = 270
+    | landscape = Yes
+    | background = group_or_band
+    | origin = [[Abingdon-on-Thames|Abingdon, Oxfordshire]], England
+    | genre = {{flatlist|
+      * [[Art rock]]
+      * [[alternative rock]]<!--genres sourced on talk page; do not add without consulting talk page with sourced information-->
+      * [[electronica]]
+      * [[experimental rock]]
+    }}
+    | years_active = 1985–present
+    | associated_acts = {{flatlist|
+      * [[Atoms for Peace (band)|Atoms for Peace]]
+      * [[7 Worlds Collide]]
+    }}
+    | label = {{flatlist|
+      * [[XL Recordings|XL]]
+      * [[Ticker Tape Ltd.]]
+      * [[Hostess Entertainment|Hostess]]
+      * [[TBD Records|TBD]]
+      * [[Parlophone]]
+      * [[Capitol Records|Capitol]]
+    }}
+    | website = {{URL|radiohead.com}}
+    | current_members =
+    * [[Thom Yorke]]
+    * [[Jonny Greenwood]]
+    * [[Colin Greenwood]]
+    * [[Ed O'Brien]]
+    * [[Philip Selway]]
+  }} `;
   var infobox = wtf(radiohead).infoboxes(0).data;
   t.equal(infobox.current_members.text().match(/Greenwood/g).length, 2, 'current members');
   t.equal(infobox.genre.text(), 'Art rock, alternative rock, electronica, experimental rock', 'genre');
@@ -229,7 +228,10 @@ hello there
   t.end();
 });
 
-var microsoft = `
+
+test('microsoft currency parsing', function(t) {
+
+  var microsoft = `
 {{Infobox company
 | name = Microsoft Corporation
 | logo = Microsoft logo and wordmark.svg
@@ -296,9 +298,7 @@ var microsoft = `
 | subsid = [[List of mergers and acquisitions by Microsoft|List of Microsoft subsidiaries]]
 | website = {{URL|https://microsoft.com}}
 }}
-`;
-
-test('currency parsing', function(t) {
+  `;
   var infobox = wtf(microsoft).infoboxes(0).data;
   t.equal(infobox.revenue.text(), 'US$89.95 billion', 'revenue =' + infobox.revenue.text);
   t.equal(infobox.operating_income.text(), 'US$22.27 billion', 'operating_income =' + infobox.operating_income.text);
