@@ -3,7 +3,7 @@
 const toHtml = function(doc, options) {
   let data = doc.data;
   let html = '';
-  //add the title on the top
+  //add the title on the topw
   // if (options.title === true && data.title) {
   //   html += '<h1>' + data.title + '</h1>\n';
   // }

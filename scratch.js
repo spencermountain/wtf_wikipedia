@@ -1,5 +1,5 @@
 const wtf = require('./src/index');
-const readFile = require('./tests/lib/_cachedPage');
+// const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
@@ -27,5 +27,6 @@ let str = `before
 after now
 
 `;
-console.log(wtf(str).tables(0).json());
+// console.log(wtf(str).tables(0).json());
 // console.log(wtf(str).text());
+console.log(wtf(`he is good. i think "he is so." after`).sentences());

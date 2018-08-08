@@ -166,40 +166,40 @@ test('Alabama infobox', function(t) {
 
 test('Radiohead infobox', function(t) {
   var radiohead = `{{Infobox musical artist
-    | name = Radiohead
-    | image = Radiohead.jpg
-    | caption = Radiohead in 2006; from left to right: [[Thom Yorke]], [[Jonny Greenwood]], [[Colin Greenwood]], [[Ed O'Brien]] and [[Phil Selway]]
-    | image_size = 270
-    | landscape = Yes
-    | background = group_or_band
-    | origin = [[Abingdon-on-Thames|Abingdon, Oxfordshire]], England
-    | genre = {{flatlist|
-      * [[Art rock]]
-      * [[alternative rock]]<!--genres sourced on talk page; do not add without consulting talk page with sourced information-->
-      * [[electronica]]
-      * [[experimental rock]]
-    }}
-    | years_active = 1985–present
-    | associated_acts = {{flatlist|
-      * [[Atoms for Peace (band)|Atoms for Peace]]
-      * [[7 Worlds Collide]]
-    }}
-    | label = {{flatlist|
-      * [[XL Recordings|XL]]
-      * [[Ticker Tape Ltd.]]
-      * [[Hostess Entertainment|Hostess]]
-      * [[TBD Records|TBD]]
-      * [[Parlophone]]
-      * [[Capitol Records|Capitol]]
-    }}
-    | website = {{URL|radiohead.com}}
-    | current_members =
-    * [[Thom Yorke]]
-    * [[Jonny Greenwood]]
-    * [[Colin Greenwood]]
-    * [[Ed O'Brien]]
-    * [[Philip Selway]]
-  }} `;
+| name = Radiohead
+| image = Radiohead.jpg
+| caption = Radiohead in 2006; from left to right: [[Thom Yorke]], [[Jonny Greenwood]], [[Colin Greenwood]], [[Ed O'Brien]] and [[Phil Selway]]
+| image_size = 270
+| landscape = Yes
+| background = group_or_band
+| origin = [[Abingdon-on-Thames|Abingdon, Oxfordshire]], England
+| genre = {{flatlist|
+* [[Art rock]]
+* [[alternative rock]]<!--genres sourced on talk page; do not add without consulting talk page with sourced information-->
+* [[electronica]]
+* [[experimental rock]]
+}}
+| years_active = 1985–present
+| associated_acts = {{flatlist|
+* [[Atoms for Peace (band)|Atoms for Peace]]
+* [[7 Worlds Collide]]
+}}
+| label = {{flatlist|
+* [[XL Recordings|XL]]
+* [[Ticker Tape Ltd.]]
+* [[Hostess Entertainment|Hostess]]
+* [[TBD Records|TBD]]
+* [[Parlophone]]
+* [[Capitol Records|Capitol]]
+}}
+| website = {{URL|radiohead.com}}
+| current_members =
+* [[Thom Yorke]]
+* [[Jonny Greenwood]]
+* [[Colin Greenwood]]
+* [[Ed O'Brien]]
+* [[Philip Selway]]
+}} `;
   var infobox = wtf(radiohead).infoboxes(0).data;
   t.equal(infobox.current_members.text().match(/Greenwood/g).length, 2, 'current members');
   t.equal(infobox.genre.text(), 'Art rock, alternative rock, electronica, experimental rock', 'genre');
