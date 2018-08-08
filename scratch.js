@@ -11,24 +11,13 @@ const wtf = require('./src/index');
 // console.log(readFile('washington-nationals').tables()[1]);
 
 let str = `before
-{|
-! h1 !! h2 || h3
-|-
-| one
-| two
-| three
-|-
-|  [[Minnesota Twins|Twins]]
-| five
-| six
-|}
-
-after now
 * one
 * two
 * [[three]]
-* four
+* four {{cool|fun=walking the [[thames]]}}
 `;
-// console.log(wtf(str).tables(0).json());
-console.log(wtf(str).lists(0).links());
+console.log(wtf(str).lists(0).plaintext());
+// console.log(wtf(str).templates());
+
+// console.log(wtf(str).lists(0).links());
 // console.log(wtf(`he is good. i think "he is so." after`).sentences());

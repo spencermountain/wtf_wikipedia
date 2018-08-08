@@ -2,6 +2,7 @@ const toHtml = require('./toHtml');
 const toMarkdown = require('./toMarkdown');
 const toJSON = require('./toJson');
 const toLatex = require('./toLatex');
+const aliasList = require('../lib/aliases');
 
 //where we store the formatting, link, date information
 const Sentence = function(data, wiki) {
@@ -59,7 +60,7 @@ const methods = {
     options = options || {};
     return toHtml(this, options);
   },
-  plaintext : function() {
+  text : function() {
     return this.data.text || '';
   },
   json : function(options) {
@@ -73,9 +74,12 @@ const methods = {
 Object.keys(methods).forEach((k) => {
   Sentence.prototype[k] = methods[k];
 });
-//aliases
+//add alises, too
+Object.keys(aliasList).forEach((k) => {
+  Sentence.prototype[k] = methods[aliasList[k]];
+});
 Sentence.prototype.italic = Sentence.prototype.italics;
 Sentence.prototype.bold = Sentence.prototype.bolds;
-Sentence.prototype.text = Sentence.prototype.plaintext;
+Sentence.prototype.plaintext = Sentence.prototype.text;
 
 module.exports = Sentence;

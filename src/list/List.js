@@ -1,3 +1,5 @@
+const aliasList = require('../lib/aliases');
+
 const toHtml = (list) => {
   let html = '<ul>\n';
   list.forEach((o) => {
@@ -15,9 +17,17 @@ const toLatex = (list) => {
   out += '\\end{itemize}\n';
   return out;
 };
+
 const toMarkdown = (list, options) => {
   return list.map((s) => {
     let str = s.markdown(options);
+    return ' * ' + str;
+  }).join('\n');
+};
+
+const toText = (list, options) => {
+  return list.map((s) => {
+    let str = s.text(options);
     return ' * ' + str;
   }).join('\n');
 };
@@ -35,6 +45,13 @@ const methods = {
   wikitext() {
     return this.wiki;
   },
+  links() {
+    let links = [];
+    this.data.forEach((s) => {
+      links = links.concat(s.links());
+    });
+    return links;
+  },
   html() {
     return toHtml(this.data);
   },
@@ -47,16 +64,16 @@ const methods = {
   json() {
     return this.data.map(s => s.json());
   },
-  links() {
-    let links = [];
-    this.data.forEach((s) => {
-      links = links.concat(s.links());
-    });
-    return links;
+  text() {
+    return toText(this.data);
   }
 };
 
 Object.keys(methods).forEach((k) => {
   List.prototype[k] = methods[k];
+});
+//add alises, too
+Object.keys(aliasList).forEach((k) => {
+  List.prototype[k] = methods[aliasList[k]];
 });
 module.exports = List;

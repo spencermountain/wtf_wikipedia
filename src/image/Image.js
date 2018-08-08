@@ -4,6 +4,7 @@ const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
 const toLatex = require('./toLatex');
 const server = 'https://upload.wikimedia.org/wikipedia/commons/';
+const aliasList = require('../lib/aliases');
 
 const encodeTitle = function(file) {
   let title = file.replace(/^(image|file?)\:/i, '');
@@ -39,6 +40,9 @@ const Image = function(file, wiki) {
 const methods = {
   wikitext() {
     return this.wiki;
+  },
+  links() {
+    return [];
   },
   url() {
     return server + makeSrc(this.file);
@@ -88,13 +92,19 @@ const methods = {
       url: this.url(),
       thumb: this.thumbnail(),
     };
+  },
+  text: function() {
+    return '';
   }
 };
 
 Object.keys(methods).forEach((k) => {
   Image.prototype[k] = methods[k];
 });
-//aliases
+//add alises, too
+Object.keys(aliasList).forEach((k) => {
+  Image.prototype[k] = methods[aliasList[k]];
+});
 Image.prototype.src = Image.prototype.url;
 Image.prototype.thumb = Image.prototype.thumbnail;
 module.exports = Image;

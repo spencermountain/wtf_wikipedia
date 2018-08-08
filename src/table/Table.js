@@ -1,6 +1,7 @@
 const toHtml = require('./toHtml');
 const toMarkdown = require('./toMarkdown');
 const toLatex = require('./toLatex');
+const aliasList = require('../lib/aliases');
 
 const Table = function(data, wiki) {
   this.data = data;
@@ -14,6 +15,15 @@ const Table = function(data, wiki) {
 const methods = {
   wikitext() {
     return this.wiki;
+  },
+  links() {
+    let links = [];
+    this.data.forEach((r) => {
+      Object.keys(r).forEach((k) => {
+        links = links.concat(r[k].links());
+      });
+    });
+    return links;
   },
   json() {
     return this.data.map((o) => {
@@ -32,21 +42,16 @@ const methods = {
   },
   latex(options) {
     return toLatex(this.data, options);
+  },
+  text() {
+    return '';
   }
 };
 Object.keys(methods).forEach((k) => {
   Table.prototype[k] = methods[k];
 });
-const aliases = {
-  toMarkdown: 'markdown',
-  toHtml: 'html',
-  HTML: 'html',
-  toJSON: 'json',
-  toJson: 'json',
-  JSON: 'json',
-  toLatex: 'latex',
-};
-Object.keys(aliases).forEach((k) => {
-  Table.prototype[k] = methods[aliases[k]];
+//add alises, too
+Object.keys(aliasList).forEach((k) => {
+  Table.prototype[k] = methods[aliasList[k]];
 });
 module.exports = Table;

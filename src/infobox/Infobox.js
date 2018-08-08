@@ -2,6 +2,7 @@ const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
 const toLatex = require('./toLatex');
 const Image = require('../image/Image');
+const aliasList = require('../lib/aliases');
 
 //a formal key-value data table about a topic
 const Infobox = function(obj, wiki) {
@@ -19,6 +20,9 @@ const Infobox = function(obj, wiki) {
 };
 
 const methods = {
+  wikitext : function() {
+    return this.wiki;
+  },
   type: function() {
     return this._type;
   },
@@ -51,9 +55,6 @@ const methods = {
     options = options || {};
     return toMarkdown(this, options);
   },
-  wikitext : function() {
-    return this.wiki;
-  },
   html : function(options) {
     options = options || {};
     return toHtml(this, options);
@@ -62,7 +63,7 @@ const methods = {
     options = options || {};
     return toLatex(this, options);
   },
-  plaintext : function() {
+  text : function() {
     return '';
   },
   json : function() {
@@ -83,12 +84,15 @@ const methods = {
   }
 };
 //aliases
-methods.template = methods.type;
-methods.images = methods.image;
-methods.data = methods.keyValue;
 
 Object.keys(methods).forEach((k) => {
   Infobox.prototype[k] = methods[k];
 });
+//add alises, too
+Object.keys(aliasList).forEach((k) => {
+  Infobox.prototype[k] = methods[aliasList[k]];
+});
 Infobox.prototype.data = Infobox.prototype.keyValue;
+Infobox.prototype.template = Infobox.prototype.type;
+Infobox.prototype.images = Infobox.prototype.image;
 module.exports = Infobox;

@@ -5,6 +5,7 @@ const toHtml = require('./toHtml');
 const toJSON = require('./toJSON');
 const toLatex = require('./toLatex');
 const setDefaults = require('../lib/setDefaults');
+const aliasList = require('../lib/aliases');
 
 const defaults = {
   infoboxes: true,
@@ -126,9 +127,9 @@ const methods = {
   coordinates : function(clue) {
     return sectionMap(this, 'coordinates', clue);
   },
-  plaintext : function(options) {
+  text : function(options) {
     options = setDefaults(options, defaults);
-    let arr = this.sections().map(sec => sec.plaintext(options));
+    let arr = this.sections().map(sec => sec.text(options));
     return arr.join('\n\n');
   },
   markdown : function(options) {
@@ -175,13 +176,12 @@ plurals.forEach((fn) => {
 Object.keys(methods).forEach((k) => {
   Document.prototype[k] = methods[k];
 });
+//add alises, too
+Object.keys(aliasList).forEach((k) => {
+  Document.prototype[k] = methods[aliasList[k]];
+});
 //alias this one
-Document.prototype.toHTML = Document.prototype.html;
 Document.prototype.isDisambig = Document.prototype.isDisambiguation;
-Document.prototype.toJson = Document.prototype.json;
-Document.prototype.text = Document.prototype.plaintext;
 Document.prototype.references = Document.prototype.citations;
-Document.prototype.original = Document.prototype.wikitext;
-Document.prototype.wikiscript = Document.prototype.wikitext;
 
 module.exports = Document;
