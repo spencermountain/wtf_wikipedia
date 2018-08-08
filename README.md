@@ -58,7 +58,9 @@ It will try it's best, and fail in reasonable ways.
     </a>
   </sub>
 </div>
-
+<div align="center">
+  <h3><a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia">Demo</a></h3>
+</div>
 ## well ok then,
 <kbd>npm install wtf_wikipedia</kbd>
 
@@ -108,10 +110,6 @@ wtf.fetch('Whistling').then(doc => {
 * parses citation metadata
 * Eliminate xml, latex, css, and table-sorting cruft
 
-<div align="center">
-  <h3><a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia">Demo</a></h3>
-</div>
-
 ## But what about...
 
 ### Parsoid:
@@ -135,96 +133,43 @@ which lets you parse a whole wikipedia dump on a laptop in a couple hours. It's 
 * **wtf(wikiText, [options])**
 * **wtf.fetch(title, [lang_or_wikiid], [options], [callback])**
 
+<div align="center">
+  <h3><a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia-api">Full API</a></h3>
+</div>
 
-### Document methods:
-##### outputs:
-* **doc.text()**
-* **doc.html()**
-* **doc.markdown()**
-* **doc.latex()**
-* **doc.json()**
-##### grabbers:
-* **doc.sections()**
-* **doc.sentences()**
-* **doc.links()**
-* **doc.images()**
-* **sec.templates()**
-* **doc.categories()**
-* **doc.tables()**
-* **doc.lists()**
-* **doc.citations()**
-* **doc.infoboxes()**
-* **doc.coordinates()**
-##### info:
-* **doc.isRedirect()** - *boolean*
-* **doc.isDisambiguation()** - *boolean*
-* **doc.title()** - *guess the title of this page*
+#### Main parts:
+* **wtf(page).sections()**   *inside ==these things==*
+* **wtf(page).sentences()**
+* **wtf(page).links()**
+* **wtf(page).tables()**
+* **wtf(page).lists()**
+* **wtf(page).images()**
+* **wtf(page).templates()**  *{{these|things}}*
+* **wtf(page).categories()**
+* **wtf(page).citations()**  *<ref>these things</ref>*
+* **wtf(page).infoboxes()**
+* **wtf(page).coordinates()**
+
+#### outputs:
+* **.json()**  *handy, workable data*
+* **.text()**  *plaintext*
+* **.html()**
+* **.markdown()**
+* **.latex()**  *ftw*
+
+##### fancy-times:
+* **wtf(page).isRedirect()** - *boolean*
+* **wtf(page).isDisambiguation()** - *boolean*
+* **wtf(page).title()** - *guess the title of this page*
 * **doc.debug()** - *log a quick table-of-contents*
 * **doc.wikitext()** - *get/set the raw wikiscript markup*
 * **doc.reparse()** - *why not*
 
-### Section methods:
-(a section is any content between **==these kind==** of headers)
-##### outputs:
-* **sec.text()**
-* **sec.html()**
-* **sec.markdown()**
-* **sec.latex()**
-* **sec.json()**
-##### grabbers:
-* **sec.sentences()**
-* **sec.links()**
-* **sec.tables()**
-* **sec.templates()**
-* **sec.infoboxes()**
-* **doc.coordinates()**
-* **sec.lists()**
-* **sec.interwiki()**
-* **sec.images()**
-* **doc.citations()**
-##### info:
+
 * **sec.title()** *==the title==*
 * **sec.wikitext()** - *get/set the raw wikiscript markup*
 * **sec.indentation()** *nesting depth*
 * **sec.index()** *the number in Document*
-##### traversal:
-* **sec.nextSibling()**
-* **sec.lastSibling()**
-* **sec.children()**
-* **sec.parent()**
-* **sec.remove()**
-
-### Sentence methods:
-##### outputs:
-* **doc.text()**
-* **doc.html()**
-* **doc.markdown()**
-* **doc.latex()**
-* **doc.json()**
-##### grabbers:
-* **sec.links()**
-* **sec.bolds()**
-* **sec.italics()**
-* **sec.dates()** *==structured date templates==*
-
-### Table methods:
-* **table.text()**
-* **table.html()**
-* **table.markdown()**
-* **table.latex()**
-* **table.json()**
-* **table.links()**
-
-### Image methods:
-* **img.url()** *the full-size wikimedia-hosted url*
-* **img.thumnail()** *300px, by default*
-* **img.format()** *jpg, png, ..*
-* **img.exists()** *HEAD req to see if the file is alive*
-* **img.html()**
-* **img.markdown()**
-* **img.latex()**
-* **img.json()**
-
 ## Examples
 
 ### **wtf(wikiText)**
@@ -285,6 +230,29 @@ wtf.parse(str);
 ```
 
 this way, you can extend the library with your own regexes, and all that. -->
+
+#### Section traversal:
+```js
+wtf(page).sections(1).children()
+wtf(page).sections('see also').remove()
+```
+#### Sentence data:
+```js
+s = wtf(page).sentences(4)
+s.links()
+s.bolds()
+s.italics()
+s.dates() //structured date templates
+```
+
+#### Images
+```js
+img = wtf(page).images(0)
+img.url()// the full-size wikimedia-hosted url
+img.thumnail()// 300px, by default
+img.format()// jpg, png, ..
+img.exists()// HEAD req to see if the file is alive
+```
 
 ## **CLI**
 if you're scripting this from the shell, or from another language, install with a `-g`, and then run:
