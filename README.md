@@ -142,6 +142,7 @@ which lets you parse a whole wikipedia dump on a laptop in a couple hours. It's 
 * **doc.html()**
 * **doc.markdown()**
 * **doc.latex()**
+* **doc.json()**
 ##### grabbers:
 * **doc.sections()**
 * **doc.sentences()**
@@ -169,6 +170,7 @@ which lets you parse a whole wikipedia dump on a laptop in a couple hours. It's 
 * **sec.html()**
 * **sec.markdown()**
 * **sec.latex()**
+* **sec.json()**
 ##### grabbers:
 * **sec.sentences()**
 * **sec.links()**
@@ -198,10 +200,30 @@ which lets you parse a whole wikipedia dump on a laptop in a couple hours. It's 
 * **doc.html()**
 * **doc.markdown()**
 * **doc.latex()**
+* **doc.json()**
 ##### grabbers:
 * **sec.links()**
 * **sec.bolds()**
 * **sec.italics()**
+* **sec.dates()** *==structured date templates==*
+
+### Table methods:
+* **table.text()**
+* **table.html()**
+* **table.markdown()**
+* **table.latex()**
+* **table.json()**
+* **table.links()**
+
+### Image methods:
+* **img.url()** *the full-size wikimedia-hosted url*
+* **img.thumnail()** *300px, by default*
+* **img.format()** *jpg, png, ..*
+* **img.exists()** *HEAD req to see if the file is alive*
+* **img.html()**
+* **img.markdown()**
+* **img.latex()**
+* **img.json()**
 
 ## Examples
 

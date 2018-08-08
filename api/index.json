@@ -338,5 +338,97 @@
       "returns": "String",
       "description": ""
     }
+  ],
+
+  "Table": [
+    {
+      "name": "wikitext",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "links",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "markdown",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "html",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "json",
+      "returns": "Object",
+      "description": ""
+    },
+    {
+      "name": "latex",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "text",
+      "returns": "String",
+      "description": ""
+    }
+  ],
+
+  "Image": [
+    {
+      "name": "wikitext",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "links",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "thumbnail",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "format",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "exists",
+      "returns": "Boolean",
+      "description": ""
+    },
+    {
+      "name": "markdown",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "html",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "json",
+      "returns": "Object",
+      "description": ""
+    },
+    {
+      "name": "latex",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "text",
+      "returns": "String",
+      "description": ""
+    }
   ]
+
 }
