@@ -32,6 +32,7 @@ const findHeaders = function(rows) {
 //turn a {|...table string into an array of arrays
 const parseTable = function(wiki) {
   let lines = wiki.replace(/\r/g, '').split(/\n/);
+  lines = lines.map(l => l.trim());
   let rows = findRows(lines);
   let headers = findHeaders(rows);
   //index them by their header

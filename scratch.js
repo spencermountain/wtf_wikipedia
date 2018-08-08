@@ -1,5 +1,5 @@
 const wtf = require('./src/index');
-// const readFile = require('./tests/lib/_cachedPage');
+const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
@@ -8,36 +8,45 @@ const wtf = require('./src/index');
 // });
 
 
-// console.log(readFile('washington-nationals').tables()[1]);
+// console.log(readFile('washington-nationals').tables(0));
 
 let str = `before
-{| class="wikitable" style="width:100%;"
+
+{| class="toccolours"  style="width:82%; clear:both; margin:1.5em auto; text-align:center;"
 |-
-! width="18%" | Station
-! width="22%" | Location
-! width="12%" | Lifeboat type(s)
-! width="12%" | Launch method
-! Name and Number
-! width="100" | <!-- restrict images to 100px -->
+{| class="wikitable"
 |-
-| {{Lbs|Hunstanton}}
-| [[Hunstanton]], [[Norfolk]]
-| {{Lbb|Atlantic 85}}<br>{{Lbc|H}}
-| Carriage<br>Transporter
-| ''Spirit of West Norfolk'' (B-848)<br>''The Hunstanton Flyer (Civil Service No 45)'' (H-003)
-| [[File:Lifeboat Station, Old Hunstanton - geograph.org.uk - 203605.jpg|100px]]
-|-
-| {{Lbs|Wells-next-the-Sea}}
-| [[Wells-next-the-Sea]], Norfolk
-| {{Lbb|Mersey}}<br>{{Lbc|D|IB1}}
-| Carriage<br>Carriage
-| ''Doris M Mann of Ampthill'' (ON 1161)<br>''Jane Ann III'' (D-661)
-| [[File:Wells Lifeboat Station - geograph.org.uk - 153912.jpg|100px]]
+! style="background:#ddf; width:0;"| #
+! style="background:#ddf; width:11%;"| Date
+! style="background:#ddf; width:14%;"| Opponent
+! style="background:#ddf; width:9%;"| Score
+! style="background:#ddf; width:18%;"| Win
+! style="background:#ddf; width:18%;"| Loss
+! style="background:#ddf; width:16%;"| Save
+! style="background:#ddf; width:0;"| Attendance
+! style="background:#ddf; width:0;"| Record
+|- align="center" bgcolor="bbffbb"
+| 1 || April 3 || [[2017 Miami Marlins season|Marlins]] || 4–2 || '''[[Stephen Strasburg|Strasburg]]''' (1–0) || [[David Phelps (baseball)|Phelps]] (0–1) || '''[[Blake Treinen|Treinen]]''' (1) || 42,744 || 1–0
+|- align="center" bgcolor="bbffbb"
+| 2 || April 5 || [[2017 Miami Marlins season|Marlins]] || 6–4 || '''[[Tanner Roark|Roark]]''' (1–0) || [[Dan Straily|Straily]] (0–1) || '''[[Blake Treinen|Treinen]]''' (2) || 22,715 || 2–0
+|- align="center" bgcolor="ffbbbb"
+| 3 || April 6 || [[2017 Miami Marlins season|Marlins]] || 3–4 <small>(10)</small> || [[David Phelps (baseball)|Phelps]] (1–1) || '''[[Joe Blanton|Blanton]]''' (0–1) || [[A. J. Ramos|Ramos]] (1) || 19,418 || 2–1
+|- align="center" bgcolor="bbffbb"
+|}
 |}
 `;
-// str = 'hello {{Lbs|Hunstanton}}';
-console.log(wtf(str).tables(0).json());
-// console.log(wtf(str).text());
+str = ` {| class="wikitable"
+   |[[File:Worms 01.jpg|199x95px]]
+    |[[File:Worms Wappen 2005-05-27.jpg|199x95px]]
+|<!--col3-->[[File:Liberty-statue-with-manhattan.jpg|199x95px]]
+|<!--col4-->[[File:New-York-Jan2005.jpg|100x95px]]<!--smaller-->
 
-// console.log(wtf(str).lists(0).links());
-// console.log(wtf(`he is good. i think "he is so." after`).sentences());
+
+  |-
+|<!--col1-->Nibelungen Bridge to Worms
+|Worms and its sister cities
+|Statue of Liberty
+|New York City
+|}`;
+
+console.log(wtf(str).tables(0).json());

@@ -16,8 +16,9 @@ const doInfobox = function(obj, options) {
     let key = '**' + k + '**';
     let s = obj.data[k];
     let val = s.markdown(options);
+    //markdown is more newline-sensitive than wiki
+    val = val.split(/\n/g).join(', ');
     md += '|' + pad(key, 35) + '|' + pad(val, 30) + ' |\n';
-
   });
   return md;
 };

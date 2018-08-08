@@ -197,3 +197,24 @@ test('wikisortable-tables-test', t => {
   t.equal(table[4]['Alphabetic'].text(), 'e', '5,1');
   t.end();
 });
+
+
+test('messy-table-test', t => {
+  var messy = ` {| class="wikitable"
+     |[[File:Worms 01.jpg|199x95px]]
+      |[[File:Worms Wappen 2005-05-27.jpg|199x95px]]
+  |<!--col3-->[[File:Liberty-statue-with-manhattan.jpg|199x95px]]
+  |<!--col4-->[[File:New-York-Jan2005.jpg|100x95px]]<!--smaller-->
+
+
+    |-
+  |<!--col1-->Nibelungen Bridge to Worms
+  |Worms and its sister cities
+  |Statue of Liberty
+  |New York City
+ |}`;
+  var obj = wtf(messy);
+  var table = obj.tables(0).json();
+  t.equal(table[1]['col-0'].text, 'Nibelungen Bridge to Worms', 'col-1 text');
+  t.end();
+});
