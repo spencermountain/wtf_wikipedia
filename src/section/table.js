@@ -100,6 +100,8 @@ const parse_table = function(wiki) {
   table = table.map(arr => {
     let obj = {};
     arr.forEach((a, i) => {
+      //clean it up a little bit
+      a = a.replace(/style=".*?"/, '');
       let head = headings[i] || 'col-' + i;
       obj[head] = parseLine(a);
       obj[head] = new Sentence(obj[head]);
