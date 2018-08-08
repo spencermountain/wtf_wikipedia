@@ -25,7 +25,7 @@ const inlineParsers = Object.assign(
 const bigParsers = Object.assign({}, geo, pronounce, misc, external);
 
 //this gets all the {{template}} strings and decides how to parse them
-const doTemplate = function(tmpl, wiki, r) {
+const doTemplate = function(tmpl, wiki, r, options) {
   let name = getName(tmpl);
 
   //we explicitly ignore these templates
@@ -60,8 +60,9 @@ const doTemplate = function(tmpl, wiki, r) {
   }
 
   //bury this template, if we don't know it
-  // console.log(`  - no parser for '${name}' -`);
-  // console.log('');
+  if (options.verbose_template === true) {
+    console.log(`  - no parser for '${name}' -`);
+  }
   wiki = wiki.replace(tmpl, '');
 
   return wiki;

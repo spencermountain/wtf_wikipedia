@@ -160,7 +160,7 @@ test('floating-tables-test', t => {
   // console.log(obj.sections[0].tables);
   var table = obj.tables(0).data;
   // console.log(table);
-  t.equal(table[0]['col-0'].text(), 'Col 1, row 1', '1,1');
+  t.equal(table[0]['col1'].text(), 'Col 1, row 1', '1,1');
   t.end();
 });
 
@@ -215,6 +215,6 @@ test('messy-table-test', t => {
  |}`;
   var obj = wtf(messy);
   var table = obj.tables(0).json();
-  t.equal(table[1]['col-0'].text, 'Nibelungen Bridge to Worms', 'col-1 text');
+  t.equal(table[1]['col1'].text, 'Nibelungen Bridge to Worms', 'col1 text');
   t.end();
 });

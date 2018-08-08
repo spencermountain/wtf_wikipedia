@@ -122,7 +122,7 @@ test('bluejays table', function(t) {
   t.equal(arr[0]['Team'].text(), '@ Twins', 'team');
   t.equal(arr[1]['Number'].text(), '2', 'number2');
   t.equal(arr[1]['Date'].text(), 'April 7', 'date2');
-  t.equal(arr[1]['col-3'].text(), '9 - 3', 'col-3');
+  t.equal(arr[1]['col4'].text(), '9 - 3', 'col-3');
   t.end();
 });
 

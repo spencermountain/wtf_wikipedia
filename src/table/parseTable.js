@@ -39,7 +39,7 @@ const parseTable = function(wiki) {
   let table = rows.map(arr => {
     let row = {};
     arr.forEach((str, i) => {
-      let header = headers[i] || 'col-' + i;
+      let header = headers[i] || 'col' + (i + 1);
       let cell = parseLine(str);
       cell.text = cleanText(cell.text);
       cell = new Sentence(cell);

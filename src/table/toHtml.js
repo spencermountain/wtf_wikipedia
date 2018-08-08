@@ -4,7 +4,9 @@ const toHtml = function(table, options) {
   //make header
   html += '  <thead>\n';
   Object.keys(table[0]).forEach((k) => {
-    html += '    <td>' + k + '</td>\n';
+    if (/^col[0-9]/.test(k) !== true) {
+      html += '    <td>' + k + '</td>\n';
+    }
   });
   html += '  </thead>\n';
   html += '  <tbody>\n';

@@ -21,14 +21,14 @@ const doTable = (table, options) => {
   let keys = Object.keys(table[0]);
   //first, grab the headers
   //remove auto-generated number keys
-  let header = keys.map((k, i) => {
-    if (parseInt(k, 10) === i) {
+  let headers = keys.map((k) => {
+    if (/^col[0-9]/.test(k) === true) {
       return '';
     }
     return k;
   });
   //draw the header (necessary!)
-  md += makeRow(header) + '\n';
+  md += makeRow(headers) + '\n';
   md += makeRow(['---', '---', '---']) + '\n';
   //do each row..
   md += table.map((row) => {

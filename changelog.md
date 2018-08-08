@@ -78,4 +78,6 @@
 * remove wikitext from caption titles
 * support 3-level templates (whew!)
 ## 5.0.0
-* new `Table` class and `List` class
+* new `Table` class and `List` classes
+* improved table-parser - generate name `col1` instead of `col-0`
+* support `options.verbose_template` for debugging
