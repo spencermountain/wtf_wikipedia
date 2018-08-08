@@ -1,5 +1,6 @@
 const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
+const toLatex = require('./toLatex');
 const Image = require('../image/Image');
 
 //a formal key-value data table about a topic
@@ -56,6 +57,10 @@ const methods = {
   html : function(options) {
     options = options || {};
     return toHtml(this, options);
+  },
+  latex : function(options) {
+    options = options || {};
+    return toLatex(this, options);
   },
   plaintext : function() {
     return '';

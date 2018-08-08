@@ -1,5 +1,5 @@
-const smartReplace = require('../../lib/smartReplace');
-const helpers = require('../../lib/helpers');
+const smartReplace = require('../lib/smartReplace');
+const helpers = require('../lib/helpers');
 
 // create links, bold, italic in html
 const doSentence = function(sentence) {

@@ -1,6 +1,6 @@
-const toHtml = require('../output/html/sentence');
+const toHtml = require('./toHtml');
 const toMarkdown = require('./toMarkdown');
-const toJSON = require('../output/json/sentence');
+const toJSON = require('./toJson');
 const toLatex = require('./toLatex');
 
 //where we store the formatting, link, date information

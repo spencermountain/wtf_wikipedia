@@ -1,4 +1,3 @@
-const doInfobox = require('./infobox');
 const setDefaults = require('../../lib/setDefaults');
 // const doMath = require('./math');
 
@@ -64,7 +63,7 @@ const doSection = (section, options) => {
     out += section.images().map((image) => image.latex(options)).join('\n');
   //out += '\n';
   }
-  //make a out table
+  //make a out tablew
   if (section.tables() && options.tables === true) {
     out += section.tables().map((t) => t.latex(options)).join('\n');
   }
@@ -95,7 +94,7 @@ const toLatex = function(doc, options) {
   // }
   //render infoboxes (up at the top)
   if (options.infoboxes === true && data.infoboxes) {
-    out += data.infoboxes.map(o => doInfobox(o, options)).join('\n');
+    out += data.infoboxes.map(i => i.latex(options)).join('\n');
   }
   //render each section
   out += doc.sections().map(s => doSection(s, options)).join('\n');

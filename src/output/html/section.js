@@ -1,5 +1,3 @@
-const doSentence = require('./sentence');
-
 const doList = (list) => {
   let html = '<ul>\n';
   list.forEach((o) => {
@@ -36,7 +34,7 @@ const doSection = (section, options) => {
   //finally, write the sentence text.
   if (options.sentences === true) {
     html += '  <div class="text">\n    ';
-    html += section.sentences().map((s) => doSentence(s, options)).join(' ');
+    html += section.sentences().map((s) => s.html(options)).join(' ');
     html += '\n  </div>\n';
   }
   return '<div class="section">\n' + html + '</div>\n';
