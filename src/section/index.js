@@ -7,7 +7,7 @@ const parse = {
   list: require('./list'),
   image: require('../image'),
   interwiki: require('./interwiki'),
-  table: require('./table'),
+  table: require('../table'),
   references: require('./references'),
   templates: require('../templates'),
   xmlTemplates: require('./xml-templates'),
@@ -31,7 +31,7 @@ const doSection = function(section, wiki, options) {
   wiki = parse.image(matches, section, wiki, options);
   wiki = parse.interwiki(matches, section, wiki, options);
   //do each sentence
-  parse.eachSentence(section, wiki);
+  wiki = parse.eachSentence(section, wiki);
   // section.wiki = wiki;
   section = new Section(section, wiki);
   return section;

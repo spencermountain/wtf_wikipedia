@@ -1,25 +1,65 @@
 const wtf = require('./src/index');
-// const readFile = require('./tests/lib/_cachedPage');
+const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-// wtf.fetch('Spencer', 'en', function(err, doc) {
-//   console.log(doc.plaintext());
-//   console.log(doc.isDisambiguation());
+//images in tables...
+
+// wtf.fetch('London', 'en', function(err, doc) {
+//   console.log(doc.lists());
 // });
 
 
+// console.log(readFile('washington-nationals').tables(0));
 
+let str = `before
 
-let str = `
-{{Infobox scientist
-| name        = Albert Einstein
-| image       = Einstein 1921 by F Schmutzer - restoration.jpg
-| spouse      = {{nowrap| {{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}} }}
-| residence   = Germany, Italy, Switzerland, Austria (present-day Czech Republic), Belgium, United States
-| signature = Albert Einstein signature 1934.svg
-}}
+{| class="toccolours"  style="width:82%; clear:both; margin:1.5em auto; text-align:center;"
+|-
+{| class="wikitable"
+|-
+! style="background:#ddf; width:0;"| #
+! style="background:#ddf; width:11%;"| Date
+! style="background:#ddf; width:14%;"| Opponent
+! style="background:#ddf; width:9%;"| Score
+! style="background:#ddf; width:18%;"| Win
+! style="background:#ddf; width:18%;"| Loss
+! style="background:#ddf; width:16%;"| Save
+! style="background:#ddf; width:0;"| Attendance
+! style="background:#ddf; width:0;"| Record
+|- align="center" bgcolor="bbffbb"
+| 1 || April 3 || [[2017 Miami Marlins season|Marlins]] || 4–2 || '''[[Stephen Strasburg|Strasburg]]''' (1–0) || [[David Phelps (baseball)|Phelps]] (0–1) || '''[[Blake Treinen|Treinen]]''' (1) || 42,744 || 1–0
+|- align="center" bgcolor="bbffbb"
+| 2 || April 5 || [[2017 Miami Marlins season|Marlins]] || 6–4 || '''[[Tanner Roark|Roark]]''' (1–0) || [[Dan Straily|Straily]] (0–1) || '''[[Blake Treinen|Treinen]]''' (2) || 22,715 || 2–0
+|- align="center" bgcolor="ffbbbb"
+| 3 || April 6 || [[2017 Miami Marlins season|Marlins]] || 3–4 <small>(10)</small> || [[David Phelps (baseball)|Phelps]] (1–1) || '''[[Joe Blanton|Blanton]]''' (0–1) || [[A. J. Ramos|Ramos]] (1) || 19,418 || 2–1
+|- align="center" bgcolor="bbffbb"
+|}
+|}
 `;
-// console.log(wtf(str).infoboxes(0).json());
-str = `{{nowrap| {{nowrap| {{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}} }}}}`;
-console.log(wtf(str).plaintext());
+
+
+str = `before [[the shining|movie]]
+{|
+! h1 !! h2 || h3
+|-
+| one
+| two
+| three
+|-
+|  [[Minnesota Twins|Twins]]
+| five
+| six
+|}
+
+after now
+* one
+* two
+* [[three]]
+* four
+`;
+wtf.fetch(64646, 'en', (err, doc) => {
+  console.log(doc.categories());
+});
+
+// console.log(wtf(str).links());

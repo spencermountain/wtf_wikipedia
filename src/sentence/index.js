@@ -59,7 +59,7 @@ const parseSentences = function(r, wiki) {
   let sentences = sentenceParser(wiki);
   sentences = sentences.map(parseLine);
   r.sentences = sentences;
-  return r;
+  return wiki;
 };
 
 module.exports = {

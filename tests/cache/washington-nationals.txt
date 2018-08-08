@@ -1,0 +1,455 @@
+===Game log===
+
+{| class="wikitable" style="font-size:90%"
+|-
+!colspan="2"|Legend
+|-
+| style="background:#bfb;"|&nbsp;||Nationals win
+|-
+| style="background:#fbb;"|&nbsp;||Nationals loss
+|-
+| style="background:#bbb;"|&nbsp;||Postponement
+|-
+|'''Bold'''||Nationals team member
+|}
+
+{| class="toccolours"  style="width:82%; clear:both; margin:1.5em auto; text-align:center;"
+|-
+! colspan=2 style="{{Baseball primary style|Washington Nationals}};"| 2017 Game Log: 97–65 (Home: 47–34; Away: 50–31) </span>
+|- valign="top"
+|<div class="NavFrame collapsible collapsed">
+<div class="NavHead" style="{{Baseball secondary style|Washington Nationals}};">April: 17–8 (Home: 7–5; Away: 10–3)
+</div>
+<div class="NavContent" style="text-align:left;">
+{| class="wikitable"
+|-
+! style="background:#ddf; width:0;"| #
+! style="background:#ddf; width:11%;"| Date
+! style="background:#ddf; width:14%;"| Opponent
+! style="background:#ddf; width:9%;"| Score
+! style="background:#ddf; width:18%;"| Win
+! style="background:#ddf; width:18%;"| Loss
+! style="background:#ddf; width:16%;"| Save
+! style="background:#ddf; width:0;"| Attendance
+! style="background:#ddf; width:0;"| Record
+|- align="center" bgcolor="bbffbb"
+| 1 || April 3 || [[2017 Miami Marlins season|Marlins]] || 4–2 || '''[[Stephen Strasburg|Strasburg]]''' (1–0) || [[David Phelps (baseball)|Phelps]] (0–1) || '''[[Blake Treinen|Treinen]]''' (1) || 42,744 || 1–0
+|- align="center" bgcolor="bbffbb"
+| 2 || April 5 || [[2017 Miami Marlins season|Marlins]] || 6–4 || '''[[Tanner Roark|Roark]]''' (1–0) || [[Dan Straily|Straily]] (0–1) || '''[[Blake Treinen|Treinen]]''' (2) || 22,715 || 2–0
+|- align="center" bgcolor="ffbbbb"
+| 3 || April 6 || [[2017 Miami Marlins season|Marlins]] || 3–4 <small>(10)</small> || [[David Phelps (baseball)|Phelps]] (1–1) || '''[[Joe Blanton|Blanton]]''' (0–1) || [[A. J. Ramos|Ramos]] (1) || 19,418 || 2–1
+|- align="center" bgcolor="bbffbb"
+| 4 || April 7 || @ [[2017 Philadelphia Phillies season|Phillies]] || 7–6 || '''[[Max Scherzer|Scherzer]]''' (1–0) || [[Vince Velasquez|Velasquez]] (0–1) || '''[[Blake Treinen|Treinen]]''' (3) || 45,121 || 3–1
+|- align="center" bgcolor="ffbbbb"
+| 5 || April 8 || @ [[2017 Philadelphia Phillies season|Phillies]] || 3–17 || [[Aaron Nola|Nola]] (1–0) || '''[[Jeremy Guthrie|Guthrie]]''' (0–1) || — || 37,241 || 3–2
+|- align="center" bgcolor="ffbbbb"
+| 6 || April 9 || @ [[2017 Philadelphia Phillies season|Phillies]] || 3–4 || [[Jeanmar Gómez|Gómez]] (1–0) || '''[[Koda Glover|Glover]]''' (0–1) || — || 36,917 || 3–3
+|- align="center" bgcolor="bbffbb"
+| 7 || April 10 || [[2017 St. Louis Cardinals season|Cardinals]] || 14–6 || '''[[Tanner Roark|Roark]]''' (2–0) || [[Adam Wainwright|Wainwright]] (0–2) || — || 27,413 || 4–3
+|- align="center" bgcolor="bbffbb"
+| 8 || April 11 || [[2017 St. Louis Cardinals season|Cardinals]] || 8–3 || '''[[Gio González|González]]''' (1–0) || [[Lance Lynn|Lynn]] (0–1) || — || 30,663 || 5–3
+|- align="center" bgcolor="ffbbbb"
+| 9 || April 12 || [[2017 St. Louis Cardinals season|Cardinals]] || 1–6 || [[Mike Leake|Leake]] (1–1) || '''[[Max Scherzer|Scherzer]]''' (1–1) || — || 31,647 || 5–4
+|- align="center" bgcolor="bbffbb"
+| 10 || April 14 || [[2017 Philadelphia Phillies season|Phillies]] || 3–2 <small>(10)</small> || '''[[Shawn Kelley|Kelley]]''' (1–0) || [[Jeanmar Gómez|Gómez]] (1–1) || — || 38,664 || 6–4
+|- align="center" bgcolor="ffbbbb"
+| 11 || April 15 || [[2017 Philadelphia Phillies season|Phillies]] || 2–4 || [[Jeremy Hellickson|Hellickson]] (2–0) || '''[[Joe Blanton|Blanton]]''' (0–2) || [[Joaquín Benoit|Benoit]] (1) || 35,626 || 6–5
+|- align="center" bgcolor="bbffbb"
+| 12 || April 16 || [[2017 Philadelphia Phillies season|Phillies]] || 6–4 || '''[[Shawn Kelley|Kelley]]''' (2–0) || [[Joaquín Benoit|Benoit]] (0–1) || — || 29,774 || 7–5
+|- align="center" bgcolor="bbffbb"
+| 13 || April 18 || @ [[2017 Atlanta Braves season|Braves]] || 3–1 || '''[[Max Scherzer|Scherzer]]''' (2–1) || [[Mike Foltynewicz|Foltynewicz]] (0–2) || '''[[Sean Kelley|Kelley]]''' (1) || 21,834 || 8–5
+|- align="center" bgcolor="bbffbb"
+| 14 || April 19 || @ [[2017 Atlanta Braves season|Braves]] || 14–4 || '''[[Joe Ross (baseball)|Ross]]''' (1–0) || [[Julio Teherán|Teherán]] (1–1) || — || 22,101 || 9–5
+|- align="center" bgcolor="bbffbb"
+| 15 || April 20 || @ [[2017 Atlanta Braves season|Braves]] || 3–2 || '''[[Stephen Strasburg|Strasburg]]''' (2–0) || [[R.A. Dickey|Dickey]] (1–2) || '''[[Shawn Kelley|Kelley]]''' (2) || 27,498 || 10–5
+|- align="center" bgcolor="bbffbb"
+| 16 || April 21 || @ [[2017 New York Mets season|Mets]] || 4–3 <small>(11)</small> || '''[[Enny Romero|Romero]]''' (1–0) || [[Josh Smoker|Smoker]] (0–1) || '''[[Shawn Kelley|Kelley]]''' (3) || 34,773 || 11–5
+|- align="center" bgcolor="bbffbb"
+| 17 || April 22 || @ [[2017 New York Mets season|Mets]] || 3–1 || '''[[Gio González|González]]''' (2–0) || [[Jacob DeGrom|DeGrom]] (0–1) || '''[[Koda Glover|Glover]]''' (1) || 42,145 || 12–5
+|- align="center" bgcolor="bbffbb"
+| 18 || April 23 || @ [[2017 New York Mets season|Mets]] || 6–3 || '''[[Max Scherzer|Scherzer]]''' (3–1) || [[Zach Wheeler|Wheeler]] (1–2) || '''[[Koda Glover|Glover]]''' (2) || 27,044 || 13–5
+|- align="center" bgcolor="ffbbbb"
+| 19 || April 24 || @ [[2017 Colorado Rockies season|Rockies]] || 4–8 || [[Carlos Estévez (baseball)|Estévez]] (2–0) || '''[[Enny Romero|Romero]]''' (1–1) || — || 23,019 || 13–6
+|- align="center" bgcolor="bbffbb"
+| 20 || April 25 || @ [[2017 Colorado Rockies season|Rockies]] || 15–12 || '''[[Enny Romero|Romero]]''' (2–1) || [[Germán Márquez|Márquez]] (0–1) || — || 21,340 || 14–6
+|- align="center" bgcolor="bbffbb"
+| 21 || April 26 || @ [[2017 Colorado Rockies season|Rockies]] || 11–4 || '''[[Tanner Roark|Roark]]''' (3–0) || [[Tyler Chatwood|Chatwood]] (2–3) || — || 22,461 || 15–6
+|- align="center" bgcolor="bbffbb"
+| 22 || April 27 || @ [[2017 Colorado Rockies season|Rockies]] || 16–5 || '''[[Gio González|González]]''' (3–0) || [[Antonio Senzatela|Senzatela]] (3–1) || — || 34,929 || 16–6
+|- align="center" bgcolor="ffbbbb"
+| 23 || April 28 || [[2017 New York Mets season|Mets]] || 5–7 || [[Jacob DeGrom|DeGrom]] (1–1) || '''[[Max Scherzer|Scherzer]]''' (3–2) || [[Josh Edgin|Edgin]] (1) || 34,562 || 16–7
+|- align="center" bgcolor="ffbbbb"
+| 24 || April 29 || [[2017 New York Mets season|Mets]] || 3–5 || [[Hansel Robles|Robles]] (4–0) || '''[[Stephen Strasburg|Strasburg]]''' (2–1) || [[Jeurys Familia|Familia]] (1) || 36,501 || 16–8
+|- align="center" bgcolor="bbffbb"
+| 25 || April 30 || [[2017 New York Mets season|Mets]] || 23–5 || '''[[Matt Albers|Albers]]''' (1–0) || [[Noah Syndergaard|Syndergaard]] (1–2) || – || 36,806 || 17–8
+|}</div></div>
+|-
+|<div class="NavFrame collapsible collapsed">
+
+<div class="NavHead" style="{{Baseball secondary style|Washington Nationals}};">May: 16–11 (Home: 9–4; Away: 7–7) </div>
+
+<div class="NavContent" style="text-align:left;">
+{| class="wikitable"
+|-
+! style="background:#ddf; width:0;"| #
+! style="background:#ddf; width:11%;"| Date
+! style="background:#ddf; width:14%;"| Opponent
+! style="background:#ddf; width:9%;"| Score
+! style="background:#ddf; width:18%;"| Win
+! style="background:#ddf; width:18%;"| Loss
+! style="background:#ddf; width:16%;"| Save
+! style="background:#ddf; width:0;"| Attendance
+! style="background:#ddf; width:0;"| Record
+|- align="center" bgcolor="ffbbbb"
+| 26 || May 2 || [[2017 Arizona Diamondbacks season|Diamondbacks]] || 3–6 || [[T. J. McFarland|McFarland]] (1–0) || '''[[Tanner Roark|Roark]]''' (3–1) || [[Fernando Rodney|Rodney]] (7) || 22,826 || 17–9
+|- align="center" bgcolor="bbffbb"
+| 27 || May 3 || [[2017 Arizona Diamondbacks season|Diamondbacks]] || 2–1 || '''[[Jacob Turner|Turner]]''' (1–0) || [[Robbie Ray (baseball)|Ray]] (2–2) || — || 23,816 || 18–9
+|- align="center" bgcolor="bbffbb"
+| 28 || May 4 || [[2017 Arizona Diamondbacks season|Diamondbacks]] || 4–2 || '''[[Max Scherzer|Scherzer]]''' (4–2) || [[Braden Shipley|Shipley]] (0–1) || '''[[Enny Romero|Romero]]''' (1) || 29,496 || 19–9
+|- align="center" bgcolor="bbffbb"
+| 29 || May 5 || @ [[2017 Philadelphia Phillies season|Phillies]] || 4–2 || '''[[Stephen Strasburg|Strasburg]]''' (3–1) || [[Nick Pivetta|Pivetta]] (0–2) || '''[[Matt Albers|Albers]]''' (1) || 20,237 || 20–9
+|- align="center" bgcolor="bbffbb"
+| 30 || May 6 || @ [[2017 Philadelphia Phillies season|Phillies]] || 6–2 || '''[[A. J. Cole|Cole]]''' (1–0) || [[Vince Velasquez|Velasquez]] (2–3) || — || 21,298 || 21–9
+|- align="center" bgcolor="ffbbbb"
+| 31 || May 7 || @ [[2017 Philadelphia Phillies season|Phillies]] || 5–6 <small>(10)</small> || [[Héctor Neris|Neris]] (1–1) || '''[[Blake Treinen|Treinen]]''' (0–1) || — || 30,464 || 21–10
+|- align="center" bgcolor="ffbbbb"
+| 32 || May 8 || @ [[2017 Baltimore Orioles season|Orioles]] || 4–6 || [[Kevin Gausman|Gausman]] (2–3) || '''[[Gio González|González]]''' (3–1) || [[Brad Brach|Brach]] (8) || 23,525 || 21–11
+|- align="center" bgcolor="ffbbbb"
+| 33 || May 9 || @ [[2017 Baltimore Orioles season|Orioles]] || 4–5 <small>(12)</small> || [[Logan Verrett|Verrett]] (2–0) ||  '''[[Jacob Turner|Turner]]''' (1–1) || — || 26,348 || 21–12
+|- align="center" bgcolor="bbffbb"
+| 34 || May 10 || [[2017 Baltimore Orioles season|Orioles]] || 7–6 || '''[[Matt Albers|Albers]]''' (2–0) || [[Brad Brach|Brach]] (0–1) || – || 32,984 || 22–12
+|- align="center" bgcolor="bbbbbb"
+| || May 11 || [[2017 Baltimore Orioles season|Orioles]] || colspan=6|''Postponed (rain); Rescheduled for June 8.''
+|- align="center" bgcolor="bbbbbb"
+|  || May 12 || [[2017 Philadelphia Phillies season|Phillies]] || colspan=6|''Postponed (rain); Rescheduled for May 14 as part of a doubleheader.''
+|- align="center" bgcolor="bbffbb"
+| 35 || May 13 || [[2017 Philadelphia Phillies season|Phillies]] || 6–4 || '''[[Shawn Kelley|Kelley]]''' (3–0) || [[Edubray Ramos|Ramos]] (0–3) || – || 31,473 || 23–12
+|- align="center" bgcolor="ffbbbb"
+| 36 || May 14 <small>(1)</small> || [[2017 Philadelphia Phillies season|Phillies]] || 3–4 || [[Joaquín Benoit|Benoit]] (1–2) ||  '''[[Shawn Kelley|Kelley]]''' (3–1) || [[Héctor Neris|Neris]] (4) || 31,738 || 23–13
+|- align="center" bgcolor="bbffbb"
+| 37 || May 14 <small>(2)</small> || [[2017 Philadelphia Phillies season|Phillies]] || 6–5 || '''[[Jacob Turner|Turner]]''' (2–1) || [[Pat Neshek|Neshek]] (0–1) || '''[[Matt Albers|Albers]]''' (2) || 30,137 || 24–13
+|- align="center" bgcolor="bbffbb"
+| 38 || May 16 || @ [[2017 Pittsburgh Pirates season|Pirates]] || 8–4 || '''[[Stephen Strasburg|Strasburg]]''' (4–1) || [[Chad Kuhl|Kuhl]] (1–4) || — || 16,992 || 25–13
+|- align="center" bgcolor="ffbbbb"
+| 39 || May 17 || @ [[2017 Pittsburgh Pirates season|Pirates]] || 1–6 || [[Gerrit Cole|Cole]] (2–4) ||  '''[[Jacob Turner|Turner]]''' (2–2) || — || 18,803 || 25–14
+|- align="center" bgcolor="ffbbbb"
+| 40 || May 18 || @ [[2017 Pittsburgh Pirates season|Pirates]] || 4–10 || [[Tyler Glasnow|Glasnow]] (2–3) ||  '''[[Tanner Roark|Roark]]''' (3–2) || — || 27,728 || 25–15
+|- align="center" bgcolor="ffbbbb"
+| 41 || May 19 || @ [[2017 Atlanta Braves season|Braves]] || 4–7 || [[Arodys Vizcaíno|Vizcaíno]] (2–1) ||  '''[[Enny Romero|Romero]]''' (2–2) || [[Jim Johnson (baseball, born 1983)|Johnson]] (7) || 35,369 || 25–16
+|- align="center" bgcolor="ffbbbb"
+| 42 || May 20 || @ [[2017 Atlanta Braves season|Braves]] || 2–5 || [[Ian Krol|Krol]] (1–1) ||  '''[[Max Scherzer|Scherzer]]''' (4–3) || [[Jim Johnson (baseball, born 1983)|Johnson]] (8) || 37,347 || 25–17
+|- align="center" bgcolor="bbffbb"
+| 43 || May 21 || @ [[2017 Atlanta Braves season|Braves]] || 3–2 || '''[[Stephen Strasburg|Strasburg]]''' (5–1) || [[Jaime García|García]] (4–3) || '''[[Koda Glover|Glover]]''' (3) || 32,895 || 26–17
+|- align="center" bgcolor="bbffbb"
+| 44 || May 23 || [[2017 Seattle Mariners season|Mariners]] || 10–1 || '''[[Joe Ross (baseball)|Ross]]''' (2–0) || [[Christian Bergman|Bergman]] (1–2) || — || 29,650 || 27–17
+|- align="center" bgcolor="bbffbb"
+| 45 || May 24 || [[2017 Seattle Mariners season|Mariners]] || 5–1 || '''[[Tanner Roark|Roark]]''' (4–2) || [[Sam Gaviglio|Gaviglio]] (0–1) || — || 29,223 || 28–17
+|- align="center" bgcolor="ffbbbb"
+| 46 || May 25 || [[2017 Seattle Mariners season|Mariners]] || 2–4 || [[Ariel Miranda|Miranda]] (4–2) ||  '''[[Jacob Turner|Turner]]''' (2–3) || [[Edwin Díaz (pitcher)|Díaz]] (8) || 18,881 || 28–18
+|- align="center" bgcolor="bbffbb"
+| 47 || May 26 || [[2017 San Diego Padres season|Padres]] || 5–1 || '''[[Max Scherzer|Scherzer]]''' (5–3) || [[Luis Perdomo (baseball, born 1993)|Perdomo]] (0–2) || '''[[Koda Glover|Glover]]''' (4) || 28,606 || 29–18
+|- align="center" bgcolor="bbffbb"
+| 48 || May 27 || [[2017 San Diego Padres season|Padres]] || 3–0 || '''[[Stephen Strasburg|Strasburg]]''' (6–1) || [[Clayton Richard|Richard]] (3–6) || '''[[Koda Glover|Glover]]''' (5) || 37,357 || 30–18
+|- align="center" bgcolor="ffbbbb"
+| 49 || May 28 || [[2017 San Diego Padres season|Padres]] || 3–5 || [[Kirby Yates|Yates]] (1–0) || '''[[Joe Ross (baseball)|Ross]]''' (2–1) || [[Brandon Maurer|Maurer]] (6) || 30,243 || 30–19
+|- align="center" bgcolor="bbffbb"
+| 50 || May 29 || @ [[2017 San Francisco Giants season|Giants]] || 3–0 || '''[[Tanner Roark|Roark]]''' (5–2) || [[Matt Moore (baseball)|Moore]] (2–6) || '''[[Koda Glover|Glover]]''' (6) || 41,969 || 31–19
+|- align="center" bgcolor="bbffbb"
+| 51 || May 30 || @ [[2017 San Francisco Giants season|Giants]] || 6–3 || '''[[Gio González|González]]''' (4–1) || [[Jeff Samardzija|Samardzija]] (1–7) || '''[[Koda Glover|Glover]]''' (7)  || 41,266 || 32–19
+|- align="center" bgcolor="bbffbb"
+| 52 || May 31 || @ [[2017 San Francisco Giants season|Giants]] || 3–1 || '''[[Max Scherzer|Scherzer]]''' (6–3) || [[Matt Cain|Cain]] (3–4) || — ||41,371  || 33–19
+|}</div></div>
+|-
+|<div class="NavFrame collapsible collapsed">
+<div class="NavHead" style="{{Baseball secondary style|Washington Nationals}};">June: 14–14 (Home: 6–8; Away: 8–6)</div>
+<div class="NavContent" style="text-align:left;">
+{| class="wikitable"
+|-
+! style="background:#ddf; width:0;"| #
+! style="background:#ddf; width:11%;"| Date
+! style="background:#ddf; width:14%;"| Opponent
+! style="background:#ddf; width:9%;"| Score
+! style="background:#ddf; width:18%;"| Win
+! style="background:#ddf; width:18%;"| Loss
+! style="background:#ddf; width:16%;"| Save
+! style="background:#ddf; width:0;"| Attendance
+! style="background:#ddf; width:0;"| Record
+|- align="center" bgcolor="bbffbb"
+| 53 || June 2 || @ [[2017 Oakland Athletics season|Athletics]] || 13–3 || '''[[Stephen Strasburg|Strasburg]]''' (7–1) || [[Andrew Triggs|Triggs]] (5–5) || — || 20,813 || 34–19
+|- align="center" bgcolor="ffbbbb"
+| 54 || June 3 || @ [[2017 Oakland Athletics season|Athletics]] || 4–10 || [[Liam Hendricks|Hendricks]] (2–0) || '''[[Joe Ross (baseball)|Ross]]''' (2–2) || — || 23,921 || 34–20
+|- align="center" bgcolor="bbffbb"
+| 55 || June 4 || @ [[2017 Oakland Athletics season|Athletics]] || 11–10 || '''[[Tanner Roark|Roark]]''' (6–2) || [[Ryan Madson|Madson]] (1–4) || '''[[Shawn Kelley|Kelley]]''' (4) || 21,265 || 35–20
+|- align="center" bgcolor="bbffbb"
+| 56 || June 5 || @ [[2017 Los Angeles Dodgers season|Dodgers]] || 4–2 || '''[[Gio González|González]]''' (5–1) || [[Hyun-jin Ryu|Ryu]] (2–6) || '''[[Óliver Pérez|Pérez]]''' (1) || 46,289 || 36–20
+|- align="center" bgcolor="bbffbb"
+| 57 || June 6 || @ [[2017 Los Angeles Dodgers season|Dodgers]] || 2–1 || '''[[Max Scherzer|Scherzer]]''' (7–3) || [[Brandon McCarthy|McCarthy]] (5–3) || '''[[Koda Glover|Glover]]''' (8) || 44,250 || 37–20
+|- align="center" bgcolor="ffbbbb"
+| 58 || June 7 || @ [[2017 Los Angeles Dodgers season|Dodgers]] || 1–2 || [[Clayton Kershaw|Kershaw]] (8–2) || '''[[Stephen Strasburg|Strasburg]]''' (7–2) || [[Kenley Jansen|Jansen]] (10) || 43,230 || 37–21
+|- align="center" bgcolor="bbffbb"
+| 59 || June 8 || [[2017 Baltimore Orioles season|Orioles]] || 6–1 || '''[[Joe Ross (baseball)|Ross]]''' (3–2) || [[Alec Asher|Asher]] (2–4) || — || 37,833 || 38–21
+|- align="center" bgcolor="ffbbbb"
+| 60 || June 9 || [[2017 Texas Rangers season|Rangers]] || 2–5 || [[Andrew Cashner|Cashner]] (3–5) || '''[[Tanner Roark|Roark]]''' (6–3) || [[Matt Bush (baseball)|Bush]] (7) || 38,332 || 38–22
+|- align="center" bgcolor="ffbbbb"
+| 61 || June 10 || [[2017 Texas Rangers season|Rangers]] || 3–6 <small>(11)</small>  || [[Keone Kela|Kela]] (3–1) || '''[[Shawn Kelley|Kelley]]''' (3–2) || — || 32,157 || 38–23
+|- align="center" bgcolor="ffbbbb"
+| 62 || June 11 || [[2017 Texas Rangers season|Rangers]] || 1–5 || [[Austin Bibens-Dirkx|Bibens-Dirkx]] (2–0) || '''[[Max Scherzer|Scherzer]]''' (7–4) || — || 32,027 || 38–24
+|- align="center" bgcolor="ffbbbb"
+| 63 || June 12 || [[2017 Atlanta Braves season|Braves]] || 10–11 || [[Jason Motte|Motte]] (1–0) || '''[[Matt Albers|Albers]]''' (2–1) || [[Jim Johnson (baseball, born 1983)|Johnson]] (13) || 28,909 || 38–25
+|- align="center" bgcolor="bbffbb"
+| 64 || June 13 || [[2017 Atlanta Braves season|Braves]] || 10–5 || '''[[Trevor Gott|Gott]]''' (1–0) || [[R.A. Dickey|Dickey]] (4–5) || — || 31,762 || 39–25
+|- align="center" bgcolor="ffbbbb"
+| 65 || June 14 || [[2017 Atlanta Braves season|Braves]] || 2–13 || [[Julio Teherán|Teherán]] (6–4) || '''[[Tanner Roark|Roark]]''' (6–4) || — || 36,227 || 39–26
+|- align="center" bgcolor="bbffbb"
+| 66 || June 15 || @ [[2017 New York Mets season|Mets]] || 8–3 || '''[[Gio González|González]]''' (6–1) || [[Robert Gsellman|Gsellman]] (5–4) || — || 30,319 || 40–26
+|- align="center" bgcolor="bbffbb"
+| 67 || June 16 || @ [[2017 New York Mets season|Mets]] || 7–2 || '''[[Max Scherzer|Scherzer]]''' (8–4) || [[Steven Matz|Matz]] (1–1) || — || 37,119 || 41–26
+|- align="center" bgcolor="bbffbb"
+| 68 || June 17 || @ [[2017 New York Mets season|Mets]] || 7–4 || '''[[Stephen Strasburg|Strasburg]]''' (8–2) || [[Seth Lugo|Lugo]] (1–1) || '''[[Enny Romero|Romero]]''' (2) || 38,059 || 42–26
+|- align="center" bgcolor="ffbbbb"
+| 69 || June 18 || @ [[2017 New York Mets season|Mets]] || 1–5 || [[Jacob deGrom|deGrom]] (6–3) || '''[[Joe Ross (baseball)|Ross]]''' (3–3) || — || 40,459 || 42–27
+|- align="center" bgcolor="ffbbbb"
+| 70 || June 19 || @ [[2017 Miami Marlins season|Marlins]] || 7–8 || [[A. J. Ramos|Ramos]] (2–3) || '''[[Enny Romero|Romero]]''' (2–3) || — || 20,224 || 42–28
+|- align="center" bgcolor="bbffbb"
+| 71 || June 20 || @ [[2017 Miami Marlins season|Marlins]] || 12–3 || '''[[Gio González|González]]''' (7–1) || [[Edinson Vólquez|Vólquez]] (3–8) || — || 20,868 || 43–28
+|- align="center" bgcolor="ffbbbb"
+| 72 || June 21 || @ [[2017 Miami Marlins season|Marlins]] || 1–2 || [[Kyle Barraclough|Barraclough]] (3–1) || '''[[Max Scherzer|Scherzer]]''' (8–5) || [[A. J. Ramos|Ramos]] (10) || 22,659 || 43–29
+|- align="center" bgcolor="bbffbb"
+| 73 || June 23 || [[2017 Cincinnati Reds season|Reds]] || 6–5 <small>(10)</small> || '''[[Matt Albers|Albers]]''' (3–1) || [[Raisel Iglesias|Iglesias]] (2–2) || — || 36,347 || 44–29
+|- align="center" bgcolor="bbffbb"
+| 74 || June 24 || [[2017 Cincinnati Reds season|Reds]] || 18–3 || '''[[Joe Ross (baseball)|Ross]]''' (4–3) || [[Homer Bailey|Bailey]] (0–1) || — || 40,139 || 45–29
+|- align="center" bgcolor="ffbbbb"
+| 75 || June 25 || [[2017 Cincinnati Reds season|Reds]] || 2–6 || [[Scott Feldman|Feldman]] (6–5) || '''[[Tanner Roark|Roark]]''' (6–5) || — || 35,387 || 45–30
+|- align="center" bgcolor="ffbbbb"
+| 76 || June 26 || [[2017 Chicago Cubs season|Cubs]] || 4–5 || [[Eddie Butler (baseball)|Butler]] (4–2) || '''[[Gio González|González]]''' (7–2) || — || 29,651 || 45–31
+|- align="center" bgcolor="bbffbb"
+| 77 || June 27 || [[2017 Chicago Cubs season|Cubs]] || 6–1 ||  '''[[Max Scherzer|Scherzer]]''' (9–5) || [[Jake Arrieta|Arrieta]] (7–6) || — || 31,202 || 46–31
+|- align="center" bgcolor="bbffbb"
+| 78 || June 28 || [[2017 Chicago Cubs season|Cubs]] || 8–4 || '''[[Stephen Strasburg|Strasburg]]''' (9–2) || [[John Lackey|Lackey]] (5–9) || — || 31,072 || 47–31
+|- align="center" bgcolor="ffbbbb"
+| 79 || June 29 || [[2017 Chicago Cubs season|Cubs]] || 4–5 || [[Félix Peña|Peña]] (1–0) || '''[[Blake Treinen|Treinen]]''' (0–2) || [[Wade Davis (baseball)|Davis]] (16) || 37,097 || 47–32
+|- align="center" bgcolor="ffbbbb"
+| 80 || June 30 || @ [[2017 St. Louis Cardinals season|Cardinals]] || 1–8 || [[Mike Leake|Leake]] (6–6) || '''[[Tanner Roark|Roark]]''' (6–6) || — || 41,398 || 47–33
+|}</div></div>
+|-
+|<div class="NavFrame collapsible collapsed">
+<div class="NavHead" style="{{Baseball secondary style|Washington Nationals}};">July: 16–8 (Home: 7–5; Away: 9–3)</div>
+<div class="NavContent" style="text-align:left;">
+{| class="wikitable"
+|-
+! style="background:#ddf; width:0;"| #
+! style="background:#ddf; width:11%;"| Date
+! style="background:#ddf; width:14%;"| Opponent
+! style="background:#ddf; width:9%;"| Score
+! style="background:#ddf; width:18%;"| Win
+! style="background:#ddf; width:18%;"| Loss
+! style="background:#ddf; width:16%;"| Save
+! style="background:#ddf; width:0;"| Attendance
+! style="background:#ddf; width:0;"| Record
+|- align="center" bgcolor="ffbbbb"
+| 81 || July 1 || @ [[2017 St. Louis Cardinals season|Cardinals]] || 1–2 || [[Michael Wacha|Wacha]] (5–3) || '''[[Gio González|González]]''' (7–3) || [[Matt Bowman|Bowman]] (1) || 43,614 || 47–34
+|- align="center" bgcolor="bbffbb"
+| 82 || July 2 || @ [[2017 St. Louis Cardinals season|Cardinals]] || 7–2 || '''[[Max Scherzer|Scherzer]]''' (10–5) || [[Carlos Martínez (pitcher, born 1991)|Martínez]] (6–7) || — || 43,640 || 48–34
+|- align="center" bgcolor="bbffbb"
+| 83 || July 3 || [[2017 New York Mets season|Mets]] || 3–2 || '''[[Matt Albers|Albers]]''' (4–1) || [[Paul Sewald|Sewald]] (0–3) || — || 41,681 || 49–34
+|- align="center" bgcolor="bbffbb"
+| 84 || July 4 || [[2017 New York Mets season|Mets]] || 11–4 || '''[[Joe Ross (baseball)|Ross]]''' (5–3) || [[Seth Lugo|Lugo]] (3–2) || — || 37,120  || 50–34
+|- align="center" bgcolor="bbbbbb"
+| — || July 5 || [[2017 New York Mets season|Mets]] || colspan=6|''Postponed (inclement weather); Rescheduled for August 27 as part of a doubleheader.''
+|- align="center" bgcolor="ffbbbb"
+| 85 || July 6 || [[2017 Atlanta Braves season|Braves]] || 2–5 || [[Mike Foltynewicz|Foltynewicz]] (7–5) || '''[[Gio González|González]]''' (7–4) || [[Jim Johnson (baseball, born 1983)|Johnson]] (19) || 22,724 || 50–35
+|- align="center" bgcolor="bbffbb"
+| 86 || July 7 || [[2017 Atlanta Braves season|Braves]] || 5–4 <small>(10)</small> || '''[[Matt Albers|Albers]]''' (5–1) || [[Ian Krol|Krol]] (1–2) || — || 32,664 || 51–35
+|- align="center" bgcolor="ffbbbb"
+| 87 || July 8 || [[2017 Atlanta Braves season|Braves]] || 0–13 || [[Julio Teherán|Teheran]] (7–6) || '''[[Stephen Strasburg|Strasburg]]''' (9–3) || — || 38,439 || 51–36
+|- align="center" bgcolor="bbffbb"
+| 88 || July 9 || [[2017 Atlanta Braves season|Braves]] || 10–5 || '''[[Matt Grace|Grace]]''' (1–0) || [[Sean Newcomb|Newcomb]] (1–4) || — || 35,030 || 52–36
+|- style="text-align:center; background:#bbb;"
+|colspan=9| '''''[[2017 Major League Baseball All-Star Game|All–Star Break]] (July 10–13)'''''
+|- align="center" bgcolor="bbffbb"
+| 89 || July 14 || @ [[2017 Cincinnati Reds season|Reds]] || 5–0 || '''[[Gio González|González]]''' (8–4) || [[Tim Adleman|Adleman]] (5–7) || '''[[Matt Grace|Grace]]''' (1) || 28,916 || 53–36
+|- align="center" bgcolor="bbffbb"
+| 90 || July 15 || @ [[2017 Cincinnati Reds season|Reds]] || 10–7 || '''[[Max Scherzer|Scherzer]]''' (11–5) || [[Luis Castillo (pitcher)|Castillo]] (1–2) || '''[[Matt Grace|Grace]]''' (2) || 36,462 || 54–36
+|- align="center" bgcolor="bbffbb"
+| 91 || July 16 || @ [[2017 Cincinnati Reds season|Reds]] || 14–4 || '''[[Tanner Roark|Roark]]''' (7–6) || [[Homer Bailey|Bailey]] (2–3) || — || 25,712 || 55–36
+|- align="center" bgcolor="bbffbb"
+| 92 || July 17 || @ [[2017 Cincinnati Reds season|Reds]] || 6–1 || '''[[Stephen Strasburg|Strasburg]]''' (10–3) || [[Scott Feldman|Feldman]] (7–7) || — || 17,574 || 56–36
+|- align="center" bgcolor="bbffbb"
+| 93 || July 18 || @ [[2017 Los Angeles Angels of Anaheim season|Angels]] || 4–3 || '''[[Edwin Jackson|Jackson]]''' (1–0) || [[Cam Bedrosian|Bedrosian]] (2–2) || '''[[Sean Doolittle|Doolittle]]''' (4) || 43,345 || 57–36
+|- align="center" bgcolor="ffbbbb"
+| 94 || July 19 || @ [[2017 Los Angeles Angels of Anaheim season|Angels]] || 0–7 || [[Alex Meyer (baseball)|Meyer]] (4–5) || '''[[Gio González|Gonzalez]]''' (8–5) || — || 41,065 || 57–37
+|- align="center" bgcolor="ffbbbb"
+| 95 || July 21 || @ [[2017 Arizona Diamondbacks season|Diamondbacks]] || 5–6 || [[Fernando Rodney|Rodney]] (4–3) || '''[[Enny Romero|Romero]]''' (2–4) || — || 37,858 || 57–38
+|- align="center" bgcolor="bbffbb"
+| 96 || July 22 || @ [[2017 Arizona Diamondbacks season|Diamondbacks]] || 4–3 || '''[[Tanner Roark|Roark]]''' (8–6) || [[Anthony Banda|Banda]] (0–1) || '''[[Sean Doolittle|Doolittle]]''' (5) || 39,176 || 58–38
+|- align="center" bgcolor="bbffbb"
+| 97 || July 23 || @ [[2017 Arizona Diamondbacks season|Diamondbacks]] || 6–2 || '''[[Joe Blanton|Blanton]]''' (1–2) || [[Robbie Ray (baseball)|Ray]] (9–5) || — || 32,720 || 59–38
+|- align="center" bgcolor="ffbbbb"
+| 98 || July 25 || [[2017 Milwaukee Brewers season|Brewers]] || 0–8 || [[Zach Davies|Davies]] (12–4) || '''[[Edwin Jackson|Jackson]]''' (1–1) || — || 28,428 || 59–39
+|- align="center" bgcolor="bbffbb"
+| 99 || July 26 || [[2017 Milwaukee Brewers season|Brewers]] || 8–5 || '''[[Ryan Madson|Madson]]''' (3–4) || [[Jacob Barnes|Barnes]] (3–2) || —  || 35,296 || 60–39
+|- align="center" bgcolor="bbffbb"
+| 100 || July 27 || [[2017 Milwaukee Brewers season|Brewers]] || 15–2 || '''[[Max Scherzer|Scherzer]]''' (12–5) || [[Michael Blazek|Blazek]] (0–1) || —  || 32,118|| 61–39
+|- align="center" bgcolor="bbbbbb"
+| — || July 28 || [[2017 Colorado Rockies season|Rockies]] ||colspan=6|''Postponed (inclement weather); Rescheduled for July 30 as part of a doubleheader.''
+|- align="center" bgcolor="ffbbbb"
+| 101 || July 29 || [[2017 Colorado Rockies season|Rockies]] || 2–4 || [[Germán Márquez|Márquez]] (9–4) || '''[[Tanner Roark|Roark]]''' (8–7) || [[Greg Holland|Holland]] (32) || 33,989 || 61–40
+|- align="center" bgcolor="ffbbbb"
+| 102 || July 30 <small>(1)</small> || [[2017 Colorado Rockies season|Rockies]] || 6–10 || [[Kyle Freeland|Freeland]] (11–7) || '''[[Erick Fedde|Fedde]]''' (0–1) || [[Greg Holland|Holland]] (33) || 33,248 || 61–41
+|- align="center" bgcolor="bbffbb"
+| 103 || July 30 <small>(2)</small>|| [[2017 Colorado Rockies season|Rockies]] || 3–1 || '''[[Edwin Jackson|Jackson]]''' (2–1) || [[Jon Gray|Gray]] (3–2) || '''[[Sean Doolittle|Doolittle]]''' (6) || 31,118 || 62–41
+|- align="center" bgcolor="bbffbb"
+| 104 || July 31 || @ [[2017 Miami Marlins season|Marlins]] || 1–0 || '''[[Gio González|González]]''' (9–5) || [[José Ureña|Ureña]] (9–5) || '''[[Sean Doolittle|Doolittle]]''' (7) || 18,962 || 63–41
+|}
+</div></div>
+|-
+|<div class="NavFrame collapsible collapsed">
+<div class="NavHead" style="{{Baseball secondary style|Washington Nationals}};">August: 18–11 (Home: 11–5; Away: 7–6)</div>
+<div class="NavContent" style="text-align:left;">
+{| class="wikitable"
+|-
+! style="background:#ddf; width:0;"| #
+! style="background:#ddf; width:11%;"| Date
+! style="background:#ddf; width:14%;"| Opponent
+! style="background:#ddf; width:9%;"| Score
+! style="background:#ddf; width:18%;"| Win
+! style="background:#ddf; width:18%;"| Loss
+! style="background:#ddf; width:16%;"| Save
+! style="background:#ddf; width:0;"| Attendance
+! style="background:#ddf; width:0;"| Record
+|- align="center" bgcolor="ffbbbb"
+| 105 || August 1 || @ [[2017 Miami Marlins season|Marlins]] || 6–7 || [[Dustin McGowan|McGowan]] (7–1) || '''[[Matt Albers|Albers]]''' (5–2) || [[Brad Ziegler|Ziegler]] (1) || 17,742 || 63–42
+|- align="center" bgcolor="ffbbbb"
+| 106 || August 2 || @ [[2017 Miami Marlins season|Marlins]] || 0–7 || [[Vance Worley|Worley]] (1–2) || '''[[A. J. Cole|Cole]]''' (1–1) || — || 17,890 || 63–43
+|- align="center" bgcolor="bbffbb"
+| 107 || August 4 || @ [[2017 Chicago Cubs season|Cubs]] || 4–2 || '''[[Tanner Roark|Roark]]''' (9–7) || [[Kyle Hendricks|Hendricks]] (4–4) || '''[[Sean Doolittle|Doolittle]]''' (8)  || 41,396 || 64–43
+|- align="center" bgcolor="ffbbbb"
+| 108 || August 5 || @ [[2017 Chicago Cubs season|Cubs]] || 4–7 || [[John Lackey|Lackey]] (9–9) || '''[[Edwin Jackson|Jackson]]''' (2–2) || [[Wade Davis (baseball)|Davis]] (23) || 41,857 || 64–44
+|- align="center" bgcolor="bbffbb"
+| 109 || August 6 || @ [[2017 Chicago Cubs season|Cubs]] || 9–4 || '''[[Brandon Kintzler|Kintzler]]''' (3–2) || [[Carl Edwards Jr.|Edwards Jr.]] (3–3) || — || 41,047 || 65–44
+|- align="center" bgcolor="bbffbb"
+| 110 || August 7 || [[2017 Miami Marlins season|Marlins]] || 3–2 || '''[[Brandon Kintzler|Kintzler]]''' (4–2) || [[Jarlin García|García]] (0–2) || '''[[Sean Doolittle|Doolittle]]''' (9) || 21,799 || 66–44
+|- align="center" bgcolor="ffbbbb"
+| 111 || August 8 || [[2017 Miami Marlins season|Marlins]] || 3–7 || [[Vance Worley|Worley]] (2–2) || '''[[A. J. Cole|Cole]]''' (1–2) || — || 25,406 || 66–45
+|- align="center" bgcolor="bbffbb"
+| 112 || August 9 || [[2017 Miami Marlins season|Marlins]] || 10–1 || '''[[Gio González|González]]''' (10–5) || [[Adam Conley|Conley]] (4–5) || — || 25,951 || 67–45
+|- align="center" bgcolor="bbffbb"
+| 113 || August 10 || [[2017 Miami Marlins season|Marlins]] || 3–2 || '''[[Ryan Madson|Madson]]''' (4–4) || [[Junichi Tazawa|Tazawa]] (1–2) || '''[[Sean Doolittle|Doolittle]]''' (10)  || 23,904 || 68–45
+|- align="center" bgcolor="bbbbbb"
+| — || August 11 || [[2017 San Francisco Giants season|Giants]] || colspan=6|''Postponed (rain); Rescheduled for August 13 as part of a doubleheader.''</small>
+|- align="center" bgcolor="bbffbb"
+| 114 || August 12 || [[2017 San Francisco Giants season|Giants]] || 3–1 || '''[[Edwin Jackson|Jackson]]''' (3–2) || [[Jeff Samardzija|Samardzija]] (7–12) || '''[[Sean Doolittle|Doolittle]]''' (11) || 32,344 || 69–45
+|- align="center" bgcolor="ffbbbb"
+| 115 || August 13 <small>(1)</small> || [[2017 San Francisco Giants season|Giants]] || 2–4 || [[Chris Stratton|Stratton]] (1–2) || '''[[A. J. Cole|Cole]]''' (1–3) || [[Sam Dyson|Dyson]] (9) || 30,866 || 69–46
+|- align="center" bgcolor="bbffbb"
+| 116 || August 13 <small>(2)</small>|| [[2017 San Francisco Giants season|Giants]] || 6–2 <small>(11)</small> || '''[[Matt Albers|Albers]]''' (6–2) || [[Albert Suárez|Suárez]] (0–2) || — || 29,085 || 70–46
+|- align="center" bgcolor="bbffbb"
+| 117 || August 15 || [[2017 Los Angeles Angels of Anaheim season|Angels]] || 3–1 || '''[[Gio González|González]]''' (11–5) || [[Tyler Skaggs|Skaggs]] (1–3) || '''[[Sean Doolittle|Doolittle]]''' (12) || 32,355 || 71–46
+|- align="center" bgcolor="ffbbbb"
+| 118 || August 16 || [[2017 Los Angeles Angels of Anaheim season|Angels]] || 2–3 || [[Ricky Nolasco|Nolasco]] (6–12) || '''[[Tanner Roark|Roark]]''' (9–8) || [[Cam Bedrosian|Bedrosian]] (6)  || 30,307 || 71–47
+|- align="center" bgcolor="bbffbb"
+| 119 || August 17 || @ [[2017 San Diego Padres season|Padres]] || 2–1 || '''[[Edwin Jackson|Jackson]]''' (4–2) || [[Kirby Yates|Yates]] (2–4) || '''[[Sean Doolittle|Doolittle]]''' (13)  || 22,097 || 72–47
+|- align="center" bgcolor="bbffbb"
+| 120 || August 18 || @ [[2017 San Diego Padres season|Padres]] || 7–1 ||'''[[Joe Blanton|Blanton]]''' (2–2) || [[Luis Perdomo (baseball, born 1993)|Perdomo]] (6–8) || — || 26,747 || 73–47
+|- align="center" bgcolor="ffbbbb"
+| 121 || August 19 || @ [[2017 San Diego Padres season|Padres]] || 1–3 || [[Travis Wood|Wood]] (3–4) || '''[[Stephen Strasburg|Strasburg]]''' (10–4) || [[Brad Hand|Hand]] (11) || 31,590 || 73–48
+|- align="center" bgcolor="bbffbb"
+| 122 || August 20 || @ [[2017 San Diego Padres season|Padres]] || 4–1 || '''[[Gio González|González]]''' (12–5) || [[Dinelson Lamet|Lamet]] (7–5) || '''[[Sean Doolittle|Doolittle]]''' (14) || 29,292 || 74–48
+|- align="center" bgcolor="bbffbb"
+| 123 || August 22 || @ [[2017 Houston Astros season|Astros]] || 4–3 || '''[[Tanner Roark|Roark]]''' (10–8) || [[Charlie Morton (pitcher)|Morton]] (10–6) || '''[[Sean Doolittle|Doolittle]]''' (15) || 23,798 || 75–48
+|- align="center" bgcolor="ffbbbb"
+| 124 || August 23 || @ [[2017 Houston Astros season|Astros]] || 1–6 || [[Mike Fiers|Fiers]] (8–8) || '''[[Edwin Jackson|Jackson]]''' (4–3) || — || 23,434 || 75–49
+|- align="center" bgcolor="bbffbb"
+| 125 || August 24 || @ [[2017 Houston Astros season|Astros]] || 5–4 <small>(11)</small> || '''[[Matt Albers|Albers]]''' (7–2) || [[Tyler Clippard|Clippard]] (2–7) || '''[[Sammy Solis|Solis]]''' (1) || 24,761 || 76–49
+|- align="center" bgcolor="ffbbbb"
+| 126 || August 25 || [[2017 New York Mets season|Mets]] || 2–4 || [[Jacob deGrom|deGrom]] (14–7) || '''[[A. J. Cole|Cole]]''' (1–4) || [[A. J. Ramos|Ramos]] (24) || 34,036 || 76–50
+|- align="center" bgcolor="bbffbb"
+| 127 || August 26 || [[2017 New York Mets season|Mets]] || 9–4 || '''[[Gio González|González]]''' (13–5) || [[Robert Gsellman|Gsellman]] (5–6) || — || 36,761 || 77–50
+|- align="center" bgcolor="ffbbbb"
+| 128 || August 27 <small>(1)</small> || [[2017 New York Mets season|Mets]] || 5–6 || [[Jerry Blevins|Blevins]] (6–0) || '''[[Joe Blanton|Blanton]]''' (2–3) || [[A. J. Ramos|Ramos]] (25) || 31,904 || 77–51
+|- align="center" bgcolor="bbffbb"
+| 129 || August 27 <small>(2)</small> || [[2017 New York Mets season|Mets]] || 5–4 || '''[[Tanner Roark|Roark]]''' (11–8) || [[Hansel Robles|Robles]] (7–5) || '''[[Sean Doolittle|Doolittle]]''' (16) || 20,624 || 78–51
+|- align="center" bgcolor="bbffbb"
+| 130 || August 28 || [[2017 Miami Marlins season|Marlins]] || 11–2 || '''[[Max Scherzer|Scherzer]]''' (13–5) || [[José Ureña|Ureña]] (12–6) || — || 20,838 || 79–51
+|- align="center" bgcolor="bbffbb"
+| 131 || August 29 || [[2017 Miami Marlins season|Marlins]] || 8–3 || '''[[Edwin Jackson|Jackson]]''' (5–3) || [[Vance Worley|Worley]] (2–4) || — || 25,924 || 80–51
+|- align="center" bgcolor="bbffbb"
+| 132 || August 30 || [[2017 Miami Marlins season|Marlins]] || 4–0 || '''[[Stephen Strasburg|Strasburg]]''' (11–4) || [[Adam Conley|Conley]] (6–6) || — || 25,019 || 81–51
+|- align="center" bgcolor="ffbbbb"
+| 133 || August 31 || @ [[2017 Milwaukee Brewers season|Brewers]] || 3–6 || [[Zach Davies|Davies]] (16–7) || '''[[Gio González|González]]''' (13–6) || [[Corey Knebel|Knebel]] (31) || 26,384 || 81–52
+|}</div></div>
+|-
+|<div class="NavFrame collapsible collapsed">
+<div class="NavHead" style="{{Baseball secondary style|Washington Nationals}};">September/October: 16–13 (Home: 7–7; Away: 9–6)</div>
+<div class="NavContent" style="text-align:left;">
+{| class="wikitable"
+|-
+! style="background:#ddf; width:0;"| #
+! style="background:#ddf; width:11%;"| Date
+! style="background:#ddf; width:14%;"| Opponent
+! style="background:#ddf; width:9%;"| Score
+! style="background:#ddf; width:18%;"| Win
+! style="background:#ddf; width:18%;"| Loss
+! style="background:#ddf; width:16%;"| Save
+! style="background:#ddf; width:0;"| Attendance
+! style="background:#ddf; width:0;"| Record
+|- align="center" bgcolor="ffbbbb"
+| 134 || September 1 || @ [[2017 Milwaukee Brewers season|Brewers]] || 0–1 || [[Jimmy Nelson (baseball)|Nelson]] (11–6) || '''[[Tanner Roark|Roark]]''' (11–9) || [[Corey Knebel|Knebel]] (32) || 40,044 || 81–53
+|- align="center" bgcolor="bbffbb"
+| 135 || September 2 || @ [[2017 Milwaukee Brewers season|Brewers]] || 3–2 || '''[[Ryan Madson|Madson]]''' (5–4) || [[Josh Hader|Hader]] (1–2) || '''[[Sean Doolittle|Doolittle]]''' (17) || 35,341 || 82–53
+|- align="center" bgcolor="ffbbbb"
+| 136 || September 3 || @ [[2017 Milwaukee Brewers season|Brewers]] || 2–7 || [[Jeremy Jeffress|Jeffress]] (3–2)|| '''[[Edwin Jackson|Jackson]]''' (5–4) || — || 36,937 || 82–54
+|- align="center" bgcolor="bbffbb"
+| 137 || September 4 || @ [[2017 Miami Marlins season|Marlins]] || 7–2 || '''[[A. J. Cole|Cole]]''' (2–4) || [[Adam Conley|Conley]] (6–7) || — || 17,349 || 83–54
+|- align="center" bgcolor="bbffbb"
+| 138 || September 5 || @ [[2017 Miami Marlins season|Marlins]] || 2–1 || '''[[Stephen Strasburg|Strasburg]]''' (12–4) || [[Odrisamer Despaigne|Despaigne]] (0–3) || '''[[Sean Doolittle|Doolittle]]''' (18) || 15,364 || 84–54
+|- align="center" bgcolor="bbffbb"
+| 139 || September 6 || @ [[2017 Miami Marlins season|Marlins]] || 8–1 || '''[[Gio González|González]]''' (14–6) || [[Dillon Peters|Peters]] (0–1) || — || 14,390 || 85–54
+|- align="center" bgcolor="bbffbb"
+| 140 || September 7 || [[2017 Philadelphia Phillies season|Phillies]] || 4–3 || '''[[Tanner Roark|Roark]]''' (12–9) || [[Adam Morgan (baseball)|Morgan]] (3–2) || '''[[Sean Doolittle|Doolittle]]''' (19) || 26,267 || 86–54
+|- align="center" bgcolor="bbffbb"
+| 141 || September 8 || [[2017 Philadelphia Phillies season|Phillies]] || 11–10 || '''[[Max Scherzer|Scherzer]]''' (14–5) || [[Jake Thompson|Thompson]] (1–2) || '''[[Sean Doolittle|Doolittle]]''' (20) || 29,837 || 87–54
+|- align="center" bgcolor="ffbbbb"
+| 142 || September 9 || [[2017 Philadelphia Phillies season|Phillies]] || 4–5 || [[Mark Leiter Jr.|Leiter]] (3–5) || '''[[Edwin Jackson|Jackson]]''' (5–5) || [[Héctor Neris|Neris]] (20) || 35,694 || 87–55
+|- align="center" bgcolor="bbffbb"
+| 143 || September 10 || [[2017 Philadelphia Phillies season|Phillies]] || 3–2 || '''[[Stephen Strasburg|Strasburg]]''' (13–4) || [[Ben Lively|Lively]] (3–6) || '''[[Ryan Madson|Madson]]''' (2) || 32,627 || 88–55
+|- align="center" bgcolor="ffbbbb"
+| 144 || September 12 || [[2017 Atlanta Braves season|Braves]] || 0–8 || [[Julio Teherán|Teherán]] (11–11) || '''[[Gio González|González]]''' (14–7) || — || 22,769 || 88–56
+|- align="center" bgcolor="ffbbbb"
+| 145 || September 13 || [[2017 Atlanta Braves season|Braves]] || 2–8 || [[Luiz Gohara|Gohara]] (1–1) || '''[[Max Scherzer|Scherzer]]''' (14–6) || — || 24,850 || 88–57
+|- align="center" bgcolor="bbffbb"
+| 146 || September 14 || [[2017 Atlanta Braves season|Braves]] || 5–2 || '''[[Tanner Roark|Roark]]''' (13–9) || [[Mike Foltynewicz|Foltynewicz]] (10–13) || '''[[Sean Doolittle|Doolittle]]''' (21) || 25,192 || 89–57
+|- align="center" bgcolor="ffbbbb"
+| 147 || September 15 || [[2017 Los Angeles Dodgers season|Dodgers]] || 0–7 || [[Alex Wood (baseball)|Wood]] (15–3) || '''[[Edwin Jackson|Jackson]]''' (5–6) || — || 37,508 || 89–58
+|- align="center" bgcolor="ffbbbb"
+| 148 || September 16 || [[2017 Los Angeles Dodgers season|Dodgers]] || 2–3 || [[Rich Hill (pitcher)|Hill]] (10–8) || '''[[A. J. Cole|Cole]]''' (2–5) || [[Kenley Jansen|Jansen]] (38) || 39,387 || 89–59
+|- align="center" bgcolor="bbffbb"
+| 149 || September 17 || [[2017 Los Angeles Dodgers season|Dodgers]] || 7–1 || '''[[Stephen Strasburg|Strasburg]]''' (14–4) || [[Ross Stripling|Stripling]] (3–5) || — || 29,155 || 90–59
+|- align="center" bgcolor="bbffbb"
+| 150 || September 19 || @ [[2017 Atlanta Braves season|Braves]] || 4–2 || '''[[Max Scherzer|Scherzer]]''' (15–6) || [[Luiz Gohara|Gohara]] (1–2) || '''[[Sean Doolittle|Doolittle]]''' (22) || 26,709 || 91–59
+|- align="center" bgcolor="bbffbb"
+| 151 || September 20 || @ [[2017 Atlanta Braves season|Braves]] || 7–3 || '''[[Gio González|González]]''' (15–7) || [[José Ramírez (pitcher)|Ramírez]] (2–3) || — || 25,054 || 92–59
+|- align="center" bgcolor="ffbbbb"
+| 152 || September 21 || @ [[2017 Atlanta Braves season|Braves]] || 2–3 || [[R. A. Dickey|Dickey]] (10–10) || '''[[Tanner Roark|Roark]]''' (13–10) || [[Arodys Vizcaíno|Vizcaíno]] (12) || 32,702 || 92–60
+|- align="center" bgcolor="ffbbbb"
+| 153 || September 22 || @ [[2017 New York Mets season|Mets]] || 6–7 || [[Chasen Bradford|Bradford]] (2–0) || '''[[Joe Blanton|Blanton]]''' (2–4) || [[Jeurys Familia|Familia]] (4) || 28,095 || 92–61
+|- align="center" bgcolor="bbffbb"
+| 154 || September 23 || @ [[2017 New York Mets season|Mets]] || 4–3 <small>(10)</small> || '''[[Sammy Solis|Solis]]''' (1–0) || [[Jacob Rhame|Rhame]] (0–1) || '''[[Sean Doolittle|Doolittle]]''' (23) || 34,455 || 93–61
+|- align="center" bgcolor="bbffbb"
+| 155 || September 24 || @ [[2017 New York Mets season|Mets]] || 3–2 || '''[[Max Scherzer|Scherzer]]''' (16–6) || [[Jacob deGrom|deGrom]] (15–10) || '''[[Brandon Kintzler|Kintzler]]''' (29) || 29,057 || 94–61
+|- align="center" bgcolor="bbffbb"
+| 156 || September 25 || @ [[2017 Philadelphia Phillies season|Phillies]] || 3–1 || '''[[A. J. Cole|Cole]]''' (3–5) || [[Aaron Nola|Nola]] (12–11) || '''[[Sean Doolittle|Doolittle]]''' (24) || 17,026 || 95–61
+|- align="center" bgcolor="ffbbbb"
+| 157 || September 26 || @ [[2017 Philadelphia Phillies season|Phillies]] || 1–4 || [[Jake Thompson|Thompson]] (3–2) || '''[[Gio González|González]]''' (15–8) || [[Héctor Neris|Neris]] (25) || 16,437 || 95–62
+|- align="center" bgcolor="ffbbbb"
+| 158 || September 27 || @ [[2017 Philadelphia Phillies season|Phillies]] || 5–7 || [[Yacksel Ríos|Ríos]] (1–0) || '''[[Tanner Roark|Roark]]''' (13–11) || [[Héctor Neris|Neris]] (26) || 17,642 || 95–63
+|- align="center" bgcolor="bbffbb"
+| 159 || September 28 || [[2017 Pittsburgh Pirates season|Pirates]] || 5–4 || '''[[Sean Doolittle|Doolittle]]''' (2–0) || [[Daniel Hudson|Hudson]] (2–7) || – || 26,380 || 96–63
+|- align="center" bgcolor="bbffbb"
+| 160 || September 29 || [[2017 Pittsburgh Pirates season|Pirates]] || 6–1 || '''[[Stephen Strasburg|Strasburg]]''' (15–4) || [[Gerrit Cole|Cole]] (12–12) || – || 36,339 || 97–63
+|- align="center" bgcolor="ffbbbb"
+| 161 || September 30 || [[2017 Pittsburgh Pirates season|Pirates]] || 1–4 || [[George Kontos|Kontos]] (1–6) || '''[[Brandon Kintzler|Kintzler]]''' (4–3) || [[Felipe Rivero|Rivero]] (21) || 32,240 || 97–64
+|- align="center" bgcolor="ffbbbb"
+| 162 || October 1 || [[2017 Pittsburgh Pirates season|Pirates]] || 8–11 || [[Ángel Sánchez (pitcher)|Sánchez]] (1–0) || '''[[Gio González|González]]''' (15–9) || [[George Kontos|Kontos]] (1) || 35,652 || 97–65
+|}</div></div>
+|}

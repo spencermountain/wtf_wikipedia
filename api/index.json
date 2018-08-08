@@ -6,6 +6,21 @@
       "description": ""
     },
     {
+      "name": "title",
+      "returns": "String",
+      "description": "guess the title of the page from the first-sentence"
+    },
+    {
+      "name": "reparse",
+      "returns": "Document",
+      "description": "allow reparsing after alteration of downloaded wiki source"
+    },
+    {
+      "name": "wikitext",
+      "returns": "String",
+      "description": "return the page's original wikitext"
+    },
+    {
       "name": "isDisambiguation",
       "returns": "Boolean",
       "description": "",
@@ -17,16 +32,6 @@
       "name": "categories",
       "returns": "Array",
       "description": ""
-    },
-    {
-      "name": "reparse",
-      "returns": "Document",
-      "description": "allow reparsing after alteration of downloaded wiki source"
-    },
-    {
-      "name": "wikitext",
-      "returns": "String",
-      "description": "return the page's original wikitext"
     },
     {
       "name": "sections",
@@ -54,6 +59,11 @@
       "description": ""
     },
     {
+      "name": "lists",
+      "returns": "Array",
+      "description": ""
+    },
+    {
       "name": "tables",
       "returns": "Array",
       "description": ""
@@ -64,12 +74,12 @@
       "description": ""
     },
     {
-      "name": "citations",
+      "name": "infoboxes",
       "returns": "Array",
       "description": ""
     },
     {
-      "name": "infoboxes",
+      "name": "citations",
       "returns": "Array",
       "description": ""
     },
@@ -82,11 +92,11 @@
       ]
     },
     {
-      "name": "plaintext",
+      "name": "text",
       "returns": "String",
       "description": "",
       "aliases": [
-        "text"
+        "plaintext"
       ]
     },
     {
@@ -98,6 +108,14 @@
       ]
     },
     {
+      "name": "latex",
+      "returns": "String",
+      "description": "",
+      "aliases": [
+        "toLatex"
+      ]
+    },
+    {
       "name": "html",
       "returns": "String",
       "description": "",
@@ -106,12 +124,17 @@
       ]
     },
     {
-      "name": "latex",
+      "name": "json",
       "returns": "String",
       "description": "",
       "aliases": [
-        "toLATEX"
+        "toJson"
       ]
+    },
+    {
+      "name": "debug",
+      "returns": "Document",
+      "description": "log a table-of-contents to the console"
     }
   ],
   "Section": [
@@ -120,6 +143,18 @@
       "returns": "String",
       "example": "",
       "description": ""
+    },
+    {
+      "name": "wikitext",
+      "returns": "String",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "index",
+      "returns": "Integer",
+      "example": "",
+      "description": "which number section is this, in the whole document."
     },
     {
       "name": "indentation",
@@ -158,6 +193,14 @@
       "description": ""
     },
     {
+      "name": "coordinates",
+      "returns": "Array",
+      "description": "",
+      "aliases": [
+        "coords"
+      ]
+    },
+    {
       "name": "lists",
       "returns": "Array",
       "example": "",
@@ -181,10 +224,10 @@
       "description": ""
     },
     {
-      "name": "index",
-      "returns": "Integer",
-      "example": "",
-      "description": "which number section is this, in the whole document."
+      "name": "remove",
+      "returns": "Document",
+      "example": "doc.section('References').remove()",
+      "description": "remove the current section from the document"
     },
     {
       "name": "nextSibling",
@@ -219,12 +262,6 @@
       "description": "the section, broader than this one: eg. 1920s → History "
     },
     {
-      "name": "remove",
-      "returns": "Document",
-      "example": "doc.section('References').remove()",
-      "description": "remove the current section from the document"
-    },
-    {
       "name": "markdown",
       "returns": "String",
       "example": "",
@@ -237,7 +274,13 @@
       "description": ""
     },
     {
-      "name": "plaintext",
+      "name": "text",
+      "returns": "String",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "latex",
       "returns": "String",
       "example": "",
       "description": ""
@@ -281,9 +324,111 @@
       "description": ""
     },
     {
-      "name": "plaintext",
+      "name": "json",
+      "returns": "Object",
+      "description": ""
+    },
+    {
+      "name": "latex",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "text",
+      "returns": "String",
+      "description": ""
+    }
+  ],
+
+  "Table": [
+    {
+      "name": "wikitext",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "links",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "markdown",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "html",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "json",
+      "returns": "Object",
+      "description": ""
+    },
+    {
+      "name": "latex",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "text",
+      "returns": "String",
+      "description": ""
+    }
+  ],
+
+  "Image": [
+    {
+      "name": "wikitext",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "links",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "thumbnail",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "format",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "exists",
+      "returns": "Boolean",
+      "description": ""
+    },
+    {
+      "name": "markdown",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "html",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "json",
+      "returns": "Object",
+      "description": ""
+    },
+    {
+      "name": "latex",
+      "returns": "String",
+      "description": ""
+    },
+    {
+      "name": "text",
       "returns": "String",
       "description": ""
     }
   ]
+
 }

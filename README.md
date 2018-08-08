@@ -32,14 +32,14 @@
 
 Consider:
 * the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax)
-* [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
+* ['Birth_date_and_age'](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs ['Birth-date_and_age'](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
 * the partial-implementation of [inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
-* the deep nesting of [similar-syntax](https://en.wikipedia.org/wiki/Wikipedia:Database_reports/Templates_transcluded_on_the_most_pages) templates,
-* the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) of image paths,
+* deep recursion of [similar-syntax](https://en.wikipedia.org/wiki/Wikipedia:Database_reports/Templates_transcluded_on_the_most_pages) templates,
+* the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) for image paths,
 * the [custom encoding](https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(technical_restrictions)) of whitespace and punctuation,
 * [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
 
-**wtf_wikipedia** supports many ***recursive shenanigans***, depreciated and obscure template
+**wtf_wikipedia** supports many ***recursive shenanigans***, depreciated and **obscure template**
 variants, and illicit 'wiki-esque' shorthands.
 
 ![image](https://user-images.githubusercontent.com/399657/43598341-75ca8f94-9652-11e8-9b91-cabae4fb1dce.png)
@@ -58,6 +58,9 @@ It will try it's best, and fail in reasonable ways.
     </a>
   </sub>
 </div>
+<div align="center">
+  <h3><a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia">Demo</a></h3>
+</div>
 
 ## well ok then,
 <kbd>npm install wtf_wikipedia</kbd>
@@ -70,7 +73,7 @@ wtf.fetch('Whistling').then(doc => {
   doc.categories();
   //['Oral communication', 'Vocal music', 'Vocal skills']
 
-  doc.sections('As communication').plaintext();
+  doc.sections('As communication').text();
   // 'A traditional whistled language named Silbo Gomero..'
 
   doc.images(0).thumb();
@@ -128,44 +131,51 @@ wtf_wikipedia was built to work with [dumpster-dive](https://github.com/spencerm
 which lets you parse a whole wikipedia dump on a laptop in a couple hours. It's definitely the way to go, instead of fetching many pages off the api.
 
 # API
-* **wtf(wikiText, [options])**
-* **wtf.fetch(title, [lang_or_wikiid], [options], [callback])**
+```js
+const wtf = require('wtf_wikipedia')
+//parse a page
+var doc = wtf(wikiText, [options])
 
-### outputs:
-* **doc.plaintext()**
-* **doc.html()**
-* **doc.markdown()**
-* **doc.latex()**
+//fetch & parse a page - wtf.fetch(title, [lang_or_wikiid], [options], [callback])
+(async () => {
+  var doc = await wtf.fetch('Toronto');
+  console.log(doc.text())
+})();
 
-### Document methods:
-* **doc.isRedirect()** - *boolean*
-* **doc.isDisambiguation()** - *boolean*
-* **doc.categories()**
-* **doc.sections()**
-* **doc.sentences()**
-* **doc.images()**
-* **doc.links()**
-* **doc.tables()**
-* **doc.citations()**
-* **doc.infoboxes()**
-* **doc.coordinates()**
+//(callback format works too)
+wtf.fetch(64646, 'en', (err, doc) => {
+  console.log(doc.categories());
+});
+```
 
-### Section methods:
-(a section is any content between **==these kind==** of headers)
-* **sec.indentation()**
-* **sec.sentences()**
-* **sec.links()**
-* **sec.tables()**
-* **sec.templates()**
-* **sec.lists()**
-* **sec.interwiki()**
-* **sec.images()**
-* **sec.index()**
-* **sec.nextSibling()**
-* **sec.lastSibling()**
-* **sec.children()**
-* **sec.parent()**
-* **sec.remove()**
+<div align="center">
+  <h3><a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia-api">Full API</a></h3>
+</div>
+
+#### Main parts:
+* **.sections()** &nbsp; &nbsp; &nbsp; - &nbsp; *==these things==*
+* **.sentences()**
+* **.links()**
+* **.tables()**
+* **.lists()**
+* **.images()**
+* **.templates()** &nbsp; &nbsp; - &nbsp;*{{these|things}}*
+* **.categories()**
+* **.citations()** &nbsp; &nbsp; - &nbsp; *&lt;ref&gt;these guys&lt;/ref&gt;*
+* **.infoboxes()**
+* **.coordinates()**
+
+#### outputs:
+* **.json()**  &nbsp; - &nbsp; &nbsp; *handy, workable data*
+* **.text()**  &nbsp; - &nbsp; &nbsp; *reader-focused plaintext*
+* **.html()**
+* **.markdown()**
+* **.latex()**  &nbsp; - &nbsp; &nbsp; *(ftw)*
+
+##### fancy-times:
+* **.isRedirect()**  &nbsp; &nbsp; - &nbsp; *boolean*
+* **.isDisambiguation()**  &nbsp; &nbsp; - &nbsp; *boolean*
+* **.title()**  &nbsp; &nbsp; &nbsp; - &nbsp;  &nbsp; &nbsp;*guess the title of this page*
 
 ## Examples
 
@@ -203,7 +213,7 @@ returns only nice text of the article
 ```js
 var wiki =
   "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>";
-var text = wtf(wiki).plaintext();
+var text = wtf(wiki).text();
 //"Boston's baseball field has a 37ft wall."
 ```
 <!--
@@ -227,6 +237,29 @@ wtf.parse(str);
 ```
 
 this way, you can extend the library with your own regexes, and all that. -->
+
+#### Section traversal:
+```js
+wtf(page).sections(1).children()
+wtf(page).sections('see also').remove()
+```
+#### Sentence data:
+```js
+s = wtf(page).sentences(4)
+s.links()
+s.bolds()
+s.italics()
+s.dates() //structured date templates
+```
+
+#### Images
+```js
+img = wtf(page).images(0)
+img.url()     // the full-size wikimedia-hosted url
+img.thumnail() // 300px, by default
+img.format()  // jpg, png, ..
+img.exists()  // HEAD req to see if the file is alive
+```
 
 ## **CLI**
 if you're scripting this from the shell, or from another language, install with a `-g`, and then run:
@@ -254,15 +287,16 @@ wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
 ```
 
 # Contributing
-projects like these are only done with many-hands, and I try to be a friendly and easy maintainer. (promise!)
+[Join in!](./contributing.md) - projects like these are only done with many-hands, and we try to be friendly and easy.
 
-[Join in!](./contributing.md)
-
-Thank you to the [cross-fetch](https://github.com/lquixada/cross-fetch) and [jshashes](https://github.com/h2non/jshashes) libraries.
-
-See also:
+# See also:
 * [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView)
 * [txtwiki](https://github.com/joaomsa/txtwiki.js)
 * [Parsoid](https://www.mediawiki.org/wiki/Parsoid)
 
+Thank you to the [cross-fetch](https://github.com/lquixada/cross-fetch) and [jshashes](https://github.com/h2non/jshashes) libraries.
+
 MIT
+<div align="center">
+  <a href="https://nolanlawson.com/2017/03/05/what-it-feels-like-to-be-an-open-source-maintainer/">whew.</a>
+</div>

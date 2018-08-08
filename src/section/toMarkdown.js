@@ -1,7 +1,4 @@
-const doTable = require('./table');
-const doSentence = require('./sentence');
-const doImage = require('./image');
-const setDefaults = require('../../lib/setDefaults');
+const setDefaults = require('../lib/setDefaults');
 
 const defaults = {
   title: true,
@@ -9,13 +6,6 @@ const defaults = {
   tables: true,
   lists: true,
   sentences: true,
-};
-
-const doList = (list, options) => {
-  return list.map((o) => {
-    let str = doSentence(o, options);
-    return ' * ' + str;
-  }).join('\n');
 };
 
 const doSection = (section, options) => {
@@ -33,7 +23,7 @@ const doSection = (section, options) => {
   if (options.images === true) {
     let images = section.images();
     if (images.length > 0) {
-      md += images.map((img) => doImage(img)).join('\n');
+      md += images.map((img) => img.markdown()).join('\n');
       md += '\n';
     }
   }
@@ -42,7 +32,7 @@ const doSection = (section, options) => {
     let tables = section.tables();
     if (tables.length > 0) {
       md += '\n';
-      md += tables.map((table) => doTable(table, options)).join('\n');
+      md += tables.map((table) => table.html(options)).join('\n');
       md += '\n';
     }
   }
@@ -50,13 +40,13 @@ const doSection = (section, options) => {
   if (options.lists === true) {
     let lists = section.lists();
     if (lists.length > 0) {
-      md += lists.map((list) => doList(list, options)).join('\n');
+      md += lists.map((list) => list.markdown(options)).join('\n');
       md += '\n';
     }
   }
   //finally, write the sentence text.
   if (options.sentences === true) {
-    md += section.sentences().map((s) => doSentence(s, options)).join(' ');
+    md += section.sentences().map((s) => s.markdown(options)).join(' ');
   }
   return md;
 };
