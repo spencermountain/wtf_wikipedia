@@ -1,5 +1,5 @@
 const toHtml = require('../output/html/sentence');
-const toMarkdown = require('../output/markdown/sentence');
+const toMarkdown = require('./toMarkdown');
 const toJSON = require('../output/json/sentence');
 const toLatex = require('./toLatex');
 

@@ -1,5 +1,3 @@
-const doSentence = require('./sentence');
-
 const dontDo = {
   image: true,
   caption: true
@@ -11,7 +9,8 @@ const infobox = function(obj, options) {
     if (dontDo[k] === true) {
       return;
     }
-    let val = doSentence(obj.data[k], options);
+    let s = obj.data[k];
+    let val = s.html(options);
     html += '  <tr>\n';
     html += '    <td>' + k + '</td>\n';
     html += '    <td>' + val + '</td>\n';

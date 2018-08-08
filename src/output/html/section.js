@@ -1,5 +1,4 @@
 const doSentence = require('./sentence');
-const makeImage = require('./image');
 
 const doList = (list) => {
   let html = '<ul>\n';
@@ -22,7 +21,7 @@ const doSection = (section, options) => {
   if (options.images === true) {
     let imgs = section.images();
     if (imgs.length > 0) {
-      html += imgs.map((image) => makeImage(image)).join('\n');
+      html += imgs.map((image) => image.html(options)).join('\n');
       html += '\n';
     }
   }

@@ -1,5 +1,5 @@
-const toMarkdown = require('../output/markdown/infobox');
-const toHtml = require('../output/html/infobox');
+const toMarkdown = require('./toMarkdown');
+const toHtml = require('./toHtml');
 const Image = require('../image/Image');
 
 //a formal key-value data table about a topic

@@ -1,7 +1,8 @@
 const Hashes = require('jshashes');
 const fetch = require('cross-fetch');
-const toMarkdown = require('../output/markdown/image');
-const toHtml = require('../output/html/image');
+const toMarkdown = require('./toMarkdown');
+const toHtml = require('./toHtml');
+const toLatex = require('./toLatex');
 const server = 'https://upload.wikimedia.org/wikipedia/commons/';
 
 const encodeTitle = function(file) {
@@ -73,6 +74,9 @@ const methods = {
   markdown : function(options) {
     options = options || {};
     return toMarkdown(this, options);
+  },
+  latex : function(options) {
+    return toLatex(this, options);
   },
   html : function(options) {
     options = options || {};

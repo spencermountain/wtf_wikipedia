@@ -77,3 +77,5 @@
 * better disambiguation-page detection in english
 * remove wikitext from caption titles
 * support 3-level templates (whew!)
+## 5.0.0
+* new `Table` class and `List` class

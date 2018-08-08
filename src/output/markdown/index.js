@@ -1,5 +1,4 @@
 const doSection = require('./section');
-const doInfobox = require('./infobox');
 
 const toMarkdown = function(doc, options) {
   let data = doc.data;
@@ -10,7 +9,7 @@ const toMarkdown = function(doc, options) {
   // }
   //render infoboxes (up at the top)
   if (options.infoboxes === true && data.infoboxes) {
-    md += doc.infoboxes().map(infobox => doInfobox(infobox, options)).join('\n\n');
+    md += doc.infoboxes().map(infobox => infobox.markdown(options)).join('\n\n');
   }
   //render each section
   md += data.sections.map(s => doSection(s, options)).join('\n\n');

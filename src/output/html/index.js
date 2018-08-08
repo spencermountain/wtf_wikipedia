@@ -1,4 +1,3 @@
-const doInfobox = require('./infobox');
 const doSection = require('./section');
 
 //
@@ -11,7 +10,7 @@ const toHtml = function(doc, options) {
   // }
   //render infoboxes (up at the top)
   if (options.infoboxes === true && data.infoboxes) {
-    html += data.infoboxes.map(o => doInfobox(o, options)).join('\n');
+    html += data.infoboxes.map(i => i.html(options)).join('\n');
   }
   //render each section
   html += data.sections.map(s => doSection(s, options)).join('\n');

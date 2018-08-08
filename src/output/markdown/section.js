@@ -1,5 +1,3 @@
-const doSentence = require('./sentence');
-const doImage = require('./image');
 const setDefaults = require('../../lib/setDefaults');
 
 const defaults = {
@@ -11,8 +9,8 @@ const defaults = {
 };
 
 const doList = (list, options) => {
-  return list.map((o) => {
-    let str = doSentence(o, options);
+  return list.map((s) => {
+    let str = s.markdown(options);
     return ' * ' + str;
   }).join('\n');
 };
@@ -32,7 +30,7 @@ const doSection = (section, options) => {
   if (options.images === true) {
     let images = section.images();
     if (images.length > 0) {
-      md += images.map((img) => doImage(img)).join('\n');
+      md += images.map((img) => img.markdown()).join('\n');
       md += '\n';
     }
   }
@@ -55,7 +53,7 @@ const doSection = (section, options) => {
   }
   //finally, write the sentence text.
   if (options.sentences === true) {
-    md += section.sentences().map((s) => doSentence(s, options)).join(' ');
+    md += section.sentences().map((s) => s.markdown(options)).join(' ');
   }
   return md;
 };

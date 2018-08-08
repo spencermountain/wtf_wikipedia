@@ -1,5 +1,4 @@
-const doSentence = require('./sentence');
-const pad = require('../../lib/pad');
+const pad = require('../lib/pad');
 
 const dontDo = {
   image: true,
@@ -15,7 +14,8 @@ const doInfobox = function(obj, options) {
       return;
     }
     let key = '**' + k + '**';
-    let val = doSentence(obj.data[k], options);
+    let s = obj.data[k];
+    let val = s.markdown(options);
     md += '|' + pad(key, 35) + '|' + pad(val, 30) + ' |\n';
 
   });

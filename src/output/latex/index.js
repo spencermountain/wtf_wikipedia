@@ -13,16 +13,6 @@ const defaults = {
   sentences: true,
 };
 
-const makeImage = (image) => {
-  let alt = image.file.replace(/^(file|image):/i, '');
-  alt = alt.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
-  var out = '\\begin{figure}';
-  out += '\n\\includegraphics[width=\\linewidth]{' + image.thumb + '}';
-  out += '\n\\caption{' + alt + '}';
-  out += '\n%\\label{fig:myimage1}';
-  out += '\n\\end{figure}';
-  return out;
-};
 
 const doList = (list) => {
   let out = '\\begin{itemize}\n';
@@ -71,7 +61,7 @@ const doSection = (section, options) => {
   }
   //put any images under the header
   if (section.images() && options.images === true) {
-    out += section.images().map((image) => makeImage(image)).join('\n');
+    out += section.images().map((image) => image.latex(options)).join('\n');
   //out += '\n';
   }
   //make a out table
