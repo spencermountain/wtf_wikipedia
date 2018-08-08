@@ -15,7 +15,7 @@ str = `before
 {|
 ! h1 !! h2 || h3
 |-
-| one 
+| one
 | two
 | three
 |-
@@ -28,5 +28,5 @@ after now
 
 `;
 
-// console.log(wtf(str).tables(0));
-console.log(wtf(str).text());
+console.log(wtf(str).tables(0).html());
+// console.log(wtf(str).text());
