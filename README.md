@@ -147,6 +147,7 @@ which lets you parse a whole wikipedia dump on a laptop in a couple hours. It's 
 * **doc.sentences()**
 * **doc.links()**
 * **doc.images()**
+* **sec.templates()**
 * **doc.categories()**
 * **doc.tables()**
 * **doc.lists()**
@@ -164,21 +165,27 @@ which lets you parse a whole wikipedia dump on a laptop in a couple hours. It's 
 ### Section methods:
 (a section is any content between **==these kind==** of headers)
 ##### outputs:
-* **doc.text()**
-* **doc.html()**
-* **doc.markdown()**
-* **doc.latex()**
-##### info:
-* **sec.indentation()**
+* **sec.text()**
+* **sec.html()**
+* **sec.markdown()**
+* **sec.latex()**
 ##### grabbers:
 * **sec.sentences()**
 * **sec.links()**
 * **sec.tables()**
 * **sec.templates()**
+* **sec.infoboxes()**
+* **doc.coordinates()**
 * **sec.lists()**
-* **sec.images()**
 * **sec.interwiki()**
-* **sec.index()**
+* **sec.images()**
+* **doc.citations()**
+##### info:
+* **sec.title()** *==the title==*
+* **sec.wikitext()** - *get/set the raw wikiscript markup*
+* **sec.indentation()** *nesting depth*
+* **sec.index()** *the number in Document*
+##### traversal:
 * **sec.nextSibling()**
 * **sec.lastSibling()**
 * **sec.children()**

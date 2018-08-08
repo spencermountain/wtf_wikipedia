@@ -145,6 +145,18 @@
       "description": ""
     },
     {
+      "name": "wikitext",
+      "returns": "String",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "index",
+      "returns": "Integer",
+      "example": "",
+      "description": "which number section is this, in the whole document."
+    },
+    {
       "name": "indentation",
       "returns": "Integer",
       "example": "",
@@ -181,6 +193,14 @@
       "description": ""
     },
     {
+      "name": "coordinates",
+      "returns": "Array",
+      "description": "",
+      "aliases": [
+        "coords"
+      ]
+    },
+    {
       "name": "lists",
       "returns": "Array",
       "example": "",
@@ -204,10 +224,10 @@
       "description": ""
     },
     {
-      "name": "index",
-      "returns": "Integer",
-      "example": "",
-      "description": "which number section is this, in the whole document."
+      "name": "remove",
+      "returns": "Document",
+      "example": "doc.section('References').remove()",
+      "description": "remove the current section from the document"
     },
     {
       "name": "nextSibling",
@@ -240,12 +260,6 @@
       "returns": "Section",
       "example": "",
       "description": "the section, broader than this one: eg. 1920s → History "
-    },
-    {
-      "name": "remove",
-      "returns": "Document",
-      "example": "doc.section('References').remove()",
-      "description": "remove the current section from the document"
     },
     {
       "name": "markdown",

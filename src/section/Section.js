@@ -236,11 +236,11 @@ const methods = {
     options = setDefaults(options, defaults);
     return this.sentences().map(s => s.text(options)).join(' ');
   },
-  json : function(options) {
-    return toJSON(this, options);
-  },
   latex : function(options) {
     return toLatex(this, options);
+  },
+  json : function(options) {
+    return toJSON(this, options);
   },
 };
 //aliases
