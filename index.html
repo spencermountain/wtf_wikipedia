@@ -1,94 +1,9 @@
 <html>
   <head>
-    <title>wtf_wikipedia</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="./index.css">
+    <script>
+      window.location='https://beta.observablehq.com/@spencermountain/wtf_wikipedia'
+    </script>
   </head>
   <body style="margin:0px;">
-
-    <div style="margin:80px;">
-      <a style="font-size:32px; color:#DE6169;  margin-left:80px;" href="https://github.com/spencermountain/wtf_wikipedia">wtf_wikipedia</a>
-      <a href="https://www.npmjs.com/package/wtf_wikipedia" id="version" style="color:lightgrey; margin-left:15px;"></a>
-      <span style="font-size:22px; padding-left:15px; color:grey;">is a wikipedia markup parser</span>
-      <div style="font-size:22px; margin-top:15px; padding-left:15px; color:grey;">it is a comically-difficult thing to do.</div>
-      <p></p>
-      <div style="margin-left:80px; font-size:22px; padding-left:15px; color:lightgrey;">it runs <span style="color:steelblue;">in javascript</span> and also in the browser</div>
-      <p></p>
-      <div style="margin-left:60px; font-size:22px; padding-left:15px; color:darkgrey;">it may be helpful.</div>
-    </div>
-
-    <form style="text-align:center;">
-      <div style="color:lightgrey;"><i>try a wikipedia article</i></div>
-      <input id="title" value="On a Friday"/>
-      <select id="lang" style="font-size:25px; color:grey;">
-        <option value="en" selected="selected" label="en">en</option>
-        <option value="de" label="de">de</option>
-        <option value="fr" label="fr">fr</option>
-        <option value="ar" label="ar">ar</option>
-        <option value="ja" label="ja">ja</option>
-      </select>
-      <input type="submit" style="font-size:50px; width: 100px; color:#DE6169;" value="fetch" id="fetch"/>
-      <div style="color:lightgrey;"><i>supports x-origin &amp; redirects</i></div>
-      <ul>
-        <div id="pages"></div>
-      </ul>
-    </form>
-    <hr style="margin:80px; color:grey;"/>
-    <div style="font-family: Helvetica;">
-
-      <div id="disambig" style="text-align:center;"></div>
-
-      <div id="map" style="text-align:center;"></div>
-
-      <div style="text-align:center; display:flex;">
-        <div style="color:#DBADB4; font-size:65px; flex:0.5;" id="firstSentence"></div>
-        <div id="images" style="display:none; min-width:300px; width:300px; max-width:300px; flex:0.5; padding:20px; margin:20px;"></div>
-      </div>
-      <!-- <h2>Infobox:</h2> -->
-      <div id="infobox" style="font-size:20px; padding:20px; text-align:left;"></div>
-
-      <div style="display:flex; flex-direction:row;">
-        <div style="flex:1; background-color:#DE6169; padding:20px; font-size:45px; color:white;">
-          <h2>Categories:</h2>
-          <div id="categories"></div>
-        </div>
-
-        <div style="flex:1; background-color:#f7b2b9; padding:20px; color:white; text-align:left;">
-          <h2>Sections:</h2>
-          <div id="sections" style="font-size:20px; margin:20px;"></div>
-        </div>
-
-        <div id="citations" style="flex:1; background-color:#bacbe0; padding:20px; color:white; text-align:left;">
-        </div>
-
-      </div>
-    </div>
-
-    <div style="background-color:steelblue; padding:20px; ">
-      <div style="color:white; width:65%;">the insane stuff from wikipedia:</div>
-      <textarea id="wikiscript" style="width:65%;" value=''></textarea>
-    </div>
-
-    <div style="background-color:#lightsteelblue; margin:30px;">
-      <h2>PlainText:</h2>
-      <pre style="margin:30px; white-space: pre-wrap; max-height:300px; overflow-y:scroll; color:grey; word-break: keep-all;" id="text"></pre>
-    </div>
-
-    <div style="padding:50px; margin:30px; text-align:center; font-size:30px;">
-      <span style="color:grey">wtf-wikipedia was created</span> reluctantly <span style="color:grey">by</span> <a href="http://spencermounta.in" style="color:steelblue; text-decoration:none;">spencer kelly</a>
-      <div style="display:flex; justify-content: space-between; margin-top:40px;">
-        <a href="https://github.com/spencermountain/wtf_wikipedia">github</a>
-        <a href="https://www.npmjs.com/package/wtf_wikipedia">npm</a>
-        <a href="https://github.com/spencermountain/wikipedia-to-mongodb">wikipedia-dump</a>
-      </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <link rel='stylesheet' href='./lib/unite-gallery.css' type='text/css' />
-    <link rel='stylesheet' href='./lib/ug-theme-default.css' type='text/css' />
-    <script type="text/javascript" src="./lib/ug-theme-default.js"></script>
-    <script type="text/javascript" src="./lib/unitegallery.min.js"></script>
-    <script type="text/javascript" src="./pages.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/wtf_wikipedia@latest/builds/wtf_wikipedia.min.js"></script>
-    <script type="text/javascript" src="./display.js"></script>
   </body>
 <html>
