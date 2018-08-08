@@ -5,9 +5,9 @@ const readFile = require('./tests/lib/_cachedPage');
 
 //images in tables...
 
-wtf.fetch('London', 'en', function(err, doc) {
-  console.log(doc.lists());
-});
+// wtf.fetch('London', 'en', function(err, doc) {
+//   console.log(doc.lists());
+// });
 
 
 // console.log(readFile('washington-nationals').tables(0));
@@ -58,5 +58,8 @@ after now
 * [[three]]
 * four
 `;
+wtf.fetch(64646, 'en', (err, doc) => {
+  console.log(doc.categories());
+});
 
-console.log(wtf(str).links());
+// console.log(wtf(str).links());

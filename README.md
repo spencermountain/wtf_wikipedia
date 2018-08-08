@@ -130,8 +130,22 @@ wtf_wikipedia was built to work with [dumpster-dive](https://github.com/spencerm
 which lets you parse a whole wikipedia dump on a laptop in a couple hours. It's definitely the way to go, instead of fetching many pages off the api.
 
 # API
-* **wtf(wikiText, [options])**
-* **wtf.fetch(title, [lang_or_wikiid], [options], [callback])**
+```js
+const wtf = require('wtf_wikipedia')
+//parse a page
+var doc = wtf(wikiText, [options])
+
+//fetch & parse a page - wtf.fetch(title, [lang_or_wikiid], [options], [callback])
+(async () => {
+  var doc = await wtf.fetch('Toronto');
+  console.log(doc.text())
+})();
+
+//(callback format works too)
+wtf.fetch(64646, 'en', (err, doc) => {
+  console.log(doc.categories());
+});
+```
 
 <div align="center">
   <h3><a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia-api">Full API</a></h3>
@@ -161,15 +175,7 @@ which lets you parse a whole wikipedia dump on a laptop in a couple hours. It's 
 * **wtf(page).isRedirect()** - *boolean*
 * **wtf(page).isDisambiguation()** - *boolean*
 * **wtf(page).title()** - *guess the title of this page*
-* **doc.debug()** - *log a quick table-of-contents*
-* **doc.wikitext()** - *get/set the raw wikiscript markup*
-* **doc.reparse()** - *why not*
 
-
-* **sec.title()** *==the title==*
-* **sec.wikitext()** - *get/set the raw wikiscript markup*
-* **sec.indentation()** *nesting depth*
-* **sec.index()** *the number in Document*
 ## Examples
 
 ### **wtf(wikiText)**
@@ -206,7 +212,7 @@ returns only nice text of the article
 ```js
 var wiki =
   "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>";
-var text = wtf(wiki).plaintext();
+var text = wtf(wiki).text();
 //"Boston's baseball field has a 37ft wall."
 ```
 <!--
@@ -292,3 +298,5 @@ See also:
 * [Parsoid](https://www.mediawiki.org/wiki/Parsoid)
 
 MIT
+
+[whew.](https://nolanlawson.com/2017/03/05/what-it-feels-like-to-be-an-open-source-maintainer/)

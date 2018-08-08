@@ -28,9 +28,6 @@ const main = function(wiki, options) {
   if (disambig.isDisambig(wiki) === true) {
     r.type = 'disambiguation';
   }
-  if (options.custom) {
-    r.custom = {};
-  }
   if (options.page_identifier) {
     r.page_identifier = options.page_identifier;
   }
