@@ -1,6 +1,4 @@
 const doInfobox = require('./infobox');
-const doSentence = require('./sentence');
-const doTable = require('./table');
 const setDefaults = require('../../lib/setDefaults');
 // const doMath = require('./math');
 
@@ -78,7 +76,7 @@ const doSection = (section, options) => {
   }
   //make a out table
   if (section.tables() && options.tables === true) {
-    out += section.tables().map((t) => doTable(t, options)).join('\n');
+    out += section.tables().map((t) => t.latex(options)).join('\n');
   }
   // //make a out bullet-list
   if (section.lists() && options.lists === true) {
@@ -87,7 +85,7 @@ const doSection = (section, options) => {
   //finally, write the sentence text.
   if (section.sentences() && options.sentences === true) {
     //out += '\n\n% BEGIN Paragraph\n'
-    out += section.sentences().map((s) => doSentence(s, options)).join(' ');
+    out += section.sentences().map((s) => s.latex(options)).join(' ');
     //out += '\n% END Paragraph';
     out += '\n';
   }

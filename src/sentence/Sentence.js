@@ -1,6 +1,7 @@
 const toHtml = require('../output/html/sentence');
 const toMarkdown = require('../output/markdown/sentence');
 const toJSON = require('../output/json/sentence');
+const toLatex = require('./toLatex');
 
 //where we store the formatting, link, date information
 const Sentence = function(data) {
@@ -58,6 +59,9 @@ const methods = {
   },
   json : function(options) {
     return toJSON(this, options);
+  },
+  latex : function(options) {
+    return toLatex(this, options);
   }
 };
 

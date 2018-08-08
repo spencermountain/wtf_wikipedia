@@ -1,5 +1,5 @@
 const doSentence = require('./sentence');
-const pad = require('./pad');
+const pad = require('../../lib/pad');
 
 const dontDo = {
   image: true,

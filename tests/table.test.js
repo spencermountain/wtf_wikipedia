@@ -4,7 +4,7 @@ var wtf = require('./lib');
 var readFile = require('./lib/_cachedPage');
 
 test('bluejays table', t => {
-  var arr = readFile('bluejays').tables(0);
+  var arr = readFile('bluejays').tables(0).data;
   t.equal(arr.length, 8, 'table-length-bluejays');
   t.equal(arr[0]['Level'].text(), 'AAA', 'level-col');
   t.equal(arr[0]['Team'].text(), 'Buffalo Bisons', 'team-col');
@@ -44,13 +44,13 @@ test('rnli stations', t => {
   t.deepEqual(east.images(), [], 'East-no-images');
   t.deepEqual(east.lists(), [], 'East-no-lists');
   t.equal(east.sentences().length, 0, 'east-sentences');
-  var table = east.tables(0);
+  var table = east.tables(0).data;
   t.equal(table.length, 42, 'east table-rows');
   t.equal(table[0].Location.text(), 'Hunstanton, Norfolk', 'east-table-data');
   t.equal(table[41]['Launch method'].text(), 'Carriage', 'east-table-data-end');
 
   var south = doc.sections(7);
-  var sTable = south.tables(0);
+  var sTable = south.tables(0).data;
   t.equal(sTable.length, 35, 'south-table-rows');
   t.equal(sTable[0].Location.text(), 'Mudeford, Dorset', 'south-table-data');
   t.end();
@@ -73,7 +73,7 @@ test('simple table', t => {
 | row 2, cell 3
 |}`;
   var obj = wtf(simple);
-  var table = obj.tables(0);
+  var table = obj.tables(0).data;
   t.equal(table.length, 2, '2 rows');
   t.equal(table[0]['Header 1'].text(), 'row 1, cell 1', '1,1');
   t.equal(table[0]['Header 2'].text(), 'row 1, cell 2', '1,2');
@@ -109,7 +109,8 @@ test('multiplication table', t => {
 | 5 || 10 || 15
 |}`;
   var obj = wtf(mult);
-  var table = obj.tables(0);
+  var table = obj.tables(0).data;
+  console.log(table);
   t.equal(table[0]['1'].text(), '1', '1x1');
   t.equal(table[1]['1'].text(), '2', '1x2');
   t.equal(table[1]['2'].text(), '4', '2x2');
@@ -129,7 +130,7 @@ test('inline-table-test', t => {
 | 2,725 || ''9,200'' || 8,850 || 4,775
 |}`;
   var obj = wtf(inline);
-  var table = obj.tables(0);
+  var table = obj.tables(0).data;
   t.equal(table[0].Year.text(), '2014', 'first year');
   t.equal(table[0].Africa.text(), '2,300', 'africa first-row');
   t.equal(table[0].Americas.text(), '8,950', 'america first-row');
@@ -158,7 +159,7 @@ test('floating-tables-test', t => {
   var obj = wtf(floating);
   t.equal(obj.tables().length, 2, 'two tables');
   // console.log(obj.sections[0].tables);
-  var table = obj.tables(0);
+  var table = obj.tables(0).data;
   // console.log(table);
   t.equal(table[0]['col-0'].text(), 'Col 1, row 1', '1,1');
   t.end();
@@ -186,7 +187,7 @@ test('wikisortable-tables-test', t => {
 |}`;
   var obj = wtf(sortable);
   t.equal(obj.tables().length, 1, 'one table');
-  var table = obj.tables(0);
+  var table = obj.tables(0).data;
   t.equal(table[0]['Alphabetic'].text(), 'd', '1,1');
   t.equal(table[0]['Numeric'].text(), '20', '1,2');
   t.equal(table[0]['Date'].text(), '2008-11-24', '1,3');

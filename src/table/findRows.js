@@ -1,6 +1,9 @@
 //remove top-bottoms
 const cleanup = function(lines) {
-  lines = lines.filter(l => l);
+  lines = lines.filter(line => {
+    //a '|+' row is a 'table caption', remove it.
+    return line && /^\|\+/.test(line) !== true;
+  });
   if (/^{\|/.test(lines[0]) === true) {
     lines.shift();
   }

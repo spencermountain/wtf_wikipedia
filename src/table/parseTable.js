@@ -18,6 +18,7 @@ const findHeaders = function(rows) {
   if (first && first[0] && /^!/.test(first[0]) === true) {
     headings = first.map((h) => {
       h = h.replace(/^\! */, '');
+      h = cleanText(h);
       return h;
     });
     rows.shift();

@@ -1,5 +1,4 @@
 const doSentence = require('./sentence');
-const doTable = require('./table');
 const makeImage = require('./image');
 
 const doList = (list) => {
@@ -29,7 +28,7 @@ const doSection = (section, options) => {
   }
   //make a html table
   if (options.tables === true) {
-    html += section.tables().map((t) => doTable(t, options)).join('\n');
+    html += section.tables().map((t) => t.html(options)).join('\n');
   }
   // //make a html bullet-list
   if (section.lists() && options.lists === true) {

@@ -1,4 +1,3 @@
-const doTable = require('./table');
 const doSentence = require('./sentence');
 const doImage = require('./image');
 const setDefaults = require('../../lib/setDefaults');
@@ -42,7 +41,7 @@ const doSection = (section, options) => {
     let tables = section.tables();
     if (tables.length > 0) {
       md += '\n';
-      md += tables.map((table) => doTable(table, options)).join('\n');
+      md += tables.map((table) => table.html(options)).join('\n');
       md += '\n';
     }
   }

@@ -1,5 +1,4 @@
-const doSentence = require('./sentence');
-const pad = require('./pad');
+const pad = require('../lib/pad');
 /* this is a markdown table:
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
@@ -9,7 +8,7 @@ const pad = require('./pad');
 */
 
 const makeRow = (arr) => {
-  arr = arr.map(pad);
+  arr = arr.map(s => pad(s, 14));
   return '| ' + arr.join(' | ') + ' |';
 };
 
@@ -38,7 +37,7 @@ const doTable = (table, options) => {
       if (!row[k]) {
         return '';
       }
-      return doSentence(row[k], options) || '';
+      return row[k].markdown(options) || '';
     });
     //make it a nice padded row
     return makeRow(arr);
