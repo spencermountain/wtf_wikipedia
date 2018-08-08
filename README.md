@@ -153,29 +153,29 @@ wtf.fetch(64646, 'en', (err, doc) => {
 </div>
 
 #### Main parts:
-* **wtf(page).sections()**   *inside ==these things==*
-* **wtf(page).sentences()**
-* **wtf(page).links()**
-* **wtf(page).tables()**
-* **wtf(page).lists()**
-* **wtf(page).images()**
-* **wtf(page).templates()**  *{{these|things}}*
-* **wtf(page).categories()**
-* **wtf(page).citations()**  *<ref>these things</ref>*
-* **wtf(page).infoboxes()**
-* **wtf(page).coordinates()**
+* **.sections()** &nbsp; &nbsp; &nbsp;  *between ==these==*
+* **.sentences()**
+* **.links()**
+* **.tables()**
+* **.lists()**
+* **.images()**
+* **.templates()** &nbsp; &nbsp; *{{these|things}}*
+* **.categories()**
+* **.citations()** &nbsp; &nbsp; *<ref>these guys</ref>*
+* **.infoboxes()**
+* **.coordinates()**
 
 #### outputs:
-* **.json()**  *handy, workable data*
-* **.text()**  *plaintext*
+* **.json()**  &nbsp; &nbsp; *handy, workable data*
+* **.text()**  &nbsp; &nbsp; *plaintext*
 * **.html()**
 * **.markdown()**
-* **.latex()**  *ftw*
+* **.latex()**  &nbsp; &nbsp; *(ftw)*
 
 ##### fancy-times:
-* **wtf(page).isRedirect()** - *boolean*
-* **wtf(page).isDisambiguation()** - *boolean*
-* **wtf(page).title()** - *guess the title of this page*
+* **.isRedirect()**  &nbsp; - &nbsp; *boolean*
+* **.isDisambiguation()**  &nbsp; - &nbsp; *boolean*
+* **.title()**  &nbsp; - &nbsp; *guess the title of this page*
 
 ## Examples
 
