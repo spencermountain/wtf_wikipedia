@@ -32,14 +32,14 @@
 
 Consider:
 * the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax)
-* [Birth_date_and_age](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs [Birth-date_and_age](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
+* ['Birth_date_and_age'](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs ['Birth-date_and_age'](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
 * the partial-implementation of [inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
-* the deep nesting of [similar-syntax](https://en.wikipedia.org/wiki/Wikipedia:Database_reports/Templates_transcluded_on_the_most_pages) templates,
-* the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) of image paths,
+* deep recursion of [similar-syntax](https://en.wikipedia.org/wiki/Wikipedia:Database_reports/Templates_transcluded_on_the_most_pages) templates,
+* the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) for image paths,
 * the [custom encoding](https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(technical_restrictions)) of whitespace and punctuation,
 * [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
 
-**wtf_wikipedia** supports many ***recursive shenanigans***, depreciated and obscure template
+**wtf_wikipedia** supports many ***recursive shenanigans***, depreciated and **obscure template**
 variants, and illicit 'wiki-esque' shorthands.
 
 ![image](https://user-images.githubusercontent.com/399657/43598341-75ca8f94-9652-11e8-9b91-cabae4fb1dce.png)
@@ -61,6 +61,7 @@ It will try it's best, and fail in reasonable ways.
 <div align="center">
   <h3><a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia">Demo</a></h3>
 </div>
+
 ## well ok then,
 <kbd>npm install wtf_wikipedia</kbd>
 
@@ -254,10 +255,10 @@ s.dates() //structured date templates
 #### Images
 ```js
 img = wtf(page).images(0)
-img.url()// the full-size wikimedia-hosted url
-img.thumnail()// 300px, by default
-img.format()// jpg, png, ..
-img.exists()// HEAD req to see if the file is alive
+img.url()     // the full-size wikimedia-hosted url
+img.thumnail() // 300px, by default
+img.format()  // jpg, png, ..
+img.exists()  // HEAD req to see if the file is alive
 ```
 
 ## **CLI**
@@ -286,17 +287,16 @@ wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
 ```
 
 # Contributing
-projects like these are only done with many-hands, and I try to be a friendly and easy maintainer. (promise!)
+[Join in!](./contributing.md) - projects like these are only done with many-hands, and we try to be friendly and easy.
 
-[Join in!](./contributing.md)
-
-Thank you to the [cross-fetch](https://github.com/lquixada/cross-fetch) and [jshashes](https://github.com/h2non/jshashes) libraries.
-
-See also:
+# See also:
 * [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView)
 * [txtwiki](https://github.com/joaomsa/txtwiki.js)
 * [Parsoid](https://www.mediawiki.org/wiki/Parsoid)
 
-MIT
+Thank you to the [cross-fetch](https://github.com/lquixada/cross-fetch) and [jshashes](https://github.com/h2non/jshashes) libraries.
 
-[whew.](https://nolanlawson.com/2017/03/05/what-it-feels-like-to-be-an-open-source-maintainer/)
+MIT
+<div align="center">
+  <a href="https://nolanlawson.com/2017/03/05/what-it-feels-like-to-be-an-open-source-maintainer/">whew.</a>
+</div>
