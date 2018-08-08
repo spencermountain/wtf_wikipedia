@@ -1,4 +1,4 @@
-const setDefaults = require('../../lib/setDefaults');
+const setDefaults = require('../lib/setDefaults');
 const defaults = {
   title: true,
   depth: true,

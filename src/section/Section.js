@@ -1,6 +1,7 @@
-const toMarkdown = require('../output/markdown/section');
-const toHtml = require('../output/html/section');
-const toJSON = require('../output/json/section');
+const toMarkdown = require('./toMarkdown');
+const toHtml = require('./toHtml');
+const toJSON = require('./toJSON');
+const toLatex = require('./toLatex');
 const Sentence = require('../sentence/Sentence');
 const Infobox = require('../infobox/Infobox');
 const setDefaults = require('../lib/setDefaults');
@@ -236,6 +237,9 @@ const methods = {
   },
   json : function(options) {
     return toJSON(this, options);
+  },
+  latex : function(options) {
+    return toLatex(this, options);
   },
 };
 //aliases

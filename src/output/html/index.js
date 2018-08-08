@@ -1,4 +1,3 @@
-const doSection = require('./section');
 
 //
 const toHtml = function(doc, options) {
@@ -13,7 +12,7 @@ const toHtml = function(doc, options) {
     html += data.infoboxes.map(i => i.html(options)).join('\n');
   }
   //render each section
-  html += data.sections.map(s => doSection(s, options)).join('\n');
+  html += data.sections.map(s => s.html(options)).join('\n');
   return html;
 };
 module.exports = toHtml;

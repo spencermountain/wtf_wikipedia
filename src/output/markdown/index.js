@@ -1,4 +1,3 @@
-const doSection = require('./section');
 
 const toMarkdown = function(doc, options) {
   let data = doc.data;
@@ -12,7 +11,7 @@ const toMarkdown = function(doc, options) {
     md += doc.infoboxes().map(infobox => infobox.markdown(options)).join('\n\n');
   }
   //render each section
-  md += data.sections.map(s => doSection(s, options)).join('\n\n');
+  md += data.sections.map(s => s.markdown(options)).join('\n\n');
   return md;
 };
 module.exports = toMarkdown;
