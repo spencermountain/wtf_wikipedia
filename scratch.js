@@ -13,8 +13,9 @@ const readFile = require('./tests/lib/_cachedPage');
 
 str = `before
 {|
+! h1 !! h2 || h3
 |-
-| one
+| one 
 | two
 | three
 |-
