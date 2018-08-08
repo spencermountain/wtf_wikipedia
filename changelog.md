@@ -81,3 +81,4 @@
 * new `Table` class and `List` classes
 * improved table-parser - generate name `col1` instead of `col-0`
 * support `options.verbose_template` for debugging
+* support recursive tables

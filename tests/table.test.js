@@ -218,3 +218,26 @@ test('messy-table-test', t => {
   t.equal(table[1]['col1'].text, 'Nibelungen Bridge to Worms', 'col1 text');
   t.end();
 });
+
+test('embedded-table', t => {
+  var str = ` {|
+  | one
+  | two
+  | three
+  |-
+  {|
+  | inside one
+  | inside two
+  | inside [[three]]
+  |}
+  |Statue of Liberty
+  |New York City
+  |[[Chicago]]
+  |}
+  `;
+  var tables = wtf(str).tables();
+  t.equal(tables.length, 2, 'found both tables');
+  t.equal(tables[0].links().length, 1, 'found one link');
+  t.equal(tables[1].links().length, 1, 'found another link');
+  t.end();
+});

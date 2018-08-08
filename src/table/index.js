@@ -1,21 +1,46 @@
 const parseTable = require('./parseTable');
 const Table = require('./Table');
-const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70kchars.
+// const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70kchars.
+const openReg = /^\s*{\|/;
+const closeReg = /^\s*\|}/;
 
-//find all tables '{|..|}' in the document, and parse them
+//tables can be recursive, so looky-here.
 const findTables = function(section, wiki) {
-  let tables = [];
-  wiki = wiki.replace(table_reg, (str) => {
-    let data = parseTable(str);
-    if (data && data.length > 0) {
-      let table = new Table(data);
-      tables.push(table);
+  let list = [];
+  let lines = wiki.split('\n');
+  let stack = [];
+  for(let i = 0; i < lines.length; i += 1) {
+    //start a table
+    if (openReg.test(lines[i]) === true) {
+      stack.push(lines[i]);
+      continue;
     }
-    return '';
+    //close a table
+    if (closeReg.test(lines[i]) === true) {
+      stack[stack.length - 1] += '\n' + lines[i];
+      let table = stack.pop();
+      list.push(table);
+      continue;
+    }
+    //keep-going on one
+    if (stack.length > 0) {
+      stack[stack.length - 1] += '\n' + lines[i];
+    }
+  }
+  //bind-em together as a Table class
+  let tables = [];
+  list.forEach((str) => {
+    if (str) {
+      let data = parseTable(str);
+      if (data && data.length > 0) {
+        tables.push(new Table(data));
+      }
+    }
   });
   if (tables.length > 0) {
     section.tables = tables;
   }
   return wiki;
 };
+
 module.exports = findTables;
