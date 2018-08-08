@@ -39,20 +39,24 @@ let str = `before
 `;
 
 
-str = ` {|
+str = `before [[the shining|movie]]
+{|
+! h1 !! h2 || h3
+|-
 | one
 | two
 | three
 |-
-{|
-| inside! one b
-| inside! two b
-| inside! three b
+|  [[Minnesota Twins|Twins]]
+| five
+| six
 |}
-|Statue of Liberty
-|New York City
-|Chicago
-|}
+
+after now
+* one
+* two
+* [[three]]
+* four
 `;
 
-console.log(wtf(str).tables(0).json());
+console.log(wtf(str).links());

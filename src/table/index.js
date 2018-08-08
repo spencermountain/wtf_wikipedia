@@ -27,10 +27,11 @@ const findTables = function(section, wiki) {
       stack[stack.length - 1] += '\n' + lines[i];
     }
   }
-  //bind-em together as a Table class
+  //work-em together for a Table class
   let tables = [];
   list.forEach((str) => {
     if (str) {
+      wiki = wiki.replace(str, '');
       let data = parseTable(str);
       if (data && data.length > 0) {
         tables.push(new Table(data));
