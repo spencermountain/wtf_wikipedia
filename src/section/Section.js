@@ -217,7 +217,7 @@ const methods = {
     let sections = this.doc.sections();
     let index = this.index();
     for(let i = index; i >= 0; i -= 1) {
-      if (sections[i].depth < this.depth) {
+      if (sections[i] && sections[i].depth < this.depth) {
         return sections[i];
       }
     }

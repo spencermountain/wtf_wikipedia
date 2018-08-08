@@ -1,4 +1,4 @@
-/* wtf_wikipedia v4.6.0
+/* wtf_wikipedia v5.0.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2258,7 +2258,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "4.6.0",
+  "version": "5.0.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -3517,7 +3517,10 @@ var methods = {
   reparse: function reparse() {
     this.data = parse(this.wiki, this.options);
   },
-  wikitext: function wikitext() {
+  wikitext: function wikitext(str) {
+    if (str) {
+      this.wiki = str;
+    }
     return this.wiki;
   },
   isRedirect: function isRedirect() {
@@ -3636,6 +3639,7 @@ var methods = {
       }
       console.log(indent + (sec.title() || '(Intro)'));
     });
+    return this;
   }
 };
 
@@ -3784,9 +3788,6 @@ var main = function main(wiki, options) {
   //detect if page is just disambiguator page, and return
   if (disambig.isDisambig(wiki) === true) {
     r.type = 'disambiguation';
-  }
-  if (options.custom) {
-    r.custom = {};
   }
   if (options.page_identifier) {
     r.page_identifier = options.page_identifier;
@@ -5089,7 +5090,7 @@ var methods = {
     var sections = this.doc.sections();
     var index = this.index();
     for (var i = index; i >= 0; i -= 1) {
-      if (sections[i].depth < this.depth) {
+      if (sections[i] && sections[i].depth < this.depth) {
         return sections[i];
       }
     }
@@ -5110,11 +5111,11 @@ var methods = {
       return s.text(options);
     }).join(' ');
   },
-  json: function json(options) {
-    return toJSON(this, options);
-  },
   latex: function latex(options) {
     return toLatex(this, options);
+  },
+  json: function json(options) {
+    return toJSON(this, options);
   }
 };
 //aliases
@@ -5505,7 +5506,9 @@ module.exports = toJSON;
 },{"../lib/setDefaults":35}],46:[function(_dereq_,module,exports){
 'use strict';
 
+//map '==' depth to 'subsection', 'subsubsection', etc
 var doSection = function doSection(section, options) {
+  options = options || {};
   var out = '';
   var num = 1;
   //make the header
