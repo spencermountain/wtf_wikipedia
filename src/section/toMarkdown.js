@@ -8,13 +8,6 @@ const defaults = {
   sentences: true,
 };
 
-const doList = (list, options) => {
-  return list.map((s) => {
-    let str = s.markdown(options);
-    return ' * ' + str;
-  }).join('\n');
-};
-
 const doSection = (section, options) => {
   options = setDefaults(options, defaults);
   let md = '';
@@ -47,7 +40,7 @@ const doSection = (section, options) => {
   if (options.lists === true) {
     let lists = section.lists();
     if (lists.length > 0) {
-      md += lists.map((list) => doList(list, options)).join('\n');
+      md += lists.map((list) => list.markdown(options)).join('\n');
       md += '\n';
     }
   }

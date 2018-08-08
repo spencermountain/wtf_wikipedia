@@ -2,8 +2,13 @@ const toHtml = require('./toHtml');
 const toMarkdown = require('./toMarkdown');
 const toLatex = require('./toLatex');
 
-const Table = function(data) {
+const Table = function(data, wiki) {
   this.data = data;
+  //hush this property in console
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki
+  });
 };
 
 const methods = {

@@ -1,11 +1,4 @@
-const doList = (list) => {
-  let html = '<ul>\n';
-  list.forEach((o) => {
-    html += '  <li>' + o.text() + '</li>\n';
-  });
-  html += '<ul>\n';
-  return html;
-};
+
 
 const doSection = (section, options) => {
   let html = '';
@@ -29,7 +22,7 @@ const doSection = (section, options) => {
   }
   // //make a html bullet-list
   if (section.lists() && options.lists === true) {
-    html += section.lists().map((list) => doList(list, options)).join('\n');
+    html += section.lists().map((list) => list.html(options)).join('\n');
   }
   //finally, write the sentence text.
   if (options.sentences === true) {

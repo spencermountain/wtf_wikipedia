@@ -4,8 +4,13 @@ const toJSON = require('./toJson');
 const toLatex = require('./toLatex');
 
 //where we store the formatting, link, date information
-const Sentence = function(data) {
+const Sentence = function(data, wiki) {
   this.data = data;
+  //hush this property in console
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki
+  });
 };
 
 const methods = {

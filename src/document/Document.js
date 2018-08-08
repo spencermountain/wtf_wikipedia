@@ -108,6 +108,9 @@ const methods = {
   links : function(clue) {
     return sectionMap(this, 'links', clue);
   },
+  lists : function(clue) {
+    return sectionMap(this, 'lists', clue);
+  },
   tables : function(clue) {
     return sectionMap(this, 'tables', clue);
   },

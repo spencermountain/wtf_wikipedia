@@ -4,6 +4,7 @@ const toJSON = require('./toJSON');
 const toLatex = require('./toLatex');
 const Sentence = require('../sentence/Sentence');
 const Infobox = require('../infobox/Infobox');
+const List = require('../list/List');
 const setDefaults = require('../lib/setDefaults');
 const defaults = {
   infoboxes: true,
@@ -63,9 +64,7 @@ const methods = {
   links: function(n) {
     let arr = [];
     this.lists().forEach((list) => {
-      list.forEach((s) => {
-        s.links().forEach((link) => arr.push(link));
-      });
+      list.links().forEach((link) => arr.push(link));
     });
     this.infoboxes().forEach((templ) => {
       templ.links().forEach((link) => arr.push(link));
@@ -117,9 +116,10 @@ const methods = {
   },
   lists: function(clue) {
     if (typeof clue === 'number') {
-      return this.data.lists[clue];
+      return new List(this.data.lists[clue]);
     }
-    return this.data.lists || [];
+    let lists = this.data.lists || [];
+    return lists.map((arr) => new List(arr));
   },
   interwiki: function(clue) {
     if (typeof clue === 'number') {

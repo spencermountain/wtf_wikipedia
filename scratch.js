@@ -4,8 +4,7 @@ const wtf = require('./src/index');
 // const wtf = require('./build');
 
 // wtf.fetch('London', 'en', function(err, doc) {
-// console.log(doc.plaintext().match('"ref"'));
-// console.log(doc.isDisambiguation());
+//   console.log(doc.sections(0).data);
 // });
 
 
@@ -25,8 +24,11 @@ let str = `before
 |}
 
 after now
-
+* one
+* two
+* [[three]]
+* four
 `;
 // console.log(wtf(str).tables(0).json());
-// console.log(wtf(str).text());
-console.log(wtf(`he is good. i think "he is so." after`).sentences());
+console.log(wtf(str).lists(0).links());
+// console.log(wtf(`he is good. i think "he is so." after`).sentences());

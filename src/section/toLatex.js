@@ -1,12 +1,3 @@
-//TODO move!
-const doList = (list) => {
-  let out = '\\begin{itemize}\n';
-  list.forEach((o) => {
-    out += '  \\item ' + o.text + '\n';
-  });
-  out += '\\end{itemize}\n';
-  return out;
-};
 
 const doSection = (section, options) => {
   let out = '';
@@ -55,7 +46,7 @@ const doSection = (section, options) => {
   }
   // //make a out bullet-list
   if (section.lists() && options.lists === true) {
-    out += section.lists().map((list) => doList(list, options)).join('\n');
+    out += section.lists().map((list) => list.latex(options)).join('\n');
   }
   //finally, write the sentence text.
   if (section.sentences() && options.sentences === true) {

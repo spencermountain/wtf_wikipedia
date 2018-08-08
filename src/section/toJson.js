@@ -37,7 +37,7 @@ const toJSON = function(s, options) {
     data.templates = s.templates();
   }
   if (options.lists && s.lists().length > 0) {
-    data.tables = s.lists();
+    data.tables = s.lists().map(list => list.json());
   }
   return data;
 };
