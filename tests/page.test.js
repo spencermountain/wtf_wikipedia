@@ -32,7 +32,7 @@ test('toronto_star with list', t => {
   t.equal(section.sentences().length, 21, 'history-length');
   t.equal(doc.categories().length, 6, 'cat-length');
   section = doc.sections('Notable cartoonists');
-  t.equal(section.lists(0).length, 10, 'cartoonist-length');
+  t.equal(section.lists(0).json().length, 10, 'cartoonist-length');
   t.end();
 });
 

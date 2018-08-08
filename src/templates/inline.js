@@ -118,7 +118,6 @@ const inline = {
     }
     return '';
   },
-
   //https://en.wikipedia.org/wiki/Template:Marriage
   //this one creates a template, and an inline response
   marriage: (tmpl, r) => {
@@ -133,7 +132,21 @@ const inline = {
       }
     }
     return str;
-  }
+  },
+  //https://en.wikipedia.org/wiki/Template:Lbs
+  lbs: (tmpl) => {
+    let obj = pipeSplit(tmpl, ['text']);
+    return `[[${obj.text} Lifeboat Station|${obj.text}]]`;
+  },
+  //Foo-class
+  lbc: (tmpl) => {
+    let obj = pipeSplit(tmpl, ['text']);
+    return `[[${obj.text}-class lifeboat|${obj.text}-class]]`;
+  },
+  lbb: (tmpl) => {
+    let obj = pipeSplit(tmpl, ['text']);
+    return `[[${obj.text}-class lifeboat|${obj.text}]]`;
+  },
 };
 //aliases
 inline.flatlist = inline.plainlist;

@@ -34,7 +34,7 @@ test('rnli stations', t => {
   var lifeboat = doc.sections(2);
   t.equal(lifeboat.depth, 1, 'lifeboat-depth');
   t.equal(lifeboat.templates(0).page, 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main');
-  t.equal(lifeboat.lists(0).length, 3, 'lifeboat-list');
+  t.equal(lifeboat.lists(0).json().length, 3, 'lifeboat-list');
   t.equal(lifeboat.sentences().length, 3, 'lifeboat-sentences');
   t.deepEqual(lifeboat.images(), [], 'lifeboat-no-images');
   t.deepEqual(lifeboat.tables(), [], 'lifeboat-no-tables');
@@ -110,7 +110,6 @@ test('multiplication table', t => {
 |}`;
   var obj = wtf(mult);
   var table = obj.tables(0).data;
-  console.log(table);
   t.equal(table[0]['1'].text(), '1', '1x1');
   t.equal(table[1]['1'].text(), '2', '1x2');
   t.equal(table[1]['2'].text(), '4', '2x2');
