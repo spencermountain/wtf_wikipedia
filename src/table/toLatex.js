@@ -4,7 +4,7 @@ const doTable = function(table, options) {
   out += '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns';
   out += '\n% Format Align Column: \'l\'=left \'r\'=right align, \'c\'=center, \'p{5cm}\'=block with column width 5cm ';
   out += '\n\\begin{tabular}{|';
-  Object.keys(table[0]).forEach((k) => {
+  Object.keys(table[0]).forEach(() => {
     out += 'l|';
   });
   out += '} \n';
