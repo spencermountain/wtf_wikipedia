@@ -1,4 +1,4 @@
-
+//turn a Doc object into a markdown string
 const toMarkdown = function(doc, options) {
   let data = doc.data;
   let md = '';

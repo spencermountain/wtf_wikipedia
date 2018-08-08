@@ -1,9 +1,9 @@
 const parse = require('./index');
 const sectionMap = require('./_sectionMap');
-const toMarkdown = require('../output/markdown');
-const toHtml = require('../output/html');
-const toJSON = require('../output/json');
-const toLatex = require('../output/latex');
+const toMarkdown = require('./toMarkdown');
+const toHtml = require('./toHtml');
+const toJSON = require('./toJSON');
+const toLatex = require('./toLatex');
 const setDefaults = require('../lib/setDefaults');
 
 const defaults = {
