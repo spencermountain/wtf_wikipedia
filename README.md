@@ -153,29 +153,29 @@ wtf.fetch(64646, 'en', (err, doc) => {
 </div>
 
 #### Main parts:
-* **.sections()** &nbsp; &nbsp; &nbsp;  *between ==these==*
+* **.sections()** &nbsp; &nbsp; &nbsp; - &nbsp; *==these things==*
 * **.sentences()**
 * **.links()**
 * **.tables()**
 * **.lists()**
 * **.images()**
-* **.templates()** &nbsp; &nbsp; *{{these|things}}*
+* **.templates()** &nbsp; &nbsp; - &nbsp;*{{these|things}}*
 * **.categories()**
-* **.citations()** &nbsp; &nbsp; *<ref>these guys</ref>*
+* **.citations()** &nbsp; &nbsp; - &nbsp; *&lt;ref&gt;these guys&lt;/ref&gt;*
 * **.infoboxes()**
 * **.coordinates()**
 
 #### outputs:
-* **.json()**  &nbsp; &nbsp; *handy, workable data*
-* **.text()**  &nbsp; &nbsp; *plaintext*
+* **.json()**  &nbsp; - &nbsp; &nbsp; *handy, workable data*
+* **.text()**  &nbsp; - &nbsp; &nbsp; *reader-focused plaintext*
 * **.html()**
 * **.markdown()**
-* **.latex()**  &nbsp; &nbsp; *(ftw)*
+* **.latex()**  &nbsp; - &nbsp; &nbsp; *(ftw)*
 
 ##### fancy-times:
-* **.isRedirect()**  &nbsp; - &nbsp; *boolean*
-* **.isDisambiguation()**  &nbsp; - &nbsp; *boolean*
-* **.title()**  &nbsp; - &nbsp; *guess the title of this page*
+* **.isRedirect()**  &nbsp; &nbsp; - &nbsp; *boolean*
+* **.isDisambiguation()**  &nbsp; &nbsp; - &nbsp; *boolean*
+* **.title()**  &nbsp; &nbsp; &nbsp; - &nbsp;  &nbsp; &nbsp;*guess the title of this page*
 
 ## Examples
 
