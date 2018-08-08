@@ -1,5 +1,6 @@
-
+//map '==' depth to 'subsection', 'subsubsection', etc
 const doSection = (section, options) => {
+  options = options || {};
   let out = '';
   let num = 1;
   //make the header

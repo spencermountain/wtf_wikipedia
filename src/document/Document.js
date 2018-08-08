@@ -45,7 +45,10 @@ const methods = {
   reparse : function () {
     this.data = parse(this.wiki, this.options);
   },
-  wikitext : function() {
+  wikitext : function(str) {
+    if (str) {
+      this.wiki = str;
+    }
     return this.wiki;
   },
   isRedirect : function() {
@@ -156,6 +159,7 @@ const methods = {
       }
       console.log(indent + (sec.title() || '(Intro)'));
     });
+    return this;
   }
 };
 

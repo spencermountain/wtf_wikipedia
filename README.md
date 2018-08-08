@@ -70,7 +70,7 @@ wtf.fetch('Whistling').then(doc => {
   doc.categories();
   //['Oral communication', 'Vocal music', 'Vocal skills']
 
-  doc.sections('As communication').plaintext();
+  doc.sections('As communication').text();
   // 'A traditional whistled language named Silbo Gomero..'
 
   doc.images(0).thumb();
@@ -108,6 +108,10 @@ wtf.fetch('Whistling').then(doc => {
 * parses citation metadata
 * Eliminate xml, latex, css, and table-sorting cruft
 
+<div align="center">
+  <h3><a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia">Demo</a></h3>
+</div>
+
 ## But what about...
 
 ### Parsoid:
@@ -131,41 +135,66 @@ which lets you parse a whole wikipedia dump on a laptop in a couple hours. It's 
 * **wtf(wikiText, [options])**
 * **wtf.fetch(title, [lang_or_wikiid], [options], [callback])**
 
-### outputs:
-* **doc.plaintext()**
+
+### Document methods:
+##### outputs:
+* **doc.text()**
 * **doc.html()**
 * **doc.markdown()**
 * **doc.latex()**
-
-### Document methods:
-* **doc.isRedirect()** - *boolean*
-* **doc.isDisambiguation()** - *boolean*
-* **doc.categories()**
+##### grabbers:
 * **doc.sections()**
 * **doc.sentences()**
-* **doc.images()**
 * **doc.links()**
+* **doc.images()**
+* **doc.categories()**
 * **doc.tables()**
+* **doc.lists()**
 * **doc.citations()**
 * **doc.infoboxes()**
 * **doc.coordinates()**
+##### info:
+* **doc.isRedirect()** - *boolean*
+* **doc.isDisambiguation()** - *boolean*
+* **doc.title()** - *guess the title of this page*
+* **doc.debug()** - *log a quick table-of-contents*
+* **doc.wikitext()** - *get/set the raw wikiscript markup*
+* **doc.reparse()** - *why not*
 
 ### Section methods:
 (a section is any content between **==these kind==** of headers)
+##### outputs:
+* **doc.text()**
+* **doc.html()**
+* **doc.markdown()**
+* **doc.latex()**
+##### info:
 * **sec.indentation()**
+##### grabbers:
 * **sec.sentences()**
 * **sec.links()**
 * **sec.tables()**
 * **sec.templates()**
 * **sec.lists()**
-* **sec.interwiki()**
 * **sec.images()**
+* **sec.interwiki()**
 * **sec.index()**
 * **sec.nextSibling()**
 * **sec.lastSibling()**
 * **sec.children()**
 * **sec.parent()**
 * **sec.remove()**
+
+### Sentence methods:
+##### outputs:
+* **doc.text()**
+* **doc.html()**
+* **doc.markdown()**
+* **doc.latex()**
+##### grabbers:
+* **sec.links()**
+* **sec.bolds()**
+* **sec.italics()**
 
 ## Examples
 

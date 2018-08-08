@@ -5,9 +5,9 @@ const readFile = require('./tests/lib/_cachedPage');
 
 //images in tables...
 
-// wtf.fetch('London', 'en', function(err, doc) {
-//   console.log(doc.sections(0).data);
-// });
+wtf.fetch('London', 'en', function(err, doc) {
+  console.log(doc.lists());
+});
 
 
 // console.log(readFile('washington-nationals').tables(0));
