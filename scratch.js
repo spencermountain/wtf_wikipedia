@@ -11,7 +11,8 @@ const readFile = require('./tests/lib/_cachedPage');
 
 // console.log(readFile('washington-nationals').tables()[1]);
 
-str = `{|
+str = `before
+{|
 |-
 | one
 | two
@@ -20,7 +21,11 @@ str = `{|
 |  [[four]]
 | five
 | six
-|}`;
+|}
+
+after now
+
+`;
 
 // console.log(wtf(str).tables(0));
-console.log(wtf(str).links());
+console.log(wtf(str).text());

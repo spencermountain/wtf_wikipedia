@@ -1,23 +1,20 @@
 const helpers = require('../lib/helpers');
 const parseLine = require('../sentence/').parseLine;
 const Sentence = require('../sentence/Sentence');
+// const findTables = require('./findTables');
 
-const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70kchars.
-
-const parseHeading = function(str) {
+const cleanup = function(str) {
   str = parseLine(str).text || '';
+  //anything before a single-pipe is styling, so remove it
   if (str.match(/\|/)) {
     str = str.replace(/.+\| ?/, ''); //class="unsortable"|title
   }
   return str;
 };
 
-//turn a {|...table string into an array of arrays
-const parse_table = function(wiki) {
+// lines starting with  '! title1'
+const findHeadings = function(lines) {
   let headings = [];
-  let lines = wiki.replace(/\r/g, '').split(/\n/);
-
-  //find headings first
   for (let i = 0; i < lines.length; i++) {
     let str = lines[i];
     //header
@@ -26,10 +23,10 @@ const parse_table = function(wiki) {
       //handle inline '!!' format
       if (str.match(/ \!\! /)) {
         let heads = str.split(/ \!\! /);
-        headings = heads.map(parseHeading);
+        headings = heads.map(cleanup);
       } else {
         //handle heading-per-line
-        str = parseHeading(str);
+        str = cleanup(str);
         if (!str) {
           str = 'col-' + headings.length;
         }
@@ -45,6 +42,19 @@ const parse_table = function(wiki) {
     }
   }
   lines = lines.filter(l => l);
+  return {
+    headings: headings,
+    lines: lines
+  };
+};
+
+//turn a {|...table string into an array of arrays
+const parseTable = function(wiki) {
+  let lines = wiki.replace(/\r/g, '').split(/\n/);
+  //find headings first
+  let result = findHeadings(lines);
+  // console.log(obj);
+  lines = result.lines;
 
   // console.log(lines);
   let table = [[]];
@@ -67,7 +77,7 @@ const parse_table = function(wiki) {
     // handle weird '! ' row-header syntax
     if (str.match(/^\!/)) {
       str = str.replace(/^\! +/, '');
-      str = parseHeading(str);
+      str = cleanup(str);
       str = helpers.trim_whitespace(str);
       table[table.length - 1].push(str);
       return;
@@ -78,7 +88,7 @@ const parse_table = function(wiki) {
       //handle weird 'rowspan="2" |' syntax
       if (want.match(/. \| /)) {
         //this needs additional cleanup
-        want = parseHeading(want);
+        want = cleanup(want);
       }
       want = helpers.trim_whitespace(want) || '';
       //handle the || shorthand..
@@ -102,7 +112,7 @@ const parse_table = function(wiki) {
     arr.forEach((a, i) => {
       //clean it up a little bit
       a = a.replace(/style=".*?"/, '');
-      let head = headings[i] || 'col-' + i;
+      let head = result.headings[i] || 'col-' + i;
       obj[head] = parseLine(a);
       obj[head] = new Sentence(obj[head]);
     });
@@ -111,17 +121,4 @@ const parse_table = function(wiki) {
   return table;
 };
 
-const findTables = function(r, wiki) {
-  let tables = wiki.match(table_reg, '') || [];
-  tables = tables.map(function(str) {
-    return parse_table(str);
-  });
-  tables = tables.filter((t) => t && t.length > 0);
-  if (tables.length > 0) {
-    r.tables = tables;
-  }
-  //remove tables
-  wiki = wiki.replace(table_reg, '');
-  return wiki;
-};
-module.exports = findTables;
+module.exports = parseTable;

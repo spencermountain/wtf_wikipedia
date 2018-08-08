@@ -7,7 +7,7 @@ const parse = {
   list: require('./list'),
   image: require('../image'),
   interwiki: require('./interwiki'),
-  table: require('./table'),
+  table: require('../table'),
   references: require('./references'),
   templates: require('../templates'),
   xmlTemplates: require('./xml-templates'),
