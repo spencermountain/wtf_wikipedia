@@ -1,4 +1,4 @@
-/* wtf_wikipedia v5.0.0
+/* wtf_wikipedia v5.0.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2258,7 +2258,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -3474,7 +3474,7 @@ var parse = _dereq_('./index');
 var sectionMap = _dereq_('./_sectionMap');
 var toMarkdown = _dereq_('./toMarkdown');
 var toHtml = _dereq_('./toHtml');
-var toJSON = _dereq_('./toJSON');
+var toJSON = _dereq_('./toJson');
 var toLatex = _dereq_('./toLatex');
 var setDefaults = _dereq_('../lib/setDefaults');
 var aliasList = _dereq_('../lib/aliases');
@@ -3670,7 +3670,7 @@ Document.prototype.references = Document.prototype.citations;
 
 module.exports = Document;
 
-},{"../lib/aliases":31,"../lib/setDefaults":35,"./_sectionMap":8,"./index":11,"./toHtml":15,"./toJSON":16,"./toLatex":17,"./toMarkdown":18}],8:[function(_dereq_,module,exports){
+},{"../lib/aliases":31,"../lib/setDefaults":35,"./_sectionMap":8,"./index":11,"./toHtml":15,"./toJson":16,"./toLatex":17,"./toMarkdown":18}],8:[function(_dereq_,module,exports){
 'use strict';
 
 //helper for looping around all sections of a document
@@ -4855,7 +4855,7 @@ module.exports = List;
 
 var toMarkdown = _dereq_('./toMarkdown');
 var toHtml = _dereq_('./toHtml');
-var toJSON = _dereq_('./toJSON');
+var toJSON = _dereq_('./toJson');
 var toLatex = _dereq_('./toLatex');
 var Sentence = _dereq_('../sentence/Sentence');
 var Infobox = _dereq_('../infobox/Infobox');
@@ -5133,7 +5133,7 @@ Object.keys(aliasList).forEach(function (k) {
 });
 module.exports = Section;
 
-},{"../infobox/Infobox":27,"../lib/aliases":31,"../lib/setDefaults":35,"../list/List":37,"../sentence/Sentence":49,"./toHtml":44,"./toJSON":45,"./toLatex":46,"./toMarkdown":47}],39:[function(_dereq_,module,exports){
+},{"../infobox/Infobox":27,"../lib/aliases":31,"../lib/setDefaults":35,"../list/List":37,"../sentence/Sentence":49,"./toHtml":44,"./toJson":45,"./toLatex":46,"./toMarkdown":47}],39:[function(_dereq_,module,exports){
 'use strict';
 
 var fns = _dereq_('../lib/helpers');
@@ -6514,7 +6514,7 @@ var doTable = function doTable(table, options) {
   out += '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns';
   out += '\n% Format Align Column: \'l\'=left \'r\'=right align, \'c\'=center, \'p{5cm}\'=block with column width 5cm ';
   out += '\n\\begin{tabular}{|';
-  Object.keys(table[0]).forEach(function (k) {
+  Object.keys(table[0]).forEach(function () {
     out += 'l|';
   });
   out += '} \n';
