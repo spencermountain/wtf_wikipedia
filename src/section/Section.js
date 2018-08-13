@@ -1,6 +1,6 @@
 const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
-const toJSON = require('./toJSON');
+const toJSON = require('./toJson');
 const toLatex = require('./toLatex');
 const Sentence = require('../sentence/Sentence');
 const Infobox = require('../infobox/Infobox');
