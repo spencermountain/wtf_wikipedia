@@ -3,14 +3,21 @@ const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-//images in tables...
+// (async () => {
+//   const document = await wtf.fetch('Tiger', 'de');
+//
+//   document.sections().forEach(section => console.log(section.title() || 'Intro'));
+// })();
 
-// wtf.fetch('London', 'en', function(err, doc) {
-//   console.log(doc.lists());
-// });
+let str = `hello up here
+=== one ===
+hello
+<math>foo</math>
+==two==
+lkjsdf
+==three==
+<references>
+</references>
+`;
 
-
-// console.log(readFile('washington-nationals').tables(0));
-
-var str = 'hello';
-console.log(wtf(str).links());
+wtf(str).sections().forEach(section => console.log(section.title() || 'Intro'));
