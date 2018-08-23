@@ -49,7 +49,7 @@ const internal_links = function(links, str) {
       obj.text = txt;
     }
     //finally, support [[link]]'s apostrophe
-    if (apostrophe) {
+    if (apostrophe === '\'s') {
       obj.text = obj.text || obj.page;
       obj.text += apostrophe;
     }

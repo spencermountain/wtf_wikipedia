@@ -9,7 +9,6 @@ const wtf = require('./src/index');
 //   console.log(document.section('Länderbezug').sentences(4).plaintext());
 // })();
 
-let str = `[[File:Tony Danza]]
- `;
-// console.log(wtf(str).text());
-console.log(wtf(str).images());
+let str = ` ''[[archon]]'' `;
+console.log(wtf(str).sentences(0).links());
+// console.log(wtf(str).images());
