@@ -6,7 +6,6 @@ function escapeRegExp(str) {
 //sometimes text-replacements can be ambiguous - words used multiple times..
 const smartReplace = function(all, text, result) {
   if (!text || !all) {
-    // console.log(text);
     return all;
   }
 
