@@ -1,17 +1,17 @@
 const Image = require('./Image');
 const i18n = require('../data/i18n');
-const file_reg = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
+let fileNames = `(?:${i18n.images.concat(i18n.files).join('|')})`;
+const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'i');
 
 //images are usually [[image:my_pic.jpg]]
 const parse_image = function(img) {
-  let m = img.match(file_reg) || [''];
-  if (m === null) {
+  let m = img.match(file_reg);
+  if (m === null || !m[1]) {
     return null;
   }
-  let file = m[0].replace(/[\|\]]$/, '');
-  let title = file.replace(/^(image|file?)\:/i, '');
+  let file = m[1] || '';
   //titlecase it
-  title = title.charAt(0).toUpperCase() + title.substring(1);
+  let title = file.charAt(0).toUpperCase() + file.substring(1);
   //spaces to underscores
   title = title.replace(/ /g, '_');
   if (title) {
