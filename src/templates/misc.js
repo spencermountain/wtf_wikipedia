@@ -2,6 +2,7 @@ const keyValue = require('./parsers/keyValue');
 const getInside = require('./parsers/inside');
 const pipeSplit = require('./parsers/pipeSplit');
 const pipeList = require('./parsers/pipeList');
+const Image = require('../image/Image');
 
 const sisterProjects = {
   wikt: 'wiktionary',
@@ -143,6 +144,17 @@ const parsers = {
   'good article': () => {
     return {
       template: 'Good article'
+    };
+  },
+  //amazingly, this one does not obey any known patterns
+  //https://en.wikipedia.org/wiki/Template:Gallery
+  'gallery': (tmpl) => {
+    let obj = pipeList(tmpl);
+    let images = obj.data.filter(line => /^ *File ?:/.test(line));
+    images = images.map((file) => new Image(file).json());
+    return {
+      template: 'gallery',
+      images: images
     };
   }
 };

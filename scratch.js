@@ -3,21 +3,16 @@ const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-// (async () => {
-//   const document = await wtf.fetch('Tiger', 'de');
-//
-//   document.sections().forEach(section => console.log(section.title() || 'Intro'));
-// })();
+// let p = wtf.fetch('Kurmi', 'en');
+// p.then((doc) => {
+//   console.log(doc.images());
+// }).catch(console.log);
 
-let str = `hello up here
-=== one ===
-hello
-<math>foo</math>
-==two==
-lkjsdf
-==three==
-<references>
-</references>
-`;
 
-wtf(str).sections().forEach(section => console.log(section.title() || 'Intro'));
+let str = `{{Gallery|width=200 |lines=4
+|File:India1909PrevailingRaces.JPG|The map of the prevailing "races" of India (now discredited) based on the 1901 Census of British India. The Kurmi are shown both in the [[United Provinces of Agra and Oudh|United Provinces]] (UP) and the [[Central Provinces]].
+|File:Kurmi sowing.jpg|An "ethnographic" photograph from 1916 showing Kurmi farmers, both men and women, sowing a field.
+|File:Kurmi threshing.jpg|Another ethnographic print from 1916 showing a Kurmi family employing its beasts of burden to thresh wheat.
+|File:Kurmi winnowing.jpg|A third print from the same collection showing the Kurmi family winnowing.
+}} `;
+console.log(wtf(str).templates());

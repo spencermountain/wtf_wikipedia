@@ -5,6 +5,7 @@ const Image = require('../image/Image');
 
 //okay, <gallery> is a xml-tag, with newline-seperated data, somehow pivoted by '|'...
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
+// - not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
 const parseGallery = function(wiki, section) {
   wiki = wiki.replace(/<gallery([^>]+?)>([\s\S]+?)<\/gallery>/g, (_, attrs, inside) => {
     let images = inside.split(/\n/g);
