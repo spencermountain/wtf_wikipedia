@@ -4,11 +4,26 @@ const wtf = require('./src/index');
 // const wtf = require('./build');
 
 // (async () => {
-//   const document = await wtf.fetch('Formel 1', 'de');
-//
-//   console.log(document.section('Länderbezug').sentences(4).plaintext());
+// const doc = await wtf.fetch('Berlin', 'de');
+// console.log(doc.sentences(0).plaintext());
 // })();
 
-let str = ` ''[[archon]]'' `;
-console.log(wtf(str).sentences(0).links());
+let str = ` {| class="oopsie"
+| first row
+|-
+| Secod row
+{|
+|-
+| embed 1
+|-
+| embed 2
+|}
+|-
+| Berlin!
+|-
+|}
+
+Actual first sentence  is here`;
+let text = wtf(str).sentences(0).text();
+console.log(text);
 // console.log(wtf(str).images());

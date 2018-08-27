@@ -241,3 +241,27 @@ test('embedded-table', t => {
   t.equal(tables[1].links().length, 1, 'found another link');
   t.end();
 });
+
+test('embedded-table-2', t => {
+  let str = ` {| class="oopsie"
+  | first row
+  |-
+  | Secod row
+  {|
+  |-
+  | embed 1
+  |-
+  | embed 2
+  |}
+  |-
+  | Berlin!
+  |-
+  |}
+
+  Actual first sentence is here`;
+  var doc = wtf(str);
+  t.equal(doc.tables().length, 2, 'found both tables');
+  var text = doc.sentences(0).text();
+  t.equal('Actual first sentence is here', text, 'got proper first sentence');
+  t.end();
+});
