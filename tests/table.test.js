@@ -243,7 +243,7 @@ test('embedded-table', t => {
 });
 
 test('embedded-table-2', t => {
-  let str = ` {| class="oopsie"
+  var str = ` {| class="oopsie"
   | first row
   |-
   | Secod row
@@ -263,5 +263,26 @@ test('embedded-table-2', t => {
   t.equal(doc.tables().length, 2, 'found both tables');
   var text = doc.sentences(0).text();
   t.equal('Actual first sentence is here', text, 'got proper first sentence');
+  t.end();
+});
+
+
+
+test('sortable table', t => {
+  var str = `{|class="wikitable sortable"
+  !Name and Surname!!Height
+  |-
+  |data-sort-value="Smith, John"|John Smith||1.85
+  |-
+  |data-sort-value="Ray, Ian"|Ian Ray||1.89
+  |-
+  |data-sort-value="Bianchi, Zachary"|Zachary Bianchi||1.72
+  |-
+  !Average:||1.82
+  |}`;
+  let doc = wtf(str);
+  var row=doc.tables(0).data[0]
+  t.equal(row.Height.text(),'1.85','got height')
+  t.equal(row['Name and Surname'].text(),'John Smith','got name')
   t.end();
 });
