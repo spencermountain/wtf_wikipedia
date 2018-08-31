@@ -11,7 +11,7 @@ const encodeTitle = function(file) {
   //titlecase it
   title = title.charAt(0).toUpperCase() + title.substring(1);
   //spaces to underscores
-  title = title.replace(/ /g, '_');
+  title = title.trim().replace(/ /g, '_');
   return title;
 };
 
