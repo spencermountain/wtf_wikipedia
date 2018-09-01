@@ -28,6 +28,28 @@ The paintings have the freedom and energy of  sketches, using warm and cool ligh
   t.end();
 });
 
+test('gallery-tag-2', t => {
+
+  var doc=wtf(`hello
+
+  <gallery>
+   Culex-female.jpg|Stechmücke
+   Black Fly.png|Kriebelmücke
+   Culicoides-imicola-bloodfeeding.jpg|Gnitzen
+   Tipula oleracea female (Linnaeus 1758).jpg|Schnake
+   Chironomus plumosus01.jpg|Zuckmücke
+   Psychodidae.jpg|Schmetterlingsmücke
+   Fly February 2009-2.jpg|Haarmücke
+   Sciara_analis_de.jpg|Trauermücke
+  </gallery>
+
+  foo`)
+  var templ = doc.templates(0);
+  t.deepEqual(templ.template, 'gallery', 'document-has-template');
+  t.deepEqual(templ.images.length, 8, '8 images');
+  t.deepEqual(templ.images[0].file, 'Culex-female.jpg', 'got filename');
+  t.end();
+});
 
 test('gallery-template', t => {
   var str = `{{Gallery|width=200 |lines=4
