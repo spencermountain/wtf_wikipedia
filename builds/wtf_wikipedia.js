@@ -1,4 +1,4 @@
-/* wtf_wikipedia v5.0.1
+/* wtf_wikipedia v5.1.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2258,7 +2258,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -2325,7 +2325,7 @@ module.exports = ['jr', 'mr', 'mrs', 'ms', 'dr', 'prof', 'sr', 'sen', 'corp', 'c
 // wikipedia special terms lifted and augmented from parsoid parser april 2015
 // (not even close to being complete)
 var i18n = {
-  files: ['файл', 'fitxer', 'soubor', 'datei', 'file', 'archivo', 'پرونده', 'tiedosto', 'mynd', "su'wret", 'fichier', 'bestand', 'датотека', 'dosya', 'fil'],
+  files: ['файл', 'fitxer', 'soubor', 'datei', 'file', 'archivo', 'پرونده', 'tiedosto', 'mynd', 'su\'wret', 'fichier', 'bestand', 'датотека', 'dosya', 'fil'],
   images: ['image'],
   templates: ['шаблён', 'plantilla', 'šablona', 'vorlage', 'template', 'الگو', 'malline', 'snið', 'shablon', 'modèle', 'sjabloon', 'шаблон', 'şablon'],
   categories: ['катэгорыя', 'categoria', 'kategorie', 'category', 'categoría', 'رده', 'luokka', 'flokkur', 'kategoriya', 'catégorie', 'categorie', 'категорија', 'kategori', 'kategoria', 'تصنيف'],
@@ -3577,6 +3577,7 @@ var methods = {
     //look for 'gallery' templates, too
     this.templates().forEach(function (obj) {
       if (obj.template === 'gallery') {
+        obj.images = obj.images || [];
         obj.images.forEach(function (img) {
           return arr.push(img);
         });
@@ -3849,10 +3850,19 @@ module.exports = preProcess;
 
 //okay, i know you're not supposed to regex html, but...
 //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
+
+//these are things we throw-away
+//these will mess-up if they're nested, but they're not usually.
+var ignore = ['table', 'code', 'score', 'data', 'categorytree', 'charinsert', 'hiero', 'imagemap', 'inputbox', 'math', 'nowiki', 'poem', 'references', 'source', 'syntaxhighlight', 'timeline'];
+var openTag = '< ?(' + ignore.join('|') + ') ?[^>]{0,200}>';
+var closeTag = '< ?/ ?(' + ignore.join('|') + ') ?>';
+var anyChar = '\\s\\S'; //including newline
+var noThanks = new RegExp(openTag + '[' + anyChar + ']+?' + closeTag, 'ig');
+
 var kill_xml = function kill_xml(wiki) {
-  //(parse <ref> tags in Section class) - luckily, refs can't be recursive.
-  //other types of xml that we want to trash completely
-  wiki = wiki.replace(/< ?(table|code|score|data|categorytree|charinsert|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?[^>]{0,200}?>[\s\S]*< ?\/ ?(table|code|score|data|categorytree|charinsert|hiero|imagemap|inputbox|math|nowiki|poem|references|source|syntaxhighlight|timeline) ?>/gi, ' '); // <table name=""><tr>hi</tr></table>
+  //(<ref> tags are parsed in Section class) - luckily, refs can't be recursive.
+  //types of html/xml that we want to trash completely.
+  wiki = wiki.replace(noThanks, ' ');
   //some xml-like fragments we can also kill
   wiki = wiki.replace(/ ?< ?(span|div|table|data) [a-zA-Z0-9=" ]{2,100}\/? ?> ?/g, ' '); //<ref name="asd">
   //only kill ref tags if they are selfclosing
@@ -3864,13 +3874,6 @@ var kill_xml = function kill_xml(wiki) {
   wiki = wiki.replace(/ ?< ?br ?\/> ?/g, '\n'); //<br />
   return wiki.trim();
 };
-// console.log(kill_xml("hello <ref>nono!</ref> world1. hello <ref name='hullo'>nono!</ref> world2. hello <ref name='hullo'/>world3.  hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4. hello<ref name=''/> world5 <ref name=''>nono</ref>, man.}}"))
-// console.log(kill_xml("hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4"))
-// console.log(kill_xml('hello<ref name="theroyal"/> world <ref>nono</ref>, man}}'))
-// console.log(kill_xml("hello<ref name=\"theroyal\"/> world5, <ref name=\"\">nono</ref> man"));
-// console.log(kill_xml("hello <asd f> world </h2>"))
-// console.log(kill_xml("North America,<ref name=\"fhwa\"> and one of"))
-// console.log(kill_xml("North America,<br /> and one of"))
 module.exports = kill_xml;
 
 },{}],14:[function(_dereq_,module,exports){
@@ -4299,11 +4302,11 @@ module.exports = Image;
 
 var i18n = _dereq_('../data/i18n');
 var parseImage = _dereq_('./parse-image');
-var fileRegex = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
+var fileRegex = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i');
 
 var parseImages = function parseImages(matches, r, wiki) {
   matches.forEach(function (s) {
-    if (s.match(fileRegex)) {
+    if (fileRegex.test(s) === true) {
       r.images = r.images || [];
       var img = parseImage(s);
       if (img) {
@@ -4321,18 +4324,18 @@ module.exports = parseImages;
 
 var Image = _dereq_('./Image');
 var i18n = _dereq_('../data/i18n');
-var file_reg = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):.*?[\\|\\]]', 'i');
+var fileNames = '(' + i18n.images.concat(i18n.files).join('|') + ')';
+var file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'i');
 
 //images are usually [[image:my_pic.jpg]]
 var parse_image = function parse_image(img) {
-  var m = img.match(file_reg) || [''];
-  if (m === null) {
+  var m = img.match(file_reg);
+  if (m === null || !m[2]) {
     return null;
   }
-  var file = m[0].replace(/[\|\]]$/, '');
-  var title = file.replace(/^(image|file?)\:/i, '');
+  var file = m[1] + ':' + (m[2] || '');
   //titlecase it
-  title = title.charAt(0).toUpperCase() + title.substring(1);
+  var title = file.charAt(0).toUpperCase() + file.substring(1);
   //spaces to underscores
   title = title.replace(/ /g, '_');
   if (title) {
@@ -4743,7 +4746,6 @@ function escapeRegExp(str) {
 //sometimes text-replacements can be ambiguous - words used multiple times..
 var smartReplace = function smartReplace(all, text, result) {
   if (!text || !all) {
-    // console.log(text);
     return all;
   }
 
@@ -5259,7 +5261,7 @@ module.exports = interwiki;
 var list_reg = /^[#\*:;\|]+/;
 var bullet_reg = /^\*+[^:,\|]{4}/;
 var number_reg = /^ ?\#[^:,\|]{4}/;
-var has_word = /[a-z_0-9]/i;
+var has_word = /[a-z_0-9\]\}]/i;
 var parseLine = _dereq_('../sentence/').parseLine;
 var Sentence = _dereq_('../sentence/Sentence');
 
@@ -5654,16 +5656,17 @@ var Image = _dereq_('../image/Image');
 
 //okay, <gallery> is a xml-tag, with newline-seperated data, somehow pivoted by '|'...
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
+// - not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
 var parseGallery = function parseGallery(wiki, section) {
-  wiki = wiki.replace(/<gallery([^>]+?)>([\s\S]+?)<\/gallery>/g, function (_, attrs, inside) {
+  wiki = wiki.replace(/<gallery([^>]*?)>([\s\S]+?)<\/gallery>/g, function (_, attrs, inside) {
     var images = inside.split(/\n/g);
     images = images.filter(function (str) {
-      return str;
+      return str && str.trim() !== '';
     });
     //parse the line, which has an image and sometimes a caption
     images = images.map(function (str) {
       var arr = str.split(/\|/);
-      var img = new Image(arr[0]).json();
+      var img = new Image(arr[0].trim()).json();
       var caption = arr.slice(1).join('|');
       if (caption !== '') {
         img.caption = parseLine(caption);
@@ -5835,7 +5838,7 @@ var resolve_links = function resolve_links(line) {
   // [[Common links]]
   line = line.replace(/\[\[:?([^|]{1,80}?)\]\](\w{0,5})/g, '$1$2');
   // [[File:with|Size]]
-  line = line.replace(/\[\[File:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$1');
+  line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$1');
   // [[Replaced|Links]]
   line = line.replace(/\[\[:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$2$3');
   // External links
@@ -5943,7 +5946,7 @@ var internal_links = function internal_links(links, str) {
       obj.text = txt;
     }
     //finally, support [[link]]'s apostrophe
-    if (apostrophe) {
+    if (apostrophe === '\'s') {
       obj.text = obj.text || obj.page;
       obj.text += apostrophe;
     }
@@ -6402,13 +6405,15 @@ var findTables = function findTables(section, wiki) {
   var tables = [];
   list.forEach(function (str) {
     if (str) {
-      wiki = wiki.replace(str, '');
+      //also reremove a newline at the end of the table (awkward)
+      wiki = wiki.replace(str + '\n', '');
       var data = parseTable(str);
       if (data && data.length > 0) {
         tables.push(new Table(data));
       }
     }
   });
+  // console.log(wiki);
   if (tables.length > 0) {
     section.tables = tables;
   }
@@ -7529,9 +7534,10 @@ var formatting = _dereq_('./formatting');
 var pronounce = _dereq_('./pronounce');
 var external = _dereq_('./external');
 var ignore = _dereq_('./ignore');
+var wiktionary = _dereq_('./wiktionary');
 
 //put them all together
-var inlineParsers = Object.assign({}, dates, inline, currencies, links, formatting);
+var inlineParsers = Object.assign({}, dates, inline, currencies, links, formatting, wiktionary);
 var bigParsers = Object.assign({}, geo, pronounce, misc, external);
 
 //this gets all the {{template}} strings and decides how to parse them
@@ -7545,7 +7551,7 @@ var doTemplate = function doTemplate(tmpl, wiki, r, options) {
   }
 
   //string-replacement templates
-  if (inlineParsers.hasOwnProperty(name) === true && inlineParsers[name]) {
+  if (inlineParsers.hasOwnProperty(name) === true) {
     var str = inlineParsers[name](tmpl, r);
     wiki = wiki.replace(tmpl, str);
     return wiki;
@@ -7604,7 +7610,7 @@ var allTemplates = function allTemplates(r, wiki, options) {
 
 module.exports = allTemplates;
 
-},{"./currencies":65,"./dates":68,"./external":71,"./formatting":72,"./generic":73,"./geo":77,"./ignore":78,"./inline":80,"./links":81,"./misc":82,"./parsers/_getName":83,"./parsers/_getTemplates":84,"./pronounce":92}],80:[function(_dereq_,module,exports){
+},{"./currencies":65,"./dates":68,"./external":71,"./formatting":72,"./generic":73,"./geo":77,"./ignore":78,"./inline":80,"./links":81,"./misc":82,"./parsers/_getName":83,"./parsers/_getTemplates":84,"./pronounce":92,"./wiktionary":93}],80:[function(_dereq_,module,exports){
 'use strict';
 
 var keyValue = _dereq_('./parsers/keyValue');
@@ -7796,8 +7802,15 @@ var templates = {
   link: function link(tmpl) {
     var order = ['lang', 'page'];
     return pipeSplit(tmpl, order).page || '';
+  },
+  'la-verb-form': function laVerbForm(tmpl) {
+    var order = ['word'];
+    return pipeSplit(tmpl, order).word || '';
+  },
+  'la-ipa': function laIpa(tmpl) {
+    var order = ['word'];
+    return pipeSplit(tmpl, order).word || '';
   }
-
 };
 
 //these are insane
@@ -7828,6 +7841,7 @@ var keyValue = _dereq_('./parsers/keyValue');
 var getInside = _dereq_('./parsers/inside');
 var pipeSplit = _dereq_('./parsers/pipeSplit');
 var pipeList = _dereq_('./parsers/pipeList');
+var Image = _dereq_('../image/Image');
 
 var sisterProjects = {
   wikt: 'wiktionary',
@@ -7969,6 +7983,22 @@ var parsers = {
     return {
       template: 'Good article'
     };
+  },
+  //amazingly, this one does not obey any known patterns
+  //https://en.wikipedia.org/wiki/Template:Gallery
+  'gallery': function gallery(tmpl) {
+    var obj = pipeList(tmpl);
+    var images = obj.data.filter(function (line) {
+      return (/^ *File ?:/.test(line)
+      );
+    });
+    images = images.map(function (file) {
+      return new Image(file).json();
+    });
+    return {
+      template: 'gallery',
+      images: images
+    };
   }
 };
 //aliases
@@ -7981,7 +8011,7 @@ parsers['sisterlinks'] = parsers['sister project links'];
 
 module.exports = parsers;
 
-},{"./parsers/inside":88,"./parsers/keyValue":89,"./parsers/pipeList":90,"./parsers/pipeSplit":91}],83:[function(_dereq_,module,exports){
+},{"../image/Image":20,"./parsers/inside":88,"./parsers/keyValue":89,"./parsers/pipeList":90,"./parsers/pipeSplit":91}],83:[function(_dereq_,module,exports){
 'use strict';
 
 //get the name of the template
@@ -8348,5 +8378,62 @@ i18n.forEach(function (k) {
 });
 module.exports = ipaTemplates;
 
-},{"./parsers/_strip":86}]},{},[26])(26)
+},{"./parsers/_strip":86}],93:[function(_dereq_,module,exports){
+'use strict';
+
+var keyValue = _dereq_('./parsers/keyValue');
+var pipeSplit = _dereq_('./parsers/pipeSplit');
+var pipeList = _dereq_('./parsers/pipeList');
+// const strip = require('./parsers/_strip');
+
+//wiktionary... who knows. we should atleast try.
+var templates = {
+
+  'inflection': function inflection(tmpl, r) {
+    var obj = pipeList(tmpl);
+    r.templates.push({
+      template: obj.template,
+      lemma: obj.data[0],
+      word: obj.data[1],
+      tags: obj.data.slice(2)
+    });
+    return obj.data[0] || obj.data[1] || '';
+  },
+
+  //latin verbs
+  'la-verb-form': function laVerbForm(tmpl, r) {
+    var obj = pipeSplit(tmpl, ['word']);
+    r.templates.push(obj);
+    return obj.word || '';
+  },
+  'feminine plural': function femininePlural(tmpl, r) {
+    var obj = pipeSplit(tmpl, ['word']);
+    r.templates.push(obj);
+    return obj.word || '';
+  },
+  'male plural': function malePlural(tmpl, r) {
+    var obj = pipeSplit(tmpl, ['word']);
+    r.templates.push(obj);
+    return obj.word || '';
+  },
+  'rhymes': function rhymes(tmpl, r) {
+    var obj = pipeSplit(tmpl, ['word']);
+    r.templates.push(obj);
+    return 'Rhymes: -' + (obj.word || '');
+  }
+};
+
+//https://en.wiktionary.org/wiki/Category:Form-of_templates
+var conjugations = ['abbreviation', 'abessive plural', 'abessive singular', 'accusative plural', 'accusative singular', 'accusative', 'acronym', 'active participle', 'agent noun', 'alternative case form', 'alternative form', 'alternative plural', 'alternative reconstruction', 'alternative spelling', 'alternative typography', 'aphetic form', 'apocopic form', 'archaic form', 'archaic spelling', 'aspirate mutation', 'associative plural', 'associative singular', 'attributive form', 'attributive form', 'augmentative', 'benefactive plural', 'benefactive singular', 'causative plural', 'causative singular', 'causative', 'clipping', 'combining form', 'comitative plural', 'comitative singular', 'comparative plural', 'comparative singular', 'comparative', 'contraction', 'dated form', 'dated spelling', 'dative plural definite', 'dative plural indefinite', 'dative plural', 'dative singular', 'dative', 'definite', 'deliberate misspelling', 'diminutive', 'distributive plural', 'distributive singular', 'dual', 'early form', 'eclipsis', 'elative', 'ellipsis', 'equative', 'euphemistic form', 'euphemistic spelling', 'exclusive plural', 'exclusive singular', 'eye dialect', 'feminine noun', 'feminine plural past participle', 'feminine plural', 'feminine singular past participle', 'feminine singular', 'feminine', 'form', 'former name', 'frequentative', 'future participle', 'genitive plural definite', 'genitive plural indefinite', 'genitive plural', 'genitive singular definite', 'genitive singular indefinite', 'genitive singular', 'genitive', 'gerund', 'h-prothesis', 'hard mutation', 'harmonic variant', 'imperative', 'imperfective form', 'inflected form', 'inflection', 'informal form', 'informal spelling', 'initialism', 'ja-form', 'jyutping reading', 'late form', 'lenition', 'masculine plural past participle', 'masculine plural', 'medieval spelling', 'misconstruction', 'misromanization', 'misspelling', 'mixed mutation', 'monotonic form', 'mutation', 'nasal mutation', 'negative', 'neuter plural past participle', 'neuter plural', 'neuter singular past participle', 'neuter singular', 'nominalization', 'nominative plural', 'nominative singular', 'nonstandard form', 'nonstandard spelling', 'oblique plural', 'oblique singular', 'obsolete form', 'obsolete spelling', 'obsolete typography', 'official form', 'participle', 'passive participle', 'passive', 'past active participle', 'past participle', 'past passive participle', 'past tense', 'perfective form', 'plural definite', 'plural indefinite', 'plural', 'polytonic form', 'present active participle', 'present participle', 'present tense', 'pronunciation spelling', 'rare form', 'rare spelling', 'reflexive', 'second-person singular past', 'short for', 'singular definite', 'singular', 'singulative', 'soft mutation', 'spelling', 'standard form', 'standard spelling', 'substantivisation', 'superlative', 'superseded spelling', 'supine', 'syncopic form', 'synonym', 'terminative plural', 'terminative singular', 'uncommon form', 'uncommon spelling', 'verbal noun', 'vocative plural', 'vocative singular'];
+conjugations.forEach(function (name) {
+  templates[name + ' of'] = function (tmpl, r) {
+    var obj = pipeSplit(tmpl, ['word']);
+    obj.type = 'form-of';
+    r.templates.push(obj);
+    return obj.word || '';
+  };
+});
+module.exports = templates;
+
+},{"./parsers/keyValue":89,"./parsers/pipeList":90,"./parsers/pipeSplit":91}]},{},[26])(26)
 });
