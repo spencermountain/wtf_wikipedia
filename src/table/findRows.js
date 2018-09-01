@@ -36,9 +36,7 @@ const findRows = function(lines) {
       line.forEach((l) => {
         l = l.replace(/^\| */, '');
         l = l.trim();
-        if (l !== '') {
-          row.push(l);
-        }
+        row.push(l);
       });
     }
   }
