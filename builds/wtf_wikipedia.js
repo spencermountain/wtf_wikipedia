@@ -1,4 +1,4 @@
-/* wtf_wikipedia v5.1.0
+/* wtf_wikipedia v5.1.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2258,7 +2258,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -6355,9 +6355,7 @@ var findRows = function findRows(lines) {
       line.forEach(function (l) {
         l = l.replace(/^\| */, '');
         l = l.trim();
-        if (l !== '') {
-          row.push(l);
-        }
+        row.push(l);
       });
     }
   }
@@ -8381,7 +8379,6 @@ module.exports = ipaTemplates;
 },{"./parsers/_strip":86}],93:[function(_dereq_,module,exports){
 'use strict';
 
-var keyValue = _dereq_('./parsers/keyValue');
 var pipeSplit = _dereq_('./parsers/pipeSplit');
 var pipeList = _dereq_('./parsers/pipeList');
 // const strip = require('./parsers/_strip');
@@ -8435,5 +8432,5 @@ conjugations.forEach(function (name) {
 });
 module.exports = templates;
 
-},{"./parsers/keyValue":89,"./parsers/pipeList":90,"./parsers/pipeSplit":91}]},{},[26])(26)
+},{"./parsers/pipeList":90,"./parsers/pipeSplit":91}]},{},[26])(26)
 });

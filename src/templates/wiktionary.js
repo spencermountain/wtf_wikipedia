@@ -1,4 +1,3 @@
-const keyValue = require('./parsers/keyValue');
 const pipeSplit = require('./parsers/pipeSplit');
 const pipeList = require('./parsers/pipeList');
 // const strip = require('./parsers/_strip');
