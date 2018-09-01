@@ -1,7 +1,7 @@
 const list_reg = /^[#\*:;\|]+/;
 const bullet_reg = /^\*+[^:,\|]{4}/;
 const number_reg = /^ ?\#[^:,\|]{4}/;
-const has_word = /[a-z_0-9]/i;
+const has_word = /[a-z_0-9\]\}]/i;
 const parseLine = require('../sentence/').parseLine;
 const Sentence = require('../sentence/Sentence');
 

@@ -101,6 +101,7 @@ const methods = {
     //look for 'gallery' templates, too
     this.templates().forEach((obj) => {
       if (obj.template === 'gallery') {
+        obj.images = obj.images || [];
         obj.images.forEach((img) => arr.push(img));
       }
     });

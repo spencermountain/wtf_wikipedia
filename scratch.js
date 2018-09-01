@@ -3,14 +3,25 @@ const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-//images in tables...
+// (async () => {
+// const doc = await wtf.fetch('Berlin', 'de');
+// console.log(doc.sentences(0).plaintext());
+// })();
 
-// wtf.fetch('London', 'en', function(err, doc) {
-//   console.log(doc.lists());
-// });
+let str = ` {| class="oopsie"
+| first row
+|-
+| Secod row
+{|
+|-
+| embed 1
+|-
+| embed 2
+|}
+|-
+| Berlin!
+|-
+|}
 
-
-// console.log(readFile('washington-nationals').tables(0));
-
-var str = 'hello';
-console.log(wtf(str).links());
+Actual first sentence  is here`;
+console.log(wtf(str).sentences(0).text());

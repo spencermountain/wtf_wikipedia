@@ -5,14 +5,15 @@ const Image = require('../image/Image');
 
 //okay, <gallery> is a xml-tag, with newline-seperated data, somehow pivoted by '|'...
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
+// - not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
 const parseGallery = function(wiki, section) {
-  wiki = wiki.replace(/<gallery([^>]+?)>([\s\S]+?)<\/gallery>/g, (_, attrs, inside) => {
+  wiki = wiki.replace(/<gallery([^>]*?)>([\s\S]+?)<\/gallery>/g, (_, attrs, inside) => {
     let images = inside.split(/\n/g);
-    images = images.filter(str => str);
+    images = images.filter(str => str && str.trim()!=='');
     //parse the line, which has an image and sometimes a caption
     images = images.map((str) => {
       let arr = str.split(/\|/);
-      let img = new Image(arr[0]).json();
+      let img = new Image(arr[0].trim()).json();
       let caption = arr.slice(1).join('|');
       if (caption !== '') {
         img.caption = parseLine(caption);

@@ -82,3 +82,7 @@
 * improved table-parser - generate name `col1` instead of `col-0`
 * support `options.verbose_template` for debugging
 * support recursive tables
+### 5.1.0
+* improved support for gallery tag
+* more support for wiktionary grammar templates
+* tweak some regexes

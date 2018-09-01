@@ -14,7 +14,14 @@ let templates = {
     let order = ['lang', 'page'];
     return pipeSplit(tmpl, order).page || '';
   },
-
+  'la-verb-form': (tmpl) => {
+    let order = ['word'];
+    return pipeSplit(tmpl, order).word || '';
+  },
+  'la-ipa': (tmpl) => {
+    let order = ['word'];
+    return pipeSplit(tmpl, order).word || '';
+  },
 };
 
 //these are insane

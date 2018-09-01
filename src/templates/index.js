@@ -12,6 +12,7 @@ const formatting = require('./formatting');
 const pronounce = require('./pronounce');
 const external = require('./external');
 const ignore = require('./ignore');
+const wiktionary = require('./wiktionary');
 
 //put them all together
 const inlineParsers = Object.assign(
@@ -21,6 +22,7 @@ const inlineParsers = Object.assign(
   currencies,
   links,
   formatting,
+  wiktionary
 );
 const bigParsers = Object.assign({}, geo, pronounce, misc, external);
 
@@ -35,7 +37,7 @@ const doTemplate = function(tmpl, wiki, r, options) {
   }
 
   //string-replacement templates
-  if (inlineParsers.hasOwnProperty(name) === true && inlineParsers[name]) {
+  if (inlineParsers.hasOwnProperty(name) === true) {
     let str = inlineParsers[name](tmpl, r);
     wiki = wiki.replace(tmpl, str);
     return wiki;
