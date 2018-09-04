@@ -31,7 +31,7 @@ const toJSON = function(s, options) {
   }
   //more stuff
   if (options.tables && s.tables().length > 0) {
-    data.tables = s.tables();
+    data.tables = s.tables().map(t => t.json());
   }
   if (options.templates && s.templates().length > 0) {
     data.templates = s.templates();

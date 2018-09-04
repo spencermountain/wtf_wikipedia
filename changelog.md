@@ -86,3 +86,5 @@
 * improved support for gallery tag
 * more support for wiktionary grammar templates
 * tweak some regexes
+### 5.2.0
+* make `.json()` results return proper json for tables
