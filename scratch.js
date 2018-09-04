@@ -8,5 +8,9 @@ const wtf = require('./src/index');
 //   console.log(doc.plaintext());
 // })();
 
-let str = `'''Saint Clare's Hospital''' Catholic Health Init`;
-console.log(wtf(str).plaintext());
+let str = wtf(`first sentence.
+* akuter Tinnitus (bis drei Monate)
+* chronischer Tinnitus (über drei Monate)
+last sentence. `).sentences();
+
+console.log(str);
