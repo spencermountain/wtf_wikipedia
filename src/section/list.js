@@ -55,7 +55,7 @@ const parseList = function(r, wiki) {
       let sub = grabList(lines, i);
       if (sub.length > 0) {
         lists.push(sub);
-        i += sub.length;
+        i += sub.length - 1;
       }
     } else {
       theRest.push(lines[i]);

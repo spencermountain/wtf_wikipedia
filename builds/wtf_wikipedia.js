@@ -1,4 +1,4 @@
-/* wtf_wikipedia v5.1.1
+/* wtf_wikipedia v5.1.2
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2258,7 +2258,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "5.1.1",
+  "version": "5.1.2",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -4195,7 +4195,7 @@ var encodeTitle = function encodeTitle(file) {
   //titlecase it
   title = title.charAt(0).toUpperCase() + title.substring(1);
   //spaces to underscores
-  title = title.replace(/ /g, '_');
+  title = title.trim().replace(/ /g, '_');
   return title;
 };
 
@@ -5321,7 +5321,7 @@ var parseList = function parseList(r, wiki) {
       var sub = grabList(lines, i);
       if (sub.length > 0) {
         lists.push(sub);
-        i += sub.length;
+        i += sub.length - 1;
       }
     } else {
       theRest.push(lines[i]);
@@ -6919,7 +6919,6 @@ templates.localday = templates.currentday;
 templates.localdayname = templates.currentdayname;
 templates.localmonth = templates.currentmonth;
 templates.localyear = templates.currentyear;
-templates.local = templates.current;
 templates.currentmonthname = templates.currentmonth;
 templates.currentmonthabbrev = templates.currentmonth;
 module.exports = templates;
