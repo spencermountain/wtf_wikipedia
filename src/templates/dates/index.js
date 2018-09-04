@@ -129,7 +129,6 @@ templates.localday = templates.currentday;
 templates.localdayname = templates.currentdayname;
 templates.localmonth = templates.currentmonth;
 templates.localyear = templates.currentyear;
-templates.local = templates.current;
 templates.currentmonthname = templates.currentmonth;
 templates.currentmonthabbrev = templates.currentmonth;
 module.exports = templates;
