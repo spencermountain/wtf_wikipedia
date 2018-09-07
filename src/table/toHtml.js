@@ -2,12 +2,14 @@
 const toHtml = function(table, options) {
   let html = '<table>\n';
   //make header
-  html += '  <thead>\n';
+  html += '  <thead>\n;
+  html += '  <tr>\n';
   Object.keys(table[0]).forEach((k) => {
     if (/^col[0-9]/.test(k) !== true) {
       html += '    <td>' + k + '</td>\n';
     }
   });
+  html += '  </tr>\n';
   html += '  </thead>\n';
   html += '  <tbody>\n';
   //make rows
