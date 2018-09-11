@@ -5,7 +5,7 @@ const toHtml = (list) => {
   list.forEach((o) => {
     html += '  <li>' + o.text() + '</li>\n';
   });
-  html += '<ul>\n';
+  html += '</ul>\n';
   return html;
 };
 
