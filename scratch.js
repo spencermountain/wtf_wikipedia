@@ -3,15 +3,17 @@ const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-// (async () => {
-//   const doc = await wtf.fetch(`List of submarine sandwich restaurants`, 'en');
-//   console.log(doc.images());
-// // console.log(doc.json({
-// //   images: true
-// // }));
-// })();
+(async () => {
+  const doc = await wtf.fetch(`Abraham Lincoln`, 'en');
+  // doc.html();
+  console.log(doc.html().slice(0, 9900));
+// console.log(doc.infoboxes(0).json());
+// console.log(doc.json({
+//   images: true
+// }));
+})();
 
 
 
-let str = `hello [[List of highest funded crowdfunding projects|highest funded crowdfunding projects]] world`;
-console.log(wtf(str).links());
+// let str = `hello [[List of highest funded crowdfunding projects|highest funded crowdfunding projects]] world`;
+// console.log(wtf(str).links());

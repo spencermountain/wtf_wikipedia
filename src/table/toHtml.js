@@ -1,6 +1,6 @@
 //turn a json table into a html table
 const toHtml = function(table, options) {
-  let html = '<table>\n';
+  let html = '<table class="table">\n';
   //make header
   html += '  <thead>\n';
   html += '  <tr>\n';

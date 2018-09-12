@@ -1,5 +1,4 @@
 
-
 const doSection = (section, options) => {
   let html = '';
   //make the header

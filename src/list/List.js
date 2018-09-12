@@ -1,7 +1,7 @@
 const aliasList = require('../lib/aliases');
 
 const toHtml = (list) => {
-  let html = '<ul>\n';
+  let html = '<ul class="list">\n';
   list.forEach((o) => {
     html += '  <li>' + o.text() + '</li>\n';
   });
