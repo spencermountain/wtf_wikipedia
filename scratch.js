@@ -10,10 +10,7 @@ const wtf = require('./src/index');
 
 
 
-let str = `{{Infobox person
-| name        = David Koresh
-| image       = David koresh.jpg{{!}}border
-| image_size  =
-| caption     = Koresh in 1987
-}}`;
-console.log(wtf(str).images());
+let str = `#REDIRECT [[Toronto_Blue_Jays#Stadium|Tranno]]`;
+let doc = wtf(str);
+console.log(doc.json());
+// console.log(doc.isRedirect());

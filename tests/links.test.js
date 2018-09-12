@@ -29,3 +29,23 @@ after now
   t.ok(links.find(l => l.page), 'three', 'link-list');
   t.end();
 });
+
+test('anchor-links', t => {
+  var str = `[[Doug Ford#Personal Life]]`;
+  var link = wtf(str).links(0);
+  t.equal(link.page, 'Doug Ford', 'page1');
+  t.equal(link.text, undefined, 'text1');
+  t.equal(link.anchor, 'Personal Life', 'anchor1');
+
+  str = `[[Toronto_Blue_Jays#Problems|Tranno J birds]]`;
+  var doc = wtf(str);
+  link = doc.links(0);
+  t.equal(link.page, 'Toronto_Blue_Jays', 'page2');
+  t.equal(link.text, 'Tranno J birds', 'text2');
+  t.equal(link.anchor, 'Problems', 'anchor2');
+
+  t.equal(doc.sentences(0).html(), '<span class="sentence"><a class="link" href="./Toronto_Blue_Jays#Problems">Tranno J birds</a></span>', 'html-anchor');
+  t.equal(doc.sentences(0).markdown(), '[Tranno J birds](./Toronto_Blue_Jays#Problems)', 'markdown-anchor');
+
+  t.end();
+});

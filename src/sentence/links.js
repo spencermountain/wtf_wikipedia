@@ -36,15 +36,21 @@ const internal_links = function(links, str) {
     if (link.match(ignore_links)) {
       return s;
     }
-    //kill off just anchor links [[#history]]
+    //kill off just these just-anchor links [[#history]]
     if (link.match(/^#/i)) {
       return s;
     }
     //remove anchors from end [[toronto#history]]
-    link = link.replace(/#[^ ]{1,100}/, '');
     var obj = {
       page: link,
     };
+    obj.page = obj.page.replace(/#(.*)/, (a, b) => {
+      obj.anchor = b;
+      return '';
+    });
+    // let anchor = obj.page.match(/#[^ ]{1,100}/);
+    // if(anchor!==null){
+    // }
     if (txt !== null && txt !== obj.page) {
       obj.text = txt;
     }

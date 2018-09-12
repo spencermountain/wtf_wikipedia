@@ -16,6 +16,10 @@ const doSentence = function(sentence) {
       //otherwise, make it a relative internal link
       href = helpers.capitalise(link.page);
       href = './' + href.replace(/ /g, '_');
+      //add anchor
+      if (link.anchor) {
+        href += `#${link.anchor}`;
+      }
     }
     let str = link.text || link.page;
     let tag = `<a class="${classNames}" href="${href}">${str}</a>`;

@@ -1,4 +1,6 @@
 const setDefaults = require('../lib/setDefaults');
+const redirects = require('./redirects');
+
 const defaults = {
   title: true,
   pageID: true,
@@ -19,13 +21,13 @@ const toJSON = function(doc, options) {
   options = setDefaults(options, defaults);
   let data = {};
 
-  if (options.title) {
+  if (options.title && (doc.options.title || doc.title())) {
     data.title = doc.options.title || doc.title();
   }
   if (options.pageID && doc.options.pageID) {
     data.pageID = doc.options.pageID;
   }
-  if (options.categories) {
+  if (options.categories && doc.categories().length > 0) {
     data.categories = doc.categories();
   }
   if (options.citations && doc.citations().length > 0) {
@@ -36,10 +38,10 @@ const toJSON = function(doc, options) {
   }
 
   //these need their own .json() method
-  if (options.infoboxes) {
+  if (options.infoboxes && doc.infoboxes().length > 0) {
     data.infoboxes = doc.infoboxes().map(i => i.json());
   }
-  if (options.images) {
+  if (options.images && doc.images().length > 0) {
     data.images = doc.images().map(i => i.json());
   }
   if (options.sections) {
@@ -55,6 +57,11 @@ const toJSON = function(doc, options) {
   }
   if (options.html) {
     data.html = doc.html(options);
+  }
+  if (doc.isRedirect() === true) {
+    data.isRedirect = true;
+    data.redirectTo = redirects.parse(doc.wiki);
+    data.sections = [];
   }
   return data;
 };
