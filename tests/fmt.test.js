@@ -24,3 +24,26 @@ test('inline mixquotes test', t => {
   t.deepEqual(sentence.italic(), ['five'], 'five is italic');
   t.end();
 });
+
+test('inline mixquotes test', t => {
+  var arr = [
+    [`hello 'one' world`, `hello 'one' world`],
+    [`hello ''two'' world`, `hello two world`],
+    [`hello '''three''' world`, `hello three world`],
+    [`hello ''''four'''' world`, `hello 'four' world`],
+    [`hello '''''five''''' world`, `hello five world`],
+    [`hello ''''''six'''''' world`, `hello 'six' world`],
+  ];
+  arr.forEach((a) => {
+    t.equal(wtf(a[0]).text(), a[1], a[1]);
+  });
+  t.end();
+});
+
+test('links-with-ticks', t => {
+  var doc = wtf(`hello '''[[Palme d'Or]]''' world`);
+  t.equal(doc.text(), `hello Palme d'Or world`, 'text');
+  t.equal(doc.links(0).page, `Palme d'Or`, 'link');
+  t.equal(doc.sentences(0).data.fmt.bold[0], `Palme d'Or`, 'fmt-bold');
+  t.end();
+});

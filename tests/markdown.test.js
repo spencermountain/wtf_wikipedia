@@ -17,7 +17,7 @@ hello world`, 'image');
   t.equal(md, 'he is **really good**', 'multi-word bold');
 
   md = wtf(`he is ''''really good''''`).markdown();
-  t.equal(md, 'he is \'**really good**\'', 'four-ticks');
+  t.equal(md, 'he is **\'really good\'**', 'four-ticks');
 
   md = wtf(`he is '''''really good'''''`).markdown();
   t.equal(md, 'he is ***really good***', 'bold+italics');
