@@ -55,14 +55,18 @@ function parseLine(line) {
   return obj;
 }
 
-const parseSentences = function(r, wiki) {
+const eachSentence = function(r, wiki) {
   let sentences = sentenceParser(wiki);
   sentences = sentences.map(parseLine);
+  //remove :indented first line, as it is often a disambiguation
+  if (sentences[0] && sentences[0].text[0] && sentences[0].text[0] === ':') {
+    sentences = sentences.slice(1);
+  }
   r.sentences = sentences;
   return wiki;
 };
 
 module.exports = {
-  eachSentence: parseSentences,
+  eachSentence: eachSentence,
   parseLine: parseLine
 };

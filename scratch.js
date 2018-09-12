@@ -10,11 +10,7 @@ const wtf = require('./src/index');
 
 
 
-let str = `#REDIRECT [[Toronto_Blue_Jays#Stadium|Tranno]]`;
+let str = `:hello one
+ok now you start`;
 let doc = wtf(str);
-// console.log(doc.redirects());
-console.log(doc.html());
-console.log(doc.markdown());
-console.log(doc.latex());
-// console.log(doc.json());
-// console.log(doc.isRedirect());
+console.log(doc.text());
