@@ -8,9 +8,4 @@ const wtf = require('./src/index');
 //   // doc.html();
 // })();
 
-
-
-let str = `:hello one
-ok now you start`;
-let doc = wtf(str);
-console.log(doc.text());
+console.log(wtf(`hello '''[[Palme d'Or]]''' world`).text());
