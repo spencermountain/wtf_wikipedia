@@ -6,6 +6,7 @@ const toJSON = require('./toJson');
 const toLatex = require('./toLatex');
 const setDefaults = require('../lib/setDefaults');
 const aliasList = require('../lib/aliases');
+const Image = require('../image/Image');
 
 const defaults = {
   infoboxes: true,
@@ -102,7 +103,12 @@ const methods = {
     this.templates().forEach((obj) => {
       if (obj.template === 'gallery') {
         obj.images = obj.images || [];
-        obj.images.forEach((img) => arr.push(img));
+        obj.images.forEach((img) => {
+          if (img instanceof Image === false) {
+            img = new Image(img.file);
+          }
+          arr.push(img);
+        });
       }
     });
     if (typeof clue === 'number') {

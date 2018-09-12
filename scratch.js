@@ -4,13 +4,14 @@ const wtf = require('./src/index');
 // const wtf = require('./build');
 
 (async () => {
-  const doc = await wtf.fetch(`Toronto`, 'en');
-  console.log(doc.json().sections[20].tables[0][3]);
+  const doc = await wtf.fetch(`List of submarine sandwich restaurants`, 'en');
+  console.log(doc.images());
+// console.log(doc.json({
+//   images: true
+// }));
 })();
 
-// let str = wtf(`first sentence.
-// * akuter Tinnitus (bis drei Monate)
-// * chronischer Tinnitus (über drei Monate)
-// last sentence. `).sentences();
-//
-// console.log(str);
+
+
+// let str = `hello [[List of highest funded crowdfunding projects|highest funded crowdfunding projects]] world`;
+// console.log(wtf(str).links());
