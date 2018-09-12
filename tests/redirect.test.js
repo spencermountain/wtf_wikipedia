@@ -12,7 +12,6 @@ test('redirect json', t => {
   t.equal(obj.redirectTo.page, 'Toronto Blue Jays', 'redirect page');
   t.equal(obj.redirectTo.anchor, 'Stadium', 'redirect anchor');
   t.equal(obj.redirectTo.text, 'Tranno', 'redirect text');
-
   t.end();
 });
 
@@ -24,10 +23,12 @@ test('is-redirect', t => {
   t.end();
 });
 
-// test('redirect-output', t => {
-//   var doc = readFile('redirect');
-// t.equal(doc.text(), '', 'has no text');
-// t.equal(doc.sections.length, 0, 'has no sections');
-//   t.equal(doc.html(), '', 'html output');
-//   t.end();
-// });
+test('redirect output', t => {
+  let str = `#REDIRECT [[Toronto Blue Jays#Stadium|Tranno]]`;
+  let doc = wtf(str);
+  t.equal(doc.text(), '', 'text');
+  t.equal(doc.markdown(), '↳ [Tranno](./Toronto_Blue_Jays#Stadium)', 'markdown');
+  t.equal(doc.latex(), '↳ \\href{./Toronto_Blue_Jays#Stadium}{Tranno}', 'latex');
+  t.ok(/Toronto_Blue_Jays/.test(doc.html()), 'html');
+  t.end();
+});

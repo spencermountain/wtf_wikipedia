@@ -1,4 +1,5 @@
 const parse = require('./index');
+const redirect = require('./redirects');
 const sectionMap = require('./_sectionMap');
 const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
@@ -54,6 +55,9 @@ const methods = {
   },
   isRedirect : function() {
     return this.data.type === 'redirect';
+  },
+  redirectTo: function() {
+    return redirect.parse(this.wiki);
   },
   isDisambiguation : function() {
     return this.data.type === 'disambiguation';
@@ -139,6 +143,10 @@ const methods = {
   },
   text : function(options) {
     options = setDefaults(options, defaults);
+    //nah, skip these.
+    if (this.isRedirect() === true) {
+      return '';
+    }
     let arr = this.sections().map(sec => sec.text(options));
     return arr.join('\n\n');
   },
@@ -191,8 +199,11 @@ Object.keys(methods).forEach((k) => {
 Object.keys(aliasList).forEach((k) => {
   Document.prototype[k] = methods[aliasList[k]];
 });
-//alias this one
+//alias these ones
 Document.prototype.isDisambig = Document.prototype.isDisambiguation;
 Document.prototype.references = Document.prototype.citations;
+Document.prototype.redirectsTo = Document.prototype.redirectTo;
+Document.prototype.redirect = Document.prototype.redirectTo;
+Document.prototype.redirects = Document.prototype.redirectTo;
 
 module.exports = Document;

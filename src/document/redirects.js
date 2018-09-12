@@ -17,7 +17,7 @@ const parse = function(wiki) {
     let links = parseLink(m[2]) || [];
     return links[0];
   }
-  return '';
+  return {};
 };
 
 module.exports = {
