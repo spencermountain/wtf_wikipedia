@@ -4,7 +4,7 @@ const helpers = require('../lib/helpers');
 const doSentence = function(sentence, options = {} ) {
   let text = sentence.plaintext();
   //turn links back into links
-  if (sentence.links && options.links === true) {
+  if (options.links !== false && sentence.links().length > 0) {
     sentence.links().forEach((link) => {
       let href = '';
       if (link.site) {
@@ -14,6 +14,10 @@ const doSentence = function(sentence, options = {} ) {
         //otherwise, make it a relative internal link
         href = helpers.capitalise(link.page);
         href = './' + href.replace(/ /g, '_');
+        //add anchor
+        if (link.anchor) {
+          href += `#${link.anchor}`;
+        }
       }
       let str = link.text || link.page;
       let tag = '\\href{' + href + '}{' + str + '}';

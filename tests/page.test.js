@@ -26,6 +26,8 @@ test('toronto_star', t => {
 
 test('toronto_star with list', t => {
   var doc = readFile('toronto_star');
+  t.equal(doc.isRedirect(), false, 'not-redirect');
+  t.equal(doc.isDisambig(), false, 'not-disambig');
   t.equal(doc.infoboxes(0).data.publisher.text(), 'John D. Cruickshank', 'publisher.text');
   t.equal(doc.infoboxes(0).template(), 'newspaper', '');
   var section = doc.sections('history');
@@ -38,6 +40,7 @@ test('toronto_star with list', t => {
 
 test('jodie_emery', t => {
   var doc = readFile('jodie_emery');
+  t.equal(doc.isRedirect(), false, 'not-redirect');
   t.equal(doc.infoboxes(0).data.nationality.text(), 'Canadian', '');
   t.equal(doc.infoboxes(0).template(), 'person', '');
   t.equal(doc.sections(0).sentences.length >= 1, true, 'intro-length');
@@ -47,17 +50,10 @@ test('jodie_emery', t => {
   t.end();
 });
 
-test('redirect', t => {
-  var doc = readFile('redirect');
-  t.equal(doc.isRedirect(), true, 'is-redirect');
-  t.equal(doc.links(0).page, 'Toronto', 'redirect-place');
-  t.equal(doc.infoboxes(0), undefined, t);
-  // t.equal(doc.infoboxes(0).template, undefined, t)
-  t.end();
-});
 
 test('statoil', t => {
   var doc = readFile('statoil');
+  t.equal(doc.isRedirect(), false, 'not-redirect');
   t.equal(doc.infoboxes(0).data.namn.text(), 'Statoil ASA', 'name');
   t.equal(doc.infoboxes(0).type(), 'verksemd', 'template');
   // (doc.text.Intro.length >= 1).should.be.true;
@@ -70,6 +66,7 @@ test('statoil', t => {
 
 test('raith rovers', t => {
   var doc = readFile('raith_rovers');
+  t.equal(doc.isRedirect(), false, 'not-redirect');
   t.equal(doc.infoboxes(0).data.clubname.text(), 'Raith Rovers', '');
   t.equal(doc.categories().length, 10, 'cat-length');
   t.equal(doc.images().length, 2, 'img-length');

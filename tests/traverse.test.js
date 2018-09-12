@@ -14,7 +14,7 @@ test('traverse sections', t => {
   sec = sec.nextSibling();
   t.equal(sec.title(), 'Geography', 'skip-over children');
 
-  let children = sec.children().map(s => s.title());
+  var children = sec.children().map(s => s.title());
   t.deepEqual(['Topography', 'Climate'], children, 'got two children');
 
   //go into both children, Topography+Climate

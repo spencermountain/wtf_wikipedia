@@ -3,14 +3,14 @@ const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-(async () => {
-  const doc = await wtf.fetch(`Toronto`, 'en');
-  console.log(doc.json().sections[20].tables[0][3]);
-})();
+// (async () => {
+//   const doc = await wtf.fetch(`Abraham Lincoln`, 'en');
+//   // doc.html();
+// })();
 
-// let str = wtf(`first sentence.
-// * akuter Tinnitus (bis drei Monate)
-// * chronischer Tinnitus (über drei Monate)
-// last sentence. `).sentences();
-//
-// console.log(str);
+
+
+let str = `:hello one
+ok now you start`;
+let doc = wtf(str);
+console.log(doc.text());

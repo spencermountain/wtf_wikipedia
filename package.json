@@ -1,7 +1,7 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "5.2.0",
+  "version": "5.3.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -13,6 +13,7 @@
   "scripts": {
     "start": "node ./scripts/demo.js",
     "test": "node ./scripts/test.js",
+    "test-spec": "tape ./tests/*.test.js | tap-spec",
     "postpublish": "node ./scripts/coverage.js",
     "coverage": "node ./scripts/coverage.js",
     "testb": "TESTENV=prod node ./scripts/test.js",
@@ -52,6 +53,7 @@
     "nyc": "12.0.2",
     "shelljs": "0.8.2",
     "tap-dancer": "0.0.3",
+    "tap-spec": "^5.0.0",
     "tape": "4.9.1",
     "uglify-js": "3.4.6"
   },

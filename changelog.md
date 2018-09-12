@@ -88,3 +88,10 @@
 * tweak some regexes
 ### 5.2.0
 * make `.json()` results return proper json for tables
+### 5.3.0
+* add infobox html back into html output (tentative)
+* redirect support in .json(), .html() output
+* remove empty `[]` properties in .json() results (saves disk space!)
+* keep `#` anchor data in .links()
+* show links default-on in latex output, like in md and html
+* render html/latex/json 'soft redirect', instead of blank pages

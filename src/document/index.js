@@ -19,10 +19,9 @@ const main = function(wiki, options) {
     coordinates: [],
     citations: []
   };
-  //detect if page is just redirect, and return
+  //detect if page is just redirect, and return it
   if (redirects.isRedirect(wiki) === true) {
     r.type = 'redirect';
-    wiki = redirects.parse(wiki);
   }
   //detect if page is just disambiguator page, and return
   if (disambig.isDisambig(wiki) === true) {

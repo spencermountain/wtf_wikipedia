@@ -3,7 +3,12 @@
     {
       "name": "isRedirect",
       "returns": "Boolean",
-      "description": ""
+      "description": "if the page is just a redirect to another page"
+    },
+    {
+      "name": "redirectTo",
+      "returns": "Boolean",
+      "description": "the page this redirects to"
     },
     {
       "name": "title",
@@ -23,7 +28,7 @@
     {
       "name": "isDisambiguation",
       "returns": "Boolean",
-      "description": "",
+      "description": "is this a placeholder page to direct you to one-of-many possible pages",
       "aliases": [
         "isDisambig"
       ]
@@ -61,7 +66,7 @@
     {
       "name": "lists",
       "returns": "Array",
-      "description": ""
+      "description": "sections in a page where each line begins with a bullet point"
     },
     {
       "name": "tables",
@@ -71,22 +76,22 @@
     {
       "name": "templates",
       "returns": "Array",
-      "description": ""
+      "description": "any type of structured-data elements, typically wrapped in like {{this}}"
     },
     {
       "name": "infoboxes",
       "returns": "Array",
-      "description": ""
+      "description": "specific type of template, that appear on the top-right of the page"
     },
     {
       "name": "citations",
       "returns": "Array",
-      "description": ""
+      "description": "references"
     },
     {
       "name": "coordinates",
       "returns": "Array",
-      "description": "",
+      "description": "geo-locations that appear on the page",
       "aliases": [
         "coords"
       ]
@@ -94,7 +99,7 @@
     {
       "name": "text",
       "returns": "String",
-      "description": "",
+      "description": "plaintext, human-readable output for the page",
       "aliases": [
         "plaintext"
       ]
@@ -102,7 +107,7 @@
     {
       "name": "markdown",
       "returns": "String",
-      "description": "",
+      "description": "output in the markdown format",
       "aliases": [
         "toMarkdown"
       ]
@@ -110,7 +115,7 @@
     {
       "name": "latex",
       "returns": "String",
-      "description": "",
+      "description": "output the page in latex format",
       "aliases": [
         "toLatex"
       ]
@@ -118,7 +123,7 @@
     {
       "name": "html",
       "returns": "String",
-      "description": "",
+      "description": "output the page in html format",
       "aliases": [
         "toHTML"
       ]
@@ -126,7 +131,7 @@
     {
       "name": "json",
       "returns": "String",
-      "description": "",
+      "description": "a 'stringifyable' output of the page's main data",
       "aliases": [
         "toJson"
       ]
@@ -142,13 +147,13 @@
       "name": "title",
       "returns": "String",
       "example": "",
-      "description": ""
+      "description": "the name of the section, between ==these tags=="
     },
     {
       "name": "wikitext",
       "returns": "String",
       "example": "",
-      "description": ""
+      "description": "the original wikipedia markup for this section"
     },
     {
       "name": "index",
@@ -160,7 +165,7 @@
       "name": "indentation",
       "returns": "Integer",
       "example": "",
-      "description": ""
+      "description": "how many steps deep into the table of contents it is"
     },
     {
       "name": "sentences",

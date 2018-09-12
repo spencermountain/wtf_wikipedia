@@ -15,3 +15,12 @@ i believe that 5===true and y===false
   t.equal(sections[1].title, 'Foo Bar', 'clean-section');
   t.end();
 });
+
+
+test('catch indented first sentence', function(t) {
+  var str = `:hello one
+ok now you start`;
+  var doc = wtf(str);
+  t.equal(doc.text(), 'ok now you start');
+  t.end();
+});
