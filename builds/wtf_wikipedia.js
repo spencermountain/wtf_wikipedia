@@ -1,4 +1,4 @@
-/* wtf_wikipedia v5.3.0
+/* wtf_wikipedia v5.3.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2258,7 +2258,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -5906,18 +5906,23 @@ var formatting = function formatting(obj) {
   var italics = [];
   var wiki = obj.text || '';
   //bold and italics combined 5 's
-  wiki = wiki.replace(/''{4}([^']{0,200})''{4}/g, function (a, b) {
+  wiki = wiki.replace(/'''''(.{0,200}?)'''''/g, function (a, b) {
     bolds.push(b);
     italics.push(b);
     return b;
   });
+  //''''four'''' → bold with quotes
+  wiki = wiki.replace(/''''(.{0,200}?)''''/g, function (a, b) {
+    bolds.push('\'' + b + '\'');
+    return '\'' + b + '\'';
+  });
   //'''bold'''
-  wiki = wiki.replace(/''{2}([^']{0,200})''{2}/g, function (a, b) {
+  wiki = wiki.replace(/'''(.{0,200}?)'''/g, function (a, b) {
     bolds.push(b);
     return b;
   });
   //''italic''
-  wiki = wiki.replace(/''([^']{0,200})''/g, function (a, b) {
+  wiki = wiki.replace(/''(.{0,200}?)''/g, function (a, b) {
     italics.push(b);
     return b;
   });
@@ -6543,6 +6548,7 @@ var findTables = function findTables(section, wiki) {
     if (str) {
       //also reremove a newline at the end of the table (awkward)
       wiki = wiki.replace(str + '\n', '');
+      wiki = wiki.replace(str, '');
       var data = parseTable(str);
       if (data && data.length > 0) {
         tables.push(new Table(data));
