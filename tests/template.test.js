@@ -219,7 +219,7 @@ The types of boats provided at each station and the launching methods vary depen
 }}
 hello there
 `;
-  let doc = wtf(str);
+  var doc = wtf(str);
   t.equal(doc.templates().length, 5, 'got several templates');
   t.equal(doc.templates('citation').length, 1, 'got citation template');
   t.equal(doc.templates('main').length, 1, 'got main template');

@@ -84,7 +84,7 @@ test('misc templates', t => {
     [`{{block indent |1=The material to be indented here. May include markup, paragraph breaks, etc.}}`, 'The material to be indented here. May include markup, paragraph breaks, etc.'],
   ];
   arr.forEach((a) => {
-    let str = wtf(a[0]).plaintext();
+    var str = wtf(a[0]).plaintext();
     t.equal(str, a[1], a[0].substr(0, 12));
   });
   // var str = ` {{Monthyear}}`;

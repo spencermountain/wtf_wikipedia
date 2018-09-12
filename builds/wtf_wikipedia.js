@@ -1,4 +1,4 @@
-/* wtf_wikipedia v5.2.0
+/* wtf_wikipedia v5.3.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -2258,7 +2258,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "5.2.0",
+  "version": "5.3.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -3471,6 +3471,7 @@ if (typeof module !== 'undefined' && module.exports) {
 'use strict';
 
 var parse = _dereq_('./index');
+var redirect = _dereq_('./redirects');
 var sectionMap = _dereq_('./_sectionMap');
 var toMarkdown = _dereq_('./toMarkdown');
 var toHtml = _dereq_('./toHtml');
@@ -3478,6 +3479,7 @@ var toJSON = _dereq_('./toJson');
 var toLatex = _dereq_('./toLatex');
 var setDefaults = _dereq_('../lib/setDefaults');
 var aliasList = _dereq_('../lib/aliases');
+var Image = _dereq_('../image/Image');
 
 var defaults = {
   infoboxes: true,
@@ -3525,6 +3527,9 @@ var methods = {
   },
   isRedirect: function isRedirect() {
     return this.data.type === 'redirect';
+  },
+  redirectTo: function redirectTo() {
+    return redirect.parse(this.wiki);
   },
   isDisambiguation: function isDisambiguation() {
     return this.data.type === 'disambiguation';
@@ -3579,7 +3584,10 @@ var methods = {
       if (obj.template === 'gallery') {
         obj.images = obj.images || [];
         obj.images.forEach(function (img) {
-          return arr.push(img);
+          if (img instanceof Image === false) {
+            img = new Image(img.file);
+          }
+          arr.push(img);
         });
       }
     });
@@ -3611,6 +3619,10 @@ var methods = {
   },
   text: function text(options) {
     options = setDefaults(options, defaults);
+    //nah, skip these.
+    if (this.isRedirect() === true) {
+      return '';
+    }
     var arr = this.sections().map(function (sec) {
       return sec.text(options);
     });
@@ -3665,13 +3677,16 @@ Object.keys(methods).forEach(function (k) {
 Object.keys(aliasList).forEach(function (k) {
   Document.prototype[k] = methods[aliasList[k]];
 });
-//alias this one
+//alias these ones
 Document.prototype.isDisambig = Document.prototype.isDisambiguation;
 Document.prototype.references = Document.prototype.citations;
+Document.prototype.redirectsTo = Document.prototype.redirectTo;
+Document.prototype.redirect = Document.prototype.redirectTo;
+Document.prototype.redirects = Document.prototype.redirectTo;
 
 module.exports = Document;
 
-},{"../lib/aliases":31,"../lib/setDefaults":35,"./_sectionMap":8,"./index":11,"./toHtml":15,"./toJson":16,"./toLatex":17,"./toMarkdown":18}],8:[function(_dereq_,module,exports){
+},{"../image/Image":20,"../lib/aliases":31,"../lib/setDefaults":35,"./_sectionMap":8,"./index":11,"./redirects":14,"./toHtml":15,"./toJson":16,"./toLatex":17,"./toMarkdown":18}],8:[function(_dereq_,module,exports){
 'use strict';
 
 //helper for looping around all sections of a document
@@ -3781,10 +3796,9 @@ var main = function main(wiki, options) {
     coordinates: [],
     citations: []
   };
-  //detect if page is just redirect, and return
+  //detect if page is just redirect, and return it
   if (redirects.isRedirect(wiki) === true) {
     r.type = 'redirect';
-    wiki = redirects.parse(wiki);
   }
   //detect if page is just disambiguator page, and return
   if (disambig.isDisambig(wiki) === true) {
@@ -3826,6 +3840,8 @@ function preProcess(r, wiki, options) {
   wiki = wiki.replace(/\r/g, '');
   //horizontal rule
   wiki = wiki.replace(/--{1,3}/, '');
+  //{{!}} - this weird thing https://www.mediawiki.org/wiki/Help:Magic_words#Other
+  wiki = wiki.replace(/\{\{!\}\}/, '|');
   //space
   wiki = wiki.replace(/&nbsp;/g, ' ');
   //kill off interwiki links
@@ -3880,19 +3896,25 @@ module.exports = kill_xml;
 'use strict';
 
 var i18n = _dereq_('../data/i18n');
+var parseLink = _dereq_('../sentence/links');
 //pulls target link out of redirect page
-var REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + i18n.redirects.join('|') + ') *?(\\[\\[.{2,60}?\\]\\])', 'i');
+var REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + i18n.redirects.join('|') + ') *?(\\[\\[.{2,120}?\\]\\])', 'i');
 
 var isRedirect = function isRedirect(wiki) {
+  //too long to be a redirect?
+  if (!wiki || wiki.length > 300) {
+    return false;
+  }
   return REDIRECT_REGEX.test(wiki);
 };
 
 var parse = function parse(wiki) {
   var m = wiki.match(REDIRECT_REGEX);
   if (m && m[2]) {
-    return m[2];
+    var links = parseLink(m[2]) || [];
+    return links[0];
   }
-  return wiki;
+  return {};
 };
 
 module.exports = {
@@ -3900,20 +3922,47 @@ module.exports = {
   parse: parse
 };
 
-},{"../data/i18n":5}],15:[function(_dereq_,module,exports){
+},{"../data/i18n":5,"../sentence/links":52}],15:[function(_dereq_,module,exports){
 'use strict';
+
+// we should try to make this look like the wikipedia does, i guess.
+var softRedirect = function softRedirect(doc) {
+  var link = doc.redirectTo();
+  var href = link.page;
+  href = './' + href.replace(/ /g, '_');
+  if (link.anchor) {
+    href += '#' + link.anchor;
+  }
+  return '  <div class="redirect">\n  \u21B3 <a class="link" href="./' + href + '">' + link.text + '</a>\n  </div>';
+};
 
 //turn a Doc object into a HTML string
 var toHtml = function toHtml(doc, options) {
   var data = doc.data;
   var html = '';
-  //add the title on the topw
-  // if (options.title === true && data.title) {
-  //   html += '<h1>' + data.title + '</h1>\n';
-  // }
+  html += '<!DOCTYPE html>\n';
+  html += '<html>\n';
+  html += '<head>\n';
+  //add page title
+  if (options.title === true && data.title) {
+    html += '<title>' + data.title + ' - Wikipedia' + '</title>\n';
+  }
+  html += '</head>\n';
+  html += '<body>\n';
+
+  //if it's a redirect page, give it a 'soft landing':
+  if (doc.isRedirect() === true) {
+    html += softRedirect(doc);
+    return html + '\n</body>\n</html>'; //end it here.
+  }
+
+  //add header
+  if (options.title === true && data.title) {
+    html += '  <h1>' + data.title + '</h1>\n';
+  }
   //render infoboxes (up at the top)
-  if (options.infoboxes === true && data.infoboxes) {
-    html += data.infoboxes.map(function (i) {
+  if (options.infoboxes === true) {
+    html += doc.infoboxes().map(function (i) {
       return i.html(options);
     }).join('\n');
   }
@@ -3921,6 +3970,8 @@ var toHtml = function toHtml(doc, options) {
   html += data.sections.map(function (s) {
     return s.html(options);
   }).join('\n');
+  html += '</body>\n';
+  html += '</html>';
   return html;
 };
 module.exports = toHtml;
@@ -3929,6 +3980,8 @@ module.exports = toHtml;
 'use strict';
 
 var setDefaults = _dereq_('../lib/setDefaults');
+var redirects = _dereq_('./redirects');
+
 var defaults = {
   title: true,
   pageID: true,
@@ -3949,13 +4002,13 @@ var toJSON = function toJSON(doc, options) {
   options = setDefaults(options, defaults);
   var data = {};
 
-  if (options.title) {
+  if (options.title && (doc.options.title || doc.title())) {
     data.title = doc.options.title || doc.title();
   }
   if (options.pageID && doc.options.pageID) {
     data.pageID = doc.options.pageID;
   }
-  if (options.categories) {
+  if (options.categories && doc.categories().length > 0) {
     data.categories = doc.categories();
   }
   if (options.citations && doc.citations().length > 0) {
@@ -3966,12 +4019,12 @@ var toJSON = function toJSON(doc, options) {
   }
 
   //these need their own .json() method
-  if (options.infoboxes) {
+  if (options.infoboxes && doc.infoboxes().length > 0) {
     data.infoboxes = doc.infoboxes().map(function (i) {
       return i.json();
     });
   }
-  if (options.images) {
+  if (options.images && doc.images().length > 0) {
     data.images = doc.images().map(function (i) {
       return i.json();
     });
@@ -3992,11 +4045,16 @@ var toJSON = function toJSON(doc, options) {
   if (options.html) {
     data.html = doc.html(options);
   }
+  if (doc.isRedirect() === true) {
+    data.isRedirect = true;
+    data.redirectTo = redirects.parse(doc.wiki);
+    data.sections = [];
+  }
   return data;
 };
 module.exports = toJSON;
 
-},{"../lib/setDefaults":35}],17:[function(_dereq_,module,exports){
+},{"../lib/setDefaults":35,"./redirects":14}],17:[function(_dereq_,module,exports){
 'use strict';
 
 var setDefaults = _dereq_('../lib/setDefaults');
@@ -4012,6 +4070,18 @@ var defaults = {
   sentences: true
 };
 
+// we should try to make this look like the wikipedia does, i guess.
+var softRedirect = function softRedirect(doc) {
+  var link = doc.redirectTo();
+  var href = link.page;
+  href = './' + href.replace(/ /g, '_');
+  //add anchor
+  if (link.anchor) {
+    href += '#' + link.anchor;
+  }
+  return '↳ \\href{' + href + '}{' + link.text + '}';
+};
+
 //
 var toLatex = function toLatex(doc, options) {
   options = setDefaults(options, defaults);
@@ -4021,6 +4091,10 @@ var toLatex = function toLatex(doc, options) {
   // if (options.title === true && data.title) {
   //   out += '\\section{' + data.title + '}\n';
   // }
+  //if it's a redirect page, give it a 'soft landing':
+  if (doc.isRedirect() === true) {
+    return softRedirect(doc); //end it here.
+  }
   //render infoboxes (up at the top)
   if (options.infoboxes === true && data.infoboxes) {
     out += data.infoboxes.map(function (i) {
@@ -4038,6 +4112,17 @@ module.exports = toLatex;
 },{"../lib/setDefaults":35}],18:[function(_dereq_,module,exports){
 'use strict';
 
+// we should try to make this look like the wikipedia does, i guess.
+var softRedirect = function softRedirect(doc) {
+  var link = doc.redirectTo();
+  var href = link.page;
+  href = './' + href.replace(/ /g, '_');
+  if (link.anchor) {
+    href += '#' + link.anchor;
+  }
+  return '\u21B3 [' + link.text + '](' + href + ')';
+};
+
 //turn a Doc object into a markdown string
 var toMarkdown = function toMarkdown(doc, options) {
   var data = doc.data;
@@ -4046,6 +4131,11 @@ var toMarkdown = function toMarkdown(doc, options) {
   // if (data.title) {
   //   md += '# ' + data.title + '\n';
   // }
+
+  //if it's a redirect page, give it a 'soft landing':
+  if (doc.isRedirect() === true) {
+    return softRedirect(doc); //end it here
+  }
   //render infoboxes (up at the top)
   if (options.infoboxes === true && data.infoboxes) {
     md += doc.infoboxes().map(function (infobox) {
@@ -4517,22 +4607,44 @@ module.exports = Infobox;
 
 var dontDo = {
   image: true,
-  caption: true
+  caption: true,
+  alt: true,
+  signature: true,
+  'signature alt': true
 };
 //
 var infobox = function infobox(obj, options) {
-  var html = '<table>\n';
+  var html = '<table class="infobox">\n';
+  html += '  <thead></thead>\n';
+  html += '  <tbody>\n';
+  //put image and caption on the top
+  if (obj.data.image) {
+    html += '    <tr>\n';
+    html += '       <td colspan="2" style="text-align:center">\n';
+    html += '       ' + obj.image().html() + '\n';
+    html += '       </td>\n';
+    if (obj.data.caption || obj.data.alt) {
+      var caption = obj.data.caption ? obj.data.caption.html() : obj.data.alt.html();
+      html += '       <td colspan="2" style="text-align:center">\n';
+      html += '         ' + caption + '\n';
+      html += '       </td>\n';
+    }
+    html += '    </tr>\n';
+  }
   Object.keys(obj.data).forEach(function (k) {
     if (dontDo[k] === true) {
       return;
     }
     var s = obj.data[k];
+    var key = k.replace(/_/g, ' ');
+    key = key.charAt(0).toUpperCase() + key.substring(1); //titlecase it
     var val = s.html(options);
-    html += '  <tr>\n';
-    html += '    <td>' + k + '</td>\n';
-    html += '    <td>' + val + '</td>\n';
-    html += '  </tr>\n';
+    html += '    <tr>\n';
+    html += '      <td>' + key + '</td>\n';
+    html += '      <td>' + val + '</td>\n';
+    html += '    </tr>\n';
   });
+  html += '  </tbody>\n';
   html += '</table>\n';
   return html;
 };
@@ -4773,11 +4885,11 @@ module.exports = smartReplace;
 var aliasList = _dereq_('../lib/aliases');
 
 var toHtml = function toHtml(list) {
-  var html = '<ul>\n';
+  var html = '<ul class="list">\n';
   list.forEach(function (o) {
     html += '  <li>' + o.text() + '</li>\n';
   });
-  html += '<ul>\n';
+  html += '</ul>\n';
   return html;
 };
 
@@ -5882,15 +5994,19 @@ function parseLine(line) {
   return obj;
 }
 
-var parseSentences = function parseSentences(r, wiki) {
+var eachSentence = function eachSentence(r, wiki) {
   var sentences = sentenceParser(wiki);
   sentences = sentences.map(parseLine);
+  //remove :indented first line, as it is often a disambiguation
+  if (sentences[0] && sentences[0].text[0] && sentences[0].text[0] === ':') {
+    sentences = sentences.slice(1);
+  }
   r.sentences = sentences;
   return wiki;
 };
 
 module.exports = {
-  eachSentence: parseSentences,
+  eachSentence: eachSentence,
   parseLine: parseLine
 };
 
@@ -5900,7 +6016,7 @@ module.exports = {
 // const helpers = require('../lib/helpers');
 var ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media|special|wp|wikipedia|help|user|mediawiki|portal|talk|template|book|draft|module|topic|wiktionary|wikisource):/i;
 var external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
-var link_reg = /\[\[(.{0,80}?)\]\]([a-z']+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]'s"
+var link_reg = /\[\[(.{0,120}?)\]\]([a-z']+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]'s"
 
 var external_links = function external_links(links, str) {
   str.replace(external_link, function (all, protocol, link, text) {
@@ -5935,15 +6051,21 @@ var internal_links = function internal_links(links, str) {
     if (link.match(ignore_links)) {
       return s;
     }
-    //kill off just anchor links [[#history]]
+    //kill off just these just-anchor links [[#history]]
     if (link.match(/^#/i)) {
       return s;
     }
     //remove anchors from end [[toronto#history]]
-    link = link.replace(/#[^ ]{1,100}/, '');
     var obj = {
       page: link
     };
+    obj.page = obj.page.replace(/#(.*)/, function (a, b) {
+      obj.anchor = b;
+      return '';
+    });
+    // let anchor = obj.page.match(/#[^ ]{1,100}/);
+    // if(anchor!==null){
+    // }
     if (txt !== null && txt !== obj.page) {
       obj.text = txt;
     }
@@ -6116,6 +6238,10 @@ var doSentence = function doSentence(sentence) {
       //otherwise, make it a relative internal link
       href = helpers.capitalise(link.page);
       href = './' + href.replace(/ /g, '_');
+      //add anchor
+      if (link.anchor) {
+        href += '#' + link.anchor;
+      }
     }
     var str = link.text || link.page;
     var tag = '<a class="' + classNames + '" href="' + href + '">' + str + '</a>';
@@ -6177,7 +6303,7 @@ var doSentence = function doSentence(sentence) {
 
   var text = sentence.plaintext();
   //turn links back into links
-  if (sentence.links && options.links === true) {
+  if (options.links !== false && sentence.links().length > 0) {
     sentence.links().forEach(function (link) {
       var href = '';
       if (link.site) {
@@ -6187,6 +6313,10 @@ var doSentence = function doSentence(sentence) {
         //otherwise, make it a relative internal link
         href = helpers.capitalise(link.page);
         href = './' + href.replace(/ /g, '_');
+        //add anchor
+        if (link.anchor) {
+          href += '#' + link.anchor;
+        }
       }
       var str = link.text || link.page;
       var tag = '\\href{' + href + '}{' + str + '}';
@@ -6227,6 +6357,10 @@ var doLink = function doLink(md, link) {
     //otherwise, make it a relative internal link
     href = helpers.capitalise(link.page);
     href = './' + href.replace(/ /g, '_');
+    //add anchor
+    if (link.anchor) {
+      href += '#' + link.anchor;
+    }
   }
   var str = link.text || link.page;
   var mdLink = '[' + str + '](' + href + ')';
@@ -6486,14 +6620,16 @@ module.exports = parseTable;
 
 //turn a json table into a html table
 var toHtml = function toHtml(table, options) {
-  var html = '<table>\n';
+  var html = '<table class="table">\n';
   //make header
   html += '  <thead>\n';
+  html += '  <tr>\n';
   Object.keys(table[0]).forEach(function (k) {
     if (/^col[0-9]/.test(k) !== true) {
       html += '    <td>' + k + '</td>\n';
     }
   });
+  html += '  </tr>\n';
   html += '  </thead>\n';
   html += '  <tbody>\n';
   //make rows

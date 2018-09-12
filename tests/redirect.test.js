@@ -4,8 +4,8 @@ var readFile = require('./lib/_cachedPage');
 var wtf = require('./lib');
 
 test('redirect json', t => {
-  let str = `#REDIRECT [[Toronto Blue Jays#Stadium|Tranno]]`;
-  let doc = wtf(str);
+  var str = `#REDIRECT [[Toronto Blue Jays#Stadium|Tranno]]`;
+  var doc = wtf(str);
   t.equal(doc.isRedirect(), true, 'is-redirect');
   var obj = doc.json();
   t.equal(obj.isRedirect, true, 'json-has-redirect');
@@ -24,8 +24,8 @@ test('is-redirect', t => {
 });
 
 test('redirect output', t => {
-  let str = `#REDIRECT [[Toronto Blue Jays#Stadium|Tranno]]`;
-  let doc = wtf(str);
+  var str = `#REDIRECT [[Toronto Blue Jays#Stadium|Tranno]]`;
+  var doc = wtf(str);
   t.equal(doc.text(), '', 'text');
   t.equal(doc.markdown(), '↳ [Tranno](./Toronto_Blue_Jays#Stadium)', 'markdown');
   t.equal(doc.latex(), '↳ \\href{./Toronto_Blue_Jays#Stadium}{Tranno}', 'latex');
