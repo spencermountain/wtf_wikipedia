@@ -33,6 +33,7 @@ const findTables = function(section, wiki) {
     if (str) {
       //also reremove a newline at the end of the table (awkward)
       wiki = wiki.replace(str + '\n', '');
+      wiki = wiki.replace(str, '');
       let data = parseTable(str);
       if (data && data.length > 0) {
         tables.push(new Table(data));

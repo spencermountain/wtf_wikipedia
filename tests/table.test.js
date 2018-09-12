@@ -315,3 +315,22 @@ test('missing-row test', t => {
   t.equal(row.Record.text(), '2–0', 'got last property');
   t.end();
 });
+
+
+test('table newline removal', t => {
+  let str = `hello this is the top
+{| class="wikitable" style="font-size: 95%;"
+| 1
+| [[Daugpiļs]]
+|-
+| 2
+| [[Jākubmīsts]]
+|-
+| 3
+| [[Rēzne]]
+|}
+`;
+  let doc = wtf(str);
+  t.equal(doc.text(), 'hello this is the top', 'text on top');
+  t.end();
+});

@@ -76,7 +76,7 @@ test('basic-html', t => {
 <body>
 <div class="section">
   <div class="text">
-    <span class="sentence">i '<b>think</b>' so</span>
+    <span class="sentence">i <b>'think'</b> so</span>
   </div>
 </div>
 </body>
