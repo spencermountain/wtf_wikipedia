@@ -88,3 +88,5 @@
 * tweak some regexes
 ### 5.2.0
 * make `.json()` results return proper json for tables
+### 5.3.0
+* add infobox html back into html output (tentative)

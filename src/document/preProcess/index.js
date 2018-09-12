@@ -11,6 +11,8 @@ function preProcess(r, wiki, options) {
   wiki = wiki.replace(/\r/g, '');
   //horizontal rule
   wiki = wiki.replace(/--{1,3}/, '');
+  //{{!}} - this weird thing https://www.mediawiki.org/wiki/Help:Magic_words#Other
+  wiki = wiki.replace(/\{\{!\}\}/, '|');
   //space
   wiki = wiki.replace(/&nbsp;/g, ' ');
   //kill off interwiki links
