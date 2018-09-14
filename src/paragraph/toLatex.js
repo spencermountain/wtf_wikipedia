@@ -4,15 +4,15 @@ const defaults = {
   sentences: true
 };
 
-const toMarkdown = function(p, options) {
+const toLatex = function(p, options) {
   options = setDefaults(options, defaults);
   let md = '';
   if (options.sentences === true) {
     md += p.sentences().reduce((str, s) => {
-      str += s.markdown(options) + '\n';
+      str += s.latex(options) + '\n';
       return str;
     }, {});
   }
   return md;
 };
-module.exports = toMarkdown;
+module.exports = toLatex;

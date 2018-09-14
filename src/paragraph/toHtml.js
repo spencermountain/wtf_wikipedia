@@ -4,12 +4,12 @@ const defaults = {
   sentences: true
 };
 
-const toJson = function(p, options) {
+const toHtml = function(p, options) {
   options = setDefaults(options, defaults);
-  let data = {};
+  let html = '';
   if (options.sentences === true) {
-    data.sentences = p.sentences().map(s => s.json(options));
+    html += p.sentences().map(s => s.html(options)).join('\n');
   }
-  return data;
+  return html;
 };
-module.exports = toJson;
+module.exports = toHtml;

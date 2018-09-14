@@ -2,8 +2,8 @@ let eachSentence = require('../sentence').eachSentence;
 let Sentence = require('../sentence/Sentence');
 const toJSON = require('./toJson');
 const toMarkdown = require('./toMarkdown');
-// const toHtml = require('./toHtml');
-// const toLatex = require('./toLatex');
+const toHtml = require('./toHtml');
+const toLatex = require('./toLatex');
 const setDefaults = require('../lib/setDefaults');
 const defaults = {
   sentences: true
