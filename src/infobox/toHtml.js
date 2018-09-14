@@ -8,7 +8,8 @@ const dontDo = {
 //
 const infobox = function(obj, options) {
   let html = '<table class="infobox">\n';
-  html += '  <thead></thead>\n';
+  html += '  <thead>\n';
+  html += '  </thead>\n';
   html += '  <tbody>\n';
   //put image and caption on the top
   if (obj.data.image) {
