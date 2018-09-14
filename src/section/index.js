@@ -46,6 +46,10 @@ const removeReferences = function(sections) {
       if (s.paragraphs().length > 0) {
         return true;
       }
+      //does it have some wacky templates?
+      if (s.templates().length > 0) {
+        return true;
+      }
       //what it has children? awkward
       if (sections[i + 1] && sections[i + 1].depth > s.depth) {
         sections[i + 1].depth -= 1; //move it up a level?...

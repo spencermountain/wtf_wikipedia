@@ -34,6 +34,7 @@ const list = [
   //https://en.wikipedia.org/wiki/Template:Navboxes
   'navboxes',
   'reflist',
+  'ref-list',
   'div col',
   'flag',
   'authority control',

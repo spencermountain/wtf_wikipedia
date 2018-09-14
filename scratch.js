@@ -23,12 +23,11 @@ let options = {
 // let doc = readFile('United-Kingdom');
 // console.log(doc.sentences(0).html(options));
 
-// var doc = readFile('royal_cinema');
-// console.log(wtf(`My image [File:my_image.png]`).images(0).latex());
+let str = `
+lkjasdfh
 
-var have = wtf(`==My Section==
-Leading text
-* First item
-*Second Item
-Closing remark`).latex();
-console.log(have);
+==References==
+{{reflist}}
+
+`;
+console.log(wtf(str).sections());
