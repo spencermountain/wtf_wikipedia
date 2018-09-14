@@ -1,7 +1,7 @@
 const setDefaults = require('../lib/setDefaults');
 const redirects = require('./redirects');
 const defaults = {
-  headers: true,
+  title: true,
   sections: true,
   pageID: true,
   categories: true,
@@ -12,7 +12,7 @@ const defaults = {
 const toJSON = function(doc, options) {
   options = setDefaults(options, defaults);
   let data = {};
-  if (options.headers || options.title) {
+  if (options.title) {
     data.title = doc.options.title || doc.title();
   }
   if (options.pageID && doc.options.pageID) {
