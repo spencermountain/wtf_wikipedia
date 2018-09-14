@@ -1,10 +1,11 @@
 const setDefaults = require('../lib/setDefaults');
 const redirects = require('./redirects');
 const defaults = {
-  infoboxes: true,
   headers: true,
   sections: true,
   pageID: true,
+  categories: true,
+  coordinates: true,
 };
 
 //an opinionated output of the most-wanted data
@@ -23,14 +24,6 @@ const toJSON = function(doc, options) {
   if (options.coordinates) {
     data.coordinates = doc.coordinates();
   }
-
-  //these need their own .json() method
-  if (options.infoboxes) {
-    data.infoboxes = doc.infoboxes().map(i => i.json(options));
-  }
-  if (options.images) {
-    data.images = doc.images().map(i => i.json(options));
-  }
   if (options.sections) {
     data.sections = doc.sections().map(i => i.json(options));
   }
@@ -41,6 +34,12 @@ const toJSON = function(doc, options) {
   }
 
   //these are default-off
+  if (options.infoboxes) {
+    data.infoboxes = doc.infoboxes().map(i => i.json(options));
+  }
+  if (options.images) {
+    data.images = doc.images().map(i => i.json(options));
+  }
   if (options.plaintext) {
     data.plaintext = doc.plaintext(options);
   }

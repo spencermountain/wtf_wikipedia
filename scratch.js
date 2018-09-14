@@ -24,4 +24,4 @@ let doc = readFile('United-Kingdom');
 // console.log(doc.sentences(0).html(options));
 
 // var doc = readFile('royal_cinema');
-console.log(doc.html(options));
+console.log(doc.json());

@@ -1,6 +1,6 @@
 const Section = require('./Section');
 const find_recursive = require('../lib/recursive_match');
-const isReference = /references?:?/i; //todo support i18n
+const isReference = /^(references?|einzelnachweise|referencias|références|notes et références|脚注|referenser|bronnen|примечания):?/i; //todo support more languages
 
 //interpret ==heading== lines
 const parse = {
@@ -39,6 +39,23 @@ const doSection = function(section, wiki, options) {
   return section;
 };
 
+//we re-create this in html/markdown outputs
+const removeReferences = function(sections) {
+  return sections.filter((s, i) => {
+    if (isReference.test(s.title()) === true) {
+      if (s.paragraphs().length > 0) {
+        return true;
+      }
+      //what it has children? awkward
+      if (sections[i + 1] && sections[i + 1].depth > s.depth) {
+        sections[i + 1].depth -= 1; //move it up a level?...
+      }
+      return false;
+    }
+    return true;
+  });
+};
+
 const splitSections = function(wiki, options) {
   let split = wiki.split(section_reg); //.filter(s => s);
   let sections = [];
@@ -54,12 +71,11 @@ const splitSections = function(wiki, options) {
     section = parse.heading(section, heading);
     //parse it up
     section = doSection(section, content, options);
-    //remove empty references section
-    if (isReference.test(section.title()) === true && section.paragraphs().length === 0) {
-      continue;
-    }
     sections.push(section);
   }
+  //remove empty references section
+  sections = removeReferences(sections);
+
   return sections;
 };
 

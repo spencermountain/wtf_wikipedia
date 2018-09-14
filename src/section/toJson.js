@@ -22,7 +22,7 @@ const toJSON = function(section, options) {
   if (options.paragraphs === true) {
     data.paragraphs = section.paragraphs().map(p => p.json(options));
   }
-  if (options.image === true) {
+  if (options.images === true) {
     data.images = section.images().map(img => img.json(options));
   }
   //more stuff
