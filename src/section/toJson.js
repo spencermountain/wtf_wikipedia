@@ -2,7 +2,7 @@ const setDefaults = require('../lib/setDefaults');
 const defaults = {
   title: true,
   depth: true,
-  sentences: true,
+  paragraphs: true,
   links: true,
   text: true,
   formatting: true,
@@ -23,8 +23,10 @@ const toJSON = function(s, options) {
     data.depth = s.depth;
   }
   //these return objects
-  if (options.sentences) {
-    data.sentences = s.sentences().map(sen => sen.json(options));
+  if (options.paragraphs === true) {
+    data.paragraphs = s.paragraphs().map(p => p.json());
+  } else if (options.sentences === true) {
+    data.sentences = s.sentences().map(sent => sent.json());
   }
   if (options.images && s.images().length > 0) {
     data.images = s.images().map(img => img.json(options));

@@ -13,7 +13,7 @@ const defaults = {
   lists: true,
   citations: true,
   images: true,
-  sentences: true
+  paragraphs: true,
 };
 
 //the stuff between headings - 'History' section for example
@@ -63,11 +63,18 @@ const methods = {
     return arr || [];
   },
   paragraphs: function(n) {
-    let arr = this.data.paragraphs;
+    let arr = this.data.paragraphs || [];
     if (typeof n === 'number') {
       return arr[n];
     }
     return arr || [];
+  },
+  paragraph: function(n) {
+    let arr = this.data.paragraphs || [];
+    if (typeof n === 'number') {
+      return arr[n];
+    }
+    return arr[0];
   },
   links: function(n) {
     let arr = [];

@@ -39,13 +39,13 @@ const toJSON = function(doc, options) {
 
   //these need their own .json() method
   if (options.infoboxes && doc.infoboxes().length > 0) {
-    data.infoboxes = doc.infoboxes().map(i => i.json());
+    data.infoboxes = doc.infoboxes().map(i => i.json(options));
   }
   if (options.images && doc.images().length > 0) {
-    data.images = doc.images().map(i => i.json());
+    data.images = doc.images().map(i => i.json(options));
   }
   if (options.sections) {
-    data.sections = doc.sections().map(i => i.json());
+    data.sections = doc.sections().map(i => i.json(options));
   }
 
   //these are default-off

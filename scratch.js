@@ -9,13 +9,21 @@ const wtf = require('./src/index');
 // })();
 
 let doc = wtf(`hello world.
-
-
-paragraph two is here.
-== section two==
-paragraph three is here.
-* some list
-* is here
-last paragraph here.
+new line here.
+ 
+then skipped two
 `);
-console.log(doc.json());
+
+// paragraph two is here.
+// == section two==
+// paragraph three is here.
+// * some list
+// * is here
+// last paragraph here.
+let options = {
+  sentences: true,
+  images: false
+};
+console.log(doc.paragraphs());
+
+// console.log(options);

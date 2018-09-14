@@ -47,6 +47,7 @@ test('section-output', t => {
   var data = doc.section(0).json({
     links: false,
     formatting: false,
+    sentences: true
   });
   t.equal(data.depth, 0, 'depth');
   t.ok(data.sentences[0].text, 'no formatting');

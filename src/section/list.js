@@ -47,7 +47,7 @@ const grabList = function(lines, i) {
 
 const parseList = function(r, wiki) {
   let lines = wiki.split(/\n/g);
-  lines = lines.filter(l => has_word.test(l));
+  // lines = lines.filter(l => has_word.test(l));
   let lists = [];
   let theRest = [];
   for (let i = 0; i < lines.length; i++) {

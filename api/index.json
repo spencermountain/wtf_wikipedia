@@ -49,6 +49,16 @@
       "description": "return the first section matching a given title or index"
     },
     {
+      "name": "paragraphs",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "paragraph",
+      "returns": "Array",
+      "description": "returns the first paragraph matching a given index"
+    },
+    {
       "name": "sentences",
       "returns": "Array",
       "description": ""
@@ -172,6 +182,16 @@
       "returns": "Array",
       "example": "",
       "description": ""
+    },
+    {
+      "name": "paragraphs",
+      "returns": "Array",
+      "description": ""
+    },
+    {
+      "name": "paragraph",
+      "returns": "Array",
+      "description": "returns the first paragraph matching a given index"
     },
     {
       "name": "links",

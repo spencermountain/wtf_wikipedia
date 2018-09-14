@@ -15,7 +15,7 @@ const defaults = {
   lists: true,
   citations: true,
   images: true,
-  sentences: true,
+  paragraphs: true,
 };
 
 //
@@ -82,6 +82,23 @@ const methods = {
       return arr[clue];
     }
     return arr;
+  },
+  paragraphs : function(n) {
+    let arr = [];
+    this.data.sections.forEach((s) => {
+      arr = arr.concat(s.paragraphs());
+    });
+    if (typeof n === 'number') {
+      return arr[n];
+    }
+    return arr;
+  },
+  paragraph : function(n) {
+    let arr = this.paragraphs() || [];
+    if (typeof n === 'number') {
+      return arr[n];
+    }
+    return arr[0];
   },
   sentences : function(n) {
     let arr = [];
@@ -163,6 +180,7 @@ const methods = {
     return toHtml(this, options);
   },
   json : function(options) {
+    options = setDefaults(options, defaults);
     return toJSON(this, options);
   },
   debug: function() {

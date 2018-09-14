@@ -1,7 +1,13 @@
-let eachSentence = require("../sentence").eachSentence;
-let Sentence = require("../sentence/Sentence");
-const setDefaults = require("../lib/setDefaults");
-const defaults = {};
+let eachSentence = require('../sentence').eachSentence;
+let Sentence = require('../sentence/Sentence');
+const toJSON = require('./toJson');
+const toMarkdown = require('./toMarkdown');
+// const toHtml = require('./toHtml');
+// const toLatex = require('./toLatex');
+const setDefaults = require('../lib/setDefaults');
+const defaults = {
+  sentences: true
+};
 
 class Paragraph {
   constructor(wiki, section) {
@@ -18,21 +24,21 @@ class Paragraph {
   section() {
     return this._section;
   }
-  sentences() {
+  sentences(n) {
     let arr = this.data.sentences.map(s => {
       s = new Sentence(s);
       return s;
     });
-    if (typeof n === "number") {
+    if (typeof n === 'number') {
       return arr[n];
     }
     return arr || [];
   }
-  links() {
+  links(n) {
     let arr = this.sentences().map(s => {
       s.links();
     });
-    if (typeof n === "number") {
+    if (typeof n === 'number') {
       return arr[n];
     }
     return arr || [];
@@ -49,7 +55,7 @@ class Paragraph {
     options = setDefaults(options, defaults);
     return this.sentences()
       .map(s => s.text(options))
-      .join(" ");
+      .join(' ');
   }
   latex(options) {
     options = setDefaults(options, defaults);
