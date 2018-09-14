@@ -10,11 +10,8 @@ const aliasList = require('../lib/aliases');
 const Image = require('../image/Image');
 
 const defaults = {
-  infoboxes: true,
   tables: true,
   lists: true,
-  citations: true,
-  images: true,
   paragraphs: true,
 };
 

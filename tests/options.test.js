@@ -41,3 +41,31 @@ test('other-pages', t => {
   });
   t.end();
 });
+
+
+
+test('turn all options off', t => {
+  let options = {
+    sections: false,
+    paragraphs: false,
+    sentences: false,
+    title: false,
+    categories: false,
+    coordinates: false,
+    pageID: false
+  };
+  var doc = readFile('United-Kingdom');
+  let out = JSON.stringify(doc.json(options));
+  t.equal(out, '{}', 'json empty');
+
+  let html = doc.html(options);
+  t.ok(html.length < 100, 'html empty');
+
+  let md = doc.markdown(options);
+  t.equal(md, '', 'markdown empty');
+
+  let latex = doc.latex(options);
+  t.equal(latex, '', 'latex empty');
+
+  t.end();
+});

@@ -38,7 +38,7 @@ test('json-output-options', t => {
 
   t.ok(data.plaintext, 'plaintext');
   t.ok(data.html, 'html');
-  t.ok(data.markdown, 'markdown');
+  t.ok(data.markdown === '', 'markdown');
   t.end();
 });
 

@@ -40,7 +40,9 @@ const toHtml = function(doc, options) {
     html += doc.infoboxes().map(i => i.html(options)).join('\n');
   }
   //render each section
-  html += data.sections.map(s => s.html(options)).join('\n');
+  if (options.sections === true || options.paragraphs === true || options.sentences === true) {
+    html += data.sections.map(s => s.html(options)).join('\n');
+  }
   html += '</body>\n';
   html += '</html>';
   return html;

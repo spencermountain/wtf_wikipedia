@@ -1,10 +1,17 @@
 const smartReplace = require('../lib/smartReplace');
 const helpers = require('../lib/helpers');
+const setDefaults = require('../lib/setDefaults');
+
+const defaults = {
+  links: true,
+  formatting: true,
+};
 // create links, bold, italic in html
-const doSentence = function(sentence, options = {} ) {
+const toLatex = function(sentence, options ) {
+  options = setDefaults(options, defaults);
   let text = sentence.plaintext();
   //turn links back into links
-  if (options.links !== false && sentence.links().length > 0) {
+  if (options.links === true && sentence.links().length > 0) {
     sentence.links().forEach((link) => {
       let href = '';
       if (link.site) {
@@ -24,20 +31,22 @@ const doSentence = function(sentence, options = {} ) {
       text = smartReplace(text, str, tag);
     });
   }
-  if (sentence.data.fmt) {
-    if (sentence.data.fmt.bold) {
-      sentence.data.fmt.bold.forEach((str) => {
-        let tag = '\\textbf{' + str + '}';
-        text = smartReplace(text, str, tag);
-      });
-    }
-    if (sentence.data.fmt.italic) {
-      sentence.data.fmt.italic.forEach((str) => {
-        let tag = '\\textit{' + str + '}';
-        text = smartReplace(text, str, tag);
-      });
+  if (options.formatting === true) {
+    if (sentence.data.fmt) {
+      if (sentence.data.fmt.bold) {
+        sentence.data.fmt.bold.forEach((str) => {
+          let tag = '\\textbf{' + str + '}';
+          text = smartReplace(text, str, tag);
+        });
+      }
+      if (sentence.data.fmt.italic) {
+        sentence.data.fmt.italic.forEach((str) => {
+          let tag = '\\textit{' + str + '}';
+          text = smartReplace(text, str, tag);
+        });
+      }
     }
   }
   return text;
 };
-module.exports = doSentence;
+module.exports = toLatex;

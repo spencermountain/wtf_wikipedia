@@ -95,3 +95,9 @@
 * keep `#` anchor data in .links()
 * show links default-on in latex output, like in md and html
 * render html/latex/json 'soft redirect', instead of blank pages
+### 5.4.0
+* support `.paragraphs()` - big but non-breaking change.
+* :warning: changes to output of `.json()`. cleaning-up redundant data. (sorry for the frequent changes here).:warning:
+* * remove top-level `templates` data (found in `section`)
+* * remove top-level `citations` data (found in `section`)
+* return empty arrays in `.json()` again  ¯\_(:/)_/¯

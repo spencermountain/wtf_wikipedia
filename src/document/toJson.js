@@ -5,43 +5,35 @@ const defaults = {
   title: true,
   pageID: true,
   categories: true,
-  citations: true,
   coordinates: true,
-  infoboxes: true,
   sections: true,
-
-  images: false, //these are already in sections/infoboxes
-  plaintext: false,
-  html: false,
-  markdown: false,
 };
 
 //an opinionated output of the most-wanted data
 const toJSON = function(doc, options) {
   options = setDefaults(options, defaults);
   let data = {};
-
-  if (options.title && (doc.options.title || doc.title())) {
+  if (options.title) {
     data.title = doc.options.title || doc.title();
   }
   if (options.pageID && doc.options.pageID) {
     data.pageID = doc.options.pageID;
   }
-  if (options.categories && doc.categories().length > 0) {
+  if (options.categories) {
     data.categories = doc.categories();
   }
-  if (options.citations && doc.citations().length > 0) {
+  if (options.citations) {
     data.citations = doc.citations();
   }
-  if (options.coordinates && doc.coordinates().length > 0) {
+  if (options.coordinates) {
     data.coordinates = doc.coordinates();
   }
 
   //these need their own .json() method
-  if (options.infoboxes && doc.infoboxes().length > 0) {
+  if (options.infoboxes) {
     data.infoboxes = doc.infoboxes().map(i => i.json(options));
   }
-  if (options.images && doc.images().length > 0) {
+  if (options.images) {
     data.images = doc.images().map(i => i.json(options));
   }
   if (options.sections) {

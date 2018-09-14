@@ -1,29 +1,30 @@
 const wtf = require('./src/index');
-// const readFile = require('./tests/lib/_cachedPage');
+const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
-
+let options = {
+  // sections: false,
+  // paragraphs: false,
+  // sentences: true,
+  // lists: false,
+  // title: false,
+  // links: false,
+  // images: false,
+  // tables: false,
+};
 // (async () => {
-//   const doc = await wtf.fetch(`Abraham Lincoln`, 'en');
-//   // doc.html();
+//   const doc = await wtf.fetch(`United Kingdom`, 'en');
+//   console.log('|' + doc.latex(options) + '|');
 // })();
 
-let doc = wtf(`hello world.
-new line here.
- 
-then skipped two
-`);
 
-// paragraph two is here.
-// == section two==
-// paragraph three is here.
-// * some list
-// * is here
-// last paragraph here.
-let options = {
-  sentences: true,
-  images: false
-};
-console.log(doc.paragraphs());
+// let doc = readFile('United-Kingdom');
+// console.log(doc.sentences(0).html(options));
 
-// console.log(options);
+var doc = readFile('royal_cinema');
+var data = doc.json({
+  templates: false,
+  images: false,
+  infoboxes: true
+});
+console.log(data);

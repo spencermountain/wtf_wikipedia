@@ -1,6 +1,11 @@
 const smartReplace = require('../lib/smartReplace');
 const helpers = require('../lib/helpers');
+const setDefaults = require('../lib/setDefaults');
 
+const defaults = {
+  links: true,
+  formatting: true,
+};
 // add `[text](href)` to the text
 const doLink = function(md, link) {
   let href = '';
@@ -23,22 +28,25 @@ const doLink = function(md, link) {
 };
 
 //create links, bold, italic in markdown
-const doSentence = (sentence) => {
+const toMarkdown = (sentence, options) => {
+  options = setDefaults(options, defaults);
   let md = sentence.text();
   //turn links back into links
-  // if (options.links === true) {
-  sentence.links().forEach((link) => {
-    md = doLink(md, link);
-  });
-  // }
+  if (options.links === true) {
+    sentence.links().forEach((link) => {
+      md = doLink(md, link);
+    });
+  }
   //turn bolds into **bold**
-  sentence.bold().forEach((b) => {
-    md = smartReplace(md, b, '**' + b + '**');
-  });
-  //support *italics*
-  sentence.italic().forEach((i) => {
-    md = smartReplace(md, i, '*' + i + '*');
-  });
+  if (options.formatting === true) {
+    sentence.bold().forEach((b) => {
+      md = smartReplace(md, b, '**' + b + '**');
+    });
+    //support *italics*
+    sentence.italic().forEach((i) => {
+      md = smartReplace(md, i, '*' + i + '*');
+    });
+  }
   return md;
 };
-module.exports = doSentence;
+module.exports = toMarkdown;

@@ -13,33 +13,34 @@ const defaults = {
   images: true,
 };
 //
-const toJSON = function(s, options) {
+const toJSON = function(section, options) {
   options = setDefaults(options, defaults);
   let data = {};
   if (options.title) {
-    data.title = s.title();
+    data.title = section.title();
   }
   if (options.depth) {
-    data.depth = s.depth;
+    data.depth = section.depth;
   }
   //these return objects
   if (options.paragraphs === true) {
-    data.paragraphs = s.paragraphs().map(p => p.json());
-  } else if (options.sentences === true) {
-    data.sentences = s.sentences().map(sent => sent.json());
+    data.paragraphs = section.paragraphs().map(p => p.json(options));
   }
-  if (options.images && s.images().length > 0) {
-    data.images = s.images().map(img => img.json(options));
+  if (options.sentences === true) {
+    data.sentences = section.sentences().map(s => s.json(options));
+  }
+  if (options.images) {
+    data.images = section.images().map(img => img.json(options));
   }
   //more stuff
-  if (options.tables && s.tables().length > 0) {
-    data.tables = s.tables().map(t => t.json());
+  if (options.tables) {
+    data.tables = section.tables().map(t => t.json(options));
   }
-  if (options.templates && s.templates().length > 0) {
-    data.templates = s.templates();
+  if (options.templates) {
+    data.templates = section.templates();
   }
-  if (options.lists && s.lists().length > 0) {
-    data.tables = s.lists().map(list => list.json());
+  if (options.lists) {
+    data.lists = section.lists().map(list => list.json(options));
   }
   return data;
 };

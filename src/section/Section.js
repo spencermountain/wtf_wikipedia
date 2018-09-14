@@ -8,7 +8,6 @@ const setDefaults = require('../lib/setDefaults');
 const aliasList = require('../lib/aliases');
 
 const defaults = {
-  infoboxes: true,
   tables: true,
   lists: true,
   citations: true,

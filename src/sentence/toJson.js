@@ -9,16 +9,16 @@ const defaults = {
 const toJSON = function(s, options) {
   options = setDefaults(options, defaults);
   let data = {};
-  if (options.text || options.plaintext) {
+  if (options.text) {
     data.text = s.plaintext();
   }
-  if (options.links && s.data.links) {
+  if (options.links) {
     data.links = s.links();
   }
-  if (options.formatting && s.data.fmt) {
+  if (options.formatting) {
     data.formatting = s.data.fmt;
   }
-  if (options.dates && s.data.dates) {
+  if (options.dates && s.data.dates !== undefined) {
     data.dates = s.data.dates;
   }
   return data;

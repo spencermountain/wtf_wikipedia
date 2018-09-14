@@ -1,5 +1,13 @@
-
+const setDefaults = require('../lib/setDefaults');
+const defaults = {
+  title: true,
+  images: true,
+  paragraphs: true,
+  tables: true,
+  lists: true,
+};
 const doSection = (section, options) => {
+  options = setDefaults(options, defaults);
   let html = '';
   //make the header
   if (options.title === true && section.title()) {
@@ -19,11 +27,11 @@ const doSection = (section, options) => {
     html += section.tables().map((t) => t.html(options)).join('\n');
   }
   // //make a html bullet-list
-  if (section.lists() && options.lists === true) {
+  if (options.lists === true) {
     html += section.lists().map((list) => list.html(options)).join('\n');
   }
   //finally, write the sentence text.
-  if (options.sentences === true) {
+  if (options.paragraphs === true) {
     html += '  <div class="text">\n';
     section.paragraphs().forEach((p) => {
       html += '    <p class="paragraph">\n';
@@ -31,6 +39,8 @@ const doSection = (section, options) => {
       html += '\n    </p>\n';
     });
     html += '  </div>\n';
+  } else if (options.sentences === true) {
+    html += '      ' + section.sentences().map((s) => s.html(options)).join(' ');
   }
   return '<div class="section">\n' + html + '</div>\n';
 };
