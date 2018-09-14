@@ -2,7 +2,6 @@ const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
 const toJSON = require('./toJson');
 const toLatex = require('./toLatex');
-const Sentence = require('../sentence/Sentence');
 const Infobox = require('../infobox/Infobox');
 const List = require('../list/List');
 const setDefaults = require('../lib/setDefaults');
@@ -14,7 +13,7 @@ const defaults = {
   lists: true,
   citations: true,
   images: true,
-  sentences: true,
+  sentences: true
 };
 
 //the stuff between headings - 'History' section for example
@@ -54,10 +53,17 @@ const methods = {
     return this.depth;
   },
   sentences: function(n) {
-    let arr = this.data.sentences.map((s) => {
-      s = new Sentence(s);
-      return s;
+    let arr = [];
+    this.data.paragraphs.forEach(p => {
+      arr = arr.concat(p.sentences());
     });
+    if (typeof n === 'number') {
+      return arr[n];
+    }
+    return arr || [];
+  },
+  paragraphs: function(n) {
+    let arr = this.data.paragraphs;
     if (typeof n === 'number') {
       return arr[n];
     }
@@ -65,17 +71,17 @@ const methods = {
   },
   links: function(n) {
     let arr = [];
-    this.infoboxes().forEach((templ) => {
-      templ.links().forEach((link) => arr.push(link));
+    this.infoboxes().forEach(templ => {
+      templ.links().forEach(link => arr.push(link));
     });
-    this.sentences().forEach((s) => {
-      s.links().forEach((link) => arr.push(link));
+    this.sentences().forEach(s => {
+      s.links().forEach(link => arr.push(link));
     });
-    this.tables().forEach((t) => {
-      t.links().forEach((link) => arr.push(link));
+    this.tables().forEach(t => {
+      t.links().forEach(link => arr.push(link));
     });
-    this.lists().forEach((list) => {
-      list.links().forEach((link) => arr.push(link));
+    this.lists().forEach(list => {
+      list.links().forEach(link => arr.push(link));
     });
     if (typeof n === 'number') {
       return arr[n];
@@ -104,7 +110,7 @@ const methods = {
     if (typeof clue === 'number') {
       return new Infobox(arr[clue]);
     }
-    return arr.map((obj) => {
+    return arr.map(obj => {
       return new Infobox(obj);
     });
   },
@@ -120,7 +126,7 @@ const methods = {
       return new List(this.data.lists[clue]);
     }
     let lists = this.data.lists || [];
-    return lists.map((arr) => new List(arr));
+    return lists.map(arr => new List(arr));
   },
   interwiki: function(clue) {
     if (typeof clue === 'number') {
@@ -150,7 +156,7 @@ const methods = {
     let bads = {};
     bads[this.title()] = true;
     //remove children too
-    this.children().forEach((sec) => bads[sec.title()] = true);
+    this.children().forEach(sec => (bads[sec.title()] = true));
     let arr = this.doc.data.sections;
     arr = arr.filter(sec => bads.hasOwnProperty(sec.title()) !== true);
     this.doc.data.sections = arr;
@@ -164,7 +170,7 @@ const methods = {
     }
     let sections = this.doc.sections();
     let index = this.index();
-    for(let i = index + 1; i < sections.length; i += 1) {
+    for (let i = index + 1; i < sections.length; i += 1) {
       if (sections[i].depth < this.depth) {
         return null;
       }
@@ -192,7 +198,7 @@ const methods = {
     let children = [];
     //(immediately preceding sections with higher depth)
     if (sections[index + 1] && sections[index + 1].depth > this.depth) {
-      for(let i = index + 1; i < sections.length; i += 1) {
+      for (let i = index + 1; i < sections.length; i += 1) {
         if (sections[i].depth > this.depth) {
           children.push(sections[i]);
         } else {
@@ -216,7 +222,7 @@ const methods = {
     }
     let sections = this.doc.sections();
     let index = this.index();
-    for(let i = index; i >= 0; i -= 1) {
+    for (let i = index; i >= 0; i -= 1) {
       if (sections[i] && sections[i].depth < this.depth) {
         return sections[i];
       }
@@ -224,24 +230,30 @@ const methods = {
     return null;
   },
 
-  markdown : function(options) {
+  markdown: function(options) {
     options = setDefaults(options, defaults);
     return toMarkdown(this, options);
   },
-  html : function(options) {
+  html: function(options) {
     options = setDefaults(options, defaults);
     return toHtml(this, options);
   },
-  text : function(options) {
+  text: function(options) {
     options = setDefaults(options, defaults);
-    return this.sentences().map(s => s.text(options)).join(' ');
+    let pList = this.paragraphs();
+    pList = pList.map(p => {
+      let sList = p.sentences();
+      sList = sList.map(s => s.text(options));
+      return sList.join(' ');
+    });
+    return pList.join('\n\n');
   },
-  latex : function(options) {
+  latex: function(options) {
     return toLatex(this, options);
   },
-  json : function(options) {
+  json: function(options) {
     return toJSON(this, options);
-  },
+  }
 };
 //aliases
 methods.next = methods.nextSibling;
@@ -249,11 +261,11 @@ methods.last = methods.lastSibling;
 methods.previousSibling = methods.lastSibling;
 methods.previous = methods.lastSibling;
 methods.references = methods.citations;
-Object.keys(methods).forEach((k) => {
+Object.keys(methods).forEach(k => {
   Section.prototype[k] = methods[k];
 });
 //add alises, too
-Object.keys(aliasList).forEach((k) => {
+Object.keys(aliasList).forEach(k => {
   Section.prototype[k] = methods[aliasList[k]];
 });
 module.exports = Section;

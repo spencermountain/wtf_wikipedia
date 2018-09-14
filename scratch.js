@@ -8,4 +8,14 @@ const wtf = require('./src/index');
 //   // doc.html();
 // })();
 
-console.log(wtf(`hello '''[[Palme d'Or]]''' world`).text());
+let doc = wtf(`hello world.
+
+
+paragraph two is here.
+== section two==
+paragraph three is here.
+* some list
+* is here
+last paragraph here.
+`);
+console.log(doc.json());

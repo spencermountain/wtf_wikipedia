@@ -12,7 +12,6 @@ const doSection = (section, options) => {
     let imgs = section.images();
     if (imgs.length > 0) {
       html += imgs.map((image) => image.html(options)).join('\n');
-      html += '\n';
     }
   }
   //make a html table
@@ -25,9 +24,13 @@ const doSection = (section, options) => {
   }
   //finally, write the sentence text.
   if (options.sentences === true) {
-    html += '  <div class="text">\n    ';
-    html += section.sentences().map((s) => s.html(options)).join(' ');
-    html += '\n  </div>\n';
+    html += '  <div class="text">\n';
+    section.paragraphs().forEach((p) => {
+      html += '    <p class="paragraph">\n';
+      html += '      ' + p.sentences().map((s) => s.html(options)).join(' ');
+      html += '\n    </p>\n';
+    });
+    html += '  </div>\n';
   }
   return '<div class="section">\n' + html + '</div>\n';
 };
