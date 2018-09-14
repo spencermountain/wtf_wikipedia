@@ -1,24 +1,24 @@
-const dontDo = {
-  image: true,
-  caption: true,
-  alt: true,
-  signature: true,
-  'signature alt': true,
+const dontDo = require('./_skip-keys');
+const setDefaults = require('../lib/setDefaults');
+const defaults = {
+  images: true,
 };
+
 //
 const infobox = function(obj, options) {
+  options = setDefaults(options, defaults);
   let html = '<table class="infobox">\n';
   html += '  <thead>\n';
   html += '  </thead>\n';
   html += '  <tbody>\n';
   //put image and caption on the top
-  if (obj.data.image) {
+  if (options.images === true && obj.data.image) {
     html += '    <tr>\n';
     html += '       <td colspan="2" style="text-align:center">\n';
     html += '       ' + obj.image().html() + '\n';
     html += '       </td>\n';
     if (obj.data.caption || obj.data.alt) {
-      let caption = obj.data.caption ? obj.data.caption.html() : obj.data.alt.html();
+      let caption = obj.data.caption ? obj.data.caption.html(options) : obj.data.alt.html(options);
       html += '       <td colspan="2" style="text-align:center">\n';
       html += '         ' + caption + '\n';
       html += '       </td>\n';

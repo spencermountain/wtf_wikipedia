@@ -1,16 +1,16 @@
 const setDefaults = require('../lib/setDefaults');
 const defaults = {
-  title: true,
+  headers: true,
   images: true,
-  paragraphs: true,
   tables: true,
   lists: true,
+  paragraphs: true,
 };
 const doSection = (section, options) => {
   options = setDefaults(options, defaults);
   let html = '';
   //make the header
-  if (options.title === true && section.title()) {
+  if (options.headers === true && section.title()) {
     let num = 1 + section.depth;
     html += '  <h' + num + '>' + section.title() + '</h' + num + '>';
     html += '\n';

@@ -1,13 +1,7 @@
 const setDefaults = require('../lib/setDefaults');
-
 const defaults = {
-  paragraphs: true,
-  links: true,
-  images: true,
-  tables: true,
-  lists: true,
-  title: true,
-  formatting: true,
+  infoboxes: true,
+  sections: true,
 };
 
 // we should try to make this look like the wikipedia does, i guess.
@@ -35,9 +29,10 @@ const toLatex = function(doc, options) {
     out += doc.infoboxes().map(i => i.latex(options)).join('\n');
   }
   //render each section
-  if (options.sections === true) {
+  if (options.sections === true || options.paragraphs === true || options.sentences === true) {
     out += doc.sections().map(s => s.latex(options)).join('\n');
   }
+  //todo support options.citations
   return out;
 };
 module.exports = toLatex;

@@ -1,18 +1,18 @@
 const setDefaults = require('../lib/setDefaults');
 
 const defaults = {
-  title: true,
+  headers: true,
   images: true,
   tables: true,
   lists: true,
-  sentences: true,
+  paragraphs: true,
 };
 
 const doSection = (section, options) => {
   options = setDefaults(options, defaults);
   let md = '';
   //make the header
-  if (options.title === true && section.title()) {
+  if (options.headers === true && section.title()) {
     let header = '##';
     for(let i = 0; i < section.depth; i += 1) {
       header += '#';
@@ -45,7 +45,7 @@ const doSection = (section, options) => {
     }
   }
   //finally, write the sentence text.
-  if (options.sentences === true) {
+  if (options.paragraphs === true || options.sentences === true) {
     md += section.sentences().map((s) => s.markdown(options)).join(' ');
   }
   return md;

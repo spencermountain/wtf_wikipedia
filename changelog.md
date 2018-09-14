@@ -100,4 +100,9 @@
 * :warning: changes to output of `.json()`. cleaning-up redundant data. (sorry for the frequent changes here).:warning:
 * * remove top-level `templates` data (found in `section`)
 * * remove top-level `citations` data (found in `section`)
-* return empty arrays in `.json()` again  ¯\_(:/)_/¯
+* return empty arrays in `.json()` again  ¯\_(:/)_ /¯
+* remove <h1> title on html output
+* change ambiguous `options.title` to `options.headers`
+* support lists of 1
+* begin removing empty references section by default
+* begin support for rendering citations at the bottom of documents

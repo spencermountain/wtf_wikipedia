@@ -1,10 +1,18 @@
+const setDefaults = require('../lib/setDefaults');
+const defaults = {
+  headers: true,
+  images: true,
+  tables: true,
+  lists: true,
+  paragraphs: true,
+};
 //map '==' depth to 'subsection', 'subsubsection', etc
 const doSection = (section, options) => {
-  options = options || {};
+  options = setDefaults(options, defaults);
   let out = '';
   let num = 1;
   //make the header
-  if (options.title === true && section.title()) {
+  if (options.headers === true && section.title()) {
     num = 1 + section.depth;
     var vOpen = '\n';
     var vClose = '}';
@@ -37,23 +45,23 @@ const doSection = (section, options) => {
     out += '\n';
   }
   //put any images under the header
-  if (section.images() && options.images === true) {
+  if (options.images === true && section.images()) {
     out += section.images().map((image) => image.latex(options)).join('\n');
   //out += '\n';
   }
   //make a out tablew
-  if (section.tables() && options.tables === true) {
+  if (options.tables === true && section.tables()) {
     out += section.tables().map((t) => t.latex(options)).join('\n');
   }
   // //make a out bullet-list
-  if (section.lists() && options.lists === true) {
+  if (options.lists === true && section.lists()) {
     out += section.lists().map((list) => list.latex(options)).join('\n');
   }
   //finally, write the sentence text.
-  if (section.sentences() && options.sentences === true) {
-    //out += '\n\n% BEGIN Paragraph\n'
-    out += section.sentences().map((s) => s.latex(options)).join(' ');
-    //out += '\n% END Paragraph';
+  if (options.paragraphs === true || options.sentences === true) {
+    out += '\n\n% BEGIN Paragraph\n';
+    out += section.paragraphs().map((s) => s.latex(options)).join(' ');
+    out += '\n% END Paragraph';
     out += '\n';
   }
   // var title_tag = ' SECTION depth=' + num + ' - TITLE: ' + section.title + '\n';
