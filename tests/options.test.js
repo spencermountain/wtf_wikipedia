@@ -52,6 +52,7 @@ test('turn all options off', t => {
     title: false,
     categories: false,
     coordinates: false,
+    infoboxes: false,
     pageID: false
   };
   var doc = readFile('United-Kingdom');

@@ -12,8 +12,8 @@ const toLatex = function(p, options) {
     out += p.sentences().reduce((str, s) => {
       str += s.latex(options) + '\n';
       return str;
-    }, {});
-    out += '\n% END Paragraph';
+    }, '');
+    out += '% END Paragraph';
   }
   return out;
 };

@@ -46,7 +46,7 @@ const doSection = (section, options) => {
   }
   //put any images under the header
   if (options.images === true && section.images()) {
-    out += section.images().map((image) => image.latex(options)).join('\n');
+    out += section.images().map((img) => img.latex(options)).join('\n');
   //out += '\n';
   }
   //make a out tablew

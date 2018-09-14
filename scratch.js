@@ -20,8 +20,15 @@ let options = {
 // })();
 
 
-let doc = readFile('United-Kingdom');
+// let doc = readFile('United-Kingdom');
 // console.log(doc.sentences(0).html(options));
 
 // var doc = readFile('royal_cinema');
-console.log(doc.json());
+// console.log(wtf(`My image [File:my_image.png]`).images(0).latex());
+
+var have = wtf(`==My Section==
+Leading text
+* First item
+*Second Item
+Closing remark`).latex();
+console.log(have);

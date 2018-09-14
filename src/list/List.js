@@ -9,10 +9,10 @@ const toHtml = (list, options) => {
   return html;
 };
 
-const toLatex = (list) => {
+const toLatex = (list, options) => {
   let out = '\\begin{itemize}\n';
   list.forEach((o) => {
-    out += '  \\item ' + o.text + '\n';
+    out += '  \\item ' + o.text(options) + '\n';
   });
   out += '\\end{itemize}\n';
   return out;
