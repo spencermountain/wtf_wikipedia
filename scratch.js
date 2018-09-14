@@ -3,14 +3,14 @@ const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 let options = {
-  sections: false,
+  sections: true,
   // paragraphs: false,
   // sentences: true,
   // title: false,
-  lists: false,
+  lists: true,
   // links: false,
   templates: false,
-  citations: true
+  citations: false
 // images: false,
 // tables: false,
 };

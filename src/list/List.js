@@ -1,11 +1,11 @@
 const aliasList = require('../lib/aliases');
 
-const toHtml = (list) => {
-  let html = '<ul class="list">\n';
+const toHtml = (list, options) => {
+  let html = '  <ul class="list">\n';
   list.forEach((o) => {
-    html += '  <li>' + o.text() + '</li>\n';
+    html += '    <li>' + o.html(options) + '</li>\n';
   });
-  html += '</ul>\n';
+  html += '  </ul>\n';
   return html;
 };
 
@@ -52,17 +52,17 @@ const methods = {
     });
     return links;
   },
-  html() {
-    return toHtml(this.data);
+  html(options) {
+    return toHtml(this.data, options);
   },
-  latex() {
-    return toLatex(this.data);
+  latex(options) {
+    return toLatex(this.data, options);
   },
-  markdown() {
-    return toMarkdown(this.data);
+  markdown(options) {
+    return toMarkdown(this.data, options);
   },
-  json() {
-    return this.data.map(s => s.json());
+  json(options) {
+    return this.data.map(s => s.json(options));
   },
   text() {
     return toText(this.data);

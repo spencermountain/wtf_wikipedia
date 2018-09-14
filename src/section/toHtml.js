@@ -31,7 +31,7 @@ const doSection = (section, options) => {
     html += section.lists().map((list) => list.html(options)).join('\n');
   }
   //finally, write the sentence text.
-  if (options.paragraphs === true) {
+  if (options.paragraphs === true && section.paragraphs().length > 0) {
     html += '  <div class="text">\n';
     section.paragraphs().forEach((p) => {
       html += '    <p class="paragraph">\n';

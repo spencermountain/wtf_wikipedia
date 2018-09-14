@@ -59,9 +59,7 @@ const doSection = (section, options) => {
   }
   //finally, write the sentence text.
   if (options.paragraphs === true || options.sentences === true) {
-    out += '\n\n% BEGIN Paragraph\n';
     out += section.paragraphs().map((s) => s.latex(options)).join(' ');
-    out += '\n% END Paragraph';
     out += '\n';
   }
   // var title_tag = ' SECTION depth=' + num + ' - TITLE: ' + section.title + '\n';

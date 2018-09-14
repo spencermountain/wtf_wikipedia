@@ -6,13 +6,15 @@ const defaults = {
 
 const toLatex = function(p, options) {
   options = setDefaults(options, defaults);
-  let md = '';
+  let out = '';
   if (options.sentences === true) {
-    md += p.sentences().reduce((str, s) => {
+    out += '\n\n% BEGIN Paragraph\n';
+    out += p.sentences().reduce((str, s) => {
       str += s.latex(options) + '\n';
       return str;
     }, {});
+    out += '\n% END Paragraph';
   }
-  return md;
+  return out;
 };
 module.exports = toLatex;

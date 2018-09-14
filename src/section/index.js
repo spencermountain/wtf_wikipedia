@@ -1,5 +1,6 @@
 const Section = require('./Section');
 const find_recursive = require('../lib/recursive_match');
+const isReference = /references?:?/i; //todo support i18n
 
 //interpret ==heading== lines
 const parse = {
@@ -53,6 +54,10 @@ const splitSections = function(wiki, options) {
     section = parse.heading(section, heading);
     //parse it up
     section = doSection(section, content, options);
+    //remove empty references section
+    if (isReference.test(section.title()) === true && section.paragraphs().length === 0) {
+      continue;
+    }
     sections.push(section);
   }
   return sections;
