@@ -17,6 +17,13 @@ const methods = {
     }
     return arr;
   },
+  interwiki: function(n) {
+    let arr = this.links().filter(l => l.wiki !== undefined);
+    if (typeof n === 'number') {
+      return arr[n];
+    }
+    return arr;
+  },
   bolds: function(n) {
     let arr = [];
     if (this.data && this.data.fmt && this.data.fmt.bold) {

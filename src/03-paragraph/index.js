@@ -1,9 +1,11 @@
 const Paragraph = require('./Paragraph');
+const find_recursive = require('../lib/recursive_match');
 const parseSentences = require('../04-sentence').parseSentences;
 
 const twoNewLines = /\r?\n\W*\r?\n/;
 const hasChar = /\w/;
 const parse = {
+  image: require('../image'),
   references: require('../reference'),
   list: require('../list'),
   templates: require('../templates'),
@@ -17,10 +19,15 @@ const parseParagraphs = function(wiki) {
   pList = pList.map(str => {
     let data = {
       lists: [],
-      sentences: []
+      sentences: [],
+      images: []
     };
-    // //parse the lists
+    //parse the lists
     str = parse.list(str, data);
+    //parse+remove scary '[[ [[]] ]]' stuff
+    let matches = find_recursive('[', ']', str);
+    // parse images
+    str = parse.image(matches, data, str);
     //parse the sentences
     parseSentences(str, data);
     return new Paragraph(data);

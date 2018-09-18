@@ -3,7 +3,6 @@ const toHtml = require('./toHtml');
 const toJSON = require('./toJson');
 const toLatex = require('./toLatex');
 const Infobox = require('../infobox/Infobox');
-const List = require('../list/List');
 const setDefaults = require('../lib/setDefaults');
 const aliasList = require('../lib/aliases');
 
@@ -11,7 +10,6 @@ const defaults = {
   tables: true,
   lists: true,
   citations: true,
-  images: true,
   paragraphs: true,
 };
 
@@ -128,17 +126,25 @@ const methods = {
     }
     return arr;
   },
-  interwiki: function(clue) {
-    if (typeof clue === 'number') {
-      return this.data.interwiki[clue];
+  interwiki(num) {
+    let arr = [];
+    this.paragraphs().forEach(p => {
+      arr = arr.concat(p.interwiki());
+    });
+    if (typeof num === 'number') {
+      return arr[num];
     }
-    return this.data.interwiki || [];
+    return arr || [];
   },
   images: function(clue) {
+    let arr = [];
+    this.paragraphs().forEach((p) => {
+      arr = arr.concat(p.images());
+    });
     if (typeof clue === 'number') {
-      return this.data.images[clue];
+      return arr[clue];
     }
-    return this.data.images || [];
+    return arr || [];
   },
   references: function(clue) {
     let arr = this.data.references || [];

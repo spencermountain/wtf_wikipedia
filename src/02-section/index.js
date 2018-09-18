@@ -1,13 +1,10 @@
 const Section = require('./Section');
-const find_recursive = require('../lib/recursive_match');
 const isReference = /^(references?|einzelnachweise|referencias|références|notes et références|脚注|referenser|bronnen|примечания):?/i; //todo support more languages
 const section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})/g;
 
 //interpret ==heading== lines
 const parse = {
   heading: require('./heading'),
-  image: require('../image'),
-  interwiki: require('./interwiki'),
   table: require('../table'),
   paragraphs: require('../03-paragraph'),
   templates: require('../templates'),
@@ -23,12 +20,7 @@ const oneSection = function( wiki, data, options) {
   wiki = parse.table(data, wiki);
   //parse-out all {{templates}}
   wiki = parse.templates(wiki, data);
-  // //parse+remove scary '[[ [[]] ]]' stuff
-  //second, remove [[file:...[[]] ]] recursions
-  let matches = find_recursive('[', ']', wiki);
-  wiki = parse.image(matches, data, wiki, options);
-  wiki = parse.interwiki(matches, data, wiki, options);
-
+  //now parse all double-newlines
   let res = parse.paragraphs(wiki, options);
   data.paragraphs = res.paragraphs;
   wiki = res.wiki;

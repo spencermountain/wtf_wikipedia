@@ -12,25 +12,47 @@ const Paragraph = function(data) {
 };
 
 const methods = {
-  sentences: function(n) {
-    let arr = this.data.sentences || [];
-    if (typeof n === 'number') {
-      return arr[n];
+  sentences: function(num) {
+    if (typeof num === 'number') {
+      return this.data.sentences[num];
+    }
+    return this.data.sentences || [];
+  },
+  references: function(num) {
+    if (typeof num === 'number') {
+      return this.data.references[num];
+    }
+    return this.data.references;
+  },
+  lists: function(num) {
+    if (typeof num === 'number') {
+      return this.data.lists[num];
+    }
+    return this.data.lists;
+  },
+  images(num) {
+    if (typeof num === 'number') {
+      return this.data.images[num];
+    }
+    return this.data.images || [];
+  },
+  links: function(num) {
+    let arr = [];
+    this.sentences().forEach(s => {
+      arr = arr.concat(s.links());
+    });
+    if (typeof num === 'number') {
+      return arr[num];
     }
     return arr || [];
   },
-  references: function() {
-    return this.data.references;
-  },
-  lists: function() {
-    return this.data.lists;
-  },
-  links: function(n) {
-    let arr = this.sentences().map(s => {
-      s.links();
+  interwiki(num) {
+    let arr = [];
+    this.sentences().forEach(s => {
+      arr = arr.concat(s.interwiki());
     });
-    if (typeof n === 'number') {
-      return arr[n];
+    if (typeof num === 'number') {
+      return arr[num];
     }
     return arr || [];
   },

@@ -109,3 +109,4 @@
 * move citation-parsing to paragraph-level
 * remove `.wikitext()` and `.reparse()` methods - keeping wikitext stateful caused too many issues
 * turn `Image.file` into a function
+* include `interwiki()` results in `.links()`

@@ -12,24 +12,14 @@ const readFile = require('./tests/lib/_cachedPage');
 // let doc = readFile('toronto');
 // console.log(doc.json());
 
-var p = wtf.fetch('Tony Hawk', 'en', {
-  'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
-});
-p.then(function(doc) {
-  console.log(doc.sections());
-});
-
-// let str = `John smith was a comedian<ref name="cool">{{cite web |url=http://supercool.com |title=John Smith sure was |last= |first= |date= |website= |publisher= |access-date= |quote=}}</ref>
-// and tap-dance pioneer. He was born in glasgow<ref>irelandtimes</ref>.
-//
-// This is paragraph two.<ref>{{cite web |url=http://paragraphtwo.net}}</ref> It is the same deal.
-//
-// ==Section==
-// Here is the third paragraph. Nobody knows if this will work.<ref>[http://commonsense.com/everybody|says everybody]</ref>
-//
-// `;
-// console.log(wtf(str).paragraphs(2).sentences());
-
+// var p = wtf.fetch('Tony Hawk', 'en', {
+//   'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
+// });
+// p.then(function(doc) {
+//   console.log(doc.sections());
+// });
+var str = 'hello [[wikinews:Radiohead]] world';
+console.log(wtf(str).interwiki());
 
 // var str = `{{Coord|44.112|-87.913|display=title}}`;
 // var obj = wtf(str).coordinates();

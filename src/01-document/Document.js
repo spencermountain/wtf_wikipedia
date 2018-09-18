@@ -117,6 +117,9 @@ const methods = {
   links : function(clue) {
     return sectionMap(this, 'links', clue);
   },
+  interwiki : function(clue) {
+    return sectionMap(this, 'interwiki', clue);
+  },
   lists : function(clue) {
     return sectionMap(this, 'lists', clue);
   },
