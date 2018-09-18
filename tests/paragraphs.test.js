@@ -34,7 +34,38 @@ test('newlines in templates', t => {
 Paragraph two!`;
   var doc = wtf(str);
   t.equal(doc.paragraphs().length, 2, 'paragraphs');
-  t.equal(doc.paragraphs(0).text, 'hello world', 'first paragraph');
-  t.equal(doc.paragraphs(1).text, 'Paragraph two!', '2nd paragraph');
+  t.equal(doc.paragraphs(0).text(), 'hello world', 'first paragraph');
+  t.equal(doc.paragraphs(1).text(), 'Paragraph two!', '2nd paragraph');
+  t.end();
+});
+
+test('newlines in tables', t => {
+  var str = `hello world. Up here.
+{| class="wikitable"
+|-
+
+! Header 1
+! Header 2
+! Header 3
+|-
+| row 1, cell 1
+
+
+| row 1, cell 2
+| row 1, cell 3
+
+
+|-
+| row 2, cell 1
+| row 2, cell 2
+| row 2, cell 3
+|}
+
+Second paragraph here.`;
+  var doc = wtf(str);
+  t.equal(doc.paragraphs().length, 2, 'paragraphs');
+  t.equal(doc.paragraphs(0).text(), 'hello world. Up here.', 'first paragraph');
+  t.equal(doc.paragraphs(1).text(), 'Second paragraph here.', '2nd paragraph');
+  t.equal(doc.tables().length, 1, 'got broken table');
   t.end();
 });
