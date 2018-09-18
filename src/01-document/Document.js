@@ -1,4 +1,3 @@
-const parse = require('./index');
 const sectionMap = require('./_sectionMap');
 const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
@@ -32,10 +31,6 @@ const methods = {
       guess = sen.bolds(0);
     }
     return guess;
-  },
-  // allow reparsing after alteration of downloaded wiki source
-  reparse : function () {
-    this.data = parse(this.wiki, this.options);
   },
   isRedirect : function() {
     return this.data.type === 'redirect';

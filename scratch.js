@@ -9,8 +9,15 @@ const readFile = require('./tests/lib/_cachedPage');
 // })();
 
 
-// let doc = readFile('United-Kingdom');
-// console.log(doc.sentences(0).html(options));
+// let doc = readFile('toronto');
+// console.log(doc.json());
+
+var p = wtf.fetch('Tony Hawk', 'en', {
+  'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
+});
+p.then(function(doc) {
+  console.log(doc.sections());
+});
 
 // let str = `John smith was a comedian<ref name="cool">{{cite web |url=http://supercool.com |title=John Smith sure was |last= |first= |date= |website= |publisher= |access-date= |quote=}}</ref>
 // and tap-dance pioneer. He was born in glasgow<ref>irelandtimes</ref>.
@@ -28,8 +35,8 @@ const readFile = require('./tests/lib/_cachedPage');
 // var obj = wtf(str).coordinates();
 // console.log(obj);
 
-var str = `#REDIRECT [[Toronto Blue Jays#Stadium|Tranno]]`;
-console.log(wtf(str).json());
+// var str = `#REDIRECT [[Toronto Blue Jays#Stadium|Tranno]]`;
+// console.log(wtf(str).json());
 
 
 // let str=`{{climate chart

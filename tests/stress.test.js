@@ -121,7 +121,7 @@ test('stress-test-en', t => {
     t.ok(html.match(/\</), ' - - html-has tag');
 
     var json = doc.json();
-    t.ok(Object.keys(json).length > 4, ' - - json-keys-ok');
+    t.ok(Object.keys(json).length > 3, ' - - json-keys-ok');
   });
   t.end();
 });

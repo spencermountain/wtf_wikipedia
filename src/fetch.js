@@ -1,7 +1,7 @@
 //grab the content of any article, off the api
 const fetch = require('cross-fetch');
 const site_map = require('./data/site_map');
-const Document = require('./01-document/Document');
+const parseDocument = require('./01-document');
 // const redirects = require('../parse/page/redirects');
 const isNumber = /^[0-9]*$/;
 
@@ -45,7 +45,7 @@ const postProcess = function(data) {
       pageID: page.pageid,
     };
     try {
-      return new Document(text, options);
+      return parseDocument(text, options);
     } catch (e) {
       console.error(e);
       throw e

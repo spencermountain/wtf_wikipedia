@@ -16,11 +16,6 @@
       "description": "guess the title of the page from the first-sentence"
     },
     {
-      "name": "reparse",
-      "returns": "Document",
-      "description": "allow reparsing after alteration of downloaded wiki source"
-    },
-    {
       "name": "isDisambiguation",
       "returns": "Boolean",
       "description": "is this a placeholder page to direct you to one-of-many possible pages",

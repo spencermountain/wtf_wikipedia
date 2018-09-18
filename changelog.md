@@ -107,4 +107,5 @@
 * begin removing empty references section by default
 * begin support for rendering citations at the bottom of documents
 * move citation-parsing to paragraph-level
-* remove `.wikitext()` methods - caused too many issues
+* remove `.wikitext()` and `.reparse()` methods - keeping wikitext stateful caused too many issues
+* turn `Image.file` into a function
