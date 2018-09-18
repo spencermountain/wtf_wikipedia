@@ -22,6 +22,7 @@ const main = function(wiki, options) {
   if (redirects.isRedirect(wiki) === true) {
     data.type = 'redirect';
     data.redirectTo = redirects.parse(wiki);
+    return data;
   }
   //detect if page is just disambiguator page, and return
   if (disambig.isDisambig(wiki) === true) {

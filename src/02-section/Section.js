@@ -92,10 +92,7 @@ const methods = {
     return this.data.tables || [];
   },
   templates: function(clue) {
-    let arr = [];
-    this.paragraphs().forEach((p) => {
-      arr = arr.concat(p.templates());
-    });
+    let arr = this.data.templates || [];
     if (typeof clue === 'number') {
       return arr[clue];
     }
@@ -122,11 +119,14 @@ const methods = {
     return arr;
   },
   lists: function(clue) {
+    let arr = [];
+    this.paragraphs().forEach((p) => {
+      arr = arr.concat(p.lists());
+    });
     if (typeof clue === 'number') {
-      return new List(this.data.lists[clue]);
+      return arr[clue];
     }
-    let lists = this.data.lists || [];
-    return lists.map(arr => new List(arr));
+    return arr;
   },
   interwiki: function(clue) {
     if (typeof clue === 'number') {
@@ -141,10 +141,7 @@ const methods = {
     return this.data.images || [];
   },
   references: function(clue) {
-    let arr = [];
-    this.paragraphs().forEach((p) => {
-      arr = arr.concat(p.references());
-    });
+    let arr = this.data.references || [];
     if (typeof clue === 'number') {
       return arr[clue];
     }

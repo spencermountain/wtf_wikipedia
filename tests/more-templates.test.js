@@ -51,15 +51,16 @@ test('redirect-list', t => {
 
 test('templates-in-templates', t => {
   var str = `{{marriage|[[Mileva Marić]]<br>|1903|1919|end=div}}<br />{{nowrap|{{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}}<ref>{{cite book |editor-last=Heilbron |editor-first=John L. |title=The Oxford Companion to the History of Modern Science |url=https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233 |date=2003 |publisher=Oxford University Press |isbn=978-0-19-974376-6 |page=233}}</ref>{{sfnp|Pais|1982|p=301}}}}`;
+  var ref = wtf(str).citations(0);
   var templates = wtf(str).templates();
-  t.equal(templates[0].template, 'citation', 'cite-book');
-  t.equal(templates[0].data.url, 'https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233', 'url');
-  t.equal(templates[0].data.isbn, '978-0-19-974376-6', 'isbn');
-  t.equal(templates[1].template, 'marriage', 'marriage1');
-  t.equal(templates[1].name, 'Elsa Löwenthal', 'marriage-1-name');
-  t.equal(templates[2].template, 'sfnp', 'marriage1');
-  t.equal(templates[3].template, 'marriage', 'marriage2');
-  t.equal(templates[3].name, 'Mileva Marić', 'marriage2-name');
+  t.equal(ref.template, 'citation', 'cite-book');
+  t.equal(ref.data.url, 'https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233', 'url');
+  t.equal(ref.data.isbn, '978-0-19-974376-6', 'isbn');
+  t.equal(templates[0].template, 'marriage', 'marriage1');
+  t.equal(templates[0].name, 'Elsa Löwenthal', 'marriage-1-name');
+  t.equal(templates[1].template, 'sfnp', 'sfnp');
+  t.equal(templates[2].template, 'marriage', 'marriage2');
+  t.equal(templates[2].name, 'Mileva Marić', 'marriage2-name');
   t.end();
 });
 

@@ -69,7 +69,7 @@ const oneTemplate = function(tmpl, wiki, data) {
 };
 
 //reduce the scary recursive situations
-const allTemplates = function(wiki, data) {
+const parseTemplates = function(wiki, data) {
   let templates = getTemplates(wiki);
   //first, do the nested (second level) ones
   templates.nested.forEach(tmpl => {
@@ -101,4 +101,4 @@ const allTemplates = function(wiki, data) {
   return wiki;
 };
 
-module.exports = allTemplates;
+module.exports = parseTemplates;

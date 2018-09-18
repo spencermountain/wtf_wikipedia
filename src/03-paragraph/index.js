@@ -16,16 +16,9 @@ const parseParagraphs = function(wiki) {
 
   pList = pList.map(str => {
     let data = {
-      references: [],
       lists: [],
-      sentences: [],
-      templates: []
+      sentences: []
     };
-    //parse-out the <ref></ref> tags
-    str = parse.references(str, data);
-    // str = refs.wiki;
-    //parse-out all {{templates}}
-    str = parse.templates(str, data);
     // //parse the lists
     str = parse.list(str, data);
     //parse the sentences

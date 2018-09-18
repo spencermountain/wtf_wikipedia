@@ -1,6 +1,4 @@
-const makeImage = (image) => {
-  let alt = image.file.replace(/^(file|image):/i, '');
-  alt = alt.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
-  return '  <img src="' + image.thumbnail() + '" alt="' + alt + '"/>';
+const makeImage = (img) => {
+  return '  <img src="' + img.thumbnail() + '" alt="' + img.alt() + '"/>';
 };
 module.exports = makeImage;

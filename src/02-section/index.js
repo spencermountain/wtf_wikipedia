@@ -10,13 +10,19 @@ const parse = {
   interwiki: require('./interwiki'),
   table: require('../table'),
   paragraphs: require('../03-paragraph'),
+  templates: require('../templates'),
+  references: require('../reference'),
   xmlTemplates: require('./xml-templates')
 };
 
-const oneSection = function(data, wiki, options) {
+const oneSection = function( wiki, data, options) {
   wiki = parse.xmlTemplates(data, wiki, options);
+  //parse-out the <ref></ref> tags
+  wiki = parse.references(wiki, data);
   // //parse the tables
   wiki = parse.table(data, wiki);
+  //parse-out all {{templates}}
+  wiki = parse.templates(wiki, data);
   // //parse+remove scary '[[ [[]] ]]' stuff
   //second, remove [[file:...[[]] ]] recursions
   let matches = find_recursive('[', ']', wiki);
@@ -60,12 +66,13 @@ const parseSections = function(wiki, options) {
     let data = {
       title: '',
       depth: null,
-      templates: []
+      templates: [],
+      references: [],
     };
     //figure-out title/depth
     data = parse.heading(data, heading);
     //parse it up
-    data = oneSection(data, content, options);
+    data = oneSection(content, data, options);
     sections.push(data);
   }
   //remove empty references section

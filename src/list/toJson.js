@@ -1,7 +1,6 @@
 
 //
-const toJson = function(p) {
-
-  return p;
+const toJson = function(p, options) {
+  return p.lines().map(s => s.json(options));
 };
 module.exports = toJson;

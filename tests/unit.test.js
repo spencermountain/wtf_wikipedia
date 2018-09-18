@@ -44,7 +44,7 @@ test('redirects', t => {
   ].forEach(a => {
     var o = wtf(a[0]);
     var msg = '\'' + a[0] + '\' -> \'' + o.redirect + '\'';
-    t.equal(o.links(0).page, a[1], msg);
+    t.equal(o.redirectTo().page, a[1], msg);
   });
   t.end();
 });
@@ -91,7 +91,7 @@ test('parse_image', t => {
       'Image:Edouard Recon (2002).jpg'
     ]
   ].forEach(a => {
-    var arr = wtf(a[0]).images().map(o => o.file);
+    var arr = wtf(a[0]).images().map(o => o.file());
     t.deepEqual(arr[0], a[1]);
   });
   t.end();

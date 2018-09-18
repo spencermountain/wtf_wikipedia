@@ -24,6 +24,27 @@ const readFile = require('./tests/lib/_cachedPage');
 // console.log(wtf(str).paragraphs(2).sentences());
 
 
-var str = `{{Coord|44.112|-87.913|display=title}}`;
-var obj = wtf(str).coordinates();
-console.log(obj);
+// var str = `{{Coord|44.112|-87.913|display=title}}`;
+// var obj = wtf(str).coordinates();
+// console.log(obj);
+
+var str = `#REDIRECT [[Toronto Blue Jays#Stadium|Tranno]]`;
+console.log(wtf(str).json());
+
+
+// let str=`{{climate chart
+// | Toronto
+// | −6.7 | -0.7 | 62
+// | −5.6 |  0.4 | 55
+// | −1.9 |  4.7 | 54
+// |  4.1 | 11.5 | 68
+// |  9.9 | 18.4 | 82
+// | 14.9 | 23.9 | 71
+// | 18.0 | 26.6 | 64
+// | 17.4 | 25.5 | 81
+// | 13.4 | 21.0 | 85
+// |  7.4 | 14.0 | 64
+// |  2.3 |  7.5 | 84
+// | −3.1 |  2.1 | 61
+// |float=right
+// |source= Environment Canada }}`

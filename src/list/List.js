@@ -18,6 +18,9 @@ const List = function(data) {
 };
 
 const methods = {
+  lines() {
+    return this.data;
+  },
   links() {
     let links = [];
     this.data.forEach((s) => {

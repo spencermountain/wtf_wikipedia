@@ -29,7 +29,7 @@ const toJSON = function(doc, options) {
   }
   if (doc.isRedirect() === true) {
     data.isRedirect = true;
-    data.redirectTo = redirects.parse(doc.wiki);
+    data.redirectTo = doc.data.redirectTo;
     data.sections = [];
   }
 

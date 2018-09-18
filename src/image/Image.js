@@ -27,27 +27,38 @@ const makeSrc = function(file) {
 };
 
 //the class for our image generation functions
-const Image = function(obj) {
-  this.file = obj.file;
-  this.text = obj.text || ''; //to be compatible as an infobox value
+const Image = function(data) {
+  this.data = data;
 };
 
 const methods = {
+  file() {
+    return this.data.file || '';
+  },
+  alt() {
+    let str = this.data.alt || this.data.file || '';
+    str = str.replace(/^(file|image):/i, '');
+    str = str.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
+    return str.replace(/_/g, ' ');
+  },
+  caption() {
+    return this.data.text || '';
+  },
   links() {
     return [];
   },
   url() {
-    return server + makeSrc(this.file);
+    return server + makeSrc(this.file());
   },
   thumbnail(size) {
     size = size || 300;
-    let path = makeSrc(this.file);
-    let title = encodeTitle(this.file);
+    let path = makeSrc(this.file());
+    let title = encodeTitle(this.file());
     title = encodeURIComponent(title);
     return server + 'thumb/' + path + '/' + size + 'px-' + title;
   },
   format() {
-    let arr = this.file.split('.');
+    let arr = this.file().split('.');
     if (arr[arr.length - 1]) {
       return arr[arr.length - 1].toLowerCase();
     }
@@ -80,7 +91,7 @@ const methods = {
   },
   json: function() {
     return {
-      file: this.file,
+      file: this.file(),
       url: this.url(),
       thumb: this.thumbnail(),
     };

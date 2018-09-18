@@ -1,7 +1,7 @@
 
 //
 const toMarkdown = (list, options) => {
-  return list.map((s) => {
+  return list.lines().map((s) => {
     let str = s.markdown(options);
     return ' * ' + str;
   }).join('\n');

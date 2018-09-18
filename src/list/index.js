@@ -1,9 +1,10 @@
+const List = require('./List');
+const parseLine = require('../04-sentence/').parseLine;
+const Sentence = require('../04-sentence/Sentence');
 const list_reg = /^[#\*:;\|]+/;
 const bullet_reg = /^\*+[^:,\|]{4}/;
 const number_reg = /^ ?\#[^:,\|]{4}/;
 const has_word = /[a-z_0-9\]\}]/i;
-const parseLine = require('../04-sentence/').parseLine;
-const Sentence = require('../04-sentence/Sentence');
 
 // does it start with a bullet point or something?
 const isList = function(line) {
@@ -61,7 +62,7 @@ const parseList = function(wiki, data) {
       theRest.push(lines[i]);
     }
   }
-  data.lists = lists;
+  data.lists = lists.map((l) => new List(l));
   wiki = theRest.join('\n');
   return wiki;
 };

@@ -1,4 +1,3 @@
-let Sentence = require('../04-sentence/Sentence');
 const toJSON = require('./toJson');
 const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
@@ -23,8 +22,8 @@ const methods = {
   references: function() {
     return this.data.references;
   },
-  templates: function() {
-    return this.data.templates;
+  lists: function() {
+    return this.data.lists;
   },
   links: function(n) {
     let arr = this.sentences().map(s => {

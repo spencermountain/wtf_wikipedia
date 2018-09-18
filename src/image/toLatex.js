@@ -1,8 +1,6 @@
 //
 const toLatex = function(image) {
-  let alt = image.text || image.file.replace(/^(file|image):/i, '');
-  alt = alt.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
-  alt = alt.replace(/_/g, ' ');
+  let alt = image.alt();
   var out = '\\begin{figure}';
   out += '\n\\includegraphics[width=\\linewidth]{' + image.thumb() + '}';
   out += '\n\\caption{' + alt + '}';
