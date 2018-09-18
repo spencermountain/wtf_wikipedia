@@ -1,4 +1,4 @@
-const parseLine = require('../sentence/').parseLine;
+const parseLine = require('../04-sentence/').parseLine;
 const Image = require('../image/Image');
 // Most templates are '{{template}}', but then, some are '<template></template>'.
 // -> this is those ones.
@@ -9,11 +9,14 @@ const Image = require('../image/Image');
 const parseGallery = function(wiki, section) {
   wiki = wiki.replace(/<gallery([^>]*?)>([\s\S]+?)<\/gallery>/g, (_, attrs, inside) => {
     let images = inside.split(/\n/g);
-    images = images.filter(str => str && str.trim()!=='');
+    images = images.filter(str => str && str.trim() !== '');
     //parse the line, which has an image and sometimes a caption
     images = images.map((str) => {
       let arr = str.split(/\|/);
-      let img = new Image(arr[0].trim()).json();
+      let obj = {
+        file: arr[0].trim()
+      };
+      let img = new Image(obj).json();
       let caption = arr.slice(1).join('|');
       if (caption !== '') {
         img.caption = parseLine(caption);

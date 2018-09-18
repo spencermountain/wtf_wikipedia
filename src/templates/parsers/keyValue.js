@@ -1,5 +1,5 @@
-const parseLine = require('../../sentence').parseLine;
-const Sentence = require('../../sentence/Sentence');
+const parseLine = require('../../04-sentence').parseLine;
+const Sentence = require('../../04-sentence/Sentence');
 const strip = require('./_strip');
 
 //turn '| key = value' into an object

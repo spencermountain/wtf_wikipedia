@@ -123,7 +123,7 @@ const methods = {
         obj.images = obj.images || [];
         obj.images.forEach((img) => {
           if (img instanceof Image === false) {
-            img = new Image(img.file);
+            img = new Image(img);
           }
           arr.push(img);
         });

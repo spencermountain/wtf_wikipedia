@@ -1,5 +1,5 @@
 const fns = require('../lib/helpers');
-const parseLine = require('../sentence/').parseLine;
+const parseLine = require('../04-sentence/').parseLine;
 const heading_reg = /^(={1,5})([^=]{1,200}?)={1,5}$/;
 
 //interpret depth, title of headings like '==See also=='

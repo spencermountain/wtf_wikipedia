@@ -1,5 +1,4 @@
-let eachSentence = require('../sentence').eachSentence;
-let Sentence = require('../sentence/Sentence');
+let Sentence = require('../04-sentence/Sentence');
 const toJSON = require('./toJson');
 const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
@@ -10,19 +9,11 @@ const defaults = {
 };
 
 class Paragraph {
-  constructor(wiki, section) {
-    this.data = {
-      wiki: wiki,
-      section: section
-    };
-    this._section = section;
-    this.data.sentences = eachSentence(this, wiki);
+  constructor(data) {
+    this.data = data;
   }
   wikitext() {
     return this.data.wiki;
-  }
-  section() {
-    return this._section;
   }
   sentences(n) {
     let arr = this.data.sentences.map(s => {
@@ -33,6 +24,9 @@ class Paragraph {
       return arr[n];
     }
     return arr || [];
+  }
+  references() {
+    return this.data.references;
   }
   links(n) {
     let arr = this.sentences().map(s => {

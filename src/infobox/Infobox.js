@@ -38,7 +38,7 @@ const methods = {
     if (!obj) {
       return null;
     }
-    return new Image(obj.text());
+    return new Image(obj);
   },
   get : function(key) {
     key = key.toLowerCase();

@@ -1,7 +1,7 @@
 const parseGeneric = require('../templates/parsers/generic');
 const parsePipe = require('../templates/misc')['cite gnis'];
-const parseLine = require('../sentence').parseLine;
-const Sentence = require('../sentence/Sentence');
+const parseLine = require('../04-sentence').parseLine;
+const Sentence = require('../04-sentence/Sentence');
 
 //structured Cite templates - <ref>{{Cite..</ref>
 const hasCitation = function(str) {
@@ -19,29 +19,29 @@ const parseCitation = function(tmpl) {
 };
 
 //handle unstructured ones - <ref>some text</ref>
-const parseInline = function(tmpl, r) {
-  let obj = parseLine(tmpl) || {};
+const parseInline = function(str) {
+  let obj = parseLine(str) || {};
   obj = new Sentence(obj);
-  let cite = {
+  return {
     template: 'citation',
     type: 'inline',
     data: {},
     inline: obj
   };
-  r.templates.push(cite);
 };
 
 // parse <ref></ref> xml tags
-const parseRefs = function(r, wiki) {
+const parseRefs = function(wiki) {
+  let references = [];
   wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
       let obj = parseCitation(tmpl);
       if (obj) {
-        r.templates.push(obj);
+        references.push(obj);
       }
       wiki = wiki.replace(tmpl, '');
     } else {
-      parseInline(tmpl, r);
+      references.push(parseInline(tmpl));
     }
     return ' ';
   });
@@ -52,16 +52,19 @@ const parseRefs = function(r, wiki) {
     if (hasCitation(tmpl)) {
       let obj = parseCitation(tmpl);
       if (obj) {
-        r.templates.push(obj);
+        references.push(obj);
       }
       wiki = wiki.replace(tmpl, '');
     } else {
-      parseInline(tmpl, r);
+      references.push(parseInline(tmpl));
     }
     return ' ';
   });
   //now that we're done with xml, do a generic + dangerous xml-tag removal
   wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ \/]?> ?/g, ' '); //<samp name="asd">
-  return wiki;
+  return {
+    wiki: wiki,
+    references: references
+  };
 };
 module.exports = parseRefs;

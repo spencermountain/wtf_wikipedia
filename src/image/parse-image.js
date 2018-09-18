@@ -15,7 +15,10 @@ const parse_image = function(img) {
   //spaces to underscores
   title = title.replace(/ /g, '_');
   if (title) {
-    return new Image(file, img);
+    let obj = {
+      file: file
+    };
+    return new Image(obj, img);
   }
   return null;
 };

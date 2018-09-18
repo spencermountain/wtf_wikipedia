@@ -1,7 +1,7 @@
 //grab the content of any article, off the api
 const fetch = require('cross-fetch');
 const site_map = require('./data/site_map');
-const Document = require('./document/Document');
+const Document = require('./01-document/Document');
 // const redirects = require('../parse/page/redirects');
 const isNumber = /^[0-9]*$/;
 

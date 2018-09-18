@@ -2,7 +2,7 @@ const redirects = require('./redirects');
 const disambig = require('./disambig');
 const preProcess = require('./preProcess');
 const parse = {
-  section: require('../section'),
+  section: require('../02-section'),
   categories: require('./categories')
 };
 

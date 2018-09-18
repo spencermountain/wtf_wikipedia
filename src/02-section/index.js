@@ -5,42 +5,41 @@ const isReference = /^(references?|einzelnachweise|referencias|références|note
 //interpret ==heading== lines
 const parse = {
   heading: require('./heading'),
-  list: require('./list'),
   image: require('../image'),
   interwiki: require('./interwiki'),
   table: require('../table'),
-  references: require('./references'),
   templates: require('../templates'),
-  paragraphs: require('../paragraph'),
+  paragraphs: require('../03-paragraph'),
   xmlTemplates: require('./xml-templates'),
-  eachSentence: require('../sentence').eachSentence
+  eachSentence: require('../04-sentence').eachSentence
 };
 const section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})/g;
 
 const doSection = function(section, wiki, options) {
   wiki = parse.xmlTemplates(section, wiki, options);
   // //parse the <ref></ref> tags
-  wiki = parse.references(section, wiki, options);
+  // wiki = parse.references(section, wiki, options);
   //parse-out all {{templates}}
   wiki = parse.templates(section, wiki, options);
   // //parse the tables
   wiki = parse.table(section, wiki);
-  // //parse the lists
-  wiki = parse.list(section, wiki);
+
   // //parse+remove scary '[[ [[]] ]]' stuff
   //second, remove [[file:...[[]] ]] recursions
   let matches = find_recursive('[', ']', wiki);
   wiki = parse.image(matches, section, wiki, options);
   wiki = parse.interwiki(matches, section, wiki, options);
 
-  parse.paragraphs(section, wiki);
+  let res = parse.paragraphs(wiki, options);
+  section.paragraphs = res.paragraphs;
+  wiki = res.wiki;
   // wiki = parse.eachSentence(section, wiki);
   section = new Section(section, wiki);
   return section;
 };
 
 //we re-create this in html/markdown outputs
-const removeReferences = function(sections) {
+const removeReferenceSection = function(sections) {
   return sections.filter((s, i) => {
     if (isReference.test(s.title()) === true) {
       if (s.paragraphs().length > 0) {
@@ -78,7 +77,7 @@ const splitSections = function(wiki, options) {
     sections.push(section);
   }
   //remove empty references section
-  sections = removeReferences(sections);
+  sections = removeReferenceSection(sections);
 
   return sections;
 };

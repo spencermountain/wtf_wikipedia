@@ -1,5 +1,5 @@
 const strip = require('./_strip');
-const parseLine = require('../../sentence').parseLine;
+const parseLine = require('../../04-sentence').parseLine;
 
 //try to handle inline-wikitext, (like links) inside the pipe-text
 const tightenUp = function(arr) {

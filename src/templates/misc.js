@@ -151,7 +151,12 @@ const parsers = {
   'gallery': (tmpl) => {
     let obj = pipeList(tmpl);
     let images = obj.data.filter(line => /^ *File ?:/.test(line));
-    images = images.map((file) => new Image(file).json());
+    images = images.map((file) => {
+      let img = {
+        file: file
+      };
+      return new Image(img).json();
+    });
     return {
       template: 'gallery',
       images: images

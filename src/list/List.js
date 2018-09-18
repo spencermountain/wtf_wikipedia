@@ -1,29 +1,10 @@
 const aliasList = require('../lib/aliases');
-
-const toHtml = (list, options) => {
-  let html = '  <ul class="list">\n';
-  list.forEach((o) => {
-    html += '    <li>' + o.html(options) + '</li>\n';
-  });
-  html += '  </ul>\n';
-  return html;
-};
-
-const toLatex = (list, options) => {
-  let out = '\\begin{itemize}\n';
-  list.forEach((o) => {
-    out += '  \\item ' + o.text(options) + '\n';
-  });
-  out += '\\end{itemize}\n';
-  return out;
-};
-
-const toMarkdown = (list, options) => {
-  return list.map((s) => {
-    let str = s.markdown(options);
-    return ' * ' + str;
-  }).join('\n');
-};
+const setDefaults = require('../lib/setDefaults');
+const toJson = require('./toJson');
+const toMarkdown = require('./toMarkdown');
+const toHtml = require('./toHtml');
+const toLatex = require('./toLatex');
+const defaults = {};
 
 const toText = (list, options) => {
   return list.map((s) => {
@@ -52,17 +33,21 @@ const methods = {
     });
     return links;
   },
+  markdown(options) {
+    options = setDefaults(options, defaults);
+    return toMarkdown(this, options);
+  },
   html(options) {
-    return toHtml(this.data, options);
+    options = setDefaults(options, defaults);
+    return toHtml(this, options);
   },
   latex(options) {
-    return toLatex(this.data, options);
-  },
-  markdown(options) {
-    return toMarkdown(this.data, options);
+    options = setDefaults(options, defaults);
+    return toLatex(this, options);
   },
   json(options) {
-    return this.data.map(s => s.json(options));
+    options = setDefaults(options, defaults);
+    return toJson(this, options);
   },
   text() {
     return toText(this.data);
