@@ -27,20 +27,12 @@ const makeSrc = function(file) {
 };
 
 //the class for our image generation functions
-const Image = function(file, wiki) {
-  this.file = file;
-  this.text = ''; //to be compatible as an infobox value
-  //hush this property in console.logs..
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki
-  });
+const Image = function(obj) {
+  this.file = obj.file;
+  this.text = obj.text || ''; //to be compatible as an infobox value
 };
 
 const methods = {
-  wikitext() {
-    return this.wiki;
-  },
   links() {
     return [];
   },

@@ -1,5 +1,4 @@
 const parse = require('./index');
-const redirect = require('./redirects');
 const sectionMap = require('./_sectionMap');
 const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
@@ -16,15 +15,9 @@ const defaults = {
 };
 
 //
-const Document = function(wiki, options) {
+const Document = function(data, options) {
   this.options = options || {};
-  this.data = parse(wiki, this.options);
-
-  // preserve wiki sources in Document to access
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false, // hide it in console.logs
-    value: wiki
-  });
+  this.data = data;
 };
 
 const methods = {
@@ -44,17 +37,11 @@ const methods = {
   reparse : function () {
     this.data = parse(this.wiki, this.options);
   },
-  wikitext : function(str) {
-    if (str) {
-      this.wiki = str;
-    }
-    return this.wiki;
-  },
   isRedirect : function() {
     return this.data.type === 'redirect';
   },
   redirectTo: function() {
-    return redirect.parse(this.wiki);
+    return this.data.redirectTo;
   },
   isDisambiguation : function() {
     return this.data.type === 'disambiguation';
@@ -100,9 +87,7 @@ const methods = {
   sentences : function(n) {
     let arr = [];
     this.sections().forEach((sec) => {
-      sec.sentences().forEach((s) => {
-        arr.push(s);
-      });
+      arr = arr.concat(sec.sentences());
     });
     if (typeof n === 'number') {
       return arr[n];
@@ -149,8 +134,8 @@ const methods = {
   infoboxes : function(clue) {
     return sectionMap(this, 'infoboxes', clue);
   },
-  citations : function(clue) {
-    return sectionMap(this, 'citations', clue);
+  references : function(clue) {
+    return sectionMap(this, 'references', clue);
   },
   coordinates : function(clue) {
     return sectionMap(this, 'coordinates', clue);
@@ -216,7 +201,7 @@ Object.keys(aliasList).forEach((k) => {
 });
 //alias these ones
 Document.prototype.isDisambig = Document.prototype.isDisambiguation;
-Document.prototype.references = Document.prototype.citations;
+Document.prototype.citations = Document.prototype.references;
 Document.prototype.redirectsTo = Document.prototype.redirectTo;
 Document.prototype.redirect = Document.prototype.redirectTo;
 Document.prototype.redirects = Document.prototype.redirectTo;

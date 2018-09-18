@@ -31,7 +31,7 @@ const parseInline = function(str) {
 };
 
 // parse <ref></ref> xml tags
-const parseRefs = function(wiki) {
+const parseRefs = function(wiki, data) {
   let references = [];
   wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
@@ -62,9 +62,7 @@ const parseRefs = function(wiki) {
   });
   //now that we're done with xml, do a generic + dangerous xml-tag removal
   wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ \/]?> ?/g, ' '); //<samp name="asd">
-  return {
-    wiki: wiki,
-    references: references
-  };
+  data.references = references;
+  return wiki;
 };
 module.exports = parseRefs;

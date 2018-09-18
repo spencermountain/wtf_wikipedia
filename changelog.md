@@ -95,7 +95,7 @@
 * keep `#` anchor data in .links()
 * show links default-on in latex output, like in md and html
 * render html/latex/json 'soft redirect', instead of blank pages
-### 6.0.0
+## 6.0.0
 * support `.paragraphs()`
 * :warning: changes to output of `.json()`. cleaning-up redundant data. (sorry for the frequent changes here). :warning:
 * * remove top-level `templates` data (found in `section`) - resume it with `{templates:true}`
@@ -107,3 +107,4 @@
 * begin removing empty references section by default
 * begin support for rendering citations at the bottom of documents
 * move citation-parsing to paragraph-level
+* remove `.wikitext()` methods - caused too many issues

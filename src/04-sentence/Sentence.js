@@ -5,13 +5,8 @@ const toLatex = require('./toLatex');
 const aliasList = require('../lib/aliases');
 
 //where we store the formatting, link, date information
-const Sentence = function(data, wiki) {
+const Sentence = function(data) {
   this.data = data;
-  //hush this property in console
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki
-  });
 };
 
 const methods = {

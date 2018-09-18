@@ -5,14 +5,8 @@ const Image = require('../image/Image');
 const aliasList = require('../lib/aliases');
 
 //a formal key-value data table about a topic
-const Infobox = function(obj, wiki) {
+const Infobox = function(obj) {
   this._type = obj.type;
-  // this.data = obj.data;
-  //hush these properties in console.logs..
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki
-  });
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: obj.data
@@ -20,9 +14,6 @@ const Infobox = function(obj, wiki) {
 };
 
 const methods = {
-  wikitext : function() {
-    return this.wiki;
-  },
   type: function() {
     return this._type;
   },

@@ -10,7 +10,7 @@ const parse = {
 const main = function(wiki, options) {
   options = options || {};
   wiki = wiki || '';
-  let r = {
+  let data = {
     type: 'page',
     sections: [],
     interwiki: {},
@@ -20,28 +20,27 @@ const main = function(wiki, options) {
   };
   //detect if page is just redirect, and return it
   if (redirects.isRedirect(wiki) === true) {
-    r.type = 'redirect';
+    data.type = 'redirect';
+    data.redirectTo = redirects.parse(wiki);
   }
   //detect if page is just disambiguator page, and return
   if (disambig.isDisambig(wiki) === true) {
-    r.type = 'disambiguation';
+    data.type = 'disambiguation';
   }
   if (options.page_identifier) {
-    r.page_identifier = options.page_identifier;
+    data.page_identifier = options.page_identifier;
   }
   if (options.lang_or_wikiid) {
-    r.lang_or_wikiid = options.lang_or_wikiid;
+    data.lang_or_wikiid = options.lang_or_wikiid;
   }
   //give ourselves a little head-start
-  wiki = preProcess(r, wiki, options);
-  //pull-out infoboxes and stuff
-  // wiki = parse.templates(r, wiki, options);
+  wiki = preProcess(data, wiki, options);
   //pull-out [[category:whatevers]]
-  wiki = parse.categories(r, wiki);
+  wiki = parse.categories(data, wiki);
   //parse all the headings, and their texts/sentences
-  r.sections = parse.section(wiki, options) || [];
+  data.sections = parse.section(wiki, options) || [];
 
-  return r;
+  return data;
 };
 
 module.exports = main;

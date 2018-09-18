@@ -27,7 +27,7 @@ const inlineParsers = Object.assign(
 const bigParsers = Object.assign({}, geo, pronounce, misc, external);
 
 //this gets all the {{template}} strings and decides how to parse them
-const doTemplate = function(tmpl, wiki, r, options) {
+const oneTemplate = function(tmpl, wiki, data) {
   let name = getName(tmpl);
 
   //we explicitly ignore these templates
@@ -38,7 +38,7 @@ const doTemplate = function(tmpl, wiki, r, options) {
 
   //string-replacement templates
   if (inlineParsers.hasOwnProperty(name) === true) {
-    let str = inlineParsers[name](tmpl, r);
+    let str = inlineParsers[name](tmpl, data);
     wiki = wiki.replace(tmpl, str);
     return wiki;
   }
@@ -47,7 +47,7 @@ const doTemplate = function(tmpl, wiki, r, options) {
   if (bigParsers.hasOwnProperty(name) === true) {
     let obj = bigParsers[name](tmpl);
     if (obj) {
-      r.templates.push(obj);
+      data.templates.push(obj);
     }
     wiki = wiki.replace(tmpl, '');
     return wiki;
@@ -56,26 +56,24 @@ const doTemplate = function(tmpl, wiki, r, options) {
   //fallback parser
   let obj = generic(tmpl, name);
   if (obj) {
-    r.templates.push(obj);
+    data.templates.push(obj);
     wiki = wiki.replace(tmpl, '');
     return wiki;
   }
 
   //bury this template, if we don't know it
-  if (options.verbose_template === true) {
-    console.log(`  - no parser for '${name}' -`);
-  }
+  //console.log(`  - no parser for '${name}' -`);
   wiki = wiki.replace(tmpl, '');
 
   return wiki;
 };
 
 //reduce the scary recursive situations
-const allTemplates = function(r, wiki, options) {
+const allTemplates = function(wiki, data) {
   let templates = getTemplates(wiki);
   //first, do the nested (second level) ones
   templates.nested.forEach(tmpl => {
-    wiki = doTemplate(tmpl, wiki, r, options);
+    wiki = oneTemplate(tmpl, wiki, data);
   });
   //then, reparse wiki for the top-level ones
   templates = getTemplates(wiki);
@@ -83,14 +81,23 @@ const allTemplates = function(r, wiki, options) {
   //okay if we have a 3-level-deep template, do it again (but no further)
   if (templates.nested.length > 0) {
     templates.nested.forEach(tmpl => {
-      wiki = doTemplate(tmpl, wiki, r, options);
+      wiki = oneTemplate(tmpl, wiki, data);
     });
     templates = getTemplates(wiki); //this is getting crazy.
   }
   //okay, top-level
   templates.top.forEach(tmpl => {
-    wiki = doTemplate(tmpl, wiki, r, options);
+    wiki = oneTemplate(tmpl, wiki, data);
   });
+  //lastly, move citations out of our templates list
+  let clean = [];
+  data.templates.forEach((o) => {
+    if (o.template === 'citation') {
+      data.references.push(o);
+    }
+    clean.push(o);
+  });
+  data.templates = clean;
   return wiki;
 };
 

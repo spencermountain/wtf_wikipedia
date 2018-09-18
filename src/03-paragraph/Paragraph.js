@@ -8,27 +8,25 @@ const defaults = {
   sentences: true
 };
 
-class Paragraph {
-  constructor(data) {
-    this.data = data;
-  }
-  wikitext() {
-    return this.data.wiki;
-  }
-  sentences(n) {
-    let arr = this.data.sentences.map(s => {
-      s = new Sentence(s);
-      return s;
-    });
+const Paragraph = function(data) {
+  this.data = data;
+};
+
+const methods = {
+  sentences: function(n) {
+    let arr = this.data.sentences || [];
     if (typeof n === 'number') {
       return arr[n];
     }
     return arr || [];
-  }
-  references() {
+  },
+  references: function() {
     return this.data.references;
-  }
-  links(n) {
+  },
+  templates: function() {
+    return this.data.templates;
+  },
+  links: function(n) {
     let arr = this.sentences().map(s => {
       s.links();
     });
@@ -36,28 +34,32 @@ class Paragraph {
       return arr[n];
     }
     return arr || [];
-  }
-  markdown(options) {
+  },
+  markdown: function(options) {
     options = setDefaults(options, defaults);
     return toMarkdown(this, options);
-  }
-  html(options) {
+  },
+  html: function(options) {
     options = setDefaults(options, defaults);
     return toHtml(this, options);
-  }
-  text(options) {
+  },
+  text: function(options) {
     options = setDefaults(options, defaults);
     return this.sentences()
       .map(s => s.text(options))
       .join(' ');
-  }
-  latex(options) {
+  },
+  latex: function(options) {
     options = setDefaults(options, defaults);
     return toLatex(this, options);
-  }
-  json(options) {
+  },
+  json: function(options) {
     options = setDefaults(options, defaults);
     return toJSON(this, options);
   }
-}
+};
+methods.citations = methods.references;
+Object.keys(methods).forEach(k => {
+  Paragraph.prototype[k] = methods[k];
+});
 module.exports = Paragraph;

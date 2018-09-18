@@ -10,9 +10,6 @@ class Reference {
   constructor(data) {
     this.data = data || {};
   }
-  wikitext() {
-    return this.data.wiki;
-  }
   section() {
     return this._section;
   }

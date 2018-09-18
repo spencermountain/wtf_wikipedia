@@ -13,19 +13,11 @@ const toText = (list, options) => {
   }).join('\n');
 };
 
-const List = function(data, wiki) {
+const List = function(data) {
   this.data = data;
-  //hush this property in console.logs..
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki
-  });
 };
 
 const methods = {
-  wikitext() {
-    return this.wiki;
-  },
   links() {
     let links = [];
     this.data.forEach((s) => {

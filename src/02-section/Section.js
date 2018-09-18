@@ -16,15 +16,10 @@ const defaults = {
 };
 
 //the stuff between headings - 'History' section for example
-const Section = function(data, wiki) {
+const Section = function(data) {
   this.data = data;
   this.depth = data.depth;
   this.doc = null;
-  //hush these properties in console.logs..
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki
-  });
   Object.defineProperty(this, 'doc', {
     enumerable: false,
     value: null
@@ -34,9 +29,6 @@ const Section = function(data, wiki) {
 const methods = {
   title: function() {
     return this.data.title || '';
-  },
-  wikitext: function() {
-    return this.wiki || '';
   },
   index: function() {
     if (!this.doc) {
@@ -52,10 +44,9 @@ const methods = {
     return this.depth;
   },
   sentences: function(n) {
-    let arr = [];
-    this.data.paragraphs.forEach(p => {
-      arr = arr.concat(p.sentences());
-    });
+    let arr = this.paragraphs().reduce((list, p) => {
+      return list.concat(p.sentences());
+    }, []);
     if (typeof n === 'number') {
       return arr[n];
     }
@@ -101,10 +92,13 @@ const methods = {
     return this.data.tables || [];
   },
   templates: function(clue) {
+    let arr = [];
+    this.paragraphs().forEach((p) => {
+      arr = arr.concat(p.templates());
+    });
     if (typeof clue === 'number') {
-      return this.data.templates[clue];
+      return arr[clue];
     }
-    let arr = this.data.templates || [];
     if (typeof clue === 'string') {
       clue = clue.toLowerCase();
       return arr.filter(o => o.template === clue || o.name === clue);
@@ -146,8 +140,11 @@ const methods = {
     }
     return this.data.images || [];
   },
-  citations: function(clue) {
-    let arr = this.templates('citation'); //.map(o => o.data);
+  references: function(clue) {
+    let arr = [];
+    this.paragraphs().forEach((p) => {
+      arr = arr.concat(p.references());
+    });
     if (typeof clue === 'number') {
       return arr[clue];
     }
@@ -266,7 +263,7 @@ methods.next = methods.nextSibling;
 methods.last = methods.lastSibling;
 methods.previousSibling = methods.lastSibling;
 methods.previous = methods.lastSibling;
-methods.references = methods.citations;
+methods.citations = methods.references;
 Object.keys(methods).forEach(k => {
   Section.prototype[k] = methods[k];
 });

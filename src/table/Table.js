@@ -3,19 +3,11 @@ const toMarkdown = require('./toMarkdown');
 const toLatex = require('./toLatex');
 const aliasList = require('../lib/aliases');
 
-const Table = function(data, wiki) {
+const Table = function(data) {
   this.data = data;
-  //hush this property in console
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki
-  });
 };
 
 const methods = {
-  wikitext() {
-    return this.wiki;
-  },
   links() {
     let links = [];
     this.data.forEach((r) => {
