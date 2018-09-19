@@ -12,16 +12,10 @@ const readFile = require('./tests/lib/_cachedPage');
 // let doc = readFile('toronto');
 // console.log(doc.infobox(0).data);
 
-// let doc = wtf(`[[File:King Cotton.jpg |right |thumb |upright=1.9 |Panoramic photograph of a cotton plantation from 1907, titled "King Cotton".]]
-// "'''King Cotton'''" is a slogan which summarized the strategy `);
-// console.log(doc.images(0).data);
+var doc = readFile('royal_cinema');
+console.log(doc.section(0));
 
-let str = `{{Infobox museum
-|coordinates = {{coord|41.893269|-87.622511|display=inline}}
-|image=           20070701 Arts Club of Chicago.JPG
-|website= [http://www.artsclubchicago.org www.artsclubchicago.org]
-}}
-'''Arts Club of Chicago''' is a private club located in the [[Near North Side, Chicago|Near North Side]] `;
-
-var doc = wtf(str);
-console.log(doc.citations(0).json());
+// let str = `<ref name="thestar-childhood">{{cite web|url=https://www.thestar.com/news/city_hall/toronto2014election/2014/10/25/mayoral_candidate_john_tory_a_leader_from_childhood.html|title=Mayoral candidate John Tory a leader from childhood|newspaper=Toronto Star|date=October 25, 2014|first=Linda|last=Diebel|accessdate=October 28, 2014}}</ref>`;
+//
+// var doc = wtf(str);
+// console.log(doc.citations(0).links());

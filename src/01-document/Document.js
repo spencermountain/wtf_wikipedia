@@ -179,27 +179,25 @@ const methods = {
   }
 };
 
-//add singular-methods
-let plurals = ['sections', 'infoboxes', 'sentences', 'citations', 'coordinates', 'tables', 'links', 'images', 'categories'];
+//add alises
+Object.keys(aliasList).forEach((k) => {
+  Document.prototype[k] = methods[aliasList[k]];
+});
+//add singular-methods, too
+let plurals = ['sections', 'infoboxes', 'sentences', 'citations', 'references', 'coordinates', 'tables', 'links', 'images', 'categories'];
 plurals.forEach((fn) => {
   let sing = fn.replace(/ies$/, 'y');
   sing = sing.replace(/e?s$/, '');
   methods[sing] = function(n) {
-    let res = this[fn](n);
-    if (res.length) {
-      return res[0] || null;
-    }
-    return res;
+    n = n || 0;
+    return this[fn](n);
   };
 });
 
 Object.keys(methods).forEach((k) => {
   Document.prototype[k] = methods[k];
 });
-//add alises, too
-Object.keys(aliasList).forEach((k) => {
-  Document.prototype[k] = methods[aliasList[k]];
-});
+
 //alias these ones
 Document.prototype.isDisambig = Document.prototype.isDisambiguation;
 Document.prototype.citations = Document.prototype.references;

@@ -13,8 +13,9 @@ class Reference {
       value: data
     });
   }
-  section() {
-    return this._section;
+  title() {
+    let data = this.data;
+    return data.title || data.encyclopedia || data.author || '';
   }
   links(n) {
     let arr = [];

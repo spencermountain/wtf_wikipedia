@@ -1,4 +1,5 @@
 const Infobox = require('../infobox/Infobox');
+const Reference = require('../reference/Reference');
 const getName = require('./parsers/_getName');
 const getTemplates = require('./parsers/_getTemplates');
 
@@ -94,7 +95,7 @@ const parseTemplates = function(wiki, data) {
   let clean = [];
   data.templates.forEach((o) => {
     if (o.template === 'citation') {
-      data.references.push(o);
+      data.references.push(new Reference(o));
       return;
     }
     if (o.template === 'infobox') {

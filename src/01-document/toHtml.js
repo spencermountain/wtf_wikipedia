@@ -50,29 +50,7 @@ const toHtml = function(doc, options) {
   //default off
   if (options.citations === true) {
     html += '<h2>References</h2>';
-    html += doc.citations().map((o, i) => {
-      if (o.data && o.data.url && o.data.title) {
-        let str = o.data.title;
-        if (options.links === true) {
-          str = `<a href="${o.data.url}">${str}</a>`;
-        }
-        return `<div class="citation">${i} - ${str} </div>`;
-      } else if (o.data.encyclopedia) {
-        return `<div class="citation">${i} - ${o.data.encyclopedia}</div>`;
-      } else if (o.data.title) { //cite book, etc
-        let str = o.data.title;
-        if (o.data.author) {
-          str += o.data.author;
-        }
-        if (o.data.first && o.data.last) {
-          str += o.data.first + ' ' + o.data.last;
-        }
-        return `<div class="citation">${i} - ${str}</div>`;
-      } else if (o.inline) {
-        return `<div class="citation">${i} - ${o.inline.html()}</div>`;
-      }
-      return '';
-    }).join('\n');
+    html += doc.citations().map((c) => c.json(options)).join('\n');
   }
   html += '</body>\n';
   html += '</html>';

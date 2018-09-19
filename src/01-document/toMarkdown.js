@@ -36,25 +36,7 @@ const toMarkdown = function(doc, options) {
   //default false
   if (options.citations === true) {
     md += '## References';
-    md += doc.citations().map((o, i) => {
-      if (o.data && o.data.url && o.data.title) {
-        return `${i} - [${o.data.title}](${o.data.url})`;
-      } else if (o.data.encyclopedia) {
-        return `${i} - ${o.data.encyclopedia}`;
-      } else if (o.data.title) { //cite book, etc
-        let str = o.data.title;
-        if (o.data.author) {
-          str += o.data.author;
-        }
-        if (o.data.first && o.data.last) {
-          str += o.data.first + ' ' + o.data.last;
-        }
-        return `${i} - ${str}`;
-      } else if (o.inline) {
-        return `${i} - ${o.inline.markdown()}`;
-      }
-      return '';
-    }).join('\n');
+    md += doc.citations().map(c => c.json(options)).join('\n');
 
   }
   return md;

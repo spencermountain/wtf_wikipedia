@@ -1,6 +1,7 @@
 const parseGeneric = require('../templates/parsers/generic');
 const parsePipe = require('../templates/misc')['cite gnis'];
 const parseSentence = require('../04-sentence').oneSentence;
+const Reference = require('./Reference');
 
 //structured Cite templates - <ref>{{Cite..</ref>
 const hasCitation = function(str) {
@@ -60,7 +61,7 @@ const parseRefs = function(wiki, data) {
   });
   //now that we're done with xml, do a generic + dangerous xml-tag removal
   wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ \/]?> ?/g, ' '); //<samp name="asd">
-  data.references = references;
+  data.references = references.map(r => new Reference(r));
   return wiki;
 };
 module.exports = parseRefs;

@@ -1,7 +1,6 @@
 
 //
-const toJson = function(ref) {
-
-  return ref;
+const toJson = function(c) {
+  return c.data;
 };
 module.exports = toJson;

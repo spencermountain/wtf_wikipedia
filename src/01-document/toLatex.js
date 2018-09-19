@@ -32,7 +32,11 @@ const toLatex = function(doc, options) {
   if (options.sections === true || options.paragraphs === true || options.sentences === true) {
     out += doc.sections().map(s => s.latex(options)).join('\n');
   }
-  //todo support options.citations
+  //default off
+  //render citations
+  if (options.citations === true) {
+    out += doc.citations().map(c => c.latex(options)).join('\n');
+  }
   return out;
 };
 module.exports = toLatex;
