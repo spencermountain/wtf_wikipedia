@@ -43,10 +43,16 @@ const parseInterwiki = function(obj) {
   let str = obj.page || '';
   if (str.indexOf(':') !== -1) {
     let m = str.match(/^(.*):(.*)/);
-    if (m === null || !m[1] || allowed.hasOwnProperty(m[1]) === false) {
+    if (m === null) {
       return obj;
     }
-    obj.wiki = m[1];
+    let site = m[1] || '';
+    site = site.toLowerCase();
+    //only allow interwikis to these specific places
+    if (allowed.hasOwnProperty(site) === false) {
+      return obj;
+    }
+    obj.wiki = site;
     obj.page = m[2];
   }
   return obj;

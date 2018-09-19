@@ -23,6 +23,29 @@ test('is-redirect', t => {
   t.end();
 });
 
+test('redirect-newlines', t => {
+  let doc = wtf(`
+    #REDIRECT [[TORONTO]]
+
+    `);
+  t.equal(doc.isRedirect(), true, 'isredirect');
+  t.equal(doc.redirectsTo().page, 'TORONTO', 'redirectsto');
+
+  t.end();
+});
+
+test('redirect-extra', t => {
+  let doc = wtf(`#REDIRECT [[Wikipedia:Bug reports and feature requests]]
+
+{{Redirect category shell|1=
+{{R to project namespace}}
+}}`);
+  t.equal(doc.isRedirect(), true, 'isredirect');
+  t.equal(doc.redirectsTo().page, 'Bug reports and feature requests', 'redirectsto');
+  t.equal(doc.redirectsTo().wiki, 'wikipedia', 'interwiki redirect');
+  t.end();
+});
+
 test('redirect output', t => {
   var str = `#REDIRECT [[Toronto Blue Jays#Stadium|Tranno]]`;
   var doc = wtf(str);

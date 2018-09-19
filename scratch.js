@@ -12,11 +12,13 @@ const readFile = require('./tests/lib/_cachedPage');
 // let doc = readFile('toronto');
 // console.log(doc.infobox(0).data);
 
-let doc = wtf(`Leading text.
+let doc = wtf(`#REDIRECT [[Wikipedia:Bug reports and feature requests]]
 
-Closing remark`);
-// console.log(doc.paragraphs(0).data);
-console.log(doc.markdown());
+{{Redirect category shell|1=
+{{R to project namespace}}
+}}`);
+console.log(doc.isRedirect());
+console.log(doc.redirectsTo());
 
 // let str=`{{climate chart
 // | Toronto
