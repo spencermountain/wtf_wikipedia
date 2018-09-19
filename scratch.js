@@ -12,13 +12,9 @@ const readFile = require('./tests/lib/_cachedPage');
 // let doc = readFile('toronto');
 // console.log(doc.infobox(0).data);
 
-let doc = wtf(`#REDIRECT [[Wikipedia:Bug reports and feature requests]]
-
-{{Redirect category shell|1=
-{{R to project namespace}}
-}}`);
-console.log(doc.isRedirect());
-console.log(doc.redirectsTo());
+let doc = wtf(`[[File:King Cotton.jpg |right |thumb |upright=1.9 |Panoramic photograph of a cotton plantation from 1907, titled "King Cotton".]]
+"'''King Cotton'''" is a slogan which summarized the strategy `);
+console.log(doc.images(0).json());
 
 // let str=`{{climate chart
 // | Toronto

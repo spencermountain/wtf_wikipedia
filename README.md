@@ -294,7 +294,7 @@ wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
 * [txtwiki](https://github.com/joaomsa/txtwiki.js)
 * [Parsoid](https://www.mediawiki.org/wiki/Parsoid)
 
-Thank you to the [cross-fetch](https://github.com/lquixada/cross-fetch) and [jshashes](https://github.com/h2non/jshashes) libraries.
+Thank you to the [cross-fetch](https://github.com/lquixada/cross-fetch) library.
 
 MIT
 <div align="center">

@@ -1,9 +1,8 @@
-const Hashes = require('jshashes');
 const fetch = require('cross-fetch');
 const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
 const toLatex = require('./toLatex');
-const server = 'https://upload.wikimedia.org/wikipedia/commons/';
+const server = 'https://wikipedia.org/wiki/Special:Redirect/file/';
 const aliasList = require('../lib/aliases');
 
 const encodeTitle = function(file) {
@@ -16,14 +15,10 @@ const encodeTitle = function(file) {
 };
 
 //the wikimedia image url is a little silly:
-//https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F
 const makeSrc = function(file) {
   let title = encodeTitle(file);
-  let hash = new Hashes.MD5().hex(title);
-  let path = hash.substr(0, 1) + '/' + hash.substr(0, 2) + '/';
   title = encodeURIComponent(title);
-  path += title;
-  return path;
+  return title;
 };
 
 //the class for our image generation functions
@@ -56,9 +51,7 @@ const methods = {
   thumbnail(size) {
     size = size || 300;
     let path = makeSrc(this.file());
-    let title = encodeTitle(this.file());
-    title = encodeURIComponent(title);
-    return server + 'thumb/' + path + '/' + size + 'px-' + title;
+    return server + path + '?width=' + size;
   },
   format() {
     let arr = this.file().split('.');

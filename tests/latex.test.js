@@ -18,7 +18,7 @@ test('basic-latex', t => {
 
   //   // Image simple
   have = wtf(`My image [File:my_image.png]`).images(0).latex();
-  want = '\\begin{figure}\n\\includegraphics[width=\\linewidth]{https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/My_image.png/300px-My_image.png}\n\\caption{my image}\n\\end{figure}';
+  want = '\\begin{figure}\n\\includegraphics[width=\\linewidth]{https://wikipedia.org/wiki/Special:Redirect/file/My_image.png?width=300}\n\\caption{my image}\n\\end{figure}';
   t.equal(tidy(have), tidy(want), 'image');
   t.end();
 });

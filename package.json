@@ -39,8 +39,7 @@
     "wikiscript"
   ],
   "dependencies": {
-    "cross-fetch": "2.2.2",
-    "jshashes": "1.0.7"
+    "cross-fetch": "2.2.2"
   },
   "devDependencies": {
     "amble": "0.0.6",
