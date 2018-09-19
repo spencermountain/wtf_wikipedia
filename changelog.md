@@ -111,3 +111,4 @@
 * turn `Image.file` into a function
 * include `interwiki()` results in `.links()`
 * support `follow_redirects` option to fetch
+* hide object data in console.logs

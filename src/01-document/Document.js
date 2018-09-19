@@ -16,7 +16,10 @@ const defaults = {
 //
 const Document = function(data, options) {
   this.options = options || {};
-  this.data = data;
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data
+  });
 };
 
 const methods = {

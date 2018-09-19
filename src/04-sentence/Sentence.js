@@ -6,7 +6,10 @@ const aliasList = require('../lib/aliases');
 
 //where we store the formatting, link, date information
 const Sentence = function(data) {
-  this.data = data;
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data
+  });
 };
 
 const methods = {

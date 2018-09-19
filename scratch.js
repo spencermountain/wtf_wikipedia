@@ -10,24 +10,13 @@ const readFile = require('./tests/lib/_cachedPage');
 
 
 // let doc = readFile('toronto');
-// console.log(doc.infoboxes());
+// console.log(doc.infobox(0).data);
 
-// var p = wtf.fetch('Tony Hawk', 'en', {
-//   'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
-// });
-// p.then(function(doc) {
-//   console.log(doc.sections());
-// });
-var str = 'Buchstaben {{Taste|Q}}, {{Taste|W}}, {{Taste|E}}, {{Taste|R}}, {{Taste|T}} und {{Taste|Z}}';
-console.log(wtf(str).text());
 
-// var str = `{{Coord|44.112|-87.913|display=title}}`;
-// var obj = wtf(str).coordinates();
-// console.log(obj);
-
-// var str = `#REDIRECT [[Toronto Blue Jays#Stadium|Tranno]]`;
-// console.log(wtf(str).json());
-
+console.log(wtf(`Leading text
+* First item
+* Second Item
+Closing remark`).markdown());
 
 // let str=`{{climate chart
 // | Toronto

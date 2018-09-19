@@ -14,7 +14,10 @@ const toText = (list, options) => {
 };
 
 const List = function(data) {
-  this.data = data;
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data
+  });
 };
 
 const methods = {

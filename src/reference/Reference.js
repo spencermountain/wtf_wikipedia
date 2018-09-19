@@ -8,7 +8,10 @@ const defaults = {};
 //also called 'citations'
 class Reference {
   constructor(data) {
-    this.data = data || {};
+    Object.defineProperty(this, 'data', {
+      enumerable: false,
+      value: data
+    });
   }
   section() {
     return this._section;

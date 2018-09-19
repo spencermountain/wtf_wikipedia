@@ -28,7 +28,10 @@ const makeSrc = function(file) {
 
 //the class for our image generation functions
 const Image = function(data) {
-  this.data = data;
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data
+  });
 };
 
 const methods = {

@@ -4,7 +4,10 @@ const toLatex = require('./toLatex');
 const aliasList = require('../lib/aliases');
 
 const Table = function(data) {
-  this.data = data;
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data
+  });
 };
 
 const methods = {

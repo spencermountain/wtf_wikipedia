@@ -1,6 +1,6 @@
 const Section = require('./Section');
 const isReference = /^(references?|einzelnachweise|referencias|références|notes et références|脚注|referenser|bronnen|примечания):?/i; //todo support more languages
-const section_reg = /[\n^](={1,5}[^=]{1,200}?={1,5})/g;
+const section_reg = /(?:\n|^)(={1,5}[^=]{1,200}?={1,5})/g;
 
 //interpret ==heading== lines
 const parse = {
@@ -50,11 +50,14 @@ const removeReferenceSection = function(sections) {
 };
 
 const parseSections = function(wiki, options) {
-  let split = wiki.split(section_reg); //.filter(s => s);
+  let split = wiki.split(section_reg);
   let sections = [];
   for (let i = 0; i < split.length; i += 2) {
     let heading = split[i - 1] || '';
     let content = split[i] || '';
+    if (content === '' && heading === '') { //usually an empty 'intro' section
+      continue;
+    }
     let data = {
       title: '',
       depth: null,

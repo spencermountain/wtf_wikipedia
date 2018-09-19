@@ -24,3 +24,13 @@ ok now you start`;
   t.equal(doc.text(), 'ok now you start');
   t.end();
 });
+
+test('no intro text', function(t) {
+  var str = `
+  ==English==
+  how bout that
+  `;
+  var sections = wtf(str).sections().map(s => s.title());
+  t.deepEqual(sections, ['English']);
+  t.end();
+});

@@ -8,7 +8,10 @@ const defaults = {
 };
 
 const Paragraph = function(data) {
-  this.data = data;
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data
+  });
 };
 
 const methods = {

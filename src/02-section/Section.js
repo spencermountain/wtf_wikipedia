@@ -15,12 +15,15 @@ const defaults = {
 
 //the stuff between headings - 'History' section for example
 const Section = function(data) {
-  this.data = data;
   this.depth = data.depth;
   this.doc = null;
   Object.defineProperty(this, 'doc', {
     enumerable: false,
     value: null
+  });
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data
   });
 };
 
