@@ -1,6 +1,6 @@
 const Paragraph = require('./Paragraph');
 const find_recursive = require('../lib/recursive_match');
-const parseSentences = require('../04-sentence').parseSentences;
+const parseSentences = require('../04-sentence').addSentences;
 
 const twoNewLines = /\r?\n\W*\r?\n/;
 const hasChar = /\w/;

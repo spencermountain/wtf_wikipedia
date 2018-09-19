@@ -1,5 +1,4 @@
-const parseLine = require('../04-sentence/').parseLine;
-const Sentence = require('../04-sentence/Sentence');
+const parseSentence = require('../04-sentence/').oneSentence;
 const findRows = require('./findRows');
 
 //additional table-cruft to remove before parseLine method
@@ -40,9 +39,8 @@ const parseTable = function(wiki) {
     let row = {};
     arr.forEach((str, i) => {
       let header = headers[i] || 'col' + (i + 1);
-      let cell = parseLine(str);
-      cell.text = cleanText(cell.text);
-      cell = new Sentence(cell);
+      let cell = parseSentence(str);
+      cell.text(cleanText(cell.text()));
       row[header] = cell;
     });
     return row;

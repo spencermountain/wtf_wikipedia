@@ -1,9 +1,27 @@
 const i18n = require('../data/i18n');
 const Image = require('./Image');
+const parseSentence = require('../04-sentence').oneSentence;
 const fileRegex = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i');
 let fileNames = `(${i18n.images.concat(i18n.files).join('|')})`;
 const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'i');
 
+//style directives for Wikipedia:Extended_image_syntax
+const imgLayouts = {
+  thumb: true,
+  thumbnail: true,
+  border: true,
+  right: true,
+  left: true,
+  center: true,
+  top: true,
+  bottom: true,
+  none: true,
+  upright: true,
+  baseline: true,
+  middle: true,
+  sub: true,
+  super: true,
+};
 
 //images are usually [[image:my_pic.jpg]]
 const oneImage = function(img) {
@@ -21,6 +39,18 @@ const oneImage = function(img) {
     let obj = {
       file: file
     };
+    //try to grab other metadata, too
+    img = img.replace(/^\[\[/, '');
+    img = img.replace(/\]\]$/, '');
+    //https://en.wikipedia.org/wiki/Wikipedia:Extended_image_syntax
+    // [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
+    let arr = img.split('|');
+    arr = arr.slice(1);
+    //remove 'thumb' and things
+    arr = arr.filter((str) => imgLayouts.hasOwnProperty(str) === false);
+    if (arr[arr.length - 1]) {
+      obj.caption = parseSentence(arr[arr.length - 1]);
+    }
     return new Image(obj, img);
   }
   return null;

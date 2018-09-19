@@ -12,10 +12,10 @@ const toJSON = function(s, options) {
   if (options.text) {
     data.text = s.plaintext();
   }
-  if (options.links) {
+  if (options.links && s.links().length > 0) {
     data.links = s.links();
   }
-  if (options.formatting) {
+  if (options.formatting && s.data.fmt) {
     data.formatting = s.data.fmt;
   }
   if (options.dates && s.data.dates !== undefined) {

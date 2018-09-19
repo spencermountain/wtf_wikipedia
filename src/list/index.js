@@ -1,6 +1,5 @@
 const List = require('./List');
-const parseLine = require('../04-sentence/').parseLine;
-const Sentence = require('../04-sentence/Sentence');
+const parseSentence = require('../04-sentence/').oneSentence;
 const list_reg = /^[#\*:;\|]+/;
 const bullet_reg = /^\*+[^:,\|]{4}/;
 const number_reg = /^ ?\#[^:,\|]{4}/;
@@ -26,8 +25,7 @@ const cleanList = function(list) {
       number = 1;
       line = line.replace(list_reg, '');
     }
-    list[i] = parseLine(line);
-    list[i] = new Sentence(list[i]);
+    list[i] = parseSentence(line);
   }
   return list;
 };

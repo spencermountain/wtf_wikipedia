@@ -1,7 +1,6 @@
 const parseGeneric = require('../templates/parsers/generic');
 const parsePipe = require('../templates/misc')['cite gnis'];
-const parseLine = require('../04-sentence').parseLine;
-const Sentence = require('../04-sentence/Sentence');
+const parseSentence = require('../04-sentence').oneSentence;
 
 //structured Cite templates - <ref>{{Cite..</ref>
 const hasCitation = function(str) {
@@ -20,8 +19,7 @@ const parseCitation = function(tmpl) {
 
 //handle unstructured ones - <ref>some text</ref>
 const parseInline = function(str) {
-  let obj = parseLine(str) || {};
-  obj = new Sentence(obj);
+  let obj = parseSentence(str) || {};
   return {
     template: 'citation',
     type: 'inline',

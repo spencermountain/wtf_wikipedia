@@ -115,3 +115,4 @@
 * support `follow_redirects` option to fetch
 * hide object data in console.logs
 * move ALL image urls from `upload.wikimedia.org/wikipedia/commons` to `wikipedia.org/wiki/Special:Redirect/file/` via #86
+* image captions are now Sentence objects

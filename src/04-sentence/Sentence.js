@@ -65,7 +65,10 @@ const methods = {
     options = options || {};
     return toHtml(this, options);
   },
-  text : function() {
+  text : function(str) {
+    if (str !== undefined && typeof str === 'string') { //set the text?
+      this.data.text = str;
+    }
     return this.data.text || '';
   },
   json : function(options) {

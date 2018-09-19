@@ -12,9 +12,13 @@ const readFile = require('./tests/lib/_cachedPage');
 // let doc = readFile('toronto');
 // console.log(doc.infobox(0).data);
 
-let doc = wtf(`[[File:King Cotton.jpg |right |thumb |upright=1.9 |Panoramic photograph of a cotton plantation from 1907, titled "King Cotton".]]
-"'''King Cotton'''" is a slogan which summarized the strategy `);
-console.log(doc.images(0).json());
+// let doc = wtf(`[[File:King Cotton.jpg |right |thumb |upright=1.9 |Panoramic photograph of a cotton plantation from 1907, titled "King Cotton".]]
+// "'''King Cotton'''" is a slogan which summarized the strategy `);
+// console.log(doc.images(0).data);
+var str = `:hello one
+ok now you start`;
+var doc = wtf(str);
+console.log(doc.text());
 
 // let str=`{{climate chart
 // | Toronto

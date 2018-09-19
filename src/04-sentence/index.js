@@ -32,10 +32,6 @@ const resolve_links = function(line) {
 function postprocess(line) {
   //fix links
   line = resolve_links(line);
-  //oops, recursive image bug
-  if (line.match(/^(thumb|right|left)\|/i)) {
-    return null;
-  }
   //remove empty parentheses (sometimes caused by removing templates)
   line = line.replace(/\([,;: ]*\)/g, '');
   //these semi-colons in parentheses are particularly troublesome
@@ -46,12 +42,12 @@ function postprocess(line) {
   return line;
 }
 
-function parseLine(line) {
+function oneSentence(str) {
   let obj = {
-    text: postprocess(line)
+    text: postprocess(str)
   };
   //pull-out the [[links]]
-  let links = parseLinks(line);
+  let links = parseLinks(str);
   if (links) {
     obj.links = links;
   }
@@ -59,22 +55,29 @@ function parseLine(line) {
   obj = parseFmt(obj);
   //pull-out things like {{start date|...}}
   // obj = templates(obj);
-  return obj;
+  return new Sentence(obj);
 }
 
-const parseSentences = function(wiki, data) {
+//turn a text into an array of sentence objects
+const parseSentences = function(wiki) {
   let sentences = sentenceParser(wiki);
-  sentences = sentences.map(parseLine);
+  sentences = sentences.map(oneSentence);
+
   //remove :indented first line, as it is often a disambiguation
-  if (sentences[0] && sentences[0].text[0] && sentences[0].text[0] === ':') {
+  if (sentences[0] && sentences[0].text() && sentences[0].text()[0] === ':') {
     sentences = sentences.slice(1);
   }
-  sentences = sentences.map((s) => new Sentence(s));
-  data.sentences = sentences;
+  return sentences;
+};
+
+//used for consistency with other class-definitions
+const addSentences = function(wiki, data) {
+  data.sentences = parseSentences(wiki);
   return wiki;
 };
 
 module.exports = {
   parseSentences: parseSentences,
-  parseLine: parseLine
+  oneSentence: oneSentence,
+  addSentences: addSentences
 };

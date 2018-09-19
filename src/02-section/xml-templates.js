@@ -1,4 +1,4 @@
-const parseLine = require('../04-sentence/').parseLine;
+const parseSentence = require('../04-sentence/').oneSentence;
 const Image = require('../image/Image');
 // Most templates are '{{template}}', but then, some are '<template></template>'.
 // -> this is those ones.
@@ -19,7 +19,7 @@ const parseGallery = function(wiki, section) {
       let img = new Image(obj).json();
       let caption = arr.slice(1).join('|');
       if (caption !== '') {
-        img.caption = parseLine(caption);
+        img.caption = parseSentence(caption);
       }
       return img;
     });

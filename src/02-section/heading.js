@@ -1,5 +1,5 @@
 const fns = require('../lib/helpers');
-const parseLine = require('../04-sentence/').parseLine;
+const parseSentence = require('../04-sentence/').oneSentence;
 const heading_reg = /^(={1,5})([^=]{1,200}?)={1,5}$/;
 
 //interpret depth, title of headings like '==See also=='
@@ -13,7 +13,7 @@ const parseHeading = function(r, str) {
     };
   }
   let title = heading[2] || '';
-  title = parseLine(title).text;
+  title = parseSentence(title).text();
   //amazingly, you can see inline {{templates}} in this text, too
   //... let's not think about that now.
   title = title.replace(/\{\{.+?\}\}/, '');

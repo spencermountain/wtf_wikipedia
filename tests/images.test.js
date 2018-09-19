@@ -23,14 +23,14 @@ The paintings have the freedom and energy of  sketches, using warm and cool ligh
   var templ = doc.templates(0);
   t.deepEqual(templ.template, 'gallery', 'document-has-template');
   t.deepEqual(templ.images.length, 5, '5 images');
-  t.deepEqual(templ.images[0].caption.links[0].page, 'Freyja', 'image has caption');
+  t.deepEqual(templ.images[0].caption.links(0).page, 'Freyja', 'image has caption');
   t.deepEqual(doc.images().length, 5, 'images() finds gallery');
   t.end();
 });
 
 test('gallery-tag-2', t => {
 
-  var doc=wtf(`hello
+  var doc = wtf(`hello
 
   <gallery>
    Culex-female.jpg|Stechmücke
@@ -43,7 +43,7 @@ test('gallery-tag-2', t => {
    Sciara_analis_de.jpg|Trauermücke
   </gallery>
 
-  foo`)
+  foo`);
   var templ = doc.templates(0);
   t.deepEqual(templ.template, 'gallery', 'document-has-template');
   t.deepEqual(templ.images.length, 8, '8 images');
