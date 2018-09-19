@@ -12,11 +12,11 @@ const readFile = require('./tests/lib/_cachedPage');
 // let doc = readFile('toronto');
 // console.log(doc.infobox(0).data);
 
+let doc = wtf(`Leading text.
 
-console.log(wtf(`Leading text
-* First item
-* Second Item
-Closing remark`).markdown());
+Closing remark`);
+// console.log(doc.paragraphs(0).data);
+console.log(doc.markdown());
 
 // let str=`{{climate chart
 // | Toronto

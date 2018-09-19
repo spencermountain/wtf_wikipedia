@@ -21,6 +21,17 @@ Here is the third paragraph. Nobody knows if this will work.<ref>[http://commons
 });
 
 
+test('sentence/paragraphs by newlines', t => {
+  let doc = wtf(`Leading text
+
+Closing remark`);
+  t.equal(doc.paragraphs().length, 2, '2 paragraphs');
+  t.equal(doc.sentences().length, 2, '2 sentences');
+  t.equal(doc.markdown(), 'Leading text\nClosing remark', 'markdown paragraphs');
+  t.end();
+});
+
+
 test('newlines in templates', t => {
   var str = `hello world{{cite web |url=http://coolc.om |title=whoa hello |last= |first=
 

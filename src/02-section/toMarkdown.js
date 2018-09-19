@@ -46,7 +46,9 @@ const doSection = (section, options) => {
   }
   //finally, write the sentence text.
   if (options.paragraphs === true || options.sentences === true) {
-    md += section.sentences().map((s) => s.markdown(options)).join(' ');
+    md += section.paragraphs().map((p) => {
+      return p.sentences().map(s => s.markdown(options)).join(' ');
+    }).join('\n');
   }
   return md;
 };
