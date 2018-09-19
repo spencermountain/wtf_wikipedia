@@ -6,7 +6,7 @@ const parseDocument = require('./01-document');
 const isNumber = /^[0-9]*$/;
 
 //construct a lookup-url for the wikipedia api
-const makeUrl = function(title, lang) {
+const makeUrl = function(title, lang, options) {
   lang = lang || 'en';
   var lookup = 'titles';
   if (isNumber.test(title) && title.length > 3) {
@@ -17,7 +17,10 @@ const makeUrl = function(title, lang) {
     url = site_map[lang] + '/w/api.php';
   }
   //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-  url += '?action=query&redirects=true&prop=revisions&rvprop=content&maxlag=5&format=json&origin=*';
+  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&format=json&origin=*';
+  if (options.follow_redirects !== false) {
+    url += '&redirects=true';
+  }
   //support multiple titles
   if (typeof title === 'string') {
     title = [title];
@@ -96,7 +99,7 @@ const getPage = function(title, a, b, c) {
   if (typeof c === 'function') {
     callback = c;
   }
-  let url = makeUrl(title, lang);
+  let url = makeUrl(title, lang, options);
   return new Promise(function(resolve, reject) {
     let p = getData(url, options);
     p.then(postProcess).then((doc) => {

@@ -147,6 +147,11 @@ const inline = {
     let obj = pipeSplit(tmpl, ['text']);
     return `[[${obj.text}-class lifeboat|${obj.text}]]`;
   },
+  //german keyboard letters
+  taste: (tmpl) => {
+    let obj = pipeSplit(tmpl, ['key']);
+    return obj.key || '';
+  },
 };
 //aliases
 inline.flatlist = inline.plainlist;

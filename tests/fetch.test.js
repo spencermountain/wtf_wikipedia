@@ -31,7 +31,8 @@ test('fetch-invalid', t => {
   t.plan(1);
   var p = wtf.fetch('Taylor%20Swift', 'en', {
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
-  });p.then(function(doc) {
+  });
+  p.then(function(doc) {
     t.ok(doc === null, 'invalid character query returns null');
   });
   p.catch(function(e) {
@@ -43,8 +44,23 @@ test('fetch-missing', t => {
   t.plan(1);
   var p = wtf.fetch('NonExistentPage', 'en', {
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
-  });p.then(function(doc) {
+  });
+  p.then(function(doc) {
     t.ok(doc === null, 'fetching non-existent page returns null');
+  });
+  p.catch(function(e) {
+    t.throw(e);
+  });
+});
+
+test('fetch-redirect', t => {
+  t.plan(1);
+  var p = wtf.fetch('USA', 'simple', {
+    follow_redirects: false,
+    'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
+  });
+  p.then(function(doc) {
+    t.ok(doc.isRedirect(), 'got redirect');
   });
   p.catch(function(e) {
     t.throw(e);

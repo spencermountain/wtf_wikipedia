@@ -305,3 +305,10 @@ test('microsoft currency parsing', function(t) {
   t.equal(infobox.net_income.text(), 'US$21.20 billion', 'net_income =' + infobox.net_income.text);
   t.end();
 });
+
+
+test('german ones', function(t) {
+  var str = 'Buchstaben {{Taste|Q}}, {{Taste|W}}, {{Taste|E}}, {{Taste|R}}, {{Taste|T}} und {{Taste|Z}}';
+  t.equal(wtf(str).text(), 'Buchstaben Q, W, E, R, T und Z', 'letters');
+  t.end();
+});
