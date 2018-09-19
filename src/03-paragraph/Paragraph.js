@@ -4,7 +4,9 @@ const toHtml = require('./toHtml');
 const toLatex = require('./toLatex');
 const setDefaults = require('../lib/setDefaults');
 const defaults = {
-  sentences: true
+  sentences: true,
+  lists: true,
+  images: true,
 };
 
 const Paragraph = function(data) {

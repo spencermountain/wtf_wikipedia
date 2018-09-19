@@ -62,13 +62,14 @@ const parseSections = function(wiki, options) {
       title: '',
       depth: null,
       templates: [],
+      infoboxes: [],
       references: [],
     };
     //figure-out title/depth
-    data = parse.heading(data, heading);
+    parse.heading(data, heading);
     //parse it up
-    data = oneSection(content, data, options);
-    sections.push(data);
+    let s = oneSection(content, data, options);
+    sections.push(s);
   }
   //remove empty references section
   sections = removeReferenceSection(sections);

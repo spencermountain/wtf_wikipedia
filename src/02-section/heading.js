@@ -3,14 +3,12 @@ const parseSentence = require('../04-sentence/').oneSentence;
 const heading_reg = /^(={1,5})([^=]{1,200}?)={1,5}$/;
 
 //interpret depth, title of headings like '==See also=='
-const parseHeading = function(r, str) {
+const parseHeading = function(data, str) {
   let heading = str.match(heading_reg);
   if (!heading) {
-    return {
-      title: '',
-      depth: 0,
-      templates: []
-    };
+    data.title = '';
+    data.depth = 0;
+    return data;
   }
   let title = heading[2] || '';
   title = parseSentence(title).text();
@@ -23,8 +21,8 @@ const parseHeading = function(r, str) {
   if (heading[1]) {
     depth = heading[1].length - 2;
   }
-  r.title = title;
-  r.depth = depth;
-  return r;
+  data.title = title;
+  data.depth = depth;
+  return data;
 };
 module.exports = parseHeading;

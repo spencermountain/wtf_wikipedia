@@ -16,22 +16,18 @@ const readFile = require('./tests/lib/_cachedPage');
 // "'''King Cotton'''" is a slogan which summarized the strategy `);
 // console.log(doc.images(0).data);
 
-let str = `{{climate chart
-| Toronto
-| −6.7 | -0.7 | 62
-| −5.6 |  0.4 | 55
-| −1.9 |  4.7 | 54
-|  4.1 | 11.5 | 68
-|  9.9 | 18.4 | 82
-| 14.9 | 23.9 | 71
-| 18.0 | 26.6 | 64
-| 17.4 | 25.5 | 81
-| 13.4 | 21.0 | 85
-|  7.4 | 14.0 | 64
-|  2.3 |  7.5 | 84
-| −3.1 |  2.1 | 61
-|float=right
-|source= Environment Canada }}`;
+let str = `{{Infobox museum
+|name=            Arts Club of Chicago
+|pushpin_map =United States Chicago Near North Side
+|coordinates = {{coord|41.893269|-87.622511|display=inline}}
+|map_caption=Location within Chicago's [[Near North Side, Chicago|Near North Side]] [[Community areas of Chicago|community area]]
+|image=           20070701 Arts Club of Chicago.JPG
+|established=     1916<br> (current location since April 4, 1997)
+|location=        201 E. Ontario Street, <br>[[Chicago]], [[Illinois]] 60611  <br>United States {{flagicon|USA}}
+|director=
+|website=         [http://www.artsclubchicago.org www.artsclubchicago.org]
+}}
+'''Arts Club of Chicago''' is a private club located in the [[Near North Side, Chicago|Near North Side]] `;
 
 var doc = wtf(str);
-console.log(doc.templates(0).data);
+console.log(doc.infoboxes(0));

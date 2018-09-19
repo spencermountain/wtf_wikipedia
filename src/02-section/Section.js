@@ -11,6 +11,8 @@ const defaults = {
   lists: true,
   citations: true,
   paragraphs: true,
+  templates: true,
+  infoboxes: true,
 };
 
 //the stuff between headings - 'History' section for example
@@ -104,13 +106,11 @@ const methods = {
     return arr;
   },
   infoboxes: function(clue) {
-    let arr = this.templates('infobox');
+    let arr = this.data.infoboxes || [];
     if (typeof clue === 'number') {
-      return new Infobox(arr[clue]);
+      return arr[clue];
     }
-    return arr.map(obj => {
-      return new Infobox(obj);
-    });
+    return arr;
   },
   coordinates: function(clue) {
     let arr = this.templates('coord');

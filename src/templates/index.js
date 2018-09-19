@@ -1,3 +1,4 @@
+const Infobox = require('../infobox/Infobox');
 const getName = require('./parsers/_getName');
 const getTemplates = require('./parsers/_getTemplates');
 
@@ -89,11 +90,14 @@ const parseTemplates = function(wiki, data) {
   templates.top.forEach(tmpl => {
     wiki = oneTemplate(tmpl, wiki, data);
   });
-  //lastly, move citations out of our templates list
+  //lastly, move citations + infoboxes out of our templates list
   let clean = [];
   data.templates.forEach((o) => {
     if (o.template === 'citation') {
       data.references.push(o);
+    }
+    if (o.template === 'infobox') {
+      data.infoboxes.push(new Infobox(o));
     }
     clean.push(o);
   });
