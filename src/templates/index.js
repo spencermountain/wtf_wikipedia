@@ -95,9 +95,11 @@ const parseTemplates = function(wiki, data) {
   data.templates.forEach((o) => {
     if (o.template === 'citation') {
       data.references.push(o);
+      return;
     }
     if (o.template === 'infobox') {
       data.infoboxes.push(new Infobox(o));
+      return;
     }
     clean.push(o);
   });

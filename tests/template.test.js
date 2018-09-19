@@ -220,11 +220,27 @@ The types of boats provided at each station and the launching methods vary depen
 hello there
 `;
   var doc = wtf(str);
-  t.equal(doc.templates().length, 4, 'got several templates');
+  t.equal(doc.templates().length, 3, 'got several templates');
+  t.equal(doc.infoboxes().length, 1, 'got one infobox');
   t.equal(doc.citations().length, 1, 'got citation template');
   t.equal(doc.templates('main').length, 1, 'got main template');
   t.equal(doc.templates('tracklist').length, 1, 'got tracklist template');
-  t.equal(doc.templates('infobox').length, 1, 'got infobox template');
+  t.end();
+});
+test('templates in infobox', function(t) {
+  let str = `{{Infobox museum
+  |coordinates = {{coord|41.893269|-87.622511|display=inline}}
+  |image=           20070701 Arts Club of Chicago.JPG
+  |website= [http://www.artsclubchicago.org www.artsclubchicago.org]
+  }}
+  '''Arts Club of Chicago''' is a private club located in the [[Near North Side, Chicago|Near North Side]] `;
+  var doc = wtf(str);
+  t.equal(doc.templates().length, 1, 'got one template');
+  t.equal(doc.infoboxes().length, 1, 'got one infobox');
+  t.equal(doc.images().length, 1, 'got one image');
+  t.equal(doc.images().length, 1, 'got one image');
+  t.equal(doc.links().length, 2, 'got two links');
+  t.equal(doc.templates('coord').length, 1, 'got coord template');
   t.end();
 });
 

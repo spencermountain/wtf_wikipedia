@@ -6,6 +6,7 @@ const defaults = {
   images: true,
   tables: true,
   templates: true,
+  infoboxes: true,
   lists: true,
 };
 //
@@ -31,6 +32,9 @@ const toJSON = function(section, options) {
   }
   if (options.templates === true) {
     data.templates = section.templates();
+  }
+  if (options.infoboxes === true) {
+    data.infoboxes = section.infoboxes().map(i => i.json(options));
   }
   if (options.lists === true) {
     data.lists = section.lists().map(list => list.json(options));

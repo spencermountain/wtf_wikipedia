@@ -101,6 +101,7 @@
 * support `.paragraphs()`
 * :warning: major changes to output of `.json()`. cleaning-up redundant data.:warning:
 * * remove top-level `templates` data (found in `section`) - resume it with `{templates:true}`
+* * remove top-level `coordinates` data (found in `templates`) - resume it with `{coordinates:true}`
 * * remove top-level `citations` data (found in `section`) - resume it with `{citations:true}`
 * return empty arrays in `.json()` again  ¯\_(:/)_ /¯
 * remove <h1> title on html output

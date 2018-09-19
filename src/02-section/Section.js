@@ -2,7 +2,6 @@ const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
 const toJSON = require('./toJson');
 const toLatex = require('./toLatex');
-const Infobox = require('../infobox/Infobox');
 const setDefaults = require('../lib/setDefaults');
 const aliasList = require('../lib/aliases');
 
@@ -258,9 +257,11 @@ const methods = {
     return pList.join('\n\n');
   },
   latex: function(options) {
+    options = setDefaults(options, defaults);
     return toLatex(this, options);
   },
   json: function(options) {
+    options = setDefaults(options, defaults);
     return toJSON(this, options);
   }
 };

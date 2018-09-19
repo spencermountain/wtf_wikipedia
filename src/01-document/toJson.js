@@ -5,7 +5,6 @@ const defaults = {
   sections: true,
   pageID: true,
   categories: true,
-  coordinates: true,
 };
 
 //an opinionated output of the most-wanted data
@@ -21,9 +20,6 @@ const toJSON = function(doc, options) {
   if (options.categories) {
     data.categories = doc.categories();
   }
-  if (options.coordinates) {
-    data.coordinates = doc.coordinates();
-  }
   if (options.sections) {
     data.sections = doc.sections().map(i => i.json(options));
   }
@@ -34,6 +30,9 @@ const toJSON = function(doc, options) {
   }
 
   //these are default-off
+  if (options.coordinates) {
+    data.coordinates = doc.coordinates();
+  }
   if (options.infoboxes) {
     data.infoboxes = doc.infoboxes().map(i => i.json(options));
   }
