@@ -48,9 +48,9 @@ const toHtml = function(doc, options) {
     html += data.sections.map(s => s.html(options)).join('\n');
   }
   //default off
-  if (options.citations === true) {
+  if (options.references === true) {
     html += '<h2>References</h2>';
-    html += doc.citations().map((c) => c.json(options)).join('\n');
+    html += doc.references().map((c) => c.json(options)).join('\n');
   }
   html += '</body>\n';
   html += '</html>';

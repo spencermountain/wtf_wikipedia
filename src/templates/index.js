@@ -94,8 +94,11 @@ const parseTemplates = function(wiki, data) {
   //lastly, move citations + infoboxes out of our templates list
   let clean = [];
   data.templates.forEach((o) => {
+    //it's possible that we've parsed a reference, that we missed earlier
     if (o.template === 'citation') {
-      data.references.push(new Reference(o));
+      console.log(o);
+      o.data.type = o.type;
+      data.references.push(new Reference(o.data));
       return;
     }
     if (o.template === 'infobox') {

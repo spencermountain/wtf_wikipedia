@@ -32,6 +32,15 @@ test('multiple-citations', t => {
   t.end();
 });
 
+test('weird-harvard-citations', t => {
+  var str = `{{Harvnb|Selin|2008|p=}}{{cite web|url=https://www.thestar.com/news/city_hall/toronto2014election/2014/10/25/mayoral_candidate_john_tory_a_leader_from_childhood.html|title=Mayoral candidate John Tory a leader from childhood|newspaper=Toronto Star|date=October 25, 2014|first=Linda|last=Diebel|accessdate=October 28, 2014}}</ref>`;
+  var arr = wtf(str).citations();
+  t.equal(arr.length, 2, 'found-two-citations');
+  t.equal(arr[0].data.author, 'Selin', 'refn author');
+  t.equal(arr[0].data.year, '2018', 'refn year');
+  t.end();
+});
+
 // test('inline-test', t => {
 //   var str = `"Through Magic Doorways".<ref name="quote">[http://www.imdb.com/name/nm3225194/ Allen Morris IMDb profile]</ref> `;
 //   var arr = wtf(str).citations();
@@ -40,7 +49,7 @@ test('multiple-citations', t => {
 //   t.equal(arr[0].text(), 'Allen Morris IMDb profile', 'inline-text');
 //   t.end();
 // });
-// 
+//
 // test('inline-test2', t => {
 //   var str = `in 1826.<ref name="brake">Brake (2009)</ref>  `;
 //   var arr = wtf(str).citations();

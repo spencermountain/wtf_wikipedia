@@ -43,7 +43,7 @@ const toJSON = function(doc, options) {
     data.plaintext = doc.plaintext(options);
   }
   if (options.citations) {
-    data.citations = doc.citations();
+    data.references = doc.references();
   }
   if (options.markdown) {
     data.markdown = doc.markdown(options);

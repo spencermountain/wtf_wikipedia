@@ -6,9 +6,7 @@ const twoNewLines = /\r?\n\W*\r?\n/;
 const hasChar = /\w/;
 const parse = {
   image: require('../image'),
-  references: require('../reference'),
   list: require('../list'),
-  templates: require('../templates'),
 };
 
 const parseParagraphs = function(wiki) {

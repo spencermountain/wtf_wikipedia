@@ -8,7 +8,7 @@ const aliasList = require('../lib/aliases');
 const defaults = {
   tables: true,
   lists: true,
-  citations: true,
+  references: true,
   paragraphs: true,
   templates: true,
   infoboxes: true,

@@ -88,10 +88,12 @@ const parsers = {
   },
   'sfn': (tmpl) => {
     let order = ['author', 'year', 'location'];
-    let obj = pipeSplit(tmpl, order);
-    obj.template = 'citation';
-    obj.type = 'sfn';
-    return obj;
+    let data = pipeSplit(tmpl, order);
+    return {
+      template: 'citation',
+      type: 'sfn',
+      data: data
+    };
   },
   'audio': (tmpl) => {
     let order = ['file', 'text', 'type'];

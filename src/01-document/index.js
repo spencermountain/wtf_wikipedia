@@ -17,7 +17,7 @@ const main = function(wiki, options) {
     interwiki: {},
     categories: [],
     coordinates: [],
-    citations: []
+    references: []
   };
   //detect if page is just redirect, and return it
   if (redirects.isRedirect(wiki) === true) {
