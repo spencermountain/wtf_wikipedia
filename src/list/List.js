@@ -24,11 +24,21 @@ const methods = {
   lines() {
     return this.data;
   },
-  links() {
+  links(n) {
     let links = [];
     this.data.forEach((s) => {
       links = links.concat(s.links());
     });
+    Object.keys(this.data).forEach((k) => {
+      this.data[k].links().forEach((l) => links.push(l));
+    });
+    if (typeof n === 'number') {
+      return links[n];
+    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+      let link = links.find(o => o.page === n);
+      return link === undefined ? [] : [link];
+    }
     return links;
   },
   markdown(options) {

@@ -43,7 +43,7 @@ const methods = {
     return this.data.text || '';
   },
   links() {
-    return [];
+    return []; //not ready yet
   },
   url() {
     return server + makeSrc(this.file());

@@ -11,13 +11,21 @@ const Table = function(data) {
 };
 
 const methods = {
-  links() {
+  links(n) {
     let links = [];
     this.data.forEach((r) => {
       Object.keys(r).forEach((k) => {
         links = links.concat(r[k].links());
       });
     });
+    //grab a specific link..
+    if (typeof n === 'number') {
+      return links[n];
+    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+      let link = links.find(o => o.page === n);
+      return link === undefined ? [] : [link];
+    }
     return links;
   },
   json() {

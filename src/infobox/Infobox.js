@@ -17,12 +17,19 @@ const methods = {
   type: function() {
     return this._type;
   },
-  links: function() {
-    let links = [];
+  links: function(n) {
+    let arr = [];
     Object.keys(this.data).forEach((k) => {
-      this.data[k].links().forEach((l) => links.push(l));
+      this.data[k].links().forEach((l) => arr.push(l));
     });
-    return links;
+    if (typeof n === 'number') {
+      return arr[n];
+    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+      let link = arr.find(o => o.page === n);
+      return link === undefined ? [] : [link];
+    }
+    return arr;
   },
   image: function() {
     let obj = this.get('image');

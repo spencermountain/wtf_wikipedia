@@ -71,19 +71,23 @@ const methods = {
   links: function(n) {
     let arr = [];
     this.infoboxes().forEach(templ => {
-      templ.links().forEach(link => arr.push(link));
+      templ.links(n).forEach(link => arr.push(link));
     });
     this.sentences().forEach(s => {
-      s.links().forEach(link => arr.push(link));
+      s.links(n).forEach(link => arr.push(link));
     });
     this.tables().forEach(t => {
-      t.links().forEach(link => arr.push(link));
+      t.links(n).forEach(link => arr.push(link));
     });
     this.lists().forEach(list => {
-      list.links().forEach(link => arr.push(link));
+      list.links(n).forEach(link => arr.push(link));
     });
     if (typeof n === 'number') {
       return arr[n];
+    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+      let link = arr.find(o => o.page === n);
+      return link === undefined ? [] : [link];
     }
     return arr;
   },

@@ -41,13 +41,17 @@ const methods = {
     }
     return this.data.images || [];
   },
-  links: function(num) {
+  links: function(n) {
     let arr = [];
     this.sentences().forEach(s => {
-      arr = arr.concat(s.links());
+      arr = arr.concat(s.links(n));
     });
-    if (typeof num === 'number') {
-      return arr[num];
+    if (typeof n === 'number') {
+      return arr[n];
+    } else if (typeof n === 'string') { //grab a specific link like .links('Fortnight')
+      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+      let link = arr.find(o => o.page === n);
+      return link === undefined ? [] : [link];
     }
     return arr || [];
   },

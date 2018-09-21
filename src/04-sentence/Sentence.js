@@ -17,6 +17,10 @@ const methods = {
     let arr = this.data.links || [];
     if (typeof n === 'number') {
       return arr[n];
+    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+      let link = arr.find(o => o.page === n);
+      return link === undefined ? [] : [link];
     }
     return arr;
   },
