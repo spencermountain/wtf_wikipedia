@@ -32,7 +32,12 @@ const makeUrl = function(title, lang, options) {
   if (typeof pages[0] === 'number') {
     lookup = 'pageids';
   } else {
-    pages = pages.map(encodeURIComponent);
+    pages = pages.map((str) => {
+      if (typeof str === 'string') {
+        return encodeURIComponent(str);
+      }
+      return str;
+    });
   }
   pages = pages.join('|');
   url += '&' + lookup + '=' + pages;

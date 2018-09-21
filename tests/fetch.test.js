@@ -76,12 +76,12 @@ test('ambiguous-pageids', async function(t) {
 
   let docs = await wtf.fetch([2983, 7493], 'en');
   t.equal(docs.length, 2, 'got two pageid results');
-  t.equal(doc[0].title(), '1984', 'first pageid');
-  t.equal(doc[1].title(), '1984', 'seonc pageid');
+  t.equal(docs[0].title(), 'Austria-Hungary', 'first pageid');
+  t.equal(docs[1].title(), 'Talk:P versus NP problem/Archive 1', 'second pageid');
 
   docs = await wtf.fetch(['June', 'July'], 'en');
   t.equal(docs.length, 2, 'got two results');
-  t.equal(doc[0].title(), 'June', 'input as text');
-  t.equal(doc[1].title(), 'July', 'input as text');
+  t.equal(docs[0].title(), 'June', 'input as text');
+  t.equal(docs[1].title(), 'July', 'input as text');
   t.end();
 });
