@@ -69,17 +69,23 @@ const templates = {
     tmpl = tmpl.replace(/\|abbr=(on|off)/i, '');
     let order = ['year', 'month', 'date', 'bc'];
     let obj = pipeSplit(tmpl, order);
-    let text = obj.month || '';
-    if (obj.date) {
-      text += ' ' + obj.date;
+    if (obj.date && obj.month && obj.year) {
+      //render 'june 5 2018'
+      if (/[a-z]/.test(obj.month) === true) {
+        return [obj.month, obj.date, obj.year].join(' ');
+      }
+      return [obj.year, obj.month, obj.date].join('-');
+    }
+    if (obj.month && obj.year) {
+      return [obj.year, obj.month].join('-');
     }
     if (obj.year) {
       if (obj.year < 0) {
         obj.year = Math.abs(obj.year) + ' BC';
       }
-      text += ' ' + obj.year;
+      return obj.year;
     }
-    return text;
+    return '';
   },
   //date/age/time templates
   'start': date,

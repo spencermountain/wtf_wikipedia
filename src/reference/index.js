@@ -32,7 +32,7 @@ const parseInline = function(str) {
 // parse <ref></ref> xml tags
 const parseRefs = function(wiki, data) {
   let references = [];
-  wiki = wiki.replace(/ ?<ref>([\s\S]{0,750}?)<\/ref> ?/gi, function(a, tmpl) {
+  wiki = wiki.replace(/ ?<ref>([\s\S]{0,1000}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
       let obj = parseCitation(tmpl);
       if (obj) {

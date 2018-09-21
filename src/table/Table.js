@@ -29,6 +29,15 @@ const methods = {
       return row;
     });
   },
+  keyValue(options) {
+    let rows = this.json(options);
+    rows.forEach((row) => {
+      Object.keys(row).forEach((k) => {
+        row[k] = row[k].text;
+      });
+    });
+    return rows;
+  },
   html(options) {
     return toHtml(this.data, options);
   },

@@ -16,10 +16,10 @@ const oneSection = function( wiki, data, options) {
   wiki = parse.xmlTemplates(data, wiki, options);
   //parse-out the <ref></ref> tags
   wiki = parse.references(wiki, data);
-  // //parse the tables
-  wiki = parse.table(data, wiki);
   //parse-out all {{templates}}
   wiki = parse.templates(wiki, data);
+  // //parse the tables
+  wiki = parse.table(data, wiki);
   //now parse all double-newlines
   let res = parse.paragraphs(wiki, options);
   data.paragraphs = res.paragraphs;
