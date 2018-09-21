@@ -66,3 +66,22 @@ test('fetch-redirect', t => {
     t.throw(e);
   });
 });
+
+test('ambiguous-pageids', async function(t) {
+  let doc = await wtf.fetch(1984, 'en');
+  t.equal(doc.title(), 'Arab world', 'input as pageid');
+
+  doc = await wtf.fetch('1984', 'en');
+  t.equal(doc.title(), '1984', 'input as text');
+
+  let docs = await wtf.fetch([2983, 7493], 'en');
+  t.equal(docs.length, 2, 'got two pageid results');
+  t.equal(doc[0].title(), '1984', 'first pageid');
+  t.equal(doc[1].title(), '1984', 'seonc pageid');
+
+  docs = await wtf.fetch(['June', 'July'], 'en');
+  t.equal(docs.length, 2, 'got two results');
+  t.equal(doc[0].title(), 'June', 'input as text');
+  t.equal(doc[1].title(), 'July', 'input as text');
+  t.end();
+});

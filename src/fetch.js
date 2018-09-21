@@ -21,17 +21,21 @@ const makeUrl = function(title, lang, options) {
     url += '&redirects=true';
   }
   var lookup = 'titles';
+  let pages = [];
   //support one, or many pages
   if (isArray(title) === false) {
-    title = [title];
+    pages = [title];
+  } else {
+    pages = title;
   }
   //assume numbers mean pageid, and strings are titles (like '1984')
-  if (typeof title[0] === 'number') {
+  if (typeof pages[0] === 'number') {
     lookup = 'pageids';
+  } else {
+    pages = pages.map(encodeURIComponent);
   }
-  title = title.map(encodeURIComponent);
-  title = title.join('|');
-  url += '&' + lookup + '=' + title;
+  pages = pages.join('|');
+  url += '&' + lookup + '=' + pages;
   return url;
 };
 
@@ -43,6 +47,7 @@ const postProcess = function(data) {
     if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
       return null;
     }
+
     let text = page.revisions[0]['*'];
     let options = {
       title: page.title,
@@ -103,14 +108,14 @@ const getPage = function(title, a, b, c) {
   let url = makeUrl(title, lang, options);
   return new Promise(function(resolve, reject) {
     let p = getData(url, options);
+
     p.then(postProcess).then((doc) => {
       //support 'err-back' format
       if (callback && typeof callback === 'function') {
         callback(null, doc);
       }
       resolve(doc);
-    });
-    p.catch(reject);
+    }).catch(reject);
   });
 };
 

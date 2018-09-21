@@ -36,6 +36,23 @@ const inline = {
     }
     return `${obj.num} ${obj.two}`;
   },
+  //formatting things - https://en.wikipedia.org/wiki/Template:Nobold
+  braces: (tmpl) => {
+    let inside = strip(tmpl).replace(/^braces\s?\|/, '');
+    return '{{' + inside + '}}';
+  },
+  nobold: (tmpl) => {
+    let inside = strip(tmpl).replace(/^nobold\s?\|/, '');
+    return inside;
+  },
+  noitalic: (tmpl) => {
+    let inside = strip(tmpl).replace(/^noitalic\s?\|/, '');
+    return inside;
+  },
+  nocaps: (tmpl) => {
+    let inside = strip(tmpl).replace(/^noitalic\s?\|/, '');
+    return inside.toLowerCase();
+  },
   hlist: (tmpl) => {
     let val = strip(tmpl).replace(/^hlist\s?\|/, '');
     let arr = val.split('|');

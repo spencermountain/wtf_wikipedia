@@ -9,7 +9,7 @@ const tightenUp = function(arr) {
       if (s.links() && s.links().length > 0) {
         return s.links(0).page;
       }
-      return s.text;
+      return s.text();
     }
     return str;
   });
