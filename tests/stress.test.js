@@ -40,6 +40,7 @@ test('stress-test-en', t => {
     'Keilwelle',
     'Liste-der-argentinischen-Botschafter-in-Chile',
     'Magnar-Sætre',
+    'Mark-Behr',
     'Maurische-Netzwuhle',
     'Mozilla-Firefox',
     'Neil-McLean-(saxophonist)',

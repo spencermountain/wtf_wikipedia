@@ -193,6 +193,10 @@ const parsers = {
         months: months
       }
     };
+  },
+  '__throw-wtf-error': () => {
+    //okay you asked for it!
+    throw new Error('Intentional error thrown from wtf-wikipedia!');
   }
 };
 //aliases

@@ -78,3 +78,18 @@ test('raith rovers', t => {
   );
   t.end();
 });
+
+test('mark behr', t => {
+  var doc = readFile('Mark-Behr');
+  t.equal(doc.isRedirect(), false, 'not-redirect');
+  t.equal(doc.infoboxes().length, 1, 'got infobox');
+  t.equal(doc.categories().length, 3, 'cat-length');
+  var s = doc.sections('publikasies');
+  t.equal(s.tables().length, 1, 'got table');
+  t.equal(doc.tables(0).links().length, 0, 'table has no links');
+  t.equal(s.lists().length, 0, 'no list');
+  s = doc.sections('toekennings');
+  t.equal(s.lists().length, 1, 'got list');
+  t.equal(s.lists(0).lines().length, 4, 'got 4 items in list');
+  t.end();
+});

@@ -51,6 +51,9 @@ const toJSON = function(doc, options) {
   if (options.html) {
     data.html = doc.html(options);
   }
+  if (options.latex) {
+    data.latex = doc.latex(options);
+  }
   return data;
 };
 module.exports = toJSON;
