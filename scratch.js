@@ -3,10 +3,10 @@ const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-// (async () => {
-//   const doc = await wtf.fetch(`United Kingdom`, 'en');
-//   console.log('|' + doc.latex(options) + '|');
-// })();
+(async () => {
+  const doc = await wtf.fetch(1984, 'en');
+  console.log(doc.title());
+})();
 
 
 // let doc = readFile('toronto');
@@ -37,9 +37,3 @@ const readFile = require('./tests/lib/_cachedPage');
 // let str = `hello <!-- <ref>cite AV media | medium=film</ref>--> there`;
 // var doc = wtf(str);
 // console.log(doc.text());
-
-const document = wtf(`{{Begriffsklärungshinweis}}
-[[Datei:Michael Jackson in 1988.jpg|mini|Michael Jackson in [[Wien]] (1988)]]
-[[Datei:Michael Jackson signature.svg|rahmenlos|rechts|Michael Jacksons Unterschrift (2002)]]
-'''Michael Joseph<ref> "Einige Fans bestehen darauf, dass Michael Jacksons Zweitname ''Joe'' und nicht ''Joseph'' lautet. Aber Michael wurde Anfang der 1990er Jahre bei einer eidesstattlichen Aussage, bei der es um die Urheberrechte zu seinem Song ''Dangerous'' ging, gebeten, seinen vollen Namen auszusprechen, und er sagte klar und deutlich ''Michael Joseph Jackson''. In einigen seiner Ausweise (z.&nbsp;B. Führerschein, Motown-Mitgliedskarte) stand zwar ''Joe'' (was des Öfteren für Verwirrung sorgte), aber ''Joe'' ist die Abkürzung von ''Joseph''. Die Staatsanwaltschaft übernahm beim Prozess 2005 diese Schreibweise, weil ''Joe'' in Michaels Ausweis vermerkt war, den sie im Dezember 2003 konfisziert hatten. In den Geburtsurkunden seiner drei Kinder steht als Name des Vaters ''Michael Joseph Jackson''. Auch in seiner Heiratsurkunde mit Lisa Marie Presley steht ''Joseph'' als Zweitname." Zitiert nach Pade & Risi, Make that change, S. 563 </ref> Jackson'''`);
-console.log(document.references());

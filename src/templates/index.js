@@ -96,7 +96,6 @@ const parseTemplates = function(wiki, data) {
   data.templates.forEach((o) => {
     //it's possible that we've parsed a reference, that we missed earlier
     if (o.template === 'citation') {
-      console.log(o);
       o.data.type = o.type;
       data.references.push(new Reference(o.data));
       return;

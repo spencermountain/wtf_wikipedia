@@ -40,6 +40,17 @@ test('weird-harvard-citations', t => {
   t.equal(arr[0].data.year, '2018', 'refn year');
   t.end();
 });
+test('crazy-long-citations', t => {
+  var str = `{{Begriffsklärungshinweis}}
+  [[Datei:Michael Jackson in 1988.jpg|mini|Michael Jackson in [[Wien]] (1988)]]
+  [[Datei:Michael Jackson signature.svg|rahmenlos|rechts|Michael Jacksons Unterschrift (2002)]]
+  '''Michael Joseph<ref> "Einige Fans bestehen darauf, dass Michael Jacksons Zweitname ''Joe'' und nicht ''Joseph'' lautet. Aber Michael wurde Anfang der 1990er Jahre bei einer eidesstattlichen Aussage, bei der es um die Urheberrechte zu seinem Song ''Dangerous'' ging, gebeten, seinen vollen Namen auszusprechen, und er sagte klar und deutlich ''Michael Joseph Jackson''. In einigen seiner Ausweise (z.&nbsp;B. Führerschein, Motown-Mitgliedskarte) stand zwar ''Joe'' (was des Öfteren für Verwirrung sorgte), aber ''Joe'' ist die Abkürzung von ''Joseph''. Die Staatsanwaltschaft übernahm beim Prozess 2005 diese Schreibweise, weil ''Joe'' in Michaels Ausweis vermerkt war, den sie im Dezember 2003 konfisziert hatten. In den Geburtsurkunden seiner drei Kinder steht als Name des Vaters ''Michael Joseph Jackson''. Auch in seiner Heiratsurkunde mit Lisa Marie Presley steht ''Joseph'' als Zweitname." Zitiert nach Pade & Risi, Make that change, S. 563 </ref> Jackson'''`;
+  var doc = wtf(str);
+  t.equal(doc.citations().length, 1, 'found-one-citations');
+  t.equal(doc.text(), 'Michael Joseph Jackson', 'ref removal good');
+  t.equal(doc.images().length, 2, 'got both images');
+  t.end();
+});
 
 // test('inline-test', t => {
 //   var str = `"Through Magic Doorways".<ref name="quote">[http://www.imdb.com/name/nm3225194/ Allen Morris IMDb profile]</ref> `;

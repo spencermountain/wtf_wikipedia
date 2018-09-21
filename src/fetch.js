@@ -3,15 +3,14 @@ const fetch = require('cross-fetch');
 const site_map = require('./data/site_map');
 const parseDocument = require('./01-document');
 // const redirects = require('../parse/page/redirects');
-const isNumber = /^[0-9]*$/;
+
+function isArray(arr) {
+  return arr.constructor.toString().indexOf('Array') > -1;
+}
 
 //construct a lookup-url for the wikipedia api
 const makeUrl = function(title, lang, options) {
   lang = lang || 'en';
-  var lookup = 'titles';
-  if (isNumber.test(title) && title.length > 3) {
-    lookup = 'curid';
-  }
   let url = `https://${lang}.wikipedia.org/w/api.php`;
   if (site_map[lang]) {
     url = site_map[lang] + '/w/api.php';
@@ -21,12 +20,14 @@ const makeUrl = function(title, lang, options) {
   if (options.follow_redirects !== false) {
     url += '&redirects=true';
   }
-  //support multiple titles
-  if (typeof title === 'string') {
+  var lookup = 'titles';
+  //support one, or many pages
+  if (isArray(title) === false) {
     title = [title];
-  } else if (typeof title === 'number') { //pageids param
+  }
+  //assume numbers mean pageid, and strings are titles (like '1984')
+  if (typeof title[0] === 'number') {
     lookup = 'pageids';
-    title = [title];
   }
   title = title.map(encodeURIComponent);
   title = title.join('|');

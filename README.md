@@ -153,8 +153,29 @@ wtf.fetch(64646, 'en', (err, doc) => {
 </div>
 
 #### Main parts:
+```
+Document            - the whole thing
+  - Category
+  - Coordinate
+
+  Section           - page headings ( ==these== )
+    - Infobox       - a main, key-value template
+    - Table         -
+    - Reference     - citations, all-forms
+    - Template      - any other structured-data
+
+    Paragraph       - content separated by two newlines
+      - Image       -
+      - List        - a series of bullet-points
+
+      Sentence      - contains links, formatting, dates
+```
+For the most-part, these classes do the looping-around for you, so that `Document.links()` will go through every section, paragraph, and sentence, to get their links.
+
+Broadly speaking, you can ask for the data you'd like:
 * **.sections()** &nbsp; &nbsp; &nbsp; - &nbsp; *==these things==*
 * **.sentences()**
+* **.paragraphs()**
 * **.links()**
 * **.tables()**
 * **.lists()**
@@ -165,6 +186,7 @@ wtf.fetch(64646, 'en', (err, doc) => {
 * **.infoboxes()**
 * **.coordinates()**
 
+or output things in various formats:
 #### outputs:
 * **.json()**  &nbsp; - &nbsp; &nbsp; *handy, workable data*
 * **.text()**  &nbsp; - &nbsp; &nbsp; *reader-focused plaintext*
@@ -176,6 +198,7 @@ wtf.fetch(64646, 'en', (err, doc) => {
 * **.isRedirect()**  &nbsp; &nbsp; - &nbsp; *boolean*
 * **.isDisambiguation()**  &nbsp; &nbsp; - &nbsp; *boolean*
 * **.title()**  &nbsp; &nbsp; &nbsp; - &nbsp;  &nbsp; &nbsp;*guess the title of this page*
+* **.redirectsTo()**  &nbsp; &nbsp; - &nbsp; *{page:'China', anchor:'#History'}*
 
 ## Examples
 
@@ -197,7 +220,7 @@ to call non-english wikipedia apis, add [it's language-name](http://en.wikipedia
 
 ```javascript
 wtf.fetch('Toronto', 'de', function(err, doc) {
-  doc.plaintext();
+  doc.text();
   //Toronto ist mit 2,6 Millionen Einwohnern..
 });
 ```
@@ -208,8 +231,8 @@ wtf.fetch(64646, 'de').then(console.log).catch(console.log)
 ```
 the fetch method follows redirects.
 
-### **doc.plaintext()**
-returns only nice text of the article
+### **doc.text()**
+returns only nice plain-text of the article
 ```js
 var wiki =
   "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>";
@@ -287,9 +310,17 @@ wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
 ```
 
 # Contributing
-[Join in!](./contributing.md) - projects like these are only done with many-hands, and we try to be friendly and easy.
+[Join in!](./contributing.md) - projects like these are only done with many-hands, and we try to be friendly and easy. PRs always welcome.
+
+**Big Wins:**
+1) Supporting [more templates](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/templates). This is actually kinda fun.
+2) Adding [more tests](https://github.com/spencermountain/wtf_wikipedia/tree/master/tests) - you won't believe how helpful this is.
+3) Make a cool thing. [Holler](https://twitter.com/spencermountain) it at spencer.
+if it's a big change, [make an issue](https://github.com/spencermountain/wtf_wikipedia/issues/new) and talk-it-over first.
+Otherwise, go nuts!
 
 # See also:
+* [wtf-mlb](https://github.com/spencermountain/wtf-mlb) - generate game-result data from wikipedia pages
 * [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView)
 * [txtwiki](https://github.com/joaomsa/txtwiki.js)
 * [Parsoid](https://www.mediawiki.org/wiki/Parsoid)
