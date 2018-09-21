@@ -26,11 +26,8 @@ const methods = {
   },
   links(n) {
     let links = [];
-    this.data.forEach((s) => {
+    this.lines().forEach((s) => {
       links = links.concat(s.links());
-    });
-    Object.keys(this.data).forEach((k) => {
-      this.data[k].links().forEach((l) => links.push(l));
     });
     if (typeof n === 'number') {
       return links[n];

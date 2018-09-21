@@ -27,3 +27,5 @@ let str = `
 {{disambiguation}}
 `;
 console.log(wtf(str).links());
+
+// let str = `{{Nihongo|'''Toyota Motor Corporation'''|トヨタ自動車株式会社|Toyota Jidōsha [[Kabushiki gaisha|KK]]|{{IPA-ja|toꜜjota|IPA}}, {{IPAc-en|lang|t|ɔɪ|ˈ|oʊ|t|ə}}|lead=yes}}, usually shortened to '''Toyota''', is a Japanese [[Multinational corporation|multinational]] [[Automotive industry|automotive]] manufacturer headquartered in [[Toyota, Aichi]], Japan. <!--Cited below-->`;

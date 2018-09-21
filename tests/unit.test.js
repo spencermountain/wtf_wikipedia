@@ -26,8 +26,8 @@ test('sentence parser', t => {
 
 test('misc cleanup', t => {
   [['hi [[as:Plancton]] there', 'hi there'], ['hello <br/> world', 'hello world']].forEach(a => {
-    var s = wtf(a[0]).plaintext();
-    t.equal(s, a[1]);
+    var s = wtf(a[0]).text();
+    t.equal(s, a[1], 'inline interwiki link');
   });
   t.end();
 });
