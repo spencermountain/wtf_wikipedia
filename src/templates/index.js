@@ -16,6 +16,11 @@ const external = require('./external');
 const ignore = require('./ignore');
 const wiktionary = require('./wiktionary');
 
+//ensure references and infoboxes at least look valid
+const isObject = function(x) {
+  return (typeof x === 'object') && (x !== null) && x.constructor.toString().indexOf('Array') === -1;
+};
+
 //put them all together
 const inlineParsers = Object.assign(
   {},
@@ -95,12 +100,12 @@ const parseTemplates = function(wiki, data) {
   let clean = [];
   data.templates.forEach((o) => {
     //it's possible that we've parsed a reference, that we missed earlier
-    if (o.template === 'citation') {
+    if (o.template === 'citation' && o.data && isObject(o.data)) {
       o.data.type = o.type || null;
       data.references.push(new Reference(o));
       return;
     }
-    if (o.template === 'infobox') {
+    if (o.template === 'infobox' && o.data && isObject(o.data)) {
       data.infoboxes.push(new Infobox(o));
       return;
     }

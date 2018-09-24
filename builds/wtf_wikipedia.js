@@ -6334,10 +6334,6 @@ module.exports = toMarkdown;
 },{}],67:[function(_dereq_,module,exports){
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 var setDefaults = _dereq_('../lib/setDefaults');
 var toLatex = _dereq_('./toLatex');
 var toHtml = _dereq_('./toHtml');
@@ -6346,77 +6342,59 @@ var toJson = _dereq_('./toJson');
 var defaults = {};
 
 //also called 'citations'
+var Reference = function Reference(data) {
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data
+  });
+};
 
-var Reference = function () {
-  function Reference(data) {
-    _classCallCheck(this, Reference);
-
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data
-    });
+var methods = {
+  title: function title() {
+    var data = this.data;
+    return data.title || data.encyclopedia || data.author || '';
+  },
+  links: function links(n) {
+    var arr = [];
+    if (typeof n === 'number') {
+      return arr[n];
+    }
+    //grab a specific link..
+    if (typeof n === 'number') {
+      return arr[n];
+    } else if (typeof n === 'string') {
+      //grab a link like .links('Fortnight')
+      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+      var link = arr.find(function (o) {
+        return o.page === n;
+      });
+      return link === undefined ? [] : [link];
+    }
+    return arr || [];
+  },
+  text: function text() {
+    return ''; //nah, skip these.
+  },
+  markdown: function markdown(options) {
+    options = setDefaults(options, defaults);
+    return toMarkdown(this, options);
+  },
+  html: function html(options) {
+    options = setDefaults(options, defaults);
+    return toHtml(this, options);
+  },
+  latex: function latex(options) {
+    options = setDefaults(options, defaults);
+    return toLatex(this, options);
+  },
+  json: function json(options) {
+    options = setDefaults(options, defaults);
+    return toJson(this, options);
   }
-
-  _createClass(Reference, [{
-    key: 'title',
-    value: function title() {
-      var data = this.data;
-      return data.title || data.encyclopedia || data.author || '';
-    }
-  }, {
-    key: 'links',
-    value: function links(n) {
-      var arr = [];
-      if (typeof n === 'number') {
-        return arr[n];
-      }
-      //grab a specific link..
-      if (typeof n === 'number') {
-        return arr[n];
-      } else if (typeof n === 'string') {
-        //grab a link like .links('Fortnight')
-        n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
-        var link = arr.find(function (o) {
-          return o.page === n;
-        });
-        return link === undefined ? [] : [link];
-      }
-      return arr || [];
-    }
-  }, {
-    key: 'text',
-    value: function text() {
-      return ''; //nah, skip these.
-    }
-  }, {
-    key: 'markdown',
-    value: function markdown(options) {
-      options = setDefaults(options, defaults);
-      return toMarkdown(this, options);
-    }
-  }, {
-    key: 'html',
-    value: function html(options) {
-      options = setDefaults(options, defaults);
-      return toHtml(this, options);
-    }
-  }, {
-    key: 'latex',
-    value: function latex(options) {
-      options = setDefaults(options, defaults);
-      return toLatex(this, options);
-    }
-  }, {
-    key: 'json',
-    value: function json(options) {
-      options = setDefaults(options, defaults);
-      return toJson(this, options);
-    }
-  }]);
-
-  return Reference;
-}();
-
+};
+Object.keys(methods).forEach(function (k) {
+  Reference.prototype[k] = methods[k];
+});
 module.exports = Reference;
 
 },{"../lib/setDefaults":59,"./toHtml":69,"./toJson":70,"./toLatex":71}],68:[function(_dereq_,module,exports){
