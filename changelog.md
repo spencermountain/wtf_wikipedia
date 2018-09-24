@@ -109,7 +109,8 @@
 * support lists of 1
 * begin removing empty references section by default
 * begin support for rendering citations at the bottom of documents
-* move citation-parsing to paragraph-level
+* begin first-class references-parsing as objects at paragraph-level
+  - use this:  `.citations()` --> `.citations().map(c => c.json());`
 * remove `.wikitext()` and `.reparse()` methods - keeping wikitext stateful caused too many issues
 * turn `Image.file` into a function
 * include `interwiki()` results in `.links()`

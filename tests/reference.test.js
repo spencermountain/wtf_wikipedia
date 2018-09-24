@@ -4,7 +4,7 @@ var wtf = require('./lib');
 
 test('basic-citation', t => {
   var str = `Emery is a vegetarian,<ref>{{cite web|title=The princess of pot|url=http://thewalrus.ca/the-princess-of-pot/}}</ref>`;
-  var arr = wtf(str).citations();
+  var arr = wtf(str).citations().map(c => c.json());
   t.equal(arr.length, 1, 'found-one-citation');
   t.equal(arr[0].name, 'cite web', 'cite web');
   t.equal(arr[0].data.title, 'The princess of pot', 'title');
@@ -15,7 +15,7 @@ test('basic-citation', t => {
 test('complex-citation', t => {
   var str = `Emery is a vegetarian,<ref name="fun">{{ cite web|foo =    bar
 | url=http://cool.com/?fun=cool/}}</ref>`;
-  var arr = wtf(str).citations();
+  var arr = wtf(str).citations().map(c => c.json());
   t.equal(arr.length, 1, 'found-one-citation');
   t.equal(arr[0].name, 'cite web', 'cite web');
   t.equal(arr[0].data.foo, 'bar', 'foo');
@@ -25,7 +25,7 @@ test('complex-citation', t => {
 
 test('multiple-citations', t => {
   var str = `hello {{citation |url=cool.com/?fun=yes/   }}{{CITE book |title=the killer and the cartoons }}`;
-  var arr = wtf(str).citations();
+  var arr = wtf(str).citations().map(c => c.json());
   t.equal(arr.length, 2, 'found-two-citations');
   t.equal(arr[0].data.url, 'cool.com/?fun=yes/', 'url1');
   t.equal(arr[1].data.title, 'the killer and the cartoons', 'title2');
@@ -34,7 +34,7 @@ test('multiple-citations', t => {
 
 test('weird-harvard-citations', t => {
   var str = `{{Harvnb|Selin|2008|p=}}{{cite web|url=https://www.thestar.com/news/city_hall/toronto2014election/2014/10/25/mayoral_candidate_john_tory_a_leader_from_childhood.html|title=Mayoral candidate John Tory a leader from childhood|newspaper=Toronto Star|date=October 25, 2014|first=Linda|last=Diebel|accessdate=October 28, 2014}}</ref>`;
-  var arr = wtf(str).citations();
+  var arr = wtf(str).citations().map(c => c.json());
   t.equal(arr.length, 2, 'found-two-citations');
   t.equal(arr[0].data.author, 'Selin', 'refn author');
   t.equal(arr[0].data.year, '2018', 'refn year');
