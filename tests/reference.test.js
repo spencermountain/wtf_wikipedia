@@ -52,6 +52,16 @@ test('crazy-long-citations', t => {
   t.end();
 });
 
+test('inline-test', t => {
+  var str = ` {{cite gnis|id=1145117|name=Little Butte Creek|entrydate=November 28, 1980|accessdate=September 26, 2009}}
+  * {{cite journal|url=https://nrimp.dfw.state.or.us/web%20stores/data%20libraries/files/Watershed%20Councils/Watershed%20Councils_311_DOC_200-041Assess.zip|format=[[Zip (file format)|ZIP]]|publisher=Little Butte Creek Watershed Council|title=Little Butte Creek Watershed Assessment|date=August 2003|accessdate=September 20, 2009|}}
+  `;
+  let refs = wtf(str).references().map(r => r.json());
+  t.equal(refs.length, 2, 'got both refs');
+  t.equal(refs[0].data.entrydate, 'November 28, 1980', 'got data');
+  t.equal(refs[1].data.date, 'August 2003', 'got data 2');
+  t.end();
+});
 // test('inline-test', t => {
 //   var str = `"Through Magic Doorways".<ref name="quote">[http://www.imdb.com/name/nm3225194/ Allen Morris IMDb profile]</ref> `;
 //   var arr = wtf(str).citations();

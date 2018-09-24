@@ -79,7 +79,7 @@ wtf.fetch('Whistling').then(doc => {
   doc.images(0).thumb();
   // 'https://upload.wikimedia.org..../300px-Duveneck_Whistling_Boy.jpg'
 
-  doc.sections('See Also').links().map(l => l.page)
+  doc.sections('See Also').links().map(link => link.page)
   //['Slide whistle', 'Hand flute', 'Bird vocalization'...]
 });
 ```
@@ -89,8 +89,8 @@ wtf.fetch('Whistling').then(doc => {
 <script>
   //(follows redirect)
   wtf.fetch('On a Friday', 'en', function(err, doc) {
-    var data = doc.infobox(0).data
-    data['current_members'].links().map(l => l.page);
+    var val = doc.infobox(0).get('current_members');
+    val.links().map(link => link.page);
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
   });
 </script>
@@ -312,11 +312,13 @@ wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
 # Contributing
 [Join in!](./contributing.md) - projects like these are only done with many-hands, and we try to be friendly and easy. PRs always welcome.
 
-**Big Wins:**
-1) Supporting [more templates](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/templates). This is actually kinda fun.
+**Some Big Wins:**
+1) Supporting [more templates](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/templates) - ***This is actually kinda fun***.
 2) Adding [more tests](https://github.com/spencermountain/wtf_wikipedia/tree/master/tests) - you won't believe how helpful this is.
 3) Make a cool thing. [Holler](https://twitter.com/spencermountain) it at spencer.
+
 if it's a big change, [make an issue](https://github.com/spencermountain/wtf_wikipedia/issues/new) and talk-it-over first.
+
 Otherwise, go nuts!
 
 # See also:

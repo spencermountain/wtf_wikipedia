@@ -81,10 +81,12 @@ const parsers = {
   //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
   'cite gnis': (tmpl) => {
     let order = ['id', 'name', 'type'];
-    let obj = pipeSplit(tmpl, order);
-    obj.template = 'citation';
-    obj.type = 'gnis';
-    return obj;
+    let data = pipeSplit(tmpl, order);
+    return {
+      template: 'citation',
+      type: 'gnis',
+      data: data
+    };
   },
   'sfn': (tmpl) => {
     let order = ['author', 'year', 'location'];
