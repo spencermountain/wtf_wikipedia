@@ -1,6 +1,6 @@
 const Section = require('./Section');
 const isReference = /^(references?|einzelnachweise|referencias|références|notes et références|脚注|referenser|bronnen|примечания):?/i; //todo support more languages
-const section_reg = /(?:\n|^)(={1,5}[^=]{1,200}?={1,5})/g;
+const section_reg = /(?:\n|^)(={2,5}.{1,200}?={2,5})/g;
 
 //interpret ==heading== lines
 const parse = {

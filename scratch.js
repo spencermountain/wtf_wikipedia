@@ -12,13 +12,16 @@ const readFile = require('./tests/lib/_cachedPage');
 })();
 
 
-// let doc = readFile('Mark-Behr');
-// console.log(doc.sections().map(s => s.title())); //'publikasies'
+let doc = readFile('Mark-Behr');
+console.log(doc.sections().map(s => s.title())); //'publikasies'
+console.log(doc.sections('publikasies'));
 // console.log(doc.infobox(0).data);
 
+// let str = `hello
+// == Publikasies<ref>Esaach: http://www.esaach.org.za/index.php?title=Behr,_Mark</ref> ==
+// second section`;
+// let doc = wtf(str);
 
-let str = `hello <!-- <ref>blah blah</ref>  --> world`;
-console.log(wtf(str).text());
 
 // let str = `== Toekennings<ref>Stellenbosch Writers: http://www.stellenboschwriters.com/behrm.html</ref> ==`;
 // console.log(wtf(str).sections().map(s => s.title()));

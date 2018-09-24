@@ -1,9 +1,11 @@
 const fns = require('../lib/helpers');
 const parseSentence = require('../04-sentence/').oneSentence;
-const heading_reg = /^(={1,5})([^=]{1,200}?)={1,5}$/;
+const parseReferences = require('../reference/');
+const heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/;
 
 //interpret depth, title of headings like '==See also=='
 const parseHeading = function(data, str) {
+
   let heading = str.match(heading_reg);
   if (!heading) {
     data.title = '';
@@ -15,8 +17,10 @@ const parseHeading = function(data, str) {
   //amazingly, you can see inline {{templates}} in this text, too
   //... let's not think about that now.
   title = title.replace(/\{\{.+?\}\}/, '');
+  //same for references (i know..)
+  title = parseReferences(title, {});
+  //trim leading/trailing whitespace
   title = fns.trim_whitespace(title);
-
   let depth = 0;
   if (heading[1]) {
     depth = heading[1].length - 2;
