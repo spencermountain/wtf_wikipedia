@@ -1,3 +1,4 @@
+const languages = require('../data/languages');
 const keyValue = require('./parsers/keyValue');
 const pipeSplit = require('./parsers/pipeSplit');
 const strip = require('./parsers/_strip');
@@ -78,6 +79,12 @@ const inline = {
   },
   lang: (tmpl) => {
     let order = ['lang', 'text'];
+    let obj = pipeSplit(tmpl, order);
+    return obj.text;
+  },
+  //this one has a million variants
+  'lang-de': (tmpl) => {
+    let order = ['text'];
     let obj = pipeSplit(tmpl, order);
     return obj.text;
   },
@@ -164,11 +171,21 @@ const inline = {
     let obj = pipeSplit(tmpl, ['text']);
     return `[[${obj.text}-class lifeboat|${obj.text}]]`;
   },
-  //german keyboard letters
+  //german keyboard letterscn
   taste: (tmpl) => {
     let obj = pipeSplit(tmpl, ['key']);
     return obj.key || '';
   },
+  //https://en.wikipedia.org/wiki/Template:Nihongo
+  nihongo: (tmpl, r) => {
+    let obj = pipeSplit(tmpl, ['english', 'kanji', 'romaji', 'extra']);
+    r.templates.push(obj);
+    let str = obj.english || obj.romaji || '';
+    if (obj.kanji) {
+      str += ` (${obj.kanji})`;
+    }
+    return str;
+  }
 };
 //aliases
 inline.flatlist = inline.plainlist;
@@ -180,4 +197,13 @@ inline['ordered list'] = inline['collapsible list'];
 
 inline['str left'] = inline.trunc;
 inline['str crop'] = inline.trunc;
+inline['nihongo2'] = inline.nihongo;
+inline['nihongo3'] = inline.nihongo;
+inline['nihongo-s'] = inline.nihongo;
+inline['nihongo foot'] = inline.nihongo;
+
+//https://en.wikipedia.org/wiki/Category:Lang-x_templates
+Object.keys(languages).forEach((k) => {
+  inline['lang-' + k] = inline['lang-de'];
+});
 module.exports = inline;

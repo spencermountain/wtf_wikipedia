@@ -32,6 +32,18 @@ Closing remark`);
 });
 
 
+test('bring newlines to plaintext', t => {
+  let str = `hello
+
+
+
+world`;
+  let doc = wtf(str);
+  t.equal(doc.text(), 'hello\n\nworld', 'plaintext has one newline');
+  t.end();
+});
+
+
 test('newlines in templates', t => {
   var str = `hello world{{cite web |url=http://coolc.om |title=whoa hello |last= |first=
 

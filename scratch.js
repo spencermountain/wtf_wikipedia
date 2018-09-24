@@ -12,18 +12,9 @@ const readFile = require('./tests/lib/_cachedPage');
 })();
 
 
-let doc = readFile('Mark-Behr');
-console.log(doc.sections().map(s => s.title())); //'publikasies'
-console.log(doc.sections('publikasies'));
+// let doc = readFile('Mark-Behr');
 // console.log(doc.infobox(0).data);
 
-// let str = `hello
-// == Publikasies<ref>Esaach: http://www.esaach.org.za/index.php?title=Behr,_Mark</ref> ==
-// second section`;
-// let doc = wtf(str);
 
-
-// let str = `== Toekennings<ref>Stellenbosch Writers: http://www.stellenboschwriters.com/behrm.html</ref> ==`;
-// console.log(wtf(str).sections().map(s => s.title()));
-// console.log(wtf(str).references())
-// let str = `{{Nihongo|'''Toyota Motor Corporation'''|トヨタ自動車株式会社|Toyota Jidōsha [[Kabushiki gaisha|KK]]|{{IPA-ja|toꜜjota|IPA}}, {{IPAc-en|lang|t|ɔɪ|ˈ|oʊ|t|ə}}|lead=yes}}, usually shortened to '''Toyota''', is a Japanese [[Multinational corporation|multinational]] [[Automotive industry|automotive]] manufacturer headquartered in [[Toyota, Aichi]], Japan. <!--Cited below-->`;
+let str = `{{lang|fr|Je suis française.}}`;
+console.log(wtf(str).text());
