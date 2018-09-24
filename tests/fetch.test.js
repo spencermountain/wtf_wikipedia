@@ -67,6 +67,8 @@ test('fetch-redirect', t => {
   });
 });
 
+//uncomment for testing on node>6
+/*
 test('ambiguous-pageids', async function(t) {
   let doc = await wtf.fetch(1984, 'en');
   t.equal(doc.title(), 'Arab world', 'input as pageid');
@@ -85,3 +87,4 @@ test('ambiguous-pageids', async function(t) {
   t.equal(docs[1].title(), 'July', 'input as text');
   t.end();
 });
+*/

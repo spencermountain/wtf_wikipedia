@@ -1,6 +1,11 @@
 {
   "Document": [
     {
+      "name": "title",
+      "returns": "String",
+      "description": "guess the title of the page from the first-sentence"
+    },
+    {
       "name": "isRedirect",
       "returns": "Boolean",
       "description": "if the page is just a redirect to another page"
@@ -9,11 +14,6 @@
       "name": "redirectTo",
       "returns": "Boolean",
       "description": "the page this redirects to"
-    },
-    {
-      "name": "title",
-      "returns": "String",
-      "description": "guess the title of the page from the first-sentence"
     },
     {
       "name": "isDisambiguation",
@@ -31,27 +31,17 @@
     {
       "name": "sections",
       "returns": "Array",
-      "description": ""
-    },
-    {
-      "name": "section",
-      "returns": "Section",
-      "description": "return the first section matching a given title or index"
+      "description": "return a list, or given-index of the Document's sections"
     },
     {
       "name": "paragraphs",
       "returns": "Array",
-      "description": ""
-    },
-    {
-      "name": "paragraph",
-      "returns": "Array",
-      "description": "returns the first paragraph matching a given index"
+      "description": "return a list, or given-index of Paragraphs, in all sections"
     },
     {
       "name": "sentences",
       "returns": "Array",
-      "description": ""
+      "description": "return a list, or given-index of all sentences in the document"
     },
     {
       "name": "images",
@@ -61,7 +51,7 @@
     {
       "name": "links",
       "returns": "Array",
-      "description": ""
+      "description": "return a list, or given-index of all links, in all parts of the document"
     },
     {
       "name": "lists",
@@ -71,7 +61,7 @@
     {
       "name": "tables",
       "returns": "Array",
-      "description": ""
+      "description": "return a list, or given-index of all structured tables in the document"
     },
     {
       "name": "templates",
@@ -84,9 +74,9 @@
       "description": "specific type of template, that appear on the top-right of the page"
     },
     {
-      "name": "citations",
+      "name": "references",
       "returns": "Array",
-      "description": "references"
+      "description": "return a list, or given-index of 'citations' in the document"
     },
     {
       "name": "coordinates",
@@ -165,17 +155,12 @@
       "name": "sentences",
       "returns": "Array",
       "example": "",
-      "description": ""
+      "description": "return a list, or given-index, of sentences in this section"
     },
     {
       "name": "paragraphs",
       "returns": "Array",
-      "description": ""
-    },
-    {
-      "name": "paragraph",
-      "returns": "Array",
-      "description": "returns the first paragraph matching a given index"
+      "description": "return a list, or given-index, of paragraphs in this section"
     },
     {
       "name": "links",
@@ -219,18 +204,18 @@
       "name": "interwiki",
       "returns": "Array",
       "example": "",
-      "description": ""
+      "description": "any links to other language wikis"
     },
     {
       "name": "images",
       "returns": "Array",
       "example": "",
-      "description": ""
+      "description": "return a list, or given index, of any images in this section"
     },
     {
-      "name": "citations",
+      "name": "references",
       "returns": "Array",
-      "description": ""
+      "description": "return a list, or given index, of 'citations' in this section"
     },
     {
       "name": "remove",
@@ -301,6 +286,77 @@
       "description": ""
     }
   ],
+
+  "Paragraph":[
+    {
+      "name": "sentences",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "references",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "lists",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "images",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "links",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "interwiki",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+
+    {
+      "name": "markdown",
+      "returns": "String",
+      "example": "",
+      "description": "output this paragraph in markdown"
+    },
+    {
+      "name": "html",
+      "returns": "String",
+      "example": "",
+      "description": "generate html output for this paragraph"
+    },
+    {
+      "name": "text",
+      "returns": "String",
+      "example": "",
+      "description": "generate readable plaintext for this paragraph"
+    },
+    {
+      "name": "latex",
+      "returns": "String",
+      "example": "",
+      "description": "generate latex output for this paragraph"
+    },
+    {
+      "name": "json",
+      "returns": "Array",
+      "example": "",
+      "description": "generate some generic data for this paragraph in JSON format"
+    }
+  ],
+
   "Sentence": [
     {
       "name": "links",
@@ -406,28 +462,221 @@
     {
       "name": "markdown",
       "returns": "String",
-      "description": ""
+      "description": "return a markdown version of this image"
     },
     {
       "name": "html",
       "returns": "String",
-      "description": ""
+      "description": "return a html version of this image"
     },
     {
       "name": "json",
       "returns": "Object",
-      "description": ""
+      "description": "return some generic metadata for this image"
     },
     {
       "name": "latex",
       "returns": "String",
-      "description": ""
+      "description": "generate a latex version of this image"
     },
     {
       "name": "text",
       "returns": "String",
-      "description": ""
+      "description": "does nothing"
     }
-  ]
+  ],
+"infobox":[
 
+      {
+        "name": "links",
+        "returns": "Array",
+        "example": "",
+        "description": ""
+      },
+      {
+        "name": "keyValye",
+        "returns": "Array",
+        "example": "",
+        "description": "generate simple key:value strings from this infobox"
+      },
+      {
+        "name": "image",
+        "returns": "Image",
+        "example": "",
+        "description": "grab the main image from this infobox"
+      },
+      {
+        "name": "get",
+        "returns": "Sentence",
+        "example": "",
+        "description": "lookup properties from their key"
+      },
+
+
+      {
+        "name": "markdown",
+        "returns": "String",
+        "example": "",
+        "description": "output this infobox in markdown"
+      },
+      {
+        "name": "html",
+        "returns": "String",
+        "example": "",
+        "description": "generate html output for this infobox"
+      },
+      {
+        "name": "text",
+        "returns": "String",
+        "example": "",
+        "description": "generate readable plaintext for this infobox"
+      },
+      {
+        "name": "latex",
+        "returns": "String",
+        "example": "",
+        "description": "generate latex output for this infobox"
+      },
+      {
+        "name": "json",
+        "returns": "Array",
+        "example": "",
+        "description": "generate some generic 'stringifyable' data for this infobox"
+      }
+],
+"list":[
+  {
+    "name": "lines",
+    "returns": "Array",
+    "example": "",
+    "description": "get an array of each member of the list"
+  },
+  {
+    "name": "links",
+    "returns": "Array",
+    "example": "",
+    "description": "get all links mentioned in this list"
+  },
+
+  {
+    "name": "markdown",
+    "returns": "String",
+    "example": "",
+    "description": "output this list in markdown"
+  },
+  {
+    "name": "html",
+    "returns": "String",
+    "example": "",
+    "description": "generate html output for this list"
+  },
+  {
+    "name": "text",
+    "returns": "String",
+    "example": "",
+    "description": "generate readable plaintext for this list"
+  },
+  {
+    "name": "latex",
+    "returns": "String",
+    "example": "",
+    "description": "generate latex output for this list"
+  },
+  {
+    "name": "json",
+    "returns": "Array",
+    "example": "",
+    "description": "generate some generic easily-parsable data for this list"
+  }
+],
+"reference":[
+
+  {
+    "name": "title",
+    "returns": "String",
+    "example": "",
+    "description": "generate human-facing text for this reference"
+  },
+  {
+    "name": "links",
+    "returns": "Array",
+    "example": "",
+    "description": "get any links mentioned in this reference"
+  },
+
+  {
+    "name": "markdown",
+    "returns": "String",
+    "example": "",
+    "description": "output this reference in markdown"
+  },
+  {
+    "name": "html",
+    "returns": "String",
+    "example": "",
+    "description": "generate html output for this reference"
+  },
+  {
+    "name": "text",
+    "returns": "String",
+    "example": "",
+    "description": "returns nothing"
+  },
+  {
+    "name": "latex",
+    "returns": "String",
+    "example": "",
+    "description": "generate latex output for this reference"
+  },
+  {
+    "name": "json",
+    "returns": "Array",
+    "example": "",
+    "description": "generate some generic metadata data for this reference"
+  }
+],
+"table":[
+  {
+    "name": "links",
+    "returns": "Array",
+    "example": "",
+    "description": "get any links mentioned in this table"
+  },
+  {
+    "name": "keyValyue",
+    "returns": "Object",
+    "example": "",
+    "description": "generate a simple list of key:value objects for this table"
+  },
+  {
+    "name": "markdown",
+    "returns": "String",
+    "example": "",
+    "description": "output this table in markdown"
+  },
+  {
+    "name": "html",
+    "returns": "String",
+    "example": "",
+    "description": "generate html output for this table"
+  },
+  {
+    "name": "text",
+    "returns": "String",
+    "example": "",
+    "description": "returns nothing"
+  },
+  {
+    "name": "latex",
+    "returns": "String",
+    "example": "",
+    "description": "generate latex output for this table"
+  },
+  {
+    "name": "json",
+    "returns": "Array",
+    "example": "",
+    "description": "generate some useful metadata data for this table"
+  }
+]
 }

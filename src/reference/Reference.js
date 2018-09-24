@@ -6,18 +6,19 @@ const toJson = require('./toJson');
 const defaults = {};
 
 //also called 'citations'
-class Reference {
-  constructor(data) {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data
-    });
-  }
-  title() {
+const Reference = function(data) {
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data
+  });
+};
+
+const methods = {
+  title: function() {
     let data = this.data;
     return data.title || data.encyclopedia || data.author || '';
-  }
-  links(n) {
+  },
+  links: function(n) {
     let arr = [];
     if (typeof n === 'number') {
       return arr[n];
@@ -31,25 +32,28 @@ class Reference {
       return link === undefined ? [] : [link];
     }
     return arr || [];
-  }
-  text() {
+  },
+  text: function() {
     return ''; //nah, skip these.
-  }
-  markdown(options) {
+  },
+  markdown: function(options) {
     options = setDefaults(options, defaults);
     return toMarkdown(this, options);
-  }
-  html(options) {
+  },
+  html: function(options) {
     options = setDefaults(options, defaults);
     return toHtml(this, options);
-  }
-  latex(options) {
+  },
+  latex: function(options) {
     options = setDefaults(options, defaults);
     return toLatex(this, options);
-  }
-  json(options) {
+  },
+  json: function(options) {
     options = setDefaults(options, defaults);
     return toJson(this, options);
   }
-}
+};
+Object.keys(methods).forEach((k) => {
+  Reference.prototype[k] = methods[k];
+});
 module.exports = Reference;
