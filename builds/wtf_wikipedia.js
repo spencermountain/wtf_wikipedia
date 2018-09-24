@@ -7609,6 +7609,7 @@ var maybePipeList = function maybePipeList(tmpl) {
 
 //somehow, we parse this template without knowing how to already
 var generic = function generic(tmpl) {
+
   var name = getName(tmpl);
   //make sure it looks like a key-value template
   if (maybeKeyValue.test(tmpl) === true) {
@@ -7809,6 +7810,8 @@ module.exports = ignore;
 },{}],93:[function(_dereq_,module,exports){
 'use strict';
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var Infobox = _dereq_('../infobox/Infobox');
 var Reference = _dereq_('../reference/Reference');
 var getName = _dereq_('./parsers/_getName');
@@ -7826,6 +7829,11 @@ var pronounce = _dereq_('./pronounce');
 var external = _dereq_('./external');
 var ignore = _dereq_('./ignore');
 var wiktionary = _dereq_('./wiktionary');
+
+//ensure references and infoboxes at least look valid
+var isObject = function isObject(x) {
+  return (typeof x === 'undefined' ? 'undefined' : _typeof(x)) === 'object' && x !== null && x.constructor.toString().indexOf('Array') === -1;
+};
 
 //put them all together
 var inlineParsers = Object.assign({}, dates, inline, currencies, links, formatting, wiktionary);
@@ -7898,12 +7906,12 @@ var parseTemplates = function parseTemplates(wiki, data) {
   var clean = [];
   data.templates.forEach(function (o) {
     //it's possible that we've parsed a reference, that we missed earlier
-    if (o.template === 'citation') {
+    if (o.template === 'citation' && o.data && isObject(o.data)) {
       o.data.type = o.type || null;
       data.references.push(new Reference(o));
       return;
     }
-    if (o.template === 'infobox') {
+    if (o.template === 'infobox' && o.data && isObject(o.data)) {
       data.infoboxes.push(new Infobox(o));
       return;
     }

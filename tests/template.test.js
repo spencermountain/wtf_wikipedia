@@ -227,8 +227,9 @@ hello there
   t.equal(doc.templates('tracklist').length, 1, 'got tracklist template');
   t.end();
 });
+
 test('templates in infobox', function(t) {
-  let str = `{{Infobox museum
+  var str = `{{Infobox museum
   |coordinates = {{coord|41.893269|-87.622511|display=inline}}
   |image=           20070701 Arts Club of Chicago.JPG
   |website= [http://www.artsclubchicago.org www.artsclubchicago.org]
@@ -324,7 +325,7 @@ test('microsoft currency parsing', function(t) {
 
 
 test('climate template', function(t) {
-  let str = `{{climate chart
+  var str = `{{climate chart
 | Toronto
 | −6.7 | -0.7 | 62
 | −5.6 |  0.4 | 55

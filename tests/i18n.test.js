@@ -20,7 +20,7 @@ test('nihongo templates templates', t => {
 });
 
 test('lang template', t => {
-  let str = `i played {{lang-de|Die Seefahrer von Catan}}`;
+  var str = `i played {{lang-de|Die Seefahrer von Catan}}`;
   var doc = wtf(str);
   t.equal(doc.text(), 'i played Die Seefahrer von Catan', 'lang-de');
 

@@ -22,7 +22,7 @@ Here is the third paragraph. Nobody knows if this will work.<ref>[http://commons
 
 
 test('sentence/paragraphs by newlines', t => {
-  let doc = wtf(`Leading text
+  var doc = wtf(`Leading text
 
 Closing remark`);
   t.equal(doc.paragraphs().length, 2, '2 paragraphs');
@@ -33,12 +33,12 @@ Closing remark`);
 
 
 test('bring newlines to plaintext', t => {
-  let str = `hello
+  var str = `hello
 
 
 
 world`;
-  let doc = wtf(str);
+  var doc = wtf(str);
   t.equal(doc.text(), 'hello\n\nworld', 'plaintext has one newline');
   t.end();
 });

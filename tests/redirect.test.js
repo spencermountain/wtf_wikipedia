@@ -24,7 +24,7 @@ test('is-redirect', t => {
 });
 
 test('redirect-newlines', t => {
-  let doc = wtf(`
+  var doc = wtf(`
     #REDIRECT [[TORONTO]]
 
     `);
@@ -35,7 +35,7 @@ test('redirect-newlines', t => {
 });
 
 test('redirect-extra', t => {
-  let doc = wtf(`#REDIRECT [[Wikipedia:Bug reports and feature requests]]
+  var doc = wtf(`#REDIRECT [[Wikipedia:Bug reports and feature requests]]
 
 {{Redirect category shell|1=
 {{R to project namespace}}

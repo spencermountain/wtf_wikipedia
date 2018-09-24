@@ -70,13 +70,13 @@ test('fetch-redirect', t => {
 //uncomment for testing on node>6
 /*
 test('ambiguous-pageids', async function(t) {
-  let doc = await wtf.fetch(1984, 'en');
+  var doc = await wtf.fetch(1984, 'en');
   t.equal(doc.title(), 'Arab world', 'input as pageid');
 
   doc = await wtf.fetch('1984', 'en');
   t.equal(doc.title(), '1984', 'input as text');
 
-  let docs = await wtf.fetch([2983, 7493], 'en');
+  var docs = await wtf.fetch([2983, 7493], 'en');
   t.equal(docs.length, 2, 'got two pageid results');
   t.equal(docs[0].title(), 'Austria-Hungary', 'first pageid');
   t.equal(docs[1].title(), 'Talk:P versus NP problem/Archive 1', 'second pageid');
