@@ -216,6 +216,8 @@ test('messy-table-test', t => {
   var obj = wtf(messy);
   var table = obj.tables(0).json();
   t.equal(table[1]['col1'].text, 'Nibelungen Bridge to Worms', 'col1 text');
+  // var keyVal=obj.tables(0).keyValue()
+  // t.equal()
   t.end();
 });
 
@@ -318,7 +320,7 @@ test('missing-row test', t => {
 
 
 test('table newline removal', t => {
-  let str = `hello this is the top
+  var str = `hello this is the top
 {| class="wikitable" style="font-size: 95%;"
 | 1
 | [[Daugpiļs]]
@@ -330,7 +332,7 @@ test('table newline removal', t => {
 | [[Rēzne]]
 |}
 `;
-  let doc = wtf(str);
+  var doc = wtf(str);
   t.equal(doc.text(), 'hello this is the top', 'text on top');
   t.end();
 });

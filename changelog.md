@@ -77,6 +77,7 @@
 * better disambiguation-page detection in english
 * remove wikitext from caption titles
 * support 3-level templates (whew!)
+
 ## 5.0.0
 * new `Table` class and `List` classes
 * improved table-parser - generate name `col1` instead of `col-0`
@@ -95,3 +96,27 @@
 * keep `#` anchor data in .links()
 * show links default-on in latex output, like in md and html
 * render html/latex/json 'soft redirect', instead of blank pages
+
+## 6.0.0 🚨
+* support `.paragraphs()`
+* :warning: major changes to output of `.json()`. cleaning-up redundant data.:warning:
+* * remove top-level `templates` data (found in `section`) - resume it with `{templates:true}`
+* * remove top-level `coordinates` data (found in `templates`) - resume it with `{coordinates:true}`
+* * remove top-level `citations` data (found in `section`) - resume it with `{citations:true}`
+* return empty arrays in `.json()` again  ¯\_(:/)_ /¯
+* remove <h1> title on html output
+* change ambiguous `options.title` for sections to `options.headers`
+* support lists of 1
+* begin removing empty references section by default
+* begin support for rendering citations at the bottom of documents
+* begin first-class references-parsing as objects at paragraph-level
+  - use this:  `.citations()` --> `.citations().map(c => c.json());`
+* remove `.wikitext()` and `.reparse()` methods - keeping wikitext stateful caused too many issues
+* turn `Image.file` into a function
+* include `interwiki()` results in `.links()`
+* support `follow_redirects` option to fetch
+* hide object data in console.logs
+* move ALL image urls from `upload.wikimedia.org/wikipedia/commons` to `wikipedia.org/wiki/Special:Redirect/file/` via #86
+* image captions are now Sentence objects
+* rename citation → reference internally, and in json output
+* remove references inside section titles

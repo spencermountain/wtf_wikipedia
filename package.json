@@ -1,7 +1,7 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "5.3.1",
+  "version": "6.0.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -39,8 +39,7 @@
     "wikiscript"
   ],
   "dependencies": {
-    "cross-fetch": "2.2.2",
-    "jshashes": "1.0.7"
+    "cross-fetch": "2.2.2"
   },
   "devDependencies": {
     "amble": "0.0.6",

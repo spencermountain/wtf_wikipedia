@@ -3,26 +3,29 @@ const toMarkdown = require('./toMarkdown');
 const toLatex = require('./toLatex');
 const aliasList = require('../lib/aliases');
 
-const Table = function(data, wiki) {
-  this.data = data;
-  //hush this property in console
-  Object.defineProperty(this, 'wiki', {
+const Table = function(data) {
+  Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: wiki
+    value: data
   });
 };
 
 const methods = {
-  wikitext() {
-    return this.wiki;
-  },
-  links() {
+  links(n) {
     let links = [];
     this.data.forEach((r) => {
       Object.keys(r).forEach((k) => {
         links = links.concat(r[k].links());
       });
     });
+    //grab a specific link..
+    if (typeof n === 'number') {
+      return links[n];
+    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+      let link = links.find(o => o.page === n);
+      return link === undefined ? [] : [link];
+    }
     return links;
   },
   json() {
@@ -33,6 +36,15 @@ const methods = {
       });
       return row;
     });
+  },
+  keyValue(options) {
+    let rows = this.json(options);
+    rows.forEach((row) => {
+      Object.keys(row).forEach((k) => {
+        row[k] = row[k].text;
+      });
+    });
+    return rows;
   },
   html(options) {
     return toHtml(this.data, options);

@@ -5,14 +5,8 @@ const Image = require('../image/Image');
 const aliasList = require('../lib/aliases');
 
 //a formal key-value data table about a topic
-const Infobox = function(obj, wiki) {
+const Infobox = function(obj) {
   this._type = obj.type;
-  // this.data = obj.data;
-  //hush these properties in console.logs..
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki
-  });
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: obj.data
@@ -20,25 +14,29 @@ const Infobox = function(obj, wiki) {
 };
 
 const methods = {
-  wikitext : function() {
-    return this.wiki;
-  },
   type: function() {
     return this._type;
   },
-  links: function() {
-    let links = [];
+  links: function(n) {
+    let arr = [];
     Object.keys(this.data).forEach((k) => {
-      this.data[k].links().forEach((l) => links.push(l));
+      this.data[k].links().forEach((l) => arr.push(l));
     });
-    return links;
+    if (typeof n === 'number') {
+      return arr[n];
+    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+      let link = arr.find(o => o.page === n);
+      return link === undefined ? [] : [link];
+    }
+    return arr;
   },
   image: function() {
     let obj = this.get('image');
     if (!obj) {
       return null;
     }
-    return new Image(obj.text());
+    return new Image(obj);
   },
   get : function(key) {
     key = key.toLowerCase();

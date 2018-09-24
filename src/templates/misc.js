@@ -81,17 +81,21 @@ const parsers = {
   //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
   'cite gnis': (tmpl) => {
     let order = ['id', 'name', 'type'];
-    let obj = pipeSplit(tmpl, order);
-    obj.template = 'citation';
-    obj.type = 'gnis';
-    return obj;
+    let data = pipeSplit(tmpl, order);
+    return {
+      template: 'citation',
+      type: 'gnis',
+      data: data
+    };
   },
   'sfn': (tmpl) => {
     let order = ['author', 'year', 'location'];
-    let obj = pipeSplit(tmpl, order);
-    obj.template = 'citation';
-    obj.type = 'sfn';
-    return obj;
+    let data = pipeSplit(tmpl, order);
+    return {
+      template: 'citation',
+      type: 'sfn',
+      data: data
+    };
   },
   'audio': (tmpl) => {
     let order = ['file', 'text', 'type'];
@@ -151,11 +155,50 @@ const parsers = {
   'gallery': (tmpl) => {
     let obj = pipeList(tmpl);
     let images = obj.data.filter(line => /^ *File ?:/.test(line));
-    images = images.map((file) => new Image(file).json());
+    images = images.map((file) => {
+      let img = {
+        file: file
+      };
+      return new Image(img).json();
+    });
     return {
       template: 'gallery',
       images: images
     };
+  },
+  'climate chart': (tmpl) => {
+    let list = pipeList(tmpl).data;
+    let title = list[0];
+    let source = list[38];
+    list = list.slice(1);
+    //amazingly, they use '−' symbol here instead of negatives...
+    list = list.map((str) => {
+      if (str && str[0] === '−') {
+        str = str.replace(/−/, '-');
+      }
+      return str;
+    });
+    let months = [];
+    //groups of three, for 12 months
+    for(let i = 0; i < 36; i += 3) {
+      months.push({
+        low: Number(list[i]),
+        high: Number(list[i + 1]),
+        precip: Number(list[i + 2])
+      });
+    }
+    return {
+      template: 'climate chart',
+      data: {
+        title: title,
+        source: source,
+        months: months
+      }
+    };
+  },
+  '__throw-wtf-error': () => {
+    //okay you asked for it!
+    throw new Error('Intentional error thrown from wtf-wikipedia!');
   }
 };
 //aliases

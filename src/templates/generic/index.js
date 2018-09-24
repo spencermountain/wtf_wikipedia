@@ -18,6 +18,7 @@ const maybePipeList = (tmpl) => {
 
 //somehow, we parse this template without knowing how to already
 const generic = function(tmpl) {
+
   let name = getName(tmpl);
   //make sure it looks like a key-value template
   if (maybeKeyValue.test(tmpl) === true) {

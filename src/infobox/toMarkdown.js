@@ -1,14 +1,16 @@
+const dontDo = require('./_skip-keys');
 const pad = require('../lib/pad');
-
-const dontDo = {
-  image: true,
-  caption: true
+const setDefaults = require('../lib/setDefaults');
+const defaults = {
+  images: true,
 };
 
 // render an infobox as a table with two columns, key + value
 const doInfobox = function(obj, options) {
+  options = setDefaults(options, defaults);
   let md = '|' + pad('', 35) + '|' + pad('', 30) + '|\n';
   md += '|' + pad('---', 35) + '|' + pad('---', 30) + '|\n';
+  //todo: render top image here (somehow)
   Object.keys(obj.data).forEach((k) => {
     if (dontDo[k] === true) {
       return;

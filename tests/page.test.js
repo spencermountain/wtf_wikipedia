@@ -59,8 +59,8 @@ test('statoil', t => {
   // (doc.text.Intro.length >= 1).should.be.true;
   t.equal(doc.categories().length, 4, 'cat-length');
   t.equal(doc.images().length, 1, 'img-length');
-  t.equal(doc.images(0).file, 'Fil:Statoil-Estonia.jpg', '');
-  t.equal(doc.images(0).url(), 'https://upload.wikimedia.org/wikipedia/commons/8/87/Statoil-Estonia.jpg', t);
+  t.equal(doc.images(0).file(), 'Fil:Statoil-Estonia.jpg', '');
+  t.equal(doc.images(0).url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Statoil-Estonia.jpg', t);
   t.end();
 });
 
@@ -70,11 +70,26 @@ test('raith rovers', t => {
   t.equal(doc.infoboxes(0).data.clubname.text(), 'Raith Rovers', '');
   t.equal(doc.categories().length, 10, 'cat-length');
   t.equal(doc.images().length, 2, 'img-length');
-  t.equal(doc.images(1).file, 'File:Stark\'s Park - geograph.org.uk - 204446.jpg', 'img-file');
+  t.equal(doc.images(1).file(), 'File:Stark\'s Park - geograph.org.uk - 204446.jpg', 'img-file');
   t.equal(
     doc.images(1).url(),
-    'https://upload.wikimedia.org/wikipedia/commons/3/38/Stark\'s_Park_-_geograph.org.uk_-_204446.jpg',
+    `https://wikipedia.org/wiki/Special:Redirect/file/Stark's_Park_-_geograph.org.uk_-_204446.jpg`,
     'image-url'
   );
+  t.end();
+});
+
+test('mark behr', t => {
+  var doc = readFile('Mark-Behr');
+  t.equal(doc.isRedirect(), false, 'not-redirect');
+  t.equal(doc.infoboxes().length, 1, 'got infobox');
+  t.equal(doc.categories().length, 3, 'cat-length');
+  var s = doc.sections('publikasies');
+  t.equal(s.tables().length, 1, 'got table');
+  t.equal(doc.tables(0).links().length, 0, 'table has no links');
+  t.equal(s.lists().length, 0, 'no list');
+  s = doc.sections('toekennings');
+  t.equal(s.lists().length, 1, 'got list');
+  t.equal(s.lists(0).lines().length, 4, 'got 4 items in list');
   t.end();
 });

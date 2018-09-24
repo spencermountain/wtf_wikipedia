@@ -1,5 +1,4 @@
-const parseLine = require('../../sentence').parseLine;
-const Sentence = require('../../sentence/Sentence');
+const parseSentence = require('../../04-sentence').oneSentence;
 const strip = require('./_strip');
 
 //turn '| key = value' into an object
@@ -25,14 +24,14 @@ const keyValue = function(tmpl, isInfobox) {
     let key = parts[0].toLowerCase().trim();
     let val = parts[1].trim();
     if (key !== '' && val !== '') {
-      val = parseLine(val);
+      val = parseSentence(val);
       if (isInfobox) {
-        h[key] = new Sentence(val); //.json();
+        h[key] = val; //.json();
       } else {
-        h[key] = val.text;
-        if (val.links) {
+        h[key] = val.text();
+        if (val.links().length > 0) {
           h._links = h._links || [];
-          h._links = h._links.concat(val.links);
+          h._links = h._links.concat(val.links());
         }
       }
     }

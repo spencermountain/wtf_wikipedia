@@ -11,7 +11,9 @@ test('basic-html', t => {
 <body>
 <div class="section">
   <div class="text">
-    <span class="sentence">that cat is <a class="link" href="./A">a</a> cool dude</span>
+    <p class="paragraph">
+      <span class="sentence">that cat is <a class="link" href="./A">a</a> cool dude</span>
+    </p>
   </div>
 </div>
 </body>
@@ -27,7 +29,9 @@ test('basic-html', t => {
 <body>
 <div class="section">
   <div class="text">
-    <span class="sentence">i 'think' so</span>
+    <p class="paragraph">
+      <span class="sentence">i 'think' so</span>
+    </p>
   </div>
 </div>
 </body>
@@ -44,7 +48,9 @@ test('basic-html', t => {
 <body>
 <div class="section">
   <div class="text">
-    <span class="sentence">i <i>think</i> so</span>
+    <p class="paragraph">
+      <span class="sentence">i <i>think</i> so</span>
+    </p>
   </div>
 </div>
 </body>
@@ -60,7 +66,9 @@ test('basic-html', t => {
 <body>
 <div class="section">
   <div class="text">
-    <span class="sentence">i <b>think</b> so</span>
+    <p class="paragraph">
+      <span class="sentence">i <b>think</b> so</span>
+    </p>
   </div>
 </div>
 </body>
@@ -76,7 +84,9 @@ test('basic-html', t => {
 <body>
 <div class="section">
   <div class="text">
-    <span class="sentence">i <b>'think'</b> so</span>
+    <p class="paragraph">
+      <span class="sentence">i <b>'think'</b> so</span>
+    </p>
   </div>
 </div>
 </body>
@@ -92,7 +102,9 @@ test('basic-html', t => {
 <body>
 <div class="section">
   <div class="text">
-    <span class="sentence">i <b><i>think</i></b> so</span>
+    <p class="paragraph">
+      <span class="sentence">i <b><i>think</i></b> so</span>
+    </p>
   </div>
 </div>
 </body>

@@ -4,8 +4,16 @@ const wtf = require('./src/index');
 // const wtf = require('./build');
 
 // (async () => {
-//   const doc = await wtf.fetch(`Abraham Lincoln`, 'en');
-//   // doc.html();
+//   let doc = await wtf.fetch('Rush Street (Chicago)', 'en');
+//   console.log(doc.json());
 // })();
 
-console.log(wtf(`hello '''[[Palme d'Or]]''' world`).text());
+// let doc = readFile('Mark-Behr');
+// console.log(doc.infobox(0).data);
+
+var str = `
+{{Infobox
+|image =
+[[Image:20070913 Rush Street Swing Bridge beyond Wrigley Building.JPG|asd]]
+}}`;
+console.log(wtf(str).json());

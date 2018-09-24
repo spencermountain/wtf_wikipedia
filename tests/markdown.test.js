@@ -7,7 +7,7 @@ test('basic-markdown', t => {
   t.equal(md, 'he is [so cool](./Spencer_Kelly) and [fresh](http://cool.com)', 'internal, external links');
 
   md = wtf('hello [[Image:1930s Toronto KingStreetWnearYork.jpg|thumb|right|250px]] world').markdown();
-  t.equal(md, `![1930s Toronto KingStreetWnearYork](https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/1930s_Toronto_KingStreetWnearYork.jpg/300px-1930s_Toronto_KingStreetWnearYork.jpg)
+  t.equal(md, `![1930s Toronto KingStreetWnearYork](https://wikipedia.org/wiki/Special:Redirect/file/1930s_Toronto_KingStreetWnearYork.jpg?width=300)
 hello world`, 'image');
 
   md = wtf(`he is ''really good''`).markdown();

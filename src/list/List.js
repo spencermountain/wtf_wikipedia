@@ -1,29 +1,10 @@
 const aliasList = require('../lib/aliases');
-
-const toHtml = (list) => {
-  let html = '<ul class="list">\n';
-  list.forEach((o) => {
-    html += '  <li>' + o.text() + '</li>\n';
-  });
-  html += '</ul>\n';
-  return html;
-};
-
-const toLatex = (list) => {
-  let out = '\\begin{itemize}\n';
-  list.forEach((o) => {
-    out += '  \\item ' + o.text + '\n';
-  });
-  out += '\\end{itemize}\n';
-  return out;
-};
-
-const toMarkdown = (list, options) => {
-  return list.map((s) => {
-    let str = s.markdown(options);
-    return ' * ' + str;
-  }).join('\n');
-};
+const setDefaults = require('../lib/setDefaults');
+const toJson = require('./toJson');
+const toMarkdown = require('./toMarkdown');
+const toHtml = require('./toHtml');
+const toLatex = require('./toLatex');
+const defaults = {};
 
 const toText = (list, options) => {
   return list.map((s) => {
@@ -32,37 +13,46 @@ const toText = (list, options) => {
   }).join('\n');
 };
 
-const List = function(data, wiki) {
-  this.data = data;
-  //hush this property in console.logs..
-  Object.defineProperty(this, 'wiki', {
+const List = function(data) {
+  Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: wiki
+    value: data
   });
 };
 
 const methods = {
-  wikitext() {
-    return this.wiki;
+  lines() {
+    return this.data;
   },
-  links() {
+  links(n) {
     let links = [];
-    this.data.forEach((s) => {
+    this.lines().forEach((s) => {
       links = links.concat(s.links());
     });
+    if (typeof n === 'number') {
+      return links[n];
+    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+      let link = links.find(o => o.page === n);
+      return link === undefined ? [] : [link];
+    }
     return links;
   },
-  html() {
-    return toHtml(this.data);
+  markdown(options) {
+    options = setDefaults(options, defaults);
+    return toMarkdown(this, options);
   },
-  latex() {
-    return toLatex(this.data);
+  html(options) {
+    options = setDefaults(options, defaults);
+    return toHtml(this, options);
   },
-  markdown() {
-    return toMarkdown(this.data);
+  latex(options) {
+    options = setDefaults(options, defaults);
+    return toLatex(this, options);
   },
-  json() {
-    return this.data.map(s => s.json());
+  json(options) {
+    options = setDefaults(options, defaults);
+    return toJson(this, options);
   },
   text() {
     return toText(this.data);
