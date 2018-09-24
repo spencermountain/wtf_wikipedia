@@ -3,6 +3,8 @@ const parse_interwiki = require('./interwiki');
 const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i;
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
 const link_reg = /\[\[(.{0,120}?)\]\]([a-z']+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]'s"
+// const i18n = require('../data/i18n');
+// const isFile = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i');
 
 const external_links = function(links, str) {
   str.replace(external_link, function(all, protocol, link, text) {
@@ -22,6 +24,10 @@ const internal_links = function(links, str) {
   str.replace(link_reg, function(_, s, apostrophe) {
     var txt = null;
     var link = s;
+    //if somehow, we got an image here, (like in a table) remove it.
+    // if (isFile.test(s) === true) {
+    //   return '';
+    // }
     if (s.match(/\|/)) {
       //replacement link [[link|text]]
       s = s.replace(/\[\[(.{2,80}?)\]\](\w{0,10})/g, '$1$2'); //remove ['s and keep suffix

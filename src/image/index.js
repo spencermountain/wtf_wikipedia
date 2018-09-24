@@ -1,7 +1,7 @@
 const i18n = require('../data/i18n');
 const Image = require('./Image');
 const parseSentence = require('../04-sentence').oneSentence;
-const fileRegex = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i');
+const isFile = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i');
 let fileNames = `(${i18n.images.concat(i18n.files).join('|')})`;
 const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'i');
 
@@ -61,7 +61,7 @@ const oneImage = function(img) {
 
 const parseImages = function(matches, r, wiki) {
   matches.forEach(function(s) {
-    if (fileRegex.test(s) === true) {
+    if (isFile.test(s) === true) {
       r.images = r.images || [];
       let img = oneImage(s);
       if (img) {

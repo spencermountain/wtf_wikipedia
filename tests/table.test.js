@@ -216,6 +216,8 @@ test('messy-table-test', t => {
   var obj = wtf(messy);
   var table = obj.tables(0).json();
   t.equal(table[1]['col1'].text, 'Nibelungen Bridge to Worms', 'col1 text');
+  // var keyVal=obj.tables(0).keyValue()
+  // t.equal()
   t.end();
 });
 

@@ -18,5 +18,10 @@ or this
 
   str = `hello <!----> world`;
   t.equal(wtf(str).text(), 'hello world', 'empty reference');
+
+
+  str = `<!--col4-->[[File:New-York-Jan2005.jpg|100x95px]]<!--smaller-->`;
+  t.equal(wtf(str).images().length, 1, 'got inside image');
+
   t.end();
 });
