@@ -37,7 +37,7 @@ test('weird-harvard-citations', t => {
   var arr = wtf(str).citations().map(c => c.json());
   t.equal(arr.length, 2, 'found-two-citations');
   t.equal(arr[0].data.author, 'Selin', 'refn author');
-  t.equal(arr[0].data.year, '2018', 'refn year');
+  t.equal(arr[0].data.year, '2008', 'refn year');
   t.end();
 });
 test('crazy-long-citations', t => {

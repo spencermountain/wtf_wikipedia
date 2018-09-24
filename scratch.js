@@ -14,6 +14,5 @@ const readFile = require('./tests/lib/_cachedPage');
 // let doc = readFile('Mark-Behr');
 // console.log(doc.infobox(0).data);
 
-var str = `hello {{citation|url=citation.one/here}} <ref>{{citation|url=citation.two/here}}</ref>`;
-var arr = wtf(str).citations().map(c => c.json());
-console.log(arr);
+var str = `hi [[fr:Plancton]] there`;
+console.log(wtf(str).text());
