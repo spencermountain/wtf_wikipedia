@@ -75,9 +75,13 @@ const methods = {
   },
   text: function(options) {
     options = setDefaults(options, defaults);
-    return this.sentences()
+    let str = this.sentences()
       .map(s => s.text(options))
       .join(' ');
+    this.lists().forEach((list) => {
+      str += '\n' + list.text();
+    });
+    return str;
   },
   latex: function(options) {
     options = setDefaults(options, defaults);

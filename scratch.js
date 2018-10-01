@@ -12,8 +12,10 @@ const wtf = require('./src/index');
 // console.log(doc.infobox(0).data);
 
 var str = `
-{{Infobox
-|image =
-[[Image:20070913 Rush Street Swing Bridge beyond Wrigley Building.JPG|asd]]
-}}`;
-console.log(wtf(str).json());
+hello
+* [http://www.abrahamlincolnassociation.org/ Abraham Lincoln Association]
+* [http://www.lincolnbicentennial.org/ Abraham Lincoln Bicentennial Foundation]
+world
+`;
+// console.log(wtf(str).templates(0));
+console.log(wtf(str).sections(0).text());
