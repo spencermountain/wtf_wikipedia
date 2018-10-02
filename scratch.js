@@ -1,5 +1,5 @@
-const wtf = require('./src/index');
-const readFile = require('./tests/lib/_cachedPage');
+// const wtf = require('./src/index');
+// const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
@@ -8,8 +8,8 @@ const readFile = require('./tests/lib/_cachedPage');
 //   console.log(doc.infoboxes(0).images(0).thumb());
 // })();
 
-let doc = readFile('jodie_emery');
-console.log(doc.infobox(0).images(0).thumb());
+// let doc = readFile('jodie_emery');
+// console.log(doc.infobox(0).images(0).thumb());
 
 // var str = `
 // ==Soccer==
