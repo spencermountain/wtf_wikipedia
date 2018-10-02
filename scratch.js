@@ -1,15 +1,15 @@
 const wtf = require('./src/index');
-// const readFile = require('./tests/lib/_cachedPage');
+const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
 // (async () => {
 //   let doc = await wtf.fetch('Pete Townshend', 'en');
-//   console.log(doc.links(4));
+//   console.log(doc.infoboxes(0).images(0).thumb());
 // })();
 
-// let doc = readFile('Mark-Behr');
-// console.log(doc.infobox(0).data);
+let doc = readFile('jodie_emery');
+console.log(doc.infobox(0).images(0).thumb());
 
 // var str = `
 // ==Soccer==
@@ -24,4 +24,4 @@ const wtf = require('./src/index');
 // // console.log(wtf(str).templates(0));
 // console.log(wtf(str).sections(0).text());
 
-console.log(wtf('the is [[he]] nice').markdown());
+// console.log(wtf('the is [[he]] nice').markdown());
