@@ -1,4 +1,4 @@
-/* wtf_wikipedia v6.0.0
+/* wtf_wikipedia v6.1.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -489,7 +489,7 @@ module.exports = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -1256,7 +1256,6 @@ var aliasList = _dereq_('../lib/aliases');
 
 var defaults = {
   tables: true,
-  lists: true,
   references: true,
   paragraphs: true,
   templates: true,
@@ -1523,11 +1522,7 @@ var methods = {
     options = setDefaults(options, defaults);
     var pList = this.paragraphs();
     pList = pList.map(function (p) {
-      var sList = p.sentences();
-      sList = sList.map(function (s) {
-        return s.text(options);
-      });
-      return sList.join(' ');
+      return p.text(options);
     });
     return pList.join('\n\n');
   },
@@ -2084,9 +2079,13 @@ var methods = {
   },
   text: function text(options) {
     options = setDefaults(options, defaults);
-    return this.sentences().map(function (s) {
+    var str = this.sentences().map(function (s) {
       return s.text(options);
     }).join(' ');
+    this.lists().forEach(function (list) {
+      str += '\n' + list.text();
+    });
+    return str;
   },
   latex: function latex(options) {
     options = setDefaults(options, defaults);
@@ -2575,6 +2574,14 @@ var internal_links = function internal_links(links, str) {
     if (apostrophe === '\'s') {
       obj.text = obj.text || obj.page;
       obj.text += apostrophe;
+    }
+
+    //titlecase it, if necessary
+    if (obj.page && /^[A-Z]/.test(obj.page) === false) {
+      if (!obj.text) {
+        obj.text = obj.page;
+      }
+      obj.page = obj.page.charAt(0).toUpperCase() + obj.page.substring(1);
     }
     links.push(obj);
     return s;
@@ -5766,10 +5773,13 @@ var methods = {
     return arr;
   },
   image: function image() {
-    var obj = this.get('image');
-    if (!obj) {
+    var s = this.get('image');
+    if (!s) {
       return null;
     }
+    var obj = s.json();
+    obj.file = obj.text;
+    obj.text = '';
     return new Image(obj);
   },
   get: function get(key) {
