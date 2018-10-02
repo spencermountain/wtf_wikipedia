@@ -1,6 +1,7 @@
 'use strict';
 var test = require('tape');
 var wtf = require('./lib');
+var readFile = require('./lib/_cachedPage');
 
 test('gallery-tag', t => {
   var str = `
@@ -61,5 +62,11 @@ test('gallery-template', t => {
   var templ = wtf(str).templates(0);
   t.deepEqual(templ.template, 'gallery', 'document-has-template');
   t.deepEqual(templ.images.length, 4, 'has 4 images');
+  t.end();
+});
+
+test('from-infobox', t => {
+  let doc = readFile('jodie_emery');
+  t.equal(doc.infobox(0).images(0).thumb(), 'https://wikipedia.org/wiki/Special:Redirect/file/Marc_Emery_and_Jodie_Emery.JPG?width=300', 'has correct thumbnail');
   t.end();
 });

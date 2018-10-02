@@ -7,7 +7,6 @@ const aliasList = require('../lib/aliases');
 
 const defaults = {
   tables: true,
-  lists: true,
   references: true,
   paragraphs: true,
   templates: true,
@@ -253,11 +252,7 @@ const methods = {
   text: function(options) {
     options = setDefaults(options, defaults);
     let pList = this.paragraphs();
-    pList = pList.map(p => {
-      let sList = p.sentences();
-      sList = sList.map(s => s.text(options));
-      return sList.join(' ');
-    });
+    pList = pList.map(p => p.text(options));
     return pList.join('\n\n');
   },
   latex: function(options) {

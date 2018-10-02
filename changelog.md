@@ -120,3 +120,5 @@
 * image captions are now Sentence objects
 * rename citation → reference internally, and in json output
 * remove references inside section titles
+### 6.1.0
+* titlecase internal link destinations #192

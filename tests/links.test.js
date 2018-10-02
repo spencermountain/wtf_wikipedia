@@ -49,3 +49,16 @@ test('anchor-links', t => {
 
   t.end();
 });
+
+test('title-case-links', t => {
+  t.equal(wtf('[[john]]').links(0).page, 'John', 'titlecase page');
+  t.equal(wtf('[[john]]').links(0).text, 'john', 'lowercase text');
+
+  t.equal(wtf('[[John smith]]').links(0).page, 'John smith', 'already titlecased');
+  t.equal(wtf('[[John]]').links(0).text, undefined, 'no text stored when already titlecase');
+
+  t.equal(wtf('[[john|his son]]').links(0).text, 'his son', 'lowercase given text');
+  t.equal(wtf('[[john|his son]]').links(0).page, 'John', 'titlecase given page');
+  t.equal(wtf('[[John|his son]]').links(0).page, 'John', 'already titlecased given page');
+  t.end();
+});

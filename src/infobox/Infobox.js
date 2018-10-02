@@ -32,10 +32,13 @@ const methods = {
     return arr;
   },
   image: function() {
-    let obj = this.get('image');
-    if (!obj) {
+    let s = this.get('image');
+    if (!s) {
       return null;
     }
+    let obj = s.json();
+    obj.file = obj.text;
+    obj.text = '';
     return new Image(obj);
   },
   get : function(key) {
