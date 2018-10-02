@@ -66,6 +66,14 @@ const internal_links = function(links, str) {
       obj.text = obj.text || obj.page;
       obj.text += apostrophe;
     }
+
+    //titlecase it, if necessary
+    if (obj.page && /^[A-Z]/.test(obj.page) === false) {
+      if (!obj.text) {
+        obj.text = obj.page;
+      }
+      obj.page = obj.page.charAt(0).toUpperCase() + obj.page.substring(1);
+    }
     links.push(obj);
     return s;
   });
