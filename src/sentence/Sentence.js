@@ -1,10 +1,17 @@
-const toHtml = require('../output/html/sentence');
-const toMarkdown = require('../output/markdown/sentence');
-const toJSON = require('../output/json/sentence');
+const toHtml = require('./toHtml');
+const toMarkdown = require('./toMarkdown');
+const toJSON = require('./toJson');
+const toLatex = require('./toLatex');
+const aliasList = require('../lib/aliases');
 
 //where we store the formatting, link, date information
-const Sentence = function(data) {
+const Sentence = function(data, wiki) {
   this.data = data;
+  //hush this property in console
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki
+  });
 };
 
 const methods = {
@@ -53,20 +60,26 @@ const methods = {
     options = options || {};
     return toHtml(this, options);
   },
-  plaintext : function() {
+  text : function() {
     return this.data.text || '';
   },
   json : function(options) {
     return toJSON(this, options);
+  },
+  latex : function(options) {
+    return toLatex(this, options);
   }
 };
 
 Object.keys(methods).forEach((k) => {
   Sentence.prototype[k] = methods[k];
 });
-//aliases
+//add alises, too
+Object.keys(aliasList).forEach((k) => {
+  Sentence.prototype[k] = methods[aliasList[k]];
+});
 Sentence.prototype.italic = Sentence.prototype.italics;
 Sentence.prototype.bold = Sentence.prototype.bolds;
-Sentence.prototype.text = Sentence.prototype.plaintext;
+Sentence.prototype.plaintext = Sentence.prototype.text;
 
 module.exports = Sentence;

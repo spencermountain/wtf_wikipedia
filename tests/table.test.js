@@ -4,7 +4,7 @@ var wtf = require('./lib');
 var readFile = require('./lib/_cachedPage');
 
 test('bluejays table', t => {
-  var arr = readFile('bluejays').tables(0);
+  var arr = readFile('bluejays').tables(0).data;
   t.equal(arr.length, 8, 'table-length-bluejays');
   t.equal(arr[0]['Level'].text(), 'AAA', 'level-col');
   t.equal(arr[0]['Team'].text(), 'Buffalo Bisons', 'team-col');
@@ -34,7 +34,7 @@ test('rnli stations', t => {
   var lifeboat = doc.sections(2);
   t.equal(lifeboat.depth, 1, 'lifeboat-depth');
   t.equal(lifeboat.templates(0).page, 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main');
-  t.equal(lifeboat.lists(0).length, 3, 'lifeboat-list');
+  t.equal(lifeboat.lists(0).json().length, 3, 'lifeboat-list');
   t.equal(lifeboat.sentences().length, 3, 'lifeboat-sentences');
   t.deepEqual(lifeboat.images(), [], 'lifeboat-no-images');
   t.deepEqual(lifeboat.tables(), [], 'lifeboat-no-tables');
@@ -44,13 +44,13 @@ test('rnli stations', t => {
   t.deepEqual(east.images(), [], 'East-no-images');
   t.deepEqual(east.lists(), [], 'East-no-lists');
   t.equal(east.sentences().length, 0, 'east-sentences');
-  var table = east.tables(0);
+  var table = east.tables(0).data;
   t.equal(table.length, 42, 'east table-rows');
   t.equal(table[0].Location.text(), 'Hunstanton, Norfolk', 'east-table-data');
   t.equal(table[41]['Launch method'].text(), 'Carriage', 'east-table-data-end');
 
   var south = doc.sections(7);
-  var sTable = south.tables(0);
+  var sTable = south.tables(0).data;
   t.equal(sTable.length, 35, 'south-table-rows');
   t.equal(sTable[0].Location.text(), 'Mudeford, Dorset', 'south-table-data');
   t.end();
@@ -73,7 +73,7 @@ test('simple table', t => {
 | row 2, cell 3
 |}`;
   var obj = wtf(simple);
-  var table = obj.tables(0);
+  var table = obj.tables(0).data;
   t.equal(table.length, 2, '2 rows');
   t.equal(table[0]['Header 1'].text(), 'row 1, cell 1', '1,1');
   t.equal(table[0]['Header 2'].text(), 'row 1, cell 2', '1,2');
@@ -109,7 +109,7 @@ test('multiplication table', t => {
 | 5 || 10 || 15
 |}`;
   var obj = wtf(mult);
-  var table = obj.tables(0);
+  var table = obj.tables(0).data;
   t.equal(table[0]['1'].text(), '1', '1x1');
   t.equal(table[1]['1'].text(), '2', '1x2');
   t.equal(table[1]['2'].text(), '4', '2x2');
@@ -129,7 +129,7 @@ test('inline-table-test', t => {
 | 2,725 || ''9,200'' || 8,850 || 4,775
 |}`;
   var obj = wtf(inline);
-  var table = obj.tables(0);
+  var table = obj.tables(0).data;
   t.equal(table[0].Year.text(), '2014', 'first year');
   t.equal(table[0].Africa.text(), '2,300', 'africa first-row');
   t.equal(table[0].Americas.text(), '8,950', 'america first-row');
@@ -158,9 +158,9 @@ test('floating-tables-test', t => {
   var obj = wtf(floating);
   t.equal(obj.tables().length, 2, 'two tables');
   // console.log(obj.sections[0].tables);
-  var table = obj.tables(0);
+  var table = obj.tables(0).data;
   // console.log(table);
-  t.equal(table[0]['col-0'].text(), 'Col 1, row 1', '1,1');
+  t.equal(table[0]['col1'].text(), 'Col 1, row 1', '1,1');
   t.end();
 });
 
@@ -186,7 +186,7 @@ test('wikisortable-tables-test', t => {
 |}`;
   var obj = wtf(sortable);
   t.equal(obj.tables().length, 1, 'one table');
-  var table = obj.tables(0);
+  var table = obj.tables(0).data;
   t.equal(table[0]['Alphabetic'].text(), 'd', '1,1');
   t.equal(table[0]['Numeric'].text(), '20', '1,2');
   t.equal(table[0]['Date'].text(), '2008-11-24', '1,3');
@@ -195,5 +195,49 @@ test('wikisortable-tables-test', t => {
   t.equal(table[2]['Alphabetic'].text(), 'a', '3,1');
   t.equal(table[3]['Alphabetic'].text(), 'c', '4,1');
   t.equal(table[4]['Alphabetic'].text(), 'e', '5,1');
+  t.end();
+});
+
+
+test('messy-table-test', t => {
+  var messy = ` {| class="wikitable"
+     |[[File:Worms 01.jpg|199x95px]]
+      |[[File:Worms Wappen 2005-05-27.jpg|199x95px]]
+  |<!--col3-->[[File:Liberty-statue-with-manhattan.jpg|199x95px]]
+  |<!--col4-->[[File:New-York-Jan2005.jpg|100x95px]]<!--smaller-->
+
+
+    |-
+  |<!--col1-->Nibelungen Bridge to Worms
+  |Worms and its sister cities
+  |Statue of Liberty
+  |New York City
+ |}`;
+  var obj = wtf(messy);
+  var table = obj.tables(0).json();
+  t.equal(table[1]['col1'].text, 'Nibelungen Bridge to Worms', 'col1 text');
+  t.end();
+});
+
+test('embedded-table', t => {
+  var str = ` {|
+  | one
+  | two
+  | three
+  |-
+  {|
+  | inside one
+  | inside two
+  | inside [[three]]
+  |}
+  |Statue of Liberty
+  |New York City
+  |[[Chicago]]
+  |}
+  `;
+  var tables = wtf(str).tables();
+  t.equal(tables.length, 2, 'found both tables');
+  t.equal(tables[0].links().length, 1, 'found one link');
+  t.equal(tables[1].links().length, 1, 'found another link');
   t.end();
 });

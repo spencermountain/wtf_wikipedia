@@ -1,9 +1,13 @@
-const toMarkdown = require('../output/markdown/section');
-const toHtml = require('../output/html/section');
-const toJSON = require('../output/json/section');
+const toMarkdown = require('./toMarkdown');
+const toHtml = require('./toHtml');
+const toJSON = require('./toJSON');
+const toLatex = require('./toLatex');
 const Sentence = require('../sentence/Sentence');
 const Infobox = require('../infobox/Infobox');
+const List = require('../list/List');
 const setDefaults = require('../lib/setDefaults');
+const aliasList = require('../lib/aliases');
+
 const defaults = {
   infoboxes: true,
   tables: true,
@@ -61,20 +65,17 @@ const methods = {
   },
   links: function(n) {
     let arr = [];
-    this.lists().forEach((list) => {
-      list.forEach((s) => {
-        s.links().forEach((link) => arr.push(link));
-      });
-    });
     this.infoboxes().forEach((templ) => {
       templ.links().forEach((link) => arr.push(link));
     });
-    //todo: add links from tables..
-    // this.tables().forEach((t) => {
-    //   t.links().forEach((link) => arr.push(link));
-    // });
     this.sentences().forEach((s) => {
       s.links().forEach((link) => arr.push(link));
+    });
+    this.tables().forEach((t) => {
+      t.links().forEach((link) => arr.push(link));
+    });
+    this.lists().forEach((list) => {
+      list.links().forEach((link) => arr.push(link));
     });
     if (typeof n === 'number') {
       return arr[n];
@@ -116,9 +117,10 @@ const methods = {
   },
   lists: function(clue) {
     if (typeof clue === 'number') {
-      return this.data.lists[clue];
+      return new List(this.data.lists[clue]);
     }
-    return this.data.lists || [];
+    let lists = this.data.lists || [];
+    return lists.map((arr) => new List(arr));
   },
   interwiki: function(clue) {
     if (typeof clue === 'number') {
@@ -215,7 +217,7 @@ const methods = {
     let sections = this.doc.sections();
     let index = this.index();
     for(let i = index; i >= 0; i -= 1) {
-      if (sections[i].depth < this.depth) {
+      if (sections[i] && sections[i].depth < this.depth) {
         return sections[i];
       }
     }
@@ -230,9 +232,12 @@ const methods = {
     options = setDefaults(options, defaults);
     return toHtml(this, options);
   },
-  plaintext : function(options) {
+  text : function(options) {
     options = setDefaults(options, defaults);
-    return this.sentences().map(s => s.plaintext(options)).join(' ');
+    return this.sentences().map(s => s.text(options)).join(' ');
+  },
+  latex : function(options) {
+    return toLatex(this, options);
   },
   json : function(options) {
     return toJSON(this, options);
@@ -243,12 +248,12 @@ methods.next = methods.nextSibling;
 methods.last = methods.lastSibling;
 methods.previousSibling = methods.lastSibling;
 methods.previous = methods.lastSibling;
-methods.original = methods.wikitext;
-methods.wikiscript = methods.wikitext;
 methods.references = methods.citations;
 Object.keys(methods).forEach((k) => {
   Section.prototype[k] = methods[k];
 });
-
-
+//add alises, too
+Object.keys(aliasList).forEach((k) => {
+  Section.prototype[k] = methods[aliasList[k]];
+});
 module.exports = Section;

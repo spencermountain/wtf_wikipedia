@@ -4,5 +4,4 @@ const doImage = (image) => {
   alt = alt.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
   return '![' + alt + '](' + image.thumbnail() + ')';
 };
-
 module.exports = doImage;

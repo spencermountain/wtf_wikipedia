@@ -117,7 +117,36 @@ const inline = {
       return str;
     }
     return '';
-  }
+  },
+  //https://en.wikipedia.org/wiki/Template:Marriage
+  //this one creates a template, and an inline response
+  marriage: (tmpl, r) => {
+    let data = pipeSplit(tmpl, ['name', 'from', 'to', 'end']);
+    r.templates.push(data);
+    let str = `${data.name || ''}`;
+    if (data.from) {
+      if (data.to) {
+        str += ` (m. ${data.from}-${data.to})`;
+      } else {
+        str += ` (m. ${data.from})`;
+      }
+    }
+    return str;
+  },
+  //https://en.wikipedia.org/wiki/Template:Lbs
+  lbs: (tmpl) => {
+    let obj = pipeSplit(tmpl, ['text']);
+    return `[[${obj.text} Lifeboat Station|${obj.text}]]`;
+  },
+  //Foo-class
+  lbc: (tmpl) => {
+    let obj = pipeSplit(tmpl, ['text']);
+    return `[[${obj.text}-class lifeboat|${obj.text}-class]]`;
+  },
+  lbb: (tmpl) => {
+    let obj = pipeSplit(tmpl, ['text']);
+    return `[[${obj.text}-class lifeboat|${obj.text}]]`;
+  },
 };
 //aliases
 inline.flatlist = inline.plainlist;

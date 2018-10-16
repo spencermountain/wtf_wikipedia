@@ -1,5 +1,4 @@
-const doSentence = require('./sentence');
-const pad = require('./pad');
+const pad = require('../lib/pad');
 
 const dontDo = {
   image: true,
@@ -15,9 +14,11 @@ const doInfobox = function(obj, options) {
       return;
     }
     let key = '**' + k + '**';
-    let val = doSentence(obj.data[k], options);
+    let s = obj.data[k];
+    let val = s.markdown(options);
+    //markdown is more newline-sensitive than wiki
+    val = val.split(/\n/g).join(', ');
     md += '|' + pad(key, 35) + '|' + pad(val, 30) + ' |\n';
-
   });
   return md;
 };

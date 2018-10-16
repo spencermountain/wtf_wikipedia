@@ -1,4 +1,3 @@
-// const findRecursive = require('../../lib/recursive_match');
 const getName = require('./parsers/_getName');
 const getTemplates = require('./parsers/_getTemplates');
 
@@ -25,19 +24,23 @@ const inlineParsers = Object.assign(
 );
 const bigParsers = Object.assign({}, geo, pronounce, misc, external);
 
-const doTemplate = function(tmpl, wiki, r) {
+//this gets all the {{template}} strings and decides how to parse them
+const doTemplate = function(tmpl, wiki, r, options) {
   let name = getName(tmpl);
+
   //we explicitly ignore these templates
   if (ignore.hasOwnProperty(name) === true) {
     wiki = wiki.replace(tmpl, '');
     return wiki;
   }
+
   //string-replacement templates
   if (inlineParsers.hasOwnProperty(name) === true && inlineParsers[name]) {
     let str = inlineParsers[name](tmpl, r);
     wiki = wiki.replace(tmpl, str);
     return wiki;
   }
+
   //section-template parsers
   if (bigParsers.hasOwnProperty(name) === true) {
     let obj = bigParsers[name](tmpl);
@@ -47,6 +50,7 @@ const doTemplate = function(tmpl, wiki, r) {
     wiki = wiki.replace(tmpl, '');
     return wiki;
   }
+
   //fallback parser
   let obj = generic(tmpl, name);
   if (obj) {
@@ -54,9 +58,11 @@ const doTemplate = function(tmpl, wiki, r) {
     wiki = wiki.replace(tmpl, '');
     return wiki;
   }
+
   //bury this template, if we don't know it
-  // console.log(`  - no parser for '${name}' -`);
-  // console.log('');
+  if (options.verbose_template === true) {
+    console.log(`  - no parser for '${name}' -`);
+  }
   wiki = wiki.replace(tmpl, '');
 
   return wiki;
@@ -65,14 +71,21 @@ const doTemplate = function(tmpl, wiki, r) {
 //reduce the scary recursive situations
 const allTemplates = function(r, wiki, options) {
   let templates = getTemplates(wiki);
-  // console.log(templates);
-  //first, do the nested ones
+  //first, do the nested (second level) ones
   templates.nested.forEach(tmpl => {
     wiki = doTemplate(tmpl, wiki, r, options);
   });
-  // console.log(wiki);
   //then, reparse wiki for the top-level ones
   templates = getTemplates(wiki);
+
+  //okay if we have a 3-level-deep template, do it again (but no further)
+  if (templates.nested.length > 0) {
+    templates.nested.forEach(tmpl => {
+      wiki = doTemplate(tmpl, wiki, r, options);
+    });
+    templates = getTemplates(wiki); //this is getting crazy.
+  }
+  //okay, top-level
   templates.top.forEach(tmpl => {
     wiki = doTemplate(tmpl, wiki, r, options);
   });

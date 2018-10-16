@@ -45,9 +45,11 @@ const parseRefs = function(r, wiki) {
     }
     return ' ';
   });
-  // <ref name=""/>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ');
-  // <ref name=""></ref>
+  // <ref name="mycitelabel"/>
+  wiki = wiki.replace(/ ?<ref ([^>]{0,200}?)\/> ?/gi, function(a, tmpl) {
+    return ' ';
+  });
+  // <ref name="..."></ref>
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1000}?)<\/ref> ?/gi, function(a, tmpl) {
     if (hasCitation(tmpl)) {
       let obj = parseCitation(tmpl);

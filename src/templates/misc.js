@@ -133,6 +133,18 @@ const parsers = {
       links: data
     };
   },
+  'short description': (tmpl) => {
+    let data = pipeList(tmpl);
+    return {
+      template: data.template,
+      description: data.data[0]
+    };
+  },
+  'good article': () => {
+    return {
+      template: 'Good article'
+    };
+  }
 };
 //aliases
 parsers['cite'] = parsers.citation;
