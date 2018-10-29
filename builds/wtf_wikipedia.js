@@ -1,4 +1,4 @@
-/* wtf_wikipedia v6.2.0
+/* wtf_wikipedia v6.2.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -491,7 +491,7 @@ module.exports.default = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "6.2.0",
+  "version": "6.2.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -503,8 +503,8 @@ module.exports={
     "start": "node ./scripts/demo.js",
     "test": "node ./scripts/test.js",
     "test-spec": "tape ./tests/*.test.js | tap-spec",
+    "coverage": "node scripts/coverage.js",
     "postpublish": "node ./scripts/coverage.js",
-    "coverage": "node ./scripts/coverage.js",
     "testb": "TESTENV=prod node ./scripts/test.js",
     "watch": "amble ./scratch.js",
     "build": "node ./scripts/build.js"
@@ -538,7 +538,7 @@ module.exports={
     "browserify": "16.2.3",
     "codacy-coverage": "3.2.0",
     "derequire": "2.0.6",
-    "nyc": "13.1.0",
+    "istanbul": "0.4.5",
     "shelljs": "0.8.2",
     "tap-dancer": "0.1.2",
     "tap-spec": "^5.0.0",
@@ -5447,19 +5447,16 @@ var makeUrl = function makeUrl(title, lang, options) {
 };
 
 //this data-format from mediawiki api is nutso
-var postProcess = function postProcess(data) {
+var postProcess = function postProcess(data, options) {
   var pages = Object.keys(data.query.pages);
   var docs = pages.map(function (id) {
     var page = data.query.pages[id] || {};
     if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
       return null;
     }
-
     var text = page.revisions[0]['*'];
-    var options = {
-      title: page.title,
-      pageID: page.pageid
-    };
+    options.title = page.title;
+    options.pageID = page.pageid;
     try {
       return parseDocument(text, options);
     } catch (e) {
@@ -5515,7 +5512,9 @@ var getPage = function getPage(title, a, b, c) {
   return new Promise(function (resolve, reject) {
     var p = getData(url, options);
 
-    p.then(postProcess).then(function (doc) {
+    p.then(function (wiki) {
+      return postProcess(wiki, options);
+    }).then(function (doc) {
       //support 'err-back' format
       if (callback && typeof callback === 'function') {
         callback(null, doc);
@@ -8096,10 +8095,9 @@ var oneTemplate = function oneTemplate(tmpl, wiki, data, options) {
     wiki = wiki.replace(tmpl, '');
     return wiki;
   }
-
   //bury this template, if we don't know it
   if (options.missing_templates === true) {
-    console.log(name);
+    console.log(':: ' + name);
   }
   wiki = wiki.replace(tmpl, '');
 
