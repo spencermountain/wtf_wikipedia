@@ -4,18 +4,25 @@ const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./build');
 
 // (async () => {
-//   let doc = await wtf.fetch('Pete Townshend', 'en');
-//   console.log(doc.infoboxes(0).images(0).thumb());
+//   let doc = await wtf.fetch('New York City', 'en');
+//   console.log(doc.infoboxes());
 // })();
 
 // let doc = readFile('jodie_emery');
+// console.log(doc.markdown());
 // console.log(doc.infobox(0).images(0).thumb());
+//
+var str = `#REDIRECT[[List of Evil Con Carne characters#Cod Commando]]
 
-var str = `
-{{sdfurresncy|1,000}} gives: ¥1,000
-`;
-let doc = wtf(str, {
-  missing_templates: true
-});
-// console.log(doc.templates());
-console.log(doc.text());
+{{Redirect category shell|
+{{R from fictional character|Evil Con Carne}}
+{{R to section}}
+}}
+
+[[Category:Evil Con Carne character redirects to lists]]
+[[Category:Fictional anthropomorphic characters]]
+[[Category:Fictional secret agents and spies]]
+[[Category:Fictional characters introduced in 2001]]`;
+let doc = wtf(str);
+console.log(doc.isRedirect());
+console.log(doc.json());
