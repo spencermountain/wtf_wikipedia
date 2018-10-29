@@ -125,11 +125,6 @@
       "aliases": [
         "toJson"
       ]
-    },
-    {
-      "name": "debug",
-      "returns": "Document",
-      "description": "log a table-of-contents to the console"
     }
   ],
   "Section": [
