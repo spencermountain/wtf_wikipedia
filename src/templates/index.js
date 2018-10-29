@@ -67,10 +67,9 @@ const oneTemplate = function(tmpl, wiki, data, options) {
     wiki = wiki.replace(tmpl, '');
     return wiki;
   }
-
   //bury this template, if we don't know it
   if (options.missing_templates === true) {
-    console.log(name);
+    console.log(':: ' + name);
   }
   wiki = wiki.replace(tmpl, '');
 

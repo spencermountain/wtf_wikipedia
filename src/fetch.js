@@ -45,19 +45,16 @@ const makeUrl = function(title, lang, options) {
 };
 
 //this data-format from mediawiki api is nutso
-const postProcess = function(data) {
+const postProcess = function(data, options) {
   let pages = Object.keys(data.query.pages);
   let docs = pages.map(id => {
     let page = data.query.pages[id] || {};
     if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
       return null;
     }
-
     let text = page.revisions[0]['*'];
-    let options = {
-      title: page.title,
-      pageID: page.pageid,
-    };
+    options.title = page.title;
+    options.pageID = page.pageid;
     try {
       return parseDocument(text, options);
     } catch (e) {
@@ -114,7 +111,9 @@ const getPage = function(title, a, b, c) {
   return new Promise(function(resolve, reject) {
     let p = getData(url, options);
 
-    p.then(postProcess).then((doc) => {
+    p.then((wiki) => {
+      return postProcess(wiki, options);
+    }).then((doc) => {
       //support 'err-back' format
       if (callback && typeof callback === 'function') {
         callback(null, doc);
