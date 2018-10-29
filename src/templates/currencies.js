@@ -1,6 +1,6 @@
 const pipeSplit = require('./parsers/pipeSplit');
 
-const currencyTemplateCodes = {
+const codes = {
   us$: 'US$', // https://en.wikipedia.org/wiki/Template:US$
   bdt: '৳', // https://en.wikipedia.org/wiki/Template:BDT
   a$: 'A$', // https://en.wikipedia.org/wiki/Template:AUD
@@ -14,34 +14,34 @@ const currencyTemplateCodes = {
   yen: '¥',
   '₱': '₱', // https://en.wikipedia.org/wiki/Template:Philippine_peso
   pkr: '₨', // https://en.wikipedia.org/wiki/Template:Pakistani_Rupee
+  '€': '€', // https://en.wikipedia.org/wiki/Template:€
+  'euro': '€',
+  'nz$': 'NZ$',
+  'nok': 'kr', //https://en.wikipedia.org/wiki/Template:NOK
+  'aud': 'A$', //https://en.wikipedia.org/wiki/Template:AUD
+  'zar': 'R', //https://en.wikipedia.org/wiki/Template:ZAR
 };
 
-const templateForCurrency = currency => tmpl => {
-  const {year, value} = pipeSplit(tmpl, ['value', 'year']);
-  // Ignore round, about, link options
-  if (year) {
-    // Don't perform inflation adjustment
-    return `${currency}${value} (${year})`;
+const parseCurrency = (tmpl, r) => {
+  let o = pipeSplit(tmpl, ['amount', 'code']);
+  r.templates.push(o);
+  let code = o.template || '';
+  if (code === '' || code === 'currency') {
+    code = o.code;
   }
-  if (value) {
-    return `${currency}${value}`;
-  }
-  return currency;
+  code = code.toLowerCase();
+  let out = codes[code] || '';
+  return `${out}${o.amount || ''}`;
 };
 
-const currencies = Object.keys(currencyTemplateCodes).reduce(
-  (result, code) => {
-    result[code] = templateForCurrency(currencyTemplateCodes[code]);
-    return result;
-  },
-  {
-    // https://en.wikipedia.org/wiki/Template:Currency
-    currency: tmpl => {
-      // Ignore first and linked options
-      const {code, amount} = pipeSplit(tmpl, ['amount', 'code']);
-      return `${code}${amount}`;
-    },
-  }
-);
+const currencies = {
+  //this one is generic https://en.wikipedia.org/wiki/Template:Currency
+  currency: parseCurrency
+};
+//the others fit the same pattern..
+Object.keys(codes).forEach((k) => {
+  currencies[k] = parseCurrency;
+});
+
 
 module.exports = currencies;
