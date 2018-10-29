@@ -12,8 +12,10 @@ const readFile = require('./tests/lib/_cachedPage');
 // console.log(doc.infobox(0).images(0).thumb());
 
 var str = `
-{{Currency|1,000|JPY}} gives: ¥1,000
+{{sdfurresncy|1,000}} gives: ¥1,000
 `;
-let doc = wtf(str);
+let doc = wtf(str, {
+  missing_templates: true
+});
 // console.log(doc.templates());
 console.log(doc.text());
