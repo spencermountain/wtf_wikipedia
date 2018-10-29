@@ -14,24 +14,24 @@ const readFile = require('./tests/lib/_cachedPage');
 var str = `
 {{Infobox person
 | name             = Jodie Emery
-| image            = Marc Emery and Jodie Emery.JPG
-| alt              =
-| caption          = Emery with husband Marc, Toronto Freedom Festival 2010
-| birth_name       =
 | birt.h_date       = January 4, 1985<ref name="facebook"/>
-| birth_place      = [[Kamloops, BC]]<ref name="jodiemla"/>
-| death_date       =
-| death_place      =
-| residence        = [[Vancouver]], [[British Columbia|BC]], Canada
-| party            = [[Liberal Party of Canada]], <br>[[Green Party of British Columbia|B.C. Green Party]],<br>  [[British Columbia Marijuana Party|B.C. Marijuana Party]]
-| nationality      = Canadian
-| other_names      = Princess of Pot
-| occupation       = Activist, Politician
 | known_for        = [[cannabis (drug)|Cannabis]] legalisation
 }}
-'''Jodie Emery'''  (born January 4, 1985) is a  [[Canada|Canadian]] [[Cannabis (drug)|cannabis]] [[Legality of cannabis|activist]], and politician. She is the wife of activist [[Marc Emery]], and co-owner of [[Cannabis Culture (magazine)|Cannabis Culture magazine]], [[Pot TV]], and the retail store ''Cannabis Culture Headquarters''.
+hello world  {{lkjsdf|foo=28|hs.he=90}}.
+{| class="wikitable"
+|-
+! Foo
+! Foo.bar
+|-
+| row 1, cell 1
+| row 1, cell 2
+|-
+| row 2, cell 1
+| row 2, cell 2
+|}
 `;
 let doc = wtf(str);
-console.log(doc.json({
+let json = doc.json({
   encode: true
-}).sections[0]);
+});
+console.log(json.sections[0].infoboxes[0]);

@@ -1,5 +1,6 @@
 const encode = require('../lib/encode');
-//
+
+//turn an infobox into some nice json
 const toJson = function(infobox, options) {
   let json = Object.keys(infobox.data).reduce((h, k) => {
     if (infobox.data[k]) {
@@ -7,6 +8,8 @@ const toJson = function(infobox, options) {
     }
     return h;
   }, {});
+
+  //support mongo-encoding keys
   if (options.encode === true) {
     json = encode.encodeObj(json);
   }
