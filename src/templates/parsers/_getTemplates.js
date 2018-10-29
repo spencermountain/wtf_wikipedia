@@ -12,9 +12,8 @@ const findFlat = function(wiki) {
   let depth = 0;
   let list = [];
   let carry = [];
-  let chars = wiki.split('');
-  for(var i = 0; i < chars.length; i++) {
-    c = chars[i];
+  for (var i = wiki.indexOf(open); i != -1 && i < wiki.length; depth > 0 ? i++ : (i = wiki.indexOf(open, i + 1))) {
+    c = wiki[i];
     //open it
     if (c === open) {
       depth += 1;
@@ -24,7 +23,8 @@ const findFlat = function(wiki) {
       if (c === close) {
         depth -= 1;
         if (depth === 0) {
-          let tmpl = carry.join('') + c;
+          carry.push(c);
+          let tmpl = carry.join('');
           carry = [];
           //last check
           if (/\{\{/.test(tmpl) && /\}\}/.test(tmpl)) {
