@@ -1,27 +1,28 @@
-// const wtf = require('./src/index');
+const wtf = require('./src/index');
 // const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
 // (async () => {
-//   let doc = await wtf.fetch('Pete Townshend', 'en');
-//   console.log(doc.infoboxes(0).images(0).thumb());
+//   let doc = await wtf.fetch('New York City', 'en');
+//   console.log(doc.infoboxes());
 // })();
 
 // let doc = readFile('jodie_emery');
+// console.log(doc.markdown());
 // console.log(doc.infobox(0).images(0).thumb());
+//
+var str = `#REDIRECT[[List of Evil Con Carne characters#Cod Commando]]
 
-// var str = `
-// ==Soccer==
-// The soccer game consists of the following components:
-// * 2 Teams with 11 players each,
-// * 3 referees
-// The game last 90 min.
-// `;
-// str = `hello up here
-//     block section
-// hello down here`;
-// // console.log(wtf(str).templates(0));
-// console.log(wtf(str).sections(0).text());
+{{Redirect category shell|
+{{R from fictional character|Evil Con Carne}}
+{{R to section}}
+}}
 
-// console.log(wtf('the is [[he]] nice').markdown());
+[[Category:Evil Con Carne character redirects to lists]]
+[[Category:Fictional anthropomorphic characters]]
+[[Category:Fictional secret agents and spies]]
+[[Category:Fictional characters introduced in 2001]]`;
+let doc = wtf(str);
+console.log(doc.isRedirect());
+console.log(doc.json());

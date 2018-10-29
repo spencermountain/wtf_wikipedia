@@ -34,7 +34,7 @@ test('redirect-newlines', t => {
   t.end();
 });
 
-test('redirect-extra', t => {
+test('redirect-extra-stuff', t => {
   var doc = wtf(`#REDIRECT [[Wikipedia:Bug reports and feature requests]]
 
 {{Redirect category shell|1=
@@ -43,6 +43,31 @@ test('redirect-extra', t => {
   t.equal(doc.isRedirect(), true, 'isredirect');
   t.equal(doc.redirectsTo().page, 'Bug reports and feature requests', 'redirectsto');
   t.equal(doc.redirectsTo().wiki, 'wikipedia', 'interwiki redirect');
+  t.end();
+});
+
+test('long redirects', t => {
+  var str = `#REDIRECT [[List of Directors and Commissioners-General of the United Nations Relief and Works Agency for Palestine Refugees in the Near East]]`;
+  var doc = wtf(str);
+  t.equal(doc.isRedirect(), true, 'isredirect');
+  t.equal(doc.redirectsTo().page, 'List of Directors and Commissioners-General of the United Nations Relief and Works Agency for Palestine Refugees in the Near East', 'redirectsto');
+
+  //another one
+  str = `#REDIRECT[[List of Evil Con Carne characters#Cod Commando]]
+
+  {{Redirect category shell|
+  {{R from fictional character|Evil Con Carne}}
+  {{R to section}}
+  }}
+
+  [[Category:Evil Con Carne character redirects to lists]]
+  [[Category:Fictional anthropomorphic characters]]
+  [[Category:Fictional secret agents and spies]]
+  [[Category:Fictional characters introduced in 2001]]`;
+  doc = wtf(str);
+  t.equal(doc.isRedirect(), true, 'isredirect');
+  t.equal(doc.redirectsTo().page, 'List of Evil Con Carne characters', 'redirectsto');
+  t.equal(doc.json().categories.length, 4, 'redirect has categories');
   t.end();
 });
 

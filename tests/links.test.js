@@ -62,3 +62,10 @@ test('title-case-links', t => {
   t.equal(wtf('[[John|his son]]').links(0).page, 'John', 'already titlecased given page');
   t.end();
 });
+
+// test('tricksy-links', t => {
+//   var doc = wtf('then [[John Entwistle|John [Entwistle]]] and I');
+//   t.equal(doc.links(0).page, 'John Entwistle', 'page without bracket');
+//   t.equal(doc.links(0).text, 'John [Entwistle]', 'text with bracket');
+//   t.end();
+// });

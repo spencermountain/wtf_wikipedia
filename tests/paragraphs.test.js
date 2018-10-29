@@ -27,7 +27,7 @@ test('sentence/paragraphs by newlines', t => {
 Closing remark`);
   t.equal(doc.paragraphs().length, 2, '2 paragraphs');
   t.equal(doc.sentences().length, 2, '2 sentences');
-  t.equal(doc.markdown(), 'Leading text\nClosing remark', 'markdown paragraphs');
+  t.equal(doc.markdown(), 'Leading text\n\nClosing remark', 'markdown paragraphs');
   t.end();
 });
 
