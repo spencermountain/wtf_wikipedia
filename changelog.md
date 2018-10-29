@@ -122,3 +122,6 @@
 * remove references inside section titles
 ### 6.1.0
 * titlecase internal link destinations #192
+### 6.2.0
+* support categories in redirects
+* add mongo-encoding from dumpster-dive
