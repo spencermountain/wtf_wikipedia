@@ -219,12 +219,29 @@ The types of boats provided at each station and the launching methods vary depen
 }}
 hello there
 `;
-  let doc = wtf(str);
-  t.equal(doc.templates().length, 5, 'got several templates');
-  t.equal(doc.templates('citation').length, 1, 'got citation template');
+  var doc = wtf(str);
+  t.equal(doc.templates().length, 3, 'got several templates');
+  t.equal(doc.infoboxes().length, 1, 'got one infobox');
+  t.equal(doc.citations().length, 1, 'got citation template');
   t.equal(doc.templates('main').length, 1, 'got main template');
   t.equal(doc.templates('tracklist').length, 1, 'got tracklist template');
-  t.equal(doc.templates('infobox').length, 1, 'got infobox template');
+  t.end();
+});
+
+test('templates in infobox', function(t) {
+  var str = `{{Infobox museum
+  |coordinates = {{coord|41.893269|-87.622511|display=inline}}
+  |image=           20070701 Arts Club of Chicago.JPG
+  |website= [http://www.artsclubchicago.org www.artsclubchicago.org]
+  }}
+  '''Arts Club of Chicago''' is a private club located in the [[Near North Side, Chicago|Near North Side]] `;
+  var doc = wtf(str);
+  t.equal(doc.templates().length, 1, 'got one template');
+  t.equal(doc.infoboxes().length, 1, 'got one infobox');
+  t.equal(doc.images().length, 1, 'got one image');
+  t.equal(doc.images().length, 1, 'got one image');
+  t.equal(doc.links().length, 2, 'got two links');
+  t.equal(doc.templates('coord').length, 1, 'got coord template');
   t.end();
 });
 
@@ -303,5 +320,34 @@ test('microsoft currency parsing', function(t) {
   t.equal(infobox.revenue.text(), 'US$89.95 billion', 'revenue =' + infobox.revenue.text);
   t.equal(infobox.operating_income.text(), 'US$22.27 billion', 'operating_income =' + infobox.operating_income.text);
   t.equal(infobox.net_income.text(), 'US$21.20 billion', 'net_income =' + infobox.net_income.text);
+  t.end();
+});
+
+
+test('climate template', function(t) {
+  var str = `{{climate chart
+| Toronto
+| −6.7 | -0.7 | 62
+| −5.6 |  0.4 | 55
+| −1.9 |  4.7 | 54
+|  4.1 | 11.5 | 68
+|  9.9 | 18.4 | 82
+| 14.9 | 23.9 | 71
+| 18.0 | 26.6 | 64
+| 17.4 | 25.5 | 81
+| 13.4 | 21.0 | 85
+|  7.4 | 14.0 | 64
+|  2.3 |  7.5 | 84
+| −3.1 |  2.1 | 61
+|float=right
+|source= Environment Canada }}`;
+  var data = wtf(str).templates(0).data;
+  t.equal(data.months[0].low, -6.7, 'jan low');
+  t.equal(data.months[1].precip, 55, 'feb precip');
+  t.end();
+});
+test('german ones', function(t) {
+  var str = 'Buchstaben {{Taste|Q}}, {{Taste|W}}, {{Taste|E}}, {{Taste|R}}, {{Taste|T}} und {{Taste|Z}}';
+  t.equal(wtf(str).text(), 'Buchstaben Q, W, E, R, T und Z', 'letters');
   t.end();
 });

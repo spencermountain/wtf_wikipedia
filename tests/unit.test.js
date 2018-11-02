@@ -25,9 +25,12 @@ test('sentence parser', t => {
 });
 
 test('misc cleanup', t => {
-  [['hi [[as:Plancton]] there', 'hi there'], ['hello <br/> world', 'hello world']].forEach(a => {
-    var s = wtf(a[0]).plaintext();
-    t.equal(s, a[1]);
+  [
+    // ['hi [[as:Plancton]] there', 'hi there'],
+    ['hello <br/> world', 'hello world'],
+  ].forEach(a => {
+    var s = wtf(a[0]).text();
+    t.equal(s, a[1], 'inline interwiki link');
   });
   t.end();
 });
@@ -44,7 +47,7 @@ test('redirects', t => {
   ].forEach(a => {
     var o = wtf(a[0]);
     var msg = '\'' + a[0] + '\' -> \'' + o.redirect + '\'';
-    t.equal(o.links(0).page, a[1], msg);
+    t.equal(o.redirectTo().page, a[1], msg);
   });
   t.end();
 });
@@ -91,7 +94,7 @@ test('parse_image', t => {
       'Image:Edouard Recon (2002).jpg'
     ]
   ].forEach(a => {
-    var arr = wtf(a[0]).images().map(o => o.file);
+    var arr = wtf(a[0]).images().map(o => o.file());
     t.deepEqual(arr[0], a[1]);
   });
   t.end();
@@ -118,7 +121,8 @@ test('xml', t => {
 test('interwiki', t => {
   var str = 'hello [[wikinews:Radiohead]] world  [[Category:Films]]';
   var obj = wtf(str);
-  t.equal(obj.sections(0).interwiki().wikinews, 'Radiohead', 'interwiki-link');
+  t.equal(obj.sections(0).interwiki(0).page, 'Radiohead', 'interwiki-link');
+  t.equal(obj.sections(0).interwiki(0).wiki, 'wikinews', 'interwiki-link');
   t.equal(obj.categories().length, 1, 'cat-length');
   t.equal(obj.categories(0), 'Films', 'cat-match');
   t.end();

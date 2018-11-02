@@ -106,7 +106,7 @@ test('age templates', t => {
   var arr = [
     ['{{Age|1989|7|23|2003|7|14}}', '13'],
     ['{{Age|1989|7|23|2018|2|28}}', '28'],
-    ['{{Age|1989|7|23}}', '28'], //working but untestable
+    // ['{{Age|1989|7|23}}', '28'], //working but untestable
     //     ['{{Age in years, months, weeks and days |month1 = 1 |day1 = 1 |year1 = 1 }}', '2017 years, 1 month, 2 weeks and 1 day'],
     //     ['{{Age in years, months and days|year=2001|month=1|day=15}}', '17 years, 1 month and 1 day'],
     // ['{{Age in years, months and days|2001|01|15|2008|09|05}}', '7 years, 7 months and 21 days'],
@@ -126,7 +126,7 @@ test('age templates', t => {
     // ['{{age in days|19 Aug 2008|4 Sep 2010}}', '746'],
     // ['{{age in days|27 May 2002}}', '5,744'],
     ['{{Age nts|1989|7|23|2003|7|14}}', '13'],
-    ['{{Age nts|1989|7|23}}', '28'],
+  // ['{{Age nts|1989|7|23}}', '28'],
   //
   //     ['{{Age as of date|50|2016|1|1}}', '52–53'],
   //     ['{{Age as of date|50|2016|12|31}}', '51–52'],

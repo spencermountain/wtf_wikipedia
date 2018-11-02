@@ -216,6 +216,8 @@ test('messy-table-test', t => {
   var obj = wtf(messy);
   var table = obj.tables(0).json();
   t.equal(table[1]['col1'].text, 'Nibelungen Bridge to Worms', 'col1 text');
+  // var keyVal=obj.tables(0).keyValue()
+  // t.equal()
   t.end();
 });
 
@@ -239,5 +241,98 @@ test('embedded-table', t => {
   t.equal(tables.length, 2, 'found both tables');
   t.equal(tables[0].links().length, 1, 'found one link');
   t.equal(tables[1].links().length, 1, 'found another link');
+  t.end();
+});
+
+test('embedded-table-2', t => {
+  var str = ` {| class="oopsie"
+  | first row
+  |-
+  | Secod row
+  {|
+  |-
+  | embed 1
+  |-
+  | embed 2
+  |}
+  |-
+  | Berlin!
+  |-
+  |}
+
+  Actual first sentence is here`;
+  var doc = wtf(str);
+  t.equal(doc.tables().length, 2, 'found both tables');
+  var text = doc.sentences(0).text();
+  t.equal('Actual first sentence is here', text, 'got proper first sentence');
+  t.end();
+});
+
+
+
+test('sortable table', t => {
+  var str = `{|class="wikitable sortable"
+  !Name and Surname!!Height
+  |-
+  |data-sort-value="Smith, John"|John Smith||1.85
+  |-
+  |data-sort-value="Ray, Ian"|Ian Ray||1.89
+  |-
+  |data-sort-value="Bianchi, Zachary"|Zachary Bianchi||1.72
+  |-
+  !Average:||1.82
+  |}`;
+  var doc = wtf(str);
+  var row = doc.tables(0).data[0];
+  t.equal(row.Height.text(), '1.85', 'got height');
+  t.equal(row['Name and Surname'].text(), 'John Smith', 'got name');
+  t.end();
+});
+
+test('missing-row test', t => {
+  var str = `{|class="wikitable"
+  |-
+  ! style="background:#ddf; width:0;"| #
+  ! style="background:#ddf; width:11%;"| Date
+  ! style="background:#ddf; width:14%;"| Opponent
+  ! style="background:#ddf; width:9%;"| Score
+  ! style="background:#ddf; width:18%;"| Win
+  ! style="background:#ddf; width:18%;"| Loss
+  ! style="background:#ddf; width:16%;"| Save
+  ! style="background:#ddf; width:0;"| Attendance
+  ! style="background:#ddf; width:0;"| Record
+  |-align="center" bgcolor="bbffbb"
+  | 2 || April 2 || @ [[2014 New York Mets season|Mets]] || 5–1 || '''[[Gio González|González]]''' (1–0) || [[Bartolo Colón|Colón]] (0–1) || || 29,146 || 2–0
+  |-align="center" bgcolor="bbffbb"
+  | 3 || April 3 || @ [[2014 New York Mets season|Mets]] || 8–2 || '''[[Tanner Roark|Roark]]''' (1–0) || [[Zack Wheeler|Wheeler]] (0–1) || || 20,561 || 3–0
+  |-align="center" bgcolor="ffbbbb"
+  | 4 || April 4 || [[2014 Atlanta Braves season|Braves]] || 2–1 || [[Luis Avilán|Avilán]] (1–0) || '''[[Tyler Clippard|Clippard]]''' (0–1) || [[Craig Kimbrel|Kimbrel]] (3) || 42,834 || 3–1
+  |-align="center" bgcolor="ffbbbb"
+  | 5 || April 5 || [[2014 Atlanta Braves season|Braves]] || 6–2 || [[Julio Teherán|Teherán]] (1–1) || '''[[Stephen Strasburg|Strasburg]]''' (0–1) || || 37,841 || 3–2
+  |-align="center" bgcolor="bbffbb"
+  |}
+  Actual first sentence  is here`;
+  var row = wtf(str).tables(0).data[0];
+  t.equal(row.Save.text(), '', 'got empty property');
+  t.equal(row.Record.text(), '2–0', 'got last property');
+  t.end();
+});
+
+
+test('table newline removal', t => {
+  var str = `hello this is the top
+{| class="wikitable" style="font-size: 95%;"
+| 1
+| [[Daugpiļs]]
+|-
+| 2
+| [[Jākubmīsts]]
+|-
+| 3
+| [[Rēzne]]
+|}
+`;
+  var doc = wtf(str);
+  t.equal(doc.text(), 'hello this is the top', 'text on top');
   t.end();
 });

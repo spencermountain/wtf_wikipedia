@@ -11,7 +11,7 @@ let i18n = {
     'پرونده',
     'tiedosto',
     'mynd',
-    "su'wret",
+    'su\'wret',
     'fichier',
     'bestand',
     'датотека',

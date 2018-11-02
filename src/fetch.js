@@ -1,33 +1,46 @@
 //grab the content of any article, off the api
 const fetch = require('cross-fetch');
 const site_map = require('./data/site_map');
-const Document = require('./document/Document');
+const parseDocument = require('./01-document');
 // const redirects = require('../parse/page/redirects');
-const isNumber = /^[0-9]*$/;
+
+function isArray(arr) {
+  return arr.constructor.toString().indexOf('Array') > -1;
+}
 
 //construct a lookup-url for the wikipedia api
-const makeUrl = function(title, lang) {
+const makeUrl = function(title, lang, options) {
   lang = lang || 'en';
-  var lookup = 'titles';
-  if (isNumber.test(title) && title.length > 3) {
-    lookup = 'curid';
-  }
   let url = `https://${lang}.wikipedia.org/w/api.php`;
   if (site_map[lang]) {
     url = site_map[lang] + '/w/api.php';
   }
   //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-  url += '?action=query&redirects=true&prop=revisions&rvprop=content&maxlag=5&format=json&origin=*';
-  //support multiple titles
-  if (typeof title === 'string') {
-    title = [title];
-  } else if (typeof title === 'number') { //pageids param
-    lookup = 'pageids';
-    title = [title];
+  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&format=json&origin=*';
+  if (options.follow_redirects !== false) {
+    url += '&redirects=true';
   }
-  title = title.map(encodeURIComponent);
-  title = title.join('|');
-  url += '&' + lookup + '=' + title;
+  var lookup = 'titles';
+  let pages = [];
+  //support one, or many pages
+  if (isArray(title) === false) {
+    pages = [title];
+  } else {
+    pages = title;
+  }
+  //assume numbers mean pageid, and strings are titles (like '1984')
+  if (typeof pages[0] === 'number') {
+    lookup = 'pageids';
+  } else {
+    pages = pages.map((str) => {
+      if (typeof str === 'string') {
+        return encodeURIComponent(str);
+      }
+      return str;
+    });
+  }
+  pages = pages.join('|');
+  url += '&' + lookup + '=' + pages;
   return url;
 };
 
@@ -39,13 +52,14 @@ const postProcess = function(data) {
     if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
       return null;
     }
+
     let text = page.revisions[0]['*'];
     let options = {
       title: page.title,
       pageID: page.pageid,
     };
     try {
-      return new Document(text, options);
+      return parseDocument(text, options);
     } catch (e) {
       console.error(e);
       throw e
@@ -96,17 +110,17 @@ const getPage = function(title, a, b, c) {
   if (typeof c === 'function') {
     callback = c;
   }
-  let url = makeUrl(title, lang);
+  let url = makeUrl(title, lang, options);
   return new Promise(function(resolve, reject) {
     let p = getData(url, options);
+
     p.then(postProcess).then((doc) => {
       //support 'err-back' format
       if (callback && typeof callback === 'function') {
         callback(null, doc);
       }
       resolve(doc);
-    });
-    p.catch(reject);
+    }).catch(reject);
   });
 };
 

@@ -20,7 +20,7 @@ args = args.filter((arg) => {
 
 var title = args.join(' ');
 if (!title) {
-  throw new Error('Usage: wtf_wikipedia Toronto Blue Jays --plaintext');
+  throw new Error('Usage: node bin/wtf Toronto Blue Jays --plaintext');
 }
 
 wtf.fetch(title, 'en', function (err, doc) {

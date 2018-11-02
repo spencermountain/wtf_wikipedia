@@ -40,6 +40,7 @@ test('stress-test-en', t => {
     'Keilwelle',
     'Liste-der-argentinischen-Botschafter-in-Chile',
     'Magnar-Sætre',
+    'Mark-Behr',
     'Maurische-Netzwuhle',
     'Mozilla-Firefox',
     'Neil-McLean-(saxophonist)',
@@ -107,15 +108,21 @@ test('stress-test-en', t => {
     } else {
       t.ok(doc.citations().length > 0, title + ' has a citation');
     }
-    var plain = doc.plaintext();
-    t.ok(plain.length > 40, ' - - plaintext-length');
+    var text = doc.text();
+    t.ok(text.length > 40, ' - - text-length');
 
     var md = doc.markdown();
-    t.ok(md.length > 40, ' - - markdown-length');
+    t.ok(md.length > 40, ' - - markdown-length-ok');
+
+    var latex = doc.latex();
+    t.ok(latex.length > 40, ' - - latex-length-ok');
 
     var html = doc.html();
     t.ok(html.length > 40, ' - - html-length');
     t.ok(html.match(/\</), ' - - html-has tag');
+
+    var json = doc.json();
+    t.ok(Object.keys(json).length >= 2, ' - - json-keys-ok');
   });
   t.end();
 });

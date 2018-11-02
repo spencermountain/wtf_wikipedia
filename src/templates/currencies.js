@@ -17,7 +17,7 @@ const currencyTemplateCodes = {
 };
 
 const templateForCurrency = currency => tmpl => {
-  const { year, value } = pipeSplit(tmpl, ['value', 'year']);
+  const {year, value} = pipeSplit(tmpl, ['value', 'year']);
   // Ignore round, about, link options
   if (year) {
     // Don't perform inflation adjustment
@@ -38,10 +38,10 @@ const currencies = Object.keys(currencyTemplateCodes).reduce(
     // https://en.wikipedia.org/wiki/Template:Currency
     currency: tmpl => {
       // Ignore first and linked options
-      const { code, amount } = pipeSplit(tmpl, ['amount', 'code']);
+      const {code, amount} = pipeSplit(tmpl, ['amount', 'code']);
       return `${code}${amount}`;
     },
-  },
+  }
 );
 
 module.exports = currencies;

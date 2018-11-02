@@ -1,9 +1,8 @@
-const Hashes = require('jshashes');
 const fetch = require('cross-fetch');
 const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
 const toLatex = require('./toLatex');
-const server = 'https://upload.wikimedia.org/wikipedia/commons/';
+const server = 'https://wikipedia.org/wiki/Special:Redirect/file/';
 const aliasList = require('../lib/aliases');
 
 const encodeTitle = function(file) {
@@ -11,51 +10,51 @@ const encodeTitle = function(file) {
   //titlecase it
   title = title.charAt(0).toUpperCase() + title.substring(1);
   //spaces to underscores
-  title = title.replace(/ /g, '_');
+  title = title.trim().replace(/ /g, '_');
   return title;
 };
 
 //the wikimedia image url is a little silly:
-//https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F
 const makeSrc = function(file) {
   let title = encodeTitle(file);
-  let hash = new Hashes.MD5().hex(title);
-  let path = hash.substr(0, 1) + '/' + hash.substr(0, 2) + '/';
   title = encodeURIComponent(title);
-  path += title;
-  return path;
+  return title;
 };
 
 //the class for our image generation functions
-const Image = function(file, wiki) {
-  this.file = file;
-  this.text = ''; //to be compatible as an infobox value
-  //hush this property in console.logs..
-  Object.defineProperty(this, 'wiki', {
+const Image = function(data) {
+  Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: wiki
+    value: data
   });
 };
 
 const methods = {
-  wikitext() {
-    return this.wiki;
+  file() {
+    return this.data.file || '';
+  },
+  alt() {
+    let str = this.data.alt || this.data.file || '';
+    str = str.replace(/^(file|image):/i, '');
+    str = str.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
+    return str.replace(/_/g, ' ');
+  },
+  caption() {
+    return this.data.text || '';
   },
   links() {
-    return [];
+    return []; //not ready yet
   },
   url() {
-    return server + makeSrc(this.file);
+    return server + makeSrc(this.file());
   },
   thumbnail(size) {
     size = size || 300;
-    let path = makeSrc(this.file);
-    let title = encodeTitle(this.file);
-    title = encodeURIComponent(title);
-    return server + 'thumb/' + path + '/' + size + 'px-' + title;
+    let path = makeSrc(this.file());
+    return server + path + '?width=' + size;
   },
   format() {
-    let arr = this.file.split('.');
+    let arr = this.file().split('.');
     if (arr[arr.length - 1]) {
       return arr[arr.length - 1].toLowerCase();
     }
@@ -88,7 +87,7 @@ const methods = {
   },
   json: function() {
     return {
-      file: this.file,
+      file: this.file(),
       url: this.url(),
       thumb: this.thumbnail(),
     };

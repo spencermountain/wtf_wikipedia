@@ -6,10 +6,10 @@ test('json-output-default', t => {
   var data = readFile('royal_cinema').json();
   t.ok(data.title, 'title');
   t.ok(data.categories, 'categories');
-  t.ok(data.citations, 'citations');
-  t.ok(data.infoboxes, 'infoboxes');
   t.ok(data.sections, 'sections');
   t.ok(!data.images, 'images');
+  t.ok(!data.citations, 'citations');
+  t.ok(!data.infoboxes, 'infoboxes');
   t.end();
 });
 
@@ -47,6 +47,7 @@ test('section-output', t => {
   var data = doc.section(0).json({
     links: false,
     formatting: false,
+    sentences: true
   });
   t.equal(data.depth, 0, 'depth');
   t.ok(data.sentences[0].text, 'no formatting');

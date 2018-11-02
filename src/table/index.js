@@ -9,7 +9,7 @@ const findTables = function(section, wiki) {
   let list = [];
   let lines = wiki.split('\n');
   let stack = [];
-  for(let i = 0; i < lines.length; i += 1) {
+  for (let i = 0; i < lines.length; i += 1) {
     //start a table
     if (openReg.test(lines[i]) === true) {
       stack.push(lines[i]);
@@ -29,8 +29,10 @@ const findTables = function(section, wiki) {
   }
   //work-em together for a Table class
   let tables = [];
-  list.forEach((str) => {
+  list.forEach(str => {
     if (str) {
+      //also reremove a newline at the end of the table (awkward)
+      wiki = wiki.replace(str + '\n', '');
       wiki = wiki.replace(str, '');
       let data = parseTable(str);
       if (data && data.length > 0) {
@@ -38,6 +40,7 @@ const findTables = function(section, wiki) {
       }
     }
   });
+
   if (tables.length > 0) {
     section.tables = tables;
   }

@@ -1,16 +1,27 @@
-const wtf = require('./src/index');
+// const wtf = require('./src/index');
 // const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-//images in tables...
+// (async () => {
+//   let doc = await wtf.fetch('Pete Townshend', 'en');
+//   console.log(doc.infoboxes(0).images(0).thumb());
+// })();
 
-// wtf.fetch('London', 'en', function(err, doc) {
-//   console.log(doc.lists());
-// });
+// let doc = readFile('jodie_emery');
+// console.log(doc.infobox(0).images(0).thumb());
 
+// var str = `
+// ==Soccer==
+// The soccer game consists of the following components:
+// * 2 Teams with 11 players each,
+// * 3 referees
+// The game last 90 min.
+// `;
+// str = `hello up here
+//     block section
+// hello down here`;
+// // console.log(wtf(str).templates(0));
+// console.log(wtf(str).sections(0).text());
 
-// console.log(readFile('washington-nationals').tables(0));
-
-var str = 'hello';
-console.log(wtf(str).links());
+// console.log(wtf('the is [[he]] nice').markdown());

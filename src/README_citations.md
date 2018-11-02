@@ -1,2 +1,0 @@
-## Parsing Citations
-The citations are parsed in `/src/sections/references.js`. References are inserted directly in the body of a paragraph or section with `<ref>...</ref>` tags. The enclosed reference will be aggregated in a JSON array. Furthermore a reference could have multiple citations in a document. Then a reference refers to a previously mentioned by the label of the reference e.g. `<ref name="mycitelabel">...</ref>` rendered 
