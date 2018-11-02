@@ -115,7 +115,7 @@ const methods = {
     return arr;
   },
   coordinates: function(clue) {
-    let arr = this.templates('coord');
+    let arr = [].concat(this.templates('coord'), this.templates('coor'));
     if (typeof clue === 'number') {
       return arr[clue];
     }
