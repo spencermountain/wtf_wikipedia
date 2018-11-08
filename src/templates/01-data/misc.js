@@ -1,8 +1,8 @@
-const keyValue = require('./parsers/keyValue');
-const getInside = require('./parsers/inside');
-const pipeSplit = require('./parsers/pipeSplit');
-const pipeList = require('./parsers/pipeList');
-const Image = require('../image/Image');
+const keyValue = require('../_parsers/keyValue');
+const getInside = require('../_parsers/inside');
+const pipeSplit = require('../_parsers/pipeSplit');
+const pipeList = require('../_parsers/pipeList');
+const Image = require('../../image/Image');
 
 const sisterProjects = {
   wikt: 'wiktionary',

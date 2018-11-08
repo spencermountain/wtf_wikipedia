@@ -1,6 +1,6 @@
-const getInside = require('./parsers/inside');
-const pipeSplit = require('./parsers/pipeSplit');
-const keyValue = require('./parsers/keyValue');
+const getInside = require('../_parsers/inside');
+const pipeSplit = require('../_parsers/pipeSplit');
+const keyValue = require('../_parsers/keyValue');
 
 let templates = {
   //a convulated way to make a xml tag - https://en.wikipedia.org/wiki/Template:Tag

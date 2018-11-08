@@ -1,20 +1,10 @@
 const Infobox = require('../infobox/Infobox');
 const Reference = require('../reference/Reference');
-const getName = require('./parsers/_getName');
-const getTemplates = require('./parsers/_getTemplates');
+const getName = require('./_parsers/_getName');
+const getTemplates = require('./_parsers/_getTemplates');
 
-const dates = require('./dates');
-const geo = require('./geo');
-const inline = require('./inline');
-const currencies = require('./currencies');
-const misc = require('./misc');
 const generic = require('./generic');
-const links = require('./links');
-const formatting = require('./formatting');
-const pronounce = require('./pronounce');
-const external = require('./external');
-const ignore = require('./ignore');
-const wiktionary = require('./wiktionary');
+const ignore = require('./_ignore');
 
 //ensure references and infoboxes at least look valid
 const isObject = function(x) {
@@ -22,16 +12,8 @@ const isObject = function(x) {
 };
 
 //put them all together
-const inlineParsers = Object.assign(
-  {},
-  dates,
-  inline,
-  currencies,
-  links,
-  formatting,
-  wiktionary
-);
-const bigParsers = Object.assign({}, geo, pronounce, misc, external);
+const bigParsers = require('./01-data');
+const inlineParsers = require('./02-text');
 
 //this gets all the {{template}} strings and decides how to parse them
 const oneTemplate = function(tmpl, wiki, data, options) {

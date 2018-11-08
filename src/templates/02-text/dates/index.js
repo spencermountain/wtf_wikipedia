@@ -1,5 +1,5 @@
 const parsers = require('./parsers');
-const pipeSplit = require('../parsers/pipeSplit');
+const pipeSplit = require('../../_parsers/pipeSplit');
 const timeSince = require('./timeSince');
 const date = parsers.date;
 const natural_date = parsers.natural_date;

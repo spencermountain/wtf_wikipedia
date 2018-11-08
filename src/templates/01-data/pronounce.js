@@ -1,4 +1,4 @@
-const strip = require('./parsers/_strip');
+const strip = require('../_parsers/_strip');
 // pronounciation info
 // https://en.wikipedia.org/wiki/Template:IPA
 const ipaTemplates = {

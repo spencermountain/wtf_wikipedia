@@ -1,4 +1,4 @@
-const pipeSplit = require('./parsers/pipeSplit');
+const pipeSplit = require('../_parsers/pipeSplit');
 
 const codes = {
   us$: 'US$', // https://en.wikipedia.org/wiki/Template:US$

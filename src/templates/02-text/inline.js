@@ -1,7 +1,7 @@
-const languages = require('../_data/languages');
-const keyValue = require('./parsers/keyValue');
-const pipeSplit = require('./parsers/pipeSplit');
-const strip = require('./parsers/_strip');
+const languages = require('../../_data/languages');
+const keyValue = require('../_parsers/keyValue');
+const pipeSplit = require('../_parsers/pipeSplit');
+const strip = require('../_parsers/_strip');
 
 const inline = {
   //newline-based list - https://en.wikipedia.org/wiki/Template:Plainlist
