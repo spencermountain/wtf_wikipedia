@@ -3,20 +3,32 @@ const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-(async () => {
-  let options = {
-    missing_templates: true
-  };
-  let doc = await wtf.fetch('Cuba', 'en', options);
-  console.log(doc.infoboxes());
-})();
+// (async () => {
+//   var doc = await wtf.fetch('Jurassic Park (film)');
+//   console.log(doc.infoboxes(0).keyValue());
+// })();
 
 // let doc = readFile('jodie_emery');
 // console.log(doc.markdown());
 
 
-// var str = `hello {{lksjdf aef}} world`;
-// let doc = wtf(str, {
-//   missing_templates: true
-// });
-// console.log(doc.tables(0).keyValue());
+var str = `hellow world
+{{Based on|''[[Jurassic Park (novel)|Jurassic Park]]''|Michael Crichton}}
+
+{{Plain list|
+* [[Sam Neill]]
+* [[Laura Dern]]
+* [[Jeff Goldblum]]
+* [[Richard Attenborough]]
+* [[Bob Peck]]
+* [[Martin Ferrero]]
+* [[BD Wong]]
+* [[Samuel L. Jackson]]
+* [[Wayne Knight]]
+* [[Joseph Mazzello]]
+* [[Ariana Richards]]
+}}`;
+let doc = wtf(str, {
+  missing_templates: true
+});
+console.log(doc.text());

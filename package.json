@@ -17,7 +17,8 @@
     "postpublish": "node ./scripts/coverage.js",
     "testb": "TESTENV=prod node ./scripts/test.js",
     "watch": "amble ./scratch.js",
-    "build": "node ./scripts/build.js"
+    "build": "node ./scripts/build.js",
+    "lint":"eslint ./src/**/*.js"
   },
   "bin": {
     "wtf_wikipedia": "./bin/wtf.js"
