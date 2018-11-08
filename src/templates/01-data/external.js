@@ -1,6 +1,5 @@
 const pipeSplit = require('../_parsers/pipeSplit');
 
-
 //this format seems to be a pattern for these
 const generic = (tmpl) => {
   let order = ['id', 'title', 'description', 'section'];
