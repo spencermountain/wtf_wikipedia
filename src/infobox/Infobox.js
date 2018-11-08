@@ -3,7 +3,7 @@ const toHtml = require('./toHtml');
 const toLatex = require('./toLatex');
 const toJson = require('./toJson');
 const Image = require('../image/Image');
-const aliasList = require('../lib/aliases');
+const aliasList = require('../_lib/aliases');
 
 //a formal key-value data table about a topic
 const Infobox = function(obj) {

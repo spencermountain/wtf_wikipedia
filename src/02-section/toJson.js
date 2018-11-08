@@ -1,5 +1,5 @@
-const setDefaults = require('../lib/setDefaults');
-const encode = require('../lib/encode');
+const setDefaults = require('../_lib/setDefaults');
+const encode = require('../_lib/encode');
 
 const defaults = {
   headers: true,

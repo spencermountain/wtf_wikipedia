@@ -1,4 +1,4 @@
-const languages = require('../data/languages');
+const languages = require('../_data/languages');
 const keyValue = require('./parsers/keyValue');
 const pipeSplit = require('./parsers/pipeSplit');
 const strip = require('./parsers/_strip');

@@ -1,4 +1,4 @@
-const i18n = require('../data/i18n');
+const i18n = require('../_data/i18n');
 const template_reg = new RegExp('\\{\\{ ?(' + i18n.disambigs.join('|') + ')(\\|[a-z, =]*?)? ?\\}\\}', 'i');
 
 //special disambig-templates en-wikipedia uses

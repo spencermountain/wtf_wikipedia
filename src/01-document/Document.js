@@ -3,8 +3,8 @@ const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
 const toJSON = require('./toJson');
 const toLatex = require('./toLatex');
-const setDefaults = require('../lib/setDefaults');
-const aliasList = require('../lib/aliases');
+const setDefaults = require('../_lib/setDefaults');
+const aliasList = require('../_lib/aliases');
 const Image = require('../image/Image');
 
 const defaults = {
