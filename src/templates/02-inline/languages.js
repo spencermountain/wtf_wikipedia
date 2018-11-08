@@ -1,3 +1,4 @@
+const languages = require('../../_data/languages');
 const pipeSplit = require('../_parsers/pipeSplit');
 
 const templates = {
@@ -34,6 +35,10 @@ const templates = {
     return str;
   }
 };
+//https://en.wikipedia.org/wiki/Category:Lang-x_templates
+Object.keys(languages).forEach((k) => {
+  templates['lang-' + k] = templates['lang-de'];
+});
 templates['nihongo2'] = templates.nihongo;
 templates['nihongo3'] = templates.nihongo;
 templates['nihongo-s'] = templates.nihongo;

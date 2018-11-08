@@ -66,7 +66,7 @@ test('wikipedia-templates', function(t) {
     [`wide image`, `{{wide image|Helsinki z00.jpg|1800px||alt=Panorama of city with mixture of five to ten story buildings}}`],
     [`ipa`, `{{IPA|/[[character|ˈkærəktɚz]]/}}`],
     [`ipa`, `{{IPAc-ko|h|a|n|g|u|k}}`],
-    [`coord`, `{{Coord|44.112|N|87.913|W|display=title}}`],
+    [`coor`, `{{Coord|44.112|N|87.913|W|display=title}}`],
   // [``, ``],
   ];
   arr.forEach((a) => {

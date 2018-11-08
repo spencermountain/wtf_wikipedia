@@ -1,4 +1,3 @@
-const languages = require('../../_data/languages');
 const keyValue = require('../_parsers/keyValue');
 const pipeSplit = require('../_parsers/pipeSplit');
 
@@ -123,8 +122,5 @@ inline['str left'] = inline.trunc;
 inline['str crop'] = inline.trunc;
 
 
-//https://en.wikipedia.org/wiki/Category:Lang-x_templates
-Object.keys(languages).forEach((k) => {
-  inline['lang-' + k] = inline['lang-de'];
-});
+
 module.exports = inline;
