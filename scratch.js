@@ -28,6 +28,9 @@ var str = `hellow world
 * [[Joseph Mazzello]]
 * [[Ariana Richards]]
 }}`;
+
+str = `{{rtl-lang|kk-Arab|قازاق ڌﻳل}}`;
+// str = `{{lang-ur|hello|asdf}}`;
 let doc = wtf(str, {
   missing_templates: true
 });

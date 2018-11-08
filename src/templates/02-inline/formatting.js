@@ -1,6 +1,7 @@
 const getInside = require('../_parsers/inside');
 const pipeSplit = require('../_parsers/pipeSplit');
 const keyValue = require('../_parsers/keyValue');
+const strip = require('../_parsers/_strip');
 
 let templates = {
   //a convulated way to make a xml tag - https://en.wikipedia.org/wiki/Template:Tag
@@ -59,6 +60,23 @@ let templates = {
   'p3': (tmpl) => {
     let order = ['one', 'two', 'three'];
     return pipeSplit(tmpl, order).three;
+  },
+  //formatting things - https://en.wikipedia.org/wiki/Template:Nobold
+  braces: (tmpl) => {
+    let inside = strip(tmpl).replace(/^braces\s?\|/, '');
+    return '{{' + inside + '}}';
+  },
+  nobold: (tmpl) => {
+    let inside = strip(tmpl).replace(/^nobold\s?\|/, '');
+    return inside;
+  },
+  noitalic: (tmpl) => {
+    let inside = strip(tmpl).replace(/^noitalic\s?\|/, '');
+    return inside;
+  },
+  nocaps: (tmpl) => {
+    let inside = strip(tmpl).replace(/^noitalic\s?\|/, '');
+    return inside.toLowerCase();
   },
 };
 

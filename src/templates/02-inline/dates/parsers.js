@@ -1,12 +1,8 @@
-const dates = require('./dates');
-const ymd = dates.ymd;
-const toText = dates.toText;
-const delta = require('./delta_date');
-const strip = function(tmpl) {
-  tmpl = tmpl.replace(/^\{\{/, '');
-  tmpl = tmpl.replace(/\}\}$/, '');
-  return tmpl;
-};
+const strip = require('../../_parsers/_strip');
+const delta = require('./_delta');
+const fmt = require('./_format');
+const ymd = fmt.ymd;
+const toText = fmt.toText;
 
 //wrap it up as a template
 const template = function(date) {

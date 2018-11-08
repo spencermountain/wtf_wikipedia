@@ -1,5 +1,5 @@
 const parseGeneric = require('../templates/_parsers/generic');
-const parsePipe = require('../templates/01-data/misc')['cite gnis'];
+const parsePipe = require('../templates/01-data/wikipedia-cruft')['cite gnis'];
 const parseSentence = require('../04-sentence').oneSentence;
 const Reference = require('./Reference');
 

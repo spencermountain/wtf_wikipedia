@@ -5,6 +5,7 @@ const codes = {
   bdt: '৳', // https://en.wikipedia.org/wiki/Template:BDT
   a$: 'A$', // https://en.wikipedia.org/wiki/Template:AUD
   ca$: 'CA$', // https://en.wikipedia.org/wiki/Template:CAD
+  cad: 'CA$',
   cny: 'CN¥', // https://en.wikipedia.org/wiki/Template:CNY
   hkd: 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
   gbp: 'GB£', // https://en.wikipedia.org/wiki/Template:GBP

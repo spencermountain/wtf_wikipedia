@@ -1,8 +1,8 @@
 const ignore = require('./_ignore');
 const getName = require('./_parsers/_getName');
 
-const bigParsers = require('./01-data');
-const inlineParsers = require('./02-text');
+const dataTemplates = require('./01-data');
+const inlineTemplates = require('./02-inline');
 const generic = require('./03-generic');
 
 //this gets all the {{template}} strings and decides how to parse them
@@ -16,15 +16,15 @@ const parseTemplate = function(tmpl, wiki, data, options) {
   }
 
   //string-replacement templates
-  if (inlineParsers.hasOwnProperty(name) === true) {
-    let str = inlineParsers[name](tmpl, data);
+  if (inlineTemplates.hasOwnProperty(name) === true) {
+    let str = inlineTemplates[name](tmpl, data);
     wiki = wiki.replace(tmpl, str);
     return wiki;
   }
 
   //section-template parsers
-  if (bigParsers.hasOwnProperty(name) === true) {
-    let obj = bigParsers[name](tmpl);
+  if (dataTemplates.hasOwnProperty(name) === true) {
+    let obj = dataTemplates[name](tmpl, data);
     if (obj) {
       data.templates.push(obj);
     }
