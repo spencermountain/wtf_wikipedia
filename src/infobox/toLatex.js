@@ -1,5 +1,5 @@
 const dontDo = require('./_skip-keys');
-const setDefaults = require('../lib/setDefaults');
+const setDefaults = require('../_lib/setDefaults');
 const defaults = {
   images: true,
 };

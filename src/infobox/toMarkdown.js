@@ -1,6 +1,6 @@
 const dontDo = require('./_skip-keys');
-const pad = require('../lib/pad');
-const setDefaults = require('../lib/setDefaults');
+const pad = require('../_lib/pad');
+const setDefaults = require('../_lib/setDefaults');
 const defaults = {
   images: true,
 };

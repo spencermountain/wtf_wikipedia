@@ -18,7 +18,7 @@ function find_recursive(opener, closer, text) {
       if (open < 0) {
         open = 0;
       }
-    } else if (last.length == 0) {
+    } else if (last.length === 0) {
       // If we're not inside of a pair of delimiters, we can discard the current letter.
       // The return of this function is only used to extract images.
       continue;

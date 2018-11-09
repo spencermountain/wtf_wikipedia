@@ -2,7 +2,7 @@ const toHtml = require('./toHtml');
 const toMarkdown = require('./toMarkdown');
 const toJSON = require('./toJson');
 const toLatex = require('./toLatex');
-const aliasList = require('../lib/aliases');
+const aliasList = require('../_lib/aliases');
 
 //where we store the formatting, link, date information
 const Sentence = function(data) {

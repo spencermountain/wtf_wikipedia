@@ -1,4 +1,4 @@
-const pipeSplit = require('./parsers/pipeSplit');
+const pipeSplit = require('../_parsers/pipeSplit');
 
 let templates = {
   /* mostly wiktionary*/

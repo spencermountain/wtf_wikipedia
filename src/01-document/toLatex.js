@@ -1,4 +1,4 @@
-const setDefaults = require('../lib/setDefaults');
+const setDefaults = require('../_lib/setDefaults');
 const defaults = {
   infoboxes: true,
   sections: true,

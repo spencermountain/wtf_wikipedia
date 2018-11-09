@@ -1,6 +1,6 @@
-const pipeSplit = require('./parsers/pipeSplit');
-const pipeList = require('./parsers/pipeList');
-// const strip = require('./parsers/_strip');
+const pipeSplit = require('../_parsers/pipeSplit');
+const pipeList = require('../_parsers/pipeList');
+// const strip = require('./_parsers/_strip');
 
 //wiktionary... who knows. we should atleast try.
 const templates = {

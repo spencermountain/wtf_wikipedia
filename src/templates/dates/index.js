@@ -1,6 +1,7 @@
+const misc = require('./misc');
 const parsers = require('./parsers');
-const pipeSplit = require('../parsers/pipeSplit');
-const timeSince = require('./timeSince');
+const pipeSplit = require('../_parsers/pipeSplit');
+const timeSince = require('./_timeSince');
 const date = parsers.date;
 const natural_date = parsers.natural_date;
 
@@ -21,7 +22,7 @@ const months = [
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 //date- templates we support
-const templates = {
+let templates = Object.assign({}, misc, {
   currentday: () => {
     let d = new Date();
     return String(d.getDate());
@@ -130,11 +131,12 @@ const templates = {
   // 'age in years, months, weeks and days': true,
   // 'age as of date': true,
 
-};
+});
 templates.localday = templates.currentday;
 templates.localdayname = templates.currentdayname;
 templates.localmonth = templates.currentmonth;
 templates.localyear = templates.currentyear;
 templates.currentmonthname = templates.currentmonth;
 templates.currentmonthabbrev = templates.currentmonth;
+
 module.exports = templates;

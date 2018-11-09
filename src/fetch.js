@@ -1,6 +1,6 @@
 //grab the content of any article, off the api
 const fetch = require('cross-fetch');
-const site_map = require('./data/site_map');
+const site_map = require('./_data/site_map');
 const parseDocument = require('./01-document');
 // const redirects = require('../parse/page/redirects');
 

@@ -1,9 +1,9 @@
-const setDefaults = require('../lib/setDefaults');
+const setDefaults = require('../_lib/setDefaults');
 const toHtml = require('./toHtml');
 const toMarkdown = require('./toMarkdown');
 const toLatex = require('./toLatex');
 const toJson = require('./toJson');
-const aliasList = require('../lib/aliases');
+const aliasList = require('../_lib/aliases');
 const defaults = {};
 
 const Table = function(data) {

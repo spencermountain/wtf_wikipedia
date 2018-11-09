@@ -1,4 +1,4 @@
-const languages = require('../data/languages');
+const languages = require('../_data/languages');
 //some colon symbols are valid links, like `America: That place`
 //so we have to whitelist allowable interwiki links
 const interwikis = [

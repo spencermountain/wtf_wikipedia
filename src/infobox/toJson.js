@@ -1,4 +1,4 @@
-const encode = require('../lib/encode');
+const encode = require('../_lib/encode');
 
 //turn an infobox into some nice json
 const toJson = function(infobox, options) {
