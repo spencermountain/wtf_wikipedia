@@ -30,6 +30,12 @@ const misc = {
     }
     return str;
   },
+  //https://en.wikipedia.org/wiki/Template:Based_on
+  'based on': (tmpl, r) => {
+    let obj = pipeSplit(tmpl, ['title', 'author']);
+    r.templates.push(obj);
+    return `${obj.title} by ${obj.author || ''}`;
+  },
   'climate chart': (tmpl, r) => {
     let list = pipeList(tmpl).data;
     let title = list[0];

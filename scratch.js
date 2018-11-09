@@ -11,26 +11,10 @@ const wtf = require('./src/index');
 // let doc = readFile('jodie_emery');
 // console.log(doc.markdown());
 
-
 var str = `hellow world
 {{Based on|''[[Jurassic Park (novel)|Jurassic Park]]''|Michael Crichton}}
+`;
 
-{{Plain list|
-* [[Sam Neill]]
-* [[Laura Dern]]
-* [[Jeff Goldblum]]
-* [[Richard Attenborough]]
-* [[Bob Peck]]
-* [[Martin Ferrero]]
-* [[BD Wong]]
-* [[Samuel L. Jackson]]
-* [[Wayne Knight]]
-* [[Joseph Mazzello]]
-* [[Ariana Richards]]
-}}`;
-
-str = `{{comma separated entries|entry1|entry2|entry3| }}`;
-str = `{{vanchor|humpty|dumpty}}`;
 // str = `{{lang-ur|hello|asdf}}`;
 let doc = wtf(str);
 console.log(doc.text());

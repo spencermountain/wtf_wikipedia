@@ -202,8 +202,8 @@ test('Radiohead infobox', function(t) {
 }} `;
   var infobox = wtf(radiohead).infoboxes(0).data;
   t.equal(infobox.current_members.text().match(/Greenwood/g).length, 2, 'current members');
-  t.equal(infobox.genre.text(), 'Art rock, alternative rock, electronica, experimental rock', 'genre');
-  t.equal(infobox.associated_acts.text(), 'Atoms for Peace, 7 Worlds Collide', 'associated-acts');
+  t.equal(infobox.genre.text(), 'Art rock\n\nalternative rock\n\nelectronica\n\nexperimental rock', 'genre');
+  t.equal(infobox.associated_acts.text(), 'Atoms for Peace\n\n7 Worlds Collide', 'associated-acts');
   t.end();
 });
 

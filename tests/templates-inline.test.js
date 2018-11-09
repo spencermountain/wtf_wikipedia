@@ -85,7 +85,7 @@ test('inline-with-data', function(t) {
     [`gbp`, `{{GBP|123.45}}`],
     [`acronym`, `{{acronym of|graphical user interface|lang=en}}`],
     [`la-verb-form`, `{{la-verb-form|amāre}}`],
-  // [``,``]
+    [`based on`, `{{based on|"[[Super-Toys Last All Summer Long]]"|[[Brian Aldiss]]}}`]
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);
@@ -94,5 +94,17 @@ test('inline-with-data', function(t) {
     t.notEqual(doc.text(), '', a[0] + ' text exists');
     t.notEqual(doc.text(), a[1], a[0] + ' text changed');
   });
+  t.end();
+});
+
+//this example has it all
+test('tricky-based-on', function(t) {
+  var str = `{{Based on|''[[Jurassic Park (novel)|Jurassic Park]]''|Michael Crichton}}`;
+  var doc = wtf(str);
+  // t.equal(doc.links().length, 1, 'found link');
+  // t.equal(doc.links(0).text, 'Jurassic Park', 'found link text');
+  // t.equal(doc.text(), `''Jurassic Park'' by Michael Crichton`, 'parsed properly');
+  t.equal(doc.templates().length, 1, 'found one template');
+  t.equal(doc.templates(0).template, 'based on', 'found template name');
   t.end();
 });

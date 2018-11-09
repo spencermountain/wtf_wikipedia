@@ -12,7 +12,7 @@ const templates = {
     //split on newline
     arr = tmpl.split(/\n ?\* ?/);
     arr = arr.filter(s => s);
-    return arr.join(', ');
+    return arr.join('\n\n');
   },
   //https://en.wikipedia.org/wiki/Template:Collapsible_list
   'collapsible list': (tmpl) => {
@@ -68,4 +68,5 @@ templates['unbulleted list'] = templates['collapsible list'];
 templates['ubl'] = templates['collapsible list'];
 templates['ordered list'] = templates['collapsible list'];
 templates['bare anchored list'] = templates['anchored list'];
+templates['plain list'] = templates['plainlist'];
 module.exports = templates;
