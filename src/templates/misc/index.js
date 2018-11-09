@@ -15,7 +15,21 @@ const misc = {
     r.templates.push(obj);
     return '';
   },
-
+  //https://en.wikipedia.org/wiki/Template:Marriage
+  //this one creates a template, and an inline response
+  marriage: (tmpl, r) => {
+    let data = pipeSplit(tmpl, ['name', 'from', 'to', 'end']);
+    r.templates.push(data);
+    let str = `${data.name || ''}`;
+    if (data.from) {
+      if (data.to) {
+        str += ` (m. ${data.from}-${data.to})`;
+      } else {
+        str += ` (m. ${data.from})`;
+      }
+    }
+    return str;
+  },
   'climate chart': (tmpl, r) => {
     let list = pipeList(tmpl).data;
     let title = list[0];

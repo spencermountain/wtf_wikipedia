@@ -104,5 +104,4 @@ inline.forEach((k) => {
   };
 });
 
-
 module.exports = templates;

@@ -1,4 +1,4 @@
-const strip = require('../../_parsers/_strip');
+const strip = require('../_parsers/_strip');
 const delta = require('./_delta');
 const fmt = require('./_format');
 const ymd = fmt.ymd;

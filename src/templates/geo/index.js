@@ -1,5 +1,5 @@
 const parseCoordAndCoor = require('./coor');
-const strip = require('../../_parsers/_strip');
+const strip = require('../_parsers/_strip');
 
 //
 const geoTemplates = {

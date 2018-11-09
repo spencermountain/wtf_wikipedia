@@ -1,6 +1,6 @@
 const format = require('./_format');
 const months = require('./_months');
-const pipeSplit = require('../../_parsers/pipeSplit');
+const pipeSplit = require('../_parsers/pipeSplit');
 
 const misc = {
 
