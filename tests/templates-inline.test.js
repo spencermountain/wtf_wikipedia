@@ -18,6 +18,7 @@ test('inline-no-data', function(t) {
     [`monthname`, `{{MONTHNAME|8}}`],
     [`rtl-lang`, `{{rtl-lang|tg-Arab|تاجیکی}}`],
     [`lbb`, ` {{Lbb|Severn}} `],
+    [`vanchor`, `{{vanchor|humpty|dumpty}}`],
     [`plainlist`, `{{Plainlist|
 * Example 1
 * Example 2
@@ -71,7 +72,7 @@ test('list-templates', function(t) {
   arr.forEach((a) => {
     var doc = wtf(a[1]);
     var len = doc.templates().length;
-    t.equal(len, 1, a[0] + ' count');
+    t.equal(len, 0, a[0] + ' count');
     t.notEqual(doc.text(), '', a[0] + ' text exists');
     t.notEqual(doc.text(), a[1], a[0] + ' text changed');
   });

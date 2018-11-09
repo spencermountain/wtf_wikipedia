@@ -2,6 +2,7 @@ const getInside = require('../_parsers/inside');
 const pipeSplit = require('../_parsers/pipeSplit');
 const keyValue = require('../_parsers/keyValue');
 const strip = require('../_parsers/_strip');
+const pipes = require('../_parsers/_pipes');
 
 let templates = {
   //a convulated way to make a xml tag - https://en.wikipedia.org/wiki/Template:Tag
@@ -78,6 +79,11 @@ let templates = {
     let inside = strip(tmpl).replace(/^noitalic\s?\|/, '');
     return inside.toLowerCase();
   },
+  //https://en.wikipedia.org/wiki/Template:Visible_anchor
+  vanchor: (tmpl) => {
+    let arr = pipes(tmpl).list;
+    return arr[0] || '';
+  }
 };
 
 //templates that we simply grab their insides as plaintext

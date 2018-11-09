@@ -29,7 +29,8 @@ var str = `hellow world
 * [[Ariana Richards]]
 }}`;
 
-str = `hello {{GNIS | 871352 | Mount Washington }} world`;
+str = `{{comma separated entries|entry1|entry2|entry3| }}`;
+str = `{{vanchor|humpty|dumpty}}`;
 // str = `{{lang-ur|hello|asdf}}`;
 let doc = wtf(str);
 console.log(doc.text());
