@@ -1,13 +1,17 @@
 const pipeSplit = require('../_parsers/pipeSplit');
 
 //this format seems to be a pattern for these
-const generic = (tmpl) => {
+const generic = (tmpl, r) => {
   let order = ['id', 'title', 'description', 'section'];
-  return pipeSplit(tmpl, order);
+  let obj = pipeSplit(tmpl, order);
+  r.templates.push(obj);
+  return '';
 };
-const idName = (tmpl) => {
+const idName = (tmpl, r) => {
   let order = ['id', 'name'];
-  return pipeSplit(tmpl, order);
+  let obj = pipeSplit(tmpl, order);
+  r.templates.push(obj);
+  return '';
 };
 
 //https://en.wikipedia.org/wiki/Category:External_link_templates
@@ -31,17 +35,23 @@ const externals = {
   'youtube': generic,
   //https://en.wikipedia.org/wiki/Template:DMOZ
   dmoz: generic,
-  'find a grave': (tmpl) => {
+  'find a grave': (tmpl, r) => {
     let order = ['id', 'name', 'work', 'last', 'first', 'date', 'accessdate'];
-    return pipeSplit(tmpl, order);
+    let obj = pipeSplit(tmpl, order);
+    r.templates.push(obj);
+    return '';
   },
-  'congbio': (tmpl) => {
+  'congbio': (tmpl, r) => {
     let order = ['id', 'name', 'date'];
-    return pipeSplit(tmpl, order);
+    let obj = pipeSplit(tmpl, order);
+    r.templates.push(obj);
+    return '';
   },
-  'hollywood Walk of Fame': (tmpl) => {
+  'hollywood walk of fame': (tmpl, r) => {
     let order = ['name'];
-    return pipeSplit(tmpl, order);
+    let obj = pipeSplit(tmpl, order);
+    r.templates.push(obj);
+    return '';
   },
   'goodreads author': idName,
   'goodreads book': generic,

@@ -24,11 +24,8 @@ const parseTemplate = function(tmpl, wiki, data, options) {
 
   //section-template parsers
   if (dataTemplates.hasOwnProperty(name) === true) {
-    let obj = dataTemplates[name](tmpl, data);
-    if (obj) {
-      data.templates.push(obj);
-    }
-    wiki = wiki.replace(tmpl, '');
+    let str = dataTemplates[name](tmpl, data);
+    wiki = wiki.replace(tmpl, str);
     return wiki;
   }
 

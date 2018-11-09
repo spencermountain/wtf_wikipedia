@@ -3,16 +3,20 @@ const pipeList = require('../_parsers/pipeList');
 
 const misc = {
   //https://en.wikipedia.org/wiki/Template:Taxon_info
-  'taxon info': (tmpl) => {
+  'taxon info': (tmpl, r) => {
     let order = ['taxon', 'item'];
-    return pipeSplit(tmpl, order);
+    let obj = pipeSplit(tmpl, order);
+    r.templates.push(obj);
+    return '';
   },
-  'uss': (tmpl) => {
+  'uss': (tmpl, r) => {
     let order = ['ship', 'id'];
-    return pipeSplit(tmpl, order);
+    let obj = pipeSplit(tmpl, order);
+    r.templates.push(obj);
+    return '';
   },
 
-  'climate chart': (tmpl) => {
+  'climate chart': (tmpl, r) => {
     let list = pipeList(tmpl).data;
     let title = list[0];
     let source = list[38];
@@ -33,7 +37,7 @@ const misc = {
         precip: Number(list[i + 2])
       });
     }
-    return {
+    let obj = {
       template: 'climate chart',
       data: {
         title: title,
@@ -41,6 +45,8 @@ const misc = {
         months: months
       }
     };
+    r.templates.push(obj);
+    return '';
   },
   '__throw-wtf-error': () => {
     //okay you asked for it!

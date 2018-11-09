@@ -24,34 +24,44 @@ const sisterProjects = {
 
 const parsers = {
 
-  'book bar': pipeList,
+  'book bar': (tmpl, r) => {
+    let obj = pipeList(tmpl);
+    r.templates.push(obj);
+    return '';
+  },
 
-  main: (tmpl) => {
+  main: (tmpl, r) => {
     let obj = getInside(tmpl);
-    return {
+    obj = {
       template: 'main',
       page: obj.data
     };
+    r.templates.push(obj);
+    return '';
   },
-  wide_image: (tmpl) => {
+  wide_image: (tmpl, r) => {
     let obj = getInside(tmpl);
-    return {
+    obj = {
       template: 'wide_image',
       image: obj.data
     };
+    r.templates.push(obj);
+    return '';
   },
 
   //same in every language.
-  citation: (tmpl) => {
+  citation: (tmpl, r) => {
     let data = keyValue(tmpl);
-    return {
+    let obj = {
       template: 'citation',
       data: data
     };
+    r.templates.push(obj);
+    return '';
   },
 
   //https://en.wikipedia.org/wiki/Template:Redirect
-  redirect: (tmpl) => {
+  redirect: (tmpl, r) => {
     let data = pipeList(tmpl).data;
     let links = [];
     for(let i = 1; i < data.length; i += 2) {
@@ -60,46 +70,54 @@ const parsers = {
         desc: data[i]
       });
     }
-    return {
+    let obj = {
       template: 'redirect',
       redirect: data[0],
       links: links
     };
+    r.templates.push(obj);
+    return '';
   },
 
   //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
-  'cite gnis': (tmpl) => {
+  'cite gnis': (tmpl, r) => {
     let order = ['id', 'name', 'type'];
     let data = pipeSplit(tmpl, order);
-    return {
+    let obj = {
       template: 'citation',
       type: 'gnis',
       data: data
     };
+    r.templates.push(obj);
+    return '';
   },
-  'sfn': (tmpl) => {
+  'sfn': (tmpl, r) => {
     let order = ['author', 'year', 'location'];
     let data = pipeSplit(tmpl, order);
-    return {
+    let obj = {
       template: 'citation',
       type: 'sfn',
       data: data
     };
+    r.templates.push(obj);
+    return '';
   },
-  'audio': (tmpl) => {
+  'audio': (tmpl, r) => {
     let order = ['file', 'text', 'type'];
     let obj = pipeSplit(tmpl, order);
-    return obj;
+    r.templates.push(obj);
+    return '';
   },
-  'spoken wikipedia': (tmpl) => {
+  'spoken wikipedia': (tmpl, r) => {
     let order = ['file', 'date'];
     let obj = pipeSplit(tmpl, order);
     obj.template = 'audio';
-    return obj;
+    r.templates.push(obj);
+    return '';
   },
 
   //https://en.wikipedia.org/wiki/Template:Sister_project_links
-  'sister project links': (tmpl) => {
+  'sister project links': (tmpl, r) => {
     let data = keyValue(tmpl);
     let links = {};
     Object.keys(sisterProjects).forEach((k) => {
@@ -107,14 +125,16 @@ const parsers = {
         links[sisterProjects[k]] = data[k]; //.text();
       }
     });
-    return {
+    let obj = {
       template: 'sister project links',
       links: links
     };
+    r.templates.push(obj);
+    return '';
   },
 
   //https://en.wikipedia.org/wiki/Template:Subject_bar
-  'subject bar': (tmpl) => {
+  'subject bar': (tmpl, r) => {
     let data = keyValue(tmpl);
     Object.keys(data).forEach((k) => {
       if (sisterProjects.hasOwnProperty(k)) {
@@ -122,26 +142,32 @@ const parsers = {
         delete data[k];
       }
     });
-    return {
+    let obj = {
       template: 'subject bar',
       links: data
     };
+    r.templates.push(obj);
+    return '';
   },
-  'short description': (tmpl) => {
+  'short description': (tmpl, r) => {
     let data = pipeList(tmpl);
-    return {
+    let obj = {
       template: data.template,
       description: data.data[0]
     };
+    r.templates.push(obj);
+    return '';
   },
-  'good article': () => {
-    return {
+  'good article': (tmpl, r) => {
+    let obj = {
       template: 'Good article'
     };
+    r.templates.push(obj);
+    return '';
   },
   //amazingly, this one does not obey any known patterns
   //https://en.wikipedia.org/wiki/Template:Gallery
-  'gallery': (tmpl) => {
+  'gallery': (tmpl, r) => {
     let obj = pipeList(tmpl);
     let images = obj.data.filter(line => /^ *File ?:/.test(line));
     images = images.map((file) => {
@@ -150,10 +176,12 @@ const parsers = {
       };
       return new Image(img).json();
     });
-    return {
+    obj = {
       template: 'gallery',
       images: images
     };
+    r.templates.push(obj);
+    return '';
   },
 };
 //aliases

@@ -14,7 +14,7 @@ test('external-links', function(t) {
     [`espn nhl`, `{{ESPN NHL | id= 3024816 | name= Austin Czarnik }}`],
     [`fifa player`, `{{FIFA player | id= 284 | name= Brandi CHASTAIN }}`],
     [`ted speaker`, `{{TED speaker | j_j_abrams | J.J. Abrams }}`],
-  // [``, ``],
+    [`hollywood walk of fame`, `{{Hollywood Walk of Fame|name = Alan Alda}}`],
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);
@@ -67,6 +67,7 @@ test('wikipedia-templates', function(t) {
     [`ipa`, `{{IPA|/[[character|ˈkærəktɚz]]/}}`],
     [`ipa`, `{{IPAc-ko|h|a|n|g|u|k}}`],
     [`coor`, `{{Coord|44.112|N|87.913|W|display=title}}`],
+    [`gnis`, `{{GNIS | 871352 | Mount Washington }}`],
   // [``, ``],
   ];
   arr.forEach((a) => {
@@ -75,5 +76,24 @@ test('wikipedia-templates', function(t) {
     var tmpl = doc.templates(0) || {};
     t.equal(tmpl.template, a[0], a[0] + ' name');
   });
+  t.end();
+});
+
+
+test('test-flexible-format', function(t) {
+  var doc = wtf(`hello {{Hollywood Walk of Fame|Alan Alda}} world`);
+  var tmpl = doc.templates(0) || {};
+  t.equal(tmpl.template, 'hollywood walk of fame', 'template1');
+  t.equal(tmpl.name, 'Alan Alda', 'name1');
+  t.equal(doc.text(), 'hello world', 'text1');
+  t.equal(doc.templates().length, 1, 'got-template1');
+
+  //other format
+  doc = wtf(`hello {{Hollywood Walk of Fame|name = Alan Alda}} world`);
+  tmpl = doc.templates(0) || {};
+  t.equal(tmpl.template, 'hollywood walk of fame', 'template2');
+  t.equal(tmpl.name, 'Alan Alda', 'name2');
+  t.equal(doc.text(), 'hello world', 'text2');
+  t.equal(doc.templates().length, 1, 'got-template2');
   t.end();
 });

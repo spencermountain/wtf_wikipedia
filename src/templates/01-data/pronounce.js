@@ -2,15 +2,17 @@ const strip = require('../_parsers/_strip');
 // pronounciation info
 // https://en.wikipedia.org/wiki/Template:IPA
 const ipaTemplates = {
-  ipa: (tmpl) => {
+  ipa: (tmpl, r) => {
     let arr = strip(tmpl).split('|');
     let lang = arr[0].replace(/^ipa(c-)?/i, '');
     lang = lang || null;
-    return {
+    let obj = {
       template: 'ipa',
       lang: lang,
       ipa: arr.slice(1).join('')
     };
+    r.templates.push(obj);
+    return '';
   }
 };
 // - other languages -

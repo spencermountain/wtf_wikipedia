@@ -3,30 +3,42 @@ const strip = require('../../_parsers/_strip');
 
 //
 const geoTemplates = {
-  coord: (tmpl) => {
+  coord: (tmpl, r) => {
     tmpl = strip(tmpl);
-    return parseCoordAndCoor(tmpl);
+    let obj = parseCoordAndCoor(tmpl);
+    r.templates.push(obj);
+    return '';
   },
   // these are from the nl wiki
-  'coor title dms': (tmpl) => {
+  'coor title dms': (tmpl, r) => {
     tmpl = strip(tmpl);
-    return parseCoordAndCoor(tmpl);
+    let obj = parseCoordAndCoor(tmpl);
+    r.templates.push(obj);
+    return '';
   },
-  'coor title dec': (tmpl) => {
+  'coor title dec': (tmpl, r) => {
     tmpl = strip(tmpl);
-    return parseCoordAndCoor(tmpl);
+    let obj = parseCoordAndCoor(tmpl);
+    r.templates.push(obj);
+    return '';
   },
-  'coor dms': (tmpl) => {
+  'coor dms': (tmpl, r) => {
     tmpl = strip(tmpl);
-    return parseCoordAndCoor(tmpl);
+    let obj = parseCoordAndCoor(tmpl);
+    r.templates.push(obj);
+    return '';
   },
-  'coor dm': (tmpl) => {
+  'coor dm': (tmpl, r) => {
     tmpl = strip(tmpl);
-    return parseCoordAndCoor(tmpl);
+    let obj = parseCoordAndCoor(tmpl);
+    r.templates.push(obj);
+    return '';
   },
-  'coor dec': (tmpl) => {
+  'coor dec': (tmpl, r) => {
     tmpl = strip(tmpl);
-    return parseCoordAndCoor(tmpl);
+    let obj = parseCoordAndCoor(tmpl);
+    r.templates.push(obj);
+    return '';
   }
 };
 module.exports = geoTemplates;

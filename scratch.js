@@ -29,9 +29,8 @@ var str = `hellow world
 * [[Ariana Richards]]
 }}`;
 
-str = `{{rtl-lang|kk-Arab|قازاق ڌﻳل}}`;
+str = `hello {{GNIS | 871352 | Mount Washington }} world`;
 // str = `{{lang-ur|hello|asdf}}`;
-let doc = wtf(str, {
-  missing_templates: true
-});
+let doc = wtf(str);
 console.log(doc.text());
+console.log(doc.templates());

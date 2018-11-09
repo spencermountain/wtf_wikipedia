@@ -1,5 +1,5 @@
 const parseGeneric = require('../templates/_parsers/generic');
-const parsePipe = require('../templates/01-data/wikipedia-cruft')['cite gnis'];
+const pipeSplit = require('../templates/_parsers/pipeSplit');
 const parseSentence = require('../04-sentence').oneSentence;
 const Reference = require('./Reference');
 
@@ -14,8 +14,14 @@ const parseCitation = function(tmpl) {
   if (obj) {
     return obj;
   }
-  //support {{cite gnis|98734}} format
-  return parsePipe(tmpl);
+  //support {{cite gnis|98734}} format (yuck!)
+  let order = ['id', 'name', 'type'];
+  let data = pipeSplit(tmpl, order);
+  return {
+    template: 'citation',
+    type: 'gnis',
+    data: data
+  };
 };
 
 //handle unstructured ones - <ref>some text</ref>
