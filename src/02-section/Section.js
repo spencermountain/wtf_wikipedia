@@ -2,8 +2,8 @@ const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
 const toJSON = require('./toJson');
 const toLatex = require('./toLatex');
-const setDefaults = require('../lib/setDefaults');
-const aliasList = require('../lib/aliases');
+const setDefaults = require('../_lib/setDefaults');
+const aliasList = require('../_lib/aliases');
 
 const defaults = {
   tables: true,
@@ -115,7 +115,7 @@ const methods = {
     return arr;
   },
   coordinates: function(clue) {
-    let arr = this.templates('coord');
+    let arr = [].concat(this.templates('coord'), this.templates('coor'));
     if (typeof clue === 'number') {
       return arr[clue];
     }

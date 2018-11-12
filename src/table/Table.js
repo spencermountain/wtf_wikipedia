@@ -1,7 +1,10 @@
+const setDefaults = require('../_lib/setDefaults');
 const toHtml = require('./toHtml');
 const toMarkdown = require('./toMarkdown');
 const toLatex = require('./toLatex');
-const aliasList = require('../lib/aliases');
+const toJson = require('./toJson');
+const aliasList = require('../_lib/aliases');
+const defaults = {};
 
 const Table = function(data) {
   Object.defineProperty(this, 'data', {
@@ -28,15 +31,6 @@ const methods = {
     }
     return links;
   },
-  json() {
-    return this.data.map((o) => {
-      let row = {};
-      Object.keys(o).forEach((k) => {
-        row[k] = o[k].json();
-      });
-      return row;
-    });
-  },
   keyValue(options) {
     let rows = this.json(options);
     rows.forEach((row) => {
@@ -46,13 +40,20 @@ const methods = {
     });
     return rows;
   },
+  json(options) {
+    options = setDefaults(options, defaults);
+    return toJson(this.data, options);
+  },
   html(options) {
+    options = setDefaults(options, defaults);
     return toHtml(this.data, options);
   },
   markdown(options) {
+    options = setDefaults(options, defaults);
     return toMarkdown(this.data, options);
   },
   latex(options) {
+    options = setDefaults(options, defaults);
     return toLatex(this.data, options);
   },
   text() {

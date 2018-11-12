@@ -1,6 +1,8 @@
-const getInside = require('./parsers/inside');
-const pipeSplit = require('./parsers/pipeSplit');
-const keyValue = require('./parsers/keyValue');
+const getInside = require('../_parsers/inside');
+const pipeSplit = require('../_parsers/pipeSplit');
+const keyValue = require('../_parsers/keyValue');
+const strip = require('../_parsers/_strip');
+const pipes = require('../_parsers/_pipes');
 
 let templates = {
   //a convulated way to make a xml tag - https://en.wikipedia.org/wiki/Template:Tag
@@ -60,6 +62,28 @@ let templates = {
     let order = ['one', 'two', 'three'];
     return pipeSplit(tmpl, order).three;
   },
+  //formatting things - https://en.wikipedia.org/wiki/Template:Nobold
+  braces: (tmpl) => {
+    let inside = strip(tmpl).replace(/^braces\s?\|/, '');
+    return '{{' + inside + '}}';
+  },
+  nobold: (tmpl) => {
+    let inside = strip(tmpl).replace(/^nobold\s?\|/, '');
+    return inside;
+  },
+  noitalic: (tmpl) => {
+    let inside = strip(tmpl).replace(/^noitalic\s?\|/, '');
+    return inside;
+  },
+  nocaps: (tmpl) => {
+    let inside = strip(tmpl).replace(/^noitalic\s?\|/, '');
+    return inside.toLowerCase();
+  },
+  //https://en.wikipedia.org/wiki/Template:Visible_anchor
+  vanchor: (tmpl) => {
+    let arr = pipes(tmpl).list;
+    return arr[0] || '';
+  }
 };
 
 //templates that we simply grab their insides as plaintext
@@ -85,6 +109,5 @@ inline.forEach((k) => {
     return (inside && inside['data']) || '';
   };
 });
-
 
 module.exports = templates;

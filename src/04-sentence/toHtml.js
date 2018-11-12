@@ -1,6 +1,6 @@
-const smartReplace = require('../lib/smartReplace');
-const helpers = require('../lib/helpers');
-const setDefaults = require('../lib/setDefaults');
+const smartReplace = require('../_lib/smartReplace');
+const helpers = require('../_lib/helpers');
+const setDefaults = require('../_lib/setDefaults');
 
 const defaults = {
   links: true,

@@ -1,4 +1,4 @@
-const setDefaults = require('../lib/setDefaults');
+const setDefaults = require('../_lib/setDefaults');
 const toLatex = require('./toLatex');
 const toHtml = require('./toHtml');
 const toMarkdown = require('./toJson');

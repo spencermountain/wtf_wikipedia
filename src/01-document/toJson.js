@@ -1,5 +1,4 @@
-const setDefaults = require('../lib/setDefaults');
-const redirects = require('./redirects');
+const setDefaults = require('../_lib/setDefaults');
 const defaults = {
   title: true,
   sections: true,

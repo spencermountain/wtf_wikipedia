@@ -10,8 +10,8 @@ function preProcess(r, wiki, options) {
     if (options.tokenize.citation && (options.tokenize.citation == true)) {
       wiki = tokenizer.citation(wiki, r, options);
     };
-    console.log("TOKENIZE:\n"+wiki+"\n----------------------------------");
-    console.log("References: "+JSON.stringify(r.refs4token, null,4));
+    // console.log("TOKENIZE:\n"+wiki+"\n----------------------------------");
+    // console.log("References: "+JSON.stringify(r.refs4token, null,4));
   };
   //remove comments
   wiki = wiki.replace(/<!--[\s\S]{0,2000}?-->/g, '');

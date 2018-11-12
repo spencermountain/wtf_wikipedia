@@ -1,4 +1,4 @@
-const setDefaults = require('../lib/setDefaults');
+const setDefaults = require('../_lib/setDefaults');
 
 const defaults = {
   headers: true,
@@ -32,7 +32,7 @@ const doSection = (section, options) => {
     let tables = section.tables();
     if (tables.length > 0) {
       md += '\n';
-      md += tables.map((table) => table.html(options)).join('\n');
+      md += tables.map((table) => table.markdown(options)).join('\n');
       md += '\n';
     }
   }
@@ -48,7 +48,7 @@ const doSection = (section, options) => {
   if (options.paragraphs === true || options.sentences === true) {
     md += section.paragraphs().map((p) => {
       return p.sentences().map(s => s.markdown(options)).join(' ');
-    }).join('\n');
+    }).join('\n\n');
   }
   return md;
 };

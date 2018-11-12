@@ -3,7 +3,7 @@ const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
 const toLatex = require('./toLatex');
 const server = 'https://wikipedia.org/wiki/Special:Redirect/file/';
-const aliasList = require('../lib/aliases');
+const aliasList = require('../_lib/aliases');
 
 const encodeTitle = function(file) {
   let title = file.replace(/^(image|file?)\:/i, '');

@@ -1,19 +1,5 @@
 //assorted parsing methods for date/time templates
-const months = [
-  undefined, //1-based months.. :/
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+const months = require('./_months');
 
 const monthName = months.reduce((h, str, i) => {
   if (i === 0) {
@@ -93,3 +79,5 @@ module.exports = {
   toText: toText,
   ymd: ymd,
 };
+
+// console.log(toText(ymd([2018, 3, 28])));

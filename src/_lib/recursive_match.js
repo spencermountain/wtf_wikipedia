@@ -4,33 +4,40 @@
 function find_recursive(opener, closer, text) {
   var out = [];
   var last = [];
-  var chars = text.split('');
+  const chars = text.split('');
   var open = 0;
   for (var i = 0; i < chars.length; i++) {
+    const c = text[i];
     //increment open tag
-    if (chars[i] === opener) {
+    if (c === opener) {
       open += 1;
     }
     //decrement close tag
-    if (chars[i] === closer) {
+    else if (c === closer) {
       open -= 1;
       if (open < 0) {
         open = 0;
       }
+    } else if (last.length === 0) {
+      // If we're not inside of a pair of delimiters, we can discard the current letter.
+      // The return of this function is only used to extract images.
+      continue;
     }
-    if (open >= 0) {
-      last.push(chars[i]);
-    }
+
+    last.push(c);
     if (open === 0 && last.length > 0) {
       //first, fix botched parse
-      var open_count = last.filter(function(s) {
-        return s === opener;
-      });
-      var close_count = last.filter(function(s) {
-        return s === closer;
-      });
+      var open_count = 0;
+      var close_count = 0;
+      for (var j = 0; j < last.length; j++) {
+        if (last[j] === opener) {
+          open_count++;
+        } else if (last[j] === closer) {
+          close_count++;
+        }
+      }
       //is it botched?
-      if (open_count.length > close_count.length) {
+      if (open_count > close_count) {
         last.push(closer);
       }
       //looks good, keep it

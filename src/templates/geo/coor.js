@@ -4,10 +4,10 @@ const hemispheres = {
   n: true,
   s: true,
   w: true,
-  e: true,
+  e: true
 };
 
-const round = function(num) {
+const round = function (num) {
   if (typeof num !== 'number') {
     return num;
   }
@@ -15,16 +15,18 @@ const round = function(num) {
   return Math.round(num * places) / places;
 };
 
-const parseCoord = function(str) {
+const parseCoordAndCoor = function (str) {
+  let arr = str.split('|');
+  const template = arr[0].includes('coord') ? 'coord' : 'coor';
   let obj = {
-    template: 'coord',
+    template: template,
     lat: null,
     lon: null
   };
-  let arr = str.split('|');
+
   //turn numbers into numbers, normalize N/s
   let nums = [];
-  for(let i = 0; i < arr.length; i += 1) {
+  for (let i = 0; i < arr.length; i += 1) {
     let s = arr[i].trim();
     //make it a number
     let num = parseFloat(s);
@@ -36,6 +38,12 @@ const parseCoord = function(str) {
       continue;
     } else if (s.match(/^notes:/i)) {
       obj.notes = s.replace(/^notes:/i, '');
+      continue;
+    } else if (s.match(/^scale:/i)) {
+      obj.scale = s.replace(/^scale:/i, '');
+      continue;
+    } else if (s.match(/^type:/i)) {
+      obj.type = s.replace(/^type:/i, '');
       continue;
     }
     //DMS-format
@@ -62,8 +70,15 @@ const parseCoord = function(str) {
   return obj;
 };
 
-module.exports = parseCoord;
+module.exports = parseCoordAndCoor;
+// {{Coor title dms|dd|mm|ss|N/S|dd|mm|ss|E/W|template parameters}}
+// {{Coor title dec|latitude|longitude|template parameters}}
+// {{Coor dms|dd|mm|ss|N/S|dd|mm|ss|E/W|template parameters}}
+// {{Coor dm|dd|mm|N/S|dd|mm|E/W|template parameters}}
+// {{Coor dec|latitude|longitude|template parameters}}
+
 // {{coord|latitude|longitude|coordinate parameters|template parameters}}
 // {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
 // {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
 // {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
+

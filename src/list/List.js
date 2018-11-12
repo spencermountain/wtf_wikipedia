@@ -1,5 +1,5 @@
-const aliasList = require('../lib/aliases');
-const setDefaults = require('../lib/setDefaults');
+const aliasList = require('../_lib/aliases');
+const setDefaults = require('../_lib/setDefaults');
 const toJson = require('./toJson');
 const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');

@@ -1,9 +1,9 @@
-// const helpers = require('../lib/helpers');
+// const helpers = require('../_lib/helpers');
 const parse_interwiki = require('./interwiki');
 const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i;
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
-const link_reg = /\[\[(.{0,120}?)\]\]([a-z']+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]'s"
-// const i18n = require('../data/i18n');
+const link_reg = /\[\[(.{0,160}?)\]\]([a-z']+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]'s"
+// const i18n = require('../_data/i18n');
 // const isFile = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i');
 
 const external_links = function(links, str) {
@@ -23,11 +23,8 @@ const internal_links = function(links, str) {
   //regular links
   str.replace(link_reg, function(_, s, apostrophe) {
     var txt = null;
+    //make a copy of original
     var link = s;
-    //if somehow, we got an image here, (like in a table) remove it.
-    // if (isFile.test(s) === true) {
-    //   return '';
-    // }
     if (s.match(/\|/)) {
       //replacement link [[link|text]]
       s = s.replace(/\[\[(.{2,80}?)\]\](\w{0,10})/g, '$1$2'); //remove ['s and keep suffix
@@ -57,7 +54,6 @@ const internal_links = function(links, str) {
     });
     //grab any fr:Paris parts
     obj = parse_interwiki(obj);
-
     if (txt !== null && txt !== obj.page) {
       obj.text = txt;
     }

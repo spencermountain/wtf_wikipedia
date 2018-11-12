@@ -1,4 +1,4 @@
-const i18n = require('../data/i18n');
+const i18n = require('../_data/i18n');
 const Image = require('./Image');
 const parseSentence = require('../04-sentence').oneSentence;
 const isFile = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i');

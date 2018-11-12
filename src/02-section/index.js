@@ -17,7 +17,7 @@ const oneSection = function( wiki, data, options) {
   //parse-out the <ref></ref> tags
   wiki = parse.references(wiki, data);
   //parse-out all {{templates}}
-  wiki = parse.templates(wiki, data);
+  wiki = parse.templates(wiki, data, options);
   // //parse the tables
   wiki = parse.table(data, wiki);
   //now parse all double-newlines

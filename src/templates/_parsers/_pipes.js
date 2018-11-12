@@ -7,7 +7,8 @@ const tightenUp = function(arr) {
     if (str && str.indexOf('[') !== -1) {
       let s = parseSentence(str);
       if (s.links() && s.links().length > 0) {
-        return s.links(0).page;
+        let link = s.links(0);
+        return link.text || link.page;
       }
       return s.text();
     }
@@ -34,6 +35,7 @@ const pipes = function(tmpl) {
   }
   let name = arr[0] || '';
   arr = arr.slice(1);
+  arr = arr.filter((a) => a !== null);
   return {
     name: name.trim().toLowerCase(),
     list: tightenUp(arr)

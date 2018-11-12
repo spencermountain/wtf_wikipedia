@@ -2,7 +2,7 @@ const toJSON = require('./toJson');
 const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
 const toLatex = require('./toLatex');
-const setDefaults = require('../lib/setDefaults');
+const setDefaults = require('../_lib/setDefaults');
 const defaults = {
   sentences: true,
   lists: true,

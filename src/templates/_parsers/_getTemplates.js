@@ -1,19 +1,14 @@
+const strip = require('./_strip');
 const open = '{';
 const close = '}';
-
-const strip = (str) => {
-  str = str.replace(/^\{\{/, '');
-  str = str.replace(/\}\}$/, '');
-  return str;
-};
 
 //
 const findFlat = function(wiki) {
   let depth = 0;
   let list = [];
   let carry = [];
-  let chars = wiki.split('');
-  chars.forEach((c) => {
+  for (var i = wiki.indexOf(open); i !== -1 && i < wiki.length; depth > 0 ? i++ : (i = wiki.indexOf(open, i + 1))) {
+    let c = wiki[i];
     //open it
     if (c === open) {
       depth += 1;
@@ -23,25 +18,25 @@ const findFlat = function(wiki) {
       if (c === close) {
         depth -= 1;
         if (depth === 0) {
-          let tmpl = carry.join('') + c;
+          carry.push(c);
+          let tmpl = carry.join('');
           carry = [];
           //last check
           if (/\{\{/.test(tmpl) && /\}\}/.test(tmpl)) {
             list.push(tmpl);
           }
-          return;
+          continue;
         }
       }
       //require two '{{' to open it
       if (depth === 1 && c !== open && c !== close) {
         depth = 0;
         carry = [];
-        return;
+        continue;
       }
       carry.push(c);
-      return;
     }
-  });
+  }
   return list;
 };
 

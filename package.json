@@ -1,24 +1,24 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "6.1.0",
+  "version": "6.2.2",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
   "main": "./src/index.js",
-  "browser": "./builds/wtf_wikipedia.min.js",
   "unpkg": "./builds/wtf_wikipedia.min.js",
   "scripts": {
     "start": "node ./scripts/demo.js",
     "test": "node ./scripts/test.js",
     "test-spec": "tape ./tests/*.test.js | tap-spec",
+    "coverage": "node scripts/coverage.js",
     "postpublish": "node ./scripts/coverage.js",
-    "coverage": "node ./scripts/coverage.js",
     "testb": "TESTENV=prod node ./scripts/test.js",
     "watch": "amble ./scratch.js",
-    "build": "node ./scripts/build.js"
+    "build": "node ./scripts/build.js",
+    "lint":"eslint ./src/**/*.js"
   },
   "bin": {
     "wtf_wikipedia": "./bin/wtf.js"
@@ -39,22 +39,22 @@
     "wikiscript"
   ],
   "dependencies": {
-    "cross-fetch": "2.2.2"
+    "cross-fetch": "2.2.3"
   },
   "devDependencies": {
     "amble": "0.0.6",
     "babel-cli": "6.26.0",
     "babel-preset-env": "1.7.0",
     "babelify": "8.0.0",
-    "browserify": "16.2.2",
-    "codacy-coverage": "3.0.0",
+    "browserify": "16.2.3",
+    "codacy-coverage": "3.2.0",
     "derequire": "2.0.6",
-    "nyc": "12.0.2",
+    "istanbul": "0.4.5",
     "shelljs": "0.8.2",
-    "tap-dancer": "0.0.3",
+    "tap-dancer": "0.1.2",
     "tap-spec": "^5.0.0",
     "tape": "4.9.1",
-    "uglify-js": "3.4.6"
+    "uglify-js": "3.4.9"
   },
   "license": "MIT"
 }

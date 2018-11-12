@@ -1,8 +1,9 @@
 const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
 const toLatex = require('./toLatex');
+const toJson = require('./toJson');
 const Image = require('../image/Image');
-const aliasList = require('../lib/aliases');
+const aliasList = require('../_lib/aliases');
 
 //a formal key-value data table about a topic
 const Infobox = function(obj) {
@@ -67,13 +68,9 @@ const methods = {
   text : function() {
     return '';
   },
-  json : function() {
-    return Object.keys(this.data).reduce((h, k) => {
-      if (this.data[k]) {
-        h[k] = this.data[k].json();
-      }
-      return h;
-    }, {});
+  json : function(options) {
+    options = options || {};
+    return toJson(this, options);
   },
   keyValue : function() {
     return Object.keys(this.data).reduce((h, k) => {
