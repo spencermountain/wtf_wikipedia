@@ -17,6 +17,7 @@ let punctuation = [
   ['–', '–'],
   ['ndash', '–'],
   ['en dash', '–'],
+  ['spaced ndash', ' – '],
 
   ['—', '—'],
   ['mdash', '—'],

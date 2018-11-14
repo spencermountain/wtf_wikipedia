@@ -75,15 +75,18 @@ const inline = {
     }
     return '';
   },
-  'quote': (tmpl) => {
-    let obj = keyValue(tmpl);
+  'quote': (tmpl, r) => {
+    let order = ['text', 'author'];
+    let obj = pipeSplit(tmpl, order);
+    r.templates.push(obj);
+    //create plaintext version
     if (obj.text) {
       let str = `"${obj.text}"`;
       if (obj.author) {
-        str += `  - ${obj.author}`;
-        str += '\n';
+        str += '\n\n';
+        str += `    - ${obj.author}`;
       }
-      return str;
+      return str + '\n';
     }
     return '';
   },
