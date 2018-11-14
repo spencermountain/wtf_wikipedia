@@ -1,8 +1,7 @@
-
-// https://www.mediawiki.org/wiki/Help:Magic_words#Other
 // okay, these just hurts my feelings
-// https://en.wikipedia.org/wiki/Template:%C2%B7
+// https://www.mediawiki.org/wiki/Help:Magic_words#Other
 let punctuation = [
+  // https://en.wikipedia.org/wiki/Template:%C2%B7
   ['·', '·'],
   ['·', '·'],
   ['dot', '·'],

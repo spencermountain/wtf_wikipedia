@@ -8,10 +8,10 @@ const wtf = require('./src/index');
 //   console.log(doc.infoboxes(0).keyValue());
 // })();
 
-// let doc = readFile('jodie_emery');
+// let doc = readFile('jodie_emery');{{MPC|75482|(75482) 1999 XC173}}
 // console.log(doc.markdown());
 
-var str = `{{sic|Conc|encus|nolink=n}} can Change!`;
+var str = `{{MPC|75482|(75482) 1999 XC173}}`;
 
 let doc = wtf(str);
 console.log(doc.text());

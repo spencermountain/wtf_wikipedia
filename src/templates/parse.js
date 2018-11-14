@@ -10,6 +10,7 @@ const templates = Object.assign({},
   require('./language'),
   require('./money'),
   require('./sports'),
+  require('./science'),
   require('./flags'),
   require('./misc')
 );

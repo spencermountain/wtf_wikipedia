@@ -96,7 +96,8 @@ test('inline-with-data', function(t) {
     [`la-verb-form`, `{{la-verb-form|amāre}}`],
     [`goal`, `{{goal|14||54|p|72||87}}`],
     [`isbn`, `{{ISBN|978-1-4133-0454-1}}`],
-    [`based on`, `{{based on|"[[Super-Toys Last All Summer Long]]"|[[Brian Aldiss]]}}`]
+    [`based on`, `{{based on|"[[Super-Toys Last All Summer Long]]"|[[Brian Aldiss]]}}`],
+    [`mpc`, `{{MPC|75482|(75482) 1999 XC173}}`]
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);
