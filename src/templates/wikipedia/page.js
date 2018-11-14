@@ -176,6 +176,13 @@ const parsers = {
     r.templates.push(obj);
     return '';
   },
+  'coord missing': (tmpl, r) => {
+    let obj = {
+      template: 'coord missing'
+    };
+    r.templates.push(obj);
+    return '';
+  },
   //amazingly, this one does not obey any known patterns
   //https://en.wikipedia.org/wiki/Template:Gallery
   'gallery': (tmpl, r) => {
@@ -194,6 +201,34 @@ const parsers = {
     r.templates.push(obj);
     return '';
   },
+  //https://en.wikipedia.org/wiki/Template:See_also
+  'see also': (tmpl, r) => {
+    let order = ['1', '2', '3', '4', '5', '6', '7'];
+    let obj = pipeSplit(tmpl, order);
+    let pages = [];
+    order.forEach((o) => {
+      if (obj[o]) {
+        let link = {
+          page: obj[o]
+        };
+        if (obj['l' + o]) {
+          link.text = obj['l' + o];
+        }
+        pages.push(link);
+      }
+    });
+    r.templates.push({
+      template: 'see also',
+      pages: pages
+    });
+    return '';
+  },
+  'italic title': (tmpl, r) => {
+    r.templates.push({
+      template: 'italic title'
+    });
+    return '';
+  }
 };
 //aliases
 parsers['cite'] = parsers.citation;

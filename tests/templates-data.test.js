@@ -14,6 +14,8 @@ test('external-links', function(t) {
     [`espn nhl`, `{{ESPN NHL | id= 3024816 | name= Austin Czarnik }}`],
     [`fifa player`, `{{FIFA player | id= 284 | name= Brandi CHASTAIN }}`],
     [`ted speaker`, `{{TED speaker | j_j_abrams | J.J. Abrams }}`],
+    ['afi film', `{{AFI film | 64729 | Quantum of Solace }}`],
+    ['allgame', `{{AllGame |326 |The Legend of Zelda: A Link to the Past}}`],
     [`hollywood walk of fame`, `{{Hollywood Walk of Fame|name = Alan Alda}}`],
   ];
   arr.forEach((a) => {
@@ -28,6 +30,7 @@ test('external-links', function(t) {
 test('wikipedia-templates', function(t) {
   var arr = [
     [`uss`, `{{USS|Constellation|1797}}`],
+    [`italic title`, `{{italic title}}`],
     [`audio`, `{{Audio|en-us-Alabama.ogg|pronunciation of "Alabama"|help=no}}`],
     [`subject bar`, `{{Subject bar |book= Lemurs |portal1= Primates |portal2= Madagascar |commons= y |commons-search= Category:Lemuriformes |species= y |species-search= Lemuriformes }}`],
     [`gallery`, `{{Gallery
@@ -88,6 +91,37 @@ test('wikipedia-templates', function(t) {
   t.end();
 });
 
+
+test('election', function(t) {
+  var str = `hello {{Election box begin |title=[[United Kingdom general election, 2005|General Election 2005]]: Strangford}}
+   {{Election box candidate
+     |party      = Labour
+     |candidate  = Tony Blair
+     |votes      = 9,999
+     |percentage = 50.0
+     |change     = +10.0
+   }}
+   {{Election box candidate
+     |party      = Conservative
+     |candidate  = Michael Howard
+     |votes      = 9,999
+     |percentage = 50.0
+     |change     = +10.0
+   }}
+   {{Election box gain with party link
+    |winner     = Conservative Party (UK)
+    |loser      = Labour Party (UK)
+    |swing      = +10.0
+  }}
+   {{Election box end}}
+   world`;
+  var doc = wtf(str);
+  t.equal(doc.templates().length, 1, 'found one template');
+  var tmpl = doc.templates(0) || {};
+  t.equal(tmpl.template, 'election box', 'template name');
+  t.equal(tmpl.candidates.length, 2, 'two candidates');
+  t.end();
+});
 
 test('test-flexible-format', function(t) {
   var doc = wtf(`hello {{Hollywood Walk of Fame|Alan Alda}} world`);

@@ -1,7 +1,19 @@
 const pipeSplit = require('../_parsers/pipeSplit');
+const keyValue = require('../_parsers/keyValue');
 
 const misc = {
-
+  'timeline': (tmpl, r) => {
+    let data = keyValue(tmpl);
+    r.templates.push({
+      template: 'timeline',
+      data: {
+        before: data.before,
+        after: data.after,
+        years: data.years,
+      }
+    });
+    return '';
+  },
   'uss': (tmpl, r) => {
     let order = ['ship', 'id'];
     let obj = pipeSplit(tmpl, order);
