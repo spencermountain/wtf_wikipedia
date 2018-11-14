@@ -5,8 +5,8 @@
   <a href="https://npmjs.org/package/wtf_wikipedia">
     <img src="https://img.shields.io/npm/v/wtf_wikipedia.svg?style=flat-square" />
   </a>
-  <a href="https://www.codacy.com/app/spencerkelly86/wtf_wikipedia">
-    <img src="https://api.codacy.com/project/badge/Coverage/e84f69487c9348ba9cd8e31031a05a4f" />
+  <a href="https://codecov.io/gh/spencermountain/wtf_wikipedia">
+    <img src="https://codecov.io/gh/spencermountain/wtf_wikipedia/branch/dev/graph/badge.svg" />
   </a>
   <div>wikipedia markup parser</div>
   <sub>

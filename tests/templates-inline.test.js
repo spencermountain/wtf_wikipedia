@@ -16,6 +16,11 @@ test('inline-no-data', function(t) {
     [`date`, `{{date|2006-08-04|ISO}}`],
     [`date-none`, `{{date|4 August|none}}`],
     [`monthname`, `{{MONTHNAME|8}}`],
+
+    [`flag-name`, `{{flagicon|canada}}`],
+    [`flag-iso-3`, `{{flagicon|BUL}}`],
+    [`flag-faroe island`, `{{FRO}}`],
+
     [`rtl-lang`, `{{rtl-lang|tg-Arab|تاجیکی}}`],
     [`lbb`, ` {{Lbb|Severn}} `],
     [`vanchor`, `{{vanchor|humpty|dumpty}}`],
@@ -97,7 +102,17 @@ test('inline-with-data', function(t) {
   t.end();
 });
 
-//this example has it all
+//this example has it all!
+test('flags', function(t) {
+  var str = `one {{flag|USA}}, two {{flag|DEU|empire}}, three {{flag|CAN|name=Canadian}}.`;
+  var doc = wtf(str);
+  t.equal(doc.links().length, 3, 'found 3 link');
+  t.equal(doc.links(1).text, 'DEU', 'link text');
+  t.equal(doc.links(1).page, 'Germany', 'link page');
+  t.equal(doc.text(), 'one 🇺🇸 USA, two 🇩🇪 DEU, three 🇨🇦 CAN.', 'made emoji flags');
+  t.end();
+});
+
 test('tricky-based-on', function(t) {
   var str = `{{Based on|''[[Jurassic Park (novel)|Jurassic Park]]''|Michael Crichton}}`;
   var doc = wtf(str);

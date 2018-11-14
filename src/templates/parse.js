@@ -10,6 +10,7 @@ const templates = Object.assign({},
   require('./language'),
   require('./money'),
   require('./sports'),
+  require('./flags'),
   require('./misc')
 );
 const generic = require('./_generic');

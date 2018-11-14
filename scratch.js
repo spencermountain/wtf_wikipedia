@@ -11,11 +11,11 @@ const wtf = require('./src/index');
 // let doc = readFile('jodie_emery');
 // console.log(doc.markdown());
 
-var str = `hellow world
-{{Based on|''[[Jurassic Park (novel)|Jurassic Park]]''|Michael Crichton}}
-`;
+// var str = `one {{flag|USA}} two {{flag|DEU|empire}} three {{flag|CAN|name=Canadian}}`;
+// var str = `hello {{flag|CAN|name=Canadian}} world 👍`;
+var str = `{{flagicon|BUL}}`;
 
 // str = `{{lang-ur|hello|asdf}}`;
 let doc = wtf(str);
 console.log(doc.text());
-console.log(doc.templates());
+console.log(doc.links());
