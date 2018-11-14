@@ -27,6 +27,7 @@ test('inline-no-data', function(t) {
 
     [`rtl-lang`, `{{rtl-lang|tg-Arab|تاجیکی}}`],
     [`lbb`, ` {{Lbb|Severn}} `],
+    [`yes`, ` {{Yes}} `],
     [`vanchor`, `{{vanchor|humpty|dumpty}}`],
     [`plainlist`, `{{Plainlist|
 * Example 1
@@ -80,6 +81,7 @@ test('inline-output', t => {
     [`{{math|''f''(''x'') {{=}} ''b''<sup>''x''</sup> {{=}} ''y''}}`, `f(x) = b x = y`],
     [`{{sfrac|A|B|C}}`, `A B⁄C`],
     [`{{sqrt|2|4}}`, `4√2`],
+    [`{{okay}}`, `Neutral`],
   ];
   arr.forEach((a) => {
     t.equal(wtf(a[0]).text(), a[1], a[0]);

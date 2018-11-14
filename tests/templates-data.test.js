@@ -68,6 +68,15 @@ test('wikipedia-templates', function(t) {
     [`ipa`, `{{IPAc-ko|h|a|n|g|u|k}}`],
     [`coor`, `{{Coord|44.112|N|87.913|W|display=title}}`],
     [`gnis`, `{{GNIS | 871352 | Mount Washington }}`],
+    [`portal`, `{{Portal
+     | Portal 1
+     | Portal 2
+     | Portal 3
+     | left = cool
+     | margin = fun
+     | break = no
+     | boxsize = yes
+    }}`],
   // [``, ``],
   ];
   arr.forEach((a) => {

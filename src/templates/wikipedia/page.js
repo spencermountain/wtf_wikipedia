@@ -108,6 +108,17 @@ const parsers = {
     r.templates.push(obj);
     return '';
   },
+  'portal': (tmpl, r) => {
+    let order = ['portal', 'portal2', 'portal3', 'portal4', 'portal5', 'portal6', 'portal7'];
+    let obj = pipeSplit(tmpl, order);
+    let portals = order.map((str) => obj[str]);
+    portals = portals.filter(s => s);
+    r.templates.push({
+      template: 'portal',
+      list: portals
+    });
+    return '';
+  },
   'spoken wikipedia': (tmpl, r) => {
     let order = ['file', 'date'];
     let obj = pipeSplit(tmpl, order);

@@ -15,6 +15,7 @@ let templates = {
     });
     return '\n\n' + formula + '\n\n';
   },
+
   //fraction - https://en.wikipedia.org/wiki/Template:Sfrac
   'frac': (tmpl, r) => {
     let order = ['a', 'b', 'c'];
@@ -40,6 +41,7 @@ let templates = {
     }
     return `${data.numerator}⁄${data.denominator}`;
   },
+
   //https://en.wikipedia.org/wiki/Template:Radic
   'radic': (tmpl) => {
     let order = ['after', 'before'];
