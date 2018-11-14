@@ -228,6 +228,13 @@ const parsers = {
       template: 'italic title'
     });
     return '';
+  },
+  'unreferenced': (tmpl, r) => {
+    let order = ['date'];
+    let obj = pipeSplit(tmpl, order);
+    obj.template = 'unreferenced';
+    r.templates.push(obj);
+    return '';
   }
 };
 //aliases

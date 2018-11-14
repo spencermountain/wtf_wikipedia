@@ -20,6 +20,8 @@ test('inline-no-data', function(t) {
     [`semicolon`, `{{;}}`],
     [`comma`, `{{,}}`],
     [`half`, `{{1/2}}`],
+    [`fb`, `{{fb|Italy|1861}}`],
+    [`fbicon`, `{{fbicon|GER|name=GER}}`],
 
     [`flag-name`, `{{flagicon|canada}}`],
     [`flag-iso-3`, `{{flagicon|BUL}}`],

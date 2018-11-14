@@ -290,6 +290,11 @@ module.exports = [
     'germany'
   ],
   [
+    '🇩🇪',
+    'ger', //alias
+    'germany'
+  ],
+  [
     '🇩🇯',
     'dji',
     'djibouti'

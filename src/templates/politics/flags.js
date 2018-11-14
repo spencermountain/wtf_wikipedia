@@ -50,7 +50,28 @@ let templates = {
     obj.flag = obj.flag.toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
     return found[0] || '';
-  }
+  },
+  //same, but a soccer team
+  fb: (tmpl) => {
+    let order = ['flag', 'variant'];
+    let obj = pipeSplit(tmpl, order);
+    obj.flag = obj.flag.toLowerCase();
+    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
+    if (!found) {
+      return '';
+    }
+    return `${found[0]} [[${found[2]} national football team|${found[2]}]]`;
+  },
+  fbicon: (tmpl) => {
+    let order = ['flag', 'variant'];
+    let obj = pipeSplit(tmpl, order);
+    obj.flag = obj.flag.toLowerCase();
+    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
+    if (!found) {
+      return '';
+    }
+    return ` [[${found[2]} national football team|${found[0]}]]`;
+  },
 };
 //support {{can}}
 flags.forEach((a) => {

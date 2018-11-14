@@ -32,6 +32,7 @@ test('wikipedia-templates', function(t) {
     [`uss`, `{{USS|Constellation|1797}}`],
     [`italic title`, `{{italic title}}`],
     [`audio`, `{{Audio|en-us-Alabama.ogg|pronunciation of "Alabama"|help=no}}`],
+    [`unreferenced`, `{{Unreferenced|date=November 2018}}`],
     [`subject bar`, `{{Subject bar |book= Lemurs |portal1= Primates |portal2= Madagascar |commons= y |commons-search= Category:Lemuriformes |species= y |species-search= Lemuriformes }}`],
     [`gallery`, `{{Gallery
 |title=Cultural depictions of George Washington
