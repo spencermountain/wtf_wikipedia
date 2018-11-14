@@ -191,5 +191,6 @@ parsers['harvid'] = parsers.sfn;
 parsers['harvnb'] = parsers.sfn;
 parsers['redir'] = parsers.redirect;
 parsers['sisterlinks'] = parsers['sister project links'];
+parsers['main article'] = parsers['main'];
 
 module.exports = parsers;

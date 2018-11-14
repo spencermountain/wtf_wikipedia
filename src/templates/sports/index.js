@@ -1,4 +1,5 @@
 const pipes = require('../_parsers/_pipes');
+const pipeSplit = require('../_parsers/pipeSplit');
 
 let sports = {
   //https://en.wikipedia.org/wiki/Template:Goal
@@ -38,6 +39,55 @@ let sports = {
       return o.min + '\'' + note;
     }).join(', ');
     return summary;
+  },
+  //yellow card
+  yel: (tmpl, r) => {
+    let obj = pipeSplit(tmpl, ['min']);
+    r.templates.push(obj);
+    if (obj.min) {
+      return `yellow: ${obj.min || ''}'`; //no yellow-card emoji
+    }
+    return '';
+  },
+  'subon': (tmpl, r) => {
+    let obj = pipeSplit(tmpl, ['min']);
+    r.templates.push(obj);
+    if (obj.min) {
+      return `sub on: ${obj.min || ''}'`; //no yellow-card emoji
+    }
+    return '';
+  },
+  'suboff': (tmpl, r) => {
+    let obj = pipeSplit(tmpl, ['min']);
+    r.templates.push(obj);
+    if (obj.min) {
+      return `sub off: ${obj.min || ''}'`; //no yellow-card emoji
+    }
+    return '';
+  },
+  'pengoal': (tmpl, r) => {
+    r.templates.push({
+      template: 'pengoal'
+    });
+    return '✅';
+  },
+  'penmiss': (tmpl, r) => {
+    r.templates.push({
+      template: 'penmiss'
+    });
+    return '❌';
+  },
+  //'red' card - {{sent off|cards|min1|min2}}
+  'sent off': (tmpl, r) => {
+    let obj = pipes(tmpl);
+    let template = {
+      template: 'sent off',
+      cards: obj.list[0],
+      minutes: obj.list.slice(1)
+    };
+    r.templates.push(template);
+    let mins = template.minutes.map(m => m + '\'').join(', ');
+    return 'sent off: ' + mins;
   }
 };
 module.exports = sports;

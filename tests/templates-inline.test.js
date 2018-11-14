@@ -45,48 +45,6 @@ test('inline-no-data', function(t) {
   t.end();
 });
 
-test('list-templates', function(t) {
-  var arr = [
-    [`pagelist`, `{{Pagelist|X1|X2|X3|X4|X5}}`],
-    [`collapsible list`, `{{Collapsible list
- | title = [[European Free Trade Association]] members
- | [[Iceland]]
- | [[Liechtenstein]]
- | [[Norway]]
- | [[Switzerland]]
-}}`],
-    [`catlist`, `{{Catlist|1989|1990|1991|1992|1993}}`],
-    [`br`, `{{br separated entries|entry1|entry2| }}`],
-    [`bulleted`, `{{bulleted list |one |two |three}}`],
-    [`unbulleted`, `{{unbulleted list|first item|second item|third item|...}}`],
-    [`comma`, `{{comma separated entries|entry1|entry2|entry3| }}`],
-    [`ordered`, `{{Ordered list |entry1 |entry2| ... }}`],
-    [`flatlist`, ` {{flatlist|
- * [[cat]]
- * [[dog]]
- * [[horse]]
- * [[cow]]
- * [[sheep]]
- * [[pig]]
- }}`],
-    [`bare anchored list`, `{{bare anchored list
-|First entry
-|Second entry
-|So on
-...
-|Last entry
-}}`
-    ]
-  ];
-  arr.forEach((a) => {
-    var doc = wtf(a[1]);
-    var len = doc.templates().length;
-    t.equal(len, 0, a[0] + ' count');
-    t.notEqual(doc.text(), '', a[0] + ' text exists');
-    t.notEqual(doc.text(), a[1], a[0] + ' text changed');
-  });
-  t.end();
-});
 
 test('inline-with-data', function(t) {
   var arr = [
@@ -109,7 +67,25 @@ test('inline-with-data', function(t) {
   t.end();
 });
 
-//this example has it all!
+test('inline-output', t => {
+  var arr = [
+    [`{{nobold| [[#Structure and name|↓]] }}`, `↓`],
+    [`[[Salt]]{{•}} [[Pepper]]`, `Salt • Pepper`],
+    [`[[Salt]]{{ndash}}[[Pepper]]`, `Salt–Pepper`],
+    ['[[Salt]]{{\\}}[[Black pepper|Pepper]]', `Salt / Pepper`],
+    ['[[Salt]]{{snds}}[[Black pepper|Pepper]]{{snds}}[[Curry]]{{snds}}[[Saffron]]', `Salt – Pepper – Curry – Saffron`],
+    [`{{braces|Templatename|item1|item2}}`, `{{Templatename|item1|item2}}`],
+    [`{{sic|Conc|encus}} can Change!`, `Concencus [sic] can Change!`],
+    [`{{sic|Conc|encus|nolink=y}} can Change!`, `Concencus can Change!`],
+    [`{{math|''f''(''x'') {{=}} ''b''<sup>''x''</sup> {{=}} ''y''}}`, `f(x) = b x = y`],
+    [`{{sfrac|A|B|C}}`, `A B⁄C`],
+  ];
+  arr.forEach((a) => {
+    t.equal(wtf(a[0]).text(), a[1], a[0]);
+  });
+  t.end();
+});
+
 test('flags', function(t) {
   var str = `one {{flag|USA}}, two {{flag|DEU|empire}}, three {{flag|CAN|name=Canadian}}.`;
   var doc = wtf(str);
@@ -120,6 +96,7 @@ test('flags', function(t) {
   t.end();
 });
 
+//this example has it all!
 test('tricky-based-on', function(t) {
   var str = `{{Based on|''[[Jurassic Park (novel)|Jurassic Park]]''|Michael Crichton}}`;
   var doc = wtf(str);
