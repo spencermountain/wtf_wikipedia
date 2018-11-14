@@ -11,7 +11,7 @@ const wtf = require('./src/index');
 // let doc = readFile('jodie_emery');{{MPC|75482|(75482) 1999 XC173}}
 // console.log(doc.markdown());
 
-var str = `{{sfrac|A|B|C}}`;
+var str = `{{math|({{sqrt|2|4}})<sup>2</sup> {{=}} 2}}`;
 // str = `hello {{math|big=1|1 + 2 {{=}} 3}} world`;
 
 let doc = wtf(str);

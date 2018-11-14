@@ -40,7 +40,14 @@ let templates = {
     }
     return `${data.numerator}⁄${data.denominator}`;
   },
+  //https://en.wikipedia.org/wiki/Template:Radic
+  'radic': (tmpl) => {
+    let order = ['after', 'before'];
+    let obj = pipeSplit(tmpl, order);
+    return `${obj.before || ''}√${obj.after || ''}`;
+  },
 };
 //aliases
 templates['sfrac'] = templates.frac;
+templates['sqrt'] = templates.radic;
 module.exports = templates;

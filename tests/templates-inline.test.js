@@ -79,6 +79,7 @@ test('inline-output', t => {
     [`{{sic|Conc|encus|nolink=y}} can Change!`, `Concencus can Change!`],
     [`{{math|''f''(''x'') {{=}} ''b''<sup>''x''</sup> {{=}} ''y''}}`, `f(x) = b x = y`],
     [`{{sfrac|A|B|C}}`, `A B⁄C`],
+    [`{{sqrt|2|4}}`, `4√2`],
   ];
   arr.forEach((a) => {
     t.equal(wtf(a[0]).text(), a[1], a[0]);
