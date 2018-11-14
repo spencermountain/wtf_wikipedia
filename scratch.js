@@ -11,11 +11,8 @@ const wtf = require('./src/index');
 // let doc = readFile('jodie_emery');
 // console.log(doc.markdown());
 
-// var str = `one {{flag|USA}} two {{flag|DEU|empire}} three {{flag|CAN|name=Canadian}}`;
-// var str = `hello {{flag|CAN|name=Canadian}} world 👍`;
-var str = `{{flagicon|BUL}}`;
+var str = `{{sic|Conc|encus|nolink=n}} can Change!`;
 
-// str = `{{lang-ur|hello|asdf}}`;
 let doc = wtf(str);
 console.log(doc.text());
-console.log(doc.links());
+console.log(doc.templates(0));

@@ -15,6 +15,12 @@ const misc = {
     r.templates.push(obj);
     return '';
   },
+  'isbn': (tmpl, r) => {
+    let order = ['id', 'id2', 'id3'];
+    let obj = pipeSplit(tmpl, order);
+    r.templates.push(obj);
+    return 'ISBN: ' + (obj.id || '');
+  },
   //https://en.wikipedia.org/wiki/Template:Marriage
   //this one creates a template, and an inline response
   marriage: (tmpl, r) => {

@@ -102,7 +102,26 @@ const inline = {
     let obj = pipeSplit(tmpl, ['text']);
     return `[[${obj.text}-class lifeboat|${obj.text}]]`;
   },
+  //https://en.wikipedia.org/wiki/Template:Sic
+  sic: (tmpl, r) => {
+    let obj = pipeSplit(tmpl, ['one', 'two', 'three']);
+    let word = (obj.one || '') + (obj.two || '');
+    //support '[sic?]'
+    if (obj.one === '?') {
+      word = (obj.two || '') + (obj.three || '');
+    }
+    r.templates.push({
+      template: 'sic',
+      word: word
+    });
+    if (obj.nolink === 'y') {
+      return word;
+    }
+    return `${word} [sic]`;
+  }
+
 };
+
 
 inline['str left'] = inline.trunc;
 inline['str crop'] = inline.trunc;

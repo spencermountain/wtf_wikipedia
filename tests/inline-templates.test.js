@@ -10,6 +10,8 @@ test('inline-templates', t => {
     ['[[Salt]]{{\\}}[[Black pepper|Pepper]]', `Salt / Pepper`],
     ['[[Salt]]{{snds}}[[Black pepper|Pepper]]{{snds}}[[Curry]]{{snds}}[[Saffron]]', `Salt – Pepper – Curry – Saffron`],
     [`{{braces|Templatename|item1|item2}}`, `{{Templatename|item1|item2}}`],
+    [`{{sic|Conc|encus}} can Change!`, `Concencus [sic] can Change!`],
+    [`{{sic|Conc|encus|nolink=y}} can Change!`, `Concencus can Change!`],
   ];
   arr.forEach((a) => {
     t.equal(wtf(a[0]).text(), a[1], a[0]);

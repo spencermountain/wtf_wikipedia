@@ -16,6 +16,10 @@ test('inline-no-data', function(t) {
     [`date`, `{{date|2006-08-04|ISO}}`],
     [`date-none`, `{{date|4 August|none}}`],
     [`monthname`, `{{MONTHNAME|8}}`],
+    [`dot`, `{{·}}`],
+    [`semicolon`, `{{;}}`],
+    [`comma`, `{{,}}`],
+    [`half`, `{{1/2}}`],
 
     [`flag-name`, `{{flagicon|canada}}`],
     [`flag-iso-3`, `{{flagicon|BUL}}`],
@@ -90,6 +94,8 @@ test('inline-with-data', function(t) {
     [`gbp`, `{{GBP|123.45}}`],
     [`acronym`, `{{acronym of|graphical user interface|lang=en}}`],
     [`la-verb-form`, `{{la-verb-form|amāre}}`],
+    [`goal`, `{{goal|14||54|p|72||87}}`],
+    [`isbn`, `{{ISBN|978-1-4133-0454-1}}`],
     [`based on`, `{{based on|"[[Super-Toys Last All Summer Long]]"|[[Brian Aldiss]]}}`]
   ];
   arr.forEach((a) => {

@@ -1170,6 +1170,11 @@ module.exports = [
     'united states'
   ],
   [
+    '🇺🇸',
+    'us', //alias
+    'united states'
+  ],
+  [
     '🇺🇾',
     'ury',
     'uruguay'
@@ -1248,5 +1253,10 @@ module.exports = [
     '🇿🇼 ',
     'zwe',
     'zimbabwe'
-  ]
+  ],
+  //others (later unicode versions)
+  ['🇺🇳', 'un', 'united nations'],
+  ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'],
+  ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'],
+  ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales'],
 ];
