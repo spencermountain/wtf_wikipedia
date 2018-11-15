@@ -9,6 +9,12 @@ test('math-simple', t => {
   t.equal(tmpl.formula, '1 + 2 = 3', 'tmpl formula');
   t.equal(doc.text(), 'hello\n\n1 + 2 = 3\n\nworld', 'text output');
 
+  str = `<math>y^3</math>`;
+  doc = wtf(str);
+  tmpl = doc.templates(0) || {};
+  t.equal(tmpl.formula, 'y^3', 'xml inline');
+  t.equal(doc.text(), 'y^3', 'xml inline output');
+
   str = `<math display="inline">sum_{i=0}^infty 2^{-i}</math>`;
   doc = wtf(str);
   tmpl = doc.templates(0) || {};
