@@ -1,12 +1,17 @@
 const pipeSplit = require('../_parsers/pipeSplit');
-const pipeList = require('../_parsers/pipeList');
+const keyValue = require('../_parsers/keyValue');
 
 const misc = {
-  //https://en.wikipedia.org/wiki/Template:Taxon_info
-  'taxon info': (tmpl, r) => {
-    let order = ['taxon', 'item'];
-    let obj = pipeSplit(tmpl, order);
-    r.templates.push(obj);
+  'timeline': (tmpl, r) => {
+    let data = keyValue(tmpl);
+    r.templates.push({
+      template: 'timeline',
+      data: {
+        before: data.before,
+        after: data.after,
+        years: data.years,
+      }
+    });
     return '';
   },
   'uss': (tmpl, r) => {
@@ -14,6 +19,12 @@ const misc = {
     let obj = pipeSplit(tmpl, order);
     r.templates.push(obj);
     return '';
+  },
+  'isbn': (tmpl, r) => {
+    let order = ['id', 'id2', 'id3'];
+    let obj = pipeSplit(tmpl, order);
+    r.templates.push(obj);
+    return 'ISBN: ' + (obj.id || '');
   },
   //https://en.wikipedia.org/wiki/Template:Marriage
   //this one creates a template, and an inline response
@@ -36,37 +47,25 @@ const misc = {
     r.templates.push(obj);
     return `${obj.title} by ${obj.author || ''}`;
   },
-  'climate chart': (tmpl, r) => {
-    let list = pipeList(tmpl).data;
-    let title = list[0];
-    let source = list[38];
-    list = list.slice(1);
-    //amazingly, they use '−' symbol here instead of negatives...
-    list = list.map((str) => {
-      if (str && str[0] === '−') {
-        str = str.replace(/−/, '-');
-      }
-      return str;
-    });
-    let months = [];
-    //groups of three, for 12 months
-    for(let i = 0; i < 36; i += 3) {
-      months.push({
-        low: Number(list[i]),
-        high: Number(list[i + 1]),
-        precip: Number(list[i + 2])
-      });
-    }
-    let obj = {
-      template: 'climate chart',
-      data: {
-        title: title,
-        source: source,
-        months: months
-      }
+  //https://en.wikipedia.org/wiki/Template:Video_game_release
+  'video game release': (tmpl, r) => {
+    let order = ['region', 'date', 'region2', 'date2', 'region3', 'date3', 'region4', 'date4'];
+    let obj = pipeSplit(tmpl, order);
+    let template = {
+      template: 'video game release',
+      releases: []
     };
-    r.templates.push(obj);
-    return '';
+    for(let i = 0; i < order.length; i += 2) {
+      if (obj[order[i]]) {
+        template.releases.push({
+          region: obj[order[i]],
+          date: obj[order[i + 1]],
+        });
+      }
+    }
+    r.templates.push(template);
+    let str = template.releases.map((o) => `${o.region}: ${o.date || ''}`).join('\n\n');
+    return '\n' + str + '\n';
   },
   '__throw-wtf-error': () => {
     //okay you asked for it!

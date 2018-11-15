@@ -1,5 +1,6 @@
 const strip = require('../_parsers/_strip');
 const pipes = require('../_parsers/_pipes');
+const keyValue = require('../_parsers/keyValue');
 
 const templates = {
   //newline-based list - https://en.wikipedia.org/wiki/Template:Plainlist
@@ -14,13 +15,44 @@ const templates = {
     arr = arr.filter(s => s);
     return arr.join('\n\n');
   },
-  //https://en.wikipedia.org/wiki/Template:Collapsible_list
-  'collapsible list': (tmpl) => {
-    let val = strip(tmpl);
-    let arr = val.split('|');
-    arr = arr.map(s => s.trim());
-    arr = arr.filter(str => /^title ?=/i.test(str) === false);
-    return arr.slice(1).join(', ');
+
+  //show/hide: https://en.wikipedia.org/wiki/Template:Collapsible_list
+  'collapsible list': (tmpl, r) => {
+    let data = keyValue(tmpl);
+    let template = {
+      template: 'collapsible list',
+      title: data.title,
+      list: []
+    };
+    for(let i = 0; i < 10; i += 1) {
+      if (data[i]) {
+        template.list.push(data[i]);
+      }
+    }
+    r.templates.push(template);
+    let str = '';
+    if (template.title) {
+      str += `'''${template.title}'''` + '\n\n';
+    }
+    str += template.list.join('\n\n');
+    return str;
+  },
+  // https://en.wikipedia.org/wiki/Template:Ordered_list
+  'ordered list': (tmpl, r) => {
+    let data = keyValue(tmpl);
+    let template = {
+      template: 'collapsible list',
+      title: data.title,
+      list: []
+    };
+    for(let i = 0; i < 10; i += 1) {
+      if (data[i]) {
+        template.list.push(data[i]);
+      }
+    }
+    r.templates.push(template);
+    let lines = template.list.map((str, i) => `${i + 1}. ${str}`);
+    return lines.join('\n\n');
   },
   hlist: (tmpl) => {
     let val = strip(tmpl).replace(/^hlist\s?\|/, '');
@@ -66,7 +98,6 @@ templates.flatlist = templates.plainlist;
 templates.ublist = templates.plainlist;
 templates['unbulleted list'] = templates['collapsible list'];
 templates['ubl'] = templates['collapsible list'];
-templates['ordered list'] = templates['collapsible list'];
 templates['bare anchored list'] = templates['anchored list'];
 templates['plain list'] = templates['plainlist'];
 module.exports = templates;

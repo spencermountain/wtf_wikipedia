@@ -1,7 +1,7 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "6.2.2",
+  "version": "6.3.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "testb": "TESTENV=prod node ./scripts/test.js",
     "watch": "amble ./scratch.js",
     "build": "node ./scripts/build.js",
-    "lint":"eslint ./src/**/*.js"
+    "lint": "eslint ./src/**/*.js"
   },
   "bin": {
     "wtf_wikipedia": "./bin/wtf.js"
@@ -47,10 +47,10 @@
     "babel-preset-env": "1.7.0",
     "babelify": "8.0.0",
     "browserify": "16.2.3",
-    "codacy-coverage": "3.2.0",
+    "codecov": "^3.1.0",
     "derequire": "2.0.6",
-    "istanbul": "0.4.5",
-    "shelljs": "0.8.2",
+    "nyc": "13.1.0",
+    "shelljs": "0.8.3",
     "tap-dancer": "0.1.2",
     "tap-spec": "^5.0.0",
     "tape": "4.9.1",

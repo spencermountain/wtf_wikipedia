@@ -16,8 +16,20 @@ test('inline-no-data', function(t) {
     [`date`, `{{date|2006-08-04|ISO}}`],
     [`date-none`, `{{date|4 August|none}}`],
     [`monthname`, `{{MONTHNAME|8}}`],
+    [`dot`, `{{·}}`],
+    [`semicolon`, `{{;}}`],
+    [`comma`, `{{,}}`],
+    [`half`, `{{1/2}}`],
+    [`fb`, `{{fb|Italy|1861}}`],
+    [`fbicon`, `{{fbicon|GER|name=GER}}`],
+
+    [`flag-name`, `{{flagicon|canada}}`],
+    [`flag-iso-3`, `{{flagicon|BUL}}`],
+    [`flag-faroe island`, `{{FRO}}`],
+
     [`rtl-lang`, `{{rtl-lang|tg-Arab|تاجیکی}}`],
     [`lbb`, ` {{Lbb|Severn}} `],
+    [`yes`, ` {{Yes}} `],
     [`vanchor`, `{{vanchor|humpty|dumpty}}`],
     [`plainlist`, `{{Plainlist|
 * Example 1
@@ -36,48 +48,6 @@ test('inline-no-data', function(t) {
   t.end();
 });
 
-test('list-templates', function(t) {
-  var arr = [
-    [`pagelist`, `{{Pagelist|X1|X2|X3|X4|X5}}`],
-    [`collapsible list`, `{{Collapsible list
- | title = [[European Free Trade Association]] members
- | [[Iceland]]
- | [[Liechtenstein]]
- | [[Norway]]
- | [[Switzerland]]
-}}`],
-    [`catlist`, `{{Catlist|1989|1990|1991|1992|1993}}`],
-    [`br`, `{{br separated entries|entry1|entry2| }}`],
-    [`bulleted`, `{{bulleted list |one |two |three}}`],
-    [`unbulleted`, `{{unbulleted list|first item|second item|third item|...}}`],
-    [`comma`, `{{comma separated entries|entry1|entry2|entry3| }}`],
-    [`ordered`, `{{Ordered list |entry1 |entry2| ... }}`],
-    [`flatlist`, ` {{flatlist|
- * [[cat]]
- * [[dog]]
- * [[horse]]
- * [[cow]]
- * [[sheep]]
- * [[pig]]
- }}`],
-    [`bare anchored list`, `{{bare anchored list
-|First entry
-|Second entry
-|So on
-...
-|Last entry
-}}`
-    ]
-  ];
-  arr.forEach((a) => {
-    var doc = wtf(a[1]);
-    var len = doc.templates().length;
-    t.equal(len, 0, a[0] + ' count');
-    t.notEqual(doc.text(), '', a[0] + ' text exists');
-    t.notEqual(doc.text(), a[1], a[0] + ' text changed');
-  });
-  t.end();
-});
 
 test('inline-with-data', function(t) {
   var arr = [
@@ -85,7 +55,11 @@ test('inline-with-data', function(t) {
     [`gbp`, `{{GBP|123.45}}`],
     [`acronym`, `{{acronym of|graphical user interface|lang=en}}`],
     [`la-verb-form`, `{{la-verb-form|amāre}}`],
-    [`based on`, `{{based on|"[[Super-Toys Last All Summer Long]]"|[[Brian Aldiss]]}}`]
+    [`goal`, `{{goal|14||54|p|72||87}}`],
+    [`isbn`, `{{ISBN|978-1-4133-0454-1}}`],
+    [`based on`, `{{based on|"[[Super-Toys Last All Summer Long]]"|[[Brian Aldiss]]}}`],
+    [`mpc`, `{{MPC|75482|(75482) 1999 XC173}}`],
+    [`chem2`, `{{chem2|CH3(CH2)5CH3}}`]
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);
@@ -97,7 +71,38 @@ test('inline-with-data', function(t) {
   t.end();
 });
 
-//this example has it all
+test('inline-output', t => {
+  var arr = [
+    [`{{nobold| [[#Structure and name|↓]] }}`, `↓`],
+    [`[[Salt]]{{•}} [[Pepper]]`, `Salt • Pepper`],
+    [`[[Salt]]{{ndash}}[[Pepper]]`, `Salt–Pepper`],
+    ['[[Salt]]{{\\}}[[Black pepper|Pepper]]', `Salt / Pepper`],
+    ['[[Salt]]{{snds}}[[Black pepper|Pepper]]{{snds}}[[Curry]]{{snds}}[[Saffron]]', `Salt – Pepper – Curry – Saffron`],
+    [`{{braces|Templatename|item1|item2}}`, `{{Templatename|item1|item2}}`],
+    [`{{sic|Conc|encus}} can Change!`, `Concencus [sic] can Change!`],
+    [`{{sic|Conc|encus|nolink=y}} can Change!`, `Concencus can Change!`],
+    [`{{math|''f''(''x'') {{=}} ''b''<sup>''x''</sup> {{=}} ''y''}}`, `f(x) = b x = y`],
+    [`{{sfrac|A|B|C}}`, `A B⁄C`],
+    [`{{sqrt|2|4}}`, `4√2`],
+    [`{{okay}}`, `Neutral`],
+  ];
+  arr.forEach((a) => {
+    t.equal(wtf(a[0]).text(), a[1], a[0]);
+  });
+  t.end();
+});
+
+test('flags', function(t) {
+  var str = `one {{flag|USA}}, two {{flag|DEU|empire}}, three {{flag|CAN|name=Canadian}}.`;
+  var doc = wtf(str);
+  t.equal(doc.links().length, 3, 'found 3 link');
+  t.equal(doc.links(1).text, 'DEU', 'link text');
+  t.equal(doc.links(1).page, 'Germany', 'link page');
+  t.equal(doc.text(), 'one 🇺🇸 USA, two 🇩🇪 DEU, three 🇨🇦 CAN.', 'made emoji flags');
+  t.end();
+});
+
+//this example has it all!
 test('tricky-based-on', function(t) {
   var str = `{{Based on|''[[Jurassic Park (novel)|Jurassic Park]]''|Michael Crichton}}`;
   var doc = wtf(str);

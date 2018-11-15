@@ -10,14 +10,18 @@ const templates = Object.assign({},
   require('./language'),
   require('./money'),
   require('./sports'),
+  require('./science'),
+  require('./math'),
+  require('./politics'),
   require('./misc')
 );
+// console.log(Object.keys(templates).length + ' Templates!');
+
 const generic = require('./_generic');
 
 //this gets all the {{template}} strings and decides how to parse them
 const parseTemplate = function(tmpl, wiki, data, options) {
   let name = getName(tmpl);
-
   //we explicitly ignore these templates
   if (ignore.hasOwnProperty(name) === true) {
     wiki = wiki.replace(tmpl, '');

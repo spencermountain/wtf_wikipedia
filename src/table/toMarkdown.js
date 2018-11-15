@@ -29,7 +29,7 @@ const doTable = (table, options) => {
   });
   //draw the header (necessary!)
   md += makeRow(headers) + '\n';
-  md += makeRow(['---', '---', '---']) + '\n';
+  md += makeRow(headers.map(() => '---')) + '\n';
   //do each row..
   md += table.map((row) => {
     //each column..

@@ -108,6 +108,17 @@ const parsers = {
     r.templates.push(obj);
     return '';
   },
+  'portal': (tmpl, r) => {
+    let order = ['portal', 'portal2', 'portal3', 'portal4', 'portal5', 'portal6', 'portal7'];
+    let obj = pipeSplit(tmpl, order);
+    let portals = order.map((str) => obj[str]);
+    portals = portals.filter(s => s);
+    r.templates.push({
+      template: 'portal',
+      list: portals
+    });
+    return '';
+  },
   'spoken wikipedia': (tmpl, r) => {
     let order = ['file', 'date'];
     let obj = pipeSplit(tmpl, order);
@@ -165,6 +176,13 @@ const parsers = {
     r.templates.push(obj);
     return '';
   },
+  'coord missing': (tmpl, r) => {
+    let obj = {
+      template: 'coord missing'
+    };
+    r.templates.push(obj);
+    return '';
+  },
   //amazingly, this one does not obey any known patterns
   //https://en.wikipedia.org/wiki/Template:Gallery
   'gallery': (tmpl, r) => {
@@ -183,6 +201,41 @@ const parsers = {
     r.templates.push(obj);
     return '';
   },
+  //https://en.wikipedia.org/wiki/Template:See_also
+  'see also': (tmpl, r) => {
+    let order = ['1', '2', '3', '4', '5', '6', '7'];
+    let obj = pipeSplit(tmpl, order);
+    let pages = [];
+    order.forEach((o) => {
+      if (obj[o]) {
+        let link = {
+          page: obj[o]
+        };
+        if (obj['l' + o]) {
+          link.text = obj['l' + o];
+        }
+        pages.push(link);
+      }
+    });
+    r.templates.push({
+      template: 'see also',
+      pages: pages
+    });
+    return '';
+  },
+  'italic title': (tmpl, r) => {
+    r.templates.push({
+      template: 'italic title'
+    });
+    return '';
+  },
+  'unreferenced': (tmpl, r) => {
+    let order = ['date'];
+    let obj = pipeSplit(tmpl, order);
+    obj.template = 'unreferenced';
+    r.templates.push(obj);
+    return '';
+  }
 };
 //aliases
 parsers['cite'] = parsers.citation;
@@ -191,5 +244,6 @@ parsers['harvid'] = parsers.sfn;
 parsers['harvnb'] = parsers.sfn;
 parsers['redir'] = parsers.redirect;
 parsers['sisterlinks'] = parsers['sister project links'];
+parsers['main article'] = parsers['main'];
 
 module.exports = parsers;

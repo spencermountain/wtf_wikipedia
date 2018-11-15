@@ -75,15 +75,18 @@ const inline = {
     }
     return '';
   },
-  'quote': (tmpl) => {
-    let obj = keyValue(tmpl);
+  'quote': (tmpl, r) => {
+    let order = ['text', 'author'];
+    let obj = pipeSplit(tmpl, order);
+    r.templates.push(obj);
+    //create plaintext version
     if (obj.text) {
       let str = `"${obj.text}"`;
       if (obj.author) {
-        str += `  - ${obj.author}`;
-        str += '\n';
+        str += '\n\n';
+        str += `    - ${obj.author}`;
       }
-      return str;
+      return str + '\n';
     }
     return '';
   },
@@ -102,7 +105,35 @@ const inline = {
     let obj = pipeSplit(tmpl, ['text']);
     return `[[${obj.text}-class lifeboat|${obj.text}]]`;
   },
+  // https://en.wikipedia.org/wiki/Template:Own
+  own: (tmpl) => {
+    let obj = pipeSplit(tmpl, ['author']);
+    let str = 'Own work';
+    if (obj.author) {
+      str += ' by ' + obj.author;
+    }
+    return str;
+  },
+  //https://en.wikipedia.org/wiki/Template:Sic
+  sic: (tmpl, r) => {
+    let obj = pipeSplit(tmpl, ['one', 'two', 'three']);
+    let word = (obj.one || '') + (obj.two || '');
+    //support '[sic?]'
+    if (obj.one === '?') {
+      word = (obj.two || '') + (obj.three || '');
+    }
+    r.templates.push({
+      template: 'sic',
+      word: word
+    });
+    if (obj.nolink === 'y') {
+      return word;
+    }
+    return `${word} [sic]`;
+  }
+
 };
+
 
 inline['str left'] = inline.trunc;
 inline['str crop'] = inline.trunc;

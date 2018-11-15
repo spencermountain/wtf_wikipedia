@@ -1,2 +1,3 @@
-let sports = {};
-module.exports = sports;
+module.exports = Object.assign({},
+  require('./soccer')
+);

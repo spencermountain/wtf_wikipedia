@@ -13,7 +13,6 @@ const ignore = [
   'hiero',
   'imagemap',
   'inputbox',
-  'math',
   'nowiki',
   'poem',
   'references',

@@ -15,11 +15,19 @@ const keyValue = function(tmpl, isInfobox) {
       arr[i] = null;
     }
   });
-  arr = arr.filter((a) => a && a.indexOf('=') !== -1);
-  let obj = arr.reduce((h, line) => {
+  //remove first line (template name)
+  arr = arr.slice(1);
+  //remove empty lines
+  arr = arr.filter((a) => a && a.trim().length > 0); // && a.indexOf('=') !== -1
+  //start turning it into a key-value map
+  let obj = arr.reduce((h, line, i) => {
     let parts = line.split(/=/);
     if (parts.length > 2) {
       parts[1] = parts.slice(1).join('=');
+    }
+    //use index when there's no key/value eg. '| foo'
+    if (parts.length < 2) {
+      parts = [String(i), line];
     }
     let key = parts[0].toLowerCase().trim();
     let val = parts[1].trim();

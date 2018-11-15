@@ -36,7 +36,6 @@ const list = [
   'reflist',
   'ref-list',
   'div col',
-  'flag',
   'authority control',
   //https://en.wikipedia.org/wiki/Template:Citation_needed
   'better source',
