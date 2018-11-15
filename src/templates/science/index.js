@@ -48,5 +48,11 @@ let templates = {
     r.templates.push(obj);
     return `[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ${obj.text || obj.number}]`;
   },
+  //https://en.wikipedia.org/wiki/Template:Chem2
+  chem2: (tmpl, r) => {
+    let obj = pipeSplit(tmpl, ['equation']);
+    r.templates.push(obj);
+    return obj.equation;
+  },
 };
 module.exports = templates;

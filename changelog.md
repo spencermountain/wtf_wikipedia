@@ -125,3 +125,5 @@
 ### 6.2.0
 * support categories in redirects
 * add mongo-encoding from dumpster-dive
+### 6.3.0
+* support way (+20%?) more templates.

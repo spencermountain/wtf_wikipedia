@@ -18,10 +18,9 @@ let str = `{| class="wikitable" align="center"
 // str = `<chem>{C_mathit{x}H_mathit{y}} + mathit{z}O2 -> {mathit{x}CO2} +rac{mathit{y}}{2}H2O</chem> `;
 // str = `{{chem|link=oxygen|O|2}} `;
 
-
+str = `{{chem2|CH3(CH2)5CH3}}`;
 
 let doc = wtf(str);
 console.log(doc.text());
-console.log(doc.tables(0).markdown());
-// console.log(doc.templates());
+console.log(doc.templates());
 // console.log(doc.links(0));

@@ -58,7 +58,8 @@ test('inline-with-data', function(t) {
     [`goal`, `{{goal|14||54|p|72||87}}`],
     [`isbn`, `{{ISBN|978-1-4133-0454-1}}`],
     [`based on`, `{{based on|"[[Super-Toys Last All Summer Long]]"|[[Brian Aldiss]]}}`],
-    [`mpc`, `{{MPC|75482|(75482) 1999 XC173}}`]
+    [`mpc`, `{{MPC|75482|(75482) 1999 XC173}}`],
+    [`chem2`, `{{chem2|CH3(CH2)5CH3}}`]
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);
