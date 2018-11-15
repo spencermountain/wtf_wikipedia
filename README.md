@@ -6,7 +6,7 @@
     <img src="https://img.shields.io/npm/v/wtf_wikipedia.svg?style=flat-square" />
   </a>
   <a href="https://codecov.io/gh/spencermountain/wtf_wikipedia">
-    <img src="https://codecov.io/gh/spencermountain/wtf_wikipedia/branch/dev/graph/badge.svg" />
+    <img src="https://codecov.io/gh/spencermountain/wtf_wikipedia/branch/master/graph/badge.svg" />
   </a>
   <div>wikipedia markup parser</div>
   <sub>
