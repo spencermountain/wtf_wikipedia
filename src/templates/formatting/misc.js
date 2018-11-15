@@ -105,6 +105,15 @@ const inline = {
     let obj = pipeSplit(tmpl, ['text']);
     return `[[${obj.text}-class lifeboat|${obj.text}]]`;
   },
+  // https://en.wikipedia.org/wiki/Template:Own
+  own: (tmpl) => {
+    let obj = pipeSplit(tmpl, ['author']);
+    let str = 'Own work';
+    if (obj.author) {
+      str += ' by ' + obj.author;
+    }
+    return str;
+  },
   //https://en.wikipedia.org/wiki/Template:Sic
   sic: (tmpl, r) => {
     let obj = pipeSplit(tmpl, ['one', 'two', 'three']);

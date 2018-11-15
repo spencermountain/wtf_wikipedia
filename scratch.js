@@ -10,23 +10,17 @@ const wtf = require('./src/index');
 
 // let doc = readFile('jodie_emery');
 // console.log(doc.markdown());
+let str = `{| class="wikitable" align="center"
+| style="background: gray;"      | <math>x^2</math>
+| style="background: Goldenrod;" | <math>y^3</math>
+|}
+`;
+str = `{{chem|link=oxygen|O|2}} `;
+str = `<chem>{C_mathit{x}H_mathit{y}} + mathit{z}O2 -> {mathit{x}CO2} +rac{mathit{y}}{2}H2O</chem> `;
 
-var str = `{{Collapsible list
- | title = [[European Free Trade Association]] members
- | [[Iceland]]
- | [[Liechtenstein]]
- | [[Norway]]
- | [[Switzerland]]
-}}`;
-// str = ` {{Collapsible list
-//   |framestyle=border:none; padding:0; <!--Hides borders and improves row spacing-->
-//   |title=List of MPs
-//   |1=[[Dean Allison]] |2=[[Chris Charlton]] |3=[[David Christopherson]] |4=[[Wayne Marston]] |5=[[David Sweet]]
-//  }}`;
 
-// str = `hello {{math|big=1|1 + 2 {{=}} 3}} world`;
 
 let doc = wtf(str);
 console.log(doc.text());
-// console.log(doc.templates(0));
+console.log(doc.templates());
 // console.log(doc.links(0));
