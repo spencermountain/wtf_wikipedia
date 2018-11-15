@@ -47,6 +47,26 @@ const misc = {
     r.templates.push(obj);
     return `${obj.title} by ${obj.author || ''}`;
   },
+  //https://en.wikipedia.org/wiki/Template:Video_game_release
+  'video game release': (tmpl, r) => {
+    let order = ['region', 'date', 'region2', 'date2', 'region3', 'date3', 'region4', 'date4'];
+    let obj = pipeSplit(tmpl, order);
+    let template = {
+      template: 'video game release',
+      releases: []
+    };
+    for(let i = 0; i < order.length; i += 2) {
+      if (obj[order[i]]) {
+        template.releases.push({
+          region: obj[order[i]],
+          date: obj[order[i + 1]],
+        });
+      }
+    }
+    r.templates.push(template);
+    let str = template.releases.map((o) => `${o.region}: ${o.date || ''}`).join('\n\n');
+    return '\n' + str + '\n';
+  },
   '__throw-wtf-error': () => {
     //okay you asked for it!
     throw new Error('Intentional error thrown from wtf-wikipedia!');

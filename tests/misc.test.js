@@ -78,14 +78,14 @@ test('misc templates', t => {
     [`{{plural|1|page}}`, '1 page'],
     [`{{plural|1.5|page}}`, '1.5 pages'],
     [`{{plural|20|fly}}`, '20 flies'],
-    [`{{Ordered list |entry1 |entry2| entry3 }}`, 'entry1, entry2, entry3'],
     [`{{hlist|Winner|Runner-up|Third place|item_style=color:blue;|indent=2}}`, 'Winner · Runner-up · Third place'],
-    [`{{unbulleted list|first item|second item|third item}}`, 'first item, second item, third item'],
     [`{{block indent |1=The material to be indented here. May include markup, paragraph breaks, etc.}}`, 'The material to be indented here. May include markup, paragraph breaks, etc.'],
+    [`{{Ordered list |entry1 |entry2| entry3 }}`, '1. entry1\n\n2. entry2\n\n3. entry3'],
+    [`{{unbulleted list|first item|second item|third item}}`, 'first item\n\nsecond item\n\nthird item'],
   ];
   arr.forEach((a) => {
     var str = wtf(a[0]).plaintext();
-    t.equal(str, a[1], a[0].substr(0, 12));
+    t.equal(str, a[1], a[0].substr(2, 12).replace(/\|.*/, ''));
   });
   // var str = ` {{Monthyear}}`;
   // var str = ` {{Time ago| Jan 6 2018|magnitude=weeks}}`;
