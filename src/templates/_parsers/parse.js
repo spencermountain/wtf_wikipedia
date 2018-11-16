@@ -1,5 +1,6 @@
 //remove the top/bottom off the template
 const strip = require('./_strip');
+const fmtName = require('./_fmtName');
 const parseSentence = require('../../04-sentence').oneSentence;
 const pipeSplitter = require('./01-pipe-splitter');
 const keyMaker = require('./02-keyMaker');
@@ -41,7 +42,7 @@ const parser = function(tmpl, order, fmt) {
   });
   //add the template name
   if (name) {
-    obj.template = name.trim();
+    obj.template = fmtName(name);
   }
   return obj;
 };

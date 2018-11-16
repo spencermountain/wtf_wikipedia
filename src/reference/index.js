@@ -1,5 +1,4 @@
-const parseGeneric = require('../templates/_parsers/generic');
-const pipeSplit = require('../templates/_parsers/pipeSplit');
+const parse = require('../templates/_parsers/parse');
 const parseSentence = require('../04-sentence').oneSentence;
 const Reference = require('./Reference');
 
@@ -10,13 +9,13 @@ const hasCitation = function(str) {
 
 //might as well parse it, since we're here.
 const parseCitation = function(tmpl) {
-  let obj = parseGeneric(tmpl);
+  let obj = parse(tmpl);
   if (obj) {
     return obj;
   }
   //support {{cite gnis|98734}} format (yuck!)
   let order = ['id', 'name', 'type'];
-  let data = pipeSplit(tmpl, order);
+  let data = parse(tmpl, order);
   return {
     template: 'citation',
     type: 'gnis',

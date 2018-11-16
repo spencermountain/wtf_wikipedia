@@ -1,7 +1,13 @@
 const whoCares = {
   'classname': true,
   'style': true,
-  'align': true
+  'align': true,
+  'margin': true,
+  'left': true,
+  'break': true,
+  'boxsize': true,
+  'collapsible': true,
+  'display': true,
 };
 
 //remove wiki-cruft & some styling info from templates

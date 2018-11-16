@@ -1,26 +1,26 @@
-const pipeSplit = require('../_parsers/pipeSplit');
+const parse = require('../_parsers/parse');
 
 let templates = {
   /* mostly wiktionary*/
   etyl: (tmpl) => {
     let order = ['lang', 'page'];
-    return pipeSplit(tmpl, order).page || '';
+    return parse(tmpl, order).page || '';
   },
   mention: (tmpl) => {
     let order = ['lang', 'page'];
-    return pipeSplit(tmpl, order).page || '';
+    return parse(tmpl, order).page || '';
   },
   link: (tmpl) => {
     let order = ['lang', 'page'];
-    return pipeSplit(tmpl, order).page || '';
+    return parse(tmpl, order).page || '';
   },
   'la-verb-form': (tmpl) => {
     let order = ['word'];
-    return pipeSplit(tmpl, order).word || '';
+    return parse(tmpl, order).word || '';
   },
   'la-ipa': (tmpl) => {
     let order = ['word'];
-    return pipeSplit(tmpl, order).word || '';
+    return parse(tmpl, order).word || '';
   },
 };
 
@@ -58,7 +58,7 @@ const links = [
 links.forEach((k) => {
   templates[k] = (tmpl) => {
     let order = ['first', 'second'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     return obj.second || obj.first;
   };
 });

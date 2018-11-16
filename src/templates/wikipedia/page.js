@@ -1,7 +1,5 @@
-const keyValue = require('../_parsers/keyValue');
-const getInside = require('../_parsers/inside');
-const pipeSplit = require('../_parsers/pipeSplit');
 const pipeList = require('../_parsers/pipeList');
+const parse = require('../_parsers/parse');
 const Image = require('../../image/Image');
 
 const sisterProjects = {
@@ -23,56 +21,45 @@ const sisterProjects = {
 };
 
 const parsers = {
-
+  //https://en.wikipedia.org/wiki/Template:Book_bar
   'book bar': (tmpl, r) => {
-    let obj = pipeList(tmpl);
+    let obj = parse(tmpl);
     r.templates.push(obj);
     return '';
   },
-
+  //https://en.wikipedia.org/wiki/Template:Main
   main: (tmpl, r) => {
-    let obj = getInside(tmpl);
-    obj = {
-      template: 'main',
-      page: obj.data
-    };
+    let obj = parse(tmpl);
     r.templates.push(obj);
     return '';
   },
-  wide_image: (tmpl, r) => {
-    let obj = getInside(tmpl);
-    obj = {
-      template: 'wide_image',
-      image: obj.data
-    };
+  'wide image': (tmpl, r) => {
+    let obj = parse(tmpl, ['file', 'width', 'caption']);
     r.templates.push(obj);
     return '';
   },
 
   //same in every language.
   citation: (tmpl, r) => {
-    let data = keyValue(tmpl);
-    let obj = {
-      template: 'citation',
-      data: data
-    };
+    let obj = parse(tmpl);
     r.templates.push(obj);
     return '';
   },
 
   //https://en.wikipedia.org/wiki/Template:Redirect
   redirect: (tmpl, r) => {
-    let data = pipeList(tmpl).data;
+    let data = parse(tmpl, ['name']);
+    let list = data.list || [];
     let links = [];
-    for(let i = 1; i < data.length; i += 2) {
+    for(let i = 0; i < list.length; i += 2) {
       links.push({
-        page: data[i + 1],
-        desc: data[i]
+        page: list[i + 1],
+        desc: list[i]
       });
     }
     let obj = {
       template: 'redirect',
-      redirect: data[0],
+      name: data.name,
       links: links
     };
     r.templates.push(obj);
@@ -82,46 +69,31 @@ const parsers = {
   //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
   'cite gnis': (tmpl, r) => {
     let order = ['id', 'name', 'type'];
-    let data = pipeSplit(tmpl, order);
-    let obj = {
-      template: 'citation',
-      type: 'gnis',
-      data: data
-    };
+    let obj = parse(tmpl, order);
     r.templates.push(obj);
     return '';
   },
   'sfn': (tmpl, r) => {
     let order = ['author', 'year', 'location'];
-    let data = pipeSplit(tmpl, order);
-    let obj = {
-      template: 'citation',
-      type: 'sfn',
-      data: data
-    };
+    let obj = parse(tmpl, order);
     r.templates.push(obj);
     return '';
   },
   'audio': (tmpl, r) => {
     let order = ['file', 'text', 'type'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     r.templates.push(obj);
     return '';
   },
+  //https://en.wikipedia.org/wiki/Template:Portal
   'portal': (tmpl, r) => {
-    let order = ['portal', 'portal2', 'portal3', 'portal4', 'portal5', 'portal6', 'portal7'];
-    let obj = pipeSplit(tmpl, order);
-    let portals = order.map((str) => obj[str]);
-    portals = portals.filter(s => s);
-    r.templates.push({
-      template: 'portal',
-      list: portals
-    });
+    let obj = parse(tmpl);
+    r.templates.push(obj);
     return '';
   },
   'spoken wikipedia': (tmpl, r) => {
     let order = ['file', 'date'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     obj.template = 'audio';
     r.templates.push(obj);
     return '';
@@ -129,7 +101,8 @@ const parsers = {
 
   //https://en.wikipedia.org/wiki/Template:Sister_project_links
   'sister project links': (tmpl, r) => {
-    let data = keyValue(tmpl);
+    let data = parse(tmpl);
+    //rename 'wd' to 'wikidata'
     let links = {};
     Object.keys(sisterProjects).forEach((k) => {
       if (data.hasOwnProperty(k) === true) {
@@ -146,8 +119,9 @@ const parsers = {
 
   //https://en.wikipedia.org/wiki/Template:Subject_bar
   'subject bar': (tmpl, r) => {
-    let data = keyValue(tmpl);
+    let data = parse(tmpl);
     Object.keys(data).forEach((k) => {
+      //rename 'voy' to 'wikivoyage'
       if (sisterProjects.hasOwnProperty(k)) {
         data[sisterProjects[k]] = data[k];
         delete data[k];
@@ -160,13 +134,15 @@ const parsers = {
     r.templates.push(obj);
     return '';
   },
+
   'short description': (tmpl, r) => {
-    let data = pipeList(tmpl);
-    let obj = {
-      template: data.template,
-      description: data.data[0]
-    };
-    r.templates.push(obj);
+    let data = parse(tmpl, ['description']);
+    if (data['1']) {
+      console.log(`~=~=~**here**~=~`);
+      data.description = data['1'];
+      delete data['1'];
+    }
+    r.templates.push(data);
     return '';
   },
   'good article': (tmpl, r) => {
@@ -177,9 +153,7 @@ const parsers = {
     return '';
   },
   'coord missing': (tmpl, r) => {
-    let obj = {
-      template: 'coord missing'
-    };
+    let obj = parse(tmpl, ['region']);
     r.templates.push(obj);
     return '';
   },
@@ -203,24 +177,8 @@ const parsers = {
   },
   //https://en.wikipedia.org/wiki/Template:See_also
   'see also': (tmpl, r) => {
-    let order = ['1', '2', '3', '4', '5', '6', '7'];
-    let obj = pipeSplit(tmpl, order);
-    let pages = [];
-    order.forEach((o) => {
-      if (obj[o]) {
-        let link = {
-          page: obj[o]
-        };
-        if (obj['l' + o]) {
-          link.text = obj['l' + o];
-        }
-        pages.push(link);
-      }
-    });
-    r.templates.push({
-      template: 'see also',
-      pages: pages
-    });
+    let data = parse(tmpl);
+    r.templates.push(data);
     return '';
   },
   'italic title': (tmpl, r) => {
@@ -230,9 +188,7 @@ const parsers = {
     return '';
   },
   'unreferenced': (tmpl, r) => {
-    let order = ['date'];
-    let obj = pipeSplit(tmpl, order);
-    obj.template = 'unreferenced';
+    let obj = parse(tmpl, ['date']);
     r.templates.push(obj);
     return '';
   }
@@ -242,6 +198,7 @@ parsers['cite'] = parsers.citation;
 parsers['sfnref'] = parsers.sfn;
 parsers['harvid'] = parsers.sfn;
 parsers['harvnb'] = parsers.sfn;
+parsers['unreferenced section'] = parsers.unreferenced;
 parsers['redir'] = parsers.redirect;
 parsers['sisterlinks'] = parsers['sister project links'];
 parsers['main article'] = parsers['main'];

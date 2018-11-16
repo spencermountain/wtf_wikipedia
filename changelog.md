@@ -127,3 +127,6 @@
 * add mongo-encoding from dumpster-dive
 ### 6.3.0
 * support way (+20%?) more templates.
+### 7.0.0
+* change result-format in a bunch of templates
+* * notably: reference format, see also,
