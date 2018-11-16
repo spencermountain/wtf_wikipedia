@@ -1,4 +1,4 @@
-const pad = require('../_lib/pad');
+const pad = require('../../_lib/pad');
 /* this is a markdown table:
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|

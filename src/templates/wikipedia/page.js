@@ -1,4 +1,3 @@
-const pipeList = require('../_parsers/pipeList');
 const parse = require('../_parsers/parse');
 const Image = require('../../image/Image');
 
@@ -161,8 +160,8 @@ const parsers = {
   //amazingly, this one does not obey any known patterns
   //https://en.wikipedia.org/wiki/Template:Gallery
   'gallery': (tmpl, r) => {
-    let obj = pipeList(tmpl);
-    let images = obj.data.filter(line => /^ *File ?:/.test(line));
+    let obj = parse(tmpl);
+    let images = obj.list.filter(line => /^ *File ?:/.test(line));
     images = images.map((file) => {
       let img = {
         file: file

@@ -1,4 +1,4 @@
-
+//create a formal LATEX table
 const doTable = function(table, options) {
   let out = '\n%\\vspace*{0.3cm}\n';
   out += '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns';

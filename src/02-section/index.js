@@ -5,7 +5,7 @@ const section_reg = /(?:\n|^)(={2,5}.{1,200}?={2,5})/g;
 //interpret ==heading== lines
 const parse = {
   heading: require('./heading'),
-  table: require('../table'),
+  table: require('./table'),
   paragraphs: require('../03-paragraph'),
   templates: require('../templates'),
   references: require('./reference'),
