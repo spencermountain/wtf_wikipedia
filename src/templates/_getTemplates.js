@@ -1,8 +1,8 @@
-const strip = require('./_strip');
+const strip = require('./_parsers/_strip');
 const open = '{';
 const close = '}';
 
-//
+//grab all first-level recursions of '{{...}}'
 const findFlat = function(wiki) {
   let depth = 0;
   let list = [];
