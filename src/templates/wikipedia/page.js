@@ -21,6 +21,14 @@ const sisterProjects = {
 };
 
 const parsers = {
+  //same in every language.
+  citation: (tmpl, r) => {
+    let obj = parse(tmpl);
+    obj.type = obj.template.replace(/cite /, '');
+    obj.template = 'citation';
+    r.templates.push(obj);
+    return '';
+  },
   //https://en.wikipedia.org/wiki/Template:Book_bar
   'book bar': (tmpl, r) => {
     let obj = parse(tmpl);
@@ -35,13 +43,6 @@ const parsers = {
   },
   'wide image': (tmpl, r) => {
     let obj = parse(tmpl, ['file', 'width', 'caption']);
-    r.templates.push(obj);
-    return '';
-  },
-
-  //same in every language.
-  citation: (tmpl, r) => {
-    let obj = parse(tmpl);
     r.templates.push(obj);
     return '';
   },
@@ -70,6 +71,8 @@ const parsers = {
   'cite gnis': (tmpl, r) => {
     let order = ['id', 'name', 'type'];
     let obj = parse(tmpl, order);
+    obj.type = 'gnis';
+    obj.template = 'citation';
     r.templates.push(obj);
     return '';
   },
