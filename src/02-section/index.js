@@ -8,7 +8,7 @@ const parse = {
   table: require('../table'),
   paragraphs: require('../03-paragraph'),
   templates: require('../templates'),
-  references: require('../reference'),
+  references: require('./reference'),
   xmlTemplates: require('./xml-templates')
 };
 

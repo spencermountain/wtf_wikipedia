@@ -1,5 +1,5 @@
-const parse = require('../templates/_parsers/parse');
-const parseSentence = require('../04-sentence').oneSentence;
+const parse = require('../../templates/_parsers/parse');
+const parseSentence = require('../../04-sentence').oneSentence;
 const Reference = require('./Reference');
 
 //structured Cite templates - <ref>{{Cite..</ref>

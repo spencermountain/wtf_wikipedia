@@ -48,7 +48,7 @@ const parsers = {
 
   //https://en.wikipedia.org/wiki/Template:Redirect
   redirect: (tmpl, r) => {
-    let data = parse(tmpl, ['name']);
+    let data = parse(tmpl, ['redirect']);
     let list = data.list || [];
     let links = [];
     for(let i = 0; i < list.length; i += 2) {
@@ -59,7 +59,7 @@ const parsers = {
     }
     let obj = {
       template: 'redirect',
-      name: data.name,
+      redirect: data.redirect,
       links: links
     };
     r.templates.push(obj);
