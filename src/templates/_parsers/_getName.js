@@ -1,3 +1,4 @@
+const fmtName = require('./_fmtName');
 //get the name of the template
 //templates are usually '{{name|stuff}}'
 const getName = function(tmpl) {
@@ -14,7 +15,7 @@ const getName = function(tmpl) {
   }
   if (name) {
     name = name.replace(/:.*/, '');
-    name = name.trim().toLowerCase();
+    name = fmtName(name);
   }
   return name || null;
 };

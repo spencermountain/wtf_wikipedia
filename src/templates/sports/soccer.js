@@ -1,24 +1,11 @@
-const pipes = require('../_parsers/_pipes');
 const parse = require('../_parsers/parse');
 
 let sports = {
   //https://en.wikipedia.org/wiki/Template:Goal
   goal: (tmpl, r) => {
-    let order = [
-      'min1', 'note1',
-      'min2', 'note2',
-      'min3', 'note3',
-      'min4', 'note4',
-      'min5', 'note5',
-      'min6', 'note6',
-      'min7', 'note7',
-      'min8', 'note8',
-      'min9', 'note9',
-      'min10', 'note10',
-    ];
-    let res = pipes(tmpl, order);
+    let res = parse(tmpl);
     let obj = {
-      template: res.name,
+      template: 'goal',
       data: []
     };
     let arr = res.list;

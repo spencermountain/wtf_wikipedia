@@ -16,7 +16,12 @@ test('external-links', function(t) {
     [`ted speaker`, `{{TED speaker | j_j_abrams | J.J. Abrams }}`],
     ['afi film', `{{AFI film | 64729 | Quantum of Solace }}`],
     ['allgame', `{{AllGame |326 |The Legend of Zelda: A Link to the Past}}`],
-    [`hollywood walk of fame`, `{{Hollywood Walk of Fame|name = Alan Alda}}`],
+    [`taxon info`, `{{Taxon info|Corallinaceae/stem-group|link_target}}`],
+    [`book bar`, `{{Book bar|Lemurs|Mesozoic mammals of Madagascar|Subfossil lemurs}}`],
+    ['see also', `{{See also|page1|page2|page3| ...
+    |label 1 = label 1|label 2 = label2|label 3 = label3| ...
+    |l1 = label1|l2 = label2|l3 = label3|selfref = yes|category = no}}`],
+    ['unreferenced', `{{Unreferenced section|date=November 2018}}`]
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);

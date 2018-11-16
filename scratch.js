@@ -17,17 +17,20 @@ let str = `{| class="wikitable" align="center"
 `;
 // str = `<chem>{C_mathit{x}H_mathit{y}} + mathit{z}O2 -> {mathit{x}CO2} +rac{mathit{y}}{2}H2O</chem> `;
 // str = `{{chem|link=oxygen|O|2}} `;
-
-str = `{{tryit|heyone|heytwo|hey [[three|3]]|key=value}}`;
-str = `{{coord|40.7127|N|74.0059|W|region:US-NY|format=dms|display=inline,title}}`;
-str = `  {{tryit
-  | name = New York City
-  | official_name                   = City of New York
-  | settlement_type                 = [[City]]
-  | named_for                       = [[James II of England|James, Duke of York]]
-  | coordinates                     =
-  }}`;
-str = `{{sent off|cards|min1|min2|min3}}`;
+// str = `{{coord|40.7127|N|74.0059|W|region:US-NY|format=dms|display=inline,title}}`;
+// str = `  {{tryit
+//   | name = New York City
+//   | official_name                   = City of New York
+//   | settlement_type                 = [[City]]
+//   | named_for                       = [[James II of England|James, Duke of York]]
+//   | coordinates                     =
+//   }}`;
+// str = `hello {{citation |url=cool.com/?fun=yes/   }}{{CITE book |title=the killer and the cartoons }}`;
+str = `{{See also|page1|page2|page3| ...
+|label 1 = label 1|label 2 = label2|label 3 = label3| ...
+|l1 = label1|l2 = label2|l3 = label3| ...
+|selfref = yes|category = no}}`;
+str = `{{Unreferenced section|date=November 2018}}`;
 let doc = wtf(str);
 console.log(doc.text());
 console.log(doc.templates(0));

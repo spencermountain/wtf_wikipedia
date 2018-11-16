@@ -1,37 +1,24 @@
-const keyValue = require('../_parsers/keyValue');
+const parse = require('../_parsers/parse');
 
 let templates = {
   //https://en.wikipedia.org/wiki/Template:Election_box
   'election box begin': (tmpl, r) => {
-    let obj = keyValue(tmpl);
-    let data = {
-      template: 'election box',
-      title: obj.title
-    };
+    let data = parse(tmpl);
     r.templates.push(data);
     return '';
   },
   'election box candidate': (tmpl, r) => {
-    let data = {
-      template: 'election box candidate',
-      data: keyValue(tmpl)
-    };
+    let data = parse(tmpl);
     r.templates.push(data);
     return '';
   },
   'election box hold with party link': (tmpl, r) => {
-    let data = {
-      template: 'election box hold',
-      data: keyValue(tmpl)
-    };
+    let data = parse(tmpl);
     r.templates.push(data);
     return '';
   },
   'election box gain with party link': (tmpl, r) => {
-    let data = {
-      template: 'election box gain',
-      data: keyValue(tmpl)
-    };
+    let data = parse(tmpl);
     r.templates.push(data);
     return '';
   }
