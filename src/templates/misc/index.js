@@ -1,36 +1,27 @@
-const pipeSplit = require('../_parsers/pipeSplit');
-const keyValue = require('../_parsers/keyValue');
 const parse = require('../_parsers/parse');
 
 const misc = {
   'timeline': (tmpl, r) => {
-    let data = keyValue(tmpl);
-    r.templates.push({
-      template: 'timeline',
-      data: {
-        before: data.before,
-        after: data.after,
-        years: data.years,
-      }
-    });
+    let data = parse(tmpl);
+    r.templates.push(data);
     return '';
   },
   'uss': (tmpl, r) => {
     let order = ['ship', 'id'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     r.templates.push(obj);
     return '';
   },
   'isbn': (tmpl, r) => {
     let order = ['id', 'id2', 'id3'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     r.templates.push(obj);
     return 'ISBN: ' + (obj.id || '');
   },
   //https://en.wikipedia.org/wiki/Template:Marriage
   //this one creates a template, and an inline response
   marriage: (tmpl, r) => {
-    let data = pipeSplit(tmpl, ['name', 'from', 'to', 'end']);
+    let data = parse(tmpl, ['name', 'from', 'to', 'end']);
     r.templates.push(data);
     let str = `${data.name || ''}`;
     if (data.from) {
@@ -44,14 +35,14 @@ const misc = {
   },
   //https://en.wikipedia.org/wiki/Template:Based_on
   'based on': (tmpl, r) => {
-    let obj = pipeSplit(tmpl, ['title', 'author']);
+    let obj = parse(tmpl, ['title', 'author']);
     r.templates.push(obj);
     return `${obj.title} by ${obj.author || ''}`;
   },
   //https://en.wikipedia.org/wiki/Template:Video_game_release
   'video game release': (tmpl, r) => {
     let order = ['region', 'date', 'region2', 'date2', 'region3', 'date3', 'region4', 'date4'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     let template = {
       template: 'video game release',
       releases: []
