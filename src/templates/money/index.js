@@ -1,4 +1,4 @@
-const pipeSplit = require('../_parsers/pipeSplit');
+const parse = require('../_parsers/parse');
 
 const codes = {
   us$: 'US$', // https://en.wikipedia.org/wiki/Template:US$
@@ -24,7 +24,7 @@ const codes = {
 };
 
 const parseCurrency = (tmpl, r) => {
-  let o = pipeSplit(tmpl, ['amount', 'code']);
+  let o = parse(tmpl, ['amount', 'code']);
   r.templates.push(o);
   let code = o.template || '';
   if (code === '' || code === 'currency') {

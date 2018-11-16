@@ -26,11 +26,7 @@ let str = `{| class="wikitable" align="center"
 //   | coordinates                     =
 //   }}`;
 // str = `hello {{citation |url=cool.com/?fun=yes/   }}{{CITE book |title=the killer and the cartoons }}`;
-str = `{{See also|page1|page2|page3| ...
-|label 1 = label 1|label 2 = label2|label 3 = label3| ...
-|l1 = label1|l2 = label2|l3 = label3| ...
-|selfref = yes|category = no}}`;
-str = `{{Unreferenced section|date=November 2018}}`;
+str = `{{radic|1 + 2''x''|4}}`;
 let doc = wtf(str);
 console.log(doc.text());
 console.log(doc.templates(0));
