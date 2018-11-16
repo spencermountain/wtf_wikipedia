@@ -6,8 +6,12 @@ const whoCares = {
   'left': true,
   'break': true,
   'boxsize': true,
+  'framestyle': true,
+  'item_style': true,
   'collapsible': true,
   'display': true,
+  'list_style_type': true,
+  'list-style-type': true,
 };
 
 //remove wiki-cruft & some styling info from templates

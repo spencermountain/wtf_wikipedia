@@ -6,7 +6,7 @@ const hasKey = /^[a-z0-9_\- ]+=/i;
 const parseKey = function(str) {
   let parts = str.split('=');
   let key = parts[0] || '';
-  let val = parts.slice(1).join('');
+  let val = parts.slice(1).join('=');
   return {
     key: key.trim(),
     val: val.trim()

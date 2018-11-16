@@ -70,8 +70,12 @@ let templates = {
   },
   //formatting things - https://en.wikipedia.org/wiki/Template:Nobold
   braces: (tmpl) => {
-    let text = parse(tmpl, ['text']).text || '';
-    return '{{' + text + '}}';
+    let obj = parse(tmpl, ['text']);
+    let attrs = '';
+    if (obj.list) {
+      attrs = '|' + obj.list.join('|');
+    }
+    return '{{' + (obj.text || '') + attrs + '}}';
   },
   nobold: (tmpl) => {
     return parse(tmpl, ['text']).text || '';
