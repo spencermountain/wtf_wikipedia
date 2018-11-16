@@ -1,6 +1,6 @@
 const Infobox = require('../infobox/Infobox');
 const Reference = require('../02-section/reference/Reference');
-const getTemplates = require('./_parsers/_getTemplates');
+const getTemplates = require('./_getTemplates');
 const parseTemplate = require('./parse');
 const isCitation = /^cite [a-z]/i;
 const citations = {
