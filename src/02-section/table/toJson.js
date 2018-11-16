@@ -1,4 +1,4 @@
-const encode = require('../_lib/encode');
+const encode = require('../../_lib/encode');
 //
 const toJson = function(tables, options) {
   return tables.map((table) => {

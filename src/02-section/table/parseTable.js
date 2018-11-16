@@ -1,4 +1,4 @@
-const parseSentence = require('../04-sentence/').oneSentence;
+const parseSentence = require('../../04-sentence/').oneSentence;
 const findRows = require('./findRows');
 
 //additional table-cruft to remove before parseLine method

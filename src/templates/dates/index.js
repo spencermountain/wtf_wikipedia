@@ -1,6 +1,6 @@
 const misc = require('./misc');
 const parsers = require('./parsers');
-const pipeSplit = require('../_parsers/pipeSplit');
+const parse = require('../_parsers/parse');
 const timeSince = require('./_timeSince');
 const date = parsers.date;
 const natural_date = parsers.natural_date;
@@ -56,11 +56,11 @@ let templates = Object.assign({}, misc, {
   //Explictly-set dates - https://en.wikipedia.org/wiki/Template:Date
   date: (tmpl) => {
     let order = ['date', 'fmt'];
-    return pipeSplit(tmpl, order).date;
+    return parse(tmpl, order).date;
   },
   'time ago': (tmpl) => {
     let order = ['date', 'fmt'];
-    let time = pipeSplit(tmpl, order).date;
+    let time = parse(tmpl, order).date;
     return timeSince(time);
   },
   //sortable dates -
@@ -69,7 +69,7 @@ let templates = Object.assign({}, misc, {
     tmpl = tmpl.replace(/\|format=[ymd]+/i, '');
     tmpl = tmpl.replace(/\|abbr=(on|off)/i, '');
     let order = ['year', 'month', 'date', 'bc'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     if (obj.date && obj.month && obj.year) {
       //render 'june 5 2018'
       if (/[a-z]/.test(obj.month) === true) {

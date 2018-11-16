@@ -1,12 +1,19 @@
-const setDefaults = require('../_lib/setDefaults');
-const toHtml = require('./toHtml');
-const toMarkdown = require('./toMarkdown');
-const toLatex = require('./toLatex');
+const aliasList = require('../../_lib/aliases');
+const setDefaults = require('../../_lib/setDefaults');
 const toJson = require('./toJson');
-const aliasList = require('../_lib/aliases');
+const toMarkdown = require('./toMarkdown');
+const toHtml = require('./toHtml');
+const toLatex = require('./toLatex');
 const defaults = {};
 
-const Table = function(data) {
+const toText = (list, options) => {
+  return list.map((s) => {
+    let str = s.text(options);
+    return ' * ' + str;
+  }).join('\n');
+};
+
+const List = function(data) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data
@@ -14,14 +21,14 @@ const Table = function(data) {
 };
 
 const methods = {
+  lines() {
+    return this.data;
+  },
   links(n) {
     let links = [];
-    this.data.forEach((r) => {
-      Object.keys(r).forEach((k) => {
-        links = links.concat(r[k].links());
-      });
+    this.lines().forEach((s) => {
+      links = links.concat(s.links());
     });
-    //grab a specific link..
     if (typeof n === 'number') {
       return links[n];
     } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
@@ -31,40 +38,32 @@ const methods = {
     }
     return links;
   },
-  keyValue(options) {
-    let rows = this.json(options);
-    rows.forEach((row) => {
-      Object.keys(row).forEach((k) => {
-        row[k] = row[k].text;
-      });
-    });
-    return rows;
-  },
-  json(options) {
+  markdown(options) {
     options = setDefaults(options, defaults);
-    return toJson(this.data, options);
+    return toMarkdown(this, options);
   },
   html(options) {
     options = setDefaults(options, defaults);
-    return toHtml(this.data, options);
-  },
-  markdown(options) {
-    options = setDefaults(options, defaults);
-    return toMarkdown(this.data, options);
+    return toHtml(this, options);
   },
   latex(options) {
     options = setDefaults(options, defaults);
-    return toLatex(this.data, options);
+    return toLatex(this, options);
+  },
+  json(options) {
+    options = setDefaults(options, defaults);
+    return toJson(this, options);
   },
   text() {
-    return '';
+    return toText(this.data);
   }
 };
+
 Object.keys(methods).forEach((k) => {
-  Table.prototype[k] = methods[k];
+  List.prototype[k] = methods[k];
 });
 //add alises, too
 Object.keys(aliasList).forEach((k) => {
-  Table.prototype[k] = methods[aliasList[k]];
+  List.prototype[k] = methods[aliasList[k]];
 });
-module.exports = Table;
+module.exports = List;

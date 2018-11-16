@@ -31,9 +31,9 @@ test('generic-list', t => {
   var doc = wtf(str);
   var obj = doc.templates(0);
   t.equal(obj.template, 'portal bar', 'name');
-  t.equal(obj.data[0], 'portal 1', 'list1');
-  t.equal(obj.data[1], 'portal 2', 'list2');
-  t.equal(obj.data.length, 2, 'list-len');
+  t.equal(obj.list[0], 'portal 1', 'list1');
+  t.equal(obj.list[1], 'portal 2', 'list2');
+  t.equal(obj.list.length, 2, 'list-len');
   t.end();
 });
 
@@ -106,7 +106,7 @@ test('austria-hungary', t => {
   var doc = wtf(str);
 
   t.equal(doc.text(), 'Austria-Hungary, often referred to as the Austro-Hungarian Empire or the Dual Monarchy', 'got-plaintext');
-  t.equal(doc.templates('for')[0].data[1], 'Austria–Hungary relations', 'nested emdash');
+  t.equal(doc.templates('for')[0].list[1], 'Austria–Hungary relations', 'nested emdash');
   t.equal(doc.links('budapest')[0].page, 'Budapest', 'got Budapest link');
   t.equal(doc.templates('short description')[0].description, 'Constitutional monarchic union from 1867 to October 1918', 'short-description');
   t.end();
