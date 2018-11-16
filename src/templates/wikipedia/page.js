@@ -24,8 +24,6 @@ const parsers = {
   //same in every language.
   citation: (tmpl, r) => {
     let obj = parse(tmpl);
-    obj.type = obj.template.replace(/cite /, '');
-    obj.template = 'citation';
     r.templates.push(obj);
     return '';
   },

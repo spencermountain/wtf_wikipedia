@@ -6,7 +6,7 @@ test('basic-citation', t => {
   var str = `Emery is a vegetarian,<ref>{{cite web|title=The princess of pot|url=http://thewalrus.ca/the-princess-of-pot/}}</ref>`;
   var arr = wtf(str).citations().map(c => c.json());
   t.equal(arr.length, 1, 'found-one-citation');
-  t.equal(arr[0].name, 'cite web', 'cite web');
+  t.equal(arr[0].type, 'web', 'cite web');
   t.equal(arr[0].title, 'The princess of pot', 'title');
   t.equal(arr[0].url, 'http://thewalrus.ca/the-princess-of-pot/', 'url');
   t.end();
@@ -17,7 +17,7 @@ test('complex-citation', t => {
 | url=http://cool.com/?fun=cool/}}</ref>`;
   var arr = wtf(str).citations().map(c => c.json());
   t.equal(arr.length, 1, 'found-one-citation');
-  t.equal(arr[0].name, 'cite web', 'cite web');
+  t.equal(arr[0].type, 'web', 'cite web');
   t.equal(arr[0].foo, 'bar', 'foo');
   t.equal(arr[0].url, 'http://cool.com/?fun=cool/', 'url');
   t.end();

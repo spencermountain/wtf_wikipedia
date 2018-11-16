@@ -27,9 +27,11 @@ let str = `{| class="wikitable" align="center"
 //   }}`;
 // str = `hello {{citation |url=cool.com/?fun=yes/   }}{{CITE book |title=the killer and the cartoons }}`;
 str = `{{cite book |editor-last=Heilbron |editor-first=John L. |url=https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233 |isbn=978-0-19-974376-6 |page=233}}`;
-str = `<ref>{{cite book |editor-last=Heilbron }}</ref>`;
+str = `hello {{citation |url=cool.com/?fun=yes/   }}{{CITE book |title=the killer and the cartoons }}`;
+str = `hello {{main|lksdf|asdf }}`;
 
 let doc = wtf(str);
 console.log(doc.text());
-console.log(doc.templates(0));
+console.log(doc.templates());
+console.log(doc.citations());
 // console.log(doc.links(0));

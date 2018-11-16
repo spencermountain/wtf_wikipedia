@@ -1,5 +1,6 @@
 const ignore = require('./_ignore');
 const getName = require('./_parsers/_getName');
+const parse = require('./_parsers/parse');
 
 const templates = Object.assign({},
   require('./wikipedia'),
@@ -32,6 +33,13 @@ const parseTemplate = function(tmpl, wiki, data, options) {
   if (templates.hasOwnProperty(name) === true) {
     let str = templates[name](tmpl, data);
     wiki = wiki.replace(tmpl, str);
+    return wiki;
+  }
+  //cite book, cite arxiv...
+  if (/^cite [a-z]/.test(name) === true) {
+    let obj = parse(tmpl, data);
+    data.templates.push(obj);
+    wiki = wiki.replace(tmpl, '');
     return wiki;
   }
 
