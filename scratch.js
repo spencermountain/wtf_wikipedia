@@ -26,7 +26,11 @@ let str = `{| class="wikitable" align="center"
 //   | coordinates                     =
 //   }}`;
 // str = `hello {{citation |url=cool.com/?fun=yes/   }}{{CITE book |title=the killer and the cartoons }}`;
-str = `{{radic|1 + 2''x''|4}}`;
+str = `{{inflection of|avoir||3|p|pres|ind|lang=fr}}`;
+str = `{{tag|math|attribs=chem}}`;
+str = `{{plural|-1.5|page}}`;
+str = `{{First word| Foo bar baz}}`;
+str = `{{nobold|text-string}}`;
 let doc = wtf(str);
 console.log(doc.text());
 console.log(doc.templates(0));
