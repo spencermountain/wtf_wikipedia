@@ -21,7 +21,7 @@ test('external-links', function(t) {
     ['see also', `{{See also|page1|page2|page3| ...
     |label 1 = label 1|label 2 = label2|label 3 = label3| ...
     |l1 = label1|l2 = label2|l3 = label3|selfref = yes|category = no}}`],
-    ['unreferenced', `{{Unreferenced section|date=November 2018}}`]
+    ['unreferenced section', `{{Unreferenced section|date=November 2018}}`]
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);
@@ -75,7 +75,7 @@ test('wikipedia-templates', function(t) {
     [`main`, `{{Main|Article1|l1=Custom label 1|Article2|l2=Custom label 2}}`],
     [`wide image`, `{{wide image|Helsinki z00.jpg|1800px||alt=Panorama of city with mixture of five to ten story buildings}}`],
     [`ipa`, `{{IPA|/[[character|ˈkærəktɚz]]/}}`],
-    [`ipa`, `{{IPAc-ko|h|a|n|g|u|k}}`],
+    [`ipac`, `{{IPAc-ko|h|a|n|g|u|k}}`],
     [`coor`, `{{Coord|44.112|N|87.913|W|display=title}}`],
     [`gnis`, `{{GNIS | 871352 | Mount Washington }}`],
     [`portal`, `{{Portal

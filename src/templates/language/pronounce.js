@@ -3,7 +3,7 @@ const languages = require('../../_data/languages');
 
 const getLang = function(name) {
   //grab the language from the template name - 'ipa-de'
-  let lang = name.match(/ipa-(.+)/);
+  let lang = name.match(/ipac?-(.+)/);
   if (lang !== null) {
     if (languages.hasOwnProperty(lang[1]) === true) {
       return languages[lang[1]].english_title;
@@ -28,6 +28,8 @@ const templates = {
     let obj = parse(tmpl);
     obj.transcription = obj.list.join(',');
     delete obj.list;
+    obj.lang = getLang(obj.template);
+    obj.template = 'ipac';
     r.templates.push(obj);
     return '';
   }
