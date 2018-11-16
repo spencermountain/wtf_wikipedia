@@ -1,4 +1,5 @@
 const parse = require('../../templates/_parsers/parse');
+// const parse = require('../../templates/wikipedia/page').citation;
 const parseSentence = require('../../04-sentence').oneSentence;
 const Reference = require('./Reference');
 
@@ -7,20 +8,11 @@ const hasCitation = function(str) {
   return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false;
 };
 
-//might as well parse it, since we're here.
 const parseCitation = function(tmpl) {
   let obj = parse(tmpl);
-  if (obj) {
-    return obj;
-  }
-  //support {{cite gnis|98734}} format (yuck!)
-  let order = ['id', 'name', 'type'];
-  let data = parse(tmpl, order);
-  return {
-    template: 'citation',
-    type: 'gnis',
-    data: data
-  };
+  obj.type = obj.template.replace(/cite /, '');
+  obj.template = 'citation';
+  return obj;
 };
 
 //handle unstructured ones - <ref>some text</ref>
