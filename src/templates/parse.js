@@ -28,7 +28,7 @@ const parseTemplate = function(tmpl, wiki, data, options) {
     return wiki;
   }
 
-  //string-replacement templates
+  //match any known template forms (~1,000!)
   if (templates.hasOwnProperty(name) === true) {
     let str = templates[name](tmpl, data);
     wiki = wiki.replace(tmpl, str);

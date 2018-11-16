@@ -1,5 +1,5 @@
 const pipes = require('../_parsers/_pipes');
-const pipeSplit = require('../_parsers/pipeSplit');
+const parse = require('../_parsers/parse');
 
 let sports = {
   //https://en.wikipedia.org/wiki/Template:Goal
@@ -42,7 +42,7 @@ let sports = {
   },
   //yellow card
   yel: (tmpl, r) => {
-    let obj = pipeSplit(tmpl, ['min']);
+    let obj = parse(tmpl, ['min']);
     r.templates.push(obj);
     if (obj.min) {
       return `yellow: ${obj.min || ''}'`; //no yellow-card emoji
@@ -50,7 +50,7 @@ let sports = {
     return '';
   },
   'subon': (tmpl, r) => {
-    let obj = pipeSplit(tmpl, ['min']);
+    let obj = parse(tmpl, ['min']);
     r.templates.push(obj);
     if (obj.min) {
       return `sub on: ${obj.min || ''}'`; //no yellow-card emoji
@@ -58,7 +58,7 @@ let sports = {
     return '';
   },
   'suboff': (tmpl, r) => {
-    let obj = pipeSplit(tmpl, ['min']);
+    let obj = parse(tmpl, ['min']);
     r.templates.push(obj);
     if (obj.min) {
       return `sub off: ${obj.min || ''}'`; //no yellow-card emoji
@@ -79,14 +79,14 @@ let sports = {
   },
   //'red' card - {{sent off|cards|min1|min2}}
   'sent off': (tmpl, r) => {
-    let obj = pipes(tmpl);
-    let template = {
+    let obj = parse(tmpl, ['cards']);
+    let result = {
       template: 'sent off',
-      cards: obj.list[0],
-      minutes: obj.list.slice(1)
+      cards: obj.cards,
+      minutes: obj.list,
     };
-    r.templates.push(template);
-    let mins = template.minutes.map(m => m + '\'').join(', ');
+    r.templates.push(result);
+    let mins = result.minutes.map(m => m + '\'').join(', ');
     return 'sent off: ' + mins;
   }
 };

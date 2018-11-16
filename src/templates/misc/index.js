@@ -1,5 +1,6 @@
 const pipeSplit = require('../_parsers/pipeSplit');
 const keyValue = require('../_parsers/keyValue');
+const parse = require('../_parsers/parse');
 
 const misc = {
   'timeline': (tmpl, r) => {
@@ -66,6 +67,11 @@ const misc = {
     r.templates.push(template);
     let str = template.releases.map((o) => `${o.region}: ${o.date || ''}`).join('\n\n');
     return '\n' + str + '\n';
+  },
+  tryit: (tmpl) => {
+    let obj = parse(tmpl);
+    console.log(obj);
+    return '';
   },
   '__throw-wtf-error': () => {
     //okay you asked for it!
