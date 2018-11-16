@@ -21,6 +21,7 @@ const makeFormat = function(str, fmt) {
 
 //
 const parser = function(tmpl, order, fmt) {
+  order = order || [];
   //renomove {{}}'s
   tmpl = strip(tmpl || '');
   let arr = pipeSplitter(tmpl);
@@ -32,6 +33,13 @@ const parser = function(tmpl, order, fmt) {
   obj = cleanup(obj);
   //is this a infobox/reference?
   // let known = isKnown(obj);
+
+  //using '|1=content' is an escaping-thing..
+  if (obj['1'] && order[0] && obj.hasOwnProperty(order[0]) === false) {
+    //move it over..
+    obj[order[0]] = obj['1'];
+    delete obj['1'];
+  }
 
   Object.keys(obj).forEach((k) => {
     if (k === 'list') {

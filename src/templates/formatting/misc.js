@@ -1,11 +1,10 @@
-const keyValue = require('../_parsers/keyValue');
-const pipeSplit = require('../_parsers/pipeSplit');
+const parse = require('../_parsers/parse');
 
 const inline = {
   //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
   convert: (tmpl) => {
     let order = ['num', 'two', 'three', 'four'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     //todo: support plural units
     if (obj.two === '-' || obj.two === 'to' || obj.two === 'and') {
       if (obj.four) {
@@ -17,36 +16,32 @@ const inline = {
   },
   //https://en.wikipedia.org/wiki/Template:Term
   term: (tmpl) => {
-    let order = ['term'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, ['term']);
     return `${obj.term}:`;
   },
   defn: (tmpl) => {
-    let order = ['desc'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, ['desc']);
     return obj.desc;
   },
   //https://en.wikipedia.org/wiki/Template:Linum
   lino: (tmpl) => {
-    let order = ['num'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, ['num']);
     return `${obj.num}`;
   },
   linum: (tmpl) => {
-    let order = ['num', 'text'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, ['num', 'text']);
     return `${obj.num}. ${obj.text}`;
   },
   //https://en.wikipedia.org/wiki/Template:Interlanguage_link
   ill: (tmpl) => {
     let order = ['text', 'lan1', 'text1', 'lan2', 'text2'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     return obj.text;
   },
   //https://en.wikipedia.org/wiki/Template:Frac
   frac: (tmpl) => {
     let order = ['a', 'b', 'c'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     if (obj.c) {
       return `${obj.a} ${obj.b}/${obj.c}`;
     }
@@ -56,8 +51,9 @@ const inline = {
     return `1/${obj.b}`;
   },
   //https://en.wikipedia.org/wiki/Template:Height - {{height|ft=6|in=1}}
-  height: (tmpl) => {
-    let obj = keyValue(tmpl);
+  height: (tmpl, r) => {
+    let obj = parse(tmpl);
+    r.templates.push(obj);
     let result = [];
     let units = ['m', 'cm', 'ft', 'in']; //order matters
     units.forEach((unit) => {
@@ -69,7 +65,7 @@ const inline = {
   },
 
   'block indent': (tmpl) => {
-    let obj = keyValue(tmpl);
+    let obj = parse(tmpl);
     if (obj['1']) {
       return '\n' + obj['1'] + '\n';
     }
@@ -77,7 +73,7 @@ const inline = {
   },
   'quote': (tmpl, r) => {
     let order = ['text', 'author'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     r.templates.push(obj);
     //create plaintext version
     if (obj.text) {
@@ -93,21 +89,21 @@ const inline = {
 
   //https://en.wikipedia.org/wiki/Template:Lbs
   lbs: (tmpl) => {
-    let obj = pipeSplit(tmpl, ['text']);
+    let obj = parse(tmpl, ['text']);
     return `[[${obj.text} Lifeboat Station|${obj.text}]]`;
   },
   //Foo-class
   lbc: (tmpl) => {
-    let obj = pipeSplit(tmpl, ['text']);
+    let obj = parse(tmpl, ['text']);
     return `[[${obj.text}-class lifeboat|${obj.text}-class]]`;
   },
   lbb: (tmpl) => {
-    let obj = pipeSplit(tmpl, ['text']);
+    let obj = parse(tmpl, ['text']);
     return `[[${obj.text}-class lifeboat|${obj.text}]]`;
   },
   // https://en.wikipedia.org/wiki/Template:Own
   own: (tmpl) => {
-    let obj = pipeSplit(tmpl, ['author']);
+    let obj = parse(tmpl, ['author']);
     let str = 'Own work';
     if (obj.author) {
       str += ' by ' + obj.author;
@@ -116,7 +112,7 @@ const inline = {
   },
   //https://en.wikipedia.org/wiki/Template:Sic
   sic: (tmpl, r) => {
-    let obj = pipeSplit(tmpl, ['one', 'two', 'three']);
+    let obj = parse(tmpl, ['one', 'two', 'three']);
     let word = (obj.one || '') + (obj.two || '');
     //support '[sic?]'
     if (obj.one === '?') {
@@ -131,10 +127,9 @@ const inline = {
     }
     return `${word} [sic]`;
   }
-
 };
 
-
+//aliases
 inline['str left'] = inline.trunc;
 inline['str crop'] = inline.trunc;
 

@@ -29,9 +29,10 @@ let str = `{| class="wikitable" align="center"
 str = `{{cite book |editor-last=Heilbron |editor-first=John L. |url=https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233 |isbn=978-0-19-974376-6 |page=233}}`;
 str = `hello {{citation |url=cool.com/?fun=yes/   }}{{CITE book |title=the killer and the cartoons }}`;
 str = `hello {{main|lksdf|asdf }}`;
+str = `{{term|1=A-show}}`;
 
 let doc = wtf(str);
 console.log(doc.text());
 console.log(doc.templates());
-console.log(doc.citations());
+// console.log(doc.citations());
 // console.log(doc.links(0));
