@@ -1,15 +1,13 @@
-const pipeSplit = require('../_parsers/pipeSplit');
+const parse = require('../_parsers/parse');
 
 //this format seems to be a pattern for these
 const generic = (tmpl, r) => {
-  let order = ['id', 'title', 'description', 'section'];
-  let obj = pipeSplit(tmpl, order);
+  let obj = parse(tmpl, ['id', 'title', 'description', 'section']);
   r.templates.push(obj);
   return '';
 };
 const idName = (tmpl, r) => {
-  let order = ['id', 'name'];
-  let obj = pipeSplit(tmpl, order);
+  let obj = parse(tmpl, ['id', 'name']);
   r.templates.push(obj);
   return '';
 };
@@ -37,26 +35,6 @@ const externals = {
   'musicbrainz release': generic,
   'musicbrainz work': generic,
   'youtube': generic,
-  //https://en.wikipedia.org/wiki/Template:DMOZ
-  dmoz: generic,
-  'find a grave': (tmpl, r) => {
-    let order = ['id', 'name', 'work', 'last', 'first', 'date', 'accessdate'];
-    let obj = pipeSplit(tmpl, order);
-    r.templates.push(obj);
-    return '';
-  },
-  'congbio': (tmpl, r) => {
-    let order = ['id', 'name', 'date'];
-    let obj = pipeSplit(tmpl, order);
-    r.templates.push(obj);
-    return '';
-  },
-  'hollywood walk of fame': (tmpl, r) => {
-    let order = ['name'];
-    let obj = pipeSplit(tmpl, order);
-    r.templates.push(obj);
-    return '';
-  },
   'goodreads author': idName,
   'goodreads book': generic,
   'twitter': idName,
@@ -74,6 +52,27 @@ const externals = {
   'nfl player': idName,
   'ted speaker': idName,
   'playmate': idName,
+  //https://en.wikipedia.org/wiki/Template:DMOZ
+  dmoz: generic,
+
+  'find a grave': (tmpl, r) => {
+    let order = ['id', 'name', 'work', 'last', 'first', 'date', 'accessdate'];
+    let obj = parse(tmpl, order);
+    r.templates.push(obj);
+    return '';
+  },
+  'congbio': (tmpl, r) => {
+    let order = ['id', 'name', 'date'];
+    let obj = parse(tmpl, order);
+    r.templates.push(obj);
+    return '';
+  },
+  'hollywood walk of fame': (tmpl, r) => {
+    let order = ['name'];
+    let obj = parse(tmpl, order);
+    r.templates.push(obj);
+    return '';
+  },
 };
 //alias
 externals.imdb = externals['imdb name'];
