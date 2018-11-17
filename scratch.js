@@ -10,11 +10,11 @@ const wtf = require('./src/index');
 
 // let doc = readFile('jodie_emery');
 // console.log(doc.markdown());
-let str = `{| class="wikitable" align="center"
-| fun
-| cool
-|}
-`;
+// let str = `{| class="wikitable" align="center"
+// | fun
+// | cool
+// |}
+// `;
 // str = `<chem>{C_mathit{x}H_mathit{y}} + mathit{z}O2 -> {mathit{x}CO2} +rac{mathit{y}}{2}H2O</chem> `;
 // str = `{{chem|link=oxygen|O|2}} `;
 // str = `{{coord|40.7127|N|74.0059|W|region:US-NY|format=dms|display=inline,title}}`;
@@ -26,13 +26,16 @@ let str = `{| class="wikitable" align="center"
 //   | coordinates                     =
 //   }}`;
 // str = `hello {{citation |url=cool.com/?fun=yes/   }}{{CITE book |title=the killer and the cartoons }}`;
-str = `{{cite book |editor-last=Heilbron |editor-first=John L. |url=https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233 |isbn=978-0-19-974376-6 |page=233}}`;
-str = `hello {{citation |url=cool.com/?fun=yes/   }}{{CITE book |title=the killer and the cartoons }}`;
-str = `hello {{main|lksdf|asdf }}`;
-str = `{{term|1=A-show}}`;
+// str = `{{cite book |editor-last=Heilbron |editor-first=John L. |url=https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233 |isbn=978-0-19-974376-6 |page=233}}`;
+// str = `hello {{citation |url=cool.com/?fun=yes/   }}{{CITE book |title=the killer and the cartoons }}`;
+// str = `hello {{main|lksdf|asdf }}`;
+// str = `{{term|1=A-show}}`;
 
-let doc = wtf(str);
-console.log(doc.text());
-console.log(doc.templates());
+// let doc = wtf(str);
+// console.log(doc.text());
+// console.log(doc.templates());
+
+wtf.random('de').then(doc => console.log(doc.title()));
+
 // console.log(doc.citations());
 // console.log(doc.links(0));

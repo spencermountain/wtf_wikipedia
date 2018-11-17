@@ -146,6 +146,11 @@ var doc = wtf(wikiText, [options])
 wtf.fetch(64646, 'en', (err, doc) => {
   console.log(doc.categories());
 });
+
+//get a random german page
+wtf.random('de').then(doc => {
+  console.log(doc.text())
+});
 ```
 
 <div align="center">
@@ -230,6 +235,11 @@ you may also pass the wikipedia page id as parameter instead of the page title:
 wtf.fetch(64646, 'de').then(console.log).catch(console.log)
 ```
 the fetch method follows redirects.
+
+the optional-callback pattern is the same for **wtf.random()**
+
+`wtf.random(lang, options, callback)`
+`wtf.random(lang, options).then(doc=>doc.infobox())`
 
 ### **doc.text()**
 returns only nice plain-text of the article
