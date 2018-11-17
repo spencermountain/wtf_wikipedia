@@ -59,6 +59,10 @@ const postProcess = function(data, options) {
       return null;
     }
     let text = page.revisions[0]['*'];
+    //us the 'generator' result format, for the random() method
+    if (!text && page.revisions[0].slots) {
+      text = page.revisions[0].slots.main['*'];
+    }
     options.title = page.title;
     options.pageID = page.pageid;
     try {
@@ -75,7 +79,6 @@ const postProcess = function(data, options) {
   //just return the first one
   return docs[0];
 };
-
 
 const getData = function(url, options) {
   let params = {
@@ -129,5 +132,38 @@ const getPage = function(title, a, b, c) {
   });
 };
 
+//fetch and parse a random page from the api
+const random = function(lang, options, cb) {
+  lang = lang || 'en';
+  if (typeof lang === 'function') {
+    cb = lang;
+    lang = 'en';
+  }
+  if (typeof options === 'function') {
+    cb = options;
+    options = {};
+  }
+  options = options || {};
+  let url = `https://${lang}.wikipedia.org/w/api.php`;
+  if (site_map[lang]) {
+    url = site_map[lang] + '/w/api.php';
+  }
+  url += `?format=json&action=query&generator=random&grnnamespace=0&prop=revisions&rvprop=content&grnlimit=1&rvslots=main&origin=*`;
+  return new Promise(function(resolve, reject) {
+    let p = getData(url, options);
+    p.then((res) => {
+      return postProcess(res, options);
+    }).then((doc) => {
+      //support 'err-back' format
+      if (cb && typeof cb === 'function') {
+        cb(null, doc);
+      }
+      resolve(doc);
+    }).catch(reject);
+  });
+};
 
-module.exports = getPage;
+module.exports = {
+  getPage: getPage,
+  random: random
+};
