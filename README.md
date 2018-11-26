@@ -1,14 +1,16 @@
 <div align="center">
-  <a href="https://www.codacy.com/app/spencerkelly86/wtf_wikipedia">
-    <img src="https://api.codacy.com/project/badge/grade/e84f69487c9348ba9cd8e31031a05a4f" />
-  </a>
-  <a href="https://npmjs.org/package/wtf_wikipedia">
-    <img src="https://img.shields.io/npm/v/wtf_wikipedia.svg?style=flat-square" />
-  </a>
-  <a href="https://codecov.io/gh/spencermountain/wtf_wikipedia">
-    <img src="https://codecov.io/gh/spencermountain/wtf_wikipedia/branch/master/graph/badge.svg" />
-  </a>
   <div>wikipedia markup parser</div>
+  <div align="center">
+    <a href="https://npmjs.org/package/wtf_wikipedia">
+      <img src="https://img.shields.io/npm/v/wtf_wikipedia.svg?style=flat-square" />
+    </a>
+    <a href="https://codecov.io/gh/spencermountain/wtf_wikipedia">
+      <img src="https://codecov.io/gh/spencermountain/wtf_wikipedia/branch/master/graph/badge.svg" />
+    </a>
+    <a href="https://unpkg.com/wtf_wikipedia/builds/wtf_wikipedia.min.js">
+      <img src="https://badge-size.herokuapp.com/spencermountain/wtf_wikipedia/master/builds/wtf_wikipedia.min.js" />
+    </a>
+  </div>
   <sub>
     by
     <a href="https://spencermountain.github.io/">Spencer Kelly</a> and
@@ -38,6 +40,7 @@ Consider:
 * the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) for image paths,
 * the [custom encoding](https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(technical_restrictions)) of whitespace and punctuation,
 * [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
+* as of Nov-2018, there are [634,755](https://s3-us-west-1.amazonaws.com/spencer-scratch/allTemplates-2018-10-26.tsv) templates in wikipedia
 
 **wtf_wikipedia** supports many ***recursive shenanigans***, depreciated and **obscure template**
 variants, and illicit 'wiki-esque' shorthands.
@@ -59,7 +62,13 @@ It will try it's best, and fail in reasonable ways.
   </sub>
 </div>
 <div align="center">
-  <h3><a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia">Demo</a></h3>
+  <h3>
+    <a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia">Demo</a>
+    &nbsp; • &nbsp;
+    <a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia-tutorial">Tutorial</a>
+    &nbsp; • &nbsp;
+    <a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia-api">Api</a>
+  </h3>
 </div>
 
 ## well ok then,

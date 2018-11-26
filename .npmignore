@@ -5,3 +5,4 @@ scripts/
 .esformatter
 .eslintrc
 scratch.js
+*.tsv
