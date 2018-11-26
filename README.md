@@ -10,7 +10,7 @@
       <img src="https://badge-size.herokuapp.com/spencermountain/wtf_wikipedia/master/builds/wtf_wikipedia.min.js" />
     </a>
   </div>
-  
+
   <div>wikipedia markup parser</div>
   <div><img src="https://cloud.githubusercontent.com/assets/399657/23590290/ede73772-01aa-11e7-8915-181ef21027bc.png" /></div>
   <sub>
@@ -51,9 +51,12 @@ variants, and illicit 'wiki-esque' shorthands.
 
 It will try it's best, and fail in reasonable ways.
 
-> → building your own parser is never a good idea →
->
-> ← but this library aims to be *****a straight-forward***** way to get data ***out of wikipedia***
+<div align="center">
+ <i>building your own parser is never a good idea</i>
+ <div><i>
+   but this library aims to be *****a straight-forward***** way to get data ***out of wikipedia***
+ </i></div>
+</div>
 
 <div align="center">
   <sub>
