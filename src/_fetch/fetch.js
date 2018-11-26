@@ -1,7 +1,8 @@
 //grab the content of any article, off the api
-const fetch = require('cross-fetch');
-const site_map = require('./_data/site_map');
-const parseDocument = require('./01-document');
+const site_map = require('../_data/site_map');
+const request = require('./_request');
+const getParams = require('./_params');
+const parseDoc = require('../01-document');
 // const redirects = require('../parse/page/redirects');
 
 function isArray(arr) {
@@ -66,7 +67,7 @@ const postProcess = function(data, options) {
     options.title = page.title;
     options.pageID = page.pageid;
     try {
-      return parseDocument(text, options);
+      return parseDoc(text, options);
     } catch (e) {
       console.error(e);
       throw e
@@ -80,46 +81,12 @@ const postProcess = function(data, options) {
   return docs[0];
 };
 
-const getData = function(url, options) {
-  let params = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Api-User-Agent': options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'Random user of the wtf_wikipedia library'
-    },
-  };
-  return fetch(url, params).then((response) => {
-    if (response.status !== 200) {
-      throw response;
-    }
-    return response.json();
-  }).catch(console.error);
-};
 
 const getPage = function(title, a, b, c) {
-  //allow quite! flexible params
-  let options = {};
-  let lang = 'en';
-  let callback = null;
-  if (typeof a === 'function') {
-    callback = a;
-  } else if (typeof a === 'object') {
-    options = a;
-  } else if (typeof a === 'string') {
-    lang = a;
-  }
-  if (typeof b === 'function') {
-    callback = b;
-  } else if (typeof b === 'object') {
-    options = b;
-  }
-  if (typeof c === 'function') {
-    callback = c;
-  }
+  let {lang, options, callback} = getParams(a, b, c);
   let url = makeUrl(title, lang, options);
   return new Promise(function(resolve, reject) {
-    let p = getData(url, options);
-
+    let p = request(url, options);
     p.then((wiki) => {
       return postProcess(wiki, options);
     }).then((doc) => {
@@ -132,38 +99,6 @@ const getPage = function(title, a, b, c) {
   });
 };
 
-//fetch and parse a random page from the api
-const random = function(lang, options, cb) {
-  lang = lang || 'en';
-  if (typeof lang === 'function') {
-    cb = lang;
-    lang = 'en';
-  }
-  if (typeof options === 'function') {
-    cb = options;
-    options = {};
-  }
-  options = options || {};
-  let url = `https://${lang}.wikipedia.org/w/api.php`;
-  if (site_map[lang]) {
-    url = site_map[lang] + '/w/api.php';
-  }
-  url += `?format=json&action=query&generator=random&grnnamespace=0&prop=revisions&rvprop=content&grnlimit=1&rvslots=main&origin=*`;
-  return new Promise(function(resolve, reject) {
-    let p = getData(url, options);
-    p.then((res) => {
-      return postProcess(res, options);
-    }).then((doc) => {
-      //support 'err-back' format
-      if (cb && typeof cb === 'function') {
-        cb(null, doc);
-      }
-      resolve(doc);
-    }).catch(reject);
-  });
-};
 
-module.exports = {
-  getPage: getPage,
-  random: random
-};
+
+module.exports = getPage;
