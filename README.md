@@ -257,6 +257,21 @@ the optional-callback pattern is the same for **wtf.random()**
 `wtf.random(lang, options, callback)`
 `wtf.random(lang, options).then(doc=>doc.infobox())`
 
+### **wtf.category(title, [lang_or_wikiid], [options], [callback])**
+retrieves all pages and categories belonging to a given category:
+```js
+let result = await wtf.category('Category:Politicians_from_Paris');
+//{
+//  pages: [{title: 'Paul Bacon', pageid: 1266127 }, ...],
+//  categories: [ {title: 'Category:Mayors of Paris' } ]
+//}
+
+//this format works too
+wtf.category('National Basketball Association teams', 'en', (err, result)=>{
+  //
+});
+```
+
 ### **doc.text()**
 returns only nice plain-text of the article
 ```js
