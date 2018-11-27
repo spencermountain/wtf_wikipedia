@@ -334,3 +334,44 @@ test('table newline removal', t => {
   t.equal(doc.text(), 'hello this is the top', 'text on top');
   t.end();
 });
+
+test('table rowspan', t => {
+  var str = `{| class="wikitable"
+| rowspan="2"| one
+| two
+| three
+|-
+| two B
+| three B
+|}`;
+  var doc = wtf(str);
+  var table = doc.tables(0).keyValue();
+  t.equal(table[0].col1, 'one', 'has init');
+  t.equal(table[1].col1, 'one', 'has copy');
+  t.equal(table[0].col2, 'two', 'has later');
+  t.equal(table[0].col3, 'three', 'has later');
+  t.equal(table[1].col2, 'two B', 'has later 1');
+  t.equal(table[1].col3, 'three B', 'has later 2');
+  t.end();
+});
+
+test('table colspan', t => {
+  var str = `{| class="wikitable"
+| colspan="2" style="text-align:center;"| one/two
+| three
+|-
+| one B
+| two B
+| three B
+|}`;
+  var doc = wtf(str);
+  var table = doc.tables(0).keyValue();
+  t.equal(table[0].col1, 'one/two', 'has init');
+  t.equal(table[0].col2, '', 'has empty span');
+  t.equal(table[0].col3, 'three', 'has after span');
+
+  t.equal(table[1].col1, 'one B', 'has one b');
+  t.equal(table[1].col2, 'two B', 'has two B');
+  t.equal(table[1].col3, 'three B', 'has three C');
+  t.end();
+});
