@@ -1,10 +1,15 @@
 const wtf = require('../src');
 //fetch a list of all apollo astronauts
+// page may have changed. made on Nov-2018
+
+const options = {
+  'Api-User-Agent': 'wtf_wikipedia example'
+};
 
 (async () => {
   //there's a good list here
   // https://en.wikipedia.org/wiki/List_of_Apollo_astronauts
-  let doc = await wtf.fetch('List of Apollo astronauts');
+  let doc = await wtf.fetch('List of Apollo astronauts', options);
 
   //grab the first table
   let s = doc.sections('Apollo astronauts who walked on the Moon');
@@ -17,5 +22,6 @@ const wtf = require('../src');
   //combine them together
   list = list.concat(list2);
 
-  console.log(list);
+  //grab the columns we want
+  console.log(list.map(o => o.col2));
 })();
