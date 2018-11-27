@@ -60,6 +60,9 @@ const methods = {
     return '';
   }
 };
+methods.keyvalue = methods.keyValue;
+methods.keyval = methods.keyValue;
+
 Object.keys(methods).forEach((k) => {
   Table.prototype[k] = methods[k];
 });

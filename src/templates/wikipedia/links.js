@@ -22,6 +22,26 @@ let templates = {
     let order = ['word'];
     return parse(tmpl, order).word || '';
   },
+  //https://en.wikipedia.org/wiki/Template:Sortname
+  sortname: (tmpl) => {
+    let order = ['first', 'last', 'target', 'sort'];
+    let obj = parse(tmpl, order);
+    let name = `${obj.first || ''} ${obj.last || ''}`;
+    name = name.trim();
+    if (obj.nolink) {
+      return obj.target || name;
+    }
+    if (obj.dab) {
+      name += ` (${obj.dab})`;
+      if (obj.target) {
+        obj.target += ` (${obj.dab})`;
+      }
+    }
+    if (obj.target) {
+      return `[[${obj.target}|${name}]]`;
+    }
+    return `[[${name}]]`;
+  }
 };
 
 //these are insane
