@@ -117,19 +117,13 @@ let str = `
 |}
 `;
 
-str = `{|
-| one
-| two
+str = `{| class="wikitable"
+| colspan="2" style="text-align:center;"| one/two
 | three
 |-
-{|
-| inside one
-| inside two
-| inside [[three]]
-|}
-|Statue of Liberty
-|New York City
-|[[Chicago]]
+| one B
+| two B
+| three B
 |}
 `;
-console.log(wtf(str).tables(0).links());
+console.log(wtf(str).tables(0).keyValue());

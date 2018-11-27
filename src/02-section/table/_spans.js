@@ -1,19 +1,23 @@
-const getRowSpan = /rowspan=["']([0-9]+)["']/;
-// const getColSpan = /colspan=["']([0-9]+)["']/;
+const getRowSpan = /rowspan *?= *?["']([0-9]+)["'] *?\|?/;
+const getColSpan = /colspan *?= *?["']([0-9]+)["'] *?\|?/;
 
-// //colspans stretch ←left/right→
-// const doColSpan = function(rows) {
-//   rows.forEach((row) => {
-//     row.forEach((str) => {
-//       let m = str.match(getColSpan);
-//       if (m !== null) {
-//         let num = parseInt(m[1], 10);
-//         console.log(num);
-//       }
-//     });
-//   });
-//   return rows;
-// };
+//colspans stretch ←left/right→
+const doColSpan = function(rows) {
+  rows.forEach((row, r) => {
+    row.forEach((str, c) => {
+      let m = str.match(getColSpan);
+      if (m !== null) {
+        let num = parseInt(m[1], 10);
+        //splice-in n empty columns right here
+        row[c] = str.replace(getColSpan, '');
+        for(let i = 1; i < num; i += 1) {
+          row.splice(c + 1, 0, '');
+        }
+      }
+    });
+  });
+  return rows;
+};
 
 //colspans stretch up/down
 const doRowSpan = function(rows) {
@@ -39,7 +43,7 @@ const doRowSpan = function(rows) {
 //
 const handleSpans = function(rows) {
   rows = doRowSpan(rows);
-  // rows = doColSpan(rows);
+  rows = doColSpan(rows);
   return rows;
 };
 module.exports = handleSpans;
