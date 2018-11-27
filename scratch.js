@@ -31,15 +31,10 @@ const readFile = require('./tests/lib/_cachedPage');
 // | style="text-align:left;"| {{sortname|Mo|Williams}} || 6 || 0 || 4.8 || .333 || .200 || .000 || 0.5 || 0.2 || 0.5 || 0.0 || 1.5
 // {{s-end}}`;
 //
-var str = `
-{{Infobox venue
-| name = Royal Cinema
-| nickname            =
-| former names        = The Pylon, The Golden Princess
-| logo_image          =
-| logo_caption        =
-}}`;
+var str = `hello world  {{lkjsdf|foo=28|hs.he=90}}.`;
 let doc = wtf(str);
 // console.log('\n\n-----');
 // console.log(doc.text());
-console.log(doc.infobox(0).template());
+console.log(doc.json({
+  encode: true
+}).sections[0].templates);

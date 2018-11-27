@@ -38,11 +38,7 @@ const toJSON = function(section, options) {
     data.templates = section.templates();
     //encode them, for mongodb
     if (options.encode === true) {
-      data.templates.forEach((t) => {
-        if (t.data) {
-          t.data = encode.encodeObj(t.data);
-        }
-      });
+      data.templates.map((t) => encode.encodeObj(t));
     }
   }
   //infobox json data
