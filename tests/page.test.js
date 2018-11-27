@@ -2,9 +2,9 @@
 var test = require('tape');
 var readFile = require('./lib/_cachedPage');
 
-test('royal_cinema', t => {
+test('royal_cinema page', t => {
   var doc = readFile('royal_cinema');
-  t.equal(doc.infoboxes(0).template(), 'venue', '');
+  t.equal(doc.infoboxes(0).template(), 'venue', 'venue template');
   t.equal(doc.sections(0).sentences().length, 10, 'sentence-length');
   t.equal(doc.categories().length, 4, 'cat-length');
 
@@ -13,10 +13,10 @@ test('royal_cinema', t => {
   t.end();
 });
 
-test('toronto_star', t => {
+test('toronto_star page', t => {
   var doc = readFile('toronto_star');
   t.equal(doc.infoboxes(0).data.publisher.text(), 'John D. Cruickshank', 'publisher.text');
-  t.equal(doc.infoboxes(0).template(), 'newspaper', '');
+  t.equal(doc.infoboxes(0).template(), 'newspaper', 'newspaper template');
   var section = doc.sections('history');
   t.equal(section.sentences().length, 21, 'sentence-length');
   t.equal(doc.categories().length, 6, 'sentence-length');
@@ -29,7 +29,7 @@ test('toronto_star with list', t => {
   t.equal(doc.isRedirect(), false, 'not-redirect');
   t.equal(doc.isDisambig(), false, 'not-disambig');
   t.equal(doc.infoboxes(0).data.publisher.text(), 'John D. Cruickshank', 'publisher.text');
-  t.equal(doc.infoboxes(0).template(), 'newspaper', '');
+  t.equal(doc.infoboxes(0).template(), 'newspaper', 'newspaper template');
   var section = doc.sections('history');
   t.equal(section.sentences().length, 21, 'history-length');
   t.equal(doc.categories().length, 6, 'cat-length');
@@ -41,8 +41,8 @@ test('toronto_star with list', t => {
 test('jodie_emery', t => {
   var doc = readFile('jodie_emery');
   t.equal(doc.isRedirect(), false, 'not-redirect');
-  t.equal(doc.infoboxes(0).data.nationality.text(), 'Canadian', '');
-  t.equal(doc.infoboxes(0).template(), 'person', '');
+  t.equal(doc.infoboxes(0).data.nationality.text(), 'Canadian', 'nationality');
+  t.equal(doc.infoboxes(0).template(), 'person', 'person template');
   t.equal(doc.sections(0).sentences.length >= 1, true, 'intro-length');
   t.equal(doc.sections(1).sentences.length >= 1, true, 'career-length');
   t.equal(doc.categories().length, 8, 'cat-length');
@@ -59,7 +59,7 @@ test('statoil', t => {
   // (doc.text.Intro.length >= 1).should.be.true;
   t.equal(doc.categories().length, 4, 'cat-length');
   t.equal(doc.images().length, 1, 'img-length');
-  t.equal(doc.images(0).file(), 'Fil:Statoil-Estonia.jpg', '');
+  t.equal(doc.images(0).file(), 'Fil:Statoil-Estonia.jpg', 'file');
   t.equal(doc.images(0).url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Statoil-Estonia.jpg', t);
   t.end();
 });
@@ -67,7 +67,7 @@ test('statoil', t => {
 test('raith rovers', t => {
   var doc = readFile('raith_rovers');
   t.equal(doc.isRedirect(), false, 'not-redirect');
-  t.equal(doc.infoboxes(0).data.clubname.text(), 'Raith Rovers', '');
+  t.equal(doc.infoboxes(0).data.clubname.text(), 'Raith Rovers', 'clubname');
   t.equal(doc.categories().length, 10, 'cat-length');
   t.equal(doc.images().length, 2, 'img-length');
   t.equal(doc.images(1).file(), 'File:Stark\'s Park - geograph.org.uk - 204446.jpg', 'img-file');

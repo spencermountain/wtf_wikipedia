@@ -2,7 +2,7 @@ const ignore = require('./_ignore');
 const startEnd = require('./start-end');
 const getName = require('./_parsers/_getName');
 const parse = require('./_parsers/parse');
-const isInfobox = require('./_isInfobox');
+const inf = require('./_infobox');
 
 const templates = Object.assign({},
   require('./wikipedia'),
@@ -36,15 +36,9 @@ const parseTemplate = function(tmpl, wiki, data) {
     return wiki;
   }
   // {{infobox settlement...}}
-  if (isInfobox(name) === true) {
+  if (inf.isInfobox(name) === true) {
     let obj = parse(tmpl, data, 'raw');
-    let infobox = {
-      template: 'infobox',
-      type: obj.template,
-      data: obj
-    };
-    delete infobox.data.template; // already have this.
-    delete infobox.data.list; //just in case!
+    let infobox = inf.format(obj);
     data.templates.push(infobox);
     wiki = wiki.replace(tmpl, '');
     return wiki;

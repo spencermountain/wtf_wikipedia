@@ -506,6 +506,12 @@
         "example": "",
         "description": "lookup properties from their key"
       },
+      {
+        "name": "template",
+        "returns": "String",
+        "example": "",
+        "description": "which infobox, eg 'Infobox Person'"
+      },
 
 
       {
