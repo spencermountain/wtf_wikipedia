@@ -31,18 +31,15 @@ const readFile = require('./tests/lib/_cachedPage');
 // | style="text-align:left;"| {{sortname|Mo|Williams}} || 6 || 0 || 4.8 || .333 || .200 || .000 || 0.5 || 0.2 || 0.5 || 0.0 || 1.5
 // {{s-end}}`;
 //
-let str = `{{Infobox Unternehmen
-| Name             = BBDO Germany GmbH
-| Logo             = [[Datei:BBDO Logo.png]]
-| Unternehmensform = [[Gesellschaft mit beschränkter Haftung (Deutschland)|GmbH]]
-| ISIN             = nicht vorhanden
-| Gründungsdatum   = 1956
-| Sitz             = [[Düsseldorf]], [[Deutschland]]
-| Leitung          = Frank Lotze, Wolfgang Schneider, Marianne Heiß
-| Branche          = Werbung, Kommunikation, Marketing
-| Homepage         = [http://www.bbdo.de/ bbdo.de]
+var str = `
+{{Infobox venue
+| name = Royal Cinema
+| nickname            =
+| former names        = The Pylon, The Golden Princess
+| logo_image          =
+| logo_caption        =
 }}`;
 let doc = wtf(str);
 // console.log('\n\n-----');
 // console.log(doc.text());
-console.log(doc.infobox(0).data);
+console.log(doc.infobox(0).template());

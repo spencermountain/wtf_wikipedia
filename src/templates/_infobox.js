@@ -37,4 +37,26 @@ const isInfobox = function(name) {
   }
   return false;
 };
-module.exports = isInfobox;
+
+//turns template data into good inforbox data
+const fmtInfobox = function( obj = {} ) {
+  let m = obj.template.match(i18nReg);
+  let type = obj.template;
+  if (m && m[0]) {
+    type = type.replace(m[0], '');
+  }
+  type = type.trim();
+  let infobox = {
+    template: 'infobox',
+    type: type,
+    data: obj
+  };
+  delete infobox.data.template; // already have this.
+  delete infobox.data.list; //just in case!
+  return infobox;
+};
+
+module.exports = {
+  isInfobox: isInfobox,
+  format: fmtInfobox
+};
