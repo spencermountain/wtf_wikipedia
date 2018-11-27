@@ -1,6 +1,7 @@
 tests/
 demo/
 scripts/
+examples/
 .babelrc
 .esformatter
 .eslintrc

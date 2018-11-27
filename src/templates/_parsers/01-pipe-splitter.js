@@ -17,6 +17,7 @@ const pipeSplitter = function(tmpl) {
   });
   //cleanup any mistakes we've made
   arr = arr.map((a) => (a || '').trim());
+  // console.log(arr);
   arr = arr.filter((a) => a);
   return arr;
 };

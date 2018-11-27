@@ -32,6 +32,7 @@ const templates = {
         }
       }
     }
+    obj.list = obj.list.filter(s => s);
     str += obj.list.join('\n\n');
     return str;
   },

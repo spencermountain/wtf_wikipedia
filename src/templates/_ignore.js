@@ -50,6 +50,9 @@ const list = [
   'quantify',
   'refimprove',
   'weasel inline',
+  //https://en.wikipedia.org/wiki/Template:End
+  'end',
+  's-end'
 ];
 const ignore = list.reduce((h, str) => {
   h[str] = true;

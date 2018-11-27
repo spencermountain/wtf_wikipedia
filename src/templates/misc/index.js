@@ -21,9 +21,9 @@ const misc = {
   //https://en.wikipedia.org/wiki/Template:Marriage
   //this one creates a template, and an inline response
   marriage: (tmpl, r) => {
-    let data = parse(tmpl, ['name', 'from', 'to', 'end']);
+    let data = parse(tmpl, ['spouse', 'from', 'to', 'end']);
     r.templates.push(data);
-    let str = `${data.name || ''}`;
+    let str = `${data.spouse || ''}`;
     if (data.from) {
       if (data.to) {
         str += ` (m. ${data.from}-${data.to})`;

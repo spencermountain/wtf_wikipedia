@@ -2,7 +2,8 @@
 //{{template-start}} data is here {{template-end}}
 const startEnd = function(tmpl, wiki, name, data) {
   let start = name;
-  let end = name.replace(/ (start|begin)$/, ' end');
+  let end = name.replace(/[ -](start|begin)$/, ' end');
+  console.log(end);
   if (wiki.indexOf(end) !== -1) {
     console.log(`---- ${start}  →   ${end}`);
   }
