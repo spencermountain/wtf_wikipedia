@@ -375,3 +375,29 @@ test('table colspan', t => {
   t.equal(table[1].col3, 'three B', 'has three C');
   t.end();
 });
+
+//use first row as the table header
+test('first-row as header', t => {
+  var simple = `{| class="wikitable"
+|-
+| Name
+| Country
+| Rank
+|-
+| spencer || canada || captain
+|-
+| john || germany || captain
+|-
+| april || sweden || seargent
+|-
+| may || sweden || caption
+|}`;
+  var obj = wtf(simple);
+  var table = obj.tables(0).json();
+  t.equal(table.length, 4, '4 rows');
+  t.equal(table[0]['name'].text, 'spencer', 'got name 1');
+  t.equal(table[0]['country'].text, 'canada', 'got country 1');
+  t.equal(table[0]['rank'].text, 'captain', 'got rank 1');
+  t.equal(table[2]['rank'].text, 'seargent', 'got rank 3');
+  t.end();
+});

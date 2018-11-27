@@ -1,6 +1,19 @@
-const parseSentence = require('../../04-sentence/').oneSentence;
+const parseSentence = require('../../../04-sentence/').oneSentence;
 const findRows = require('./_findRows');
 const handleSpans = require('./_spans');
+//common ones
+const headings = {
+  name: true,
+  age: true,
+  born: true,
+  date: true,
+  year: true,
+  city: true,
+  country: true,
+  population: true,
+  count: true,
+  number: true,
+};
 
 //additional table-cruft to remove before parseLine method
 const cleanText = function(str) {
@@ -31,9 +44,6 @@ const findHeaders = function(rows) {
   return headers;
 };
 
-// let cell = parseSentence(str);
-// cell.text(cleanText(cell.text()));
-
 //turn headers, array into an object
 const parseRow = function(arr, headers) {
   let row = {};
@@ -46,12 +56,37 @@ const parseRow = function(arr, headers) {
   return row;
 };
 
+//should we use the first row as a the headers?
+const firstRowHeader = function(rows) {
+  if (rows.length <= 3) {
+    return [];
+  }
+  let headers = rows[0].slice(0);
+  headers = headers.map((h) => {
+    h = h.replace(/^\! */, '');
+    h = parseSentence(h).text();
+    h = cleanText(h);
+    h = h.toLowerCase();
+    return h;
+  });
+  for(let i = 0; i < headers.length; i += 1) {
+    if (headings.hasOwnProperty(headers[i])) {
+      rows.shift();
+      return headers;
+    }
+  }
+  return [];
+};
+
 //turn a {|...table string into an array of arrays
 const parseTable = function(wiki) {
   let lines = wiki.replace(/\r/g, '').split(/\n/);
   lines = lines.map(l => l.trim());
   let rows = findRows(lines);
   let headers = findHeaders(rows);
+  if (!headers || headers.length === 0) {
+    headers = firstRowHeader(rows);
+  }
   rows = handleSpans(rows);
   //index them by their header
   let table = rows.map(arr => {
