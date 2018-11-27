@@ -1,3 +1,4 @@
+//const wtf= require('wtf_wikipedia')
 const wtf = require('../src');
 //fetch a list of all apollo astronauts
 // page may have changed. made on Nov-2018

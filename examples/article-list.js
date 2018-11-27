@@ -1,6 +1,8 @@
+//const wtf= require('wtf_wikipedia')
+const wtf = require('../src');
 //get all birthplaces of the apollo astronauts
 //here, we're using es6 await/async, to simplify(?) the async stuff
-const wtf = require('../src'); //const wtf= require('wtf_wikipedia')
+
 const maxPages = 5;
 
 const options = {
@@ -39,7 +41,7 @@ let astronauts = [
 
 const getInfoboxData = function(doc) {
   if (doc.infobox(0)) {
-    return doc.infobox(0).keyValue().birth_place;
+    return doc.infobox(0).keyValue(); //.birth_place;
   }
   return null;
 };
