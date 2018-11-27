@@ -57,10 +57,10 @@ test('templates-in-templates', t => {
   t.equal(ref.isbn, '978-0-19-974376-6', 'isbn');
   var templates = wtf(str).templates();
   t.equal(templates[0].template, 'marriage', 'marriage1');
-  t.equal(templates[0].name, 'Elsa Löwenthal', 'marriage-1-name');
+  t.equal(templates[0].spouse, 'Elsa Löwenthal', 'marriage-1-name');
   t.equal(templates[1].template, 'sfnp', 'sfnp');
   t.equal(templates[2].template, 'marriage', 'marriage2');
-  t.equal(templates[2].name, 'Mileva Marić', 'marriage2-name');
+  t.equal(templates[2].spouse, 'Mileva Marić', 'marriage2-name');
   t.end();
 });
 
