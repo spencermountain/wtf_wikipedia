@@ -15,17 +15,17 @@ const cleanText = function(str) {
 
 //'!' starts a header-row
 const findHeaders = function(rows) {
-  let headings = [];
+  let headers = [];
   let first = rows[0];
   if (first && first[0] && /^!/.test(first[0]) === true) {
-    headings = first.map((h) => {
+    headers = first.map((h) => {
       h = h.replace(/^\! */, '');
       h = cleanText(h);
       return h;
     });
     rows.shift();
   }
-  return headings;
+  return headers;
 };
 
 //turn a {|...table string into an array of arrays

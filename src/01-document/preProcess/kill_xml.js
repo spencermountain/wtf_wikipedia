@@ -30,7 +30,7 @@ const kill_xml = function(wiki) {
   //types of html/xml that we want to trash completely.
   wiki = wiki.replace(noThanks, ' ');
   //some xml-like fragments we can also kill
-  wiki = wiki.replace(/ ?< ?(span|div|table|data) [a-zA-Z0-9=" ]{2,100}\/? ?> ?/g, ' '); //<ref name="asd">
+  wiki = wiki.replace(/ ?< ?(span|div|table|data) [a-zA-Z0-9=#:;'" ]{2,100}\/? ?> ?/g, ' '); //<ref name="asd">
   //only kill ref tags if they are selfclosing
   wiki = wiki.replace(/ ?< ?(ref) [a-zA-Z0-9=" ]{2,100}\/ ?> ?/g, ' '); //<ref name="asd"/>
   //some formatting xml, we'll keep their insides though
