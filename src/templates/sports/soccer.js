@@ -1,6 +1,26 @@
 const parse = require('../_parsers/parse');
+const flags = require('../../_data/flags');
 
 let sports = {
+
+  player: (tmpl, r) => {
+    let res = parse(tmpl, ['number', 'country', 'name', 'dl']);
+    r.templates.push(r);
+    let str = `[[${res.name}]]`;
+    if (res.country) {
+      let country = res.country.toLowerCase();
+      let flag = flags.find((a) => country === a[1] || country === a[2]) || [];
+      if (flag && flag[0]) {
+        str = flag[0] + '  ' + str;
+      }
+    }
+    if (res.number) {
+      str = res.number + ' ' + str;
+    }
+    return str;
+  },
+
+
   //https://en.wikipedia.org/wiki/Template:Goal
   goal: (tmpl, r) => {
     let res = parse(tmpl);

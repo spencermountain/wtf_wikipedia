@@ -17,7 +17,7 @@ const round = function (num) {
 
 const parseCoordAndCoor = function (str) {
   let arr = str.split('|');
-  const template = arr[0].includes('coord') ? 'coord' : 'coor';
+  const template = arr[0].indexOf('coord') !== -1 ? 'coord' : 'coor';
   let obj = {
     template: template,
     lat: null,
@@ -81,4 +81,3 @@ module.exports = parseCoordAndCoor;
 // {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
 // {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
 // {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
-

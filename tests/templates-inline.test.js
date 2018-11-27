@@ -91,6 +91,7 @@ test('inline-output', t => {
     [`{{okay}}`, `Neutral`],
     [`{{sortname|Matthew|Dellavedova|nolink=1}}`, 'Matthew Dellavedova'],
     [`{{sortname|Matthew|Dellavedova|dab=singer}}`, 'Matthew Dellavedova (singer)'],
+    [`{{player|27|DOM|[[Vladimir Guerrero]]|DL}}`, '27 🇩🇴 Vladimir Guerrero'],
 
   ];
   arr.forEach((a) => {

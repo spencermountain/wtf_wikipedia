@@ -131,3 +131,4 @@
 * change result-format in a bunch of templates
 * * notably: **reference** format, **see also**, **IPA**, **main**
 * support colspan/rowspan in tables (a little!)
+* return templates even if they have no data

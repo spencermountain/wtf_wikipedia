@@ -1,4 +1,5 @@
 const ignore = require('./_ignore');
+const startEnd = require('./start-end');
 const getName = require('./_parsers/_getName');
 const parse = require('./_parsers/parse');
 
@@ -40,6 +41,11 @@ const parseTemplate = function(tmpl, wiki, data, options) {
     let obj = parse(tmpl, data);
     data.templates.push(obj);
     wiki = wiki.replace(tmpl, '');
+    return wiki;
+  }
+  // {{template start}}...{{template end}}
+  if (/ (start|begin)$/.test(name) === true) {
+    wiki = startEnd(tmpl, wiki, name, data);
     return wiki;
   }
 
