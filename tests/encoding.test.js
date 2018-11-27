@@ -32,8 +32,8 @@ hello world  {{lkjsdf|foo=28|hs.he=90}}.
   t.ok(table[1]['Foo\\u002ebar'], 'has table encoding dot #2');
 
   var template = json.sections[0].templates[0];
-  t.equal(template.data['hs.he'], undefined, 'template removed dot');
-  t.ok(template.data['hs\\u002ehe'], 'has template encoding dot');
+  t.equal(template['hs.he'], undefined, 'template removed dot');
+  t.ok(template['hs\\u002ehe'], 'has template encoding dot');
 
   var infobox = json.sections[0].infoboxes[0];
   t.equal(infobox['birth.date'], undefined, 'infobox removed dot');

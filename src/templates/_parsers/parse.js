@@ -7,6 +7,7 @@ const keyMaker = require('./02-keyMaker');
 const cleanup = require('./03-cleanup');
 // const isKnown = require('./04-isKnown');
 
+// most templates just want plaintext...
 const makeFormat = function(str, fmt) {
   let s = parseSentence(str);
   //support various output formats
@@ -14,9 +15,9 @@ const makeFormat = function(str, fmt) {
     return s.json();
   } else if (fmt === 'raw') {
     return s;
-  } else { //default to flat text
-    return s.text();
   }
+  //default to flat text
+  return s.text();
 };
 
 //
