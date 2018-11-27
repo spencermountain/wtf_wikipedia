@@ -128,7 +128,7 @@
 ### 6.3.0
 * support way (+20%?) more templates.
 ### 7.0.0
-* change result-format in a bunch of templates
+* change result-format in a lot of templates, for more consistency.
 * * notably: **reference** format, **see also**, **IPA**, **main**
 * support colspan/rowspan in tables (a little!)
 * return templates even if they have no data

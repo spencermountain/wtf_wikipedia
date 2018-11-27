@@ -2,6 +2,7 @@ const ignore = require('./_ignore');
 const startEnd = require('./start-end');
 const getName = require('./_parsers/_getName');
 const parse = require('./_parsers/parse');
+const isInfobox = require('./_isInfobox');
 
 const templates = Object.assign({},
   require('./wikipedia'),
@@ -19,10 +20,8 @@ const templates = Object.assign({},
 );
 // console.log(Object.keys(templates).length + ' Templates!');
 
-const generic = require('./_generic');
-
 //this gets all the {{template}} strings and decides how to parse them
-const parseTemplate = function(tmpl, wiki, data, options) {
+const parseTemplate = function(tmpl, wiki, data) {
   let name = getName(tmpl);
   //we explicitly ignore these templates
   if (ignore.hasOwnProperty(name) === true) {
@@ -34,6 +33,20 @@ const parseTemplate = function(tmpl, wiki, data, options) {
   if (templates.hasOwnProperty(name) === true) {
     let str = templates[name](tmpl, data);
     wiki = wiki.replace(tmpl, str);
+    return wiki;
+  }
+  // {{infobox settlement...}}
+  if (isInfobox(name) === true) {
+    let obj = parse(tmpl, data, 'raw');
+    let infobox = {
+      template: 'infobox',
+      type: obj.template,
+      data: obj
+    };
+    delete infobox.data.template; // already have this.
+    delete infobox.data.list; //just in case!
+    data.templates.push(infobox);
+    wiki = wiki.replace(tmpl, '');
     return wiki;
   }
   //cite book, cite arxiv...
@@ -48,20 +61,12 @@ const parseTemplate = function(tmpl, wiki, data, options) {
     wiki = startEnd(tmpl, wiki, name, data);
     return wiki;
   }
-
   //fallback parser
-  let obj = generic(tmpl, name);
-  if (obj) {
+  let obj = parse(tmpl);
+  if (obj !== null && Object.keys(obj).length > 0) {
     data.templates.push(obj);
-    wiki = wiki.replace(tmpl, '');
-    return wiki;
-  }
-  //bury this template, if we don't know it
-  if (options.missing_templates === true) {
-    console.log(':: ' + name);
   }
   wiki = wiki.replace(tmpl, '');
-
   return wiki;
 };
 module.exports = parseTemplate;

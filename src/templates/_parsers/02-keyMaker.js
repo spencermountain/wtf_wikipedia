@@ -1,6 +1,6 @@
 // every value in {{tmpl|a|b|c}} needs a name
 // here we come up with names for them
-const hasKey = /^[a-z0-9_\- ]+=/i;
+const hasKey = /^[a-z0-9\u00C0-\u00FF\._\- ]+=/iu;
 
 //turn 'key=val' into {key:key, val:val}
 const parseKey = function(str) {

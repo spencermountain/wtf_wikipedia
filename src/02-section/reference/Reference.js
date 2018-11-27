@@ -1,7 +1,7 @@
 const setDefaults = require('../../_lib/setDefaults');
 const toLatex = require('./toLatex');
 const toHtml = require('./toHtml');
-const toMarkdown = require('./toJson');
+const toMarkdown = require('./toMarkdown');
 const toJson = require('./toJson');
 const defaults = {};
 

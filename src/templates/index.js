@@ -2,7 +2,7 @@ const Infobox = require('../infobox/Infobox');
 const Reference = require('../02-section/reference/Reference');
 const getTemplates = require('./_getTemplates');
 const parseTemplate = require('./parse');
-const isCitation = /^cite [a-z]/i;
+const isCitation = new RegExp('^(cite |citation)', 'i');
 const citations = {
   citation: true,
   refn: true,
