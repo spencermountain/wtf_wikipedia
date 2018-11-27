@@ -131,4 +131,5 @@
 * change result-format in a lot of templates, for more consistency.
 * * notably: **reference** format, **see also**, **IPA**, **main**
 * support colspan/rowspan in tables (a little!)
+* support implicit first-row headers for some tables
 * return templates even if they have no data

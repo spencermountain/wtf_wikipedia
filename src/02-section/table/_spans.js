@@ -1,5 +1,5 @@
-const getRowSpan = /rowspan *?= *?["']([0-9]+)["'] *?\|?/;
-const getColSpan = /colspan *?= *?["']([0-9]+)["'] *?\|?/;
+const getRowSpan = /rowspan *?= *?["']([0-9]+)["'][ \|]*/;
+const getColSpan = /colspan *?= *?["']([0-9]+)["'][ \|]*/;
 
 //colspans stretch ←left/right→
 const doColSpan = function(rows) {
