@@ -157,9 +157,7 @@ test('floating-tables-test', t => {
 |}`;
   var obj = wtf(floating);
   t.equal(obj.tables().length, 2, 'two tables');
-  // console.log(obj.sections[0].tables);
   var table = obj.tables(0).data;
-  // console.log(table);
   t.equal(table[0]['col1'].text(), 'Col 1, row 1', '1,1');
   t.end();
 });

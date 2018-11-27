@@ -69,8 +69,6 @@ let str = `
 ! style="background:white"|Joined
 ! style="background:white"|Head coach
 |-
-! style="background:#1D428A;" colspan="9"|[[Eastern Conference (NBA)|<span style="color:#FFFFFF;">Eastern Conference</span>]]
-|-
 ! style="background:#DBABB0;" rowspan="5"|[[Atlantic Division (NBA)|Atlantic]]
 | '''[[Boston Celtics]]'''
 | [[Boston]], [[Massachusetts]]
@@ -113,7 +111,25 @@ let str = `
 | {{Coord|43.643333|-79.379167|type:landmark|name=Toronto Raptors}}
 | colspan="2" style="text-align:center;"|1995
 | [[Nick Nurse]]
+|-
+| not atlantic!
+| '''[[asdf]]'''
 |}
 `;
 
-console.log(wtf(str).tables(0).keyValue());
+str = `{|
+| one
+| two
+| three
+|-
+{|
+| inside one
+| inside two
+| inside [[three]]
+|}
+|Statue of Liberty
+|New York City
+|[[Chicago]]
+|}
+`;
+console.log(wtf(str).tables(0).links());
