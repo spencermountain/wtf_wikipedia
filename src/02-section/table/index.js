@@ -1,4 +1,4 @@
-const parseTable = require('./parseTable');
+const parseTable = require('./parse');
 const Table = require('./Table');
 // const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70kchars.
 const openReg = /^\s*{\|/;

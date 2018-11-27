@@ -41,7 +41,13 @@ let astronauts = [
 
 const getInfoboxData = function(doc) {
   if (doc.infobox(0)) {
-    return doc.infobox(0).keyValue(); //.birth_place;
+    let obj = doc.infobox(0).keyValue();
+    return {
+      name: doc.title() || obj.name,
+      mission: obj.mission || '',
+      born: obj.born || obj.birth_date,
+      died: obj.died || obj.death_date,
+    };
   }
   return null;
 };
@@ -54,13 +60,8 @@ const doit = async(list, cb) => {
   let docs = await wtf.fetch(current, options);
 
   //grab the data we want, for each page
-  let data = docs.map((doc) => {
-    return {
-      title: doc.title(),
-      birth_place: getInfoboxData(doc)
-    };
-  });
-  results.push(data);
+  let data = docs.map((doc) => getInfoboxData(doc));
+  results = results.concat(data);
 
   //keep going!
   let remaining = list.slice(maxPages);
