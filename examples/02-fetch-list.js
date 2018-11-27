@@ -54,10 +54,11 @@ const getInfoboxData = function(doc) {
 
 let results = [];
 
-const doit = async(list, cb) => {
-  //only send 5 at-a-time
-  let current = list.slice(0, maxPages);
-  let docs = await wtf.fetch(current, options);
+//our recursive-function to fetch 5 pages at-a-time
+const getFive = async(list, cb) => {
+  //send the first 5 pages
+  let fivePages = list.slice(0, maxPages);
+  let docs = await wtf.fetch(fivePages, options);
 
   //grab the data we want, for each page
   let data = docs.map((doc) => getInfoboxData(doc));
@@ -66,10 +67,10 @@ const doit = async(list, cb) => {
   //keep going!
   let remaining = list.slice(maxPages);
   if (remaining.length > 0) {
-    doit(remaining, cb); //recursive
+    getFive(remaining, cb); //recursive
   } else {
     cb(results); //all done
   }
 };
 
-doit(astronauts, console.log);
+getFive(astronauts, console.log);
