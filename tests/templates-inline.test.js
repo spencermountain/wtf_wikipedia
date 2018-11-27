@@ -89,6 +89,9 @@ test('inline-output', t => {
     [`{{sfrac|A|B|C}}`, `A B⁄C`],
     [`{{sqrt|2|4}}`, `4√2`],
     [`{{okay}}`, `Neutral`],
+    [`{{sortname|Matthew|Dellavedova|nolink=1}}`, 'Matthew Dellavedova'],
+    [`{{sortname|Matthew|Dellavedova|dab=singer}}`, 'Matthew Dellavedova (singer)'],
+
   ];
   arr.forEach((a) => {
     t.equal(wtf(a[0]).text(), a[1], a[0]);

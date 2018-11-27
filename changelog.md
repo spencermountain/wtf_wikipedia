@@ -130,3 +130,4 @@
 ### 7.0.0
 * change result-format in a bunch of templates
 * * notably: **reference** format, **see also**, **IPA**, **main**
+* support colspan/rowspan in tables (a little!)
