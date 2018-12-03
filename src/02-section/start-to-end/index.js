@@ -1,5 +1,6 @@
 const parseGallery = require('./gallery');
 const parseElection = require('./election');
+const parseNBA = require('./nba');
 const parseMath = require('./math');
 // Most templates are '{{template}}', but then, some are '<template></template>'.
 // ... others are {{start}}...{{end}}
@@ -8,6 +9,7 @@ const xmlTemplates = function(section, wiki) {
   wiki = parseGallery(wiki, section);
   wiki = parseElection(wiki, section);
   wiki = parseMath(wiki, section);
+  wiki = parseNBA(wiki, section);
   return wiki;
 };
 

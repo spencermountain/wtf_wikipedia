@@ -63,7 +63,8 @@ test('inline-with-data', function(t) {
     [`isbn`, `{{ISBN|978-1-4133-0454-1}}`],
     [`based on`, `{{based on|"[[Super-Toys Last All Summer Long]]"|[[Brian Aldiss]]}}`],
     [`mpc`, `{{MPC|75482|(75482) 1999 XC173}}`],
-    [`chem2`, `{{chem2|CH3(CH2)5CH3}}`]
+    [`chem2`, `{{chem2|CH3(CH2)5CH3}}`],
+    [`bbl to t`, `{{bbl to t| 1 | 2 | 3 | 4 |API=|abbr=|lk=|adj=|per=|t_per=|mlt=}}`]
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);
@@ -92,6 +93,7 @@ test('inline-output', t => {
     [`{{sortname|Matthew|Dellavedova|nolink=1}}`, 'Matthew Dellavedova'],
     [`{{sortname|Matthew|Dellavedova|dab=singer}}`, 'Matthew Dellavedova (singer)'],
     [`{{player|27|DOM|[[Vladimir Guerrero]]|DL}}`, '27 🇩🇴 Vladimir Guerrero'],
+    [`{{Val|11|22|ul=m/s|p=~}}`, '~11 m/s'],
 
   ];
   arr.forEach((a) => {

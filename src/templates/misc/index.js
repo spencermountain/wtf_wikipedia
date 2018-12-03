@@ -59,14 +59,14 @@ const misc = {
     let str = template.releases.map((o) => `${o.region}: ${o.date || ''}`).join('\n\n');
     return '\n' + str + '\n';
   },
-  tryit: (tmpl) => {
-    let obj = parse(tmpl);
-    console.log(obj);
-    return '';
+  //barrels of oil https://en.wikipedia.org/wiki/Template:Bbl_to_t
+  'bbl to t': (tmpl, r) => {
+    let obj = parse(tmpl, ['barrels']);
+    r.templates.push(obj);
+    if (obj.barrels === '0') {
+      return obj.barrels + ' barrel';
+    }
+    return obj.barrels + ' barrels';
   },
-  '__throw-wtf-error': () => {
-    //okay you asked for it!
-    throw new Error('Intentional error thrown from wtf-wikipedia!');
-  }
 };
 module.exports = misc;

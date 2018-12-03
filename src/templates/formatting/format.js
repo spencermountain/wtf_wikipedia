@@ -93,8 +93,59 @@ let templates = {
   //https://en.wikipedia.org/wiki/Template:Resize
   resize: (tmpl) => {
     return parse(tmpl, ['size', 'text']).text || '';
-  }
+  },
+  //https://en.wikipedia.org/wiki/Template:Ra
+  ra: (tmpl) => {
+    let obj = parse(tmpl, ['hours', 'minutes', 'seconds']);
+    return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':');
+  },
+  //https://en.wikipedia.org/wiki/Template:Deg2HMS
+  deg2hms: (tmpl) => { //this template should do the conversion
+    let obj = parse(tmpl, ['degrees']);
+    return (obj.degrees || '') + '°';
+  },
+  hms2deg: (tmpl) => { //this template should do the conversion too
+    let obj = parse(tmpl, ['hours', 'minutes', 'seconds']);
+    return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':');
+  },
+  rnd: (tmpl) => { //this template should do the conversion too
+    let obj = parse(tmpl, ['decimal']);
+    return obj.decimal || '';
+  },
+  //https://en.wikipedia.org/wiki/Template:DEC
+  dec: (tmpl) => {
+    let obj = parse(tmpl, ['degrees', 'minutes', 'seconds']);
+    let str = (obj.degrees || 0) + '°';
+    if (obj.minutes) {
+      str += obj.minutes + `′`;
+    }
+    if (obj.seconds) {
+      str += obj.seconds + '″';
+    }
+    return str;
+  },
+  //https://en.wikipedia.org/wiki/Template:Val
+  val: (tmpl) => {
+    let obj = parse(tmpl, ['number', 'uncertainty']);
+    let str = obj.number || '';
+    //prefix/suffix
+    if (obj.p) {
+      str = obj.p + str;
+    }
+    if (obj.s) {
+      str = obj.s + str;
+    }
+    //add units, too
+    if (obj.u || obj.ul || obj.upl) {
+      str = str + ' ' + (obj.u || obj.ul || obj.upl);
+    }
+    return str;
+  },
 };
+
+//aliases
+templates['rndfrac'] = templates.rnd;
+templates['rndnear'] = templates.rnd;
 
 //templates that we simply grab their insides as plaintext
 let inline = [
