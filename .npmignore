@@ -7,3 +7,5 @@ examples/
 .eslintrc
 scratch.js
 *.tsv
+changelog.md
+contributing.md

@@ -130,7 +130,7 @@ wtf.fetch('Whistling').then(doc => {
 ## But what about...
 
 ### Parsoid:
-Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It
+Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser, and is pretty cool. It
 reliably turns wikiscript into HTML, but not valid XML.
 
 To use it for data-mining, you'll need to:
@@ -228,8 +228,10 @@ flip your wikimedia markup into a `Document` object
 
 ```javascript
 import wtf from 'wtf_wikipedia'
-wtf("==In Popular Culture==\n*harry potter's wand\n* the simpsons fence");
-// Document {plaintext(), html(), latex()...}
+wtf(`==In Popular Culture==
+* harry potter's wand
+* the simpsons fence`);
+// Document {text(), html(), lists()...}
 ```
 
 ### **wtf.fetch(title, [lang_or_wikiid], [options], [callback])**
@@ -338,9 +340,9 @@ $ wtf_wikipedia Toronto Blue Jays --json
 
 ### Good practice:
 The wikipedia api is [pretty welcoming](https://www.mediawiki.org/wiki/API:Etiquette#Request_limit) though recommends three things, if you're going to hit it heavily -
-* 1️⃣ pass a `Api-User-Agent` as something so they can use to easily throttle bad scripts
-* 2️⃣ bundle multiple pages into one request as an array
-* 3️⃣ run it serially, or at least, [slowly](https://www.npmjs.com/package/slow).
+* pass a `Api-User-Agent` as something so they can use to easily throttle bad scripts
+* bundle multiple pages into one request as an array
+* run it serially, or at least, [slowly](https://www.npmjs.com/package/slow).
 ```js
 wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
   'Api-User-Agent': 'spencermountain@gmail.com'
