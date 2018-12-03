@@ -1,4 +1,4 @@
-/* wtf_wikipedia v6.3.0
+/* wtf_wikipedia v7.0.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -491,7 +491,7 @@ module.exports.default = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "6.3.0",
+  "version": "7.0.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -533,16 +533,16 @@ module.exports={
   },
   "devDependencies": {
     "amble": "0.0.7",
-    "@babel/core": "^7.1.6",
-    "@babel/preset-env": "^7.1.6",
-    "babelify": "^10.0.0",
+    "@babel/core": "7.2.0",
+    "@babel/preset-env": "7.2.0",
+    "babelify": "10.0.0",
     "browserify": "16.2.3",
-    "codecov": "^3.1.0",
+    "codecov": "3.1.0",
     "derequire": "2.0.6",
     "nyc": "13.1.0",
     "shelljs": "0.8.3",
     "tap-dancer": "0.1.2",
-    "tap-spec": "^5.0.0",
+    "tap-spec": "5.0.0",
     "tape": "4.9.1",
     "uglify-js": "3.4.9"
   },
@@ -787,7 +787,7 @@ Document.prototype.redirect = Document.prototype.redirectTo;
 Document.prototype.redirects = Document.prototype.redirectTo;
 module.exports = Document;
 
-},{"../_lib/aliases":66,"../_lib/setDefaults":71,"../image/Image":74,"./_sectionMap":4,"./toHtml":11,"./toJson":12,"./toLatex":13,"./toMarkdown":14}],4:[function(_dereq_,module,exports){
+},{"../_lib/aliases":76,"../_lib/setDefaults":81,"../image/Image":83,"./_sectionMap":4,"./toHtml":11,"./toJson":12,"./toLatex":13,"./toMarkdown":14}],4:[function(_dereq_,module,exports){
 "use strict";
 
 //helper for looping around all sections of a document
@@ -847,7 +847,7 @@ var parse_categories = function parse_categories(r, wiki) {
 
 module.exports = parse_categories;
 
-},{"../_data/i18n":63}],6:[function(_dereq_,module,exports){
+},{"../_data/i18n":68}],6:[function(_dereq_,module,exports){
 "use strict";
 
 var i18n = _dereq_('../_data/i18n');
@@ -884,7 +884,7 @@ module.exports = {
   isDisambig: isDisambig
 };
 
-},{"../_data/i18n":63}],7:[function(_dereq_,module,exports){
+},{"../_data/i18n":68}],7:[function(_dereq_,module,exports){
 "use strict";
 
 var Document = _dereq_('./Document');
@@ -993,7 +993,7 @@ var kill_xml = function kill_xml(wiki) {
   //types of html/xml that we want to trash completely.
   wiki = wiki.replace(noThanks, ' '); //some xml-like fragments we can also kill
 
-  wiki = wiki.replace(/ ?< ?(span|div|table|data) [a-zA-Z0-9=" ]{2,100}\/? ?> ?/g, ' '); //<ref name="asd">
+  wiki = wiki.replace(/ ?< ?(span|div|table|data) [a-zA-Z0-9=%\.#:;'" ]{2,100}\/? ?> ?/g, ' '); //<ref name="asd">
   //only kill ref tags if they are selfclosing
 
   wiki = wiki.replace(/ ?< ?(ref) [a-zA-Z0-9=" ]{2,100}\/ ?> ?/g, ' '); //<ref name="asd"/>
@@ -1047,7 +1047,7 @@ module.exports = {
   parse: parse
 };
 
-},{"../04-sentence/links":55,"../_data/i18n":63}],11:[function(_dereq_,module,exports){
+},{"../04-sentence/links":60,"../_data/i18n":68}],11:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -1122,7 +1122,7 @@ var toHtml = function toHtml(doc, options) {
 
 module.exports = toHtml;
 
-},{"../_lib/setDefaults":71}],12:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81}],12:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -1204,7 +1204,7 @@ var toJSON = function toJSON(doc, options) {
 
 module.exports = toJSON;
 
-},{"../_lib/setDefaults":71}],13:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81}],13:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -1262,7 +1262,7 @@ var toLatex = function toLatex(doc, options) {
 
 module.exports = toLatex;
 
-},{"../_lib/setDefaults":71}],14:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81}],14:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -1323,7 +1323,7 @@ var toMarkdown = function toMarkdown(doc, options) {
 
 module.exports = toMarkdown;
 
-},{"../_lib/setDefaults":71}],15:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81}],15:[function(_dereq_,module,exports){
 "use strict";
 
 var toMarkdown = _dereq_('./toMarkdown');
@@ -1349,6 +1349,7 @@ var defaults = {
 var Section = function Section(data) {
   this.depth = data.depth;
   this.doc = null;
+  this._title = data.title || '';
   Object.defineProperty(this, 'doc', {
     enumerable: false,
     value: null
@@ -1361,7 +1362,7 @@ var Section = function Section(data) {
 
 var methods = {
   title: function title() {
-    return this.data.title || '';
+    return this._title || '';
   },
   index: function index() {
     if (!this.doc) {
@@ -1669,7 +1670,7 @@ Object.keys(aliasList).forEach(function (k) {
 });
 module.exports = Section;
 
-},{"../_lib/aliases":66,"../_lib/setDefaults":71,"./toHtml":35,"./toJson":36,"./toLatex":37,"./toMarkdown":38}],16:[function(_dereq_,module,exports){
+},{"../_lib/aliases":76,"../_lib/setDefaults":81,"./toHtml":40,"./toJson":41,"./toLatex":42,"./toMarkdown":43}],16:[function(_dereq_,module,exports){
 "use strict";
 
 var fns = _dereq_('../_lib/helpers');
@@ -1712,7 +1713,7 @@ var parseHeading = function parseHeading(data, str) {
 
 module.exports = parseHeading;
 
-},{"../04-sentence/":53,"../_lib/helpers":68,"./reference/":19}],17:[function(_dereq_,module,exports){
+},{"../04-sentence/":58,"../_lib/helpers":78,"./reference/":19}],17:[function(_dereq_,module,exports){
 "use strict";
 
 var Section = _dereq_('./Section');
@@ -1805,7 +1806,7 @@ var parseSections = function parseSections(wiki, options) {
 
 module.exports = parseSections;
 
-},{"../03-paragraph":40,"../templates":114,"./Section":15,"./heading":16,"./reference":19,"./start-to-end":25,"./table":29}],18:[function(_dereq_,module,exports){
+},{"../03-paragraph":45,"../templates":121,"./Section":15,"./heading":16,"./reference":19,"./start-to-end":26,"./table":32}],18:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../../_lib/setDefaults');
@@ -1814,7 +1815,7 @@ var toLatex = _dereq_('./toLatex');
 
 var toHtml = _dereq_('./toHtml');
 
-var toMarkdown = _dereq_('./toJson');
+var toMarkdown = _dereq_('./toMarkdown');
 
 var toJson = _dereq_('./toJson');
 
@@ -1879,7 +1880,7 @@ Object.keys(methods).forEach(function (k) {
 });
 module.exports = Reference;
 
-},{"../../_lib/setDefaults":71,"./toHtml":20,"./toJson":21,"./toLatex":22}],19:[function(_dereq_,module,exports){
+},{"../../_lib/setDefaults":81,"./toHtml":20,"./toJson":21,"./toLatex":22,"./toMarkdown":23}],19:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../../templates/_parsers/parse'); // const parse = require('../../templates/wikipedia/page').citation;
@@ -1959,7 +1960,7 @@ var parseRefs = function parseRefs(wiki, data) {
 
 module.exports = parseRefs;
 
-},{"../../04-sentence":53,"../../templates/_parsers/parse":97,"./Reference":18}],20:[function(_dereq_,module,exports){
+},{"../../04-sentence":58,"../../templates/_parsers/parse":104,"./Reference":18}],20:[function(_dereq_,module,exports){
 "use strict";
 
 //
@@ -2026,6 +2027,37 @@ module.exports = toLatex;
 },{}],23:[function(_dereq_,module,exports){
 "use strict";
 
+//
+var toMarkdown = function toMarkdown(c) {
+  if (c.data && c.data.url && c.data.title) {
+    return "\u2303 [".concat(c.data.title, "](").concat(c.data.url, ")");
+  } else if (c.data.encyclopedia) {
+    return "\u2303 ".concat(c.data.encyclopedia);
+  } else if (c.data.title) {
+    //cite book, etc
+    var str = c.data.title;
+
+    if (c.data.author) {
+      str += c.data.author;
+    }
+
+    if (c.data.first && c.data.last) {
+      str += c.data.first + ' ' + c.data.last;
+    }
+
+    return "\u2303 ".concat(str);
+  } else if (c.inline) {
+    return "\u2303 ".concat(c.inline.markdown());
+  }
+
+  return '';
+};
+
+module.exports = toMarkdown;
+
+},{}],24:[function(_dereq_,module,exports){
+"use strict";
+
 var parseTemplates = _dereq_('../../templates'); //this is a non-traditional template, for some reason
 //https://en.wikipedia.org/wiki/Template:Election_box
 
@@ -2065,7 +2097,7 @@ var parseElection = function parseElection(wiki, section) {
 
 module.exports = parseElection;
 
-},{"../../templates":114}],24:[function(_dereq_,module,exports){
+},{"../../templates":121}],25:[function(_dereq_,module,exports){
 "use strict";
 
 var parseSentence = _dereq_('../../04-sentence/').oneSentence;
@@ -2111,12 +2143,18 @@ var parseGallery = function parseGallery(wiki, section) {
 
 module.exports = parseGallery;
 
-},{"../../04-sentence/":53,"../../image/Image":74}],25:[function(_dereq_,module,exports){
+},{"../../04-sentence/":58,"../../image/Image":83}],26:[function(_dereq_,module,exports){
 "use strict";
 
 var parseGallery = _dereq_('./gallery');
 
 var parseElection = _dereq_('./election');
+
+var parseNBA = _dereq_('./nba');
+
+var parseMlb = _dereq_('./mlb');
+
+var parseMMA = _dereq_('./mma');
 
 var parseMath = _dereq_('./math'); // Most templates are '{{template}}', but then, some are '<template></template>'.
 // ... others are {{start}}...{{end}}
@@ -2127,12 +2165,15 @@ var xmlTemplates = function xmlTemplates(section, wiki) {
   wiki = parseGallery(wiki, section);
   wiki = parseElection(wiki, section);
   wiki = parseMath(wiki, section);
+  wiki = parseNBA(wiki, section);
+  wiki = parseMMA(wiki, section);
+  wiki = parseMlb(wiki, section);
   return wiki;
 };
 
 module.exports = xmlTemplates;
 
-},{"./election":23,"./gallery":24,"./math":26}],26:[function(_dereq_,module,exports){
+},{"./election":24,"./gallery":25,"./math":27,"./mlb":28,"./mma":29,"./nba":30}],27:[function(_dereq_,module,exports){
 "use strict";
 
 var parseSentence = _dereq_('../../04-sentence/').oneSentence; //xml <math>y=mx+b</math> support
@@ -2168,7 +2209,105 @@ var parseMath = function parseMath(wiki, section) {
 
 module.exports = parseMath;
 
-},{"../../04-sentence/":53}],27:[function(_dereq_,module,exports){
+},{"../../04-sentence/":58}],28:[function(_dereq_,module,exports){
+"use strict";
+
+var tableParser = _dereq_('../table/parse');
+
+var headings = ['#', 'date', 'opponent', 'score', 'win', 'loss', 'save', 'attendance', 'record']; //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
+
+var parseMlb = function parseMlb(wiki, section) {
+  wiki = wiki.replace(/\{\{mlb game log section[\s\S]+?\{\{mlb game log section end\}\}/gi, function (tmpl) {
+    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
+    tmpl = tmpl.replace(/\{\{mlb game log section end\}\}/i, '');
+    var headers = '! ' + headings.join(' !! ');
+    var table = '{|\n' + headers + '\n' + tmpl + '\n|}';
+    var rows = tableParser(table);
+    rows = rows.map(function (row) {
+      Object.keys(row).forEach(function (k) {
+        row[k] = row[k].text();
+      });
+      return row;
+    });
+    section.templates.push({
+      template: 'mlb game log section',
+      data: rows
+    });
+    return '';
+  });
+  return wiki;
+};
+
+module.exports = parseMlb;
+
+},{"../table/parse":35}],29:[function(_dereq_,module,exports){
+"use strict";
+
+var tableParser = _dereq_('../table/parse');
+
+var headings = ['res.', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes']; //https://en.wikipedia.org/wiki/Template:MMA_record_start
+
+var parseMMA = function parseMMA(wiki, section) {
+  wiki = wiki.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, function (tmpl) {
+    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
+    tmpl = tmpl.replace(/\{\{end\}\}/i, '');
+    var headers = '! ' + headings.join(' !! ');
+    var table = '{|\n' + headers + '\n' + tmpl + '\n|}';
+    var rows = tableParser(table);
+    rows = rows.map(function (row) {
+      Object.keys(row).forEach(function (k) {
+        row[k] = row[k].text();
+      });
+      return row;
+    });
+    section.templates.push({
+      template: 'mma record start',
+      data: rows
+    });
+    return '';
+  });
+  return wiki;
+};
+
+module.exports = parseMMA;
+
+},{"../table/parse":35}],30:[function(_dereq_,module,exports){
+"use strict";
+
+var tableParser = _dereq_('../table/parse');
+
+var keys = {
+  coach: ['team', 'year', 'g', 'w', 'l', 'w-l%', 'finish', 'pg', 'pw', 'pl', 'pw-l%'],
+  player: ['year', 'team', 'gp', 'gs', 'mpg', 'fg%', '3p%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
+  roster: ['player', 'gp', 'gs', 'mpg', 'fg%', '3fg%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg']
+}; //https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
+
+var parseNBA = function parseNBA(wiki, section) {
+  wiki = wiki.replace(/\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi, function (tmpl, name) {
+    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
+    tmpl = tmpl.replace(/\{\{s-end\}\}/, '');
+    name = name.toLowerCase().trim();
+    var headers = '! ' + keys[name].join(' !! ');
+    var table = '{|\n' + headers + '\n' + tmpl + '\n|}';
+    var rows = tableParser(table);
+    rows = rows.map(function (row) {
+      Object.keys(row).forEach(function (k) {
+        row[k] = row[k].text();
+      });
+      return row;
+    });
+    section.templates.push({
+      template: 'NBA ' + name + ' statistics',
+      data: rows
+    });
+    return '';
+  });
+  return wiki;
+};
+
+module.exports = parseNBA;
+
+},{"../table/parse":35}],31:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../../_lib/setDefaults');
@@ -2244,6 +2383,8 @@ var methods = {
     return '';
   }
 };
+methods.keyvalue = methods.keyValue;
+methods.keyval = methods.keyValue;
 Object.keys(methods).forEach(function (k) {
   Table.prototype[k] = methods[k];
 }); //add alises, too
@@ -2253,7 +2394,68 @@ Object.keys(aliasList).forEach(function (k) {
 });
 module.exports = Table;
 
-},{"../../_lib/aliases":66,"../../_lib/setDefaults":71,"./toHtml":31,"./toJson":32,"./toLatex":33,"./toMarkdown":34}],28:[function(_dereq_,module,exports){
+},{"../../_lib/aliases":76,"../../_lib/setDefaults":81,"./toHtml":36,"./toJson":37,"./toLatex":38,"./toMarkdown":39}],32:[function(_dereq_,module,exports){
+"use strict";
+
+var parseTable = _dereq_('./parse');
+
+var Table = _dereq_('./Table'); // const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70kchars.
+
+
+var openReg = /^\s*{\|/;
+var closeReg = /^\s*\|}/; //tables can be recursive, so looky-here.
+
+var findTables = function findTables(section, wiki) {
+  var list = [];
+  var lines = wiki.split('\n');
+  var stack = [];
+
+  for (var i = 0; i < lines.length; i += 1) {
+    //start a table
+    if (openReg.test(lines[i]) === true) {
+      stack.push(lines[i]);
+      continue;
+    } //close a table
+
+
+    if (closeReg.test(lines[i]) === true) {
+      stack[stack.length - 1] += '\n' + lines[i];
+      var table = stack.pop();
+      list.push(table);
+      continue;
+    } //keep-going on one
+
+
+    if (stack.length > 0) {
+      stack[stack.length - 1] += '\n' + lines[i];
+    }
+  } //work-em together for a Table class
+
+
+  var tables = [];
+  list.forEach(function (str) {
+    if (str) {
+      //also reremove a newline at the end of the table (awkward)
+      wiki = wiki.replace(str + '\n', '');
+      wiki = wiki.replace(str, '');
+      var data = parseTable(str);
+
+      if (data && data.length > 0) {
+        tables.push(new Table(data));
+      }
+    }
+  });
+
+  if (tables.length > 0) {
+    section.tables = tables;
+  }
+
+  return wiki;
+};
+
+module.exports = findTables;
+
+},{"./Table":31,"./parse":35}],33:[function(_dereq_,module,exports){
 "use strict";
 
 //remove top-bottoms
@@ -2314,94 +2516,110 @@ var findRows = function findRows(lines) {
 
 module.exports = findRows;
 
-},{}],29:[function(_dereq_,module,exports){
+},{}],34:[function(_dereq_,module,exports){
 "use strict";
 
-var parseTable = _dereq_('./parseTable');
+var getRowSpan = /rowspan *?= *?["']([0-9]+)["'][ \|]*/;
+var getColSpan = /colspan *?= *?["']([0-9]+)["'][ \|]*/; //colspans stretch ←left/right→
 
-var Table = _dereq_('./Table'); // const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70kchars.
+var doColSpan = function doColSpan(rows) {
+  rows.forEach(function (row) {
+    row.forEach(function (str, c) {
+      var m = str.match(getColSpan);
 
+      if (m !== null) {
+        var num = parseInt(m[1], 10); //...maybe if num is so big, and centered, give it a new column? remove it?
+        //splice-in n empty columns right here
 
-var openReg = /^\s*{\|/;
-var closeReg = /^\s*\|}/; //tables can be recursive, so looky-here.
+        row[c] = str.replace(getColSpan, '');
 
-var findTables = function findTables(section, wiki) {
-  var list = [];
-  var lines = wiki.split('\n');
-  var stack = [];
-
-  for (var i = 0; i < lines.length; i += 1) {
-    //start a table
-    if (openReg.test(lines[i]) === true) {
-      stack.push(lines[i]);
-      continue;
-    } //close a table
-
-
-    if (closeReg.test(lines[i]) === true) {
-      stack[stack.length - 1] += '\n' + lines[i];
-      var table = stack.pop();
-      list.push(table);
-      continue;
-    } //keep-going on one
-
-
-    if (stack.length > 0) {
-      stack[stack.length - 1] += '\n' + lines[i];
-    }
-  } //work-em together for a Table class
-
-
-  var tables = [];
-  list.forEach(function (str) {
-    if (str) {
-      //also reremove a newline at the end of the table (awkward)
-      wiki = wiki.replace(str + '\n', '');
-      wiki = wiki.replace(str, '');
-      var data = parseTable(str);
-
-      if (data && data.length > 0) {
-        tables.push(new Table(data));
+        for (var i = 1; i < num; i += 1) {
+          row.splice(c + 1, 0, '');
+        }
       }
-    }
+    });
   });
+  return rows;
+}; //colspans stretch up/down
 
-  if (tables.length > 0) {
-    section.tables = tables;
-  }
 
-  return wiki;
+var doRowSpan = function doRowSpan(rows) {
+  rows.forEach(function (row, r) {
+    row.forEach(function (str, c) {
+      var m = str.match(getRowSpan);
+
+      if (m !== null) {
+        var num = parseInt(m[1], 10); //copy this cell down n rows
+
+        str = str.replace(getRowSpan, '');
+        row[c] = str;
+
+        for (var i = r + 1; i < r + num; i += 1) {
+          if (!rows[i]) {
+            break;
+          }
+
+          rows[i].splice(c, 0, str);
+        }
+      }
+    });
+  });
+  return rows;
+}; //
+
+
+var handleSpans = function handleSpans(rows) {
+  rows = doRowSpan(rows);
+  rows = doColSpan(rows);
+  return rows;
 };
 
-module.exports = findTables;
+module.exports = handleSpans;
 
-},{"./Table":27,"./parseTable":30}],30:[function(_dereq_,module,exports){
+},{}],35:[function(_dereq_,module,exports){
 "use strict";
 
-var parseSentence = _dereq_('../../04-sentence/').oneSentence;
+var parseSentence = _dereq_('../../../04-sentence/').oneSentence;
 
-var findRows = _dereq_('./findRows'); //additional table-cruft to remove before parseLine method
+var findRows = _dereq_('./_findRows');
 
+var handleSpans = _dereq_('./_spans'); //common ones
+
+
+var headings = {
+  name: true,
+  age: true,
+  born: true,
+  date: true,
+  year: true,
+  city: true,
+  country: true,
+  population: true,
+  count: true,
+  number: true
+}; //additional table-cruft to remove before parseLine method
 
 var cleanText = function cleanText(str) {
+  // str = parseSentence(str).text();
   //anything before a single-pipe is styling, so remove it
   if (str.match(/\|/)) {
     str = str.replace(/.+\| ?/, ''); //class="unsortable"|title
   }
 
-  str = str.replace(/style=".*?"/, ''); //'!' is used as a highlighed-column
+  str = str.replace(/style=['"].*?["']/, ''); //'!' is used as a highlighed-column
 
   str = str.replace(/^!/, '');
+  str = str.trim();
   return str;
 }; //'!' starts a header-row
 
 
 var findHeaders = function findHeaders(rows) {
-  var headings = [];
+  var headers = [];
   var first = rows[0];
 
   if (first && first[0] && /^!/.test(first[0]) === true) {
-    headings = first.map(function (h) {
+    headers = first.map(function (h) {
       h = h.replace(/^\! */, '');
       h = cleanText(h);
       return h;
@@ -2409,7 +2627,44 @@ var findHeaders = function findHeaders(rows) {
     rows.shift();
   }
 
-  return headings;
+  return headers;
+}; //turn headers, array into an object
+
+
+var parseRow = function parseRow(arr, headers) {
+  var row = {};
+  arr.forEach(function (str, i) {
+    var h = headers[i] || 'col' + (i + 1);
+    var s = parseSentence(str);
+    s.text(cleanText(s.text()));
+    row[h] = s;
+  });
+  return row;
+}; //should we use the first row as a the headers?
+
+
+var firstRowHeader = function firstRowHeader(rows) {
+  if (rows.length <= 3) {
+    return [];
+  }
+
+  var headers = rows[0].slice(0);
+  headers = headers.map(function (h) {
+    h = h.replace(/^\! */, '');
+    h = parseSentence(h).text();
+    h = cleanText(h);
+    h = h.toLowerCase();
+    return h;
+  });
+
+  for (var i = 0; i < headers.length; i += 1) {
+    if (headings.hasOwnProperty(headers[i])) {
+      rows.shift();
+      return headers;
+    }
+  }
+
+  return [];
 }; //turn a {|...table string into an array of arrays
 
 
@@ -2419,24 +2674,23 @@ var parseTable = function parseTable(wiki) {
     return l.trim();
   });
   var rows = findRows(lines);
-  var headers = findHeaders(rows); //index them by their header
+  var headers = findHeaders(rows);
+
+  if (!headers || headers.length === 0) {
+    headers = firstRowHeader(rows);
+  }
+
+  rows = handleSpans(rows); //index them by their header
 
   var table = rows.map(function (arr) {
-    var row = {};
-    arr.forEach(function (str, i) {
-      var header = headers[i] || 'col' + (i + 1);
-      var cell = parseSentence(str);
-      cell.text(cleanText(cell.text()));
-      row[header] = cell;
-    });
-    return row;
+    return parseRow(arr, headers);
   });
   return table;
 };
 
 module.exports = parseTable;
 
-},{"../../04-sentence/":53,"./findRows":28}],31:[function(_dereq_,module,exports){
+},{"../../../04-sentence/":58,"./_findRows":33,"./_spans":34}],36:[function(_dereq_,module,exports){
 "use strict";
 
 //turn a json table into a html table
@@ -2469,7 +2723,7 @@ var toHtml = function toHtml(table, options) {
 
 module.exports = toHtml;
 
-},{}],32:[function(_dereq_,module,exports){
+},{}],37:[function(_dereq_,module,exports){
 "use strict";
 
 var encode = _dereq_('../../_lib/encode'); //
@@ -2492,7 +2746,7 @@ var toJson = function toJson(tables, options) {
 
 module.exports = toJson;
 
-},{"../../_lib/encode":67}],33:[function(_dereq_,module,exports){
+},{"../../_lib/encode":77}],38:[function(_dereq_,module,exports){
 "use strict";
 
 //create a formal LATEX table
@@ -2546,7 +2800,7 @@ var doTable = function doTable(table, options) {
 
 module.exports = doTable;
 
-},{}],34:[function(_dereq_,module,exports){
+},{}],39:[function(_dereq_,module,exports){
 "use strict";
 
 var pad = _dereq_('../../_lib/pad');
@@ -2607,7 +2861,7 @@ var doTable = function doTable(table, options) {
 
 module.exports = doTable;
 
-},{"../../_lib/pad":69}],35:[function(_dereq_,module,exports){
+},{"../../_lib/pad":79}],40:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -2677,7 +2931,7 @@ var doSection = function doSection(section, options) {
 
 module.exports = doSection;
 
-},{"../_lib/setDefaults":71}],36:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81}],41:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -2733,10 +2987,8 @@ var toJSON = function toJSON(section, options) {
     data.templates = section.templates(); //encode them, for mongodb
 
     if (options.encode === true) {
-      data.templates.forEach(function (t) {
-        if (t.data) {
-          t.data = encode.encodeObj(t.data);
-        }
+      data.templates.map(function (t) {
+        return encode.encodeObj(t);
       });
     }
   } //infobox json data
@@ -2767,7 +3019,7 @@ var toJSON = function toJSON(section, options) {
 
 module.exports = toJSON;
 
-},{"../_lib/encode":67,"../_lib/setDefaults":71}],37:[function(_dereq_,module,exports){
+},{"../_lib/encode":77,"../_lib/setDefaults":81}],42:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -2863,7 +3115,7 @@ var doSection = function doSection(section, options) {
 
 module.exports = doSection;
 
-},{"../_lib/setDefaults":71}],38:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81}],43:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -2941,7 +3193,7 @@ var doSection = function doSection(section, options) {
 
 module.exports = doSection;
 
-},{"../_lib/setDefaults":71}],39:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81}],44:[function(_dereq_,module,exports){
 "use strict";
 
 var toJSON = _dereq_('./toJson');
@@ -3061,7 +3313,7 @@ Object.keys(methods).forEach(function (k) {
 });
 module.exports = Paragraph;
 
-},{"../_lib/setDefaults":71,"./toHtml":47,"./toJson":48,"./toLatex":49,"./toMarkdown":50}],40:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81,"./toHtml":52,"./toJson":53,"./toLatex":54,"./toMarkdown":55}],45:[function(_dereq_,module,exports){
 "use strict";
 
 var Paragraph = _dereq_('./Paragraph');
@@ -3106,7 +3358,7 @@ var parseParagraphs = function parseParagraphs(wiki) {
 
 module.exports = parseParagraphs;
 
-},{"../04-sentence":53,"../_lib/recursive_match":70,"../image":75,"./Paragraph":39,"./list":42}],41:[function(_dereq_,module,exports){
+},{"../04-sentence":58,"../_lib/recursive_match":80,"../image":84,"./Paragraph":44,"./list":47}],46:[function(_dereq_,module,exports){
 "use strict";
 
 var aliasList = _dereq_('../../_lib/aliases');
@@ -3190,7 +3442,7 @@ Object.keys(aliasList).forEach(function (k) {
 });
 module.exports = List;
 
-},{"../../_lib/aliases":66,"../../_lib/setDefaults":71,"./toHtml":43,"./toJson":44,"./toLatex":45,"./toMarkdown":46}],42:[function(_dereq_,module,exports){
+},{"../../_lib/aliases":76,"../../_lib/setDefaults":81,"./toHtml":48,"./toJson":49,"./toLatex":50,"./toMarkdown":51}],47:[function(_dereq_,module,exports){
 "use strict";
 
 var List = _dereq_('./List');
@@ -3277,7 +3529,7 @@ var parseList = function parseList(wiki, data) {
 
 module.exports = parseList;
 
-},{"../../04-sentence/":53,"./List":41}],43:[function(_dereq_,module,exports){
+},{"../../04-sentence/":58,"./List":46}],48:[function(_dereq_,module,exports){
 "use strict";
 
 //
@@ -3292,7 +3544,7 @@ var toHtml = function toHtml(list, options) {
 
 module.exports = toHtml;
 
-},{}],44:[function(_dereq_,module,exports){
+},{}],49:[function(_dereq_,module,exports){
 "use strict";
 
 //
@@ -3304,7 +3556,7 @@ var toJson = function toJson(p, options) {
 
 module.exports = toJson;
 
-},{}],45:[function(_dereq_,module,exports){
+},{}],50:[function(_dereq_,module,exports){
 "use strict";
 
 //
@@ -3319,7 +3571,7 @@ var toLatex = function toLatex(list, options) {
 
 module.exports = toLatex;
 
-},{}],46:[function(_dereq_,module,exports){
+},{}],51:[function(_dereq_,module,exports){
 "use strict";
 
 //
@@ -3332,7 +3584,7 @@ var toMarkdown = function toMarkdown(list, options) {
 
 module.exports = toMarkdown;
 
-},{}],47:[function(_dereq_,module,exports){
+},{}],52:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -3356,7 +3608,7 @@ var toHtml = function toHtml(p, options) {
 
 module.exports = toHtml;
 
-},{"../_lib/setDefaults":71}],48:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81}],53:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -3380,7 +3632,7 @@ var toJson = function toJson(p, options) {
 
 module.exports = toJson;
 
-},{"../_lib/setDefaults":71}],49:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81}],54:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -3407,7 +3659,7 @@ var toLatex = function toLatex(p, options) {
 
 module.exports = toLatex;
 
-},{"../_lib/setDefaults":71}],50:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81}],55:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -3432,7 +3684,7 @@ var toMarkdown = function toMarkdown(p, options) {
 
 module.exports = toMarkdown;
 
-},{"../_lib/setDefaults":71}],51:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81}],56:[function(_dereq_,module,exports){
 "use strict";
 
 var toHtml = _dereq_('./toHtml');
@@ -3556,7 +3808,7 @@ Sentence.prototype.bold = Sentence.prototype.bolds;
 Sentence.prototype.plaintext = Sentence.prototype.text;
 module.exports = Sentence;
 
-},{"../_lib/aliases":66,"./toHtml":57,"./toJson":58,"./toLatex":59,"./toMarkdown":60}],52:[function(_dereq_,module,exports){
+},{"../_lib/aliases":76,"./toHtml":62,"./toJson":63,"./toLatex":64,"./toMarkdown":65}],57:[function(_dereq_,module,exports){
 "use strict";
 
 //handle the bold/italics
@@ -3603,7 +3855,7 @@ var formatting = function formatting(obj) {
 
 module.exports = formatting;
 
-},{}],53:[function(_dereq_,module,exports){
+},{}],58:[function(_dereq_,module,exports){
 "use strict";
 
 var helpers = _dereq_('../_lib/helpers');
@@ -3615,7 +3867,7 @@ var parseFmt = _dereq_('./formatting');
 var Sentence = _dereq_('./Sentence'); // const templates = require('./templates');
 
 
-var sentenceParser = _dereq_('./sentence-parser');
+var sentenceParser = _dereq_('./parse');
 
 var i18n = _dereq_('../_data/i18n');
 
@@ -3691,7 +3943,7 @@ module.exports = {
   addSentences: addSentences
 };
 
-},{"../_data/i18n":63,"../_lib/helpers":68,"./Sentence":51,"./formatting":52,"./links":55,"./sentence-parser":56}],54:[function(_dereq_,module,exports){
+},{"../_data/i18n":68,"../_lib/helpers":78,"./Sentence":56,"./formatting":57,"./links":60,"./parse":61}],59:[function(_dereq_,module,exports){
 "use strict";
 
 var languages = _dereq_('../_data/languages'); //some colon symbols are valid links, like `America: That place`
@@ -3735,7 +3987,7 @@ var parseInterwiki = function parseInterwiki(obj) {
 
 module.exports = parseInterwiki;
 
-},{"../_data/languages":64}],55:[function(_dereq_,module,exports){
+},{"../_data/languages":69}],60:[function(_dereq_,module,exports){
 "use strict";
 
 // const helpers = require('../_lib/helpers');
@@ -3844,7 +4096,7 @@ var parse_links = function parse_links(str) {
 
 module.exports = parse_links;
 
-},{"./interwiki":54}],56:[function(_dereq_,module,exports){
+},{"./interwiki":59}],61:[function(_dereq_,module,exports){
 "use strict";
 
 //split text into sentences, using regex
@@ -3854,7 +4106,7 @@ module.exports = parse_links;
 // @spencermountain 2015 MIT
 var abbreviations = _dereq_('../_data/abbreviations');
 
-var abbrev_reg = new RegExp('(^| )(' + abbreviations.join('|') + ')[.!?] ?$', 'i');
+var abbrev_reg = new RegExp('(^| |\')(' + abbreviations.join('|') + ")[.!?] ?$", 'i');
 var acronym_reg = new RegExp('[ |.][A-Z].? +?$', 'i');
 var elipses_reg = new RegExp('\\.\\.\\.* +?$');
 var hasWord = new RegExp('[a-z][a-z]', 'i'); //turn a nested array into one array
@@ -3977,7 +4229,7 @@ var sentence_parser = function sentence_parser(text) {
 
 module.exports = sentence_parser; // console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2);
 
-},{"../_data/abbreviations":61}],57:[function(_dereq_,module,exports){
+},{"../_data/abbreviations":66}],62:[function(_dereq_,module,exports){
 "use strict";
 
 var smartReplace = _dereq_('../_lib/smartReplace');
@@ -4038,7 +4290,7 @@ var doSentence = function doSentence(sentence, options) {
 
 module.exports = doSentence;
 
-},{"../_lib/helpers":68,"../_lib/setDefaults":71,"../_lib/smartReplace":72}],58:[function(_dereq_,module,exports){
+},{"../_lib/helpers":78,"../_lib/setDefaults":81,"../_lib/smartReplace":82}],63:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -4075,7 +4327,7 @@ var toJSON = function toJSON(s, options) {
 
 module.exports = toJSON;
 
-},{"../_lib/setDefaults":71}],59:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81}],64:[function(_dereq_,module,exports){
 "use strict";
 
 var smartReplace = _dereq_('../_lib/smartReplace');
@@ -4139,7 +4391,7 @@ var toLatex = function toLatex(sentence, options) {
 
 module.exports = toLatex;
 
-},{"../_lib/helpers":68,"../_lib/setDefaults":71,"../_lib/smartReplace":72}],60:[function(_dereq_,module,exports){
+},{"../_lib/helpers":78,"../_lib/setDefaults":81,"../_lib/smartReplace":82}],65:[function(_dereq_,module,exports){
 "use strict";
 
 var smartReplace = _dereq_('../_lib/smartReplace');
@@ -4201,13 +4453,13 @@ var toMarkdown = function toMarkdown(sentence, options) {
 
 module.exports = toMarkdown;
 
-},{"../_lib/helpers":68,"../_lib/setDefaults":71,"../_lib/smartReplace":72}],61:[function(_dereq_,module,exports){
+},{"../_lib/helpers":78,"../_lib/setDefaults":81,"../_lib/smartReplace":82}],66:[function(_dereq_,module,exports){
 "use strict";
 
 //these are used for the sentence-splitter
 module.exports = ['jr', 'mr', 'mrs', 'ms', 'dr', 'prof', 'sr', 'sen', 'corp', 'calif', 'rep', 'gov', 'atty', 'supt', 'det', 'rev', 'col', 'gen', 'lt', 'cmdr', 'adm', 'capt', 'sgt', 'cpl', 'maj', 'dept', 'univ', 'assn', 'bros', 'inc', 'ltd', 'co', 'corp', 'arc', 'al', 'ave', 'blvd', 'cl', 'ct', 'cres', 'exp', 'rd', 'st', 'dist', 'mt', 'ft', 'fy', 'hwy', 'la', 'pd', 'pl', 'plz', 'tce', 'Ala', 'Ariz', 'Ark', 'Cal', 'Calif', 'Col', 'Colo', 'Conn', 'Del', 'Fed', 'Fla', 'Ga', 'Ida', 'Id', 'Ill', 'Ind', 'Ia', 'Kan', 'Kans', 'Ken', 'Ky', 'La', 'Me', 'Md', 'Mass', 'Mich', 'Minn', 'Miss', 'Mo', 'Mont', 'Neb', 'Nebr', 'Nev', 'Mex', 'Okla', 'Ok', 'Ore', 'Penna', 'Penn', 'Pa', 'Dak', 'Tenn', 'Tex', 'Ut', 'Vt', 'Va', 'Wash', 'Wis', 'Wisc', 'Wy', 'Wyo', 'USAFA', 'Alta', 'Ont', 'QuÔøΩ', 'Sask', 'Yuk', 'jan', 'feb', 'mar', 'apr', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'sept', 'vs', 'etc', 'esp', 'llb', 'md', 'bl', 'phd', 'ma', 'ba', 'miss', 'misses', 'mister', 'sir', 'esq', 'mstr', 'lit', 'fl', 'ex', 'eg', 'sep', 'sept', '..'];
 
-},{}],62:[function(_dereq_,module,exports){
+},{}],67:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = [['🇦🇩', 'and', 'andorra'], ['🇦🇪', 'are', 'united arab emirates'], ['🇦🇫', 'afg', 'afghanistan'], ['🇦🇬', 'atg', 'antigua and barbuda'], ['🇦🇮', 'aia', 'anguilla'], ['🇦🇱', 'alb', 'albania'], ['🇦🇲', 'arm', 'armenia'], ['🇦🇴', 'ago', 'angola'], ['🇦🇶', 'ata', 'antarctica'], ['🇦🇷', 'arg', 'argentina'], ['🇦🇸', 'asm', 'american samoa'], ['🇦🇹', 'aut', 'austria'], ['🇦🇺', 'aus', 'australia'], ['🇦🇼', 'abw', 'aruba'], ['🇦🇽', 'ala', 'åland islands'], ['🇦🇿', 'aze', 'azerbaijan'], ['🇧🇦', 'bih', 'bosnia and herzegovina'], ['🇧🇧', 'brb', 'barbados'], ['🇧🇩', 'bgd', 'bangladesh'], ['🇧🇪', 'bel', 'belgium'], ['🇧🇫', 'bfa', 'burkina faso'], ['🇧🇬', 'bgr', 'bulgaria'], ['🇧🇬', 'bul', //dupe
@@ -4216,7 +4468,7 @@ module.exports = [['🇦🇩', 'and', 'andorra'], ['🇦🇪', 'are', 'united ar
 'united states'], ['🇺🇾', 'ury', 'uruguay'], ['🇺🇿', 'uzb', 'uzbekistan'], ['🇻🇦', 'vat', 'vatican city'], ['🇻🇨', 'vct', 'saint vincent and the grenadines'], ['🇻🇪', 'ven', 'venezuela'], ['🇻🇬', 'vgb', 'virgin islands, british'], ['🇻🇮', 'vir', 'virgin islands, u.s.'], ['🇻🇳', 'vnm', 'viet nam'], ['🇻🇺', 'vut', 'vanuatu'], ['🇼🇫', 'wlf', 'wallis and futuna'], ['🇼🇸', 'wsm', 'samoa'], ['🇾🇪', 'yem', 'yemen'], ['🇾🇹', 'myt', 'mayotte'], ['🇿🇦', 'zaf', 'south africa'], ['🇿🇲', 'zmb', 'zambia'], ['🇿🇼 ', 'zwe', 'zimbabwe'], //others (later unicode versions)
 ['🇺🇳', 'un', 'united nations'], ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'], ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'], ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales']];
 
-},{}],63:[function(_dereq_,module,exports){
+},{}],68:[function(_dereq_,module,exports){
 "use strict";
 
 // wikipedia special terms lifted and augmented from parsoid parser april 2015
@@ -4264,7 +4516,7 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports = i18n;
 }
 
-},{}],64:[function(_dereq_,module,exports){
+},{}],69:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = {
@@ -5535,7 +5787,7 @@ module.exports = {
   }
 };
 
-},{}],65:[function(_dereq_,module,exports){
+},{}],70:[function(_dereq_,module,exports){
 "use strict";
 
 //from https://en.wikipedia.org/w/api.php?action=sitematrix&format=json
@@ -6669,7 +6921,378 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports = site_map;
 }
 
-},{}],66:[function(_dereq_,module,exports){
+},{}],71:[function(_dereq_,module,exports){
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+//allow quite! flexible params to fetch, category
+// [lang], [options], [callback]
+var getParams = function getParams(a, b, c) {
+  var options = {};
+  var lang = 'en';
+  var callback = null;
+
+  if (typeof a === 'function') {
+    callback = a;
+  } else if (_typeof(a) === 'object') {
+    options = a;
+  } else if (typeof a === 'string') {
+    lang = a;
+  }
+
+  if (typeof b === 'function') {
+    callback = b;
+  } else if (_typeof(b) === 'object') {
+    options = b;
+  }
+
+  if (typeof c === 'function') {
+    callback = c;
+  }
+
+  return {
+    options: options,
+    lang: lang,
+    callback: callback
+  };
+};
+
+module.exports = getParams;
+
+},{}],72:[function(_dereq_,module,exports){
+"use strict";
+
+var fetch = _dereq_('cross-fetch');
+
+var request = function request(url, options) {
+  var params = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Api-User-Agent': options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'Random user of the wtf_wikipedia library'
+    }
+  };
+  return fetch(url, params).then(function (response) {
+    if (response.status !== 200) {
+      throw response;
+    }
+
+    return response.json();
+  }).catch(console.error);
+};
+
+module.exports = request;
+
+},{"cross-fetch":1}],73:[function(_dereq_,module,exports){
+"use strict";
+
+var site_map = _dereq_('../_data/site_map');
+
+var request = _dereq_('./_request');
+
+var getParams = _dereq_('./_params');
+
+var normalizeCategory = function normalizeCategory() {
+  var cat = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+  if (/^Category/i.test(cat) === false) {
+    cat = 'Category:' + cat;
+  }
+
+  cat = cat.replace(/ /g, '_');
+  return cat;
+};
+
+var makeUrl = function makeUrl(cat, lang) {
+  cat = encodeURIComponent(cat);
+  var url = "https://".concat(lang, ".wikipedia.org/w/api.php");
+
+  if (site_map[lang]) {
+    url = site_map[lang] + '/w/api.php';
+  }
+
+  url += "?action=query&list=categorymembers&cmtitle=".concat(cat, "&cmlimit=500&format=json&origin=*&redirects=true&cmtype=page|subcat");
+  return url;
+};
+
+var addResult = function addResult(body, out) {
+  if (body.query && body.query.categorymembers) {
+    var list = body.query.categorymembers;
+    list.forEach(function (p) {
+      if (p.ns === 14) {
+        out.categories.push(p);
+      } else {
+        out.pages.push(p);
+      }
+    });
+    return out;
+  }
+
+  return out;
+};
+
+var getCategories = function getCategories(cat, a, b, c) {
+  var _getParams = getParams(a, b, c),
+      lang = _getParams.lang,
+      options = _getParams.options,
+      callback = _getParams.callback; //cleanup cat name
+
+
+  cat = normalizeCategory(cat);
+  var url = makeUrl(cat, lang, options);
+  var safety = 0;
+  var output = {
+    category: cat,
+    pages: [],
+    categories: []
+  };
+
+  var doit = function doit() {
+    var cntd = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var cb = arguments.length > 1 ? arguments[1] : undefined;
+    var myUrl = url + '&cmcontinue=' + cntd;
+    var p = request(myUrl, options);
+    p.then(function (body) {
+      output = addResult(body, output); //should we do another?
+
+      if (body.continue && body.continue.cmcontinue && body.continue.cmcontinue !== cntd && safety < 25) {
+        safety += 1;
+        doit(body.continue.cmcontinue, cb);
+      } else {
+        cb(null, output);
+      }
+    });
+  };
+
+  return new Promise(function (resolve, reject) {
+    doit('', function (err) {
+      if (typeof callback === 'function') {
+        callback(err, output);
+      }
+
+      if (err) {
+        reject(err);
+      }
+
+      resolve(output);
+    });
+  }); // return new Promise(function(resolve, reject) {
+  //   let p = request(url, options);
+  //   p.then((res) => {
+  //     return postProcess(res, options);
+  //   }).then((result) => {
+  //   }).catch(reject);
+  // });
+};
+
+module.exports = getCategories;
+
+},{"../_data/site_map":70,"./_params":71,"./_request":72}],74:[function(_dereq_,module,exports){
+"use strict";
+
+//grab the content of any article, off the api
+var site_map = _dereq_('../_data/site_map');
+
+var request = _dereq_('./_request');
+
+var getParams = _dereq_('./_params');
+
+var parseDoc = _dereq_('../01-document');
+
+var isUrl = /^https?:\/\//; // const redirects = require('../parse/page/redirects');
+
+function isArray(arr) {
+  return arr.constructor.toString().indexOf('Array') > -1;
+} //construct a lookup-url for the wikipedia api
+
+
+var makeUrl = function makeUrl(title, lang, options) {
+  lang = lang || 'en'; //if given a url...
+
+  if (isUrl.test(title) === true) {
+    title = title.replace(/.*?\/wiki\//, '');
+    title = title.replace(/\?.*/, '');
+  }
+
+  var url = "https://".concat(lang, ".wikipedia.org/w/api.php");
+
+  if (site_map[lang]) {
+    url = site_map[lang] + '/w/api.php';
+  }
+
+  if (options.wikiUrl) {
+    url = options.wikiUrl;
+  } //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
+
+
+  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&format=json';
+
+  if (!options.wikiUrl) {
+    url += '&origin=*';
+  }
+
+  if (options.follow_redirects !== false) {
+    url += '&redirects=true';
+  }
+
+  var lookup = 'titles';
+  var pages = []; //support one, or many pages
+
+  if (isArray(title) === false) {
+    pages = [title];
+  } else {
+    pages = title;
+  } //assume numbers mean pageid, and strings are titles (like '1984')
+
+
+  if (typeof pages[0] === 'number') {
+    lookup = 'pageids';
+  } else {
+    pages = pages.map(function (str) {
+      if (typeof str === 'string') {
+        return encodeURIComponent(str);
+      }
+
+      return str;
+    });
+  }
+
+  pages = pages.join('|');
+  url += '&' + lookup + '=' + pages;
+  return url;
+}; //this data-format from mediawiki api is nutso
+
+
+var postProcess = function postProcess(data, options) {
+  var pages = Object.keys(data.query.pages);
+  var docs = pages.map(function (id) {
+    var page = data.query.pages[id] || {};
+
+    if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
+      return null;
+    }
+
+    var text = page.revisions[0]['*']; //us the 'generator' result format, for the random() method
+
+    if (!text && page.revisions[0].slots) {
+      text = page.revisions[0].slots.main['*'];
+    }
+
+    options.title = page.title;
+    options.pageID = page.pageid;
+
+    try {
+      return parseDoc(text, options);
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
+  }); //return an array if there was more than one page given
+
+  if (docs.length > 1) {
+    return docs;
+  } //just return the first one
+
+
+  return docs[0];
+};
+
+var getPage = function getPage(title, a, b, c) {
+  var _getParams = getParams(a, b, c),
+      lang = _getParams.lang,
+      options = _getParams.options,
+      callback = _getParams.callback;
+
+  var url = makeUrl(title, lang, options);
+  return new Promise(function (resolve, reject) {
+    var p = request(url, options);
+    p.then(function (wiki) {
+      return postProcess(wiki, options);
+    }).then(function (doc) {
+      //support 'err-back' format
+      if (callback && typeof callback === 'function') {
+        callback(null, doc);
+      }
+
+      resolve(doc);
+    }).catch(reject);
+  });
+};
+
+module.exports = getPage;
+
+},{"../01-document":7,"../_data/site_map":70,"./_params":71,"./_request":72}],75:[function(_dereq_,module,exports){
+"use strict";
+
+var site_map = _dereq_('../_data/site_map');
+
+var request = _dereq_('./_request');
+
+var getParams = _dereq_('./_params');
+
+var parseDoc = _dereq_('../01-document');
+
+var makeUrl = function makeUrl(lang) {
+  var url = "https://".concat(lang, ".wikipedia.org/w/api.php");
+
+  if (site_map[lang]) {
+    url = site_map[lang] + '/w/api.php';
+  }
+
+  url += "?format=json&action=query&generator=random&grnnamespace=0&prop=revisions&rvprop=content&grnlimit=1&rvslots=main&origin=*";
+  return url;
+}; //this data-format from mediawiki api is nutso
+
+
+var postProcess = function postProcess(data, options) {
+  var pages = Object.keys(data.query.pages);
+  var id = pages[0];
+  var page = data.query.pages[id] || {};
+
+  if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
+    return null;
+  } //us the 'generator' result format, for the random() method
+
+
+  var text = page.revisions[0].slots.main['*'];
+  options.title = page.title;
+  options.pageID = page.pageid;
+
+  try {
+    return parseDoc(text, options);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+}; //fetch and parse a random page from the api
+
+
+var getRandom = function getRandom(a, b, c) {
+  var _getParams = getParams(a, b, c),
+      lang = _getParams.lang,
+      options = _getParams.options,
+      callback = _getParams.callback;
+
+  var url = makeUrl(lang);
+  return new Promise(function (resolve, reject) {
+    var p = request(url, options);
+    p.then(function (res) {
+      return postProcess(res, options);
+    }).then(function (doc) {
+      //support 'err-back' format
+      if (typeof callback === 'function') {
+        callback(null, doc);
+      }
+
+      resolve(doc);
+    }).catch(reject);
+  });
+};
+
+module.exports = getRandom;
+
+},{"../01-document":7,"../_data/site_map":70,"./_params":71,"./_request":72}],76:[function(_dereq_,module,exports){
 "use strict";
 
 //alternative names for methods in API
@@ -6688,7 +7311,7 @@ var aliasList = {
 };
 module.exports = aliasList;
 
-},{}],67:[function(_dereq_,module,exports){
+},{}],77:[function(_dereq_,module,exports){
 "use strict";
 
 // dumpster-dive throws everything into mongodb  - github.com/spencermountain/dumpster-dive
@@ -6729,7 +7352,7 @@ module.exports = {
   encodeObj: encodeObj
 };
 
-},{}],68:[function(_dereq_,module,exports){
+},{}],78:[function(_dereq_,module,exports){
 "use strict";
 
 var helpers = {
@@ -6757,7 +7380,7 @@ var helpers = {
 };
 module.exports = helpers;
 
-},{}],69:[function(_dereq_,module,exports){
+},{}],79:[function(_dereq_,module,exports){
 "use strict";
 
 //center-pad each cell, to make the table more legible
@@ -6781,7 +7404,7 @@ var pad = function pad(str, cellWidth) {
 
 module.exports = pad;
 
-},{}],70:[function(_dereq_,module,exports){
+},{}],80:[function(_dereq_,module,exports){
 "use strict";
 
 //find all the pairs of '[[...[[..]]...]]' in the text
@@ -6843,7 +7466,7 @@ function find_recursive(opener, closer, text) {
 module.exports = find_recursive; // console.log(find_recursive('{', '}', 'he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas'));
 // console.log(find_recursive("{", "}", "this is fun {{nowrap{{small1995–present}}}} and it works"))
 
-},{}],71:[function(_dereq_,module,exports){
+},{}],81:[function(_dereq_,module,exports){
 "use strict";
 
 //
@@ -6862,7 +7485,7 @@ var setDefaults = function setDefaults(options, defaults) {
 
 module.exports = setDefaults;
 
-},{}],72:[function(_dereq_,module,exports){
+},{}],82:[function(_dereq_,module,exports){
 "use strict";
 
 //escape a string like 'fun*2.Co' for a regExpr
@@ -6897,201 +7520,7 @@ var smartReplace = function smartReplace(all, text, result) {
 
 module.exports = smartReplace;
 
-},{}],73:[function(_dereq_,module,exports){
-"use strict";
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-//grab the content of any article, off the api
-var fetch = _dereq_('cross-fetch');
-
-var site_map = _dereq_('./_data/site_map');
-
-var parseDocument = _dereq_('./01-document'); // const redirects = require('../parse/page/redirects');
-
-
-function isArray(arr) {
-  return arr.constructor.toString().indexOf('Array') > -1;
-} //construct a lookup-url for the wikipedia api
-
-
-var makeUrl = function makeUrl(title, lang, options) {
-  lang = lang || 'en';
-  var url = "https://".concat(lang, ".wikipedia.org/w/api.php");
-
-  if (site_map[lang]) {
-    url = site_map[lang] + '/w/api.php';
-  } //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-
-
-  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&format=json&origin=*';
-
-  if (options.follow_redirects !== false) {
-    url += '&redirects=true';
-  }
-
-  var lookup = 'titles';
-  var pages = []; //support one, or many pages
-
-  if (isArray(title) === false) {
-    pages = [title];
-  } else {
-    pages = title;
-  } //assume numbers mean pageid, and strings are titles (like '1984')
-
-
-  if (typeof pages[0] === 'number') {
-    lookup = 'pageids';
-  } else {
-    pages = pages.map(function (str) {
-      if (typeof str === 'string') {
-        return encodeURIComponent(str);
-      }
-
-      return str;
-    });
-  }
-
-  pages = pages.join('|');
-  url += '&' + lookup + '=' + pages;
-  return url;
-}; //this data-format from mediawiki api is nutso
-
-
-var postProcess = function postProcess(data, options) {
-  var pages = Object.keys(data.query.pages);
-  var docs = pages.map(function (id) {
-    var page = data.query.pages[id] || {};
-
-    if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
-      return null;
-    }
-
-    var text = page.revisions[0]['*']; //us the 'generator' result format, for the random() method
-
-    if (!text && page.revisions[0].slots) {
-      text = page.revisions[0].slots.main['*'];
-    }
-
-    options.title = page.title;
-    options.pageID = page.pageid;
-
-    try {
-      return parseDocument(text, options);
-    } catch (e) {
-      console.error(e);
-      throw e;
-    }
-  }); //return an array if there was more than one page given
-
-  if (docs.length > 1) {
-    return docs;
-  } //just return the first one
-
-
-  return docs[0];
-};
-
-var getData = function getData(url, options) {
-  var params = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Api-User-Agent': options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'Random user of the wtf_wikipedia library'
-    }
-  };
-  return fetch(url, params).then(function (response) {
-    if (response.status !== 200) {
-      throw response;
-    }
-
-    return response.json();
-  }).catch(console.error);
-};
-
-var getPage = function getPage(title, a, b, c) {
-  //allow quite! flexible params
-  var options = {};
-  var lang = 'en';
-  var callback = null;
-
-  if (typeof a === 'function') {
-    callback = a;
-  } else if (_typeof(a) === 'object') {
-    options = a;
-  } else if (typeof a === 'string') {
-    lang = a;
-  }
-
-  if (typeof b === 'function') {
-    callback = b;
-  } else if (_typeof(b) === 'object') {
-    options = b;
-  }
-
-  if (typeof c === 'function') {
-    callback = c;
-  }
-
-  var url = makeUrl(title, lang, options);
-  return new Promise(function (resolve, reject) {
-    var p = getData(url, options);
-    p.then(function (wiki) {
-      return postProcess(wiki, options);
-    }).then(function (doc) {
-      //support 'err-back' format
-      if (callback && typeof callback === 'function') {
-        callback(null, doc);
-      }
-
-      resolve(doc);
-    }).catch(reject);
-  });
-}; //fetch and parse a random page from the api
-
-
-var random = function random(lang, options, cb) {
-  lang = lang || 'en';
-
-  if (typeof lang === 'function') {
-    cb = lang;
-    lang = 'en';
-  }
-
-  if (typeof options === 'function') {
-    cb = options;
-    options = {};
-  }
-
-  options = options || {};
-  var url = "https://".concat(lang, ".wikipedia.org/w/api.php");
-
-  if (site_map[lang]) {
-    url = site_map[lang] + '/w/api.php';
-  }
-
-  url += "?format=json&action=query&generator=random&grnnamespace=0&prop=revisions&rvprop=content&grnlimit=1&rvslots=main&origin=*";
-  return new Promise(function (resolve, reject) {
-    var p = getData(url, options);
-    p.then(function (res) {
-      return postProcess(res, options);
-    }).then(function (doc) {
-      //support 'err-back' format
-      if (cb && typeof cb === 'function') {
-        cb(null, doc);
-      }
-
-      resolve(doc);
-    }).catch(reject);
-  });
-};
-
-module.exports = {
-  getPage: getPage,
-  random: random
-};
-
-},{"./01-document":7,"./_data/site_map":65,"cross-fetch":1}],74:[function(_dereq_,module,exports){
+},{}],83:[function(_dereq_,module,exports){
 "use strict";
 
 var fetch = _dereq_('cross-fetch');
@@ -7214,7 +7643,7 @@ Image.prototype.src = Image.prototype.url;
 Image.prototype.thumb = Image.prototype.thumbnail;
 module.exports = Image;
 
-},{"../_lib/aliases":66,"./toHtml":76,"./toLatex":77,"./toMarkdown":78,"cross-fetch":1}],75:[function(_dereq_,module,exports){
+},{"../_lib/aliases":76,"./toHtml":85,"./toLatex":86,"./toMarkdown":87,"cross-fetch":1}],84:[function(_dereq_,module,exports){
 "use strict";
 
 var i18n = _dereq_('../_data/i18n');
@@ -7303,7 +7732,7 @@ var parseImages = function parseImages(matches, r, wiki) {
 
 module.exports = parseImages;
 
-},{"../04-sentence":53,"../_data/i18n":63,"./Image":74}],76:[function(_dereq_,module,exports){
+},{"../04-sentence":58,"../_data/i18n":68,"./Image":83}],85:[function(_dereq_,module,exports){
 "use strict";
 
 var makeImage = function makeImage(img) {
@@ -7312,7 +7741,7 @@ var makeImage = function makeImage(img) {
 
 module.exports = makeImage;
 
-},{}],77:[function(_dereq_,module,exports){
+},{}],86:[function(_dereq_,module,exports){
 "use strict";
 
 //
@@ -7328,7 +7757,7 @@ var toLatex = function toLatex(image) {
 
 module.exports = toLatex;
 
-},{}],78:[function(_dereq_,module,exports){
+},{}],87:[function(_dereq_,module,exports){
 "use strict";
 
 //markdown images are like this: ![alt text](href)
@@ -7340,10 +7769,14 @@ var doImage = function doImage(image) {
 
 module.exports = doImage;
 
-},{}],79:[function(_dereq_,module,exports){
+},{}],88:[function(_dereq_,module,exports){
 "use strict";
 
-var fetch = _dereq_('./fetch');
+var fetch = _dereq_('./_fetch/fetch');
+
+var random = _dereq_('./_fetch/random');
+
+var category = _dereq_('./_fetch/category');
 
 var version = _dereq_('../package').version;
 
@@ -7355,17 +7788,21 @@ var wtf = function wtf(wiki, options) {
 };
 
 wtf.fetch = function (title, lang, options, cb) {
-  return fetch.getPage(title, lang, options, cb);
+  return fetch(title, lang, options, cb);
 };
 
 wtf.random = function (lang, options, cb) {
-  return fetch.random(lang, options, cb);
+  return random(lang, options, cb);
+};
+
+wtf.category = function (cat, lang, options, cb) {
+  return category(cat, lang, options, cb);
 };
 
 wtf.version = version;
 module.exports = wtf;
 
-},{"../package":2,"./01-document/index.js":7,"./fetch":73}],80:[function(_dereq_,module,exports){
+},{"../package":2,"./01-document/index.js":7,"./_fetch/category":73,"./_fetch/fetch":74,"./_fetch/random":75}],89:[function(_dereq_,module,exports){
 "use strict";
 
 var toMarkdown = _dereq_('./toMarkdown');
@@ -7487,7 +7924,7 @@ Infobox.prototype.template = Infobox.prototype.type;
 Infobox.prototype.images = Infobox.prototype.image;
 module.exports = Infobox;
 
-},{"../_lib/aliases":66,"../image/Image":74,"./toHtml":82,"./toJson":83,"./toLatex":84,"./toMarkdown":85}],81:[function(_dereq_,module,exports){
+},{"../_lib/aliases":76,"../image/Image":83,"./toHtml":91,"./toJson":92,"./toLatex":93,"./toMarkdown":94}],90:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = {
@@ -7498,7 +7935,7 @@ module.exports = {
   'signature alt': true
 };
 
-},{}],82:[function(_dereq_,module,exports){
+},{}],91:[function(_dereq_,module,exports){
 "use strict";
 
 var dontDo = _dereq_('./_skip-keys');
@@ -7554,7 +7991,7 @@ var infobox = function infobox(obj, options) {
 
 module.exports = infobox;
 
-},{"../_lib/setDefaults":71,"./_skip-keys":81}],83:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81,"./_skip-keys":90}],92:[function(_dereq_,module,exports){
 "use strict";
 
 var encode = _dereq_('../_lib/encode'); //turn an infobox into some nice json
@@ -7578,7 +8015,7 @@ var toJson = function toJson(infobox, options) {
 
 module.exports = toJson;
 
-},{"../_lib/encode":67}],84:[function(_dereq_,module,exports){
+},{"../_lib/encode":77}],93:[function(_dereq_,module,exports){
 "use strict";
 
 var dontDo = _dereq_('./_skip-keys');
@@ -7614,7 +8051,7 @@ var infobox = function infobox(obj, options) {
 
 module.exports = infobox;
 
-},{"../_lib/setDefaults":71,"./_skip-keys":81}],85:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":81,"./_skip-keys":90}],94:[function(_dereq_,module,exports){
 "use strict";
 
 var dontDo = _dereq_('./_skip-keys');
@@ -7649,102 +8086,7 @@ var doInfobox = function doInfobox(obj, options) {
 
 module.exports = doInfobox;
 
-},{"../_lib/pad":69,"../_lib/setDefaults":71,"./_skip-keys":81}],86:[function(_dereq_,module,exports){
-"use strict";
-
-var getName = _dereq_('../_parsers/_getName');
-
-var parse = _dereq_('../_parsers/parse');
-
-var doKeyValue = _dereq_('./keyValue');
-
-var maybeKeyValue = /\| *?[a-z].+= *?[a-z0-9]{2}/i; // {{name|foo=bar}}
-//does it look like {{name|foo|bar}}
-
-var maybePipeList = function maybePipeList(tmpl) {
-  var pipes = tmpl.split('|').length;
-
-  if (pipes > 2) {
-    var equalSigns = tmpl.split('=').length;
-
-    if (equalSigns <= 2) {
-      return true;
-    }
-  }
-
-  return false;
-}; //somehow, we parse this template without knowing how to already
-
-
-var generic = function generic(tmpl) {
-  var name = getName(tmpl); //make sure it looks like a key-value template
-
-  if (maybeKeyValue.test(tmpl) === true) {
-    return doKeyValue(tmpl, name);
-  }
-
-  if (maybePipeList(tmpl) === true) {
-    return parse(tmpl);
-  }
-
-  return null;
-};
-
-module.exports = generic;
-
-},{"../_parsers/_getName":94,"../_parsers/parse":97,"./keyValue":87}],87:[function(_dereq_,module,exports){
-"use strict";
-
-var i18n = _dereq_('../../_data/i18n');
-
-var isInfobox = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i');
-var isCitation = new RegExp('^(cite |citation)', 'i');
-
-var keyValue = _dereq_('../_parsers/keyValue');
-
-var infoboxType = function infoboxType(name) {
-  var reg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ') *?', 'i');
-  name = name.replace(reg, '');
-  return name.trim();
-}; //try to parse unknown template as a {{name|key=val|key2=val2}} format
-
-
-var doKeyValue = function doKeyValue(tmpl, name) {
-  //handle infoboxes
-  if (name === 'infobox' || isInfobox.test(name)) {
-    return {
-      template: 'infobox',
-      type: infoboxType(name),
-      data: keyValue(tmpl, true)
-    };
-  }
-
-  var data = keyValue(tmpl); //handle citation templates
-
-  if (isCitation.test(name)) {
-    var type = name.replace(/^cite +/, '').trim();
-    return {
-      template: 'citation',
-      type: type,
-      data: data
-    };
-  } //generic response
-  //try to bury some annoying ones
-
-
-  if (Object.keys(data).length === 1 && (data.date || data.state || data.format)) {
-    return null;
-  }
-
-  return {
-    template: name,
-    data: data
-  };
-};
-
-module.exports = doKeyValue;
-
-},{"../../_data/i18n":63,"../_parsers/keyValue":96}],88:[function(_dereq_,module,exports){
+},{"../_lib/pad":79,"../_lib/setDefaults":81,"./_skip-keys":90}],95:[function(_dereq_,module,exports){
 "use strict";
 
 var strip = _dereq_('./_parsers/_strip');
@@ -7822,24 +8164,111 @@ var getTemplates = function getTemplates(wiki) {
 
 module.exports = getTemplates; // console.log(getTemplates('he is president. {{nowrap|he is {{age|1980}} years}} he lives in {{date}} texas'));
 
-},{"./_parsers/_strip":95}],89:[function(_dereq_,module,exports){
+},{"./_parsers/_strip":103}],96:[function(_dereq_,module,exports){
 "use strict";
 
 //we explicitly ignore these, because they sometimes have resolve some data
 var list = [//https://en.wikipedia.org/wiki/category:templates_with_no_visible_output
-'anchor', 'defaultsort', 'use american english', 'use australian english', 'use bangladeshi english', 'use british english', 'use british english oxford spelling', 'use canadian english', 'use dmy dates', 'use harvard referencing', 'use hong kong english', 'use indian english', 'use irish english', 'use jamaican english', 'use list-defined references', 'use mdy dates', 'use new zealand english', 'use pakistani english', 'use singapore english', 'use south african english', 'void', //https://en.wikipedia.org/wiki/Category:Protection_templates
+'anchor', 'defaultsort', 'use list-defined references', 'void', //https://en.wikipedia.org/wiki/Category:Protection_templates
 'pp', 'pp-move-indef', 'pp-semi-indef', 'pp-vandalism', //https://en.wikipedia.org/wiki/Template:R
 'r', //out-of-scope still - https://en.wikipedia.org/wiki/Template:Tag
 '#tag', //https://en.wikipedia.org/wiki/Template:Navboxes
 'navboxes', 'reflist', 'ref-list', 'div col', 'authority control', //https://en.wikipedia.org/wiki/Template:Citation_needed
-'better source', 'citation needed', 'clarify', 'cite quote', 'dead link', 'by whom', 'dubious', 'when', 'who', 'quantify', 'refimprove', 'weasel inline'];
+// 'better source',
+// 'citation needed',
+// 'clarify',
+// 'cite quote',
+// 'dead link',
+// 'by whom',
+// 'dubious',
+// 'when',
+// 'who',
+// 'quantify',
+// 'refimprove',
+// 'weasel inline',
+//https://en.wikipedia.org/wiki/Template:End
+'pope list end', 'shipwreck list end', 'starbox end', 'end box', 'end', 's-end'];
 var ignore = list.reduce(function (h, str) {
   h[str] = true;
   return h;
 }, {});
 module.exports = ignore;
 
-},{}],90:[function(_dereq_,module,exports){
+},{}],97:[function(_dereq_,module,exports){
+"use strict";
+
+var i18n = _dereq_('../_data/i18n');
+
+var i18nReg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i'); //some looser ones
+
+var startReg = /^infobox /i;
+var endReg = / infobox$/i; //some known ones from
+// https://en.wikipedia.org/wiki/Wikipedia:List_of_infoboxes
+
+var known = {
+  'gnf protein box': true,
+  'automatic taxobox': true,
+  'chembox ': true,
+  'editnotice': true,
+  'geobox': true,
+  'hybridbox': true,
+  'ichnobox': true,
+  'infraspeciesbox': true,
+  'mycomorphbox': true,
+  'oobox': true,
+  'paraphyletic group': true,
+  'speciesbox': true,
+  'subspeciesbox': true,
+  'starbox short': true,
+  'taxobox': true
+}; //
+
+var isInfobox = function isInfobox(name) {
+  // known
+  if (known.hasOwnProperty(name) === true) {
+    return true;
+  }
+
+  if (i18nReg.test(name)) {
+    return true;
+  }
+
+  if (startReg.test(name) || endReg.test(name)) {
+    return true;
+  }
+
+  return false;
+}; //turns template data into good inforbox data
+
+
+var fmtInfobox = function fmtInfobox() {
+  var obj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var m = obj.template.match(i18nReg);
+  var type = obj.template;
+
+  if (m && m[0]) {
+    type = type.replace(m[0], '');
+  }
+
+  type = type.trim();
+  var infobox = {
+    template: 'infobox',
+    type: type,
+    data: obj
+  };
+  delete infobox.data.template; // already have this.
+
+  delete infobox.data.list; //just in case!
+
+  return infobox;
+};
+
+module.exports = {
+  isInfobox: isInfobox,
+  format: fmtInfobox
+};
+
+},{"../_data/i18n":68}],98:[function(_dereq_,module,exports){
 "use strict";
 
 //turn {{name|one|two|three}} into [name, one, two, three]
@@ -7860,27 +8289,37 @@ var pipeSplitter = function pipeSplitter(tmpl) {
     }
   }); //cleanup any mistakes we've made
 
+  arr = arr.filter(function (a) {
+    return a !== null;
+  });
   arr = arr.map(function (a) {
     return (a || '').trim();
-  });
-  arr = arr.filter(function (a) {
-    return a;
-  });
+  }); //remove empty fields, only at the end:
+
+  for (var i = arr.length - 1; i >= 0; i -= 1) {
+    if (arr[i] === '') {
+      arr.pop();
+    }
+
+    break;
+  }
+
   return arr;
 };
 
 module.exports = pipeSplitter;
 
-},{}],91:[function(_dereq_,module,exports){
+},{}],99:[function(_dereq_,module,exports){
 "use strict";
 
 // every value in {{tmpl|a|b|c}} needs a name
 // here we come up with names for them
-var hasKey = /^[a-z0-9_\- ]+=/i; //turn 'key=val' into {key:key, val:val}
+var hasKey = /^[ \x2D\.0-9_a-z\xC0-\xFF\u017F\u1E9E\u212A\u212B]+=/i; //turn 'key=val' into {key:key, val:val}
 
 var parseKey = function parseKey(str) {
   var parts = str.split('=');
   var key = parts[0] || '';
+  key = key.toLowerCase();
   var val = parts.slice(1).join('=');
   return {
     key: key.trim(),
@@ -7920,7 +8359,7 @@ var keyMaker = function keyMaker(arr, order) {
 
 module.exports = keyMaker;
 
-},{}],92:[function(_dereq_,module,exports){
+},{}],100:[function(_dereq_,module,exports){
 "use strict";
 
 var whoCares = {
@@ -7955,7 +8394,7 @@ var cleanup = function cleanup(obj) {
 
 module.exports = cleanup;
 
-},{}],93:[function(_dereq_,module,exports){
+},{}],101:[function(_dereq_,module,exports){
 "use strict";
 
 //normalize template names
@@ -7968,7 +8407,7 @@ var fmtName = function fmtName(name) {
 
 module.exports = fmtName;
 
-},{}],94:[function(_dereq_,module,exports){
+},{}],102:[function(_dereq_,module,exports){
 "use strict";
 
 var fmtName = _dereq_('./_fmtName'); //get the name of the template
@@ -8003,7 +8442,7 @@ var getName = function getName(tmpl) {
 
 module.exports = getName;
 
-},{"./_fmtName":93}],95:[function(_dereq_,module,exports){
+},{"./_fmtName":101}],103:[function(_dereq_,module,exports){
 "use strict";
 
 //remove the top/bottom off the template
@@ -8015,75 +8454,7 @@ var strip = function strip(tmpl) {
 
 module.exports = strip;
 
-},{}],96:[function(_dereq_,module,exports){
-"use strict";
-
-var parseSentence = _dereq_('../../04-sentence').oneSentence;
-
-var strip = _dereq_('./_strip'); //turn '| key = value' into an object
-
-
-var keyValue = function keyValue(tmpl, isInfobox) {
-  tmpl = strip(tmpl);
-  var arr = tmpl.split(/\n?\|/); //look for broken-up links and fix them :(
-
-  arr.forEach(function (a, i) {
-    if (!arr[i + 1]) {
-      return;
-    }
-
-    if (/\[\[[^\]]+$/.test(a) || /\{\{[^\}]+$/.test(a)) {
-      // [[link|text]] or {{imdb|2386}}
-      arr[i + 1] = arr[i] + '|' + arr[i + 1];
-      arr[i] = null;
-    }
-  }); //remove first line (template name)
-
-  arr = arr.slice(1); //remove empty lines
-
-  arr = arr.filter(function (a) {
-    return a && a.trim().length > 0;
-  }); // && a.indexOf('=') !== -1
-  //start turning it into a key-value map
-
-  var obj = arr.reduce(function (h, line, i) {
-    var parts = line.split(/=/);
-
-    if (parts.length > 2) {
-      parts[1] = parts.slice(1).join('=');
-    } //use index when there's no key/value eg. '| foo'
-
-
-    if (parts.length < 2) {
-      parts = [String(i), line];
-    }
-
-    var key = parts[0].toLowerCase().trim();
-    var val = parts[1].trim();
-
-    if (key !== '' && val !== '') {
-      val = parseSentence(val);
-
-      if (isInfobox) {
-        h[key] = val; //.json();
-      } else {
-        h[key] = val.text();
-
-        if (val.links().length > 0) {
-          h._links = h._links || [];
-          h._links = h._links.concat(val.links());
-        }
-      }
-    }
-
-    return h;
-  }, {});
-  return obj;
-};
-
-module.exports = keyValue;
-
-},{"../../04-sentence":53,"./_strip":95}],97:[function(_dereq_,module,exports){
+},{}],104:[function(_dereq_,module,exports){
 "use strict";
 
 //remove the top/bottom off the template
@@ -8098,6 +8469,7 @@ var pipeSplitter = _dereq_('./01-pipe-splitter');
 var keyMaker = _dereq_('./02-keyMaker');
 
 var cleanup = _dereq_('./03-cleanup'); // const isKnown = require('./04-isKnown');
+// most templates just want plaintext...
 
 
 var makeFormat = function makeFormat(str, fmt) {
@@ -8107,10 +8479,10 @@ var makeFormat = function makeFormat(str, fmt) {
     return s.json();
   } else if (fmt === 'raw') {
     return s;
-  } else {
-    //default to flat text
-    return s.text();
-  }
+  } //default to flat text
+
+
+  return s.text();
 }; //
 
 
@@ -8154,7 +8526,7 @@ var parser = function parser(tmpl, order, fmt) {
 
 module.exports = parser;
 
-},{"../../04-sentence":53,"./01-pipe-splitter":90,"./02-keyMaker":91,"./03-cleanup":92,"./_fmtName":93,"./_strip":95}],98:[function(_dereq_,module,exports){
+},{"../../04-sentence":58,"./01-pipe-splitter":98,"./02-keyMaker":99,"./03-cleanup":100,"./_fmtName":101,"./_strip":103}],105:[function(_dereq_,module,exports){
 "use strict";
 
 //this is allowed to be rough
@@ -8200,7 +8572,7 @@ var delta = function delta(from, to) {
 
 module.exports = delta;
 
-},{}],99:[function(_dereq_,module,exports){
+},{}],106:[function(_dereq_,module,exports){
 "use strict";
 
 //assorted parsing methods for date/time templates
@@ -8297,13 +8669,13 @@ module.exports = {
   ymd: ymd
 }; // console.log(toText(ymd([2018, 3, 28])));
 
-},{"./_months":100}],100:[function(_dereq_,module,exports){
+},{"./_months":107}],107:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = [undefined, //1-based months.. :/
 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-},{}],101:[function(_dereq_,module,exports){
+},{}],108:[function(_dereq_,module,exports){
 "use strict";
 
 //not all too fancy - used in {{timesince}}
@@ -8337,7 +8709,7 @@ var timeSince = function timeSince(str) {
 
 module.exports = timeSince;
 
-},{}],102:[function(_dereq_,module,exports){
+},{}],109:[function(_dereq_,module,exports){
 "use strict";
 
 var misc = _dereq_('./misc');
@@ -8473,7 +8845,7 @@ templates.currentmonthname = templates.currentmonth;
 templates.currentmonthabbrev = templates.currentmonth;
 module.exports = templates;
 
-},{"../_parsers/parse":97,"./_timeSince":101,"./misc":103,"./parsers":104}],103:[function(_dereq_,module,exports){
+},{"../_parsers/parse":104,"./_timeSince":108,"./misc":110,"./parsers":111}],110:[function(_dereq_,module,exports){
 "use strict";
 
 var format = _dereq_('./_format');
@@ -8518,10 +8890,12 @@ var misc = {
 };
 module.exports = misc;
 
-},{"../_parsers/parse":97,"./_format":99,"./_months":100}],104:[function(_dereq_,module,exports){
+},{"../_parsers/parse":104,"./_format":106,"./_months":107}],111:[function(_dereq_,module,exports){
 "use strict";
 
 var strip = _dereq_('../_parsers/_strip');
+
+var parse = _dereq_('../_parsers/parse');
 
 var delta = _dereq_('./_delta');
 
@@ -8558,28 +8932,38 @@ var getBoth = function getBoth(tmpl) {
 var parsers = {
   //generic {{date|year|month|date}} template
   date: function date(tmpl, r) {
-    tmpl = strip(tmpl);
-    var arr = tmpl.split('|');
-    arr = arr.slice(1, 8); //support 'df=yes|1894|7|26'
+    var order = ['year', 'month', 'date', 'hour', 'minute', 'second', 'timezone'];
+    var obj = parse(tmpl, order);
+    var data = ymd([obj.year, obj.month, obj.date]);
+    obj.text = toText(data); //make the replacement string
 
-    if (arr[0] && /^df=/.test(arr[0])) {
-      arr.shift();
+    if (obj.timezone) {
+      if (obj.timezone === 'Z') {
+        obj.timezone = 'UTC';
+      }
+
+      obj.text += " (".concat(obj.timezone, ")");
     }
 
-    var date = ymd(arr);
-    date.text = toText(date); //make the replacement string
-
-    if (date.text) {
-      r.templates.push(template(date));
+    if (obj.hour && obj.minute) {
+      if (obj.second) {
+        obj.text = "".concat(obj.hour, ":").concat(obj.minute, ":").concat(obj.second, ", ") + obj.text;
+      } else {
+        obj.text = "".concat(obj.hour, ":").concat(obj.minute, ", ") + obj.text;
+      }
     }
 
-    return date.text;
+    if (obj.text) {
+      r.templates.push(template(obj));
+    }
+
+    return obj.text;
   },
   //support parsing of 'February 10, 1992'
   natural_date: function natural_date(tmpl, r) {
-    tmpl = strip(tmpl);
-    var arr = tmpl.split('|');
-    var str = arr[1] || ''; // - just a year
+    var order = ['text'];
+    var obj = parse(tmpl, order);
+    var str = obj.text; // - just a year
 
     var date = {};
 
@@ -8603,28 +8987,27 @@ var parsers = {
   },
   //just grab the first value, and assume it's a year
   one_year: function one_year(tmpl, r) {
-    tmpl = strip(tmpl);
-    var arr = tmpl.split('|');
-    var str = arr[1] || '';
-    var year = parseInt(str, 10);
+    var order = ['year'];
+    var obj = parse(tmpl, order);
+    var year = Number(obj.year);
     r.templates.push(template({
       year: year
     }));
-    return str.trim();
+    return String(year);
   },
-  //assume 'y|m|d' | 'y|m|d'
+  //assume 'y|m|d' | 'y|m|d' // {{BirthDeathAge|B|1976|6|6|1990|8|8}}
   two_dates: function two_dates(tmpl, r) {
-    tmpl = strip(tmpl);
-    var arr = tmpl.split('|'); //'b' means show birth-date, otherwise show death-date
+    var order = ['b', 'birth_year', 'birth_month', 'birth_date', 'death_year', 'death_month', 'death_date'];
+    var obj = parse(tmpl, order); //'b' means show birth-date, otherwise show death-date
 
-    if (arr[1] === 'B' || arr[1] === 'b') {
-      var _date = ymd(arr.slice(2, 5));
+    if (obj.b && obj.b.toLowerCase() === 'b') {
+      var _date = ymd([obj.birth_year, obj.birth_month, obj.birth_date]);
 
       r.templates.push(template(_date));
       return toText(_date);
     }
 
-    var date = ymd(arr.slice(5, 8));
+    var date = ymd([obj.death_year, obj.death_month, obj.death_date]);
     r.templates.push(template(date));
     return toText(date);
   },
@@ -8728,7 +9111,7 @@ var parsers = {
 };
 module.exports = parsers;
 
-},{"../_parsers/_strip":95,"./_delta":98,"./_format":99}],105:[function(_dereq_,module,exports){
+},{"../_parsers/_strip":103,"../_parsers/parse":104,"./_delta":105,"./_format":106}],112:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -8834,8 +9217,72 @@ var templates = {
   //https://en.wikipedia.org/wiki/Template:Resize
   resize: function resize(tmpl) {
     return parse(tmpl, ['size', 'text']).text || '';
+  },
+  //https://en.wikipedia.org/wiki/Template:Ra
+  ra: function ra(tmpl) {
+    var obj = parse(tmpl, ['hours', 'minutes', 'seconds']);
+    return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':');
+  },
+  //https://en.wikipedia.org/wiki/Template:Deg2HMS
+  deg2hms: function deg2hms(tmpl) {
+    //this template should do the conversion
+    var obj = parse(tmpl, ['degrees']);
+    return (obj.degrees || '') + '°';
+  },
+  hms2deg: function hms2deg(tmpl) {
+    //this template should do the conversion too
+    var obj = parse(tmpl, ['hours', 'minutes', 'seconds']);
+    return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':');
+  },
+  decdeg: function decdeg(tmpl) {
+    //this template should do the conversion too
+    var obj = parse(tmpl, ['deg', 'min', 'sec', 'hem', 'rnd']);
+    return (obj.deg || obj.degrees) + '°';
+  },
+  rnd: function rnd(tmpl) {
+    //this template should do the conversion too
+    var obj = parse(tmpl, ['decimal']);
+    return obj.decimal || '';
+  },
+  //https://en.wikipedia.org/wiki/Template:DEC
+  dec: function dec(tmpl) {
+    var obj = parse(tmpl, ['degrees', 'minutes', 'seconds']);
+    var str = (obj.degrees || 0) + '°';
+
+    if (obj.minutes) {
+      str += obj.minutes + "\u2032";
+    }
+
+    if (obj.seconds) {
+      str += obj.seconds + '″';
+    }
+
+    return str;
+  },
+  //https://en.wikipedia.org/wiki/Template:Val
+  val: function val(tmpl) {
+    var obj = parse(tmpl, ['number', 'uncertainty']);
+    var str = obj.number || ''; //prefix/suffix
+
+    if (obj.p) {
+      str = obj.p + str;
+    }
+
+    if (obj.s) {
+      str = obj.s + str;
+    } //add units, too
+
+
+    if (obj.u || obj.ul || obj.upl) {
+      str = str + ' ' + (obj.u || obj.ul || obj.upl);
+    }
+
+    return str;
   }
-}; //templates that we simply grab their insides as plaintext
+}; //aliases
+
+templates['rndfrac'] = templates.rnd;
+templates['rndnear'] = templates.rnd; //templates that we simply grab their insides as plaintext
 
 var inline = ['nowrap', 'big', 'cquote', 'pull quote', 'small', 'smaller', 'midsize', 'larger', 'big', 'bigger', 'large', 'huge', 'delink'];
 inline.forEach(function (k) {
@@ -8845,12 +9292,12 @@ inline.forEach(function (k) {
 });
 module.exports = templates;
 
-},{"../_parsers/parse":97}],106:[function(_dereq_,module,exports){
+},{"../_parsers/parse":104}],113:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = Object.assign({}, _dereq_('./format'), _dereq_('./lists'), _dereq_('./punctuation'), _dereq_('./misc'));
 
-},{"./format":105,"./lists":107,"./misc":108,"./punctuation":109}],107:[function(_dereq_,module,exports){
+},{"./format":112,"./lists":114,"./misc":115,"./punctuation":116}],114:[function(_dereq_,module,exports){
 "use strict";
 
 var strip = _dereq_('../_parsers/_strip');
@@ -8893,6 +9340,9 @@ var templates = {
       }
     }
 
+    obj.list = obj.list.filter(function (s) {
+      return s;
+    });
     str += obj.list.join('\n\n');
     return str;
   },
@@ -8959,7 +9409,7 @@ templates['bare anchored list'] = templates['anchored list'];
 templates['plain list'] = templates['plainlist'];
 module.exports = templates;
 
-},{"../_parsers/_strip":95,"../_parsers/parse":97}],108:[function(_dereq_,module,exports){
+},{"../_parsers/_strip":103,"../_parsers/parse":104}],115:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -9111,7 +9561,7 @@ inline['str left'] = inline.trunc;
 inline['str crop'] = inline.trunc;
 module.exports = inline;
 
-},{"../_parsers/parse":97}],109:[function(_dereq_,module,exports){
+},{"../_parsers/parse":104}],116:[function(_dereq_,module,exports){
 "use strict";
 
 // okay, these just hurts my feelings
@@ -9128,7 +9578,7 @@ punctuation.forEach(function (a) {
 });
 module.exports = templates;
 
-},{}],110:[function(_dereq_,module,exports){
+},{}],117:[function(_dereq_,module,exports){
 "use strict";
 
 var convertDMS = _dereq_('./dms-format');
@@ -9151,7 +9601,7 @@ var round = function round(num) {
 
 var parseCoordAndCoor = function parseCoordAndCoor(str) {
   var arr = str.split('|');
-  var template = arr[0].includes('coord') ? 'coord' : 'coor';
+  var template = arr[0].indexOf('coord') !== -1 ? 'coord' : 'coor';
   var obj = {
     template: template,
     lat: null,
@@ -9218,7 +9668,7 @@ module.exports = parseCoordAndCoor; // {{Coor title dms|dd|mm|ss|N/S|dd|mm|ss|E/
 // {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
 // {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
 
-},{"./dms-format":111}],111:[function(_dereq_,module,exports){
+},{"./dms-format":118}],118:[function(_dereq_,module,exports){
 "use strict";
 
 //converts DMS (decimal-minute-second) geo format to lat/lng format.
@@ -9249,7 +9699,7 @@ function parseDms(arr) {
 module.exports = parseDms; // console.log(parseDms([57, 18, 22, 'N']));
 // console.log(parseDms([4, 27, 32, 'W']));
 
-},{}],112:[function(_dereq_,module,exports){
+},{}],119:[function(_dereq_,module,exports){
 "use strict";
 
 var parseCoordAndCoor = _dereq_('./coor');
@@ -9298,7 +9748,7 @@ var geoTemplates = {
 };
 module.exports = geoTemplates;
 
-},{"../_parsers/_strip":95,"./coor":110}],113:[function(_dereq_,module,exports){
+},{"../_parsers/_strip":103,"./coor":117}],120:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse'); //this format seems to be a pattern for these
@@ -9381,7 +9831,7 @@ externals.imdb = externals['imdb name'];
 externals['imdb episodess'] = externals['imdb episode'];
 module.exports = externals;
 
-},{"../_parsers/parse":97}],114:[function(_dereq_,module,exports){
+},{"../_parsers/parse":104}],121:[function(_dereq_,module,exports){
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -9394,7 +9844,7 @@ var getTemplates = _dereq_('./_getTemplates');
 
 var parseTemplate = _dereq_('./parse');
 
-var isCitation = /^cite [a-z]/i;
+var isCitation = new RegExp('^(cite |citation)', 'i');
 var citations = {
   citation: true,
   refn: true,
@@ -9448,12 +9898,12 @@ var parseTemplates = function parseTemplates(wiki, data, options) {
 
 module.exports = parseTemplates;
 
-},{"../02-section/reference/Reference":18,"../infobox/Infobox":80,"./_getTemplates":88,"./parse":122}],115:[function(_dereq_,module,exports){
+},{"../02-section/reference/Reference":18,"../infobox/Infobox":89,"./_getTemplates":95,"./parse":129}],122:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = Object.assign({}, _dereq_('./languages'), _dereq_('./pronounce'), _dereq_('./wiktionary'));
 
-},{"./languages":116,"./pronounce":117,"./wiktionary":118}],116:[function(_dereq_,module,exports){
+},{"./languages":123,"./pronounce":124,"./wiktionary":125}],123:[function(_dereq_,module,exports){
 "use strict";
 
 var languages = _dereq_('../../_data/languages');
@@ -9505,7 +9955,7 @@ templates['nihongo-s'] = templates.nihongo;
 templates['nihongo foot'] = templates.nihongo;
 module.exports = templates;
 
-},{"../../_data/languages":64,"../_parsers/parse":97}],117:[function(_dereq_,module,exports){
+},{"../../_data/languages":69,"../_parsers/parse":104}],124:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -9557,7 +10007,7 @@ Object.keys(languages).forEach(function (lang) {
 });
 module.exports = templates;
 
-},{"../../_data/languages":64,"../_parsers/parse":97}],118:[function(_dereq_,module,exports){
+},{"../../_data/languages":69,"../_parsers/parse":104}],125:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse'); // const strip = require('./_parsers/_strip');
@@ -9611,7 +10061,7 @@ conjugations.forEach(function (name) {
 });
 module.exports = templates;
 
-},{"../_parsers/parse":97}],119:[function(_dereq_,module,exports){
+},{"../_parsers/parse":104}],126:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse'); // const parseSentence = require('../../04-sentence').oneSentence;
@@ -9664,7 +10114,7 @@ templates['sfrac'] = templates.frac;
 templates['sqrt'] = templates.radic;
 module.exports = templates;
 
-},{"../_parsers/parse":97}],120:[function(_dereq_,module,exports){
+},{"../_parsers/parse":104}],127:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -9690,9 +10140,9 @@ var misc = {
   //https://en.wikipedia.org/wiki/Template:Marriage
   //this one creates a template, and an inline response
   marriage: function marriage(tmpl, r) {
-    var data = parse(tmpl, ['name', 'from', 'to', 'end']);
+    var data = parse(tmpl, ['spouse', 'from', 'to', 'end']);
     r.templates.push(data);
-    var str = "".concat(data.name || '');
+    var str = "".concat(data.spouse || '');
 
     if (data.from) {
       if (data.to) {
@@ -9734,19 +10184,21 @@ var misc = {
     }).join('\n\n');
     return '\n' + str + '\n';
   },
-  tryit: function tryit(tmpl) {
-    var obj = parse(tmpl);
-    console.log(obj);
-    return '';
-  },
-  '__throw-wtf-error': function __throwWtfError() {
-    //okay you asked for it!
-    throw new Error('Intentional error thrown from wtf-wikipedia!');
+  //barrels of oil https://en.wikipedia.org/wiki/Template:Bbl_to_t
+  'bbl to t': function bblToT(tmpl, r) {
+    var obj = parse(tmpl, ['barrels']);
+    r.templates.push(obj);
+
+    if (obj.barrels === '0') {
+      return obj.barrels + ' barrel';
+    }
+
+    return obj.barrels + ' barrels';
   }
 };
 module.exports = misc;
 
-},{"../_parsers/parse":97}],121:[function(_dereq_,module,exports){
+},{"../_parsers/parse":104}],128:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -9813,7 +10265,7 @@ Object.keys(codes).forEach(function (k) {
 });
 module.exports = currencies;
 
-},{"../_parsers/parse":97}],122:[function(_dereq_,module,exports){
+},{"../_parsers/parse":104}],129:[function(_dereq_,module,exports){
 "use strict";
 
 var ignore = _dereq_('./_ignore');
@@ -9822,12 +10274,12 @@ var getName = _dereq_('./_parsers/_getName');
 
 var parse = _dereq_('./_parsers/parse');
 
+var inf = _dereq_('./_infobox');
+
 var templates = Object.assign({}, _dereq_('./wikipedia'), _dereq_('./identities'), _dereq_('./dates'), _dereq_('./formatting'), _dereq_('./geo'), _dereq_('./language'), _dereq_('./money'), _dereq_('./sports'), _dereq_('./science'), _dereq_('./math'), _dereq_('./politics'), _dereq_('./misc')); // console.log(Object.keys(templates).length + ' Templates!');
+//this gets all the {{template}} strings and decides how to parse them
 
-var generic = _dereq_('./_generic'); //this gets all the {{template}} strings and decides how to parse them
-
-
-var parseTemplate = function parseTemplate(tmpl, wiki, data, options) {
+var parseTemplate = function parseTemplate(tmpl, wiki, data) {
   var name = getName(tmpl); //we explicitly ignore these templates
 
   if (ignore.hasOwnProperty(name) === true) {
@@ -9840,29 +10292,32 @@ var parseTemplate = function parseTemplate(tmpl, wiki, data, options) {
     var str = templates[name](tmpl, data);
     wiki = wiki.replace(tmpl, str);
     return wiki;
+  } // {{infobox settlement...}}
+
+
+  if (inf.isInfobox(name) === true) {
+    var _obj = parse(tmpl, data, 'raw');
+
+    var infobox = inf.format(_obj);
+    data.templates.push(infobox);
+    wiki = wiki.replace(tmpl, '');
+    return wiki;
   } //cite book, cite arxiv...
 
 
   if (/^cite [a-z]/.test(name) === true) {
-    var _obj = parse(tmpl, data);
+    var _obj2 = parse(tmpl, data);
 
-    data.templates.push(_obj);
+    data.templates.push(_obj2);
     wiki = wiki.replace(tmpl, '');
     return wiki;
   } //fallback parser
 
 
-  var obj = generic(tmpl, name);
+  var obj = parse(tmpl);
 
-  if (obj) {
+  if (obj !== null && Object.keys(obj).length > 0) {
     data.templates.push(obj);
-    wiki = wiki.replace(tmpl, '');
-    return wiki;
-  } //bury this template, if we don't know it
-
-
-  if (options.missing_templates === true) {
-    console.log(':: ' + name);
   }
 
   wiki = wiki.replace(tmpl, '');
@@ -9871,7 +10326,7 @@ var parseTemplate = function parseTemplate(tmpl, wiki, data, options) {
 
 module.exports = parseTemplate;
 
-},{"./_generic":86,"./_ignore":89,"./_parsers/_getName":94,"./_parsers/parse":97,"./dates":102,"./formatting":106,"./geo":112,"./identities":113,"./language":115,"./math":119,"./misc":120,"./money":121,"./politics":125,"./science":126,"./sports":127,"./wikipedia":129}],123:[function(_dereq_,module,exports){
+},{"./_ignore":96,"./_infobox":97,"./_parsers/_getName":102,"./_parsers/parse":104,"./dates":109,"./formatting":113,"./geo":119,"./identities":120,"./language":122,"./math":126,"./misc":127,"./money":128,"./politics":132,"./science":133,"./sports":134,"./wikipedia":136}],130:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -9918,7 +10373,7 @@ templates['election box inline candidate with party link no change'] = templates
 templates['election box inline incumbent'] = templates['election box candidate'];
 module.exports = templates;
 
-},{"../_parsers/parse":97}],124:[function(_dereq_,module,exports){
+},{"../_parsers/parse":104}],131:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10025,12 +10480,12 @@ flags.forEach(function (a) {
 });
 module.exports = templates;
 
-},{"../../_data/flags":62,"../_parsers/parse":97}],125:[function(_dereq_,module,exports){
+},{"../../_data/flags":67,"../_parsers/parse":104}],132:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = Object.assign({}, _dereq_('./elections'), _dereq_('./flags'));
 
-},{"./elections":123,"./flags":124}],126:[function(_dereq_,module,exports){
+},{"./elections":130,"./flags":131}],133:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10088,21 +10543,74 @@ var templates = {
     var obj = parse(tmpl, ['equation']);
     r.templates.push(obj);
     return obj.equation;
+  },
+  //https://en.wikipedia.org/wiki/Template:Sky
+  sky: function sky(tmpl, r) {
+    var obj = parse(tmpl, ['asc_hours', 'asc_minutes', 'asc_seconds', 'dec_sign', 'dec_degrees', 'dec_minutes', 'dec_seconds', 'distance']);
+    var template = {
+      template: 'sky',
+      ascension: {
+        hours: obj.asc_hours,
+        minutes: obj.asc_minutes,
+        seconds: obj.asc_seconds
+      },
+      declination: {
+        sign: obj.dec_sign,
+        degrees: obj.dec_degrees,
+        minutes: obj.dec_minutes,
+        seconds: obj.dec_seconds
+      },
+      distance: obj.distance
+    };
+    r.templates.push(template);
+    return '';
   }
 };
 module.exports = templates;
 
-},{"../_parsers/parse":97}],127:[function(_dereq_,module,exports){
-"use strict";
-
-module.exports = Object.assign({}, _dereq_('./soccer'));
-
-},{"./soccer":128}],128:[function(_dereq_,module,exports){
+},{"../_parsers/parse":104}],134:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
 
+var misc = {
+  'baseball secondary style': function baseballSecondaryStyle(tmpl) {
+    var obj = parse(tmpl, ['name']);
+    return obj.name;
+  }
+};
+module.exports = Object.assign({}, misc, _dereq_('./soccer'));
+
+},{"../_parsers/parse":104,"./soccer":135}],135:[function(_dereq_,module,exports){
+"use strict";
+
+var parse = _dereq_('../_parsers/parse');
+
+var flags = _dereq_('../../_data/flags');
+
 var sports = {
+  player: function player(tmpl, r) {
+    var res = parse(tmpl, ['number', 'country', 'name', 'dl']);
+    r.templates.push(r);
+    var str = "[[".concat(res.name, "]]");
+
+    if (res.country) {
+      var country = res.country.toLowerCase();
+      var flag = flags.find(function (a) {
+        return country === a[1] || country === a[2];
+      }) || [];
+
+      if (flag && flag[0]) {
+        str = flag[0] + '  ' + str;
+      }
+    }
+
+    if (res.number) {
+      str = res.number + ' ' + str;
+    }
+
+    return str;
+  },
   //https://en.wikipedia.org/wiki/Template:Goal
   goal: function goal(tmpl, r) {
     var res = parse(tmpl);
@@ -10193,12 +10701,12 @@ var sports = {
 };
 module.exports = sports;
 
-},{"../_parsers/parse":97}],129:[function(_dereq_,module,exports){
+},{"../../_data/flags":67,"../_parsers/parse":104}],136:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = Object.assign({}, _dereq_('./links'), _dereq_('./page'), _dereq_('./table-cell'));
 
-},{"./links":130,"./page":131,"./table-cell":132}],130:[function(_dereq_,module,exports){
+},{"./links":137,"./page":138,"./table-cell":139}],137:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10224,6 +10732,31 @@ var templates = {
   'la-ipa': function laIpa(tmpl) {
     var order = ['word'];
     return parse(tmpl, order).word || '';
+  },
+  //https://en.wikipedia.org/wiki/Template:Sortname
+  sortname: function sortname(tmpl) {
+    var order = ['first', 'last', 'target', 'sort'];
+    var obj = parse(tmpl, order);
+    var name = "".concat(obj.first || '', " ").concat(obj.last || '');
+    name = name.trim();
+
+    if (obj.nolink) {
+      return obj.target || name;
+    }
+
+    if (obj.dab) {
+      name += " (".concat(obj.dab, ")");
+
+      if (obj.target) {
+        obj.target += " (".concat(obj.dab, ")");
+      }
+    }
+
+    if (obj.target) {
+      return "[[".concat(obj.target, "|").concat(name, "]]");
+    }
+
+    return "[[".concat(name, "]]");
   }
 }; //these are insane
 // https://en.wikipedia.org/wiki/Template:Tl
@@ -10246,7 +10779,7 @@ templates.ll = templates.link;
 templates['l-self'] = templates.link;
 module.exports = templates;
 
-},{"../_parsers/parse":97}],131:[function(_dereq_,module,exports){
+},{"../_parsers/parse":104}],138:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10456,7 +10989,7 @@ parsers['sisterlinks'] = parsers['sister project links'];
 parsers['main article'] = parsers['main'];
 module.exports = parsers;
 
-},{"../../image/Image":74,"../_parsers/parse":97}],132:[function(_dereq_,module,exports){
+},{"../../image/Image":83,"../_parsers/parse":104}],139:[function(_dereq_,module,exports){
 "use strict";
 
 //random misc for inline wikipedia templates
@@ -10468,7 +11001,7 @@ var titlecase = function titlecase(str) {
 
 
 var templates = {};
-var cells = ['rh', 'rh2', 'yes', 'no', 'maybe', 'eliminated', 'lost', 'safe', 'active', 'site active', 'coming soon', 'good', 'yes2', 'ya', 'won', 'no2', 'na', 'nom', 'sho', 'longlisted', 'tba', 'success', 'operational', 'failure', 'partial', 'regional', 'maybecheck', 'partial success', 'partial failure', 'okay', 'yes-no', 'some', 'nonpartisan', 'pending', 'unofficial', 'unofficial2', 'usually', 'rarely', 'sometimes', 'any', 'varies', 'black', 'non-album single', 'unreleased', 'unknown', 'perhaps', 'depends', 'included', 'dropped', 'terminated', 'beta', 'table-experimental', 'free', 'proprietary', 'nonfree', 'needs', 'nightly', 'release-candidate', 'planned', 'scheduled', 'incorrect', 'no result', 'cmain', 'calso starring', 'crecurring', 'cguest', 'not yet', 'optional'];
+var cells = ['rh', 'rh2', 'yes', 'no', 'maybe', 'eliminated', 'lost', 'safe', 'active', 'site active', 'coming soon', 'good', 'won', 'nom', 'sho', 'longlisted', 'tba', 'success', 'operational', 'failure', 'partial', 'regional', 'maybecheck', 'partial success', 'partial failure', 'okay', 'yes-no', 'some', 'nonpartisan', 'pending', 'unofficial', 'unofficial2', 'usually', 'rarely', 'sometimes', 'any', 'varies', 'black', 'non-album single', 'unreleased', 'unknown', 'perhaps', 'depends', 'included', 'dropped', 'terminated', 'beta', 'table-experimental', 'free', 'proprietary', 'nonfree', 'needs', 'nightly', 'release-candidate', 'planned', 'scheduled', 'incorrect', 'no result', 'cmain', 'calso starring', 'crecurring', 'cguest', 'not yet', 'optional'];
 cells.forEach(function (str) {
   templates[str] = function (tmpl) {
     var data = parse(tmpl, ['text']);
@@ -10491,5 +11024,5 @@ templates.won = function (tmpl) {
 
 module.exports = templates;
 
-},{"../_parsers/parse":97}]},{},[79])(79)
+},{"../_parsers/parse":104}]},{},[88])(88)
 });
