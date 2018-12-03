@@ -1,5 +1,5 @@
 const wtf = require('./src/index');
-const readFile = require('./tests/lib/_cachedPage');
+// const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
@@ -29,7 +29,6 @@ const readFile = require('./tests/lib/_cachedPage');
 //   });
 // })();
 
-
 // let str = `
 // ;Cleveland Cavaliers
 // {{NBA roster statistics start|team=Cleveland Cavaliers}}
@@ -47,21 +46,7 @@ const readFile = require('./tests/lib/_cachedPage');
 // | style="text-align:left;"| {{sortname|Mo|Williams}} || 6 || 0 || 4.8 || .333 || .200 || .000 || 0.5 || 0.2 || 0.5 || 0.0 || 1.5
 // {{s-end}}`;
 
-let str = `{| class="wikitable floatright"
-| a
-| rowspan="2" | bc
-| d
-|-
-| Col 1, row 2
-| Col 3, row 2
-|}
-{| class="wikitable floatleft"
-| Col 1, row 1
-| rowspan="2" | Col 2, row 1 (and 2)
-| Col 3, row 1
-|-
-| Col 1, row 2
-| Col 3, row 2
-|}`;
 
-console.log(wtf(str).tables(0).keyValue());
+
+// console.log(wtf(str).sentences(0).text());
+// console.log(wtf(str).templates('pov'));

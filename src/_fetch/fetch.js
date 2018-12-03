@@ -3,6 +3,7 @@ const site_map = require('../_data/site_map');
 const request = require('./_request');
 const getParams = require('./_params');
 const parseDoc = require('../01-document');
+const isUrl = /^https?:\/\//;
 // const redirects = require('../parse/page/redirects');
 
 function isArray(arr) {
@@ -12,6 +13,11 @@ function isArray(arr) {
 //construct a lookup-url for the wikipedia api
 const makeUrl = function(title, lang, options) {
   lang = lang || 'en';
+  //if given a url...
+  if (isUrl.test(title) === true) {
+    title = title.replace(/.*?\/wiki\//, '');
+    title = title.replace(/\?.*/, '');
+  }
   let url = `https://${lang}.wikipedia.org/w/api.php`;
   if (site_map[lang]) {
     url = site_map[lang] + '/w/api.php';
