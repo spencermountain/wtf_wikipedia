@@ -29,7 +29,8 @@ test('inline-no-data', function(t) {
     [`flag-name`, `{{flagicon|canada}}`],
     [`flag-iso-3`, `{{flagicon|BUL}}`],
     [`flag-faroe island`, `{{FRO}}`],
-
+    ['decdeg', `{{decdeg|119.5666667|||W}}`],
+    ['decdeg', '{{decdeg|deg=37|min=51|sec=00|hem=N}}'],
     [`rtl-lang`, `{{rtl-lang|tg-Arab|تاجیکی}}`],
     [`lbb`, ` {{Lbb|Severn}} `],
     [`yes`, ` {{Yes}} `],

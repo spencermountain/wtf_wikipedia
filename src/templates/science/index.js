@@ -53,5 +53,26 @@ let templates = {
     r.templates.push(obj);
     return obj.equation;
   },
+  //https://en.wikipedia.org/wiki/Template:Sky
+  sky: (tmpl, r) => {
+    let obj = parse(tmpl, ['asc_hours', 'asc_minutes', 'asc_seconds', 'dec_sign', 'dec_degrees', 'dec_minutes', 'dec_seconds', 'distance']);
+    let template = {
+      template: 'sky',
+      ascension: {
+        hours: obj.asc_hours,
+        minutes: obj.asc_minutes,
+        seconds: obj.asc_seconds,
+      },
+      declination: {
+        sign: obj.dec_sign,
+        degrees: obj.dec_degrees,
+        minutes: obj.dec_minutes,
+        seconds: obj.dec_seconds,
+      },
+      distance: obj.distance
+    };
+    r.templates.push(template);
+    return '';
+  },
 };
 module.exports = templates;

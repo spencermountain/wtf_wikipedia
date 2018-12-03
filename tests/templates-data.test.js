@@ -78,6 +78,11 @@ test('wikipedia-templates', function(t) {
     [`ipac`, `{{IPAc-ko|h|a|n|g|u|k}}`],
     [`coor`, `{{Coord|44.112|N|87.913|W|display=title}}`],
     [`gnis`, `{{GNIS | 871352 | Mount Washington }}`],
+    ['sky', `{{Sky
+    |00|42|44.30
+    |+|41|16|10
+    |2360000
+  }}`],
     [`portal`, `{{Portal
      | Portal 1
      | Portal 2

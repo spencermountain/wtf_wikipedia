@@ -108,6 +108,10 @@ let templates = {
     let obj = parse(tmpl, ['hours', 'minutes', 'seconds']);
     return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':');
   },
+  decdeg: (tmpl) => { //this template should do the conversion too
+    let obj = parse(tmpl, ['deg', 'min', 'sec', 'hem', 'rnd']);
+    return (obj.deg || obj.degrees) + '°';
+  },
   rnd: (tmpl) => { //this template should do the conversion too
     let obj = parse(tmpl, ['decimal']);
     return obj.decimal || '';

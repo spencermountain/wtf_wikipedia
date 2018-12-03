@@ -37,6 +37,7 @@ const list = [
   'pope list end',
   'shipwreck list end',
   'starbox end',
+  'end box',
   'end',
   's-end'
 ];
