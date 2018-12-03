@@ -2,14 +2,25 @@
 // here we come up with names for them
 const hasKey = /^[a-z0-9\u00C0-\u00FF\._\- ]+=/iu;
 
+//templates with these properties are asking for trouble
+const reserved = {
+  template: true,
+  list: true,
+  prototype: true,
+};
+
 //turn 'key=val' into {key:key, val:val}
 const parseKey = function(str) {
   let parts = str.split('=');
   let key = parts[0] || '';
-  key = key.toLowerCase();
+  key = key.toLowerCase().trim();
   let val = parts.slice(1).join('=');
+  //don't let it be called 'template'..
+  if (reserved.hasOwnProperty(key)) {
+    key = '_' + key;
+  }
   return {
-    key: key.trim(),
+    key: key,
     val: val.trim()
   };
 };

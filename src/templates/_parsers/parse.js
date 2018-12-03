@@ -5,7 +5,6 @@ const parseSentence = require('../../04-sentence').oneSentence;
 const pipeSplitter = require('./01-pipe-splitter');
 const keyMaker = require('./02-keyMaker');
 const cleanup = require('./03-cleanup');
-// const isKnown = require('./04-isKnown');
 
 // most templates just want plaintext...
 const makeFormat = function(str, fmt) {

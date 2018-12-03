@@ -23,31 +23,49 @@ const toJSON = function(section, options) {
   }
   //these return objects
   if (options.paragraphs === true) {
-    data.paragraphs = section.paragraphs().map(p => p.json(options));
+    let paragraphs = section.paragraphs().map(p => p.json(options));
+    if (paragraphs.length > 0) {
+      data.paragraphs = paragraphs;
+    }
   }
   //image json data
   if (options.images === true) {
-    data.images = section.images().map(img => img.json(options));
+    let images = section.images().map(img => img.json(options));
+    if (images.length > 0) {
+      data.images = images;
+    }
   }
   //table json data
   if (options.tables === true) {
-    data.tables = section.tables().map(t => t.json(options));
+    let tables = section.tables().map(t => t.json(options));
+    if (tables.length > 0) {
+      data.tables = tables;
+    }
   }
   //template json data
   if (options.templates === true) {
-    data.templates = section.templates();
+    let templates = section.templates();
+    if (templates.length > 0) {
+      data.templates = templates;
+    }
     //encode them, for mongodb
     if (options.encode === true) {
-      data.templates.map((t) => encode.encodeObj(t));
+      data.templates.forEach((t) => encode.encodeObj(t));
     }
   }
   //infobox json data
   if (options.infoboxes === true) {
-    data.infoboxes = section.infoboxes().map(i => i.json(options));
+    let infoboxes = section.infoboxes().map(i => i.json(options));
+    if (infoboxes.length > 0) {
+      data.infoboxes = infoboxes;
+    }
   }
   //list json data
   if (options.lists === true) {
-    data.lists = section.lists().map(list => list.json(options));
+    let lists = section.lists().map(list => list.json(options));
+    if (lists.length > 0) {
+      data.lists = lists;
+    }
   }
   //default off
   if (options.sentences === true) {

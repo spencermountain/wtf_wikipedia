@@ -134,3 +134,4 @@
 * support implicit first-row headers for some tables
 * return templates even if they have no data
 * begin support for some well-used `{{foo start}}...{{foo end}}` templates
+* remove empty `[]` for some more section properties in `.json()` response
