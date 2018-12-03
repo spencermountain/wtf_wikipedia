@@ -8,7 +8,7 @@ let sports = {
     r.templates.push(r);
     let str = `[[${res.name}]]`;
     if (res.country) {
-      let country = res.country.toLowerCase();
+      let country = (res.country || '').toLowerCase();
       let flag = flags.find((a) => country === a[1] || country === a[2]) || [];
       if (flag && flag[0]) {
         str = flag[0] + '  ' + str;
@@ -90,7 +90,7 @@ let sports = {
     let result = {
       template: 'sent off',
       cards: obj.cards,
-      minutes: obj.list,
+      minutes: obj.list || [],
     };
     r.templates.push(result);
     let mins = result.minutes.map(m => m + '\'').join(', ');

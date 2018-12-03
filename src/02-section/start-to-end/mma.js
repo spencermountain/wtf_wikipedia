@@ -1,5 +1,5 @@
 const tableParser = require('../table/parse');
-let headings = ['res.', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes'];
+let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes'];
 
 //https://en.wikipedia.org/wiki/Template:MMA_record_start
 const parseMMA = function(wiki, section) {

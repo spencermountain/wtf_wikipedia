@@ -30,7 +30,7 @@ const parseCurrency = (tmpl, r) => {
   if (code === '' || code === 'currency') {
     code = o.code;
   }
-  code = code.toLowerCase();
+  code = (code || '').toLowerCase();
   let out = codes[code] || '';
   return `${out}${o.amount || ''}`;
 };

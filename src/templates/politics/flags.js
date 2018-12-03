@@ -8,7 +8,7 @@ let templates = {
     let order = ['flag', 'variant'];
     let obj = parse(tmpl, order);
     let name = obj.flag || '';
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
     let flag = found[0] || '';
     return `${flag} [[${found[2]}|${name}]]`;
@@ -17,7 +17,7 @@ let templates = {
   flagcountry: (tmpl) => {
     let order = ['flag', 'variant'];
     let obj = parse(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
     let flag = found[0] || '';
     return `${flag} [[${found[2]}]]`;
@@ -26,7 +26,7 @@ let templates = {
   flagcu: (tmpl) => {
     let order = ['flag', 'variant'];
     let obj = parse(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
     let flag = found[0] || '';
     return `${flag} ${found[2]}`;
@@ -36,7 +36,7 @@ let templates = {
   flagicon: (tmpl) => {
     let order = ['flag', 'variant'];
     let obj = parse(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
     if (!found) {
       return '';
@@ -47,7 +47,7 @@ let templates = {
   flagdeco: (tmpl) => {
     let order = ['flag', 'variant'];
     let obj = parse(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
     return found[0] || '';
   },
@@ -55,7 +55,7 @@ let templates = {
   fb: (tmpl) => {
     let order = ['flag', 'variant'];
     let obj = parse(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
     if (!found) {
       return '';
@@ -65,7 +65,7 @@ let templates = {
   fbicon: (tmpl) => {
     let order = ['flag', 'variant'];
     let obj = parse(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
     if (!found) {
       return '';
