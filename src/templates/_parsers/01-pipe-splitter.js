@@ -16,9 +16,15 @@ const pipeSplitter = function(tmpl) {
     }
   });
   //cleanup any mistakes we've made
+  arr = arr.filter((a) => a !== null);
   arr = arr.map((a) => (a || '').trim());
-  // console.log(arr);
-  arr = arr.filter((a) => a);
+  //remove empty fields, only at the end:
+  for(let i = arr.length - 1; i >= 0; i -= 1) {
+    if (arr[i] === '') {
+      arr.pop();
+    }
+    break;
+  }
   return arr;
 };
 module.exports = pipeSplitter;
