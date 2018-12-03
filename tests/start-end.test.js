@@ -1,7 +1,7 @@
 var wtf = require('./lib');
 var test = require('tape');
 
-test('start-end', function(t) {
+test('nba-start-end', function(t) {
   var str = `hello world
   {{NBA roster statistics start|team=Cleveland Cavaliers}}
   |-
@@ -17,6 +17,71 @@ test('start-end', function(t) {
   |-
   | style="text-align:left;"| {{sortname|Mo|Williams}} || 6 || 0 || 4.8 || .333 || .200 || .000 || 0.5 || 0.2 || 0.5 || 0.0 || 1.5
   {{s-end}}`;
+
+  var doc = wtf(str);
+  t.equal(doc.text(), 'hello world', 'text');
+  t.equal(doc.templates().length, 1, 'got-template');
+  t.end();
+});
+
+test('mlb-start-end', function(t) {
+  var str = `hello world
+  {{MLB game log section|month=April|style=|hide=y}}
+  |- style="background-color:#ffbbbb"
+  | 1 || April 2 || @ [[Kansas City Royals|Royals]] || 7 – 1 || [[Gil Meche|Meche]] (1-0)|| '''[[Curt Schilling|Schilling]]''' (0-1) || || 41,257 || 0-1
+  |- style="background-color:#bbffbb"
+  | 2 || April 4 || @ [[Kansas City Royals|Royals]] || 7 – 1 || '''[[Josh Beckett|Beckett]]''' (1-0) || [[Odalis Pérez|Pérez]] (0 – 1) || || 22,348 || 1-1
+  |- style="background-color:#bbffbb"
+  | 3 || April 5 || @ [[Kansas City Royals|Royals]] || 4 – 1 || '''[[Daisuke Matsuzaka|Matsuzaka]]''' (1-0) || [[Zack Greinke|Greinke]] (0-1) || '''[[Jonathan Papelbon|Papelbon]]''' (1) || 23,170 || 2-1
+  |- style="background-color:#ffbbbb"
+  | 4 || April 6 || @ [[Texas Rangers (baseball)|Rangers]] || 2 – 0 || [[Rob Tejeda|Tejeda]] (1-0) || '''[[Tim Wakefield|Wakefield]]''' (0-1) || [[Akinori Otsuka|Otsuka]] (1) || 51,548 || 2-2
+  |- style="background-color:#ffbbbb"
+  | 5 || April 7 || @ [[Texas Rangers (baseball)|Rangers]] || 8 – 2 || [[Kevin Millwood|Millwood]] (1-0) || '''[[Julián Tavárez|Tavárez]]''' (0-1) || ||40,865 || 2-3
+  |- style="background-color:#bbffbb"
+  {{MLB game log section end}}`;
+  var doc = wtf(str);
+  t.equal(doc.text(), 'hello world', 'text');
+  t.equal(doc.templates().length, 1, 'got-template');
+  t.end();
+});
+
+test('mma-start-end', function(t) {
+  var str = `hello world
+  {{MMA record start}}
+  |-
+  |{{no2}}Loss
+  |align=center|4–6
+  |Wayne Cole
+  |Submission (armbar)
+  |SJW 3 - Slammin Jammin Weekend 3
+  |{{dts|2009|May|09}}
+  |align=center|1
+  |align=center|0:36
+  |
+  |
+  |-
+  |{{no2}}Loss
+  |align=center|4–5
+  |[[Ryan Jimmo]]
+  |TKO (punches)
+  |PFP: Wanted
+  |{{dts|2008|November|29}}
+  |align=center|1
+  |align=center|2:24
+  |[[Dartmouth, Nova Scotia]], Canada
+  |
+  |-
+  |{{no2}}Loss
+  |align=center|4–4
+  |[[Hector Ramirez (fighter)|Hector Ramirez]]
+  |Decision (unanimous)
+  |SuperFights MMA - Night of Combat 2
+  |{{dts|2008|October|11}}
+  |align=center|3
+  |align=center|5:00
+  |Las Vegas, Nevada, USA
+  |
+{{end}}`;
 
   var doc = wtf(str);
   t.equal(doc.text(), 'hello world', 'text');
