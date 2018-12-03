@@ -39,7 +39,17 @@ const parsers = {
     let data = ymd([obj.year, obj.month, obj.date]);
     obj.text = toText(data); //make the replacement string
     if (obj.timezone) {
+      if (obj.timezone === 'Z') {
+        obj.timezone = 'UTC';
+      }
       obj.text += ` (${obj.timezone})`;
+    }
+    if (obj.hour && obj.minute) {
+      if (obj.second) {
+        obj.text = `${obj.hour}:${obj.minute}:${obj.second}, ` + obj.text;
+      } else {
+        obj.text = `${obj.hour}:${obj.minute}, ` + obj.text;
+      }
     }
     if (obj.text) {
       r.templates.push(template(obj));

@@ -46,7 +46,7 @@ const wtf = require('./src/index');
 // | style="text-align:left;"| {{sortname|Mo|Williams}} || 6 || 0 || 4.8 || .333 || .200 || .000 || 0.5 || 0.2 || 0.5 || 0.0 || 1.5
 // {{s-end}}`;
 
-
-
-// console.log(wtf(str).sentences(0).text());
-// console.log(wtf(str).templates('pov'));
+// let str = `{{start date|1993|02|24|08|||+01:00}}`;
+var str = `{{Ordered list|first item|second item|third item|}}`;
+// console.log(wtf(str).text());
+console.log(wtf(str).templates());
