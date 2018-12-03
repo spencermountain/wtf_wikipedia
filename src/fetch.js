@@ -15,8 +15,14 @@ const makeUrl = function(title, lang, options) {
   if (site_map[lang]) {
     url = site_map[lang] + '/w/api.php';
   }
+  if (options.wikiUrl) {
+    url = options.wikiUrl;
+  }
   //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&format=json&origin=*';
+  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&format=json';
+  if (!options.wikiUrl) {
+    url += '&origin=*';
+  }
   if (options.follow_redirects !== false) {
     url += '&redirects=true';
   }

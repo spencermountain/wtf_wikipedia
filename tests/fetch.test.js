@@ -67,6 +67,20 @@ test('fetch-redirect', t => {
   });
 });
 
+test('fetch-alternate-wiki', t => {
+  t.plan(1);
+  var p = wtf.fetch(336711, 'en', {
+    'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
+    wikiUrl: 'https://www.mixesdb.com/db/api.php'
+  });
+  p.then(function(doc) {
+    t.ok(doc.sections().length > 0, 'alternate wiki returned document');
+  });
+  p.catch(function(e) {
+    t.throw(e);
+  });
+});
+
 //uncomment for testing on node>6
 /*
 test('ambiguous-pageids', async function(t) {
