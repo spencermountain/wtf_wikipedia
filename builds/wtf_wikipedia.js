@@ -2963,31 +2963,48 @@ var toJSON = function toJSON(section, options) {
 
 
   if (options.paragraphs === true) {
-    data.paragraphs = section.paragraphs().map(function (p) {
+    var paragraphs = section.paragraphs().map(function (p) {
       return p.json(options);
     });
+
+    if (paragraphs.length > 0) {
+      data.paragraphs = paragraphs;
+    }
   } //image json data
 
 
   if (options.images === true) {
-    data.images = section.images().map(function (img) {
+    var images = section.images().map(function (img) {
       return img.json(options);
     });
+
+    if (images.length > 0) {
+      data.images = images;
+    }
   } //table json data
 
 
   if (options.tables === true) {
-    data.tables = section.tables().map(function (t) {
+    var tables = section.tables().map(function (t) {
       return t.json(options);
     });
+
+    if (tables.length > 0) {
+      data.tables = tables;
+    }
   } //template json data
 
 
   if (options.templates === true) {
-    data.templates = section.templates(); //encode them, for mongodb
+    var templates = section.templates();
+
+    if (templates.length > 0) {
+      data.templates = templates;
+    } //encode them, for mongodb
+
 
     if (options.encode === true) {
-      data.templates.map(function (t) {
+      data.templates.forEach(function (t) {
         return encode.encodeObj(t);
       });
     }
@@ -2995,16 +3012,24 @@ var toJSON = function toJSON(section, options) {
 
 
   if (options.infoboxes === true) {
-    data.infoboxes = section.infoboxes().map(function (i) {
+    var infoboxes = section.infoboxes().map(function (i) {
       return i.json(options);
     });
+
+    if (infoboxes.length > 0) {
+      data.infoboxes = infoboxes;
+    }
   } //list json data
 
 
   if (options.lists === true) {
-    data.lists = section.lists().map(function (list) {
+    var lists = section.lists().map(function (list) {
       return list.json(options);
     });
+
+    if (lists.length > 0) {
+      data.lists = lists;
+    }
   } //default off
 
 
@@ -8314,15 +8339,26 @@ module.exports = pipeSplitter;
 
 // every value in {{tmpl|a|b|c}} needs a name
 // here we come up with names for them
-var hasKey = /^[ \x2D\.0-9_a-z\xC0-\xFF\u017F\u1E9E\u212A\u212B]+=/i; //turn 'key=val' into {key:key, val:val}
+var hasKey = /^[ \x2D\.0-9_a-z\xC0-\xFF\u017F\u1E9E\u212A\u212B]+=/i; //templates with these properties are asking for trouble
+
+var reserved = {
+  template: true,
+  list: true,
+  prototype: true
+}; //turn 'key=val' into {key:key, val:val}
 
 var parseKey = function parseKey(str) {
   var parts = str.split('=');
   var key = parts[0] || '';
-  key = key.toLowerCase();
-  var val = parts.slice(1).join('=');
+  key = key.toLowerCase().trim();
+  var val = parts.slice(1).join('='); //don't let it be called 'template'..
+
+  if (reserved.hasOwnProperty(key)) {
+    key = '_' + key;
+  }
+
   return {
-    key: key.trim(),
+    key: key,
     val: val.trim()
   };
 }; //turn [a, b=v, c] into {'1':a, b:v, '2':c}
@@ -8468,8 +8504,7 @@ var pipeSplitter = _dereq_('./01-pipe-splitter');
 
 var keyMaker = _dereq_('./02-keyMaker');
 
-var cleanup = _dereq_('./03-cleanup'); // const isKnown = require('./04-isKnown');
-// most templates just want plaintext...
+var cleanup = _dereq_('./03-cleanup'); // most templates just want plaintext...
 
 
 var makeFormat = function makeFormat(str, fmt) {

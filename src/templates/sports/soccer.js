@@ -28,7 +28,7 @@ let sports = {
       template: 'goal',
       data: []
     };
-    let arr = res.list;
+    let arr = res.list || [];
     for(let i = 0; i < arr.length; i += 2) {
       obj.data.push({
         min: arr[i],

@@ -39,10 +39,12 @@ const parseTemplates = function(wiki, data, options) {
   data.templates.forEach((o) => {
     //it's possible that we've parsed a reference, that we missed earlier
     if (citations[o.template] === true || isCitation.test(o.template) === true) {
+      data.references = data.references || [];
       data.references.push(new Reference(o));
       return;
     }
     if (o.template === 'infobox' && o.data && isObject(o.data)) {
+      data.infoboxes = data.infoboxes || [];
       data.infoboxes.push(new Infobox(o));
       return;
     }
