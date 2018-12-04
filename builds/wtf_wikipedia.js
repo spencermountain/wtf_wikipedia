@@ -2245,7 +2245,7 @@ module.exports = parseMlb;
 
 var tableParser = _dereq_('../table/parse');
 
-var headings = ['res.', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes']; //https://en.wikipedia.org/wiki/Template:MMA_record_start
+var headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes']; //https://en.wikipedia.org/wiki/Template:MMA_record_start
 
 var parseMMA = function parseMMA(wiki, section) {
   wiki = wiki.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, function (tmpl) {
@@ -2999,14 +2999,13 @@ var toJSON = function toJSON(section, options) {
     var templates = section.templates();
 
     if (templates.length > 0) {
-      data.templates = templates;
-    } //encode them, for mongodb
+      data.templates = templates; //encode them, for mongodb
 
-
-    if (options.encode === true) {
-      data.templates.forEach(function (t) {
-        return encode.encodeObj(t);
-      });
+      if (options.encode === true) {
+        data.templates.forEach(function (t) {
+          return encode.encodeObj(t);
+        });
+      }
     }
   } //infobox json data
 
@@ -8998,7 +8997,7 @@ var parsers = {
   natural_date: function natural_date(tmpl, r) {
     var order = ['text'];
     var obj = parse(tmpl, order);
-    var str = obj.text; // - just a year
+    var str = obj.text || ''; // - just a year
 
     var date = {};
 
@@ -9916,11 +9915,13 @@ var parseTemplates = function parseTemplates(wiki, data, options) {
   data.templates.forEach(function (o) {
     //it's possible that we've parsed a reference, that we missed earlier
     if (citations[o.template] === true || isCitation.test(o.template) === true) {
+      data.references = data.references || [];
       data.references.push(new Reference(o));
       return;
     }
 
     if (o.template === 'infobox' && o.data && isObject(o.data)) {
+      data.infoboxes = data.infoboxes || [];
       data.infoboxes.push(new Infobox(o));
       return;
     }
@@ -10025,7 +10026,7 @@ var templates = {
   //https://en.wikipedia.org/wiki/Template:IPAc-en
   ipac: function ipac(tmpl, r) {
     var obj = parse(tmpl);
-    obj.transcription = obj.list.join(',');
+    obj.transcription = (obj.list || []).join(',');
     delete obj.list;
     obj.lang = getLang(obj.template);
     obj.template = 'ipac';
@@ -10285,7 +10286,7 @@ var parseCurrency = function parseCurrency(tmpl, r) {
     code = o.code;
   }
 
-  code = code.toLowerCase();
+  code = (code || '').toLowerCase();
   var out = codes[code] || '';
   return "".concat(out).concat(o.amount || '');
 };
@@ -10422,7 +10423,7 @@ var templates = {
     var order = ['flag', 'variant'];
     var obj = parse(tmpl, order);
     var name = obj.flag || '';
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     var found = flags.find(function (a) {
       return obj.flag === a[1] || obj.flag === a[2];
     }) || [];
@@ -10433,7 +10434,7 @@ var templates = {
   flagcountry: function flagcountry(tmpl) {
     var order = ['flag', 'variant'];
     var obj = parse(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     var found = flags.find(function (a) {
       return obj.flag === a[1] || obj.flag === a[2];
     }) || [];
@@ -10444,7 +10445,7 @@ var templates = {
   flagcu: function flagcu(tmpl) {
     var order = ['flag', 'variant'];
     var obj = parse(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     var found = flags.find(function (a) {
       return obj.flag === a[1] || obj.flag === a[2];
     }) || [];
@@ -10456,7 +10457,7 @@ var templates = {
   flagicon: function flagicon(tmpl) {
     var order = ['flag', 'variant'];
     var obj = parse(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     var found = flags.find(function (a) {
       return obj.flag === a[1] || obj.flag === a[2];
     });
@@ -10471,7 +10472,7 @@ var templates = {
   flagdeco: function flagdeco(tmpl) {
     var order = ['flag', 'variant'];
     var obj = parse(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     var found = flags.find(function (a) {
       return obj.flag === a[1] || obj.flag === a[2];
     }) || [];
@@ -10481,7 +10482,7 @@ var templates = {
   fb: function fb(tmpl) {
     var order = ['flag', 'variant'];
     var obj = parse(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     var found = flags.find(function (a) {
       return obj.flag === a[1] || obj.flag === a[2];
     });
@@ -10495,7 +10496,7 @@ var templates = {
   fbicon: function fbicon(tmpl) {
     var order = ['flag', 'variant'];
     var obj = parse(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     var found = flags.find(function (a) {
       return obj.flag === a[1] || obj.flag === a[2];
     });
@@ -10534,7 +10535,7 @@ var templates = {
     return '';
   },
   'climate chart': function climateChart(tmpl, r) {
-    var list = parse(tmpl).list;
+    var list = parse(tmpl).list || [];
     var title = list[0];
     var source = list[38];
     list = list.slice(1); //amazingly, they use '−' symbol here instead of negatives...
@@ -10626,11 +10627,11 @@ var flags = _dereq_('../../_data/flags');
 var sports = {
   player: function player(tmpl, r) {
     var res = parse(tmpl, ['number', 'country', 'name', 'dl']);
-    r.templates.push(r);
+    r.templates.push(res);
     var str = "[[".concat(res.name, "]]");
 
     if (res.country) {
-      var country = res.country.toLowerCase();
+      var country = (res.country || '').toLowerCase();
       var flag = flags.find(function (a) {
         return country === a[1] || country === a[2];
       }) || [];
@@ -10653,7 +10654,7 @@ var sports = {
       template: 'goal',
       data: []
     };
-    var arr = res.list;
+    var arr = res.list || [];
 
     for (var i = 0; i < arr.length; i += 2) {
       obj.data.push({
@@ -10725,7 +10726,7 @@ var sports = {
     var result = {
       template: 'sent off',
       cards: obj.cards,
-      minutes: obj.list
+      minutes: obj.list || []
     };
     r.templates.push(result);
     var mins = result.minutes.map(function (m) {
@@ -10979,7 +10980,7 @@ var parsers = {
   //https://en.wikipedia.org/wiki/Template:Gallery
   'gallery': function gallery(tmpl, r) {
     var obj = parse(tmpl);
-    var images = obj.list.filter(function (line) {
+    var images = (obj.list || []).filter(function (line) {
       return /^ *File ?:/.test(line);
     });
     images = images.map(function (file) {
