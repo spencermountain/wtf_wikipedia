@@ -33,7 +33,7 @@ test('rnli stations', t => {
 
   var lifeboat = doc.sections(2);
   t.equal(lifeboat.depth, 1, 'lifeboat-depth');
-  t.equal(lifeboat.templates(0).page, 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main');
+  t.equal(lifeboat.templates(0).list[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main');
   t.equal(lifeboat.lists(0).json().length, 3, 'lifeboat-list');
   t.equal(lifeboat.sentences().length, 3, 'lifeboat-sentences');
   t.deepEqual(lifeboat.images(), [], 'lifeboat-no-images');
@@ -157,9 +157,7 @@ test('floating-tables-test', t => {
 |}`;
   var obj = wtf(floating);
   t.equal(obj.tables().length, 2, 'two tables');
-  // console.log(obj.sections[0].tables);
   var table = obj.tables(0).data;
-  // console.log(table);
   t.equal(table[0]['col1'].text(), 'Col 1, row 1', '1,1');
   t.end();
 });
@@ -334,5 +332,72 @@ test('table newline removal', t => {
 `;
   var doc = wtf(str);
   t.equal(doc.text(), 'hello this is the top', 'text on top');
+  t.end();
+});
+
+test('table rowspan', t => {
+  var str = `{| class="wikitable"
+| rowspan="2"| one
+| two
+| three
+|-
+| two B
+| three B
+|}`;
+  var doc = wtf(str);
+  var table = doc.tables(0).keyValue();
+  t.equal(table[0].col1, 'one', 'has init');
+  t.equal(table[1].col1, 'one', 'has copy');
+  t.equal(table[0].col2, 'two', 'has later');
+  t.equal(table[0].col3, 'three', 'has later');
+  t.equal(table[1].col2, 'two B', 'has later 1');
+  t.equal(table[1].col3, 'three B', 'has later 2');
+  t.end();
+});
+
+test('table colspan', t => {
+  var str = `{| class="wikitable"
+| colspan="2" style="text-align:center;"| one/two
+| three
+|-
+| one B
+| two B
+| three B
+|}`;
+  var doc = wtf(str);
+  var table = doc.tables(0).keyValue();
+  t.equal(table[0].col1, 'one/two', 'has init');
+  t.equal(table[0].col2, '', 'has empty span');
+  t.equal(table[0].col3, 'three', 'has after span');
+
+  t.equal(table[1].col1, 'one B', 'has one b');
+  t.equal(table[1].col2, 'two B', 'has two B');
+  t.equal(table[1].col3, 'three B', 'has three C');
+  t.end();
+});
+
+//use first row as the table header
+test('first-row as header', t => {
+  var simple = `{| class="wikitable"
+|-
+| Name
+| Country
+| Rank
+|-
+| spencer || canada || captain
+|-
+| john || germany || captain
+|-
+| april || sweden || seargent
+|-
+| may || sweden || caption
+|}`;
+  var obj = wtf(simple);
+  var table = obj.tables(0).json();
+  t.equal(table.length, 4, '4 rows');
+  t.equal(table[0]['name'].text, 'spencer', 'got name 1');
+  t.equal(table[0]['country'].text, 'canada', 'got country 1');
+  t.equal(table[0]['rank'].text, 'captain', 'got rank 1');
+  t.equal(table[2]['rank'].text, 'seargent', 'got rank 3');
   t.end();
 });

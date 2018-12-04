@@ -1,27 +1,47 @@
-const pipeSplit = require('../_parsers/pipeSplit');
+const parse = require('../_parsers/parse');
 
 let templates = {
   /* mostly wiktionary*/
   etyl: (tmpl) => {
     let order = ['lang', 'page'];
-    return pipeSplit(tmpl, order).page || '';
+    return parse(tmpl, order).page || '';
   },
   mention: (tmpl) => {
     let order = ['lang', 'page'];
-    return pipeSplit(tmpl, order).page || '';
+    return parse(tmpl, order).page || '';
   },
   link: (tmpl) => {
     let order = ['lang', 'page'];
-    return pipeSplit(tmpl, order).page || '';
+    return parse(tmpl, order).page || '';
   },
   'la-verb-form': (tmpl) => {
     let order = ['word'];
-    return pipeSplit(tmpl, order).word || '';
+    return parse(tmpl, order).word || '';
   },
   'la-ipa': (tmpl) => {
     let order = ['word'];
-    return pipeSplit(tmpl, order).word || '';
+    return parse(tmpl, order).word || '';
   },
+  //https://en.wikipedia.org/wiki/Template:Sortname
+  sortname: (tmpl) => {
+    let order = ['first', 'last', 'target', 'sort'];
+    let obj = parse(tmpl, order);
+    let name = `${obj.first || ''} ${obj.last || ''}`;
+    name = name.trim();
+    if (obj.nolink) {
+      return obj.target || name;
+    }
+    if (obj.dab) {
+      name += ` (${obj.dab})`;
+      if (obj.target) {
+        obj.target += ` (${obj.dab})`;
+      }
+    }
+    if (obj.target) {
+      return `[[${obj.target}|${name}]]`;
+    }
+    return `[[${name}]]`;
+  }
 };
 
 //these are insane
@@ -58,7 +78,7 @@ const links = [
 links.forEach((k) => {
   templates[k] = (tmpl) => {
     let order = ['first', 'second'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     return obj.second || obj.first;
   };
 });

@@ -17,6 +17,7 @@ const defaults = {
 const Section = function(data) {
   this.depth = data.depth;
   this.doc = null;
+  this._title = data.title || '';
   Object.defineProperty(this, 'doc', {
     enumerable: false,
     value: null
@@ -29,7 +30,7 @@ const Section = function(data) {
 
 const methods = {
   title: function() {
-    return this.data.title || '';
+    return this._title || '';
   },
   index: function() {
     if (!this.doc) {

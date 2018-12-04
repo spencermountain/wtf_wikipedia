@@ -5,15 +5,15 @@ const section_reg = /(?:\n|^)(={2,5}.{1,200}?={2,5})/g;
 //interpret ==heading== lines
 const parse = {
   heading: require('./heading'),
-  table: require('../table'),
+  table: require('./table'),
   paragraphs: require('../03-paragraph'),
   templates: require('../templates'),
-  references: require('../reference'),
-  xmlTemplates: require('./xml-templates')
+  references: require('./reference'),
+  startEndTemplates: require('./start-to-end')
 };
 
 const oneSection = function( wiki, data, options) {
-  wiki = parse.xmlTemplates(data, wiki, options);
+  wiki = parse.startEndTemplates(data, wiki, options);
   //parse-out the <ref></ref> tags
   wiki = parse.references(wiki, data);
   //parse-out all {{templates}}

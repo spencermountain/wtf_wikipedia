@@ -1,5 +1,5 @@
 //random misc for inline wikipedia templates
-const pipeSplit = require('../_parsers/pipeSplit');
+const parse = require('../_parsers/parse');
 
 const titlecase = (str) => {
   return str.charAt(0).toUpperCase() + str.substring(1);
@@ -20,11 +20,7 @@ let cells = [
   'site active',
   'coming soon',
   'good',
-  'yes2',
-  'ya',
   'won',
-  'no2',
-  'na',
   'nom',
   'sho',
   'longlisted',
@@ -77,14 +73,14 @@ let cells = [
   'not yet',
   'optional',
 ];
-
 cells.forEach((str) => {
   templates[str] = (tmpl) => {
-    let data = pipeSplit(tmpl, ['text']);
+    let data = parse(tmpl, ['text']);
     return data.text || titlecase(data.template);
   };
 });
 
+//these ones have a text result
 let moreCells = [
   ['active fire', 'Active'],
   ['site active', 'Active'],
@@ -107,14 +103,14 @@ let moreCells = [
 ];
 moreCells.forEach((a) => {
   templates[a[0]] = (tmpl) => {
-    let data = pipeSplit(tmpl, ['text']);
+    let data = parse(tmpl, ['text']);
     return data.text || a[1];
   };
 });
 
 //this one's a little different
 templates.won = (tmpl) => {
-  let data = pipeSplit(tmpl, ['text']);
+  let data = parse(tmpl, ['text']);
   return data.place || data.text || titlecase(data.template);
 };
 

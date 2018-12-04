@@ -54,7 +54,7 @@ test('external links', t => {
 test('misc templates', t => {
   var arr = [
     [`hello {{refn|group=groupname|name=name|Contents of the footnote}} world`, 'hello world'],
-    [`hello {{tag|ref|content=haha}} world`, 'hello world'],
+    [`hello {{tag|ref|content=haha}} world`, 'hello <ref >haha</ref> world'],
     [`{{convert|70|m}}`, '70 m'],
     [`{{convert|7|and|8|km}}`, '7 and 8 km'],
     [`{{convert|7|to|8|mi}}`, '7 to 8 mi'],
@@ -70,7 +70,7 @@ test('misc templates', t => {
     [`{{dts|-200}}`, '200 BC'],
     [`{{dts|2020-10-15|format=dm}}`, '2020-10-15'],
     [`{{dts|2000-03-02|abbr=on}}`, '2000-03-02'],
-    [`{{tag|ref|content=haha}}`, ''],
+    [`{{tag|ref|content=haha}}`, '<ref >haha</ref>'],
     [`{{tag|div|content=haha}}`, 'haha'],
     [`{{first word|Foo bar baz}}`, 'Foo'],
     [`{{Trunc | Lorem ipsum dolor sit amet | 10 }}`, 'Lorem ipsu'],

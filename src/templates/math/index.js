@@ -1,26 +1,19 @@
-const pipeSplit = require('../_parsers/pipeSplit');
-const pipes = require('../_parsers/_pipes');
-const parseSentence = require('../../04-sentence').oneSentence;
+const parse = require('../_parsers/parse');
+// const parseSentence = require('../../04-sentence').oneSentence;
 
 let templates = {
 
   // https://en.wikipedia.org/wiki/Template:Math
   'math': (tmpl, r) => {
-    let obj = pipes(tmpl);
-    let formula = obj.list[obj.list.length - 1];
-    r.templates.push({
-      template: 'math',
-      formula: parseSentence(formula).text(),
-      raw: formula,
-    });
-    return '\n\n' + formula + '\n\n';
+    let obj = parse(tmpl, ['formula']);
+    r.templates.push(obj);
+    return '\n\n' + (obj.formula || '') + '\n\n';
   },
 
   //fraction - https://en.wikipedia.org/wiki/Template:Sfrac
   'frac': (tmpl, r) => {
     let order = ['a', 'b', 'c'];
-    let obj = pipeSplit(tmpl, order);
-
+    let obj = parse(tmpl, order);
     let data = {
       template: 'sfrac',
     };
@@ -45,7 +38,7 @@ let templates = {
   //https://en.wikipedia.org/wiki/Template:Radic
   'radic': (tmpl) => {
     let order = ['after', 'before'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     return `${obj.before || ''}√${obj.after || ''}`;
   },
 };

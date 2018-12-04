@@ -1,4 +1,4 @@
-const pipeSplit = require('../_parsers/pipeSplit');
+const parse = require('../_parsers/parse');
 const flags = require('../../_data/flags');
 
 let templates = {
@@ -6,9 +6,9 @@ let templates = {
   // {{flag|USA}} →  USA
   flag: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = pipeSplit(tmpl, order);
+    let obj = parse(tmpl, order);
     let name = obj.flag || '';
-    obj.flag = obj.flag.toLowerCase();
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
     let flag = found[0] || '';
     return `${flag} [[${found[2]}|${name}]]`;
@@ -16,8 +16,8 @@ let templates = {
   // {{flagcountry|USA}} →  United States
   flagcountry: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = pipeSplit(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    let obj = parse(tmpl, order);
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
     let flag = found[0] || '';
     return `${flag} [[${found[2]}]]`;
@@ -25,8 +25,8 @@ let templates = {
   // (unlinked flag-country)
   flagcu: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = pipeSplit(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    let obj = parse(tmpl, order);
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
     let flag = found[0] || '';
     return `${flag} ${found[2]}`;
@@ -35,8 +35,8 @@ let templates = {
   // {{flagicon|USA}} → United States
   flagicon: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = pipeSplit(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    let obj = parse(tmpl, order);
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
     if (!found) {
       return '';
@@ -46,16 +46,16 @@ let templates = {
   //unlinked flagicon
   flagdeco: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = pipeSplit(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    let obj = parse(tmpl, order);
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
     return found[0] || '';
   },
   //same, but a soccer team
   fb: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = pipeSplit(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    let obj = parse(tmpl, order);
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
     if (!found) {
       return '';
@@ -64,8 +64,8 @@ let templates = {
   },
   fbicon: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = pipeSplit(tmpl, order);
-    obj.flag = obj.flag.toLowerCase();
+    let obj = parse(tmpl, order);
+    obj.flag = (obj.flag || '').toLowerCase();
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
     if (!found) {
       return '';

@@ -1,8 +1,13 @@
 const Infobox = require('../infobox/Infobox');
-const Reference = require('../reference/Reference');
-const getTemplates = require('./_parsers/_getTemplates');
+const Reference = require('../02-section/reference/Reference');
+const getTemplates = require('./_getTemplates');
 const parseTemplate = require('./parse');
-
+const isCitation = new RegExp('^(cite |citation)', 'i');
+const citations = {
+  citation: true,
+  refn: true,
+  harvnb: true,
+};
 //ensure references and infoboxes at least look valid
 const isObject = function(x) {
   return (typeof x === 'object') && (x !== null) && x.constructor.toString().indexOf('Array') === -1;
@@ -33,12 +38,13 @@ const parseTemplates = function(wiki, data, options) {
   let clean = [];
   data.templates.forEach((o) => {
     //it's possible that we've parsed a reference, that we missed earlier
-    if (o.template === 'citation' && o.data && isObject(o.data)) {
-      o.data.type = o.type || null;
+    if (citations[o.template] === true || isCitation.test(o.template) === true) {
+      data.references = data.references || [];
       data.references.push(new Reference(o));
       return;
     }
     if (o.template === 'infobox' && o.data && isObject(o.data)) {
+      data.infoboxes = data.infoboxes || [];
       data.infoboxes.push(new Infobox(o));
       return;
     }

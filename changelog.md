@@ -127,3 +127,11 @@
 * add mongo-encoding from dumpster-dive
 ### 6.3.0
 * support way (+20%?) more templates.
+### 7.0.0
+* change result-format in a lot of templates, for more consistency.
+* * notably: **reference** format, **see also**, **IPA**, **main**
+* support colspan/rowspan in tables (a little!)
+* support implicit first-row headers for some tables
+* return templates even if they have no data
+* begin support for some well-used `{{foo start}}...{{foo end}}` templates
+* remove empty `[]` for some more section properties in `.json()` response

@@ -3,7 +3,7 @@ const parseLinks = require('./links');
 const parseFmt = require('./formatting');
 const Sentence = require('./Sentence');
 // const templates = require('./templates');
-const sentenceParser = require('./sentence-parser');
+const sentenceParser = require('./parse');
 const i18n = require('../_data/i18n');
 const cat_reg = new RegExp(
   '\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]',

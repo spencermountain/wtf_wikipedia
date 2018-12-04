@@ -31,9 +31,9 @@ test('generic-list', t => {
   var doc = wtf(str);
   var obj = doc.templates(0);
   t.equal(obj.template, 'portal bar', 'name');
-  t.equal(obj.data[0], 'portal 1', 'list1');
-  t.equal(obj.data[1], 'portal 2', 'list2');
-  t.equal(obj.data.length, 2, 'list-len');
+  t.equal(obj.list[0], 'portal 1', 'list1');
+  t.equal(obj.list[1], 'portal 2', 'list2');
+  t.equal(obj.list.length, 2, 'list-len');
   t.end();
 });
 
@@ -53,14 +53,14 @@ test('templates-in-templates', t => {
   var str = `{{marriage|[[Mileva Marić]]<br>|1903|1919|end=div}}<br />{{nowrap|{{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}}<ref>{{cite book |editor-last=Heilbron |editor-first=John L. |title=The Oxford Companion to the History of Modern Science |url=https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233 |date=2003 |publisher=Oxford University Press |isbn=978-0-19-974376-6 |page=233}}</ref>{{sfnp|Pais|1982|p=301}}}}`;
   var ref = wtf(str).citations(0).json();
   t.equal(ref.template, 'citation', 'cite-book');
-  t.equal(ref.data.url, 'https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233', 'url');
-  t.equal(ref.data.isbn, '978-0-19-974376-6', 'isbn');
+  t.equal(ref.url, 'https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233', 'url');
+  t.equal(ref.isbn, '978-0-19-974376-6', 'isbn');
   var templates = wtf(str).templates();
   t.equal(templates[0].template, 'marriage', 'marriage1');
-  t.equal(templates[0].name, 'Elsa Löwenthal', 'marriage-1-name');
+  t.equal(templates[0].spouse, 'Elsa Löwenthal', 'marriage-1-name');
   t.equal(templates[1].template, 'sfnp', 'sfnp');
   t.equal(templates[2].template, 'marriage', 'marriage2');
-  t.equal(templates[2].name, 'Mileva Marić', 'marriage2-name');
+  t.equal(templates[2].spouse, 'Mileva Marić', 'marriage2-name');
   t.end();
 });
 
@@ -106,7 +106,7 @@ test('austria-hungary', t => {
   var doc = wtf(str);
 
   t.equal(doc.text(), 'Austria-Hungary, often referred to as the Austro-Hungarian Empire or the Dual Monarchy', 'got-plaintext');
-  t.equal(doc.templates('for')[0].data[1], 'Austria–Hungary relations', 'nested emdash');
+  t.equal(doc.templates('for')[0].list[1], 'Austria–Hungary relations', 'nested emdash');
   t.equal(doc.links('budapest')[0].page, 'Budapest', 'got Budapest link');
   t.equal(doc.templates('short description')[0].description, 'Constitutional monarchic union from 1867 to October 1918', 'short-description');
   t.end();

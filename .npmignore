@@ -1,7 +1,11 @@
 tests/
 demo/
 scripts/
+examples/
 .babelrc
 .esformatter
 .eslintrc
 scratch.js
+*.tsv
+changelog.md
+contributing.md
