@@ -260,7 +260,7 @@ the optional-callback pattern is the same for **wtf.random()**
 `wtf.random(lang, options).then(doc=>doc.infobox())`
 
 ### **wtf.category(title, [lang_or_wikiid], [options], [callback])**
-retrieves all pages and categories belonging to a given category:
+retrieves all pages and sub-categories belonging to a given category:
 ```js
 let result = await wtf.category('Category:Politicians_from_Paris');
 //{
