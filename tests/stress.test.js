@@ -2,6 +2,26 @@
 var test = require('tape');
 var readFile = require('./lib/_cachedPage');
 
+function isCyclic (json) {
+  var seenObjects = [];
+  function detect (obj) {
+    if (obj && typeof obj === 'object') {
+      if (seenObjects.indexOf(obj) !== -1) {
+        return true;
+      }
+      seenObjects.push(obj);
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key) && detect(obj[key])) {
+          // console.log(obj, 'cycle at ' + key);
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  return detect(json);
+}
+
 test('stress-test-en', t => {
   var arr = [
     '2008-British-motorcycle-Grand-Prix',
@@ -121,8 +141,11 @@ test('stress-test-en', t => {
     t.ok(html.length > 40, ' - - html-length');
     t.ok(html.match(/\</), ' - - html-has tag');
 
-    var json = doc.json();
+    var json = doc.json({
+      encode: true
+    });
     t.ok(Object.keys(json).length >= 2, ' - - json-keys-ok');
+    t.equal(isCyclic(json), false, ' - - not-cyclic');
   });
   t.end();
 });
