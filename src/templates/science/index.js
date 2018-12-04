@@ -10,7 +10,7 @@ let templates = {
   },
 
   'climate chart': (tmpl, r) => {
-    let list = parse(tmpl).list;
+    let list = parse(tmpl).list || [];
     let title = list[0];
     let source = list[38];
     list = list.slice(1);

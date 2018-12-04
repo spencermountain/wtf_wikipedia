@@ -161,7 +161,7 @@ const parsers = {
   //https://en.wikipedia.org/wiki/Template:Gallery
   'gallery': (tmpl, r) => {
     let obj = parse(tmpl);
-    let images = obj.list.filter(line => /^ *File ?:/.test(line));
+    let images = (obj.list || []).filter(line => /^ *File ?:/.test(line));
     images = images.map((file) => {
       let img = {
         file: file

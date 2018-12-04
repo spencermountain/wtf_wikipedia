@@ -4,7 +4,7 @@ const wtf = require('./src/index');
 // const wtf = require('./build');
 
 (async () => {
-  var doc = await wtf.fetch('History of Eritrea');
+  var doc = await wtf.fetch('Cosigüina');
   console.log(doc.json());
 // var doc = await wtf.random();
 // let list = await wtf.category('National Basketball Association teams');

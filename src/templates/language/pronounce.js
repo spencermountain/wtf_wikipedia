@@ -26,7 +26,7 @@ const templates = {
   //https://en.wikipedia.org/wiki/Template:IPAc-en
   ipac: (tmpl, r) => {
     let obj = parse(tmpl);
-    obj.transcription = obj.list.join(',');
+    obj.transcription = (obj.list || []).join(',');
     delete obj.list;
     obj.lang = getLang(obj.template);
     obj.template = 'ipac';
