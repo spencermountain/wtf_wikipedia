@@ -61,7 +61,7 @@ const parsers = {
   natural_date: (tmpl, r) => {
     let order = ['text'];
     let obj = parse(tmpl, order);
-    let str = obj.text;
+    let str = obj.text || '';
     // - just a year
     let date = {};
     if (/^[0-9]{4}$/.test(str)) {

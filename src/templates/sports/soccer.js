@@ -5,7 +5,7 @@ let sports = {
 
   player: (tmpl, r) => {
     let res = parse(tmpl, ['number', 'country', 'name', 'dl']);
-    r.templates.push(r);
+    r.templates.push(res);
     let str = `[[${res.name}]]`;
     if (res.country) {
       let country = (res.country || '').toLowerCase();
