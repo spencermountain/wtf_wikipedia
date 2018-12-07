@@ -138,3 +138,4 @@
 * remove empty `[]` for some more section properties in `.json()` response
 ### 7.1.0
 * add a 'number' field in sentence json, when it looks like a number
+* slight change in coordinate result format
