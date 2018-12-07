@@ -12,21 +12,23 @@ const wtf = require('./src/index');
 // let doc = readFile('BBDO');
 // console.log(doc.infoboxes(0).data);
 
-//rowspan="2"
-let str = `{| class="wikitable" 
+//
+let str = `
+{| class="navbox plainrowheaders wikitable" style="width:100%"
+!style=background:white scope="col"|Division
+!style=background:white scope="col"|Club
+!style=background:white scope="col"|City
+!style=background:white scope="col"|[[List of current National Football League stadiums|Stadium]]<ref name="NFL stadiums go from boom to swoon in span of a decade">{{cite web|url=http://www.nfl.com/news/story/09000d5d82a5c85c/article/nfl-stadiums-go-from-boom-to-swoon-in-span-of-a-decade|title=NFL stadiums go from boom to swoon in span of a decade|last=Breer|first=Albert|date=July 6, 2012|publisher=NFL|accessdate=February 1, 2013}}</ref>
 |-
-! A
-! B
-! C
-! D
+!style=background:white rowspan="4"|[[AFC East|East]]
+|'''[[Buffalo Bills]]'''
+|[[Orchard Park (town), New York|Orchard Park, New York]]
+|[[New Era Field]]
+|align=center|71,608
+|{{Coord|42.774|-78.787|type:landmark|name=Buffalo Bills}}
+|{{dts|1960}} ([[American Football League|AFL]]), {{dts|1970}} (NFL)
+|[[Sean McDermott]]
 |-
-!
-!
-!
-! D2
-! E2
-|-
-| a || b || c || d || e
 |}`;
 let doc = wtf(str);
 console.log(wtf(str).tables(0).keyValue());

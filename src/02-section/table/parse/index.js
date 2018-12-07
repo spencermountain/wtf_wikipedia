@@ -17,7 +17,7 @@ const headings = {
 
 //additional table-cruft to remove before parseLine method
 const cleanText = function(str) {
-  // str = parseSentence(str).text();
+  str = parseSentence(str).text();
   //anything before a single-pipe is styling, so remove it
   if (str.match(/\|/)) {
     str = str.replace(/.+\| ?/, ''); //class="unsortable"|title
@@ -30,7 +30,7 @@ const cleanText = function(str) {
 };
 
 //'!' starts a header-row
-const findHeaders = function(rows) {
+const findHeaders = function( rows = [] ) {
   let headers = [];
   let first = rows[0];
   if (first && first[0] && /^!/.test(first[0]) === true) {
@@ -38,6 +38,18 @@ const findHeaders = function(rows) {
       h = h.replace(/^\! */, '');
       h = cleanText(h);
       return h;
+    });
+    rows.shift();
+  }
+  //try the second row, too (overwrite first-row, if it exists)
+  first = rows[0];
+  if (first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
+    first.forEach((h, i) => {
+      h = h.replace(/^\! */, '');
+      h = cleanText(h);
+      if (Boolean(h) === true) {
+        headers[i] = h;
+      }
     });
     rows.shift();
   }
@@ -83,12 +95,14 @@ const parseTable = function(wiki) {
   let lines = wiki.replace(/\r/g, '').split(/\n/);
   lines = lines.map(l => l.trim());
   let rows = findRows(lines);
+  //support colspan, rowspan...
+  rows = handleSpans(rows);
+  //grab the header rows
   let headers = findHeaders(rows);
   if (!headers || headers.length === 0) {
     headers = firstRowHeader(rows);
   }
-  rows = handleSpans(rows);
-  //index them by their header
+  //index each column by it's header
   let table = rows.map(arr => {
     return parseRow(arr, headers);
   });

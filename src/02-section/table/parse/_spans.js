@@ -1,16 +1,19 @@
-const getRowSpan = /rowspan *?= *?["']([0-9]+)["'][ \|]*/;
-const getColSpan = /colspan *?= *?["']([0-9]+)["'][ \|]*/;
+const getRowSpan = /.*rowspan *?= *?["']([0-9]+)["'][ \|]*/;
+const getColSpan = /.*colspan *?= *?["']([0-9]+)["'][ \|]*/;
 
 //colspans stretch ←left/right→
 const doColSpan = function(rows) {
-  rows.forEach((row) => {
+  rows.forEach((row, r) => {
     row.forEach((str, c) => {
       let m = str.match(getColSpan);
       if (m !== null) {
         let num = parseInt(m[1], 10);
 
-        //...maybe if num is so big, and centered, give it a new column? remove it?
-
+        //...maybe if num is so big, and centered, remove it?
+        if (num > 3) {
+          rows[r] = [];
+          return;
+        }
         //splice-in n empty columns right here
         row[c] = str.replace(getColSpan, '');
         for(let i = 1; i < num; i += 1) {
@@ -19,6 +22,7 @@ const doColSpan = function(rows) {
       }
     });
   });
+  rows = rows.filter(r => r.length > 0);
   return rows;
 };
 
