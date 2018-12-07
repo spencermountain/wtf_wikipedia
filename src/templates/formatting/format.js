@@ -144,7 +144,7 @@ let templates = {
       str = str + ' ' + (obj.u || obj.ul || obj.upl);
     }
     return str;
-  },
+  }
 };
 
 //aliases

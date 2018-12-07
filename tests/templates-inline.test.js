@@ -35,6 +35,10 @@ test('inline-no-data', function(t) {
     [`lbb`, ` {{Lbb|Severn}} `],
     [`yes`, ` {{Yes}} `],
     [`vanchor`, `{{vanchor|humpty|dumpty}}`],
+    [`uc`, `{{uc:text tRAnSFORM}}`],
+    [`uc`, `{{ucfirst:text tRAnSFORM}}`],
+    [`lc`, `{{lc:text tRAnSFORM}}`],
+    [`lc`, `{{lcfirst:text tRAnSFORM}}`],
     [`plainlist`, `{{Plainlist|
 * Example 1
 * Example 2
