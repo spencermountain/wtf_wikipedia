@@ -9838,6 +9838,7 @@ var findLatLng = function findLatLng(arr) {
 };
 
 var parseParams = function parseParams(obj) {
+  obj.list = obj.list || [];
   obj.list = obj.list.map(function (str) {
     var num = Number(str);
 
@@ -10865,6 +10866,19 @@ var parse = _dereq_('../_parsers/parse');
 var hasMonth = /^jan /i;
 var isYear = /^year /i;
 var monthList = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+
+var toNumber = function toNumber(str) {
+  str = str.replace(/,/g, '');
+  str = str.replace(/−/g, '-');
+  var num = Number(str);
+
+  if (isNaN(num)) {
+    return str;
+  }
+
+  return num;
+};
+
 var templates = {
   // this one is a handful!
   //https://en.wikipedia.org/wiki/Template:Weather_box
@@ -10884,7 +10898,7 @@ var templates = {
         var key = "".concat(m, " ").concat(prop);
 
         if (obj.hasOwnProperty(key)) {
-          var num = Number(obj[key]);
+          var num = toNumber(obj[key]);
           delete obj[key];
           byMonth[prop].push(num);
         }
@@ -10910,7 +10924,7 @@ var templates = {
   'weather box/concise c': function weatherBoxConciseC(tmpl, r) {
     var obj = parse(tmpl);
     obj.list = obj.list.map(function (s) {
-      return Number(s);
+      return toNumber(s);
     });
     obj.byMonth = {
       'high c': obj.list.slice(0, 12),
@@ -10925,7 +10939,7 @@ var templates = {
   'weather box/concise f': function weatherBoxConciseF(tmpl, r) {
     var obj = parse(tmpl);
     obj.list = obj.list.map(function (s) {
-      return Number(s);
+      return toNumber(s);
     });
     obj.byMonth = {
       'high f': obj.list.slice(0, 12),
@@ -10955,9 +10969,9 @@ var templates = {
 
     for (var i = 0; i < 36; i += 3) {
       months.push({
-        low: Number(list[i]),
-        high: Number(list[i + 1]),
-        precip: Number(list[i + 2])
+        low: toNumber(list[i]),
+        high: toNumber(list[i + 1]),
+        precip: toNumber(list[i + 2])
       });
     }
 
