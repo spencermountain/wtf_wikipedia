@@ -77,15 +77,6 @@ const getCategories = function(cat, a, b, c) {
       resolve(output);
     });
   });
-
-
-// return new Promise(function(resolve, reject) {
-//   let p = request(url, options);
-//   p.then((res) => {
-//     return postProcess(res, options);
-//   }).then((result) => {
-//   }).catch(reject);
-// });
 };
 
 module.exports = getCategories;

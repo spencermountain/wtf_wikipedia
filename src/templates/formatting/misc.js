@@ -126,7 +126,56 @@ const inline = {
       return word;
     }
     return `${word} [sic]`;
-  }
+  },
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  formatnum: ( tmpl = '' ) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let obj = parse(tmpl, ['number']);
+    let num = Number(obj.number);
+    return num.toLocaleString() || '';
+  },
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  '#dateformat': ( tmpl = '' ) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let obj = parse(tmpl, ['date', 'format']);
+    return obj.date;
+  },
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  'lc': ( tmpl = '' ) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let obj = parse(tmpl, ['text']);
+    return (obj.text || '').toLowerCase();
+  },
+  'lcfirst': ( tmpl = '' ) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let obj = parse(tmpl, ['text']);
+    let text = obj.text || '';
+    return text[0].toLowerCase() + text.substr(1);
+  },
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  'uc': ( tmpl = '' ) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let obj = parse(tmpl, ['text']);
+    return (obj.text || '').toUpperCase();
+  },
+  'ucfirst': ( tmpl = '' ) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let obj = parse(tmpl, ['text']);
+    let text = obj.text || '';
+    return text[0].toUpperCase() + text.substr(1);
+  },
+  'padleft': ( tmpl = '' ) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let obj = parse(tmpl, ['text', 'num']);
+    let text = obj.text || '';
+    return text.padStart(obj.num, obj.str || '0');
+  },
+  'padright': ( tmpl = '' ) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let obj = parse(tmpl, ['text', 'num']);
+    let text = obj.text || '';
+    return text.padEnd(obj.num, obj.str || '0');
+  },
 };
 
 //aliases

@@ -1,4 +1,4 @@
-/* wtf_wikipedia v7.0.0
+/* wtf_wikipedia v7.1.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -491,7 +491,7 @@ module.exports.default = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -710,14 +710,28 @@ var methods = {
   templates: function templates(clue) {
     return sectionMap(this, 'templates', clue);
   },
-  infoboxes: function infoboxes(clue) {
-    return sectionMap(this, 'infoboxes', clue);
-  },
   references: function references(clue) {
     return sectionMap(this, 'references', clue);
   },
   coordinates: function coordinates(clue) {
     return sectionMap(this, 'coordinates', clue);
+  },
+  infoboxes: function infoboxes(clue) {
+    var arr = sectionMap(this, 'infoboxes'); //sort them by biggest-first
+
+    arr = arr.sort(function (a, b) {
+      if (Object.keys(a.data).length > Object.keys(b.data).length) {
+        return -1;
+      }
+
+      return 1;
+    });
+
+    if (typeof clue === 'number') {
+      return arr[clue];
+    }
+
+    return arr;
   },
   text: function text(options) {
     options = setDefaults(options, defaults); //nah, skip these.
@@ -787,7 +801,7 @@ Document.prototype.redirect = Document.prototype.redirectTo;
 Document.prototype.redirects = Document.prototype.redirectTo;
 module.exports = Document;
 
-},{"../_lib/aliases":76,"../_lib/setDefaults":81,"../image/Image":83,"./_sectionMap":4,"./toHtml":11,"./toJson":12,"./toLatex":13,"./toMarkdown":14}],4:[function(_dereq_,module,exports){
+},{"../_lib/aliases":77,"../_lib/setDefaults":82,"../image/Image":84,"./_sectionMap":4,"./toHtml":11,"./toJson":12,"./toLatex":13,"./toMarkdown":14}],4:[function(_dereq_,module,exports){
 "use strict";
 
 //helper for looping around all sections of a document
@@ -1122,7 +1136,7 @@ var toHtml = function toHtml(doc, options) {
 
 module.exports = toHtml;
 
-},{"../_lib/setDefaults":81}],12:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82}],12:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -1204,7 +1218,7 @@ var toJSON = function toJSON(doc, options) {
 
 module.exports = toJSON;
 
-},{"../_lib/setDefaults":81}],13:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82}],13:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -1262,7 +1276,7 @@ var toLatex = function toLatex(doc, options) {
 
 module.exports = toLatex;
 
-},{"../_lib/setDefaults":81}],14:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82}],14:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -1323,7 +1337,7 @@ var toMarkdown = function toMarkdown(doc, options) {
 
 module.exports = toMarkdown;
 
-},{"../_lib/setDefaults":81}],15:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82}],15:[function(_dereq_,module,exports){
 "use strict";
 
 var toMarkdown = _dereq_('./toMarkdown');
@@ -1447,11 +1461,13 @@ var methods = {
     return arr;
   },
   tables: function tables(clue) {
+    var arr = this.data.tables || [];
+
     if (typeof clue === 'number') {
-      return this.data.tables[clue];
+      return arr[clue];
     }
 
-    return this.data.tables || [];
+    return arr;
   },
   templates: function templates(clue) {
     var arr = this.data.templates || [];
@@ -1670,7 +1686,7 @@ Object.keys(aliasList).forEach(function (k) {
 });
 module.exports = Section;
 
-},{"../_lib/aliases":76,"../_lib/setDefaults":81,"./toHtml":40,"./toJson":41,"./toLatex":42,"./toMarkdown":43}],16:[function(_dereq_,module,exports){
+},{"../_lib/aliases":77,"../_lib/setDefaults":82,"./toHtml":40,"./toJson":41,"./toLatex":42,"./toMarkdown":43}],16:[function(_dereq_,module,exports){
 "use strict";
 
 var fns = _dereq_('../_lib/helpers');
@@ -1713,7 +1729,7 @@ var parseHeading = function parseHeading(data, str) {
 
 module.exports = parseHeading;
 
-},{"../04-sentence/":58,"../_lib/helpers":78,"./reference/":19}],17:[function(_dereq_,module,exports){
+},{"../04-sentence/":58,"../_lib/helpers":79,"./reference/":19}],17:[function(_dereq_,module,exports){
 "use strict";
 
 var Section = _dereq_('./Section');
@@ -1806,7 +1822,7 @@ var parseSections = function parseSections(wiki, options) {
 
 module.exports = parseSections;
 
-},{"../03-paragraph":45,"../templates":121,"./Section":15,"./heading":16,"./reference":19,"./start-to-end":26,"./table":32}],18:[function(_dereq_,module,exports){
+},{"../03-paragraph":45,"../templates":122,"./Section":15,"./heading":16,"./reference":19,"./start-to-end":26,"./table":32}],18:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../../_lib/setDefaults');
@@ -1880,7 +1896,7 @@ Object.keys(methods).forEach(function (k) {
 });
 module.exports = Reference;
 
-},{"../../_lib/setDefaults":81,"./toHtml":20,"./toJson":21,"./toLatex":22,"./toMarkdown":23}],19:[function(_dereq_,module,exports){
+},{"../../_lib/setDefaults":82,"./toHtml":20,"./toJson":21,"./toLatex":22,"./toMarkdown":23}],19:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../../templates/_parsers/parse'); // const parse = require('../../templates/wikipedia/page').citation;
@@ -1960,7 +1976,7 @@ var parseRefs = function parseRefs(wiki, data) {
 
 module.exports = parseRefs;
 
-},{"../../04-sentence":58,"../../templates/_parsers/parse":104,"./Reference":18}],20:[function(_dereq_,module,exports){
+},{"../../04-sentence":58,"../../templates/_parsers/parse":105,"./Reference":18}],20:[function(_dereq_,module,exports){
 "use strict";
 
 //
@@ -2097,7 +2113,7 @@ var parseElection = function parseElection(wiki, section) {
 
 module.exports = parseElection;
 
-},{"../../templates":121}],25:[function(_dereq_,module,exports){
+},{"../../templates":122}],25:[function(_dereq_,module,exports){
 "use strict";
 
 var parseSentence = _dereq_('../../04-sentence/').oneSentence;
@@ -2143,7 +2159,7 @@ var parseGallery = function parseGallery(wiki, section) {
 
 module.exports = parseGallery;
 
-},{"../../04-sentence/":58,"../../image/Image":83}],26:[function(_dereq_,module,exports){
+},{"../../04-sentence/":58,"../../image/Image":84}],26:[function(_dereq_,module,exports){
 "use strict";
 
 var parseGallery = _dereq_('./gallery');
@@ -2394,7 +2410,7 @@ Object.keys(aliasList).forEach(function (k) {
 });
 module.exports = Table;
 
-},{"../../_lib/aliases":76,"../../_lib/setDefaults":81,"./toHtml":36,"./toJson":37,"./toLatex":38,"./toMarkdown":39}],32:[function(_dereq_,module,exports){
+},{"../../_lib/aliases":77,"../../_lib/setDefaults":82,"./toHtml":36,"./toJson":37,"./toLatex":38,"./toMarkdown":39}],32:[function(_dereq_,module,exports){
 "use strict";
 
 var parseTable = _dereq_('./parse');
@@ -2519,17 +2535,22 @@ module.exports = findRows;
 },{}],34:[function(_dereq_,module,exports){
 "use strict";
 
-var getRowSpan = /rowspan *?= *?["']([0-9]+)["'][ \|]*/;
-var getColSpan = /colspan *?= *?["']([0-9]+)["'][ \|]*/; //colspans stretch ←left/right→
+var getRowSpan = /.*rowspan *?= *?["']([0-9]+)["'][ \|]*/;
+var getColSpan = /.*colspan *?= *?["']([0-9]+)["'][ \|]*/; //colspans stretch ←left/right→
 
 var doColSpan = function doColSpan(rows) {
-  rows.forEach(function (row) {
+  rows.forEach(function (row, r) {
     row.forEach(function (str, c) {
       var m = str.match(getColSpan);
 
       if (m !== null) {
-        var num = parseInt(m[1], 10); //...maybe if num is so big, and centered, give it a new column? remove it?
-        //splice-in n empty columns right here
+        var num = parseInt(m[1], 10); //...maybe if num is so big, and centered, remove it?
+
+        if (num > 3) {
+          rows[r] = [];
+          return;
+        } //splice-in n empty columns right here
+
 
         row[c] = str.replace(getColSpan, '');
 
@@ -2538,6 +2559,9 @@ var doColSpan = function doColSpan(rows) {
         }
       }
     });
+  });
+  rows = rows.filter(function (r) {
+    return r.length > 0;
   });
   return rows;
 }; //colspans stretch up/down
@@ -2600,8 +2624,8 @@ var headings = {
 }; //additional table-cruft to remove before parseLine method
 
 var cleanText = function cleanText(str) {
-  // str = parseSentence(str).text();
-  //anything before a single-pipe is styling, so remove it
+  str = parseSentence(str).text(); //anything before a single-pipe is styling, so remove it
+
   if (str.match(/\|/)) {
     str = str.replace(/.+\| ?/, ''); //class="unsortable"|title
   }
@@ -2614,7 +2638,8 @@ var cleanText = function cleanText(str) {
 }; //'!' starts a header-row
 
 
-var findHeaders = function findHeaders(rows) {
+var findHeaders = function findHeaders() {
+  var rows = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var headers = [];
   var first = rows[0];
 
@@ -2623,6 +2648,21 @@ var findHeaders = function findHeaders(rows) {
       h = h.replace(/^\! */, '');
       h = cleanText(h);
       return h;
+    });
+    rows.shift();
+  } //try the second row, too (overwrite first-row, if it exists)
+
+
+  first = rows[0];
+
+  if (first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
+    first.forEach(function (h, i) {
+      h = h.replace(/^\! */, '');
+      h = cleanText(h);
+
+      if (Boolean(h) === true) {
+        headers[i] = h;
+      }
     });
     rows.shift();
   }
@@ -2673,14 +2713,16 @@ var parseTable = function parseTable(wiki) {
   lines = lines.map(function (l) {
     return l.trim();
   });
-  var rows = findRows(lines);
+  var rows = findRows(lines); //support colspan, rowspan...
+
+  rows = handleSpans(rows); //grab the header rows
+
   var headers = findHeaders(rows);
 
   if (!headers || headers.length === 0) {
     headers = firstRowHeader(rows);
-  }
+  } //index each column by it's header
 
-  rows = handleSpans(rows); //index them by their header
 
   var table = rows.map(function (arr) {
     return parseRow(arr, headers);
@@ -2746,7 +2788,7 @@ var toJson = function toJson(tables, options) {
 
 module.exports = toJson;
 
-},{"../../_lib/encode":77}],38:[function(_dereq_,module,exports){
+},{"../../_lib/encode":78}],38:[function(_dereq_,module,exports){
 "use strict";
 
 //create a formal LATEX table
@@ -2861,7 +2903,7 @@ var doTable = function doTable(table, options) {
 
 module.exports = doTable;
 
-},{"../../_lib/pad":79}],40:[function(_dereq_,module,exports){
+},{"../../_lib/pad":80}],40:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -2931,7 +2973,7 @@ var doSection = function doSection(section, options) {
 
 module.exports = doSection;
 
-},{"../_lib/setDefaults":81}],41:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82}],41:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -3043,7 +3085,7 @@ var toJSON = function toJSON(section, options) {
 
 module.exports = toJSON;
 
-},{"../_lib/encode":77,"../_lib/setDefaults":81}],42:[function(_dereq_,module,exports){
+},{"../_lib/encode":78,"../_lib/setDefaults":82}],42:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -3139,7 +3181,7 @@ var doSection = function doSection(section, options) {
 
 module.exports = doSection;
 
-},{"../_lib/setDefaults":81}],43:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82}],43:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -3217,7 +3259,7 @@ var doSection = function doSection(section, options) {
 
 module.exports = doSection;
 
-},{"../_lib/setDefaults":81}],44:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82}],44:[function(_dereq_,module,exports){
 "use strict";
 
 var toJSON = _dereq_('./toJson');
@@ -3337,7 +3379,7 @@ Object.keys(methods).forEach(function (k) {
 });
 module.exports = Paragraph;
 
-},{"../_lib/setDefaults":81,"./toHtml":52,"./toJson":53,"./toLatex":54,"./toMarkdown":55}],45:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82,"./toHtml":52,"./toJson":53,"./toLatex":54,"./toMarkdown":55}],45:[function(_dereq_,module,exports){
 "use strict";
 
 var Paragraph = _dereq_('./Paragraph');
@@ -3382,7 +3424,7 @@ var parseParagraphs = function parseParagraphs(wiki) {
 
 module.exports = parseParagraphs;
 
-},{"../04-sentence":58,"../_lib/recursive_match":80,"../image":84,"./Paragraph":44,"./list":47}],46:[function(_dereq_,module,exports){
+},{"../04-sentence":58,"../_lib/recursive_match":81,"../image":85,"./Paragraph":44,"./list":47}],46:[function(_dereq_,module,exports){
 "use strict";
 
 var aliasList = _dereq_('../../_lib/aliases');
@@ -3466,7 +3508,7 @@ Object.keys(aliasList).forEach(function (k) {
 });
 module.exports = List;
 
-},{"../../_lib/aliases":76,"../../_lib/setDefaults":81,"./toHtml":48,"./toJson":49,"./toLatex":50,"./toMarkdown":51}],47:[function(_dereq_,module,exports){
+},{"../../_lib/aliases":77,"../../_lib/setDefaults":82,"./toHtml":48,"./toJson":49,"./toLatex":50,"./toMarkdown":51}],47:[function(_dereq_,module,exports){
 "use strict";
 
 var List = _dereq_('./List');
@@ -3632,7 +3674,7 @@ var toHtml = function toHtml(p, options) {
 
 module.exports = toHtml;
 
-},{"../_lib/setDefaults":81}],53:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82}],53:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -3656,7 +3698,7 @@ var toJson = function toJson(p, options) {
 
 module.exports = toJson;
 
-},{"../_lib/setDefaults":81}],54:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82}],54:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -3683,7 +3725,7 @@ var toLatex = function toLatex(p, options) {
 
 module.exports = toLatex;
 
-},{"../_lib/setDefaults":81}],55:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82}],55:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
@@ -3708,7 +3750,7 @@ var toMarkdown = function toMarkdown(p, options) {
 
 module.exports = toMarkdown;
 
-},{"../_lib/setDefaults":81}],56:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82}],56:[function(_dereq_,module,exports){
 "use strict";
 
 var toHtml = _dereq_('./toHtml');
@@ -3832,7 +3874,7 @@ Sentence.prototype.bold = Sentence.prototype.bolds;
 Sentence.prototype.plaintext = Sentence.prototype.text;
 module.exports = Sentence;
 
-},{"../_lib/aliases":76,"./toHtml":62,"./toJson":63,"./toLatex":64,"./toMarkdown":65}],57:[function(_dereq_,module,exports){
+},{"../_lib/aliases":77,"./toHtml":62,"./toJson":63,"./toLatex":64,"./toMarkdown":65}],57:[function(_dereq_,module,exports){
 "use strict";
 
 //handle the bold/italics
@@ -3967,7 +4009,7 @@ module.exports = {
   addSentences: addSentences
 };
 
-},{"../_data/i18n":68,"../_lib/helpers":78,"./Sentence":56,"./formatting":57,"./links":60,"./parse":61}],59:[function(_dereq_,module,exports){
+},{"../_data/i18n":68,"../_lib/helpers":79,"./Sentence":56,"./formatting":57,"./links":60,"./parse":61}],59:[function(_dereq_,module,exports){
 "use strict";
 
 var languages = _dereq_('../_data/languages'); //some colon symbols are valid links, like `America: That place`
@@ -4314,24 +4356,36 @@ var doSentence = function doSentence(sentence, options) {
 
 module.exports = doSentence;
 
-},{"../_lib/helpers":78,"../_lib/setDefaults":81,"../_lib/smartReplace":82}],63:[function(_dereq_,module,exports){
+},{"../_lib/helpers":79,"../_lib/setDefaults":82,"../_lib/smartReplace":83}],63:[function(_dereq_,module,exports){
 "use strict";
 
 var setDefaults = _dereq_('../_lib/setDefaults');
 
+var isNumber = /^[0-9,.]+$/;
 var defaults = {
   text: true,
   links: true,
   formatting: true,
-  dates: true
+  dates: true,
+  numbers: true
 };
 
 var toJSON = function toJSON(s, options) {
   options = setDefaults(options, defaults);
   var data = {};
+  var text = s.plaintext();
 
-  if (options.text) {
-    data.text = s.plaintext();
+  if (options.text === true) {
+    data.text = text;
+  } //add number field
+
+
+  if (options.numbers === true && isNumber.test(text)) {
+    var num = Number(text.replace(/,/g, ''));
+
+    if (isNaN(num) === false) {
+      data.number = num;
+    }
   }
 
   if (options.links && s.links().length > 0) {
@@ -4351,7 +4405,7 @@ var toJSON = function toJSON(s, options) {
 
 module.exports = toJSON;
 
-},{"../_lib/setDefaults":81}],64:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82}],64:[function(_dereq_,module,exports){
 "use strict";
 
 var smartReplace = _dereq_('../_lib/smartReplace');
@@ -4415,7 +4469,7 @@ var toLatex = function toLatex(sentence, options) {
 
 module.exports = toLatex;
 
-},{"../_lib/helpers":78,"../_lib/setDefaults":81,"../_lib/smartReplace":82}],65:[function(_dereq_,module,exports){
+},{"../_lib/helpers":79,"../_lib/setDefaults":82,"../_lib/smartReplace":83}],65:[function(_dereq_,module,exports){
 "use strict";
 
 var smartReplace = _dereq_('../_lib/smartReplace');
@@ -4477,7 +4531,7 @@ var toMarkdown = function toMarkdown(sentence, options) {
 
 module.exports = toMarkdown;
 
-},{"../_lib/helpers":78,"../_lib/setDefaults":81,"../_lib/smartReplace":82}],66:[function(_dereq_,module,exports){
+},{"../_lib/helpers":79,"../_lib/setDefaults":82,"../_lib/smartReplace":83}],66:[function(_dereq_,module,exports){
 "use strict";
 
 //these are used for the sentence-splitter
@@ -7013,6 +7067,80 @@ module.exports = request;
 
 var site_map = _dereq_('../_data/site_map');
 
+var isUrl = /^https?:\/\//;
+
+function isArray(arr) {
+  return arr.constructor.toString().indexOf('Array') > -1;
+}
+
+var makeTitle = function makeTitle() {
+  var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+  //if given a url...
+  if (isUrl.test(title) === true) {
+    title = title.replace(/.*?\/wiki\//, '');
+    title = title.replace(/\?.*/, '');
+  }
+
+  title = encodeURIComponent(title);
+  return title;
+}; //construct a lookup-url for the wikipedia api
+
+
+var makeUrl = function makeUrl(title, lang, options) {
+  lang = lang || 'en';
+  var url = "https://".concat(lang, ".wikipedia.org/w/api.php");
+
+  if (site_map[lang]) {
+    url = site_map[lang] + '/w/api.php';
+  }
+
+  if (options.wikiUrl) {
+    url = options.wikiUrl;
+  } //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
+
+
+  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&rvslots=main&format=json';
+
+  if (!options.wikiUrl) {
+    url += '&origin=*';
+  }
+
+  if (options.follow_redirects !== false) {
+    url += '&redirects=true';
+  }
+
+  var lookup = 'titles';
+  var pages = []; //support one, or many pages
+
+  if (isArray(title) === false) {
+    pages = [title];
+  } else {
+    pages = title;
+  } //assume numbers mean pageid, and strings are titles (like '1984')
+
+
+  if (typeof pages[0] === 'number') {
+    lookup = 'pageids';
+  } else {
+    pages = pages.map(makeTitle);
+  }
+
+  pages = pages.filter(function (p) {
+    return p !== '';
+  });
+  pages = pages.join('|');
+  url += '&' + lookup + '=' + pages;
+  return url;
+};
+
+module.exports = makeUrl;
+
+},{"../_data/site_map":70}],74:[function(_dereq_,module,exports){
+"use strict";
+
+var site_map = _dereq_('../_data/site_map');
+
 var request = _dereq_('./_request');
 
 var getParams = _dereq_('./_params');
@@ -7101,94 +7229,29 @@ var getCategories = function getCategories(cat, a, b, c) {
 
       resolve(output);
     });
-  }); // return new Promise(function(resolve, reject) {
-  //   let p = request(url, options);
-  //   p.then((res) => {
-  //     return postProcess(res, options);
-  //   }).then((result) => {
-  //   }).catch(reject);
-  // });
+  });
 };
 
 module.exports = getCategories;
 
-},{"../_data/site_map":70,"./_params":71,"./_request":72}],74:[function(_dereq_,module,exports){
+},{"../_data/site_map":70,"./_params":71,"./_request":72}],75:[function(_dereq_,module,exports){
 "use strict";
 
-//grab the content of any article, off the api
-var site_map = _dereq_('../_data/site_map');
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+//grab the content of any article, off the api
 var request = _dereq_('./_request');
+
+var makeUrl = _dereq_('./_url');
 
 var getParams = _dereq_('./_params');
 
-var parseDoc = _dereq_('../01-document');
-
-var isUrl = /^https?:\/\//; // const redirects = require('../parse/page/redirects');
-
-function isArray(arr) {
-  return arr.constructor.toString().indexOf('Array') > -1;
-} //construct a lookup-url for the wikipedia api
+var parseDoc = _dereq_('../01-document'); //num pages per request
 
 
-var makeUrl = function makeUrl(title, lang, options) {
-  lang = lang || 'en'; //if given a url...
+var MAX_PAGES = 5; //this data-format from mediawiki api is nutso
 
-  if (isUrl.test(title) === true) {
-    title = title.replace(/.*?\/wiki\//, '');
-    title = title.replace(/\?.*/, '');
-  }
-
-  var url = "https://".concat(lang, ".wikipedia.org/w/api.php");
-
-  if (site_map[lang]) {
-    url = site_map[lang] + '/w/api.php';
-  }
-
-  if (options.wikiUrl) {
-    url = options.wikiUrl;
-  } //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-
-
-  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&format=json';
-
-  if (!options.wikiUrl) {
-    url += '&origin=*';
-  }
-
-  if (options.follow_redirects !== false) {
-    url += '&redirects=true';
-  }
-
-  var lookup = 'titles';
-  var pages = []; //support one, or many pages
-
-  if (isArray(title) === false) {
-    pages = [title];
-  } else {
-    pages = title;
-  } //assume numbers mean pageid, and strings are titles (like '1984')
-
-
-  if (typeof pages[0] === 'number') {
-    lookup = 'pageids';
-  } else {
-    pages = pages.map(function (str) {
-      if (typeof str === 'string') {
-        return encodeURIComponent(str);
-      }
-
-      return str;
-    });
-  }
-
-  pages = pages.join('|');
-  url += '&' + lookup + '=' + pages;
-  return url;
-}; //this data-format from mediawiki api is nutso
-
-
-var postProcess = function postProcess(data, options) {
+var postProcess = function postProcess(data) {
   var pages = Object.keys(data.query.pages);
   var docs = pages.map(function (id) {
     var page = data.query.pages[id] || {};
@@ -7203,50 +7266,82 @@ var postProcess = function postProcess(data, options) {
       text = page.revisions[0].slots.main['*'];
     }
 
-    options.title = page.title;
-    options.pageID = page.pageid;
+    var opt = {
+      title: page.title,
+      pageID: page.pageid
+    };
 
     try {
-      return parseDoc(text, options);
+      return parseDoc(text, opt);
     } catch (e) {
       console.error(e);
       throw e;
     }
-  }); //return an array if there was more than one page given
-
-  if (docs.length > 1) {
-    return docs;
-  } //just return the first one
+  });
+  return docs;
+}; //recursive fn to fetch groups of pages, serially
 
 
-  return docs[0];
-};
+var doPages = function doPages(pages, results, lang, options, cb) {
+  var todo = pages.slice(0, MAX_PAGES);
+  var url = makeUrl(todo, lang, options);
+  var p = request(url, options);
+  p.then(function (wiki) {
+    var res = postProcess(wiki, options);
+    results = results.concat(res);
+    var remain = pages.slice(MAX_PAGES);
 
-var getPage = function getPage(title, a, b, c) {
+    if (remain.length > 0) {
+      return doPages(remain, results, lang, options, cb); //recursive
+    }
+
+    return cb(results);
+  }).catch(function (e) {
+    console.error('wtf_wikipedia error: ' + e);
+    cb(results);
+  });
+}; //grab a single, or list of pages (or ids)
+
+
+var fetchPage = function fetchPage() {
+  var pages = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var a = arguments.length > 1 ? arguments[1] : undefined;
+  var b = arguments.length > 2 ? arguments[2] : undefined;
+  var c = arguments.length > 3 ? arguments[3] : undefined;
+
+  if (_typeof(pages) !== 'object') {
+    pages = [pages];
+  }
+
   var _getParams = getParams(a, b, c),
       lang = _getParams.lang,
       options = _getParams.options,
       callback = _getParams.callback;
 
-  var url = makeUrl(title, lang, options);
-  return new Promise(function (resolve, reject) {
-    var p = request(url, options);
-    p.then(function (wiki) {
-      return postProcess(wiki, options);
-    }).then(function (doc) {
-      //support 'err-back' format
-      if (callback && typeof callback === 'function') {
-        callback(null, doc);
+  return new Promise(function (resolve) {
+    doPages(pages, [], lang, options, function (docs) {
+      docs = docs.filter(function (d) {
+        return d !== null;
+      }); //return the first doc, if we only asked for one
+
+      if (pages.length === 1) {
+        docs = docs[0];
       }
 
-      resolve(doc);
-    }).catch(reject);
+      docs = docs || null; //support 'err-back' format
+
+      if (callback && typeof callback === 'function') {
+        callback(null, docs);
+      }
+
+      resolve(docs);
+    });
   });
 };
 
-module.exports = getPage;
+module.exports = fetchPage;
 
-},{"../01-document":7,"../_data/site_map":70,"./_params":71,"./_request":72}],75:[function(_dereq_,module,exports){
+},{"../01-document":7,"./_params":71,"./_request":72,"./_url":73}],76:[function(_dereq_,module,exports){
 "use strict";
 
 var site_map = _dereq_('../_data/site_map');
@@ -7316,7 +7411,7 @@ var getRandom = function getRandom(a, b, c) {
 
 module.exports = getRandom;
 
-},{"../01-document":7,"../_data/site_map":70,"./_params":71,"./_request":72}],76:[function(_dereq_,module,exports){
+},{"../01-document":7,"../_data/site_map":70,"./_params":71,"./_request":72}],77:[function(_dereq_,module,exports){
 "use strict";
 
 //alternative names for methods in API
@@ -7335,7 +7430,7 @@ var aliasList = {
 };
 module.exports = aliasList;
 
-},{}],77:[function(_dereq_,module,exports){
+},{}],78:[function(_dereq_,module,exports){
 "use strict";
 
 // dumpster-dive throws everything into mongodb  - github.com/spencermountain/dumpster-dive
@@ -7376,7 +7471,7 @@ module.exports = {
   encodeObj: encodeObj
 };
 
-},{}],78:[function(_dereq_,module,exports){
+},{}],79:[function(_dereq_,module,exports){
 "use strict";
 
 var helpers = {
@@ -7404,7 +7499,7 @@ var helpers = {
 };
 module.exports = helpers;
 
-},{}],79:[function(_dereq_,module,exports){
+},{}],80:[function(_dereq_,module,exports){
 "use strict";
 
 //center-pad each cell, to make the table more legible
@@ -7428,7 +7523,7 @@ var pad = function pad(str, cellWidth) {
 
 module.exports = pad;
 
-},{}],80:[function(_dereq_,module,exports){
+},{}],81:[function(_dereq_,module,exports){
 "use strict";
 
 //find all the pairs of '[[...[[..]]...]]' in the text
@@ -7490,7 +7585,7 @@ function find_recursive(opener, closer, text) {
 module.exports = find_recursive; // console.log(find_recursive('{', '}', 'he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas'));
 // console.log(find_recursive("{", "}", "this is fun {{nowrap{{small1995–present}}}} and it works"))
 
-},{}],81:[function(_dereq_,module,exports){
+},{}],82:[function(_dereq_,module,exports){
 "use strict";
 
 //
@@ -7509,7 +7604,7 @@ var setDefaults = function setDefaults(options, defaults) {
 
 module.exports = setDefaults;
 
-},{}],82:[function(_dereq_,module,exports){
+},{}],83:[function(_dereq_,module,exports){
 "use strict";
 
 //escape a string like 'fun*2.Co' for a regExpr
@@ -7544,7 +7639,7 @@ var smartReplace = function smartReplace(all, text, result) {
 
 module.exports = smartReplace;
 
-},{}],83:[function(_dereq_,module,exports){
+},{}],84:[function(_dereq_,module,exports){
 "use strict";
 
 var fetch = _dereq_('cross-fetch');
@@ -7667,7 +7762,7 @@ Image.prototype.src = Image.prototype.url;
 Image.prototype.thumb = Image.prototype.thumbnail;
 module.exports = Image;
 
-},{"../_lib/aliases":76,"./toHtml":85,"./toLatex":86,"./toMarkdown":87,"cross-fetch":1}],84:[function(_dereq_,module,exports){
+},{"../_lib/aliases":77,"./toHtml":86,"./toLatex":87,"./toMarkdown":88,"cross-fetch":1}],85:[function(_dereq_,module,exports){
 "use strict";
 
 var i18n = _dereq_('../_data/i18n');
@@ -7756,7 +7851,7 @@ var parseImages = function parseImages(matches, r, wiki) {
 
 module.exports = parseImages;
 
-},{"../04-sentence":58,"../_data/i18n":68,"./Image":83}],85:[function(_dereq_,module,exports){
+},{"../04-sentence":58,"../_data/i18n":68,"./Image":84}],86:[function(_dereq_,module,exports){
 "use strict";
 
 var makeImage = function makeImage(img) {
@@ -7765,7 +7860,7 @@ var makeImage = function makeImage(img) {
 
 module.exports = makeImage;
 
-},{}],86:[function(_dereq_,module,exports){
+},{}],87:[function(_dereq_,module,exports){
 "use strict";
 
 //
@@ -7781,7 +7876,7 @@ var toLatex = function toLatex(image) {
 
 module.exports = toLatex;
 
-},{}],87:[function(_dereq_,module,exports){
+},{}],88:[function(_dereq_,module,exports){
 "use strict";
 
 //markdown images are like this: ![alt text](href)
@@ -7793,7 +7888,7 @@ var doImage = function doImage(image) {
 
 module.exports = doImage;
 
-},{}],88:[function(_dereq_,module,exports){
+},{}],89:[function(_dereq_,module,exports){
 "use strict";
 
 var fetch = _dereq_('./_fetch/fetch');
@@ -7826,7 +7921,7 @@ wtf.category = function (cat, lang, options, cb) {
 wtf.version = version;
 module.exports = wtf;
 
-},{"../package":2,"./01-document/index.js":7,"./_fetch/category":73,"./_fetch/fetch":74,"./_fetch/random":75}],89:[function(_dereq_,module,exports){
+},{"../package":2,"./01-document/index.js":7,"./_fetch/category":74,"./_fetch/fetch":75,"./_fetch/random":76}],90:[function(_dereq_,module,exports){
 "use strict";
 
 var toMarkdown = _dereq_('./toMarkdown');
@@ -7948,7 +8043,7 @@ Infobox.prototype.template = Infobox.prototype.type;
 Infobox.prototype.images = Infobox.prototype.image;
 module.exports = Infobox;
 
-},{"../_lib/aliases":76,"../image/Image":83,"./toHtml":91,"./toJson":92,"./toLatex":93,"./toMarkdown":94}],90:[function(_dereq_,module,exports){
+},{"../_lib/aliases":77,"../image/Image":84,"./toHtml":92,"./toJson":93,"./toLatex":94,"./toMarkdown":95}],91:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = {
@@ -7959,7 +8054,7 @@ module.exports = {
   'signature alt': true
 };
 
-},{}],91:[function(_dereq_,module,exports){
+},{}],92:[function(_dereq_,module,exports){
 "use strict";
 
 var dontDo = _dereq_('./_skip-keys');
@@ -8015,7 +8110,7 @@ var infobox = function infobox(obj, options) {
 
 module.exports = infobox;
 
-},{"../_lib/setDefaults":81,"./_skip-keys":90}],92:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82,"./_skip-keys":91}],93:[function(_dereq_,module,exports){
 "use strict";
 
 var encode = _dereq_('../_lib/encode'); //turn an infobox into some nice json
@@ -8039,7 +8134,7 @@ var toJson = function toJson(infobox, options) {
 
 module.exports = toJson;
 
-},{"../_lib/encode":77}],93:[function(_dereq_,module,exports){
+},{"../_lib/encode":78}],94:[function(_dereq_,module,exports){
 "use strict";
 
 var dontDo = _dereq_('./_skip-keys');
@@ -8075,7 +8170,7 @@ var infobox = function infobox(obj, options) {
 
 module.exports = infobox;
 
-},{"../_lib/setDefaults":81,"./_skip-keys":90}],94:[function(_dereq_,module,exports){
+},{"../_lib/setDefaults":82,"./_skip-keys":91}],95:[function(_dereq_,module,exports){
 "use strict";
 
 var dontDo = _dereq_('./_skip-keys');
@@ -8110,7 +8205,7 @@ var doInfobox = function doInfobox(obj, options) {
 
 module.exports = doInfobox;
 
-},{"../_lib/pad":79,"../_lib/setDefaults":81,"./_skip-keys":90}],95:[function(_dereq_,module,exports){
+},{"../_lib/pad":80,"../_lib/setDefaults":82,"./_skip-keys":91}],96:[function(_dereq_,module,exports){
 "use strict";
 
 var strip = _dereq_('./_parsers/_strip');
@@ -8188,7 +8283,7 @@ var getTemplates = function getTemplates(wiki) {
 
 module.exports = getTemplates; // console.log(getTemplates('he is president. {{nowrap|he is {{age|1980}} years}} he lives in {{date}} texas'));
 
-},{"./_parsers/_strip":103}],96:[function(_dereq_,module,exports){
+},{"./_parsers/_strip":104}],97:[function(_dereq_,module,exports){
 "use strict";
 
 //we explicitly ignore these, because they sometimes have resolve some data
@@ -8218,7 +8313,7 @@ var ignore = list.reduce(function (h, str) {
 }, {});
 module.exports = ignore;
 
-},{}],97:[function(_dereq_,module,exports){
+},{}],98:[function(_dereq_,module,exports){
 "use strict";
 
 var i18n = _dereq_('../_data/i18n');
@@ -8292,7 +8387,7 @@ module.exports = {
   format: fmtInfobox
 };
 
-},{"../_data/i18n":68}],98:[function(_dereq_,module,exports){
+},{"../_data/i18n":68}],99:[function(_dereq_,module,exports){
 "use strict";
 
 //turn {{name|one|two|three}} into [name, one, two, three]
@@ -8333,7 +8428,7 @@ var pipeSplitter = function pipeSplitter(tmpl) {
 
 module.exports = pipeSplitter;
 
-},{}],99:[function(_dereq_,module,exports){
+},{}],100:[function(_dereq_,module,exports){
 "use strict";
 
 // every value in {{tmpl|a|b|c}} needs a name
@@ -8394,7 +8489,7 @@ var keyMaker = function keyMaker(arr, order) {
 
 module.exports = keyMaker;
 
-},{}],100:[function(_dereq_,module,exports){
+},{}],101:[function(_dereq_,module,exports){
 "use strict";
 
 var whoCares = {
@@ -8408,7 +8503,6 @@ var whoCares = {
   'framestyle': true,
   'item_style': true,
   'collapsible': true,
-  'display': true,
   'list_style_type': true,
   'list-style-type': true
 }; //remove wiki-cruft & some styling info from templates
@@ -8429,7 +8523,7 @@ var cleanup = function cleanup(obj) {
 
 module.exports = cleanup;
 
-},{}],101:[function(_dereq_,module,exports){
+},{}],102:[function(_dereq_,module,exports){
 "use strict";
 
 //normalize template names
@@ -8442,7 +8536,7 @@ var fmtName = function fmtName(name) {
 
 module.exports = fmtName;
 
-},{}],102:[function(_dereq_,module,exports){
+},{}],103:[function(_dereq_,module,exports){
 "use strict";
 
 var fmtName = _dereq_('./_fmtName'); //get the name of the template
@@ -8477,7 +8571,7 @@ var getName = function getName(tmpl) {
 
 module.exports = getName;
 
-},{"./_fmtName":101}],103:[function(_dereq_,module,exports){
+},{"./_fmtName":102}],104:[function(_dereq_,module,exports){
 "use strict";
 
 //remove the top/bottom off the template
@@ -8489,7 +8583,7 @@ var strip = function strip(tmpl) {
 
 module.exports = strip;
 
-},{}],104:[function(_dereq_,module,exports){
+},{}],105:[function(_dereq_,module,exports){
 "use strict";
 
 //remove the top/bottom off the template
@@ -8560,7 +8654,7 @@ var parser = function parser(tmpl, order, fmt) {
 
 module.exports = parser;
 
-},{"../../04-sentence":58,"./01-pipe-splitter":98,"./02-keyMaker":99,"./03-cleanup":100,"./_fmtName":101,"./_strip":103}],105:[function(_dereq_,module,exports){
+},{"../../04-sentence":58,"./01-pipe-splitter":99,"./02-keyMaker":100,"./03-cleanup":101,"./_fmtName":102,"./_strip":104}],106:[function(_dereq_,module,exports){
 "use strict";
 
 //this is allowed to be rough
@@ -8606,7 +8700,7 @@ var delta = function delta(from, to) {
 
 module.exports = delta;
 
-},{}],106:[function(_dereq_,module,exports){
+},{}],107:[function(_dereq_,module,exports){
 "use strict";
 
 //assorted parsing methods for date/time templates
@@ -8703,13 +8797,13 @@ module.exports = {
   ymd: ymd
 }; // console.log(toText(ymd([2018, 3, 28])));
 
-},{"./_months":107}],107:[function(_dereq_,module,exports){
+},{"./_months":108}],108:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = [undefined, //1-based months.. :/
 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-},{}],108:[function(_dereq_,module,exports){
+},{}],109:[function(_dereq_,module,exports){
 "use strict";
 
 //not all too fancy - used in {{timesince}}
@@ -8743,7 +8837,7 @@ var timeSince = function timeSince(str) {
 
 module.exports = timeSince;
 
-},{}],109:[function(_dereq_,module,exports){
+},{}],110:[function(_dereq_,module,exports){
 "use strict";
 
 var misc = _dereq_('./misc');
@@ -8879,7 +8973,7 @@ templates.currentmonthname = templates.currentmonth;
 templates.currentmonthabbrev = templates.currentmonth;
 module.exports = templates;
 
-},{"../_parsers/parse":104,"./_timeSince":108,"./misc":110,"./parsers":111}],110:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105,"./_timeSince":109,"./misc":111,"./parsers":112}],111:[function(_dereq_,module,exports){
 "use strict";
 
 var format = _dereq_('./_format');
@@ -8924,7 +9018,7 @@ var misc = {
 };
 module.exports = misc;
 
-},{"../_parsers/parse":104,"./_format":106,"./_months":107}],111:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105,"./_format":107,"./_months":108}],112:[function(_dereq_,module,exports){
 "use strict";
 
 var strip = _dereq_('../_parsers/_strip');
@@ -9145,7 +9239,7 @@ var parsers = {
 };
 module.exports = parsers;
 
-},{"../_parsers/_strip":103,"../_parsers/parse":104,"./_delta":105,"./_format":106}],112:[function(_dereq_,module,exports){
+},{"../_parsers/_strip":104,"../_parsers/parse":105,"./_delta":106,"./_format":107}],113:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -9173,6 +9267,7 @@ var templates = {
   },
   //dumb inflector - https://en.wikipedia.org/wiki/Template:Plural
   plural: function plural(tmpl) {
+    tmpl = tmpl.replace(/plural:/, 'plural|');
     var order = ['num', 'word'];
     var obj = parse(tmpl, order);
     var num = Number(obj.num);
@@ -9326,12 +9421,12 @@ inline.forEach(function (k) {
 });
 module.exports = templates;
 
-},{"../_parsers/parse":104}],113:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105}],114:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = Object.assign({}, _dereq_('./format'), _dereq_('./lists'), _dereq_('./punctuation'), _dereq_('./misc'));
 
-},{"./format":112,"./lists":114,"./misc":115,"./punctuation":116}],114:[function(_dereq_,module,exports){
+},{"./format":113,"./lists":115,"./misc":116,"./punctuation":117}],115:[function(_dereq_,module,exports){
 "use strict";
 
 var strip = _dereq_('../_parsers/_strip');
@@ -9443,7 +9538,7 @@ templates['bare anchored list'] = templates['anchored list'];
 templates['plain list'] = templates['plainlist'];
 module.exports = templates;
 
-},{"../_parsers/_strip":103,"../_parsers/parse":104}],115:[function(_dereq_,module,exports){
+},{"../_parsers/_strip":104,"../_parsers/parse":105}],116:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -9588,6 +9683,63 @@ var inline = {
     }
 
     return "".concat(word, " [sic]");
+  },
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  formatnum: function formatnum() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    tmpl = tmpl.replace(/:/, '|');
+    var obj = parse(tmpl, ['number']);
+    var num = Number(obj.number);
+    return num.toLocaleString() || '';
+  },
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  '#dateformat': function dateformat() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    tmpl = tmpl.replace(/:/, '|');
+    var obj = parse(tmpl, ['date', 'format']);
+    return obj.date;
+  },
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  'lc': function lc() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    tmpl = tmpl.replace(/:/, '|');
+    var obj = parse(tmpl, ['text']);
+    return (obj.text || '').toLowerCase();
+  },
+  'lcfirst': function lcfirst() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    tmpl = tmpl.replace(/:/, '|');
+    var obj = parse(tmpl, ['text']);
+    var text = obj.text || '';
+    return text[0].toLowerCase() + text.substr(1);
+  },
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  'uc': function uc() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    tmpl = tmpl.replace(/:/, '|');
+    var obj = parse(tmpl, ['text']);
+    return (obj.text || '').toUpperCase();
+  },
+  'ucfirst': function ucfirst() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    tmpl = tmpl.replace(/:/, '|');
+    var obj = parse(tmpl, ['text']);
+    var text = obj.text || '';
+    return text[0].toUpperCase() + text.substr(1);
+  },
+  'padleft': function padleft() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    tmpl = tmpl.replace(/:/, '|');
+    var obj = parse(tmpl, ['text', 'num']);
+    var text = obj.text || '';
+    return text.padStart(obj.num, obj.str || '0');
+  },
+  'padright': function padright() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    tmpl = tmpl.replace(/:/, '|');
+    var obj = parse(tmpl, ['text', 'num']);
+    var text = obj.text || '';
+    return text.padEnd(obj.num, obj.str || '0');
   }
 }; //aliases
 
@@ -9595,7 +9747,7 @@ inline['str left'] = inline.trunc;
 inline['str crop'] = inline.trunc;
 module.exports = inline;
 
-},{"../_parsers/parse":104}],116:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105}],117:[function(_dereq_,module,exports){
 "use strict";
 
 // okay, these just hurts my feelings
@@ -9612,17 +9764,14 @@ punctuation.forEach(function (a) {
 });
 module.exports = templates;
 
-},{}],117:[function(_dereq_,module,exports){
+},{}],118:[function(_dereq_,module,exports){
 "use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var convertDMS = _dereq_('./dms-format');
 
-var hemispheres = {
-  n: true,
-  s: true,
-  w: true,
-  e: true
-};
+var parse = _dereq_('../_parsers/parse');
 
 var round = function round(num) {
   if (typeof num !== 'number') {
@@ -9631,68 +9780,98 @@ var round = function round(num) {
 
   var places = 100000;
   return Math.round(num * places) / places;
+}; //these hemispheres mean negative decimals
+
+
+var negative = {
+  s: true,
+  w: true
 };
 
-var parseCoordAndCoor = function parseCoordAndCoor(str) {
-  var arr = str.split('|');
-  var template = arr[0].indexOf('coord') !== -1 ? 'coord' : 'coor';
-  var obj = {
-    template: template,
-    lat: null,
-    lon: null
-  }; //turn numbers into numbers, normalize N/s
+var findLatLng = function findLatLng(arr) {
+  var types = arr.map(function (s) {
+    return _typeof(s);
+  }).join('|'); //support {{lat|lng}}
 
-  var nums = [];
-
-  for (var i = 0; i < arr.length; i += 1) {
-    var s = arr[i].trim(); //make it a number
-
-    var num = parseFloat(s);
-
-    if (num || num === 0) {
-      arr[i] = num;
-      nums.push(num);
-    } else if (s.match(/^region:/i)) {
-      obj.region = s.replace(/^region:/i, '');
-      continue;
-    } else if (s.match(/^notes:/i)) {
-      obj.notes = s.replace(/^notes:/i, '');
-      continue;
-    } else if (s.match(/^scale:/i)) {
-      obj.scale = s.replace(/^scale:/i, '');
-      continue;
-    } else if (s.match(/^type:/i)) {
-      obj.type = s.replace(/^type:/i, '');
-      continue;
-    } //DMS-format
+  if (arr.length === 2 && types === 'number|number') {
+    return {
+      lat: arr[0],
+      lon: arr[1]
+    };
+  } //support {{dd|N/S|dd|E/W}}
 
 
-    if (hemispheres[s.toLowerCase()]) {
-      if (obj.lat === null) {
-        nums.push(s);
-        obj.lat = convertDMS(nums);
-        arr = arr.slice(i, arr.length);
-        nums = [];
-        i = 0;
-      } else {
-        nums.push(s);
-        obj.lon = convertDMS(nums);
-      }
+  if (arr.length === 4 && types === 'number|string|number|string') {
+    if (negative[arr[1].toLowerCase()]) {
+      arr[0] *= -1;
     }
-  } //this is an original `lat|lon` format
+
+    if (arr[3].toLowerCase() === 'w') {
+      arr[2] *= -1;
+    }
+
+    return {
+      lat: arr[0],
+      lon: arr[2]
+    };
+  } //support {{dd|mm|N/S|dd|mm|E/W}}
 
 
-  if (!obj.lon && nums.length === 2) {
-    obj.lat = nums[0];
-    obj.lon = nums[1];
+  if (arr.length === 6) {
+    return {
+      lat: convertDMS(arr.slice(0, 3)),
+      lon: convertDMS(arr.slice(3))
+    };
+  } //support {{dd|mm|ss|N/S|dd|mm|ss|E/W}}
+
+
+  if (arr.length === 8) {
+    return {
+      lat: convertDMS(arr.slice(0, 4)),
+      lon: convertDMS(arr.slice(4))
+    };
   }
 
-  obj.lat = round(obj.lat);
-  obj.lon = round(obj.lon);
+  return {};
+};
+
+var parseParams = function parseParams(obj) {
+  obj.list = obj.list.map(function (str) {
+    var num = Number(str);
+
+    if (!isNaN(num)) {
+      return num;
+    } //these are weird
+
+
+    var split = str.split(/:/);
+
+    if (split.length > 1) {
+      obj.props = obj.props || {};
+      obj.props[split[0]] = split.slice(1).join(':');
+      return null;
+    }
+
+    return str;
+  });
+  obj.list = obj.list.filter(function (s) {
+    return s !== null;
+  });
   return obj;
 };
 
-module.exports = parseCoordAndCoor; // {{Coor title dms|dd|mm|ss|N/S|dd|mm|ss|E/W|template parameters}}
+var parseCoor = function parseCoor(tmpl) {
+  var obj = parse(tmpl);
+  obj = parseParams(obj);
+  var tmp = findLatLng(obj.list);
+  obj.lat = round(tmp.lat);
+  obj.lon = round(tmp.lon);
+  obj.template = 'coord';
+  delete obj.list;
+  return obj;
+};
+
+module.exports = parseCoor; // {{Coor title dms|dd|mm|ss|N/S|dd|mm|ss|E/W|template parameters}}
 // {{Coor title dec|latitude|longitude|template parameters}}
 // {{Coor dms|dd|mm|ss|N/S|dd|mm|ss|E/W|template parameters}}
 // {{Coor dm|dd|mm|N/S|dd|mm|E/W|template parameters}}
@@ -9702,7 +9881,7 @@ module.exports = parseCoordAndCoor; // {{Coor title dms|dd|mm|ss|N/S|dd|mm|ss|E/
 // {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
 // {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
 
-},{"./dms-format":118}],118:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105,"./dms-format":119}],119:[function(_dereq_,module,exports){
 "use strict";
 
 //converts DMS (decimal-minute-second) geo format to lat/lng format.
@@ -9733,56 +9912,37 @@ function parseDms(arr) {
 module.exports = parseDms; // console.log(parseDms([57, 18, 22, 'N']));
 // console.log(parseDms([4, 27, 32, 'W']));
 
-},{}],119:[function(_dereq_,module,exports){
+},{}],120:[function(_dereq_,module,exports){
 "use strict";
 
-var parseCoordAndCoor = _dereq_('./coor');
+var parseCoor = _dereq_('./coor');
 
-var strip = _dereq_('../_parsers/_strip'); //
-
-
-var geoTemplates = {
+var templates = {
   coord: function coord(tmpl, r) {
-    tmpl = strip(tmpl);
-    var obj = parseCoordAndCoor(tmpl);
-    r.templates.push(obj);
-    return '';
-  },
-  // these are from the nl wiki
-  'coor title dms': function coorTitleDms(tmpl, r) {
-    tmpl = strip(tmpl);
-    var obj = parseCoordAndCoor(tmpl);
-    r.templates.push(obj);
-    return '';
-  },
-  'coor title dec': function coorTitleDec(tmpl, r) {
-    tmpl = strip(tmpl);
-    var obj = parseCoordAndCoor(tmpl);
-    r.templates.push(obj);
-    return '';
-  },
-  'coor dms': function coorDms(tmpl, r) {
-    tmpl = strip(tmpl);
-    var obj = parseCoordAndCoor(tmpl);
-    r.templates.push(obj);
-    return '';
-  },
-  'coor dm': function coorDm(tmpl, r) {
-    tmpl = strip(tmpl);
-    var obj = parseCoordAndCoor(tmpl);
-    r.templates.push(obj);
-    return '';
-  },
-  'coor dec': function coorDec(tmpl, r) {
-    tmpl = strip(tmpl);
-    var obj = parseCoordAndCoor(tmpl);
-    r.templates.push(obj);
+    var obj = parseCoor(tmpl);
+    r.templates.push(obj); //display inline, by default
+
+    if (!obj.display || obj.display.indexOf('inline') !== -1) {
+      return "".concat(obj.lat || '', "\xB0N, ").concat(obj.lon || '', "\xB0W");
+    }
+
     return '';
   }
-};
-module.exports = geoTemplates;
+}; // {{coord|latitude|longitude|coordinate parameters|template parameters}}
+// {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
 
-},{"../_parsers/_strip":103,"./coor":117}],120:[function(_dereq_,module,exports){
+templates['coor'] = templates.coord; // these are from the nl wiki
+
+templates['coor title dms'] = templates.coord;
+templates['coor title dec'] = templates.coord;
+templates['coor dms'] = templates.coord;
+templates['coor dm'] = templates.coord;
+templates['coor dec'] = templates.coord;
+module.exports = templates;
+
+},{"./coor":118}],121:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse'); //this format seems to be a pattern for these
@@ -9865,7 +10025,7 @@ externals.imdb = externals['imdb name'];
 externals['imdb episodess'] = externals['imdb episode'];
 module.exports = externals;
 
-},{"../_parsers/parse":104}],121:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105}],122:[function(_dereq_,module,exports){
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -9934,12 +10094,12 @@ var parseTemplates = function parseTemplates(wiki, data, options) {
 
 module.exports = parseTemplates;
 
-},{"../02-section/reference/Reference":18,"../infobox/Infobox":89,"./_getTemplates":95,"./parse":129}],122:[function(_dereq_,module,exports){
+},{"../02-section/reference/Reference":18,"../infobox/Infobox":90,"./_getTemplates":96,"./parse":130}],123:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = Object.assign({}, _dereq_('./languages'), _dereq_('./pronounce'), _dereq_('./wiktionary'));
 
-},{"./languages":123,"./pronounce":124,"./wiktionary":125}],123:[function(_dereq_,module,exports){
+},{"./languages":124,"./pronounce":125,"./wiktionary":126}],124:[function(_dereq_,module,exports){
 "use strict";
 
 var languages = _dereq_('../../_data/languages');
@@ -9991,7 +10151,7 @@ templates['nihongo-s'] = templates.nihongo;
 templates['nihongo foot'] = templates.nihongo;
 module.exports = templates;
 
-},{"../../_data/languages":69,"../_parsers/parse":104}],124:[function(_dereq_,module,exports){
+},{"../../_data/languages":69,"../_parsers/parse":105}],125:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10043,7 +10203,7 @@ Object.keys(languages).forEach(function (lang) {
 });
 module.exports = templates;
 
-},{"../../_data/languages":69,"../_parsers/parse":104}],125:[function(_dereq_,module,exports){
+},{"../../_data/languages":69,"../_parsers/parse":105}],126:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse'); // const strip = require('./_parsers/_strip');
@@ -10097,7 +10257,7 @@ conjugations.forEach(function (name) {
 });
 module.exports = templates;
 
-},{"../_parsers/parse":104}],126:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105}],127:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse'); // const parseSentence = require('../../04-sentence').oneSentence;
@@ -10150,7 +10310,7 @@ templates['sfrac'] = templates.frac;
 templates['sqrt'] = templates.radic;
 module.exports = templates;
 
-},{"../_parsers/parse":104}],127:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105}],128:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10234,7 +10394,7 @@ var misc = {
 };
 module.exports = misc;
 
-},{"../_parsers/parse":104}],128:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105}],129:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10301,7 +10461,7 @@ Object.keys(codes).forEach(function (k) {
 });
 module.exports = currencies;
 
-},{"../_parsers/parse":104}],129:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105}],130:[function(_dereq_,module,exports){
 "use strict";
 
 var ignore = _dereq_('./_ignore');
@@ -10362,7 +10522,7 @@ var parseTemplate = function parseTemplate(tmpl, wiki, data) {
 
 module.exports = parseTemplate;
 
-},{"./_ignore":96,"./_infobox":97,"./_parsers/_getName":102,"./_parsers/parse":104,"./dates":109,"./formatting":113,"./geo":119,"./identities":120,"./language":122,"./math":126,"./misc":127,"./money":128,"./politics":132,"./science":133,"./sports":134,"./wikipedia":136}],130:[function(_dereq_,module,exports){
+},{"./_ignore":97,"./_infobox":98,"./_parsers/_getName":103,"./_parsers/parse":105,"./dates":110,"./formatting":114,"./geo":120,"./identities":121,"./language":123,"./math":127,"./misc":128,"./money":129,"./politics":133,"./science":134,"./sports":135,"./wikipedia":137}],131:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10409,7 +10569,7 @@ templates['election box inline candidate with party link no change'] = templates
 templates['election box inline incumbent'] = templates['election box candidate'];
 module.exports = templates;
 
-},{"../_parsers/parse":104}],131:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105}],132:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10516,12 +10676,12 @@ flags.forEach(function (a) {
 });
 module.exports = templates;
 
-},{"../../_data/flags":67,"../_parsers/parse":104}],132:[function(_dereq_,module,exports){
+},{"../../_data/flags":67,"../_parsers/parse":105}],133:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = Object.assign({}, _dereq_('./elections'), _dereq_('./flags'));
 
-},{"./elections":130,"./flags":131}],133:[function(_dereq_,module,exports){
+},{"./elections":131,"./flags":132}],134:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10604,7 +10764,7 @@ var templates = {
 };
 module.exports = templates;
 
-},{"../_parsers/parse":104}],134:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105}],135:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10617,7 +10777,7 @@ var misc = {
 };
 module.exports = Object.assign({}, misc, _dereq_('./soccer'));
 
-},{"../_parsers/parse":104,"./soccer":135}],135:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105,"./soccer":136}],136:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10737,12 +10897,12 @@ var sports = {
 };
 module.exports = sports;
 
-},{"../../_data/flags":67,"../_parsers/parse":104}],136:[function(_dereq_,module,exports){
+},{"../../_data/flags":67,"../_parsers/parse":105}],137:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = Object.assign({}, _dereq_('./links'), _dereq_('./page'), _dereq_('./table-cell'));
 
-},{"./links":137,"./page":138,"./table-cell":139}],137:[function(_dereq_,module,exports){
+},{"./links":138,"./page":139,"./table-cell":140}],138:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10815,7 +10975,7 @@ templates.ll = templates.link;
 templates['l-self'] = templates.link;
 module.exports = templates;
 
-},{"../_parsers/parse":104}],138:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105}],139:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -11025,7 +11185,7 @@ parsers['sisterlinks'] = parsers['sister project links'];
 parsers['main article'] = parsers['main'];
 module.exports = parsers;
 
-},{"../../image/Image":83,"../_parsers/parse":104}],139:[function(_dereq_,module,exports){
+},{"../../image/Image":84,"../_parsers/parse":105}],140:[function(_dereq_,module,exports){
 "use strict";
 
 //random misc for inline wikipedia templates
@@ -11060,5 +11220,5 @@ templates.won = function (tmpl) {
 
 module.exports = templates;
 
-},{"../_parsers/parse":104}]},{},[88])(88)
+},{"../_parsers/parse":105}]},{},[89])(89)
 });

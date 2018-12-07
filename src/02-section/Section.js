@@ -92,10 +92,11 @@ const methods = {
     return arr;
   },
   tables: function(clue) {
+    let arr = this.data.tables || [];
     if (typeof clue === 'number') {
-      return this.data.tables[clue];
+      return arr[clue];
     }
-    return this.data.tables || [];
+    return arr;
   },
   templates: function(clue) {
     let arr = this.data.templates || [];

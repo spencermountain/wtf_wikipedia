@@ -132,14 +132,25 @@ const methods = {
   templates : function(clue) {
     return sectionMap(this, 'templates', clue);
   },
-  infoboxes : function(clue) {
-    return sectionMap(this, 'infoboxes', clue);
-  },
   references : function(clue) {
     return sectionMap(this, 'references', clue);
   },
   coordinates : function(clue) {
     return sectionMap(this, 'coordinates', clue);
+  },
+  infoboxes : function(clue) {
+    let arr = sectionMap(this, 'infoboxes');
+    //sort them by biggest-first
+    arr = arr.sort((a, b) => {
+      if (Object.keys(a.data).length > Object.keys(b.data).length) {
+        return -1;
+      }
+      return 1;
+    });
+    if (typeof clue === 'number') {
+      return arr[clue];
+    }
+    return arr;
   },
   text : function(options) {
     options = setDefaults(options, defaults);

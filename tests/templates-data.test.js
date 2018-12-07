@@ -76,7 +76,7 @@ test('wikipedia-templates', function(t) {
     [`wide image`, `{{wide image|Helsinki z00.jpg|1800px||alt=Panorama of city with mixture of five to ten story buildings}}`],
     [`ipa`, `{{IPA|/[[character|ˈkærəktɚz]]/}}`],
     [`ipac`, `{{IPAc-ko|h|a|n|g|u|k}}`],
-    [`coor`, `{{Coord|44.112|N|87.913|W|display=title}}`],
+    [`coord`, `{{Coord|44.112|N|87.913|W|display=title}}`],
     [`gnis`, `{{GNIS | 871352 | Mount Washington }}`],
     ['sky', `{{Sky
     |00|42|44.30

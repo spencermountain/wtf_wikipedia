@@ -8,7 +8,7 @@ test('coord formats', t => {
   t.equal(obj.lat, 44.112, 'fmt-1-lat');
   t.equal(obj.lon, -87.913, 'fmt-1-lon');
 
-  str = `hello {{Coord|44.112|N|87.913|S|display=title}} world`;
+  str = `hello {{Coord|44.112|N|87.913|W|display=title}} world`;
   obj = wtf(str).coordinates(0);
   t.equal(obj.lat, 44.112, 'fmt-2-lat');
   t.equal(obj.lon, -87.913, 'fmt-2-lon');
@@ -34,31 +34,31 @@ test('coord formats', t => {
   obj = wtf(str).coordinates(0);
   t.equal(obj.lat, 51.44167, 'fmt-4-lat');
   t.equal(obj.lon, 4.91667, 'fmt-4-lon');
-  t.equal(obj.type, 'landmark', 'fmt-4-type');
+  t.equal(obj.props.type, 'landmark', 'fmt-4-type');
 
   str = `hello {{Coor title dec|52.652222|5.066388|type:city_region:NL}} world`;
   obj = wtf(str).coordinates(0);
   t.equal(obj.lat, 52.65222, 'fmt-5-lat');
   t.equal(obj.lon, 5.06639, 'fmt-5-lon');
-  t.equal(obj.type, 'city_region:NL', 'fmt-5-type');
+  t.equal(obj.props.type, 'city_region:NL', 'fmt-5-type');
 
   str = `hello {{Coor dms|29|58|41|N|31|07|53|E|type:landmark_region:EG_scale:5000}} world`;
   obj = wtf(str).coordinates(0);
   t.equal(obj.lat, 29.97806, 'fmt-6-lat');
   t.equal(obj.lon, 31.13139, 'fmt-6-lon');
-  t.equal(obj.type, 'landmark_region:EG_scale:5000', 'fmt-6-type');
+  t.equal(obj.props.type, 'landmark_region:EG_scale:5000', 'fmt-6-type');
 
   str = `hello {{Coor dm|64|33|N|40|32|E|type:landmark}} world`;
   obj = wtf(str).coordinates(0);
   t.equal(obj.lat, 64.55, 'fmt-7-lat');
   t.equal(obj.lon, 40.53333, 'fmt-7-lon');
-  t.equal(obj.type, 'landmark', 'fmt-7-type');
+  t.equal(obj.props.type, 'landmark', 'fmt-7-type');
 
   str = `hello {{Coor dec|-10.341666666667|-179.9997222|scale:25000}} world`;
   obj = wtf(str).coordinates(0);
   t.equal(obj.lat, -10.34167, 'fmt-8-lat');
   t.equal(obj.lon, -179.99972, 'fmt-8-lon');
-  t.equal(obj.scale, '25000', 'fmt-8-type');
+  t.equal(obj.props.scale, '25000', 'fmt-8-type');
   t.end();
 });
 

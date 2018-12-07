@@ -401,3 +401,81 @@ test('first-row as header', t => {
   t.equal(table[2]['rank'].text, 'seargent', 'got rank 3');
   t.end();
 });
+
+//two-row header composite
+test('two-rows as header', t => {
+  var str = `{| class="wikitable"
+  |-
+  ! A
+  ! B
+  ! C
+  ! D
+  |-
+  !
+  !
+  !
+  ! D2
+  ! E2
+  |-
+  | a || b || c || d || e
+  |}`;
+  var table = wtf(str).tables(0).keyValue();
+  t.equal(table.length, 1, '1 row');
+  t.equal(table[0].A, 'a', 'got col 1');
+  t.equal(table[0].D2, 'd', 'got col d2');
+  t.equal(table[0].E2, 'e', 'got col e2');
+  t.end();
+});
+
+//two-row header with spans
+test('two-header-rows-with-spans', t => {
+  var str = `{| class="wikitable"
+  |-
+  ! A
+  ! B
+  ! rowspan="2" | C
+  ! colspan="3" | D
+  |-
+  !
+  !
+  ! D2
+  ! E2
+  |-
+  | a || b || c || d || e
+  |}`;
+  var table = wtf(str).tables(0).keyValue();
+  t.equal(table.length, 1, '1 row');
+  t.equal(table[0].A, 'a', 'got col 1');
+  t.equal(table[0].C, 'c', 'got col c');
+  t.equal(table[0].D2, 'd', 'got col d2');
+  t.equal(table[0].E2, 'e', 'got col e2');
+  t.end();
+});
+
+//nfl football table
+test('junky-table', t => {
+  var str = `{| class="navbox plainrowheaders wikitable" style="width:100%"
+  ! A
+  ! B
+  ! C
+  ! D
+  |-
+  !style="{{Gridiron primary style|AFC}};" colspan="8"|[[American Football Conference|<span style="{{Gridiron secondary color|AFC}};">American Football Conference</span>]]
+  |-
+  !style=background:white rowspan="4"|[[AFC East|East]]
+  |'''[[Buffalo Bills]]'''
+  |[[Orchard Park (town), New York|Orchard Park, New York]]
+  |-
+  |'''[[Miami Dolphins]]'''
+  |[[Miami Gardens, Florida]]
+  |[[Hard Rock Stadium]]
+  |-
+  |}`;
+  var table = wtf(str).tables(0).keyValue();
+  t.equal(table.length, 2, '2 row2');
+  t.equal(table[0].A, 'East', 'got col a1');
+  t.equal(table[0].C, 'Orchard Park, New York', 'got col c1');
+  t.equal(table[1].A, 'East', 'got col a2');
+  t.equal(table[1].D, 'Hard Rock Stadium', 'got col c2');
+  t.end();
+});

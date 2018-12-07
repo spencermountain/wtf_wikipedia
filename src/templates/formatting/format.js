@@ -21,6 +21,7 @@ let templates = {
   },
   //dumb inflector - https://en.wikipedia.org/wiki/Template:Plural
   plural: (tmpl) => {
+    tmpl = tmpl.replace(/plural:/, 'plural|');
     let order = ['num', 'word'];
     let obj = parse(tmpl, order);
     let num = Number(obj.num);
@@ -144,7 +145,7 @@ let templates = {
       str = str + ' ' + (obj.u || obj.ul || obj.upl);
     }
     return str;
-  },
+  }
 };
 
 //aliases

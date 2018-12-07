@@ -1,44 +1,25 @@
-const parseCoordAndCoor = require('./coor');
-const strip = require('../_parsers/_strip');
+const parseCoor = require('./coor');
 
-//
-const geoTemplates = {
+const templates = {
   coord: (tmpl, r) => {
-    tmpl = strip(tmpl);
-    let obj = parseCoordAndCoor(tmpl);
+    let obj = parseCoor(tmpl);
     r.templates.push(obj);
-    return '';
-  },
-  // these are from the nl wiki
-  'coor title dms': (tmpl, r) => {
-    tmpl = strip(tmpl);
-    let obj = parseCoordAndCoor(tmpl);
-    r.templates.push(obj);
-    return '';
-  },
-  'coor title dec': (tmpl, r) => {
-    tmpl = strip(tmpl);
-    let obj = parseCoordAndCoor(tmpl);
-    r.templates.push(obj);
-    return '';
-  },
-  'coor dms': (tmpl, r) => {
-    tmpl = strip(tmpl);
-    let obj = parseCoordAndCoor(tmpl);
-    r.templates.push(obj);
-    return '';
-  },
-  'coor dm': (tmpl, r) => {
-    tmpl = strip(tmpl);
-    let obj = parseCoordAndCoor(tmpl);
-    r.templates.push(obj);
-    return '';
-  },
-  'coor dec': (tmpl, r) => {
-    tmpl = strip(tmpl);
-    let obj = parseCoordAndCoor(tmpl);
-    r.templates.push(obj);
+    //display inline, by default
+    if (!obj.display || obj.display.indexOf('inline') !== -1) {
+      return `${obj.lat || ''}°N, ${obj.lon || ''}°W`;
+    }
     return '';
   }
 };
-module.exports = geoTemplates;
+// {{coord|latitude|longitude|coordinate parameters|template parameters}}
+// {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
+templates['coor'] = templates.coord;
+// these are from the nl wiki
+templates['coor title dms'] = templates.coord;
+templates['coor title dec'] = templates.coord;
+templates['coor dms'] = templates.coord;
+templates['coor dm'] = templates.coord;
+templates['coor dec'] = templates.coord;
+module.exports = templates;

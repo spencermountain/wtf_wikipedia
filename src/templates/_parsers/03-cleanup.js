@@ -9,7 +9,6 @@ const whoCares = {
   'framestyle': true,
   'item_style': true,
   'collapsible': true,
-  'display': true,
   'list_style_type': true,
   'list-style-type': true,
 };

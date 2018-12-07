@@ -35,12 +35,18 @@ test('inline-no-data', function(t) {
     [`lbb`, ` {{Lbb|Severn}} `],
     [`yes`, ` {{Yes}} `],
     [`vanchor`, `{{vanchor|humpty|dumpty}}`],
+    [`uc`, `{{uc:text tRAnSFORM}}`],
+    [`uc`, `{{ucfirst:text tRAnSFORM}}`],
+    [`lc`, `{{lc:text tRAnSFORM}}`],
+    [`lc`, `{{lcfirst:text tRAnSFORM}}`],
+    [`date`, `{{date|4 August 2006}}`],
+    [`date`, `{{date|2006-08-04|DMY}}`],
+    [`dts`, `{{dts|July 1, 1867}}`],
     [`plainlist`, `{{Plainlist|
 * Example 1
 * Example 2
 * Example 3
 }}`],
-  // [``,``]
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);
@@ -52,11 +58,13 @@ test('inline-no-data', function(t) {
   t.end();
 });
 
-
 test('inline-with-data', function(t) {
   var arr = [
     [`cad`, `{{CAD|123.45|link=yes}}`],
     [`gbp`, `{{GBP|123.45}}`],
+    [`yel`, `{{yel|67}}`],
+    [`death date and age`, `{{death date and age |1993|2|24 |1921|4|12 |df=yes}}`],
+    [`sentoff`, `{{sent off|cards|min1|min2}}`],
     [`acronym`, `{{acronym of|graphical user interface|lang=en}}`],
     [`la-verb-form`, `{{la-verb-form|amāre}}`],
     [`goal`, `{{goal|14||54|p|72||87}}`],
@@ -95,7 +103,8 @@ test('inline-output', t => {
     [`{{sortname|Matthew|Dellavedova|dab=singer}}`, 'Matthew Dellavedova (singer)'],
     [`{{player|27|DOM|[[Vladimir Guerrero]]|DL}}`, '27 🇩🇴 Vladimir Guerrero'],
     [`{{Val|11|22|ul=m/s|p=~}}`, '~11 m/s'],
-
+    [`hello {{Coord|44.112|-87.913}} world`, 'hello 44.112°N, -87.913°W world'],
+    [`hello {{Coord|44.112|-87.913|display=title}} world`, 'hello world'],
   ];
   arr.forEach((a) => {
     t.equal(wtf(a[0]).text(), a[1], a[0]);

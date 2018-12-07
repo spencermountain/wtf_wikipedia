@@ -104,7 +104,7 @@
 * * remove top-level `coordinates` data (found in `templates`) - resume it with `{coordinates:true}`
 * * remove top-level `citations` data (found in `section`) - resume it with `{citations:true}`
 * return empty arrays in `.json()` again  ¯\_(:/)_ /¯
-* remove <h1> title on html output
+* remove `h1` title on html output
 * change ambiguous `options.title` for sections to `options.headers`
 * support lists of 1
 * begin removing empty references section by default
@@ -116,7 +116,7 @@
 * include `interwiki()` results in `.links()`
 * support `follow_redirects` option to fetch
 * hide object data in console.logs
-* move ALL image urls from `upload.wikimedia.org/wikipedia/commons` to `wikipedia.org/wiki/Special:Redirect/file/` via #86
+* move ALL image urls from `upload.wikimedia.org/wikipedia/commons` to `wikipedia.org/wiki/Special:Redirect/file/` via 86
 * image captions are now Sentence objects
 * rename citation → reference internally, and in json output
 * remove references inside section titles
@@ -127,7 +127,8 @@
 * add mongo-encoding from dumpster-dive
 ### 6.3.0
 * support way (+20%?) more templates.
-### 7.0.0
+
+## 7.0.0 🚨
 * change result-format in a lot of templates, for more consistency.
 * * notably: **reference** format, **see also**, **IPA**, **main**
 * support colspan/rowspan in tables (a little!)
@@ -135,3 +136,8 @@
 * return templates even if they have no data
 * begin support for some well-used `{{foo start}}...{{foo end}}` templates
 * remove empty `[]` for some more section properties in `.json()` response
+### 7.1.0
+* some template fixes
+* add a 'number' field in sentence json, when it looks like a number
+* slight change in coordinate result format, support inline coordinate text
+* handle fetching a large list of titles in sequence
