@@ -42,6 +42,8 @@ test('inline-no-data', function(t) {
     [`date`, `{{date|4 August 2006}}`],
     [`date`, `{{date|2006-08-04|DMY}}`],
     [`dts`, `{{dts|July 1, 1867}}`],
+    [`percentage`, `{{Percentage | 1 | 3 | 0 }}`],
+    [`percent done`, `{{Percent-done|done=13|total=33}}`],
     [`plainlist`, `{{Plainlist|
 * Example 1
 * Example 2
@@ -63,6 +65,7 @@ test('inline-with-data', function(t) {
     [`cad`, `{{CAD|123.45|link=yes}}`],
     [`gbp`, `{{GBP|123.45}}`],
     [`yel`, `{{yel|67}}`],
+    [`winning percentage`, `{{Winning percentage|100|50|leading_zero=y}}`],
     [`death date and age`, `{{death date and age |1993|2|24 |1921|4|12 |df=yes}}`],
     [`sentoff`, `{{sent off|cards|min1|min2}}`],
     [`acronym`, `{{acronym of|graphical user interface|lang=en}}`],

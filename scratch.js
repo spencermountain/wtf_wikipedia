@@ -19,10 +19,11 @@ const wtf = require('./src/index');
 // });
 
 
-let str = `hello {{death date and age |1993|2|24 |1921|4|12 |df=yes}}`;
+let str = `{{Percent-done|done=13|total=33}}`;
+
 let doc = wtf(str);
-console.log(doc.templates());
 console.log(doc.text());
 // console.log(wtf(str).tables(0).keyValue());
+console.log(wtf(str).templates());
 
 // Alan Bean marriage template

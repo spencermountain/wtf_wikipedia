@@ -131,7 +131,9 @@ const inline = {
   formatnum: ( tmpl = '' ) => {
     tmpl = tmpl.replace(/:/, '|');
     let obj = parse(tmpl, ['number']);
-    let num = Number(obj.number);
+    let str = obj.number || '';
+    str = str.replace(/,/g, '');
+    let num = Number(str);
     return num.toLocaleString() || '';
   },
   //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting

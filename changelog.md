@@ -141,3 +141,12 @@
 * add a 'number' field in sentence json, when it looks like a number
 * slight change in coordinate result format, support inline coordinate text
 * handle fetching a large list of titles in sequence
+
+
+---
+
+#### 8.0.0
+* lowercase/normalize table headers
+* date templates response format
+* .keyValue() should return page title if exists, instead of text
+* return country name for `{{BAN}}` etc templates
