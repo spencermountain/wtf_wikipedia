@@ -1,4 +1,4 @@
-/* wtf_wikipedia v7.1.0
+/* wtf_wikipedia v7.1.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -491,7 +491,7 @@ module.exports.default = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "7.1.0",
+  "version": "7.1.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -9689,7 +9689,9 @@ var inline = {
     var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
     tmpl = tmpl.replace(/:/, '|');
     var obj = parse(tmpl, ['number']);
-    var num = Number(obj.number);
+    var str = obj.number || '';
+    str = str.replace(/,/g, '');
+    var num = Number(str);
     return num.toLocaleString() || '';
   },
   //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
@@ -10261,7 +10263,25 @@ module.exports = templates;
 "use strict";
 
 var parse = _dereq_('../_parsers/parse'); // const parseSentence = require('../../04-sentence').oneSentence;
+//simply num/denom * 100
 
+
+var _percentage = function percentage(obj) {
+  if (!obj.numerator && !obj.denominator) {
+    return null;
+  }
+
+  var perc = Number(obj.numerator) / Number(obj.denominator);
+  perc *= 100;
+  var dec = Number(obj.decimals);
+
+  if (isNaN(dec)) {
+    dec = 1;
+  }
+
+  perc = perc.toFixed(dec);
+  return Number(perc);
+};
 
 var templates = {
   // https://en.wikipedia.org/wiki/Template:Math
@@ -10303,11 +10323,86 @@ var templates = {
     var order = ['after', 'before'];
     var obj = parse(tmpl, order);
     return "".concat(obj.before || '', "\u221A").concat(obj.after || '');
+  },
+  //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
+  percentage: function percentage() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var obj = parse(tmpl, ['numerator', 'denominator', 'decimals']);
+
+    var num = _percentage(obj);
+
+    if (num === null) {
+      return '';
+    }
+
+    return num + '%';
+  },
+  // {{Percent-done|done=N|total=N|digits=N}}
+  'percent-done': function percentDone() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var obj = parse(tmpl, ['done', 'total', 'digits']);
+
+    var num = _percentage({
+      numerator: obj.done,
+      denominator: obj.total,
+      decimals: obj.digits
+    });
+
+    if (num === null) {
+      return '';
+    }
+
+    return "".concat(obj.done, " (").concat(num, "%) done");
+  },
+  'winning percentage': function winningPercentage() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var r = arguments.length > 1 ? arguments[1] : undefined;
+    var obj = parse(tmpl, ['wins', 'losses', 'ties']);
+    r.templates.push(obj);
+    var wins = Number(obj.wins);
+    var losses = Number(obj.losses);
+
+    var num = _percentage({
+      numerator: wins,
+      denominator: wins + losses,
+      decimals: 1
+    });
+
+    if (num === null) {
+      return '';
+    }
+
+    return ".".concat(num * 10);
+  },
+  'winlosspct': function winlosspct() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var r = arguments.length > 1 ? arguments[1] : undefined;
+    var obj = parse(tmpl, ['wins', 'losses']);
+    r.templates.push(obj);
+    var wins = Number(obj.wins);
+    var losses = Number(obj.losses);
+
+    var num = _percentage({
+      numerator: wins,
+      denominator: wins + losses,
+      decimals: 1
+    });
+
+    if (num === null) {
+      return '';
+    }
+
+    num = ".".concat(num * 10);
+    return "".concat(wins || 0, " || ").concat(losses || 0, " || ").concat(num || '-');
   }
 }; //aliases
 
 templates['sfrac'] = templates.frac;
 templates['sqrt'] = templates.radic;
+templates['pct'] = templates.percentage;
+templates['percent'] = templates.percentage;
+templates['winpct'] = templates.percentage;
+templates['winperc'] = templates.percentage;
 module.exports = templates;
 
 },{"../_parsers/parse":105}],128:[function(_dereq_,module,exports){
@@ -10522,7 +10617,7 @@ var parseTemplate = function parseTemplate(tmpl, wiki, data) {
 
 module.exports = parseTemplate;
 
-},{"./_ignore":97,"./_infobox":98,"./_parsers/_getName":103,"./_parsers/parse":105,"./dates":110,"./formatting":114,"./geo":120,"./identities":121,"./language":123,"./math":127,"./misc":128,"./money":129,"./politics":133,"./science":134,"./sports":135,"./wikipedia":137}],131:[function(_dereq_,module,exports){
+},{"./_ignore":97,"./_infobox":98,"./_parsers/_getName":103,"./_parsers/parse":105,"./dates":110,"./formatting":114,"./geo":120,"./identities":121,"./language":123,"./math":127,"./misc":128,"./money":129,"./politics":133,"./science":135,"./sports":138,"./wikipedia":140}],131:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10679,9 +10774,41 @@ module.exports = templates;
 },{"../../_data/flags":67,"../_parsers/parse":105}],133:[function(_dereq_,module,exports){
 "use strict";
 
-module.exports = Object.assign({}, _dereq_('./elections'), _dereq_('./flags'));
+module.exports = Object.assign({}, _dereq_('./elections'), _dereq_('./flags'), _dereq_('./population'));
 
-},{"./elections":131,"./flags":132}],134:[function(_dereq_,module,exports){
+},{"./elections":131,"./flags":132,"./population":134}],134:[function(_dereq_,module,exports){
+"use strict";
+
+var parse = _dereq_('../_parsers/parse');
+
+var templates = {
+  //https://en.wikipedia.org/wiki/Template:Historical_populations
+  'historical populations': function historicalPopulations(tmpl, r) {
+    var data = parse(tmpl);
+    var years = [];
+
+    for (var i = 0; i < data.list.length; i += 2) {
+      var num = data.list[i + 1];
+      years.push({
+        year: data.list[i],
+        val: Number(num) || num
+      });
+    }
+
+    data.data = years;
+    delete data.list;
+    r.templates.push(data);
+    return '';
+  }
+};
+module.exports = templates;
+
+},{"../_parsers/parse":105}],135:[function(_dereq_,module,exports){
+"use strict";
+
+module.exports = Object.assign({}, _dereq_('./weather'), _dereq_('./misc'));
+
+},{"./misc":136,"./weather":137}],136:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10691,40 +10818,6 @@ var templates = {
   'taxon info': function taxonInfo(tmpl, r) {
     var order = ['taxon', 'item'];
     var obj = parse(tmpl, order);
-    r.templates.push(obj);
-    return '';
-  },
-  'climate chart': function climateChart(tmpl, r) {
-    var list = parse(tmpl).list || [];
-    var title = list[0];
-    var source = list[38];
-    list = list.slice(1); //amazingly, they use '−' symbol here instead of negatives...
-
-    list = list.map(function (str) {
-      if (str && str[0] === '−') {
-        str = str.replace(/−/, '-');
-      }
-
-      return str;
-    });
-    var months = []; //groups of three, for 12 months
-
-    for (var i = 0; i < 36; i += 3) {
-      months.push({
-        low: Number(list[i]),
-        high: Number(list[i + 1]),
-        precip: Number(list[i + 2])
-      });
-    }
-
-    var obj = {
-      template: 'climate chart',
-      data: {
-        title: title,
-        source: source,
-        months: months
-      }
-    };
     r.templates.push(obj);
     return '';
   },
@@ -10764,7 +10857,125 @@ var templates = {
 };
 module.exports = templates;
 
-},{"../_parsers/parse":105}],135:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105}],137:[function(_dereq_,module,exports){
+"use strict";
+
+var parse = _dereq_('../_parsers/parse');
+
+var hasMonth = /^jan /i;
+var isYear = /^year /i;
+var monthList = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+var templates = {
+  // this one is a handful!
+  //https://en.wikipedia.org/wiki/Template:Weather_box
+  'weather box': function weatherBox(tmpl, r) {
+    var obj = parse(tmpl); //collect all month-based data
+
+    var byMonth = {};
+    var properties = Object.keys(obj).filter(function (k) {
+      return hasMonth.test(k);
+    });
+    properties = properties.map(function (k) {
+      return k.replace(hasMonth, '');
+    });
+    properties.forEach(function (prop) {
+      byMonth[prop] = [];
+      monthList.forEach(function (m) {
+        var key = "".concat(m, " ").concat(prop);
+
+        if (obj.hasOwnProperty(key)) {
+          var num = Number(obj[key]);
+          delete obj[key];
+          byMonth[prop].push(num);
+        }
+      });
+    }); //add these to original
+
+    obj.byMonth = byMonth; //collect year-based data
+
+    var byYear = {};
+    Object.keys(obj).forEach(function (k) {
+      if (isYear.test(k)) {
+        var prop = k.replace(isYear, '');
+        byYear[prop] = obj[k];
+        delete obj[k];
+      }
+    });
+    obj.byYear = byYear;
+    r.templates.push(obj);
+    return '';
+  },
+  //The 36 parameters are: 12 monthly highs (C), 12 lows (total 24) plus an optional 12 monthly rain/precipitation
+  //https://en.wikipedia.org/wiki/Template:Weather_box/concise_C
+  'weather box/concise c': function weatherBoxConciseC(tmpl, r) {
+    var obj = parse(tmpl);
+    obj.list = obj.list.map(function (s) {
+      return Number(s);
+    });
+    obj.byMonth = {
+      'high c': obj.list.slice(0, 12),
+      'low c': obj.list.slice(12, 24),
+      'rain mm': obj.list.slice(24, 36)
+    };
+    delete obj.list;
+    obj.template = 'weather box';
+    r.templates.push(obj);
+    return '';
+  },
+  'weather box/concise f': function weatherBoxConciseF(tmpl, r) {
+    var obj = parse(tmpl);
+    obj.list = obj.list.map(function (s) {
+      return Number(s);
+    });
+    obj.byMonth = {
+      'high f': obj.list.slice(0, 12),
+      'low f': obj.list.slice(12, 24),
+      'rain inch': obj.list.slice(24, 36)
+    };
+    delete obj.list;
+    obj.template = 'weather box';
+    r.templates.push(obj);
+    return '';
+  },
+  //https://en.wikipedia.org/wiki/Template:Climate_chart
+  'climate chart': function climateChart(tmpl, r) {
+    var list = parse(tmpl).list || [];
+    var title = list[0];
+    var source = list[38];
+    list = list.slice(1); //amazingly, they use '−' symbol here instead of negatives...
+
+    list = list.map(function (str) {
+      if (str && str[0] === '−') {
+        str = str.replace(/−/, '-');
+      }
+
+      return str;
+    });
+    var months = []; //groups of three, for 12 months
+
+    for (var i = 0; i < 36; i += 3) {
+      months.push({
+        low: Number(list[i]),
+        high: Number(list[i + 1]),
+        precip: Number(list[i + 2])
+      });
+    }
+
+    var obj = {
+      template: 'climate chart',
+      data: {
+        title: title,
+        source: source,
+        months: months
+      }
+    };
+    r.templates.push(obj);
+    return '';
+  }
+};
+module.exports = templates;
+
+},{"../_parsers/parse":105}],138:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10777,7 +10988,7 @@ var misc = {
 };
 module.exports = Object.assign({}, misc, _dereq_('./soccer'));
 
-},{"../_parsers/parse":105,"./soccer":136}],136:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105,"./soccer":139}],139:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10897,12 +11108,12 @@ var sports = {
 };
 module.exports = sports;
 
-},{"../../_data/flags":67,"../_parsers/parse":105}],137:[function(_dereq_,module,exports){
+},{"../../_data/flags":67,"../_parsers/parse":105}],140:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = Object.assign({}, _dereq_('./links'), _dereq_('./page'), _dereq_('./table-cell'));
 
-},{"./links":138,"./page":139,"./table-cell":140}],138:[function(_dereq_,module,exports){
+},{"./links":141,"./page":142,"./table-cell":143}],141:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -10975,7 +11186,7 @@ templates.ll = templates.link;
 templates['l-self'] = templates.link;
 module.exports = templates;
 
-},{"../_parsers/parse":105}],139:[function(_dereq_,module,exports){
+},{"../_parsers/parse":105}],142:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -11185,7 +11396,7 @@ parsers['sisterlinks'] = parsers['sister project links'];
 parsers['main article'] = parsers['main'];
 module.exports = parsers;
 
-},{"../../image/Image":84,"../_parsers/parse":105}],140:[function(_dereq_,module,exports){
+},{"../../image/Image":84,"../_parsers/parse":105}],143:[function(_dereq_,module,exports){
 "use strict";
 
 //random misc for inline wikipedia templates

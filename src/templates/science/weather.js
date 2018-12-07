@@ -70,6 +70,19 @@ let templates = {
     r.templates.push(obj);
     return '';
   },
+  'weather box/concise f': (tmpl, r) => {
+    let obj = parse(tmpl);
+    obj.list = obj.list.map((s) => Number(s));
+    obj.byMonth = {
+      'high f' : obj.list.slice(0, 12),
+      'low f' : obj.list.slice(12, 24),
+      'rain inch' : obj.list.slice(24, 36)
+    };
+    delete obj.list;
+    obj.template = 'weather box';
+    r.templates.push(obj);
+    return '';
+  },
 
 
   //https://en.wikipedia.org/wiki/Template:Climate_chart
