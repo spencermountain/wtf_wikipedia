@@ -141,7 +141,8 @@
 * add a 'number' field in sentence json, when it looks like a number
 * slight change in coordinate result format, support inline coordinate text
 * handle fetching a large list of titles in sequence
-* support weatherbox templates
+### 7.1.1
+* support population, weatherbox templates
 
 ---
 
