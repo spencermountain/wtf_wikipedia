@@ -137,5 +137,7 @@
 * begin support for some well-used `{{foo start}}...{{foo end}}` templates
 * remove empty `[]` for some more section properties in `.json()` response
 ### 7.1.0
+* some template fixes
 * add a 'number' field in sentence json, when it looks like a number
 * slight change in coordinate result format, support inline coordinate text
+* handle fetching a large list of titles in sequence

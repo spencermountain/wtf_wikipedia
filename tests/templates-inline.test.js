@@ -39,6 +39,11 @@ test('inline-no-data', function(t) {
     [`uc`, `{{ucfirst:text tRAnSFORM}}`],
     [`lc`, `{{lc:text tRAnSFORM}}`],
     [`lc`, `{{lcfirst:text tRAnSFORM}}`],
+    [`death date and age`, `{{death date and age |1993|2|24 |1921|4|12 |df=yes}`],
+    [`date`, `{{date|4 August 2006}}`],
+    [`date`, `{{date|2006-08-04|DMY}}`],
+    [`dts`, `{{dts|July 1, 1867}}`],
+    [`yel`, `{{yel|67}}`],
     [`plainlist`, `{{Plainlist|
 * Example 1
 * Example 2
