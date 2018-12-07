@@ -39,17 +39,14 @@ test('inline-no-data', function(t) {
     [`uc`, `{{ucfirst:text tRAnSFORM}}`],
     [`lc`, `{{lc:text tRAnSFORM}}`],
     [`lc`, `{{lcfirst:text tRAnSFORM}}`],
-    [`death date and age`, `{{death date and age |1993|2|24 |1921|4|12 |df=yes}`],
     [`date`, `{{date|4 August 2006}}`],
     [`date`, `{{date|2006-08-04|DMY}}`],
     [`dts`, `{{dts|July 1, 1867}}`],
-    [`yel`, `{{yel|67}}`],
     [`plainlist`, `{{Plainlist|
 * Example 1
 * Example 2
 * Example 3
 }}`],
-  // [``,``]
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);
@@ -61,11 +58,13 @@ test('inline-no-data', function(t) {
   t.end();
 });
 
-
 test('inline-with-data', function(t) {
   var arr = [
     [`cad`, `{{CAD|123.45|link=yes}}`],
     [`gbp`, `{{GBP|123.45}}`],
+    [`yel`, `{{yel|67}}`],
+    [`death date and age`, `{{death date and age |1993|2|24 |1921|4|12 |df=yes}}`],
+    [`sentoff`, `{{sent off|cards|min1|min2}}`],
     [`acronym`, `{{acronym of|graphical user interface|lang=en}}`],
     [`la-verb-form`, `{{la-verb-form|amāre}}`],
     [`goal`, `{{goal|14||54|p|72||87}}`],
