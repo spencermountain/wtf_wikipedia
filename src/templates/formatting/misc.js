@@ -164,6 +164,18 @@ const inline = {
     let text = obj.text || '';
     return text[0].toUpperCase() + text.substr(1);
   },
+  'padleft': ( tmpl = '' ) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let obj = parse(tmpl, ['text', 'num']);
+    let text = obj.text || '';
+    return text.padStart(obj.num, obj.str || '0');
+  },
+  'padright': ( tmpl = '' ) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let obj = parse(tmpl, ['text', 'num']);
+    let text = obj.text || '';
+    return text.padEnd(obj.num, obj.str || '0');
+  },
 };
 
 //aliases
