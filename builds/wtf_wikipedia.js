@@ -710,14 +710,28 @@ var methods = {
   templates: function templates(clue) {
     return sectionMap(this, 'templates', clue);
   },
-  infoboxes: function infoboxes(clue) {
-    return sectionMap(this, 'infoboxes', clue);
-  },
   references: function references(clue) {
     return sectionMap(this, 'references', clue);
   },
   coordinates: function coordinates(clue) {
     return sectionMap(this, 'coordinates', clue);
+  },
+  infoboxes: function infoboxes(clue) {
+    var arr = sectionMap(this, 'infoboxes'); //sort them by biggest-first
+
+    arr = arr.sort(function (a, b) {
+      if (Object.keys(a.data).length > Object.keys(b.data).length) {
+        return -1;
+      }
+
+      return 1;
+    });
+
+    if (typeof clue === 'number') {
+      return arr[clue];
+    }
+
+    return arr;
   },
   text: function text(options) {
     options = setDefaults(options, defaults); //nah, skip these.
@@ -7057,17 +7071,24 @@ var isUrl = /^https?:\/\//;
 
 function isArray(arr) {
   return arr.constructor.toString().indexOf('Array') > -1;
-} //construct a lookup-url for the wikipedia api
+}
 
+var makeTitle = function makeTitle() {
+  var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
-var makeUrl = function makeUrl(title, lang, options) {
-  lang = lang || 'en'; //if given a url...
-
+  //if given a url...
   if (isUrl.test(title) === true) {
     title = title.replace(/.*?\/wiki\//, '');
     title = title.replace(/\?.*/, '');
   }
 
+  title = encodeURIComponent(title);
+  return title;
+}; //construct a lookup-url for the wikipedia api
+
+
+var makeUrl = function makeUrl(title, lang, options) {
+  lang = lang || 'en';
   var url = "https://".concat(lang, ".wikipedia.org/w/api.php");
 
   if (site_map[lang]) {
@@ -7102,15 +7123,12 @@ var makeUrl = function makeUrl(title, lang, options) {
   if (typeof pages[0] === 'number') {
     lookup = 'pageids';
   } else {
-    pages = pages.map(function (str) {
-      if (typeof str === 'string') {
-        return encodeURIComponent(str);
-      }
-
-      return str;
-    });
+    pages = pages.map(makeTitle);
   }
 
+  pages = pages.filter(function (p) {
+    return p !== '';
+  });
   pages = pages.join('|');
   url += '&' + lookup + '=' + pages;
   return url;
