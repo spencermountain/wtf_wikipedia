@@ -99,7 +99,8 @@ test('inline-output', t => {
     [`{{sortname|Matthew|Dellavedova|dab=singer}}`, 'Matthew Dellavedova (singer)'],
     [`{{player|27|DOM|[[Vladimir Guerrero]]|DL}}`, '27 🇩🇴 Vladimir Guerrero'],
     [`{{Val|11|22|ul=m/s|p=~}}`, '~11 m/s'],
-
+    [`hello {{Coord|44.112|-87.913}} world`, 'hello 44.112°N, -87.913°W world'],
+    [`hello {{Coord|44.112|-87.913|display=title}} world`, 'hello world'],
   ];
   arr.forEach((a) => {
     t.equal(wtf(a[0]).text(), a[1], a[0]);

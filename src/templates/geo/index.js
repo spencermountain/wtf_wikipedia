@@ -4,6 +4,10 @@ const templates = {
   coord: (tmpl, r) => {
     let obj = parseCoor(tmpl);
     r.templates.push(obj);
+    //display inline, by default
+    if (!obj.display || obj.display.indexOf('inline') !== -1) {
+      return `${obj.lat || ''}°N, ${obj.lon || ''}°W`;
+    }
     return '';
   }
 };
