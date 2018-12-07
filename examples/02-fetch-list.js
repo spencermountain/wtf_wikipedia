@@ -1,9 +1,6 @@
 //const wtf= require('wtf_wikipedia')
 const wtf = require('../src');
 //get all birthplaces of the apollo astronauts
-//here, we're using es6 await/async, to simplify(?) the async stuff
-
-const maxPages = 5;
 
 const options = {
   'Api-User-Agent': 'wtf_wikipedia example'
@@ -18,7 +15,7 @@ let astronauts = [
   'Edgar Mitchell',
   'David Scott',
   'James Irwin',
-  'John Young',
+  'John Young (astronaut)',
   'Charles Duke',
   'Eugene Cernan',
   'Harrison Schmitt',
@@ -26,11 +23,8 @@ let astronauts = [
   'Jim Lovell',
   'Bill Anders',
   'Tom Stafford',
-  'John Young',
-  'Eugene Cernan',
-  'Michael Collins',
+  'Michael Collins (astronaut)',
   'Dick Gordon',
-  'Jim Lovell',
   'Jack Swigert',
   'Fred Haise',
   'Stu Roosa',
@@ -39,38 +33,26 @@ let astronauts = [
   'Ron Evans'
 ];
 
-const getInfoboxData = function(doc) {
-  if (doc.infobox(0)) {
-    let obj = doc.infobox(0).keyValue();
-    return {
-      name: doc.title() || obj.name,
-      mission: obj.mission || '',
-      born: obj.born || obj.birth_date,
-      died: obj.died || obj.death_date,
-    };
-  }
-  return null;
-};
+// Richard Gordon no infobox
+// Thomas Stafford
 
-let results = [];
-
-//our recursive-function to fetch 5 pages at-a-time
-const getFive = async(list, cb) => {
-  //send the first 5 pages
-  let fivePages = list.slice(0, maxPages);
-  let docs = await wtf.fetch(fivePages, options);
-
-  //grab the data we want, for each page
-  let data = docs.map((doc) => getInfoboxData(doc));
-  results = results.concat(data);
-
-  //keep going!
-  let remaining = list.slice(maxPages);
-  if (remaining.length > 0) {
-    getFive(remaining, cb); //recursive
+const getInfobox = function(doc) {
+  let obj = {};
+  if (!doc.infobox(0)) {
+    console.log(doc.title() + ' - no infobox');
   } else {
-    cb(results); //all done
+    obj = doc.infobox(0).keyValue();
   }
+  return {
+    name: doc.title() || obj.name,
+    missions: obj.mission || '',
+    born: obj.born || obj.birth_date,
+    died: obj.died || obj.death_date,
+  };
 };
 
-getFive(astronauts, console.log);
+//send it off!
+wtf.fetch(astronauts, options, (err, docs) => {
+  let data = docs.map(getInfobox);
+  console.log(JSON.stringify(data, null, 2));
+});

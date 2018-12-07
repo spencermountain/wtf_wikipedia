@@ -5,14 +5,19 @@ function isArray(arr) {
   return arr.constructor.toString().indexOf('Array') > -1;
 }
 
-//construct a lookup-url for the wikipedia api
-const makeUrl = function(title, lang, options) {
-  lang = lang || 'en';
+const makeTitle = function( title = '' ) {
   //if given a url...
   if (isUrl.test(title) === true) {
     title = title.replace(/.*?\/wiki\//, '');
     title = title.replace(/\?.*/, '');
   }
+  title = encodeURIComponent(title);
+  return title;
+};
+
+//construct a lookup-url for the wikipedia api
+const makeUrl = function(title, lang, options) {
+  lang = lang || 'en';
   let url = `https://${lang}.wikipedia.org/w/api.php`;
   if (site_map[lang]) {
     url = site_map[lang] + '/w/api.php';
@@ -40,13 +45,9 @@ const makeUrl = function(title, lang, options) {
   if (typeof pages[0] === 'number') {
     lookup = 'pageids';
   } else {
-    pages = pages.map((str) => {
-      if (typeof str === 'string') {
-        return encodeURIComponent(str);
-      }
-      return str;
-    });
+    pages = pages.map(makeTitle);
   }
+  pages = pages.filter((p) => p !== '');
   pages = pages.join('|');
   url += '&' + lookup + '=' + pages;
   return url;
