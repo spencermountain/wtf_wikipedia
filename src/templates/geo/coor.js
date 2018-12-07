@@ -55,6 +55,7 @@ const findLatLng = function (arr) {
 };
 
 const parseParams = function(obj) {
+  obj.list = obj.list || [];
   obj.list = obj.list.map((str) => {
     let num = Number(str);
     if (!isNaN(num)) {

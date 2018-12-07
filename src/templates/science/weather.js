@@ -17,6 +17,16 @@ const monthList = [
   'dec',
 ];
 
+const toNumber = function(str) {
+  str = str.replace(/,/g, '');
+  str = str.replace(/−/g, '-');
+  let num = Number(str);
+  if (isNaN(num)) {
+    return str;
+  }
+  return num;
+};
+
 let templates = {
   // this one is a handful!
   //https://en.wikipedia.org/wiki/Template:Weather_box
@@ -31,7 +41,7 @@ let templates = {
       monthList.forEach((m) => {
         let key = `${m} ${prop}`;
         if (obj.hasOwnProperty(key)) {
-          let num = Number(obj[key]);
+          let num = toNumber(obj[key]);
           delete obj[key];
           byMonth[prop].push(num);
         }
@@ -59,7 +69,7 @@ let templates = {
   //https://en.wikipedia.org/wiki/Template:Weather_box/concise_C
   'weather box/concise c': (tmpl, r) => {
     let obj = parse(tmpl);
-    obj.list = obj.list.map((s) => Number(s));
+    obj.list = obj.list.map((s) => toNumber(s));
     obj.byMonth = {
       'high c' : obj.list.slice(0, 12),
       'low c' : obj.list.slice(12, 24),
@@ -72,7 +82,7 @@ let templates = {
   },
   'weather box/concise f': (tmpl, r) => {
     let obj = parse(tmpl);
-    obj.list = obj.list.map((s) => Number(s));
+    obj.list = obj.list.map((s) => toNumber(s));
     obj.byMonth = {
       'high f' : obj.list.slice(0, 12),
       'low f' : obj.list.slice(12, 24),
@@ -102,9 +112,9 @@ let templates = {
     //groups of three, for 12 months
     for(let i = 0; i < 36; i += 3) {
       months.push({
-        low: Number(list[i]),
-        high: Number(list[i + 1]),
-        precip: Number(list[i + 2])
+        low: toNumber(list[i]),
+        high: toNumber(list[i + 1]),
+        precip: toNumber(list[i + 2])
       });
     }
     let obj = {
