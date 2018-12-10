@@ -19,11 +19,30 @@ const wtf = require('./src/index');
 // });
 
 
-let str = `{{Percent-done|done=13|total=33}}`;
+let str = `
+{{Weather box
+|metric first = Y
+|single line= Y
+|collapsed = Y
+|location= [[Calgary International Airport]], 1981–2010 normals, extremes 1881–present
+|Jan mean C = −3.4
+|Feb mean C = −0.1
+|Mar mean C =  6.4
+|Apr mean C = 14.7
+|May mean C = 20.5
+|Jun mean C = 24.8
+|Jul mean C = 26.8
+|Aug mean C = 25.9
+|Sep mean C = 21.1
+|Oct mean C = 14.1
+|Nov mean C =  5.2
+|Dec mean C = −1.2
+|source 1=[[Environment Canada]]<ref name="envcan"/>
+}}`;
 
 let doc = wtf(str);
-console.log(doc.text());
+// console.log(doc.text());
 // console.log(wtf(str).tables(0).keyValue());
-console.log(wtf(str).templates());
+console.log(wtf(str).templates(0).byMonth);
 
 // Alan Bean marriage template
