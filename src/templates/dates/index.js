@@ -2,6 +2,7 @@ const misc = require('./misc');
 const parsers = require('./parsers');
 const parse = require('../_parsers/parse');
 const timeSince = require('./_timeSince');
+const format = require('./_format');
 const date = parsers.date;
 const natural_date = parsers.natural_date;
 
@@ -22,7 +23,7 @@ const months = [
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 //date- templates we support
-let templates = Object.assign({}, misc, {
+let dateTmpl = Object.assign({}, misc, {
   currentday: () => {
     let d = new Date();
     return String(d.getDate());
@@ -63,6 +64,78 @@ let templates = Object.assign({}, misc, {
     let time = parse(tmpl, order).date;
     return timeSince(time);
   },
+  //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
+  'birth date and age': (tmpl, r) => {
+    let order = ['year', 'month', 'day'];
+    let obj = parse(tmpl, order);
+    //support 'one property' version
+    if (obj.year && /[a-z]/i.test(obj.year)) {
+      return natural_date(tmpl, r);
+    }
+    r.templates.push(obj);
+    obj = format.ymd([obj.year, obj.month, obj.day]);
+    return format.toText(obj);
+  },
+  'birth year and age': (tmpl, r) => {
+    let order = ['birth_year', 'birth_month'];
+    let obj = parse(tmpl, order);
+    //support 'one property' version
+    if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
+      return natural_date(tmpl, r);
+    }
+    r.templates.push(obj);
+    let age = new Date().getFullYear() - parseInt(obj.birth_year, 10);
+    obj = format.ymd([obj.birth_year, obj.birth_month]);
+    let str = format.toText(obj);
+    if (age) {
+      str += ` (age ${age})`;
+    }
+    return str;
+  },
+  'death year and age': (tmpl, r) => {
+    let order = ['death_year', 'birth_year', 'death_month'];
+    let obj = parse(tmpl, order);
+    //support 'one property' version
+    if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
+      return natural_date(tmpl, r);
+    }
+    r.templates.push(obj);
+    obj = format.ymd([obj.death_year, obj.death_month]);
+    return format.toText(obj);
+  },
+  //https://en.wikipedia.org/wiki/Template:Birth_date_and_age2
+  'birth date and age2': (tmpl, r) => {
+    let order = ['at_year', 'at_month', 'at_day', 'birth_year', 'birth_month', 'birth_day'];
+    let obj = parse(tmpl, order);
+    r.templates.push(obj);
+    obj = format.ymd([obj.birth_year, obj.birth_month, obj.birth_day]);
+    return format.toText(obj);
+  },
+  //https://en.wikipedia.org/wiki/Template:Birth_based_on_age_as_of_date
+  'birth based on age as of date': (tmpl, r) => {
+    let order = ['age', 'year', 'month', 'day'];
+    let obj = parse(tmpl, order);
+    r.templates.push(obj);
+    let age = parseInt(obj.age, 10);
+    let year = parseInt(obj.year, 10);
+    let born = year - age;
+    if (born && age) {
+      return `${born} (age ${obj.age})`;
+    }
+    return `(age ${obj.age})`;
+  },
+  //https://en.wikipedia.org/wiki/Template:Death_date_and_given_age
+  'death date and given age': (tmpl, r) => {
+    let order = ['year', 'month', 'day', 'age'];
+    let obj = parse(tmpl, order);
+    r.templates.push(obj);
+    obj = format.ymd([obj.year, obj.month, obj.day]);
+    let str = format.toText(obj);
+    if (obj.age) {
+      str += ` (age ${obj.age})`;
+    }
+    return str;
+  },
   //sortable dates -
   dts: (tmpl) => {
     //remove formatting stuff, ewww
@@ -99,13 +172,6 @@ let templates = Object.assign({}, misc, {
   'death date': date,
   'start date and age': date,
   'end date and age': date,
-  'birth date and age': date,
-  'death date and age': date,
-  'birth date and given age': date,
-  'death date and given age': date,
-  'birth year and age': parsers.one_year,
-  'death year and age': parsers.one_year,
-
   //this is insane (hyphen ones are different)
   'start-date': natural_date,
   'end-date': natural_date,
@@ -118,7 +184,6 @@ let templates = Object.assign({}, misc, {
 
   'birthdeathage': parsers.two_dates,
   'dob': date,
-  'bda': date,
   // 'birth date and age2': date,
 
   'age': parsers.age,
@@ -132,11 +197,14 @@ let templates = Object.assign({}, misc, {
   // 'age as of date': true,
 
 });
-templates.localday = templates.currentday;
-templates.localdayname = templates.currentdayname;
-templates.localmonth = templates.currentmonth;
-templates.localyear = templates.currentyear;
-templates.currentmonthname = templates.currentmonth;
-templates.currentmonthabbrev = templates.currentmonth;
-
-module.exports = templates;
+//aliases
+dateTmpl.localday = dateTmpl.currentday;
+dateTmpl.localdayname = dateTmpl.currentdayname;
+dateTmpl.localmonth = dateTmpl.currentmonth;
+dateTmpl.localyear = dateTmpl.currentyear;
+dateTmpl.currentmonthname = dateTmpl.currentmonth;
+dateTmpl.currentmonthabbrev = dateTmpl.currentmonth;
+dateTmpl['death date and age'] = dateTmpl['birth date and age'];
+dateTmpl.bda = dateTmpl['birth date and age'];
+dateTmpl['birth date based on age at death'] = dateTmpl['birth based on age as of date'];
+module.exports = dateTmpl;
