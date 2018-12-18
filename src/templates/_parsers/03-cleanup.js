@@ -11,6 +11,7 @@ const whoCares = {
   'collapsible': true,
   'list_style_type': true,
   'list-style-type': true,
+  'colwidth': true
 };
 
 //remove wiki-cruft & some styling info from templates

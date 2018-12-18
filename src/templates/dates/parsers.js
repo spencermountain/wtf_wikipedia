@@ -36,7 +36,7 @@ const parsers = {
   date: (tmpl, r) => {
     let order = ['year', 'month', 'date', 'hour', 'minute', 'second', 'timezone'];
     let obj = parse(tmpl, order);
-    let data = ymd([obj.year, obj.month, obj.date]);
+    let data = ymd([obj.year, obj.month, obj.date || obj.day]);
     obj.text = toText(data); //make the replacement string
     if (obj.timezone) {
       if (obj.timezone === 'Z') {
@@ -68,8 +68,8 @@ const parsers = {
       date.year = parseInt(str, 10);
     } else {
       //parse the date, using the js date object (for now?)
-      let txt = str.replace(/[a-z]+\/[a-z]+/i);
-      txt = txt.replace(/[0-9]+:[0-9]+(am|pm)?/i);
+      let txt = str.replace(/[a-z]+\/[a-z]+/i, '');
+      txt = txt.replace(/[0-9]+:[0-9]+(am|pm)?/i, '');
       let d = new Date(txt);
       if (isNaN(d.getTime()) === false) {
         date.year = d.getFullYear();

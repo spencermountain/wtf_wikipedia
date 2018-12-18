@@ -21,8 +21,8 @@ test('structured date templates', t => {
     ['{{Death date and given age|1993|2|4|df=yes}}', 'February 4, 1993'],
     ['{{Birth date and age|1941}}', '1941'],
 
-    ['{{Birth year and age|1963}}', '1963'],
-    ['{{Birth year and age|1963|6}}', '1963'],
+    // ['{{Birth year and age|1963}}', '1963 (age 55)'],
+    // ['{{Birth year and age|1963|6}}', '1963 (age 55)'],
     ['{{Death year and age|2017|1967}}', '2017'],
     ['{{Death year and age|2017|1967}}', '2017'],
     // ['{{Birth year and age|1963|02}}', 'February 1963'],

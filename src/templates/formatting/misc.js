@@ -151,7 +151,10 @@ const inline = {
   'lcfirst': ( tmpl = '' ) => {
     tmpl = tmpl.replace(/:/, '|');
     let obj = parse(tmpl, ['text']);
-    let text = obj.text || '';
+    let text = obj.text;
+    if (!text) {
+      return '';
+    }
     return text[0].toLowerCase() + text.substr(1);
   },
   //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
@@ -163,7 +166,10 @@ const inline = {
   'ucfirst': ( tmpl = '' ) => {
     tmpl = tmpl.replace(/:/, '|');
     let obj = parse(tmpl, ['text']);
-    let text = obj.text || '';
+    let text = obj.text;
+    if (!text) {
+      return '';
+    }
     return text[0].toUpperCase() + text.substr(1);
   },
   'padleft': ( tmpl = '' ) => {

@@ -1,4 +1,4 @@
-/* wtf_wikipedia v7.1.1
+/* wtf_wikipedia v7.2.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -491,7 +491,7 @@ module.exports.default = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "7.1.1",
+  "version": "7.2.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -4087,11 +4087,11 @@ var internal_links = function internal_links(links, str) {
 
     if (s.match(/\|/)) {
       //replacement link [[link|text]]
-      s = s.replace(/\[\[(.{2,80}?)\]\](\w{0,10})/g, '$1$2'); //remove ['s and keep suffix
+      s = s.replace(/\[\[(.{2,100}?)\]\](\w{0,10})/g, '$1$2'); //remove ['s and keep suffix
 
-      link = s.replace(/(.{2,60})\|.{0,200}/, '$1'); //replaced links
+      link = s.replace(/(.{2,100})\|.{0,200}/, '$1'); //replaced links
 
-      txt = s.replace(/.{2,60}?\|/, ''); //handle funky case of [[toronto|]]
+      txt = s.replace(/.{2,100}?\|/, ''); //handle funky case of [[toronto|]]
 
       if (txt === null && link.match(/\|$/)) {
         link = link.replace(/\|$/, '');
@@ -8504,7 +8504,8 @@ var whoCares = {
   'item_style': true,
   'collapsible': true,
   'list_style_type': true,
-  'list-style-type': true
+  'list-style-type': true,
+  'colwidth': true
 }; //remove wiki-cruft & some styling info from templates
 
 var cleanup = function cleanup(obj) {
@@ -8848,12 +8849,14 @@ var parse = _dereq_('../_parsers/parse');
 
 var timeSince = _dereq_('./_timeSince');
 
+var format = _dereq_('./_format');
+
 var date = parsers.date;
 var natural_date = parsers.natural_date;
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; //date- templates we support
 
-var templates = Object.assign({}, misc, {
+var dateTmpl = Object.assign({}, misc, {
   currentday: function currentday() {
     var d = new Date();
     return String(d.getDate());
@@ -8893,6 +8896,87 @@ var templates = Object.assign({}, misc, {
     var order = ['date', 'fmt'];
     var time = parse(tmpl, order).date;
     return timeSince(time);
+  },
+  //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
+  'birth date and age': function birthDateAndAge(tmpl, r) {
+    var order = ['year', 'month', 'day'];
+    var obj = parse(tmpl, order); //support 'one property' version
+
+    if (obj.year && /[a-z]/i.test(obj.year)) {
+      return natural_date(tmpl, r);
+    }
+
+    r.templates.push(obj);
+    obj = format.ymd([obj.year, obj.month, obj.day]);
+    return format.toText(obj);
+  },
+  'birth year and age': function birthYearAndAge(tmpl, r) {
+    var order = ['birth_year', 'birth_month'];
+    var obj = parse(tmpl, order); //support 'one property' version
+
+    if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
+      return natural_date(tmpl, r);
+    }
+
+    r.templates.push(obj);
+    var age = new Date().getFullYear() - parseInt(obj.birth_year, 10);
+    obj = format.ymd([obj.birth_year, obj.birth_month]);
+    var str = format.toText(obj);
+
+    if (age) {
+      str += " (age ".concat(age, ")");
+    }
+
+    return str;
+  },
+  'death year and age': function deathYearAndAge(tmpl, r) {
+    var order = ['death_year', 'birth_year', 'death_month'];
+    var obj = parse(tmpl, order); //support 'one property' version
+
+    if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
+      return natural_date(tmpl, r);
+    }
+
+    r.templates.push(obj);
+    obj = format.ymd([obj.death_year, obj.death_month]);
+    return format.toText(obj);
+  },
+  //https://en.wikipedia.org/wiki/Template:Birth_date_and_age2
+  'birth date and age2': function birthDateAndAge2(tmpl, r) {
+    var order = ['at_year', 'at_month', 'at_day', 'birth_year', 'birth_month', 'birth_day'];
+    var obj = parse(tmpl, order);
+    r.templates.push(obj);
+    obj = format.ymd([obj.birth_year, obj.birth_month, obj.birth_day]);
+    return format.toText(obj);
+  },
+  //https://en.wikipedia.org/wiki/Template:Birth_based_on_age_as_of_date
+  'birth based on age as of date': function birthBasedOnAgeAsOfDate(tmpl, r) {
+    var order = ['age', 'year', 'month', 'day'];
+    var obj = parse(tmpl, order);
+    r.templates.push(obj);
+    var age = parseInt(obj.age, 10);
+    var year = parseInt(obj.year, 10);
+    var born = year - age;
+
+    if (born && age) {
+      return "".concat(born, " (age ").concat(obj.age, ")");
+    }
+
+    return "(age ".concat(obj.age, ")");
+  },
+  //https://en.wikipedia.org/wiki/Template:Death_date_and_given_age
+  'death date and given age': function deathDateAndGivenAge(tmpl, r) {
+    var order = ['year', 'month', 'day', 'age'];
+    var obj = parse(tmpl, order);
+    r.templates.push(obj);
+    obj = format.ymd([obj.year, obj.month, obj.day]);
+    var str = format.toText(obj);
+
+    if (obj.age) {
+      str += " (age ".concat(obj.age, ")");
+    }
+
+    return str;
   },
   //sortable dates -
   dts: function dts(tmpl) {
@@ -8936,12 +9020,6 @@ var templates = Object.assign({}, misc, {
   'death date': date,
   'start date and age': date,
   'end date and age': date,
-  'birth date and age': date,
-  'death date and age': date,
-  'birth date and given age': date,
-  'death date and given age': date,
-  'birth year and age': parsers.one_year,
-  'death year and age': parsers.one_year,
   //this is insane (hyphen ones are different)
   'start-date': natural_date,
   'end-date': natural_date,
@@ -8953,7 +9031,6 @@ var templates = Object.assign({}, misc, {
   'death-date and given age': natural_date,
   'birthdeathage': parsers.two_dates,
   'dob': date,
-  'bda': date,
   // 'birth date and age2': date,
   'age': parsers.age,
   'age nts': parsers.age,
@@ -8964,16 +9041,20 @@ var templates = Object.assign({}, misc, {
   'age in days': parsers['diff-d'] // 'age in years, months, weeks and days': true,
   // 'age as of date': true,
 
-});
-templates.localday = templates.currentday;
-templates.localdayname = templates.currentdayname;
-templates.localmonth = templates.currentmonth;
-templates.localyear = templates.currentyear;
-templates.currentmonthname = templates.currentmonth;
-templates.currentmonthabbrev = templates.currentmonth;
-module.exports = templates;
+}); //aliases
 
-},{"../_parsers/parse":105,"./_timeSince":109,"./misc":111,"./parsers":112}],111:[function(_dereq_,module,exports){
+dateTmpl.localday = dateTmpl.currentday;
+dateTmpl.localdayname = dateTmpl.currentdayname;
+dateTmpl.localmonth = dateTmpl.currentmonth;
+dateTmpl.localyear = dateTmpl.currentyear;
+dateTmpl.currentmonthname = dateTmpl.currentmonth;
+dateTmpl.currentmonthabbrev = dateTmpl.currentmonth;
+dateTmpl['death date and age'] = dateTmpl['birth date and age'];
+dateTmpl.bda = dateTmpl['birth date and age'];
+dateTmpl['birth date based on age at death'] = dateTmpl['birth based on age as of date'];
+module.exports = dateTmpl;
+
+},{"../_parsers/parse":105,"./_format":107,"./_timeSince":109,"./misc":111,"./parsers":112}],111:[function(_dereq_,module,exports){
 "use strict";
 
 var format = _dereq_('./_format');
@@ -9062,7 +9143,7 @@ var parsers = {
   date: function date(tmpl, r) {
     var order = ['year', 'month', 'date', 'hour', 'minute', 'second', 'timezone'];
     var obj = parse(tmpl, order);
-    var data = ymd([obj.year, obj.month, obj.date]);
+    var data = ymd([obj.year, obj.month, obj.date || obj.day]);
     obj.text = toText(data); //make the replacement string
 
     if (obj.timezone) {
@@ -9099,8 +9180,8 @@ var parsers = {
       date.year = parseInt(str, 10);
     } else {
       //parse the date, using the js date object (for now?)
-      var txt = str.replace(/[a-z]+\/[a-z]+/i);
-      txt = txt.replace(/[0-9]+:[0-9]+(am|pm)?/i);
+      var txt = str.replace(/[a-z]+\/[a-z]+/i, '');
+      txt = txt.replace(/[0-9]+:[0-9]+(am|pm)?/i, '');
       var d = new Date(txt);
 
       if (isNaN(d.getTime()) === false) {
@@ -9433,7 +9514,7 @@ var strip = _dereq_('../_parsers/_strip');
 
 var parse = _dereq_('../_parsers/parse');
 
-var templates = {
+var tmpls = {
   //a strange, newline-based list - https://en.wikipedia.org/wiki/Template:Plainlist
   plainlist: function plainlist(tmpl) {
     tmpl = strip(tmpl); //remove the title
@@ -9526,17 +9607,41 @@ var templates = {
       return '• ' + str;
     });
     return arr.join('\n\n');
+  },
+  //https://en.wikipedia.org/wiki/Template:Columns-list
+  'columns-list': function columnsList(tmpl, r) {
+    var arr = parse(tmpl).list || [];
+    var str = arr[0] || '';
+    var list = str.split(/\n/);
+    list = list.filter(function (f) {
+      return f;
+    });
+    list = list.map(function (s) {
+      return s.replace(/\*/, '');
+    });
+    r.templates.push({
+      template: 'columns-list',
+      list: list
+    });
+    list = list.map(function (s) {
+      return '• ' + s;
+    });
+    return list.join('\n\n');
   } // 'pagelist':(tmpl)=>{},
 
 }; //aliases
 
-templates.flatlist = templates.plainlist;
-templates.ublist = templates.plainlist;
-templates['unbulleted list'] = templates['collapsible list'];
-templates['ubl'] = templates['collapsible list'];
-templates['bare anchored list'] = templates['anchored list'];
-templates['plain list'] = templates['plainlist'];
-module.exports = templates;
+tmpls.flatlist = tmpls.plainlist;
+tmpls.ublist = tmpls.plainlist;
+tmpls['unbulleted list'] = tmpls['collapsible list'];
+tmpls['ubl'] = tmpls['collapsible list'];
+tmpls['bare anchored list'] = tmpls['anchored list'];
+tmpls['plain list'] = tmpls['plainlist'];
+tmpls.cmn = tmpls['columns-list'];
+tmpls.collist = tmpls['columns-list'];
+tmpls['col-list'] = tmpls['columns-list'];
+tmpls.columnslist = tmpls['columns-list'];
+module.exports = tmpls;
 
 },{"../_parsers/_strip":104,"../_parsers/parse":105}],116:[function(_dereq_,module,exports){
 "use strict";
@@ -9712,7 +9817,12 @@ var inline = {
     var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
     tmpl = tmpl.replace(/:/, '|');
     var obj = parse(tmpl, ['text']);
-    var text = obj.text || '';
+    var text = obj.text;
+
+    if (!text) {
+      return '';
+    }
+
     return text[0].toLowerCase() + text.substr(1);
   },
   //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
@@ -9726,7 +9836,12 @@ var inline = {
     var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
     tmpl = tmpl.replace(/:/, '|');
     var obj = parse(tmpl, ['text']);
-    var text = obj.text || '';
+    var text = obj.text;
+
+    if (!text) {
+      return '';
+    }
+
     return text[0].toUpperCase() + text.substr(1);
   },
   'padleft': function padleft() {
