@@ -30,8 +30,6 @@ let str = `{{columns-list|colwidth=15em|
 *[[Earl Balfour]]
 }}`;
 
-// str = ` {{Death date and age|1982|12|27|1931|8|30}}`;
-str = ` {{Birth year and age|1963}} `;
 let doc = wtf(str);
 console.log(doc.text());
 console.log(wtf(str).templates(0));

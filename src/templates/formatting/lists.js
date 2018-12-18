@@ -1,7 +1,7 @@
 const strip = require('../_parsers/_strip');
 const parse = require('../_parsers/parse');
 
-const templates = {
+const tmpls = {
   //a strange, newline-based list - https://en.wikipedia.org/wiki/Template:Plainlist
   plainlist: (tmpl) => {
     tmpl = strip(tmpl);
@@ -80,13 +80,31 @@ const templates = {
     arr = arr.map((str) => '• ' + str);
     return arr.join('\n\n');
   },
+  //https://en.wikipedia.org/wiki/Template:Columns-list
+  'columns-list': (tmpl, r) => {
+    let arr = parse(tmpl).list || [];
+    let str = arr[0] || '';
+    let list = str.split(/\n/);
+    list = list.filter((f) => f);
+    list = list.map((s) => s.replace(/\*/, ''));
+    r.templates.push({
+      template: 'columns-list',
+      list: list
+    });
+    list = list.map((s) => '• ' + s);
+    return list.join('\n\n');
+  },
 // 'pagelist':(tmpl)=>{},
 };
 //aliases
-templates.flatlist = templates.plainlist;
-templates.ublist = templates.plainlist;
-templates['unbulleted list'] = templates['collapsible list'];
-templates['ubl'] = templates['collapsible list'];
-templates['bare anchored list'] = templates['anchored list'];
-templates['plain list'] = templates['plainlist'];
-module.exports = templates;
+tmpls.flatlist = tmpls.plainlist;
+tmpls.ublist = tmpls.plainlist;
+tmpls['unbulleted list'] = tmpls['collapsible list'];
+tmpls['ubl'] = tmpls['collapsible list'];
+tmpls['bare anchored list'] = tmpls['anchored list'];
+tmpls['plain list'] = tmpls['plainlist'];
+tmpls.cmn = tmpls['columns-list'];
+tmpls.collist = tmpls['columns-list'];
+tmpls['col-list'] = tmpls['columns-list'];
+tmpls.columnslist = tmpls['columns-list'];
+module.exports = tmpls;
