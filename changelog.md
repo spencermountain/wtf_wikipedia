@@ -143,6 +143,8 @@
 * handle fetching a large list of titles in sequence
 ### 7.1.1
 * support population, weatherbox templates
+### 7.2.0
+* improved date templates, bugfixes
 
 ---
 
