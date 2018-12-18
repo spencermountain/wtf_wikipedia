@@ -27,9 +27,9 @@ const internal_links = function(links, str) {
     var link = s;
     if (s.match(/\|/)) {
       //replacement link [[link|text]]
-      s = s.replace(/\[\[(.{2,80}?)\]\](\w{0,10})/g, '$1$2'); //remove ['s and keep suffix
-      link = s.replace(/(.{2,60})\|.{0,200}/, '$1'); //replaced links
-      txt = s.replace(/.{2,60}?\|/, '');
+      s = s.replace(/\[\[(.{2,100}?)\]\](\w{0,10})/g, '$1$2'); //remove ['s and keep suffix
+      link = s.replace(/(.{2,100})\|.{0,200}/, '$1'); //replaced links
+      txt = s.replace(/.{2,100}?\|/, '');
       //handle funky case of [[toronto|]]
       if (txt === null && link.match(/\|$/)) {
         link = link.replace(/\|$/, '');
