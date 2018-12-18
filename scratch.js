@@ -4,9 +4,9 @@ const wtf = require('./src/index');
 // const wtf = require('./build');
 
 // (async () => {
-//   var doc = await wtf.fetch('HSBC');
+//   var doc = await wtf.fetch('2016_NBA_Finals');
 //   // var doc = await wtf.random();
-//   console.log(doc.json());
+//   console.log(doc.text());
 // })();
 
 // let doc = readFile('BBDO');
@@ -19,10 +19,10 @@ const wtf = require('./src/index');
 // });
 
 
-let str = `the 30th pitcher in major league history to pitch an [[List of Major League Baseball pitchers who have struck out three batters on nine pitches|immaculate inning]].`;
+let str = `* [[Hud (1986 film)|''Hud'' (1986 film)]], a 1986 Norwegian film`;
 
 let doc = wtf(str);
-// console.log(doc.text());
+console.log(doc.text());
 // console.log(wtf(str).templates(0));
 console.log(doc.links());
 // Alan Bean marriage template
