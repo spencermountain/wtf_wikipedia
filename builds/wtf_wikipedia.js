@@ -1,4 +1,4 @@
-/* wtf_wikipedia v7.2.0
+/* wtf_wikipedia v7.2.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -491,7 +491,7 @@ module.exports.default = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "7.2.0",
+  "version": "7.2.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -10477,10 +10477,20 @@ var templates = {
     r.templates.push(obj);
     var wins = Number(obj.wins);
     var losses = Number(obj.losses);
+    var ties = Number(obj.ties) || 0;
+    var games = wins + losses + ties;
+
+    if (obj.ignore_ties === 'y') {
+      ties = 0;
+    }
+
+    if (ties) {
+      wins += ties / 2;
+    }
 
     var num = _percentage({
       numerator: wins,
-      denominator: wins + losses,
+      denominator: games,
       decimals: 1
     });
 
@@ -10517,8 +10527,8 @@ templates['sfrac'] = templates.frac;
 templates['sqrt'] = templates.radic;
 templates['pct'] = templates.percentage;
 templates['percent'] = templates.percentage;
-templates['winpct'] = templates.percentage;
-templates['winperc'] = templates.percentage;
+templates['winpct'] = templates['winning percentage'];
+templates['winperc'] = templates['winning percentage'];
 module.exports = templates;
 
 },{"../_parsers/parse":105}],128:[function(_dereq_,module,exports){

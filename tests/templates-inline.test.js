@@ -90,6 +90,7 @@ test('inline-with-data', function(t) {
     [`death date and given age`, `{{Death date and given age |1992|03|29 |30}}`],
     [`death year and age`, `{{Death year and age|2017|1967}} `],
     [`birth year and age`, `{{Birth year and age|1963|12}} `],
+    [`winpct`, `{{winpct|1293|844|139}}`]
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);
@@ -121,6 +122,9 @@ test('inline-output', t => {
     [`{{Val|11|22|ul=m/s|p=~}}`, '~11 m/s'],
     [`hello {{Coord|44.112|-87.913}} world`, 'hello 44.112°N, -87.913°W world'],
     [`hello {{Coord|44.112|-87.913|display=title}} world`, 'hello world'],
+    [`{{Winning percentage|30|20|50}}`, `.550`],
+    [`{{Winning percentage|30|20}}`, `.600`],
+    [`{{Winning percentage|30|20|50|ignore_ties=y}}`, `.300`],
   ];
   arr.forEach((a) => {
     t.equal(wtf(a[0]).text(), a[1], a[0]);
