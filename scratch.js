@@ -4,7 +4,7 @@ const wtf = require('./src/index');
 // const wtf = require('./build');
 
 // (async () => {
-//   var doc = await wtf.fetch('2016_NBA_Finals');
+//   var doc = await wtf.fetch('List of Harvard Crimson men\'s ice hockey seasons');
 //   // var doc = await wtf.random();
 //   console.log(doc.text());
 // })();
@@ -19,10 +19,9 @@ const wtf = require('./src/index');
 // });
 
 
-let str = `* [[Hud (1986 film)|''Hud'' (1986 film)]], a 1986 Norwegian film`;
-
+let str = `{{Winning percentage|30|20|50|ignore_ties=y}}`;
 let doc = wtf(str);
 console.log(doc.text());
-// console.log(wtf(str).templates(0));
-console.log(doc.links());
+// // console.log(wtf(str).templates(0));
+// console.log(doc.links());
 // Alan Bean marriage template

@@ -83,9 +83,17 @@ let templates = {
     r.templates.push(obj);
     let wins = Number(obj.wins);
     let losses = Number(obj.losses);
+    let ties = Number(obj.ties) || 0;
+    let games = wins + losses + ties;
+    if (obj.ignore_ties === 'y') {
+      ties = 0;
+    }
+    if (ties) {
+      wins += (ties / 2);
+    }
     let num = percentage({
       numerator: wins,
-      denominator: wins + losses,
+      denominator: games,
       decimals: 1
     });
     if (num === null) {
@@ -115,7 +123,7 @@ templates['sfrac'] = templates.frac;
 templates['sqrt'] = templates.radic;
 templates['pct'] = templates.percentage;
 templates['percent'] = templates.percentage;
-templates['winpct'] = templates.percentage;
-templates['winperc'] = templates.percentage;
+templates['winpct'] = templates['winning percentage'];
+templates['winperc'] = templates['winning percentage'];
 
 module.exports = templates;
