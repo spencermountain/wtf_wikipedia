@@ -1,4 +1,4 @@
-/* wtf_wikipedia v7.2.4
+/* wtf_wikipedia v7.2.5
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -491,7 +491,7 @@ module.exports.default = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "7.2.4",
+  "version": "7.2.5",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -532,9 +532,9 @@ module.exports={
     "cross-fetch": "2.2.3"
   },
   "devDependencies": {
-    "amble": "0.0.7",
     "@babel/core": "7.2.0",
     "@babel/preset-env": "7.2.0",
+    "amble": "0.0.7",
     "babelify": "10.0.0",
     "browserify": "16.2.3",
     "codecov": "3.1.0",
@@ -544,7 +544,7 @@ module.exports={
     "tap-dancer": "0.1.2",
     "tap-spec": "5.0.0",
     "tape": "4.9.1",
-    "uglify-js": "3.4.9"
+    "terser": "^3.12.0"
   },
   "license": "MIT"
 }
@@ -9874,11 +9874,46 @@ var inline = {
     var obj = parse(tmpl, ['text', 'num']);
     var text = obj.text || '';
     return text.padEnd(obj.num, obj.str || '0');
+  },
+  //abbreviation/meaning
+  //https://en.wikipedia.org/wiki/Template:Abbr
+  'abbr': function abbr() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var obj = parse(tmpl, ['abbr', 'meaning', 'ipa']);
+    return obj.abbr;
+  },
+  //https://en.wikipedia.org/wiki/Template:Abbrlink
+  'abbrlink': function abbrlink() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var obj = parse(tmpl, ['abbr', 'page']);
+
+    if (obj.page) {
+      return "[[".concat(obj.page, "|").concat(obj.abbr, "]]");
+    }
+
+    return "[[".concat(obj.abbr, "]]");
+  },
+  //https://en.wikipedia.org/wiki/Template:Hover_title
+  //technically 'h:title'
+  'h': function h() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var obj = parse(tmpl, ['title', 'text']);
+    return obj.text;
+  },
+  //https://en.wikipedia.org/wiki/Template:Finedetail
+  'finedetail': function finedetail() {
+    var tmpl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var obj = parse(tmpl, ['text', 'detail']); //technically references
+
+    return obj.text;
   }
 }; //aliases
 
 inline['str left'] = inline.trunc;
 inline['str crop'] = inline.trunc;
+inline['tooltip'] = inline.abbr;
+inline['abbrv'] = inline.abbr;
+inline['define'] = inline.abbr;
 module.exports = inline;
 
 },{"../_parsers/parse":105}],117:[function(_dereq_,module,exports){
@@ -9889,7 +9924,7 @@ module.exports = inline;
 var punctuation = [// https://en.wikipedia.org/wiki/Template:%C2%B7
 ['·', '·'], ['·', '·'], ['dot', '·'], ['middot', '·'], ['•', ' • '], //yup, oxford comma template
 [',', ','], ['1/2', '1⁄2'], ['1/3', '1⁄3'], ['2/3', '2⁄3'], ['1/4', '1⁄4'], ['3/4', '3⁄4'], ['–', '–'], ['ndash', '–'], ['en dash', '–'], ['spaced ndash', ' – '], ['—', '—'], ['mdash', '—'], ['em dash', '—'], ['number sign', '#'], ['ibeam', 'I'], ['&', '&'], [';', ';'], ['ampersand', '&'], ['snds', ' – '], // these '{{^}}' things are nuts, and used as some ilicit spacing thing.
-['^', ' '], ['!', '|'], ['\\', ' /'], ['`', '`'], ['=', '='], ['bracket', '['], ['[', '['], ['*', '*'], ['asterisk', '*'], ['long dash', '———'], ['clear', '\n\n']];
+['^', ' '], ['!', '|'], ['\\', ' /'], ['`', '`'], ['=', '='], ['bracket', '['], ['[', '['], ['*', '*'], ['asterisk', '*'], ['long dash', '———'], ['clear', '\n\n'], ['h.', 'ḥ']];
 var templates = {};
 punctuation.forEach(function (a) {
   templates[a[0]] = function () {
@@ -11139,6 +11174,11 @@ var parse = _dereq_('../_parsers/parse');
 var misc = {
   'baseball secondary style': function baseballSecondaryStyle(tmpl) {
     var obj = parse(tmpl, ['name']);
+    return obj.name;
+  },
+  'mlbplayer': function mlbplayer(tmpl, r) {
+    var obj = parse(tmpl, ['number', 'name', 'dl']);
+    r.templates.push(obj);
     return obj.name;
   }
 };

@@ -3,6 +3,7 @@ node_modules
 viz
 coverage
 coverage.lcov
+codecov.yml
 npm-debug.log
 package-lock.json
 .nyc_output
