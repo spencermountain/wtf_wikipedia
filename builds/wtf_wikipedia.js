@@ -1,4 +1,4 @@
-/* wtf_wikipedia v7.2.1
+/* wtf_wikipedia v7.2.2
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -491,14 +491,14 @@ module.exports.default = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "7.2.1",
+  "version": "7.2.2",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
-  "main": "./src/index.js",
-  "unpkg": "./builds/wtf_wikipedia.min.js",
+  "main": "builds/wtf_wikipedia.js",
+  "unpkg": "builds/wtf_wikipedia.min.js",
   "scripts": {
     "start": "node ./scripts/demo.js",
     "test": "node ./scripts/test.js",
