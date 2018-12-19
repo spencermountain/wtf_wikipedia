@@ -99,8 +99,16 @@ const parseTable = function(wiki) {
   rows = handleSpans(rows);
   //grab the header rows
   let headers = findHeaders(rows);
-  if (!headers || headers.length === 0) {
+  if (!headers || headers.length <= 1) {
     headers = firstRowHeader(rows);
+    let want = rows[rows.length - 1].length;
+    //try the second row
+    if (headers.length <= 1 && want > 2) {
+      headers = firstRowHeader(rows.slice(1));
+      if (headers.length > 0) {
+        rows = rows.slice(2); //remove them
+      }
+    }
   }
   //index each column by it's header
   let table = rows.map(arr => {

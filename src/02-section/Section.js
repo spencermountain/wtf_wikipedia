@@ -272,6 +272,7 @@ methods.last = methods.lastSibling;
 methods.previousSibling = methods.lastSibling;
 methods.previous = methods.lastSibling;
 methods.citations = methods.references;
+methods.sections = methods.children;
 Object.keys(methods).forEach(k => {
   Section.prototype[k] = methods[k];
 });

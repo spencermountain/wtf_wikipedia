@@ -1,12 +1,13 @@
 const wtf = require('./src/index');
+// const wtf = require('./builds/wtf_wikipedia.min');
 // const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
 // (async () => {
-//   var doc = await wtf.fetch('List of Harvard Crimson men\'s ice hockey seasons');
+//   var doc = await wtf.fetch('2010_Toronto_Blue_Jays_season');
 //   // var doc = await wtf.random();
-//   console.log(doc.text());
+//   console.log(doc.sections('regular season').json());
 // })();
 
 // let doc = readFile('BBDO');
@@ -19,9 +20,24 @@ const wtf = require('./src/index');
 // });
 
 
-let str = `{{Winning percentage|30|20|50|ignore_ties=y}}`;
+let str = `{| class="wikitable"
+|-
+| asdf
+|-
+| Name
+| Country
+| Rank
+|-
+| spencer || canada || captain
+|-
+| john || germany || captain
+|-
+| april || sweden || seargent
+|-
+| may || sweden || caption
+|}`;
 let doc = wtf(str);
-console.log(doc.text());
+console.log(doc.tables(0).json());
 // // console.log(wtf(str).templates(0));
 // console.log(doc.links());
 // Alan Bean marriage template
