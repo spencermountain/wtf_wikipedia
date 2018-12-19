@@ -73,7 +73,12 @@ const firstRowHeader = function(rows) {
   if (rows.length <= 3) {
     return [];
   }
+  let want = rows[rows.length - 1];
   let headers = rows[0].slice(0);
+  //should we try the second row?
+  if (headers.length < want.length && headers.length <= 3) {
+    headers = rows[1].slice(0);
+  }
   headers = headers.map((h) => {
     h = h.replace(/^\! */, '');
     h = parseSentence(h).text();
