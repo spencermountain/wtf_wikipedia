@@ -3,7 +3,7 @@ var echo = require('shelljs').echo;
 var fs = require('fs');
 var browserify = './node_modules/.bin/browserify';
 var derequire = './node_modules/.bin/derequire';
-var uglify = './node_modules/.bin/uglifyjs';
+var terser = './node_modules/.bin/terser';
 
 // ok somehow,
 // for deploys, we want the 'browser' field
@@ -35,7 +35,7 @@ cmd += ' >> ' + uncompressed;
 exec(cmd);
 
 //uglify
-cmd = uglify + ' ' + uncompressed + ' --mangle --compress ';
+cmd = terser + ' ' + uncompressed + ' --mangle --compress ';
 cmd += ' >> ' + compressed;
 exec(cmd);
 

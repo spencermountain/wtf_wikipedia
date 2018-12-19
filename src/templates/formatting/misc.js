@@ -184,10 +184,38 @@ const inline = {
     let text = obj.text || '';
     return text.padEnd(obj.num, obj.str || '0');
   },
+  //abbreviation/meaning
+  //https://en.wikipedia.org/wiki/Template:Abbr
+  'abbr': ( tmpl = '' ) => {
+    let obj = parse(tmpl, ['abbr', 'meaning', 'ipa']);
+    return obj.abbr;
+  },
+  //https://en.wikipedia.org/wiki/Template:Abbrlink
+  'abbrlink': ( tmpl = '' ) => {
+    let obj = parse(tmpl, ['abbr', 'page']);
+    if (obj.page) {
+      return `[[${obj.page}|${obj.abbr}]]`;
+    }
+    return `[[${obj.abbr}]]`;
+  },
+  //https://en.wikipedia.org/wiki/Template:Hover_title
+  //technically 'h:title'
+  'h': ( tmpl = '' ) => {
+    let obj = parse(tmpl, ['title', 'text']);
+    return obj.text;
+  },
+  //https://en.wikipedia.org/wiki/Template:Finedetail
+  'finedetail': ( tmpl = '' ) => {
+    let obj = parse(tmpl, ['text', 'detail']); //technically references
+    return obj.text;
+  },
 };
 
 //aliases
 inline['str left'] = inline.trunc;
 inline['str crop'] = inline.trunc;
+inline['tooltip'] = inline.abbr;
+inline['abbrv'] = inline.abbr;
+inline['define'] = inline.abbr;
 
 module.exports = inline;

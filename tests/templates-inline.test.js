@@ -49,6 +49,15 @@ test('inline-no-data', function(t) {
 * Example 2
 * Example 3
 }}`],
+    [`tooltip`, `{{Tooltip|G|Games played}}`],
+    [`abbrlink`, `{{abbrlink|UK|United Kingdom}}`],
+    [`h`, `{{H:title
+ |spantitle
+ |label
+ |link=yes/no (defaults to "no")
+ |dotted=yes/no (defaults to "yes")
+}}`],
+    [`finedetail`, `{{finedetail |plain text|Is actually very very plain text}}`],
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);
@@ -90,7 +99,8 @@ test('inline-with-data', function(t) {
     [`death date and given age`, `{{Death date and given age |1992|03|29 |30}}`],
     [`death year and age`, `{{Death year and age|2017|1967}} `],
     [`birth year and age`, `{{Birth year and age|1963|12}} `],
-    [`winpct`, `{{winpct|1293|844|139}}`]
+    [`winpct`, `{{winpct|1293|844|139}}`],
+    [`mlbplayer`, `{{mlbplayer|93|Spencer Kelly}}`]
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);

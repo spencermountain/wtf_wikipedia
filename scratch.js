@@ -20,24 +20,54 @@ const wtf = require('./src/index');
 // });
 
 
-let str = `{| class="wikitable"
+let str = `
+The [[2007 Major League Baseball Draft|2007 MLB Draft]] was held on June 7&ndash;8. The Blue Jays had two first round picks, along with five compensation picks.
+{| class="wikitable" style="font-size: 95%; text-align: center;"
 |-
-| asdf
+! style="background:#005ac0;" color:white;"| <span style="color:white;">Round</span>
+! style="background:#005ac0;" color:white;"| <span style="color:white;">Pick</span>
+! style="background:#005ac0;" color:white;"| <span style="color:white;">Player</span>
+! style="background:#005ac0;" color:white;"| <span style="color:white;">Position</span>
+! style="background:#005ac0;" color:white;"| <span style="color:white;">College/School</span>
+! style="background:#005ac0;" color:white;"| <span style="color:white;">Nationality</span>
+! style="background:#005ac0;" color:white;"| <span style="color:white;">Signed</span>
 |-
-| Name
-| Country
-| Rank
+!width="65"|
+!width="45"|
+! style="width:150px;"|
+!width="60"|
+! style="width:250px;"|
+! style="width:100px;"|
+! style="width:100px;"|
 |-
-| spencer || canada || captain
+| 1
+| 16*
+| [[Kevin Ahrens]]
+| 3B
+| [[Memorial High School (Hedwig Village, Texas)|Memorial High School]] ([[Texas|TX]])
+| {{flagicon|United States}}
+| 2007–06–15
 |-
-| john || germany || captain
+| 1
+| 21
+| [[J. P. Arencibia]]
+| C
+| [[Tennessee Volunteers baseball|Tennessee]]
+| {{flagicon|United States}}
+| 2007–06–15
 |-
-| april || sweden || seargent
-|-
-| may || sweden || caption
+| C-A
+| 38*
+| [[Brett Cecil]]
+| LHP
+| [[Maryland Terrapins|Maryland]]
+| {{flagicon|United States}}
+| 2007–06–15
 |}`;
+
 let doc = wtf(str);
-console.log(doc.tables(0).json());
-// // console.log(wtf(str).templates(0));
-// console.log(doc.links());
+console.log(doc.tables(0).keyValue());
+// console.log(wtf(str).templates());
+// console.log(wtf(str).sections('roster').templates('mlbplayer'));
+// console.log(doc.text());
 // Alan Bean marriage template

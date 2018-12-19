@@ -41,6 +41,7 @@ let punctuation = [
   ['asterisk', '*'],
   ['long dash', '———'],
   ['clear', '\n\n'],
+  ['h.', 'ḥ'],
 ];
 const templates = {};
 punctuation.forEach((a) => {
