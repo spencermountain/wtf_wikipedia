@@ -4,9 +4,9 @@ let headings = ['#', 'date', 'opponent', 'score', 'win', 'loss', 'save', 'attend
 
 
 const parseMlb = function(wiki, section) {
-  wiki = wiki.replace(/\{\{mlb game log section[\s\S]+?\{\{mlb game log section end\}\}/gi, (tmpl) => {
+  wiki = wiki.replace(/\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi, (tmpl) => {
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
-    tmpl = tmpl.replace(/\{\{mlb game log section end\}\}/i, '');
+    tmpl = tmpl.replace(/\{\{mlb game log (section|month) end\}\}/i, '');
     let headers = '! ' + headings.join(' !! ');
     let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
     let rows = tableParser(table);

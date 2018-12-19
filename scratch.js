@@ -5,9 +5,9 @@ const wtf = require('./src/index');
 // const wtf = require('./build');
 
 // (async () => {
-//   var doc = await wtf.fetch('List of Harvard Crimson men\'s ice hockey seasons');
+//   var doc = await wtf.fetch('2010_Toronto_Blue_Jays_season');
 //   // var doc = await wtf.random();
-//   console.log(doc.text());
+//   console.log(doc.sections('regular season').json());
 // })();
 
 // let doc = readFile('BBDO');
@@ -21,23 +21,25 @@ const wtf = require('./src/index');
 
 
 let str = `
-{| class="toccolours collapsible"  style="width:90%; clear:both; margin:1.5em auto; text-align:center;"
-|- style="text-align:center;"
- colspan=11 style=background:#005ac0; color:white;" | April
-|-  style="text-align:center; background:black;"
-| '''<span style="color:silver;">#</span>''' || '''<span style="color:silver;">Date</span>''' || '''<span style="color:silver;">Opponent</span>''' || '''<span style="color:silver;">Score</span>''' || '''<span style="color:silver;">Win</span>''' || '''<span style="color:silver;">Loss</span>''' || '''<span style="color:silver;">Save</span>''' || '''<span style="color:silver;">Attendance</span>''' || '''<span style="color:silver;">Record</span>'''|| '''<span style="color:silver;">GB</span>'''
-|-  style="text-align:center; background:#fbb;"
-| 1 || April 5 || @ [[Texas Rangers (baseball)|Rangers]] || 5–4 || [[Frank Francisco|Francisco]] (1–0) || '''[[Jason Frasor|Frasor]]''' (0–1) || || 50,299 || 0–1 || 1
-|-  style="text-align:center; background:#cfc;"
-| 2 || April 7 || @ [[Texas Rangers (baseball)|Rangers]] || 7–4 || '''[[Brian Tallet|Tallet]]''' (1–0) || [[Dustin Nippert|Nippert]] (0–1) || '''[[Jason Frasor|Frasor]]''' (1) || 22,890 || 1–1 || 1
-|-  style="text-align:center; background:#cfc;"
-| 3 || April 8 || @ [[Texas Rangers (baseball)|Rangers]] || 3–1 || '''[[Casey Janssen|Janssen]]''' (1–0) || [[Frank Francisco|Francisco]] (1–1) || '''[[Jason Frasor|Frasor]]''' (2) || 14,707 || 2–1 || —
-|-  style="text-align:center; background:#cfc;"
-| 4 || April 9 || @ [[Baltimore Orioles|Orioles]] || 7–6 || '''[[Casey Janssen|Janssen]]''' (2–0) || [[Mike Gonzalez|Gonzalez]] (0–2) || '''[[Kevin Gregg|Gregg]]''' (1) || 48,891 || 3–1 || —
-|-  style="text-align:center; background:#cfc;"
-|}`;
+== Game log ==
+{{MLB Game log month|month=April|style={{baseball secondary style|Toronto Blue Jays}}|hide=y}}
+|- style="background:#bbffbb"
+| 1 || April 2 || @ [[Detroit Tigers|Tigers]] || 5 – 3 {{small|(10)}} || '''[[Jason Frasor|Frasor]]''' (1-0) || [[Fernando Rodney|Rodney]] (0-1) || '''[[B. J. Ryan|Ryan]]''' (1) || 44,297 || 1-0
+|- style="background:#ffbbbb"
+| 2 || April 4 || @ [[Detroit Tigers|Tigers]] || 10 – 9 || [[Nate Robertson|Robertson]] (1-0) || '''[[A. J. Burnett|Burnett]]''' (0-1) || [[Todd Jones|Jones]] (1) || 24,881 || 1-1
+|- style="background:#bbbbbb"
+| -- || April 5 || @ [[Detroit Tigers|Tigers]] || colspan=6|''Postponed (cold weather)'' {{small|Rescheduled for September 10}}
+|- style="background:#ffbbbb"
+| 22 || April 27 || [[Texas Rangers (baseball)|Rangers]] || 5 – 3 || [[Robinson Tejeda|Tejeda]] (3-1) || '''[[Josh Towers|Towers]]''' (1-3) || [[Akinori Otsuka|Otsuka]] (3) || 24,795 || 11-11
+|- style="background:#ffbbbb"
+| 23 || April 28 || [[Texas Rangers (baseball)|Rangers]] || 9 – 8 {{small|(10)}} || [[Akinori Otsuka|Otsuka]] (1-0) || '''[[Brian Tallet|Tallet]]''' (0-1) || [[Joaquín Benoit|Benoit]] (1) || 24,119 || 11-12
+|- style="background:#bbffbb"
+| 24 || April 29 || [[Texas Rangers (baseball)|Rangers]] || 7 – 3 || '''[[Tomo Ohka|Ohka]]''' (2-2) || [[Brandon McCarthy|McCarthy]] (1-4) || || 27,516 || 12-12
+|- style="background:#bbffbb"
+| 25 || April 30 || [[Texas Rangers (baseball)|Rangers]] || 6 – 1 || '''[[Roy Halladay|Halladay]]''' (4-0) || [[Vicente Padilla|Padilla]] (0-4) || || 19,041 || 13-12
+{{MLB Game log month end}}`;
 let doc = wtf(str);
-console.log(doc.tables(0).json());
+console.log(doc.templates(0));
 // // console.log(wtf(str).templates(0));
 // console.log(doc.links());
 // Alan Bean marriage template

@@ -58,7 +58,13 @@ const fetchPage = function( pages = [] , a, b, c) {
     pages = [pages];
   }
   let {lang, options, callback} = getParams(a, b, c);
-  return new Promise(function(resolve) {
+  return new Promise(function(resolve, reject) {
+    // courtesy-check for spamming wp servers
+    if (pages.length > 500) {
+      console.error('wtf_wikipedia error: Requested ' + pages.length + ' pages.');
+      reject('Requested too many pages, exiting.');
+      return;
+    }
     doPages(pages, [], lang, options, (docs) => {
       docs = docs.filter((d) => d !== null);
       //return the first doc, if we only asked for one
