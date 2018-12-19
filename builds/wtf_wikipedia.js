@@ -1,4 +1,4 @@
-/* wtf_wikipedia v7.2.3
+/* wtf_wikipedia v7.2.4
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -491,7 +491,7 @@ module.exports.default = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "7.2.3",
+  "version": "7.2.4",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -1677,6 +1677,7 @@ methods.last = methods.lastSibling;
 methods.previousSibling = methods.lastSibling;
 methods.previous = methods.lastSibling;
 methods.citations = methods.references;
+methods.sections = methods.children;
 Object.keys(methods).forEach(function (k) {
   Section.prototype[k] = methods[k];
 }); //add alises, too
@@ -2233,9 +2234,9 @@ var tableParser = _dereq_('../table/parse');
 var headings = ['#', 'date', 'opponent', 'score', 'win', 'loss', 'save', 'attendance', 'record']; //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
 
 var parseMlb = function parseMlb(wiki, section) {
-  wiki = wiki.replace(/\{\{mlb game log section[\s\S]+?\{\{mlb game log section end\}\}/gi, function (tmpl) {
+  wiki = wiki.replace(/\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi, function (tmpl) {
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
-    tmpl = tmpl.replace(/\{\{mlb game log section end\}\}/i, '');
+    tmpl = tmpl.replace(/\{\{mlb game log (section|month) end\}\}/i, '');
     var headers = '! ' + headings.join(' !! ');
     var table = '{|\n' + headers + '\n' + tmpl + '\n|}';
     var rows = tableParser(table);
@@ -2688,7 +2689,13 @@ var firstRowHeader = function firstRowHeader(rows) {
     return [];
   }
 
-  var headers = rows[0].slice(0);
+  var want = rows[rows.length - 1];
+  var headers = rows[0].slice(0); //should we try the second row?
+
+  if (headers.length < want.length && headers.length <= 3) {
+    headers = rows[1].slice(0);
+  }
+
   headers = headers.map(function (h) {
     h = h.replace(/^\! */, '');
     h = parseSentence(h).text();
@@ -2719,8 +2726,9 @@ var parseTable = function parseTable(wiki) {
 
   var headers = findHeaders(rows);
 
-  if (!headers || headers.length === 0) {
+  if (!headers || headers.length <= 1) {
     headers = firstRowHeader(rows);
+    rows = rows.slice(1);
   } //index each column by it's header
 
 
@@ -7318,7 +7326,14 @@ var fetchPage = function fetchPage() {
       options = _getParams.options,
       callback = _getParams.callback;
 
-  return new Promise(function (resolve) {
+  return new Promise(function (resolve, reject) {
+    // courtesy-check for spamming wp servers
+    if (pages.length > 500) {
+      console.error('wtf_wikipedia error: Requested ' + pages.length + ' pages.');
+      reject('Requested too many pages, exiting.');
+      return;
+    }
+
     doPages(pages, [], lang, options, function (docs) {
       docs = docs.filter(function (d) {
         return d !== null;
