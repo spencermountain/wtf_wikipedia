@@ -20,54 +20,16 @@ const wtf = require('./src/index');
 // });
 
 
-let str = `
-The [[2007 Major League Baseball Draft|2007 MLB Draft]] was held on June 7&ndash;8. The Blue Jays had two first round picks, along with five compensation picks.
-{| class="wikitable" style="font-size: 95%; text-align: center;"
-|-
-! style="background:#005ac0;" color:white;"| <span style="color:white;">Round</span>
-! style="background:#005ac0;" color:white;"| <span style="color:white;">Pick</span>
-! style="background:#005ac0;" color:white;"| <span style="color:white;">Player</span>
-! style="background:#005ac0;" color:white;"| <span style="color:white;">Position</span>
-! style="background:#005ac0;" color:white;"| <span style="color:white;">College/School</span>
-! style="background:#005ac0;" color:white;"| <span style="color:white;">Nationality</span>
-! style="background:#005ac0;" color:white;"| <span style="color:white;">Signed</span>
-|-
-!width="65"|
-!width="45"|
-! style="width:150px;"|
-!width="60"|
-! style="width:250px;"|
-! style="width:100px;"|
-! style="width:100px;"|
-|-
-| 1
-| 16*
-| [[Kevin Ahrens]]
-| 3B
-| [[Memorial High School (Hedwig Village, Texas)|Memorial High School]] ([[Texas|TX]])
-| {{flagicon|United States}}
-| 2007–06–15
-|-
-| 1
-| 21
-| [[J. P. Arencibia]]
-| C
-| [[Tennessee Volunteers baseball|Tennessee]]
-| {{flagicon|United States}}
-| 2007–06–15
-|-
-| C-A
-| 38*
-| [[Brett Cecil]]
-| LHP
-| [[Maryland Terrapins|Maryland]]
-| {{flagicon|United States}}
-| 2007–06–15
-|}`;
-
+let str = `{{MLB game log section|style={{Baseball secondary style|New York Yankees}}|stadium=y}}
+|- bgcolor=#fbb
+| [http://gd2.mlb.com/content/game/mlb/year_2018/month_10/day_05/gid_2018_10_05_nyamlb_bosmlb_1/boxscore_col.html 1] || October 5 || @ [[2018 Boston Red Sox season|Red Sox]] || 4−5 || [[Chris Sale|Sale]] (1–0) || '''[[J.A. Happ|Happ]]''' (0–1) || [[Craig Kimbrel|Kimbrel]] (1) || [[Fenway Park]] || 39,059 || 0–1
+|- bgcolor=#bfb
+| [http://gd2.mlb.com/content/game/mlb/year_2018/month_10/day_06/gid_2018_10_06_nyamlb_bosmlb_1/boxscore_col.html 2] || October 6 || @ [[2018 Boston Red Sox season|Red Sox]] || 6−2 || '''[[Masahiro Tanaka|Tanaka]]''' (1–0) || [[David Price (baseball)|Price]] (0–1) || — || [[Fenway Park]] || 39,151 || 1−1
+{{MLB game log section end}}
+`;
 let doc = wtf(str);
-console.log(doc.tables(0).keyValue());
-// console.log(wtf(str).templates());
+// console.log(doc.tables(0));
+console.log(wtf(str).templates(0).data);
 // console.log(wtf(str).sections('roster').templates('mlbplayer'));
-// console.log(doc.text());
+console.log(doc.text());
 // Alan Bean marriage template

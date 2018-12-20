@@ -45,6 +45,26 @@ test('mlb-start-end', function(t) {
   t.end();
 });
 
+test('mlb-start-end-fancy', function(t) {
+  var str = `hello world
+  {{MLB game log section|style={{Baseball secondary style|New York Yankees}}|stadium=y}}
+  |- bgcolor=#fbb
+  | [http://gd2.mlb.com/content/game/mlb/year_2018/month_10/day_05/gid_2018_10_05_nyamlb_bosmlb_1/boxscore_col.html 1] || October 5 || @ [[2018 Boston Red Sox season|Red Sox]] || 4−5 || [[Chris Sale|Sale]] (1–0) || '''[[J.A. Happ|Happ]]''' (0–1) || [[Craig Kimbrel|Kimbrel]] (1) || [[Fenway Park]] || 39,059 || 0–1
+  |- bgcolor=#bfb
+  | [http://gd2.mlb.com/content/game/mlb/year_2018/month_10/day_06/gid_2018_10_06_nyamlb_bosmlb_1/boxscore_col.html 2] || October 6 || @ [[2018 Boston Red Sox season|Red Sox]] || 6−2 || '''[[Masahiro Tanaka|Tanaka]]''' (1–0) || [[David Price (baseball)|Price]] (0–1) || — || [[Fenway Park]] || 39,151 || 1−1
+  {{MLB game log section end}}`;
+  var doc = wtf(str);
+  t.equal(doc.text(), 'hello world', 'text');
+  t.equal(doc.templates().length, 1, 'got-template');
+  let rows = doc.templates(0).data;
+  t.equal(rows.length, 2, 'got-both rows');
+  t.equal(rows[0].stadium, 'Fenway Park', 'got stadium');
+  t.equal(rows[0].attendance, '39,059', 'got attendance');
+  t.equal(rows[1].stadium, 'Fenway Park', 'got stadium2');
+  t.equal(rows[1].attendance, '39,151', 'got attendance2');
+  t.end();
+});
+
 test('mma-start-end', function(t) {
   var str = `hello world
   {{MMA record start}}
