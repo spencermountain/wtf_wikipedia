@@ -101,7 +101,7 @@ wtf.fetch('Whistling').then(doc => {
 ```
 ***on the client-side:***
 ```html
-<script src="https://unpkg.com/wtf_wikipedia@latest/builds/wtf_wikipedia.min.js"></script>
+<script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
   //(follows redirect)
   wtf.fetch('On a Friday', 'en', function(err, doc) {
