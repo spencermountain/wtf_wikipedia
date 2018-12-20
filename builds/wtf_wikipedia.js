@@ -1,4 +1,4 @@
-/* wtf_wikipedia v7.2.5
+/* wtf_wikipedia v7.2.6
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -491,7 +491,7 @@ module.exports.default = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "7.2.5",
+  "version": "7.2.6",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -980,7 +980,9 @@ function preProcess(r, wiki, options) {
 
   wiki = kill_xml(wiki, r, options); //({{template}},{{template}}) leaves empty parentheses
 
-  wiki = wiki.replace(/\([,;: ]+?\)/g, '');
+  wiki = wiki.replace(/\([,;: ]+?\)/g, ''); //these templates just screw things up, too
+
+  wiki = wiki.replace(/{{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '');
   return wiki;
 }
 
@@ -2229,12 +2231,31 @@ module.exports = parseMath;
 },{"../../04-sentence/":58}],28:[function(_dereq_,module,exports){
 "use strict";
 
-var tableParser = _dereq_('../table/parse');
+var tableParser = _dereq_('../table/parse'); //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
+//this is pretty nuts
 
-var headings = ['#', 'date', 'opponent', 'score', 'win', 'loss', 'save', 'attendance', 'record']; //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
+
+var whichHeadings = function whichHeadings(tmpl) {
+  var headings = ['#', 'date', 'opponent', 'score', 'win', 'loss', 'save', 'attendance', 'record'];
+
+  if (/\|stadium=y/i.test(tmpl) === true) {
+    headings.splice(7, 0, 'stadium'); //save, stadium, attendance
+  }
+
+  if (/\|time=y/i.test(tmpl) === true) {
+    headings.splice(7, 0, 'time'); //save, time, stadium, attendance
+  }
+
+  if (/\|box=y/i.test(tmpl) === true) {
+    headings.push('box'); //record, box
+  }
+
+  return headings;
+};
 
 var parseMlb = function parseMlb(wiki, section) {
   wiki = wiki.replace(/\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi, function (tmpl) {
+    var headings = whichHeadings(tmpl);
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
     tmpl = tmpl.replace(/\{\{mlb game log (section|month) end\}\}/i, '');
     var headers = '! ' + headings.join(' !! ');
@@ -2722,9 +2743,9 @@ var parseTable = function parseTable(wiki) {
 
   if (!headers || headers.length <= 1) {
     headers = firstRowHeader(rows);
-    var want = rows[rows.length - 1].length; //try the second row
+    var want = rows[rows.length - 1] || []; //try the second row
 
-    if (headers.length <= 1 && want > 2) {
+    if (headers.length <= 1 && want.length > 2) {
       headers = firstRowHeader(rows.slice(1));
 
       if (headers.length > 0) {
