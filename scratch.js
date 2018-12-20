@@ -41,7 +41,7 @@ let str = `{{MLB game log|style={{Baseball primary style|New York Yankees}};|yea
 `;
 let doc = wtf(str);
 // console.log(doc.tables(0));
-console.log(wtf(str).templates());
+console.log(doc.templates());
 // console.log(wtf(str).sections('roster').templates('mlbplayer'));
 // console.log(doc.text());
 // Alan Bean marriage template
