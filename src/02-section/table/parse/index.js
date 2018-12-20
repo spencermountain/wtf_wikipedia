@@ -101,9 +101,9 @@ const parseTable = function(wiki) {
   let headers = findHeaders(rows);
   if (!headers || headers.length <= 1) {
     headers = firstRowHeader(rows);
-    let want = rows[rows.length - 1].length;
+    let want = rows[rows.length - 1] || [];
     //try the second row
-    if (headers.length <= 1 && want > 2) {
+    if (headers.length <= 1 && want.length > 2) {
       headers = firstRowHeader(rows.slice(1));
       if (headers.length > 0) {
         rows = rows.slice(2); //remove them
