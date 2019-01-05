@@ -400,38 +400,6 @@
     }
   ],
 
-  "Table": [
-    {
-      "name": "links",
-      "returns": "Array",
-      "description": ""
-    },
-    {
-      "name": "markdown",
-      "returns": "String",
-      "description": ""
-    },
-    {
-      "name": "html",
-      "returns": "String",
-      "description": ""
-    },
-    {
-      "name": "json",
-      "returns": "Object",
-      "description": ""
-    },
-    {
-      "name": "latex",
-      "returns": "String",
-      "description": ""
-    },
-    {
-      "name": "text",
-      "returns": "String",
-      "description": ""
-    }
-  ],
 
   "Image": [
     {
@@ -480,7 +448,7 @@
       "description": "does nothing"
     }
   ],
-"infobox":[
+"Infobox":[
 
       {
         "name": "links",
@@ -489,7 +457,7 @@
         "description": ""
       },
       {
-        "name": "keyValye",
+        "name": "keyValue",
         "returns": "Array",
         "example": "",
         "description": "generate simple key:value strings from this infobox"
@@ -512,8 +480,6 @@
         "example": "",
         "description": "which infobox, eg 'Infobox Person'"
       },
-
-
       {
         "name": "markdown",
         "returns": "String",
@@ -545,7 +511,7 @@
         "description": "generate some generic 'stringifyable' data for this infobox"
       }
 ],
-"list":[
+"List":[
   {
     "name": "lines",
     "returns": "Array",
@@ -590,7 +556,7 @@
     "description": "generate some generic easily-parsable data for this list"
   }
 ],
-"reference":[
+"Reference":[
 
   {
     "name": "title",
@@ -636,7 +602,7 @@
     "description": "generate some generic metadata data for this reference"
   }
 ],
-"table":[
+"Table":[
   {
     "name": "links",
     "returns": "Array",
@@ -644,7 +610,7 @@
     "description": "get any links mentioned in this table"
   },
   {
-    "name": "keyValyue",
+    "name": "keyValue",
     "returns": "Object",
     "example": "",
     "description": "generate a simple list of key:value objects for this table"

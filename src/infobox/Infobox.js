@@ -42,7 +42,7 @@ const methods = {
     obj.text = '';
     return new Image(obj);
   },
-  get : function(key) {
+  get : function( key = '' ) {
     key = key.toLowerCase();
     let keys = Object.keys(this.data);
     for(let i = 0; i < keys.length; i += 1) {

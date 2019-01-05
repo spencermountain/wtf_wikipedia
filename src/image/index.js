@@ -4,6 +4,7 @@ const parseSentence = require('../04-sentence').oneSentence;
 const isFile = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i');
 let fileNames = `(${i18n.images.concat(i18n.files).join('|')})`;
 const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'i');
+const altText = /^alt ?=/i;
 
 //style directives for Wikipedia:Extended_image_syntax
 const imgLayouts = {
@@ -42,10 +43,17 @@ const oneImage = function(img) {
     //try to grab other metadata, too
     img = img.replace(/^\[\[/, '');
     img = img.replace(/\]\]$/, '');
+
     //https://en.wikipedia.org/wiki/Wikipedia:Extended_image_syntax
-    // [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
+    // - [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
     let arr = img.split('|');
     arr = arr.slice(1);
+    //parse-out alt text, if explicitly given
+    arr.forEach((s) => {
+      if (altText.test(s) === true) {
+        obj.alt = s.replace(altText, '');
+      }
+    });
     //remove 'thumb' and things
     arr = arr.filter((str) => imgLayouts.hasOwnProperty(str) === false);
     if (arr[arr.length - 1]) {
