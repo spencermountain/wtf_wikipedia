@@ -33,6 +33,10 @@ const findRows = function(lines) {
     } else {
       //look for '||' inline row-splitter
       line = line.split(/(?:\|\||!!)/);
+      //support newline -> '||'
+      if (!line[0] && line[1]) {
+        line.shift();
+      }
       line.forEach((l) => {
         l = l.replace(/^\| */, '');
         l = l.trim();
