@@ -2,6 +2,7 @@ const fetch = require('cross-fetch');
 const toMarkdown = require('./toMarkdown');
 const toHtml = require('./toHtml');
 const toLatex = require('./toLatex');
+const toJson = require('./toJson');
 const server = 'https://wikipedia.org/wiki/Special:Redirect/file/';
 const aliasList = require('../_lib/aliases');
 
@@ -40,10 +41,16 @@ const methods = {
     return str.replace(/_/g, ' ');
   },
   caption() {
-    return this.data.text || '';
+    if (this.data.caption) {
+      return this.data.caption.text();
+    }
+    return '';
   },
   links() {
-    return []; //not ready yet
+    if (this.data.caption) {
+      return this.data.caption.links();
+    }
+    return [];
   },
   url() {
     return server + makeSrc(this.file());
@@ -85,12 +92,9 @@ const methods = {
     options = options || {};
     return toHtml(this, options);
   },
-  json: function() {
-    return {
-      file: this.file(),
-      url: this.url(),
-      thumb: this.thumbnail(),
-    };
+  json: function(options) {
+    options = options || {};
+    return toJson(this, options);
   },
   text: function() {
     return '';
