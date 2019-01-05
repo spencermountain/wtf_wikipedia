@@ -70,3 +70,15 @@ test('from-infobox', t => {
   t.equal(doc.infobox(0).images(0).thumb(), 'https://wikipedia.org/wiki/Special:Redirect/file/Marc_Emery_and_Jodie_Emery.JPG?width=300', 'has correct thumbnail');
   t.end();
 });
+
+test('img-alt', t => {
+  let str = `[[File:Wikipedesketch1.png|thumb|alt=A cartoon centipede detailed description.|The Wikipede edits ''[[Myriapoda]]''.]]`;
+  let img = wtf(str).images(0).json();
+  t.equal(img.file, 'File:Wikipedesketch1.png', 'file');
+  t.equal(img.thumb, 'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png?width=300', 'thumb');
+  t.equal(img.url, 'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png', 'image');
+  t.equal(img.caption, 'The Wikipede edits Myriapoda.', 'caption');
+  t.equal(img.alt, 'A cartoon centipede detailed description.', 'alt');
+  t.equal(img.links[0].page, 'Myriapoda', 'links');
+  t.end();
+});

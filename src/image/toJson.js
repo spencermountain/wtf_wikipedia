@@ -2,6 +2,7 @@ const setDefaults = require('../_lib/setDefaults');
 
 const defaults = {
   caption: true,
+  alt: true,
   links: true,
   thumb: true,
   url: true,
@@ -24,6 +25,9 @@ const toJson = function(img, options) {
     if (options.links !== false && img.data.caption.links()) {
       json.links = img.links();
     }
+  }
+  if (options.alt !== false && img.data.alt) {
+    json.alt = img.alt();
   }
   return json;
 };
