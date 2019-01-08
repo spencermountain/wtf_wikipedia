@@ -16,7 +16,8 @@ let i18n = {
     'bestand',
     'датотека',
     'dosya',
-    'fil'
+    'fil',
+    'ファイル'
   ],
   images: ['image'],
   templates: [
@@ -94,7 +95,8 @@ let i18n = {
     'spécial',
     'speciaal',
     'посебно',
-    'özel'
+    'özel',
+    '特別'
   ],
   users: [
     'удзельнік',
@@ -110,7 +112,8 @@ let i18n = {
     'utilisateur',
     'gebruiker',
     'корисник',
-    'kullanıcı'
+    'kullanıcı',
+    '利用者'
   ],
   disambigs: [
     'disambig', //en
@@ -127,7 +130,8 @@ let i18n = {
     'desambiguação', //pt
     'homonymie', //fr
     'неоднозначность', //ru
-    'anlam ayrımı' //tr
+    'anlam ayrımı', //tr
+    '曖昧さ回避' //ja
   ],
   infoboxes: [
     'infobox',
@@ -148,7 +152,11 @@ let i18n = {
     'further reading',
     'notes et références',
     'voir aussi',
-    'liens externes'
+    'liens externes',
+    '参考文献', //references (ja)
+    '脚注', //citations (ja)
+    '関連項目', //see also (ja)
+    '外部リンク' //external links (ja)
   ]
 };
 
