@@ -3,9 +3,11 @@ const i18nReg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]',
 //some looser ones
 const startReg = /^infobox /i;
 const endReg = / infobox$/i;
+const yearIn = /$Year in [A-Z]/i;
 
 //some known ones from
 // https://en.wikipedia.org/wiki/Wikipedia:List_of_infoboxes
+// and https://en.wikipedia.org/wiki/Category:Infobox_templates
 const known = {
   'gnf protein box': true,
   'automatic taxobox': true,
@@ -21,7 +23,26 @@ const known = {
   'speciesbox': true,
   'subspeciesbox': true,
   'starbox short': true,
-  'taxobox': true
+  'taxobox': true,
+  'nhlteamseason': true,
+  'asian games bid': true,
+  'canadian federal election results': true,
+  'dc thomson comic strip': true,
+  'daytona 24 races': true,
+  'edencharacter': true,
+  'moldova national football team results': true,
+  'samurai': true,
+  'protein': true,
+  'sheet authority': true,
+  'order-of-approx': true,
+  'bacterial labs': true,
+  'medical resources': true,
+  'ordination': true,
+  'hockey team coach': true,
+  'hockey team gm': true,
+  'hockey team player': true,
+  'hockey team start': true,
+  'mlbbioret': true,
 };
 //
 const isInfobox = function(name) {
@@ -33,6 +54,10 @@ const isInfobox = function(name) {
     return true;
   }
   if (startReg.test(name) || endReg.test(name)) {
+    return true;
+  }
+  //these are also infoboxes: 'Year in Belarus'
+  if (yearIn.test(name)) {
     return true;
   }
   return false;

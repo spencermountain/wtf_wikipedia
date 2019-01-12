@@ -1,4 +1,4 @@
-/* wtf_wikipedia v7.2.7
+/* wtf_wikipedia v7.2.8
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -491,7 +491,7 @@ module.exports.default = fetch;
 module.exports={
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "7.2.7",
+  "version": "7.2.8",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -8424,8 +8424,10 @@ var i18n = _dereq_('../_data/i18n');
 var i18nReg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i'); //some looser ones
 
 var startReg = /^infobox /i;
-var endReg = / infobox$/i; //some known ones from
+var endReg = / infobox$/i;
+var yearIn = /$Year in [A-Z]/i; //some known ones from
 // https://en.wikipedia.org/wiki/Wikipedia:List_of_infoboxes
+// and https://en.wikipedia.org/wiki/Category:Infobox_templates
 
 var known = {
   'gnf protein box': true,
@@ -8442,7 +8444,26 @@ var known = {
   'speciesbox': true,
   'subspeciesbox': true,
   'starbox short': true,
-  'taxobox': true
+  'taxobox': true,
+  'nhlteamseason': true,
+  'asian games bid': true,
+  'canadian federal election results': true,
+  'dc thomson comic strip': true,
+  'daytona 24 races': true,
+  'edencharacter': true,
+  'moldova national football team results': true,
+  'samurai': true,
+  'protein': true,
+  'sheet authority': true,
+  'order-of-approx': true,
+  'bacterial labs': true,
+  'medical resources': true,
+  'ordination': true,
+  'hockey team coach': true,
+  'hockey team gm': true,
+  'hockey team player': true,
+  'hockey team start': true,
+  'mlbbioret': true
 }; //
 
 var isInfobox = function isInfobox(name) {
@@ -8456,6 +8477,11 @@ var isInfobox = function isInfobox(name) {
   }
 
   if (startReg.test(name) || endReg.test(name)) {
+    return true;
+  } //these are also infoboxes: 'Year in Belarus'
+
+
+  if (yearIn.test(name)) {
     return true;
   }
 
@@ -11049,6 +11075,7 @@ var templates = {
   //https://en.wikipedia.org/wiki/Template:Historical_populations
   'historical populations': function historicalPopulations(tmpl, r) {
     var data = parse(tmpl);
+    data.list = data.list || [];
     var years = [];
 
     for (var i = 0; i < data.list.length; i += 2) {
