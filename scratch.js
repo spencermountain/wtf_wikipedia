@@ -43,10 +43,38 @@ const wtf = require('./src/index');
 // |147||September 14||@ [[2018 Philadelphia Phillies season|Phillies]] || 2–14 || [[Zach Eflin|Eflin]] (10–7) || '''[[Wei-Yin Chen|Chen]]''' (6–11) || — || 21,671 || 57–90 || L4
 // |}
 // `;
-str = `{{Historical populations|35=1940|36=7319|37=1950|38=6530|39=1960|40=5141|41=1970|42=4205|43=1980|44=3251|45=1990|46=2742|47=2000|48=2540|49=2010|50=2714|type=USA|align-fn=center|source=PGHSNAP Census Data|footnote=}}`;
+
+// {{NHLBracket-reseed
+
+let str = `{|class="wikitable" cellpadding="0" cellspacing="0" style="font-size: 85%; text-align: center;"
+|-
+! style="width:14%; background: #FFCCCC;" | Team
+! style="width:25%; background: #FFCCCC;" | Arena
+! style="width:10%;background: #FFCCCC;" | Years used
+! style="width:5%; background: #FFCCCC;" | Capacity
+! style="width:3%;background: #FFCCCC;" | Opened
+! style="width:15%; background: #FFCCCC;" | Location
+! style="width:3%;background: #FFCCCC;" | Reference
+|-
+! style="background: #ececec;" rowspan=3 | [[Boston Bruins]]
+|-
+| [[Boston Garden]]
+| 1928–1995
+| 14,448
+| 1928
+| rowspan=2 | [[Boston, Massachusetts]]
+| <ref>{{cite web |url=http://hockey.ballparks.com/NHL/BostonBruins/oldindex.htm|title=Boston Garden|publisher=Ballparks.com|accessdate=May 16, 2007}}</ref>
+|-
+| [[Boston Arena]]
+| 1924–1928
+| 5,900
+| 1910
+| <ref>{{cite web|first=Allan|last=Muir|title=Seven Wonders of the Hockey World: Places a fan must visit|url=https://www.si.com/nhl/2015/08/21/seven-wonders-hockey-world-places|website=SI.com|date=August 21, 2015|accessdate=August 7, 2018}}</ref>
+|-
+|}`;
 
 let doc = wtf(str);
-console.log(doc.templates());
+console.log(doc.tables(0).keyValue());
 // console.log(doc.tables(0).keyValue());
 // console.log(doc.images(0).json());
 // console.log(wtf(str).sections('roster').templates('mlbplayer'));
