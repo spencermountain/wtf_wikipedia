@@ -13,7 +13,9 @@ const misc = {
 
 };
 
+
 module.exports = Object.assign({},
   misc,
-  require('./soccer')
+  require('./brackets'),
+  require('./soccer'),
 );
