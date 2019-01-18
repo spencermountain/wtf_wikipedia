@@ -79,5 +79,9 @@ flags.forEach((a) => {
     return a[0];
   };
 });
+//cricket
+templates['cr'] = templates.flagcountry;
+templates['cr-rt'] = templates.flagcountry;
+templates['cricon'] = templates.flagicon;
 
 module.exports = templates;

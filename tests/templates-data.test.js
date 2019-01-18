@@ -188,3 +188,40 @@ test('test-flexible-format', function(t) {
   t.equal(doc.templates().length, 1, 'got-template2');
   t.end();
 });
+
+test('playoff-brackets', function(t) {
+  var str = `{{4TeamBracket
+  | RD2         = Final
+
+  | seed-width  =
+  | team-width  = 120px
+  | score-width = 110px
+
+  | RD1-seed1   = A1
+  | RD1-team1   = {{cr|AUS}}
+  | RD1-score1  = 259/9 (50 overs)
+  | RD1-seed2   = D1
+  | RD1-team2   = '''{{cr|ENG}}'''
+  | RD1-score2  = '''262/4 (46.3 overs)'''
+
+  | RD1-seed3   = C1
+  | RD1-team3   = {{cr|PAK}}
+  | RD1-score3  = 131 (38.2 overs)
+  | RD1-seed4   = B1
+  | RD1-team4   = '''{{cr|WIN}}'''
+  | RD1-score4  = '''132/3 (28.1 overs)'''
+
+  | RD2-seed1   = D1
+  | RD2-team1   = {{cr|ENG}}
+  | RD2-score1  = 217 (49.4 overs)
+  | RD2-seed2   = B1
+  | RD2-team2   = '''{{cr|WIN}}'''
+  | RD2-score2  = '''218/8 (48.5 overs)'''
+  }}`;
+  let doc = wtf(str);
+  let rounds = doc.templates(0).rounds;
+  t.equal(rounds.length, 2, 'two rounds');
+  let final = rounds[1][0];
+  t.equal(final[0].score, '217 (49.4 overs)', 'got score');
+  t.end();
+});
