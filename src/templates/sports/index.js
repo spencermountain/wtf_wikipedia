@@ -9,7 +9,7 @@ const misc = {
     let obj = parse(tmpl, ['number', 'name', 'dl']);
     r.templates.push(obj);
     return obj.name;
-  },
+  }
 
 };
 
@@ -17,5 +17,5 @@ const misc = {
 module.exports = Object.assign({},
   misc,
   require('./brackets'),
-  require('./soccer'),
+  require('./soccer')
 );
