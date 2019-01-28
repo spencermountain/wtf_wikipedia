@@ -19,9 +19,10 @@ const wtf = require('./src/index');
 //   console.warn(docList);
 // });
 
-let doc = wtf('{{some_template|link=[https://google.com google]}}');
-console.log(doc.data);
-
+// let doc = wtf('{{some_template|link=[https://google.com google]}}');
+let str = `[[File:Volkswagen W12.jpg|thumb|upright|[[Volkswagen Group]] W12 engine from the [[Volkswagen Phaeton|Volkswagen Phaeton W12]]]]`;
+let doc = wtf(str);
+console.log(doc.images(0).json());
 // console.log(wtf.version);
 
 // console.log(doc.templates(0).rounds[0]);
