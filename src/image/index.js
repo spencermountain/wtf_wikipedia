@@ -1,10 +1,11 @@
 const i18n = require('../_data/i18n');
 const Image = require('./Image');
+const parseTemplate = require('../templates/_parsers/parse');
 const parseSentence = require('../04-sentence').oneSentence;
+//regexes:
 const isFile = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i');
 let fileNames = `(${i18n.images.concat(i18n.files).join('|')})`;
 const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'i');
-const altText = /^alt ?=/i;
 
 //style directives for Wikipedia:Extended_image_syntax
 const imgLayouts = {
@@ -46,14 +47,12 @@ const oneImage = function(img) {
 
     //https://en.wikipedia.org/wiki/Wikipedia:Extended_image_syntax
     // - [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
-    let arr = img.split('|');
-    arr = arr.slice(1);
+    let imgData = parseTemplate(img);
+    let arr = imgData.list || [];
     //parse-out alt text, if explicitly given
-    arr.forEach((s) => {
-      if (altText.test(s) === true) {
-        obj.alt = s.replace(altText, '');
-      }
-    });
+    if (imgData.alt) {
+      obj.alt = imgData.alt;
+    }
     //remove 'thumb' and things
     arr = arr.filter((str) => imgLayouts.hasOwnProperty(str) === false);
     if (arr[arr.length - 1]) {
@@ -63,9 +62,6 @@ const oneImage = function(img) {
   }
   return null;
 };
-
-// console.log(parse_image("[[image:my_pic.jpg]]"));
-
 
 const parseImages = function(matches, r, wiki) {
   matches.forEach(function(s) {

@@ -15,6 +15,9 @@ exec('mv ./package.json ./package.json.backup');
 delete pkg.browser;
 fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2));
 
+//make a small file for our version number
+fs.writeFileSync('./src/_version.js', `module.exports = '${pkg.version}'`);
+
 //final build locations
 var banner = '/* wtf_wikipedia v' + pkg.version + '\n   github.com/spencermountain/wtf_wikipedia\n   MIT\n*/\n';
 var uncompressed = './builds/wtf_wikipedia.js';

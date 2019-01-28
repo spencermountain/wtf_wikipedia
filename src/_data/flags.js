@@ -1225,6 +1225,11 @@ module.exports = [
     'vanuatu'
   ],
   [
+    '',
+    'win',
+    'west indies'
+  ],
+  [
     '🇼🇫',
     'wlf',
     'wallis and futuna'

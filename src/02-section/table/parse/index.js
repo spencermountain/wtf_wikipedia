@@ -1,6 +1,7 @@
 const parseSentence = require('../../../04-sentence/').oneSentence;
 const findRows = require('./_findRows');
 const handleSpans = require('./_spans');
+
 //common ones
 const headings = {
   name: true,

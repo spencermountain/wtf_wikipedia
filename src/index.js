@@ -1,7 +1,7 @@
 const fetch = require('./_fetch/fetch');
 const random = require('./_fetch/random');
 const category = require('./_fetch/category');
-const version = require('../package').version;
+const version = require('./_version');
 const parseDocument = require('./01-document/index.js');
 
 //the main 'factory' exported method
