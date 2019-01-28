@@ -145,6 +145,12 @@
 * support population, weatherbox templates
 ### 7.2.0
 * improved date templates, bugfixes
+### 7.2.9
+* few more sports templates,
+* rowspan parsing fix
+* no-longer include package.json in builds
+* use full template-parser for image captions
+* support manually setting doc.title()
 
 ---
 
