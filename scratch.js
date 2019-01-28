@@ -22,6 +22,7 @@ const wtf = require('./src/index');
 let doc = wtf('{{some_template|link=[https://google.com google]}}');
 console.log(doc.data);
 
+// console.log(wtf.version);
 
 // console.log(doc.templates(0).rounds[0]);
 // console.log(doc.tables(0).keyValue());
