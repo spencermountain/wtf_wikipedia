@@ -4,11 +4,11 @@ const wtf = require('./src/index');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-(async () => {
-  var doc = await wtf.fetch('Template:2014 Stanley Cup playoffs');
-  // var doc = await wtf.random();
-  console.log(doc.templates());
-})();
+// (async () => {
+//   var doc = await wtf.fetch('Template:2014 Stanley Cup playoffs');
+//   // var doc = await wtf.random();
+//   console.log(doc.templates());
+// })();
 
 // let doc = readFile('BBDO');
 // console.log(doc.infoboxes(0).data);
@@ -19,12 +19,10 @@ const wtf = require('./src/index');
 //   console.warn(docList);
 // });
 
-let str = `
-`;
+let doc = wtf('{{some_template|link=[https://google.com google]}}');
+console.log(doc.data);
 
-// {{NHLBracket-reseed
 
-let doc = wtf(str);
 // console.log(doc.templates(0).rounds[0]);
 // console.log(doc.tables(0).keyValue());
 // console.log(doc.images(0).json());

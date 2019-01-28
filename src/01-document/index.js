@@ -13,6 +13,7 @@ const main = function(wiki, options) {
   wiki = wiki || '';
   let data = {
     type: 'page',
+    title: '',
     sections: [],
     categories: [],
     coordinates: [],

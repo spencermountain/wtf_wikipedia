@@ -23,7 +23,16 @@ const Document = function(data, options) {
 };
 
 const methods = {
-  title : function() {
+  title : function(str) {
+    //use like a setter
+    if (str !== undefined) {
+      this.data.title = str;
+      return str;
+    }
+    //few places this could be stored..
+    if (this.data.title !== '') {
+      return this.data.title;
+    }
     if (this.options.title) {
       return this.options.title;
     }
