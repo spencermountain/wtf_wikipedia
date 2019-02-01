@@ -25,6 +25,3 @@ function preProcess(r, wiki, options) {
   return wiki;
 }
 module.exports = preProcess;
-// console.log(preProcess("hi [[as:Plancton]] there"));
-// console.log(preProcess('hello <br/> world'))
-// console.log(preProcess("hello <asd f> world </h2>"))
