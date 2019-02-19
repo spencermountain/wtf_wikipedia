@@ -10,6 +10,7 @@ const defaults = {
   templates: true,
   infoboxes: true,
   lists: true,
+  references: true
 };
 //
 const toJSON = function(section, options) {
@@ -65,6 +66,13 @@ const toJSON = function(section, options) {
     let lists = section.lists().map(list => list.json(options));
     if (lists.length > 0) {
       data.lists = lists;
+    }
+  }
+  //list references - default true
+  if (options.references === true) {
+    let references = section.references().map(ref => ref.json(options));
+    if (references.length > 0) {
+      data.references = references;
     }
   }
   //default off
