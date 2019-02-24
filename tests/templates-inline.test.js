@@ -58,6 +58,11 @@ test('inline-no-data', function(t) {
  |dotted=yes/no (defaults to "yes")
 }}`],
     [`finedetail`, `{{finedetail |plain text|Is actually very very plain text}}`],
+    ['mono', `{{Mono|text to format here}}`],
+    ['pre', `{{pre|text to format here}}`],
+    ['mvar', `{{mvar|x}}`],
+    ['strongbad', `{{strongbad|1=important text}}`],
+    ['!bxt', `{{!bxt|inline typeface change}}`],
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);
@@ -100,7 +105,8 @@ test('inline-with-data', function(t) {
     [`death year and age`, `{{Death year and age|2017|1967}} `],
     [`birth year and age`, `{{Birth year and age|1963|12}} `],
     [`winpct`, `{{winpct|1293|844|139}}`],
-    [`mlbplayer`, `{{mlbplayer|93|Spencer Kelly}}`]
+    [`mlbplayer`, `{{mlbplayer|93|Spencer Kelly}}`],
+    ['samp', `{{samp|1=[A]bort, [R]etry, [F]ail?}}`],
   ];
   arr.forEach((a) => {
     var doc = wtf(a[1]);

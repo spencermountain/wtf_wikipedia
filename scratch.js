@@ -18,12 +18,8 @@ const wtf = require('./src/index');
 // });
 
 
-// let str = `前季より9つ勝ち星を増やし、30勝52敗でシーズンを終えた。順調に観戦客数も伸ばした。この年のドラフト1巡目2位で指名されたマーカス・キャンビーは期待外れに終わった。`;
-let str = `前季より9つ。勝ち星を増やし、30勝52敗でシ。`;
-//japanese periods
-str = str.replace(/\u3002/g, '. ');
-// console.log(str);
-console.log(wtf(str).sentences());
+let str = ` {{!bxt|inline typeface change}} `;
+console.log(wtf(str).text());
 
 
 // let str = `годы asf`;

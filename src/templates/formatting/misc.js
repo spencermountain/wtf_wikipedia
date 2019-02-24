@@ -63,7 +63,6 @@ const inline = {
     });
     return result.join(' ');
   },
-
   'block indent': (tmpl) => {
     let obj = parse(tmpl);
     if (obj['1']) {
