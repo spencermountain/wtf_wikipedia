@@ -1,4 +1,4 @@
-/* wtf_wikipedia v7.2.9
+/* wtf_wikipedia v7.2.10
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -920,7 +920,9 @@ function preProcess(r, wiki, options) {
 
   wiki = wiki.replace(/~~{1,3}/g, ''); //windows newlines
 
-  wiki = wiki.replace(/\r/g, ''); //horizontal rule
+  wiki = wiki.replace(/\r/g, ''); //japanese periods - '。'
+
+  wiki = wiki.replace(/\u3002/g, '. '); //horizontal rule
 
   wiki = wiki.replace(/----/g, ''); //formatting for templates-in-templates...
 
@@ -937,9 +939,7 @@ function preProcess(r, wiki, options) {
   return wiki;
 }
 
-module.exports = preProcess; // console.log(preProcess("hi [[as:Plancton]] there"));
-// console.log(preProcess('hello <br/> world'))
-// console.log(preProcess("hello <asd f> world </h2>"))
+module.exports = preProcess;
 
 },{"./kill_xml":8}],8:[function(_dereq_,module,exports){
 "use strict";
@@ -1150,7 +1150,7 @@ var toJSON = function toJSON(doc, options) {
     data.plaintext = doc.plaintext(options);
   }
 
-  if (options.citations) {
+  if (options.citations || options.references) {
     data.references = doc.references();
   }
 
@@ -2975,7 +2975,8 @@ var defaults = {
   tables: true,
   templates: true,
   infoboxes: true,
-  lists: true
+  lists: true,
+  references: true
 }; //
 
 var toJSON = function toJSON(section, options) {
@@ -3057,6 +3058,17 @@ var toJSON = function toJSON(section, options) {
 
     if (lists.length > 0) {
       data.lists = lists;
+    }
+  } //list references - default true
+
+
+  if (options.references === true || options.citations === true) {
+    var references = section.references().map(function (ref) {
+      return ref.json(options);
+    });
+
+    if (references.length > 0) {
+      data.references = references;
     }
   } //default off
 
@@ -4162,7 +4174,9 @@ var abbreviations = _dereq_('../_data/abbreviations');
 var abbrev_reg = new RegExp('(^| |\')(' + abbreviations.join('|') + ")[.!?] ?$", 'i');
 var acronym_reg = new RegExp('[ |.][A-Z].? +?$', 'i');
 var elipses_reg = new RegExp('\\.\\.\\.* +?$');
-var hasWord = new RegExp('[a-z][a-z]', 'i'); //turn a nested array into one array
+var hasWord = new RegExp('[a-zа-яぁ-ゟ][a-zа-яぁ-ゟ゠-ヿ]', 'iu'); // 3040-309F : hiragana
+// 30A0-30FF : katakana
+//turn a nested array into one array
 
 var flatten = function flatten(arr) {
   var all = [];
@@ -4180,7 +4194,7 @@ var naiive_split = function naiive_split(text) {
   }); //split by period, question-mark, and exclamation-mark
 
   splits = splits.map(function (str) {
-    return str.split(/(\S.+?[.!?]"?)(?=\s+|$)/g);
+    return str.split(/(\S.+?[.!?]"?)(?=\s+|$)/g); //\u3002
   });
   return flatten(splits);
 }; // if this looks like a period within a wikipedia link, return false
@@ -7641,7 +7655,7 @@ module.exports = smartReplace;
 },{}],83:[function(_dereq_,module,exports){
 "use strict";
 
-module.exports = '7.2.9';
+module.exports = '7.2.10';
 
 },{}],84:[function(_dereq_,module,exports){
 "use strict";
@@ -9510,6 +9524,16 @@ var templates = {
   nocaps: function nocaps(tmpl) {
     return parse(tmpl, ['text']).text || '';
   },
+  syntaxhighlight: function syntaxhighlight(tmpl, r) {
+    var obj = parse(tmpl);
+    r.templates.push(obj);
+    return obj.code || '';
+  },
+  samp: function samp(tmpl, r) {
+    var obj = parse(tmpl, ['1']);
+    r.templates.push(obj);
+    return obj['1'] || '';
+  },
   //https://en.wikipedia.org/wiki/Template:Visible_anchor
   vanchor: function vanchor(tmpl) {
     return parse(tmpl, ['text']).text || '';
@@ -9584,7 +9608,9 @@ var templates = {
 templates['rndfrac'] = templates.rnd;
 templates['rndnear'] = templates.rnd; //templates that we simply grab their insides as plaintext
 
-var inline = ['nowrap', 'big', 'cquote', 'pull quote', 'small', 'smaller', 'midsize', 'larger', 'big', 'bigger', 'large', 'huge', 'delink'];
+var inline = ['nowrap', 'big', 'cquote', 'pull quote', 'small', 'smaller', 'midsize', 'larger', 'big', 'kbd', 'bigger', 'large', 'mono', 'strongbad', 'stronggood', 'huge', 'xt', 'xt2', '!xt', 'xtn', 'xtd', 'dc', 'dcr', 'mxt', '!mxt', 'mxtn', 'mxtd', 'bxt', '!bxt', 'bxtn', 'bxtd', 'delink', //https://en.wikipedia.org/wiki/Template:Delink
+//half-supported
+'pre', 'var', 'mvar', 'pre2', 'code'];
 inline.forEach(function (k) {
   templates[k] = function (tmpl) {
     return parse(tmpl, ['text']).text || '';
