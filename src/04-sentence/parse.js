@@ -8,7 +8,7 @@ const abbreviations = require('../_data/abbreviations');
 const abbrev_reg = new RegExp('(^| |\')(' + abbreviations.join('|') + `)[.!?] ?$`, 'i');
 const acronym_reg = new RegExp('[ |.][A-Z].? +?$', 'i');
 const elipses_reg = new RegExp('\\.\\.\\.* +?$');
-const hasWord = new RegExp('[a-z][a-z]', 'i');
+const hasWord = new RegExp('[a-zа-я][a-zа-я]', 'i');
 
 //turn a nested array into one array
 const flatten = function(arr) {
@@ -93,7 +93,6 @@ const sentence_parser = function(text) {
     }
     return true;
   };
-
   //loop through these chunks, and join the non-sentence chunks back together..
   for (let i = 0; i < chunks.length; i++) {
     //should this chunk be combined with the next one?
