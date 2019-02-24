@@ -9,6 +9,8 @@ function preProcess(r, wiki, options) {
   wiki = wiki.replace(/~~{1,3}/g, '');
   //windows newlines
   wiki = wiki.replace(/\r/g, '');
+  //japanese periods - '。'
+  wiki = wiki.replace(/\u3002/g, '. ');
   //horizontal rule
   wiki = wiki.replace(/----/g, '');
   //formatting for templates-in-templates...
