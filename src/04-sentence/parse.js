@@ -8,7 +8,9 @@ const abbreviations = require('../_data/abbreviations');
 const abbrev_reg = new RegExp('(^| |\')(' + abbreviations.join('|') + `)[.!?] ?$`, 'i');
 const acronym_reg = new RegExp('[ |.][A-Z].? +?$', 'i');
 const elipses_reg = new RegExp('\\.\\.\\.* +?$');
-const hasWord = new RegExp('[a-z][a-z]', 'i');
+const hasWord = new RegExp('[a-zа-яぁ-ゟ][a-zа-яぁ-ゟ゠-ヿ]', 'iu');
+// 3040-309F : hiragana
+// 30A0-30FF : katakana
 
 //turn a nested array into one array
 const flatten = function(arr) {
@@ -25,7 +27,7 @@ const naiive_split = function(text) {
   splits = splits.filter(s => s.match(/\S/));
   //split by period, question-mark, and exclamation-mark
   splits = splits.map(function(str) {
-    return str.split(/(\S.+?[.!?]"?)(?=\s+|$)/g);
+    return str.split(/(\S.+?[.!?]"?)(?=\s+|$)/g); //\u3002
   });
   return flatten(splits);
 };
@@ -93,7 +95,6 @@ const sentence_parser = function(text) {
     }
     return true;
   };
-
   //loop through these chunks, and join the non-sentence chunks back together..
   for (let i = 0; i < chunks.length; i++) {
     //should this chunk be combined with the next one?

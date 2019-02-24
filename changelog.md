@@ -151,6 +151,10 @@
 * no-longer include package.json in builds
 * use full template-parser for image captions
 * support manually setting doc.title()
+### 7.2.10
+* improved unicode support for sentence/paragraph splitting
+* supporting more formatting templates, like **Mono**
+* more flexible reference support in `.json()`
 
 ---
 

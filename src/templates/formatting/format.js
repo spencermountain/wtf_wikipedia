@@ -87,6 +87,16 @@ let templates = {
   nocaps: (tmpl) => {
     return parse(tmpl, ['text']).text || '';
   },
+  syntaxhighlight: (tmpl, r) => {
+    let obj = parse(tmpl);
+    r.templates.push(obj);
+    return obj.code || '';
+  },
+  samp: (tmpl, r) => {
+    let obj = parse(tmpl, ['1']);
+    r.templates.push(obj);
+    return obj['1'] || '';
+  },
   //https://en.wikipedia.org/wiki/Template:Visible_anchor
   vanchor: (tmpl) => {
     return parse(tmpl, ['text']).text || '';
@@ -163,10 +173,35 @@ let inline = [
   'midsize',
   'larger',
   'big',
+  'kbd',
   'bigger',
   'large',
+  'mono',
+  'strongbad',
+  'stronggood',
   'huge',
+  'xt',
+  'xt2',
+  '!xt',
+  'xtn',
+  'xtd',
+  'dc',
+  'dcr',
+  'mxt',
+  '!mxt',
+  'mxtn',
+  'mxtd',
+  'bxt',
+  '!bxt',
+  'bxtn',
+  'bxtd',
   'delink', //https://en.wikipedia.org/wiki/Template:Delink
+  //half-supported
+  'pre',
+  'var',
+  'mvar',
+  'pre2',
+  'code',
 ];
 inline.forEach((k) => {
   templates[k] = (tmpl) => {
