@@ -41,7 +41,7 @@ const toJSON = function(doc, options) {
   if (options.plaintext) {
     data.plaintext = doc.plaintext(options);
   }
-  if (options.citations) {
+  if (options.citations || options.references) {
     data.references = doc.references();
   }
   if (options.markdown) {

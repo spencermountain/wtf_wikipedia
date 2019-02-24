@@ -18,8 +18,8 @@ const wtf = require('./src/index');
 // });
 
 
-let str = ` {{!bxt|inline typeface change}} `;
-console.log(wtf(str).text());
+let str = `In its broadest sense, a pest is a [[Competition (biology)|competitor]] of humanity.<ref>[http://www.merriam-webster.com/dictionary/pest Merriam-Webster dictionary], accessed 22 August 2012.</ref><ref>{{cite web |title=Pest vermin |url=http://www.britannica.com/EBchecked/topic/453421/pest |publisher=Britannica |accessdate=24 August 2016}}</ref> `;
+console.log(wtf(str).json());
 
 
 // let str = `годы asf`;

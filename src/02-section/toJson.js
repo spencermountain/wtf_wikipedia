@@ -69,7 +69,7 @@ const toJSON = function(section, options) {
     }
   }
   //list references - default true
-  if (options.references === true) {
+  if (options.references === true || options.citations === true) {
     let references = section.references().map(ref => ref.json(options));
     if (references.length > 0) {
       data.references = references;
