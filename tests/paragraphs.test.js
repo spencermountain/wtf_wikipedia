@@ -92,3 +92,27 @@ Second paragraph here.`;
   t.equal(doc.tables().length, 1, 'got broken table');
   t.end();
 });
+
+test('cyrillic symbols', t => {
+    var str = `== Заголовок ==
+Соединённые
+
+По «окончании»
+
+После — четырёх
+
+Лишённые
+
+Спустя
+
+В напряжённом`;
+    var doc = wtf(str);
+    t.equal(doc.paragraphs().length, 6, 'paragraphs');
+    t.equal(doc.paragraphs(0).text(), 'Соединённые', '1 paragraph');
+    t.equal(doc.paragraphs(1).text(), 'По «окончании»', '2 paragraph');
+    t.equal(doc.paragraphs(2).text(), 'После — четырёх', '3 paragraph');
+    t.equal(doc.paragraphs(3).text(), 'Лишённые', '4 paragraph');
+    t.equal(doc.paragraphs(4).text(), 'Спустя', '5 paragraph');
+    t.equal(doc.paragraphs(5).text(), 'В напряжённом', '6 paragraph');
+    t.end();
+});
