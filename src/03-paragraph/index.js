@@ -2,7 +2,7 @@ const Paragraph = require('./Paragraph');
 const find_recursive = require('../_lib/recursive_match');
 const parseSentences = require('../04-sentence').addSentences;
 
-const twoNewLines = /\r?\n\W*\r?\n/;
+const twoNewLines = /\r?\n\r?\n/;
 const parse = {
   image: require('../image'),
   list: require('./list'),
