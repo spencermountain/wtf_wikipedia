@@ -17,9 +17,10 @@ let i18n = {
     'датотека',
     'dosya',
     'fil',
-    'ファイル'
+    'ファイル',
+    'चित्र'
   ],
-  images: ['image'],
+  images: ['image', 'चित्र'],
   templates: [
     'шаблён',
     'plantilla',

@@ -19,6 +19,13 @@ test('nihongo templates templates', t => {
   t.end();
 });
 
+test('hindi image', t => {
+  var str = `[[चित्र:Gandhis ashes.jpg|thumb|left|[[राज घाट और अन्य स्मारक|राज घाट]] ([[:en:Raj Ghat and other memorials|Raj Ghat]]):आगा खान पैलेस में गांधी की अस्थियां (पुणे, भारत) .]]`;
+  var img = wtf(str).images(0).json();
+  t.equal(img.file, 'चित्र:Gandhis ashes.jpg');
+  t.end();
+});
+
 test('lang template', t => {
   var str = `i played {{lang-de|Die Seefahrer von Catan}}`;
   var doc = wtf(str);
