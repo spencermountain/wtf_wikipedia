@@ -155,7 +155,8 @@
 * improved unicode support for sentence/paragraph splitting
 * supporting more formatting templates, like **Mono**
 * more flexible reference support in `.json()`
-
+### 7.3.0
+* more unicode support
 ---
 
 #### 8.0.0

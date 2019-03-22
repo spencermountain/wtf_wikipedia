@@ -5,7 +5,7 @@ const parseSentence = require('../04-sentence').oneSentence;
 //regexes:
 const isFile = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i');
 let fileNames = `(${i18n.images.concat(i18n.files).join('|')})`;
-const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'i');
+const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'iu');
 
 //style directives for Wikipedia:Extended_image_syntax
 const imgLayouts = {

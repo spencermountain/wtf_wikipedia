@@ -5,9 +5,9 @@ const wtf = require('./src/index');
 // const wtf = require('./build');
 
 // (async () => {
-//   var doc = await wtf.fetch('Template:2014 Stanley Cup playoffs');
-//   // var doc = await wtf.random();
-//   console.log(doc.templates());
+// var doc = await wtf.fetch('महात्मा_गांधी', 'hi');
+// var doc = await wtf.random();
+// console.log(doc.text());
 // })();
 
 // let doc = readFile('BBDO');
@@ -18,14 +18,11 @@ const wtf = require('./src/index');
 // });
 
 
-let str = `In its broadest sense, a pest is a [[Competition (biology)|competitor]] of humanity.<ref>[http://www.merriam-webster.com/dictionary/pest Merriam-Webster dictionary], accessed 22 August 2012.</ref><ref>{{cite web |title=Pest vermin |url=http://www.britannica.com/EBchecked/topic/453421/pest |publisher=Britannica |accessdate=24 August 2016}}</ref> `;
-console.log(wtf(str).json());
+let str = `== १९०६ के ज़ुलु युद्ध में भूमिका ==
+१९०६ में, [[ज़ुलु]] ([[:en:Zulu|Zulu]]) [[दक्षिण अफ्रीका]] में नए चुनाव कर के लागू करने के बाद दो [[अंग्रेज]] अधिकारियों को मार डाला गया। बदले में अंग्रेजों ने जूलू के खिलाफ युद्ध छेड़ दिया। गांधी जी ने भारतीयों को भर्ती करने के लिए ब्रिटिश अधिकारियों को सक्रिय रूप से प्रेरित किया। उनका तर्क था अपनी नागरिकता के दावों को कानूनी जामा पहनाने के लिए भारतीयों को युद्ध प्रयासों में सहयोग देना चाहिए। तथापि, अंग्रेजों ने अपनी सेना में भारतीयों को पद देने से इंकार कर दिया था। इसके बावजूद उन्होने गांधी जी के इस प्रस्ताव को मान लिया कि भारतीय घायल अंग्रेज सैनिकों को उपचार के लिए स्टेचर पर लाने के लिए स्वैच्छा पूर्वक कार्य कर सकते हैं। इस कोर की बागडोर गांधी ने थामी।२१ जुलाई (July 21), [[1906|१९०६]] को गांधी जी ने ''भारतीय जनमत इंडियन ओपिनिय ([[:en:Indian Opinion|Indian Opinion]])'' में लिखा कि ''२३ भारतीय<ref>गांधी नामक दस्तावेज से अवतरित महात्मा गांधी की संग्रहित कृतियां वॉल्यूम ५ दस्तावेज # दैवत्य के मुखैटे के पीछे पेज १०६</ref> निवासियों के विरूद्ध चलाए गए आप्रेशन के संबंध में प्रयोग द्वारा नेटाल सरकार के कहने पर एक कोर का गठन किया गया है।''दक्षिण अफ्रीका में भारतीय लोगों से ''इंडियन ओपिनियन'' में अपने कॉलमों के माध्‍यम से इस युद्ध में शामिल होने के लिए आग्रह किया और कहा, ''यदि सरकार केवल यही महसूस करती हे कि आरक्षित बल बेकार हो रहे हैं तब वे इसका उपयोग करेंगे और असली लड़ाई के लिए भारतीयों का प्रशिक्षण देकर इसका अवसर देंगे।''<ref name=GandhismDotNet>http://www.gandhism.net/sergeantmajorgandhi.phpसार्जेंट मेजर गांधी</ref>
 
 
-// let str = `годы asf`;
-// str = '4';
-// // const hasWord = new RegExp('[a-z\u00C0-\u00FF][a-z\u00C0-\u00FF]', 'iu');
-// // let hasWord = new RegExp('[\\w\u0430-\u044f]$', 'ui');
-// // let hasWord = new RegExp('\p{L}', 'ui');
-// let hasWord = /[\wа-я]$/;
-// console.log(hasWord.test(str));
+[[श्रेणी:भारत के अर्थशास्त्री]]
+[[श्रेणी:महात्मा गांधी| ]]
+`;
+console.log(wtf(str).categories());

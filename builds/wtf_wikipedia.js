@@ -1,4 +1,4 @@
-/* wtf_wikipedia v7.2.10
+/* wtf_wikipedia v7.3.0
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -3387,7 +3387,7 @@ var find_recursive = _dereq_('../_lib/recursive_match');
 
 var parseSentences = _dereq_('../04-sentence').addSentences;
 
-var twoNewLines = /\r?\n\W*\r?\n/;
+var twoNewLines = /\r?\n\r?\n/;
 var parse = {
   image: _dereq_('../image'),
   list: _dereq_('./list')
@@ -4553,10 +4553,10 @@ module.exports = [['🇦🇩', 'and', 'andorra'], ['🇦🇪', 'are', 'united ar
 // wikipedia special terms lifted and augmented from parsoid parser april 2015
 // (not even close to being complete)
 var i18n = {
-  files: ['файл', 'fitxer', 'soubor', 'datei', 'file', 'archivo', 'پرونده', 'tiedosto', 'mynd', 'su\'wret', 'fichier', 'bestand', 'датотека', 'dosya', 'fil', 'ファイル'],
-  images: ['image'],
+  files: ['файл', 'fitxer', 'soubor', 'datei', 'file', 'archivo', 'پرونده', 'tiedosto', 'mynd', 'su\'wret', 'fichier', 'bestand', 'датотека', 'dosya', 'fil', 'ファイル', 'चित्र'],
+  images: ['image', 'चित्र'],
   templates: ['шаблён', 'plantilla', 'šablona', 'vorlage', 'template', 'الگو', 'malline', 'snið', 'shablon', 'modèle', 'sjabloon', 'шаблон', 'şablon'],
-  categories: ['катэгорыя', 'categoria', 'kategorie', 'category', 'categoría', 'رده', 'luokka', 'flokkur', 'kategoriya', 'catégorie', 'categorie', 'категорија', 'kategori', 'kategoria', 'تصنيف'],
+  categories: ['катэгорыя', 'categoria', 'kategorie', 'category', 'categoría', 'رده', 'luokka', 'flokkur', 'kategoriya', 'catégorie', 'categorie', 'категорија', 'kategori', 'kategoria', 'تصنيف', 'श्रेणी'],
   redirects: ['перанакіраваньне', 'redirect', 'přesměruj', 'weiterleitung', 'redirección', 'redireccion', 'تغییر_مسیر', 'تغییرمسیر', 'ohjaus', 'uudelleenohjaus', 'tilvísun', 'aýdaw', 'айдау', 'redirection', 'doorverwijzing', 'преусмери', 'преусмјери', 'yönlendi̇rme', 'yönlendi̇r', '重定向', 'redirección', 'redireccion', '重定向', 'yönlendirm?e?', 'تغییر_مسیر', 'تغییرمسیر', 'перанакіраваньне', 'yönlendirme'],
   specials: ['спэцыяльныя', 'especial', 'speciální', 'spezial', 'special', 'ویژه', 'toiminnot', 'kerfissíða', 'arnawlı', 'spécial', 'speciaal', 'посебно', 'özel', '特別'],
   users: ['удзельнік', 'usuari', 'uživatel', 'benutzer', 'user', 'usuario', 'کاربر', 'käyttäjä', 'notandi', 'paydalanıwshı', 'utilisateur', 'gebruiker', 'корисник', 'kullanıcı', '利用者'],
@@ -4579,8 +4579,8 @@ var i18n = {
   ],
   infoboxes: ['infobox', 'ficha', 'канадский', 'inligtingskas', 'inligtingskas3', //af
   'لغة', 'bilgi kutusu', //tr
-  'yerleşim bilgi kutusu', 'infoboks' //nn, no
-  ],
+  'yerleşim bilgi kutusu', 'infoboks', //nn, no
+  'ज्ञानसन्दूक'],
   sources: [//blacklist these headings, as they're not plain-text
   'references', 'see also', 'external links', 'further reading', 'notes et références', 'voir aussi', 'liens externes', '参考文献', //references (ja)
   '脚注', //citations (ja)
@@ -7655,7 +7655,7 @@ module.exports = smartReplace;
 },{}],83:[function(_dereq_,module,exports){
 "use strict";
 
-module.exports = '7.2.10';
+module.exports = '7.3.0';
 
 },{}],84:[function(_dereq_,module,exports){
 "use strict";
@@ -7801,7 +7801,7 @@ var parseSentence = _dereq_('../04-sentence').oneSentence; //regexes:
 
 var isFile = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i');
 var fileNames = "(".concat(i18n.images.concat(i18n.files).join('|'), ")");
-var file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'i'); //style directives for Wikipedia:Extended_image_syntax
+var file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'iu'); //style directives for Wikipedia:Extended_image_syntax
 
 var imgLayouts = {
   thumb: true,

@@ -17,9 +17,10 @@ let i18n = {
     'датотека',
     'dosya',
     'fil',
-    'ファイル'
+    'ファイル',
+    'चित्र'
   ],
-  images: ['image'],
+  images: ['image', 'चित्र'],
   templates: [
     'шаблён',
     'plantilla',
@@ -50,7 +51,8 @@ let i18n = {
     'категорија',
     'kategori',
     'kategoria',
-    'تصنيف'
+    'تصنيف',
+    'श्रेणी'
   ],
   redirects: [
     'перанакіраваньне',
@@ -142,7 +144,8 @@ let i18n = {
     'لغة',
     'bilgi kutusu', //tr
     'yerleşim bilgi kutusu',
-    'infoboks' //nn, no
+    'infoboks', //nn, no
+    'ज्ञानसन्दूक'
   ],
   sources: [
     //blacklist these headings, as they're not plain-text
