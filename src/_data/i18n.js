@@ -51,7 +51,8 @@ let i18n = {
     'категорија',
     'kategori',
     'kategoria',
-    'تصنيف'
+    'تصنيف',
+    'श्रेणी'
   ],
   redirects: [
     'перанакіраваньне',
@@ -143,7 +144,8 @@ let i18n = {
     'لغة',
     'bilgi kutusu', //tr
     'yerleşim bilgi kutusu',
-    'infoboks' //nn, no
+    'infoboks', //nn, no
+    'ज्ञानसन्दूक'
   ],
   sources: [
     //blacklist these headings, as they're not plain-text
