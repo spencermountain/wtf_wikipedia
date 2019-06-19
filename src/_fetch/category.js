@@ -10,11 +10,14 @@ const normalizeCategory = function( cat = '' ) {
   return cat;
 };
 
-const makeUrl = function(cat, lang) {
+const makeUrl = function(cat, lang, options) {
   cat = encodeURIComponent(cat);
   let url = `https://${lang}.wikipedia.org/w/api.php`;
   if (site_map[lang]) {
     url = site_map[lang] + '/w/api.php';
+  }
+  if (options.wikiUrl) {
+    url = options.wikiUrl;
   }
   url += `?action=query&list=categorymembers&cmtitle=${cat}&cmlimit=500&format=json&origin=*&redirects=true&cmtype=page|subcat`;
   return url;
