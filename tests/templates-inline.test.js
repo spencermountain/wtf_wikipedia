@@ -128,7 +128,7 @@ test('inline-output', t => {
     [`{{braces|Templatename|item1|item2}}`, `{{Templatename|item1|item2}}`],
     [`{{sic|Conc|encus}} can Change!`, `Concencus [sic] can Change!`],
     [`{{sic|Conc|encus|nolink=y}} can Change!`, `Concencus can Change!`],
-    [`{{math|''f''(''x'') {{=}} ''b''<sup>''x''</sup> {{=}} ''y''}}`, `f(x) = b x = y`],
+    [`{{math|''f''(''x'') {{=}} ''b''<sup>''x''</sup> {{=}} ''y''}}`, `f(x) = b x = y`], // fails on windows?
     [`{{sfrac|A|B|C}}`, `A B⁄C`],
     [`{{sqrt|2|4}}`, `4√2`],
     [`{{okay}}`, `Neutral`],
