@@ -25,6 +25,8 @@ test('french-infobox', function(t) {
   | titre blanc               = oui
   | nom                       = Microsoft Corporation
   | secteurs d'activités      = found1
+  | siège (ville)             = city
+  | société sœur              = sister
   | chiffre d'affaires        = found2
  }}
 `
@@ -33,5 +35,7 @@ test('french-infobox', function(t) {
     .keyValue()
   t.equal(obj[`secteurs d'activités`], 'found1', 'found secteurs val')
   t.equal(obj[`chiffre d'affaires`], 'found2', 'found chiffre val')
+  t.equal(obj[`siège (ville)`], 'city', 'found city val')
+  t.equal(obj[`société sœur`], 'sister', 'found sister val')
   t.end()
 })
