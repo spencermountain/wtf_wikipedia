@@ -1,14 +1,11 @@
-/* wtf_wikipedia v7.4.0
+/* wtf_wikipedia v7.4.1
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
 
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.wtf = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(_dereq_,module,exports){
 var __self__ = (function (root) {
-function F() {
-this.fetch = false;
-this.DOMException = root.DOMException
-}
+function F() { this.fetch = false; }
 F.prototype = root;
 return new F();
 })(typeof self !== 'undefined' ? self : this);
@@ -7718,7 +7715,7 @@ module.exports = smartReplace;
 },{}],83:[function(_dereq_,module,exports){
 "use strict";
 
-module.exports = '7.4.0';
+module.exports = '7.4.1';
 
 },{}],84:[function(_dereq_,module,exports){
 "use strict";
@@ -8600,7 +8597,7 @@ module.exports = pipeSplitter;
 
 // every value in {{tmpl|a|b|c}} needs a name
 // here we come up with names for them
-var hasKey = /^[ '\x2D\.0-9_a-z\xC0-\xFF\u017F\u1E9E\u212A\u212B]+=/i; //templates with these properties are asking for trouble
+var hasKey = /^[ '-\)\x2D\.0-9_a-z\xC0-\xFF\u0153\u017F\u1E9E\u212A\u212B]+=/i; //templates with these properties are asking for trouble
 
 var reserved = {
   template: true,
@@ -9500,8 +9497,9 @@ var templates = {
     var ignore = {
       span: true,
       div: true,
-      p: true
-    }; //pair, empty, close, single
+      p: true //pair, empty, close, single
+
+    };
 
     if (!obj.open || obj.open === 'pair') {
       //just skip generating spans and things..
@@ -9543,7 +9541,7 @@ var templates = {
 
     return str.split(' ')[0];
   },
-  'trunc': function trunc(tmpl) {
+  trunc: function trunc(tmpl) {
     var order = ['str', 'len'];
     var obj = parse(tmpl, order);
     return obj.str.substr(0, obj.len);
@@ -9556,15 +9554,15 @@ var templates = {
     return obj.str.substr(start, end);
   },
   //grab the first, second or third pipe
-  'p1': function p1(tmpl) {
+  p1: function p1(tmpl) {
     var order = ['one'];
     return parse(tmpl, order).one;
   },
-  'p2': function p2(tmpl) {
+  p2: function p2(tmpl) {
     var order = ['one', 'two'];
     return parse(tmpl, order).two;
   },
-  'p3': function p3(tmpl) {
+  p3: function p3(tmpl) {
     var order = ['one', 'two', 'three'];
     return parse(tmpl, order).three;
   },
@@ -9666,13 +9664,14 @@ var templates = {
     }
 
     return str;
-  }
-}; //aliases
+  } //aliases
 
+};
 templates['rndfrac'] = templates.rnd;
-templates['rndnear'] = templates.rnd; //templates that we simply grab their insides as plaintext
+templates['rndnear'] = templates.rnd;
+templates['unité'] = templates.val; //templates that we simply grab their insides as plaintext
 
-var inline = ['nowrap', 'big', 'cquote', 'pull quote', 'small', 'smaller', 'midsize', 'larger', 'big', 'kbd', 'bigger', 'large', 'mono', 'strongbad', 'stronggood', 'huge', 'xt', 'xt2', '!xt', 'xtn', 'xtd', 'dc', 'dcr', 'mxt', '!mxt', 'mxtn', 'mxtd', 'bxt', '!bxt', 'bxtn', 'bxtd', 'delink', //https://en.wikipedia.org/wiki/Template:Delink
+var inline = ['nowrap', 'nobr', 'big', 'cquote', 'pull quote', 'small', 'smaller', 'midsize', 'larger', 'big', 'kbd', 'bigger', 'large', 'mono', 'strongbad', 'stronggood', 'huge', 'xt', 'xt2', '!xt', 'xtn', 'xtd', 'dc', 'dcr', 'mxt', '!mxt', 'mxtn', 'mxtd', 'bxt', '!bxt', 'bxtn', 'bxtd', 'delink', //https://en.wikipedia.org/wiki/Template:Delink
 //half-supported
 'pre', 'var', 'mvar', 'pre2', 'code'];
 inline.forEach(function (k) {
@@ -10863,13 +10862,13 @@ var codes = {
   // https://en.wikipedia.org/wiki/Template:Pakistani_Rupee
   '€': '€',
   // https://en.wikipedia.org/wiki/Template:€
-  'euro': '€',
-  'nz$': 'NZ$',
-  'nok': 'kr',
+  euro: '€',
+  nz$: 'NZ$',
+  nok: 'kr',
   //https://en.wikipedia.org/wiki/Template:NOK
-  'aud': 'A$',
+  aud: 'A$',
   //https://en.wikipedia.org/wiki/Template:AUD
-  'zar': 'R' //https://en.wikipedia.org/wiki/Template:ZAR
+  zar: 'R' //https://en.wikipedia.org/wiki/Template:ZAR
 
 };
 
@@ -10884,14 +10883,21 @@ var parseCurrency = function parseCurrency(tmpl, r) {
 
   code = (code || '').toLowerCase();
   var out = codes[code] || '';
-  return "".concat(out).concat(o.amount || '');
+  var str = "".concat(out).concat(o.amount || ''); //support unknown currencies after the number - like '5 BTC'
+
+  if (o.code && !codes[o.code.toLowerCase()]) {
+    str += ' ' + o.code;
+  }
+
+  return str;
 };
 
 var currencies = {
   //this one is generic https://en.wikipedia.org/wiki/Template:Currency
-  currency: parseCurrency
-}; //the others fit the same pattern..
+  currency: parseCurrency,
+  monnaie: parseCurrency //the others fit the same pattern..
 
+};
 Object.keys(codes).forEach(function (k) {
   currencies[k] = parseCurrency;
 });
