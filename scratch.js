@@ -18,6 +18,8 @@ const wtf = require('./src/index')
 // });
 
 // let str = `here {{math|f {{=}} x}} hello`
-let str = `infront {{asdf| missing {{=}} text}} behind`
+// let str = `infront {{Monnaie|10000|écu}} behind`
+// let str = `{{Currency|1,000|JPY}} world`
+let str = `{{Unité|7}} hello`
 let doc = wtf(str)
 console.log(doc.text())
