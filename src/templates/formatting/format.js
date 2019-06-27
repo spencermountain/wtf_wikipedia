@@ -165,6 +165,7 @@ templates['rndnear'] = templates.rnd;
 //templates that we simply grab their insides as plaintext
 let inline = [
   'nowrap',
+  'nobr',
   'big',
   'cquote',
   'pull quote',
