@@ -16,5 +16,30 @@ test('currency-templates', function(t) {
 
   doc = wtf('hello {{ZAR}} world');
   t.equal(doc.text(), 'hello R world', 'empty currency');
+
+  doc = wtf('{{Unité|107.70|M€}}');
+  t.equal(doc.text(), '107.70 M€', 'french unit 2 parameters');
+
+  doc = wtf('{{Unité|107.70}}');
+  t.equal(doc.text(), '107.70', 'french unit 1 parameter');
+
+  doc = wtf('{{monnaie|107.70|€}}');
+  t.equal(doc.text(), '€107.70', 'french monnaie 2 parameters');
+
+  doc = wtf('{{nombre|107.70 M€}}');
+  t.equal(doc.text(), '107.70 M€', 'french nombre 1 parameter');
+
+  doc = wtf('{{nombre|107.70|M€}}');
+  t.equal(doc.text(), '107.70 M€', 'french nombre 2 parameters M€');
+
+  doc = wtf('{{nombre|107.70|€}}');
+  t.equal(doc.text(), '€107.70', 'french nombre 2 parameters €');
+
+  doc = wtf('{{nombre|107.70|euro}}');
+  t.equal(doc.text(), '€107.70', 'french nombre 2 parameters euro');
+
+  doc = wtf('{{nb|107.70|€}}');
+  t.equal(doc.text(), '€107.70', 'french nombre 2 parameters');
+
   t.end();
 });
