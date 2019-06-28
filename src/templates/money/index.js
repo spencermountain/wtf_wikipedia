@@ -1,4 +1,4 @@
-const parse = require('../_parsers/parse');
+const parse = require('../_parsers/parse')
 
 const codes = {
   us$: 'US$', // https://en.wikipedia.org/wiki/Template:US$
@@ -16,33 +16,38 @@ const codes = {
   '₱': '₱', // https://en.wikipedia.org/wiki/Template:Philippine_peso
   pkr: '₨', // https://en.wikipedia.org/wiki/Template:Pakistani_Rupee
   '€': '€', // https://en.wikipedia.org/wiki/Template:€
-  'euro': '€',
-  'nz$': 'NZ$',
-  'nok': 'kr', //https://en.wikipedia.org/wiki/Template:NOK
-  'aud': 'A$', //https://en.wikipedia.org/wiki/Template:AUD
-  'zar': 'R', //https://en.wikipedia.org/wiki/Template:ZAR
-};
+  euro: '€',
+  nz$: 'NZ$',
+  nok: 'kr', //https://en.wikipedia.org/wiki/Template:NOK
+  aud: 'A$', //https://en.wikipedia.org/wiki/Template:AUD
+  zar: 'R' //https://en.wikipedia.org/wiki/Template:ZAR
+}
 
 const parseCurrency = (tmpl, r) => {
-  let o = parse(tmpl, ['amount', 'code']);
-  r.templates.push(o);
-  let code = o.template || '';
+  let o = parse(tmpl, ['amount', 'code'])
+  r.templates.push(o)
+  let code = o.template || ''
   if (code === '' || code === 'currency') {
-    code = o.code;
+    code = o.code
   }
-  code = (code || '').toLowerCase();
-  let out = codes[code] || '';
-  return `${out}${o.amount || ''}`;
-};
+  code = (code || '').toLowerCase()
+  let out = codes[code] || ''
+  let str = `${out}${o.amount || ''}`
+  //support unknown currencies after the number - like '5 BTC'
+  if (o.code && !codes[o.code.toLowerCase()]) {
+    str += ' ' + o.code
+  }
+  return str
+}
 
 const currencies = {
   //this one is generic https://en.wikipedia.org/wiki/Template:Currency
-  currency: parseCurrency
-};
+  currency: parseCurrency,
+  monnaie: parseCurrency
+}
 //the others fit the same pattern..
-Object.keys(codes).forEach((k) => {
-  currencies[k] = parseCurrency;
-});
+Object.keys(codes).forEach(k => {
+  currencies[k] = parseCurrency
+})
 
-
-module.exports = currencies;
+module.exports = currencies

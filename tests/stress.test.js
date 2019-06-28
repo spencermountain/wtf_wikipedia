@@ -1,25 +1,25 @@
-'use strict';
-var test = require('tape');
-var readFile = require('./lib/_cachedPage');
+'use strict'
+var test = require('tape')
+var readFile = require('./lib/_cachedPage')
 
-function isCyclic (json) {
-  var seenObjects = [];
-  function detect (obj) {
+function isCyclic(json) {
+  var seenObjects = []
+  function detect(obj) {
     if (obj && typeof obj === 'object') {
       if (seenObjects.indexOf(obj) !== -1) {
-        return true;
+        return true
       }
-      seenObjects.push(obj);
+      seenObjects.push(obj)
       for (var key in obj) {
         if (obj.hasOwnProperty(key) && detect(obj[key])) {
           // console.log(obj, 'cycle at ' + key);
-          return true;
+          return true
         }
       }
     }
-    return false;
+    return false
   }
-  return detect(json);
+  return detect(json)
 }
 
 test('stress-test-en', t => {
@@ -59,7 +59,7 @@ test('stress-test-en', t => {
     'K.-Nicole-Mitchell',
     'Keilwelle',
     'Liste-der-argentinischen-Botschafter-in-Chile',
-    'Magnar-Sætre',
+    'Magnar-Saetre',
     'Mark-Behr',
     'Maurische-Netzwuhle',
     'Mozilla-Firefox',
@@ -93,7 +93,7 @@ test('stress-test-en', t => {
     'julia_kristeva',
     'toronto',
     'toronto_star'
-  ];
+  ]
   var noCitation = {
     list: true,
     africaans: true,
@@ -102,50 +102,56 @@ test('stress-test-en', t => {
     'Remote-Application-Programming-Interface': true,
     'Remote-Data-Services': true,
     'Neil-McLean-(saxophonist)': true,
-    'Magnar-Sætre': true,
+    'Magnar-Saetre': true,
     'Liste-der-argentinischen-Botschafter-in-Chile': true,
     Keilwelle: true,
     'HMS-Irresistible': true,
     'Ewelina-Setowska-Dryk': true,
     'Alexander-Y-Type': true
-  };
+  }
   arr.forEach(title => {
-    var doc = readFile(title);
+    var doc = readFile(title)
     //basic is-valid tests for the page parsing
-    t.ok(true, title);
-    t.equal(doc.isRedirect(), false, ' - - not-redirect');
-    t.equal(doc.isDisambig(), false, ' - - not-disambiguation');
-    t.ok(doc.categories().length > 0, ' - - cat-length');
-    t.ok(doc.sections().length > 0, ' - - section-length');
-    var intro = doc.sections(0);
-    t.ok(intro.title() === '', ' - - intro-title-empty');
-    t.ok(intro.indentation() === 0, ' - - depth=0');
-    t.ok(intro.sentences().length > 0, ' - - sentences-length');
-    t.ok(intro.sentences(0).text().length > 0, ' - - intro-text');
-    t.ok(intro.sentences(0).text().match(/[a-z]/), ' - - intro-has words');
+    t.ok(true, title)
+    t.equal(doc.isRedirect(), false, ' - - not-redirect')
+    t.equal(doc.isDisambig(), false, ' - - not-disambiguation')
+    t.ok(doc.categories().length > 0, ' - - cat-length')
+    t.ok(doc.sections().length > 0, ' - - section-length')
+    var intro = doc.sections(0)
+    t.ok(intro.title() === '', ' - - intro-title-empty')
+    t.ok(intro.indentation() === 0, ' - - depth=0')
+    t.ok(intro.sentences().length > 0, ' - - sentences-length')
+    t.ok(intro.sentences(0).text().length > 0, ' - - intro-text')
+    t.ok(
+      intro
+        .sentences(0)
+        .text()
+        .match(/[a-z]/),
+      ' - - intro-has words'
+    )
     if (noCitation[title] === true) {
-      t.equal(doc.citations().length, 0, title + ' has no citation');
+      t.equal(doc.citations().length, 0, title + ' has no citation')
     } else {
-      t.ok(doc.citations().length > 0, title + ' has a citation');
+      t.ok(doc.citations().length > 0, title + ' has a citation')
     }
-    var text = doc.text();
-    t.ok(text.length > 40, ' - - text-length');
+    var text = doc.text()
+    t.ok(text.length > 40, ' - - text-length')
 
-    var md = doc.markdown();
-    t.ok(md.length > 40, ' - - markdown-length-ok');
+    var md = doc.markdown()
+    t.ok(md.length > 40, ' - - markdown-length-ok')
 
-    var latex = doc.latex();
-    t.ok(latex.length > 40, ' - - latex-length-ok');
+    var latex = doc.latex()
+    t.ok(latex.length > 40, ' - - latex-length-ok')
 
-    var html = doc.html();
-    t.ok(html.length > 40, ' - - html-length');
-    t.ok(html.match(/\</), ' - - html-has tag');
+    var html = doc.html()
+    t.ok(html.length > 40, ' - - html-length')
+    t.ok(html.match(/\</), ' - - html-has tag')
 
     var json = doc.json({
       encode: true
-    });
-    t.ok(Object.keys(json).length >= 2, ' - - json-keys-ok');
-    t.equal(isCyclic(json), false, ' - - not-cyclic');
-  });
-  t.end();
-});
+    })
+    t.ok(Object.keys(json).length >= 2, ' - - json-keys-ok')
+    t.equal(isCyclic(json), false, ' - - not-cyclic')
+  })
+  t.end()
+})

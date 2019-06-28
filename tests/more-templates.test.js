@@ -72,12 +72,14 @@ test('support-nowrap-in-infobox', t => {
   | spouse      = {{nowrap| {{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}} }}
   | residence   = Germany, Italy, Switzerland, Austria (present-day Czech Republic), Belgium, United States
   | signature = Albert Einstein signature 1934.svg
+  | chiffre = {{nobr|912 millions}}
   }}
   `;
   var infobox = wtf(str).infoboxes(0);
   var data = infobox.json();
   t.equal(data.name.text, 'Albert Einstein', 'got infobox datad');
   t.equal(data.spouse.text, 'Elsa Löwenthal (m. 1919-1936)', 'got tricky marriage value');
+  t.equal(data.chiffre.text, '912 millions', 'got infobox nobr');
   t.end();
 });
 

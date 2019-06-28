@@ -17,15 +17,6 @@ const wtf = require('./src/index')
 //   console.log(doc.sections('Сюжет').sentences().map((s) => s.text()));
 // });
 
-let str = `{{Infobox Société
-  | couleur boîte             = 706D6E
-  | titre blanc               = oui
-  | nom                       = Microsoft Corporation
-  | secteurs d'activités      = found1
-  | chiffre d'affaires        = found2
- }}
-`
-let obj = wtf(str)
-  .infobox(0)
-  .keyValue()
-obj[`secteurs d'activités`]
+let str = `here {{math|f {{=}} x}} hello`
+let doc = wtf(str)
+console.log(doc.text())
