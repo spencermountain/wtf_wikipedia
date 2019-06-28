@@ -27,7 +27,7 @@ const parseCurrency = (tmpl, r) => {
   let o = parse(tmpl, ['amount', 'code'])
   r.templates.push(o)
   let code = o.template || ''
-  if (code === '' || code === 'currency') {
+  if (code === '' || code === 'currency' || code === 'monnaie' || code === 'unité' || code === 'nombre' || code === 'nb') {
     code = o.code
   }
   code = (code || '').toLowerCase()
@@ -43,7 +43,10 @@ const parseCurrency = (tmpl, r) => {
 const currencies = {
   //this one is generic https://en.wikipedia.org/wiki/Template:Currency
   currency: parseCurrency,
-  monnaie: parseCurrency
+  monnaie: parseCurrency,
+  unité: parseCurrency,
+  nombre: parseCurrency,
+  nb: parseCurrency
 }
 //the others fit the same pattern..
 Object.keys(codes).forEach(k => {
