@@ -40,13 +40,50 @@ const parseCurrency = (tmpl, r) => {
   return str
 }
 
+const inrConvert = (tmpl, r) => {
+  let o = parse(tmpl, ['rupee_value', 'currency_formatting'])
+  r.templates.push(o)
+  let formatting = o.currency_formatting
+  if (formatting) {
+	let multiplier = 1;
+    switch(formatting) {
+      case 'k':
+        multiplier = 1000;
+        break;
+      case 'm':
+        multiplier = 1000000;
+        break;
+      case 'b':
+        multiplier = 1000000000;
+        break;
+      case 't':
+        multiplier = 1000000000000;
+        break;
+      case 'l':
+        multiplier = 100000;
+        break;
+      case 'c':
+        multiplier = 10000000;
+        break;
+      case 'lc':
+        multiplier = 1000000000000;
+        break;
+    }
+    o.rupee_value = o.rupee_value * multiplier
+	
+  }
+  let str = `inr ${o.rupee_value || ''}`
+  return str
+}
+
 const currencies = {
   //this one is generic https://en.wikipedia.org/wiki/Template:Currency
   currency: parseCurrency,
   monnaie: parseCurrency,
   unité: parseCurrency,
   nombre: parseCurrency,
-  nb: parseCurrency
+  nb: parseCurrency,
+  inrconvert: inrConvert
 }
 //the others fit the same pattern..
 Object.keys(codes).forEach(k => {

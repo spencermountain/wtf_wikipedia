@@ -43,3 +43,23 @@ test('currency-templates', function(t) {
 
   t.end();
 });
+
+
+test('inrConvert-templates', function(t) {
+  let doc = wtf('{{INRConvert|93896}}');
+  t.equal(doc.text(), 'inr 93896', 'inrConvert');
+  
+  doc = wtf('{{INRConvert|93896|k}}');
+  t.equal(doc.text(), 'inr 93896000', 'inrConvert');
+  
+  doc = wtf('{{INRConvert|93896|m}}');
+  t.equal(doc.text(), 'inr 93896000000', 'inrConvert');
+  
+  doc = wtf('{{INRConvert|93896|b}}');
+  t.equal(doc.text(), 'inr 93896000000000', 'inrConvert');
+  
+  doc = wtf('{{INRConvert|93896|c}}');
+  t.equal(doc.text(), 'inr 938960000000', 'inrConvert');
+  
+  t.end();
+});
