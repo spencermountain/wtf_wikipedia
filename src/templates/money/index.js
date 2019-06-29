@@ -16,6 +16,7 @@ const codes = {
   'cn¥': 'CN¥', // https://en.wikipedia.org/wiki/Template:CNY
   czk: 'czk', // https://en.wikipedia.org/wiki/Template:CZK
   dkk: 'dkk', // https://en.wikipedia.org/wiki/Template:DKK
+  dkk2: 'dkk', // https://en.wikipedia.org/wiki/Template:DKK
   '€': '€', // https://en.wikipedia.org/wiki/Template:€
   euro: '€', // https://en.wikipedia.org/wiki/Template:€
   gbp: 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
@@ -40,18 +41,21 @@ const codes = {
   shekel: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
   sheqel: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
   nok: 'NOK', //https://en.wikipedia.org/wiki/Template:NOK
+  nok2: 'NOK', //https://en.wikipedia.org/wiki/Template:NOK
   nz$: 'NZ$', //https://en.wikipedia.org/wiki/Template:NZD
   nzd: 'NZ$', //https://en.wikipedia.org/wiki/Template:NZD
   peso: 'peso', //https://en.wikipedia.org/wiki/Template:Peso
   '₱': '₱', // https://en.wikipedia.org/wiki/Template:Philippine_peso
   'philippine peso': '₱', // https://en.wikipedia.org/wiki/Template:Philippine_peso
   pkr: '₨', // https://en.wikipedia.org/wiki/Template:Pakistani_Rupee
+  rmb: 'CN¥', // https://en.wikipedia.org/wiki/Template:CNY
   rub: '₽', // https://en.wikipedia.org/wiki/Template:RUB
   '₽': '₽', // https://en.wikipedia.org/wiki/Template:RUB
   ruble: '₽', // https://en.wikipedia.org/wiki/Template:Ruble
   rupee: '₹', // https://en.wikipedia.org/wiki/Template:Rupee
   'russian ruble': '₽', // https://en.wikipedia.org/wiki/Template:Russian_ruble
   sek: 'SEK', // https://en.wikipedia.org/wiki/Template:SEK
+  sek2: 'SEK', // https://en.wikipedia.org/wiki/Template:SEK
   sgd: 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
   's$': 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
   'SK won': '₩', // https://en.wikipedia.org/wiki/Template:SK_won
@@ -66,10 +70,24 @@ const parseCurrency = (tmpl, r) => {
   let o = parse(tmpl, ['amount', 'code'])
   r.templates.push(o)
   let code = o.template || ''
-  if (code === '' || code === 'currency' || code === 'monnaie' || code === 'unité' || code === 'nombre' || code === 'nb') {
+  if (code === 'currency') {
+	code = o.code
+	if (!code) {
+		o.code = code = 'usd';//Special case when currency template has no code argument
+	}
+  }
+  else if (code === '' || code === 'monnaie' || code === 'unité' || code === 'nombre' || code === 'nb') {
     code = o.code
   }
   code = (code || '').toLowerCase()
+    switch(code) {
+      case 'us':
+        o.code = code = 'usd';
+        break;
+      case 'uk':
+        o.code = code = 'gbp';
+        break;
+    }
   let out = codes[code] || ''
   let str = `${out}${o.amount || ''}`
   //support unknown currencies after the number - like '5 BTC'

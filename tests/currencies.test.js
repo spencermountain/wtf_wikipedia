@@ -9,10 +9,18 @@ test('currency-templates', function(t) {
   t.equal(doc.text(), 'and now US$21.20 billion', 'usd');
 
   doc = wtf('{{Currency|1,000|JPY}} world');
-  t.equal(doc.text(), '¥1,000 world', 'yen');
-
+  t.equal(doc.text(), '¥1,000 world', 'currency yen');
   t.equal(doc.templates().length, 1, 'got a template');
   t.equal(doc.templates(0).amount, '1,000', 'got template amount');
+
+  doc = wtf('{{Currency|1000|USD}}');
+  t.equal(doc.text(), 'US$1000', 'currency named parameters');
+
+  doc = wtf('{{Currency|1000|US}}');
+  t.equal(doc.text(), 'US$1000', 'currency named parameters');
+
+  doc = wtf('{{currency|1.28 billion}}');
+  t.equal(doc.text(), 'US$1.28 billion', 'currency uses US$ by default');
 
   doc = wtf('hello {{ZAR}} world');
   t.equal(doc.text(), 'hello R world', 'empty currency');
@@ -50,8 +58,14 @@ test('currency-templates', function(t) {
   doc = wtf('{{currency|123.45|MYR}}');
   t.equal(doc.text(), 'MYR123.45', 'currency MYR123.45');
 
-  doc = wtf('{{currency|MYR}}');
-  t.equal(doc.text(), 'MYR', 'currency MYR');
+  doc = wtf('{{currency|123.45|NOK2}}');
+  t.equal(doc.text(), 'NOK123.45', 'currency NOK2123.45');
+
+  doc = wtf('{{currency|123.45|RMB}}');
+  t.equal(doc.text(), 'CN¥123.45', 'currency RMB123.45');
+
+  doc = wtf('{{USD|950 million}}');
+  t.equal(doc.text(), 'US$950 million', 'USD template');
 
   t.end();
 });
