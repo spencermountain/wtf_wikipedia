@@ -41,6 +41,18 @@ test('currency-templates', function(t) {
   doc = wtf('{{nb|107.70|€}}');
   t.equal(doc.text(), '€107.70', 'french nombre 2 parameters');
 
+  doc = wtf('{{iso4217|AUD}}');
+  t.equal(doc.text(), 'AUD', 'iso4217 AUD');
+
+  doc = wtf('{{indian rupee symbol}}');
+  t.equal(doc.text(), '₹', 'indian rupee symbol');
+
+  doc = wtf('{{currency|123.45|MYR}}');
+  t.equal(doc.text(), 'MYR123.45', 'currency MYR123.45');
+
+  doc = wtf('{{currency|MYR}}');
+  t.equal(doc.text(), 'MYR', 'currency MYR');
+
   t.end();
 });
 

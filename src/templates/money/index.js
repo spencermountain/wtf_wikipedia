@@ -1,25 +1,64 @@
 const parse = require('../_parsers/parse')
 
 const codes = {
-  us$: 'US$', // https://en.wikipedia.org/wiki/Template:US$
   bdt: '৳', // https://en.wikipedia.org/wiki/Template:BDT
   a$: 'A$', // https://en.wikipedia.org/wiki/Template:AUD
-  ca$: 'CA$', // https://en.wikipedia.org/wiki/Template:CAD
-  cad: 'CA$',
-  cny: 'CN¥', // https://en.wikipedia.org/wiki/Template:CNY
-  hkd: 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
-  gbp: 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
-  '₹': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
-  '¥': '¥', // https://en.wikipedia.org/wiki/Template:JPY
-  jpy: '¥',
-  yen: '¥',
-  '₱': '₱', // https://en.wikipedia.org/wiki/Template:Philippine_peso
-  pkr: '₨', // https://en.wikipedia.org/wiki/Template:Pakistani_Rupee
-  '€': '€', // https://en.wikipedia.org/wiki/Template:€
-  euro: '€',
-  nz$: 'NZ$',
-  nok: 'kr', //https://en.wikipedia.org/wiki/Template:NOK
   aud: 'A$', //https://en.wikipedia.org/wiki/Template:AUD
+  au$: 'A$', //https://en.wikipedia.org/wiki/Template:AUD
+  bdt: 'BDT', //https://en.wikipedia.org/wiki/Template:BDT
+  brl: 'BRL', //https://en.wikipedia.org/wiki/Template:BRL
+  r$: 'BRL', //https://en.wikipedia.org/wiki/Template:BRL
+  ca$: 'CA$', // https://en.wikipedia.org/wiki/Template:CAD
+  cad: 'CA$', // https://en.wikipedia.org/wiki/Template:CAD
+  chf: 'CHF', // https://en.wikipedia.org/wiki/Template:CHF
+  sfr: 'CHF', // https://en.wikipedia.org/wiki/Template:CHF
+  cny: 'CN¥', // https://en.wikipedia.org/wiki/Template:CNY
+  'cn¥': 'CN¥', // https://en.wikipedia.org/wiki/Template:CNY
+  czk: 'czk', // https://en.wikipedia.org/wiki/Template:CZK
+  dkk: 'dkk', // https://en.wikipedia.org/wiki/Template:DKK
+  '€': '€', // https://en.wikipedia.org/wiki/Template:€
+  euro: '€', // https://en.wikipedia.org/wiki/Template:€
+  gbp: 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
+  'gb£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
+  '£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
+  hkd: 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
+  'hk$': 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
+  ils: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
+  '₹': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
+  inr: '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
+  'india rs': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
+  'indian rupee symbol': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
+  'indian rupees': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
+  'indian rupee': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
+  '¥': '¥', // https://en.wikipedia.org/wiki/Template:JPY
+  jpy: '¥', // https://en.wikipedia.org/wiki/Template:JPY
+  yen: '¥', // https://en.wikipedia.org/wiki/Template:JPY
+  '₩': '₩', // https://en.wikipedia.org/wiki/Template:SK_won
+  myr: 'MYR', // https://en.wikipedia.org/wiki/Template:MYR
+  ils: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
+  nis: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
+  shekel: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
+  sheqel: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
+  nok: 'NOK', //https://en.wikipedia.org/wiki/Template:NOK
+  nz$: 'NZ$', //https://en.wikipedia.org/wiki/Template:NZD
+  nzd: 'NZ$', //https://en.wikipedia.org/wiki/Template:NZD
+  peso: 'peso', //https://en.wikipedia.org/wiki/Template:Peso
+  '₱': '₱', // https://en.wikipedia.org/wiki/Template:Philippine_peso
+  'philippine peso': '₱', // https://en.wikipedia.org/wiki/Template:Philippine_peso
+  pkr: '₨', // https://en.wikipedia.org/wiki/Template:Pakistani_Rupee
+  rub: '₽', // https://en.wikipedia.org/wiki/Template:RUB
+  '₽': '₽', // https://en.wikipedia.org/wiki/Template:RUB
+  ruble: '₽', // https://en.wikipedia.org/wiki/Template:Ruble
+  rupee: '₹', // https://en.wikipedia.org/wiki/Template:Rupee
+  'russian ruble': '₽', // https://en.wikipedia.org/wiki/Template:Russian_ruble
+  sek: 'SEK', // https://en.wikipedia.org/wiki/Template:SEK
+  sgd: 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
+  's$': 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
+  'SK won': '₩', // https://en.wikipedia.org/wiki/Template:SK_won
+  ttd: 'TTD', //https://en.wikipedia.org/wiki/Template:TTD
+  'turkish lira': 'TRY', //https://en.wikipedia.org/wiki/Template:Turkish_lira
+  us$: 'US$', // https://en.wikipedia.org/wiki/Template:US$
+  usd: 'US$', // https://en.wikipedia.org/wiki/Template:US$
   zar: 'R' //https://en.wikipedia.org/wiki/Template:ZAR
 }
 
@@ -83,6 +122,7 @@ const currencies = {
   unité: parseCurrency,
   nombre: parseCurrency,
   nb: parseCurrency,
+  iso4217: parseCurrency,
   inrconvert: inrConvert
 }
 //the others fit the same pattern..
