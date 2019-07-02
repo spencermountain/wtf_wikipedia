@@ -15,6 +15,7 @@ const templates = Object.assign({},
   require('./science'),
   require('./math'),
   require('./politics'),
+  require('./stockexchange'),
   require('./misc')
 );
 // console.log(Object.keys(templates).length + ' Templates!');
