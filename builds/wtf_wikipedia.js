@@ -1,4 +1,4 @@
-/* wtf_wikipedia v7.4.1
+/* wtf_wikipedia v7.4.2
    github.com/spencermountain/wtf_wikipedia
    MIT
 */
@@ -7715,7 +7715,7 @@ module.exports = smartReplace;
 },{}],83:[function(_dereq_,module,exports){
 "use strict";
 
-module.exports = '7.4.1';
+module.exports = '7.4.2';
 
 },{}],84:[function(_dereq_,module,exports){
 "use strict";
@@ -10832,56 +10832,49 @@ module.exports = misc;
 },{"../_parsers/parse":106}],130:[function(_dereq_,module,exports){
 "use strict";
 
+var _codes;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var parse = _dereq_('../_parsers/parse');
 
-var codes = {
-  us$: 'US$',
-  // https://en.wikipedia.org/wiki/Template:US$
+var codes = (_codes = {
   bdt: '৳',
   // https://en.wikipedia.org/wiki/Template:BDT
   a$: 'A$',
   // https://en.wikipedia.org/wiki/Template:AUD
-  ca$: 'CA$',
-  // https://en.wikipedia.org/wiki/Template:CAD
-  cad: 'CA$',
-  cny: 'CN¥',
-  // https://en.wikipedia.org/wiki/Template:CNY
-  hkd: 'HK$',
-  // https://en.wikipedia.org/wiki/Template:HKD
-  gbp: 'GB£',
-  // https://en.wikipedia.org/wiki/Template:GBP
-  '₹': '₹',
-  // https://en.wikipedia.org/wiki/Template:Indian_Rupee
-  '¥': '¥',
-  // https://en.wikipedia.org/wiki/Template:JPY
-  jpy: '¥',
-  yen: '¥',
-  '₱': '₱',
-  // https://en.wikipedia.org/wiki/Template:Philippine_peso
-  pkr: '₨',
-  // https://en.wikipedia.org/wiki/Template:Pakistani_Rupee
-  '€': '€',
-  // https://en.wikipedia.org/wiki/Template:€
-  euro: '€',
-  nz$: 'NZ$',
-  nok: 'kr',
-  //https://en.wikipedia.org/wiki/Template:NOK
   aud: 'A$',
   //https://en.wikipedia.org/wiki/Template:AUD
-  zar: 'R' //https://en.wikipedia.org/wiki/Template:ZAR
-
-};
+  au$: 'A$'
+}, _defineProperty(_codes, "bdt", 'BDT'), _defineProperty(_codes, "brl", 'BRL'), _defineProperty(_codes, "r$", 'BRL'), _defineProperty(_codes, "ca$", 'CA$'), _defineProperty(_codes, "cad", 'CA$'), _defineProperty(_codes, "chf", 'CHF'), _defineProperty(_codes, "sfr", 'CHF'), _defineProperty(_codes, "cny", 'CN¥'), _defineProperty(_codes, 'cn¥', 'CN¥'), _defineProperty(_codes, "czk", 'czk'), _defineProperty(_codes, "dkk", 'dkk'), _defineProperty(_codes, "dkk2", 'dkk'), _defineProperty(_codes, '€', '€'), _defineProperty(_codes, "euro", '€'), _defineProperty(_codes, "gbp", 'GB£'), _defineProperty(_codes, 'gb£', 'GB£'), _defineProperty(_codes, '£', 'GB£'), _defineProperty(_codes, "hkd", 'HK$'), _defineProperty(_codes, 'hk$', 'HK$'), _defineProperty(_codes, "ils", 'ILS'), _defineProperty(_codes, '₹', '₹'), _defineProperty(_codes, "inr", '₹'), _defineProperty(_codes, 'india rs', '₹'), _defineProperty(_codes, 'indian rupee symbol', '₹'), _defineProperty(_codes, 'indian rupees', '₹'), _defineProperty(_codes, 'indian rupee', '₹'), _defineProperty(_codes, '¥', '¥'), _defineProperty(_codes, "jpy", '¥'), _defineProperty(_codes, "yen", '¥'), _defineProperty(_codes, '₩', '₩'), _defineProperty(_codes, "myr", 'MYR'), _defineProperty(_codes, "ils", 'ILS'), _defineProperty(_codes, "nis", 'ILS'), _defineProperty(_codes, "shekel", 'ILS'), _defineProperty(_codes, "sheqel", 'ILS'), _defineProperty(_codes, "nok", 'NOK'), _defineProperty(_codes, "nok2", 'NOK'), _defineProperty(_codes, "nz$", 'NZ$'), _defineProperty(_codes, "nzd", 'NZ$'), _defineProperty(_codes, "peso", 'peso'), _defineProperty(_codes, '₱', '₱'), _defineProperty(_codes, 'philippine peso', '₱'), _defineProperty(_codes, "pkr", '₨'), _defineProperty(_codes, "rmb", 'CN¥'), _defineProperty(_codes, "rub", '₽'), _defineProperty(_codes, '₽', '₽'), _defineProperty(_codes, "ruble", '₽'), _defineProperty(_codes, "rupee", '₹'), _defineProperty(_codes, 'russian ruble', '₽'), _defineProperty(_codes, "sek", 'SEK'), _defineProperty(_codes, "sek2", 'SEK'), _defineProperty(_codes, "sgd", 'sgd'), _defineProperty(_codes, 's$', 'sgd'), _defineProperty(_codes, 'SK won', '₩'), _defineProperty(_codes, "ttd", 'TTD'), _defineProperty(_codes, 'turkish lira', 'TRY'), _defineProperty(_codes, "us$", 'US$'), _defineProperty(_codes, "usd", 'US$'), _defineProperty(_codes, "zar", 'R'), _codes);
 
 var parseCurrency = function parseCurrency(tmpl, r) {
   var o = parse(tmpl, ['amount', 'code']);
   r.templates.push(o);
   var code = o.template || '';
 
-  if (code === '' || code === 'currency') {
+  if (code === 'currency') {
+    code = o.code;
+
+    if (!code) {
+      o.code = code = 'usd'; //Special case when currency template has no code argument
+    }
+  } else if (code === '' || code === 'monnaie' || code === 'unité' || code === 'nombre' || code === 'nb') {
     code = o.code;
   }
 
   code = (code || '').toLowerCase();
+
+  switch (code) {
+    case 'us':
+      o.code = code = 'usd';
+      break;
+
+    case 'uk':
+      o.code = code = 'gbp';
+      break;
+  }
+
   var out = codes[code] || '';
   var str = "".concat(out).concat(o.amount || ''); //support unknown currencies after the number - like '5 BTC'
 
@@ -10892,10 +10885,60 @@ var parseCurrency = function parseCurrency(tmpl, r) {
   return str;
 };
 
+var inrConvert = function inrConvert(tmpl, r) {
+  var o = parse(tmpl, ['rupee_value', 'currency_formatting']);
+  r.templates.push(o);
+  var formatting = o.currency_formatting;
+
+  if (formatting) {
+    var multiplier = 1;
+
+    switch (formatting) {
+      case 'k':
+        multiplier = 1000;
+        break;
+
+      case 'm':
+        multiplier = 1000000;
+        break;
+
+      case 'b':
+        multiplier = 1000000000;
+        break;
+
+      case 't':
+        multiplier = 1000000000000;
+        break;
+
+      case 'l':
+        multiplier = 100000;
+        break;
+
+      case 'c':
+        multiplier = 10000000;
+        break;
+
+      case 'lc':
+        multiplier = 1000000000000;
+        break;
+    }
+
+    o.rupee_value = o.rupee_value * multiplier;
+  }
+
+  var str = "inr ".concat(o.rupee_value || '');
+  return str;
+};
+
 var currencies = {
   //this one is generic https://en.wikipedia.org/wiki/Template:Currency
   currency: parseCurrency,
-  monnaie: parseCurrency //the others fit the same pattern..
+  monnaie: parseCurrency,
+  unité: parseCurrency,
+  nombre: parseCurrency,
+  nb: parseCurrency,
+  iso4217: parseCurrency,
+  inrconvert: inrConvert //the others fit the same pattern..
 
 };
 Object.keys(codes).forEach(function (k) {
@@ -10914,7 +10957,7 @@ var parse = _dereq_('./_parsers/parse');
 
 var inf = _dereq_('./_infobox');
 
-var templates = Object.assign({}, _dereq_('./wikipedia'), _dereq_('./identities'), _dereq_('./dates'), _dereq_('./formatting'), _dereq_('./geo'), _dereq_('./language'), _dereq_('./money'), _dereq_('./sports'), _dereq_('./science'), _dereq_('./math'), _dereq_('./politics'), _dereq_('./misc')); // console.log(Object.keys(templates).length + ' Templates!');
+var templates = Object.assign({}, _dereq_('./wikipedia'), _dereq_('./identities'), _dereq_('./dates'), _dereq_('./formatting'), _dereq_('./geo'), _dereq_('./language'), _dereq_('./money'), _dereq_('./sports'), _dereq_('./science'), _dereq_('./math'), _dereq_('./politics'), _dereq_('./stockexchange'), _dereq_('./misc')); // console.log(Object.keys(templates).length + ' Templates!');
 //this gets all the {{template}} strings and decides how to parse them
 
 var parseTemplate = function parseTemplate(tmpl, wiki, data) {
@@ -10964,7 +11007,7 @@ var parseTemplate = function parseTemplate(tmpl, wiki, data) {
 
 module.exports = parseTemplate;
 
-},{"./_ignore":98,"./_infobox":99,"./_parsers/_getName":104,"./_parsers/parse":106,"./dates":111,"./formatting":115,"./geo":121,"./identities":122,"./language":124,"./math":128,"./misc":129,"./money":130,"./politics":134,"./science":136,"./sports":140,"./wikipedia":142}],132:[function(_dereq_,module,exports){
+},{"./_ignore":98,"./_infobox":99,"./_parsers/_getName":104,"./_parsers/parse":106,"./dates":111,"./formatting":115,"./geo":121,"./identities":122,"./language":124,"./math":128,"./misc":129,"./money":130,"./politics":134,"./science":136,"./sports":140,"./stockexchange":142,"./wikipedia":143}],132:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -11562,9 +11605,224 @@ module.exports = sports;
 },{"../../_data/flags":66,"../_parsers/parse":106}],142:[function(_dereq_,module,exports){
 "use strict";
 
+var parse = _dereq_('../_parsers/parse');
+
+var codes = {
+  adx: 'adx',
+  //https://en.wikipedia.org/wiki/Template:Abu_Dhabi_Securities_Exchange
+  aim: 'aim',
+  //https://en.wikipedia.org/wiki/Template:Alternative_Investment_Market
+  bvpasa: 'bvpasa',
+  //https://en.wikipedia.org/wiki/Template:BVPASA
+  asx: 'asx',
+  //https://en.wikipedia.org/wiki/Template:Australian_Securities_Exchange
+  athex: 'athex',
+  //https://en.wikipedia.org/wiki/Template:Athens_Exchange
+  bhse: 'bhse',
+  //https://en.wikipedia.org/wiki/Template:Bahrain_Bourse
+  bvb: 'bvb',
+  //https://en.wikipedia.org/wiki/Template:Bucharest_Stock_Exchange
+  bbv: 'bbv',
+  //https://en.wikipedia.org/wiki/Template:BBV
+  bsx: 'bsx',
+  //https://en.wikipedia.org/wiki/Template:Bermuda_Stock_Exchange
+  b3: 'b3',
+  //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa
+  'bm&f': 'b3',
+  //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa
+  'bm&f bovespa': 'b3',
+  //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa
+  bwse: 'bwse',
+  //https://en.wikipedia.org/wiki/Template:Botswana_Stock_Exchange
+  'botswana stock exchange': 'botswana stock exchange',
+  //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa
+  bse: 'bse',
+  //https://en.wikipedia.org/wiki/Template:Bombay_Stock_Exchange
+  'bombay stock exchange': 'bombay stock exchange',
+  //https://en.wikipedia.org/wiki/Template:Bombay_Stock_Exchange
+  bpse: 'bpse',
+  //https://en.wikipedia.org/wiki/Template:Budapest_Stock_Exchange
+  bcba: 'bcba',
+  //https://en.wikipedia.org/wiki/Template:Buenos_Aires_Stock_Exchange
+  'canadian securities exchange': 'canadian securities exchange',
+  //https://en.wikipedia.org/wiki/Template:Canadian_Securities_Exchange
+  bvc: 'bvc',
+  //https://en.wikipedia.org/wiki/Template:Colombian_Securities_Exchange
+  cse: 'cse',
+  //https://en.wikipedia.org/wiki/Template:Chittagong_Stock_Exchange
+  darse: 'darse',
+  //https://en.wikipedia.org/wiki/Template:Dar_es_Salaam_Stock_Exchange
+  dse: 'dse',
+  //https://en.wikipedia.org/wiki/Template:Dhaka_Stock_Exchange
+  dfm: 'dfm',
+  //https://en.wikipedia.org/wiki/Template:Dubai_Financial_Market
+  euronext: 'euronext',
+  //https://en.wikipedia.org/wiki/Template:Euronext
+  fwb: 'fwb',
+  //https://en.wikipedia.org/wiki/Template:Frankfurt_Stock_Exchange
+  fse: 'fse',
+  //https://en.wikipedia.org/wiki/Template:Fukuoka_Stock_Exchange
+  gse: 'gse',
+  //https://en.wikipedia.org/wiki/Template:Ghana_Stock_Exchange
+  gtsm: 'gtsm',
+  //https://en.wikipedia.org/wiki/Template:Gre_Tai_Securities_Market
+  sehk: 'sehk',
+  //https://en.wikipedia.org/wiki/Template:Hong_Kong_Stock_Exchange
+  idx: 'idx',
+  //https://en.wikipedia.org/wiki/Template:Indonesia_Stock_Exchange
+  nse: 'nse',
+  //https://en.wikipedia.org/wiki/Template:National_Stock_Exchange_of_India
+  ise: 'ise',
+  //https://en.wikipedia.org/wiki/Template:Irish_Stock_Exchange
+  isin: 'isin',
+  //https://en.wikipedia.org/wiki/Template:ISIN
+  bist: 'bist',
+  //https://en.wikipedia.org/wiki/Template:Borsa_Istanbul
+  bit: 'bit',
+  //https://en.wikipedia.org/wiki/Template:Borsa_Italiana
+  jasdaq: 'jasdaq',
+  //https://en.wikipedia.org/wiki/Template:JASDAQ
+  jse: 'jse',
+  //https://en.wikipedia.org/wiki/Template:Johannesburg_Stock_Exchange
+  kase: 'kase',
+  //https://en.wikipedia.org/wiki/Template:Kazakhstan_Stock_Exchange
+  krx: 'krx',
+  //https://en.wikipedia.org/wiki/Template:Korea_Exchange
+  bvl: 'bvl',
+  //https://en.wikipedia.org/wiki/Template:Lima_Stock_Exchange
+  lse: 'lse',
+  //https://en.wikipedia.org/wiki/Template:London_Stock_Exchange
+  luxse: 'luxse',
+  //https://en.wikipedia.org/wiki/Template:Luxembourg_Stock_Exchange
+  bmad: 'bmad',
+  //https://en.wikipedia.org/wiki/Template:Bolsa_de_Madrid
+  myx: 'myx',
+  //https://en.wikipedia.org/wiki/Template:Bursa_Malaysia
+  bmv: 'bmv',
+  //https://en.wikipedia.org/wiki/Template:Mexican_Stock_Exchange
+  mcx: 'mcx',
+  //https://en.wikipedia.org/wiki/Template:Moscow_Exchange
+  mutf: 'mutf',
+  //https://en.wikipedia.org/wiki/Template:Mutual_fund
+  nag: 'nag',
+  //https://en.wikipedia.org/wiki/Template:Nagoya_Stock_Exchange
+  kn: 'kn',
+  //https://en.wikipedia.org/wiki/Template:Nairobi_Securities_Exchange
+  'nasdaq dubai': 'nasdaq dubai',
+  //https://en.wikipedia.org/wiki/Template:NASDAQ_Dubai
+  'nasdaq': 'nasdaq',
+  //https://en.wikipedia.org/wiki/Template:NASDAQ
+  neeq: 'neeq',
+  //https://en.wikipedia.org/wiki/Template:NEEQ
+  nepse: 'nepse',
+  //https://en.wikipedia.org/wiki/Template:Nepal_Stock_Exchange
+  nyse: 'nyse',
+  //https://en.wikipedia.org/wiki/Template:New_York_Stock_Exchange
+  nzx: 'nzx',
+  //https://en.wikipedia.org/wiki/Template:New_Zealand_Exchange
+  amex: 'amex',
+  //https://en.wikipedia.org/wiki/Template:NYSE_American
+  'nyse arca': 'nyse arca',
+  //https://en.wikipedia.org/wiki/Template:NYSE_Arca
+  omx: 'omx',
+  //https://en.wikipedia.org/wiki/Template:OMX
+  'omx baltic': 'omx baltic',
+  //https://en.wikipedia.org/wiki/Template:OMX_Baltic
+  ose: 'ose',
+  //https://en.wikipedia.org/wiki/Template:Oslo_Stock_Exchange
+  'otc pink': 'otc pink',
+  //https://en.wikipedia.org/wiki/Template:OTC_Pink
+  otcqb: 'otcqb',
+  //https://en.wikipedia.org/wiki/Template:OTCQB
+  otcqx: 'otcqx',
+  //https://en.wikipedia.org/wiki/Template:OTCQX
+  'philippine stock exchange': 'philippine stock exchange',
+  //https://en.wikipedia.org/wiki/Template:Philippine_Stock_Exchange
+  prse: 'prse',
+  //https://en.wikipedia.org/wiki/Template:Prague_Stock_Exchange
+  qe: 'qe',
+  //https://en.wikipedia.org/wiki/Template:Qatar_Stock_Exchange
+  bcs: 'bcs',
+  //https://en.wikipedia.org/wiki/Template:Santiago_Stock_Exchange
+  'saudi stock exchange': 'saudi stock exchange',
+  //https://en.wikipedia.org/wiki/Template:Saudi_Stock_Exchange
+  sgx: 'sgx',
+  //https://en.wikipedia.org/wiki/Template:Singapore_Exchange
+  sse: 'sse',
+  //https://en.wikipedia.org/wiki/Template:Shanghai_Stock_Exchange
+  szse: 'szse',
+  //https://en.wikipedia.org/wiki/Template:Shenzhen_Stock_Exchange
+  swx: 'swx',
+  //https://en.wikipedia.org/wiki/Template:SIX_Swiss_Exchange
+  set: 'set',
+  //https://en.wikipedia.org/wiki/Template:Stock_Exchange_of_Thailand
+  tase: 'tase',
+  //https://en.wikipedia.org/wiki/Template:Tel_Aviv_Stock_Exchange
+  tyo: 'tyo',
+  //https://en.wikipedia.org/wiki/Template:Tokyo_Stock_Exchange
+  tsx: 'tsx',
+  //https://en.wikipedia.org/wiki/Template:Toronto_Stock_Exchange
+  twse: 'twse',
+  //https://en.wikipedia.org/wiki/Template:Taiwan_Stock_Exchange
+  'tsx-v': 'tsx-v',
+  //https://en.wikipedia.org/wiki/Template:TSX_Venture_Exchange
+  'tsxv': 'tsxv',
+  //https://en.wikipedia.org/wiki/Template:TSX_Venture_Exchange
+  nex: 'nex',
+  //https://en.wikipedia.org/wiki/Template:TSXV_NEX
+  ttse: 'ttse',
+  //https://en.wikipedia.org/wiki/Template:Trinidad_and_Tobago_Stock_Exchange
+  'pfts ukraine stock exchange': 'pfts ukraine stock exchange',
+  //https://en.wikipedia.org/wiki/Template:PFTS_Ukraine_Stock_Exchange
+  wse: 'wse',
+  //https://en.wikipedia.org/wiki/Template:Warsaw_Stock_Exchange
+  wbag: 'wbag',
+  //https://en.wikipedia.org/wiki/Template:Wiener_B%C3%B6rse
+  zse: 'zse',
+  //https://en.wikipedia.org/wiki/Template:Zagreb_Stock_Exchange
+  'zagreb stock exchange': 'zagreb stock exchange',
+  //https://en.wikipedia.org/wiki/Template:Zagreb_Stock_Exchange
+  'zimbabwe stock exchange': 'zimbabwe stock exchange' //https://en.wikipedia.org/wiki/Template:Zimbabwe_Stock_Exchange
+
+};
+
+var parseStockExchange = function parseStockExchange(tmpl, r) {
+  var o = parse(tmpl, ['ticketnumber', 'code']);
+  r.templates.push(o);
+  var code = o.template || '';
+
+  if (code === '') {
+    code = o.code;
+  }
+
+  code = (code || '').toLowerCase();
+  var out = codes[code] || '';
+  var str = out;
+
+  if (o.ticketnumber) {
+    str = "".concat(str, ": ").concat(o.ticketnumber);
+  }
+
+  if (o.code && !codes[o.code.toLowerCase()]) {
+    str += ' ' + o.code;
+  }
+
+  return str;
+};
+
+var currencies = {}; //the others fit the same pattern..
+
+Object.keys(codes).forEach(function (k) {
+  currencies[k] = parseStockExchange;
+});
+module.exports = currencies;
+
+},{"../_parsers/parse":106}],143:[function(_dereq_,module,exports){
+"use strict";
+
 module.exports = Object.assign({}, _dereq_('./links'), _dereq_('./page'), _dereq_('./table-cell'));
 
-},{"./links":143,"./page":144,"./table-cell":145}],143:[function(_dereq_,module,exports){
+},{"./links":144,"./page":145,"./table-cell":146}],144:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -11637,7 +11895,7 @@ templates.ll = templates.link;
 templates['l-self'] = templates.link;
 module.exports = templates;
 
-},{"../_parsers/parse":106}],144:[function(_dereq_,module,exports){
+},{"../_parsers/parse":106}],145:[function(_dereq_,module,exports){
 "use strict";
 
 var parse = _dereq_('../_parsers/parse');
@@ -11847,7 +12105,7 @@ parsers['sisterlinks'] = parsers['sister project links'];
 parsers['main article'] = parsers['main'];
 module.exports = parsers;
 
-},{"../../image/Image":84,"../_parsers/parse":106}],145:[function(_dereq_,module,exports){
+},{"../../image/Image":84,"../_parsers/parse":106}],146:[function(_dereq_,module,exports){
 "use strict";
 
 //random misc for inline wikipedia templates
