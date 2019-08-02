@@ -322,7 +322,7 @@ s.dates() //structured date templates
 ```js
 img = wtf(page).images(0)
 img.url()     // the full-size wikimedia-hosted url
-img.thumnail() // 300px, by default
+img.thumbnail() // 300px, by default
 img.format()  // jpg, png, ..
 img.exists()  // HEAD req to see if the file is alive
 ```
