@@ -1,15 +1,17 @@
-'use strict';
-var wtf = require('./lib');
-var test = require('tape');
+'use strict'
+var wtf = require('./lib')
+var test = require('tape')
 
 test('glossary of professional wrestling', function(t) {
   var glossary = `{{term|1=A-show}}
-  {{defn|1= A wrestling event where a company's biggest draws wrestle.<ref name=torch/>}}`;
-  var o = wtf(glossary).sections()[0].sentences();
-  t.equal(o[0].data.text, 'A-show:');
-  t.equal(o[1].data.text, `A wrestling event where a company's biggest draws wrestle.`);
-  t.end();
-});
+  {{defn|1= A wrestling event where a company's biggest draws wrestle.<ref name=torch/>}}`
+  var o = wtf(glossary)
+    .sections()[0]
+    .sentences()
+  t.equal(o[0].data.text, 'A-show:')
+  t.equal(o[1].data.text, `A wrestling event where a company's biggest draws wrestle.`)
+  t.end()
+})
 
 test('boloZenden infobox', function(t) {
   var boloZenden = `{{Infobox football biography
@@ -37,20 +39,20 @@ test('boloZenden infobox', function(t) {
     | nationalyears1 = 1997–2004 |nationalteam1 = [[Netherlands national football team|Netherlands]] |nationalcaps1 = 54 |nationalgoals1 = 7
     | manageryears1  = 2012–2013 |managerclubs1 = [[Chelsea F.C.|Chelsea]] (assistant manager)
     | manageryears2  = 2013– |managerclubs2 = [[Jong PSV]] (assistant manager)
-  }}`;
-  var o = wtf(boloZenden).infoboxes(0).data;
-  t.equal(o.years1.text(), '1993–1998');
-  t.equal(o.clubs1.text(), 'PSV');
-  t.equal(o.youthyears1.text(), '1985–1987');
-  t.equal(o.youthclubs1.text(), 'MVV');
-  t.equal(o.nationalyears1.text(), '1997–2004');
-  t.equal(o.nationalteam1.text(), 'Netherlands');
-  t.equal(o.nationalteam1.links(0).page, 'Netherlands national football team');
-  t.equal(o.nationalteam1.links(0).text, 'Netherlands');
-  t.equal(o.nationalcaps1.text(), '54');
-  t.equal(o.nationalgoals1.text(), '7');
-  t.end();
-});
+  }}`
+  var o = wtf(boloZenden).infoboxes(0).data
+  t.equal(o.years1.text(), '1993–1998')
+  t.equal(o.clubs1.text(), 'PSV')
+  t.equal(o.youthyears1.text(), '1985–1987')
+  t.equal(o.youthclubs1.text(), 'MVV')
+  t.equal(o.nationalyears1.text(), '1997–2004')
+  t.equal(o.nationalteam1.text(), 'Netherlands')
+  t.equal(o.nationalteam1.links(0).page, 'Netherlands national football team')
+  t.equal(o.nationalteam1.links(0).text, 'Netherlands')
+  t.equal(o.nationalcaps1.text(), '54')
+  t.equal(o.nationalgoals1.text(), '7')
+  t.end()
+})
 
 test('hurricane infobox', function(t) {
   var hurricane = `
@@ -70,14 +72,14 @@ test('hurricane infobox', function(t) {
   | Fatalities=None
   | Areas=[[Florida]]
   | Hurricane season=[[2002 Atlantic hurricane season]]
-}}`;
-  var o = wtf(hurricane).infoboxes(0).data;
-  t.equal(o.name.text(), 'Tropical Storm Edouard');
-  t.equal(o.dissipated.text(), 'September 6, 2002');
-  t.equal(o['hurricane season'].text(), '2002 Atlantic hurricane season');
-  t.equal(o.areas.links(0).page, 'Florida');
-  t.end();
-});
+}}`
+  var o = wtf(hurricane).infoboxes(0).data
+  t.equal(o.name.text(), 'Tropical Storm Edouard')
+  t.equal(o.dissipated.text(), 'September 6, 2002')
+  t.equal(o['hurricane season'].text(), '2002 Atlantic hurricane season')
+  t.equal(o.areas.links(0).page, 'Florida')
+  t.end()
+})
 
 test('parkplace disambig', function(t) {
   var park_place = `
@@ -94,13 +96,13 @@ test('parkplace disambig', function(t) {
 * [[Park Place (Vancouver)]], a skyscraper
 * [[Park Place Mall]], Lethbridge, Alberta
 {{disambiguation}}
-  `;
-  var o = wtf(park_place);
-  t.equal(o.isDisambiguation(), true, 'is-disambiguation');
-  t.equal(o.links().length, 4, 'links');
-  t.equal(o.links(0).page, 'Park Place (TV series)', 'first-link');
-  t.end();
-});
+  `
+  var o = wtf(park_place)
+  t.equal(o.isDisambiguation(), true, 'is-disambiguation')
+  t.equal(o.links().length, 4, 'links')
+  t.equal(o.links(0).page, 'Park Place (TV series)', 'first-link')
+  t.end()
+})
 
 test('bluejays table', function(t) {
   var bluejays = `
@@ -114,17 +116,17 @@ test('bluejays table', function(t) {
 |- align="center" bgcolor="bbffbb"
 | 2 || April 7 || @ [[Minnesota Twins|Twins]] || 9 - 3 || '''[[David Wells|Wells]]''' (1-0) || [[Mike Lincoln|Lincoln]] (0-1) || '''[[Roy Halladay|Halladay]]''' (1) || 9,220 || 1-1
 |}
-  `;
-  var arr = wtf(bluejays).tables(0).data;
-  t.equal(arr.length, 2);
-  t.equal(arr[0]['Number'].text(), '1', 'number');
-  t.equal(arr[0]['Date'].text(), 'April 6', 'date');
-  t.equal(arr[0]['Team'].text(), '@ Twins', 'team');
-  t.equal(arr[1]['Number'].text(), '2', 'number2');
-  t.equal(arr[1]['Date'].text(), 'April 7', 'date2');
-  t.equal(arr[1]['col4'].text(), '9 - 3', 'col-3');
-  t.end();
-});
+  `
+  var arr = wtf(bluejays).tables(0).data
+  t.equal(arr.length, 2)
+  t.equal(arr[0]['Number'].text(), '1', 'number')
+  t.equal(arr[0]['Date'].text(), 'April 6', 'date')
+  t.equal(arr[0]['Team'].text(), '@ Twins', 'team')
+  t.equal(arr[1]['Number'].text(), '2', 'number2')
+  t.equal(arr[1]['Date'].text(), 'April 7', 'date2')
+  t.equal(arr[1]['col4'].text(), '9 - 3', 'col-3')
+  t.end()
+})
 
 var alabama = `
 {{Infobox university
@@ -154,15 +156,15 @@ var alabama = `
 | website = {{url|www.ua.edu}}
 | logo = [[File:University of Alabama (logo).png|250px]]
 }}
-`;
+`
 test('Alabama infobox', function(t) {
-  var infobox = wtf(alabama).infoboxes(0).data;
-  t.equal(infobox.athletics.text(), 'NCAA Division I – SEC', 'athletics =' + infobox.athletics.text);
-  t.equal(infobox.country.text(), 'U.S.', 'country =' + infobox.country.text);
-  t.equal(infobox.president.text(), 'Stuart R. Bell', 'president =' + infobox.president.text);
+  var infobox = wtf(alabama).infoboxes(0).data
+  t.equal(infobox.athletics.text(), 'NCAA Division I – SEC', 'athletics =' + infobox.athletics.text)
+  t.equal(infobox.country.text(), 'U.S.', 'country =' + infobox.country.text)
+  t.equal(infobox.president.text(), 'Stuart R. Bell', 'president =' + infobox.president.text)
   // t.equal(infobox.campus.text, 'Urban (small city); 1970 acre', 'campus = ' + infobox.campus.text);
-  t.end();
-});
+  t.end()
+})
 
 test('Radiohead infobox', function(t) {
   var radiohead = `{{Infobox musical artist
@@ -199,13 +201,17 @@ test('Radiohead infobox', function(t) {
 * [[Colin Greenwood]]
 * [[Ed O'Brien]]
 * [[Philip Selway]]
-}} `;
-  var infobox = wtf(radiohead).infoboxes(0).data;
-  t.equal(infobox.current_members.text().match(/Greenwood/g).length, 2, 'current members');
-  t.equal(infobox.genre.text(), 'Art rock\n\nalternative rock\n\nelectronica\n\nexperimental rock', 'genre');
-  t.equal(infobox.associated_acts.text(), 'Atoms for Peace\n\n7 Worlds Collide', 'associated-acts');
-  t.end();
-});
+}} `
+  var infobox = wtf(radiohead).infoboxes(0).data
+  t.equal(infobox.current_members.text().match(/Greenwood/g).length, 2, 'current members')
+  t.equal(
+    infobox.genre.text(),
+    'Art rock\n\nalternative rock\n\nelectronica\n\nexperimental rock',
+    'genre'
+  )
+  t.equal(infobox.associated_acts.text(), 'Atoms for Peace\n\n7 Worlds Collide', 'associated-acts')
+  t.end()
+})
 
 test('templates() list ordering', function(t) {
   var str = `
@@ -218,15 +224,15 @@ The types of boats provided at each station and the launching methods vary depen
 |cool = nope
 }}
 hello there
-`;
-  var doc = wtf(str);
-  t.equal(doc.templates().length, 3, 'got several templates');
-  t.equal(doc.infoboxes().length, 1, 'got one infobox');
-  t.equal(doc.citations().length, 1, 'got citation template');
-  t.equal(doc.templates('main').length, 1, 'got main template');
-  t.equal(doc.templates('tracklist').length, 1, 'got tracklist template');
-  t.end();
-});
+`
+  var doc = wtf(str)
+  t.equal(doc.templates().length, 3, 'got several templates')
+  t.equal(doc.infoboxes().length, 1, 'got one infobox')
+  t.equal(doc.citations().length, 1, 'got citation template')
+  t.equal(doc.templates('main').length, 1, 'got main template')
+  t.equal(doc.templates('tracklist').length, 1, 'got tracklist template')
+  t.end()
+})
 
 test('templates in infobox', function(t) {
   var str = `{{Infobox museum
@@ -234,20 +240,18 @@ test('templates in infobox', function(t) {
   |image=           20070701 Arts Club of Chicago.JPG
   |website= [http://www.artsclubchicago.org www.artsclubchicago.org]
   }}
-  '''Arts Club of Chicago''' is a private club located in the [[Near North Side, Chicago|Near North Side]] `;
-  var doc = wtf(str);
-  t.equal(doc.templates().length, 1, 'got one template');
-  t.equal(doc.infoboxes().length, 1, 'got one infobox');
-  t.equal(doc.images().length, 1, 'got one image');
-  t.equal(doc.images().length, 1, 'got one image');
-  t.equal(doc.links().length, 2, 'got two links');
-  t.equal(doc.templates('coord').length, 1, 'got coord template');
-  t.end();
-});
-
+  '''Arts Club of Chicago''' is a private club located in the [[Near North Side, Chicago|Near North Side]] `
+  var doc = wtf(str)
+  t.equal(doc.templates().length, 1, 'got one template')
+  t.equal(doc.infoboxes().length, 1, 'got one infobox')
+  t.equal(doc.images().length, 1, 'got one image')
+  t.equal(doc.images().length, 1, 'got one image')
+  t.equal(doc.links().length, 2, 'got two links')
+  t.equal(doc.templates('coord').length, 1, 'got coord template')
+  t.end()
+})
 
 test('microsoft currency parsing', function(t) {
-
   var microsoft = `
 {{Infobox company
 | name = Microsoft Corporation
@@ -315,14 +319,17 @@ test('microsoft currency parsing', function(t) {
 | subsid = [[List of mergers and acquisitions by Microsoft|List of Microsoft subsidiaries]]
 | website = {{URL|https://microsoft.com}}
 }}
-  `;
-  var infobox = wtf(microsoft).infoboxes(0).data;
-  t.equal(infobox.revenue.text(), 'US$89.95 billion', 'revenue =' + infobox.revenue.text);
-  t.equal(infobox.operating_income.text(), 'US$22.27 billion', 'operating_income =' + infobox.operating_income.text);
-  t.equal(infobox.net_income.text(), 'US$21.20 billion', 'net_income =' + infobox.net_income.text);
-  t.end();
-});
-
+  `
+  var infobox = wtf(microsoft).infoboxes(0).data
+  t.equal(infobox.revenue.text(), 'US$89.95 billion', 'revenue =' + infobox.revenue.text)
+  t.equal(
+    infobox.operating_income.text(),
+    'US$22.27 billion',
+    'operating_income =' + infobox.operating_income.text
+  )
+  t.equal(infobox.net_income.text(), 'US$21.20 billion', 'net_income =' + infobox.net_income.text)
+  t.end()
+})
 
 test('climate template', function(t) {
   var str = `{{climate chart
@@ -340,14 +347,15 @@ test('climate template', function(t) {
 |  2.3 |  7.5 | 84
 | −3.1 |  2.1 | 61
 |float=right
-|source= Environment Canada }}`;
-  var data = wtf(str).templates(0).data;
-  t.equal(data.months[0].low, -6.7, 'jan low');
-  t.equal(data.months[1].precip, 55, 'feb precip');
-  t.end();
-});
+|source= Environment Canada }}`
+  var data = wtf(str).templates(0).data
+  t.equal(data.months[0].low, -6.7, 'jan low')
+  t.equal(data.months[1].precip, 55, 'feb precip')
+  t.end()
+})
 test('german ones', function(t) {
-  var str = 'Buchstaben {{Taste|Q}}, {{Taste|W}}, {{Taste|E}}, {{Taste|R}}, {{Taste|T}} und {{Taste|Z}}';
-  t.equal(wtf(str).text(), 'Buchstaben Q, W, E, R, T und Z', 'letters');
-  t.end();
-});
+  var str =
+    'Buchstaben {{Taste|Q}}, {{Taste|W}}, {{Taste|E}}, {{Taste|R}}, {{Taste|T}} und {{Taste|Z}}'
+  t.equal(wtf(str).text(), 'Buchstaben Q, W, E, R, T und Z', 'letters')
+  t.end()
+})

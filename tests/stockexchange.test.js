@@ -67,7 +67,6 @@ test('stock exchange NASDAQ', function(t) {
   t.end()
 })
 
-
 test('stock exchange SSE in list', function(t) {
   var str = `
   {{Infobox settlement
@@ -77,6 +76,10 @@ test('stock exchange SSE in list', function(t) {
   let obj = wtf(str)
     .infobox(0)
     .keyValue()
-  t.equal(obj[`traded_as`], 'sse: 122458 (bond)\n\nsse: 122470 (bond)', 'found stock SSE exchange in list')
+  t.equal(
+    obj[`traded_as`],
+    'sse: 122458 (bond)\n\nsse: 122470 (bond)',
+    'found stock SSE exchange in list'
+  )
   t.end()
 })
