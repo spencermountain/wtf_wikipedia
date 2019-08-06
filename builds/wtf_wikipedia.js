@@ -567,15 +567,21 @@
 	    method: 'GET',
 	    headers: {
 	      'Content-Type': 'application/json',
-	      'Api-User-Agent': options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'Random user of the wtf_wikipedia library'
-	    },
-	  };
-	  return browserPonyfill(url, params).then((response) => {
-	    if (response.status !== 200) {
-	      throw response;
+	      'Api-User-Agent':
+	        options.userAgent ||
+	        options['User-Agent'] ||
+	        options['Api-User-Agent'] ||
+	        'Random user of the wtf_wikipedia library'
 	    }
-	    return response.json();
-	  }).catch(console.error);
+	  };
+	  return browserPonyfill(url, params)
+	    .then(response => {
+	      if (response.status !== 200) {
+	        throw response
+	      }
+	      return response.json()
+	    })
+	    .catch(console.error)
 	};
 	var _request = request;
 
@@ -1738,8 +1744,7 @@
 	    url = options.wikiUrl;
 	  }
 	  //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-	  url +=
-	    '?action=query&prop=revisions&rvprop=content&maxlag=5&rvslots=main&origin=*&format=json';
+	  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&rvslots=main&origin=*&format=json';
 	  if (options.follow_redirects !== false) {
 	    url += '&redirects=true';
 	  }
@@ -1790,28 +1795,28 @@
 	    options: options,
 	    lang: lang,
 	    callback: callback
-	  };
+	  }
 	};
 	var _params = getParams;
 
 	//helper for looping around all sections of a document
 	const sectionMap = function(doc, fn, clue) {
 	  let arr = [];
-	  doc.sections().forEach((sec) => {
+	  doc.sections().forEach(sec => {
 	    let list = [];
 	    if (typeof clue === 'string') {
 	      list = sec[fn](clue);
 	    } else {
 	      list = sec[fn]();
 	    }
-	    list.forEach((t) => {
+	    list.forEach(t => {
 	      arr.push(t);
 	    });
 	  });
 	  if (typeof clue === 'number') {
-	    return arr[clue];
+	    return arr[clue]
 	  }
-	  return arr;
+	  return arr
 	};
 	var _sectionMap = sectionMap;
 
@@ -1819,14 +1824,14 @@
 	const setDefaults = function(options, defaults) {
 	  let obj = {};
 	  defaults = defaults || {};
-	  Object.keys(defaults).forEach((k) => {
+	  Object.keys(defaults).forEach(k => {
 	    obj[k] = defaults[k];
 	  });
 	  options = options || {};
-	  Object.keys(options).forEach((k) => {
+	  Object.keys(options).forEach(k => {
 	    obj[k] = options[k];
 	  });
-	  return obj;
+	  return obj
 	};
 	var setDefaults_1 = setDefaults;
 
@@ -1834,7 +1839,7 @@
 	  redirects: true,
 	  infoboxes: true,
 	  templates: true,
-	  sections: true,
+	  sections: true
 	};
 	// we should try to make this look like the wikipedia does, i guess.
 	const softRedirect = function(doc) {
@@ -1844,7 +1849,7 @@
 	  if (link.anchor) {
 	    href += '#' + link.anchor;
 	  }
-	  return `↳ [${link.text}](${href})`;
+	  return `↳ [${link.text}](${href})`
 	};
 
 	//turn a Doc object into a markdown string
@@ -1854,11 +1859,14 @@
 	  let md = '';
 	  //if it's a redirect page, give it a 'soft landing':
 	  if (options.redirects === true && doc.isRedirect() === true) {
-	    return softRedirect(doc); //end it here
+	    return softRedirect(doc) //end it here
 	  }
 	  //render infoboxes (up at the top)
 	  if (options.infoboxes === true && options.templates === true) {
-	    md += doc.infoboxes().map(infobox => infobox.markdown(options)).join('\n\n');
+	    md += doc
+	      .infoboxes()
+	      .map(infobox => infobox.markdown(options))
+	      .join('\n\n');
 	  }
 	  //render each section
 	  if (options.sections === true || options.paragraphs === true || options.sentences === true) {
@@ -1867,10 +1875,12 @@
 	  //default false
 	  if (options.citations === true) {
 	    md += '## References';
-	    md += doc.citations().map(c => c.json(options)).join('\n');
-
+	    md += doc
+	      .citations()
+	      .map(c => c.json(options))
+	      .join('\n');
 	  }
-	  return md;
+	  return md
 	};
 	var toMarkdown_1 = toMarkdown;
 
@@ -1879,7 +1889,7 @@
 	  infoboxes: true,
 	  headers: true,
 	  sections: true,
-	  links: true,
+	  links: true
 	};
 	// we should try to make this look like the wikipedia does, i guess.
 	const softRedirect$1 = function(doc) {
@@ -1891,7 +1901,7 @@
 	  }
 	  return `  <div class="redirect">
   ↳ <a class="link" href="./${href}">${link.text}</a>
-  </div>`;
+  </div>`
 	};
 
 	//turn a Doc object into a HTML string
@@ -1912,11 +1922,14 @@
 	  //if it's a redirect page, give it a 'soft landing':
 	  if (doc.isRedirect() === true) {
 	    html += softRedirect$1(doc);
-	    return html + '\n</body>\n</html>'; //end it here.
+	    return html + '\n</body>\n</html>' //end it here.
 	  }
 	  //render infoboxes (up at the top)
 	  if (options.infoboxes === true) {
-	    html += doc.infoboxes().map(i => i.html(options)).join('\n');
+	    html += doc
+	      .infoboxes()
+	      .map(i => i.html(options))
+	      .join('\n');
 	  }
 	  //render each section
 	  if (options.sections === true && (options.paragraphs === true || options.sentences === true)) {
@@ -1925,11 +1938,14 @@
 	  //default off
 	  if (options.references === true) {
 	    html += '<h2>References</h2>';
-	    html += doc.references().map((c) => c.json(options)).join('\n');
+	    html += doc
+	      .references()
+	      .map(c => c.json(options))
+	      .join('\n');
 	  }
 	  html += '</body>\n';
 	  html += '</html>';
-	  return html;
+	  return html
 	};
 	var toHtml_1 = toHtml;
 
@@ -1937,7 +1953,7 @@
 	  title: true,
 	  sections: true,
 	  pageID: true,
-	  categories: true,
+	  categories: true
 	};
 
 	//an opinionated output of the most-wanted data
@@ -1987,13 +2003,13 @@
 	  if (options.latex) {
 	    data.latex = doc.latex(options);
 	  }
-	  return data;
+	  return data
 	};
 	var toJson = toJSON;
 
 	const defaults$3 = {
 	  infoboxes: true,
-	  sections: true,
+	  sections: true
 	};
 
 	// we should try to make this look like the wikipedia does, i guess.
@@ -2005,7 +2021,7 @@
 	  if (link.anchor) {
 	    href += '#' + link.anchor;
 	  }
-	  return '↳ \\href{' + href + '}{' + link.text + '}';
+	  return '↳ \\href{' + href + '}{' + link.text + '}'
 	};
 
 	//
@@ -2014,22 +2030,31 @@
 	  let out = '';
 	  //if it's a redirect page, give it a 'soft landing':
 	  if (doc.isRedirect() === true) {
-	    return softRedirect$2(doc); //end it here.
+	    return softRedirect$2(doc) //end it here.
 	  }
 	  //render infoboxes (up at the top)
 	  if (options.infoboxes === true) {
-	    out += doc.infoboxes().map(i => i.latex(options)).join('\n');
+	    out += doc
+	      .infoboxes()
+	      .map(i => i.latex(options))
+	      .join('\n');
 	  }
 	  //render each section
 	  if (options.sections === true || options.paragraphs === true || options.sentences === true) {
-	    out += doc.sections().map(s => s.latex(options)).join('\n');
+	    out += doc
+	      .sections()
+	      .map(s => s.latex(options))
+	      .join('\n');
 	  }
 	  //default off
 	  //render citations
 	  if (options.citations === true) {
-	    out += doc.citations().map(c => c.latex(options)).join('\n');
+	    out += doc
+	      .citations()
+	      .map(c => c.latex(options))
+	      .join('\n');
 	  }
-	  return out;
+	  return out
 	};
 	var toLatex_1 = toLatex;
 
@@ -2055,15 +2080,15 @@
 	var aliases = aliasList;
 
 	//markdown images are like this: ![alt text](href)
-	const doImage = (image) => {
+	const doImage = image => {
 	  let alt = image.data.file.replace(/^(file|image):/i, '');
 	  alt = alt.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
-	  return '![' + alt + '](' + image.thumbnail() + ')';
+	  return '![' + alt + '](' + image.thumbnail() + ')'
 	};
 	var toMarkdown$1 = doImage;
 
-	const makeImage = (img) => {
-	  return '  <img src="' + img.thumbnail() + '" alt="' + img.alt() + '"/>';
+	const makeImage = img => {
+	  return '  <img src="' + img.thumbnail() + '" alt="' + img.alt() + '"/>'
 	};
 	var toHtml$1 = makeImage;
 
@@ -2075,7 +2100,7 @@
 	  out += '\n\\caption{' + alt + '}';
 	  // out += '\n%\\label{fig:myimage1}';
 	  out += '\n\\end{figure}';
-	  return out;
+	  return out
 	};
 	var toLatex_1$1 = toLatex$1;
 
@@ -2084,13 +2109,13 @@
 	  alt: true,
 	  links: true,
 	  thumb: true,
-	  url: true,
+	  url: true
 	};
 	//
 	const toJson$1 = function(img, options) {
 	  options = setDefaults_1(options, defaults$4);
 	  let json = {
-	    file: img.file(),
+	    file: img.file()
 	  };
 	  if (options.thumb !== false) {
 	    json.thumb = img.thumbnail();
@@ -2108,7 +2133,7 @@
 	  if (options.alt !== false && img.data.alt) {
 	    json.alt = img.alt();
 	  }
-	  return json;
+	  return json
 	};
 	var toJson_1 = toJson$1;
 
@@ -2121,14 +2146,14 @@
 	  title = title.charAt(0).toUpperCase() + title.substring(1);
 	  //spaces to underscores
 	  title = title.trim().replace(/ /g, '_');
-	  return title;
+	  return title
 	};
 
 	//the wikimedia image url is a little silly:
 	const makeSrc = function(file) {
 	  let title = encodeTitle(file);
 	  title = encodeURIComponent(title);
-	  return title;
+	  return title
 	};
 
 	//the class for our image generation functions
@@ -2141,45 +2166,46 @@
 
 	const methods = {
 	  file() {
-	    return this.data.file || '';
+	    return this.data.file || ''
 	  },
 	  alt() {
 	    let str = this.data.alt || this.data.file || '';
 	    str = str.replace(/^(file|image):/i, '');
 	    str = str.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
-	    return str.replace(/_/g, ' ');
+	    return str.replace(/_/g, ' ')
 	  },
 	  caption() {
 	    if (this.data.caption) {
-	      return this.data.caption.text();
+	      return this.data.caption.text()
 	    }
-	    return '';
+	    return ''
 	  },
 	  links() {
 	    if (this.data.caption) {
-	      return this.data.caption.links();
+	      return this.data.caption.links()
 	    }
-	    return [];
+	    return []
 	  },
 	  url() {
-	    return server + makeSrc(this.file());
+	    return server + makeSrc(this.file())
 	  },
 	  thumbnail(size) {
 	    size = size || 300;
 	    let path = makeSrc(this.file());
-	    return server + path + '?width=' + size;
+	    return server + path + '?width=' + size
 	  },
 	  format() {
 	    let arr = this.file().split('.');
 	    if (arr[arr.length - 1]) {
-	      return arr[arr.length - 1].toLowerCase();
+	      return arr[arr.length - 1].toLowerCase()
 	    }
-	    return null;
+	    return null
 	  },
-	  exists(callback) { //check if the image (still) exists
-	    return new Promise((cb) => {
+	  exists(callback) {
+	    //check if the image (still) exists
+	    return new Promise(cb => {
 	      browserPonyfill(this.url(), {
-	        method: 'HEAD',
+	        method: 'HEAD'
 	      }).then(function(res) {
 	        const exists = res.status === 200;
 	        //support callback non-promise form
@@ -2188,31 +2214,31 @@
 	        }
 	        cb(exists);
 	      });
-	    });
+	    })
 	  },
-	  markdown : function(options) {
-	    return toMarkdown$1(this);
+	  markdown: function(options) {
+	    return toMarkdown$1(this)
 	  },
-	  latex : function(options) {
-	    return toLatex_1$1(this);
+	  latex: function(options) {
+	    return toLatex_1$1(this)
 	  },
-	  html : function(options) {
-	    return toHtml$1(this);
+	  html: function(options) {
+	    return toHtml$1(this)
 	  },
 	  json: function(options) {
 	    options = options || {};
-	    return toJson_1(this, options);
+	    return toJson_1(this, options)
 	  },
 	  text: function() {
-	    return '';
+	    return ''
 	  }
 	};
 
-	Object.keys(methods).forEach((k) => {
+	Object.keys(methods).forEach(k => {
 	  Image.prototype[k] = methods[k];
 	});
 	//add alises, too
-	Object.keys(aliases).forEach((k) => {
+	Object.keys(aliases).forEach(k => {
 	  Image.prototype[k] = methods[aliases[k]];
 	});
 	Image.prototype.src = Image.prototype.url;
@@ -2222,7 +2248,7 @@
 	const defaults$5 = {
 	  tables: true,
 	  lists: true,
-	  paragraphs: true,
+	  paragraphs: true
 	};
 
 	//
@@ -2235,18 +2261,18 @@
 	};
 
 	const methods$1 = {
-	  title : function(str) {
+	  title: function(str) {
 	    //use like a setter
 	    if (str !== undefined) {
 	      this.data.title = str;
-	      return str;
+	      return str
 	    }
 	    //few places this could be stored..
 	    if (this.data.title !== '') {
-	      return this.data.title;
+	      return this.data.title
 	    }
 	    if (this.options.title) {
-	      return this.options.title;
+	      return this.options.title
 	    }
 	    let guess = null;
 	    //guess the title of this page from first sentence bolding
@@ -2254,78 +2280,78 @@
 	    if (sen) {
 	      guess = sen.bolds(0);
 	    }
-	    return guess;
+	    return guess
 	  },
-	  isRedirect : function() {
-	    return this.data.type === 'redirect';
+	  isRedirect: function() {
+	    return this.data.type === 'redirect'
 	  },
 	  redirectTo: function() {
-	    return this.data.redirectTo;
+	    return this.data.redirectTo
 	  },
-	  isDisambiguation : function() {
-	    return this.data.type === 'disambiguation';
+	  isDisambiguation: function() {
+	    return this.data.type === 'disambiguation'
 	  },
-	  categories : function(clue) {
+	  categories: function(clue) {
 	    if (typeof clue === 'number') {
-	      return this.data.categories[clue];
+	      return this.data.categories[clue]
 	    }
-	    return this.data.categories || [];
+	    return this.data.categories || []
 	  },
-	  sections : function(clue) {
+	  sections: function(clue) {
 	    let arr = this.data.sections || [];
-	    arr.forEach((sec) => sec.doc = this);
+	    arr.forEach(sec => (sec.doc = this));
 	    //grab a specific section, by its title
 	    if (typeof clue === 'string') {
 	      let str = clue.toLowerCase().trim();
-	      return arr.find((s) => {
-	        return s.title().toLowerCase() === str;
-	      });
+	      return arr.find(s => {
+	        return s.title().toLowerCase() === str
+	      })
 	    }
 	    if (typeof clue === 'number') {
-	      return arr[clue];
+	      return arr[clue]
 	    }
-	    return arr;
+	    return arr
 	  },
-	  paragraphs : function(n) {
+	  paragraphs: function(n) {
 	    let arr = [];
-	    this.data.sections.forEach((s) => {
+	    this.data.sections.forEach(s => {
 	      arr = arr.concat(s.paragraphs());
 	    });
 	    if (typeof n === 'number') {
-	      return arr[n];
+	      return arr[n]
 	    }
-	    return arr;
+	    return arr
 	  },
-	  paragraph : function(n) {
+	  paragraph: function(n) {
 	    let arr = this.paragraphs() || [];
 	    if (typeof n === 'number') {
-	      return arr[n];
+	      return arr[n]
 	    }
-	    return arr[0];
+	    return arr[0]
 	  },
-	  sentences : function(n) {
+	  sentences: function(n) {
 	    let arr = [];
-	    this.sections().forEach((sec) => {
+	    this.sections().forEach(sec => {
 	      arr = arr.concat(sec.sentences());
 	    });
 	    if (typeof n === 'number') {
-	      return arr[n];
+	      return arr[n]
 	    }
-	    return arr;
+	    return arr
 	  },
-	  images : function(clue) {
+	  images: function(clue) {
 	    let arr = _sectionMap(this, 'images', null);
 	    //grab image from infobox, first
-	    this.infoboxes().forEach((info) => {
+	    this.infoboxes().forEach(info => {
 	      if (info.data.image) {
 	        arr.unshift(info.image()); //put it at the top
 	      }
 	    });
 	    //look for 'gallery' templates, too
-	    this.templates().forEach((obj) => {
+	    this.templates().forEach(obj => {
 	      if (obj.template === 'gallery') {
 	        obj.images = obj.images || [];
-	        obj.images.forEach((img) => {
+	        obj.images.forEach(img => {
 	          if (img instanceof Image_1 === false) {
 	            img = new Image_1(img);
 	          }
@@ -2334,99 +2360,110 @@
 	      }
 	    });
 	    if (typeof clue === 'number') {
-	      return arr[clue];
+	      return arr[clue]
 	    }
-	    return arr;
+	    return arr
 	  },
-	  links : function(clue) {
-	    return _sectionMap(this, 'links', clue);
+	  links: function(clue) {
+	    return _sectionMap(this, 'links', clue)
 	  },
-	  interwiki : function(clue) {
-	    return _sectionMap(this, 'interwiki', clue);
+	  interwiki: function(clue) {
+	    return _sectionMap(this, 'interwiki', clue)
 	  },
-	  lists : function(clue) {
-	    return _sectionMap(this, 'lists', clue);
+	  lists: function(clue) {
+	    return _sectionMap(this, 'lists', clue)
 	  },
-	  tables : function(clue) {
-	    return _sectionMap(this, 'tables', clue);
+	  tables: function(clue) {
+	    return _sectionMap(this, 'tables', clue)
 	  },
-	  templates : function(clue) {
-	    return _sectionMap(this, 'templates', clue);
+	  templates: function(clue) {
+	    return _sectionMap(this, 'templates', clue)
 	  },
-	  references : function(clue) {
-	    return _sectionMap(this, 'references', clue);
+	  references: function(clue) {
+	    return _sectionMap(this, 'references', clue)
 	  },
-	  coordinates : function(clue) {
-	    return _sectionMap(this, 'coordinates', clue);
+	  coordinates: function(clue) {
+	    return _sectionMap(this, 'coordinates', clue)
 	  },
-	  infoboxes : function(clue) {
+	  infoboxes: function(clue) {
 	    let arr = _sectionMap(this, 'infoboxes');
 	    //sort them by biggest-first
 	    arr = arr.sort((a, b) => {
 	      if (Object.keys(a.data).length > Object.keys(b.data).length) {
-	        return -1;
+	        return -1
 	      }
-	      return 1;
+	      return 1
 	    });
 	    if (typeof clue === 'number') {
-	      return arr[clue];
+	      return arr[clue]
 	    }
-	    return arr;
+	    return arr
 	  },
-	  text : function(options) {
+	  text: function(options) {
 	    options = setDefaults_1(options, defaults$5);
 	    //nah, skip these.
 	    if (this.isRedirect() === true) {
-	      return '';
+	      return ''
 	    }
 	    let arr = this.sections().map(sec => sec.text(options));
-	    return arr.join('\n\n');
+	    return arr.join('\n\n')
 	  },
-	  markdown : function(options) {
+	  markdown: function(options) {
 	    options = setDefaults_1(options, defaults$5);
-	    return toMarkdown_1(this, options);
+	    return toMarkdown_1(this, options)
 	  },
-	  latex : function(options) {
+	  latex: function(options) {
 	    options = setDefaults_1(options, defaults$5);
-	    return toLatex_1(this, options);
+	    return toLatex_1(this, options)
 	  },
-	  html : function(options) {
+	  html: function(options) {
 	    options = setDefaults_1(options, defaults$5);
-	    return toHtml_1(this, options);
+	    return toHtml_1(this, options)
 	  },
-	  json : function(options) {
+	  json: function(options) {
 	    options = setDefaults_1(options, defaults$5);
-	    return toJson(this, options);
+	    return toJson(this, options)
 	  },
 	  debug: function() {
 	    console.log('\n');
-	    this.sections().forEach((sec) => {
+	    this.sections().forEach(sec => {
 	      let indent = ' - ';
-	      for(let i = 0; i < sec.depth; i += 1) {
+	      for (let i = 0; i < sec.depth; i += 1) {
 	        indent = ' -' + indent;
 	      }
 	      console.log(indent + (sec.title() || '(Intro)'));
 	    });
-	    return this;
+	    return this
 	  }
 	};
 
 	//add alises
-	Object.keys(aliases).forEach((k) => {
+	Object.keys(aliases).forEach(k => {
 	  Document.prototype[k] = methods$1[aliases[k]];
 	});
 	//add singular-methods, too
-	let plurals = ['sections', 'infoboxes', 'sentences', 'citations', 'references', 'coordinates', 'tables', 'links', 'images', 'categories'];
-	plurals.forEach((fn) => {
+	let plurals = [
+	  'sections',
+	  'infoboxes',
+	  'sentences',
+	  'citations',
+	  'references',
+	  'coordinates',
+	  'tables',
+	  'links',
+	  'images',
+	  'categories'
+	];
+	plurals.forEach(fn => {
 	  let sing = fn.replace(/ies$/, 'y');
 	  sing = sing.replace(/e?s$/, '');
 	  methods$1[sing] = function(n) {
 	    n = n || 0;
-	    return this[fn](n);
+	    return this[fn](n)
 	  };
 	});
 
-	Object.keys(methods$1).forEach((k) => {
+	Object.keys(methods$1).forEach(k => {
 	  Document.prototype[k] = methods$1[k];
 	});
 
@@ -2453,7 +2490,7 @@
 	    'پرونده',
 	    'tiedosto',
 	    'mynd',
-	    'su\'wret',
+	    "su'wret",
 	    'fichier',
 	    'bestand',
 	    'датотека',
@@ -3915,14 +3952,14 @@
 	  'm',
 	  'mw',
 	  'phab',
-	  'd',
+	  'd'
 	];
 	let allowed = interwikis.reduce((h, wik) => {
 	  h[wik] = true;
-	  return h;
+	  return h
 	}, {});
 	//add language prefixes too..
-	Object.keys(languages).forEach((k) => allowed[k] = true);
+	Object.keys(languages).forEach(k => (allowed[k] = true));
 
 	//this is predictably very complicated.
 	// https://meta.wikimedia.org/wiki/Help:Interwiki_linking
@@ -3931,18 +3968,18 @@
 	  if (str.indexOf(':') !== -1) {
 	    let m = str.match(/^(.*):(.*)/);
 	    if (m === null) {
-	      return obj;
+	      return obj
 	    }
 	    let site = m[1] || '';
 	    site = site.toLowerCase();
 	    //only allow interwikis to these specific places
 	    if (allowed.hasOwnProperty(site) === false) {
-	      return obj;
+	      return obj
 	    }
 	    obj.wiki = site;
 	    obj.page = m[2];
 	  }
-	  return obj;
+	  return obj
 	};
 	var interwiki = parseInterwiki;
 
@@ -3962,9 +3999,9 @@
 	      site: protocol + link,
 	      text: text.trim()
 	    });
-	    return text;
+	    return text
 	  });
-	  return links;
+	  return links
 	};
 
 	const internal_links = function(links, str) {
@@ -3986,19 +4023,19 @@
 	    }
 	    //kill off non-wikipedia namespaces
 	    if (link.match(ignore_links)) {
-	      return s;
+	      return s
 	    }
 	    //kill off just these just-anchor links [[#history]]
 	    if (link.match(/^#/i)) {
-	      return s;
+	      return s
 	    }
 	    //remove anchors from end [[toronto#history]]
 	    var obj = {
-	      page: link,
+	      page: link
 	    };
 	    obj.page = obj.page.replace(/#(.*)/, (a, b) => {
 	      obj.anchor = b;
-	      return '';
+	      return ''
 	    });
 	    //grab any fr:Paris parts
 	    obj = interwiki(obj);
@@ -4006,7 +4043,7 @@
 	      obj.text = txt;
 	    }
 	    //finally, support [[link]]'s apostrophe
-	    if (apostrophe === '\'s') {
+	    if (apostrophe === "'s") {
 	      obj.text = obj.text || obj.page;
 	      obj.text += apostrophe;
 	    }
@@ -4019,9 +4056,9 @@
 	      obj.page = obj.page.charAt(0).toUpperCase() + obj.page.substring(1);
 	    }
 	    links.push(obj);
-	    return s;
+	    return s
 	  });
-	  return links;
+	  return links
 	};
 
 	//grab an array of internal links in the text
@@ -4033,30 +4070,33 @@
 	  links = internal_links(links, str);
 
 	  if (links.length === 0) {
-	    return undefined;
+	    return undefined
 	  }
-	  return links;
+	  return links
 	};
 	var links = parse_links;
 
 	//pulls target link out of redirect page
-	const REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + i18n_1.redirects.join('|') + ') *?(\\[\\[.{2,180}?\\]\\])', 'i');
+	const REDIRECT_REGEX = new RegExp(
+	  '^[ \n\t]*?#(' + i18n_1.redirects.join('|') + ') *?(\\[\\[.{2,180}?\\]\\])',
+	  'i'
+	);
 
 	const isRedirect = function(wiki) {
 	  //too long to be a redirect?
 	  if (!wiki || wiki.length > 500) {
-	    return false;
+	    return false
 	  }
-	  return REDIRECT_REGEX.test(wiki);
+	  return REDIRECT_REGEX.test(wiki)
 	};
 
 	const parse = function(wiki) {
 	  let m = wiki.match(REDIRECT_REGEX);
 	  if (m && m[2]) {
 	    let links$1 = links(m[2]) || [];
-	    return links$1[0];
+	    return links$1[0]
 	  }
-	  return {};
+	  return {}
 	};
 
 	var redirects = {
@@ -4064,7 +4104,10 @@
 	  parse: parse
 	};
 
-	const template_reg = new RegExp('\\{\\{ ?(' + i18n_1.disambigs.join('|') + ')(\\|[a-z, =]*?)? ?\\}\\}', 'i');
+	const template_reg = new RegExp(
+	  '\\{\\{ ?(' + i18n_1.disambigs.join('|') + ')(\\|[a-z, =]*?)? ?\\}\\}',
+	  'i'
+	);
 
 	//special disambig-templates en-wikipedia uses
 	let d = ' disambiguation';
@@ -4106,20 +4149,20 @@
 	  'synagogue' + d,
 	  'taxonomic authority' + d,
 	  'taxonomy' + d,
-	  'wp disambig',
+	  'wp disambig'
 	];
 	const enDisambigs = new RegExp('\\{\\{ ?(' + english.join('|') + ')(\\|[a-z, =]*?)? ?\\}\\}', 'i');
 
 	const isDisambig = function(wiki) {
 	  //test for {{disambiguation}} templates
 	  if (template_reg.test(wiki) === true) {
-	    return true;
+	    return true
 	  }
 	  //more english-centric disambiguation templates
 
 	  //{{hndis}}, etc
 	  if (enDisambigs.test(wiki) === true) {
-	    return true;
+	    return true
 	  }
 
 	  //try 'may refer to' on first line for en-wiki?
@@ -4129,7 +4172,7 @@
 	  //     return true;
 	  //   }
 	  // }
-	  return false;
+	  return false
 	};
 
 	var disambig = {
@@ -4172,11 +4215,17 @@
 	  //only kill ref tags if they are selfclosing
 	  wiki = wiki.replace(/ ?< ?(ref) [a-zA-Z0-9=" ]{2,100}\/ ?> ?/g, ' '); //<ref name="asd"/>
 	  //some formatting xml, we'll keep their insides though
-	  wiki = wiki.replace(/ ?<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?> ?/g, ' '); //<sub>, </sub>
-	  wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s)[ \/]?> ?/g, ' '); //<abbr>, </abbr>
+	  wiki = wiki.replace(
+	    / ?<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?> ?/g,
+	    ' '
+	  ); //<sub>, </sub>
+	  wiki = wiki.replace(
+	    / ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s)[ \/]?> ?/g,
+	    ' '
+	  ); //<abbr>, </abbr>
 	  wiki = wiki.replace(/ ?<[ \/]?h[0-9][ \/]?> ?/g, ' '); //<h2>, </h2>
 	  wiki = wiki.replace(/ ?< ?br ?\/> ?/g, '\n'); //<br />
-	  return wiki.trim();
+	  return wiki.trim()
 	};
 	var kill_xml_1 = kill_xml;
 
@@ -4184,7 +4233,7 @@
 	function preProcess(r, wiki, options) {
 	  //remove comments
 	  wiki = wiki.replace(/<!--[\s\S]{0,2000}?-->/g, '');
-	  wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/ig, '');
+	  wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, '');
 	  //signitures
 	  wiki = wiki.replace(/~~{1,3}/g, '');
 	  //windows newlines
@@ -4204,7 +4253,7 @@
 	  wiki = wiki.replace(/\([,;: ]+?\)/g, '');
 	  //these templates just screw things up, too
 	  wiki = wiki.replace(/{{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '');
-	  return wiki;
+	  return wiki
 	}
 	var preProcess_1 = preProcess;
 
@@ -4213,7 +4262,7 @@
 	  images: true,
 	  tables: true,
 	  lists: true,
-	  paragraphs: true,
+	  paragraphs: true
 	};
 
 	const doSection = (section, options) => {
@@ -4222,7 +4271,7 @@
 	  //make the header
 	  if (options.headers === true && section.title()) {
 	    let header = '##';
-	    for(let i = 0; i < section.depth; i += 1) {
+	    for (let i = 0; i < section.depth; i += 1) {
 	      header += '#';
 	    }
 	    md += header + ' ' + section.title() + '\n';
@@ -4231,7 +4280,7 @@
 	  if (options.images === true) {
 	    let images = section.images();
 	    if (images.length > 0) {
-	      md += images.map((img) => img.markdown()).join('\n');
+	      md += images.map(img => img.markdown()).join('\n');
 	      md += '\n';
 	    }
 	  }
@@ -4240,7 +4289,7 @@
 	    let tables = section.tables();
 	    if (tables.length > 0) {
 	      md += '\n';
-	      md += tables.map((table) => table.markdown(options)).join('\n');
+	      md += tables.map(table => table.markdown(options)).join('\n');
 	      md += '\n';
 	    }
 	  }
@@ -4248,17 +4297,23 @@
 	  if (options.lists === true) {
 	    let lists = section.lists();
 	    if (lists.length > 0) {
-	      md += lists.map((list) => list.markdown(options)).join('\n');
+	      md += lists.map(list => list.markdown(options)).join('\n');
 	      md += '\n';
 	    }
 	  }
 	  //finally, write the sentence text.
 	  if (options.paragraphs === true || options.sentences === true) {
-	    md += section.paragraphs().map((p) => {
-	      return p.sentences().map(s => s.markdown(options)).join(' ');
-	    }).join('\n\n');
+	    md += section
+	      .paragraphs()
+	      .map(p => {
+	        return p
+	          .sentences()
+	          .map(s => s.markdown(options))
+	          .join(' ')
+	      })
+	      .join('\n\n');
 	  }
-	  return md;
+	  return md
 	};
 	var toMarkdown$2 = doSection;
 
@@ -4267,7 +4322,7 @@
 	  images: true,
 	  tables: true,
 	  lists: true,
-	  paragraphs: true,
+	  paragraphs: true
 	};
 	const doSection$1 = (section, options) => {
 	  options = setDefaults_1(options, defaults$7);
@@ -4282,30 +4337,46 @@
 	  if (options.images === true) {
 	    let imgs = section.images();
 	    if (imgs.length > 0) {
-	      html += imgs.map((image) => image.html(options)).join('\n');
+	      html += imgs.map(image => image.html(options)).join('\n');
 	    }
 	  }
 	  //make a html table
 	  if (options.tables === true) {
-	    html += section.tables().map((t) => t.html(options)).join('\n');
+	    html += section
+	      .tables()
+	      .map(t => t.html(options))
+	      .join('\n');
 	  }
 	  // //make a html bullet-list
 	  if (options.lists === true) {
-	    html += section.lists().map((list) => list.html(options)).join('\n');
+	    html += section
+	      .lists()
+	      .map(list => list.html(options))
+	      .join('\n');
 	  }
 	  //finally, write the sentence text.
 	  if (options.paragraphs === true && section.paragraphs().length > 0) {
 	    html += '  <div class="text">\n';
-	    section.paragraphs().forEach((p) => {
+	    section.paragraphs().forEach(p => {
 	      html += '    <p class="paragraph">\n';
-	      html += '      ' + p.sentences().map((s) => s.html(options)).join(' ');
+	      html +=
+	        '      ' +
+	        p
+	          .sentences()
+	          .map(s => s.html(options))
+	          .join(' ');
 	      html += '\n    </p>\n';
 	    });
 	    html += '  </div>\n';
 	  } else if (options.sentences === true) {
-	    html += '      ' + section.sentences().map((s) => s.html(options)).join(' ');
+	    html +=
+	      '      ' +
+	      section
+	        .sentences()
+	        .map(s => s.html(options))
+	        .join(' ');
 	  }
-	  return '<div class="section">\n' + html + '</div>\n';
+	  return '<div class="section">\n' + html + '</div>\n'
 	};
 	var toHtml$2 = doSection$1;
 
@@ -4321,12 +4392,12 @@
 	  str = str.replace(/\\/g, '\\\\');
 	  str = str.replace(/^\$/, '\\u0024');
 	  str = str.replace(/\./g, '\\u002e');
-	  return str;
+	  return str
 	};
 
-	const encodeObj = function( obj = {} ) {
+	const encodeObj = function(obj = {}) {
 	  let keys = Object.keys(obj);
-	  for(let i = 0; i < keys.length; i += 1) {
+	  for (let i = 0; i < keys.length; i += 1) {
 	    if (specialChar.test(keys[i]) === true) {
 	      let str = encodeStr(keys[i]);
 	      if (str !== keys[i]) {
@@ -4335,7 +4406,7 @@
 	      }
 	    }
 	  }
-	  return obj;
+	  return obj
 	};
 
 	var encode = {
@@ -4391,7 +4462,7 @@
 	      data.templates = templates;
 	      //encode them, for mongodb
 	      if (options.encode === true) {
-	        data.templates.forEach((t) => encode.encodeObj(t));
+	        data.templates.forEach(t => encode.encodeObj(t));
 	      }
 	    }
 	  }
@@ -4420,7 +4491,7 @@
 	  if (options.sentences === true) {
 	    data.sentences = section.sentences().map(s => s.json(options));
 	  }
-	  return data;
+	  return data
 	};
 	var toJson$2 = toJSON$1;
 
@@ -4429,7 +4500,7 @@
 	  images: true,
 	  tables: true,
 	  lists: true,
-	  paragraphs: true,
+	  paragraphs: true
 	};
 	//map '==' depth to 'subsection', 'subsubsection', etc
 	const doSection$2 = (section, options) => {
@@ -4444,26 +4515,27 @@
 	    switch (num) {
 	      case 1:
 	        vOpen += '\\chapter{';
-	        break;
+	        break
 	      case 2:
 	        vOpen += '\\section{';
-	        break;
+	        break
 	      case 3:
 	        vOpen += '\\subsection{';
-	        break;
+	        break
 	      case 4:
 	        vOpen += '\\subsubsection{';
-	        break;
+	        break
 	      case 5:
 	        vOpen += '\\paragraph{';
 	        vClose = '} \\\\ \n';
-	        break;
+	        break
 	      case 6:
 	        vOpen += '\\subparagraph{';
 	        vClose = '} \\\\ \n';
-	        break;
+	        break
 	      default:
-	        vOpen += '\n% section with depth=' + num + ' undefined - use subparagraph instead\n\\subparagraph{';
+	        vOpen +=
+	          '\n% section with depth=' + num + ' undefined - use subparagraph instead\n\\subparagraph{';
 	        vClose = '} \\\\ \n';
 	    }
 	    out += vOpen + section.title() + vClose;
@@ -4471,26 +4543,38 @@
 	  }
 	  //put any images under the header
 	  if (options.images === true && section.images()) {
-	    out += section.images().map((img) => img.latex(options)).join('\n');
-	  //out += '\n';
+	    out += section
+	      .images()
+	      .map(img => img.latex(options))
+	      .join('\n');
+	    //out += '\n';
 	  }
 	  //make a out tablew
 	  if (options.tables === true && section.tables()) {
-	    out += section.tables().map((t) => t.latex(options)).join('\n');
+	    out += section
+	      .tables()
+	      .map(t => t.latex(options))
+	      .join('\n');
 	  }
 	  // //make a out bullet-list
 	  if (options.lists === true && section.lists()) {
-	    out += section.lists().map((list) => list.latex(options)).join('\n');
+	    out += section
+	      .lists()
+	      .map(list => list.latex(options))
+	      .join('\n');
 	  }
 	  //finally, write the sentence text.
 	  if (options.paragraphs === true || options.sentences === true) {
-	    out += section.paragraphs().map((s) => s.latex(options)).join(' ');
+	    out += section
+	      .paragraphs()
+	      .map(s => s.latex(options))
+	      .join(' ');
 	    out += '\n';
 	  }
 	  // var title_tag = ' SECTION depth=' + num + ' - TITLE: ' + section.title + '\n';
 	  // wrap a section comment
 	  //out = '\n% BEGIN' + title_tag + out + '\n% END' + title_tag;
-	  return out;
+	  return out
 	};
 	var toLatex$2 = doSection$2;
 
@@ -4499,7 +4583,7 @@
 	  references: true,
 	  paragraphs: true,
 	  templates: true,
-	  infoboxes: true,
+	  infoboxes: true
 	};
 
 	//the stuff between headings - 'History' section for example
@@ -4519,43 +4603,43 @@
 
 	const methods$2 = {
 	  title: function() {
-	    return this._title || '';
+	    return this._title || ''
 	  },
 	  index: function() {
 	    if (!this.doc) {
-	      return null;
+	      return null
 	    }
 	    let index = this.doc.sections().indexOf(this);
 	    if (index === -1) {
-	      return null;
+	      return null
 	    }
-	    return index;
+	    return index
 	  },
 	  indentation: function() {
-	    return this.depth;
+	    return this.depth
 	  },
 	  sentences: function(n) {
 	    let arr = this.paragraphs().reduce((list, p) => {
-	      return list.concat(p.sentences());
+	      return list.concat(p.sentences())
 	    }, []);
 	    if (typeof n === 'number') {
-	      return arr[n];
+	      return arr[n]
 	    }
-	    return arr || [];
+	    return arr || []
 	  },
 	  paragraphs: function(n) {
 	    let arr = this.data.paragraphs || [];
 	    if (typeof n === 'number') {
-	      return arr[n];
+	      return arr[n]
 	    }
-	    return arr || [];
+	    return arr || []
 	  },
 	  paragraph: function(n) {
 	    let arr = this.data.paragraphs || [];
 	    if (typeof n === 'number') {
-	      return arr[n];
+	      return arr[n]
 	    }
-	    return arr[0];
+	    return arr[0]
 	  },
 	  links: function(n) {
 	    let arr = [];
@@ -4572,55 +4656,56 @@
 	      list.links(n).forEach(link => arr.push(link));
 	    });
 	    if (typeof n === 'number') {
-	      return arr[n];
-	    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+	      return arr[n]
+	    } else if (typeof n === 'string') {
+	      //grab a link like .links('Fortnight')
 	      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
 	      let link = arr.find(o => o.page === n);
-	      return link === undefined ? [] : [link];
+	      return link === undefined ? [] : [link]
 	    }
-	    return arr;
+	    return arr
 	  },
 	  tables: function(clue) {
 	    let arr = this.data.tables || [];
 	    if (typeof clue === 'number') {
-	      return arr[clue];
+	      return arr[clue]
 	    }
-	    return arr;
+	    return arr
 	  },
 	  templates: function(clue) {
 	    let arr = this.data.templates || [];
 	    if (typeof clue === 'number') {
-	      return arr[clue];
+	      return arr[clue]
 	    }
 	    if (typeof clue === 'string') {
 	      clue = clue.toLowerCase();
-	      return arr.filter(o => o.template === clue || o.name === clue);
+	      return arr.filter(o => o.template === clue || o.name === clue)
 	    }
-	    return arr;
+	    return arr
 	  },
 	  infoboxes: function(clue) {
 	    let arr = this.data.infoboxes || [];
 	    if (typeof clue === 'number') {
-	      return arr[clue];
+	      return arr[clue]
 	    }
-	    return arr;
+	    return arr
 	  },
 	  coordinates: function(clue) {
 	    let arr = [].concat(this.templates('coord'), this.templates('coor'));
 	    if (typeof clue === 'number') {
-	      return arr[clue];
+	      return arr[clue]
 	    }
-	    return arr;
+	    return arr
 	  },
 	  lists: function(clue) {
 	    let arr = [];
-	    this.paragraphs().forEach((p) => {
+	    this.paragraphs().forEach(p => {
 	      arr = arr.concat(p.lists());
 	    });
 	    if (typeof clue === 'number') {
-	      return arr[clue];
+	      return arr[clue]
 	    }
-	    return arr;
+	    return arr
 	  },
 	  interwiki(num) {
 	    let arr = [];
@@ -4628,32 +4713,32 @@
 	      arr = arr.concat(p.interwiki());
 	    });
 	    if (typeof num === 'number') {
-	      return arr[num];
+	      return arr[num]
 	    }
-	    return arr || [];
+	    return arr || []
 	  },
 	  images: function(clue) {
 	    let arr = [];
-	    this.paragraphs().forEach((p) => {
+	    this.paragraphs().forEach(p => {
 	      arr = arr.concat(p.images());
 	    });
 	    if (typeof clue === 'number') {
-	      return arr[clue];
+	      return arr[clue]
 	    }
-	    return arr || [];
+	    return arr || []
 	  },
 	  references: function(clue) {
 	    let arr = this.data.references || [];
 	    if (typeof clue === 'number') {
-	      return arr[clue];
+	      return arr[clue]
 	    }
-	    return arr;
+	    return arr
 	  },
 
 	  //transformations
 	  remove: function() {
 	    if (!this.doc) {
-	      return null;
+	      return null
 	    }
 	    let bads = {};
 	    bads[this.title()] = true;
@@ -4662,37 +4747,37 @@
 	    let arr = this.doc.data.sections;
 	    arr = arr.filter(sec => bads.hasOwnProperty(sec.title()) !== true);
 	    this.doc.data.sections = arr;
-	    return this.doc;
+	    return this.doc
 	  },
 
 	  //move-around sections like in jquery
 	  nextSibling: function() {
 	    if (!this.doc) {
-	      return null;
+	      return null
 	    }
 	    let sections = this.doc.sections();
 	    let index = this.index();
 	    for (let i = index + 1; i < sections.length; i += 1) {
 	      if (sections[i].depth < this.depth) {
-	        return null;
+	        return null
 	      }
 	      if (sections[i].depth === this.depth) {
-	        return sections[i];
+	        return sections[i]
 	      }
 	    }
-	    return null;
+	    return null
 	  },
 	  lastSibling: function() {
 	    if (!this.doc) {
-	      return null;
+	      return null
 	    }
 	    let sections = this.doc.sections();
 	    let index = this.index();
-	    return sections[index - 1] || null;
+	    return sections[index - 1] || null
 	  },
 	  children: function(n) {
 	    if (!this.doc) {
-	      return null;
+	      return null
 	    }
 
 	    let sections = this.doc.sections();
@@ -4704,55 +4789,55 @@
 	        if (sections[i].depth > this.depth) {
 	          children.push(sections[i]);
 	        } else {
-	          break;
+	          break
 	        }
 	      }
 	    }
 	    if (typeof n === 'string') {
 	      n = n.toLowerCase();
 	      // children.forEach((c) => console.log(c));
-	      return children.find(s => s.title().toLowerCase() === n);
+	      return children.find(s => s.title().toLowerCase() === n)
 	    }
 	    if (typeof n === 'number') {
-	      return children[n];
+	      return children[n]
 	    }
-	    return children;
+	    return children
 	  },
 	  parent: function() {
 	    if (!this.doc) {
-	      return null;
+	      return null
 	    }
 	    let sections = this.doc.sections();
 	    let index = this.index();
 	    for (let i = index; i >= 0; i -= 1) {
 	      if (sections[i] && sections[i].depth < this.depth) {
-	        return sections[i];
+	        return sections[i]
 	      }
 	    }
-	    return null;
+	    return null
 	  },
 
 	  markdown: function(options) {
 	    options = setDefaults_1(options, defaults$a);
-	    return toMarkdown$2(this, options);
+	    return toMarkdown$2(this, options)
 	  },
 	  html: function(options) {
 	    options = setDefaults_1(options, defaults$a);
-	    return toHtml$2(this, options);
+	    return toHtml$2(this, options)
 	  },
 	  text: function(options) {
 	    options = setDefaults_1(options, defaults$a);
 	    let pList = this.paragraphs();
 	    pList = pList.map(p => p.text(options));
-	    return pList.join('\n\n');
+	    return pList.join('\n\n')
 	  },
 	  latex: function(options) {
 	    options = setDefaults_1(options, defaults$a);
-	    return toLatex$2(this, options);
+	    return toLatex$2(this, options)
 	  },
 	  json: function(options) {
 	    options = setDefaults_1(options, defaults$a);
-	    return toJson$2(this, options);
+	    return toJson$2(this, options)
 	  }
 	};
 	//aliases
@@ -4774,12 +4859,12 @@
 	var helpers = {
 	  capitalise: function(str) {
 	    if (str && typeof str === 'string') {
-	      return str.charAt(0).toUpperCase() + str.slice(1);
+	      return str.charAt(0).toUpperCase() + str.slice(1)
 	    }
-	    return '';
+	    return ''
 	  },
 	  onlyUnique: function(value, index, self) {
-	    return self.indexOf(value) === index;
+	    return self.indexOf(value) === index
 	  },
 	  trim_whitespace: function(str) {
 	    if (str && typeof str === 'string') {
@@ -4787,9 +4872,9 @@
 	      str = str.replace(/\s\s*$/, '');
 	      str = str.replace(/ {2}/, ' ');
 	      str = str.replace(/\s, /, ', ');
-	      return str;
+	      return str
 	    }
-	    return '';
+	    return ''
 	  }
 	};
 	var helpers_1 = helpers;
@@ -4803,22 +4888,22 @@
 	  wiki = wiki.replace(/'''''(.{0,200}?)'''''/g, (a, b) => {
 	    bolds.push(b);
 	    italics.push(b);
-	    return b;
+	    return b
 	  });
 	  //''''four'''' → bold with quotes
 	  wiki = wiki.replace(/''''(.{0,200}?)''''/g, (a, b) => {
 	    bolds.push(`'${b}'`);
-	    return `'${b}'`;
+	    return `'${b}'`
 	  });
 	  //'''bold'''
 	  wiki = wiki.replace(/'''(.{0,200}?)'''/g, (a, b) => {
 	    bolds.push(b);
-	    return b;
+	    return b
 	  });
 	  //''italic''
 	  wiki = wiki.replace(/''(.{0,200}?)''/g, (a, b) => {
 	    italics.push(b);
-	    return b;
+	    return b
 	  });
 
 	  //pack it all up..
@@ -4831,19 +4916,19 @@
 	    obj.fmt = obj.fmt || {};
 	    obj.fmt.italic = italics;
 	  }
-	  return obj;
+	  return obj
 	};
 	var formatting_1 = formatting;
 
 	//escape a string like 'fun*2.Co' for a regExpr
 	function escapeRegExp(str) {
-	  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+	  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&')
 	}
 
 	//sometimes text-replacements can be ambiguous - words used multiple times..
 	const smartReplace = function(all, text, result) {
 	  if (!text || !all) {
-	    return all;
+	    return all
 	  }
 
 	  if (typeof all === 'number') {
@@ -4859,14 +4944,14 @@
 	    // console.warn('missing \'' + text + '\'');
 	    all = all.replace(text, result);
 	  }
-	  return all;
+	  return all
 	};
 
 	var smartReplace_1 = smartReplace;
 
 	const defaults$b = {
 	  links: true,
-	  formatting: true,
+	  formatting: true
 	};
 	// create links, bold, italic in html
 	const doSentence = function(sentence, options) {
@@ -4874,7 +4959,7 @@
 	  let text = sentence.text();
 	  //turn links into <a href>
 	  if (options.links === true) {
-	    sentence.links().forEach((link) => {
+	    sentence.links().forEach(link => {
 	      let href = '';
 	      let classNames = 'link';
 	      if (link.site) {
@@ -4897,23 +4982,23 @@
 	  }
 	  if (options.formatting === true) {
 	    //support bolds
-	    sentence.bold().forEach((str) => {
+	    sentence.bold().forEach(str => {
 	      let tag = '<b>' + str + '</b>';
 	      text = smartReplace_1(text, str, tag);
 	    });
 	    //do italics
-	    sentence.italic().forEach((str) => {
+	    sentence.italic().forEach(str => {
 	      let tag = '<i>' + str + '</i>';
 	      text = smartReplace_1(text, str, tag);
 	    });
 	  }
-	  return '<span class="sentence">' + text + '</span>';
+	  return '<span class="sentence">' + text + '</span>'
 	};
 	var toHtml$3 = doSentence;
 
 	const defaults$c = {
 	  links: true,
-	  formatting: true,
+	  formatting: true
 	};
 	// add `[text](href)` to the text
 	const doLink = function(md, link) {
@@ -4933,7 +5018,7 @@
 	  let str = link.text || link.page;
 	  let mdLink = '[' + str + '](' + href + ')';
 	  md = smartReplace_1(md, str, mdLink);
-	  return md;
+	  return md
 	};
 
 	//create links, bold, italic in markdown
@@ -4942,21 +5027,21 @@
 	  let md = sentence.text();
 	  //turn links back into links
 	  if (options.links === true) {
-	    sentence.links().forEach((link) => {
+	    sentence.links().forEach(link => {
 	      md = doLink(md, link);
 	    });
 	  }
 	  //turn bolds into **bold**
 	  if (options.formatting === true) {
-	    sentence.bold().forEach((b) => {
+	    sentence.bold().forEach(b => {
 	      md = smartReplace_1(md, b, '**' + b + '**');
 	    });
 	    //support *italics*
-	    sentence.italic().forEach((i) => {
+	    sentence.italic().forEach(i => {
 	      md = smartReplace_1(md, i, '*' + i + '*');
 	    });
 	  }
-	  return md;
+	  return md
 	};
 	var toMarkdown_1$1 = toMarkdown$3;
 
@@ -4967,7 +5052,7 @@
 	  links: true,
 	  formatting: true,
 	  dates: true,
-	  numbers: true,
+	  numbers: true
 	};
 
 	const toJSON$2 = function(s, options) {
@@ -4993,21 +5078,21 @@
 	  if (options.dates && s.data.dates !== undefined) {
 	    data.dates = s.data.dates;
 	  }
-	  return data;
+	  return data
 	};
 	var toJson$3 = toJSON$2;
 
 	const defaults$e = {
 	  links: true,
-	  formatting: true,
+	  formatting: true
 	};
 	// create links, bold, italic in html
-	const toLatex$3 = function(sentence, options ) {
+	const toLatex$3 = function(sentence, options) {
 	  options = setDefaults_1(options, defaults$e);
 	  let text = sentence.plaintext();
 	  //turn links back into links
 	  if (options.links === true && sentence.links().length > 0) {
-	    sentence.links().forEach((link) => {
+	    sentence.links().forEach(link => {
 	      let href = '';
 	      if (link.site) {
 	        //use an external link
@@ -5029,20 +5114,20 @@
 	  if (options.formatting === true) {
 	    if (sentence.data.fmt) {
 	      if (sentence.data.fmt.bold) {
-	        sentence.data.fmt.bold.forEach((str) => {
+	        sentence.data.fmt.bold.forEach(str => {
 	          let tag = '\\textbf{' + str + '}';
 	          text = smartReplace_1(text, str, tag);
 	        });
 	      }
 	      if (sentence.data.fmt.italic) {
-	        sentence.data.fmt.italic.forEach((str) => {
+	        sentence.data.fmt.italic.forEach(str => {
 	          let tag = '\\textit{' + str + '}';
 	          text = smartReplace_1(text, str, tag);
 	        });
 	      }
 	    }
 	  }
-	  return text;
+	  return text
 	};
 	var toLatex_1$2 = toLatex$3;
 
@@ -5058,20 +5143,21 @@
 	  links: function(n) {
 	    let arr = this.data.links || [];
 	    if (typeof n === 'number') {
-	      return arr[n];
-	    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+	      return arr[n]
+	    } else if (typeof n === 'string') {
+	      //grab a link like .links('Fortnight')
 	      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
 	      let link = arr.find(o => o.page === n);
-	      return link === undefined ? [] : [link];
+	      return link === undefined ? [] : [link]
 	    }
-	    return arr;
+	    return arr
 	  },
 	  interwiki: function(n) {
 	    let arr = this.links().filter(l => l.wiki !== undefined);
 	    if (typeof n === 'number') {
-	      return arr[n];
+	      return arr[n]
 	    }
-	    return arr;
+	    return arr
 	  },
 	  bolds: function(n) {
 	    let arr = [];
@@ -5079,9 +5165,9 @@
 	      arr = this.data.fmt.bold || [];
 	    }
 	    if (typeof n === 'number') {
-	      return arr[n];
+	      return arr[n]
 	    }
-	    return arr;
+	    return arr
 	  },
 	  italics: function(n) {
 	    let arr = [];
@@ -5089,9 +5175,9 @@
 	      arr = this.data.fmt.italic || [];
 	    }
 	    if (typeof n === 'number') {
-	      return arr[n];
+	      return arr[n]
 	    }
-	    return arr;
+	    return arr
 	  },
 	  dates: function(n) {
 	    let arr = [];
@@ -5099,37 +5185,38 @@
 	      arr = this.data.dates || [];
 	    }
 	    if (typeof n === 'number') {
-	      return arr[n];
+	      return arr[n]
 	    }
-	    return arr;
+	    return arr
 	  },
-	  markdown : function(options) {
+	  markdown: function(options) {
 	    options = options || {};
-	    return toMarkdown_1$1(this, options);
+	    return toMarkdown_1$1(this, options)
 	  },
-	  html : function(options) {
+	  html: function(options) {
 	    options = options || {};
-	    return toHtml$3(this, options);
+	    return toHtml$3(this, options)
 	  },
-	  text : function(str) {
-	    if (str !== undefined && typeof str === 'string') { //set the text?
+	  text: function(str) {
+	    if (str !== undefined && typeof str === 'string') {
+	      //set the text?
 	      this.data.text = str;
 	    }
-	    return this.data.text || '';
+	    return this.data.text || ''
 	  },
-	  json : function(options) {
-	    return toJson$3(this, options);
+	  json: function(options) {
+	    return toJson$3(this, options)
 	  },
-	  latex : function(options) {
-	    return toLatex_1$2(this, options);
+	  latex: function(options) {
+	    return toLatex_1$2(this, options)
 	  }
 	};
 
-	Object.keys(methods$3).forEach((k) => {
+	Object.keys(methods$3).forEach(k => {
 	  Sentence.prototype[k] = methods$3[k];
 	});
 	//add alises, too
-	Object.keys(aliases).forEach((k) => {
+	Object.keys(aliases).forEach(k => {
 	  Sentence.prototype[k] = methods$3[aliases[k]];
 	});
 	Sentence.prototype.italic = Sentence.prototype.italics;
@@ -5293,7 +5380,7 @@
 	// Ignore periods/questions/exclamations used in acronyms/abbreviations/numbers, etc.
 	// @spencermountain 2015 MIT
 
-	const abbrev_reg = new RegExp('(^| |\')(' + abbreviations.join('|') + `)[.!?] ?$`, 'i');
+	const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i');
 	const acronym_reg = new RegExp('[ |.][A-Z].? +?$', 'i');
 	const elipses_reg = new RegExp('\\.\\.\\.* +?$');
 	const hasWord = new RegExp('[a-zа-яぁ-ゟ][a-zа-яぁ-ゟ゠-ヿ]', 'iu');
@@ -5306,7 +5393,7 @@
 	  arr.forEach(function(a) {
 	    all = all.concat(a);
 	  });
-	  return all;
+	  return all
 	};
 
 	const naiive_split = function(text) {
@@ -5315,9 +5402,9 @@
 	  splits = splits.filter(s => s.match(/\S/));
 	  //split by period, question-mark, and exclamation-mark
 	  splits = splits.map(function(str) {
-	    return str.split(/(\S.+?[.!?]"?)(?=\s+|$)/g); //\u3002
+	    return str.split(/(\S.+?[.!?]"?)(?=\s+|$)/g) //\u3002
 	  });
-	  return flatten(splits);
+	  return flatten(splits)
 	};
 
 	// if this looks like a period within a wikipedia link, return false
@@ -5326,14 +5413,14 @@
 	  const open = str.split(/\[\[/) || [];
 	  const closed = str.split(/\]\]/) || [];
 	  if (open.length > closed.length) {
-	    return false;
+	    return false
 	  }
 	  //make sure quotes are closed too
 	  const quotes = str.match(/"/g);
 	  if (quotes && quotes.length % 2 !== 0 && str.length < 900) {
-	    return false;
+	    return false
 	  }
-	  return true;
+	  return true
 	};
 
 	const sentence_parser = function(text) {
@@ -5342,7 +5429,7 @@
 	  let chunks = [];
 	  //ensure it 'smells like' a sentence
 	  if (!text || typeof text !== 'string' || text.trim().length === 0) {
-	    return sentences;
+	    return sentences
 	  }
 	  // This was the splitter regex updated to fix quoted punctuation marks.
 	  // let splits = text.split(/(\S.+?[.\?!])(?=\s+|$|")/g);
@@ -5352,18 +5439,18 @@
 	  for (let i = 0; i < splits.length; i++) {
 	    let s = splits[i];
 	    if (!s || s === '') {
-	      continue;
+	      continue
 	    }
 	    //this is meaningful whitespace
 	    if (!s.match(/\S/)) {
 	      //add it to the last one
 	      if (chunks[chunks.length - 1]) {
 	        chunks[chunks.length - 1] += s;
-	        continue;
+	        continue
 	      } else if (splits[i + 1]) {
 	        //add it to the next one
 	        splits[i + 1] = s + splits[i + 1];
-	        continue;
+	        continue
 	      }
 	    }
 	    chunks.push(s);
@@ -5372,16 +5459,16 @@
 	  //detection of non-sentence chunks
 	  const isSentence = function(hmm) {
 	    if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg)) {
-	      return false;
+	      return false
 	    }
 	    //too short? - no consecutive letters
 	    if (hasWord.test(hmm) === false) {
-	      return false;
+	      return false
 	    }
 	    if (!isBalanced(hmm)) {
-	      return false;
+	      return false
 	    }
-	    return true;
+	    return true
 	  };
 	  //loop through these chunks, and join the non-sentence chunks back together..
 	  for (let i = 0; i < chunks.length; i++) {
@@ -5396,9 +5483,9 @@
 	  }
 	  //if we never got a sentence, return the given text
 	  if (sentences.length === 0) {
-	    return [text];
+	    return [text]
 	  }
-	  return sentences;
+	  return sentences
 	};
 
 	var parse$1 = sentence_parser;
@@ -5426,7 +5513,7 @@
 	    /\[(https?|news|ftp|mailto|gopher|irc):\/\/[^\]\| ]{4,1500}([\| ].*?)?\]/g,
 	    '$2'
 	  );
-	  return line;
+	  return line
 	};
 	// console.log(resolve_links("[http://www.whistler.ca www.whistler.ca]"))
 
@@ -5440,7 +5527,7 @@
 	  //dangling punctuation
 	  line = helpers_1.trim_whitespace(line);
 	  line = line.replace(/ +\.$/, '.');
-	  return line;
+	  return line
 	}
 
 	function oneSentence(str) {
@@ -5456,7 +5543,7 @@
 	  obj = formatting_1(obj);
 	  //pull-out things like {{start date|...}}
 	  // obj = templates(obj);
-	  return new Sentence_1(obj);
+	  return new Sentence_1(obj)
 	}
 
 	//turn a text into an array of sentence objects
@@ -5468,13 +5555,13 @@
 	  if (sentences[0] && sentences[0].text() && sentences[0].text()[0] === ':') {
 	    sentences = sentences.slice(1);
 	  }
-	  return sentences;
+	  return sentences
 	};
 
 	//used for consistency with other class-definitions
 	const addSentences = function(wiki, data) {
 	  data.sentences = parseSentences(wiki);
-	  return wiki;
+	  return wiki
 	};
 
 	var _04Sentence = {
@@ -5487,7 +5574,7 @@
 	const strip = function(tmpl) {
 	  tmpl = tmpl.replace(/^\{\{/, '');
 	  tmpl = tmpl.replace(/\}\}$/, '');
-	  return tmpl;
+	  return tmpl
 	};
 	var _strip = strip;
 
@@ -5496,7 +5583,7 @@
 	  name = (name || '').trim();
 	  name = name.toLowerCase();
 	  name = name.replace(/_/g, ' ');
-	  return name;
+	  return name
 	};
 	var _fmtName = fmtName;
 
@@ -5508,7 +5595,7 @@
 	  //look for broken-up links and fix them :/
 	  arr.forEach((a, i) => {
 	    if (a === null) {
-	      return;
+	      return
 	    }
 	    //has '[[' but no ']]'
 	    if (/\[\[[^\]]+$/.test(a) || /\{\{[^\}]+$/.test(a)) {
@@ -5517,16 +5604,16 @@
 	    }
 	  });
 	  //cleanup any mistakes we've made
-	  arr = arr.filter((a) => a !== null);
-	  arr = arr.map((a) => (a || '').trim());
+	  arr = arr.filter(a => a !== null);
+	  arr = arr.map(a => (a || '').trim());
 	  //remove empty fields, only at the end:
-	  for(let i = arr.length - 1; i >= 0; i -= 1) {
+	  for (let i = arr.length - 1; i >= 0; i -= 1) {
 	    if (arr[i] === '') {
 	      arr.pop();
 	    }
-	    break;
+	    break
 	  }
-	  return arr;
+	  return arr
 	};
 	var _01PipeSplitter = pipeSplitter;
 
@@ -5586,24 +5673,24 @@
 	var _02KeyMaker = keyMaker;
 
 	const whoCares = {
-	  'classname': true,
-	  'style': true,
-	  'align': true,
-	  'margin': true,
-	  'left': true,
-	  'break': true,
-	  'boxsize': true,
-	  'framestyle': true,
-	  'item_style': true,
-	  'collapsible': true,
-	  'list_style_type': true,
+	  classname: true,
+	  style: true,
+	  align: true,
+	  margin: true,
+	  left: true,
+	  break: true,
+	  boxsize: true,
+	  framestyle: true,
+	  item_style: true,
+	  collapsible: true,
+	  list_style_type: true,
 	  'list-style-type': true,
-	  'colwidth': true
+	  colwidth: true
 	};
 
 	//remove wiki-cruft & some styling info from templates
 	const cleanup = function(obj) {
-	  Object.keys(obj).forEach((k) => {
+	  Object.keys(obj).forEach(k => {
 	    if (whoCares[k.toLowerCase()] === true) {
 	      delete obj[k];
 	    }
@@ -5612,7 +5699,7 @@
 	      delete obj[k];
 	    }
 	  });
-	  return obj;
+	  return obj
 	};
 	var _03Cleanup = cleanup;
 
@@ -5629,12 +5716,12 @@
 	  let s = parseSentence(str);
 	  //support various output formats
 	  if (fmt === 'json') {
-	    return s.json();
+	    return s.json()
 	  } else if (fmt === 'raw') {
-	    return s;
+	    return s
 	  }
 	  //default to flat text
-	  return s.text();
+	  return s.text()
 	};
 
 	//
@@ -5659,10 +5746,10 @@
 	    delete obj['1'];
 	  }
 
-	  Object.keys(obj).forEach((k) => {
+	  Object.keys(obj).forEach(k => {
 	    if (k === 'list') {
-	      obj[k] = obj[k].map((v) => makeFormat(v, fmt));
-	      return;
+	      obj[k] = obj[k].map(v => makeFormat(v, fmt));
+	      return
 	    }
 	    obj[k] = makeFormat(obj[k], fmt);
 	  });
@@ -5670,14 +5757,14 @@
 	  if (name) {
 	    obj.template = _fmtName(name);
 	  }
-	  return obj;
+	  return obj
 	};
 	var parse$2 = parser;
 
 	//not so impressive right now
 	const toLatex$4 = function(c) {
 	  let str = c.title();
-	  return '⌃ ' + str + '\n';
+	  return '⌃ ' + str + '\n'
 	};
 	var toLatex_1$3 = toLatex$4;
 
@@ -5688,12 +5775,13 @@
 	    if (options.links === true) {
 	      str = `<a href="${c.data.url}">${str}</a>`;
 	    }
-	    return `<div class="reference">⌃ ${str} </div>`;
+	    return `<div class="reference">⌃ ${str} </div>`
 	  }
 	  if (c.data.encyclopedia) {
-	    return `<div class="reference">⌃ ${c.data.encyclopedia}</div>`;
+	    return `<div class="reference">⌃ ${c.data.encyclopedia}</div>`
 	  }
-	  if (c.data.title) { //cite book, etc
+	  if (c.data.title) {
+	    //cite book, etc
 	    let str = c.data.title;
 	    if (c.data.author) {
 	      str += c.data.author;
@@ -5701,22 +5789,23 @@
 	    if (c.data.first && c.data.last) {
 	      str += c.data.first + ' ' + c.data.last;
 	    }
-	    return `<div class="reference">⌃ ${str}</div>`;
+	    return `<div class="reference">⌃ ${str}</div>`
 	  }
 	  if (c.inline) {
-	    return `<div class="reference">⌃ ${c.inline.html()}</div>`;
+	    return `<div class="reference">⌃ ${c.inline.html()}</div>`
 	  }
-	  return '';
+	  return ''
 	};
 	var toHtml_1$1 = toHtml$4;
 
 	//
 	const toMarkdown$4 = function(c) {
 	  if (c.data && c.data.url && c.data.title) {
-	    return `⌃ [${c.data.title}](${c.data.url})`;
+	    return `⌃ [${c.data.title}](${c.data.url})`
 	  } else if (c.data.encyclopedia) {
-	    return `⌃ ${c.data.encyclopedia}`;
-	  } else if (c.data.title) { //cite book, etc
+	    return `⌃ ${c.data.encyclopedia}`
+	  } else if (c.data.title) {
+	    //cite book, etc
 	    let str = c.data.title;
 	    if (c.data.author) {
 	      str += c.data.author;
@@ -5724,17 +5813,17 @@
 	    if (c.data.first && c.data.last) {
 	      str += c.data.first + ' ' + c.data.last;
 	    }
-	    return `⌃ ${str}`;
+	    return `⌃ ${str}`
 	  } else if (c.inline) {
-	    return `⌃ ${c.inline.markdown()}`;
+	    return `⌃ ${c.inline.markdown()}`
 	  }
-	  return '';
+	  return ''
 	};
 	var toMarkdown_1$2 = toMarkdown$4;
 
 	//
 	const toJson$4 = function(c) {
-	  return c.data;
+	  return c.data
 	};
 	var toJson_1$1 = toJson$4;
 
@@ -5751,44 +5840,45 @@
 	const methods$4 = {
 	  title: function() {
 	    let data = this.data;
-	    return data.title || data.encyclopedia || data.author || '';
+	    return data.title || data.encyclopedia || data.author || ''
 	  },
 	  links: function(n) {
 	    let arr = [];
 	    if (typeof n === 'number') {
-	      return arr[n];
+	      return arr[n]
 	    }
 	    //grab a specific link..
 	    if (typeof n === 'number') {
-	      return arr[n];
-	    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+	      return arr[n]
+	    } else if (typeof n === 'string') {
+	      //grab a link like .links('Fortnight')
 	      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
 	      let link = arr.find(o => o.page === n);
-	      return link === undefined ? [] : [link];
+	      return link === undefined ? [] : [link]
 	    }
-	    return arr || [];
+	    return arr || []
 	  },
 	  text: function() {
-	    return ''; //nah, skip these.
+	    return '' //nah, skip these.
 	  },
 	  markdown: function(options) {
 	    options = setDefaults_1(options, defaults$f);
-	    return toMarkdown_1$2(this);
+	    return toMarkdown_1$2(this)
 	  },
 	  html: function(options) {
 	    options = setDefaults_1(options, defaults$f);
-	    return toHtml_1$1(this, options);
+	    return toHtml_1$1(this, options)
 	  },
 	  latex: function(options) {
 	    options = setDefaults_1(options, defaults$f);
-	    return toLatex_1$3(this);
+	    return toLatex_1$3(this)
 	  },
 	  json: function(options) {
 	    options = setDefaults_1(options, defaults$f);
-	    return toJson_1$1(this);
+	    return toJson_1$1(this)
 	  }
 	};
-	Object.keys(methods$4).forEach((k) => {
+	Object.keys(methods$4).forEach(k => {
 	  Reference.prototype[k] = methods$4[k];
 	});
 	var Reference_1 = Reference;
@@ -5799,14 +5889,18 @@
 
 	//structured Cite templates - <ref>{{Cite..</ref>
 	const hasCitation = function(str) {
-	  return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false;
+	  return (
+	    /^ *?\{\{ *?(cite|citation)/i.test(str) &&
+	    /\}\} *?$/.test(str) &&
+	    /citation needed/i.test(str) === false
+	  )
 	};
 
 	const parseCitation = function(tmpl) {
 	  let obj = parse$2(tmpl);
 	  obj.type = obj.template.replace(/cite /, '');
 	  obj.template = 'citation';
-	  return obj;
+	  return obj
 	};
 
 	//handle unstructured ones - <ref>some text</ref>
@@ -5817,7 +5911,7 @@
 	    type: 'inline',
 	    data: {},
 	    inline: obj
-	  };
+	  }
 	};
 
 	// parse <ref></ref> xml tags
@@ -5833,7 +5927,7 @@
 	    } else {
 	      references.push(parseInline(tmpl));
 	    }
-	    return ' ';
+	    return ' '
 	  });
 	  // <ref name=""/>
 	  wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ');
@@ -5848,12 +5942,12 @@
 	    } else {
 	      references.push(parseInline(tmpl));
 	    }
-	    return ' ';
+	    return ' '
 	  });
 	  //now that we're done with xml, do a generic + dangerous xml-tag removal
 	  wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ \/]?> ?/g, ' '); //<samp name="asd">
 	  data.references = references.map(r => new Reference_1(r));
-	  return wiki;
+	  return wiki
 	};
 	var reference = parseRefs;
 
@@ -5863,12 +5957,11 @@
 
 	//interpret depth, title of headings like '==See also=='
 	const parseHeading = function(data, str) {
-
 	  let heading = str.match(heading_reg);
 	  if (!heading) {
 	    data.title = '';
 	    data.depth = 0;
-	    return data;
+	    return data
 	  }
 	  let title = heading[2] || '';
 	  title = parseSentence$2(title).text();
@@ -5885,7 +5978,7 @@
 	  }
 	  data.title = title;
 	  data.depth = depth;
-	  return data;
+	  return data
 	};
 	var heading = parseHeading;
 
@@ -5893,7 +5986,7 @@
 	const cleanup$1 = function(lines) {
 	  lines = lines.filter(line => {
 	    //a '|+' row is a 'table caption', remove it.
-	    return line && /^\|\+/.test(line) !== true;
+	    return line && /^\|\+/.test(line) !== true
 	  });
 	  if (/^{\|/.test(lines[0]) === true) {
 	    lines.shift();
@@ -5904,7 +5997,7 @@
 	  if (/^\|-/.test(lines[0]) === true) {
 	    lines.shift();
 	  }
-	  return lines;
+	  return lines
 	};
 
 	//turn newline seperated into '|-' seperated
@@ -5912,7 +6005,7 @@
 	  let rows = [];
 	  let row = [];
 	  lines = cleanup$1(lines);
-	  for(let i = 0; i < lines.length; i += 1) {
+	  for (let i = 0; i < lines.length; i += 1) {
 	    let line = lines[i];
 	    //'|-' is a row-seperator
 	    if (/^\|-/.test(line) === true) {
@@ -5928,7 +6021,7 @@
 	      if (!line[0] && line[1]) {
 	        line.shift();
 	      }
-	      line.forEach((l) => {
+	      line.forEach(l => {
 	        l = l.replace(/^\| */, '');
 	        l = l.trim();
 	        row.push(l);
@@ -5939,7 +6032,7 @@
 	  if (row.length > 0) {
 	    rows.push(row);
 	  }
-	  return rows;
+	  return rows
 	};
 	var _findRows = findRows;
 
@@ -5957,18 +6050,18 @@
 	        //...maybe if num is so big, and centered, remove it?
 	        if (num > 3) {
 	          rows[r] = [];
-	          return;
+	          return
 	        }
 	        //splice-in n empty columns right here
 	        row[c] = str.replace(getColSpan, '');
-	        for(let i = 1; i < num; i += 1) {
+	        for (let i = 1; i < num; i += 1) {
 	          row.splice(c + 1, 0, '');
 	        }
 	      }
 	    });
 	  });
 	  rows = rows.filter(r => r.length > 0);
-	  return rows;
+	  return rows
 	};
 
 	//colspans stretch up/down
@@ -5981,23 +6074,23 @@
 	        //copy this cell down n rows
 	        str = str.replace(getRowSpan, '');
 	        row[c] = str;
-	        for(let i = r + 1; i < r + num; i += 1) {
+	        for (let i = r + 1; i < r + num; i += 1) {
 	          if (!rows[i]) {
-	            break;
+	            break
 	          }
 	          rows[i].splice(c, 0, str);
 	        }
 	      }
 	    });
 	  });
-	  return rows;
+	  return rows
 	};
 
 	//
 	const handleSpans = function(rows) {
 	  rows = doRowSpan(rows);
 	  rows = doColSpan(rows);
-	  return rows;
+	  return rows
 	};
 	var _spans = handleSpans;
 
@@ -6016,7 +6109,7 @@
 	  country: true,
 	  population: true,
 	  count: true,
-	  number: true,
+	  number: true
 	};
 
 	//additional table-cruft to remove before parseLine method
@@ -6030,18 +6123,18 @@
 	  //'!' is used as a highlighed-column
 	  str = str.replace(/^!/, '');
 	  str = str.trim();
-	  return str;
+	  return str
 	};
 
 	//'!' starts a header-row
-	const findHeaders = function( rows = [] ) {
+	const findHeaders = function(rows = []) {
 	  let headers = [];
 	  let first = rows[0];
 	  if (first && first[0] && /^!/.test(first[0]) === true) {
-	    headers = first.map((h) => {
+	    headers = first.map(h => {
 	      h = h.replace(/^\! */, '');
 	      h = cleanText(h);
-	      return h;
+	      return h
 	    });
 	    rows.shift();
 	  }
@@ -6057,7 +6150,7 @@
 	    });
 	    rows.shift();
 	  }
-	  return headers;
+	  return headers
 	};
 
 	//turn headers, array into an object
@@ -6069,29 +6162,29 @@
 	    s.text(cleanText(s.text()));
 	    row[h] = s;
 	  });
-	  return row;
+	  return row
 	};
 
 	//should we use the first row as a the headers?
 	const firstRowHeader = function(rows) {
 	  if (rows.length <= 3) {
-	    return [];
+	    return []
 	  }
 	  let headers = rows[0].slice(0);
-	  headers = headers.map((h) => {
+	  headers = headers.map(h => {
 	    h = h.replace(/^\! */, '');
 	    h = parseSentence$3(h).text();
 	    h = cleanText(h);
 	    h = h.toLowerCase();
-	    return h;
+	    return h
 	  });
-	  for(let i = 0; i < headers.length; i += 1) {
+	  for (let i = 0; i < headers.length; i += 1) {
 	    if (headings.hasOwnProperty(headers[i])) {
 	      rows.shift();
-	      return headers;
+	      return headers
 	    }
 	  }
-	  return [];
+	  return []
 	};
 
 	//turn a {|...table string into an array of arrays
@@ -6116,9 +6209,9 @@
 	  }
 	  //index each column by it's header
 	  let table = rows.map(arr => {
-	    return parseRow(arr, headers);
+	    return parseRow(arr, headers)
 	  });
-	  return table;
+	  return table
 	};
 
 	var parse$3 = parseTable;
@@ -6129,7 +6222,7 @@
 	  //make header
 	  html += '  <thead>\n';
 	  html += '  <tr>\n';
-	  Object.keys(table[0]).forEach((k) => {
+	  Object.keys(table[0]).forEach(k => {
 	    if (/^col[0-9]/.test(k) !== true) {
 	      html += '    <td>' + k + '</td>\n';
 	    }
@@ -6138,9 +6231,9 @@
 	  html += '  </thead>\n';
 	  html += '  <tbody>\n';
 	  //make rows
-	  table.forEach((o) => {
+	  table.forEach(o => {
 	    html += '  <tr>\n';
-	    Object.keys(o).forEach((k) => {
+	    Object.keys(o).forEach(k => {
 	      let val = o[k].html(options);
 	      html += '    <td>' + val + '</td>\n';
 	    });
@@ -6148,7 +6241,7 @@
 	  });
 	  html += '  </tbody>\n';
 	  html += '</table>\n';
-	  return html;
+	  return html
 	};
 	var toHtml_1$2 = toHtml$5;
 
@@ -6159,13 +6252,13 @@
 	  cellWidth = cellWidth || 15;
 	  let diff = cellWidth - str.length;
 	  diff = Math.ceil(diff / 2);
-	  for(let i = 0; i < diff; i += 1) {
+	  for (let i = 0; i < diff; i += 1) {
 	    str = ' ' + str;
 	    if (str.length < cellWidth) {
 	      str = str + ' ';
 	    }
 	  }
-	  return str;
+	  return str
 	};
 	var pad_1 = pad;
 
@@ -6177,50 +6270,54 @@
 	| zebra stripes | are neat      |    $1 |
 	*/
 
-	const makeRow = (arr) => {
+	const makeRow = arr => {
 	  arr = arr.map(s => pad_1(s, 14));
-	  return '| ' + arr.join(' | ') + ' |';
+	  return '| ' + arr.join(' | ') + ' |'
 	};
 
 	//markdown tables are weird
 	const doTable = (table, options) => {
 	  let md = '';
 	  if (!table || table.length === 0) {
-	    return md;
+	    return md
 	  }
 	  let keys = Object.keys(table[0]);
 	  //first, grab the headers
 	  //remove auto-generated number keys
-	  let headers = keys.map((k) => {
+	  let headers = keys.map(k => {
 	    if (/^col[0-9]/.test(k) === true) {
-	      return '';
+	      return ''
 	    }
-	    return k;
+	    return k
 	  });
 	  //draw the header (necessary!)
 	  md += makeRow(headers) + '\n';
 	  md += makeRow(headers.map(() => '---')) + '\n';
 	  //do each row..
-	  md += table.map((row) => {
-	    //each column..
-	    let arr = keys.map((k) => {
-	      if (!row[k]) {
-	        return '';
-	      }
-	      return row[k].markdown(options) || '';
-	    });
-	    //make it a nice padded row
-	    return makeRow(arr);
-	  }).join('\n');
-	  return md + '\n';
+	  md += table
+	    .map(row => {
+	      //each column..
+	      let arr = keys.map(k => {
+	        if (!row[k]) {
+	          return ''
+	        }
+	        return row[k].markdown(options) || ''
+	      });
+	      //make it a nice padded row
+	      return makeRow(arr)
+	    })
+	    .join('\n');
+	  return md + '\n'
 	};
 	var toMarkdown$5 = doTable;
 
 	//create a formal LATEX table
 	const doTable$1 = function(table, options) {
 	  let out = '\n%\\vspace*{0.3cm}\n';
-	  out += '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns';
-	  out += '\n% Format Align Column: \'l\'=left \'r\'=right align, \'c\'=center, \'p{5cm}\'=block with column width 5cm ';
+	  out +=
+	    '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns';
+	  out +=
+	    "\n% Format Align Column: 'l'=left 'r'=right align, 'c'=center, 'p{5cm}'=block with column width 5cm ";
 	  out += '\n\\begin{tabular}{|';
 	  Object.keys(table[0]).forEach(() => {
 	    out += 'l|';
@@ -6230,7 +6327,7 @@
 	  //make header
 	  out += '\n  % BEGIN: Table Header';
 	  var vSep = '   ';
-	  Object.keys(table[0]).forEach((k) => {
+	  Object.keys(table[0]).forEach(k => {
 	    out += '\n    ' + vSep;
 
 	    if (k.indexOf('col-') === 0) {
@@ -6245,10 +6342,10 @@
 	  out += '\n  % BEGIN: Table Body';
 	  out += '\n  \\hline  % ----- table row -----';
 	  ////make rows
-	  table.forEach((o) => {
+	  table.forEach(o => {
 	    vSep = ' ';
 	    out += '\n  % ----- table row -----';
-	    Object.keys(o).forEach((k) => {
+	    Object.keys(o).forEach(k => {
 	      let s = o[k];
 	      let val = s.latex(options);
 	      out += '\n    ' + vSep + val + '';
@@ -6260,23 +6357,23 @@
 	  out += '\n    % END: Table Body';
 	  out += '\\end{tabular} \n';
 	  out += '\n\\vspace*{0.3cm}\n\n';
-	  return out;
+	  return out
 	};
 	var toLatex$5 = doTable$1;
 
 	//
 	const toJson$5 = function(tables, options) {
-	  return tables.map((table) => {
+	  return tables.map(table => {
 	    let row = {};
-	    Object.keys(table).forEach((k) => {
+	    Object.keys(table).forEach(k => {
 	      row[k] = table[k].json(); //(they're sentence objects)
 	    });
 	    //encode them, for mongodb
 	    if (options.encode === true) {
 	      row = encode.encodeObj(row);
 	    }
-	    return row;
-	  });
+	    return row
+	  })
 	};
 	var toJson_1$2 = toJson$5;
 
@@ -6292,58 +6389,59 @@
 	const methods$5 = {
 	  links(n) {
 	    let links = [];
-	    this.data.forEach((r) => {
-	      Object.keys(r).forEach((k) => {
+	    this.data.forEach(r => {
+	      Object.keys(r).forEach(k => {
 	        links = links.concat(r[k].links());
 	      });
 	    });
 	    //grab a specific link..
 	    if (typeof n === 'number') {
-	      return links[n];
-	    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+	      return links[n]
+	    } else if (typeof n === 'string') {
+	      //grab a link like .links('Fortnight')
 	      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
 	      let link = links.find(o => o.page === n);
-	      return link === undefined ? [] : [link];
+	      return link === undefined ? [] : [link]
 	    }
-	    return links;
+	    return links
 	  },
 	  keyValue(options) {
 	    let rows = this.json(options);
-	    rows.forEach((row) => {
-	      Object.keys(row).forEach((k) => {
+	    rows.forEach(row => {
+	      Object.keys(row).forEach(k => {
 	        row[k] = row[k].text;
 	      });
 	    });
-	    return rows;
+	    return rows
 	  },
 	  json(options) {
 	    options = setDefaults_1(options, defaults$g);
-	    return toJson_1$2(this.data, options);
+	    return toJson_1$2(this.data, options)
 	  },
 	  html(options) {
 	    options = setDefaults_1(options, defaults$g);
-	    return toHtml_1$2(this.data, options);
+	    return toHtml_1$2(this.data, options)
 	  },
 	  markdown(options) {
 	    options = setDefaults_1(options, defaults$g);
-	    return toMarkdown$5(this.data, options);
+	    return toMarkdown$5(this.data, options)
 	  },
 	  latex(options) {
 	    options = setDefaults_1(options, defaults$g);
-	    return toLatex$5(this.data, options);
+	    return toLatex$5(this.data, options)
 	  },
 	  text() {
-	    return '';
+	    return ''
 	  }
 	};
 	methods$5.keyvalue = methods$5.keyValue;
 	methods$5.keyval = methods$5.keyValue;
 
-	Object.keys(methods$5).forEach((k) => {
+	Object.keys(methods$5).forEach(k => {
 	  Table.prototype[k] = methods$5[k];
 	});
 	//add alises, too
-	Object.keys(aliases).forEach((k) => {
+	Object.keys(aliases).forEach(k => {
 	  Table.prototype[k] = methods$5[aliases[k]];
 	});
 	var Table_1 = Table;
@@ -6361,14 +6459,14 @@
 	    //start a table
 	    if (openReg.test(lines[i]) === true) {
 	      stack.push(lines[i]);
-	      continue;
+	      continue
 	    }
 	    //close a table
 	    if (closeReg.test(lines[i]) === true) {
 	      stack[stack.length - 1] += '\n' + lines[i];
 	      let table = stack.pop();
 	      list.push(table);
-	      continue;
+	      continue
 	    }
 	    //keep-going on one
 	    if (stack.length > 0) {
@@ -6392,7 +6490,7 @@
 	  if (tables.length > 0) {
 	    section.tables = tables;
 	  }
-	  return wiki;
+	  return wiki
 	};
 
 	var table = findTables;
@@ -6407,7 +6505,7 @@
 	  if (options.sentences === true) {
 	    data.sentences = p.sentences().map(s => s.json(options));
 	  }
-	  return data;
+	  return data
 	};
 	var toJson_1$3 = toJson$6;
 
@@ -6421,10 +6519,10 @@
 	  if (options.sentences === true) {
 	    md += p.sentences().reduce((str, s) => {
 	      str += s.markdown(options) + '\n';
-	      return str;
+	      return str
 	    }, {});
 	  }
-	  return md;
+	  return md
 	};
 	var toMarkdown_1$3 = toMarkdown$6;
 
@@ -6436,9 +6534,12 @@
 	  options = setDefaults_1(options, defaults$j);
 	  let html = '';
 	  if (options.sentences === true) {
-	    html += p.sentences().map(s => s.html(options)).join('\n');
+	    html += p
+	      .sentences()
+	      .map(s => s.html(options))
+	      .join('\n');
 	  }
-	  return html;
+	  return html
 	};
 	var toHtml_1$3 = toHtml$6;
 
@@ -6453,18 +6554,18 @@
 	    out += '\n\n% BEGIN Paragraph\n';
 	    out += p.sentences().reduce((str, s) => {
 	      str += s.latex(options) + '\n';
-	      return str;
+	      return str
 	    }, '');
 	    out += '% END Paragraph';
 	  }
-	  return out;
+	  return out
 	};
 	var toLatex_1$4 = toLatex$6;
 
 	const defaults$l = {
 	  sentences: true,
 	  lists: true,
-	  images: true,
+	  images: true
 	};
 
 	const Paragraph = function(data) {
@@ -6477,27 +6578,27 @@
 	const methods$6 = {
 	  sentences: function(num) {
 	    if (typeof num === 'number') {
-	      return this.data.sentences[num];
+	      return this.data.sentences[num]
 	    }
-	    return this.data.sentences || [];
+	    return this.data.sentences || []
 	  },
 	  references: function(num) {
 	    if (typeof num === 'number') {
-	      return this.data.references[num];
+	      return this.data.references[num]
 	    }
-	    return this.data.references;
+	    return this.data.references
 	  },
 	  lists: function(num) {
 	    if (typeof num === 'number') {
-	      return this.data.lists[num];
+	      return this.data.lists[num]
 	    }
-	    return this.data.lists;
+	    return this.data.lists
 	  },
 	  images(num) {
 	    if (typeof num === 'number') {
-	      return this.data.images[num];
+	      return this.data.images[num]
 	    }
-	    return this.data.images || [];
+	    return this.data.images || []
 	  },
 	  links: function(n) {
 	    let arr = [];
@@ -6505,13 +6606,14 @@
 	      arr = arr.concat(s.links(n));
 	    });
 	    if (typeof n === 'number') {
-	      return arr[n];
-	    } else if (typeof n === 'string') { //grab a specific link like .links('Fortnight')
+	      return arr[n]
+	    } else if (typeof n === 'string') {
+	      //grab a specific link like .links('Fortnight')
 	      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
 	      let link = arr.find(o => o.page === n);
-	      return link === undefined ? [] : [link];
+	      return link === undefined ? [] : [link]
 	    }
-	    return arr || [];
+	    return arr || []
 	  },
 	  interwiki(num) {
 	    let arr = [];
@@ -6519,35 +6621,35 @@
 	      arr = arr.concat(s.interwiki());
 	    });
 	    if (typeof num === 'number') {
-	      return arr[num];
+	      return arr[num]
 	    }
-	    return arr || [];
+	    return arr || []
 	  },
 	  markdown: function(options) {
 	    options = setDefaults_1(options, defaults$l);
-	    return toMarkdown_1$3(this, options);
+	    return toMarkdown_1$3(this, options)
 	  },
 	  html: function(options) {
 	    options = setDefaults_1(options, defaults$l);
-	    return toHtml_1$3(this, options);
+	    return toHtml_1$3(this, options)
 	  },
 	  text: function(options) {
 	    options = setDefaults_1(options, defaults$l);
 	    let str = this.sentences()
 	      .map(s => s.text(options))
 	      .join(' ');
-	    this.lists().forEach((list) => {
+	    this.lists().forEach(list => {
 	      str += '\n' + list.text();
 	    });
-	    return str;
+	    return str
 	  },
 	  latex: function(options) {
 	    options = setDefaults_1(options, defaults$l);
-	    return toLatex_1$4(this, options);
+	    return toLatex_1$4(this, options)
 	  },
 	  json: function(options) {
 	    options = setDefaults_1(options, defaults$l);
-	    return toJson_1$3(this, options);
+	    return toJson_1$3(this, options)
 	  }
 	};
 	methods$6.citations = methods$6.references;
@@ -6579,7 +6681,7 @@
 	    } else if (last.length === 0) {
 	      // If we're not inside of a pair of delimiters, we can discard the current letter.
 	      // The return of this function is only used to extract images.
-	      continue;
+	      continue
 	    }
 
 	    last.push(c);
@@ -6603,7 +6705,7 @@
 	      last = [];
 	    }
 	  }
-	  return out;
+	  return out
 	}
 	var recursive_match = find_recursive;
 
@@ -6628,14 +6730,14 @@
 	  baseline: true,
 	  middle: true,
 	  sub: true,
-	  super: true,
+	  super: true
 	};
 
 	//images are usually [[image:my_pic.jpg]]
 	const oneImage = function(img) {
 	  let m = img.match(file_reg);
 	  if (m === null || !m[2]) {
-	    return null;
+	    return null
 	  }
 	  let file = `${m[1]}:${m[2] || ''}`;
 	  file = file.trim();
@@ -6660,13 +6762,13 @@
 	      obj.alt = imgData.alt;
 	    }
 	    //remove 'thumb' and things
-	    arr = arr.filter((str) => imgLayouts.hasOwnProperty(str) === false);
+	    arr = arr.filter(str => imgLayouts.hasOwnProperty(str) === false);
 	    if (arr[arr.length - 1]) {
 	      obj.caption = parseSentence$4(arr[arr.length - 1]);
 	    }
-	    return new Image_1(obj, img);
+	    return new Image_1(obj, img)
 	  }
-	  return null;
+	  return null
 	};
 
 	const parseImages = function(matches, r, wiki) {
@@ -6680,54 +6782,59 @@
 	      wiki = wiki.replace(s, '');
 	    }
 	  });
-	  return wiki;
+	  return wiki
 	};
 	var image = parseImages;
 
 	//
 	const toJson$7 = function(p, options) {
-	  return p.lines().map(s => s.json(options));
+	  return p.lines().map(s => s.json(options))
 	};
 	var toJson_1$4 = toJson$7;
 
 	//
 	const toMarkdown$7 = (list, options) => {
-	  return list.lines().map((s) => {
-	    let str = s.markdown(options);
-	    return ' * ' + str;
-	  }).join('\n');
+	  return list
+	    .lines()
+	    .map(s => {
+	      let str = s.markdown(options);
+	      return ' * ' + str
+	    })
+	    .join('\n')
 	};
 	var toMarkdown_1$4 = toMarkdown$7;
 
 	//
 	const toHtml$7 = (list, options) => {
 	  let html = '  <ul class="list">\n';
-	  list.lines().forEach((s) => {
+	  list.lines().forEach(s => {
 	    html += '    <li>' + s.html(options) + '</li>\n';
 	  });
 	  html += '  </ul>\n';
-	  return html;
+	  return html
 	};
 	var toHtml_1$4 = toHtml$7;
 
 	//
 	const toLatex$7 = (list, options) => {
 	  let out = '\\begin{itemize}\n';
-	  list.lines().forEach((s) => {
+	  list.lines().forEach(s => {
 	    out += '  \\item ' + s.text(options) + '\n';
 	  });
 	  out += '\\end{itemize}\n';
-	  return out;
+	  return out
 	};
 	var toLatex_1$5 = toLatex$7;
 
 	const defaults$m = {};
 
 	const toText = (list, options) => {
-	  return list.map((s) => {
-	    let str = s.text(options);
-	    return ' * ' + str;
-	  }).join('\n');
+	  return list
+	    .map(s => {
+	      let str = s.text(options);
+	      return ' * ' + str
+	    })
+	    .join('\n')
 	};
 
 	const List = function(data) {
@@ -6739,48 +6846,49 @@
 
 	const methods$7 = {
 	  lines() {
-	    return this.data;
+	    return this.data
 	  },
 	  links(n) {
 	    let links = [];
-	    this.lines().forEach((s) => {
+	    this.lines().forEach(s => {
 	      links = links.concat(s.links());
 	    });
 	    if (typeof n === 'number') {
-	      return links[n];
-	    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+	      return links[n]
+	    } else if (typeof n === 'string') {
+	      //grab a link like .links('Fortnight')
 	      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
 	      let link = links.find(o => o.page === n);
-	      return link === undefined ? [] : [link];
+	      return link === undefined ? [] : [link]
 	    }
-	    return links;
+	    return links
 	  },
 	  markdown(options) {
 	    options = setDefaults_1(options, defaults$m);
-	    return toMarkdown_1$4(this, options);
+	    return toMarkdown_1$4(this, options)
 	  },
 	  html(options) {
 	    options = setDefaults_1(options, defaults$m);
-	    return toHtml_1$4(this, options);
+	    return toHtml_1$4(this, options)
 	  },
 	  latex(options) {
 	    options = setDefaults_1(options, defaults$m);
-	    return toLatex_1$5(this, options);
+	    return toLatex_1$5(this, options)
 	  },
 	  json(options) {
 	    options = setDefaults_1(options, defaults$m);
-	    return toJson_1$4(this, options);
+	    return toJson_1$4(this, options)
 	  },
 	  text() {
-	    return toText(this.data);
+	    return toText(this.data)
 	  }
 	};
 
-	Object.keys(methods$7).forEach((k) => {
+	Object.keys(methods$7).forEach(k => {
 	  List.prototype[k] = methods$7[k];
 	});
 	//add alises, too
-	Object.keys(aliases).forEach((k) => {
+	Object.keys(aliases).forEach(k => {
 	  List.prototype[k] = methods$7[aliases[k]];
 	});
 	var List_1 = List;
@@ -6793,7 +6901,7 @@
 
 	// does it start with a bullet point or something?
 	const isList = function(line) {
-	  return list_reg.test(line) || bullet_reg.test(line) || number_reg.test(line);
+	  return list_reg.test(line) || bullet_reg.test(line) || number_reg.test(line)
 	};
 
 	//make bullets/numbers into human-readable *'s
@@ -6813,7 +6921,7 @@
 	    }
 	    list[i] = parseSentence$5(line);
 	  }
-	  return list;
+	  return list
 	};
 
 	const grabList = function(lines, i) {
@@ -6822,12 +6930,12 @@
 	    if (isList(lines[o])) {
 	      sub.push(lines[o]);
 	    } else {
-	      break;
+	      break
 	    }
 	  }
 	  sub = sub.filter(a => a && has_word.test(a));
 	  sub = cleanList(sub);
-	  return sub;
+	  return sub
 	};
 
 	const parseList = function(wiki, data) {
@@ -6846,9 +6954,9 @@
 	      theRest.push(lines[i]);
 	    }
 	  }
-	  data.lists = lists.map((l) => new List_1(l));
+	  data.lists = lists.map(l => new List_1(l));
 	  wiki = theRest.join('\n');
-	  return wiki;
+	  return wiki
 	};
 	var list = parseList;
 
@@ -6857,7 +6965,7 @@
 	const twoNewLines = /\r?\n\r?\n/;
 	const parse$4 = {
 	  image: image,
-	  list: list,
+	  list: list
 	};
 
 	const parseParagraphs = function(wiki) {
@@ -6878,12 +6986,12 @@
 	    str = parse$4.image(matches, data, str);
 	    //parse the sentences
 	    parseSentences$1(str, data);
-	    return new Paragraph_1(data);
+	    return new Paragraph_1(data)
 	  });
 	  return {
 	    paragraphs: pList,
 	    wiki: wiki
-	  };
+	  }
 	};
 	var _03Paragraph = parseParagraphs;
 
@@ -6892,11 +7000,11 @@
 	  caption: true,
 	  alt: true,
 	  signature: true,
-	  'signature alt': true,
+	  'signature alt': true
 	};
 
 	const defaults$n = {
-	  images: true,
+	  images: true
 	};
 
 	// render an infobox as a table with two columns, key + value
@@ -6905,9 +7013,9 @@
 	  let md = '|' + pad_1('', 35) + '|' + pad_1('', 30) + '|\n';
 	  md += '|' + pad_1('---', 35) + '|' + pad_1('---', 30) + '|\n';
 	  //todo: render top image here (somehow)
-	  Object.keys(obj.data).forEach((k) => {
+	  Object.keys(obj.data).forEach(k => {
 	    if (_skipKeys[k] === true) {
-	      return;
+	      return
 	    }
 	    let key = '**' + k + '**';
 	    let s = obj.data[k];
@@ -6916,12 +7024,12 @@
 	    val = val.split(/\n/g).join(', ');
 	    md += '|' + pad_1(key, 35) + '|' + pad_1(val, 30) + ' |\n';
 	  });
-	  return md;
+	  return md
 	};
 	var toMarkdown$8 = doInfobox;
 
 	const defaults$o = {
-	  images: true,
+	  images: true
 	};
 
 	//
@@ -6945,9 +7053,9 @@
 	    }
 	    html += '    </tr>\n';
 	  }
-	  Object.keys(obj.data).forEach((k) => {
+	  Object.keys(obj.data).forEach(k => {
 	    if (_skipKeys[k] === true) {
-	      return;
+	      return
 	    }
 	    let s = obj.data[k];
 	    let key = k.replace(/_/g, ' ');
@@ -6960,12 +7068,12 @@
 	  });
 	  html += '  </tbody>\n';
 	  html += '</table>\n';
-	  return html;
+	  return html
 	};
 	var toHtml$8 = infobox;
 
 	const defaults$p = {
-	  images: true,
+	  images: true
 	};
 
 	//
@@ -6975,9 +7083,9 @@
 	  out += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n';
 	  out += '  \\hline  %horizontal line\n';
 	  //todo: render top image here
-	  Object.keys(obj.data).forEach((k) => {
+	  Object.keys(obj.data).forEach(k => {
 	    if (_skipKeys[k] === true) {
-	      return;
+	      return
 	    }
 	    let s = obj.data[k];
 	    let val = s.latex(options);
@@ -6988,7 +7096,7 @@
 	  });
 	  out += '\\end{tabular} \n';
 	  out += '\n\\vspace*{0.3cm}\n\n';
-	  return out;
+	  return out
 	};
 	var toLatex$8 = infobox$1;
 
@@ -6998,14 +7106,14 @@
 	    if (infobox.data[k]) {
 	      h[k] = infobox.data[k].json();
 	    }
-	    return h;
+	    return h
 	  }, {});
 
 	  //support mongo-encoding keys
 	  if (options.encode === true) {
 	    json = encode.encodeObj(json);
 	  }
-	  return json;
+	  return json
 	};
 	var toJson_1$5 = toJson$8;
 
@@ -7020,78 +7128,79 @@
 
 	const methods$8 = {
 	  type: function() {
-	    return this._type;
+	    return this._type
 	  },
 	  links: function(n) {
 	    let arr = [];
-	    Object.keys(this.data).forEach((k) => {
-	      this.data[k].links().forEach((l) => arr.push(l));
+	    Object.keys(this.data).forEach(k => {
+	      this.data[k].links().forEach(l => arr.push(l));
 	    });
 	    if (typeof n === 'number') {
-	      return arr[n];
-	    } else if (typeof n === 'string') { //grab a link like .links('Fortnight')
+	      return arr[n]
+	    } else if (typeof n === 'string') {
+	      //grab a link like .links('Fortnight')
 	      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
 	      let link = arr.find(o => o.page === n);
-	      return link === undefined ? [] : [link];
+	      return link === undefined ? [] : [link]
 	    }
-	    return arr;
+	    return arr
 	  },
 	  image: function() {
 	    let s = this.get('image');
 	    if (!s) {
-	      return null;
+	      return null
 	    }
 	    let obj = s.json();
 	    obj.file = obj.text;
 	    obj.text = '';
-	    return new Image_1(obj);
+	    return new Image_1(obj)
 	  },
-	  get : function( key = '' ) {
+	  get: function(key = '') {
 	    key = key.toLowerCase();
 	    let keys = Object.keys(this.data);
-	    for(let i = 0; i < keys.length; i += 1) {
+	    for (let i = 0; i < keys.length; i += 1) {
 	      let tmp = keys[i].toLowerCase().trim();
 	      if (key === tmp) {
-	        return this.data[keys[i]];
+	        return this.data[keys[i]]
 	      }
 	    }
-	    return null;
+	    return null
 	  },
-	  markdown : function(options) {
+	  markdown: function(options) {
 	    options = options || {};
-	    return toMarkdown$8(this, options);
+	    return toMarkdown$8(this, options)
 	  },
-	  html : function(options) {
+	  html: function(options) {
 	    options = options || {};
-	    return toHtml$8(this, options);
+	    return toHtml$8(this, options)
 	  },
-	  latex : function(options) {
+	  latex: function(options) {
 	    options = options || {};
-	    return toLatex$8(this, options);
+	    return toLatex$8(this, options)
 	  },
-	  text : function() {
-	    return '';
+	  text: function() {
+	    return ''
 	  },
-	  json : function(options) {
+	  json: function(options) {
 	    options = options || {};
-	    return toJson_1$5(this, options);
+	    return toJson_1$5(this, options)
 	  },
-	  keyValue : function() {
+	  keyValue: function() {
 	    return Object.keys(this.data).reduce((h, k) => {
 	      if (this.data[k]) {
 	        h[k] = this.data[k].text();
 	      }
-	      return h;
-	    }, {});
+	      return h
+	    }, {})
 	  }
 	};
 	//aliases
 
-	Object.keys(methods$8).forEach((k) => {
+	Object.keys(methods$8).forEach(k => {
 	  Infobox.prototype[k] = methods$8[k];
 	});
 	//add alises, too
-	Object.keys(aliases).forEach((k) => {
+	Object.keys(aliases).forEach(k => {
 	  Infobox.prototype[k] = methods$8[aliases[k]];
 	});
 	Infobox.prototype.data = Infobox.prototype.keyValue;
@@ -7107,7 +7216,11 @@
 	  let depth = 0;
 	  let list = [];
 	  let carry = [];
-	  for (var i = wiki.indexOf(open); i !== -1 && i < wiki.length; depth > 0 ? i++ : (i = wiki.indexOf(open, i + 1))) {
+	  for (
+	    var i = wiki.indexOf(open);
+	    i !== -1 && i < wiki.length;
+	    depth > 0 ? i++ : (i = wiki.indexOf(open, i + 1))
+	  ) {
 	    let c = wiki[i];
 	    //open it
 	    if (c === open) {
@@ -7125,35 +7238,35 @@
 	          if (/\{\{/.test(tmpl) && /\}\}/.test(tmpl)) {
 	            list.push(tmpl);
 	          }
-	          continue;
+	          continue
 	        }
 	      }
 	      //require two '{{' to open it
 	      if (depth === 1 && c !== open && c !== close) {
 	        depth = 0;
 	        carry = [];
-	        continue;
+	        continue
 	      }
 	      carry.push(c);
 	    }
 	  }
-	  return list;
+	  return list
 	};
 
 	//get all nested templates
 	const findNested = function(top) {
 	  let deep = [];
-	  top.forEach((str) => {
+	  top.forEach(str => {
 	    if (/\{\{/.test(str.substr(2)) === true) {
 	      str = _strip(str);
-	      findFlat(str).forEach((o) => {
+	      findFlat(str).forEach(o => {
 	        if (o) {
 	          deep.push(o);
 	        }
 	      });
 	    }
 	  });
-	  return deep;
+	  return deep
 	};
 
 	const getTemplates = function(wiki) {
@@ -7161,7 +7274,7 @@
 	  return {
 	    top: list,
 	    nested: findNested(list)
-	  };
+	  }
 	};
 
 	var _getTemplates = getTemplates;
@@ -7211,7 +7324,7 @@
 	];
 	const ignore$1 = list$1.reduce((h, str) => {
 	  h[str] = true;
-	  return h;
+	  return h
 	}, {});
 	var _ignore = ignore$1;
 
@@ -7233,7 +7346,7 @@
 	    name = name.replace(/:.*/, '');
 	    name = _fmtName(name);
 	  }
-	  return name || null;
+	  return name || null
 	};
 	// console.log(templateName('{{name|foo}}'));
 	// console.log(templateName('{{name here}}'));
@@ -7255,59 +7368,59 @@
 	  'gnf protein box': true,
 	  'automatic taxobox': true,
 	  'chembox ': true,
-	  'editnotice': true,
-	  'geobox': true,
-	  'hybridbox': true,
-	  'ichnobox': true,
-	  'infraspeciesbox': true,
-	  'mycomorphbox': true,
-	  'oobox': true,
+	  editnotice: true,
+	  geobox: true,
+	  hybridbox: true,
+	  ichnobox: true,
+	  infraspeciesbox: true,
+	  mycomorphbox: true,
+	  oobox: true,
 	  'paraphyletic group': true,
-	  'speciesbox': true,
-	  'subspeciesbox': true,
+	  speciesbox: true,
+	  subspeciesbox: true,
 	  'starbox short': true,
-	  'taxobox': true,
-	  'nhlteamseason': true,
+	  taxobox: true,
+	  nhlteamseason: true,
 	  'asian games bid': true,
 	  'canadian federal election results': true,
 	  'dc thomson comic strip': true,
 	  'daytona 24 races': true,
-	  'edencharacter': true,
+	  edencharacter: true,
 	  'moldova national football team results': true,
-	  'samurai': true,
-	  'protein': true,
+	  samurai: true,
+	  protein: true,
 	  'sheet authority': true,
 	  'order-of-approx': true,
 	  'bacterial labs': true,
 	  'medical resources': true,
-	  'ordination': true,
+	  ordination: true,
 	  'hockey team coach': true,
 	  'hockey team gm': true,
 	  'hockey team player': true,
 	  'hockey team start': true,
-	  'mlbbioret': true,
+	  mlbbioret: true
 	};
 	//
 	const isInfobox = function(name) {
 	  // known
 	  if (known.hasOwnProperty(name) === true) {
-	    return true;
+	    return true
 	  }
 	  if (i18nReg.test(name)) {
-	    return true;
+	    return true
 	  }
 	  if (startReg.test(name) || endReg.test(name)) {
-	    return true;
+	    return true
 	  }
 	  //these are also infoboxes: 'Year in Belarus'
 	  if (yearIn.test(name)) {
-	    return true;
+	    return true
 	  }
-	  return false;
+	  return false
 	};
 
 	//turns template data into good inforbox data
-	const fmtInfobox = function( obj = {} ) {
+	const fmtInfobox = function(obj = {}) {
 	  let m = obj.template.match(i18nReg);
 	  let type = obj.template;
 	  if (m && m[0]) {
@@ -7321,7 +7434,7 @@
 	  };
 	  delete infobox.data.template; // already have this.
 	  delete infobox.data.list; //just in case!
-	  return infobox;
+	  return infobox
 	};
 
 	var _infobox = {
@@ -7331,34 +7444,34 @@
 
 	let templates = {
 	  /* mostly wiktionary*/
-	  etyl: (tmpl) => {
+	  etyl: tmpl => {
 	    let order = ['lang', 'page'];
-	    return parse$2(tmpl, order).page || '';
+	    return parse$2(tmpl, order).page || ''
 	  },
-	  mention: (tmpl) => {
+	  mention: tmpl => {
 	    let order = ['lang', 'page'];
-	    return parse$2(tmpl, order).page || '';
+	    return parse$2(tmpl, order).page || ''
 	  },
-	  link: (tmpl) => {
+	  link: tmpl => {
 	    let order = ['lang', 'page'];
-	    return parse$2(tmpl, order).page || '';
+	    return parse$2(tmpl, order).page || ''
 	  },
-	  'la-verb-form': (tmpl) => {
+	  'la-verb-form': tmpl => {
 	    let order = ['word'];
-	    return parse$2(tmpl, order).word || '';
+	    return parse$2(tmpl, order).word || ''
 	  },
-	  'la-ipa': (tmpl) => {
+	  'la-ipa': tmpl => {
 	    let order = ['word'];
-	    return parse$2(tmpl, order).word || '';
+	    return parse$2(tmpl, order).word || ''
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Sortname
-	  sortname: (tmpl) => {
+	  sortname: tmpl => {
 	    let order = ['first', 'last', 'target', 'sort'];
 	    let obj = parse$2(tmpl, order);
 	    let name = `${obj.first || ''} ${obj.last || ''}`;
 	    name = name.trim();
 	    if (obj.nolink) {
-	      return obj.target || name;
+	      return obj.target || name
 	    }
 	    if (obj.dab) {
 	      name += ` (${obj.dab})`;
@@ -7367,9 +7480,9 @@
 	      }
 	    }
 	    if (obj.target) {
-	      return `[[${obj.target}|${name}]]`;
+	      return `[[${obj.target}|${name}]]`
 	    }
-	    return `[[${name}]]`;
+	    return `[[${name}]]`
 	  }
 	};
 
@@ -7404,11 +7517,11 @@
 	];
 
 	//keyValues
-	links$1.forEach((k) => {
-	  templates[k] = (tmpl) => {
+	links$1.forEach(k => {
+	  templates[k] = tmpl => {
 	    let order = ['first', 'second'];
 	    let obj = parse$2(tmpl, order);
-	    return obj.second || obj.first;
+	    return obj.second || obj.first
 	  };
 	});
 	//aliases
@@ -7442,24 +7555,24 @@
 	  citation: (tmpl, r) => {
 	    let obj = parse$2(tmpl);
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Book_bar
 	  'book bar': (tmpl, r) => {
 	    let obj = parse$2(tmpl);
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Main
 	  main: (tmpl, r) => {
 	    let obj = parse$2(tmpl);
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 	  'wide image': (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['file', 'width', 'caption']);
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 
 	  //https://en.wikipedia.org/wiki/Template:Redirect
@@ -7467,7 +7580,7 @@
 	    let data = parse$2(tmpl, ['redirect']);
 	    let list = data.list || [];
 	    let links = [];
-	    for(let i = 0; i < list.length; i += 2) {
+	    for (let i = 0; i < list.length; i += 2) {
 	      links.push({
 	        page: list[i + 1],
 	        desc: list[i]
@@ -7479,7 +7592,7 @@
 	      links: links
 	    };
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 
 	  //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
@@ -7489,32 +7602,32 @@
 	    obj.type = 'gnis';
 	    obj.template = 'citation';
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
-	  'sfn': (tmpl, r) => {
+	  sfn: (tmpl, r) => {
 	    let order = ['author', 'year', 'location'];
 	    let obj = parse$2(tmpl, order);
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
-	  'audio': (tmpl, r) => {
+	  audio: (tmpl, r) => {
 	    let order = ['file', 'text', 'type'];
 	    let obj = parse$2(tmpl, order);
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Portal
-	  'portal': (tmpl, r) => {
+	  portal: (tmpl, r) => {
 	    let obj = parse$2(tmpl);
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 	  'spoken wikipedia': (tmpl, r) => {
 	    let order = ['file', 'date'];
 	    let obj = parse$2(tmpl, order);
 	    obj.template = 'audio';
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 
 	  //https://en.wikipedia.org/wiki/Template:Sister_project_links
@@ -7522,7 +7635,7 @@
 	    let data = parse$2(tmpl);
 	    //rename 'wd' to 'wikidata'
 	    let links = {};
-	    Object.keys(sisterProjects).forEach((k) => {
+	    Object.keys(sisterProjects).forEach(k => {
 	      if (data.hasOwnProperty(k) === true) {
 	        links[sisterProjects[k]] = data[k]; //.text();
 	      }
@@ -7532,13 +7645,13 @@
 	      links: links
 	    };
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 
 	  //https://en.wikipedia.org/wiki/Template:Subject_bar
 	  'subject bar': (tmpl, r) => {
 	    let data = parse$2(tmpl);
-	    Object.keys(data).forEach((k) => {
+	    Object.keys(data).forEach(k => {
 	      //rename 'voy' to 'wikivoyage'
 	      if (sisterProjects.hasOwnProperty(k)) {
 	        data[sisterProjects[k]] = data[k];
@@ -7550,7 +7663,7 @@
 	      links: data
 	    };
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 
 	  'short description': (tmpl, r) => {
@@ -7561,54 +7674,54 @@
 	      delete data['1'];
 	    }
 	    r.templates.push(data);
-	    return '';
+	    return ''
 	  },
 	  'good article': (tmpl, r) => {
 	    let obj = {
 	      template: 'Good article'
 	    };
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 	  'coord missing': (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['region']);
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 	  //amazingly, this one does not obey any known patterns
 	  //https://en.wikipedia.org/wiki/Template:Gallery
-	  'gallery': (tmpl, r) => {
+	  gallery: (tmpl, r) => {
 	    let obj = parse$2(tmpl);
 	    let images = (obj.list || []).filter(line => /^ *File ?:/.test(line));
-	    images = images.map((file) => {
+	    images = images.map(file => {
 	      let img = {
 	        file: file
 	      };
-	      return new Image_1(img).json();
+	      return new Image_1(img).json()
 	    });
 	    obj = {
 	      template: 'gallery',
 	      images: images
 	    };
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 	  //https://en.wikipedia.org/wiki/Template:See_also
 	  'see also': (tmpl, r) => {
 	    let data = parse$2(tmpl);
 	    r.templates.push(data);
-	    return '';
+	    return ''
 	  },
 	  'italic title': (tmpl, r) => {
 	    r.templates.push({
 	      template: 'italic title'
 	    });
-	    return '';
+	    return ''
 	  },
-	  'unreferenced': (tmpl, r) => {
+	  unreferenced: (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['date']);
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  }
 	};
 	//aliases
@@ -7626,8 +7739,8 @@
 	//random misc for inline wikipedia templates
 
 
-	const titlecase = (str) => {
-	  return str.charAt(0).toUpperCase() + str.substring(1);
+	const titlecase = str => {
+	  return str.charAt(0).toUpperCase() + str.substring(1)
 	};
 
 	//https://en.wikipedia.org/wiki/Template:Yes
@@ -7696,12 +7809,12 @@
 	  'crecurring',
 	  'cguest',
 	  'not yet',
-	  'optional',
+	  'optional'
 	];
-	cells.forEach((str) => {
-	  templates$1[str] = (tmpl) => {
+	cells.forEach(str => {
+	  templates$1[str] = tmpl => {
 	    let data = parse$2(tmpl, ['text']);
-	    return data.text || titlecase(data.template);
+	    return data.text || titlecase(data.template)
 	  };
 	});
 
@@ -7724,44 +7837,39 @@
 	  ['dunno', '?'],
 	  ['draw', ''],
 	  ['cnone', ''],
-	  ['nocontest', ''],
+	  ['nocontest', '']
 	];
-	moreCells.forEach((a) => {
-	  templates$1[a[0]] = (tmpl) => {
+	moreCells.forEach(a => {
+	  templates$1[a[0]] = tmpl => {
 	    let data = parse$2(tmpl, ['text']);
-	    return data.text || a[1];
+	    return data.text || a[1]
 	  };
 	});
 
 	//this one's a little different
-	templates$1.won = (tmpl) => {
+	templates$1.won = tmpl => {
 	  let data = parse$2(tmpl, ['text']);
-	  return data.place || data.text || titlecase(data.template);
+	  return data.place || data.text || titlecase(data.template)
 	};
 
 	var tableCell = templates$1;
 
-	var wikipedia = Object.assign({},
-	  links_1,
-	  page,
-	  tableCell
-	);
+	var wikipedia = Object.assign({}, links_1, page, tableCell);
 
 	//this format seems to be a pattern for these
 	const generic = (tmpl, r) => {
 	  let obj = parse$2(tmpl, ['id', 'title', 'description', 'section']);
 	  r.templates.push(obj);
-	  return '';
+	  return ''
 	};
 	const idName = (tmpl, r) => {
 	  let obj = parse$2(tmpl, ['id', 'name']);
 	  r.templates.push(obj);
-	  return '';
+	  return ''
 	};
 
 	//https://en.wikipedia.org/wiki/Category:External_link_templates
 	const externals = {
-
 	  //https://en.wikipedia.org/wiki/Template:IMDb_title
 	  'imdb title': generic,
 	  'imdb name': generic,
@@ -7769,7 +7877,7 @@
 	  'imdb event': generic,
 	  'afi film': generic,
 	  'allmovie title': generic,
-	  'allgame': generic,
+	  allgame: generic,
 	  'tcmdb title': generic,
 	  'discogs artist': generic,
 	  'discogs label': generic,
@@ -7781,24 +7889,24 @@
 	  'musicbrainz recording': generic,
 	  'musicbrainz release': generic,
 	  'musicbrainz work': generic,
-	  'youtube': generic,
+	  youtube: generic,
 	  'goodreads author': idName,
 	  'goodreads book': generic,
-	  'twitter': idName,
-	  'facebook': idName,
-	  'instagram': idName,
-	  'tumblr': idName,
-	  'pinterest': idName,
+	  twitter: idName,
+	  facebook: idName,
+	  instagram: idName,
+	  tumblr: idName,
+	  pinterest: idName,
 	  'espn nfl': idName,
 	  'espn nhl': idName,
 	  'espn fc': idName,
-	  'hockeydb': idName,
+	  hockeydb: idName,
 	  'fifa player': idName,
-	  'worldcat': idName,
+	  worldcat: idName,
 	  'worldcat id': idName,
 	  'nfl player': idName,
 	  'ted speaker': idName,
-	  'playmate': idName,
+	  playmate: idName,
 	  //https://en.wikipedia.org/wiki/Template:DMOZ
 	  dmoz: generic,
 
@@ -7806,20 +7914,20 @@
 	    let order = ['id', 'name', 'work', 'last', 'first', 'date', 'accessdate'];
 	    let obj = parse$2(tmpl, order);
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
-	  'congbio': (tmpl, r) => {
+	  congbio: (tmpl, r) => {
 	    let order = ['id', 'name', 'date'];
 	    let obj = parse$2(tmpl, order);
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 	  'hollywood walk of fame': (tmpl, r) => {
 	    let order = ['name'];
 	    let obj = parse$2(tmpl, order);
 	    r.templates.push(obj);
-	    return '';
-	  },
+	    return ''
+	  }
 	};
 	//alias
 	externals.imdb = externals['imdb name'];
@@ -7839,7 +7947,7 @@
 	  'September',
 	  'October',
 	  'November',
-	  'December',
+	  'December'
 	];
 
 	//assorted parsing methods for date/time templates
@@ -7847,10 +7955,10 @@
 
 	const monthName = _months.reduce((h, str, i) => {
 	  if (i === 0) {
-	    return h;
+	    return h
 	  }
 	  h[str.toLowerCase()] = i;
-	  return h;
+	  return h
 	}, {});
 
 	//parse year|month|date numbers
@@ -7858,18 +7966,20 @@
 	  let obj = {};
 	  let units = ['year', 'month', 'date', 'hour', 'minute', 'second'];
 	  //parse each unit in sequence..
-	  for(let i = 0; i < units.length; i += 1) {
+	  for (let i = 0; i < units.length; i += 1) {
 	    //skip it
 	    if (!arr[i] && arr[1] !== 0) {
-	      continue;
+	      continue
 	    }
 	    let num = parseInt(arr[i], 10);
 	    if (isNaN(num) === false) {
 	      obj[units[i]] = num; //we good.
-	    } else if (units[i] === 'month' && monthName.hasOwnProperty(arr[i])) { //try for month-name, like 'january
+	    } else if (units[i] === 'month' && monthName.hasOwnProperty(arr[i])) {
+	      //try for month-name, like 'january
 	      let month = monthName[arr[i]];
 	      obj[units[i]] = month;
-	    } else { //we dead. so skip this unit
+	    } else {
+	      //we dead. so skip this unit
 	      delete obj[units[i]];
 	    }
 	  }
@@ -7881,15 +7991,15 @@
 	  } else if (/[+-][0-9]+:[0-9]/.test(last)) {
 	    obj.tz = arr[6];
 	  }
-	  return obj;
+	  return obj
 	};
 
 	//zero-pad a number
 	const pad$1 = function(num) {
 	  if (num < 10) {
-	    return '0' + num;
+	    return '0' + num
 	  }
-	  return String(num);
+	  return String(num)
 	};
 
 	const toText$1 = function(date) {
@@ -7909,54 +8019,52 @@
 	          time = time + ':' + pad$1(date.second);
 	        }
 	        str = time + ', ' + str;
-	      //add timezone, if there, at the end in brackets
+	        //add timezone, if there, at the end in brackets
 	      }
 	      if (date.tz) {
 	        str += ` (${date.tz})`;
 	      }
 	    }
 	  }
-	  return str;
+	  return str
 	};
 
 	var _format = {
 	  toText: toText$1,
-	  ymd: ymd,
+	  ymd: ymd
 	};
 
 	const misc = {
-
-	  'reign': (tmpl) => {
+	  reign: tmpl => {
 	    let order = ['start', 'end'];
 	    let obj = parse$2(tmpl, order);
-	    return `(r. ${obj.start} – ${obj.end})`;
+	    return `(r. ${obj.start} – ${obj.end})`
 	  },
-	  'circa': (tmpl) => {
+	  circa: tmpl => {
 	    let obj = parse$2(tmpl, ['year']);
-	    return `c. ${obj.year}`;
+	    return `c. ${obj.year}`
 	  },
 	  //we can't do timezones, so fake this one a little bit
 	  //https://en.wikipedia.org/wiki/Template:Time
-	  'time': () => {
+	  time: () => {
 	    let d = new Date();
 	    let obj = _format.ymd([d.getFullYear(), d.getMonth(), d.getDate()]);
-	    return _format.toText(obj);
+	    return _format.toText(obj)
 	  },
-	  'monthname': (tmpl) => {
+	  monthname: tmpl => {
 	    let obj = parse$2(tmpl, ['num']);
-	    return _months[obj.num] || '';
+	    return _months[obj.num] || ''
 	  },
 	  //https://en.wikipedia.org/wiki/Template:OldStyleDate
-	  oldstyledate: (tmpl) => {
+	  oldstyledate: tmpl => {
 	    let order = ['date', 'year'];
 	    let obj = parse$2(tmpl, order);
 	    let str = obj.date;
 	    if (obj.year) {
 	      str += ' ' + obj.year;
 	    }
-	    return str;
+	    return str
 	  }
-
 	};
 	var misc_1 = misc;
 
@@ -7966,7 +8074,7 @@
 	const year = day * 365;
 
 	const getEpoch = function(obj) {
-	  return new Date(`${obj.year}-${obj.month || 0}-${obj.date || 1}`).getTime();
+	  return new Date(`${obj.year}-${obj.month || 0}-${obj.date || 1}`).getTime()
 	};
 
 	//very rough!
@@ -7979,21 +8087,21 @@
 	  let years = Math.floor(diff / year, 10);
 	  if (years > 0) {
 	    obj.years = years;
-	    diff -= (obj.years * year);
+	    diff -= obj.years * year;
 	  }
 	  //get months
 	  let months = Math.floor(diff / month, 10);
 	  if (months > 0) {
 	    obj.months = months;
-	    diff -= (obj.months * month);
+	    diff -= obj.months * month;
 	  }
 	  //get days
 	  let days = Math.floor(diff / day, 10);
 	  if (days > 0) {
 	    obj.days = days;
-	  // diff -= (obj.days * day);
+	    // diff -= (obj.days * day);
 	  }
-	  return obj;
+	  return obj
 	};
 
 	var _delta = delta;
@@ -8006,7 +8114,7 @@
 	  return {
 	    template: 'date',
 	    data: date
-	  };
+	  }
 	};
 
 	const getBoth = function(tmpl) {
@@ -8023,11 +8131,10 @@
 	  return {
 	    from: from,
 	    to: to
-	  };
+	  }
 	};
 
 	const parsers$1 = {
-
 	  //generic {{date|year|month|date}} template
 	  date: (tmpl, r) => {
 	    let order = ['year', 'month', 'date', 'hour', 'minute', 'second', 'timezone'];
@@ -8050,7 +8157,7 @@
 	    if (obj.text) {
 	      r.templates.push(template(obj));
 	    }
-	    return obj.text;
+	    return obj.text
 	  },
 
 	  //support parsing of 'February 10, 1992'
@@ -8074,7 +8181,7 @@
 	      }
 	    }
 	    r.templates.push(template(date));
-	    return str.trim();
+	    return str.trim()
 	  },
 
 	  //just grab the first value, and assume it's a year
@@ -8082,42 +8189,52 @@
 	    let order = ['year'];
 	    let obj = parse$2(tmpl, order);
 	    let year = Number(obj.year);
-	    r.templates.push(template({
-	      year: year
-	    }));
-	    return String(year);
+	    r.templates.push(
+	      template({
+	        year: year
+	      })
+	    );
+	    return String(year)
 	  },
 
 	  //assume 'y|m|d' | 'y|m|d' // {{BirthDeathAge|B|1976|6|6|1990|8|8}}
 	  two_dates: (tmpl, r) => {
-	    let order = ['b', 'birth_year', 'birth_month', 'birth_date', 'death_year', 'death_month', 'death_date'];
+	    let order = [
+	      'b',
+	      'birth_year',
+	      'birth_month',
+	      'birth_date',
+	      'death_year',
+	      'death_month',
+	      'death_date'
+	    ];
 	    let obj = parse$2(tmpl, order);
 	    //'b' means show birth-date, otherwise show death-date
 	    if (obj.b && obj.b.toLowerCase() === 'b') {
 	      let date = ymd$1([obj.birth_year, obj.birth_month, obj.birth_date]);
 	      r.templates.push(template(date));
-	      return toText$2(date);
+	      return toText$2(date)
 	    }
 	    let date = ymd$1([obj.death_year, obj.death_month, obj.death_date]);
 	    r.templates.push(template(date));
-	    return toText$2(date);
+	    return toText$2(date)
 	  },
 
-	  'age': (tmpl) => {
+	  age: tmpl => {
 	    let d = getBoth(tmpl);
 	    let diff = _delta(d.from, d.to);
-	    return diff.years || 0;
+	    return diff.years || 0
 	  },
 
-	  'diff-y': (tmpl) => {
+	  'diff-y': tmpl => {
 	    let d = getBoth(tmpl);
 	    let diff = _delta(d.from, d.to);
 	    if (diff.years === 1) {
-	      return diff.years + ' year';
+	      return diff.years + ' year'
 	    }
-	    return (diff.years || 0) + ' years';
+	    return (diff.years || 0) + ' years'
 	  },
-	  'diff-ym': (tmpl) => {
+	  'diff-ym': tmpl => {
 	    let d = getBoth(tmpl);
 	    let diff = _delta(d.from, d.to);
 	    let arr = [];
@@ -8131,9 +8248,9 @@
 	    } else if (diff.months && diff.months !== 0) {
 	      arr.push(diff.months + ' months');
 	    }
-	    return arr.join(', ');
+	    return arr.join(', ')
 	  },
-	  'diff-ymd': (tmpl) => {
+	  'diff-ymd': tmpl => {
 	    let d = getBoth(tmpl);
 	    let diff = _delta(d.from, d.to);
 	    let arr = [];
@@ -8152,9 +8269,9 @@
 	    } else if (diff.days && diff.days !== 0) {
 	      arr.push(diff.days + ' days');
 	    }
-	    return arr.join(', ');
+	    return arr.join(', ')
 	  },
-	  'diff-yd': (tmpl) => {
+	  'diff-yd': tmpl => {
 	    let d = getBoth(tmpl);
 	    let diff = _delta(d.from, d.to);
 	    let arr = [];
@@ -8170,9 +8287,9 @@
 	    } else if (diff.days && diff.days !== 0) {
 	      arr.push(diff.days + ' days');
 	    }
-	    return arr.join(', ');
+	    return arr.join(', ')
 	  },
-	  'diff-d': (tmpl) => {
+	  'diff-d': tmpl => {
 	    let d = getBoth(tmpl);
 	    let diff = _delta(d.from, d.to);
 	    let arr = [];
@@ -8184,9 +8301,8 @@
 	    } else if (diff.days && diff.days !== 0) {
 	      arr.push(diff.days + ' days');
 	    }
-	    return arr.join(', ');
-	  },
-
+	    return arr.join(', ')
+	  }
 	};
 	var parsers_1 = parsers$1;
 
@@ -8194,7 +8310,7 @@
 	const timeSince = function(str) {
 	  let d = new Date(str);
 	  if (isNaN(d.getTime())) {
-	    return '';
+	    return ''
 	  }
 	  let now = new Date();
 	  let delta = now.getTime() - d.getTime();
@@ -8207,10 +8323,10 @@
 	  let hours = delta / 1000 / 60 / 60;
 	  let days = hours / 24;
 	  if (days < 365) {
-	    return parseInt(days, 10) + ' days ' + predicate;
+	    return parseInt(days, 10) + ' days ' + predicate
 	  }
 	  let years = days / 365;
-	  return parseInt(years, 10) + ' years ' + predicate;
+	  return parseInt(years, 10) + ' years ' + predicate
 	};
 	var _timeSince = timeSince;
 
@@ -8237,43 +8353,43 @@
 	let dateTmpl = Object.assign({}, misc_1, {
 	  currentday: () => {
 	    let d = new Date();
-	    return String(d.getDate());
+	    return String(d.getDate())
 	  },
 	  currentdayname: () => {
 	    let d = new Date();
-	    return days[d.getDay()];
+	    return days[d.getDay()]
 	  },
 	  currentmonth: () => {
 	    let d = new Date();
-	    return months[d.getMonth()];
+	    return months[d.getMonth()]
 	  },
 	  currentyear: () => {
 	    let d = new Date();
-	    return String(d.getFullYear());
+	    return String(d.getFullYear())
 	  },
 	  monthyear: () => {
 	    let d = new Date();
-	    return months[d.getMonth()] + ' ' + d.getFullYear();
+	    return months[d.getMonth()] + ' ' + d.getFullYear()
 	  },
 	  'monthyear-1': () => {
 	    let d = new Date();
 	    d.setMonth(d.getMonth() - 1);
-	    return months[d.getMonth()] + ' ' + d.getFullYear();
+	    return months[d.getMonth()] + ' ' + d.getFullYear()
 	  },
 	  'monthyear+1': () => {
 	    let d = new Date();
 	    d.setMonth(d.getMonth() + 1);
-	    return months[d.getMonth()] + ' ' + d.getFullYear();
+	    return months[d.getMonth()] + ' ' + d.getFullYear()
 	  },
 	  //Explictly-set dates - https://en.wikipedia.org/wiki/Template:Date
-	  date: (tmpl) => {
+	  date: tmpl => {
 	    let order = ['date', 'fmt'];
-	    return parse$2(tmpl, order).date;
+	    return parse$2(tmpl, order).date
 	  },
-	  'time ago': (tmpl) => {
+	  'time ago': tmpl => {
 	    let order = ['date', 'fmt'];
 	    let time = parse$2(tmpl, order).date;
-	    return _timeSince(time);
+	    return _timeSince(time)
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
 	  'birth date and age': (tmpl, r) => {
@@ -8281,18 +8397,18 @@
 	    let obj = parse$2(tmpl, order);
 	    //support 'one property' version
 	    if (obj.year && /[a-z]/i.test(obj.year)) {
-	      return natural_date(tmpl, r);
+	      return natural_date(tmpl, r)
 	    }
 	    r.templates.push(obj);
 	    obj = _format.ymd([obj.year, obj.month, obj.day]);
-	    return _format.toText(obj);
+	    return _format.toText(obj)
 	  },
 	  'birth year and age': (tmpl, r) => {
 	    let order = ['birth_year', 'birth_month'];
 	    let obj = parse$2(tmpl, order);
 	    //support 'one property' version
 	    if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
-	      return natural_date(tmpl, r);
+	      return natural_date(tmpl, r)
 	    }
 	    r.templates.push(obj);
 	    let age = new Date().getFullYear() - parseInt(obj.birth_year, 10);
@@ -8301,18 +8417,18 @@
 	    if (age) {
 	      str += ` (age ${age})`;
 	    }
-	    return str;
+	    return str
 	  },
 	  'death year and age': (tmpl, r) => {
 	    let order = ['death_year', 'birth_year', 'death_month'];
 	    let obj = parse$2(tmpl, order);
 	    //support 'one property' version
 	    if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
-	      return natural_date(tmpl, r);
+	      return natural_date(tmpl, r)
 	    }
 	    r.templates.push(obj);
 	    obj = _format.ymd([obj.death_year, obj.death_month]);
-	    return _format.toText(obj);
+	    return _format.toText(obj)
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Birth_date_and_age2
 	  'birth date and age2': (tmpl, r) => {
@@ -8320,7 +8436,7 @@
 	    let obj = parse$2(tmpl, order);
 	    r.templates.push(obj);
 	    obj = _format.ymd([obj.birth_year, obj.birth_month, obj.birth_day]);
-	    return _format.toText(obj);
+	    return _format.toText(obj)
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Birth_based_on_age_as_of_date
 	  'birth based on age as of date': (tmpl, r) => {
@@ -8331,9 +8447,9 @@
 	    let year = parseInt(obj.year, 10);
 	    let born = year - age;
 	    if (born && age) {
-	      return `${born} (age ${obj.age})`;
+	      return `${born} (age ${obj.age})`
 	    }
-	    return `(age ${obj.age})`;
+	    return `(age ${obj.age})`
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Death_date_and_given_age
 	  'death date and given age': (tmpl, r) => {
@@ -8345,10 +8461,10 @@
 	    if (obj.age) {
 	      str += ` (age ${obj.age})`;
 	    }
-	    return str;
+	    return str
 	  },
 	  //sortable dates -
-	  dts: (tmpl) => {
+	  dts: tmpl => {
 	    //remove formatting stuff, ewww
 	    tmpl = tmpl.replace(/\|format=[ymd]+/i, '');
 	    tmpl = tmpl.replace(/\|abbr=(on|off)/i, '');
@@ -8357,26 +8473,26 @@
 	    if (obj.date && obj.month && obj.year) {
 	      //render 'june 5 2018'
 	      if (/[a-z]/.test(obj.month) === true) {
-	        return [obj.month, obj.date, obj.year].join(' ');
+	        return [obj.month, obj.date, obj.year].join(' ')
 	      }
-	      return [obj.year, obj.month, obj.date].join('-');
+	      return [obj.year, obj.month, obj.date].join('-')
 	    }
 	    if (obj.month && obj.year) {
-	      return [obj.year, obj.month].join('-');
+	      return [obj.year, obj.month].join('-')
 	    }
 	    if (obj.year) {
 	      if (obj.year < 0) {
 	        obj.year = Math.abs(obj.year) + ' BC';
 	      }
-	      return obj.year;
+	      return obj.year
 	    }
-	    return '';
+	    return ''
 	  },
 	  //date/age/time templates
-	  'start': date,
-	  'end': date,
-	  'birth': date,
-	  'death': date,
+	  start: date,
+	  end: date,
+	  birth: date,
+	  death: date,
 	  'start date': date,
 	  'end date': date,
 	  'birth date': date,
@@ -8393,20 +8509,19 @@
 	  'death-date and age': natural_date,
 	  'death-date and given age': natural_date,
 
-	  'birthdeathage': parsers_1.two_dates,
-	  'dob': date,
+	  birthdeathage: parsers_1.two_dates,
+	  dob: date,
 	  // 'birth date and age2': date,
 
-	  'age': parsers_1.age,
+	  age: parsers_1.age,
 	  'age nts': parsers_1.age,
 	  'age in years': parsers_1['diff-y'],
 	  'age in years and months': parsers_1['diff-ym'],
 	  'age in years, months and days': parsers_1['diff-ymd'],
 	  'age in years and days': parsers_1['diff-yd'],
-	  'age in days': parsers_1['diff-d'],
+	  'age in days': parsers_1['diff-d']
 	  // 'age in years, months, weeks and days': true,
 	  // 'age as of date': true,
-
 	});
 	//aliases
 	dateTmpl.localday = dateTmpl.currentday;
@@ -8435,9 +8550,7 @@
 	      if (ignore[obj.tag]) {
 	        return obj.content || ''
 	      }
-	      return `<${obj.tag} ${obj.attribs || ''}>${obj.content || ''}</${
-        obj.tag
-      }>`
+	      return `<${obj.tag} ${obj.attribs || ''}>${obj.content || ''}</${obj.tag}>`
 	    }
 	    return ''
 	  },
@@ -8641,7 +8754,7 @@
 
 	const tmpls = {
 	  //a strange, newline-based list - https://en.wikipedia.org/wiki/Template:Plainlist
-	  plainlist: (tmpl) => {
+	  plainlist: tmpl => {
 	    tmpl = _strip(tmpl);
 	    //remove the title
 	    let arr = tmpl.split('|');
@@ -8650,7 +8763,7 @@
 	    //split on newline
 	    arr = tmpl.split(/\n ?\* ?/);
 	    arr = arr.filter(s => s);
-	    return arr.join('\n\n');
+	    return arr.join('\n\n')
 	  },
 
 	  //show/hide: https://en.wikipedia.org/wiki/Template:Collapsible_list
@@ -8663,7 +8776,7 @@
 	    }
 	    if (!obj.list) {
 	      obj.list = [];
-	      for(let i = 1; i < 10; i += 1) {
+	      for (let i = 1; i < 10; i += 1) {
 	        if (obj[i]) {
 	          obj.list.push(obj[i]);
 	          delete obj[i];
@@ -8672,7 +8785,7 @@
 	    }
 	    obj.list = obj.list.filter(s => s);
 	    str += obj.list.join('\n\n');
-	    return str;
+	    return str
 	  },
 	  // https://en.wikipedia.org/wiki/Template:Ordered_list
 	  'ordered list': (tmpl, r) => {
@@ -8680,59 +8793,59 @@
 	    r.templates.push(obj);
 	    obj.list = obj.list || [];
 	    let lines = obj.list.map((str, i) => `${i + 1}. ${str}`);
-	    return lines.join('\n\n');
+	    return lines.join('\n\n')
 	  },
-	  hlist: (tmpl) => {
+	  hlist: tmpl => {
 	    let obj = parse$2(tmpl);
 	    obj.list = obj.list || [];
-	    return obj.list.join(' · ');
+	    return obj.list.join(' · ')
 	  },
-	  'pagelist': (tmpl) => {
+	  pagelist: tmpl => {
 	    let arr = parse$2(tmpl).list || [];
-	    return arr.join(', ');
+	    return arr.join(', ')
 	  },
 	  //actually rendering these links removes the text.
 	  //https://en.wikipedia.org/wiki/Template:Catlist
-	  'catlist': (tmpl) => {
+	  catlist: tmpl => {
 	    let arr = parse$2(tmpl).list || [];
-	    return arr.join(', ');
+	    return arr.join(', ')
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Br_separated_entries
-	  'br separated entries': (tmpl) => {
+	  'br separated entries': tmpl => {
 	    let arr = parse$2(tmpl).list || [];
-	    return arr.join('\n\n');
+	    return arr.join('\n\n')
 	  },
-	  'comma separated entries': (tmpl) => {
+	  'comma separated entries': tmpl => {
 	    let arr = parse$2(tmpl).list || [];
-	    return arr.join(', ');
+	    return arr.join(', ')
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Bare_anchored_list
-	  'anchored list': (tmpl) => {
+	  'anchored list': tmpl => {
 	    let arr = parse$2(tmpl).list || [];
 	    arr = arr.map((str, i) => `${i + 1}. ${str}`);
-	    return arr.join('\n\n');
+	    return arr.join('\n\n')
 	  },
-	  'bulleted list': (tmpl) => {
+	  'bulleted list': tmpl => {
 	    let arr = parse$2(tmpl).list || [];
-	    arr = arr.filter((f) => f);
-	    arr = arr.map((str) => '• ' + str);
-	    return arr.join('\n\n');
+	    arr = arr.filter(f => f);
+	    arr = arr.map(str => '• ' + str);
+	    return arr.join('\n\n')
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Columns-list
 	  'columns-list': (tmpl, r) => {
 	    let arr = parse$2(tmpl).list || [];
 	    let str = arr[0] || '';
 	    let list = str.split(/\n/);
-	    list = list.filter((f) => f);
-	    list = list.map((s) => s.replace(/\*/, ''));
+	    list = list.filter(f => f);
+	    list = list.map(s => s.replace(/\*/, ''));
 	    r.templates.push({
 	      template: 'columns-list',
 	      list: list
 	    });
-	    list = list.map((s) => '• ' + s);
-	    return list.join('\n\n');
-	  },
-	// 'pagelist':(tmpl)=>{},
+	    list = list.map(s => '• ' + s);
+	    return list.join('\n\n')
+	  }
+	  // 'pagelist':(tmpl)=>{},
 	};
 	//aliases
 	tmpls.flatlist = tmpls.plainlist;
@@ -8790,65 +8903,65 @@
 	  ['asterisk', '*'],
 	  ['long dash', '———'],
 	  ['clear', '\n\n'],
-	  ['h.', 'ḥ'],
+	  ['h.', 'ḥ']
 	];
 	const templates$3 = {};
-	punctuation.forEach((a) => {
+	punctuation.forEach(a => {
 	  templates$3[a[0]] = () => {
-	    return a[1];
+	    return a[1]
 	  };
 	});
 	var punctuation_1 = templates$3;
 
 	const inline$1 = {
 	  //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
-	  convert: (tmpl) => {
+	  convert: tmpl => {
 	    let order = ['num', 'two', 'three', 'four'];
 	    let obj = parse$2(tmpl, order);
 	    //todo: support plural units
 	    if (obj.two === '-' || obj.two === 'to' || obj.two === 'and') {
 	      if (obj.four) {
-	        return `${obj.num} ${obj.two} ${obj.three} ${obj.four}`;
+	        return `${obj.num} ${obj.two} ${obj.three} ${obj.four}`
 	      }
-	      return `${obj.num} ${obj.two} ${obj.three}`;
+	      return `${obj.num} ${obj.two} ${obj.three}`
 	    }
-	    return `${obj.num} ${obj.two}`;
+	    return `${obj.num} ${obj.two}`
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Term
-	  term: (tmpl) => {
+	  term: tmpl => {
 	    let obj = parse$2(tmpl, ['term']);
-	    return `${obj.term}:`;
+	    return `${obj.term}:`
 	  },
-	  defn: (tmpl) => {
+	  defn: tmpl => {
 	    let obj = parse$2(tmpl, ['desc']);
-	    return obj.desc;
+	    return obj.desc
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Linum
-	  lino: (tmpl) => {
+	  lino: tmpl => {
 	    let obj = parse$2(tmpl, ['num']);
-	    return `${obj.num}`;
+	    return `${obj.num}`
 	  },
-	  linum: (tmpl) => {
+	  linum: tmpl => {
 	    let obj = parse$2(tmpl, ['num', 'text']);
-	    return `${obj.num}. ${obj.text}`;
+	    return `${obj.num}. ${obj.text}`
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Interlanguage_link
-	  ill: (tmpl) => {
+	  ill: tmpl => {
 	    let order = ['text', 'lan1', 'text1', 'lan2', 'text2'];
 	    let obj = parse$2(tmpl, order);
-	    return obj.text;
+	    return obj.text
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Frac
-	  frac: (tmpl) => {
+	  frac: tmpl => {
 	    let order = ['a', 'b', 'c'];
 	    let obj = parse$2(tmpl, order);
 	    if (obj.c) {
-	      return `${obj.a} ${obj.b}/${obj.c}`;
+	      return `${obj.a} ${obj.b}/${obj.c}`
 	    }
 	    if (obj.b) {
-	      return `${obj.a}/${obj.b}`;
+	      return `${obj.a}/${obj.b}`
 	    }
-	    return `1/${obj.b}`;
+	    return `1/${obj.b}`
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Height - {{height|ft=6|in=1}}
 	  height: (tmpl, r) => {
@@ -8856,21 +8969,21 @@
 	    r.templates.push(obj);
 	    let result = [];
 	    let units = ['m', 'cm', 'ft', 'in']; //order matters
-	    units.forEach((unit) => {
+	    units.forEach(unit => {
 	      if (obj.hasOwnProperty(unit) === true) {
 	        result.push(obj[unit] + unit);
 	      }
 	    });
-	    return result.join(' ');
+	    return result.join(' ')
 	  },
-	  'block indent': (tmpl) => {
+	  'block indent': tmpl => {
 	    let obj = parse$2(tmpl);
 	    if (obj['1']) {
-	      return '\n' + obj['1'] + '\n';
+	      return '\n' + obj['1'] + '\n'
 	    }
-	    return '';
+	    return ''
 	  },
-	  'quote': (tmpl, r) => {
+	  quote: (tmpl, r) => {
 	    let order = ['text', 'author'];
 	    let obj = parse$2(tmpl, order);
 	    r.templates.push(obj);
@@ -8881,33 +8994,33 @@
 	        str += '\n\n';
 	        str += `    - ${obj.author}`;
 	      }
-	      return str + '\n';
+	      return str + '\n'
 	    }
-	    return '';
+	    return ''
 	  },
 
 	  //https://en.wikipedia.org/wiki/Template:Lbs
-	  lbs: (tmpl) => {
+	  lbs: tmpl => {
 	    let obj = parse$2(tmpl, ['text']);
-	    return `[[${obj.text} Lifeboat Station|${obj.text}]]`;
+	    return `[[${obj.text} Lifeboat Station|${obj.text}]]`
 	  },
 	  //Foo-class
-	  lbc: (tmpl) => {
+	  lbc: tmpl => {
 	    let obj = parse$2(tmpl, ['text']);
-	    return `[[${obj.text}-class lifeboat|${obj.text}-class]]`;
+	    return `[[${obj.text}-class lifeboat|${obj.text}-class]]`
 	  },
-	  lbb: (tmpl) => {
+	  lbb: tmpl => {
 	    let obj = parse$2(tmpl, ['text']);
-	    return `[[${obj.text}-class lifeboat|${obj.text}]]`;
+	    return `[[${obj.text}-class lifeboat|${obj.text}]]`
 	  },
 	  // https://en.wikipedia.org/wiki/Template:Own
-	  own: (tmpl) => {
+	  own: tmpl => {
 	    let obj = parse$2(tmpl, ['author']);
 	    let str = 'Own work';
 	    if (obj.author) {
 	      str += ' by ' + obj.author;
 	    }
-	    return str;
+	    return str
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Sic
 	  sic: (tmpl, r) => {
@@ -8922,92 +9035,92 @@
 	      word: word
 	    });
 	    if (obj.nolink === 'y') {
-	      return word;
+	      return word
 	    }
-	    return `${word} [sic]`;
+	    return `${word} [sic]`
 	  },
 	  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-	  formatnum: ( tmpl = '' ) => {
+	  formatnum: (tmpl = '') => {
 	    tmpl = tmpl.replace(/:/, '|');
 	    let obj = parse$2(tmpl, ['number']);
 	    let str = obj.number || '';
 	    str = str.replace(/,/g, '');
 	    let num = Number(str);
-	    return num.toLocaleString() || '';
+	    return num.toLocaleString() || ''
 	  },
 	  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-	  '#dateformat': ( tmpl = '' ) => {
+	  '#dateformat': (tmpl = '') => {
 	    tmpl = tmpl.replace(/:/, '|');
 	    let obj = parse$2(tmpl, ['date', 'format']);
-	    return obj.date;
+	    return obj.date
 	  },
 	  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-	  'lc': ( tmpl = '' ) => {
+	  lc: (tmpl = '') => {
 	    tmpl = tmpl.replace(/:/, '|');
 	    let obj = parse$2(tmpl, ['text']);
-	    return (obj.text || '').toLowerCase();
+	    return (obj.text || '').toLowerCase()
 	  },
-	  'lcfirst': ( tmpl = '' ) => {
+	  lcfirst: (tmpl = '') => {
 	    tmpl = tmpl.replace(/:/, '|');
 	    let obj = parse$2(tmpl, ['text']);
 	    let text = obj.text;
 	    if (!text) {
-	      return '';
+	      return ''
 	    }
-	    return text[0].toLowerCase() + text.substr(1);
+	    return text[0].toLowerCase() + text.substr(1)
 	  },
 	  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-	  'uc': ( tmpl = '' ) => {
+	  uc: (tmpl = '') => {
 	    tmpl = tmpl.replace(/:/, '|');
 	    let obj = parse$2(tmpl, ['text']);
-	    return (obj.text || '').toUpperCase();
+	    return (obj.text || '').toUpperCase()
 	  },
-	  'ucfirst': ( tmpl = '' ) => {
+	  ucfirst: (tmpl = '') => {
 	    tmpl = tmpl.replace(/:/, '|');
 	    let obj = parse$2(tmpl, ['text']);
 	    let text = obj.text;
 	    if (!text) {
-	      return '';
+	      return ''
 	    }
-	    return text[0].toUpperCase() + text.substr(1);
+	    return text[0].toUpperCase() + text.substr(1)
 	  },
-	  'padleft': ( tmpl = '' ) => {
+	  padleft: (tmpl = '') => {
 	    tmpl = tmpl.replace(/:/, '|');
 	    let obj = parse$2(tmpl, ['text', 'num']);
 	    let text = obj.text || '';
-	    return text.padStart(obj.num, obj.str || '0');
+	    return text.padStart(obj.num, obj.str || '0')
 	  },
-	  'padright': ( tmpl = '' ) => {
+	  padright: (tmpl = '') => {
 	    tmpl = tmpl.replace(/:/, '|');
 	    let obj = parse$2(tmpl, ['text', 'num']);
 	    let text = obj.text || '';
-	    return text.padEnd(obj.num, obj.str || '0');
+	    return text.padEnd(obj.num, obj.str || '0')
 	  },
 	  //abbreviation/meaning
 	  //https://en.wikipedia.org/wiki/Template:Abbr
-	  'abbr': ( tmpl = '' ) => {
+	  abbr: (tmpl = '') => {
 	    let obj = parse$2(tmpl, ['abbr', 'meaning', 'ipa']);
-	    return obj.abbr;
+	    return obj.abbr
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Abbrlink
-	  'abbrlink': ( tmpl = '' ) => {
+	  abbrlink: (tmpl = '') => {
 	    let obj = parse$2(tmpl, ['abbr', 'page']);
 	    if (obj.page) {
-	      return `[[${obj.page}|${obj.abbr}]]`;
+	      return `[[${obj.page}|${obj.abbr}]]`
 	    }
-	    return `[[${obj.abbr}]]`;
+	    return `[[${obj.abbr}]]`
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Hover_title
 	  //technically 'h:title'
-	  'h': ( tmpl = '' ) => {
+	  h: (tmpl = '') => {
 	    let obj = parse$2(tmpl, ['title', 'text']);
-	    return obj.text;
+	    return obj.text
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Finedetail
-	  'finedetail': ( tmpl = '' ) => {
+	  finedetail: (tmpl = '') => {
 	    let obj = parse$2(tmpl, ['text', 'detail']); //technically references
-	    return obj.text;
-	  },
+	    return obj.text
+	  }
 	};
 
 	//aliases
@@ -9019,7 +9132,8 @@
 
 	var misc$1 = inline$1;
 
-	var formatting$1 = Object.assign({},
+	var formatting$1 = Object.assign(
+	  {},
 	  format,
 	  lists,
 	  punctuation_1,
@@ -9038,23 +9152,23 @@
 	  var minutes = Number(arr[1] || 0);
 	  var seconds = Number(arr[2] || 0);
 	  if (typeof hemisphere !== 'string' || isNaN(degrees)) {
-	    return null;
+	    return null
 	  }
 	  var sign = 1;
 	  if (/[SW]/i.test(hemisphere)) {
 	    sign = -1;
 	  }
 	  let decDeg = sign * (degrees + minutes / 60 + seconds / 3600);
-	  return decDeg;
+	  return decDeg
 	}
 	var dmsFormat = parseDms;
 
-	const round = function (num) {
+	const round = function(num) {
 	  if (typeof num !== 'number') {
-	    return num;
+	    return num
 	  }
 	  let places = 100000;
-	  return Math.round(num * places) / places;
+	  return Math.round(num * places) / places
 	};
 
 	//these hemispheres mean negative decimals
@@ -9063,14 +9177,14 @@
 	  w: true
 	};
 
-	const findLatLng = function (arr) {
-	  const types = arr.map((s) => typeof s).join('|');
+	const findLatLng = function(arr) {
+	  const types = arr.map(s => typeof s).join('|');
 	  //support {{lat|lng}}
 	  if (arr.length === 2 && types === 'number|number') {
 	    return {
 	      lat: arr[0],
-	      lon: arr[1],
-	    };
+	      lon: arr[1]
+	    }
 	  }
 	  //support {{dd|N/S|dd|E/W}}
 	  if (arr.length === 4 && types === 'number|string|number|string') {
@@ -9082,44 +9196,44 @@
 	    }
 	    return {
 	      lat: arr[0],
-	      lon: arr[2],
-	    };
+	      lon: arr[2]
+	    }
 	  }
 	  //support {{dd|mm|N/S|dd|mm|E/W}}
 	  if (arr.length === 6) {
 	    return {
 	      lat: dmsFormat(arr.slice(0, 3)),
-	      lon: dmsFormat(arr.slice(3)),
-	    };
+	      lon: dmsFormat(arr.slice(3))
+	    }
 	  }
 	  //support {{dd|mm|ss|N/S|dd|mm|ss|E/W}}
 	  if (arr.length === 8) {
 	    return {
 	      lat: dmsFormat(arr.slice(0, 4)),
-	      lon: dmsFormat(arr.slice(4)),
-	    };
+	      lon: dmsFormat(arr.slice(4))
+	    }
 	  }
-	  return {};
+	  return {}
 	};
 
 	const parseParams = function(obj) {
 	  obj.list = obj.list || [];
-	  obj.list = obj.list.map((str) => {
+	  obj.list = obj.list.map(str => {
 	    let num = Number(str);
 	    if (!isNaN(num)) {
-	      return num;
+	      return num
 	    }
 	    //these are weird
 	    let split = str.split(/:/);
 	    if (split.length > 1) {
 	      obj.props = obj.props || {};
 	      obj.props[split[0]] = split.slice(1).join(':');
-	      return null;
+	      return null
 	    }
-	    return str;
+	    return str
 	  });
-	  obj.list = obj.list.filter((s) => s !== null);
-	  return obj;
+	  obj.list = obj.list.filter(s => s !== null);
+	  return obj
 	};
 
 	const parseCoor = function(tmpl) {
@@ -9130,7 +9244,7 @@
 	  obj.lon = round(tmp.lon);
 	  obj.template = 'coord';
 	  delete obj.list;
-	  return obj;
+	  return obj
 	};
 
 	var coor = parseCoor;
@@ -9141,9 +9255,9 @@
 	    r.templates.push(obj);
 	    //display inline, by default
 	    if (!obj.display || obj.display.indexOf('inline') !== -1) {
-	      return `${obj.lat || ''}°N, ${obj.lon || ''}°W`;
+	      return `${obj.lat || ''}°N, ${obj.lon || ''}°W`
 	    }
-	    return '';
+	    return ''
 	  }
 	};
 	// {{coord|latitude|longitude|coordinate parameters|template parameters}}
@@ -9160,27 +9274,26 @@
 	var geo = templates$4;
 
 	const templates$5 = {
-
-	  lang: (tmpl) => {
+	  lang: tmpl => {
 	    let order = ['lang', 'text'];
 	    let obj = parse$2(tmpl, order);
-	    return obj.text;
+	    return obj.text
 	  },
 	  //this one has a million variants
-	  'lang-de': (tmpl) => {
+	  'lang-de': tmpl => {
 	    let order = ['text'];
 	    let obj = parse$2(tmpl, order);
-	    return obj.text;
+	    return obj.text
 	  },
-	  'rtl-lang': (tmpl) => {
+	  'rtl-lang': tmpl => {
 	    let order = ['lang', 'text'];
 	    let obj = parse$2(tmpl, order);
-	    return obj.text;
+	    return obj.text
 	  },
 	  //german keyboard letterscn
-	  taste: (tmpl) => {
+	  taste: tmpl => {
 	    let obj = parse$2(tmpl, ['key']);
-	    return obj.key || '';
+	    return obj.key || ''
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Nihongo
 	  nihongo: (tmpl, r) => {
@@ -9190,11 +9303,11 @@
 	    if (obj.kanji) {
 	      str += ` (${obj.kanji})`;
 	    }
-	    return str;
+	    return str
 	  }
 	};
 	//https://en.wikipedia.org/wiki/Category:Lang-x_templates
-	Object.keys(languages).forEach((k) => {
+	Object.keys(languages).forEach(k => {
 	  templates$5['lang-' + k] = templates$5['lang-de'];
 	});
 	templates$5['nihongo2'] = templates$5.nihongo;
@@ -9208,11 +9321,11 @@
 	  let lang = name.match(/ipac?-(.+)/);
 	  if (lang !== null) {
 	    if (languages.hasOwnProperty(lang[1]) === true) {
-	      return languages[lang[1]].english_title;
+	      return languages[lang[1]].english_title
 	    }
-	    return lang[1];
+	    return lang[1]
 	  }
-	  return null;
+	  return null
 	};
 
 	// pronounciation info
@@ -9223,7 +9336,7 @@
 	    obj.lang = getLang(obj.template);
 	    obj.template = 'ipa';
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 	  //https://en.wikipedia.org/wiki/Template:IPAc-en
 	  ipac: (tmpl, r) => {
@@ -9233,13 +9346,13 @@
 	    obj.lang = getLang(obj.template);
 	    obj.template = 'ipac';
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  }
 	};
 	// - other languages -
 	// Polish, {{IPAc-pl}}	{{IPAc-pl|'|sz|cz|e|ć|i|n}} → [ˈʂt͡ʂɛt͡ɕin]
 	// Portuguese, {{IPAc-pt}}	{{IPAc-pt|p|o|<|r|t|u|'|g|a|l|lang=pt}} and {{IPAc-pt|b|r|a|'|s|i|l|lang=br}} → [puɾtuˈɣaɫ] and [bɾaˈsiw]
-	Object.keys(languages).forEach((lang) => {
+	Object.keys(languages).forEach(lang => {
 	  templates$6['ipa-' + lang] = templates$6.ipa;
 	  templates$6['ipac-' + lang] = templates$6.ipac;
 	});
@@ -9252,36 +9365,36 @@
 	const templates$7 = {
 	  //{{inflection of|avoir||3|p|pres|ind|lang=fr}}
 	  //https://en.wiktionary.org/wiki/Template:inflection_of
-	  'inflection': (tmpl, r) => {
+	  inflection: (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['lemma']);
 	    obj.tags = obj.list;
 	    delete obj.list;
 	    obj.type = 'form-of';
 	    r.templates.push(obj);
-	    return obj.lemma || '';
+	    return obj.lemma || ''
 	  },
 
 	  //latin verbs
 	  'la-verb-form': (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['word']);
 	    r.templates.push(obj);
-	    return obj.word || '';
+	    return obj.word || ''
 	  },
 	  'feminine plural': (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['word']);
 	    r.templates.push(obj);
-	    return obj.word || '';
+	    return obj.word || ''
 	  },
 	  'male plural': (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['word']);
 	    r.templates.push(obj);
-	    return obj.word || '';
+	    return obj.word || ''
 	  },
-	  'rhymes': (tmpl, r) => {
+	  rhymes: (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['word']);
 	    r.templates.push(obj);
-	    return 'Rhymes: -' + (obj.word || '');
-	  },
+	    return 'Rhymes: -' + (obj.word || '')
+	  }
 	};
 
 	//https://en.wiktionary.org/wiki/Category:Form-of_templates
@@ -9445,21 +9558,22 @@
 	  'uncommon spelling',
 	  'verbal noun',
 	  'vocative plural',
-	  'vocative singular',
+	  'vocative singular'
 	];
-	conjugations.forEach((name) => {
+	conjugations.forEach(name => {
 	  templates$7[name + ' of'] = (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['lemma']);
 	    obj.tags = obj.list;
 	    delete obj.list;
 	    obj.type = 'form-of';
 	    r.templates.push(obj);
-	    return obj.lemma || '';
+	    return obj.lemma || ''
 	  };
 	});
 	var wiktionary = templates$7;
 
-	var language = Object.assign({},
+	var language = Object.assign(
+	  {},
 	  languages_1,
 	  pronounce,
 	  wiktionary
@@ -9488,7 +9602,7 @@
 	  'gb£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
 	  '£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
 	  hkd: 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
-	  'hk$': 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
+	  hk$: 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
 	  ils: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
 	  '₹': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
 	  inr: '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
@@ -9522,7 +9636,7 @@
 	  sek: 'SEK', // https://en.wikipedia.org/wiki/Template:SEK
 	  sek2: 'SEK', // https://en.wikipedia.org/wiki/Template:SEK
 	  sgd: 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
-	  's$': 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
+	  s$: 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
 	  'SK won': '₩', // https://en.wikipedia.org/wiki/Template:SK_won
 	  ttd: 'TTD', //https://en.wikipedia.org/wiki/Template:TTD
 	  'turkish lira': 'TRY', //https://en.wikipedia.org/wiki/Template:Turkish_lira
@@ -9536,23 +9650,28 @@
 	  r.templates.push(o);
 	  let code = o.template || '';
 	  if (code === 'currency') {
-		code = o.code;
-		if (!code) {
-			o.code = code = 'usd';//Special case when currency template has no code argument
-		}
-	  }
-	  else if (code === '' || code === 'monnaie' || code === 'unité' || code === 'nombre' || code === 'nb') {
+	    code = o.code;
+	    if (!code) {
+	      o.code = code = 'usd'; //Special case when currency template has no code argument
+	    }
+	  } else if (
+	    code === '' ||
+	    code === 'monnaie' ||
+	    code === 'unité' ||
+	    code === 'nombre' ||
+	    code === 'nb'
+	  ) {
 	    code = o.code;
 	  }
 	  code = (code || '').toLowerCase();
-	    switch(code) {
-	      case 'us':
-	        o.code = code = 'usd';
-	        break;
-	      case 'uk':
-	        o.code = code = 'gbp';
-	        break;
-	    }
+	  switch (code) {
+	    case 'us':
+	      o.code = code = 'usd';
+	      break
+	    case 'uk':
+	      o.code = code = 'gbp';
+	      break
+	  }
 	  let out = codes[code] || '';
 	  let str = `${out}${o.amount || ''}`;
 	  //support unknown currencies after the number - like '5 BTC'
@@ -9567,32 +9686,31 @@
 	  r.templates.push(o);
 	  let formatting = o.currency_formatting;
 	  if (formatting) {
-		let multiplier = 1;
-	    switch(formatting) {
+	    let multiplier = 1;
+	    switch (formatting) {
 	      case 'k':
 	        multiplier = 1000;
-	        break;
+	        break
 	      case 'm':
 	        multiplier = 1000000;
-	        break;
+	        break
 	      case 'b':
 	        multiplier = 1000000000;
-	        break;
+	        break
 	      case 't':
 	        multiplier = 1000000000000;
-	        break;
+	        break
 	      case 'l':
 	        multiplier = 100000;
-	        break;
+	        break
 	      case 'c':
 	        multiplier = 10000000;
-	        break;
+	        break
 	      case 'lc':
 	        multiplier = 1000000000000;
-	        break;
+	        break
 	    }
 	    o.rupee_value = o.rupee_value * multiplier;
-		
 	  }
 	  let str = `inr ${o.rupee_value || ''}`;
 	  return str
@@ -9620,7 +9738,7 @@
 	  if (num.length === 1) {
 	    num = '0' + num;
 	  }
-	  return num;
+	  return num
 	};
 
 	const parseTeam = function(obj, round, team) {
@@ -9635,8 +9753,8 @@
 	  return {
 	    team: obj[`rd${round}-team${team}`],
 	    score: score,
-	    seed: obj[`rd${round}-seed${team}`],
-	  };
+	    seed: obj[`rd${round}-seed${team}`]
+	  }
 	};
 
 	//these are weird.
@@ -9644,16 +9762,16 @@
 	  let rounds = [];
 	  let obj = parse$2(tmpl);
 	  //try some rounds
-	  for(let i = 1; i < 7; i += 1) {
+	  for (let i = 1; i < 7; i += 1) {
 	    let round = [];
-	    for(let t = 1; t < 16; t += 2) {
+	    for (let t = 1; t < 16; t += 2) {
 	      let key = `rd${i}-team`;
 	      if (obj[key + t] || obj[key + zeroPad(t)]) {
 	        let one = parseTeam(obj, i, t);
 	        let two = parseTeam(obj, i, t + 1);
 	        round.push([one, two]);
 	      } else {
-	        break;
+	        break
 	      }
 	    }
 	    if (round.length > 0) {
@@ -9663,7 +9781,7 @@
 	  return {
 	    template: 'playoffbracket',
 	    rounds: rounds
-	  };
+	  }
 	};
 
 	let all = {
@@ -9671,8 +9789,8 @@
 	  '4teambracket': function(tmpl, r) {
 	    let obj = playoffBracket(tmpl);
 	    r.templates.push(obj);
-	    return '';
-	  },
+	    return ''
+	  }
 	};
 
 	//a bunch of aliases for these ones:
@@ -9707,1296 +9825,295 @@
 	  '16teambracket-swtc',
 	  '16teambracket-afc',
 	  '16teambracket-tennis3',
-	  '16teambracket-tennis5',
+	  '16teambracket-tennis5'
 	];
-	brackets.forEach((key) => {
+	brackets.forEach(key => {
 	  all[key] = all['4teambracket'];
 	});
 
 	var brackets_1 = all;
 
 	var flags = [
-	  [
-	    '🇦🇩',
-	    'and',
-	    'andorra'
-	  ],
-	  [
-	    '🇦🇪',
-	    'are',
-	    'united arab emirates'
-	  ],
-	  [
-	    '🇦🇫',
-	    'afg',
-	    'afghanistan'
-	  ],
-	  [
-	    '🇦🇬',
-	    'atg',
-	    'antigua and barbuda'
-	  ],
-	  [
-	    '🇦🇮',
-	    'aia',
-	    'anguilla'
-	  ],
-	  [
-	    '🇦🇱',
-	    'alb',
-	    'albania'
-	  ],
-	  [
-	    '🇦🇲',
-	    'arm',
-	    'armenia'
-	  ],
-	  [
-	    '🇦🇴',
-	    'ago',
-	    'angola'
-	  ],
-	  [
-	    '🇦🇶',
-	    'ata',
-	    'antarctica'
-	  ],
-	  [
-	    '🇦🇷',
-	    'arg',
-	    'argentina'
-	  ],
-	  [
-	    '🇦🇸',
-	    'asm',
-	    'american samoa'
-	  ],
-	  [
-	    '🇦🇹',
-	    'aut',
-	    'austria'
-	  ],
-	  [
-	    '🇦🇺',
-	    'aus',
-	    'australia'
-	  ],
-	  [
-	    '🇦🇼',
-	    'abw',
-	    'aruba'
-	  ],
-	  [
-	    '🇦🇽',
-	    'ala',
-	    'åland islands'
-	  ],
-	  [
-	    '🇦🇿',
-	    'aze',
-	    'azerbaijan'
-	  ],
-	  [
-	    '🇧🇦',
-	    'bih',
-	    'bosnia and herzegovina'
-	  ],
-	  [
-	    '🇧🇧',
-	    'brb',
-	    'barbados'
-	  ],
-	  [
-	    '🇧🇩',
-	    'bgd',
-	    'bangladesh'
-	  ],
-	  [
-	    '🇧🇪',
-	    'bel',
-	    'belgium'
-	  ],
-	  [
-	    '🇧🇫',
-	    'bfa',
-	    'burkina faso'
-	  ],
-	  [
-	    '🇧🇬',
-	    'bgr',
-	    'bulgaria'
-	  ],
+	  ['🇦🇩', 'and', 'andorra'],
+	  ['🇦🇪', 'are', 'united arab emirates'],
+	  ['🇦🇫', 'afg', 'afghanistan'],
+	  ['🇦🇬', 'atg', 'antigua and barbuda'],
+	  ['🇦🇮', 'aia', 'anguilla'],
+	  ['🇦🇱', 'alb', 'albania'],
+	  ['🇦🇲', 'arm', 'armenia'],
+	  ['🇦🇴', 'ago', 'angola'],
+	  ['🇦🇶', 'ata', 'antarctica'],
+	  ['🇦🇷', 'arg', 'argentina'],
+	  ['🇦🇸', 'asm', 'american samoa'],
+	  ['🇦🇹', 'aut', 'austria'],
+	  ['🇦🇺', 'aus', 'australia'],
+	  ['🇦🇼', 'abw', 'aruba'],
+	  ['🇦🇽', 'ala', 'åland islands'],
+	  ['🇦🇿', 'aze', 'azerbaijan'],
+	  ['🇧🇦', 'bih', 'bosnia and herzegovina'],
+	  ['🇧🇧', 'brb', 'barbados'],
+	  ['🇧🇩', 'bgd', 'bangladesh'],
+	  ['🇧🇪', 'bel', 'belgium'],
+	  ['🇧🇫', 'bfa', 'burkina faso'],
+	  ['🇧🇬', 'bgr', 'bulgaria'],
 	  [
 	    '🇧🇬',
 	    'bul', //dupe
 	    'bulgaria'
 	  ],
-	  [
-	    '🇧🇭',
-	    'bhr',
-	    'bahrain'
-	  ],
-	  [
-	    '🇧🇮',
-	    'bdi',
-	    'burundi'
-	  ],
-	  [
-	    '🇧🇯',
-	    'ben',
-	    'benin'
-	  ],
-	  [
-	    '🇧🇱',
-	    'blm',
-	    'saint barthélemy'
-	  ],
-	  [
-	    '🇧🇲',
-	    'bmu',
-	    'bermuda'
-	  ],
-	  [
-	    '🇧🇳',
-	    'brn',
-	    'brunei darussalam'
-	  ],
-	  [
-	    '🇧🇴',
-	    'bol',
-	    'bolivia'
-	  ],
-	  [
-	    '🇧🇶',
-	    'bes',
-	    'bonaire, sint eustatius and saba'
-	  ],
-	  [
-	    '🇧🇷',
-	    'bra',
-	    'brazil'
-	  ],
-	  [
-	    '🇧🇸',
-	    'bhs',
-	    'bahamas'
-	  ],
-	  [
-	    '🇧🇹',
-	    'btn',
-	    'bhutan'
-	  ],
-	  [
-	    '🇧🇻',
-	    'bvt',
-	    'bouvet island'
-	  ],
-	  [
-	    '🇧🇼',
-	    'bwa',
-	    'botswana'
-	  ],
-	  [
-	    '🇧🇾',
-	    'blr',
-	    'belarus'
-	  ],
-	  [
-	    '🇧🇿',
-	    'blz',
-	    'belize'
-	  ],
-	  [
-	    '🇨🇦',
-	    'can',
-	    'canada'
-	  ],
-	  [
-	    '🇨🇨',
-	    'cck',
-	    'cocos (keeling) islands'
-	  ],
-	  [
-	    '🇨🇩',
-	    'cod',
-	    'congo'
-	  ],
-	  [
-	    '🇨🇫',
-	    'caf',
-	    'central african republic'
-	  ],
-	  [
-	    '🇨🇬',
-	    'cog',
-	    'congo'
-	  ],
-	  [
-	    '🇨🇭',
-	    'che',
-	    'switzerland'
-	  ],
-	  [
-	    '🇨🇮',
-	    'civ',
-	    'côte d\'ivoire'
-	  ],
-	  [
-	    '🇨🇰',
-	    'cok',
-	    'cook islands'
-	  ],
-	  [
-	    '🇨🇱',
-	    'chl',
-	    'chile'
-	  ],
-	  [
-	    '🇨🇲',
-	    'cmr',
-	    'cameroon'
-	  ],
-	  [
-	    '🇨🇳',
-	    'chn',
-	    'china'
-	  ],
-	  [
-	    '🇨🇴',
-	    'col',
-	    'colombia'
-	  ],
-	  [
-	    '🇨🇷',
-	    'cri',
-	    'costa rica'
-	  ],
-	  [
-	    '🇨🇺',
-	    'cub',
-	    'cuba'
-	  ],
-	  [
-	    '🇨🇻',
-	    'cpv',
-	    'cape verde'
-	  ],
-	  [
-	    '🇨🇼',
-	    'cuw',
-	    'curaçao'
-	  ],
-	  [
-	    '🇨🇽',
-	    'cxr',
-	    'christmas island'
-	  ],
-	  [
-	    '🇨🇾',
-	    'cyp',
-	    'cyprus'
-	  ],
-	  [
-	    '🇨🇿',
-	    'cze',
-	    'czech republic'
-	  ],
-	  [
-	    '🇩🇪',
-	    'deu',
-	    'germany'
-	  ],
+	  ['🇧🇭', 'bhr', 'bahrain'],
+	  ['🇧🇮', 'bdi', 'burundi'],
+	  ['🇧🇯', 'ben', 'benin'],
+	  ['🇧🇱', 'blm', 'saint barthélemy'],
+	  ['🇧🇲', 'bmu', 'bermuda'],
+	  ['🇧🇳', 'brn', 'brunei darussalam'],
+	  ['🇧🇴', 'bol', 'bolivia'],
+	  ['🇧🇶', 'bes', 'bonaire, sint eustatius and saba'],
+	  ['🇧🇷', 'bra', 'brazil'],
+	  ['🇧🇸', 'bhs', 'bahamas'],
+	  ['🇧🇹', 'btn', 'bhutan'],
+	  ['🇧🇻', 'bvt', 'bouvet island'],
+	  ['🇧🇼', 'bwa', 'botswana'],
+	  ['🇧🇾', 'blr', 'belarus'],
+	  ['🇧🇿', 'blz', 'belize'],
+	  ['🇨🇦', 'can', 'canada'],
+	  ['🇨🇨', 'cck', 'cocos (keeling) islands'],
+	  ['🇨🇩', 'cod', 'congo'],
+	  ['🇨🇫', 'caf', 'central african republic'],
+	  ['🇨🇬', 'cog', 'congo'],
+	  ['🇨🇭', 'che', 'switzerland'],
+	  ['🇨🇮', 'civ', "côte d'ivoire"],
+	  ['🇨🇰', 'cok', 'cook islands'],
+	  ['🇨🇱', 'chl', 'chile'],
+	  ['🇨🇲', 'cmr', 'cameroon'],
+	  ['🇨🇳', 'chn', 'china'],
+	  ['🇨🇴', 'col', 'colombia'],
+	  ['🇨🇷', 'cri', 'costa rica'],
+	  ['🇨🇺', 'cub', 'cuba'],
+	  ['🇨🇻', 'cpv', 'cape verde'],
+	  ['🇨🇼', 'cuw', 'curaçao'],
+	  ['🇨🇽', 'cxr', 'christmas island'],
+	  ['🇨🇾', 'cyp', 'cyprus'],
+	  ['🇨🇿', 'cze', 'czech republic'],
+	  ['🇩🇪', 'deu', 'germany'],
 	  [
 	    '🇩🇪',
 	    'ger', //alias
 	    'germany'
 	  ],
-	  [
-	    '🇩🇯',
-	    'dji',
-	    'djibouti'
-	  ],
-	  [
-	    '🇩🇰',
-	    'dnk',
-	    'denmark'
-	  ],
-	  [
-	    '🇩🇲',
-	    'dma',
-	    'dominica'
-	  ],
-	  [
-	    '🇩🇴',
-	    'dom',
-	    'dominican republic'
-	  ],
-	  [
-	    '🇩🇿',
-	    'dza',
-	    'algeria'
-	  ],
-	  [
-	    '🇪🇨',
-	    'ecu',
-	    'ecuador'
-	  ],
-	  [
-	    '🇪🇪',
-	    'est',
-	    'estonia'
-	  ],
-	  [
-	    '🇪🇬',
-	    'egy',
-	    'egypt'
-	  ],
-	  [
-	    '🇪🇭',
-	    'esh',
-	    'western sahara'
-	  ],
-	  [
-	    '🇪🇷',
-	    'eri',
-	    'eritrea'
-	  ],
-	  [
-	    '🇪🇸',
-	    'esp',
-	    'spain'
-	  ],
-	  [
-	    '🇪🇹',
-	    'eth',
-	    'ethiopia'
-	  ],
-	  [
-	    '🇫🇮',
-	    'fin',
-	    'finland'
-	  ],
-	  [
-	    '🇫🇯',
-	    'fji',
-	    'fiji'
-	  ],
-	  [
-	    '🇫🇰',
-	    'flk',
-	    'falkland islands (malvinas)'
-	  ],
-	  [
-	    '🇫🇲',
-	    'fsm',
-	    'micronesia'
-	  ],
-	  [
-	    '🇫🇴',
-	    'fro',
-	    'faroe islands'
-	  ],
-	  [
-	    '🇫🇷',
-	    'fra',
-	    'france'
-	  ],
-	  [
-	    '🇬🇦',
-	    'gab',
-	    'gabon'
-	  ],
-	  [
-	    '🇬🇧',
-	    'gbr',
-	    'united kingdom'
-	  ],
-	  [
-	    '🇬🇩',
-	    'grd',
-	    'grenada'
-	  ],
-	  [
-	    '🇬🇪',
-	    'geo',
-	    'georgia'
-	  ],
-	  [
-	    '🇬🇫',
-	    'guf',
-	    'french guiana'
-	  ],
-	  [
-	    '🇬🇬',
-	    'ggy',
-	    'guernsey'
-	  ],
-	  [
-	    '🇬🇭',
-	    'gha',
-	    'ghana'
-	  ],
-	  [
-	    '🇬🇮',
-	    'gib',
-	    'gibraltar'
-	  ],
-	  [
-	    '🇬🇱',
-	    'grl',
-	    'greenland'
-	  ],
-	  [
-	    '🇬🇲',
-	    'gmb',
-	    'gambia'
-	  ],
-	  [
-	    '🇬🇳',
-	    'gin',
-	    'guinea'
-	  ],
-	  [
-	    '🇬🇵',
-	    'glp',
-	    'guadeloupe'
-	  ],
-	  [
-	    '🇬🇶',
-	    'gnq',
-	    'equatorial guinea'
-	  ],
-	  [
-	    '🇬🇷',
-	    'grc',
-	    'greece'
-	  ],
-	  [
-	    '🇬🇸',
-	    'sgs',
-	    'south georgia'
-	  ],
-	  [
-	    '🇬🇹',
-	    'gtm',
-	    'guatemala'
-	  ],
-	  [
-	    '🇬🇺',
-	    'gum',
-	    'guam'
-	  ],
-	  [
-	    '🇬🇼',
-	    'gnb',
-	    'guinea-bissau'
-	  ],
-	  [
-	    '🇬🇾',
-	    'guy',
-	    'guyana'
-	  ],
-	  [
-	    '🇭🇰',
-	    'hkg',
-	    'hong kong'
-	  ],
-	  [
-	    '🇭🇲',
-	    'hmd',
-	    'heard island and mcdonald islands'
-	  ],
-	  [
-	    '🇭🇳',
-	    'hnd',
-	    'honduras'
-	  ],
-	  [
-	    '🇭🇷',
-	    'hrv',
-	    'croatia'
-	  ],
-	  [
-	    '🇭🇹',
-	    'hti',
-	    'haiti'
-	  ],
-	  [
-	    '🇭🇺',
-	    'hun',
-	    'hungary'
-	  ],
-	  [
-	    '🇮🇩',
-	    'idn',
-	    'indonesia'
-	  ],
-	  [
-	    '🇮🇪',
-	    'irl',
-	    'ireland'
-	  ],
-	  [
-	    '🇮🇱',
-	    'isr',
-	    'israel'
-	  ],
-	  [
-	    '🇮🇲',
-	    'imn',
-	    'isle of man'
-	  ],
-	  [
-	    '🇮🇳',
-	    'ind',
-	    'india'
-	  ],
-	  [
-	    '🇮🇴',
-	    'iot',
-	    'british indian ocean territory'
-	  ],
-	  [
-	    '🇮🇶',
-	    'irq',
-	    'iraq'
-	  ],
-	  [
-	    '🇮🇷',
-	    'irn',
-	    'iran'
-	  ],
-	  [
-	    '🇮🇸',
-	    'isl',
-	    'iceland'
-	  ],
-	  [
-	    '🇮🇹',
-	    'ita',
-	    'italy'
-	  ],
-	  [
-	    '🇯🇪',
-	    'jey',
-	    'jersey'
-	  ],
-	  [
-	    '🇯🇲',
-	    'jam',
-	    'jamaica'
-	  ],
-	  [
-	    '🇯🇴',
-	    'jor',
-	    'jordan'
-	  ],
-	  [
-	    '🇯🇵',
-	    'jpn',
-	    'japan'
-	  ],
-	  [
-	    '🇰🇪',
-	    'ken',
-	    'kenya'
-	  ],
-	  [
-	    '🇰🇬',
-	    'kgz',
-	    'kyrgyzstan'
-	  ],
-	  [
-	    '🇰🇭',
-	    'khm',
-	    'cambodia'
-	  ],
-	  [
-	    '🇰🇮',
-	    'kir',
-	    'kiribati'
-	  ],
-	  [
-	    '🇰🇲',
-	    'com',
-	    'comoros'
-	  ],
-	  [
-	    '🇰🇳',
-	    'kna',
-	    'saint kitts and nevis'
-	  ],
-	  [
-	    '🇰🇵',
-	    'prk',
-	    'north korea'
-	  ],
-	  [
-	    '🇰🇷',
-	    'kor',
-	    'south korea'
-	  ],
-	  [
-	    '🇰🇼',
-	    'kwt',
-	    'kuwait'
-	  ],
-	  [
-	    '🇰🇾',
-	    'cym',
-	    'cayman islands'
-	  ],
-	  [
-	    '🇰🇿',
-	    'kaz',
-	    'kazakhstan'
-	  ],
-	  [
-	    '🇱🇦',
-	    'lao',
-	    'lao people\'s democratic republic'
-	  ],
-	  [
-	    '🇱🇧',
-	    'lbn',
-	    'lebanon'
-	  ],
-	  [
-	    '🇱🇨',
-	    'lca',
-	    'saint lucia'
-	  ],
-	  [
-	    '🇱🇮',
-	    'lie',
-	    'liechtenstein'
-	  ],
-	  [
-	    '🇱🇰',
-	    'lka',
-	    'sri lanka'
-	  ],
-	  [
-	    '🇱🇷',
-	    'lbr',
-	    'liberia'
-	  ],
-	  [
-	    '🇱🇸',
-	    'lso',
-	    'lesotho'
-	  ],
-	  [
-	    '🇱🇹',
-	    'ltu',
-	    'lithuania'
-	  ],
-	  [
-	    '🇱🇺',
-	    'lux',
-	    'luxembourg'
-	  ],
-	  [
-	    '🇱🇻',
-	    'lva',
-	    'latvia'
-	  ],
-	  [
-	    '🇱🇾',
-	    'lby',
-	    'libya'
-	  ],
-	  [
-	    '🇲🇦',
-	    'mar',
-	    'morocco'
-	  ],
-	  [
-	    '🇲🇨',
-	    'mco',
-	    'monaco'
-	  ],
-	  [
-	    '🇲🇩',
-	    'mda',
-	    'moldova'
-	  ],
-	  [
-	    '🇲🇪',
-	    'mne',
-	    'montenegro'
-	  ],
-	  [
-	    '🇲🇫',
-	    'maf',
-	    'saint martin (french part)'
-	  ],
-	  [
-	    '🇲🇬',
-	    'mdg',
-	    'madagascar'
-	  ],
-	  [
-	    '🇲🇭',
-	    'mhl',
-	    'marshall islands'
-	  ],
-	  [
-	    '🇲🇰',
-	    'mkd',
-	    'macedonia'
-	  ],
-	  [
-	    '🇲🇱',
-	    'mli',
-	    'mali'
-	  ],
-	  [
-	    '🇲🇲',
-	    'mmr',
-	    'myanmar'
-	  ],
-	  [
-	    '🇲🇳',
-	    'mng',
-	    'mongolia'
-	  ],
-	  [
-	    '🇲🇴',
-	    'mac',
-	    'macao'
-	  ],
-	  [
-	    '🇲🇵',
-	    'mnp',
-	    'northern mariana islands'
-	  ],
-	  [
-	    '🇲🇶',
-	    'mtq',
-	    'martinique'
-	  ],
-	  [
-	    '🇲🇷',
-	    'mrt',
-	    'mauritania'
-	  ],
-	  [
-	    '🇲🇸',
-	    'msr',
-	    'montserrat'
-	  ],
-	  [
-	    '🇲🇹',
-	    'mlt',
-	    'malta'
-	  ],
-	  [
-	    '🇲🇺',
-	    'mus',
-	    'mauritius'
-	  ],
-	  [
-	    '🇲🇻',
-	    'mdv',
-	    'maldives'
-	  ],
-	  [
-	    '🇲🇼',
-	    'mwi',
-	    'malawi'
-	  ],
-	  [
-	    '🇲🇽',
-	    'mex',
-	    'mexico'
-	  ],
-	  [
-	    '🇲🇾',
-	    'mys',
-	    'malaysia'
-	  ],
-	  [
-	    '🇲🇿',
-	    'moz',
-	    'mozambique'
-	  ],
-	  [
-	    '🇳🇦',
-	    'nam',
-	    'namibia'
-	  ],
-	  [
-	    '🇳🇨',
-	    'ncl',
-	    'new caledonia'
-	  ],
-	  [
-	    '🇳🇪',
-	    'ner',
-	    'niger'
-	  ],
-	  [
-	    '🇳🇫',
-	    'nfk',
-	    'norfolk island'
-	  ],
-	  [
-	    '🇳🇬',
-	    'nga',
-	    'nigeria'
-	  ],
-	  [
-	    '🇳🇮',
-	    'nic',
-	    'nicaragua'
-	  ],
-	  [
-	    '🇳🇱',
-	    'nld',
-	    'netherlands'
-	  ],
-	  [
-	    '🇳🇴',
-	    'nor',
-	    'norway'
-	  ],
-	  [
-	    '🇳🇵',
-	    'npl',
-	    'nepal'
-	  ],
-	  [
-	    '🇳🇷',
-	    'nru',
-	    'nauru'
-	  ],
-	  [
-	    '🇳🇺',
-	    'niu',
-	    'niue'
-	  ],
-	  [
-	    '🇳🇿',
-	    'nzl',
-	    'new zealand'
-	  ],
-	  [
-	    '🇴🇲',
-	    'omn',
-	    'oman'
-	  ],
-	  [
-	    '🇵🇦',
-	    'pan',
-	    'panama'
-	  ],
-	  [
-	    '🇵🇪',
-	    'per',
-	    'peru'
-	  ],
-	  [
-	    '🇵🇫',
-	    'pyf',
-	    'french polynesia'
-	  ],
-	  [
-	    '🇵🇬',
-	    'png',
-	    'papua new guinea'
-	  ],
-	  [
-	    '🇵🇭',
-	    'phl',
-	    'philippines'
-	  ],
-	  [
-	    '🇵🇰',
-	    'pak',
-	    'pakistan'
-	  ],
-	  [
-	    '🇵🇱',
-	    'pol',
-	    'poland'
-	  ],
-	  [
-	    '🇵🇲',
-	    'spm',
-	    'saint pierre and miquelon'
-	  ],
-	  [
-	    '🇵🇳',
-	    'pcn',
-	    'pitcairn'
-	  ],
-	  [
-	    '🇵🇷',
-	    'pri',
-	    'puerto rico'
-	  ],
-	  [
-	    '🇵🇸',
-	    'pse',
-	    'palestinian territory'
-	  ],
-	  [
-	    '🇵🇹',
-	    'prt',
-	    'portugal'
-	  ],
-	  [
-	    '🇵🇼',
-	    'plw',
-	    'palau'
-	  ],
-	  [
-	    '🇵🇾',
-	    'pry',
-	    'paraguay'
-	  ],
-	  [
-	    '🇶🇦',
-	    'qat',
-	    'qatar'
-	  ],
-	  [
-	    '🇷🇪',
-	    'reu',
-	    'réunion'
-	  ],
-	  [
-	    '🇷🇴',
-	    'rou',
-	    'romania'
-	  ],
-	  [
-	    '🇷🇸',
-	    'srb',
-	    'serbia'
-	  ],
-	  [
-	    '🇷🇺',
-	    'rus',
-	    'russia'
-	  ],
-	  [
-	    '🇷🇼',
-	    'rwa',
-	    'rwanda'
-	  ],
-	  [
-	    '🇸🇦',
-	    'sau',
-	    'saudi arabia'
-	  ],
-	  [
-	    '🇸🇧',
-	    'slb',
-	    'solomon islands'
-	  ],
-	  [
-	    '🇸🇨',
-	    'syc',
-	    'seychelles'
-	  ],
-	  [
-	    '🇸🇩',
-	    'sdn',
-	    'sudan'
-	  ],
-	  [
-	    '🇸🇪',
-	    'swe',
-	    'sweden'
-	  ],
-	  [
-	    '🇸🇬',
-	    'sgp',
-	    'singapore'
-	  ],
-	  [
-	    '🇸🇭',
-	    'shn',
-	    'saint helena, ascension and tristan da cunha'
-	  ],
-	  [
-	    '🇸🇮',
-	    'svn',
-	    'slovenia'
-	  ],
-	  [
-	    '🇸🇯',
-	    'sjm',
-	    'svalbard and jan mayen'
-	  ],
-	  [
-	    '🇸🇰',
-	    'svk',
-	    'slovakia'
-	  ],
-	  [
-	    '🇸🇱',
-	    'sle',
-	    'sierra leone'
-	  ],
-	  [
-	    '🇸🇲',
-	    'smr',
-	    'san marino'
-	  ],
-	  [
-	    '🇸🇳',
-	    'sen',
-	    'senegal'
-	  ],
-	  [
-	    '🇸🇴',
-	    'som',
-	    'somalia'
-	  ],
-	  [
-	    '🇸🇷',
-	    'sur',
-	    'suriname'
-	  ],
-	  [
-	    '🇸🇸',
-	    'ssd',
-	    'south sudan'
-	  ],
-	  [
-	    '🇸🇹',
-	    'stp',
-	    'sao tome and principe'
-	  ],
-	  [
-	    '🇸🇻',
-	    'slv',
-	    'el salvador'
-	  ],
-	  [
-	    '🇸🇽',
-	    'sxm',
-	    'sint maarten (dutch part)'
-	  ],
-	  [
-	    '🇸🇾',
-	    'syr',
-	    'syrian arab republic'
-	  ],
-	  [
-	    '🇸🇿',
-	    'swz',
-	    'swaziland'
-	  ],
-	  [
-	    '🇹🇨',
-	    'tca',
-	    'turks and caicos islands'
-	  ],
-	  [
-	    '🇹🇩',
-	    'tcd',
-	    'chad'
-	  ],
-	  [
-	    '🇹🇫',
-	    'atf',
-	    'french southern territories'
-	  ],
-	  [
-	    '🇹🇬',
-	    'tgo',
-	    'togo'
-	  ],
-	  [
-	    '🇹🇭',
-	    'tha',
-	    'thailand'
-	  ],
-	  [
-	    '🇹🇯',
-	    'tjk',
-	    'tajikistan'
-	  ],
-	  [
-	    '🇹🇰',
-	    'tkl',
-	    'tokelau'
-	  ],
-	  [
-	    '🇹🇱',
-	    'tls',
-	    'timor-leste'
-	  ],
-	  [
-	    '🇹🇲',
-	    'tkm',
-	    'turkmenistan'
-	  ],
-	  [
-	    '🇹🇳',
-	    'tun',
-	    'tunisia'
-	  ],
-	  [
-	    '🇹🇴',
-	    'ton',
-	    'tonga'
-	  ],
-	  [
-	    '🇹🇷',
-	    'tur',
-	    'turkey'
-	  ],
-	  [
-	    '🇹🇹',
-	    'tto',
-	    'trinidad and tobago'
-	  ],
-	  [
-	    '🇹🇻',
-	    'tuv',
-	    'tuvalu'
-	  ],
-	  [
-	    '🇹🇼',
-	    'twn',
-	    'taiwan'
-	  ],
-	  [
-	    '🇹🇿',
-	    'tza',
-	    'tanzania'
-	  ],
-	  [
-	    '🇺🇦',
-	    'ukr',
-	    'ukraine'
-	  ],
-	  [
-	    '🇺🇬',
-	    'uga',
-	    'uganda'
-	  ],
-	  [
-	    '🇺🇲',
-	    'umi',
-	    'united states minor outlying islands'
-	  ],
-	  [
-	    '🇺🇸',
-	    'usa',
-	    'united states'
-	  ],
+	  ['🇩🇯', 'dji', 'djibouti'],
+	  ['🇩🇰', 'dnk', 'denmark'],
+	  ['🇩🇲', 'dma', 'dominica'],
+	  ['🇩🇴', 'dom', 'dominican republic'],
+	  ['🇩🇿', 'dza', 'algeria'],
+	  ['🇪🇨', 'ecu', 'ecuador'],
+	  ['🇪🇪', 'est', 'estonia'],
+	  ['🇪🇬', 'egy', 'egypt'],
+	  ['🇪🇭', 'esh', 'western sahara'],
+	  ['🇪🇷', 'eri', 'eritrea'],
+	  ['🇪🇸', 'esp', 'spain'],
+	  ['🇪🇹', 'eth', 'ethiopia'],
+	  ['🇫🇮', 'fin', 'finland'],
+	  ['🇫🇯', 'fji', 'fiji'],
+	  ['🇫🇰', 'flk', 'falkland islands (malvinas)'],
+	  ['🇫🇲', 'fsm', 'micronesia'],
+	  ['🇫🇴', 'fro', 'faroe islands'],
+	  ['🇫🇷', 'fra', 'france'],
+	  ['🇬🇦', 'gab', 'gabon'],
+	  ['🇬🇧', 'gbr', 'united kingdom'],
+	  ['🇬🇩', 'grd', 'grenada'],
+	  ['🇬🇪', 'geo', 'georgia'],
+	  ['🇬🇫', 'guf', 'french guiana'],
+	  ['🇬🇬', 'ggy', 'guernsey'],
+	  ['🇬🇭', 'gha', 'ghana'],
+	  ['🇬🇮', 'gib', 'gibraltar'],
+	  ['🇬🇱', 'grl', 'greenland'],
+	  ['🇬🇲', 'gmb', 'gambia'],
+	  ['🇬🇳', 'gin', 'guinea'],
+	  ['🇬🇵', 'glp', 'guadeloupe'],
+	  ['🇬🇶', 'gnq', 'equatorial guinea'],
+	  ['🇬🇷', 'grc', 'greece'],
+	  ['🇬🇸', 'sgs', 'south georgia'],
+	  ['🇬🇹', 'gtm', 'guatemala'],
+	  ['🇬🇺', 'gum', 'guam'],
+	  ['🇬🇼', 'gnb', 'guinea-bissau'],
+	  ['🇬🇾', 'guy', 'guyana'],
+	  ['🇭🇰', 'hkg', 'hong kong'],
+	  ['🇭🇲', 'hmd', 'heard island and mcdonald islands'],
+	  ['🇭🇳', 'hnd', 'honduras'],
+	  ['🇭🇷', 'hrv', 'croatia'],
+	  ['🇭🇹', 'hti', 'haiti'],
+	  ['🇭🇺', 'hun', 'hungary'],
+	  ['🇮🇩', 'idn', 'indonesia'],
+	  ['🇮🇪', 'irl', 'ireland'],
+	  ['🇮🇱', 'isr', 'israel'],
+	  ['🇮🇲', 'imn', 'isle of man'],
+	  ['🇮🇳', 'ind', 'india'],
+	  ['🇮🇴', 'iot', 'british indian ocean territory'],
+	  ['🇮🇶', 'irq', 'iraq'],
+	  ['🇮🇷', 'irn', 'iran'],
+	  ['🇮🇸', 'isl', 'iceland'],
+	  ['🇮🇹', 'ita', 'italy'],
+	  ['🇯🇪', 'jey', 'jersey'],
+	  ['🇯🇲', 'jam', 'jamaica'],
+	  ['🇯🇴', 'jor', 'jordan'],
+	  ['🇯🇵', 'jpn', 'japan'],
+	  ['🇰🇪', 'ken', 'kenya'],
+	  ['🇰🇬', 'kgz', 'kyrgyzstan'],
+	  ['🇰🇭', 'khm', 'cambodia'],
+	  ['🇰🇮', 'kir', 'kiribati'],
+	  ['🇰🇲', 'com', 'comoros'],
+	  ['🇰🇳', 'kna', 'saint kitts and nevis'],
+	  ['🇰🇵', 'prk', 'north korea'],
+	  ['🇰🇷', 'kor', 'south korea'],
+	  ['🇰🇼', 'kwt', 'kuwait'],
+	  ['🇰🇾', 'cym', 'cayman islands'],
+	  ['🇰🇿', 'kaz', 'kazakhstan'],
+	  ['🇱🇦', 'lao', "lao people's democratic republic"],
+	  ['🇱🇧', 'lbn', 'lebanon'],
+	  ['🇱🇨', 'lca', 'saint lucia'],
+	  ['🇱🇮', 'lie', 'liechtenstein'],
+	  ['🇱🇰', 'lka', 'sri lanka'],
+	  ['🇱🇷', 'lbr', 'liberia'],
+	  ['🇱🇸', 'lso', 'lesotho'],
+	  ['🇱🇹', 'ltu', 'lithuania'],
+	  ['🇱🇺', 'lux', 'luxembourg'],
+	  ['🇱🇻', 'lva', 'latvia'],
+	  ['🇱🇾', 'lby', 'libya'],
+	  ['🇲🇦', 'mar', 'morocco'],
+	  ['🇲🇨', 'mco', 'monaco'],
+	  ['🇲🇩', 'mda', 'moldova'],
+	  ['🇲🇪', 'mne', 'montenegro'],
+	  ['🇲🇫', 'maf', 'saint martin (french part)'],
+	  ['🇲🇬', 'mdg', 'madagascar'],
+	  ['🇲🇭', 'mhl', 'marshall islands'],
+	  ['🇲🇰', 'mkd', 'macedonia'],
+	  ['🇲🇱', 'mli', 'mali'],
+	  ['🇲🇲', 'mmr', 'myanmar'],
+	  ['🇲🇳', 'mng', 'mongolia'],
+	  ['🇲🇴', 'mac', 'macao'],
+	  ['🇲🇵', 'mnp', 'northern mariana islands'],
+	  ['🇲🇶', 'mtq', 'martinique'],
+	  ['🇲🇷', 'mrt', 'mauritania'],
+	  ['🇲🇸', 'msr', 'montserrat'],
+	  ['🇲🇹', 'mlt', 'malta'],
+	  ['🇲🇺', 'mus', 'mauritius'],
+	  ['🇲🇻', 'mdv', 'maldives'],
+	  ['🇲🇼', 'mwi', 'malawi'],
+	  ['🇲🇽', 'mex', 'mexico'],
+	  ['🇲🇾', 'mys', 'malaysia'],
+	  ['🇲🇿', 'moz', 'mozambique'],
+	  ['🇳🇦', 'nam', 'namibia'],
+	  ['🇳🇨', 'ncl', 'new caledonia'],
+	  ['🇳🇪', 'ner', 'niger'],
+	  ['🇳🇫', 'nfk', 'norfolk island'],
+	  ['🇳🇬', 'nga', 'nigeria'],
+	  ['🇳🇮', 'nic', 'nicaragua'],
+	  ['🇳🇱', 'nld', 'netherlands'],
+	  ['🇳🇴', 'nor', 'norway'],
+	  ['🇳🇵', 'npl', 'nepal'],
+	  ['🇳🇷', 'nru', 'nauru'],
+	  ['🇳🇺', 'niu', 'niue'],
+	  ['🇳🇿', 'nzl', 'new zealand'],
+	  ['🇴🇲', 'omn', 'oman'],
+	  ['🇵🇦', 'pan', 'panama'],
+	  ['🇵🇪', 'per', 'peru'],
+	  ['🇵🇫', 'pyf', 'french polynesia'],
+	  ['🇵🇬', 'png', 'papua new guinea'],
+	  ['🇵🇭', 'phl', 'philippines'],
+	  ['🇵🇰', 'pak', 'pakistan'],
+	  ['🇵🇱', 'pol', 'poland'],
+	  ['🇵🇲', 'spm', 'saint pierre and miquelon'],
+	  ['🇵🇳', 'pcn', 'pitcairn'],
+	  ['🇵🇷', 'pri', 'puerto rico'],
+	  ['🇵🇸', 'pse', 'palestinian territory'],
+	  ['🇵🇹', 'prt', 'portugal'],
+	  ['🇵🇼', 'plw', 'palau'],
+	  ['🇵🇾', 'pry', 'paraguay'],
+	  ['🇶🇦', 'qat', 'qatar'],
+	  ['🇷🇪', 'reu', 'réunion'],
+	  ['🇷🇴', 'rou', 'romania'],
+	  ['🇷🇸', 'srb', 'serbia'],
+	  ['🇷🇺', 'rus', 'russia'],
+	  ['🇷🇼', 'rwa', 'rwanda'],
+	  ['🇸🇦', 'sau', 'saudi arabia'],
+	  ['🇸🇧', 'slb', 'solomon islands'],
+	  ['🇸🇨', 'syc', 'seychelles'],
+	  ['🇸🇩', 'sdn', 'sudan'],
+	  ['🇸🇪', 'swe', 'sweden'],
+	  ['🇸🇬', 'sgp', 'singapore'],
+	  ['🇸🇭', 'shn', 'saint helena, ascension and tristan da cunha'],
+	  ['🇸🇮', 'svn', 'slovenia'],
+	  ['🇸🇯', 'sjm', 'svalbard and jan mayen'],
+	  ['🇸🇰', 'svk', 'slovakia'],
+	  ['🇸🇱', 'sle', 'sierra leone'],
+	  ['🇸🇲', 'smr', 'san marino'],
+	  ['🇸🇳', 'sen', 'senegal'],
+	  ['🇸🇴', 'som', 'somalia'],
+	  ['🇸🇷', 'sur', 'suriname'],
+	  ['🇸🇸', 'ssd', 'south sudan'],
+	  ['🇸🇹', 'stp', 'sao tome and principe'],
+	  ['🇸🇻', 'slv', 'el salvador'],
+	  ['🇸🇽', 'sxm', 'sint maarten (dutch part)'],
+	  ['🇸🇾', 'syr', 'syrian arab republic'],
+	  ['🇸🇿', 'swz', 'swaziland'],
+	  ['🇹🇨', 'tca', 'turks and caicos islands'],
+	  ['🇹🇩', 'tcd', 'chad'],
+	  ['🇹🇫', 'atf', 'french southern territories'],
+	  ['🇹🇬', 'tgo', 'togo'],
+	  ['🇹🇭', 'tha', 'thailand'],
+	  ['🇹🇯', 'tjk', 'tajikistan'],
+	  ['🇹🇰', 'tkl', 'tokelau'],
+	  ['🇹🇱', 'tls', 'timor-leste'],
+	  ['🇹🇲', 'tkm', 'turkmenistan'],
+	  ['🇹🇳', 'tun', 'tunisia'],
+	  ['🇹🇴', 'ton', 'tonga'],
+	  ['🇹🇷', 'tur', 'turkey'],
+	  ['🇹🇹', 'tto', 'trinidad and tobago'],
+	  ['🇹🇻', 'tuv', 'tuvalu'],
+	  ['🇹🇼', 'twn', 'taiwan'],
+	  ['🇹🇿', 'tza', 'tanzania'],
+	  ['🇺🇦', 'ukr', 'ukraine'],
+	  ['🇺🇬', 'uga', 'uganda'],
+	  ['🇺🇲', 'umi', 'united states minor outlying islands'],
+	  ['🇺🇸', 'usa', 'united states'],
 	  [
 	    '🇺🇸',
 	    'us', //alias
 	    'united states'
 	  ],
-	  [
-	    '🇺🇾',
-	    'ury',
-	    'uruguay'
-	  ],
-	  [
-	    '🇺🇿',
-	    'uzb',
-	    'uzbekistan'
-	  ],
-	  [
-	    '🇻🇦',
-	    'vat',
-	    'vatican city'
-	  ],
-	  [
-	    '🇻🇨',
-	    'vct',
-	    'saint vincent and the grenadines'
-	  ],
-	  [
-	    '🇻🇪',
-	    'ven',
-	    'venezuela'
-	  ],
-	  [
-	    '🇻🇬',
-	    'vgb',
-	    'virgin islands, british'
-	  ],
-	  [
-	    '🇻🇮',
-	    'vir',
-	    'virgin islands, u.s.'
-	  ],
-	  [
-	    '🇻🇳',
-	    'vnm',
-	    'viet nam'
-	  ],
-	  [
-	    '🇻🇺',
-	    'vut',
-	    'vanuatu'
-	  ],
-	  [
-	    '',
-	    'win',
-	    'west indies'
-	  ],
-	  [
-	    '🇼🇫',
-	    'wlf',
-	    'wallis and futuna'
-	  ],
-	  [
-	    '🇼🇸',
-	    'wsm',
-	    'samoa'
-	  ],
-	  [
-	    '🇾🇪',
-	    'yem',
-	    'yemen'
-	  ],
-	  [
-	    '🇾🇹',
-	    'myt',
-	    'mayotte'
-	  ],
-	  [
-	    '🇿🇦',
-	    'zaf',
-	    'south africa'
-	  ],
-	  [
-	    '🇿🇲',
-	    'zmb',
-	    'zambia'
-	  ],
-	  [
-	    '🇿🇼 ',
-	    'zwe',
-	    'zimbabwe'
-	  ],
+	  ['🇺🇾', 'ury', 'uruguay'],
+	  ['🇺🇿', 'uzb', 'uzbekistan'],
+	  ['🇻🇦', 'vat', 'vatican city'],
+	  ['🇻🇨', 'vct', 'saint vincent and the grenadines'],
+	  ['🇻🇪', 'ven', 'venezuela'],
+	  ['🇻🇬', 'vgb', 'virgin islands, british'],
+	  ['🇻🇮', 'vir', 'virgin islands, u.s.'],
+	  ['🇻🇳', 'vnm', 'viet nam'],
+	  ['🇻🇺', 'vut', 'vanuatu'],
+	  ['', 'win', 'west indies'],
+	  ['🇼🇫', 'wlf', 'wallis and futuna'],
+	  ['🇼🇸', 'wsm', 'samoa'],
+	  ['🇾🇪', 'yem', 'yemen'],
+	  ['🇾🇹', 'myt', 'mayotte'],
+	  ['🇿🇦', 'zaf', 'south africa'],
+	  ['🇿🇲', 'zmb', 'zambia'],
+	  ['🇿🇼 ', 'zwe', 'zimbabwe'],
 	  //others (later unicode versions)
 	  ['🇺🇳', 'un', 'united nations'],
 	  ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'],
 	  ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'],
-	  ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales'],
+	  ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales']
 	];
 
 	let sports = {
-
 	  player: (tmpl, r) => {
 	    let res = parse$2(tmpl, ['number', 'country', 'name', 'dl']);
 	    r.templates.push(res);
 	    let str = `[[${res.name}]]`;
 	    if (res.country) {
 	      let country = (res.country || '').toLowerCase();
-	      let flag = flags.find((a) => country === a[1] || country === a[2]) || [];
+	      let flag = flags.find(a => country === a[1] || country === a[2]) || [];
 	      if (flag && flag[0]) {
 	        str = flag[0] + '  ' + str;
 	      }
@@ -11004,9 +10121,8 @@
 	    if (res.number) {
 	      str = res.number + ' ' + str;
 	    }
-	    return str;
+	    return str
 	  },
-
 
 	  //https://en.wikipedia.org/wiki/Template:Goal
 	  goal: (tmpl, r) => {
@@ -11016,60 +10132,62 @@
 	      data: []
 	    };
 	    let arr = res.list || [];
-	    for(let i = 0; i < arr.length; i += 2) {
+	    for (let i = 0; i < arr.length; i += 2) {
 	      obj.data.push({
 	        min: arr[i],
-	        note: arr[i + 1] || '',
+	        note: arr[i + 1] || ''
 	      });
 	    }
 	    r.templates.push(obj);
 	    //generate a little text summary
 	    let summary = '⚽ ';
-	    summary += obj.data.map((o) => {
-	      let note = o.note;
-	      if (note) {
-	        note = ` (${note})`;
-	      }
-	      return o.min + '\'' + note;
-	    }).join(', ');
-	    return summary;
+	    summary += obj.data
+	      .map(o => {
+	        let note = o.note;
+	        if (note) {
+	          note = ` (${note})`;
+	        }
+	        return o.min + "'" + note
+	      })
+	      .join(', ');
+	    return summary
 	  },
 	  //yellow card
 	  yel: (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['min']);
 	    r.templates.push(obj);
 	    if (obj.min) {
-	      return `yellow: ${obj.min || ''}'`; //no yellow-card emoji
+	      return `yellow: ${obj.min || ''}'` //no yellow-card emoji
 	    }
-	    return '';
+	    return ''
 	  },
-	  'subon': (tmpl, r) => {
+	  subon: (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['min']);
 	    r.templates.push(obj);
 	    if (obj.min) {
-	      return `sub on: ${obj.min || ''}'`; //no yellow-card emoji
+	      return `sub on: ${obj.min || ''}'` //no yellow-card emoji
 	    }
-	    return '';
+	    return ''
 	  },
-	  'suboff': (tmpl, r) => {
+	  suboff: (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['min']);
 	    r.templates.push(obj);
 	    if (obj.min) {
-	      return `sub off: ${obj.min || ''}'`; //no yellow-card emoji
+	      return `sub off: ${obj.min || ''}'` //no yellow-card emoji
 	    }
-	    return '';
+	    return ''
 	  },
-	  'pengoal': (tmpl, r) => {
+	  pengoal: (tmpl, r) => {
 	    r.templates.push({
 	      template: 'pengoal'
 	    });
-	    return '✅';
+	    return '✅'
 	  },
-	  'penmiss': (tmpl, r) => {
+	  penmiss: (tmpl, r) => {
 	    r.templates.push({
 	      template: 'penmiss'
 	    });
-	    return '❌';
+	    return '❌'
 	  },
 	  //'red' card - {{sent off|cards|min1|min2}}
 	  'sent off': (tmpl, r) => {
@@ -11077,11 +10195,11 @@
 	    let result = {
 	      template: 'sent off',
 	      cards: obj.cards,
-	      minutes: obj.list || [],
+	      minutes: obj.list || []
 	    };
 	    r.templates.push(result);
-	    let mins = result.minutes.map(m => m + '\'').join(', ');
-	    return 'sent off: ' + mins;
+	    let mins = result.minutes.map(m => m + "'").join(', ');
+	    return 'sent off: ' + mins
 	  }
 	};
 	var soccer = sports;
@@ -11089,22 +10207,16 @@
 	const misc$2 = {
 	  'baseball secondary style': function(tmpl) {
 	    let obj = parse$2(tmpl, ['name']);
-	    return obj.name;
+	    return obj.name
 	  },
-	  'mlbplayer': function(tmpl, r) {
+	  mlbplayer: function(tmpl, r) {
 	    let obj = parse$2(tmpl, ['number', 'name', 'dl']);
 	    r.templates.push(obj);
-	    return obj.name;
+	    return obj.name
 	  }
-
 	};
 
-
-	var sports$1 = Object.assign({},
-	  misc$2,
-	  brackets_1,
-	  soccer
-	);
+	var sports$1 = Object.assign({}, misc$2, brackets_1, soccer);
 
 	const hasMonth = /^jan /i;
 	const isYear = /^year /i;
@@ -11121,7 +10233,7 @@
 	  'sep',
 	  'oct',
 	  'nov',
-	  'dec',
+	  'dec'
 	];
 
 	const toNumber = function(str) {
@@ -11129,9 +10241,9 @@
 	  str = str.replace(/−/g, '-');
 	  let num = Number(str);
 	  if (isNaN(num)) {
-	    return str;
+	    return str
 	  }
-	  return num;
+	  return num
 	};
 
 	let templates$8 = {
@@ -11142,10 +10254,10 @@
 	    //collect all month-based data
 	    let byMonth = {};
 	    let properties = Object.keys(obj).filter(k => hasMonth.test(k));
-	    properties = properties.map((k) => k.replace(hasMonth, ''));
-	    properties.forEach((prop) => {
+	    properties = properties.map(k => k.replace(hasMonth, ''));
+	    properties.forEach(prop => {
 	      byMonth[prop] = [];
-	      monthList.forEach((m) => {
+	      monthList.forEach(m => {
 	        let key = `${m} ${prop}`;
 	        if (obj.hasOwnProperty(key)) {
 	          let num = toNumber(obj[key]);
@@ -11159,7 +10271,7 @@
 
 	    //collect year-based data
 	    let byYear = {};
-	    Object.keys(obj).forEach((k) => {
+	    Object.keys(obj).forEach(k => {
 	      if (isYear.test(k)) {
 	        let prop = k.replace(isYear, '');
 	        byYear[prop] = obj[k];
@@ -11169,38 +10281,37 @@
 	    obj.byYear = byYear;
 
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 
 	  //The 36 parameters are: 12 monthly highs (C), 12 lows (total 24) plus an optional 12 monthly rain/precipitation
 	  //https://en.wikipedia.org/wiki/Template:Weather_box/concise_C
 	  'weather box/concise c': (tmpl, r) => {
 	    let obj = parse$2(tmpl);
-	    obj.list = obj.list.map((s) => toNumber(s));
+	    obj.list = obj.list.map(s => toNumber(s));
 	    obj.byMonth = {
-	      'high c' : obj.list.slice(0, 12),
-	      'low c' : obj.list.slice(12, 24),
-	      'rain mm' : obj.list.slice(24, 36)
+	      'high c': obj.list.slice(0, 12),
+	      'low c': obj.list.slice(12, 24),
+	      'rain mm': obj.list.slice(24, 36)
 	    };
 	    delete obj.list;
 	    obj.template = 'weather box';
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 	  'weather box/concise f': (tmpl, r) => {
 	    let obj = parse$2(tmpl);
-	    obj.list = obj.list.map((s) => toNumber(s));
+	    obj.list = obj.list.map(s => toNumber(s));
 	    obj.byMonth = {
-	      'high f' : obj.list.slice(0, 12),
-	      'low f' : obj.list.slice(12, 24),
-	      'rain inch' : obj.list.slice(24, 36)
+	      'high f': obj.list.slice(0, 12),
+	      'low f': obj.list.slice(12, 24),
+	      'rain inch': obj.list.slice(24, 36)
 	    };
 	    delete obj.list;
 	    obj.template = 'weather box';
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
-
 
 	  //https://en.wikipedia.org/wiki/Template:Climate_chart
 	  'climate chart': (tmpl, r) => {
@@ -11209,15 +10320,15 @@
 	    let source = list[38];
 	    list = list.slice(1);
 	    //amazingly, they use '−' symbol here instead of negatives...
-	    list = list.map((str) => {
+	    list = list.map(str => {
 	      if (str && str[0] === '−') {
 	        str = str.replace(/−/, '-');
 	      }
-	      return str;
+	      return str
 	    });
 	    let months = [];
 	    //groups of three, for 12 months
-	    for(let i = 0; i < 36; i += 3) {
+	    for (let i = 0; i < 36; i += 3) {
 	      months.push({
 	        low: toNumber(list[i]),
 	        high: toNumber(list[i + 1]),
@@ -11233,8 +10344,8 @@
 	      }
 	    };
 	    r.templates.push(obj);
-	    return '';
-	  },
+	    return ''
+	  }
 	};
 
 	var weather = templates$8;
@@ -11245,56 +10356,63 @@
 	    let order = ['taxon', 'item'];
 	    let obj = parse$2(tmpl, order);
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
 
 	  //minor planet - https://en.wikipedia.org/wiki/Template:MPC
 	  mpc: (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['number', 'text']);
 	    r.templates.push(obj);
-	    return `[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ${obj.text || obj.number}]`;
+	    return `[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ${obj.text ||
+      obj.number}]`
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Chem2
 	  chem2: (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['equation']);
 	    r.templates.push(obj);
-	    return obj.equation;
+	    return obj.equation
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Sky
 	  sky: (tmpl, r) => {
-	    let obj = parse$2(tmpl, ['asc_hours', 'asc_minutes', 'asc_seconds', 'dec_sign', 'dec_degrees', 'dec_minutes', 'dec_seconds', 'distance']);
+	    let obj = parse$2(tmpl, [
+	      'asc_hours',
+	      'asc_minutes',
+	      'asc_seconds',
+	      'dec_sign',
+	      'dec_degrees',
+	      'dec_minutes',
+	      'dec_seconds',
+	      'distance'
+	    ]);
 	    let template = {
 	      template: 'sky',
 	      ascension: {
 	        hours: obj.asc_hours,
 	        minutes: obj.asc_minutes,
-	        seconds: obj.asc_seconds,
+	        seconds: obj.asc_seconds
 	      },
 	      declination: {
 	        sign: obj.dec_sign,
 	        degrees: obj.dec_degrees,
 	        minutes: obj.dec_minutes,
-	        seconds: obj.dec_seconds,
+	        seconds: obj.dec_seconds
 	      },
 	      distance: obj.distance
 	    };
 	    r.templates.push(template);
-	    return '';
-	  },
+	    return ''
+	  }
 	};
 	var misc$3 = templates$9;
 
-	var science = Object.assign({},
-	  weather,
-	  misc$3
-	);
+	var science = Object.assign({}, weather, misc$3);
 
 	// const parseSentence = require('../../04-sentence').oneSentence;
 
 	//simply num/denom * 100
 	const percentage = function(obj) {
 	  if (!obj.numerator && !obj.denominator) {
-	    return null;
+	    return null
 	  }
 	  let perc = Number(obj.numerator) / Number(obj.denominator);
 	  perc *= 100;
@@ -11303,25 +10421,23 @@
 	    dec = 1;
 	  }
 	  perc = perc.toFixed(dec);
-	  return Number(perc);
+	  return Number(perc)
 	};
 
-
 	let templates$a = {
-
 	  // https://en.wikipedia.org/wiki/Template:Math
-	  'math': (tmpl, r) => {
+	  math: (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['formula']);
 	    r.templates.push(obj);
-	    return '\n\n' + (obj.formula || '') + '\n\n';
+	    return '\n\n' + (obj.formula || '') + '\n\n'
 	  },
 
 	  //fraction - https://en.wikipedia.org/wiki/Template:Sfrac
-	  'frac': (tmpl, r) => {
+	  frac: (tmpl, r) => {
 	    let order = ['a', 'b', 'c'];
 	    let obj = parse$2(tmpl, order);
 	    let data = {
-	      template: 'sfrac',
+	      template: 'sfrac'
 	    };
 	    if (obj.c) {
 	      data.integer = obj.a;
@@ -11336,27 +10452,27 @@
 	    }
 	    r.templates.push(data);
 	    if (data.integer) {
-	      return `${data.integer} ${data.numerator}⁄${data.denominator}`;
+	      return `${data.integer} ${data.numerator}⁄${data.denominator}`
 	    }
-	    return `${data.numerator}⁄${data.denominator}`;
+	    return `${data.numerator}⁄${data.denominator}`
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Radic
-	  'radic': (tmpl) => {
+	  radic: tmpl => {
 	    let order = ['after', 'before'];
 	    let obj = parse$2(tmpl, order);
-	    return `${obj.before || ''}√${obj.after || ''}`;
+	    return `${obj.before || ''}√${obj.after || ''}`
 	  },
 	  //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
-	  percentage: ( tmpl = '' ) => {
+	  percentage: (tmpl = '') => {
 	    let obj = parse$2(tmpl, ['numerator', 'denominator', 'decimals']);
 	    let num = percentage(obj);
 	    if (num === null) {
-	      return '';
+	      return ''
 	    }
-	    return num + '%';
+	    return num + '%'
 	  },
 	  // {{Percent-done|done=N|total=N|digits=N}}
-	  'percent-done': ( tmpl = '' ) => {
+	  'percent-done': (tmpl = '') => {
 	    let obj = parse$2(tmpl, ['done', 'total', 'digits']);
 	    let num = percentage({
 	      numerator: obj.done,
@@ -11364,11 +10480,11 @@
 	      decimals: obj.digits
 	    });
 	    if (num === null) {
-	      return '';
+	      return ''
 	    }
-	    return `${obj.done} (${num}%) done`;
+	    return `${obj.done} (${num}%) done`
 	  },
-	  'winning percentage': ( tmpl = '' , r ) => {
+	  'winning percentage': (tmpl = '', r) => {
 	    let obj = parse$2(tmpl, ['wins', 'losses', 'ties']);
 	    r.templates.push(obj);
 	    let wins = Number(obj.wins);
@@ -11379,7 +10495,7 @@
 	      ties = 0;
 	    }
 	    if (ties) {
-	      wins += (ties / 2);
+	      wins += ties / 2;
 	    }
 	    let num = percentage({
 	      numerator: wins,
@@ -11387,11 +10503,11 @@
 	      decimals: 1
 	    });
 	    if (num === null) {
-	      return '';
+	      return ''
 	    }
-	    return `.${num * 10}`;
+	    return `.${num * 10}`
 	  },
-	  'winlosspct': ( tmpl = '' , r ) => {
+	  winlosspct: (tmpl = '', r) => {
 	    let obj = parse$2(tmpl, ['wins', 'losses']);
 	    r.templates.push(obj);
 	    let wins = Number(obj.wins);
@@ -11402,11 +10518,11 @@
 	      decimals: 1
 	    });
 	    if (num === null) {
-	      return '';
+	      return ''
 	    }
 	    num = `.${num * 10}`;
-	    return `${wins || 0} || ${losses || 0} || ${num || '-'}`;
-	  },
+	    return `${wins || 0} || ${losses || 0} || ${num || '-'}`
+	  }
 	};
 	//aliases
 	templates$a['sfrac'] = templates$a.frac;
@@ -11423,22 +10539,22 @@
 	  'election box begin': (tmpl, r) => {
 	    let data = parse$2(tmpl);
 	    r.templates.push(data);
-	    return '';
+	    return ''
 	  },
 	  'election box candidate': (tmpl, r) => {
 	    let data = parse$2(tmpl);
 	    r.templates.push(data);
-	    return '';
+	    return ''
 	  },
 	  'election box hold with party link': (tmpl, r) => {
 	    let data = parse$2(tmpl);
 	    r.templates.push(data);
-	    return '';
+	    return ''
 	  },
 	  'election box gain with party link': (tmpl, r) => {
 	    let data = parse$2(tmpl);
 	    r.templates.push(data);
-	    return '';
+	    return ''
 	  }
 	};
 	//aliases
@@ -11452,91 +10568,93 @@
 	templates$b['election box candidate minor party'] = templates$b['election box candidate'];
 	templates$b['election box candidate no party link no change'] = templates$b['election box candidate'];
 	templates$b['election box candidate with party link'] = templates$b['election box candidate'];
-	templates$b['election box candidate with party link coalition 1918'] = templates$b['election box candidate'];
+	templates$b['election box candidate with party link coalition 1918'] =
+	  templates$b['election box candidate'];
 	templates$b['election box candidate with party link no change'] = templates$b['election box candidate'];
 	templates$b['election box inline candidate'] = templates$b['election box candidate'];
 	templates$b['election box inline candidate no change'] = templates$b['election box candidate'];
 	templates$b['election box inline candidate with party link'] = templates$b['election box candidate'];
-	templates$b['election box inline candidate with party link no change'] = templates$b['election box candidate'];
+	templates$b['election box inline candidate with party link no change'] =
+	  templates$b['election box candidate'];
 	templates$b['election box inline incumbent'] = templates$b['election box candidate'];
 	var elections = templates$b;
 
 	let templates$c = {
 	  //https://en.wikipedia.org/wiki/Template:Flag
 	  // {{flag|USA}} →  USA
-	  flag: (tmpl) => {
+	  flag: tmpl => {
 	    let order = ['flag', 'variant'];
 	    let obj = parse$2(tmpl, order);
 	    let name = obj.flag || '';
 	    obj.flag = (obj.flag || '').toLowerCase();
-	    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
+	    let found = flags.find(a => obj.flag === a[1] || obj.flag === a[2]) || [];
 	    let flag = found[0] || '';
-	    return `${flag} [[${found[2]}|${name}]]`;
+	    return `${flag} [[${found[2]}|${name}]]`
 	  },
 	  // {{flagcountry|USA}} →  United States
-	  flagcountry: (tmpl) => {
+	  flagcountry: tmpl => {
 	    let order = ['flag', 'variant'];
 	    let obj = parse$2(tmpl, order);
 	    obj.flag = (obj.flag || '').toLowerCase();
-	    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
+	    let found = flags.find(a => obj.flag === a[1] || obj.flag === a[2]) || [];
 	    let flag = found[0] || '';
-	    return `${flag} [[${found[2]}]]`;
+	    return `${flag} [[${found[2]}]]`
 	  },
 	  // (unlinked flag-country)
-	  flagcu: (tmpl) => {
+	  flagcu: tmpl => {
 	    let order = ['flag', 'variant'];
 	    let obj = parse$2(tmpl, order);
 	    obj.flag = (obj.flag || '').toLowerCase();
-	    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
+	    let found = flags.find(a => obj.flag === a[1] || obj.flag === a[2]) || [];
 	    let flag = found[0] || '';
-	    return `${flag} ${found[2]}`;
+	    return `${flag} ${found[2]}`
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Flagicon
 	  // {{flagicon|USA}} → United States
-	  flagicon: (tmpl) => {
+	  flagicon: tmpl => {
 	    let order = ['flag', 'variant'];
 	    let obj = parse$2(tmpl, order);
 	    obj.flag = (obj.flag || '').toLowerCase();
-	    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
+	    let found = flags.find(a => obj.flag === a[1] || obj.flag === a[2]);
 	    if (!found) {
-	      return '';
+	      return ''
 	    }
-	    return `[[${found[2]}|${found[0]}]]`;
+	    return `[[${found[2]}|${found[0]}]]`
 	  },
 	  //unlinked flagicon
-	  flagdeco: (tmpl) => {
+	  flagdeco: tmpl => {
 	    let order = ['flag', 'variant'];
 	    let obj = parse$2(tmpl, order);
 	    obj.flag = (obj.flag || '').toLowerCase();
-	    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
-	    return found[0] || '';
+	    let found = flags.find(a => obj.flag === a[1] || obj.flag === a[2]) || [];
+	    return found[0] || ''
 	  },
 	  //same, but a soccer team
-	  fb: (tmpl) => {
+	  fb: tmpl => {
 	    let order = ['flag', 'variant'];
 	    let obj = parse$2(tmpl, order);
 	    obj.flag = (obj.flag || '').toLowerCase();
-	    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
+	    let found = flags.find(a => obj.flag === a[1] || obj.flag === a[2]);
 	    if (!found) {
-	      return '';
+	      return ''
 	    }
-	    return `${found[0]} [[${found[2]} national football team|${found[2]}]]`;
+	    return `${found[0]} [[${found[2]} national football team|${found[2]}]]`
 	  },
-	  fbicon: (tmpl) => {
+	  fbicon: tmpl => {
 	    let order = ['flag', 'variant'];
 	    let obj = parse$2(tmpl, order);
 	    obj.flag = (obj.flag || '').toLowerCase();
-	    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
+	    let found = flags.find(a => obj.flag === a[1] || obj.flag === a[2]);
 	    if (!found) {
-	      return '';
+	      return ''
 	    }
-	    return ` [[${found[2]} national football team|${found[0]}]]`;
-	  },
+	    return ` [[${found[2]} national football team|${found[0]}]]`
+	  }
 	};
 	//support {{can}}
-	flags.forEach((a) => {
+	flags.forEach(a => {
 	  templates$c[a[1]] = () => {
-	    return a[0];
+	    return a[0]
 	  };
 	});
 	//cricket
@@ -11552,7 +10670,7 @@
 	    let data = parse$2(tmpl);
 	    data.list = data.list || [];
 	    let years = [];
-	    for(let i = 0; i < data.list.length; i += 2) {
+	    for (let i = 0; i < data.list.length; i += 2) {
 	      let num = data.list[i + 1];
 	      years.push({
 	        year: data.list[i],
@@ -11562,12 +10680,13 @@
 	    data.data = years;
 	    delete data.list;
 	    r.templates.push(data);
-	    return '';
-	  },
+	    return ''
+	  }
 	};
 	var population = templates$d;
 
-	var politics = Object.assign({},
+	var politics = Object.assign(
+	  {},
 	  elections,
 	  flags_1,
 	  population
@@ -11625,7 +10744,7 @@
 	  nag: 'nag', //https://en.wikipedia.org/wiki/Template:Nagoya_Stock_Exchange
 	  kn: 'kn', //https://en.wikipedia.org/wiki/Template:Nairobi_Securities_Exchange
 	  'nasdaq dubai': 'nasdaq dubai', //https://en.wikipedia.org/wiki/Template:NASDAQ_Dubai
-	  'nasdaq': 'nasdaq', //https://en.wikipedia.org/wiki/Template:NASDAQ
+	  nasdaq: 'nasdaq', //https://en.wikipedia.org/wiki/Template:NASDAQ
 	  neeq: 'neeq', //https://en.wikipedia.org/wiki/Template:NEEQ
 	  nepse: 'nepse', //https://en.wikipedia.org/wiki/Template:Nepal_Stock_Exchange
 	  nyse: 'nyse', //https://en.wikipedia.org/wiki/Template:New_York_Stock_Exchange
@@ -11653,7 +10772,7 @@
 	  tsx: 'tsx', //https://en.wikipedia.org/wiki/Template:Toronto_Stock_Exchange
 	  twse: 'twse', //https://en.wikipedia.org/wiki/Template:Taiwan_Stock_Exchange
 	  'tsx-v': 'tsx-v', //https://en.wikipedia.org/wiki/Template:TSX_Venture_Exchange
-	  'tsxv': 'tsxv', //https://en.wikipedia.org/wiki/Template:TSX_Venture_Exchange
+	  tsxv: 'tsxv', //https://en.wikipedia.org/wiki/Template:TSX_Venture_Exchange
 	  nex: 'nex', //https://en.wikipedia.org/wiki/Template:TSXV_NEX
 	  ttse: 'ttse', //https://en.wikipedia.org/wiki/Template:Trinidad_and_Tobago_Stock_Exchange
 	  'pfts ukraine stock exchange': 'pfts ukraine stock exchange', //https://en.wikipedia.org/wiki/Template:PFTS_Ukraine_Stock_Exchange
@@ -11683,8 +10802,7 @@
 	  return str
 	};
 
-	const currencies$1 = {
-	};
+	const currencies$1 = {};
 	//the others fit the same pattern..
 	Object.keys(codes$1).forEach(k => {
 	  currencies$1[k] = parseStockExchange;
@@ -11693,22 +10811,22 @@
 	var stockexchange = currencies$1;
 
 	const misc$4 = {
-	  'timeline': (tmpl, r) => {
+	  timeline: (tmpl, r) => {
 	    let data = parse$2(tmpl);
 	    r.templates.push(data);
-	    return '';
+	    return ''
 	  },
-	  'uss': (tmpl, r) => {
+	  uss: (tmpl, r) => {
 	    let order = ['ship', 'id'];
 	    let obj = parse$2(tmpl, order);
 	    r.templates.push(obj);
-	    return '';
+	    return ''
 	  },
-	  'isbn': (tmpl, r) => {
+	  isbn: (tmpl, r) => {
 	    let order = ['id', 'id2', 'id3'];
 	    let obj = parse$2(tmpl, order);
 	    r.templates.push(obj);
-	    return 'ISBN: ' + (obj.id || '');
+	    return 'ISBN: ' + (obj.id || '')
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Marriage
 	  //this one creates a template, and an inline response
@@ -11723,13 +10841,13 @@
 	        str += ` (m. ${data.from})`;
 	      }
 	    }
-	    return str;
+	    return str
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Based_on
 	  'based on': (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['title', 'author']);
 	    r.templates.push(obj);
-	    return `${obj.title} by ${obj.author || ''}`;
+	    return `${obj.title} by ${obj.author || ''}`
 	  },
 	  //https://en.wikipedia.org/wiki/Template:Video_game_release
 	  'video game release': (tmpl, r) => {
@@ -11739,31 +10857,32 @@
 	      template: 'video game release',
 	      releases: []
 	    };
-	    for(let i = 0; i < order.length; i += 2) {
+	    for (let i = 0; i < order.length; i += 2) {
 	      if (obj[order[i]]) {
 	        template.releases.push({
 	          region: obj[order[i]],
-	          date: obj[order[i + 1]],
+	          date: obj[order[i + 1]]
 	        });
 	      }
 	    }
 	    r.templates.push(template);
-	    let str = template.releases.map((o) => `${o.region}: ${o.date || ''}`).join('\n\n');
-	    return '\n' + str + '\n';
+	    let str = template.releases.map(o => `${o.region}: ${o.date || ''}`).join('\n\n');
+	    return '\n' + str + '\n'
 	  },
 	  //barrels of oil https://en.wikipedia.org/wiki/Template:Bbl_to_t
 	  'bbl to t': (tmpl, r) => {
 	    let obj = parse$2(tmpl, ['barrels']);
 	    r.templates.push(obj);
 	    if (obj.barrels === '0') {
-	      return obj.barrels + ' barrel';
+	      return obj.barrels + ' barrel'
 	    }
-	    return obj.barrels + ' barrels';
-	  },
+	    return obj.barrels + ' barrels'
+	  }
 	};
 	var misc_1$1 = misc$4;
 
-	const templates$e = Object.assign({},
+	const templates$e = Object.assign(
+	  {},
 	  wikipedia,
 	  identities,
 	  dates,
@@ -11786,14 +10905,14 @@
 	  //we explicitly ignore these templates
 	  if (_ignore.hasOwnProperty(name) === true) {
 	    wiki = wiki.replace(tmpl, '');
-	    return wiki;
+	    return wiki
 	  }
 
 	  //match any known template forms (~1,000!)
 	  if (templates$e.hasOwnProperty(name) === true) {
 	    let str = templates$e[name](tmpl, data);
 	    wiki = wiki.replace(tmpl, str);
-	    return wiki;
+	    return wiki
 	  }
 	  // {{infobox settlement...}}
 	  if (_infobox.isInfobox(name) === true) {
@@ -11801,14 +10920,14 @@
 	    let infobox = _infobox.format(obj);
 	    data.templates.push(infobox);
 	    wiki = wiki.replace(tmpl, '');
-	    return wiki;
+	    return wiki
 	  }
 	  //cite book, cite arxiv...
 	  if (/^cite [a-z]/.test(name) === true) {
 	    let obj = parse$2(tmpl, data);
 	    data.templates.push(obj);
 	    wiki = wiki.replace(tmpl, '');
-	    return wiki;
+	    return wiki
 	  }
 	  //fallback parser
 	  let obj = parse$2(tmpl);
@@ -11816,7 +10935,7 @@
 	    data.templates.push(obj);
 	  }
 	  wiki = wiki.replace(tmpl, '');
-	  return wiki;
+	  return wiki
 	};
 	var parse_1 = parseTemplate;
 
@@ -11824,11 +10943,11 @@
 	const citations = {
 	  citation: true,
 	  refn: true,
-	  harvnb: true,
+	  harvnb: true
 	};
 	//ensure references and infoboxes at least look valid
 	const isObject = function(x) {
-	  return (typeof x === 'object') && (x !== null) && x.constructor.toString().indexOf('Array') === -1;
+	  return typeof x === 'object' && x !== null && x.constructor.toString().indexOf('Array') === -1
 	};
 
 	//reduce the scary recursive situations
@@ -11854,22 +10973,22 @@
 	  });
 	  //lastly, move citations + infoboxes out of our templates list
 	  let clean = [];
-	  data.templates.forEach((o) => {
+	  data.templates.forEach(o => {
 	    //it's possible that we've parsed a reference, that we missed earlier
 	    if (citations[o.template] === true || isCitation.test(o.template) === true) {
 	      data.references = data.references || [];
 	      data.references.push(new Reference_1(o));
-	      return;
+	      return
 	    }
 	    if (o.template === 'infobox' && o.data && isObject(o.data)) {
 	      data.infoboxes = data.infoboxes || [];
 	      data.infoboxes.push(new Infobox_1(o));
-	      return;
+	      return
 	    }
 	    clean.push(o);
 	  });
 	  data.templates = clean;
-	  return wiki;
+	  return wiki
 	};
 
 	var templates$f = parseTemplates;
@@ -11884,7 +11003,7 @@
 	    let images = inside.split(/\n/g);
 	    images = images.filter(str => str && str.trim() !== '');
 	    //parse the line, which has an image and sometimes a caption
-	    images = images.map((str) => {
+	    images = images.map(str => {
 	      let arr = str.split(/\|/);
 	      let obj = {
 	        file: arr[0].trim()
@@ -11894,7 +11013,7 @@
 	      if (caption !== '') {
 	        img.caption = parseSentence$6(caption);
 	      }
-	      return img;
+	      return img
 	    });
 	    //add it to our templates list
 	    if (images.length > 0) {
@@ -11903,25 +11022,28 @@
 	        images: images
 	      });
 	    }
-	    return '';
+	    return ''
 	  });
-	  return wiki;
+	  return wiki
 	};
 	var gallery = parseGallery;
 
 	//this is a non-traditional template, for some reason
 	//https://en.wikipedia.org/wiki/Template:Election_box
 	const parseElection = function(wiki, section) {
-	  wiki = wiki.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, (tmpl) => {
+	  wiki = wiki.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, tmpl => {
 	    let data = {
 	      templates: []
 	    };
 	    //put it through our full template parser..
 	    templates$f(tmpl, data);
 	    //okay, pull it apart into something sensible..
-	    let start = data.templates.find((t) => t.template === 'election box') || {};
-	    let candidates = data.templates.filter((t) => t.template === 'election box candidate');
-	    let summary = data.templates.find((t) => t.template === 'election box gain' || t.template === 'election box hold') || {};
+	    let start = data.templates.find(t => t.template === 'election box') || {};
+	    let candidates = data.templates.filter(t => t.template === 'election box candidate');
+	    let summary =
+	      data.templates.find(
+	        t => t.template === 'election box gain' || t.template === 'election box hold'
+	      ) || {};
 	    if (candidates.length > 0 || summary) {
 	      section.templates.push({
 	        template: 'election box',
@@ -11931,26 +11053,14 @@
 	      });
 	    }
 	    //remove it all
-	    return '';
+	    return ''
 	  });
-	  return wiki;
+	  return wiki
 	};
 	var election = parseElection;
 
 	const keys = {
-	  coach: [
-	    'team',
-	    'year',
-	    'g',
-	    'w',
-	    'l',
-	    'w-l%',
-	    'finish',
-	    'pg',
-	    'pw',
-	    'pl',
-	    'pw-l%'
-	  ],
+	  coach: ['team', 'year', 'g', 'w', 'l', 'w-l%', 'finish', 'pg', 'pw', 'pl', 'pw-l%'],
 	  player: [
 	    'year',
 	    'team',
@@ -11964,47 +11074,37 @@
 	    'apg',
 	    'spg',
 	    'bpg',
-	    'ppg',
-	  ],
-	  roster: [
-	    'player',
-	    'gp',
-	    'gs',
-	    'mpg',
-	    'fg%',
-	    '3fg%',
-	    'ft%',
-	    'rpg',
-	    'apg',
-	    'spg',
-	    'bpg',
 	    'ppg'
 	  ],
+	  roster: ['player', 'gp', 'gs', 'mpg', 'fg%', '3fg%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg']
 	};
 
 	//https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
 	const parseNBA = function(wiki, section) {
-	  wiki = wiki.replace(/\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi, (tmpl, name) => {
-	    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
-	    tmpl = tmpl.replace(/\{\{s-end\}\}/, '');
-	    name = name.toLowerCase().trim();
-	    let headers = '! ' + keys[name].join(' !! ');
-	    let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
-	    let rows = parse$3(table);
+	  wiki = wiki.replace(
+	    /\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi,
+	    (tmpl, name) => {
+	      tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
+	      tmpl = tmpl.replace(/\{\{s-end\}\}/, '');
+	      name = name.toLowerCase().trim();
+	      let headers = '! ' + keys[name].join(' !! ');
+	      let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
+	      let rows = parse$3(table);
 
-	    rows = rows.map((row) => {
-	      Object.keys(row).forEach((k) => {
-	        row[k] = row[k].text();
+	      rows = rows.map(row => {
+	        Object.keys(row).forEach(k => {
+	          row[k] = row[k].text();
+	        });
+	        return row
 	      });
-	      return row;
-	    });
-	    section.templates.push({
-	      template: 'NBA ' + name + ' statistics',
-	      data: rows
-	    });
-	    return '';
-	  });
-	  return wiki;
+	      section.templates.push({
+	        template: 'NBA ' + name + ' statistics',
+	        data: rows
+	      });
+	      return ''
+	    }
+	  );
+	  return wiki
 	};
 	var nba = parseNBA;
 
@@ -12022,56 +11122,70 @@
 	  if (/\|box=y/i.test(tmpl) === true) {
 	    headings.push('box'); //record, box
 	  }
-	  return headings;
+	  return headings
 	};
 
 	const parseMlb = function(wiki, section) {
-	  wiki = wiki.replace(/\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi, (tmpl) => {
-	    let headings = whichHeadings(tmpl);
-	    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
-	    tmpl = tmpl.replace(/\{\{mlb game log (section|month) end\}\}/i, '');
-	    let headers = '! ' + headings.join(' !! ');
-	    let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
-	    let rows = parse$3(table);
-	    rows = rows.map((row) => {
-	      Object.keys(row).forEach((k) => {
-	        row[k] = row[k].text();
+	  wiki = wiki.replace(
+	    /\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi,
+	    tmpl => {
+	      let headings = whichHeadings(tmpl);
+	      tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
+	      tmpl = tmpl.replace(/\{\{mlb game log (section|month) end\}\}/i, '');
+	      let headers = '! ' + headings.join(' !! ');
+	      let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
+	      let rows = parse$3(table);
+	      rows = rows.map(row => {
+	        Object.keys(row).forEach(k => {
+	          row[k] = row[k].text();
+	        });
+	        return row
 	      });
-	      return row;
-	    });
-	    section.templates.push({
-	      template: 'mlb game log section',
-	      data: rows
-	    });
-	    return '';
-	  });
-	  return wiki;
+	      section.templates.push({
+	        template: 'mlb game log section',
+	        data: rows
+	      });
+	      return ''
+	    }
+	  );
+	  return wiki
 	};
 	var mlb = parseMlb;
 
-	let headings$1 = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes'];
+	let headings$1 = [
+	  'res',
+	  'record',
+	  'opponent',
+	  'method',
+	  'event',
+	  'date',
+	  'round',
+	  'time',
+	  'location',
+	  'notes'
+	];
 
 	//https://en.wikipedia.org/wiki/Template:MMA_record_start
 	const parseMMA = function(wiki, section) {
-	  wiki = wiki.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, (tmpl) => {
+	  wiki = wiki.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, tmpl => {
 	    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
 	    tmpl = tmpl.replace(/\{\{end\}\}/i, '');
 	    let headers = '! ' + headings$1.join(' !! ');
 	    let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
 	    let rows = parse$3(table);
-	    rows = rows.map((row) => {
-	      Object.keys(row).forEach((k) => {
+	    rows = rows.map(row => {
+	      Object.keys(row).forEach(k => {
 	        row[k] = row[k].text();
 	      });
-	      return row;
+	      return row
 	    });
 	    section.templates.push({
 	      template: 'mma record start',
 	      data: rows
 	    });
-	    return '';
+	    return ''
 	  });
-	  return wiki;
+	  return wiki
 	};
 	var mma = parseMMA;
 
@@ -12089,19 +11203,19 @@
 	    });
 	    //should we atleast try to render it in plaintext? :/
 	    if (formula && formula.length < 12) {
-	      return formula;
+	      return formula
 	    }
-	    return '';
+	    return ''
 	  });
 	  //try chemistry version too
 	  wiki = wiki.replace(/<chem([^>]*?)>([\s\S]+?)<\/chem>/g, (_, attrs, inside) => {
 	    section.templates.push({
 	      template: 'chem',
-	      data: inside,
+	      data: inside
 	    });
-	    return '';
+	    return ''
 	  });
-	  return wiki;
+	  return wiki
 	};
 	var math$1 = parseMath;
 
@@ -12115,7 +11229,7 @@
 	  wiki = nba(wiki, section);
 	  wiki = mma(wiki, section);
 	  wiki = mlb(wiki, section);
-	  return wiki;
+	  return wiki
 	};
 
 	var startToEnd = xmlTemplates;
@@ -12133,7 +11247,7 @@
 	  startEndTemplates: startToEnd
 	};
 
-	const oneSection = function( wiki, data, options) {
+	const oneSection = function(wiki, data, options) {
 	  wiki = parse$5.startEndTemplates(data, wiki, options);
 	  //parse-out the <ref></ref> tags
 	  wiki = parse$5.references(wiki, data);
@@ -12146,7 +11260,7 @@
 	  data.paragraphs = res.paragraphs;
 	  wiki = res.wiki;
 	  data = new Section_1(data, wiki);
-	  return data;
+	  return data
 	};
 
 	//we re-create this in html/markdown outputs
@@ -12154,20 +11268,20 @@
 	  return sections.filter((s, i) => {
 	    if (isReference.test(s.title()) === true) {
 	      if (s.paragraphs().length > 0) {
-	        return true;
+	        return true
 	      }
 	      //does it have some wacky templates?
 	      if (s.templates().length > 0) {
-	        return true;
+	        return true
 	      }
 	      //what it has children? awkward
 	      if (sections[i + 1] && sections[i + 1].depth > s.depth) {
 	        sections[i + 1].depth -= 1; //move it up a level?...
 	      }
-	      return false;
+	      return false
 	    }
-	    return true;
-	  });
+	    return true
+	  })
 	};
 
 	const parseSections = function(wiki, options) {
@@ -12176,15 +11290,16 @@
 	  for (let i = 0; i < split.length; i += 2) {
 	    let heading = split[i - 1] || '';
 	    let content = split[i] || '';
-	    if (content === '' && heading === '') { //usually an empty 'intro' section
-	      continue;
+	    if (content === '' && heading === '') {
+	      //usually an empty 'intro' section
+	      continue
 	    }
 	    let data = {
 	      title: '',
 	      depth: null,
 	      templates: [],
 	      infoboxes: [],
-	      references: [],
+	      references: []
 	    };
 	    //figure-out title/depth
 	    parse$5.heading(data, heading);
@@ -12195,12 +11310,15 @@
 	  //remove empty references section
 	  sections = removeReferenceSection(sections);
 
-	  return sections;
+	  return sections
 	};
 
 	var _02Section = parseSections;
 
-	const cat_reg$1 = new RegExp('\\[\\[:?(' + i18n_1.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'ig');
+	const cat_reg$1 = new RegExp(
+	  '\\[\\[:?(' + i18n_1.categories.join('|') + '):(.{2,178}?)]](w{0,10})',
+	  'ig'
+	);
 	const cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n_1.categories.join('|') + '):', 'ig');
 
 	const parse_categories = function(r, wiki) {
@@ -12217,7 +11335,7 @@
 	    });
 	  }
 	  wiki = wiki.replace(cat_reg$1, '');
-	  return wiki;
+	  return wiki
 	};
 	var categories = parse_categories;
 
@@ -12235,14 +11353,14 @@
 	    title: '',
 	    sections: [],
 	    categories: [],
-	    coordinates: [],
+	    coordinates: []
 	  };
 	  //detect if page is just redirect, and return it
 	  if (redirects.isRedirect(wiki) === true) {
 	    data.type = 'redirect';
 	    data.redirectTo = redirects.parse(wiki);
 	    parse$6.categories(data, wiki);
-	    return new Document_1(data, options);
+	    return new Document_1(data, options)
 	  }
 	  //detect if page is just disambiguator page, and return
 	  if (disambig.isDisambig(wiki) === true) {
@@ -12261,7 +11379,7 @@
 	  //parse all the headings, and their texts/sentences
 	  data.sections = parse$6.section(wiki, options) || [];
 	  //all together now
-	  return new Document_1(data, options);
+	  return new Document_1(data, options)
 	};
 
 	var _01Document = main;
@@ -12280,7 +11398,7 @@
 	  let docs = pages.map(id => {
 	    let page = data.query.pages[id] || {};
 	    if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
-	      return null;
+	      return null
 	    }
 	    let text = page.revisions[0]['*'];
 	    //us the 'generator' result format, for the random() method
@@ -12292,13 +11410,13 @@
 	      pageID: page.pageid
 	    };
 	    try {
-	      return _01Document(text, opt);
+	      return _01Document(text, opt)
 	    } catch (e) {
 	      console.error(e);
 	      throw e
 	    }
 	  });
-	  return docs;
+	  return docs
 	};
 
 	//recursive fn to fetch groups of pages, serially
@@ -12306,35 +11424,35 @@
 	  let todo = pages.slice(0, MAX_PAGES);
 	  let url = _url(todo, lang, options);
 	  let p = _request(url, options);
-	  p.then((wiki) => {
+	  p.then(wiki => {
 	    let res = postProcess(wiki);
 	    results = results.concat(res);
 	    let remain = pages.slice(MAX_PAGES);
 	    if (remain.length > 0) {
-	      return doPages(remain, results, lang, options, cb); //recursive
+	      return doPages(remain, results, lang, options, cb) //recursive
 	    }
-	    return cb(results);
-	  }).catch((e) => {
+	    return cb(results)
+	  }).catch(e => {
 	    console.error('wtf_wikipedia error: ' + e);
 	    cb(results);
 	  });
 	};
 
 	//grab a single, or list of pages (or ids)
-	const fetchPage = function( pages = [] , a, b, c) {
+	const fetchPage = function(pages = [], a, b, c) {
 	  if (typeof pages !== 'object') {
 	    pages = [pages];
 	  }
-	  let {lang, options, callback} = _params(a, b, c);
+	  let { lang, options, callback } = _params(a, b, c);
 	  return new Promise(function(resolve, reject) {
 	    // courtesy-check for spamming wp servers
 	    if (pages.length > 500) {
 	      console.error('wtf_wikipedia error: Requested ' + pages.length + ' pages.');
 	      reject('Requested too many pages, exiting.');
-	      return;
+	      return
 	    }
-	    doPages(pages, [], lang, options, (docs) => {
-	      docs = docs.filter((d) => d !== null);
+	    doPages(pages, [], lang, options, docs => {
+	      docs = docs.filter(d => d !== null);
 	      //return the first doc, if we only asked for one
 	      if (pages.length === 1) {
 	        docs = docs[0];
@@ -12346,7 +11464,7 @@
 	      }
 	      resolve(docs);
 	    });
-	  });
+	  })
 	};
 
 	var fetch = fetchPage;
@@ -12357,7 +11475,7 @@
 	    url = site_map_1[lang] + '/w/api.php';
 	  }
 	  url += `?format=json&action=query&generator=random&grnnamespace=0&prop=revisions&rvprop=content&grnlimit=1&rvslots=main&origin=*`;
-	  return url;
+	  return url
 	};
 
 	//this data-format from mediawiki api is nutso
@@ -12366,14 +11484,14 @@
 	  let id = pages[0];
 	  let page = data.query.pages[id] || {};
 	  if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
-	    return null;
+	    return null
 	  }
 	  //us the 'generator' result format, for the random() method
 	  let text = page.revisions[0].slots.main['*'];
 	  options.title = page.title;
 	  options.pageID = page.pageid;
 	  try {
-	    return _01Document(text, options);
+	    return _01Document(text, options)
 	  } catch (e) {
 	    console.error(e);
 	    throw e
@@ -12382,29 +11500,31 @@
 
 	//fetch and parse a random page from the api
 	const getRandom = function(a, b, c) {
-	  let {lang, options, callback} = _params(a, b, c);
+	  let { lang, options, callback } = _params(a, b, c);
 	  let url = makeUrl$1(lang);
 	  return new Promise(function(resolve, reject) {
 	    let p = _request(url, options);
-	    p.then((res) => {
-	      return postProcess$1(res, options);
-	    }).then((doc) => {
-	      //support 'err-back' format
-	      if (typeof callback === 'function') {
-	        callback(null, doc);
-	      }
-	      resolve(doc);
-	    }).catch(reject);
-	  });
+	    p.then(res => {
+	      return postProcess$1(res, options)
+	    })
+	      .then(doc => {
+	        //support 'err-back' format
+	        if (typeof callback === 'function') {
+	          callback(null, doc);
+	        }
+	        resolve(doc);
+	      })
+	      .catch(reject);
+	  })
 	};
 	var random = getRandom;
 
-	const normalizeCategory = function( cat = '' ) {
+	const normalizeCategory = function(cat = '') {
 	  if (/^Category/i.test(cat) === false) {
 	    cat = 'Category:' + cat;
 	  }
 	  cat = cat.replace(/ /g, '_');
-	  return cat;
+	  return cat
 	};
 
 	const makeUrl$2 = function(cat, lang, options) {
@@ -12417,29 +11537,26 @@
 	    url = options.wikiUrl;
 	  }
 	  url += `?action=query&list=categorymembers&cmtitle=${cat}&cmlimit=500&format=json&origin=*&redirects=true&cmtype=page|subcat`;
-	  return url;
+	  return url
 	};
-
 
 	const addResult = function(body, out) {
 	  if (body.query && body.query.categorymembers) {
 	    let list = body.query.categorymembers;
-	    list.forEach((p) => {
+	    list.forEach(p => {
 	      if (p.ns === 14) {
 	        out.categories.push(p);
 	      } else {
 	        out.pages.push(p);
 	      }
 	    });
-	    return out;
+	    return out
 	  }
-	  return out;
+	  return out
 	};
 
-
-
 	const getCategories = function(cat, a, b, c) {
-	  let {lang, options, callback} = _params(a, b, c);
+	  let { lang, options, callback } = _params(a, b, c);
 	  //cleanup cat name
 	  cat = normalizeCategory(cat);
 	  let url = makeUrl$2(cat, lang, options);
@@ -12451,13 +11568,18 @@
 	    categories: []
 	  };
 
-	  const doit = function( cntd = '' , cb) {
+	  const doit = function(cntd = '', cb) {
 	    let myUrl = url + '&cmcontinue=' + cntd;
 	    let p = _request(myUrl, options);
-	    p.then((body) => {
+	    p.then(body => {
 	      output = addResult(body, output);
 	      //should we do another?
-	      if (body.continue && body.continue.cmcontinue && body.continue.cmcontinue !== cntd && safety < 25) {
+	      if (
+	        body.continue &&
+	        body.continue.cmcontinue &&
+	        body.continue.cmcontinue !== cntd &&
+	        safety < 25
+	      ) {
 	        safety += 1;
 	        doit(body.continue.cmcontinue, cb);
 	      } else {
@@ -12467,7 +11589,7 @@
 	  };
 
 	  return new Promise(function(resolve, reject) {
-	    doit('', (err) => {
+	    doit('', err => {
 	      if (typeof callback === 'function') {
 	        callback(err, output);
 	      }
@@ -12476,7 +11598,7 @@
 	      }
 	      resolve(output);
 	    });
-	  });
+	  })
 	};
 
 	var category = getCategories;
@@ -12485,16 +11607,16 @@
 
 	//the main 'factory' exported method
 	const wtf = function(wiki, options) {
-	  return _01Document(wiki, options);
+	  return _01Document(wiki, options)
 	};
 	wtf.fetch = function(title, lang, options, cb) {
-	  return fetch(title, lang, options, cb);
+	  return fetch(title, lang, options, cb)
 	};
 	wtf.random = function(lang, options, cb) {
-	  return random(lang, options, cb);
+	  return random(lang, options, cb)
 	};
 	wtf.category = function(cat, lang, options, cb) {
-	  return category(cat, lang, options, cb);
+	  return category(cat, lang, options, cb)
 	};
 	wtf.version = _version;
 
