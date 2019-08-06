@@ -26,8 +26,7 @@ const makeUrl = function(title, lang, options) {
     url = options.wikiUrl
   }
   //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-  url +=
-    '?action=query&prop=revisions&rvprop=content&maxlag=5&rvslots=main&origin=*&format=json'
+  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&rvslots=main&origin=*&format=json'
   if (options.follow_redirects !== false) {
     url += '&redirects=true'
   }

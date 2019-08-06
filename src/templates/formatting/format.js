@@ -15,9 +15,7 @@ let templates = {
       if (ignore[obj.tag]) {
         return obj.content || ''
       }
-      return `<${obj.tag} ${obj.attribs || ''}>${obj.content || ''}</${
-        obj.tag
-      }>`
+      return `<${obj.tag} ${obj.attribs || ''}>${obj.content || ''}</${obj.tag}>`
     }
     return ''
   },

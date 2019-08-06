@@ -1,12 +1,12 @@
 //random misc for inline wikipedia templates
-const parse = require('../_parsers/parse');
+const parse = require('../_parsers/parse')
 
-const titlecase = (str) => {
-  return str.charAt(0).toUpperCase() + str.substring(1);
-};
+const titlecase = str => {
+  return str.charAt(0).toUpperCase() + str.substring(1)
+}
 
 //https://en.wikipedia.org/wiki/Template:Yes
-let templates = {};
+let templates = {}
 let cells = [
   'rh',
   'rh2',
@@ -71,14 +71,14 @@ let cells = [
   'crecurring',
   'cguest',
   'not yet',
-  'optional',
-];
-cells.forEach((str) => {
-  templates[str] = (tmpl) => {
-    let data = parse(tmpl, ['text']);
-    return data.text || titlecase(data.template);
-  };
-});
+  'optional'
+]
+cells.forEach(str => {
+  templates[str] = tmpl => {
+    let data = parse(tmpl, ['text'])
+    return data.text || titlecase(data.template)
+  }
+})
 
 //these ones have a text result
 let moreCells = [
@@ -99,19 +99,19 @@ let moreCells = [
   ['dunno', '?'],
   ['draw', ''],
   ['cnone', ''],
-  ['nocontest', ''],
-];
-moreCells.forEach((a) => {
-  templates[a[0]] = (tmpl) => {
-    let data = parse(tmpl, ['text']);
-    return data.text || a[1];
-  };
-});
+  ['nocontest', '']
+]
+moreCells.forEach(a => {
+  templates[a[0]] = tmpl => {
+    let data = parse(tmpl, ['text'])
+    return data.text || a[1]
+  }
+})
 
 //this one's a little different
-templates.won = (tmpl) => {
-  let data = parse(tmpl, ['text']);
-  return data.place || data.text || titlecase(data.template);
-};
+templates.won = tmpl => {
+  let data = parse(tmpl, ['text'])
+  return data.place || data.text || titlecase(data.template)
+}
 
-module.exports = templates;
+module.exports = templates

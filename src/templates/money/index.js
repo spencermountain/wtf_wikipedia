@@ -23,7 +23,7 @@ const codes = {
   'gb£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
   '£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
   hkd: 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
-  'hk$': 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
+  hk$: 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
   ils: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
   '₹': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
   inr: '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
@@ -57,7 +57,7 @@ const codes = {
   sek: 'SEK', // https://en.wikipedia.org/wiki/Template:SEK
   sek2: 'SEK', // https://en.wikipedia.org/wiki/Template:SEK
   sgd: 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
-  's$': 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
+  s$: 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
   'SK won': '₩', // https://en.wikipedia.org/wiki/Template:SK_won
   ttd: 'TTD', //https://en.wikipedia.org/wiki/Template:TTD
   'turkish lira': 'TRY', //https://en.wikipedia.org/wiki/Template:Turkish_lira
@@ -71,23 +71,28 @@ const parseCurrency = (tmpl, r) => {
   r.templates.push(o)
   let code = o.template || ''
   if (code === 'currency') {
-	code = o.code
-	if (!code) {
-		o.code = code = 'usd';//Special case when currency template has no code argument
-	}
-  }
-  else if (code === '' || code === 'monnaie' || code === 'unité' || code === 'nombre' || code === 'nb') {
+    code = o.code
+    if (!code) {
+      o.code = code = 'usd' //Special case when currency template has no code argument
+    }
+  } else if (
+    code === '' ||
+    code === 'monnaie' ||
+    code === 'unité' ||
+    code === 'nombre' ||
+    code === 'nb'
+  ) {
     code = o.code
   }
   code = (code || '').toLowerCase()
-    switch(code) {
-      case 'us':
-        o.code = code = 'usd';
-        break;
-      case 'uk':
-        o.code = code = 'gbp';
-        break;
-    }
+  switch (code) {
+    case 'us':
+      o.code = code = 'usd'
+      break
+    case 'uk':
+      o.code = code = 'gbp'
+      break
+  }
   let out = codes[code] || ''
   let str = `${out}${o.amount || ''}`
   //support unknown currencies after the number - like '5 BTC'
@@ -102,32 +107,31 @@ const inrConvert = (tmpl, r) => {
   r.templates.push(o)
   let formatting = o.currency_formatting
   if (formatting) {
-	let multiplier = 1;
-    switch(formatting) {
+    let multiplier = 1
+    switch (formatting) {
       case 'k':
-        multiplier = 1000;
-        break;
+        multiplier = 1000
+        break
       case 'm':
-        multiplier = 1000000;
-        break;
+        multiplier = 1000000
+        break
       case 'b':
-        multiplier = 1000000000;
-        break;
+        multiplier = 1000000000
+        break
       case 't':
-        multiplier = 1000000000000;
-        break;
+        multiplier = 1000000000000
+        break
       case 'l':
-        multiplier = 100000;
-        break;
+        multiplier = 100000
+        break
       case 'c':
-        multiplier = 10000000;
-        break;
+        multiplier = 10000000
+        break
       case 'lc':
-        multiplier = 1000000000000;
-        break;
+        multiplier = 1000000000000
+        break
     }
     o.rupee_value = o.rupee_value * multiplier
-	
   }
   let str = `inr ${o.rupee_value || ''}`
   return str

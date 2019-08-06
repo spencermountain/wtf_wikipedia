@@ -11,7 +11,7 @@ let i18n = {
     'پرونده',
     'tiedosto',
     'mynd',
-    'su\'wret',
+    "su'wret",
     'fichier',
     'bestand',
     'датотека',
@@ -161,16 +161,16 @@ let i18n = {
     '関連項目', //see also (ja)
     '外部リンク' //external links (ja)
   ]
-};
+}
 
-let dictionary = {};
+let dictionary = {}
 Object.keys(i18n).forEach(k => {
   i18n[k].forEach(w => {
-    dictionary[w] = true;
-  });
-});
-i18n.dictionary = dictionary;
+    dictionary[w] = true
+  })
+})
+i18n.dictionary = dictionary
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = i18n;
+  module.exports = i18n
 }

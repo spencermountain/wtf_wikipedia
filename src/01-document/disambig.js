@@ -1,8 +1,11 @@
-const i18n = require('../_data/i18n');
-const template_reg = new RegExp('\\{\\{ ?(' + i18n.disambigs.join('|') + ')(\\|[a-z, =]*?)? ?\\}\\}', 'i');
+const i18n = require('../_data/i18n')
+const template_reg = new RegExp(
+  '\\{\\{ ?(' + i18n.disambigs.join('|') + ')(\\|[a-z, =]*?)? ?\\}\\}',
+  'i'
+)
 
 //special disambig-templates en-wikipedia uses
-let d = ' disambiguation';
+let d = ' disambiguation'
 const english = [
   'airport',
   'biology' + d,
@@ -41,20 +44,20 @@ const english = [
   'synagogue' + d,
   'taxonomic authority' + d,
   'taxonomy' + d,
-  'wp disambig',
-];
-const enDisambigs = new RegExp('\\{\\{ ?(' + english.join('|') + ')(\\|[a-z, =]*?)? ?\\}\\}', 'i');
+  'wp disambig'
+]
+const enDisambigs = new RegExp('\\{\\{ ?(' + english.join('|') + ')(\\|[a-z, =]*?)? ?\\}\\}', 'i')
 
 const isDisambig = function(wiki) {
   //test for {{disambiguation}} templates
   if (template_reg.test(wiki) === true) {
-    return true;
+    return true
   }
   //more english-centric disambiguation templates
 
   //{{hndis}}, etc
   if (enDisambigs.test(wiki) === true) {
-    return true;
+    return true
   }
 
   //try 'may refer to' on first line for en-wiki?
@@ -64,9 +67,9 @@ const isDisambig = function(wiki) {
   //     return true;
   //   }
   // }
-  return false;
-};
+  return false
+}
 
 module.exports = {
   isDisambig: isDisambig
-};
+}

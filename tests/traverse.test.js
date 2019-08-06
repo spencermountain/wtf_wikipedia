@@ -1,38 +1,38 @@
-'use strict';
-var test = require('tape');
-var readFile = require('./lib/_cachedPage');
+'use strict'
+var test = require('tape')
+var readFile = require('./lib/_cachedPage')
 
 test('traverse sections', t => {
-  var doc = readFile('toronto');
-  t.equal(doc.sections().length, 34, 'init section count');
+  var doc = readFile('toronto')
+  t.equal(doc.sections().length, 34, 'init section count')
 
   //start with history
-  var sec = doc.section('History');
-  t.equal(sec.title(), 'History', 'init history');
+  var sec = doc.section('History')
+  t.equal(sec.title(), 'History', 'init history')
 
   //skip-over to 0-Geography
-  sec = sec.nextSibling();
-  t.equal(sec.title(), 'Geography', 'skip-over children');
+  sec = sec.nextSibling()
+  t.equal(sec.title(), 'Geography', 'skip-over children')
 
-  var children = sec.children().map(s => s.title());
-  t.deepEqual(['Topography', 'Climate'], children, 'got two children');
+  var children = sec.children().map(s => s.title())
+  t.deepEqual(['Topography', 'Climate'], children, 'got two children')
 
   //go into both children, Topography+Climate
-  sec = sec.children(0);
-  t.equal(sec.title(), 'Topography', 'first child');
-  sec = sec.nextSibling();
-  t.equal(sec.title(), 'Climate', 'first child');
+  sec = sec.children(0)
+  t.equal(sec.title(), 'Topography', 'first child')
+  sec = sec.nextSibling()
+  t.equal(sec.title(), 'Climate', 'first child')
 
   //still at Geography..
-  sec = sec.parent();
-  t.equal(sec.title(), 'Geography', 'skip-over children');
+  sec = sec.parent()
+  t.equal(sec.title(), 'Geography', 'skip-over children')
   //access child by title
-  t.equal(sec.children(1).title(), 'Climate', 'second child');
+  t.equal(sec.children(1).title(), 'Climate', 'second child')
 
-  sec.remove();
-  t.equal(doc.sections().length, 31, 'removed self and children');
-  doc.sections('See also').remove();
-  t.equal(doc.sections().length, 30, 'removed one');
+  sec.remove()
+  t.equal(doc.sections().length, 31, 'removed self and children')
+  doc.sections('See also').remove()
+  t.equal(doc.sections().length, 30, 'removed one')
 
-  t.end();
-});
+  t.end()
+})

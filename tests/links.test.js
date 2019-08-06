@@ -1,6 +1,6 @@
-'use strict';
-var test = require('tape');
-var wtf = require('./lib');
+'use strict'
+var test = require('tape')
+var wtf = require('./lib')
 
 test('document-links', t => {
   var str = `before [[the shining|movie]]
@@ -21,47 +21,55 @@ after now
 * two
 * [[three]]
 * four
-`;
-  var links = wtf(str).links();
-  t.equal(links.length, 3, 'found-all-links');
-  t.ok(links.find(l => l.text), 'movie', 'link-text');
-  t.ok(links.find(l => l.page), 'Minnesota Twins', 'link-table');
-  t.ok(links.find(l => l.page), 'three', 'link-list');
-  t.end();
-});
+`
+  var links = wtf(str).links()
+  t.equal(links.length, 3, 'found-all-links')
+  t.ok(links.find(l => l.text), 'movie', 'link-text')
+  t.ok(links.find(l => l.page), 'Minnesota Twins', 'link-table')
+  t.ok(links.find(l => l.page), 'three', 'link-list')
+  t.end()
+})
 
 test('anchor-links', t => {
-  var str = `[[Doug Ford#Personal Life]]`;
-  var link = wtf(str).links(0);
-  t.equal(link.page, 'Doug Ford', 'page1');
-  t.equal(link.text, undefined, 'text1');
-  t.equal(link.anchor, 'Personal Life', 'anchor1');
+  var str = `[[Doug Ford#Personal Life]]`
+  var link = wtf(str).links(0)
+  t.equal(link.page, 'Doug Ford', 'page1')
+  t.equal(link.text, undefined, 'text1')
+  t.equal(link.anchor, 'Personal Life', 'anchor1')
 
-  str = `[[Toronto_Blue_Jays#Problems|Tranno J birds]]`;
-  var doc = wtf(str);
-  link = doc.links(0);
-  t.equal(link.page, 'Toronto_Blue_Jays', 'page2');
-  t.equal(link.text, 'Tranno J birds', 'text2');
-  t.equal(link.anchor, 'Problems', 'anchor2');
+  str = `[[Toronto_Blue_Jays#Problems|Tranno J birds]]`
+  var doc = wtf(str)
+  link = doc.links(0)
+  t.equal(link.page, 'Toronto_Blue_Jays', 'page2')
+  t.equal(link.text, 'Tranno J birds', 'text2')
+  t.equal(link.anchor, 'Problems', 'anchor2')
 
-  t.equal(doc.sentences(0).html(), '<span class="sentence"><a class="link" href="./Toronto_Blue_Jays#Problems">Tranno J birds</a></span>', 'html-anchor');
-  t.equal(doc.sentences(0).markdown(), '[Tranno J birds](./Toronto_Blue_Jays#Problems)', 'markdown-anchor');
+  t.equal(
+    doc.sentences(0).html(),
+    '<span class="sentence"><a class="link" href="./Toronto_Blue_Jays#Problems">Tranno J birds</a></span>',
+    'html-anchor'
+  )
+  t.equal(
+    doc.sentences(0).markdown(),
+    '[Tranno J birds](./Toronto_Blue_Jays#Problems)',
+    'markdown-anchor'
+  )
 
-  t.end();
-});
+  t.end()
+})
 
 test('title-case-links', t => {
-  t.equal(wtf('[[john]]').links(0).page, 'John', 'titlecase page');
-  t.equal(wtf('[[john]]').links(0).text, 'john', 'lowercase text');
+  t.equal(wtf('[[john]]').links(0).page, 'John', 'titlecase page')
+  t.equal(wtf('[[john]]').links(0).text, 'john', 'lowercase text')
 
-  t.equal(wtf('[[John smith]]').links(0).page, 'John smith', 'already titlecased');
-  t.equal(wtf('[[John]]').links(0).text, undefined, 'no text stored when already titlecase');
+  t.equal(wtf('[[John smith]]').links(0).page, 'John smith', 'already titlecased')
+  t.equal(wtf('[[John]]').links(0).text, undefined, 'no text stored when already titlecase')
 
-  t.equal(wtf('[[john|his son]]').links(0).text, 'his son', 'lowercase given text');
-  t.equal(wtf('[[john|his son]]').links(0).page, 'John', 'titlecase given page');
-  t.equal(wtf('[[John|his son]]').links(0).page, 'John', 'already titlecased given page');
-  t.end();
-});
+  t.equal(wtf('[[john|his son]]').links(0).text, 'his son', 'lowercase given text')
+  t.equal(wtf('[[john|his son]]').links(0).page, 'John', 'titlecase given page')
+  t.equal(wtf('[[John|his son]]').links(0).page, 'John', 'already titlecased given page')
+  t.end()
+})
 
 // test('tricksy-links', t => {
 //   var doc = wtf('then [[John Entwistle|John [Entwistle]]] and I');

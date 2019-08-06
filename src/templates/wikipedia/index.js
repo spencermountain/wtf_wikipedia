@@ -1,5 +1,1 @@
-module.exports = Object.assign({},
-  require('./links'),
-  require('./page'),
-  require('./table-cell')
-);
+module.exports = Object.assign({}, require('./links'), require('./page'), require('./table-cell'))

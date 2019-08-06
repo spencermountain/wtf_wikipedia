@@ -3,5 +3,5 @@ module.exports = {
   caption: true,
   alt: true,
   signature: true,
-  'signature alt': true,
-};
+  'signature alt': true
+}

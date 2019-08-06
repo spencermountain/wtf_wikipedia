@@ -1,0 +1,1 @@
+module.exports = '7.6.0'

@@ -1,7 +1,7 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "7.4.2",
+  "version": "7.6.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -9,16 +9,16 @@
   },
   "main": "src/index.js",
   "unpkg": "builds/wtf_wikipedia.min.js",
+  "module": "builds/wtf_wikipedia.mjs",
+  "types": "types/index.d.ts",
   "scripts": {
+    "build": "node ./scripts/version.js && rollup -c && node ./scripts/filesize.js",
     "start": "node ./scripts/demo.js",
-    "test": "node ./scripts/test.js",
-    "test-spec": "tape ./tests/*.test.js | tap-spec",
     "coverage": "node scripts/coverage.js",
-    "postpublish": "node ./scripts/coverage.js",
-    "testb": "TESTENV=prod node ./scripts/test.js",
+    "test": "node ./scripts/test.js",
     "watch": "amble ./scratch.js",
-    "build": "node ./scripts/build.js",
-    "lint": "eslint ./src/**/*.js"
+    "lint": "eslint ./src/**/*.js",
+    "test:types": "ts-node ./test/types/index.ts | tap-dancer"
   },
   "bin": {
     "wtf_wikipedia": "./bin/wtf.js"
@@ -30,6 +30,7 @@
     "builds",
     "api",
     "src",
+    "types",
     "bin"
   ],
   "keywords": [
@@ -38,23 +39,31 @@
     "wikipedia markup",
     "wikiscript"
   ],
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
+  },
   "dependencies": {
     "cross-fetch": "3.0.4"
   },
   "devDependencies": {
-    "@babel/core": "7.4.5",
-    "@babel/preset-env": "7.4.5",
+    "@babel/core": "7.5.5",
+    "@babel/preset-env": "7.5.5",
     "amble": "0.0.7",
-    "babelify": "10.0.0",
-    "browserify": "16.2.3",
     "codecov": "3.5.0",
-    "derequire": "2.0.6",
     "nyc": "14.1.1",
     "shelljs": "0.8.3",
     "tap-dancer": "0.2.0",
-    "tap-spec": "5.0.0",
-    "tape": "4.10.2",
-    "terser": "4.0.0"
+    "tape": "4.11.0",
+    "rollup": "1.19.3",
+    "rollup-plugin-babel": "4.3.3",
+    "rollup-plugin-commonjs": "10.0.1",
+    "rollup-plugin-json": "4.0.0",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "rollup-plugin-terser": "5.1.1"
   },
   "license": "MIT"
 }

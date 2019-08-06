@@ -144,4 +144,4 @@ module.exports = [
   'sep',
   'sept',
   '..'
-];
+]

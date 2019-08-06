@@ -1,5 +1,5 @@
 const wtf = require('./src/index')
-// const wtf = require('./builds/wtf_wikipedia.min');
+// const wtf = require('./builds/wtf_wikipedia.min')
 // const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');

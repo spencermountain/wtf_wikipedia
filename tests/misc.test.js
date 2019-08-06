@@ -1,6 +1,6 @@
-'use strict';
-var test = require('tape');
-var wtf = require('./lib');
+'use strict'
+var test = require('tape')
+var wtf = require('./lib')
 
 test('small headings', t => {
   var str = `
@@ -13,43 +13,43 @@ Displays memory at the specified virtual address using the specified format.
 
 ===xp===
 here too
-  `;
-  var sections = wtf(str).sections();
-  t.equal(sections[1].title(), 'gdbserver', 'first heading exists');
-  t.equal(sections[2].title(), 'x', 'x exists');
-  t.ok(sections[3].title, 'xp', 'xp exists');
-  t.equal(sections[4], undefined, 'foo doesnt exist');
-  t.end();
-});
+  `
+  var sections = wtf(str).sections()
+  t.equal(sections[1].title(), 'gdbserver', 'first heading exists')
+  t.equal(sections[2].title(), 'x', 'x exists')
+  t.ok(sections[3].title, 'xp', 'xp exists')
+  t.equal(sections[4], undefined, 'foo doesnt exist')
+  t.end()
+})
 
 test('font-size', t => {
-  var str = 'hello {{small|(1995-1997)}} world';
-  t.equal(wtf(str).plaintext(), 'hello (1995-1997) world', '{{small}}');
+  var str = 'hello {{small|(1995-1997)}} world'
+  t.equal(wtf(str).plaintext(), 'hello (1995-1997) world', '{{small}}')
 
-  str = 'hello {{huge|world}}';
-  t.equal(wtf(str).plaintext(), 'hello world', '{{huge}}');
+  str = 'hello {{huge|world}}'
+  t.equal(wtf(str).plaintext(), 'hello world', '{{huge}}')
 
-  str = `hello {{nowrap|{{small|(1995–present)}}}} world`;
-  t.equal(wtf(str).plaintext(), 'hello (1995–present) world', '{{nowrap}}');
-  t.end();
-});
+  str = `hello {{nowrap|{{small|(1995–present)}}}} world`
+  t.equal(wtf(str).plaintext(), 'hello (1995–present) world', '{{nowrap}}')
+  t.end()
+})
 
 test('external links', t => {
-  var str = `The [http://w110.bcn.cat/portal/site/Eixample] is the quarter designed`;
-  var obj = wtf(str);
-  var link = obj.sentences(0).links(0);
-  t.equal(link.text, '', 'link-text');
-  t.equal(link.site, 'http://w110.bcn.cat/portal/site/Eixample', 'link-site');
-  t.equal(link.type, 'external', 'link-type');
+  var str = `The [http://w110.bcn.cat/portal/site/Eixample] is the quarter designed`
+  var obj = wtf(str)
+  var link = obj.sentences(0).links(0)
+  t.equal(link.text, '', 'link-text')
+  t.equal(link.site, 'http://w110.bcn.cat/portal/site/Eixample', 'link-site')
+  t.equal(link.type, 'external', 'link-type')
 
-  str = `The [http://w110.bcn.cat/portal/site/Eixample Fun Times] is the quarter designed`;
-  obj = wtf(str);
-  link = obj.sentences(0).links(0);
-  t.equal(link.text, 'Fun Times', 'link-text');
-  t.equal(link.site, 'http://w110.bcn.cat/portal/site/Eixample', 'link-site');
-  t.equal(link.type, 'external', 'link-type');
-  t.end();
-});
+  str = `The [http://w110.bcn.cat/portal/site/Eixample Fun Times] is the quarter designed`
+  obj = wtf(str)
+  link = obj.sentences(0).links(0)
+  t.equal(link.text, 'Fun Times', 'link-text')
+  t.equal(link.site, 'http://w110.bcn.cat/portal/site/Eixample', 'link-site')
+  t.equal(link.type, 'external', 'link-type')
+  t.end()
+})
 
 test('misc templates', t => {
   var arr = [
@@ -78,16 +78,25 @@ test('misc templates', t => {
     [`{{plural|1|page}}`, '1 page'],
     [`{{plural|1.5|page}}`, '1.5 pages'],
     [`{{plural|20|fly}}`, '20 flies'],
-    [`{{hlist|Winner|Runner-up|Third place|item_style=color:blue;|indent=2}}`, 'Winner · Runner-up · Third place'],
-    [`{{block indent |1=The material to be indented here. May include markup, paragraph breaks, etc.}}`, 'The material to be indented here. May include markup, paragraph breaks, etc.'],
+    [
+      `{{hlist|Winner|Runner-up|Third place|item_style=color:blue;|indent=2}}`,
+      'Winner · Runner-up · Third place'
+    ],
+    [
+      `{{block indent |1=The material to be indented here. May include markup, paragraph breaks, etc.}}`,
+      'The material to be indented here. May include markup, paragraph breaks, etc.'
+    ],
     [`{{Ordered list |entry1 |entry2| entry3 }}`, '1. entry1\n\n2. entry2\n\n3. entry3'],
-    [`{{unbulleted list|first item|second item|third item}}`, 'first item\n\nsecond item\n\nthird item'],
-  ];
-  arr.forEach((a) => {
-    var str = wtf(a[0]).plaintext();
-    t.equal(str, a[1], a[0].substr(2, 12).replace(/\|.*/, ''));
-  });
+    [
+      `{{unbulleted list|first item|second item|third item}}`,
+      'first item\n\nsecond item\n\nthird item'
+    ]
+  ]
+  arr.forEach(a => {
+    var str = wtf(a[0]).plaintext()
+    t.equal(str, a[1], a[0].substr(2, 12).replace(/\|.*/, ''))
+  })
   // var str = ` {{Monthyear}}`;
   // var str = ` {{Time ago| Jan 6 2018|magnitude=weeks}}`;
-  t.end();
-});
+  t.end()
+})
