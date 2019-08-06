@@ -19,9 +19,7 @@
       "name": "isDisambiguation",
       "returns": "Boolean",
       "description": "is this a placeholder page to direct you to one-of-many possible pages",
-      "aliases": [
-        "isDisambig"
-      ]
+      "aliases": ["isDisambig"]
     },
     {
       "name": "categories",
@@ -82,49 +80,37 @@
       "name": "coordinates",
       "returns": "Array",
       "description": "geo-locations that appear on the page",
-      "aliases": [
-        "coords"
-      ]
+      "aliases": ["coords"]
     },
     {
       "name": "text",
       "returns": "String",
       "description": "plaintext, human-readable output for the page",
-      "aliases": [
-        "plaintext"
-      ]
+      "aliases": ["plaintext"]
     },
     {
       "name": "markdown",
       "returns": "String",
       "description": "output in the markdown format",
-      "aliases": [
-        "toMarkdown"
-      ]
+      "aliases": ["toMarkdown"]
     },
     {
       "name": "latex",
       "returns": "String",
       "description": "output the page in latex format",
-      "aliases": [
-        "toLatex"
-      ]
+      "aliases": ["toLatex"]
     },
     {
       "name": "html",
       "returns": "String",
       "description": "output the page in html format",
-      "aliases": [
-        "toHTML"
-      ]
+      "aliases": ["toHTML"]
     },
     {
       "name": "json",
       "returns": "String",
       "description": "a 'stringifyable' output of the page's main data",
-      "aliases": [
-        "toJson"
-      ]
+      "aliases": ["toJson"]
     }
   ],
   "Section": [
@@ -185,9 +171,7 @@
       "name": "coordinates",
       "returns": "Array",
       "description": "",
-      "aliases": [
-        "coords"
-      ]
+      "aliases": ["coords"]
     },
     {
       "name": "lists",
@@ -223,20 +207,14 @@
       "returns": "Section",
       "example": "",
       "description": "a section following this one, under the current parent: eg. 1920s → 1930s ",
-      "aliases": [
-        "next"
-      ]
+      "aliases": ["next"]
     },
     {
       "name": "lastSibling",
       "returns": "Section",
       "example": "",
       "description": "a section before this one, under the current parent: eg. 1930s → 1920s",
-      "aliases": [
-        "last",
-        "previous",
-        "previousSibling"
-      ]
+      "aliases": ["last", "previous", "previousSibling"]
     },
     {
       "name": "children",
@@ -282,7 +260,7 @@
     }
   ],
 
-  "Paragraph":[
+  "Paragraph": [
     {
       "name": "sentences",
       "returns": "Array",
@@ -400,7 +378,6 @@
     }
   ],
 
-
   "Image": [
     {
       "name": "links",
@@ -448,202 +425,200 @@
       "description": "does nothing"
     }
   ],
-"Infobox":[
+  "Infobox": [
+    {
+      "name": "links",
+      "returns": "Array",
+      "example": "",
+      "description": ""
+    },
+    {
+      "name": "keyValue",
+      "returns": "Array",
+      "example": "",
+      "description": "generate simple key:value strings from this infobox"
+    },
+    {
+      "name": "image",
+      "returns": "Image",
+      "example": "",
+      "description": "grab the main image from this infobox"
+    },
+    {
+      "name": "get",
+      "returns": "Sentence",
+      "example": "",
+      "description": "lookup properties from their key"
+    },
+    {
+      "name": "template",
+      "returns": "String",
+      "example": "",
+      "description": "which infobox, eg 'Infobox Person'"
+    },
+    {
+      "name": "markdown",
+      "returns": "String",
+      "example": "",
+      "description": "output this infobox in markdown"
+    },
+    {
+      "name": "html",
+      "returns": "String",
+      "example": "",
+      "description": "generate html output for this infobox"
+    },
+    {
+      "name": "text",
+      "returns": "String",
+      "example": "",
+      "description": "generate readable plaintext for this infobox"
+    },
+    {
+      "name": "latex",
+      "returns": "String",
+      "example": "",
+      "description": "generate latex output for this infobox"
+    },
+    {
+      "name": "json",
+      "returns": "Array",
+      "example": "",
+      "description": "generate some generic 'stringifyable' data for this infobox"
+    }
+  ],
+  "List": [
+    {
+      "name": "lines",
+      "returns": "Array",
+      "example": "",
+      "description": "get an array of each member of the list"
+    },
+    {
+      "name": "links",
+      "returns": "Array",
+      "example": "",
+      "description": "get all links mentioned in this list"
+    },
 
-      {
-        "name": "links",
-        "returns": "Array",
-        "example": "",
-        "description": ""
-      },
-      {
-        "name": "keyValue",
-        "returns": "Array",
-        "example": "",
-        "description": "generate simple key:value strings from this infobox"
-      },
-      {
-        "name": "image",
-        "returns": "Image",
-        "example": "",
-        "description": "grab the main image from this infobox"
-      },
-      {
-        "name": "get",
-        "returns": "Sentence",
-        "example": "",
-        "description": "lookup properties from their key"
-      },
-      {
-        "name": "template",
-        "returns": "String",
-        "example": "",
-        "description": "which infobox, eg 'Infobox Person'"
-      },
-      {
-        "name": "markdown",
-        "returns": "String",
-        "example": "",
-        "description": "output this infobox in markdown"
-      },
-      {
-        "name": "html",
-        "returns": "String",
-        "example": "",
-        "description": "generate html output for this infobox"
-      },
-      {
-        "name": "text",
-        "returns": "String",
-        "example": "",
-        "description": "generate readable plaintext for this infobox"
-      },
-      {
-        "name": "latex",
-        "returns": "String",
-        "example": "",
-        "description": "generate latex output for this infobox"
-      },
-      {
-        "name": "json",
-        "returns": "Array",
-        "example": "",
-        "description": "generate some generic 'stringifyable' data for this infobox"
-      }
-],
-"List":[
-  {
-    "name": "lines",
-    "returns": "Array",
-    "example": "",
-    "description": "get an array of each member of the list"
-  },
-  {
-    "name": "links",
-    "returns": "Array",
-    "example": "",
-    "description": "get all links mentioned in this list"
-  },
+    {
+      "name": "markdown",
+      "returns": "String",
+      "example": "",
+      "description": "output this list in markdown"
+    },
+    {
+      "name": "html",
+      "returns": "String",
+      "example": "",
+      "description": "generate html output for this list"
+    },
+    {
+      "name": "text",
+      "returns": "String",
+      "example": "",
+      "description": "generate readable plaintext for this list"
+    },
+    {
+      "name": "latex",
+      "returns": "String",
+      "example": "",
+      "description": "generate latex output for this list"
+    },
+    {
+      "name": "json",
+      "returns": "Array",
+      "example": "",
+      "description": "generate some generic easily-parsable data for this list"
+    }
+  ],
+  "Reference": [
+    {
+      "name": "title",
+      "returns": "String",
+      "example": "",
+      "description": "generate human-facing text for this reference"
+    },
+    {
+      "name": "links",
+      "returns": "Array",
+      "example": "",
+      "description": "get any links mentioned in this reference"
+    },
 
-  {
-    "name": "markdown",
-    "returns": "String",
-    "example": "",
-    "description": "output this list in markdown"
-  },
-  {
-    "name": "html",
-    "returns": "String",
-    "example": "",
-    "description": "generate html output for this list"
-  },
-  {
-    "name": "text",
-    "returns": "String",
-    "example": "",
-    "description": "generate readable plaintext for this list"
-  },
-  {
-    "name": "latex",
-    "returns": "String",
-    "example": "",
-    "description": "generate latex output for this list"
-  },
-  {
-    "name": "json",
-    "returns": "Array",
-    "example": "",
-    "description": "generate some generic easily-parsable data for this list"
-  }
-],
-"Reference":[
-
-  {
-    "name": "title",
-    "returns": "String",
-    "example": "",
-    "description": "generate human-facing text for this reference"
-  },
-  {
-    "name": "links",
-    "returns": "Array",
-    "example": "",
-    "description": "get any links mentioned in this reference"
-  },
-
-  {
-    "name": "markdown",
-    "returns": "String",
-    "example": "",
-    "description": "output this reference in markdown"
-  },
-  {
-    "name": "html",
-    "returns": "String",
-    "example": "",
-    "description": "generate html output for this reference"
-  },
-  {
-    "name": "text",
-    "returns": "String",
-    "example": "",
-    "description": "returns nothing"
-  },
-  {
-    "name": "latex",
-    "returns": "String",
-    "example": "",
-    "description": "generate latex output for this reference"
-  },
-  {
-    "name": "json",
-    "returns": "Array",
-    "example": "",
-    "description": "generate some generic metadata data for this reference"
-  }
-],
-"Table":[
-  {
-    "name": "links",
-    "returns": "Array",
-    "example": "",
-    "description": "get any links mentioned in this table"
-  },
-  {
-    "name": "keyValue",
-    "returns": "Object",
-    "example": "",
-    "description": "generate a simple list of key:value objects for this table"
-  },
-  {
-    "name": "markdown",
-    "returns": "String",
-    "example": "",
-    "description": "output this table in markdown"
-  },
-  {
-    "name": "html",
-    "returns": "String",
-    "example": "",
-    "description": "generate html output for this table"
-  },
-  {
-    "name": "text",
-    "returns": "String",
-    "example": "",
-    "description": "returns nothing"
-  },
-  {
-    "name": "latex",
-    "returns": "String",
-    "example": "",
-    "description": "generate latex output for this table"
-  },
-  {
-    "name": "json",
-    "returns": "Array",
-    "example": "",
-    "description": "generate some useful metadata data for this table"
-  }
-]
+    {
+      "name": "markdown",
+      "returns": "String",
+      "example": "",
+      "description": "output this reference in markdown"
+    },
+    {
+      "name": "html",
+      "returns": "String",
+      "example": "",
+      "description": "generate html output for this reference"
+    },
+    {
+      "name": "text",
+      "returns": "String",
+      "example": "",
+      "description": "returns nothing"
+    },
+    {
+      "name": "latex",
+      "returns": "String",
+      "example": "",
+      "description": "generate latex output for this reference"
+    },
+    {
+      "name": "json",
+      "returns": "Array",
+      "example": "",
+      "description": "generate some generic metadata data for this reference"
+    }
+  ],
+  "Table": [
+    {
+      "name": "links",
+      "returns": "Array",
+      "example": "",
+      "description": "get any links mentioned in this table"
+    },
+    {
+      "name": "keyValue",
+      "returns": "Object",
+      "example": "",
+      "description": "generate a simple list of key:value objects for this table"
+    },
+    {
+      "name": "markdown",
+      "returns": "String",
+      "example": "",
+      "description": "output this table in markdown"
+    },
+    {
+      "name": "html",
+      "returns": "String",
+      "example": "",
+      "description": "generate html output for this table"
+    },
+    {
+      "name": "text",
+      "returns": "String",
+      "example": "",
+      "description": "returns nothing"
+    },
+    {
+      "name": "latex",
+      "returns": "String",
+      "example": "",
+      "description": "generate latex output for this table"
+    },
+    {
+      "name": "json",
+      "returns": "Array",
+      "example": "",
+      "description": "generate some useful metadata data for this table"
+    }
+  ]
 }

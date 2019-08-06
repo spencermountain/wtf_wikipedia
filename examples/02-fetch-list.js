@@ -1,10 +1,10 @@
 //const wtf= require('wtf_wikipedia')
-const wtf = require('../src');
+const wtf = require('../src')
 //get all birthplaces of the apollo astronauts
 
 const options = {
   'Api-User-Agent': 'wtf_wikipedia example'
-};
+}
 
 let astronauts = [
   'Neil Armstrong',
@@ -31,28 +31,28 @@ let astronauts = [
   'Al Worden',
   'Ken Mattingly',
   'Ron Evans'
-];
+]
 
 // Richard Gordon no infobox
 // Thomas Stafford
 
 const getInfobox = function(doc) {
-  let obj = {};
+  let obj = {}
   if (!doc.infobox(0)) {
-    console.log(doc.title() + ' - no infobox');
+    console.log(doc.title() + ' - no infobox')
   } else {
-    obj = doc.infobox(0).keyValue();
+    obj = doc.infobox(0).keyValue()
   }
   return {
     name: doc.title() || obj.name,
     missions: obj.mission || '',
     born: obj.born || obj.birth_date,
-    died: obj.died || obj.death_date,
-  };
-};
+    died: obj.died || obj.death_date
+  }
+}
 
 //send it off!
 wtf.fetch(astronauts, options, (err, docs) => {
-  let data = docs.map(getInfobox);
-  console.log(JSON.stringify(data, null, 2));
-});
+  let data = docs.map(getInfobox)
+  console.log(JSON.stringify(data, null, 2))
+})
