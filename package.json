@@ -10,13 +10,15 @@
   "main": "src/index.js",
   "unpkg": "builds/wtf_wikipedia.min.js",
   "module": "builds/wtf_wikipedia.mjs",
+  "types": "types/index.d.ts",
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c && node ./scripts/filesize.js",
     "start": "node ./scripts/demo.js",
     "coverage": "node scripts/coverage.js",
     "test": "node ./scripts/test.js",
     "watch": "amble ./scratch.js",
-    "lint": "eslint ./src/**/*.js"
+    "lint": "eslint ./src/**/*.js",
+    "test:types": "ts-node ./test/types/index.ts | tap-dancer"
   },
   "bin": {
     "wtf_wikipedia": "./bin/wtf.js"
