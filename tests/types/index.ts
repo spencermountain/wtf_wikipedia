@@ -11,8 +11,8 @@ import wtf from '../../'
 test('typefile smoketest', (t: test.Test) => {
   t.ok(wtf, 'import works')
   const d = wtf('hello world')
+  // wtf.fetch
   // wtf.random('en')
-  // wtf
   // d.references()
   // d.links
   t.equal(d.text(), 'hello world', 'basic-smoketest')
