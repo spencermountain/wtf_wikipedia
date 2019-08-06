@@ -52,7 +52,7 @@ const codes = {
   nag: 'nag', //https://en.wikipedia.org/wiki/Template:Nagoya_Stock_Exchange
   kn: 'kn', //https://en.wikipedia.org/wiki/Template:Nairobi_Securities_Exchange
   'nasdaq dubai': 'nasdaq dubai', //https://en.wikipedia.org/wiki/Template:NASDAQ_Dubai
-  'nasdaq': 'nasdaq', //https://en.wikipedia.org/wiki/Template:NASDAQ
+  nasdaq: 'nasdaq', //https://en.wikipedia.org/wiki/Template:NASDAQ
   neeq: 'neeq', //https://en.wikipedia.org/wiki/Template:NEEQ
   nepse: 'nepse', //https://en.wikipedia.org/wiki/Template:Nepal_Stock_Exchange
   nyse: 'nyse', //https://en.wikipedia.org/wiki/Template:New_York_Stock_Exchange
@@ -80,7 +80,7 @@ const codes = {
   tsx: 'tsx', //https://en.wikipedia.org/wiki/Template:Toronto_Stock_Exchange
   twse: 'twse', //https://en.wikipedia.org/wiki/Template:Taiwan_Stock_Exchange
   'tsx-v': 'tsx-v', //https://en.wikipedia.org/wiki/Template:TSX_Venture_Exchange
-  'tsxv': 'tsxv', //https://en.wikipedia.org/wiki/Template:TSX_Venture_Exchange
+  tsxv: 'tsxv', //https://en.wikipedia.org/wiki/Template:TSX_Venture_Exchange
   nex: 'nex', //https://en.wikipedia.org/wiki/Template:TSXV_NEX
   ttse: 'ttse', //https://en.wikipedia.org/wiki/Template:Trinidad_and_Tobago_Stock_Exchange
   'pfts ukraine stock exchange': 'pfts ukraine stock exchange', //https://en.wikipedia.org/wiki/Template:PFTS_Ukraine_Stock_Exchange
@@ -100,7 +100,7 @@ const parseStockExchange = (tmpl, r) => {
   }
   code = (code || '').toLowerCase()
   let out = codes[code] || ''
-  let str = out;
+  let str = out
   if (o.ticketnumber) {
     str = `${str}: ${o.ticketnumber}`
   }
@@ -110,8 +110,7 @@ const parseStockExchange = (tmpl, r) => {
   return str
 }
 
-const currencies = {
-}
+const currencies = {}
 //the others fit the same pattern..
 Object.keys(codes).forEach(k => {
   currencies[k] = parseStockExchange

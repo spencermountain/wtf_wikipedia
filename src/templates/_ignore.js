@@ -40,9 +40,9 @@ const list = [
   'end box',
   'end',
   's-end'
-];
+]
 const ignore = list.reduce((h, str) => {
-  h[str] = true;
-  return h;
-}, {});
-module.exports = ignore;
+  h[str] = true
+  return h
+}, {})
+module.exports = ignore

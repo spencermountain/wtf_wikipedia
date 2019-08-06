@@ -1,4 +1,4 @@
-const languages = require('../_data/languages');
+const languages = require('../_data/languages')
 //some colon symbols are valid links, like `America: That place`
 //so we have to whitelist allowable interwiki links
 const interwikis = [
@@ -28,33 +28,33 @@ const interwikis = [
   'm',
   'mw',
   'phab',
-  'd',
-];
+  'd'
+]
 let allowed = interwikis.reduce((h, wik) => {
-  h[wik] = true;
-  return h;
-}, {});
+  h[wik] = true
+  return h
+}, {})
 //add language prefixes too..
-Object.keys(languages).forEach((k) => allowed[k] = true);
+Object.keys(languages).forEach(k => (allowed[k] = true))
 
 //this is predictably very complicated.
 // https://meta.wikimedia.org/wiki/Help:Interwiki_linking
 const parseInterwiki = function(obj) {
-  let str = obj.page || '';
+  let str = obj.page || ''
   if (str.indexOf(':') !== -1) {
-    let m = str.match(/^(.*):(.*)/);
+    let m = str.match(/^(.*):(.*)/)
     if (m === null) {
-      return obj;
+      return obj
     }
-    let site = m[1] || '';
-    site = site.toLowerCase();
+    let site = m[1] || ''
+    site = site.toLowerCase()
     //only allow interwikis to these specific places
     if (allowed.hasOwnProperty(site) === false) {
-      return obj;
+      return obj
     }
-    obj.wiki = site;
-    obj.page = m[2];
+    obj.wiki = site
+    obj.page = m[2]
   }
-  return obj;
-};
-module.exports = parseInterwiki;
+  return obj
+}
+module.exports = parseInterwiki

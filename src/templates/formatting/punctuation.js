@@ -41,12 +41,12 @@ let punctuation = [
   ['asterisk', '*'],
   ['long dash', '———'],
   ['clear', '\n\n'],
-  ['h.', 'ḥ'],
-];
-const templates = {};
-punctuation.forEach((a) => {
+  ['h.', 'ḥ']
+]
+const templates = {}
+punctuation.forEach(a => {
   templates[a[0]] = () => {
-    return a[1];
-  };
-});
-module.exports = templates;
+    return a[1]
+  }
+})
+module.exports = templates

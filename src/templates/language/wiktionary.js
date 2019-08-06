@@ -1,41 +1,41 @@
-const parse = require('../_parsers/parse');
+const parse = require('../_parsers/parse')
 // const strip = require('./_parsers/_strip');
 
 //wiktionary... who knows. we should atleast try.
 const templates = {
   //{{inflection of|avoir||3|p|pres|ind|lang=fr}}
   //https://en.wiktionary.org/wiki/Template:inflection_of
-  'inflection': (tmpl, r) => {
-    let obj = parse(tmpl, ['lemma']);
-    obj.tags = obj.list;
-    delete obj.list;
-    obj.type = 'form-of';
-    r.templates.push(obj);
-    return obj.lemma || '';
+  inflection: (tmpl, r) => {
+    let obj = parse(tmpl, ['lemma'])
+    obj.tags = obj.list
+    delete obj.list
+    obj.type = 'form-of'
+    r.templates.push(obj)
+    return obj.lemma || ''
   },
 
   //latin verbs
   'la-verb-form': (tmpl, r) => {
-    let obj = parse(tmpl, ['word']);
-    r.templates.push(obj);
-    return obj.word || '';
+    let obj = parse(tmpl, ['word'])
+    r.templates.push(obj)
+    return obj.word || ''
   },
   'feminine plural': (tmpl, r) => {
-    let obj = parse(tmpl, ['word']);
-    r.templates.push(obj);
-    return obj.word || '';
+    let obj = parse(tmpl, ['word'])
+    r.templates.push(obj)
+    return obj.word || ''
   },
   'male plural': (tmpl, r) => {
-    let obj = parse(tmpl, ['word']);
-    r.templates.push(obj);
-    return obj.word || '';
+    let obj = parse(tmpl, ['word'])
+    r.templates.push(obj)
+    return obj.word || ''
   },
-  'rhymes': (tmpl, r) => {
-    let obj = parse(tmpl, ['word']);
-    r.templates.push(obj);
-    return 'Rhymes: -' + (obj.word || '');
-  },
-};
+  rhymes: (tmpl, r) => {
+    let obj = parse(tmpl, ['word'])
+    r.templates.push(obj)
+    return 'Rhymes: -' + (obj.word || '')
+  }
+}
 
 //https://en.wiktionary.org/wiki/Category:Form-of_templates
 let conjugations = [
@@ -198,16 +198,16 @@ let conjugations = [
   'uncommon spelling',
   'verbal noun',
   'vocative plural',
-  'vocative singular',
-];
-conjugations.forEach((name) => {
+  'vocative singular'
+]
+conjugations.forEach(name => {
   templates[name + ' of'] = (tmpl, r) => {
-    let obj = parse(tmpl, ['lemma']);
-    obj.tags = obj.list;
-    delete obj.list;
-    obj.type = 'form-of';
-    r.templates.push(obj);
-    return obj.lemma || '';
-  };
-});
-module.exports = templates;
+    let obj = parse(tmpl, ['lemma'])
+    obj.tags = obj.list
+    delete obj.list
+    obj.type = 'form-of'
+    r.templates.push(obj)
+    return obj.lemma || ''
+  }
+})
+module.exports = templates

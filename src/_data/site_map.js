@@ -1123,7 +1123,7 @@ const site_map = {
   zuwikipedia: 'https://zu.wikipedia.org',
   zuwiktionary: 'https://zu.wiktionary.org',
   zuwikibooks: 'https://zu.wikibooks.org'
-};
+}
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = site_map;
+  module.exports = site_map
 }

@@ -1,69 +1,73 @@
-const strip = require('./_parsers/_strip');
-const open = '{';
-const close = '}';
+const strip = require('./_parsers/_strip')
+const open = '{'
+const close = '}'
 
 //grab all first-level recursions of '{{...}}'
 const findFlat = function(wiki) {
-  let depth = 0;
-  let list = [];
-  let carry = [];
-  for (var i = wiki.indexOf(open); i !== -1 && i < wiki.length; depth > 0 ? i++ : (i = wiki.indexOf(open, i + 1))) {
-    let c = wiki[i];
+  let depth = 0
+  let list = []
+  let carry = []
+  for (
+    var i = wiki.indexOf(open);
+    i !== -1 && i < wiki.length;
+    depth > 0 ? i++ : (i = wiki.indexOf(open, i + 1))
+  ) {
+    let c = wiki[i]
     //open it
     if (c === open) {
-      depth += 1;
+      depth += 1
     }
     //close it
     if (depth > 0) {
       if (c === close) {
-        depth -= 1;
+        depth -= 1
         if (depth === 0) {
-          carry.push(c);
-          let tmpl = carry.join('');
-          carry = [];
+          carry.push(c)
+          let tmpl = carry.join('')
+          carry = []
           //last check
           if (/\{\{/.test(tmpl) && /\}\}/.test(tmpl)) {
-            list.push(tmpl);
+            list.push(tmpl)
           }
-          continue;
+          continue
         }
       }
       //require two '{{' to open it
       if (depth === 1 && c !== open && c !== close) {
-        depth = 0;
-        carry = [];
-        continue;
+        depth = 0
+        carry = []
+        continue
       }
-      carry.push(c);
+      carry.push(c)
     }
   }
-  return list;
-};
+  return list
+}
 
 //get all nested templates
 const findNested = function(top) {
-  let deep = [];
-  top.forEach((str) => {
+  let deep = []
+  top.forEach(str => {
     if (/\{\{/.test(str.substr(2)) === true) {
-      str = strip(str);
-      findFlat(str).forEach((o) => {
+      str = strip(str)
+      findFlat(str).forEach(o => {
         if (o) {
-          deep.push(o);
+          deep.push(o)
         }
-      });
+      })
     }
-  });
-  return deep;
-};
+  })
+  return deep
+}
 
 const getTemplates = function(wiki) {
-  let list = findFlat(wiki);
+  let list = findFlat(wiki)
   return {
     top: list,
     nested: findNested(list)
-  };
-};
+  }
+}
 
-module.exports = getTemplates;
+module.exports = getTemplates
 
 // console.log(getTemplates('he is president. {{nowrap|he is {{age|1980}} years}} he lives in {{date}} texas'));

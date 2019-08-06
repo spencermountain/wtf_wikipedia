@@ -16,5 +16,5 @@ const aliasList = {
   wikiscript: 'wikitext',
   wiki: 'wikitext',
   original: 'wikitext'
-};
-module.exports = aliasList;
+}
+module.exports = aliasList

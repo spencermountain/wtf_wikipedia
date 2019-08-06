@@ -1,9 +1,10 @@
-const ignore = require('./_ignore');
-const getName = require('./_parsers/_getName');
-const parse = require('./_parsers/parse');
-const inf = require('./_infobox');
+const ignore = require('./_ignore')
+const getName = require('./_parsers/_getName')
+const parse = require('./_parsers/parse')
+const inf = require('./_infobox')
 
-const templates = Object.assign({},
+const templates = Object.assign(
+  {},
   require('./wikipedia'),
   require('./identities'),
   require('./dates'),
@@ -17,45 +18,45 @@ const templates = Object.assign({},
   require('./politics'),
   require('./stockexchange'),
   require('./misc')
-);
+)
 // console.log(Object.keys(templates).length + ' Templates!');
 
 //this gets all the {{template}} strings and decides how to parse them
 const parseTemplate = function(tmpl, wiki, data) {
-  let name = getName(tmpl);
+  let name = getName(tmpl)
   //we explicitly ignore these templates
   if (ignore.hasOwnProperty(name) === true) {
-    wiki = wiki.replace(tmpl, '');
-    return wiki;
+    wiki = wiki.replace(tmpl, '')
+    return wiki
   }
 
   //match any known template forms (~1,000!)
   if (templates.hasOwnProperty(name) === true) {
-    let str = templates[name](tmpl, data);
-    wiki = wiki.replace(tmpl, str);
-    return wiki;
+    let str = templates[name](tmpl, data)
+    wiki = wiki.replace(tmpl, str)
+    return wiki
   }
   // {{infobox settlement...}}
   if (inf.isInfobox(name) === true) {
-    let obj = parse(tmpl, data, 'raw');
-    let infobox = inf.format(obj);
-    data.templates.push(infobox);
-    wiki = wiki.replace(tmpl, '');
-    return wiki;
+    let obj = parse(tmpl, data, 'raw')
+    let infobox = inf.format(obj)
+    data.templates.push(infobox)
+    wiki = wiki.replace(tmpl, '')
+    return wiki
   }
   //cite book, cite arxiv...
   if (/^cite [a-z]/.test(name) === true) {
-    let obj = parse(tmpl, data);
-    data.templates.push(obj);
-    wiki = wiki.replace(tmpl, '');
-    return wiki;
+    let obj = parse(tmpl, data)
+    data.templates.push(obj)
+    wiki = wiki.replace(tmpl, '')
+    return wiki
   }
   //fallback parser
-  let obj = parse(tmpl);
+  let obj = parse(tmpl)
   if (obj !== null && Object.keys(obj).length > 0) {
-    data.templates.push(obj);
+    data.templates.push(obj)
   }
-  wiki = wiki.replace(tmpl, '');
-  return wiki;
-};
-module.exports = parseTemplate;
+  wiki = wiki.replace(tmpl, '')
+  return wiki
+}
+module.exports = parseTemplate
