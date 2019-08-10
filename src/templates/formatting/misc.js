@@ -207,7 +207,12 @@ const inline = {
   finedetail: (tmpl = '') => {
     let obj = parse(tmpl, ['text', 'detail']) //technically references
     return obj.text
-  }
+  },
+  //https://en.wikipedia.org/wiki/Template:Sort
+  sort: (tmpl) => {
+    let order = ['sort', 'display']
+    return parse(tmpl, order).display
+  },
 }
 
 //aliases
