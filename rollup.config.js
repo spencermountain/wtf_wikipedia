@@ -2,6 +2,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import json from 'rollup-plugin-json'
 import { terser } from 'rollup-plugin-terser'
 import resolve from 'rollup-plugin-node-resolve'
+import babel from 'rollup-plugin-babel'
 
 export default [
   {
@@ -37,7 +38,11 @@ export default [
         browser: true
       }),
       json(),
-      commonjs()
+      commonjs(),
+      babel({
+        babelrc: false,
+        presets: ['@babel/preset-env']
+      })
     ]
   },
   {
@@ -56,6 +61,10 @@ export default [
       }),
       json(),
       commonjs(),
+      babel({
+        babelrc: false,
+        presets: ['@babel/preset-env']
+      }),
       terser()
     ]
   }

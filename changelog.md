@@ -157,6 +157,8 @@
 * more flexible reference support in `.json()`
 ### 7.3.0
 * more unicode support
+### 7.6.0
+* use rollup for builds, publish esm module
 ---
 
 #### 8.0.0
