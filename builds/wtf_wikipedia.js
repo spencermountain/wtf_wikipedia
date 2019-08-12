@@ -9154,6 +9154,11 @@
       var obj = parse$2(tmpl, ['text', 'detail']); //technically references
 
       return obj.text;
+    },
+    //https://en.wikipedia.org/wiki/Template:Sort
+    sort: function sort(tmpl) {
+      var order = ['sort', 'display'];
+      return parse$2(tmpl, order).display;
     } //aliases
 
   };

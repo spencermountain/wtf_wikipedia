@@ -9114,7 +9114,12 @@ const inline$1 = {
   finedetail: (tmpl = '') => {
     let obj = parse$2(tmpl, ['text', 'detail']); //technically references
     return obj.text
-  }
+  },
+  //https://en.wikipedia.org/wiki/Template:Sort
+  sort: (tmpl) => {
+    let order = ['sort', 'display'];
+    return parse$2(tmpl, order).display
+  },
 };
 
 //aliases
