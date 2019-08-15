@@ -2476,8 +2476,10 @@
       var arr = _sectionMap(this, 'images', null); //grab image from infobox, first
 
       this.infoboxes().forEach(function (info) {
-        if (info.data.image) {
-          arr.unshift(info.image()); //put it at the top
+        var img = info.image();
+
+        if (img) {
+          arr.unshift(img); //put it at the top
         }
       }); //look for 'gallery' templates, too
 
@@ -7286,7 +7288,7 @@
       return arr;
     },
     image: function image() {
-      var s = this.get('image');
+      var s = this.get('image') || this.get('image2');
 
       if (!s) {
         return null;
