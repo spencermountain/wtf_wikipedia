@@ -32,9 +32,17 @@ const parsers = {
     r.templates.push(obj)
     return ''
   },
+  //https://en.wikipedia.org/wiki/Template:About
+  'about': (tmpl, r) => {
+    let obj = parse(tmpl)
+    obj.pos = r.title
+    r.templates.push(obj)
+    return ''
+  },
   //https://en.wikipedia.org/wiki/Template:Main
   main: (tmpl, r) => {
     let obj = parse(tmpl)
+    obj.pos = r.title
     r.templates.push(obj)
     return ''
   },
@@ -178,6 +186,7 @@ const parsers = {
   //https://en.wikipedia.org/wiki/Template:See_also
   'see also': (tmpl, r) => {
     let data = parse(tmpl)
+    data.pos = r.title
     r.templates.push(data)
     return ''
   },
