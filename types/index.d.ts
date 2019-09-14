@@ -460,10 +460,10 @@ declare module wtf {
 
     dates(): string[]
 
-    text(str: string | null | undefined): string
+    text(str?: string): string
 
     /** Alias of text */
-    plaintext(str: string | null | undefined): string
+    plaintext(str?: string): string
 
     markdown(options?: object): string
 
