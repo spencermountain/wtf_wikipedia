@@ -15,14 +15,14 @@ declare module wtf {
   export function category(cat: string, lang?: string, options?: object, cb?: any): Promise<object>
 
   export function fetch(
-    title: string,
+    titleOrId: string | number,
     lang?: string,
     options?: any,
     cb?: any
   ): Promise<null | Document>
 
   export function fetch(
-    titles: string[],
+    titlesOrIds: string[] | number[],
     lang?: string,
     options?: any,
     cb?: any
