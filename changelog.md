@@ -159,6 +159,8 @@
 * more unicode support
 ### 7.6.0
 * use rollup for builds, publish esm module
+### 7.7.2
+* bugfixes by suntala 
 ---
 
 #### 8.0.0
