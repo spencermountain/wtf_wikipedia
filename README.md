@@ -1,14 +1,20 @@
 <div align="center">
-  <a href="https://www.codacy.com/app/spencerkelly86/wtf_wikipedia">
-    <img src="https://api.codacy.com/project/badge/grade/e84f69487c9348ba9cd8e31031a05a4f" />
-  </a>
-  <a href="https://npmjs.org/package/wtf_wikipedia">
-    <img src="https://img.shields.io/npm/v/wtf_wikipedia.svg?style=flat-square" />
-  </a>
-  <a href="https://www.codacy.com/app/spencerkelly86/wtf_wikipedia">
-    <img src="https://api.codacy.com/project/badge/Coverage/e84f69487c9348ba9cd8e31031a05a4f" />
-  </a>
+
   <div>wikipedia markup parser</div>
+  <div><img src="https://cloud.githubusercontent.com/assets/399657/23590290/ede73772-01aa-11e7-8915-181ef21027bc.png" /></div>
+
+  <div align="center">
+    <a href="https://npmjs.org/package/wtf_wikipedia">
+      <img src="https://img.shields.io/npm/v/wtf_wikipedia.svg?style=flat-square" />
+    </a>
+    <a href="https://codecov.io/gh/spencermountain/wtf_wikipedia">
+      <img src="https://codecov.io/gh/spencermountain/wtf_wikipedia/branch/master/graph/badge.svg" />
+    </a>
+    <a href="https://unpkg.com/wtf_wikipedia/builds/wtf_wikipedia.min.js">
+      <img src="https://badge-size.herokuapp.com/spencermountain/wtf_wikipedia/master/builds/wtf_wikipedia.min.js" />
+    </a>
+  </div>
+
   <sub>
     by
     <a href="https://spencermountain.github.io/">Spencer Kelly</a> and
@@ -38,17 +44,21 @@ Consider:
 * the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) for image paths,
 * the [custom encoding](https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(technical_restrictions)) of whitespace and punctuation,
 * [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
+* as of Nov-2018, there are [634,755](https://s3-us-west-1.amazonaws.com/spencer-scratch/allTemplates-2018-10-26.tsv) templates in wikipedia
 
 **wtf_wikipedia** supports many ***recursive shenanigans***, depreciated and **obscure template**
 variants, and illicit 'wiki-esque' shorthands.
 
 ![image](https://user-images.githubusercontent.com/399657/43598341-75ca8f94-9652-11e8-9b91-cabae4fb1dce.png)
 
+<div align="center">
 It will try it's best, and fail in reasonable ways.
-
-> → building your own parser is never a good idea →
->
-> ← but this library aims to be *****a straight-forward***** way to get data ***out of wikipedia***
+  <p></p>
+ <i>building your own parser is never a good idea</i>
+ <div><i>
+   but this library aims to be <b>a straight-forward</b> way to get data <b>out of wikipedia</b>
+ </i></div>
+</div>
 
 <div align="center">
   <sub>
@@ -59,7 +69,13 @@ It will try it's best, and fail in reasonable ways.
   </sub>
 </div>
 <div align="center">
-  <h3><a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia">Demo</a></h3>
+  <h3>
+    <a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia">Demo</a>
+    &nbsp; • &nbsp;
+    <a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia-tutorial">Tutorial</a>
+    &nbsp; • &nbsp;
+    <a href="https://beta.observablehq.com/@spencermountain/wtf_wikipedia-api">Api</a>
+  </h3>
 </div>
 
 ## well ok then,
@@ -85,7 +101,7 @@ wtf.fetch('Whistling').then(doc => {
 ```
 ***on the client-side:***
 ```html
-<script src="https://unpkg.com/wtf_wikipedia@latest/builds/wtf_wikipedia.min.js"></script>
+<script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
   //(follows redirect)
   wtf.fetch('On a Friday', 'en', function(err, doc) {
@@ -114,7 +130,7 @@ wtf.fetch('Whistling').then(doc => {
 ## But what about...
 
 ### Parsoid:
-Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser. It
+Wikimedia's [Parsoid javascript parser](https://www.mediawiki.org/wiki/Parsoid) is the official wikiscript parser, and is pretty cool. It
 reliably turns wikiscript into HTML, but not valid XML.
 
 To use it for data-mining, you'll need to:
@@ -145,6 +161,11 @@ var doc = wtf(wikiText, [options])
 //(callback format works too)
 wtf.fetch(64646, 'en', (err, doc) => {
   console.log(doc.categories());
+});
+
+//get a random german page
+wtf.random('de').then(doc => {
+  console.log(doc.text())
 });
 ```
 
@@ -207,8 +228,10 @@ flip your wikimedia markup into a `Document` object
 
 ```javascript
 import wtf from 'wtf_wikipedia'
-wtf("==In Popular Culture==\n*harry potter's wand\n* the simpsons fence");
-// Document {plaintext(), html(), latex()...}
+wtf(`==In Popular Culture==
+* harry potter's wand
+* the simpsons fence`);
+// Document {text(), html(), lists()...}
 ```
 
 ### **wtf.fetch(title, [lang_or_wikiid], [options], [callback])**
@@ -230,6 +253,26 @@ you may also pass the wikipedia page id as parameter instead of the page title:
 wtf.fetch(64646, 'de').then(console.log).catch(console.log)
 ```
 the fetch method follows redirects.
+
+the optional-callback pattern is the same for **wtf.random()**
+
+`wtf.random(lang, options, callback)`
+`wtf.random(lang, options).then(doc=>doc.infobox())`
+
+### **wtf.category(title, [lang_or_wikiid], [options], [callback])**
+retrieves all pages and sub-categories belonging to a given category:
+```js
+let result = await wtf.category('Category:Politicians_from_Paris');
+//{
+//  pages: [{title: 'Paul Bacon', pageid: 1266127 }, ...],
+//  categories: [ {title: 'Category:Mayors of Paris' } ]
+//}
+
+//this format works too
+wtf.category('National Basketball Association teams', 'en', (err, result)=>{
+  //
+});
+```
 
 ### **doc.text()**
 returns only nice plain-text of the article
@@ -279,7 +322,7 @@ s.dates() //structured date templates
 ```js
 img = wtf(page).images(0)
 img.url()     // the full-size wikimedia-hosted url
-img.thumnail() // 300px, by default
+img.thumbnail() // 300px, by default
 img.format()  // jpg, png, ..
 img.exists()  // HEAD req to see if the file is alive
 ```
@@ -297,9 +340,9 @@ $ wtf_wikipedia Toronto Blue Jays --json
 
 ### Good practice:
 The wikipedia api is [pretty welcoming](https://www.mediawiki.org/wiki/API:Etiquette#Request_limit) though recommends three things, if you're going to hit it heavily -
-* 1️⃣ pass a `Api-User-Agent` as something so they can use to easily throttle bad scripts
-* 2️⃣ bundle multiple pages into one request as an array
-* 3️⃣ run it serially, or at least, [slowly](https://www.npmjs.com/package/slow).
+* pass a `Api-User-Agent` as something so they can use to easily throttle bad scripts
+* bundle multiple pages into one request as an array
+* run it serially, or at least, [slowly](https://www.npmjs.com/package/slow).
 ```js
 wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
   'Api-User-Agent': 'spencermountain@gmail.com'

@@ -1,110 +1,225 @@
-const keyValue = require('../_parsers/keyValue');
-const pipeSplit = require('../_parsers/pipeSplit');
+const parse = require('../_parsers/parse')
 
 const inline = {
   //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
-  convert: (tmpl) => {
-    let order = ['num', 'two', 'three', 'four'];
-    let obj = pipeSplit(tmpl, order);
+  convert: tmpl => {
+    let order = ['num', 'two', 'three', 'four']
+    let obj = parse(tmpl, order)
     //todo: support plural units
     if (obj.two === '-' || obj.two === 'to' || obj.two === 'and') {
       if (obj.four) {
-        return `${obj.num} ${obj.two} ${obj.three} ${obj.four}`;
+        return `${obj.num} ${obj.two} ${obj.three} ${obj.four}`
       }
-      return `${obj.num} ${obj.two} ${obj.three}`;
+      return `${obj.num} ${obj.two} ${obj.three}`
     }
-    return `${obj.num} ${obj.two}`;
+    return `${obj.num} ${obj.two}`
   },
   //https://en.wikipedia.org/wiki/Template:Term
-  term: (tmpl) => {
-    let order = ['term'];
-    let obj = pipeSplit(tmpl, order);
-    return `${obj.term}:`;
+  term: tmpl => {
+    let obj = parse(tmpl, ['term'])
+    return `${obj.term}:`
   },
-  defn: (tmpl) => {
-    let order = ['desc'];
-    let obj = pipeSplit(tmpl, order);
-    return obj.desc;
+  defn: tmpl => {
+    let obj = parse(tmpl, ['desc'])
+    return obj.desc
   },
   //https://en.wikipedia.org/wiki/Template:Linum
-  lino: (tmpl) => {
-    let order = ['num'];
-    let obj = pipeSplit(tmpl, order);
-    return `${obj.num}`;
+  lino: tmpl => {
+    let obj = parse(tmpl, ['num'])
+    return `${obj.num}`
   },
-  linum: (tmpl) => {
-    let order = ['num', 'text'];
-    let obj = pipeSplit(tmpl, order);
-    return `${obj.num}. ${obj.text}`;
+  linum: tmpl => {
+    let obj = parse(tmpl, ['num', 'text'])
+    return `${obj.num}. ${obj.text}`
   },
   //https://en.wikipedia.org/wiki/Template:Interlanguage_link
-  ill: (tmpl) => {
-    let order = ['text', 'lan1', 'text1', 'lan2', 'text2'];
-    let obj = pipeSplit(tmpl, order);
-    return obj.text;
+  ill: tmpl => {
+    let order = ['text', 'lan1', 'text1', 'lan2', 'text2']
+    let obj = parse(tmpl, order)
+    return obj.text
   },
   //https://en.wikipedia.org/wiki/Template:Frac
-  frac: (tmpl) => {
-    let order = ['a', 'b', 'c'];
-    let obj = pipeSplit(tmpl, order);
+  frac: tmpl => {
+    let order = ['a', 'b', 'c']
+    let obj = parse(tmpl, order)
     if (obj.c) {
-      return `${obj.a} ${obj.b}/${obj.c}`;
+      return `${obj.a} ${obj.b}/${obj.c}`
     }
     if (obj.b) {
-      return `${obj.a}/${obj.b}`;
+      return `${obj.a}/${obj.b}`
     }
-    return `1/${obj.b}`;
+    return `1/${obj.b}`
   },
   //https://en.wikipedia.org/wiki/Template:Height - {{height|ft=6|in=1}}
-  height: (tmpl) => {
-    let obj = keyValue(tmpl);
-    let result = [];
-    let units = ['m', 'cm', 'ft', 'in']; //order matters
-    units.forEach((unit) => {
+  height: (tmpl, r) => {
+    let obj = parse(tmpl)
+    r.templates.push(obj)
+    let result = []
+    let units = ['m', 'cm', 'ft', 'in'] //order matters
+    units.forEach(unit => {
       if (obj.hasOwnProperty(unit) === true) {
-        result.push(obj[unit] + unit);
+        result.push(obj[unit] + unit)
       }
-    });
-    return result.join(' ');
+    })
+    return result.join(' ')
   },
-
-  'block indent': (tmpl) => {
-    let obj = keyValue(tmpl);
+  'block indent': tmpl => {
+    let obj = parse(tmpl)
     if (obj['1']) {
-      return '\n' + obj['1'] + '\n';
+      return '\n' + obj['1'] + '\n'
     }
-    return '';
+    return ''
   },
-  'quote': (tmpl) => {
-    let obj = keyValue(tmpl);
+  quote: (tmpl, r) => {
+    let order = ['text', 'author']
+    let obj = parse(tmpl, order)
+    r.templates.push(obj)
+    //create plaintext version
     if (obj.text) {
-      let str = `"${obj.text}"`;
+      let str = `"${obj.text}"`
       if (obj.author) {
-        str += `  - ${obj.author}`;
-        str += '\n';
+        str += '\n\n'
+        str += `    - ${obj.author}`
       }
-      return str;
+      return str + '\n'
     }
-    return '';
+    return ''
   },
 
   //https://en.wikipedia.org/wiki/Template:Lbs
-  lbs: (tmpl) => {
-    let obj = pipeSplit(tmpl, ['text']);
-    return `[[${obj.text} Lifeboat Station|${obj.text}]]`;
+  lbs: tmpl => {
+    let obj = parse(tmpl, ['text'])
+    return `[[${obj.text} Lifeboat Station|${obj.text}]]`
   },
   //Foo-class
-  lbc: (tmpl) => {
-    let obj = pipeSplit(tmpl, ['text']);
-    return `[[${obj.text}-class lifeboat|${obj.text}-class]]`;
+  lbc: tmpl => {
+    let obj = parse(tmpl, ['text'])
+    return `[[${obj.text}-class lifeboat|${obj.text}-class]]`
   },
-  lbb: (tmpl) => {
-    let obj = pipeSplit(tmpl, ['text']);
-    return `[[${obj.text}-class lifeboat|${obj.text}]]`;
+  lbb: tmpl => {
+    let obj = parse(tmpl, ['text'])
+    return `[[${obj.text}-class lifeboat|${obj.text}]]`
   },
-};
+  // https://en.wikipedia.org/wiki/Template:Own
+  own: tmpl => {
+    let obj = parse(tmpl, ['author'])
+    let str = 'Own work'
+    if (obj.author) {
+      str += ' by ' + obj.author
+    }
+    return str
+  },
+  //https://en.wikipedia.org/wiki/Template:Sic
+  sic: (tmpl, r) => {
+    let obj = parse(tmpl, ['one', 'two', 'three'])
+    let word = (obj.one || '') + (obj.two || '')
+    //support '[sic?]'
+    if (obj.one === '?') {
+      word = (obj.two || '') + (obj.three || '')
+    }
+    r.templates.push({
+      template: 'sic',
+      word: word
+    })
+    if (obj.nolink === 'y') {
+      return word
+    }
+    return `${word} [sic]`
+  },
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  formatnum: (tmpl = '') => {
+    tmpl = tmpl.replace(/:/, '|')
+    let obj = parse(tmpl, ['number'])
+    let str = obj.number || ''
+    str = str.replace(/,/g, '')
+    let num = Number(str)
+    return num.toLocaleString() || ''
+  },
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  '#dateformat': (tmpl = '') => {
+    tmpl = tmpl.replace(/:/, '|')
+    let obj = parse(tmpl, ['date', 'format'])
+    return obj.date
+  },
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  lc: (tmpl = '') => {
+    tmpl = tmpl.replace(/:/, '|')
+    let obj = parse(tmpl, ['text'])
+    return (obj.text || '').toLowerCase()
+  },
+  lcfirst: (tmpl = '') => {
+    tmpl = tmpl.replace(/:/, '|')
+    let obj = parse(tmpl, ['text'])
+    let text = obj.text
+    if (!text) {
+      return ''
+    }
+    return text[0].toLowerCase() + text.substr(1)
+  },
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  uc: (tmpl = '') => {
+    tmpl = tmpl.replace(/:/, '|')
+    let obj = parse(tmpl, ['text'])
+    return (obj.text || '').toUpperCase()
+  },
+  ucfirst: (tmpl = '') => {
+    tmpl = tmpl.replace(/:/, '|')
+    let obj = parse(tmpl, ['text'])
+    let text = obj.text
+    if (!text) {
+      return ''
+    }
+    return text[0].toUpperCase() + text.substr(1)
+  },
+  padleft: (tmpl = '') => {
+    tmpl = tmpl.replace(/:/, '|')
+    let obj = parse(tmpl, ['text', 'num'])
+    let text = obj.text || ''
+    return text.padStart(obj.num, obj.str || '0')
+  },
+  padright: (tmpl = '') => {
+    tmpl = tmpl.replace(/:/, '|')
+    let obj = parse(tmpl, ['text', 'num'])
+    let text = obj.text || ''
+    return text.padEnd(obj.num, obj.str || '0')
+  },
+  //abbreviation/meaning
+  //https://en.wikipedia.org/wiki/Template:Abbr
+  abbr: (tmpl = '') => {
+    let obj = parse(tmpl, ['abbr', 'meaning', 'ipa'])
+    return obj.abbr
+  },
+  //https://en.wikipedia.org/wiki/Template:Abbrlink
+  abbrlink: (tmpl = '') => {
+    let obj = parse(tmpl, ['abbr', 'page'])
+    if (obj.page) {
+      return `[[${obj.page}|${obj.abbr}]]`
+    }
+    return `[[${obj.abbr}]]`
+  },
+  //https://en.wikipedia.org/wiki/Template:Hover_title
+  //technically 'h:title'
+  h: (tmpl = '') => {
+    let obj = parse(tmpl, ['title', 'text'])
+    return obj.text
+  },
+  //https://en.wikipedia.org/wiki/Template:Finedetail
+  finedetail: (tmpl = '') => {
+    let obj = parse(tmpl, ['text', 'detail']) //technically references
+    return obj.text
+  },
+  //https://en.wikipedia.org/wiki/Template:Sort
+  sort: (tmpl) => {
+    let order = ['sort', 'display']
+    return parse(tmpl, order).display
+  },
+}
 
-inline['str left'] = inline.trunc;
-inline['str crop'] = inline.trunc;
+//aliases
+inline['str left'] = inline.trunc
+inline['str crop'] = inline.trunc
+inline['tooltip'] = inline.abbr
+inline['abbrv'] = inline.abbr
+inline['define'] = inline.abbr
 
-module.exports = inline;
+module.exports = inline

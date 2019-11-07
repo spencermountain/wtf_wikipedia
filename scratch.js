@@ -1,21 +1,22 @@
-const wtf = require('./src/index');
+const wtf = require('./src/index')
+// const wtf = require('./builds/wtf_wikipedia.min')
 // const readFile = require('./tests/lib/_cachedPage');
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
 // (async () => {
-//   var doc = await wtf.fetch('Jurassic Park (film)');
-//   console.log(doc.infoboxes(0).keyValue());
+// var doc = await wtf.fetch('महात्मा_गांधी', 'hi');
+// var doc = await wtf.random();
+// console.log(doc.text());
 // })();
 
-// let doc = readFile('jodie_emery');
-// console.log(doc.markdown());
+// let doc = readFile('BBDO');
+// console.log(doc.infoboxes(0).data);
 
-var str = `hellow world
-{{Based on|''[[Jurassic Park (novel)|Jurassic Park]]''|Michael Crichton}}
-`;
+// wtf.fetch('Горбатая_гора', 'ru', function(err, doc) {
+//   console.log(doc.sections('Сюжет').sentences().map((s) => s.text()));
+// });
 
-// str = `{{lang-ur|hello|asdf}}`;
-let doc = wtf(str);
-console.log(doc.text());
-console.log(doc.templates());
+let str = `majority of [[music]], [[film]]s, [[book]]s`
+let doc = wtf(str)
+console.log(doc.links())

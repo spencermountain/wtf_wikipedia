@@ -1,15 +1,15 @@
-const setDefaults = require('../_lib/setDefaults');
+const setDefaults = require('../_lib/setDefaults')
 
 const defaults = {
   sentences: true
-};
+}
 
 const toJson = function(p, options) {
-  options = setDefaults(options, defaults);
-  let data = {};
+  options = setDefaults(options, defaults)
+  let data = {}
   if (options.sentences === true) {
-    data.sentences = p.sentences().map(s => s.json(options));
+    data.sentences = p.sentences().map(s => s.json(options))
   }
-  return data;
-};
-module.exports = toJson;
+  return data
+}
+module.exports = toJson

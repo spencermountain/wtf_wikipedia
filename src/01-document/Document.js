@@ -1,208 +1,245 @@
-const sectionMap = require('./_sectionMap');
-const toMarkdown = require('./toMarkdown');
-const toHtml = require('./toHtml');
-const toJSON = require('./toJson');
-const toLatex = require('./toLatex');
-const setDefaults = require('../_lib/setDefaults');
-const aliasList = require('../_lib/aliases');
-const Image = require('../image/Image');
+const sectionMap = require('./_sectionMap')
+const toMarkdown = require('./toMarkdown')
+const toReveal = require('./toReveal')
+const toHtml = require('./toHtml')
+const toJSON = require('./toJson')
+const toLatex = require('./toLatex')
+const setDefaults = require('../_lib/setDefaults')
+const aliasList = require('../_lib/aliases')
+const Image = require('../image/Image')
 
 const defaults = {
   tables: true,
   lists: true,
-  paragraphs: true,
-};
+  paragraphs: true
+}
 
 //
 const Document = function(data, options) {
-  this.options = options || {};
+  this.options = options || {}
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data
-  });
-};
+  })
+}
 
 const methods = {
-  title : function() {
+  title: function(str) {
+    //use like a setter
+    if (str !== undefined) {
+      this.data.title = str
+      return str
+    }
+    //few places this could be stored..
+    if (this.data.title !== '') {
+      return this.data.title
+    }
     if (this.options.title) {
-      return this.options.title;
+      return this.options.title
     }
-    let guess = null;
+    let guess = null
     //guess the title of this page from first sentence bolding
-    let sen = this.sentences(0);
+    let sen = this.sentences(0)
     if (sen) {
-      guess = sen.bolds(0);
+      guess = sen.bolds(0)
     }
-    return guess;
+    return guess
   },
-  isRedirect : function() {
-    return this.data.type === 'redirect';
+  isRedirect: function() {
+    return this.data.type === 'redirect'
   },
   redirectTo: function() {
-    return this.data.redirectTo;
+    return this.data.redirectTo
   },
-  isDisambiguation : function() {
-    return this.data.type === 'disambiguation';
+  isDisambiguation: function() {
+    return this.data.type === 'disambiguation'
   },
-  categories : function(clue) {
+  categories: function(clue) {
     if (typeof clue === 'number') {
-      return this.data.categories[clue];
+      return this.data.categories[clue]
     }
-    return this.data.categories || [];
+    return this.data.categories || []
   },
-  sections : function(clue) {
-    let arr = this.data.sections || [];
-    arr.forEach((sec) => sec.doc = this);
+  sections: function(clue) {
+    let arr = this.data.sections || []
+    arr.forEach(sec => (sec.doc = this))
     //grab a specific section, by its title
     if (typeof clue === 'string') {
-      let str = clue.toLowerCase().trim();
-      return arr.find((s) => {
-        return s.title().toLowerCase() === str;
-      });
+      let str = clue.toLowerCase().trim()
+      return arr.find(s => {
+        return s.title().toLowerCase() === str
+      })
     }
     if (typeof clue === 'number') {
-      return arr[clue];
+      return arr[clue]
     }
-    return arr;
+    return arr
   },
-  paragraphs : function(n) {
-    let arr = [];
-    this.data.sections.forEach((s) => {
-      arr = arr.concat(s.paragraphs());
-    });
+  paragraphs: function(n) {
+    let arr = []
+    this.data.sections.forEach(s => {
+      arr = arr.concat(s.paragraphs())
+    })
     if (typeof n === 'number') {
-      return arr[n];
+      return arr[n]
     }
-    return arr;
+    return arr
   },
-  paragraph : function(n) {
-    let arr = this.paragraphs() || [];
+  paragraph: function(n) {
+    let arr = this.paragraphs() || []
     if (typeof n === 'number') {
-      return arr[n];
+      return arr[n]
     }
-    return arr[0];
+    return arr[0]
   },
-  sentences : function(n) {
-    let arr = [];
-    this.sections().forEach((sec) => {
-      arr = arr.concat(sec.sentences());
-    });
+  sentences: function(n) {
+    let arr = []
+    this.sections().forEach(sec => {
+      arr = arr.concat(sec.sentences())
+    })
     if (typeof n === 'number') {
-      return arr[n];
+      return arr[n]
     }
-    return arr;
+    return arr
   },
-  images : function(clue) {
-    let arr = sectionMap(this, 'images', null);
+  images: function(clue) {
+    let arr = sectionMap(this, 'images', null)
     //grab image from infobox, first
-    this.infoboxes().forEach((info) => {
-      if (info.data.image) {
-        arr.unshift(info.image()); //put it at the top
+    this.infoboxes().forEach(info => {
+      let img = info.image()
+      if (img) {
+        arr.unshift(img) //put it at the top
       }
-    });
+    })
     //look for 'gallery' templates, too
-    this.templates().forEach((obj) => {
+    this.templates().forEach(obj => {
       if (obj.template === 'gallery') {
-        obj.images = obj.images || [];
-        obj.images.forEach((img) => {
+        obj.images = obj.images || []
+        obj.images.forEach(img => {
           if (img instanceof Image === false) {
-            img = new Image(img);
+            img = new Image(img)
           }
-          arr.push(img);
-        });
+          arr.push(img)
+        })
       }
-    });
+    })
     if (typeof clue === 'number') {
-      return arr[clue];
+      return arr[clue]
     }
-    return arr;
+    return arr
   },
-  links : function(clue) {
-    return sectionMap(this, 'links', clue);
+  links: function(clue) {
+    return sectionMap(this, 'links', clue)
   },
-  interwiki : function(clue) {
-    return sectionMap(this, 'interwiki', clue);
+  interwiki: function(clue) {
+    return sectionMap(this, 'interwiki', clue)
   },
-  lists : function(clue) {
-    return sectionMap(this, 'lists', clue);
+  lists: function(clue) {
+    return sectionMap(this, 'lists', clue)
   },
-  tables : function(clue) {
-    return sectionMap(this, 'tables', clue);
+  tables: function(clue) {
+    return sectionMap(this, 'tables', clue)
   },
-  templates : function(clue) {
-    return sectionMap(this, 'templates', clue);
+  templates: function(clue) {
+    return sectionMap(this, 'templates', clue)
   },
-  infoboxes : function(clue) {
-    return sectionMap(this, 'infoboxes', clue);
+  references: function(clue) {
+    return sectionMap(this, 'references', clue)
   },
-  references : function(clue) {
-    return sectionMap(this, 'references', clue);
+  coordinates: function(clue) {
+    return sectionMap(this, 'coordinates', clue)
   },
-  coordinates : function(clue) {
-    return sectionMap(this, 'coordinates', clue);
+  infoboxes: function(clue) {
+    let arr = sectionMap(this, 'infoboxes')
+    //sort them by biggest-first
+    arr = arr.sort((a, b) => {
+      if (Object.keys(a.data).length > Object.keys(b.data).length) {
+        return -1
+      }
+      return 1
+    })
+    if (typeof clue === 'number') {
+      return arr[clue]
+    }
+    return arr
   },
-  text : function(options) {
-    options = setDefaults(options, defaults);
+  text: function(options) {
+    options = setDefaults(options, defaults)
     //nah, skip these.
     if (this.isRedirect() === true) {
-      return '';
+      return ''
     }
-    let arr = this.sections().map(sec => sec.text(options));
-    return arr.join('\n\n');
+    let arr = this.sections().map(sec => sec.text(options))
+    return arr.join('\n\n')
   },
-  markdown : function(options) {
-    options = setDefaults(options, defaults);
-    return toMarkdown(this, options);
+  markdown: function(options) {
+    options = setDefaults(options, defaults)
+    return toMarkdown(this, options)
   },
-  latex : function(options) {
-    options = setDefaults(options, defaults);
-    return toLatex(this, options);
+  latex: function(options) {
+    options = setDefaults(options, defaults)
+    return toLatex(this, options)
   },
-  html : function(options) {
-    options = setDefaults(options, defaults);
-    return toHtml(this, options);
+  html: function(options) {
+    options = setDefaults(options, defaults)
+    return toHtml(this, options)
   },
-  json : function(options) {
-    options = setDefaults(options, defaults);
-    return toJSON(this, options);
+  reveal: function(options) {
+    options = setDefaults(options, defaults)
+    return toReveal(this, options)
+  },
+  json: function(options) {
+    options = setDefaults(options, defaults)
+    return toJSON(this, options)
   },
   debug: function() {
-    console.log('\n');
-    this.sections().forEach((sec) => {
-      let indent = ' - ';
-      for(let i = 0; i < sec.depth; i += 1) {
-        indent = ' -' + indent;
+    console.log('\n')
+    this.sections().forEach(sec => {
+      let indent = ' - '
+      for (let i = 0; i < sec.depth; i += 1) {
+        indent = ' -' + indent
       }
-      console.log(indent + (sec.title() || '(Intro)'));
-    });
-    return this;
+      console.log(indent + (sec.title() || '(Intro)'))
+    })
+    return this
   }
-};
+}
 
 //add alises
-Object.keys(aliasList).forEach((k) => {
-  Document.prototype[k] = methods[aliasList[k]];
-});
+Object.keys(aliasList).forEach(k => {
+  Document.prototype[k] = methods[aliasList[k]]
+})
 //add singular-methods, too
-let plurals = ['sections', 'infoboxes', 'sentences', 'citations', 'references', 'coordinates', 'tables', 'links', 'images', 'categories'];
-plurals.forEach((fn) => {
-  let sing = fn.replace(/ies$/, 'y');
-  sing = sing.replace(/e?s$/, '');
+let plurals = [
+  'sections',
+  'infoboxes',
+  'sentences',
+  'citations',
+  'references',
+  'coordinates',
+  'tables',
+  'links',
+  'images',
+  'categories'
+]
+plurals.forEach(fn => {
+  let sing = fn.replace(/ies$/, 'y')
+  sing = sing.replace(/e?s$/, '')
   methods[sing] = function(n) {
-    n = n || 0;
-    return this[fn](n);
-  };
-});
+    n = n || 0
+    return this[fn](n)
+  }
+})
 
-Object.keys(methods).forEach((k) => {
-  Document.prototype[k] = methods[k];
-});
+Object.keys(methods).forEach(k => {
+  Document.prototype[k] = methods[k]
+})
 
 //alias these ones
-Document.prototype.isDisambig = Document.prototype.isDisambiguation;
-Document.prototype.citations = Document.prototype.references;
-Document.prototype.redirectsTo = Document.prototype.redirectTo;
-Document.prototype.redirect = Document.prototype.redirectTo;
-Document.prototype.redirects = Document.prototype.redirectTo;
+Document.prototype.isDisambig = Document.prototype.isDisambiguation
+Document.prototype.citations = Document.prototype.references
+Document.prototype.redirectsTo = Document.prototype.redirectTo
+Document.prototype.redirect = Document.prototype.redirectTo
+Document.prototype.redirects = Document.prototype.redirectTo
 
-module.exports = Document;
+module.exports = Document

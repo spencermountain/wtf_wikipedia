@@ -1,4 +1,3 @@
-
 /*
 HTML: function is necessary for smart equal compare
 due to equivalence in exported output
@@ -6,12 +5,11 @@ remove unnecessary characters that makes the test smarter against
 syntactical layout change that still provide a correct output
 */
 function html_tidy(pSource) {
-
   // (1) Comments in Output
-  pSource = pSource.replace(/<!--[^>]*-->/g, '');
+  pSource = pSource.replace(/<!--[^>]*-->/g, '')
 
   // (2) Newline
-  pSource = pSource.replace(/\n/g, '');
+  pSource = pSource.replace(/\n/g, '')
   // newline \n does not matter in HTML, but newlines are helpful
   // for a more comprehensive output.
   // Newlines can make the test fail, even if the generated code is OK.
@@ -19,11 +17,11 @@ function html_tidy(pSource) {
 
   // (3) Blanks
   // replace multiple blanks by one blank
-  pSource = pSource.replace(/\s[\s]+/g, ' ');
+  pSource = pSource.replace(/\s[\s]+/g, ' ')
   // remove blanks before closing a tag with ">"
-  pSource = pSource.replace(/ >/g, '>');
+  pSource = pSource.replace(/ >/g, '>')
 
-  return pSource;
+  return pSource
 }
 
 /*
@@ -35,24 +33,24 @@ syntactical layout change that still provide a correct output
 */
 function latex_tidy(pSource) {
   // (1) Comments in Output
-  pSource = pSource.replace(/[\s]*%[^\n]\n/g, '');
+  pSource = pSource.replace(/[\s]*%[^\n]\n/g, '')
   //last line is a comment
-  pSource = pSource.replace(/[\s]*%[^\n]$/g, '');
+  pSource = pSource.replace(/[\s]*%[^\n]$/g, '')
   // Comment is a line end starting with % and ending with a newline
   // e.g.   latex test % my Comment
   //        more latex text
 
   // (2) Newline
-  pSource = pSource.replace(/\n[\s]*\n[\s\n]+/g, '\n\n');
+  pSource = pSource.replace(/\n[\s]*\n[\s\n]+/g, '\n\n')
   /* more than two newlines \n (optional with spaces in between)
   are equivalent to two newlines.
   */
   //last line newline
-  pSource = pSource.replace(/\n$/, '');
+  pSource = pSource.replace(/\n$/, '')
 
   // (3) Blanks
   // replace multiple blanks by one blank
-  pSource = pSource.replace(/\s[\s]+/g, ' ');
+  pSource = pSource.replace(/\s[\s]+/g, ' ')
 
   /*
   Example for (2) and (3)
@@ -81,10 +79,10 @@ function latex_tidy(pSource) {
   -------------------
   */
 
-  return pSource;
+  return pSource
 }
 
 module.exports = {
-  html : html_tidy,
-  latex : latex_tidy,
-};
+  html: html_tidy,
+  latex: latex_tidy
+}

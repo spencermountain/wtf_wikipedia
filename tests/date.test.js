@@ -1,6 +1,6 @@
-'use strict';
-var test = require('tape');
-var wtf = require('./lib');
+'use strict'
+var test = require('tape')
+var wtf = require('./lib')
 
 test('structured date templates', t => {
   var arr = [
@@ -21,8 +21,8 @@ test('structured date templates', t => {
     ['{{Death date and given age|1993|2|4|df=yes}}', 'February 4, 1993'],
     ['{{Birth date and age|1941}}', '1941'],
 
-    ['{{Birth year and age|1963}}', '1963'],
-    ['{{Birth year and age|1963|6}}', '1963'],
+    // ['{{Birth year and age|1963}}', '1963 (age 55)'],
+    // ['{{Birth year and age|1963|6}}', '1963 (age 55)'],
     ['{{Death year and age|2017|1967}}', '2017'],
     ['{{Death year and age|2017|1967}}', '2017'],
     // ['{{Birth year and age|1963|02}}', 'February 1963'],
@@ -47,15 +47,14 @@ test('structured date templates', t => {
     ['{{Start date and age|1997|03|26}}', 'March 26, 1997'],
     ['{{Start date and age|1986|01|01|df=yes}}', 'January 1, 1986'],
     ['{{Start date and age|2019|03|08}}', 'March 8, 2019'],
-    ['{{Start date and age|2010|02|29|df=yes}}', 'February 29, 2010'],
-
-  ];
-  arr.forEach((a) => {
-    var str = wtf(a[0]).plaintext();
-    t.equal(str, a[1], a[0] + ' ' + str);
-  });
-  t.end();
-});
+    ['{{Start date and age|2010|02|29|df=yes}}', 'February 29, 2010']
+  ]
+  arr.forEach(a => {
+    var str = wtf(a[0]).plaintext()
+    t.equal(str, a[1], a[0] + ' ' + str)
+  })
+  t.end()
+})
 
 test('hyphenated language-date templates', t => {
   var arr = [
@@ -63,32 +62,41 @@ test('hyphenated language-date templates', t => {
     ['{{birth-date|7 December 1941}}', '7 December 1941'],
     ['{{end-date|7 December 1941}}', '7 December 1941'],
     ['{{start-date|5:43PM HST, December 7th, 1941|tz=y}}', '5:43PM HST, December 7th, 1941'],
-    ['{{start-date|December 8, 1941 12:50PM Australia/Adelaide|tz=y}}', 'December 8, 1941 12:50PM Australia/Adelaide'],
+    [
+      '{{start-date|December 8, 1941 12:50PM Australia/Adelaide|tz=y}}',
+      'December 8, 1941 12:50PM Australia/Adelaide'
+    ],
     // ['{{Birth-date and age|1941-04-12|Twelfth of April, 1941}}', 'Twelfth of April, 1941'],
     ['{{Birth-date and age|April 12, 1941}}', 'April 12, 1941'],
     ['{{Birth-date and age|12 April 1941}}', '12 April 1941'],
     ['{{Birth-date and age|1941}}', '1941'],
     ['{{start-date|7 March 2011}}', '7 March 2011'],
     ['{{end-date|December 8 2000}}', 'December 8 2000'],
-    ['{{start-date| December 8, 1941 12:30PM Asia/Manila }}', 'December 8, 1941 12:30PM Asia/Manila'],
+    [
+      '{{start-date| December 8, 1941 12:30PM Asia/Manila }}',
+      'December 8, 1941 12:30PM Asia/Manila'
+    ],
     ['born on {{birth-date|17 June 1941}}', 'born on 17 June 1941'],
-    ['around {{start-date|5:43PM HST, December 7th, 1941|tz=y}} this century', 'around 5:43PM HST, December 7th, 1941 this century'],
+    [
+      'around {{start-date|5:43PM HST, December 7th, 1941|tz=y}} this century',
+      'around 5:43PM HST, December 7th, 1941 this century'
+    ],
     // ['{{Death-date and given age|2018|2|5|df=yes}}', 'February 5, 2018'],
     // ['{{birth date and age2 |1988|6|10 |1961|7|4 |df=y}}', '4 July 1961'],
     ['{{BirthDeathAge|B|1976}}', '1976'],
     ['{{BirthDeathAge|B|1976|6|6|1990|8|8}}', 'June 6, 1976'],
     ['{{BirthDeathAge| |1976| | |1990| |}}', '1990'],
     ['{{BirthDeathAge| |1976| | |1990|8|8}}', 'August 8, 1990'],
-    ['{{BirthDeathAge|{{^}}|1976|{{^}}|{{^}}|2007|1|1}}', 'January 1, 2007'],
-  // ['{{Birth date based on age at death |age |1986|03|28}}', 'March 28, 1986'],
-  // ['{{birth based on age as of date | 50 | 2017 | 02 | 16}}', '1966/1967']
-  ];
-  arr.forEach((a) => {
-    var str = wtf(a[0]).plaintext();
-    t.equal(str, a[1], a[0]);
-  });
-  t.end();
-});
+    ['{{BirthDeathAge|{{^}}|1976|{{^}}|{{^}}|2007|1|1}}', 'January 1, 2007']
+    // ['{{Birth date based on age at death |age |1986|03|28}}', 'March 28, 1986'],
+    // ['{{birth based on age as of date | 50 | 2017 | 02 | 16}}', '1966/1967']
+  ]
+  arr.forEach(a => {
+    var str = wtf(a[0]).plaintext()
+    t.equal(str, a[1], a[0])
+  })
+  t.end()
+})
 
 // test('date-data', t => {
 //   var obj = wtf('hello {{start date|1993|02|24|08|30}} world').sentences(0);
@@ -125,18 +133,18 @@ test('age templates', t => {
     // ['{{age in years and days|2007|03|02|2008|03|02}}', '1 year, 0 days'],
     // ['{{age in days|19 Aug 2008|4 Sep 2010}}', '746'],
     // ['{{age in days|27 May 2002}}', '5,744'],
-    ['{{Age nts|1989|7|23|2003|7|14}}', '13'],
-  // ['{{Age nts|1989|7|23}}', '28'],
-  //
-  //     ['{{Age as of date|50|2016|1|1}}', '52–53'],
-  //     ['{{Age as of date|50|2016|12|31}}', '51–52'],
-  //     ['{{Age as of date|50|2016|02|16}}', '52'],
-  //     ['{{Age as of date|50|2016|Feb|16}}', '52'],
-  //     ['{{Age as of date|50|2016|February|16}}', '52'],
-  ];
-  arr.forEach((a) => {
-    var str = wtf(a[0]).plaintext();
-    t.equal(str, a[1], a[0]);
-  });
-  t.end();
-});
+    ['{{Age nts|1989|7|23|2003|7|14}}', '13']
+    // ['{{Age nts|1989|7|23}}', '28'],
+    //
+    //     ['{{Age as of date|50|2016|1|1}}', '52–53'],
+    //     ['{{Age as of date|50|2016|12|31}}', '51–52'],
+    //     ['{{Age as of date|50|2016|02|16}}', '52'],
+    //     ['{{Age as of date|50|2016|Feb|16}}', '52'],
+    //     ['{{Age as of date|50|2016|February|16}}', '52'],
+  ]
+  arr.forEach(a => {
+    var str = wtf(a[0]).plaintext()
+    t.equal(str, a[1], a[0])
+  })
+  t.end()
+})

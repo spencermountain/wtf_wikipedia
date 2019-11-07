@@ -142,6 +142,5 @@ module.exports = [
   'ex',
   'eg',
   'sep',
-  'sept',
-  '..'
-];
+  'sept'
+]

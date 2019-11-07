@@ -1,6 +1,6 @@
-'use strict';
-var test = require('tape');
-var wtf = require('./lib');
+'use strict'
+var test = require('tape')
+var wtf = require('./lib')
 
 test('mongo encoding in json', t => {
   var str = `
@@ -21,22 +21,22 @@ hello world  {{lkjsdf|foo=28|hs.he=90}}.
 | row 2, cell 1
 | row 2, cell 2
 |}
-`;
-  let doc = wtf(str);
+`
+  let doc = wtf(str)
   let json = doc.json({
     encode: true
-  });
-  var table = json.sections[0].tables[0];
-  t.equal(table[0]['Foo.bar'], undefined, 'table removed dot');
-  t.ok(table[0]['Foo\\u002ebar'], 'has table encoding dot');
-  t.ok(table[1]['Foo\\u002ebar'], 'has table encoding dot #2');
+  })
+  var table = json.sections[0].tables[0]
+  t.equal(table[0]['Foo.bar'], undefined, 'table removed dot')
+  t.ok(table[0]['Foo\\u002ebar'], 'has table encoding dot')
+  t.ok(table[1]['Foo\\u002ebar'], 'has table encoding dot #2')
 
-  var template = json.sections[0].templates[0];
-  t.equal(template.data['hs.he'], undefined, 'template removed dot');
-  t.ok(template.data['hs\\u002ehe'], 'has template encoding dot');
+  var template = json.sections[0].templates[0]
+  t.equal(template['hs.he'], undefined, 'template removed dot')
+  t.ok(template['hs\\u002ehe'], 'has template encoding dot')
 
-  var infobox = json.sections[0].infoboxes[0];
-  t.equal(infobox['birth.date'], undefined, 'infobox removed dot');
-  t.ok(infobox['birth\\u002edate'], 'infobox encoding');
-  t.end();
-});
+  var infobox = json.sections[0].infoboxes[0]
+  t.equal(infobox['birth.date'], undefined, 'infobox removed dot')
+  t.ok(infobox['birth\\u002edate'], 'infobox encoding')
+  t.end()
+})

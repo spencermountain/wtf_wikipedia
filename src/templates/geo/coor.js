@@ -1,76 +1,91 @@
-const convertDMS = require('./dms-format');
+const convertDMS = require('./dms-format')
+const parse = require('../_parsers/parse')
 
-const hemispheres = {
-  n: true,
-  s: true,
-  w: true,
-  e: true
-};
-
-const round = function (num) {
+const round = function(num) {
   if (typeof num !== 'number') {
-    return num;
+    return num
   }
-  let places = 100000;
-  return Math.round(num * places) / places;
-};
+  let places = 100000
+  return Math.round(num * places) / places
+}
 
-const parseCoordAndCoor = function (str) {
-  let arr = str.split('|');
-  const template = arr[0].includes('coord') ? 'coord' : 'coor';
-  let obj = {
-    template: template,
-    lat: null,
-    lon: null
-  };
+//these hemispheres mean negative decimals
+const negative = {
+  s: true,
+  w: true
+}
 
-  //turn numbers into numbers, normalize N/s
-  let nums = [];
-  for (let i = 0; i < arr.length; i += 1) {
-    let s = arr[i].trim();
-    //make it a number
-    let num = parseFloat(s);
-    if (num || num === 0) {
-      arr[i] = num;
-      nums.push(num);
-    } else if (s.match(/^region:/i)) {
-      obj.region = s.replace(/^region:/i, '');
-      continue;
-    } else if (s.match(/^notes:/i)) {
-      obj.notes = s.replace(/^notes:/i, '');
-      continue;
-    } else if (s.match(/^scale:/i)) {
-      obj.scale = s.replace(/^scale:/i, '');
-      continue;
-    } else if (s.match(/^type:/i)) {
-      obj.type = s.replace(/^type:/i, '');
-      continue;
-    }
-    //DMS-format
-    if (hemispheres[s.toLowerCase()]) {
-      if (obj.lat === null) {
-        nums.push(s);
-        obj.lat = convertDMS(nums);
-        arr = arr.slice(i, arr.length);
-        nums = [];
-        i = 0;
-      } else {
-        nums.push(s);
-        obj.lon = convertDMS(nums);
-      }
+const findLatLng = function(arr) {
+  const types = arr.map(s => typeof s).join('|')
+  //support {{lat|lng}}
+  if (arr.length === 2 && types === 'number|number') {
+    return {
+      lat: arr[0],
+      lon: arr[1]
     }
   }
-  //this is an original `lat|lon` format
-  if (!obj.lon && nums.length === 2) {
-    obj.lat = nums[0];
-    obj.lon = nums[1];
+  //support {{dd|N/S|dd|E/W}}
+  if (arr.length === 4 && types === 'number|string|number|string') {
+    if (negative[arr[1].toLowerCase()]) {
+      arr[0] *= -1
+    }
+    if (arr[3].toLowerCase() === 'w') {
+      arr[2] *= -1
+    }
+    return {
+      lat: arr[0],
+      lon: arr[2]
+    }
   }
-  obj.lat = round(obj.lat);
-  obj.lon = round(obj.lon);
-  return obj;
-};
+  //support {{dd|mm|N/S|dd|mm|E/W}}
+  if (arr.length === 6) {
+    return {
+      lat: convertDMS(arr.slice(0, 3)),
+      lon: convertDMS(arr.slice(3))
+    }
+  }
+  //support {{dd|mm|ss|N/S|dd|mm|ss|E/W}}
+  if (arr.length === 8) {
+    return {
+      lat: convertDMS(arr.slice(0, 4)),
+      lon: convertDMS(arr.slice(4))
+    }
+  }
+  return {}
+}
 
-module.exports = parseCoordAndCoor;
+const parseParams = function(obj) {
+  obj.list = obj.list || []
+  obj.list = obj.list.map(str => {
+    let num = Number(str)
+    if (!isNaN(num)) {
+      return num
+    }
+    //these are weird
+    let split = str.split(/:/)
+    if (split.length > 1) {
+      obj.props = obj.props || {}
+      obj.props[split[0]] = split.slice(1).join(':')
+      return null
+    }
+    return str
+  })
+  obj.list = obj.list.filter(s => s !== null)
+  return obj
+}
+
+const parseCoor = function(tmpl) {
+  let obj = parse(tmpl)
+  obj = parseParams(obj)
+  let tmp = findLatLng(obj.list)
+  obj.lat = round(tmp.lat)
+  obj.lon = round(tmp.lon)
+  obj.template = 'coord'
+  delete obj.list
+  return obj
+}
+
+module.exports = parseCoor
 // {{Coor title dms|dd|mm|ss|N/S|dd|mm|ss|E/W|template parameters}}
 // {{Coor title dec|latitude|longitude|template parameters}}
 // {{Coor dms|dd|mm|ss|N/S|dd|mm|ss|E/W|template parameters}}
@@ -81,4 +96,3 @@ module.exports = parseCoordAndCoor;
 // {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
 // {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
 // {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
-

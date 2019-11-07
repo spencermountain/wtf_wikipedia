@@ -11,14 +11,16 @@ let i18n = {
     'پرونده',
     'tiedosto',
     'mynd',
-    'su\'wret',
+    "su'wret",
     'fichier',
     'bestand',
     'датотека',
     'dosya',
-    'fil'
+    'fil',
+    'ファイル',
+    'चित्र'
   ],
-  images: ['image'],
+  images: ['image', 'चित्र'],
   templates: [
     'шаблён',
     'plantilla',
@@ -49,7 +51,8 @@ let i18n = {
     'категорија',
     'kategori',
     'kategoria',
-    'تصنيف'
+    'تصنيف',
+    'श्रेणी'
   ],
   redirects: [
     'перанакіраваньне',
@@ -94,7 +97,8 @@ let i18n = {
     'spécial',
     'speciaal',
     'посебно',
-    'özel'
+    'özel',
+    '特別'
   ],
   users: [
     'удзельнік',
@@ -110,7 +114,8 @@ let i18n = {
     'utilisateur',
     'gebruiker',
     'корисник',
-    'kullanıcı'
+    'kullanıcı',
+    '利用者'
   ],
   disambigs: [
     'disambig', //en
@@ -127,7 +132,8 @@ let i18n = {
     'desambiguação', //pt
     'homonymie', //fr
     'неоднозначность', //ru
-    'anlam ayrımı' //tr
+    'anlam ayrımı', //tr
+    '曖昧さ回避' //ja
   ],
   infoboxes: [
     'infobox',
@@ -138,7 +144,8 @@ let i18n = {
     'لغة',
     'bilgi kutusu', //tr
     'yerleşim bilgi kutusu',
-    'infoboks' //nn, no
+    'infoboks', //nn, no
+    'ज्ञानसन्दूक'
   ],
   sources: [
     //blacklist these headings, as they're not plain-text
@@ -148,18 +155,22 @@ let i18n = {
     'further reading',
     'notes et références',
     'voir aussi',
-    'liens externes'
+    'liens externes',
+    '参考文献', //references (ja)
+    '脚注', //citations (ja)
+    '関連項目', //see also (ja)
+    '外部リンク' //external links (ja)
   ]
-};
+}
 
-let dictionary = {};
+let dictionary = {}
 Object.keys(i18n).forEach(k => {
   i18n[k].forEach(w => {
-    dictionary[w] = true;
-  });
-});
-i18n.dictionary = dictionary;
+    dictionary[w] = true
+  })
+})
+i18n.dictionary = dictionary
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = i18n;
+  module.exports = i18n
 }

@@ -1,66 +1,45 @@
 //grab the content of any article, off the api
 const fetch = require('cross-fetch');
-const site_map = require('./_data/site_map');
-const parseDocument = require('./01-document');
+const site_map = require('./data/site_map');
+const Document = require('./document/Document');
 // const redirects = require('../parse/page/redirects');
-
-function isArray(arr) {
-  return arr.constructor.toString().indexOf('Array') > -1;
-}
+const isNumber = /^[0-9]*$/;
 
 //construct a lookup-url for the wikipedia api
-const makeUrl = function(title, lang, options) {
+const makeUrl = function(title, lang) {
   lang = lang || 'en';
-  let url = `https://${lang}.wikipedia.org/w/api.php`;
+
+  var lookup = 'titles';
+  if (isNumber.test(title) && title.length > 3) {
+    lookup = 'curid';
+  }
+  let url = 'https://' + lang + '.wikipedia.org/w/api.php';
   if (site_map[lang]) {
     url = site_map[lang] + '/w/api.php';
   }
   //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&format=json&origin=*';
-  if (options.follow_redirects !== false) {
-    url += '&redirects=true';
+  url += '?action=query&redirects=true&prop=revisions&rvprop=content&maxlag=5&format=json&origin=*';
+  //support multiple titles
+  if (typeof title === 'string') {
+    title = [title];
   }
-  var lookup = 'titles';
-  let pages = [];
-  //support one, or many pages
-  if (isArray(title) === false) {
-    pages = [title];
-  } else {
-    pages = title;
-  }
-  //assume numbers mean pageid, and strings are titles (like '1984')
-  if (typeof pages[0] === 'number') {
-    lookup = 'pageids';
-  } else {
-    pages = pages.map((str) => {
-      if (typeof str === 'string') {
-        return encodeURIComponent(str);
-      }
-      return str;
-    });
-  }
-  pages = pages.join('|');
-  url += '&' + lookup + '=' + pages;
+  title = title.map(encodeURIComponent);
+  title = title.join('|');
+  url += '&' + lookup + '=' + title;
   return url;
 };
 
 //this data-format from mediawiki api is nutso
-const postProcess = function(data, options) {
+const postProcess = function(data) {
   let pages = Object.keys(data.query.pages);
   let docs = pages.map(id => {
     let page = data.query.pages[id] || {};
-    if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
-      return null;
-    }
     let text = page.revisions[0]['*'];
-    options.title = page.title;
-    options.pageID = page.pageid;
-    try {
-      return parseDocument(text, options);
-    } catch (e) {
-      console.error(e);
-      throw e
-    }
+    let options = {
+      title: page.title,
+      pageID: page.pageid,
+    };
+    return new Document(text, options);
   });
   //return an array if there was more than one page given
   if (docs.length > 1) {
@@ -70,8 +49,15 @@ const postProcess = function(data, options) {
   return docs[0];
 };
 
+const throwErr = (r, cb) => {
+  if (cb && typeof cb === 'function') {
+    return cb(response, {});
+  }
+  return {};
+};
 
 const getData = function(url, options) {
+  // Api-User-Agent
   let params = {
     method: 'GET',
     headers: {
@@ -81,10 +67,10 @@ const getData = function(url, options) {
   };
   return fetch(url, params).then((response) => {
     if (response.status !== 200) {
-      throw response;
+      throwErr(response, callback);
     }
     return response.json();
-  }).catch(console.error);
+  });
 };
 
 const getPage = function(title, a, b, c) {
@@ -107,20 +93,19 @@ const getPage = function(title, a, b, c) {
   if (typeof c === 'function') {
     callback = c;
   }
-  let url = makeUrl(title, lang, options);
-  return new Promise(function(resolve, reject) {
+  let url = makeUrl(title, lang);
+  let promise = new Promise(function(resolve, reject) {
     let p = getData(url, options);
-
-    p.then((wiki) => {
-      return postProcess(wiki, options);
-    }).then((doc) => {
+    p.then(postProcess).then((doc) => {
       //support 'err-back' format
       if (callback && typeof callback === 'function') {
         callback(null, doc);
       }
       resolve(doc);
-    }).catch(reject);
+    });
+    p.catch(reject);
   });
+  return promise;
 };
 
 

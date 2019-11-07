@@ -104,7 +104,7 @@
 * * remove top-level `coordinates` data (found in `templates`) - resume it with `{coordinates:true}`
 * * remove top-level `citations` data (found in `section`) - resume it with `{citations:true}`
 * return empty arrays in `.json()` again  ¯\_(:/)_ /¯
-* remove <h1> title on html output
+* remove `h1` title on html output
 * change ambiguous `options.title` for sections to `options.headers`
 * support lists of 1
 * begin removing empty references section by default
@@ -116,7 +116,7 @@
 * include `interwiki()` results in `.links()`
 * support `follow_redirects` option to fetch
 * hide object data in console.logs
-* move ALL image urls from `upload.wikimedia.org/wikipedia/commons` to `wikipedia.org/wiki/Special:Redirect/file/` via #86
+* move ALL image urls from `upload.wikimedia.org/wikipedia/commons` to `wikipedia.org/wiki/Special:Redirect/file/` via 86
 * image captions are now Sentence objects
 * rename citation → reference internally, and in json output
 * remove references inside section titles
@@ -125,3 +125,46 @@
 ### 6.2.0
 * support categories in redirects
 * add mongo-encoding from dumpster-dive
+### 6.3.0
+* support way (+20%?) more templates.
+
+## 7.0.0 🚨
+* change result-format in a lot of templates, for more consistency.
+* * notably: **reference** format, **see also**, **IPA**, **main**
+* support colspan/rowspan in tables (a little!)
+* support implicit first-row headers for some tables
+* return templates even if they have no data
+* begin support for some well-used `{{foo start}}...{{foo end}}` templates
+* remove empty `[]` for some more section properties in `.json()` response
+### 7.1.0
+* some template fixes
+* add a 'number' field in sentence json, when it looks like a number
+* slight change in coordinate result format, support inline coordinate text
+* handle fetching a large list of titles in sequence
+### 7.1.1
+* support population, weatherbox templates
+### 7.2.0
+* improved date templates, bugfixes
+### 7.2.9
+* few more sports templates,
+* rowspan parsing fix
+* no-longer include package.json in builds
+* use full template-parser for image captions
+* support manually setting doc.title()
+### 7.2.10
+* improved unicode support for sentence/paragraph splitting
+* supporting more formatting templates, like **Mono**
+* more flexible reference support in `.json()`
+### 7.3.0
+* more unicode support
+### 7.6.0
+* use rollup for builds, publish esm module
+### 7.7.2
+* bugfixes by suntala 
+---
+
+#### 8.0.0
+* lowercase/normalize table headers
+* date templates response format
+* .keyValue() should return page title if exists, instead of text
+* return country name for `{{BAN}}` etc templates

@@ -1,0 +1,113 @@
+== Wiki-Formate als Datensenken ==
+
+WikiMedia-Syntax wird als Format in
+
+* Wikipedia
+* Wikiversity (OER)
+* OLAT (closed Doc Development)
+* ....
+
+verwendet.
+
+== WikiMedia-Konzept ==
+
+* Offene kollaborative Inhaltsentwicklung
+* Versionierung der Inhalte
+* Diskussionsseiten jeweils zu allen Inhalten
+* Qualtitätsicherung mit externer Github-Versionierung und Querverweis zu Wiki-Referenz
+
+== Wikiversity und Bildungsprozesse ==
+
+* Primary Education (Grundschulen)
+* Secondary Education (Weiterführende Schulen)
+* Tertiary Education (Universitäten)
+* Non-formal Education (Handwerkliche Techniken, Alltagswissen, ...)
+
+== Aus Datensenken andere Formate erzeugen ==
+
+* Markdown
+* Präsentationen (RevealJS, DZSlides, LaTeX Beamer)
+* LibreOffice-Dokumente mit Style-Templates,
+* Microsoft Office-Dokumente mit Style-Templates,
+* LaTeX-Dokumente,
+* PDF, ...
+
+== PanDoc Electron ==
+
+[[File:./images/PanDocElectronMain.png|thumb|center|700px|alt=PanDoc Electron|]]
+
+
+== PanDoc Electron ==
+
+[[File:./images/PanDocElectronMain.png|thumb|center|250px|alt=PanDoc Electron|]]
+
+* '''Electron''' = Browser mit vollem Zugriff auf das Dateisystem
+* '''Download (PanDocElectron):''' [http://niebert.github.io/PanDocElectron http://niebert.github.io/PanDocElectron]
+
+== Reveal-Präsentationen ==
+
+* In Standard [https://github.com/hakimel/reveal.js reveal.js]-Präsentationen werden mathematische Formel mit  MathJax  erzeugt.
+* Eingabeformate LaTeX (und ASCII-MathI)
+* URL: https://github.com/mathjax/MathJax
+* Homepage: http://www.mathjax.org
+
+== Mathemtatik ==
+
+* z.B. Taylorentwickung <math>f(x)=\sum_{n=0}^\infty\frac{f^{(n)}(a)}{n!}(x-a)^n</math><br />
+Abgesetzte mathematische Formeln <math> \displaystyle  \left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right) </math>
+* Grundlage LaTeX with in WikiMedia, MathJax, ... unterstützt
+
+== Audio Video ==
+
+* Die Mediendateien werden in einen Unterverzeichnis der Projekte gespeichert ''/audio'', ''/video'' and ''/images''
+* die Unterordner der Projekte Medien (Video, Audio, Images, ...), 
+* insbesondere für Audiodateien zu Präsentationen ''audio1.mp3, audio2.mp3, ...''
+
+== WikiMedia Quelle ==
+[[File:./images/PanDocWikiversity.png|thumb|center|650px|alt=PanDoc Wikiversity|]]
+
+[[https://commons.wikimedia.org/wiki/User:Bert_Niehaus]]
+
+== PanDoc-Ausgabe: LibreOffice ==
+
+[[File:./images/PanDocLibreOffice1col.png|thumb|center|650px|alt=PanDoc LibreOffice|]]
+
+== PanDoc-Ausgabe: LibreOffice Layout==
+
+[[File:./images/PanDocLibreOffice2col.png|thumb|center|650px|alt=PanDoc LibreOffice|]]
+
+
+== PanDoc-Ausgabe: Word Layout==
+
+[[File:./images/PanDocWord2col.png|thumb|center|650px|alt=PanDoc Word|]]
+
+
+== PanDoc von der Kommandozeile ==
+
+<pre>pandoc -f mediawiki -t html5 --template=tpl4reveal.html \
+     --standalone --section-divs \
+     --variable theme='beige' \
+     --variable transition=&quot;slide&quot; --mathjax \
+     wikipedia.wiki -o wikipedia.html</pre>
+
+== GitHub: Versionierung einer Qualitätssicherung ==
+
+* GitHub zur Versionierung von Quelltexten (i.d. Programmcode)
+* für OER angewendet auf WikiMedia Quelltextes
+* Lese-Zugriff frei/offen
+* Schreibzugriff auf die Versionierung nur durch Gutachterteam
+* Gutachter-Innen nicht anonym
+
+== Tutorials für Markdown und WikiMedia ==
+
+* Tutorial Markdown http://www.markdowntutorial.com
+* Tutorial WikiMedia https://en.wikipedia.org/wiki/Wikipedia:Tutorial
+
+== Zusammenfassung ==
+
+* '''Wikiversity:''' Offene kollaborative Inhaltsentwicklung für OER
+* '''Versionierung:''' Inhalte werden versioniert inkl. Diskussionsseiten 
+* '''PanDoc(Electron):''' Tools für Konvertierung der Inhalte in andere Formate
+* '''Qualtitätsicherung:''' Externer Github-Versionierung und Querverweis zu Wiki-Referenz
+
+
