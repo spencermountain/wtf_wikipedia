@@ -4099,10 +4099,15 @@ var redirects = {
   parse: parse
 };
 
-const template_reg = new RegExp(
-  '\\{\\{ ?(' + i18n_1.disambigs.join('|') + ')(\\|[a-z, =]*?)? ?\\}\\}',
-  'i'
-);
+const getReg = function(templates) {
+  const allowedCharacters = '(\\|[a-z, =]*?)*?';
+  return new RegExp(
+    '\\{\\{ ?(' + templates.join('|') + ')' + allowedCharacters + ' ?\\}\\}',
+    'i'
+  )
+};
+
+const templateReg = getReg(i18n_1.disambigs);
 
 //special disambig-templates en-wikipedia uses
 let d = ' disambiguation';
@@ -4146,11 +4151,11 @@ const english = [
   'taxonomy' + d,
   'wp disambig'
 ];
-const enDisambigs = new RegExp('\\{\\{ ?(' + english.join('|') + ')(\\|[a-z, =]*?)? ?\\}\\}', 'i');
+const enDisambigs = getReg(english);
 
 const isDisambig = function(wiki) {
   //test for {{disambiguation}} templates
-  if (template_reg.test(wiki) === true) {
+  if (templateReg.test(wiki) === true) {
     return true
   }
   //more english-centric disambiguation templates
@@ -5364,8 +5369,7 @@ var abbreviations = [
   'ex',
   'eg',
   'sep',
-  'sept',
-  '..'
+  'sept'
 ];
 
 //split text into sentences, using regex
@@ -5375,7 +5379,8 @@ var abbreviations = [
 // Ignore periods/questions/exclamations used in acronyms/abbreviations/numbers, etc.
 // @spencermountain 2015 MIT
 
-const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i');
+const abbreviations$1 = abbreviations.concat('[^]][^]]');
+const abbrev_reg = new RegExp("(^| |')(" + abbreviations$1.join('|') + `)[.!?] ?$`, 'i');
 const acronym_reg = new RegExp('[ |.][A-Z].? +?$', 'i');
 const elipses_reg = new RegExp('\\.\\.\\.* +?$');
 const hasWord = new RegExp('[a-zа-яぁ-ゟ][a-zа-яぁ-ゟ゠-ヿ]', 'iu');
@@ -8886,6 +8891,7 @@ let punctuation = [
   [';', ';'],
   ['ampersand', '&'],
   ['snds', ' – '],
+  ['snd', ' – '],
   // these '{{^}}' things are nuts, and used as some ilicit spacing thing.
   ['^', ' '],
   ['!', '|'],

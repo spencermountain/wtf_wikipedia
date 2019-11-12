@@ -29,6 +29,7 @@ let punctuation = [
   [';', ';'],
   ['ampersand', '&'],
   ['snds', ' – '],
+  ['snd', ' – '],
   // these '{{^}}' things are nuts, and used as some ilicit spacing thing.
   ['^', ' '],
   ['!', '|'],

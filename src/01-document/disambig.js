@@ -1,8 +1,14 @@
 const i18n = require('../_data/i18n')
-const template_reg = new RegExp(
-  '\\{\\{ ?(' + i18n.disambigs.join('|') + ')(\\|[a-z, =]*?)? ?\\}\\}',
-  'i'
-)
+
+const getReg = function(templates) {
+  const allowedCharacters = '(\\|[a-z, =]*?)*?'
+  return new RegExp(
+    '\\{\\{ ?(' + templates.join('|') + ')' + allowedCharacters + ' ?\\}\\}',
+    'i'
+  )
+}
+
+const templateReg = getReg(i18n.disambigs)
 
 //special disambig-templates en-wikipedia uses
 let d = ' disambiguation'
@@ -46,11 +52,11 @@ const english = [
   'taxonomy' + d,
   'wp disambig'
 ]
-const enDisambigs = new RegExp('\\{\\{ ?(' + english.join('|') + ')(\\|[a-z, =]*?)? ?\\}\\}', 'i')
+const enDisambigs = getReg(english)
 
 const isDisambig = function(wiki) {
   //test for {{disambiguation}} templates
-  if (template_reg.test(wiki) === true) {
+  if (templateReg.test(wiki) === true) {
     return true
   }
   //more english-centric disambiguation templates
