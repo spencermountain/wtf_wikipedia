@@ -4,19 +4,13 @@ const wtf = require('./src/index')
 // const wtf = require('./builds/wtf_wikipedia');
 // const wtf = require('./build');
 
-// (async () => {
-// var doc = await wtf.fetch('महात्मा_गांधी', 'hi');
-// var doc = await wtf.random();
-// console.log(doc.text());
-// })();
+wtf.extend(models => {
+  // add a method to the Doc class
+  models.Doc.prototype.sayHi = function() {
+    console.log('hello ' + this.title())
+  }
+})
 
-// let doc = readFile('BBDO');
-// console.log(doc.infoboxes(0).data);
-
-// wtf.fetch('Горбатая_гора', 'ru', function(err, doc) {
-//   console.log(doc.sections('Сюжет').sentences().map((s) => s.text()));
-// });
-
-let str = `majority of [[music]], [[film]]s, [[book]]s`
-let doc = wtf(str)
-console.log(doc.links())
+wtf.fetch('Miami', 'en', function(err, doc) {
+  doc.sayHi()
+})

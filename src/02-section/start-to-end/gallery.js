@@ -24,7 +24,8 @@ const parseGallery = function(wiki, section) {
     if (images.length > 0) {
       section.templates.push({
         template: 'gallery',
-        images: images
+        images: images,
+        pos: section.title
       })
     }
     return ''
