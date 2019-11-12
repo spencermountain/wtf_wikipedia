@@ -10,10 +10,16 @@ export as namespace wtf
 declare function wtf(wiki: string, options?: any): wtf.Document
 
 declare module wtf {
+  /** current version of the library */
   export const version: string
 
+  /** fetch articles belonging to this wikipedia category */
   export function category(cat: string, lang?: string, options?: object, cb?: any): Promise<object>
 
+  /** extend built-in functionality */
+  export function extend(fn: any): any
+
+  /** grab wikipedia content from an API */
   export function fetch(
     titleOrId: string | number,
     lang?: string,
@@ -21,6 +27,7 @@ declare module wtf {
     cb?: any
   ): Promise<null | Document>
 
+  /** grab wikipedia content from an API */
   export function fetch(
     titlesOrIds: string[] | number[],
     lang?: string,
@@ -28,6 +35,7 @@ declare module wtf {
     cb?: any
   ): Promise<Document[]>
 
+  /** grab a random article from a wikimedia API */
   export function random(lang?: string, options?: object, cb?: any): Promise<Document>
 
   class Document {
