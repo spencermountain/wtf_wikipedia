@@ -7688,9 +7688,17 @@
       r.templates.push(obj);
       return '';
     },
+    //https://en.wikipedia.org/wiki/Template:About
+    'about': function about(tmpl, r) {
+      var obj = parse$2(tmpl);
+      obj.pos = r.title;
+      r.templates.push(obj);
+      return '';
+    },
     //https://en.wikipedia.org/wiki/Template:Main
     main: function main(tmpl, r) {
       var obj = parse$2(tmpl);
+      obj.pos = r.title;
       r.templates.push(obj);
       return '';
     },
@@ -7835,6 +7843,7 @@
     //https://en.wikipedia.org/wiki/Template:See_also
     'see also': function seeAlso(tmpl, r) {
       var data = parse$2(tmpl);
+      data.pos = r.title;
       r.templates.push(data);
       return '';
     },
@@ -10709,7 +10718,8 @@
       if (images.length > 0) {
         section.templates.push({
           template: 'gallery',
-          images: images
+          images: images,
+          pos: section.title
         });
       }
 
@@ -11326,6 +11336,16 @@
 
   var _version = '7.4.2';
 
+  var models = {
+    Doc: Document_1,
+    Section: Section_1,
+    Paragraph: Paragraph_1,
+    Sentence: Sentence_1,
+    Image: Image_1,
+    Infobox: Infobox_1 //the main 'factory' exported method
+
+  };
+
   var wtf = function wtf(wiki, options) {
     return _01Document(wiki, options);
   };
@@ -11340,6 +11360,11 @@
 
   wtf.category = function (cat, lang, options, cb) {
     return category(cat, lang, options, cb);
+  };
+
+  wtf.extend = function (fn) {
+    fn(models);
+    return this;
   };
 
   wtf.version = _version;

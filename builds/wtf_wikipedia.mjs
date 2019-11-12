@@ -7563,9 +7563,17 @@ const parsers = {
     r.templates.push(obj);
     return ''
   },
+  //https://en.wikipedia.org/wiki/Template:About
+  'about': (tmpl, r) => {
+    let obj = parse$2(tmpl);
+    obj.pos = r.title;
+    r.templates.push(obj);
+    return ''
+  },
   //https://en.wikipedia.org/wiki/Template:Main
   main: (tmpl, r) => {
     let obj = parse$2(tmpl);
+    obj.pos = r.title;
     r.templates.push(obj);
     return ''
   },
@@ -7709,6 +7717,7 @@ const parsers = {
   //https://en.wikipedia.org/wiki/Template:See_also
   'see also': (tmpl, r) => {
     let data = parse$2(tmpl);
+    data.pos = r.title;
     r.templates.push(data);
     return ''
   },
@@ -11025,7 +11034,8 @@ const parseGallery = function(wiki, section) {
     if (images.length > 0) {
       section.templates.push({
         template: 'gallery',
-        images: images
+        images: images,
+        pos: section.title
       });
     }
     return ''
@@ -11611,6 +11621,16 @@ var category = getCategories;
 
 var _version = '7.4.2';
 
+// export classes for plugin development
+const models = {
+  Doc: Document_1,
+  Section: Section_1,
+  Paragraph: Paragraph_1,
+  Sentence: Sentence_1,
+  Image: Image_1,
+  Infobox: Infobox_1
+};
+
 //the main 'factory' exported method
 const wtf = function(wiki, options) {
   return _01Document(wiki, options)
@@ -11623,6 +11643,10 @@ wtf.random = function(lang, options, cb) {
 };
 wtf.category = function(cat, lang, options, cb) {
   return category(cat, lang, options, cb)
+};
+wtf.extend = function(fn) {
+  fn(models);
+  return this
 };
 wtf.version = _version;
 
