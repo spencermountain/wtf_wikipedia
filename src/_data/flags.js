@@ -87,7 +87,7 @@ module.exports = [
   ['🇬🇦', 'gab', 'gabon'],
   ['🇬🇧', 'gbr', 'united kingdom'],
   ['🇬🇩', 'grd', 'grenada'],
-  ['🇬🇪', 'geo', 'georgia'],
+  // ['🇬🇪', 'geo', 'georgia'],
   ['🇬🇫', 'guf', 'french guiana'],
   ['🇬🇬', 'ggy', 'guernsey'],
   ['🇬🇭', 'gha', 'ghana'],
