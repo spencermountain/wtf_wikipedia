@@ -11,6 +11,14 @@ wtf.extend(models => {
   }
 })
 
-wtf.fetch('Miami', 'en', function(err, doc) {
-  doc.sayHi()
-})
+// wtf.fetch('Miami', 'en', function(err, doc) {
+//   doc.sayHi()
+// })
+
+let doc = wtf(`
+doesn't have {{geo|35.664036|139.698211}} 
+
+{{usabledistrict}}
+{{IsPartOf|Tokyo}}`)
+
+console.log(doc.templates())

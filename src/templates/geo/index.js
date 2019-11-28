@@ -1,4 +1,5 @@
 const parseCoor = require('./coor')
+const parse = require('../_parsers/parse')
 
 const templates = {
   coord: (tmpl, r) => {
@@ -9,6 +10,13 @@ const templates = {
       return `${obj.lat || ''}°N, ${obj.lon || ''}°W`
     }
     return ''
+  },
+  //https://en.wikivoyage.org/wiki/Template:Geo
+  geo: (tmpl, r) => {
+    let order = ['lat', 'lon', 'zoom']
+    let obj = parse(tmpl, order)
+    r.templates.push(obj)
+    return ``
   }
 }
 // {{coord|latitude|longitude|coordinate parameters|template parameters}}

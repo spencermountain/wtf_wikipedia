@@ -9273,6 +9273,13 @@ const templates$4 = {
       return `${obj.lat || ''}°N, ${obj.lon || ''}°W`
     }
     return ''
+  },
+  //https://en.wikivoyage.org/wiki/Template:Geo
+  geo: (tmpl, r) => {
+    let order = ['lat', 'lon', 'zoom'];
+    let obj = parse$2(tmpl, order);
+    r.templates.push(obj);
+    return ``
   }
 };
 // {{coord|latitude|longitude|coordinate parameters|template parameters}}
@@ -9937,7 +9944,7 @@ var flags = [
   ['🇬🇦', 'gab', 'gabon'],
   ['🇬🇧', 'gbr', 'united kingdom'],
   ['🇬🇩', 'grd', 'grenada'],
-  ['🇬🇪', 'geo', 'georgia'],
+  // ['🇬🇪', 'geo', 'georgia'],
   ['🇬🇫', 'guf', 'french guiana'],
   ['🇬🇬', 'ggy', 'guernsey'],
   ['🇬🇭', 'gha', 'ghana'],
