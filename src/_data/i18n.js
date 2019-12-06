@@ -18,7 +18,8 @@ let i18n = {
     'dosya',
     'fil',
     'ファイル',
-    'चित्र'
+    'चित्र',
+    '파일' //ko
   ],
   images: ['image', 'चित्र'],
   templates: [
@@ -52,7 +53,8 @@ let i18n = {
     'kategori',
     'kategoria',
     'تصنيف',
-    'श्रेणी'
+    'श्रेणी',
+    '분류' //ko
   ],
   redirects: [
     'перанакіраваньне',
