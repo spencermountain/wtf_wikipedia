@@ -19,6 +19,28 @@ test('infobox', function(t) {
   t.end()
 })
 
+test('node.js-infobox-logo', function(t) {
+  let str = `{{Infobox software
+    | name = Node.js
+    | logo = [[File:Node.js logo.svg|frameless]]
+    | author = [[Ryan Dahl]]
+    | developer = Various
+    | released = {{Start date and age|2009|05|27}}<ref>{{cite web | url=https://github.com/joyent/node/tags?after=v0.0.4 | accessdate = 2 August 2014|title=node-v0.x-archive on GitHub}}</ref>
+    | latest release version = 13.5.0
+    | latest release date = {{Start date and age|2019|12|18}}<ref>{{cite web|url=https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V13.md|accessdate = 22 November 2019|title= Node.js 13 ChangeLog|via=[[GitHub]]}}</ref>
+    | programming language = [[C (programming language)|C]], [[C++]], [[JavaScript]]
+    | operating system = [[Linux]], [[macOS]], [[Microsoft Windows]], [[SmartOS]], [[FreeBSD]], [[OpenBSD]], [[IBM AIX]]<ref name="supportedOS">{{cite web|url=https://github.com/nodejs/node/blob/master/BUILDING.md|title=nodejs/node|website=GitHub}}</ref>
+    | genre = [[Runtime system|Runtime environment]]
+    | license = [[MIT license]]<ref>{{cite web|title=node/LICENSE at master|url=https://github.com/nodejs/node/blob/master/LICENSE|website=GitHub|publisher=Node.js Foundation|accessdate = 17 September 2018|date=17 September 2018}}</ref><ref>{{cite web|title=The MIT License|url=https://opensource.org/licenses/MIT|website=Open Source Initiative|accessdate = 17 September 2018|date=17 September 2018}}</ref>
+    }}
+`
+  let obj = wtf(str)
+    .infobox(0)
+    .keyValue()
+  t.equal(obj[`logo`], 'Node.js logo.svg', 'found logo val')
+  t.end()
+})
+
 test('french-infobox', function(t) {
   let str = `{{Infobox Société
   | couleur boîte             = 706D6E
