@@ -39,3 +39,23 @@ test('french-infobox', function(t) {
   t.equal(obj[`société sœur`], 'sister', 'found sister val')
   t.end()
 })
+
+test('nested-london-infobox', function(t) {
+  let str = `{{Infobox country
+  | common_name = United Kingdom
+  | name = {{collapsible list
+   | title = hello
+   | {{Infobox
+    | data1={{lang|foo}}
+    | data2=bar
+    }}
+   }}
+  }}
+`
+  let obj = wtf(str)
+    .infobox(0)
+    .keyValue()
+  t.equal(obj[`common_name`], 'United Kingdom', 'found common_name val')
+  t.equal(obj[`name`], 'hello', 'found name val')
+  t.end()
+})
