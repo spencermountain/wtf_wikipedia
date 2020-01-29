@@ -135,3 +135,31 @@ test('ambiguous-pageids', async function(t) {
   t.end();
 });
 */
+
+test('intensive', t => {
+  /* fires a bunch of requests in parallel - this should be enough to get blocked by wikipedia if the user agent is not set correctly */
+  var pages = [
+    'Mouse',
+    'Rat',
+    'Porcupine',
+    'Chipmunk',
+    'Vole',
+    'Chinchilla',
+    'Gopher',
+    'Capybara',
+    'Beaver',
+    'Hamster'
+  ];
+  t.plan(pages.length)
+  var promises = pages.map(page => wtf.fetch(page, 'en', {
+    'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
+  }))
+  Promise.all(promises).then(results => {
+    results.forEach(result => {
+      t.ok(result.title(), 'got a page')
+    })
+    t.end();
+  }).catch((e) => {
+    t.error(e, e)
+  })
+})
