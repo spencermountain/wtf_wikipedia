@@ -93,8 +93,10 @@ const firstRowHeader = function(rows) {
 
 //turn a {|...table string into an array of arrays
 const parseTable = function(wiki) {
-  let lines = wiki.replace(/\r/g, '').split(/\n/)
-  lines = lines.map(l => l.trim())
+  let lines = wiki.replace(/\r/g, '')
+    .replace(/\n(\s*[^|!{\s])/g, ' $1')//remove unecessary newlines
+    .split(/\n/)
+    .map(l => l.trim())
   let rows = findRows(lines)
   //support colspan, rowspan...
   rows = handleSpans(rows)

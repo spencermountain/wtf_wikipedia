@@ -486,7 +486,7 @@ test('junky-table', t => {
   t.end()
 })
 
-test('table newlines', t => {
+test('table double bar', t => {
   var str = `{| class="wikitable"
 |-
 ! h1
@@ -514,5 +514,33 @@ test('table newlines', t => {
   t.equal(data[2].h1, 'c', 'h1')
   t.equal(data[2].h2, 'cc', 'h2')
   t.equal(data[2].h3, 'ccc', 'h3')
+  t.end()
+})
+
+//testing https://github.com/spencermountain/wtf_wikipedia/issues/332
+test('table newline', t => {
+  var str = `{| class="wikitable"
+|-
+! h1
+! h2
+! h3
+|-
+| a
+| b1<br />b2
+| c
+|-
+| a
+| b1
+b2
+| c
+|}`
+  var doc = wtf(str)
+  var data = doc.tables(0).keyValue()
+  t.equal(data[0].h1, 'a', 'h1')
+  t.equal(data[0].h2, 'b1 b2', 'h2')
+  t.equal(data[0].h3, 'c', 'h3')
+  t.equal(data[0].h1, 'a', 'h1')
+  t.equal(data[0].h2, 'b1 b2', 'h2')
+  t.equal(data[0].h3, 'c', 'h3')
   t.end()
 })
