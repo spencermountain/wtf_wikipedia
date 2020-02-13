@@ -1,6 +1,7 @@
 const Infobox = require('../infobox/Infobox')
 const Reference = require('../02-section/reference/Reference')
 const getTemplates = require('./_getTemplates')
+const Template = require('./Template')
 const parseTemplate = require('./parse')
 const isCitation = new RegExp('^(cite |citation)', 'i')
 const citations = {
@@ -48,7 +49,7 @@ const parseTemplates = function(wiki, data, options) {
       data.infoboxes.push(new Infobox(o))
       return
     }
-    clean.push(o)
+    clean.push(new Template(o))
   })
   data.templates = clean
   return wiki

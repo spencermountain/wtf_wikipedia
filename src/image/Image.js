@@ -1,7 +1,4 @@
 const fetch = require('cross-fetch')
-const toMarkdown = require('./toMarkdown')
-const toHtml = require('./toHtml')
-const toLatex = require('./toLatex')
 const toJson = require('./toJson')
 const server = 'https://wikipedia.org/wiki/Special:Redirect/file/'
 const aliasList = require('../_lib/aliases')
@@ -81,17 +78,6 @@ const methods = {
         cb(exists)
       })
     })
-  },
-  markdown: function(options) {
-    options = options || {}
-    return toMarkdown(this, options)
-  },
-  latex: function(options) {
-    return toLatex(this, options)
-  },
-  html: function(options) {
-    options = options || {}
-    return toHtml(this, options)
   },
   json: function(options) {
     options = options || {}

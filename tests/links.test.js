@@ -24,9 +24,21 @@ after now
 `
   var links = wtf(str).links()
   t.equal(links.length, 3, 'found-all-links')
-  t.ok(links.find(l => l.text), 'movie', 'link-text')
-  t.ok(links.find(l => l.page), 'Minnesota Twins', 'link-table')
-  t.ok(links.find(l => l.page), 'three', 'link-list')
+  t.ok(
+    links.find(l => l.text),
+    'movie',
+    'link-text'
+  )
+  t.ok(
+    links.find(l => l.page),
+    'Minnesota Twins',
+    'link-table'
+  )
+  t.ok(
+    links.find(l => l.page),
+    'three',
+    'link-list'
+  )
   t.end()
 })
 
@@ -44,16 +56,16 @@ test('anchor-links', t => {
   t.equal(link.text, 'Tranno J birds', 'text2')
   t.equal(link.anchor, 'Problems', 'anchor2')
 
-  t.equal(
-    doc.sentences(0).html(),
-    '<span class="sentence"><a class="link" href="./Toronto_Blue_Jays#Problems">Tranno J birds</a></span>',
-    'html-anchor'
-  )
-  t.equal(
-    doc.sentences(0).markdown(),
-    '[Tranno J birds](./Toronto_Blue_Jays#Problems)',
-    'markdown-anchor'
-  )
+  // t.equal(
+  //   doc.sentences(0).html(),
+  //   '<span class="sentence"><a class="link" href="./Toronto_Blue_Jays#Problems">Tranno J birds</a></span>',
+  //   'html-anchor'
+  // )
+  // t.equal(
+  //   doc.sentences(0).markdown(),
+  //   '[Tranno J birds](./Toronto_Blue_Jays#Problems)',
+  //   'markdown-anchor'
+  // )
 
   t.end()
 })

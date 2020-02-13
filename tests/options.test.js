@@ -57,14 +57,5 @@ test('turn all options off', t => {
   var out = JSON.stringify(doc.json(options))
   t.equal(out, '{}', 'json empty')
 
-  var html = doc.html(options)
-  t.ok(html.length < 100, 'html empty')
-
-  var md = doc.markdown(options)
-  t.equal(md, '', 'markdown empty')
-
-  var latex = doc.latex(options)
-  t.equal(latex, '', 'latex empty')
-
   t.end()
 })

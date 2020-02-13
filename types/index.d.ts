@@ -144,12 +144,6 @@ declare module wtf {
 
     /**plaintext, human-readable output for the page */
     text(options?: object): string
-    /**output in the markdown format */
-    markdown(options?: object): string
-    /**output the page in latex format */
-    latex(options?: object): string
-    /**output the page in html format */
-    html(options?: object): string
     /**a 'stringifyable' output of the page's main data */
     json(options?: object): object
 
@@ -239,12 +233,6 @@ declare module wtf {
 
     text(options?: object): string
 
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
-
     json(options?: object): object
   }
 
@@ -274,12 +262,6 @@ declare module wtf {
 
     text(): string
 
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
-
     json(options?: object): object
   }
 
@@ -300,12 +282,6 @@ declare module wtf {
 
     text(): string
 
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
-
     json(options?: object): object
   }
 
@@ -319,12 +295,6 @@ declare module wtf {
     links(n?: string): object[]
 
     text(): string
-
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
 
     json(options?: object): object
   }
@@ -364,12 +334,6 @@ declare module wtf {
 
     text(options?: object): string
 
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
-
     json(options?: object): object
   }
 
@@ -400,12 +364,6 @@ declare module wtf {
 
     text(): string
 
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
-
     json(options?: object): object
   }
 
@@ -423,12 +381,6 @@ declare module wtf {
     interwiki(): object[]
 
     text(options?: object): string
-
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
 
     json(options?: object): object
   }
@@ -472,12 +424,6 @@ declare module wtf {
 
     /** Alias of text */
     plaintext(str?: string): string
-
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
 
     json(options?: object): object
   }

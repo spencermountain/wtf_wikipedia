@@ -1,9 +1,6 @@
 const aliasList = require('../../_lib/aliases')
 const setDefaults = require('../../_lib/setDefaults')
 const toJson = require('./toJson')
-const toMarkdown = require('./toMarkdown')
-const toHtml = require('./toHtml')
-const toLatex = require('./toLatex')
 const defaults = {}
 
 const toText = (list, options) => {
@@ -40,18 +37,6 @@ const methods = {
       return link === undefined ? [] : [link]
     }
     return links
-  },
-  markdown(options) {
-    options = setDefaults(options, defaults)
-    return toMarkdown(this, options)
-  },
-  html(options) {
-    options = setDefaults(options, defaults)
-    return toHtml(this, options)
-  },
-  latex(options) {
-    options = setDefaults(options, defaults)
-    return toLatex(this, options)
   },
   json(options) {
     options = setDefaults(options, defaults)

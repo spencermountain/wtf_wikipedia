@@ -1,8 +1,5 @@
 const sectionMap = require('./_sectionMap')
-const toMarkdown = require('./toMarkdown')
-const toHtml = require('./toHtml')
 const toJSON = require('./toJson')
-const toLatex = require('./toLatex')
 const setDefaults = require('../_lib/setDefaults')
 const aliasList = require('../_lib/aliases')
 const Image = require('../image/Image')
@@ -170,18 +167,6 @@ const methods = {
     }
     let arr = this.sections().map(sec => sec.text(options))
     return arr.join('\n\n')
-  },
-  markdown: function(options) {
-    options = setDefaults(options, defaults)
-    return toMarkdown(this, options)
-  },
-  latex: function(options) {
-    options = setDefaults(options, defaults)
-    return toLatex(this, options)
-  },
-  html: function(options) {
-    options = setDefaults(options, defaults)
-    return toHtml(this, options)
   },
   json: function(options) {
     options = setDefaults(options, defaults)

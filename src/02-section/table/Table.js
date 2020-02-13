@@ -1,7 +1,4 @@
 const setDefaults = require('../../_lib/setDefaults')
-const toHtml = require('./toHtml')
-const toMarkdown = require('./toMarkdown')
-const toLatex = require('./toLatex')
 const toJson = require('./toJson')
 const aliasList = require('../../_lib/aliases')
 const defaults = {}
@@ -45,18 +42,7 @@ const methods = {
     options = setDefaults(options, defaults)
     return toJson(this.data, options)
   },
-  html(options) {
-    options = setDefaults(options, defaults)
-    return toHtml(this.data, options)
-  },
-  markdown(options) {
-    options = setDefaults(options, defaults)
-    return toMarkdown(this.data, options)
-  },
-  latex(options) {
-    options = setDefaults(options, defaults)
-    return toLatex(this.data, options)
-  },
+
   text() {
     return ''
   }

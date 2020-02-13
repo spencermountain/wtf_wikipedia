@@ -1,7 +1,4 @@
-const toHtml = require('./toHtml')
-const toMarkdown = require('./toMarkdown')
 const toJSON = require('./toJson')
-const toLatex = require('./toLatex')
 const aliasList = require('../_lib/aliases')
 
 //where we store the formatting, link, date information
@@ -62,14 +59,6 @@ const methods = {
     }
     return arr
   },
-  markdown: function(options) {
-    options = options || {}
-    return toMarkdown(this, options)
-  },
-  html: function(options) {
-    options = options || {}
-    return toHtml(this, options)
-  },
   text: function(str) {
     if (str !== undefined && typeof str === 'string') {
       //set the text?
@@ -79,9 +68,6 @@ const methods = {
   },
   json: function(options) {
     return toJSON(this, options)
-  },
-  latex: function(options) {
-    return toLatex(this, options)
   }
 }
 

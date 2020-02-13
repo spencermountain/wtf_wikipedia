@@ -1,6 +1,3 @@
-const toMarkdown = require('./toMarkdown')
-const toHtml = require('./toHtml')
-const toLatex = require('./toLatex')
 const toJson = require('./toJson')
 const Image = require('../image/Image')
 const aliasList = require('../_lib/aliases')
@@ -53,18 +50,6 @@ const methods = {
       }
     }
     return null
-  },
-  markdown: function(options) {
-    options = options || {}
-    return toMarkdown(this, options)
-  },
-  html: function(options) {
-    options = options || {}
-    return toHtml(this, options)
-  },
-  latex: function(options) {
-    options = options || {}
-    return toLatex(this, options)
   },
   text: function() {
     return ''

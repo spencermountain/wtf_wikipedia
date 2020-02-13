@@ -137,16 +137,6 @@ test('stress-test-en', t => {
     var text = doc.text()
     t.ok(text.length > 40, ' - - text-length')
 
-    var md = doc.markdown()
-    t.ok(md.length > 40, ' - - markdown-length-ok')
-
-    var latex = doc.latex()
-    t.ok(latex.length > 40, ' - - latex-length-ok')
-
-    var html = doc.html()
-    t.ok(html.length > 40, ' - - html-length')
-    t.ok(html.match(/\</), ' - - html-has tag')
-
     var json = doc.json({
       encode: true
     })

@@ -10,6 +10,8 @@
   "main": "src/index.js",
   "unpkg": "builds/wtf_wikipedia.min.js",
   "module": "builds/wtf_wikipedia.mjs",
+  "type": "commonjs",
+  "sideEffects": false,
   "types": "types/index.d.ts",
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c && node ./scripts/filesize.js",
@@ -17,7 +19,7 @@
     "coverage": "node scripts/coverage.js",
     "test": "TESTENV=dev tape ./tests/**/*.test.js | tap-dancer",
     "watch": "amble ./scratch.js",
-    "lint": "eslint ./src/**/*.js",
+    "lint": "eslint ./src/",
     "test:types": "ts-node ./tests/types/index.ts | tap-dancer"
   },
   "bin": {
@@ -51,6 +53,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
+    "rollup-plugin-filesize-check": "0.0.1",
     "@babel/preset-env": "7.5.5",
     "amble": "0.0.7",
     "codecov": "3.5.0",
@@ -64,5 +67,8 @@
     "tap-dancer": "0.2.0",
     "tape": "4.11.0"
   },
+  "eslintIgnore": [
+    "builds/*.js"
+  ],
   "license": "MIT"
 }

@@ -24,9 +24,7 @@ test('json-output-options', t => {
     images: false,
     sections: false,
 
-    plaintext: true,
-    html: true,
-    markdown: true
+    plaintext: true
   }
   var data = readFile('royal_cinema').json(options)
   t.ok(!data.title, 'title')
@@ -37,8 +35,6 @@ test('json-output-options', t => {
   t.ok(!data.sections, 'sections')
 
   t.ok(data.plaintext, 'plaintext')
-  t.ok(data.html, 'html')
-  t.ok(data.markdown, 'markdown')
   t.end()
 })
 

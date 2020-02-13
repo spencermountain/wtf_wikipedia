@@ -89,24 +89,6 @@
       "aliases": ["plaintext"]
     },
     {
-      "name": "markdown",
-      "returns": "String",
-      "description": "output in the markdown format",
-      "aliases": ["toMarkdown"]
-    },
-    {
-      "name": "latex",
-      "returns": "String",
-      "description": "output the page in latex format",
-      "aliases": ["toLatex"]
-    },
-    {
-      "name": "html",
-      "returns": "String",
-      "description": "output the page in html format",
-      "aliases": ["toHTML"]
-    },
-    {
       "name": "json",
       "returns": "String",
       "description": "a 'stringifyable' output of the page's main data",
@@ -229,25 +211,7 @@
       "description": "the section, broader than this one: eg. 1920s → History "
     },
     {
-      "name": "markdown",
-      "returns": "String",
-      "example": "",
-      "description": ""
-    },
-    {
-      "name": "html",
-      "returns": "String",
-      "example": "",
-      "description": ""
-    },
-    {
       "name": "text",
-      "returns": "String",
-      "example": "",
-      "description": ""
-    },
-    {
-      "name": "latex",
       "returns": "String",
       "example": "",
       "description": ""
@@ -297,30 +261,11 @@
       "example": "",
       "description": ""
     },
-
-    {
-      "name": "markdown",
-      "returns": "String",
-      "example": "",
-      "description": "output this paragraph in markdown"
-    },
-    {
-      "name": "html",
-      "returns": "String",
-      "example": "",
-      "description": "generate html output for this paragraph"
-    },
     {
       "name": "text",
       "returns": "String",
       "example": "",
       "description": "generate readable plaintext for this paragraph"
-    },
-    {
-      "name": "latex",
-      "returns": "String",
-      "example": "",
-      "description": "generate latex output for this paragraph"
     },
     {
       "name": "json",
@@ -352,28 +297,8 @@
       "description": ""
     },
     {
-      "name": "markdown",
-      "returns": "String",
-      "description": ""
-    },
-    {
-      "name": "html",
-      "returns": "String",
-      "description": ""
-    },
-    {
       "name": "json",
       "returns": "Object",
-      "description": ""
-    },
-    {
-      "name": "latex",
-      "returns": "String",
-      "description": ""
-    },
-    {
-      "name": "text",
-      "returns": "String",
       "description": ""
     }
   ],
@@ -400,24 +325,9 @@
       "description": ""
     },
     {
-      "name": "markdown",
-      "returns": "String",
-      "description": "return a markdown version of this image"
-    },
-    {
-      "name": "html",
-      "returns": "String",
-      "description": "return a html version of this image"
-    },
-    {
       "name": "json",
       "returns": "Object",
       "description": "return some generic metadata for this image"
-    },
-    {
-      "name": "latex",
-      "returns": "String",
-      "description": "generate a latex version of this image"
     },
     {
       "name": "text",
@@ -457,28 +367,10 @@
       "description": "which infobox, eg 'Infobox Person'"
     },
     {
-      "name": "markdown",
-      "returns": "String",
-      "example": "",
-      "description": "output this infobox in markdown"
-    },
-    {
-      "name": "html",
-      "returns": "String",
-      "example": "",
-      "description": "generate html output for this infobox"
-    },
-    {
       "name": "text",
       "returns": "String",
       "example": "",
       "description": "generate readable plaintext for this infobox"
-    },
-    {
-      "name": "latex",
-      "returns": "String",
-      "example": "",
-      "description": "generate latex output for this infobox"
     },
     {
       "name": "json",
@@ -500,30 +392,11 @@
       "example": "",
       "description": "get all links mentioned in this list"
     },
-
-    {
-      "name": "markdown",
-      "returns": "String",
-      "example": "",
-      "description": "output this list in markdown"
-    },
-    {
-      "name": "html",
-      "returns": "String",
-      "example": "",
-      "description": "generate html output for this list"
-    },
     {
       "name": "text",
       "returns": "String",
       "example": "",
       "description": "generate readable plaintext for this list"
-    },
-    {
-      "name": "latex",
-      "returns": "String",
-      "example": "",
-      "description": "generate latex output for this list"
     },
     {
       "name": "json",
@@ -545,30 +418,11 @@
       "example": "",
       "description": "get any links mentioned in this reference"
     },
-
-    {
-      "name": "markdown",
-      "returns": "String",
-      "example": "",
-      "description": "output this reference in markdown"
-    },
-    {
-      "name": "html",
-      "returns": "String",
-      "example": "",
-      "description": "generate html output for this reference"
-    },
     {
       "name": "text",
       "returns": "String",
       "example": "",
       "description": "returns nothing"
-    },
-    {
-      "name": "latex",
-      "returns": "String",
-      "example": "",
-      "description": "generate latex output for this reference"
     },
     {
       "name": "json",
@@ -591,28 +445,10 @@
       "description": "generate a simple list of key:value objects for this table"
     },
     {
-      "name": "markdown",
-      "returns": "String",
-      "example": "",
-      "description": "output this table in markdown"
-    },
-    {
-      "name": "html",
-      "returns": "String",
-      "example": "",
-      "description": "generate html output for this table"
-    },
-    {
       "name": "text",
       "returns": "String",
       "example": "",
       "description": "returns nothing"
-    },
-    {
-      "name": "latex",
-      "returns": "String",
-      "example": "",
-      "description": "generate latex output for this table"
     },
     {
       "name": "json",

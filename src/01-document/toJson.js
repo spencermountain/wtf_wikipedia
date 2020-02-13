@@ -44,15 +44,6 @@ const toJSON = function(doc, options) {
   if (options.citations || options.references) {
     data.references = doc.references()
   }
-  if (options.markdown) {
-    data.markdown = doc.markdown(options)
-  }
-  if (options.html) {
-    data.html = doc.html(options)
-  }
-  if (options.latex) {
-    data.latex = doc.latex(options)
-  }
   return data
 }
 module.exports = toJSON

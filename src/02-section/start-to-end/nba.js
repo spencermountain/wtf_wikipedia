@@ -1,5 +1,4 @@
 const tableParser = require('../table/parse')
-
 const keys = {
   coach: ['team', 'year', 'g', 'w', 'l', 'w-l%', 'finish', 'pg', 'pw', 'pl', 'pw-l%'],
   player: [

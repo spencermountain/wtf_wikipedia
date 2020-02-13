@@ -1,7 +1,4 @@
-const toMarkdown = require('./toMarkdown')
-const toHtml = require('./toHtml')
 const toJSON = require('./toJson')
-const toLatex = require('./toLatex')
 const setDefaults = require('../_lib/setDefaults')
 const aliasList = require('../_lib/aliases')
 
@@ -101,6 +98,7 @@ const methods = {
   },
   templates: function(clue) {
     let arr = this.data.templates || []
+    arr = arr.map(t => t.json())
     if (typeof clue === 'number') {
       return arr[clue]
     }
@@ -120,6 +118,9 @@ const methods = {
   coordinates: function(clue) {
     let arr = [].concat(this.templates('coord'), this.templates('coor'))
     if (typeof clue === 'number') {
+      if (!arr[clue]) {
+        return []
+      }
       return arr[clue]
     }
     return arr
@@ -243,24 +244,11 @@ const methods = {
     }
     return null
   },
-
-  markdown: function(options) {
-    options = setDefaults(options, defaults)
-    return toMarkdown(this, options)
-  },
-  html: function(options) {
-    options = setDefaults(options, defaults)
-    return toHtml(this, options)
-  },
   text: function(options) {
     options = setDefaults(options, defaults)
     let pList = this.paragraphs()
     pList = pList.map(p => p.text(options))
     return pList.join('\n\n')
-  },
-  latex: function(options) {
-    options = setDefaults(options, defaults)
-    return toLatex(this, options)
   },
   json: function(options) {
     options = setDefaults(options, defaults)

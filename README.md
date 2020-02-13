@@ -211,9 +211,10 @@ or output things in various formats:
 #### outputs:
 * **.json()**  &nbsp; - &nbsp; &nbsp; *handy, workable data*
 * **.text()**  &nbsp; - &nbsp; &nbsp; *reader-focused plaintext*
-* **.html()**
-* **.markdown()**
-* **.latex()**  &nbsp; - &nbsp; &nbsp; *(ftw)*
+
+* **[wtf-plugin-html](https://github.com/spencermountain/wtf-plugin-html)**
+* **[wtf-plugin-markdown](https://github.com/spencermountain/wtf-plugin-markdown)**
+* **[wtf-plugin-latex](https://github.com/spencermountain/wtf-plugin-latex)**
 
 ##### fancy-times:
 * **.isRedirect()**  &nbsp; &nbsp; - &nbsp; *boolean*
@@ -231,7 +232,7 @@ import wtf from 'wtf_wikipedia'
 wtf(`==In Popular Culture==
 * harry potter's wand
 * the simpsons fence`);
-// Document {text(), html(), lists()...}
+// Document {text(), json(), lists()...}
 ```
 
 ### **wtf.fetch(title, [lang_or_wikiid], [options], [callback])**

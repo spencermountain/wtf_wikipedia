@@ -1,10 +1,3 @@
-const setDefaults = require('../../_lib/setDefaults')
-const toLatex = require('./toLatex')
-const toHtml = require('./toHtml')
-const toMarkdown = require('./toMarkdown')
-const toJson = require('./toJson')
-const defaults = {}
-
 //also called 'citations'
 const Reference = function(data) {
   Object.defineProperty(this, 'data', {
@@ -37,21 +30,9 @@ const methods = {
   text: function() {
     return '' //nah, skip these.
   },
-  markdown: function(options) {
-    options = setDefaults(options, defaults)
-    return toMarkdown(this, options)
-  },
-  html: function(options) {
-    options = setDefaults(options, defaults)
-    return toHtml(this, options)
-  },
-  latex: function(options) {
-    options = setDefaults(options, defaults)
-    return toLatex(this, options)
-  },
-  json: function(options) {
-    options = setDefaults(options, defaults)
-    return toJson(this, options)
+
+  json: function() {
+    return this.data
   }
 }
 Object.keys(methods).forEach(k => {

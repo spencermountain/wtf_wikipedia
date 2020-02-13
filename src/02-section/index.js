@@ -28,7 +28,6 @@ const oneSection = function(wiki, data, options) {
   return data
 }
 
-//we re-create this in html/markdown outputs
 const removeReferenceSection = function(sections) {
   return sections.filter((s, i) => {
     if (isReference.test(s.title()) === true) {
