@@ -12,8 +12,10 @@ const models = {
   Sentence: require('./04-sentence/Sentence'),
   Image: require('./image/Image'),
   Infobox: require('./infobox/Infobox'),
+  List: require('./list/List'),
+  Reference: require('./reference/Reference'),
+  Table: require('./table/Table'),
   Template: require('./templates/Template')
-  // Reference: require('./templates/Template')
 }
 
 //the main 'factory' exported method
