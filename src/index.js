@@ -12,6 +12,7 @@ const models = {
   Sentence: require('./04-sentence/Sentence'),
   Image: require('./image/Image'),
   Infobox: require('./infobox/Infobox'),
+  Link: require('./link/Link'),
   List: require('./list/List'),
   Reference: require('./reference/Reference'),
   Table: require('./table/Table'),
