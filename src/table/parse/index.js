@@ -1,4 +1,4 @@
-const parseSentence = require('../../../04-sentence/').oneSentence
+const parseSentence = require('../../04-sentence/').oneSentence
 const findRows = require('./_findRows')
 const handleSpans = require('./_spans')
 
@@ -93,8 +93,9 @@ const firstRowHeader = function(rows) {
 
 //turn a {|...table string into an array of arrays
 const parseTable = function(wiki) {
-  let lines = wiki.replace(/\r/g, '')
-    .replace(/\n(\s*[^|!{\s])/g, ' $1')//remove unecessary newlines
+  let lines = wiki
+    .replace(/\r/g, '')
+    .replace(/\n(\s*[^|!{\s])/g, ' $1') //remove unecessary newlines
     .split(/\n/)
     .map(l => l.trim())
   let rows = findRows(lines)

@@ -1,6 +1,5 @@
-const aliasList = require('../../_lib/aliases')
-const setDefaults = require('../../_lib/setDefaults')
-const toJson = require('./toJson')
+const aliasList = require('../_lib/aliases')
+const setDefaults = require('../_lib/setDefaults')
 const defaults = {}
 
 const toText = (list, options) => {
@@ -40,7 +39,7 @@ const methods = {
   },
   json(options) {
     options = setDefaults(options, defaults)
-    return toJson(this, options)
+    return this.lines().map(s => s.json(options))
   },
   text() {
     return toText(this.data)

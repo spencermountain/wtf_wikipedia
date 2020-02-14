@@ -1,6 +1,6 @@
-const setDefaults = require('../../_lib/setDefaults')
+const setDefaults = require('../_lib/setDefaults')
 const toJson = require('./toJson')
-const aliasList = require('../../_lib/aliases')
+const aliasList = require('../_lib/aliases')
 const defaults = {}
 
 const Table = function(data) {

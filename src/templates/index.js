@@ -1,5 +1,5 @@
 const Infobox = require('../infobox/Infobox')
-const Reference = require('../02-section/reference/Reference')
+const Reference = require('../reference/Reference')
 const getTemplates = require('./_getTemplates')
 const Template = require('./Template')
 const parseTemplate = require('./parse')

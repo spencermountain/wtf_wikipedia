@@ -11,7 +11,9 @@ const models = {
   Paragraph: require('./03-paragraph/Paragraph'),
   Sentence: require('./04-sentence/Sentence'),
   Image: require('./image/Image'),
-  Infobox: require('./infobox/Infobox')
+  Infobox: require('./infobox/Infobox'),
+  Template: require('./templates/Template')
+  // Reference: require('./templates/Template')
 }
 
 //the main 'factory' exported method

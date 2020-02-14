@@ -5,7 +5,7 @@ const parseSentences = require('../04-sentence').addSentences
 const twoNewLines = /\r?\n\r?\n/
 const parse = {
   image: require('../image'),
-  list: require('./list')
+  list: require('../list')
 }
 
 const parseParagraphs = function(wiki) {
