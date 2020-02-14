@@ -1,10 +1,13 @@
+/* wtf_wikipedia 7.8.1 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, global.wtf = factory());
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   function _typeof(obj) {
+    "@babel/helpers - typeof";
+
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
       _typeof = function (obj) {
         return typeof obj;
@@ -610,11 +613,13 @@
   var browserPonyfill_4 = browserPonyfill.Response;
 
   var request = function request(url, options) {
+    var fallbackUserAgent = 'Random user of the wtf_wikipedia library';
     var params = {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Api-User-Agent': options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'Random user of the wtf_wikipedia library'
+        'Api-User-Agent': options['Api-User-Agent'] || fallbackUserAgent,
+        'User-Agent': options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || fallbackUserAgent
       }
     };
     return browserPonyfill(url, params).then(function (response) {
@@ -1888,158 +1893,20 @@
 
   //
   var setDefaults = function setDefaults(options, defaults) {
-    var obj = {};
-    defaults = defaults || {};
-    Object.keys(defaults).forEach(function (k) {
-      obj[k] = defaults[k];
-    });
-    options = options || {};
-    Object.keys(options).forEach(function (k) {
-      obj[k] = options[k];
-    });
-    return obj;
+    return Object.assign({}, defaults, options);
   };
 
   var setDefaults_1 = setDefaults;
 
   var defaults = {
-    redirects: true,
-    infoboxes: true,
-    templates: true,
-    sections: true // we should try to make this look like the wikipedia does, i guess.
-
-  };
-
-  var softRedirect = function softRedirect(doc) {
-    var link = doc.redirectTo();
-    var href = link.page;
-    href = './' + href.replace(/ /g, '_');
-
-    if (link.anchor) {
-      href += '#' + link.anchor;
-    }
-
-    return "\u21B3 [".concat(link.text, "](").concat(href, ")");
-  }; //turn a Doc object into a markdown string
-
-
-  var toMarkdown = function toMarkdown(doc, options) {
-    options = setDefaults_1(options, defaults);
-    var data = doc.data;
-    var md = ''; //if it's a redirect page, give it a 'soft landing':
-
-    if (options.redirects === true && doc.isRedirect() === true) {
-      return softRedirect(doc); //end it here
-    } //render infoboxes (up at the top)
-
-
-    if (options.infoboxes === true && options.templates === true) {
-      md += doc.infoboxes().map(function (infobox) {
-        return infobox.markdown(options);
-      }).join('\n\n');
-    } //render each section
-
-
-    if (options.sections === true || options.paragraphs === true || options.sentences === true) {
-      md += data.sections.map(function (s) {
-        return s.markdown(options);
-      }).join('\n\n');
-    } //default false
-
-
-    if (options.citations === true) {
-      md += '## References';
-      md += doc.citations().map(function (c) {
-        return c.json(options);
-      }).join('\n');
-    }
-
-    return md;
-  };
-
-  var toMarkdown_1 = toMarkdown;
-
-  var defaults$1 = {
-    title: true,
-    infoboxes: true,
-    headers: true,
-    sections: true,
-    links: true // we should try to make this look like the wikipedia does, i guess.
-
-  };
-
-  var softRedirect$1 = function softRedirect(doc) {
-    var link = doc.redirectTo();
-    var href = link.page;
-    href = './' + href.replace(/ /g, '_');
-
-    if (link.anchor) {
-      href += '#' + link.anchor;
-    }
-
-    return "  <div class=\"redirect\">\n  \u21B3 <a class=\"link\" href=\"./".concat(href, "\">").concat(link.text, "</a>\n  </div>");
-  }; //turn a Doc object into a HTML string
-
-
-  var toHtml = function toHtml(doc, options) {
-    options = setDefaults_1(options, defaults$1);
-    var data = doc.data;
-    var html = '';
-    html += '<!DOCTYPE html>\n';
-    html += '<html>\n';
-    html += '<head>\n'; //add page title
-
-    if (options.title === true && data.title) {
-      html += '<title>' + data.title + '</title>\n';
-    }
-
-    html += '</head>\n';
-    html += '<body>\n'; //if it's a redirect page, give it a 'soft landing':
-
-    if (doc.isRedirect() === true) {
-      html += softRedirect$1(doc);
-      return html + '\n</body>\n</html>'; //end it here.
-    } //render infoboxes (up at the top)
-
-
-    if (options.infoboxes === true) {
-      html += doc.infoboxes().map(function (i) {
-        return i.html(options);
-      }).join('\n');
-    } //render each section
-
-
-    if (options.sections === true && (options.paragraphs === true || options.sentences === true)) {
-      html += data.sections.map(function (s) {
-        return s.html(options);
-      }).join('\n');
-    } //default off
-
-
-    if (options.references === true) {
-      html += '<h2>References</h2>';
-      html += doc.references().map(function (c) {
-        return c.json(options);
-      }).join('\n');
-    }
-
-    html += '</body>\n';
-    html += '</html>';
-    return html;
-  };
-
-  var toHtml_1 = toHtml;
-
-  var defaults$2 = {
     title: true,
     sections: true,
     pageID: true,
-    categories: true //an opinionated output of the most-wanted data
-
-  };
+    categories: true
+  }; //an opinionated output of the most-wanted data
 
   var toJSON = function toJSON(doc, options) {
-    options = setDefaults_1(options, defaults$2);
+    options = setDefaults_1(options, defaults);
     var data = {};
 
     if (options.title) {
@@ -2091,86 +1958,13 @@
       data.references = doc.references();
     }
 
-    if (options.markdown) {
-      data.markdown = doc.markdown(options);
-    }
-
-    if (options.html) {
-      data.html = doc.html(options);
-    }
-
-    if (options.latex) {
-      data.latex = doc.latex(options);
-    }
-
     return data;
   };
 
   var toJson = toJSON;
 
-  var defaults$3 = {
-    infoboxes: true,
-    sections: true // we should try to make this look like the wikipedia does, i guess.
-
-  };
-
-  var softRedirect$2 = function softRedirect(doc) {
-    var link = doc.redirectTo();
-    var href = link.page;
-    href = './' + href.replace(/ /g, '_'); //add anchor
-
-    if (link.anchor) {
-      href += '#' + link.anchor;
-    }
-
-    return '↳ \\href{' + href + '}{' + link.text + '}';
-  }; //
-
-
-  var toLatex = function toLatex(doc, options) {
-    options = setDefaults_1(options, defaults$3);
-    var out = ''; //if it's a redirect page, give it a 'soft landing':
-
-    if (doc.isRedirect() === true) {
-      return softRedirect$2(doc); //end it here.
-    } //render infoboxes (up at the top)
-
-
-    if (options.infoboxes === true) {
-      out += doc.infoboxes().map(function (i) {
-        return i.latex(options);
-      }).join('\n');
-    } //render each section
-
-
-    if (options.sections === true || options.paragraphs === true || options.sentences === true) {
-      out += doc.sections().map(function (s) {
-        return s.latex(options);
-      }).join('\n');
-    } //default off
-    //render citations
-
-
-    if (options.citations === true) {
-      out += doc.citations().map(function (c) {
-        return c.latex(options);
-      }).join('\n');
-    }
-
-    return out;
-  };
-
-  var toLatex_1 = toLatex;
-
   //alternative names for methods in API
   var aliasList = {
-    toMarkdown: 'markdown',
-    toHtml: 'html',
-    HTML: 'html',
-    toJSON: 'json',
-    toJson: 'json',
-    JSON: 'json',
-    toLatex: 'latex',
     plaintext: 'text',
     wikiscript: 'wikitext',
     wiki: 'wikitext',
@@ -2178,45 +1972,16 @@
   };
   var aliases = aliasList;
 
-  //markdown images are like this: ![alt text](href)
-  var doImage = function doImage(image) {
-    var alt = image.data.file.replace(/^(file|image):/i, '');
-    alt = alt.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
-    return '![' + alt + '](' + image.thumbnail() + ')';
-  };
-
-  var toMarkdown$1 = doImage;
-
-  var makeImage = function makeImage(img) {
-    return '  <img src="' + img.thumbnail() + '" alt="' + img.alt() + '"/>';
-  };
-
-  var toHtml$1 = makeImage;
-
-  //
-  var toLatex$1 = function toLatex(image) {
-    var alt = image.alt();
-    var out = '\\begin{figure}';
-    out += '\n\\includegraphics[width=\\linewidth]{' + image.thumb() + '}';
-    out += '\n\\caption{' + alt + '}'; // out += '\n%\\label{fig:myimage1}';
-
-    out += '\n\\end{figure}';
-    return out;
-  };
-
-  var toLatex_1$1 = toLatex$1;
-
-  var defaults$4 = {
+  var defaults$1 = {
     caption: true,
     alt: true,
     links: true,
     thumb: true,
-    url: true //
-
-  };
+    url: true
+  }; //
 
   var toJson$1 = function toJson(img, options) {
-    options = setDefaults_1(options, defaults$4);
+    options = setDefaults_1(options, defaults$1);
     var json = {
       file: img.file()
     };
@@ -2332,15 +2097,6 @@
         });
       });
     },
-    markdown: function markdown(options) {
-      return toMarkdown$1(this);
-    },
-    latex: function latex(options) {
-      return toLatex_1$1(this);
-    },
-    html: function html(options) {
-      return toHtml$1(this);
-    },
     json: function json(options) {
       options = options || {};
       return toJson_1(this, options);
@@ -2360,12 +2116,11 @@
   Image.prototype.thumb = Image.prototype.thumbnail;
   var Image_1 = Image;
 
-  var defaults$5 = {
+  var defaults$2 = {
     tables: true,
     lists: true,
-    paragraphs: true //
-
-  };
+    paragraphs: true
+  }; //
 
   var Document = function Document(data, options) {
     this.options = options || {};
@@ -2541,7 +2296,7 @@
       return arr;
     },
     text: function text(options) {
-      options = setDefaults_1(options, defaults$5); //nah, skip these.
+      options = setDefaults_1(options, defaults$2); //nah, skip these.
 
       if (this.isRedirect() === true) {
         return '';
@@ -2552,20 +2307,8 @@
       });
       return arr.join('\n\n');
     },
-    markdown: function markdown(options) {
-      options = setDefaults_1(options, defaults$5);
-      return toMarkdown_1(this, options);
-    },
-    latex: function latex(options) {
-      options = setDefaults_1(options, defaults$5);
-      return toLatex_1(this, options);
-    },
-    html: function html(options) {
-      options = setDefaults_1(options, defaults$5);
-      return toHtml_1(this, options);
-    },
     json: function json(options) {
-      options = setDefaults_1(options, defaults$5);
+      options = setDefaults_1(options, defaults$2);
       return toJson(this, options);
     },
     debug: function debug() {
@@ -2580,9 +2323,9 @@
         console.log(indent + (sec.title() || '(Intro)'));
       });
       return this;
-    } //add alises
+    }
+  }; //add alises
 
-  };
   Object.keys(aliases).forEach(function (k) {
     Document.prototype[k] = methods$1[aliases[k]];
   }); //add singular-methods, too
@@ -2612,10 +2355,12 @@
     // wikipedia special terms lifted and augmented from parsoid parser april 2015
     // (not even close to being complete)
     var i18n = {
-      files: ['файл', 'fitxer', 'soubor', 'datei', 'file', 'archivo', 'پرونده', 'tiedosto', 'mynd', "su'wret", 'fichier', 'bestand', 'датотека', 'dosya', 'fil', 'ファイル', 'चित्र'],
+      files: ['файл', 'fitxer', 'soubor', 'datei', 'file', 'archivo', 'پرونده', 'tiedosto', 'mynd', "su'wret", 'fichier', 'bestand', 'датотека', 'dosya', 'fil', 'ファイル', 'चित्र', '파일' //ko
+      ],
       images: ['image', 'चित्र'],
       templates: ['шаблён', 'plantilla', 'šablona', 'vorlage', 'template', 'الگو', 'malline', 'snið', 'shablon', 'modèle', 'sjabloon', 'шаблон', 'şablon'],
-      categories: ['катэгорыя', 'categoria', 'kategorie', 'category', 'categoría', 'رده', 'luokka', 'flokkur', 'kategoriya', 'catégorie', 'categorie', 'категорија', 'kategori', 'kategoria', 'تصنيف', 'श्रेणी'],
+      categories: ['катэгорыя', 'categoria', 'kategorie', 'category', 'categoría', 'رده', 'luokka', 'flokkur', 'kategoriya', 'catégorie', 'categorie', 'категорија', 'kategori', 'kategoria', 'تصنيف', 'श्रेणी', '분류' //ko
+      ],
       redirects: ['перанакіраваньне', 'redirect', 'přesměruj', 'weiterleitung', 'redirección', 'redireccion', 'تغییر_مسیر', 'تغییرمسیر', 'ohjaus', 'uudelleenohjaus', 'tilvísun', 'aýdaw', 'айдау', 'redirection', 'doorverwijzing', 'преусмери', 'преусмјери', 'yönlendi̇rme', 'yönlendi̇r', '重定向', 'redirección', 'redireccion', '重定向', 'yönlendirm?e?', 'تغییر_مسیر', 'تغییرمسیر', 'перанакіраваньне', 'yönlendirme'],
       specials: ['спэцыяльныя', 'especial', 'speciální', 'spezial', 'special', 'ویژه', 'toiminnot', 'kerfissíða', 'arnawlı', 'spécial', 'speciaal', 'посебно', 'özel', '特別'],
       users: ['удзельнік', 'usuari', 'uživatel', 'benutzer', 'user', 'usuario', 'کاربر', 'käyttäjä', 'notandi', 'paydalanıwshı', 'utilisateur', 'gebruiker', 'корисник', 'kullanıcı', '利用者'],
@@ -4197,144 +3942,6 @@
 
   var preProcess_1 = preProcess;
 
-  var defaults$6 = {
-    headers: true,
-    images: true,
-    tables: true,
-    lists: true,
-    paragraphs: true
-  };
-
-  var doSection = function doSection(section, options) {
-    options = setDefaults_1(options, defaults$6);
-    var md = ''; //make the header
-
-    if (options.headers === true && section.title()) {
-      var header = '##';
-
-      for (var i = 0; i < section.depth; i += 1) {
-        header += '#';
-      }
-
-      md += header + ' ' + section.title() + '\n';
-    } //put any images under the header
-
-
-    if (options.images === true) {
-      var images = section.images();
-
-      if (images.length > 0) {
-        md += images.map(function (img) {
-          return img.markdown();
-        }).join('\n');
-        md += '\n';
-      }
-    } //make a mardown table
-
-
-    if (options.tables === true) {
-      var tables = section.tables();
-
-      if (tables.length > 0) {
-        md += '\n';
-        md += tables.map(function (table) {
-          return table.markdown(options);
-        }).join('\n');
-        md += '\n';
-      }
-    } //make a mardown bullet-list
-
-
-    if (options.lists === true) {
-      var lists = section.lists();
-
-      if (lists.length > 0) {
-        md += lists.map(function (list) {
-          return list.markdown(options);
-        }).join('\n');
-        md += '\n';
-      }
-    } //finally, write the sentence text.
-
-
-    if (options.paragraphs === true || options.sentences === true) {
-      md += section.paragraphs().map(function (p) {
-        return p.sentences().map(function (s) {
-          return s.markdown(options);
-        }).join(' ');
-      }).join('\n\n');
-    }
-
-    return md;
-  };
-
-  var toMarkdown$2 = doSection;
-
-  var defaults$7 = {
-    headers: true,
-    images: true,
-    tables: true,
-    lists: true,
-    paragraphs: true
-  };
-
-  var doSection$1 = function doSection(section, options) {
-    options = setDefaults_1(options, defaults$7);
-    var html = ''; //make the header
-
-    if (options.headers === true && section.title()) {
-      var num = 1 + section.depth;
-      html += '  <h' + num + '>' + section.title() + '</h' + num + '>';
-      html += '\n';
-    } //put any images under the header
-
-
-    if (options.images === true) {
-      var imgs = section.images();
-
-      if (imgs.length > 0) {
-        html += imgs.map(function (image) {
-          return image.html(options);
-        }).join('\n');
-      }
-    } //make a html table
-
-
-    if (options.tables === true) {
-      html += section.tables().map(function (t) {
-        return t.html(options);
-      }).join('\n');
-    } // //make a html bullet-list
-
-
-    if (options.lists === true) {
-      html += section.lists().map(function (list) {
-        return list.html(options);
-      }).join('\n');
-    } //finally, write the sentence text.
-
-
-    if (options.paragraphs === true && section.paragraphs().length > 0) {
-      html += '  <div class="text">\n';
-      section.paragraphs().forEach(function (p) {
-        html += '    <p class="paragraph">\n';
-        html += '      ' + p.sentences().map(function (s) {
-          return s.html(options);
-        }).join(' ');
-        html += '\n    </p>\n';
-      });
-      html += '  </div>\n';
-    } else if (options.sentences === true) {
-      html += '      ' + section.sentences().map(function (s) {
-        return s.html(options);
-      }).join(' ');
-    }
-
-    return '<div class="section">\n' + html + '</div>\n';
-  };
-
-  var toHtml$2 = doSection$1;
-
   // dumpster-dive throws everything into mongodb  - github.com/spencermountain/dumpster-dive
   // mongo has some opinions about what characters are allowed as keys and ids.
   //https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
@@ -4373,7 +3980,7 @@
     encodeObj: encodeObj
   };
 
-  var defaults$8 = {
+  var defaults$3 = {
     headers: true,
     depth: true,
     paragraphs: true,
@@ -4382,12 +3989,11 @@
     templates: true,
     infoboxes: true,
     lists: true,
-    references: true //
-
-  };
+    references: true
+  }; //
 
   var toJSON$1 = function toJSON(section, options) {
-    options = setDefaults_1(options, defaults$8);
+    options = setDefaults_1(options, defaults$3);
     var data = {};
 
     if (options.headers === true) {
@@ -4491,106 +4097,13 @@
 
   var toJson$2 = toJSON$1;
 
-  var defaults$9 = {
-    headers: true,
-    images: true,
-    tables: true,
-    lists: true,
-    paragraphs: true //map '==' depth to 'subsection', 'subsubsection', etc
-
-  };
-
-  var doSection$2 = function doSection(section, options) {
-    options = setDefaults_1(options, defaults$9);
-    var out = '';
-    var num = 1; //make the header
-
-    if (options.headers === true && section.title()) {
-      num = 1 + section.depth;
-      var vOpen = '\n';
-      var vClose = '}';
-
-      switch (num) {
-        case 1:
-          vOpen += '\\chapter{';
-          break;
-
-        case 2:
-          vOpen += '\\section{';
-          break;
-
-        case 3:
-          vOpen += '\\subsection{';
-          break;
-
-        case 4:
-          vOpen += '\\subsubsection{';
-          break;
-
-        case 5:
-          vOpen += '\\paragraph{';
-          vClose = '} \\\\ \n';
-          break;
-
-        case 6:
-          vOpen += '\\subparagraph{';
-          vClose = '} \\\\ \n';
-          break;
-
-        default:
-          vOpen += '\n% section with depth=' + num + ' undefined - use subparagraph instead\n\\subparagraph{';
-          vClose = '} \\\\ \n';
-      }
-
-      out += vOpen + section.title() + vClose;
-      out += '\n';
-    } //put any images under the header
-
-
-    if (options.images === true && section.images()) {
-      out += section.images().map(function (img) {
-        return img.latex(options);
-      }).join('\n'); //out += '\n';
-    } //make a out tablew
-
-
-    if (options.tables === true && section.tables()) {
-      out += section.tables().map(function (t) {
-        return t.latex(options);
-      }).join('\n');
-    } // //make a out bullet-list
-
-
-    if (options.lists === true && section.lists()) {
-      out += section.lists().map(function (list) {
-        return list.latex(options);
-      }).join('\n');
-    } //finally, write the sentence text.
-
-
-    if (options.paragraphs === true || options.sentences === true) {
-      out += section.paragraphs().map(function (s) {
-        return s.latex(options);
-      }).join(' ');
-      out += '\n';
-    } // var title_tag = ' SECTION depth=' + num + ' - TITLE: ' + section.title + '\n';
-    // wrap a section comment
-    //out = '\n% BEGIN' + title_tag + out + '\n% END' + title_tag;
-
-
-    return out;
-  };
-
-  var toLatex$2 = doSection$2;
-
-  var defaults$a = {
+  var defaults$4 = {
     tables: true,
     references: true,
     paragraphs: true,
     templates: true,
-    infoboxes: true //the stuff between headings - 'History' section for example
-
-  };
+    infoboxes: true
+  }; //the stuff between headings - 'History' section for example
 
   var Section = function Section(data) {
     this.depth = data.depth;
@@ -4703,6 +4216,9 @@
     },
     templates: function templates(clue) {
       var arr = this.data.templates || [];
+      arr = arr.map(function (t) {
+        return t.json();
+      });
 
       if (typeof clue === 'number') {
         return arr[clue];
@@ -4730,6 +4246,10 @@
       var arr = [].concat(this.templates('coord'), this.templates('coor'));
 
       if (typeof clue === 'number') {
+        if (!arr[clue]) {
+          return [];
+        }
+
         return arr[clue];
       }
 
@@ -4878,32 +4398,20 @@
 
       return null;
     },
-    markdown: function markdown(options) {
-      options = setDefaults_1(options, defaults$a);
-      return toMarkdown$2(this, options);
-    },
-    html: function html(options) {
-      options = setDefaults_1(options, defaults$a);
-      return toHtml$2(this, options);
-    },
     text: function text(options) {
-      options = setDefaults_1(options, defaults$a);
+      options = setDefaults_1(options, defaults$4);
       var pList = this.paragraphs();
       pList = pList.map(function (p) {
         return p.text(options);
       });
       return pList.join('\n\n');
     },
-    latex: function latex(options) {
-      options = setDefaults_1(options, defaults$a);
-      return toLatex$2(this, options);
-    },
     json: function json(options) {
-      options = setDefaults_1(options, defaults$a);
+      options = setDefaults_1(options, defaults$4);
       return toJson$2(this, options);
-    } //aliases
+    }
+  }; //aliases
 
-  };
   methods$2.next = methods$2.nextSibling;
   methods$2.last = methods$2.lastSibling;
   methods$2.previousSibling = methods$2.lastSibling;
@@ -4988,147 +4496,8 @@
 
   var formatting_1 = formatting;
 
-  //escape a string like 'fun*2.Co' for a regExpr
-  function escapeRegExp(str) {
-    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
-  } //sometimes text-replacements can be ambiguous - words used multiple times..
-
-
-  var smartReplace = function smartReplace(all, text, result) {
-    if (!text || !all) {
-      return all;
-    }
-
-    if (typeof all === 'number') {
-      all = String(all);
-    }
-
-    text = escapeRegExp(text); //try a word-boundary replace
-
-    var reg = new RegExp('\\b' + text + '\\b');
-
-    if (reg.test(all) === true) {
-      all = all.replace(reg, result);
-    } else {
-      //otherwise, fall-back to a much messier, dangerous replacement
-      // console.warn('missing \'' + text + '\'');
-      all = all.replace(text, result);
-    }
-
-    return all;
-  };
-
-  var smartReplace_1 = smartReplace;
-
-  var defaults$b = {
-    links: true,
-    formatting: true // create links, bold, italic in html
-
-  };
-
-  var doSentence = function doSentence(sentence, options) {
-    options = setDefaults_1(options, defaults$b);
-    var text = sentence.text(); //turn links into <a href>
-
-    if (options.links === true) {
-      sentence.links().forEach(function (link) {
-        var href = '';
-        var classNames = 'link';
-
-        if (link.site) {
-          //use an external link
-          href = link.site;
-          classNames += ' external';
-        } else {
-          //otherwise, make it a relative internal link
-          href = helpers_1.capitalise(link.page);
-          href = './' + href.replace(/ /g, '_'); //add anchor
-
-          if (link.anchor) {
-            href += "#".concat(link.anchor);
-          }
-        }
-
-        var str = link.text || link.page;
-        var tag = "<a class=\"".concat(classNames, "\" href=\"").concat(href, "\">").concat(str, "</a>");
-        text = smartReplace_1(text, str, tag);
-      });
-    }
-
-    if (options.formatting === true) {
-      //support bolds
-      sentence.bold().forEach(function (str) {
-        var tag = '<b>' + str + '</b>';
-        text = smartReplace_1(text, str, tag);
-      }); //do italics
-
-      sentence.italic().forEach(function (str) {
-        var tag = '<i>' + str + '</i>';
-        text = smartReplace_1(text, str, tag);
-      });
-    }
-
-    return '<span class="sentence">' + text + '</span>';
-  };
-
-  var toHtml$3 = doSentence;
-
-  var defaults$c = {
-    links: true,
-    formatting: true // add `[text](href)` to the text
-
-  };
-
-  var doLink = function doLink(md, link) {
-    var href = ''; //if it's an external link, we good
-
-    if (link.site) {
-      href = link.site;
-    } else {
-      //otherwise, make it a relative internal link
-      href = helpers_1.capitalise(link.page);
-      href = './' + href.replace(/ /g, '_'); //add anchor
-
-      if (link.anchor) {
-        href += "#".concat(link.anchor);
-      }
-    }
-
-    var str = link.text || link.page;
-    var mdLink = '[' + str + '](' + href + ')';
-    md = smartReplace_1(md, str, mdLink);
-    return md;
-  }; //create links, bold, italic in markdown
-
-
-  var toMarkdown$3 = function toMarkdown(sentence, options) {
-    options = setDefaults_1(options, defaults$c);
-    var md = sentence.text(); //turn links back into links
-
-    if (options.links === true) {
-      sentence.links().forEach(function (link) {
-        md = doLink(md, link);
-      });
-    } //turn bolds into **bold**
-
-
-    if (options.formatting === true) {
-      sentence.bold().forEach(function (b) {
-        md = smartReplace_1(md, b, '**' + b + '**');
-      }); //support *italics*
-
-      sentence.italic().forEach(function (i) {
-        md = smartReplace_1(md, i, '*' + i + '*');
-      });
-    }
-
-    return md;
-  };
-
-  var toMarkdown_1$1 = toMarkdown$3;
-
   var isNumber = /^[0-9,.]+$/;
-  var defaults$d = {
+  var defaults$5 = {
     text: true,
     links: true,
     formatting: true,
@@ -5137,7 +4506,7 @@
   };
 
   var toJSON$2 = function toJSON(s, options) {
-    options = setDefaults_1(options, defaults$d);
+    options = setDefaults_1(options, defaults$5);
     var data = {};
     var text = s.plaintext();
 
@@ -5170,62 +4539,6 @@
   };
 
   var toJson$3 = toJSON$2;
-
-  var defaults$e = {
-    links: true,
-    formatting: true // create links, bold, italic in html
-
-  };
-
-  var toLatex$3 = function toLatex(sentence, options) {
-    options = setDefaults_1(options, defaults$e);
-    var text = sentence.plaintext(); //turn links back into links
-
-    if (options.links === true && sentence.links().length > 0) {
-      sentence.links().forEach(function (link) {
-        var href = '';
-
-        if (link.site) {
-          //use an external link
-          href = link.site;
-        } else {
-          //otherwise, make it a relative internal link
-          href = helpers_1.capitalise(link.page);
-          href = './' + href.replace(/ /g, '_'); //add anchor
-
-          if (link.anchor) {
-            href += "#".concat(link.anchor);
-          }
-        }
-
-        var str = link.text || link.page;
-        var tag = '\\href{' + href + '}{' + str + '}';
-        text = smartReplace_1(text, str, tag);
-      });
-    }
-
-    if (options.formatting === true) {
-      if (sentence.data.fmt) {
-        if (sentence.data.fmt.bold) {
-          sentence.data.fmt.bold.forEach(function (str) {
-            var tag = '\\textbf{' + str + '}';
-            text = smartReplace_1(text, str, tag);
-          });
-        }
-
-        if (sentence.data.fmt.italic) {
-          sentence.data.fmt.italic.forEach(function (str) {
-            var tag = '\\textit{' + str + '}';
-            text = smartReplace_1(text, str, tag);
-          });
-        }
-      }
-    }
-
-    return text;
-  };
-
-  var toLatex_1$2 = toLatex$3;
 
   var Sentence = function Sentence(data) {
     Object.defineProperty(this, 'data', {
@@ -5302,14 +4615,6 @@
 
       return arr;
     },
-    markdown: function markdown(options) {
-      options = options || {};
-      return toMarkdown_1$1(this, options);
-    },
-    html: function html(options) {
-      options = options || {};
-      return toHtml$3(this, options);
-    },
     text: function text(str) {
       if (str !== undefined && typeof str === 'string') {
         //set the text?
@@ -5320,9 +4625,6 @@
     },
     json: function json(options) {
       return toJson$3(this, options);
-    },
-    latex: function latex(options) {
-      return toLatex_1$2(this, options);
     }
   };
   Object.keys(methods$3).forEach(function (k) {
@@ -5479,7 +4781,7 @@
 
     line = line.replace(/\[\[:?([^|]{1,80}?)\]\](\w{0,5})/g, '$1$2'); // [[File:with|Size]]
 
-    line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, ''); // [[Replaced|Links]]
+    line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$1'); // [[Replaced|Links]]
 
     line = line.replace(/\[\[:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$2$3'); // External links
 
@@ -5503,9 +4805,9 @@
 
   function oneSentence(str) {
     var obj = {
-      text: postprocess(str) //pull-out the [[links]]
+      text: postprocess(str)
+    }; //pull-out the [[links]]
 
-    };
     var links$1 = links(str);
 
     if (links$1) {
@@ -5572,9 +4874,10 @@
       if (a === null) {
         return;
       } //has '[[' but no ']]'
+      //has equal number of openning and closing tags. handle nested case '[[[[' ']]'
 
 
-      if (/\[\[[^\]]+$/.test(a) || /\{\{[^\}]+$/.test(a)) {
+      if (/\[\[[^\]]+$/.test(a) || /\{\{[^\}]+$/.test(a) || a.split('{{').length !== a.split('}}').length || a.split('[[').length !== a.split(']]').length) {
         arr[i + 1] = arr[i] + '|' + arr[i + 1];
         arr[i] = null;
       }
@@ -5607,9 +4910,8 @@
   var reserved = {
     template: true,
     list: true,
-    prototype: true //turn 'key=val' into {key:key, val:val}
-
-  };
+    prototype: true
+  }; //turn 'key=val' into {key:key, val:val}
 
   var parseKey = function parseKey(str) {
     var parts = str.split('=');
@@ -5672,9 +4974,8 @@
     collapsible: true,
     list_style_type: true,
     'list-style-type': true,
-    colwidth: true //remove wiki-cruft & some styling info from templates
-
-  };
+    colwidth: true
+  }; //remove wiki-cruft & some styling info from templates
 
   var cleanup = function cleanup(obj) {
     Object.keys(obj).forEach(function (k) {
@@ -5748,91 +5049,7 @@
 
   var parse$2 = parser;
 
-  //not so impressive right now
-  var toLatex$4 = function toLatex(c) {
-    var str = c.title();
-    return '⌃ ' + str + '\n';
-  };
-
-  var toLatex_1$3 = toLatex$4;
-
-  //
-  var toHtml$4 = function toHtml(c, options) {
-    if (c.data && c.data.url && c.data.title) {
-      var str = c.data.title;
-
-      if (options.links === true) {
-        str = "<a href=\"".concat(c.data.url, "\">").concat(str, "</a>");
-      }
-
-      return "<div class=\"reference\">\u2303 ".concat(str, " </div>");
-    }
-
-    if (c.data.encyclopedia) {
-      return "<div class=\"reference\">\u2303 ".concat(c.data.encyclopedia, "</div>");
-    }
-
-    if (c.data.title) {
-      //cite book, etc
-      var _str = c.data.title;
-
-      if (c.data.author) {
-        _str += c.data.author;
-      }
-
-      if (c.data.first && c.data.last) {
-        _str += c.data.first + ' ' + c.data.last;
-      }
-
-      return "<div class=\"reference\">\u2303 ".concat(_str, "</div>");
-    }
-
-    if (c.inline) {
-      return "<div class=\"reference\">\u2303 ".concat(c.inline.html(), "</div>");
-    }
-
-    return '';
-  };
-
-  var toHtml_1$1 = toHtml$4;
-
-  //
-  var toMarkdown$4 = function toMarkdown(c) {
-    if (c.data && c.data.url && c.data.title) {
-      return "\u2303 [".concat(c.data.title, "](").concat(c.data.url, ")");
-    } else if (c.data.encyclopedia) {
-      return "\u2303 ".concat(c.data.encyclopedia);
-    } else if (c.data.title) {
-      //cite book, etc
-      var str = c.data.title;
-
-      if (c.data.author) {
-        str += c.data.author;
-      }
-
-      if (c.data.first && c.data.last) {
-        str += c.data.first + ' ' + c.data.last;
-      }
-
-      return "\u2303 ".concat(str);
-    } else if (c.inline) {
-      return "\u2303 ".concat(c.inline.markdown());
-    }
-
-    return '';
-  };
-
-  var toMarkdown_1$2 = toMarkdown$4;
-
-  //
-  var toJson$4 = function toJson(c) {
-    return c.data;
-  };
-
-  var toJson_1$1 = toJson$4;
-
-  var defaults$f = {}; //also called 'citations'
-
+  //also called 'citations'
   var Reference = function Reference(data) {
     Object.defineProperty(this, 'data', {
       enumerable: false,
@@ -5870,21 +5087,8 @@
     text: function text() {
       return ''; //nah, skip these.
     },
-    markdown: function markdown(options) {
-      options = setDefaults_1(options, defaults$f);
-      return toMarkdown_1$2(this);
-    },
-    html: function html(options) {
-      options = setDefaults_1(options, defaults$f);
-      return toHtml_1$1(this, options);
-    },
-    latex: function latex(options) {
-      options = setDefaults_1(options, defaults$f);
-      return toLatex_1$3(this);
-    },
-    json: function json(options) {
-      options = setDefaults_1(options, defaults$f);
-      return toJson_1$1(this);
+    json: function json() {
+      return this.data;
     }
   };
   Object.keys(methods$4).forEach(function (k) {
@@ -6138,9 +5342,8 @@
     country: true,
     population: true,
     count: true,
-    number: true //additional table-cruft to remove before parseLine method
-
-  };
+    number: true
+  }; //additional table-cruft to remove before parseLine method
 
   var cleanText = function cleanText(str) {
     str = parseSentence$3(str).text(); //anything before a single-pipe is styling, so remove it
@@ -6228,8 +5431,8 @@
 
 
   var parseTable = function parseTable(wiki) {
-    var lines = wiki.replace(/\r/g, '').split(/\n/);
-    lines = lines.map(function (l) {
+    var lines = wiki.replace(/\r/g, '').replace(/\n(\s*[^|!{\s])/g, ' $1') //remove unecessary newlines
+    .split(/\n/).map(function (l) {
       return l.trim();
     });
     var rows = _findRows(lines); //support colspan, rowspan...
@@ -6260,165 +5463,7 @@
 
   var parse$3 = parseTable;
 
-  //turn a json table into a html table
-  var toHtml$5 = function toHtml(table, options) {
-    var html = '<table class="table">\n'; //make header
-
-    html += '  <thead>\n';
-    html += '  <tr>\n';
-    Object.keys(table[0]).forEach(function (k) {
-      if (/^col[0-9]/.test(k) !== true) {
-        html += '    <td>' + k + '</td>\n';
-      }
-    });
-    html += '  </tr>\n';
-    html += '  </thead>\n';
-    html += '  <tbody>\n'; //make rows
-
-    table.forEach(function (o) {
-      html += '  <tr>\n';
-      Object.keys(o).forEach(function (k) {
-        var val = o[k].html(options);
-        html += '    <td>' + val + '</td>\n';
-      });
-      html += '  </tr>\n';
-    });
-    html += '  </tbody>\n';
-    html += '</table>\n';
-    return html;
-  };
-
-  var toHtml_1$2 = toHtml$5;
-
-  //center-pad each cell, to make the table more legible
-  var pad = function pad(str, cellWidth) {
-    str = str || '';
-    str = String(str);
-    cellWidth = cellWidth || 15;
-    var diff = cellWidth - str.length;
-    diff = Math.ceil(diff / 2);
-
-    for (var i = 0; i < diff; i += 1) {
-      str = ' ' + str;
-
-      if (str.length < cellWidth) {
-        str = str + ' ';
-      }
-    }
-
-    return str;
-  };
-
-  var pad_1 = pad;
-
-  /* this is a markdown table:
-  | Tables        | Are           | Cool  |
-  | ------------- |:-------------:| -----:|
-  | col 3 is      | right-aligned | $1600 |
-  | col 2 is      | centered      |   $12 |
-  | zebra stripes | are neat      |    $1 |
-  */
-
-  var makeRow = function makeRow(arr) {
-    arr = arr.map(function (s) {
-      return pad_1(s, 14);
-    });
-    return '| ' + arr.join(' | ') + ' |';
-  }; //markdown tables are weird
-
-
-  var doTable = function doTable(table, options) {
-    var md = '';
-
-    if (!table || table.length === 0) {
-      return md;
-    }
-
-    var keys = Object.keys(table[0]); //first, grab the headers
-    //remove auto-generated number keys
-
-    var headers = keys.map(function (k) {
-      if (/^col[0-9]/.test(k) === true) {
-        return '';
-      }
-
-      return k;
-    }); //draw the header (necessary!)
-
-    md += makeRow(headers) + '\n';
-    md += makeRow(headers.map(function () {
-      return '---';
-    })) + '\n'; //do each row..
-
-    md += table.map(function (row) {
-      //each column..
-      var arr = keys.map(function (k) {
-        if (!row[k]) {
-          return '';
-        }
-
-        return row[k].markdown(options) || '';
-      }); //make it a nice padded row
-
-      return makeRow(arr);
-    }).join('\n');
-    return md + '\n';
-  };
-
-  var toMarkdown$5 = doTable;
-
-  //create a formal LATEX table
-  var doTable$1 = function doTable(table, options) {
-    var out = '\n%\\vspace*{0.3cm}\n';
-    out += '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns';
-    out += "\n% Format Align Column: 'l'=left 'r'=right align, 'c'=center, 'p{5cm}'=block with column width 5cm ";
-    out += '\n\\begin{tabular}{|';
-    Object.keys(table[0]).forEach(function () {
-      out += 'l|';
-    });
-    out += '} \n';
-    out += '\n  \\hline  %horizontal line\n'; //make header
-
-    out += '\n  % BEGIN: Table Header';
-    var vSep = '   ';
-    Object.keys(table[0]).forEach(function (k) {
-      out += '\n    ' + vSep;
-
-      if (k.indexOf('col-') === 0) {
-        out += '\\textbf{' + k + '}';
-      } else {
-        out += '  ';
-      }
-
-      vSep = ' & ';
-    });
-    out += '\\\\ ';
-    out += '\n  % END: Table Header';
-    out += '\n  % BEGIN: Table Body';
-    out += '\n  \\hline  % ----- table row -----'; ////make rows
-
-    table.forEach(function (o) {
-      vSep = ' ';
-      out += '\n  % ----- table row -----';
-      Object.keys(o).forEach(function (k) {
-        var s = o[k];
-        var val = s.latex(options);
-        out += '\n    ' + vSep + val + '';
-        vSep = ' & ';
-      });
-      out += '  \\\\ '; // newline in latex table = two backslash \\
-
-      out += '\n  \\hline  %horizontal line';
-    });
-    out += '\n    % END: Table Body';
-    out += '\\end{tabular} \n';
-    out += '\n\\vspace*{0.3cm}\n\n';
-    return out;
-  };
-
-  var toLatex$5 = doTable$1;
-
-  var toJson$5 = function toJson(tables, options) {
+  var toJson$4 = function toJson(tables, options) {
     return tables.map(function (table) {
       var row = {};
       Object.keys(table).forEach(function (k) {
@@ -6433,9 +5478,9 @@
     });
   };
 
-  var toJson_1$2 = toJson$5;
+  var toJson_1$1 = toJson$4;
 
-  var defaults$g = {};
+  var defaults$6 = {};
 
   var Table = function Table(data) {
     Object.defineProperty(this, 'data', {
@@ -6477,20 +5522,8 @@
       return rows;
     },
     json: function json(options) {
-      options = setDefaults_1(options, defaults$g);
-      return toJson_1$2(this.data, options);
-    },
-    html: function html(options) {
-      options = setDefaults_1(options, defaults$g);
-      return toHtml_1$2(this.data, options);
-    },
-    markdown: function markdown(options) {
-      options = setDefaults_1(options, defaults$g);
-      return toMarkdown$5(this.data, options);
-    },
-    latex: function latex(options) {
-      options = setDefaults_1(options, defaults$g);
-      return toLatex$5(this.data, options);
+      options = setDefaults_1(options, defaults$6);
+      return toJson_1$1(this.data, options);
     },
     text: function text() {
       return '';
@@ -6562,12 +5595,12 @@
 
   var table = findTables;
 
-  var defaults$h = {
+  var defaults$7 = {
     sentences: true
   };
 
-  var toJson$6 = function toJson(p, options) {
-    options = setDefaults_1(options, defaults$h);
+  var toJson$5 = function toJson(p, options) {
+    options = setDefaults_1(options, defaults$7);
     var data = {};
 
     if (options.sentences === true) {
@@ -6579,70 +5612,9 @@
     return data;
   };
 
-  var toJson_1$3 = toJson$6;
+  var toJson_1$2 = toJson$5;
 
-  var defaults$i = {
-    sentences: true
-  };
-
-  var toMarkdown$6 = function toMarkdown(p, options) {
-    options = setDefaults_1(options, defaults$i);
-    var md = '';
-
-    if (options.sentences === true) {
-      md += p.sentences().reduce(function (str, s) {
-        str += s.markdown(options) + '\n';
-        return str;
-      }, {});
-    }
-
-    return md;
-  };
-
-  var toMarkdown_1$3 = toMarkdown$6;
-
-  var defaults$j = {
-    sentences: true
-  };
-
-  var toHtml$6 = function toHtml(p, options) {
-    options = setDefaults_1(options, defaults$j);
-    var html = '';
-
-    if (options.sentences === true) {
-      html += p.sentences().map(function (s) {
-        return s.html(options);
-      }).join('\n');
-    }
-
-    return html;
-  };
-
-  var toHtml_1$3 = toHtml$6;
-
-  var defaults$k = {
-    sentences: true
-  };
-
-  var toLatex$6 = function toLatex(p, options) {
-    options = setDefaults_1(options, defaults$k);
-    var out = '';
-
-    if (options.sentences === true) {
-      out += '\n\n% BEGIN Paragraph\n';
-      out += p.sentences().reduce(function (str, s) {
-        str += s.latex(options) + '\n';
-        return str;
-      }, '');
-      out += '% END Paragraph';
-    }
-
-    return out;
-  };
-
-  var toLatex_1$4 = toLatex$6;
-
-  var defaults$l = {
+  var defaults$8 = {
     sentences: true,
     lists: true,
     images: true
@@ -6716,16 +5688,8 @@
 
       return arr || [];
     },
-    markdown: function markdown(options) {
-      options = setDefaults_1(options, defaults$l);
-      return toMarkdown_1$3(this, options);
-    },
-    html: function html(options) {
-      options = setDefaults_1(options, defaults$l);
-      return toHtml_1$3(this, options);
-    },
     text: function text(options) {
-      options = setDefaults_1(options, defaults$l);
+      options = setDefaults_1(options, defaults$8);
       var str = this.sentences().map(function (s) {
         return s.text(options);
       }).join(' ');
@@ -6734,13 +5698,9 @@
       });
       return str;
     },
-    latex: function latex(options) {
-      options = setDefaults_1(options, defaults$l);
-      return toLatex_1$4(this, options);
-    },
     json: function json(options) {
-      options = setDefaults_1(options, defaults$l);
-      return toJson_1$3(this, options);
+      options = setDefaults_1(options, defaults$8);
+      return toJson_1$2(this, options);
     }
   };
   methods$6.citations = methods$6.references;
@@ -6827,9 +5787,8 @@
     baseline: true,
     middle: true,
     sub: true,
-    "super": true //images are usually [[image:my_pic.jpg]]
-
-  };
+    "super": true
+  }; //images are usually [[image:my_pic.jpg]]
 
   var oneImage = function oneImage(img) {
     var m = img.match(file_reg);
@@ -6847,9 +5806,9 @@
 
     if (title) {
       var obj = {
-        file: file //try to grab other metadata, too
+        file: file
+      }; //try to grab other metadata, too
 
-      };
       img = img.replace(/^\[\[/, '');
       img = img.replace(/\]\]$/, ''); //https://en.wikipedia.org/wiki/Wikipedia:Extended_image_syntax
       // - [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
@@ -6894,50 +5853,7 @@
 
   var image = parseImages;
 
-  //
-  var toJson$7 = function toJson(p, options) {
-    return p.lines().map(function (s) {
-      return s.json(options);
-    });
-  };
-
-  var toJson_1$4 = toJson$7;
-
-  //
-  var toMarkdown$7 = function toMarkdown(list, options) {
-    return list.lines().map(function (s) {
-      var str = s.markdown(options);
-      return ' * ' + str;
-    }).join('\n');
-  };
-
-  var toMarkdown_1$4 = toMarkdown$7;
-
-  //
-  var toHtml$7 = function toHtml(list, options) {
-    var html = '  <ul class="list">\n';
-    list.lines().forEach(function (s) {
-      html += '    <li>' + s.html(options) + '</li>\n';
-    });
-    html += '  </ul>\n';
-    return html;
-  };
-
-  var toHtml_1$4 = toHtml$7;
-
-  //
-  var toLatex$7 = function toLatex(list, options) {
-    var out = '\\begin{itemize}\n';
-    list.lines().forEach(function (s) {
-      out += '  \\item ' + s.text(options) + '\n';
-    });
-    out += '\\end{itemize}\n';
-    return out;
-  };
-
-  var toLatex_1$5 = toLatex$7;
-
-  var defaults$m = {};
+  var defaults$9 = {};
 
   var toText = function toText(list, options) {
     return list.map(function (s) {
@@ -6977,21 +5893,11 @@
 
       return links;
     },
-    markdown: function markdown(options) {
-      options = setDefaults_1(options, defaults$m);
-      return toMarkdown_1$4(this, options);
-    },
-    html: function html(options) {
-      options = setDefaults_1(options, defaults$m);
-      return toHtml_1$4(this, options);
-    },
-    latex: function latex(options) {
-      options = setDefaults_1(options, defaults$m);
-      return toLatex_1$5(this, options);
-    },
     json: function json(options) {
-      options = setDefaults_1(options, defaults$m);
-      return toJson_1$4(this, options);
+      options = setDefaults_1(options, defaults$9);
+      return this.lines().map(function (s) {
+        return s.json(options);
+      });
     },
     text: function text() {
       return toText(this.data);
@@ -7104,9 +6010,9 @@
       var data = {
         lists: [],
         sentences: [],
-        images: [] //parse the lists
+        images: []
+      }; //parse the lists
 
-      };
       str = parse$4.list(str, data); //parse+remove scary '[[ [[]] ]]' stuff
 
       var matches = recursive_match('[', ']', str); // parse images
@@ -7124,122 +6030,7 @@
 
   var _03Paragraph = parseParagraphs;
 
-  var _skipKeys = {
-    image: true,
-    caption: true,
-    alt: true,
-    signature: true,
-    'signature alt': true
-  };
-
-  var defaults$n = {
-    images: true // render an infobox as a table with two columns, key + value
-
-  };
-
-  var doInfobox = function doInfobox(obj, options) {
-    options = setDefaults_1(options, defaults$n);
-    var md = '|' + pad_1('', 35) + '|' + pad_1('', 30) + '|\n';
-    md += '|' + pad_1('---', 35) + '|' + pad_1('---', 30) + '|\n'; //todo: render top image here (somehow)
-
-    Object.keys(obj.data).forEach(function (k) {
-      if (_skipKeys[k] === true) {
-        return;
-      }
-
-      var key = '**' + k + '**';
-      var s = obj.data[k];
-      var val = s.markdown(options); //markdown is more newline-sensitive than wiki
-
-      val = val.split(/\n/g).join(', ');
-      md += '|' + pad_1(key, 35) + '|' + pad_1(val, 30) + ' |\n';
-    });
-    return md;
-  };
-
-  var toMarkdown$8 = doInfobox;
-
-  var defaults$o = {
-    images: true //
-
-  };
-
-  var infobox = function infobox(obj, options) {
-    options = setDefaults_1(options, defaults$o);
-    var html = '<table class="infobox">\n';
-    html += '  <thead>\n';
-    html += '  </thead>\n';
-    html += '  <tbody>\n'; //put image and caption on the top
-
-    if (options.images === true && obj.data.image) {
-      html += '    <tr>\n';
-      html += '       <td colspan="2" style="text-align:center">\n';
-      html += '       ' + obj.image().html() + '\n';
-      html += '       </td>\n';
-
-      if (obj.data.caption || obj.data.alt) {
-        var caption = obj.data.caption ? obj.data.caption.html(options) : obj.data.alt.html(options);
-        html += '       <td colspan="2" style="text-align:center">\n';
-        html += '         ' + caption + '\n';
-        html += '       </td>\n';
-      }
-
-      html += '    </tr>\n';
-    }
-
-    Object.keys(obj.data).forEach(function (k) {
-      if (_skipKeys[k] === true) {
-        return;
-      }
-
-      var s = obj.data[k];
-      var key = k.replace(/_/g, ' ');
-      key = key.charAt(0).toUpperCase() + key.substring(1); //titlecase it
-
-      var val = s.html(options);
-      html += '    <tr>\n';
-      html += '      <td>' + key + '</td>\n';
-      html += '      <td>' + val + '</td>\n';
-      html += '    </tr>\n';
-    });
-    html += '  </tbody>\n';
-    html += '</table>\n';
-    return html;
-  };
-
-  var toHtml$8 = infobox;
-
-  var defaults$p = {
-    images: true //
-
-  };
-
-  var infobox$1 = function infobox(obj, options) {
-    options = setDefaults_1(options, defaults$p);
-    var out = '\n \\vspace*{0.3cm} % Info Box\n\n';
-    out += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n';
-    out += '  \\hline  %horizontal line\n'; //todo: render top image here
-
-    Object.keys(obj.data).forEach(function (k) {
-      if (_skipKeys[k] === true) {
-        return;
-      }
-
-      var s = obj.data[k];
-      var val = s.latex(options);
-      out += '  % ---------- \n';
-      out += '      ' + k + ' & \n';
-      out += '      ' + val + '\\\\ \n';
-      out += '  \\hline  %horizontal line\n';
-    });
-    out += '\\end{tabular} \n';
-    out += '\n\\vspace*{0.3cm}\n\n';
-    return out;
-  };
-
-  var toLatex$8 = infobox$1;
-
-  var toJson$8 = function toJson(infobox, options) {
+  var toJson$6 = function toJson(infobox, options) {
     var json = Object.keys(infobox.data).reduce(function (h, k) {
       if (infobox.data[k]) {
         h[k] = infobox.data[k].json();
@@ -7255,7 +6046,7 @@
     return json;
   };
 
-  var toJson_1$5 = toJson$8;
+  var toJson_1$3 = toJson$6;
 
   var Infobox = function Infobox(obj) {
     this._type = obj.type;
@@ -7320,24 +6111,12 @@
 
       return null;
     },
-    markdown: function markdown(options) {
-      options = options || {};
-      return toMarkdown$8(this, options);
-    },
-    html: function html(options) {
-      options = options || {};
-      return toHtml$8(this, options);
-    },
-    latex: function latex(options) {
-      options = options || {};
-      return toLatex$8(this, options);
-    },
     text: function text() {
       return '';
     },
     json: function json(options) {
       options = options || {};
-      return toJson_1$5(this, options);
+      return toJson_1$3(this, options);
     },
     keyValue: function keyValue() {
       var _this2 = this;
@@ -7349,9 +6128,9 @@
 
         return h;
       }, {});
-    } //aliases
+    }
+  }; //aliases
 
-  };
   Object.keys(methods$8).forEach(function (k) {
     Infobox.prototype[k] = methods$8[k];
   }); //add alises, too
@@ -7436,6 +6215,26 @@
   };
 
   var _getTemplates = getTemplates; // console.log(getTemplates('he is president. {{nowrap|he is {{age|1980}} years}} he lives in {{date}} texas'));
+
+  var Template = function Template(data) {
+    Object.defineProperty(this, 'data', {
+      enumerable: false,
+      value: data
+    });
+  };
+
+  var methods$9 = {
+    text: function text() {
+      return '';
+    },
+    json: function json() {
+      return this.data;
+    }
+  };
+  Object.keys(methods$9).forEach(function (k) {
+    Template.prototype[k] = methods$9[k];
+  });
+  var Template_1 = Template;
 
   //we explicitly ignore these, because they sometimes have resolve some data
   var list$1 = [//https://en.wikipedia.org/wiki/category:templates_with_no_visible_output
@@ -7536,9 +6335,8 @@
     'hockey team gm': true,
     'hockey team player': true,
     'hockey team start': true,
-    mlbbioret: true //
-
-  };
+    mlbbioret: true
+  }; //
 
   var isInfobox = function isInfobox(name) {
     // known
@@ -7636,10 +6434,10 @@
       }
 
       return "[[".concat(name, "]]");
-    } //these are insane
-    // https://en.wikipedia.org/wiki/Template:Tl
+    }
+  }; //these are insane
+  // https://en.wikipedia.org/wiki/Template:Tl
 
-  };
   var links$1 = ['lts', 't', 'tfd links', 'tiw', 'tltt', 'tetl', 'tsetl', 'ti', 'tic', 'tiw', 'tlt', 'ttl', 'twlh', 'tl2', 'tlu', 'demo', 'hatnote', 'xpd', 'para', 'elc', 'xtag', 'mli', 'mlix', '#invoke', 'url' //https://en.wikipedia.org/wiki/Template:URL
   ]; //keyValues
 
@@ -7857,9 +6655,9 @@
       var obj = parse$2(tmpl, ['date']);
       r.templates.push(obj);
       return '';
-    } //aliases
+    }
+  }; //aliases
 
-  };
   parsers['cite'] = parsers.citation;
   parsers['sfnref'] = parsers.sfn;
   parsers['harvid'] = parsers.sfn;
@@ -7971,9 +6769,9 @@
       var obj = parse$2(tmpl, order);
       r.templates.push(obj);
       return '';
-    } //alias
+    }
+  }; //alias
 
-  };
   externals.imdb = externals['imdb name'];
   externals['imdb episodess'] = externals['imdb episode'];
   var identities = externals;
@@ -8028,7 +6826,7 @@
   }; //zero-pad a number
 
 
-  var pad$1 = function pad(num) {
+  var pad = function pad(num) {
     if (num < 10) {
       return '0' + num;
     }
@@ -8049,10 +6847,10 @@
         str = "".concat(_months[date.month], " ").concat(date.date, ", ").concat(date.year); //add times, if available
 
         if (date.hour !== undefined && date.minute !== undefined) {
-          var time = "".concat(pad$1(date.hour), ":").concat(pad$1(date.minute));
+          var time = "".concat(pad(date.hour), ":").concat(pad(date.minute));
 
           if (date.second !== undefined) {
-            time = time + ':' + pad$1(date.second);
+            time = time + ':' + pad(date.second);
           }
 
           str = time + ', ' + str; //add timezone, if there, at the end in brackets
@@ -8069,9 +6867,8 @@
 
   var _format = {
     toText: toText$1,
-    ymd: ymd // console.log(toText(ymd([2018, 3, 28])));
-
-  };
+    ymd: ymd
+  }; // console.log(toText(ymd([2018, 3, 28])));
 
   var misc = {
     reign: function reign(tmpl) {
@@ -8603,9 +7400,8 @@
       var ignore = {
         span: true,
         div: true,
-        p: true //pair, empty, close, single
-
-      };
+        p: true
+      }; //pair, empty, close, single
 
       if (!obj.open || obj.open === 'pair') {
         //just skip generating spans and things..
@@ -8770,9 +7566,9 @@
       }
 
       return str;
-    } //aliases
+    }
+  }; //aliases
 
-  };
   templates$2['rndfrac'] = templates$2.rnd;
   templates$2['rndnear'] = templates$2.rnd;
   templates$2['unité'] = templates$2.val; //templates that we simply grab their insides as plaintext
@@ -8901,9 +7697,9 @@
       });
       return list.join('\n\n');
     } // 'pagelist':(tmpl)=>{},
-    //aliases
 
-  };
+  }; //aliases
+
   tmpls.flatlist = tmpls.plainlist;
   tmpls.ublist = tmpls.plainlist;
   tmpls['unbulleted list'] = tmpls['collapsible list'];
@@ -9176,9 +7972,9 @@
     sort: function sort(tmpl) {
       var order = ['sort', 'display'];
       return parse$2(tmpl, order).display;
-    } //aliases
+    }
+  }; //aliases
 
-  };
   inline$1['str left'] = inline$1.trunc;
   inline$1['str crop'] = inline$1.trunc;
   inline$1['tooltip'] = inline$1.abbr;
@@ -9333,12 +8129,12 @@
       var obj = parse$2(tmpl, order);
       r.templates.push(obj);
       return "";
-    } // {{coord|latitude|longitude|coordinate parameters|template parameters}}
-    // {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
-    // {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
-    // {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
+    }
+  }; // {{coord|latitude|longitude|coordinate parameters|template parameters}}
+  // {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
+  // {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
+  // {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
 
-  };
   templates$4['coor'] = templates$4.coord; // these are from the nl wiki
 
   templates$4['coor title dms'] = templates$4.coord;
@@ -9381,9 +8177,9 @@
       }
 
       return str;
-    } //https://en.wikipedia.org/wiki/Category:Lang-x_templates
+    }
+  }; //https://en.wikipedia.org/wiki/Category:Lang-x_templates
 
-  };
   Object.keys(languages).forEach(function (k) {
     templates$5['lang-' + k] = templates$5['lang-de'];
   });
@@ -9427,11 +8223,11 @@
       obj.template = 'ipac';
       r.templates.push(obj);
       return '';
-    } // - other languages -
-    // Polish, {{IPAc-pl}}	{{IPAc-pl|'|sz|cz|e|ć|i|n}} → [ˈʂt͡ʂɛt͡ɕin]
-    // Portuguese, {{IPAc-pt}}	{{IPAc-pt|p|o|<|r|t|u|'|g|a|l|lang=pt}} and {{IPAc-pt|b|r|a|'|s|i|l|lang=br}} → [puɾtuˈɣaɫ] and [bɾaˈsiw]
+    }
+  }; // - other languages -
+  // Polish, {{IPAc-pl}}	{{IPAc-pl|'|sz|cz|e|ć|i|n}} → [ˈʂt͡ʂɛt͡ɕin]
+  // Portuguese, {{IPAc-pt}}	{{IPAc-pt|p|o|<|r|t|u|'|g|a|l|lang=pt}} and {{IPAc-pt|b|r|a|'|s|i|l|lang=br}} → [puɾtuˈɣaɫ] and [bɾaˈsiw]
 
-  };
   Object.keys(languages).forEach(function (lang) {
     templates$6['ipa-' + lang] = templates$6.ipa;
     templates$6['ipac-' + lang] = templates$6.ipac;
@@ -9471,9 +8267,9 @@
       var obj = parse$2(tmpl, ['word']);
       r.templates.push(obj);
       return 'Rhymes: -' + (obj.word || '');
-    } //https://en.wiktionary.org/wiki/Category:Form-of_templates
+    }
+  }; //https://en.wiktionary.org/wiki/Category:Form-of_templates
 
-  };
   var conjugations = ['abbreviation', 'abessive plural', 'abessive singular', 'accusative plural', 'accusative singular', 'accusative', 'acronym', 'active participle', 'agent noun', 'alternative case form', 'alternative form', 'alternative plural', 'alternative reconstruction', 'alternative spelling', 'alternative typography', 'aphetic form', 'apocopic form', 'archaic form', 'archaic spelling', 'aspirate mutation', 'associative plural', 'associative singular', 'attributive form', 'attributive form', 'augmentative', 'benefactive plural', 'benefactive singular', 'causative plural', 'causative singular', 'causative', 'clipping', 'combining form', 'comitative plural', 'comitative singular', 'comparative plural', 'comparative singular', 'comparative', 'contraction', 'dated form', 'dated spelling', 'dative plural definite', 'dative plural indefinite', 'dative plural', 'dative singular', 'dative', 'definite', 'deliberate misspelling', 'diminutive', 'distributive plural', 'distributive singular', 'dual', 'early form', 'eclipsis', 'elative', 'ellipsis', 'equative', 'euphemistic form', 'euphemistic spelling', 'exclusive plural', 'exclusive singular', 'eye dialect', 'feminine noun', 'feminine plural past participle', 'feminine plural', 'feminine singular past participle', 'feminine singular', 'feminine', 'form', 'former name', 'frequentative', 'future participle', 'genitive plural definite', 'genitive plural indefinite', 'genitive plural', 'genitive singular definite', 'genitive singular indefinite', 'genitive singular', 'genitive', 'gerund', 'h-prothesis', 'hard mutation', 'harmonic variant', 'imperative', 'imperfective form', 'inflected form', 'inflection', 'informal form', 'informal spelling', 'initialism', 'ja-form', 'jyutping reading', 'late form', 'lenition', 'masculine plural past participle', 'masculine plural', 'medieval spelling', 'misconstruction', 'misromanization', 'misspelling', 'mixed mutation', 'monotonic form', 'mutation', 'nasal mutation', 'negative', 'neuter plural past participle', 'neuter plural', 'neuter singular past participle', 'neuter singular', 'nominalization', 'nominative plural', 'nominative singular', 'nonstandard form', 'nonstandard spelling', 'oblique plural', 'oblique singular', 'obsolete form', 'obsolete spelling', 'obsolete typography', 'official form', 'participle', 'passive participle', 'passive', 'past active participle', 'past participle', 'past passive participle', 'past tense', 'perfective form', 'plural definite', 'plural indefinite', 'plural', 'polytonic form', 'present active participle', 'present participle', 'present tense', 'pronunciation spelling', 'rare form', 'rare spelling', 'reflexive', 'second-person singular past', 'short for', 'singular definite', 'singular', 'singulative', 'soft mutation', 'spelling', 'standard form', 'standard spelling', 'substantivisation', 'superlative', 'superseded spelling', 'supine', 'syncopic form', 'synonym', 'terminative plural', 'terminative singular', 'uncommon form', 'uncommon spelling', 'verbal noun', 'vocative plural', 'vocative singular'];
   conjugations.forEach(function (name) {
     templates$7[name + ' of'] = function (tmpl, r) {
@@ -9590,9 +8386,9 @@
     nombre: parseCurrency,
     nb: parseCurrency,
     iso4217: parseCurrency,
-    inrconvert: inrConvert //the others fit the same pattern..
+    inrconvert: inrConvert
+  }; //the others fit the same pattern..
 
-  };
   Object.keys(codes).forEach(function (k) {
     currencies[k] = parseCurrency;
   });
@@ -9664,10 +8460,10 @@
       var obj = playoffBracket(tmpl);
       r.templates.push(obj);
       return '';
-    } //a bunch of aliases for these ones:
-    // https://en.wikipedia.org/wiki/Category:Tournament_bracket_templates
+    }
+  }; //a bunch of aliases for these ones:
+  // https://en.wikipedia.org/wiki/Category:Tournament_bracket_templates
 
-  };
   var brackets = ['2teambracket', '4team2elimbracket', '8teambracket', '16teambracket', '32teambracket', 'cwsbracket', 'nhlbracket', 'nhlbracket-reseed', '4teambracket-nhl', '4teambracket-ncaa', '4teambracket-mma', '4teambracket-mlb', '8teambracket-nhl', '8teambracket-mlb', '8teambracket-ncaa', '8teambracket-afc', '8teambracket-afl', '8teambracket-tennis3', '8teambracket-tennis5', '16teambracket-nhl', '16teambracket-nhl divisional', '16teambracket-nhl-reseed', '16teambracket-nba', '16teambracket-swtc', '16teambracket-afc', '16teambracket-tennis3', '16teambracket-tennis5'];
   brackets.forEach(function (key) {
     all[key] = all['4teambracket'];
@@ -10119,9 +8915,9 @@
 
       num = ".".concat(num * 10);
       return "".concat(wins || 0, " || ").concat(losses || 0, " || ").concat(num || '-');
-    } //aliases
+    }
+  }; //aliases
 
-  };
   templates$a['sfrac'] = templates$a.frac;
   templates$a['sqrt'] = templates$a.radic;
   templates$a['pct'] = templates$a.percentage;
@@ -10151,9 +8947,9 @@
       var data = parse$2(tmpl);
       r.templates.push(data);
       return '';
-    } //aliases
+    }
+  }; //aliases
 
-  };
   templates$b['election box begin no change'] = templates$b['election box begin'];
   templates$b['election box begin no party'] = templates$b['election box begin'];
   templates$b['election box begin no party no change'] = templates$b['election box begin'];
@@ -10262,9 +9058,9 @@
       }
 
       return " [[".concat(found[2], " national football team|").concat(found[0], "]]");
-    } //support {{can}}
+    }
+  }; //support {{can}}
 
-  };
   flags.forEach(function (a) {
     templates$c[a[1]] = function () {
       return a[0];
@@ -10644,9 +9440,8 @@
   var citations = {
     citation: true,
     refn: true,
-    harvnb: true //ensure references and infoboxes at least look valid
-
-  };
+    harvnb: true
+  }; //ensure references and infoboxes at least look valid
 
   var isObject = function isObject(x) {
     return _typeof(x) === 'object' && x !== null && x.constructor.toString().indexOf('Array') === -1;
@@ -10689,7 +9484,7 @@
         return;
       }
 
-      clean.push(o);
+      clean.push(new Template_1(o));
     });
     data.templates = clean;
     return wiki;
@@ -10743,18 +9538,21 @@
   var parseElection = function parseElection(wiki, section) {
     wiki = wiki.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, function (tmpl) {
       var data = {
-        templates: [] //put it through our full template parser..
+        templates: []
+      }; //put it through our full template parser..
 
-      };
       templates$f(tmpl, data); //okay, pull it apart into something sensible..
 
-      var start = data.templates.find(function (t) {
+      var templates = data.templates.map(function (t) {
+        return t.json();
+      });
+      var start = templates.find(function (t) {
         return t.template === 'election box';
       }) || {};
-      var candidates = data.templates.filter(function (t) {
+      var candidates = templates.filter(function (t) {
         return t.template === 'election box candidate';
       });
-      var summary = data.templates.find(function (t) {
+      var summary = templates.find(function (t) {
         return t.template === 'election box gain' || t.template === 'election box hold';
       }) || {};
 
@@ -10778,9 +9576,8 @@
   var keys = {
     coach: ['team', 'year', 'g', 'w', 'l', 'w-l%', 'finish', 'pg', 'pw', 'pl', 'pw-l%'],
     player: ['year', 'team', 'gp', 'gs', 'mpg', 'fg%', '3p%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
-    roster: ['player', 'gp', 'gs', 'mpg', 'fg%', '3fg%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'] //https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
-
-  };
+    roster: ['player', 'gp', 'gs', 'mpg', 'fg%', '3fg%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg']
+  }; //https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
 
   var parseNBA = function parseNBA(wiki, section) {
     wiki = wiki.replace(/\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi, function (tmpl, name) {
@@ -10952,8 +9749,7 @@
     wiki = res.wiki;
     data = new Section_1(data, wiki);
     return data;
-  }; //we re-create this in html/markdown outputs
-
+  };
 
   var removeReferenceSection = function removeReferenceSection(sections) {
     return sections.filter(function (s, i) {
@@ -10997,9 +9793,9 @@
         depth: null,
         templates: [],
         infoboxes: [],
-        references: [] //figure-out title/depth
+        references: []
+      }; //figure-out title/depth
 
-      };
       parse$5.heading(data, heading); //parse it up
 
       var s = oneSection(content, data, options);
@@ -11041,9 +9837,8 @@
 
   var parse$6 = {
     section: _02Section,
-    categories: categories //convert wikiscript markup lang to json
-
-  };
+    categories: categories
+  }; //convert wikiscript markup lang to json
 
   var main = function main(wiki, options) {
     options = options || {};
@@ -11053,9 +9848,8 @@
       title: '',
       sections: [],
       categories: [],
-      coordinates: [] //detect if page is just redirect, and return it
-
-    };
+      coordinates: []
+    }; //detect if page is just redirect, and return it
 
     if (redirects.isRedirect(wiki) === true) {
       data.type = 'redirect';
@@ -11350,9 +10144,12 @@
     Paragraph: Paragraph_1,
     Sentence: Sentence_1,
     Image: Image_1,
-    Infobox: Infobox_1 //the main 'factory' exported method
-
-  };
+    Infobox: Infobox_1,
+    List: List_1,
+    Reference: Reference_1,
+    Table: Table_1,
+    Template: Template_1
+  }; //the main 'factory' exported method
 
   var wtf = function wtf(wiki, options) {
     return _01Document(wiki, options);
@@ -11380,5 +10177,5 @@
 
   return src;
 
-}));
+})));
 //# sourceMappingURL=wtf_wikipedia.js.map

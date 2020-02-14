@@ -1,3 +1,4 @@
+/* wtf_wikipedia 7.8.1 MIT */
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function createCommonjsModule(fn, module) {
@@ -557,15 +558,19 @@ var browserPonyfill_3 = browserPonyfill.Request;
 var browserPonyfill_4 = browserPonyfill.Response;
 
 const request = function(url, options) {
+  const fallbackUserAgent = 'Random user of the wtf_wikipedia library';
   let params = {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       'Api-User-Agent':
+        options['Api-User-Agent'] ||
+        fallbackUserAgent,
+      'User-Agent':
         options.userAgent ||
         options['User-Agent'] ||
         options['Api-User-Agent'] ||
-        'Random user of the wtf_wikipedia library'
+        fallbackUserAgent
     }
   };
   return browserPonyfill(url, params)
@@ -1816,134 +1821,11 @@ var _sectionMap = sectionMap;
 
 //
 const setDefaults = function(options, defaults) {
-  let obj = {};
-  defaults = defaults || {};
-  Object.keys(defaults).forEach(k => {
-    obj[k] = defaults[k];
-  });
-  options = options || {};
-  Object.keys(options).forEach(k => {
-    obj[k] = options[k];
-  });
-  return obj
+  return Object.assign({}, defaults, options)
 };
 var setDefaults_1 = setDefaults;
 
 const defaults = {
-  redirects: true,
-  infoboxes: true,
-  templates: true,
-  sections: true
-};
-// we should try to make this look like the wikipedia does, i guess.
-const softRedirect = function(doc) {
-  let link = doc.redirectTo();
-  let href = link.page;
-  href = './' + href.replace(/ /g, '_');
-  if (link.anchor) {
-    href += '#' + link.anchor;
-  }
-  return `↳ [${link.text}](${href})`
-};
-
-//turn a Doc object into a markdown string
-const toMarkdown = function(doc, options) {
-  options = setDefaults_1(options, defaults);
-  let data = doc.data;
-  let md = '';
-  //if it's a redirect page, give it a 'soft landing':
-  if (options.redirects === true && doc.isRedirect() === true) {
-    return softRedirect(doc) //end it here
-  }
-  //render infoboxes (up at the top)
-  if (options.infoboxes === true && options.templates === true) {
-    md += doc
-      .infoboxes()
-      .map(infobox => infobox.markdown(options))
-      .join('\n\n');
-  }
-  //render each section
-  if (options.sections === true || options.paragraphs === true || options.sentences === true) {
-    md += data.sections.map(s => s.markdown(options)).join('\n\n');
-  }
-  //default false
-  if (options.citations === true) {
-    md += '## References';
-    md += doc
-      .citations()
-      .map(c => c.json(options))
-      .join('\n');
-  }
-  return md
-};
-var toMarkdown_1 = toMarkdown;
-
-const defaults$1 = {
-  title: true,
-  infoboxes: true,
-  headers: true,
-  sections: true,
-  links: true
-};
-// we should try to make this look like the wikipedia does, i guess.
-const softRedirect$1 = function(doc) {
-  let link = doc.redirectTo();
-  let href = link.page;
-  href = './' + href.replace(/ /g, '_');
-  if (link.anchor) {
-    href += '#' + link.anchor;
-  }
-  return `  <div class="redirect">
-  ↳ <a class="link" href="./${href}">${link.text}</a>
-  </div>`
-};
-
-//turn a Doc object into a HTML string
-const toHtml = function(doc, options) {
-  options = setDefaults_1(options, defaults$1);
-  let data = doc.data;
-  let html = '';
-  html += '<!DOCTYPE html>\n';
-  html += '<html>\n';
-  html += '<head>\n';
-  //add page title
-  if (options.title === true && data.title) {
-    html += '<title>' + data.title + '</title>\n';
-  }
-  html += '</head>\n';
-  html += '<body>\n';
-
-  //if it's a redirect page, give it a 'soft landing':
-  if (doc.isRedirect() === true) {
-    html += softRedirect$1(doc);
-    return html + '\n</body>\n</html>' //end it here.
-  }
-  //render infoboxes (up at the top)
-  if (options.infoboxes === true) {
-    html += doc
-      .infoboxes()
-      .map(i => i.html(options))
-      .join('\n');
-  }
-  //render each section
-  if (options.sections === true && (options.paragraphs === true || options.sentences === true)) {
-    html += data.sections.map(s => s.html(options)).join('\n');
-  }
-  //default off
-  if (options.references === true) {
-    html += '<h2>References</h2>';
-    html += doc
-      .references()
-      .map(c => c.json(options))
-      .join('\n');
-  }
-  html += '</body>\n';
-  html += '</html>';
-  return html
-};
-var toHtml_1 = toHtml;
-
-const defaults$2 = {
   title: true,
   sections: true,
   pageID: true,
@@ -1952,7 +1834,7 @@ const defaults$2 = {
 
 //an opinionated output of the most-wanted data
 const toJSON = function(doc, options) {
-  options = setDefaults_1(options, defaults$2);
+  options = setDefaults_1(options, defaults);
   let data = {};
   if (options.title) {
     data.title = doc.options.title || doc.title();
@@ -1988,83 +1870,12 @@ const toJSON = function(doc, options) {
   if (options.citations || options.references) {
     data.references = doc.references();
   }
-  if (options.markdown) {
-    data.markdown = doc.markdown(options);
-  }
-  if (options.html) {
-    data.html = doc.html(options);
-  }
-  if (options.latex) {
-    data.latex = doc.latex(options);
-  }
   return data
 };
 var toJson = toJSON;
 
-const defaults$3 = {
-  infoboxes: true,
-  sections: true
-};
-
-// we should try to make this look like the wikipedia does, i guess.
-const softRedirect$2 = function(doc) {
-  let link = doc.redirectTo();
-  let href = link.page;
-  href = './' + href.replace(/ /g, '_');
-  //add anchor
-  if (link.anchor) {
-    href += '#' + link.anchor;
-  }
-  return '↳ \\href{' + href + '}{' + link.text + '}'
-};
-
-//
-const toLatex = function(doc, options) {
-  options = setDefaults_1(options, defaults$3);
-  let out = '';
-  //if it's a redirect page, give it a 'soft landing':
-  if (doc.isRedirect() === true) {
-    return softRedirect$2(doc) //end it here.
-  }
-  //render infoboxes (up at the top)
-  if (options.infoboxes === true) {
-    out += doc
-      .infoboxes()
-      .map(i => i.latex(options))
-      .join('\n');
-  }
-  //render each section
-  if (options.sections === true || options.paragraphs === true || options.sentences === true) {
-    out += doc
-      .sections()
-      .map(s => s.latex(options))
-      .join('\n');
-  }
-  //default off
-  //render citations
-  if (options.citations === true) {
-    out += doc
-      .citations()
-      .map(c => c.latex(options))
-      .join('\n');
-  }
-  return out
-};
-var toLatex_1 = toLatex;
-
 //alternative names for methods in API
 const aliasList = {
-  toMarkdown: 'markdown',
-
-  toHtml: 'html',
-  HTML: 'html',
-
-  toJSON: 'json',
-  toJson: 'json',
-  JSON: 'json',
-
-  toLatex: 'latex',
-
   plaintext: 'text',
 
   wikiscript: 'wikitext',
@@ -2073,32 +1884,7 @@ const aliasList = {
 };
 var aliases = aliasList;
 
-//markdown images are like this: ![alt text](href)
-const doImage = image => {
-  let alt = image.data.file.replace(/^(file|image):/i, '');
-  alt = alt.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
-  return '![' + alt + '](' + image.thumbnail() + ')'
-};
-var toMarkdown$1 = doImage;
-
-const makeImage = img => {
-  return '  <img src="' + img.thumbnail() + '" alt="' + img.alt() + '"/>'
-};
-var toHtml$1 = makeImage;
-
-//
-const toLatex$1 = function(image) {
-  let alt = image.alt();
-  var out = '\\begin{figure}';
-  out += '\n\\includegraphics[width=\\linewidth]{' + image.thumb() + '}';
-  out += '\n\\caption{' + alt + '}';
-  // out += '\n%\\label{fig:myimage1}';
-  out += '\n\\end{figure}';
-  return out
-};
-var toLatex_1$1 = toLatex$1;
-
-const defaults$4 = {
+const defaults$1 = {
   caption: true,
   alt: true,
   links: true,
@@ -2107,7 +1893,7 @@ const defaults$4 = {
 };
 //
 const toJson$1 = function(img, options) {
-  options = setDefaults_1(options, defaults$4);
+  options = setDefaults_1(options, defaults$1);
   let json = {
     file: img.file()
   };
@@ -2210,15 +1996,6 @@ const methods = {
       });
     })
   },
-  markdown: function(options) {
-    return toMarkdown$1(this)
-  },
-  latex: function(options) {
-    return toLatex_1$1(this)
-  },
-  html: function(options) {
-    return toHtml$1(this)
-  },
   json: function(options) {
     options = options || {};
     return toJson_1(this, options)
@@ -2239,7 +2016,7 @@ Image.prototype.src = Image.prototype.url;
 Image.prototype.thumb = Image.prototype.thumbnail;
 var Image_1 = Image;
 
-const defaults$5 = {
+const defaults$2 = {
   tables: true,
   lists: true,
   paragraphs: true
@@ -2395,7 +2172,7 @@ const methods$1 = {
     return arr
   },
   text: function(options) {
-    options = setDefaults_1(options, defaults$5);
+    options = setDefaults_1(options, defaults$2);
     //nah, skip these.
     if (this.isRedirect() === true) {
       return ''
@@ -2403,20 +2180,8 @@ const methods$1 = {
     let arr = this.sections().map(sec => sec.text(options));
     return arr.join('\n\n')
   },
-  markdown: function(options) {
-    options = setDefaults_1(options, defaults$5);
-    return toMarkdown_1(this, options)
-  },
-  latex: function(options) {
-    options = setDefaults_1(options, defaults$5);
-    return toLatex_1(this, options)
-  },
-  html: function(options) {
-    options = setDefaults_1(options, defaults$5);
-    return toHtml_1(this, options)
-  },
   json: function(options) {
-    options = setDefaults_1(options, defaults$5);
+    options = setDefaults_1(options, defaults$2);
     return toJson(this, options)
   },
   debug: function() {
@@ -2492,7 +2257,8 @@ let i18n = {
     'dosya',
     'fil',
     'ファイル',
-    'चित्र'
+    'चित्र',
+    '파일' //ko
   ],
   images: ['image', 'चित्र'],
   templates: [
@@ -2526,7 +2292,8 @@ let i18n = {
     'kategori',
     'kategoria',
     'تصنيف',
-    'श्रेणी'
+    'श्रेणी',
+    '분류' //ko
   ],
   redirects: [
     'перанакіраваньне',
@@ -4257,129 +4024,6 @@ function preProcess(r, wiki, options) {
 }
 var preProcess_1 = preProcess;
 
-const defaults$6 = {
-  headers: true,
-  images: true,
-  tables: true,
-  lists: true,
-  paragraphs: true
-};
-
-const doSection = (section, options) => {
-  options = setDefaults_1(options, defaults$6);
-  let md = '';
-  //make the header
-  if (options.headers === true && section.title()) {
-    let header = '##';
-    for (let i = 0; i < section.depth; i += 1) {
-      header += '#';
-    }
-    md += header + ' ' + section.title() + '\n';
-  }
-  //put any images under the header
-  if (options.images === true) {
-    let images = section.images();
-    if (images.length > 0) {
-      md += images.map(img => img.markdown()).join('\n');
-      md += '\n';
-    }
-  }
-  //make a mardown table
-  if (options.tables === true) {
-    let tables = section.tables();
-    if (tables.length > 0) {
-      md += '\n';
-      md += tables.map(table => table.markdown(options)).join('\n');
-      md += '\n';
-    }
-  }
-  //make a mardown bullet-list
-  if (options.lists === true) {
-    let lists = section.lists();
-    if (lists.length > 0) {
-      md += lists.map(list => list.markdown(options)).join('\n');
-      md += '\n';
-    }
-  }
-  //finally, write the sentence text.
-  if (options.paragraphs === true || options.sentences === true) {
-    md += section
-      .paragraphs()
-      .map(p => {
-        return p
-          .sentences()
-          .map(s => s.markdown(options))
-          .join(' ')
-      })
-      .join('\n\n');
-  }
-  return md
-};
-var toMarkdown$2 = doSection;
-
-const defaults$7 = {
-  headers: true,
-  images: true,
-  tables: true,
-  lists: true,
-  paragraphs: true
-};
-const doSection$1 = (section, options) => {
-  options = setDefaults_1(options, defaults$7);
-  let html = '';
-  //make the header
-  if (options.headers === true && section.title()) {
-    let num = 1 + section.depth;
-    html += '  <h' + num + '>' + section.title() + '</h' + num + '>';
-    html += '\n';
-  }
-  //put any images under the header
-  if (options.images === true) {
-    let imgs = section.images();
-    if (imgs.length > 0) {
-      html += imgs.map(image => image.html(options)).join('\n');
-    }
-  }
-  //make a html table
-  if (options.tables === true) {
-    html += section
-      .tables()
-      .map(t => t.html(options))
-      .join('\n');
-  }
-  // //make a html bullet-list
-  if (options.lists === true) {
-    html += section
-      .lists()
-      .map(list => list.html(options))
-      .join('\n');
-  }
-  //finally, write the sentence text.
-  if (options.paragraphs === true && section.paragraphs().length > 0) {
-    html += '  <div class="text">\n';
-    section.paragraphs().forEach(p => {
-      html += '    <p class="paragraph">\n';
-      html +=
-        '      ' +
-        p
-          .sentences()
-          .map(s => s.html(options))
-          .join(' ');
-      html += '\n    </p>\n';
-    });
-    html += '  </div>\n';
-  } else if (options.sentences === true) {
-    html +=
-      '      ' +
-      section
-        .sentences()
-        .map(s => s.html(options))
-        .join(' ');
-  }
-  return '<div class="section">\n' + html + '</div>\n'
-};
-var toHtml$2 = doSection$1;
-
 // dumpster-dive throws everything into mongodb  - github.com/spencermountain/dumpster-dive
 // mongo has some opinions about what characters are allowed as keys and ids.
 //https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
@@ -4413,7 +4057,7 @@ var encode = {
   encodeObj: encodeObj
 };
 
-const defaults$8 = {
+const defaults$3 = {
   headers: true,
   depth: true,
   paragraphs: true,
@@ -4426,7 +4070,7 @@ const defaults$8 = {
 };
 //
 const toJSON$1 = function(section, options) {
-  options = setDefaults_1(options, defaults$8);
+  options = setDefaults_1(options, defaults$3);
   let data = {};
   if (options.headers === true) {
     data.title = section.title();
@@ -4495,90 +4139,7 @@ const toJSON$1 = function(section, options) {
 };
 var toJson$2 = toJSON$1;
 
-const defaults$9 = {
-  headers: true,
-  images: true,
-  tables: true,
-  lists: true,
-  paragraphs: true
-};
-//map '==' depth to 'subsection', 'subsubsection', etc
-const doSection$2 = (section, options) => {
-  options = setDefaults_1(options, defaults$9);
-  let out = '';
-  let num = 1;
-  //make the header
-  if (options.headers === true && section.title()) {
-    num = 1 + section.depth;
-    var vOpen = '\n';
-    var vClose = '}';
-    switch (num) {
-      case 1:
-        vOpen += '\\chapter{';
-        break
-      case 2:
-        vOpen += '\\section{';
-        break
-      case 3:
-        vOpen += '\\subsection{';
-        break
-      case 4:
-        vOpen += '\\subsubsection{';
-        break
-      case 5:
-        vOpen += '\\paragraph{';
-        vClose = '} \\\\ \n';
-        break
-      case 6:
-        vOpen += '\\subparagraph{';
-        vClose = '} \\\\ \n';
-        break
-      default:
-        vOpen +=
-          '\n% section with depth=' + num + ' undefined - use subparagraph instead\n\\subparagraph{';
-        vClose = '} \\\\ \n';
-    }
-    out += vOpen + section.title() + vClose;
-    out += '\n';
-  }
-  //put any images under the header
-  if (options.images === true && section.images()) {
-    out += section
-      .images()
-      .map(img => img.latex(options))
-      .join('\n');
-    //out += '\n';
-  }
-  //make a out tablew
-  if (options.tables === true && section.tables()) {
-    out += section
-      .tables()
-      .map(t => t.latex(options))
-      .join('\n');
-  }
-  // //make a out bullet-list
-  if (options.lists === true && section.lists()) {
-    out += section
-      .lists()
-      .map(list => list.latex(options))
-      .join('\n');
-  }
-  //finally, write the sentence text.
-  if (options.paragraphs === true || options.sentences === true) {
-    out += section
-      .paragraphs()
-      .map(s => s.latex(options))
-      .join(' ');
-    out += '\n';
-  }
-  // var title_tag = ' SECTION depth=' + num + ' - TITLE: ' + section.title + '\n';
-  // wrap a section comment
-  //out = '\n% BEGIN' + title_tag + out + '\n% END' + title_tag;
-  return out
-};
-var toLatex$2 = doSection$2;
-
-const defaults$a = {
+const defaults$4 = {
   tables: true,
   references: true,
   paragraphs: true,
@@ -4674,6 +4235,7 @@ const methods$2 = {
   },
   templates: function(clue) {
     let arr = this.data.templates || [];
+    arr = arr.map(t => t.json());
     if (typeof clue === 'number') {
       return arr[clue]
     }
@@ -4693,6 +4255,9 @@ const methods$2 = {
   coordinates: function(clue) {
     let arr = [].concat(this.templates('coord'), this.templates('coor'));
     if (typeof clue === 'number') {
+      if (!arr[clue]) {
+        return []
+      }
       return arr[clue]
     }
     return arr
@@ -4816,27 +4381,14 @@ const methods$2 = {
     }
     return null
   },
-
-  markdown: function(options) {
-    options = setDefaults_1(options, defaults$a);
-    return toMarkdown$2(this, options)
-  },
-  html: function(options) {
-    options = setDefaults_1(options, defaults$a);
-    return toHtml$2(this, options)
-  },
   text: function(options) {
-    options = setDefaults_1(options, defaults$a);
+    options = setDefaults_1(options, defaults$4);
     let pList = this.paragraphs();
     pList = pList.map(p => p.text(options));
     return pList.join('\n\n')
   },
-  latex: function(options) {
-    options = setDefaults_1(options, defaults$a);
-    return toLatex$2(this, options)
-  },
   json: function(options) {
-    options = setDefaults_1(options, defaults$a);
+    options = setDefaults_1(options, defaults$4);
     return toJson$2(this, options)
   }
 };
@@ -4920,134 +4472,9 @@ const formatting = function(obj) {
 };
 var formatting_1 = formatting;
 
-//escape a string like 'fun*2.Co' for a regExpr
-function escapeRegExp(str) {
-  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&')
-}
-
-//sometimes text-replacements can be ambiguous - words used multiple times..
-const smartReplace = function(all, text, result) {
-  if (!text || !all) {
-    return all
-  }
-
-  if (typeof all === 'number') {
-    all = String(all);
-  }
-  text = escapeRegExp(text);
-  //try a word-boundary replace
-  let reg = new RegExp('\\b' + text + '\\b');
-  if (reg.test(all) === true) {
-    all = all.replace(reg, result);
-  } else {
-    //otherwise, fall-back to a much messier, dangerous replacement
-    // console.warn('missing \'' + text + '\'');
-    all = all.replace(text, result);
-  }
-  return all
-};
-
-var smartReplace_1 = smartReplace;
-
-const defaults$b = {
-  links: true,
-  formatting: true
-};
-// create links, bold, italic in html
-const doSentence = function(sentence, options) {
-  options = setDefaults_1(options, defaults$b);
-  let text = sentence.text();
-  //turn links into <a href>
-  if (options.links === true) {
-    sentence.links().forEach(link => {
-      let href = '';
-      let classNames = 'link';
-      if (link.site) {
-        //use an external link
-        href = link.site;
-        classNames += ' external';
-      } else {
-        //otherwise, make it a relative internal link
-        href = helpers_1.capitalise(link.page);
-        href = './' + href.replace(/ /g, '_');
-        //add anchor
-        if (link.anchor) {
-          href += `#${link.anchor}`;
-        }
-      }
-      let str = link.text || link.page;
-      let tag = `<a class="${classNames}" href="${href}">${str}</a>`;
-      text = smartReplace_1(text, str, tag);
-    });
-  }
-  if (options.formatting === true) {
-    //support bolds
-    sentence.bold().forEach(str => {
-      let tag = '<b>' + str + '</b>';
-      text = smartReplace_1(text, str, tag);
-    });
-    //do italics
-    sentence.italic().forEach(str => {
-      let tag = '<i>' + str + '</i>';
-      text = smartReplace_1(text, str, tag);
-    });
-  }
-  return '<span class="sentence">' + text + '</span>'
-};
-var toHtml$3 = doSentence;
-
-const defaults$c = {
-  links: true,
-  formatting: true
-};
-// add `[text](href)` to the text
-const doLink = function(md, link) {
-  let href = '';
-  //if it's an external link, we good
-  if (link.site) {
-    href = link.site;
-  } else {
-    //otherwise, make it a relative internal link
-    href = helpers_1.capitalise(link.page);
-    href = './' + href.replace(/ /g, '_');
-    //add anchor
-    if (link.anchor) {
-      href += `#${link.anchor}`;
-    }
-  }
-  let str = link.text || link.page;
-  let mdLink = '[' + str + '](' + href + ')';
-  md = smartReplace_1(md, str, mdLink);
-  return md
-};
-
-//create links, bold, italic in markdown
-const toMarkdown$3 = (sentence, options) => {
-  options = setDefaults_1(options, defaults$c);
-  let md = sentence.text();
-  //turn links back into links
-  if (options.links === true) {
-    sentence.links().forEach(link => {
-      md = doLink(md, link);
-    });
-  }
-  //turn bolds into **bold**
-  if (options.formatting === true) {
-    sentence.bold().forEach(b => {
-      md = smartReplace_1(md, b, '**' + b + '**');
-    });
-    //support *italics*
-    sentence.italic().forEach(i => {
-      md = smartReplace_1(md, i, '*' + i + '*');
-    });
-  }
-  return md
-};
-var toMarkdown_1$1 = toMarkdown$3;
-
 const isNumber = /^[0-9,.]+$/;
 
-const defaults$d = {
+const defaults$5 = {
   text: true,
   links: true,
   formatting: true,
@@ -5056,7 +4483,7 @@ const defaults$d = {
 };
 
 const toJSON$2 = function(s, options) {
-  options = setDefaults_1(options, defaults$d);
+  options = setDefaults_1(options, defaults$5);
   let data = {};
   let text = s.plaintext();
   if (options.text === true) {
@@ -5081,55 +4508,6 @@ const toJSON$2 = function(s, options) {
   return data
 };
 var toJson$3 = toJSON$2;
-
-const defaults$e = {
-  links: true,
-  formatting: true
-};
-// create links, bold, italic in html
-const toLatex$3 = function(sentence, options) {
-  options = setDefaults_1(options, defaults$e);
-  let text = sentence.plaintext();
-  //turn links back into links
-  if (options.links === true && sentence.links().length > 0) {
-    sentence.links().forEach(link => {
-      let href = '';
-      if (link.site) {
-        //use an external link
-        href = link.site;
-      } else {
-        //otherwise, make it a relative internal link
-        href = helpers_1.capitalise(link.page);
-        href = './' + href.replace(/ /g, '_');
-        //add anchor
-        if (link.anchor) {
-          href += `#${link.anchor}`;
-        }
-      }
-      let str = link.text || link.page;
-      let tag = '\\href{' + href + '}{' + str + '}';
-      text = smartReplace_1(text, str, tag);
-    });
-  }
-  if (options.formatting === true) {
-    if (sentence.data.fmt) {
-      if (sentence.data.fmt.bold) {
-        sentence.data.fmt.bold.forEach(str => {
-          let tag = '\\textbf{' + str + '}';
-          text = smartReplace_1(text, str, tag);
-        });
-      }
-      if (sentence.data.fmt.italic) {
-        sentence.data.fmt.italic.forEach(str => {
-          let tag = '\\textit{' + str + '}';
-          text = smartReplace_1(text, str, tag);
-        });
-      }
-    }
-  }
-  return text
-};
-var toLatex_1$2 = toLatex$3;
 
 //where we store the formatting, link, date information
 const Sentence = function(data) {
@@ -5189,14 +4567,6 @@ const methods$3 = {
     }
     return arr
   },
-  markdown: function(options) {
-    options = options || {};
-    return toMarkdown_1$1(this, options)
-  },
-  html: function(options) {
-    options = options || {};
-    return toHtml$3(this, options)
-  },
   text: function(str) {
     if (str !== undefined && typeof str === 'string') {
       //set the text?
@@ -5206,9 +4576,6 @@ const methods$3 = {
   },
   json: function(options) {
     return toJson$3(this, options)
-  },
-  latex: function(options) {
-    return toLatex_1$2(this, options)
   }
 };
 
@@ -5505,7 +4872,7 @@ const resolve_links = function(line) {
   // [[Common links]]
   line = line.replace(/\[\[:?([^|]{1,80}?)\]\](\w{0,5})/g, '$1$2');
   // [[File:with|Size]]
-  line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '');
+  line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$1');
   // [[Replaced|Links]]
   line = line.replace(/\[\[:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$2$3');
   // External links
@@ -5598,7 +4965,12 @@ const pipeSplitter = function(tmpl) {
       return
     }
     //has '[[' but no ']]'
-    if (/\[\[[^\]]+$/.test(a) || /\{\{[^\}]+$/.test(a)) {
+    //has equal number of openning and closing tags. handle nested case '[[[[' ']]'
+    if (/\[\[[^\]]+$/.test(a) || /\{\{[^\}]+$/.test(a)
+    || 
+      (a.split('{{').length !== a.split('}}').length)
+      || (a.split('[[').length !== a.split(']]').length)
+    ) {
       arr[i + 1] = arr[i] + '|' + arr[i + 1];
       arr[i] = null;
     }
@@ -5761,74 +5133,6 @@ const parser = function(tmpl, order, fmt) {
 };
 var parse$2 = parser;
 
-//not so impressive right now
-const toLatex$4 = function(c) {
-  let str = c.title();
-  return '⌃ ' + str + '\n'
-};
-var toLatex_1$3 = toLatex$4;
-
-//
-const toHtml$4 = function(c, options) {
-  if (c.data && c.data.url && c.data.title) {
-    let str = c.data.title;
-    if (options.links === true) {
-      str = `<a href="${c.data.url}">${str}</a>`;
-    }
-    return `<div class="reference">⌃ ${str} </div>`
-  }
-  if (c.data.encyclopedia) {
-    return `<div class="reference">⌃ ${c.data.encyclopedia}</div>`
-  }
-  if (c.data.title) {
-    //cite book, etc
-    let str = c.data.title;
-    if (c.data.author) {
-      str += c.data.author;
-    }
-    if (c.data.first && c.data.last) {
-      str += c.data.first + ' ' + c.data.last;
-    }
-    return `<div class="reference">⌃ ${str}</div>`
-  }
-  if (c.inline) {
-    return `<div class="reference">⌃ ${c.inline.html()}</div>`
-  }
-  return ''
-};
-var toHtml_1$1 = toHtml$4;
-
-//
-const toMarkdown$4 = function(c) {
-  if (c.data && c.data.url && c.data.title) {
-    return `⌃ [${c.data.title}](${c.data.url})`
-  } else if (c.data.encyclopedia) {
-    return `⌃ ${c.data.encyclopedia}`
-  } else if (c.data.title) {
-    //cite book, etc
-    let str = c.data.title;
-    if (c.data.author) {
-      str += c.data.author;
-    }
-    if (c.data.first && c.data.last) {
-      str += c.data.first + ' ' + c.data.last;
-    }
-    return `⌃ ${str}`
-  } else if (c.inline) {
-    return `⌃ ${c.inline.markdown()}`
-  }
-  return ''
-};
-var toMarkdown_1$2 = toMarkdown$4;
-
-//
-const toJson$4 = function(c) {
-  return c.data
-};
-var toJson_1$1 = toJson$4;
-
-const defaults$f = {};
-
 //also called 'citations'
 const Reference = function(data) {
   Object.defineProperty(this, 'data', {
@@ -5861,21 +5165,9 @@ const methods$4 = {
   text: function() {
     return '' //nah, skip these.
   },
-  markdown: function(options) {
-    options = setDefaults_1(options, defaults$f);
-    return toMarkdown_1$2(this)
-  },
-  html: function(options) {
-    options = setDefaults_1(options, defaults$f);
-    return toHtml_1$1(this, options)
-  },
-  latex: function(options) {
-    options = setDefaults_1(options, defaults$f);
-    return toLatex_1$3(this)
-  },
-  json: function(options) {
-    options = setDefaults_1(options, defaults$f);
-    return toJson_1$1(this)
+
+  json: function() {
+    return this.data
   }
 };
 Object.keys(methods$4).forEach(k => {
@@ -6189,8 +5481,11 @@ const firstRowHeader = function(rows) {
 
 //turn a {|...table string into an array of arrays
 const parseTable = function(wiki) {
-  let lines = wiki.replace(/\r/g, '').split(/\n/);
-  lines = lines.map(l => l.trim());
+  let lines = wiki
+    .replace(/\r/g, '')
+    .replace(/\n(\s*[^|!{\s])/g, ' $1') //remove unecessary newlines
+    .split(/\n/)
+    .map(l => l.trim());
   let rows = _findRows(lines);
   //support colspan, rowspan...
   rows = _spans(rows);
@@ -6216,153 +5511,8 @@ const parseTable = function(wiki) {
 
 var parse$3 = parseTable;
 
-//turn a json table into a html table
-const toHtml$5 = function(table, options) {
-  let html = '<table class="table">\n';
-  //make header
-  html += '  <thead>\n';
-  html += '  <tr>\n';
-  Object.keys(table[0]).forEach(k => {
-    if (/^col[0-9]/.test(k) !== true) {
-      html += '    <td>' + k + '</td>\n';
-    }
-  });
-  html += '  </tr>\n';
-  html += '  </thead>\n';
-  html += '  <tbody>\n';
-  //make rows
-  table.forEach(o => {
-    html += '  <tr>\n';
-    Object.keys(o).forEach(k => {
-      let val = o[k].html(options);
-      html += '    <td>' + val + '</td>\n';
-    });
-    html += '  </tr>\n';
-  });
-  html += '  </tbody>\n';
-  html += '</table>\n';
-  return html
-};
-var toHtml_1$2 = toHtml$5;
-
-//center-pad each cell, to make the table more legible
-const pad = (str, cellWidth) => {
-  str = str || '';
-  str = String(str);
-  cellWidth = cellWidth || 15;
-  let diff = cellWidth - str.length;
-  diff = Math.ceil(diff / 2);
-  for (let i = 0; i < diff; i += 1) {
-    str = ' ' + str;
-    if (str.length < cellWidth) {
-      str = str + ' ';
-    }
-  }
-  return str
-};
-var pad_1 = pad;
-
-/* this is a markdown table:
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-*/
-
-const makeRow = arr => {
-  arr = arr.map(s => pad_1(s, 14));
-  return '| ' + arr.join(' | ') + ' |'
-};
-
-//markdown tables are weird
-const doTable = (table, options) => {
-  let md = '';
-  if (!table || table.length === 0) {
-    return md
-  }
-  let keys = Object.keys(table[0]);
-  //first, grab the headers
-  //remove auto-generated number keys
-  let headers = keys.map(k => {
-    if (/^col[0-9]/.test(k) === true) {
-      return ''
-    }
-    return k
-  });
-  //draw the header (necessary!)
-  md += makeRow(headers) + '\n';
-  md += makeRow(headers.map(() => '---')) + '\n';
-  //do each row..
-  md += table
-    .map(row => {
-      //each column..
-      let arr = keys.map(k => {
-        if (!row[k]) {
-          return ''
-        }
-        return row[k].markdown(options) || ''
-      });
-      //make it a nice padded row
-      return makeRow(arr)
-    })
-    .join('\n');
-  return md + '\n'
-};
-var toMarkdown$5 = doTable;
-
-//create a formal LATEX table
-const doTable$1 = function(table, options) {
-  let out = '\n%\\vspace*{0.3cm}\n';
-  out +=
-    '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns';
-  out +=
-    "\n% Format Align Column: 'l'=left 'r'=right align, 'c'=center, 'p{5cm}'=block with column width 5cm ";
-  out += '\n\\begin{tabular}{|';
-  Object.keys(table[0]).forEach(() => {
-    out += 'l|';
-  });
-  out += '} \n';
-  out += '\n  \\hline  %horizontal line\n';
-  //make header
-  out += '\n  % BEGIN: Table Header';
-  var vSep = '   ';
-  Object.keys(table[0]).forEach(k => {
-    out += '\n    ' + vSep;
-
-    if (k.indexOf('col-') === 0) {
-      out += '\\textbf{' + k + '}';
-    } else {
-      out += '  ';
-    }
-    vSep = ' & ';
-  });
-  out += '\\\\ ';
-  out += '\n  % END: Table Header';
-  out += '\n  % BEGIN: Table Body';
-  out += '\n  \\hline  % ----- table row -----';
-  ////make rows
-  table.forEach(o => {
-    vSep = ' ';
-    out += '\n  % ----- table row -----';
-    Object.keys(o).forEach(k => {
-      let s = o[k];
-      let val = s.latex(options);
-      out += '\n    ' + vSep + val + '';
-      vSep = ' & ';
-    });
-    out += '  \\\\ '; // newline in latex table = two backslash \\
-    out += '\n  \\hline  %horizontal line';
-  });
-  out += '\n    % END: Table Body';
-  out += '\\end{tabular} \n';
-  out += '\n\\vspace*{0.3cm}\n\n';
-  return out
-};
-var toLatex$5 = doTable$1;
-
 //
-const toJson$5 = function(tables, options) {
+const toJson$4 = function(tables, options) {
   return tables.map(table => {
     let row = {};
     Object.keys(table).forEach(k => {
@@ -6375,9 +5525,9 @@ const toJson$5 = function(tables, options) {
     return row
   })
 };
-var toJson_1$2 = toJson$5;
+var toJson_1$1 = toJson$4;
 
-const defaults$g = {};
+const defaults$6 = {};
 
 const Table = function(data) {
   Object.defineProperty(this, 'data', {
@@ -6415,21 +5565,10 @@ const methods$5 = {
     return rows
   },
   json(options) {
-    options = setDefaults_1(options, defaults$g);
-    return toJson_1$2(this.data, options)
+    options = setDefaults_1(options, defaults$6);
+    return toJson_1$1(this.data, options)
   },
-  html(options) {
-    options = setDefaults_1(options, defaults$g);
-    return toHtml_1$2(this.data, options)
-  },
-  markdown(options) {
-    options = setDefaults_1(options, defaults$g);
-    return toMarkdown$5(this.data, options)
-  },
-  latex(options) {
-    options = setDefaults_1(options, defaults$g);
-    return toLatex$5(this.data, options)
-  },
+
   text() {
     return ''
   }
@@ -6495,74 +5634,21 @@ const findTables = function(section, wiki) {
 
 var table = findTables;
 
-const defaults$h = {
+const defaults$7 = {
   sentences: true
 };
 
-const toJson$6 = function(p, options) {
-  options = setDefaults_1(options, defaults$h);
+const toJson$5 = function(p, options) {
+  options = setDefaults_1(options, defaults$7);
   let data = {};
   if (options.sentences === true) {
     data.sentences = p.sentences().map(s => s.json(options));
   }
   return data
 };
-var toJson_1$3 = toJson$6;
+var toJson_1$2 = toJson$5;
 
-const defaults$i = {
-  sentences: true
-};
-
-const toMarkdown$6 = function(p, options) {
-  options = setDefaults_1(options, defaults$i);
-  let md = '';
-  if (options.sentences === true) {
-    md += p.sentences().reduce((str, s) => {
-      str += s.markdown(options) + '\n';
-      return str
-    }, {});
-  }
-  return md
-};
-var toMarkdown_1$3 = toMarkdown$6;
-
-const defaults$j = {
-  sentences: true
-};
-
-const toHtml$6 = function(p, options) {
-  options = setDefaults_1(options, defaults$j);
-  let html = '';
-  if (options.sentences === true) {
-    html += p
-      .sentences()
-      .map(s => s.html(options))
-      .join('\n');
-  }
-  return html
-};
-var toHtml_1$3 = toHtml$6;
-
-const defaults$k = {
-  sentences: true
-};
-
-const toLatex$6 = function(p, options) {
-  options = setDefaults_1(options, defaults$k);
-  let out = '';
-  if (options.sentences === true) {
-    out += '\n\n% BEGIN Paragraph\n';
-    out += p.sentences().reduce((str, s) => {
-      str += s.latex(options) + '\n';
-      return str
-    }, '');
-    out += '% END Paragraph';
-  }
-  return out
-};
-var toLatex_1$4 = toLatex$6;
-
-const defaults$l = {
+const defaults$8 = {
   sentences: true,
   lists: true,
   images: true
@@ -6625,16 +5711,8 @@ const methods$6 = {
     }
     return arr || []
   },
-  markdown: function(options) {
-    options = setDefaults_1(options, defaults$l);
-    return toMarkdown_1$3(this, options)
-  },
-  html: function(options) {
-    options = setDefaults_1(options, defaults$l);
-    return toHtml_1$3(this, options)
-  },
   text: function(options) {
-    options = setDefaults_1(options, defaults$l);
+    options = setDefaults_1(options, defaults$8);
     let str = this.sentences()
       .map(s => s.text(options))
       .join(' ');
@@ -6643,13 +5721,9 @@ const methods$6 = {
     });
     return str
   },
-  latex: function(options) {
-    options = setDefaults_1(options, defaults$l);
-    return toLatex_1$4(this, options)
-  },
   json: function(options) {
-    options = setDefaults_1(options, defaults$l);
-    return toJson_1$3(this, options)
+    options = setDefaults_1(options, defaults$8);
+    return toJson_1$2(this, options)
   }
 };
 methods$6.citations = methods$6.references;
@@ -6786,47 +5860,7 @@ const parseImages = function(matches, r, wiki) {
 };
 var image = parseImages;
 
-//
-const toJson$7 = function(p, options) {
-  return p.lines().map(s => s.json(options))
-};
-var toJson_1$4 = toJson$7;
-
-//
-const toMarkdown$7 = (list, options) => {
-  return list
-    .lines()
-    .map(s => {
-      let str = s.markdown(options);
-      return ' * ' + str
-    })
-    .join('\n')
-};
-var toMarkdown_1$4 = toMarkdown$7;
-
-//
-const toHtml$7 = (list, options) => {
-  let html = '  <ul class="list">\n';
-  list.lines().forEach(s => {
-    html += '    <li>' + s.html(options) + '</li>\n';
-  });
-  html += '  </ul>\n';
-  return html
-};
-var toHtml_1$4 = toHtml$7;
-
-//
-const toLatex$7 = (list, options) => {
-  let out = '\\begin{itemize}\n';
-  list.lines().forEach(s => {
-    out += '  \\item ' + s.text(options) + '\n';
-  });
-  out += '\\end{itemize}\n';
-  return out
-};
-var toLatex_1$5 = toLatex$7;
-
-const defaults$m = {};
+const defaults$9 = {};
 
 const toText = (list, options) => {
   return list
@@ -6863,21 +5897,9 @@ const methods$7 = {
     }
     return links
   },
-  markdown(options) {
-    options = setDefaults_1(options, defaults$m);
-    return toMarkdown_1$4(this, options)
-  },
-  html(options) {
-    options = setDefaults_1(options, defaults$m);
-    return toHtml_1$4(this, options)
-  },
-  latex(options) {
-    options = setDefaults_1(options, defaults$m);
-    return toLatex_1$5(this, options)
-  },
   json(options) {
-    options = setDefaults_1(options, defaults$m);
-    return toJson_1$4(this, options)
+    options = setDefaults_1(options, defaults$9);
+    return this.lines().map(s => s.json(options))
   },
   text() {
     return toText(this.data)
@@ -6995,113 +6017,8 @@ const parseParagraphs = function(wiki) {
 };
 var _03Paragraph = parseParagraphs;
 
-var _skipKeys = {
-  image: true,
-  caption: true,
-  alt: true,
-  signature: true,
-  'signature alt': true
-};
-
-const defaults$n = {
-  images: true
-};
-
-// render an infobox as a table with two columns, key + value
-const doInfobox = function(obj, options) {
-  options = setDefaults_1(options, defaults$n);
-  let md = '|' + pad_1('', 35) + '|' + pad_1('', 30) + '|\n';
-  md += '|' + pad_1('---', 35) + '|' + pad_1('---', 30) + '|\n';
-  //todo: render top image here (somehow)
-  Object.keys(obj.data).forEach(k => {
-    if (_skipKeys[k] === true) {
-      return
-    }
-    let key = '**' + k + '**';
-    let s = obj.data[k];
-    let val = s.markdown(options);
-    //markdown is more newline-sensitive than wiki
-    val = val.split(/\n/g).join(', ');
-    md += '|' + pad_1(key, 35) + '|' + pad_1(val, 30) + ' |\n';
-  });
-  return md
-};
-var toMarkdown$8 = doInfobox;
-
-const defaults$o = {
-  images: true
-};
-
-//
-const infobox = function(obj, options) {
-  options = setDefaults_1(options, defaults$o);
-  let html = '<table class="infobox">\n';
-  html += '  <thead>\n';
-  html += '  </thead>\n';
-  html += '  <tbody>\n';
-  //put image and caption on the top
-  if (options.images === true && obj.data.image) {
-    html += '    <tr>\n';
-    html += '       <td colspan="2" style="text-align:center">\n';
-    html += '       ' + obj.image().html() + '\n';
-    html += '       </td>\n';
-    if (obj.data.caption || obj.data.alt) {
-      let caption = obj.data.caption ? obj.data.caption.html(options) : obj.data.alt.html(options);
-      html += '       <td colspan="2" style="text-align:center">\n';
-      html += '         ' + caption + '\n';
-      html += '       </td>\n';
-    }
-    html += '    </tr>\n';
-  }
-  Object.keys(obj.data).forEach(k => {
-    if (_skipKeys[k] === true) {
-      return
-    }
-    let s = obj.data[k];
-    let key = k.replace(/_/g, ' ');
-    key = key.charAt(0).toUpperCase() + key.substring(1); //titlecase it
-    let val = s.html(options);
-    html += '    <tr>\n';
-    html += '      <td>' + key + '</td>\n';
-    html += '      <td>' + val + '</td>\n';
-    html += '    </tr>\n';
-  });
-  html += '  </tbody>\n';
-  html += '</table>\n';
-  return html
-};
-var toHtml$8 = infobox;
-
-const defaults$p = {
-  images: true
-};
-
-//
-const infobox$1 = function(obj, options) {
-  options = setDefaults_1(options, defaults$p);
-  let out = '\n \\vspace*{0.3cm} % Info Box\n\n';
-  out += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n';
-  out += '  \\hline  %horizontal line\n';
-  //todo: render top image here
-  Object.keys(obj.data).forEach(k => {
-    if (_skipKeys[k] === true) {
-      return
-    }
-    let s = obj.data[k];
-    let val = s.latex(options);
-    out += '  % ---------- \n';
-    out += '      ' + k + ' & \n';
-    out += '      ' + val + '\\\\ \n';
-    out += '  \\hline  %horizontal line\n';
-  });
-  out += '\\end{tabular} \n';
-  out += '\n\\vspace*{0.3cm}\n\n';
-  return out
-};
-var toLatex$8 = infobox$1;
-
 //turn an infobox into some nice json
-const toJson$8 = function(infobox, options) {
+const toJson$6 = function(infobox, options) {
   let json = Object.keys(infobox.data).reduce((h, k) => {
     if (infobox.data[k]) {
       h[k] = infobox.data[k].json();
@@ -7115,7 +6032,7 @@ const toJson$8 = function(infobox, options) {
   }
   return json
 };
-var toJson_1$5 = toJson$8;
+var toJson_1$3 = toJson$6;
 
 //a formal key-value data table about a topic
 const Infobox = function(obj) {
@@ -7166,24 +6083,12 @@ const methods$8 = {
     }
     return null
   },
-  markdown: function(options) {
-    options = options || {};
-    return toMarkdown$8(this, options)
-  },
-  html: function(options) {
-    options = options || {};
-    return toHtml$8(this, options)
-  },
-  latex: function(options) {
-    options = options || {};
-    return toLatex$8(this, options)
-  },
   text: function() {
     return ''
   },
   json: function(options) {
     options = options || {};
-    return toJson_1$5(this, options)
+    return toJson_1$3(this, options)
   },
   keyValue: function() {
     return Object.keys(this.data).reduce((h, k) => {
@@ -7278,6 +6183,25 @@ const getTemplates = function(wiki) {
 };
 
 var _getTemplates = getTemplates;
+
+const Template = function(data) {
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data
+  });
+};
+const methods$9 = {
+  text: function() {
+    return ''
+  },
+  json: function() {
+    return this.data
+  }
+};
+Object.keys(methods$9).forEach(k => {
+  Template.prototype[k] = methods$9[k];
+});
+var Template_1 = Template;
 
 //we explicitly ignore these, because they sometimes have resolve some data
 const list$1 = [
@@ -8004,7 +6928,7 @@ const ymd = function(arr) {
 };
 
 //zero-pad a number
-const pad$1 = function(num) {
+const pad = function(num) {
   if (num < 10) {
     return '0' + num
   }
@@ -8023,9 +6947,9 @@ const toText$1 = function(date) {
       str = `${_months[date.month]} ${date.date}, ${date.year}`;
       //add times, if available
       if (date.hour !== undefined && date.minute !== undefined) {
-        let time = `${pad$1(date.hour)}:${pad$1(date.minute)}`;
+        let time = `${pad(date.hour)}:${pad(date.minute)}`;
         if (date.second !== undefined) {
-          time = time + ':' + pad$1(date.second);
+          time = time + ':' + pad(date.second);
         }
         str = time + ', ' + str;
         //add timezone, if there, at the end in brackets
@@ -11007,7 +9931,7 @@ const parseTemplates = function(wiki, data, options) {
       data.infoboxes.push(new Infobox_1(o));
       return
     }
-    clean.push(o);
+    clean.push(new Template_1(o));
   });
   data.templates = clean;
   return wiki
@@ -11061,10 +9985,11 @@ const parseElection = function(wiki, section) {
     //put it through our full template parser..
     templates$f(tmpl, data);
     //okay, pull it apart into something sensible..
-    let start = data.templates.find(t => t.template === 'election box') || {};
-    let candidates = data.templates.filter(t => t.template === 'election box candidate');
+    let templates = data.templates.map(t => t.json());
+    let start = templates.find(t => t.template === 'election box') || {};
+    let candidates = templates.filter(t => t.template === 'election box candidate');
     let summary =
-      data.templates.find(
+      templates.find(
         t => t.template === 'election box gain' || t.template === 'election box hold'
       ) || {};
     if (candidates.length > 0 || summary) {
@@ -11286,7 +10211,6 @@ const oneSection = function(wiki, data, options) {
   return data
 };
 
-//we re-create this in html/markdown outputs
 const removeReferenceSection = function(sections) {
   return sections.filter((s, i) => {
     if (isReference.test(s.title()) === true) {
@@ -11635,7 +10559,11 @@ const models = {
   Paragraph: Paragraph_1,
   Sentence: Sentence_1,
   Image: Image_1,
-  Infobox: Infobox_1
+  Infobox: Infobox_1,
+  List: List_1,
+  Reference: Reference_1,
+  Table: Table_1,
+  Template: Template_1
 };
 
 //the main 'factory' exported method
