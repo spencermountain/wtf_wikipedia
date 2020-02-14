@@ -7,7 +7,7 @@ const parse = {
   heading: require('./heading'),
   table: require('../table'),
   paragraphs: require('../03-paragraph'),
-  templates: require('../templates'),
+  templates: require('../template'),
   references: require('../reference'),
   startEndTemplates: require('./start-to-end')
 }

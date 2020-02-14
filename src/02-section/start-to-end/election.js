@@ -1,4 +1,4 @@
-const parseTemplates = require('../../templates')
+const parseTemplates = require('../../template')
 //this is a non-traditional template, for some reason
 //https://en.wikipedia.org/wiki/Template:Election_box
 const parseElection = function(wiki, section) {

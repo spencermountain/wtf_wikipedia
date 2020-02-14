@@ -15,8 +15,9 @@ const models = {
   List: require('./list/List'),
   Reference: require('./reference/Reference'),
   Table: require('./table/Table'),
-  Template: require('./templates/Template')
+  Template: require('./template/Template')
 }
+let templates = require('./template/templates')
 
 //the main 'factory' exported method
 const wtf = function(wiki, options) {
@@ -32,7 +33,7 @@ wtf.category = function(cat, lang, options, cb) {
   return category(cat, lang, options, cb)
 }
 wtf.extend = function(fn) {
-  fn(models)
+  fn(models, templates)
   return this
 }
 wtf.version = version

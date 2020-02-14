@@ -1,4 +1,4 @@
-const parse = require('../templates/_parsers/parse')
+const parse = require('../template/_parsers/parse')
 // const parse = require('../../templates/wikipedia/page').citation;
 const parseSentence = require('../04-sentence').oneSentence
 const Reference = require('./Reference')
