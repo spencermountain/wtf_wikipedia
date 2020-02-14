@@ -1,5 +1,5 @@
 // const helpers = require('../_lib/helpers');
-const parse_interwiki = require('./interwiki')
+const parse_interwiki = require('../04-sentence/interwiki')
 const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g
 const link_reg = /\[\[(.{0,160}?)\]\]([a-z']+)?(\w{0,10})/gi //allow dangling suffixes - "[[flanders]]'s"

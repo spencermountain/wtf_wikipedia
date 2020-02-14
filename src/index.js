@@ -33,7 +33,7 @@ wtf.category = function(cat, lang, options, cb) {
   return category(cat, lang, options, cb)
 }
 wtf.extend = function(fn) {
-  fn(models, templates)
+  fn(models, templates, this)
   return this
 }
 wtf.version = version

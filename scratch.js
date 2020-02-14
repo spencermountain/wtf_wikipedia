@@ -11,8 +11,17 @@ wtf.extend((models, templates) => {
     return 'hi'
   }
 })
+let str = `
 
-let doc = wtf(`he is {{cool|true}}`)
-// console.log(doc.links())
+==One==
+asdfasdf
+
+==Two==
+also lkjasdlfkjdsf
+`
+
+let doc = wtf(`he is {{cool|true}}  {{fun|yep}}`)
+// let doc = wtf(`he is [[cool|true]]  [[fun|yep]]`)
+// let doc = wtf(str)
 console.log(doc.templates())
-console.log(doc.text())
+// console.log(doc.templates())

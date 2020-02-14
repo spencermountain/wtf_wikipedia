@@ -1,5 +1,5 @@
 const i18n = require('../_data/i18n')
-const parseLink = require('../04-sentence/links')
+const parseLink = require('../link/parse')
 //pulls target link out of redirect page
 const REDIRECT_REGEX = new RegExp(
   '^[ \n\t]*?#(' + i18n.redirects.join('|') + ') *?(\\[\\[.{2,180}?\\]\\])',
