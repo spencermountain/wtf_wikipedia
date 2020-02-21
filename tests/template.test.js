@@ -47,8 +47,8 @@ test('boloZenden infobox', function(t) {
   t.equal(o.youthclubs1.text(), 'MVV')
   t.equal(o.nationalyears1.text(), '1997–2004')
   t.equal(o.nationalteam1.text(), 'Netherlands')
-  t.equal(o.nationalteam1.links(0).page, 'Netherlands national football team')
-  t.equal(o.nationalteam1.links(0).text, 'Netherlands')
+  t.equal(o.nationalteam1.links(0).page(), 'Netherlands national football team')
+  t.equal(o.nationalteam1.links(0).text(), 'Netherlands')
   t.equal(o.nationalcaps1.text(), '54')
   t.equal(o.nationalgoals1.text(), '7')
   t.end()
@@ -77,7 +77,7 @@ test('hurricane infobox', function(t) {
   t.equal(o.name.text(), 'Tropical Storm Edouard')
   t.equal(o.dissipated.text(), 'September 6, 2002')
   t.equal(o['hurricane season'].text(), '2002 Atlantic hurricane season')
-  t.equal(o.areas.links(0).page, 'Florida')
+  t.equal(o.areas.links(0).page(), 'Florida')
   t.end()
 })
 
@@ -100,7 +100,7 @@ test('parkplace disambig', function(t) {
   var o = wtf(park_place)
   t.equal(o.isDisambiguation(), true, 'is-disambiguation')
   t.equal(o.links().length, 4, 'links')
-  t.equal(o.links(0).page, 'Park Place (TV series)', 'first-link')
+  t.equal(o.links(0).page(), 'Park Place (TV series)', 'first-link')
   t.end()
 })
 

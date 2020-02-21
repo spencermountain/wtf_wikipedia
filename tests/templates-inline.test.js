@@ -168,8 +168,8 @@ test('flags', function(t) {
   var str = `one {{flag|USA}}, two {{flag|DEU|empire}}, three {{flag|CAN|name=Canadian}}.`
   var doc = wtf(str)
   t.equal(doc.links().length, 3, 'found 3 link')
-  t.equal(doc.links(1).text, 'DEU', 'link text')
-  t.equal(doc.links(1).page, 'Germany', 'link page')
+  t.equal(doc.links(1).text(), 'DEU', 'link text')
+  t.equal(doc.links(1).page(), 'Germany', 'link page')
   t.equal(doc.text(), 'one 🇺🇸 USA, two 🇩🇪 DEU, three 🇨🇦 CAN.', 'made emoji flags')
   t.end()
 })

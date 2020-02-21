@@ -10,7 +10,7 @@
 
 ### 8.0.0
 * [breaking] move `.html()`, `.latex()`, and `.markdown()` to [their](https://github.com/spencermountain/wtf-plugin-html) [respective](https://github.com/spencermountain/wtf-plugin-latex) [plugins](https://github.com/spencermountain/wtf-plugin-markdown)
-
+* [breaking] `.templates()` and `.links()` return Template and Link objects
 
 ### 7.8.0
 

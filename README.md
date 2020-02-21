@@ -95,7 +95,7 @@ wtf.fetch('Whistling').then(doc => {
   doc.images(0).thumb();
   // 'https://upload.wikimedia.org..../300px-Duveneck_Whistling_Boy.jpg'
 
-  doc.sections('See Also').links().map(link => link.page)
+  doc.sections('See Also').links().map(link => link.page())
   //['Slide whistle', 'Hand flute', 'Bird vocalization'...]
 });
 ```
@@ -106,7 +106,7 @@ wtf.fetch('Whistling').then(doc => {
   //(follows redirect)
   wtf.fetch('On a Friday', 'en', function(err, doc) {
     var val = doc.infobox(0).get('current_members');
-    val.links().map(link => link.page);
+    val.links().map(link => link.page());
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
   });
 </script>

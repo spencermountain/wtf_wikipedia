@@ -119,7 +119,7 @@ test('austria-hungary', t => {
     'got-plaintext'
   )
   t.equal(doc.templates('for')[0].list[1], 'Austria–Hungary relations', 'nested emdash')
-  t.equal(doc.links('budapest')[0].page, 'Budapest', 'got Budapest link')
+  t.equal(doc.links('budapest')[0].page(), 'Budapest', 'got Budapest link')
   t.equal(
     doc.templates('short description')[0].description,
     'Constitutional monarchic union from 1867 to October 1918',

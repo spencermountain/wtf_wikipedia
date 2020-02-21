@@ -26,7 +26,8 @@ const removeLinks = function(line) {
 // console.log(resolve_links("[http://www.whistler.ca www.whistler.ca]"))
 
 const getLinks = function(wiki, data) {
-  data.links = parseLinks(wiki)
+  let links = parseLinks(wiki) || []
+  data.links = links.map(link => new Link(link))
   wiki = removeLinks(wiki)
   return wiki
 }
