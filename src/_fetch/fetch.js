@@ -1,6 +1,6 @@
 //grab the content of any article, off the api
 const request = require('./_request')
-const makeUrl = require('./_url')
+const makeUrl = require('./01-makeUrl')
 const getParams = require('./_params')
 const parseDoc = require('../01-document')
 //num pages per request

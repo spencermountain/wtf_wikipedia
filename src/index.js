@@ -1,4 +1,4 @@
-const fetch = require('./_fetch/fetch')
+const fetch = require('./_fetch')
 const random = require('./_fetch/random')
 const category = require('./_fetch/category')
 const version = require('./_version')
