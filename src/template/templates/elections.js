@@ -1,4 +1,4 @@
-const parse = require('../../_parsers/parse')
+const parse = require('../_parsers/parse')
 
 let templates = {
   //https://en.wikipedia.org/wiki/Template:Election_box

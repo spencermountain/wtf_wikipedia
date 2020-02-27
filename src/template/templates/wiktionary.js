@@ -1,4 +1,4 @@
-const parse = require('../../_parsers/parse')
+const parse = require('../_parsers/parse')
 // const strip = require('./_parsers/_strip');
 
 //wiktionary... who knows. we should atleast try.

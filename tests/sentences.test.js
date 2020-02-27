@@ -2,6 +2,20 @@
 var wtf = require('./lib')
 var test = require('tape')
 
+test('abbreviation-check', function(t) {
+  var arr = [
+    `known as J. Abrams.`,
+    `known as J. J. Abrams.`,
+    `known as '''J. J. Abrams'''`,
+    `known as '''J. J. Abrams.'''`
+  ]
+  arr.forEach(str => {
+    var doc = wtf(str)
+    t.equal(doc.sentences().length, 1, str)
+  })
+  t.end()
+})
+
 test('tough sentence punctuation', function(t) {
   var arr = [
     `he is credited as '''Mr. Lawrence''' and sometimes '''Doug Lawrence'''.`,

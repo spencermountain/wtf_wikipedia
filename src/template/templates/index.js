@@ -1,16 +1,24 @@
 module.exports = Object.assign(
   {},
-  require('./wikipedia'),
-  require('./identities'),
   require('./dates'),
   require('./formatting'),
   require('./geo'),
-  require('./language'),
-  require('./money'),
-  require('./sports'),
-  require('./science'),
+  require('./wikipedia'),
+
+  require('./brackets'),
+  require('./currency'),
+  require('./elections'),
+  require('./flags'),
+  require('./ipa'),
+  require('./languages'),
   require('./math'),
-  require('./politics'),
-  require('./stockexchange'),
-  require('./misc')
+  require('./misc'),
+  require('./punctuation'),
+  require('./science'),
+  require('./soccer'),
+  require('./sports'),
+  require('./stock-exchanges'),
+  require('./weather'),
+  require('./websites'),
+  require('./wiktionary')
 )

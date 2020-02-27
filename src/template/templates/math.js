@@ -1,4 +1,4 @@
-const parse = require('../../_parsers/parse')
+const parse = require('../_parsers/parse')
 // const parseSentence = require('../../04-sentence').oneSentence;
 
 //simply num/denom * 100

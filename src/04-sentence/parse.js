@@ -7,7 +7,7 @@
 const literalAbbreviations = require('../_data/abbreviations')
 const abbreviations = literalAbbreviations.concat('[^]][^]]')
 const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i')
-const acronym_reg = new RegExp('[ |.][A-Z].? +?$', 'i')
+const acronym_reg = new RegExp("[ |.|'|[][A-Z].? *?$", 'i')
 const elipses_reg = new RegExp('\\.\\.\\.* +?$')
 const hasWord = new RegExp('[a-zа-яぁ-ゟ][a-zа-яぁ-ゟ゠-ヿ]', 'iu')
 // 3040-309F : hiragana

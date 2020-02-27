@@ -1,16 +1,6 @@
-const parse = require('../../_parsers/parse')
-
 //this format seems to be a pattern for these
-const generic = (tmpl, r) => {
-  let obj = parse(tmpl, ['id', 'title', 'description', 'section'])
-  r.templates.push(obj)
-  return ''
-}
-const idName = (tmpl, r) => {
-  let obj = parse(tmpl, ['id', 'name'])
-  r.templates.push(obj)
-  return ''
-}
+const generic = ['id', 'title', 'description', 'section']
+const idName = ['id', 'name']
 
 //https://en.wikipedia.org/wiki/Category:External_link_templates
 const externals = {
@@ -54,24 +44,11 @@ const externals = {
   //https://en.wikipedia.org/wiki/Template:DMOZ
   dmoz: generic,
 
-  'find a grave': (tmpl, r) => {
-    let order = ['id', 'name', 'work', 'last', 'first', 'date', 'accessdate']
-    let obj = parse(tmpl, order)
-    r.templates.push(obj)
-    return ''
-  },
-  congbio: (tmpl, r) => {
-    let order = ['id', 'name', 'date']
-    let obj = parse(tmpl, order)
-    r.templates.push(obj)
-    return ''
-  },
-  'hollywood walk of fame': (tmpl, r) => {
-    let order = ['name']
-    let obj = parse(tmpl, order)
-    r.templates.push(obj)
-    return ''
-  }
+  'find a grave': ['id', 'name', 'work', 'last', 'first', 'date', 'accessdate'],
+
+  congbio: ['id', 'name', 'date'],
+
+  'hollywood walk of fame': ['name']
 }
 //alias
 externals.imdb = externals['imdb name']

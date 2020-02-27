@@ -20,18 +20,6 @@ const sisterProjects = {
 }
 
 const parsers = {
-  //same in every language.
-  citation: (tmpl, r) => {
-    let obj = parse(tmpl)
-    r.templates.push(obj)
-    return ''
-  },
-  //https://en.wikipedia.org/wiki/Template:Book_bar
-  'book bar': (tmpl, r) => {
-    let obj = parse(tmpl)
-    r.templates.push(obj)
-    return ''
-  },
   //https://en.wikipedia.org/wiki/Template:About
   about: (tmpl, r) => {
     let obj = parse(tmpl)
@@ -46,11 +34,7 @@ const parsers = {
     r.templates.push(obj)
     return ''
   },
-  'wide image': (tmpl, r) => {
-    let obj = parse(tmpl, ['file', 'width', 'caption'])
-    r.templates.push(obj)
-    return ''
-  },
+  'wide image': ['file', 'width', 'caption'],
 
   //https://en.wikipedia.org/wiki/Template:Redirect
   redirect: (tmpl, r) => {
@@ -81,24 +65,9 @@ const parsers = {
     r.templates.push(obj)
     return ''
   },
-  sfn: (tmpl, r) => {
-    let order = ['author', 'year', 'location']
-    let obj = parse(tmpl, order)
-    r.templates.push(obj)
-    return ''
-  },
-  audio: (tmpl, r) => {
-    let order = ['file', 'text', 'type']
-    let obj = parse(tmpl, order)
-    r.templates.push(obj)
-    return ''
-  },
-  //https://en.wikipedia.org/wiki/Template:Portal
-  portal: (tmpl, r) => {
-    let obj = parse(tmpl)
-    r.templates.push(obj)
-    return ''
-  },
+  sfn: ['author', 'year', 'location'],
+  audio: ['file', 'text', 'type'],
+
   'spoken wikipedia': (tmpl, r) => {
     let order = ['file', 'date']
     let obj = parse(tmpl, order)
@@ -143,28 +112,8 @@ const parsers = {
     return ''
   },
 
-  'short description': (tmpl, r) => {
-    let data = parse(tmpl, ['description'])
-    if (data['1']) {
-      console.log(`~=~=~**here**~=~`)
-      data.description = data['1']
-      delete data['1']
-    }
-    r.templates.push(data)
-    return ''
-  },
-  'good article': (tmpl, r) => {
-    let obj = {
-      template: 'Good article'
-    }
-    r.templates.push(obj)
-    return ''
-  },
-  'coord missing': (tmpl, r) => {
-    let obj = parse(tmpl, ['region'])
-    r.templates.push(obj)
-    return ''
-  },
+  'short description': ['description'],
+  'coord missing': ['region'],
   //amazingly, this one does not obey any known patterns
   //https://en.wikipedia.org/wiki/Template:Gallery
   gallery: (tmpl, r) => {
@@ -190,17 +139,7 @@ const parsers = {
     r.templates.push(data)
     return ''
   },
-  'italic title': (tmpl, r) => {
-    r.templates.push({
-      template: 'italic title'
-    })
-    return ''
-  },
-  unreferenced: (tmpl, r) => {
-    let obj = parse(tmpl, ['date'])
-    r.templates.push(obj)
-    return ''
-  }
+  unreferenced: ['date']
 }
 //aliases
 parsers['cite'] = parsers.citation

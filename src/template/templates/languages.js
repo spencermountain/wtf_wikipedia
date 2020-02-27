@@ -1,5 +1,5 @@
-const languages = require('../../../_data/languages')
-const parse = require('../../_parsers/parse')
+const languages = require('../../_data/languages')
+const parse = require('../_parsers/parse')
 
 const templates = {
   lang: tmpl => {

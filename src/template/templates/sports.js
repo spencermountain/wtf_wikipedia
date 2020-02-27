@@ -1,4 +1,4 @@
-const parse = require('../../_parsers/parse')
+const parse = require('../_parsers/parse')
 
 const misc = {
   'baseball secondary style': function(tmpl) {

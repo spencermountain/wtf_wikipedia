@@ -1,5 +1,5 @@
-const parse = require('../../_parsers/parse')
-const flags = require('../../../_data/flags')
+const parse = require('../_parsers/parse')
+const flags = require('../../_data/flags')
 
 let sports = {
   player: (tmpl, r) => {

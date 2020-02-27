@@ -1,17 +1,7 @@
-const parse = require('../../_parsers/parse')
+const parse = require('../_parsers/parse')
 
 const misc = {
-  timeline: (tmpl, r) => {
-    let data = parse(tmpl)
-    r.templates.push(data)
-    return ''
-  },
-  uss: (tmpl, r) => {
-    let order = ['ship', 'id']
-    let obj = parse(tmpl, order)
-    r.templates.push(obj)
-    return ''
-  },
+  uss: ['ship', 'id'],
   isbn: (tmpl, r) => {
     let order = ['id', 'id2', 'id3']
     let obj = parse(tmpl, order)
@@ -67,6 +57,23 @@ const misc = {
       return obj.barrels + ' barrel'
     }
     return obj.barrels + ' barrels'
+  },
+  //https://en.wikipedia.org/wiki/Template:Historical_populations
+  'historical populations': (tmpl, r) => {
+    let data = parse(tmpl)
+    data.list = data.list || []
+    let years = []
+    for (let i = 0; i < data.list.length; i += 2) {
+      let num = data.list[i + 1]
+      years.push({
+        year: data.list[i],
+        val: Number(num) || num
+      })
+    }
+    data.data = years
+    delete data.list
+    r.templates.push(data)
+    return ''
   }
 }
 module.exports = misc

@@ -1,13 +1,8 @@
-const parse = require('../../_parsers/parse')
+const parse = require('../_parsers/parse')
 
 let templates = {
   //https://en.wikipedia.org/wiki/Template:Taxon_info
-  'taxon info': (tmpl, r) => {
-    let order = ['taxon', 'item']
-    let obj = parse(tmpl, order)
-    r.templates.push(obj)
-    return ''
-  },
+  'taxon info': ['taxon', 'item'],
 
   //minor planet - https://en.wikipedia.org/wiki/Template:MPC
   mpc: (tmpl, r) => {
@@ -21,8 +16,7 @@ let templates = {
     let obj = parse(tmpl, ['equation'])
     r.templates.push(obj)
     return obj.equation
-  },
-  //https://en.wikipedia.org/wiki/Template:Sky
+  }, //https://en.wikipedia.org/wiki/Template:Sky
   sky: (tmpl, r) => {
     let obj = parse(tmpl, [
       'asc_hours',

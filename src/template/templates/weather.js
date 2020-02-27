@@ -1,4 +1,4 @@
-const parse = require('../../_parsers/parse')
+const parse = require('../_parsers/parse')
 const hasMonth = /^jan /i
 const isYear = /^year /i
 
