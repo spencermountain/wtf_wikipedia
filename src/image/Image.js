@@ -1,4 +1,4 @@
-const fetch = require('cross-fetch')
+// const fetch = require('cross-fetch')
 const toJson = require('./toJson')
 const server = 'https://wikipedia.org/wiki/Special:Redirect/file/'
 const aliasList = require('../_lib/aliases')
@@ -63,21 +63,6 @@ const methods = {
       return arr[arr.length - 1].toLowerCase()
     }
     return null
-  },
-  exists(callback) {
-    //check if the image (still) exists
-    return new Promise(cb => {
-      fetch(this.url(), {
-        method: 'HEAD'
-      }).then(function(res) {
-        const exists = res.status === 200
-        //support callback non-promise form
-        if (callback) {
-          callback(exists)
-        }
-        cb(exists)
-      })
-    })
   },
   json: function(options) {
     options = options || {}

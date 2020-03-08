@@ -33,7 +33,8 @@ jobs:
           npm i --no-save eslint ts-node typescript
           npm run lint
           npm run build
-          npm run testb
+          npm run test
+          npm run test:fetch
           npm run test:types
         env:
           CI: true

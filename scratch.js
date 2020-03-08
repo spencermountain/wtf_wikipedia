@@ -5,5 +5,5 @@ var wtf = require('./src/index')
 // })
 ;(async () => {
   var doc = await wtf.fetch('Billy_Steele', 'en')
-  console.log(doc.json())
+  console.log(doc.text())
 })()

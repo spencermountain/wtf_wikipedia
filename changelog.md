@@ -1,4 +1,3 @@
-
 ---
 
 <!-- #### 8.0.0
@@ -7,33 +6,38 @@
 * .keyValue() should return page title if exists, instead of text
 * return country name for `{{BAN}}` etc templates -->
 
-
 ### 8.0.0
-* [breaking] move `.html()`, `.latex()`, and `.markdown()` to [their](https://github.com/spencermountain/wtf-plugin-html) [respective](https://github.com/spencermountain/wtf-plugin-latex) [plugins](https://github.com/spencermountain/wtf-plugin-markdown)
-* [breaking] `.templates()` and `.links()` return Template and Link objects, and not bare JSON (use `.map(l=> l.json())`)
-* [breaking] no-longer support callback/errback style in `.fetch()`
-* support adding template parsers through plugins in `.extend()` 
-* support array and number shorthand for template parsers
+
+- [breaking] move `.html()`, `.latex()`, and `.markdown()` to [their](https://github.com/spencermountain/wtf-plugin-html) [respective](https://github.com/spencermountain/wtf-plugin-latex) [plugins](https://github.com/spencermountain/wtf-plugin-markdown)
+- [breaking] `.templates()` and `.links()` return Template and Link objects, and not bare JSON (use `.map(l=> l.json())`)
+- [breaking] refactor inputs for `.fetch()` - no-longer support callback/errback style
+- [breaking] remove `Image.exists()` method to [plugin](./plugins/image-exists.js)
+- [major] create seperate client/server-side build formats (use native fetch/node lib)
+- support adding template parsers through plugins in `.extend()`
+- support array and number shorthand for template parsers
 
 ### 7.8.0
 
 - add `.extend()` method for authoring plugins
+
 ### 7.7.2
 
 - bugfixes by suntala
+
 ### 7.6.0
 
 - use rollup for builds, publish esm module
+
 ### 7.3.0
 
 - more unicode support
-
 
 ### 7.2.10
 
 - improved unicode support for sentence/paragraph splitting
 - supporting more formatting templates, like **Mono**
 - more flexible reference support in `.json()`
+
 ### 7.2.9
 
 - few more sports templates,
@@ -42,16 +46,13 @@
 - use full template-parser for image captions
 - support manually setting doc.title()
 
-
 ### 7.2.0
 
 - improved date templates, bugfixes
 
-
 ### 7.1.1
 
 - support population, weatherbox templates
-
 
 ### 7.1.0
 
@@ -59,6 +60,7 @@
 - add a 'number' field in sentence json, when it looks like a number
 - slight change in coordinate result format, support inline coordinate text
 - handle fetching a large list of titles in sequence
+
 ## 7.0.0 🚨
 
 - change result-format in a lot of templates, for more consistency.
@@ -68,17 +70,19 @@
 - return templates even if they have no data
 - begin support for some well-used `{{foo start}}...{{foo end}}` templates
 - remove empty `[]` for some more section properties in `.json()` response
+
 ### 6.3.0
 
 - support way (+20%?) more templates.
+
 ### 6.2.0
 
 - support categories in redirects
 - add mongo-encoding from dumpster-dive
+
 ### 6.1.0
 
 - titlecase internal link destinations #192
-
 
 ## 6.0.0 🚨
 
@@ -105,7 +109,6 @@
 - rename citation → reference internally, and in json output
 - remove references inside section titles
 
-
 ### 5.3.0
 
 - add infobox html back into html output (tentative)
@@ -114,7 +117,6 @@
 - keep `#` anchor data in .links()
 - show links default-on in latex output, like in md and html
 - render html/latex/json 'soft redirect', instead of blank pages
-
 
 ### 5.2.0
 
@@ -140,7 +142,6 @@
 - better disambiguation-page detection in english
 - remove wikitext from caption titles
 - support 3-level templates (whew!)
-
 
 ### 4.5.0
 
@@ -175,11 +176,13 @@
 - rollback of awkward+undocumented `options` param in parser (but keep options param for output methods)
 - add support for about a hundred new templates
 - templates, including citations, try to be flat-text, and no-longer return Sentence objects
+
 ## 3.1.0
 
 - improved .json() results
 - guess a page's title based on bold formatting in first sentence
 - make section.title a function
+
 ## 3.0.0
 
 - BIG API RE-WRITE!
@@ -193,10 +196,10 @@
 - refactor shell scripts to `wtf_wikipedia Toronto --plaintext`
 - use babel-preset-env cause it's new-new
 - update deps
+
 ## 2.6.1
 
 - better html output tables/infoboxes
-
 
 ## 2.6.0
 
@@ -232,9 +235,7 @@
 - change initial depth to 0
 - change 'translations' property to 'interwiki'
 - support {{main}} and {{wide image|}} templates
+
 ## 1.0.0
 
 - make `sections` into an ordered array, instead of an es6 Map thing. - add 'depth' too
-
-
-

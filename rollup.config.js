@@ -1,32 +1,59 @@
 import commonjs from 'rollup-plugin-commonjs'
 import json from 'rollup-plugin-json'
-import { terser } from 'rollup-plugin-terser'
+// import { terser } from 'rollup-plugin-terser'
 import resolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
-import alias from '@rollup/plugin-alias'
+// import alias from '@rollup/plugin-alias'
 import sizeCheck from 'rollup-plugin-filesize-check'
+import builtins from 'rollup-plugin-node-builtins'
 
 import { version } from './package.json'
 console.log('\n 📦  - running rollup..\n')
 
 const banner = '/* wtf_wikipedia ' + version + ' MIT */'
 export default [
+  // === server-side .mjs ===
+  // {
+  //   input: 'src/index.js',
+  //   output: [
+  //     { banner: banner, file: 'builds/wtf_wikipedia.mjs', format: 'esm', preferBuiltins: false }
+  //   ],
+  //   plugins: [
+  //     resolve({
+  //       browser: true
+  //     }),
+  //     json(),
+  //     commonjs(),
+  //     sizeCheck()
+  //   ]
+  // },
+  // // === client-side .mjs ===
+  // {
+  //   input: 'src/index.js',
+  //   output: [
+  //     {
+  //       banner: banner,
+  //       file: 'builds/wtf_wikipedia-client.mjs',
+  //       format: 'esm',
+  //       preferBuiltins: false
+  //     }
+  //   ],
+  //   plugins: [
+  //     resolve({
+  //       browser: true
+  //     }),
+  //     json(),
+  //     commonjs(),
+  //     alias({
+  //       entries: [{ find: './http/server', replacement: __dirname + './http/client' }]
+  //     }),
+  //     sizeCheck()
+  //   ]
+  // },
+
+  // === server-side .js ===
   {
-    input: 'src/index.js',
-    output: [
-      { banner: banner, file: 'builds/wtf_wikipedia.mjs', format: 'esm', preferBuiltins: false }
-    ],
-    plugins: [
-      resolve({
-        browser: true
-      }),
-      json(),
-      commonjs(),
-      sizeCheck()
-    ]
-  },
-  {
-    input: 'src/index.js',
+    input: '/Users/spencer/mountain/wtf_wikipedia/src/_fetch/index.js', //'src/index.js',
     output: [
       {
         banner: banner,
@@ -37,50 +64,48 @@ export default [
         name: 'wtf'
       }
     ],
+    external: ['https'],
     plugins: [
       resolve({
         browser: true
       }),
       json(),
       commonjs(),
-      alias({
-        //remove a bunch of imports with no-ops
-        entries: [
-          { find: './_data', replacement: __dirname + '/scripts/build/no-ops/_object' },
-          { find: '../02-tagger', replacement: __dirname + '/src/02-tagger/tiny' },
-          { find: 'efrt-unpack', replacement: __dirname + '/scripts/build/no-ops/_function' }
-        ]
-      }),
+      builtins(),
       babel({
         babelrc: false,
         presets: ['@babel/preset-env']
       }),
-      sizeCheck()
-    ]
-  },
-  {
-    input: 'src/index.js',
-    output: [
-      {
-        banner: banner,
-        file: 'builds/wtf_wikipedia.min.js',
-        format: 'umd',
-        preferBuiltins: false,
-        name: 'wtf'
-      }
-    ],
-    plugins: [
-      resolve({
-        browser: true
-      }),
-      json(),
-      commonjs(),
-      babel({
-        babelrc: false,
-        presets: ['@babel/preset-env']
-      }),
-      terser(),
       sizeCheck()
     ]
   }
+  // === client-side .js ===
+  // {
+  //   input: 'src/index.js',
+  //   output: [
+  //     {
+  //       banner: banner,
+  //       file: 'builds/wtf_wikipedia.min.js',
+  //       format: 'umd',
+  //       preferBuiltins: false,
+  //       name: 'wtf'
+  //     }
+  //   ],
+  //   plugins: [
+  //     resolve({
+  //       browser: true
+  //     }),
+  //     json(),
+  //     commonjs(),
+  //     alias({
+  //       entries: [{ find: './http/server', replacement: __dirname + './http/client' }]
+  //     }),
+  //     babel({
+  //       babelrc: false,
+  //       presets: ['@babel/preset-env']
+  //     }),
+  //     terser(),
+  //     sizeCheck()
+  //   ]
+  // }
 ]
