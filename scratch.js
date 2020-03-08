@@ -4,16 +4,16 @@ var wtf = require('./src/index')
 //   templates.foo = 0
 // })
 // ;(async () => {
-//   var docs = await wtf.fetch(['Toronto', 'Montreal'], 'en')
+//   // var docs = await wtf.fetch(['Toronto', 'Montreal'], 'en')
+//   var docs = await wtf.fetch([2983, 7493], 'en')
 //   console.log(docs.map(doc => doc.categories()))
 // })()
 
-wtf
-  .fetch('USA', {
-    lang: 'simple',
-    follow_redirects: false,
-    'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
-  })
-  .then(doc => {
-    console.log(doc.isRedirect())
-  })
+var p = wtf.fetch(336711, 'en', {
+  'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
+  domain: 'www.mixesdb.com',
+  path: 'db/api.php'
+})
+p.then(function(doc) {
+  console.log(doc.title())
+})

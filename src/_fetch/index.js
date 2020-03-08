@@ -13,22 +13,42 @@ const defaults = {
   path: 'api.php' //some 3rd party sites use a weird path
 }
 
-const fetch = function(title, options) {
+const makeHeaders = function(options) {
+  let agent =
+    options.userAgent ||
+    options['User-Agent'] ||
+    options['Api-User-Agent'] ||
+    'User of the wtf_wikipedia library'
+
+  const opts = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Api-User-Agent': agent,
+      'User-Agent': agent,
+      Origin: '*'
+    },
+    redirect: 'follow'
+  }
+  return opts
+}
+
+const fetch = function(title, options, c) {
   //support lang 2nd param
   if (typeof options === 'string') {
-    options = { lang: options }
+    c = c || {}
+    options = Object.assign({}, { lang: options }, c)
   }
   options = options || {}
-  console.log(options)
-  options = Object.assign({}, options, defaults)
+  options = Object.assign({}, defaults, options)
   options.title = title
-
   // parse url input
   if (isUrl.test(title)) {
     options = Object.assign(options, parseUrl(title))
   }
   const url = makeUrl(options)
-  return http(url)
+  const headers = makeHeaders(options)
+  return http(url, headers)
     .then(res => {
       try {
         let data = getResult(res)

@@ -48,8 +48,10 @@ const makeUrl = function(options) {
   }
   // support numerical ids
   let page = options.title
-  if (typeof page === 'number' || (isArray(page) && typeof page[0] === 'number')) {
-    params.pageids = page
+  if (typeof page === 'number') {
+    params.pageids = page //single pageId
+  } else if (isArray(page) && typeof page[0] === 'number') {
+    params.pageids = page.join('|') //pageid array
   } else if (isArray(page) === true) {
     //support array
     params.titles = page.map(cleanTitle).join('|')
@@ -59,6 +61,7 @@ const makeUrl = function(options) {
   }
   // make it!
   url += toQueryString(params)
+  console.log(url)
   return url
 }
 module.exports = makeUrl

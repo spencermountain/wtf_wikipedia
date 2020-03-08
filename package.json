@@ -19,9 +19,9 @@
     "coverage": "node scripts/coverage.js",
     "test": "TESTENV=dev tape ./tests/*.test.js | tap-dancer",
     "test:fetch": "TESTENV=dev tape ./tests/fetch/*.test.js | tap-dancer",
+    "test:types": "ts-node ./tests/types/index.ts | tap-dancer",
     "watch": "amble ./scratch.js",
-    "lint": "eslint ./src/",
-    "test:types": "ts-node ./tests/types/index.ts | tap-dancer"
+    "lint": "eslint ./src/"
   },
   "bin": {
     "wtf_wikipedia": "./bin/wtf.js"
