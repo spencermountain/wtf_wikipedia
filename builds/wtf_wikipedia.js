@@ -1,12 +1,11 @@
 /* wtf_wikipedia 7.8.1 MIT */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('cross-fetch'), require('https')) :
-  typeof define === 'function' && define.amd ? define(['cross-fetch', 'https'], factory) :
-  (global = global || self, global.wtf = factory(global.crossFetch, global.https));
-}(this, (function (crossFetch, https) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('https')) :
+  typeof define === 'function' && define.amd ? define(['https'], factory) :
+  (global = global || self, global.wtf = factory(global.https));
+}(this, (function (https) { 'use strict';
 
-  crossFetch = crossFetch && crossFetch.hasOwnProperty('default') ? crossFetch['default'] : crossFetch;
-  https = https && https.hasOwnProperty('default') ? https['default'] : https;
+  https = https && Object.prototype.hasOwnProperty.call(https, 'default') ? https['default'] : https;
 
   var parseUrl = function parseUrl(url) {
     var parsed = new URL(url); //eslint-disable-line
@@ -404,24 +403,6 @@
       }
 
       return null;
-    },
-    exists: function exists(callback) {
-      var _this = this;
-
-      //check if the image (still) exists
-      return new Promise(function (cb) {
-        crossFetch(_this.url(), {
-          method: 'HEAD'
-        }).then(function (res) {
-          var exists = res.status === 200; //support callback non-promise form
-
-          if (callback) {
-            callback(exists);
-          }
-
-          cb(exists);
-        });
-      });
     },
     json: function json(options) {
       options = options || {};

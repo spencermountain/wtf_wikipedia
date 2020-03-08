@@ -19,7 +19,8 @@ const fetch = function(title, options) {
     options = { lang: options }
   }
   options = options || {}
-  options = Object.assign(defaults, options)
+  console.log(options)
+  options = Object.assign({}, options, defaults)
   options.title = title
 
   // parse url input
@@ -29,10 +30,17 @@ const fetch = function(title, options) {
   const url = makeUrl(options)
   return http(url)
     .then(res => {
-      let data = getResult(res)
-      return parseDoc(data)
+      try {
+        let data = getResult(res)
+        return parseDoc(data)
+      } catch (e) {
+        throw e
+      }
     })
-    .catch(e => console.error(e))
+    .catch(e => {
+      console.error(e)
+      return null
+    })
 }
 module.exports = fetch
 

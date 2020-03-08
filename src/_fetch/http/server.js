@@ -1,10 +1,23 @@
 const https = require('https')
 
 // use the native nodejs request function
-const request = function(url) {
+const request = function(url, options = {}) {
+  let agent =
+    options.userAgent ||
+    options['User-Agent'] ||
+    options['Api-User-Agent'] ||
+    'User of the wtf_wikipedia library'
+
   return new Promise((resolve, reject) => {
+    const opts = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Api-User-Agent': agent,
+        'User-Agent': agent
+      }
+    }
     https
-      .get(url, resp => {
+      .get(url, opts, resp => {
         let data = ''
         // A chunk of data has been recieved.
         resp.on('data', chunk => {

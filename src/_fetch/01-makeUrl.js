@@ -54,10 +54,8 @@ const makeUrl = function(options) {
     //support array
     params.titles = page.map(cleanTitle).join('|')
   } else {
-    console.log(page)
     // single page
     params.titles = cleanTitle(page)
-    console.log(params.titles)
   }
   // make it!
   url += toQueryString(params)
