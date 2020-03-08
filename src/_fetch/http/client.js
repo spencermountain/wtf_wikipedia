@@ -1,5 +1,9 @@
+console.log('client')
 // use the native client-side fetch function
 const request = function(url, opts) {
-  return fetch(url, opts) //eslint-disable-line
+  //eslint-disable-next-line
+  return fetch(url, opts).then(function(res) {
+    return res.json()
+  })
 }
 module.exports = request

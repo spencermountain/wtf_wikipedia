@@ -1,11 +1,11 @@
 import commonjs from 'rollup-plugin-commonjs'
 import json from 'rollup-plugin-json'
 import { terser } from 'rollup-plugin-terser'
-import resolve from 'rollup-plugin-node-resolve'
+// import resolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
 import alias from '@rollup/plugin-alias'
 import sizeCheck from 'rollup-plugin-filesize-check'
-import builtins from 'rollup-plugin-node-builtins'
+// import builtins from 'rollup-plugin-node-builtins'
 
 import { version } from './package.json'
 console.log('\n 📦  - running rollup..\n')
@@ -87,22 +87,24 @@ export default [
         banner: banner,
         file: 'builds/wtf_wikipedia.min.js',
         format: 'umd',
-        name: 'wtf'
+        name: 'wtf',
+        sourcemap: false
+        // preferBuiltins: false
       }
     ],
     plugins: [
-      resolve({
-        browser: true
-      }),
-      builtins(),
+      // resolve({
+      //   browser: true
+      // }),
+      // builtins(),
       json(),
       commonjs(),
-      alias({
-        entries: [{ find: './http/server', replacement: __dirname + './http/client' }]
-      }),
       babel({
         babelrc: false,
         presets: ['@babel/preset-env']
+      }),
+      alias({
+        entries: [{ find: './http/server', replacement: './http/client' }]
       }),
       terser(),
       sizeCheck()

@@ -1,4 +1,4 @@
-const https = require('https')
+const https = {} //require('https')
 
 // use the native nodejs request function
 const request = function(url) {
