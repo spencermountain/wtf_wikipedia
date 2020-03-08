@@ -1,4 +1,5 @@
 //from https://en.wikipedia.org/w/api.php?action=sitematrix&format=json
+// TODO: remove this file, it is redundant now
 const site_map = {
   aawiki: 'https://aa.wikipedia.org',
   aawikipedia: 'https://aa.wikipedia.org',

@@ -1,3 +1,4 @@
+// TODO: not used. remove local_title or english_title, and probably direction.
 module.exports = {
   aa: {
     english_title: 'Afar',

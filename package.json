@@ -17,8 +17,9 @@
     "build": "node ./scripts/version.js && rollup -c",
     "start": "node ./scripts/demo.js",
     "coverage": "node scripts/coverage.js",
-    "test": "TESTENV=dev tape ./tests/**/*.test.js | tap-dancer",
-    "watch": "amble ./scratch.js --require pretty-exceptions",
+    "test": "TESTENV=dev tape ./tests/*.test.js | tap-dancer",
+    "test:fetch": "TESTENV=dev tape ./tests/fetch/*.test.js | tap-dancer",
+    "watch": "amble ./scratch.js",
     "lint": "eslint ./src/",
     "test:types": "ts-node ./tests/types/index.ts | tap-dancer"
   },
@@ -54,6 +55,7 @@
   "devDependencies": {
     "@babel/core": "7.8.4",
     "@babel/preset-env": "7.8.4",
+    "@rollup/plugin-alias": "^3.0.1",
     "amble": "0.0.7",
     "codecov": "3.6.5",
     "nyc": "15.0.0",

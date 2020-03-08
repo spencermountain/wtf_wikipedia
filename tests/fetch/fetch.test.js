@@ -1,6 +1,6 @@
 'use strict'
 var test = require('tape')
-var wtf = require('./lib')
+var wtf = require('../lib')
 
 test('fetch-as-promise', t => {
   t.plan(1)
@@ -15,22 +15,22 @@ test('fetch-as-promise', t => {
   })
 })
 
-test('fetch-as-callback', t => {
-  t.plan(1)
-  wtf.fetch(
-    'Tony Danza',
-    'en',
-    {
-      'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
-    },
-    function(err, doc) {
-      if (err) {
-        t.throw(err)
-      }
-      t.ok(doc.categories().length > 0, 'callback returned document')
-    }
-  )
-})
+// test('fetch-as-callback', t => {
+//   t.plan(1)
+//   wtf.fetch(
+//     'Tony Danza',
+//     'en',
+//     {
+//       'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
+//     },
+//     function(err, doc) {
+//       if (err) {
+//         t.throw(err)
+//       }
+//       t.ok(doc.categories().length > 0, 'callback returned document')
+//     }
+//   )
+// })
 
 test('fetch-invalid', t => {
   t.plan(1)
@@ -149,17 +149,21 @@ test('intensive', t => {
     'Capybara',
     'Beaver',
     'Hamster'
-  ];
+  ]
   t.plan(pages.length)
-  var promises = pages.map(page => wtf.fetch(page, 'en', {
-    'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
-  }))
-  Promise.all(promises).then(results => {
-    results.forEach(result => {
-      t.ok(result.title(), 'got a page')
+  var promises = pages.map(page =>
+    wtf.fetch(page, 'en', {
+      'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
     })
-    t.end();
-  }).catch((e) => {
-    t.error(e, e)
-  })
+  )
+  Promise.all(promises)
+    .then(results => {
+      results.forEach(result => {
+        t.ok(result.title(), 'got a page')
+      })
+      t.end()
+    })
+    .catch(e => {
+      t.error(e, e)
+    })
 })

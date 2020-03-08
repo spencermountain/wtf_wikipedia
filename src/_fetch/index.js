@@ -1,28 +1,46 @@
-const request = require('./request/server')
+const parseUrl = require('./00-parseUrl')
 const makeUrl = require('./01-makeUrl')
-const parseResult = require('./02-parseResult')
-const wtf = require('../01-document')
+const getResult = require('./02-getResult')
+const parseDoc = require('./03-parseDoc')
+const http = require('./http/server')
+const isUrl = /^https?:\/\//
 
-const fetch = function(article, lang, options = {}) {
-  let url = makeUrl(article, lang, options)
-  return new Promise((resolve, reject) => {
-    request(url)
-      .then(res => {
-        res = JSON.parse(res)
-        let data = parseResult(res)
-        // remove empty results
-        data = data.filter(obj => obj)
-        // parse its text
-        let docs = data.map(obj => wtf(obj.text))
-        // return a single document
-        if (docs.length === 1) {
-          docs = docs[0]
-        }
-        resolve(docs)
-      })
-      .catch(err => {
-        reject(err)
-      })
-  })
+const defaults = {
+  lang: 'en',
+  wiki: 'wikipedia',
+  domain: null,
+  follow_redirects: true,
+  path: 'api.php' //some 3rd party sites use a weird path
+}
+
+const fetch = function(title, options) {
+  //support lang 2nd param
+  if (typeof options === 'string') {
+    options = { lang: options }
+  }
+  options = options || {}
+  options = Object.assign(defaults, options)
+  options.title = title
+
+  // parse url input
+  if (isUrl.test(title)) {
+    options = Object.assign(options, parseUrl(title))
+  }
+  const url = makeUrl(options)
+  return http(url)
+    .then(res => {
+      let data = getResult(res)
+      return parseDoc(data)
+    })
+    .catch(e => console.error(e))
 }
 module.exports = fetch
+
+// console.log(fetch(`? (Enuff Z'nuff album)`))
+// console.log(fetch(`& Juliet`))
+// console.log(fetch('Toronto Raptors', 'fr'))
+// console.log(fetch(['Toronto', 'Montreal'], 'fr'))
+// console.log(fetch('https://en.m.wikipedia.org/wiki/Freebase'))
+// console.log(fetch('https://fr.wikipedia.org/wiki/Toronto_Raptors'))
+// console.log(fetch('https://dota2.gamepedia.com/Abaddon'))
+// console.log(fetch('https://muppet.fandom.com/wiki/Debra_Spinney'))

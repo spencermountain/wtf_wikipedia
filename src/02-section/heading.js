@@ -17,7 +17,7 @@ const parseHeading = function(data, str) {
   //... let's not think about that now.
   title = title.replace(/\{\{.+?\}\}/, '')
   //same for references (i know..)
-  title = parseReferences(title, {}) //TODO: this is ridiculous
+  title = parseReferences(title, {})
   //trim leading/trailing whitespace
   title = fns.trim_whitespace(title)
   let depth = 0

@@ -54,7 +54,10 @@ let i18n = {
     'kategoria',
     'تصنيف',
     'श्रेणी',
-    '분류' //ko
+    '분류', //ko
+    //--
+    'flocc',
+    'Kateqoriya'
   ],
   redirects: [
     'перанакіраваньне',

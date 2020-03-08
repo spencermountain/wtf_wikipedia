@@ -1,53 +1,66 @@
-const site_map = require('../_data/site_map')
-const isUrl = /^https?:\/\//
+const isInterWiki = /(wiktionary|wikinews|wikibooks|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wikipedia|wikimedia|foundation|meta)\.org/
 
-function isArray(arr) {
-  return arr.constructor.toString().indexOf('Array') > -1
+const defaults = {
+  action: 'query',
+  prop: 'revisions', //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
+  rvprop: 'content',
+  maxlag: 5,
+  rvslots: 'main',
+  origin: '*',
+  format: 'json',
+  redirects: 'true'
 }
 
-const makeTitle = function(title = '') {
-  //if given a url...
-  if (isUrl.test(title) === true) {
-    title = title.replace(/.*?\/wiki\//, '')
-    title = title.replace(/\?.*/, '')
-  }
-  title = encodeURIComponent(title)
-  return title
+const toQueryString = function(obj) {
+  return Object.entries(obj)
+    .map(([key, value]) => {
+      return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+    })
+    .join('&')
 }
 
-//construct a lookup-url for the wikipedia api
-const makeUrl = function(title, lang, options) {
-  lang = lang || 'en'
-  let url = `https://${lang}.wikipedia.org/w/api.php`
-  if (site_map[lang]) {
-    url = site_map[lang] + '/w/api.php'
+const isArray = function(arr) {
+  return Object.prototype.toString.call(arr) === '[object Array]'
+}
+
+const cleanTitle = page => {
+  page = page.replace(/ /g, '_')
+  page = page.trim()
+  // page = encodeURIComponent(page)
+  return page
+}
+
+const makeUrl = function(options) {
+  let params = Object.assign({}, defaults)
+  // default url
+  let url = `https://${options.lang}.${options.wiki}.org/w/api.php?`
+  // from a 3rd party wiki
+  if (options.domain) {
+    let path = options.path
+    //wikimedia api uses ./w/api path. no others do
+    if (isInterWiki.test(options.domain)) {
+      path = 'w/api.php'
+    }
+    url = `https://${options.domain}/${path}?`
   }
-  if (options.wikiUrl) {
-    url = options.wikiUrl
+  if (!options.follow_redirects) {
+    delete params.redirects
   }
-  //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-  url += '?action=query&prop=revisions&rvprop=content&maxlag=5&rvslots=main&origin=*&format=json'
-  if (options.follow_redirects !== false) {
-    url += '&redirects=true'
-  }
-  var lookup = 'titles'
-  let pages = []
-  //support one, or many pages
-  if (isArray(title) === false) {
-    pages = [title]
+  // support numerical ids
+  let page = options.title
+  if (typeof page === 'number' || (isArray(page) && typeof page[0] === 'number')) {
+    params.pageids = page
+  } else if (isArray(page) === true) {
+    //support array
+    params.titles = page.map(cleanTitle).join('|')
   } else {
-    pages = title
+    console.log(page)
+    // single page
+    params.titles = cleanTitle(page)
+    console.log(params.titles)
   }
-  //assume numbers mean pageid, and strings are titles (like '1984')
-  if (typeof pages[0] === 'number') {
-    lookup = 'pageids'
-  } else {
-    pages = pages.map(makeTitle)
-  }
-  pages = pages.filter(p => p !== '')
-  pages = pages.join('|')
-  url += '&' + lookup + '=' + pages
+  // make it!
+  url += toQueryString(params)
   return url
 }
-
 module.exports = makeUrl
