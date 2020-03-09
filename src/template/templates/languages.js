@@ -2,27 +2,12 @@ const languages = require('../../_data/languages')
 const parse = require('../_parsers/parse')
 
 const templates = {
-  lang: tmpl => {
-    let order = ['lang', 'text']
-    let obj = parse(tmpl, order)
-    return obj.text
-  },
+  lang: 1,
   //this one has a million variants
-  'lang-de': tmpl => {
-    let order = ['text']
-    let obj = parse(tmpl, order)
-    return obj.text
-  },
-  'rtl-lang': tmpl => {
-    let order = ['lang', 'text']
-    let obj = parse(tmpl, order)
-    return obj.text
-  },
+  'lang-de': 0,
+  'rtl-lang': 1,
   //german keyboard letterscn
-  taste: tmpl => {
-    let obj = parse(tmpl, ['key'])
-    return obj.key || ''
-  },
+  taste: 0,
   //https://en.wikipedia.org/wiki/Template:Nihongo
   nihongo: (tmpl, r) => {
     let obj = parse(tmpl, ['english', 'kanji', 'romaji', 'extra'])

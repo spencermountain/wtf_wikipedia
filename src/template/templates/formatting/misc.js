@@ -19,15 +19,9 @@ const inline = {
     let obj = parse(tmpl, ['term'])
     return `${obj.term}:`
   },
-  defn: tmpl => {
-    let obj = parse(tmpl, ['desc'])
-    return obj.desc
-  },
+  defn: 0,
   //https://en.wikipedia.org/wiki/Template:Linum
-  lino: tmpl => {
-    let obj = parse(tmpl, ['num'])
-    return `${obj.num}`
-  },
+  lino: 0,
   linum: tmpl => {
     let obj = parse(tmpl, ['num', 'text'])
     return `${obj.num}. ${obj.text}`
@@ -199,20 +193,11 @@ const inline = {
   },
   //https://en.wikipedia.org/wiki/Template:Hover_title
   //technically 'h:title'
-  h: (tmpl = '') => {
-    let obj = parse(tmpl, ['title', 'text'])
-    return obj.text
-  },
+  h: 1,
   //https://en.wikipedia.org/wiki/Template:Finedetail
-  finedetail: (tmpl = '') => {
-    let obj = parse(tmpl, ['text', 'detail']) //technically references
-    return obj.text
-  },
+  finedetail: 0,
   //https://en.wikipedia.org/wiki/Template:Sort
-  sort: tmpl => {
-    let order = ['sort', 'display']
-    return parse(tmpl, order).display
-  }
+  sort: 1
 }
 
 //aliases

@@ -55,10 +55,7 @@ let dateTmpl = Object.assign({}, misc, {
     return months[d.getMonth()] + ' ' + d.getFullYear()
   },
   //Explictly-set dates - https://en.wikipedia.org/wiki/Template:Date
-  date: tmpl => {
-    let order = ['date', 'fmt']
-    return parse(tmpl, order).date
-  },
+  date: 0,
   'time ago': tmpl => {
     let order = ['date', 'fmt']
     let time = parse(tmpl, order).date

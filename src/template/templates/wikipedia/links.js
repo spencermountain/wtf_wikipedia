@@ -2,26 +2,11 @@ const parse = require('../../_parsers/parse')
 
 let templates = {
   /* mostly wiktionary*/
-  etyl: tmpl => {
-    let order = ['lang', 'page']
-    return parse(tmpl, order).page || ''
-  },
-  mention: tmpl => {
-    let order = ['lang', 'page']
-    return parse(tmpl, order).page || ''
-  },
-  link: tmpl => {
-    let order = ['lang', 'page']
-    return parse(tmpl, order).page || ''
-  },
-  'la-verb-form': tmpl => {
-    let order = ['word']
-    return parse(tmpl, order).word || ''
-  },
-  'la-ipa': tmpl => {
-    let order = ['word']
-    return parse(tmpl, order).word || ''
-  },
+  etyl: 1,
+  mention: 1,
+  link: 1,
+  'la-verb-form': 0,
+  'la-ipa': 0,
   //https://en.wikipedia.org/wiki/Template:Sortname
   sortname: tmpl => {
     let order = ['first', 'last', 'target', 'sort']

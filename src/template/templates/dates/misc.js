@@ -19,10 +19,7 @@ const misc = {
     let obj = format.ymd([d.getFullYear(), d.getMonth(), d.getDate()])
     return format.toText(obj)
   },
-  monthname: tmpl => {
-    let obj = parse(tmpl, ['num'])
-    return months[obj.num] || ''
-  },
+  monthname: 0,
   //https://en.wikipedia.org/wiki/Template:OldStyleDate
   oldstyledate: tmpl => {
     let order = ['date', 'year']

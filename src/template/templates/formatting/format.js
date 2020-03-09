@@ -57,18 +57,9 @@ let templates = {
     return obj.str.substr(start, end)
   },
   //grab the first, second or third pipe
-  p1: tmpl => {
-    let order = ['one']
-    return parse(tmpl, order).one
-  },
-  p2: tmpl => {
-    let order = ['one', 'two']
-    return parse(tmpl, order).two
-  },
-  p3: tmpl => {
-    let order = ['one', 'two', 'three']
-    return parse(tmpl, order).three
-  },
+  p1: 0,
+  p2: 1,
+  p3: 2,
   //formatting things - https://en.wikipedia.org/wiki/Template:Nobold
   braces: tmpl => {
     let obj = parse(tmpl, ['text'])
@@ -78,15 +69,9 @@ let templates = {
     }
     return '{{' + (obj.text || '') + attrs + '}}'
   },
-  nobold: tmpl => {
-    return parse(tmpl, ['text']).text || ''
-  },
-  noitalic: tmpl => {
-    return parse(tmpl, ['text']).text || ''
-  },
-  nocaps: tmpl => {
-    return parse(tmpl, ['text']).text || ''
-  },
+  nobold: 0,
+  noitalic: 0,
+  nocaps: 0,
   syntaxhighlight: (tmpl, r) => {
     let obj = parse(tmpl)
     r.templates.push(obj)
@@ -98,13 +83,9 @@ let templates = {
     return obj['1'] || ''
   },
   //https://en.wikipedia.org/wiki/Template:Visible_anchor
-  vanchor: tmpl => {
-    return parse(tmpl, ['text']).text || ''
-  },
+  vanchor: 0,
   //https://en.wikipedia.org/wiki/Template:Resize
-  resize: tmpl => {
-    return parse(tmpl, ['size', 'text']).text || ''
-  },
+  resize: 1,
   //https://en.wikipedia.org/wiki/Template:Ra
   ra: tmpl => {
     let obj = parse(tmpl, ['hours', 'minutes', 'seconds'])
@@ -126,11 +107,7 @@ let templates = {
     let obj = parse(tmpl, ['deg', 'min', 'sec', 'hem', 'rnd'])
     return (obj.deg || obj.degrees) + '°'
   },
-  rnd: tmpl => {
-    //this template should do the conversion too
-    let obj = parse(tmpl, ['decimal'])
-    return obj.decimal || ''
-  },
+  rnd: 0,
   //https://en.wikipedia.org/wiki/Template:DEC
   dec: tmpl => {
     let obj = parse(tmpl, ['degrees', 'minutes', 'seconds'])
