@@ -24,8 +24,9 @@ wtf.extend((models, templates) => {
 
 // let str = `start {{nest|{{two|{{three|{{four|four}}}}}}}} end`
 // let str = `start {{one| {{two|inside}}  }} {{one| asdf}} end`
-let str = `{{nest|{{nest|two}}}}`
+let str = `hello <ref>{{cite web |url=https://www.quora.com/Is-it-true-that-Mozilla-wants-to-rewrite-Firefox-in-Rust-language-for-security-reasons/answer/Steve-Klabnik |title=Is it true that Mozilla wants to rewrite Firefox in Rust language for security reasons? |first=Steve |last=Klabnik|work=[[Quora]]}}, abgerufen am 13. Juni 2016</ref>`
 let doc = wtf(str)
 
-console.log(doc.coordinates())
+console.log(doc.references())
+// console.log(doc.templates())
 // console.log(doc.data.sections[0].data.templates)

@@ -12,7 +12,7 @@ const references = {
 }
 
 const isReference = function(obj) {
-  return references[obj.name] === true || isCitation.test(obj.name) === true
+  return references[obj.template] === true || isCitation.test(obj.template) === true
 }
 
 const isObject = function(obj) {
@@ -20,7 +20,7 @@ const isObject = function(obj) {
 }
 
 const isInfobox = function(obj) {
-  return obj.name === 'infobox' && obj.data && isObject(obj.data)
+  return obj.template === 'infobox' && obj.data && isObject(obj.data)
 }
 
 //reduce the scary recursive situations
@@ -52,8 +52,9 @@ const allTemplates = function(wiki, data) {
   list.forEach(node => parseThem(node, null))
 
   // sort-out the templates we decide to keep
-  data.infoboxes = []
-  data.references = []
+  data.infoboxes = data.infoboxes || []
+  data.references = data.references || []
+  data.templates = data.templates || []
   // remove references and infoboxes from our list
   data.templates = keep.filter(obj => {
     if (isReference(obj) === true) {
@@ -66,7 +67,7 @@ const allTemplates = function(wiki, data) {
     }
     return true
   })
-  data.templates = keep.map(obj => new Template(obj))
+  data.templates = data.templates.map(obj => new Template(obj))
 
   // remove the templates from our wiki text
   list.forEach(node => {

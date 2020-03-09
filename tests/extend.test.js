@@ -18,8 +18,8 @@ test('extend model', t => {
 test('extend templates', t => {
   wtf.extend((models, templates) => {
     // add a new template
-    templates.missing = (tmpl, r) => {
-      r.templates.push({ working: true })
+    templates.missing = (tmpl, list) => {
+      list.push({ working: true })
       return 'working'
     }
   })
@@ -40,6 +40,6 @@ test('string template syntax', t => {
   })
   let str = `before {{nest|not working}} after {{ignore}}`
   let doc = wtf(str)
-  t.equal(doc.text(), 'before not working after', 'template as string')
+  t.equal(doc.text(), 'before inside after', 'template as string')
   t.end()
 })
