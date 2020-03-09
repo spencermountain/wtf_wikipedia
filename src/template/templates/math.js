@@ -55,7 +55,7 @@ let templates = {
     return `${obj.before || ''}√${obj.after || ''}`
   },
   //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
-  percentage: (tmpl = '') => {
+  percentage: tmpl => {
     let obj = parse(tmpl, ['numerator', 'denominator', 'decimals'])
     let num = percentage(obj)
     if (num === null) {
@@ -64,7 +64,7 @@ let templates = {
     return num + '%'
   },
   // {{Percent-done|done=N|total=N|digits=N}}
-  'percent-done': (tmpl = '') => {
+  'percent-done': tmpl => {
     let obj = parse(tmpl, ['done', 'total', 'digits'])
     let num = percentage({
       numerator: obj.done,
@@ -76,7 +76,7 @@ let templates = {
     }
     return `${obj.done} (${num}%) done`
   },
-  'winning percentage': (tmpl = '', r) => {
+  'winning percentage': (tmpl, list) => {
     let obj = parse(tmpl, ['wins', 'losses', 'ties'])
     list.push(obj)
     let wins = Number(obj.wins)
@@ -99,7 +99,7 @@ let templates = {
     }
     return `.${num * 10}`
   },
-  winlosspct: (tmpl = '', r) => {
+  winlosspct: (tmpl, list) => {
     let obj = parse(tmpl, ['wins', 'losses'])
     list.push(obj)
     let wins = Number(obj.wins)

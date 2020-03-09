@@ -55,8 +55,9 @@ const allTemplates = function(wiki, data) {
   data.infoboxes = data.infoboxes || []
   data.references = data.references || []
   data.templates = data.templates || []
+  data.templates = data.templates.concat(keep)
   // remove references and infoboxes from our list
-  data.templates = keep.filter(obj => {
+  data.templates = data.templates.filter(obj => {
     if (isReference(obj) === true) {
       data.references.push(new Reference(obj))
       return false
