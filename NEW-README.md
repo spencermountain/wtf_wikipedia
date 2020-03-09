@@ -47,22 +47,25 @@ wtf.fetch('Whistling').then(doc => {
 ```
 
 ### Ok first,
-[wikitext](https://en.wikipedia.org/wiki/Help:Wikitext) is really, really hard to parse. It is among the most-curious and ad-hoc data-formats you'll ever find.
+[wikitext](https://en.wikipedia.org/wiki/Help:Wikitext) is [really](https://utcc.utoronto.ca/~cks/space/blog/programming/ParsingWikitext), [really](https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something) [hard](https://twitter.com/ftrain/status/1036060636587978753) to parse. It is among the most-curious and ad-hoc data-formats you'll ever find.
 
 Consider:
 * the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax)
 * ['Birth_date_and_age'](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs ['Birth-date_and_age'](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
+* wikitext doesn't have any errors
 * the partial-implementation of [inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
 * deep recursion of [similar-syntax](https://en.wikipedia.org/wiki/Wikipedia:Database_reports/Templates_transcluded_on_the_most_pages) templates,
 * the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) for image paths,
+* nested elements do not honour the scope of other elements
 * the [custom encoding](https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(technical_restrictions)) of whitespace and punctuation,
 * [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
+* [PEG](https://pegjs.org/) based parsers struggle with wikitext's massive backtracking
 * as of Nov-2018, there are [634,755](https://s3-us-west-1.amazonaws.com/spencer-scratch/allTemplates-2018-10-26.tsv) templates in wikipedia
 
 **wtf_wikipedia** supports many ***recursive shenanigans***, depreciated and **obscure template**
 variants, and illicit 'wiki-esque' shorthands.
 
-it really tries its best, though it is very hard.
+it really tries its best, though it is [very](https://osr.cs.fau.de/wp-content/uploads/2017/09/wikitext-parser.pdf) hard.
 
 ### What it does:
 * Detects and parses **redirects** and **disambiguation** pages
@@ -78,6 +81,13 @@ it really tries its best, though it is very hard.
 * converts 'DMS-formatted' ***(59°12\'7.7"N)*** geo-coordinates to lat/lng
 * parses citation metadata
 * Eliminate xml, latex, css, and table-sorting cruft
+
+### What doesn't do:
+* external '[transcluded](https://en.wikipedia.org/wiki/Wikipedia:Transclusion)' page data [1](https://github.com/spencermountain/wtf_wikipedia/issues/223)
+* AST output
+* smart ('pretty') formatting of html in infoboxes or galleries [1](https://github.com/spencermountain/wtf_wikipedia/issues/173)
+* maintain perfect page order [1](https://github.com/spencermountain/wtf_wikipedia/issues/88)
+* per-sentence references (by 'section' element instead)
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
@@ -165,9 +175,17 @@ wtf.extend((models, templates) => {
 </div>
 
 ## See also:
-* [instaview](https://en.wikipedia.org/wiki/User:Pilaf/InstaView)
-* [txtwiki](https://github.com/joaomsa/txtwiki.js)
-* [Parsoid](https://www.mediawiki.org/wiki/Parsoid)
-* [parse_wiki_text](https://docs.rs/parse_wiki_text/) - rust tokenizer
+* [instaview](https://github.com/cscott/instaview) - javascript
+* [txtwiki](https://github.com/joaomsa/txtwiki.js) - javascript
+* [Parsoid](https://www.mediawiki.org/wiki/Parsoid) - javascript
+* [wiky](https://github.com/Gozala/wiky) - javascript
+* [sweble-wikitext](https://github.com/sweble/sweble-wikitext) - java
+* [kiwi](https://github.com/aboutus/kiwi/) - C
+* [parse_wiki_text](https://docs.rs/parse_wiki_text/) - rust
+* [wikitext-perl](https://metacpan.org/pod/distribution/wikitext-perl/lib/Text/WikiText.pm) - perl
+* [wikiextractor](https://github.com/attardi/wikiextractor) - python
+* [wikitextparser](https://pypi.org/project/wikitextparser) - python
+
+and [many more](https://www.mediawiki.org/wiki/Alternative_parsers)!
 
 MIT
