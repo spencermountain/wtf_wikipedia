@@ -4,6 +4,6 @@ var wtf = require('./src/index')
 //   templates.foo = 0
 // })
 ;(async () => {
-  var doc = await wtf.category('Category:Canadian_people_stubs')
+  var doc = await wtf.fetch('NonExistentPage')
   console.log(doc)
 })()
