@@ -70,7 +70,6 @@ const allTemplates = function(wiki, data) {
 
   // remove the templates from our wiki text
   list.forEach(node => {
-    console.log(wiki.replace(node.body, node.out))
     wiki = wiki.replace(node.body, node.out)
   })
   return wiki

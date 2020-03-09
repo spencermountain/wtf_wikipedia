@@ -65,9 +65,9 @@ const codes = {
   zar: 'R' //https://en.wikipedia.org/wiki/Template:ZAR
 }
 
-const parseCurrency = (tmpl, r) => {
+const parseCurrency = (tmpl, list) => {
   let o = parse(tmpl, ['amount', 'code'])
-  r.templates.push(o)
+  list.push(o)
   let code = o.template || ''
   if (code === 'currency') {
     code = o.code
@@ -101,9 +101,9 @@ const parseCurrency = (tmpl, r) => {
   return str
 }
 
-const inrConvert = (tmpl, r) => {
+const inrConvert = (tmpl, list) => {
   let o = parse(tmpl, ['rupee_value', 'currency_formatting'])
-  r.templates.push(o)
+  list.push(o)
   let formatting = o.currency_formatting
   if (formatting) {
     let multiplier = 1

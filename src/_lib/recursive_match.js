@@ -48,6 +48,3 @@ function find_recursive(opener, closer, text) {
   return out
 }
 module.exports = find_recursive
-
-// console.log(find_recursive('{', '}', 'he is president. {{nowrap|{{small|(1995–present)}}}} he lives in texas'));
-// console.log(find_recursive("{", "}", "this is fun {{nowrap{{small1995–present}}}} and it works"))

@@ -72,14 +72,14 @@ let templates = {
   nobold: 0,
   noitalic: 0,
   nocaps: 0,
-  syntaxhighlight: (tmpl, r) => {
+  syntaxhighlight: (tmpl, list) => {
     let obj = parse(tmpl)
-    r.templates.push(obj)
+    list.push(obj)
     return obj.code || ''
   },
-  samp: (tmpl, r) => {
+  samp: (tmpl, list) => {
     let obj = parse(tmpl, ['1'])
-    r.templates.push(obj)
+    list.push(obj)
     return obj['1'] || ''
   },
   //https://en.wikipedia.org/wiki/Template:Visible_anchor

@@ -2,17 +2,17 @@ const parse = require('../_parsers/parse')
 
 const misc = {
   uss: ['ship', 'id'],
-  isbn: (tmpl, r) => {
+  isbn: (tmpl, list) => {
     let order = ['id', 'id2', 'id3']
     let obj = parse(tmpl, order)
-    r.templates.push(obj)
+    list.push(obj)
     return 'ISBN: ' + (obj.id || '')
   },
   //https://en.wikipedia.org/wiki/Template:Marriage
   //this one creates a template, and an inline response
-  marriage: (tmpl, r) => {
+  marriage: (tmpl, list) => {
     let data = parse(tmpl, ['spouse', 'from', 'to', 'end'])
-    r.templates.push(data)
+    list.push(data)
     let str = `${data.spouse || ''}`
     if (data.from) {
       if (data.to) {
@@ -24,13 +24,13 @@ const misc = {
     return str
   },
   //https://en.wikipedia.org/wiki/Template:Based_on
-  'based on': (tmpl, r) => {
+  'based on': (tmpl, list) => {
     let obj = parse(tmpl, ['title', 'author'])
-    r.templates.push(obj)
+    list.push(obj)
     return `${obj.title} by ${obj.author || ''}`
   },
   //https://en.wikipedia.org/wiki/Template:Video_game_release
-  'video game release': (tmpl, r) => {
+  'video game release': (tmpl, list) => {
     let order = ['region', 'date', 'region2', 'date2', 'region3', 'date3', 'region4', 'date4']
     let obj = parse(tmpl, order)
     let template = {
@@ -45,21 +45,21 @@ const misc = {
         })
       }
     }
-    r.templates.push(template)
+    list.push(template)
     let str = template.releases.map(o => `${o.region}: ${o.date || ''}`).join('\n\n')
     return '\n' + str + '\n'
   },
   //barrels of oil https://en.wikipedia.org/wiki/Template:Bbl_to_t
-  'bbl to t': (tmpl, r) => {
+  'bbl to t': (tmpl, list) => {
     let obj = parse(tmpl, ['barrels'])
-    r.templates.push(obj)
+    list.push(obj)
     if (obj.barrels === '0') {
       return obj.barrels + ' barrel'
     }
     return obj.barrels + ' barrels'
   },
   //https://en.wikipedia.org/wiki/Template:Historical_populations
-  'historical populations': (tmpl, r) => {
+  'historical populations': (tmpl, list) => {
     let data = parse(tmpl)
     data.list = data.list || []
     let years = []
@@ -72,7 +72,7 @@ const misc = {
     }
     data.data = years
     delete data.list
-    r.templates.push(data)
+    list.push(data)
     return ''
   }
 }

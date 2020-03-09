@@ -27,5 +27,5 @@ wtf.extend((models, templates) => {
 let str = `{{nest|{{nest|two}}}}`
 let doc = wtf(str)
 
-console.log(doc.text())
+console.log(doc.coordinates())
 // console.log(doc.data.sections[0].data.templates)

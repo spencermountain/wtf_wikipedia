@@ -16,9 +16,9 @@ const tmpls = {
   },
 
   //show/hide: https://en.wikipedia.org/wiki/Template:Collapsible_list
-  'collapsible list': (tmpl, r) => {
+  'collapsible list': (tmpl, list) => {
     let obj = parse(tmpl)
-    r.templates.push(obj)
+    list.push(obj)
     let str = ''
     if (obj.title) {
       str += `'''${obj.title}'''` + '\n\n'
@@ -37,9 +37,9 @@ const tmpls = {
     return str
   },
   // https://en.wikipedia.org/wiki/Template:Ordered_list
-  'ordered list': (tmpl, r) => {
+  'ordered list': (tmpl, list) => {
     let obj = parse(tmpl)
-    r.templates.push(obj)
+    list.push(obj)
     obj.list = obj.list || []
     let lines = obj.list.map((str, i) => `${i + 1}. ${str}`)
     return lines.join('\n\n')
@@ -81,18 +81,18 @@ const tmpls = {
     return arr.join('\n\n')
   },
   //https://en.wikipedia.org/wiki/Template:Columns-list
-  'columns-list': (tmpl, r) => {
+  'columns-list': (tmpl, list) => {
     let arr = parse(tmpl).list || []
     let str = arr[0] || ''
-    let list = str.split(/\n/)
-    list = list.filter(f => f)
-    list = list.map(s => s.replace(/\*/, ''))
-    r.templates.push({
+    let lines = str.split(/\n/)
+    lines = lines.filter(f => f)
+    lines = lines.map(s => s.replace(/\*/, ''))
+    list.push({
       template: 'columns-list',
       list: list
     })
-    list = list.map(s => '• ' + s)
-    return list.join('\n\n')
+    lines = lines.map(s => '• ' + s)
+    return lines.join('\n\n')
   }
   // 'pagelist':(tmpl)=>{},
 }

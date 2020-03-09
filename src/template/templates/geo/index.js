@@ -1,9 +1,9 @@
 const parseCoor = require('./coor')
 
 const templates = {
-  coord: (tmpl, r) => {
+  coord: (tmpl, list) => {
     let obj = parseCoor(tmpl)
-    r.templates.push(obj)
+    list.push(obj)
     //display inline, by default
     if (!obj.display || obj.display.indexOf('inline') !== -1) {
       return `${obj.lat || ''}°N, ${obj.lon || ''}°W`

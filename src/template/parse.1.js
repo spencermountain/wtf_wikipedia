@@ -9,8 +9,6 @@ const isArray = function(arr) {
   return Object.prototype.toString.call(arr) === '[object Array]'
 }
 
-// console.log(Object.keys(templates).length + ' Templates!');
-
 //this gets all the {{template}} strings and decides how to parse them
 const parseTemplate = function(tmpl, wiki, list) {
   let name = getName(tmpl)

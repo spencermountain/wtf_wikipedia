@@ -18,14 +18,14 @@ const percentage = function(obj) {
 
 let templates = {
   // https://en.wikipedia.org/wiki/Template:Math
-  math: (tmpl, r) => {
+  math: (tmpl, list) => {
     let obj = parse(tmpl, ['formula'])
-    r.templates.push(obj)
+    list.push(obj)
     return '\n\n' + (obj.formula || '') + '\n\n'
   },
 
   //fraction - https://en.wikipedia.org/wiki/Template:Sfrac
-  frac: (tmpl, r) => {
+  frac: (tmpl, list) => {
     let order = ['a', 'b', 'c']
     let obj = parse(tmpl, order)
     let data = {
@@ -42,7 +42,7 @@ let templates = {
       data.numerator = 1
       data.denominator = obj.a
     }
-    r.templates.push(data)
+    list.push(data)
     if (data.integer) {
       return `${data.integer} ${data.numerator}⁄${data.denominator}`
     }
@@ -78,7 +78,7 @@ let templates = {
   },
   'winning percentage': (tmpl = '', r) => {
     let obj = parse(tmpl, ['wins', 'losses', 'ties'])
-    r.templates.push(obj)
+    list.push(obj)
     let wins = Number(obj.wins)
     let losses = Number(obj.losses)
     let ties = Number(obj.ties) || 0
@@ -101,7 +101,7 @@ let templates = {
   },
   winlosspct: (tmpl = '', r) => {
     let obj = parse(tmpl, ['wins', 'losses'])
-    r.templates.push(obj)
+    list.push(obj)
     let wins = Number(obj.wins)
     let losses = Number(obj.losses)
     let num = percentage({

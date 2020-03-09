@@ -9,9 +9,9 @@ const templates = {
   //german keyboard letterscn
   taste: 0,
   //https://en.wikipedia.org/wiki/Template:Nihongo
-  nihongo: (tmpl, r) => {
+  nihongo: (tmpl, list) => {
     let obj = parse(tmpl, ['english', 'kanji', 'romaji', 'extra'])
-    r.templates.push(obj)
+    list.push(obj)
     let str = obj.english || obj.romaji || ''
     if (obj.kanji) {
       str += ` (${obj.kanji})`

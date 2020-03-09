@@ -6,8 +6,6 @@ const templates = require('./templates')
 const generic = require('./_parsers/parse')
 const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
 
-// console.log(Object.keys(templates).length + ' Templates!');
-
 const isArray = function(arr) {
   return Object.prototype.toString.call(arr) === '[object Array]'
 }

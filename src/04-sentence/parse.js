@@ -115,4 +115,3 @@ const sentence_parser = function(text) {
 }
 
 module.exports = sentence_parser
-// console.log(sentence_parser('Tony is nice. He lives in Japan.').length === 2);

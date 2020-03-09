@@ -45,9 +45,9 @@ const inline = {
     return `1/${obj.b}`
   },
   //https://en.wikipedia.org/wiki/Template:Height - {{height|ft=6|in=1}}
-  height: (tmpl, r) => {
+  height: (tmpl, list) => {
     let obj = parse(tmpl)
-    r.templates.push(obj)
+    list.push(obj)
     let result = []
     let units = ['m', 'cm', 'ft', 'in'] //order matters
     units.forEach(unit => {
@@ -64,10 +64,10 @@ const inline = {
     }
     return ''
   },
-  quote: (tmpl, r) => {
+  quote: (tmpl, list) => {
     let order = ['text', 'author']
     let obj = parse(tmpl, order)
-    r.templates.push(obj)
+    list.push(obj)
     //create plaintext version
     if (obj.text) {
       let str = `"${obj.text}"`
@@ -104,14 +104,14 @@ const inline = {
     return str
   },
   //https://en.wikipedia.org/wiki/Template:Sic
-  sic: (tmpl, r) => {
+  sic: (tmpl, list) => {
     let obj = parse(tmpl, ['one', 'two', 'three'])
     let word = (obj.one || '') + (obj.two || '')
     //support '[sic?]'
     if (obj.one === '?') {
       word = (obj.two || '') + (obj.three || '')
     }
-    r.templates.push({
+    list.push({
       template: 'sic',
       word: word
     })

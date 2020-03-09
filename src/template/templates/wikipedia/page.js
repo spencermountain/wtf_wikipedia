@@ -21,30 +21,30 @@ const sisterProjects = {
 
 const parsers = {
   //https://en.wikipedia.org/wiki/Template:About
-  about: (tmpl, r) => {
+  about: (tmpl, list) => {
     let obj = parse(tmpl)
-    obj.pos = r.title
-    r.templates.push(obj)
+    // obj.pos = r.title //not working
+    list.push(obj)
     return ''
   },
   //https://en.wikipedia.org/wiki/Template:Main
-  main: (tmpl, r) => {
+  main: (tmpl, list) => {
     let obj = parse(tmpl)
-    obj.pos = r.title
-    r.templates.push(obj)
+    // obj.pos = r.title //not working
+    list.push(obj)
     return ''
   },
   'wide image': ['file', 'width', 'caption'],
 
   //https://en.wikipedia.org/wiki/Template:Redirect
-  redirect: (tmpl, r) => {
+  redirect: (tmpl, list) => {
     let data = parse(tmpl, ['redirect'])
-    let list = data.list || []
+    let lines = data.list || []
     let links = []
-    for (let i = 0; i < list.length; i += 2) {
+    for (let i = 0; i < lines.length; i += 2) {
       links.push({
-        page: list[i + 1],
-        desc: list[i]
+        page: lines[i + 1],
+        desc: lines[i]
       })
     }
     let obj = {
@@ -52,32 +52,32 @@ const parsers = {
       redirect: data.redirect,
       links: links
     }
-    r.templates.push(obj)
+    list.push(obj)
     return ''
   },
 
   //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
-  'cite gnis': (tmpl, r) => {
+  'cite gnis': (tmpl, list) => {
     let order = ['id', 'name', 'type']
     let obj = parse(tmpl, order)
     obj.type = 'gnis'
     obj.template = 'citation'
-    r.templates.push(obj)
+    list.push(obj)
     return ''
   },
   sfn: ['author', 'year', 'location'],
   audio: ['file', 'text', 'type'],
 
-  'spoken wikipedia': (tmpl, r) => {
+  'spoken wikipedia': (tmpl, list) => {
     let order = ['file', 'date']
     let obj = parse(tmpl, order)
     obj.template = 'audio'
-    r.templates.push(obj)
+    list.push(obj)
     return ''
   },
 
   //https://en.wikipedia.org/wiki/Template:Sister_project_links
-  'sister project links': (tmpl, r) => {
+  'sister project links': (tmpl, list) => {
     let data = parse(tmpl)
     //rename 'wd' to 'wikidata'
     let links = {}
@@ -90,12 +90,12 @@ const parsers = {
       template: 'sister project links',
       links: links
     }
-    r.templates.push(obj)
+    list.push(obj)
     return ''
   },
 
   //https://en.wikipedia.org/wiki/Template:Subject_bar
-  'subject bar': (tmpl, r) => {
+  'subject bar': (tmpl, list) => {
     let data = parse(tmpl)
     Object.keys(data).forEach(k => {
       //rename 'voy' to 'wikivoyage'
@@ -108,7 +108,7 @@ const parsers = {
       template: 'subject bar',
       links: data
     }
-    r.templates.push(obj)
+    list.push(obj)
     return ''
   },
 
@@ -116,7 +116,7 @@ const parsers = {
   'coord missing': ['region'],
   //amazingly, this one does not obey any known patterns
   //https://en.wikipedia.org/wiki/Template:Gallery
-  gallery: (tmpl, r) => {
+  gallery: (tmpl, list) => {
     let obj = parse(tmpl)
     let images = (obj.list || []).filter(line => /^ *File ?:/.test(line))
     images = images.map(file => {
@@ -129,14 +129,14 @@ const parsers = {
       template: 'gallery',
       images: images
     }
-    r.templates.push(obj)
+    list.push(obj)
     return ''
   },
   //https://en.wikipedia.org/wiki/Template:See_also
-  'see also': (tmpl, r) => {
+  'see also': (tmpl, list) => {
     let data = parse(tmpl)
-    data.pos = r.title
-    r.templates.push(data)
+    // data.pos = r.title //not working
+    list.push(data)
     return ''
   },
   unreferenced: ['date']

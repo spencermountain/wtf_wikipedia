@@ -21,9 +21,3 @@ const request = function(url) {
   })
 }
 module.exports = request
-
-// let url =
-//   'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&maxlag=5&rvslots=main&origin=*&format=json&redirects=true&titles=toronto'
-// fetch(url).then(data => {
-//   console.log(data)
-// })

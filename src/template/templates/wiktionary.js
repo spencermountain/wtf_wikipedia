@@ -5,34 +5,34 @@ const parse = require('../_parsers/parse')
 const templates = {
   //{{inflection of|avoir||3|p|pres|ind|lang=fr}}
   //https://en.wiktionary.org/wiki/Template:inflection_of
-  inflection: (tmpl, r) => {
+  inflection: (tmpl, list) => {
     let obj = parse(tmpl, ['lemma'])
     obj.tags = obj.list
     delete obj.list
     obj.type = 'form-of'
-    r.templates.push(obj)
+    list.push(obj)
     return obj.lemma || ''
   },
 
   //latin verbs
-  'la-verb-form': (tmpl, r) => {
+  'la-verb-form': (tmpl, list) => {
     let obj = parse(tmpl, ['word'])
-    r.templates.push(obj)
+    list.push(obj)
     return obj.word || ''
   },
-  'feminine plural': (tmpl, r) => {
+  'feminine plural': (tmpl, list) => {
     let obj = parse(tmpl, ['word'])
-    r.templates.push(obj)
+    list.push(obj)
     return obj.word || ''
   },
-  'male plural': (tmpl, r) => {
+  'male plural': (tmpl, list) => {
     let obj = parse(tmpl, ['word'])
-    r.templates.push(obj)
+    list.push(obj)
     return obj.word || ''
   },
-  rhymes: (tmpl, r) => {
+  rhymes: (tmpl, list) => {
     let obj = parse(tmpl, ['word'])
-    r.templates.push(obj)
+    list.push(obj)
     return 'Rhymes: -' + (obj.word || '')
   }
 }
@@ -201,12 +201,12 @@ let conjugations = [
   'vocative singular'
 ]
 conjugations.forEach(name => {
-  templates[name + ' of'] = (tmpl, r) => {
+  templates[name + ' of'] = (tmpl, list) => {
     let obj = parse(tmpl, ['lemma'])
     obj.tags = obj.list
     delete obj.list
     obj.type = 'form-of'
-    r.templates.push(obj)
+    list.push(obj)
     return obj.lemma || ''
   }
 })

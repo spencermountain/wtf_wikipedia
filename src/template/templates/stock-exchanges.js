@@ -91,9 +91,9 @@ const codes = {
   'zimbabwe stock exchange': 'zimbabwe stock exchange' //https://en.wikipedia.org/wiki/Template:Zimbabwe_Stock_Exchange
 }
 
-const parseStockExchange = (tmpl, r) => {
+const parseStockExchange = (tmpl, list) => {
   let o = parse(tmpl, ['ticketnumber', 'code'])
-  r.templates.push(o)
+  list.push(o)
   let code = o.template || ''
   if (code === '') {
     code = o.code

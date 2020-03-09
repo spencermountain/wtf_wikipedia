@@ -19,6 +19,7 @@ const Section = function(data) {
     enumerable: false,
     value: null
   })
+  data.templates = data.templates || []
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data
@@ -223,7 +224,6 @@ const methods = {
     }
     if (typeof n === 'string') {
       n = n.toLowerCase()
-      // children.forEach((c) => console.log(c));
       return children.find(s => s.title().toLowerCase() === n)
     }
     if (typeof n === 'number') {

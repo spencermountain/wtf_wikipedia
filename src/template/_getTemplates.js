@@ -69,5 +69,3 @@ const getTemplates = function(wiki) {
 }
 
 module.exports = getTemplates
-
-// console.log(getTemplates('he is president. {{nowrap|he is {{age|1980}} years}} he lives in {{date}} texas'));

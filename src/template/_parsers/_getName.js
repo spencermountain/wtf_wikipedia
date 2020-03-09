@@ -19,9 +19,4 @@ const getName = function(tmpl) {
   }
   return name || null
 }
-// console.log(templateName('{{name|foo}}'));
-// console.log(templateName('{{name here}}'));
-// console.log(templateName('{{CITE book |title=the killer and the cartoons }}'));
-// console.log(templateName(`{{name
-// |key=val}}`));
 module.exports = getName

@@ -16,21 +16,21 @@ const getLang = function(name) {
 // pronounciation info
 const templates = {
   // https://en.wikipedia.org/wiki/Template:IPA
-  ipa: (tmpl, r) => {
+  ipa: (tmpl, list) => {
     let obj = parse(tmpl, ['transcription', 'lang', 'audio'])
     obj.lang = getLang(obj.template)
     obj.template = 'ipa'
-    r.templates.push(obj)
+    list.push(obj)
     return ''
   },
   //https://en.wikipedia.org/wiki/Template:IPAc-en
-  ipac: (tmpl, r) => {
+  ipac: (tmpl, list) => {
     let obj = parse(tmpl)
     obj.transcription = (obj.list || []).join(',')
     delete obj.list
     obj.lang = getLang(obj.template)
     obj.template = 'ipac'
-    r.templates.push(obj)
+    list.push(obj)
     return ''
   }
 }

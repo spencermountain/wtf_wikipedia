@@ -30,7 +30,7 @@ const toNumber = function(str) {
 let templates = {
   // this one is a handful!
   //https://en.wikipedia.org/wiki/Template:Weather_box
-  'weather box': (tmpl, r) => {
+  'weather box': (tmpl, list) => {
     let obj = parse(tmpl)
     //collect all month-based data
     let byMonth = {}
@@ -61,13 +61,13 @@ let templates = {
     })
     obj.byYear = byYear
 
-    r.templates.push(obj)
+    list.push(obj)
     return ''
   },
 
   //The 36 parameters are: 12 monthly highs (C), 12 lows (total 24) plus an optional 12 monthly rain/precipitation
   //https://en.wikipedia.org/wiki/Template:Weather_box/concise_C
-  'weather box/concise c': (tmpl, r) => {
+  'weather box/concise c': (tmpl, list) => {
     let obj = parse(tmpl)
     obj.list = obj.list.map(s => toNumber(s))
     obj.byMonth = {
@@ -77,10 +77,10 @@ let templates = {
     }
     delete obj.list
     obj.template = 'weather box'
-    r.templates.push(obj)
+    list.push(obj)
     return ''
   },
-  'weather box/concise f': (tmpl, r) => {
+  'weather box/concise f': (tmpl, list) => {
     let obj = parse(tmpl)
     obj.list = obj.list.map(s => toNumber(s))
     obj.byMonth = {
@@ -90,18 +90,18 @@ let templates = {
     }
     delete obj.list
     obj.template = 'weather box'
-    r.templates.push(obj)
+    list.push(obj)
     return ''
   },
 
   //https://en.wikipedia.org/wiki/Template:Climate_chart
-  'climate chart': (tmpl, r) => {
-    let list = parse(tmpl).list || []
-    let title = list[0]
-    let source = list[38]
-    list = list.slice(1)
+  'climate chart': (tmpl, list) => {
+    let lines = parse(tmpl).list || []
+    let title = lines[0]
+    let source = lines[38]
+    lines = lines.slice(1)
     //amazingly, they use '−' symbol here instead of negatives...
-    list = list.map(str => {
+    lines = lines.map(str => {
       if (str && str[0] === '−') {
         str = str.replace(/−/, '-')
       }
@@ -111,9 +111,9 @@ let templates = {
     //groups of three, for 12 months
     for (let i = 0; i < 36; i += 3) {
       months.push({
-        low: toNumber(list[i]),
-        high: toNumber(list[i + 1]),
-        precip: toNumber(list[i + 2])
+        low: toNumber(lines[i]),
+        high: toNumber(lines[i + 1]),
+        precip: toNumber(lines[i + 2])
       })
     }
     let obj = {
@@ -124,7 +124,7 @@ let templates = {
         months: months
       }
     }
-    r.templates.push(obj)
+    list.push(obj)
     return ''
   }
 }

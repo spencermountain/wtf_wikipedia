@@ -32,7 +32,7 @@ const getBoth = function(tmpl) {
 
 const parsers = {
   //generic {{date|year|month|date}} template
-  date: (tmpl, r) => {
+  date: (tmpl, list) => {
     let order = ['year', 'month', 'date', 'hour', 'minute', 'second', 'timezone']
     let obj = parse(tmpl, order)
     let data = ymd([obj.year, obj.month, obj.date || obj.day])
@@ -51,13 +51,13 @@ const parsers = {
       }
     }
     if (obj.text) {
-      r.templates.push(template(obj))
+      list.push(template(obj))
     }
     return obj.text
   },
 
   //support parsing of 'February 10, 1992'
-  natural_date: (tmpl, r) => {
+  natural_date: (tmpl, list) => {
     let order = ['text']
     let obj = parse(tmpl, order)
     let str = obj.text || ''
@@ -76,16 +76,16 @@ const parsers = {
         date.date = d.getDate()
       }
     }
-    r.templates.push(template(date))
+    list.push(template(date))
     return str.trim()
   },
 
   //just grab the first value, and assume it's a year
-  one_year: (tmpl, r) => {
+  one_year: (tmpl, list) => {
     let order = ['year']
     let obj = parse(tmpl, order)
     let year = Number(obj.year)
-    r.templates.push(
+    list.push(
       template({
         year: year
       })
@@ -94,7 +94,7 @@ const parsers = {
   },
 
   //assume 'y|m|d' | 'y|m|d' // {{BirthDeathAge|B|1976|6|6|1990|8|8}}
-  two_dates: (tmpl, r) => {
+  two_dates: (tmpl, list) => {
     let order = [
       'b',
       'birth_year',
@@ -108,11 +108,11 @@ const parsers = {
     //'b' means show birth-date, otherwise show death-date
     if (obj.b && obj.b.toLowerCase() === 'b') {
       let date = ymd([obj.birth_year, obj.birth_month, obj.birth_date])
-      r.templates.push(template(date))
+      list.push(template(date))
       return toText(date)
     }
     let date = ymd([obj.death_year, obj.death_month, obj.death_date])
-    r.templates.push(template(date))
+    list.push(template(date))
     return toText(date)
   },
 

@@ -53,9 +53,9 @@ const playoffBracket = function(tmpl) {
 
 let all = {
   //playoff brackets
-  '4teambracket': function(tmpl, r) {
+  '4teambracket': function(tmpl, list) {
     let obj = playoffBracket(tmpl)
-    r.templates.push(obj)
+    list.push(obj)
     return ''
   }
 }

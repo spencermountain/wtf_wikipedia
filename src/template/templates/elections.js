@@ -2,24 +2,24 @@ const parse = require('../_parsers/parse')
 
 let templates = {
   //https://en.wikipedia.org/wiki/Template:Election_box
-  'election box begin': (tmpl, r) => {
+  'election box begin': (tmpl, list) => {
     let data = parse(tmpl)
-    r.templates.push(data)
+    list.push(data)
     return ''
   },
-  'election box candidate': (tmpl, r) => {
+  'election box candidate': (tmpl, list) => {
     let data = parse(tmpl)
-    r.templates.push(data)
+    list.push(data)
     return ''
   },
-  'election box hold with party link': (tmpl, r) => {
+  'election box hold with party link': (tmpl, list) => {
     let data = parse(tmpl)
-    r.templates.push(data)
+    list.push(data)
     return ''
   },
-  'election box gain with party link': (tmpl, r) => {
+  'election box gain with party link': (tmpl, list) => {
     let data = parse(tmpl)
-    r.templates.push(data)
+    list.push(data)
     return ''
   }
 }

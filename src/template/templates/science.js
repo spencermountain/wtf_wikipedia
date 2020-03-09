@@ -5,19 +5,19 @@ let templates = {
   'taxon info': ['taxon', 'item'],
 
   //minor planet - https://en.wikipedia.org/wiki/Template:MPC
-  mpc: (tmpl, r) => {
+  mpc: (tmpl, list) => {
     let obj = parse(tmpl, ['number', 'text'])
-    r.templates.push(obj)
+    list.push(obj)
     return `[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ${obj.text ||
       obj.number}]`
   },
   //https://en.wikipedia.org/wiki/Template:Chem2
-  chem2: (tmpl, r) => {
+  chem2: (tmpl, list) => {
     let obj = parse(tmpl, ['equation'])
-    r.templates.push(obj)
+    list.push(obj)
     return obj.equation
   }, //https://en.wikipedia.org/wiki/Template:Sky
-  sky: (tmpl, r) => {
+  sky: (tmpl, list) => {
     let obj = parse(tmpl, [
       'asc_hours',
       'asc_minutes',
@@ -43,7 +43,7 @@ let templates = {
       },
       distance: obj.distance
     }
-    r.templates.push(template)
+    list.push(template)
     return ''
   }
 }
