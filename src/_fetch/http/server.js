@@ -1,5 +1,4 @@
 const https = require('https')
-console.log('server')
 
 // use the native nodejs request function
 const request = function(url, opts = {}) {

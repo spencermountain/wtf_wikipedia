@@ -320,11 +320,6 @@
       "description": ""
     },
     {
-      "name": "exists",
-      "returns": "Boolean",
-      "description": ""
-    },
-    {
       "name": "json",
       "returns": "Object",
       "description": "return some generic metadata for this image"

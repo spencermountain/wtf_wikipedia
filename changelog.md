@@ -11,6 +11,7 @@
 - [breaking] move `.html()`, `.latex()`, and `.markdown()` to [their](https://github.com/spencermountain/wtf-plugin-html) [respective](https://github.com/spencermountain/wtf-plugin-latex) [plugins](https://github.com/spencermountain/wtf-plugin-markdown)
 - [breaking] `.templates()` and `.links()` return Template and Link objects, and not bare JSON (use `.map(l=> l.json())`)
 - [breaking] refactor inputs for `.fetch()` - no-longer support callback/errback style
+- - no longer support 'enwikiquote' format as input
 - [breaking] remove `Image.exists()` method to [plugin](./plugins/image-exists.js)
 - [major] create seperate client/server-side build formats (use native fetch/node lib)
 - support adding template parsers through plugins in `.extend()`

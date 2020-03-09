@@ -1,4 +1,3 @@
-console.log('client')
 // use the native client-side fetch function
 const request = function(url, opts) {
   //eslint-disable-next-line

@@ -61,7 +61,6 @@ const makeUrl = function(options) {
   }
   // make it!
   url += toQueryString(params)
-  console.log(url)
   return url
 }
 module.exports = makeUrl
