@@ -13,7 +13,14 @@ wtf.extend((models, templates) => {
 // wtf.fetch('多伦多', { lang: 'zh', domain: 'wikivoyage.org' }).then(doc => {
 //   console.log(doc.sentences(0).text()) // ''
 // })
+// wtf.fetch('On a Friday', 'en', function(err, doc) {
+//   var val = doc.infobox(0).get('current_members');
+//   val.links().map(link => link.page());
+// });
 
-wtf.fetch('Toronto', { lang: 'de', domain: 'wikivoyage.org' }).then(doc => {
-  console.log(doc.sentences(0).text()) // ''
-})
+let str = `{{nest|{{nest|{{nest|{{nest|four}}}}}}}}`
+console.log(
+  wtf(str)
+    .text()
+    .trim()
+)

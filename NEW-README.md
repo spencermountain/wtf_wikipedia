@@ -32,13 +32,13 @@
 ```js
 const wtf = require('wtf_wikipedia');
 
-wtf.fetch('Whistling').then(doc => {
+wtf.fetch('Toronto Raptors').then(doc => {
 
   doc.categories() // ['National Basketball Association teams', 'Basketball teams in Toronto', ...]
 
   doc.sentences(0).text() // 'The Toronto Raptors are a Canadian professional basketball team based in Toronto.'
 
-  doc.infobox().get('arena').text() // 'Scotiabank Arena'
+  doc.infobox().get('coach').text() // 'Nick Nurse'
 
   doc.references().length // 219
 
@@ -47,20 +47,22 @@ wtf.fetch('Whistling').then(doc => {
 ```
 
 ### Ok first,
-[wikitext](https://en.wikipedia.org/wiki/Help:Wikitext) is [really](https://utcc.utoronto.ca/~cks/space/blog/programming/ParsingWikitext), [really](https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something) [hard](https://twitter.com/ftrain/status/1036060636587978753) to parse. It is among the most-curious and ad-hoc data-formats you'll ever find.
+[wikitext](https://en.wikipedia.org/wiki/Help:Wikitext) is [really](https://utcc.utoronto.ca/~cks/space/blog/programming/ParsingWikitext), [really](https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something) [hard](https://twitter.com/ftrain/status/1036060636587978753) to parse. 
+It is among the most-curious and ad-hoc data-formats you'll ever find.
 
 Consider:
 * the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax)
 * ['Birth_date_and_age'](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs ['Birth-date_and_age'](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
-* wikitext doesn't have any errors
 * the partial-implementation of [inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
+* wikitext doesn't have any errors
 * deep recursion of [similar-syntax](https://en.wikipedia.org/wiki/Wikipedia:Database_reports/Templates_transcluded_on_the_most_pages) templates,
-* the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) for image paths,
 * nested elements do not honour the scope of other elements
+* the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) for image paths,
 * the [custom encoding](https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(technical_restrictions)) of whitespace and punctuation,
 * [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
 * [PEG](https://pegjs.org/) based parsers struggle with wikitext's massive backtracking
 * as of Nov-2018, there are [634,755](https://s3-us-west-1.amazonaws.com/spencer-scratch/allTemplates-2018-10-26.tsv) templates in wikipedia
+* there are a large number of pages that also don't render properly on wikipedia.
 
 **wtf_wikipedia** supports many ***recursive shenanigans***, depreciated and **obscure template**
 variants, and illicit 'wiki-esque' shorthands.
@@ -85,15 +87,45 @@ it really tries its best, though it is [very](https://osr.cs.fau.de/wp-content/u
 ### What doesn't do:
 * external '[transcluded](https://en.wikipedia.org/wiki/Wikipedia:Transclusion)' page data [1](https://github.com/spencermountain/wtf_wikipedia/issues/223)
 * AST output
-* smart ('pretty') formatting of html in infoboxes or galleries [1](https://github.com/spencermountain/wtf_wikipedia/issues/173)
+* smart (or 'pretty') formatting of html in infoboxes or galleries [1](https://github.com/spencermountain/wtf_wikipedia/issues/173)
 * maintain perfect page order [1](https://github.com/spencermountain/wtf_wikipedia/issues/88)
 * per-sentence references (by 'section' element instead)
+
+It is built to be as flexible as possible. In all cases, the parser tries to fail in considerate ways.
+
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
 </div>
+
+## well ok then,
+enough chat,
+<kbd>npm install wtf_wikipedia</kbd>
+
+```javascript
+var wtf = require('wtf_wikipedia');
+
+let str = `Whistling is featured in a number of television shows, such as [[Lassie (1954 TV series)|''Lassie'']], ''[[The Andy Griffith Show]]'' and the title theme for ''[[The X-Files]]''.`
+let links = wtf(str).links()
+links.map(l => l.page())
+// [ 'Lassie (1954 TV series)',  'The Andy Griffith Show',  'The X-Files' ]
+
+```
+
+***on the client-side:***
+```html
+<script src="https://unpkg.com/wtf_wikipedia"></script>
+<script>
+  // (follows redirect)
+  wtf.fetch('On a Friday', function(err, doc) {
+    var val = doc.infobox(0).get('current_members');
+    val.links().map(link => link.page());
+    //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
+  });
+</script>
+```
 
 ## Fetch
 This library can grab, and automatically-parse articles from [any wikimedia api](https://www.mediawiki.org/wiki/API:Main_page). 
@@ -106,9 +138,12 @@ let doc = await wtf.fetch('https://muppet.fandom.com/wiki/Miss_Piggy')
 doc = await wtf.fetch('Tony Hawk', 'fr')
 doc.sentences(0).text()  // 'Tony Hawk est un skateboarder professionnel et un acteur ...'
 
+// accept an array, or wikimedia pageIDs
+let docs = wtf.fetch(['Whistling', 2983], {follow_redirects:false})
+
 // article from german wikivoyage
-wtf.fetch('Toronto', { lang: 'de', domain: 'wikivoyage.org' }).then(doc => {
-  console.log(doc.sentences(0).text()) // ''
+wtf.fetch('Toronto', { lang: 'de', wiki: 'wikivoyage' }).then(doc => {
+  console.log(doc.sentences(0).text()) // 'Toronto ist die Hauptstadt der Provinz Ontario'
 })
 
 ```
