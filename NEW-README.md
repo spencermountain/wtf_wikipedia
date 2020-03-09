@@ -198,8 +198,10 @@ wtf.extend((models, templates) => {
   }
   // array-syntax allows easy-labeling of parameters
   templates.foo = ['a', 'b', 'c']
-  // number-syntax for returning 
+  // number-syntax for returning by param # '{{name|zero|one|two}}'
   templates.baz = 0
+  // replace the template with a string '{{asterisk}}' -> '*'
+  templates.asterisk = '*'
 })
 ```
 

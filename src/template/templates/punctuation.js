@@ -46,8 +46,6 @@ let punctuation = [
 ]
 const templates = {}
 punctuation.forEach(a => {
-  templates[a[0]] = () => {
-    return a[1]
-  }
+  templates[a[0]] = a[1]
 })
 module.exports = templates

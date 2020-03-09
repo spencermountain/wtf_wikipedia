@@ -5,6 +5,7 @@ wtf.extend((models, templates) => {
   templates.two = 0
   templates.three = 0
   templates.four = 0
+  templates.nest = 0
 })
 // ;(async () => {
 //   var doc = await wtf('{{foo|asdf}}')
@@ -22,9 +23,9 @@ wtf.extend((models, templates) => {
 // });
 
 // let str = `start {{nest|{{two|{{three|{{four|four}}}}}}}} end`
-// let str = `start {{nest| {{two|inside}}  }} end`
-let str = `start {{cool|oh|yeah}}  }} end`
+// let str = `start {{one| {{two|inside}}  }} {{one| asdf}} end`
+let str = `{{nest|{{nest|two}}}}`
 let doc = wtf(str)
 
-console.log(doc.templates())
+console.log(doc.text())
 // console.log(doc.data.sections[0].data.templates)

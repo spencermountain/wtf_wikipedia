@@ -32,3 +32,14 @@ test('extend templates', t => {
 
   t.end()
 })
+
+test('string template syntax', t => {
+  wtf.extend((models, templates) => {
+    templates.nest = 'inside'
+    templates.ignore = ''
+  })
+  let str = `before {{nest|not working}} after {{ignore}}`
+  let doc = wtf(str)
+  t.equal(doc.text(), 'before not working after', 'template as string')
+  t.end()
+})
