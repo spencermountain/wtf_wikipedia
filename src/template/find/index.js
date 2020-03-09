@@ -42,14 +42,14 @@ const doAll = function(wiki) {
 
 module.exports = doAll
 
-let str = `start
-{{one|inside here
-  {{two| a}}
-  {{twob| b
-    {{three |none}}    
-  }}
-}}
-{{one-more|hi}}
-end`
+// let str = `start
+// {{one|inside here
+//   {{two| a}}
+//   {{twob| b
+//     {{three |none}}
+//   }}
+// }}
+// {{one-more|hi}}
+// end`
 
-console.log(JSON.stringify(doAll(str), null, 2))
+// console.log(JSON.stringify(doAll(str), null, 2))

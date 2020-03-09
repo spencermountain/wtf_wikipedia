@@ -1,57 +1,30 @@
-const Infobox = require('../infobox/Infobox')
-const Reference = require('../reference/Reference')
-const getTemplates = require('./_getTemplates')
-const Template = require('./Template')
+const findTemplates = require('./find')
 const parseTemplate = require('./parse')
-const isCitation = new RegExp('^(cite |citation)', 'i')
-const citations = {
-  citation: true,
-  refn: true,
-  harvnb: true
-}
-//ensure references and infoboxes at least look valid
-const isObject = function(x) {
-  return typeof x === 'object' && x !== null && x.constructor.toString().indexOf('Array') === -1
-}
+const Template = require('./Template')
 
 //reduce the scary recursive situations
-const parseTemplates = function(wiki, data, options) {
-  let templates = getTemplates(wiki)
-  //first, do the nested (second level) ones
-  templates.nested.forEach(tmpl => {
-    wiki = parseTemplate(tmpl, wiki, data, options)
-  })
-  //then, reparse wiki for the top-level ones
-  templates = getTemplates(wiki)
+const parseTemplates = function(wiki, data) {
+  // nested data-structure of templates
+  let templates = findTemplates(wiki)
+  let list = []
 
-  //okay if we have a 3-level-deep template, do it again (but no further)
-  if (templates.nested.length > 0) {
-    templates.nested.forEach(tmpl => {
-      wiki = parseTemplate(tmpl, wiki, data, options)
-    })
-    templates = getTemplates(wiki) //this is getting crazy.
+  // recursive template-parser
+  const doOne = function(obj) {
+    // do tail-first recurion
+    if (obj.children && obj.children.length > 0) {
+      obj.children.forEach(doOne)
+    }
+    wiki = parseTemplate(obj.tmpl, list)
   }
-  //okay, top-level
-  templates.top.forEach(tmpl => {
-    wiki = parseTemplate(tmpl, wiki, data, options)
-  })
-  //lastly, move citations + infoboxes out of our templates list
-  let clean = []
-  data.templates.forEach(o => {
-    //it's possible that we've parsed a reference, that we missed earlier
-    if (citations[o.template] === true || isCitation.test(o.template) === true) {
-      data.references = data.references || []
-      data.references.push(new Reference(o))
-      return
-    }
-    if (o.template === 'infobox' && o.data && isObject(o.data)) {
-      data.infoboxes = data.infoboxes || []
-      data.infoboxes.push(new Infobox(o))
-      return
-    }
-    clean.push(new Template(o))
-  })
-  data.templates = clean
+
+  //kick it off
+  templates.forEach(obj => doOne(obj))
+  // console.log(data.templates)
+  // data.templates = []
+  data.infoboxes = []
+  data.references = []
+  data.templates = list.map(obj => new Template(obj))
+
   return wiki
 }
 
