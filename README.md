@@ -24,7 +24,7 @@
     <img src="https://codecov.io/gh/spencermountain/wtf_wikipedia/branch/master/graph/badge.svg" />
   </a>
   <a href="https://bundlephobia.com/result?p=wtf_wikipedia">
-    <img src="https://badge-size.herokuapp.com/spencermountain/wtf_wikipedia/master/builds/wtf_wikipedia.min.js" />
+    <img src="https://badge-size.herokuapp.com/spencermountain/wtf_wikipedia/master/builds/wtf_wikipedia-client.min.js" />
   </a>
   </div>
 </div>

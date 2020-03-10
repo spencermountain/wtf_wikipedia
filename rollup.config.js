@@ -53,7 +53,7 @@ export default [
 
   // === server-side .js ===
   // {
-  //   input: '/Users/spencer/mountain/wtf_wikipedia/src/_fetch/index.js', //'src/index.js',
+  //   input: 'src/index.js',
   //   output: [
   //     {
   //       banner: banner,
@@ -61,7 +61,6 @@ export default [
   //       format: 'umd',
   //       sourcemap: true,
   //       name: 'wtf'
-  //       // globals: ['https']
   //     }
   //   ],
   //   external: ['https'],
@@ -78,25 +77,70 @@ export default [
   //     }),
   //     sizeCheck()
   //   ]
-  // }
+  // },
   // === client-side .js ===
   {
     input: 'src/index.js',
     output: [
       {
         banner: banner,
-        file: 'builds/wtf_wikipedia.min.js',
+        file: 'builds/wtf_wikipedia-client.js',
         format: 'umd',
         name: 'wtf',
-        sourcemap: false
-        // preferBuiltins: false
+        sourcemap: true
       }
     ],
     plugins: [
-      // resolve({
-      //   browser: true
-      // }),
-      // builtins(),
+      json(),
+      commonjs(),
+      babel({
+        babelrc: false,
+        presets: ['@babel/preset-env']
+      }),
+      alias({
+        entries: [{ find: './http/server', replacement: './http/client' }]
+      })
+    ]
+  },
+  // === client-side min.js ===
+  {
+    input: 'src/index.js',
+    output: [
+      {
+        banner: banner,
+        file: 'builds/wtf_wikipedia-client.min.js',
+        format: 'umd',
+        name: 'wtf',
+        sourcemap: false
+      }
+    ],
+    plugins: [
+      json(),
+      commonjs(),
+      babel({
+        babelrc: false,
+        presets: ['@babel/preset-env']
+      }),
+      alias({
+        entries: [{ find: './http/server', replacement: './http/client' }]
+      }),
+      terser(),
+      sizeCheck()
+    ]
+  },
+  // === client-side .mjs ===
+  {
+    input: 'src/index.js',
+    output: [
+      {
+        banner: banner,
+        file: 'builds/wtf_wikipedia-client.mjs',
+        format: 'esm',
+        name: 'wtf',
+        sourcemap: false
+      }
+    ],
+    plugins: [
       json(),
       commonjs(),
       babel({
