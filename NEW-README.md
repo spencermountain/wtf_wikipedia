@@ -169,6 +169,62 @@ This library has lovingly ❤️ borrowed a lot of code and data from the offici
 
 enough chat,
 
+## Examples
+
+### **wtf(wikiText)**
+
+flip your wikimedia markup into a `Document` object
+
+```javascript
+import wtf from 'wtf_wikipedia'
+wtf(`==In Popular Culture==
+* harry potter's wand
+* the simpsons fence`)
+// Document {text(), json(), lists()...}
+```
+
+### **doc.text()**
+
+returns only nice plain-text of the article
+
+```js
+var wiki =
+  "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>"
+var text = wtf(wiki).text()
+//"Boston's baseball field has a 37ft wall."
+```
+
+#### Section traversal:
+
+```js
+wtf(page)
+  .sections(1)
+  .children()
+wtf(page)
+  .sections('see also')
+  .remove()
+```
+
+#### Sentence data:
+
+```js
+s = wtf(page).sentences(4)
+s.links()
+s.bolds()
+s.italics()
+s.dates() //structured date templates
+```
+
+#### Images
+
+```js
+img = wtf(page).images(0)
+img.url() // the full-size wikimedia-hosted url
+img.thumbnail() // 300px, by default
+img.format() // jpg, png, ..
+img.exists() // HEAD req to see if the file is alive
+```
+
 ## Fetch
 
 This library can grab, and automatically-parse articles from [any wikimedia api](https://www.mediawiki.org/wiki/API:Main_page).
@@ -189,6 +245,40 @@ let docs = wtf.fetch(['Whistling', 2983], { follow_redirects: false })
 wtf.fetch('Toronto', { lang: 'de', wiki: 'wikivoyage' }).then(doc => {
   console.log(doc.sentences(0).text()) // 'Toronto ist die Hauptstadt der Provinz Ontario'
 })
+```
+
+you may also pass the wikipedia page id as parameter instead of the page title:
+
+```javascript
+let doc = await wtf.fetch(64646, 'de')
+```
+
+the fetch method follows redirects.
+
+### Category fetch
+
+**wtf.category(title, [lang], [options | callback])**
+retrieves all pages and sub-categories belonging to a given category:
+
+```js
+let result = await wtf.category('Category:Politicians_from_Paris')
+//{
+//  pages: [{title: 'Paul Bacon', pageid: 1266127 }, ...],
+//  categories: [ {title: 'Category:Mayors of Paris' } ]
+//}
+```
+
+### Random article
+
+**wtf.random(title, [lang], [options | callback])**
+retrieves all pages and sub-categories belonging to a given category:
+
+```js
+let result = await wtf.category('Category:Politicians_from_Paris')
+//{
+//  pages: [{title: 'Paul Bacon', pageid: 1266127 }, ...],
+//  categories: [ {title: 'Category:Mayors of Paris' } ]
+//}
 ```
 
 ### Good practice:
