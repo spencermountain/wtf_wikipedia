@@ -51,7 +51,9 @@
 
 ```js
 const wtf = require('wtf_wikipedia')
+```
 
+```js
 wtf.fetch('Toronto Raptors').then(doc => {
   let info = doc.infobox()
   info.get('coach').text() //'Nick Nurse'
@@ -60,7 +62,7 @@ wtf.fetch('Toronto Raptors').then(doc => {
 })
 ```
 
-get plain-text
+get plain-text:
 
 ```js
 let wiki = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.`
@@ -68,7 +70,7 @@ wtf(wiki).text()
 //"Boston's baseball field has a 37ft wall."
 ```
 
-or get json data:
+or get json:
 
 ```javascript
 let doc = await wtf.fetch('Whistling')
@@ -84,7 +86,7 @@ sec.links().map(l => l.json())
 //[{page:'Slide whistle'}, {page:'Hand flute'}, {page:'Bird vocalization'}...]
 ```
 
-**_on the client-side:_**
+run on the client-side:
 
 ```html
 <script src="https://unpkg.com/wtf_wikipedia"></script>
@@ -97,6 +99,12 @@ sec.links().map(l => l.json())
   })
 </script>
 ```
+
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
 
 ### Ok first, 🛀
 
