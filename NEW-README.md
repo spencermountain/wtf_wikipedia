@@ -55,8 +55,8 @@ const wtf = require('wtf_wikipedia')
 
 ```js
 wtf.fetch('Toronto Raptors').then(doc => {
-  let info = doc.infobox()
-  info.get('coach').text() //'Nick Nurse'
+  let coach = doc.infobox().get('coach')
+  coach.text() //'Nick Nurse'
 
   doc.sentences(0).text() //'The Toronto Raptors are a Canadian professional basketball team based in Toronto.'
 })
@@ -65,8 +65,8 @@ wtf.fetch('Toronto Raptors').then(doc => {
 get plain-text:
 
 ```js
-let wiki = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.`
-wtf(wiki).text()
+let str = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.`
+wtf(str).text()
 //"Boston's baseball field has a 37ft wall."
 ```
 
@@ -74,16 +74,17 @@ or get json:
 
 ```javascript
 let doc = await wtf.fetch('Whistling')
+
 let json = doc.json()
 json.categories
 //['Oral communication', 'Vocal music', 'Vocal skills']
 
-doc.images(0).json()
-// {url: https://upload.wikimedia.org..../300px-Duveneck_Whistling_Boy.jpg', file: 'Image:Duveneck Whistling Boy.jpg' }
-
 let sec = doc.sections('see also')
 sec.links().map(l => l.json())
-//[{page:'Slide whistle'}, {page:'Hand flute'}, {page:'Bird vocalization'}...]
+//[{ page: 'Slide whistle' }, { page: 'Hand flute' }, { page: 'Bird vocalization' }...]
+
+doc.images(0).json()
+// {url: https://upload.wikimedia.org..../300px-Duveneck_Whistling_Boy.jpg', file: 'Image:Duveneck Whistling Boy.jpg' }
 ```
 
 run on the client-side:
@@ -91,8 +92,8 @@ run on the client-side:
 ```html
 <script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
-  // (follows redirect)
   wtf.fetch('On a Friday', function(err, doc) {
+    // get links from an infobox prop
     let members = doc.infobox().get('current members')
     members.links().map(l => l.page())
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
@@ -123,12 +124,12 @@ Consider:
 - _the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) for image paths,_
 - _the [custom encoding](<https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(technical*restrictions)>) of whitespace and punctuation,*
 - _[right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates._
-- _[PEG](https://pegjs.org/) based parsers struggle with wikitext's massive backtracking_
-- _as of Nov-2018, there are [634,755](https://s3-us-west-1.amazonaws.com/spencer-scratch/allTemplates-2018-10-26.tsv) templates in wikipedia_
+- _[PEG-based](https://pegjs.org/) parsers struggle with wikitext's backtracking/lookarounds_
+- _there are [634,755](https://s3-us-west-1.amazonaws.com/spencer-scratch/allTemplates-2018-10-26.tsv) templates in en-wikipedia (as of Nov-2018)_
 
-Also, there are a large number of editor-errors that don't render properly on wikipedia.
+Also, there are a large number of pages that don't render properly on wikipedia.
 
-this library supports many **_recursive shenanigans_**, depreciated and **obscure template** variants, and illicit **'wiki-shorthands'**.
+this library supports many **_recursive shenanigans_**, depreciated and **obscure template** variants, and illicit **wiki-shorthands**.
 
 ### What it does:
 
@@ -149,7 +150,7 @@ this library supports many **_recursive shenanigans_**, depreciated and **obscur
 ### What doesn't do:
 
 - external '[transcluded](https://en.wikipedia.org/wiki/Wikipedia:Transclusion)' page data [[1](https://github.com/spencermountain/wtf_wikipedia/issues/223)]
-- AST output
+- **AST** output
 - smart (or 'pretty') formatting of html in infoboxes or galleries [[1](https://github.com/spencermountain/wtf_wikipedia/issues/173)]
 - maintain perfect page order [[1]](https://github.com/spencermountain/wtf_wikipedia/issues/88)
 - per-sentence references (by 'section' element instead)
@@ -157,7 +158,9 @@ this library supports many **_recursive shenanigans_**, depreciated and **obscur
 
 It is built to be as flexible as possible. In all cases, tries to fail in considerate ways.
 
-#### what about html scraping..
+---
+
+### what about html scraping..
 
 Wikimedia's [official parser](https://www.mediawiki.org/wiki/Parsoid) turns wikitext ➔ HTML.
 You can even get html from the api [like this](https://en.wikipedia.org/w/api.php?format=json&origin=*&action=parse&prop=text&page=Whistling).
@@ -173,16 +176,23 @@ The contributors to this library have come to that conclusion, [as many others h
 
 This library has _lovingly borrowed_ a lot of code and data from the parsoid project, and is gracious to its contributors.
 
-## enough chat,
+<!-- spacer -->
+<img height="15px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<!-- spacer -->
+<img height="15px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+
+## ok, enough chat.
 
 flip your wikimedia markup into a `Document` object
 
 ```javascript
 import wtf from 'wtf_wikipedia'
 
-let txt = `==In Popular Culture==
+let txt = `
+==Wood in Popular Culture==
 * harry potter's wand
-* the simpsons fence`
+* the simpsons fence
+`
 wtf(txt)
 // Document {text(), json(), lists()...}
 ```
