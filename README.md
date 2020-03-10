@@ -44,8 +44,8 @@
 </div>
 
 <div align="center">
-  we're <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">not</a> <a href="https://twitter.com/ftrain/status/1036060636587978753">joking</a>
-  <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<div>we're <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">not</a> <a href="https://twitter.com/ftrain/status/1036060636587978753">joking</a>!</div>
+<img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 </div>
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
@@ -56,9 +56,6 @@
 ```js
 const wtf = require('wtf_wikipedia')
 ```
-
-<!-- spacer -->
-<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
 fetch and parse an article:
 
@@ -173,7 +170,10 @@ this library supports many **_recursive shenanigans_**, depreciated and **obscur
 
 It is built to be as flexible as possible. In all cases, tries to fail in considerate ways.
 
-#### what about html scraping..?
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+
+#### What about html scraping..?
 
 Wikimedia's [official parser](https://www.mediawiki.org/wiki/Parsoid) turns wikitext ➔ HTML.
 
@@ -198,7 +198,7 @@ This library has (_lovingly_) borrowed a lot of code and data from the parsoid p
 
 ## ok, enough chat.
 
-flip your wikitext into a `Document` object
+flip your wikitext into a `Doc` object
 
 ```javascript
 import wtf from 'wtf_wikipedia'
@@ -234,7 +234,7 @@ var text = wtf(wiki).text()
 
 #### **doc.sections()**:
 
-a section (heading?) )is _== Like This ==_
+(a section is a heading, _'==Like This=='_)
 
 ```js
 wtf(page)
@@ -278,7 +278,7 @@ img.format() // jpg, png, ..
 ## Fetch
 
 This library can grab, and automatically-parse articles from [any wikimedia api](https://www.mediawiki.org/wiki/API:Main_page).
-This includes any language, any wiki-project, and most 3rd-party wikis.
+This includes any language, any wiki-project, and most **3rd-party wikis**.
 
 ```js
 // 3rd-party wiki
@@ -305,9 +305,10 @@ let doc = await wtf.fetch(64646, 'de')
 
 the fetch method follows redirects.
 
-#### fetch categories:
+### fetch categories:
 
 **wtf.category(title, [lang], [options | callback])**
+
 retrieves all pages and sub-categories belonging to a given category:
 
 ```js
@@ -321,6 +322,7 @@ let result = await wtf.category('Category:Politicians_from_Paris')
 ### fetch random article:
 
 **wtf.random(title, [lang], [options | callback])**
+
 retrieves all pages and sub-categories belonging to a given category:
 
 ```js
@@ -369,7 +371,7 @@ wtf
 
 ## Tutorials
 
-- [Getting NBA Team data](https://observablehq.com/@spencermountain/wtf_wikipedia-tutorial?collection=@spencermountain/wtf_wikipedia)
+- [Gentle Introduction](https://observablehq.com/@spencermountain/wtf_wikipedia-tutorial?collection=@spencermountain/wtf_wikipedia) - Getting NBA Team data
 - [Parsing tables](https://observablehq.com/@spencermountain/parsing-wikipedia-tables) - getting all Apollo Astronauts as JSON
 - [Parsing Timezones](https://observablehq.com/@spencermountain/parsing-timezones-from-wikipedia)
 - [MBL season schedules](https://observablehq.com/@spencermountain/wikipedia-baseball-table-parser?collection=@spencermountain/wtf_wikipedia)
@@ -488,24 +490,37 @@ wtf
 
 ### Adding new methods:
 
+you can add new methods to any class of the library, with `wtf.extend()`
+
 ```js
+wtf.extend(models => {
+  // throw this method in there...
+  models.Doc.prototype.isPerson = function() {
+    return this.categories().find(cat => cat.match(/people/))
+  }
+})
+
+await wtf.fetch('Stephen Harper').isPerson() //hmm?
 ```
 
 ### Adding new templates:
 
-does your wiki use a `{{foo}}` template?
+does your wiki use a `{{foo}}` template? Add a custom parser for it:
 
 ```js
 wtf.extend((models, templates) => {
-  // use a custom parser function
+  // create a custom parser function
   templates.foo = (text, data) => {
     data.templates.push({ name: 'foo', cool: true })
     return 'new-text'
   }
+
   // array-syntax allows easy-labeling of parameters
   templates.foo = ['a', 'b', 'c']
+
   // number-syntax for returning by param # '{{name|zero|one|two}}'
   templates.baz = 0
+
   // replace the template with a string '{{asterisk}}' -> '*'
   templates.asterisk = '*'
 })
@@ -516,6 +531,7 @@ wtf.extend((models, templates) => {
 It is not the fastest parser, and is very unlikely to beat a [single-pass parser](https://www.mediawiki.org/wiki/Alternative_parsers) in C or Java.
 
 Using [dumpster-dive](https://github.com/spencermountain/dumpster-dive), this library can parse a full english wikipedia in around 4 hours on a macbook.
+
 That's about 100 pages/second, per thread.
 
 <!-- spacer -->
