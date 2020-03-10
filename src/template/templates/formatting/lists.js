@@ -89,7 +89,7 @@ const tmpls = {
     lines = lines.map(s => s.replace(/\*/, ''))
     list.push({
       template: 'columns-list',
-      list: list
+      list: lines
     })
     lines = lines.map(s => '• ' + s)
     return lines.join('\n\n')

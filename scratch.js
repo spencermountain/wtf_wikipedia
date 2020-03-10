@@ -24,13 +24,13 @@ wtf.extend((models, templates) => {
 
 // let str = `start {{nest|{{two|{{three|{{four|four}}}}}}}} end`
 // let str = `start {{one| {{two|inside}}  }} {{one| asdf}} end`
-let str = `<gallery widths="200px" heights="200px" caption="Nudes">
-File:Freya (1901) by Anders Zorn.jpg|''[[Freyja|Freya]]'', 1901
-File:ZORN på sandhamn.jpg|Woman bathing at Sandhamn, 1906
-File:Anders Zorn I werners eka-1917.jpg|Woman in a boat, 1917
-File:Anders Zorn - I Sängkammaren.jpg|''In the bedroom'', 1918
-File:Anders Zorn - Ateljéidyll.jpg|G''Studio Idyll'', 1918
-</gallery>`
+let str = `
+{{Columns-list|
+*[[Capacity to be alone]]
+*''[[Écriture féminine]]''
+*[[Khôra]]
+*[[List of thinkers influenced by deconstruction]]
+}}`
 let doc = wtf(str)
 
 console.log(doc.templates())

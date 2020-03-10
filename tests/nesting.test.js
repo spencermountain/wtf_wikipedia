@@ -1,34 +1,34 @@
-'use strict'
 var test = require('tape')
 var wtf = require('./lib')
 
 wtf.extend((models, templates) => {
-  templates.nest = 0
+  templates.trynest = 0
 })
 
 test('nesting-test', t => {
-  let str = `{{nest|one}}`
+  let str = `{{tryNest|one}}`
+
   let out = wtf(str)
     .text()
     .trim()
-  t.equal(out, 'one', '1')
+  t.equal(out, 'one', 'nest-1')
 
-  str = `{{nest|{{nest|two}}}}`
+  str = `{{tryNest|{{tryNest|two}}}}`
   out = wtf(str)
     .text()
     .trim()
-  t.equal(out, 'two', '2')
+  t.equal(out, 'two', 'nest-2')
 
-  str = `{{nest|{{nest|{{nest|three}}}}}}`
+  str = `{{tryNest|{{tryNest|{{tryNest|three}}}}}}`
   out = wtf(str)
     .text()
     .trim()
-  t.equal(out, 'three', '3')
+  t.equal(out, 'three', 'nest-3')
 
-  str = `{{nest|{{nest|{{nest|{{nest|four}}}}}}}}`
+  str = `{{tryNest|{{tryNest|{{tryNest|{{tryNest|four}}}}}}}}`
   out = wtf(str)
     .text()
     .trim()
-  t.equal(out, 'four', '4')
+  t.equal(out, 'four', 'nest-4')
   t.end()
 })
