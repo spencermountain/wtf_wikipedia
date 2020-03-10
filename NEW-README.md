@@ -151,7 +151,7 @@ wtf.fetch('Toronto', { lang: 'de', wiki: 'wikivoyage' }).then(doc => {
 ### Good practice:
 The wikipedia api is [pretty welcoming](https://www.mediawiki.org/wiki/API:Etiquette#Request_limit) though recommends three things, if you're going to hit it heavily -
 * pass a `Api-User-Agent` as something so they can use to easily throttle bad scripts
-* bundle multiple pages into one request as an array
+* bundle multiple pages into one request as an array (say, groups of 5?)
 * run it serially, or at least, [slowly](https://www.npmjs.com/package/slow).
 ```js
 wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
