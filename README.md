@@ -62,6 +62,9 @@ wtf.fetch('Toronto Raptors').then(doc => {
 })
 ```
 
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+
 get plain-text:
 
 ```js
@@ -69,6 +72,9 @@ let str = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{co
 wtf(str).text()
 //"Boston's baseball field has a 37ft wall."
 ```
+
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
 or get json:
 
@@ -86,6 +92,9 @@ sec.links().map(l => l.json())
 doc.images(0).json()
 // {url: https://upload.wikimedia.org..../300px-Duveneck_Whistling_Boy.jpg', file: 'Image:Duveneck Whistling Boy.jpg' }
 ```
+
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
 run on the client-side:
 
@@ -197,7 +206,7 @@ wtf(txt)
 // Document {text(), json(), lists()...}
 ```
 
-### **doc.links()**
+#### **doc.links()**
 
 ```javascript
 let str = `Whistling is featured in a number of television shows, such as [[Lassie (1954 TV series)|''Lassie'']], and the title theme for ''[[The X-Files]]''.`
@@ -206,7 +215,7 @@ doc.links().map(l => l.page())
 // [ 'Lassie (1954 TV series)',  'The X-Files' ]
 ```
 
-### **doc.text()**
+#### **doc.text()**
 
 returns nice plain-text of the article
 
@@ -249,6 +258,9 @@ img.thumbnail() // 300px, by default
 img.format() // jpg, png, ..
 ```
 
+<!-- spacer -->
+<img height="15px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+
 ## Fetch
 
 This library can grab, and automatically-parse articles from [any wikimedia api](https://www.mediawiki.org/wiki/API:Main_page).
@@ -279,7 +291,7 @@ let doc = await wtf.fetch(64646, 'de')
 
 the fetch method follows redirects.
 
-### Category fetch
+#### fetch categories:
 
 **wtf.category(title, [lang], [options | callback])**
 retrieves all pages and sub-categories belonging to a given category:
@@ -292,7 +304,7 @@ let result = await wtf.category('Category:Politicians_from_Paris')
 //}
 ```
 
-### Random article
+### fetch random article:
 
 **wtf.random(title, [lang], [options | callback])**
 retrieves all pages and sub-categories belonging to a given category:
@@ -349,9 +361,6 @@ wtf
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-<div align="center">
-  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
-</div>
 
 ## API
 
@@ -485,16 +494,18 @@ wtf.extend((models, templates) => {
 })
 ```
 
+## Performance:
+
+It is not the fastest parser, and is very unlikely to beat a [single-pass parser](https://www.mediawiki.org/wiki/Alternative_parsers) in C or Java.
+
+Using [dumpster-dive](https://github.com/spencermountain/dumpster-dive), this library can parse a full english wikipedia in around 4 hours on a macbook.
+That's about 100 pages/second, per thread.
+
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
 </div>
-
-## Performance:
-
-Using [dumpster-dive](https://github.com/spencermountain/dumpster-dive), this library can parse a full english wikipedia in around 4 hours.
-That's about 100 pages/second, per thread.
 
 ## See also:
 
