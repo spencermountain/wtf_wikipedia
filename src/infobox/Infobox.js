@@ -2,6 +2,12 @@ const toJson = require('./toJson')
 const Image = require('../image/Image')
 const aliasList = require('../_lib/aliases')
 
+const normalize = str => {
+  str = str.toLowerCase()
+  str = str.replace(/[-_]/g, ' ')
+  return str.trim()
+}
+
 //a formal key-value data table about a topic
 const Infobox = function(obj) {
   this._type = obj.type
@@ -41,10 +47,10 @@ const methods = {
     return new Image(obj)
   },
   get: function(key = '') {
-    key = key.toLowerCase()
+    key = normalize(key)
     let keys = Object.keys(this.data)
     for (let i = 0; i < keys.length; i += 1) {
-      let tmp = keys[i].toLowerCase().trim()
+      let tmp = normalize(keys[i])
       if (key === tmp) {
         return this.data[keys[i]]
       }
