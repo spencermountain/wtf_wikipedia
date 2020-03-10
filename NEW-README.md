@@ -178,6 +178,94 @@ wtf.fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
 * [wtf-nhl](https://github.com/spencermountain/wtf-nhl) - hockey team/season parser
 
 
+## API
+
+### Document
+* **title** - guess the title of the page from the first-sentence
+* **isRedirect** - if the page is just a redirect to another page
+* **redirectTo** - the page this redirects to
+* **isDisambiguation** - is this a placeholder page to direct you to one-of-many possible pages
+* **categories** - 
+* **sections** - return a list, or given-index of the Document's sections
+* **paragraphs** - return a list, or given-index of Paragraphs, in all sections
+* **sentences** - return a list, or given-index of all sentences in the document
+* **images** - 
+* **links** - return a list, or given-index of all links, in all parts of the document
+* **lists** - sections in a page where each line begins with a bullet point
+* **tables** - return a list, or given-index of all structured tables in the document
+* **templates** - any type of structured-data elements, typically wrapped in like {{this}}
+* **infoboxes** - specific type of template, that appear on the top-right of the page
+* **references** - return a list, or given-index of 'citations' in the document
+* **coordinates** - geo-locations that appear on the page
+* **text** - plaintext, human-readable output for the page
+* **json** - a 'stringifyable' output of the page's main data
+### Section
+* **title** - the name of the section, between ==these tags==
+* **index** - which number section is this, in the whole document.
+* **indentation** - how many steps deep into the table of contents it is
+* **sentences** - return a list, or given-index, of sentences in this section
+* **paragraphs** - return a list, or given-index, of paragraphs in this section
+* **links** - 
+* **tables** - 
+* **templates** - 
+* **infoboxes** - 
+* **coordinates** - 
+* **lists** - 
+* **interwiki** - any links to other language wikis
+* **images** - return a list, or given index, of any images in this section
+* **references** - return a list, or given index, of 'citations' in this section
+* **remove** - remove the current section from the document
+* **nextSibling** - a section following this one, under the current parent: eg. 1920s → 1930s 
+* **lastSibling** - a section before this one, under the current parent: eg. 1930s → 1920s
+* **children** - any sections more specific than this one: eg. History → [PreHistory, 1920s, 1930s]
+* **parent** - the section, broader than this one: eg. 1920s → History 
+* **text** - 
+* **json** - 
+### Paragraph
+* **sentences** - 
+* **references** - 
+* **lists** - 
+* **images** - 
+* **links** - 
+* **interwiki** - 
+* **text** - generate readable plaintext for this paragraph
+* **json** - generate some generic data for this paragraph in JSON format
+### Sentence
+* **links** - 
+* **bolds** - 
+* **italics** - 
+* **dates** - 
+* **json** - 
+### Image
+* **links** - 
+* **thumbnail** - 
+* **format** - 
+* **json** - return some generic metadata for this image
+* **text** - does nothing
+### Infobox
+* **links** - 
+* **keyValue** - generate simple key:value strings from this infobox
+* **image** - grab the main image from this infobox
+* **get** - lookup properties from their key
+* **template** - which infobox, eg 'Infobox Person'
+* **text** - generate readable plaintext for this infobox
+* **json** - generate some generic 'stringifyable' data for this infobox
+### List
+* **lines** - get an array of each member of the list
+* **links** - get all links mentioned in this list
+* **text** - generate readable plaintext for this list
+* **json** - generate some generic easily-parsable data for this list
+### Reference
+* **title** - generate human-facing text for this reference
+* **links** - get any links mentioned in this reference
+* **text** - returns nothing
+* **json** - generate some generic metadata data for this reference
+### Table
+* **links** - get any links mentioned in this table
+* **keyValue** - generate a simple list of key:value objects for this table
+* **text** - returns nothing
+* **json** - generate some useful metadata data for this table
+
 ---
 ## Configuration
 

@@ -360,8 +360,6 @@ declare module wtf {
 
     format(): string
 
-    exists(callback: () => boolean): Promise<boolean>
-
     text(): string
 
     json(options?: object): object

@@ -1,4 +1,13 @@
-var wtf = require('./src/index')
+// var wtf = require('./src/index')
+const api = require('./api')
+let arr = []
+Object.keys(api).forEach(k => {
+  arr.push(`## ${k}`)
+  api[k].forEach(obj => {
+    arr.push(`* **${obj.name}** - ${obj.description || ''}`)
+  })
+})
+console.log(arr.join('\n'))
 
 // wtf.extend((models, templates) => {
 //   templates.one = 0
