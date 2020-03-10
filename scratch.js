@@ -1,13 +1,4 @@
-// var wtf = require('./src/index')
-const api = require('./api')
-let arr = []
-Object.keys(api).forEach(k => {
-  arr.push(`## ${k}`)
-  api[k].forEach(obj => {
-    arr.push(`* **${obj.name}** - ${obj.description || ''}`)
-  })
-})
-console.log(arr.join('\n'))
+var wtf = require('./src/index')
 
 // wtf.extend((models, templates) => {
 //   templates.one = 0
@@ -19,3 +10,7 @@ console.log(arr.join('\n'))
 //   })
 //   console.log(json[0])
 // })()
+
+wtf.fetch('Toronto Raptors').then(doc => {
+  doc.infobox().json().coach.text
+})
