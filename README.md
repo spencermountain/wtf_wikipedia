@@ -34,7 +34,7 @@
 
 <div align="left">
   <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
- <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+  <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
   it is <a href="https://osr.cs.fau.de/wp-content/uploads/2017/09/wikitext-parser.pdf">very</a>, <a href="https://utcc.utoronto.ca/~cks/space/blog/programming/ParsingWikitext">very</a> hard.
 </div>
 
@@ -43,6 +43,10 @@
   <img height="50px" src="https://user-images.githubusercontent.com/399657/43598341-75ca8f94-9652-11e8-9b91-cabae4fb1dce.png"/>
 </div>
 
+<div align="right">
+  we're <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">not</a> <a href="https://twitter.com/ftrain/status/1036060636587978753">joking</a>
+  <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+</div>
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 <div align="center">
@@ -76,7 +80,7 @@ wtf(str).text()
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
-or get json:
+get json:
 
 ```javascript
 let doc = await wtf.fetch('Whistling')
@@ -118,9 +122,7 @@ run on the client-side:
 
 ### Ok first, 🛀
 
-[wikitext](https://en.wikipedia.org/wiki/Help:Wikitext) is no joke.
-
-It is among the [most-curious](https://twitter.com/ftrain/status/1036060636587978753) and [ad-hoc](https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something) data-formats you'll ever find.
+[Wikitext](https://en.wikipedia.org/wiki/Help:Wikitext) is no joke.
 
 Consider:
 
@@ -140,7 +142,7 @@ Also, there are a large number of pages that don't render properly on wikipedia.
 
 this library supports many **_recursive shenanigans_**, depreciated and **obscure template** variants, and illicit **wiki-shorthands**.
 
-### What it does:
+#### What it does:
 
 - Detects and parses **redirects** and **disambiguation** pages
 - Parse **infoboxes** into a formatted key-value object
@@ -156,7 +158,7 @@ this library supports many **_recursive shenanigans_**, depreciated and **obscur
 - parse and combine citation and reference metadata
 - Eliminate xml, latex, css, and table-sorting cruft
 
-### What doesn't do:
+#### What doesn't do:
 
 - external '[transcluded](https://en.wikipedia.org/wiki/Wikipedia:Transclusion)' page data [[1](https://github.com/spencermountain/wtf_wikipedia/issues/223)]
 - **AST** output
@@ -167,9 +169,7 @@ this library supports many **_recursive shenanigans_**, depreciated and **obscur
 
 It is built to be as flexible as possible. In all cases, tries to fail in considerate ways.
 
----
-
-### what about html scraping..
+#### what about html scraping..?
 
 Wikimedia's [official parser](https://www.mediawiki.org/wiki/Parsoid) turns wikitext ➔ HTML.
 You can even get html from the api [like this](https://en.wikipedia.org/w/api.php?format=json&origin=*&action=parse&prop=text&page=Whistling).
@@ -178,21 +178,22 @@ if you prefer this **_screen-scraping_** workflow, you can pluck parts of a page
 
 that's cool, too!
 
-getting structured data this way is still a complex + weird process.
-Spelunking the html is usually just as tricky and error-prone as scanning the wikitext itself.
+getting structured data this way is still a complex, weird process.
+Manually spelunking the html is usually just as tricky and error-prone as scanning the wikitext itself.
 
 The contributors to this library have come to that conclusion, [as many others have](https://www.mediawiki.org/wiki/Alternative_parsers).
 
-This library has _lovingly borrowed_ a lot of code and data from the parsoid project, and is gracious to its contributors.
+This library has (_lovingly_) borrowed a lot of code and data from the parsoid project, and is gracious to those contributors.
 
 <!-- spacer -->
-<img height="15px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-<!-- spacer -->
-<img height="15px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
 
 ## ok, enough chat.
 
-flip your wikimedia markup into a `Document` object
+flip your wikitext into a `Document` object
 
 ```javascript
 import wtf from 'wtf_wikipedia'
@@ -239,7 +240,7 @@ wtf(page)
   .remove() //delete one
 ```
 
-#### Sentence data:
+#### **doc.sentences()**
 
 ```js
 s = wtf(page).sentences(4)
@@ -249,7 +250,15 @@ s.italics()
 s.dates() //structured date templates
 ```
 
-#### Images
+#### **doc.categories()**
+
+```js
+let doc = await wtf.fetch('Whistling')
+doc.categories()
+//['Oral communication', 'Vocal music', 'Vocal skills']
+```
+
+#### **doc.images()**
 
 ```js
 img = wtf(page).images(0)
