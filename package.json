@@ -17,7 +17,7 @@
     "build": "node ./scripts/version.js && rollup -c",
     "start": "node ./scripts/demo.js",
     "coverage": "node scripts/coverage.js",
-    "test": "TESTENV=dev tape ./tests/*.test.js | tap-dancer",
+    "test": "TESTENV=dev node ./scripts/test.js",
     "test:fetch": "TESTENV=dev tape ./tests/fetch/*.test.js | tap-dancer",
     "test:types": "ts-node ./tests/types/index.ts | tap-dancer",
     "watch": "amble ./scratch.js",
@@ -65,6 +65,7 @@
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-terser": "5.2.0",
+    "shelljs": "^0.8.3",
     "tap-dancer": "0.2.0",
     "tape": "4.13.2",
     "tape-promise": "^4.0.0"
