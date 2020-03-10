@@ -43,7 +43,7 @@
   <img height="50px" src="https://user-images.githubusercontent.com/399657/43598341-75ca8f94-9652-11e8-9b91-cabae4fb1dce.png"/>
 </div>
 
-<div align="right">
+<div align="center">
   we're <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">not</a> <a href="https://twitter.com/ftrain/status/1036060636587978753">joking</a>
   <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 </div>
@@ -56,6 +56,11 @@
 ```js
 const wtf = require('wtf_wikipedia')
 ```
+
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+
+fetch and parse an article:
 
 ```js
 wtf.fetch('Toronto Raptors').then(doc => {
@@ -137,8 +142,7 @@ Consider:
 - _[right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates._
 - _[PEG-based](https://pegjs.org/) parsers struggle with wikitext's backtracking/lookarounds_
 - _there are [634,755](https://s3-us-west-1.amazonaws.com/spencer-scratch/allTemplates-2018-10-26.tsv) templates in en-wikipedia (as of Nov-2018)_
-
-Also, there are a large number of pages that don't render properly on wikipedia.
+- _there are a large number of pages that don't render properly on wikipedia, or its apps.._
 
 this library supports many **_recursive shenanigans_**, depreciated and **obscure template** variants, and illicit **wiki-shorthands**.
 
@@ -172,7 +176,8 @@ It is built to be as flexible as possible. In all cases, tries to fail in consid
 #### what about html scraping..?
 
 Wikimedia's [official parser](https://www.mediawiki.org/wiki/Parsoid) turns wikitext ➔ HTML.
-You can even get html from the api [like this](https://en.wikipedia.org/w/api.php?format=json&origin=*&action=parse&prop=text&page=Whistling).
+
+<!-- You can even get html from the api [like this](https://en.wikipedia.org/w/api.php?format=json&origin=*&action=parse&prop=text&page=Whistling). -->
 
 if you prefer this **_screen-scraping_** workflow, you can pluck parts of a page [like that](https://observablehq.com/@mbostock/working-with-wikipedia-data).
 
@@ -364,9 +369,12 @@ wtf
 
 ## Tutorials
 
-- [Tutorial 1](https://observablehq.com/@spencermountain/wtf_wikipedia-tutorial?collection=@spencermountain/wtf_wikipedia) - getting NBA data
-- [Parsing COVID outbreak table](https://observablehq.com/@spencermountain/parsing-wikipedias-coronavirus-outbreak-data?collection=@spencermountain/wtf_wikipedia)
+- [Getting NBA Team data](https://observablehq.com/@spencermountain/wtf_wikipedia-tutorial?collection=@spencermountain/wtf_wikipedia)
+- [Parsing tables](https://observablehq.com/@spencermountain/parsing-wikipedia-tables) - getting all Apollo Astronauts as JSON
+- [Parsing Timezones](https://observablehq.com/@spencermountain/parsing-timezones-from-wikipedia)
 - [MBL season schedules](https://observablehq.com/@spencermountain/wikipedia-baseball-table-parser?collection=@spencermountain/wtf_wikipedia)
+- [Fetching a list of pages](https://observablehq.com/@spencermountain/parsing-a-list-of-wikipedia-articles)
+- [Parsing COVID outbreak table](https://observablehq.com/@spencermountain/parsing-wikipedias-coronavirus-outbreak-data?collection=@spencermountain/wtf_wikipedia)
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
