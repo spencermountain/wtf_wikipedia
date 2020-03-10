@@ -15,6 +15,16 @@ test('fetch-as-promise', t => {
   })
 })
 
+test('fetch-as-callback', t => {
+  t.plan(1)
+  wtf.fetch('Tony Danza', 'en', function(err, doc) {
+    if (err) {
+      t.throw(err)
+    }
+    t.ok(doc.categories().length > 0, 'callback returned document')
+  })
+})
+
 test('fetch-invalid', t => {
   t.plan(1)
   var p = wtf.fetch('Taylor%20Swift', 'en', {

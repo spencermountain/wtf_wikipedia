@@ -15,6 +15,15 @@ const defaults = {
 }
 
 const fetch = function(title, options, c) {
+  let callback = null
+  if (typeof options === 'function') {
+    callback = options
+    options = {}
+  }
+  if (typeof c === 'function') {
+    callback = c
+    c = {}
+  }
   //support lang 2nd param
   if (typeof options === 'string') {
     c = c || {}
@@ -34,13 +43,20 @@ const fetch = function(title, options, c) {
     .then(res => {
       try {
         let data = getResult(res)
-        return parseDoc(data)
+        data = parseDoc(data)
+        if (callback) {
+          callback(null, data)
+        }
+        return data
       } catch (e) {
         throw e
       }
     })
     .catch(e => {
       console.error(e)
+      if (callback) {
+        callback(e, null)
+      }
       return null
     })
 }
