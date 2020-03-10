@@ -124,19 +124,19 @@ run on the client-side:
 
 ### Ok first, 🛀
 
-[Wikitext](https://en.wikipedia.org/wiki/Help:Wikitext) is no joke.
+[Wikitext](https://en.wikipedia.org/wiki/Help:Wikitext) is no small thing.
 
 Consider:
 
 - _the partial-implementation of [inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),_
-- _deep recursion of [similar-syntax](https://en.wikipedia.org/wiki/Wikipedia:Database_reports/Templates_transcluded_on_the_most_pages) templates,_
 - _nested elements do not honour the scope of other elements_
 - _the language has no errors_
+- _deep recursion of [similar-syntax](https://en.wikipedia.org/wiki/Wikipedia:Database_reports/Templates_transcluded_on_the_most_pages) templates_
 - _the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax)_
-- _['Birth_date_and_age'](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs ['Birth-date_and_age'](https://en.wikipedia.org/wiki/Template:Birth-date_and_age)._
-- _the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) for image paths,_
-- _the [custom encoding](<https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(technical*restrictions)>) of whitespace and punctuation,*
-- _[right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates._
+- _['Birth_date_and_age'](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs ['Birth-date_and_age'](https://en.wikipedia.org/wiki/Template:Birth-date_and_age)_
+- _the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) for image paths_
+- _the [custom encoding](https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions) of whitespace and punctuation_
+- _[right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates_
 - _[PEG-based](https://pegjs.org/) parsers struggle with wikitext's backtracking/lookarounds_
 - _there are [634,755](https://s3-us-west-1.amazonaws.com/spencer-scratch/allTemplates-2018-10-26.tsv) templates in en-wikipedia (as of Nov-2018)_
 - _there are a large number of pages that don't render properly on wikipedia, or its apps.._
