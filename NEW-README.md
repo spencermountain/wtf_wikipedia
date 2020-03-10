@@ -12,7 +12,7 @@
       </a>
     </sub>
   </div>
-  <img height="25px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+  <img height="25px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
 </div>
 
 <div align="center">
@@ -34,35 +34,47 @@
 
 <div align="left">
   <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-  this library <b>tries its best</b>.
+ <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+  it is <a href="https://osr.cs.fau.de/wp-content/uploads/2017/09/wikitext-parser.pdf">very</a>, <a href="https://utcc.utoronto.ca/~cks/space/blog/programming/ParsingWikitext">very</a> hard.
 </div>
 
-<div align="left">
- <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-  though it is <a href="https://osr.cs.fau.de/wp-content/uploads/2017/09/wikitext-parser.pdf">very</a>, <a href="https://utcc.utoronto.ca/~cks/space/blog/programming/ParsingWikitext">very</a> hard.
+<!-- einstein sentence -->
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/43598341-75ca8f94-9652-11e8-9b91-cabae4fb1dce.png"/>
 </div>
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
 
 ```js
 const wtf = require('wtf_wikipedia')
 
 wtf.fetch('Toronto Raptors').then(doc => {
-  doc
-    .infobox()
-    .get('coach')
-    .text() // 'Nick Nurse'
+  let info = doc.infobox()
+  info.get('coach').text() //'Nick Nurse'
 
-  doc.sentences(0).text() // 'The Toronto Raptors are a Canadian professional basketball team based in Toronto.'
+  doc.sentences(0).text() //'The Toronto Raptors are a Canadian professional basketball team based in Toronto.'
 })
 ```
 
+get plain-text
+
+```js
+let wiki = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>`
+wtf(wiki).text()
+//"Boston's baseball field has a 37ft wall."
+```
+
+or get json data:
+
 ```javascript
-let str = `Whistling is featured in a number of television shows, such as [[Lassie (1954 TV series)|''Lassie'']], and the title theme for ''[[The X-Files]]''.`
-let doc = wtf(str)
-doc.links().map(l => l.page())
-// [ 'Lassie (1954 TV series)',  'The X-Files' ]
+let doc = await wtf.fetch('Whistling')
+let json = doc.json()
+json.categories
+//['Oral communication', 'Vocal music', 'Vocal skills']
 ```
 
 **_on the client-side:_**
@@ -70,34 +82,25 @@ doc.links().map(l => l.page())
 ```html
 <script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
-  // (follows redirect)
   wtf.fetch('On a Friday', function(err, doc) {
-    var val = doc.infobox(0).get('current members')
-    val.links().map(link => link.page())
+    // (follows redirect)
+    let members = doc.infobox().get('current members')
+    members.links().map(l => l.page())
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
   })
 </script>
 ```
 
-### In Short,
-
-get a fully-parsed document with `.json()`.
-
-get plain-text of a document with `.text()`.
-
-more detailed
-
 ### Ok first, 🛀
 
 [wikitext](https://en.wikipedia.org/wiki/Help:Wikitext) is no joke.
-It is among the most-curious and ad-hoc data-formats you'll ever find.
 
- <!-- [really](https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something) [hard](https://twitter.com/ftrain/status/1036060636587978753) to parse. -->
+It is among the [most-curious](https://twitter.com/ftrain/status/1036060636587978753) and [ad-hoc](https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something) data-formats you'll ever find.
 
 Consider:
 
-- the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax)
-- ['Birth_date_and_age'](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs ['Birth-date_and_age'](https://en.wikipedia.org/wiki/Template:Birth-date_and_age).
+- **_the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax)_**
+- **_['Birth_date_and_age'](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs ['Birth-date_and_age'](https://en.wikipedia.org/wiki/Template:Birth-date_and_age)._**
 - the partial-implementation of [inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
 - wikitext doesn't have any errors
 - deep recursion of [similar-syntax](https://en.wikipedia.org/wiki/Wikipedia:Database_reports/Templates_transcluded_on_the_most_pages) templates,
@@ -153,23 +156,7 @@ The contributors to this library have come to that conclusion, [as many others h
 
 This library has lovingly ❤️ borrowed a lot of code and data from the official parsoid project, and thanks its contributors.
 
-<!-- einstein sentence -->
-<div align="center">
-  <img height="50px" src="https://user-images.githubusercontent.com/399657/43598341-75ca8f94-9652-11e8-9b91-cabae4fb1dce.png"/>
-</div>
-
-<!-- spacer -->
-<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-<div align="center">
-
-  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
-</div>
-
-## well ok then,
-
-enough chat,
-
-## Examples
+## enough chat,
 
 ### **wtf(wikiText)**
 
