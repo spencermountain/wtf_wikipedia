@@ -11,6 +11,14 @@ var wtf = require('./src/index')
 //   console.log(json[0])
 // })()
 
-wtf.fetch('Toronto Raptors').then(doc => {
-  doc.infobox().json().coach.text
+wtf.fetch('Whistling').then(doc => {
+  // let json = doc.json()
+  // console.log(json)
+
+  console.log(
+    doc
+      .sections('see also')
+      .links()
+      .map(l => l.json())
+  )
 })

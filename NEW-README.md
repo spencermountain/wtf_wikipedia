@@ -63,7 +63,7 @@ wtf.fetch('Toronto Raptors').then(doc => {
 get plain-text
 
 ```js
-let wiki = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>`
+let wiki = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.`
 wtf(wiki).text()
 //"Boston's baseball field has a 37ft wall."
 ```
@@ -75,6 +75,13 @@ let doc = await wtf.fetch('Whistling')
 let json = doc.json()
 json.categories
 //['Oral communication', 'Vocal music', 'Vocal skills']
+
+doc.images(0).json()
+// {url: https://upload.wikimedia.org..../300px-Duveneck_Whistling_Boy.jpg', file: 'Image:Duveneck Whistling Boy.jpg' }
+
+let sec = doc.sections('see also')
+sec.links().map(l => l.json())
+//[{page:'Slide whistle'}, {page:'Hand flute'}, {page:'Bird vocalization'}...]
 ```
 
 **_on the client-side:_**
@@ -82,8 +89,8 @@ json.categories
 ```html
 <script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
+  // (follows redirect)
   wtf.fetch('On a Friday', function(err, doc) {
-    // (follows redirect)
     let members = doc.infobox().get('current members')
     members.links().map(l => l.page())
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
@@ -99,80 +106,82 @@ It is among the [most-curious](https://twitter.com/ftrain/status/103606063658797
 
 Consider:
 
-- **_the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax)_**
-- **_['Birth_date_and_age'](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs ['Birth-date_and_age'](https://en.wikipedia.org/wiki/Template:Birth-date_and_age)._**
-- the partial-implementation of [inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),
-- wikitext doesn't have any errors
-- deep recursion of [similar-syntax](https://en.wikipedia.org/wiki/Wikipedia:Database_reports/Templates_transcluded_on_the_most_pages) templates,
-- nested elements do not honour the scope of other elements
-- the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) for image paths,
-- the [custom encoding](<https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(technical_restrictions)>) of whitespace and punctuation,
-- [right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates.
-- [PEG](https://pegjs.org/) based parsers struggle with wikitext's massive backtracking
-- as of Nov-2018, there are [634,755](https://s3-us-west-1.amazonaws.com/spencer-scratch/allTemplates-2018-10-26.tsv) templates in wikipedia
-- there are a large number of pages that also don't render properly on wikipedia.
+- _the partial-implementation of [inline-css](https://en.wikipedia.org/wiki/Help:HTML_in_wikitext),_
+- _deep recursion of [similar-syntax](https://en.wikipedia.org/wiki/Wikipedia:Database_reports/Templates_transcluded_on_the_most_pages) templates,_
+- _nested elements do not honour the scope of other elements_
+- _the language has no errors_
+- _the [egyptian hieroglyphics syntax](https://en.wikipedia.org/wiki/Help:WikiHiero_syntax)_
+- _['Birth_date_and_age'](https://en.wikipedia.org/wiki/Template:Birth_date_and_age) vs ['Birth-date_and_age'](https://en.wikipedia.org/wiki/Template:Birth-date_and_age)._
+- _the unexplained [hashing scheme](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F) for image paths,_
+- _the [custom encoding](<https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(technical*restrictions)>) of whitespace and punctuation,*
+- _[right-to-left](https://www.youtube.com/watch?v=xpumLsaAWGw) values in left-to-right templates._
+- _[PEG](https://pegjs.org/) based parsers struggle with wikitext's massive backtracking_
+- _as of Nov-2018, there are [634,755](https://s3-us-west-1.amazonaws.com/spencer-scratch/allTemplates-2018-10-26.tsv) templates in wikipedia_
 
-this library supports many **_recursive shenanigans_**, depreciated and **obscure template** variants, and illicit 'wiki-esque' shorthands.
+Also, there are a large number of editor-errors that don't render properly on wikipedia.
+
+this library supports many **_recursive shenanigans_**, depreciated and **obscure template** variants, and illicit **'wiki-shorthands'**.
 
 ### What it does:
 
 - Detects and parses **redirects** and **disambiguation** pages
 - Parse **infoboxes** into a formatted key-value object
 - Handles recursive templates and links- like [[.. [[...]] ]]
-- **.Per-sentence** plaintext and link resolution
+- **_Per-sentence_** plaintext and link resolution
 - Parse and format internal links
 - creates
   [image thumbnail urls](https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F)
   from **File:XYZ.png** filenames
-- Properly resolve **_{{CURRENTMONTH}}_** and **_{{CONVERT ..}}_** type templates
+- Properly resolve dynamic templates like _{{CURRENTMONTH}}_ and _{{CONVERT ..}}_
 - Parse **images**, **headings**, and **categories**
 - converts 'DMS-formatted' **_(59°12\'7.7"N)_** geo-coordinates to lat/lng
-- parses citation metadata
+- parse and combine citation and reference metadata
 - Eliminate xml, latex, css, and table-sorting cruft
 
 ### What doesn't do:
 
-- external '[transcluded](https://en.wikipedia.org/wiki/Wikipedia:Transclusion)' page data [1](https://github.com/spencermountain/wtf_wikipedia/issues/223)
+- external '[transcluded](https://en.wikipedia.org/wiki/Wikipedia:Transclusion)' page data [[1](https://github.com/spencermountain/wtf_wikipedia/issues/223)]
 - AST output
-- smart (or 'pretty') formatting of html in infoboxes or galleries [1](https://github.com/spencermountain/wtf_wikipedia/issues/173)
-- maintain perfect page order [1](https://github.com/spencermountain/wtf_wikipedia/issues/88)
+- smart (or 'pretty') formatting of html in infoboxes or galleries [[1](https://github.com/spencermountain/wtf_wikipedia/issues/173)]
+- maintain perfect page order [[1]](https://github.com/spencermountain/wtf_wikipedia/issues/88)
 - per-sentence references (by 'section' element instead)
+- maintain template or infobox css styling
 
 It is built to be as flexible as possible. In all cases, tries to fail in considerate ways.
 
-### What about HTML scraping
+#### what about html scraping..
 
-Wikimedia's [official parser](https://www.mediawiki.org/wiki/Parsoid) turns wikitext into HTML.
-You can even get html output from the api [like this](https://en.wikipedia.org/w/api.php?format=json&origin=*&action=parse&prop=text&page=Whistling).
+Wikimedia's [official parser](https://www.mediawiki.org/wiki/Parsoid) turns wikitext ➔ HTML.
+You can even get html from the api [like this](https://en.wikipedia.org/w/api.php?format=json&origin=*&action=parse&prop=text&page=Whistling).
 
-if you prefer a **_screen-scraping_** workflow, you can pluck parts of a page [like this](https://observablehq.com/@mbostock/working-with-wikipedia-data).
+if you prefer this **_screen-scraping_** workflow, you can pluck parts of a page [like that](https://observablehq.com/@mbostock/working-with-wikipedia-data).
 
-that's cool, too.
+that's cool, too!
 
-getting structured data this way (say, sentences or infobox values), is still a complex + weird process.
+getting structured data this way is still a complex + weird process.
 Spelunking the html is usually just as tricky and error-prone as scanning the wikitext itself.
 
 The contributors to this library have come to that conclusion, [as many others have](https://www.mediawiki.org/wiki/Alternative_parsers).
 
-This library has lovingly ❤️ borrowed a lot of code and data from the official parsoid project, and thanks its contributors.
+This library has _lovingly borrowed_ a lot of code and data from the parsoid project, and is gracious to its contributors.
 
 ## enough chat,
-
-### **wtf(wikiText)**
 
 flip your wikimedia markup into a `Document` object
 
 ```javascript
 import wtf from 'wtf_wikipedia'
-wtf(`==In Popular Culture==
+
+let txt = `==In Popular Culture==
 * harry potter's wand
-* the simpsons fence`)
+* the simpsons fence`
+wtf(txt)
 // Document {text(), json(), lists()...}
 ```
 
 ### **doc.text()**
 
-returns only nice plain-text of the article
+returns nice plain-text of the article
 
 ```js
 var wiki =
@@ -209,7 +218,6 @@ img = wtf(page).images(0)
 img.url() // the full-size wikimedia-hosted url
 img.thumbnail() // 300px, by default
 img.format() // jpg, png, ..
-img.exists() // HEAD req to see if the file is alive
 ```
 
 ## Fetch
@@ -303,6 +311,18 @@ wtf
 - [wtf-plugin-wikitext](https://github.com/spencermountain/wtf-plugin-wikitext)
 - [wtf-mlb](https://github.com/spencermountain/wtf-mlb) - baseball team/season parser
 - [wtf-nhl](https://github.com/spencermountain/wtf-nhl) - hockey team/season parser
+
+## Tutorials
+
+- [Tutorial 1](https://observablehq.com/@spencermountain/wtf_wikipedia-tutorial?collection=@spencermountain/wtf_wikipedia) - getting NBA data
+- [Parsing COVID outbreak table](https://observablehq.com/@spencermountain/parsing-wikipedias-coronavirus-outbreak-data?collection=@spencermountain/wtf_wikipedia)
+- [MBL season schedules](https://observablehq.com/@spencermountain/wikipedia-baseball-table-parser?collection=@spencermountain/wtf_wikipedia)
+
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
 
 ## API
 
