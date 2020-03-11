@@ -2,23 +2,25 @@ const doc = require('./01-doc')
 const section = require('./02-section')
 const paragraph = require('./03-paragraph')
 const sentence = require('./04-sentence')
-// const link = require('./05-link')
+const link = require('./05-link')
 const infobox = require('./infobox')
 const image = require('./image')
 
 const plugin = function(models) {
-  models.Doc.html = doc
+  models.Doc.prototype.html = doc
 
-  models.Section.html = section
+  models.Section.prototype.html = section
 
-  models.Paragraph.html = paragraph
+  models.Paragraph.prototype.html = paragraph
 
-  models.Sentence.html = sentence
+  models.Sentence.prototype.html = sentence
 
-  models.Image.html = image
+  models.Image.prototype.html = image
 
-  models.Infobox.html = infobox
+  models.Infobox.prototype.html = infobox
+
+  models.Link.prototype.html = link
+
   // models.Template.html = function(opts) {}
-  // models.Link.html = link
 }
 module.exports = plugin

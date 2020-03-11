@@ -1,4 +1,3 @@
-'use strict'
 var test = require('tape')
 var wtf = require('./lib')
 var readFile = require('./lib/_cachedPage')
@@ -83,11 +82,7 @@ test('img-alt', t => {
     .images(0)
     .json()
   t.equal(img.file, 'File:Wikipedesketch1.png', 'file')
-  t.equal(
-    img.thumb,
-    'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png?width=300',
-    'thumb'
-  )
+  t.equal(img.thumb, 'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png?width=300', 'thumb')
   t.equal(img.url, 'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png', 'image')
   t.equal(img.caption, 'The Wikipede edits Myriapoda.', 'caption')
   t.equal(img.alt, 'A cartoon centipede detailed description.', 'alt')

@@ -6,16 +6,16 @@ if (arg) {
   let code = 0
   console.log(arg + ':')
   if (arg === 'main') {
-    code = sh.exec('tape "./tests/**/*.test.js" | tap-dancer --color always').code
+    code = sh.exec('tape "./tests/*.test.js" | tap-dancer --color always').code
   } else {
-    code = sh.exec(`tape "./plugins/${arg}/tests/**/*.test.js" | tap-dancer --color always`).code
+    code = sh.exec(`tape "./plugins/${arg}/tests/*.test.js" | tap-dancer --color always`).code
   }
   sh.exit(code)
 }
 
 // run the main tests:
 let fail = false
-let code = sh.exec('tape "./tests/**/*.test.js" | tap-dancer --color always').code
+let code = sh.exec('tape "./tests/*.test.js" | tap-dancer --color always').code
 if (code !== 0) {
   fail = true
 }
@@ -23,7 +23,7 @@ if (code !== 0) {
 // run each plugin's tests:
 sh.ls('./plugins').forEach(function(dir) {
   console.log(dir)
-  code = sh.exec(`tape "./plugins/${dir}/tests/**/*.test.js" | tap-dancer --color always`).code
+  code = sh.exec(`tape "./plugins/${dir}/tests/*.test.js" | tap-dancer --color always`).code
   if (code !== 0) {
     console.log(dir)
     fail = true

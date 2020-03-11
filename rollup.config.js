@@ -1,83 +1,50 @@
 import commonjs from 'rollup-plugin-commonjs'
-import json from 'rollup-plugin-json'
 import { terser } from 'rollup-plugin-terser'
-// import resolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
 import alias from '@rollup/plugin-alias'
 import sizeCheck from 'rollup-plugin-filesize-check'
-// import builtins from 'rollup-plugin-node-builtins'
 
 import { version } from './package.json'
 console.log('\n 📦  - running rollup..\n')
 
 const banner = '/* wtf_wikipedia ' + version + ' MIT */'
 export default [
-  // === server-side .mjs ===
-  // {
-  //   input: 'src/index.js',
-  //   output: [
-  //     { banner: banner, file: 'builds/wtf_wikipedia.mjs', format: 'esm', preferBuiltins: false }
-  //   ],
-  //   plugins: [
-  //     resolve({
-  //       browser: true
-  //     }),
-  //     json(),
-  //     commonjs(),
-  //     sizeCheck()
-  //   ]
-  // },
-  // // === client-side .mjs ===
-  // {
-  //   input: 'src/index.js',
-  //   output: [
-  //     {
-  //       banner: banner,
-  //       file: 'builds/wtf_wikipedia-client.mjs',
-  //       format: 'esm',
-  //       preferBuiltins: false
-  //     }
-  //   ],
-  //   plugins: [
-  //     resolve({
-  //       browser: true
-  //     }),
-  //     json(),
-  //     commonjs(),
-  //     alias({
-  //       entries: [{ find: './http/server', replacement: __dirname + './http/client' }]
-  //     }),
-  //     sizeCheck()
-  //   ]
-  // },
+  // === server-side .mjs (typescript)===
+  {
+    input: 'src/index.js',
+    output: [{ banner: banner, file: 'builds/wtf_wikipedia.mjs', format: 'esm' }],
+    plugins: [
+      commonjs(),
+      babel({
+        babelrc: false,
+        presets: ['@babel/preset-env']
+      })
+    ]
+  },
 
   // === server-side .js ===
-  // {
-  //   input: 'src/index.js',
-  //   output: [
-  //     {
-  //       banner: banner,
-  //       file: 'builds/wtf_wikipedia.js',
-  //       format: 'umd',
-  //       sourcemap: true,
-  //       name: 'wtf'
-  //     }
-  //   ],
-  //   external: ['https'],
-  //   plugins: [
-  //     builtins(),
-  //     resolve({
-  //       browser: true
-  //     }),
-  //     json(),
-  //     commonjs(),
-  //     babel({
-  //       babelrc: false,
-  //       presets: ['@babel/preset-env']
-  //     }),
-  //     sizeCheck()
-  //   ]
-  // },
+  {
+    input: 'src/index.js',
+    output: [
+      {
+        banner: banner,
+        file: 'builds/wtf_wikipedia.js',
+        format: 'umd',
+        name: 'wtf',
+        globals: { https: 'https' }
+      }
+    ],
+    external: ['https'],
+    plugins: [
+      commonjs(),
+      babel({
+        babelrc: false,
+        presets: ['@babel/preset-env']
+      })
+    ]
+  },
+
+  /// ======================
   // === client-side .js ===
   {
     input: 'src/index.js',
@@ -91,7 +58,6 @@ export default [
       }
     ],
     plugins: [
-      json(),
       commonjs(),
       babel({
         babelrc: false,
@@ -115,7 +81,6 @@ export default [
       }
     ],
     plugins: [
-      json(),
       commonjs(),
       babel({
         babelrc: false,
@@ -125,7 +90,7 @@ export default [
         entries: [{ find: './http/server', replacement: './http/client' }]
       }),
       terser(),
-      sizeCheck()
+      sizeCheck({ expect: 103, warn: 10 })
     ]
   },
   // === client-side .mjs ===
@@ -141,7 +106,6 @@ export default [
       }
     ],
     plugins: [
-      json(),
       commonjs(),
       babel({
         babelrc: false,
@@ -151,7 +115,7 @@ export default [
         entries: [{ find: './http/server', replacement: './http/client' }]
       }),
       terser(),
-      sizeCheck()
+      sizeCheck({ expect: 103, warn: 10 })
     ]
   }
 ]

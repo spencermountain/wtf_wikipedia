@@ -562,14 +562,16 @@ Please make a PR if you see something missing for your language.
 
 ## Builds:
 
-to preserve filesize, this library ships seperate client-side and server-side builds.
+this library ships seperate client-side and server-side builds, to preserve filesize.
 
 - _[./wtf_wikipedia-client.js](./builds/wtf_wikipedia-client.js)_ - with sourcemap
 - _[./wtf_wikipedia-client.mjs](./builds/wtf_wikipedia-client.js)_ - as es-module (or Deno)
 - _[./wtf_wikipedia-client.min.js](./builds/wtf_wikipedia-client.js)_ - for production
 
 - _[./wtf_wikipedia.js](./builds/wtf_wikipedia.js)_ - main node build
-- _[./wtf_wikipedia.mjs](./builds/wtf_wikipedia.mjs)_ - esmodule node
+- _[./wtf_wikipedia.mjs](./builds/wtf_wikipedia.mjs)_ - esmodule node (typescript)
+
+the browser version uses `fetch()` and the server version uses `require('https')`.
 
 ## Performance:
 

@@ -1,4 +1,3 @@
-'use strict'
 var test = require('tape')
 var wtf = require('./lib')
 var readFile = require('./lib/_cachedPage')
@@ -33,11 +32,7 @@ test('rnli stations', t => {
 
   var lifeboat = doc.sections(2)
   t.equal(lifeboat.depth, 1, 'lifeboat-depth')
-  t.equal(
-    lifeboat.templates(0).list[0],
-    'Royal National Lifeboat Institution lifeboats',
-    'lifeboat-main'
-  )
+  t.equal(lifeboat.templates(0).list[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main')
   t.equal(lifeboat.lists(0).json().length, 3, 'lifeboat-list')
   t.equal(lifeboat.sentences().length, 3, 'lifeboat-sentences')
   t.deepEqual(lifeboat.images(), [], 'lifeboat-no-images')

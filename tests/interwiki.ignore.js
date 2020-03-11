@@ -1,4 +1,3 @@
-'use strict'
 var test = require('tape')
 var wtf = require('./lib')
 

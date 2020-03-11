@@ -1,4 +1,3 @@
-'use strict'
 var test = require('tape')
 var wtf = require('./lib')
 
@@ -76,10 +75,6 @@ test('stock exchange SSE in list', function(t) {
   let obj = wtf(str)
     .infobox(0)
     .keyValue()
-  t.equal(
-    obj[`traded_as`],
-    'sse: 122458 (bond)\n\nsse: 122470 (bond)',
-    'found stock SSE exchange in list'
-  )
+  t.equal(obj[`traded_as`], 'sse: 122458 (bond)\n\nsse: 122470 (bond)', 'found stock SSE exchange in list')
   t.end()
 })

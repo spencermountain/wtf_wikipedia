@@ -1,4 +1,3 @@
-'use strict'
 var test = require('tape')
 var readFile = require('./lib/_cachedPage')
 var wtf = require('./lib')

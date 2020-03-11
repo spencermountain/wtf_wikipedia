@@ -1,4 +1,3 @@
-'use strict'
 var test = require('tape')
 var wtf = require('../lib')
 
@@ -103,18 +102,7 @@ test('ambiguous-pageids', async function(t) {
 
 test('intensive', t => {
   /* fires a bunch of requests in parallel - this should be enough to get blocked by wikipedia if the user agent is not set correctly */
-  var pages = [
-    'Mouse',
-    'Rat',
-    'Porcupine',
-    'Chipmunk',
-    'Vole',
-    'Chinchilla',
-    'Gopher',
-    'Capybara',
-    'Beaver',
-    'Hamster'
-  ]
+  var pages = ['Mouse', 'Rat', 'Porcupine', 'Chipmunk', 'Vole', 'Chinchilla', 'Gopher', 'Capybara', 'Beaver', 'Hamster']
   t.plan(pages.length)
   var promises = pages.map(page =>
     wtf.fetch(page, 'en', {

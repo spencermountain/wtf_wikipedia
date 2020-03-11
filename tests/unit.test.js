@@ -1,4 +1,3 @@
-'use strict'
 var test = require('tape')
 var wtf = require('./lib')
 
@@ -11,10 +10,7 @@ test('sentence parser', t => {
       "Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that's fine, etc. and you can attend Feb. 8th. Bye",
       3
     ],
-    [
-      'Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York',
-      1
-    ],
+    ['Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York', 1],
     ['he said ... oh yeah. I did', 2],
     ['32 C', 1],
     ['dom, kon. XIX w.', 2],

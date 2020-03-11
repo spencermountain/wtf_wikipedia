@@ -20,20 +20,10 @@ declare module wtf {
   export function extend(fn: any): any
 
   /** grab wikipedia content from an API */
-  export function fetch(
-    titleOrId: string | number,
-    lang?: string,
-    options?: any,
-    cb?: any
-  ): Promise<null | Document>
+  export function fetch(titleOrId: string | number, lang?: string, options?: any, cb?: any): Promise<null | Document>
 
   /** grab wikipedia content from an API */
-  export function fetch(
-    titlesOrIds: string[] | number[],
-    lang?: string,
-    options?: any,
-    cb?: any
-  ): Promise<Document[]>
+  export function fetch(titlesOrIds: string[] | number[], lang?: string, options?: any, cb?: any): Promise<Document[]>
 
   /** grab a random article from a wikimedia API */
   export function random(lang?: string, options?: object, cb?: any): Promise<Document>

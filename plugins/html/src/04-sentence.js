@@ -11,7 +11,7 @@ const doSentence = function(options) {
   //turn links into <a href>
   if (options.links === true) {
     this.links().forEach(link => {
-      let str = this.text || this.page
+      let str = this.text() || this.page()
       let tag = link.html()
       text = smartReplace(text, str, tag)
     })
