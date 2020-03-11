@@ -24,17 +24,15 @@
     "lint": "eslint ./src/"
   },
   "bin": {
-    "wtf_wikipedia": "./bin/wtf.js"
+    "wtf_wikipedia": "./cli.js"
   },
   "engines": {
     "node": ">=6.0.0"
   },
   "files": [
     "builds",
-    "api",
     "src",
-    "types",
-    "bin"
+    "types"
   ],
   "keywords": [
     "wikipedia",
@@ -51,12 +49,11 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "amble": "0.0.7",
     "@babel/core": "7.8.7",
     "@babel/preset-env": "7.8.7",
-    "@rollup/plugin-alias": "^3.0.1",
-    "amble": "0.0.7",
-    "nyc": "15.0.0",
     "rollup": "2.0.3",
+    "@rollup/plugin-alias": "^3.0.1",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-filesize-check": "0.0.1",
@@ -66,8 +63,7 @@
     "rollup-plugin-terser": "5.3.0",
     "shelljs": "^0.8.3",
     "tap-dancer": "0.2.0",
-    "tape": "4.13.2",
-    "tape-promise": "^4.0.0"
+    "tape": "4.13.2"
   },
   "eslintIgnore": [
     "builds/*.js"

@@ -1,17 +1,18 @@
-module.exports = {
-  de: 'weiterleitung',
-  es: 'redirección',
-  fr: 'redirection',
-  it: 'rinvia',
-  ja: '転送',
-  pt: 'redirecionamento',
-  tr: 'yönlendi̇rme',
-  uk: 'перенаправлення',
-  el: 'ανακατευθυνση',
-  mk: 'пренасочување',
-  br: 'adkas',
-  pl: 'patrz',
-  fa: 'تغییرمسیر',
-  th: 'เปลี่ยนทาง',
-  km: 'ប្តូរទីតាំងទៅ'
-}
+module.exports = [
+  'redirect', //en
+  'adkas', //br
+  'patrz', //pl
+  'redirección', //es
+  'redirecionamento', //pt
+  'redirection', //fr
+  'rinvia', //it
+  'weiterleitung', //de
+  'yönlendi̇rme', //tr
+  'ανακατευθυνση', //el
+  'перенаправлення', //uk
+  'пренасочување', //mk
+  'تغییرمسیر', //fa
+  'เปลี่ยนทาง', //th
+  'ប្តូរទីតាំងទៅ', //km
+  '転送' //ja
+]
