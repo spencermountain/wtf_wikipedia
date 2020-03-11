@@ -3,22 +3,6 @@ var wtf = require('./src/index')
 // wtf.extend((models, templates) => {
 //   templates.one = 0
 // })
-// ;(async () => {
-//   var doc = await wtf.fetch('Template:2019–20 coronavirus outbreak data/WHO situation reports')
-//   let json = doc.tables().map(table => {
-//     return table.json()
-//   })
-//   console.log(json[0])
-// })()
-
-wtf.fetch('Whistling').then(doc => {
-  // let json = doc.json()
-  // console.log(json)
-
-  console.log(
-    doc
-      .sections('see also')
-      .links()
-      .map(l => l.json())
-  )
+wtf.fetch('2016-06-04_-_J.Fernandes_@_FIL,_Lisbon', { domain: 'www.mixesdb.com', path: 'db/api.php' }).then(doc => {
+  console.log(doc.templates('player'))
 })

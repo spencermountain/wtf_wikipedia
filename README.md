@@ -526,6 +526,40 @@ wtf.extend((models, templates) => {
 })
 ```
 
+## Notes:
+
+### 3rd-party wikis
+
+by default, [a public API](https://www.mediawiki.org/wiki/API:Main_page) is provided by a installed mediawiki application.
+This means that most wikis have an open api, even if they don't realize it. Some wikis may turn this feature off.
+
+It can usually be found by visiting `http://mywiki.com/api.php`
+
+to fetch pages from a 3rd-party wiki:
+
+```js
+wtf.fetch('Kermit', { domain: 'muppet.fandom.com' }).then(doc => {
+  console.log(doc.text())
+})
+```
+
+some wikis will change the path of their API, from `./api.php` to elsewhere. If your api has a different path, you can set it like so:
+
+```js
+wtf.fetch('2016-06-04_-_J.Fernandes_@_FIL,_Lisbon', { domain: 'www.mixesdb.com', path: 'db/api.php' }).then(doc => {
+  console.log(doc.templates('player'))
+})
+```
+
+### i18n and multi-language:
+
+wikitext is (amazingly) used across all languages, wikis, and even in right-to-left languages.
+This parser actually does an okay job at it too.
+
+Wikipedia I18n langauge information for _Redirects, Infoboxes, Categories, and Images_ are included in the library, with pretty-decent coverage.
+
+Please make a PR if you see something missing for your language.
+
 ## Builds:
 
 to preserve filesize, this library ships seperate client-side and server-side builds.
