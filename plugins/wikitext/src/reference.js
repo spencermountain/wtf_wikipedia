@@ -1,5 +1,5 @@
 const toWiki = function() {
-  let text = `[[${this.file()}|thumb]]`
-  return text
+  console.log(this)
+  return `<ref> </ref>`
 }
 module.exports = toWiki

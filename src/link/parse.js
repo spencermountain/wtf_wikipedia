@@ -1,9 +1,7 @@
-// const helpers = require('../_lib/helpers');
 const parse_interwiki = require('../04-sentence/interwiki')
 const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g
 const link_reg = /\[\[(.{0,160}?)\]\]([a-z']+)?(\w{0,10})/gi //allow dangling suffixes - "[[flanders]]'s"
-// const isFile = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i');
 
 const external_links = function(links, str) {
   str.replace(external_link, function(all, protocol, link, text) {
@@ -61,7 +59,6 @@ const internal_links = function(links, str) {
       obj.text = obj.text || obj.page
       obj.text += apostrophe
     }
-
     //titlecase it, if necessary
     if (obj.page && /^[A-Z]/.test(obj.page) === false) {
       if (!obj.text) {

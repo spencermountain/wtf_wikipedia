@@ -1,6 +1,8 @@
 const smartReplace = require('./_lib/smartReplace')
 
-const defaults = {}
+const defaults = {
+  links: true
+}
 
 const toWiki = function(options) {
   options = options || {}
@@ -9,8 +11,8 @@ const toWiki = function(options) {
 
   if (options.links === true) {
     this.links().forEach(link => {
-      let str = link.text || link.page
-      let tag = `[[${link.text}]]`
+      let str = link.text() || link.page()
+      let tag = link.wikitext()
       text = smartReplace(text, str, tag)
     })
   }
