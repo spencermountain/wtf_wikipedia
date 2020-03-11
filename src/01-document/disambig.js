@@ -2,13 +2,10 @@ const i18n = require('../_data/i18n')
 
 const getReg = function(templates) {
   const allowedCharacters = '(\\|[a-z, =]*?)*?'
-  return new RegExp(
-    '\\{\\{ ?(' + templates.join('|') + ')' + allowedCharacters + ' ?\\}\\}',
-    'i'
-  )
+  return new RegExp('\\{\\{ ?(' + templates.join('|') + ')' + allowedCharacters + ' ?\\}\\}', 'i')
 }
 
-const templateReg = getReg(i18n.disambigs)
+const templateReg = getReg(i18n.disambig)
 
 //special disambig-templates en-wikipedia uses
 let d = ' disambiguation'

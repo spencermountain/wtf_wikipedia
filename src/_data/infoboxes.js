@@ -26,6 +26,7 @@ module.exports = [
   'informkesto', //eo
   'infoskreine', //ltg
   'infotaula', //eu
+  'inligtingskas3', //af
   'inligtingskas4', //af
   'kishtey', //gv
   'kotak', //su

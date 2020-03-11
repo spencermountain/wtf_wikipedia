@@ -1,5 +1,8 @@
 module.exports = [
   'file', //en
+  'image', //en
+  'चित्र', //img
+
   'archivo', //es
   'attēls', //lv
   'berkas', //id
@@ -36,7 +39,6 @@ module.exports = [
   'ملف', //ar
   'وێنە', //ckb
   'चित्र', //hi
-  'चित्र', //ne
   'ไฟล์', //th
   '파일', //ko
   'ファイル' //ja
