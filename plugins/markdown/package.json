@@ -6,7 +6,7 @@
   "unpkg": "./builds/wtf-plugin-markdown.min.js",
   "module": "./builds/wtf-plugin-markdown.mjs",
   "author": "Spencer Kelly (spencermountain)",
-  "homepage": "https://github.com/spencermountain/wtf-plugin-markdown#readme",
+  "homepage": "https://github.com/spencermountain/wtf_wikipedia#readme",
   "scripts": {
     "watch": "amble ./scratch.js",
     "test": "tape ./tests/**/*.test.js | tap-dancer",
