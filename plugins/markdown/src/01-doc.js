@@ -35,7 +35,7 @@ const toMarkdown = function(options) {
     md += data.sections.map(s => s.markdown(options)).join('\n\n')
   }
   //default false
-  if (options.citations === true) {
+  if (options.references === true) {
     md += '## References'
     md += this.citations()
       .map(c => c.json(options))

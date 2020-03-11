@@ -13,7 +13,7 @@ const toMarkdown = function(options) {
   if (options.links === true) {
     this.links().forEach(link => {
       let mdLink = link.markdown()
-      let str = link.text || link.page
+      let str = link.text() || link.page()
       md = smartReplace(md, str, mdLink)
     })
   }

@@ -1,10 +1,17 @@
-const dontDo = require('./_skip-keys')
+const dontDo = {
+  image: true,
+  caption: true,
+  alt: true,
+  signature: true,
+  'signature alt': true
+}
+
 const defaults = {
   images: true
 }
 
 //
-const pad = require('../_lib/pad')
+const pad = require('./_lib/pad')
 
 // render an infobox as a table with two columns, key + value
 const doInfobox = function(options) {

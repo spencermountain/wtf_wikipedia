@@ -39,7 +39,7 @@ const toHtml = function(options) {
       .join('\n')
   }
   //render each section
-  if (options.sections === true) {
+  if (options.sections === true || options.paragraphs === true || options.sentences === true) {
     html += data.sections.map(s => s.html(options)).join('\n')
   }
   //default off
