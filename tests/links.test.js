@@ -74,8 +74,8 @@ test('title-case-links', t => {
     wtf('[[john]]')
       .links(0)
       .page(),
-    'John',
-    'titlecase page'
+    'john',
+    'page'
   )
   t.equal(
     wtf('[[john]]')
@@ -111,7 +111,7 @@ test('title-case-links', t => {
     wtf('[[john|his son]]')
       .links(0)
       .page(),
-    'John',
+    'john',
     'titlecase given page'
   )
   t.equal(

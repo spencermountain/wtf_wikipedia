@@ -9,7 +9,8 @@ const toHtml = function() {
     classNames += ' external'
   } else {
     //otherwise, make it a relative internal link
-    href = helpers.capitalise(this.page())
+    let page = this.page()
+    href = helpers.capitalise(page)
     href = './' + href.replace(/ /g, '_')
     //add anchor
     if (this.anchor()) {

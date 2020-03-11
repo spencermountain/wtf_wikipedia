@@ -19,6 +19,7 @@
 - [major] create seperate client/server-side build formats (use native fetch/node lib)
 - [major] support deep (infinite) recursion in templates
 - [major] much-stronger i18n support
+- no-longer automatically titlecase links
 - support adding template parsers through plugins in `.extend()`
 - - support array, number, and string shorthand for template parsers
 

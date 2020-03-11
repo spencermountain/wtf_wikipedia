@@ -64,7 +64,7 @@ const internal_links = function(links, str) {
       if (!obj.text) {
         obj.text = obj.page
       }
-      obj.page = obj.page.charAt(0).toUpperCase() + obj.page.substring(1)
+      obj.page = obj.page
     }
     links.push(obj)
     return s
