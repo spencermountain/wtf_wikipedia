@@ -22,6 +22,7 @@
 - no-longer automatically titlecase links
 - support adding template parsers through plugins in `.extend()`
 - - support array, number, and string shorthand for template parsers
+- deprecate `.plaintext()` in favour of `.text()`
 
 ### 7.8.0
 

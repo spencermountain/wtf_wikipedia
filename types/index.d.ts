@@ -33,8 +33,12 @@ declare module wtf {
 
     private options: object
 
-    /**guess the title of the page from the first-sentence */
+    /**get, set, or guess the title of the page */
     title(str?: string): string
+    /**get/set the wikimedia id for the page */
+    pageID(str?: string | number): string
+    /**get/set the wikimedia namespace for the page */
+    namespace(str?: string | number): string
 
     /**if the page is just a redirect to another page */
     isRedirect(): boolean

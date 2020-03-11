@@ -21,7 +21,7 @@
     "test": "TESTENV=dev node ./scripts/test.js",
     "testb": "TESTENV=prod node ./scripts/test.js",
     "test:fetch": "TESTENV=dev tape ./tests/fetch/*.test.js | tap-dancer",
-    "test:types": "ts-node ./tests/types/index.ts | tap-dancer",
+    "test:types": "ts-node ./tests/types/index.ts",
     "watch": "amble ./scratch.js",
     "lint": "eslint ./src/"
   },

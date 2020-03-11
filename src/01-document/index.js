@@ -12,8 +12,10 @@ const main = function(wiki, options) {
   options = options || {}
   wiki = wiki || ''
   let data = {
+    title: options.title || null,
+    pageID: options.pageID || options.id || null,
+    namespace: options.namespace || options.ns || null,
     type: 'page',
-    title: '',
     sections: [],
     categories: [],
     coordinates: []
@@ -23,17 +25,11 @@ const main = function(wiki, options) {
     data.type = 'redirect'
     data.redirectTo = redirects.parse(wiki)
     parse.categories(data, wiki)
-    return new Document(data, options)
+    return new Document(data)
   }
   //detect if page is just disambiguator page, and return
   if (disambig.isDisambig(wiki) === true) {
     data.type = 'disambiguation'
-  }
-  if (options.page_identifier) {
-    data.page_identifier = options.page_identifier
-  }
-  if (options.lang_or_wikiid) {
-    data.lang_or_wikiid = options.lang_or_wikiid
   }
   //give ourselves a little head-start
   wiki = preProcess(data, wiki, options)
@@ -42,7 +38,7 @@ const main = function(wiki, options) {
   //parse all the headings, and their texts/sentences
   data.sections = parse.section(wiki, options) || []
   //all together now
-  return new Document(data, options)
+  return new Document(data)
 }
 
 module.exports = main

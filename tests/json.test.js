@@ -3,12 +3,12 @@ var readFile = require('./lib/_cachedPage')
 
 test('json-output-default', t => {
   var data = readFile('royal_cinema').json()
-  t.ok(data.title, 'title')
-  t.ok(data.categories, 'categories')
-  t.ok(data.sections, 'sections')
-  t.ok(!data.images, 'images')
-  t.ok(!data.citations, 'citations')
-  t.ok(!data.infoboxes, 'infoboxes')
+  t.ok(data.title, 'title-exists')
+  t.ok(data.categories, 'categories-exists')
+  t.ok(data.sections, 'sections-exists')
+  t.ok(!data.images, 'images-exists')
+  t.ok(!data.citations, 'citations-exists')
+  t.ok(!data.infoboxes, 'infoboxes-exists')
   t.end()
 })
 
@@ -26,14 +26,14 @@ test('json-output-options', t => {
     plaintext: true
   }
   var data = readFile('royal_cinema').json(options)
-  t.ok(!data.title, 'title')
-  t.ok(!data.categories, 'categories')
-  t.ok(!data.citations, 'citations')
-  t.ok(!data.infoboxes, 'infoboxes')
-  t.ok(!data.images, 'images')
-  t.ok(!data.sections, 'sections')
+  t.ok(!data.title, 'title-gone')
+  t.ok(!data.categories, 'categories-gone')
+  t.ok(!data.citations, 'citations-gone')
+  t.ok(!data.infoboxes, 'infoboxes-gone')
+  t.ok(!data.images, 'images-gone')
+  t.ok(!data.sections, 'sections-gone')
 
-  t.ok(data.plaintext, 'plaintext')
+  t.ok(data.plaintext, 'plaintext-exists')
   t.end()
 })
 

@@ -11,10 +11,10 @@ const toJSON = function(doc, options) {
   options = setDefaults(options, defaults)
   let data = {}
   if (options.title) {
-    data.title = doc.options.title || doc.title()
+    data.title = doc.title()
   }
-  if (options.pageID && doc.options.pageID) {
-    data.pageID = doc.options.pageID
+  if (options.pageID) {
+    data.pageID = doc.pageID()
   }
   if (options.categories) {
     data.categories = doc.categories()

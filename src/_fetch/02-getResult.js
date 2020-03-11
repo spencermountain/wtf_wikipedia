@@ -13,7 +13,7 @@ const getResult = function(data) {
     }
     let meta = {
       title: page.title,
-      id: page.pageid,
+      pageID: page.pageid,
       namespace: page.ns
     }
     try {

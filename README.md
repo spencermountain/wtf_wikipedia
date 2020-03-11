@@ -383,7 +383,9 @@ wtf
 
 ## API
 
-- **.title()** - guess the title of the page from the first-sentence
+- **.title()** - get/set the title of the page from the first-sentence
+- **.pageID()** - get/set the wikimedia id of the page, if we have it.
+- **.namespace()** - get/set the wikimedia namespace of the page, if we have it
 - **.isRedirect()** - if the page is just a redirect to another page
 - **.redirectTo()** - the page this redirects to
 - **.isDisambiguation()** - is this a placeholder page to direct you to one-of-many possible pages

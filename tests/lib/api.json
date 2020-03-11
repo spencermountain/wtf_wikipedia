@@ -3,7 +3,17 @@
     {
       "name": "title",
       "returns": "String",
-      "description": "guess the title of the page from the first-sentence"
+      "description": "get, or guess the title of the page from the first-sentence"
+    },
+    {
+      "name": "pageID",
+      "returns": "Number",
+      "description": "grab the wikimedia id of the page, if we have it"
+    },
+    {
+      "name": "namespace",
+      "returns": "String",
+      "description": "grab the wikimedia namespace of the page, if we have it"
     },
     {
       "name": "isRedirect",

@@ -10,8 +10,7 @@ const defaults = {
 }
 
 //
-const Document = function(data, options) {
-  this.options = options || {}
+const Document = function(data) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data
@@ -25,20 +24,29 @@ const methods = {
       this.data.title = str
       return str
     }
-    //few places this could be stored..
-    if (this.data.title !== '') {
+    //if we have it already
+    if (this.data.title) {
       return this.data.title
     }
-    if (this.options.title) {
-      return this.options.title
-    }
-    let guess = null
     //guess the title of this page from first sentence bolding
+    let guess = null
     let sen = this.sentences(0)
     if (sen) {
       guess = sen.bolds(0)
     }
     return guess
+  },
+  pageID: function(id) {
+    if (id !== undefined) {
+      this.data.pageID = id
+    }
+    return this.data.pageID
+  },
+  namespace: function(ns) {
+    if (ns !== undefined) {
+      this.data.namespace = ns
+    }
+    return this.data.namespace
   },
   isRedirect: function() {
     return this.data.type === 'redirect'
@@ -97,6 +105,9 @@ const methods = {
     }
     return arr
   },
+  sentence: function() {
+    return this.sentences(0)
+  },
   images: function(clue) {
     let arr = sectionMap(this, 'images', null)
     //grab image from infobox, first
@@ -122,6 +133,9 @@ const methods = {
       return arr[clue]
     }
     return arr
+  },
+  image: function() {
+    return this.images(0)
   },
   links: function(clue) {
     return sectionMap(this, 'links', clue)
@@ -184,13 +198,6 @@ const methods = {
   }
 }
 
-//add alises
-Document.prototype.plaintext = Document.prototype.text
-/** return the first sentence*/
-Document.prototype.sentence = function() {
-  return this.sentences(0)
-}
-
 //add singular-methods, too
 let plurals = [
   'sections',
@@ -218,6 +225,7 @@ Object.keys(methods).forEach(k => {
 })
 
 //alias these ones
+Document.prototype.plaintext = Document.prototype.text
 Document.prototype.isDisambig = Document.prototype.isDisambiguation
 Document.prototype.citations = Document.prototype.references
 Document.prototype.redirectsTo = Document.prototype.redirectTo
