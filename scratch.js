@@ -2,8 +2,7 @@ var wtf = require('./src/index')
 // var wtf = require('./builds/wtf_wikipedia')
 wtf.extend(require('./plugins/wikitext/src'))
 
-const fs = require('fs')
-let txt = fs.readFileSync('/Users/spencer/mountain/wtf_wikipedia/tests/cache/BBDO.txt').toString()
+// let txt = require('fs').readFileSync('/Users/spencer/mountain/wtf_wikipedia/tests/cache/BBDO.txt').toString()
 
 // wtf.extend((models, templates) => {
 //   templates.one = 0
@@ -11,4 +10,8 @@ let txt = fs.readFileSync('/Users/spencer/mountain/wtf_wikipedia/tests/cache/BBD
 // var have = wtf(txt).wikitext()
 // console.log(have)
 
-console.log(wtf(txt).wikitext({}))
+console.log(
+  wtf('i was cool and [[cool]]')
+    .sentence()
+    .wikitext()
+)

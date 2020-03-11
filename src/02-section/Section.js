@@ -1,6 +1,5 @@
 const toJSON = require('./toJson')
 const setDefaults = require('../_lib/setDefaults')
-const aliasList = require('../_lib/aliases')
 
 const defaults = {
   tables: true,
@@ -265,8 +264,5 @@ methods.sections = methods.children
 Object.keys(methods).forEach(k => {
   Section.prototype[k] = methods[k]
 })
-//add alises, too
-Object.keys(aliasList).forEach(k => {
-  Section.prototype[k] = methods[aliasList[k]]
-})
+
 module.exports = Section

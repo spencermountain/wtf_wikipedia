@@ -26,7 +26,7 @@ test('font-size', t => {
   t.equal(wtf(str).plaintext(), 'hello (1995-1997) world', '{{small}}')
 
   str = 'hello {{huge|world}}'
-  t.equal(wtf(str).plaintext(), 'hello world', '{{huge}}')
+  t.equal(wtf(str).text(), 'hello world', '{{huge}}')
 
   str = `hello {{nowrap|{{small|(1995–present)}}}} world`
   t.equal(wtf(str).plaintext(), 'hello (1995–present) world', '{{nowrap}}')

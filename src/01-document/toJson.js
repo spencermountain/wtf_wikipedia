@@ -39,7 +39,7 @@ const toJSON = function(doc, options) {
     data.images = doc.images().map(i => i.json(options))
   }
   if (options.plaintext) {
-    data.plaintext = doc.plaintext(options)
+    data.plaintext = doc.text(options)
   }
   if (options.citations || options.references) {
     data.references = doc.references()

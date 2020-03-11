@@ -1,6 +1,5 @@
 const toJson = require('./toJson')
 const Image = require('../image/Image')
-const aliasList = require('../_lib/aliases')
 
 const normalize = str => {
   str = str.toLowerCase()
@@ -77,10 +76,6 @@ const methods = {
 
 Object.keys(methods).forEach(k => {
   Infobox.prototype[k] = methods[k]
-})
-//add alises, too
-Object.keys(aliasList).forEach(k => {
-  Infobox.prototype[k] = methods[aliasList[k]]
 })
 Infobox.prototype.data = Infobox.prototype.keyValue
 Infobox.prototype.template = Infobox.prototype.type

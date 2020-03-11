@@ -1,4 +1,3 @@
-const aliasList = require('../_lib/aliases')
 const setDefaults = require('../_lib/setDefaults')
 const defaults = {}
 
@@ -48,9 +47,5 @@ const methods = {
 
 Object.keys(methods).forEach(k => {
   List.prototype[k] = methods[k]
-})
-//add alises, too
-Object.keys(aliasList).forEach(k => {
-  List.prototype[k] = methods[aliasList[k]]
 })
 module.exports = List

@@ -1,5 +1,4 @@
 const format = require('./_format')
-const months = require('./_months')
 const parse = require('../../_parsers/parse')
 
 const misc = {

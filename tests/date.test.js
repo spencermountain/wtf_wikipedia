@@ -49,7 +49,7 @@ test('structured date templates', t => {
     ['{{Start date and age|2010|02|29|df=yes}}', 'February 29, 2010']
   ]
   arr.forEach(a => {
-    var str = wtf(a[0]).plaintext()
+    var str = wtf(a[0]).text()
     t.equal(str, a[1], a[0] + ' ' + str)
   })
   t.end()

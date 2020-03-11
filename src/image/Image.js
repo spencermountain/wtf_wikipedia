@@ -1,7 +1,6 @@
 // const fetch = require('cross-fetch')
 const toJson = require('./toJson')
 const server = 'https://wikipedia.org/wiki/Special:Redirect/file/'
-const aliasList = require('../_lib/aliases')
 
 const encodeTitle = function(file) {
   let title = file.replace(/^(image|file?)\:/i, '')
@@ -76,10 +75,7 @@ const methods = {
 Object.keys(methods).forEach(k => {
   Image.prototype[k] = methods[k]
 })
-//add alises, too
-Object.keys(aliasList).forEach(k => {
-  Image.prototype[k] = methods[aliasList[k]]
-})
+
 Image.prototype.src = Image.prototype.url
 Image.prototype.thumb = Image.prototype.thumbnail
 module.exports = Image

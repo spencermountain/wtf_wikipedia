@@ -1,7 +1,6 @@
 const sectionMap = require('./_sectionMap')
 const toJSON = require('./toJson')
 const setDefaults = require('../_lib/setDefaults')
-const aliasList = require('../_lib/aliases')
 const Image = require('../image/Image')
 
 const defaults = {
@@ -186,9 +185,12 @@ const methods = {
 }
 
 //add alises
-Object.keys(aliasList).forEach(k => {
-  Document.prototype[k] = methods[aliasList[k]]
-})
+Document.prototype.plaintext = Document.prototype.text
+/** return the first sentence*/
+Document.prototype.sentence = function() {
+  return this.sentences(0)
+}
+
 //add singular-methods, too
 let plurals = [
   'sections',
