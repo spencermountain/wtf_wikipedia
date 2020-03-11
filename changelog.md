@@ -12,9 +12,9 @@
 - - drop header/footer boilerplate from outputs
 - [breaking] `.templates()` and `.links()` return Template and Link objects, and not bare JSON (use `.map(l=> l.json())`)
 - [breaking] refactor inputs for `.fetch()`
-- - no-longer support callback/errback style
-- - no longer support 'enwikiquote' format as input
-- - use 'wiki' instead of undocumented 'wiki_url' param
+- - no longer support 'enwikiquote' etc format as input
+- - use 'wiki' instead of undocumented 'wikiUrl' param
+- - no more automatic throttling/rate-limiting
 - [breaking] remove `Image.exists()` method to [plugin](./plugins/image-exists.js)
 - [major] create seperate client/server-side build formats (use native fetch/node lib)
 - [major] support deep (infinite) recursion in templates

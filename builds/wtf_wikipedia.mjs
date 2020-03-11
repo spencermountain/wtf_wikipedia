@@ -111,6 +111,8 @@ var makeUrl = function makeUrl(options) {
 
   var url = "https://".concat(options.lang, ".").concat(options.wiki, ".org/w/api.php?"); // from a 3rd party wiki
 
+  options.domain = options.domain || options.wikiUrl; //support old syntax
+
   if (options.domain) {
     var path = options.path; //wikimedia api uses ./w/api path. no others do
 

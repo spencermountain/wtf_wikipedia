@@ -35,6 +35,7 @@ const makeUrl = function(options) {
   // default url
   let url = `https://${options.lang}.${options.wiki}.org/w/api.php?`
   // from a 3rd party wiki
+  options.domain = options.domain || options.wikiUrl //support old syntax
   if (options.domain) {
     let path = options.path
     //wikimedia api uses ./w/api path. no others do
