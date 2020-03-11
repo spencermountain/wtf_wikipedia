@@ -1,4 +1,4 @@
-/* wtf_wikipedia 7.8.1 MIT */
+/* wtf_wikipedia 8.0.0 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -169,7 +169,7 @@
 
       var meta = {
         title: page.title,
-        id: page.pageid,
+        pageID: page.pageid,
         namespace: page.ns
       };
 
@@ -233,11 +233,11 @@
     var data = {};
 
     if (options.title) {
-      data.title = doc.options.title || doc.title();
+      data.title = doc.title();
     }
 
-    if (options.pageID && doc.options.pageID) {
-      data.pageID = doc.options.pageID;
+    if (options.pageID) {
+      data.pageID = doc.pageID();
     }
 
     if (options.categories) {
@@ -274,7 +274,7 @@
     }
 
     if (options.plaintext) {
-      data.plaintext = doc.plaintext(options);
+      data.plaintext = doc.text(options);
     }
 
     if (options.citations || options.references) {
@@ -285,15 +285,6 @@
   };
 
   var toJson = toJSON;
-
-  //alternative names for methods in API
-  var aliasList = {
-    plaintext: 'text',
-    wikiscript: 'wikitext',
-    wiki: 'wikitext',
-    original: 'wikitext'
-  };
-  var aliases = aliasList;
 
   var defaults$2 = {
     caption: true,
@@ -412,10 +403,6 @@
   };
   Object.keys(methods).forEach(function (k) {
     Image.prototype[k] = methods[k];
-  }); //add alises, too
-
-  Object.keys(aliases).forEach(function (k) {
-    Image.prototype[k] = methods[aliases[k]];
   });
   Image.prototype.src = Image.prototype.url;
   Image.prototype.thumb = Image.prototype.thumbnail;
@@ -427,8 +414,7 @@
     paragraphs: true
   }; //
 
-  var Document = function Document(data, options) {
-    this.options = options || {};
+  var Document = function Document(data) {
     Object.defineProperty(this, 'data', {
       enumerable: false,
       value: data
@@ -441,19 +427,15 @@
       if (str !== undefined) {
         this.data.title = str;
         return str;
-      } //few places this could be stored..
+      } //if we have it already
 
 
-      if (this.data.title !== '') {
+      if (this.data.title) {
         return this.data.title;
-      }
+      } //guess the title of this page from first sentence bolding
 
-      if (this.options.title) {
-        return this.options.title;
-      }
 
-      var guess = null; //guess the title of this page from first sentence bolding
-
+      var guess = null;
       var sen = this.sentences(0);
 
       if (sen) {
@@ -461,6 +443,20 @@
       }
 
       return guess;
+    },
+    pageID: function pageID(id) {
+      if (id !== undefined) {
+        this.data.pageID = id;
+      }
+
+      return this.data.pageID;
+    },
+    namespace: function namespace(ns) {
+      if (ns !== undefined) {
+        this.data.namespace = ns;
+      }
+
+      return this.data.namespace;
     },
     isRedirect: function isRedirect() {
       return this.data.type === 'redirect';
@@ -532,6 +528,9 @@
 
       return arr;
     },
+    sentence: function sentence() {
+      return this.sentences(0);
+    },
     images: function images(clue) {
       var arr = _sectionMap(this, 'images', null); //grab image from infobox, first
 
@@ -561,6 +560,9 @@
       }
 
       return arr;
+    },
+    image: function image() {
+      return this.images(0);
     },
     links: function links(clue) {
       return _sectionMap(this, 'links', clue);
@@ -629,11 +631,7 @@
       });
       return this;
     }
-  }; //add alises
-
-  Object.keys(aliases).forEach(function (k) {
-    Document.prototype[k] = methods$1[aliases[k]];
-  }); //add singular-methods, too
+  }; //add singular-methods, too
 
   var plurals = ['sections', 'infoboxes', 'sentences', 'citations', 'references', 'coordinates', 'tables', 'links', 'images', 'categories'];
   plurals.forEach(function (fn) {
@@ -649,6 +647,7 @@
     Document.prototype[k] = methods$1[k];
   }); //alias these ones
 
+  Document.prototype.plaintext = Document.prototype.text;
   Document.prototype.isDisambig = Document.prototype.isDisambiguation;
   Document.prototype.citations = Document.prototype.references;
   Document.prototype.redirectsTo = Document.prototype.redirectTo;
@@ -656,22 +655,22 @@
   Document.prototype.redirects = Document.prototype.redirectTo;
   var Document_1 = Document;
 
-  var categories = ['abdeeling', //	pdc
+  var categories = ['category', //en
+  'abdeeling', //	pdc
   'bólkur', //	fo
   'catagóir', //	ga
   'categori', //	cy
-  'categoría', //	an
-  'categoria', //	co
+  'categoria', 'categoria', //	co
   'categoría', //	es
   'categorîa', //	lij
   'categorìa', //	pms
-  'catègorie', //	frp
-  'categuria', //	lmo
+  'catégorie', 'categorie', 'catègorie', //	frp
+  'category', 'categuria', //	lmo
   'catigurìa', //	scn
   'class', //	kw
   'ẹ̀ka', //	yo
-  'flocc', //	ang
-  'grup', //	tpi
+  'flocc', 'flocc', //	ang
+  'flokkur', 'grup', //	tpi
   'jamii', //	sw
   'kaarangay', //	war
   'kateggoría', //	lad
@@ -680,17 +679,18 @@
   'kategorî', //	ku
   'kategoria', //	eu
   'kategória', //	hu
+  'kategorie', //de
   'kategoriija', //	se
   'kategorija', //	sl
   'kategorio', //	eo
-  'kategoriýa', //	tk
+  'kategoriya', 'kategoriýa', //	tk
   'kategoriye', //	diq
   'kategory', //	fy
   'kategorya', //	tl
   'kateqoriya', //	az
   'katiguriya', //	qu
   'klad', //	vo
-  'ñemohenda', //	gn
+  'luokka', 'ñemohenda', //	gn
   'roinn', //-seòrsa	gd
   'ronney', //	gv
   'rummad', //	br
@@ -699,15 +699,18 @@
   'sumut', // atassuseq	kl
   'thể', // loại	vi
   'turkum', //	uz
-  'категория', //	ru
+  'категорија', 'категория', //	ru
   'категорія', //	uk
-  'төркем', //	tt
+  'катэгорыя', 'төркем', //	tt
   'קטגוריה', //	he
-  'تۈر', //	ug
+  'تصنيف', 'تۈر', //	ug
+  'رده', 'श्रेणी', 'श्रेणी', //	hi
   'বিষয়শ্রেণী', //	bn
   'หมวดหมู่', //	th
   '분류', //	ko
+  '분류', //ko
   '分类' //	za
+  //--
   ];
 
   var disambig = ['dab', //en
@@ -929,7 +932,7 @@
   var infoboxes = ['infobox', //en
   'anfo', //mwl
   'anuāmapa', //haw
-  'bilgi', //gag
+  'bilgi kutusu', //tr
   'bilgi', //tr
   'bilgiquti', //uz
   'boaty', //mg
@@ -953,14 +956,13 @@
   'informkesto', //eo
   'infoskreine', //ltg
   'infotaula', //eu
-  'inligtingskas3', //af
+  'inligtingskas', 'inligtingskas3', //af
   'inligtingskas4', //af
   'kishtey', //gv
   'kotak', //su
-  'simple', //ss
   'tertcita', //jbo
   'tietolaatikko', //fi
-  'ynfoboks', //fy
+  'yerleşim bilgi kutusu', 'ynfoboks', //fy
   'πλαίσιο', //el
   'акарточка', //ab
   'аҥа', //mhr
@@ -968,7 +970,7 @@
   'инфокутија', //sr
   'инфокутия', //bg
   'інфобокс', //rue
-  'картка', //be
+  'канадский', 'картка', //be
   'карточка', //ru
   'карточка2', //mdf
   'карточкарус', //ba
@@ -976,13 +978,12 @@
   'қуттӣ', //tg
   'ინფოდაფა', //ka
   'տեղեկաքարտ', //hy
-  'տեղեկաքարտ', //hyw
   'אינפאקעסטל', //yi
   'תבנית', //he
   'بطاقة', //ar
   'ڄاڻخانو', //sd
   'خانہ', //ur
-  'ज्ञानसन्दूक', //hi
+  'لغة', 'ज्ञानसन्दूक', //hi
   'তথ্যছক', //bn
   'ਜਾਣਕਾਰੀਡੱਬਾ', //pa
   'సమాచారపెట్టె', //te
@@ -1011,6 +1012,8 @@
   '転送', //ja
   '重定向'];
 
+  var references = ['references', 'reference', 'einzelnachweise', 'referencias', 'références', 'notes et références', '脚注', 'referenser', 'bronnen', 'примечания'];
+
   // and then manually on March 2020
 
   var i18n = {
@@ -1018,7 +1021,8 @@
     disambig: disambig,
     images: images,
     infoboxes: infoboxes,
-    redirects: redirects // specials: [
+    redirects: redirects,
+    references: references // specials: [
     //   'спэцыяльныя',
     //   'especial',
     //   'speciální',
@@ -1619,7 +1623,6 @@
   var ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i;
   var external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
   var link_reg = /\[\[(.{0,160}?)\]\]([a-z']+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]'s"
-  // const isFile = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i');
 
   var external_links = function external_links(links, str) {
     str.replace(external_link, function (all, protocol, link, text) {
@@ -1692,7 +1695,7 @@
           obj.text = obj.page;
         }
 
-        obj.page = obj.page.charAt(0).toUpperCase() + obj.page.substring(1);
+        obj.page = obj.page;
       }
 
       links.push(obj);
@@ -2323,10 +2326,6 @@
   methods$2.sections = methods$2.children;
   Object.keys(methods$2).forEach(function (k) {
     Section.prototype[k] = methods$2[k];
-  }); //add alises, too
-
-  Object.keys(aliases).forEach(function (k) {
-    Section.prototype[k] = methods$2[aliases[k]];
   });
   var Section_1 = Section;
 
@@ -2470,7 +2469,7 @@
   var toJSON$2 = function toJSON(s, options) {
     options = setDefaults_1(options, defaults$6);
     var data = {};
-    var text = s.plaintext();
+    var text = s.text();
 
     if (options.text === true) {
       data.text = text;
@@ -2591,10 +2590,6 @@
   };
   Object.keys(methods$4).forEach(function (k) {
     Sentence.prototype[k] = methods$4[k];
-  }); //add alises, too
-
-  Object.keys(aliases).forEach(function (k) {
-    Sentence.prototype[k] = methods$4[aliases[k]];
   });
   Sentence.prototype.italic = Sentence.prototype.italics;
   Sentence.prototype.bold = Sentence.prototype.bolds;
@@ -3473,10 +3468,6 @@
   methods$6.keyval = methods$6.keyValue;
   Object.keys(methods$6).forEach(function (k) {
     Table.prototype[k] = methods$6[k];
-  }); //add alises, too
-
-  Object.keys(aliases).forEach(function (k) {
-    Table.prototype[k] = methods$6[aliases[k]];
   });
   var Table_1 = Table;
 
@@ -3845,10 +3836,6 @@
   };
   Object.keys(methods$8).forEach(function (k) {
     List.prototype[k] = methods$8[k];
-  }); //add alises, too
-
-  Object.keys(aliases).forEach(function (k) {
-    List.prototype[k] = methods$8[aliases[k]];
   });
   var List_1 = List;
 
@@ -4080,10 +4067,6 @@
 
   Object.keys(methods$9).forEach(function (k) {
     Infobox.prototype[k] = methods$9[k];
-  }); //add alises, too
-
-  Object.keys(aliases).forEach(function (k) {
-    Infobox.prototype[k] = methods$9[aliases[k]];
   });
   Infobox.prototype.data = Infobox.prototype.keyValue;
   Infobox.prototype.template = Infobox.prototype.type;
@@ -7327,14 +7310,14 @@
   var Template_1 = Template;
 
   var isCitation = new RegExp('^(cite |citation)', 'i');
-  var references = {
+  var references$1 = {
     citation: true,
     refn: true,
     harvnb: true
   };
 
   var isReference = function isReference(obj) {
-    return references[obj.template] === true || isCitation.test(obj.template) === true;
+    return references$1[obj.template] === true || isCitation.test(obj.template) === true;
   };
 
   var isObject = function isObject(obj) {
@@ -7638,8 +7621,7 @@
 
   var startToEnd = xmlTemplates;
 
-  var isReference$1 = /^(references?|einzelnachweise|referencias|références|notes et références|脚注|referenser|bronnen|примечания):?/i; //todo support more languages
-
+  var isReference$1 = new RegExp('^(' + i18n.references.join('|') + '):?', 'i');
   var section_reg = /(?:\n|^)(={2,5}.{1,200}?={2,5})/g; //interpret ==heading== lines
 
   var parse$6 = {
@@ -7760,8 +7742,10 @@
     options = options || {};
     wiki = wiki || '';
     var data = {
+      title: options.title || null,
+      pageID: options.pageID || options.id || null,
+      namespace: options.namespace || options.ns || null,
       type: 'page',
-      title: '',
       sections: [],
       categories: [],
       coordinates: []
@@ -7771,20 +7755,12 @@
       data.type = 'redirect';
       data.redirectTo = redirects$1.parse(wiki);
       parse$7.categories(data, wiki);
-      return new Document_1(data, options);
+      return new Document_1(data);
     } //detect if page is just disambiguator page, and return
 
 
     if (disambig$1.isDisambig(wiki) === true) {
       data.type = 'disambiguation';
-    }
-
-    if (options.page_identifier) {
-      data.page_identifier = options.page_identifier;
-    }
-
-    if (options.lang_or_wikiid) {
-      data.lang_or_wikiid = options.lang_or_wikiid;
     } //give ourselves a little head-start
 
 
@@ -7794,7 +7770,7 @@
 
     data.sections = parse$7.section(wiki, options) || []; //all together now
 
-    return new Document_1(data, options);
+    return new Document_1(data);
   };
 
   var _01Document = main;
@@ -8057,7 +8033,7 @@
 
   var category = fetchCategory;
 
-  var _version = '7.8.1';
+  var _version = '8.0.0';
 
   var models = {
     Doc: Document_1,

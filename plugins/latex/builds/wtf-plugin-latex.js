@@ -1,8 +1,8 @@
-/* wtf-plugin-latex 0.0.1 MIT */
+/* wtf-plugin-latex 0.1.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.wtfLatex = factory());
+  (global = global || self, global.wtf = factory());
 }(this, (function () { 'use strict';
 
   var defaults = {
@@ -47,8 +47,8 @@
     //render citations
 
 
-    if (options.citations === true) {
-      out += this.citations().map(function (c) {
+    if (options.references === true) {
+      out += this.references().map(function (c) {
         return c.latex(options);
       }).join('\n');
     }
@@ -209,15 +209,13 @@
   }; // create links, bold, italic in latex
 
   var toLatex$2 = function toLatex(options) {
-    var _this = this;
-
     options = Object.assign({}, defaults$3, options);
-    var text = this.plaintext(); //turn links back into links
+    var text = this.text(); //turn links back into links
 
     if (options.links === true && this.links().length > 0) {
       this.links().forEach(function (link) {
         var tag = link.latex();
-        var str = _this.text || _this.page;
+        var str = link.text() || link.page();
         text = smartReplace_1(text, str, tag);
       });
     }
@@ -244,6 +242,53 @@
   };
 
   var _04Sentence = toLatex$2;
+
+  var capitalise = function capitalise(str) {
+    if (str && typeof str === 'string') {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    return '';
+  };
+
+  var helpers = {
+    capitalise: capitalise
+  };
+
+  var toLatex$3 = function toLatex() {
+    var href = '';
+
+    if (this.site()) {
+      //use an external link
+      href = this.site();
+    } else {
+      //otherwise, make it a relative internal link
+      href = helpers.capitalise(this.page());
+      href = './' + href.replace(/ /g, '_'); //add anchor
+
+      if (this.anchor()) {
+        href += "#".concat(this.anchor());
+      }
+    }
+
+    var str = this.text() || this.page();
+    return '\\href{' + href + '}{' + str + '}';
+  };
+
+  var _05Link = toLatex$3;
+
+  //
+  var toLatex$4 = function toLatex() {
+    var alt = this.alt();
+    var out = '\\begin{figure}';
+    out += '\n\\includegraphics[width=\\linewidth]{' + this.thumb() + '}';
+    out += '\n\\caption{' + alt + '}'; // out += '\n%\\label{fig:myimage1}';
+
+    out += '\n\\end{figure}';
+    return out;
+  };
+
+  var image = toLatex$4;
 
   var dontDo = {
     image: true,
@@ -284,26 +329,88 @@
   var infobox_1 = infobox;
 
   //
-  var toLatex$3 = function toLatex() {
-    var alt = this.alt();
-    var out = '\\begin{figure}';
-    out += '\n\\includegraphics[width=\\linewidth]{' + this.thumb() + '}';
-    out += '\n\\caption{' + alt + '}'; // out += '\n%\\label{fig:myimage1}';
-
-    out += '\n\\end{figure}';
+  var toLatex$5 = function toLatex(options) {
+    var out = '\\begin{itemize}\n';
+    this.lines().forEach(function (s) {
+      out += '  \\item ' + s.text(options) + '\n';
+    });
+    out += '\\end{itemize}\n';
     return out;
   };
 
-  var image = toLatex$3;
+  var list = toLatex$5;
+
+  //not so impressive right now
+  var toLatex$6 = function toLatex() {
+    var str = this.title();
+    return '⌃ ' + str + '\n';
+  };
+
+  var reference = toLatex$6;
+
+  //create a formal LATEX table
+  var doTable = function doTable(options) {
+    var out = '\n%\\vspace*{0.3cm}\n';
+    out += '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns';
+    out += "\n% Format Align Column: 'l'=left 'r'=right align, 'c'=center, 'p{5cm}'=block with column width 5cm ";
+    out += '\n\\begin{tabular}{|';
+    Object.keys(this[0]).forEach(function () {
+      out += 'l|';
+    });
+    out += '} \n';
+    out += '\n  \\hline  %horizontal line\n'; //make header
+
+    out += '\n  % BEGIN: Table Header';
+    var vSep = '   ';
+    Object.keys(this[0]).forEach(function (k) {
+      out += '\n    ' + vSep;
+
+      if (k.indexOf('col-') === 0) {
+        out += '\\textbf{' + k + '}';
+      } else {
+        out += '  ';
+      }
+
+      vSep = ' & ';
+    });
+    out += '\\\\ ';
+    out += '\n  % END: Table Header';
+    out += '\n  % BEGIN: Table Body';
+    out += '\n  \\hline  % ----- table row -----'; ////make rows
+
+    this.forEach(function (o) {
+      vSep = ' ';
+      out += '\n  % ----- table row -----';
+      Object.keys(o).forEach(function (k) {
+        var s = o[k];
+        var val = s.latex(options);
+        out += '\n    ' + vSep + val + '';
+        vSep = ' & ';
+      });
+      out += '  \\\\ '; // newline in latex table = two backslash \\
+
+      out += '\n  \\hline  %horizontal line';
+    });
+    out += '\n    % END: Table Body';
+    out += '\\end{tabular} \n';
+    out += '\n\\vspace*{0.3cm}\n\n';
+    return out;
+  };
+
+  var table = doTable;
 
   var plugin = function plugin(models) {
-    models.Doc.latex = _01Doc;
-    models.Section.latex = _02Section;
-    models.Paragraph.latex = _03Paragraph;
-    models.Sentence.latex = _04Sentence;
-    models.Image.latex = image;
-    models.Infobox.latex = infobox_1; // models.Link.latex = link
-    // models.Template.latex = function(opts) {}
+    models.Doc.prototype.latex = _01Doc;
+    models.Section.prototype.latex = _02Section;
+    models.Paragraph.prototype.latex = _03Paragraph;
+    models.Sentence.prototype.latex = _04Sentence;
+    models.Image.prototype.latex = image;
+    models.Link.prototype.latex = _05Link;
+    models.Image.prototype.latex = image;
+    models.Infobox.prototype.latex = infobox_1;
+    models.List.prototype.latex = list;
+    models.Reference.prototype.latex = reference;
+    models.Table.prototype.latex = table;
   };
 
   var src = plugin;

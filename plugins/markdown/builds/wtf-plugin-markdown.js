@@ -1,8 +1,8 @@
-/* wtf-plugin-markdown 0.0.1 MIT */
+/* wtf-plugin-markdown 0.1.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.wtfMarkdown = factory());
+  (global = global || self, global.wtf = factory());
 }(this, (function () { 'use strict';
 
   var defaults = {
@@ -49,7 +49,7 @@
     } //default false
 
 
-    if (options.citations === true) {
+    if (options.references === true) {
       md += '## References';
       md += this.citations().map(function (c) {
         return c.json(options);
@@ -198,7 +198,7 @@
     if (options.links === true) {
       this.links().forEach(function (link) {
         var mdLink = link.markdown();
-        var str = link.text || link.page;
+        var str = link.text() || link.page();
         md = smartReplace_1(md, str, mdLink);
       });
     } //turn bolds into **bold**
@@ -219,13 +219,47 @@
 
   var _04Sentence = toMarkdown$2;
 
-  var _skipKeys = {
-    image: true,
-    caption: true,
-    alt: true,
-    signature: true,
-    'signature alt': true
+  var capitalise = function capitalise(str) {
+    if (str && typeof str === 'string') {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    return '';
   };
+
+  var helpers = {
+    capitalise: capitalise
+  };
+
+  var toMarkdown$3 = function toMarkdown() {
+    var href = ''; //if it's an external link, we good
+
+    if (this.site()) {
+      href = this.site();
+    } else {
+      //otherwise, make it a relative internal link
+      href = helpers.capitalise(this.page());
+      href = './' + href.replace(/ /g, '_'); //add anchor
+
+      if (this.anchor()) {
+        href += "#".concat(this.anchor());
+      }
+    }
+
+    var str = this.text() || this.page();
+    return '[' + str + '](' + href + ')';
+  };
+
+  var _05Link = toMarkdown$3;
+
+  //markdown images are like this: ![alt text](href)
+  var toMarkdown$4 = function toMarkdown() {
+    var alt = this.data.file.replace(/^(file|image):/i, '');
+    alt = alt.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
+    return '![' + alt + '](' + this.thumbnail() + ')';
+  };
+
+  var image = toMarkdown$4;
 
   //center-pad each cell, to make the table more legible
   var pad = function pad(str, cellWidth) {
@@ -248,6 +282,13 @@
 
   var pad_1 = pad;
 
+  var dontDo = {
+    image: true,
+    caption: true,
+    alt: true,
+    signature: true,
+    'signature alt': true
+  };
   var defaults$4 = {
     images: true
   }; //
@@ -261,7 +302,7 @@
     md += '|' + pad_1('---', 35) + '|' + pad_1('---', 30) + '|\n'; //todo: render top image here (somehow)
 
     Object.keys(this.data).forEach(function (k) {
-      if (_skipKeys[k] === true) {
+      if (dontDo[k] === true) {
         return;
       }
 
@@ -277,23 +318,111 @@
 
   var infobox = doInfobox;
 
-  //markdown images are like this: ![alt text](href)
-  var toMarkdown$3 = function toMarkdown() {
-    var alt = this.data.file.replace(/^(file|image):/i, '');
-    alt = alt.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
-    return '![' + alt + '](' + this.thumbnail() + ')';
+  //
+  var toMarkdown$5 = function toMarkdown(options) {
+    return this.lines().map(function (s) {
+      var str = s.markdown(options);
+      return ' * ' + str;
+    }).join('\n');
   };
 
-  var image = toMarkdown$3;
+  var list = toMarkdown$5;
+
+  //
+  var toMarkdown$6 = function toMarkdown() {
+    if (this.data && this.data.url && this.data.title) {
+      return "\u2303 [".concat(this.data.title, "](").concat(this.data.url, ")");
+    } else if (this.data.encyclopedia) {
+      return "\u2303 ".concat(this.data.encyclopedia);
+    } else if (this.data.title) {
+      //cite book, etc
+      var str = this.data.title;
+
+      if (this.data.author) {
+        str += this.data.author;
+      }
+
+      if (this.data.first && this.data.last) {
+        str += this.data.first + ' ' + this.data.last;
+      }
+
+      return "\u2303 ".concat(str);
+    } else if (this.inline) {
+      return "\u2303 ".concat(this.inline.markdown());
+    }
+
+    return '';
+  };
+
+  var reference = toMarkdown$6;
+
+  /* this is a markdown table:
+  | Tables        | Are           | Cool  |
+  | ------------- |:-------------:| -----:|
+  | col 3 is      | right-aligned | $1600 |
+  | col 2 is      | centered      |   $12 |
+  | zebra stripes | are neat      |    $1 |
+  */
+
+  var makeRow = function makeRow(arr) {
+    arr = arr.map(function (s) {
+      return pad_1(s, 14);
+    });
+    return '| ' + arr.join(' | ') + ' |';
+  }; //markdown tables are weird
+
+
+  var doTable = function doTable(options) {
+    var md = '';
+
+    if (!this || this.length === 0) {
+      return md;
+    }
+
+    var keys = Object.keys(this[0]); //first, grab the headers
+    //remove auto-generated number keys
+
+    var headers = keys.map(function (k) {
+      if (/^col[0-9]/.test(k) === true) {
+        return '';
+      }
+
+      return k;
+    }); //draw the header (necessary!)
+
+    md += makeRow(headers) + '\n';
+    md += makeRow(headers.map(function () {
+      return '---';
+    })) + '\n'; //do each row..
+
+    md += this.map(function (row) {
+      //each column..
+      var arr = keys.map(function (k) {
+        if (!row[k]) {
+          return '';
+        }
+
+        return row[k].markdown(options) || '';
+      }); //make it a nice padded row
+
+      return makeRow(arr);
+    }).join('\n');
+    return md + '\n';
+  };
+
+  var table = doTable;
 
   var plugin = function plugin(models) {
-    models.Doc.markdown = _01Doc;
-    models.Section.markdown = _02Section;
-    models.Paragraph.markdown = _03Paragraph;
-    models.Sentence.markdown = _04Sentence;
-    models.Image.markdown = image;
-    models.Infobox.markdown = infobox; // models.Link.markdown = link
-    // models.Template.markdown = function(opts) {}
+    models.Doc.prototype.markdown = _01Doc;
+    models.Section.prototype.markdown = _02Section;
+    models.Paragraph.prototype.markdown = _03Paragraph;
+    models.Sentence.prototype.markdown = _04Sentence;
+    models.Link.prototype.markdown = _05Link;
+    models.Image.prototype.markdown = image;
+    models.Infobox.prototype.markdown = infobox;
+    models.Table.prototype.markdown = table;
+    models.List.prototype.markdown = list;
+    models.Reference.prototype.markdown = reference;
   };
 
   var src = plugin;

@@ -1,8 +1,8 @@
-/* wtf-plugin-html 0.0.1 MIT */
+/* wtf-plugin-html 0.1.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.wtfHtml = factory());
+  (global = global || self, global.wtf = factory());
 }(this, (function () { 'use strict';
 
   var defaults = {
@@ -29,21 +29,16 @@
   var toHtml = function toHtml(options) {
     options = Object.assign({}, defaults, options);
     var data = this.data;
-    var html = '';
-    html += '<!DOCTYPE html>\n';
-    html += '<html>\n';
-    html += '<head>\n'; //add page title
+    var html = ''; //add page title
 
     if (options.title === true && data.title) {
       html += '<title>' + data.title + '</title>\n';
-    }
+    } //if it's a redirect page, give it a 'soft landing':
 
-    html += '</head>\n';
-    html += '<body>\n'; //if it's a redirect page, give it a 'soft landing':
 
     if (this.isRedirect() === true) {
       html += softRedirect(this);
-      return html + '\n</body>\n</html>'; //end it here.
+      return html;
     } //render infoboxes (up at the top)
 
 
@@ -54,7 +49,7 @@
     } //render each section
 
 
-    if (options.sections === true && (options.paragraphs === true || options.sentences === true)) {
+    if (options.sections === true || options.paragraphs === true || options.sentences === true) {
       html += data.sections.map(function (s) {
         return s.html(options);
       }).join('\n');
@@ -64,12 +59,10 @@
     if (options.references === true) {
       html += '<h2>References</h2>';
       html += this.references().map(function (c) {
-        return c.json(options);
+        return c.html(options);
       }).join('\n');
     }
 
-    html += '</body>\n';
-    html += '</html>';
     return html;
   };
 
@@ -197,14 +190,12 @@
   }; // create links, bold, italic in html
 
   var doSentence = function doSentence(options) {
-    var _this = this;
-
     options = Object.assign({}, defaults$3, options);
     var text = this.text(); //turn links into <a href>
 
     if (options.links === true) {
       this.links().forEach(function (link) {
-        var str = _this.text || _this.page;
+        var str = link.text() || link.page();
         var tag = link.html();
         text = smartReplace_1(text, str, tag);
       });
@@ -228,33 +219,71 @@
 
   var _04Sentence = doSentence;
 
-  var _skipKeys = {
+  var capitalise = function capitalise(str) {
+    if (str && typeof str === 'string') {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    return '';
+  };
+
+  var helpers = {
+    capitalise: capitalise
+  };
+
+  var toHtml$2 = function toHtml() {
+    var href = '';
+    var classNames = 'link';
+
+    if (this.site()) {
+      //use an external link
+      href = this.site();
+      classNames += ' external';
+    } else {
+      //otherwise, make it a relative internal link
+      var page = this.page();
+      href = helpers.capitalise(page);
+      href = './' + href.replace(/ /g, '_'); //add anchor
+
+      if (this.anchor()) {
+        href += "#".concat(this.anchor());
+      }
+    }
+
+    var str = this.text() || this.page();
+    return "<a class=\"".concat(classNames, "\" href=\"").concat(href, "\">").concat(str, "</a>");
+  };
+
+  var _05Link = toHtml$2;
+
+  var defaults$4 = {
+    images: true
+  };
+  var dontDo = {
     image: true,
     caption: true,
     alt: true,
     signature: true,
     'signature alt': true
-  };
-
-  var defaults$4 = {
-    images: true
   }; //
 
-  var infobox = function infobox(obj, options) {
+  var infobox = function infobox(options) {
+    var _this = this;
+
     options = Object.assign({}, defaults$4, options);
     var html = '<table class="infobox">\n';
     html += '  <thead>\n';
     html += '  </thead>\n';
     html += '  <tbody>\n'; //put image and caption on the top
 
-    if (options.images === true && obj.data.image) {
+    if (options.images === true && this.data.image) {
       html += '    <tr>\n';
       html += '       <td colspan="2" style="text-align:center">\n';
-      html += '       ' + obj.image().html() + '\n';
+      html += '       ' + this.image().html() + '\n';
       html += '       </td>\n';
 
-      if (obj.data.caption || obj.data.alt) {
-        var caption = obj.data.caption ? obj.data.caption.html(options) : obj.data.alt.html(options);
+      if (this.data.caption || this.data.alt) {
+        var caption = this.data.caption ? this.data.caption.html(options) : this.data.alt.html(options);
         html += '       <td colspan="2" style="text-align:center">\n';
         html += '         ' + caption + '\n';
         html += '       </td>\n';
@@ -263,12 +292,12 @@
       html += '    </tr>\n';
     }
 
-    Object.keys(obj.data).forEach(function (k) {
-      if (_skipKeys[k] === true) {
+    Object.keys(this.data).forEach(function (k) {
+      if (dontDo[k] === true) {
         return;
       }
 
-      var s = obj.data[k];
+      var s = _this.data[k];
       var key = k.replace(/_/g, ' ');
       key = key.charAt(0).toUpperCase() + key.substring(1); //titlecase it
 
@@ -292,13 +321,13 @@
   var image = makeImage;
 
   var plugin = function plugin(models) {
-    models.Doc.html = _01Doc;
-    models.Section.html = _02Section;
-    models.Paragraph.html = _03Paragraph;
-    models.Sentence.html = _04Sentence;
-    models.Image.html = image;
-    models.Infobox.html = infobox_1; // models.Template.html = function(opts) {}
-    // models.Link.html = link
+    models.Doc.prototype.html = _01Doc;
+    models.Section.prototype.html = _02Section;
+    models.Paragraph.prototype.html = _03Paragraph;
+    models.Sentence.prototype.html = _04Sentence;
+    models.Image.prototype.html = image;
+    models.Infobox.prototype.html = infobox_1;
+    models.Link.prototype.html = _05Link; // models.Template.html = function(opts) {}
   };
 
   var src = plugin;

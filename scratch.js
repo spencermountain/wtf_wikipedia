@@ -2,9 +2,9 @@ var wtf = require('./src/index')
 // var wtf = require('./builds/wtf_wikipedia')
 wtf.extend(require('./plugins/wikitext/src'))
 
-let txt = require('fs')
-  .readFileSync('/Users/spencer/mountain/wtf_wikipedia/tests/cache/royal_cinema.txt')
-  .toString()
+// let txt = require('fs')
+//   .readFileSync('/Users/spencer/mountain/wtf_wikipedia/tests/cache/royal_cinema.txt')
+//   .toString()
 
 // wtf.extend((models, templates) => {
 //   templates.one = 0
@@ -18,4 +18,7 @@ let txt = require('fs')
 //     .wikitext()
 // )
 
-console.log(wtf(txt).title())
+// console.log(wtf(txt).title())
+// wtf.fetch('Joe Wilson (American politician)').then(doc => {
+// console.log(doc.json())
+// })
