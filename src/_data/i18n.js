@@ -1,11 +1,11 @@
 // wikipedia special terms lifted and augmented from parsoid parser april 2015
 // and then manually on March 2020
 module.exports = {
-  images: require('./images'),
   categories: require('./categories'),
-  redirects: require('./redirects'),
+  disambig: require('./disambig'),
+  images: require('./images'),
   infoboxes: require('./infoboxes'),
-  disambig: require('./disambig')
+  redirects: require('./redirects')
 
   // specials: [
   //   'спэцыяльныя',
