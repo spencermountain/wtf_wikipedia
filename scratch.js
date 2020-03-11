@@ -5,6 +5,7 @@ wtf.extend(require('./plugins/html/src'))
 // wtf.extend((models, templates) => {
 //   templates.one = 0
 // })
-wtf.fetch('Toronto').then(doc => {
-  console.log(doc.html())
-})
+var have = wtf('that cat is [[a]] cool dude')
+  .sentences(0)
+  .html()
+console.log(have)

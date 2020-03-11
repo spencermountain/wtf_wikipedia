@@ -9,16 +9,18 @@
 ### 8.0.0
 
 - [breaking] move `.html()`, `.latex()`, and `.markdown()` to [their](https://github.com/spencermountain/wtf-plugin-html) [respective](https://github.com/spencermountain/wtf-plugin-latex) [plugins](https://github.com/spencermountain/wtf-plugin-markdown)
+- - drop header/footer boilerplate from outputs
 - [breaking] `.templates()` and `.links()` return Template and Link objects, and not bare JSON (use `.map(l=> l.json())`)
-- [breaking] refactor inputs for `.fetch()` 
+- [breaking] refactor inputs for `.fetch()`
 - - no-longer support callback/errback style
 - - no longer support 'enwikiquote' format as input
 - - use 'wiki' instead of undocumented 'wiki_url' param
 - [breaking] remove `Image.exists()` method to [plugin](./plugins/image-exists.js)
 - [major] create seperate client/server-side build formats (use native fetch/node lib)
-- [major] support deep recursion in templates
+- [major] support deep (infinite) recursion in templates
+- [major] much-stronger i18n support
 - support adding template parsers through plugins in `.extend()`
-- support array, number, and string shorthand for template parsers
+- - support array, number, and string shorthand for template parsers
 
 ### 7.8.0
 

@@ -9,10 +9,7 @@ var tidy = str => {
 
 test('basic-html', t => {
   var have = wtf('that cat is [[a]] cool dude').html()
-  var want = `<!DOCTYPE html>
-<html>
-<head></head>
-<body>
+  var want = `
 <div class="section">
   <div class="text">
     <p class="paragraph">
@@ -20,17 +17,12 @@ test('basic-html', t => {
     </p>
   </div>
 </div>
-</body>
-</html>
 `
   t.equal(tidy(have), tidy(want), 'link')
 
   //1 tick
   have = wtf(`i 'think' so`).html()
-  want = `<!DOCTYPE html>
-<html>
-<head></head>
-<body>
+  want = `
 <div class="section">
   <div class="text">
     <p class="paragraph">
@@ -38,17 +30,12 @@ test('basic-html', t => {
     </p>
   </div>
 </div>
-</body>
-</html>
 `
   t.equal(tidy(have), tidy(want), 'link-blank')
 
   //2 ticks
   have = wtf(`i ''think'' so`).html()
-  want = `<!DOCTYPE html>
-<html>
-<head></head>
-<body>
+  want = `
 <div class="section">
   <div class="text">
     <p class="paragraph">
@@ -56,17 +43,12 @@ test('basic-html', t => {
     </p>
   </div>
 </div>
-</body>
-</html>
 `
   t.equal(tidy(have), tidy(want), 'italic')
 
   //3 ticks
   have = wtf(`i '''think''' so`).html()
-  want = `<!DOCTYPE html>
-<html>
-<head></head>
-<body>
+  want = `
 <div class="section">
   <div class="text">
     <p class="paragraph">
@@ -74,17 +56,12 @@ test('basic-html', t => {
     </p>
   </div>
 </div>
-</body>
-</html>
 `
   t.equal(tidy(have), tidy(want), '3-ticks')
 
   //4 ticks
   have = wtf(`i ''''think'''' so`).html()
-  want = `<!DOCTYPE html>
-<html>
-<head></head>
-<body>
+  want = `
 <div class="section">
   <div class="text">
     <p class="paragraph">
@@ -92,17 +69,12 @@ test('basic-html', t => {
     </p>
   </div>
 </div>
-</body>
-</html>
 `
   t.equal(tidy(have), tidy(want), '4 ticks')
 
   //5 ticks
   have = wtf(`i '''''think''''' so`).html()
-  want = `<!DOCTYPE html>
-<html>
-<head></head>
-<body>
+  want = `
 <div class="section">
   <div class="text">
     <p class="paragraph">
@@ -110,8 +82,6 @@ test('basic-html', t => {
     </p>
   </div>
 </div>
-</body>
-</html>
 `
   t.equal(tidy(have), tidy(want), '5-ticks')
 

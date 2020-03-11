@@ -23,20 +23,14 @@ const toHtml = function(options) {
   options = Object.assign({}, defaults, options)
   let data = this.data
   let html = ''
-  html += '<!DOCTYPE html>\n'
-  html += '<html>\n'
-  html += '<head>\n'
   //add page title
   if (options.title === true && data.title) {
     html += '<title>' + data.title + '</title>\n'
   }
-  html += '</head>\n'
-  html += '<body>\n'
-
   //if it's a redirect page, give it a 'soft landing':
   if (this.isRedirect() === true) {
     html += softRedirect(this)
-    return html + '\n</body>\n</html>' //end it here.
+    return html
   }
   //render infoboxes (up at the top)
   if (options.infoboxes === true) {
@@ -45,7 +39,7 @@ const toHtml = function(options) {
       .join('\n')
   }
   //render each section
-  if (options.sections === true && (options.paragraphs === true || options.sentences === true)) {
+  if (options.sections === true) {
     html += data.sections.map(s => s.html(options)).join('\n')
   }
   //default off
@@ -55,8 +49,6 @@ const toHtml = function(options) {
       .map(c => c.json(options))
       .join('\n')
   }
-  html += '</body>\n'
-  html += '</html>'
   return html
 }
 module.exports = toHtml
