@@ -1,6 +1,12 @@
-const site_map = require('../_data/site_map')
-const request = require('./_request')
-const getParams = require('./_params')
+const http = require('./http/server')
+const makeHeaders = require('./_headers')
+
+const defaults = {
+  lang: 'en',
+  wiki: 'wikipedia',
+  domain: null,
+  path: 'w/api.php' //some 3rd party sites use a weird path
+}
 
 const normalizeCategory = function(cat = '') {
   if (/^Category/i.test(cat) === false) {
@@ -10,78 +16,76 @@ const normalizeCategory = function(cat = '') {
   return cat
 }
 
-const makeUrl = function(cat, lang, options) {
-  cat = encodeURIComponent(cat)
-  let url = `https://${lang}.wikipedia.org/w/api.php`
-  if (site_map[lang]) {
-    url = site_map[lang] + '/w/api.php'
-  }
-  if (options.wikiUrl) {
-    url = options.wikiUrl
-  }
-  url += `?action=query&list=categorymembers&cmtitle=${cat}&cmlimit=500&format=json&origin=*&redirects=true&cmtype=page|subcat`
-  return url
+const isObject = function(obj) {
+  return obj && Object.prototype.toString.call(obj) === '[object Object]'
 }
 
-const addResult = function(body, out) {
-  if (body.query && body.query.categorymembers) {
-    let list = body.query.categorymembers
-    list.forEach(p => {
-      if (p.ns === 14) {
-        out.categories.push(p)
-      } else {
-        out.pages.push(p)
-      }
-    })
-    return out
-  }
-  return out
-}
-
-const getCategories = function(cat, a, b, c) {
-  let { lang, options, callback } = getParams(a, b, c)
-  //cleanup cat name
-  cat = normalizeCategory(cat)
-  let url = makeUrl(cat, lang, options)
-  let safety = 0
-
-  let output = {
-    category: cat,
+const getResult = function(body) {
+  let list = body.query.categorymembers || []
+  let res = {
     pages: [],
     categories: []
   }
+  list.forEach(p => {
+    if (p.ns === 14) {
+      delete p.ns
+      res.categories.push(p)
+    } else {
+      delete p.ns
+      res.pages.push(p)
+    }
+  })
+  return res
+}
 
-  const doit = function(cntd = '', cb) {
-    let myUrl = url + '&cmcontinue=' + cntd
-    let p = request(myUrl, options)
-    p.then(body => {
-      output = addResult(body, output)
-      //should we do another?
-      if (
-        body.continue &&
-        body.continue.cmcontinue &&
-        body.continue.cmcontinue !== cntd &&
-        safety < 25
-      ) {
-        safety += 1
-        doit(body.continue.cmcontinue, cb)
-      } else {
-        cb(null, output)
-      }
-    })
+const makeUrl = function(category, options, cm) {
+  category = normalizeCategory(category)
+  category = encodeURIComponent(category)
+  let url = `https://${options.lang}.wikipedia.org/${options.path}?`
+  if (options.domain) {
+    url = `https://${options.domain}/${options.path}?`
   }
+  url += `action=query&list=categorymembers&cmtitle=${category}&cmlimit=500&format=json&origin=*&redirects=true&cmtype=page|subcat`
+  if (cm) {
+    url += '&cmcontinue=' + cm
+  }
+  return url
+}
 
-  return new Promise(function(resolve, reject) {
-    doit('', err => {
-      if (typeof callback === 'function') {
-        callback(err, output)
-      }
-      if (err) {
-        reject(err)
-      }
-      resolve(output)
-    })
+const fetchCategory = function(category, lang, options) {
+  options = options || {}
+  options = Object.assign({}, defaults, options)
+  //support lang 2nd param
+  if (typeof lang === 'string') {
+    options.lang = lang
+  } else if (isObject(lang)) {
+    options = Object.assign(options, lang)
+  }
+  let res = {
+    pages: [],
+    categories: []
+  }
+  // wrap a promise around potentially-many requests
+  return new Promise((resolve, reject) => {
+    const doit = function(cm) {
+      let url = makeUrl(category, options, cm)
+      const headers = makeHeaders(options)
+      return http(url, headers)
+        .then(body => {
+          res = getResult(body, res)
+          if (body.continue && body.continue.cmcontinue) {
+            doit(body.continue.cmcontinue)
+          } else {
+            resolve(res)
+          }
+        })
+        .catch(e => {
+          console.error(e)
+          reject(e)
+        })
+    }
+    doit(null)
   })
 }
 
-module.exports = getCategories
+module.exports = fetchCategory

@@ -1,24 +1,24 @@
-const wtf = require('./src/index')
-// const wtf = require('./builds/wtf_wikipedia.min')
-// const readFile = require('./tests/lib/_cachedPage');
-// const wtf = require('./builds/wtf_wikipedia');
-// const wtf = require('./build');
+var wtf = require('./src/index')
+// var wtf = require('./builds/wtf_wikipedia')
+wtf.extend(require('./plugins/wikitext/src'))
 
-wtf.extend(models => {
-  // add a method to the Doc class
-  models.Doc.prototype.sayHi = function() {
-    console.log('hello ' + this.title())
-  }
-})
+// let txt = require('fs')
+//   .readFileSync('/Users/spencer/mountain/wtf_wikipedia/tests/cache/royal_cinema.txt')
+//   .toString()
 
-// wtf.fetch('Miami', 'en', function(err, doc) {
-//   doc.sayHi()
+// wtf.extend((models, templates) => {
+//   templates.one = 0
 // })
+// var have = wtf(txt).wikitext()
+// console.log(have)
 
-let doc = wtf(`
-doesn't have {{geo|35.664036|139.698211}} 
+// console.log(
+//   wtf('i was cool and [[cool]]')
+//     .sentence()
+//     .wikitext()
+// )
 
-{{usabledistrict}}
-{{IsPartOf|Tokyo}}`)
-
-console.log(doc.templates())
+// console.log(wtf(txt).title())
+// wtf.fetch('Joe Wilson (American politician)').then(doc => {
+// console.log(doc.json())
+// })

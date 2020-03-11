@@ -1,4 +1,4 @@
-const tableParser = require('../table/parse')
+const tableParser = require('../../table/parse')
 let headings = [
   'res',
   'record',

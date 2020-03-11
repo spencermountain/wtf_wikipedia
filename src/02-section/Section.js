@@ -1,9 +1,5 @@
-const toMarkdown = require('./toMarkdown')
-const toHtml = require('./toHtml')
 const toJSON = require('./toJson')
-const toLatex = require('./toLatex')
 const setDefaults = require('../_lib/setDefaults')
-const aliasList = require('../_lib/aliases')
 
 const defaults = {
   tables: true,
@@ -22,6 +18,7 @@ const Section = function(data) {
     enumerable: false,
     value: null
   })
+  data.templates = data.templates || []
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data
@@ -87,7 +84,7 @@ const methods = {
     } else if (typeof n === 'string') {
       //grab a link like .links('Fortnight')
       n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = arr.find(o => o.page === n)
+      let link = arr.find(o => o.page() === n)
       return link === undefined ? [] : [link]
     }
     return arr
@@ -101,6 +98,7 @@ const methods = {
   },
   templates: function(clue) {
     let arr = this.data.templates || []
+    arr = arr.map(t => t.json())
     if (typeof clue === 'number') {
       return arr[clue]
     }
@@ -120,6 +118,9 @@ const methods = {
   coordinates: function(clue) {
     let arr = [].concat(this.templates('coord'), this.templates('coor'))
     if (typeof clue === 'number') {
+      if (!arr[clue]) {
+        return []
+      }
       return arr[clue]
     }
     return arr
@@ -222,7 +223,6 @@ const methods = {
     }
     if (typeof n === 'string') {
       n = n.toLowerCase()
-      // children.forEach((c) => console.log(c));
       return children.find(s => s.title().toLowerCase() === n)
     }
     if (typeof n === 'number') {
@@ -243,24 +243,11 @@ const methods = {
     }
     return null
   },
-
-  markdown: function(options) {
-    options = setDefaults(options, defaults)
-    return toMarkdown(this, options)
-  },
-  html: function(options) {
-    options = setDefaults(options, defaults)
-    return toHtml(this, options)
-  },
   text: function(options) {
     options = setDefaults(options, defaults)
     let pList = this.paragraphs()
     pList = pList.map(p => p.text(options))
     return pList.join('\n\n')
-  },
-  latex: function(options) {
-    options = setDefaults(options, defaults)
-    return toLatex(this, options)
   },
   json: function(options) {
     options = setDefaults(options, defaults)
@@ -277,8 +264,5 @@ methods.sections = methods.children
 Object.keys(methods).forEach(k => {
   Section.prototype[k] = methods[k]
 })
-//add alises, too
-Object.keys(aliasList).forEach(k => {
-  Section.prototype[k] = methods[aliasList[k]]
-})
+
 module.exports = Section

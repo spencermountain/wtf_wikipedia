@@ -11,10 +11,10 @@ const toJSON = function(doc, options) {
   options = setDefaults(options, defaults)
   let data = {}
   if (options.title) {
-    data.title = doc.options.title || doc.title()
+    data.title = doc.title()
   }
-  if (options.pageID && doc.options.pageID) {
-    data.pageID = doc.options.pageID
+  if (options.pageID) {
+    data.pageID = doc.pageID()
   }
   if (options.categories) {
     data.categories = doc.categories()
@@ -39,19 +39,10 @@ const toJSON = function(doc, options) {
     data.images = doc.images().map(i => i.json(options))
   }
   if (options.plaintext) {
-    data.plaintext = doc.plaintext(options)
+    data.plaintext = doc.text(options)
   }
   if (options.citations || options.references) {
     data.references = doc.references()
-  }
-  if (options.markdown) {
-    data.markdown = doc.markdown(options)
-  }
-  if (options.html) {
-    data.html = doc.html(options)
-  }
-  if (options.latex) {
-    data.latex = doc.latex(options)
   }
   return data
 }

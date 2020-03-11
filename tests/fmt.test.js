@@ -1,4 +1,3 @@
-'use strict'
 var test = require('tape')
 var wtf = require('./lib')
 
@@ -43,7 +42,7 @@ test('inline mixquotes test', t => {
 test('links-with-ticks', t => {
   var doc = wtf(`hello '''[[Palme d'Or]]''' world`)
   t.equal(doc.text(), `hello Palme d'Or world`, 'text')
-  t.equal(doc.links(0).page, `Palme d'Or`, 'link')
+  t.equal(doc.links(0).page(), `Palme d'Or`, 'link')
   t.equal(doc.sentences(0).data.fmt.bold[0], `Palme d'Or`, 'fmt-bold')
   t.end()
 })

@@ -12,7 +12,7 @@ const defaults = {
 const toJSON = function(s, options) {
   options = setDefaults(options, defaults)
   let data = {}
-  let text = s.plaintext()
+  let text = s.text()
   if (options.text === true) {
     data.text = text
   }

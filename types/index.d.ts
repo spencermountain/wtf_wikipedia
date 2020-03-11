@@ -20,20 +20,10 @@ declare module wtf {
   export function extend(fn: any): any
 
   /** grab wikipedia content from an API */
-  export function fetch(
-    titleOrId: string | number,
-    lang?: string,
-    options?: any,
-    cb?: any
-  ): Promise<null | Document>
+  export function fetch(titleOrId: string | number, lang?: string, options?: any, cb?: any): Promise<null | Document>
 
   /** grab wikipedia content from an API */
-  export function fetch(
-    titlesOrIds: string[] | number[],
-    lang?: string,
-    options?: any,
-    cb?: any
-  ): Promise<Document[]>
+  export function fetch(titlesOrIds: string[] | number[], lang?: string, options?: any, cb?: any): Promise<Document[]>
 
   /** grab a random article from a wikimedia API */
   export function random(lang?: string, options?: object, cb?: any): Promise<Document>
@@ -43,8 +33,12 @@ declare module wtf {
 
     private options: object
 
-    /**guess the title of the page from the first-sentence */
+    /**get, set, or guess the title of the page */
     title(str?: string): string
+    /**get/set the wikimedia id for the page */
+    pageID(str?: string | number): string
+    /**get/set the wikimedia namespace for the page */
+    namespace(str?: string | number): string
 
     /**if the page is just a redirect to another page */
     isRedirect(): boolean
@@ -144,12 +138,6 @@ declare module wtf {
 
     /**plaintext, human-readable output for the page */
     text(options?: object): string
-    /**output in the markdown format */
-    markdown(options?: object): string
-    /**output the page in latex format */
-    latex(options?: object): string
-    /**output the page in html format */
-    html(options?: object): string
     /**a 'stringifyable' output of the page's main data */
     json(options?: object): object
 
@@ -239,12 +227,6 @@ declare module wtf {
 
     text(options?: object): string
 
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
-
     json(options?: object): object
   }
 
@@ -274,12 +256,6 @@ declare module wtf {
 
     text(): string
 
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
-
     json(options?: object): object
   }
 
@@ -300,12 +276,6 @@ declare module wtf {
 
     text(): string
 
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
-
     json(options?: object): object
   }
 
@@ -319,12 +289,6 @@ declare module wtf {
     links(n?: string): object[]
 
     text(): string
-
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
 
     json(options?: object): object
   }
@@ -364,12 +328,6 @@ declare module wtf {
 
     text(options?: object): string
 
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
-
     json(options?: object): object
   }
 
@@ -396,15 +354,7 @@ declare module wtf {
 
     format(): string
 
-    exists(callback: () => boolean): Promise<boolean>
-
     text(): string
-
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
 
     json(options?: object): object
   }
@@ -423,12 +373,6 @@ declare module wtf {
     interwiki(): object[]
 
     text(options?: object): string
-
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
 
     json(options?: object): object
   }
@@ -472,12 +416,6 @@ declare module wtf {
 
     /** Alias of text */
     plaintext(str?: string): string
-
-    markdown(options?: object): string
-
-    latex(options?: object): string
-
-    html(options?: object): string
 
     json(options?: object): object
   }

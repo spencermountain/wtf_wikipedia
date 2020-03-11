@@ -1,4 +1,4 @@
-const parseTemplates = require('../../templates')
+const parseTemplates = require('../../template')
 //this is a non-traditional template, for some reason
 //https://en.wikipedia.org/wiki/Template:Election_box
 const parseElection = function(wiki, section) {
@@ -9,10 +9,11 @@ const parseElection = function(wiki, section) {
     //put it through our full template parser..
     parseTemplates(tmpl, data, {})
     //okay, pull it apart into something sensible..
-    let start = data.templates.find(t => t.template === 'election box') || {}
-    let candidates = data.templates.filter(t => t.template === 'election box candidate')
+    let templates = data.templates.map(t => t.json())
+    let start = templates.find(t => t.template === 'election box') || {}
+    let candidates = templates.filter(t => t.template === 'election box candidate')
     let summary =
-      data.templates.find(
+      templates.find(
         t => t.template === 'election box gain' || t.template === 'election box hold'
       ) || {}
     if (candidates.length > 0 || summary) {

@@ -1,4 +1,3 @@
-'use strict'
 var test = require('tape')
 var wtf = require('./lib')
 
@@ -11,10 +10,7 @@ test('sentence parser', t => {
       "Hi there Dr. Joe, the price is 4.59 for N.A.S.A. Ph.Ds. I hope that's fine, etc. and you can attend Feb. 8th. Bye",
       3
     ],
-    [
-      'Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York',
-      1
-    ],
+    ['Mount Sinai Hospital, [[St. Michaels Hospital (Toronto)|St. Michaels Hospital]], North York', 1],
     ['he said ... oh yeah. I did', 2],
     ['32 C', 1],
     ['dom, kon. XIX w.', 2],
@@ -126,8 +122,22 @@ test('xml', t => {
 test('interwiki', t => {
   var str = 'hello [[wikinews:Radiohead]] world  [[Category:Films]]'
   var obj = wtf(str)
-  t.equal(obj.sections(0).interwiki(0).page, 'Radiohead', 'interwiki-link')
-  t.equal(obj.sections(0).interwiki(0).wiki, 'wikinews', 'interwiki-link')
+  t.equal(
+    obj
+      .sections(0)
+      .interwiki(0)
+      .page(),
+    'Radiohead',
+    'interwiki-link'
+  )
+  t.equal(
+    obj
+      .sections(0)
+      .interwiki(0)
+      .wiki(),
+    'wikinews',
+    'interwiki-link'
+  )
   t.equal(obj.categories().length, 1, 'cat-length')
   t.equal(obj.categories(0), 'Films', 'cat-match')
   t.end()

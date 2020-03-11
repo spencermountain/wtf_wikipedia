@@ -1,4 +1,3 @@
-'use strict'
 var test = require('tape')
 var wtf = require('./lib')
 
@@ -27,7 +26,7 @@ test('font-size', t => {
   t.equal(wtf(str).plaintext(), 'hello (1995-1997) world', '{{small}}')
 
   str = 'hello {{huge|world}}'
-  t.equal(wtf(str).plaintext(), 'hello world', '{{huge}}')
+  t.equal(wtf(str).text(), 'hello world', '{{huge}}')
 
   str = `hello {{nowrap|{{small|(1995–present)}}}} world`
   t.equal(wtf(str).plaintext(), 'hello (1995–present) world', '{{nowrap}}')
@@ -38,16 +37,16 @@ test('external links', t => {
   var str = `The [http://w110.bcn.cat/portal/site/Eixample] is the quarter designed`
   var obj = wtf(str)
   var link = obj.sentences(0).links(0)
-  t.equal(link.text, '', 'link-text')
-  t.equal(link.site, 'http://w110.bcn.cat/portal/site/Eixample', 'link-site')
-  t.equal(link.type, 'external', 'link-type')
+  t.equal(link.text(), '', 'link-text')
+  t.equal(link.site(), 'http://w110.bcn.cat/portal/site/Eixample', 'link-site')
+  t.equal(link.type(), 'external', 'link-type')
 
   str = `The [http://w110.bcn.cat/portal/site/Eixample Fun Times] is the quarter designed`
   obj = wtf(str)
   link = obj.sentences(0).links(0)
-  t.equal(link.text, 'Fun Times', 'link-text')
-  t.equal(link.site, 'http://w110.bcn.cat/portal/site/Eixample', 'link-site')
-  t.equal(link.type, 'external', 'link-type')
+  t.equal(link.text(), 'Fun Times', 'link-text')
+  t.equal(link.site(), 'http://w110.bcn.cat/portal/site/Eixample', 'link-site')
+  t.equal(link.type(), 'external', 'link-type')
   t.end()
 })
 
@@ -78,19 +77,13 @@ test('misc templates', t => {
     [`{{plural|1|page}}`, '1 page'],
     [`{{plural|1.5|page}}`, '1.5 pages'],
     [`{{plural|20|fly}}`, '20 flies'],
-    [
-      `{{hlist|Winner|Runner-up|Third place|item_style=color:blue;|indent=2}}`,
-      'Winner · Runner-up · Third place'
-    ],
+    [`{{hlist|Winner|Runner-up|Third place|item_style=color:blue;|indent=2}}`, 'Winner · Runner-up · Third place'],
     [
       `{{block indent |1=The material to be indented here. May include markup, paragraph breaks, etc.}}`,
       'The material to be indented here. May include markup, paragraph breaks, etc.'
     ],
     [`{{Ordered list |entry1 |entry2| entry3 }}`, '1. entry1\n\n2. entry2\n\n3. entry3'],
-    [
-      `{{unbulleted list|first item|second item|third item}}`,
-      'first item\n\nsecond item\n\nthird item'
-    ]
+    [`{{unbulleted list|first item|second item|third item}}`, 'first item\n\nsecond item\n\nthird item']
   ]
   arr.forEach(a => {
     var str = wtf(a[0]).plaintext()

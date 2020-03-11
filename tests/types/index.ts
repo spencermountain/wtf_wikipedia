@@ -5,16 +5,18 @@
 // npm install --no-save @types/tape @types/node
 // npm run test:types
 
-import * as test from 'tape'
-import wtf from '../../'
+import wtf from '../../builds/wtf_wikipedia'
+// import wtf from '../../'
 
-test('typefile smoketest', (t: test.Test) => {
-  t.ok(wtf, 'import works')
-  const d = wtf('hello world')
-  // wtf.fetch
-  // wtf.random('en')
-  // d.references()
-  // d.links
-  t.equal(d.text(), 'hello world', 'basic-smoketest')
-  t.end()
-})
+const assert = function(a: any, b: any) {
+  if (a !== b) {
+    throw a
+  }
+}
+
+const d = wtf('hello world')
+// wtf.fetch
+// wtf.random('en')
+// d.references()
+// d.links
+assert(d.text(), 'hello world')

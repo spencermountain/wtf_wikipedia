@@ -1,43 +1,19 @@
 import commonjs from 'rollup-plugin-commonjs'
-import json from 'rollup-plugin-json'
 import { terser } from 'rollup-plugin-terser'
-import resolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
+import alias from '@rollup/plugin-alias'
+import sizeCheck from 'rollup-plugin-filesize-check'
 
+import { version } from './package.json'
+console.log('\n 📦  - running rollup..\n')
+
+const banner = '/* wtf_wikipedia ' + version + ' MIT */'
 export default [
+  // === server-side .mjs (typescript)===
   {
     input: 'src/index.js',
-    output: [
-      {
-        file: 'builds/wtf_wikipedia.mjs',
-        format: 'esm',
-        preferBuiltins: false
-      }
-    ],
+    output: [{ banner: banner, file: 'builds/wtf_wikipedia.mjs', format: 'esm' }],
     plugins: [
-      resolve({
-        browser: true
-      }),
-      json(),
-      commonjs()
-    ]
-  },
-  {
-    input: 'src/index.js',
-    output: [
-      {
-        file: 'builds/wtf_wikipedia.js',
-        format: 'umd',
-        sourcemap: true,
-        preferBuiltins: false,
-        name: 'wtf'
-      }
-    ],
-    plugins: [
-      resolve({
-        browser: true
-      }),
-      json(),
       commonjs(),
       babel({
         babelrc: false,
@@ -45,27 +21,101 @@ export default [
       })
     ]
   },
+
+  // === server-side .js ===
   {
     input: 'src/index.js',
     output: [
       {
-        file: 'builds/wtf_wikipedia.min.js',
+        banner: banner,
+        file: 'builds/wtf_wikipedia.js',
         format: 'umd',
-        preferBuiltins: false,
-        name: 'wtf'
+        name: 'wtf',
+        globals: { https: 'https' }
+      }
+    ],
+    external: ['https'],
+    plugins: [
+      commonjs(),
+      babel({
+        babelrc: false,
+        presets: ['@babel/preset-env']
+      })
+    ]
+  },
+
+  /// ======================
+  // === client-side .js ===
+  {
+    input: 'src/index.js',
+    output: [
+      {
+        banner: banner,
+        file: 'builds/wtf_wikipedia-client.js',
+        format: 'umd',
+        name: 'wtf',
+        sourcemap: true
       }
     ],
     plugins: [
-      resolve({
-        browser: true
-      }),
-      json(),
       commonjs(),
       babel({
         babelrc: false,
         presets: ['@babel/preset-env']
       }),
-      terser()
+      alias({
+        entries: [{ find: './http/server', replacement: './http/client' }]
+      })
+    ]
+  },
+  // === client-side min.js ===
+  {
+    input: 'src/index.js',
+    output: [
+      {
+        banner: banner,
+        file: 'builds/wtf_wikipedia-client.min.js',
+        format: 'umd',
+        name: 'wtf',
+        sourcemap: false
+      }
+    ],
+    plugins: [
+      commonjs(),
+      babel({
+        babelrc: false,
+        presets: ['@babel/preset-env']
+      }),
+      alias({
+        entries: [{ find: './http/server', replacement: './http/client' }]
+      }),
+      terser(),
+      sizeCheck({ expect: 103, warn: 10 })
+    ]
+  },
+  // === client-side .mjs ===
+  {
+    input: 'src/index.js',
+    output: [
+      {
+        banner: banner,
+        file: 'builds/wtf_wikipedia-client.mjs',
+        format: 'esm',
+        name: 'wtf',
+        sourcemap: false
+      }
+    ],
+    plugins: [
+      commonjs(),
+      babel({
+        babelrc: false,
+        presets: ['@babel/preset-env']
+      }),
+      alias({
+        entries: [{ find: './http/server', replacement: './http/client' }]
+      }),
+      terser(),
+      sizeCheck({ expect: 103, warn: 10 })
     ]
   }
 ]

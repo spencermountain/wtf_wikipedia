@@ -1,0 +1,43 @@
+<html></html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/spencer-css" />
+  </head>
+  <body>
+    <div class="m4">
+      client-side test for <a href="https://github.com/spencermountain/wtf_wikipedia">wtf_wikipedia</a>
+    </div>
+    <div class="m2">
+      <div>ES5 build:</div>
+      <b class="m2" id="result">loading...</b>
+    </div>
+
+    <div class="m2">
+      <div>ESModule:</div>
+      <b class="m2" id="module">loading...</b>
+    </div>
+
+    <!-- load minified build -->
+    <script src="../builds/wtf_wikipedia-client.min.js"></script>
+    <script defer>
+      wtf.fetch('On a Friday', 'en').then(doc => {
+        let val = doc.infobox(0).get('current_members')
+        let members = val.links().map(link => link.page())
+        document.querySelector('#result').innerHTML = members.join(', ')
+      })
+    </script>
+    <!-- test es-module -->
+    <script type="module">
+      import wtf from '../builds/wtf_wikipedia-client.mjs'
+      console.log(wtf)
+      wtf.fetch('Toronto Raptors').then(doc => {
+        let coach = doc.infobox().get('coach')
+        document.querySelector('#module').innerHTML = coach.text() //'Nick Nurse'
+      })
+    </script>
+  </body>
+</html>

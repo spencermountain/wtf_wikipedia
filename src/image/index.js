@@ -1,10 +1,10 @@
 const i18n = require('../_data/i18n')
 const Image = require('./Image')
-const parseTemplate = require('../templates/_parsers/parse')
+const parseTemplate = require('../template/_parsers/parse')
 const parseSentence = require('../04-sentence').oneSentence
 //regexes:
-const isFile = new RegExp('(' + i18n.images.concat(i18n.files).join('|') + '):', 'i')
-let fileNames = `(${i18n.images.concat(i18n.files).join('|')})`
+const isFile = new RegExp('(' + i18n.images.join('|') + '):', 'i')
+let fileNames = `(${i18n.images.join('|')})`
 const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'iu')
 
 //style directives for Wikipedia:Extended_image_syntax

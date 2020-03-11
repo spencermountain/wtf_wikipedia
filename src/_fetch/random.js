@@ -1,54 +1,47 @@
-const site_map = require('../_data/site_map')
-const request = require('./_request')
-const getParams = require('./_params')
-const parseDoc = require('../01-document')
+const http = require('./http/server')
+const makeHeaders = require('./_headers')
+const getResult = require('./02-getResult')
+const parseDoc = require('./03-parseDoc')
 
-const makeUrl = function(lang) {
-  let url = `https://${lang}.wikipedia.org/w/api.php`
-  if (site_map[lang]) {
-    url = site_map[lang] + '/w/api.php'
-  }
-  url += `?format=json&action=query&generator=random&grnnamespace=0&prop=revisions&rvprop=content&grnlimit=1&rvslots=main&origin=*`
-  return url
+const defaults = {
+  lang: 'en',
+  wiki: 'wikipedia',
+  domain: null,
+  path: 'w/api.php' //some 3rd party sites use a weird path
+}
+const isObject = function(obj) {
+  return obj && Object.prototype.toString.call(obj) === '[object Object]'
 }
 
-//this data-format from mediawiki api is nutso
-const postProcess = function(data, options) {
-  let pages = Object.keys(data.query.pages)
-  let id = pages[0]
-  let page = data.query.pages[id] || {}
-  if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
-    return null
+const fetchRandom = function(lang, options) {
+  options = options || {}
+  options = Object.assign({}, defaults, options)
+  //support lang 2nd param
+  if (typeof lang === 'string') {
+    options.lang = lang
+  } else if (isObject(lang)) {
+    options = Object.assign(options, lang)
   }
-  //us the 'generator' result format, for the random() method
-  let text = page.revisions[0].slots.main['*']
-  options.title = page.title
-  options.pageID = page.pageid
-  try {
-    return parseDoc(text, options)
-  } catch (e) {
-    console.error(e)
-    throw e
-  }
-}
 
-//fetch and parse a random page from the api
-const getRandom = function(a, b, c) {
-  let { lang, options, callback } = getParams(a, b, c)
-  let url = makeUrl(lang)
-  return new Promise(function(resolve, reject) {
-    let p = request(url, options)
-    p.then(res => {
-      return postProcess(res, options)
+  let url = `https://${options.lang}.wikipedia.org/${options.path}?`
+  if (options.domain) {
+    url = `https://${options.domain}/${options.path}?`
+  }
+  url += `format=json&action=query&generator=random&grnnamespace=0&prop=revisions&rvprop=content&grnlimit=1&rvslots=main&origin=*`
+
+  const headers = makeHeaders(options)
+  return http(url, headers)
+    .then(res => {
+      try {
+        let data = getResult(res)
+        return parseDoc(data)
+      } catch (e) {
+        throw e
+      }
     })
-      .then(doc => {
-        //support 'err-back' format
-        if (typeof callback === 'function') {
-          callback(null, doc)
-        }
-        resolve(doc)
-      })
-      .catch(reject)
-  })
+    .catch(e => {
+      console.error(e)
+      return null
+    })
 }
-module.exports = getRandom
+module.exports = fetchRandom

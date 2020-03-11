@@ -1,11 +1,11 @@
-tests/
 demo/
+plugins/
+tests/
 scripts/
 examples/
-.babelrc
-.esformatter
 .eslintrc
+.gitignore
+Icon
 scratch.js
-*.tsv
 changelog.md
 contributing.md

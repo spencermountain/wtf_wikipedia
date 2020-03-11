@@ -1,4 +1,3 @@
-'use strict'
 var test = require('tape')
 var wtf = require('./lib')
 
@@ -59,10 +58,10 @@ test('templates-in-templates', t => {
   t.equal(ref.isbn, '978-0-19-974376-6', 'isbn')
   var templates = wtf(str).templates()
   t.equal(templates[0].template, 'marriage', 'marriage1')
-  t.equal(templates[0].spouse, 'Elsa Löwenthal', 'marriage-1-name')
-  t.equal(templates[1].template, 'sfnp', 'sfnp')
-  t.equal(templates[2].template, 'marriage', 'marriage2')
-  t.equal(templates[2].spouse, 'Mileva Marić', 'marriage2-name')
+  t.equal(templates[1].template, 'marriage', 'marriage2')
+  t.equal(templates[1].spouse, 'Elsa Löwenthal', 'marriage-1-name')
+  t.equal(templates[0].spouse, 'Mileva Marić', 'marriage2-name')
+  t.equal(templates[2].template, 'sfnp', 'sfnp')
   t.end()
 })
 
@@ -88,11 +87,7 @@ test('support-nowrap-in-infobox', t => {
 test('inline-templates', t => {
   var str = `he married {{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}} in Peterburough`
   var doc = wtf(str)
-  t.equal(
-    doc.text(),
-    'he married Elsa Löwenthal (m. 1919-1936) in Peterburough',
-    'inline marriage text'
-  )
+  t.equal(doc.text(), 'he married Elsa Löwenthal (m. 1919-1936) in Peterburough', 'inline marriage text')
 
   str = `he married {{marriage|Johnny-boy}} in Peterburough`
   doc = wtf(str)
@@ -119,7 +114,7 @@ test('austria-hungary', t => {
     'got-plaintext'
   )
   t.equal(doc.templates('for')[0].list[1], 'Austria–Hungary relations', 'nested emdash')
-  t.equal(doc.links('budapest')[0].page, 'Budapest', 'got Budapest link')
+  t.equal(doc.links('budapest')[0].page(), 'Budapest', 'got Budapest link')
   t.equal(
     doc.templates('short description')[0].description,
     'Constitutional monarchic union from 1867 to October 1918',

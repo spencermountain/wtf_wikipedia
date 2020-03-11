@@ -1,9 +1,8 @@
-'use strict'
 var test = require('tape')
 var fs = require('fs')
 var path = require('path')
 var wtf = require('./lib')
-var docs = require('../api')
+var docs = require('./lib/api.json')
 
 //read cached file
 var readFile = function(file) {
@@ -111,14 +110,7 @@ test('Infobox-methods-do-not-throw', t => {
 })
 
 test('List-methods-do-not-throw', t => {
-  var mypages = [
-    'al_Haytham',
-    'Mozilla-Firefox',
-    'toronto',
-    'toronto_star',
-    'jodie_emery',
-    'Allen-R.-Morris'
-  ]
+  var mypages = ['al_Haytham', 'Mozilla-Firefox', 'toronto', 'toronto_star', 'jodie_emery', 'Allen-R.-Morris']
   mypages.forEach(page => {
     var doc = wtf(readFile(page))
     var sen = doc.lists(0)

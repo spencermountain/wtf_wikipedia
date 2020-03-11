@@ -1,4 +1,4 @@
-const fetch = require('./_fetch/fetch')
+const fetch = require('./_fetch')
 const random = require('./_fetch/random')
 const category = require('./_fetch/category')
 const version = require('./_version')
@@ -11,8 +11,14 @@ const models = {
   Paragraph: require('./03-paragraph/Paragraph'),
   Sentence: require('./04-sentence/Sentence'),
   Image: require('./image/Image'),
-  Infobox: require('./infobox/Infobox')
+  Infobox: require('./infobox/Infobox'),
+  Link: require('./link/Link'),
+  List: require('./list/List'),
+  Reference: require('./reference/Reference'),
+  Table: require('./table/Table'),
+  Template: require('./template/Template')
 }
+let templates = require('./template/templates')
 
 //the main 'factory' exported method
 const wtf = function(wiki, options) {
@@ -28,7 +34,7 @@ wtf.category = function(cat, lang, options, cb) {
   return category(cat, lang, options, cb)
 }
 wtf.extend = function(fn) {
-  fn(models)
+  fn(models, templates, this)
   return this
 }
 wtf.version = version

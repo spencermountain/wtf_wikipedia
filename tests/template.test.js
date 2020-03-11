@@ -1,4 +1,3 @@
-'use strict'
 var wtf = require('./lib')
 var test = require('tape')
 
@@ -47,8 +46,8 @@ test('boloZenden infobox', function(t) {
   t.equal(o.youthclubs1.text(), 'MVV')
   t.equal(o.nationalyears1.text(), '1997–2004')
   t.equal(o.nationalteam1.text(), 'Netherlands')
-  t.equal(o.nationalteam1.links(0).page, 'Netherlands national football team')
-  t.equal(o.nationalteam1.links(0).text, 'Netherlands')
+  t.equal(o.nationalteam1.links(0).page(), 'Netherlands national football team')
+  t.equal(o.nationalteam1.links(0).text(), 'Netherlands')
   t.equal(o.nationalcaps1.text(), '54')
   t.equal(o.nationalgoals1.text(), '7')
   t.end()
@@ -77,7 +76,7 @@ test('hurricane infobox', function(t) {
   t.equal(o.name.text(), 'Tropical Storm Edouard')
   t.equal(o.dissipated.text(), 'September 6, 2002')
   t.equal(o['hurricane season'].text(), '2002 Atlantic hurricane season')
-  t.equal(o.areas.links(0).page, 'Florida')
+  t.equal(o.areas.links(0).page(), 'Florida')
   t.end()
 })
 
@@ -100,7 +99,7 @@ test('parkplace disambig', function(t) {
   var o = wtf(park_place)
   t.equal(o.isDisambiguation(), true, 'is-disambiguation')
   t.equal(o.links().length, 4, 'links')
-  t.equal(o.links(0).page, 'Park Place (TV series)', 'first-link')
+  t.equal(o.links(0).page(), 'Park Place (TV series)', 'first-link')
   t.end()
 })
 
@@ -204,11 +203,7 @@ test('Radiohead infobox', function(t) {
 }} `
   var infobox = wtf(radiohead).infoboxes(0).data
   t.equal(infobox.current_members.text().match(/Greenwood/g).length, 2, 'current members')
-  t.equal(
-    infobox.genre.text(),
-    'Art rock\n\nalternative rock\n\nelectronica\n\nexperimental rock',
-    'genre'
-  )
+  t.equal(infobox.genre.text(), 'Art rock\n\nalternative rock\n\nelectronica\n\nexperimental rock', 'genre')
   t.equal(infobox.associated_acts.text(), 'Atoms for Peace\n\n7 Worlds Collide', 'associated-acts')
   t.end()
 })
@@ -322,11 +317,7 @@ test('microsoft currency parsing', function(t) {
   `
   var infobox = wtf(microsoft).infoboxes(0).data
   t.equal(infobox.revenue.text(), 'US$89.95 billion', 'revenue =' + infobox.revenue.text)
-  t.equal(
-    infobox.operating_income.text(),
-    'US$22.27 billion',
-    'operating_income =' + infobox.operating_income.text
-  )
+  t.equal(infobox.operating_income.text(), 'US$22.27 billion', 'operating_income =' + infobox.operating_income.text)
   t.equal(infobox.net_income.text(), 'US$21.20 billion', 'net_income =' + infobox.net_income.text)
   t.end()
 })
@@ -354,8 +345,7 @@ test('climate template', function(t) {
   t.end()
 })
 test('german ones', function(t) {
-  var str =
-    'Buchstaben {{Taste|Q}}, {{Taste|W}}, {{Taste|E}}, {{Taste|R}}, {{Taste|T}} und {{Taste|Z}}'
+  var str = 'Buchstaben {{Taste|Q}}, {{Taste|W}}, {{Taste|E}}, {{Taste|R}}, {{Taste|T}} und {{Taste|Z}}'
   t.equal(wtf(str).text(), 'Buchstaben Q, W, E, R, T und Z', 'letters')
   t.end()
 })

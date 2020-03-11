@@ -1,14 +1,15 @@
 const Section = require('./Section')
-const isReference = /^(references?|einzelnachweise|referencias|références|notes et références|脚注|referenser|bronnen|примечания):?/i //todo support more languages
+const i18n = require('../_data/i18n')
+const isReference = new RegExp('^(' + i18n.references.join('|') + '):?', 'i')
 const section_reg = /(?:\n|^)(={2,5}.{1,200}?={2,5})/g
 
 //interpret ==heading== lines
 const parse = {
   heading: require('./heading'),
-  table: require('./table'),
+  table: require('../table'),
   paragraphs: require('../03-paragraph'),
-  templates: require('../templates'),
-  references: require('./reference'),
+  templates: require('../template'),
+  references: require('../reference'),
   startEndTemplates: require('./start-to-end')
 }
 
@@ -28,7 +29,6 @@ const oneSection = function(wiki, data, options) {
   return data
 }
 
-//we re-create this in html/markdown outputs
 const removeReferenceSection = function(sections) {
   return sections.filter((s, i) => {
     if (isReference.test(s.title()) === true) {

@@ -1,9 +1,11 @@
-const toMarkdown = require('./toMarkdown')
-const toHtml = require('./toHtml')
-const toLatex = require('./toLatex')
 const toJson = require('./toJson')
 const Image = require('../image/Image')
-const aliasList = require('../_lib/aliases')
+
+const normalize = str => {
+  str = str.toLowerCase()
+  str = str.replace(/[-_]/g, ' ')
+  return str.trim()
+}
 
 //a formal key-value data table about a topic
 const Infobox = function(obj) {
@@ -28,7 +30,7 @@ const methods = {
     } else if (typeof n === 'string') {
       //grab a link like .links('Fortnight')
       n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = arr.find(o => o.page === n)
+      let link = arr.find(o => o.page() === n)
       return link === undefined ? [] : [link]
     }
     return arr
@@ -44,27 +46,15 @@ const methods = {
     return new Image(obj)
   },
   get: function(key = '') {
-    key = key.toLowerCase()
+    key = normalize(key)
     let keys = Object.keys(this.data)
     for (let i = 0; i < keys.length; i += 1) {
-      let tmp = keys[i].toLowerCase().trim()
+      let tmp = normalize(keys[i])
       if (key === tmp) {
         return this.data[keys[i]]
       }
     }
     return null
-  },
-  markdown: function(options) {
-    options = options || {}
-    return toMarkdown(this, options)
-  },
-  html: function(options) {
-    options = options || {}
-    return toHtml(this, options)
-  },
-  latex: function(options) {
-    options = options || {}
-    return toLatex(this, options)
   },
   text: function() {
     return ''
@@ -86,10 +76,6 @@ const methods = {
 
 Object.keys(methods).forEach(k => {
   Infobox.prototype[k] = methods[k]
-})
-//add alises, too
-Object.keys(aliasList).forEach(k => {
-  Infobox.prototype[k] = methods[aliasList[k]]
 })
 Infobox.prototype.data = Infobox.prototype.keyValue
 Infobox.prototype.template = Infobox.prototype.type

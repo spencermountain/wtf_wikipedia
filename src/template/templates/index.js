@@ -1,0 +1,24 @@
+module.exports = Object.assign(
+  {},
+  require('./dates'),
+  require('./formatting'),
+  require('./geo'),
+  require('./wikipedia'),
+
+  require('./brackets'),
+  require('./currency'),
+  require('./elections'),
+  require('./flags'),
+  require('./ipa'),
+  require('./languages'),
+  require('./math'),
+  require('./misc'),
+  require('./punctuation'),
+  require('./science'),
+  require('./soccer'),
+  require('./sports'),
+  require('./stock-exchanges'),
+  require('./weather'),
+  require('./websites'),
+  require('./wiktionary')
+)

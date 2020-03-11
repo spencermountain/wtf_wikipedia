@@ -1,6 +1,6 @@
 const fns = require('../_lib/helpers')
 const parseSentence = require('../04-sentence/').oneSentence
-const parseReferences = require('./reference/')
+const parseReferences = require('../reference/')
 const heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/
 
 //interpret depth, title of headings like '==See also=='
@@ -17,7 +17,7 @@ const parseHeading = function(data, str) {
   //... let's not think about that now.
   title = title.replace(/\{\{.+?\}\}/, '')
   //same for references (i know..)
-  title = parseReferences(title, {}) //TODO: this is ridiculous
+  title = parseReferences(title, {})
   //trim leading/trailing whitespace
   title = fns.trim_whitespace(title)
   let depth = 0

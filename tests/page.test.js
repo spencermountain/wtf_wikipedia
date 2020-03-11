@@ -1,4 +1,3 @@
-'use strict'
 var test = require('tape')
 var readFile = require('./lib/_cachedPage')
 
@@ -66,11 +65,7 @@ test('statoil', t => {
   t.equal(doc.categories().length, 4, 'cat-length')
   t.equal(doc.images().length, 1, 'img-length')
   t.equal(doc.images(0).file(), 'Fil:Statoil-Estonia.jpg', 'file')
-  t.equal(
-    doc.images(0).url(),
-    'https://wikipedia.org/wiki/Special:Redirect/file/Statoil-Estonia.jpg',
-    t
-  )
+  t.equal(doc.images(0).url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Statoil-Estonia.jpg', t)
   t.end()
 })
 

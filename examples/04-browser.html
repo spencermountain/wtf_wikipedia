@@ -1,8 +1,0 @@
-<script src="../builds/wtf_wikipedia.min.js"></script>
-<script>
-  wtf.fetch('On a Friday', 'en', function(err, doc) {
-    let val = doc.infobox(0).get('current_members')
-    let members = val.links().map(link => link.page)
-    document.body.innerHTML = members.join(', ')
-  })
-</script>

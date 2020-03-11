@@ -5,9 +5,6 @@ var helpers = {
     }
     return ''
   },
-  onlyUnique: function(value, index, self) {
-    return self.indexOf(value) === index
-  },
   trim_whitespace: function(str) {
     if (str && typeof str === 'string') {
       str = str.replace(/^\s\s*/, '')

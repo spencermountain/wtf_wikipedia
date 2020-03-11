@@ -1,4 +1,4 @@
-const tableParser = require('../table/parse')
+const tableParser = require('../../table/parse')
 //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
 
 //this is pretty nuts

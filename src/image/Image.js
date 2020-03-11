@@ -1,10 +1,6 @@
-const fetch = require('cross-fetch')
-const toMarkdown = require('./toMarkdown')
-const toHtml = require('./toHtml')
-const toLatex = require('./toLatex')
+// const fetch = require('cross-fetch')
 const toJson = require('./toJson')
 const server = 'https://wikipedia.org/wiki/Special:Redirect/file/'
-const aliasList = require('../_lib/aliases')
 
 const encodeTitle = function(file) {
   let title = file.replace(/^(image|file?)\:/i, '')
@@ -67,32 +63,6 @@ const methods = {
     }
     return null
   },
-  exists(callback) {
-    //check if the image (still) exists
-    return new Promise(cb => {
-      fetch(this.url(), {
-        method: 'HEAD'
-      }).then(function(res) {
-        const exists = res.status === 200
-        //support callback non-promise form
-        if (callback) {
-          callback(exists)
-        }
-        cb(exists)
-      })
-    })
-  },
-  markdown: function(options) {
-    options = options || {}
-    return toMarkdown(this, options)
-  },
-  latex: function(options) {
-    return toLatex(this, options)
-  },
-  html: function(options) {
-    options = options || {}
-    return toHtml(this, options)
-  },
   json: function(options) {
     options = options || {}
     return toJson(this, options)
@@ -105,10 +75,7 @@ const methods = {
 Object.keys(methods).forEach(k => {
   Image.prototype[k] = methods[k]
 })
-//add alises, too
-Object.keys(aliasList).forEach(k => {
-  Image.prototype[k] = methods[aliasList[k]]
-})
+
 Image.prototype.src = Image.prototype.url
 Image.prototype.thumb = Image.prototype.thumbnail
 module.exports = Image

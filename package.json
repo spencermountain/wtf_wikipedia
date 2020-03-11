@@ -1,37 +1,40 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "7.8.1",
+  "version": "8.0.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
-  "main": "src/index.js",
-  "unpkg": "builds/wtf_wikipedia.min.js",
+  "main": "builds/wtf_wikipedia.js",
   "module": "builds/wtf_wikipedia.mjs",
+  "unpkg": "builds/wtf_wikipedia-client.min.js",
+  "browser": "builds/wtf_wikipedia-client.js",
+  "type": "commonjs",
+  "sideEffects": false,
   "types": "types/index.d.ts",
   "scripts": {
-    "build": "node ./scripts/version.js && rollup -c && node ./scripts/filesize.js",
+    "build": "node ./scripts/version.js && rollup -c",
     "start": "node ./scripts/demo.js",
     "coverage": "node scripts/coverage.js",
-    "test": "TESTENV=dev tape ./tests/**/*.test.js | tap-dancer",
+    "test": "TESTENV=dev node ./scripts/test.js",
+    "testb": "TESTENV=prod node ./scripts/test.js",
+    "test:fetch": "TESTENV=dev tape ./tests/fetch/*.test.js | tap-dancer",
+    "test:types": "ts-node ./tests/types/index.ts",
     "watch": "amble ./scratch.js",
-    "lint": "eslint ./src/**/*.js",
-    "test:types": "ts-node ./tests/types/index.ts | tap-dancer"
+    "lint": "eslint ./src/"
   },
   "bin": {
-    "wtf_wikipedia": "./bin/wtf.js"
+    "wtf_wikipedia": "./cli.js"
   },
   "engines": {
     "node": ">=6.0.0"
   },
   "files": [
     "builds",
-    "api",
     "src",
-    "types",
-    "bin"
+    "types"
   ],
   "keywords": [
     "wikipedia",
@@ -44,25 +47,25 @@
     "tabWidth": 2,
     "semi": false,
     "singleQuote": true,
-    "printWidth": 100
+    "printWidth": 120
   },
-  "dependencies": {
-    "cross-fetch": "3.0.4"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "7.5.5",
-    "@babel/preset-env": "7.5.5",
     "amble": "0.0.7",
-    "codecov": "3.5.0",
-    "nyc": "14.1.1",
-    "rollup": "1.19.4",
-    "rollup-plugin-babel": "4.3.3",
-    "rollup-plugin-commonjs": "10.0.2",
-    "rollup-plugin-json": "4.0.0",
-    "rollup-plugin-node-resolve": "5.2.0",
-    "rollup-plugin-terser": "5.1.1",
+    "@babel/core": "7.8.7",
+    "@babel/preset-env": "7.8.7",
+    "rollup": "2.0.3",
+    "@rollup/plugin-alias": "^3.0.1",
+    "rollup-plugin-babel": "4.4.0",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-filesize-check": "0.0.1",
+    "rollup-plugin-terser": "5.3.0",
+    "shelljs": "^0.8.3",
     "tap-dancer": "0.2.0",
-    "tape": "4.11.0"
+    "tape": "4.13.2"
   },
+  "eslintIgnore": [
+    "builds/*.js"
+  ],
   "license": "MIT"
 }

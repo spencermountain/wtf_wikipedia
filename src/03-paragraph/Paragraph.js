@@ -1,7 +1,4 @@
 const toJSON = require('./toJson')
-const toMarkdown = require('./toMarkdown')
-const toHtml = require('./toHtml')
-const toLatex = require('./toLatex')
 const setDefaults = require('../_lib/setDefaults')
 const defaults = {
   sentences: true,
@@ -51,7 +48,7 @@ const methods = {
     } else if (typeof n === 'string') {
       //grab a specific link like .links('Fortnight')
       n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = arr.find(o => o.page === n)
+      let link = arr.find(o => o.page() === n)
       return link === undefined ? [] : [link]
     }
     return arr || []
@@ -66,14 +63,6 @@ const methods = {
     }
     return arr || []
   },
-  markdown: function(options) {
-    options = setDefaults(options, defaults)
-    return toMarkdown(this, options)
-  },
-  html: function(options) {
-    options = setDefaults(options, defaults)
-    return toHtml(this, options)
-  },
   text: function(options) {
     options = setDefaults(options, defaults)
     let str = this.sentences()
@@ -83,10 +72,6 @@ const methods = {
       str += '\n' + list.text()
     })
     return str
-  },
-  latex: function(options) {
-    options = setDefaults(options, defaults)
-    return toLatex(this, options)
   },
   json: function(options) {
     options = setDefaults(options, defaults)

@@ -1,4 +1,3 @@
-'use strict'
 var wtf = require('./lib')
 var test = require('tape')
 
@@ -108,10 +107,7 @@ test('inline-with-data', function(t) {
     [`birthdeathage`, `{{BirthDeathAge| |1976| | |1990| |}}`],
     [`death year and age`, `{{Death year and age|2017|1967|12}} `],
     [`death date and age`, `{{death date and age |1993|2|24 |1921|4|12 |mf=yes}}`],
-    [
-      `death-date and age`,
-      `{{Death-date and age| 30 May 1672 | 15 May 1623 | gregorian=9 June 1672 }}`
-    ],
+    [`death-date and age`, `{{Death-date and age| 30 May 1672 | 15 May 1623 | gregorian=9 June 1672 }}`],
     [`death date and given age`, `{{Death date and given age |1992|03|29 |30}}`],
     [`death year and age`, `{{Death year and age|2017|1967}} `],
     [`birth year and age`, `{{Birth year and age|1963|12}} `],
@@ -136,10 +132,7 @@ test('inline-output', t => {
     [`[[Salt]]{{•}} [[Pepper]]`, `Salt • Pepper`],
     [`[[Salt]]{{ndash}}[[Pepper]]`, `Salt–Pepper`],
     ['[[Salt]]{{\\}}[[Black pepper|Pepper]]', `Salt / Pepper`],
-    [
-      '[[Salt]]{{snds}}[[Black pepper|Pepper]]{{snds}}[[Curry]]{{snds}}[[Saffron]]',
-      `Salt – Pepper – Curry – Saffron`
-    ],
+    ['[[Salt]]{{snds}}[[Black pepper|Pepper]]{{snds}}[[Curry]]{{snds}}[[Saffron]]', `Salt – Pepper – Curry – Saffron`],
     ['[[Salt]]{{snd}}[[Saffron]]', `Salt – Saffron`],
     [`{{braces|Templatename|item1|item2}}`, `{{Templatename|item1|item2}}`],
     [`{{sic|Conc|encus}} can Change!`, `Concencus [sic] can Change!`],
@@ -168,8 +161,8 @@ test('flags', function(t) {
   var str = `one {{flag|USA}}, two {{flag|DEU|empire}}, three {{flag|CAN|name=Canadian}}.`
   var doc = wtf(str)
   t.equal(doc.links().length, 3, 'found 3 link')
-  t.equal(doc.links(1).text, 'DEU', 'link text')
-  t.equal(doc.links(1).page, 'Germany', 'link page')
+  t.equal(doc.links(1).text(), 'DEU', 'link text')
+  t.equal(doc.links(1).page(), 'germany', 'link page')
   t.equal(doc.text(), 'one 🇺🇸 USA, two 🇩🇪 DEU, three 🇨🇦 CAN.', 'made emoji flags')
   t.end()
 })

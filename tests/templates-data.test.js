@@ -1,4 +1,3 @@
-'use strict'
 var wtf = require('./lib')
 var test = require('tape')
 
@@ -6,10 +5,7 @@ test('external-links', function(t) {
   var arr = [
     [`imdb title`, `{{IMDb title | id= 0426883 | title= Alpha Dog }}`],
     [`imdb name`, `{{IMDb name | 0000008 | Marlon Brando }}`],
-    [
-      `musicbrainz artist`,
-      `{{MusicBrainz artist|mbid=31e7b30b-f960-408f-908b-c8e277308eab|name=Susumu Hirasawa}}`
-    ],
+    [`musicbrainz artist`, `{{MusicBrainz artist|mbid=31e7b30b-f960-408f-908b-c8e277308eab|name=Susumu Hirasawa}}`],
     [`youtube`, `{{YouTube|id=9bZkp7q19f0|title="Gangnam Style"}}`],
     [`twitter`, `{{Twitter | id= AcadiaU | name= Acadia University }}`],
     [`tumblr`, `{{Tumblr|nasa|NASA (official)}}`],
@@ -86,10 +82,7 @@ test('wikipedia-templates', function(t) {
 `
     ],
 
-    [
-      `short description`,
-      `{{Short description|Use of high concentrations of oxygen as medical treatment}}`
-    ],
+    [`short description`, `{{Short description|Use of high concentrations of oxygen as medical treatment}}`],
     [`main`, `{{Main|Article1|l1=Custom label 1|Article2|l2=Custom label 2}}`],
     [
       `wide image`,

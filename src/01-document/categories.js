@@ -1,8 +1,5 @@
 const i18n = require('../_data/i18n')
-const cat_reg = new RegExp(
-  '\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178}?)]](w{0,10})',
-  'ig'
-)
+const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'ig')
 const cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n.categories.join('|') + '):', 'ig')
 
 const parse_categories = function(r, wiki) {

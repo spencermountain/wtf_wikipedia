@@ -1,133 +1,96 @@
-## 1.0.0
+---
 
-- make `sections` into an ordered array, instead of an es6 Map thing. - add 'depth' too
+<!-- #### 8.0.0
+* lowercase/normalize table headers
+* date templates response format
+* .keyValue() should return page title if exists, instead of text
+* return country name for `{{BAN}}` etc templates -->
 
-## 2.0.0
+### 8.0.0
 
-- move possibly-repeatable data into the `sections` object, list 'lists' and 'tables'
-- change library export name to `wtf`
-- turn `infobox` into 'infoboxes' array
-- moved 'infobox_template' to infobox.type
-- change initial depth to 0
-- change 'translations' property to 'interwiki'
-- support {{main}} and {{wide image|}} templates
+- [breaking] move `.html()`, `.latex()`, and `.markdown()` to [their](https://github.com/spencermountain/wtf-plugin-html) [respective](https://github.com/spencermountain/wtf-plugin-latex) [plugins](https://github.com/spencermountain/wtf-plugin-markdown)
+- - drop header/footer boilerplate from outputs
+- [breaking] `.templates()` and `.links()` return Template and Link objects, and not bare JSON (use `.map(l=> l.json())`)
+- [breaking] refactor inputs for `.fetch()`
+- - no longer support 'enwikiquote' etc format as input
+- - use 'wiki' instead of undocumented 'wikiUrl' param
+- - no more automatic throttling/rate-limiting
+- [breaking] remove `Image.exists()` method to [plugin](./plugins/image-exists.js)
+- [major] create seperate client/server-side build formats (use native fetch/node lib)
+- [major] support deep (infinite) recursion in templates
+- [major] much-stronger i18n support
+- no-longer automatically titlecase links
+- support adding template parsers through plugins in `.extend()`
+- - support array, number, and string shorthand for template parsers
+- deprecate `.plaintext()` in favour of `.text()`
 
-## 2.1.0
+### 7.8.0
 
-- support table '! row' row heading syntax, and other forms
+- add `.extend()` method for authoring plugins
 
-## 2.2.0
+### 7.7.2
 
-- support for {{coords}} geo-coordinate parsing+conversion
-- early-support for custom template-parsing
+- bugfixes by suntala
 
-## 2.5.0
+### 7.6.0
 
-- co-ordinate parsing fix
-- support longer ref tags
-- smarter disambiguation for interwiki links vs pages containing ':'
-- more support for various list syntaxes
+- use rollup for builds, publish esm module
 
-## 2.6.0
+### 7.3.0
 
-- support for markdown output
-- support for html output
-- add page 'title' to response, where possible.
-- better support for capturing the `[[link]]'s` syntax
-- opt-out of citation, infobox, image ... parsing
-- support a whack of date/time/age templates
+- more unicode support
 
-## 2.6.1
+### 7.2.10
 
-- better html output tables/infoboxes
+- improved unicode support for sentence/paragraph splitting
+- supporting more formatting templates, like **Mono**
+- more flexible reference support in `.json()`
 
-## 3.0.0
+### 7.2.9
 
-- BIG API RE-WRITE!
-- move `.parse()` to main `wtf()` method
-- allow repeated processes without a pre-parse of the document
-- wtf.fetch() uses promises, and native `fetch()` method (when available)
-- allow per-section images, lists, tables + templates
-- section depth values now start at 0
-- infobox values now return sentence objects
-- latex output (thanks @niebert!)
-- refactor shell scripts to `wtf_wikipedia Toronto --plaintext`
-- use babel-preset-env cause it's new-new
-- update deps
+- few more sports templates,
+- rowspan parsing fix
+- no-longer include package.json in builds
+- use full template-parser for image captions
+- support manually setting doc.title()
 
-## 3.1.0
+### 7.2.0
 
-- improved .json() results
-- guess a page's title based on bold formatting in first sentence
-- make section.title a function
+- improved date templates, bugfixes
 
-## 4.0.0
+### 7.1.1
 
-- 🚨 non-api changing, but large result-format change
-- add `.wikitext()` method to Document, Section, Sentence (thanks @niebert)
-- move infobox, citation parser/data to Section class
-- `.templates()` are now an ordered array, instead of an object, and include infoboxes and citations
-- add (early) support for 'generic' key-value template parsing
-- normalize/lowercase template/infobox properties - add loose `.get('key')` method to Infobox class
-- mess-around with citation-template formatting
-- beginning to support unknown template forms
-- move `date` data from Sentence to Section object.
-- rollback of awkward+undocumented `options` param in parser (but keep options param for output methods)
-- add support for about a hundred new templates
-- templates, including citations, try to be flat-text, and no-longer return Sentence objects
+- support population, weatherbox templates
 
-## 4.1.0
+### 7.1.0
 
-- remove repeated/redundant text in `.links()` results
-- don't automatically titlecase link srcs anymore
+- some template fixes
+- add a 'number' field in sentence json, when it looks like a number
+- slight change in coordinate result format, support inline coordinate text
+- handle fetching a large list of titles in sequence
 
-## 4.2.0
+## 7.0.0 🚨
 
-- return a result or undefined for `sentences.bolds(0)`, and the like
+- change result-format in a lot of templates, for more consistency.
+- - notably: **reference** format, **see also**, **IPA**, **main**
+- support colspan/rowspan in tables (a little!)
+- support implicit first-row headers for some tables
+- return templates even if they have no data
+- begin support for some well-used `{{foo start}}...{{foo end}}` templates
+- remove empty `[]` for some more section properties in `.json()` response
 
-### 4.2.2
+### 6.3.0
 
-- support dollar templates
+- support way (+20%?) more templates.
 
-### 4.5.0
+### 6.2.0
 
-- support `section(0).wikitext()`
-- support inline {{marriage}} template
-- dangling semi-colons in first-sentence parentheses
+- support categories in redirects
+- add mongo-encoding from dumpster-dive
 
-### 4.6.0
+### 6.1.0
 
-- `<gallery>` tag support in `.images()`
-- support pageids again in .fetch()
-- better disambiguation-page detection in english
-- remove wikitext from caption titles
-- support 3-level templates (whew!)
-
-## 5.0.0
-
-- new `Table` class and `List` classes
-- improved table-parser - generate name `col1` instead of `col-0`
-- support `options.verbose_template` for debugging
-- support recursive tables
-
-### 5.1.0
-
-- improved support for gallery tag
-- more support for wiktionary grammar templates
-- tweak some regexes
-
-### 5.2.0
-
-- make `.json()` results return proper json for tables
-
-### 5.3.0
-
-- add infobox html back into html output (tentative)
-- redirect support in .json(), .html() output
-- remove empty `[]` properties in .json() results (saves disk space!)
-- keep `#` anchor data in .links()
-- show links default-on in latex output, like in md and html
-- render html/latex/json 'soft redirect', instead of blank pages
+- titlecase internal link destinations #192
 
 ## 6.0.0 🚨
 
@@ -154,78 +117,133 @@
 - rename citation → reference internally, and in json output
 - remove references inside section titles
 
-### 6.1.0
+### 5.3.0
 
-- titlecase internal link destinations #192
+- add infobox html back into html output (tentative)
+- redirect support in .json(), .html() output
+- remove empty `[]` properties in .json() results (saves disk space!)
+- keep `#` anchor data in .links()
+- show links default-on in latex output, like in md and html
+- render html/latex/json 'soft redirect', instead of blank pages
 
-### 6.2.0
+### 5.2.0
 
-- support categories in redirects
-- add mongo-encoding from dumpster-dive
+- make `.json()` results return proper json for tables
 
-### 6.3.0
+### 5.1.0
 
-- support way (+20%?) more templates.
+- improved support for gallery tag
+- more support for wiktionary grammar templates
+- tweak some regexes
 
-## 7.0.0 🚨
+## 5.0.0
 
-- change result-format in a lot of templates, for more consistency.
-- - notably: **reference** format, **see also**, **IPA**, **main**
-- support colspan/rowspan in tables (a little!)
-- support implicit first-row headers for some tables
-- return templates even if they have no data
-- begin support for some well-used `{{foo start}}...{{foo end}}` templates
-- remove empty `[]` for some more section properties in `.json()` response
+- new `Table` class and `List` classes
+- improved table-parser - generate name `col1` instead of `col-0`
+- support `options.verbose_template` for debugging
+- support recursive tables
 
-### 7.1.0
+### 4.6.0
 
-- some template fixes
-- add a 'number' field in sentence json, when it looks like a number
-- slight change in coordinate result format, support inline coordinate text
-- handle fetching a large list of titles in sequence
+- `<gallery>` tag support in `.images()`
+- support pageids again in .fetch()
+- better disambiguation-page detection in english
+- remove wikitext from caption titles
+- support 3-level templates (whew!)
 
-### 7.1.1
+### 4.5.0
 
-- support population, weatherbox templates
+- support `section(0).wikitext()`
+- support inline {{marriage}} template
+- dangling semi-colons in first-sentence parentheses
 
-### 7.2.0
+### 4.2.2
 
-- improved date templates, bugfixes
+- support dollar templates
 
-### 7.2.9
+## 4.2.0
 
-- few more sports templates,
-- rowspan parsing fix
-- no-longer include package.json in builds
-- use full template-parser for image captions
-- support manually setting doc.title()
+- return a result or undefined for `sentences.bolds(0)`, and the like
 
-### 7.2.10
+## 4.1.0
 
-- improved unicode support for sentence/paragraph splitting
-- supporting more formatting templates, like **Mono**
-- more flexible reference support in `.json()`
+- remove repeated/redundant text in `.links()` results
+- don't automatically titlecase link srcs anymore
 
-### 7.3.0
+## 4.0.0
 
-- more unicode support
+- 🚨 non-api changing, but large result-format change
+- add `.wikitext()` method to Document, Section, Sentence (thanks @niebert)
+- move infobox, citation parser/data to Section class
+- `.templates()` are now an ordered array, instead of an object, and include infoboxes and citations
+- add (early) support for 'generic' key-value template parsing
+- normalize/lowercase template/infobox properties - add loose `.get('key')` method to Infobox class
+- mess-around with citation-template formatting
+- beginning to support unknown template forms
+- move `date` data from Sentence to Section object.
+- rollback of awkward+undocumented `options` param in parser (but keep options param for output methods)
+- add support for about a hundred new templates
+- templates, including citations, try to be flat-text, and no-longer return Sentence objects
 
-### 7.6.0
+## 3.1.0
 
-- use rollup for builds, publish esm module
+- improved .json() results
+- guess a page's title based on bold formatting in first sentence
+- make section.title a function
 
-### 7.7.2
+## 3.0.0
 
-- bugfixes by suntala
+- BIG API RE-WRITE!
+- move `.parse()` to main `wtf()` method
+- allow repeated processes without a pre-parse of the document
+- wtf.fetch() uses promises, and native `fetch()` method (when available)
+- allow per-section images, lists, tables + templates
+- section depth values now start at 0
+- infobox values now return sentence objects
+- latex output (thanks @niebert!)
+- refactor shell scripts to `wtf_wikipedia Toronto --plaintext`
+- use babel-preset-env cause it's new-new
+- update deps
 
-### 7.8.0
+## 2.6.1
 
-- add `.extend()` method for authoring plugins
+- better html output tables/infoboxes
 
----
+## 2.6.0
 
-<!-- #### 8.0.0
-* lowercase/normalize table headers
-* date templates response format
-* .keyValue() should return page title if exists, instead of text
-* return country name for `{{BAN}}` etc templates -->
+- support for markdown output
+- support for html output
+- add page 'title' to response, where possible.
+- better support for capturing the `[[link]]'s` syntax
+- opt-out of citation, infobox, image ... parsing
+- support a whack of date/time/age templates
+
+## 2.5.0
+
+- co-ordinate parsing fix
+- support longer ref tags
+- smarter disambiguation for interwiki links vs pages containing ':'
+- more support for various list syntaxes
+
+## 2.2.0
+
+- support for {{coords}} geo-coordinate parsing+conversion
+- early-support for custom template-parsing
+
+## 2.1.0
+
+- support table '! row' row heading syntax, and other forms
+
+## 2.0.0
+
+- move possibly-repeatable data into the `sections` object, list 'lists' and 'tables'
+- change library export name to `wtf`
+- turn `infobox` into 'infoboxes' array
+- moved 'infobox_template' to infobox.type
+- change initial depth to 0
+- change 'translations' property to 'interwiki'
+- support {{main}} and {{wide image|}} templates
+
+## 1.0.0
+
+- make `sections` into an ordered array, instead of an es6 Map thing. - add 'depth' too

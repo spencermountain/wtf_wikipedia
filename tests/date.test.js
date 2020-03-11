@@ -1,4 +1,3 @@
-'use strict'
 var test = require('tape')
 var wtf = require('./lib')
 
@@ -50,7 +49,7 @@ test('structured date templates', t => {
     ['{{Start date and age|2010|02|29|df=yes}}', 'February 29, 2010']
   ]
   arr.forEach(a => {
-    var str = wtf(a[0]).plaintext()
+    var str = wtf(a[0]).text()
     t.equal(str, a[1], a[0] + ' ' + str)
   })
   t.end()
@@ -62,20 +61,14 @@ test('hyphenated language-date templates', t => {
     ['{{birth-date|7 December 1941}}', '7 December 1941'],
     ['{{end-date|7 December 1941}}', '7 December 1941'],
     ['{{start-date|5:43PM HST, December 7th, 1941|tz=y}}', '5:43PM HST, December 7th, 1941'],
-    [
-      '{{start-date|December 8, 1941 12:50PM Australia/Adelaide|tz=y}}',
-      'December 8, 1941 12:50PM Australia/Adelaide'
-    ],
+    ['{{start-date|December 8, 1941 12:50PM Australia/Adelaide|tz=y}}', 'December 8, 1941 12:50PM Australia/Adelaide'],
     // ['{{Birth-date and age|1941-04-12|Twelfth of April, 1941}}', 'Twelfth of April, 1941'],
     ['{{Birth-date and age|April 12, 1941}}', 'April 12, 1941'],
     ['{{Birth-date and age|12 April 1941}}', '12 April 1941'],
     ['{{Birth-date and age|1941}}', '1941'],
     ['{{start-date|7 March 2011}}', '7 March 2011'],
     ['{{end-date|December 8 2000}}', 'December 8 2000'],
-    [
-      '{{start-date| December 8, 1941 12:30PM Asia/Manila }}',
-      'December 8, 1941 12:30PM Asia/Manila'
-    ],
+    ['{{start-date| December 8, 1941 12:30PM Asia/Manila }}', 'December 8, 1941 12:30PM Asia/Manila'],
     ['born on {{birth-date|17 June 1941}}', 'born on 17 June 1941'],
     [
       'around {{start-date|5:43PM HST, December 7th, 1941|tz=y}} this century',
@@ -92,7 +85,7 @@ test('hyphenated language-date templates', t => {
     // ['{{birth based on age as of date | 50 | 2017 | 02 | 16}}', '1966/1967']
   ]
   arr.forEach(a => {
-    var str = wtf(a[0]).plaintext()
+    var str = wtf(a[0]).text()
     t.equal(str, a[1], a[0])
   })
   t.end()
@@ -143,7 +136,7 @@ test('age templates', t => {
     //     ['{{Age as of date|50|2016|February|16}}', '52'],
   ]
   arr.forEach(a => {
-    var str = wtf(a[0]).plaintext()
+    var str = wtf(a[0]).text()
     t.equal(str, a[1], a[0])
   })
   t.end()
