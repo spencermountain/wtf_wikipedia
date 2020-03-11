@@ -362,10 +362,10 @@ wtf
 
 ## Plugins
 
-- [wtf-plugin-html](https://github.com/spencermountain/wtf-plugin-html)
-- [wtf-plugin-markdown](https://github.com/spencermountain/wtf-plugin-markdown)
-- [wtf-plugin-latex](https://github.com/spencermountain/wtf-plugin-latex)
-- [wtf-plugin-wikitext](https://github.com/spencermountain/wtf-plugin-wikitext)
+- [wtf-plugin-html](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/plugin/html)
+- [wtf-plugin-markdown](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/plugin/markdown)
+- [wtf-plugin-latex](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/plugin/latex)
+- [wtf-plugin-wikitext](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/plugin/wikitext)
 - [wtf-mlb](https://github.com/spencermountain/wtf-mlb) - baseball team/season parser
 - [wtf-nhl](https://github.com/spencermountain/wtf-nhl) - hockey team/season parser
 
@@ -525,6 +525,17 @@ wtf.extend((models, templates) => {
   templates.asterisk = '*'
 })
 ```
+
+## Builds:
+
+to preserve filesize, this library ships seperate client-side and server-side builds.
+
+- _[./wtf_wikipedia-client.js](./builds/wtf_wikipedia-client.js)_ - with sourcemap
+- _[./wtf_wikipedia-client.mjs](./builds/wtf_wikipedia-client.js)_ - as es-module (or Deno)
+- _[./wtf_wikipedia-client.min.js](./builds/wtf_wikipedia-client.js)_ - for production
+
+- _[./wtf_wikipedia.js](./builds/wtf_wikipedia.js)_ - main node build
+- _[./wtf_wikipedia.mjs](./builds/wtf_wikipedia.mjs)_ - esmodule node
 
 ## Performance:
 
