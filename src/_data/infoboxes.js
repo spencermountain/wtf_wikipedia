@@ -1,8 +1,9 @@
 module.exports = [
   'infobox', //en
+
   'anfo', //mwl
   'anuāmapa', //haw
-  'bilgi', //gag
+  'bilgi kutusu', //tr
   'bilgi', //tr
   'bilgiquti', //uz
   'boaty', //mg
@@ -26,13 +27,14 @@ module.exports = [
   'informkesto', //eo
   'infoskreine', //ltg
   'infotaula', //eu
+  'inligtingskas',
   'inligtingskas3', //af
   'inligtingskas4', //af
   'kishtey', //gv
   'kotak', //su
-  'simple', //ss
   'tertcita', //jbo
   'tietolaatikko', //fi
+  'yerleşim bilgi kutusu',
   'ynfoboks', //fy
   'πλαίσιο', //el
   'акарточка', //ab
@@ -41,6 +43,7 @@ module.exports = [
   'инфокутија', //sr
   'инфокутия', //bg
   'інфобокс', //rue
+  'канадский',
   'картка', //be
   'карточка', //ru
   'карточка2', //mdf
@@ -49,12 +52,12 @@ module.exports = [
   'қуттӣ', //tg
   'ინფოდაფა', //ka
   'տեղեկաքարտ', //hy
-  'տեղեկաքարտ', //hyw
   'אינפאקעסטל', //yi
   'תבנית', //he
   'بطاقة', //ar
   'ڄاڻخانو', //sd
   'خانہ', //ur
+  'لغة',
   'ज्ञानसन्दूक', //hi
   'তথ্যছক', //bn
   'ਜਾਣਕਾਰੀਡੱਬਾ', //pa

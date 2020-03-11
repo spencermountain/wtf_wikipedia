@@ -1,19 +1,26 @@
 module.exports = [
+  'category', //en
+
   'abdeeling', //	pdc
   'bólkur', //	fo
   'catagóir', //	ga
   'categori', //	cy
-  'categoría', //	an
+  'categoria',
   'categoria', //	co
   'categoría', //	es
   'categorîa', //	lij
   'categorìa', //	pms
+  'catégorie',
+  'categorie',
   'catègorie', //	frp
+  'category',
   'categuria', //	lmo
   'catigurìa', //	scn
   'class', //	kw
   'ẹ̀ka', //	yo
+  'flocc',
   'flocc', //	ang
+  'flokkur',
   'grup', //	tpi
   'jamii', //	sw
   'kaarangay', //	war
@@ -23,9 +30,11 @@ module.exports = [
   'kategorî', //	ku
   'kategoria', //	eu
   'kategória', //	hu
+  'kategorie', //de
   'kategoriija', //	se
   'kategorija', //	sl
   'kategorio', //	eo
+  'kategoriya',
   'kategoriýa', //	tk
   'kategoriye', //	diq
   'kategory', //	fy
@@ -33,6 +42,7 @@ module.exports = [
   'kateqoriya', //	az
   'katiguriya', //	qu
   'klad', //	vo
+  'luokka',
   'ñemohenda', //	gn
   'roinn', //-seòrsa	gd
   'ronney', //	gv
@@ -42,13 +52,21 @@ module.exports = [
   'sumut', // atassuseq	kl
   'thể', // loại	vi
   'turkum', //	uz
+  'категорија',
   'категория', //	ru
   'категорія', //	uk
+  'катэгорыя',
   'төркем', //	tt
   'קטגוריה', //	he
+  'تصنيف',
   'تۈر', //	ug
+  'رده',
+  'श्रेणी',
+  'श्रेणी', //	hi
   'বিষয়শ্রেণী', //	bn
   'หมวดหมู่', //	th
   '분류', //	ko
+  '분류', //ko
   '分类' //	za
+  //--
 ]
