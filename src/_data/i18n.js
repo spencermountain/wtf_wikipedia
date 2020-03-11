@@ -5,7 +5,8 @@ module.exports = {
   disambig: require('./disambig'),
   images: require('./images'),
   infoboxes: require('./infoboxes'),
-  redirects: require('./redirects')
+  redirects: require('./redirects'),
+  references: require('./references')
 
   // specials: [
   //   'спэцыяльныя',

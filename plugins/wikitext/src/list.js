@@ -1,6 +1,8 @@
 const toWiki = function() {
-  return this.lines().map(str => {
-    return `* ${str}`
+  let txt = ''
+  this.lines().forEach(s => {
+    txt += `* ${s.wikitext()}\n`
   })
+  return txt
 }
 module.exports = toWiki

@@ -46,7 +46,7 @@ const toHtml = function(options) {
   if (options.references === true) {
     html += '<h2>References</h2>'
     html += this.references()
-      .map(c => c.json(options))
+      .map(c => c.html(options))
       .join('\n')
   }
   return html

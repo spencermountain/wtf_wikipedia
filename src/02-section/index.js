@@ -1,5 +1,6 @@
 const Section = require('./Section')
-const isReference = /^(references?|einzelnachweise|referencias|références|notes et références|脚注|referenser|bronnen|примечания):?/i //todo support more languages
+const i18n = require('../_data/i18n')
+const isReference = new RegExp('^(' + i18n.references.join('|') + '):?', 'i')
 const section_reg = /(?:\n|^)(={2,5}.{1,200}?={2,5})/g
 
 //interpret ==heading== lines

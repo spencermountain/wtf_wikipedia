@@ -1,6 +1,6 @@
 //escape a string like 'fun*2.Co' for a regExpr
-function escapeRegExp(str) {
-  return str //.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&')
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // $& means the whole matched string
 }
 
 //sometimes text-replacements can be ambiguous - words used multiple times..
