@@ -37,8 +37,8 @@ const toLatex = function(options) {
   }
   //default off
   //render citations
-  if (options.citations === true) {
-    out += this.citations()
+  if (options.references === true) {
+    out += this.references()
       .map(c => c.latex(options))
       .join('\n')
   }

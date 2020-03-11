@@ -7,12 +7,12 @@ const defaults = {
 // create links, bold, italic in latex
 const toLatex = function(options) {
   options = Object.assign({}, defaults, options)
-  let text = this.plaintext()
+  let text = this.text()
   //turn links back into links
   if (options.links === true && this.links().length > 0) {
     this.links().forEach(link => {
       let tag = link.latex()
-      let str = this.text || this.page
+      let str = link.text() || link.page()
       text = smartReplace(text, str, tag)
     })
   }
