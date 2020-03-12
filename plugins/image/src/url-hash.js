@@ -13,7 +13,8 @@ const encodeTitle = function(file) {
 
 //the wikimedia image url is a little silly:
 //https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F
-const commonsURL = function(file) {
+const commonsURL = function() {
+  let file = this.data.file
   let title = encodeTitle(file)
   let hash = new Hashes.MD5().hex(title)
   let path = hash.substr(0, 1) + '/' + hash.substr(0, 2) + '/'

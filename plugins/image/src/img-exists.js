@@ -5,12 +5,12 @@ const imgExists = function(callback) {
   return http(this.url(), {
     method: 'HEAD'
   })
-    .then(function(res) {
-      const exists = res.status === 200
+    .then(function(bool) {
       //support callback non-promise form
       if (callback) {
-        callback(null, exists)
+        callback(null, bool)
       }
+      return bool
     })
     .catch(e => {
       console.error(e)

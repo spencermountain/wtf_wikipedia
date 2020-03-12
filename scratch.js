@@ -1,6 +1,6 @@
 var wtf = require('./src/index')
 // var wtf = require('./builds/wtf_wikipedia')
-wtf.extend(require('./plugins/html/src'))
+wtf.extend(require('./plugins/image/src'))
 
 // let txt = require('fs')
 //   .readFileSync('/Users/spencer/mountain/wtf_wikipedia/tests/cache/royal_cinema.txt')
@@ -22,6 +22,8 @@ wtf
   .fetch('casa', 'it', {
     wiki: `wiktionary`
   })
-  .then(function(doc) {
-    console.log(doc.images().map(img => img.json()))
+  .then(async function(doc) {
+    let img = doc.images(0)
+    const url = img.commonsURL()
+    console.log(url)
   })
