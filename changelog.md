@@ -9,6 +9,7 @@
 ### [unreleased]
 
 - support `<noinclude>`
+- add `.url()` and `.language()` methods
 
 ### 8.0.0
 

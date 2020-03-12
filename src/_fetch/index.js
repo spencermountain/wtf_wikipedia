@@ -42,7 +42,7 @@ const fetch = function(title, options, c) {
   return http(url, headers)
     .then(res => {
       try {
-        let data = getResult(res)
+        let data = getResult(res, options)
         data = parseDoc(data)
         if (callback) {
           callback(null, data)

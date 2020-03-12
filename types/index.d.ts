@@ -39,6 +39,10 @@ declare module wtf {
     pageID(str?: string | number): string
     /**get/set the wikimedia namespace for the page */
     namespace(str?: string | number): string
+    /**get/set the language for the page */
+    language(str?: string): string
+    /** try to create the url of the page */
+    url(): string | null
 
     /**if the page is just a redirect to another page */
     isRedirect(): boolean

@@ -9,6 +9,7 @@ var wtf = require('./src/index')
 // let str = `hello [[bs:cool]]`
 // console.log(wtf(str).text())
 
-wtf.fetch('Node.js').then(doc => {
-  console.log(doc.images().map(i => i.url()))
+wtf.fetch('Node.js', 'fr').then(doc => {
+  console.log(doc.lang())
+  console.log(doc.url())
 })

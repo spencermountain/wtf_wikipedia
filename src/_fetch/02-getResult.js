@@ -1,5 +1,5 @@
 //this data-format from mediawiki api is nutso
-const getResult = function(data) {
+const getResult = function(data, options) {
   let pages = Object.keys(data.query.pages)
   let docs = pages.map(id => {
     let page = data.query.pages[id] || {}
@@ -11,11 +11,11 @@ const getResult = function(data) {
     if (!text && page.revisions[0].slots) {
       text = page.revisions[0].slots.main['*']
     }
-    let meta = {
+    let meta = Object.assign(options, {
       title: page.title,
       pageID: page.pageid,
       namespace: page.ns
-    }
+    })
     try {
       return { wiki: text, meta: meta }
     } catch (e) {

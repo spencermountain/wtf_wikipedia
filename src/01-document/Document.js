@@ -42,6 +42,24 @@ const methods = {
     }
     return this.data.pageID
   },
+  language: function(lang) {
+    if (lang !== undefined) {
+      this.data.lang = lang
+    }
+    return this.data.lang
+  },
+  url: function() {
+    let title = this.title()
+    if (!title) {
+      return null
+    }
+    let lang = this.language() || 'en'
+    let domain = this.data.domain || 'wikipedia.org'
+    // replace blank to underscore
+    title = title.replace(/ /g, '_')
+    title = encodeURIComponent(title)
+    return `https://${lang}.${domain}.org/wiki/${title}`
+  },
   namespace: function(ns) {
     if (ns !== undefined) {
       this.data.namespace = ns
@@ -225,6 +243,8 @@ Object.keys(methods).forEach(k => {
 })
 
 //alias these ones
+Document.prototype.lang = Document.prototype.language
+Document.prototype.ns = Document.prototype.namespace
 Document.prototype.plaintext = Document.prototype.text
 Document.prototype.isDisambig = Document.prototype.isDisambiguation
 Document.prototype.citations = Document.prototype.references

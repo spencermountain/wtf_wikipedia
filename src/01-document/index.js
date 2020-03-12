@@ -11,7 +11,7 @@ const parse = {
 const main = function(wiki, options) {
   options = options || {}
   wiki = wiki || ''
-  let data = {
+  let data = Object.assign(options, {
     title: options.title || null,
     pageID: options.pageID || options.id || null,
     namespace: options.namespace || options.ns || null,
@@ -19,7 +19,7 @@ const main = function(wiki, options) {
     sections: [],
     categories: [],
     coordinates: []
-  }
+  })
   //detect if page is just redirect, and return it
   if (redirects.isRedirect(wiki) === true) {
     data.type = 'redirect'
