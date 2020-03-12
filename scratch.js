@@ -18,12 +18,8 @@ wtf.extend(require('./plugins/image/src'))
 // console.log(doc.text())
 // infront behind
 
-wtf
-  .fetch('casa', 'it', {
-    wiki: `wiktionary`
-  })
-  .then(async function(doc) {
-    let img = doc.images(0)
-    const url = img.commonsURL()
-    console.log(url)
-  })
+console.log(
+  wtf(`'''No. 44 (Rhodesia) Squadron''' was an aviation unit `)
+    .sentence()
+    .text()
+)
