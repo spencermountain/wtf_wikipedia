@@ -2,6 +2,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import babel from 'rollup-plugin-babel'
 import sizeCheck from 'rollup-plugin-filesize-check'
+import nodeResolve from 'rollup-plugin-node-resolve'
 
 import { version } from './package.json'
 console.log('\n 📦  - running rollup..\n')
@@ -15,6 +16,7 @@ export default [
     output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
     plugins: [
       commonjs(),
+      nodeResolve(),
       babel({
         babelrc: false,
         presets: ['@babel/preset-env']
@@ -36,6 +38,7 @@ export default [
     ],
     plugins: [
       commonjs(),
+      nodeResolve(),
       babel({
         babelrc: false,
         presets: ['@babel/preset-env']
@@ -56,6 +59,7 @@ export default [
     ],
     plugins: [
       commonjs(),
+      nodeResolve(),
       babel({
         babelrc: false,
         presets: ['@babel/preset-env']

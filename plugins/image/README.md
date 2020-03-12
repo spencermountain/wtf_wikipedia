@@ -25,23 +25,21 @@ Some additional methods for Images
 const wtf = require('wtf_wikipedia')
 wtf.extend(require('wtf-plugin-markdown'))
 
-
-
 wtf.fetch('casa', 'it', { wiki: `wiktionary` }).then(async function(doc) {
+  let image = doc.images(0)
 
-let image=doc.images(0)
-
+  // make a {method: 'HEAD'} request to test the image is there
   let bool = await image.exists()
-  console.log(.map(img => img.json()))
-})
 
+  //instead of using the redirect api, generate a direct img url
+  let url = image.commonsURL()
+  //https://upload.wikimedia.org/wikipedia/commons/4/4e/RybnoeDistrict_06-13_Konstantinovo_village_05.jpg
+})
 ```
 
 ### API
 
 - **image.exists()** - double-check that the image is on the server
 - **image.commonsURL()** - instead of the wikimedia redirect server, generate a url for the commons server.
-
-work-in-progress
 
 MIT
