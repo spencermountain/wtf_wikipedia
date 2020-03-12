@@ -1,6 +1,9 @@
 const parse = require('../_parsers/parse')
 
 const misc = {
+  // https://en.wikipedia.org/wiki/Template:Portuguese_name
+  'portuguese name': ['first', 'second', 'suffix'],
+
   uss: ['ship', 'id'],
   isbn: (tmpl, list) => {
     let order = ['id', 'id2', 'id3']
