@@ -6,6 +6,10 @@
 * .keyValue() should return page title if exists, instead of text
 * return country name for `{{BAN}}` etc templates -->
 
+### [unreleased]
+
+- support `<noinclude>`
+
 ### 8.0.0
 
 - [breaking] move `.html()`, `.latex()`, and `.markdown()` to [their](https://github.com/spencermountain/wtf-plugin-html) [respective](https://github.com/spencermountain/wtf-plugin-latex) [plugins](https://github.com/spencermountain/wtf-plugin-markdown)

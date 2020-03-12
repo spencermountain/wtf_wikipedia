@@ -36,7 +36,7 @@ const methods = {
     return arr
   },
   image: function() {
-    let s = this.get('image') || this.get('image2')
+    let s = this.get('image') || this.get('image2') || this.get('logo')
     if (!s) {
       return null
     }

@@ -1,24 +1,14 @@
 var wtf = require('./src/index')
 // var wtf = require('./builds/wtf_wikipedia')
-wtf.extend(require('./plugins/wikitext/src'))
+// wtf.extend(require('./plugins/wikitext/src'))
 
 // let txt = require('fs')
 //   .readFileSync('/Users/spencer/mountain/wtf_wikipedia/tests/cache/royal_cinema.txt')
 //   .toString()
 
-// wtf.extend((models, templates) => {
-//   templates.one = 0
-// })
-// var have = wtf(txt).wikitext()
-// console.log(have)
+// let str = `hello [[bs:cool]]`
+// console.log(wtf(str).text())
 
-// console.log(
-//   wtf('i was cool and [[cool]]')
-//     .sentence()
-//     .wikitext()
-// )
-
-// console.log(wtf(txt).title())
-// wtf.fetch('Joe Wilson (American politician)').then(doc => {
-// console.log(doc.json())
-// })
+wtf.fetch('Node.js').then(doc => {
+  console.log(doc.images().map(i => i.url()))
+})
