@@ -18,15 +18,4 @@ wtf.extend(require('./plugins/image/src'))
 // console.log(doc.text())
 // infront behind
 
-let str = `<gallery>
-File:Liverpool Road.jpg|<small>[[Manchester]]: [[Manchester Liverpool Road railway station|''Liverpool & Manchester Railway'' station]] (1830).</small>
-File:Stazione Napoli-Portici (Lucioni).jpg|<small>[[Naples]]: Stazione Bayard (right, 1839) and Regia (left, 1843).</small>
-File:Nicolas-Marie-Joseph Chapuy 001.jpg|<small>[[Vienna]]: twin stations Staatsbahnhof (left) and Gloggnitzer Bahnhof (right) from the early 1840s.</small>
-File:MannheimBahnhof1840.jpg|<small>[[Mannheim]]: the first station building and train shed (1840).</small>
-</gallery>`
-
-console.log(
-  wtf(str)
-    .images()
-    .map(i => i.json())
-)
+console.log(wtf(`Boasting over {{cvt|1,000,000|ha|acre}} of [[Parks in Sydney|nature reserves and parks]]`).text())

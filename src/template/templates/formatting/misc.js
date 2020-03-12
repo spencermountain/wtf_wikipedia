@@ -206,5 +206,6 @@ inline['str crop'] = inline.trunc
 inline['tooltip'] = inline.abbr
 inline['abbrv'] = inline.abbr
 inline['define'] = inline.abbr
+inline['cvt'] = inline.convert
 
 module.exports = inline
