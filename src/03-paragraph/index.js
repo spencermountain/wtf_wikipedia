@@ -8,7 +8,7 @@ const parse = {
   list: require('../list')
 }
 
-const parseParagraphs = function(wiki) {
+const parseParagraphs = function(wiki, doc) {
   let pList = wiki.split(twoNewLines)
   //don't create empty paragraphs
   pList = pList.filter(p => p && p.trim().length > 0)

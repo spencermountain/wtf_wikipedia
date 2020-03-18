@@ -1,3 +1,5 @@
+const wikis = require('../_data/interwiki')
+
 const defaults = {
   type: 'internal'
 }
@@ -29,6 +31,10 @@ const methods = {
     } else {
       obj.site = this.site()
     }
+    let anchor = this.anchor()
+    if (anchor) {
+      obj.anchor = anchor
+    }
     return obj
   },
   page: function(str) {
@@ -41,7 +47,7 @@ const methods = {
     if (str !== undefined) {
       this.data.anchor = str
     }
-    return this.data.anchor
+    return this.data.anchor || ''
   },
   wiki: function(str) {
     if (str !== undefined) {
@@ -61,10 +67,29 @@ const methods = {
     }
     return this.data.site
   },
+  // create a url for any type of link
   href: function() {
     let type = this.type()
     if (type === 'external') {
       return this.site()
+    }
+    if (type === 'interwiki') {
+      let url = wikis[this.wiki()] || 'https://en.wikipedia.org/wiki/$1'
+      let page = this.page()
+      page = page.replace(/ /g, '_')
+      page = encodeURIComponent(page)
+      url = url.replace(/\$1/g, page)
+      if (this.anchor()) {
+        url += '#' + this.anchor()
+      }
+      return url
+    }
+    if (type === 'internal') {
+      let url = ''
+      if (this.anchor()) {
+        url += '#' + this.anchor()
+      }
+      return url
     }
   }
 }

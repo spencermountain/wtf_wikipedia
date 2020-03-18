@@ -1,18 +1,19 @@
 ---
 
-<!-- #### 8.0.0
+<!-- #### [unreleased]
 * lowercase/normalize table headers
-* date templates response format
-* .keyValue() should return page title if exists, instead of text
-* return country name for `{{BAN}}` etc templates -->
+-->
 
-### [unreleased]
+### 9.0.0 
 
 - support `<noinclude>`
 - add `.url()` and `.language()` methods
 - - support setters on Link methods
 - - add `Link.href()` method
 
+- `.categories()` return `Category` objects
+- - keep `Category:` prefix on categories
+- 
 ### 8.0.0
 
 - [breaking] move `.html()`, `.latex()`, and `.markdown()` to [their](https://github.com/spencermountain/wtf-plugin-html) [respective](https://github.com/spencermountain/wtf-plugin-latex) [plugins](https://github.com/spencermountain/wtf-plugin-markdown)

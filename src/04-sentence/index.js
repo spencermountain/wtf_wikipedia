@@ -52,7 +52,6 @@ const addSentences = function(wiki, data) {
 }
 
 module.exports = {
-  parseSentences: parseSentences,
   oneSentence: oneSentence,
   addSentences: addSentences
 }
