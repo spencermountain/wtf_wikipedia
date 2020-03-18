@@ -16,29 +16,27 @@ const whichHeadings = function(tmpl) {
   return headings
 }
 
-const parseMlb = function(wiki, section) {
-  wiki = wiki.replace(
-    /\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi,
-    tmpl => {
-      let headings = whichHeadings(tmpl)
-      tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
-      tmpl = tmpl.replace(/\{\{mlb game log (section|month) end\}\}/i, '')
-      let headers = '! ' + headings.join(' !! ')
-      let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
-      let rows = tableParser(table)
-      rows = rows.map(row => {
-        Object.keys(row).forEach(k => {
-          row[k] = row[k].text()
-        })
-        return row
+const parseMlb = function(section) {
+  let wiki = section.wiki
+  wiki = wiki.replace(/\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi, tmpl => {
+    let headings = whichHeadings(tmpl)
+    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
+    tmpl = tmpl.replace(/\{\{mlb game log (section|month) end\}\}/i, '')
+    let headers = '! ' + headings.join(' !! ')
+    let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
+    let rows = tableParser(table)
+    rows = rows.map(row => {
+      Object.keys(row).forEach(k => {
+        row[k] = row[k].text()
       })
-      section.templates.push({
-        template: 'mlb game log section',
-        data: rows
-      })
-      return ''
-    }
-  )
-  return wiki
+      return row
+    })
+    section.templates.push({
+      template: 'mlb game log section',
+      data: rows
+    })
+    return ''
+  })
+  section.wiki = wiki
 }
 module.exports = parseMlb

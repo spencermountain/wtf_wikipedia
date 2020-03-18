@@ -1,7 +1,8 @@
 const parseTemplates = require('../../template')
 //this is a non-traditional template, for some reason
 //https://en.wikipedia.org/wiki/Template:Election_box
-const parseElection = function(wiki, section) {
+const parseElection = function(section) {
+  let wiki = section.wiki
   wiki = wiki.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, tmpl => {
     let data = {
       templates: []
@@ -12,10 +13,7 @@ const parseElection = function(wiki, section) {
     let templates = data.templates.map(t => t.json())
     let start = templates.find(t => t.template === 'election box') || {}
     let candidates = templates.filter(t => t.template === 'election box candidate')
-    let summary =
-      templates.find(
-        t => t.template === 'election box gain' || t.template === 'election box hold'
-      ) || {}
+    let summary = templates.find(t => t.template === 'election box gain' || t.template === 'election box hold') || {}
     if (candidates.length > 0 || summary) {
       section.templates.push({
         template: 'election box',
@@ -27,6 +25,6 @@ const parseElection = function(wiki, section) {
     //remove it all
     return ''
   })
-  return wiki
+  section.wiki = wiki
 }
 module.exports = parseElection

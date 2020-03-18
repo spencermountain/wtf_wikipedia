@@ -8,11 +8,12 @@ const parse = {
   list: require('../list')
 }
 
-const parseParagraphs = function(wiki, doc) {
-  let pList = wiki.split(twoNewLines)
+const parseParagraphs = function(section, doc) {
+  let wiki = section.wiki
+  let paragraphs = wiki.split(twoNewLines)
   //don't create empty paragraphs
-  pList = pList.filter(p => p && p.trim().length > 0)
-  pList = pList.map(str => {
+  paragraphs = paragraphs.filter(p => p && p.trim().length > 0)
+  paragraphs = paragraphs.map(str => {
     let data = {
       lists: [],
       sentences: [],
@@ -28,9 +29,7 @@ const parseParagraphs = function(wiki, doc) {
     parseSentences(str, data)
     return new Paragraph(data)
   })
-  return {
-    paragraphs: pList,
-    wiki: wiki
-  }
+  section.wiki = wiki
+  section.paragraphs = paragraphs
 }
 module.exports = parseParagraphs
