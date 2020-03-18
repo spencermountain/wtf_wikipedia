@@ -16,6 +16,7 @@ const main = function(wiki, options) {
     namespace: options.namespace || options.ns || null,
     type: 'page',
     wiki: wiki || '',
+    categories: [],
     sections: [],
     categories: [],
     coordinates: []
@@ -36,7 +37,7 @@ const main = function(wiki, options) {
   //pull-out [[category:whatevers]]
   parse.categories(doc)
   //parse all the headings, and their texts/sentences
-  doc.sections = parse.section(doc.wiki, doc) || []
+  parse.section(doc) || []
   //all together now
   return new Document(doc)
 }

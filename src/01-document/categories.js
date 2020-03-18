@@ -3,7 +3,6 @@ const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178
 const cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n.categories.join('|') + '):', 'ig')
 
 const parse_categories = function(doc) {
-  doc.categories = []
   let wiki = doc.wiki
   let tmp = wiki.match(cat_reg) //regular links
   if (tmp) {

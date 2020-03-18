@@ -13,16 +13,16 @@ const parse = {
   startEndTemplates: require('./start-to-end')
 }
 
-const oneSection = function(wiki, section, options, doc) {
-  wiki = parse.startEndTemplates(section, wiki, options)
+const oneSection = function(wiki, section, doc) {
+  wiki = parse.startEndTemplates(section, wiki)
   //parse-out the <ref></ref> tags
   wiki = parse.references(wiki, section)
   //parse-out all {{templates}}
-  wiki = parse.templates(wiki, section, options)
+  wiki = parse.templates(wiki, section)
   // //parse the tables
   wiki = parse.table(section, wiki)
   //now parse all double-newlines
-  let res = parse.paragraphs(wiki, options, doc)
+  let res = parse.paragraphs(wiki, doc)
   section.paragraphs = res.paragraphs
   wiki = res.wiki
   section = new Section(section, wiki)
@@ -49,8 +49,8 @@ const removeReferenceSection = function(sections) {
   })
 }
 
-const parseSections = function(wiki, options, doc) {
-  let split = wiki.split(section_reg)
+const parseSections = function(doc) {
+  let split = doc.wiki.split(section_reg)
   let sections = []
   for (let i = 0; i < split.length; i += 2) {
     let heading = split[i - 1] || ''
@@ -69,13 +69,11 @@ const parseSections = function(wiki, options, doc) {
     //figure-out title/depth
     parse.heading(section, heading)
     //parse it up
-    let s = oneSection(content, section, options, doc)
+    let s = oneSection(content, section, doc)
     sections.push(s)
   }
   //remove empty references section
-  sections = removeReferenceSection(sections)
-
-  return sections
+  doc.sections = removeReferenceSection(sections)
 }
 
 module.exports = parseSections
