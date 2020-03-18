@@ -19,9 +19,9 @@ const external_links = function(links, str) {
 const internal_links = function(links, str) {
   //regular links
   str.replace(link_reg, function(_, s, apostrophe) {
-    var txt = null
+    let txt = null
     //make a copy of original
-    var link = s
+    let link = s
     if (s.match(/\|/)) {
       //replacement link [[link|text]]
       s = s.replace(/\[\[(.{2,100}?)\]\](\w{0,10})/g, '$1$2') //remove ['s and keep suffix
@@ -42,7 +42,7 @@ const internal_links = function(links, str) {
       return s
     }
     //remove anchors from end [[toronto#history]]
-    var obj = {
+    let obj = {
       page: link
     }
     obj.page = obj.page.replace(/#(.*)/, (a, b) => {
@@ -51,6 +51,9 @@ const internal_links = function(links, str) {
     })
     //grab any fr:Paris parts
     obj = parse_interwiki(obj)
+    if (obj.wiki) {
+      obj.type = 'interwiki'
+    }
     if (txt !== null && txt !== obj.page) {
       obj.text = txt
     }

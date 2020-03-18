@@ -13,8 +13,8 @@ const doSection = function(options) {
   //make the header
   if (options.headers === true && this.title()) {
     num = 1 + this.depth
-    var vOpen = '\n'
-    var vClose = '}'
+    let vOpen = '\n'
+    let vClose = '}'
     switch (num) {
       case 1:
         vOpen += '\\chapter{'
@@ -70,7 +70,7 @@ const doSection = function(options) {
       .join(' ')
     out += '\n'
   }
-  // var title_tag = ' SECTION depth=' + num + ' - TITLE: ' + section.title + '\n';
+  // let title_tag = ' SECTION depth=' + num + ' - TITLE: ' + section.title + '\n';
   // wrap a section comment
   //out = '\n% BEGIN' + title_tag + out + '\n% END' + title_tag;
   return out

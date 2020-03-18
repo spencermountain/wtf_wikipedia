@@ -2,11 +2,11 @@
 //used to properly root out recursive template calls, [[.. [[...]] ]]
 //basically just adds open tags, and subtracts closing tags
 function find_recursive(opener, closer, text) {
-  var out = []
-  var last = []
+  let out = []
+  let last = []
   const chars = text.split('')
-  var open = 0
-  for (var i = 0; i < chars.length; i++) {
+  let open = 0
+  for (let i = 0; i < chars.length; i++) {
     const c = text[i]
     //increment open tag
     if (c === opener) {
@@ -27,9 +27,9 @@ function find_recursive(opener, closer, text) {
     last.push(c)
     if (open === 0 && last.length > 0) {
       //first, fix botched parse
-      var open_count = 0
-      var close_count = 0
-      for (var j = 0; j < last.length; j++) {
+      let open_count = 0
+      let close_count = 0
+      for (let j = 0; j < last.length; j++) {
         if (last[j] === opener) {
           open_count++
         } else if (last[j] === closer) {

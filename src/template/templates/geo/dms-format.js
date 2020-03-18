@@ -6,13 +6,13 @@
 //must have N/S/E/W as last thing
 function parseDms(arr) {
   let hemisphere = arr.pop()
-  var degrees = Number(arr[0] || 0)
-  var minutes = Number(arr[1] || 0)
-  var seconds = Number(arr[2] || 0)
+  let degrees = Number(arr[0] || 0)
+  let minutes = Number(arr[1] || 0)
+  let seconds = Number(arr[2] || 0)
   if (typeof hemisphere !== 'string' || isNaN(degrees)) {
     return null
   }
-  var sign = 1
+  let sign = 1
   if (/[SW]/i.test(hemisphere)) {
     sign = -1
   }

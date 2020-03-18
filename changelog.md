@@ -10,6 +10,8 @@
 
 - support `<noinclude>`
 - add `.url()` and `.language()` methods
+- - support setters on Link methods
+- - add `Link.href()` method
 
 ### 8.0.0
 

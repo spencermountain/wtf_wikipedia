@@ -14,8 +14,8 @@ const isList = function(line) {
 const cleanList = function(list) {
   let number = 1
   list = list.filter(l => l)
-  for (var i = 0; i < list.length; i++) {
-    var line = list[i]
+  for (let i = 0; i < list.length; i++) {
+    let line = list[i]
     //add # numberings formatting
     if (line.match(number_reg)) {
       line = line.replace(/^ ?#*/, number + ') ')

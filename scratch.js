@@ -9,13 +9,14 @@ wtf.extend(require('./plugins/image/src'))
 // let str = `hello [[bs:cool]]`
 // console.log(wtf(str).text())
 
-// let str = `majority of [[music]], [[film]]s, [[book]]s`
-// let doc = wtf(str)
-// console.log(doc.links().map(l => l.json()))
+// const doc = wtf('hello [[fr:world]]')
+// const doc = wtf('hello [[world]]')
 
-// let str = `infront {{math| missing {{=}} text}} behind`
-// let doc = wtf(str)
-// console.log(doc.text())
-// infront behind
-
-console.log(wtf(`Boasting over {{cvt|1,000,000|ha|acre}} of [[Parks in Sydney|nature reserves and parks]]`).text())
+// wtf.fetch('State (website)').then(doc => {
+//   let links = doc.links()
+//   console.log(links.map(l => l.json()))
+// })
+const doc = wtf('hello [http://cool.com ext] and [[int]] and [[fr:french]]')
+// const doc = wtf(`
+// *[https://twitter.com/state  @State]`)
+console.log(doc.links().map(l => l.json()))
