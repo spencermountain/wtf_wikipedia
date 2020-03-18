@@ -1,4 +1,4 @@
-const parseSentence = require('../../04-sentence/').oneSentence
+const parseSentence = require('../../04-sentence/').fromText
 //xml <math>y=mx+b</math> support
 //https://en.wikipedia.org/wiki/Help:Displaying_a_formula
 const parseMath = function(section) {

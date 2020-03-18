@@ -1,7 +1,7 @@
 const i18n = require('../_data/i18n')
 const Image = require('./Image')
 const parseTemplate = require('../template/_parsers/parse')
-const parseSentence = require('../04-sentence').oneSentence
+const parseSentence = require('../04-sentence').fromText
 const nested_find = require('./nested_find')
 //regexes:
 const isFile = new RegExp('(' + i18n.images.join('|') + '):', 'i')

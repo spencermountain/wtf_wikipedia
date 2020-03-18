@@ -1,6 +1,6 @@
 const Paragraph = require('./Paragraph')
 const find_recursive = require('../image/nested_find')
-const parseSentences = require('../04-sentence').addSentences
+const parseSentences = require('../04-sentence').byParagraph
 
 const twoNewLines = /\r?\n\r?\n/
 const parse = {

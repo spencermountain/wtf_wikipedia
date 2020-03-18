@@ -2,7 +2,6 @@ const helpers = require('../_lib/helpers')
 const parseLinks = require('../link')
 const parseFmt = require('./formatting')
 const Sentence = require('./Sentence')
-// const templates = require('./templates');
 const sentenceParser = require('./parse')
 
 function postprocess(line) {
@@ -16,41 +15,29 @@ function postprocess(line) {
   return line
 }
 
-function oneSentence(str) {
+function fromText(str) {
   let obj = {}
   //pull-out the [[links]]
   str = parseLinks(str, obj)
   obj.text = postprocess(str)
-
-  // let links = parseLinks(str)
-  // if (links) {
-  // obj.links = links
-  // }
   //pull-out the bolds and ''italics''
   obj = parseFmt(obj)
   //pull-out things like {{start date|...}}
-  // obj = templates(obj);
   return new Sentence(obj)
 }
 
-//turn a text into an array of sentence objects
-const parseSentences = function(wiki) {
-  let sentences = sentenceParser(wiki)
-  sentences = sentences.map(oneSentence)
-
+//used for consistency with other class-definitions
+const byParagraph = function(paragraph) {
+  let sentences = sentenceParser(paragraph.wiki)
+  sentences = sentences.map(fromText)
   //remove :indented first line, as it is often a disambiguation
   if (sentences[0] && sentences[0].text() && sentences[0].text()[0] === ':') {
     sentences = sentences.slice(1)
   }
-  return sentences
-}
-
-//used for consistency with other class-definitions
-const addSentences = function(paragraph) {
-  paragraph.sentences = parseSentences(paragraph.wiki)
+  paragraph.sentences = sentences
 }
 
 module.exports = {
-  oneSentence: oneSentence,
-  addSentences: addSentences
+  fromText: fromText,
+  byParagraph: byParagraph
 }

@@ -1,4 +1,4 @@
-const parseSentence = require('../../04-sentence/').oneSentence
+const parseSentence = require('../../04-sentence/').fromText
 const findRows = require('./_findRows')
 const handleSpans = require('./_spans')
 

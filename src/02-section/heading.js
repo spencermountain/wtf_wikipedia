@@ -1,5 +1,5 @@
 const fns = require('../_lib/helpers')
-const parseSentence = require('../04-sentence/').oneSentence
+const parseSentence = require('../04-sentence/').fromText
 const parseReferences = require('../reference/')
 const heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/
 

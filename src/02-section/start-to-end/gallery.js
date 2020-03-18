@@ -1,4 +1,4 @@
-const parseSentence = require('../../04-sentence/').oneSentence
+const parseSentence = require('../../04-sentence/').fromText
 const Image = require('../../image/Image')
 //okay, <gallery> is a xml-tag, with newline-seperated data, somehow pivoted by '|'...
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag

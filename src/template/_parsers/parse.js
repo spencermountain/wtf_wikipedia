@@ -1,7 +1,7 @@
 //remove the top/bottom off the template
 const strip = require('./_strip')
 const fmtName = require('./_fmtName')
-const parseSentence = require('../../04-sentence').oneSentence
+const parseSentence = require('../../04-sentence').fromText
 const pipeSplitter = require('./01-pipe-splitter')
 const keyMaker = require('./02-keyMaker')
 const cleanup = require('./03-cleanup')
