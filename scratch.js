@@ -19,12 +19,9 @@ var wtf = require('./src/index')
 // links.map(l => l.json())
 // })
 
-let str = `before [[Datei:Cool.jpg|mini|Michael Jackson in [[link]] text]] after`
-let doc = wtf(str)
-// const doc = wtf(` *
-//   [[one]] *
-//   [[two]] *
-//   [[three]]`)
+// let str = `before [[Datei:Cool.jpg|mini|Michael Jackson in [[link]] text]] after`
+// let doc = wtf(str)
+const doc = wtf(` that cat is [[a]] cool dude`)
 // console.log(doc.data)
 // console.log(doc.data.sections)
 console.log(doc.text())

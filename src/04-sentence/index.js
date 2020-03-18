@@ -15,11 +15,14 @@ function postprocess(line) {
   return line
 }
 
+// returns one sentence object
 function fromText(str) {
-  let obj = {}
+  let obj = {
+    text: str
+  }
   //pull-out the [[links]]
-  str = parseLinks(str, obj)
-  obj.text = postprocess(str)
+  parseLinks(obj)
+  obj.text = postprocess(obj.text)
   //pull-out the bolds and ''italics''
   obj = parseFmt(obj)
   //pull-out things like {{start date|...}}
@@ -28,7 +31,9 @@ function fromText(str) {
 
 //used for consistency with other class-definitions
 const byParagraph = function(paragraph) {
+  // array of texts
   let sentences = sentenceParser(paragraph.wiki)
+  // sentence objects
   sentences = sentences.map(fromText)
   //remove :indented first line, as it is often a disambiguation
   if (sentences[0] && sentences[0].text() && sentences[0].text()[0] === ':') {

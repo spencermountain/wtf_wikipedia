@@ -18,10 +18,11 @@ const removeLinks = function(line) {
   return line
 }
 
-const getLinks = function(wiki, data) {
+const getLinks = function(data) {
+  let wiki = data.text
   let links = parseLinks(wiki) || []
   data.links = links.map(link => new Link(link))
   wiki = removeLinks(wiki)
-  return wiki
+  data.text = wiki
 }
 module.exports = getLinks
