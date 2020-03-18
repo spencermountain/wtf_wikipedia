@@ -1,5 +1,5 @@
 const Paragraph = require('./Paragraph')
-const find_recursive = require('../_lib/recursive_match')
+const find_recursive = require('../image/nested_find')
 const parseSentences = require('../04-sentence').addSentences
 
 const twoNewLines = /\r?\n\r?\n/
@@ -14,20 +14,19 @@ const parseParagraphs = function(section, doc) {
   //don't create empty paragraphs
   paragraphs = paragraphs.filter(p => p && p.trim().length > 0)
   paragraphs = paragraphs.map(str => {
-    let data = {
+    let paragraph = {
+      wiki: str,
       lists: [],
       sentences: [],
       images: []
     }
     //parse the lists
-    str = parse.list(str, data)
-    //parse+remove scary '[[ [[]] ]]' stuff
-    let matches = find_recursive('[', ']', str)
+    parse.list(paragraph)
     // parse images
-    str = parse.image(matches, data, str)
+    parse.image(paragraph)
     //parse the sentences
-    parseSentences(str, data)
-    return new Paragraph(data)
+    parseSentences(paragraph)
+    return new Paragraph(paragraph)
   })
   section.wiki = wiki
   section.paragraphs = paragraphs

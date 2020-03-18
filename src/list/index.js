@@ -44,7 +44,8 @@ const grabList = function(lines, i) {
   return sub
 }
 
-const parseList = function(wiki, data) {
+const parseList = function(paragraph) {
+  let wiki = paragraph.wiki
   let lines = wiki.split(/\n/g)
   // lines = lines.filter(l => has_word.test(l));
   let lists = []
@@ -60,8 +61,7 @@ const parseList = function(wiki, data) {
       theRest.push(lines[i])
     }
   }
-  data.lists = lists.map(l => new List(l))
-  wiki = theRest.join('\n')
-  return wiki
+  paragraph.lists = lists.map(l => new List(l))
+  paragraph.wiki = theRest.join('\n')
 }
 module.exports = parseList

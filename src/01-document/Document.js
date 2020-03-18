@@ -225,6 +225,7 @@ let plurals = [
   'references',
   'coordinates',
   'tables',
+  'lists',
   'links',
   'images',
   'categories'

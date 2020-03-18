@@ -1,7 +1,9 @@
 //find all the pairs of '[[...[[..]]...]]' in the text
 //used to properly root out recursive template calls, [[.. [[...]] ]]
 //basically just adds open tags, and subtracts closing tags
-function find_recursive(opener, closer, text) {
+const opener = '['
+const closer = ']'
+function nested_find(text) {
   let out = []
   let last = []
   const chars = text.split('')
@@ -47,4 +49,4 @@ function find_recursive(opener, closer, text) {
   }
   return out
 }
-module.exports = find_recursive
+module.exports = nested_find

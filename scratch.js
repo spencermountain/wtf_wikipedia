@@ -1,6 +1,6 @@
 var wtf = require('./src/index')
 // var wtf = require('./builds/wtf_wikipedia')
-wtf.extend(require('./plugins/image/src'))
+// wtf.extend(require('./plugins/image/src'))
 
 // let txt = require('fs')
 //   .readFileSync('/Users/spencer/mountain/wtf_wikipedia/tests/cache/royal_cinema.txt')
@@ -19,16 +19,16 @@ wtf.extend(require('./plugins/image/src'))
 // links.map(l => l.json())
 // })
 
-const doc = wtf(`
-==One==
-===Two===
-
-== Three<ref>Esaach: http://www.esaach.org.za/index.php?title=Behr,_Mark</ref> ==
-
-`)
+let str = `before [[Datei:Cool.jpg|mini|Michael Jackson in [[link]] text]] after`
+let doc = wtf(str)
+// const doc = wtf(` *
+//   [[one]] *
+//   [[two]] *
+//   [[three]]`)
 // console.log(doc.data)
-console.log(doc.data.sections)
-console.log(doc.sections('three'))
+// console.log(doc.data.sections)
+console.log(doc.text())
+// console.log(doc.list().links())
 // const doc = wtf(`
 // *[https://twitter.com/state  @State]`)
 // console.log(doc.links().map(l => l.href()))

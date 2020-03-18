@@ -46,9 +46,8 @@ const parseSentences = function(wiki) {
 }
 
 //used for consistency with other class-definitions
-const addSentences = function(wiki, data) {
-  data.sentences = parseSentences(wiki)
-  return wiki
+const addSentences = function(paragraph) {
+  paragraph.sentences = parseSentences(paragraph.wiki)
 }
 
 module.exports = {
