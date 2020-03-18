@@ -5,10 +5,11 @@ const parseElection = function(section) {
   let wiki = section.wiki
   wiki = wiki.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, tmpl => {
     let data = {
+      wiki: tmpl,
       templates: []
     }
     //put it through our full template parser..
-    parseTemplates(tmpl, data, {})
+    parseTemplates(data)
     //okay, pull it apart into something sensible..
     let templates = data.templates.map(t => t.json())
     let start = templates.find(t => t.template === 'election box') || {}

@@ -23,9 +23,12 @@ const doc = wtf(`
 ==One==
 ===Two===
 
+== Three<ref>Esaach: http://www.esaach.org.za/index.php?title=Behr,_Mark</ref> ==
+
 `)
 // console.log(doc.data)
-console.log(doc.sections())
+console.log(doc.data.sections)
+console.log(doc.sections('three'))
 // const doc = wtf(`
 // *[https://twitter.com/state  @State]`)
 // console.log(doc.links().map(l => l.href()))
