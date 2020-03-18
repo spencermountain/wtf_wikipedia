@@ -21,11 +21,16 @@ var wtf = require('./src/index')
 
 // let str = `before [[Datei:Cool.jpg|mini|Michael Jackson in [[link]] text]] after`
 // let doc = wtf(str)
-const doc = wtf(` that cat is [[a]] cool dude`)
-// console.log(doc.data)
-// console.log(doc.data.sections)
-console.log(doc.text())
-// console.log(doc.list().links())
-// const doc = wtf(`
-// *[https://twitter.com/state  @State]`)
-// console.log(doc.links().map(l => l.href()))
+// const doc = wtf(` that cat is [http://cool.com a] cool dude`)
+
+let str = `{{Infobox software
+  | name = Node.js
+  | logo = [[File:Node.js logo.svg|frameless]]
+  | author = [[Ryan Dahl]]
+  | developer = Various
+   }}
+`
+let doc = wtf(str)
+let obj = doc.infobox(0).keyValue()
+console.log(obj)
+console.log(doc.image().json())

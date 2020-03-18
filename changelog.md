@@ -13,7 +13,9 @@
 
 - `.categories()` return `Category` objects
 - - keep `Category:` prefix on categories
-- 
+- replicate wikipedia behaviour for apostrophe-s after link
+  
+  
 ### 8.0.0
 
 - [breaking] move `.html()`, `.latex()`, and `.markdown()` to [their](https://github.com/spencermountain/wtf-plugin-html) [respective](https://github.com/spencermountain/wtf-plugin-latex) [plugins](https://github.com/spencermountain/wtf-plugin-markdown)
