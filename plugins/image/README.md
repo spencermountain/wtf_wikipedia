@@ -19,7 +19,7 @@
   <code>npm install wtf-plugin-image</code>
 </div>
 
-Some additional methods for Images
+Some additional methods for using and rendering images in wtf_wikipedia
 
 ```js
 const wtf = require('wtf_wikipedia')

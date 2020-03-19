@@ -10,9 +10,13 @@ const isArray = function(arr) {
   return Object.prototype.toString.call(arr) === '[object Array]'
 }
 
+// const fs = require('fs') //TODO: remove
+
 //this gets all the {{template}} strings and decides how to parse them
 const parseTemplate = function(tmpl, list) {
   let name = tmpl.name
+
+  // console.log(name)
   if (ignore.hasOwnProperty(name) === true) {
     return ''
   }
@@ -56,6 +60,9 @@ const parseTemplate = function(tmpl, list) {
       return templates[name](tmpl.body, list)
     }
   }
+
+  // fs.appendFileSync('/Users/spencer/Desktop/unknown-templates.tsv', name + '\n')
+
   // unknown template, try to parse it
   let parsed = parse(tmpl.body)
   if (list && Object.keys(parsed).length > 0) {

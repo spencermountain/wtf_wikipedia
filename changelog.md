@@ -2,17 +2,16 @@
 
 <!-- #### [unreleased]
 * lowercase/normalize table headers
+- `.categories()` return `Category` objects
+- - keep `Category:` prefix on categories
 -->
 
-### 9.0.0 
-
+### 8.1.0 
 - support `<noinclude>`
 - add `.url()` and `.language()` methods
 - - support setters on Link methods
 - - add `Link.href()` method
-
-- `.categories()` return `Category` objects
-- - keep `Category:` prefix on categories
+- - support proper urls for interwiki links
 - replicate wikipedia behaviour for apostrophe-s after link
   
   

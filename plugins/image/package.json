@@ -6,7 +6,7 @@
   "unpkg": "./builds/wtf-plugin-image.min.js",
   "module": "./builds/wtf-plugin-image.mjs",
   "author": "Spencer Kelly (spencermountain)",
-  "homepage": "https://github.com/spencermountain/wtf_wikipedia#readme",
+  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/image#readme",
   "scripts": {
     "watch": "amble ./scratch.js",
     "test": "tape ./tests/**/*.test.js | tap-dancer",
@@ -27,7 +27,7 @@
     "jshashes": "^1.0.8"
   },
   "peerDependencies": {
-    "wtf_wikipedia": "^7.8.1"
+    "wtf_wikipedia": "^8.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.8.7",
