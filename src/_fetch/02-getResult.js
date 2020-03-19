@@ -1,5 +1,6 @@
 //this data-format from mediawiki api is nutso
 const getResult = function(data, options) {
+  options = options || {}
   let pages = Object.keys(data.query.pages)
   let docs = pages.map(id => {
     let page = data.query.pages[id] || {}

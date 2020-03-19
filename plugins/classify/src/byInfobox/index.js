@@ -10,7 +10,6 @@ const byInfobox = function(doc) {
     type = type.replace(/^(category|categorie|kategori): ?/i, '')
     type = type.replace(/ /g, '_')
     type = type.trim()
-    console.log(type)
 
     if (mapping.hasOwnProperty(type)) {
       return mapping[type]

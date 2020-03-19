@@ -2,6 +2,8 @@ const patterns = require('./patterns')
 
 const mapping = {
   'living people': 'Person',
+  'date of birth unknown': 'Person',
+  'possibly living people': 'Person',
   'american films': 'CreativeWork/Film',
   'english-language films': 'CreativeWork/Film',
   'grammy award winners': 'Organization/MusicalGroup',
@@ -11,7 +13,6 @@ const mapping = {
 }
 
 const byPattern = function(cat) {
-  console.log(cat)
   let types = Object.keys(patterns)
   for (let i = 0; i < types.length; i++) {
     const key = types[i]

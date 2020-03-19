@@ -22,6 +22,7 @@ let mapping = {
   reception: 'CreativeWork',
   'critical reception': 'CreativeWork',
   'critical response': 'CreativeWork',
+  'track listing': 'CreativeWork/Album',
   // org
   founding: 'Organization',
   founders: 'Organization',

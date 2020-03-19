@@ -391,7 +391,7 @@ module.exports = {
   venue: 'Place', //6
   vg: '', //3
   vg_series: '', //4
-  video_game: 'Organization', //81
+  video_game: 'CreativeWork', //81
   volleyball_biography: 'Person/Athlete', //1
   volleyball_player: 'Person/Athlete', //4
   waterfall: 'Place', //4
