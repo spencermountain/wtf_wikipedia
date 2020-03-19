@@ -3,7 +3,8 @@ const tree = {
     Athlete: true,
     Artist: true,
     Politician: true,
-    Scientist: true
+    Scientist: true,
+    Actor: true
   },
   Place: {
     Country: true,

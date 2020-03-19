@@ -1,13 +1,26 @@
 const patterns = require('./patterns')
 
 const mapping = {
-  living_people: 'Person'
+  'living people': 'Person',
+  'american films': 'CreativeWork/Film',
+  'english-language films': 'CreativeWork/Film',
+  'grammy award winners': 'Organization/MusicalGroup',
+  'musical quartets': 'Organization/MusicalGroup',
+  'musical duos': 'Organization/MusicalGroup',
+  'musical trios': 'Organization/MusicalGroup'
 }
 
 const byPattern = function(cat) {
+  console.log(cat)
   let types = Object.keys(patterns)
   for (let i = 0; i < types.length; i++) {
-    const element = types[i]
+    const key = types[i]
+    for (let o = 0; o < patterns[key].length; o++) {
+      const reg = patterns[key][o]
+      if (reg.test(cat) === true) {
+        return key
+      }
+    }
   }
 }
 
@@ -17,7 +30,7 @@ const byCategory = function(doc) {
   cats = cats.map(cat => {
     cat = cat.toLowerCase()
     cat = cat.replace(/^(category|categorie|kategori): ?/i, '')
-    cat = cat.replace(/ /g, '_')
+    cat = cat.replace(/_/g, ' ')
     return cat.trim()
   })
   // loop through each
@@ -33,5 +46,6 @@ const byCategory = function(doc) {
       return found
     }
   }
+  return null
 }
 module.exports = byCategory

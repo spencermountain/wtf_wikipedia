@@ -122,7 +122,7 @@ module.exports = {
   figure_skater: 'Person/Athlete', //3
   fila_wrestling_event: 'Event/SportsEvent', //1
   file_format: 'Thing', //3
-  film: 'CreativeWork', //183
+  film: 'CreativeWork/Film', //183
   film_awards: 'Organization', //1
   film_festival: 'Organization', //2
   food: 'Thing', //3
@@ -224,7 +224,7 @@ module.exports = {
   music_festival: 'Event', //5
   music_genre: 'Thing', //5
   musical: 'CreativeWork', //3
-  musical_artist: 'Person/Artist', //226
+  musical_artist: 'Organization/MusicalGroup', //226
   musical_composition: 'CreativeWork', //7
   nascar_driver: 'Person', //3
   nascar_race_report: '', //1
