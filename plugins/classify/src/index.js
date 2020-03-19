@@ -10,11 +10,13 @@ const plugin = function(models) {
 
     //look for 'infobox person', etc
     found = byInfobox(doc)
+    console.log('Infobox: ', found)
     if (types[found]) {
       return found
     }
     //look for 'Category: 1992 Births', etc
     found = byCategory(doc)
+    console.log('Category: ', found)
     if (types[found]) {
       return found
     }

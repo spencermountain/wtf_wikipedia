@@ -1,13 +1,15 @@
 var wtf = require('./src/index')
 // var wtf = require('./builds/wtf_wikipedia')
 wtf.extend(require('./plugins/classify/src'))
+wtf.extend(require('./plugins/summary/src'))
 
 // let txt = require('fs')
 //   .readFileSync('/Users/spencer/mountain/wtf_wikipedia/tests/cache/royal_cinema.txt')
 //   .toString()
 
-wtf.fetch('Anne_van_Aaken').then(doc => {
-  console.log(doc.classify())
+wtf.fetch('Wayne Gretzky').then(doc => {
+  console.log(doc.summary({ article: false }))
+  // console.log(doc.classify())
 })
 
 /*

@@ -23,7 +23,9 @@
     "singleQuote": true,
     "printWidth": 100
   },
-  "dependencies": {},
+  "dependencies": {
+    "compromise": "^13.1.1"
+  },
   "peerDependencies": {
     "wtf_wikipedia": "^8.0.0"
   },

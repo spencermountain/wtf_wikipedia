@@ -21,16 +21,45 @@
 
 Tries to generate a small fragment of text (or 'clause') that describes a wikipedia article in english.
 
-Generally, it grabs and processes the first-sentence of a wikipedia article, but it may also fallback to other data.
+The process:
+
+- look for a `{{short description}}` template
+- grab and process the first-sentence of a wikipedi article
+- build a template from `wtf-plugin-classify`
+
+Most-often it will find something of a reasonable length in the first-sentence.
 
 ```js
 const wtf = require('wtf_wikipedia')
 wtf.extend(require('wtf-plugin-summary'))
-
-wtf.fetch('Toronto Raptors', 'en').then(doc => {
-  let txt = doc.summary()
+;(async () => {
+  await wtf.fetch('Toronto Raptors').summary()
   // 'a Canadian professional basketball team'
-})
+  await wtf.fetch('Toronto Raptors').article()
+  // 'they'
+  await wtf.fetch('Toronto Raptors').tense()
+  // 'present'
+})()
+```
+
+The idea is that every output is a short, uncomplicated 'is-a' text, and can be treated grammatically like:
+
+```js
+let copula = doc.tense() === 'past' ? 'was' : 'is'
+return `${doc.title()} ${copula} ${doc.summary()}.`
+// 'Wayne Gretzky is a Canadian ice hockey player.'
+```
+
+this plugin uses [compromise](http://compromise.cool) for working with plaintext.
+
+### Options
+
+```js
+let opts = {
+  article: false //remove leading 'a', 'the', etc
+}
+await wtf.fetch('Toronto Raptors').summary(opts)
+// 'Canadian professional basketball team'
 ```
 
 work-in-progress

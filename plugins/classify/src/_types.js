@@ -8,7 +8,8 @@ const tree = {
   Place: {
     Country: true,
     City: true,
-    Building: true
+    Structure: true,
+    BodyOfWater: true
   },
   Organization: {
     Company: true,
@@ -24,11 +25,11 @@ const tree = {
   Event: {
     Election: true,
     Disaster: true,
+    SportsEvent: true,
     War: true
   },
   Thing: {
     Product: true,
-    Organism: true,
     Software: true,
     Character: true
   }
