@@ -23,5 +23,6 @@ list = list.reduce((h, str) => {
   h[str] = require(`./data/${str}`)
   return h
 }, {})
-console.log(list)
-module.exports = list
+
+const plugin = function(models, templates) {}
+module.exports = plugin
