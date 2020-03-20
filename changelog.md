@@ -6,15 +6,16 @@
 - - keep `Category:` prefix on categories
 -->
 
-### 8.1.0 
+### 8.1.0
+
+- [major] fix Link json object in `.json()` result
 - support `<noinclude>`
 - add `.url()` and `.language()` methods
 - - support setters on Link methods
 - - add `Link.href()` method
 - - support proper urls for interwiki links
 - replicate wikipedia behaviour for apostrophe-s after link
-  
-  
+
 ### 8.0.0
 
 - [breaking] move `.html()`, `.latex()`, and `.markdown()` to [their](https://github.com/spencermountain/wtf-plugin-html) [respective](https://github.com/spencermountain/wtf-plugin-latex) [plugins](https://github.com/spencermountain/wtf-plugin-markdown)

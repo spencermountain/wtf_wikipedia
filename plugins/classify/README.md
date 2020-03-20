@@ -23,11 +23,11 @@ This plugin uses a (large) number of heuristics to classify a wikipedia article 
 
 Things it looks at:
 
-- infoboxes (like `{{Infobox Person ...}}`)
-- categories (like `[[Category:Canadian Saxophone Players`)
-- templates (like `{{Liechtenstein-sport-bio-stub}}`)
-- sections (like `'==Early life==`)
-- titles (like `John Smith (poet)`)
+- infoboxes (like **{{Infobox Person ...}}**)
+- categories (like **'[[Category:Canadian Saxophone Players]]'**)
+- templates (like **{{Liechtenstein-sport-bio-stub}}**)
+- sections (like **'==Early life=='**)
+- titles (like **'John Smith (poet)'**)
 
 ```js
 const wtf = require('wtf_wikipedia')

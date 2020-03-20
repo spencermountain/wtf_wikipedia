@@ -99,6 +99,38 @@ doc.images(0).json()
 // {url: https://upload.wikimedia.org..../300px-Duveneck_Whistling_Boy.jpg', file: 'Image:Duveneck Whistling Boy.jpg' }
 ```
 
+the default json output is pretty verbose. You can turn-off parts with `.json({sentences:false})`.
+
+```yaml
+---
+Doc:
+  title: ''
+  pageID: ''
+  categories: []
+  sections:
+    - title: ''
+      depth: 0
+      paragraphs:
+        - sentences:
+            - text: ''
+              links:
+                - type: ''
+                  text: ''
+                  page: ''
+              formatting:
+                bold: []
+                italic: []
+      templates:
+        - template: ''
+          data: []
+      infoboxes:
+        - name: ''
+          data: []
+      references:
+        - type: ''
+          title: ''
+```
+
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
