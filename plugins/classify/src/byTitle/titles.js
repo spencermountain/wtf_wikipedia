@@ -127,5 +127,6 @@ module.exports = {
   colombia: 'Place',
   israel: 'Place',
   washington: 'Place',
-  edmonton: 'Place'
+  edmonton: 'Place',
+  plant: 'Thing/Organism'
 }

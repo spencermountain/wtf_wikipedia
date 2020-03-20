@@ -17,6 +17,7 @@ const patterns = {
   'Person/Athlete': [/sportspeople from ./, /(footballers|cricketers|defencemen|cyclists)/],
   'Person/Actor': [/actresses/, /actors from ./, /actor stubs$/],
   'Person/Artist': [/musicians from ./, /(singers|songwriters|painters|poets)/, /novelists from ./],
+  // 'Person/Scientist': [(astronomers|physicists|biologists|chemists)],
   Person: [
     /[0-9]{4} births/,
     /[0-9]{4} deaths/,
