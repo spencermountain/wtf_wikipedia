@@ -36,6 +36,7 @@
   <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
   <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
   it is <a href="https://osr.cs.fau.de/wp-content/uploads/2017/09/wikitext-parser.pdf">very</a>, <a href="https://utcc.utoronto.ca/~cks/space/blog/programming/ParsingWikitext">very</a> hard.
+  <span>we're <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">not</a> <a href="https://twitter.com/ftrain/status/1036060636587978753">joking</a>.</span>
 </div>
 
 <!-- einstein sentence -->
@@ -44,7 +45,6 @@
 </div>
 
 <div align="center">
-<div>we're <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">not</a> <a href="https://twitter.com/ftrain/status/1036060636587978753">joking</a>!</div>
 <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 </div>
 <!-- spacer -->
@@ -87,29 +87,20 @@ get json:
 ```javascript
 let doc = await wtf.fetch('Whistling')
 
-let json = doc.json()
-json.categories
-//['Oral communication', 'Vocal music', 'Vocal skills']
-
-let sec = doc.sections('see also')
-sec.links().map(l => l.json())
-//[{ page: 'Slide whistle' }, { page: 'Hand flute' }, { page: 'Bird vocalization' }...]
-
-doc.images(0).json()
-// {url: https://upload.wikimedia.org..../300px-Duveneck_Whistling_Boy.jpg', file: 'Image:Duveneck Whistling Boy.jpg' }
+doc.json()
+//{ categories:['Oral communication', 'Vocal music', 'Vocal skills'] ...}
 ```
 
-the default json output is pretty verbose. You can turn-off parts with `.json({sentences:false})`.
+the default json output is pretty verbose:
 
-```yaml
----
+```coffee
 Doc:
   title: ''
   pageID: ''
-  categories: []
+  categories: ['']
   sections:
     - title: ''
-      depth: 0
+      depth: 1
       paragraphs:
         - sentences:
             - text: ''
@@ -118,17 +109,26 @@ Doc:
                   text: ''
                   page: ''
               formatting:
-                bold: []
-                italic: []
+                bold: ['']
+                italic: ['']
       templates:
         - template: ''
-          data: []
+          prop: ''
       infoboxes:
         - name: ''
-          data: []
+          prop: ''
       references:
         - type: ''
           title: ''
+```
+
+You can make your own by calling `.json()` anywhere:
+
+```js
+doc.links().map(link => link.json())
+//[{page:'Theatrical superstitions', text: 'supersitions'}]
+doc.images(0).json()
+// {file: 'Image:Duveneck Whistling Boy.jpg' ... }
 ```
 
 <!-- spacer -->
