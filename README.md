@@ -64,27 +64,39 @@ wtf.fetch('Toronto Raptors').then(doc => {
   let coach = doc.infobox().get('coach')
   coach.text() //'Nick Nurse'
 
-  doc.sentences(0).text() //'The Toronto Raptors are a Canadian professional basketball team based in Toronto.'
+  doc.sentences(0).text() //'The Toronto Raptors are a Canadian professional basketball team ...'
 })
 ```
 
-<!-- spacer -->
-<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+### .text():
 
-get plain-text:
+get plaintext output of a document:
 
 ```js
-let str = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.`
-wtf(str).text()
-//"Boston's baseball field has a 37ft wall."
+let doc = await wtf.fetch('Glastonbury', 'en')
+doc.text()
+// 'Glastonbury is a town and civil parish in Somerset, England, situated at a dry point on the low-lying Somerset Levels, ...'
 ```
 
-<!-- spacer -->
-<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+```js
+let str = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall. <ref>Field of our Fathers: By Richard Johnson</ref>
+`
+wtf(str).text()
+// "Boston's baseball field has a 37ft wall."
+```
 
-get json:
+<div align="right">
+  <a href="https://docs.compromise.cool/wtf-text">text docs</a>
+</div>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
+</div>
 
-```javascript
+### .json():
+
+get structured data from a wikipedia page:
+
+```js
 let doc = await wtf.fetch('Whistling')
 
 doc.json()
@@ -127,9 +139,17 @@ You can make your own by calling `.json()` anywhere:
 ```js
 doc.links().map(link => link.json())
 //[{page:'Theatrical superstitions', text: 'supersitions'}]
+
 doc.images(0).json()
 // {file: 'Image:Duveneck Whistling Boy.jpg' ... }
 ```
+
+<div align="right">
+  <a href="https://docs.compromise.cool/wtf-json">json docs</a>
+</div>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>

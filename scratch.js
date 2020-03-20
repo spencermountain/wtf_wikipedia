@@ -31,66 +31,14 @@ arr.forEach(file => {
   console.log(res)
 })
 
-wtf.fetch('Toronto Raptors', 'en').then(doc => {
+wtf.fetch('Glastonbury', 'fr').then(doc => {
   // doc.classify()
-  console.log(doc.json().sections[0].paragraphs[0].sentences[0].links[0])
+  console.log(doc.text())
   //{
   //  type: 'Organization/SportsTeam',
   //  confidence: 0.9,
   //}
 })
-
-let obj = {
-  Doc: {
-    title: '',
-    pageID: '',
-    categories: [],
-    sections: [
-      {
-        title: '',
-        depth: 0,
-        paragraphs: [
-          {
-            sentences: [
-              {
-                text: '',
-                links: [
-                  {
-                    type: '',
-                    text: '',
-                    page: ''
-                  }
-                ],
-                formatting: {
-                  bold: [],
-                  italic: []
-                }
-              }
-            ]
-          }
-        ],
-        templates: [
-          {
-            template: '',
-            data: []
-          }
-        ],
-        infoboxes: [
-          {
-            name: '',
-            data: []
-          }
-        ],
-        references: [
-          {
-            type: '',
-            title: ''
-          }
-        ]
-      }
-    ]
-  }
-}
 
 // ---missing--
 // Chitimukulu
