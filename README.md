@@ -68,7 +68,10 @@ wtf.fetch('Toronto Raptors').then(doc => {
 })
 ```
 
-### .text():
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+
+## .text():
 
 get plaintext output of a document:
 
@@ -92,18 +95,18 @@ wtf(str).text()
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
 </div>
 
-### .json():
+## .json():
 
-get structured data from a wikipedia page:
+get all data from a wikipedia page:
 
 ```js
 let doc = await wtf.fetch('Whistling')
 
 doc.json()
-//{ categories:['Oral communication', 'Vocal music', 'Vocal skills'] ...}
+//{ categories:['Oral communication','Vocal skills'], sections: [{ title:'Techniques' }], ...}
 ```
 
-the default json output is pretty verbose:
+Yeah, the default json output is pretty verbose:
 
 ```coffee
 Doc:
@@ -134,7 +137,7 @@ Doc:
           title: ''
 ```
 
-You can make your own by calling `.json()` anywhere:
+But it's way easier to cherry-pick, using the api:
 
 ```js
 doc.links().map(link => link.json())
@@ -142,6 +145,12 @@ doc.links().map(link => link.json())
 
 doc.images(0).json()
 // {file: 'Image:Duveneck Whistling Boy.jpg' ... }
+
+doc
+  .sections('see also')
+  .links(0)
+  .json()
+// {page:'Slide Whistle'}
 ```
 
 <div align="right">
