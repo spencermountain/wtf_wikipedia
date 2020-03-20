@@ -19,10 +19,16 @@ let list = [
   'start_date',
   'taxobox'
 ]
-list = list.reduce((h, str) => {
+let mapping = list.reduce((h, str) => {
   h[str] = require(`./data/${str}`)
   return h
 }, {})
 
-const plugin = function(models, templates) {}
+const plugin = function(models, templates) {
+  Object.keys(mapping).forEach(k => {
+    mapping[k].forEach(name => {
+      templates[name] = templates[k]
+    })
+  })
+}
 module.exports = plugin

@@ -175,23 +175,42 @@ run it on the client-side:
 </script>
 ```
 
-### Plugins
-
-|                                |                                        |
-| ------------------------------ | :------------------------------------: |
-| [html](./plugins/html)         |              output html               |
-| [markdown](./plugins/markdown) |            output markdown             |
-| [latex](./plugins/latex)       |              output latex              |
-|                                |                                        |
-| [i18n](./plugins/i18n)         | improve multilingual template coverage |
-| [classify](./plugins/classify) |     is the article about a person?     |
-| [summary](./plugins/summary)   |         small description text         |
-|                                |                                        |
-| [category](./plugins/category) | additional methods for `.categories()` |
-| [image](./plugins/image)       |   additional methods for `.images()`   |
-
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
+
+## Tutorials
+
+- [Gentle Introduction](https://observablehq.com/@spencermountain/wtf_wikipedia-tutorial?collection=@spencermountain/wtf_wikipedia) - Getting NBA Team data
+- [Parsing tables](https://observablehq.com/@spencermountain/parsing-wikipedia-tables) - getting all Apollo Astronauts as JSON
+- [Parsing Timezones](https://observablehq.com/@spencermountain/parsing-timezones-from-wikipedia)
+- [MBL season schedules](https://observablehq.com/@spencermountain/wikipedia-baseball-table-parser?collection=@spencermountain/wtf_wikipedia)
+- [Fetching a list of pages](https://observablehq.com/@spencermountain/parsing-a-list-of-wikipedia-articles)
+- [Parsing COVID outbreak table](https://observablehq.com/@spencermountain/parsing-wikipedias-coronavirus-outbreak-data?collection=@spencermountain/wtf_wikipedia)
+
+### Plugins
+
+| **Output**                                            |                                        |
+| ----------------------------------------------------- | :------------------------------------: |
+| [html](./plugins/html)                                |              output html               |
+| [markdown](./plugins/markdown)                        |            output markdown             |
+| [latex](./plugins/latex)                              |              output latex              |
+| **Extend**                                            |                                        |
+| [i18n](./plugins/i18n)                                | improve multilingual template coverage |
+| [classify](./plugins/classify)                        |     is the article about a person?     |
+| [summary](./plugins/summary)                          |         small description text         |
+| **Methods**                                           |                                        |
+| [category](./plugins/category)                        | additional methods for `.categories()` |
+| [image](./plugins/image)                              |   additional methods for `.images()`   |
+| **Subjects**                                          |                                        |
+| [wtf-mlb](https://github.com/spencermountain/wtf-mlb) |      baseball team/season parser       |
+| [wtf-nhl](https://github.com/spencermountain/wtf-nhl) |       hockey team/season parser        |
+
+<div align="right">
+  <a href="https://docs.compromise.cool/wtf-plugin">plugin docs</a>
+</div>
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
 </div>
@@ -427,30 +446,6 @@ wtf
 ```
 
 ---
-
-<!-- spacer -->
-<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-<div align="center">
-  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
-</div>
-
-## Plugins
-
-- [wtf-plugin-html](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/plugin/html)
-- [wtf-plugin-markdown](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/plugin/markdown)
-- [wtf-plugin-latex](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/plugin/latex)
-- [wtf-plugin-wikitext](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/plugin/wikitext)
-- [wtf-mlb](https://github.com/spencermountain/wtf-mlb) - baseball team/season parser
-- [wtf-nhl](https://github.com/spencermountain/wtf-nhl) - hockey team/season parser
-
-## Tutorials
-
-- [Gentle Introduction](https://observablehq.com/@spencermountain/wtf_wikipedia-tutorial?collection=@spencermountain/wtf_wikipedia) - Getting NBA Team data
-- [Parsing tables](https://observablehq.com/@spencermountain/parsing-wikipedia-tables) - getting all Apollo Astronauts as JSON
-- [Parsing Timezones](https://observablehq.com/@spencermountain/parsing-timezones-from-wikipedia)
-- [MBL season schedules](https://observablehq.com/@spencermountain/wikipedia-baseball-table-parser?collection=@spencermountain/wtf_wikipedia)
-- [Fetching a list of pages](https://observablehq.com/@spencermountain/parsing-a-list-of-wikipedia-articles)
-- [Parsing COVID outbreak table](https://observablehq.com/@spencermountain/parsing-wikipedias-coronavirus-outbreak-data?collection=@spencermountain/wtf_wikipedia)
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>

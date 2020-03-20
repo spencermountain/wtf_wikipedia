@@ -2,43 +2,44 @@ var wtf = require('./src/index')
 // var wtf = require('./builds/wtf_wikipedia')
 wtf.extend(require('./plugins/classify/src'))
 wtf.extend(require('./plugins/summary/src'))
-var arr = [
-  // '2008-British-motorcycle-Grand-Prix'//Event
-  // 'Allen-R.-Morris'//Person
-  'al_Haytham'
-  // 'Alsea-(company)',
-  // 'Altimont-Butler',
-  // 'Antique-(band)',
-  // 'Anwar_Kamal_Khan',
-  // 'Arts_Club_of_Chicago',
-  // 'BBDO',
-  // 'Bazooka',
-  // 'Bodmin',
-  // 'Bradley-(community),-Lincoln-County,-Wisconsin',
-  // 'Britt-Morgan',
-  // 'Canton-of-Etaples',
-  // 'Charlie-Milstead',
-  // 'Chemical-biology',
-  // 'Clint-Murchison-Sr.',
-  // 'Damphu-drum'
-]
-arr.forEach(file => {
-  let txt = require('fs')
-    .readFileSync(`/Users/spencer/mountain/wtf_wikipedia/tests/cache/${file}.txt`)
-    .toString()
-  let doc = wtf(txt)
-  let res = doc.classify()
-  console.log(res)
-})
+wtf.extend(require('./plugins/category/src'))
+// var arr = [
+// '2008-British-motorcycle-Grand-Prix'//Event
+// 'Allen-R.-Morris'//Person
+// 'al_Haytham'
+// 'Alsea-(company)',
+// 'Altimont-Butler',
+// 'Antique-(band)',
+// 'Anwar_Kamal_Khan',
+// 'Arts_Club_of_Chicago',
+// 'BBDO',
+// 'Bazooka',
+// 'Bodmin',
+// 'Bradley-(community),-Lincoln-County,-Wisconsin',
+// 'Britt-Morgan',
+// 'Canton-of-Etaples',
+// 'Charlie-Milstead',
+// 'Chemical-biology',
+// 'Clint-Murchison-Sr.',
+// 'Damphu-drum'
+// ]
+// arr.forEach(file => {
+//   let txt = require('fs')
+//     .readFileSync(`/Users/spencer/mountain/wtf_wikipedia/tests/cache/${file}.txt`)
+//     .toString()
+//   let doc = wtf(txt)
+//   let res = doc.classify()
+//   console.log(res)
+// })
 
-wtf.fetch('Glastonbury', 'fr').then(doc => {
-  // doc.classify()
-  console.log(doc.text())
-  //{
-  //  type: 'Organization/SportsTeam',
-  //  confidence: 0.9,
-  //}
-})
+// wtf.fetch('Glastonbury', 'fr').then(doc => {
+//   // doc.classify()
+//   console.log(doc.text())
+//   //{
+//   //  type: 'Organization/SportsTeam',
+//   //  confidence: 0.9,
+//   //}
+// })
 
 // ---missing--
 // Chitimukulu
@@ -79,3 +80,13 @@ wtf.fetch('Glastonbury', 'fr').then(doc => {
 // console.log(doc.text())
 // console.log(doc.templates())
 // console.log(doc.infobox())
+wtf.parseCategory('Major League Baseball venues').then(docs => {
+  let arr = docs.map(doc => {
+    return doc.sentence().text()
+  })
+  console.log(arr)
+  // [
+  //  'Fenway park is a sports complex and major league baseball stadium...',
+  //  'Rogers Center is a entertainment venue ...'
+  //]
+})

@@ -4,6 +4,11 @@ const category = require('./_fetch/category')
 const version = require('./_version')
 const parseDocument = require('./01-document/index.js')
 
+//the main 'factory' exported method
+const wtf = function(wiki, options) {
+  return parseDocument(wiki, options)
+}
+
 // export classes for plugin development
 const models = {
   Doc: require('./01-document/Document'),
@@ -16,14 +21,11 @@ const models = {
   List: require('./list/List'),
   Reference: require('./reference/Reference'),
   Table: require('./table/Table'),
-  Template: require('./template/Template')
+  Template: require('./template/Template'),
+  wtf: wtf
 }
 let templates = require('./template/templates')
 
-//the main 'factory' exported method
-const wtf = function(wiki, options) {
-  return parseDocument(wiki, options)
-}
 wtf.fetch = function(title, lang, options, cb) {
   return fetch(title, lang, options, cb)
 }
