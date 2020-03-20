@@ -2,6 +2,7 @@ const mapping = require('./infoboxes')
 
 const byInfobox = function(doc) {
   let infoboxes = doc.infoboxes()
+  let found = []
   for (let i = 0; i < infoboxes.length; i++) {
     let inf = infoboxes[i]
     let type = inf.type()
@@ -12,9 +13,9 @@ const byInfobox = function(doc) {
     type = type.trim()
 
     if (mapping.hasOwnProperty(type)) {
-      return mapping[type]
+      found.push(mapping[type])
     }
   }
-  return null
+  return found
 }
 module.exports = byInfobox

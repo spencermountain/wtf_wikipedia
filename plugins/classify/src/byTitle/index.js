@@ -9,12 +9,12 @@ const paren = /\((.*)\)$/
 const byTitle = function(doc) {
   let title = doc.title()
   if (!title) {
-    return null
+    return []
   }
   //look at parentheses like 'Tornado (film)'
   let m = title.match(paren)
   if (!m) {
-    return null
+    return []
   }
   let inside = m[1] || ''
   inside = inside.toLowerCase()
@@ -23,7 +23,7 @@ const byTitle = function(doc) {
 
   //look at known parentheses
   if (mapping.hasOwnProperty(inside)) {
-    return mapping[inside]
+    return [mapping[inside]]
   }
 
   // look at regex
@@ -33,10 +33,10 @@ const byTitle = function(doc) {
     for (let i = 0; i < patterns[k].length; i++) {
       const reg = patterns[k][i]
       if (reg.test(title)) {
-        return k
+        return [k]
       }
     }
   }
-  return null
+  return []
 }
 module.exports = byTitle
