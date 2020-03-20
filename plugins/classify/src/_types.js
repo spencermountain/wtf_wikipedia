@@ -32,7 +32,8 @@ const tree = {
   Thing: {
     Product: true,
     Software: true,
-    Character: true
+    Character: true,
+    Organism: true
   }
 }
 

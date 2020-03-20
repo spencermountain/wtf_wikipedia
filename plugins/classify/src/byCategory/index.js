@@ -4,6 +4,7 @@ const mapping = {
   'living people': 'Person',
   'date of birth unknown': 'Person',
   'possibly living people': 'Person',
+  'place of birth missing': 'Person',
   'american films': 'CreativeWork/Film',
   'english-language films': 'CreativeWork/Film',
   'grammy award winners': 'Organization/MusicalGroup',
@@ -26,6 +27,7 @@ const byPattern = function(cat) {
 }
 
 const byCategory = function(doc) {
+  let found = []
   let cats = doc.categories()
   // clean them up a bit
   cats = cats.map(cat => {
@@ -39,14 +41,15 @@ const byCategory = function(doc) {
     const cat = cats[i]
     // try our 1-to-1 mapping
     if (mapping.hasOwnProperty(cat)) {
-      return mapping[cat]
+      found.push(mapping[cat])
+      continue
     }
     // loop through our patterns
-    let found = byPattern(cat)
-    if (found) {
-      return found
+    let match = byPattern(cat)
+    if (match) {
+      found.push(match)
     }
   }
-  return null
+  return found
 }
 module.exports = byCategory

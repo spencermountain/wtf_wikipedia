@@ -27,7 +27,15 @@ let mapping = {
   founding: 'Organization',
   founders: 'Organization',
   'coaching staff': 'Organization/SportsTeam',
-  'band members': 'Organization/MusicalGroup'
+  'band members': 'Organization/MusicalGroup',
+
+  habitat: 'Thing/Organism',
+  morphology: 'Thing/Organism',
+  phylogeny: 'Thing/Organism',
+  'distribution and diversity': 'Thing/Organism',
+  'distribution and habitat': 'Thing/Organism',
+  'reproduction and development': 'Thing/Organism',
+  'taxonomy and phylogeny': 'Thing/Organism'
 }
 
 const fromSection = function(doc) {

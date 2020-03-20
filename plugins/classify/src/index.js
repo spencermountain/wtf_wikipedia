@@ -3,8 +3,8 @@ const byCategory = require('./byCategory')
 const byTemplate = require('./byTemplate')
 const bySection = require('./bySection')
 const byTitle = require('./byTitle')
+const skipPage = require('./_skip')
 const types = require('./_types')
-const listOf = /List of ./
 
 const score = function(res) {
   // let scores = {}
@@ -19,7 +19,7 @@ const plugin = function(models) {
     let res = {}
 
     // dont classify these
-    if (listOf.test(doc.title)) {
+    if (skipPage(doc)) {
       return null
     }
 

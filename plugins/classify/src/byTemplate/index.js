@@ -8,7 +8,25 @@ const mapping = {
   //person
   persondata: 'Person',
   writer: 'Person',
-  'ted speaker': 'Person'
+  'ted speaker': 'Person',
+  taxonbar: 'Thing/Organism',
+  wikispecies: 'Thing/Organism',
+  animalia: 'Thing/Organism',
+  chordata: 'Thing/Organism',
+  cnidaria: 'Thing/Organism',
+  porifera: 'Thing/Organism',
+  epicaridea: 'Thing/Organism',
+  mammals: 'Thing/Organism',
+  phlyctaeniidae: 'Thing/Organism',
+  carnivora: 'Thing/Organism',
+  clade: 'Thing/Organism',
+  'life on earth': 'Thing/Organism',
+  'orders of insects': 'Thing/Organism',
+  coleoptera: 'Thing/Organism',
+  'insects in culture': 'Thing/Organism',
+  'living things in culture': 'Thing/Organism',
+  'eukaryota classification': 'Thing/Organism',
+  animalia: 'Thing/Organism'
 }
 
 const topk = function(arr) {

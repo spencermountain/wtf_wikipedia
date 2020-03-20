@@ -39,11 +39,12 @@ var arr = [
 // Zarzycki
 // Average wholesale price
 
-wtf.fetch('Angelika Schädler').then(doc => {
+wtf.fetch('Pacific angelshark').then(doc => {
   console.log(doc.classify())
 })
 // wtf.random().then(doc => {
 //   console.log(doc.title())
+//   console.log(doc.categories())
 //   // console.log(doc.summary({ article: false }))
 //   console.log(doc.classify())
 // })

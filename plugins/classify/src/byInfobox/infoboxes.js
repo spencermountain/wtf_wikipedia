@@ -404,5 +404,7 @@ module.exports = {
   wrestling_promotion: '', //1
   writer: 'Person', //69
   writing_system: 'Thing', //4
-  zoo: 'Place' //3
+  zoo: 'Place', //3
+  speciesbox: 'Thing/Organism',
+  'automatic taxobox': 'Thing/Organism'
 }
