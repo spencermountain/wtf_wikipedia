@@ -73,7 +73,7 @@ wtf.fetch('Toronto Raptors').then(doc => {
 
 ## .text():
 
-get plaintext output of a document:
+get clean plaintext from a wikipedia page:
 
 ```js
 let doc = await wtf.fetch('Glastonbury', 'en')
@@ -82,8 +82,7 @@ doc.text()
 ```
 
 ```js
-let str = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall. <ref>Field of our Fathers: By Richard Johnson</ref>
-`
+let str = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall. <ref>Field of our Fathers: By Richard Johnson</ref>`
 wtf(str).text()
 // "Boston's baseball field has a 37ft wall."
 ```
@@ -97,16 +96,16 @@ wtf(str).text()
 
 ## .json():
 
-get all data from a wikipedia page:
+get all the data from a wikipedia page:
 
 ```js
 let doc = await wtf.fetch('Whistling')
 
 doc.json()
-//{ categories:['Oral communication','Vocal skills'], sections: [{ title:'Techniques' }], ...}
+//{ categories: ['Oral communication', 'Vocal skills'], sections: [{ title: 'Techniques' }], ...}
 ```
 
-Yeah, the default json output is pretty verbose:
+Yeah, the default json output is really verbose:
 
 ```coffee
 Doc:
@@ -137,14 +136,14 @@ Doc:
           title: ''
 ```
 
-But it's way easier to cherry-pick, using the api:
+But it's way easier to cherry-pick things, with the api:
 
 ```js
 doc.links().map(link => link.json())
 //[{page:'Theatrical superstitions', text: 'supersitions'}]
 
 doc.images(0).json()
-// {file: 'Image:Duveneck Whistling Boy.jpg' ... }
+// {file: 'Image:Duveneck Whistling Boy.jpg', url: 'https://commons.wiki...' }
 
 doc
   .sections('see also')
@@ -163,19 +162,33 @@ doc
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
-run on the client-side:
+run it on the client-side:
 
 ```html
 <script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
   wtf.fetch('On a Friday', function(err, doc) {
-    // get links from an infobox prop
     let members = doc.infobox().get('current members')
     members.links().map(l => l.page())
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
   })
 </script>
 ```
+
+### Plugins
+
+|                                |                                        |
+| ------------------------------ | :------------------------------------: |
+| [html](./plugins/html)         |              output html               |
+| [markdown](./plugins/markdown) |            output markdown             |
+| [latex](./plugins/latex)       |              output latex              |
+|                                |                                        |
+| [i18n](./plugins/i18n)         | improve multilingual template coverage |
+| [classify](./plugins/classify) |     is the article about a person?     |
+| [summary](./plugins/summary)   |         small description text         |
+|                                |                                        |
+| [category](./plugins/category) | additional methods for `.categories()` |
+| [image](./plugins/image)       |   additional methods for `.images()`   |
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
