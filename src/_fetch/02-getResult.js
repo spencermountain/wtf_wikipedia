@@ -8,11 +8,12 @@ const getResult = function(data, options) {
       return null
     }
     let text = page.revisions[0]['*']
+    // console.log(page.revisions[0])
     //us the 'generator' result format, for the random() method
     if (!text && page.revisions[0].slots) {
       text = page.revisions[0].slots.main['*']
     }
-    let meta = Object.assign(options, {
+    let meta = Object.assign({}, options, {
       title: page.title,
       pageID: page.pageid,
       namespace: page.ns
