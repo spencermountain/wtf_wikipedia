@@ -24,7 +24,7 @@ Tries to generate a small fragment of text (or 'clause') that describes a wikipe
 The process:
 
 - look for a [{{short description}](https://en.wikipedia.org/wiki/Template:Short_description)` template
-- grab and process the first-sentence of a wikipedi article
+- grab and process the first-sentence of a wikipedia article
 - build a template from `wtf-plugin-classify`
 
 Most-often it will find something of a reasonable length in the first-sentence.

@@ -228,14 +228,16 @@ let plurals = [
   'lists',
   'links',
   'images',
+  'templates',
   'categories'
 ]
 plurals.forEach(fn => {
   let sing = fn.replace(/ies$/, 'y')
-  sing = sing.replace(/e?s$/, '')
+  sing = sing.replace(/oxes$/, 'ox')
+  sing = sing.replace(/s$/, '')
   methods[sing] = function(n) {
     n = n || 0
-    return this[fn](n)
+    return this[fn](n)[0]
   }
 })
 

@@ -1,3 +1,4 @@
+const fromTemplate = require('./01-fromTemplate')
 const fromText = require('./02-fromText')
 
 const defaults = {
@@ -20,8 +21,13 @@ const plugin = function(models) {
     options = options || {}
     options = Object.assign({}, defaults, options)
 
+    // generate from {{short description}} template
+    let txt = fromTemplate(doc, options)
+    if (seemsGood(txt)) {
+      return postProcess(txt)
+    }
     // generate from first-sentence
-    let txt = fromText(doc, options)
+    txt = fromText(doc, options)
     if (seemsGood(txt)) {
       return postProcess(txt)
     }

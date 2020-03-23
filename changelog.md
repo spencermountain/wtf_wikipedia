@@ -9,12 +9,14 @@
 ### 8.1.0
 
 - [major] fix Link json object in `.json()` result
+- [major] undocumented singular-name methods (like `.template()` now return 0th-response)
 - support `<noinclude>`
 - add `.url()` and `.language()` methods
 - - support setters on Link methods
 - - add `Link.href()` method
 - - support proper urls for interwiki links
 - replicate wikipedia behaviour for apostrophe-s after link
+- new plugins **summary**, **classify**, **category**, and **i18n**.
 
 ### 8.0.0
 

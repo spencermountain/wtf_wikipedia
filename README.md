@@ -61,10 +61,10 @@ fetch and parse an article:
 
 ```js
 wtf.fetch('Toronto Raptors').then(doc => {
+  doc.sentences(0).text() //'The Toronto Raptors are a Canadian professional basketball team ...'
+
   let coach = doc.infobox().get('coach')
   coach.text() //'Nick Nurse'
-
-  doc.sentences(0).text() //'The Toronto Raptors are a Canadian professional basketball team ...'
 })
 ```
 
@@ -88,7 +88,7 @@ wtf(str).text()
 ```
 
 <div align="right">
-  <a href="https://docs.compromise.cool/wtf-text">text docs</a>
+  <a href="https://docs.compromise.cool/wtf-wikipedia-text">text docs</a>
 </div>
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
@@ -153,7 +153,7 @@ doc
 ```
 
 <div align="right">
-  <a href="https://docs.compromise.cool/wtf-json">json docs</a>
+  <a href="https://docs.compromise.cool/wtf-wikipedia-json">json docs</a>
 </div>
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
@@ -174,6 +174,23 @@ run it on the client-side:
   })
 </script>
 ```
+
+## parse a wikipedia dump
+
+Using this library in conjunction with [dumpster-dive](https://github.com/spencermountain/dumpster-dive), you can parse all pages in wikipedia in an aftertoon.
+
+```bash
+npm install -g dumpster-dive
+```
+
+![dumpster](https://user-images.githubusercontent.com/399657/40262198-a268b95a-5ad3-11e8-86ef-29c2347eec81.gif)
+
+<div align="right">
+  <a href="https://github.com/spencermountain/dumpster-dive/">dump docs</a>
+</div>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
+</div>
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
@@ -202,7 +219,7 @@ run it on the client-side:
 | [classify](./plugins/classify)                        |     is the article about a person?     |
 | [summary](./plugins/summary)                          |         small description text         |
 | **Methods**                                           |                                        |
-| [category](./plugins/category)                        | additional methods for `.categories()` |
+| [category](./plugins/category)                        | fetch+parse all articles in a category |
 | [image](./plugins/image)                              |   additional methods for `.images()`   |
 | **Subjects**                                          |                                        |
 | [wtf-mlb](https://github.com/spencermountain/wtf-mlb) |      baseball team/season parser       |
@@ -411,6 +428,8 @@ let result = await wtf.category('Category:Politicians_from_Paris')
 //  categories: [ {title: 'Category:Mayors of Paris' } ]
 //}
 ```
+
+to fetch and parse all pages in a category, in an optimized way, see [wtf-plugin-category](./plugins/category)
 
 ### fetch random article:
 
@@ -630,6 +649,8 @@ wikitext is (amazingly) used across all languages, wikis, and even in right-to-l
 This parser actually does an okay job at it too.
 
 Wikipedia I18n langauge information for _Redirects, Infoboxes, Categories, and Images_ are included in the library, with pretty-decent coverage.
+
+To improve coverage of i18n templates, use [wtf-plugin-i18n](./plugins/i18n)
 
 Please make a PR if you see something missing for your language.
 

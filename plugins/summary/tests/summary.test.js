@@ -1,12 +1,7 @@
 const test = require('tape')
-const wtf = require('wtf_wikipedia')
-const extractor = require('../src/')
+const wtf = require('./_lib')
 
-test('royal_cinema', t => {
-  const options = {
-    max: 150,
-    min: 200
-  }
+test('first-sentence cleanup summary', t => {
   let arr = [
     [
       'Susan Allen (May 10, 1951 &amp;ndash; September 7, 2015) was an American harpist and singer',
@@ -26,8 +21,7 @@ test('royal_cinema', t => {
     ]
   ]
   arr.forEach((a, i) => {
-    let wp = wtf(a[0])
-    let str = extractor(wp, options)
+    let str = wtf(a[0]).summary()
     t.equal(a[1], str, 'extract-' + i)
   })
   t.end()

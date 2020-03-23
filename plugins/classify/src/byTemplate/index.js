@@ -48,11 +48,13 @@ const byTemplate = function(doc) {
   for (let i = 0; i < templates.length; i++) {
     const title = templates[i].template
     if (mapping.hasOwnProperty(title)) {
+      console.log(title)
       found.push(mapping[title])
     } else {
       // try regex-list on it
       let type = matchPatterns(title)
       if (type) {
+        console.log(title)
         found.push(type)
       }
     }
