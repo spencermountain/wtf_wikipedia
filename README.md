@@ -35,8 +35,8 @@
 <div align="left">
   <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
   <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-  it is <a href="https://osr.cs.fau.de/wp-content/uploads/2017/09/wikitext-parser.pdf">very</a>, <a href="https://utcc.utoronto.ca/~cks/space/blog/programming/ParsingWikitext">very</a> hard.
-  <span>we're <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">not</a> <a href="https://twitter.com/ftrain/status/1036060636587978753">joking</a>.</span>
+  it is <a href="https://osr.cs.fau.de/wp-content/uploads/2017/09/wikitext-parser.pdf">very</a>, <a href="https://utcc.utoronto.ca/~cks/space/blog/programming/ParsingWikitext">very</a> hard.  &nbsp;  &nbsp; 
+  <span> &nbsp;  &nbsp; we're <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">not</a> <a href="https://twitter.com/ftrain/status/1036060636587978753">joking</a>.</span>
 </div>
 
 <!-- einstein sentence -->
@@ -47,17 +47,16 @@
 <div align="center">
 <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 </div>
-<!-- spacer -->
-<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-<div align="center">
-  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
-</div>
 
 ```js
 const wtf = require('wtf_wikipedia')
 ```
 
-fetch and parse an article:
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
 
 ```js
 wtf.fetch('Toronto Raptors').then(doc => {
@@ -71,15 +70,9 @@ wtf.fetch('Toronto Raptors').then(doc => {
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
-## .text():
+## .text
 
 get clean plaintext from a wikipedia page:
-
-```js
-let doc = await wtf.fetch('Glastonbury', 'en')
-doc.text()
-// 'Glastonbury is a town and civil parish in Somerset, England, situated at a dry point on the low-lying Somerset Levels, ...'
-```
 
 ```js
 let str = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall. <ref>Field of our Fathers: By Richard Johnson</ref>`
@@ -87,14 +80,20 @@ wtf(str).text()
 // "Boston's baseball field has a 37ft wall."
 ```
 
+```js
+let doc = await wtf.fetch('Glastonbury', 'en')
+doc.text()
+// 'Glastonbury is a town and civil parish in Somerset, England, situated at a dry point ...'
+```
+
 <div align="right">
-  <a href="https://docs.compromise.cool/wtf-wikipedia-text">text docs</a>
+  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-text">text docs</a>
 </div>
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
 </div>
 
-## .json():
+## .json
 
 get all the data from a wikipedia page:
 
@@ -105,46 +104,18 @@ doc.json()
 //{ categories: ['Oral communication', 'Vocal skills'], sections: [{ title: 'Techniques' }], ...}
 ```
 
-Yeah, the default json output is really verbose:
-
-```coffee
-Doc:
-  title: ''
-  pageID: ''
-  categories: ['']
-  sections:
-    - title: ''
-      depth: 1
-      paragraphs:
-        - sentences:
-            - text: ''
-              links:
-                - type: ''
-                  text: ''
-                  page: ''
-              formatting:
-                bold: ['']
-                italic: ['']
-      templates:
-        - template: ''
-          prop: ''
-      infoboxes:
-        - name: ''
-          prop: ''
-      references:
-        - type: ''
-          title: ''
-```
-
-But it's way easier to cherry-pick things, with the api:
+Yeah, the default json output is [really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json), but it's pretty easy to cherry-pick things, with the api:
 
 ```js
+// get just the links:
 doc.links().map(link => link.json())
 //[{page:'Theatrical superstitions', text: 'supersitions'}]
 
+// just the images:
 doc.images(0).json()
 // {file: 'Image:Duveneck Whistling Boy.jpg', url: 'https://commons.wiki...' }
 
+// json for a particular section:
 doc
   .sections('see also')
   .links(0)
@@ -153,7 +124,7 @@ doc
 ```
 
 <div align="right">
-  <a href="https://docs.compromise.cool/wtf-wikipedia-json">json docs</a>
+  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-json">json docs</a>
 </div>
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
@@ -175,7 +146,14 @@ run it on the client-side:
 </script>
 ```
 
-## parse a wikipedia dump
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
+</div>
+
+### parsing a wikipedia dump
 
 Using this library in conjunction with [dumpster-dive](https://github.com/spencermountain/dumpster-dive), you can parse all pages in wikipedia in an aftertoon.
 
@@ -183,13 +161,10 @@ Using this library in conjunction with [dumpster-dive](https://github.com/spence
 npm install -g dumpster-dive
 ```
 
-![dumpster](https://user-images.githubusercontent.com/399657/40262198-a268b95a-5ad3-11e8-86ef-29c2347eec81.gif)
+<img height="200px" src=https://user-images.githubusercontent.com/399657/40262198-a268b95a-5ad3-11e8-86ef-29c2347eec81.gif"/>
 
 <div align="right">
-  <a href="https://github.com/spencermountain/dumpster-dive/">dump docs</a>
-</div>
-<div align="center">
-  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
+  <a href="https://github.com/spencermountain/dumpster-dive/">dumpster docs</a>
 </div>
 
 <!-- spacer -->
@@ -209,24 +184,24 @@ npm install -g dumpster-dive
 
 ### Plugins
 
-| **Output**                                            |                                        |
-| ----------------------------------------------------- | :------------------------------------: |
-| [html](./plugins/html)                                |              output html               |
-| [markdown](./plugins/markdown)                        |            output markdown             |
-| [latex](./plugins/latex)                              |              output latex              |
-| **Extend**                                            |                                        |
+| **-**                                                 |                                        |
+| ----------------------------------------------------- | -------------------------------------- |
+| [html](./plugins/html)                                | output html                            |
+| [markdown](./plugins/markdown)                        | output markdown                        |
+| [latex](./plugins/latex)                              | output latex                           |
+| **-**                                                 |                                        |
 | [i18n](./plugins/i18n)                                | improve multilingual template coverage |
-| [classify](./plugins/classify)                        |     is the article about a person?     |
-| [summary](./plugins/summary)                          |         small description text         |
-| **Methods**                                           |                                        |
-| [category](./plugins/category)                        | fetch+parse all articles in a category |
-| [image](./plugins/image)                              |   additional methods for `.images()`   |
-| **Subjects**                                          |                                        |
-| [wtf-mlb](https://github.com/spencermountain/wtf-mlb) |      baseball team/season parser       |
-| [wtf-nhl](https://github.com/spencermountain/wtf-nhl) |       hockey team/season parser        |
+| [classify](./plugins/classify)                        | is the article about a person?         |
+| [summary](./plugins/summary)                          | small description text                 |
+| **-**                                                 |                                        |
+| [category](./plugins/category)                        | parse all articles in a category       |
+| [image](./plugins/image)                              | additional methods for `.images()`     |
+| **-**                                                 |                                        |
+| [wtf-mlb](https://github.com/spencermountain/wtf-mlb) | baseball team & season parser          |
+| [wtf-nhl](https://github.com/spencermountain/wtf-nhl) | hockey team & season parser            |
 
 <div align="right">
-  <a href="https://docs.compromise.cool/wtf-plugin">plugin docs</a>
+  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-plugins">plugin docs</a>
 </div>
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
@@ -283,18 +258,18 @@ It is built to be as flexible as possible. In all cases, tries to fail in consid
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
-#### What about html scraping..?
+#### How about html scraping..?
 
 Wikimedia's [official parser](https://www.mediawiki.org/wiki/Parsoid) turns wikitext ➔ HTML.
 
 <!-- You can even get html from the api [like this](https://en.wikipedia.org/w/api.php?format=json&origin=*&action=parse&prop=text&page=Whistling). -->
 
-if you prefer this **_screen-scraping_** workflow, you can pluck parts of a page [like that](https://observablehq.com/@mbostock/working-with-wikipedia-data).
+if you prefer this **_screen-scraping_** workflow, you can pluck at parts of a page [like that](https://observablehq.com/@mbostock/working-with-wikipedia-data).
 
-that's cool, too!
+that's cool!
 
 getting structured data this way is still a complex, weird process.
-Manually spelunking the html is usually just as tricky and error-prone as scanning the wikitext itself.
+Manually _spelunking_ the html is sometimes just as tricky and error-prone as scanning the wikitext itself.
 
 The contributors to this library have come to that conclusion, [as many others have](https://www.mediawiki.org/wiki/Alternative_parsers).
 
@@ -617,6 +592,13 @@ wtf.extend((models, templates) => {
   templates.asterisk = '*'
 })
 ```
+
+<div align="right">
+  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-plugins">plugin docs</a>
+</div>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
 
 ## Notes:
 
