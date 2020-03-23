@@ -48,10 +48,6 @@
 <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 </div>
 
-```js
-const wtf = require('wtf_wikipedia')
-```
-
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 <div align="center">
@@ -59,8 +55,11 @@ const wtf = require('wtf_wikipedia')
 </div>
 
 ```js
+const wtf = require('wtf_wikipedia')
+
 wtf.fetch('Toronto Raptors').then(doc => {
-  doc.sentences(0).text() //'The Toronto Raptors are a Canadian professional basketball team ...'
+  doc.sentences(0).text()
+  //'The Toronto Raptors are a Canadian professional basketball team ...'
 
   let coach = doc.infobox().get('coach')
   coach.text() //'Nick Nurse'
@@ -72,7 +71,7 @@ wtf.fetch('Toronto Raptors').then(doc => {
 
 ## .text
 
-get clean plaintext from a wikipedia page:
+get clean plaintext:
 
 ```js
 let str = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall. <ref>Field of our Fathers: By Richard Johnson</ref>`
@@ -87,7 +86,7 @@ doc.text()
 ```
 
 <div align="right">
-  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-text">text docs</a>
+  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-text">.text() docs</a>
 </div>
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
@@ -95,7 +94,7 @@ doc.text()
 
 ## .json
 
-get all the data from a wikipedia page:
+get all the data from a page:
 
 ```js
 let doc = await wtf.fetch('Whistling')
@@ -104,7 +103,9 @@ doc.json()
 //{ categories: ['Oral communication', 'Vocal skills'], sections: [{ title: 'Techniques' }], ...}
 ```
 
-Yeah, the default json output is [really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json), but it's pretty easy to cherry-pick things, with the api:
+Yeah, the default json output is [really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json),
+
+but it's pretty-easy to cherry-pick things with the api:
 
 ```js
 // get just the links:
@@ -124,7 +125,7 @@ doc
 ```
 
 <div align="right">
-  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-json">json docs</a>
+  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-json">.json() docs</a>
 </div>
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
@@ -138,6 +139,7 @@ run it on the client-side:
 ```html
 <script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
+  // follow a redirect:
   wtf.fetch('On a Friday', function(err, doc) {
     let members = doc.infobox().get('current members')
     members.links().map(l => l.page())
@@ -153,15 +155,15 @@ run it on the client-side:
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
 </div>
 
-### parsing a wikipedia dump
+### full wikipedia dumps
 
-Using this library in conjunction with [dumpster-dive](https://github.com/spencermountain/dumpster-dive), you can parse all pages in wikipedia in an aftertoon.
+With this library, in conjunction with [dumpster-dive](https://github.com/spencermountain/dumpster-dive), you can parse the whole english wikipedia in an aftertoon.
 
 ```bash
 npm install -g dumpster-dive
 ```
 
-<img height="200px" src=https://user-images.githubusercontent.com/399657/40262198-a268b95a-5ad3-11e8-86ef-29c2347eec81.gif"/>
+<img height="200px" src="https://user-images.githubusercontent.com/399657/40262198-a268b95a-5ad3-11e8-86ef-29c2347eec81.gif"/>
 
 <div align="right">
   <a href="https://github.com/spencermountain/dumpster-dive/">dumpster docs</a>
@@ -184,21 +186,27 @@ npm install -g dumpster-dive
 
 ### Plugins
 
-| **-**                                                 |                                        |
-| ----------------------------------------------------- | -------------------------------------- |
-| [html](./plugins/html)                                | output html                            |
-| [markdown](./plugins/markdown)                        | output markdown                        |
-| [latex](./plugins/latex)                              | output latex                           |
-| **-**                                                 |                                        |
-| [i18n](./plugins/i18n)                                | improve multilingual template coverage |
-| [classify](./plugins/classify)                        | is the article about a person?         |
-| [summary](./plugins/summary)                          | small description text                 |
-| **-**                                                 |                                        |
-| [category](./plugins/category)                        | parse all articles in a category       |
-| [image](./plugins/image)                              | additional methods for `.images()`     |
-| **-**                                                 |                                        |
-| [wtf-mlb](https://github.com/spencermountain/wtf-mlb) | baseball team & season parser          |
-| [wtf-nhl](https://github.com/spencermountain/wtf-nhl) | hockey team & season parser            |
+|                                |                 |
+| ------------------------------ | --------------- |
+| [html](./plugins/html)         | output html     |
+| [markdown](./plugins/markdown) | output markdown |
+| [latex](./plugins/latex)       | output latex    |
+
+|                                |                                        |
+| ------------------------------ | -------------------------------------- |
+| [i18n](./plugins/i18n)         | improve multilingual template coverage |
+| [classify](./plugins/classify) | is the article about a person?         |
+| [summary](./plugins/summary)   | small description text                 |
+
+|                                |                                    |
+| ------------------------------ | ---------------------------------- |
+| [category](./plugins/category) | parse all articles in a category   |
+| [image](./plugins/image)       | additional methods for `.images()` |
+
+|                                                       |                               |
+| ----------------------------------------------------- | ----------------------------- |
+| [wtf-mlb](https://github.com/spencermountain/wtf-mlb) | baseball team & season parser |
+| [wtf-nhl](https://github.com/spencermountain/wtf-nhl) | hockey team & season parser   |
 
 <div align="right">
   <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-plugins">plugin docs</a>
@@ -281,9 +289,9 @@ This library has (_lovingly_) borrowed a lot of code and data from the parsoid p
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
 </div>
 
-## ok, enough chat.
+## enough chat.
 
-flip your wikitext into a `Doc` object
+flip your wikitext into a Doc object
 
 ```javascript
 import wtf from 'wtf_wikipedia'
@@ -319,7 +327,7 @@ var text = wtf(wiki).text()
 
 #### **doc.sections()**:
 
-(a section is a heading, _'==Like This=='_)
+a section is a heading _'==Like This=='_
 
 ```js
 wtf(page)
@@ -552,6 +560,10 @@ wtf
 - **.json()** - generate some useful metadata data for this table
 
 ---
+
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
 
 ## Configuration
 
