@@ -1,5 +1,4 @@
 const ignore = require('./_ignore')
-// const getName = require('./_parsers/_getName')
 const parse = require('./_parsers/parse')
 const inf = require('./_infobox')
 const templates = require('./templates')
@@ -9,8 +8,6 @@ const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
 const isArray = function(arr) {
   return Object.prototype.toString.call(arr) === '[object Array]'
 }
-
-// const fs = require('fs') //TODO: remove
 
 //this gets all the {{template}} strings and decides how to parse them
 const parseTemplate = function(tmpl, list) {
@@ -59,8 +56,6 @@ const parseTemplate = function(tmpl, list) {
       return templates[name](tmpl.body, list)
     }
   }
-
-  // fs.appendFileSync('/Users/spencer/Desktop/unknown-templates.tsv', name + '\n')
 
   // unknown template, try to parse it
   let parsed = parse(tmpl.body)

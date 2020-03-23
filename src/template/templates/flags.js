@@ -71,6 +71,16 @@ let templates = {
       return ''
     }
     return ` [[${found[2]} national football team|${found[0]}]]`
+  },
+  flagathlete: tmpl => {
+    let order = ['name', 'flag', 'variant']
+    let obj = parse(tmpl, order)
+    obj.flag = (obj.flag || '').toLowerCase()
+    let found = flags.find(a => obj.flag === a[1] || obj.flag === a[2])
+    if (!found) {
+      return `[[${obj.name || ''}]]`
+    }
+    return `${found[0]} [[${obj.name || ''}]] (${found[1].toUpperCase()})`
   }
 }
 //support {{can}}

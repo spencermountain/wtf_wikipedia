@@ -67,6 +67,7 @@ const parsers = {
   },
   sfn: ['author', 'year', 'location'],
   audio: ['file', 'text', 'type'],
+  rp: ['page'],
 
   'spoken wikipedia': (tmpl, list) => {
     let order = ['file', 'date']
