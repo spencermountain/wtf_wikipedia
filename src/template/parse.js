@@ -16,7 +16,6 @@ const isArray = function(arr) {
 const parseTemplate = function(tmpl, list) {
   let name = tmpl.name
 
-  // console.log(name)
   if (ignore.hasOwnProperty(name) === true) {
     return ''
   }

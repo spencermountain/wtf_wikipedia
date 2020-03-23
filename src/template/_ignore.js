@@ -19,7 +19,7 @@ const list = [
   'reflist',
   'ref-list',
   'div col',
-  'authority control',
+  // 'authority control',
   //https://en.wikipedia.org/wiki/Template:Citation_needed
   // 'better source',
   // 'citation needed',

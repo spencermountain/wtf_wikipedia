@@ -4,10 +4,10 @@ wtf.extend(require('./plugins/classify/src'))
 wtf.extend(require('./plugins/summary/src'))
 wtf.extend(require('./plugins/category/src'))
 
-wtf.fetch('Tropicana Field').then(doc => {
-  console.log(doc.summary())
-  console.log(doc.classify())
-})
+// wtf.fetch('Tropicana Field').then(doc => {
+//   console.log(doc.summary())
+//   console.log(doc.classify())
+// })
 // wtf.random().then(doc => {
 //   console.log(doc.title())
 //   // console.log(doc.summary({ article: false }))
@@ -20,13 +20,11 @@ wtf.fetch('Tropicana Field').then(doc => {
 
 */
 
-// let str = `
-// {{lang|fr|Je suis française.}}
-// `
 // let str = `CoolToday Park is a ballpark in North Port, Florida, located in the southern portion of Sarasota County, 35 miles south of Sarasota, Florida.`
 // console.log(wtf(str).summary())
-// {{val|123456.78901}}
-// {{Authority control |VIAF=66861474 |LCCN=n/87/142671 |ISNI=0000 0001 0911 2808 |GND=117421863 |SUDOC=090162897 }}
+let str = `
+ {{Authority control |VIAF=66861474 |LCCN=n/87/142671 |ISNI=0000 0001 0911 2808 |GND=117421863 |SUDOC=090162897 }}
+`
 
 // {{rp|23}}
 
@@ -52,9 +50,9 @@ wtf.fetch('Tropicana Field').then(doc => {
 //   }}
 
 // str = `{{flagathlete|[[Michael Phelps]]|USA}}`
-// let doc = wtf(str)
-// console.log(doc.text())
-// console.log(doc.templates())
+let doc = wtf(str)
+console.log(doc.text())
+console.log(doc.templates())
 
 // console.log(doc.infobox())
 // wtf.parseCategory('Major League Baseball venues').then(docs => {
