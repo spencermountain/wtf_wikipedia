@@ -100,28 +100,26 @@ get all the data from a page:
 let doc = await wtf.fetch('Whistling')
 
 doc.json()
-//{ categories: ['Oral communication', 'Vocal skills'], sections: [{ title: 'Techniques' }], ...}
+// { categories: ['Oral communication', 'Vocal skills'], sections: [{ title: 'Techniques' }], ...}
 ```
 
-Yeah, the default json output is [really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json),
-
-but it's pretty-easy to cherry-pick things with the api:
+the default json output is [really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json), but you can cherry-pick things like this:
 
 ```js
 // get just the links:
 doc.links().map(link => link.json())
-//[{page:'Theatrical superstitions', text: 'supersitions'}]
+//[{ page: 'Theatrical superstitions', text: 'supersitions' }]
 
 // just the images:
 doc.images(0).json()
-// {file: 'Image:Duveneck Whistling Boy.jpg', url: 'https://commons.wiki...' }
+// { file: 'Image:Duveneck Whistling Boy.jpg', url: 'https://commons.wiki...' }
 
 // json for a particular section:
 doc
   .sections('see also')
   .links(0)
   .json()
-// {page:'Slide Whistle'}
+// { page: 'Slide Whistle' }
 ```
 
 <div align="right">
@@ -163,7 +161,7 @@ With this library, in conjunction with [dumpster-dive](https://github.com/spence
 npm install -g dumpster-dive
 ```
 
-<img height="200px" src="https://user-images.githubusercontent.com/399657/40262198-a268b95a-5ad3-11e8-86ef-29c2347eec81.gif"/>
+<img height="280px" src="https://user-images.githubusercontent.com/399657/40262198-a268b95a-5ad3-11e8-86ef-29c2347eec81.gif"/>
 
 <div align="right">
   <a href="https://github.com/spencermountain/dumpster-dive/">dumpster docs</a>
@@ -559,8 +557,6 @@ wtf
 - **.text()** - returns nothing
 - **.json()** - generate some useful metadata data for this table
 
----
-
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
 </div>
@@ -648,6 +644,9 @@ To improve coverage of i18n templates, use [wtf-plugin-i18n](./plugins/i18n)
 
 Please make a PR if you see something missing for your language.
 
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+
 ## Builds:
 
 this library ships seperate client-side and server-side builds, to preserve filesize.
@@ -660,6 +659,9 @@ this library ships seperate client-side and server-side builds, to preserve file
 - _[./wtf_wikipedia.mjs](./builds/wtf_wikipedia.mjs)_ - esmodule node (typescript)
 
 the browser version uses `fetch()` and the server version uses `require('https')`.
+
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
 ## Performance:
 
@@ -677,16 +679,12 @@ That's about 100 pages/second, per thread.
 
 ## See also:
 
-- [instaview](https://github.com/cscott/instaview) - javascript
-- [txtwiki](https://github.com/joaomsa/txtwiki.js) - javascript
-- [Parsoid](https://www.mediawiki.org/wiki/Parsoid) - javascript
-- [wiky](https://github.com/Gozala/wiky) - javascript
-- [sweble-wikitext](https://github.com/sweble/sweble-wikitext) - java
-- [kiwi](https://github.com/aboutus/kiwi/) - C
-- [parse_wiki_text](https://docs.rs/parse_wiki_text/) - rust
-- [wikitext-perl](https://metacpan.org/pod/distribution/wikitext-perl/lib/Text/WikiText.pm) - perl
-- [wikiextractor](https://github.com/attardi/wikiextractor) - python
-- [wikitextparser](https://pypi.org/project/wikitextparser) - python
+alternative javascript parsers:
+
+- [instaview](https://github.com/cscott/instaview)
+- [txtwiki](https://github.com/joaomsa/txtwiki.js)
+- [Parsoid](https://www.mediawiki.org/wiki/Parsoid)
+- [wiky](https://github.com/Gozala/wiky)
 
 and [many more](https://www.mediawiki.org/wiki/Alternative_parsers)!
 
