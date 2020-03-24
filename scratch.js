@@ -20,6 +20,11 @@ wtf.extend(require('./plugins/category/src'))
 
 */
 
+// wtf.fetch('Toronto').then(doc => {
+//   let html = doc.html()
+//   console.log(html)
+// })
+
 // let str = `CoolToday Park is a ballpark in North Port, Florida, located in the southern portion of Sarasota County, 35 miles south of Sarasota, Florida.`
 // console.log(wtf(str).summary())
 let str = `
@@ -40,7 +45,6 @@ let str = `
   {{Medical cases chart/Row|2009-04-17|2000||9500|||~9,500|+60.6%|divisor=40|numwidth=mw}}
   }}
 `
-str = `{{flagathlete|[[Michael Phelps]]|USA}}`
 
 // {{Place name disambiguation}}
 // {{Airport disambiguation}}
@@ -48,7 +52,7 @@ str = `{{flagathlete|[[Michael Phelps]]|USA}}`
 // str = `{{flagathlete|[[Michael Phelps]]|USA}}`
 let doc = wtf(str)
 console.log(doc.text())
-console.log(doc.templates())
+console.log(doc.templates(0))
 
 // console.log(doc.infobox())
 // wtf.parseCategory('Major League Baseball venues').then(docs => {
