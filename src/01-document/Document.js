@@ -216,6 +216,9 @@ const methods = {
   }
 }
 
+const isArray = function(arr) {
+  return Object.prototype.toString.call(arr) === '[object Array]'
+}
 //add singular-methods, too
 let plurals = [
   'sections',
@@ -237,7 +240,11 @@ plurals.forEach(fn => {
   sing = sing.replace(/s$/, '')
   methods[sing] = function(n) {
     n = n || 0
-    return this[fn](n)[0]
+    let res = this[fn](n)
+    if (isArray(res)) {
+      return res[0]
+    }
+    return res
   }
 })
 

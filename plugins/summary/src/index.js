@@ -9,7 +9,7 @@ const seemsGood = function(txt) {
   return txt && txt.length > 5 && txt.length < 55
 }
 
-const postProcess = function(txt, options) {
+const postProcess = function(txt) {
   txt = txt.trim()
   return txt
 }

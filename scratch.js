@@ -4,9 +4,10 @@ wtf.extend(require('./plugins/classify/src'))
 wtf.extend(require('./plugins/summary/src'))
 wtf.extend(require('./plugins/category/src'))
 
-// wtf.fetch('Tropicana Field').then(doc => {
-//   console.log(doc.summary())
-//   console.log(doc.classify())
+// wtf.fetch('Template:2019–20 coronavirus pandemic data/Switzerland medical cases').then(doc => {
+// console.log(doc.tables())
+// console.log(doc.summary())
+// console.log(doc.classify())
 // })
 // wtf.random().then(doc => {
 //   console.log(doc.title())
@@ -27,41 +28,158 @@ wtf.extend(require('./plugins/category/src'))
 
 // let str = `CoolToday Park is a ballpark in North Port, Florida, located in the southern portion of Sarasota County, 35 miles south of Sarasota, Florida.`
 // console.log(wtf(str).summary())
+
 let str = `
-{{Medical cases chart
-  |numwidth=mw
+{| class="wikitable mw-collapsible" style="float:left; text-align:center; font-size:86%" width="100%"
+! rowspan="2" | Date
+! colspan="26" | Canton
+! colspan="2" | Confirmed cases
+! colspan="2" | Deaths
+! rowspan="2" | Source(s)
+|-
+!{{Flagicon|Aargau}}<br>[[Canton of Aargau|AG]]
+!{{Flagicon|Appenzell Innerrhoden}}<br>[[Canton of Appenzell Innerrhoden|AI]]
+!{{Flagicon|Appenzell Ausserrhoden}}<br>[[Canton of Appenzell Ausserrhoden|AR]]
+!{{Flagicon|Bern}}<br>[[Canton of Bern|BE]]
+!{{Flagicon|Basel-Landschaft}}<br>[[Canton of Basel-Landschaft|BL]]
+!{{Flagicon|Basel-Stadt}}<br>[[Canton of Basel-Stadt|BS]]
+!{{Flagicon|Fribourg}}<br>[[Canton of Fribourg|FR]]
+!{{Flagicon|Geneva}}<br>[[Canton of Geneva|GE]]
+!{{Flagicon|Glarus}}<br>[[Canton of Glarus|GL]]
+!{{Flagicon|Grisons}}<br>[[Canton of Grisons|GR]]
+!{{Flagicon|Jura}}<br>[[Canton of Jura|JU]]
+!{{Flagicon|Lucerne}}<br>[[Canton of Lucerne|LU]]
+!{{Flagicon|Neuchâtel}}<br>[[Canton of Neuchâtel|NE]]
+!{{Flagicon|Nidwalden}}<br>[[Canton of Nidwalden|NW]]
+!{{Flagicon|Obwalden}}<br>[[Canton of Obwalden|OW]]
+!{{Flagicon|St. Gallen}}<br>[[Canton of St. Gallen|SG]]
+!{{Flagicon|Schaffhausen}}<br>[[Canton of Schaffhausen|SH]]
+!{{Flagicon|Solothurn}}<br>[[Canton of Solothurn|SO]]
+!{{Flagicon|Schwyz}}<br>[[Canton of Schwyz|SZ]]
+!{{Flagicon|Thurgau}}<br>[[Canton of Thurgau|TG]]
+!{{Flagicon|Ticino}}<br>want
+!{{Flagicon|Uri}}<br>[[Canton of Uri|UR]]
+!{{Flagicon|Vaud}}<br>[[Canton of Vaud|VD]]
+!{{Flagicon|Valais}}<br>[[Canton of Valais|VS]]
+!{{Flagicon|Zug}}<br>[[Canton of Zug|ZG]]
+!{{Flagicon|Zürich}}<br>[[Canton of Zürich|ZH]]
+!New
+!Total
+!New
+!Total
+|-
+|2020-02-25
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|1
+|
+|
+|
+|
+|
+|1
+|1
+|
+|
+|<ref name="20200225.01">{{cite web|url=https://www.swissinfo.ch/eng/covid-19_switzerland-confirms-first-coronavirus-case/45579278|title=Switzerland confirms first coronavirus case|date=25 February 2020|website=SWI swissinfo.ch|language=en-EN|accessdate=5 March 2020}}</ref><ref name="20200225.02">{{cite web|url=https://www.tagblatt.ch/news-service/inland-schweiz/tessin-meldet-ersten-bestaetigten-fall-von-corona-virus-in-der-schweiz-ld.1198115|title=Tessin meldet ersten bestätigten Fall von Corona-Virus in der Schweiz|last=|first=|date=25 February 2020|website=tagblatt.ch|language=de-DE|accessdate=5 March 2020}}</ref>
+|-
+|2020-02-26
+|
+|
+|
+|
+|
+|
+|
+|1
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+| 1
+| 2
+|
+|
+|<ref name="20200226.01">{{cite web|url=https://www.ge.ch/document/premier-cas-covid-19-diagnostique-canton-geneve|title=Premier cas COVID-19 diagnostiqué dans le canton de Genève|date=27 February 2020|website=République et canton de Genève - ge.ch|language=fr-FR|accessdate=5 March 2020}}</ref>
+|-
+|2020-02-27
+|1
+|
+|
+|
+|
+|1
+|
+|
+|
+|2
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|1
+|
+|
+|1
+|6
+|8
+|
+|
+|<ref name="20200227.01">{{cite web|url=https://www.gr.ch/DE/Medien/Mitteilungen/MMStaka/2020/Seiten/2020022704.aspx|title=Coronavirus: Kanton ergreift präventive Massnahmen gegen Weiterverbreitung|date=27 February 2020|website=Kanton Graubünden - gr.ch|language=de-DE|accessdate=5 March 2020}}</ref><ref name="20200227.02">{{cite web|url=https://www.ag.ch/de/aktuelles/medienportal/medienmitteilung/medienmitteilungen/mediendetails_138706.jsp|title=Fall von Coronavirus-SARS-CoV-2-Infektion im Kanton Aargau bestätigt|date=27 February 2020|website=Kanton Aargau - ag.ch|language=de-DE|accessdate=5 March 2020}}</ref><ref name="20200227.03">{{cite web|url=https://www.zh.ch/internet/de/aktuell/news/medienmitteilungen/2020/coronavirus-erster-fall-im-kanton-zuerich.html|title=Coronavirus: Erster Fall im Kanton Zürich|date=27 February 2020|website=Kanton Zürich - zh.ch|language=de-DE|accessdate=5 March 2020}}</ref><ref name="20200227.04">{{cite web|url=https://www.vd.ch/toutes-les-actualites/hotline-et-informations-sur-le-coronavirus/actualites/news/12509i-coronavirus-premier-cas-detecte-dans-le-canton-de-vaud/|title=Coronavirus : premier cas détecté dans le canton de Vaud|date=27 February 2020|website=État de Vaud - vd.ch|language=fr-FR|accessdate=5 March 2020}}</ref><ref name="20200227.05">{{cite web|url=https://www.coronavirus.bs.ch/nm/2020-coronavirus-erster-positiver-fall-in-basel-stadt-zweiter-positiv-getesteter-ausserkantonaler-fall-gd.html|title=Coronavirus: Erster positiver Fall in Basel-Stadt, zweiter positiv getesteter ausserkantonaler Fall|date=27 February 2020|website=Kanton Basel-Stadt - bs.ch|language=de-DE|accessdate=5 March 2020}}</ref>
+|-
+|}`
+// let doc = wtf(str)
+// console.log(doc.table().json()[0])
 
-  |disease=Green Flu
-  |location=Savannah, GA
-  |outbreak=2009 Green Flu outbreak
+let doc = wtf(`
+{{one}} {{two}}
+[[one]] [[two]]
+==one==
+===two===
+`)
 
-  |recoveries=n
-
-  |rows=
-  {{Medical cases chart/Row|2009-04-13|||42|||42|firstright1=y|divisor=40|numwidth=mw}}
-  {{Medical cases chart/Row|2009-04-14|||356|||356|+748%|divisor=40|numwidth=mw}}
-  {{Medical cases chart/Row|2009-04-15|||1503|||1,503|+322%|divisor=40|numwidth=mw}}
-  {{Medical cases chart/Row|2009-04-16|57||5915|||5,915|+294%|divisor=40|numwidth=mw}}
-  {{Medical cases chart/Row|2009-04-17|2000||9500|||~9,500|+60.6%|divisor=40|numwidth=mw}}
-  }}
-`
-
+console.log(doc.links('two'))
+console.log(doc.templates('two'))
+console.log(doc.sections('two'))
 // {{Place name disambiguation}}
 // {{Airport disambiguation}}
-
-// str = `{{flagathlete|[[Michael Phelps]]|USA}}`
-let doc = wtf(str)
-console.log(doc.text())
-console.log(doc.templates(0))
-
-// console.log(doc.infobox())
-// wtf.parseCategory('Major League Baseball venues').then(docs => {
-//   let arr = docs.map(doc => {
-//     return doc.sentence().text()
-//   })
-//   console.log(arr)
-// })
-// ;(async () => {
-//   let docs = await wtf.fetch(['Target Field', 'Tokyo Dome', 'Tropicana Field'])
-//   console.log(docs.map(doc => doc.title()))
-// })()

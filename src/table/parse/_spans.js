@@ -50,8 +50,9 @@ const doRowSpan = function(rows) {
 
 //
 const handleSpans = function(rows) {
-  rows = doRowSpan(rows)
   rows = doColSpan(rows)
+  rows = doRowSpan(rows)
+  // console.log(rows[1])
   return rows
 }
 module.exports = handleSpans

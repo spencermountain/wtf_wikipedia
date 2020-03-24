@@ -20,7 +20,11 @@ const fetchCat = async function(wtf, cat, lang, opts) {
   //only allow three requests at a time
   return slow.three(groups, doit).then(responses => {
     //flatten the results
-    return [].concat.apply([], responses)
+    let docs = [].concat.apply([], responses)
+    return {
+      docs: docs,
+      categories: resp.categories
+    }
   })
 }
 

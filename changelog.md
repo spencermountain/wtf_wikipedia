@@ -9,7 +9,7 @@
 ### 8.1.0
 
 - [major] fix Link json object in `.json()` result
-- [major] undocumented singular-name methods (like `.template()` now return 0th-response)
+- [major] fix inconsistent response for singular method aliases like `.template('foo')`
 - support `<noinclude>`
 - add `.url()` and `.language()` methods
 - - support setters on Link methods
