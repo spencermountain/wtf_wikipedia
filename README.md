@@ -520,9 +520,10 @@ wtf
 
 ### Image
 
-- **.links()** -
-- **.thumbnail()** -
-- **.format()** -
+- **.url()** - return url to full size image
+- **.thumbnail()** - return url to thumbnail (pass `size` to customize)
+- **.links()** - any links from the caption (if present)
+- **.format()** - get file format (e.g. `jpg`)
 - **.json()** - return some generic metadata for this image
 - **.text()** - does nothing
 
