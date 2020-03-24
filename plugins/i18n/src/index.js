@@ -1,34 +1,34 @@
-let list = [
-  'birth_date_and_age',
-  'citation',
-  'cite_book',
-  'cite_journal',
-  'cite_web',
-  'commons_cat',
-  'coord',
-  'flag',
-  'flagicon',
-  'formatnum',
-  'ipa',
-  'isbn',
-  'main',
-  'portal',
-  'reflist',
-  'sfn',
-  'small',
-  'start_date',
-  'taxobox'
-]
-let mapping = list.reduce((h, str) => {
-  h[str] = require(`./data/${str}`)
-  return h
-}, {})
+let mapping = {
+  'birth date and age': require('./data/birth_date_and_age'),
+  citation: require('./data/citation'),
+  'cite book': require('./data/cite_book'),
+  'cite journal': require('./data/cite_journal'),
+  'cite web': require('./data/cite_web'),
+  'commons cat': require('./data/commons_cat'),
+  coord: require('./data/coord'),
+  flag: require('./data/flag'),
+  flagicon: require('./data/flagicon'),
+  formatnum: require('./data/formatnum'),
+  ipa: require('./data/ipa'),
+  isbn: require('./data/isbn'),
+  main: require('./data/main'),
+  portal: require('./data/portal'),
+  reflist: require('./data/reflist'),
+  sfn: require('./data/sfn'),
+  small: require('./data/small'),
+  'start date': require('./data/start_date'),
+  taxobox: require('./data/taxobox')
+}
 
 const plugin = function(models, templates) {
   Object.keys(mapping).forEach(k => {
+    // if (!templates[k]) {
+    //   console.log(k)
+    // }
     mapping[k].forEach(name => {
       templates[name] = templates[k]
     })
   })
+  // console.log(templates['hlavný článok'])
 }
 module.exports = plugin

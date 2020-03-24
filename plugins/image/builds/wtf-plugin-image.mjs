@@ -1,4 +1,4 @@
-/* wtf-plugin-image 0.0.1  MIT */
+/* wtf-plugin-image 0.1.0  MIT */
 import https from 'https';
 
 function _typeof(obj) {

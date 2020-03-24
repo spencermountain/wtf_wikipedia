@@ -1,4 +1,4 @@
-/* wtf-plugin-latex 0.1.0  MIT */
+/* wtf-plugin-latex 0.1.1  MIT */
 var defaults = {
   infoboxes: true,
   sections: true
@@ -133,7 +133,7 @@ var doSection = function doSection(options) {
       return s.latex(options);
     }).join(' ');
     out += '\n';
-  } // var title_tag = ' SECTION depth=' + num + ' - TITLE: ' + section.title + '\n';
+  } // let title_tag = ' SECTION depth=' + num + ' - TITLE: ' + section.title + '\n';
   // wrap a section comment
   //out = '\n% BEGIN' + title_tag + out + '\n% END' + title_tag;
 

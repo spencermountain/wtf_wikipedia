@@ -1,4 +1,4 @@
-/* wtf-plugin-markdown 0.1.0  MIT */
+/* wtf-plugin-markdown 0.1.1  MIT */
 var defaults = {
   redirects: true,
   infoboxes: true,

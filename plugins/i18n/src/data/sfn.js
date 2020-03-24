@@ -1,1 +1,9 @@
-module.exports = ['Harvnp', 'HarvRef', 'Kdş', 'Mallonga piednoto', 'Odn', 'Sfn', 'Зноска']
+module.exports = [
+  'harvnp',
+  'harvref',
+  'kdş',
+  'mallonga piednoto',
+  'odn',
+  //'sfn',
+  'зноска'
+]

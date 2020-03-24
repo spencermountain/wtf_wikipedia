@@ -65,7 +65,7 @@ export default [
         presets: ['@babel/preset-env']
       }),
       terser(),
-      sizeCheck({ expect: 10, warn: 10 })
+      sizeCheck({ expect: 24, warn: 10 })
     ]
   }
 ]

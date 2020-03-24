@@ -1,4 +1,4 @@
-/* wtf_wikipedia 8.0.0 MIT */
+/* wtf_wikipedia 8.1.0 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('https')) :
   typeof define === 'function' && define.amd ? define(['https'], factory) :
@@ -34,6 +34,21 @@
     }
 
     return _typeof(obj);
+  }
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
   }
 
   function _slicedToArray(arr, i) {
@@ -156,7 +171,8 @@
   var _01MakeUrl = makeUrl;
 
   //this data-format from mediawiki api is nutso
-  var getResult = function getResult(data) {
+  var getResult = function getResult(data, options) {
+    options = options || {};
     var pages = Object.keys(data.query.pages);
     var docs = pages.map(function (id) {
       var page = data.query.pages[id] || {};
@@ -165,17 +181,18 @@
         return null;
       }
 
-      var text = page.revisions[0]['*']; //us the 'generator' result format, for the random() method
+      var text = page.revisions[0]['*']; // console.log(page.revisions[0])
+      //us the 'generator' result format, for the random() method
 
       if (!text && page.revisions[0].slots) {
         text = page.revisions[0].slots.main['*'];
       }
 
-      var meta = {
+      var meta = Object.assign({}, options, {
         title: page.title,
         pageID: page.pageid,
         namespace: page.ns
-      };
+      });
 
       try {
         return {
@@ -455,6 +472,27 @@
 
       return this.data.pageID;
     },
+    language: function language(lang) {
+      if (lang !== undefined) {
+        this.data.lang = lang;
+      }
+
+      return this.data.lang;
+    },
+    url: function url() {
+      var title = this.title();
+
+      if (!title) {
+        return null;
+      }
+
+      var lang = this.language() || 'en';
+      var domain = this.data.domain || 'wikipedia.org'; // replace blank to underscore
+
+      title = title.replace(/ /g, '_');
+      title = encodeURIComponent(title);
+      return "https://".concat(lang, ".").concat(domain, ".org/wiki/").concat(title);
+    },
     namespace: function namespace(ns) {
       if (ns !== undefined) {
         this.data.namespace = ns;
@@ -635,22 +673,36 @@
       });
       return this;
     }
+  };
+
+  var isArray$1 = function isArray(arr) {
+    return Object.prototype.toString.call(arr) === '[object Array]';
   }; //add singular-methods, too
 
-  var plurals = ['sections', 'infoboxes', 'sentences', 'citations', 'references', 'coordinates', 'tables', 'links', 'images', 'categories'];
+
+  var plurals = ['sections', 'infoboxes', 'sentences', 'citations', 'references', 'coordinates', 'tables', 'lists', 'links', 'images', 'templates', 'categories'];
   plurals.forEach(function (fn) {
     var sing = fn.replace(/ies$/, 'y');
-    sing = sing.replace(/e?s$/, '');
+    sing = sing.replace(/oxes$/, 'ox');
+    sing = sing.replace(/s$/, '');
 
     methods$1[sing] = function (n) {
       n = n || 0;
-      return this[fn](n);
+      var res = this[fn](n);
+
+      if (isArray$1(res)) {
+        return res[0];
+      }
+
+      return res;
     };
   });
   Object.keys(methods$1).forEach(function (k) {
     Document.prototype[k] = methods$1[k];
   }); //alias these ones
 
+  Document.prototype.lang = Document.prototype.language;
+  Document.prototype.ns = Document.prototype.namespace;
   Document.prototype.plaintext = Document.prototype.text;
   Document.prototype.isDisambig = Document.prototype.isDisambiguation;
   Document.prototype.citations = Document.prototype.references;
@@ -1626,15 +1678,16 @@
 
   var ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i;
   var external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
-  var link_reg = /\[\[(.{0,160}?)\]\]([a-z']+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]'s"
+  var link_reg = /\[\[(.{0,160}?)\]\]([a-z]+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]s"
 
   var external_links = function external_links(links, str) {
-    str.replace(external_link, function (all, protocol, link, text) {
+    str.replace(external_link, function (raw, protocol, link, text) {
       text = text || '';
       links.push({
         type: 'external',
         site: protocol + link,
-        text: text.trim()
+        text: text.trim(),
+        raw: raw
       });
       return text;
     });
@@ -1643,7 +1696,7 @@
 
   var internal_links = function internal_links(links, str) {
     //regular links
-    str.replace(link_reg, function (_, s, apostrophe) {
+    str.replace(link_reg, function (raw, s, suffix) {
       var txt = null; //make a copy of original
 
       var link = s;
@@ -1666,15 +1719,16 @@
       if (link.match(ignore_links)) {
         return s;
       } //kill off just these just-anchor links [[#history]]
-
-
-      if (link.match(/^#/i)) {
-        return s;
-      } //remove anchors from end [[toronto#history]]
+      // if (link.match(/^#/i)) {
+      //   console.log(s)
+      //   return s
+      // }
+      //remove anchors from end [[toronto#history]]
 
 
       var obj = {
-        page: link
+        page: link,
+        raw: raw
       };
       obj.page = obj.page.replace(/#(.*)/, function (a, b) {
         obj.anchor = b;
@@ -1683,14 +1737,18 @@
 
       obj = interwiki(obj);
 
+      if (obj.wiki) {
+        obj.type = 'interwiki';
+      }
+
       if (txt !== null && txt !== obj.page) {
         obj.text = txt;
       } //finally, support [[link]]'s apostrophe
 
 
-      if (apostrophe === "'s") {
+      if (suffix) {
         obj.text = obj.text || obj.page;
-        obj.text += apostrophe;
+        obj.text += suffix.trim();
       } //titlecase it, if necessary
 
 
@@ -1813,7 +1871,7 @@
 
     wiki = wiki.replace(/ ?<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?> ?/g, ' '); //<sub>, </sub>
 
-    wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s)[ \/]?> ?/g, ' '); //<abbr>, </abbr>
+    wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s|small)[ \/]?> ?/g, ' '); //<abbr>, </abbr>
 
     wiki = wiki.replace(/ ?<[ \/]?h[0-9][ \/]?> ?/g, ' '); //<h2>, </h2>
 
@@ -1824,8 +1882,9 @@
 
   var kill_xml_1 = kill_xml;
 
-  function preProcess(r, wiki, options) {
-    //remove comments
+  function preProcess(doc) {
+    var wiki = doc.wiki; //remove comments
+
     wiki = wiki.replace(/<!--[\s\S]{0,2000}?-->/g, '');
     wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, ''); //signitures
 
@@ -1847,7 +1906,7 @@
     wiki = wiki.replace(/\([,;: ]+?\)/g, ''); //these templates just screw things up, too
 
     wiki = wiki.replace(/{{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '');
-    return wiki;
+    doc.wiki = wiki;
   }
 
   var preProcess_1 = preProcess;
@@ -2353,9 +2412,792 @@
       return '';
     }
   };
-  var helpers_1 = helpers;
+
+  var interwiki$1 = {
+    acronym: 'https://www.acronymfinder.com/$1.html',
+    advisory: 'https://advisory.wikimedia.org/wiki/$1',
+    advogato: 'http://www.advogato.org/$1',
+    aew: 'https://wiki.arabeyes.org/$1',
+    appropedia: 'http://www.appropedia.org/$1',
+    aquariumwiki: 'https://www.theaquariumwiki.com/$1',
+    arborwiki: 'https://localwiki.org/ann-arbor/$1',
+    arxiv: 'https://arxiv.org/abs/$1',
+    atmwiki: 'http://www.otterstedt.de/wiki/index.php/$1',
+    baden: 'http://www.stadtwiki-baden-baden.de/wiki/$1/',
+    battlestarwiki: 'http://en.battlestarwiki.org/wiki/$1',
+    bcnbio: 'http://historiapolitica.bcn.cl/resenas_parlamentarias/wiki/$1',
+    beacha: 'http://www.beachapedia.org/$1',
+    betawiki: 'https://translatewiki.net/wiki/$1',
+    bibcode: 'http://adsabs.harvard.edu/abs/$1',
+    bibliowiki: 'https://wikilivres.org/wiki/$1',
+    bluwiki: 'http://bluwiki.com/go/$1',
+    blw: 'http://britainloveswikipedia.org/wiki/$1',
+    botwiki: 'http://botwiki.sno.cc/wiki/$1',
+    boxrec: 'http://www.boxrec.com/media/index.php?$1',
+    brickwiki: 'http://www.brickwiki.info/wiki/$1',
+    bugzilla: 'https://bugzilla.wikimedia.org/show_bug.cgi?id=$1',
+    bulba: 'https://bulbapedia.bulbagarden.net/wiki/$1',
+    c: 'https://commons.wikimedia.org/wiki/$1',
+    c2: 'http://c2.com/cgi/wiki?$1',
+    c2find: 'http://c2.com/cgi/wiki?FindPage&value=$1',
+    cache: 'https://www.google.com/search?q=cache:$1',
+    ĉej: 'http://esperanto.blahus.cz/cxej/vikio/index.php/$1',
+    cellwiki: 'http://cell.wikia.com/wiki/$1',
+    centralwikia: 'http://community.wikia.com/wiki/$1',
+    chej: 'http://esperanto.blahus.cz/cxej/vikio/index.php/$1',
+    choralwiki: 'http://www.cpdl.org/wiki/index.php/$1',
+    citizendium: 'http://en.citizendium.org/wiki/$1',
+    ckwiss: 'http://www.ck-wissen.de/ckwiki/index.php?title=$1',
+    comixpedia: 'http://www.comixpedia.org/index.php?title=$1',
+    commons: 'https://commons.wikimedia.org/wiki/$1',
+    communityscheme: 'http://community.schemewiki.org/?c=s&key=$1',
+    communitywiki: 'https://communitywiki.org/$1',
+    comune: 'http://rete.comuni-italiani.it/wiki/$1',
+    creativecommons: 'https://creativecommons.org/licenses/$1',
+    creativecommonswiki: 'https://wiki.creativecommons.org/$1',
+    cxej: 'http://esperanto.blahus.cz/cxej/vikio/index.php/$1',
+    dcc: 'http://www.dccwiki.com/$1',
+    dcdatabase: 'http://dc.wikia.com/$1',
+    dcma: 'http://christian-morgenstern.de/dcma/index.php?title=$1',
+    debian: 'https://wiki.debian.org/$1',
+    delicious: 'https://www.delicious.com/tag/$1',
+    devmo: 'https://developer.mozilla.org/en/docs/$1',
+    dictionary: 'http://www.dict.org/bin/Dict?Database=*&Form=Dict1&Strategy=*&Query=$1',
+    dict: 'http://www.dict.org/bin/Dict?Database=*&Form=Dict1&Strategy=*&Query=$1',
+    disinfopedia: 'https://sourcewatch.org/index.php/$1',
+    distributedproofreaders: 'http://www.pgdp.net/wiki/$1',
+    distributedproofreadersca: 'http://www.pgdpcanada.net/wiki/index.php/$1',
+    dmoz: 'https://curlie.org/$1',
+    dmozs: 'https://curlie.org/search?q=$1',
+    doi: 'https://doi.org/$1',
+    donate: 'https://donate.wikimedia.org/wiki/$1',
+    doom_wiki: 'http://doom.wikia.com/wiki/$1',
+    download: 'https://releases.wikimedia.org/$1',
+    dbdump: 'https://dumps.wikimedia.org/$1/latest/',
+    dpd: 'http://lema.rae.es/dpd/?key=$1',
+    drae: 'http://dle.rae.es/?w=$1',
+    dreamhost: 'http://wiki.dreamhost.com/index.php/$1',
+    drumcorpswiki: 'http://www.drumcorpswiki.com/index.php/$1',
+    dwjwiki: 'http://www.suberic.net/cgi-bin/dwj/wiki.cgi?$1',
+    eĉei: 'http://www.ikso.net/cgi-bin/wiki.pl?$1',
+    ecoreality: 'http://www.EcoReality.org/wiki/$1',
+    ecxei: 'http://www.ikso.net/cgi-bin/wiki.pl?$1',
+    elibre: 'http://enciclopedia.us.es/index.php/$1',
+    emacswiki: 'https://www.emacswiki.org/emacs?$1',
+    encyc: 'http://encyc.org/wiki/$1',
+    energiewiki: 'http://www.netzwerk-energieberater.de/wiki/index.php/$1',
+    englyphwiki: 'http://en.glyphwiki.org/wiki/$1',
+    enkol: 'http://enkol.pl/$1',
+    eokulturcentro: 'http://esperanto.toulouse.free.fr/nova/wikini/wakka.php?wiki=$1',
+    esolang: 'http://esolangs.org/wiki/$1',
+    etherpad: 'https://etherpad.wikimedia.org/$1',
+    ethnologue: 'https://www.ethnologue.com/language/$1',
+    ethnologuefamily: 'https://www.ethnologue.com/show_family.asp?subid=$1',
+    evowiki: 'http://wiki.cotch.net/index.php/$1',
+    exotica: 'https://www.exotica.org.uk/wiki/$1',
+    fanimutationwiki: 'http://wiki.animutationportal.com/index.php/$1',
+    fedora: 'https://fedoraproject.org/wiki/$1',
+    finalfantasy: 'http://finalfantasy.wikia.com/wiki/$1',
+    finnix: 'https://www.finnix.org/$1',
+    flickruser: 'https://www.flickr.com/people/$1',
+    flickrphoto: 'https://www.flickr.com/photo.gne?id=$1',
+    floralwiki: 'http://www.floralwiki.co.uk/wiki/$1',
+    foldoc: 'http://foldoc.org/$1',
+    foundation: 'https://foundation.wikimedia.org/wiki/$1',
+    foundationsite: 'https://wikimediafoundation.org/$1',
+    foxwiki: 'http://fox.wikis.com/wc.dll?Wiki~$1',
+    freebio: 'http://freebiology.org/wiki/$1',
+    freebsdman: 'https://www.FreeBSD.org/cgi/man.cgi?apropos=1&query=$1',
+    freeculturewiki: 'http://wiki.freeculture.org/index.php/$1',
+    freedomdefined: 'https://freedomdefined.org/$1',
+    freefeel: 'http://freefeel.org/wiki/$1',
+    freekiwiki: 'http://wiki.freegeek.org/index.php/$1',
+    freenode: 'irc://irc.freenode.net/$1',
+    freesoft: 'https://directory.fsf.org/wiki/$1',
+    ganfyd: 'http://ganfyd.org/index.php?title=$1',
+    gardenology: 'http://www.gardenology.org/wiki/$1',
+    gausswiki: 'http://gauss.ffii.org/$1',
+    gentoo: 'https://wiki.gentoo.org/wiki/$1',
+    genwiki: 'http://wiki.genealogy.net/index.php/$1',
+    gerrit: 'https://gerrit.wikimedia.org/r/$1',
+    git: 'https://gerrit.wikimedia.org/g/$1',
+    google: 'https://www.google.com/search?q=$1',
+    googledefine: 'https://www.google.com/search?q=define:$1',
+    googlegroups: 'https://groups.google.com/groups?q=$1',
+    guildwarswiki: 'https://wiki.guildwars.com/wiki/$1',
+    guildwiki: 'http://guildwars.wikia.com/wiki/$1',
+    guc: 'https://tools.wmflabs.org/guc/?user=$1',
+    gucprefix: 'https://tools.wmflabs.org/guc/?isPrefixPattern=1&src=rc&user=$1',
+    gutenberg: 'http://www.gutenberg.org/etext/$1',
+    gutenbergwiki: 'http://www.gutenberg.org/wiki/$1',
+    hackerspaces: 'http://hackerspaces.org/wiki/$1',
+    h2wiki: 'http://halowiki.net/p/$1',
+    hammondwiki: 'http://www.dairiki.org/HammondWiki/index.php3?$1',
+    hdl: 'http://hdl.handle.net/$1',
+    heraldik: 'https://heraldik-wiki.de/wiki/$1',
+    heroeswiki: 'http://heroeswiki.com/$1',
+    horizonlabs: 'https://horizon.wikimedia.org/$1',
+    hrwiki: 'http://www.hrwiki.org/index.php/$1',
+    hrfwiki: 'http://fanstuff.hrwiki.org/index.php/$1',
+    hupwiki: 'http://wiki.hup.hu/index.php/$1',
+    iarchive: 'https://archive.org/details/$1',
+    imdbname: 'https://www.imdb.com/name/nm$1/',
+    imdbtitle: 'https://www.imdb.com/title/tt$1/',
+    imdbcompany: 'https://www.imdb.com/company/co$1/',
+    imdbcharacter: 'https://www.imdb.com/character/ch$1/',
+    incubator: 'https://incubator.wikimedia.org/wiki/$1',
+    infosecpedia: 'http://infosecpedia.org/wiki/$1',
+    infosphere: 'https://theinfosphere.org/$1',
+    irc: 'irc://irc.freenode.net/$1',
+    ircs: 'ircs://irc.freenode.net/$1',
+    ircrc: 'irc://irc.wikimedia.org/$1',
+    rcirc: 'irc://irc.wikimedia.org/$1',
+    'iso639-3': 'https://iso639-3.sil.org/code/$1',
+    issn: 'https://www.worldcat.org/issn/$1',
+    iuridictum: 'https://iuridictum.pecina.cz/w/$1',
+    jaglyphwiki: 'http://glyphwiki.org/wiki/$1',
+    jefo: 'http://esperanto-jeunes.org/wiki/$1',
+    jerseydatabase: 'http://jerseydatabase.com/wiki.php?id=$1',
+    jira: 'https://jira.toolserver.org/browse/$1',
+    jspwiki: 'http://www.ecyrd.com/JSPWiki/Wiki.jsp?page=$1',
+    jstor: 'http://www.jstor.org/journals/$1',
+    kamelo: 'http://kamelopedia.mormo.org/index.php/$1',
+    karlsruhe: 'https://ka.stadtwiki.net/$1',
+    kinowiki: 'http://kino.skripov.com/index.php/$1',
+    komicawiki: 'https://wiki.komica.org/?$1',
+    kontuwiki: 'http://kontu.wiki/$1',
+    wikitech: 'https://wikitech.wikimedia.org/wiki/$1',
+    libreplanet: 'https://libreplanet.org/wiki/$1',
+    linguistlist: 'https://linguistlist.org/forms/langs/LLDescription.cfm?code=$1',
+    linuxwiki: 'http://www.linuxwiki.de/$1',
+    linuxwikide: 'http://www.linuxwiki.de/$1',
+    liswiki: 'https://liswiki.org/wiki/$1',
+    literateprograms: 'http://en.literateprograms.org/$1',
+    livepedia: 'http://www.livepedia.gr/index.php?title=$1',
+    localwiki: 'https://localwiki.org/$1',
+    lojban: 'https://mw.lojban.org/papri/$1',
+    lostpedia: 'http://lostpedia.wikia.com/wiki/$1',
+    lqwiki: 'http://wiki.linuxquestions.org/wiki/$1',
+    luxo: 'https://tools.wmflabs.org/guc/?user=$1',
+    mail: 'https://lists.wikimedia.org/mailman/listinfo/$1',
+    mailarchive: 'https://lists.wikimedia.org/pipermail/$1',
+    mariowiki: 'https://www.mariowiki.com/$1',
+    marveldatabase: 'http://www.marveldatabase.com/wiki/index.php/$1',
+    meatball: 'http://meatballwiki.org/wiki/$1',
+    mw: 'https://www.mediawiki.org/wiki/$1',
+    mediazilla: 'https://bugzilla.wikimedia.org/$1',
+    memoryalpha: 'https://memory-alpha.fandom.com/wiki/$1',
+    metawiki: 'https://meta.wikimedia.org/wiki/$1',
+    metawikimedia: 'https://meta.wikimedia.org/wiki/$1',
+    metawikipedia: 'https://meta.wikimedia.org/wiki/$1',
+    mineralienatlas: 'https://www.mineralienatlas.de/lexikon/index.php/$1',
+    moinmoin: 'https://moinmo.in/$1',
+    monstropedia: 'http://www.monstropedia.org/?title=$1',
+    mosapedia: 'http://mosapedia.de/wiki/index.php/$1',
+    mozcom: 'http://mozilla.wikia.com/wiki/$1',
+    mozillawiki: 'https://wiki.mozilla.org/$1',
+    mozillazinekb: 'http://kb.mozillazine.org/$1',
+    musicbrainz: 'http://musicbrainz.org/doc/$1',
+    mediawikiwiki: 'https://www.mediawiki.org/wiki/$1',
+    mwod: 'https://www.merriam-webster.com/dictionary/$1',
+    mwot: 'https://www.merriam-webster.com/thesaurus/$1',
+    nkcells: 'http://www.nkcells.info/index.php?title=$1',
+    nara: 'https://catalog.archives.gov/id/$1',
+    nosmoke: 'http://no-smok.net/nsmk/$1',
+    nost: 'https://nostalgia.wikipedia.org/wiki/$1',
+    nostalgia: 'https://nostalgia.wikipedia.org/wiki/$1',
+    oeis: 'https://oeis.org/$1',
+    oldwikisource: 'https://wikisource.org/wiki/$1',
+    olpc: 'http://wiki.laptop.org/go/$1',
+    omegawiki: 'http://www.omegawiki.org/Expression:$1',
+    onelook: 'https://www.onelook.com/?ls=b&w=$1',
+    openlibrary: 'http://openlibrary.org/$1',
+    openstreetmap: 'https://wiki.openstreetmap.org/wiki/$1',
+    openwetware: 'https://openwetware.org/wiki/$1',
+    opera7wiki: 'http://operawiki.info/$1',
+    organicdesign: 'https://www.organicdesign.co.nz/$1',
+    orthodoxwiki: 'https://orthodoxwiki.org/$1',
+    osmwiki: 'https://wiki.openstreetmap.org/wiki/$1',
+    otrs: 'https://ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&TicketID=$1',
+    otrswiki: 'https://otrs-wiki.wikimedia.org/wiki/$1',
+    ourmedia: 'https://www.socialtext.net/ourmedia/index.cgi?$1',
+    outreach: 'https://outreach.wikimedia.org/wiki/$1',
+    outreachwiki: 'https://outreach.wikimedia.org/wiki/$1',
+    owasp: 'https://www.owasp.org/index.php/$1',
+    panawiki: 'http://wiki.alairelibre.net/index.php?title=$1',
+    patwiki: 'http://gauss.ffii.org/$1',
+    personaltelco: 'https://personaltelco.net/wiki/$1',
+    petscan: 'https://petscan.wmflabs.org/?psid=$1',
+    phab: 'https://phabricator.wikimedia.org/$1',
+    phabricator: 'https://phabricator.wikimedia.org/$1',
+    phwiki: 'http://www.pocketheaven.com/ph/wiki/index.php?title=$1',
+    phpwiki: 'http://phpwiki.sourceforge.net/phpwiki/index.php?$1',
+    planetmath: 'http://planetmath.org/node/$1',
+    pmeg: 'http://www.bertilow.com/pmeg/$1',
+    pmid: 'https://www.ncbi.nlm.nih.gov/pubmed/$1?dopt=Abstract',
+    pokewiki: 'http://pokewiki.de/$1',
+    pokéwiki: 'http://pokewiki.de/$1',
+    policy: 'https://policy.wikimedia.org/$1',
+    proofwiki: 'https://www.proofwiki.org/wiki/$1',
+    pyrev: 'https://www.mediawiki.org/wiki/Special:Code/pywikipedia/$1',
+    pythoninfo: 'https://wiki.python.org/moin/$1',
+    pythonwiki: 'http://www.pythonwiki.de/$1',
+    pywiki: 'http://c2.com/cgi/wiki?$1',
+    psycle: 'http://psycle.sourceforge.net/wiki/$1',
+    quality: 'https://quality.wikimedia.org/wiki/$1',
+    quarry: 'https://quarry.wmflabs.org/$1',
+    regiowiki: 'https://regiowiki.at/wiki/$1',
+    rev: 'https://www.mediawiki.org/wiki/Special:Code/MediaWiki/$1',
+    revo: 'http://purl.org/NET/voko/revo/art/$1.html',
+    rfc: 'https://tools.ietf.org/html/rfc$1',
+    rheinneckar: 'http://rhein-neckar-wiki.de/$1',
+    robowiki: 'http://robowiki.net/?$1',
+    rodovid: 'http://en.rodovid.org/wk/$1',
+    reuterswiki: 'http://glossary.reuters.com/index.php/$1',
+    rowiki: 'http://wiki.rennkuckuck.de/index.php/$1',
+    rt: 'https://rt.wikimedia.org/Ticket/Display.html?id=$1',
+    rtfm: 'ftp://rtfm.mit.edu/pub/faqs/$1',
+    s23wiki: 'http://s23.org/wiki/$1',
+    scholar: 'https://scholar.google.com/scholar?q=$1',
+    schoolswp: 'http://schools-wikipedia.org/wiki/$1',
+    scores: 'https://imslp.org/wiki/$1',
+    scoutwiki: 'http://en.scoutwiki.org/$1',
+    scramble: 'http://www.scramble.nl/wiki/index.php?title=$1',
+    seapig: 'http://www.seapig.org/$1',
+    seattlewiki: 'http://seattle.wikia.com/wiki/$1',
+    slwiki: 'http://wiki.secondlife.com/wiki/$1',
+    'semantic-mw': 'https://www.semantic-mediawiki.org/wiki/$1',
+    senseislibrary: 'https://senseis.xmp.net/?$1',
+    sharemap: 'https://sharemap.org/$1',
+    silcode: 'http://www.sil.org/iso639-3/documentation.asp?id=$1',
+    slashdot: 'https://slashdot.org/article.pl?sid=$1',
+    sourceforge: 'https://sourceforge.net/$1',
+    spcom: 'https://spcom.wikimedia.org/wiki/$1',
+    species: 'https://species.wikimedia.org/wiki/$1',
+    squeak: 'http://wiki.squeak.org/squeak/$1',
+    stats: 'https://stats.wikimedia.org/$1',
+    stewardry: 'https://tools.wmflabs.org/meta/stewardry/?wiki=$1',
+    strategy: 'https://strategy.wikimedia.org/wiki/$1',
+    strategywiki: 'http://strategywiki.org/wiki/$1',
+    sulutil: 'https://meta.wikimedia.org/wiki/Special:CentralAuth/$1',
+    swtrain: 'http://train.spottingworld.com/$1',
+    svn: 'https://svn.wikimedia.org/viewvc/mediawiki/$1?view=log',
+    swinbrain: 'https://swinbrain.ict.swin.edu.au/wiki/$1',
+    tabwiki: 'http://www.tabwiki.com/index.php/$1',
+    tclerswiki: 'http://wiki.tcl.tk/$1',
+    technorati: 'http://www.technorati.com/search/$1',
+    tenwiki: 'https://ten.wikipedia.org/wiki/$1',
+    testwiki: 'https://test.wikipedia.org/wiki/$1',
+    testwikidata: 'https://test.wikidata.org/wiki/$1',
+    test2wiki: 'https://test2.wikipedia.org/wiki/$1',
+    tfwiki: 'https://tfwiki.net/wiki/$1',
+    thelemapedia: 'http://www.thelemapedia.org/index.php/$1',
+    theopedia: 'http://www.theopedia.com/$1',
+    thinkwiki: 'http://www.thinkwiki.org/wiki/$1',
+    ticket: 'https://ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&TicketNumber=$1',
+    tmbw: 'http://tmbw.net/wiki/$1',
+    tmnet: 'http://www.technomanifestos.net/?$1',
+    tmwiki: 'http://www.EasyTopicMaps.com/?page=$1',
+    toolforge: 'https://tools.wmflabs.org/$1',
+    toollabs: 'https://tools.wmflabs.org/$1',
+    tools: 'https://toolserver.org/$1',
+    tswiki: 'https://www.mediawiki.org/wiki/Toolserver:$1',
+    translatewiki: 'https://translatewiki.net/wiki/$1',
+    tviv: 'http://tviv.org/wiki/$1',
+    tvtropes: 'http://www.tvtropes.org/pmwiki/pmwiki.php/Main/$1',
+    twiki: 'http://twiki.org/cgi-bin/view/$1',
+    tyvawiki: 'http://www.tyvawiki.org/wiki/$1',
+    umap: 'https://umap.openstreetmap.fr/$1',
+    uncyclopedia: 'http://en.uncyclopedia.co/wiki/$1',
+    unihan: 'http://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=$1',
+    unreal: 'http://wiki.beyondunreal.com/wiki/$1',
+    urbandict: 'http://www.urbandictionary.com/define.php?term=$1',
+    usej: 'http://www.tejo.org/usej/$1',
+    usemod: 'http://www.usemod.com/cgi-bin/wiki.pl?$1',
+    usability: 'https://usability.wikimedia.org/wiki/$1',
+    utrs: 'https://utrs.wmflabs.org/appeal.php?id=$1',
+    vikidia: 'https://fr.vikidia.org/wiki/$1',
+    vlos: 'https://tusach.thuvienkhoahoc.com/wiki/$1',
+    vkol: 'http://kol.coldfront.net/thekolwiki/index.php/$1',
+    voipinfo: 'https://www.voip-info.org/wiki/view/$1',
+    votewiki: 'https://vote.wikimedia.org/wiki/$1',
+    werelate: 'https://www.werelate.org/wiki/$1',
+    wg: 'https://wg-en.wikipedia.org/wiki/$1',
+    wikia: 'http://www.wikia.com/wiki/w:c:$1',
+    wikiasite: 'http://www.wikia.com/wiki/w:c:$1',
+    wikiapiary: 'https://wikiapiary.com/wiki/$1',
+    wikibooks: 'https://en.wikibooks.org/wiki/$1',
+    wikichristian: 'http://www.wikichristian.org/index.php?title=$1',
+    wikicities: 'http://www.wikia.com/wiki/w:$1',
+    wikicity: 'http://www.wikia.com/wiki/w:c:$1',
+    wikiconference: 'https://wikiconference.org/wiki/$1',
+    wikidata: 'https://www.wikidata.org/wiki/$1',
+    wikif1: 'http://www.wikif1.org/$1',
+    wikifur: 'https://en.wikifur.com/wiki/$1',
+    wikihow: 'https://www.wikihow.com/$1',
+    wikiindex: 'http://wikiindex.org/$1',
+    wikilemon: 'http://wiki.illemonati.com/$1',
+    wikilivres: 'https://wikilivres.org/wiki/$1',
+    wikilivresru: 'http://wikilivres.ru/$1',
+    'wikimac-de': 'http://apfelwiki.de/wiki/Main/$1',
+    wikimedia: 'https://foundation.wikimedia.org/wiki/$1',
+    wikinews: 'https://en.wikinews.org/wiki/$1',
+    wikinfo: 'http://wikinfo.org/w/index.php/$1',
+    wikinvest: 'https://meta.wikimedia.org/wiki/Interwiki_map/discontinued#Wikinvest',
+    wikiotics: 'https://wikiotics.org/$1',
+    wikipapers: 'http://wikipapers.referata.com/wiki/$1',
+    wikipedia: 'https://en.wikipedia.org/wiki/$1',
+    wikipediawikipedia: 'https://en.wikipedia.org/wiki/Wikipedia:$1',
+    wikiquote: 'https://en.wikiquote.org/wiki/$1',
+    wikisophia: 'http://wikisophia.org/index.php?title=$1',
+    wikisource: 'https://en.wikisource.org/wiki/$1',
+    wikispecies: 'https://species.wikimedia.org/wiki/$1',
+    wikispot: 'http://wikispot.org/?action=gotowikipage&v=$1',
+    wikiskripta: 'http://www.wikiskripta.eu/index.php/$1',
+    labsconsole: 'https://wikitech.wikimedia.org/wiki/$1',
+    wikiti: 'http://wikiti.denglend.net/index.php?title=$1',
+    wikiversity: 'https://en.wikiversity.org/wiki/$1',
+    wikivoyage: 'https://en.wikivoyage.org/wiki/$1',
+    betawikiversity: 'https://beta.wikiversity.org/wiki/$1',
+    wikiwikiweb: 'http://c2.com/cgi/wiki?$1',
+    wiktionary: 'https://en.wiktionary.org/wiki/$1',
+    wipipedia: 'http://wipipedia.org/index.php/$1',
+    wlug: 'http://www.wlug.org.nz/$1',
+    wmam: 'https://am.wikimedia.org/wiki/$1',
+    wmar: 'http://www.wikimedia.org.ar/wiki/$1',
+    wmat: 'https://mitglieder.wikimedia.at/$1',
+    wmau: 'https://wikimedia.org.au/wiki/$1',
+    wmbd: 'https://bd.wikimedia.org/wiki/$1',
+    wmbe: 'https://be.wikimedia.org/wiki/$1',
+    wmbr: 'https://br.wikimedia.org/wiki/$1',
+    wmca: 'https://ca.wikimedia.org/wiki/$1',
+    wmch: 'https://www.wikimedia.ch/$1',
+    wmcl: 'https://www.wikimediachile.cl/index.php?title=$1',
+    wmcn: 'https://cn.wikimedia.org/wiki/$1',
+    wmco: 'https://co.wikimedia.org/wiki/$1',
+    wmcz: 'https://www.wikimedia.cz/web/$1',
+    wmdc: 'https://wikimediadc.org/wiki/$1',
+    securewikidc: 'https://secure.wikidc.org/$1',
+    wmde: 'https://wikimedia.de/wiki/$1',
+    wmdk: 'https://dk.wikimedia.org/wiki/$1',
+    wmee: 'https://ee.wikimedia.org/wiki/$1',
+    wmec: 'https://ec.wikimedia.org/wiki/$1',
+    wmes: 'https://www.wikimedia.es/wiki/$1',
+    wmet: 'https://ee.wikimedia.org/wiki/$1',
+    wmfdashboard: 'https://outreachdashboard.wmflabs.org/$1',
+    wmfi: 'https://fi.wikimedia.org/wiki/$1',
+    wmfr: 'https://wikimedia.fr/$1',
+    wmge: 'https://ge.wikimedia.org/wiki/$1',
+    wmhi: 'https://hi.wikimedia.org/wiki/$1',
+    wmhk: 'https://meta.wikimedia.org/wiki/Wikimedia_Hong_Kong',
+    wmhu: 'https://wikimedia.hu/wiki/$1',
+    wmid: 'https://id.wikimedia.org/wiki/$1',
+    wmil: 'http://www.wikimedia.org.il/$1',
+    wmin: 'http://wiki.wikimedia.in/$1',
+    wmit: 'https://wiki.wikimedia.it/wiki/$1',
+    wmke: 'https://meta.wikimedia.org/wiki/Wikimedia_Kenya',
+    wmmk: 'https://mk.wikimedia.org/wiki/$1',
+    wmmx: 'https://mx.wikimedia.org/wiki/$1',
+    wmnl: 'https://nl.wikimedia.org/wiki/$1',
+    wmnyc: 'https://nyc.wikimedia.org/wiki/$1',
+    wmno: 'https://no.wikimedia.org/wiki/$1',
+    'wmpa-us': 'https://pa-us.wikimedia.org/wiki/$1',
+    wmph: 'https://meta.wikimedia.org/wiki/Wikimedia_Philippines',
+    wmpl: 'https://pl.wikimedia.org/wiki/$1',
+    wmpt: 'https://pt.wikimedia.org/wiki/$1',
+    wmpunjabi: 'https://punjabi.wikimedia.org/wiki/$1',
+    wmromd: 'https://romd.wikimedia.org/wiki/$1',
+    wmrs: 'https://rs.wikimedia.org/wiki/$1',
+    wmru: 'https://ru.wikimedia.org/wiki/$1',
+    wmse: 'https://se.wikimedia.org/wiki/$1',
+    wmsk: 'http://wikimedia.sk/$1',
+    wmtr: 'https://tr.wikimedia.org/wiki/$1',
+    wmtw: 'http://wikimedia.tw/wiki/index.php5/$1',
+    wmua: 'https://ua.wikimedia.org/wiki/$1',
+    wmuk: 'https://wikimedia.org.uk/wiki/$1',
+    wmve: 'https://wikimedia.org.ve/wiki/$1',
+    wmza: 'http://wikimedia.org.za/wiki/$1',
+    wm2005: 'https://wikimania2005.wikimedia.org/wiki/$1',
+    wm2006: 'https://wikimania2006.wikimedia.org/wiki/$1',
+    wm2007: 'https://wikimania2007.wikimedia.org/wiki/$1',
+    wm2008: 'https://wikimania2008.wikimedia.org/wiki/$1',
+    wm2009: 'https://wikimania2009.wikimedia.org/wiki/$1',
+    wm2010: 'https://wikimania2010.wikimedia.org/wiki/$1',
+    wm2011: 'https://wikimania2011.wikimedia.org/wiki/$1',
+    wm2012: 'https://wikimania2012.wikimedia.org/wiki/$1',
+    wm2013: 'https://wikimania2013.wikimedia.org/wiki/$1',
+    wm2014: 'https://wikimania2014.wikimedia.org/wiki/$1',
+    wm2015: 'https://wikimania2015.wikimedia.org/wiki/$1',
+    wm2016: 'https://wikimania2016.wikimedia.org/wiki/$1',
+    wm2017: 'https://wikimania2017.wikimedia.org/wiki/$1',
+    wm2018: 'https://wikimania2018.wikimedia.org/wiki/$1',
+    wmania: 'https://wikimania.wikimedia.org/wiki/$1',
+    wikimania: 'https://wikimania.wikimedia.org/wiki/$1',
+    wmteam: 'https://wikimaniateam.wikimedia.org/wiki/$1',
+    wmf: 'https://foundation.wikimedia.org/wiki/$1',
+    wmfblog: 'https://blog.wikimedia.org/$1',
+    wmdeblog: 'https://blog.wikimedia.de/$1',
+    wookieepedia: 'http://starwars.wikia.com/wiki/$1',
+    wowwiki: 'http://www.wowwiki.com/$1',
+    wqy: 'http://wqy.sourceforge.net/cgi-bin/index.cgi?$1',
+    wurmpedia: 'https://wurmpedia.com/index.php/$1',
+    viaf: 'http://viaf.org/viaf/$1',
+    zrhwiki: 'http://www.zrhwiki.ch/wiki/$1',
+    zum: 'https://wiki.zum.de/$1',
+    zwiki: 'http://www.zwiki.org/$1',
+    m: 'https://meta.wikimedia.org/wiki/$1',
+    meta: 'https://meta.wikimedia.org/wiki/$1',
+    sep11: 'https://sep11.wikipedia.org/wiki/$1',
+    d: 'https://www.wikidata.org/wiki/$1',
+    aa: 'https://aa.wikipedia.org/wiki/$1',
+    ab: 'https://ab.wikipedia.org/wiki/$1',
+    ace: 'https://ace.wikipedia.org/wiki/$1',
+    ady: 'https://ady.wikipedia.org/wiki/$1',
+    af: 'https://af.wikipedia.org/wiki/$1',
+    ak: 'https://ak.wikipedia.org/wiki/$1',
+    als: 'https://als.wikipedia.org/wiki/$1',
+    am: 'https://am.wikipedia.org/wiki/$1',
+    an: 'https://an.wikipedia.org/wiki/$1',
+    ang: 'https://ang.wikipedia.org/wiki/$1',
+    ar: 'https://ar.wikipedia.org/wiki/$1',
+    arc: 'https://arc.wikipedia.org/wiki/$1',
+    arz: 'https://arz.wikipedia.org/wiki/$1',
+    as: 'https://as.wikipedia.org/wiki/$1',
+    ast: 'https://ast.wikipedia.org/wiki/$1',
+    atj: 'https://atj.wikipedia.org/wiki/$1',
+    av: 'https://av.wikipedia.org/wiki/$1',
+    ay: 'https://ay.wikipedia.org/wiki/$1',
+    az: 'https://az.wikipedia.org/wiki/$1',
+    azb: 'https://azb.wikipedia.org/wiki/$1',
+    ba: 'https://ba.wikipedia.org/wiki/$1',
+    ban: 'https://ban.wikipedia.org/wiki/$1',
+    bar: 'https://bar.wikipedia.org/wiki/$1',
+    'bat-smg': 'https://bat-smg.wikipedia.org/wiki/$1',
+    bcl: 'https://bcl.wikipedia.org/wiki/$1',
+    be: 'https://be.wikipedia.org/wiki/$1',
+    'be-x-old': 'https://be-x-old.wikipedia.org/wiki/$1',
+    bg: 'https://bg.wikipedia.org/wiki/$1',
+    bh: 'https://bh.wikipedia.org/wiki/$1',
+    bi: 'https://bi.wikipedia.org/wiki/$1',
+    bjn: 'https://bjn.wikipedia.org/wiki/$1',
+    bm: 'https://bm.wikipedia.org/wiki/$1',
+    bn: 'https://bn.wikipedia.org/wiki/$1',
+    bo: 'https://bo.wikipedia.org/wiki/$1',
+    bpy: 'https://bpy.wikipedia.org/wiki/$1',
+    br: 'https://br.wikipedia.org/wiki/$1',
+    bs: 'https://bs.wikipedia.org/wiki/$1',
+    bug: 'https://bug.wikipedia.org/wiki/$1',
+    bxr: 'https://bxr.wikipedia.org/wiki/$1',
+    ca: 'https://ca.wikipedia.org/wiki/$1',
+    'cbk-zam': 'https://cbk-zam.wikipedia.org/wiki/$1',
+    cdo: 'https://cdo.wikipedia.org/wiki/$1',
+    ce: 'https://ce.wikipedia.org/wiki/$1',
+    ceb: 'https://ceb.wikipedia.org/wiki/$1',
+    ch: 'https://ch.wikipedia.org/wiki/$1',
+    cho: 'https://cho.wikipedia.org/wiki/$1',
+    chr: 'https://chr.wikipedia.org/wiki/$1',
+    chy: 'https://chy.wikipedia.org/wiki/$1',
+    ckb: 'https://ckb.wikipedia.org/wiki/$1',
+    co: 'https://co.wikipedia.org/wiki/$1',
+    cr: 'https://cr.wikipedia.org/wiki/$1',
+    crh: 'https://crh.wikipedia.org/wiki/$1',
+    cs: 'https://cs.wikipedia.org/wiki/$1',
+    csb: 'https://csb.wikipedia.org/wiki/$1',
+    cu: 'https://cu.wikipedia.org/wiki/$1',
+    cv: 'https://cv.wikipedia.org/wiki/$1',
+    cy: 'https://cy.wikipedia.org/wiki/$1',
+    da: 'https://da.wikipedia.org/wiki/$1',
+    de: 'https://de.wikipedia.org/wiki/$1',
+    din: 'https://din.wikipedia.org/wiki/$1',
+    diq: 'https://diq.wikipedia.org/wiki/$1',
+    dsb: 'https://dsb.wikipedia.org/wiki/$1',
+    dty: 'https://dty.wikipedia.org/wiki/$1',
+    dv: 'https://dv.wikipedia.org/wiki/$1',
+    dz: 'https://dz.wikipedia.org/wiki/$1',
+    ee: 'https://ee.wikipedia.org/wiki/$1',
+    el: 'https://el.wikipedia.org/wiki/$1',
+    eml: 'https://eml.wikipedia.org/wiki/$1',
+    en: 'https://en.wikipedia.org/wiki/$1',
+    eo: 'https://eo.wikipedia.org/wiki/$1',
+    es: 'https://es.wikipedia.org/wiki/$1',
+    et: 'https://et.wikipedia.org/wiki/$1',
+    eu: 'https://eu.wikipedia.org/wiki/$1',
+    ext: 'https://ext.wikipedia.org/wiki/$1',
+    fa: 'https://fa.wikipedia.org/wiki/$1',
+    ff: 'https://ff.wikipedia.org/wiki/$1',
+    fi: 'https://fi.wikipedia.org/wiki/$1',
+    'fiu-vro': 'https://fiu-vro.wikipedia.org/wiki/$1',
+    fj: 'https://fj.wikipedia.org/wiki/$1',
+    fo: 'https://fo.wikipedia.org/wiki/$1',
+    fr: 'https://fr.wikipedia.org/wiki/$1',
+    frp: 'https://frp.wikipedia.org/wiki/$1',
+    frr: 'https://frr.wikipedia.org/wiki/$1',
+    fur: 'https://fur.wikipedia.org/wiki/$1',
+    fy: 'https://fy.wikipedia.org/wiki/$1',
+    ga: 'https://ga.wikipedia.org/wiki/$1',
+    gag: 'https://gag.wikipedia.org/wiki/$1',
+    gan: 'https://gan.wikipedia.org/wiki/$1',
+    gcr: 'https://gcr.wikipedia.org/wiki/$1',
+    gd: 'https://gd.wikipedia.org/wiki/$1',
+    gl: 'https://gl.wikipedia.org/wiki/$1',
+    glk: 'https://glk.wikipedia.org/wiki/$1',
+    gn: 'https://gn.wikipedia.org/wiki/$1',
+    gom: 'https://gom.wikipedia.org/wiki/$1',
+    gor: 'https://gor.wikipedia.org/wiki/$1',
+    got: 'https://got.wikipedia.org/wiki/$1',
+    gu: 'https://gu.wikipedia.org/wiki/$1',
+    gv: 'https://gv.wikipedia.org/wiki/$1',
+    ha: 'https://ha.wikipedia.org/wiki/$1',
+    hak: 'https://hak.wikipedia.org/wiki/$1',
+    haw: 'https://haw.wikipedia.org/wiki/$1',
+    he: 'https://he.wikipedia.org/wiki/$1',
+    hi: 'https://hi.wikipedia.org/wiki/$1',
+    hif: 'https://hif.wikipedia.org/wiki/$1',
+    ho: 'https://ho.wikipedia.org/wiki/$1',
+    hr: 'https://hr.wikipedia.org/wiki/$1',
+    hsb: 'https://hsb.wikipedia.org/wiki/$1',
+    ht: 'https://ht.wikipedia.org/wiki/$1',
+    hu: 'https://hu.wikipedia.org/wiki/$1',
+    hy: 'https://hy.wikipedia.org/wiki/$1',
+    hyw: 'https://hyw.wikipedia.org/wiki/$1',
+    hz: 'https://hz.wikipedia.org/wiki/$1',
+    ia: 'https://ia.wikipedia.org/wiki/$1',
+    id: 'https://id.wikipedia.org/wiki/$1',
+    ie: 'https://ie.wikipedia.org/wiki/$1',
+    ig: 'https://ig.wikipedia.org/wiki/$1',
+    ii: 'https://ii.wikipedia.org/wiki/$1',
+    ik: 'https://ik.wikipedia.org/wiki/$1',
+    ilo: 'https://ilo.wikipedia.org/wiki/$1',
+    inh: 'https://inh.wikipedia.org/wiki/$1',
+    io: 'https://io.wikipedia.org/wiki/$1',
+    is: 'https://is.wikipedia.org/wiki/$1',
+    it: 'https://it.wikipedia.org/wiki/$1',
+    iu: 'https://iu.wikipedia.org/wiki/$1',
+    ja: 'https://ja.wikipedia.org/wiki/$1',
+    jam: 'https://jam.wikipedia.org/wiki/$1',
+    jbo: 'https://jbo.wikipedia.org/wiki/$1',
+    jv: 'https://jv.wikipedia.org/wiki/$1',
+    ka: 'https://ka.wikipedia.org/wiki/$1',
+    kaa: 'https://kaa.wikipedia.org/wiki/$1',
+    kab: 'https://kab.wikipedia.org/wiki/$1',
+    kbd: 'https://kbd.wikipedia.org/wiki/$1',
+    kbp: 'https://kbp.wikipedia.org/wiki/$1',
+    kg: 'https://kg.wikipedia.org/wiki/$1',
+    ki: 'https://ki.wikipedia.org/wiki/$1',
+    kj: 'https://kj.wikipedia.org/wiki/$1',
+    kk: 'https://kk.wikipedia.org/wiki/$1',
+    kl: 'https://kl.wikipedia.org/wiki/$1',
+    km: 'https://km.wikipedia.org/wiki/$1',
+    kn: 'https://kn.wikipedia.org/wiki/$1',
+    ko: 'https://ko.wikipedia.org/wiki/$1',
+    koi: 'https://koi.wikipedia.org/wiki/$1',
+    kr: 'https://kr.wikipedia.org/wiki/$1',
+    krc: 'https://krc.wikipedia.org/wiki/$1',
+    ks: 'https://ks.wikipedia.org/wiki/$1',
+    ksh: 'https://ksh.wikipedia.org/wiki/$1',
+    ku: 'https://ku.wikipedia.org/wiki/$1',
+    kv: 'https://kv.wikipedia.org/wiki/$1',
+    kw: 'https://kw.wikipedia.org/wiki/$1',
+    ky: 'https://ky.wikipedia.org/wiki/$1',
+    la: 'https://la.wikipedia.org/wiki/$1',
+    lad: 'https://lad.wikipedia.org/wiki/$1',
+    lb: 'https://lb.wikipedia.org/wiki/$1',
+    lbe: 'https://lbe.wikipedia.org/wiki/$1',
+    lez: 'https://lez.wikipedia.org/wiki/$1',
+    lfn: 'https://lfn.wikipedia.org/wiki/$1',
+    lg: 'https://lg.wikipedia.org/wiki/$1',
+    li: 'https://li.wikipedia.org/wiki/$1',
+    lij: 'https://lij.wikipedia.org/wiki/$1',
+    lmo: 'https://lmo.wikipedia.org/wiki/$1',
+    ln: 'https://ln.wikipedia.org/wiki/$1',
+    lo: 'https://lo.wikipedia.org/wiki/$1',
+    lrc: 'https://lrc.wikipedia.org/wiki/$1',
+    lt: 'https://lt.wikipedia.org/wiki/$1',
+    ltg: 'https://ltg.wikipedia.org/wiki/$1',
+    lv: 'https://lv.wikipedia.org/wiki/$1',
+    mai: 'https://mai.wikipedia.org/wiki/$1',
+    'map-bms': 'https://map-bms.wikipedia.org/wiki/$1',
+    mdf: 'https://mdf.wikipedia.org/wiki/$1',
+    mg: 'https://mg.wikipedia.org/wiki/$1',
+    mh: 'https://mh.wikipedia.org/wiki/$1',
+    mhr: 'https://mhr.wikipedia.org/wiki/$1',
+    mi: 'https://mi.wikipedia.org/wiki/$1',
+    min: 'https://min.wikipedia.org/wiki/$1',
+    mk: 'https://mk.wikipedia.org/wiki/$1',
+    ml: 'https://ml.wikipedia.org/wiki/$1',
+    mn: 'https://mn.wikipedia.org/wiki/$1',
+    mnw: 'https://mnw.wikipedia.org/wiki/$1',
+    mo: 'https://mo.wikipedia.org/wiki/$1',
+    mr: 'https://mr.wikipedia.org/wiki/$1',
+    mrj: 'https://mrj.wikipedia.org/wiki/$1',
+    ms: 'https://ms.wikipedia.org/wiki/$1',
+    mt: 'https://mt.wikipedia.org/wiki/$1',
+    mus: 'https://mus.wikipedia.org/wiki/$1',
+    mwl: 'https://mwl.wikipedia.org/wiki/$1',
+    my: 'https://my.wikipedia.org/wiki/$1',
+    myv: 'https://myv.wikipedia.org/wiki/$1',
+    mzn: 'https://mzn.wikipedia.org/wiki/$1',
+    na: 'https://na.wikipedia.org/wiki/$1',
+    nah: 'https://nah.wikipedia.org/wiki/$1',
+    nap: 'https://nap.wikipedia.org/wiki/$1',
+    nds: 'https://nds.wikipedia.org/wiki/$1',
+    'nds-nl': 'https://nds-nl.wikipedia.org/wiki/$1',
+    ne: 'https://ne.wikipedia.org/wiki/$1',
+    "new": 'https://new.wikipedia.org/wiki/$1',
+    ng: 'https://ng.wikipedia.org/wiki/$1',
+    nl: 'https://nl.wikipedia.org/wiki/$1',
+    nn: 'https://nn.wikipedia.org/wiki/$1',
+    no: 'https://no.wikipedia.org/wiki/$1',
+    nov: 'https://nov.wikipedia.org/wiki/$1',
+    nqo: 'https://nqo.wikipedia.org/wiki/$1',
+    nrm: 'https://nrm.wikipedia.org/wiki/$1',
+    nso: 'https://nso.wikipedia.org/wiki/$1',
+    nv: 'https://nv.wikipedia.org/wiki/$1',
+    ny: 'https://ny.wikipedia.org/wiki/$1',
+    oc: 'https://oc.wikipedia.org/wiki/$1',
+    olo: 'https://olo.wikipedia.org/wiki/$1',
+    om: 'https://om.wikipedia.org/wiki/$1',
+    or: 'https://or.wikipedia.org/wiki/$1',
+    os: 'https://os.wikipedia.org/wiki/$1',
+    pa: 'https://pa.wikipedia.org/wiki/$1',
+    pag: 'https://pag.wikipedia.org/wiki/$1',
+    pam: 'https://pam.wikipedia.org/wiki/$1',
+    pap: 'https://pap.wikipedia.org/wiki/$1',
+    pcd: 'https://pcd.wikipedia.org/wiki/$1',
+    pdc: 'https://pdc.wikipedia.org/wiki/$1',
+    pfl: 'https://pfl.wikipedia.org/wiki/$1',
+    pi: 'https://pi.wikipedia.org/wiki/$1',
+    pih: 'https://pih.wikipedia.org/wiki/$1',
+    pl: 'https://pl.wikipedia.org/wiki/$1',
+    pms: 'https://pms.wikipedia.org/wiki/$1',
+    pnb: 'https://pnb.wikipedia.org/wiki/$1',
+    pnt: 'https://pnt.wikipedia.org/wiki/$1',
+    ps: 'https://ps.wikipedia.org/wiki/$1',
+    pt: 'https://pt.wikipedia.org/wiki/$1',
+    qu: 'https://qu.wikipedia.org/wiki/$1',
+    rm: 'https://rm.wikipedia.org/wiki/$1',
+    rmy: 'https://rmy.wikipedia.org/wiki/$1',
+    rn: 'https://rn.wikipedia.org/wiki/$1',
+    ro: 'https://ro.wikipedia.org/wiki/$1',
+    'roa-rup': 'https://roa-rup.wikipedia.org/wiki/$1',
+    'roa-tara': 'https://roa-tara.wikipedia.org/wiki/$1',
+    ru: 'https://ru.wikipedia.org/wiki/$1',
+    rue: 'https://rue.wikipedia.org/wiki/$1',
+    rw: 'https://rw.wikipedia.org/wiki/$1',
+    sa: 'https://sa.wikipedia.org/wiki/$1',
+    sah: 'https://sah.wikipedia.org/wiki/$1',
+    sat: 'https://sat.wikipedia.org/wiki/$1',
+    sc: 'https://sc.wikipedia.org/wiki/$1',
+    scn: 'https://scn.wikipedia.org/wiki/$1',
+    sco: 'https://sco.wikipedia.org/wiki/$1',
+    sd: 'https://sd.wikipedia.org/wiki/$1',
+    se: 'https://se.wikipedia.org/wiki/$1',
+    sg: 'https://sg.wikipedia.org/wiki/$1',
+    sh: 'https://sh.wikipedia.org/wiki/$1',
+    shn: 'https://shn.wikipedia.org/wiki/$1',
+    shy: 'https://shy.wikipedia.org/wiki/$1',
+    si: 'https://si.wikipedia.org/wiki/$1',
+    simple: 'https://simple.wikipedia.org/wiki/$1',
+    sk: 'https://sk.wikipedia.org/wiki/$1',
+    sl: 'https://sl.wikipedia.org/wiki/$1',
+    sm: 'https://sm.wikipedia.org/wiki/$1',
+    sn: 'https://sn.wikipedia.org/wiki/$1',
+    so: 'https://so.wikipedia.org/wiki/$1',
+    sq: 'https://sq.wikipedia.org/wiki/$1',
+    sr: 'https://sr.wikipedia.org/wiki/$1',
+    srn: 'https://srn.wikipedia.org/wiki/$1',
+    ss: 'https://ss.wikipedia.org/wiki/$1',
+    st: 'https://st.wikipedia.org/wiki/$1',
+    stq: 'https://stq.wikipedia.org/wiki/$1',
+    su: 'https://su.wikipedia.org/wiki/$1',
+    sv: 'https://sv.wikipedia.org/wiki/$1',
+    sw: 'https://sw.wikipedia.org/wiki/$1',
+    szl: 'https://szl.wikipedia.org/wiki/$1',
+    szy: 'https://szy.wikipedia.org/wiki/$1',
+    ta: 'https://ta.wikipedia.org/wiki/$1',
+    tcy: 'https://tcy.wikipedia.org/wiki/$1',
+    te: 'https://te.wikipedia.org/wiki/$1',
+    tet: 'https://tet.wikipedia.org/wiki/$1',
+    tg: 'https://tg.wikipedia.org/wiki/$1',
+    th: 'https://th.wikipedia.org/wiki/$1',
+    ti: 'https://ti.wikipedia.org/wiki/$1',
+    tk: 'https://tk.wikipedia.org/wiki/$1',
+    tl: 'https://tl.wikipedia.org/wiki/$1',
+    tn: 'https://tn.wikipedia.org/wiki/$1',
+    to: 'https://to.wikipedia.org/wiki/$1',
+    tpi: 'https://tpi.wikipedia.org/wiki/$1',
+    tr: 'https://tr.wikipedia.org/wiki/$1',
+    ts: 'https://ts.wikipedia.org/wiki/$1',
+    tt: 'https://tt.wikipedia.org/wiki/$1',
+    tum: 'https://tum.wikipedia.org/wiki/$1',
+    tw: 'https://tw.wikipedia.org/wiki/$1',
+    ty: 'https://ty.wikipedia.org/wiki/$1',
+    tyv: 'https://tyv.wikipedia.org/wiki/$1',
+    udm: 'https://udm.wikipedia.org/wiki/$1',
+    ug: 'https://ug.wikipedia.org/wiki/$1',
+    uk: 'https://uk.wikipedia.org/wiki/$1',
+    ur: 'https://ur.wikipedia.org/wiki/$1',
+    uz: 'https://uz.wikipedia.org/wiki/$1',
+    ve: 'https://ve.wikipedia.org/wiki/$1',
+    vec: 'https://vec.wikipedia.org/wiki/$1',
+    vep: 'https://vep.wikipedia.org/wiki/$1',
+    vi: 'https://vi.wikipedia.org/wiki/$1',
+    vls: 'https://vls.wikipedia.org/wiki/$1',
+    vo: 'https://vo.wikipedia.org/wiki/$1',
+    wa: 'https://wa.wikipedia.org/wiki/$1',
+    war: 'https://war.wikipedia.org/wiki/$1',
+    wo: 'https://wo.wikipedia.org/wiki/$1',
+    wuu: 'https://wuu.wikipedia.org/wiki/$1',
+    xal: 'https://xal.wikipedia.org/wiki/$1',
+    xh: 'https://xh.wikipedia.org/wiki/$1',
+    xmf: 'https://xmf.wikipedia.org/wiki/$1',
+    yi: 'https://yi.wikipedia.org/wiki/$1',
+    yo: 'https://yo.wikipedia.org/wiki/$1',
+    yue: 'https://zh-yue.wikipedia.org/wiki/$1',
+    za: 'https://za.wikipedia.org/wiki/$1',
+    zea: 'https://zea.wikipedia.org/wiki/$1',
+    zh: 'https://zh.wikipedia.org/wiki/$1',
+    'zh-classical': 'https://zh-classical.wikipedia.org/wiki/$1',
+    'zh-min-nan': 'https://zh-min-nan.wikipedia.org/wiki/$1',
+    'zh-yue': 'https://zh-yue.wikipedia.org/wiki/$1',
+    zu: 'https://zu.wikipedia.org/wiki/$1',
+    cz: 'https://cs.wikipedia.org/wiki/$1',
+    dk: 'https://da.wikipedia.org/wiki/$1',
+    epo: 'https://eo.wikipedia.org/wiki/$1',
+    jp: 'https://ja.wikipedia.org/wiki/$1',
+    minnan: 'https://zh-min-nan.wikipedia.org/wiki/$1',
+    nb: 'https://no.wikipedia.org/wiki/$1',
+    'zh-cfr': 'https://zh-min-nan.wikipedia.org/wiki/$1',
+    'zh-cn': 'https://zh.wikipedia.org/wiki/$1',
+    'zh-tw': 'https://zh.wikipedia.org/wiki/$1',
+    nan: 'https://zh-min-nan.wikipedia.org/wiki/$1',
+    vro: 'https://fiu-vro.wikipedia.org/wiki/$1',
+    cmn: 'https://zh.wikipedia.org/wiki/$1',
+    lzh: 'https://zh-classical.wikipedia.org/wiki/$1',
+    rup: 'https://roa-rup.wikipedia.org/wiki/$1',
+    gsw: 'https://als.wikipedia.org/wiki/$1',
+    'be-tarask': 'https://be-x-old.wikipedia.org/wiki/$1',
+    sgs: 'https://bat-smg.wikipedia.org/wiki/$1',
+    egl: 'https://eml.wikipedia.org/wiki/$1',
+    w: 'https://en.wikipedia.org/wiki/$1',
+    wikt: 'https://en.wiktionary.org/wiki/$1',
+    q: 'https://en.wikiquote.org/wiki/$1',
+    b: 'https://en.wikibooks.org/wiki/$1',
+    n: 'https://en.wikinews.org/wiki/$1',
+    s: 'https://en.wikisource.org/wiki/$1',
+    chapter: 'https://en.wikimedia.org/wiki/$1',
+    v: 'https://en.wikiversity.org/wiki/$1',
+    voy: 'https://en.wikivoyage.org/wiki/$1'
+  };
+
+  var defaults$6 = {
+    type: 'internal'
+  };
 
   var Link = function Link(data) {
+    data = data || {};
+    data = Object.assign({}, defaults$6, data); // console.log(data)
+
     Object.defineProperty(this, 'data', {
       enumerable: false,
       value: data
@@ -2363,26 +3205,101 @@
   };
 
   var methods$3 = {
-    text: function text() {
+    text: function text(str) {
+      if (str !== undefined) {
+        this.data.text = str;
+      }
+
       return this.data.text;
     },
     json: function json() {
-      return this.data;
+      var obj = {
+        text: this.text(),
+        type: this.type()
+      };
+
+      if (obj.type === 'internal') {
+        obj.page = this.page();
+      } else if (obj.type === 'interwiki') {
+        obj.wiki = this.wiki();
+      } else {
+        obj.site = this.site();
+      }
+
+      var anchor = this.anchor();
+
+      if (anchor) {
+        obj.anchor = anchor;
+      }
+
+      return obj;
     },
-    page: function page() {
+    page: function page(str) {
+      if (str !== undefined) {
+        this.data.page = str;
+      }
+
       return this.data.page;
     },
-    anchor: function anchor() {
-      return this.data.anchor;
+    anchor: function anchor(str) {
+      if (str !== undefined) {
+        this.data.anchor = str;
+      }
+
+      return this.data.anchor || '';
     },
-    wiki: function wiki() {
+    wiki: function wiki(str) {
+      if (str !== undefined) {
+        this.data.wiki = str;
+      }
+
       return this.data.wiki;
     },
-    site: function site() {
+    type: function type(str) {
+      if (str !== undefined) {
+        this.data.type = str;
+      }
+
+      return this.data.type;
+    },
+    site: function site(str) {
+      if (str !== undefined) {
+        this.data.site = str;
+      }
+
       return this.data.site;
     },
-    type: function type() {
-      return this.data.type;
+    // create a url for any type of link
+    href: function href() {
+      var type = this.type();
+
+      if (type === 'external') {
+        return this.site();
+      }
+
+      if (type === 'interwiki') {
+        var url = interwiki$1[this.wiki()] || 'https://en.wikipedia.org/wiki/$1';
+        var page = this.page();
+        page = page.replace(/ /g, '_');
+        page = encodeURIComponent(page);
+        url = url.replace(/\$1/g, page);
+
+        if (this.anchor()) {
+          url += '#' + this.anchor();
+        }
+
+        return url;
+      }
+
+      if (type === 'internal') {
+        var _url = '';
+
+        if (this.anchor()) {
+          _url += '#' + this.anchor();
+        }
+
+        return _url;
+      }
     }
   };
   Object.keys(methods$3).forEach(function (k) {
@@ -2390,29 +3307,25 @@
   });
   var Link_1 = Link;
 
-  var cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]', 'gi'); //return only rendered text of wiki links
+  // const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]', 'gi')
+  //return only rendered text of wiki links
 
   var removeLinks = function removeLinks(line) {
-    // categories, images, files
-    line = line.replace(cat_reg, ''); // [[Common links]]
-
-    line = line.replace(/\[\[:?([^|]{1,80}?)\]\](\w{0,5})/g, '$1$2'); // [[File:with|Size]]
-
-    line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$1'); // [[Replaced|Links]]
-
-    line = line.replace(/\[\[:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$2$3'); // External links
-
-    line = line.replace(/\[(https?|news|ftp|mailto|gopher|irc):\/\/[^\]\| ]{4,1500}([\| ].*?)?\]/g, '$2');
+    // [[File:with|Size]]
+    line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$1');
     return line;
   };
 
-  var getLinks = function getLinks(wiki, data) {
+  var getLinks = function getLinks(data) {
+    var wiki = data.text;
     var links = parse(wiki) || [];
     data.links = links.map(function (link) {
+      wiki = wiki.replace(link.raw, link.text || link.page || '');
+      delete link.raw;
       return new Link_1(link);
     });
     wiki = removeLinks(wiki);
-    return wiki;
+    data.text = wiki;
   };
 
   var link = getLinks;
@@ -2462,7 +3375,7 @@
   var formatting_1 = formatting;
 
   var isNumber = /^[0-9,.]+$/;
-  var defaults$6 = {
+  var defaults$7 = {
     text: true,
     links: true,
     formatting: true,
@@ -2471,7 +3384,7 @@
   };
 
   var toJSON$2 = function toJSON(s, options) {
-    options = setDefaults_1(options, defaults$6);
+    options = setDefaults_1(options, defaults$7);
     var data = {};
     var text = s.text();
 
@@ -2489,7 +3402,9 @@
     }
 
     if (options.links && s.links().length > 0) {
-      data.links = s.links();
+      data.links = s.links().map(function (l) {
+        return l.json();
+      });
     }
 
     if (options.formatting && s.data.fmt) {
@@ -2601,7 +3516,7 @@
   var Sentence_1 = Sentence;
 
   //these are used for the sentence-splitter
-  var _abbreviations = ['ad', 'adj', 'adm', 'adv', 'al', 'alta', 'approx', 'apr', 'apt', 'arc', 'ariz', 'assn', 'asst', 'atty', 'aug', 'ave', 'ba', 'bc', 'bl', 'bldg', 'blvd', 'brig', 'bros', 'ca', 'cal', 'calif', 'capt', 'cca', 'cg', 'cl', 'cm', 'cmdr', 'co', 'col', 'colo', 'comdr', 'conn', 'corp', 'cpl', 'cres', 'ct', 'cyn', 'dak', 'dec', 'def', 'dept', 'det', 'dg', 'dist', 'dl', 'dm', 'dr', 'ea', 'eg', 'eng', 'esp', 'esq', 'est', 'etc', 'ex', 'exp', 'feb', 'fem', 'fig', 'fl oz', 'fl', 'fla', 'fm', 'fr', 'ft', 'fy', 'ga', 'gal', 'gb', 'gen', 'gov', 'hg', 'hon', 'hr', 'hrs', 'hwy', 'hz', 'ia', 'ida', 'ie', 'inc', 'inf', 'jan', 'jd', 'jr', 'jul', 'jun', 'kan', 'kans', 'kb', 'kg', 'km', 'kmph', 'lat', 'lb', 'lit', 'llb', 'lm', 'lng', 'lt', 'ltd', 'lx', 'ma', 'maj', 'mar', 'masc', 'mb', 'md', 'messrs', 'mg', 'mi', 'min', 'minn', 'misc', 'mister', 'ml', 'mlle', 'mm', 'mme', 'mph', 'mps', 'mr', 'mrs', 'ms', 'mstr', 'mt', 'neb', 'nebr', 'nee', 'nov', 'oct', 'okla', 'ont', 'op', 'ord', 'oz', 'pa', 'pd', 'penn', 'penna', 'phd', 'pl', 'pp', 'pref', 'prob', 'prof', 'pron', 'ps', 'psa', 'pseud', 'pt', 'pvt', 'qt', 'que', 'rb', 'rd', 'rep', 'reps', 'res', 'rev', 'sask', 'sec', 'sen', 'sens', 'sep', 'sept', 'sfc', 'sgt', 'sir', 'situ', 'sq ft', 'sq', 'sr', 'ss', 'st', 'supt', 'surg', 'tb', 'tbl', 'tbsp', 'tce', 'td', 'tel', 'temp', 'tenn', 'tex', 'tsp', 'univ', 'usafa', 'ut', 'va', 'vb', 'ver', 'vet', 'vitro', 'vivo', 'vol', 'vs', 'vt', 'wis', 'wisc', 'wr', 'wy', 'wyo', 'yb', 'µg'];
+  var _abbreviations = ['ad', 'adj', 'adm', 'adv', 'al', 'alta', 'approx', 'apr', 'apt', 'arc', 'ariz', 'assn', 'asst', 'atty', 'aug', 'ave', 'ba', 'bc', 'bl', 'bldg', 'blvd', 'brig', 'bros', 'ca', 'cal', 'calif', 'capt', 'cca', 'cg', 'cl', 'cm', 'cmdr', 'co', 'col', 'colo', 'comdr', 'conn', 'corp', 'cpl', 'cres', 'ct', 'cyn', 'dak', 'dec', 'def', 'dept', 'det', 'dg', 'dist', 'dl', 'dm', 'dr', 'ea', 'eg', 'eng', 'esp', 'esq', 'est', 'etc', 'ex', 'exp', 'feb', 'fem', 'fig', 'fl oz', 'fl', 'fla', 'fm', 'fr', 'ft', 'fy', 'ga', 'gal', 'gb', 'gen', 'gov', 'hg', 'hon', 'hr', 'hrs', 'hwy', 'hz', 'ia', 'ida', 'ie', 'inc', 'inf', 'jan', 'jd', 'jr', 'jul', 'jun', 'kan', 'kans', 'kb', 'kg', 'km', 'kmph', 'lat', 'lb', 'lit', 'llb', 'lm', 'lng', 'lt', 'ltd', 'lx', 'ma', 'maj', 'mar', 'masc', 'mb', 'md', 'messrs', 'mg', 'mi', 'min', 'minn', 'misc', 'mister', 'ml', 'mlle', 'mm', 'mme', 'mph', 'mps', 'mr', 'mrs', 'ms', 'mstr', 'mt', 'neb', 'nebr', 'nee', 'no', 'nov', 'oct', 'okla', 'ont', 'op', 'ord', 'oz', 'pa', 'pd', 'penn', 'penna', 'phd', 'pl', 'pp', 'pref', 'prob', 'prof', 'pron', 'ps', 'psa', 'pseud', 'pt', 'pvt', 'qt', 'que', 'rb', 'rd', 'rep', 'reps', 'res', 'rev', 'sask', 'sec', 'sen', 'sens', 'sep', 'sept', 'sfc', 'sgt', 'sir', 'situ', 'sq ft', 'sq', 'sr', 'ss', 'st', 'supt', 'surg', 'tb', 'tbl', 'tbsp', 'tce', 'td', 'tel', 'temp', 'tenn', 'tex', 'tsp', 'univ', 'usafa', 'ut', 'va', 'vb', 'ver', 'vet', 'vitro', 'vivo', 'vol', 'vs', 'vt', 'wis', 'wisc', 'wr', 'wy', 'wyo', 'yb', 'µg'];
 
   //@spencermountain MIT
   //(Rule-based sentence boundary segmentation) - chop given text into its proper sentences.
@@ -2734,55 +3649,47 @@
 
   var parse$2 = sentence_parser;
 
+  function fromText(str) {
+    var obj = {
+      text: str
+    }; //pull-out the [[links]]
+
+    link(obj);
+    obj.text = postprocess(obj.text); //pull-out the bolds and ''italics''
+
+    obj = formatting_1(obj); //pull-out things like {{start date|...}}
+
+    return new Sentence_1(obj);
+  }
+
   function postprocess(line) {
     //remove empty parentheses (sometimes caused by removing templates)
     line = line.replace(/\([,;: ]*\)/g, ''); //these semi-colons in parentheses are particularly troublesome
 
     line = line.replace(/\( *(; ?)+/g, '('); //dangling punctuation
 
-    line = helpers_1.trim_whitespace(line);
+    line = helpers.trim_whitespace(line);
     line = line.replace(/ +\.$/, '.');
     return line;
-  }
-
-  function oneSentence(str) {
-    var obj = {}; //pull-out the [[links]]
-
-    str = link(str, obj);
-    obj.text = postprocess(str); // let links = parseLinks(str)
-    // if (links) {
-    // obj.links = links
-    // }
-    //pull-out the bolds and ''italics''
-
-    obj = formatting_1(obj); //pull-out things like {{start date|...}}
-    // obj = templates(obj);
-
-    return new Sentence_1(obj);
-  } //turn a text into an array of sentence objects
+  } //used for consistency with other class-definitions
 
 
-  var parseSentences = function parseSentences(wiki) {
-    var sentences = parse$2(wiki);
-    sentences = sentences.map(oneSentence); //remove :indented first line, as it is often a disambiguation
+  var byParagraph = function byParagraph(paragraph) {
+    // array of texts
+    var sentences = parse$2(paragraph.wiki); // sentence objects
+
+    sentences = sentences.map(fromText); //remove :indented first line, as it is often a disambiguation
 
     if (sentences[0] && sentences[0].text() && sentences[0].text()[0] === ':') {
       sentences = sentences.slice(1);
     }
 
-    return sentences;
-  }; //used for consistency with other class-definitions
-
-
-  var addSentences = function addSentences(wiki, data) {
-    data.sentences = parseSentences(wiki);
-    return wiki;
+    paragraph.sentences = sentences;
   };
 
   var _04Sentence = {
-    parseSentences: parseSentences,
-    oneSentence: oneSentence,
-    addSentences: addSentences
+    fromText: fromText,
+    byParagraph: byParagraph
   };
 
   //remove the top/bottom off the template
@@ -2933,7 +3840,7 @@
 
   var _03Cleanup = cleanup;
 
-  var parseSentence = _04Sentence.oneSentence; // most templates just want plaintext...
+  var parseSentence = _04Sentence.fromText; // most templates just want plaintext...
 
   var makeFormat = function makeFormat(str, fmt) {
     var s = parseSentence(str); //support various output formats
@@ -3036,7 +3943,7 @@
   });
   var Reference_1 = Reference;
 
-  var parseSentence$1 = _04Sentence.oneSentence; //structured Cite templates - <ref>{{Cite..</ref>
+  var parseSentence$1 = _04Sentence.fromText; //structured Cite templates - <ref>{{Cite..</ref>
 
   var hasCitation = function hasCitation(str) {
     return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false;
@@ -3061,8 +3968,9 @@
   }; // parse <ref></ref> xml tags
 
 
-  var parseRefs = function parseRefs(wiki, data) {
+  var parseRefs = function parseRefs(section) {
     var references = [];
+    var wiki = section.wiki;
     wiki = wiki.replace(/ ?<ref>([\s\S]{0,1800}?)<\/ref> ?/gi, function (a, tmpl) {
       if (hasCitation(tmpl)) {
         var obj = parseCitation(tmpl);
@@ -3099,44 +4007,48 @@
 
     wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ \/]?> ?/g, ' '); //<samp name="asd">
 
-    data.references = references.map(function (r) {
+    section.references = references.map(function (r) {
       return new Reference_1(r);
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var reference = parseRefs;
 
-  var parseSentence$2 = _04Sentence.oneSentence;
+  var parseSentence$2 = _04Sentence.fromText;
   var heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/; //interpret depth, title of headings like '==See also=='
 
-  var parseHeading = function parseHeading(data, str) {
-    var heading = str.match(heading_reg);
+  var parseHeading = function parseHeading(section, str) {
+    var m = str.match(heading_reg);
 
-    if (!heading) {
-      data.title = '';
-      data.depth = 0;
-      return data;
+    if (!m) {
+      section.title = '';
+      section.depth = 0;
+      return section;
     }
 
-    var title = heading[2] || '';
+    var title = m[2] || '';
     title = parseSentence$2(title).text(); //amazingly, you can see inline {{templates}} in this text, too
     //... let's not think about that now.
 
     title = title.replace(/\{\{.+?\}\}/, ''); //same for references (i know..)
 
-    title = reference(title, {}); //trim leading/trailing whitespace
+    var obj = {
+      wiki: title
+    };
+    reference(obj);
+    title = obj.wiki; //trim leading/trailing whitespace
 
-    title = helpers_1.trim_whitespace(title);
+    title = helpers.trim_whitespace(title);
     var depth = 0;
 
-    if (heading[1]) {
-      depth = heading[1].length - 2;
+    if (m[1]) {
+      depth = m[1].length - 2;
     }
 
-    data.title = title;
-    data.depth = depth;
-    return data;
+    section.title = title;
+    section.depth = depth;
+    return section;
   };
 
   var heading = parseHeading;
@@ -3214,12 +4126,11 @@
 
         if (m !== null) {
           var num = parseInt(m[1], 10); //...maybe if num is so big, and centered, remove it?
-
-          if (num > 3) {
-            rows[r] = [];
-            return;
-          } //splice-in n empty columns right here
-
+          // if (num > 3) {
+          //   rows[r] = []
+          //   return
+          // }
+          //splice-in n empty columns right here
 
           row[c] = str.replace(getColSpan, '');
 
@@ -3262,14 +4173,15 @@
 
 
   var handleSpans = function handleSpans(rows) {
-    rows = doRowSpan(rows);
     rows = doColSpan(rows);
+    rows = doRowSpan(rows);
     return rows;
   };
 
   var _spans = handleSpans;
 
-  var parseSentence$3 = _04Sentence.oneSentence; //common ones
+  var parseSentence$3 = _04Sentence.fromText;
+  var isHeading = /^!/; //common ones
 
   var headings = {
     name: true,
@@ -3296,15 +4208,45 @@
     str = str.replace(/^!/, '');
     str = str.trim();
     return str;
+  };
+
+  var skipSpanRow = function skipSpanRow(row) {
+    var len = row.length;
+    var hasTxt = row.filter(function (str) {
+      return str;
+    }).length; //does it have 3 empty spaces?
+
+    if (len - hasTxt > 3) {
+      return true;
+    }
+
+    return false;
+  }; //remove non-header span rows
+
+
+  var removeMidSpans = function removeMidSpans(rows) {
+    rows = rows.filter(function (row) {
+      if (row.length === 1 && row[0] && isHeading.test(row[0]) && /rowspan/i.test(row[0]) === false) {
+        return false;
+      }
+
+      return true;
+    });
+    return rows;
   }; //'!' starts a header-row
 
 
   var findHeaders = function findHeaders() {
     var rows = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var headers = [];
+    var headers = []; // is the first-row just a ton of colspan?
+
+    if (skipSpanRow(rows[0])) {
+      rows.shift();
+    }
+
     var first = rows[0];
 
-    if (first && first[0] && /^!/.test(first[0]) === true) {
+    if (first && first[0] && first[1] && (/^!/.test(first[0]) || /^!/.test(first[1]))) {
       headers = first.map(function (h) {
         h = h.replace(/^\! */, '');
         h = cleanText(h);
@@ -3374,7 +4316,9 @@
     .split(/\n/).map(function (l) {
       return l.trim();
     });
-    var rows = _findRows(lines); //support colspan, rowspan...
+    var rows = _findRows(lines); //remove non-header span rows
+
+    rows = removeMidSpans(rows); //support colspan, rowspan...
 
     rows = _spans(rows); //grab the header rows
 
@@ -3419,7 +4363,7 @@
 
   var toJson_1$1 = toJson$4;
 
-  var defaults$7 = {};
+  var defaults$8 = {};
 
   var Table = function Table(data) {
     Object.defineProperty(this, 'data', {
@@ -3461,7 +4405,7 @@
       return rows;
     },
     json: function json(options) {
-      options = setDefaults_1(options, defaults$7);
+      options = setDefaults_1(options, defaults$8);
       return toJson_1$1(this.data, options);
     },
     text: function text() {
@@ -3478,8 +4422,9 @@
   var openReg = /^\s*{\|/;
   var closeReg = /^\s*\|}/; //tables can be recursive, so looky-here.
 
-  var findTables = function findTables(section, wiki) {
+  var findTables = function findTables(section) {
     var list = [];
+    var wiki = section.wiki;
     var lines = wiki.split('\n');
     var stack = [];
 
@@ -3525,17 +4470,17 @@
       section.tables = tables;
     }
 
-    return wiki;
+    section.wiki = wiki;
   };
 
   var table = findTables;
 
-  var defaults$8 = {
+  var defaults$9 = {
     sentences: true
   };
 
   var toJson$5 = function toJson(p, options) {
-    options = setDefaults_1(options, defaults$8);
+    options = setDefaults_1(options, defaults$9);
     var data = {};
 
     if (options.sentences === true) {
@@ -3549,7 +4494,7 @@
 
   var toJson_1$2 = toJson$5;
 
-  var defaults$9 = {
+  var defaults$a = {
     sentences: true,
     lists: true,
     images: true
@@ -3624,7 +4569,7 @@
       return arr || [];
     },
     text: function text(options) {
-      options = setDefaults_1(options, defaults$9);
+      options = setDefaults_1(options, defaults$a);
       var str = this.sentences().map(function (s) {
         return s.text(options);
       }).join(' ');
@@ -3634,7 +4579,7 @@
       return str;
     },
     json: function json(options) {
-      options = setDefaults_1(options, defaults$9);
+      options = setDefaults_1(options, defaults$a);
       return toJson_1$2(this, options);
     }
   };
@@ -3647,7 +4592,10 @@
   //find all the pairs of '[[...[[..]]...]]' in the text
   //used to properly root out recursive template calls, [[.. [[...]] ]]
   //basically just adds open tags, and subtracts closing tags
-  function find_recursive(opener, closer, text) {
+  var opener = '[';
+  var closer = ']';
+
+  function nested_find(text) {
     var out = [];
     var last = [];
     var chars = text.split('');
@@ -3700,9 +4648,9 @@
     return out;
   }
 
-  var recursive_match = find_recursive;
+  var nested_find_1 = nested_find;
 
-  var parseSentence$4 = _04Sentence.oneSentence; //regexes:
+  var parseSentence$4 = _04Sentence.fromText; //regexes:
 
   var isFile = new RegExp('(' + i18n.images.join('|') + '):', 'i');
   var fileNames = "(".concat(i18n.images.join('|'), ")");
@@ -3770,25 +4718,28 @@
     return null;
   };
 
-  var parseImages = function parseImages(matches, r, wiki) {
+  var parseImages = function parseImages(paragraph) {
+    var wiki = paragraph.wiki; //parse+remove scary '[[ [[]] ]]' stuff
+
+    var matches = nested_find_1(wiki);
     matches.forEach(function (s) {
       if (isFile.test(s) === true) {
-        r.images = r.images || [];
+        paragraph.images = paragraph.images || [];
         var img = oneImage(s);
 
         if (img) {
-          r.images.push(img);
+          paragraph.images.push(img);
         }
 
         wiki = wiki.replace(s, '');
       }
     });
-    return wiki;
+    paragraph.wiki = wiki;
   };
 
   var image = parseImages;
 
-  var defaults$a = {};
+  var defaults$b = {};
 
   var toText = function toText(list, options) {
     return list.map(function (s) {
@@ -3829,7 +4780,7 @@
       return links;
     },
     json: function json(options) {
-      options = setDefaults_1(options, defaults$a);
+      options = setDefaults_1(options, defaults$b);
       return this.lines().map(function (s) {
         return s.json(options);
       });
@@ -3843,7 +4794,7 @@
   });
   var List_1 = List;
 
-  var parseSentence$5 = _04Sentence.oneSentence;
+  var parseSentence$5 = _04Sentence.fromText;
   var list_reg = /^[#\*:;\|]+/;
   var bullet_reg = /^\*+[^:,\|]{4}/;
   var number_reg = /^ ?\#[^:,\|]{4}/;
@@ -3896,7 +4847,8 @@
     return sub;
   };
 
-  var parseList = function parseList(wiki, data) {
+  var parseList = function parseList(paragraph) {
+    var wiki = paragraph.wiki;
     var lines = wiki.split(/\n/g); // lines = lines.filter(l => has_word.test(l));
 
     var lists = [];
@@ -3915,48 +4867,45 @@
       }
     }
 
-    data.lists = lists.map(function (l) {
+    paragraph.lists = lists.map(function (l) {
       return new List_1(l);
     });
-    wiki = theRest.join('\n');
-    return wiki;
+    paragraph.wiki = theRest.join('\n');
   };
 
   var list = parseList;
 
-  var parseSentences$1 = _04Sentence.addSentences;
+  var parseSentences = _04Sentence.byParagraph;
   var twoNewLines = /\r?\n\r?\n/;
   var parse$5 = {
     image: image,
     list: list
   };
 
-  var parseParagraphs = function parseParagraphs(wiki) {
-    var pList = wiki.split(twoNewLines); //don't create empty paragraphs
+  var parseParagraphs = function parseParagraphs(section, doc) {
+    var wiki = section.wiki;
+    var paragraphs = wiki.split(twoNewLines); //don't create empty paragraphs
 
-    pList = pList.filter(function (p) {
+    paragraphs = paragraphs.filter(function (p) {
       return p && p.trim().length > 0;
     });
-    pList = pList.map(function (str) {
-      var data = {
+    paragraphs = paragraphs.map(function (str) {
+      var paragraph = {
+        wiki: str,
         lists: [],
         sentences: [],
         images: []
       }; //parse the lists
 
-      str = parse$5.list(str, data); //parse+remove scary '[[ [[]] ]]' stuff
+      parse$5.list(paragraph); // parse images
 
-      var matches = recursive_match('[', ']', str); // parse images
+      parse$5.image(paragraph); //parse the sentences
 
-      str = parse$5.image(matches, data, str); //parse the sentences
-
-      parseSentences$1(str, data);
-      return new Paragraph_1(data);
+      parseSentences(paragraph);
+      return new Paragraph_1(paragraph);
     });
-    return {
-      paragraphs: pList,
-      wiki: wiki
-    };
+    section.wiki = wiki;
+    section.paragraphs = paragraphs;
   };
 
   var _03Paragraph = parseParagraphs;
@@ -4023,7 +4972,7 @@
       return arr;
     },
     image: function image() {
-      var s = this.get('image') || this.get('image2');
+      var s = this.get('image') || this.get('image2') || this.get('logo');
 
       if (!s) {
         return null;
@@ -4202,7 +5151,8 @@
   'pp', 'pp-move-indef', 'pp-semi-indef', 'pp-vandalism', //https://en.wikipedia.org/wiki/Template:R
   'r', //out-of-scope still - https://en.wikipedia.org/wiki/Template:Tag
   '#tag', //https://en.wikipedia.org/wiki/Template:Navboxes
-  'navboxes', 'reflist', 'ref-list', 'div col', 'authority control', //https://en.wikipedia.org/wiki/Template:Citation_needed
+  'navboxes', 'reflist', 'ref-list', 'div col', // 'authority control',
+  //https://en.wikipedia.org/wiki/Template:Citation_needed
   // 'better source',
   // 'citation needed',
   // 'clarify',
@@ -5063,7 +6013,13 @@
     //https://en.wikipedia.org/wiki/Template:Val
     val: function val(tmpl) {
       var obj = parse$3(tmpl, ['number', 'uncertainty']);
-      var str = obj.number || ''; //prefix/suffix
+      var num = obj.number;
+
+      if (num && Number(num)) {
+        num = Number(num).toLocaleString();
+      }
+
+      var str = num || ''; //prefix/suffix
 
       if (obj.p) {
         str = obj.p + str;
@@ -5451,6 +6407,7 @@
   inline$1['tooltip'] = inline$1.abbr;
   inline$1['abbrv'] = inline$1.abbr;
   inline$1['define'] = inline$1.abbr;
+  inline$1['cvt'] = inline$1.convert;
   var misc$1 = inline$1;
 
   var formatting$1 = Object.assign({}, format, lists, misc$1);
@@ -5728,6 +6685,7 @@
     },
     sfn: ['author', 'year', 'location'],
     audio: ['file', 'text', 'type'],
+    rp: ['page'],
     'spoken wikipedia': function spokenWikipedia(tmpl, list) {
       var order = ['file', 'date'];
       var obj = parse$3(tmpl, order);
@@ -6190,7 +7148,7 @@
   'germany'], ['🇩🇯', 'dji', 'djibouti'], ['🇩🇰', 'dnk', 'denmark'], ['🇩🇲', 'dma', 'dominica'], ['🇩🇴', 'dom', 'dominican republic'], ['🇩🇿', 'dza', 'algeria'], ['🇪🇨', 'ecu', 'ecuador'], ['🇪🇪', 'est', 'estonia'], ['🇪🇬', 'egy', 'egypt'], ['🇪🇭', 'esh', 'western sahara'], ['🇪🇷', 'eri', 'eritrea'], ['🇪🇸', 'esp', 'spain'], ['🇪🇹', 'eth', 'ethiopia'], ['🇫🇮', 'fin', 'finland'], ['🇫🇯', 'fji', 'fiji'], ['🇫🇰', 'flk', 'falkland islands (malvinas)'], ['🇫🇲', 'fsm', 'micronesia'], ['🇫🇴', 'fro', 'faroe islands'], ['🇫🇷', 'fra', 'france'], ['🇬🇦', 'gab', 'gabon'], ['🇬🇧', 'gbr', 'united kingdom'], ['🇬🇩', 'grd', 'grenada'], // ['🇬🇪', 'geo', 'georgia'],
   ['🇬🇫', 'guf', 'french guiana'], ['🇬🇬', 'ggy', 'guernsey'], ['🇬🇭', 'gha', 'ghana'], ['🇬🇮', 'gib', 'gibraltar'], ['🇬🇱', 'grl', 'greenland'], ['🇬🇲', 'gmb', 'gambia'], ['🇬🇳', 'gin', 'guinea'], ['🇬🇵', 'glp', 'guadeloupe'], ['🇬🇶', 'gnq', 'equatorial guinea'], ['🇬🇷', 'grc', 'greece'], ['🇬🇸', 'sgs', 'south georgia'], ['🇬🇹', 'gtm', 'guatemala'], ['🇬🇺', 'gum', 'guam'], ['🇬🇼', 'gnb', 'guinea-bissau'], ['🇬🇾', 'guy', 'guyana'], ['🇭🇰', 'hkg', 'hong kong'], ['🇭🇲', 'hmd', 'heard island and mcdonald islands'], ['🇭🇳', 'hnd', 'honduras'], ['🇭🇷', 'hrv', 'croatia'], ['🇭🇹', 'hti', 'haiti'], ['🇭🇺', 'hun', 'hungary'], ['🇮🇩', 'idn', 'indonesia'], ['🇮🇪', 'irl', 'ireland'], ['🇮🇱', 'isr', 'israel'], ['🇮🇲', 'imn', 'isle of man'], ['🇮🇳', 'ind', 'india'], ['🇮🇴', 'iot', 'british indian ocean territory'], ['🇮🇶', 'irq', 'iraq'], ['🇮🇷', 'irn', 'iran'], ['🇮🇸', 'isl', 'iceland'], ['🇮🇹', 'ita', 'italy'], ['🇯🇪', 'jey', 'jersey'], ['🇯🇲', 'jam', 'jamaica'], ['🇯🇴', 'jor', 'jordan'], ['🇯🇵', 'jpn', 'japan'], ['🇰🇪', 'ken', 'kenya'], ['🇰🇬', 'kgz', 'kyrgyzstan'], ['🇰🇭', 'khm', 'cambodia'], ['🇰🇮', 'kir', 'kiribati'], ['🇰🇲', 'com', 'comoros'], ['🇰🇳', 'kna', 'saint kitts and nevis'], ['🇰🇵', 'prk', 'north korea'], ['🇰🇷', 'kor', 'south korea'], ['🇰🇼', 'kwt', 'kuwait'], ['🇰🇾', 'cym', 'cayman islands'], ['🇰🇿', 'kaz', 'kazakhstan'], ['🇱🇦', 'lao', "lao people's democratic republic"], ['🇱🇧', 'lbn', 'lebanon'], ['🇱🇨', 'lca', 'saint lucia'], ['🇱🇮', 'lie', 'liechtenstein'], ['🇱🇰', 'lka', 'sri lanka'], ['🇱🇷', 'lbr', 'liberia'], ['🇱🇸', 'lso', 'lesotho'], ['🇱🇹', 'ltu', 'lithuania'], ['🇱🇺', 'lux', 'luxembourg'], ['🇱🇻', 'lva', 'latvia'], ['🇱🇾', 'lby', 'libya'], ['🇲🇦', 'mar', 'morocco'], ['🇲🇨', 'mco', 'monaco'], ['🇲🇩', 'mda', 'moldova'], ['🇲🇪', 'mne', 'montenegro'], ['🇲🇫', 'maf', 'saint martin (french part)'], ['🇲🇬', 'mdg', 'madagascar'], ['🇲🇭', 'mhl', 'marshall islands'], ['🇲🇰', 'mkd', 'macedonia'], ['🇲🇱', 'mli', 'mali'], ['🇲🇲', 'mmr', 'myanmar'], ['🇲🇳', 'mng', 'mongolia'], ['🇲🇴', 'mac', 'macao'], ['🇲🇵', 'mnp', 'northern mariana islands'], ['🇲🇶', 'mtq', 'martinique'], ['🇲🇷', 'mrt', 'mauritania'], ['🇲🇸', 'msr', 'montserrat'], ['🇲🇹', 'mlt', 'malta'], ['🇲🇺', 'mus', 'mauritius'], ['🇲🇻', 'mdv', 'maldives'], ['🇲🇼', 'mwi', 'malawi'], ['🇲🇽', 'mex', 'mexico'], ['🇲🇾', 'mys', 'malaysia'], ['🇲🇿', 'moz', 'mozambique'], ['🇳🇦', 'nam', 'namibia'], ['🇳🇨', 'ncl', 'new caledonia'], ['🇳🇪', 'ner', 'niger'], ['🇳🇫', 'nfk', 'norfolk island'], ['🇳🇬', 'nga', 'nigeria'], ['🇳🇮', 'nic', 'nicaragua'], ['🇳🇱', 'nld', 'netherlands'], ['🇳🇴', 'nor', 'norway'], ['🇳🇵', 'npl', 'nepal'], ['🇳🇷', 'nru', 'nauru'], ['🇳🇺', 'niu', 'niue'], ['🇳🇿', 'nzl', 'new zealand'], ['🇴🇲', 'omn', 'oman'], ['🇵🇦', 'pan', 'panama'], ['🇵🇪', 'per', 'peru'], ['🇵🇫', 'pyf', 'french polynesia'], ['🇵🇬', 'png', 'papua new guinea'], ['🇵🇭', 'phl', 'philippines'], ['🇵🇰', 'pak', 'pakistan'], ['🇵🇱', 'pol', 'poland'], ['🇵🇲', 'spm', 'saint pierre and miquelon'], ['🇵🇳', 'pcn', 'pitcairn'], ['🇵🇷', 'pri', 'puerto rico'], ['🇵🇸', 'pse', 'palestinian territory'], ['🇵🇹', 'prt', 'portugal'], ['🇵🇼', 'plw', 'palau'], ['🇵🇾', 'pry', 'paraguay'], ['🇶🇦', 'qat', 'qatar'], ['🇷🇪', 'reu', 'réunion'], ['🇷🇴', 'rou', 'romania'], ['🇷🇸', 'srb', 'serbia'], ['🇷🇺', 'rus', 'russia'], ['🇷🇼', 'rwa', 'rwanda'], ['🇸🇦', 'sau', 'saudi arabia'], ['🇸🇧', 'slb', 'solomon islands'], ['🇸🇨', 'syc', 'seychelles'], ['🇸🇩', 'sdn', 'sudan'], ['🇸🇪', 'swe', 'sweden'], ['🇸🇬', 'sgp', 'singapore'], ['🇸🇭', 'shn', 'saint helena, ascension and tristan da cunha'], ['🇸🇮', 'svn', 'slovenia'], ['🇸🇯', 'sjm', 'svalbard and jan mayen'], ['🇸🇰', 'svk', 'slovakia'], ['🇸🇱', 'sle', 'sierra leone'], ['🇸🇲', 'smr', 'san marino'], ['🇸🇳', 'sen', 'senegal'], ['🇸🇴', 'som', 'somalia'], ['🇸🇷', 'sur', 'suriname'], ['🇸🇸', 'ssd', 'south sudan'], ['🇸🇹', 'stp', 'sao tome and principe'], ['🇸🇻', 'slv', 'el salvador'], ['🇸🇽', 'sxm', 'sint maarten (dutch part)'], ['🇸🇾', 'syr', 'syrian arab republic'], ['🇸🇿', 'swz', 'swaziland'], ['🇹🇨', 'tca', 'turks and caicos islands'], ['🇹🇩', 'tcd', 'chad'], ['🇹🇫', 'atf', 'french southern territories'], ['🇹🇬', 'tgo', 'togo'], ['🇹🇭', 'tha', 'thailand'], ['🇹🇯', 'tjk', 'tajikistan'], ['🇹🇰', 'tkl', 'tokelau'], ['🇹🇱', 'tls', 'timor-leste'], ['🇹🇲', 'tkm', 'turkmenistan'], ['🇹🇳', 'tun', 'tunisia'], ['🇹🇴', 'ton', 'tonga'], ['🇹🇷', 'tur', 'turkey'], ['🇹🇹', 'tto', 'trinidad and tobago'], ['🇹🇻', 'tuv', 'tuvalu'], ['🇹🇼', 'twn', 'taiwan'], ['🇹🇿', 'tza', 'tanzania'], ['🇺🇦', 'ukr', 'ukraine'], ['🇺🇬', 'uga', 'uganda'], ['🇺🇲', 'umi', 'united states minor outlying islands'], ['🇺🇸', 'usa', 'united states'], ['🇺🇸', 'us', //alias
   'united states'], ['🇺🇾', 'ury', 'uruguay'], ['🇺🇿', 'uzb', 'uzbekistan'], ['🇻🇦', 'vat', 'vatican city'], ['🇻🇨', 'vct', 'saint vincent and the grenadines'], ['🇻🇪', 'ven', 'venezuela'], ['🇻🇬', 'vgb', 'virgin islands, british'], ['🇻🇮', 'vir', 'virgin islands, u.s.'], ['🇻🇳', 'vnm', 'viet nam'], ['🇻🇺', 'vut', 'vanuatu'], ['', 'win', 'west indies'], ['🇼🇫', 'wlf', 'wallis and futuna'], ['🇼🇸', 'wsm', 'samoa'], ['🇾🇪', 'yem', 'yemen'], ['🇾🇹', 'myt', 'mayotte'], ['🇿🇦', 'zaf', 'south africa'], ['🇿🇲', 'zmb', 'zambia'], ['🇿🇼 ', 'zwe', 'zimbabwe'], //others (later unicode versions)
-  ['🇺🇳', 'un', 'united nations'], ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'], ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'], ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales']];
+  ['🇺🇳', 'un', 'united nations'], ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'], ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'], ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales'], ['🇪🇺', 'eu', 'european union']];
 
   var templates$5 = {
     //https://en.wikipedia.org/wiki/Template:Flag
@@ -6282,6 +7240,20 @@
       }
 
       return " [[".concat(found[2], " national football team|").concat(found[0], "]]");
+    },
+    flagathlete: function flagathlete(tmpl) {
+      var order = ['name', 'flag', 'variant'];
+      var obj = parse$3(tmpl, order);
+      obj.flag = (obj.flag || '').toLowerCase();
+      var found = flags.find(function (a) {
+        return obj.flag === a[1] || obj.flag === a[2];
+      });
+
+      if (!found) {
+        return "[[".concat(obj.name || '', "]]");
+      }
+
+      return "".concat(found[0], " [[").concat(obj.name || '', "]] (").concat(found[1].toUpperCase(), ")");
     }
   }; //support {{can}}
 
@@ -6330,6 +7302,18 @@
       obj.template = 'ipac';
       list.push(obj);
       return '';
+    },
+    transl: function transl(tmpl, list) {
+      var obj = parse$3(tmpl, ['lang', 'text', 'text2']); // support 3-param
+
+      if (obj.text2) {
+        obj.iso = obj.text;
+        obj.text = obj.text2;
+        delete obj.text2;
+      }
+
+      list.push(obj);
+      return obj.text || '';
     }
   }; // - other languages -
   // Polish, {{IPAc-pl}}	{{IPAc-pl|'|sz|cz|e|ć|i|n}} → [ˈʂt͡ʂɛt͡ɕin]
@@ -6517,6 +7501,8 @@
   var math = templates$8;
 
   var misc$2 = {
+    // https://en.wikipedia.org/wiki/Template:Portuguese_name
+    'portuguese name': ['first', 'second', 'suffix'],
     uss: ['ship', 'id'],
     isbn: function isbn(tmpl, list) {
       var order = ['id', 'id2', 'id3'];
@@ -6651,6 +7637,47 @@
       };
       list.push(template);
       return '';
+    },
+
+    /*
+    {{Medical cases chart/Row
+    |1          = valid date
+    |2          = expression for deaths
+    |3          = expression for recoveries
+    |4          = expression for total cases (3rd classification)
+    |alttot1    = alternate expression for active cases (3rd classification)
+    |5          = expression for number in 4th classification
+    |6          = expression for total in 5th classification
+    |alttot2    = alternate expression for number in 5th classification
+    |7          = number in the first column
+    |8          = change in the first column
+    |firstright1= whether a change in the first column is not applicable (n.a.) (yes|y|1)
+    |9          = number in the second column
+    |10         = change in the second column
+    |firstright2= whether a change in the second column is not applicable (n.a.) (yes|y|1)
+    |divisor    = scaling divisor of the bars (bigger value = narrower bars)               [defaults to: 1]
+    |numwidth   = max width of the numbers in the right columns (xx or xxxx)<-(n|t|m|w|d)  [defaults to: mm]
+    |collapsible= whether the row is collapsible (yes|y|1)                                 {WIP}
+    |collapsed  = manual override of the initial row state (yes|y|1)                       {WIP}
+    |id         = manual override of the row id                                            {WIP}
+    }}
+    */
+    // this is a weird one
+    //https://en.wikipedia.org/wiki/Template:Medical_cases_chart
+    'medical cases chart': function medicalCasesChart(tmpl, list) {
+      var order = ['date', 'deaths_expr', 'recovery_expr', 'cases_expr', 'alt_expr_1', '4th_expr', '5th_expr', 'alt_expr_2', 'col_1', 'col_1_change', 'show_col_1', 'col_2', 'col_2_change', 'show_col_2', 'divisor', 'numwidth', 'collabsible', 'collapsed', 'id'];
+      var obj = parse$3(tmpl); // parse each row template
+
+      var rows = obj.rows.match(/\{\{Medical cases chart\/Row.*\}\}/gi);
+      obj.rows = rows.map(function (row) {
+        return parse$3(row, order);
+      });
+      list.push(obj);
+      return '';
+    },
+    'medical cases chart/row': function medicalCasesChartRow(tmpl) {
+      // actually keep this template
+      return tmpl;
     }
   };
   var science = templates$a;
@@ -7221,7 +8248,7 @@
   var generic$1 = parse$3;
   var nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
 
-  var isArray$1 = function isArray(arr) {
+  var isArray$2 = function isArray(arr) {
     return Object.prototype.toString.call(arr) === '[object Array]';
   }; //this gets all the {{template}} strings and decides how to parse them
 
@@ -7267,7 +8294,7 @@
       } // handle array sytax
 
 
-      if (isArray$1(templates$d[name]) === true) {
+      if (isArray$2(templates$d[name]) === true) {
         var _obj3 = generic$1(tmpl.body, templates$d[name]);
 
         list.push(_obj3);
@@ -7333,8 +8360,9 @@
   }; //reduce the scary recursive situations
 
 
-  var allTemplates = function allTemplates(wiki, data) {
-    // nested data-structure of templates
+  var allTemplates = function allTemplates(section) {
+    var wiki = section.wiki; // nested data-structure of templates
+
     var list = find(wiki);
     var keep = []; // recursive template-parser
 
@@ -7365,41 +8393,42 @@
       return parseThem(node, null);
     }); // sort-out the templates we decide to keep
 
-    data.infoboxes = data.infoboxes || [];
-    data.references = data.references || [];
-    data.templates = data.templates || [];
-    data.templates = data.templates.concat(keep); // remove references and infoboxes from our list
+    section.infoboxes = section.infoboxes || [];
+    section.references = section.references || [];
+    section.templates = section.templates || [];
+    section.templates = section.templates.concat(keep); // remove references and infoboxes from our list
 
-    data.templates = data.templates.filter(function (obj) {
+    section.templates = section.templates.filter(function (obj) {
       if (isReference(obj) === true) {
-        data.references.push(new Reference_1(obj));
+        section.references.push(new Reference_1(obj));
         return false;
       }
 
       if (isInfobox$1(obj) === true) {
-        data.infoboxes.push(new Infobox_1(obj));
+        section.infoboxes.push(new Infobox_1(obj));
         return false;
       }
 
       return true;
     });
-    data.templates = data.templates.map(function (obj) {
+    section.templates = section.templates.map(function (obj) {
       return new Template_1(obj);
     }); // remove the templates from our wiki text
 
     list.forEach(function (node) {
       wiki = wiki.replace(node.body, node.out);
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var template$1 = allTemplates;
 
-  var parseSentence$6 = _04Sentence.oneSentence; //okay, <gallery> is a xml-tag, with newline-seperated data, somehow pivoted by '|'...
+  var parseSentence$6 = _04Sentence.fromText; //okay, <gallery> is a xml-tag, with newline-seperated data, somehow pivoted by '|'...
   //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
   // - not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
 
-  var parseGallery = function parseGallery(wiki, section) {
+  var parseGallery = function parseGallery(section) {
+    var wiki = section.wiki;
     wiki = wiki.replace(/<gallery([^>]*?)>([\s\S]+?)<\/gallery>/g, function (_, attrs, inside) {
       var images = inside.split(/\n/g);
       images = images.filter(function (str) {
@@ -7431,20 +8460,22 @@
 
       return '';
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var gallery = parseGallery;
 
   //https://en.wikipedia.org/wiki/Template:Election_box
 
-  var parseElection = function parseElection(wiki, section) {
+  var parseElection = function parseElection(section) {
+    var wiki = section.wiki;
     wiki = wiki.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, function (tmpl) {
       var data = {
+        wiki: tmpl,
         templates: []
       }; //put it through our full template parser..
 
-      template$1(tmpl, data); //okay, pull it apart into something sensible..
+      template$1(data); //okay, pull it apart into something sensible..
 
       var templates = data.templates.map(function (t) {
         return t.json();
@@ -7471,7 +8502,7 @@
 
       return '';
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var election = parseElection;
@@ -7482,7 +8513,8 @@
     roster: ['player', 'gp', 'gs', 'mpg', 'fg%', '3fg%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg']
   }; //https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
 
-  var parseNBA = function parseNBA(wiki, section) {
+  var parseNBA = function parseNBA(section) {
+    var wiki = section.wiki;
     wiki = wiki.replace(/\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi, function (tmpl, name) {
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
       tmpl = tmpl.replace(/\{\{s-end\}\}/, '');
@@ -7502,7 +8534,7 @@
       });
       return '';
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var nba = parseNBA;
@@ -7527,7 +8559,8 @@
     return headings;
   };
 
-  var parseMlb = function parseMlb(wiki, section) {
+  var parseMlb = function parseMlb(section) {
+    var wiki = section.wiki;
     wiki = wiki.replace(/\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi, function (tmpl) {
       var headings = whichHeadings(tmpl);
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
@@ -7547,14 +8580,15 @@
       });
       return '';
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var mlb = parseMlb;
 
   var headings$1 = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes']; //https://en.wikipedia.org/wiki/Template:MMA_record_start
 
-  var parseMMA = function parseMMA(wiki, section) {
+  var parseMMA = function parseMMA(section) {
+    var wiki = section.wiki;
     wiki = wiki.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, function (tmpl) {
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
       tmpl = tmpl.replace(/\{\{end\}\}/i, '');
@@ -7573,15 +8607,16 @@
       });
       return '';
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var mma = parseMMA;
 
-  var parseSentence$7 = _04Sentence.oneSentence; //xml <math>y=mx+b</math> support
+  var parseSentence$7 = _04Sentence.fromText; //xml <math>y=mx+b</math> support
   //https://en.wikipedia.org/wiki/Help:Displaying_a_formula
 
-  var parseMath = function parseMath(wiki, section) {
+  var parseMath = function parseMath(section) {
+    var wiki = section.wiki;
     wiki = wiki.replace(/<math([^>]*?)>([\s\S]+?)<\/math>/g, function (_, attrs, inside) {
       //clean it up a little?
       var formula = parseSentence$7(inside).text();
@@ -7605,7 +8640,7 @@
       });
       return '';
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var math$1 = parseMath;
@@ -7613,14 +8648,13 @@
   // ... others are {{start}}...{{end}}
   // -> these are those ones.
 
-  var xmlTemplates = function xmlTemplates(section, wiki) {
-    wiki = gallery(wiki, section);
-    wiki = election(wiki, section);
-    wiki = math$1(wiki, section);
-    wiki = nba(wiki, section);
-    wiki = mma(wiki, section);
-    wiki = mlb(wiki, section);
-    return wiki;
+  var xmlTemplates = function xmlTemplates(section) {
+    election(section);
+    gallery(section);
+    math$1(section);
+    mlb(section);
+    mma(section);
+    nba(section);
   };
 
   var startToEnd = xmlTemplates;
@@ -7637,20 +8671,18 @@
     startEndTemplates: startToEnd
   };
 
-  var oneSection = function oneSection(wiki, data, options) {
-    wiki = parse$6.startEndTemplates(data, wiki, options); //parse-out the <ref></ref> tags
+  var oneSection = function oneSection(section, doc) {
+    parse$6.startEndTemplates(section); //parse-out the <ref></ref> tags
 
-    wiki = parse$6.references(wiki, data); //parse-out all {{templates}}
+    parse$6.references(section); //parse-out all {{templates}}
 
-    wiki = parse$6.templates(wiki, data, options); // //parse the tables
+    parse$6.templates(section); // //parse the tables
 
-    wiki = parse$6.table(data, wiki); //now parse all double-newlines
+    parse$6.table(section); //now parse all double-newlines
 
-    var res = parse$6.paragraphs(wiki, options);
-    data.paragraphs = res.paragraphs;
-    wiki = res.wiki;
-    data = new Section_1(data, wiki);
-    return data;
+    parse$6.paragraphs(section, doc);
+    section = new Section_1(section);
+    return section;
   };
 
   var removeReferenceSection = function removeReferenceSection(sections) {
@@ -7677,46 +8709,47 @@
     });
   };
 
-  var parseSections = function parseSections(wiki, options) {
-    var split = wiki.split(section_reg);
+  var parseSections = function parseSections(doc) {
     var sections = [];
+    var split = doc.wiki.split(section_reg);
 
     for (var i = 0; i < split.length; i += 2) {
       var heading = split[i - 1] || '';
-      var content = split[i] || '';
+      var wiki = split[i] || '';
 
-      if (content === '' && heading === '') {
+      if (wiki === '' && heading === '') {
         //usually an empty 'intro' section
         continue;
       }
 
-      var data = {
+      var section = {
         title: '',
         depth: null,
+        wiki: wiki,
         templates: [],
+        tables: [],
         infoboxes: [],
         references: []
       }; //figure-out title/depth
 
-      parse$6.heading(data, heading); //parse it up
+      parse$6.heading(section, heading); //parse it up
 
-      var s = oneSection(content, data, options);
+      var s = oneSection(section, doc);
       sections.push(s);
     } //remove empty references section
 
 
-    sections = removeReferenceSection(sections);
-    return sections;
+    doc.sections = removeReferenceSection(sections);
   };
 
   var _02Section = parseSections;
 
-  var cat_reg$1 = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'ig');
+  var cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'ig');
   var cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n.categories.join('|') + '):', 'ig');
 
-  var parse_categories = function parse_categories(r, wiki) {
-    r.categories = [];
-    var tmp = wiki.match(cat_reg$1); //regular links
+  var parse_categories = function parse_categories(doc) {
+    var wiki = doc.wiki;
+    var tmp = wiki.match(cat_reg); //regular links
 
     if (tmp) {
       tmp.forEach(function (c) {
@@ -7726,13 +8759,13 @@
         c = c.replace(/\|.*/, ''); //everything after the '|' is metadata
 
         if (c && !c.match(/[\[\]]/)) {
-          r.categories.push(c.trim());
+          doc.categories.push(c.trim());
         }
       });
     }
 
-    wiki = wiki.replace(cat_reg$1, '');
-    return wiki;
+    wiki = wiki.replace(cat_reg, '');
+    doc.wiki = wiki;
   };
 
   var categories$1 = parse_categories;
@@ -7743,38 +8776,39 @@
   }; //convert wikiscript markup lang to json
 
   var main = function main(wiki, options) {
+    var _Object$assign;
+
     options = options || {};
-    wiki = wiki || '';
-    var data = {
+    var doc = Object.assign(options, (_Object$assign = {
       title: options.title || null,
       pageID: options.pageID || options.id || null,
       namespace: options.namespace || options.ns || null,
       type: 'page',
-      sections: [],
+      wiki: wiki || '',
       categories: [],
-      coordinates: []
-    }; //detect if page is just redirect, and return it
+      sections: []
+    }, _defineProperty(_Object$assign, "categories", []), _defineProperty(_Object$assign, "coordinates", []), _Object$assign)); //detect if page is just redirect, and return it
 
     if (redirects$1.isRedirect(wiki) === true) {
-      data.type = 'redirect';
-      data.redirectTo = redirects$1.parse(wiki);
-      parse$7.categories(data, wiki);
-      return new Document_1(data);
+      doc.type = 'redirect';
+      doc.redirectTo = redirects$1.parse(wiki);
+      parse$7.categories(doc);
+      return new Document_1(doc);
     } //detect if page is just disambiguator page, and return
 
 
-    if (disambig$1.isDisambig(wiki) === true) {
-      data.type = 'disambiguation';
+    if (disambig$1.isDisambig(doc.wiki) === true) {
+      doc.type = 'disambiguation';
     } //give ourselves a little head-start
 
 
-    wiki = preProcess_1(data, wiki); //pull-out [[category:whatevers]]
+    preProcess_1(doc); //pull-out [[category:whatevers]]
 
-    wiki = parse$7.categories(data, wiki); //parse all the headings, and their texts/sentences
+    parse$7.categories(doc); //parse all the headings, and their texts/sentences
 
-    data.sections = parse$7.section(wiki, options) || []; //all together now
+    parse$7.section(doc) || []; //all together now
 
-    return new Document_1(data);
+    return new Document_1(doc);
   };
 
   var _01Document = main;
@@ -7844,7 +8878,7 @@
   var _headers = makeHeaders;
 
   var isUrl = /^https?:\/\//;
-  var defaults$b = {
+  var defaults$c = {
     lang: 'en',
     wiki: 'wikipedia',
     domain: null,
@@ -7875,7 +8909,7 @@
     }
 
     options = options || {};
-    options = Object.assign({}, defaults$b, options);
+    options = Object.assign({}, defaults$c, options);
     options.title = title; // parse url input
 
     if (isUrl.test(title)) {
@@ -7886,7 +8920,7 @@
     var headers = _headers(options);
     return server$1(url, headers).then(function (res) {
       try {
-        var data = _02GetResult(res);
+        var data = _02GetResult(res, options);
         data = _03ParseDoc(data);
 
         if (callback) {
@@ -7910,7 +8944,7 @@
 
   var _fetch = fetch;
 
-  var defaults$c = {
+  var defaults$d = {
     lang: 'en',
     wiki: 'wikipedia',
     domain: null,
@@ -7924,7 +8958,7 @@
 
   var fetchRandom = function fetchRandom(lang, options) {
     options = options || {};
-    options = Object.assign({}, defaults$c, options); //support lang 2nd param
+    options = Object.assign({}, defaults$d, options); //support lang 2nd param
 
     if (typeof lang === 'string') {
       options.lang = lang;
@@ -7955,7 +8989,7 @@
 
   var random = fetchRandom;
 
-  var defaults$d = {
+  var defaults$e = {
     lang: 'en',
     wiki: 'wikipedia',
     domain: null,
@@ -8016,7 +9050,7 @@
 
   var fetchCategory = function fetchCategory(category, lang, options) {
     options = options || {};
-    options = Object.assign({}, defaults$d, options); //support lang 2nd param
+    options = Object.assign({}, defaults$e, options); //support lang 2nd param
 
     if (typeof lang === 'string') {
       options.lang = lang;
@@ -8053,7 +9087,12 @@
 
   var category = fetchCategory;
 
-  var _version = '8.0.0';
+  var _version = '8.1.0';
+
+  var wtf = function wtf(wiki, options) {
+    return _01Document(wiki, options);
+  }; // export classes for plugin development
+
 
   var models = {
     Doc: Document_1,
@@ -8066,11 +9105,8 @@
     List: List_1,
     Reference: Reference_1,
     Table: Table_1,
-    Template: Template_1
-  }; //the main 'factory' exported method
-
-  var wtf = function wtf(wiki, options) {
-    return _01Document(wiki, options);
+    Template: Template_1,
+    wtf: wtf
   };
 
   wtf.fetch = function (title, lang, options, cb) {

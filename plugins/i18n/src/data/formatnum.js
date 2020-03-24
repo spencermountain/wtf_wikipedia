@@ -1,1 +1,8 @@
-module.exports = ['FormatNum', 'Formatnum', 'Formattal', 'Puntudecimal', 'Szám', 'Try formatnum', '형식 숫자']
+module.exports = [
+  // 'formatnum',
+  'formattal',
+  'puntudecimal',
+  'szám',
+  'try formatnum',
+  '형식 숫자'
+]
