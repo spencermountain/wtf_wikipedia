@@ -4,12 +4,14 @@
 * lowercase/normalize table headers
 - `.categories()` return `Category` objects
 - - keep `Category:` prefix on categories
+- make `.method('foo')` results consistent
 -->
 
 ### 8.1.0
 
 - [major] fix Link json object in `.json()` result
 - [major] fix inconsistent response for singular method aliases like `.template('foo')`
+- [major] change in rowspan behaviour to support covid table
 - support `<noinclude>`
 - add `.url()` and `.language()` methods
 - - support setters on Link methods

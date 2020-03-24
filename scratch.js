@@ -4,22 +4,13 @@ wtf.extend(require('./plugins/classify/src'))
 wtf.extend(require('./plugins/summary/src'))
 wtf.extend(require('./plugins/category/src'))
 
-// wtf.fetch('Template:2019–20 coronavirus pandemic data/Switzerland medical cases').then(doc => {
-// console.log(doc.tables())
-// console.log(doc.summary())
-// console.log(doc.classify())
-// })
-// wtf.random().then(doc => {
-//   console.log(doc.title())
-//   // console.log(doc.summary({ article: false }))
-//   console.log(doc.classify())
-// })
-
 /*
-* interwiki links
-* disambiguation templates 
+ * interwiki links
+ * disambiguation templates
+// {{Place name disambiguation}}
+// {{Airport disambiguation}}
 
-*/
+ */
 
 // wtf.fetch('Toronto').then(doc => {
 //   let html = doc.html()
@@ -168,18 +159,23 @@ let str = `
 |<ref name="20200227.01">{{cite web|url=https://www.gr.ch/DE/Medien/Mitteilungen/MMStaka/2020/Seiten/2020022704.aspx|title=Coronavirus: Kanton ergreift präventive Massnahmen gegen Weiterverbreitung|date=27 February 2020|website=Kanton Graubünden - gr.ch|language=de-DE|accessdate=5 March 2020}}</ref><ref name="20200227.02">{{cite web|url=https://www.ag.ch/de/aktuelles/medienportal/medienmitteilung/medienmitteilungen/mediendetails_138706.jsp|title=Fall von Coronavirus-SARS-CoV-2-Infektion im Kanton Aargau bestätigt|date=27 February 2020|website=Kanton Aargau - ag.ch|language=de-DE|accessdate=5 March 2020}}</ref><ref name="20200227.03">{{cite web|url=https://www.zh.ch/internet/de/aktuell/news/medienmitteilungen/2020/coronavirus-erster-fall-im-kanton-zuerich.html|title=Coronavirus: Erster Fall im Kanton Zürich|date=27 February 2020|website=Kanton Zürich - zh.ch|language=de-DE|accessdate=5 March 2020}}</ref><ref name="20200227.04">{{cite web|url=https://www.vd.ch/toutes-les-actualites/hotline-et-informations-sur-le-coronavirus/actualites/news/12509i-coronavirus-premier-cas-detecte-dans-le-canton-de-vaud/|title=Coronavirus : premier cas détecté dans le canton de Vaud|date=27 February 2020|website=État de Vaud - vd.ch|language=fr-FR|accessdate=5 March 2020}}</ref><ref name="20200227.05">{{cite web|url=https://www.coronavirus.bs.ch/nm/2020-coronavirus-erster-positiver-fall-in-basel-stadt-zweiter-positiv-getesteter-ausserkantonaler-fall-gd.html|title=Coronavirus: Erster positiver Fall in Basel-Stadt, zweiter positiv getesteter ausserkantonaler Fall|date=27 February 2020|website=Kanton Basel-Stadt - bs.ch|language=de-DE|accessdate=5 March 2020}}</ref>
 |-
 |}`
-// let doc = wtf(str)
-// console.log(doc.table().json()[0])
 
-let doc = wtf(`
-{{one}} {{two}}
-[[one]] [[two]]
-==one==
-===two===
-`)
-
-console.log(doc.links('two'))
-console.log(doc.templates('two'))
-console.log(doc.sections('two'))
-// {{Place name disambiguation}}
-// {{Airport disambiguation}}
+str = `{| class="navbox plainrowheaders wikitable" style="width:100%"
+! A
+! B
+! C
+! D
+|-
+!style="{{Gridiron primary style|AFC}};" colspan="8"|[[American Football Conference|<span style="{{Gridiron secondary color|AFC}};">American Football Conference</span>]]
+|-
+!style=background:white rowspan="4"|[[AFC East|East]]
+|'''[[Buffalo Bills]]'''
+|[[Orchard Park (town), New York|Orchard Park, New York]]
+|-
+|'''[[Miami Dolphins]]'''
+|[[Miami Gardens, Florida]]
+|[[Hard Rock Stadium]]
+|-
+|}`
+let doc = wtf(str)
+console.log(doc.table().json())
