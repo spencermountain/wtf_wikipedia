@@ -1,6 +1,6 @@
 const nlp = require('compromise')
-const fromTemplate = require('./01-fromTemplate')
-const fromText = require('./02-fromText')
+const fromTemplate = require('./fromTemplate')
+const fromText = require('./fromText')
 
 const defaults = {
   article: true
@@ -8,11 +8,6 @@ const defaults = {
 
 const seemsGood = function(txt) {
   return txt && txt.length > 5 && txt.length < 55
-}
-
-const postProcess = function(txt) {
-  txt = txt.trim()
-  return txt
 }
 
 const plugin = function(models) {
@@ -25,15 +20,10 @@ const plugin = function(models) {
     // generate from {{short description}} template
     let txt = fromTemplate(doc, options)
     if (seemsGood(txt)) {
-      return postProcess(txt)
+      return txt.trim()
     }
     // generate from first-sentence
-    txt = fromText(doc, options)
-    if (seemsGood(txt)) {
-      return postProcess(txt)
-    }
-
-    return ''
+    return fromText(doc, options)
   }
 
   // should we use 'it', 'he', 'they'...

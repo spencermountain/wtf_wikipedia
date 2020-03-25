@@ -10,9 +10,8 @@ wtf.extend(require('./plugins/category/src'))
 //   console.log(html)
 // })
 
-let str = `CoolToday Park is a planned ballpark in North Port, Florida.`
-console.log(wtf(str).tense())
-console.log(wtf(str).article())
+let str = `Nils Daniel Carl Bildt, born 15 July 1949 in Halmstad, Sweden, is a Swedish politician and diplomat who was Prime Minister`
+console.log(wtf(str).summary())
 
 // let file = 'United-Kingdom'
 // let txt = require('fs')
