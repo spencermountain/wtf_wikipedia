@@ -56,7 +56,7 @@ const patterns = {
   'CreativeWork/Album': [/[0-9]{4} albums/, /albums produced by /, / albums$/],
   'CreativeWork/Film': [/[0-9]{4} films/, / films$/],
   'CreativeWork/TVShow': [/television series/],
-  CreativeWork: [/film stubs$/, /novel stubs$/, /[0-9]{4} video games/],
+  CreativeWork: [/film stubs$/, /novel stubs$/, /[0-9]{4} video games/, /[0-9]{4} poems/],
 
   // ==Event==
   'Event/SportsEvent': [

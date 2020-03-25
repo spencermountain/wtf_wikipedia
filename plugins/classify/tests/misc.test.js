@@ -11,7 +11,6 @@ test('classify-test', async function(t) {
     ['Alsea-(company)', 'Organization/Company'],
     ['Antique-(band)', 'Organization/MusicalGroup'],
     ['raith_rovers', 'Organization/SportsTeam'],
-    // ['washington-nationals', 'Organization/SportsTeam'],
     ['Terrence-Murphy-(American-football)', 'Person/Athlete'],
     ['Altimont-Butler', 'Person/Athlete'],
     ['University-of-Nevada,-Reno-Arboretum', 'Place'],
@@ -25,26 +24,11 @@ test('classify-test', async function(t) {
     ['royal_cinema', 'Place'],
     ['Canton-of-Etaples', 'Place'],
     ['Arts_Club_of_Chicago', 'Place'],
-    ['Sara-C.-Bisel', 'Person'],
     ['al_Haytham', 'Person/Scientist'],
-    ['Wendy-Mogel', 'Person'],
     ['The-Field-of-Waterloo', 'CreativeWork'],
     ['bluejays', null], //partial page
     ['Liste-der-argentinischen-Botschafter-in-Chile', null]
-    // ['', '']
   ]
-  // var arr = [
-  // 'Altimont-Butler',
-  // 'Anwar_Kamal_Khan',
-  // 'Arts_Club_of_Chicago',
-  // 'BBDO',
-  // 'Bazooka',
-  // 'Bodmin',
-  // 'Britt-Morgan',
-  // 'Canton-of-Etaples',
-  // 'Chemical-biology',
-  // 'Damphu-drum'
-  // ]
   arr.forEach(a => {
     let abs = path.join(__dirname, `../../../tests/cache/${a[0]}.txt`)
     let txt = fs.readFileSync(abs).toString()
@@ -52,6 +36,5 @@ test('classify-test', async function(t) {
     let res = doc.classify()
     t.equal(res.category, a[1], a[0])
   })
-
   t.end()
 })
