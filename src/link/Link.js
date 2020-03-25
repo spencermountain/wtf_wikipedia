@@ -73,24 +73,27 @@ const methods = {
     if (type === 'external') {
       return this.site()
     }
+    let page = this.page()
+    page = page.replace(/ /g, '_')
+    page = encodeURIComponent(page)
+    let url = ''
+
     if (type === 'interwiki') {
-      let url = wikis[this.wiki()] || 'https://en.wikipedia.org/wiki/$1'
-      let page = this.page()
-      page = page.replace(/ /g, '_')
-      page = encodeURIComponent(page)
+      let wiki = this.wiki()
+      url = 'https://en.wikipedia.org/wiki/$1'
+      if (wikis.hasOwnProperty(wiki)) {
+        url = 'http://' + wikis[this.wiki()]
+      }
       url = url.replace(/\$1/g, page)
-      if (this.anchor()) {
-        url += '#' + this.anchor()
-      }
-      return url
+    } else {
+      //internal link
+      url = `./${this.page()}`
     }
-    if (type === 'internal') {
-      let url = ''
-      if (this.anchor()) {
-        url += '#' + this.anchor()
-      }
-      return url
+    // add anchor on the end
+    if (this.anchor()) {
+      url += '#' + this.anchor()
     }
+    return url
   }
 }
 Object.keys(methods).forEach(k => {

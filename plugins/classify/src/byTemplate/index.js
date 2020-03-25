@@ -25,8 +25,7 @@ const mapping = {
   coleoptera: 'Thing/Organism',
   'insects in culture': 'Thing/Organism',
   'living things in culture': 'Thing/Organism',
-  'eukaryota classification': 'Thing/Organism',
-  animalia: 'Thing/Organism'
+  'eukaryota classification': 'Thing/Organism'
 }
 
 const matchPatterns = function(title) {
@@ -40,6 +39,7 @@ const matchPatterns = function(title) {
       }
     }
   }
+  return null
 }
 
 const byTemplate = function(doc) {
@@ -48,13 +48,11 @@ const byTemplate = function(doc) {
   for (let i = 0; i < templates.length; i++) {
     const title = templates[i].template
     if (mapping.hasOwnProperty(title)) {
-      console.log(title)
       found.push(mapping[title])
     } else {
       // try regex-list on it
       let type = matchPatterns(title)
       if (type) {
-        console.log(title)
         found.push(type)
       }
     }

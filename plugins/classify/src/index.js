@@ -4,42 +4,35 @@ const byTemplate = require('./byTemplate')
 const bySection = require('./bySection')
 const byTitle = require('./byTitle')
 const skipPage = require('./_skip')
-const types = require('./_types')
-
-const score = function(res) {
-  // let scores = {}
-  return res
-}
+const score = require('./score')
 
 const plugin = function(models) {
   // add a new method to main class
   models.Doc.prototype.classify = function(options) {
     let doc = this
-    let found = null
     let res = {}
 
     // dont classify these
-    if (skipPage(doc)) {
+    if (skipPage(doc, options)) {
       return null
     }
 
     //look for 'infobox person', etc
-    res.infobox = byInfobox(doc)
+    res.infobox = byInfobox(doc, options)
 
     //look for '{{coord}}'
-    res.template = byTemplate(doc)
+    res.template = byTemplate(doc, options)
 
     //look for '==early life=='
-    res.section = bySection(doc)
+    res.section = bySection(doc, options)
 
     //look for 'foo (film)'
-    res.title = byTitle(doc)
+    res.title = byTitle(doc, options)
 
     //look for 'Category: 1992 Births', etc
-    res.category = byCategory(doc)
+    res.category = byCategory(doc, options)
 
-    // let scored = score(res)
-    return res
+    return score(res, options)
   }
 }
 module.exports = plugin

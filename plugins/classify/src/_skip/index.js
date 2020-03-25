@@ -9,7 +9,7 @@ const listOf = /^list of ./
 const disambig = /\(disambiguation\)/
 
 const skipPage = function(doc) {
-  let title = doc.title()
+  let title = doc.title() || ''
 
   //look at parentheses like 'Tornado (film)'
   let m = title.match(paren)
@@ -32,5 +32,6 @@ const skipPage = function(doc) {
   if (disambig.test(title) === true) {
     return true
   }
+  return false
 }
 module.exports = skipPage

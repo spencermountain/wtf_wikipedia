@@ -51,8 +51,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "7.9.0",
-    "@babel/preset-env": "7.9.0",
+    "@babel/core": "7.8.7",
+    "@babel/preset-env": "7.8.7",
     "@rollup/plugin-alias": "^3.0.1",
     "amble": "0.0.7",
     "rollup": "2.2.0",
