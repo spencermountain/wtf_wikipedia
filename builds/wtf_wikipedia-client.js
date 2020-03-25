@@ -34,21 +34,6 @@
     return _typeof(obj);
   }
 
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-
-    return obj;
-  }
-
   function _slicedToArray(arr, i) {
     return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
   }
@@ -319,6 +304,213 @@
 
   var toJson = toJSON;
 
+  var disambig = ['dab', //en
+  'disamb', //en
+  'disambig', //en
+  'disambiguation', //en
+  'aðgreining', //is
+  'aimai', //ja
+  'ałtsʼáʼáztiin', //nv
+  'anlam ayrımı', //gag
+  'anlam ayrımı', //tr
+  'apartigilo', //eo
+  'argipen', //eu
+  'begriepskloorenge', //stq
+  'begriffsklärung', //als
+  'begriffsklärung', //de
+  'begriffsklärung', //pdc
+  'begriffsklearung', //bar
+  'bisongidila', //kg
+  'bkl', //pfl
+  'bokokani', //ln
+  'caddayn', //so
+  'clerheans', //kw
+  'cudakirin', //ku
+  'čvor', //bs
+  'db', //vls
+  'desambig', //nov
+  'desambigación', //an
+  'desambiguação', //pt
+  'desambiguació', //ca
+  'desambiguación', //es
+  'desambiguáncia', //ext
+  'desambiguasion', //lad
+  'desambiguassiù', //lmo
+  'desambigui', //lfn
+  'dezambiguizare', //ro
+  'dəqiqləşdirmə', //az
+  'disambigua', //it
+  'disambigua', //lij
+  'disambigua', //nap
+  'disambìgua', //sc
+  'disambigua', //scn
+  'disambiguasi', //id
+  'disambiguasi', //su
+  'discretiva', //la
+  'disheñvelout', //br
+  'disingkek', //min
+  'dixanbigua', //vec
+  'dixebra', //ast
+  'diżambigwazzjoni', //mt
+  'doorverwijspagina', //nl
+  'dp', //nl
+  'dp', //zea
+  'dubbelsinnig', //af
+  'dudalipen', //rmy
+  'dv', //nds_nl
+  'egyért', //hu
+  'fleiri týdningar', //fo
+  'fleirtyding', //nn
+  'flertydig', //da
+  'förgrening', //sv
+  'gì-ngiê', //cdo
+  'giklaro', //ceb
+  'gwahaniaethu', //cy
+  'homonimo', //io
+  'homónimos', //gl
+  'homonymie', //fr
+  'huaʻōlelo puana like', //haw
+  'idirdhealú', //ga
+  'khu-pia̍t', //zh_min_nan
+  'kthjellim', //sq
+  'kujekesa', //sn
+  'maana', //sw
+  'maneo bin', //diq
+  'mehrdüdig begreep', //nds
+  'menm non', //ht
+  'muardüüdag artiikel', //frr
+  'neibetsjuttings', //fy
+  'nozīmju atdalīšana', //lv
+  'nuorodinis', //lt
+  'nyahkekaburan', //ms
+  'omonimeye', //wa
+  'omonimia', //oc
+  'page dé frouque', //nrm
+  'paglilinaw', //tl
+  'panangilawlawag', //ilo
+  'pansayod', //war
+  'pejy mitovy anarana', //mg
+  'peker', //no
+  'razdvojba', //hr
+  'razločitev', //sl
+  'razvrstavanje', //sh
+  'reddaghey', //gv
+  'rozcestník', //cs
+  'rozlišovacia stránka', //sk
+  'sclerir noziun', //rm
+  'selvendyssivu', //olo
+  'soilleireachadh', //gd
+  'suzmunski', //jbo
+  'täpsustuslehekülg', //et
+  'täsmennyssivu', //fi
+  'telplänov', //vo
+  'tlahtolmelahuacatlaliztli', //nah
+  'trang định hướng', //vi
+  'ujednoznacznienie', //pl
+  'verdudeliking', //li
+  'wěcejwóznamowosć', //dsb
+  'wjacezmyslnosć', //hsb
+  'zambiguaçon', //mwl
+  'zeimeibu škiršona', //ltg
+  'αποσαφήνιση', //el
+  'айрық', //kk
+  'аҵакырацәа', //ab
+  'вишезначна одредница', //sr
+  'ибҳомзудоӣ', //tg
+  'кёб магъаналы', //krc
+  'күп мәгънәләр', //tt
+  'күп мәғәнәлелек', //ba
+  'мъногосъмꙑслиѥ', //cu
+  'неадназначнасць', //be
+  'неадназначнасьць', //be_x_old
+  'неоднозначность', //ru
+  'олон удхатай', //bxr
+  'појаснување', //mk
+  'пояснение', //bg
+  'са шумуд манавал', //lez
+  'салаа утгатай', //mn
+  'суолталар', //sah
+  'текмаанисиздик', //ky
+  'цо магіна гуреб', //av
+  'чеперушка', //rue
+  'чолхалла', //ce
+  'шуко ончыктымаш-влак', //mhr
+  'მრავალმნიშვნელოვანი', //ka
+  'բազմիմաստութիւն', //hyw
+  'բազմիմաստություն', //hy
+  'באדייטן', //yi
+  'פירושונים', //he
+  'ابهام‌زدایی', //fa
+  'توضيح', //ar
+  'توضيح', //arz
+  'دقیقلشدیرمه', //azb
+  'ڕوونکردنەوە', //ckb
+  'سلجهائپ', //sd
+  'ضد ابہام', //ur
+  'گجگجی بیری', //mzn
+  'نامبهمېدنه', //ps
+  'መንታ', //am
+  'अस्पष्टता', //ne
+  'बहुअर्थी', //bh
+  'बहुविकल्पी शब्द', //hi
+  'দ্ব্যর্থতা নিরসন', //bn
+  'ਗੁੰਝਲ-ਖੋਲ੍ਹ', //pa
+  'સંદિગ્ધ શીર્ષક', //gu
+  'பக்கவழி நெறிப்படுத்தல்', //ta
+  'అయోమయ నివృత్తి', //te
+  'ದ್ವಂದ್ವ ನಿವಾರಣೆ', //kn
+  'വിവക്ഷകൾ', //ml
+  'වක්‍රෝත්ති', //si
+  'แก้ความกำกวม', //th
+  'သံတူကြောင်းကွဲ', //my
+  'ណែនាំ', //km
+  '동음이의', //ko
+  '扤清楚', //gan
+  '搞清楚', //zh_yue
+  '曖昧さ回避', //ja
+  '消歧义', //zh
+  '釋義', //zh_classical
+  "gestion dj'omònim", //pms
+  "sut'ichana qillqa" //qu
+  // 'z', //vep
+  // 'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ', //shn
+  ];
+
+  var i18n = disambig.reduce(function (h, str) {
+    h[str] = true;
+    return h;
+  }, {}); //special disambig-templates en-wikipedia uses
+
+  var d = ' disambiguation';
+  var english = ['dab', 'dab', 'disamb', 'disambig', 'geodis', 'hndis', 'setindex', 'ship index', 'split dab', 'sport index', 'wp disambig', 'disambiguation cleanup', 'airport' + d, 'biology' + d, 'call sign' + d, 'caselaw' + d, 'chinese title' + d, 'genus' + d, 'hospital' + d, 'lake index', 'letter' + d, 'letter-number combination' + d, 'mathematical' + d, 'military unit' + d, 'mountainindex', 'number' + d, 'phonetics' + d, 'place name' + d, 'portal' + d, 'road' + d, 'school' + d, 'species latin name abbreviation' + d, 'species latin name' + d, 'station' + d, 'synagogue' + d, 'taxonomic authority' + d, 'taxonomy' + d].reduce(function (h, str) {
+    h[str] = true;
+    return h;
+  }, {});
+
+  var isDisambig = function isDisambig(doc) {
+    var templates = doc.templates();
+    var found = templates.find(function (obj) {
+      return english.hasOwnProperty(obj.template) || i18n.hasOwnProperty(obj.template);
+    });
+
+    if (found) {
+      return true;
+    } // try 'may refer to' on first line for en-wiki?
+
+
+    var firstLine = doc.sentences(0).text();
+
+    if (firstLine !== null && firstLine[0]) {
+      if (/. may refer to ./i.test(firstLine) === true) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  var disambig$1 = isDisambig;
+
   var defaults$2 = {
     caption: true,
     alt: true,
@@ -519,7 +711,7 @@
       return this.data.redirectTo;
     },
     isDisambiguation: function isDisambiguation() {
-      return this.data.type === 'disambiguation';
+      return disambig$1(this);
     },
     categories: function categories(clue) {
       if (typeof clue === 'number') {
@@ -781,178 +973,6 @@
   //--
   ];
 
-  var disambig = ['dab', //en
-  'disamb', //en
-  'disambig', //en
-  'disambiguation', //en
-  'aðgreining', //is
-  'aimai', //ja
-  'ałtsʼáʼáztiin', //nv
-  'anlam ayrımı', //gag
-  'anlam ayrımı', //tr
-  'apartigilo', //eo
-  'argipen', //eu
-  'begriepskloorenge', //stq
-  'begriffsklärung', //als
-  'begriffsklärung', //de
-  'begriffsklärung', //pdc
-  'begriffsklearung', //bar
-  'bisongidila', //kg
-  'bkl', //pfl
-  'bokokani', //ln
-  'caddayn', //so
-  'clerheans', //kw
-  'cudakirin', //ku
-  'čvor', //bs
-  'db', //vls
-  'desambig', //nov
-  'desambigación', //an
-  'desambiguação', //pt
-  'desambiguació', //ca
-  'desambiguación', //es
-  'desambiguáncia', //ext
-  'desambiguasion', //lad
-  'desambiguassiù', //lmo
-  'desambigui', //lfn
-  'dezambiguizare', //ro
-  'dəqiqləşdirmə', //az
-  'disambigua', //it
-  'disambigua', //lij
-  'disambigua', //nap
-  'disambìgua', //sc
-  'disambigua', //scn
-  'disambiguasi', //id
-  'disambiguasi', //su
-  'discretiva', //la
-  'disheñvelout', //br
-  'disingkek', //min
-  'dixanbigua', //vec
-  'dixebra', //ast
-  'diżambigwazzjoni', //mt
-  'doorverwijspagina', //nl
-  'dp', //nl
-  'dp', //zea
-  'dubbelsinnig', //af
-  'dudalipen', //rmy
-  'dv', //nds_nl
-  'egyért', //hu
-  'fleiri týdningar', //fo
-  'fleirtyding', //nn
-  'flertydig', //da
-  'förgrening', //sv
-  'gì-ngiê', //cdo
-  'giklaro', //ceb
-  'gwahaniaethu', //cy
-  'homonimo', //io
-  'homónimos', //gl
-  'homonymie', //fr
-  'huaʻōlelo puana like', //haw
-  'idirdhealú', //ga
-  'khu-pia̍t', //zh_min_nan
-  'kthjellim', //sq
-  'kujekesa', //sn
-  'maana', //sw
-  'maneo bin', //diq
-  'mehrdüdig begreep', //nds
-  'menm non', //ht
-  'muardüüdag artiikel', //frr
-  'neibetsjuttings', //fy
-  'nozīmju atdalīšana', //lv
-  'nuorodinis', //lt
-  'nyahkekaburan', //ms
-  'omonimeye', //wa
-  'omonimia', //oc
-  'page dé frouque', //nrm
-  'paglilinaw', //tl
-  'panangilawlawag', //ilo
-  'pansayod', //war
-  'pejy mitovy anarana', //mg
-  'peker', //no
-  'razdvojba', //hr
-  'razločitev', //sl
-  'razvrstavanje', //sh
-  'reddaghey', //gv
-  'rozcestník', //cs
-  'rozlišovacia stránka', //sk
-  'sclerir noziun', //rm
-  'selvendyssivu', //olo
-  'soilleireachadh', //gd
-  'suzmunski', //jbo
-  'täpsustuslehekülg', //et
-  'täsmennyssivu', //fi
-  'telplänov', //vo
-  'tlahtolmelahuacatlaliztli', //nah
-  'trang định hướng', //vi
-  'ujednoznacznienie', //pl
-  'verdudeliking', //li
-  'wěcejwóznamowosć', //dsb
-  'wjacezmyslnosć', //hsb
-  'zambiguaçon', //mwl
-  'zeimeibu škiršona', //ltg
-  'αποσαφήνιση', //el
-  'айрық', //kk
-  'аҵакырацәа', //ab
-  'вишезначна одредница', //sr
-  'ибҳомзудоӣ', //tg
-  'кёб магъаналы', //krc
-  'күп мәгънәләр', //tt
-  'күп мәғәнәлелек', //ba
-  'мъногосъмꙑслиѥ', //cu
-  'неадназначнасць', //be
-  'неадназначнасьць', //be_x_old
-  'неоднозначность', //ru
-  'олон удхатай', //bxr
-  'појаснување', //mk
-  'пояснение', //bg
-  'са шумуд манавал', //lez
-  'салаа утгатай', //mn
-  'суолталар', //sah
-  'текмаанисиздик', //ky
-  'цо магіна гуреб', //av
-  'чеперушка', //rue
-  'чолхалла', //ce
-  'шуко ончыктымаш-влак', //mhr
-  'მრავალმნიშვნელოვანი', //ka
-  'բազմիմաստութիւն', //hyw
-  'բազմիմաստություն', //hy
-  'באדייטן', //yi
-  'פירושונים', //he
-  'ابهام‌زدایی', //fa
-  'توضيح', //ar
-  'توضيح', //arz
-  'دقیقلشدیرمه', //azb
-  'ڕوونکردنەوە', //ckb
-  'سلجهائپ', //sd
-  'ضد ابہام', //ur
-  'گجگجی بیری', //mzn
-  'نامبهمېدنه', //ps
-  'መንታ', //am
-  'अस्पष्टता', //ne
-  'बहुअर्थी', //bh
-  'बहुविकल्पी शब्द', //hi
-  'দ্ব্যর্থতা নিরসন', //bn
-  'ਗੁੰਝਲ-ਖੋਲ੍ਹ', //pa
-  'સંદિગ્ધ શીર્ષક', //gu
-  'பக்கவழி நெறிப்படுத்தல்', //ta
-  'అయోమయ నివృత్తి', //te
-  'ದ್ವಂದ್ವ ನಿವಾರಣೆ', //kn
-  'വിവക്ഷകൾ', //ml
-  'වක්‍රෝත්ති', //si
-  'แก้ความกำกวม', //th
-  'သံတူကြောင်းကွဲ', //my
-  'ណែនាំ', //km
-  '동음이의', //ko
-  '扤清楚', //gan
-  '搞清楚', //zh_yue
-  '曖昧さ回避', //ja
-  '消歧义', //zh
-  '釋義', //zh_classical
-  "gestion dj'omònim", //pms
-  "sut'ichana qillqa" //qu
-  // 'z', //vep
-  // 'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ', //shn
-  ];
-
   var images = ['file', //en
   'image', //en
   'चित्र', //img
@@ -1084,7 +1104,7 @@
 
   // and then manually on March 2020
 
-  var i18n = {
+  var i18n$1 = {
     categories: categories,
     disambig: disambig,
     images: images,
@@ -1649,16 +1669,475 @@
 
   };
 
-  //so we have to whitelist allowable interwiki links
+  var wp = '.wikipedia.org/wiki/$1';
+  var wm = '.wikimedia.org/wiki/$1';
+  var w = 'www.';
+  var interwiki = {
+    acronym: w + 'acronymfinder.com/$1.html',
+    advisory: 'advisory' + wm,
+    advogato: w + 'advogato.org/$1',
+    aew: 'wiki.arabeyes.org/$1',
+    appropedia: w + 'appropedia.org/$1',
+    aquariumwiki: w + 'theaquariumwiki.com/$1',
+    arborwiki: 'localwiki.org/ann-arbor/$1',
+    arxiv: 'arxiv.org/abs/$1',
+    atmwiki: w + 'otterstedt.de/wiki/index.php/$1',
+    baden: w + 'stadtwiki-baden-baden.de/wiki/$1/',
+    battlestarwiki: 'en.battlestarwiki.org/wiki/$1',
+    bcnbio: 'historiapolitica.bcn.cl/resenas_parlamentarias/wiki/$1',
+    beacha: w + 'beachapedia.org/$1',
+    betawiki: 'translatewiki.net/wiki/$1',
+    bibcode: 'adsabs.harvard.edu/abs/$1',
+    bibliowiki: 'wikilivres.org/wiki/$1',
+    bluwiki: 'bluwiki.com/go/$1',
+    blw: 'britainloves' + wp,
+    botwiki: 'botwiki.sno.cc/wiki/$1',
+    boxrec: w + 'boxrec.com/media/index.php?$1',
+    brickwiki: w + 'brickwiki.info/wiki/$1',
+    bugzilla: 'bugzilla.wikimedia.org/show_bug.cgi?id=$1',
+    bulba: 'bulbapedia.bulbagarden.net/wiki/$1',
+    c: 'commons' + wm,
+    c2: 'c2.com/cgi/wiki?$1',
+    c2find: 'c2.com/cgi/wiki?FindPage&value=$1',
+    cache: w + 'google.com/search?q=cache:$1',
+    ĉej: 'esperanto.blahus.cz/cxej/vikio/index.php/$1',
+    cellwiki: 'cell.wikia.com/wiki/$1',
+    centralwikia: 'community.wikia.com/wiki/$1',
+    chej: 'esperanto.blahus.cz/cxej/vikio/index.php/$1',
+    choralwiki: w + 'cpdl.org/wiki/index.php/$1',
+    citizendium: 'en.citizendium.org/wiki/$1',
+    ckwiss: w + 'ck-wissen.de/ckwiki/index.php?title=$1',
+    comixpedia: w + 'comixpedia.org/index.php?title=$1',
+    commons: 'commons' + wm,
+    communityscheme: 'community.schemewiki.org/?c=s&key=$1',
+    communitywiki: 'communitywiki.org/$1',
+    comune: 'rete.comuni-italiani.it/wiki/$1',
+    creativecommons: 'creativecommons.org/licenses/$1',
+    creativecommonswiki: 'wiki.creativecommons.org/$1',
+    cxej: 'esperanto.blahus.cz/cxej/vikio/index.php/$1',
+    dcc: w + 'dccwiki.com/$1',
+    dcdatabase: 'dc.wikia.com/$1',
+    dcma: 'christian-morgenstern.de/dcma/index.php?title=$1',
+    debian: 'wiki.debian.org/$1',
+    delicious: w + 'delicious.com/tag/$1',
+    devmo: 'developer.mozilla.org/en/docs/$1',
+    dictionary: w + 'dict.org/bin/Dict?Database=*&Form=Dict1&Strategy=*&Query=$1',
+    dict: w + 'dict.org/bin/Dict?Database=*&Form=Dict1&Strategy=*&Query=$1',
+    disinfopedia: 'sourcewatch.org/index.php/$1',
+    distributedproofreaders: w + 'pgdp.net/wiki/$1',
+    distributedproofreadersca: w + 'pgdpcanada.net/wiki/index.php/$1',
+    dmoz: 'curlie.org/$1',
+    dmozs: 'curlie.org/search?q=$1',
+    doi: 'doi.org/$1',
+    donate: 'donate' + wm,
+    doom_wiki: 'doom.wikia.com/wiki/$1',
+    download: 'releases.wikimedia.org/$1',
+    dbdump: 'dumps.wikimedia.org/$1/latest/',
+    dpd: 'lema.rae.es/dpd/?key=$1',
+    drae: 'dle.rae.es/?w=$1',
+    dreamhost: 'wiki.dreamhost.com/index.php/$1',
+    drumcorpswiki: w + 'drumcorpswiki.com/index.php/$1',
+    dwjwiki: w + 'suberic.net/cgi-bin/dwj/wiki.cgi?$1',
+    eĉei: w + 'ikso.net/cgi-bin/wiki.pl?$1',
+    ecoreality: w + 'EcoReality.org/wiki/$1',
+    ecxei: w + 'ikso.net/cgi-bin/wiki.pl?$1',
+    elibre: 'enciclopedia.us.es/index.php/$1',
+    emacswiki: w + 'emacswiki.org/emacs?$1',
+    encyc: 'encyc.org/wiki/$1',
+    energiewiki: w + 'netzwerk-energieberater.de/wiki/index.php/$1',
+    englyphwiki: 'en.glyphwiki.org/wiki/$1',
+    enkol: 'enkol.pl/$1',
+    eokulturcentro: 'esperanto.toulouse.free.fr/nova/wikini/wakka.php?wiki=$1',
+    esolang: 'esolangs.org/wiki/$1',
+    etherpad: 'etherpad.wikimedia.org/$1',
+    ethnologue: w + 'ethnologue.com/language/$1',
+    ethnologuefamily: w + 'ethnologue.com/show_family.asp?subid=$1',
+    evowiki: 'wiki.cotch.net/index.php/$1',
+    exotica: w + 'exotica.org.uk/wiki/$1',
+    fanimutationwiki: 'wiki.animutationportal.com/index.php/$1',
+    fedora: 'fedoraproject.org/wiki/$1',
+    finalfantasy: 'finalfantasy.wikia.com/wiki/$1',
+    finnix: w + 'finnix.org/$1',
+    flickruser: w + 'flickr.com/people/$1',
+    flickrphoto: w + 'flickr.com/photo.gne?id=$1',
+    floralwiki: w + 'floralwiki.co.uk/wiki/$1',
+    foldoc: 'foldoc.org/$1',
+    foundation: 'foundation' + wm,
+    foundationsite: 'wikimediafoundation.org/$1',
+    foxwiki: 'fox.wikis.com/wc.dll?Wiki~$1',
+    freebio: 'freebiology.org/wiki/$1',
+    freebsdman: w + 'FreeBSD.org/cgi/man.cgi?apropos=1&query=$1',
+    freeculturewiki: 'wiki.freeculture.org/index.php/$1',
+    freedomdefined: 'freedomdefined.org/$1',
+    freefeel: 'freefeel.org/wiki/$1',
+    freekiwiki: 'wiki.freegeek.org/index.php/$1',
+    // freenode: 'irc://irc.freenode.net/$1',
+    freesoft: 'directory.fsf.org/wiki/$1',
+    ganfyd: 'ganfyd.org/index.php?title=$1',
+    gardenology: w + 'gardenology.org/wiki/$1',
+    gausswiki: 'gauss.ffii.org/$1',
+    gentoo: 'wiki.gentoo.org/wiki/$1',
+    genwiki: 'wiki.genealogy.net/index.php/$1',
+    gerrit: 'gerrit.wikimedia.org/r/$1',
+    git: 'gerrit.wikimedia.org/g/$1',
+    google: w + 'google.com/search?q=$1',
+    googledefine: w + 'google.com/search?q=define:$1',
+    googlegroups: 'groups.google.com/groups?q=$1',
+    guildwarswiki: 'wiki.guildwars.com/wiki/$1',
+    guildwiki: 'guildwars.wikia.com/wiki/$1',
+    guc: 'tools.wmflabs.org/guc/?user=$1',
+    gucprefix: 'tools.wmflabs.org/guc/?isPrefixPattern=1&src=rc&user=$1',
+    gutenberg: w + 'gutenberg.org/etext/$1',
+    gutenbergwiki: w + 'gutenberg.org/wiki/$1',
+    hackerspaces: 'hackerspaces.org/wiki/$1',
+    h2wiki: 'halowiki.net/p/$1',
+    hammondwiki: w + 'dairiki.org/HammondWiki/index.php3?$1',
+    hdl: 'hdl.handle.net/$1',
+    heraldik: 'heraldik-wiki.de/wiki/$1',
+    heroeswiki: 'heroeswiki.com/$1',
+    horizonlabs: 'horizon.wikimedia.org/$1',
+    hrwiki: w + 'hrwiki.org/index.php/$1',
+    hrfwiki: 'fanstuff.hrwiki.org/index.php/$1',
+    hupwiki: 'wiki.hup.hu/index.php/$1',
+    iarchive: 'archive.org/details/$1',
+    imdbname: w + 'imdb.com/name/nm$1/',
+    imdbtitle: w + 'imdb.com/title/tt$1/',
+    imdbcompany: w + 'imdb.com/company/co$1/',
+    imdbcharacter: w + 'imdb.com/character/ch$1/',
+    incubator: 'incubator' + wm,
+    infosecpedia: 'infosecpedia.org/wiki/$1',
+    infosphere: 'theinfosphere.org/$1',
+    // irc: 'irc://irc.freenode.net/$1',
+    // ircs: 'ircs://irc.freenode.net/$1',
+    // ircrc: 'irc://irc.wikimedia.org/$1',
+    // rcirc: 'irc://irc.wikimedia.org/$1',
+    'iso639-3': 'iso639-3.sil.org/code/$1',
+    issn: w + 'worldcat.org/issn/$1',
+    iuridictum: 'iuridictum.pecina.cz/w/$1',
+    jaglyphwiki: 'glyphwiki.org/wiki/$1',
+    jefo: 'esperanto-jeunes.org/wiki/$1',
+    jerseydatabase: 'jerseydatabase.com/wiki.php?id=$1',
+    jira: 'jira.toolserver.org/browse/$1',
+    jspwiki: w + 'ecyrd.com/JSPWiki/Wiki.jsp?page=$1',
+    jstor: w + 'jstor.org/journals/$1',
+    kamelo: 'kamelopedia.mormo.org/index.php/$1',
+    karlsruhe: 'ka.stadtwiki.net/$1',
+    kinowiki: 'kino.skripov.com/index.php/$1',
+    komicawiki: 'wiki.komica.org/?$1',
+    kontuwiki: 'kontu.wiki/$1',
+    wikitech: 'wikitech' + wm,
+    libreplanet: 'libreplanet.org/wiki/$1',
+    linguistlist: 'linguistlist.org/forms/langs/LLDescription.cfm?code=$1',
+    linuxwiki: w + 'linuxwiki.de/$1',
+    linuxwikide: w + 'linuxwiki.de/$1',
+    liswiki: 'liswiki.org/wiki/$1',
+    literateprograms: 'en.literateprograms.org/$1',
+    livepedia: w + 'livepedia.gr/index.php?title=$1',
+    localwiki: 'localwiki.org/$1',
+    lojban: 'mw.lojban.org/papri/$1',
+    lostpedia: 'lostpedia.wikia.com/wiki/$1',
+    lqwiki: 'wiki.linuxquestions.org/wiki/$1',
+    luxo: 'tools.wmflabs.org/guc/?user=$1',
+    mail: 'lists.wikimedia.org/mailman/listinfo/$1',
+    mailarchive: 'lists.wikimedia.org/pipermail/$1',
+    mariowiki: w + 'mariowiki.com/$1',
+    marveldatabase: w + 'marveldatabase.com/wiki/index.php/$1',
+    meatball: 'meatballwiki.org/wiki/$1',
+    mw: w + 'mediawiki.org/wiki/$1',
+    mediazilla: 'bugzilla.wikimedia.org/$1',
+    memoryalpha: 'memory-alpha.fandom.com/wiki/$1',
+    metawiki: 'meta' + wm,
+    metawikimedia: 'meta' + wm,
+    metawikipedia: 'meta' + wm,
+    mineralienatlas: w + 'mineralienatlas.de/lexikon/index.php/$1',
+    moinmoin: 'moinmo.in/$1',
+    monstropedia: w + 'monstropedia.org/?title=$1',
+    mosapedia: 'mosapedia.de/wiki/index.php/$1',
+    mozcom: 'mozilla.wikia.com/wiki/$1',
+    mozillawiki: 'wiki.mozilla.org/$1',
+    mozillazinekb: 'kb.mozillazine.org/$1',
+    musicbrainz: 'musicbrainz.org/doc/$1',
+    mediawikiwiki: w + 'mediawiki.org/wiki/$1',
+    mwod: w + 'merriam-webster.com/dictionary/$1',
+    mwot: w + 'merriam-webster.com/thesaurus/$1',
+    nkcells: w + 'nkcells.info/index.php?title=$1',
+    nara: 'catalog.archives.gov/id/$1',
+    nosmoke: 'no-smok.net/nsmk/$1',
+    nost: 'nostalgia.' + wp,
+    nostalgia: 'nostalgia.' + wp,
+    oeis: 'oeis.org/$1',
+    oldwikisource: 'wikisource.org/wiki/$1',
+    olpc: 'wiki.laptop.org/go/$1',
+    omegawiki: w + 'omegawiki.org/Expression:$1',
+    onelook: w + 'onelook.com/?ls=b&w=$1',
+    openlibrary: 'openlibrary.org/$1',
+    openstreetmap: 'wiki.openstreetmap.org/wiki/$1',
+    openwetware: 'openwetware.org/wiki/$1',
+    opera7wiki: 'operawiki.info/$1',
+    organicdesign: w + 'organicdesign.co.nz/$1',
+    orthodoxwiki: 'orthodoxwiki.org/$1',
+    osmwiki: 'wiki.openstreetmap.org/wiki/$1',
+    otrs: 'ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&TicketID=$1',
+    otrswiki: 'otrs-wiki' + wm,
+    ourmedia: w + 'socialtext.net/ourmedia/index.cgi?$1',
+    outreach: 'outreach' + wm,
+    outreachwiki: 'outreach' + wm,
+    owasp: w + 'owasp.org/index.php/$1',
+    panawiki: 'wiki.alairelibre.net/index.php?title=$1',
+    patwiki: 'gauss.ffii.org/$1',
+    personaltelco: 'personaltelco.net/wiki/$1',
+    petscan: 'petscan.wmflabs.org/?psid=$1',
+    phab: 'phabricator.wikimedia.org/$1',
+    phabricator: 'phabricator.wikimedia.org/$1',
+    phwiki: w + 'pocketheaven.com/ph/wiki/index.php?title=$1',
+    phpwiki: 'phpwiki.sourceforge.net/phpwiki/index.php?$1',
+    planetmath: 'planetmath.org/node/$1',
+    pmeg: w + 'bertilow.com/pmeg/$1',
+    pmid: w + 'ncbi.nlm.nih.gov/pubmed/$1?dopt=Abstract',
+    pokewiki: 'pokewiki.de/$1',
+    pokéwiki: 'pokewiki.de/$1',
+    policy: 'policy.wikimedia.org/$1',
+    proofwiki: w + 'proofwiki.org/wiki/$1',
+    pyrev: w + 'mediawiki.org/wiki/Special:Code/pywikipedia/$1',
+    pythoninfo: 'wiki.python.org/moin/$1',
+    pythonwiki: w + 'pythonwiki.de/$1',
+    pywiki: 'c2.com/cgi/wiki?$1',
+    psycle: 'psycle.sourceforge.net/wiki/$1',
+    quality: 'quality' + wm,
+    quarry: 'quarry.wmflabs.org/$1',
+    regiowiki: 'regiowiki.at/wiki/$1',
+    rev: w + 'mediawiki.org/wiki/Special:Code/MediaWiki/$1',
+    revo: 'purl.org/NET/voko/revo/art/$1.html',
+    rfc: 'tools.ietf.org/html/rfc$1',
+    rheinneckar: 'rhein-neckar-wiki.de/$1',
+    robowiki: 'robowiki.net/?$1',
+    rodovid: 'en.rodovid.org/wk/$1',
+    reuterswiki: 'glossary.reuters.com/index.php/$1',
+    rowiki: 'wiki.rennkuckuck.de/index.php/$1',
+    rt: 'rt.wikimedia.org/Ticket/Display.html?id=$1',
+    // rtfm: 'ftp://rtfm.mit.edu/pub/faqs/$1',
+    s23wiki: 's23.org/wiki/$1',
+    scholar: 'scholar.google.com/scholar?q=$1',
+    schoolswp: 'schools-' + wp,
+    scores: 'imslp.org/wiki/$1',
+    scoutwiki: 'en.scoutwiki.org/$1',
+    scramble: w + 'scramble.nl/wiki/index.php?title=$1',
+    seapig: w + 'seapig.org/$1',
+    seattlewiki: 'seattle.wikia.com/wiki/$1',
+    slwiki: 'wiki.secondlife.com/wiki/$1',
+    'semantic-mw': w + 'semantic-mediawiki.org/wiki/$1',
+    senseislibrary: 'senseis.xmp.net/?$1',
+    sharemap: 'sharemap.org/$1',
+    silcode: w + 'sil.org/iso639-3/documentation.asp?id=$1',
+    slashdot: 'slashdot.org/article.pl?sid=$1',
+    sourceforge: 'sourceforge.net/$1',
+    spcom: 'spcom' + wm,
+    species: 'species' + wm,
+    squeak: 'wiki.squeak.org/squeak/$1',
+    stats: 'stats.wikimedia.org/$1',
+    stewardry: 'tools.wmflabs.org/meta/stewardry/?wiki=$1',
+    strategy: 'strategy' + wm,
+    strategywiki: 'strategywiki.org/wiki/$1',
+    sulutil: 'meta.wikimedia.org/wiki/Special:CentralAuth/$1',
+    swtrain: 'train.spottingworld.com/$1',
+    svn: 'svn.wikimedia.org/viewvc/mediawiki/$1?view=log',
+    swinbrain: 'swinbrain.ict.swin.edu.au/wiki/$1',
+    tabwiki: w + 'tabwiki.com/index.php/$1',
+    tclerswiki: 'wiki.tcl.tk/$1',
+    technorati: w + 'technorati.com/search/$1',
+    tenwiki: 'ten.' + wp,
+    testwiki: 'test.' + wp,
+    testwikidata: 'test.wikidata.org/wiki/$1',
+    test2wiki: 'test2.' + wp,
+    tfwiki: 'tfwiki.net/wiki/$1',
+    thelemapedia: w + 'thelemapedia.org/index.php/$1',
+    theopedia: w + 'theopedia.com/$1',
+    thinkwiki: w + 'thinkwiki.org/wiki/$1',
+    ticket: 'ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&TicketNumber=$1',
+    tmbw: 'tmbw.net/wiki/$1',
+    tmnet: w + 'technomanifestos.net/?$1',
+    tmwiki: w + 'EasyTopicMaps.com/?page=$1',
+    toolforge: 'tools.wmflabs.org/$1',
+    toollabs: 'tools.wmflabs.org/$1',
+    tools: 'toolserver.org/$1',
+    tswiki: w + 'mediawiki.org/wiki/Toolserver:$1',
+    translatewiki: 'translatewiki.net/wiki/$1',
+    tviv: 'tviv.org/wiki/$1',
+    tvtropes: w + 'tvtropes.org/pmwiki/pmwiki.php/Main/$1',
+    twiki: 'twiki.org/cgi-bin/view/$1',
+    tyvawiki: w + 'tyvawiki.org/wiki/$1',
+    umap: 'umap.openstreetmap.fr/$1',
+    uncyclopedia: 'en.uncyclopedia.co/wiki/$1',
+    unihan: w + 'unicode.org/cgi-bin/GetUnihanData.pl?codepoint=$1',
+    unreal: 'wiki.beyondunreal.com/wiki/$1',
+    urbandict: w + 'urbandictionary.com/define.php?term=$1',
+    usej: w + 'tejo.org/usej/$1',
+    usemod: w + 'usemod.com/cgi-bin/wiki.pl?$1',
+    usability: 'usability' + wm,
+    utrs: 'utrs.wmflabs.org/appeal.php?id=$1',
+    vikidia: 'fr.vikidia.org/wiki/$1',
+    vlos: 'tusach.thuvienkhoahoc.com/wiki/$1',
+    vkol: 'kol.coldfront.net/thekolwiki/index.php/$1',
+    voipinfo: w + 'voip-info.org/wiki/view/$1',
+    votewiki: 'vote' + wm,
+    werelate: w + 'werelate.org/wiki/$1',
+    wg: 'wg-en.' + wp,
+    wikia: w + 'wikia.com/wiki/w:c:$1',
+    wikiasite: w + 'wikia.com/wiki/w:c:$1',
+    wikiapiary: 'wikiapiary.com/wiki/$1',
+    wikibooks: 'en.wikibooks.org/wiki/$1',
+    wikichristian: w + 'wikichristian.org/index.php?title=$1',
+    wikicities: w + 'wikia.com/wiki/w:$1',
+    wikicity: w + 'wikia.com/wiki/w:c:$1',
+    wikiconference: 'wikiconference.org/wiki/$1',
+    wikidata: w + 'wikidata.org/wiki/$1',
+    wikif1: w + 'wikif1.org/$1',
+    wikifur: 'en.wikifur.com/wiki/$1',
+    wikihow: w + 'wikihow.com/$1',
+    wikiindex: 'wikiindex.org/$1',
+    wikilemon: 'wiki.illemonati.com/$1',
+    wikilivres: 'wikilivres.org/wiki/$1',
+    wikilivresru: 'wikilivres.ru/$1',
+    'wikimac-de': 'apfelwiki.de/wiki/Main/$1',
+    wikimedia: 'foundation' + wm,
+    wikinews: 'en.wikinews.org/wiki/$1',
+    wikinfo: 'wikinfo.org/w/index.php/$1',
+    wikinvest: 'meta.wikimedia.org/wiki/Interwiki_map/discontinued#Wikinvest',
+    wikiotics: 'wikiotics.org/$1',
+    wikipapers: 'wikipapers.referata.com/wiki/$1',
+    wikipedia: 'en.' + wp,
+    wikipediawikipedia: 'en.wikipedia.org/wiki/Wikipedia:$1',
+    wikiquote: 'en.wikiquote.org/wiki/$1',
+    wikisophia: 'wikisophia.org/index.php?title=$1',
+    wikisource: 'en.wikisource.org/wiki/$1',
+    wikispecies: 'species' + wm,
+    wikispot: 'wikispot.org/?action=gotowikipage&v=$1',
+    wikiskripta: w + 'wikiskripta.eu/index.php/$1',
+    labsconsole: 'wikitech' + wm,
+    wikiti: 'wikiti.denglend.net/index.php?title=$1',
+    wikiversity: 'en.wikiversity.org/wiki/$1',
+    wikivoyage: 'en.wikivoyage.org/wiki/$1',
+    betawikiversity: 'beta.wikiversity.org/wiki/$1',
+    wikiwikiweb: 'c2.com/cgi/wiki?$1',
+    wiktionary: 'en.wiktionary.org/wiki/$1',
+    wipipedia: 'wipipedia.org/index.php/$1',
+    wlug: w + 'wlug.org.nz/$1',
+    wmam: 'am' + wm,
+    wmar: w + 'wikimedia.org.ar/wiki/$1',
+    wmat: 'mitglieder.wikimedia.at/$1',
+    wmau: 'wikimedia.org.au/wiki/$1',
+    wmbd: 'bd' + wm,
+    wmbe: 'be' + wm,
+    wmbr: 'br' + wm,
+    wmca: 'ca' + wm,
+    wmch: w + 'wikimedia.ch/$1',
+    wmcl: w + 'wikimediachile.cl/index.php?title=$1',
+    wmcn: 'cn' + wm,
+    wmco: 'co' + wm,
+    wmcz: w + 'wikimedia.cz/web/$1',
+    wmdc: 'wikimediadc.org/wiki/$1',
+    securewikidc: 'secure.wikidc.org/$1',
+    wmde: 'wikimedia.de/wiki/$1',
+    wmdk: 'dk' + wm,
+    wmee: 'ee' + wm,
+    wmec: 'ec' + wm,
+    wmes: w + 'wikimedia.es/wiki/$1',
+    wmet: 'ee' + wm,
+    wmfdashboard: 'outreachdashboard.wmflabs.org/$1',
+    wmfi: 'fi' + wm,
+    wmfr: 'wikimedia.fr/$1',
+    wmge: 'ge' + wm,
+    wmhi: 'hi' + wm,
+    wmhk: 'meta.wikimedia.org/wiki/Wikimedia_Hong_Kong',
+    wmhu: 'wikimedia.hu/wiki/$1',
+    wmid: 'id' + wm,
+    wmil: w + 'wikimedia.org.il/$1',
+    wmin: 'wiki.wikimedia.in/$1',
+    wmit: 'wiki.wikimedia.it/wiki/$1',
+    wmke: 'meta.wikimedia.org/wiki/Wikimedia_Kenya',
+    wmmk: 'mk' + wm,
+    wmmx: 'mx' + wm,
+    wmnl: 'nl' + wm,
+    wmnyc: 'nyc' + wm,
+    wmno: 'no' + wm,
+    'wmpa-us': 'pa-us' + wm,
+    wmph: 'meta.wikimedia.org/wiki/Wikimedia_Philippines',
+    wmpl: 'pl' + wm,
+    wmpt: 'pt' + wm,
+    wmpunjabi: 'punjabi' + wm,
+    wmromd: 'romd' + wm,
+    wmrs: 'rs' + wm,
+    wmru: 'ru' + wm,
+    wmse: 'se' + wm,
+    wmsk: 'wikimedia.sk/$1',
+    wmtr: 'tr' + wm,
+    wmtw: 'wikimedia.tw/wiki/index.php5/$1',
+    wmua: 'ua' + wm,
+    wmuk: 'wikimedia.org.uk/wiki/$1',
+    wmve: 'wikimedia.org.ve/wiki/$1',
+    wmza: 'wikimedia.org.za/wiki/$1',
+    wm2005: 'wikimania2005' + wm,
+    wm2006: 'wikimania2006' + wm,
+    wm2007: 'wikimania2007' + wm,
+    wm2008: 'wikimania2008' + wm,
+    wm2009: 'wikimania2009' + wm,
+    wm2010: 'wikimania2010' + wm,
+    wm2011: 'wikimania2011' + wm,
+    wm2012: 'wikimania2012' + wm,
+    wm2013: 'wikimania2013' + wm,
+    wm2014: 'wikimania2014' + wm,
+    wm2015: 'wikimania2015' + wm,
+    wm2016: 'wikimania2016' + wm,
+    wm2017: 'wikimania2017' + wm,
+    wm2018: 'wikimania2018' + wm,
+    wmania: 'wikimania' + wm,
+    wikimania: 'wikimania' + wm,
+    wmteam: 'wikimaniateam' + wm,
+    wmf: 'foundation' + wm,
+    wmfblog: 'blog.wikimedia.org/$1',
+    wmdeblog: 'blog.wikimedia.de/$1',
+    wookieepedia: 'starwars.wikia.com/wiki/$1',
+    wowwiki: w + 'wowwiki.com/$1',
+    wqy: 'wqy.sourceforge.net/cgi-bin/index.cgi?$1',
+    wurmpedia: 'wurmpedia.com/index.php/$1',
+    viaf: 'viaf.org/viaf/$1',
+    zrhwiki: w + 'zrhwiki.ch/wiki/$1',
+    zum: 'wiki.zum.de/$1',
+    zwiki: w + 'zwiki.org/$1',
+    m: 'meta' + wm,
+    meta: 'meta' + wm,
+    sep11: 'sep11.' + wp,
+    d: w + 'wikidata.org/wiki/$1',
+    minnan: 'zh-min-nan.' + wp,
+    nb: 'no.' + wp,
+    'zh-cfr': 'zh-min-nan.' + wp,
+    'zh-cn': 'zh.' + wp,
+    'zh-tw': 'zh.' + wp,
+    nan: 'zh-min-nan.' + wp,
+    vro: 'fiu-vro.' + wp,
+    cmn: 'zh.' + wp,
+    lzh: 'zh-classical.' + wp,
+    rup: 'roa-rup.' + wp,
+    gsw: 'als.' + wp,
+    'be-tarask': 'be-x-old.' + wp,
+    sgs: 'bat-smg.' + wp,
+    egl: 'eml.' + wp,
+    w: 'en.' + wp,
+    wikt: 'en.wiktionary.org/wiki/$1',
+    q: 'en.wikiquote.org/wiki/$1',
+    b: 'en.wikibooks.org/wiki/$1',
+    n: 'en.wikinews.org/wiki/$1',
+    s: 'en.wikisource.org/wiki/$1',
+    chapter: 'en' + wm,
+    v: 'en.wikiversity.org/wiki/$1',
+    voy: 'en.wikivoyage.org/wiki/$1'
+  };
 
-  var interwikis = ['wiktionary', 'wikinews', 'wikibooks', 'wikiquote', 'wikisource', 'wikispecies', 'wikiversity', 'wikivoyage', 'wikipedia', 'wikimedia', 'foundation', 'meta', 'metawikipedia', 'w', 'wikt', 'n', 'b', 'q', 's', 'v', 'voy', 'wmf', 'c', 'm', 'mw', 'phab', 'd'];
-  var allowed = interwikis.reduce(function (h, wik) {
-    h[wik] = true;
-    return h;
-  }, {}); //add language prefixes too..
+  //so we have to whitelist allowable interwiki links
+  //add language prefixes too..
 
   Object.keys(languages).forEach(function (k) {
-    return allowed[k] = true;
+    interwiki[k] = k + '.wikipedia.org/wiki/$1';
   }); //this is predictably very complicated.
   // https://meta.wikimedia.org/wiki/Help:Interwiki_linking
 
@@ -1675,7 +2154,7 @@
       var site = m[1] || '';
       site = site.toLowerCase(); //only allow interwikis to these specific places
 
-      if (allowed.hasOwnProperty(site) === false) {
+      if (interwiki.hasOwnProperty(site) === false) {
         return obj;
       }
 
@@ -1686,7 +2165,7 @@
     return obj;
   };
 
-  var interwiki = parseInterwiki;
+  var interwiki$1 = parseInterwiki;
 
   var ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i;
   var external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
@@ -1747,7 +2226,7 @@
         return '';
       }); //grab any fr:Paris parts
 
-      obj = interwiki(obj);
+      obj = interwiki$1(obj);
 
       if (obj.wiki) {
         obj.type = 'interwiki';
@@ -1795,7 +2274,7 @@
 
   var parse = parse_links;
 
-  var REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + i18n.redirects.join('|') + ') *?(\\[\\[.{2,180}?\\]\\])', 'i');
+  var REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + i18n$1.redirects.join('|') + ') *?(\\[\\[.{2,180}?\\]\\])', 'i');
 
   var isRedirect = function isRedirect(wiki) {
     //too long to be a redirect?
@@ -1820,43 +2299,6 @@
   var redirects$1 = {
     isRedirect: isRedirect,
     parse: parse$1
-  };
-
-  var getReg = function getReg(templates) {
-    var allowedCharacters = '(\\|[a-z, =]*?)*?';
-    return new RegExp('\\{\\{ ?(' + templates.join('|') + ')' + allowedCharacters + ' ?\\}\\}', 'i');
-  };
-
-  var templateReg = getReg(i18n.disambig); //special disambig-templates en-wikipedia uses
-
-  var d = ' disambiguation';
-  var english = ['airport', 'biology' + d, 'call sign' + d, 'caselaw' + d, 'chinese title' + d, 'dab', 'dab', 'disamb', 'disambig', 'disambiguation cleanup', 'genus' + d, 'geodis', 'hndis', 'hospital' + d, 'lake index', 'letter' + d, 'letter-number combination' + d, 'mathematical' + d, 'military unit' + d, 'mountainindex', 'number' + d, 'phonetics' + d, 'place name' + d, 'place name' + d, 'portal' + d, 'road' + d, 'school' + d, 'setindex', 'ship index', 'species latin name abbreviation' + d, 'species latin name' + d, 'split dab', 'sport index', 'station' + d, 'synagogue' + d, 'taxonomic authority' + d, 'taxonomy' + d, 'wp disambig'];
-  var enDisambigs = getReg(english);
-
-  var isDisambig = function isDisambig(wiki) {
-    //test for {{disambiguation}} templates
-    if (templateReg.test(wiki) === true) {
-      return true;
-    } //more english-centric disambiguation templates
-    //{{hndis}}, etc
-
-
-    if (enDisambigs.test(wiki) === true) {
-      return true;
-    } //try 'may refer to' on first line for en-wiki?
-    // let firstLine = wiki.match(/^.+?\n/);
-    // if (firstLine !== null && firstLine[0]) {
-    //   if (/ may refer to/i.test(firstLine) === true) {
-    //     return true;
-    //   }
-    // }
-
-
-    return false;
-  };
-
-  var disambig$1 = {
-    isDisambig: isDisambig
   };
 
   //okay, i know you're not supposed to regex html, but...
@@ -2425,786 +2867,6 @@
     }
   };
 
-  var wp = '.wikipedia.org/wiki/$1';
-  var wm = '.wikimedia.org/wiki/$1';
-  var w = 'www.';
-  var interwiki$1 = {
-    acronym: w + 'acronymfinder.com/$1.html',
-    advisory: 'advisory' + wm,
-    advogato: w + 'advogato.org/$1',
-    aew: 'wiki.arabeyes.org/$1',
-    appropedia: w + 'appropedia.org/$1',
-    aquariumwiki: w + 'theaquariumwiki.com/$1',
-    arborwiki: 'localwiki.org/ann-arbor/$1',
-    arxiv: 'arxiv.org/abs/$1',
-    atmwiki: w + 'otterstedt.de/wiki/index.php/$1',
-    baden: w + 'stadtwiki-baden-baden.de/wiki/$1/',
-    battlestarwiki: 'en.battlestarwiki.org/wiki/$1',
-    bcnbio: 'historiapolitica.bcn.cl/resenas_parlamentarias/wiki/$1',
-    beacha: w + 'beachapedia.org/$1',
-    betawiki: 'translatewiki.net/wiki/$1',
-    bibcode: 'adsabs.harvard.edu/abs/$1',
-    bibliowiki: 'wikilivres.org/wiki/$1',
-    bluwiki: 'bluwiki.com/go/$1',
-    blw: 'britainloves' + wp,
-    botwiki: 'botwiki.sno.cc/wiki/$1',
-    boxrec: w + 'boxrec.com/media/index.php?$1',
-    brickwiki: w + 'brickwiki.info/wiki/$1',
-    bugzilla: 'bugzilla.wikimedia.org/show_bug.cgi?id=$1',
-    bulba: 'bulbapedia.bulbagarden.net/wiki/$1',
-    c: 'commons' + wm,
-    c2: 'c2.com/cgi/wiki?$1',
-    c2find: 'c2.com/cgi/wiki?FindPage&value=$1',
-    cache: w + 'google.com/search?q=cache:$1',
-    ĉej: 'esperanto.blahus.cz/cxej/vikio/index.php/$1',
-    cellwiki: 'cell.wikia.com/wiki/$1',
-    centralwikia: 'community.wikia.com/wiki/$1',
-    chej: 'esperanto.blahus.cz/cxej/vikio/index.php/$1',
-    choralwiki: w + 'cpdl.org/wiki/index.php/$1',
-    citizendium: 'en.citizendium.org/wiki/$1',
-    ckwiss: w + 'ck-wissen.de/ckwiki/index.php?title=$1',
-    comixpedia: w + 'comixpedia.org/index.php?title=$1',
-    commons: 'commons' + wm,
-    communityscheme: 'community.schemewiki.org/?c=s&key=$1',
-    communitywiki: 'communitywiki.org/$1',
-    comune: 'rete.comuni-italiani.it/wiki/$1',
-    creativecommons: 'creativecommons.org/licenses/$1',
-    creativecommonswiki: 'wiki.creativecommons.org/$1',
-    cxej: 'esperanto.blahus.cz/cxej/vikio/index.php/$1',
-    dcc: w + 'dccwiki.com/$1',
-    dcdatabase: 'dc.wikia.com/$1',
-    dcma: 'christian-morgenstern.de/dcma/index.php?title=$1',
-    debian: 'wiki.debian.org/$1',
-    delicious: w + 'delicious.com/tag/$1',
-    devmo: 'developer.mozilla.org/en/docs/$1',
-    dictionary: w + 'dict.org/bin/Dict?Database=*&Form=Dict1&Strategy=*&Query=$1',
-    dict: w + 'dict.org/bin/Dict?Database=*&Form=Dict1&Strategy=*&Query=$1',
-    disinfopedia: 'sourcewatch.org/index.php/$1',
-    distributedproofreaders: w + 'pgdp.net/wiki/$1',
-    distributedproofreadersca: w + 'pgdpcanada.net/wiki/index.php/$1',
-    dmoz: 'curlie.org/$1',
-    dmozs: 'curlie.org/search?q=$1',
-    doi: 'doi.org/$1',
-    donate: 'donate' + wm,
-    doom_wiki: 'doom.wikia.com/wiki/$1',
-    download: 'releases.wikimedia.org/$1',
-    dbdump: 'dumps.wikimedia.org/$1/latest/',
-    dpd: 'lema.rae.es/dpd/?key=$1',
-    drae: 'dle.rae.es/?w=$1',
-    dreamhost: 'wiki.dreamhost.com/index.php/$1',
-    drumcorpswiki: w + 'drumcorpswiki.com/index.php/$1',
-    dwjwiki: w + 'suberic.net/cgi-bin/dwj/wiki.cgi?$1',
-    eĉei: w + 'ikso.net/cgi-bin/wiki.pl?$1',
-    ecoreality: w + 'EcoReality.org/wiki/$1',
-    ecxei: w + 'ikso.net/cgi-bin/wiki.pl?$1',
-    elibre: 'enciclopedia.us.es/index.php/$1',
-    emacswiki: w + 'emacswiki.org/emacs?$1',
-    encyc: 'encyc.org/wiki/$1',
-    energiewiki: w + 'netzwerk-energieberater.de/wiki/index.php/$1',
-    englyphwiki: 'en.glyphwiki.org/wiki/$1',
-    enkol: 'enkol.pl/$1',
-    eokulturcentro: 'esperanto.toulouse.free.fr/nova/wikini/wakka.php?wiki=$1',
-    esolang: 'esolangs.org/wiki/$1',
-    etherpad: 'etherpad.wikimedia.org/$1',
-    ethnologue: w + 'ethnologue.com/language/$1',
-    ethnologuefamily: w + 'ethnologue.com/show_family.asp?subid=$1',
-    evowiki: 'wiki.cotch.net/index.php/$1',
-    exotica: w + 'exotica.org.uk/wiki/$1',
-    fanimutationwiki: 'wiki.animutationportal.com/index.php/$1',
-    fedora: 'fedoraproject.org/wiki/$1',
-    finalfantasy: 'finalfantasy.wikia.com/wiki/$1',
-    finnix: w + 'finnix.org/$1',
-    flickruser: w + 'flickr.com/people/$1',
-    flickrphoto: w + 'flickr.com/photo.gne?id=$1',
-    floralwiki: w + 'floralwiki.co.uk/wiki/$1',
-    foldoc: 'foldoc.org/$1',
-    foundation: 'foundation' + wm,
-    foundationsite: 'wikimediafoundation.org/$1',
-    foxwiki: 'fox.wikis.com/wc.dll?Wiki~$1',
-    freebio: 'freebiology.org/wiki/$1',
-    freebsdman: w + 'FreeBSD.org/cgi/man.cgi?apropos=1&query=$1',
-    freeculturewiki: 'wiki.freeculture.org/index.php/$1',
-    freedomdefined: 'freedomdefined.org/$1',
-    freefeel: 'freefeel.org/wiki/$1',
-    freekiwiki: 'wiki.freegeek.org/index.php/$1',
-    freenode: 'irc://irc.freenode.net/$1',
-    freesoft: 'directory.fsf.org/wiki/$1',
-    ganfyd: 'ganfyd.org/index.php?title=$1',
-    gardenology: w + 'gardenology.org/wiki/$1',
-    gausswiki: 'gauss.ffii.org/$1',
-    gentoo: 'wiki.gentoo.org/wiki/$1',
-    genwiki: 'wiki.genealogy.net/index.php/$1',
-    gerrit: 'gerrit.wikimedia.org/r/$1',
-    git: 'gerrit.wikimedia.org/g/$1',
-    google: w + 'google.com/search?q=$1',
-    googledefine: w + 'google.com/search?q=define:$1',
-    googlegroups: 'groups.google.com/groups?q=$1',
-    guildwarswiki: 'wiki.guildwars.com/wiki/$1',
-    guildwiki: 'guildwars.wikia.com/wiki/$1',
-    guc: 'tools.wmflabs.org/guc/?user=$1',
-    gucprefix: 'tools.wmflabs.org/guc/?isPrefixPattern=1&src=rc&user=$1',
-    gutenberg: w + 'gutenberg.org/etext/$1',
-    gutenbergwiki: w + 'gutenberg.org/wiki/$1',
-    hackerspaces: 'hackerspaces.org/wiki/$1',
-    h2wiki: 'halowiki.net/p/$1',
-    hammondwiki: w + 'dairiki.org/HammondWiki/index.php3?$1',
-    hdl: 'hdl.handle.net/$1',
-    heraldik: 'heraldik-wiki.de/wiki/$1',
-    heroeswiki: 'heroeswiki.com/$1',
-    horizonlabs: 'horizon.wikimedia.org/$1',
-    hrwiki: w + 'hrwiki.org/index.php/$1',
-    hrfwiki: 'fanstuff.hrwiki.org/index.php/$1',
-    hupwiki: 'wiki.hup.hu/index.php/$1',
-    iarchive: 'archive.org/details/$1',
-    imdbname: w + 'imdb.com/name/nm$1/',
-    imdbtitle: w + 'imdb.com/title/tt$1/',
-    imdbcompany: w + 'imdb.com/company/co$1/',
-    imdbcharacter: w + 'imdb.com/character/ch$1/',
-    incubator: 'incubator' + wm,
-    infosecpedia: 'infosecpedia.org/wiki/$1',
-    infosphere: 'theinfosphere.org/$1',
-    irc: 'irc://irc.freenode.net/$1',
-    ircs: 'ircs://irc.freenode.net/$1',
-    ircrc: 'irc://irc.wikimedia.org/$1',
-    rcirc: 'irc://irc.wikimedia.org/$1',
-    'iso639-3': 'iso639-3.sil.org/code/$1',
-    issn: w + 'worldcat.org/issn/$1',
-    iuridictum: 'iuridictum.pecina.cz/w/$1',
-    jaglyphwiki: 'glyphwiki.org/wiki/$1',
-    jefo: 'esperanto-jeunes.org/wiki/$1',
-    jerseydatabase: 'jerseydatabase.com/wiki.php?id=$1',
-    jira: 'jira.toolserver.org/browse/$1',
-    jspwiki: w + 'ecyrd.com/JSPWiki/Wiki.jsp?page=$1',
-    jstor: w + 'jstor.org/journals/$1',
-    kamelo: 'kamelopedia.mormo.org/index.php/$1',
-    karlsruhe: 'ka.stadtwiki.net/$1',
-    kinowiki: 'kino.skripov.com/index.php/$1',
-    komicawiki: 'wiki.komica.org/?$1',
-    kontuwiki: 'kontu.wiki/$1',
-    wikitech: 'wikitech' + wm,
-    libreplanet: 'libreplanet.org/wiki/$1',
-    linguistlist: 'linguistlist.org/forms/langs/LLDescription.cfm?code=$1',
-    linuxwiki: w + 'linuxwiki.de/$1',
-    linuxwikide: w + 'linuxwiki.de/$1',
-    liswiki: 'liswiki.org/wiki/$1',
-    literateprograms: 'en.literateprograms.org/$1',
-    livepedia: w + 'livepedia.gr/index.php?title=$1',
-    localwiki: 'localwiki.org/$1',
-    lojban: 'mw.lojban.org/papri/$1',
-    lostpedia: 'lostpedia.wikia.com/wiki/$1',
-    lqwiki: 'wiki.linuxquestions.org/wiki/$1',
-    luxo: 'tools.wmflabs.org/guc/?user=$1',
-    mail: 'lists.wikimedia.org/mailman/listinfo/$1',
-    mailarchive: 'lists.wikimedia.org/pipermail/$1',
-    mariowiki: w + 'mariowiki.com/$1',
-    marveldatabase: w + 'marveldatabase.com/wiki/index.php/$1',
-    meatball: 'meatballwiki.org/wiki/$1',
-    mw: w + 'mediawiki.org/wiki/$1',
-    mediazilla: 'bugzilla.wikimedia.org/$1',
-    memoryalpha: 'memory-alpha.fandom.com/wiki/$1',
-    metawiki: 'meta' + wm,
-    metawikimedia: 'meta' + wm,
-    metawikipedia: 'meta' + wm,
-    mineralienatlas: w + 'mineralienatlas.de/lexikon/index.php/$1',
-    moinmoin: 'moinmo.in/$1',
-    monstropedia: w + 'monstropedia.org/?title=$1',
-    mosapedia: 'mosapedia.de/wiki/index.php/$1',
-    mozcom: 'mozilla.wikia.com/wiki/$1',
-    mozillawiki: 'wiki.mozilla.org/$1',
-    mozillazinekb: 'kb.mozillazine.org/$1',
-    musicbrainz: 'musicbrainz.org/doc/$1',
-    mediawikiwiki: w + 'mediawiki.org/wiki/$1',
-    mwod: w + 'merriam-webster.com/dictionary/$1',
-    mwot: w + 'merriam-webster.com/thesaurus/$1',
-    nkcells: w + 'nkcells.info/index.php?title=$1',
-    nara: 'catalog.archives.gov/id/$1',
-    nosmoke: 'no-smok.net/nsmk/$1',
-    nost: 'nostalgia.' + wp,
-    nostalgia: 'nostalgia.' + wp,
-    oeis: 'oeis.org/$1',
-    oldwikisource: 'wikisource.org/wiki/$1',
-    olpc: 'wiki.laptop.org/go/$1',
-    omegawiki: w + 'omegawiki.org/Expression:$1',
-    onelook: w + 'onelook.com/?ls=b&w=$1',
-    openlibrary: 'openlibrary.org/$1',
-    openstreetmap: 'wiki.openstreetmap.org/wiki/$1',
-    openwetware: 'openwetware.org/wiki/$1',
-    opera7wiki: 'operawiki.info/$1',
-    organicdesign: w + 'organicdesign.co.nz/$1',
-    orthodoxwiki: 'orthodoxwiki.org/$1',
-    osmwiki: 'wiki.openstreetmap.org/wiki/$1',
-    otrs: 'ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&TicketID=$1',
-    otrswiki: 'otrs-wiki' + wm,
-    ourmedia: w + 'socialtext.net/ourmedia/index.cgi?$1',
-    outreach: 'outreach' + wm,
-    outreachwiki: 'outreach' + wm,
-    owasp: w + 'owasp.org/index.php/$1',
-    panawiki: 'wiki.alairelibre.net/index.php?title=$1',
-    patwiki: 'gauss.ffii.org/$1',
-    personaltelco: 'personaltelco.net/wiki/$1',
-    petscan: 'petscan.wmflabs.org/?psid=$1',
-    phab: 'phabricator.wikimedia.org/$1',
-    phabricator: 'phabricator.wikimedia.org/$1',
-    phwiki: w + 'pocketheaven.com/ph/wiki/index.php?title=$1',
-    phpwiki: 'phpwiki.sourceforge.net/phpwiki/index.php?$1',
-    planetmath: 'planetmath.org/node/$1',
-    pmeg: w + 'bertilow.com/pmeg/$1',
-    pmid: w + 'ncbi.nlm.nih.gov/pubmed/$1?dopt=Abstract',
-    pokewiki: 'pokewiki.de/$1',
-    pokéwiki: 'pokewiki.de/$1',
-    policy: 'policy.wikimedia.org/$1',
-    proofwiki: w + 'proofwiki.org/wiki/$1',
-    pyrev: w + 'mediawiki.org/wiki/Special:Code/pywikipedia/$1',
-    pythoninfo: 'wiki.python.org/moin/$1',
-    pythonwiki: w + 'pythonwiki.de/$1',
-    pywiki: 'c2.com/cgi/wiki?$1',
-    psycle: 'psycle.sourceforge.net/wiki/$1',
-    quality: 'quality' + wm,
-    quarry: 'quarry.wmflabs.org/$1',
-    regiowiki: 'regiowiki.at/wiki/$1',
-    rev: w + 'mediawiki.org/wiki/Special:Code/MediaWiki/$1',
-    revo: 'purl.org/NET/voko/revo/art/$1.html',
-    rfc: 'tools.ietf.org/html/rfc$1',
-    rheinneckar: 'rhein-neckar-wiki.de/$1',
-    robowiki: 'robowiki.net/?$1',
-    rodovid: 'en.rodovid.org/wk/$1',
-    reuterswiki: 'glossary.reuters.com/index.php/$1',
-    rowiki: 'wiki.rennkuckuck.de/index.php/$1',
-    rt: 'rt.wikimedia.org/Ticket/Display.html?id=$1',
-    rtfm: 'ftp://rtfm.mit.edu/pub/faqs/$1',
-    s23wiki: 's23.org/wiki/$1',
-    scholar: 'scholar.google.com/scholar?q=$1',
-    schoolswp: 'schools-' + wp,
-    scores: 'imslp.org/wiki/$1',
-    scoutwiki: 'en.scoutwiki.org/$1',
-    scramble: w + 'scramble.nl/wiki/index.php?title=$1',
-    seapig: w + 'seapig.org/$1',
-    seattlewiki: 'seattle.wikia.com/wiki/$1',
-    slwiki: 'wiki.secondlife.com/wiki/$1',
-    'semantic-mw': w + 'semantic-mediawiki.org/wiki/$1',
-    senseislibrary: 'senseis.xmp.net/?$1',
-    sharemap: 'sharemap.org/$1',
-    silcode: w + 'sil.org/iso639-3/documentation.asp?id=$1',
-    slashdot: 'slashdot.org/article.pl?sid=$1',
-    sourceforge: 'sourceforge.net/$1',
-    spcom: 'spcom' + wm,
-    species: 'species' + wm,
-    squeak: 'wiki.squeak.org/squeak/$1',
-    stats: 'stats.wikimedia.org/$1',
-    stewardry: 'tools.wmflabs.org/meta/stewardry/?wiki=$1',
-    strategy: 'strategy' + wm,
-    strategywiki: 'strategywiki.org/wiki/$1',
-    sulutil: 'meta.wikimedia.org/wiki/Special:CentralAuth/$1',
-    swtrain: 'train.spottingworld.com/$1',
-    svn: 'svn.wikimedia.org/viewvc/mediawiki/$1?view=log',
-    swinbrain: 'swinbrain.ict.swin.edu.au/wiki/$1',
-    tabwiki: w + 'tabwiki.com/index.php/$1',
-    tclerswiki: 'wiki.tcl.tk/$1',
-    technorati: w + 'technorati.com/search/$1',
-    tenwiki: 'ten.' + wp,
-    testwiki: 'test.' + wp,
-    testwikidata: 'test.wikidata.org/wiki/$1',
-    test2wiki: 'test2.' + wp,
-    tfwiki: 'tfwiki.net/wiki/$1',
-    thelemapedia: w + 'thelemapedia.org/index.php/$1',
-    theopedia: w + 'theopedia.com/$1',
-    thinkwiki: w + 'thinkwiki.org/wiki/$1',
-    ticket: 'ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&TicketNumber=$1',
-    tmbw: 'tmbw.net/wiki/$1',
-    tmnet: w + 'technomanifestos.net/?$1',
-    tmwiki: w + 'EasyTopicMaps.com/?page=$1',
-    toolforge: 'tools.wmflabs.org/$1',
-    toollabs: 'tools.wmflabs.org/$1',
-    tools: 'toolserver.org/$1',
-    tswiki: w + 'mediawiki.org/wiki/Toolserver:$1',
-    translatewiki: 'translatewiki.net/wiki/$1',
-    tviv: 'tviv.org/wiki/$1',
-    tvtropes: w + 'tvtropes.org/pmwiki/pmwiki.php/Main/$1',
-    twiki: 'twiki.org/cgi-bin/view/$1',
-    tyvawiki: w + 'tyvawiki.org/wiki/$1',
-    umap: 'umap.openstreetmap.fr/$1',
-    uncyclopedia: 'en.uncyclopedia.co/wiki/$1',
-    unihan: w + 'unicode.org/cgi-bin/GetUnihanData.pl?codepoint=$1',
-    unreal: 'wiki.beyondunreal.com/wiki/$1',
-    urbandict: w + 'urbandictionary.com/define.php?term=$1',
-    usej: w + 'tejo.org/usej/$1',
-    usemod: w + 'usemod.com/cgi-bin/wiki.pl?$1',
-    usability: 'usability' + wm,
-    utrs: 'utrs.wmflabs.org/appeal.php?id=$1',
-    vikidia: 'fr.vikidia.org/wiki/$1',
-    vlos: 'tusach.thuvienkhoahoc.com/wiki/$1',
-    vkol: 'kol.coldfront.net/thekolwiki/index.php/$1',
-    voipinfo: w + 'voip-info.org/wiki/view/$1',
-    votewiki: 'vote' + wm,
-    werelate: w + 'werelate.org/wiki/$1',
-    wg: 'wg-en.' + wp,
-    wikia: w + 'wikia.com/wiki/w:c:$1',
-    wikiasite: w + 'wikia.com/wiki/w:c:$1',
-    wikiapiary: 'wikiapiary.com/wiki/$1',
-    wikibooks: 'en.wikibooks.org/wiki/$1',
-    wikichristian: w + 'wikichristian.org/index.php?title=$1',
-    wikicities: w + 'wikia.com/wiki/w:$1',
-    wikicity: w + 'wikia.com/wiki/w:c:$1',
-    wikiconference: 'wikiconference.org/wiki/$1',
-    wikidata: w + 'wikidata.org/wiki/$1',
-    wikif1: w + 'wikif1.org/$1',
-    wikifur: 'en.wikifur.com/wiki/$1',
-    wikihow: w + 'wikihow.com/$1',
-    wikiindex: 'wikiindex.org/$1',
-    wikilemon: 'wiki.illemonati.com/$1',
-    wikilivres: 'wikilivres.org/wiki/$1',
-    wikilivresru: 'wikilivres.ru/$1',
-    'wikimac-de': 'apfelwiki.de/wiki/Main/$1',
-    wikimedia: 'foundation' + wm,
-    wikinews: 'en.wikinews.org/wiki/$1',
-    wikinfo: 'wikinfo.org/w/index.php/$1',
-    wikinvest: 'meta.wikimedia.org/wiki/Interwiki_map/discontinued#Wikinvest',
-    wikiotics: 'wikiotics.org/$1',
-    wikipapers: 'wikipapers.referata.com/wiki/$1',
-    wikipedia: 'en.' + wp,
-    wikipediawikipedia: 'en.wikipedia.org/wiki/Wikipedia:$1',
-    wikiquote: 'en.wikiquote.org/wiki/$1',
-    wikisophia: 'wikisophia.org/index.php?title=$1',
-    wikisource: 'en.wikisource.org/wiki/$1',
-    wikispecies: 'species' + wm,
-    wikispot: 'wikispot.org/?action=gotowikipage&v=$1',
-    wikiskripta: w + 'wikiskripta.eu/index.php/$1',
-    labsconsole: 'wikitech' + wm,
-    wikiti: 'wikiti.denglend.net/index.php?title=$1',
-    wikiversity: 'en.wikiversity.org/wiki/$1',
-    wikivoyage: 'en.wikivoyage.org/wiki/$1',
-    betawikiversity: 'beta.wikiversity.org/wiki/$1',
-    wikiwikiweb: 'c2.com/cgi/wiki?$1',
-    wiktionary: 'en.wiktionary.org/wiki/$1',
-    wipipedia: 'wipipedia.org/index.php/$1',
-    wlug: w + 'wlug.org.nz/$1',
-    wmam: 'am' + wm,
-    wmar: w + 'wikimedia.org.ar/wiki/$1',
-    wmat: 'mitglieder.wikimedia.at/$1',
-    wmau: 'wikimedia.org.au/wiki/$1',
-    wmbd: 'bd' + wm,
-    wmbe: 'be' + wm,
-    wmbr: 'br' + wm,
-    wmca: 'ca' + wm,
-    wmch: w + 'wikimedia.ch/$1',
-    wmcl: w + 'wikimediachile.cl/index.php?title=$1',
-    wmcn: 'cn' + wm,
-    wmco: 'co' + wm,
-    wmcz: w + 'wikimedia.cz/web/$1',
-    wmdc: 'wikimediadc.org/wiki/$1',
-    securewikidc: 'secure.wikidc.org/$1',
-    wmde: 'wikimedia.de/wiki/$1',
-    wmdk: 'dk' + wm,
-    wmee: 'ee' + wm,
-    wmec: 'ec' + wm,
-    wmes: w + 'wikimedia.es/wiki/$1',
-    wmet: 'ee' + wm,
-    wmfdashboard: 'outreachdashboard.wmflabs.org/$1',
-    wmfi: 'fi' + wm,
-    wmfr: 'wikimedia.fr/$1',
-    wmge: 'ge' + wm,
-    wmhi: 'hi' + wm,
-    wmhk: 'meta.wikimedia.org/wiki/Wikimedia_Hong_Kong',
-    wmhu: 'wikimedia.hu/wiki/$1',
-    wmid: 'id' + wm,
-    wmil: w + 'wikimedia.org.il/$1',
-    wmin: 'wiki.wikimedia.in/$1',
-    wmit: 'wiki.wikimedia.it/wiki/$1',
-    wmke: 'meta.wikimedia.org/wiki/Wikimedia_Kenya',
-    wmmk: 'mk' + wm,
-    wmmx: 'mx' + wm,
-    wmnl: 'nl' + wm,
-    wmnyc: 'nyc' + wm,
-    wmno: 'no' + wm,
-    'wmpa-us': 'pa-us' + wm,
-    wmph: 'meta.wikimedia.org/wiki/Wikimedia_Philippines',
-    wmpl: 'pl' + wm,
-    wmpt: 'pt' + wm,
-    wmpunjabi: 'punjabi' + wm,
-    wmromd: 'romd' + wm,
-    wmrs: 'rs' + wm,
-    wmru: 'ru' + wm,
-    wmse: 'se' + wm,
-    wmsk: 'wikimedia.sk/$1',
-    wmtr: 'tr' + wm,
-    wmtw: 'wikimedia.tw/wiki/index.php5/$1',
-    wmua: 'ua' + wm,
-    wmuk: 'wikimedia.org.uk/wiki/$1',
-    wmve: 'wikimedia.org.ve/wiki/$1',
-    wmza: 'wikimedia.org.za/wiki/$1',
-    wm2005: 'wikimania2005' + wm,
-    wm2006: 'wikimania2006' + wm,
-    wm2007: 'wikimania2007' + wm,
-    wm2008: 'wikimania2008' + wm,
-    wm2009: 'wikimania2009' + wm,
-    wm2010: 'wikimania2010' + wm,
-    wm2011: 'wikimania2011' + wm,
-    wm2012: 'wikimania2012' + wm,
-    wm2013: 'wikimania2013' + wm,
-    wm2014: 'wikimania2014' + wm,
-    wm2015: 'wikimania2015' + wm,
-    wm2016: 'wikimania2016' + wm,
-    wm2017: 'wikimania2017' + wm,
-    wm2018: 'wikimania2018' + wm,
-    wmania: 'wikimania' + wm,
-    wikimania: 'wikimania' + wm,
-    wmteam: 'wikimaniateam' + wm,
-    wmf: 'foundation' + wm,
-    wmfblog: 'blog.wikimedia.org/$1',
-    wmdeblog: 'blog.wikimedia.de/$1',
-    wookieepedia: 'starwars.wikia.com/wiki/$1',
-    wowwiki: w + 'wowwiki.com/$1',
-    wqy: 'wqy.sourceforge.net/cgi-bin/index.cgi?$1',
-    wurmpedia: 'wurmpedia.com/index.php/$1',
-    viaf: 'viaf.org/viaf/$1',
-    zrhwiki: w + 'zrhwiki.ch/wiki/$1',
-    zum: 'wiki.zum.de/$1',
-    zwiki: w + 'zwiki.org/$1',
-    m: 'meta' + wm,
-    meta: 'meta' + wm,
-    sep11: 'sep11.' + wp,
-    d: w + 'wikidata.org/wiki/$1',
-    aa: 'aa.' + wp,
-    ab: 'ab.' + wp,
-    ace: 'ace.' + wp,
-    ady: 'ady.' + wp,
-    af: 'af.' + wp,
-    ak: 'ak.' + wp,
-    als: 'als.' + wp,
-    am: 'am.' + wp,
-    an: 'an.' + wp,
-    ang: 'ang.' + wp,
-    ar: 'ar.' + wp,
-    arc: 'arc.' + wp,
-    arz: 'arz.' + wp,
-    as: 'as.' + wp,
-    ast: 'ast.' + wp,
-    atj: 'atj.' + wp,
-    av: 'av.' + wp,
-    ay: 'ay.' + wp,
-    az: 'az.' + wp,
-    azb: 'azb.' + wp,
-    ba: 'ba.' + wp,
-    ban: 'ban.' + wp,
-    bar: 'bar.' + wp,
-    'bat-smg': 'bat-smg.' + wp,
-    bcl: 'bcl.' + wp,
-    be: 'be.' + wp,
-    'be-x-old': 'be-x-old.' + wp,
-    bg: 'bg.' + wp,
-    bh: 'bh.' + wp,
-    bi: 'bi.' + wp,
-    bjn: 'bjn.' + wp,
-    bm: 'bm.' + wp,
-    bn: 'bn.' + wp,
-    bo: 'bo.' + wp,
-    bpy: 'bpy.' + wp,
-    br: 'br.' + wp,
-    bs: 'bs.' + wp,
-    bug: 'bug.' + wp,
-    bxr: 'bxr.' + wp,
-    ca: 'ca.' + wp,
-    'cbk-zam': 'cbk-zam.' + wp,
-    cdo: 'cdo.' + wp,
-    ce: 'ce.' + wp,
-    ceb: 'ceb.' + wp,
-    ch: 'ch.' + wp,
-    cho: 'cho.' + wp,
-    chr: 'chr.' + wp,
-    chy: 'chy.' + wp,
-    ckb: 'ckb.' + wp,
-    co: 'co.' + wp,
-    cr: 'cr.' + wp,
-    crh: 'crh.' + wp,
-    cs: 'cs.' + wp,
-    csb: 'csb.' + wp,
-    cu: 'cu.' + wp,
-    cv: 'cv.' + wp,
-    cy: 'cy.' + wp,
-    da: 'da.' + wp,
-    de: 'de.' + wp,
-    din: 'din.' + wp,
-    diq: 'diq.' + wp,
-    dsb: 'dsb.' + wp,
-    dty: 'dty.' + wp,
-    dv: 'dv.' + wp,
-    dz: 'dz.' + wp,
-    ee: 'ee.' + wp,
-    el: 'el.' + wp,
-    eml: 'eml.' + wp,
-    en: 'en.' + wp,
-    eo: 'eo.' + wp,
-    es: 'es.' + wp,
-    et: 'et.' + wp,
-    eu: 'eu.' + wp,
-    ext: 'ext.' + wp,
-    fa: 'fa.' + wp,
-    ff: 'ff.' + wp,
-    fi: 'fi.' + wp,
-    'fiu-vro': 'fiu-vro.' + wp,
-    fj: 'fj.' + wp,
-    fo: 'fo.' + wp,
-    fr: 'fr.' + wp,
-    frp: 'frp.' + wp,
-    frr: 'frr.' + wp,
-    fur: 'fur.' + wp,
-    fy: 'fy.' + wp,
-    ga: 'ga.' + wp,
-    gag: 'gag.' + wp,
-    gan: 'gan.' + wp,
-    gcr: 'gcr.' + wp,
-    gd: 'gd.' + wp,
-    gl: 'gl.' + wp,
-    glk: 'glk.' + wp,
-    gn: 'gn.' + wp,
-    gom: 'gom.' + wp,
-    gor: 'gor.' + wp,
-    got: 'got.' + wp,
-    gu: 'gu.' + wp,
-    gv: 'gv.' + wp,
-    ha: 'ha.' + wp,
-    hak: 'hak.' + wp,
-    haw: 'haw.' + wp,
-    he: 'he.' + wp,
-    hi: 'hi.' + wp,
-    hif: 'hif.' + wp,
-    ho: 'ho.' + wp,
-    hr: 'hr.' + wp,
-    hsb: 'hsb.' + wp,
-    ht: 'ht.' + wp,
-    hu: 'hu.' + wp,
-    hy: 'hy.' + wp,
-    hyw: 'hyw.' + wp,
-    hz: 'hz.' + wp,
-    ia: 'ia.' + wp,
-    id: 'id.' + wp,
-    ie: 'ie.' + wp,
-    ig: 'ig.' + wp,
-    ii: 'ii.' + wp,
-    ik: 'ik.' + wp,
-    ilo: 'ilo.' + wp,
-    inh: 'inh.' + wp,
-    io: 'io.' + wp,
-    is: 'is.' + wp,
-    it: 'it.' + wp,
-    iu: 'iu.' + wp,
-    ja: 'ja.' + wp,
-    jam: 'jam.' + wp,
-    jbo: 'jbo.' + wp,
-    jv: 'jv.' + wp,
-    ka: 'ka.' + wp,
-    kaa: 'kaa.' + wp,
-    kab: 'kab.' + wp,
-    kbd: 'kbd.' + wp,
-    kbp: 'kbp.' + wp,
-    kg: 'kg.' + wp,
-    ki: 'ki.' + wp,
-    kj: 'kj.' + wp,
-    kk: 'kk.' + wp,
-    kl: 'kl.' + wp,
-    km: 'km.' + wp,
-    kn: 'kn.' + wp,
-    ko: 'ko.' + wp,
-    koi: 'koi.' + wp,
-    kr: 'kr.' + wp,
-    krc: 'krc.' + wp,
-    ks: 'ks.' + wp,
-    ksh: 'ksh.' + wp,
-    ku: 'ku.' + wp,
-    kv: 'kv.' + wp,
-    kw: 'kw.' + wp,
-    ky: 'ky.' + wp,
-    la: 'la.' + wp,
-    lad: 'lad.' + wp,
-    lb: 'lb.' + wp,
-    lbe: 'lbe.' + wp,
-    lez: 'lez.' + wp,
-    lfn: 'lfn.' + wp,
-    lg: 'lg.' + wp,
-    li: 'li.' + wp,
-    lij: 'lij.' + wp,
-    lmo: 'lmo.' + wp,
-    ln: 'ln.' + wp,
-    lo: 'lo.' + wp,
-    lrc: 'lrc.' + wp,
-    lt: 'lt.' + wp,
-    ltg: 'ltg.' + wp,
-    lv: 'lv.' + wp,
-    mai: 'mai.' + wp,
-    'map-bms': 'map-bms.' + wp,
-    mdf: 'mdf.' + wp,
-    mg: 'mg.' + wp,
-    mh: 'mh.' + wp,
-    mhr: 'mhr.' + wp,
-    mi: 'mi.' + wp,
-    min: 'min.' + wp,
-    mk: 'mk.' + wp,
-    ml: 'ml.' + wp,
-    mn: 'mn.' + wp,
-    mnw: 'mnw.' + wp,
-    mo: 'mo.' + wp,
-    mr: 'mr.' + wp,
-    mrj: 'mrj.' + wp,
-    ms: 'ms.' + wp,
-    mt: 'mt.' + wp,
-    mus: 'mus.' + wp,
-    mwl: 'mwl.' + wp,
-    my: 'my.' + wp,
-    myv: 'myv.' + wp,
-    mzn: 'mzn.' + wp,
-    na: 'na.' + wp,
-    nah: 'nah.' + wp,
-    nap: 'nap.' + wp,
-    nds: 'nds.' + wp,
-    'nds-nl': 'nds-nl.' + wp,
-    ne: 'ne.' + wp,
-    "new": 'new.' + wp,
-    ng: 'ng.' + wp,
-    nl: 'nl.' + wp,
-    nn: 'nn.' + wp,
-    no: 'no.' + wp,
-    nov: 'nov.' + wp,
-    nqo: 'nqo.' + wp,
-    nrm: 'nrm.' + wp,
-    nso: 'nso.' + wp,
-    nv: 'nv.' + wp,
-    ny: 'ny.' + wp,
-    oc: 'oc.' + wp,
-    olo: 'olo.' + wp,
-    om: 'om.' + wp,
-    or: 'or.' + wp,
-    os: 'os.' + wp,
-    pa: 'pa.' + wp,
-    pag: 'pag.' + wp,
-    pam: 'pam.' + wp,
-    pap: 'pap.' + wp,
-    pcd: 'pcd.' + wp,
-    pdc: 'pdc.' + wp,
-    pfl: 'pfl.' + wp,
-    pi: 'pi.' + wp,
-    pih: 'pih.' + wp,
-    pl: 'pl.' + wp,
-    pms: 'pms.' + wp,
-    pnb: 'pnb.' + wp,
-    pnt: 'pnt.' + wp,
-    ps: 'ps.' + wp,
-    pt: 'pt.' + wp,
-    qu: 'qu.' + wp,
-    rm: 'rm.' + wp,
-    rmy: 'rmy.' + wp,
-    rn: 'rn.' + wp,
-    ro: 'ro.' + wp,
-    'roa-rup': 'roa-rup.' + wp,
-    'roa-tara': 'roa-tara.' + wp,
-    ru: 'ru.' + wp,
-    rue: 'rue.' + wp,
-    rw: 'rw.' + wp,
-    sa: 'sa.' + wp,
-    sah: 'sah.' + wp,
-    sat: 'sat.' + wp,
-    sc: 'sc.' + wp,
-    scn: 'scn.' + wp,
-    sco: 'sco.' + wp,
-    sd: 'sd.' + wp,
-    se: 'se.' + wp,
-    sg: 'sg.' + wp,
-    sh: 'sh.' + wp,
-    shn: 'shn.' + wp,
-    shy: 'shy.' + wp,
-    si: 'si.' + wp,
-    simple: 'simple.' + wp,
-    sk: 'sk.' + wp,
-    sl: 'sl.' + wp,
-    sm: 'sm.' + wp,
-    sn: 'sn.' + wp,
-    so: 'so.' + wp,
-    sq: 'sq.' + wp,
-    sr: 'sr.' + wp,
-    srn: 'srn.' + wp,
-    ss: 'ss.' + wp,
-    st: 'st.' + wp,
-    stq: 'stq.' + wp,
-    su: 'su.' + wp,
-    sv: 'sv.' + wp,
-    sw: 'sw.' + wp,
-    szl: 'szl.' + wp,
-    szy: 'szy.' + wp,
-    ta: 'ta.' + wp,
-    tcy: 'tcy.' + wp,
-    te: 'te.' + wp,
-    tet: 'tet.' + wp,
-    tg: 'tg.' + wp,
-    th: 'th.' + wp,
-    ti: 'ti.' + wp,
-    tk: 'tk.' + wp,
-    tl: 'tl.' + wp,
-    tn: 'tn.' + wp,
-    to: 'to.' + wp,
-    tpi: 'tpi.' + wp,
-    tr: 'tr.' + wp,
-    ts: 'ts.' + wp,
-    tt: 'tt.' + wp,
-    tum: 'tum.' + wp,
-    tw: 'tw.' + wp,
-    ty: 'ty.' + wp,
-    tyv: 'tyv.' + wp,
-    udm: 'udm.' + wp,
-    ug: 'ug.' + wp,
-    uk: 'uk.' + wp,
-    ur: 'ur.' + wp,
-    uz: 'uz.' + wp,
-    ve: 've.' + wp,
-    vec: 'vec.' + wp,
-    vep: 'vep.' + wp,
-    vi: 'vi.' + wp,
-    vls: 'vls.' + wp,
-    vo: 'vo.' + wp,
-    wa: 'wa.' + wp,
-    war: 'war.' + wp,
-    wo: 'wo.' + wp,
-    wuu: 'wuu.' + wp,
-    xal: 'xal.' + wp,
-    xh: 'xh.' + wp,
-    xmf: 'xmf.' + wp,
-    yi: 'yi.' + wp,
-    yo: 'yo.' + wp,
-    yue: 'zh-yue.' + wp,
-    za: 'za.' + wp,
-    zea: 'zea.' + wp,
-    zh: 'zh.' + wp,
-    'zh-classical': 'zh-classical.' + wp,
-    'zh-min-nan': 'zh-min-nan.' + wp,
-    'zh-yue': 'zh-yue.' + wp,
-    zu: 'zu.' + wp,
-    cz: 'cs.' + wp,
-    dk: 'da.' + wp,
-    epo: 'eo.' + wp,
-    jp: 'ja.' + wp,
-    minnan: 'zh-min-nan.' + wp,
-    nb: 'no.' + wp,
-    'zh-cfr': 'zh-min-nan.' + wp,
-    'zh-cn': 'zh.' + wp,
-    'zh-tw': 'zh.' + wp,
-    nan: 'zh-min-nan.' + wp,
-    vro: 'fiu-vro.' + wp,
-    cmn: 'zh.' + wp,
-    lzh: 'zh-classical.' + wp,
-    rup: 'roa-rup.' + wp,
-    gsw: 'als.' + wp,
-    'be-tarask': 'be-x-old.' + wp,
-    sgs: 'bat-smg.' + wp,
-    egl: 'eml.' + wp,
-    w: 'en.' + wp,
-    wikt: 'en.wiktionary.org/wiki/$1',
-    q: 'en.wikiquote.org/wiki/$1',
-    b: 'en.wikibooks.org/wiki/$1',
-    n: 'en.wikinews.org/wiki/$1',
-    s: 'en.wikisource.org/wiki/$1',
-    chapter: 'en' + wm,
-    v: 'en.wikiversity.org/wiki/$1',
-    voy: 'en.wikivoyage.org/wiki/$1'
-  };
-
   var defaults$6 = {
     type: 'internal'
   };
@@ -3292,29 +2954,31 @@
         return this.site();
       }
 
+      var page = this.page();
+      page = page.replace(/ /g, '_');
+      page = encodeURIComponent(page);
+      var url = '';
+
       if (type === 'interwiki') {
-        var url = interwiki$1[this.wiki()] || 'https://en.wikipedia.org/wiki/$1';
-        var page = this.page();
-        page = page.replace(/ /g, '_');
-        page = encodeURIComponent(page);
+        var wiki = this.wiki();
+        url = 'https://en.wikipedia.org/wiki/$1';
+
+        if (interwiki.hasOwnProperty(wiki)) {
+          url = 'http://' + interwiki[this.wiki()];
+        }
+
         url = url.replace(/\$1/g, page);
+      } else {
+        //internal link
+        url = "./".concat(this.page());
+      } // add anchor on the end
 
-        if (this.anchor()) {
-          url += '#' + this.anchor();
-        }
 
-        return url;
+      if (this.anchor()) {
+        url += '#' + this.anchor();
       }
 
-      if (type === 'internal') {
-        var _url = '';
-
-        if (this.anchor()) {
-          _url += '#' + this.anchor();
-        }
-
-        return _url;
-      }
+      return url;
     }
   };
   Object.keys(methods$3).forEach(function (k) {
@@ -4667,8 +4331,8 @@
 
   var parseSentence$4 = _04Sentence.fromText; //regexes:
 
-  var isFile = new RegExp('(' + i18n.images.join('|') + '):', 'i');
-  var fileNames = "(".concat(i18n.images.join('|'), ")");
+  var isFile = new RegExp('(' + i18n$1.images.join('|') + '):', 'i');
+  var fileNames = "(".concat(i18n$1.images.join('|'), ")");
   var file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'iu'); //style directives for Wikipedia:Extended_image_syntax
 
   var imgLayouts = {
@@ -5188,7 +4852,7 @@
   }, {});
   var _ignore = ignore$1;
 
-  var i18nReg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i'); //some looser ones
+  var i18nReg = new RegExp('^(subst.)?(' + i18n$1.infoboxes.join('|') + ')[: \n]', 'i'); //some looser ones
 
   var startReg = /^infobox /i;
   var endReg = / infobox$/i;
@@ -6698,7 +6362,19 @@
       list.push(obj);
       return '';
     },
-    sfn: ['author', 'year', 'location'],
+    //https://en.wikipedia.org/wiki/Template:Sfn
+    sfn: function sfn(tmpl, list, alias) {
+      var order = ['author', 'year', 'location'];
+      var obj = parse$3(tmpl, order);
+
+      if (alias) {
+        obj.name = obj.template;
+        obj.teplate = alias;
+      }
+
+      list.push(obj);
+      return '';
+    },
     audio: ['file', 'text', 'type'],
     rp: ['page'],
     'spoken wikipedia': function spokenWikipedia(tmpl, list) {
@@ -7515,7 +7191,29 @@
   templates$8['winperc'] = templates$8['winning percentage'];
   var math = templates$8;
 
+  var generic = function generic(tmpl, list, alias) {
+    var obj = parse$3(tmpl);
+
+    if (alias) {
+      obj.name = obj.template;
+      obj.template = alias;
+    }
+
+    list.push(obj);
+    return '';
+  };
+
   var misc$2 = {
+    //i18n templates
+    persondata: generic,
+    taxobox: generic,
+    citation: generic,
+    portal: generic,
+    reflist: generic,
+    'cite book': generic,
+    'cite journal': generic,
+    'cite web': generic,
+    'commons cat': generic,
     // https://en.wikipedia.org/wiki/Template:Portuguese_name
     'portuguese name': ['first', 'second', 'suffix'],
     uss: ['ship', 'id'],
@@ -8157,32 +7855,32 @@
   var weather = templates$b;
 
   //this format seems to be a pattern for these
-  var generic = ['id', 'title', 'description', 'section'];
+  var generic$1 = ['id', 'title', 'description', 'section'];
   var idName = ['id', 'name']; //https://en.wikipedia.org/wiki/Category:External_link_templates
 
   var externals = {
     //https://en.wikipedia.org/wiki/Template:IMDb_title
-    'imdb title': generic,
-    'imdb name': generic,
-    'imdb episode': generic,
-    'imdb event': generic,
-    'afi film': generic,
-    'allmovie title': generic,
-    allgame: generic,
-    'tcmdb title': generic,
-    'discogs artist': generic,
-    'discogs label': generic,
-    'discogs release': generic,
-    'discogs master': generic,
-    'librivox author': generic,
-    'musicbrainz artist': generic,
-    'musicbrainz label': generic,
-    'musicbrainz recording': generic,
-    'musicbrainz release': generic,
-    'musicbrainz work': generic,
-    youtube: generic,
+    'imdb title': generic$1,
+    'imdb name': generic$1,
+    'imdb episode': generic$1,
+    'imdb event': generic$1,
+    'afi film': generic$1,
+    'allmovie title': generic$1,
+    allgame: generic$1,
+    'tcmdb title': generic$1,
+    'discogs artist': generic$1,
+    'discogs label': generic$1,
+    'discogs release': generic$1,
+    'discogs master': generic$1,
+    'librivox author': generic$1,
+    'musicbrainz artist': generic$1,
+    'musicbrainz label': generic$1,
+    'musicbrainz recording': generic$1,
+    'musicbrainz release': generic$1,
+    'musicbrainz work': generic$1,
+    youtube: generic$1,
     'goodreads author': idName,
-    'goodreads book': generic,
+    'goodreads book': generic$1,
     twitter: idName,
     facebook: idName,
     instagram: idName,
@@ -8199,7 +7897,7 @@
     'ted speaker': idName,
     playmate: idName,
     //https://en.wikipedia.org/wiki/Template:DMOZ
-    dmoz: generic,
+    dmoz: generic$1,
     'find a grave': ['id', 'name', 'work', 'last', 'first', 'date', 'accessdate'],
     congbio: ['id', 'name', 'date'],
     'hollywood walk of fame': ['name']
@@ -8260,7 +7958,7 @@
 
   var templates$d = Object.assign({}, dates, formatting$1, geo, wikipedia, brackets_1, currency, elections, flags_1, ipa, languages_1, math, misc_1$1, punctuation_1, science, soccer, sports$1, stockExchanges, weather, websites, wiktionary);
 
-  var generic$1 = parse$3;
+  var generic$2 = parse$3;
   var nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
 
   var isArray$2 = function isArray(arr) {
@@ -8297,7 +7995,7 @@
     if (templates$d.hasOwnProperty(name) === true) {
       // handle number-syntax
       if (typeof templates$d[name] === 'number') {
-        var _obj2 = generic$1(tmpl.body, nums);
+        var _obj2 = generic$2(tmpl.body, nums);
 
         var key = String(templates$d[name]);
         return _obj2[key] || '';
@@ -8310,7 +8008,7 @@
 
 
       if (isArray$2(templates$d[name]) === true) {
-        var _obj3 = generic$1(tmpl.body, templates$d[name]);
+        var _obj3 = generic$2(tmpl.body, templates$d[name]);
 
         list.push(_obj3);
         return '';
@@ -8674,7 +8372,7 @@
 
   var startToEnd = xmlTemplates;
 
-  var isReference$1 = new RegExp('^(' + i18n.references.join('|') + '):?', 'i');
+  var isReference$1 = new RegExp('^(' + i18n$1.references.join('|') + '):?', 'i');
   var section_reg = /(?:\n|^)(={2,5}.{1,200}?={2,5})/g; //interpret ==heading== lines
 
   var parse$6 = {
@@ -8759,8 +8457,8 @@
 
   var _02Section = parseSections;
 
-  var cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'ig');
-  var cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n.categories.join('|') + '):', 'ig');
+  var cat_reg = new RegExp('\\[\\[:?(' + i18n$1.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'ig');
+  var cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n$1.categories.join('|') + '):', 'ig');
 
   var parse_categories = function parse_categories(doc) {
     var wiki = doc.wiki;
@@ -8791,39 +8489,33 @@
   }; //convert wikiscript markup lang to json
 
   var main = function main(wiki, options) {
-    var _Object$assign;
-
     options = options || {};
-    var doc = Object.assign(options, (_Object$assign = {
+    var data = Object.assign(options, {
       title: options.title || null,
       pageID: options.pageID || options.id || null,
       namespace: options.namespace || options.ns || null,
       type: 'page',
       wiki: wiki || '',
       categories: [],
-      sections: []
-    }, _defineProperty(_Object$assign, "categories", []), _defineProperty(_Object$assign, "coordinates", []), _Object$assign)); //detect if page is just redirect, and return it
+      sections: [],
+      coordinates: []
+    }); //detect if page is just redirect, and return it
 
     if (redirects$1.isRedirect(wiki) === true) {
-      doc.type = 'redirect';
-      doc.redirectTo = redirects$1.parse(wiki);
-      parse$7.categories(doc);
-      return new Document_1(doc);
-    } //detect if page is just disambiguator page, and return
-
-
-    if (disambig$1.isDisambig(doc.wiki) === true) {
-      doc.type = 'disambiguation';
+      data.type = 'redirect';
+      data.redirectTo = redirects$1.parse(wiki);
+      parse$7.categories(data);
+      return new Document_1(data);
     } //give ourselves a little head-start
 
 
-    preProcess_1(doc); //pull-out [[category:whatevers]]
+    preProcess_1(data); //pull-out [[category:whatevers]]
 
-    parse$7.categories(doc); //parse all the headings, and their texts/sentences
+    parse$7.categories(data); //parse all the headings, and their texts/sentences
 
-    parse$7.section(doc) || []; //all together now
+    parse$7.section(data); //all together now
 
-    return new Document_1(doc);
+    return new Document_1(data);
   };
 
   var _01Document = main;

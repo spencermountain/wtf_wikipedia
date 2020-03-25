@@ -19,6 +19,7 @@
 - - support proper urls for interwiki links
 - replicate wikipedia behaviour for apostrophe-s after link
 - new plugins **summary**, **classify**, **category**, and **i18n**.
+- Link hrefs are not titlecased anymore by default
 
 ### 8.0.0
 

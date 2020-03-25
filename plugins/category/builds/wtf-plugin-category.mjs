@@ -118,6 +118,8 @@ var plugin = function plugin(models) {
       return _ref2.apply(this, arguments);
     };
   }();
+
+  models.wtf.fetchCategory = models.wtf.parseCategory;
 };
 
 var src = plugin;

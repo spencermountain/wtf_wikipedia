@@ -213,37 +213,10 @@ var doSentence = function doSentence(options) {
 
 var _04Sentence = doSentence;
 
-var capitalise = function capitalise(str) {
-  if (str && typeof str === 'string') {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
-  return '';
-};
-
-var helpers = {
-  capitalise: capitalise
-};
-
 var toHtml$2 = function toHtml() {
-  var href = '';
   var classNames = 'link';
-
-  if (this.site()) {
-    //use an external link
-    href = this.site();
-    classNames += ' external';
-  } else {
-    //otherwise, make it a relative internal link
-    var page = this.page();
-    href = helpers.capitalise(page);
-    href = './' + href.replace(/ /g, '_'); //add anchor
-
-    if (this.anchor()) {
-      href += "#".concat(this.anchor());
-    }
-  }
-
+  var href = this.href();
+  href = href.replace(/ /g, '_');
   var str = this.text() || this.page();
   return "<a class=\"".concat(classNames, "\" href=\"").concat(href, "\">").concat(str, "</a>");
 };
@@ -314,6 +287,88 @@ var makeImage = function makeImage() {
 
 var image = makeImage;
 
+//
+var toHtml$3 = function toHtml(options) {
+  var html = '  <ul class="list">\n';
+  this.lines().forEach(function (s) {
+    html += '    <li>' + s.html(options) + '</li>\n';
+  });
+  html += '  </ul>\n';
+  return html;
+};
+
+var list = toHtml$3;
+
+//
+var toHtml$4 = function toHtml(options) {
+  if (this.data && this.data.url && this.data.title) {
+    var str = this.data.title;
+
+    if (options.links === true) {
+      str = "<a href=\"".concat(this.data.url, "\">").concat(str, "</a>");
+    }
+
+    return "<div class=\"reference\">\u2303 ".concat(str, " </div>");
+  }
+
+  if (this.data.encyclopedia) {
+    return "<div class=\"reference\">\u2303 ".concat(this.data.encyclopedia, "</div>");
+  }
+
+  if (this.data.title) {
+    //cite book, etc
+    var _str = this.data.title;
+
+    if (this.data.author) {
+      _str += this.data.author;
+    }
+
+    if (this.data.first && this.data.last) {
+      _str += this.data.first + ' ' + this.data.last;
+    }
+
+    return "<div class=\"reference\">\u2303 ".concat(_str, "</div>");
+  }
+
+  if (this.inline) {
+    return "<div class=\"reference\">\u2303 ".concat(this.inline.html(), "</div>");
+  }
+
+  return '';
+};
+
+var reference = toHtml$4;
+
+//turn a json table into a html table
+var toHtml$5 = function toHtml(options) {
+  var html = '<table class="table">\n'; //make header
+
+  html += '  <thead>\n';
+  html += '  <tr>\n';
+  Object.keys(this[0]).forEach(function (k) {
+    if (/^col[0-9]/.test(k) !== true) {
+      html += '    <td>' + k + '</td>\n';
+    }
+  });
+  html += '  </tr>\n';
+  html += '  </thead>\n';
+  html += '  <tbody>\n'; //make rows
+
+  this.forEach(function (o) {
+    html += '  <tr>\n';
+    Object.keys(o).forEach(function (k) {
+      var val = o[k].html(options);
+      html += '    <td>' + val + '</td>\n';
+    });
+    html += '  </tr>\n';
+  });
+  html += '  </tbody>\n';
+  html += '</table>\n';
+  return html;
+};
+
+var table = toHtml$5;
+
 var plugin = function plugin(models) {
   models.Doc.prototype.html = _01Doc;
   models.Section.prototype.html = _02Section;
@@ -321,7 +376,10 @@ var plugin = function plugin(models) {
   models.Sentence.prototype.html = _04Sentence;
   models.Image.prototype.html = image;
   models.Infobox.prototype.html = infobox_1;
-  models.Link.prototype.html = _05Link; // models.Template.html = function(opts) {}
+  models.Link.prototype.html = _05Link;
+  models.List.prototype.html = list;
+  models.Reference.prototype.html = reference;
+  models.Table.prototype.html = table; // models.Template.html = function(opts) {}
 };
 
 var src = plugin;

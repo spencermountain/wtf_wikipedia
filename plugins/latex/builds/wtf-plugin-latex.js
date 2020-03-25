@@ -243,34 +243,9 @@
 
   var _04Sentence = toLatex$2;
 
-  var capitalise = function capitalise(str) {
-    if (str && typeof str === 'string') {
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-
-    return '';
-  };
-
-  var helpers = {
-    capitalise: capitalise
-  };
-
   var toLatex$3 = function toLatex() {
-    var href = '';
-
-    if (this.site()) {
-      //use an external link
-      href = this.site();
-    } else {
-      //otherwise, make it a relative internal link
-      href = helpers.capitalise(this.page());
-      href = './' + href.replace(/ /g, '_'); //add anchor
-
-      if (this.anchor()) {
-        href += "#".concat(this.anchor());
-      }
-    }
-
+    var href = this.href();
+    href = href.replace(/ /g, '_');
     var str = this.text() || this.page();
     return '\\href{' + href + '}{' + str + '}';
   };

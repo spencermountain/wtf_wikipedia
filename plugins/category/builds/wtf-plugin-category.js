@@ -3,9 +3,9 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('slow')) :
   typeof define === 'function' && define.amd ? define(['slow'], factory) :
   (global = global || self, global.wtf = factory(global.slow));
-}(this, function (slow) { 'use strict';
+}(this, (function (slow) { 'use strict';
 
-  slow = slow && slow.hasOwnProperty('default') ? slow['default'] : slow;
+  slow = slow && Object.prototype.hasOwnProperty.call(slow, 'default') ? slow['default'] : slow;
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
@@ -124,11 +124,13 @@
         return _ref2.apply(this, arguments);
       };
     }();
+
+    models.wtf.fetchCategory = models.wtf.parseCategory;
   };
 
   var src = plugin;
 
   return src;
 
-}));
+})));
 //# sourceMappingURL=wtf-plugin-category.js.map

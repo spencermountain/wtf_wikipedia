@@ -3,7 +3,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, global.wtf = factory());
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   var birth_date_and_age = ['ålder', 'ani', 'b', // 'birth date',
   // 'birth date and age',
@@ -133,5 +133,5 @@
 
   return src;
 
-}));
+})));
 //# sourceMappingURL=wtf-plugin-i18n.js.map

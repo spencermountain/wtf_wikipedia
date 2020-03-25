@@ -3,7 +3,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, global.wtf = factory());
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   var infoboxes = {
     actor: 'Person',
@@ -864,7 +864,7 @@
     'CreativeWork/Album': [/[0-9]{4} albums/, /albums produced by /, / albums$/],
     'CreativeWork/Film': [/[0-9]{4} films/, / films$/],
     'CreativeWork/TVShow': [/television series/],
-    CreativeWork: [/film stubs$/, /novel stubs$/, /[0-9]{4} video games/],
+    CreativeWork: [/film stubs$/, /novel stubs$/, /[0-9]{4} video games/, /[0-9]{4} poems/],
     // ==Event==
     'Event/SportsEvent': [/. league seasons$/, /^(19|20)[0-9]{2} in (soccer|football|rugby|tennis|basketball|baseball|cricket|sports)/],
     'Event/War': [/conflicts in [0-9]{4}/, /battles involving ./],
@@ -938,21 +938,6 @@
 
   var byCategory_1 = byCategory;
 
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-
-    return obj;
-  }
-
   var templates = {
     'Person/Actor': [/actor-stub$/],
     'Person/Politician': [/(politician|mayor)-stub$/],
@@ -970,7 +955,7 @@
     Place: [/-geo-stub$/]
   };
 
-  var mapping$1 = _defineProperty({
+  var mapping$1 = {
     //place
     coord: 'Place',
     'weather box': 'Place',
@@ -995,7 +980,7 @@
     'insects in culture': 'Thing/Organism',
     'living things in culture': 'Thing/Organism',
     'eukaryota classification': 'Thing/Organism'
-  }, "animalia", 'Thing/Organism');
+  };
 
   var matchPatterns = function matchPatterns(title) {
     var types = Object.keys(templates);
@@ -1011,6 +996,8 @@
         }
       }
     }
+
+    return null;
   };
 
   var byTemplate = function byTemplate(doc) {
@@ -1021,14 +1008,12 @@
       var title = templates[i].template;
 
       if (mapping$1.hasOwnProperty(title)) {
-        console.log(title);
         found.push(mapping$1[title]);
       } else {
         // try regex-list on it
         var type = matchPatterns(title);
 
         if (type) {
-          console.log(title);
           found.push(type);
         }
       }
@@ -1098,6 +1083,21 @@
   };
 
   var bySection = fromSection;
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
 
   var _titles;
 
@@ -1268,7 +1268,7 @@
   var disambig = /\(disambiguation\)/;
 
   var skipPage = function skipPage(doc) {
-    var title = doc.title(); //look at parentheses like 'Tornado (film)'
+    var title = doc.title() || ''; //look at parentheses like 'Tornado (film)'
 
     var m = title.match(paren$1);
 
@@ -1293,68 +1293,105 @@
     if (disambig.test(title) === true) {
       return true;
     }
+
+    return false;
   };
 
   var _skip = skipPage;
 
-  var tree = {
-    Person: {
-      Athlete: true,
-      Artist: true,
-      Politician: true,
-      Scientist: true,
-      Actor: true
-    },
-    Place: {
-      Country: true,
-      City: true,
-      Structure: true,
-      BodyOfWater: true
-    },
-    Organization: {
-      Company: true,
-      SportsTeam: true,
-      MusicalGroup: true
-    },
-    CreativeWork: {
-      Film: true,
-      TVShow: true,
-      Book: true,
-      Album: true
-    },
-    Event: {
-      Election: true,
-      Disaster: true,
-      SportsEvent: true,
-      War: true
-    },
-    Thing: {
-      Product: true,
-      Software: true,
-      Character: true,
-      Organism: true
-    }
-  };
-
-  var isObject = function isObject(obj) {
-    return obj && Object.prototype.toString.call(obj) === '[object Object]';
-  };
-
-  var doit = function doit(type, obj) {
-    Object.keys(obj).forEach(function (k) {
-      var tmp = k;
-
-      if (type) {
-        tmp = type + '/' + k;
-      }
-
-      if (isObject(tree[k])) {
-        doit(tmp, tree[k]);
-      }
+  var topk = function topk(arr) {
+    var obj = {};
+    arr.forEach(function (a) {
+      obj[a] = obj[a] || 0;
+      obj[a] += 1;
+    });
+    var res = Object.keys(obj).map(function (k) {
+      return [k, obj[k]];
+    });
+    return res.sort(function (a, b) {
+      return a[1] > b[1] ? -1 : 0;
     });
   };
 
-  doit('', tree);
+  var parse = function parse(cat) {
+    var split = cat.split(/\//);
+    return {
+      root: split[0],
+      child: split[1]
+    };
+  };
+
+  var getScore = function getScore(detail) {
+    var cats = [];
+    Object.keys(detail).forEach(function (k) {
+      detail[k].forEach(function (str) {
+        cats.push(parse(str));
+      });
+    }); // find top parent
+
+    var roots = cats.map(function (obj) {
+      return obj.root;
+    }).filter(function (s) {
+      return s;
+    });
+    var top = topk(roots)[0];
+
+    if (!top) {
+      return {
+        detail: detail,
+        category: null,
+        score: 0
+      };
+    }
+
+    var root = top[0]; // score as % of results
+
+    var score = top[1] / cats.length; // punish low counts
+
+    if (top[1] === 1) {
+      score *= 0.75;
+    }
+
+    if (top[1] === 2) {
+      score *= 0.85;
+    }
+
+    if (top[1] === 3) {
+      score *= 0.95;
+    } // find 2nd level
+
+
+    var children = cats.map(function (obj) {
+      return obj.child;
+    }).filter(function (s) {
+      return s;
+    });
+    var tops = topk(children);
+    top = tops[0];
+    var category = root;
+
+    if (top) {
+      category = "".concat(root, "/").concat(top[0]); // punish for any conflicting children
+
+      if (tops.length > 1) {
+        score *= 0.7;
+      } // punish for low count
+
+
+      if (top[1] === 1) {
+        score *= 0.8;
+      }
+    }
+
+    return {
+      root: root,
+      category: category,
+      score: score,
+      detail: detail
+    };
+  };
+
+  var score = getScore;
 
   var plugin = function plugin(models) {
     // add a new method to main class
@@ -1375,9 +1412,8 @@
 
       res.title = byTitle_1(doc); //look for 'Category: 1992 Births', etc
 
-      res.category = byCategory_1(doc); // let scored = score(res)
-
-      return res;
+      res.category = byCategory_1(doc);
+      return score(res);
     };
   };
 
@@ -1385,5 +1421,5 @@
 
   return src;
 
-}));
+})));
 //# sourceMappingURL=wtf-plugin-classify.js.map
