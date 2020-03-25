@@ -28,11 +28,21 @@ test('start date', t => {
   t.end()
 })
 
-// test('citation', t => {
-//   let str = ` {{Cita libru |url=cool.com |title= |last= |first= |date= |website= |publisher= |access-date= |quote=}}
-//     `
-//   let doc = wtf(str)
-//   t.equal(doc.references().length, 1, 'one reference')
-//   t.equal(doc.templates().length, 0, 'no templates')
-//   t.end()
-// })
+test('persondata', t => {
+  let str = `{{personendaten|Full_name=c00l}}`
+  let doc = wtf(str)
+  let templates = doc.templates()
+  t.equal(templates.length, 1, 'template')
+  t.equal(templates[0].template, 'persondata', 'maps to original template')
+  t.equal(templates[0].name, 'personendaten', 'has alias')
+  t.end()
+})
+
+test('citation', t => {
+  let str = ` {{Cita libru |url=cool.com |title= |last= |first= |date= |website= |publisher= |access-date= |quote=}}
+    `
+  let doc = wtf(str)
+  t.equal(doc.references().length, 1, 'one reference')
+  t.equal(doc.templates().length, 0, 'no templates')
+  t.end()
+})

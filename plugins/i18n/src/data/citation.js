@@ -6,7 +6,7 @@ module.exports = [
   'citácia harvard',
   'citat',
   'citat3',
-  'citation',
+  // 'citation',
   'cite',
   'citim',
   'cito',

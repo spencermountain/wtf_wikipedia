@@ -8,7 +8,7 @@ module.exports = [
   'portaal',
   'portada',
   'portail',
-  'portal',
+  // 'portal',
   'pòrtal',
   'portál',
   'portal box',

@@ -14,7 +14,7 @@ module.exports = [
   'citar livro',
   'citat carte',
   'citaziuni di testu',
-  'cite book',
+  // 'cite book',
   'cite book.',
   'cité un lìber',
   'citeer boek',

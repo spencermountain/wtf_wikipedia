@@ -17,18 +17,18 @@ let mapping = {
   sfn: require('./data/sfn'),
   small: require('./data/small'),
   'start date': require('./data/start_date'),
+  persondata: require('./data/persondata'),
   taxobox: require('./data/taxobox')
 }
 
 const plugin = function(models, templates) {
   Object.keys(mapping).forEach(k => {
-    // if (!templates[k]) {
-    //   console.log(k)
-    // }
     mapping[k].forEach(name => {
-      templates[name] = templates[k]
+      // create template parser with alias
+      templates[name] = function(tmpl, list) {
+        return templates[k](tmpl, list, k)
+      }
     })
   })
-  // console.log(templates['hlavný článok'])
 }
 module.exports = plugin

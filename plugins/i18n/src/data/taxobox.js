@@ -25,7 +25,7 @@ module.exports = [
   'taksoqutu',
   'tassobox',
   'tassonomìa',
-  'taxobox',
+  // 'taxobox',
   'taxobox öömrang',
   'taxobox2',
   'taxoboxe',

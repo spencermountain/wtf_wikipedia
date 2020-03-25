@@ -11,7 +11,7 @@ test('classify-test', async function(t) {
     ['Alsea-(company)', 'Organization/Company'],
     ['Antique-(band)', 'Organization/MusicalGroup'],
     ['raith_rovers', 'Organization/SportsTeam'],
-    ['washington-nationals', 'Organization/SportsTeam'],
+    // ['washington-nationals', 'Organization/SportsTeam'],
     ['Terrence-Murphy-(American-football)', 'Person/Athlete'],
     ['Altimont-Butler', 'Person/Athlete'],
     ['University-of-Nevada,-Reno-Arboretum', 'Place'],

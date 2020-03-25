@@ -11,7 +11,7 @@ module.exports = [
   'citar periódico',
   'citat revistă',
   'cite aldizkari',
-  'cite journal',
+  // 'cite journal',
   "cité n'arvista",
   'cite paper',
   'citeer journal',
