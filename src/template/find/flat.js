@@ -6,11 +6,7 @@ const findFlat = function(wiki) {
   let depth = 0
   let list = []
   let carry = []
-  for (
-    var i = wiki.indexOf(open);
-    i !== -1 && i < wiki.length;
-    depth > 0 ? i++ : (i = wiki.indexOf(open, i + 1))
-  ) {
+  for (let i = wiki.indexOf(open); i !== -1 && i < wiki.length; depth > 0 ? i++ : (i = wiki.indexOf(open, i + 1))) {
     let c = wiki[i]
     //open it
     if (c === open) {

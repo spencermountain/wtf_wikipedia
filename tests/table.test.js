@@ -454,22 +454,22 @@ test('two-header-rows-with-spans', t => {
 //nfl football table
 test('junky-table', t => {
   var str = `{| class="navbox plainrowheaders wikitable" style="width:100%"
-  ! A
-  ! B
-  ! C
-  ! D
-  |-
-  !style="{{Gridiron primary style|AFC}};" colspan="8"|[[American Football Conference|<span style="{{Gridiron secondary color|AFC}};">American Football Conference</span>]]
-  |-
-  !style=background:white rowspan="4"|[[AFC East|East]]
-  |'''[[Buffalo Bills]]'''
-  |[[Orchard Park (town), New York|Orchard Park, New York]]
-  |-
-  |'''[[Miami Dolphins]]'''
-  |[[Miami Gardens, Florida]]
-  |[[Hard Rock Stadium]]
-  |-
-  |}`
+! A
+! B
+! C
+! D
+|-
+!style="{{Gridiron primary style|AFC}};" colspan="8"|[[American Football Conference|<span style="{{Gridiron secondary color|AFC}};">American Football Conference</span>]]
+|-
+!style=background:white rowspan="4"|[[AFC East|East]]
+|'''[[Buffalo Bills]]'''
+|[[Orchard Park (town), New York|Orchard Park, New York]]
+|-
+|'''[[Miami Dolphins]]'''
+|[[Miami Gardens, Florida]]
+|[[Hard Rock Stadium]]
+|-
+|}`
   var table = wtf(str)
     .tables(0)
     .keyValue()

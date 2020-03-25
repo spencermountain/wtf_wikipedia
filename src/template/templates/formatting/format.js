@@ -123,7 +123,11 @@ let templates = {
   //https://en.wikipedia.org/wiki/Template:Val
   val: tmpl => {
     let obj = parse(tmpl, ['number', 'uncertainty'])
-    let str = obj.number || ''
+    let num = obj.number
+    if (num && Number(num)) {
+      num = Number(num).toLocaleString()
+    }
+    let str = num || ''
     //prefix/suffix
     if (obj.p) {
       str = obj.p + str

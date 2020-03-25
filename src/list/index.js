@@ -1,5 +1,5 @@
 const List = require('./List')
-const parseSentence = require('../04-sentence/').oneSentence
+const parseSentence = require('../04-sentence/').fromText
 const list_reg = /^[#\*:;\|]+/
 const bullet_reg = /^\*+[^:,\|]{4}/
 const number_reg = /^ ?\#[^:,\|]{4}/
@@ -14,8 +14,8 @@ const isList = function(line) {
 const cleanList = function(list) {
   let number = 1
   list = list.filter(l => l)
-  for (var i = 0; i < list.length; i++) {
-    var line = list[i]
+  for (let i = 0; i < list.length; i++) {
+    let line = list[i]
     //add # numberings formatting
     if (line.match(number_reg)) {
       line = line.replace(/^ ?#*/, number + ') ')
@@ -44,7 +44,8 @@ const grabList = function(lines, i) {
   return sub
 }
 
-const parseList = function(wiki, data) {
+const parseList = function(paragraph) {
+  let wiki = paragraph.wiki
   let lines = wiki.split(/\n/g)
   // lines = lines.filter(l => has_word.test(l));
   let lists = []
@@ -60,8 +61,7 @@ const parseList = function(wiki, data) {
       theRest.push(lines[i])
     }
   }
-  data.lists = lists.map(l => new List(l))
-  wiki = theRest.join('\n')
-  return wiki
+  paragraph.lists = lists.map(l => new List(l))
+  paragraph.wiki = theRest.join('\n')
 }
 module.exports = parseList

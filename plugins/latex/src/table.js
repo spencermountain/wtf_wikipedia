@@ -13,7 +13,7 @@ const doTable = function(options) {
   out += '\n  \\hline  %horizontal line\n'
   //make header
   out += '\n  % BEGIN: Table Header'
-  var vSep = '   '
+  let vSep = '   '
   Object.keys(this[0]).forEach(k => {
     out += '\n    ' + vSep
 

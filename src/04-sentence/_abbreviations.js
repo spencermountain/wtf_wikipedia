@@ -134,6 +134,7 @@ module.exports = [
   'neb',
   'nebr',
   'nee',
+  'no',
   'nov',
   'oct',
   'okla',

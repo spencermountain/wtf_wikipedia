@@ -1,7 +1,8 @@
 const i18n = require('../_data/i18n')
 const Image = require('./Image')
 const parseTemplate = require('../template/_parsers/parse')
-const parseSentence = require('../04-sentence').oneSentence
+const parseSentence = require('../04-sentence').fromText
+const nested_find = require('./nested_find')
 //regexes:
 const isFile = new RegExp('(' + i18n.images.join('|') + '):', 'i')
 let fileNames = `(${i18n.images.join('|')})`
@@ -63,17 +64,21 @@ const oneImage = function(img) {
   return null
 }
 
-const parseImages = function(matches, r, wiki) {
+const parseImages = function(paragraph) {
+  let wiki = paragraph.wiki
+
+  //parse+remove scary '[[ [[]] ]]' stuff
+  let matches = nested_find(wiki)
   matches.forEach(function(s) {
     if (isFile.test(s) === true) {
-      r.images = r.images || []
+      paragraph.images = paragraph.images || []
       let img = oneImage(s)
       if (img) {
-        r.images.push(img)
+        paragraph.images.push(img)
       }
       wiki = wiki.replace(s, '')
     }
   })
-  return wiki
+  paragraph.wiki = wiki
 }
 module.exports = parseImages

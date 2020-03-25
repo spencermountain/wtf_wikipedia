@@ -1,5 +1,5 @@
 const parse = require('../_parsers/parse')
-// const parseSentence = require('../../04-sentence').oneSentence;
+// const parseSentence = require('../../04-sentence').fromText;
 
 //simply num/denom * 100
 const percentage = function(obj) {

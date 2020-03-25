@@ -1,4 +1,4 @@
-/* wtf-plugin-markdown 0.1.0  MIT */
+/* wtf-plugin-markdown 0.1.1  MIT */
 var defaults = {
   redirects: true,
   infoboxes: true,
@@ -213,32 +213,10 @@ var toMarkdown$2 = function toMarkdown(options) {
 
 var _04Sentence = toMarkdown$2;
 
-var capitalise = function capitalise(str) {
-  if (str && typeof str === 'string') {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
-  return '';
-};
-
-var helpers = {
-  capitalise: capitalise
-};
-
+// add `[text](href)` to the text
 var toMarkdown$3 = function toMarkdown() {
-  var href = ''; //if it's an external link, we good
-
-  if (this.site()) {
-    href = this.site();
-  } else {
-    //otherwise, make it a relative internal link
-    href = helpers.capitalise(this.page());
-    href = './' + href.replace(/ /g, '_'); //add anchor
-
-    if (this.anchor()) {
-      href += "#".concat(this.anchor());
-    }
-  }
+  var href = this.href();
+  href = href.replace(/ /g, '_'); // href = encodeURIComponent(href)
 
   var str = this.text() || this.page();
   return '[' + str + '](' + href + ')';

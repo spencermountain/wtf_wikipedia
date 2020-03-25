@@ -3,17 +3,17 @@ const getColSpan = /.*colspan *?= *?["']?([0-9]+)["']?[ \|]*/
 
 //colspans stretch ←left/right→
 const doColSpan = function(rows) {
-  rows.forEach((row, r) => {
+  rows.forEach(row => {
     row.forEach((str, c) => {
       let m = str.match(getColSpan)
       if (m !== null) {
         let num = parseInt(m[1], 10)
 
         //...maybe if num is so big, and centered, remove it?
-        if (num > 3) {
-          rows[r] = []
-          return
-        }
+        // if (num > 3) {
+        //   rows[r] = []
+        //   return
+        // }
         //splice-in n empty columns right here
         row[c] = str.replace(getColSpan, '')
         for (let i = 1; i < num; i += 1) {
@@ -50,8 +50,8 @@ const doRowSpan = function(rows) {
 
 //
 const handleSpans = function(rows) {
-  rows = doRowSpan(rows)
   rows = doColSpan(rows)
+  rows = doRowSpan(rows)
   return rows
 }
 module.exports = handleSpans

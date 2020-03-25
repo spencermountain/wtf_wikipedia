@@ -1,4 +1,3 @@
-// const fetch = require('cross-fetch')
 const toJson = require('./toJson')
 const server = 'https://wikipedia.org/wiki/Special:Redirect/file/'
 

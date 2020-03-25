@@ -1,10 +1,25 @@
 ---
 
-<!-- #### 8.0.0
+<!-- #### [unreleased]
 * lowercase/normalize table headers
-* date templates response format
-* .keyValue() should return page title if exists, instead of text
-* return country name for `{{BAN}}` etc templates -->
+- `.categories()` return `Category` objects
+- - keep `Category:` prefix on categories
+- make `.method('foo')` results consistent
+-->
+
+### 8.1.0
+
+- [major] fix Link json object in `.json()` result
+- [major] fix inconsistent response for singular method aliases like `.template('foo')`
+- [major] change in rowspan behaviour to support covid table
+- support `<noinclude>`
+- add `.url()` and `.language()` methods
+- - support setters on Link methods
+- - add `Link.href()` method
+- - support proper urls for interwiki links
+- replicate wikipedia behaviour for apostrophe-s after link
+- new plugins **summary**, **classify**, **category**, and **i18n**.
+- Link hrefs are not titlecased anymore by default
 
 ### 8.0.0
 

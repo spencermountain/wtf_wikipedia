@@ -13,7 +13,7 @@ test('basic-html', t => {
 <div class="section">
   <div class="text">
     <p class="paragraph">
-      <span class="sentence">that cat is <a class="link" href="./A">a</a> cool dude</span>
+      <span class="sentence">that cat is <a class="link" href="./a">a</a> cool dude</span>
     </p>
   </div>
 </div>

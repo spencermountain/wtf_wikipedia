@@ -5,8 +5,9 @@ const openReg = /^\s*{\|/
 const closeReg = /^\s*\|}/
 
 //tables can be recursive, so looky-here.
-const findTables = function(section, wiki) {
+const findTables = function(section) {
   let list = []
+  let wiki = section.wiki
   let lines = wiki.split('\n')
   let stack = []
   for (let i = 0; i < lines.length; i += 1) {
@@ -44,7 +45,7 @@ const findTables = function(section, wiki) {
   if (tables.length > 0) {
     section.tables = tables
   }
-  return wiki
+  section.wiki = wiki
 }
 
 module.exports = findTables

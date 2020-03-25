@@ -1,7 +1,8 @@
-const parseSentence = require('../../04-sentence/').oneSentence
+const parseSentence = require('../../04-sentence/').fromText
 //xml <math>y=mx+b</math> support
 //https://en.wikipedia.org/wiki/Help:Displaying_a_formula
-const parseMath = function(wiki, section) {
+const parseMath = function(section) {
+  let wiki = section.wiki
   wiki = wiki.replace(/<math([^>]*?)>([\s\S]+?)<\/math>/g, (_, attrs, inside) => {
     //clean it up a little?
     let formula = parseSentence(inside).text()
@@ -24,6 +25,6 @@ const parseMath = function(wiki, section) {
     })
     return ''
   })
-  return wiki
+  section.wiki = wiki
 }
 module.exports = parseMath

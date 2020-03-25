@@ -65,8 +65,21 @@ const parsers = {
     list.push(obj)
     return ''
   },
-  sfn: ['author', 'year', 'location'],
+
+  //https://en.wikipedia.org/wiki/Template:Sfn
+  sfn: (tmpl, list, alias) => {
+    let order = ['author', 'year', 'location']
+    let obj = parse(tmpl, order)
+    if (alias) {
+      obj.name = obj.template
+      obj.teplate = alias
+    }
+    list.push(obj)
+    return ''
+  },
+
   audio: ['file', 'text', 'type'],
+  rp: ['page'],
 
   'spoken wikipedia': (tmpl, list) => {
     let order = ['file', 'date']

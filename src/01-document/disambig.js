@@ -1,28 +1,29 @@
-const i18n = require('../_data/i18n')
-
-const getReg = function(templates) {
-  const allowedCharacters = '(\\|[a-z, =]*?)*?'
-  return new RegExp('\\{\\{ ?(' + templates.join('|') + ')' + allowedCharacters + ' ?\\}\\}', 'i')
-}
-
-const templateReg = getReg(i18n.disambig)
+const i18n = require('../_data/disambig').reduce((h, str) => {
+  h[str] = true
+  return h
+}, {})
 
 //special disambig-templates en-wikipedia uses
 let d = ' disambiguation'
 const english = [
-  'airport',
-  'biology' + d,
-  'call sign' + d,
-  'caselaw' + d,
-  'chinese title' + d,
   'dab',
   'dab',
   'disamb',
   'disambig',
-  'disambiguation cleanup',
-  'genus' + d,
   'geodis',
   'hndis',
+  'setindex',
+  'ship index',
+  'split dab',
+  'sport index',
+  'wp disambig',
+  'disambiguation cleanup',
+  'airport' + d,
+  'biology' + d,
+  'call sign' + d,
+  'caselaw' + d,
+  'chinese title' + d,
+  'genus' + d,
   'hospital' + d,
   'lake index',
   'letter' + d,
@@ -33,46 +34,36 @@ const english = [
   'number' + d,
   'phonetics' + d,
   'place name' + d,
-  'place name' + d,
   'portal' + d,
   'road' + d,
   'school' + d,
-  'setindex',
-  'ship index',
   'species latin name abbreviation' + d,
   'species latin name' + d,
-  'split dab',
-  'sport index',
   'station' + d,
   'synagogue' + d,
   'taxonomic authority' + d,
-  'taxonomy' + d,
-  'wp disambig'
-]
-const enDisambigs = getReg(english)
+  'taxonomy' + d
+].reduce((h, str) => {
+  h[str] = true
+  return h
+}, {})
 
-const isDisambig = function(wiki) {
-  //test for {{disambiguation}} templates
-  if (templateReg.test(wiki) === true) {
+const isDisambig = function(doc) {
+  let templates = doc.templates()
+  let found = templates.find(obj => {
+    return english.hasOwnProperty(obj.template) || i18n.hasOwnProperty(obj.template)
+  })
+  if (found) {
     return true
   }
-  //more english-centric disambiguation templates
-
-  //{{hndis}}, etc
-  if (enDisambigs.test(wiki) === true) {
-    return true
+  // try 'may refer to' on first line for en-wiki?
+  let firstLine = doc.sentences(0).text()
+  if (firstLine !== null && firstLine[0]) {
+    if (/. may refer to ./i.test(firstLine) === true) {
+      return true
+    }
   }
-
-  //try 'may refer to' on first line for en-wiki?
-  // let firstLine = wiki.match(/^.+?\n/);
-  // if (firstLine !== null && firstLine[0]) {
-  //   if (/ may refer to/i.test(firstLine) === true) {
-  //     return true;
-  //   }
-  // }
   return false
 }
 
-module.exports = {
-  isDisambig: isDisambig
-}
+module.exports = isDisambig

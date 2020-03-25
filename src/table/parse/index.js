@@ -1,6 +1,7 @@
-const parseSentence = require('../../04-sentence/').oneSentence
+const parseSentence = require('../../04-sentence/').fromText
 const findRows = require('./_findRows')
 const handleSpans = require('./_spans')
+const isHeading = /^!/
 
 //common ones
 const headings = {
@@ -30,11 +31,38 @@ const cleanText = function(str) {
   return str
 }
 
+const skipSpanRow = function(row) {
+  let len = row.length
+  let hasTxt = row.filter(str => str).length
+  //does it have 3 empty spaces?
+  if (len - hasTxt > 3) {
+    return true
+  }
+  return false
+}
+
+//remove non-header span rows
+const removeMidSpans = function(rows) {
+  rows = rows.filter(row => {
+    if (row.length === 1 && row[0] && isHeading.test(row[0]) && /rowspan/i.test(row[0]) === false) {
+      return false
+    }
+    return true
+  })
+  return rows
+}
+
 //'!' starts a header-row
 const findHeaders = function(rows = []) {
   let headers = []
+
+  // is the first-row just a ton of colspan?
+  if (skipSpanRow(rows[0])) {
+    rows.shift()
+  }
+
   let first = rows[0]
-  if (first && first[0] && /^!/.test(first[0]) === true) {
+  if (first && first[0] && first[1] && (/^!/.test(first[0]) || /^!/.test(first[1]))) {
     headers = first.map(h => {
       h = h.replace(/^\! */, '')
       h = cleanText(h)
@@ -99,6 +127,9 @@ const parseTable = function(wiki) {
     .split(/\n/)
     .map(l => l.trim())
   let rows = findRows(lines)
+
+  //remove non-header span rows
+  rows = removeMidSpans(rows)
   //support colspan, rowspan...
   rows = handleSpans(rows)
   //grab the header rows

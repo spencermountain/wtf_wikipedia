@@ -1,5 +1,6 @@
 const sectionMap = require('./_sectionMap')
 const toJSON = require('./toJson')
+const disambig = require('./disambig')
 const setDefaults = require('../_lib/setDefaults')
 const Image = require('../image/Image')
 
@@ -42,6 +43,24 @@ const methods = {
     }
     return this.data.pageID
   },
+  language: function(lang) {
+    if (lang !== undefined) {
+      this.data.lang = lang
+    }
+    return this.data.lang
+  },
+  url: function() {
+    let title = this.title()
+    if (!title) {
+      return null
+    }
+    let lang = this.language() || 'en'
+    let domain = this.data.domain || 'wikipedia.org'
+    // replace blank to underscore
+    title = title.replace(/ /g, '_')
+    title = encodeURIComponent(title)
+    return `https://${lang}.${domain}.org/wiki/${title}`
+  },
   namespace: function(ns) {
     if (ns !== undefined) {
       this.data.namespace = ns
@@ -55,7 +74,7 @@ const methods = {
     return this.data.redirectTo
   },
   isDisambiguation: function() {
-    return this.data.type === 'disambiguation'
+    return disambig(this)
   },
   categories: function(clue) {
     if (typeof clue === 'number') {
@@ -198,6 +217,9 @@ const methods = {
   }
 }
 
+const isArray = function(arr) {
+  return Object.prototype.toString.call(arr) === '[object Array]'
+}
 //add singular-methods, too
 let plurals = [
   'sections',
@@ -207,16 +229,23 @@ let plurals = [
   'references',
   'coordinates',
   'tables',
+  'lists',
   'links',
   'images',
+  'templates',
   'categories'
 ]
 plurals.forEach(fn => {
   let sing = fn.replace(/ies$/, 'y')
-  sing = sing.replace(/e?s$/, '')
+  sing = sing.replace(/oxes$/, 'ox')
+  sing = sing.replace(/s$/, '')
   methods[sing] = function(n) {
     n = n || 0
-    return this[fn](n)
+    let res = this[fn](n)
+    if (isArray(res)) {
+      return res[0]
+    }
+    return res
   }
 })
 
@@ -225,6 +254,8 @@ Object.keys(methods).forEach(k => {
 })
 
 //alias these ones
+Document.prototype.lang = Document.prototype.language
+Document.prototype.ns = Document.prototype.namespace
 Document.prototype.plaintext = Document.prototype.text
 Document.prototype.isDisambig = Document.prototype.isDisambiguation
 Document.prototype.citations = Document.prototype.references

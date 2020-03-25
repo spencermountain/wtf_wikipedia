@@ -1,0 +1,46 @@
+{
+  "name": "wtf-plugin-image",
+  "description": "image plugin for wtf_wikipedia",
+  "version": "0.1.0",
+  "main": "./builds/wtf-plugin-image.js",
+  "unpkg": "./builds/wtf-plugin-image.min.js",
+  "module": "./builds/wtf-plugin-image.mjs",
+  "author": "Spencer Kelly (spencermountain)",
+  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/image#readme",
+  "scripts": {
+    "watch": "amble ./scratch.js",
+    "test": "tape ./tests/**/*.test.js | tap-dancer",
+    "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
+    "build": "rollup -c"
+  },
+  "files": [
+    "builds"
+  ],
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
+  },
+  "dependencies": {
+    "jshashes": "^1.0.8"
+  },
+  "peerDependencies": {
+    "wtf_wikipedia": "^8.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.9.0",
+    "@babel/preset-env": "7.9.0",
+    "rollup": "2.2.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-filesize-check": "0.0.1",
+    "rollup-plugin-json": "4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.0.0",
+    "tap-dancer": "0.2.0",
+    "tape": "4.13.2"
+  },
+  "licence": "MIT"
+}

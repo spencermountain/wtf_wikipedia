@@ -16,6 +16,16 @@
       "description": "grab the wikimedia namespace of the page, if we have it"
     },
     {
+      "name": "language",
+      "returns": "String",
+      "description": "get/set the language of the page"
+    },
+    {
+      "name": "url",
+      "returns": "String",
+      "description": "try to get the url of the article"
+    },
+    {
       "name": "isRedirect",
       "returns": "Boolean",
       "description": "if the page is just a redirect to another page"

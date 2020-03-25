@@ -11,13 +11,13 @@ test('basic-latex', t => {
   var have = wtf('that cat is [[a]] cool dude')
     .sentences(0)
     .latex()
-  var want = 'that cat is \\href{./A}{a} cool dude'
+  var want = 'that cat is \\href{./a}{a} cool dude'
   t.equal(tidy(have), tidy(want), 'link')
 
   have = wtf('that cat is [[ab cd]] cool dude')
     .sentences(0)
     .latex()
-  want = 'that cat is \\href{./Ab_cd}{ab cd} cool dude'
+  want = 'that cat is \\href{./ab_cd}{ab cd} cool dude'
   t.equal(tidy(have), tidy(want), 'link-blank')
 
   have = wtf('that cat is [http://www.wikiversity.org ab cd] cool dude')

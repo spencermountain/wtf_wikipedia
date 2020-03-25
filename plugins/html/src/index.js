@@ -5,6 +5,9 @@ const sentence = require('./04-sentence')
 const link = require('./05-link')
 const infobox = require('./infobox')
 const image = require('./image')
+const list = require('./list')
+const reference = require('./reference')
+const table = require('./table')
 
 const plugin = function(models) {
   models.Doc.prototype.html = doc
@@ -20,6 +23,12 @@ const plugin = function(models) {
   models.Infobox.prototype.html = infobox
 
   models.Link.prototype.html = link
+
+  models.List.prototype.html = list
+
+  models.Reference.prototype.html = reference
+
+  models.Table.prototype.html = table
 
   // models.Template.html = function(opts) {}
 }

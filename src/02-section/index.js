@@ -13,20 +13,18 @@ const parse = {
   startEndTemplates: require('./start-to-end')
 }
 
-const oneSection = function(wiki, data, options) {
-  wiki = parse.startEndTemplates(data, wiki, options)
+const oneSection = function(section, doc) {
+  parse.startEndTemplates(section)
   //parse-out the <ref></ref> tags
-  wiki = parse.references(wiki, data)
+  parse.references(section)
   //parse-out all {{templates}}
-  wiki = parse.templates(wiki, data, options)
+  parse.templates(section)
   // //parse the tables
-  wiki = parse.table(data, wiki)
+  parse.table(section)
   //now parse all double-newlines
-  let res = parse.paragraphs(wiki, options)
-  data.paragraphs = res.paragraphs
-  wiki = res.wiki
-  data = new Section(data, wiki)
-  return data
+  parse.paragraphs(section, doc)
+  section = new Section(section)
+  return section
 }
 
 const removeReferenceSection = function(sections) {
@@ -49,33 +47,33 @@ const removeReferenceSection = function(sections) {
   })
 }
 
-const parseSections = function(wiki, options) {
-  let split = wiki.split(section_reg)
+const parseSections = function(doc) {
   let sections = []
+  let split = doc.wiki.split(section_reg)
   for (let i = 0; i < split.length; i += 2) {
     let heading = split[i - 1] || ''
-    let content = split[i] || ''
-    if (content === '' && heading === '') {
+    let wiki = split[i] || ''
+    if (wiki === '' && heading === '') {
       //usually an empty 'intro' section
       continue
     }
-    let data = {
+    let section = {
       title: '',
       depth: null,
+      wiki: wiki,
       templates: [],
+      tables: [],
       infoboxes: [],
       references: []
     }
     //figure-out title/depth
-    parse.heading(data, heading)
+    parse.heading(section, heading)
     //parse it up
-    let s = oneSection(content, data, options)
+    let s = oneSection(section, doc)
     sections.push(s)
   }
   //remove empty references section
-  sections = removeReferenceSection(sections)
-
-  return sections
+  doc.sections = removeReferenceSection(sections)
 }
 
 module.exports = parseSections

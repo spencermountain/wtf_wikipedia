@@ -208,6 +208,33 @@ test('test-flexible-format', function(t) {
   t.end()
 })
 
+test('covid-1', function(t) {
+  let str = `
+  {{Medical cases chart
+    |numwidth=mw
+  
+    |disease=Green Flu
+    |location=Savannah, GA
+    |outbreak=2009 Green Flu outbreak
+  
+    |recoveries=n
+  
+    |rows=
+    {{Medical cases chart/Row|2009-04-13|||42|||42|firstright1=y|divisor=40|numwidth=mw}}
+    {{Medical cases chart/Row|2009-04-14|||356|||356|+748%|divisor=40|numwidth=mw}}
+    {{Medical cases chart/Row|2009-04-15|||1503|||1,503|+322%|divisor=40|numwidth=mw}}
+    {{Medical cases chart/Row|2009-04-16|57||5915|||5,915|+294%|divisor=40|numwidth=mw}}
+    {{Medical cases chart/Row|2009-04-17|2000||9500|||~9,500|+60.6%|divisor=40|numwidth=mw}}
+    }}
+  `
+  let doc = wtf(str)
+  let obj = doc.templates(0)
+  t.equal(obj.location, 'Savannah, GA', 'location')
+  t.equal(obj.rows.length, 5, '5 rows')
+  t.equal(obj.rows[0].date, '2009-04-13', 'row[0]')
+  t.end()
+})
+
 test('playoff-brackets', function(t) {
   var str = `{{4TeamBracket
   | RD2         = Final

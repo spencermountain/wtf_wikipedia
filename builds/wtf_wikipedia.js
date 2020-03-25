@@ -1,4 +1,4 @@
-/* wtf_wikipedia 8.0.0 MIT */
+/* wtf_wikipedia 8.1.0 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('https')) :
   typeof define === 'function' && define.amd ? define(['https'], factory) :
@@ -37,7 +37,7 @@
   }
 
   function _slicedToArray(arr, i) {
-    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
   }
 
   function _arrayWithHoles(arr) {
@@ -45,10 +45,7 @@
   }
 
   function _iterableToArrayLimit(arr, i) {
-    if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
-      return;
-    }
-
+    if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
     var _arr = [];
     var _n = true;
     var _d = false;
@@ -74,8 +71,25 @@
     return _arr;
   }
 
+  function _unsupportedIterableToArray(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+  }
+
+  function _arrayLikeToArray(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+
+    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+    return arr2;
+  }
+
   function _nonIterableRest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
   var isInterWiki = /(wiktionary|wikinews|wikibooks|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wikipedia|wikimedia|foundation|meta)\.org/;
@@ -156,7 +170,8 @@
   var _01MakeUrl = makeUrl;
 
   //this data-format from mediawiki api is nutso
-  var getResult = function getResult(data) {
+  var getResult = function getResult(data, options) {
+    options = options || {};
     var pages = Object.keys(data.query.pages);
     var docs = pages.map(function (id) {
       var page = data.query.pages[id] || {};
@@ -165,17 +180,18 @@
         return null;
       }
 
-      var text = page.revisions[0]['*']; //us the 'generator' result format, for the random() method
+      var text = page.revisions[0]['*']; // console.log(page.revisions[0])
+      //us the 'generator' result format, for the random() method
 
       if (!text && page.revisions[0].slots) {
         text = page.revisions[0].slots.main['*'];
       }
 
-      var meta = {
+      var meta = Object.assign({}, options, {
         title: page.title,
         pageID: page.pageid,
         namespace: page.ns
-      };
+      });
 
       try {
         return {
@@ -289,433 +305,6 @@
   };
 
   var toJson = toJSON;
-
-  var defaults$2 = {
-    caption: true,
-    alt: true,
-    links: true,
-    thumb: true,
-    url: true
-  }; //
-
-  var toJson$1 = function toJson(img, options) {
-    options = setDefaults_1(options, defaults$2);
-    var json = {
-      file: img.file()
-    };
-
-    if (options.thumb !== false) {
-      json.thumb = img.thumbnail();
-    }
-
-    if (options.url !== false) {
-      json.url = img.url();
-    } //add captions
-
-
-    if (options.caption !== false && img.data.caption) {
-      json.caption = img.caption();
-
-      if (options.links !== false && img.data.caption.links()) {
-        json.links = img.links();
-      }
-    }
-
-    if (options.alt !== false && img.data.alt) {
-      json.alt = img.alt();
-    }
-
-    return json;
-  };
-
-  var toJson_1 = toJson$1;
-
-  var server = 'https://wikipedia.org/wiki/Special:Redirect/file/';
-
-  var encodeTitle = function encodeTitle(file) {
-    var title = file.replace(/^(image|file?)\:/i, ''); //titlecase it
-
-    title = title.charAt(0).toUpperCase() + title.substring(1); //spaces to underscores
-
-    title = title.trim().replace(/ /g, '_');
-    return title;
-  }; //the wikimedia image url is a little silly:
-
-
-  var makeSrc = function makeSrc(file) {
-    var title = encodeTitle(file);
-    title = encodeURIComponent(title);
-    return title;
-  }; //the class for our image generation functions
-
-
-  var Image = function Image(data) {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data
-    });
-  };
-
-  var methods = {
-    file: function file() {
-      return this.data.file || '';
-    },
-    alt: function alt() {
-      var str = this.data.alt || this.data.file || '';
-      str = str.replace(/^(file|image):/i, '');
-      str = str.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
-      return str.replace(/_/g, ' ');
-    },
-    caption: function caption() {
-      if (this.data.caption) {
-        return this.data.caption.text();
-      }
-
-      return '';
-    },
-    links: function links() {
-      if (this.data.caption) {
-        return this.data.caption.links();
-      }
-
-      return [];
-    },
-    url: function url() {
-      return server + makeSrc(this.file());
-    },
-    thumbnail: function thumbnail(size) {
-      size = size || 300;
-      var path = makeSrc(this.file());
-      return server + path + '?width=' + size;
-    },
-    format: function format() {
-      var arr = this.file().split('.');
-
-      if (arr[arr.length - 1]) {
-        return arr[arr.length - 1].toLowerCase();
-      }
-
-      return null;
-    },
-    json: function json(options) {
-      options = options || {};
-      return toJson_1(this, options);
-    },
-    text: function text() {
-      return '';
-    }
-  };
-  Object.keys(methods).forEach(function (k) {
-    Image.prototype[k] = methods[k];
-  });
-  Image.prototype.src = Image.prototype.url;
-  Image.prototype.thumb = Image.prototype.thumbnail;
-  var Image_1 = Image;
-
-  var defaults$3 = {
-    tables: true,
-    lists: true,
-    paragraphs: true
-  }; //
-
-  var Document = function Document(data) {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data
-    });
-  };
-
-  var methods$1 = {
-    title: function title(str) {
-      //use like a setter
-      if (str !== undefined) {
-        this.data.title = str;
-        return str;
-      } //if we have it already
-
-
-      if (this.data.title) {
-        return this.data.title;
-      } //guess the title of this page from first sentence bolding
-
-
-      var guess = null;
-      var sen = this.sentences(0);
-
-      if (sen) {
-        guess = sen.bolds(0);
-      }
-
-      return guess;
-    },
-    pageID: function pageID(id) {
-      if (id !== undefined) {
-        this.data.pageID = id;
-      }
-
-      return this.data.pageID;
-    },
-    namespace: function namespace(ns) {
-      if (ns !== undefined) {
-        this.data.namespace = ns;
-      }
-
-      return this.data.namespace;
-    },
-    isRedirect: function isRedirect() {
-      return this.data.type === 'redirect';
-    },
-    redirectTo: function redirectTo() {
-      return this.data.redirectTo;
-    },
-    isDisambiguation: function isDisambiguation() {
-      return this.data.type === 'disambiguation';
-    },
-    categories: function categories(clue) {
-      if (typeof clue === 'number') {
-        return this.data.categories[clue];
-      }
-
-      return this.data.categories || [];
-    },
-    sections: function sections(clue) {
-      var _this = this;
-
-      var arr = this.data.sections || [];
-      arr.forEach(function (sec) {
-        return sec.doc = _this;
-      }); //grab a specific section, by its title
-
-      if (typeof clue === 'string') {
-        var str = clue.toLowerCase().trim();
-        return arr.find(function (s) {
-          return s.title().toLowerCase() === str;
-        });
-      }
-
-      if (typeof clue === 'number') {
-        return arr[clue];
-      }
-
-      return arr;
-    },
-    paragraphs: function paragraphs(n) {
-      var arr = [];
-      this.data.sections.forEach(function (s) {
-        arr = arr.concat(s.paragraphs());
-      });
-
-      if (typeof n === 'number') {
-        return arr[n];
-      }
-
-      return arr;
-    },
-    paragraph: function paragraph(n) {
-      var arr = this.paragraphs() || [];
-
-      if (typeof n === 'number') {
-        return arr[n];
-      }
-
-      return arr[0];
-    },
-    sentences: function sentences(n) {
-      var arr = [];
-      this.sections().forEach(function (sec) {
-        arr = arr.concat(sec.sentences());
-      });
-
-      if (typeof n === 'number') {
-        return arr[n];
-      }
-
-      return arr;
-    },
-    sentence: function sentence() {
-      return this.sentences(0);
-    },
-    images: function images(clue) {
-      var arr = _sectionMap(this, 'images', null); //grab image from infobox, first
-
-      this.infoboxes().forEach(function (info) {
-        var img = info.image();
-
-        if (img) {
-          arr.unshift(img); //put it at the top
-        }
-      }); //look for 'gallery' templates, too
-
-      this.templates().forEach(function (obj) {
-        if (obj.template === 'gallery') {
-          obj.images = obj.images || [];
-          obj.images.forEach(function (img) {
-            if (img instanceof Image_1 === false) {
-              img = new Image_1(img);
-            }
-
-            arr.push(img);
-          });
-        }
-      });
-
-      if (typeof clue === 'number') {
-        return arr[clue];
-      }
-
-      return arr;
-    },
-    image: function image() {
-      return this.images(0);
-    },
-    links: function links(clue) {
-      return _sectionMap(this, 'links', clue);
-    },
-    interwiki: function interwiki(clue) {
-      return _sectionMap(this, 'interwiki', clue);
-    },
-    lists: function lists(clue) {
-      return _sectionMap(this, 'lists', clue);
-    },
-    tables: function tables(clue) {
-      return _sectionMap(this, 'tables', clue);
-    },
-    templates: function templates(clue) {
-      return _sectionMap(this, 'templates', clue);
-    },
-    references: function references(clue) {
-      return _sectionMap(this, 'references', clue);
-    },
-    coordinates: function coordinates(clue) {
-      return _sectionMap(this, 'coordinates', clue);
-    },
-    infoboxes: function infoboxes(clue) {
-      var arr = _sectionMap(this, 'infoboxes'); //sort them by biggest-first
-
-      arr = arr.sort(function (a, b) {
-        if (Object.keys(a.data).length > Object.keys(b.data).length) {
-          return -1;
-        }
-
-        return 1;
-      });
-
-      if (typeof clue === 'number') {
-        return arr[clue];
-      }
-
-      return arr;
-    },
-    text: function text(options) {
-      options = setDefaults_1(options, defaults$3); //nah, skip these.
-
-      if (this.isRedirect() === true) {
-        return '';
-      }
-
-      var arr = this.sections().map(function (sec) {
-        return sec.text(options);
-      });
-      return arr.join('\n\n');
-    },
-    json: function json(options) {
-      options = setDefaults_1(options, defaults$3);
-      return toJson(this, options);
-    },
-    debug: function debug() {
-      console.log('\n');
-      this.sections().forEach(function (sec) {
-        var indent = ' - ';
-
-        for (var i = 0; i < sec.depth; i += 1) {
-          indent = ' -' + indent;
-        }
-
-        console.log(indent + (sec.title() || '(Intro)'));
-      });
-      return this;
-    }
-  }; //add singular-methods, too
-
-  var plurals = ['sections', 'infoboxes', 'sentences', 'citations', 'references', 'coordinates', 'tables', 'links', 'images', 'categories'];
-  plurals.forEach(function (fn) {
-    var sing = fn.replace(/ies$/, 'y');
-    sing = sing.replace(/e?s$/, '');
-
-    methods$1[sing] = function (n) {
-      n = n || 0;
-      return this[fn](n);
-    };
-  });
-  Object.keys(methods$1).forEach(function (k) {
-    Document.prototype[k] = methods$1[k];
-  }); //alias these ones
-
-  Document.prototype.plaintext = Document.prototype.text;
-  Document.prototype.isDisambig = Document.prototype.isDisambiguation;
-  Document.prototype.citations = Document.prototype.references;
-  Document.prototype.redirectsTo = Document.prototype.redirectTo;
-  Document.prototype.redirect = Document.prototype.redirectTo;
-  Document.prototype.redirects = Document.prototype.redirectTo;
-  var Document_1 = Document;
-
-  var categories = ['category', //en
-  'abdeeling', //	pdc
-  'bólkur', //	fo
-  'catagóir', //	ga
-  'categori', //	cy
-  'categoria', 'categoria', //	co
-  'categoría', //	es
-  'categorîa', //	lij
-  'categorìa', //	pms
-  'catégorie', 'categorie', 'catègorie', //	frp
-  'category', 'categuria', //	lmo
-  'catigurìa', //	scn
-  'class', //	kw
-  'ẹ̀ka', //	yo
-  'flocc', 'flocc', //	ang
-  'flokkur', 'grup', //	tpi
-  'jamii', //	sw
-  'kaarangay', //	war
-  'kateggoría', //	lad
-  'kategooria', //	et
-  'kategori', //	da
-  'kategorî', //	ku
-  'kategoria', //	eu
-  'kategória', //	hu
-  'kategorie', //de
-  'kategoriija', //	se
-  'kategorija', //	sl
-  'kategorio', //	eo
-  'kategoriya', 'kategoriýa', //	tk
-  'kategoriye', //	diq
-  'kategory', //	fy
-  'kategorya', //	tl
-  'kateqoriya', //	az
-  'katiguriya', //	qu
-  'klad', //	vo
-  'luokka', 'ñemohenda', //	gn
-  'roinn', //-seòrsa	gd
-  'ronney', //	gv
-  'rummad', //	br
-  'setensele', //	nso
-  'sokajy', //	mg
-  'sumut', // atassuseq	kl
-  'thể', // loại	vi
-  'turkum', //	uz
-  'категорија', 'категория', //	ru
-  'категорія', //	uk
-  'катэгорыя', 'төркем', //	tt
-  'קטגוריה', //	he
-  'تصنيف', 'تۈر', //	ug
-  'رده', 'श्रेणी', 'श्रेणी', //	hi
-  'বিষয়শ্রেণী', //	bn
-  'หมวดหมู่', //	th
-  '분류', //	ko
-  '분류', //ko
-  '分类' //	za
-  //--
-  ];
 
   var disambig = ['dab', //en
   'disamb', //en
@@ -889,6 +478,503 @@
   // 'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ', //shn
   ];
 
+  var i18n = disambig.reduce(function (h, str) {
+    h[str] = true;
+    return h;
+  }, {}); //special disambig-templates en-wikipedia uses
+
+  var d = ' disambiguation';
+  var english = ['dab', 'dab', 'disamb', 'disambig', 'geodis', 'hndis', 'setindex', 'ship index', 'split dab', 'sport index', 'wp disambig', 'disambiguation cleanup', 'airport' + d, 'biology' + d, 'call sign' + d, 'caselaw' + d, 'chinese title' + d, 'genus' + d, 'hospital' + d, 'lake index', 'letter' + d, 'letter-number combination' + d, 'mathematical' + d, 'military unit' + d, 'mountainindex', 'number' + d, 'phonetics' + d, 'place name' + d, 'portal' + d, 'road' + d, 'school' + d, 'species latin name abbreviation' + d, 'species latin name' + d, 'station' + d, 'synagogue' + d, 'taxonomic authority' + d, 'taxonomy' + d].reduce(function (h, str) {
+    h[str] = true;
+    return h;
+  }, {});
+
+  var isDisambig = function isDisambig(doc) {
+    var templates = doc.templates();
+    var found = templates.find(function (obj) {
+      return english.hasOwnProperty(obj.template) || i18n.hasOwnProperty(obj.template);
+    });
+
+    if (found) {
+      return true;
+    } // try 'may refer to' on first line for en-wiki?
+
+
+    var firstLine = doc.sentences(0).text();
+
+    if (firstLine !== null && firstLine[0]) {
+      if (/. may refer to ./i.test(firstLine) === true) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  var disambig$1 = isDisambig;
+
+  var defaults$2 = {
+    caption: true,
+    alt: true,
+    links: true,
+    thumb: true,
+    url: true
+  }; //
+
+  var toJson$1 = function toJson(img, options) {
+    options = setDefaults_1(options, defaults$2);
+    var json = {
+      file: img.file()
+    };
+
+    if (options.thumb !== false) {
+      json.thumb = img.thumbnail();
+    }
+
+    if (options.url !== false) {
+      json.url = img.url();
+    } //add captions
+
+
+    if (options.caption !== false && img.data.caption) {
+      json.caption = img.caption();
+
+      if (options.links !== false && img.data.caption.links()) {
+        json.links = img.links();
+      }
+    }
+
+    if (options.alt !== false && img.data.alt) {
+      json.alt = img.alt();
+    }
+
+    return json;
+  };
+
+  var toJson_1 = toJson$1;
+
+  var server = 'https://wikipedia.org/wiki/Special:Redirect/file/';
+
+  var encodeTitle = function encodeTitle(file) {
+    var title = file.replace(/^(image|file?)\:/i, ''); //titlecase it
+
+    title = title.charAt(0).toUpperCase() + title.substring(1); //spaces to underscores
+
+    title = title.trim().replace(/ /g, '_');
+    return title;
+  }; //the wikimedia image url is a little silly:
+
+
+  var makeSrc = function makeSrc(file) {
+    var title = encodeTitle(file);
+    title = encodeURIComponent(title);
+    return title;
+  }; //the class for our image generation functions
+
+
+  var Image = function Image(data) {
+    Object.defineProperty(this, 'data', {
+      enumerable: false,
+      value: data
+    });
+  };
+
+  var methods = {
+    file: function file() {
+      return this.data.file || '';
+    },
+    alt: function alt() {
+      var str = this.data.alt || this.data.file || '';
+      str = str.replace(/^(file|image):/i, '');
+      str = str.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
+      return str.replace(/_/g, ' ');
+    },
+    caption: function caption() {
+      if (this.data.caption) {
+        return this.data.caption.text();
+      }
+
+      return '';
+    },
+    links: function links() {
+      if (this.data.caption) {
+        return this.data.caption.links();
+      }
+
+      return [];
+    },
+    url: function url() {
+      return server + makeSrc(this.file());
+    },
+    thumbnail: function thumbnail(size) {
+      size = size || 300;
+      var path = makeSrc(this.file());
+      return server + path + '?width=' + size;
+    },
+    format: function format() {
+      var arr = this.file().split('.');
+
+      if (arr[arr.length - 1]) {
+        return arr[arr.length - 1].toLowerCase();
+      }
+
+      return null;
+    },
+    json: function json(options) {
+      options = options || {};
+      return toJson_1(this, options);
+    },
+    text: function text() {
+      return '';
+    }
+  };
+  Object.keys(methods).forEach(function (k) {
+    Image.prototype[k] = methods[k];
+  });
+  Image.prototype.src = Image.prototype.url;
+  Image.prototype.thumb = Image.prototype.thumbnail;
+  var Image_1 = Image;
+
+  var defaults$3 = {
+    tables: true,
+    lists: true,
+    paragraphs: true
+  }; //
+
+  var Document = function Document(data) {
+    Object.defineProperty(this, 'data', {
+      enumerable: false,
+      value: data
+    });
+  };
+
+  var methods$1 = {
+    title: function title(str) {
+      //use like a setter
+      if (str !== undefined) {
+        this.data.title = str;
+        return str;
+      } //if we have it already
+
+
+      if (this.data.title) {
+        return this.data.title;
+      } //guess the title of this page from first sentence bolding
+
+
+      var guess = null;
+      var sen = this.sentences(0);
+
+      if (sen) {
+        guess = sen.bolds(0);
+      }
+
+      return guess;
+    },
+    pageID: function pageID(id) {
+      if (id !== undefined) {
+        this.data.pageID = id;
+      }
+
+      return this.data.pageID;
+    },
+    language: function language(lang) {
+      if (lang !== undefined) {
+        this.data.lang = lang;
+      }
+
+      return this.data.lang;
+    },
+    url: function url() {
+      var title = this.title();
+
+      if (!title) {
+        return null;
+      }
+
+      var lang = this.language() || 'en';
+      var domain = this.data.domain || 'wikipedia.org'; // replace blank to underscore
+
+      title = title.replace(/ /g, '_');
+      title = encodeURIComponent(title);
+      return "https://".concat(lang, ".").concat(domain, ".org/wiki/").concat(title);
+    },
+    namespace: function namespace(ns) {
+      if (ns !== undefined) {
+        this.data.namespace = ns;
+      }
+
+      return this.data.namespace;
+    },
+    isRedirect: function isRedirect() {
+      return this.data.type === 'redirect';
+    },
+    redirectTo: function redirectTo() {
+      return this.data.redirectTo;
+    },
+    isDisambiguation: function isDisambiguation() {
+      return disambig$1(this);
+    },
+    categories: function categories(clue) {
+      if (typeof clue === 'number') {
+        return this.data.categories[clue];
+      }
+
+      return this.data.categories || [];
+    },
+    sections: function sections(clue) {
+      var _this = this;
+
+      var arr = this.data.sections || [];
+      arr.forEach(function (sec) {
+        return sec.doc = _this;
+      }); //grab a specific section, by its title
+
+      if (typeof clue === 'string') {
+        var str = clue.toLowerCase().trim();
+        return arr.find(function (s) {
+          return s.title().toLowerCase() === str;
+        });
+      }
+
+      if (typeof clue === 'number') {
+        return arr[clue];
+      }
+
+      return arr;
+    },
+    paragraphs: function paragraphs(n) {
+      var arr = [];
+      this.data.sections.forEach(function (s) {
+        arr = arr.concat(s.paragraphs());
+      });
+
+      if (typeof n === 'number') {
+        return arr[n];
+      }
+
+      return arr;
+    },
+    paragraph: function paragraph(n) {
+      var arr = this.paragraphs() || [];
+
+      if (typeof n === 'number') {
+        return arr[n];
+      }
+
+      return arr[0];
+    },
+    sentences: function sentences(n) {
+      var arr = [];
+      this.sections().forEach(function (sec) {
+        arr = arr.concat(sec.sentences());
+      });
+
+      if (typeof n === 'number') {
+        return arr[n];
+      }
+
+      return arr;
+    },
+    sentence: function sentence() {
+      return this.sentences(0);
+    },
+    images: function images(clue) {
+      var arr = _sectionMap(this, 'images', null); //grab image from infobox, first
+
+      this.infoboxes().forEach(function (info) {
+        var img = info.image();
+
+        if (img) {
+          arr.unshift(img); //put it at the top
+        }
+      }); //look for 'gallery' templates, too
+
+      this.templates().forEach(function (obj) {
+        if (obj.template === 'gallery') {
+          obj.images = obj.images || [];
+          obj.images.forEach(function (img) {
+            if (img instanceof Image_1 === false) {
+              img = new Image_1(img);
+            }
+
+            arr.push(img);
+          });
+        }
+      });
+
+      if (typeof clue === 'number') {
+        return arr[clue];
+      }
+
+      return arr;
+    },
+    image: function image() {
+      return this.images(0);
+    },
+    links: function links(clue) {
+      return _sectionMap(this, 'links', clue);
+    },
+    interwiki: function interwiki(clue) {
+      return _sectionMap(this, 'interwiki', clue);
+    },
+    lists: function lists(clue) {
+      return _sectionMap(this, 'lists', clue);
+    },
+    tables: function tables(clue) {
+      return _sectionMap(this, 'tables', clue);
+    },
+    templates: function templates(clue) {
+      return _sectionMap(this, 'templates', clue);
+    },
+    references: function references(clue) {
+      return _sectionMap(this, 'references', clue);
+    },
+    coordinates: function coordinates(clue) {
+      return _sectionMap(this, 'coordinates', clue);
+    },
+    infoboxes: function infoboxes(clue) {
+      var arr = _sectionMap(this, 'infoboxes'); //sort them by biggest-first
+
+      arr = arr.sort(function (a, b) {
+        if (Object.keys(a.data).length > Object.keys(b.data).length) {
+          return -1;
+        }
+
+        return 1;
+      });
+
+      if (typeof clue === 'number') {
+        return arr[clue];
+      }
+
+      return arr;
+    },
+    text: function text(options) {
+      options = setDefaults_1(options, defaults$3); //nah, skip these.
+
+      if (this.isRedirect() === true) {
+        return '';
+      }
+
+      var arr = this.sections().map(function (sec) {
+        return sec.text(options);
+      });
+      return arr.join('\n\n');
+    },
+    json: function json(options) {
+      options = setDefaults_1(options, defaults$3);
+      return toJson(this, options);
+    },
+    debug: function debug() {
+      console.log('\n');
+      this.sections().forEach(function (sec) {
+        var indent = ' - ';
+
+        for (var i = 0; i < sec.depth; i += 1) {
+          indent = ' -' + indent;
+        }
+
+        console.log(indent + (sec.title() || '(Intro)'));
+      });
+      return this;
+    }
+  };
+
+  var isArray$1 = function isArray(arr) {
+    return Object.prototype.toString.call(arr) === '[object Array]';
+  }; //add singular-methods, too
+
+
+  var plurals = ['sections', 'infoboxes', 'sentences', 'citations', 'references', 'coordinates', 'tables', 'lists', 'links', 'images', 'templates', 'categories'];
+  plurals.forEach(function (fn) {
+    var sing = fn.replace(/ies$/, 'y');
+    sing = sing.replace(/oxes$/, 'ox');
+    sing = sing.replace(/s$/, '');
+
+    methods$1[sing] = function (n) {
+      n = n || 0;
+      var res = this[fn](n);
+
+      if (isArray$1(res)) {
+        return res[0];
+      }
+
+      return res;
+    };
+  });
+  Object.keys(methods$1).forEach(function (k) {
+    Document.prototype[k] = methods$1[k];
+  }); //alias these ones
+
+  Document.prototype.lang = Document.prototype.language;
+  Document.prototype.ns = Document.prototype.namespace;
+  Document.prototype.plaintext = Document.prototype.text;
+  Document.prototype.isDisambig = Document.prototype.isDisambiguation;
+  Document.prototype.citations = Document.prototype.references;
+  Document.prototype.redirectsTo = Document.prototype.redirectTo;
+  Document.prototype.redirect = Document.prototype.redirectTo;
+  Document.prototype.redirects = Document.prototype.redirectTo;
+  var Document_1 = Document;
+
+  var categories = ['category', //en
+  'abdeeling', //	pdc
+  'bólkur', //	fo
+  'catagóir', //	ga
+  'categori', //	cy
+  'categoria', 'categoria', //	co
+  'categoría', //	es
+  'categorîa', //	lij
+  'categorìa', //	pms
+  'catégorie', 'categorie', 'catègorie', //	frp
+  'category', 'categuria', //	lmo
+  'catigurìa', //	scn
+  'class', //	kw
+  'ẹ̀ka', //	yo
+  'flocc', 'flocc', //	ang
+  'flokkur', 'grup', //	tpi
+  'jamii', //	sw
+  'kaarangay', //	war
+  'kateggoría', //	lad
+  'kategooria', //	et
+  'kategori', //	da
+  'kategorî', //	ku
+  'kategoria', //	eu
+  'kategória', //	hu
+  'kategorie', //de
+  'kategoriija', //	se
+  'kategorija', //	sl
+  'kategorio', //	eo
+  'kategoriya', 'kategoriýa', //	tk
+  'kategoriye', //	diq
+  'kategory', //	fy
+  'kategorya', //	tl
+  'kateqoriya', //	az
+  'katiguriya', //	qu
+  'klad', //	vo
+  'luokka', 'ñemohenda', //	gn
+  'roinn', //-seòrsa	gd
+  'ronney', //	gv
+  'rummad', //	br
+  'setensele', //	nso
+  'sokajy', //	mg
+  'sumut', // atassuseq	kl
+  'thể', // loại	vi
+  'turkum', //	uz
+  'категорија', 'категория', //	ru
+  'категорія', //	uk
+  'катэгорыя', 'төркем', //	tt
+  'קטגוריה', //	he
+  'تصنيف', 'تۈر', //	ug
+  'رده', 'श्रेणी', 'श्रेणी', //	hi
+  'বিষয়শ্রেণী', //	bn
+  'หมวดหมู่', //	th
+  '분류', //	ko
+  '분류', //ko
+  '分类' //	za
+  //--
+  ];
+
   var images = ['file', //en
   'image', //en
   'चित्र', //img
@@ -1020,7 +1106,7 @@
 
   // and then manually on March 2020
 
-  var i18n = {
+  var i18n$1 = {
     categories: categories,
     disambig: disambig,
     images: images,
@@ -1585,16 +1671,475 @@
 
   };
 
-  //so we have to whitelist allowable interwiki links
+  var wp = '.wikipedia.org/wiki/$1';
+  var wm = '.wikimedia.org/wiki/$1';
+  var w = 'www.';
+  var interwiki = {
+    acronym: w + 'acronymfinder.com/$1.html',
+    advisory: 'advisory' + wm,
+    advogato: w + 'advogato.org/$1',
+    aew: 'wiki.arabeyes.org/$1',
+    appropedia: w + 'appropedia.org/$1',
+    aquariumwiki: w + 'theaquariumwiki.com/$1',
+    arborwiki: 'localwiki.org/ann-arbor/$1',
+    arxiv: 'arxiv.org/abs/$1',
+    atmwiki: w + 'otterstedt.de/wiki/index.php/$1',
+    baden: w + 'stadtwiki-baden-baden.de/wiki/$1/',
+    battlestarwiki: 'en.battlestarwiki.org/wiki/$1',
+    bcnbio: 'historiapolitica.bcn.cl/resenas_parlamentarias/wiki/$1',
+    beacha: w + 'beachapedia.org/$1',
+    betawiki: 'translatewiki.net/wiki/$1',
+    bibcode: 'adsabs.harvard.edu/abs/$1',
+    bibliowiki: 'wikilivres.org/wiki/$1',
+    bluwiki: 'bluwiki.com/go/$1',
+    blw: 'britainloves' + wp,
+    botwiki: 'botwiki.sno.cc/wiki/$1',
+    boxrec: w + 'boxrec.com/media/index.php?$1',
+    brickwiki: w + 'brickwiki.info/wiki/$1',
+    bugzilla: 'bugzilla.wikimedia.org/show_bug.cgi?id=$1',
+    bulba: 'bulbapedia.bulbagarden.net/wiki/$1',
+    c: 'commons' + wm,
+    c2: 'c2.com/cgi/wiki?$1',
+    c2find: 'c2.com/cgi/wiki?FindPage&value=$1',
+    cache: w + 'google.com/search?q=cache:$1',
+    ĉej: 'esperanto.blahus.cz/cxej/vikio/index.php/$1',
+    cellwiki: 'cell.wikia.com/wiki/$1',
+    centralwikia: 'community.wikia.com/wiki/$1',
+    chej: 'esperanto.blahus.cz/cxej/vikio/index.php/$1',
+    choralwiki: w + 'cpdl.org/wiki/index.php/$1',
+    citizendium: 'en.citizendium.org/wiki/$1',
+    ckwiss: w + 'ck-wissen.de/ckwiki/index.php?title=$1',
+    comixpedia: w + 'comixpedia.org/index.php?title=$1',
+    commons: 'commons' + wm,
+    communityscheme: 'community.schemewiki.org/?c=s&key=$1',
+    communitywiki: 'communitywiki.org/$1',
+    comune: 'rete.comuni-italiani.it/wiki/$1',
+    creativecommons: 'creativecommons.org/licenses/$1',
+    creativecommonswiki: 'wiki.creativecommons.org/$1',
+    cxej: 'esperanto.blahus.cz/cxej/vikio/index.php/$1',
+    dcc: w + 'dccwiki.com/$1',
+    dcdatabase: 'dc.wikia.com/$1',
+    dcma: 'christian-morgenstern.de/dcma/index.php?title=$1',
+    debian: 'wiki.debian.org/$1',
+    delicious: w + 'delicious.com/tag/$1',
+    devmo: 'developer.mozilla.org/en/docs/$1',
+    dictionary: w + 'dict.org/bin/Dict?Database=*&Form=Dict1&Strategy=*&Query=$1',
+    dict: w + 'dict.org/bin/Dict?Database=*&Form=Dict1&Strategy=*&Query=$1',
+    disinfopedia: 'sourcewatch.org/index.php/$1',
+    distributedproofreaders: w + 'pgdp.net/wiki/$1',
+    distributedproofreadersca: w + 'pgdpcanada.net/wiki/index.php/$1',
+    dmoz: 'curlie.org/$1',
+    dmozs: 'curlie.org/search?q=$1',
+    doi: 'doi.org/$1',
+    donate: 'donate' + wm,
+    doom_wiki: 'doom.wikia.com/wiki/$1',
+    download: 'releases.wikimedia.org/$1',
+    dbdump: 'dumps.wikimedia.org/$1/latest/',
+    dpd: 'lema.rae.es/dpd/?key=$1',
+    drae: 'dle.rae.es/?w=$1',
+    dreamhost: 'wiki.dreamhost.com/index.php/$1',
+    drumcorpswiki: w + 'drumcorpswiki.com/index.php/$1',
+    dwjwiki: w + 'suberic.net/cgi-bin/dwj/wiki.cgi?$1',
+    eĉei: w + 'ikso.net/cgi-bin/wiki.pl?$1',
+    ecoreality: w + 'EcoReality.org/wiki/$1',
+    ecxei: w + 'ikso.net/cgi-bin/wiki.pl?$1',
+    elibre: 'enciclopedia.us.es/index.php/$1',
+    emacswiki: w + 'emacswiki.org/emacs?$1',
+    encyc: 'encyc.org/wiki/$1',
+    energiewiki: w + 'netzwerk-energieberater.de/wiki/index.php/$1',
+    englyphwiki: 'en.glyphwiki.org/wiki/$1',
+    enkol: 'enkol.pl/$1',
+    eokulturcentro: 'esperanto.toulouse.free.fr/nova/wikini/wakka.php?wiki=$1',
+    esolang: 'esolangs.org/wiki/$1',
+    etherpad: 'etherpad.wikimedia.org/$1',
+    ethnologue: w + 'ethnologue.com/language/$1',
+    ethnologuefamily: w + 'ethnologue.com/show_family.asp?subid=$1',
+    evowiki: 'wiki.cotch.net/index.php/$1',
+    exotica: w + 'exotica.org.uk/wiki/$1',
+    fanimutationwiki: 'wiki.animutationportal.com/index.php/$1',
+    fedora: 'fedoraproject.org/wiki/$1',
+    finalfantasy: 'finalfantasy.wikia.com/wiki/$1',
+    finnix: w + 'finnix.org/$1',
+    flickruser: w + 'flickr.com/people/$1',
+    flickrphoto: w + 'flickr.com/photo.gne?id=$1',
+    floralwiki: w + 'floralwiki.co.uk/wiki/$1',
+    foldoc: 'foldoc.org/$1',
+    foundation: 'foundation' + wm,
+    foundationsite: 'wikimediafoundation.org/$1',
+    foxwiki: 'fox.wikis.com/wc.dll?Wiki~$1',
+    freebio: 'freebiology.org/wiki/$1',
+    freebsdman: w + 'FreeBSD.org/cgi/man.cgi?apropos=1&query=$1',
+    freeculturewiki: 'wiki.freeculture.org/index.php/$1',
+    freedomdefined: 'freedomdefined.org/$1',
+    freefeel: 'freefeel.org/wiki/$1',
+    freekiwiki: 'wiki.freegeek.org/index.php/$1',
+    // freenode: 'irc://irc.freenode.net/$1',
+    freesoft: 'directory.fsf.org/wiki/$1',
+    ganfyd: 'ganfyd.org/index.php?title=$1',
+    gardenology: w + 'gardenology.org/wiki/$1',
+    gausswiki: 'gauss.ffii.org/$1',
+    gentoo: 'wiki.gentoo.org/wiki/$1',
+    genwiki: 'wiki.genealogy.net/index.php/$1',
+    gerrit: 'gerrit.wikimedia.org/r/$1',
+    git: 'gerrit.wikimedia.org/g/$1',
+    google: w + 'google.com/search?q=$1',
+    googledefine: w + 'google.com/search?q=define:$1',
+    googlegroups: 'groups.google.com/groups?q=$1',
+    guildwarswiki: 'wiki.guildwars.com/wiki/$1',
+    guildwiki: 'guildwars.wikia.com/wiki/$1',
+    guc: 'tools.wmflabs.org/guc/?user=$1',
+    gucprefix: 'tools.wmflabs.org/guc/?isPrefixPattern=1&src=rc&user=$1',
+    gutenberg: w + 'gutenberg.org/etext/$1',
+    gutenbergwiki: w + 'gutenberg.org/wiki/$1',
+    hackerspaces: 'hackerspaces.org/wiki/$1',
+    h2wiki: 'halowiki.net/p/$1',
+    hammondwiki: w + 'dairiki.org/HammondWiki/index.php3?$1',
+    hdl: 'hdl.handle.net/$1',
+    heraldik: 'heraldik-wiki.de/wiki/$1',
+    heroeswiki: 'heroeswiki.com/$1',
+    horizonlabs: 'horizon.wikimedia.org/$1',
+    hrwiki: w + 'hrwiki.org/index.php/$1',
+    hrfwiki: 'fanstuff.hrwiki.org/index.php/$1',
+    hupwiki: 'wiki.hup.hu/index.php/$1',
+    iarchive: 'archive.org/details/$1',
+    imdbname: w + 'imdb.com/name/nm$1/',
+    imdbtitle: w + 'imdb.com/title/tt$1/',
+    imdbcompany: w + 'imdb.com/company/co$1/',
+    imdbcharacter: w + 'imdb.com/character/ch$1/',
+    incubator: 'incubator' + wm,
+    infosecpedia: 'infosecpedia.org/wiki/$1',
+    infosphere: 'theinfosphere.org/$1',
+    // irc: 'irc://irc.freenode.net/$1',
+    // ircs: 'ircs://irc.freenode.net/$1',
+    // ircrc: 'irc://irc.wikimedia.org/$1',
+    // rcirc: 'irc://irc.wikimedia.org/$1',
+    'iso639-3': 'iso639-3.sil.org/code/$1',
+    issn: w + 'worldcat.org/issn/$1',
+    iuridictum: 'iuridictum.pecina.cz/w/$1',
+    jaglyphwiki: 'glyphwiki.org/wiki/$1',
+    jefo: 'esperanto-jeunes.org/wiki/$1',
+    jerseydatabase: 'jerseydatabase.com/wiki.php?id=$1',
+    jira: 'jira.toolserver.org/browse/$1',
+    jspwiki: w + 'ecyrd.com/JSPWiki/Wiki.jsp?page=$1',
+    jstor: w + 'jstor.org/journals/$1',
+    kamelo: 'kamelopedia.mormo.org/index.php/$1',
+    karlsruhe: 'ka.stadtwiki.net/$1',
+    kinowiki: 'kino.skripov.com/index.php/$1',
+    komicawiki: 'wiki.komica.org/?$1',
+    kontuwiki: 'kontu.wiki/$1',
+    wikitech: 'wikitech' + wm,
+    libreplanet: 'libreplanet.org/wiki/$1',
+    linguistlist: 'linguistlist.org/forms/langs/LLDescription.cfm?code=$1',
+    linuxwiki: w + 'linuxwiki.de/$1',
+    linuxwikide: w + 'linuxwiki.de/$1',
+    liswiki: 'liswiki.org/wiki/$1',
+    literateprograms: 'en.literateprograms.org/$1',
+    livepedia: w + 'livepedia.gr/index.php?title=$1',
+    localwiki: 'localwiki.org/$1',
+    lojban: 'mw.lojban.org/papri/$1',
+    lostpedia: 'lostpedia.wikia.com/wiki/$1',
+    lqwiki: 'wiki.linuxquestions.org/wiki/$1',
+    luxo: 'tools.wmflabs.org/guc/?user=$1',
+    mail: 'lists.wikimedia.org/mailman/listinfo/$1',
+    mailarchive: 'lists.wikimedia.org/pipermail/$1',
+    mariowiki: w + 'mariowiki.com/$1',
+    marveldatabase: w + 'marveldatabase.com/wiki/index.php/$1',
+    meatball: 'meatballwiki.org/wiki/$1',
+    mw: w + 'mediawiki.org/wiki/$1',
+    mediazilla: 'bugzilla.wikimedia.org/$1',
+    memoryalpha: 'memory-alpha.fandom.com/wiki/$1',
+    metawiki: 'meta' + wm,
+    metawikimedia: 'meta' + wm,
+    metawikipedia: 'meta' + wm,
+    mineralienatlas: w + 'mineralienatlas.de/lexikon/index.php/$1',
+    moinmoin: 'moinmo.in/$1',
+    monstropedia: w + 'monstropedia.org/?title=$1',
+    mosapedia: 'mosapedia.de/wiki/index.php/$1',
+    mozcom: 'mozilla.wikia.com/wiki/$1',
+    mozillawiki: 'wiki.mozilla.org/$1',
+    mozillazinekb: 'kb.mozillazine.org/$1',
+    musicbrainz: 'musicbrainz.org/doc/$1',
+    mediawikiwiki: w + 'mediawiki.org/wiki/$1',
+    mwod: w + 'merriam-webster.com/dictionary/$1',
+    mwot: w + 'merriam-webster.com/thesaurus/$1',
+    nkcells: w + 'nkcells.info/index.php?title=$1',
+    nara: 'catalog.archives.gov/id/$1',
+    nosmoke: 'no-smok.net/nsmk/$1',
+    nost: 'nostalgia.' + wp,
+    nostalgia: 'nostalgia.' + wp,
+    oeis: 'oeis.org/$1',
+    oldwikisource: 'wikisource.org/wiki/$1',
+    olpc: 'wiki.laptop.org/go/$1',
+    omegawiki: w + 'omegawiki.org/Expression:$1',
+    onelook: w + 'onelook.com/?ls=b&w=$1',
+    openlibrary: 'openlibrary.org/$1',
+    openstreetmap: 'wiki.openstreetmap.org/wiki/$1',
+    openwetware: 'openwetware.org/wiki/$1',
+    opera7wiki: 'operawiki.info/$1',
+    organicdesign: w + 'organicdesign.co.nz/$1',
+    orthodoxwiki: 'orthodoxwiki.org/$1',
+    osmwiki: 'wiki.openstreetmap.org/wiki/$1',
+    otrs: 'ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&TicketID=$1',
+    otrswiki: 'otrs-wiki' + wm,
+    ourmedia: w + 'socialtext.net/ourmedia/index.cgi?$1',
+    outreach: 'outreach' + wm,
+    outreachwiki: 'outreach' + wm,
+    owasp: w + 'owasp.org/index.php/$1',
+    panawiki: 'wiki.alairelibre.net/index.php?title=$1',
+    patwiki: 'gauss.ffii.org/$1',
+    personaltelco: 'personaltelco.net/wiki/$1',
+    petscan: 'petscan.wmflabs.org/?psid=$1',
+    phab: 'phabricator.wikimedia.org/$1',
+    phabricator: 'phabricator.wikimedia.org/$1',
+    phwiki: w + 'pocketheaven.com/ph/wiki/index.php?title=$1',
+    phpwiki: 'phpwiki.sourceforge.net/phpwiki/index.php?$1',
+    planetmath: 'planetmath.org/node/$1',
+    pmeg: w + 'bertilow.com/pmeg/$1',
+    pmid: w + 'ncbi.nlm.nih.gov/pubmed/$1?dopt=Abstract',
+    pokewiki: 'pokewiki.de/$1',
+    pokéwiki: 'pokewiki.de/$1',
+    policy: 'policy.wikimedia.org/$1',
+    proofwiki: w + 'proofwiki.org/wiki/$1',
+    pyrev: w + 'mediawiki.org/wiki/Special:Code/pywikipedia/$1',
+    pythoninfo: 'wiki.python.org/moin/$1',
+    pythonwiki: w + 'pythonwiki.de/$1',
+    pywiki: 'c2.com/cgi/wiki?$1',
+    psycle: 'psycle.sourceforge.net/wiki/$1',
+    quality: 'quality' + wm,
+    quarry: 'quarry.wmflabs.org/$1',
+    regiowiki: 'regiowiki.at/wiki/$1',
+    rev: w + 'mediawiki.org/wiki/Special:Code/MediaWiki/$1',
+    revo: 'purl.org/NET/voko/revo/art/$1.html',
+    rfc: 'tools.ietf.org/html/rfc$1',
+    rheinneckar: 'rhein-neckar-wiki.de/$1',
+    robowiki: 'robowiki.net/?$1',
+    rodovid: 'en.rodovid.org/wk/$1',
+    reuterswiki: 'glossary.reuters.com/index.php/$1',
+    rowiki: 'wiki.rennkuckuck.de/index.php/$1',
+    rt: 'rt.wikimedia.org/Ticket/Display.html?id=$1',
+    // rtfm: 'ftp://rtfm.mit.edu/pub/faqs/$1',
+    s23wiki: 's23.org/wiki/$1',
+    scholar: 'scholar.google.com/scholar?q=$1',
+    schoolswp: 'schools-' + wp,
+    scores: 'imslp.org/wiki/$1',
+    scoutwiki: 'en.scoutwiki.org/$1',
+    scramble: w + 'scramble.nl/wiki/index.php?title=$1',
+    seapig: w + 'seapig.org/$1',
+    seattlewiki: 'seattle.wikia.com/wiki/$1',
+    slwiki: 'wiki.secondlife.com/wiki/$1',
+    'semantic-mw': w + 'semantic-mediawiki.org/wiki/$1',
+    senseislibrary: 'senseis.xmp.net/?$1',
+    sharemap: 'sharemap.org/$1',
+    silcode: w + 'sil.org/iso639-3/documentation.asp?id=$1',
+    slashdot: 'slashdot.org/article.pl?sid=$1',
+    sourceforge: 'sourceforge.net/$1',
+    spcom: 'spcom' + wm,
+    species: 'species' + wm,
+    squeak: 'wiki.squeak.org/squeak/$1',
+    stats: 'stats.wikimedia.org/$1',
+    stewardry: 'tools.wmflabs.org/meta/stewardry/?wiki=$1',
+    strategy: 'strategy' + wm,
+    strategywiki: 'strategywiki.org/wiki/$1',
+    sulutil: 'meta.wikimedia.org/wiki/Special:CentralAuth/$1',
+    swtrain: 'train.spottingworld.com/$1',
+    svn: 'svn.wikimedia.org/viewvc/mediawiki/$1?view=log',
+    swinbrain: 'swinbrain.ict.swin.edu.au/wiki/$1',
+    tabwiki: w + 'tabwiki.com/index.php/$1',
+    tclerswiki: 'wiki.tcl.tk/$1',
+    technorati: w + 'technorati.com/search/$1',
+    tenwiki: 'ten.' + wp,
+    testwiki: 'test.' + wp,
+    testwikidata: 'test.wikidata.org/wiki/$1',
+    test2wiki: 'test2.' + wp,
+    tfwiki: 'tfwiki.net/wiki/$1',
+    thelemapedia: w + 'thelemapedia.org/index.php/$1',
+    theopedia: w + 'theopedia.com/$1',
+    thinkwiki: w + 'thinkwiki.org/wiki/$1',
+    ticket: 'ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&TicketNumber=$1',
+    tmbw: 'tmbw.net/wiki/$1',
+    tmnet: w + 'technomanifestos.net/?$1',
+    tmwiki: w + 'EasyTopicMaps.com/?page=$1',
+    toolforge: 'tools.wmflabs.org/$1',
+    toollabs: 'tools.wmflabs.org/$1',
+    tools: 'toolserver.org/$1',
+    tswiki: w + 'mediawiki.org/wiki/Toolserver:$1',
+    translatewiki: 'translatewiki.net/wiki/$1',
+    tviv: 'tviv.org/wiki/$1',
+    tvtropes: w + 'tvtropes.org/pmwiki/pmwiki.php/Main/$1',
+    twiki: 'twiki.org/cgi-bin/view/$1',
+    tyvawiki: w + 'tyvawiki.org/wiki/$1',
+    umap: 'umap.openstreetmap.fr/$1',
+    uncyclopedia: 'en.uncyclopedia.co/wiki/$1',
+    unihan: w + 'unicode.org/cgi-bin/GetUnihanData.pl?codepoint=$1',
+    unreal: 'wiki.beyondunreal.com/wiki/$1',
+    urbandict: w + 'urbandictionary.com/define.php?term=$1',
+    usej: w + 'tejo.org/usej/$1',
+    usemod: w + 'usemod.com/cgi-bin/wiki.pl?$1',
+    usability: 'usability' + wm,
+    utrs: 'utrs.wmflabs.org/appeal.php?id=$1',
+    vikidia: 'fr.vikidia.org/wiki/$1',
+    vlos: 'tusach.thuvienkhoahoc.com/wiki/$1',
+    vkol: 'kol.coldfront.net/thekolwiki/index.php/$1',
+    voipinfo: w + 'voip-info.org/wiki/view/$1',
+    votewiki: 'vote' + wm,
+    werelate: w + 'werelate.org/wiki/$1',
+    wg: 'wg-en.' + wp,
+    wikia: w + 'wikia.com/wiki/w:c:$1',
+    wikiasite: w + 'wikia.com/wiki/w:c:$1',
+    wikiapiary: 'wikiapiary.com/wiki/$1',
+    wikibooks: 'en.wikibooks.org/wiki/$1',
+    wikichristian: w + 'wikichristian.org/index.php?title=$1',
+    wikicities: w + 'wikia.com/wiki/w:$1',
+    wikicity: w + 'wikia.com/wiki/w:c:$1',
+    wikiconference: 'wikiconference.org/wiki/$1',
+    wikidata: w + 'wikidata.org/wiki/$1',
+    wikif1: w + 'wikif1.org/$1',
+    wikifur: 'en.wikifur.com/wiki/$1',
+    wikihow: w + 'wikihow.com/$1',
+    wikiindex: 'wikiindex.org/$1',
+    wikilemon: 'wiki.illemonati.com/$1',
+    wikilivres: 'wikilivres.org/wiki/$1',
+    wikilivresru: 'wikilivres.ru/$1',
+    'wikimac-de': 'apfelwiki.de/wiki/Main/$1',
+    wikimedia: 'foundation' + wm,
+    wikinews: 'en.wikinews.org/wiki/$1',
+    wikinfo: 'wikinfo.org/w/index.php/$1',
+    wikinvest: 'meta.wikimedia.org/wiki/Interwiki_map/discontinued#Wikinvest',
+    wikiotics: 'wikiotics.org/$1',
+    wikipapers: 'wikipapers.referata.com/wiki/$1',
+    wikipedia: 'en.' + wp,
+    wikipediawikipedia: 'en.wikipedia.org/wiki/Wikipedia:$1',
+    wikiquote: 'en.wikiquote.org/wiki/$1',
+    wikisophia: 'wikisophia.org/index.php?title=$1',
+    wikisource: 'en.wikisource.org/wiki/$1',
+    wikispecies: 'species' + wm,
+    wikispot: 'wikispot.org/?action=gotowikipage&v=$1',
+    wikiskripta: w + 'wikiskripta.eu/index.php/$1',
+    labsconsole: 'wikitech' + wm,
+    wikiti: 'wikiti.denglend.net/index.php?title=$1',
+    wikiversity: 'en.wikiversity.org/wiki/$1',
+    wikivoyage: 'en.wikivoyage.org/wiki/$1',
+    betawikiversity: 'beta.wikiversity.org/wiki/$1',
+    wikiwikiweb: 'c2.com/cgi/wiki?$1',
+    wiktionary: 'en.wiktionary.org/wiki/$1',
+    wipipedia: 'wipipedia.org/index.php/$1',
+    wlug: w + 'wlug.org.nz/$1',
+    wmam: 'am' + wm,
+    wmar: w + 'wikimedia.org.ar/wiki/$1',
+    wmat: 'mitglieder.wikimedia.at/$1',
+    wmau: 'wikimedia.org.au/wiki/$1',
+    wmbd: 'bd' + wm,
+    wmbe: 'be' + wm,
+    wmbr: 'br' + wm,
+    wmca: 'ca' + wm,
+    wmch: w + 'wikimedia.ch/$1',
+    wmcl: w + 'wikimediachile.cl/index.php?title=$1',
+    wmcn: 'cn' + wm,
+    wmco: 'co' + wm,
+    wmcz: w + 'wikimedia.cz/web/$1',
+    wmdc: 'wikimediadc.org/wiki/$1',
+    securewikidc: 'secure.wikidc.org/$1',
+    wmde: 'wikimedia.de/wiki/$1',
+    wmdk: 'dk' + wm,
+    wmee: 'ee' + wm,
+    wmec: 'ec' + wm,
+    wmes: w + 'wikimedia.es/wiki/$1',
+    wmet: 'ee' + wm,
+    wmfdashboard: 'outreachdashboard.wmflabs.org/$1',
+    wmfi: 'fi' + wm,
+    wmfr: 'wikimedia.fr/$1',
+    wmge: 'ge' + wm,
+    wmhi: 'hi' + wm,
+    wmhk: 'meta.wikimedia.org/wiki/Wikimedia_Hong_Kong',
+    wmhu: 'wikimedia.hu/wiki/$1',
+    wmid: 'id' + wm,
+    wmil: w + 'wikimedia.org.il/$1',
+    wmin: 'wiki.wikimedia.in/$1',
+    wmit: 'wiki.wikimedia.it/wiki/$1',
+    wmke: 'meta.wikimedia.org/wiki/Wikimedia_Kenya',
+    wmmk: 'mk' + wm,
+    wmmx: 'mx' + wm,
+    wmnl: 'nl' + wm,
+    wmnyc: 'nyc' + wm,
+    wmno: 'no' + wm,
+    'wmpa-us': 'pa-us' + wm,
+    wmph: 'meta.wikimedia.org/wiki/Wikimedia_Philippines',
+    wmpl: 'pl' + wm,
+    wmpt: 'pt' + wm,
+    wmpunjabi: 'punjabi' + wm,
+    wmromd: 'romd' + wm,
+    wmrs: 'rs' + wm,
+    wmru: 'ru' + wm,
+    wmse: 'se' + wm,
+    wmsk: 'wikimedia.sk/$1',
+    wmtr: 'tr' + wm,
+    wmtw: 'wikimedia.tw/wiki/index.php5/$1',
+    wmua: 'ua' + wm,
+    wmuk: 'wikimedia.org.uk/wiki/$1',
+    wmve: 'wikimedia.org.ve/wiki/$1',
+    wmza: 'wikimedia.org.za/wiki/$1',
+    wm2005: 'wikimania2005' + wm,
+    wm2006: 'wikimania2006' + wm,
+    wm2007: 'wikimania2007' + wm,
+    wm2008: 'wikimania2008' + wm,
+    wm2009: 'wikimania2009' + wm,
+    wm2010: 'wikimania2010' + wm,
+    wm2011: 'wikimania2011' + wm,
+    wm2012: 'wikimania2012' + wm,
+    wm2013: 'wikimania2013' + wm,
+    wm2014: 'wikimania2014' + wm,
+    wm2015: 'wikimania2015' + wm,
+    wm2016: 'wikimania2016' + wm,
+    wm2017: 'wikimania2017' + wm,
+    wm2018: 'wikimania2018' + wm,
+    wmania: 'wikimania' + wm,
+    wikimania: 'wikimania' + wm,
+    wmteam: 'wikimaniateam' + wm,
+    wmf: 'foundation' + wm,
+    wmfblog: 'blog.wikimedia.org/$1',
+    wmdeblog: 'blog.wikimedia.de/$1',
+    wookieepedia: 'starwars.wikia.com/wiki/$1',
+    wowwiki: w + 'wowwiki.com/$1',
+    wqy: 'wqy.sourceforge.net/cgi-bin/index.cgi?$1',
+    wurmpedia: 'wurmpedia.com/index.php/$1',
+    viaf: 'viaf.org/viaf/$1',
+    zrhwiki: w + 'zrhwiki.ch/wiki/$1',
+    zum: 'wiki.zum.de/$1',
+    zwiki: w + 'zwiki.org/$1',
+    m: 'meta' + wm,
+    meta: 'meta' + wm,
+    sep11: 'sep11.' + wp,
+    d: w + 'wikidata.org/wiki/$1',
+    minnan: 'zh-min-nan.' + wp,
+    nb: 'no.' + wp,
+    'zh-cfr': 'zh-min-nan.' + wp,
+    'zh-cn': 'zh.' + wp,
+    'zh-tw': 'zh.' + wp,
+    nan: 'zh-min-nan.' + wp,
+    vro: 'fiu-vro.' + wp,
+    cmn: 'zh.' + wp,
+    lzh: 'zh-classical.' + wp,
+    rup: 'roa-rup.' + wp,
+    gsw: 'als.' + wp,
+    'be-tarask': 'be-x-old.' + wp,
+    sgs: 'bat-smg.' + wp,
+    egl: 'eml.' + wp,
+    w: 'en.' + wp,
+    wikt: 'en.wiktionary.org/wiki/$1',
+    q: 'en.wikiquote.org/wiki/$1',
+    b: 'en.wikibooks.org/wiki/$1',
+    n: 'en.wikinews.org/wiki/$1',
+    s: 'en.wikisource.org/wiki/$1',
+    chapter: 'en' + wm,
+    v: 'en.wikiversity.org/wiki/$1',
+    voy: 'en.wikivoyage.org/wiki/$1'
+  };
 
-  var interwikis = ['wiktionary', 'wikinews', 'wikibooks', 'wikiquote', 'wikisource', 'wikispecies', 'wikiversity', 'wikivoyage', 'wikipedia', 'wikimedia', 'foundation', 'meta', 'metawikipedia', 'w', 'wikt', 'n', 'b', 'q', 's', 'v', 'voy', 'wmf', 'c', 'm', 'mw', 'phab', 'd'];
-  var allowed = interwikis.reduce(function (h, wik) {
-    h[wik] = true;
-    return h;
-  }, {}); //add language prefixes too..
+  //so we have to whitelist allowable interwiki links
+  //add language prefixes too..
 
   Object.keys(languages).forEach(function (k) {
-    return allowed[k] = true;
+    interwiki[k] = k + '.wikipedia.org/wiki/$1';
   }); //this is predictably very complicated.
   // https://meta.wikimedia.org/wiki/Help:Interwiki_linking
 
@@ -1611,7 +2156,7 @@
       var site = m[1] || '';
       site = site.toLowerCase(); //only allow interwikis to these specific places
 
-      if (allowed.hasOwnProperty(site) === false) {
+      if (interwiki.hasOwnProperty(site) === false) {
         return obj;
       }
 
@@ -1622,19 +2167,20 @@
     return obj;
   };
 
-  var interwiki = parseInterwiki;
+  var interwiki$1 = parseInterwiki;
 
   var ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i;
   var external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
-  var link_reg = /\[\[(.{0,160}?)\]\]([a-z']+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]'s"
+  var link_reg = /\[\[(.{0,160}?)\]\]([a-z]+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]s"
 
   var external_links = function external_links(links, str) {
-    str.replace(external_link, function (all, protocol, link, text) {
+    str.replace(external_link, function (raw, protocol, link, text) {
       text = text || '';
       links.push({
         type: 'external',
         site: protocol + link,
-        text: text.trim()
+        text: text.trim(),
+        raw: raw
       });
       return text;
     });
@@ -1643,7 +2189,7 @@
 
   var internal_links = function internal_links(links, str) {
     //regular links
-    str.replace(link_reg, function (_, s, apostrophe) {
+    str.replace(link_reg, function (raw, s, suffix) {
       var txt = null; //make a copy of original
 
       var link = s;
@@ -1666,31 +2212,36 @@
       if (link.match(ignore_links)) {
         return s;
       } //kill off just these just-anchor links [[#history]]
-
-
-      if (link.match(/^#/i)) {
-        return s;
-      } //remove anchors from end [[toronto#history]]
+      // if (link.match(/^#/i)) {
+      //   console.log(s)
+      //   return s
+      // }
+      //remove anchors from end [[toronto#history]]
 
 
       var obj = {
-        page: link
+        page: link,
+        raw: raw
       };
       obj.page = obj.page.replace(/#(.*)/, function (a, b) {
         obj.anchor = b;
         return '';
       }); //grab any fr:Paris parts
 
-      obj = interwiki(obj);
+      obj = interwiki$1(obj);
+
+      if (obj.wiki) {
+        obj.type = 'interwiki';
+      }
 
       if (txt !== null && txt !== obj.page) {
         obj.text = txt;
       } //finally, support [[link]]'s apostrophe
 
 
-      if (apostrophe === "'s") {
+      if (suffix) {
         obj.text = obj.text || obj.page;
-        obj.text += apostrophe;
+        obj.text += suffix.trim();
       } //titlecase it, if necessary
 
 
@@ -1725,7 +2276,7 @@
 
   var parse = parse_links;
 
-  var REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + i18n.redirects.join('|') + ') *?(\\[\\[.{2,180}?\\]\\])', 'i');
+  var REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + i18n$1.redirects.join('|') + ') *?(\\[\\[.{2,180}?\\]\\])', 'i');
 
   var isRedirect = function isRedirect(wiki) {
     //too long to be a redirect?
@@ -1752,43 +2303,6 @@
     parse: parse$1
   };
 
-  var getReg = function getReg(templates) {
-    var allowedCharacters = '(\\|[a-z, =]*?)*?';
-    return new RegExp('\\{\\{ ?(' + templates.join('|') + ')' + allowedCharacters + ' ?\\}\\}', 'i');
-  };
-
-  var templateReg = getReg(i18n.disambig); //special disambig-templates en-wikipedia uses
-
-  var d = ' disambiguation';
-  var english = ['airport', 'biology' + d, 'call sign' + d, 'caselaw' + d, 'chinese title' + d, 'dab', 'dab', 'disamb', 'disambig', 'disambiguation cleanup', 'genus' + d, 'geodis', 'hndis', 'hospital' + d, 'lake index', 'letter' + d, 'letter-number combination' + d, 'mathematical' + d, 'military unit' + d, 'mountainindex', 'number' + d, 'phonetics' + d, 'place name' + d, 'place name' + d, 'portal' + d, 'road' + d, 'school' + d, 'setindex', 'ship index', 'species latin name abbreviation' + d, 'species latin name' + d, 'split dab', 'sport index', 'station' + d, 'synagogue' + d, 'taxonomic authority' + d, 'taxonomy' + d, 'wp disambig'];
-  var enDisambigs = getReg(english);
-
-  var isDisambig = function isDisambig(wiki) {
-    //test for {{disambiguation}} templates
-    if (templateReg.test(wiki) === true) {
-      return true;
-    } //more english-centric disambiguation templates
-    //{{hndis}}, etc
-
-
-    if (enDisambigs.test(wiki) === true) {
-      return true;
-    } //try 'may refer to' on first line for en-wiki?
-    // let firstLine = wiki.match(/^.+?\n/);
-    // if (firstLine !== null && firstLine[0]) {
-    //   if (/ may refer to/i.test(firstLine) === true) {
-    //     return true;
-    //   }
-    // }
-
-
-    return false;
-  };
-
-  var disambig$1 = {
-    isDisambig: isDisambig
-  };
-
   //okay, i know you're not supposed to regex html, but...
   //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
   //these are things we throw-away
@@ -1813,7 +2327,7 @@
 
     wiki = wiki.replace(/ ?<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?> ?/g, ' '); //<sub>, </sub>
 
-    wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s)[ \/]?> ?/g, ' '); //<abbr>, </abbr>
+    wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s|small)[ \/]?> ?/g, ' '); //<abbr>, </abbr>
 
     wiki = wiki.replace(/ ?<[ \/]?h[0-9][ \/]?> ?/g, ' '); //<h2>, </h2>
 
@@ -1824,8 +2338,9 @@
 
   var kill_xml_1 = kill_xml;
 
-  function preProcess(r, wiki, options) {
-    //remove comments
+  function preProcess(doc) {
+    var wiki = doc.wiki; //remove comments
+
     wiki = wiki.replace(/<!--[\s\S]{0,2000}?-->/g, '');
     wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, ''); //signitures
 
@@ -1847,7 +2362,7 @@
     wiki = wiki.replace(/\([,;: ]+?\)/g, ''); //these templates just screw things up, too
 
     wiki = wiki.replace(/{{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '');
-    return wiki;
+    doc.wiki = wiki;
   }
 
   var preProcess_1 = preProcess;
@@ -2353,9 +2868,15 @@
       return '';
     }
   };
-  var helpers_1 = helpers;
+
+  var defaults$6 = {
+    type: 'internal'
+  };
 
   var Link = function Link(data) {
+    data = data || {};
+    data = Object.assign({}, defaults$6, data); // console.log(data)
+
     Object.defineProperty(this, 'data', {
       enumerable: false,
       value: data
@@ -2363,26 +2884,103 @@
   };
 
   var methods$3 = {
-    text: function text() {
+    text: function text(str) {
+      if (str !== undefined) {
+        this.data.text = str;
+      }
+
       return this.data.text;
     },
     json: function json() {
-      return this.data;
+      var obj = {
+        text: this.text(),
+        type: this.type()
+      };
+
+      if (obj.type === 'internal') {
+        obj.page = this.page();
+      } else if (obj.type === 'interwiki') {
+        obj.wiki = this.wiki();
+      } else {
+        obj.site = this.site();
+      }
+
+      var anchor = this.anchor();
+
+      if (anchor) {
+        obj.anchor = anchor;
+      }
+
+      return obj;
     },
-    page: function page() {
+    page: function page(str) {
+      if (str !== undefined) {
+        this.data.page = str;
+      }
+
       return this.data.page;
     },
-    anchor: function anchor() {
-      return this.data.anchor;
+    anchor: function anchor(str) {
+      if (str !== undefined) {
+        this.data.anchor = str;
+      }
+
+      return this.data.anchor || '';
     },
-    wiki: function wiki() {
+    wiki: function wiki(str) {
+      if (str !== undefined) {
+        this.data.wiki = str;
+      }
+
       return this.data.wiki;
     },
-    site: function site() {
+    type: function type(str) {
+      if (str !== undefined) {
+        this.data.type = str;
+      }
+
+      return this.data.type;
+    },
+    site: function site(str) {
+      if (str !== undefined) {
+        this.data.site = str;
+      }
+
       return this.data.site;
     },
-    type: function type() {
-      return this.data.type;
+    // create a url for any type of link
+    href: function href() {
+      var type = this.type();
+
+      if (type === 'external') {
+        return this.site();
+      }
+
+      var page = this.page();
+      page = page.replace(/ /g, '_');
+      page = encodeURIComponent(page);
+      var url = '';
+
+      if (type === 'interwiki') {
+        var wiki = this.wiki();
+        url = 'https://en.wikipedia.org/wiki/$1';
+
+        if (interwiki.hasOwnProperty(wiki)) {
+          url = 'http://' + interwiki[this.wiki()];
+        }
+
+        url = url.replace(/\$1/g, page);
+      } else {
+        //internal link
+        url = "./".concat(this.page());
+      } // add anchor on the end
+
+
+      if (this.anchor()) {
+        url += '#' + this.anchor();
+      }
+
+      return url;
     }
   };
   Object.keys(methods$3).forEach(function (k) {
@@ -2390,29 +2988,25 @@
   });
   var Link_1 = Link;
 
-  var cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]', 'gi'); //return only rendered text of wiki links
+  // const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]', 'gi')
+  //return only rendered text of wiki links
 
   var removeLinks = function removeLinks(line) {
-    // categories, images, files
-    line = line.replace(cat_reg, ''); // [[Common links]]
-
-    line = line.replace(/\[\[:?([^|]{1,80}?)\]\](\w{0,5})/g, '$1$2'); // [[File:with|Size]]
-
-    line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$1'); // [[Replaced|Links]]
-
-    line = line.replace(/\[\[:?(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$2$3'); // External links
-
-    line = line.replace(/\[(https?|news|ftp|mailto|gopher|irc):\/\/[^\]\| ]{4,1500}([\| ].*?)?\]/g, '$2');
+    // [[File:with|Size]]
+    line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$1');
     return line;
   };
 
-  var getLinks = function getLinks(wiki, data) {
+  var getLinks = function getLinks(data) {
+    var wiki = data.text;
     var links = parse(wiki) || [];
     data.links = links.map(function (link) {
+      wiki = wiki.replace(link.raw, link.text || link.page || '');
+      delete link.raw;
       return new Link_1(link);
     });
     wiki = removeLinks(wiki);
-    return wiki;
+    data.text = wiki;
   };
 
   var link = getLinks;
@@ -2462,7 +3056,7 @@
   var formatting_1 = formatting;
 
   var isNumber = /^[0-9,.]+$/;
-  var defaults$6 = {
+  var defaults$7 = {
     text: true,
     links: true,
     formatting: true,
@@ -2471,7 +3065,7 @@
   };
 
   var toJSON$2 = function toJSON(s, options) {
-    options = setDefaults_1(options, defaults$6);
+    options = setDefaults_1(options, defaults$7);
     var data = {};
     var text = s.text();
 
@@ -2489,7 +3083,9 @@
     }
 
     if (options.links && s.links().length > 0) {
-      data.links = s.links();
+      data.links = s.links().map(function (l) {
+        return l.json();
+      });
     }
 
     if (options.formatting && s.data.fmt) {
@@ -2601,7 +3197,7 @@
   var Sentence_1 = Sentence;
 
   //these are used for the sentence-splitter
-  var _abbreviations = ['ad', 'adj', 'adm', 'adv', 'al', 'alta', 'approx', 'apr', 'apt', 'arc', 'ariz', 'assn', 'asst', 'atty', 'aug', 'ave', 'ba', 'bc', 'bl', 'bldg', 'blvd', 'brig', 'bros', 'ca', 'cal', 'calif', 'capt', 'cca', 'cg', 'cl', 'cm', 'cmdr', 'co', 'col', 'colo', 'comdr', 'conn', 'corp', 'cpl', 'cres', 'ct', 'cyn', 'dak', 'dec', 'def', 'dept', 'det', 'dg', 'dist', 'dl', 'dm', 'dr', 'ea', 'eg', 'eng', 'esp', 'esq', 'est', 'etc', 'ex', 'exp', 'feb', 'fem', 'fig', 'fl oz', 'fl', 'fla', 'fm', 'fr', 'ft', 'fy', 'ga', 'gal', 'gb', 'gen', 'gov', 'hg', 'hon', 'hr', 'hrs', 'hwy', 'hz', 'ia', 'ida', 'ie', 'inc', 'inf', 'jan', 'jd', 'jr', 'jul', 'jun', 'kan', 'kans', 'kb', 'kg', 'km', 'kmph', 'lat', 'lb', 'lit', 'llb', 'lm', 'lng', 'lt', 'ltd', 'lx', 'ma', 'maj', 'mar', 'masc', 'mb', 'md', 'messrs', 'mg', 'mi', 'min', 'minn', 'misc', 'mister', 'ml', 'mlle', 'mm', 'mme', 'mph', 'mps', 'mr', 'mrs', 'ms', 'mstr', 'mt', 'neb', 'nebr', 'nee', 'nov', 'oct', 'okla', 'ont', 'op', 'ord', 'oz', 'pa', 'pd', 'penn', 'penna', 'phd', 'pl', 'pp', 'pref', 'prob', 'prof', 'pron', 'ps', 'psa', 'pseud', 'pt', 'pvt', 'qt', 'que', 'rb', 'rd', 'rep', 'reps', 'res', 'rev', 'sask', 'sec', 'sen', 'sens', 'sep', 'sept', 'sfc', 'sgt', 'sir', 'situ', 'sq ft', 'sq', 'sr', 'ss', 'st', 'supt', 'surg', 'tb', 'tbl', 'tbsp', 'tce', 'td', 'tel', 'temp', 'tenn', 'tex', 'tsp', 'univ', 'usafa', 'ut', 'va', 'vb', 'ver', 'vet', 'vitro', 'vivo', 'vol', 'vs', 'vt', 'wis', 'wisc', 'wr', 'wy', 'wyo', 'yb', 'µg'];
+  var _abbreviations = ['ad', 'adj', 'adm', 'adv', 'al', 'alta', 'approx', 'apr', 'apt', 'arc', 'ariz', 'assn', 'asst', 'atty', 'aug', 'ave', 'ba', 'bc', 'bl', 'bldg', 'blvd', 'brig', 'bros', 'ca', 'cal', 'calif', 'capt', 'cca', 'cg', 'cl', 'cm', 'cmdr', 'co', 'col', 'colo', 'comdr', 'conn', 'corp', 'cpl', 'cres', 'ct', 'cyn', 'dak', 'dec', 'def', 'dept', 'det', 'dg', 'dist', 'dl', 'dm', 'dr', 'ea', 'eg', 'eng', 'esp', 'esq', 'est', 'etc', 'ex', 'exp', 'feb', 'fem', 'fig', 'fl oz', 'fl', 'fla', 'fm', 'fr', 'ft', 'fy', 'ga', 'gal', 'gb', 'gen', 'gov', 'hg', 'hon', 'hr', 'hrs', 'hwy', 'hz', 'ia', 'ida', 'ie', 'inc', 'inf', 'jan', 'jd', 'jr', 'jul', 'jun', 'kan', 'kans', 'kb', 'kg', 'km', 'kmph', 'lat', 'lb', 'lit', 'llb', 'lm', 'lng', 'lt', 'ltd', 'lx', 'ma', 'maj', 'mar', 'masc', 'mb', 'md', 'messrs', 'mg', 'mi', 'min', 'minn', 'misc', 'mister', 'ml', 'mlle', 'mm', 'mme', 'mph', 'mps', 'mr', 'mrs', 'ms', 'mstr', 'mt', 'neb', 'nebr', 'nee', 'no', 'nov', 'oct', 'okla', 'ont', 'op', 'ord', 'oz', 'pa', 'pd', 'penn', 'penna', 'phd', 'pl', 'pp', 'pref', 'prob', 'prof', 'pron', 'ps', 'psa', 'pseud', 'pt', 'pvt', 'qt', 'que', 'rb', 'rd', 'rep', 'reps', 'res', 'rev', 'sask', 'sec', 'sen', 'sens', 'sep', 'sept', 'sfc', 'sgt', 'sir', 'situ', 'sq ft', 'sq', 'sr', 'ss', 'st', 'supt', 'surg', 'tb', 'tbl', 'tbsp', 'tce', 'td', 'tel', 'temp', 'tenn', 'tex', 'tsp', 'univ', 'usafa', 'ut', 'va', 'vb', 'ver', 'vet', 'vitro', 'vivo', 'vol', 'vs', 'vt', 'wis', 'wisc', 'wr', 'wy', 'wyo', 'yb', 'µg'];
 
   //@spencermountain MIT
   //(Rule-based sentence boundary segmentation) - chop given text into its proper sentences.
@@ -2740,49 +3336,42 @@
 
     line = line.replace(/\( *(; ?)+/g, '('); //dangling punctuation
 
-    line = helpers_1.trim_whitespace(line);
+    line = helpers.trim_whitespace(line);
     line = line.replace(/ +\.$/, '.');
     return line;
-  }
+  } // returns one sentence object
 
-  function oneSentence(str) {
-    var obj = {}; //pull-out the [[links]]
 
-    str = link(str, obj);
-    obj.text = postprocess(str); // let links = parseLinks(str)
-    // if (links) {
-    // obj.links = links
-    // }
-    //pull-out the bolds and ''italics''
+  function fromText(str) {
+    var obj = {
+      text: str
+    }; //pull-out the [[links]]
+
+    link(obj);
+    obj.text = postprocess(obj.text); //pull-out the bolds and ''italics''
 
     obj = formatting_1(obj); //pull-out things like {{start date|...}}
-    // obj = templates(obj);
 
     return new Sentence_1(obj);
-  } //turn a text into an array of sentence objects
+  } //used for consistency with other class-definitions
 
 
-  var parseSentences = function parseSentences(wiki) {
-    var sentences = parse$2(wiki);
-    sentences = sentences.map(oneSentence); //remove :indented first line, as it is often a disambiguation
+  var byParagraph = function byParagraph(paragraph) {
+    // array of texts
+    var sentences = parse$2(paragraph.wiki); // sentence objects
+
+    sentences = sentences.map(fromText); //remove :indented first line, as it is often a disambiguation
 
     if (sentences[0] && sentences[0].text() && sentences[0].text()[0] === ':') {
       sentences = sentences.slice(1);
     }
 
-    return sentences;
-  }; //used for consistency with other class-definitions
-
-
-  var addSentences = function addSentences(wiki, data) {
-    data.sentences = parseSentences(wiki);
-    return wiki;
+    paragraph.sentences = sentences;
   };
 
   var _04Sentence = {
-    parseSentences: parseSentences,
-    oneSentence: oneSentence,
-    addSentences: addSentences
+    fromText: fromText,
+    byParagraph: byParagraph
   };
 
   //remove the top/bottom off the template
@@ -2933,7 +3522,7 @@
 
   var _03Cleanup = cleanup;
 
-  var parseSentence = _04Sentence.oneSentence; // most templates just want plaintext...
+  var parseSentence = _04Sentence.fromText; // most templates just want plaintext...
 
   var makeFormat = function makeFormat(str, fmt) {
     var s = parseSentence(str); //support various output formats
@@ -3036,7 +3625,7 @@
   });
   var Reference_1 = Reference;
 
-  var parseSentence$1 = _04Sentence.oneSentence; //structured Cite templates - <ref>{{Cite..</ref>
+  var parseSentence$1 = _04Sentence.fromText; //structured Cite templates - <ref>{{Cite..</ref>
 
   var hasCitation = function hasCitation(str) {
     return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false;
@@ -3061,8 +3650,9 @@
   }; // parse <ref></ref> xml tags
 
 
-  var parseRefs = function parseRefs(wiki, data) {
+  var parseRefs = function parseRefs(section) {
     var references = [];
+    var wiki = section.wiki;
     wiki = wiki.replace(/ ?<ref>([\s\S]{0,1800}?)<\/ref> ?/gi, function (a, tmpl) {
       if (hasCitation(tmpl)) {
         var obj = parseCitation(tmpl);
@@ -3099,44 +3689,48 @@
 
     wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ \/]?> ?/g, ' '); //<samp name="asd">
 
-    data.references = references.map(function (r) {
+    section.references = references.map(function (r) {
       return new Reference_1(r);
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var reference = parseRefs;
 
-  var parseSentence$2 = _04Sentence.oneSentence;
+  var parseSentence$2 = _04Sentence.fromText;
   var heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/; //interpret depth, title of headings like '==See also=='
 
-  var parseHeading = function parseHeading(data, str) {
-    var heading = str.match(heading_reg);
+  var parseHeading = function parseHeading(section, str) {
+    var m = str.match(heading_reg);
 
-    if (!heading) {
-      data.title = '';
-      data.depth = 0;
-      return data;
+    if (!m) {
+      section.title = '';
+      section.depth = 0;
+      return section;
     }
 
-    var title = heading[2] || '';
+    var title = m[2] || '';
     title = parseSentence$2(title).text(); //amazingly, you can see inline {{templates}} in this text, too
     //... let's not think about that now.
 
     title = title.replace(/\{\{.+?\}\}/, ''); //same for references (i know..)
 
-    title = reference(title, {}); //trim leading/trailing whitespace
+    var obj = {
+      wiki: title
+    };
+    reference(obj);
+    title = obj.wiki; //trim leading/trailing whitespace
 
-    title = helpers_1.trim_whitespace(title);
+    title = helpers.trim_whitespace(title);
     var depth = 0;
 
-    if (heading[1]) {
-      depth = heading[1].length - 2;
+    if (m[1]) {
+      depth = m[1].length - 2;
     }
 
-    data.title = title;
-    data.depth = depth;
-    return data;
+    section.title = title;
+    section.depth = depth;
+    return section;
   };
 
   var heading = parseHeading;
@@ -3208,18 +3802,17 @@
   var getColSpan = /.*colspan *?= *?["']?([0-9]+)["']?[ \|]*/; //colspans stretch ←left/right→
 
   var doColSpan = function doColSpan(rows) {
-    rows.forEach(function (row, r) {
+    rows.forEach(function (row) {
       row.forEach(function (str, c) {
         var m = str.match(getColSpan);
 
         if (m !== null) {
           var num = parseInt(m[1], 10); //...maybe if num is so big, and centered, remove it?
-
-          if (num > 3) {
-            rows[r] = [];
-            return;
-          } //splice-in n empty columns right here
-
+          // if (num > 3) {
+          //   rows[r] = []
+          //   return
+          // }
+          //splice-in n empty columns right here
 
           row[c] = str.replace(getColSpan, '');
 
@@ -3262,14 +3855,15 @@
 
 
   var handleSpans = function handleSpans(rows) {
-    rows = doRowSpan(rows);
     rows = doColSpan(rows);
+    rows = doRowSpan(rows);
     return rows;
   };
 
   var _spans = handleSpans;
 
-  var parseSentence$3 = _04Sentence.oneSentence; //common ones
+  var parseSentence$3 = _04Sentence.fromText;
+  var isHeading = /^!/; //common ones
 
   var headings = {
     name: true,
@@ -3296,15 +3890,45 @@
     str = str.replace(/^!/, '');
     str = str.trim();
     return str;
+  };
+
+  var skipSpanRow = function skipSpanRow(row) {
+    var len = row.length;
+    var hasTxt = row.filter(function (str) {
+      return str;
+    }).length; //does it have 3 empty spaces?
+
+    if (len - hasTxt > 3) {
+      return true;
+    }
+
+    return false;
+  }; //remove non-header span rows
+
+
+  var removeMidSpans = function removeMidSpans(rows) {
+    rows = rows.filter(function (row) {
+      if (row.length === 1 && row[0] && isHeading.test(row[0]) && /rowspan/i.test(row[0]) === false) {
+        return false;
+      }
+
+      return true;
+    });
+    return rows;
   }; //'!' starts a header-row
 
 
   var findHeaders = function findHeaders() {
     var rows = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var headers = [];
+    var headers = []; // is the first-row just a ton of colspan?
+
+    if (skipSpanRow(rows[0])) {
+      rows.shift();
+    }
+
     var first = rows[0];
 
-    if (first && first[0] && /^!/.test(first[0]) === true) {
+    if (first && first[0] && first[1] && (/^!/.test(first[0]) || /^!/.test(first[1]))) {
       headers = first.map(function (h) {
         h = h.replace(/^\! */, '');
         h = cleanText(h);
@@ -3374,7 +3998,9 @@
     .split(/\n/).map(function (l) {
       return l.trim();
     });
-    var rows = _findRows(lines); //support colspan, rowspan...
+    var rows = _findRows(lines); //remove non-header span rows
+
+    rows = removeMidSpans(rows); //support colspan, rowspan...
 
     rows = _spans(rows); //grab the header rows
 
@@ -3419,7 +4045,7 @@
 
   var toJson_1$1 = toJson$4;
 
-  var defaults$7 = {};
+  var defaults$8 = {};
 
   var Table = function Table(data) {
     Object.defineProperty(this, 'data', {
@@ -3461,7 +4087,7 @@
       return rows;
     },
     json: function json(options) {
-      options = setDefaults_1(options, defaults$7);
+      options = setDefaults_1(options, defaults$8);
       return toJson_1$1(this.data, options);
     },
     text: function text() {
@@ -3478,8 +4104,9 @@
   var openReg = /^\s*{\|/;
   var closeReg = /^\s*\|}/; //tables can be recursive, so looky-here.
 
-  var findTables = function findTables(section, wiki) {
+  var findTables = function findTables(section) {
     var list = [];
+    var wiki = section.wiki;
     var lines = wiki.split('\n');
     var stack = [];
 
@@ -3525,17 +4152,17 @@
       section.tables = tables;
     }
 
-    return wiki;
+    section.wiki = wiki;
   };
 
   var table = findTables;
 
-  var defaults$8 = {
+  var defaults$9 = {
     sentences: true
   };
 
   var toJson$5 = function toJson(p, options) {
-    options = setDefaults_1(options, defaults$8);
+    options = setDefaults_1(options, defaults$9);
     var data = {};
 
     if (options.sentences === true) {
@@ -3549,7 +4176,7 @@
 
   var toJson_1$2 = toJson$5;
 
-  var defaults$9 = {
+  var defaults$a = {
     sentences: true,
     lists: true,
     images: true
@@ -3624,7 +4251,7 @@
       return arr || [];
     },
     text: function text(options) {
-      options = setDefaults_1(options, defaults$9);
+      options = setDefaults_1(options, defaults$a);
       var str = this.sentences().map(function (s) {
         return s.text(options);
       }).join(' ');
@@ -3634,7 +4261,7 @@
       return str;
     },
     json: function json(options) {
-      options = setDefaults_1(options, defaults$9);
+      options = setDefaults_1(options, defaults$a);
       return toJson_1$2(this, options);
     }
   };
@@ -3647,7 +4274,10 @@
   //find all the pairs of '[[...[[..]]...]]' in the text
   //used to properly root out recursive template calls, [[.. [[...]] ]]
   //basically just adds open tags, and subtracts closing tags
-  function find_recursive(opener, closer, text) {
+  var opener = '[';
+  var closer = ']';
+
+  function nested_find(text) {
     var out = [];
     var last = [];
     var chars = text.split('');
@@ -3700,12 +4330,12 @@
     return out;
   }
 
-  var recursive_match = find_recursive;
+  var nested_find_1 = nested_find;
 
-  var parseSentence$4 = _04Sentence.oneSentence; //regexes:
+  var parseSentence$4 = _04Sentence.fromText; //regexes:
 
-  var isFile = new RegExp('(' + i18n.images.join('|') + '):', 'i');
-  var fileNames = "(".concat(i18n.images.join('|'), ")");
+  var isFile = new RegExp('(' + i18n$1.images.join('|') + '):', 'i');
+  var fileNames = "(".concat(i18n$1.images.join('|'), ")");
   var file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'iu'); //style directives for Wikipedia:Extended_image_syntax
 
   var imgLayouts = {
@@ -3770,25 +4400,28 @@
     return null;
   };
 
-  var parseImages = function parseImages(matches, r, wiki) {
+  var parseImages = function parseImages(paragraph) {
+    var wiki = paragraph.wiki; //parse+remove scary '[[ [[]] ]]' stuff
+
+    var matches = nested_find_1(wiki);
     matches.forEach(function (s) {
       if (isFile.test(s) === true) {
-        r.images = r.images || [];
+        paragraph.images = paragraph.images || [];
         var img = oneImage(s);
 
         if (img) {
-          r.images.push(img);
+          paragraph.images.push(img);
         }
 
         wiki = wiki.replace(s, '');
       }
     });
-    return wiki;
+    paragraph.wiki = wiki;
   };
 
   var image = parseImages;
 
-  var defaults$a = {};
+  var defaults$b = {};
 
   var toText = function toText(list, options) {
     return list.map(function (s) {
@@ -3829,7 +4462,7 @@
       return links;
     },
     json: function json(options) {
-      options = setDefaults_1(options, defaults$a);
+      options = setDefaults_1(options, defaults$b);
       return this.lines().map(function (s) {
         return s.json(options);
       });
@@ -3843,7 +4476,7 @@
   });
   var List_1 = List;
 
-  var parseSentence$5 = _04Sentence.oneSentence;
+  var parseSentence$5 = _04Sentence.fromText;
   var list_reg = /^[#\*:;\|]+/;
   var bullet_reg = /^\*+[^:,\|]{4}/;
   var number_reg = /^ ?\#[^:,\|]{4}/;
@@ -3896,7 +4529,8 @@
     return sub;
   };
 
-  var parseList = function parseList(wiki, data) {
+  var parseList = function parseList(paragraph) {
+    var wiki = paragraph.wiki;
     var lines = wiki.split(/\n/g); // lines = lines.filter(l => has_word.test(l));
 
     var lists = [];
@@ -3915,48 +4549,45 @@
       }
     }
 
-    data.lists = lists.map(function (l) {
+    paragraph.lists = lists.map(function (l) {
       return new List_1(l);
     });
-    wiki = theRest.join('\n');
-    return wiki;
+    paragraph.wiki = theRest.join('\n');
   };
 
   var list = parseList;
 
-  var parseSentences$1 = _04Sentence.addSentences;
+  var parseSentences = _04Sentence.byParagraph;
   var twoNewLines = /\r?\n\r?\n/;
   var parse$5 = {
     image: image,
     list: list
   };
 
-  var parseParagraphs = function parseParagraphs(wiki) {
-    var pList = wiki.split(twoNewLines); //don't create empty paragraphs
+  var parseParagraphs = function parseParagraphs(section) {
+    var wiki = section.wiki;
+    var paragraphs = wiki.split(twoNewLines); //don't create empty paragraphs
 
-    pList = pList.filter(function (p) {
+    paragraphs = paragraphs.filter(function (p) {
       return p && p.trim().length > 0;
     });
-    pList = pList.map(function (str) {
-      var data = {
+    paragraphs = paragraphs.map(function (str) {
+      var paragraph = {
+        wiki: str,
         lists: [],
         sentences: [],
         images: []
       }; //parse the lists
 
-      str = parse$5.list(str, data); //parse+remove scary '[[ [[]] ]]' stuff
+      parse$5.list(paragraph); // parse images
 
-      var matches = recursive_match('[', ']', str); // parse images
+      parse$5.image(paragraph); //parse the sentences
 
-      str = parse$5.image(matches, data, str); //parse the sentences
-
-      parseSentences$1(str, data);
-      return new Paragraph_1(data);
+      parseSentences(paragraph);
+      return new Paragraph_1(paragraph);
     });
-    return {
-      paragraphs: pList,
-      wiki: wiki
-    };
+    section.wiki = wiki;
+    section.paragraphs = paragraphs;
   };
 
   var _03Paragraph = parseParagraphs;
@@ -4023,7 +4654,7 @@
       return arr;
     },
     image: function image() {
-      var s = this.get('image') || this.get('image2');
+      var s = this.get('image') || this.get('image2') || this.get('logo');
 
       if (!s) {
         return null;
@@ -4202,7 +4833,8 @@
   'pp', 'pp-move-indef', 'pp-semi-indef', 'pp-vandalism', //https://en.wikipedia.org/wiki/Template:R
   'r', //out-of-scope still - https://en.wikipedia.org/wiki/Template:Tag
   '#tag', //https://en.wikipedia.org/wiki/Template:Navboxes
-  'navboxes', 'reflist', 'ref-list', 'div col', 'authority control', //https://en.wikipedia.org/wiki/Template:Citation_needed
+  'navboxes', 'reflist', 'ref-list', 'div col', // 'authority control',
+  //https://en.wikipedia.org/wiki/Template:Citation_needed
   // 'better source',
   // 'citation needed',
   // 'clarify',
@@ -4223,7 +4855,7 @@
   }, {});
   var _ignore = ignore$1;
 
-  var i18nReg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i'); //some looser ones
+  var i18nReg = new RegExp('^(subst.)?(' + i18n$1.infoboxes.join('|') + ')[: \n]', 'i'); //some looser ones
 
   var startReg = /^infobox /i;
   var endReg = / infobox$/i;
@@ -5063,7 +5695,13 @@
     //https://en.wikipedia.org/wiki/Template:Val
     val: function val(tmpl) {
       var obj = parse$3(tmpl, ['number', 'uncertainty']);
-      var str = obj.number || ''; //prefix/suffix
+      var num = obj.number;
+
+      if (num && Number(num)) {
+        num = Number(num).toLocaleString();
+      }
+
+      var str = num || ''; //prefix/suffix
 
       if (obj.p) {
         str = obj.p + str;
@@ -5451,6 +6089,7 @@
   inline$1['tooltip'] = inline$1.abbr;
   inline$1['abbrv'] = inline$1.abbr;
   inline$1['define'] = inline$1.abbr;
+  inline$1['cvt'] = inline$1.convert;
   var misc$1 = inline$1;
 
   var formatting$1 = Object.assign({}, format, lists, misc$1);
@@ -5726,8 +6365,21 @@
       list.push(obj);
       return '';
     },
-    sfn: ['author', 'year', 'location'],
+    //https://en.wikipedia.org/wiki/Template:Sfn
+    sfn: function sfn(tmpl, list, alias) {
+      var order = ['author', 'year', 'location'];
+      var obj = parse$3(tmpl, order);
+
+      if (alias) {
+        obj.name = obj.template;
+        obj.teplate = alias;
+      }
+
+      list.push(obj);
+      return '';
+    },
     audio: ['file', 'text', 'type'],
+    rp: ['page'],
     'spoken wikipedia': function spokenWikipedia(tmpl, list) {
       var order = ['file', 'date'];
       var obj = parse$3(tmpl, order);
@@ -6190,7 +6842,7 @@
   'germany'], ['🇩🇯', 'dji', 'djibouti'], ['🇩🇰', 'dnk', 'denmark'], ['🇩🇲', 'dma', 'dominica'], ['🇩🇴', 'dom', 'dominican republic'], ['🇩🇿', 'dza', 'algeria'], ['🇪🇨', 'ecu', 'ecuador'], ['🇪🇪', 'est', 'estonia'], ['🇪🇬', 'egy', 'egypt'], ['🇪🇭', 'esh', 'western sahara'], ['🇪🇷', 'eri', 'eritrea'], ['🇪🇸', 'esp', 'spain'], ['🇪🇹', 'eth', 'ethiopia'], ['🇫🇮', 'fin', 'finland'], ['🇫🇯', 'fji', 'fiji'], ['🇫🇰', 'flk', 'falkland islands (malvinas)'], ['🇫🇲', 'fsm', 'micronesia'], ['🇫🇴', 'fro', 'faroe islands'], ['🇫🇷', 'fra', 'france'], ['🇬🇦', 'gab', 'gabon'], ['🇬🇧', 'gbr', 'united kingdom'], ['🇬🇩', 'grd', 'grenada'], // ['🇬🇪', 'geo', 'georgia'],
   ['🇬🇫', 'guf', 'french guiana'], ['🇬🇬', 'ggy', 'guernsey'], ['🇬🇭', 'gha', 'ghana'], ['🇬🇮', 'gib', 'gibraltar'], ['🇬🇱', 'grl', 'greenland'], ['🇬🇲', 'gmb', 'gambia'], ['🇬🇳', 'gin', 'guinea'], ['🇬🇵', 'glp', 'guadeloupe'], ['🇬🇶', 'gnq', 'equatorial guinea'], ['🇬🇷', 'grc', 'greece'], ['🇬🇸', 'sgs', 'south georgia'], ['🇬🇹', 'gtm', 'guatemala'], ['🇬🇺', 'gum', 'guam'], ['🇬🇼', 'gnb', 'guinea-bissau'], ['🇬🇾', 'guy', 'guyana'], ['🇭🇰', 'hkg', 'hong kong'], ['🇭🇲', 'hmd', 'heard island and mcdonald islands'], ['🇭🇳', 'hnd', 'honduras'], ['🇭🇷', 'hrv', 'croatia'], ['🇭🇹', 'hti', 'haiti'], ['🇭🇺', 'hun', 'hungary'], ['🇮🇩', 'idn', 'indonesia'], ['🇮🇪', 'irl', 'ireland'], ['🇮🇱', 'isr', 'israel'], ['🇮🇲', 'imn', 'isle of man'], ['🇮🇳', 'ind', 'india'], ['🇮🇴', 'iot', 'british indian ocean territory'], ['🇮🇶', 'irq', 'iraq'], ['🇮🇷', 'irn', 'iran'], ['🇮🇸', 'isl', 'iceland'], ['🇮🇹', 'ita', 'italy'], ['🇯🇪', 'jey', 'jersey'], ['🇯🇲', 'jam', 'jamaica'], ['🇯🇴', 'jor', 'jordan'], ['🇯🇵', 'jpn', 'japan'], ['🇰🇪', 'ken', 'kenya'], ['🇰🇬', 'kgz', 'kyrgyzstan'], ['🇰🇭', 'khm', 'cambodia'], ['🇰🇮', 'kir', 'kiribati'], ['🇰🇲', 'com', 'comoros'], ['🇰🇳', 'kna', 'saint kitts and nevis'], ['🇰🇵', 'prk', 'north korea'], ['🇰🇷', 'kor', 'south korea'], ['🇰🇼', 'kwt', 'kuwait'], ['🇰🇾', 'cym', 'cayman islands'], ['🇰🇿', 'kaz', 'kazakhstan'], ['🇱🇦', 'lao', "lao people's democratic republic"], ['🇱🇧', 'lbn', 'lebanon'], ['🇱🇨', 'lca', 'saint lucia'], ['🇱🇮', 'lie', 'liechtenstein'], ['🇱🇰', 'lka', 'sri lanka'], ['🇱🇷', 'lbr', 'liberia'], ['🇱🇸', 'lso', 'lesotho'], ['🇱🇹', 'ltu', 'lithuania'], ['🇱🇺', 'lux', 'luxembourg'], ['🇱🇻', 'lva', 'latvia'], ['🇱🇾', 'lby', 'libya'], ['🇲🇦', 'mar', 'morocco'], ['🇲🇨', 'mco', 'monaco'], ['🇲🇩', 'mda', 'moldova'], ['🇲🇪', 'mne', 'montenegro'], ['🇲🇫', 'maf', 'saint martin (french part)'], ['🇲🇬', 'mdg', 'madagascar'], ['🇲🇭', 'mhl', 'marshall islands'], ['🇲🇰', 'mkd', 'macedonia'], ['🇲🇱', 'mli', 'mali'], ['🇲🇲', 'mmr', 'myanmar'], ['🇲🇳', 'mng', 'mongolia'], ['🇲🇴', 'mac', 'macao'], ['🇲🇵', 'mnp', 'northern mariana islands'], ['🇲🇶', 'mtq', 'martinique'], ['🇲🇷', 'mrt', 'mauritania'], ['🇲🇸', 'msr', 'montserrat'], ['🇲🇹', 'mlt', 'malta'], ['🇲🇺', 'mus', 'mauritius'], ['🇲🇻', 'mdv', 'maldives'], ['🇲🇼', 'mwi', 'malawi'], ['🇲🇽', 'mex', 'mexico'], ['🇲🇾', 'mys', 'malaysia'], ['🇲🇿', 'moz', 'mozambique'], ['🇳🇦', 'nam', 'namibia'], ['🇳🇨', 'ncl', 'new caledonia'], ['🇳🇪', 'ner', 'niger'], ['🇳🇫', 'nfk', 'norfolk island'], ['🇳🇬', 'nga', 'nigeria'], ['🇳🇮', 'nic', 'nicaragua'], ['🇳🇱', 'nld', 'netherlands'], ['🇳🇴', 'nor', 'norway'], ['🇳🇵', 'npl', 'nepal'], ['🇳🇷', 'nru', 'nauru'], ['🇳🇺', 'niu', 'niue'], ['🇳🇿', 'nzl', 'new zealand'], ['🇴🇲', 'omn', 'oman'], ['🇵🇦', 'pan', 'panama'], ['🇵🇪', 'per', 'peru'], ['🇵🇫', 'pyf', 'french polynesia'], ['🇵🇬', 'png', 'papua new guinea'], ['🇵🇭', 'phl', 'philippines'], ['🇵🇰', 'pak', 'pakistan'], ['🇵🇱', 'pol', 'poland'], ['🇵🇲', 'spm', 'saint pierre and miquelon'], ['🇵🇳', 'pcn', 'pitcairn'], ['🇵🇷', 'pri', 'puerto rico'], ['🇵🇸', 'pse', 'palestinian territory'], ['🇵🇹', 'prt', 'portugal'], ['🇵🇼', 'plw', 'palau'], ['🇵🇾', 'pry', 'paraguay'], ['🇶🇦', 'qat', 'qatar'], ['🇷🇪', 'reu', 'réunion'], ['🇷🇴', 'rou', 'romania'], ['🇷🇸', 'srb', 'serbia'], ['🇷🇺', 'rus', 'russia'], ['🇷🇼', 'rwa', 'rwanda'], ['🇸🇦', 'sau', 'saudi arabia'], ['🇸🇧', 'slb', 'solomon islands'], ['🇸🇨', 'syc', 'seychelles'], ['🇸🇩', 'sdn', 'sudan'], ['🇸🇪', 'swe', 'sweden'], ['🇸🇬', 'sgp', 'singapore'], ['🇸🇭', 'shn', 'saint helena, ascension and tristan da cunha'], ['🇸🇮', 'svn', 'slovenia'], ['🇸🇯', 'sjm', 'svalbard and jan mayen'], ['🇸🇰', 'svk', 'slovakia'], ['🇸🇱', 'sle', 'sierra leone'], ['🇸🇲', 'smr', 'san marino'], ['🇸🇳', 'sen', 'senegal'], ['🇸🇴', 'som', 'somalia'], ['🇸🇷', 'sur', 'suriname'], ['🇸🇸', 'ssd', 'south sudan'], ['🇸🇹', 'stp', 'sao tome and principe'], ['🇸🇻', 'slv', 'el salvador'], ['🇸🇽', 'sxm', 'sint maarten (dutch part)'], ['🇸🇾', 'syr', 'syrian arab republic'], ['🇸🇿', 'swz', 'swaziland'], ['🇹🇨', 'tca', 'turks and caicos islands'], ['🇹🇩', 'tcd', 'chad'], ['🇹🇫', 'atf', 'french southern territories'], ['🇹🇬', 'tgo', 'togo'], ['🇹🇭', 'tha', 'thailand'], ['🇹🇯', 'tjk', 'tajikistan'], ['🇹🇰', 'tkl', 'tokelau'], ['🇹🇱', 'tls', 'timor-leste'], ['🇹🇲', 'tkm', 'turkmenistan'], ['🇹🇳', 'tun', 'tunisia'], ['🇹🇴', 'ton', 'tonga'], ['🇹🇷', 'tur', 'turkey'], ['🇹🇹', 'tto', 'trinidad and tobago'], ['🇹🇻', 'tuv', 'tuvalu'], ['🇹🇼', 'twn', 'taiwan'], ['🇹🇿', 'tza', 'tanzania'], ['🇺🇦', 'ukr', 'ukraine'], ['🇺🇬', 'uga', 'uganda'], ['🇺🇲', 'umi', 'united states minor outlying islands'], ['🇺🇸', 'usa', 'united states'], ['🇺🇸', 'us', //alias
   'united states'], ['🇺🇾', 'ury', 'uruguay'], ['🇺🇿', 'uzb', 'uzbekistan'], ['🇻🇦', 'vat', 'vatican city'], ['🇻🇨', 'vct', 'saint vincent and the grenadines'], ['🇻🇪', 'ven', 'venezuela'], ['🇻🇬', 'vgb', 'virgin islands, british'], ['🇻🇮', 'vir', 'virgin islands, u.s.'], ['🇻🇳', 'vnm', 'viet nam'], ['🇻🇺', 'vut', 'vanuatu'], ['', 'win', 'west indies'], ['🇼🇫', 'wlf', 'wallis and futuna'], ['🇼🇸', 'wsm', 'samoa'], ['🇾🇪', 'yem', 'yemen'], ['🇾🇹', 'myt', 'mayotte'], ['🇿🇦', 'zaf', 'south africa'], ['🇿🇲', 'zmb', 'zambia'], ['🇿🇼 ', 'zwe', 'zimbabwe'], //others (later unicode versions)
-  ['🇺🇳', 'un', 'united nations'], ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'], ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'], ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales']];
+  ['🇺🇳', 'un', 'united nations'], ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'], ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'], ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales'], ['🇪🇺', 'eu', 'european union']];
 
   var templates$5 = {
     //https://en.wikipedia.org/wiki/Template:Flag
@@ -6282,6 +6934,20 @@
       }
 
       return " [[".concat(found[2], " national football team|").concat(found[0], "]]");
+    },
+    flagathlete: function flagathlete(tmpl) {
+      var order = ['name', 'flag', 'variant'];
+      var obj = parse$3(tmpl, order);
+      obj.flag = (obj.flag || '').toLowerCase();
+      var found = flags.find(function (a) {
+        return obj.flag === a[1] || obj.flag === a[2];
+      });
+
+      if (!found) {
+        return "[[".concat(obj.name || '', "]]");
+      }
+
+      return "".concat(found[0], " [[").concat(obj.name || '', "]] (").concat(found[1].toUpperCase(), ")");
     }
   }; //support {{can}}
 
@@ -6330,6 +6996,18 @@
       obj.template = 'ipac';
       list.push(obj);
       return '';
+    },
+    transl: function transl(tmpl, list) {
+      var obj = parse$3(tmpl, ['lang', 'text', 'text2']); // support 3-param
+
+      if (obj.text2) {
+        obj.iso = obj.text;
+        obj.text = obj.text2;
+        delete obj.text2;
+      }
+
+      list.push(obj);
+      return obj.text || '';
     }
   }; // - other languages -
   // Polish, {{IPAc-pl}}	{{IPAc-pl|'|sz|cz|e|ć|i|n}} → [ˈʂt͡ʂɛt͡ɕin]
@@ -6516,7 +7194,31 @@
   templates$8['winperc'] = templates$8['winning percentage'];
   var math = templates$8;
 
+  var generic = function generic(tmpl, list, alias) {
+    var obj = parse$3(tmpl);
+
+    if (alias) {
+      obj.name = obj.template;
+      obj.template = alias;
+    }
+
+    list.push(obj);
+    return '';
+  };
+
   var misc$2 = {
+    //i18n templates
+    persondata: generic,
+    taxobox: generic,
+    citation: generic,
+    portal: generic,
+    reflist: generic,
+    'cite book': generic,
+    'cite journal': generic,
+    'cite web': generic,
+    'commons cat': generic,
+    // https://en.wikipedia.org/wiki/Template:Portuguese_name
+    'portuguese name': ['first', 'second', 'suffix'],
     uss: ['ship', 'id'],
     isbn: function isbn(tmpl, list) {
       var order = ['id', 'id2', 'id3'];
@@ -6651,6 +7353,47 @@
       };
       list.push(template);
       return '';
+    },
+
+    /*
+    {{Medical cases chart/Row
+    |1          = valid date
+    |2          = expression for deaths
+    |3          = expression for recoveries
+    |4          = expression for total cases (3rd classification)
+    |alttot1    = alternate expression for active cases (3rd classification)
+    |5          = expression for number in 4th classification
+    |6          = expression for total in 5th classification
+    |alttot2    = alternate expression for number in 5th classification
+    |7          = number in the first column
+    |8          = change in the first column
+    |firstright1= whether a change in the first column is not applicable (n.a.) (yes|y|1)
+    |9          = number in the second column
+    |10         = change in the second column
+    |firstright2= whether a change in the second column is not applicable (n.a.) (yes|y|1)
+    |divisor    = scaling divisor of the bars (bigger value = narrower bars)               [defaults to: 1]
+    |numwidth   = max width of the numbers in the right columns (xx or xxxx)<-(n|t|m|w|d)  [defaults to: mm]
+    |collapsible= whether the row is collapsible (yes|y|1)                                 {WIP}
+    |collapsed  = manual override of the initial row state (yes|y|1)                       {WIP}
+    |id         = manual override of the row id                                            {WIP}
+    }}
+    */
+    // this is a weird one
+    //https://en.wikipedia.org/wiki/Template:Medical_cases_chart
+    'medical cases chart': function medicalCasesChart(tmpl, list) {
+      var order = ['date', 'deaths_expr', 'recovery_expr', 'cases_expr', 'alt_expr_1', '4th_expr', '5th_expr', 'alt_expr_2', 'col_1', 'col_1_change', 'show_col_1', 'col_2', 'col_2_change', 'show_col_2', 'divisor', 'numwidth', 'collabsible', 'collapsed', 'id'];
+      var obj = parse$3(tmpl); // parse each row template
+
+      var rows = obj.rows.match(/\{\{Medical cases chart\/Row.*\}\}/gi);
+      obj.rows = rows.map(function (row) {
+        return parse$3(row, order);
+      });
+      list.push(obj);
+      return '';
+    },
+    'medical cases chart/row': function medicalCasesChartRow(tmpl) {
+      // actually keep this template
+      return tmpl;
     }
   };
   var science = templates$a;
@@ -7115,32 +7858,32 @@
   var weather = templates$b;
 
   //this format seems to be a pattern for these
-  var generic = ['id', 'title', 'description', 'section'];
+  var generic$1 = ['id', 'title', 'description', 'section'];
   var idName = ['id', 'name']; //https://en.wikipedia.org/wiki/Category:External_link_templates
 
   var externals = {
     //https://en.wikipedia.org/wiki/Template:IMDb_title
-    'imdb title': generic,
-    'imdb name': generic,
-    'imdb episode': generic,
-    'imdb event': generic,
-    'afi film': generic,
-    'allmovie title': generic,
-    allgame: generic,
-    'tcmdb title': generic,
-    'discogs artist': generic,
-    'discogs label': generic,
-    'discogs release': generic,
-    'discogs master': generic,
-    'librivox author': generic,
-    'musicbrainz artist': generic,
-    'musicbrainz label': generic,
-    'musicbrainz recording': generic,
-    'musicbrainz release': generic,
-    'musicbrainz work': generic,
-    youtube: generic,
+    'imdb title': generic$1,
+    'imdb name': generic$1,
+    'imdb episode': generic$1,
+    'imdb event': generic$1,
+    'afi film': generic$1,
+    'allmovie title': generic$1,
+    allgame: generic$1,
+    'tcmdb title': generic$1,
+    'discogs artist': generic$1,
+    'discogs label': generic$1,
+    'discogs release': generic$1,
+    'discogs master': generic$1,
+    'librivox author': generic$1,
+    'musicbrainz artist': generic$1,
+    'musicbrainz label': generic$1,
+    'musicbrainz recording': generic$1,
+    'musicbrainz release': generic$1,
+    'musicbrainz work': generic$1,
+    youtube: generic$1,
     'goodreads author': idName,
-    'goodreads book': generic,
+    'goodreads book': generic$1,
     twitter: idName,
     facebook: idName,
     instagram: idName,
@@ -7157,7 +7900,7 @@
     'ted speaker': idName,
     playmate: idName,
     //https://en.wikipedia.org/wiki/Template:DMOZ
-    dmoz: generic,
+    dmoz: generic$1,
     'find a grave': ['id', 'name', 'work', 'last', 'first', 'date', 'accessdate'],
     congbio: ['id', 'name', 'date'],
     'hollywood walk of fame': ['name']
@@ -7218,10 +7961,10 @@
 
   var templates$d = Object.assign({}, dates, formatting$1, geo, wikipedia, brackets_1, currency, elections, flags_1, ipa, languages_1, math, misc_1$1, punctuation_1, science, soccer, sports$1, stockExchanges, weather, websites, wiktionary);
 
-  var generic$1 = parse$3;
+  var generic$2 = parse$3;
   var nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
 
-  var isArray$1 = function isArray(arr) {
+  var isArray$2 = function isArray(arr) {
     return Object.prototype.toString.call(arr) === '[object Array]';
   }; //this gets all the {{template}} strings and decides how to parse them
 
@@ -7255,7 +7998,7 @@
     if (templates$d.hasOwnProperty(name) === true) {
       // handle number-syntax
       if (typeof templates$d[name] === 'number') {
-        var _obj2 = generic$1(tmpl.body, nums);
+        var _obj2 = generic$2(tmpl.body, nums);
 
         var key = String(templates$d[name]);
         return _obj2[key] || '';
@@ -7267,8 +8010,8 @@
       } // handle array sytax
 
 
-      if (isArray$1(templates$d[name]) === true) {
-        var _obj3 = generic$1(tmpl.body, templates$d[name]);
+      if (isArray$2(templates$d[name]) === true) {
+        var _obj3 = generic$2(tmpl.body, templates$d[name]);
 
         list.push(_obj3);
         return '';
@@ -7333,8 +8076,9 @@
   }; //reduce the scary recursive situations
 
 
-  var allTemplates = function allTemplates(wiki, data) {
-    // nested data-structure of templates
+  var allTemplates = function allTemplates(section) {
+    var wiki = section.wiki; // nested data-structure of templates
+
     var list = find(wiki);
     var keep = []; // recursive template-parser
 
@@ -7365,41 +8109,42 @@
       return parseThem(node, null);
     }); // sort-out the templates we decide to keep
 
-    data.infoboxes = data.infoboxes || [];
-    data.references = data.references || [];
-    data.templates = data.templates || [];
-    data.templates = data.templates.concat(keep); // remove references and infoboxes from our list
+    section.infoboxes = section.infoboxes || [];
+    section.references = section.references || [];
+    section.templates = section.templates || [];
+    section.templates = section.templates.concat(keep); // remove references and infoboxes from our list
 
-    data.templates = data.templates.filter(function (obj) {
+    section.templates = section.templates.filter(function (obj) {
       if (isReference(obj) === true) {
-        data.references.push(new Reference_1(obj));
+        section.references.push(new Reference_1(obj));
         return false;
       }
 
       if (isInfobox$1(obj) === true) {
-        data.infoboxes.push(new Infobox_1(obj));
+        section.infoboxes.push(new Infobox_1(obj));
         return false;
       }
 
       return true;
     });
-    data.templates = data.templates.map(function (obj) {
+    section.templates = section.templates.map(function (obj) {
       return new Template_1(obj);
     }); // remove the templates from our wiki text
 
     list.forEach(function (node) {
       wiki = wiki.replace(node.body, node.out);
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var template$1 = allTemplates;
 
-  var parseSentence$6 = _04Sentence.oneSentence; //okay, <gallery> is a xml-tag, with newline-seperated data, somehow pivoted by '|'...
+  var parseSentence$6 = _04Sentence.fromText; //okay, <gallery> is a xml-tag, with newline-seperated data, somehow pivoted by '|'...
   //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
   // - not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
 
-  var parseGallery = function parseGallery(wiki, section) {
+  var parseGallery = function parseGallery(section) {
+    var wiki = section.wiki;
     wiki = wiki.replace(/<gallery([^>]*?)>([\s\S]+?)<\/gallery>/g, function (_, attrs, inside) {
       var images = inside.split(/\n/g);
       images = images.filter(function (str) {
@@ -7431,20 +8176,22 @@
 
       return '';
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var gallery = parseGallery;
 
   //https://en.wikipedia.org/wiki/Template:Election_box
 
-  var parseElection = function parseElection(wiki, section) {
+  var parseElection = function parseElection(section) {
+    var wiki = section.wiki;
     wiki = wiki.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, function (tmpl) {
       var data = {
+        wiki: tmpl,
         templates: []
       }; //put it through our full template parser..
 
-      template$1(tmpl, data); //okay, pull it apart into something sensible..
+      template$1(data); //okay, pull it apart into something sensible..
 
       var templates = data.templates.map(function (t) {
         return t.json();
@@ -7471,7 +8218,7 @@
 
       return '';
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var election = parseElection;
@@ -7482,7 +8229,8 @@
     roster: ['player', 'gp', 'gs', 'mpg', 'fg%', '3fg%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg']
   }; //https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
 
-  var parseNBA = function parseNBA(wiki, section) {
+  var parseNBA = function parseNBA(section) {
+    var wiki = section.wiki;
     wiki = wiki.replace(/\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi, function (tmpl, name) {
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
       tmpl = tmpl.replace(/\{\{s-end\}\}/, '');
@@ -7502,7 +8250,7 @@
       });
       return '';
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var nba = parseNBA;
@@ -7527,7 +8275,8 @@
     return headings;
   };
 
-  var parseMlb = function parseMlb(wiki, section) {
+  var parseMlb = function parseMlb(section) {
+    var wiki = section.wiki;
     wiki = wiki.replace(/\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi, function (tmpl) {
       var headings = whichHeadings(tmpl);
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
@@ -7547,14 +8296,15 @@
       });
       return '';
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var mlb = parseMlb;
 
   var headings$1 = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes']; //https://en.wikipedia.org/wiki/Template:MMA_record_start
 
-  var parseMMA = function parseMMA(wiki, section) {
+  var parseMMA = function parseMMA(section) {
+    var wiki = section.wiki;
     wiki = wiki.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, function (tmpl) {
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
       tmpl = tmpl.replace(/\{\{end\}\}/i, '');
@@ -7573,15 +8323,16 @@
       });
       return '';
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var mma = parseMMA;
 
-  var parseSentence$7 = _04Sentence.oneSentence; //xml <math>y=mx+b</math> support
+  var parseSentence$7 = _04Sentence.fromText; //xml <math>y=mx+b</math> support
   //https://en.wikipedia.org/wiki/Help:Displaying_a_formula
 
-  var parseMath = function parseMath(wiki, section) {
+  var parseMath = function parseMath(section) {
+    var wiki = section.wiki;
     wiki = wiki.replace(/<math([^>]*?)>([\s\S]+?)<\/math>/g, function (_, attrs, inside) {
       //clean it up a little?
       var formula = parseSentence$7(inside).text();
@@ -7605,7 +8356,7 @@
       });
       return '';
     });
-    return wiki;
+    section.wiki = wiki;
   };
 
   var math$1 = parseMath;
@@ -7613,19 +8364,18 @@
   // ... others are {{start}}...{{end}}
   // -> these are those ones.
 
-  var xmlTemplates = function xmlTemplates(section, wiki) {
-    wiki = gallery(wiki, section);
-    wiki = election(wiki, section);
-    wiki = math$1(wiki, section);
-    wiki = nba(wiki, section);
-    wiki = mma(wiki, section);
-    wiki = mlb(wiki, section);
-    return wiki;
+  var xmlTemplates = function xmlTemplates(section) {
+    election(section);
+    gallery(section);
+    math$1(section);
+    mlb(section);
+    mma(section);
+    nba(section);
   };
 
   var startToEnd = xmlTemplates;
 
-  var isReference$1 = new RegExp('^(' + i18n.references.join('|') + '):?', 'i');
+  var isReference$1 = new RegExp('^(' + i18n$1.references.join('|') + '):?', 'i');
   var section_reg = /(?:\n|^)(={2,5}.{1,200}?={2,5})/g; //interpret ==heading== lines
 
   var parse$6 = {
@@ -7637,20 +8387,18 @@
     startEndTemplates: startToEnd
   };
 
-  var oneSection = function oneSection(wiki, data, options) {
-    wiki = parse$6.startEndTemplates(data, wiki, options); //parse-out the <ref></ref> tags
+  var oneSection = function oneSection(section, doc) {
+    parse$6.startEndTemplates(section); //parse-out the <ref></ref> tags
 
-    wiki = parse$6.references(wiki, data); //parse-out all {{templates}}
+    parse$6.references(section); //parse-out all {{templates}}
 
-    wiki = parse$6.templates(wiki, data, options); // //parse the tables
+    parse$6.templates(section); // //parse the tables
 
-    wiki = parse$6.table(data, wiki); //now parse all double-newlines
+    parse$6.table(section); //now parse all double-newlines
 
-    var res = parse$6.paragraphs(wiki, options);
-    data.paragraphs = res.paragraphs;
-    wiki = res.wiki;
-    data = new Section_1(data, wiki);
-    return data;
+    parse$6.paragraphs(section, doc);
+    section = new Section_1(section);
+    return section;
   };
 
   var removeReferenceSection = function removeReferenceSection(sections) {
@@ -7677,46 +8425,47 @@
     });
   };
 
-  var parseSections = function parseSections(wiki, options) {
-    var split = wiki.split(section_reg);
+  var parseSections = function parseSections(doc) {
     var sections = [];
+    var split = doc.wiki.split(section_reg);
 
     for (var i = 0; i < split.length; i += 2) {
       var heading = split[i - 1] || '';
-      var content = split[i] || '';
+      var wiki = split[i] || '';
 
-      if (content === '' && heading === '') {
+      if (wiki === '' && heading === '') {
         //usually an empty 'intro' section
         continue;
       }
 
-      var data = {
+      var section = {
         title: '',
         depth: null,
+        wiki: wiki,
         templates: [],
+        tables: [],
         infoboxes: [],
         references: []
       }; //figure-out title/depth
 
-      parse$6.heading(data, heading); //parse it up
+      parse$6.heading(section, heading); //parse it up
 
-      var s = oneSection(content, data, options);
+      var s = oneSection(section, doc);
       sections.push(s);
     } //remove empty references section
 
 
-    sections = removeReferenceSection(sections);
-    return sections;
+    doc.sections = removeReferenceSection(sections);
   };
 
   var _02Section = parseSections;
 
-  var cat_reg$1 = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'ig');
-  var cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n.categories.join('|') + '):', 'ig');
+  var cat_reg = new RegExp('\\[\\[:?(' + i18n$1.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'ig');
+  var cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n$1.categories.join('|') + '):', 'ig');
 
-  var parse_categories = function parse_categories(r, wiki) {
-    r.categories = [];
-    var tmp = wiki.match(cat_reg$1); //regular links
+  var parse_categories = function parse_categories(doc) {
+    var wiki = doc.wiki;
+    var tmp = wiki.match(cat_reg); //regular links
 
     if (tmp) {
       tmp.forEach(function (c) {
@@ -7726,13 +8475,13 @@
         c = c.replace(/\|.*/, ''); //everything after the '|' is metadata
 
         if (c && !c.match(/[\[\]]/)) {
-          r.categories.push(c.trim());
+          doc.categories.push(c.trim());
         }
       });
     }
 
-    wiki = wiki.replace(cat_reg$1, '');
-    return wiki;
+    wiki = wiki.replace(cat_reg, '');
+    doc.wiki = wiki;
   };
 
   var categories$1 = parse_categories;
@@ -7744,35 +8493,30 @@
 
   var main = function main(wiki, options) {
     options = options || {};
-    wiki = wiki || '';
-    var data = {
+    var data = Object.assign(options, {
       title: options.title || null,
       pageID: options.pageID || options.id || null,
       namespace: options.namespace || options.ns || null,
       type: 'page',
-      sections: [],
+      wiki: wiki || '',
       categories: [],
+      sections: [],
       coordinates: []
-    }; //detect if page is just redirect, and return it
+    }); //detect if page is just redirect, and return it
 
     if (redirects$1.isRedirect(wiki) === true) {
       data.type = 'redirect';
       data.redirectTo = redirects$1.parse(wiki);
-      parse$7.categories(data, wiki);
+      parse$7.categories(data);
       return new Document_1(data);
-    } //detect if page is just disambiguator page, and return
-
-
-    if (disambig$1.isDisambig(wiki) === true) {
-      data.type = 'disambiguation';
     } //give ourselves a little head-start
 
 
-    wiki = preProcess_1(data, wiki); //pull-out [[category:whatevers]]
+    preProcess_1(data); //pull-out [[category:whatevers]]
 
-    wiki = parse$7.categories(data, wiki); //parse all the headings, and their texts/sentences
+    parse$7.categories(data); //parse all the headings, and their texts/sentences
 
-    data.sections = parse$7.section(wiki, options) || []; //all together now
+    parse$7.section(data); //all together now
 
     return new Document_1(data);
   };
@@ -7844,7 +8588,7 @@
   var _headers = makeHeaders;
 
   var isUrl = /^https?:\/\//;
-  var defaults$b = {
+  var defaults$c = {
     lang: 'en',
     wiki: 'wikipedia',
     domain: null,
@@ -7875,7 +8619,7 @@
     }
 
     options = options || {};
-    options = Object.assign({}, defaults$b, options);
+    options = Object.assign({}, defaults$c, options);
     options.title = title; // parse url input
 
     if (isUrl.test(title)) {
@@ -7886,7 +8630,7 @@
     var headers = _headers(options);
     return server$1(url, headers).then(function (res) {
       try {
-        var data = _02GetResult(res);
+        var data = _02GetResult(res, options);
         data = _03ParseDoc(data);
 
         if (callback) {
@@ -7910,7 +8654,7 @@
 
   var _fetch = fetch;
 
-  var defaults$c = {
+  var defaults$d = {
     lang: 'en',
     wiki: 'wikipedia',
     domain: null,
@@ -7924,7 +8668,7 @@
 
   var fetchRandom = function fetchRandom(lang, options) {
     options = options || {};
-    options = Object.assign({}, defaults$c, options); //support lang 2nd param
+    options = Object.assign({}, defaults$d, options); //support lang 2nd param
 
     if (typeof lang === 'string') {
       options.lang = lang;
@@ -7955,7 +8699,7 @@
 
   var random = fetchRandom;
 
-  var defaults$d = {
+  var defaults$e = {
     lang: 'en',
     wiki: 'wikipedia',
     domain: null,
@@ -8016,7 +8760,7 @@
 
   var fetchCategory = function fetchCategory(category, lang, options) {
     options = options || {};
-    options = Object.assign({}, defaults$d, options); //support lang 2nd param
+    options = Object.assign({}, defaults$e, options); //support lang 2nd param
 
     if (typeof lang === 'string') {
       options.lang = lang;
@@ -8053,7 +8797,12 @@
 
   var category = fetchCategory;
 
-  var _version = '8.0.0';
+  var _version = '8.1.0';
+
+  var wtf = function wtf(wiki, options) {
+    return _01Document(wiki, options);
+  }; // export classes for plugin development
+
 
   var models = {
     Doc: Document_1,
@@ -8066,11 +8815,8 @@
     List: List_1,
     Reference: Reference_1,
     Table: Table_1,
-    Template: Template_1
-  }; //the main 'factory' exported method
-
-  var wtf = function wtf(wiki, options) {
-    return _01Document(wiki, options);
+    Template: Template_1,
+    wtf: wtf
   };
 
   wtf.fetch = function (title, lang, options, cb) {

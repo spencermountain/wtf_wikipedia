@@ -1,6 +1,29 @@
 const parse = require('../_parsers/parse')
 
+const generic = function(tmpl, list, alias) {
+  let obj = parse(tmpl)
+  if (alias) {
+    obj.name = obj.template
+    obj.template = alias
+  }
+  list.push(obj)
+  return ''
+}
+
 const misc = {
+  //i18n templates
+  persondata: generic,
+  taxobox: generic,
+  citation: generic,
+  portal: generic,
+  reflist: generic,
+  'cite book': generic,
+  'cite journal': generic,
+  'cite web': generic,
+  'commons cat': generic,
+
+  // https://en.wikipedia.org/wiki/Template:Portuguese_name
+  'portuguese name': ['first', 'second', 'suffix'],
   uss: ['ship', 'id'],
   isbn: (tmpl, list) => {
     let order = ['id', 'id2', 'id3']

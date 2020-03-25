@@ -24,7 +24,7 @@ const toJSON = function(s, options) {
     }
   }
   if (options.links && s.links().length > 0) {
-    data.links = s.links()
+    data.links = s.links().map(l => l.json())
   }
   if (options.formatting && s.data.fmt) {
     data.formatting = s.data.fmt

@@ -1,15 +1,16 @@
-const parse_interwiki = require('../04-sentence/interwiki')
+const parse_interwiki = require('./interwiki')
 const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g
-const link_reg = /\[\[(.{0,160}?)\]\]([a-z']+)?(\w{0,10})/gi //allow dangling suffixes - "[[flanders]]'s"
+const link_reg = /\[\[(.{0,160}?)\]\]([a-z]+)?(\w{0,10})/gi //allow dangling suffixes - "[[flanders]]s"
 
 const external_links = function(links, str) {
-  str.replace(external_link, function(all, protocol, link, text) {
+  str.replace(external_link, function(raw, protocol, link, text) {
     text = text || ''
     links.push({
       type: 'external',
       site: protocol + link,
-      text: text.trim()
+      text: text.trim(),
+      raw: raw
     })
     return text
   })
@@ -18,10 +19,10 @@ const external_links = function(links, str) {
 
 const internal_links = function(links, str) {
   //regular links
-  str.replace(link_reg, function(_, s, apostrophe) {
-    var txt = null
+  str.replace(link_reg, function(raw, s, suffix) {
+    let txt = null
     //make a copy of original
-    var link = s
+    let link = s
     if (s.match(/\|/)) {
       //replacement link [[link|text]]
       s = s.replace(/\[\[(.{2,100}?)\]\](\w{0,10})/g, '$1$2') //remove ['s and keep suffix
@@ -38,12 +39,14 @@ const internal_links = function(links, str) {
       return s
     }
     //kill off just these just-anchor links [[#history]]
-    if (link.match(/^#/i)) {
-      return s
-    }
+    // if (link.match(/^#/i)) {
+    //   console.log(s)
+    //   return s
+    // }
     //remove anchors from end [[toronto#history]]
-    var obj = {
-      page: link
+    let obj = {
+      page: link,
+      raw: raw
     }
     obj.page = obj.page.replace(/#(.*)/, (a, b) => {
       obj.anchor = b
@@ -51,13 +54,16 @@ const internal_links = function(links, str) {
     })
     //grab any fr:Paris parts
     obj = parse_interwiki(obj)
+    if (obj.wiki) {
+      obj.type = 'interwiki'
+    }
     if (txt !== null && txt !== obj.page) {
       obj.text = txt
     }
     //finally, support [[link]]'s apostrophe
-    if (apostrophe === "'s") {
+    if (suffix) {
       obj.text = obj.text || obj.page
-      obj.text += apostrophe
+      obj.text += suffix.trim()
     }
     //titlecase it, if necessary
     if (obj.page && /^[A-Z]/.test(obj.page) === false) {
@@ -79,7 +85,6 @@ const parse_links = function(str) {
   links = external_links(links, str)
   //internal links
   links = internal_links(links, str)
-
   if (links.length === 0) {
     return undefined
   }

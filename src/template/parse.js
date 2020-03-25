@@ -1,5 +1,4 @@
 const ignore = require('./_ignore')
-// const getName = require('./_parsers/_getName')
 const parse = require('./_parsers/parse')
 const inf = require('./_infobox')
 const templates = require('./templates')
@@ -13,6 +12,7 @@ const isArray = function(arr) {
 //this gets all the {{template}} strings and decides how to parse them
 const parseTemplate = function(tmpl, list) {
   let name = tmpl.name
+
   if (ignore.hasOwnProperty(name) === true) {
     return ''
   }
@@ -56,6 +56,7 @@ const parseTemplate = function(tmpl, list) {
       return templates[name](tmpl.body, list)
     }
   }
+
   // unknown template, try to parse it
   let parsed = parse(tmpl.body)
   if (list && Object.keys(parsed).length > 0) {

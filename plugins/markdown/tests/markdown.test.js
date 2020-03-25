@@ -35,13 +35,13 @@ hello world`,
 
 test('markdown-tricks', t => {
   var md = wtf('the is [[he]] nice').markdown()
-  t.equal(md, 'the is [he](./He) nice', 'matches whole-word')
+  t.equal(md, 'the is [he](./he) nice', 'matches whole-word')
 
   md = wtf('the is [[he]]. nice').markdown()
-  t.equal(md, 'the is [he](./He). nice', 'matches with-period')
+  t.equal(md, 'the is [he](./he). nice', 'matches with-period')
 
   md = wtf("stim's is [[tim]]'s son").markdown()
-  t.equal(md, "stim's is [tim's](./Tim) son", 'matches with apostrophe')
+  t.equal(md, "stim's is [tim](./tim)'s son", 'matches with apostrophe')
 
   md = wtf(`we put the '''e''' in team`).markdown()
   t.equal(md, 'we put the **e** in team', 'fmt supports smartReplace')

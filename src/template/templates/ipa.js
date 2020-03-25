@@ -32,6 +32,17 @@ const templates = {
     obj.template = 'ipac'
     list.push(obj)
     return ''
+  },
+  transl: (tmpl, list) => {
+    let obj = parse(tmpl, ['lang', 'text', 'text2'])
+    // support 3-param
+    if (obj.text2) {
+      obj.iso = obj.text
+      obj.text = obj.text2
+      delete obj.text2
+    }
+    list.push(obj)
+    return obj.text || ''
   }
 }
 // - other languages -

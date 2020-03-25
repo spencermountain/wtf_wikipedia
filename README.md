@@ -35,7 +35,8 @@
 <div align="left">
   <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
   <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-  it is <a href="https://osr.cs.fau.de/wp-content/uploads/2017/09/wikitext-parser.pdf">very</a>, <a href="https://utcc.utoronto.ca/~cks/space/blog/programming/ParsingWikitext">very</a> hard.
+  it is <a href="https://osr.cs.fau.de/wp-content/uploads/2017/09/wikitext-parser.pdf">very</a>, <a href="https://utcc.utoronto.ca/~cks/space/blog/programming/ParsingWikitext">very</a> hard.  &nbsp;  &nbsp; 
+  <span> &nbsp;  &nbsp; we're <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">not</a> <a href="https://twitter.com/ftrain/status/1036060636587978753">joking</a>.</span>
 </div>
 
 <!-- einstein sentence -->
@@ -44,9 +45,9 @@
 </div>
 
 <div align="center">
-<div>we're <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Times_that_100_Wikipedians_supported_something">not</a> <a href="https://twitter.com/ftrain/status/1036060636587978753">joking</a>!</div>
 <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 </div>
+
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 <div align="center">
@@ -55,60 +56,89 @@
 
 ```js
 const wtf = require('wtf_wikipedia')
-```
 
-fetch and parse an article:
-
-```js
 wtf.fetch('Toronto Raptors').then(doc => {
+  doc.sentences(0).text()
+  //'The Toronto Raptors are a Canadian professional basketball team ...'
+
   let coach = doc.infobox().get('coach')
   coach.text() //'Nick Nurse'
-
-  doc.sentences(0).text() //'The Toronto Raptors are a Canadian professional basketball team based in Toronto.'
 })
 ```
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
-get plain-text:
+## .text
+
+get clean plaintext:
 
 ```js
-let str = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.`
+let str = `[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall. <ref>Field of our Fathers: By Richard Johnson</ref>`
 wtf(str).text()
-//"Boston's baseball field has a 37ft wall."
+// "Boston's baseball field has a 37ft wall."
 ```
 
-<!-- spacer -->
-<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+```js
+let doc = await wtf.fetch('Glastonbury', 'en')
+doc.text()
+// 'Glastonbury is a town and civil parish in Somerset, England, situated at a dry point ...'
+```
 
-get json:
+<div align="right">
+  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-text">.text() docs</a>
+</div>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
+</div>
 
-```javascript
+## .json
+
+get all the data from a page:
+
+```js
 let doc = await wtf.fetch('Whistling')
 
-let json = doc.json()
-json.categories
-//['Oral communication', 'Vocal music', 'Vocal skills']
-
-let sec = doc.sections('see also')
-sec.links().map(l => l.json())
-//[{ page: 'Slide whistle' }, { page: 'Hand flute' }, { page: 'Bird vocalization' }...]
-
-doc.images(0).json()
-// {url: https://upload.wikimedia.org..../300px-Duveneck_Whistling_Boy.jpg', file: 'Image:Duveneck Whistling Boy.jpg' }
+doc.json()
+// { categories: ['Oral communication', 'Vocal skills'], sections: [{ title: 'Techniques' }], ...}
 ```
+
+the default json output is [really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json), but you can cherry-pick things like this:
+
+```js
+// get just the links:
+doc.links().map(link => link.json())
+//[{ page: 'Theatrical superstitions', text: 'supersitions' }]
+
+// just the images:
+doc.images(0).json()
+// { file: 'Image:Duveneck Whistling Boy.jpg', url: 'https://commons.wiki...' }
+
+// json for a particular section:
+doc
+  .sections('see also')
+  .links(0)
+  .json()
+// { page: 'Slide Whistle' }
+```
+
+<div align="right">
+  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-json">.json() docs</a>
+</div>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
-run on the client-side:
+run it on the client-side:
 
 ```html
 <script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
+  // follow a redirect:
   wtf.fetch('On a Friday', function(err, doc) {
-    // get links from an infobox prop
     let members = doc.infobox().get('current members')
     members.links().map(l => l.page())
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
@@ -118,6 +148,67 @@ run on the client-side:
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
+</div>
+
+### full wikipedia dumps
+
+With this library, in conjunction with [dumpster-dive](https://github.com/spencermountain/dumpster-dive), you can parse the whole english wikipedia in an aftertoon.
+
+```bash
+npm install -g dumpster-dive
+```
+
+<img height="280px" src="https://user-images.githubusercontent.com/399657/40262198-a268b95a-5ad3-11e8-86ef-29c2347eec81.gif"/>
+
+<div align="right">
+  <a href="https://github.com/spencermountain/dumpster-dive/">dumpster docs</a>
+</div>
+
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
+
+## Tutorials
+
+- [Gentle Introduction](https://observablehq.com/@spencermountain/wtf_wikipedia-tutorial?collection=@spencermountain/wtf_wikipedia) - Getting NBA Team data
+- [Parsing tables](https://observablehq.com/@spencermountain/parsing-wikipedia-tables) - getting all Apollo Astronauts as JSON
+- [Parsing Timezones](https://observablehq.com/@spencermountain/parsing-timezones-from-wikipedia)
+- [MBL season schedules](https://observablehq.com/@spencermountain/wikipedia-baseball-table-parser?collection=@spencermountain/wtf_wikipedia)
+- [Fetching a list of pages](https://observablehq.com/@spencermountain/parsing-a-list-of-wikipedia-articles)
+- [Parsing COVID outbreak table](https://observablehq.com/@spencermountain/parsing-wikipedias-coronavirus-outbreak-data?collection=@spencermountain/wtf_wikipedia)
+
+### Plugins
+
+|                                |                 |
+| ------------------------------ | --------------- |
+| [html](./plugins/html)         | output html     |
+| [markdown](./plugins/markdown) | output markdown |
+| [latex](./plugins/latex)       | output latex    |
+
+|                                |                                        |
+| ------------------------------ | -------------------------------------- |
+| [i18n](./plugins/i18n)         | improve multilingual template coverage |
+| [classify](./plugins/classify) | is the article about a person?         |
+| [summary](./plugins/summary)   | small description text                 |
+
+|                                |                                    |
+| ------------------------------ | ---------------------------------- |
+| [category](./plugins/category) | parse all articles in a category   |
+| [image](./plugins/image)       | additional methods for `.images()` |
+
+|                                                       |                               |
+| ----------------------------------------------------- | ----------------------------- |
+| [wtf-mlb](https://github.com/spencermountain/wtf-mlb) | baseball team & season parser |
+| [wtf-nhl](https://github.com/spencermountain/wtf-nhl) | hockey team & season parser   |
+
+<div align="right">
+  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-plugins">plugin docs</a>
+</div>
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
 </div>
@@ -173,18 +264,18 @@ It is built to be as flexible as possible. In all cases, tries to fail in consid
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
-#### What about html scraping..?
+#### How about html scraping..?
 
 Wikimedia's [official parser](https://www.mediawiki.org/wiki/Parsoid) turns wikitext ➔ HTML.
 
 <!-- You can even get html from the api [like this](https://en.wikipedia.org/w/api.php?format=json&origin=*&action=parse&prop=text&page=Whistling). -->
 
-if you prefer this **_screen-scraping_** workflow, you can pluck parts of a page [like that](https://observablehq.com/@mbostock/working-with-wikipedia-data).
+if you prefer this **_screen-scraping_** workflow, you can pluck at parts of a page [like that](https://observablehq.com/@mbostock/working-with-wikipedia-data).
 
-that's cool, too!
+that's cool!
 
 getting structured data this way is still a complex, weird process.
-Manually spelunking the html is usually just as tricky and error-prone as scanning the wikitext itself.
+Manually _spelunking_ the html is sometimes just as tricky and error-prone as scanning the wikitext itself.
 
 The contributors to this library have come to that conclusion, [as many others have](https://www.mediawiki.org/wiki/Alternative_parsers).
 
@@ -196,9 +287,9 @@ This library has (_lovingly_) borrowed a lot of code and data from the parsoid p
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
 </div>
 
-## ok, enough chat.
+## enough chat.
 
-flip your wikitext into a `Doc` object
+flip your wikitext into a Doc object
 
 ```javascript
 import wtf from 'wtf_wikipedia'
@@ -234,7 +325,7 @@ var text = wtf(wiki).text()
 
 #### **doc.sections()**:
 
-(a section is a heading, _'==Like This=='_)
+a section is a heading _'==Like This=='_
 
 ```js
 wtf(page)
@@ -319,6 +410,8 @@ let result = await wtf.category('Category:Politicians_from_Paris')
 //}
 ```
 
+to fetch and parse all pages in a category, in an optimized way, see [wtf-plugin-category](./plugins/category)
+
 ### fetch random article:
 
 **wtf.random(title, [lang], [options | callback])**
@@ -356,35 +449,13 @@ wtf
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-<div align="center">
-  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
-</div>
-
-## Plugins
-
-- [wtf-plugin-html](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/plugin/html)
-- [wtf-plugin-markdown](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/plugin/markdown)
-- [wtf-plugin-latex](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/plugin/latex)
-- [wtf-plugin-wikitext](https://github.com/spencermountain/wtf_wikipedia/tree/master/src/plugin/wikitext)
-- [wtf-mlb](https://github.com/spencermountain/wtf-mlb) - baseball team/season parser
-- [wtf-nhl](https://github.com/spencermountain/wtf-nhl) - hockey team/season parser
-
-## Tutorials
-
-- [Gentle Introduction](https://observablehq.com/@spencermountain/wtf_wikipedia-tutorial?collection=@spencermountain/wtf_wikipedia) - Getting NBA Team data
-- [Parsing tables](https://observablehq.com/@spencermountain/parsing-wikipedia-tables) - getting all Apollo Astronauts as JSON
-- [Parsing Timezones](https://observablehq.com/@spencermountain/parsing-timezones-from-wikipedia)
-- [MBL season schedules](https://observablehq.com/@spencermountain/wikipedia-baseball-table-parser?collection=@spencermountain/wtf_wikipedia)
-- [Fetching a list of pages](https://observablehq.com/@spencermountain/parsing-a-list-of-wikipedia-articles)
-- [Parsing COVID outbreak table](https://observablehq.com/@spencermountain/parsing-wikipedias-coronavirus-outbreak-data?collection=@spencermountain/wtf_wikipedia)
-
-<!-- spacer -->
-<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
 ## API
 
 - **.title()** - get/set the title of the page from the first-sentence
 - **.pageID()** - get/set the wikimedia id of the page, if we have it.
+- **.url()** - (try to) generate the url for the current article
+- **.lang()** - get/set the current language (used for url method)
 - **.namespace()** - get/set the wikimedia namespace of the page, if we have it
 - **.isRedirect()** - if the page is just a redirect to another page
 - **.redirectTo()** - the page this redirects to
@@ -449,9 +520,10 @@ wtf
 
 ### Image
 
-- **.links()** -
-- **.thumbnail()** -
-- **.format()** -
+- **.url()** - return url to full size image
+- **.thumbnail()** - return url to thumbnail (pass `size` to customize)
+- **.links()** - any links from the caption (if present)
+- **.format()** - get file format (e.g. `jpg`)
 - **.json()** - return some generic metadata for this image
 - **.text()** - does nothing
 
@@ -486,7 +558,9 @@ wtf
 - **.text()** - returns nothing
 - **.json()** - generate some useful metadata data for this table
 
----
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
 
 ## Configuration
 
@@ -528,6 +602,13 @@ wtf.extend((models, templates) => {
 })
 ```
 
+<div align="right">
+  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-plugins">plugin docs</a>
+</div>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
+
 ## Notes:
 
 ### 3rd-party wikis
@@ -560,7 +641,12 @@ This parser actually does an okay job at it too.
 
 Wikipedia I18n langauge information for _Redirects, Infoboxes, Categories, and Images_ are included in the library, with pretty-decent coverage.
 
+To improve coverage of i18n templates, use [wtf-plugin-i18n](./plugins/i18n)
+
 Please make a PR if you see something missing for your language.
+
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
 ## Builds:
 
@@ -574,6 +660,9 @@ this library ships seperate client-side and server-side builds, to preserve file
 - _[./wtf_wikipedia.mjs](./builds/wtf_wikipedia.mjs)_ - esmodule node (typescript)
 
 the browser version uses `fetch()` and the server version uses `require('https')`.
+
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
 ## Performance:
 
@@ -591,16 +680,12 @@ That's about 100 pages/second, per thread.
 
 ## See also:
 
-- [instaview](https://github.com/cscott/instaview) - javascript
-- [txtwiki](https://github.com/joaomsa/txtwiki.js) - javascript
-- [Parsoid](https://www.mediawiki.org/wiki/Parsoid) - javascript
-- [wiky](https://github.com/Gozala/wiky) - javascript
-- [sweble-wikitext](https://github.com/sweble/sweble-wikitext) - java
-- [kiwi](https://github.com/aboutus/kiwi/) - C
-- [parse_wiki_text](https://docs.rs/parse_wiki_text/) - rust
-- [wikitext-perl](https://metacpan.org/pod/distribution/wikitext-perl/lib/Text/WikiText.pm) - perl
-- [wikiextractor](https://github.com/attardi/wikiextractor) - python
-- [wikitextparser](https://pypi.org/project/wikitextparser) - python
+alternative javascript parsers:
+
+- [instaview](https://github.com/cscott/instaview)
+- [txtwiki](https://github.com/joaomsa/txtwiki.js)
+- [Parsoid](https://www.mediawiki.org/wiki/Parsoid)
+- [wiky](https://github.com/Gozala/wiky)
 
 and [many more](https://www.mediawiki.org/wiki/Alternative_parsers)!
 
