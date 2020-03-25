@@ -32,5 +32,6 @@ const plugin = function(models) {
   models.wtf.parseCategory = async function(cat, lang, opts) {
     return await fetchCat(models.wtf, cat, lang, opts)
   }
+  models.wtf.fetchCategory = models.wtf.parseCategory
 }
 module.exports = plugin

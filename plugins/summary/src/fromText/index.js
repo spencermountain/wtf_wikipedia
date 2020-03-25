@@ -46,6 +46,8 @@ const extract = function(doc, options) {
   s = fn.byTemplate(s, options)
   // remove needless words
   s = fn.byWord(s, options)
+  // remove 'the largest'
+  s = fn.noSuperlative(s, options)
   //remove article
   if (options.article === false) {
     s = fn.popArticle(s)

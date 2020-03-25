@@ -10,8 +10,16 @@ wtf.extend(require('./plugins/category/src'))
 //   console.log(html)
 // })
 
-let str = `Nils Daniel Carl Bildt, born 15 July 1949 in Halmstad, Sweden, is a Swedish politician and diplomat who was Prime Minister`
-console.log(wtf(str).summary())
+// wtf.fetchCategory('Larchmont, New York').then(res => {
+//   res.docs.forEach(doc => {
+//     console.log(doc.title())
+//     console.log(doc.summary())
+//     console.log('\n\n')
+//   })
+// })
+// let str =
+//   'Larchmont Yacht Club is a private, members-only yacht club situated on Larchmont Harbor in the Village of Larchmont, in Westchester County, New York. '
+// console.log(wtf(str).summary())
 
 // let file = 'United-Kingdom'
 // let txt = require('fs')
