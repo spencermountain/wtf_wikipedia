@@ -1,4 +1,4 @@
-/* wtf-plugin-wikitext 0.1.0  MIT */
+/* wtf-plugin-wikitext 0.1.1  MIT */
 var defaults = {
   images: true,
   tables: true,
