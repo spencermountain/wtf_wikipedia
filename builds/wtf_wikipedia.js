@@ -3330,6 +3330,18 @@
 
   var parse$2 = sentence_parser;
 
+  function postprocess(line) {
+    //remove empty parentheses (sometimes caused by removing templates)
+    line = line.replace(/\([,;: ]*\)/g, ''); //these semi-colons in parentheses are particularly troublesome
+
+    line = line.replace(/\( *(; ?)+/g, '('); //dangling punctuation
+
+    line = helpers.trim_whitespace(line);
+    line = line.replace(/ +\.$/, '.');
+    return line;
+  } // returns one sentence object
+
+
   function fromText(str) {
     var obj = {
       text: str
@@ -3341,17 +3353,6 @@
     obj = formatting_1(obj); //pull-out things like {{start date|...}}
 
     return new Sentence_1(obj);
-  }
-
-  function postprocess(line) {
-    //remove empty parentheses (sometimes caused by removing templates)
-    line = line.replace(/\([,;: ]*\)/g, ''); //these semi-colons in parentheses are particularly troublesome
-
-    line = line.replace(/\( *(; ?)+/g, '('); //dangling punctuation
-
-    line = helpers.trim_whitespace(line);
-    line = line.replace(/ +\.$/, '.');
-    return line;
   } //used for consistency with other class-definitions
 
 
@@ -3801,7 +3802,7 @@
   var getColSpan = /.*colspan *?= *?["']?([0-9]+)["']?[ \|]*/; //colspans stretch ←left/right→
 
   var doColSpan = function doColSpan(rows) {
-    rows.forEach(function (row, r) {
+    rows.forEach(function (row) {
       row.forEach(function (str, c) {
         var m = str.match(getColSpan);
 
@@ -4563,7 +4564,7 @@
     list: list
   };
 
-  var parseParagraphs = function parseParagraphs(section, doc) {
+  var parseParagraphs = function parseParagraphs(section) {
     var wiki = section.wiki;
     var paragraphs = wiki.split(twoNewLines); //don't create empty paragraphs
 

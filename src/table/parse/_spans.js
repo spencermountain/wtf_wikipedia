@@ -3,7 +3,7 @@ const getColSpan = /.*colspan *?= *?["']?([0-9]+)["']?[ \|]*/
 
 //colspans stretch ←left/right→
 const doColSpan = function(rows) {
-  rows.forEach((row, r) => {
+  rows.forEach(row => {
     row.forEach((str, c) => {
       let m = str.match(getColSpan)
       if (m !== null) {

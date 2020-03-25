@@ -90,7 +90,7 @@ export default [
         entries: [{ find: './http/server', replacement: './http/client' }]
       }),
       terser(),
-      sizeCheck({ expect: 103, warn: 10 })
+      sizeCheck({ expect: 123, warn: 10 })
     ]
   },
   // === client-side .mjs ===
@@ -115,7 +115,7 @@ export default [
         entries: [{ find: './http/server', replacement: './http/client' }]
       }),
       terser(),
-      sizeCheck({ expect: 103, warn: 10 })
+      sizeCheck({ expect: 123, warn: 10 })
     ]
   }
 ]

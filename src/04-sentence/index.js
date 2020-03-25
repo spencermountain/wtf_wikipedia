@@ -4,6 +4,17 @@ const parseFmt = require('./formatting')
 const Sentence = require('./Sentence')
 const sentenceParser = require('./parse')
 
+function postprocess(line) {
+  //remove empty parentheses (sometimes caused by removing templates)
+  line = line.replace(/\([,;: ]*\)/g, '')
+  //these semi-colons in parentheses are particularly troublesome
+  line = line.replace(/\( *(; ?)+/g, '(')
+  //dangling punctuation
+  line = helpers.trim_whitespace(line)
+  line = line.replace(/ +\.$/, '.')
+  return line
+}
+
 // returns one sentence object
 function fromText(str) {
   let obj = {
@@ -16,17 +27,6 @@ function fromText(str) {
   obj = parseFmt(obj)
   //pull-out things like {{start date|...}}
   return new Sentence(obj)
-}
-
-function postprocess(line) {
-  //remove empty parentheses (sometimes caused by removing templates)
-  line = line.replace(/\([,;: ]*\)/g, '')
-  //these semi-colons in parentheses are particularly troublesome
-  line = line.replace(/\( *(; ?)+/g, '(')
-  //dangling punctuation
-  line = helpers.trim_whitespace(line)
-  line = line.replace(/ +\.$/, '.')
-  return line
 }
 
 //used for consistency with other class-definitions

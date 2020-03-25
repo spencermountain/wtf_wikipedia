@@ -1,5 +1,4 @@
 const Paragraph = require('./Paragraph')
-const find_recursive = require('../image/nested_find')
 const parseSentences = require('../04-sentence').byParagraph
 
 const twoNewLines = /\r?\n\r?\n/
@@ -8,7 +7,7 @@ const parse = {
   list: require('../list')
 }
 
-const parseParagraphs = function(section, doc) {
+const parseParagraphs = function(section) {
   let wiki = section.wiki
   let paragraphs = wiki.split(twoNewLines)
   //don't create empty paragraphs
