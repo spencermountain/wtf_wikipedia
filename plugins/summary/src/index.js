@@ -1,3 +1,4 @@
+const nlp = require('compromise')
 const fromTemplate = require('./01-fromTemplate')
 const fromText = require('./02-fromText')
 
@@ -36,12 +37,39 @@ const plugin = function(models) {
   }
 
   // should we use 'it', 'he', 'they'...
-  models.Doc.prototype.article = function(options) {
-    return null
+  models.Doc.prototype.article = function() {
+    let txt = ''
+    // prefer the 2nd sentence
+    if (this.sentences(1)) {
+      txt = this.sentences(1).text()
+    } else {
+      txt = this.sentences(0).text()
+    }
+    let doc = nlp(txt)
+    let found = doc
+      .match('(#Pronoun|#Article)')
+      .eq(0)
+      .text()
+      .toLowerCase()
+    return found || 'it'
   }
+
   // was event in past? is person dead?
-  models.Doc.prototype.tense = function(options) {
-    return null
+  models.Doc.prototype.tense = function() {
+    let txt = this.sentence().text()
+    let doc = nlp(txt)
+    let copula = doc.match('#Copula+').first()
+    if (copula.has('was')) {
+      return 'Past'
+    }
+    let vb = doc.verbs(0)
+    if (vb.has('#PastTense')) {
+      return 'Past'
+    }
+    if (doc.has('will #Adverb? be') || doc.has('(a|an) (upcoming|planned)')) {
+      return 'Future'
+    }
+    return 'Present'
   }
 }
 module.exports = plugin

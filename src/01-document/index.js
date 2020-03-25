@@ -1,6 +1,5 @@
 const Document = require('./Document')
 const redirects = require('./redirects')
-const isDisambig = require('./disambig')
 const preProcess = require('./preProcess')
 const parse = {
   section: require('../02-section'),
@@ -27,10 +26,6 @@ const main = function(wiki, options) {
     parse.categories(data)
     return new Document(data)
   }
-  //detect if page is just disambiguator page, and return
-  // if (isDisambig(data) === true) {
-  //   data.type = 'disambiguation'
-  // }
   //give ourselves a little head-start
   preProcess(data)
   //pull-out [[category:whatevers]]

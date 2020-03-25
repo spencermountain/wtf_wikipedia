@@ -1,5 +1,12 @@
 const nlp = require('compromise')
 
+nlp.extend(Doc => {
+  Doc.prototype.pop = function() {
+    this.list.pop()
+    return this
+  }
+})
+
 const defaults = {
   max: 90,
   min: 8
@@ -22,18 +29,15 @@ const removeTitle = function(s, sentence, title) {
 }
 
 //use commas, etc
-const byClause = function(s) {
-  let orig = s.clone()
+const byClause = function(s, options) {
   let clauses = s.clauses()
-  for (let i = 0; i < clauses.length; i += 1) {
-    let c = clauses.eq(i)
-    if (c.has('#Copula')) {
-      let result = clauses.slice(i, clauses.length)
-      result = result.not('^#Copula')
-      return result
-    }
+  // remove any clause with 'is/was'
+  clauses.ifNo('#Copula')
+  // try just removing the last clause
+  if (clauses.length > 1 && clauses.text().length > options.max) {
+    clauses.pop()
   }
-  return orig
+  return clauses.join()
 }
 
 // truncate a list of descriptions
@@ -42,6 +46,25 @@ const popList = function(s, options) {
   let almostMax = options.max * 0.75
   if (txt.length > almostMax && s.has('and')) {
     s = s.remove('and .*')
+  }
+  return s
+}
+
+const byTemplate = function(s, options) {
+  let txt = s.text()
+  let almostMax = options.max * 0.75
+  if (txt.length > almostMax) {
+    s.remove('(located|born) in .*')
+  }
+  return s
+}
+
+const byWord = function(s, options) {
+  let txt = s.text()
+  let almostMax = options.max * 0.8
+  if (txt.length > almostMax) {
+    s.remove('#Demonym') //'american'
+    s.remove('(retired|former|professional|amateur)')
   }
   return s
 }
@@ -74,11 +97,15 @@ const extract = function(doc, options) {
   //remove 'Toronto' from beginning
   s = removeTitle(s, sentence, title)
   //by comma-section
-  s = byClause(s)
+  s = byClause(s, options)
   //remove end period
   s.post('')
   // truncate a list
   s = popList(s, options)
+  // remove known sub-phrases
+  s = byTemplate(s, options)
+  // remove needless words
+  s = byWord(s, options)
   //remove article
   if (options.article === false) {
     s = popArticle(s)

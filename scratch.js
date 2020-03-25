@@ -5,26 +5,14 @@ wtf.extend(require('./plugins/i18n/src'))
 wtf.extend(require('./plugins/summary/src'))
 wtf.extend(require('./plugins/category/src'))
 
-/*
- * interwiki links
- * disambiguation templates
-// {{Place name disambiguation}}
-// {{Airport disambiguation}}
-
- */
-
 // wtf.fetch('Toronto').then(doc => {
 //   let html = doc.html()
 //   console.log(html)
 // })
-// let str = `CoolToday Park is a ballpark in North Port, Florida, located in the southern portion of Sarasota County, 35 miles south of Sarasota, Florida.`
-// console.log(wtf(str).summary())
 
-// let str = `{{persondata|c00l}}`
-// let str = `{{personendaten|Full_name=c00l}}`
-let str = `{{Place name disambiguation}}`
-let doc = wtf(str)
-console.log(doc.isDisambiguation())
+let str = `CoolToday Park is a planned ballpark in North Port, Florida.`
+console.log(wtf(str).tense())
+console.log(wtf(str).article())
 
 // let file = 'United-Kingdom'
 // let txt = require('fs')
