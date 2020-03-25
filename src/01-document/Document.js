@@ -1,5 +1,6 @@
 const sectionMap = require('./_sectionMap')
 const toJSON = require('./toJson')
+const disambig = require('./disambig')
 const setDefaults = require('../_lib/setDefaults')
 const Image = require('../image/Image')
 
@@ -73,7 +74,7 @@ const methods = {
     return this.data.redirectTo
   },
   isDisambiguation: function() {
-    return this.data.type === 'disambiguation'
+    return disambig(this)
   },
   categories: function(clue) {
     if (typeof clue === 'number') {

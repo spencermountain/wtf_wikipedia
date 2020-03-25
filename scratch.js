@@ -22,11 +22,9 @@ wtf.extend(require('./plugins/category/src'))
 
 // let str = `{{persondata|c00l}}`
 // let str = `{{personendaten|Full_name=c00l}}`
-let str = ` {{Cita libru |url=cool.com |title= |last= |first= |date= |website= |publisher= |access-date= |quote=}}
-`
+let str = `{{Place name disambiguation}}`
 let doc = wtf(str)
-console.log(doc.templates())
-// console.log(doc.references())
+console.log(doc.isDisambiguation())
 
 // let file = 'United-Kingdom'
 // let txt = require('fs')

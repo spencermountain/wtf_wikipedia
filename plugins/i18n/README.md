@@ -28,6 +28,10 @@ wtf.extend(require('wtf-plugin-i18n'))
 //'flag' template in arabic wikipedia
 wtf('hello world {{علم|EU}}').text()
 // 'hello world 🇪🇺'
+
+let doc = wtf(`{{Cita libru |url=cool.com |title= citation template }}`)
+doc.references().length
+// 1
 ```
 
 work-in-progress
