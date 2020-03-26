@@ -127,6 +127,10 @@ const parseTable = function(wiki) {
     .split(/\n/)
     .map(l => l.trim())
   let rows = findRows(lines)
+  rows = rows.filter(r => r)
+  if (rows.length === 0) {
+    return []
+  }
 
   //remove non-header span rows
   rows = removeMidSpans(rows)

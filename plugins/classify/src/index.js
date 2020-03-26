@@ -14,7 +14,7 @@ const plugin = function(models) {
 
     // dont classify these
     if (skipPage(doc, options)) {
-      return null
+      return score(res, options)
     }
 
     //look for 'infobox person', etc
