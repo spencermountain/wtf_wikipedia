@@ -32,6 +32,7 @@ const cleanText = function(str) {
 }
 
 const skipSpanRow = function(row) {
+  row = row || []
   let len = row.length
   let hasTxt = row.filter(str => str).length
   //does it have 3 empty spaces?

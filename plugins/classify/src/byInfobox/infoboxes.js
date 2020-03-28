@@ -246,7 +246,7 @@ module.exports = {
   nfl_single_game: 'Event/SportsEvent', //1
   nobility: 'Organization', //5
   non_test_cricket_team: 'Organization/SportsTeam', //4
-  'non-profit': 'SportsTeam', //6
+  'non-profit': 'Organization/SportsTeam', //6
   nrhp: '', //144
   nycs: '', //7
   officeholder: 'Person', //133
