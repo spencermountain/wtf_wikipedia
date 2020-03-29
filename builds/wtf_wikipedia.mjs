@@ -1,4 +1,4 @@
-/* wtf_wikipedia 8.1.0 MIT */
+/* wtf_wikipedia 8.1.1 MIT */
 import https from 'https';
 
 var parseUrl = function parseUrl(url) {
@@ -3887,6 +3887,7 @@ var cleanText = function cleanText(str) {
 };
 
 var skipSpanRow = function skipSpanRow(row) {
+  row = row || [];
   var len = row.length;
   var hasTxt = row.filter(function (str) {
     return str;
@@ -3992,7 +3993,15 @@ var parseTable = function parseTable(wiki) {
   .split(/\n/).map(function (l) {
     return l.trim();
   });
-  var rows = _findRows(lines); //remove non-header span rows
+  var rows = _findRows(lines);
+  rows = rows.filter(function (r) {
+    return r;
+  });
+
+  if (rows.length === 0) {
+    return [];
+  } //remove non-header span rows
+
 
   rows = removeMidSpans(rows); //support colspan, rowspan...
 
@@ -8791,7 +8800,7 @@ var fetchCategory = function fetchCategory(category, lang, options) {
 
 var category = fetchCategory;
 
-var _version = '8.1.0';
+var _version = '8.1.1';
 
 var wtf = function wtf(wiki, options) {
   return _01Document(wiki, options);

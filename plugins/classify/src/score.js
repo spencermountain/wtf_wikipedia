@@ -63,11 +63,10 @@ const getScore = function(detail) {
       score *= 0.8
     }
   }
-
   return {
     root: root,
     category: category,
-    score: score,
+    score: Math.ceil(score),
     detail: detail
   }
 }

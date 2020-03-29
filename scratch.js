@@ -5,9 +5,10 @@ wtf.extend(require('./plugins/i18n/src'))
 wtf.extend(require('./plugins/summary/src'))
 wtf.extend(require('./plugins/category/src'))
 
-// wtf.fetch('Toronto').then(doc => {
-//   let html = doc.html()
-//   console.log(html)
+// wtf.fetch('Croatian language').then(doc => {
+//   console.log(doc.tables().map(t => t.json()))
+//   // let html = doc.html()
+//   // console.log(html)
 // })
 
 // wtf.fetchCategory('Larchmont, New York').then(res => {
@@ -28,3 +29,7 @@ wtf.extend(require('./plugins/category/src'))
 // let doc = wtf(txt)
 // let res = doc.classify()
 // console.log(res)
+let str = `
+`
+let doc = wtf(str)
+console.log(doc.table())
