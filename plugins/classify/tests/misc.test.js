@@ -24,7 +24,7 @@ test('classify-test', async function(t) {
     ['royal_cinema', 'Place'],
     ['Canton-of-Etaples', 'Place'],
     ['Arts_Club_of_Chicago', 'Place'],
-    ['al_Haytham', 'Person/Scientist'],
+    ['al_Haytham', 'Person/Academic'],
     ['The-Field-of-Waterloo', 'CreativeWork'],
     ['bluejays', null], //partial page
     ['Liste-der-argentinischen-Botschafter-in-Chile', null]

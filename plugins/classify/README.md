@@ -60,8 +60,9 @@ Person:
   Athlete: true
   Artist: true
   Politician: true
-  Scientist: true
   Actor: true
+  Academic: true
+  ReligiousFigure: true
 Place:
   Country: true
   City: true
@@ -85,7 +86,7 @@ Thing:
   Product: true
   Software: true
   Character: true
-  Organism: true
+Organism: true
 ```
 
 ### i18n

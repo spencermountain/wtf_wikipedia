@@ -19,8 +19,8 @@ const parse = function(cat) {
 const getScore = function(detail) {
   let cats = []
   Object.keys(detail).forEach(k => {
-    detail[k].forEach(str => {
-      cats.push(parse(str))
+    detail[k].forEach(obj => {
+      cats.push(parse(obj.cat))
     })
   })
   // find top parent

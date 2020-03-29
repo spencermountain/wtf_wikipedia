@@ -1,32 +1,6 @@
-const patterns = require('./templates')
+const patterns = require('./patterns')
 // 1-1 template mapping
-const mapping = {
-  //place
-  coord: 'Place',
-  'weather box': 'Place',
-
-  //person
-  persondata: 'Person',
-  writer: 'Person',
-  'ted speaker': 'Person',
-  taxonbar: 'Thing/Organism',
-  wikispecies: 'Thing/Organism',
-  animalia: 'Thing/Organism',
-  chordata: 'Thing/Organism',
-  cnidaria: 'Thing/Organism',
-  porifera: 'Thing/Organism',
-  epicaridea: 'Thing/Organism',
-  mammals: 'Thing/Organism',
-  phlyctaeniidae: 'Thing/Organism',
-  carnivora: 'Thing/Organism',
-  clade: 'Thing/Organism',
-  'life on earth': 'Thing/Organism',
-  'orders of insects': 'Thing/Organism',
-  coleoptera: 'Thing/Organism',
-  'insects in culture': 'Thing/Organism',
-  'living things in culture': 'Thing/Organism',
-  'eukaryota classification': 'Thing/Organism'
-}
+const mapping = require('./mapping')
 
 const matchPatterns = function(title) {
   let types = Object.keys(patterns)
@@ -48,12 +22,12 @@ const byTemplate = function(doc) {
   for (let i = 0; i < templates.length; i++) {
     const title = templates[i].template
     if (mapping.hasOwnProperty(title)) {
-      found.push(mapping[title])
+      found.push({ cat: mapping[title], reason: title })
     } else {
       // try regex-list on it
       let type = matchPatterns(title)
       if (type) {
-        found.push(type)
+        found.push({ cat: type, reason: title })
       }
     }
   }

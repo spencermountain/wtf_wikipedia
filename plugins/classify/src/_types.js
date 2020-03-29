@@ -3,8 +3,9 @@ const tree = {
     Athlete: true,
     Artist: true,
     Politician: true,
-    Scientist: true,
-    Actor: true
+    Actor: true,
+    Academic: true,
+    ReligiousFigure: true
   },
   Place: {
     Country: true,
@@ -32,9 +33,9 @@ const tree = {
   Thing: {
     Product: true,
     Software: true,
-    Character: true,
-    Organism: true
-  }
+    Character: true
+  },
+  Organism: true
 }
 
 const isObject = function(obj) {

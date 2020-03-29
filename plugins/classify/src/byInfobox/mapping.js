@@ -1,7 +1,7 @@
 module.exports = {
-  actor: 'Person', //1
+  actor: 'Person/Actor', //1
   adult_biography: 'Person', //2
-  afl_biography: 'Person', //7
+  afl_biography: 'Person/Athlete', //7
   aircraft_accident: 'Event/Disaster', //2
   aircraft_begin: 'Thing', //24
   aircraft_engine: 'Thing', //2
@@ -9,7 +9,7 @@ module.exports = {
   aircraft_type: 'Thing', //21
   airline: 'Organization', //9
   airliner_accident: 'Event/Disaster', //3
-  airport: 'Place', //20
+  airport: 'Place/Structure', //20
   album: 'CreativeWork/Album', //466
   'album/color': '', //1
   alpine_ski_racer: 'Person/Athlete', //2
@@ -21,7 +21,7 @@ module.exports = {
   'animanga/print': '', //12
   'animanga/video': '', //23
   antipope: '', //1
-  archbishop: 'Person', //1
+  archbishop: 'Person/ReligiousFigure', //1
   architect: 'Person', //9
   artifact: 'Thing', //1
   artist: 'Person/Artist', //42
@@ -106,7 +106,7 @@ module.exports = {
   'dot-com_company': 'Organization', //3
   drug_class: '', //1
   earthquake: 'Event/Disaster', //2
-  economist: 'Person', //4
+  economist: 'Person/Academic', //4
   economy: '', //4
   election: 'Event/Election', //19
   electric_vehicle: 'Thing/Product', //1
@@ -208,7 +208,7 @@ module.exports = {
   military_structure: 'Place', //15
   military_unit: 'Organization', //33
   mineral: 'Thing', //5
-  minister: 'Person', //3
+  minister: 'Person/ReligiousFigure', //3
   mla: '', //1
   mlb_player: 'Person/Athlete', //8
   mobile_phone: 'Thing/Product', //3
@@ -249,7 +249,7 @@ module.exports = {
   'non-profit': 'Organization/SportsTeam', //6
   nrhp: '', //144
   nycs: '', //7
-  officeholder: 'Person', //133
+  officeholder: 'Person/Politician', //133
   official_post: '', //1
   oil_field: 'Place', //1
   opera: 'CreativeWork', //3
@@ -310,11 +310,11 @@ module.exports = {
   russian_inhabited_locality: 'Place', //1
   russian_town: 'Place', //4
   'russian_urban-type_settlement': 'Place', //2
-  saint: 'Person', //14
-  scholar: 'Person', //2
+  saint: 'Person/ReligiousFigure', //14
+  scholar: 'Person/Academic', //2
   school: 'Place', //95
   school_district: 'Organization', //10
-  scientist: 'Person/Scientist', //84
+  scientist: 'Person/Academic', //84
   scotland_council_area: 'Place', //2
   scotus_case: '', //6
   sea: 'Place/BodyOfWater', //3
@@ -405,6 +405,6 @@ module.exports = {
   writer: 'Person', //69
   writing_system: 'Thing', //4
   zoo: 'Place', //3
-  speciesbox: 'Thing/Organism',
-  'automatic taxobox': 'Thing/Organism'
+  speciesbox: 'Organism',
+  'automatic taxobox': 'Organism'
 }

@@ -1,17 +1,5 @@
 const patterns = require('./patterns')
-
-const mapping = {
-  'living people': 'Person',
-  'date of birth unknown': 'Person',
-  'possibly living people': 'Person',
-  'place of birth missing': 'Person',
-  'american films': 'CreativeWork/Film',
-  'english-language films': 'CreativeWork/Film',
-  'grammy award winners': 'Organization/MusicalGroup',
-  'musical quartets': 'Organization/MusicalGroup',
-  'musical duos': 'Organization/MusicalGroup',
-  'musical trios': 'Organization/MusicalGroup'
-}
+const mapping = require('./mapping')
 
 const byPattern = function(cat) {
   let types = Object.keys(patterns)
@@ -24,6 +12,7 @@ const byPattern = function(cat) {
       }
     }
   }
+  return null
 }
 
 const byCategory = function(doc) {
@@ -41,13 +30,13 @@ const byCategory = function(doc) {
     const cat = cats[i]
     // try our 1-to-1 mapping
     if (mapping.hasOwnProperty(cat)) {
-      found.push(mapping[cat])
+      found.push({ cat: mapping[cat], reason: cat })
       continue
     }
     // loop through our patterns
     let match = byPattern(cat)
     if (match) {
-      found.push(match)
+      found.push({ cat: match, reason: cat })
     }
   }
   return found

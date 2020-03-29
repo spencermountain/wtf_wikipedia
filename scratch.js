@@ -10,26 +10,10 @@ wtf.extend(require('./plugins/category/src'))
 //   // let html = doc.html()
 //   // console.log(html)
 // })
+let file = 'United-Kingdom'
+let str = require('fs')
+  .readFileSync(`/Users/spencer/mountain/wtf_wikipedia/tests/cache/${file}.txt`)
+  .toString()
 
-// wtf.fetchCategory('Larchmont, New York').then(res => {
-//   res.docs.forEach(doc => {
-//     console.log(doc.title())
-//     console.log(doc.summary())
-//     console.log('\n\n')
-//   })
-// })
-// let str =
-//   'Larchmont Yacht Club is a private, members-only yacht club situated on Larchmont Harbor in the Village of Larchmont, in Westchester County, New York. '
-// console.log(wtf(str).summary())
-
-// let file = 'United-Kingdom'
-// let txt = require('fs')
-//   .readFileSync(`/Users/spencer/mountain/wtf_wikipedia/tests/cache/${file}.txt`)
-//   .toString()
-// let doc = wtf(txt)
-// let res = doc.classify()
-// console.log(res)
-let str = `
-`
 let doc = wtf(str)
-console.log(doc.table())
+console.log(JSON.stringify(doc.classify(), null, 2))

@@ -1,11 +1,7 @@
 const patterns = {
   'Thing/Character': [/(fictional|television) characters/],
   'Thing/Product': [/products introduced in ./, /musical instruments/],
-  'Thing/Organism': [
-    /(funghi|reptiles|flora|fauna|fish|birds|trees) of ./,
-    / first appearances/,
-    / phyla/
-  ],
+  Organism: [/(funghi|reptiles|flora|fauna|fish|birds|trees) of ./, / first appearances/, / phyla/],
 
   // ==Person==
   'Person/Politician': [
