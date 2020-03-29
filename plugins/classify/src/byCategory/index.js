@@ -1,19 +1,6 @@
 const patterns = require('./patterns')
 const mapping = require('./mapping')
-
-const byPattern = function(cat) {
-  let types = Object.keys(patterns)
-  for (let i = 0; i < types.length; i++) {
-    const key = types[i]
-    for (let o = 0; o < patterns[key].length; o++) {
-      const reg = patterns[key][o]
-      if (reg.test(cat) === true) {
-        return key
-      }
-    }
-  }
-  return null
-}
+const byPattern = require('../_byPattern')
 
 const byCategory = function(doc) {
   let found = []
@@ -34,7 +21,7 @@ const byCategory = function(doc) {
       continue
     }
     // loop through our patterns
-    let match = byPattern(cat)
+    let match = byPattern(cat, patterns)
     if (match) {
       found.push({ cat: match, reason: cat })
     }

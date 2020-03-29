@@ -1,9 +1,6 @@
 const mapping = require('./mapping')
-
-let patterns = {
-  'CreativeWork/Film': [/ \([0-9]{4} film\)$/],
-  CreativeWork: [/ \((.*? )song\)$/]
-}
+const patterns = require('./patterns')
+const byPattern = require('../_byPattern')
 const paren = /\((.*)\)$/
 
 const byTitle = function(doc) {
@@ -27,15 +24,9 @@ const byTitle = function(doc) {
   }
 
   // look at regex
-  let keys = Object.keys(patterns)
-  for (let o = 0; o < keys.length; o++) {
-    const k = keys[o]
-    for (let i = 0; i < patterns[k].length; i++) {
-      const reg = patterns[k][i]
-      if (reg.test(title)) {
-        return [{ cat: k, reason: title }]
-      }
-    }
+  let match = byPattern(title, patterns)
+  if (match) {
+    return [{ cat: match, reason: title }]
   }
   return []
 }

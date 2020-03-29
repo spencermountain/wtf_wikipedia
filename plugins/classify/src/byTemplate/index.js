@@ -1,20 +1,6 @@
 const patterns = require('./patterns')
-// 1-1 template mapping
 const mapping = require('./mapping')
-
-const matchPatterns = function(title) {
-  let types = Object.keys(patterns)
-  for (let i = 0; i < types.length; i++) {
-    const key = types[i]
-    for (let o = 0; o < patterns[key].length; o++) {
-      const reg = patterns[key][o]
-      if (reg.test(title) === true) {
-        return key
-      }
-    }
-  }
-  return null
-}
+const byPattern = require('../_byPattern')
 
 const byTemplate = function(doc) {
   let templates = doc.templates()
@@ -25,7 +11,7 @@ const byTemplate = function(doc) {
       found.push({ cat: mapping[title], reason: title })
     } else {
       // try regex-list on it
-      let type = matchPatterns(title)
+      let type = byPattern(title, patterns)
       if (type) {
         found.push({ cat: type, reason: title })
       }
