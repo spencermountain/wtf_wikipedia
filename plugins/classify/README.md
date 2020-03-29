@@ -81,12 +81,24 @@ Event:
   Election: true
   Disaster: true
   SportsEvent: true
-  War: true
+  MilitaryConflict: true
 Thing:
   Product: true
   Software: true
   Character: true
 Organism: true
+```
+
+as of March 2020, it can classify ~43% of english wikipedia articles:
+
+```
+    null: 56.09%
+    People: 5.71%
+    Place: 7.86%
+    Organization: 3.39%
+    CreativeWork: 1.77%
+    Event: 7.65%
+    Thing: 2.06%
 ```
 
 ### i18n

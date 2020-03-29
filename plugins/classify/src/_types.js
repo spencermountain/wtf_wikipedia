@@ -28,7 +28,7 @@ const tree = {
     Election: true,
     Disaster: true,
     SportsEvent: true,
-    War: true
+    MilitaryConflict: true
   },
   Thing: {
     Product: true,

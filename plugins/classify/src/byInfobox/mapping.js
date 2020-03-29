@@ -5,73 +5,49 @@ module.exports = {
   aircraft_accident: 'Event/Disaster', //2
   aircraft_begin: 'Thing', //24
   aircraft_engine: 'Thing', //2
-  aircraft_occurrence: '', //5
   aircraft_type: 'Thing', //21
   airline: 'Organization', //9
   airliner_accident: 'Event/Disaster', //3
   airport: 'Place/Structure', //20
   album: 'CreativeWork/Album', //466
-  'album/color': '', //1
   alpine_ski_racer: 'Person/Athlete', //2
   amusement_park: 'Place', //4
   ancient_site: 'Place', //14
-  'animanga/footer': '', //21
-  'animanga/game': '', //2
-  'animanga/header': '', //21
-  'animanga/print': '', //12
-  'animanga/video': '', //23
-  antipope: '', //1
   archbishop: 'Person/ReligiousFigure', //1
   architect: 'Person', //9
   artifact: 'Thing', //1
   artist: 'Person/Artist', //42
-  artist_discography: '', //9
   artwork: 'CreativeWork', //14
   athlete: 'Person/Athlete', //6
   athletics_championships: 'Event/SportsEvent', //6
-  australian_electorate: '', //3
   australian_place: 'Place', //18
   automobile: 'Thing/Product', //8
-  award: '', //30
   badminton_event: 'Event/SportsEvent', //2
   baseball_biography: 'Person/Athlete', //64
   basketball_biography: 'Person/Athlete', //17
   beauty_pageant: 'Event', //4
   beverage: 'Thing/Product', //7
-  bilateral_relations: '', //2
-  biodatabase: '', //2
-  bishopric: '', //3
   body_of_water: 'Place/BodyOfWater', //7
   book: 'CreativeWork/Book', //130
   book_series: 'CreativeWork', //4
   boxer: 'Person/Athlete', //5
   boxingmatch: 'Event/SportsEvent', //2
-  brand: '', //1
   bridge: 'Place/Structure', //5
   broadcast: 'CreativeWork', //10
   broadcasting_network: 'Organization', //4
   building: 'Place/Structure', //29
-  bus_transit: '', //5
   canadianmp: 'Person/Politician', //18
-  canton: '', //1
-  cardinalstyles: '', //2
   casino: 'Place', //1
-  cave: '', //2
   cbb_team: 'Organization', //1
   cemetery: 'Place', //3
   cfl_player: 'Person/Athlete', //2
   character: 'Thing/Character', //12
   chef: 'Person', //6
   chess_player: 'Person', //2
-  chinese: '', //6
-  'chinese-language_singer_and_actor': '', //5
   choir: 'Organization', //1
-  christian_denomination: '', //6
   christian_leader: 'Person', //17
   church: 'Place', //10
   civil_conflict: 'Event', //3
-  coa_wide: '', //3
-  coin: '', //4
   college: 'Organization', //2
   college_coach: 'Person', //18
   college_football_player: 'Person', //7
@@ -82,14 +58,10 @@ module.exports = {
   comic_strip: 'CreativeWork', //1
   comics_character: 'Thing/Character', //13
   comics_creator: 'Person', //10
-  comics_set_index: '', //1
-  comics_story_arc: '', //1
   company: 'Organization', //150
   computer_hardware_bus: 'Thing', //1
   computer_virus: 'Thing/Software', //1
   concert_tour: 'Event', //8
-  constellation: '', //5
-  country_at_games: '', //6
   court_case: 'Event', //8
   cpu: 'Thing/Product', //1
   cricket_ground: 'Place', //2
@@ -97,27 +69,18 @@ module.exports = {
   cricketer: 'Person/Athlete', //43
   criminal: 'Person', //8
   cyclist: 'Person/Athlete', //8
-  'd&d_creature': '', //3
   dam: 'Place', //4
-  data_structure: '', //1
-  deity: '', //5
-  disease: '', //2
   doctor_who_episode: 'CreativeWork', //3
   'dot-com_company': 'Organization', //3
-  drug_class: '', //1
   earthquake: 'Event/Disaster', //2
   economist: 'Person/Academic', //4
-  economy: '', //4
   election: 'Event/Election', //19
   electric_vehicle: 'Thing/Product', //1
   engineer: 'Person', //2
   enzyme: 'Thing', //19
-  ethnic_group: '', //16
   event: 'Event', //2
-  exchange: '', //2
   fashion_designer: 'Person', //2
   feature_on_mars: 'Place', //1
-  field_hockey: '', //18
   field_hockey_player: 'Person/Athlete', //8
   figure_skater: 'Person/Athlete', //3
   fila_wrestling_event: 'Event/SportsEvent', //1
@@ -137,22 +100,17 @@ module.exports = {
   former_country: 'Place', //14
   former_subdivision: 'Place', //3
   french_commune: 'Place', //6
-  french_constituency: '', //20
-  'g.i._joe_character': '', //1
   gaa_club: 'Organization', //2
   gaa_player: 'Person/Athlete', //15
   game: 'Thing', //3
-  games: '', //3
   gene: 'Thing', //3
   german_location: 'Place', //6
-  given_name: '', //9
   golf_facility: 'Place', //2
   golfer: 'Person/Athlete', //9
   government_agency: 'Organization', //7
   government_cabinet: 'Organization', //7
   governor: 'Person/Politician', //5
   gpu: 'Thing/Product', //1
-  grappling_hold: '', //1
   gridiron_football_person: 'Person', //11
   gymnast: 'Person/Athlete', //2
   handball_biography: 'Person', //8
@@ -161,12 +119,10 @@ module.exports = {
   historical_era: 'Event', //1
   holiday: 'Event', //5
   hollywood_cartoon: 'CreativeWork', //4
-  horse: '', //1
   horseraces: 'Event', //8
   horseracing_personality: 'Person', //2
   hospital: 'Place', //14
   hotel: 'Place', //3
-  'hurling_all-ireland': '', //2
   hurricane: 'Event/Disaster', //1
   ice_hockey_player: 'Person/Athlete', //15
   indian_politician: 'Person/Politician', //1
@@ -179,18 +135,13 @@ module.exports = {
   journal: 'Organization', //23
   judge: 'Person', //8
   judo_technique: 'Thing', //2
-  korean_name: '', //18
   laboratory: 'Organization', //1
   lacrosse_player: 'Person/Athlete', //6
   lake: 'Place/BodyOfWater', //10
-  language: '', //24
-  language_family: '', //5
   launch_pad: 'Place', //1
   law_enforcement_agency: 'Organization', //1
-  legislation: '', //6
   legislative_term: 'Event', //1
   legislature: 'Organization', //3
-  lgbt_rights: '', //3
   library: 'Organization', //9
   ligament: 'Thing', //1
   little_league_world_series: 'Event/SportsEvent', //5
@@ -199,17 +150,14 @@ module.exports = {
   martial_artist: 'Person/Athlete', //13
   mass_murderer: 'Person', //1
   medical_condition: 'Thing', //31
-  'medical_condition_(new)': '', //6
   medical_person: 'Person', //5
-  military_conflict: 'Event/War', //27
-  military_installation: '', //1
+  military_conflict: 'Event/MilitaryConflict', //27
   military_memorial: 'Place', //2
   military_person: 'Person', //60
   military_structure: 'Place', //15
   military_unit: 'Organization', //33
   mineral: 'Thing', //5
   minister: 'Person/ReligiousFigure', //3
-  mla: '', //1
   mlb_player: 'Person/Athlete', //8
   mobile_phone: 'Thing/Product', //3
   model: 'Person', //2
@@ -227,7 +175,6 @@ module.exports = {
   musical_artist: 'Organization/MusicalGroup', //226
   musical_composition: 'CreativeWork', //7
   nascar_driver: 'Person', //3
-  nascar_race_report: '', //1
   national_military: 'Organization', //4
   nba_biography: 'Person/Athlete', //4
   nba_season: 'Event/SportsEvent', //6
@@ -247,10 +194,7 @@ module.exports = {
   nobility: 'Organization', //5
   non_test_cricket_team: 'Organization/SportsTeam', //4
   'non-profit': 'Organization/SportsTeam', //6
-  nrhp: '', //144
-  nycs: '', //7
   officeholder: 'Person/Politician', //133
-  official_post: '', //1
   oil_field: 'Place', //1
   opera: 'CreativeWork', //3
   organization: 'Organization', //41
@@ -261,12 +205,10 @@ module.exports = {
   pba_draft: 'Event', //3
   person: 'Person', //441
   philosopher: 'Person', //16
-  physical_quantity: '', //1
   police_officer: 'Person', //2
   political_party: 'Organization', //25
   politician: 'Person/Politician', //34
   'politician_(general)': 'Person/Politician', //2
-  port: '', //5
   power_station: 'Place/Structure', //3
   prepared_food: 'Thing', //12
   presenter: 'Person', //4
@@ -274,7 +216,6 @@ module.exports = {
   prison: 'Place', //4
   professional_wrestler: 'Person/Athlete', //9
   programming_language: 'Thing', //6
-  project: '', //1
   protein_family: 'Thing', //2
   province_or_territory_of_canada: 'Place', //1
   public_transit: 'Organization', //1
@@ -282,25 +223,19 @@ module.exports = {
   racing_driver: 'Person', //4
   radio_show: 'CreativeWork', //3
   radio_station: 'Organization', //25
-  rail: '', //4
   rail_line: 'Organization', //7
   rail_service: 'Organization', //6
-  rdt: '', //2
   reality_music_competition: 'Event', //1
   record_label: 'Organization', //7
   recurring_event: 'Event', //3
-  region_symbols: '', //1
   religious_biography: 'Person', //9
   religious_building: 'Place/Structure', //9
   religious_text: 'Thing', //1
-  restaurant: '', //4
   river: 'Place/BodyOfWater', //16
   road: 'Place', //41
   road_small: 'Place', //14
   rocket: 'Thing', //3
-  rockunit: '', //3
   roman_emperor: 'Person/Politician', //2
-  royal_house: '', //1
   royalty: 'Person', //77
   rugby_biography: 'Person/Athlete', //12
   rugby_league_biography: 'Person/Athlete', //24
@@ -316,7 +251,6 @@ module.exports = {
   school_district: 'Organization', //10
   scientist: 'Person/Academic', //84
   scotland_council_area: 'Place', //2
-  scotus_case: '', //6
   sea: 'Place/BodyOfWater', //3
   settlement: 'Place', //642
   sheep_breed: 'Thing', //1
@@ -326,7 +260,6 @@ module.exports = {
   ship_class_overview: 'Thing', //25
   ship_image: 'Thing', //84
   shopping_mall: 'Place', //9
-  single: '', //160
   skier: 'Person/Athlete', //14
   soap_character: 'Thing/Character', //126
   software: 'Thing/Software', //25
@@ -364,9 +297,7 @@ module.exports = {
   tennis_biography: 'Person/Athlete', //5
   tennis_event: 'Event/SportsEvent', //3
   tennis_grand_slam_events: 'Event/SportsEvent', //2
-  theatre: '', //1
   thoroughbred_racehorse: 'Thing', //7
-  tour_rugby: '', //1
   town_at: 'Place', //1
   train: 'Thing', //2
   treaty: 'CreativeWork', //2
@@ -375,22 +306,17 @@ module.exports = {
   'u.s._legislation': 'Organization', //3
   'u.s._metropolitan_area': 'Place', //1
   'u.s._state': 'Place', //3
-  'u.s._state_symbols': '', //4
   uk_constituency: 'Place', //1
   uk_disused_station: 'Place', //8
   uk_legislation: 'Organization', //6
   uk_place: 'Place', //22
   uk_school: 'Place', //26
-  ukrainian_raion: '', //1
   unesco_world_heritage_site: 'Place', //3
-  unit: '', //4
   united_states_federal_proposed_legislation: 'Thing', //1
   university: 'Organization', //44
   university_of_notre_dame_residence_hall: 'Place', //1
   v8_supercar_team: 'Organization', //3
   venue: 'Place', //6
-  vg: '', //3
-  vg_series: '', //4
   video_game: 'CreativeWork', //81
   volleyball_biography: 'Person/Athlete', //1
   volleyball_player: 'Person/Athlete', //4
@@ -398,13 +324,261 @@ module.exports = {
   weapon: 'Thing', //15
   website: 'Thing/Software', //5
   windmill: 'Place', //1
-  worldscouting: '', //2
   wrc_driver: 'Person', //1
   wrestling_event: 'Event/SportsEvent', //8
-  wrestling_promotion: '', //1
   writer: 'Person', //69
   writing_system: 'Thing', //4
   zoo: 'Place', //3
   speciesbox: 'Organism',
-  'automatic taxobox': 'Organism'
+  'automatic taxobox': 'Organism',
+
+  // march 29th
+  'video game': 'CreativeWork',
+  'television episode': 'CreativeWork',
+  'comic book title': 'CreativeWork',
+  'song contest entry': 'CreativeWork',
+  'short story': 'CreativeWork',
+  play: 'CreativeWork',
+  'hollywood cartoon': 'CreativeWork',
+  'radio show': 'CreativeWork',
+  'simpsons episode': 'CreativeWork',
+  'musical composition': 'CreativeWork',
+  'book series': 'CreativeWork',
+  'comic strip': 'CreativeWork',
+  'd&d creature': 'Thing/Character',
+  'television season': 'CreativeWork',
+  'comics organization': 'CreativeWork',
+  'doctor who episode': 'CreativeWork',
+  'animanga/other': 'CreativeWork',
+  'graphic novel': 'CreativeWork',
+  rpg: 'CreativeWork',
+  'vg character': 'Thing/Character',
+  'big finish': 'CreativeWork',
+  'vg series': 'CreativeWork',
+  'name module': 'CreativeWork',
+  'comics story arc': 'CreativeWork',
+  'animanga character': 'Thing/Character',
+  'video game series': 'CreativeWork',
+  'fictional location': 'Thing',
+  'futurama episode': 'CreativeWork',
+  'video game character': 'Thing/Character',
+  'comics character and title': 'CreativeWork',
+  'comics meta series': 'CreativeWork',
+  webcomic: 'CreativeWork',
+  'the goodies episode': 'CreativeWork',
+  'audio drama': 'CreativeWork',
+  'comics species': 'Thing',
+  'sw comics': 'CreativeWork',
+  'media franchise': 'CreativeWork',
+  'folk tale': 'CreativeWork',
+  'doctor who character': 'Thing/Character',
+  'tolkien character': 'Thing/Character',
+
+  // learned events
+  'military conflict': 'Event/MilitaryConflict',
+  'olympic event': 'Event/SportsEvent',
+  'grand prix race report': 'Event',
+  'recurring event': 'Event',
+  'music festival': 'Event',
+  'international football competition': 'Event/SportsEvent',
+  'football league season': 'Event',
+  'scotus case': 'Event',
+  'wrestling event': 'Event/SportsEvent',
+  'court case': 'Event',
+  'hockey team player': 'Person/Athlete',
+  'sports season': 'Event/SportsEvent',
+  'civil conflict': 'Event/MilitaryConflict',
+  'concert tour': 'Event',
+  'cycling race report': 'Event/SportsEvent',
+  'ncaa team season': 'Event/SportsEvent',
+  'cricket tournament': 'Event/SportsEvent',
+  'international labour organization convention': 'Event',
+  'song contest': 'Event',
+  'football match': 'Event/SportsEvent',
+  'australian year': 'Event',
+  'world series expanded': 'Event/SportsEvent',
+  'civilian attack': 'Event/MilitaryConflict',
+  'mma event': 'Event/SportsEvent',
+  'snooker player': 'Person',
+  'airliner accident': 'Event/Disaster',
+  'football tournament': 'Event/SportsEvent',
+  'individual darts tournament': 'Event',
+  'nfl season': 'Event/SportsEvent',
+  'beauty pageant': 'Event',
+  'nfl draft': 'Event/SportsEvent',
+  'athletics championships': 'Event/SportsEvent',
+  'historical event': 'Event',
+  'grand prix motorcycle race report': 'Event',
+  'football club season': 'Event/SportsEvent',
+  'international handball competition': 'Event',
+  'coa case': 'Event',
+  'individual snooker tournament': 'Event',
+  'canadian football game': 'Event/SportsEvent',
+  'australian rules football season': 'Event/SportsEvent',
+  'football tournament season': 'Event/SportsEvent',
+  'esc national year': 'Event',
+  indy500: 'Event',
+  'international ice hockey competition': 'Event/SportsEvent',
+  'cricket tour': 'Event/SportsEvent',
+  'national political convention': 'Event',
+  referendum: 'Event',
+
+  // learned organization
+  'football club': 'Organization/SportsTeam',
+  'radio station': 'Organization',
+  'military unit': 'Organization',
+  'political party': 'Organization',
+  'government agency': 'Organization',
+  'rail line': 'Organization',
+  'record label': 'Organization',
+  'school district': 'Organization',
+  'tv channel': 'Organization',
+  'sports league': 'Organization',
+  'football league': 'Organization',
+  worldscouting: 'Organization',
+  'rugby team': 'Organization/SportsTeam',
+  'sg rail': 'Organization',
+  'law enforcement agency': 'Organization',
+  'uk legislation': 'Organization',
+  'public transit': 'Organization',
+  'us university ranking': 'Organization',
+  'television channel': 'Organization',
+  'national football team': 'Organization/SportsTeam',
+  'bus transit': 'Organization',
+  union: 'Organization',
+  'broadcasting network': 'Organization',
+  'christian denomination': 'Organization',
+  'film awards': 'Organization',
+  'gaa club': 'Organization',
+  fraternity: 'Organization',
+  rail: 'Organization',
+  'rail service': 'Organization',
+  'national military': 'Organization',
+  'sport governing body': 'Organization',
+  'basketball club': 'Organization/SportsTeam',
+  'hockey team': 'Organization/SportsTeam',
+  'political party/seats': 'Organization',
+  'rugby league club': 'Organization/SportsTeam',
+  'athletic conference': 'Organization',
+  'football club infobox': 'Organization/SportsTeam',
+  'film festival': 'Organization',
+  'medical condition (new)': 'Organization',
+  brand: 'Organization/MusicalGroup',
+  'cricket team': 'Organization/SportsTeam',
+  'dot-com company': 'Organization',
+  'india university ranking': 'Organization',
+  'uk university rankings': 'Organization',
+  'government cabinet': 'Organization',
+
+  //learned organisms
+  taxobox: 'Organism',
+  subspeciesbox: 'Organism',
+  mycomorphbox: 'Organism',
+  'paraphyletic group': 'Organism',
+  'nutritional value': 'Organism',
+  infraspeciesbox: 'Organism',
+  disease: 'Thing',
+  'mythical creature': 'Thing',
+  ecoregion: 'Place',
+  horse: 'Organism',
+  haplogroup: 'Organism',
+  bird: 'Organism',
+  'bird/population': 'Organism',
+  'medical resources': 'Organism',
+  'college mascot': 'Thing',
+  galaxy: 'Thing',
+  'dog breed': 'Organism',
+  'nc name': 'Organism',
+  'pig breed': 'Organism',
+  'botanical product': 'Organism',
+  'cattle breed': 'Organism',
+  bishop: 'Person/ReligiousFigure',
+  'grape variety': 'Organism',
+  'horse breed': 'Organism',
+  'poultry breed': 'Organism',
+
+  // learned people
+  'football biography': 'Person/Athlete',
+  'military person': 'Person',
+  'baseball biography': 'Person/Athlete',
+  'ice hockey player': 'Person/Athlete',
+  'nfl player': 'Person/Athlete',
+  'christian leader': 'Person/ReligiousFigure',
+  congressman: 'Person/Politician',
+  'basketball biography': 'Person/Athlete',
+  'comics creator': 'Person/Artist',
+  'professional wrestler': 'Person/Athlete',
+  'college coach': 'Person',
+  'tennis biography': 'Person/Athlete',
+  'afl biography': 'Person/Athlete',
+  'nfl biography': 'Person/Athlete',
+  'rugby biography': 'Person/Athlete',
+  'rugby league biography': 'Person/Athlete',
+  'prime minister': 'Person/Politician',
+  'nba biography': 'Person/Athlete',
+  'figure skater': 'Person/Athlete',
+  'f1 driver': 'Person',
+  'gridiron football person': 'Person',
+  'indian politician': 'Person/Politician',
+  'racing driver': 'Person',
+  'martial artist': 'Person',
+  'chinese-language singer and actor': 'Person',
+  astronaut: 'Person',
+  senator: 'Person/Politician',
+  'nascar driver': 'Person',
+  'adult biography': 'Person',
+  'state representative': 'Person/Politician',
+  'state senator': 'Person/Politician',
+  'coa wide': 'Person',
+  'religious biography': 'Person/ReligiousFigure',
+  'chess player': 'Person',
+  'pageant titleholder': 'Person',
+  'gaa player': 'Person/Athlete',
+  'us cabinet official': 'Person/Politician',
+
+  // learned places
+  'uk place': 'Place',
+  'italian comune': 'Place',
+  geobox: 'Place',
+  'australian place': 'Place',
+  'french commune': 'Place',
+  'german location': 'Place',
+  'u.s. county': 'Place',
+  'swiss town': 'Place/City',
+  'former country': 'Place',
+  'uk school': 'Place/Structure',
+  'road small': 'Place',
+  'lunar crater': 'Place',
+  'gb station': 'Place',
+  'greek dimos': 'Place',
+  'military structure': 'Place/Structure',
+  'uk constituency main': 'Place',
+  'city japan': 'Place/City',
+  'religious building': 'Place/Structure',
+  'shopping mall': 'Place/Structure',
+  'municipality br': 'Place/City',
+  'finnish municipality/population count': 'Place',
+  'ancient site': 'Place',
+  'mountain range': 'Place',
+  'london station': 'Place',
+  'russian town': 'Place/City',
+  'former subdivision': 'Place',
+  lighthouse: 'Place/Structure',
+  'uk station': 'Place',
+  'historic site': 'Place',
+  'world heritage site': 'Place',
+  diocese: 'Place',
+  'south african town 2011': 'Place/City',
+  'uk disused station': 'Place',
+  'belgium municipality': 'Place',
+  'uk constituency': 'Place',
+  theatre: 'Place',
+  'canada electoral district': 'Place',
+  nycs: 'Place',
+  'body of water': 'Place/BodyOfWater',
+  'mountain pass': 'Place',
+  kommune: 'Place',
+  'historic subdivision': 'Place',
+  'u.s. congressional district': 'Place',
+  'power station': 'Place/Structure'
 }

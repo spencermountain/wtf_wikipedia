@@ -59,7 +59,7 @@ const patterns = {
     /. league seasons$/,
     /^(19|20)[0-9]{2} in (soccer|football|rugby|tennis|basketball|baseball|cricket|sports)/
   ],
-  'Event/War': [/conflicts in [0-9]{4}/, /battles involving ./],
+  'Event/MilitaryConflict': [/conflicts in [0-9]{4}/, /battles involving ./],
   Event: [/^(19|20)[0-9]{2} in /],
 
   // ==Orgs==
