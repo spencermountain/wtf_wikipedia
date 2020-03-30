@@ -183,7 +183,7 @@ module.exports = {
   store: 'Organization/Company',
   defunct: 'Organization',
   'tv network': 'Organization',
-  'political party': 'Organization',
+  'political party': 'Organization/PoliticalParty',
   'japanese band': 'Organization/MusicalGroup',
   'department store': 'Organization',
   'swedish band': 'Organization/MusicalGroup',

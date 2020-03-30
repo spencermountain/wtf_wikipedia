@@ -4,6 +4,7 @@ wtf.extend(require('./plugins/classify/src'))
 wtf.extend(require('./plugins/i18n/src'))
 wtf.extend(require('./plugins/summary/src'))
 wtf.extend(require('./plugins/category/src'))
+wtf.extend(require('./plugins/sfw/src'))
 
 // wtf.fetch('Croatian language').then(doc => {
 //   console.log(doc.tables().map(t => t.json()))
@@ -16,4 +17,4 @@ let str = require('fs')
   .toString()
 
 let doc = wtf(str)
-console.log(JSON.stringify(doc.classify(), null, 2))
+console.log(JSON.stringify(doc.sfw(), null, 2))

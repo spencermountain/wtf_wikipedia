@@ -16,7 +16,8 @@ const tree = {
   Organization: {
     Company: true,
     SportsTeam: true,
-    MusicalGroup: true
+    MusicalGroup: true,
+    PoliticalParty: true
   },
   CreativeWork: {
     Film: true,

@@ -206,7 +206,7 @@ module.exports = {
   person: 'Person', //441
   philosopher: 'Person', //16
   police_officer: 'Person', //2
-  political_party: 'Organization', //25
+  political_party: 'Organization/PoliticalParty', //25
   politician: 'Person/Politician', //34
   'politician_(general)': 'Person/Politician', //2
   power_station: 'Place/Structure', //3
@@ -427,7 +427,7 @@ module.exports = {
   'football club': 'Organization/SportsTeam',
   'radio station': 'Organization',
   'military unit': 'Organization',
-  'political party': 'Organization',
+  'political party': 'Organization/PoliticalParty',
   'government agency': 'Organization',
   'rail line': 'Organization',
   'record label': 'Organization',
