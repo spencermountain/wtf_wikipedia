@@ -89,16 +89,16 @@ Thing:
 Organism: true
 ```
 
-as of March 2020, it can classify ~43% of english wikipedia articles:
+as of March 2020, it can classify ~65% of english wikipedia articles:
 
 ```
-    null: 56.09%
-    People: 5.71%
-    Place: 7.86%
-    Organization: 3.39%
-    CreativeWork: 1.77%
-    Event: 7.65%
-    Thing: 2.06%
+    null: 37.71%
+    People: 18.86%
+    Place: 14.01%
+    Organization: 8.27%
+    CreativeWork: 5.38%
+    Event: 4.57%
+    Thing: 5.75%
 ```
 
 ### i18n

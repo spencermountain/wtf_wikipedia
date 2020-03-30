@@ -263,7 +263,7 @@ module.exports = {
   skier: 'Person/Athlete', //14
   soap_character: 'Thing/Character', //126
   software: 'Thing/Software', //25
-  software_license: 'THing', //1
+  software_license: 'Thing', //1
   song: 'CreativeWork', //30
   song_contest: 'Event', //3
   song_contest_entry: 'CreativeWork', //12

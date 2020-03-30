@@ -1,9 +1,12 @@
 /* wtf-plugin-classify 0.0.1  MIT */
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.wtf = factory());
-}(this, (function () { 'use strict';
+;(function(global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined'
+    ? (module.exports = factory())
+    : typeof define === 'function' && define.amd
+    ? define(factory)
+    : ((global = global || self), (global.wtf = factory()))
+})(this, function() {
+  'use strict'
 
   var mapping = {
     actor: 'Person/Actor',
@@ -534,7 +537,7 @@
     //126
     software: 'Thing/Software',
     //25
-    software_license: 'THing',
+    software_license: 'Thing',
     //1
     song: 'CreativeWork',
     //30
@@ -912,50 +915,94 @@
     'historic subdivision': 'Place',
     'u.s. congressional district': 'Place',
     'power station': 'Place/Structure'
-  };
+  }
 
   var byInfobox = function byInfobox(doc) {
-    var infoboxes = doc.infoboxes();
-    var found = [];
+    var infoboxes = doc.infoboxes()
+    var found = []
 
     for (var i = 0; i < infoboxes.length; i++) {
-      var inf = infoboxes[i];
-      var type = inf.type();
-      type = type.toLowerCase();
-      type = type.replace(/^(category|categorie|kategori): ?/i, '');
-      type = type.replace(/ /g, '_');
-      type = type.trim();
+      var inf = infoboxes[i]
+      var type = inf.type()
+      type = type.toLowerCase()
+      type = type.replace(/^(category|categorie|kategori): ?/i, '')
+      type = type.replace(/ /g, '_')
+      type = type.trim()
 
       if (mapping.hasOwnProperty(type)) {
         found.push({
           cat: mapping[type],
           reason: type
-        });
+        })
       }
     }
 
-    return found;
-  };
+    return found
+  }
 
-  var byInfobox_1 = byInfobox;
+  var byInfobox_1 = byInfobox
 
   var patterns = {
     'Thing/Character': [/(fictional|television) characters/],
     'Thing/Product': [/products introduced in ./, /musical instruments/],
     'Thing/Software': [/software using ./],
-    Organism: [/(funghi|reptiles|flora|fauna|fish|birds|trees|mammals|plants) of ./, / first appearances/, / . described in [0-9]{4}/, /. (phyla|genera)$/, /. taxonomic families$/, /plants used in ./, / (funghi|reptiles|flora|fauna|fish|birds|trees|mammals|plants)$/],
+    Organism: [
+      /(funghi|reptiles|flora|fauna|fish|birds|trees|mammals|plants) of ./,
+      / first appearances/,
+      / . described in [0-9]{4}/,
+      /. (phyla|genera)$/,
+      /. taxonomic families$/,
+      /plants used in ./,
+      / (funghi|reptiles|flora|fauna|fish|birds|trees|mammals|plants)$/
+    ],
     // ==Person==
-    'Person/Politician': [/politicians from ./, /politician stubs$/, /. (democrats|republicans|politicians)$/, /mayors of ./],
+    'Person/Politician': [
+      /politicians from ./,
+      /politician stubs$/,
+      /. (democrats|republicans|politicians)$/,
+      /mayors of ./
+    ],
     'Person/Athlete': [/sportspeople from ./, /(footballers|cricketers|defencemen|cyclists)/],
     'Person/Actor': [/actresses/, /actors from ./, /actor stubs$/, / (actors|actresses)$/],
-    'Person/Artist': [/musicians from ./, /(singers|songwriters|painters|poets)/, /novelists from ./],
+    'Person/Artist': [
+      /musicians from ./,
+      /(singers|songwriters|painters|poets)/,
+      /novelists from ./
+    ],
     // 'Person/Scientist': [(astronomers|physicists|biologists|chemists)],
-    Person: [/[0-9]{4} births/, /[0-9]{4} deaths/, /people of .* descent/, /^deaths from /, /^(people|philanthropists|writers) from ./, / (players|alumni)$/, /(alumni|fellows) of .$/, /(people|writer) stubs$/, /(american|english) (fe)?male ./, /(american|english) (architects|people)/],
+    Person: [
+      /[0-9]{4} births/,
+      /[0-9]{4} deaths/,
+      /people of .* descent/,
+      /^deaths from /,
+      /^(people|philanthropists|writers) from ./,
+      / (players|alumni)$/,
+      /(alumni|fellows) of .$/,
+      /(people|writer) stubs$/,
+      /(american|english) (fe)?male ./,
+      /(american|english) (architects|people)/
+    ],
     // ==Place==
-    'Place/Building': [/(buildings|bridges) completed in /, /airports established in ./, /(airports|bridges) in ./, /buildings and structures in ./],
+    'Place/Building': [
+      /(buildings|bridges) completed in /,
+      /airports established in ./,
+      /(airports|bridges) in ./,
+      /buildings and structures in ./
+    ],
     'Place/BodyOfWater': [/(rivers|lakes|tributaries) of ./],
-    'Place/City': [/^cities and towns in ./, /(municipalities|settlements|villages|localities|townships) in ./],
-    Place: [/populated places/, /landforms of ./, /railway stations/, /parks in ./, / district$/, /geography stubs$/, /sports venue stubs$/],
+    'Place/City': [
+      /^cities and towns in ./,
+      /(municipalities|settlements|villages|localities|townships) in ./
+    ],
+    Place: [
+      /populated places/,
+      /landforms of ./,
+      /railway stations/,
+      /parks in ./,
+      / district$/,
+      /geography stubs$/,
+      /sports venue stubs$/
+    ],
     // ==Creative Work==
     'CreativeWork/Album': [/[0-9]{4}.*? albums/, /^albums /, / albums$/],
     'CreativeWork/Film': [/[0-9]{4}.*? films/, / films$/, /^films /],
@@ -963,16 +1010,34 @@
     'CreativeWork/VideoGame': [/video games/],
     CreativeWork: [/(film|novel|album) stubs$/, /[0-9]{4}.*? (poems|novels)/, / (poems|novels)$/],
     // ==Event==
-    'Event/SportsEvent': [/. league seasons$/, /^(19|20)[0-9]{2} in (soccer|football|rugby|tennis|basketball|baseball|cricket|sports)/],
-    'Event/MilitaryConflict': [/conflicts (in|of) [0-9]{4}/, /(wars|battles|conflicts) (involving|of|in) ./],
+    'Event/SportsEvent': [
+      /. league seasons$/,
+      /^(19|20)[0-9]{2} in (soccer|football|rugby|tennis|basketball|baseball|cricket|sports)/
+    ],
+    'Event/MilitaryConflict': [
+      /conflicts (in|of) [0-9]{4}/,
+      /(wars|battles|conflicts) (involving|of|in) ./
+    ],
     Event: [/^(19|20)[0-9]{2} in /, /^(years of the )?[0-9]{1,2}(st|nd|rd|th)? century in ./],
     // ==Orgs==
-    'Organization/MusicalGroup': [/musical groups from /, /musical groups established in [0-9]{4}/, /musical group stubs/, /. music(al)? groups$/],
+    'Organization/MusicalGroup': [
+      /musical groups from /,
+      /musical groups established in [0-9]{4}/,
+      /musical group stubs/,
+      /. music(al)? groups$/
+    ],
     'Organization/SportsTeam': [/sports clubs established in [0-9]{4}/, /football clubs in ./],
     'Organization/Company': [/companies (established|based) in ./],
-    Organization: [/(organi[sz]ations|publications) based in /, /(organi[sz]ations|publications|schools|awards) established in [0-9]{4}/, /(secondary|primary) schools/, /military units/, /magazines/, /organi[sz]ation stubs$/]
-  };
-  var patterns_1 = patterns;
+    Organization: [
+      /(organi[sz]ations|publications) based in /,
+      /(organi[sz]ations|publications|schools|awards) established in [0-9]{4}/,
+      /(secondary|primary) schools/,
+      /military units/,
+      /magazines/,
+      /organi[sz]ation stubs$/
+    ]
+  }
+  var patterns_1 = patterns
 
   var mapping$1 = {
     'living people': 'Person',
@@ -1404,65 +1469,64 @@
     // learned things
     'gnu project': 'Thing/Software',
     'massachusetts institute of technology software': 'Thing/Software'
-  };
+  }
 
   var byPattern = function byPattern(str, patterns) {
-    var types = Object.keys(patterns);
+    var types = Object.keys(patterns)
 
     for (var i = 0; i < types.length; i++) {
-      var key = types[i];
+      var key = types[i]
 
       for (var o = 0; o < patterns[key].length; o++) {
-        var reg = patterns[key][o];
+        var reg = patterns[key][o]
 
         if (reg.test(str) === true) {
-          return key;
+          return key
         }
       }
     }
 
-    return null;
-  };
+    return null
+  }
 
-  var _byPattern = byPattern;
+  var _byPattern = byPattern
 
   var byCategory = function byCategory(doc) {
-    var found = [];
-    var cats = doc.categories(); // clean them up a bit
+    var found = []
+    var cats = doc.categories() // clean them up a bit
 
-    cats = cats.map(function (cat) {
-      cat = cat.toLowerCase();
-      cat = cat.replace(/^(category|categorie|kategori): ?/i, '');
-      cat = cat.replace(/_/g, ' ');
-      return cat.trim();
-    }); // loop through each
+    cats = cats.map(function(cat) {
+      cat = cat.toLowerCase()
+      cat = cat.replace(/^(category|categorie|kategori): ?/i, '')
+      cat = cat.replace(/_/g, ' ')
+      return cat.trim()
+    }) // loop through each
 
     for (var i = 0; i < cats.length; i++) {
-      var cat = cats[i]; // try our 1-to-1 mapping
+      var cat = cats[i] // try our 1-to-1 mapping
 
       if (mapping$1.hasOwnProperty(cat)) {
         found.push({
           cat: mapping$1[cat],
           reason: cat
-        });
-        continue;
+        })
+        continue
       } // loop through our patterns
 
-
-      var match = _byPattern(cat, patterns_1);
+      var match = _byPattern(cat, patterns_1)
 
       if (match) {
         found.push({
           cat: match,
           reason: cat
-        });
+        })
       }
     }
 
-    return found;
-  };
+    return found
+  }
 
-  var byCategory_1 = byCategory;
+  var byCategory_1 = byCategory
 
   var patterns$1 = {
     'Person/Actor': [/actor-stub$/],
@@ -1479,7 +1543,7 @@
     'Organization/Company': [/-company-stub$/],
     'Place/BodyOfWater': [/-river-stub$/],
     Place: [/-geo-stub$/]
-  };
+  }
 
   var mapping$2 = {
     //place
@@ -1602,37 +1666,37 @@
     'election box': 'Place',
     zh: 'Place',
     'wide image': 'Place'
-  };
+  }
 
   var byTemplate = function byTemplate(doc) {
-    var templates = doc.templates();
-    var found = [];
+    var templates = doc.templates()
+    var found = []
 
     for (var i = 0; i < templates.length; i++) {
-      var title = templates[i].template;
+      var title = templates[i].template
 
       if (mapping$2.hasOwnProperty(title)) {
         found.push({
           cat: mapping$2[title],
           reason: title
-        });
+        })
       } else {
         // try regex-list on it
-        var type = _byPattern(title, patterns$1);
+        var type = _byPattern(title, patterns$1)
 
         if (type) {
           found.push({
             cat: type,
             reason: title
-          });
+          })
         }
       }
     }
 
-    return found;
-  };
+    return found
+  }
 
-  var byTemplate_1 = byTemplate;
+  var byTemplate_1 = byTemplate
 
   var mapping$3 = {
     // person
@@ -1830,31 +1894,31 @@
     compatibility: 'Thing',
     compliance: 'Thing',
     'key features': 'Thing'
-  };
+  }
 
   var fromSection = function fromSection(doc) {
-    var found = [];
-    var titles = doc.sections().map(function (s) {
-      var str = s.title();
-      str = str.toLowerCase().trim();
-      return str;
-    });
+    var found = []
+    var titles = doc.sections().map(function(s) {
+      var str = s.title()
+      str = str.toLowerCase().trim()
+      return str
+    })
 
     for (var i = 0; i < titles.length; i++) {
-      var title = titles[i];
+      var title = titles[i]
 
       if (mapping$3.hasOwnProperty(title)) {
         found.push({
           cat: mapping$3[title],
           reason: title
-        });
+        })
       }
     }
 
-    return found;
-  };
+    return found
+  }
 
-  var bySection = fromSection;
+  var bySection = fromSection
 
   var mapping$4 = {
     'american football player': 'Person/Athlete',
@@ -2099,180 +2163,183 @@
     automobile: 'Thing/Product',
     rocket: 'Thing',
     website: 'Thing/Software'
-  };
+  }
 
   var patterns$2 = {
     'CreativeWork/Film': [/ \([0-9]{4} film\)$/],
     CreativeWork: [/ \((.*? )song\)$/],
     Event: [/ \((19|20)[0-9]{2}\)$/]
-  };
+  }
 
-  var paren = /\((.*)\)$/;
+  var paren = /\((.*)\)$/
 
   var byTitle = function byTitle(doc) {
-    var title = doc.title();
+    var title = doc.title()
 
     if (!title) {
-      return [];
+      return []
     } //look at parentheses like 'Tornado (film)'
 
-
-    var m = title.match(paren);
+    var m = title.match(paren)
 
     if (!m) {
-      return [];
+      return []
     }
 
-    var inside = m[1] || '';
-    inside = inside.toLowerCase();
-    inside = inside.replace(/_/g, ' ');
-    inside = inside.trim(); //look at known parentheses
+    var inside = m[1] || ''
+    inside = inside.toLowerCase()
+    inside = inside.replace(/_/g, ' ')
+    inside = inside.trim() //look at known parentheses
 
     if (mapping$4.hasOwnProperty(inside)) {
-      return [{
-        cat: mapping$4[inside],
-        reason: inside
-      }];
+      return [
+        {
+          cat: mapping$4[inside],
+          reason: inside
+        }
+      ]
     } // look at regex
 
-
-    var match = _byPattern(title, patterns$2);
+    var match = _byPattern(title, patterns$2)
 
     if (match) {
-      return [{
-        cat: match,
-        reason: title
-      }];
+      return [
+        {
+          cat: match,
+          reason: title
+        }
+      ]
     }
 
-    return [];
-  };
+    return []
+  }
 
-  var byTitle_1 = byTitle;
+  var byTitle_1 = byTitle
 
   var skip = {
     disambiguation: true,
     surname: true,
     name: true,
     'given name': true
-  };
-  var paren$1 = /\((.*)\)$/;
-  var listOf = /^list of ./;
-  var disambig = /\(disambiguation\)/;
+  }
+  var paren$1 = /\((.*)\)$/
+  var listOf = /^list of ./
+  var disambig = /\(disambiguation\)/
 
   var skipPage = function skipPage(doc) {
-    var title = doc.title() || ''; //look at parentheses like 'Tornado (film)'
+    var title = doc.title() || '' //look at parentheses like 'Tornado (film)'
 
-    var m = title.match(paren$1);
+    var m = title.match(paren$1)
 
     if (!m) {
-      return null;
+      return null
     }
 
-    var inside = m[1] || '';
-    inside = inside.toLowerCase();
-    inside = inside.replace(/_/g, ' ');
-    inside = inside.trim(); //look at known parentheses
+    var inside = m[1] || ''
+    inside = inside.toLowerCase()
+    inside = inside.replace(/_/g, ' ')
+    inside = inside.trim() //look at known parentheses
 
     if (skip.hasOwnProperty(inside)) {
-      return true;
+      return true
     } //try a regex
 
-
     if (listOf.test(title) === true) {
-      return true;
+      return true
     }
 
     if (disambig.test(title) === true) {
-      return true;
+      return true
     }
 
-    return false;
-  };
+    return false
+  }
 
-  var _skip = skipPage;
+  var _skip = skipPage
 
   var topk = function topk(arr) {
-    var obj = {};
-    arr.forEach(function (a) {
-      obj[a] = obj[a] || 0;
-      obj[a] += 1;
-    });
-    var res = Object.keys(obj).map(function (k) {
-      return [k, obj[k]];
-    });
-    return res.sort(function (a, b) {
-      return a[1] > b[1] ? -1 : 0;
-    });
-  };
+    var obj = {}
+    arr.forEach(function(a) {
+      obj[a] = obj[a] || 0
+      obj[a] += 1
+    })
+    var res = Object.keys(obj).map(function(k) {
+      return [k, obj[k]]
+    })
+    return res.sort(function(a, b) {
+      return a[1] > b[1] ? -1 : 0
+    })
+  }
 
   var parse = function parse(cat) {
-    var split = cat.split(/\//);
+    var split = cat.split(/\//)
     return {
       root: split[0],
       child: split[1]
-    };
-  };
+    }
+  }
 
   var getScore = function getScore(detail) {
-    var cats = [];
-    Object.keys(detail).forEach(function (k) {
-      detail[k].forEach(function (obj) {
-        cats.push(parse(obj.cat));
-      });
-    }); // find top parent
+    var cats = []
+    Object.keys(detail).forEach(function(k) {
+      detail[k].forEach(function(obj) {
+        cats.push(parse(obj.cat))
+      })
+    }) // find top parent
 
-    var roots = cats.map(function (obj) {
-      return obj.root;
-    }).filter(function (s) {
-      return s;
-    });
-    var top = topk(roots)[0];
+    var roots = cats
+      .map(function(obj) {
+        return obj.root
+      })
+      .filter(function(s) {
+        return s
+      })
+    var top = topk(roots)[0]
 
     if (!top) {
       return {
         detail: detail,
         category: null,
         score: 0
-      };
+      }
     }
 
-    var root = top[0]; // score as % of results
+    var root = top[0] // score as % of results
 
-    var score = top[1] / cats.length; // punish low counts
+    var score = top[1] / cats.length // punish low counts
 
     if (top[1] === 1) {
-      score *= 0.75;
+      score *= 0.75
     }
 
     if (top[1] === 2) {
-      score *= 0.85;
+      score *= 0.85
     }
 
     if (top[1] === 3) {
-      score *= 0.95;
+      score *= 0.95
     } // find 2nd level
 
-
-    var children = cats.map(function (obj) {
-      return obj.child;
-    }).filter(function (s) {
-      return s;
-    });
-    var tops = topk(children);
-    top = tops[0];
-    var category = root;
+    var children = cats
+      .map(function(obj) {
+        return obj.child
+      })
+      .filter(function(s) {
+        return s
+      })
+    var tops = topk(children)
+    top = tops[0]
+    var category = root
 
     if (top) {
-      category = "".concat(root, "/").concat(top[0]); // punish for any conflicting children
+      category = ''.concat(root, '/').concat(top[0]) // punish for any conflicting children
 
       if (tops.length > 1) {
-        score *= 0.7;
+        score *= 0.7
       } // punish for low count
 
-
       if (top[1] === 1) {
-        score *= 0.8;
+        score *= 0.8
       }
     }
 
@@ -2281,38 +2348,36 @@
       category: category,
       score: Math.ceil(score),
       detail: detail
-    };
-  };
+    }
+  }
 
-  var score = getScore;
+  var score = getScore
 
   var plugin = function plugin(models) {
     // add a new method to main class
-    models.Doc.prototype.classify = function (options) {
-      var doc = this;
-      var res = {}; // dont classify these
+    models.Doc.prototype.classify = function(options) {
+      var doc = this
+      var res = {} // dont classify these
 
       if (_skip(doc)) {
-        return score(res);
+        return score(res)
       } //look for 'infobox person', etc
 
+      res.infobox = byInfobox_1(doc) //look for '{{coord}}'
 
-      res.infobox = byInfobox_1(doc); //look for '{{coord}}'
+      res.template = byTemplate_1(doc) //look for '==early life=='
 
-      res.template = byTemplate_1(doc); //look for '==early life=='
+      res.section = bySection(doc) //look for 'foo (film)'
 
-      res.section = bySection(doc); //look for 'foo (film)'
+      res.title = byTitle_1(doc) //look for 'Category: 1992 Births', etc
 
-      res.title = byTitle_1(doc); //look for 'Category: 1992 Births', etc
+      res.category = byCategory_1(doc)
+      return score(res)
+    }
+  }
 
-      res.category = byCategory_1(doc);
-      return score(res);
-    };
-  };
+  var src = plugin
 
-  var src = plugin;
-
-  return src;
-
-})));
+  return src
+})
 //# sourceMappingURL=wtf-plugin-classify.js.map

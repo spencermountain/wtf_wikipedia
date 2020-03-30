@@ -57,10 +57,12 @@ const isDisambig = function(doc) {
     return true
   }
   // try 'may refer to' on first line for en-wiki?
-  let firstLine = doc.sentences(0).text()
-  if (firstLine !== null && firstLine[0]) {
-    if (/. may refer to ./i.test(firstLine) === true) {
-      return true
+  if (doc.sentences(0)) {
+    let firstLine = doc.sentences(0).text()
+    if (firstLine !== null && firstLine[0]) {
+      if (/. may refer to ./i.test(firstLine) === true) {
+        return true
+      }
     }
   }
   return false

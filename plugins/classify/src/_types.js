@@ -11,7 +11,8 @@ const tree = {
     Country: true,
     City: true,
     Structure: true,
-    BodyOfWater: true
+    BodyOfWater: true,
+    OuterSpaceLocation: true
   },
   Organization: {
     Company: true,
@@ -30,12 +31,14 @@ const tree = {
     Election: true,
     Disaster: true,
     SportsEvent: true,
-    MilitaryConflict: true
+    MilitaryConflict: true,
+    SpaceMission: true
   },
   Thing: {
     Product: true,
     Software: true,
-    Character: true
+    Character: true,
+    MedicalCondition: true
   },
   Organism: true
 }
