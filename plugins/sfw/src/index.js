@@ -1,5 +1,6 @@
 const byTemplate = require('./byTemplate')
 const byCategory = require('./byCategory')
+const byTitle = require('./byTitle')
 
 const plugin = function(models) {
   // add a new method to main class
@@ -7,8 +8,8 @@ const plugin = function(models) {
     let doc = this
     let detail = {}
 
-    //look for 'infobox person', etc
-    // res.infobox = byInfobox(doc, options)
+    //look for 'john doe (pimp)', etc
+    detail.title = byTitle(doc, options)
 
     //look for '{{coord}}'
     detail.template = byTemplate(doc, options)

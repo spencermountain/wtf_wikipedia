@@ -29,9 +29,9 @@ This library tries to flag an article as `nsfw`, according to some structured in
 
 It looks in a number of different places:
 
-- infoboxes (like **{{Infobox Adult Film Star}}**)
 - categories (like **'[[Category:Machine Guns]]'**)
 - templates (like **{{Sex positions}}**)
+- page titles (like **star wars (Adult Film)**)
 
 ```js
 const wtf = require('wtf_wikipedia')
@@ -66,6 +66,8 @@ Explicit recreational drug information is flagged, along with some (often helpfu
 Weapon content of all kinds is attempted to be flagged. This includes historical, and sometimes fictional weaponry.
 
 Wars and military conflicts are kept, but an attempt is made to limit pages with grotesque violent acts. (particularly difficult)
+
+This library is very limited right now.
 
 You're free to use the information provided by this library however you wish. You may choose to establish your own rules.
 
