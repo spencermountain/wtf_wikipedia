@@ -1,6 +1,7 @@
 const patterns = {
   'Thing/Character': [/(fictional|television) characters/],
   'Thing/Product': [/products introduced in ./, /musical instruments/],
+  'Thing/Software': [/software using ./],
   Organism: [
     /(funghi|reptiles|flora|fauna|fish|birds|trees|mammals|plants) of ./,
     / first appearances/,
@@ -19,13 +20,14 @@ const patterns = {
     /mayors of ./
   ],
   'Person/Athlete': [/sportspeople from ./, /(footballers|cricketers|defencemen|cyclists)/],
-  'Person/Actor': [/actresses/, /actors from ./, /actor stubs$/],
+  'Person/Actor': [/actresses/, /actors from ./, /actor stubs$/, / (actors|actresses)$/],
   'Person/Artist': [/musicians from ./, /(singers|songwriters|painters|poets)/, /novelists from ./],
   // 'Person/Scientist': [(astronomers|physicists|biologists|chemists)],
   Person: [
     /[0-9]{4} births/,
     /[0-9]{4} deaths/,
     /people of .* descent/,
+    /^deaths from /,
     /^(people|philanthropists|writers) from ./,
     / (players|alumni)$/,
     /(alumni|fellows) of .$/,
