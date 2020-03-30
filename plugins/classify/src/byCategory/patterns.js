@@ -1,7 +1,15 @@
 const patterns = {
   'Thing/Character': [/(fictional|television) characters/],
   'Thing/Product': [/products introduced in ./, /musical instruments/],
-  Organism: [/(funghi|reptiles|flora|fauna|fish|birds|trees) of ./, / first appearances/, / phyla/],
+  Organism: [
+    /(funghi|reptiles|flora|fauna|fish|birds|trees|mammals|plants) of ./,
+    / first appearances/,
+    / . described in [0-9]{4}/,
+    /. (phyla|genera)$/,
+    /. taxonomic families$/,
+    /plants used in ./,
+    / (funghi|reptiles|flora|fauna|fish|birds|trees|mammals|plants)$/
+  ],
 
   // ==Person==
   'Person/Politician': [
@@ -49,18 +57,22 @@ const patterns = {
   ],
 
   // ==Creative Work==
-  'CreativeWork/Album': [/[0-9]{4} albums/, /albums produced by /, / albums$/],
-  'CreativeWork/Film': [/[0-9]{4} films/, / films$/],
+  'CreativeWork/Album': [/[0-9]{4}.*? albums/, /^albums /, / albums$/],
+  'CreativeWork/Film': [/[0-9]{4}.*? films/, / films$/, /^films /],
   'CreativeWork/TVShow': [/television series/],
-  CreativeWork: [/film stubs$/, /novel stubs$/, /[0-9]{4} video games/, /[0-9]{4} poems/],
+  'CreativeWork/VideoGame': [/video games/],
+  CreativeWork: [/(film|novel|album) stubs$/, /[0-9]{4}.*? (poems|novels)/, / (poems|novels)$/],
 
   // ==Event==
   'Event/SportsEvent': [
     /. league seasons$/,
     /^(19|20)[0-9]{2} in (soccer|football|rugby|tennis|basketball|baseball|cricket|sports)/
   ],
-  'Event/MilitaryConflict': [/conflicts in [0-9]{4}/, /battles involving ./],
-  Event: [/^(19|20)[0-9]{2} in /],
+  'Event/MilitaryConflict': [
+    /conflicts (in|of) [0-9]{4}/,
+    /(wars|battles|conflicts) (involving|of|in) ./
+  ],
+  Event: [/^(19|20)[0-9]{2} in /, /^(years of the )?[0-9]{1,2}(st|nd|rd|th)? century in ./],
 
   // ==Orgs==
   'Organization/MusicalGroup': [

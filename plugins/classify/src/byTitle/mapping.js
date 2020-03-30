@@ -27,7 +27,7 @@ module.exports = {
   'uk parliament constituency': 'Place',
   'united kingdom': 'Place',
   'united states': 'Place',
-  'video game': 'Thing/Product',
+  'video game': 'CreativeWork/VideoGame',
   academic: 'Person',
   actor: 'Person/Actor',
   actress: 'Person/Actor',

@@ -123,9 +123,6 @@ module.exports = {
   representative: 'Place',
   'historical populations': 'Place',
   'wikivoyage-inline': 'Place',
-  'refimprove section': 'Place',
-  change: 'Place',
-  stnlnk: 'Place',
   'election box': 'Place',
   zh: 'Place',
   'wide image': 'Place'

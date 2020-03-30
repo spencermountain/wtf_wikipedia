@@ -23,7 +23,8 @@ const tree = {
     Film: true,
     TVShow: true,
     Book: true,
-    Album: true
+    Album: true,
+    VideoGame: true
   },
   Event: {
     Election: true,

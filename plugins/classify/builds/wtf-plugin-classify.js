@@ -1,9 +1,12 @@
 /* wtf-plugin-classify 0.0.1  MIT */
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.wtf = factory());
-}(this, (function () { 'use strict';
+;(function(global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined'
+    ? (module.exports = factory())
+    : typeof define === 'function' && define.amd
+    ? define(factory)
+    : ((global = global || self), (global.wtf = factory()))
+})(this, function() {
+  'use strict'
 
   var infoboxes = {
     actor: 'Person',
@@ -820,62 +823,117 @@
     //3
     speciesbox: 'Thing/Organism',
     'automatic taxobox': 'Thing/Organism'
-  };
+  }
 
   var byInfobox = function byInfobox(doc) {
-    var infoboxes$1 = doc.infoboxes();
-    var found = [];
+    var infoboxes$1 = doc.infoboxes()
+    var found = []
 
     for (var i = 0; i < infoboxes$1.length; i++) {
-      var inf = infoboxes$1[i];
-      var type = inf.type();
-      type = type.toLowerCase();
-      type = type.replace(/^(category|categorie|kategori): ?/i, '');
-      type = type.replace(/ /g, '_');
-      type = type.trim();
+      var inf = infoboxes$1[i]
+      var type = inf.type()
+      type = type.toLowerCase()
+      type = type.replace(/^(category|categorie|kategori): ?/i, '')
+      type = type.replace(/ /g, '_')
+      type = type.trim()
 
       if (infoboxes.hasOwnProperty(type)) {
-        found.push(infoboxes[type]);
+        found.push(infoboxes[type])
       }
     }
 
-    return found;
-  };
+    return found
+  }
 
-  var byInfobox_1 = byInfobox;
+  var byInfobox_1 = byInfobox
 
   var patterns = {
     'Thing/Character': [/(fictional|television) characters/],
     'Thing/Product': [/products introduced in ./, /musical instruments/],
-    'Thing/Organism': [/(funghi|reptiles|flora|fauna|fish|birds|trees) of ./, / first appearances/, / phyla/],
+    'Thing/Organism': [
+      /(funghi|reptiles|flora|fauna|fish|birds|trees) of ./,
+      / first appearances/,
+      / phyla/
+    ],
     // ==Person==
-    'Person/Politician': [/politicians from ./, /politician stubs$/, /. (democrats|republicans|politicians)$/, /mayors of ./],
+    'Person/Politician': [
+      /politicians from ./,
+      /politician stubs$/,
+      /. (democrats|republicans|politicians)$/,
+      /mayors of ./
+    ],
     'Person/Athlete': [/sportspeople from ./, /(footballers|cricketers|defencemen|cyclists)/],
     'Person/Actor': [/actresses/, /actors from ./, /actor stubs$/],
-    'Person/Artist': [/musicians from ./, /(singers|songwriters|painters|poets)/, /novelists from ./],
+    'Person/Artist': [
+      /musicians from ./,
+      /(singers|songwriters|painters|poets)/,
+      /novelists from ./
+    ],
     // 'Person/Scientist': [(astronomers|physicists|biologists|chemists)],
-    Person: [/[0-9]{4} births/, /[0-9]{4} deaths/, /people of .* descent/, /^(people|philanthropists|writers) from ./, / (players|alumni)$/, /(alumni|fellows) of .$/, /(people|writer) stubs$/, /(american|english) (fe)?male ./, /(american|english) (architects|people)/],
+    Person: [
+      /[0-9]{4} births/,
+      /[0-9]{4} deaths/,
+      /people of .* descent/,
+      /^(people|philanthropists|writers) from ./,
+      / (players|alumni)$/,
+      /(alumni|fellows) of .$/,
+      /(people|writer) stubs$/,
+      /(american|english) (fe)?male ./,
+      /(american|english) (architects|people)/
+    ],
     // ==Place==
-    'Place/Building': [/(buildings|bridges) completed in /, /airports established in ./, /(airports|bridges) in ./, /buildings and structures in ./],
+    'Place/Building': [
+      /(buildings|bridges) completed in /,
+      /airports established in ./,
+      /(airports|bridges) in ./,
+      /buildings and structures in ./
+    ],
     'Place/BodyOfWater': [/(rivers|lakes|tributaries) of ./],
-    'Place/City': [/^cities and towns in ./, /(municipalities|settlements|villages|localities|townships) in ./],
-    Place: [/populated places/, /landforms of ./, /railway stations/, /parks in ./, / district$/, /geography stubs$/, /sports venue stubs$/],
+    'Place/City': [
+      /^cities and towns in ./,
+      /(municipalities|settlements|villages|localities|townships) in ./
+    ],
+    Place: [
+      /populated places/,
+      /landforms of ./,
+      /railway stations/,
+      /parks in ./,
+      / district$/,
+      /geography stubs$/,
+      /sports venue stubs$/
+    ],
     // ==Creative Work==
     'CreativeWork/Album': [/[0-9]{4} albums/, /albums produced by /, / albums$/],
     'CreativeWork/Film': [/[0-9]{4} films/, / films$/],
     'CreativeWork/TVShow': [/television series/],
-    CreativeWork: [/film stubs$/, /novel stubs$/, /[0-9]{4} video games/, /[0-9]{4} poems/],
+    'CreativeWork/VideoGame': [/video ?games$/],
+    CreativeWork: [/film stubs$/, /novel stubs$/, /[0-9]{4} poems/],
     // ==Event==
-    'Event/SportsEvent': [/. league seasons$/, /^(19|20)[0-9]{2} in (soccer|football|rugby|tennis|basketball|baseball|cricket|sports)/],
+    'Event/SportsEvent': [
+      /. league seasons$/,
+      /^(19|20)[0-9]{2} in (soccer|football|rugby|tennis|basketball|baseball|cricket|sports)/
+    ],
     'Event/War': [/conflicts in [0-9]{4}/, /battles involving ./],
     Event: [/^(19|20)[0-9]{2} in /],
     // ==Orgs==
-    'Organization/MusicalGroup': [/musical groups from /, /musical groups established in [0-9]{4}/, /musical group stubs/, /. music(al)? groups$/],
+    'Organization/MusicalGroup': [
+      /musical groups from /,
+      /musical groups established in [0-9]{4}/,
+      /musical group stubs/,
+      /. music(al)? groups$/
+    ],
     'Organization/SportsTeam': [/sports clubs established in [0-9]{4}/, /football clubs in ./],
     'Organization/Company': [/companies (established|based) in ./],
-    Organization: [/(organi[sz]ations|publications) based in /, /(organi[sz]ations|publications|schools|awards) established in [0-9]{4}/, /(secondary|primary) schools/, /military units/, /magazines/, /organi[sz]ation stubs$/]
-  };
-  var patterns_1 = patterns;
+    Organization: [
+      /(organi[sz]ations|publications) based in /,
+      /(organi[sz]ations|publications|schools|awards) established in [0-9]{4}/,
+      /(secondary|primary) schools/,
+      /military units/,
+      /magazines/,
+      /organi[sz]ation stubs$/
+    ]
+  }
+  var patterns_1 = patterns
 
   var mapping = {
     'living people': 'Person',
@@ -888,55 +946,54 @@
     'musical quartets': 'Organization/MusicalGroup',
     'musical duos': 'Organization/MusicalGroup',
     'musical trios': 'Organization/MusicalGroup'
-  };
+  }
 
   var byPattern = function byPattern(cat) {
-    var types = Object.keys(patterns_1);
+    var types = Object.keys(patterns_1)
 
     for (var i = 0; i < types.length; i++) {
-      var key = types[i];
+      var key = types[i]
 
       for (var o = 0; o < patterns_1[key].length; o++) {
-        var reg = patterns_1[key][o];
+        var reg = patterns_1[key][o]
 
         if (reg.test(cat) === true) {
-          return key;
+          return key
         }
       }
     }
-  };
+  }
 
   var byCategory = function byCategory(doc) {
-    var found = [];
-    var cats = doc.categories(); // clean them up a bit
+    var found = []
+    var cats = doc.categories() // clean them up a bit
 
-    cats = cats.map(function (cat) {
-      cat = cat.toLowerCase();
-      cat = cat.replace(/^(category|categorie|kategori): ?/i, '');
-      cat = cat.replace(/_/g, ' ');
-      return cat.trim();
-    }); // loop through each
+    cats = cats.map(function(cat) {
+      cat = cat.toLowerCase()
+      cat = cat.replace(/^(category|categorie|kategori): ?/i, '')
+      cat = cat.replace(/_/g, ' ')
+      return cat.trim()
+    }) // loop through each
 
     for (var i = 0; i < cats.length; i++) {
-      var cat = cats[i]; // try our 1-to-1 mapping
+      var cat = cats[i] // try our 1-to-1 mapping
 
       if (mapping.hasOwnProperty(cat)) {
-        found.push(mapping[cat]);
-        continue;
+        found.push(mapping[cat])
+        continue
       } // loop through our patterns
 
-
-      var match = byPattern(cat);
+      var match = byPattern(cat)
 
       if (match) {
-        found.push(match);
+        found.push(match)
       }
     }
 
-    return found;
-  };
+    return found
+  }
 
-  var byCategory_1 = byCategory;
+  var byCategory_1 = byCategory
 
   var templates = {
     'Person/Actor': [/actor-stub$/],
@@ -953,7 +1010,7 @@
     'Organization/Company': [/-company-stub$/],
     'Place/BodyOfWater': [/-river-stub$/],
     Place: [/-geo-stub$/]
-  };
+  }
 
   var mapping$1 = {
     //place
@@ -980,49 +1037,49 @@
     'insects in culture': 'Thing/Organism',
     'living things in culture': 'Thing/Organism',
     'eukaryota classification': 'Thing/Organism'
-  };
+  }
 
   var matchPatterns = function matchPatterns(title) {
-    var types = Object.keys(templates);
+    var types = Object.keys(templates)
 
     for (var i = 0; i < types.length; i++) {
-      var key = types[i];
+      var key = types[i]
 
       for (var o = 0; o < templates[key].length; o++) {
-        var reg = templates[key][o];
+        var reg = templates[key][o]
 
         if (reg.test(title) === true) {
-          return key;
+          return key
         }
       }
     }
 
-    return null;
-  };
+    return null
+  }
 
   var byTemplate = function byTemplate(doc) {
-    var templates = doc.templates();
-    var found = [];
+    var templates = doc.templates()
+    var found = []
 
     for (var i = 0; i < templates.length; i++) {
-      var title = templates[i].template;
+      var title = templates[i].template
 
       if (mapping$1.hasOwnProperty(title)) {
-        found.push(mapping$1[title]);
+        found.push(mapping$1[title])
       } else {
         // try regex-list on it
-        var type = matchPatterns(title);
+        var type = matchPatterns(title)
 
         if (type) {
-          found.push(type);
+          found.push(type)
         }
       }
     }
 
-    return found;
-  };
+    return found
+  }
 
-  var byTemplate_1 = byTemplate;
+  var byTemplate_1 = byTemplate
 
   var sections = {
     // person
@@ -1061,28 +1118,28 @@
     'distribution and habitat': 'Thing/Organism',
     'reproduction and development': 'Thing/Organism',
     'taxonomy and phylogeny': 'Thing/Organism'
-  };
+  }
 
   var fromSection = function fromSection(doc) {
-    var found = [];
-    var titles = doc.sections().map(function (s) {
-      var str = s.title();
-      str = str.toLowerCase().trim();
-      return str;
-    });
+    var found = []
+    var titles = doc.sections().map(function(s) {
+      var str = s.title()
+      str = str.toLowerCase().trim()
+      return str
+    })
 
     for (var i = 0; i < titles.length; i++) {
-      var title = titles[i];
+      var title = titles[i]
 
       if (sections.hasOwnProperty(title)) {
-        found.push(sections[title]);
+        found.push(sections[title])
       }
     }
 
-    return found;
-  };
+    return found
+  }
 
-  var bySection = fromSection;
+  var bySection = fromSection
 
   function _defineProperty(obj, key, value) {
     if (key in obj) {
@@ -1091,295 +1148,416 @@
         enumerable: true,
         configurable: true,
         writable: true
-      });
+      })
     } else {
-      obj[key] = value;
+      obj[key] = value
     }
 
-    return obj;
+    return obj
   }
 
-  var _titles;
+  var _titles
 
-  var titles = (_titles = {
-    'tv series': 'CreativeWork/TVShow',
-    album: 'CreativeWork/Album',
-    song: 'CreativeWork',
-    film: 'CreativeWork/Film',
-    politician: 'Person/Politician',
-    footballer: 'Person/Athlete',
-    musician: 'Person/Artist',
-    Virginia: 'Place',
-    band: 'Organization/MusicalGroup',
-    'delhi metro': 'Place'
-  }, _defineProperty(_titles, "tv series", 'CreativeWork/TVShow'), _defineProperty(_titles, 'uk parliament constituency', 'Place'), _defineProperty(_titles, 'new jersey', 'Place'), _defineProperty(_titles, "novel", 'CreativeWork/Book'), _defineProperty(_titles, "portugal", 'Place'), _defineProperty(_titles, "book", 'CreativeWork/Book'), _defineProperty(_titles, "character", 'Thing/Character'), _defineProperty(_titles, "company", 'Organization/Company'), _defineProperty(_titles, "india", 'Place'), _defineProperty(_titles, "game", 'Thing'), _defineProperty(_titles, 'video game', 'Thing/Product'), _defineProperty(_titles, 'computer game', 'Thing/Product'), _defineProperty(_titles, 'season 2', 'CreativeWork'), _defineProperty(_titles, "california", 'Place'), _defineProperty(_titles, "athlete", 'Person/Athlete'), _defineProperty(_titles, "soundtrack", 'CreativeWork'), _defineProperty(_titles, "cricketer", 'Person/Athlete'), _defineProperty(_titles, "horse", 'Thing'), _defineProperty(_titles, "newspaper", 'Organization/Company'), _defineProperty(_titles, "wrestler", 'Person/Athlete'), _defineProperty(_titles, "connecticut", 'Place'), _defineProperty(_titles, "uk", 'Place'), _defineProperty(_titles, "software", 'Thing/Software'), _defineProperty(_titles, "canada", 'Place'), _defineProperty(_titles, "journalist", 'Person'), _defineProperty(_titles, "bishop", 'Person'), _defineProperty(_titles, "train", 'Thing'), _defineProperty(_titles, '2006 film', 'CreativeWork'), _defineProperty(_titles, 'season 3', 'CreativeWork'), _defineProperty(_titles, "singer", 'Person/Artist'), _defineProperty(_titles, "actor", 'Person/Actor'), _defineProperty(_titles, "artist", 'Person/Artist'), _defineProperty(_titles, "volcano", 'Place'), _defineProperty(_titles, 'season 4', 'CreativeWork'), _defineProperty(_titles, 'united states', 'Place'), _defineProperty(_titles, 'united kingdom', 'Place'), _defineProperty(_titles, "movie", 'CreativeWork/Film'), _defineProperty(_titles, "judge", 'Person'), _defineProperty(_titles, 'football player', 'Person/Athlete'), _defineProperty(_titles, 'erie county, new york', 'Place'), _defineProperty(_titles, "arkansas", 'Place'), _defineProperty(_titles, "oklahoma", 'Place'), _defineProperty(_titles, "single", 'CreativeWork'), _defineProperty(_titles, "series", 'CreativeWork'), _defineProperty(_titles, "nigeria", 'Place'), _defineProperty(_titles, "pennsylvania", 'Place'), _defineProperty(_titles, "magazine", 'CreativeWork'), _defineProperty(_titles, "opera", 'CreativeWork'), _defineProperty(_titles, 'murder victim', 'Person'), _defineProperty(_titles, "australia", 'Place'), _defineProperty(_titles, 'The Twilight Zone', 'CreativeWork'), _defineProperty(_titles, "music", 'CreativeWork'), _defineProperty(_titles, "georgia", 'Place'), _defineProperty(_titles, "poet", 'Person'), _defineProperty(_titles, "va", 'Place'), _defineProperty(_titles, "play", 'CreativeWork'), _defineProperty(_titles, "actress", 'Person/Actor'), _defineProperty(_titles, "album", 'CreativeWork/Album'), _defineProperty(_titles, "ship", 'Thing'), _defineProperty(_titles, "spain", 'Place'), _defineProperty(_titles, "boxer", 'Person/Athlete'), _defineProperty(_titles, "author", 'Person'), _defineProperty(_titles, "painter", 'Person/Artist'), _defineProperty(_titles, "michigan", 'Place'), _defineProperty(_titles, "tv series", 'CreativeWork'), _defineProperty(_titles, "sudan", 'Place'), _defineProperty(_titles, "chad", 'Place'), _defineProperty(_titles, "brazil", 'Place'), _defineProperty(_titles, "france", 'Place'), _defineProperty(_titles, "director", 'Person'), _defineProperty(_titles, "alaska", 'Place'), _defineProperty(_titles, "priest", 'Person'), _defineProperty(_titles, "minister", 'Person'), _defineProperty(_titles, "province", 'Place'), _defineProperty(_titles, 'season 5', 'CreativeWork'), _defineProperty(_titles, "barbados", 'Place'), _defineProperty(_titles, "diplomat", 'Person'), _defineProperty(_titles, "japan", 'Place'), _defineProperty(_titles, 'new york', 'Place'), _defineProperty(_titles, "ontario", 'Place'), _defineProperty(_titles, "painting", 'Thing'), _defineProperty(_titles, "cocktail", 'Thing'), _defineProperty(_titles, 'cedar busway station', 'Place'), _defineProperty(_titles, "cyclist", 'Person'), _defineProperty(_titles, "book", 'CreativeWork'), _defineProperty(_titles, 'cape verde', 'Place'), _defineProperty(_titles, "river", 'Place/BodyOfWater'), _defineProperty(_titles, 'australian politician', 'Person/Politician'), _defineProperty(_titles, "businessman", 'Person'), _defineProperty(_titles, 'canadian politician', 'Person/Politician'), _defineProperty(_titles, "academic", 'Person'), _defineProperty(_titles, "dominica", 'Place'), _defineProperty(_titles, "journal", 'Organization'), _defineProperty(_titles, "plant", 'Thing'), _defineProperty(_titles, 'north carolina', 'Place'), _defineProperty(_titles, 'new york City Subway', 'Place'), _defineProperty(_titles, "candy", 'Thing'), _defineProperty(_titles, "group", 'Organization'), _defineProperty(_titles, "chicago", 'Place'), _defineProperty(_titles, "argentina", 'Place'), _defineProperty(_titles, "manhattan", 'Place'), _defineProperty(_titles, 'new orleans', 'Place'), _defineProperty(_titles, "song", 'CreativeWork'), _defineProperty(_titles, "rapper", 'Person/Artist'), _defineProperty(_titles, "drink", 'Thing'), _defineProperty(_titles, "composer", 'Person/Artist'), _defineProperty(_titles, "texas", 'Place'), _defineProperty(_titles, 'new zealand', 'Place'), _defineProperty(_titles, "miniseries", 'CreativeWork'), _defineProperty(_titles, 'northern ireland', 'Place'), _defineProperty(_titles, "drummer", 'Person'), _defineProperty(_titles, 'sri lanka', 'Place'), _defineProperty(_titles, 'gaelic footballer', 'Person/Athlete'), _defineProperty(_titles, "ballet", 'CreativeWork'), _defineProperty(_titles, 'american football player', 'Person/Athlete'), _defineProperty(_titles, "colombia", 'Place'), _defineProperty(_titles, "israel", 'Place'), _defineProperty(_titles, "washington", 'Place'), _defineProperty(_titles, "edmonton", 'Place'), _defineProperty(_titles, "plant", 'Thing/Organism'), _titles);
-  var titles_1 = titles.album;
-  var titles_2 = titles.song;
-  var titles_3 = titles.film;
-  var titles_4 = titles.politician;
-  var titles_5 = titles.footballer;
-  var titles_6 = titles.musician;
-  var titles_7 = titles.Virginia;
-  var titles_8 = titles.band;
-  var titles_9 = titles.novel;
-  var titles_10 = titles.portugal;
-  var titles_11 = titles.book;
-  var titles_12 = titles.character;
-  var titles_13 = titles.company;
-  var titles_14 = titles.india;
-  var titles_15 = titles.game;
-  var titles_16 = titles.california;
-  var titles_17 = titles.athlete;
-  var titles_18 = titles.soundtrack;
-  var titles_19 = titles.cricketer;
-  var titles_20 = titles.horse;
-  var titles_21 = titles.newspaper;
-  var titles_22 = titles.wrestler;
-  var titles_23 = titles.connecticut;
-  var titles_24 = titles.uk;
-  var titles_25 = titles.software;
-  var titles_26 = titles.canada;
-  var titles_27 = titles.journalist;
-  var titles_28 = titles.bishop;
-  var titles_29 = titles.train;
-  var titles_30 = titles.singer;
-  var titles_31 = titles.actor;
-  var titles_32 = titles.artist;
-  var titles_33 = titles.volcano;
-  var titles_34 = titles.movie;
-  var titles_35 = titles.judge;
-  var titles_36 = titles.arkansas;
-  var titles_37 = titles.oklahoma;
-  var titles_38 = titles.single;
-  var titles_39 = titles.series;
-  var titles_40 = titles.nigeria;
-  var titles_41 = titles.pennsylvania;
-  var titles_42 = titles.magazine;
-  var titles_43 = titles.opera;
-  var titles_44 = titles.australia;
-  var titles_45 = titles.music;
-  var titles_46 = titles.georgia;
-  var titles_47 = titles.poet;
-  var titles_48 = titles.va;
-  var titles_49 = titles.play;
-  var titles_50 = titles.actress;
-  var titles_51 = titles.ship;
-  var titles_52 = titles.spain;
-  var titles_53 = titles.boxer;
-  var titles_54 = titles.author;
-  var titles_55 = titles.painter;
-  var titles_56 = titles.michigan;
-  var titles_57 = titles.sudan;
-  var titles_58 = titles.chad;
-  var titles_59 = titles.brazil;
-  var titles_60 = titles.france;
-  var titles_61 = titles.director;
-  var titles_62 = titles.alaska;
-  var titles_63 = titles.priest;
-  var titles_64 = titles.minister;
-  var titles_65 = titles.province;
-  var titles_66 = titles.barbados;
-  var titles_67 = titles.diplomat;
-  var titles_68 = titles.japan;
-  var titles_69 = titles.ontario;
-  var titles_70 = titles.painting;
-  var titles_71 = titles.cocktail;
-  var titles_72 = titles.cyclist;
-  var titles_73 = titles.river;
-  var titles_74 = titles.businessman;
-  var titles_75 = titles.academic;
-  var titles_76 = titles.dominica;
-  var titles_77 = titles.journal;
-  var titles_78 = titles.plant;
-  var titles_79 = titles.candy;
-  var titles_80 = titles.group;
-  var titles_81 = titles.chicago;
-  var titles_82 = titles.argentina;
-  var titles_83 = titles.manhattan;
-  var titles_84 = titles.rapper;
-  var titles_85 = titles.drink;
-  var titles_86 = titles.composer;
-  var titles_87 = titles.texas;
-  var titles_88 = titles.miniseries;
-  var titles_89 = titles.drummer;
-  var titles_90 = titles.ballet;
-  var titles_91 = titles.colombia;
-  var titles_92 = titles.israel;
-  var titles_93 = titles.washington;
-  var titles_94 = titles.edmonton;
+  var titles =
+    ((_titles = {
+      'tv series': 'CreativeWork/TVShow',
+      album: 'CreativeWork/Album',
+      song: 'CreativeWork',
+      film: 'CreativeWork/Film',
+      politician: 'Person/Politician',
+      footballer: 'Person/Athlete',
+      musician: 'Person/Artist',
+      Virginia: 'Place',
+      band: 'Organization/MusicalGroup',
+      'delhi metro': 'Place'
+    }),
+    _defineProperty(_titles, 'tv series', 'CreativeWork/TVShow'),
+    _defineProperty(_titles, 'uk parliament constituency', 'Place'),
+    _defineProperty(_titles, 'new jersey', 'Place'),
+    _defineProperty(_titles, 'novel', 'CreativeWork/Book'),
+    _defineProperty(_titles, 'portugal', 'Place'),
+    _defineProperty(_titles, 'book', 'CreativeWork/Book'),
+    _defineProperty(_titles, 'character', 'Thing/Character'),
+    _defineProperty(_titles, 'company', 'Organization/Company'),
+    _defineProperty(_titles, 'india', 'Place'),
+    _defineProperty(_titles, 'game', 'Thing'),
+    _defineProperty(_titles, 'video game', 'Thing/Product'),
+    _defineProperty(_titles, 'computer game', 'Thing/Product'),
+    _defineProperty(_titles, 'season 2', 'CreativeWork'),
+    _defineProperty(_titles, 'california', 'Place'),
+    _defineProperty(_titles, 'athlete', 'Person/Athlete'),
+    _defineProperty(_titles, 'soundtrack', 'CreativeWork'),
+    _defineProperty(_titles, 'cricketer', 'Person/Athlete'),
+    _defineProperty(_titles, 'horse', 'Thing'),
+    _defineProperty(_titles, 'newspaper', 'Organization/Company'),
+    _defineProperty(_titles, 'wrestler', 'Person/Athlete'),
+    _defineProperty(_titles, 'connecticut', 'Place'),
+    _defineProperty(_titles, 'uk', 'Place'),
+    _defineProperty(_titles, 'software', 'Thing/Software'),
+    _defineProperty(_titles, 'canada', 'Place'),
+    _defineProperty(_titles, 'journalist', 'Person'),
+    _defineProperty(_titles, 'bishop', 'Person'),
+    _defineProperty(_titles, 'train', 'Thing'),
+    _defineProperty(_titles, '2006 film', 'CreativeWork'),
+    _defineProperty(_titles, 'season 3', 'CreativeWork'),
+    _defineProperty(_titles, 'singer', 'Person/Artist'),
+    _defineProperty(_titles, 'actor', 'Person/Actor'),
+    _defineProperty(_titles, 'artist', 'Person/Artist'),
+    _defineProperty(_titles, 'volcano', 'Place'),
+    _defineProperty(_titles, 'season 4', 'CreativeWork'),
+    _defineProperty(_titles, 'united states', 'Place'),
+    _defineProperty(_titles, 'united kingdom', 'Place'),
+    _defineProperty(_titles, 'movie', 'CreativeWork/Film'),
+    _defineProperty(_titles, 'judge', 'Person'),
+    _defineProperty(_titles, 'football player', 'Person/Athlete'),
+    _defineProperty(_titles, 'erie county, new york', 'Place'),
+    _defineProperty(_titles, 'arkansas', 'Place'),
+    _defineProperty(_titles, 'oklahoma', 'Place'),
+    _defineProperty(_titles, 'single', 'CreativeWork'),
+    _defineProperty(_titles, 'series', 'CreativeWork'),
+    _defineProperty(_titles, 'nigeria', 'Place'),
+    _defineProperty(_titles, 'pennsylvania', 'Place'),
+    _defineProperty(_titles, 'magazine', 'CreativeWork'),
+    _defineProperty(_titles, 'opera', 'CreativeWork'),
+    _defineProperty(_titles, 'murder victim', 'Person'),
+    _defineProperty(_titles, 'australia', 'Place'),
+    _defineProperty(_titles, 'The Twilight Zone', 'CreativeWork'),
+    _defineProperty(_titles, 'music', 'CreativeWork'),
+    _defineProperty(_titles, 'georgia', 'Place'),
+    _defineProperty(_titles, 'poet', 'Person'),
+    _defineProperty(_titles, 'va', 'Place'),
+    _defineProperty(_titles, 'play', 'CreativeWork'),
+    _defineProperty(_titles, 'actress', 'Person/Actor'),
+    _defineProperty(_titles, 'album', 'CreativeWork/Album'),
+    _defineProperty(_titles, 'ship', 'Thing'),
+    _defineProperty(_titles, 'spain', 'Place'),
+    _defineProperty(_titles, 'boxer', 'Person/Athlete'),
+    _defineProperty(_titles, 'author', 'Person'),
+    _defineProperty(_titles, 'painter', 'Person/Artist'),
+    _defineProperty(_titles, 'michigan', 'Place'),
+    _defineProperty(_titles, 'tv series', 'CreativeWork'),
+    _defineProperty(_titles, 'sudan', 'Place'),
+    _defineProperty(_titles, 'chad', 'Place'),
+    _defineProperty(_titles, 'brazil', 'Place'),
+    _defineProperty(_titles, 'france', 'Place'),
+    _defineProperty(_titles, 'director', 'Person'),
+    _defineProperty(_titles, 'alaska', 'Place'),
+    _defineProperty(_titles, 'priest', 'Person'),
+    _defineProperty(_titles, 'minister', 'Person'),
+    _defineProperty(_titles, 'province', 'Place'),
+    _defineProperty(_titles, 'season 5', 'CreativeWork'),
+    _defineProperty(_titles, 'barbados', 'Place'),
+    _defineProperty(_titles, 'diplomat', 'Person'),
+    _defineProperty(_titles, 'japan', 'Place'),
+    _defineProperty(_titles, 'new york', 'Place'),
+    _defineProperty(_titles, 'ontario', 'Place'),
+    _defineProperty(_titles, 'painting', 'Thing'),
+    _defineProperty(_titles, 'cocktail', 'Thing'),
+    _defineProperty(_titles, 'cedar busway station', 'Place'),
+    _defineProperty(_titles, 'cyclist', 'Person'),
+    _defineProperty(_titles, 'book', 'CreativeWork'),
+    _defineProperty(_titles, 'cape verde', 'Place'),
+    _defineProperty(_titles, 'river', 'Place/BodyOfWater'),
+    _defineProperty(_titles, 'australian politician', 'Person/Politician'),
+    _defineProperty(_titles, 'businessman', 'Person'),
+    _defineProperty(_titles, 'canadian politician', 'Person/Politician'),
+    _defineProperty(_titles, 'academic', 'Person'),
+    _defineProperty(_titles, 'dominica', 'Place'),
+    _defineProperty(_titles, 'journal', 'Organization'),
+    _defineProperty(_titles, 'plant', 'Thing'),
+    _defineProperty(_titles, 'north carolina', 'Place'),
+    _defineProperty(_titles, 'new york City Subway', 'Place'),
+    _defineProperty(_titles, 'candy', 'Thing'),
+    _defineProperty(_titles, 'group', 'Organization'),
+    _defineProperty(_titles, 'chicago', 'Place'),
+    _defineProperty(_titles, 'argentina', 'Place'),
+    _defineProperty(_titles, 'manhattan', 'Place'),
+    _defineProperty(_titles, 'new orleans', 'Place'),
+    _defineProperty(_titles, 'song', 'CreativeWork'),
+    _defineProperty(_titles, 'rapper', 'Person/Artist'),
+    _defineProperty(_titles, 'drink', 'Thing'),
+    _defineProperty(_titles, 'composer', 'Person/Artist'),
+    _defineProperty(_titles, 'texas', 'Place'),
+    _defineProperty(_titles, 'new zealand', 'Place'),
+    _defineProperty(_titles, 'miniseries', 'CreativeWork'),
+    _defineProperty(_titles, 'northern ireland', 'Place'),
+    _defineProperty(_titles, 'drummer', 'Person'),
+    _defineProperty(_titles, 'sri lanka', 'Place'),
+    _defineProperty(_titles, 'gaelic footballer', 'Person/Athlete'),
+    _defineProperty(_titles, 'ballet', 'CreativeWork'),
+    _defineProperty(_titles, 'american football player', 'Person/Athlete'),
+    _defineProperty(_titles, 'colombia', 'Place'),
+    _defineProperty(_titles, 'israel', 'Place'),
+    _defineProperty(_titles, 'washington', 'Place'),
+    _defineProperty(_titles, 'edmonton', 'Place'),
+    _defineProperty(_titles, 'plant', 'Thing/Organism'),
+    _titles)
+  var titles_1 = titles.album
+  var titles_2 = titles.song
+  var titles_3 = titles.film
+  var titles_4 = titles.politician
+  var titles_5 = titles.footballer
+  var titles_6 = titles.musician
+  var titles_7 = titles.Virginia
+  var titles_8 = titles.band
+  var titles_9 = titles.novel
+  var titles_10 = titles.portugal
+  var titles_11 = titles.book
+  var titles_12 = titles.character
+  var titles_13 = titles.company
+  var titles_14 = titles.india
+  var titles_15 = titles.game
+  var titles_16 = titles.california
+  var titles_17 = titles.athlete
+  var titles_18 = titles.soundtrack
+  var titles_19 = titles.cricketer
+  var titles_20 = titles.horse
+  var titles_21 = titles.newspaper
+  var titles_22 = titles.wrestler
+  var titles_23 = titles.connecticut
+  var titles_24 = titles.uk
+  var titles_25 = titles.software
+  var titles_26 = titles.canada
+  var titles_27 = titles.journalist
+  var titles_28 = titles.bishop
+  var titles_29 = titles.train
+  var titles_30 = titles.singer
+  var titles_31 = titles.actor
+  var titles_32 = titles.artist
+  var titles_33 = titles.volcano
+  var titles_34 = titles.movie
+  var titles_35 = titles.judge
+  var titles_36 = titles.arkansas
+  var titles_37 = titles.oklahoma
+  var titles_38 = titles.single
+  var titles_39 = titles.series
+  var titles_40 = titles.nigeria
+  var titles_41 = titles.pennsylvania
+  var titles_42 = titles.magazine
+  var titles_43 = titles.opera
+  var titles_44 = titles.australia
+  var titles_45 = titles.music
+  var titles_46 = titles.georgia
+  var titles_47 = titles.poet
+  var titles_48 = titles.va
+  var titles_49 = titles.play
+  var titles_50 = titles.actress
+  var titles_51 = titles.ship
+  var titles_52 = titles.spain
+  var titles_53 = titles.boxer
+  var titles_54 = titles.author
+  var titles_55 = titles.painter
+  var titles_56 = titles.michigan
+  var titles_57 = titles.sudan
+  var titles_58 = titles.chad
+  var titles_59 = titles.brazil
+  var titles_60 = titles.france
+  var titles_61 = titles.director
+  var titles_62 = titles.alaska
+  var titles_63 = titles.priest
+  var titles_64 = titles.minister
+  var titles_65 = titles.province
+  var titles_66 = titles.barbados
+  var titles_67 = titles.diplomat
+  var titles_68 = titles.japan
+  var titles_69 = titles.ontario
+  var titles_70 = titles.painting
+  var titles_71 = titles.cocktail
+  var titles_72 = titles.cyclist
+  var titles_73 = titles.river
+  var titles_74 = titles.businessman
+  var titles_75 = titles.academic
+  var titles_76 = titles.dominica
+  var titles_77 = titles.journal
+  var titles_78 = titles.plant
+  var titles_79 = titles.candy
+  var titles_80 = titles.group
+  var titles_81 = titles.chicago
+  var titles_82 = titles.argentina
+  var titles_83 = titles.manhattan
+  var titles_84 = titles.rapper
+  var titles_85 = titles.drink
+  var titles_86 = titles.composer
+  var titles_87 = titles.texas
+  var titles_88 = titles.miniseries
+  var titles_89 = titles.drummer
+  var titles_90 = titles.ballet
+  var titles_91 = titles.colombia
+  var titles_92 = titles.israel
+  var titles_93 = titles.washington
+  var titles_94 = titles.edmonton
 
   var patterns$1 = {
     'CreativeWork/Film': [/ \([0-9]{4} film\)$/],
     CreativeWork: [/ \((.*? )song\)$/]
-  };
-  var paren = /\((.*)\)$/;
+  }
+  var paren = /\((.*)\)$/
 
   var byTitle = function byTitle(doc) {
-    var title = doc.title();
+    var title = doc.title()
 
     if (!title) {
-      return [];
+      return []
     } //look at parentheses like 'Tornado (film)'
 
-
-    var m = title.match(paren);
+    var m = title.match(paren)
 
     if (!m) {
-      return [];
+      return []
     }
 
-    var inside = m[1] || '';
-    inside = inside.toLowerCase();
-    inside = inside.replace(/_/g, ' ');
-    inside = inside.trim(); //look at known parentheses
+    var inside = m[1] || ''
+    inside = inside.toLowerCase()
+    inside = inside.replace(/_/g, ' ')
+    inside = inside.trim() //look at known parentheses
 
     if (titles.hasOwnProperty(inside)) {
-      return [titles[inside]];
+      return [titles[inside]]
     } // look at regex
 
-
-    var keys = Object.keys(patterns$1);
+    var keys = Object.keys(patterns$1)
 
     for (var o = 0; o < keys.length; o++) {
-      var k = keys[o];
+      var k = keys[o]
 
       for (var i = 0; i < patterns$1[k].length; i++) {
-        var reg = patterns$1[k][i];
+        var reg = patterns$1[k][i]
 
         if (reg.test(title)) {
-          return [k];
+          return [k]
         }
       }
     }
 
-    return [];
-  };
+    return []
+  }
 
-  var byTitle_1 = byTitle;
+  var byTitle_1 = byTitle
 
   var skip = {
     disambiguation: true,
     surname: true,
     name: true,
     'given name': true
-  };
-  var paren$1 = /\((.*)\)$/;
-  var listOf = /^list of ./;
-  var disambig = /\(disambiguation\)/;
+  }
+  var paren$1 = /\((.*)\)$/
+  var listOf = /^list of ./
+  var disambig = /\(disambiguation\)/
 
   var skipPage = function skipPage(doc) {
-    var title = doc.title() || ''; //look at parentheses like 'Tornado (film)'
+    var title = doc.title() || '' //look at parentheses like 'Tornado (film)'
 
-    var m = title.match(paren$1);
+    var m = title.match(paren$1)
 
     if (!m) {
-      return null;
+      return null
     }
 
-    var inside = m[1] || '';
-    inside = inside.toLowerCase();
-    inside = inside.replace(/_/g, ' ');
-    inside = inside.trim(); //look at known parentheses
+    var inside = m[1] || ''
+    inside = inside.toLowerCase()
+    inside = inside.replace(/_/g, ' ')
+    inside = inside.trim() //look at known parentheses
 
     if (skip.hasOwnProperty(inside)) {
-      return true;
+      return true
     } //try a regex
 
-
     if (listOf.test(title) === true) {
-      return true;
+      return true
     }
 
     if (disambig.test(title) === true) {
-      return true;
+      return true
     }
 
-    return false;
-  };
+    return false
+  }
 
-  var _skip = skipPage;
+  var _skip = skipPage
 
   var topk = function topk(arr) {
-    var obj = {};
-    arr.forEach(function (a) {
-      obj[a] = obj[a] || 0;
-      obj[a] += 1;
-    });
-    var res = Object.keys(obj).map(function (k) {
-      return [k, obj[k]];
-    });
-    return res.sort(function (a, b) {
-      return a[1] > b[1] ? -1 : 0;
-    });
-  };
+    var obj = {}
+    arr.forEach(function(a) {
+      obj[a] = obj[a] || 0
+      obj[a] += 1
+    })
+    var res = Object.keys(obj).map(function(k) {
+      return [k, obj[k]]
+    })
+    return res.sort(function(a, b) {
+      return a[1] > b[1] ? -1 : 0
+    })
+  }
 
   var parse = function parse(cat) {
-    var split = cat.split(/\//);
+    var split = cat.split(/\//)
     return {
       root: split[0],
       child: split[1]
-    };
-  };
+    }
+  }
 
   var getScore = function getScore(detail) {
-    var cats = [];
-    Object.keys(detail).forEach(function (k) {
-      detail[k].forEach(function (str) {
-        cats.push(parse(str));
-      });
-    }); // find top parent
+    var cats = []
+    Object.keys(detail).forEach(function(k) {
+      detail[k].forEach(function(str) {
+        cats.push(parse(str))
+      })
+    }) // find top parent
 
-    var roots = cats.map(function (obj) {
-      return obj.root;
-    }).filter(function (s) {
-      return s;
-    });
-    var top = topk(roots)[0];
+    var roots = cats
+      .map(function(obj) {
+        return obj.root
+      })
+      .filter(function(s) {
+        return s
+      })
+    var top = topk(roots)[0]
 
     if (!top) {
       return {
         detail: detail,
         category: null,
         score: 0
-      };
+      }
     }
 
-    var root = top[0]; // score as % of results
+    var root = top[0] // score as % of results
 
-    var score = top[1] / cats.length; // punish low counts
+    var score = top[1] / cats.length // punish low counts
 
     if (top[1] === 1) {
-      score *= 0.75;
+      score *= 0.75
     }
 
     if (top[1] === 2) {
-      score *= 0.85;
+      score *= 0.85
     }
 
     if (top[1] === 3) {
-      score *= 0.95;
+      score *= 0.95
     } // find 2nd level
 
-
-    var children = cats.map(function (obj) {
-      return obj.child;
-    }).filter(function (s) {
-      return s;
-    });
-    var tops = topk(children);
-    top = tops[0];
-    var category = root;
+    var children = cats
+      .map(function(obj) {
+        return obj.child
+      })
+      .filter(function(s) {
+        return s
+      })
+    var tops = topk(children)
+    top = tops[0]
+    var category = root
 
     if (top) {
-      category = "".concat(root, "/").concat(top[0]); // punish for any conflicting children
+      category = ''.concat(root, '/').concat(top[0]) // punish for any conflicting children
 
       if (tops.length > 1) {
-        score *= 0.7;
+        score *= 0.7
       } // punish for low count
 
-
       if (top[1] === 1) {
-        score *= 0.8;
+        score *= 0.8
       }
     }
 
@@ -1388,38 +1566,36 @@
       category: category,
       score: score,
       detail: detail
-    };
-  };
+    }
+  }
 
-  var score = getScore;
+  var score = getScore
 
   var plugin = function plugin(models) {
     // add a new method to main class
-    models.Doc.prototype.classify = function (options) {
-      var doc = this;
-      var res = {}; // dont classify these
+    models.Doc.prototype.classify = function(options) {
+      var doc = this
+      var res = {} // dont classify these
 
       if (_skip(doc)) {
-        return null;
+        return null
       } //look for 'infobox person', etc
 
+      res.infobox = byInfobox_1(doc) //look for '{{coord}}'
 
-      res.infobox = byInfobox_1(doc); //look for '{{coord}}'
+      res.template = byTemplate_1(doc) //look for '==early life=='
 
-      res.template = byTemplate_1(doc); //look for '==early life=='
+      res.section = bySection(doc) //look for 'foo (film)'
 
-      res.section = bySection(doc); //look for 'foo (film)'
+      res.title = byTitle_1(doc) //look for 'Category: 1992 Births', etc
 
-      res.title = byTitle_1(doc); //look for 'Category: 1992 Births', etc
+      res.category = byCategory_1(doc)
+      return score(res)
+    }
+  }
 
-      res.category = byCategory_1(doc);
-      return score(res);
-    };
-  };
+  var src = plugin
 
-  var src = plugin;
-
-  return src;
-
-})));
+  return src
+})
 //# sourceMappingURL=wtf-plugin-classify.js.map

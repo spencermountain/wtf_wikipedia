@@ -1,5 +1,5 @@
 {
-  "name": "wtf-plugin-wikitext",
+  "name": "wtf-plugin-summary",
   "description": "text-summary plugin for wtf_wikipedia",
   "version": "0.0.1",
   "main": "./builds/wtf-plugin-summary.js",

@@ -333,7 +333,7 @@ module.exports = {
   'automatic taxobox': 'Organism',
 
   // march 29th
-  'video game': 'CreativeWork',
+  'video game': 'CreativeWork/VideoGame',
   'television episode': 'CreativeWork',
   'comic book title': 'CreativeWork',
   'song contest entry': 'CreativeWork',
