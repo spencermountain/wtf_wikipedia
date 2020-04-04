@@ -34,13 +34,11 @@ const tree = {
     MilitaryConflict: true,
     SpaceMission: true
   },
-  Thing: {
-    Product: true,
-    Software: true,
-    Character: true
-  },
+  Product: true,
   Organism: true,
-  MedicalCondition: true
+  MedicalCondition: true,
+  Concept: true,
+  FictionalCharacter: true
 }
 
 const isObject = function (obj) {

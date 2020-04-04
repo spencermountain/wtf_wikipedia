@@ -1,7 +1,6 @@
 const patterns = {
-  'Thing/Character': [/(fictional|television) characters/],
-  'Thing/Product': [/products introduced in ./, /musical instruments/],
-  'Thing/Software': [/software using ./],
+  FictionalCharacter: [/(fictional|television) characters/],
+  Product: [/products introduced in ./, /musical instruments/],
   Organism: [
     /(funghi|reptiles|flora|fauna|fish|birds|trees|mammals|plants) of ./,
     / first appearances/,

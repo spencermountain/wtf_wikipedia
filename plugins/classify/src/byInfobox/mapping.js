@@ -21,14 +21,14 @@ module.exports = {
   athlete: 'Person/Athlete', //6
   athletics_championships: 'Event/SportsEvent', //6
   australian_place: 'Place', //18
-  automobile: 'Thing/Product', //8
+  automobile: 'Product', //8
   badminton_event: 'Event/SportsEvent', //2
   baseball_biography: 'Person/Athlete', //64
   basketball_biography: 'Person/Athlete', //17
   basketball_club: 'Organization/SportsTeam', //17
   pro_hockey_team: 'Organization/SportsTeam', //
   beauty_pageant: 'Event', //4
-  beverage: 'Thing/Product', //7
+  beverage: 'Product', //7
   body_of_water: 'Place/BodyOfWater', //7
   book: 'CreativeWork/Book', //130
   book_series: 'CreativeWork', //4
@@ -43,7 +43,7 @@ module.exports = {
   cbb_team: 'Organization', //1
   cemetery: 'Place', //3
   cfl_player: 'Person/Athlete', //2
-  character: 'Thing/Character', //12
+  character: 'FictionalCharacter', //12
   chef: 'Person', //6
   chess_player: 'Person', //2
   choir: 'Organization', //1
@@ -58,14 +58,14 @@ module.exports = {
   comedian: 'Person', //3
   comic_book_title: 'CreativeWork', //9
   comic_strip: 'CreativeWork', //1
-  comics_character: 'Thing/Character', //13
+  comics_character: 'FictionalCharacter', //13
   comics_creator: 'Person', //10
   company: 'Organization', //150
   computer_hardware_bus: 'Thing', //1
-  computer_virus: 'Thing/Software', //1
+  // computer_virus: 'Thing/Software', //1
   concert_tour: 'Event', //8
   court_case: 'Event', //8
-  cpu: 'Thing/Product', //1
+  cpu: 'Product', //1
   cricket_ground: 'Place', //2
   cricket_team: 'Organization/SportsTeam', //1
   cricketer: 'Person/Athlete', //43
@@ -77,7 +77,7 @@ module.exports = {
   earthquake: 'Event/Disaster', //2
   economist: 'Person/Academic', //4
   election: 'Event/Election', //19
-  electric_vehicle: 'Thing/Product', //1
+  electric_vehicle: 'Product', //1
   engineer: 'Person', //2
   enzyme: 'Thing', //19
   event: 'Event', //2
@@ -112,7 +112,7 @@ module.exports = {
   government_agency: 'Organization', //7
   government_cabinet: 'Organization', //7
   governor: 'Person/Politician', //5
-  gpu: 'Thing/Product', //1
+  gpu: 'Product', //1
   gridiron_football_person: 'Person', //11
   gymnast: 'Person/Athlete', //2
   handball_biography: 'Person', //8
@@ -161,11 +161,11 @@ module.exports = {
   mineral: 'Thing', //5
   minister: 'Person/ReligiousFigure', //3
   mlb_player: 'Person/Athlete', //8
-  mobile_phone: 'Thing/Product', //3
+  mobile_phone: 'Product', //3
   model: 'Person', //2
   monarch: 'Person', //23
   monument: 'Place', //1
-  motorcycle: 'Thing/Product', //5
+  motorcycle: 'Product', //5
   mountain: 'Place', //59
   mountain_pass: 'Place', //1
   mountain_range: 'Place', //13
@@ -263,8 +263,8 @@ module.exports = {
   ship_image: 'Thing', //84
   shopping_mall: 'Place', //9
   skier: 'Person/Athlete', //14
-  soap_character: 'Thing/Character', //126
-  software: 'Thing/Software', //25
+  soap_character: 'FictionalCharacter', //126
+  // software: 'Thing/Software', //25
   software_license: 'Thing', //1
   song: 'CreativeWork', //30
   song_contest: 'Event', //3
@@ -290,8 +290,8 @@ module.exports = {
   swimmer: 'Person/Athlete', //14
   swiss_town: 'Place', //36
   symptom: 'Thing', //2
-  synthesizer: 'Thing/Product', //1
-  television: 'Thing/Product', //94
+  synthesizer: 'Product', //1
+  television: 'Product', //94
   television_channel: 'Organization', //1
   television_episode: 'CreativeWork', //26
   television_season: 'CreativeWork', //18
@@ -324,7 +324,7 @@ module.exports = {
   volleyball_player: 'Person/Athlete', //4
   waterfall: 'Place', //4
   weapon: 'Thing', //15
-  website: 'Thing/Software', //5
+  // website: 'Thing/Software', //5
   windmill: 'Place', //1
   wrc_driver: 'Person', //1
   wrestling_event: 'Event/SportsEvent', //8
@@ -333,6 +333,23 @@ module.exports = {
   zoo: 'Place', //3
   speciesbox: 'Organism',
   'automatic taxobox': 'Organism',
+  'medical condition (new)': 'MedicalCondition',
+  'medical condition': 'MedicalCondition',
+  constellation: 'Place/SpaceLocation',
+  planet: 'Place/SpaceLocation',
+  'mythical creature': 'FictionalCharacter',
+  dogbreed: 'Organism',
+  'dog breed': 'Organism',
+  'cat breed': 'Organism',
+  'grape variety': 'Organism',
+  anthem: 'CreativeWork',
+  'football tournament': 'Event/SportsEvent',
+  'former monarchy': 'Organization',
+  'criminal organization': 'Organization',
+  'card game': 'Product',
+  computer: 'Product',
+  'laboratory equipment': 'Product',
+  'baseball team': 'Organization/SportsTeam',
 
   // march 29th
   'video game': 'CreativeWork/VideoGame',
@@ -347,23 +364,23 @@ module.exports = {
   'musical composition': 'CreativeWork',
   'book series': 'CreativeWork',
   'comic strip': 'CreativeWork',
-  'd&d creature': 'Thing/Character',
+  'd&d creature': 'FictionalCharacter',
   'television season': 'CreativeWork',
   'comics organization': 'CreativeWork',
   'doctor who episode': 'CreativeWork',
   'animanga/other': 'CreativeWork',
   'graphic novel': 'CreativeWork',
   rpg: 'CreativeWork',
-  'vg character': 'Thing/Character',
+  'vg character': 'FictionalCharacter',
   'big finish': 'CreativeWork',
   'vg series': 'CreativeWork',
   'name module': 'CreativeWork',
   'comics story arc': 'CreativeWork',
-  'animanga character': 'Thing/Character',
+  'animanga character': 'FictionalCharacter',
   'video game series': 'CreativeWork',
   'fictional location': 'Thing',
   'futurama episode': 'CreativeWork',
-  'video game character': 'Thing/Character',
+  'video game character': 'FictionalCharacter',
   'comics character and title': 'CreativeWork',
   'comics meta series': 'CreativeWork',
   webcomic: 'CreativeWork',
@@ -373,8 +390,8 @@ module.exports = {
   'sw comics': 'CreativeWork',
   'media franchise': 'CreativeWork',
   'folk tale': 'CreativeWork',
-  'doctor who character': 'Thing/Character',
-  'tolkien character': 'Thing/Character',
+  'doctor who character': 'FictionalCharacter',
+  'tolkien character': 'FictionalCharacter',
 
   // learned events
   'military conflict': 'Event/MilitaryConflict',

@@ -431,9 +431,5 @@ module.exports = {
   'uk mps 2017–': 'Person/Politician',
   "members of the queen's privy council for canada": 'Person',
   'vaudeville performers': 'Person/Artist',
-  'american presbyterians': 'Person',
-
-  // learned things
-  'gnu project': 'Thing/Software',
-  'massachusetts institute of technology software': 'Thing/Software'
+  'american presbyterians': 'Person'
 }

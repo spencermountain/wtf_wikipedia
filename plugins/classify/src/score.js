@@ -1,3 +1,5 @@
+const types = require('./_types')
+
 const topk = function (arr) {
   let obj = {}
   arr.forEach((a) => {
@@ -20,6 +22,9 @@ const getScore = function (detail) {
   let cats = []
   Object.keys(detail).forEach((k) => {
     detail[k].forEach((obj) => {
+      if (!types[obj.cat]) {
+        console.error('Missing: ' + obj.cat)
+      }
       cats.push(parse(obj.cat))
     })
   })
