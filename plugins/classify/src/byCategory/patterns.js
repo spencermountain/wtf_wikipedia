@@ -36,7 +36,7 @@ const patterns = {
   ],
 
   // ==Place==
-  'Place/Building': [
+  'Place/Structure': [
     /(buildings|bridges) completed in /,
     /airports established in ./,
     /(airports|bridges) in ./,

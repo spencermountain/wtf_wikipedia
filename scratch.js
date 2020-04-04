@@ -5,6 +5,12 @@ wtf.extend(require('./plugins/classify/src'))
 // wtf.extend(require('./plugins/summary/src'))
 // wtf.extend(require('./plugins/category/src'))
 
-wtf.fetch('You Shall Know Our Velocity').then((doc) => {
-  console.log(doc.classify().detail)
+// Alexis Korner
+// Arnold Schwarzenegger
+// Alf Tales
+// André the Giant
+// Arbroath Abbey
+// Australian Broadcasting Corporation
+wtf.fetch('Andrew S. Tanenbaum').then((doc) => {
+  console.log(doc.classify())
 })

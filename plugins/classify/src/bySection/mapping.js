@@ -20,8 +20,8 @@ module.exports = {
   cast: 'CreativeWork/Film',
   plot: 'CreativeWork',
   reception: 'CreativeWork',
-  'critical reception': 'CreativeWork',
-  'critical response': 'CreativeWork',
+  // 'critical reception': 'CreativeWork',
+  // 'critical response': 'CreativeWork',
   'track listing': 'CreativeWork/Album',
   // org
   founding: 'Organization',
@@ -41,7 +41,7 @@ module.exports = {
 
   // march 29th
   //learned works
-  production: 'CreativeWork',
+  // production: 'CreativeWork',
   charts: 'CreativeWork',
   release: 'CreativeWork',
   'plot summary': 'CreativeWork',
@@ -99,7 +99,7 @@ module.exports = {
   'july to december': 'Event',
   'january to june': 'Event',
   'medal table': 'Event',
-  'mission highlights': 'Event',
+  'mission highlights': 'Event/SpaceMission',
   campaign: 'Event',
 
   // learned orgs
@@ -114,7 +114,7 @@ module.exports = {
   'student life': 'Organization',
   rankings: 'Organization',
   'compilation albums': 'Organization/MusicalGroup',
-  origins: 'Organization',
+  // origins: 'Organization',
   'live albums': 'Organization/MusicalGroup',
   products: 'Organization/Company',
   fleet: 'Organization',
@@ -137,7 +137,7 @@ module.exports = {
   family: 'Person',
   'political career': 'Person',
   'early career': 'Person',
-  ancestry: 'Person',
+  // ancestry: 'Person',
   'later life': 'Person',
   'early life and career': 'Person',
   'later years': 'Person',
@@ -152,7 +152,7 @@ module.exports = {
   retirement: 'Person',
   poetry: 'Person',
   marriage: 'Person',
-  films: 'Person',
+  // films: 'Person',
   'electoral history': 'Person',
   'military career': 'Person',
   'international career': 'Person',
@@ -197,10 +197,10 @@ module.exports = {
   'parks and recreation': 'Place',
   'public transportation': 'Place',
   'coat of arms': 'Place',
-  churches: 'Place',
+  churches: 'Place'
 
   // learned things
-  compatibility: 'Thing',
-  compliance: 'Thing',
-  'key features': 'Thing'
+  //compatibility: 'Thing',
+  //compliance: 'Thing',
+  //'key features': 'Thing'
 }
