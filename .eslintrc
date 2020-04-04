@@ -32,7 +32,9 @@
     "consistent-return": 2,
     "no-octal-escape": 2,
     "no-constant-condition": 1,
-    "no-unused-expressions": 2
+    "no-unused-expressions": 2,
+    "comma-dangle": [1, "only-multiline"],
+    "space-before-function-paren": 0
   },
   "globals": {
     "process": true,

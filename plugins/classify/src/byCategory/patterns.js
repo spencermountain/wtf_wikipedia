@@ -83,7 +83,10 @@ const patterns = {
     /musical group stubs/,
     /. music(al)? groups$/
   ],
-  'Organization/SportsTeam': [/sports clubs established in [0-9]{4}/, /football clubs in ./],
+  'Organization/SportsTeam': [
+    /football clubs in ./,
+    /(basketball|hockey|baseball|football) teams (in|established) ./
+  ],
   'Organization/Company': [/companies (established|based) in ./],
   Organization: [
     /(organi[sz]ations|publications) based in /,

@@ -2,11 +2,11 @@ const patterns = require('./patterns')
 const mapping = require('./mapping')
 const byPattern = require('../_byPattern')
 
-const byCategory = function(doc) {
+const byCategory = function (doc) {
   let found = []
   let cats = doc.categories()
   // clean them up a bit
-  cats = cats.map(cat => {
+  cats = cats.map((cat) => {
     cat = cat.toLowerCase()
     cat = cat.replace(/^(category|categorie|kategori): ?/i, '')
     cat = cat.replace(/_/g, ' ')

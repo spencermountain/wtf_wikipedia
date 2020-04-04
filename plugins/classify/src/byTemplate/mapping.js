@@ -71,7 +71,6 @@ module.exports = {
   vireo: 'Organism',
   'angle bracket': 'Organism',
   'wikispecies-inline': 'Organism',
-  'multiple image': 'Organism',
   'iucn map': 'Organism',
   'xeno-canto species': 'Organism',
   avibase: 'Organism',

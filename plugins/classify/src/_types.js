@@ -12,7 +12,7 @@ const tree = {
     City: true,
     Structure: true,
     BodyOfWater: true,
-    OuterSpaceLocation: true
+    SpaceLocation: true
   },
   Organization: {
     Company: true,
@@ -37,19 +37,19 @@ const tree = {
   Thing: {
     Product: true,
     Software: true,
-    Character: true,
-    MedicalCondition: true
+    Character: true
   },
-  Organism: true
+  Organism: true,
+  MedicalCondition: true
 }
 
-const isObject = function(obj) {
+const isObject = function (obj) {
   return obj && Object.prototype.toString.call(obj) === '[object Object]'
 }
 
 let types = {}
-const doit = function(type, obj) {
-  Object.keys(obj).forEach(k => {
+const doit = function (type, obj) {
+  Object.keys(obj).forEach((k) => {
     let tmp = k
     if (type) {
       tmp = type + '/' + k

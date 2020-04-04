@@ -1,11 +1,11 @@
 /* wtf-plugin-classify 0.0.1  MIT */
-;(function(global, factory) {
+;(function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined'
     ? (module.exports = factory())
     : typeof define === 'function' && define.amd
     ? define(factory)
     : ((global = global || self), (global.wtf = factory()))
-})(this, function() {
+})(this, function () {
   'use strict'
 
   var mapping = {
@@ -1495,7 +1495,7 @@
     var found = []
     var cats = doc.categories() // clean them up a bit
 
-    cats = cats.map(function(cat) {
+    cats = cats.map(function (cat) {
       cat = cat.toLowerCase()
       cat = cat.replace(/^(category|categorie|kategori): ?/i, '')
       cat = cat.replace(/_/g, ' ')
@@ -1614,7 +1614,6 @@
     vireo: 'Organism',
     'angle bracket': 'Organism',
     'wikispecies-inline': 'Organism',
-    'multiple image': 'Organism',
     'iucn map': 'Organism',
     'xeno-canto species': 'Organism',
     avibase: 'Organism',
@@ -1898,7 +1897,7 @@
 
   var fromSection = function fromSection(doc) {
     var found = []
-    var titles = doc.sections().map(function(s) {
+    var titles = doc.sections().map(function (s) {
       var str = s.title()
       str = str.toLowerCase().trim()
       return str
@@ -2259,14 +2258,14 @@
 
   var topk = function topk(arr) {
     var obj = {}
-    arr.forEach(function(a) {
+    arr.forEach(function (a) {
       obj[a] = obj[a] || 0
       obj[a] += 1
     })
-    var res = Object.keys(obj).map(function(k) {
+    var res = Object.keys(obj).map(function (k) {
       return [k, obj[k]]
     })
-    return res.sort(function(a, b) {
+    return res.sort(function (a, b) {
       return a[1] > b[1] ? -1 : 0
     })
   }
@@ -2281,17 +2280,17 @@
 
   var getScore = function getScore(detail) {
     var cats = []
-    Object.keys(detail).forEach(function(k) {
-      detail[k].forEach(function(obj) {
+    Object.keys(detail).forEach(function (k) {
+      detail[k].forEach(function (obj) {
         cats.push(parse(obj.cat))
       })
     }) // find top parent
 
     var roots = cats
-      .map(function(obj) {
+      .map(function (obj) {
         return obj.root
       })
-      .filter(function(s) {
+      .filter(function (s) {
         return s
       })
     var top = topk(roots)[0]
@@ -2321,10 +2320,10 @@
     } // find 2nd level
 
     var children = cats
-      .map(function(obj) {
+      .map(function (obj) {
         return obj.child
       })
-      .filter(function(s) {
+      .filter(function (s) {
         return s
       })
     var tops = topk(children)
@@ -2355,7 +2354,7 @@
 
   var plugin = function plugin(models) {
     // add a new method to main class
-    models.Doc.prototype.classify = function(options) {
+    models.Doc.prototype.classify = function (options) {
       var doc = this
       var res = {} // dont classify these
 

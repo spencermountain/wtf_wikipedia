@@ -25,6 +25,8 @@ module.exports = {
   badminton_event: 'Event/SportsEvent', //2
   baseball_biography: 'Person/Athlete', //64
   basketball_biography: 'Person/Athlete', //17
+  basketball_club: 'Organization/SportsTeam', //17
+  pro_hockey_team: 'Organization/SportsTeam', //
   beauty_pageant: 'Event', //4
   beverage: 'Thing/Product', //7
   body_of_water: 'Place/BodyOfWater', //7

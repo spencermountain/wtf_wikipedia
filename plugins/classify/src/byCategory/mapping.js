@@ -312,6 +312,7 @@ module.exports = {
   'companies listed on the tokyo stock exchange': 'Organization/Company',
   'organizations based in washington, d.c.': 'Organization',
   'premier league clubs': 'Organization/SportsTeam',
+  'national basketball association teams': 'Organization/SportsTeam',
   'social democratic parties': 'Organization/PoliticalParty',
   're-established companies': 'Organization/Company',
   'video game publishers': 'Organization',

@@ -27,6 +27,8 @@ module.exports = {
   founding: 'Organization',
   founders: 'Organization',
   'coaching staff': 'Organization/SportsTeam',
+  'head coaches': 'Organization/SportsTeam',
+  'team records': 'Organization/SportsTeam',
   'band members': 'Organization/MusicalGroup',
 
   habitat: 'Organism',
