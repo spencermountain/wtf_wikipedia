@@ -35,6 +35,10 @@ wtf.parseCategory('Major League Baseball venues').then(docs => {
   //  'Rogers Center is a entertainment venue ...'
   //]
 })
+
+// get the name of a random category
+let cat = await wtf.randomCategory('fr')
+// 'Catégorie:Édifice religieux à Paris'
 ```
 
 work-in-progress
