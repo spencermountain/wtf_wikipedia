@@ -1,18 +1,14 @@
 const nlp = require('compromise')
 const preProcess = require('./00-preProcess')
 const findPivot = require('./01-Pivot')
+const byClause = require('./02-byClause')
+const safeCut = require('./03-safeCuts')
+const hardCut = require('./04-hardCuts')
+const isGood = require('./_isGood')
 
 const defaults = {
   max: 60,
-  min: 8
-}
-
-//check text is appropriate length
-const isGood = function (text, options) {
-  if (text && text.length > options.min && text.length < options.max) {
-    return true
-  }
-  return false
+  min: 3
 }
 
 let count = 0
@@ -33,13 +29,31 @@ const doSentence = function (doc, options) {
     return ''
   }
   // maybe it's good already
-  let after = pivot.after.text() || ''
+  let after = pivot.after
   if (isGood(after, options)) {
+    return after.text()
+  }
+  // parse major chunks
+  after = byClause(after)
+  if (isGood(after, options)) {
+    return after.text()
+  }
+  // perform some modifications
+  after = safeCut(after)
+  if (isGood(after, options)) {
+    return after.text()
+  }
+  // really give it a go
+  after = hardCut(after)
+  if (isGood(after, options)) {
+    console.log(after.text())
     count += 1
     console.log(count)
-    return after
+    return after.text()
   }
-  // console.log(after.length)
-  return '' //sentence
+  // console.log(after.match('#PastTense').text())
+  // console.log(after.text())
+  // console.log('\n')
+  return ''
 }
 module.exports = doSentence

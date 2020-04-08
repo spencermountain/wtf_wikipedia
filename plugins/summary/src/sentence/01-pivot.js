@@ -1,3 +1,9 @@
+const cleanUp = function (s) {
+  // 'an actor and was a politician'
+  s.remove('and #Copula .*')
+  return s
+}
+
 //  founded in 1952 as the flagship ..
 const findPivot = function (s) {
   let m = s.matchOne('#Copula+ (a|an|the|any|one) of?')
@@ -17,7 +23,7 @@ const findPivot = function (s) {
   return {
     before: f.eq(0),
     verb: f.eq(1),
-    after: f.eq(2)
+    after: cleanUp(f.eq(2))
   }
 }
 module.exports = findPivot
