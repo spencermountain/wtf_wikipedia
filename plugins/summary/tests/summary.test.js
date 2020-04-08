@@ -1,7 +1,7 @@
 const test = require('tape')
 const wtf = require('./_lib')
 
-test('first-sentence cleanup summary', t => {
+test('first-sentence cleanup summary', (t) => {
   let arr = [
     [
       'Susan Allen (May 10, 1951 &amp;ndash; September 7, 2015) was an American harpist and singer',

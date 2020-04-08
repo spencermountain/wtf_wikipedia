@@ -4,11 +4,19 @@ const findPivot = require('./01-Pivot')
 const byClause = require('./02-byClause')
 const safeCut = require('./03-safeCuts')
 const hardCut = require('./04-hardCuts')
+const lastTry = require('./05-lastTry')
 const isGood = require('./_isGood')
 
 const defaults = {
   max: 60,
   min: 3
+}
+
+const post = function (s) {
+  s.remove('^(and|or|but)')
+  s.remove('(and|or|but)$')
+  s.post('') // remove trailing comma
+  return s.text()
 }
 
 let count = 0
@@ -31,26 +39,31 @@ const doSentence = function (doc, options) {
   // maybe it's good already
   let after = pivot.after
   if (isGood(after, options)) {
-    return after.text()
+    return post(after)
   }
   // parse major chunks
   after = byClause(after)
   if (isGood(after, options)) {
-    return after.text()
+    return post(after)
   }
   // perform some modifications
   after = safeCut(after)
   if (isGood(after, options)) {
-    return after.text()
+    return post(after)
   }
   // really give it a go
   after = hardCut(after)
   if (isGood(after, options)) {
-    console.log(after.text())
-    count += 1
-    console.log(count)
-    return after.text()
+    return post(after)
   }
+  // atleast we tried
+  after = lastTry(after)
+  if (isGood(after, options)) {
+    return post(after)
+  }
+  console.log(after.text())
+  count += 1
+  console.log(count)
   // console.log(after.match('#PastTense').text())
   // console.log(after.text())
   // console.log('\n')
