@@ -1,6 +1,6 @@
 var wtf = require('./src/index')
 wtf.extend(require('./plugins/summary/src'))
-// wtf.extend(require('./plugins/category/src'))
+wtf.extend(require('./plugins/category/src'))
 
 // 'Tom Anselmi (born c.'
 // 'The Tabula Capuana (=Tablet from Capua Ital.'
@@ -24,6 +24,15 @@ wtf.extend(require('./plugins/summary/src'))
 // console.log(res.length)
 // console.log(res)
 
-wtf.fetch('Tom Cruise').then((doc) => {
+//
+wtf.fetch('Garage (fanzine)').then((doc) => {
   console.log(doc.summary({ template: false, sentence: false }))
 })
+
+// wtf.randomCategory().then((cat) => {
+//   wtf.parseCategory(cat).then((res) => {
+//     res.docs.forEach((doc) => {
+//       console.log(doc.title() + '          ' + doc.summary({ template: false, sentence: false }))
+//     })
+//   })
+// })

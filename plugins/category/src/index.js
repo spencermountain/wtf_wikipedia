@@ -11,6 +11,9 @@ const chunkBy = function (arr, chunkSize = 5) {
 }
 
 const fetchCat = async function (wtf, cat, lang, opts) {
+  if (!cat) {
+    return { docs: [], categories: [] }
+  }
   let resp = await wtf.category(cat, lang)
   let pages = resp.pages.map((o) => o.title)
   let groups = chunkBy(pages)

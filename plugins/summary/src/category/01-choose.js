@@ -1,5 +1,6 @@
-const { like, dislike, good, bad } = require('./words')
+const { like, dislike, good, bad } = require('./regs')
 const hasYear = /[0-9]{4}/
+const isPlural = /s$/
 
 const fromCategory = function (doc) {
   let cats = doc.categories()
@@ -35,11 +36,32 @@ const fromCategory = function (doc) {
   }
   // remove disliked ones
   tmp = cats.filter((cat) => {
-    return dislike.find((reg) => reg.test(cat)) === null
+    // not a plural ending
+    if (isPlural.test(cat) === false) {
+      return false
+    }
+    // just one word
+    if (cat.slice(' ').length === 1) {
+      return false
+    }
+    return dislike.find((reg) => reg.test(cat)) === undefined
   })
   if (tmp.length > 0) {
     cats = tmp
   }
+
+  // sort them by most words
+  cats = cats.sort((a, b) => {
+    let aWords = a.split(' ').length
+    let bWords = b.split(' ').length
+    if (aWords > bWords) {
+      return -1
+    } else if (aWords < bWords) {
+      return 1
+    }
+    return 0
+  })
+  // console.log(cats)
 
   return cats[0]
 }

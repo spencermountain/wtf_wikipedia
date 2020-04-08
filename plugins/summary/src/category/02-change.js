@@ -15,8 +15,14 @@ const changeCat = function (cat, options) {
       article = c.nouns(0).json({ terms: false })[0].article || article
       article = titleCase(article)
     }
+    let first = c.terms(0)
+    if (first.has('#ProperNoun') === false) {
+      first.toLowerCase()
+    }
     c.prepend(article)
   }
+  // remove any parentheses
+  c.parentheses().remove()
   return c.text()
 }
 module.exports = changeCat
