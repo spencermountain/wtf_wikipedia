@@ -3,6 +3,17 @@ const wtf = require('./_lib')
 const fs = require('fs')
 const path = require('path')
 
+// ;(async () => {
+//   let cat = await wtf.randomCategory()
+//   console.log(cat, '\n\n')
+//   wtf.parseCategory(cat).then((res) => {
+//     res.docs.forEach((doc) => {
+//       console.log(doc.sentences(0).text())
+//       // console.log(padEnd(doc.title(), 26) + '       ' + doc.summary({ article: false }) || '-')
+//     })
+//   })
+// })()
+
 test('first-sentence cleanup summary', (t) => {
   let abs = path.join(__dirname, './texts.txt')
   let arr = fs
