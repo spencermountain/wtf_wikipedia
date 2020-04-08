@@ -43,7 +43,7 @@
     "wikiscript"
   ],
   "prettier": {
-    "trailingComma": "es5",
+    "trailingComma": "foo",
     "tabWidth": 2,
     "semi": false,
     "singleQuote": true,

@@ -1,6 +1,6 @@
 const nlp = require('compromise')
-const fromTemplate = require('./fromTemplate')
-const fromText = require('./fromText')
+// const fromTemplate = require('./fromTemplate')
+const fromText = require('./sentence')
 
 const defaults = {
   article: true

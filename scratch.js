@@ -1,15 +1,6 @@
 var wtf = require('./src/index')
 wtf.extend(require('./plugins/summary/src'))
-wtf.extend(require('./plugins/category/src'))
-
-/** add spaces at the end */
-const padEnd = function (str, width) {
-  str = str.toString()
-  while (str.length < width) {
-    str += ' '
-  }
-  return str
-}
+// wtf.extend(require('./plugins/category/src'))
 
 // 'Tom Anselmi (born c.'
 // 'The Tabula Capuana (=Tablet from Capua Ital.'
@@ -23,18 +14,8 @@ const padEnd = function (str, width) {
 // Australian Broadcasting Corporation
 
 // 'Chungnam National University (CNU) is a national university located in Daejeon, South Korea.'
+// adventure game released by On-Line Systems in 1980
 
-;(async () => {
-  let cat = await wtf.randomCategory()
-  console.log(cat, '\n\n')
-  wtf.parseCategory(cat).then((res) => {
-    res.docs.forEach((doc) => {
-      console.log(doc.sentences(0).text())
-      // console.log(padEnd(doc.title(), 26) + '       ' + doc.summary({ article: false }) || '-')
-    })
-  })
-})()
-
-wtf.randomCategory().then((res) => {
-  console.log(res)
-})
+let str=`The Abbotsford Flyers were a Junior "A" ice hockey team from Abbotsford, British Columbia, Canada.`
+// let str=`Dalian No. 8 Senior High School (Chinese:大连市第八高级中学) is a public high school in Dalian, Liaoning province, China.`
+console.log(wtf(str).summary())

@@ -11,5 +11,5 @@ let arr = fs
   .filter((s) => s)
 arr.forEach((txt) => {
   let str = wtf(txt).summary({ article: false })
-  console.log(str)
+  // console.log(str)
 })
