@@ -25,9 +25,11 @@ The process:
 
 - look for a [{{short description}](https://en.wikipedia.org/wiki/Template:Short_description)` template
 - grab and process the first-sentence of a wikipedia article
-- build a template from `wtf-plugin-classify`
+- build a summary from a good category
 
 Most-often it will find something of a reasonable length in the first-sentence.
+
+if you want a even more confident fallback. you could use `wtf-plugin-classify` to output 'Politician', if this library finds nothing.
 
 ```js
 const wtf = require('wtf_wikipedia')
@@ -56,7 +58,10 @@ this plugin uses [compromise](http://compromise.cool) for working with plaintext
 
 ```js
 let opts = {
-  article: false //remove leading 'a', 'the', etc
+  article: true, //remove leading 'a', 'the', etc
+  template: true, // look for summary in {{short description}}
+  sentence: true, //try to generate summary from first sentence
+  category: true //try to convert a category into a summary
 }
 await wtf.fetch('Toronto Raptors').summary(opts)
 // 'Canadian professional basketball team'

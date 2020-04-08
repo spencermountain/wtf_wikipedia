@@ -1,9 +1,13 @@
 const nlp = require('compromise')
-// const fromTemplate = require('./fromTemplate')
-const fromText = require('./sentence')
+const fromTemplate = require('./template')
+const fromSentence = require('./sentence')
+const fromCategory = require('./category')
 
 const defaults = {
-  article: true
+  article: true,
+  template: true,
+  sentence: true,
+  category: true
 }
 
 const seemsGood = function (txt) {
@@ -18,12 +22,24 @@ const plugin = function (models) {
     options = Object.assign({}, defaults, options)
 
     // generate from {{short description}} template
-    // let txt = fromTemplate(doc, options)
-    // if (seemsGood(txt)) {
-    //   return txt.trim()
-    // }
+    let txt = ''
+    if (options.template) {
+      txt = fromTemplate(doc, options)
+      if (seemsGood(txt)) {
+        return txt.trim()
+      }
+    }
     // generate from first-sentence
-    return fromText(doc, options)
+    if (options.sentence) {
+      txt = fromSentence(doc, options)
+      if (seemsGood(txt)) {
+        return txt.trim()
+      }
+    }
+    if (options.category) {
+      return fromCategory(doc, options)
+    }
+    return ''
   }
 
   // should we use 'it', 'he', 'they'...

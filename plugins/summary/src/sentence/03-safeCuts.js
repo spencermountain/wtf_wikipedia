@@ -20,6 +20,18 @@ const safeCuts = function (s) {
   s.remove('and? held annually .*')
   s.remove('taking place each .*')
 
+  // ordinal templates - the fifth fastest ..
+  s.remove('^one of (the|many|several|#Value)+')
+  s.remove('^(a|an|the)? #Ordinal? #Superlative')
+  s.remove('^(a|an|the)? #Ordinal? most #Adjective')
+
+  //
+  s.remove('born in .*')
+  s.remove('born #Date+ in? #Place+?')
+  s.remove('(first|initially|originally)? (located|founded|started|based|formed) in .*')
+  s.remove('(which|who|that) (is|was) .*')
+  s.remove('^the name of')
+
   return s
 }
 module.exports = safeCuts

@@ -1,6 +1,6 @@
 const lastTry = function (s) {
   s.remove('(small|large|minor|major)')
-  s.remove('(extinct|annual|biweekly|monthly|daily)')
+  s.remove('(extinct|retired|annual|biweekly|monthly|daily)')
   s.remove('(female|male)')
   s.remove('(private|independent|official|unofficial|officially)')
   s.remove('(southern|northern|eastern|western|northeastern|northwestern)')

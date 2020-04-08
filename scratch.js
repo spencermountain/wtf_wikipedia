@@ -18,8 +18,12 @@ wtf.extend(require('./plugins/summary/src'))
 // adventure game released by On-Line Systems in 1980
 
 // let str=`The Abbotsford Flyers were a Junior "A" ice hockey team from Abbotsford, British Columbia, Canada.`
-let str=`The Creston Clippers were a junior 'B' ice hockey team based in Creston, British Columbia, Canada.`
+// let str = `The Creston Clippers were a junior 'B' ice hockey team based in Creston, British Columbia, Canada.`
 // console.log(str.length)
-let res=wtf(str).summary({})
-console.log(res.length)
-console.log(res)
+// let res = wtf(str).summary({})
+// console.log(res.length)
+// console.log(res)
+
+wtf.fetch('Tom Cruise').then((doc) => {
+  console.log(doc.summary({ template: false, sentence: false }))
+})

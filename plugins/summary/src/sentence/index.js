@@ -8,7 +8,7 @@ const lastTry = require('./05-lastTry')
 const isGood = require('./_isGood')
 
 const defaults = {
-  max: 60,
+  max: 80,
   min: 3
 }
 

@@ -27,7 +27,7 @@ const isIndependent = function (c) {
 
 const hardCuts = function (s) {
   // .. in san fransisco
-  if (s.has('#Noun (located|based) in #Place+$')) {
+  if (s.has('#Noun (located|based|situated|sited|found|discovered) (in|on) #Place+$')) {
     s.remove('(located|based) in #Place+$')
   } else if (
     s.has(
