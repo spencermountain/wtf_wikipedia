@@ -1,4 +1,4 @@
-/* wtf_wikipedia 8.1.1 MIT */
+/* wtf_wikipedia 8.1.2 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -498,11 +498,13 @@
     } // try 'may refer to' on first line for en-wiki?
 
 
-    var firstLine = doc.sentences(0).text();
+    if (doc.sentences(0)) {
+      var firstLine = doc.sentences(0).text();
 
-    if (firstLine !== null && firstLine[0]) {
-      if (/. may refer to ./i.test(firstLine) === true) {
-        return true;
+      if (firstLine !== null && firstLine[0]) {
+        if (/. may refer to ./i.test(firstLine) === true) {
+          return true;
+        }
       }
     }
 
@@ -4902,6 +4904,7 @@
     ordination: true,
     'hockey team coach': true,
     'hockey team gm': true,
+    'pro hockey team': true,
     'hockey team player': true,
     'hockey team start': true,
     mlbbioret: true
@@ -7389,12 +7392,17 @@
     //https://en.wikipedia.org/wiki/Template:Medical_cases_chart
     'medical cases chart': function medicalCasesChart(tmpl, list) {
       var order = ['date', 'deaths_expr', 'recovery_expr', 'cases_expr', 'alt_expr_1', '4th_expr', '5th_expr', 'alt_expr_2', 'col_1', 'col_1_change', 'show_col_1', 'col_2', 'col_2_change', 'show_col_2', 'divisor', 'numwidth', 'collabsible', 'collapsed', 'id'];
-      var obj = parse$3(tmpl); // parse each row template
-
-      var rows = obj.rows.match(/\{\{Medical cases chart\/Row.*\}\}/gi);
+      var obj = parse$3(tmpl);
+      obj.data = obj.data || '';
+      var rows = obj.data.split(/\n/);
       obj.rows = rows.map(function (row) {
-        return parse$3(row, order);
+        var arr = row.split(/;/);
+        return order.reduce(function (h, k, i) {
+          h[k] = arr[i] || null;
+          return h;
+        }, {});
       });
+      delete obj.data;
       list.push(obj);
       return '';
     },
@@ -8788,7 +8796,7 @@
 
   var category = fetchCategory;
 
-  var _version = '8.1.1';
+  var _version = '8.1.2';
 
   var wtf = function wtf(wiki, options) {
     return _01Document(wiki, options);

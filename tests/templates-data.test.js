@@ -1,7 +1,7 @@
 var wtf = require('./lib')
 var test = require('tape')
 
-test('external-links', function(t) {
+test('external-links', function (t) {
   var arr = [
     [`imdb title`, `{{IMDb title | id= 0426883 | title= Alpha Dog }}`],
     [`imdb name`, `{{IMDb name | 0000008 | Marlon Brando }}`],
@@ -21,11 +21,11 @@ test('external-links', function(t) {
       'see also',
       `{{See also|page1|page2|page3| ...
     |label 1 = label 1|label 2 = label2|label 3 = label3| ...
-    |l1 = label1|l2 = label2|l3 = label3|selfref = yes|category = no}}`
+    |l1 = label1|l2 = label2|l3 = label3|selfref = yes|category = no}}`,
     ],
-    ['unreferenced section', `{{Unreferenced section|date=November 2018}}`]
+    ['unreferenced section', `{{Unreferenced section|date=November 2018}}`],
   ]
-  arr.forEach(a => {
+  arr.forEach((a) => {
     var doc = wtf(a[1])
     t.equal(doc.templates().length, 1, a[0] + ' count')
     var tmpl = doc.templates(0) || {}
@@ -34,7 +34,7 @@ test('external-links', function(t) {
   t.end()
 })
 
-test('wikipedia-templates', function(t) {
+test('wikipedia-templates', function (t) {
   var arr = [
     [`uss`, `{{USS|Constellation|1797}}`],
     [`italic title`, `{{italic title}}`],
@@ -43,7 +43,7 @@ test('wikipedia-templates', function(t) {
     [`chem`, `{{chem|H|2|O}}`],
     [
       `subject bar`,
-      `{{Subject bar |book= Lemurs |portal1= Primates |portal2= Madagascar |commons= y |commons-search= Category:Lemuriformes |species= y |species-search= Lemuriformes }}`
+      `{{Subject bar |book= Lemurs |portal1= Primates |portal2= Madagascar |commons= y |commons-search= Category:Lemuriformes |species= y |species-search= Lemuriformes }}`,
     ],
     [
       `gallery`,
@@ -58,7 +58,7 @@ test('wikipedia-templates', function(t) {
 |File:Mount Rushmore2.jpg
  |alt2=Profile of stone face on mountainside, with 3 workers.
  |Construction of Washington portrait at [[Mount Rushmore]], c. 1932
-}}`
+}}`,
     ],
     [
       `climate chart`,
@@ -79,14 +79,14 @@ test('wikipedia-templates', function(t) {
 |float=right
 |clear=right
 }}
-`
+`,
     ],
 
     [`short description`, `{{Short description|Use of high concentrations of oxygen as medical treatment}}`],
     [`main`, `{{Main|Article1|l1=Custom label 1|Article2|l2=Custom label 2}}`],
     [
       `wide image`,
-      `{{wide image|Helsinki z00.jpg|1800px||alt=Panorama of city with mixture of five to ten story buildings}}`
+      `{{wide image|Helsinki z00.jpg|1800px||alt=Panorama of city with mixture of five to ten story buildings}}`,
     ],
     [`ipa`, `{{IPA|/[[character|ˈkærəktɚz]]/}}`],
     [`ipac`, `{{IPAc-ko|h|a|n|g|u|k}}`],
@@ -98,7 +98,7 @@ test('wikipedia-templates', function(t) {
     |00|42|44.30
     |+|41|16|10
     |2360000
-  }}`
+  }}`,
     ],
     [
       `portal`,
@@ -110,11 +110,11 @@ test('wikipedia-templates', function(t) {
      | margin = fun
      | break = no
      | boxsize = yes
-    }}`
-    ]
+    }}`,
+    ],
     // [``, ``],
   ]
-  arr.forEach(a => {
+  arr.forEach((a) => {
     var doc = wtf(a[1])
     t.equal(doc.templates().length, 1, a[0] + ' count')
     var tmpl = doc.templates(0) || {}
@@ -123,7 +123,7 @@ test('wikipedia-templates', function(t) {
   t.end()
 })
 
-test('weather', function(t) {
+test('weather', function (t) {
   let str = `
   {{Weather box
   |metric first = Y
@@ -159,7 +159,7 @@ test('weather', function(t) {
   t.end()
 })
 
-test('election', function(t) {
+test('election', function (t) {
   var str = `hello {{Election box begin |title=[[United Kingdom general election, 2005|General Election 2005]]: Strangford}}
    {{Election box candidate
      |party      = Labour
@@ -190,7 +190,7 @@ test('election', function(t) {
   t.end()
 })
 
-test('test-flexible-format', function(t) {
+test('test-flexible-format', function (t) {
   var doc = wtf(`hello {{Hollywood Walk of Fame|Alan Alda}} world`)
   var tmpl = doc.templates(0) || {}
   t.equal(tmpl.template, 'hollywood walk of fame', 'template1')
@@ -208,34 +208,34 @@ test('test-flexible-format', function(t) {
   t.end()
 })
 
-test('covid-1', function(t) {
+test('covid-1', function (t) {
   let str = `
   {{Medical cases chart
     |numwidth=mw
-  
+    
     |disease=Green Flu
-    |location=Savannah, GA
+    |location=Savannah|location2=Georgia|location3=United States
     |outbreak=2009 Green Flu outbreak
-  
+    
     |recoveries=n
-  
-    |rows=
-    {{Medical cases chart/Row|2009-04-13|||42|||42|firstright1=y|divisor=40|numwidth=mw}}
-    {{Medical cases chart/Row|2009-04-14|||356|||356|+748%|divisor=40|numwidth=mw}}
-    {{Medical cases chart/Row|2009-04-15|||1503|||1,503|+322%|divisor=40|numwidth=mw}}
-    {{Medical cases chart/Row|2009-04-16|57||5915|||5,915|+294%|divisor=40|numwidth=mw}}
-    {{Medical cases chart/Row|2009-04-17|2000||9500|||~9,500|+60.6%|divisor=40|numwidth=mw}}
+    
+    |data=
+    2009-04-13;;;42;;;42;firstright1=y
+    2009-04-14;;;356;;;356;+748%
+    2009-04-15;;;1503;;;1,503;+322%
+    2009-04-16;57;;5915;;;5,915;+294%
+    2009-04-17;2000;;9500;;;~9,500;+60.6%
     }}
   `
   let doc = wtf(str)
   let obj = doc.templates(0)
-  t.equal(obj.location, 'Savannah, GA', 'location')
+  t.equal(obj.location, 'Savannah', 'location')
   t.equal(obj.rows.length, 5, '5 rows')
   t.equal(obj.rows[0].date, '2009-04-13', 'row[0]')
   t.end()
 })
 
-test('playoff-brackets', function(t) {
+test('playoff-brackets', function (t) {
   var str = `{{4TeamBracket
   | RD2         = Final
 

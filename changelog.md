@@ -2,6 +2,14 @@
 
 #### [unreleased]
 
+### 8.1.2
+
+- another fix for covid templates
+
+### 8.1.1
+
+- fix for covid templates
+
 ### 8.1.0
 
 - [major] fix Link json object in `.json()` result

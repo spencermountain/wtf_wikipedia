@@ -37,6 +37,24 @@ wtf.extend(require('./plugins/category/src'))
 //   })
 // })
 
-wtf.fetch('Template:2019–20 coronavirus pandemic data/United States/California medical cases chart').then((doc) => {
-  console.log(doc)
-})
+// wtf.fetch('Template:2019–20 coronavirus pandemic data/United States/California medical cases chart').then((doc) => {
+//   console.log(doc.template('medical cases chart'))
+// })
+
+let obj = wtf(`{{Medical cases chart
+  |numwidth=mw
+
+  |disease=Green Flu
+  |location=Savannah, GA
+  |outbreak=2009 Green Flu outbreak
+
+  |recoveries=n
+
+  |rows=
+2009-04-13;;;42;;;42;firstright1=y;divisor=40;numwidth=mw
+2009-04-14;;;356;;;356;+748%;divisor=40;numwidth=mw
+2009-04-15;;;1503;;;1,503;+322%;divisor=40;numwidth=mw
+2009-04-16;57;;5915;;;5,915;+294%;divisor=40;numwidth=mw
+2009-04-17;2000;;9500;;;~9,500;+60.6%;divisor=40;numwidth=mw
+  }}`).template('medical cases chart')
+// console.log(obj)
