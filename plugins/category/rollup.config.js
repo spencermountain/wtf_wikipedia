@@ -2,6 +2,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import babel from 'rollup-plugin-babel'
 import sizeCheck from 'rollup-plugin-filesize-check'
+import resolve from '@rollup/plugin-node-resolve' //import slow
 
 import { version } from './package.json'
 console.log('\n 📦  - running rollup..\n')
@@ -12,8 +13,12 @@ export default [
   // ===  es-module ===
   {
     input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
+    output: [
+      { banner: banner, file: `builds/${name}.mjs`, format: 'esm', globals: { https: 'https' } }
+    ],
+    external: ['https'],
     plugins: [
+      resolve(),
       commonjs(),
       babel({
         babelrc: false,
@@ -31,10 +36,13 @@ export default [
         file: `builds/${name}.js`,
         format: 'umd',
         name: 'wtf',
-        sourcemap: true
+        sourcemap: true,
+        globals: { https: 'https' }
       }
     ],
+    external: ['https'],
     plugins: [
+      resolve(),
       commonjs(),
       babel({
         babelrc: false,
@@ -51,10 +59,13 @@ export default [
         file: `builds/${name}.min.js`,
         format: 'umd',
         name: 'wtf',
-        sourcemap: false
+        sourcemap: false,
+        globals: { https: 'https' }
       }
     ],
+    external: ['https'],
     plugins: [
+      resolve(),
       commonjs(),
       babel({
         babelrc: false,
