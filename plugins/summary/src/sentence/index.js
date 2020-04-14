@@ -1,6 +1,6 @@
 const nlp = require('compromise')
 const preProcess = require('./00-preProcess')
-const findPivot = require('./01-Pivot')
+const findPivot = require('./01-pivot')
 const byClause = require('./02-byClause')
 const safeCut = require('./03-safeCuts')
 const hardCut = require('./04-hardCuts')
