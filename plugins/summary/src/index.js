@@ -7,11 +7,13 @@ const defaults = {
   article: true,
   template: true,
   sentence: true,
-  category: true
+  category: true,
+  max: 80,
+  min: 3
 }
 
-const seemsGood = function (txt) {
-  return txt && txt.length > 5 && txt.length < 55
+const seemsGood = function (txt, options) {
+  return txt && txt.length > 5 && txt.length < options.max
 }
 
 const plugin = function (models) {
@@ -25,14 +27,14 @@ const plugin = function (models) {
     let txt = ''
     if (options.template) {
       txt = fromTemplate(doc, options)
-      if (seemsGood(txt)) {
+      if (seemsGood(txt, options)) {
         return txt.trim()
       }
     }
     // generate from first-sentence
     if (options.sentence) {
       txt = fromSentence(doc, options)
-      if (seemsGood(txt)) {
+      if (seemsGood(txt, options)) {
         return txt.trim()
       }
     }

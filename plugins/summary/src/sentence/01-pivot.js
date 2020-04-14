@@ -20,9 +20,13 @@ const findPivot = function (s) {
     return null
   }
   let f = s.splitOn(m)
+  let verb = f.eq(1)
+  let article = verb.match(`(a|an|the|any)? of?`)
+  verb.remove(`(a|an|the|any)? of?`)
   return {
     before: f.eq(0),
     verb: f.eq(1),
+    article: article,
     after: cleanUp(f.eq(2))
   }
 }

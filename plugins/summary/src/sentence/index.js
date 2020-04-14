@@ -7,11 +7,6 @@ const hardCut = require('./04-hardCuts')
 const lastTry = require('./05-lastTry')
 const isGood = require('./_isGood')
 
-const defaults = {
-  max: 80,
-  min: 3
-}
-
 const post = function (s) {
   s.remove('^(and|or|but)')
   s.remove('(and|or|but)$')
@@ -19,10 +14,8 @@ const post = function (s) {
   return s.text()
 }
 
-let count = 0
+// let count = 0
 const doSentence = function (doc, options) {
-  options = options || {}
-  options = Object.assign({}, defaults, options)
   let sentence = doc.sentences(0)
   if (!sentence) {
     return ''
@@ -36,8 +29,11 @@ const doSentence = function (doc, options) {
   if (!pivot || !pivot.verb || !pivot.verb.found) {
     return ''
   }
-  // maybe it's good already
   let after = pivot.after
+  if (options.article && pivot.article && pivot.article.found) {
+    after.prepend(pivot.article.text())
+  }
+  // maybe it's good already
   if (isGood(after, options)) {
     return post(after)
   }
