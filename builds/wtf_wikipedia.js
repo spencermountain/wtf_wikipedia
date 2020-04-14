@@ -7397,7 +7397,6 @@
       var obj = parse$3(tmpl);
       obj.data = obj.data || '';
       var rows = obj.data.split('\n');
-      console.log(rows);
       obj.rows = rows.map(function (row) {
         var arr = row.split(/;/);
         return order.reduce(function (h, k, i) {
