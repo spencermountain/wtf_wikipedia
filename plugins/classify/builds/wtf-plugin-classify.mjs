@@ -1,4 +1,4 @@
-/* wtf-plugin-classify 0.0.1  MIT */
+/* wtf-plugin-classify 0.1.0  MIT */
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -1092,7 +1092,7 @@ var patterns = {
   'Event/MilitaryConflict': [/conflicts (in|of) [0-9]{4}/, /(wars|battles|conflicts) (involving|of|in) ./],
   Event: [/^(19|20)[0-9]{2} in /, /^(years of the )?[0-9]{1,2}(st|nd|rd|th)? century in ./],
   // ==Orgs==
-  'Organization/MusicalGroup': [/musical groups from /, /musical groups established in [0-9]{4}/, /musical group stubs/, /. music(al)? groups$/],
+  'Organization/MusicalGroup': [/musical groups from /, /musical groups (dis)?established in [0-9]{4}/, /musical group stubs/, /. music(al)? (groups|duos|trios|quartets|quintets)$/],
   'Organization/SportsTeam': [/football clubs in ./, /(basketball|hockey|baseball|football) teams (in|established) ./],
   'Organization/Company': [/companies (established|based) in ./],
   Organization: [/(organi[sz]ations|publications) based in /, /(organi[sz]ations|publications|schools|awards) established in [0-9]{4}/, /(secondary|primary) schools/, /military units/, /magazines/, /organi[sz]ation stubs$/]
@@ -2493,9 +2493,16 @@ var topk = function topk(arr) {
   var res = Object.keys(obj).map(function (k) {
     return [k, obj[k]];
   });
-  return res.sort(function (a, b) {
-    return a[1] > b[1] ? -1 : 0;
+  res = res.sort(function (a, b) {
+    if (a[1] > b[1]) {
+      return -1;
+    } else if (a[1] < b[1]) {
+      return 1;
+    }
+
+    return 0;
   });
+  return res;
 };
 
 var parse = function parse(cat) {
