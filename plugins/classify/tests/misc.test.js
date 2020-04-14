@@ -3,7 +3,7 @@ const wtf = require('./_lib')
 const fs = require('fs')
 const path = require('path')
 
-test('classify-test', async function(t) {
+test('classify-test', async function (t) {
   let arr = [
     ['2008-British-motorcycle-Grand-Prix', 'Event'],
     ['Allen-R.-Morris', 'Person'],
@@ -29,7 +29,7 @@ test('classify-test', async function(t) {
     ['bluejays', null], //partial page
     ['Liste-der-argentinischen-Botschafter-in-Chile', null]
   ]
-  arr.forEach(a => {
+  arr.forEach((a) => {
     let abs = path.join(__dirname, `../../../tests/cache/${a[0]}.txt`)
     let txt = fs.readFileSync(abs).toString()
     let doc = wtf(txt)

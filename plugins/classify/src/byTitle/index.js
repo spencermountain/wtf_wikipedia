@@ -3,7 +3,7 @@ const patterns = require('./patterns')
 const byPattern = require('../_byPattern')
 const paren = /\((.*)\)$/
 
-const byTitle = function(doc) {
+const byTitle = function (doc) {
   let title = doc.title()
   if (!title) {
     return []

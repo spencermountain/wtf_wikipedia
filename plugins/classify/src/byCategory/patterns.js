@@ -78,9 +78,9 @@ const patterns = {
   // ==Orgs==
   'Organization/MusicalGroup': [
     /musical groups from /,
-    /musical groups established in [0-9]{4}/,
+    /musical groups (dis)?established in [0-9]{4}/,
     /musical group stubs/,
-    /. music(al)? groups$/
+    /. music(al)? (groups|duos|trios|quartets|quintets)$/
   ],
   'Organization/SportsTeam': [
     /football clubs in ./,

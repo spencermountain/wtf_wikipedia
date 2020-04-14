@@ -7,7 +7,15 @@ const topk = function (arr) {
     obj[a] += 1
   })
   let res = Object.keys(obj).map((k) => [k, obj[k]])
-  return res.sort((a, b) => (a[1] > b[1] ? -1 : 0))
+  res = res.sort((a, b) => {
+    if (a[1] > b[1]) {
+      return -1
+    } else if (a[1] < b[1]) {
+      return 1
+    }
+    return 0
+  })
+  return res
 }
 
 const parse = function (cat) {
