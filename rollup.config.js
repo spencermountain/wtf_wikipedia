@@ -13,13 +13,14 @@ export default [
   {
     input: 'src/index.js',
     output: [{ banner: banner, file: 'builds/wtf_wikipedia.mjs', format: 'esm' }],
+    external: ['https'],
     plugins: [
       commonjs(),
       babel({
         babelrc: false,
-        presets: ['@babel/preset-env']
-      })
-    ]
+        presets: ['@babel/preset-env'],
+      }),
+    ],
   },
 
   // === server-side .js ===
@@ -31,17 +32,17 @@ export default [
         file: 'builds/wtf_wikipedia.js',
         format: 'umd',
         name: 'wtf',
-        globals: { https: 'https' }
-      }
+        globals: { https: 'https' },
+      },
     ],
     external: ['https'],
     plugins: [
       commonjs(),
       babel({
         babelrc: false,
-        presets: ['@babel/preset-env']
-      })
-    ]
+        presets: ['@babel/preset-env'],
+      }),
+    ],
   },
 
   /// ======================
@@ -54,19 +55,19 @@ export default [
         file: 'builds/wtf_wikipedia-client.js',
         format: 'umd',
         name: 'wtf',
-        sourcemap: true
-      }
+        sourcemap: true,
+      },
     ],
     plugins: [
       commonjs(),
       babel({
         babelrc: false,
-        presets: ['@babel/preset-env']
+        presets: ['@babel/preset-env'],
       }),
       alias({
-        entries: [{ find: './http/server', replacement: './http/client' }]
-      })
-    ]
+        entries: [{ find: './http/server', replacement: './http/client' }],
+      }),
+    ],
   },
   // === client-side min.js ===
   {
@@ -77,21 +78,21 @@ export default [
         file: 'builds/wtf_wikipedia-client.min.js',
         format: 'umd',
         name: 'wtf',
-        sourcemap: false
-      }
+        sourcemap: false,
+      },
     ],
     plugins: [
       commonjs(),
       babel({
         babelrc: false,
-        presets: ['@babel/preset-env']
+        presets: ['@babel/preset-env'],
       }),
       alias({
-        entries: [{ find: './http/server', replacement: './http/client' }]
+        entries: [{ find: './http/server', replacement: './http/client' }],
       }),
       terser(),
-      sizeCheck({ expect: 123, warn: 10 })
-    ]
+      sizeCheck({ expect: 123, warn: 10 }),
+    ],
   },
   // === client-side .mjs ===
   {
@@ -102,20 +103,20 @@ export default [
         file: 'builds/wtf_wikipedia-client.mjs',
         format: 'esm',
         name: 'wtf',
-        sourcemap: false
-      }
+        sourcemap: false,
+      },
     ],
     plugins: [
       commonjs(),
       babel({
         babelrc: false,
-        presets: ['@babel/preset-env']
+        presets: ['@babel/preset-env'],
       }),
       alias({
-        entries: [{ find: './http/server', replacement: './http/client' }]
+        entries: [{ find: './http/server', replacement: './http/client' }],
       }),
       terser(),
-      sizeCheck({ expect: 123, warn: 10 })
-    ]
-  }
+      sizeCheck({ expect: 123, warn: 10 }),
+    ],
+  },
 ]

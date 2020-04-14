@@ -1,4 +1,4 @@
-const mapping = require('./infoboxes')
+const mapping = require('./mapping')
 
 const byInfobox = function(doc) {
   let infoboxes = doc.infoboxes()
@@ -13,7 +13,7 @@ const byInfobox = function(doc) {
     type = type.trim()
 
     if (mapping.hasOwnProperty(type)) {
-      found.push(mapping[type])
+      found.push({ cat: mapping[type], reason: type })
     }
   }
   return found

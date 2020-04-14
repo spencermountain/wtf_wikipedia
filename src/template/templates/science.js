@@ -26,22 +26,22 @@ let templates = {
       'dec_degrees',
       'dec_minutes',
       'dec_seconds',
-      'distance'
+      'distance',
     ])
     let template = {
       template: 'sky',
       ascension: {
         hours: obj.asc_hours,
         minutes: obj.asc_minutes,
-        seconds: obj.asc_seconds
+        seconds: obj.asc_seconds,
       },
       declination: {
         sign: obj.dec_sign,
         degrees: obj.dec_degrees,
         minutes: obj.dec_minutes,
-        seconds: obj.dec_seconds
+        seconds: obj.dec_seconds,
       },
-      distance: obj.distance
+      distance: obj.distance,
     }
     list.push(template)
     return ''
@@ -93,20 +93,26 @@ let templates = {
       'numwidth',
       'collabsible',
       'collapsed',
-      'id'
+      'id',
     ]
+
     let obj = parse(tmpl)
-    // parse each row template
-    let rows = obj.rows.match(/\{\{Medical cases chart\/Row.*\}\}/gi)
-    obj.rows = rows.map(row => {
-      return parse(row, order)
+    obj.data = obj.data || ''
+    let rows = obj.data.split('\n')
+    obj.rows = rows.map((row) => {
+      let arr = row.split(/;/)
+      return order.reduce((h, k, i) => {
+        h[k] = arr[i] || null
+        return h
+      }, {})
     })
+    delete obj.data
     list.push(obj)
     return ''
   },
-  'medical cases chart/row': tmpl => {
+  'medical cases chart/row': (tmpl) => {
     // actually keep this template
     return tmpl
-  }
+  },
 }
 module.exports = templates

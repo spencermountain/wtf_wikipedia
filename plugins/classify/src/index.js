@@ -3,12 +3,13 @@ const byCategory = require('./byCategory')
 const byTemplate = require('./byTemplate')
 const bySection = require('./bySection')
 const byTitle = require('./byTitle')
+const byDescription = require('./byDescription')
 const skipPage = require('./_skip')
 const score = require('./score')
 
-const plugin = function(models) {
+const plugin = function (models) {
   // add a new method to main class
-  models.Doc.prototype.classify = function(options) {
+  models.Doc.prototype.classify = function (options) {
     let doc = this
     let res = {}
 
@@ -28,6 +29,8 @@ const plugin = function(models) {
 
     //look for 'foo (film)'
     res.title = byTitle(doc, options)
+    //look for 'foo (film)'
+    res.description = byDescription(doc, options)
 
     //look for 'Category: 1992 Births', etc
     res.category = byCategory(doc, options)

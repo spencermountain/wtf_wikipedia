@@ -1,5 +1,8 @@
 const i18n = require('../_data/i18n')
-const i18nReg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i')
+const i18nReg = new RegExp(
+  '^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]',
+  'i'
+)
 //some looser ones
 const startReg = /^infobox /i
 const endReg = / infobox$/i
@@ -40,12 +43,13 @@ const known = {
   ordination: true,
   'hockey team coach': true,
   'hockey team gm': true,
+  'pro hockey team': true,
   'hockey team player': true,
   'hockey team start': true,
-  mlbbioret: true
+  mlbbioret: true,
 }
 //
-const isInfobox = function(name) {
+const isInfobox = function (name) {
   // known
   if (known.hasOwnProperty(name) === true) {
     return true
@@ -64,7 +68,7 @@ const isInfobox = function(name) {
 }
 
 //turns template data into good inforbox data
-const fmtInfobox = function(obj = {}) {
+const fmtInfobox = function (obj = {}) {
   let m = obj.template.match(i18nReg)
   let type = obj.template
   if (m && m[0]) {
@@ -74,7 +78,7 @@ const fmtInfobox = function(obj = {}) {
   let infobox = {
     template: 'infobox',
     type: type,
-    data: obj
+    data: obj,
   }
   delete infobox.data.template // already have this.
   delete infobox.data.list //just in case!
@@ -83,5 +87,5 @@ const fmtInfobox = function(obj = {}) {
 
 module.exports = {
   isInfobox: isInfobox,
-  format: fmtInfobox
+  format: fmtInfobox,
 }

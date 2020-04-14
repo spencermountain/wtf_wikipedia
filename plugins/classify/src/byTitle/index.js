@@ -1,12 +1,9 @@
-const mapping = require('./titles')
-
-let patterns = {
-  'CreativeWork/Film': [/ \([0-9]{4} film\)$/],
-  CreativeWork: [/ \((.*? )song\)$/]
-}
+const mapping = require('./mapping')
+const patterns = require('./patterns')
+const byPattern = require('../_byPattern')
 const paren = /\((.*)\)$/
 
-const byTitle = function(doc) {
+const byTitle = function (doc) {
   let title = doc.title()
   if (!title) {
     return []
@@ -23,19 +20,13 @@ const byTitle = function(doc) {
 
   //look at known parentheses
   if (mapping.hasOwnProperty(inside)) {
-    return [mapping[inside]]
+    return [{ cat: mapping[inside], reason: inside }]
   }
 
   // look at regex
-  let keys = Object.keys(patterns)
-  for (let o = 0; o < keys.length; o++) {
-    const k = keys[o]
-    for (let i = 0; i < patterns[k].length; i++) {
-      const reg = patterns[k][i]
-      if (reg.test(title)) {
-        return [k]
-      }
-    }
+  let match = byPattern(title, patterns)
+  if (match) {
+    return [{ cat: match, reason: title }]
   }
   return []
 }

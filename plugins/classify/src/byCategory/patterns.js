@@ -1,10 +1,14 @@
 const patterns = {
-  'Thing/Character': [/(fictional|television) characters/],
-  'Thing/Product': [/products introduced in ./, /musical instruments/],
-  'Thing/Organism': [
-    /(funghi|reptiles|flora|fauna|fish|birds|trees) of ./,
+  FictionalCharacter: [/(fictional|television) characters/],
+  Product: [/products introduced in ./, /musical instruments/],
+  Organism: [
+    /(funghi|reptiles|flora|fauna|fish|birds|trees|mammals|plants) of ./,
     / first appearances/,
-    / phyla/
+    / . described in [0-9]{4}/,
+    /. (phyla|genera)$/,
+    /. taxonomic families$/,
+    /plants used in ./,
+    / (funghi|reptiles|flora|fauna|fish|birds|trees|mammals|plants)$/
   ],
 
   // ==Person==
@@ -15,13 +19,14 @@ const patterns = {
     /mayors of ./
   ],
   'Person/Athlete': [/sportspeople from ./, /(footballers|cricketers|defencemen|cyclists)/],
-  'Person/Actor': [/actresses/, /actors from ./, /actor stubs$/],
+  'Person/Actor': [/actresses/, /actors from ./, /actor stubs$/, / (actors|actresses)$/],
   'Person/Artist': [/musicians from ./, /(singers|songwriters|painters|poets)/, /novelists from ./],
   // 'Person/Scientist': [(astronomers|physicists|biologists|chemists)],
   Person: [
     /[0-9]{4} births/,
     /[0-9]{4} deaths/,
     /people of .* descent/,
+    /^deaths from /,
     /^(people|philanthropists|writers) from ./,
     / (players|alumni)$/,
     /(alumni|fellows) of .$/,
@@ -31,7 +36,7 @@ const patterns = {
   ],
 
   // ==Place==
-  'Place/Building': [
+  'Place/Structure': [
     /(buildings|bridges) completed in /,
     /airports established in ./,
     /(airports|bridges) in ./,
@@ -53,27 +58,34 @@ const patterns = {
   ],
 
   // ==Creative Work==
-  'CreativeWork/Album': [/[0-9]{4} albums/, /albums produced by /, / albums$/],
-  'CreativeWork/Film': [/[0-9]{4} films/, / films$/],
+  'CreativeWork/Album': [/[0-9]{4}.*? albums/, /^albums /, / albums$/],
+  'CreativeWork/Film': [/[0-9]{4}.*? films/, / films$/, /^films /],
   'CreativeWork/TVShow': [/television series/],
-  CreativeWork: [/film stubs$/, /novel stubs$/, /[0-9]{4} video games/, /[0-9]{4} poems/],
+  'CreativeWork/VideoGame': [/video games/],
+  CreativeWork: [/(film|novel|album) stubs$/, /[0-9]{4}.*? (poems|novels)/, / (poems|novels)$/],
 
   // ==Event==
   'Event/SportsEvent': [
     /. league seasons$/,
     /^(19|20)[0-9]{2} in (soccer|football|rugby|tennis|basketball|baseball|cricket|sports)/
   ],
-  'Event/War': [/conflicts in [0-9]{4}/, /battles involving ./],
-  Event: [/^(19|20)[0-9]{2} in /],
+  'Event/MilitaryConflict': [
+    /conflicts (in|of) [0-9]{4}/,
+    /(wars|battles|conflicts) (involving|of|in) ./
+  ],
+  Event: [/^(19|20)[0-9]{2} in /, /^(years of the )?[0-9]{1,2}(st|nd|rd|th)? century in ./],
 
   // ==Orgs==
   'Organization/MusicalGroup': [
     /musical groups from /,
-    /musical groups established in [0-9]{4}/,
+    /musical groups (dis)?established in [0-9]{4}/,
     /musical group stubs/,
-    /. music(al)? groups$/
+    /. music(al)? (groups|duos|trios|quartets|quintets)$/
   ],
-  'Organization/SportsTeam': [/sports clubs established in [0-9]{4}/, /football clubs in ./],
+  'Organization/SportsTeam': [
+    /football clubs in ./,
+    /(basketball|hockey|baseball|football) teams (in|established) ./
+  ],
   'Organization/Company': [/companies (established|based) in ./],
   Organization: [
     /(organi[sz]ations|publications) based in /,

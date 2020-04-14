@@ -33,7 +33,7 @@ Things it looks at:
 const wtf = require('wtf_wikipedia')
 wtf.extend(require('wtf-plugin-classify'))
 
-wtf.fetch('Toronto Raptors').then(doc => {
+wtf.fetch('Toronto Raptors').then((doc) => {
   let res = doc.classify()
   //{
   //  type: 'Organization/SportsTeam',
@@ -60,32 +60,49 @@ Person:
   Athlete: true
   Artist: true
   Politician: true
-  Scientist: true
   Actor: true
+  Academic: true
+  ReligiousFigure: true
 Place:
   Country: true
   City: true
   Structure: true
   BodyOfWater: true
+  SpaceLocation: true
 Organization:
   Company: true
   SportsTeam: true
   MusicalGroup: true
+  PoliticalParty: true
 CreativeWork:
   Film: true
   TVShow: true
   Book: true
   Album: true
+  VideoGame: true
 Event:
   Election: true
   Disaster: true
   SportsEvent: true
-  War: true
-Thing:
-  Product: true
-  Software: true
-  Character: true
-  Organism: true
+  MilitaryConflict: true
+  SpaceMission: true
+Product: true
+Organism: true
+MedicalCondition: true
+Concept: true
+FictionalCharacter: true
+```
+
+as of March 2020, it can classify ~65% of english wikipedia articles:
+
+```
+    null: 37.71%
+    People: 18.86%
+    Place: 14.01%
+    Organization: 8.27%
+    CreativeWork: 5.38%
+    Event: 4.57%
+    Thing: 5.75%
 ```
 
 ### i18n

@@ -1,11 +1,14 @@
 ---
 
-<!-- #### [unreleased]
-* lowercase/normalize table headers
-- `.categories()` return `Category` objects
-- - keep `Category:` prefix on categories
-- make `.method('foo')` results consistent
--->
+#### [unreleased]
+
+### 8.1.2
+
+- another fix for covid templates
+
+### 8.1.1
+
+- fix for covid templates
 
 ### 8.1.0
 

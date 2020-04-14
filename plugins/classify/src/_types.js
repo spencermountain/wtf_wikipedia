@@ -3,47 +3,51 @@ const tree = {
     Athlete: true,
     Artist: true,
     Politician: true,
-    Scientist: true,
-    Actor: true
+    Actor: true,
+    Academic: true,
+    ReligiousFigure: true
   },
   Place: {
     Country: true,
     City: true,
     Structure: true,
-    BodyOfWater: true
+    BodyOfWater: true,
+    SpaceLocation: true
   },
   Organization: {
     Company: true,
     SportsTeam: true,
-    MusicalGroup: true
+    MusicalGroup: true,
+    PoliticalParty: true
   },
   CreativeWork: {
     Film: true,
     TVShow: true,
     Book: true,
-    Album: true
+    Album: true,
+    VideoGame: true
   },
   Event: {
     Election: true,
     Disaster: true,
     SportsEvent: true,
-    War: true
+    MilitaryConflict: true,
+    SpaceMission: true
   },
-  Thing: {
-    Product: true,
-    Software: true,
-    Character: true,
-    Organism: true
-  }
+  Product: true,
+  Organism: true,
+  MedicalCondition: true,
+  Concept: true,
+  FictionalCharacter: true
 }
 
-const isObject = function(obj) {
+const isObject = function (obj) {
   return obj && Object.prototype.toString.call(obj) === '[object Object]'
 }
 
 let types = {}
-const doit = function(type, obj) {
-  Object.keys(obj).forEach(k => {
+const doit = function (type, obj) {
+  Object.keys(obj).forEach((k) => {
     let tmp = k
     if (type) {
       tmp = type + '/' + k

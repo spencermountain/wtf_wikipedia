@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-classify",
   "description": "basic classifier for wikipedia articles",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "./builds/wtf-plugin-classify.js",
   "unpkg": "./builds/wtf-plugin-classify.min.js",
   "module": "./builds/wtf-plugin-classify.mjs",
@@ -17,7 +17,7 @@
     "builds"
   ],
   "prettier": {
-    "trailingComma": "none",
+    "trailingComma": "es5",
     "tabWidth": 2,
     "semi": false,
     "singleQuote": true,

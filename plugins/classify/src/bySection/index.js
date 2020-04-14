@@ -1,4 +1,4 @@
-const sections = require('./sections')
+const sections = require('./mapping')
 
 const fromSection = function(doc) {
   let found = []
@@ -10,7 +10,7 @@ const fromSection = function(doc) {
   for (let i = 0; i < titles.length; i++) {
     const title = titles[i]
     if (sections.hasOwnProperty(title)) {
-      found.push(sections[title])
+      found.push({ cat: sections[title], reason: title })
     }
   }
   return found
