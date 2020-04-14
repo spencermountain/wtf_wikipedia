@@ -24,7 +24,7 @@ test('first-sentence cleanup summary', (t) => {
   let count = 0
   arr.forEach((txt) => {
     let str = wtf(txt).summary({ article: false })
-    console.log(str)
+    // console.log(str)
     if (str) {
       count += 1
     }

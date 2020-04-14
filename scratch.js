@@ -25,9 +25,9 @@ wtf.extend(require('./plugins/category/src'))
 // console.log(res)
 
 //
-wtf.fetch('Garage (fanzine)').then((doc) => {
-  console.log(doc.summary({ template: false, sentence: false }))
-})
+// wtf.fetch('Garage (fanzine)').then((doc) => {
+//   console.log(doc.summary({ template: false, sentence: false }))
+// })
 
 // wtf.randomCategory().then((cat) => {
 //   wtf.parseCategory(cat).then((res) => {
@@ -36,3 +36,7 @@ wtf.fetch('Garage (fanzine)').then((doc) => {
 //     })
 //   })
 // })
+
+wtf.fetch('Template:2019–20 coronavirus pandemic data/United States/California medical cases chart').then((doc) => {
+  console.log(doc)
+})

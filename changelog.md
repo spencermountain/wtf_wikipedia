@@ -1,11 +1,6 @@
 ---
 
-<!-- #### [unreleased]
-* lowercase/normalize table headers
-- `.categories()` return `Category` objects
-- - keep `Category:` prefix on categories
-- make `.method('foo')` results consistent
--->
+#### [unreleased]
 
 ### 8.1.0
 
