@@ -7390,7 +7390,8 @@ var templates$a = {
     var order = ['date', 'deaths_expr', 'recovery_expr', 'cases_expr', 'alt_expr_1', '4th_expr', '5th_expr', 'alt_expr_2', 'col_1', 'col_1_change', 'show_col_1', 'col_2', 'col_2_change', 'show_col_2', 'divisor', 'numwidth', 'collabsible', 'collapsed', 'id'];
     var obj = parse$3(tmpl);
     obj.data = obj.data || '';
-    var rows = obj.data.split(/\n/);
+    var rows = obj.data.split('\n');
+    console.log(rows);
     obj.rows = rows.map(function (row) {
       var arr = row.split(/;/);
       return order.reduce(function (h, k, i) {

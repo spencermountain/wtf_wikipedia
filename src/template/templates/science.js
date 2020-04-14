@@ -99,7 +99,6 @@ let templates = {
     let obj = parse(tmpl)
     obj.data = obj.data || ''
     let rows = obj.data.split('\n')
-    console.log(rows)
     obj.rows = rows.map((row) => {
       let arr = row.split(/;/)
       return order.reduce((h, k, i) => {
