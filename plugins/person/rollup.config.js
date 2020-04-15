@@ -7,7 +7,7 @@ import resolve from '@rollup/plugin-node-resolve' //import spacetime
 import { version } from './package.json'
 console.log('\n 📦  - running rollup..\n')
 
-const name = 'wtf-plugin-summary'
+const name = 'wtf-plugin-person'
 const banner = `/* ${name} ${version}  MIT */`
 export default [
   // ===  es-module ===
@@ -32,7 +32,7 @@ export default [
         banner: banner,
         file: `builds/${name}.js`,
         format: 'umd',
-        name: 'wtf',
+        name: 'wtfPerson',
         sourcemap: true
       }
     ],
@@ -53,7 +53,7 @@ export default [
         banner: banner,
         file: `builds/${name}.min.js`,
         format: 'umd',
-        name: 'wtf',
+        name: 'wtfPerson',
         sourcemap: false
       }
     ],
