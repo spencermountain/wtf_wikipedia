@@ -412,10 +412,6 @@ declare module wtf {
     /** Alias of italics */
     italic(): string[]
 
-    dates(n: number): string
-
-    dates(): string[]
-
     text(str?: string): string
 
     /** Alias of text */

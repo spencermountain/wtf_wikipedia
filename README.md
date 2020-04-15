@@ -57,7 +57,7 @@
 ```js
 const wtf = require('wtf_wikipedia')
 
-wtf.fetch('Toronto Raptors').then(doc => {
+wtf.fetch('Toronto Raptors').then((doc) => {
   doc.sentences(0).text()
   //'The Toronto Raptors are a Canadian professional basketball team ...'
 
@@ -107,7 +107,7 @@ the default json output is [really verbose](https://observablehq.com/@spencermou
 
 ```js
 // get just the links:
-doc.links().map(link => link.json())
+doc.links().map((link) => link.json())
 //[{ page: 'Theatrical superstitions', text: 'supersitions' }]
 
 // just the images:
@@ -115,10 +115,7 @@ doc.images(0).json()
 // { file: 'Image:Duveneck Whistling Boy.jpg', url: 'https://commons.wiki...' }
 
 // json for a particular section:
-doc
-  .sections('see also')
-  .links(0)
-  .json()
+doc.sections('see also').links(0).json()
 // { page: 'Slide Whistle' }
 ```
 
@@ -138,9 +135,9 @@ run it on the client-side:
 <script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
   // follow a redirect:
-  wtf.fetch('On a Friday', function(err, doc) {
+  wtf.fetch('On a Friday', function (err, doc) {
     let members = doc.infobox().get('current members')
-    members.links().map(l => l.page())
+    members.links().map((l) => l.page())
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
   })
 </script>
@@ -309,7 +306,7 @@ wtf(txt)
 ```javascript
 let str = `Whistling is featured in a number of television shows, such as [[Lassie (1954 TV series)|''Lassie'']], and the title theme for ''[[The X-Files]]''.`
 let doc = wtf(str)
-doc.links().map(l => l.page())
+doc.links().map((l) => l.page())
 // [ 'Lassie (1954 TV series)',  'The X-Files' ]
 ```
 
@@ -329,12 +326,8 @@ var text = wtf(wiki).text()
 a section is a heading _'==Like This=='_
 
 ```js
-wtf(page)
-  .sections(1)
-  .children() //traverse nested sections
-wtf(page)
-  .sections('see also')
-  .remove() //delete one
+wtf(page).sections(1).children() //traverse nested sections
+wtf(page).sections('see also').remove() //delete one
 ```
 
 #### **doc.sentences()**
@@ -344,7 +337,6 @@ s = wtf(page).sentences(4)
 s.links()
 s.bolds()
 s.italics()
-s.dates() //structured date templates
 ```
 
 #### **doc.categories()**
@@ -384,7 +376,7 @@ doc.sentences(0).text() // 'Tony Hawk est un skateboarder professionnel et un ac
 let docs = wtf.fetch(['Whistling', 2983], { follow_redirects: false })
 
 // article from german wikivoyage
-wtf.fetch('Toronto', { lang: 'de', wiki: 'wikivoyage' }).then(doc => {
+wtf.fetch('Toronto', { lang: 'de', wiki: 'wikivoyage' }).then((doc) => {
   console.log(doc.sentences(0).text()) // 'Toronto ist die Hauptstadt der Provinz Ontario'
 })
 ```
@@ -438,10 +430,10 @@ The wikipedia api is [pretty welcoming](https://www.mediawiki.org/wiki/API:Etiqu
 ```js
 wtf
   .fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
-    'Api-User-Agent': 'spencermountain@gmail.com'
+    'Api-User-Agent': 'spencermountain@gmail.com',
   })
-  .then(docList => {
-    let links = docList.map(doc => doc.links())
+  .then((docList) => {
+    let links = docList.map((doc) => doc.links())
     console.log(links)
   })
 ```
@@ -516,7 +508,6 @@ wtf
 - **.links()** -
 - **.bolds()** -
 - **.italics()** -
-- **.dates()** -
 - **.json()** -
 
 ### Image
@@ -570,10 +561,10 @@ wtf
 you can add new methods to any class of the library, with `wtf.extend()`
 
 ```js
-wtf.extend(models => {
+wtf.extend((models) => {
   // throw this method in there...
-  models.Doc.prototype.isPerson = function() {
-    return this.categories().find(cat => cat.match(/people/))
+  models.Doc.prototype.isPerson = function () {
+    return this.categories().find((cat) => cat.match(/people/))
   }
 })
 
@@ -622,7 +613,7 @@ It can usually be found by visiting `http://mywiki.com/api.php`
 to fetch pages from a 3rd-party wiki:
 
 ```js
-wtf.fetch('Kermit', { domain: 'muppet.fandom.com' }).then(doc => {
+wtf.fetch('Kermit', { domain: 'muppet.fandom.com' }).then((doc) => {
   console.log(doc.text())
 })
 ```
@@ -630,7 +621,7 @@ wtf.fetch('Kermit', { domain: 'muppet.fandom.com' }).then(doc => {
 some wikis will change the path of their API, from `./api.php` to elsewhere. If your api has a different path, you can set it like so:
 
 ```js
-wtf.fetch('2016-06-04_-_J.Fernandes_@_FIL,_Lisbon', { domain: 'www.mixesdb.com', path: 'db/api.php' }).then(doc => {
+wtf.fetch('2016-06-04_-_J.Fernandes_@_FIL,_Lisbon', { domain: 'www.mixesdb.com', path: 'db/api.php' }).then((doc) => {
   console.log(doc.templates('player'))
 })
 ```

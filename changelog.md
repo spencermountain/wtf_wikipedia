@@ -2,6 +2,12 @@
 
 #### [unreleased]
 
+### 8.2.0
+
+- export http lib for plugin in `.extend()`
+- stop exporting (huge) mapfile in builds
+- deprecate `.dates()` from sentence class (didn't work)
+
 ### 8.1.2
 
 - another fix for covid templates

@@ -55,7 +55,7 @@ export default [
         file: 'builds/wtf_wikipedia-client.js',
         format: 'umd',
         name: 'wtf',
-        sourcemap: true,
+        sourcemap: false,
       },
     ],
     plugins: [
