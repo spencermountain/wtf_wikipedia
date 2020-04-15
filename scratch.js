@@ -19,18 +19,21 @@ let str = `{{Infobox officeholder
 // let date = doc.birthDate()
 // console.log(date)
 
-// str = `'''Tom Anselmi''' (born {{circa|1956}}) is a Canadian [[sport]]s [[Senior management|executive]]. asdf`
-str = `'''Tom Anselmi''' (born {{circa|1956}}) is a Canadian [[sport]]s executive. asdf and also here`
+str = `'''Tom Anselmi''' (born {{circa|1956}}) is a Canadian [[sport]]s [[Senior management|executive]].`
 let doc = wtf(str)
+
+// str = `'''Tom Anselmi''' (born {{circa|1956}}) is a Canadian [[sport]]s [[Senior management|executive]]. asdf`
+// str = `'''Tom Anselmi''' (born {{circa|1956}}) is a Canadian [[sport]]s executive. asdf and also here`
+// let doc = wtf(str)
 console.log(doc.sentences().map((s) => s.text()))
-// let date = doc.birthDate()
-// console.log(date)
+let date = doc.birthDate()
+console.log(date)
 // let death = doc.deathDate()
 // console.log(death)
 
 // let place = doc.birthPlace()
 // console.log(place)
 
-// console.log('alive:', doc.isAlive())
+console.log('alive:', doc.isAlive())
 
 // console.log('nationality:', doc.nationality())

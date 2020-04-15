@@ -6,7 +6,6 @@ const parseSentence = function (doc) {
     return null
   }
   let txt = s.text() || ''
-  console.log(txt)
   let paren = txt.match(/\(.*\)/)
   if (!paren || !paren[0]) {
     return null
@@ -34,9 +33,6 @@ const parseSentence = function (doc) {
       }
     }
   }
-
-  // console.log(paren)
-  // console.log(sentence)
   return null
 }
 module.exports = parseSentence
