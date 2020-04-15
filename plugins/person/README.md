@@ -19,7 +19,7 @@
   <code>npm install wtf-plugin-person</code>
 </div>
 
-A plugin that finds `name, birth date, birth place, nationality`, and `death date` information, in its various places in a wikipedia article.
+A plugin that finds `birth date, birth place`, and `death date` information for people, in its various places in a wikipedia article.
 
 ```js
 const wtf = require('wtf_wikipedia')
@@ -44,15 +44,31 @@ wtf.fetch('Billy Elliot').then((doc) => {
 })
 ```
 
-### BirthDate
+### `.birthDate()`
+
+returns `month`, `year` and `date` properties, or a null response
 
 - looks at varous person-infoboxes, like `Infobox officeholder` or `Infobox ice hockey player`
 - looks at first-sentence parentheses, like `'Wayne Douglas Gretzky CC (/ˈɡrɛtski/; born January 26, 1961) is a ...'`
-- looks at category information, like `'Category:1933 births'` or `Category:Dead people`
+- looks at category information, like `'Category:1933 births'`
 
-### BirthPlace
+### `.birthPlace()`
+
+returns a string - and a wikipedia article title, if possible
 
 - looks at varous person infoboxes
+- looks at category information, like `'Category:People from Geneva'`
+
+### `.deathDate()`
+
+### `.deathPlace()`
+
+### `.isAlive()`
+
+returns `true`, `false`, or `null` for unknown result.
+
+- looks for a `.deathDate()` or `.deathPlace()` result
+- looks at category information, like `Category:Dead people`
 
 work-in-progress
 

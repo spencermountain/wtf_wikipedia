@@ -24,7 +24,8 @@
     "printWidth": 100
   },
   "dependencies": {
-    "compromise": "^13.1.1"
+    "compromise": "^13.1.1",
+    "spacetime": "^6.4.3"
   },
   "peerDependencies": {
     "wtf_wikipedia": "^8.0.0"

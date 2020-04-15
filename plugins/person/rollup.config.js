@@ -2,7 +2,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import babel from 'rollup-plugin-babel'
 import sizeCheck from 'rollup-plugin-filesize-check'
-import resolve from '@rollup/plugin-node-resolve' //import compromise
+import resolve from '@rollup/plugin-node-resolve' //import spacetime
 
 import { version } from './package.json'
 console.log('\n 📦  - running rollup..\n')

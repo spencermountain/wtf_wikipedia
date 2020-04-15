@@ -1,21 +1,20 @@
-const mapping = require('./mapping')
+const mapping = require('./_lib/_infoboxes')
 
-const byInfobox = function (doc) {
+const byInfobox = function (doc, prop) {
   let infoboxes = doc.infoboxes()
-  let found = []
   for (let i = 0; i < infoboxes.length; i++) {
     let inf = infoboxes[i]
     let type = inf.type()
-
     type = type.toLowerCase()
-    // type = type.replace(/^(category|categorie|kategori): ?/i, '')
-    type = type.replace(/ /g, '_')
     type = type.trim()
 
     if (mapping.hasOwnProperty(type)) {
-      found.push({ cat: mapping[type], reason: type })
+      let s = inf.get(prop)
+      if (s) {
+        return s.text()
+      }
     }
   }
-  return found
+  return null
 }
 module.exports = byInfobox
