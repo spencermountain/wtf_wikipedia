@@ -23,8 +23,8 @@ const parseDate = function (str) {
   }
 }
 
-const birthDate = function () {
-  let res = byInfobox(this, 'birth_date')
+const birthDate = function (doc) {
+  let res = byInfobox(doc, 'birth_date')
   if (res) {
     return parseDate(res)
   }

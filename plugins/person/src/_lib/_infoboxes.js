@@ -1,4 +1,5 @@
 // from ./plugins/classify/infobox, April 15 2020
+// https://en.wikipedia.org/wiki/Category:People_and_person_infobox_templates
 module.exports = {
   actor: true,
   adult_biography: true,

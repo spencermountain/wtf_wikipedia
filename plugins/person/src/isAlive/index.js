@@ -1,15 +1,8 @@
+const byCat = require('./byCategory')
+const byTemplate = require('./byTemplate')
 const maxAge = 105
 let d = new Date()
 const minYear = d.getFullYear() - maxAge
-
-const didDie = {}
-const byCat = function (doc) {
-  let cats = doc.categories()
-
-  if (doc.find((c) => c === 'Living People')) {
-    return true
-  }
-}
 
 const isAlive = function (doc) {
   // if we have a death date
@@ -27,7 +20,11 @@ const isAlive = function (doc) {
   if (fromCat === true || fromCat === false) {
     return fromCat
   }
-
+  // does it have a good template?
+  let fromTemplate = byTemplate(doc)
+  if (fromTemplate === true || fromTemplate === false) {
+    return fromTemplate
+  }
   // were they born in 1900?
   let birth = doc.birthDate()
   if (birth && birth.year && birth.year < minYear) {

@@ -59,16 +59,21 @@ returns a string - and a wikipedia article title, if possible
 - looks at varous person infoboxes
 - looks at category information, like `'Category:People from Geneva'`
 
-### `.deathDate()`
-
-### `.deathPlace()`
-
 ### `.isAlive()`
 
 returns `true`, `false`, or `null` for unknown result.
 
 - looks for a `.deathDate()` or `.deathPlace()` result
 - looks at category information, like `Category:Dead people`
+- looks at template information, like `{{WikiProject Biography|living=yes }}`
+
+### `.deathDate()`
+
+same as `.birthDate()`
+
+### `.deathPlace()`
+
+same as `.birthPlace()`
 
 work-in-progress
 
