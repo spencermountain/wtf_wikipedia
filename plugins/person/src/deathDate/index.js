@@ -6,7 +6,7 @@ const parseDate = require('../parseDate')
 const deathDate = function (doc) {
   let res = byInfobox(doc, 'death_date')
   if (res) {
-    return res
+    return parseDate(res)
   }
   // try parentheses in first sentence
   res = bySentence(doc)
