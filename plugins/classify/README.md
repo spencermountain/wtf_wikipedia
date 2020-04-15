@@ -21,6 +21,11 @@
 
 This plugin uses a (large) number of heuristics to classify a wikipedia article into a basic **Person/Place/Thing** scheme.
 
+<div align="center">
+  <h2><a href="https://observablehq.com/@spencermountain/wtf-plugin-classify">Demo</a></h2>
+</div>
+
+
 Things it looks at:
 
 - infoboxes (like **{{Infobox Person ...}}**)

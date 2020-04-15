@@ -10,6 +10,6 @@ let arr = fs
   .split(/\n/)
   .filter((s) => s)
 arr.forEach((txt) => {
-  let str = wtf(txt).summary({ article: false })
-  // console.log(str)
+  let str = wtf(txt).summary({ template: false, sentence: false })
+  console.log(str)
 })

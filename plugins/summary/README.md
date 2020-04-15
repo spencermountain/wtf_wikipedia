@@ -21,6 +21,10 @@
 
 Tries to generate a small fragment of text (or 'clause') that describes a wikipedia article in english.
 
+<div align="center">
+  <h2><a href="https://observablehq.com/@spencermountain/wtf-plugin-summary">Demo</a></h2>
+</div>
+
 The process:
 
 - look for a [{{short description}](https://en.wikipedia.org/wiki/Template:Short_description)` template
