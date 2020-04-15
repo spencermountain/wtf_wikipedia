@@ -30,6 +30,10 @@ wtf.extend(require('wtf-plugin-person'))
 })()
 ```
 
+<div align="center">
+  <h2><a href="https://observablehq.com/@spencermountain/wtf-plugin-person">Demo</a></h2>
+</div>
+
 ## Notes:
 
 This library assumes that every article you give it is about a person. You may want to use it in conjunction with [wtf-plugin-classify](https://github.com/spencermountain/wtf_wikipedia/tree/master/plugins/classify)

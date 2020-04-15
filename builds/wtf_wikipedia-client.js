@@ -3208,9 +3208,8 @@
   var abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + ")[.!?] ?$", 'i');
   var acronym_reg = new RegExp("[ |.|'|[][A-Z].? *?$", 'i');
   var elipses_reg = new RegExp('\\.\\.\\.* +?$');
-  var hasWord = new RegExp('[a-zа-яぁ-ゟ][a-zа-яぁ-ゟ゠-ヿ]', 'iu'); // 3040-309F : hiragana
-  // 30A0-30FF : katakana
-  //turn a nested array into one array
+  var circa_reg = / c\. $/;
+  var hasWord = new RegExp('[a-zа-яぁ-ゟ][a-zа-яぁ-ゟ゠-ヿ]', 'iu'); //turn a nested array into one array
 
   var flatten = function flatten(arr) {
     var all = [];
@@ -3292,7 +3291,7 @@
 
 
     var isSentence = function isSentence(hmm) {
-      if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg)) {
+      if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg) || hmm.match(circa_reg)) {
         return false;
       } //too short? - no consecutive letters
 
