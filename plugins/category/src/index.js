@@ -37,7 +37,7 @@ const plugin = function (models) {
     return await fetchCat(models.wtf, cat, lang, opts)
   }
   models.wtf.randomCategory = async function (lang, opts) {
-    return await random(lang, opts)
+    return await random(lang, opts, models.http)
   }
   models.wtf.fetchCategory = models.wtf.parseCategory
 }

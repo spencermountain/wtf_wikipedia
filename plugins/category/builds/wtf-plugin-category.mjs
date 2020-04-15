@@ -1,6 +1,4 @@
-/* wtf-plugin-category 0.1.0  MIT */
-import https from 'https';
-
+/* wtf-plugin-category 0.2.0  MIT */
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -132,49 +130,6 @@ var slow = /*#__PURE__*/Object.freeze({
   'default': src
 });
 
-var request = function request(url) {
-  var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  return new Promise(function (resolve, reject) {
-    https.get(url, opts, function (resp) {
-      var data = ''; // A chunk of data has been recieved.
-
-      resp.on('data', function (chunk) {
-        data += chunk;
-      }); // The whole response has been received. Print out the result.
-
-      resp.on('end', function () {
-        try {
-          var json = JSON.parse(data);
-          resolve(json);
-        } catch (e) {
-          reject(e);
-        }
-      });
-    }).on('error', function (err) {
-      reject(err);
-    });
-  });
-};
-
-var _http = request;
-
-var makeHeaders = function makeHeaders(options) {
-  var agent = options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library';
-  var opts = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Api-User-Agent': agent,
-      'User-Agent': agent,
-      Origin: '*'
-    },
-    redirect: 'follow'
-  };
-  return opts;
-};
-
-var _headers = makeHeaders;
-
 var defaults = {
   lang: 'en',
   wiki: 'wikipedia',
@@ -187,7 +142,7 @@ var isObject = function isObject(obj) {
   return obj && Object.prototype.toString.call(obj) === '[object Object]';
 };
 
-var fetchRandom = function fetchRandom(lang, options) {
+var fetchRandom = function fetchRandom(lang, options, http) {
   options = options || {};
   options = Object.assign({}, defaults, options); //support lang 2nd param
 
@@ -204,8 +159,7 @@ var fetchRandom = function fetchRandom(lang, options) {
   }
 
   url += "format=json&action=query&generator=random&grnnamespace=14&prop=revisions&grnlimit=1&origin=*";
-  var headers = _headers(options);
-  return _http(url, headers).then(function (res) {
+  return http(url).then(function (res) {
     try {
       var o = res.query.pages;
       var key = Object.keys(o)[0];
@@ -327,7 +281,7 @@ var plugin = function plugin(models) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return random(lang, opts);
+              return random(lang, opts, models.http);
 
             case 2:
               return _context3.abrupt("return", _context3.sent);

@@ -40,3 +40,25 @@ test('category-birthDate', (t) => {
   t.equal(date.year, 1952, 'Category:1952 births')
   t.end()
 })
+
+test('infobox-deathdate', (t) => {
+  let str = `{{Infobox golfer
+    | name              = Billy Casper
+    | image             = Billy Casper (cropped).jpg{{!}}border
+    | imagesize         = <!-- e.g. 250px (default is 200px) -->
+    | caption           = Casper in 2008
+    | fullname          = William Earl Casper Jr.
+    | nickname          = Buffalo Bill
+    | birth_date        = {{Birth date|1931|6|24}}
+    | birth_place       = [[San Diego, California]]
+    | death_date        = {{nowrap|{{Death date and age|2015|2|7|1931|6|24}}}}
+    | death_place       = [[Springville, Utah]]
+  }}`
+
+  let doc = wtf(str)
+
+  t.equal(doc.infobox().get('birth_date').text(), 'June 24, 1931', 'birth')
+  t.equal(doc.infobox().get('death_date').text(), 'February 7, 2015', 'death')
+
+  t.end()
+})

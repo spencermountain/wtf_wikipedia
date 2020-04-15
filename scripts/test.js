@@ -7,6 +7,9 @@ if (arg) {
   console.log(arg + ':')
   if (arg === 'main') {
     code = sh.exec('tape "./tests/*.test.js" | tap-dancer --color always').code
+  } else if (arg === 'category') {
+    // these are hard on wikipedia
+    code = sh.exec(`tape "./plugins/${arg}/tests/*.fetch.js" | tap-dancer --color always`).code
   } else {
     code = sh.exec(`tape "./plugins/${arg}/tests/*.test.js" | tap-dancer --color always`).code
   }
@@ -21,7 +24,7 @@ if (code !== 0) {
 }
 
 // run each plugin's tests:
-sh.ls('./plugins').forEach(function(dir) {
+sh.ls('./plugins').forEach(function (dir) {
   console.log(dir)
   code = sh.exec(`tape "./plugins/${dir}/tests/*.test.js" | tap-dancer --color always`).code
   if (code !== 0) {

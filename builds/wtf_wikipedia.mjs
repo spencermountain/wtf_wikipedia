@@ -8826,6 +8826,7 @@ var models = {
   Reference: Reference_1,
   Table: Table_1,
   Template: Template_1,
+  http: server$1,
   wtf: wtf
 };
 

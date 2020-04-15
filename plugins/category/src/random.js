@@ -1,6 +1,3 @@
-const http = require('./_http')
-const makeHeaders = require('./_headers')
-
 const defaults = {
   lang: 'en',
   wiki: 'wikipedia',
@@ -11,7 +8,7 @@ const isObject = function (obj) {
   return obj && Object.prototype.toString.call(obj) === '[object Object]'
 }
 
-const fetchRandom = function (lang, options) {
+const fetchRandom = function (lang, options, http) {
   options = options || {}
   options = Object.assign({}, defaults, options)
   //support lang 2nd param
@@ -27,8 +24,7 @@ const fetchRandom = function (lang, options) {
   }
   url += `format=json&action=query&generator=random&grnnamespace=14&prop=revisions&grnlimit=1&origin=*`
 
-  const headers = makeHeaders(options)
-  return http(url, headers)
+  return http(url)
     .then((res) => {
       try {
         let o = res.query.pages

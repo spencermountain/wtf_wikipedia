@@ -65,7 +65,10 @@ export default [
         presets: ['@babel/preset-env'],
       }),
       alias({
-        entries: [{ find: './http/server', replacement: './http/client' }],
+        entries: [
+          { find: './http/server', replacement: './http/client' },
+          { find: './_fetch/http/server', replacement: './_fetch/http/client' },
+        ],
       }),
     ],
   },
@@ -88,7 +91,10 @@ export default [
         presets: ['@babel/preset-env'],
       }),
       alias({
-        entries: [{ find: './http/server', replacement: './http/client' }],
+        entries: [
+          { find: './http/server', replacement: './http/client' },
+          { find: './_fetch/http/server', replacement: './_fetch/http/client' },
+        ],
       }),
       terser(),
       sizeCheck({ expect: 123, warn: 10 }),
@@ -113,7 +119,10 @@ export default [
         presets: ['@babel/preset-env'],
       }),
       alias({
-        entries: [{ find: './http/server', replacement: './http/client' }],
+        entries: [
+          { find: './http/server', replacement: './http/client' },
+          { find: './_fetch/http/server', replacement: './_fetch/http/client' },
+        ],
       }),
       terser(),
       sizeCheck({ expect: 123, warn: 10 }),
