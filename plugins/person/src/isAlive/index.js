@@ -1,19 +1,20 @@
 const byCat = require('./byCategory')
 const byTemplate = require('./byTemplate')
-const maxAge = 105
+
+// maximum age of a person
 let d = new Date()
-const minYear = d.getFullYear() - maxAge
+const minYear = d.getFullYear() - 105
 
 const isAlive = function (doc) {
   // if we have a death date
   let death = doc.deathDate()
-  if (death && death.year) {
-    return true
+  if (death) {
+    return false
   }
   // if we have a death place
   let deathPlace = doc.deathPlace()
   if (deathPlace) {
-    return true
+    return false
   }
   // does it have a good category?
   let fromCat = byCat(doc)

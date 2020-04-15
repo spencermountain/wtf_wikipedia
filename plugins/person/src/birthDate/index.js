@@ -1,4 +1,5 @@
-const byInfobox = require('../_getInfobox')
+const byInfobox = require('../getInfobox')
+const bySentence = require('../getSentence')
 const spacetime = require('spacetime')
 
 const parseDate = function (str) {
@@ -28,6 +29,10 @@ const birthDate = function (doc) {
   if (res) {
     return parseDate(res)
   }
+
+  // try parentheses in first sentence
+  res = bySentence(doc)
+
   return {
     year: null,
     month: null,

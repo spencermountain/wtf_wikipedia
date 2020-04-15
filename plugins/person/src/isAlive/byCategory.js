@@ -1,5 +1,5 @@
 const aliveCats = {
-  'Living People': true,
+  'Living people': true,
   'Year of birth missing (living people)': true,
   'Date of birth missing (living people)': true,
   'Place of birth missing (living people)': true,
@@ -44,6 +44,7 @@ const didDie = {
 
 const byCat = function (doc) {
   let cats = doc.categories()
+
   //confirmed alive categories
   if (cats.find((c) => aliveCats.hasOwnProperty(c))) {
     return true

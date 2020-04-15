@@ -8,7 +8,7 @@ let str = `{{Infobox officeholder
   | alma_mater   = [[Ryerson University]] and [[University of Saskatchewan]]
   | nationality  = Canadian
 }}`
-str = `{{WikiProject Biography|living=yes|activepol=yes}}`
+str = `'''David Robert Jones''' (8 January 1947 – 10 January 2016), known professionally as '''David Bowie'''`
 let doc = wtf(str)
 // let date = doc.birthDate()
 // console.log(date)
