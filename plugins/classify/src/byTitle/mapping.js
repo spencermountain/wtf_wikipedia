@@ -96,7 +96,7 @@ module.exports = {
   painting: 'CreativeWork',
   pennsylvania: 'Place',
   plant: 'Organism',
-  play: 'CreativeWork',
+  play: 'CreativeWork/Play',
   poet: 'Person',
   politician: 'Person/Politician',
   portugal: 'Place',
@@ -245,7 +245,7 @@ module.exports = {
   //  'file format': 'Thing',
   // 'computer virus': 'Thing/Software',
   'card game': 'Product',
-  automobile: 'Product'
+  automobile: 'Product',
   //  rocket: 'Thing'
   // website: 'Thing/Software'
 }

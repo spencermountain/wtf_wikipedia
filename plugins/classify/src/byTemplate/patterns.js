@@ -8,12 +8,13 @@ module.exports = {
   'CreativeWork/Book': [/-novel-stub$/],
   'CreativeWork/Film': [/-film-stub$/],
   'CreativeWork/Album': [/-album-stub$/],
-  CreativeWork: [/-(play|song)-stub$/],
+  'CreativeWork/Play': [/-play-stub$/],
+  CreativeWork: [/-song-stub$/],
 
   'Event/Election': [/-election-stub$/],
   'Organization/SportsTeam': [/-sport-team-stub$/],
   'Organization/Company': [/-company-stub$/],
 
   'Place/BodyOfWater': [/-river-stub$/],
-  Place: [/-geo-stub$/]
+  Place: [/-geo-stub$/],
 }
