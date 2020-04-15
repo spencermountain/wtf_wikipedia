@@ -1,28 +1,7 @@
 const byInfobox = require('../getInfobox')
 const bySentence = require('../getSentence')
-const spacetime = require('spacetime')
-
-const parseDate = function (str) {
-  if (!str) {
-    return null
-  }
-  // remove parentheses
-  str = str.replace(/\(.*\)/, '')
-  str = str.trim()
-  // just the year
-  if (str.match(/^[0-9]{4}$/)) {
-    return {
-      year: parseInt(str, 10)
-    }
-  }
-  // parse the full date
-  let s = spacetime(str)
-  return {
-    year: s.year(),
-    month: s.month(),
-    date: s.date()
-  }
-}
+const byCategory = require('./byCategory')
+const parseDate = require('../parseDate')
 
 const birthDate = function (doc) {
   let res = byInfobox(doc, 'birth_date')
@@ -32,11 +11,15 @@ const birthDate = function (doc) {
 
   // try parentheses in first sentence
   res = bySentence(doc)
-
-  return {
-    year: null,
-    month: null,
-    date: null
+  if (res && res.birth) {
+    return parseDate(res.birth)
   }
+
+  // try to get year from 'Category:1955 births'
+  let year = byCategory(doc)
+  if (year) {
+    return { year: year }
+  }
+  return null
 }
 module.exports = birthDate

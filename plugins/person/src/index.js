@@ -3,6 +3,7 @@ const birthPlace = require('./birthPlace')
 const isAlive = require('./isAlive')
 const deathDate = require('./deathDate')
 const deathPlace = require('./deathPlace')
+const nationality = require('./nationality')
 
 const addMethod = function (models) {
   models.Doc.prototype.birthDate = function () {
@@ -19,6 +20,9 @@ const addMethod = function (models) {
   }
   models.Doc.prototype.deathPlace = function () {
     return deathPlace(this)
+  }
+  models.Doc.prototype.nationality = function () {
+    return nationality(this)
   }
 }
 module.exports = addMethod

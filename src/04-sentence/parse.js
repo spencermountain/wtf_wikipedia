@@ -9,32 +9,31 @@ const abbreviations = literalAbbreviations.concat('[^]][^]]')
 const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i')
 const acronym_reg = new RegExp("[ |.|'|[][A-Z].? *?$", 'i')
 const elipses_reg = new RegExp('\\.\\.\\.* +?$')
+const circa_reg = / c\. $/
 const hasWord = new RegExp('[a-zа-яぁ-ゟ][a-zа-яぁ-ゟ゠-ヿ]', 'iu')
-// 3040-309F : hiragana
-// 30A0-30FF : katakana
 
 //turn a nested array into one array
-const flatten = function(arr) {
+const flatten = function (arr) {
   let all = []
-  arr.forEach(function(a) {
+  arr.forEach(function (a) {
     all = all.concat(a)
   })
   return all
 }
 
-const naiive_split = function(text) {
+const naiive_split = function (text) {
   //first, split by newline
   let splits = text.split(/(\n+)/)
-  splits = splits.filter(s => s.match(/\S/))
+  splits = splits.filter((s) => s.match(/\S/))
   //split by period, question-mark, and exclamation-mark
-  splits = splits.map(function(str) {
+  splits = splits.map(function (str) {
     return str.split(/(\S.+?[.!?]"?)(?=\s+|$)/g) //\u3002
   })
   return flatten(splits)
 }
 
 // if this looks like a period within a wikipedia link, return false
-const isBalanced = function(str) {
+const isBalanced = function (str) {
   str = str || ''
   const open = str.split(/\[\[/) || []
   const closed = str.split(/\]\]/) || []
@@ -49,7 +48,7 @@ const isBalanced = function(str) {
   return true
 }
 
-const sentence_parser = function(text) {
+const sentence_parser = function (text) {
   let sentences = []
   //first do a greedy-split..
   let chunks = []
@@ -83,8 +82,8 @@ const sentence_parser = function(text) {
   }
 
   //detection of non-sentence chunks
-  const isSentence = function(hmm) {
-    if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg)) {
+  const isSentence = function (hmm) {
+    if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg) || hmm.match(circa_reg)) {
       return false
     }
     //too short? - no consecutive letters
