@@ -190,21 +190,22 @@ npm install -g dumpster-dive
 | [markdown](./plugins/markdown) | output markdown |
 | [latex](./plugins/latex)       | output latex    |
 
-|                                |                                        |
-| ------------------------------ | -------------------------------------- |
-| [i18n](./plugins/i18n)         | improve multilingual template coverage |
-| [classify](./plugins/classify) | is the article about a person?         |
-| [summary](./plugins/summary)   | small description text                 |
+|                                                            |                                         |
+| ---------------------------------------------------------- | --------------------------------------- |
+| [i18n](./plugins/i18n)                                     | improves multilingual template coverage |
+| [classify](./plugins/classify)                             | is the article about a person?          |
+| [summary](./plugins/summary)                               | short description text                  |
+| [nsfw](https://github.com/spencermountain/wtf-plugin-nsfw) | content classifier                      |
 
 |                                |                                    |
 | ------------------------------ | ---------------------------------- |
 | [category](./plugins/category) | parse all articles in a category   |
 | [image](./plugins/image)       | additional methods for `.images()` |
 
-|                                                       |                               |
-| ----------------------------------------------------- | ----------------------------- |
-| [wtf-mlb](https://github.com/spencermountain/wtf-mlb) | baseball team & season parser |
-| [wtf-nhl](https://github.com/spencermountain/wtf-nhl) | hockey team & season parser   |
+|                                                       |                     |
+| ----------------------------------------------------- | ------------------- |
+| [wtf-mlb](https://github.com/spencermountain/wtf-mlb) | fetch baseball data |
+| [wtf-nhl](https://github.com/spencermountain/wtf-nhl) | fetch hockey data   |
 
 <div align="right">
   <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-plugins">plugin docs</a>

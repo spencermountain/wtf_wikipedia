@@ -211,5 +211,5 @@ module.exports = [
   'wy',
   'wyo',
   'yb',
-  'µg'
+  'µg',
 ]
