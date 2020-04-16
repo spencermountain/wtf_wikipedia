@@ -3,3 +3,5 @@ var wtf = require('./src/index')
 wtf.extend(require('./plugins/category/src'))
 
 // Dirty: plugins-category
+
+console.log(wtf('[[fun]] cool nice ').text())

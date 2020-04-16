@@ -7,10 +7,10 @@ var modes = {
   '--plaintext': 'plaintext',
   '--html': 'html',
   '--markdown': 'markdown',
-  '--latex': 'latex'
+  '--latex': 'latex',
 }
 var mode = 'json'
-args = args.filter(arg => {
+args = args.filter((arg) => {
   if (modes.hasOwnProperty(arg) === true) {
     mode = modes[arg]
     return false
@@ -23,7 +23,7 @@ if (!title) {
   throw new Error('Usage: wtf_wikipedia Toronto Blue Jays --plaintext')
 }
 
-wtf.fetch(title, 'en', function(err, doc) {
+wtf.fetch(title, 'en', function (err, doc) {
   if (err) {
     console.error(err)
   }
