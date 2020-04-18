@@ -1,4 +1,4 @@
-/* wtf-plugin-html 0.1.1  MIT */
+/* wtf-plugin-html 0.1.2  MIT */
 var defaults = {
   title: true,
   infoboxes: true,
