@@ -20,20 +20,63 @@ const sisterProjects = {
 }
 
 const parsers = {
-  //https://en.wikipedia.org/wiki/Template:About
+
+  // https://en.wikipedia.org/wiki/Template:About
   about: (tmpl, list) => {
     let obj = parse(tmpl)
-    // obj.pos = r.title //not working
     list.push(obj)
     return ''
   },
-  //https://en.wikipedia.org/wiki/Template:Main
+
+  // https://en.wikipedia.org/wiki/Template:Main
   main: (tmpl, list) => {
     let obj = parse(tmpl)
-    // obj.pos = r.title //not working
     list.push(obj)
     return ''
   },
+
+  // https://en.wikipedia.org/wiki/Template:Main_list
+  'main list': (tmpl, list) => {
+    let obj = parse(tmpl)
+    list.push(obj)
+    return ''
+  },
+
+  // https://en.wikipedia.org/wiki/Template:See
+  'see': (tmpl, list) => {
+    let obj = parse(tmpl)
+    list.push(obj)
+    return ''
+  },
+
+  // https://en.wikipedia.org/wiki/Template:For
+  'for': (tmpl, list) => {
+    let obj = parse(tmpl)
+    list.push(obj)
+    return ''
+  },
+
+  // https://en.wikipedia.org/wiki/Template:Further
+  'further': (tmpl, list) => {
+    let obj = parse(tmpl)
+    list.push(obj)
+    return ''
+  },
+
+  // same as "further" (but this name is still in use)
+  'further information': (tmpl, list) => {
+    let obj = parse(tmpl)
+    list.push(obj)
+    return ''
+  },
+
+  // https://en.wikipedia.org/wiki/Template:Listen
+  'listen': (tmpl, list) => {
+    let obj = parse(tmpl)
+    list.push(obj)
+    return ''
+  },
+
   'wide image': ['file', 'width', 'caption'],
 
   //https://en.wikipedia.org/wiki/Template:Redirect
@@ -148,7 +191,6 @@ const parsers = {
   //https://en.wikipedia.org/wiki/Template:See_also
   'see also': (tmpl, list) => {
     let data = parse(tmpl)
-    // data.pos = r.title //not working
     list.push(data)
     return ''
   },
