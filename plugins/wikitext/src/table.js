@@ -1,5 +1,4 @@
-const toWiki = function() {
-  console.log(this)
+const toWiki = function () {
   let wiki = `{|\n`
   wiki += `\n|}`
   return wiki
