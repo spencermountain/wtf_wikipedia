@@ -181,28 +181,43 @@ npm install -g dumpster-dive
 
 ### Plugins
 
-|                                |                 |
-| ------------------------------ | --------------- |
-| [html](./plugins/html)         | output html     |
-| [markdown](./plugins/markdown) | output markdown |
-| [latex](./plugins/latex)       | output latex    |
+these add all sorts of new functionality:
+
+```js
+wtf.extend(require('wtf-plugin-classify'))
+wtf.fetch('Toronto Raptors').then((doc) => doc.classify())
+// 'Organization/SportsTeam'
+
+wtf.extend(require('wtf-plugin-summary'))
+wtf.fetch('Pulp Fiction').then((doc) => doc.summary())
+// 'a 1994 American crime film'
+
+wtf.extend(require('wtf-plugin-person'))
+wtf.fetch('David Bowie').then((doc) => doc.birthDate())
+// {year:1947, date:8, month:1}
+
+wtf.extend(require('wtf-plugin-i18n'))
+wtf.fetch('Ziggy Stardust', 'fr').then((doc) => {
+  doc.infobox().json()
+  //{ nom:{text:"Ziggy Stardust"}, oeuvre:{text:"The Rise and Fall of Ziggy Stardust"} }
+})
+```
 
 |                                                            |                                         |
 | ---------------------------------------------------------- | --------------------------------------- |
-| [i18n](./plugins/i18n)                                     | improves multilingual template coverage |
-| [classify](./plugins/classify)                             | is the article about a person?          |
+| [classify](./plugins/classify)                             | person/place/thing                      |
 | [summary](./plugins/summary)                               | short description text                  |
-| [nsfw](https://github.com/spencermountain/wtf-plugin-nsfw) | content classifier                      |
-
-|                                |                                    |
-| ------------------------------ | ---------------------------------- |
-| [category](./plugins/category) | parse all articles in a category   |
-| [image](./plugins/image)       | additional methods for `.images()` |
-
-|                                                       |                     |
-| ----------------------------------------------------- | ------------------- |
-| [wtf-mlb](https://github.com/spencermountain/wtf-mlb) | fetch baseball data |
-| [wtf-nhl](https://github.com/spencermountain/wtf-nhl) | fetch hockey data   |
+| [person](./plugins/person)                                 | birth/death information                 |
+| [category](./plugins/category)                             | parse all articles in a category        |
+| [i18n](./plugins/i18n)                                     | improves multilingual template coverage |
+| [wtf-mlb](https://github.com/spencermountain/wtf-mlb)      | fetch baseball data                     |
+| [wtf-nhl](https://github.com/spencermountain/wtf-nhl)      | fetch hockey data                       |
+| [nsfw](https://github.com/spencermountain/wtf-plugin-nsfw) | flag sexual/graphic/adult articles      |
+| [image](./plugins/image)                                   | additional methods for `.images()`      |
+| [html](./plugins/html)                                     | output html                             |
+| [wikitext](./plugins/wikitext)                             | output wikitext                         |
+| [markdown](./plugins/markdown)                             | output markdown                         |
+| [latex](./plugins/latex)                                   | output latex                            |
 
 <div align="right">
   <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-plugins">plugin docs</a>
