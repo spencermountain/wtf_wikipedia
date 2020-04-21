@@ -13,7 +13,14 @@ test('basic-wikitext', (t) => {
     'that cat is [[a]] cool dude',
     `one [[two|2]] three`,
     'cool [[stuff]] **bold** too',
-    '{{foobar | fun = true | key = val}}'
+    '{{foobar | fun = true | key = val}}',
+    // `[[Image:Levellers declaration and standard.gif|thumb|Woodcut from a [[Diggers]] document by [[William Everard (Digger)|William Everard]]]]`,
+    `[[Image:Levellers declaration and standard.gif|thumb|Woodcut from a Diggers document]]`,
+    '== References ==\n{{ref-list}}',
+    `{{Infobox award
+| name           = Outstanding Achievement in Short Film Screen Craft
+| website        = http://www.aacta.org
+}}`
   ]
   arr.forEach((str) => {
     let doc = wtf(str)

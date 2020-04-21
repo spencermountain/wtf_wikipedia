@@ -24,14 +24,6 @@ const toWiki = function (options) {
     text += doTemplate(tmpl) + '\n'
   })
 
-  //put any images under the header
-  if (options.images === true) {
-    let imgs = this.images()
-    if (imgs.length > 0) {
-      text += imgs.map((image) => image.wikitext(options)).join('\n')
-    }
-  }
-
   //make a table
   if (options.tables === true) {
     text += this.tables()
