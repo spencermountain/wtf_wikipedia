@@ -1,13 +1,14 @@
 const defaults = {}
 
-const generic = function (tmpl) {
-  let list = tmpl.list || []
-  list = list.join('|')
-  return `{{${tmpl.template}|${list}}}\n`
-}
-
-const doTemplates = {
-  main: generic
+const doTemplate = function (obj) {
+  let data = ''
+  let name = obj.template
+  Object.keys(obj).forEach((k) => {
+    if (k !== 'template') {
+      data += ` | ${k} = ${obj[k]}`
+    }
+  })
+  return `{{${name}${data}}} `
 }
 
 const toWiki = function (options) {
@@ -20,9 +21,7 @@ const toWiki = function (options) {
   }
   // render some templates?
   this.templates().forEach((tmpl) => {
-    if (doTemplates.hasOwnProperty(tmpl.template)) {
-      text += doTemplates[tmpl.template](tmpl)
-    }
+    text += doTemplate(tmpl) + '\n'
   })
 
   //put any images under the header
@@ -51,6 +50,13 @@ const toWiki = function (options) {
       return p.wikitext(options)
     })
     .join('\n')
+
+  // render references
+  // these will be out of place
+  this.references().forEach((ref) => {
+    text += ref.wikitext(options) + '\n'
+  })
+
   return text
 }
 module.exports = toWiki

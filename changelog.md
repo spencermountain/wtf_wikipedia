@@ -7,6 +7,7 @@
 - export http lib for plugin in `.extend()`
 - stop exporting (huge) mapfile in builds
 - deprecate `.dates()` from sentence class (didn't work)
+- stop ignoring `ref-list` template, keep otherwise empty `==References==` sections
 
 ### 8.1.2
 
