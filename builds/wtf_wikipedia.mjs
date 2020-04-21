@@ -1,4 +1,4 @@
-/* wtf_wikipedia 8.1.2 MIT */
+/* wtf_wikipedia 8.2.0 MIT */
 import https from 'https';
 
 var parseUrl = function parseUrl(url) {
@@ -3056,7 +3056,6 @@ var defaults$7 = {
   text: true,
   links: true,
   formatting: true,
-  dates: true,
   numbers: true
 };
 
@@ -3086,10 +3085,6 @@ var toJSON$2 = function toJSON(s, options) {
 
   if (options.formatting && s.data.fmt) {
     data.formatting = s.data.fmt;
-  }
-
-  if (options.dates && s.data.dates !== undefined) {
-    data.dates = s.data.dates;
   }
 
   return data;
@@ -3161,10 +3156,6 @@ var methods$4 = {
   },
   dates: function dates(n) {
     var arr = [];
-
-    if (this.data && this.data.dates) {
-      arr = this.data.dates || [];
-    }
 
     if (typeof n === 'number') {
       return arr[n];
@@ -4837,7 +4828,10 @@ var list$1 = [//https://en.wikipedia.org/wiki/category:templates_with_no_visible
 'pp', 'pp-move-indef', 'pp-semi-indef', 'pp-vandalism', //https://en.wikipedia.org/wiki/Template:R
 'r', //out-of-scope still - https://en.wikipedia.org/wiki/Template:Tag
 '#tag', //https://en.wikipedia.org/wiki/Template:Navboxes
-'navboxes', 'reflist', 'ref-list', 'div col', // 'authority control',
+// 'navboxes',
+// 'reflist',
+// 'ref-list',
+'div col', // 'authority control',
 //https://en.wikipedia.org/wiki/Template:Citation_needed
 // 'better source',
 // 'citation needed',
@@ -6325,17 +6319,51 @@ var sisterProjects = {
   mw: 'mediawiki'
 };
 var parsers$1 = {
-  //https://en.wikipedia.org/wiki/Template:About
+  // https://en.wikipedia.org/wiki/Template:About
   about: function about(tmpl, list) {
-    var obj = parse$3(tmpl); // obj.pos = r.title //not working
-
+    var obj = parse$3(tmpl);
     list.push(obj);
     return '';
   },
-  //https://en.wikipedia.org/wiki/Template:Main
+  // https://en.wikipedia.org/wiki/Template:Main
   main: function main(tmpl, list) {
-    var obj = parse$3(tmpl); // obj.pos = r.title //not working
-
+    var obj = parse$3(tmpl);
+    list.push(obj);
+    return '';
+  },
+  // https://en.wikipedia.org/wiki/Template:Main_list
+  'main list': function mainList(tmpl, list) {
+    var obj = parse$3(tmpl);
+    list.push(obj);
+    return '';
+  },
+  // https://en.wikipedia.org/wiki/Template:See
+  'see': function see(tmpl, list) {
+    var obj = parse$3(tmpl);
+    list.push(obj);
+    return '';
+  },
+  // https://en.wikipedia.org/wiki/Template:For
+  'for': function _for(tmpl, list) {
+    var obj = parse$3(tmpl);
+    list.push(obj);
+    return '';
+  },
+  // https://en.wikipedia.org/wiki/Template:Further
+  'further': function further(tmpl, list) {
+    var obj = parse$3(tmpl);
+    list.push(obj);
+    return '';
+  },
+  // same as "further" (but this name is still in use)
+  'further information': function furtherInformation(tmpl, list) {
+    var obj = parse$3(tmpl);
+    list.push(obj);
+    return '';
+  },
+  // https://en.wikipedia.org/wiki/Template:Listen
+  'listen': function listen(tmpl, list) {
+    var obj = parse$3(tmpl);
     list.push(obj);
     return '';
   },
@@ -6450,8 +6478,7 @@ var parsers$1 = {
   },
   //https://en.wikipedia.org/wiki/Template:See_also
   'see also': function seeAlso(tmpl, list) {
-    var data = parse$3(tmpl); // data.pos = r.title //not working
-
+    var data = parse$3(tmpl);
     list.push(data);
     return '';
   },
@@ -8807,7 +8834,7 @@ var fetchCategory = function fetchCategory(category, lang, options) {
 
 var category = fetchCategory;
 
-var _version = '8.1.2';
+var _version = '8.2.0';
 
 var wtf = function wtf(wiki, options) {
   return _01Document(wiki, options);
