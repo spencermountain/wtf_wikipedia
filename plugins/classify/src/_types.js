@@ -5,40 +5,41 @@ const tree = {
     Politician: true,
     Actor: true,
     Academic: true,
-    ReligiousFigure: true
+    ReligiousFigure: true,
   },
   Place: {
     Country: true,
     City: true,
     Structure: true,
     BodyOfWater: true,
-    SpaceLocation: true
+    SpaceLocation: true,
   },
   Organization: {
     Company: true,
     SportsTeam: true,
     MusicalGroup: true,
-    PoliticalParty: true
+    PoliticalParty: true,
   },
   CreativeWork: {
     Film: true,
     TVShow: true,
+    Play: true,
     Book: true,
     Album: true,
-    VideoGame: true
+    VideoGame: true,
   },
   Event: {
     Election: true,
     Disaster: true,
     SportsEvent: true,
     MilitaryConflict: true,
-    SpaceMission: true
+    SpaceMission: true,
   },
   Product: true,
   Organism: true,
   MedicalCondition: true,
   Concept: true,
-  FictionalCharacter: true
+  FictionalCharacter: true,
 }
 
 const isObject = function (obj) {

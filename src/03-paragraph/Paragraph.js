@@ -3,30 +3,30 @@ const setDefaults = require('../_lib/setDefaults')
 const defaults = {
   sentences: true,
   lists: true,
-  images: true
+  images: true,
 }
 
-const Paragraph = function(data) {
+const Paragraph = function (data) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: data
+    value: data,
   })
 }
 
 const methods = {
-  sentences: function(num) {
+  sentences: function (num) {
     if (typeof num === 'number') {
       return this.data.sentences[num]
     }
     return this.data.sentences || []
   },
-  references: function(num) {
+  references: function (num) {
     if (typeof num === 'number') {
       return this.data.references[num]
     }
     return this.data.references
   },
-  lists: function(num) {
+  lists: function (num) {
     if (typeof num === 'number') {
       return this.data.lists[num]
     }
@@ -38,9 +38,9 @@ const methods = {
     }
     return this.data.images || []
   },
-  links: function(n) {
+  links: function (n) {
     let arr = []
-    this.sentences().forEach(s => {
+    this.sentences().forEach((s) => {
       arr = arr.concat(s.links(n))
     })
     if (typeof n === 'number') {
@@ -48,14 +48,14 @@ const methods = {
     } else if (typeof n === 'string') {
       //grab a specific link like .links('Fortnight')
       n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = arr.find(o => o.page() === n)
+      let link = arr.find((o) => o.page() === n)
       return link === undefined ? [] : [link]
     }
     return arr || []
   },
   interwiki(num) {
     let arr = []
-    this.sentences().forEach(s => {
+    this.sentences().forEach((s) => {
       arr = arr.concat(s.interwiki())
     })
     if (typeof num === 'number') {
@@ -63,23 +63,23 @@ const methods = {
     }
     return arr || []
   },
-  text: function(options) {
+  text: function (options) {
     options = setDefaults(options, defaults)
     let str = this.sentences()
-      .map(s => s.text(options))
+      .map((s) => s.text(options))
       .join(' ')
-    this.lists().forEach(list => {
+    this.lists().forEach((list) => {
       str += '\n' + list.text()
     })
     return str
   },
-  json: function(options) {
+  json: function (options) {
     options = setDefaults(options, defaults)
     return toJSON(this, options)
-  }
+  },
 }
 methods.citations = methods.references
-Object.keys(methods).forEach(k => {
+Object.keys(methods).forEach((k) => {
   Paragraph.prototype[k] = methods[k]
 })
 module.exports = Paragraph

@@ -21,6 +21,10 @@
 
 This plugin uses a (large) number of heuristics to classify a wikipedia article into a basic **Person/Place/Thing** scheme.
 
+<div align="center">
+  <h2><a href="https://observablehq.com/@spencermountain/wtf-plugin-classify">Demo</a></h2>
+</div>
+
 Things it looks at:
 
 - infoboxes (like **{{Infobox Person ...}}**)
@@ -36,8 +40,9 @@ wtf.extend(require('wtf-plugin-classify'))
 wtf.fetch('Toronto Raptors').then((doc) => {
   let res = doc.classify()
   //{
-  //  type: 'Organization/SportsTeam',
+  //  category: 'Organization/SportsTeam',
   //  confidence: 0.9,
+  //  detail: {...}
   //}
 })
 ```
@@ -78,6 +83,7 @@ CreativeWork:
   Film: true
   TVShow: true
   Book: true
+  Play: true
   Album: true
   VideoGame: true
 Event:

@@ -1,9 +1,9 @@
 var test = require('tape')
 var readFile = require('./lib/_cachedPage')
 
-test('traverse sections', t => {
+test('traverse sections', (t) => {
   var doc = readFile('toronto')
-  t.equal(doc.sections().length, 34, 'init section count')
+  t.equal(doc.sections().length, 35, 'init section count')
 
   //start with history
   var sec = doc.section('History')
@@ -13,7 +13,7 @@ test('traverse sections', t => {
   sec = sec.nextSibling()
   t.equal(sec.title(), 'Geography', 'skip-over children')
 
-  var children = sec.children().map(s => s.title())
+  var children = sec.children().map((s) => s.title())
   t.deepEqual(['Topography', 'Climate'], children, 'got two children')
 
   //go into both children, Topography+Climate
@@ -29,9 +29,9 @@ test('traverse sections', t => {
   t.equal(sec.children(1).title(), 'Climate', 'second child')
 
   sec.remove()
-  t.equal(doc.sections().length, 31, 'removed self and children')
+  t.equal(doc.sections().length, 32, 'removed self and children')
   doc.sections('See also').remove()
-  t.equal(doc.sections().length, 30, 'removed one')
+  t.equal(doc.sections().length, 31, 'removed one')
 
   t.end()
 })

@@ -17,9 +17,9 @@ export default [
       commonjs(),
       babel({
         babelrc: false,
-        presets: ['@babel/preset-env']
-      })
-    ]
+        presets: ['@babel/preset-env'],
+      }),
+    ],
   },
 
   // === .js ===
@@ -30,17 +30,17 @@ export default [
         banner: banner,
         file: `builds/${name}.js`,
         format: 'umd',
-        name: 'wtf',
-        sourcemap: true
-      }
+        name: 'wtfClassify',
+        sourcemap: true,
+      },
     ],
     plugins: [
       commonjs(),
       babel({
         babelrc: false,
-        presets: ['@babel/preset-env']
-      })
-    ]
+        presets: ['@babel/preset-env'],
+      }),
+    ],
   },
   // ===  min.js ===
   {
@@ -50,18 +50,18 @@ export default [
         banner: banner,
         file: `builds/${name}.min.js`,
         format: 'umd',
-        name: 'wtf',
-        sourcemap: false
-      }
+        name: 'wtfClassify',
+        sourcemap: false,
+      },
     ],
     plugins: [
       commonjs(),
       babel({
         babelrc: false,
-        presets: ['@babel/preset-env']
+        presets: ['@babel/preset-env'],
       }),
       terser(),
-      sizeCheck({ expect: 59, warn: 10 })
-    ]
-  }
+      sizeCheck({ expect: 59, warn: 10 }),
+    ],
+  },
 ]

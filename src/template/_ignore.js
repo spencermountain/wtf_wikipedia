@@ -15,9 +15,9 @@ const list = [
   //out-of-scope still - https://en.wikipedia.org/wiki/Template:Tag
   '#tag',
   //https://en.wikipedia.org/wiki/Template:Navboxes
-  'navboxes',
-  'reflist',
-  'ref-list',
+  // 'navboxes',
+  // 'reflist',
+  // 'ref-list',
   'div col',
   // 'authority control',
   //https://en.wikipedia.org/wiki/Template:Citation_needed
@@ -39,7 +39,7 @@ const list = [
   'starbox end',
   'end box',
   'end',
-  's-end'
+  's-end',
 ]
 const ignore = list.reduce((h, str) => {
   h[str] = true

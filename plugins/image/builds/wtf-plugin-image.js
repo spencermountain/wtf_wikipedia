@@ -1,8 +1,8 @@
-/* wtf-plugin-image 0.1.0  MIT */
+/* wtf-plugin-image 0.2.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('https')) :
   typeof define === 'function' && define.amd ? define(['https'], factory) :
-  (global = global || self, global.wtf = factory(global.https));
+  (global = global || self, global.wtfImage = factory(global.https));
 }(this, (function (https) { 'use strict';
 
   https = https && Object.prototype.hasOwnProperty.call(https, 'default') ? https['default'] : https;

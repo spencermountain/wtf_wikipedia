@@ -1,8 +1,8 @@
-/* wtf-plugin-classify 0.1.0  MIT */
+/* wtf-plugin-classify 0.2.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.wtf = factory());
+  (global = global || self, global.wtfClassify = factory());
 }(this, (function () { 'use strict';
 
   function _defineProperty(obj, key, value) {
@@ -668,7 +668,7 @@
     'comic book title': 'CreativeWork',
     'song contest entry': 'CreativeWork',
     'short story': 'CreativeWork',
-    play: 'CreativeWork',
+    play: 'CreativeWork/Play',
     'hollywood cartoon': 'CreativeWork',
     'radio show': 'CreativeWork',
     'simpsons episode': 'CreativeWork',
@@ -1053,8 +1053,8 @@
     for (var i = 0; i < infoboxes.length; i++) {
       var inf = infoboxes[i];
       var type = inf.type();
-      type = type.toLowerCase();
-      type = type.replace(/^(category|categorie|kategori): ?/i, '');
+      type = type.toLowerCase(); // type = type.replace(/^(category|categorie|kategori): ?/i, '')
+
       type = type.replace(/ /g, '_');
       type = type.trim();
 
@@ -1602,7 +1602,8 @@
     'CreativeWork/Book': [/-novel-stub$/],
     'CreativeWork/Film': [/-film-stub$/],
     'CreativeWork/Album': [/-album-stub$/],
-    CreativeWork: [/-(play|song)-stub$/],
+    'CreativeWork/Play': [/-play-stub$/],
+    CreativeWork: [/-song-stub$/],
     'Event/Election': [/-election-stub$/],
     'Organization/SportsTeam': [/-sport-team-stub$/],
     'Organization/Company': [/-company-stub$/],
@@ -2082,7 +2083,7 @@
     painting: 'CreativeWork',
     pennsylvania: 'Place',
     plant: 'Organism',
-    play: 'CreativeWork',
+    play: 'CreativeWork/Play',
     poet: 'Person',
     politician: 'Person/Politician',
     portugal: 'Place',
@@ -2447,6 +2448,7 @@
     CreativeWork: {
       Film: true,
       TVShow: true,
+      Play: true,
       Book: true,
       Album: true,
       VideoGame: true

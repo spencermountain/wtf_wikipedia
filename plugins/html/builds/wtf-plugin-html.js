@@ -1,8 +1,8 @@
-/* wtf-plugin-html 0.1.1  MIT */
+/* wtf-plugin-html 0.2.1  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.wtf = factory());
+  (global = global || self, global.wtfHtml = factory());
 }(this, (function () { 'use strict';
 
   var defaults = {
@@ -347,11 +347,12 @@
 
   //turn a json table into a html table
   var toHtml$5 = function toHtml(options) {
+    var rows = this.data;
     var html = '<table class="table">\n'; //make header
 
     html += '  <thead>\n';
     html += '  <tr>\n';
-    Object.keys(this[0]).forEach(function (k) {
+    Object.keys(rows[0]).forEach(function (k) {
       if (/^col[0-9]/.test(k) !== true) {
         html += '    <td>' + k + '</td>\n';
       }
@@ -360,7 +361,7 @@
     html += '  </thead>\n';
     html += '  <tbody>\n'; //make rows
 
-    this.forEach(function (o) {
+    rows.forEach(function (o) {
       html += '  <tr>\n';
       Object.keys(o).forEach(function (k) {
         var val = o[k].html(options);

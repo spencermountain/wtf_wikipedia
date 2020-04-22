@@ -357,7 +357,7 @@ module.exports = {
   'comic book title': 'CreativeWork',
   'song contest entry': 'CreativeWork',
   'short story': 'CreativeWork',
-  play: 'CreativeWork',
+  play: 'CreativeWork/Play',
   'hollywood cartoon': 'CreativeWork',
   'radio show': 'CreativeWork',
   'simpsons episode': 'CreativeWork',
@@ -596,5 +596,5 @@ module.exports = {
   kommune: 'Place',
   'historic subdivision': 'Place',
   'u.s. congressional district': 'Place',
-  'power station': 'Place/Structure'
+  'power station': 'Place/Structure',
 }

@@ -1,4 +1,4 @@
-/* wtf_wikipedia 8.1.2 MIT */
+/* wtf_wikipedia 8.2.0 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('https')) :
   typeof define === 'function' && define.amd ? define(['https'], factory) :
@@ -3062,7 +3062,6 @@
     text: true,
     links: true,
     formatting: true,
-    dates: true,
     numbers: true
   };
 
@@ -3092,10 +3091,6 @@
 
     if (options.formatting && s.data.fmt) {
       data.formatting = s.data.fmt;
-    }
-
-    if (options.dates && s.data.dates !== undefined) {
-      data.dates = s.data.dates;
     }
 
     return data;
@@ -3168,10 +3163,6 @@
     dates: function dates(n) {
       var arr = [];
 
-      if (this.data && this.data.dates) {
-        arr = this.data.dates || [];
-      }
-
       if (typeof n === 'number') {
         return arr[n];
       }
@@ -3210,9 +3201,8 @@
   var abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + ")[.!?] ?$", 'i');
   var acronym_reg = new RegExp("[ |.|'|[][A-Z].? *?$", 'i');
   var elipses_reg = new RegExp('\\.\\.\\.* +?$');
-  var hasWord = new RegExp('[a-zа-яぁ-ゟ][a-zа-яぁ-ゟ゠-ヿ]', 'iu'); // 3040-309F : hiragana
-  // 30A0-30FF : katakana
-  //turn a nested array into one array
+  var circa_reg = / c\. $/;
+  var hasWord = new RegExp('[a-zа-яぁ-ゟ][a-zа-яぁ-ゟ゠-ヿ]', 'iu'); //turn a nested array into one array
 
   var flatten = function flatten(arr) {
     var all = [];
@@ -3294,7 +3284,7 @@
 
 
     var isSentence = function isSentence(hmm) {
-      if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg)) {
+      if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg) || hmm.match(circa_reg)) {
         return false;
       } //too short? - no consecutive letters
 
@@ -4844,7 +4834,10 @@
   'pp', 'pp-move-indef', 'pp-semi-indef', 'pp-vandalism', //https://en.wikipedia.org/wiki/Template:R
   'r', //out-of-scope still - https://en.wikipedia.org/wiki/Template:Tag
   '#tag', //https://en.wikipedia.org/wiki/Template:Navboxes
-  'navboxes', 'reflist', 'ref-list', 'div col', // 'authority control',
+  // 'navboxes',
+  // 'reflist',
+  // 'ref-list',
+  'div col', // 'authority control',
   //https://en.wikipedia.org/wiki/Template:Citation_needed
   // 'better source',
   // 'citation needed',
@@ -6332,17 +6325,51 @@
     mw: 'mediawiki'
   };
   var parsers$1 = {
-    //https://en.wikipedia.org/wiki/Template:About
+    // https://en.wikipedia.org/wiki/Template:About
     about: function about(tmpl, list) {
-      var obj = parse$3(tmpl); // obj.pos = r.title //not working
-
+      var obj = parse$3(tmpl);
       list.push(obj);
       return '';
     },
-    //https://en.wikipedia.org/wiki/Template:Main
+    // https://en.wikipedia.org/wiki/Template:Main
     main: function main(tmpl, list) {
-      var obj = parse$3(tmpl); // obj.pos = r.title //not working
-
+      var obj = parse$3(tmpl);
+      list.push(obj);
+      return '';
+    },
+    // https://en.wikipedia.org/wiki/Template:Main_list
+    'main list': function mainList(tmpl, list) {
+      var obj = parse$3(tmpl);
+      list.push(obj);
+      return '';
+    },
+    // https://en.wikipedia.org/wiki/Template:See
+    'see': function see(tmpl, list) {
+      var obj = parse$3(tmpl);
+      list.push(obj);
+      return '';
+    },
+    // https://en.wikipedia.org/wiki/Template:For
+    'for': function _for(tmpl, list) {
+      var obj = parse$3(tmpl);
+      list.push(obj);
+      return '';
+    },
+    // https://en.wikipedia.org/wiki/Template:Further
+    'further': function further(tmpl, list) {
+      var obj = parse$3(tmpl);
+      list.push(obj);
+      return '';
+    },
+    // same as "further" (but this name is still in use)
+    'further information': function furtherInformation(tmpl, list) {
+      var obj = parse$3(tmpl);
+      list.push(obj);
+      return '';
+    },
+    // https://en.wikipedia.org/wiki/Template:Listen
+    'listen': function listen(tmpl, list) {
+      var obj = parse$3(tmpl);
       list.push(obj);
       return '';
     },
@@ -6457,8 +6484,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:See_also
     'see also': function seeAlso(tmpl, list) {
-      var data = parse$3(tmpl); // data.pos = r.title //not working
-
+      var data = parse$3(tmpl);
       list.push(data);
       return '';
     },
@@ -8814,7 +8840,7 @@
 
   var category = fetchCategory;
 
-  var _version = '8.1.2';
+  var _version = '8.2.0';
 
   var wtf = function wtf(wiki, options) {
     return _01Document(wiki, options);
@@ -8833,6 +8859,7 @@
     Reference: Reference_1,
     Table: Table_1,
     Template: Template_1,
+    http: server$1,
     wtf: wtf
   };
 

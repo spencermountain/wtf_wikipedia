@@ -1,16 +1,17 @@
 const defaults = {}
 
-const generic = function(tmpl) {
-  let list = tmpl.list || []
-  list = list.join('|')
-  return `{{${tmpl.template}|${list}}}\n`
+const doTemplate = function (obj) {
+  let data = ''
+  let name = obj.template
+  Object.keys(obj).forEach((k) => {
+    if (k !== 'template') {
+      data += ` | ${k} = ${obj[k]}`
+    }
+  })
+  return `{{${name}${data}}} `
 }
 
-const doTemplates = {
-  main: generic
-}
-
-const toWiki = function(options) {
+const toWiki = function (options) {
   options = options || {}
   options = Object.assign({}, defaults, options)
   let text = ''
@@ -19,17 +20,35 @@ const toWiki = function(options) {
     text += `\n${side} ${this.title()} ${side}\n`
   }
   // render some templates?
-  this.templates().forEach(tmpl => {
-    if (doTemplates.hasOwnProperty(tmpl.template)) {
-      text += doTemplates[tmpl.template](tmpl)
-    }
+  this.templates().forEach((tmpl) => {
+    text += doTemplate(tmpl) + '\n'
   })
 
+  //make a table
+  if (options.tables === true) {
+    text += this.tables()
+      .map((t) => t.wikitext(options))
+      .join('\n')
+  }
+
+  // make a html bullet-list
+  if (options.lists === true) {
+    text += this.lists()
+      .map((list) => list.text(options))
+      .join('\n')
+  }
   text += this.paragraphs()
-    .map(p => {
+    .map((p) => {
       return p.wikitext(options)
     })
     .join('\n')
+
+  // render references
+  // these will be out of place
+  this.references().forEach((ref) => {
+    text += ref.wikitext(options) + '\n'
+  })
+
   return text
 }
 module.exports = toWiki

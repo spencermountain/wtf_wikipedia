@@ -1,7 +1,7 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "8.1.2",
+  "version": "8.2.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
+    "build:all": "node ./scripts/buildAll.js",
     "start": "node ./scripts/demo.js",
     "coverage": "node scripts/coverage.js",
     "test": "TESTENV=dev node ./scripts/test.js",
@@ -52,10 +53,10 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "7.9.0",
-    "@babel/preset-env": "7.9.0",
-    "@rollup/plugin-alias": "^3.0.1",
-    "amble": "0.0.7",
-    "rollup": "2.2.0",
+    "@babel/preset-env": "7.9.5",
+    "@rollup/plugin-alias": "3.1.0",
+    "amble": "1.0.0",
+    "rollup": "2.6.1",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-filesize-check": "0.0.1",

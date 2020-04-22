@@ -1,8 +1,8 @@
-/* wtf-plugin-i18n 0.0.1  MIT */
+/* wtf-plugin-i18n 0.1.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.wtf = factory());
+  (global = global || self, global.wtfI18n = factory());
 }(this, (function () { 'use strict';
 
   var birth_date_and_age = ['ålder', 'ani', 'b', // 'birth date',

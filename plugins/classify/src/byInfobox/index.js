@@ -1,6 +1,6 @@
 const mapping = require('./mapping')
 
-const byInfobox = function(doc) {
+const byInfobox = function (doc) {
   let infoboxes = doc.infoboxes()
   let found = []
   for (let i = 0; i < infoboxes.length; i++) {
@@ -8,7 +8,7 @@ const byInfobox = function(doc) {
     let type = inf.type()
 
     type = type.toLowerCase()
-    type = type.replace(/^(category|categorie|kategori): ?/i, '')
+    // type = type.replace(/^(category|categorie|kategori): ?/i, '')
     type = type.replace(/ /g, '_')
     type = type.trim()
 

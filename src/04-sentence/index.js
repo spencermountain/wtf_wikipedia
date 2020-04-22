@@ -18,7 +18,7 @@ function postprocess(line) {
 // returns one sentence object
 function fromText(str) {
   let obj = {
-    text: str
+    text: str,
   }
   //pull-out the [[links]]
   parseLinks(obj)
@@ -30,7 +30,7 @@ function fromText(str) {
 }
 
 //used for consistency with other class-definitions
-const byParagraph = function(paragraph) {
+const byParagraph = function (paragraph) {
   // array of texts
   let sentences = sentenceParser(paragraph.wiki)
   // sentence objects
@@ -44,5 +44,5 @@ const byParagraph = function(paragraph) {
 
 module.exports = {
   fromText: fromText,
-  byParagraph: byParagraph
+  byParagraph: byParagraph,
 }

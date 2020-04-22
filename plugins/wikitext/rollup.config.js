@@ -30,7 +30,7 @@ export default [
         banner: banner,
         file: `builds/${name}.js`,
         format: 'umd',
-        name: 'wtf',
+        name: 'wtfWikitext',
         sourcemap: true
       }
     ],
@@ -50,7 +50,7 @@ export default [
         banner: banner,
         file: `builds/${name}.min.js`,
         format: 'umd',
-        name: 'wtf',
+        name: 'wtfWikitext',
         sourcemap: false
       }
     ],

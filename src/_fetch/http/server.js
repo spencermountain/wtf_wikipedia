@@ -1,13 +1,13 @@
 const https = require('https')
 
 // use the native nodejs request function
-const request = function(url, opts = {}) {
+const request = function (url, opts = {}) {
   return new Promise((resolve, reject) => {
     https
-      .get(url, opts, resp => {
+      .get(url, opts, (resp) => {
         let data = ''
         // A chunk of data has been recieved.
-        resp.on('data', chunk => {
+        resp.on('data', (chunk) => {
           data += chunk
         })
         // The whole response has been received. Print out the result.
@@ -20,7 +20,7 @@ const request = function(url, opts = {}) {
           }
         })
       })
-      .on('error', err => {
+      .on('error', (err) => {
         reject(err)
       })
   })

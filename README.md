@@ -57,7 +57,7 @@
 ```js
 const wtf = require('wtf_wikipedia')
 
-wtf.fetch('Toronto Raptors').then(doc => {
+wtf.fetch('Toronto Raptors').then((doc) => {
   doc.sentences(0).text()
   //'The Toronto Raptors are a Canadian professional basketball team ...'
 
@@ -107,7 +107,7 @@ the default json output is [really verbose](https://observablehq.com/@spencermou
 
 ```js
 // get just the links:
-doc.links().map(link => link.json())
+doc.links().map((link) => link.json())
 //[{ page: 'Theatrical superstitions', text: 'supersitions' }]
 
 // just the images:
@@ -115,10 +115,7 @@ doc.images(0).json()
 // { file: 'Image:Duveneck Whistling Boy.jpg', url: 'https://commons.wiki...' }
 
 // json for a particular section:
-doc
-  .sections('see also')
-  .links(0)
-  .json()
+doc.sections('see also').links(0).json()
 // { page: 'Slide Whistle' }
 ```
 
@@ -138,9 +135,9 @@ run it on the client-side:
 <script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
   // follow a redirect:
-  wtf.fetch('On a Friday', function(err, doc) {
+  wtf.fetch('On a Friday', function (err, doc) {
     let members = doc.infobox().get('current members')
-    members.links().map(l => l.page())
+    members.links().map((l) => l.page())
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
   })
 </script>
@@ -153,7 +150,7 @@ run it on the client-side:
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
 </div>
 
-### full wikipedia dumps
+## full wikipedia dumps
 
 With this library, in conjunction with [dumpster-dive](https://github.com/spencermountain/dumpster-dive), you can parse the whole english wikipedia in an aftertoon.
 
@@ -182,29 +179,51 @@ npm install -g dumpster-dive
 - [Fetching a list of pages](https://observablehq.com/@spencermountain/parsing-a-list-of-wikipedia-articles)
 - [Parsing COVID outbreak table](https://observablehq.com/@spencermountain/parsing-wikipedias-coronavirus-outbreak-data?collection=@spencermountain/wtf_wikipedia)
 
-### Plugins
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
 
-|                                |                 |
-| ------------------------------ | --------------- |
-| [html](./plugins/html)         | output html     |
-| [markdown](./plugins/markdown) | output markdown |
-| [latex](./plugins/latex)       | output latex    |
+## Plugins
 
-|                                |                                        |
-| ------------------------------ | -------------------------------------- |
-| [i18n](./plugins/i18n)         | improve multilingual template coverage |
-| [classify](./plugins/classify) | is the article about a person?         |
-| [summary](./plugins/summary)   | small description text                 |
+these add all sorts of new functionality:
 
-|                                |                                    |
-| ------------------------------ | ---------------------------------- |
-| [category](./plugins/category) | parse all articles in a category   |
-| [image](./plugins/image)       | additional methods for `.images()` |
+```js
+wtf.extend(require('wtf-plugin-classify'))
+wtf.fetch('Toronto Raptors').then((doc) => doc.classify())
+// 'Organization/SportsTeam'
 
-|                                                       |                               |
-| ----------------------------------------------------- | ----------------------------- |
-| [wtf-mlb](https://github.com/spencermountain/wtf-mlb) | baseball team & season parser |
-| [wtf-nhl](https://github.com/spencermountain/wtf-nhl) | hockey team & season parser   |
+wtf.extend(require('wtf-plugin-summary'))
+wtf.fetch('Pulp Fiction').then((doc) => doc.summary())
+// 'a 1994 American crime film'
+
+wtf.extend(require('wtf-plugin-person'))
+wtf.fetch('David Bowie').then((doc) => doc.birthDate())
+// {year:1947, date:8, month:1}
+
+wtf.extend(require('wtf-plugin-i18n'))
+wtf.fetch('Ziggy Stardust', 'fr').then((doc) => {
+  doc.infobox().json()
+  //{ nom:{text:"Ziggy Stardust"}, oeuvre:{text:"The Rise and Fall of Ziggy Stardust"} }
+})
+```
+
+| **Plugin**                                                 |                                         |
+| ---------------------------------------------------------- | --------------------------------------- |
+| [classify](./plugins/classify)                             | person/place/thing                      |
+| [summary](./plugins/summary)                               | short description text                  |
+| [person](./plugins/person)                                 | birth/death information                 |
+| [category](./plugins/category)                             | parse all articles in a category        |
+| [i18n](./plugins/i18n)                                     | improves multilingual template coverage |
+| [wtf-mlb](https://github.com/spencermountain/wtf-mlb)      | fetch baseball data                     |
+| [wtf-nhl](https://github.com/spencermountain/wtf-nhl)      | fetch hockey data                       |
+| [nsfw](https://github.com/spencermountain/wtf-plugin-nsfw) | flag sexual/graphic/adult articles      |
+| [image](./plugins/image)                                   | additional methods for `.images()`      |
+| [html](./plugins/html)                                     | output html                             |
+| [wikitext](./plugins/wikitext)                             | output wikitext                         |
+| [markdown](./plugins/markdown)                             | output markdown                         |
+| [latex](./plugins/latex)                                   | output latex                            |
 
 <div align="right">
   <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-plugins">plugin docs</a>
@@ -308,7 +327,7 @@ wtf(txt)
 ```javascript
 let str = `Whistling is featured in a number of television shows, such as [[Lassie (1954 TV series)|''Lassie'']], and the title theme for ''[[The X-Files]]''.`
 let doc = wtf(str)
-doc.links().map(l => l.page())
+doc.links().map((l) => l.page())
 // [ 'Lassie (1954 TV series)',  'The X-Files' ]
 ```
 
@@ -328,12 +347,8 @@ var text = wtf(wiki).text()
 a section is a heading _'==Like This=='_
 
 ```js
-wtf(page)
-  .sections(1)
-  .children() //traverse nested sections
-wtf(page)
-  .sections('see also')
-  .remove() //delete one
+wtf(page).sections(1).children() //traverse nested sections
+wtf(page).sections('see also').remove() //delete one
 ```
 
 #### **doc.sentences()**
@@ -343,7 +358,6 @@ s = wtf(page).sentences(4)
 s.links()
 s.bolds()
 s.italics()
-s.dates() //structured date templates
 ```
 
 #### **doc.categories()**
@@ -383,7 +397,7 @@ doc.sentences(0).text() // 'Tony Hawk est un skateboarder professionnel et un ac
 let docs = wtf.fetch(['Whistling', 2983], { follow_redirects: false })
 
 // article from german wikivoyage
-wtf.fetch('Toronto', { lang: 'de', wiki: 'wikivoyage' }).then(doc => {
+wtf.fetch('Toronto', { lang: 'de', wiki: 'wikivoyage' }).then((doc) => {
   console.log(doc.sentences(0).text()) // 'Toronto ist die Hauptstadt der Provinz Ontario'
 })
 ```
@@ -437,10 +451,10 @@ The wikipedia api is [pretty welcoming](https://www.mediawiki.org/wiki/API:Etiqu
 ```js
 wtf
   .fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
-    'Api-User-Agent': 'spencermountain@gmail.com'
+    'Api-User-Agent': 'spencermountain@gmail.com',
   })
-  .then(docList => {
-    let links = docList.map(doc => doc.links())
+  .then((docList) => {
+    let links = docList.map((doc) => doc.links())
     console.log(links)
   })
 ```
@@ -515,7 +529,6 @@ wtf
 - **.links()** -
 - **.bolds()** -
 - **.italics()** -
-- **.dates()** -
 - **.json()** -
 
 ### Image
@@ -569,10 +582,10 @@ wtf
 you can add new methods to any class of the library, with `wtf.extend()`
 
 ```js
-wtf.extend(models => {
+wtf.extend((models) => {
   // throw this method in there...
-  models.Doc.prototype.isPerson = function() {
-    return this.categories().find(cat => cat.match(/people/))
+  models.Doc.prototype.isPerson = function () {
+    return this.categories().find((cat) => cat.match(/people/))
   }
 })
 
@@ -621,7 +634,7 @@ It can usually be found by visiting `http://mywiki.com/api.php`
 to fetch pages from a 3rd-party wiki:
 
 ```js
-wtf.fetch('Kermit', { domain: 'muppet.fandom.com' }).then(doc => {
+wtf.fetch('Kermit', { domain: 'muppet.fandom.com' }).then((doc) => {
   console.log(doc.text())
 })
 ```
@@ -629,7 +642,7 @@ wtf.fetch('Kermit', { domain: 'muppet.fandom.com' }).then(doc => {
 some wikis will change the path of their API, from `./api.php` to elsewhere. If your api has a different path, you can set it like so:
 
 ```js
-wtf.fetch('2016-06-04_-_J.Fernandes_@_FIL,_Lisbon', { domain: 'www.mixesdb.com', path: 'db/api.php' }).then(doc => {
+wtf.fetch('2016-06-04_-_J.Fernandes_@_FIL,_Lisbon', { domain: 'www.mixesdb.com', path: 'db/api.php' }).then((doc) => {
   console.log(doc.templates('player'))
 })
 ```

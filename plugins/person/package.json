@@ -1,0 +1,48 @@
+{
+  "name": "wtf-plugin-person",
+  "description": "person-details plugin for wtf_wikipedia",
+  "version": "0.1.0",
+  "main": "./builds/wtf-plugin-person.js",
+  "unpkg": "./builds/wtf-plugin-person.min.js",
+  "module": "./builds/wtf-plugin-person.mjs",
+  "author": "Spencer Kelly (spencermountain)",
+  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/person#readme",
+  "scripts": {
+    "watch": "amble ./scratch.js",
+    "test": "tape ./tests/**/*.test.js | tap-dancer",
+    "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
+    "build": "rollup -c"
+  },
+  "files": [
+    "builds"
+  ],
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
+  },
+  "dependencies": {
+    "compromise": "^13.1.1",
+    "spacetime": "^6.4.3"
+  },
+  "peerDependencies": {
+    "wtf_wikipedia": "^8.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.9.0",
+    "@babel/preset-env": "7.9.0",
+    "@rollup/plugin-node-resolve": "^7.1.3",
+    "rollup": "2.2.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-filesize-check": "0.0.1",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.1.0",
+    "rollup-plugin-terser": "^5.0.0",
+    "tap-dancer": "^0.2.0",
+    "tape": "^4.11.0"
+  },
+  "licence": "MIT"
+}

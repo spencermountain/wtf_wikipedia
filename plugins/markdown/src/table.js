@@ -7,21 +7,22 @@ const pad = require('./_lib/pad')
 | zebra stripes | are neat      |    $1 |
 */
 
-const makeRow = arr => {
-  arr = arr.map(s => pad(s, 14))
+const makeRow = (arr) => {
+  arr = arr.map((s) => pad(s, 14))
   return '| ' + arr.join(' | ') + ' |'
 }
 
 //markdown tables are weird
-const doTable = function(options) {
+const doTable = function (options) {
   let md = ''
   if (!this || this.length === 0) {
     return md
   }
-  let keys = Object.keys(this[0])
+  let rows = this.data
+  let keys = Object.keys(rows[0])
   //first, grab the headers
   //remove auto-generated number keys
-  let headers = keys.map(k => {
+  let headers = keys.map((k) => {
     if (/^col[0-9]/.test(k) === true) {
       return ''
     }
@@ -31,17 +32,19 @@ const doTable = function(options) {
   md += makeRow(headers) + '\n'
   md += makeRow(headers.map(() => '---')) + '\n'
   //do each row..
-  md += this.map(row => {
-    //each column..
-    let arr = keys.map(k => {
-      if (!row[k]) {
-        return ''
-      }
-      return row[k].markdown(options) || ''
+  md += rows
+    .map((row) => {
+      //each column..
+      let arr = keys.map((k) => {
+        if (!row[k]) {
+          return ''
+        }
+        return row[k].markdown(options) || ''
+      })
+      //make it a nice padded row
+      return makeRow(arr)
     })
-    //make it a nice padded row
-    return makeRow(arr)
-  }).join('\n')
+    .join('\n')
   return md + '\n'
 }
 module.exports = doTable
