@@ -1,4 +1,4 @@
-/* wtf-plugin-summary 0.1.0  MIT */
+/* wtf-plugin-summary 0.2.0  MIT */
 function _typeof(obj) {
   "@babel/helpers - typeof";
 

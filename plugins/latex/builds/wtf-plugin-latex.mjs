@@ -1,4 +1,4 @@
-/* wtf-plugin-latex 0.1.1  MIT */
+/* wtf-plugin-latex 0.2.0  MIT */
 var defaults = {
   infoboxes: true,
   sections: true
@@ -319,11 +319,12 @@ var reference = toLatex$6;
 
 //create a formal LATEX table
 var doTable = function doTable(options) {
+  var rows = this.data;
   var out = '\n%\\vspace*{0.3cm}\n';
   out += '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns';
   out += "\n% Format Align Column: 'l'=left 'r'=right align, 'c'=center, 'p{5cm}'=block with column width 5cm ";
   out += '\n\\begin{tabular}{|';
-  Object.keys(this[0]).forEach(function () {
+  Object.keys(rows[0]).forEach(function () {
     out += 'l|';
   });
   out += '} \n';
@@ -331,7 +332,7 @@ var doTable = function doTable(options) {
 
   out += '\n  % BEGIN: Table Header';
   var vSep = '   ';
-  Object.keys(this[0]).forEach(function (k) {
+  Object.keys(rows[0]).forEach(function (k) {
     out += '\n    ' + vSep;
 
     if (k.indexOf('col-') === 0) {
@@ -347,7 +348,7 @@ var doTable = function doTable(options) {
   out += '\n  % BEGIN: Table Body';
   out += '\n  \\hline  % ----- table row -----'; ////make rows
 
-  this.forEach(function (o) {
+  rows.forEach(function (o) {
     vSep = ' ';
     out += '\n  % ----- table row -----';
     Object.keys(o).forEach(function (k) {

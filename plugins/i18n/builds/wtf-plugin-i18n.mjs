@@ -1,4 +1,4 @@
-/* wtf-plugin-i18n 0.0.1  MIT */
+/* wtf-plugin-i18n 0.1.0  MIT */
 var birth_date_and_age = ['ålder', 'ani', 'b', // 'birth date',
 // 'birth date and age',
 // 'birth year and age',

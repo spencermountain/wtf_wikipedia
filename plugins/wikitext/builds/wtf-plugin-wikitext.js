@@ -1,8 +1,8 @@
-/* wtf-plugin-wikitext 0.1.2  MIT */
+/* wtf-plugin-wikitext 0.2.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.wtf = factory());
+  (global = global || self, global.wtfWikitext = factory());
 }(this, (function () { 'use strict';
 
   var defaults = {
@@ -33,20 +33,10 @@
 
 
     if (options.sections === true || options.paragraphs === true || options.sentences === true) {
-      var sections = this.sections();
-      sections = sections.filter(function (s) {
-        return s.title() !== 'References';
-      });
+      var sections = this.sections(); // sections = sections.filter((s) => s.title() !== 'References')
+
       text += sections.map(function (s) {
         return s.wikitext(options);
-      }).join('\n');
-    } //default off
-
-
-    if (options.references === true) {
-      text += '== References ==';
-      text += this.references().map(function (c) {
-        return c.wiki(options);
       }).join('\n');
     } // add categories on the bottom
 
@@ -54,7 +44,7 @@
     if (options.categories === true) {
       text += '\n';
       this.categories().forEach(function (cat) {
-        return text += "\n[[".concat(cat, "]]");
+        return text += "\n[[Category: ".concat(cat, "]]");
       });
     }
 
@@ -65,14 +55,15 @@
 
   var defaults$1 = {};
 
-  var generic = function generic(tmpl) {
-    var list = tmpl.list || [];
-    list = list.join('|');
-    return "{{".concat(tmpl.template, "|").concat(list, "}}\n");
-  };
-
-  var doTemplates = {
-    main: generic
+  var doTemplate = function doTemplate(obj) {
+    var data = '';
+    var name = obj.template;
+    Object.keys(obj).forEach(function (k) {
+      if (k !== 'template') {
+        data += " | ".concat(k, " = ").concat(obj[k]);
+      }
+    });
+    return "{{".concat(name).concat(data, "}} ");
   };
 
   var toWiki$1 = function toWiki(options) {
@@ -87,13 +78,30 @@
 
 
     this.templates().forEach(function (tmpl) {
-      if (doTemplates.hasOwnProperty(tmpl.template)) {
-        text += doTemplates[tmpl.template](tmpl);
-      }
-    });
+      text += doTemplate(tmpl) + '\n';
+    }); //make a table
+
+    if (options.tables === true) {
+      text += this.tables().map(function (t) {
+        return t.wikitext(options);
+      }).join('\n');
+    } // make a html bullet-list
+
+
+    if (options.lists === true) {
+      text += this.lists().map(function (list) {
+        return list.text(options);
+      }).join('\n');
+    }
+
     text += this.paragraphs().map(function (p) {
       return p.wikitext(options);
-    }).join('\n');
+    }).join('\n'); // render references
+    // these will be out of place
+
+    this.references().forEach(function (ref) {
+      text += ref.wikitext(options) + '\n';
+    });
     return text;
   };
 
@@ -218,8 +226,14 @@
   var _05Link = toWiki$4;
 
   var toWiki$5 = function toWiki() {
-    var text = "[[".concat(this.file(), "|thumb]]");
-    return text;
+    var text = "[[".concat(this.file(), "|thumb");
+    var caption = this.data.caption;
+
+    if (caption) {
+      text += "|".concat(this.data.caption.wikitext());
+    }
+
+    return text + ']]';
   };
 
   var image = toWiki$5;
@@ -252,16 +266,49 @@
   var list = toWiki$7;
 
   var toWiki$8 = function toWiki() {
-    console.log(this);
-    return "<ref> </ref>";
+    var _this = this;
+
+    if (this.data.inline) {
+      return "<ref>".concat(this.data.inline.wikitext(), "</ref>");
+    }
+
+    var type = this.data.type || 'cite web';
+    var data = '';
+    Object.keys(this.data).forEach(function (k) {
+      if (k !== 'template' && k !== 'type') {
+        data += " | ".concat(k, " = ").concat(_this.data[k]);
+      }
+    });
+    return "<ref>{{".concat(type).concat(data, "}}</ref>");
   };
 
   var reference = toWiki$8;
 
-  var toWiki$9 = function toWiki() {
-    console.log(this);
-    var wiki = "{|\n";
-    wiki += "\n|}";
+  var toWiki$9 = function toWiki(options) {
+    var rows = this.data;
+    var wiki = "{| class=\"wikitable\"\n"; // draw headers
+
+    var headers = Object.keys(rows[0]);
+    headers = headers.filter(function (k) {
+      return /^col[0-9]/.test(k) !== true;
+    });
+
+    if (headers.length > 0) {
+      wiki += '|-\n';
+      headers.forEach(function (k) {
+        wiki += '! ' + k + '\n';
+      });
+    } //make rows
+
+
+    rows.forEach(function (o) {
+      wiki += '|-\n';
+      Object.keys(o).forEach(function (k) {
+        var val = o[k].wikitext(options);
+        wiki += '| ' + val + '\n';
+      });
+    });
+    wiki += "|}";
     return wiki;
   };
 

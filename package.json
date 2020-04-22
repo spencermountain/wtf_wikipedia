@@ -16,6 +16,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
+    "build:all": "node ./scripts/buildAll.js",
     "start": "node ./scripts/demo.js",
     "coverage": "node scripts/coverage.js",
     "test": "TESTENV=dev node ./scripts/test.js",

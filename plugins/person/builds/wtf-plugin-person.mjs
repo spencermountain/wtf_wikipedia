@@ -1,4 +1,4 @@
-/* wtf-plugin-person 0.0.1  MIT */
+/* wtf-plugin-person 0.1.0  MIT */
 // from ./plugins/classify/infobox, April 15 2020
 // https://en.wikipedia.org/wiki/Category:People_and_person_infobox_templates
 var _infoboxes = {
@@ -4434,7 +4434,7 @@ var deathDate = function deathDate(doc) {
   var res = getInfobox(doc, 'death_date');
 
   if (res) {
-    return res;
+    return parseDate_1(res);
   } // try parentheses in first sentence
 
 

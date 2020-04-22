@@ -150,7 +150,7 @@ run it on the client-side:
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
 </div>
 
-### full wikipedia dumps
+## full wikipedia dumps
 
 With this library, in conjunction with [dumpster-dive](https://github.com/spencermountain/dumpster-dive), you can parse the whole english wikipedia in an aftertoon.
 
@@ -179,7 +179,13 @@ npm install -g dumpster-dive
 - [Fetching a list of pages](https://observablehq.com/@spencermountain/parsing-a-list-of-wikipedia-articles)
 - [Parsing COVID outbreak table](https://observablehq.com/@spencermountain/parsing-wikipedias-coronavirus-outbreak-data?collection=@spencermountain/wtf_wikipedia)
 
-### Plugins
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
+
+## Plugins
 
 these add all sorts of new functionality:
 
@@ -203,7 +209,7 @@ wtf.fetch('Ziggy Stardust', 'fr').then((doc) => {
 })
 ```
 
-|                                                            |                                         |
+| **Plugin**                                                 |                                         |
 | ---------------------------------------------------------- | --------------------------------------- |
 | [classify](./plugins/classify)                             | person/place/thing                      |
 | [summary](./plugins/summary)                               | short description text                  |

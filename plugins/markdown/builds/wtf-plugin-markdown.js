@@ -1,8 +1,8 @@
-/* wtf-plugin-markdown 0.1.1  MIT */
+/* wtf-plugin-markdown 0.2.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.wtf = factory());
+  (global = global || self, global.wtfPerson = factory());
 }(this, (function () { 'use strict';
 
   var defaults = {
@@ -357,7 +357,8 @@
       return md;
     }
 
-    var keys = Object.keys(this[0]); //first, grab the headers
+    var rows = this.data;
+    var keys = Object.keys(rows[0]); //first, grab the headers
     //remove auto-generated number keys
 
     var headers = keys.map(function (k) {
@@ -373,7 +374,7 @@
       return '---';
     })) + '\n'; //do each row..
 
-    md += this.map(function (row) {
+    md += rows.map(function (row) {
       //each column..
       var arr = keys.map(function (k) {
         if (!row[k]) {

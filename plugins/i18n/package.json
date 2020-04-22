@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-i18n",
   "description": "i18n plugin for wtf_wikipedia",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "./builds/wtf-plugin-i18n.js",
   "unpkg": "./builds/wtf-plugin-i18n.min.js",
   "module": "./builds/wtf-plugin-i18n.mjs",

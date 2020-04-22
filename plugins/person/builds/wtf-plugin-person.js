@@ -1,4 +1,4 @@
-/* wtf-plugin-person 0.0.1  MIT */
+/* wtf-plugin-person 0.1.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -4440,7 +4440,7 @@
     var res = getInfobox(doc, 'death_date');
 
     if (res) {
-      return res;
+      return parseDate_1(res);
     } // try parentheses in first sentence
 
 

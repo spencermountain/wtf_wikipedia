@@ -1,4 +1,4 @@
-/* wtf-plugin-classify 0.1.0  MIT */
+/* wtf-plugin-classify 0.2.0  MIT */
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -662,7 +662,7 @@ var mapping = (_mapping = {
   'comic book title': 'CreativeWork',
   'song contest entry': 'CreativeWork',
   'short story': 'CreativeWork',
-  play: 'CreativeWork',
+  play: 'CreativeWork/Play',
   'hollywood cartoon': 'CreativeWork',
   'radio show': 'CreativeWork',
   'simpsons episode': 'CreativeWork',
@@ -1047,8 +1047,8 @@ var byInfobox = function byInfobox(doc) {
   for (var i = 0; i < infoboxes.length; i++) {
     var inf = infoboxes[i];
     var type = inf.type();
-    type = type.toLowerCase();
-    type = type.replace(/^(category|categorie|kategori): ?/i, '');
+    type = type.toLowerCase(); // type = type.replace(/^(category|categorie|kategori): ?/i, '')
+
     type = type.replace(/ /g, '_');
     type = type.trim();
 
@@ -1596,7 +1596,8 @@ var patterns$1 = {
   'CreativeWork/Book': [/-novel-stub$/],
   'CreativeWork/Film': [/-film-stub$/],
   'CreativeWork/Album': [/-album-stub$/],
-  CreativeWork: [/-(play|song)-stub$/],
+  'CreativeWork/Play': [/-play-stub$/],
+  CreativeWork: [/-song-stub$/],
   'Event/Election': [/-election-stub$/],
   'Organization/SportsTeam': [/-sport-team-stub$/],
   'Organization/Company': [/-company-stub$/],
@@ -2076,7 +2077,7 @@ var mapping$4 = {
   painting: 'CreativeWork',
   pennsylvania: 'Place',
   plant: 'Organism',
-  play: 'CreativeWork',
+  play: 'CreativeWork/Play',
   poet: 'Person',
   politician: 'Person/Politician',
   portugal: 'Place',
@@ -2441,6 +2442,7 @@ var tree = {
   CreativeWork: {
     Film: true,
     TVShow: true,
+    Play: true,
     Book: true,
     Album: true,
     VideoGame: true
