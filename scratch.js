@@ -4,7 +4,7 @@ wtf.extend(require('./plugins/wikitext/src'))
 
 // var str = `[[Image:Levellers declaration and standard.gif|thumb|Woodcut from a [[Diggers]] document by [[William Everard (Digger)|William Everard]]]]`
 // console.log(wtf(str).json())
-;(async () => {
-  const doc = await wtf.fetch('Nuclear Waste Technical Review Board')
-  console.log(doc.url())
-})()
+
+wtf.fetch('Template:2019–20 coronavirus pandemic data/United States/California medical cases chart').then((doc) => {
+  console.log(doc.template('medical cases chart'))
+})
