@@ -1,4 +1,4 @@
-/* wtf_wikipedia 8.2.0 MIT */
+/* wtf_wikipedia 8.2.1 MIT */
 import https from 'https';
 
 var parseUrl = function parseUrl(url) {
@@ -693,7 +693,7 @@ var methods$1 = {
 
     title = title.replace(/ /g, '_');
     title = encodeURIComponent(title);
-    return "https://".concat(lang, ".").concat(domain, ".org/wiki/").concat(title);
+    return "https://".concat(lang, ".").concat(domain, "/wiki/").concat(title);
   },
   namespace: function namespace(ns) {
     if (ns !== undefined) {
@@ -4780,6 +4780,8 @@ var _getName = getName;
 var hasTemplate = /\{\{/;
 
 var parseTemplate = function parseTemplate(tmpl) {
+  // this is some unexplained Lua thing
+  tmpl = tmpl.replace(/#invoke:/, '');
   return {
     body: tmpl,
     name: _getName(tmpl),
@@ -8834,7 +8836,7 @@ var fetchCategory = function fetchCategory(category, lang, options) {
 
 var category = fetchCategory;
 
-var _version = '8.2.0';
+var _version = '8.2.1';
 
 var wtf = function wtf(wiki, options) {
   return _01Document(wiki, options);
