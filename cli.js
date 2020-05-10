@@ -5,9 +5,6 @@ var args = process.argv.slice(2, process.argv.length)
 var modes = {
   '--json': 'json',
   '--plaintext': 'plaintext',
-  '--html': 'html',
-  '--markdown': 'markdown',
-  '--latex': 'latex',
 }
 var mode = 'json'
 args = args.filter((arg) => {
