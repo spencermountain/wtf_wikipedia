@@ -19,6 +19,7 @@
     "build:all": "node ./scripts/buildAll.js",
     "start": "node ./scripts/demo.js",
     "coverage": "node scripts/coverage.js",
+    "prepare": "for i in plugins/*/; do (cd \"$i\" && npm install) || exit 1; done",
     "test": "TESTENV=dev node ./scripts/test.js",
     "testb": "TESTENV=prod node ./scripts/test.js",
     "test:fetch": "TESTENV=dev tape ./tests/fetch/*.test.js | tap-dancer",
