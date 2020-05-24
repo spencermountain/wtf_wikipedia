@@ -230,8 +230,8 @@ test('covid-1', function (t) {
   let doc = wtf(str)
   let obj = doc.templates(0)
   t.equal(obj.location, 'Savannah', 'location')
-  t.equal(obj.rows.length, 5, '5 rows')
-  t.equal(obj.rows[0].date, '2009-04-13', 'row[0]')
+  t.equal(obj.data.length, 5, '5 rows')
+  t.equal(obj.data[0].date, '2009-04-13', 'row[0]')
   t.end()
 })
 
