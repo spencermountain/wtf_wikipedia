@@ -277,6 +277,7 @@ this library supports many **_recursive shenanigans_**, depreciated and **obscur
 - maintain perfect page order [[1]](https://github.com/spencermountain/wtf_wikipedia/issues/88)
 - per-sentence references (by 'section' element instead)
 - maintain template or infobox css styling
+- large tables that span different sections [[1](https://github.com/spencermountain/wtf_wikipedia/issues/372)]
 
 It is built to be as flexible as possible. In all cases, tries to fail in considerate ways.
 

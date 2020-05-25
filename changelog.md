@@ -2,6 +2,12 @@
 
 #### [unreleased]
 
+### 8.3.0
+
+- adds some wikivoyage templates
+- fix cli help options
+- change covid template again
+
 ### 8.2.0
 
 - export http lib for plugin in `.extend()`
