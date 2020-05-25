@@ -1,4 +1,4 @@
-/* wtf_wikipedia 8.2.1 MIT */
+/* wtf_wikipedia 8.3.0 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -4536,7 +4536,7 @@
     var theRest = [];
 
     for (var i = 0; i < lines.length; i++) {
-      if (isList(lines[i]) && lines[i + 1] && isList(lines[i + 1])) {
+      if (isList(lines[i])) {
         var sub = grabList(lines, i);
 
         if (sub.length > 0) {
@@ -7392,50 +7392,67 @@
       list.push(template);
       return '';
     },
-
-    /*
-    {{Medical cases chart/Row
-    |1          = valid date
-    |2          = expression for deaths
-    |3          = expression for recoveries
-    |4          = expression for total cases (3rd classification)
-    |alttot1    = alternate expression for active cases (3rd classification)
-    |5          = expression for number in 4th classification
-    |6          = expression for total in 5th classification
-    |alttot2    = alternate expression for number in 5th classification
-    |7          = number in the first column
-    |8          = change in the first column
-    |firstright1= whether a change in the first column is not applicable (n.a.) (yes|y|1)
-    |9          = number in the second column
-    |10         = change in the second column
-    |firstright2= whether a change in the second column is not applicable (n.a.) (yes|y|1)
-    |divisor    = scaling divisor of the bars (bigger value = narrower bars)               [defaults to: 1]
-    |numwidth   = max width of the numbers in the right columns (xx or xxxx)<-(n|t|m|w|d)  [defaults to: mm]
-    |collapsible= whether the row is collapsible (yes|y|1)                                 {WIP}
-    |collapsed  = manual override of the initial row state (yes|y|1)                       {WIP}
-    |id         = manual override of the row id                                            {WIP}
-    }}
-    */
-    // this is a weird one
-    //https://en.wikipedia.org/wiki/Template:Medical_cases_chart
+    // Parse https://en.wikipedia.org/wiki/Template:Medical_cases_chart -- see
+    // https://en.wikipedia.org/wiki/Module:Medical_cases_chart for the original
+    // parsing code.
     'medical cases chart': function medicalCasesChart(tmpl, list) {
-      var order = ['date', 'deaths_expr', 'recovery_expr', 'cases_expr', 'alt_expr_1', '4th_expr', '5th_expr', 'alt_expr_2', 'col_1', 'col_1_change', 'show_col_1', 'col_2', 'col_2_change', 'show_col_2', 'divisor', 'numwidth', 'collabsible', 'collapsed', 'id'];
+      var order = ['date', 'deathsExpr', 'recoveriesExpr', 'casesExpr', '4thExpr', '5thExpr', 'col1', 'col1Change', 'col2', 'col2Change'];
       var obj = parse$3(tmpl);
       obj.data = obj.data || '';
-      var rows = obj.data.split('\n');
-      obj.rows = rows.map(function (row) {
-        var arr = row.split(/;/);
-        return order.reduce(function (h, k, i) {
-          h[k] = arr[i] || null;
-          return h;
-        }, {});
+      var rows = obj.data.split('\n'); // Mimic row parsing in _buildBars in the Lua source, from the following
+      // line on:
+      //
+      //     for parameter in mw.text.gsplit(line, ';') do
+
+      var dataArray = rows.map(function (row) {
+        var parameters = row.split(';');
+        var rowObject = {
+          options: new Map()
+        };
+        var positionalIndex = 0;
+
+        for (var i = 0; i < parameters.length; i++) {
+          var parameter = parameters[i].trim();
+
+          if (parameter.match(/^[a-zA-Z_]/)) {
+            // Named argument
+            var _parameter$split = parameter.split('='),
+                _parameter$split2 = _slicedToArray(_parameter$split, 2),
+                key = _parameter$split2[0],
+                value = _parameter$split2[1]; // At this point, the Lua code evaluates alttot1 and alttot2 values as
+            // #expr expressions, but we just pass them through. See also:
+            // https://www.mediawiki.org/wiki/Help:Extension:ParserFunctions##expr
+
+
+            if (value === undefined) {
+              value = null;
+            }
+
+            rowObject.options.set(key, value);
+          } else {
+            // Positional argument
+            // Here again, the Lua code evaluates arguments at index 1 through 5
+            // as #expr expressions, but we just pass them through.
+            if (positionalIndex < order.length) {
+              rowObject[order[positionalIndex]] = parameter;
+            }
+
+            positionalIndex++;
+          }
+        }
+
+        for (; positionalIndex < order.length; positionalIndex++) {
+          rowObject[order[positionalIndex]] = null;
+        }
+
+        return rowObject;
       });
-      delete obj.data;
+      obj.data = dataArray;
       list.push(obj);
       return '';
     },
     'medical cases chart/row': function medicalCasesChartRow(tmpl) {
-      // actually keep this template
+      // Deprecated template; we keep it.
       return tmpl;
     }
   };
@@ -8002,7 +8019,45 @@
   });
   var wiktionary = templates$c;
 
-  var templates$d = Object.assign({}, dates, formatting$1, geo, wikipedia, brackets_1, currency, elections, flags_1, ipa, languages_1, math, misc_1$1, punctuation_1, science, soccer, sports$1, stockExchanges, weather, websites, wiktionary);
+  var templates$d = {
+    // https://en.wikivoyage.org/wiki/Template:Do
+    listing: function listing(tmpl, list) {
+      var obj = parse$3(tmpl, []);
+      list.push(obj); // flatten it all into one line of text
+
+      var name = obj.name;
+
+      if (obj.url) {
+        name = "[".concat(obj.url, " ").concat(obj.name, "]");
+      }
+
+      var phone = '';
+
+      if (obj.phone) {
+        phone = "[tel:".concat(obj.phone, "]");
+      }
+
+      var updated = '';
+
+      if (obj.lastedit) {
+        updated = "(updated ".concat(obj.lastedit, ")");
+      }
+
+      var out = "".concat(name, " ").concat(obj.address || '', " ").concat(obj.directions || '', " ").concat(phone, " ").concat(obj.hours || '', " ").concat(obj.content, " ").concat(obj.price, " ").concat(updated);
+      return out;
+    }
+  }; // are these sorta the same?
+
+  templates$d.see = templates$d.listing;
+  templates$d["do"] = templates$d.listing;
+  templates$d.buy = templates$d.listing;
+  templates$d.eat = templates$d.listing;
+  templates$d.drink = templates$d.listing;
+  templates$d.sleep = templates$d.listing;
+  templates$d.go = templates$d.listing;
+  var wikivoyage = templates$d;
+
+  var templates$e = Object.assign({}, dates, formatting$1, geo, wikipedia, brackets_1, currency, elections, flags_1, ipa, languages_1, math, misc_1$1, punctuation_1, science, soccer, sports$1, stockExchanges, weather, websites, wiktionary, wikivoyage);
 
   var generic$2 = parse$3;
   var nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
@@ -8038,31 +8093,31 @@
     } // known template
 
 
-    if (templates$d.hasOwnProperty(name) === true) {
+    if (templates$e.hasOwnProperty(name) === true) {
       // handle number-syntax
-      if (typeof templates$d[name] === 'number') {
+      if (typeof templates$e[name] === 'number') {
         var _obj2 = generic$2(tmpl.body, nums);
 
-        var key = String(templates$d[name]);
+        var key = String(templates$e[name]);
         return _obj2[key] || '';
       } // handle string-syntax
 
 
-      if (typeof templates$d[name] === 'string') {
-        return templates$d[name];
+      if (typeof templates$e[name] === 'string') {
+        return templates$e[name];
       } // handle array sytax
 
 
-      if (isArray$2(templates$d[name]) === true) {
-        var _obj3 = generic$2(tmpl.body, templates$d[name]);
+      if (isArray$2(templates$e[name]) === true) {
+        var _obj3 = generic$2(tmpl.body, templates$e[name]);
 
         list.push(_obj3);
         return '';
       } // handle function syntax
 
 
-      if (typeof templates$d[name] === 'function') {
-        return templates$d[name](tmpl.body, list);
+      if (typeof templates$e[name] === 'function') {
+        return templates$e[name](tmpl.body, list);
       }
     } // unknown template, try to parse it
 
@@ -8824,7 +8879,7 @@
 
   var category = fetchCategory;
 
-  var _version = '8.2.1';
+  var _version = '8.3.0';
 
   var wtf = function wtf(wiki, options) {
     return _01Document(wiki, options);
@@ -8860,7 +8915,7 @@
   };
 
   wtf.extend = function (fn) {
-    fn(models, templates$d, this);
+    fn(models, templates$e, this);
     return this;
   };
 
