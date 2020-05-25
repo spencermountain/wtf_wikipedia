@@ -6,14 +6,14 @@ const number_reg = /^ ?\#[^:,\|]{4}/
 const has_word = /[a-z_0-9\]\}]/i
 
 // does it start with a bullet point or something?
-const isList = function(line) {
+const isList = function (line) {
   return list_reg.test(line) || bullet_reg.test(line) || number_reg.test(line)
 }
 
 //make bullets/numbers into human-readable *'s
-const cleanList = function(list) {
+const cleanList = function (list) {
   let number = 1
-  list = list.filter(l => l)
+  list = list.filter((l) => l)
   for (let i = 0; i < list.length; i++) {
     let line = list[i]
     //add # numberings formatting
@@ -30,7 +30,7 @@ const cleanList = function(list) {
   return list
 }
 
-const grabList = function(lines, i) {
+const grabList = function (lines, i) {
   let sub = []
   for (let o = i; o < lines.length; o++) {
     if (isList(lines[o])) {
@@ -39,19 +39,19 @@ const grabList = function(lines, i) {
       break
     }
   }
-  sub = sub.filter(a => a && has_word.test(a))
+  sub = sub.filter((a) => a && has_word.test(a))
   sub = cleanList(sub)
   return sub
 }
 
-const parseList = function(paragraph) {
+const parseList = function (paragraph) {
   let wiki = paragraph.wiki
   let lines = wiki.split(/\n/g)
   // lines = lines.filter(l => has_word.test(l));
   let lists = []
   let theRest = []
   for (let i = 0; i < lines.length; i++) {
-    if (isList(lines[i]) && lines[i + 1] && isList(lines[i + 1])) {
+    if (isList(lines[i])) {
       let sub = grabList(lines, i)
       if (sub.length > 0) {
         lists.push(sub)
@@ -61,7 +61,7 @@ const parseList = function(paragraph) {
       theRest.push(lines[i])
     }
   }
-  paragraph.lists = lists.map(l => new List(l))
+  paragraph.lists = lists.map((l) => new List(l))
   paragraph.wiki = theRest.join('\n')
 }
 module.exports = parseList

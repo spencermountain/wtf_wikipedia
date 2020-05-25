@@ -5,6 +5,11 @@ wtf.extend(require('./plugins/wikitext/src'))
 // var str = `[[Image:Levellers declaration and standard.gif|thumb|Woodcut from a [[Diggers]] document by [[William Everard (Digger)|William Everard]]]]`
 // console.log(wtf(str).json())
 
-wtf.fetch('Template:2019–20 coronavirus pandemic data/United States/California medical cases chart').then((doc) => {
-  console.log(doc.template('medical cases chart'))
-})
+// wtf.fetch('Template:2019–20 coronavirus pandemic data/United States/California medical cases chart').then((doc) => {
+//   console.log(doc.template('medical cases chart'))
+// })
+
+let str = `{{;}} hello`
+// let str = `{{·}}`
+let doc = wtf(str)
+console.log('|' + doc.text() + '|')

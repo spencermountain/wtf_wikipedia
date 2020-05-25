@@ -143,6 +143,12 @@ run it on the client-side:
 </script>
 ```
 
+or from Deno/typescript/webpack:
+
+```js
+import spacetime from 'https://unpkg.com/spacetime/builds/spacetime.mjs'
+```
+
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
@@ -277,6 +283,7 @@ this library supports many **_recursive shenanigans_**, depreciated and **obscur
 - maintain perfect page order [[1]](https://github.com/spencermountain/wtf_wikipedia/issues/88)
 - per-sentence references (by 'section' element instead)
 - maintain template or infobox css styling
+- large tables that span different sections [[1](https://github.com/spencermountain/wtf_wikipedia/issues/372)]
 
 It is built to be as flexible as possible. In all cases, tries to fail in considerate ways.
 
@@ -670,7 +677,7 @@ this library ships seperate client-side and server-side builds, to preserve file
 - _[./wtf_wikipedia-client.min.js](./builds/wtf_wikipedia-client.js)_ - for production
 
 - _[./wtf_wikipedia.js](./builds/wtf_wikipedia.js)_ - main node build
-- _[./wtf_wikipedia.mjs](./builds/wtf_wikipedia.mjs)_ - esmodule node (typescript)
+- _[./wtf_wikipedia.mjs](./builds/wtf_wikipedia.mjs)_ - esmodule node (deno/typescript)
 
 the browser version uses `fetch()` and the server version uses `require('https')`.
 

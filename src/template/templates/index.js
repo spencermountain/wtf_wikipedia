@@ -20,5 +20,6 @@ module.exports = Object.assign(
   require('./stock-exchanges'),
   require('./weather'),
   require('./websites'),
-  require('./wiktionary')
+  require('./wiktionary'),
+  require('./wikivoyage')
 )
