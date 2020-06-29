@@ -9,7 +9,6 @@ wtf.extend(require('./plugins/wikitext/src'))
 //   console.log(doc.template('medical cases chart'))
 // })
 
-let str = `{{;}} hello`
-// let str = `{{·}}`
-let doc = wtf(str)
-console.log('|' + doc.text() + '|')
+let doc = wtf(`[[US]]99`)
+console.log(doc.links(0).json())
+console.log(doc.text())

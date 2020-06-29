@@ -1,6 +1,6 @@
 const parse = require('../_parsers/parse')
 
-const zeroPad = function(num) {
+const zeroPad = function (num) {
   num = String(num)
   if (num.length === 1) {
     num = '0' + num
@@ -8,7 +8,7 @@ const zeroPad = function(num) {
   return num
 }
 
-const parseTeam = function(obj, round, team) {
+const parseTeam = function (obj, round, team) {
   if (obj[`rd${round}-team${zeroPad(team)}`]) {
     team = zeroPad(team)
   }
@@ -20,12 +20,12 @@ const parseTeam = function(obj, round, team) {
   return {
     team: obj[`rd${round}-team${team}`],
     score: score,
-    seed: obj[`rd${round}-seed${team}`]
+    seed: obj[`rd${round}-seed${team}`],
   }
 }
 
 //these are weird.
-const playoffBracket = function(tmpl) {
+const playoffBracket = function (tmpl) {
   let rounds = []
   let obj = parse(tmpl)
   //try some rounds
@@ -47,17 +47,17 @@ const playoffBracket = function(tmpl) {
   }
   return {
     template: 'playoffbracket',
-    rounds: rounds
+    rounds: rounds,
   }
 }
 
 let all = {
   //playoff brackets
-  '4teambracket': function(tmpl, list) {
+  '4teambracket': function (tmpl, list) {
     let obj = playoffBracket(tmpl)
     list.push(obj)
     return ''
-  }
+  },
 }
 
 //a bunch of aliases for these ones:
@@ -68,7 +68,7 @@ const brackets = [
   '8teambracket',
   '16teambracket',
   '32teambracket',
-
+  '4roundbracket-byes',
   'cwsbracket',
   'nhlbracket',
   'nhlbracket-reseed',
@@ -76,6 +76,7 @@ const brackets = [
   '4teambracket-ncaa',
   '4teambracket-mma',
   '4teambracket-mlb',
+  '16teambracket-two-reseeds',
 
   '8teambracket-nhl',
   '8teambracket-mlb',
@@ -92,9 +93,9 @@ const brackets = [
   '16teambracket-swtc',
   '16teambracket-afc',
   '16teambracket-tennis3',
-  '16teambracket-tennis5'
+  '16teambracket-tennis5',
 ]
-brackets.forEach(key => {
+brackets.forEach((key) => {
   all[key] = all['4teambracket']
 })
 

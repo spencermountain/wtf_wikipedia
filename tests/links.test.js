@@ -1,7 +1,7 @@
 var test = require('tape')
 var wtf = require('./lib')
 
-test('document-links', t => {
+test('document-links', (t) => {
   var str = `before [[the shining|movie]]
 {|
 ! h1 !! h2 || h3
@@ -24,24 +24,24 @@ after now
   var links = wtf(str).links()
   t.equal(links.length, 3, 'found-all-links')
   t.ok(
-    links.find(l => l.text()),
+    links.find((l) => l.text()),
     'movie',
     'link-text'
   )
   t.ok(
-    links.find(l => l.page()),
+    links.find((l) => l.page()),
     'Minnesota Twins',
     'link-table'
   )
   t.ok(
-    links.find(l => l.page()),
+    links.find((l) => l.page()),
     'three',
     'link-list'
   )
   t.end()
 })
 
-test('anchor-links', t => {
+test('anchor-links', (t) => {
   var str = `[[Doug Ford#Personal Life]]`
   var link = wtf(str).links(0)
   t.equal(link.page(), 'Doug Ford', 'page1')
@@ -69,64 +69,24 @@ test('anchor-links', t => {
   t.end()
 })
 
-test('title-case-links', t => {
-  t.equal(
-    wtf('[[john]]')
-      .links(0)
-      .page(),
-    'john',
-    'page'
-  )
-  t.equal(
-    wtf('[[john]]')
-      .links(0)
-      .text(),
-    'john',
-    'lowercase text'
-  )
+test('title-case-links', (t) => {
+  t.equal(wtf('[[john]]').links(0).page(), 'john', 'page')
+  t.equal(wtf('[[john]]').links(0).text(), 'john', 'lowercase text')
 
-  t.equal(
-    wtf('[[John smith]]')
-      .links(0)
-      .page(),
-    'John smith',
-    'already titlecased'
-  )
-  t.equal(
-    wtf('[[John]]')
-      .links(0)
-      .text(),
-    undefined,
-    'no text stored when already titlecase'
-  )
+  t.equal(wtf('[[John smith]]').links(0).page(), 'John smith', 'already titlecased')
+  t.equal(wtf('[[John]]').links(0).text(), undefined, 'no text stored when already titlecase')
 
-  t.equal(
-    wtf('[[john|his son]]')
-      .links(0)
-      .text(),
-    'his son',
-    'lowercase given text'
-  )
-  t.equal(
-    wtf('[[john|his son]]')
-      .links(0)
-      .page(),
-    'john',
-    'titlecase given page'
-  )
-  t.equal(
-    wtf('[[John|his son]]')
-      .links(0)
-      .page(),
-    'John',
-    'already titlecased given page'
-  )
+  t.equal(wtf('[[john|his son]]').links(0).text(), 'his son', 'lowercase given text')
+  t.equal(wtf('[[john|his son]]').links(0).page(), 'john', 'titlecase given page')
+  t.equal(wtf('[[John|his son]]').links(0).page(), 'John', 'already titlecased given page')
   t.end()
 })
 
-// test('tricksy-links', t => {
-//   var doc = wtf('then [[John Entwistle|John [Entwistle]]] and I');
-//   t.equal(doc.links(0).page, 'John Entwistle', 'page without bracket');
-//   t.equal(doc.links(0).text, 'John [Entwistle]', 'text with bracket');
-//   t.end();
-// });
+test('tricksy-links', (t) => {
+  var doc = wtf(`[[US]]9999.2`)
+  t.equal(doc.text(), 'US9999.2', 'link-nospace')
+  //   var doc = wtf('then [[John Entwistle|John [Entwistle]]] and I');
+  //   t.equal(doc.links(0).page, 'John Entwistle', 'page without bracket');
+  //   t.equal(doc.links(0).text, 'John [Entwistle]', 'text with bracket');
+  t.end()
+})

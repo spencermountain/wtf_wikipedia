@@ -1,25 +1,25 @@
 const parse_interwiki = require('./interwiki')
 const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g
-const link_reg = /\[\[(.{0,160}?)\]\]([a-z]+)?(\w{0,10})/gi //allow dangling suffixes - "[[flanders]]s"
+const link_reg = /\[\[(.{0,160}?)\]\]([a-z]+)?/gi //allow dangling suffixes - "[[flanders]]s"
 
-const external_links = function(links, str) {
-  str.replace(external_link, function(raw, protocol, link, text) {
+const external_links = function (links, str) {
+  str.replace(external_link, function (raw, protocol, link, text) {
     text = text || ''
     links.push({
       type: 'external',
       site: protocol + link,
       text: text.trim(),
-      raw: raw
+      raw: raw,
     })
     return text
   })
   return links
 }
 
-const internal_links = function(links, str) {
+const internal_links = function (links, str) {
   //regular links
-  str.replace(link_reg, function(raw, s, suffix) {
+  str.replace(link_reg, function (raw, s, suffix) {
     let txt = null
     //make a copy of original
     let link = s
@@ -46,7 +46,7 @@ const internal_links = function(links, str) {
     //remove anchors from end [[toronto#history]]
     let obj = {
       page: link,
-      raw: raw
+      raw: raw,
     }
     obj.page = obj.page.replace(/#(.*)/, (a, b) => {
       obj.anchor = b
@@ -79,7 +79,7 @@ const internal_links = function(links, str) {
 }
 
 //grab an array of internal links in the text
-const parse_links = function(str) {
+const parse_links = function (str) {
   let links = []
   //first, parse external links
   links = external_links(links, str)
