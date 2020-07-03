@@ -7,7 +7,7 @@
 // export = wtf
 export as namespace wtf
 
-declare function wtf(wiki: string, options?: any): wtf.Document
+declare function wtf(wiki: string, options?: wtf.ParseOptions): wtf.Document
 
 declare module wtf {
   /** current version of the library */
@@ -27,6 +27,19 @@ declare module wtf {
 
   /** grab a random article from a wikimedia API */
   export function random(lang?: string, options?: object, cb?: any): Promise<Document>
+
+  type ParseOptions = {
+    title?: string | null
+    id?: string | number | null
+    pageID?: string | number | null
+    ns?: string | null
+    namespace?: string | null
+    type: 'page'
+    wiki: string
+    categories?: string[]
+    sections?: string[]
+    coordinates?: string[]
+  }
 
   class Document {
     private data: object
@@ -98,9 +111,9 @@ declare module wtf {
     image(clue: number): Image
 
     /**return a list, or given-index of all links, in all parts of the document */
-    links(clue?: string): object[]
-    links(clue: number): object
-    link(clue: number): object
+    links(clue?: string): Link[]
+    links(clue: number): Link
+    link(clue: number): Link
 
     /**any links to other language wikis */
     interwiki(clue?: string): object[]
@@ -169,8 +182,8 @@ declare module wtf {
     paragraph(n?: number): Paragraph
     paragraphs(n: number): Paragraph
 
-    links(n?: string): object[]
-    links(n: number): object
+    links(n?: string): Link[]
+    links(n: number): Link
 
     tables(): Table[]
     tables(n: number): Table
@@ -263,20 +276,66 @@ declare module wtf {
     json(options?: object): object
   }
 
+  type LinkType = 'internal' | 'external' | 'interwiki'
+
+  type LinkData = {
+    type: LinkType
+    page?: string
+    text?: string
+    wiki?: string
+    site?: string
+    anchor?: string
+  }
+
+  export class Link {
+    private data: LinkData
+
+    constructor(data?: LinkData)
+
+    json(): any
+
+    text(): string
+
+    page(): string
+
+    page(str: string): string
+
+    anchor(): string
+
+    anchor(str: string): string
+
+    wiki(): string
+
+    wiki(str: string): string
+
+    type(): LinkType
+
+    type(str: LinkType): LinkType
+
+    site(): string
+
+    site(str: string): string
+
+    href(): string
+  }
+
+  type TableData = { [key: string]: wtf.Sentence }
+  type TableKeyValue = { [key: string]: string }
+
   class Table {
-    private data: object
+    data: TableData[]
 
-    links(n: number): object
+    links(n: number): Link
 
-    links(n?: string): object[]
+    links(n?: string): Link[]
 
-    keyValue(options: object): object
+    keyValue(options: object): TableKeyValue[]
 
     /** Alias of keyValue */
-    keyvalue(options: object): object
+    keyvalue(options: object): TableKeyValue[]
 
     // Alais of keyValue
-    keyval(options: object): object
+    keyval(options: object): TableKeyValue[]
 
     text(): string
 
@@ -364,13 +423,13 @@ declare module wtf {
   }
 
   class List {
-    private data: object
+    private data: Sentence[]
 
-    lines(): object
+    lines(): Sentence[]
 
-    links(n: number): object
+    links(n: number): Link
 
-    links(n?: string): object
+    links(n?: string): Link
 
     interwiki(num: number): object
 
@@ -381,12 +440,27 @@ declare module wtf {
     json(options?: object): object
   }
 
+  type SentenceFormat = {
+    bold: string[]
+    italic: string[]
+  }
+
+  type SentenceData = {
+    text: string
+    links: Link[]
+    fmt: SentenceFormat
+  }
+
+  type SentenceDataAgruments = Partial<SentenceData>
+
   class Sentence {
-    private data: object
+    private data: SentenceData
 
-    links(n: number): object
+    constructor(data?: SentenceDataAgruments)
 
-    links(n?: string): object
+    links(n: number): Link
+
+    links(n?: string): Link[]
 
     interwiki(num: number): object
 
