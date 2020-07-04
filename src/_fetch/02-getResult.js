@@ -13,6 +13,7 @@ const getResult = function (data, options) {
     if (!text && page.revisions[0].slots) {
       text = page.revisions[0].slots.main['*']
     }
+    page.pageprops = page.pageprops || {}
     let meta = Object.assign({}, options, {
       title: page.title,
       pageID: page.pageid,

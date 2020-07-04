@@ -475,6 +475,7 @@ wtf
 
 - **.title()** - get/set the title of the page from the first-sentence
 - **.pageID()** - get/set the wikimedia id of the page, if we have it.
+- **.wikidata()** - get/set the wikidata id of the page, if we have it.
 - **.url()** - (try to) generate the url for the current article
 - **.lang()** - get/set the current language (used for url method)
 - **.namespace()** - get/set the wikimedia namespace of the page, if we have it

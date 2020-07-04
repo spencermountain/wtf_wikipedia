@@ -1,7 +1,8 @@
 ---
 
 #### [unreleased]
-
+- new `wikidata()` method
+- 
 ### 8.3.0
 
 - adds some wikivoyage templates

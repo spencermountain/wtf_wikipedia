@@ -37,6 +37,8 @@ declare module wtf {
     title(str?: string): string
     /**get/set the wikimedia id for the page */
     pageID(str?: string | number): string
+    /**get/set the wikidata id for the page */
+    wikidata(str?: string | number): string
     /**get/set the wikimedia namespace for the page */
     namespace(str?: string | number): string
     /**get/set the language for the page */
