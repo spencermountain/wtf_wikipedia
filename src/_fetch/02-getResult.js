@@ -1,8 +1,8 @@
 //this data-format from mediawiki api is nutso
-const getResult = function(data, options) {
+const getResult = function (data, options) {
   options = options || {}
   let pages = Object.keys(data.query.pages)
-  let docs = pages.map(id => {
+  let docs = pages.map((id) => {
     let page = data.query.pages[id] || {}
     if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
       return null
@@ -16,7 +16,9 @@ const getResult = function(data, options) {
     let meta = Object.assign({}, options, {
       title: page.title,
       pageID: page.pageid,
-      namespace: page.ns
+      namespace: page.ns,
+      wikidata: page.pageprops.wikibase_item,
+      description: page.pageprops['wikibase-shortdesc'],
     })
     try {
       return { wiki: text, meta: meta }

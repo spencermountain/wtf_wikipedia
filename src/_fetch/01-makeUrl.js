@@ -2,16 +2,16 @@ const isInterWiki = /(wiktionary|wikinews|wikibooks|wikiquote|wikisource|wikispe
 
 const defaults = {
   action: 'query',
-  prop: 'revisions', //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
+  prop: 'revisions|pageprops', //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
   rvprop: 'content',
   maxlag: 5,
   rvslots: 'main',
   origin: '*',
   format: 'json',
-  redirects: 'true'
+  redirects: 'true',
 }
 
-const toQueryString = function(obj) {
+const toQueryString = function (obj) {
   return Object.entries(obj)
     .map(([key, value]) => {
       return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
@@ -19,18 +19,18 @@ const toQueryString = function(obj) {
     .join('&')
 }
 
-const isArray = function(arr) {
+const isArray = function (arr) {
   return Object.prototype.toString.call(arr) === '[object Array]'
 }
 
-const cleanTitle = page => {
+const cleanTitle = (page) => {
   page = page.replace(/ /g, '_')
   page = page.trim()
   // page = encodeURIComponent(page)
   return page
 }
 
-const makeUrl = function(options) {
+const makeUrl = function (options) {
   let params = Object.assign({}, defaults)
   // default url
   let url = `https://${options.lang}.${options.wiki}.org/w/api.php?`

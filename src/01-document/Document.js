@@ -43,6 +43,12 @@ const methods = {
     }
     return this.data.pageID
   },
+  wikidata: function (id) {
+    if (id !== undefined) {
+      this.data.wikidata = id
+    }
+    return this.data.wikidata
+  },
   language: function (lang) {
     if (lang !== undefined) {
       this.data.lang = lang

@@ -9,6 +9,13 @@ wtf.extend(require('./plugins/wikitext/src'))
 //   console.log(doc.template('medical cases chart'))
 // })
 
-let doc = wtf(`[[US]]99`)
-console.log(doc.links(0).json())
-console.log(doc.text())
+// let doc = wtf(`[[US]]99`)
+// console.log(doc.links(0).json())
+// console.log(doc.text())
+
+wtf.fetch('Toronto Raptors').then((doc) => {
+  console.log(doc.title())
+  console.log(doc.pageID())
+  console.log(doc.wikidata())
+  // console.log(doc.)
+})
