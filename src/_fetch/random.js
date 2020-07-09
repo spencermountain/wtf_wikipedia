@@ -7,13 +7,13 @@ const defaults = {
   lang: 'en',
   wiki: 'wikipedia',
   domain: null,
-  path: 'w/api.php' //some 3rd party sites use a weird path
+  path: 'w/api.php', //some 3rd party sites use a weird path
 }
-const isObject = function(obj) {
+const isObject = function (obj) {
   return obj && Object.prototype.toString.call(obj) === '[object Object]'
 }
 
-const fetchRandom = function(lang, options) {
+const fetchRandom = function (lang, options) {
   options = options || {}
   options = Object.assign({}, defaults, options)
   //support lang 2nd param
@@ -27,11 +27,11 @@ const fetchRandom = function(lang, options) {
   if (options.domain) {
     url = `https://${options.domain}/${options.path}?`
   }
-  url += `format=json&action=query&generator=random&grnnamespace=0&prop=revisions&rvprop=content&grnlimit=1&rvslots=main&origin=*`
+  url += `format=json&action=query&generator=random&grnnamespace=0&prop=revisions|pageprops&rvprop=content&grnlimit=1&rvslots=main&origin=*`
 
   const headers = makeHeaders(options)
   return http(url, headers)
-    .then(res => {
+    .then((res) => {
       try {
         let data = getResult(res)
         return parseDoc(data)
@@ -39,7 +39,7 @@ const fetchRandom = function(lang, options) {
         throw e
       }
     })
-    .catch(e => {
+    .catch((e) => {
       console.error(e)
       return null
     })

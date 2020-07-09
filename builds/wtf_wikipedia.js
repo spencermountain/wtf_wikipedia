@@ -1,4 +1,4 @@
-/* wtf_wikipedia 8.3.0 MIT */
+/* wtf_wikipedia 8.4.0 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('https')) :
   typeof define === 'function' && define.amd ? define(['https'], factory) :
@@ -76,7 +76,7 @@
     if (typeof o === "string") return _arrayLikeToArray(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
     if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Map" || n === "Set") return Array.from(o);
     if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
   }
 
@@ -95,7 +95,7 @@
   var isInterWiki = /(wiktionary|wikinews|wikibooks|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wikipedia|wikimedia|foundation|meta)\.org/;
   var defaults = {
     action: 'query',
-    prop: 'revisions',
+    prop: 'revisions|pageprops',
     //we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
     rvprop: 'content',
     maxlag: 5,
@@ -187,10 +187,20 @@
         text = page.revisions[0].slots.main['*'];
       }
 
+      page.pageprops = page.pageprops || {};
+      var domain = options.domain;
+
+      if (!domain && options.wiki) {
+        domain = "".concat(options.wiki, ".org");
+      }
+
       var meta = Object.assign({}, options, {
         title: page.title,
         pageID: page.pageid,
-        namespace: page.ns
+        namespace: page.ns,
+        domain: domain,
+        wikidata: page.pageprops.wikibase_item,
+        description: page.pageprops['wikibase-shortdesc']
       });
 
       try {
@@ -555,7 +565,7 @@
 
   var toJson_1 = toJson$1;
 
-  var server = 'https://wikipedia.org/wiki/Special:Redirect/file/';
+  var server = 'wikipedia.org';
 
   var encodeTitle = function encodeTitle(file) {
     var title = file.replace(/^(image|file?)\:/i, ''); //titlecase it
@@ -606,12 +616,15 @@
       return [];
     },
     url: function url() {
-      return server + makeSrc(this.file());
+      // let lang = 'en' //this.language() || 'en' //hmm: get actual language?
+      var fileName = makeSrc(this.file());
+      var domain = this.data.domain || server;
+      var path = "wiki/Special:Redirect/file";
+      return "https://".concat(domain, "/").concat(path, "/").concat(fileName);
     },
     thumbnail: function thumbnail(size) {
       size = size || 300;
-      var path = makeSrc(this.file());
-      return server + path + '?width=' + size;
+      return this.url() + '?width=' + size;
     },
     format: function format() {
       var arr = this.file().split('.');
@@ -680,6 +693,20 @@
 
       return this.data.pageID;
     },
+    wikidata: function wikidata(id) {
+      if (id !== undefined) {
+        this.data.wikidata = id;
+      }
+
+      return this.data.wikidata;
+    },
+    domain: function domain(str) {
+      if (str !== undefined) {
+        this.data.domain = str;
+      }
+
+      return this.data.domain;
+    },
     language: function language(lang) {
       if (lang !== undefined) {
         this.data.lang = lang;
@@ -695,7 +722,7 @@
       }
 
       var lang = this.language() || 'en';
-      var domain = this.data.domain || 'wikipedia.org'; // replace blank to underscore
+      var domain = this.domain() || 'wikipedia.org'; // replace blank to underscore
 
       title = title.replace(/ /g, '_');
       title = encodeURIComponent(title);
@@ -782,6 +809,8 @@
       return this.sentences(0);
     },
     images: function images(clue) {
+      var _this2 = this;
+
       var arr = _sectionMap(this, 'images', null); //grab image from infobox, first
 
       this.infoboxes().forEach(function (info) {
@@ -797,6 +826,8 @@
           obj.images = obj.images || [];
           obj.images.forEach(function (img) {
             if (img instanceof Image_1 === false) {
+              img.language = _this2.language();
+              img.domain = _this2.domain();
               img = new Image_1(img);
             }
 
@@ -2173,7 +2204,7 @@
 
   var ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i;
   var external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
-  var link_reg = /\[\[(.{0,160}?)\]\]([a-z]+)?(\w{0,10})/gi; //allow dangling suffixes - "[[flanders]]s"
+  var link_reg = /\[\[(.{0,160}?)\]\]([a-z]+)?/gi; //allow dangling suffixes - "[[flanders]]s"
 
   var external_links = function external_links(links, str) {
     str.replace(external_link, function (raw, protocol, link, text) {
@@ -2325,11 +2356,17 @@
     //only kill ref tags if they are selfclosing
 
     wiki = wiki.replace(/ ?< ?(ref) [a-zA-Z0-9=" ]{2,100}\/ ?> ?/g, ' '); //<ref name="asd"/>
-    //some formatting xml, we'll keep their insides though
+    // convert these html tags to known formatting
+
+    wiki = wiki.replace(/<i>(.*?)<\/i>/g, "''$1''");
+    wiki = wiki.replace(/<b>(.*?)<\/b>/g, "'''$1'''"); // these are better-handled with templates
+
+    wiki = wiki.replace(/<sub>(.*?)<\/sub>/g, "{{sub|$1}}");
+    wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, "{{sup|$1}}"); //some formatting xml, we'll keep their insides though
 
     wiki = wiki.replace(/ ?<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?> ?/g, ' '); //<sub>, </sub>
 
-    wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|i|ins|kbd|mark|q|s|small)[ \/]?> ?/g, ' '); //<abbr>, </abbr>
+    wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ \/]?> ?/g, ' '); //<abbr>, </abbr>
 
     wiki = wiki.replace(/ ?<[ \/]?h[0-9][ \/]?> ?/g, ' '); //<h2>, </h2>
 
@@ -4356,7 +4393,7 @@
     "super": true
   }; //images are usually [[image:my_pic.jpg]]
 
-  var oneImage = function oneImage(img) {
+  var oneImage = function oneImage(img, doc) {
     var m = img.match(file_reg);
 
     if (m === null || !m[2]) {
@@ -4372,7 +4409,9 @@
 
     if (title) {
       var obj = {
-        file: file
+        file: file,
+        lang: doc.lang,
+        domain: doc.domain
       }; //try to grab other metadata, too
 
       img = img.replace(/^\[\[/, '');
@@ -4395,20 +4434,20 @@
         obj.caption = parseSentence$4(arr[arr.length - 1]);
       }
 
-      return new Image_1(obj, img);
+      return new Image_1(obj);
     }
 
     return null;
   };
 
-  var parseImages = function parseImages(paragraph) {
+  var parseImages = function parseImages(paragraph, doc) {
     var wiki = paragraph.wiki; //parse+remove scary '[[ [[]] ]]' stuff
 
     var matches = nested_find_1(wiki);
     matches.forEach(function (s) {
       if (isFile.test(s) === true) {
         paragraph.images = paragraph.images || [];
-        var img = oneImage(s);
+        var img = oneImage(s, doc);
 
         if (img) {
           paragraph.images.push(img);
@@ -4565,7 +4604,7 @@
     list: list
   };
 
-  var parseParagraphs = function parseParagraphs(section) {
+  var parseParagraphs = function parseParagraphs(section, doc) {
     var wiki = section.wiki;
     var paragraphs = wiki.split(twoNewLines); //don't create empty paragraphs
 
@@ -4582,7 +4621,7 @@
 
       parse$5.list(paragraph); // parse images
 
-      parse$5.image(paragraph); //parse the sentences
+      parse$5.image(paragraph, doc); //parse the sentences
 
       parseSentences(paragraph);
       return new Paragraph_1(paragraph);
@@ -4620,6 +4659,7 @@
 
   var Infobox = function Infobox(obj) {
     this._type = obj.type;
+    this.domain = obj.domain;
     Object.defineProperty(this, 'data', {
       enumerable: false,
       value: obj.data
@@ -4664,6 +4704,8 @@
       var obj = s.json();
       obj.file = obj.text;
       obj.text = '';
+      obj.domain = this.domain; // add domain information for image
+
       return new Image_1(obj);
     },
     get: function get() {
@@ -5724,6 +5766,18 @@
       }
 
       return str;
+    },
+    //https://en.wikipedia.org/wiki/Template:Sub
+    sub: function sub(tmpl, list) {
+      var obj = parse$3(tmpl, ['text']);
+      list.push(obj);
+      return obj.text || '';
+    },
+    //https://en.wikipedia.org/wiki/Template:Sup
+    sup: function sup(tmpl, list) {
+      var obj = parse$3(tmpl, ['text']);
+      list.push(obj);
+      return obj.text || '';
     }
   }; //aliases
 
@@ -6346,19 +6400,19 @@
       return '';
     },
     // https://en.wikipedia.org/wiki/Template:See
-    'see': function see(tmpl, list) {
+    see: function see(tmpl, list) {
       var obj = parse$3(tmpl);
       list.push(obj);
       return '';
     },
     // https://en.wikipedia.org/wiki/Template:For
-    'for': function _for(tmpl, list) {
+    "for": function _for(tmpl, list) {
       var obj = parse$3(tmpl);
       list.push(obj);
       return '';
     },
     // https://en.wikipedia.org/wiki/Template:Further
-    'further': function further(tmpl, list) {
+    further: function further(tmpl, list) {
       var obj = parse$3(tmpl);
       list.push(obj);
       return '';
@@ -6370,7 +6424,7 @@
       return '';
     },
     // https://en.wikipedia.org/wiki/Template:Listen
-    'listen': function listen(tmpl, list) {
+    listen: function listen(tmpl, list) {
       var obj = parse$3(tmpl);
       list.push(obj);
       return '';
@@ -6474,7 +6528,8 @@
       images = images.map(function (file) {
         var img = {
           file: file
-        };
+        }; // TODO: add lang and domain information
+
         return new Image_1(img).json();
       });
       obj = {
@@ -6604,7 +6659,7 @@
   }; //a bunch of aliases for these ones:
   // https://en.wikipedia.org/wiki/Category:Tournament_bracket_templates
 
-  var brackets = ['2teambracket', '4team2elimbracket', '8teambracket', '16teambracket', '32teambracket', 'cwsbracket', 'nhlbracket', 'nhlbracket-reseed', '4teambracket-nhl', '4teambracket-ncaa', '4teambracket-mma', '4teambracket-mlb', '8teambracket-nhl', '8teambracket-mlb', '8teambracket-ncaa', '8teambracket-afc', '8teambracket-afl', '8teambracket-tennis3', '8teambracket-tennis5', '16teambracket-nhl', '16teambracket-nhl divisional', '16teambracket-nhl-reseed', '16teambracket-nba', '16teambracket-swtc', '16teambracket-afc', '16teambracket-tennis3', '16teambracket-tennis5'];
+  var brackets = ['2teambracket', '4team2elimbracket', '8teambracket', '16teambracket', '32teambracket', '4roundbracket-byes', 'cwsbracket', 'nhlbracket', 'nhlbracket-reseed', '4teambracket-nhl', '4teambracket-ncaa', '4teambracket-mma', '4teambracket-mlb', '16teambracket-two-reseeds', '8teambracket-nhl', '8teambracket-mlb', '8teambracket-ncaa', '8teambracket-afc', '8teambracket-afl', '8teambracket-tennis3', '8teambracket-tennis5', '16teambracket-nhl', '16teambracket-nhl divisional', '16teambracket-nhl-reseed', '16teambracket-nba', '16teambracket-swtc', '16teambracket-afc', '16teambracket-tennis3', '16teambracket-tennis5'];
   brackets.forEach(function (key) {
     all[key] = all['4teambracket'];
   });
@@ -8176,7 +8231,7 @@
   }; //reduce the scary recursive situations
 
 
-  var allTemplates = function allTemplates(section) {
+  var allTemplates = function allTemplates(section, doc) {
     var wiki = section.wiki; // nested data-structure of templates
 
     var list = find(wiki);
@@ -8221,6 +8276,8 @@
       }
 
       if (isInfobox$1(obj) === true) {
+        obj.domain = doc.domain; //
+
         section.infoboxes.push(new Infobox_1(obj));
         return false;
       }
@@ -8243,7 +8300,7 @@
   //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
   // - not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
 
-  var parseGallery = function parseGallery(section) {
+  var parseGallery = function parseGallery(section, doc) {
     var wiki = section.wiki;
     wiki = wiki.replace(/<gallery([^>]*?)>([\s\S]+?)<\/gallery>/g, function (_, attrs, inside) {
       var images = inside.split(/\n/g);
@@ -8254,7 +8311,9 @@
       images = images.map(function (str) {
         var arr = str.split(/\|/);
         var obj = {
-          file: arr[0].trim()
+          file: arr[0].trim(),
+          lang: doc.language,
+          domain: doc.domain
         };
         var img = new Image_1(obj).json();
         var caption = arr.slice(1).join('|');
@@ -8464,9 +8523,9 @@
   // ... others are {{start}}...{{end}}
   // -> these are those ones.
 
-  var xmlTemplates = function xmlTemplates(section) {
+  var xmlTemplates = function xmlTemplates(section, doc) {
     election(section);
-    gallery(section);
+    gallery(section, doc);
     math$1(section);
     mlb(section);
     mma(section);
@@ -8488,11 +8547,11 @@
   };
 
   var oneSection = function oneSection(section, doc) {
-    parse$6.startEndTemplates(section); //parse-out the <ref></ref> tags
+    parse$6.startEndTemplates(section, doc); //parse-out the <ref></ref> tags
 
     parse$6.references(section); //parse-out all {{templates}}
 
-    parse$6.templates(section); // //parse the tables
+    parse$6.templates(section, doc); // //parse the tables
 
     parse$6.table(section); //now parse all double-newlines
 
@@ -8782,7 +8841,7 @@
       url = "https://".concat(options.domain, "/").concat(options.path, "?");
     }
 
-    url += "format=json&action=query&generator=random&grnnamespace=0&prop=revisions&rvprop=content&grnlimit=1&rvslots=main&origin=*";
+    url += "format=json&action=query&generator=random&grnnamespace=0&prop=revisions|pageprops&rvprop=content&grnlimit=1&rvslots=main&origin=*";
     var headers = _headers(options);
     return server$1(url, headers).then(function (res) {
       try {
@@ -8897,7 +8956,7 @@
 
   var category = fetchCategory;
 
-  var _version = '8.3.0';
+  var _version = '8.4.0';
 
   var wtf = function wtf(wiki, options) {
     return _01Document(wiki, options);

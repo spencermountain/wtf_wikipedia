@@ -11,10 +11,10 @@ const defaults = {
   wiki: 'wikipedia',
   domain: null,
   follow_redirects: true,
-  path: 'api.php' //some 3rd party sites use a weird path
+  path: 'api.php', //some 3rd party sites use a weird path
 }
 
-const fetch = function(title, options, c) {
+const fetch = function (title, options, c) {
   let callback = null
   if (typeof options === 'function') {
     callback = options
@@ -40,7 +40,7 @@ const fetch = function(title, options, c) {
   const url = makeUrl(options)
   const headers = makeHeaders(options)
   return http(url, headers)
-    .then(res => {
+    .then((res) => {
       try {
         let data = getResult(res, options)
         data = parseDoc(data)
@@ -52,7 +52,7 @@ const fetch = function(title, options, c) {
         throw e
       }
     })
-    .catch(e => {
+    .catch((e) => {
       console.error(e)
       if (callback) {
         callback(e, null)

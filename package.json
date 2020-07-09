@@ -1,7 +1,7 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "8.3.0",
+  "version": "8.4.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "test": "TESTENV=dev node ./scripts/test.js",
     "testb": "TESTENV=prod node ./scripts/test.js",
     "test:fetch": "TESTENV=dev tape ./tests/fetch/*.test.js | tap-dancer",
+    "test:spec": "TESTENV=dev tape ./tests/fetch/*.test.js | tap-spec",
     "test:types": "ts-node ./tests/types/index.ts",
     "watch": "amble ./scratch.js",
     "lint": "eslint ./src/"
@@ -53,18 +54,18 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "7.9.0",
-    "@babel/preset-env": "7.9.5",
-    "@rollup/plugin-alias": "3.1.0",
+    "@babel/core": "7.10.4",
+    "@babel/preset-env": "7.10.4",
+    "@rollup/plugin-alias": "3.1.1",
     "amble": "1.0.0",
-    "rollup": "2.7.2",
+    "rollup": "2.21.0",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-filesize-check": "0.0.1",
-    "rollup-plugin-terser": "5.3.0",
+    "rollup-plugin-terser": "6.1.0",
     "shelljs": "0.8.4",
     "tap-dancer": "0.2.0",
-    "tape": "5.0.0"
+    "tape": "5.0.1"
   },
   "eslintIgnore": [
     "builds/*.js"
