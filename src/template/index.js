@@ -24,7 +24,7 @@ const isInfobox = function (obj) {
 }
 
 //reduce the scary recursive situations
-const allTemplates = function (section) {
+const allTemplates = function (section, doc) {
   let wiki = section.wiki
   // nested data-structure of templates
   let list = findTemplates(wiki)
@@ -64,6 +64,7 @@ const allTemplates = function (section) {
       return false
     }
     if (isInfobox(obj) === true) {
+      obj.domain = doc.domain //
       section.infoboxes.push(new Infobox(obj))
       return false
     }

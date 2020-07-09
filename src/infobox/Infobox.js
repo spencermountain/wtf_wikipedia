@@ -10,6 +10,7 @@ const normalize = (str) => {
 //a formal key-value data table about a topic
 const Infobox = function (obj) {
   this._type = obj.type
+  this.domain = obj.domain
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: obj.data,
@@ -43,7 +44,7 @@ const methods = {
     let obj = s.json()
     obj.file = obj.text
     obj.text = ''
-    // TODO: add lang and domain information for image
+    obj.domain = this.domain // add domain information for image
     return new Image(obj)
   },
   get: function (key = '') {
