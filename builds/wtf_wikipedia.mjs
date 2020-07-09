@@ -4653,6 +4653,7 @@ var normalize = function normalize(str) {
 
 var Infobox = function Infobox(obj) {
   this._type = obj.type;
+  this.domain = obj.domain;
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: obj.data
@@ -4696,7 +4697,8 @@ var methods$9 = {
 
     var obj = s.json();
     obj.file = obj.text;
-    obj.text = ''; // TODO: add lang and domain information for image
+    obj.text = '';
+    obj.domain = this.domain; // add domain information for image
 
     return new Image_1(obj);
   },
@@ -8223,7 +8225,7 @@ var isInfobox$1 = function isInfobox(obj) {
 }; //reduce the scary recursive situations
 
 
-var allTemplates = function allTemplates(section) {
+var allTemplates = function allTemplates(section, doc) {
   var wiki = section.wiki; // nested data-structure of templates
 
   var list = find(wiki);
@@ -8268,6 +8270,8 @@ var allTemplates = function allTemplates(section) {
     }
 
     if (isInfobox$1(obj) === true) {
+      obj.domain = doc.domain; //
+
       section.infoboxes.push(new Infobox_1(obj));
       return false;
     }
@@ -8541,7 +8545,7 @@ var oneSection = function oneSection(section, doc) {
 
   parse$6.references(section); //parse-out all {{templates}}
 
-  parse$6.templates(section); // //parse the tables
+  parse$6.templates(section, doc); // //parse the tables
 
   parse$6.table(section); //now parse all double-newlines
 
