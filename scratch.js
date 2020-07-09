@@ -10,8 +10,9 @@ wtf.extend(require('./plugins/wikitext/src'))
 // })
 
 let doc = wtf(`hi <sub>world</sub> there`)
-console.log(doc.sentence(0).json())
-console.log(doc.text())
+// let doc = wtf(`hi {{sub|world}} there`)
+// console.log(doc.sentence(0).json())
+console.log(doc.templates())
 
 // wtf.fetch('Quartz', 'en').then((doc) => {
 //   // console.log(doc.lang())

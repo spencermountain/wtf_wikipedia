@@ -2,12 +2,12 @@ const parse = require('../../_parsers/parse')
 
 let templates = {
   //a convulated way to make a xml tag - https://en.wikipedia.org/wiki/Template:Tag
-  tag: tmpl => {
+  tag: (tmpl) => {
     let obj = parse(tmpl, ['tag', 'open'])
     const ignore = {
       span: true,
       div: true,
-      p: true
+      p: true,
     }
     //pair, empty, close, single
     if (!obj.open || obj.open === 'pair') {
@@ -20,7 +20,7 @@ let templates = {
     return ''
   },
   //dumb inflector - https://en.wikipedia.org/wiki/Template:Plural
-  plural: tmpl => {
+  plural: (tmpl) => {
     tmpl = tmpl.replace(/plural:/, 'plural|')
     let order = ['num', 'word']
     let obj = parse(tmpl, order)
@@ -36,7 +36,7 @@ let templates = {
     return num + ' ' + word
   },
   // https://en.wikipedia.org/wiki/Template:First_word
-  'first word': tmpl => {
+  'first word': (tmpl) => {
     let obj = parse(tmpl, ['text'])
     let str = obj.text
     if (obj.sep) {
@@ -44,12 +44,12 @@ let templates = {
     }
     return str.split(' ')[0]
   },
-  trunc: tmpl => {
+  trunc: (tmpl) => {
     let order = ['str', 'len']
     let obj = parse(tmpl, order)
     return obj.str.substr(0, obj.len)
   },
-  'str mid': tmpl => {
+  'str mid': (tmpl) => {
     let order = ['str', 'start', 'end']
     let obj = parse(tmpl, order)
     let start = parseInt(obj.start, 10) - 1
@@ -61,7 +61,7 @@ let templates = {
   p2: 1,
   p3: 2,
   //formatting things - https://en.wikipedia.org/wiki/Template:Nobold
-  braces: tmpl => {
+  braces: (tmpl) => {
     let obj = parse(tmpl, ['text'])
     let attrs = ''
     if (obj.list) {
@@ -87,29 +87,29 @@ let templates = {
   //https://en.wikipedia.org/wiki/Template:Resize
   resize: 1,
   //https://en.wikipedia.org/wiki/Template:Ra
-  ra: tmpl => {
+  ra: (tmpl) => {
     let obj = parse(tmpl, ['hours', 'minutes', 'seconds'])
     return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':')
   },
   //https://en.wikipedia.org/wiki/Template:Deg2HMS
-  deg2hms: tmpl => {
+  deg2hms: (tmpl) => {
     //this template should do the conversion
     let obj = parse(tmpl, ['degrees'])
     return (obj.degrees || '') + '°'
   },
-  hms2deg: tmpl => {
+  hms2deg: (tmpl) => {
     //this template should do the conversion too
     let obj = parse(tmpl, ['hours', 'minutes', 'seconds'])
     return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':')
   },
-  decdeg: tmpl => {
+  decdeg: (tmpl) => {
     //this template should do the conversion too
     let obj = parse(tmpl, ['deg', 'min', 'sec', 'hem', 'rnd'])
     return (obj.deg || obj.degrees) + '°'
   },
   rnd: 0,
   //https://en.wikipedia.org/wiki/Template:DEC
-  dec: tmpl => {
+  dec: (tmpl) => {
     let obj = parse(tmpl, ['degrees', 'minutes', 'seconds'])
     let str = (obj.degrees || 0) + '°'
     if (obj.minutes) {
@@ -121,7 +121,7 @@ let templates = {
     return str
   },
   //https://en.wikipedia.org/wiki/Template:Val
-  val: tmpl => {
+  val: (tmpl) => {
     let obj = parse(tmpl, ['number', 'uncertainty'])
     let num = obj.number
     if (num && Number(num)) {
@@ -140,7 +140,19 @@ let templates = {
       str = str + ' ' + (obj.u || obj.ul || obj.upl)
     }
     return str
-  }
+  },
+  //https://en.wikipedia.org/wiki/Template:Sub
+  sub: (tmpl, list) => {
+    let obj = parse(tmpl, ['text'])
+    list.push(obj)
+    return obj.text || ''
+  },
+  //https://en.wikipedia.org/wiki/Template:Sup
+  sup: (tmpl, list) => {
+    let obj = parse(tmpl, ['text'])
+    list.push(obj)
+    return obj.text || ''
+  },
 }
 
 //aliases
@@ -188,10 +200,10 @@ let inline = [
   'var',
   'mvar',
   'pre2',
-  'code'
+  'code',
 ]
-inline.forEach(k => {
-  templates[k] = tmpl => {
+inline.forEach((k) => {
+  templates[k] = (tmpl) => {
     return parse(tmpl, ['text']).text || ''
   }
 })

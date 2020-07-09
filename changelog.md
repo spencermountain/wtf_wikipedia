@@ -7,6 +7,8 @@
 - new `wikidata()` method
 - new `domain()` method
 - support image urls from 3rd-party wikis
+- support for some html formatting tags \#374
+- support for sub and sup templates
 - [fix] for link-parsing bug \#375
 
 ### 8.3.0

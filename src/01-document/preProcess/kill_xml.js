@@ -37,6 +37,11 @@ const kill_xml = function (wiki) {
   // convert these html tags to known formatting
   wiki = wiki.replace(/<i>(.*?)<\/i>/g, `''$1''`)
   wiki = wiki.replace(/<b>(.*?)<\/b>/g, `'''$1'''`)
+
+  // these are better-handled with templates
+  wiki = wiki.replace(/<sub>(.*?)<\/sub>/g, `{{sub|$1}}`)
+  wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, `{{sup|$1}}`)
+
   //some formatting xml, we'll keep their insides though
   wiki = wiki.replace(/ ?<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?> ?/g, ' ') //<sub>, </sub>
   wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ \/]?> ?/g, ' ') //<abbr>, </abbr>
