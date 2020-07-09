@@ -19,7 +19,7 @@ wtf.extend(require('./plugins/wikitext/src'))
 //   console.log(doc.images().map((j) => j.url()))
 // })
 
-wtf.fetch('https://bulbapedia.bulbagarden.net/wiki/Aegislash_(Pok%C3%A9mon)', { path: 'w/api.php' }).then((doc) => {
+wtf.fetch('WeeklyUpdates/020-06-29', { domain: 'wiki.mozilla.org' }).then((doc) => {
   // console.log(doc.domain())
   console.log(doc.images().map((j) => j.url()))
 })

@@ -656,6 +656,9 @@ wtf.fetch('2016-06-04_-_J.Fernandes_@_FIL,_Lisbon', { domain: 'www.mixesdb.com',
 })
 ```
 
+for image-urls to work properly, the wiki should also have `Special:Redirect` enabled.
+Some wikis, (like wikia) have intentionally disabled this.
+
 ### i18n and multi-language:
 
 wikitext is (amazingly) used across all languages, wikis, and even in right-to-left languages.
