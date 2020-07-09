@@ -9,17 +9,17 @@ wtf.extend(require('./plugins/wikitext/src'))
 //   console.log(doc.template('medical cases chart'))
 // })
 
-// let doc = wtf(`[[US]]99`)
-// console.log(doc.links(0).json())
-// console.log(doc.text())
+// let doc = wtf(`hi '''world'''`)
+// console.log(doc.language())
+// let doc = wtf(`hi <b>world</b>`)
+// console.log(doc.sentence(0).json())
 
-// wtf.fetch('Toronto Raptors').then((doc) => {
-//   console.log(doc.title())
-//   console.log(doc.pageID())
-//   console.log(doc.wikidata())
-//   // console.log(doc.)
+// wtf.fetch('Quartz', 'en').then((doc) => {
+//   // console.log(doc.lang())
+//   console.log(doc.images().map((j) => j.url()))
 // })
 
-wtf.random().then((doc) => {
-  console.log(doc.wikidata())
+wtf.fetch('https://bulbapedia.bulbagarden.net/wiki/Aegislash_(Pok%C3%A9mon)', { path: 'w/api.php' }).then((doc) => {
+  // console.log(doc.domain())
+  console.log(doc.images().map((j) => j.url()))
 })

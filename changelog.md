@@ -2,7 +2,11 @@
 
 #### [unreleased]
 
+#### 8.4.0
+
 - new `wikidata()` method
+- new `domain()` method
+- support image urls from 3rd-party wikis
 - [fix] for link-parsing bug \#375
 
 ### 8.3.0

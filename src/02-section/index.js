@@ -10,11 +10,11 @@ const parse = {
   paragraphs: require('../03-paragraph'),
   templates: require('../template'),
   references: require('../reference'),
-  startEndTemplates: require('./start-to-end')
+  startEndTemplates: require('./start-to-end'),
 }
 
-const oneSection = function(section, doc) {
-  parse.startEndTemplates(section)
+const oneSection = function (section, doc) {
+  parse.startEndTemplates(section, doc)
   //parse-out the <ref></ref> tags
   parse.references(section)
   //parse-out all {{templates}}
@@ -27,7 +27,7 @@ const oneSection = function(section, doc) {
   return section
 }
 
-const removeReferenceSection = function(sections) {
+const removeReferenceSection = function (sections) {
   return sections.filter((s, i) => {
     if (isReference.test(s.title()) === true) {
       if (s.paragraphs().length > 0) {
@@ -47,7 +47,7 @@ const removeReferenceSection = function(sections) {
   })
 }
 
-const parseSections = function(doc) {
+const parseSections = function (doc) {
   let sections = []
   let split = doc.wiki.split(section_reg)
   for (let i = 0; i < split.length; i += 2) {
@@ -64,7 +64,7 @@ const parseSections = function(doc) {
       templates: [],
       tables: [],
       infoboxes: [],
-      references: []
+      references: [],
     }
     //figure-out title/depth
     parse.heading(section, heading)

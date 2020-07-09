@@ -1,7 +1,7 @@
 const toJson = require('./toJson')
-const server = 'https://wikipedia.org/wiki/Special:Redirect/file/'
+const server = 'wikipedia.org'
 
-const encodeTitle = function(file) {
+const encodeTitle = function (file) {
   let title = file.replace(/^(image|file?)\:/i, '')
   //titlecase it
   title = title.charAt(0).toUpperCase() + title.substring(1)
@@ -11,17 +11,17 @@ const encodeTitle = function(file) {
 }
 
 //the wikimedia image url is a little silly:
-const makeSrc = function(file) {
+const makeSrc = function (file) {
   let title = encodeTitle(file)
   title = encodeURIComponent(title)
   return title
 }
 
 //the class for our image generation functions
-const Image = function(data) {
+const Image = function (data) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: data
+    value: data,
   })
 }
 
@@ -48,12 +48,15 @@ const methods = {
     return []
   },
   url() {
-    return server + makeSrc(this.file())
+    // let lang = 'en' //this.language() || 'en' //hmm: get actual language?
+    let fileName = makeSrc(this.file())
+    let domain = this.data.domain || server
+    let path = `wiki/Special:Redirect/file`
+    return `https://${domain}/${path}/${fileName}`
   },
   thumbnail(size) {
     size = size || 300
-    let path = makeSrc(this.file())
-    return server + path + '?width=' + size
+    return this.url() + '?width=' + size
   },
   format() {
     let arr = this.file().split('.')
@@ -62,16 +65,16 @@ const methods = {
     }
     return null
   },
-  json: function(options) {
+  json: function (options) {
     options = options || {}
     return toJson(this, options)
   },
-  text: function() {
+  text: function () {
     return ''
-  }
+  },
 }
 
-Object.keys(methods).forEach(k => {
+Object.keys(methods).forEach((k) => {
   Image.prototype[k] = methods[k]
 })
 

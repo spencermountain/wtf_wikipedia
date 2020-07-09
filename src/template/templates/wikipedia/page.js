@@ -16,11 +16,10 @@ const sisterProjects = {
   d: 'wikidata',
   species: 'wikispecies',
   m: 'meta',
-  mw: 'mediawiki'
+  mw: 'mediawiki',
 }
 
 const parsers = {
-
   // https://en.wikipedia.org/wiki/Template:About
   about: (tmpl, list) => {
     let obj = parse(tmpl)
@@ -43,21 +42,21 @@ const parsers = {
   },
 
   // https://en.wikipedia.org/wiki/Template:See
-  'see': (tmpl, list) => {
+  see: (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
     return ''
   },
 
   // https://en.wikipedia.org/wiki/Template:For
-  'for': (tmpl, list) => {
+  for: (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
     return ''
   },
 
   // https://en.wikipedia.org/wiki/Template:Further
-  'further': (tmpl, list) => {
+  further: (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
     return ''
@@ -71,7 +70,7 @@ const parsers = {
   },
 
   // https://en.wikipedia.org/wiki/Template:Listen
-  'listen': (tmpl, list) => {
+  listen: (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
     return ''
@@ -87,13 +86,13 @@ const parsers = {
     for (let i = 0; i < lines.length; i += 2) {
       links.push({
         page: lines[i + 1],
-        desc: lines[i]
+        desc: lines[i],
       })
     }
     let obj = {
       template: 'redirect',
       redirect: data.redirect,
-      links: links
+      links: links,
     }
     list.push(obj)
     return ''
@@ -137,14 +136,14 @@ const parsers = {
     let data = parse(tmpl)
     //rename 'wd' to 'wikidata'
     let links = {}
-    Object.keys(sisterProjects).forEach(k => {
+    Object.keys(sisterProjects).forEach((k) => {
       if (data.hasOwnProperty(k) === true) {
         links[sisterProjects[k]] = data[k] //.text();
       }
     })
     let obj = {
       template: 'sister project links',
-      links: links
+      links: links,
     }
     list.push(obj)
     return ''
@@ -153,7 +152,7 @@ const parsers = {
   //https://en.wikipedia.org/wiki/Template:Subject_bar
   'subject bar': (tmpl, list) => {
     let data = parse(tmpl)
-    Object.keys(data).forEach(k => {
+    Object.keys(data).forEach((k) => {
       //rename 'voy' to 'wikivoyage'
       if (sisterProjects.hasOwnProperty(k)) {
         data[sisterProjects[k]] = data[k]
@@ -162,7 +161,7 @@ const parsers = {
     })
     let obj = {
       template: 'subject bar',
-      links: data
+      links: data,
     }
     list.push(obj)
     return ''
@@ -174,16 +173,17 @@ const parsers = {
   //https://en.wikipedia.org/wiki/Template:Gallery
   gallery: (tmpl, list) => {
     let obj = parse(tmpl)
-    let images = (obj.list || []).filter(line => /^ *File ?:/.test(line))
-    images = images.map(file => {
+    let images = (obj.list || []).filter((line) => /^ *File ?:/.test(line))
+    images = images.map((file) => {
       let img = {
-        file: file
+        file: file,
       }
+      // TODO: add lang and domain information
       return new Image(img).json()
     })
     obj = {
       template: 'gallery',
-      images: images
+      images: images,
     }
     list.push(obj)
     return ''
@@ -194,7 +194,7 @@ const parsers = {
     list.push(data)
     return ''
   },
-  unreferenced: ['date']
+  unreferenced: ['date'],
 }
 //aliases
 parsers['cite'] = parsers.citation

@@ -1,41 +1,41 @@
 const toJson = require('./toJson')
 const Image = require('../image/Image')
 
-const normalize = str => {
+const normalize = (str) => {
   str = str.toLowerCase()
   str = str.replace(/[-_]/g, ' ')
   return str.trim()
 }
 
 //a formal key-value data table about a topic
-const Infobox = function(obj) {
+const Infobox = function (obj) {
   this._type = obj.type
   Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: obj.data
+    value: obj.data,
   })
 }
 
 const methods = {
-  type: function() {
+  type: function () {
     return this._type
   },
-  links: function(n) {
+  links: function (n) {
     let arr = []
-    Object.keys(this.data).forEach(k => {
-      this.data[k].links().forEach(l => arr.push(l))
+    Object.keys(this.data).forEach((k) => {
+      this.data[k].links().forEach((l) => arr.push(l))
     })
     if (typeof n === 'number') {
       return arr[n]
     } else if (typeof n === 'string') {
       //grab a link like .links('Fortnight')
       n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = arr.find(o => o.page() === n)
+      let link = arr.find((o) => o.page() === n)
       return link === undefined ? [] : [link]
     }
     return arr
   },
-  image: function() {
+  image: function () {
     let s = this.get('image') || this.get('image2') || this.get('logo')
     if (!s) {
       return null
@@ -43,9 +43,10 @@ const methods = {
     let obj = s.json()
     obj.file = obj.text
     obj.text = ''
+    // TODO: add lang and domain information for image
     return new Image(obj)
   },
-  get: function(key = '') {
+  get: function (key = '') {
     key = normalize(key)
     let keys = Object.keys(this.data)
     for (let i = 0; i < keys.length; i += 1) {
@@ -56,25 +57,25 @@ const methods = {
     }
     return null
   },
-  text: function() {
+  text: function () {
     return ''
   },
-  json: function(options) {
+  json: function (options) {
     options = options || {}
     return toJson(this, options)
   },
-  keyValue: function() {
+  keyValue: function () {
     return Object.keys(this.data).reduce((h, k) => {
       if (this.data[k]) {
         h[k] = this.data[k].text()
       }
       return h
     }, {})
-  }
+  },
 }
 //aliases
 
-Object.keys(methods).forEach(k => {
+Object.keys(methods).forEach((k) => {
   Infobox.prototype[k] = methods[k]
 })
 Infobox.prototype.data = Infobox.prototype.keyValue

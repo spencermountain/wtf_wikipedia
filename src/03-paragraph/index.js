@@ -4,25 +4,25 @@ const parseSentences = require('../04-sentence').byParagraph
 const twoNewLines = /\r?\n\r?\n/
 const parse = {
   image: require('../image'),
-  list: require('../list')
+  list: require('../list'),
 }
 
-const parseParagraphs = function(section) {
+const parseParagraphs = function (section, doc) {
   let wiki = section.wiki
   let paragraphs = wiki.split(twoNewLines)
   //don't create empty paragraphs
-  paragraphs = paragraphs.filter(p => p && p.trim().length > 0)
-  paragraphs = paragraphs.map(str => {
+  paragraphs = paragraphs.filter((p) => p && p.trim().length > 0)
+  paragraphs = paragraphs.map((str) => {
     let paragraph = {
       wiki: str,
       lists: [],
       sentences: [],
-      images: []
+      images: [],
     }
     //parse the lists
     parse.list(paragraph)
     // parse images
-    parse.image(paragraph)
+    parse.image(paragraph, doc)
     //parse the sentences
     parseSentences(paragraph)
     return new Paragraph(paragraph)

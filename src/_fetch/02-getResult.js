@@ -14,10 +14,15 @@ const getResult = function (data, options) {
       text = page.revisions[0].slots.main['*']
     }
     page.pageprops = page.pageprops || {}
+    let domain = options.domain
+    if (!domain && options.wiki) {
+      domain = `${options.wiki}.org`
+    }
     let meta = Object.assign({}, options, {
       title: page.title,
       pageID: page.pageid,
       namespace: page.ns,
+      domain: domain,
       wikidata: page.pageprops.wikibase_item,
       description: page.pageprops['wikibase-shortdesc'],
     })

@@ -49,6 +49,14 @@ const methods = {
     }
     return this.data.wikidata
   },
+  domain: function (str) {
+    if (str !== undefined) {
+      this.data.domain = str
+    } else {
+      // console.log(this.data)
+    }
+    return this.data.domain
+  },
   language: function (lang) {
     if (lang !== undefined) {
       this.data.lang = lang
@@ -61,7 +69,7 @@ const methods = {
       return null
     }
     let lang = this.language() || 'en'
-    let domain = this.data.domain || 'wikipedia.org'
+    let domain = this.domain() || 'wikipedia.org'
     // replace blank to underscore
     title = title.replace(/ /g, '_')
     title = encodeURIComponent(title)
@@ -148,6 +156,8 @@ const methods = {
         obj.images = obj.images || []
         obj.images.forEach((img) => {
           if (img instanceof Image === false) {
+            img.language = this.language()
+            img.domain = this.domain()
             img = new Image(img)
           }
           arr.push(img)
