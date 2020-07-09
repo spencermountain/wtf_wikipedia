@@ -9,17 +9,11 @@ wtf.extend(require('./plugins/wikitext/src'))
 //   console.log(doc.template('medical cases chart'))
 // })
 
-// let doc = wtf(`hi '''world'''`)
-// console.log(doc.language())
-// let doc = wtf(`hi <b>world</b>`)
-// console.log(doc.sentence(0).json())
+let doc = wtf(`hi <sub>world</sub> there`)
+console.log(doc.sentence(0).json())
+console.log(doc.text())
 
 // wtf.fetch('Quartz', 'en').then((doc) => {
 //   // console.log(doc.lang())
 //   console.log(doc.images().map((j) => j.url()))
 // })
-
-wtf.fetch('WeeklyUpdates/020-06-29', { domain: 'wiki.mozilla.org' }).then((doc) => {
-  // console.log(doc.domain())
-  console.log(doc.images().map((j) => j.url()))
-})
