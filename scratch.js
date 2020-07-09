@@ -13,9 +13,13 @@ wtf.extend(require('./plugins/wikitext/src'))
 // console.log(doc.links(0).json())
 // console.log(doc.text())
 
-wtf.fetch('Toronto Raptors').then((doc) => {
-  console.log(doc.title())
-  console.log(doc.pageID())
+// wtf.fetch('Toronto Raptors').then((doc) => {
+//   console.log(doc.title())
+//   console.log(doc.pageID())
+//   console.log(doc.wikidata())
+//   // console.log(doc.)
+// })
+
+wtf.random().then((doc) => {
   console.log(doc.wikidata())
-  // console.log(doc.)
 })

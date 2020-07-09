@@ -1,8 +1,10 @@
 ---
 
 #### [unreleased]
+
 - new `wikidata()` method
-- 
+- [fix] for link-parsing bug \#375
+
 ### 8.3.0
 
 - adds some wikivoyage templates
