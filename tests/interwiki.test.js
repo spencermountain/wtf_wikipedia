@@ -21,6 +21,14 @@ test('expand external interwiki link', t => {
 
   let href = doc.link().href()
   t.equal(href, 'http://heroeswiki.com/cool', 'expand external link')
+
+  str = `[[Wiktionary:fr:bonjour]]`
+  doc = wtf(str)
+  obj = doc.link().json()
+  t.equal(obj.type, 'interwiki', 'interwiki')
+  t.equal(obj.text, 'bonjour', 'text')
+  t.deepEqual(obj.wiki, { wiki: 'wiktionary', lang: 'fr' }, 'wiki')
+
   t.end()
 })
 

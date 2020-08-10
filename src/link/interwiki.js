@@ -19,11 +19,21 @@ const parseInterwiki = function(obj) {
     }
     let site = m[1] || ''
     site = site.toLowerCase()
-    //only allow interwikis to these specific places
-    if (interwikis.hasOwnProperty(site) === false) {
-      return obj
+    if (site.indexOf(':') !== -1) {
+      let [, wiki, lang] = site.match(/^:?(.*):(.*)/)
+      //only allow interwikis to these specific places
+      if (
+        interwikis.hasOwnProperty(wiki) && languages.hasOwnProperty(lang) === false
+      ) {
+        return obj
+      }
+      obj.wiki = { wiki: wiki, lang: lang }
+    } else {
+      if (interwikis.hasOwnProperty(site) === false) {
+        return obj
+      }
+      obj.wiki = site
     }
-    obj.wiki = site
     obj.page = m[2]
   }
   return obj
