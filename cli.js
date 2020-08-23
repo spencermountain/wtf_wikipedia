@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var wtf = require('./src/index')
-var args = process.argv.slice(2, process.argv.length)
+var args = process.argv.slice(2)
 
 var modes = {
   '--json': 'json',
