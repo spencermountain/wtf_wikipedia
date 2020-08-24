@@ -1,0 +1,31 @@
+.Dd $wtf_wikipediadate$
+.TH wtf_wikipedia 1 "23 Aug 2020" "4.4.0" "wtf_wikipedia man page"
+.Dt wtf_wikipedia 1
+.Os
+.SH NAME
+wtf_wikipedia -- parse wikiscript into json
+.br
+wtf_wikipedia is a CLI written in nodejs that parses wikiscript into json
+.SH USAGE
+wtf_wikipedia
+.OP --json
+.OP --plaintext
+.[page]
+.SH DESCRIPTION
+A list of flags and their descriptions in wtf_wikipedia:
+.Bl -tag -width -indent
+.It --json
+Enter JSON mode, the wikiscript will be given in JSON
+.It --plaintext
+Enter plaintext mode in which results will be plaintext
+.It [page]
+Specify the page that has to be printed
+.El
+.Pp
+.SH EXIT CODES
+wtf_wikipedia exits with success unless the following happens:
+.Bl -tag -width -indent
+.It - A title is not provided
+.It - The fetch for the article failed
+.El
+.Pp
