@@ -1,4 +1,4 @@
-const isInterWiki = /(wiktionary|wikinews|wikibooks|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wikipedia|wikimedia|foundation|meta)\.org/
+const isInterWiki = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/
 
 const defaults = {
   action: 'query',
