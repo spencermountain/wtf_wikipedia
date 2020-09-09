@@ -92,7 +92,7 @@
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
-  var isInterWiki = /(wiktionary|wikinews|wikibooks|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wikipedia|wikimedia|foundation|meta)\.org/;
+  var isInterWiki = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/;
   var defaults = {
     action: 'query',
     prop: 'revisions|pageprops',
@@ -2187,13 +2187,31 @@
       }
 
       var site = m[1] || '';
-      site = site.toLowerCase(); //only allow interwikis to these specific places
+      site = site.toLowerCase();
 
-      if (interwiki.hasOwnProperty(site) === false) {
-        return obj;
+      if (site.indexOf(':') !== -1) {
+        var _site$match = site.match(/^:?(.*):(.*)/),
+            _site$match2 = _slicedToArray(_site$match, 3),
+            wiki = _site$match2[1],
+            lang = _site$match2[2]; //only allow interwikis to these specific places
+
+
+        if (interwiki.hasOwnProperty(wiki) && languages.hasOwnProperty(lang) === false) {
+          return obj;
+        }
+
+        obj.wiki = {
+          wiki: wiki,
+          lang: lang
+        };
+      } else {
+        if (interwiki.hasOwnProperty(site) === false) {
+          return obj;
+        }
+
+        obj.wiki = site;
       }
 
-      obj.wiki = site;
       obj.page = m[2];
     }
 
