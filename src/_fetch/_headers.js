@@ -1,18 +1,12 @@
-const makeHeaders = function(options) {
+const makeHeaders = function (options) {
   let agent =
-    options.userAgent ||
-    options['User-Agent'] ||
-    options['Api-User-Agent'] ||
-    'User of the wtf_wikipedia library'
+    options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library'
 
   let origin
   if (options.noOrigin) {
     origin = ''
   } else {
-    origin = 
-      options.origin ||
-      options.Origin ||
-      '*'
+    origin = options.origin || options.Origin || '*'
   }
 
   const opts = {
@@ -21,11 +15,10 @@ const makeHeaders = function(options) {
       'Content-Type': 'application/json',
       'Api-User-Agent': agent,
       'User-Agent': agent,
-      Origin: origin
+      Origin: origin,
     },
-    redirect: 'follow'
+    redirect: 'follow',
   }
-  console.log(opts)
   return opts
 }
 module.exports = makeHeaders
