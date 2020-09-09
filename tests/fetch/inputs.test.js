@@ -17,7 +17,8 @@ test('test-formats', async function(t) {
     ['Billy Steele'],
     `https://en.m.wikipedia.org/wiki/Freebase`,
     `https://dota2.gamepedia.com/Abaddon`,
-    `https://muppet.fandom.com/wiki/Debra_Spinney`
+    `https://muppet.fandom.com/wiki/Debra_Spinney`,
+    `https://oldschool.runescape.wiki/w/Abyssal_whip`
   ]
   for (const a of arr) {
     let doc = await wtf.fetch(a)
