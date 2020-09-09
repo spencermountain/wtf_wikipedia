@@ -5,10 +5,15 @@ const makeHeaders = function(options) {
     options['Api-User-Agent'] ||
     'User of the wtf_wikipedia library'
 
-  let origin =
-    options.origin ||
-    options['Origin'] ||
-    '*'
+  let origin
+  if (options.noOrigin) {
+    origin = ''
+  } else {
+    origin = 
+      options.origin ||
+      options.Origin ||
+      '*'
+  }
 
   const opts = {
     method: 'GET',
@@ -20,6 +25,7 @@ const makeHeaders = function(options) {
     },
     redirect: 'follow'
   }
+  console.log(opts)
   return opts
 }
 module.exports = makeHeaders
