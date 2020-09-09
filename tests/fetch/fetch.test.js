@@ -80,6 +80,22 @@ test('fetch-alternate-wiki', t => {
   })
 })
 
+test('fetch-alternate-wiki-with-no-origin', t => {
+  t.plan(1)
+  var p = wtf.fetch('Abyssal whip', {
+    'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
+    domain: 'oldschool.runescape.wiki',
+    noOrigin: true
+  })
+  p.then(function(doc) {
+    console.log(doc)
+    t.ok(doc.sections().length > 0, 'alternate wiki different origin success')
+  })
+  p.catch(function(e) {
+    t.throw(e)
+  })
+})
+
 //uncomment for testing on node>6
 test('ambiguous-pageids', async function(t) {
   var doc = await wtf.fetch(1984, 'en')
