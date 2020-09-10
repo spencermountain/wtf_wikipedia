@@ -2,6 +2,11 @@
 
 #### [unreleased]
 
+#### 8.5.0
+
+- fix for cross-domain 3rd-party wikis
+- improved support for fetching non-wikipedia domains
+
 #### 8.4.0
 
 - new `wikidata()` method
