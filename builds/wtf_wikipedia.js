@@ -3664,7 +3664,8 @@
     text: function text() {
       return ''; //nah, skip these.
     },
-    json: function json(options) {
+    json: function json() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var json = this.data || {}; //encode them, for mongodb
 
       if (options.encode === true) {

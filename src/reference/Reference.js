@@ -33,7 +33,7 @@ const methods = {
     return '' //nah, skip these.
   },
 
-  json: function (options) {
+  json: function (options = {}) {
     let json = this.data || {}
     //encode them, for mongodb
     if (options.encode === true) {
