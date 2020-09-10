@@ -1,4 +1,4 @@
-/* wtf_wikipedia 8.5.0 MIT */
+/* wtf_wikipedia 8.5.1 MIT */
 import https from 'https';
 
 var parseUrl = function parseUrl(url) {
@@ -3619,7 +3619,6 @@ var parser = function parser(tmpl, order, fmt) {
 
 var parse$3 = parser;
 
-//also called 'citations'
 var Reference = function Reference(data) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
@@ -3657,8 +3656,15 @@ var methods$5 = {
   text: function text() {
     return ''; //nah, skip these.
   },
-  json: function json() {
-    return this.data;
+  json: function json(options) {
+    var json = this.data || {}; //encode them, for mongodb
+
+    if (options.encode === true) {
+      json = Object.assign({}, json);
+      json = encode.encodeObj(json);
+    }
+
+    return json;
   }
 };
 Object.keys(methods$5).forEach(function (k) {
@@ -8976,7 +8982,7 @@ var fetchCategory = function fetchCategory(category, lang, options) {
 
 var category = fetchCategory;
 
-var _version = '8.5.0';
+var _version = '8.5.1';
 
 var wtf = function wtf(wiki, options) {
   return _01Document(wiki, options);
