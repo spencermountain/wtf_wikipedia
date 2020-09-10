@@ -1,11 +1,13 @@
-/* wtf_wikipedia 8.4.0 MIT */
+/* wtf_wikipedia 8.5.0 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('https')) :
   typeof define === 'function' && define.amd ? define(['https'], factory) :
-  (global = global || self, global.wtf = factory(global.https));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wtf = factory(global.https));
 }(this, (function (https) { 'use strict';
 
-  https = https && Object.prototype.hasOwnProperty.call(https, 'default') ? https['default'] : https;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var https__default = /*#__PURE__*/_interopDefaultLegacy(https);
 
   var parseUrl = function parseUrl(url) {
     var parsed = new URL(url); //eslint-disable-line
@@ -8724,7 +8726,7 @@
   var request = function request(url) {
     var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     return new Promise(function (resolve, reject) {
-      https.get(url, opts, function (resp) {
+      https__default['default'].get(url, opts, function (resp) {
         var data = ''; // A chunk of data has been recieved.
 
         resp.on('data', function (chunk) {
@@ -8749,13 +8751,21 @@
 
   var makeHeaders = function makeHeaders(options) {
     var agent = options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library';
+    var origin;
+
+    if (options.noOrigin) {
+      origin = '';
+    } else {
+      origin = options.origin || options.Origin || '*';
+    }
+
     var opts = {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'Api-User-Agent': agent,
         'User-Agent': agent,
-        Origin: '*'
+        Origin: origin
       },
       redirect: 'follow'
     };
@@ -8974,7 +8984,7 @@
 
   var category = fetchCategory;
 
-  var _version = '8.4.0';
+  var _version = '8.5.0';
 
   var wtf = function wtf(wiki, options) {
     return _01Document(wiki, options);

@@ -2,17 +2,17 @@ const test = require('tape')
 const wtf = require('../lib')
 
 function delay(time) {
-  return new Promise(function(resolve, reject) {
-    setTimeout(function() {
+  return new Promise(function (resolve) {
+    setTimeout(function () {
       resolve()
     }, time)
   })
 }
 
-test('test-array', async function(t) {
+test('test-array', async function (t) {
   let arr = [
     ['Toronto', 'Montreal'],
-    ['R', 'π']
+    ['R', 'π'],
   ]
   for (const a of arr) {
     let docs = await wtf.fetch(a)
