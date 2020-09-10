@@ -1,14 +1,14 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "8.5.0",
+  "version": "8.5.1",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
   "man": [
-    "./src/man/wtf_wikipedia.1"
+    "./builds/man/wtf_wikipedia.1"
   ],
   "main": "builds/wtf_wikipedia.js",
   "module": "builds/wtf_wikipedia.mjs",
