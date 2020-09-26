@@ -78,3 +78,17 @@ test('stock exchange SSE in list', function(t) {
   t.equal(obj[`traded_as`], 'sse: 122458 (bond)\n\nsse: 122470 (bond)', 'found stock SSE exchange in list')
   t.end()
 })
+
+
+test('stock exchange EuronextParis', function(t) {
+  var str = `
+  {{Infobox settlement
+  | traded_as = {{EuronextParis|MC|FR0000121014|XPAR}}
+  }}
+`
+  let obj = wtf(str)
+      .infobox(0)
+      .keyValue()
+  t.equal(obj[`traded_as`], 'euronextparis: MC FR0000121014', 'found EuronextParis')
+  t.end()
+})

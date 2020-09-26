@@ -26,6 +26,7 @@ const codes = {
   dse: 'dse', //https://en.wikipedia.org/wiki/Template:Dhaka_Stock_Exchange
   dfm: 'dfm', //https://en.wikipedia.org/wiki/Template:Dubai_Financial_Market
   euronext: 'euronext', //https://en.wikipedia.org/wiki/Template:Euronext
+  euronextparis: 'euronextparis', //https://en.wikipedia.org/wiki/Template:EuronextParis
   fwb: 'fwb', //https://en.wikipedia.org/wiki/Template:Frankfurt_Stock_Exchange
   fse: 'fse', //https://en.wikipedia.org/wiki/Template:Fukuoka_Stock_Exchange
   gse: 'gse', //https://en.wikipedia.org/wiki/Template:Ghana_Stock_Exchange
@@ -110,10 +111,10 @@ const parseStockExchange = (tmpl, list) => {
   return str
 }
 
-const currencies = {}
+const exchanges = {}
 //the others fit the same pattern..
 Object.keys(codes).forEach(k => {
-  currencies[k] = parseStockExchange
+  exchanges[k] = parseStockExchange
 })
 
-module.exports = currencies
+module.exports = exchanges
