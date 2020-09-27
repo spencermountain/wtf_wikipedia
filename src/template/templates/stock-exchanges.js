@@ -6,8 +6,10 @@ const codes = {
   amex: 'amex', //https://en.wikipedia.org/wiki/Template:NYSE_American
   asx: 'asx', //https://en.wikipedia.org/wiki/Template:Australian_Securities_Exchange
   athex: 'athex', //https://en.wikipedia.org/wiki/Template:Athens_Exchange
-  b3: 'b3', //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa
-  bbv: 'bbv', //https://en.wikipedia.org/wiki/Template:BBV
+  b3: 'b3', //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa (redirects to B3 (stock exchange))
+  'B3 (stock exchange)': 'B3 (stock exchange)', //https://en.wikipedia.org/wiki/Template:B3_(stock_exchange)
+  barbadosse: 'barbadosse', //https://en.wikipedia.org/wiki/Template:Barbados_Stock_Exchange
+  bbv: 'bbv', //https://en.wikipedia.org/wiki/Template:La_Paz_Stock_Exchange
   bcba: 'bcba', //https://en.wikipedia.org/wiki/Template:Buenos_Aires_Stock_Exchange
   bcs: 'bcs', //https://en.wikipedia.org/wiki/Template:Santiago_Stock_Exchange
   bhse: 'bhse', //https://en.wikipedia.org/wiki/Template:Bahrain_Bourse
@@ -40,6 +42,7 @@ const codes = {
   gtsm: 'gtsm', //https://en.wikipedia.org/wiki/Template:Gre_Tai_Securities_Market
   idx: 'idx', //https://en.wikipedia.org/wiki/Template:Indonesia_Stock_Exchange
   ise: 'ise', //https://en.wikipedia.org/wiki/Template:Irish_Stock_Exchange
+  iseq: 'iseq', //https://en.wikipedia.org/wiki/Template:Irish_Stock_Exchange
   isin: 'isin', //https://en.wikipedia.org/wiki/Template:ISIN
   jasdaq: 'jasdaq', //https://en.wikipedia.org/wiki/Template:JASDAQ
   jse: 'jse', //https://en.wikipedia.org/wiki/Template:Johannesburg_Stock_Exchange
@@ -48,6 +51,8 @@ const codes = {
   krx: 'krx', //https://en.wikipedia.org/wiki/Template:Korea_Exchange
   lse: 'lse', //https://en.wikipedia.org/wiki/Template:London_Stock_Exchange
   luxse: 'luxse', //https://en.wikipedia.org/wiki/Template:Luxembourg_Stock_Exchange
+  'malta stock exchange': 'malta stock exchange', //https://en.wikipedia.org/wiki/Template:Malta_Stock_Exchange
+  mai: 'mai', //https://en.wikipedia.org/wiki/Template:Market_for_Alternative_Investment
   mcx: 'mcx', //https://en.wikipedia.org/wiki/Template:Moscow_Exchange
   mutf: 'mutf', //https://en.wikipedia.org/wiki/Template:Mutual_fund
   myx: 'myx', //https://en.wikipedia.org/wiki/Template:Bursa_Malaysia
@@ -58,21 +63,27 @@ const codes = {
   nepse: 'nepse', //https://en.wikipedia.org/wiki/Template:Nepal_Stock_Exchange
   nex: 'nex', //https://en.wikipedia.org/wiki/Template:TSXV_NEX
   nse: 'nse', //https://en.wikipedia.org/wiki/Template:National_Stock_Exchange_of_India
+  newconnect: 'newconnect', //https://en.wikipedia.org/wiki/Template:NewConnect
   'nyse arca': 'nyse arca', //https://en.wikipedia.org/wiki/Template:NYSE_Arca
   nyse: 'nyse', //https://en.wikipedia.org/wiki/Template:New_York_Stock_Exchange
   nzx: 'nzx', //https://en.wikipedia.org/wiki/Template:New_Zealand_Exchange
   'omx baltic': 'omx baltic', //https://en.wikipedia.org/wiki/Template:OMX_Baltic
   omx: 'omx', //https://en.wikipedia.org/wiki/Template:OMX
   ose: 'ose', //https://en.wikipedia.org/wiki/Template:Oslo_Stock_Exchange
+  'otc expert': 'otc expert', //https://en.wikipedia.org/wiki/Template:OTC_Expert
+  'otc grey': 'otc grey', //https://en.wikipedia.org/wiki/template:grey_market
   'otc pink': 'otc pink', //https://en.wikipedia.org/wiki/Template:OTC_Pink
   otcqb: 'otcqb', //https://en.wikipedia.org/wiki/Template:OTCQB
   otcqx: 'otcqx', //https://en.wikipedia.org/wiki/Template:OTCQX
   'pfts ukraine stock exchange': 'pfts ukraine stock exchange', //https://en.wikipedia.org/wiki/Template:PFTS_Ukraine_Stock_Exchange
   'philippine stock exchange': 'philippine stock exchange', //https://en.wikipedia.org/wiki/Template:Philippine_Stock_Exchange
   prse: 'prse', //https://en.wikipedia.org/wiki/Template:Prague_Stock_Exchange
+  psx: 'psx', //https://en.wikipedia.org/wiki/Template:Pakistan_Stock_Exchange
+  karse: 'karse', //https://en.wikipedia.org/w/index.php?title=Template:Karse&redirect=no (redirects to psx)
   qe: 'qe', //https://en.wikipedia.org/wiki/Template:Qatar_Stock_Exchange
   'saudi stock exchange': 'saudi stock exchange', //https://en.wikipedia.org/wiki/Template:Saudi_Stock_Exchange
   sehk: 'sehk', //https://en.wikipedia.org/wiki/Template:Hong_Kong_Stock_Exchange
+  'Stock Exchange of Thailand': 'Stock Exchange of Thailand', //https://en.wikipedia.org/wiki/Template:Stock_Exchange_of_Thailand (alternative for SET)
   set: 'set', //https://en.wikipedia.org/wiki/Template:Stock_Exchange_of_Thailand
   sgx: 'sgx', //https://en.wikipedia.org/wiki/Template:Singapore_Exchange
   sse: 'sse', //https://en.wikipedia.org/wiki/Template:Shanghai_Stock_Exchange
@@ -100,8 +111,7 @@ const parseStockExchange = (tmpl, list) => {
     code = o.code
   }
   code = (code || '').toLowerCase()
-  let out = codes[code] || ''
-  let str = out
+  let str = codes[code] || ''
   if (o.ticketnumber) {
     str = `${str}: ${o.ticketnumber}`
   }
