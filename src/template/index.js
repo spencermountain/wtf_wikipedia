@@ -33,7 +33,7 @@ const allTemplates = function (section, doc) {
   // recursive template-parser
   const parseThem = function (obj, parent) {
     obj.parent = parent
-    // do tail-first recurion
+    // do tail-first recursion
     if (obj.children && obj.children.length > 0) {
       obj.children.forEach((ch) => parseThem(ch, obj))
     }
