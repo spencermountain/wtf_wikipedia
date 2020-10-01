@@ -20,16 +20,16 @@
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
     "build:all": "node ./scripts/buildAll.js",
-    "start": "node ./scripts/demo.js",
     "coverage": "node scripts/coverage.js",
-    "prepare": "for i in plugins/*/; do (cd \"$i\" && npm install) || exit 1; done",
-    "test": "TESTENV=dev node ./scripts/test.js",
-    "testb": "TESTENV=prod node ./scripts/test.js",
-    "test:fetch": "TESTENV=dev tape ./tests/fetch/*.test.js | tap-dancer",
-    "test:spec": "TESTENV=dev tape ./tests/fetch/*.test.js | tap-spec",
+    "lint": "eslint ./src/",
+    "postinstall": "npm-recursive-install --rootDir=plugins",
+    "start": "node ./scripts/demo.js",
+    "test": "cross-env TESTENV=dev && node ./scripts/test.js",
+    "test:fetch": "cross-env TESTENV=dev && tape ./tests/fetch/*.test.js | tap-dancer",
+    "test:spec": "cross-env TESTENV=dev && tape ./tests/fetch/*.test.js | tap-spec",
     "test:types": "ts-node ./tests/types/index.ts",
-    "watch": "amble ./scratch.js",
-    "lint": "eslint ./src/"
+    "testb": "cross-env TESTENV=prod && node ./scripts/test.js",
+    "watch": "amble ./scratch.js"
   },
   "bin": {
     "wtf_wikipedia": "./cli.js"
@@ -61,6 +61,8 @@
     "@babel/preset-env": "7.11.5",
     "@rollup/plugin-alias": "3.1.1",
     "amble": "1.1.0",
+    "cross-env": "^6.0.3",
+    "recursive-install": "^1.4.0",
     "rollup": "2.26.11",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-commonjs": "10.1.0",
