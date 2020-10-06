@@ -67,7 +67,7 @@ const isInfobox = function (name) {
   return false
 }
 
-//turns template data into good inforbox data
+//turns template data into good infobox data
 const fmtInfobox = function (obj = {}) {
   let m = obj.template.match(i18nReg)
   let type = obj.template

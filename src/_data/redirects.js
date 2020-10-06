@@ -1,7 +1,7 @@
 module.exports = [
   'adkas', //br
   'aýdaw',
-  'doorverwijzing',
+  'doorverwijzing', // nl
   'ohjaus',
   'patrz', //pl
   'přesměruj',

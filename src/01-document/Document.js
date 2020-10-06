@@ -52,8 +52,6 @@ const methods = {
   domain: function (str) {
     if (str !== undefined) {
       this.data.domain = str
-    } else {
-      // console.log(this.data)
     }
     return this.data.domain
   },
