@@ -13,6 +13,7 @@ const main = function(wiki, options) {
     title: options.title || null,
     pageID: options.pageID || options.id || null,
     namespace: options.namespace || options.ns || null,
+    lang: options.lang || options.language || null,
     type: 'page',
     wiki: wiki || '',
     categories: [],
