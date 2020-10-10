@@ -31,6 +31,7 @@
     "no-redeclare": 2,
     "radix": 1,
     "quotes": [
+
       0,
       "single",
       "avoid-escape"

@@ -24,7 +24,7 @@ const toJSON = function(doc, options) {
   }
   if (doc.isRedirect() === true) {
     data.isRedirect = true
-    data.redirectTo = doc.data.redirectTo
+    data.redirectTo = doc._redirectTo
     data.sections = []
   }
 

@@ -41,8 +41,8 @@ const oneImage = function (img, doc) {
   if (title) {
     let obj = {
       file: file,
-      lang: doc.lang,
-      domain: doc.domain,
+      lang: doc._lang,
+      domain: doc._domain,
     }
     //try to grab other metadata, too
     img = img.replace(/^\[\[/, '')

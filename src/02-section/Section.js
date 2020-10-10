@@ -172,9 +172,9 @@ const methods = {
     bads[this.title()] = true
     //remove children too
     this.children().forEach(sec => (bads[sec.title()] = true))
-    let arr = this.doc.data.sections
-    arr = arr.filter(sec => bads.hasOwnProperty(sec.title()) !== true)
-    this.doc.data.sections = arr
+    let sections = this.doc.sections()
+    sections = sections.filter(sec => bads.hasOwnProperty(sec.title()) !== true)
+    this.doc._sections = sections
     return this.doc
   },
 

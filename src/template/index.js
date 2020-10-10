@@ -64,7 +64,7 @@ const allTemplates = function (section, doc) {
       return false
     }
     if (isInfobox(obj) === true) {
-      obj.domain = doc.domain //
+      obj.domain = doc._domain
       section.infoboxes.push(new Infobox(obj))
       return false
     }

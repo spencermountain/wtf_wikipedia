@@ -21,11 +21,10 @@ const softRedirect = function(doc) {
 //turn a Doc object into a HTML string
 const toHtml = function(options) {
   options = Object.assign({}, defaults, options)
-  let data = this.data
   let html = ''
   //add page title
-  if (options.title === true && data.title) {
-    html += '<title>' + data.title + '</title>\n'
+  if (options.title === true && this._title) {
+    html += '<title>' + this._title + '</title>\n'
   }
   //if it's a redirect page, give it a 'soft landing':
   if (this.isRedirect() === true) {
@@ -40,7 +39,7 @@ const toHtml = function(options) {
   }
   //render each section
   if (options.sections === true || options.paragraphs === true || options.sentences === true) {
-    html += data.sections.map(s => s.html(options)).join('\n')
+    html += this.sections().map(s => s.html(options)).join('\n')
   }
   //default off
   if (options.references === true) {

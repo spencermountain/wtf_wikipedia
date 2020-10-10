@@ -3,6 +3,24 @@ const toJSON = require('./toJson')
 const disambig = require('./disambig')
 const setDefaults = require('../_lib/setDefaults')
 const Image = require('../image/Image')
+const redirects = require('./redirects')
+const preProcess = require('./preProcess')
+const parse = {
+  section: require('../02-section'),
+  categories: require('./categories')
+}
+
+const isArray = function (arr) {
+  return Object.prototype.toString.call(arr) === '[object Array]'
+}
+
+function aliasWrapper(aliasedFunction, clue) {
+  const res = aliasedFunction(clue || 0)
+  if (isArray(res)) {
+    return res[0]
+  }
+  return res
+}
 
 const defaults = {
   tables: true,
@@ -10,24 +28,54 @@ const defaults = {
   paragraphs: true,
 }
 
-//
-const Document = function (data) {
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data,
-  })
-}
+class Document {
+  constructor(wiki, options) {
+    options = options || {}
+    this._title = options.title || null;
+    this._pageID = options.pageID || options.id || null;
+    this._namespace = options.namespace || options.ns || null;
+    this._lang = options.lang || options.language || null;
+    this._domain = options.domain || null;
+    this._type = 'page'
+    this._redirectTo = null;
+    this._wikidata = options.wikidata || null;
+    this._wiki = wiki || '';
+    this._categories = [];
+    this._sections = [];
+    this._coordinates = [];
 
-const methods = {
-  title: function (str) {
+    //detect if page is just redirect, and return it
+    if (redirects.isRedirect(this._wiki) === true) {
+      this._type = 'redirect'
+      this._redirectTo = redirects.parse(this._wiki)
+
+      const [categories, newWiki] = parse.categories(this._wiki);
+      this._categories = categories;
+      this._wiki = newWiki;
+      return;
+    }
+
+    //give ourselves a little head-start
+    this._wiki = preProcess(this._wiki)
+
+    //pull-out [[category:whatevers]]
+    const [categories, newWiki] = parse.categories(this._wiki);
+    this._categories = categories;
+    this._wiki = newWiki;
+
+    //parse all the headings, and their texts/sentences
+    this._sections = parse.section(this)
+  }
+
+  title(str) {
     //use like a setter
     if (str !== undefined) {
-      this.data.title = str
+      this._title = str
       return str
     }
     //if we have it already
-    if (this.data.title) {
-      return this.data.title
+    if (this._title) {
+      return this._title
     }
     //guess the title of this page from first sentence bolding
     let guess = null
@@ -36,32 +84,41 @@ const methods = {
       guess = sen.bolds(0)
     }
     return guess
-  },
-  pageID: function (id) {
+  }
+
+  pageID(id) {
     if (id !== undefined) {
-      this.data.pageID = id
+      this._pageID = id
     }
-    return this.data.pageID
-  },
-  wikidata: function (id) {
+    return this._pageID
+  }
+
+  wikidata(id) {
     if (id !== undefined) {
-      this.data.wikidata = id
+      this._wikidata = id
     }
-    return this.data.wikidata
-  },
-  domain: function (str) {
+    return this._wikidata
+  }
+
+  domain(str) {
     if (str !== undefined) {
-      this.data.domain = str
+      this._domain = str
     }
-    return this.data.domain
-  },
-  language: function (lang) {
+    return this._domain
+  }
+
+  language(lang) {
     if (lang !== undefined) {
-      this.data.lang = lang
+      this._lang = lang
     }
-    return this.data.lang
-  },
-  url: function () {
+    return this._lang
+  }
+
+  lang(lang) {
+    return this.language(lang)
+  }
+
+  url() {
     let title = this.title()
     if (!title) {
       return null
@@ -72,31 +129,62 @@ const methods = {
     title = title.replace(/ /g, '_')
     title = encodeURIComponent(title)
     return `https://${lang}.${domain}/wiki/${title}`
-  },
-  namespace: function (ns) {
+  }
+
+  namespace(ns) {
     if (ns !== undefined) {
-      this.data.namespace = ns
+      this._namespace = ns
     }
-    return this.data.namespace
-  },
-  isRedirect: function () {
-    return this.data.type === 'redirect'
-  },
-  redirectTo: function () {
-    return this.data.redirectTo
-  },
-  isDisambiguation: function () {
+    return this._namespace
+  }
+
+  ns(ns) {
+    return this.namespace(ns);
+  }
+
+  isRedirect() {
+    return this._type === 'redirect'
+  }
+
+  redirectTo() {
+    return this._redirectTo
+  }
+
+  redirectsTo() {
+    return this.redirectTo();
+  }
+
+  redirect() {
+    return this.redirectTo();
+  }
+
+  redirects() {
+    return this.redirectTo();
+  }
+
+  isDisambiguation() {
     return disambig(this)
-  },
-  categories: function (clue) {
+  }
+
+  isDisambig() {
+    return this.isDisambiguation();
+  }
+
+  categories(clue) {
     if (typeof clue === 'number') {
-      return this.data.categories[clue]
+      return this._categories[clue]
     }
-    return this.data.categories || []
-  },
-  sections: function (clue) {
-    let arr = this.data.sections || []
+    return this._categories || []
+  }
+
+  category(clue) {
+    return aliasWrapper(this.categories.bind(this), clue);
+  }
+
+  sections(clue) {
+    let arr = this._sections || []
     arr.forEach((sec) => (sec.doc = this))
+
     //grab a specific section, by its title
     if (typeof clue === 'string') {
       let str = clue.toLowerCase().trim()
@@ -104,29 +192,38 @@ const methods = {
         return s.title().toLowerCase() === str
       })
     }
+
     if (typeof clue === 'number') {
       return arr[clue]
     }
+
     return arr
-  },
-  paragraphs: function (n) {
+  }
+
+  section(clue) {
+    return aliasWrapper(this.sections.bind(this), clue);
+  }
+
+  paragraphs(n) {
     let arr = []
-    this.data.sections.forEach((s) => {
+    this.sections().forEach((s) => {
       arr = arr.concat(s.paragraphs())
     })
     if (typeof n === 'number') {
       return arr[n]
     }
     return arr
-  },
-  paragraph: function (n) {
+  }
+
+  paragraph(n) {
     let arr = this.paragraphs() || []
     if (typeof n === 'number') {
       return arr[n]
     }
     return arr[0]
-  },
-  sentences: function (n) {
+  }
+
+  sentences(n) {
     let arr = []
     this.sections().forEach((sec) => {
       arr = arr.concat(sec.sentences())
@@ -135,11 +232,13 @@ const methods = {
       return arr[n]
     }
     return arr
-  },
-  sentence: function () {
-    return this.sentences(0)
-  },
-  images: function (clue) {
+  }
+
+  sentence(clue) {
+    return aliasWrapper(this.sentences.bind(this), clue);
+  }
+
+  images(clue) {
     let arr = sectionMap(this, 'images', null)
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
@@ -153,7 +252,7 @@ const methods = {
       if (obj.template === 'gallery') {
         obj.images = obj.images || []
         obj.images.forEach((img) => {
-          if (img instanceof Image === false) {
+          if (!(img instanceof Image)) {
             img.language = this.language()
             img.domain = this.domain()
             img = new Image(img)
@@ -166,32 +265,73 @@ const methods = {
       return arr[clue]
     }
     return arr
-  },
-  image: function () {
-    return this.images(0)
-  },
-  links: function (clue) {
+  }
+
+  image(clue) {
+    return aliasWrapper(this.images.bind(this), clue);
+  }
+
+  links(clue) {
     return sectionMap(this, 'links', clue)
-  },
-  interwiki: function (clue) {
+  }
+
+  link(clue) {
+    return aliasWrapper(this.links.bind(this), clue);
+  }
+
+  interwiki(clue) {
     return sectionMap(this, 'interwiki', clue)
-  },
-  lists: function (clue) {
+  }
+
+  lists(clue) {
     return sectionMap(this, 'lists', clue)
-  },
-  tables: function (clue) {
+  }
+
+  list(clue) {
+    return aliasWrapper(this.lists.bind(this), clue);
+  }
+
+  tables(clue) {
     return sectionMap(this, 'tables', clue)
-  },
-  templates: function (clue) {
+  }
+
+  table(clue) {
+    return aliasWrapper(this.tables.bind(this), clue);
+  }
+
+  templates(clue) {
     return sectionMap(this, 'templates', clue)
-  },
-  references: function (clue) {
+  }
+
+  template(clue) {
+    return aliasWrapper(this.templates.bind(this), clue);
+  }
+
+  references(clue) {
     return sectionMap(this, 'references', clue)
-  },
-  coordinates: function (clue) {
+  }
+
+  reference(clue) {
+    return aliasWrapper(this.references.bind(this), clue);
+  }
+
+  citations(clue) {
+    return this.references(clue);
+  }
+
+  citation(clue) {
+    return aliasWrapper(this.references.bind(this), clue);
+  }
+
+  coordinates(clue) {
     return sectionMap(this, 'coordinates', clue)
-  },
-  infoboxes: function (clue) {
+  }
+
+  coordinate(clue) {
+    return aliasWrapper(this.coordinates.bind(this), clue);
+  }
+
+  infoboxes(clue) {
     let arr = sectionMap(this, 'infoboxes')
     //sort them by biggest-first
     arr = arr.sort((a, b) => {
@@ -204,8 +344,13 @@ const methods = {
       return arr[clue]
     }
     return arr
-  },
-  text: function (options) {
+  }
+
+  infobox(clue) {
+    return aliasWrapper(this.infoboxes.bind(this), clue);
+  }
+
+  text(options) {
     options = setDefaults(options, defaults)
     //nah, skip these.
     if (this.isRedirect() === true) {
@@ -213,12 +358,18 @@ const methods = {
     }
     let arr = this.sections().map((sec) => sec.text(options))
     return arr.join('\n\n')
-  },
-  json: function (options) {
+  }
+
+  plaintext(options) {
+    return this.text(options);
+  }
+
+  json(options) {
     options = setDefaults(options, defaults)
     return toJSON(this, options)
-  },
-  debug: function () {
+  }
+
+  debug() {
     console.log('\n')
     this.sections().forEach((sec) => {
       let indent = ' - '
@@ -228,53 +379,7 @@ const methods = {
       console.log(indent + (sec.title() || '(Intro)'))
     })
     return this
-  },
-}
-
-const isArray = function (arr) {
-  return Object.prototype.toString.call(arr) === '[object Array]'
-}
-//add singular-methods, too
-let plurals = [
-  'sections',
-  'infoboxes',
-  'sentences',
-  'citations',
-  'references',
-  'coordinates',
-  'tables',
-  'lists',
-  'links',
-  'images',
-  'templates',
-  'categories',
-]
-plurals.forEach((fn) => {
-  let sing = fn.replace(/ies$/, 'y')
-  sing = sing.replace(/oxes$/, 'ox')
-  sing = sing.replace(/s$/, '')
-  methods[sing] = function (n) {
-    n = n || 0
-    let res = this[fn](n)
-    if (isArray(res)) {
-      return res[0]
-    }
-    return res
   }
-})
-
-Object.keys(methods).forEach((k) => {
-  Document.prototype[k] = methods[k]
-})
-
-//alias these ones
-Document.prototype.lang = Document.prototype.language
-Document.prototype.ns = Document.prototype.namespace
-Document.prototype.plaintext = Document.prototype.text
-Document.prototype.isDisambig = Document.prototype.isDisambiguation
-Document.prototype.citations = Document.prototype.references
-Document.prototype.redirectsTo = Document.prototype.redirectTo
-Document.prototype.redirect = Document.prototype.redirectTo
-Document.prototype.redirects = Document.prototype.redirectTo
+}
 
 module.exports = Document
