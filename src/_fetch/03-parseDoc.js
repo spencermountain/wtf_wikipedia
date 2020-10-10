@@ -1,10 +1,10 @@
-const wtf = require('../01-document')
+const Document = require('../01-document/Document')
 
 // flip response object into proper Doc objs
 const parseDoc = function(res) {
   res = res.filter(o => o)
   let docs = res.map(o => {
-    return wtf(o.wiki, o.meta)
+    return new Document(o.wiki, o.meta)
   })
   if (docs.length === 0) {
     return null

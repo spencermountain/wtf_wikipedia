@@ -1,12 +1,17 @@
 {
   "env": {
-    "es6": true
+    "es6": true,
+    "browser": true,
+    "node": true
   },
   "parserOptions": {
     "ecmaVersion": 2017,
     "sourceType": "module",
     "ecmaFeatures": {}
   },
+  "extends": [
+    "plugin:compat/recommended"
+  ],
   "rules": {
     "no-cond-assign": 2,
     "no-var": 0,
@@ -21,7 +26,11 @@
     "no-redeclare": 2,
     "radix": 1,
     "indent": 0,
-    "quotes": [0, "single", "avoid-escape"],
+    "quotes": [
+      0,
+      "single",
+      "avoid-escape"
+    ],
     "no-shadow": 2,
     "no-unused-vars": 1,
     "no-lonely-if": 1,
@@ -33,21 +42,10 @@
     "no-octal-escape": 2,
     "no-constant-condition": 1,
     "no-unused-expressions": 2,
-    "comma-dangle": [1, "only-multiline"],
+    "comma-dangle": [
+      1,
+      "only-multiline"
+    ],
     "space-before-function-paren": 0
-  },
-  "globals": {
-    "process": true,
-    "require": true,
-    "console": true,
-    "module": true,
-    "exports": true,
-    "setInterval": true,
-    "setTimeout": true,
-    "global": true,
-    "clearInterval": true,
-    "clearTimeout": true,
-    "__dirname": true,
-    "__pathname": true
   }
 }

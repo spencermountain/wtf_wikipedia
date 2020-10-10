@@ -54,9 +54,9 @@ test('pageID - get / set - if the pageID is set then it should return the same '
 })
 
 // wikidata
-test('wikidata - get - should initially be undefined', (t) => {
+test('wikidata - get - should initially be null', (t) => {
   let doc = wtf('')
-  t.equal(doc.wikidata(), undefined, 'the wikidata equals undefined')
+  t.equal(doc.wikidata(), null, 'the wikidata equals null')
   t.end()
 })
 
@@ -74,9 +74,9 @@ test('wikidata - get / set - if the wikidata is set then it should return the sa
 })
 
 // domain
-test('domain - get - should initially be undefined', (t) => {
+test('domain - get - should initially be null', (t) => {
   let doc = wtf('')
-  t.equal(doc.domain(), undefined, 'the domain equals undefined')
+  t.equal(doc.domain(), null, 'the null equals undefined')
   t.end()
 })
 
@@ -184,9 +184,9 @@ test('isRedirect - get - if the page is too long to be a redirect page than retu
 
 
 // redirectTo
-test('redirectTo - get - should initially be undefined', (t) => {
+test('redirectTo - get - should initially be null', (t) => {
   let doc = wtf('')
-  t.equal(doc.redirectTo(), undefined, 'the redirectTo equals undefined')
+  t.equal(doc.redirectTo(), null, 'the redirectTo equals null')
   t.end()
 })
 

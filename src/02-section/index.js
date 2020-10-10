@@ -49,7 +49,7 @@ const removeReferenceSection = function (sections) {
 
 const parseSections = function (doc) {
   let sections = []
-  let split = doc.wiki.split(section_reg)
+  let split = doc._wiki.split(section_reg)
   for (let i = 0; i < split.length; i += 2) {
     let heading = split[i - 1] || ''
     let wiki = split[i] || ''
@@ -73,7 +73,7 @@ const parseSections = function (doc) {
     sections.push(s)
   }
   //remove empty references section
-  doc.sections = removeReferenceSection(sections)
+  return removeReferenceSection(sections)
 }
 
 module.exports = parseSections

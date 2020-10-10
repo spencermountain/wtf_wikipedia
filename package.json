@@ -37,8 +37,17 @@
     "wtf_wikipedia": "./cli.js"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=7.0.0"
   },
+  "browserslist": [
+    "defaults",
+    "not ie <= 11",
+    "not op_mini all",
+    "node 7",
+    "node 8",
+    "node 9",
+    "maintained node versions"
+  ],
   "files": [
     "builds",
     "src",
@@ -65,6 +74,8 @@
     "amble": "1.1.0",
     "codecov": "3.7.2",
     "cross-env": "6.0.3",
+    "eslint": "^7.10.0",
+    "eslint-plugin-compat": "^3.8.0",
     "nyc": "^15.1.0",
     "recursive-install": "1.4.0",
     "rollup": "2.26.11",

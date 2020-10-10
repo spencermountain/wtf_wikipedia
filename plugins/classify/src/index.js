@@ -29,6 +29,7 @@ const plugin = function (models) {
 
     //look for 'foo (film)'
     res.title = byTitle(doc, options)
+
     //look for 'foo (film)'
     res.description = byDescription(doc, options)
 
