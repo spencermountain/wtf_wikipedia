@@ -93,7 +93,7 @@ test('domain - get / set - if the domain is set then it should return the same '
   t.end()
 })
 
-// language
+// language  - Same test as lang
 test('language - get - should initially be null', (t) => {
   let doc = wtf('')
   t.equal(doc.language(), null, 'the language equals null')
@@ -112,6 +112,27 @@ test('language - get / set - if the language is set then it should return the sa
   t.equal(doc.language(), 'nl', 'the language equals \'nl\'')
   t.end()
 })
+
+// lang - Same test as language
+test('lang - get - should initially be null', (t) => {
+  let doc = wtf('')
+  t.equal(doc.lang(), null, 'the lang equals null')
+  t.end()
+})
+
+test('lang - get - if the lang is already set than get it from internal object', (t) => {
+  let doc = wtf('', {language: 'nl'})
+  t.equal(doc.lang(), 'nl', 'the lang equals \'nl\'')
+  t.end()
+})
+
+test('lang - get / set - if the lang is set then it should return the same ', (t) => {
+  let doc = wtf('')
+  doc.lang('nl')
+  t.equal(doc.lang(), 'nl', 'the lang equals \'nl\'')
+  t.end()
+})
+
 // url
 test('url - get - if there is no title return null', (t) => {
   let doc = wtf('')
@@ -131,7 +152,7 @@ test('url - get - if lang and domain are set then use them', (t) => {
   t.end()
 })
 
-// namespace
+// namespace  - same test as ns
 test('namespace - get - should initially be null', (t) => {
   let doc = wtf('')
   t.equal(doc.namespace(), null, 'the namespace equals null')
@@ -153,7 +174,33 @@ test('namespace - get - if the namespace is already set the other way than get i
 test('namespace - get / set - if the namespace is set then it should return the same ', (t) => {
   let doc = wtf('')
   doc.namespace('talk')
-  t.equal(doc.namespace(), 'talk', 'the namespace equals \'wikidata.org\'')
+  t.equal(doc.namespace(), 'talk', 'the namespace equals \'talk\'')
+  t.end()
+})
+
+// ns - same test as namespace
+test('ns - get - should initially be null', (t) => {
+  let doc = wtf('')
+  t.equal(doc.ns(), null, 'the ns equals null')
+  t.end()
+})
+
+test('ns - get - if the ns is already set than get it from internal object', (t) => {
+  let doc = wtf('', {ns: 'talk'})
+  t.equal(doc.ns(), 'talk', 'the ns equals \'talk\'')
+  t.end()
+})
+
+test('ns - get - if the ns is already set the other way than get it from internal object', (t) => {
+  let doc = wtf('', {ns: 'talk'})
+  t.equal(doc.ns(), 'talk', 'the ns equals \'talk\'')
+  t.end()
+})
+
+test('ns - get / set - if the ns is set then it should return the same ', (t) => {
+  let doc = wtf('')
+  doc.ns('talk')
+  t.equal(doc.ns(), 'talk', 'the ns equals \'talk\'')
   t.end()
 })
 
@@ -183,7 +230,7 @@ test('isRedirect - get - if the page is too long to be a redirect page than retu
 })
 
 
-// redirectTo
+// redirectTo -- same as redirectsTo & redirect & redirects
 test('redirectTo - get - should initially be null', (t) => {
   let doc = wtf('')
   t.equal(doc.redirectTo(), null, 'the redirectTo equals null')
@@ -196,7 +243,46 @@ test('redirectTo - get - if the page is a redirect than return the target page',
   t.end()
 })
 
-// isDisambiguation
+// redirectsTo -- same as redirectTo
+test('redirectsTo - get - should initially be null', (t) => {
+  let doc = wtf('')
+  t.equal(doc.redirectsTo(), null, 'the redirectsTo equals null')
+  t.end()
+})
+
+test('redirectsTo - get - if the page is a redirect than return the target page', (t) => {
+  let doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
+  t.deepEqual(doc.redirectsTo(), {page: 'Doelpagina', raw: '[[Doelpagina]]'}, 'the redirectsTo equals \'Doelpagina\'')
+  t.end()
+})
+
+// redirect -- same as redirectTo
+test('redirect - get - should initially be null', (t) => {
+  let doc = wtf('')
+  t.equal(doc.redirect(), null, 'the redirect equals null')
+  t.end()
+})
+
+test('redirect - get - if the page is a redirect than return the target page', (t) => {
+  let doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
+  t.deepEqual(doc.redirect(), {page: 'Doelpagina', raw: '[[Doelpagina]]'}, 'the redirect equals \'Doelpagina\'')
+  t.end()
+})
+
+// redirects -- same as redirectTo
+test('redirects - get - should initially be null', (t) => {
+  let doc = wtf('')
+  t.equal(doc.redirects(), null, 'the redirects equals null')
+  t.end()
+})
+
+test('redirects - get - if the page is a redirect than return the target page', (t) => {
+  let doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
+  t.deepEqual(doc.redirects(), {page: 'Doelpagina', raw: '[[Doelpagina]]'}, 'the redirects equals \'Doelpagina\'')
+  t.end()
+})
+
+// isDisambiguation -- same as isDisambig
 test('isDisambiguation - get - if the page is not a Disambiguation page than return false', (t) => {
   let doc = wtf('not disambiguation')
   t.equal(doc.isDisambiguation(), false, 'the isDisambiguation equals false')
@@ -206,6 +292,19 @@ test('isDisambiguation - get - if the page is not a Disambiguation page than ret
 test('isDisambiguation - get - if the page is a Disambiguation page than return true', (t) => {
   let doc = wtf('{{dp}}')
   t.equal(doc.isDisambiguation(), true, 'the isDisambiguation equals true')
+  t.end()
+})
+
+// isDisambig -- same as isDisambiguation
+test('isDisambig - get - if the page is not a Disambiguation page than return false', (t) => {
+  let doc = wtf('not disambiguation')
+  t.equal(doc.isDisambig(), false, 'the isDisambig equals false')
+  t.end()
+})
+
+test('isDisambig - get - if the page is a Disambiguation page than return true', (t) => {
+  let doc = wtf('{{dp}}')
+  t.equal(doc.isDisambig(), true, 'the isDisambig equals true')
   t.end()
 })
 
@@ -658,7 +757,7 @@ test('templates - get - return all templates', (t) => {
   const expected = [13, 12, 5, 4, 4, 7, 7, 18];
 
   // I used the length of the paragraphs as an analogue for the content.
-  t.deepEqual(doc.templates().map(t => t.template.length), expected, 'returns all templates')
+  t.deepEqual(doc.templates().map(te => te.template.length), expected, 'returns all templates')
   t.end()
 })
 
@@ -678,11 +777,11 @@ test('templates - get - if the clue is any other type then return all templates'
   const expected = [13, 12, 5, 4, 4, 7, 7, 18];
 
   // I used the length of the paragraphs as an analogue for the content.
-  t.deepEqual(doc.templates().map(t => t.template.length), expected, 'returns all templates')
+  t.deepEqual(doc.templates().map(te => te.template.length), expected, 'returns all templates')
   t.end()
 })
 
-// references
+// references -- same as citations
 test('references - get - return all templates', (t) => {
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
   let doc = wtf(str)
@@ -690,7 +789,7 @@ test('references - get - return all templates', (t) => {
   const expected = [19, 3, 33, 32, 44, 0, 0, 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 31, 71, 0, 0, 0, 0, 0, 0, 0, 13, 13, 0, 0, 10, 0, 0, 0];
 
   // I used the length of the paragraphs as an analogue for the content.
-  t.deepEqual(doc.references().map(t => t.title().length), expected, 'returns all references')
+  t.deepEqual(doc.references().map(r => r.title().length), expected, 'returns all references')
   t.end()
 })
 
@@ -710,7 +809,39 @@ test('references - get - if the clue is any other type then return all reference
   const expected = [19, 3, 33, 32, 44, 0, 0, 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 31, 71, 0, 0, 0, 0, 0, 0, 0, 13, 13, 0, 0, 10, 0, 0, 0];
 
   // I used the length of the paragraphs as an analogue for the content.
-  t.deepEqual(doc.references("string").map(t => t.title().length), expected, 'returns all references')
+  t.deepEqual(doc.references("string").map(re => re.title().length), expected, 'returns all references')
+  t.end()
+})
+
+// citations -- same as references
+test('citations - get - return all templates', (t) => {
+  let str = fs.readFileSync(path.join(__dirname, 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
+  let doc = wtf(str)
+
+  const expected = [19, 3, 33, 32, 44, 0, 0, 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 31, 71, 0, 0, 0, 0, 0, 0, 0, 13, 13, 0, 0, 10, 0, 0, 0];
+
+  // I used the length of the paragraphs as an analogue for the content.
+  t.deepEqual(doc.citations().map(c => c.title().length), expected, 'returns all citations')
+  t.end()
+})
+
+test('citations - get - if the clue is a number return the citations at that index', (t) => {
+  let str = fs.readFileSync(path.join(__dirname, 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
+  let doc = wtf(str)
+
+  // I used the length of the paragraphs as an analogue for the content.
+  t.deepEqual(doc.citations(1).title().length, 3, 'the citations at index 1')
+  t.end()
+})
+
+test('citations - get - if the clue is any other type then return all references', (t) => {
+  let str = fs.readFileSync(path.join(__dirname, 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
+  let doc = wtf(str)
+
+  const expected = [19, 3, 33, 32, 44, 0, 0, 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 31, 71, 0, 0, 0, 0, 0, 0, 0, 13, 13, 0, 0, 10, 0, 0, 0];
+
+  // I used the length of the paragraphs as an analogue for the content.
+  t.deepEqual(doc.citations("string").map(ci => ci.title().length), expected, 'returns all citations')
   t.end()
 })
 
@@ -815,7 +946,7 @@ test('references - get - return all templates', (t) => {
   const expected = [201, 201, 89];
 
   // I used the length of the paragraphs as an analogue for the content.
-  t.deepEqual(doc.infoboxes().map(t => JSON.stringify(t.json()).length), expected, 'returns all references')
+  t.deepEqual(doc.infoboxes().map(i => JSON.stringify(i.json()).length), expected, 'returns all references')
   t.end()
 })
 
@@ -833,7 +964,7 @@ test('references - get - if the clue is any other type then return all reference
   const expected = [201, 201, 89];
 
   // I used the length of the paragraphs as an analogue for the content.
-  t.deepEqual(doc.infoboxes("string").map(t => JSON.stringify(t.json()).length), expected, 'returns all references')
+  t.deepEqual(doc.infoboxes("string").map(info => JSON.stringify(info.json()).length), expected, 'returns all references')
   t.end()
 })
 
@@ -843,7 +974,7 @@ test('text - get - get the text version of the document', (t) => {
   let doc = wtf(str)
 
   const expected = 'Remote Data Services (RDS, formerly known as Advanced Data Connector or ADC) is a Microsoft technology used in conjunction with ActiveX Data Objects (ADO) that allowed the retrieval of a set of data from a database server, which the client then altered in some way and then sent back to the server for further processing. With the popular adoption of Transact-SQL, which extends SQL with such programming constructs as loops and conditional statements, this became less necessary and it was eventually deprecated in Microsoft Data Access Components version 2.7. Microsoft produced SOAP Toolkit 2.0, which allows clients to do this via an open XML-based standard.\n\n\n * MSDN Remote Data Service (RDS) description';
-  t.deepEqual(doc.text(), expected, 'version of the document')
+  t.deepEqual(doc.text(), expected, 'Text version of the document')
   t.end()
 })
 
@@ -853,6 +984,25 @@ test('text - get - enpty string for redirects', (t) => {
   const expected = '';
 
   t.deepEqual(doc.text(), expected, 'empty string')
+  t.end()
+})
+
+// plaintext -- same as text
+test('plaintext - get - get the plaintext version of the document', (t) => {
+  let str = fs.readFileSync(path.join(__dirname, 'cache', 'Remote-Data-Services.txt'), 'utf-8')
+  let doc = wtf(str)
+
+  const expected = 'Remote Data Services (RDS, formerly known as Advanced Data Connector or ADC) is a Microsoft technology used in conjunction with ActiveX Data Objects (ADO) that allowed the retrieval of a set of data from a database server, which the client then altered in some way and then sent back to the server for further processing. With the popular adoption of Transact-SQL, which extends SQL with such programming constructs as loops and conditional statements, this became less necessary and it was eventually deprecated in Microsoft Data Access Components version 2.7. Microsoft produced SOAP Toolkit 2.0, which allows clients to do this via an open XML-based standard.\n\n\n * MSDN Remote Data Service (RDS) description';
+  t.deepEqual(doc.plaintext(), expected, 'Text version of the document')
+  t.end()
+})
+
+test('plaintext - get - enpty string for redirects', (t) => {
+  let doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
+
+  const expected = '';
+
+  t.deepEqual(doc.plaintext(), expected, 'empty string')
   t.end()
 })
 
