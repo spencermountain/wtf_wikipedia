@@ -1,7 +1,7 @@
 const parseTemplates = require('../../template')
 //this is a non-traditional template, for some reason
 //https://en.wikipedia.org/wiki/Template:Election_box
-const parseElection = function(section) {
+const parseElection = function (section) {
   let wiki = section.wiki
   wiki = wiki.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, tmpl => {
     let data = {

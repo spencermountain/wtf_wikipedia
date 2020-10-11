@@ -1,11 +1,11 @@
 const parseTable = require('./parse')
 const Table = require('./Table')
-// const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70kchars.
+//const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70k chars.
 const openReg = /^\s*{\|/
 const closeReg = /^\s*\|}/
 
 //tables can be recursive, so looky-here.
-const findTables = function(section) {
+const findTables = function (section) {
   let list = []
   let wiki = section.wiki
   let lines = wiki.split('\n')

@@ -9,8 +9,8 @@ Object.keys(languages).forEach(k => {
 })
 
 //this is predictably very complicated.
-// https://meta.wikimedia.org/wiki/Help:Interwiki_linking
-const parseInterwiki = function(obj) {
+//https://meta.wikimedia.org/wiki/Help:Interwiki_linking
+const parseInterwiki = function (obj) {
   let str = obj.page || ''
   if (str.indexOf(':') !== -1) {
     let m = str.match(/^(.*):(.*)/)
@@ -27,7 +27,7 @@ const parseInterwiki = function(obj) {
       ) {
         return obj
       }
-      obj.wiki = { wiki: wiki, lang: lang }
+      obj.wiki = {wiki: wiki, lang: lang}
     } else {
       if (interwikis.hasOwnProperty(site) === false) {
         return obj

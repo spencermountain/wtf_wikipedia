@@ -94,7 +94,7 @@ const inline = {
     let obj = parse(tmpl, ['text'])
     return `[[${obj.text}-class lifeboat|${obj.text}]]`
   },
-  // https://en.wikipedia.org/wiki/Template:Own
+  //https://en.wikipedia.org/wiki/Template:Own
   own: tmpl => {
     let obj = parse(tmpl, ['author'])
     let str = 'Own work'

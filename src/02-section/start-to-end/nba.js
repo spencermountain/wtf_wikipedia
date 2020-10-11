@@ -6,7 +6,7 @@ const keys = {
 }
 
 //https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
-const parseNBA = function(section) {
+const parseNBA = function (section) {
   let wiki = section.wiki
   wiki = wiki.replace(/\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi, (tmpl, name) => {
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')

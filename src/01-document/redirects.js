@@ -3,10 +3,10 @@ const parseLink = require('../link/parse')
 //pulls target link out of redirect page
 const REDIRECT_REGEX = new RegExp(
   '^[ \n\t]*?#(' + i18n.redirects.join('|') + ') *?(\\[\\[.{2,180}?\\]\\])',
-  'i'
+  'i',
 )
 
-const isRedirect = function(wiki) {
+const isRedirect = function (wiki) {
   //too long to be a redirect?
   if (!wiki || wiki.length > 500) {
     return false
@@ -14,7 +14,7 @@ const isRedirect = function(wiki) {
   return REDIRECT_REGEX.test(wiki)
 }
 
-const parse = function(wiki) {
+const parse = function (wiki) {
   let m = wiki.match(REDIRECT_REGEX)
   if (m && m[2]) {
     let links = parseLink(m[2]) || []
@@ -25,5 +25,5 @@ const parse = function(wiki) {
 
 module.exports = {
   isRedirect: isRedirect,
-  parse: parse
+  parse: parse,
 }

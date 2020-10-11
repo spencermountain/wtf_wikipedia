@@ -6,8 +6,8 @@ const pipeSplitter = require('./01-pipe-splitter')
 const keyMaker = require('./02-keyMaker')
 const cleanup = require('./03-cleanup')
 
-// most templates just want plaintext...
-const makeFormat = function(str, fmt) {
+//most templates just want plaintext...
+const makeFormat = function (str, fmt) {
   let s = parseSentence(str)
   //support various output formats
   if (fmt === 'json') {
@@ -20,7 +20,7 @@ const makeFormat = function(str, fmt) {
 }
 
 //
-const parser = function(tmpl, order, fmt) {
+const parser = function (tmpl, order, fmt) {
   order = order || []
   //renomove {{}}'s
   tmpl = strip(tmpl || '')
@@ -32,7 +32,7 @@ const parser = function(tmpl, order, fmt) {
   //remove wiki-junk
   obj = cleanup(obj)
   //is this a infobox/reference?
-  // let known = isKnown(obj);
+  //let known = isKnown(obj);
 
   //using '|1=content' is an escaping-thing..
   if (obj['1'] && order[0] && obj.hasOwnProperty(order[0]) === false) {

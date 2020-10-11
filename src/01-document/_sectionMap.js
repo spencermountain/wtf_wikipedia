@@ -17,4 +17,5 @@ const sectionMap = function(doc, fn, clue) {
   }
   return arr
 }
+
 module.exports = sectionMap

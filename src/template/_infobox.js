@@ -9,8 +9,8 @@ const endReg = / infobox$/i
 const yearIn = /$Year in [A-Z]/i
 
 //some known ones from
-// https://en.wikipedia.org/wiki/Wikipedia:List_of_infoboxes
-// and https://en.wikipedia.org/wiki/Category:Infobox_templates
+//https://en.wikipedia.org/wiki/Wikipedia:List_of_infoboxes
+//and https://en.wikipedia.org/wiki/Category:Infobox_templates
 const known = {
   'gnf protein box': true,
   'automatic taxobox': true,
@@ -50,7 +50,7 @@ const known = {
 }
 //
 const isInfobox = function (name) {
-  // known
+  //known
   if (known.hasOwnProperty(name) === true) {
     return true
   }
@@ -80,7 +80,7 @@ const fmtInfobox = function (obj = {}) {
     type: type,
     data: obj,
   }
-  delete infobox.data.template // already have this.
+  delete infobox.data.template //already have this.
   delete infobox.data.list //just in case!
   return infobox
 }

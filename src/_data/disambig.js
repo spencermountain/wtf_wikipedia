@@ -166,8 +166,8 @@ module.exports = [
   '曖昧さ回避', //ja
   '消歧义', //zh
   '釋義', //zh_classical
-  "gestion dj'omònim", //pms
-  "sut'ichana qillqa" //qu
-  // 'z', //vep
-  // 'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ', //shn
+  'gestion dj\'omònim', //pms
+  'sut\'ichana qillqa', //qu
+  //'z', //vep
+  //'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ', //shn
 ]

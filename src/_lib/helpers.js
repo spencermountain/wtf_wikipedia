@@ -1,11 +1,11 @@
 module.exports = {
-  capitalise: function(str) {
+  capitalise: function (str) {
     if (str && typeof str === 'string') {
       return str.charAt(0).toUpperCase() + str.slice(1)
     }
     return ''
   },
-  trim_whitespace: function(str) {
+  trim_whitespace: function (str) {
     if (str && typeof str === 'string') {
       str = str.replace(/^\s\s*/, '')
       str = str.replace(/\s\s*$/, '')
@@ -14,5 +14,5 @@ module.exports = {
       return str
     }
     return ''
-  }
+  },
 }

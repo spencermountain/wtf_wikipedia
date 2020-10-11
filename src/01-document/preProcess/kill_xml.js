@@ -34,11 +34,11 @@ const kill_xml = function (wiki) {
   //only kill ref tags if they are selfclosing
   wiki = wiki.replace(/ ?< ?(ref) [a-zA-Z0-9=" ]{2,100}\/ ?> ?/g, ' ') //<ref name="asd"/>
 
-  // convert these html tags to known formatting
+  //convert these html tags to known formatting
   wiki = wiki.replace(/<i>(.*?)<\/i>/g, `''$1''`)
   wiki = wiki.replace(/<b>(.*?)<\/b>/g, `'''$1'''`)
 
-  // these are better-handled with templates
+  //these are better-handled with templates
   wiki = wiki.replace(/<sub>(.*?)<\/sub>/g, `{{sub|$1}}`)
   wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, `{{sup|$1}}`)
 

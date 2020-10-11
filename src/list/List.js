@@ -10,10 +10,10 @@ const toText = (list, options) => {
     .join('\n')
 }
 
-const List = function(data) {
+const List = function (data) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: data
+    value: data,
   })
 }
 
@@ -42,7 +42,7 @@ const methods = {
   },
   text() {
     return toText(this.data)
-  }
+  },
 }
 
 Object.keys(methods).forEach(k => {

@@ -48,7 +48,7 @@ const methods = {
     return []
   },
   url() {
-    // let lang = 'en' //this.language() || 'en' //hmm: get actual language?
+    //let lang = 'en' //this.language() || 'en' //hmm: get actual language?
     let fileName = makeSrc(this.file())
     let domain = this.data.domain || server
     let path = `wiki/Special:Redirect/file`

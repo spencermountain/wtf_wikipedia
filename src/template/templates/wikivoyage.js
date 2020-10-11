@@ -1,11 +1,11 @@
 const parse = require('../_parsers/parse')
 
 const templates = {
-  // https://en.wikivoyage.org/wiki/Template:Do
+  //https://en.wikivoyage.org/wiki/Template:Do
   listing: (tmpl, list) => {
     let obj = parse(tmpl, [])
     list.push(obj)
-    // flatten it all into one line of text
+    //flatten it all into one line of text
     let name = obj.name
     if (obj.url) {
       name = `[${obj.url} ${obj.name}]`
@@ -24,7 +24,7 @@ const templates = {
     return out
   },
 }
-// are these sorta the same?
+//are these sorta the same?
 templates.see = templates.listing
 templates.do = templates.listing
 templates.buy = templates.listing

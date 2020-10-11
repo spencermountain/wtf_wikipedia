@@ -44,7 +44,7 @@ const methods = {
     let obj = s.json()
     obj.file = obj.text
     obj.text = ''
-    obj.domain = this.domain // add domain information for image
+    obj.domain = this.domain //add domain information for image
     return new Image(obj)
   },
   get: function (key = '') {

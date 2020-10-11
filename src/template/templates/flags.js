@@ -3,7 +3,7 @@ const flags = require('../../_data/flags')
 
 let templates = {
   //https://en.wikipedia.org/wiki/Template:Flag
-  // {{flag|USA}} →  USA
+  //{{flag|USA}} →  USA
   flag: tmpl => {
     let order = ['flag', 'variant']
     let obj = parse(tmpl, order)
@@ -13,7 +13,7 @@ let templates = {
     let flag = found[0] || ''
     return `${flag} [[${found[2]}|${name}]]`
   },
-  // {{flagcountry|USA}} →  United States
+  //{{flagcountry|USA}} →  United States
   flagcountry: tmpl => {
     let order = ['flag', 'variant']
     let obj = parse(tmpl, order)
@@ -22,7 +22,7 @@ let templates = {
     let flag = found[0] || ''
     return `${flag} [[${found[2]}]]`
   },
-  // (unlinked flag-country)
+  //(unlinked flag-country)
   flagcu: tmpl => {
     let order = ['flag', 'variant']
     let obj = parse(tmpl, order)
@@ -32,7 +32,7 @@ let templates = {
     return `${flag} ${found[2]}`
   },
   //https://en.wikipedia.org/wiki/Template:Flagicon
-  // {{flagicon|USA}} → United States
+  //{{flagicon|USA}} → United States
   flagicon: tmpl => {
     let order = ['flag', 'variant']
     let obj = parse(tmpl, order)

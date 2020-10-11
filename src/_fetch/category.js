@@ -5,10 +5,10 @@ const defaults = {
   lang: 'en',
   wiki: 'wikipedia',
   domain: null,
-  path: 'w/api.php' //some 3rd party sites use a weird path
+  path: 'w/api.php', //some 3rd party sites use a weird path
 }
 
-const normalizeCategory = function(cat = '') {
+const normalizeCategory = function (cat = '') {
   if (/^Category/i.test(cat) === false) {
     cat = 'Category:' + cat
   }
@@ -16,15 +16,15 @@ const normalizeCategory = function(cat = '') {
   return cat
 }
 
-const isObject = function(obj) {
+const isObject = function (obj) {
   return obj && Object.prototype.toString.call(obj) === '[object Object]'
 }
 
-const getResult = function(body) {
+const getResult = function (body) {
   let list = body.query.categorymembers || []
   let res = {
     pages: [],
-    categories: []
+    categories: [],
   }
   list.forEach(p => {
     if (p.ns === 14) {
@@ -38,7 +38,7 @@ const getResult = function(body) {
   return res
 }
 
-const makeUrl = function(category, options, cm) {
+const makeUrl = function (category, options, cm) {
   category = normalizeCategory(category)
   category = encodeURIComponent(category)
   let url = `https://${options.lang}.wikipedia.org/${options.path}?`
@@ -52,7 +52,7 @@ const makeUrl = function(category, options, cm) {
   return url
 }
 
-const fetchCategory = function(category, lang, options) {
+const fetchCategory = function (category, lang, options) {
   options = options || {}
   options = Object.assign({}, defaults, options)
   //support lang 2nd param
@@ -63,11 +63,11 @@ const fetchCategory = function(category, lang, options) {
   }
   let res = {
     pages: [],
-    categories: []
+    categories: [],
   }
-  // wrap a promise around potentially-many requests
+  //wrap a promise around potentially-many requests
   return new Promise((resolve, reject) => {
-    const doit = function(cm) {
+    const doit = function (cm) {
       let url = makeUrl(category, options, cm)
       const headers = makeHeaders(options)
       return http(url, headers)

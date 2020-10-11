@@ -1,5 +1,5 @@
-// every value in {{tmpl|a|b|c}} needs a name
-// here we come up with names for them
+//every value in {{tmpl|a|b|c}} needs a name
+//here we come up with names for them
 const hasKey = /^[a-z0-9\u00C0-\u00FF\._\- '()œ]+=/iu
 
 //templates with these properties are asking for trouble
@@ -10,7 +10,7 @@ const reserved = {
 }
 
 //turn 'key=val' into {key:key, val:val}
-const parseKey = function(str) {
+const parseKey = function (str) {
   let parts = str.split('=')
   let key = parts[0] || ''
   key = key.toLowerCase().trim()
@@ -26,7 +26,7 @@ const parseKey = function(str) {
 }
 
 //turn [a, b=v, c] into {'1':a, b:v, '2':c}
-const keyMaker = function(arr, order) {
+const keyMaker = function (arr, order) {
   let o = 0
   return arr.reduce((h, str) => {
     str = (str || '').trim()

@@ -1,8 +1,8 @@
 const parse = require('../_parsers/parse')
-// const parseSentence = require('../../04-sentence').fromText;
+//const parseSentence = require('../../04-sentence').fromText;
 
 //simply num/denom * 100
-const percentage = function(obj) {
+const percentage = function (obj) {
   if (!obj.numerator && !obj.denominator) {
     return null
   }
@@ -17,7 +17,7 @@ const percentage = function(obj) {
 }
 
 let templates = {
-  // https://en.wikipedia.org/wiki/Template:Math
+  //https://en.wikipedia.org/wiki/Template:Math
   math: (tmpl, list) => {
     let obj = parse(tmpl, ['formula'])
     list.push(obj)
@@ -63,7 +63,7 @@ let templates = {
     }
     return num + '%'
   },
-  // {{Percent-done|done=N|total=N|digits=N}}
+  //{{Percent-done|done=N|total=N|digits=N}}
   'percent-done': tmpl => {
     let obj = parse(tmpl, ['done', 'total', 'digits'])
     let num = percentage({

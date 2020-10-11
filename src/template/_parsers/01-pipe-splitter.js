@@ -1,5 +1,5 @@
 //turn {{name|one|two|three}} into [name, one, two, three]
-const pipeSplitter = function(tmpl) {
+const pipeSplitter = function (tmpl) {
   //start with a naiive '|' split
   let arr = tmpl.split(/\n?\|/)
   //we've split by '|', which is pretty lame

@@ -15,7 +15,7 @@ const whoCares = {
 }
 
 //remove wiki-cruft & some styling info from templates
-const cleanup = function(obj) {
+const cleanup = function (obj) {
   Object.keys(obj).forEach(k => {
     if (whoCares[k.toLowerCase()] === true) {
       delete obj[k]

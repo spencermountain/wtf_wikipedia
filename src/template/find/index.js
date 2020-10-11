@@ -3,7 +3,7 @@ const getName = require('../_parsers/_getName')
 const hasTemplate = /\{\{/
 
 const parseTemplate = function (tmpl) {
-  // this is some unexplained Lua thing
+  //this is some unexplained Lua thing
   tmpl = tmpl.replace(/#invoke:/, '')
   return {
     body: tmpl,
@@ -13,18 +13,18 @@ const parseTemplate = function (tmpl) {
 }
 
 const doEach = function (obj) {
-  // peel-off top-level
+  //peel-off top-level
   let wiki = obj.body.substr(2)
   wiki = wiki.replace(/\}\}$/, '')
 
-  // get our child templates
+  //get our child templates
   obj.children = findFlat(wiki)
   obj.children = obj.children.map(parseTemplate)
 
   if (obj.children.length === 0) {
     return obj
   }
-  // recurse through children
+  //recurse through children
   obj.children.forEach((ch) => {
     let inside = ch.body.substr(2)
     if (hasTemplate.test(inside)) {
@@ -35,7 +35,7 @@ const doEach = function (obj) {
   return obj
 }
 
-// return a nested structure of all templates
+//return a nested structure of all templates
 const findTemplates = function (wiki) {
   let list = findFlat(wiki)
   list = list.map(parseTemplate)

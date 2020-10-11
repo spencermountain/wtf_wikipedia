@@ -6,14 +6,14 @@ const ymd = fmt.ymd
 const toText = fmt.toText
 
 //wrap it up as a template
-const template = function(date) {
+const template = function (date) {
   return {
     template: 'date',
-    data: date
+    data: date,
   }
 }
 
-const getBoth = function(tmpl) {
+const getBoth = function (tmpl) {
   tmpl = strip(tmpl)
   let arr = tmpl.split('|')
   let from = ymd(arr.slice(1, 4))
@@ -26,7 +26,7 @@ const getBoth = function(tmpl) {
   to = ymd(to)
   return {
     from: from,
-    to: to
+    to: to,
   }
 }
 
@@ -61,7 +61,7 @@ const parsers = {
     let order = ['text']
     let obj = parse(tmpl, order)
     let str = obj.text || ''
-    // - just a year
+    //- just a year
     let date = {}
     if (/^[0-9]{4}$/.test(str)) {
       date.year = parseInt(str, 10)
@@ -87,8 +87,8 @@ const parsers = {
     let year = Number(obj.year)
     list.push(
       template({
-        year: year
-      })
+        year: year,
+      }),
     )
     return String(year)
   },
@@ -102,7 +102,7 @@ const parsers = {
       'birth_date',
       'death_year',
       'death_month',
-      'death_date'
+      'death_date',
     ]
     let obj = parse(tmpl, order)
     //'b' means show birth-date, otherwise show death-date
@@ -198,6 +198,6 @@ const parsers = {
       arr.push(diff.days + ' days')
     }
     return arr.join(', ')
-  }
+  },
 }
 module.exports = parsers

@@ -181,7 +181,7 @@ let dateTmpl = Object.assign({}, misc, {
 
   birthdeathage: parsers.two_dates,
   dob: date,
-  // 'birth date and age2': date,
+  //'birth date and age2': date,
 
   age: parsers.age,
   'age nts': parsers.age,
@@ -190,8 +190,8 @@ let dateTmpl = Object.assign({}, misc, {
   'age in years, months and days': parsers['diff-ymd'],
   'age in years and days': parsers['diff-yd'],
   'age in days': parsers['diff-d']
-  // 'age in years, months, weeks and days': true,
-  // 'age as of date': true,
+  //'age in years, months, weeks and days': true,
+  //'age as of date': true,
 })
 //aliases
 dateTmpl.localday = dateTmpl.currentday

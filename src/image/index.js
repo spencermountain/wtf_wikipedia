@@ -49,7 +49,7 @@ const oneImage = function (img, doc) {
     img = img.replace(/\]\]$/, '')
 
     //https://en.wikipedia.org/wiki/Wikipedia:Extended_image_syntax
-    // - [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
+    //- [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
     let imgData = parseTemplate(img)
     let arr = imgData.list || []
     //parse-out alt text, if explicitly given

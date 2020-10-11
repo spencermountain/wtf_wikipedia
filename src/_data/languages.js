@@ -75,7 +75,7 @@ module.exports = {
   gd: 'ltr', //Scottish
   gil: 'Taetae', //Gilbertese
   gl: 'Galego', //Galician
-  gn: "Avañe'ẽ", //Guarani
+  gn: 'Avañe\'ẽ', //Guarani
   got: 'gutisk', //Gothic
   gu: 'ગુજરાતી', //Gujarati
   gv: 'Gaelg', //Manx
@@ -251,5 +251,5 @@ module.exports = {
   'zh-classical': 'ltr', //Classical
   'zh-min-nan': 'Bân-lâm-gú', //Minnan
   'zh-yue': '粵語', //Cantonese
-  zu: 'isiZulu' //Zulu
+  zu: 'isiZulu', //Zulu
 }

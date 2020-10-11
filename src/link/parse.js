@@ -39,10 +39,10 @@ const internal_links = function (links, str) {
       return s
     }
     //kill off just these just-anchor links [[#history]]
-    // if (link.match(/^#/i)) {
-    //   console.log(s)
-    //   return s
-    // }
+    //if (link.match(/^#/i)) {
+    //console.log(s)
+    //return s
+    //}
     //remove anchors from end [[toronto#history]]
     let obj = {
       page: link,

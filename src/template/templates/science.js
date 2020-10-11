@@ -47,9 +47,9 @@ let templates = {
     return ''
   },
 
-  // Parse https://en.wikipedia.org/wiki/Template:Medical_cases_chart -- see
-  // https://en.wikipedia.org/wiki/Module:Medical_cases_chart for the original
-  // parsing code.
+  //Parse https://en.wikipedia.org/wiki/Template:Medical_cases_chart -- see
+  //https://en.wikipedia.org/wiki/Module:Medical_cases_chart for the original
+  //parsing code.
   'medical cases chart': (tmpl, list) => {
     let order = [
       'date',
@@ -68,10 +68,10 @@ let templates = {
     obj.data = obj.data || ''
     let rows = obj.data.split('\n')
 
-    // Mimic row parsing in _buildBars in the Lua source, from the following
-    // line on:
+    //Mimic row parsing in _buildBars in the Lua source, from the following
+    //line on:
     //
-    //     for parameter in mw.text.gsplit(line, ';') do
+    //for parameter in mw.text.gsplit(line, ';') do
     let dataArray = rows.map((row) => {
       let parameters = row.split(';')
       let rowObject = {
@@ -81,19 +81,19 @@ let templates = {
       for (let i = 0; i < parameters.length; i++) {
         let parameter = parameters[i].trim()
         if (parameter.match(/^[a-zA-Z_]/)) {
-          // Named argument
+          //Named argument
           let [key, value] = parameter.split('=')
-          // At this point, the Lua code evaluates alttot1 and alttot2 values as
-          // #expr expressions, but we just pass them through. See also:
-          // https://www.mediawiki.org/wiki/Help:Extension:ParserFunctions##expr
+          //At this point, the Lua code evaluates alttot1 and alttot2 values as
+          //#expr expressions, but we just pass them through. See also:
+          //https://www.mediawiki.org/wiki/Help:Extension:ParserFunctions##expr
           if (value === undefined) {
             value = null
           }
           rowObject.options.set(key, value)
         } else {
-          // Positional argument
-          // Here again, the Lua code evaluates arguments at index 1 through 5
-          // as #expr expressions, but we just pass them through.
+          //Positional argument
+          //Here again, the Lua code evaluates arguments at index 1 through 5
+          //as #expr expressions, but we just pass them through.
           if (positionalIndex < order.length) {
             rowObject[order[positionalIndex]] = parameter
           }
@@ -110,7 +110,7 @@ let templates = {
     return ''
   },
   'medical cases chart/row': (tmpl) => {
-    // Deprecated template; we keep it.
+    //Deprecated template; we keep it.
     return tmpl
   },
 }

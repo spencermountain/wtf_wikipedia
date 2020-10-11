@@ -2,10 +2,10 @@ const setDefaults = require('../_lib/setDefaults')
 const toJson = require('./toJson')
 const defaults = {}
 
-const Table = function(data) {
+const Table = function (data) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: data
+    value: data,
   })
 }
 
@@ -44,7 +44,7 @@ const methods = {
 
   text() {
     return ''
-  }
+  },
 }
 methods.keyvalue = methods.keyValue
 methods.keyval = methods.keyValue

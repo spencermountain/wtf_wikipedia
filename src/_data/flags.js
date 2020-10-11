@@ -24,7 +24,7 @@ module.exports = [
   [
     '🇧🇬',
     'bul', //dupe
-    'bulgaria'
+    'bulgaria',
   ],
   ['🇧🇭', 'bhr', 'bahrain'],
   ['🇧🇮', 'bdi', 'burundi'],
@@ -47,7 +47,7 @@ module.exports = [
   ['🇨🇫', 'caf', 'central african republic'],
   ['🇨🇬', 'cog', 'congo'],
   ['🇨🇭', 'che', 'switzerland'],
-  ['🇨🇮', 'civ', "côte d'ivoire"],
+  ['🇨🇮', 'civ', 'côte d\'ivoire'],
   ['🇨🇰', 'cok', 'cook islands'],
   ['🇨🇱', 'chl', 'chile'],
   ['🇨🇲', 'cmr', 'cameroon'],
@@ -64,7 +64,7 @@ module.exports = [
   [
     '🇩🇪',
     'ger', //alias
-    'germany'
+    'germany',
   ],
   ['🇩🇯', 'dji', 'djibouti'],
   ['🇩🇰', 'dnk', 'denmark'],
@@ -87,7 +87,7 @@ module.exports = [
   ['🇬🇦', 'gab', 'gabon'],
   ['🇬🇧', 'gbr', 'united kingdom'],
   ['🇬🇩', 'grd', 'grenada'],
-  // ['🇬🇪', 'geo', 'georgia'],
+  //['🇬🇪', 'geo', 'georgia'],
   ['🇬🇫', 'guf', 'french guiana'],
   ['🇬🇬', 'ggy', 'guernsey'],
   ['🇬🇭', 'gha', 'ghana'],
@@ -134,7 +134,7 @@ module.exports = [
   ['🇰🇼', 'kwt', 'kuwait'],
   ['🇰🇾', 'cym', 'cayman islands'],
   ['🇰🇿', 'kaz', 'kazakhstan'],
-  ['🇱🇦', 'lao', "lao people's democratic republic"],
+  ['🇱🇦', 'lao', 'lao people\'s democratic republic'],
   ['🇱🇧', 'lbn', 'lebanon'],
   ['🇱🇨', 'lca', 'saint lucia'],
   ['🇱🇮', 'lie', 'liechtenstein'],
@@ -245,7 +245,7 @@ module.exports = [
   [
     '🇺🇸',
     'us', //alias
-    'united states'
+    'united states',
   ],
   ['🇺🇾', 'ury', 'uruguay'],
   ['🇺🇿', 'uzb', 'uzbekistan'],
@@ -269,5 +269,5 @@ module.exports = [
   ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'],
   ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'],
   ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales'],
-  ['🇪🇺', 'eu', 'european union']
+  ['🇪🇺', 'eu', 'european union'],
 ]

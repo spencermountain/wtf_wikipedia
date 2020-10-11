@@ -36,7 +36,7 @@ const tmpls = {
     str += obj.list.join('\n\n')
     return str
   },
-  // https://en.wikipedia.org/wiki/Template:Ordered_list
+  //https://en.wikipedia.org/wiki/Template:Ordered_list
   'ordered list': (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
@@ -94,7 +94,7 @@ const tmpls = {
     lines = lines.map(s => '• ' + s)
     return lines.join('\n\n')
   }
-  // 'pagelist':(tmpl)=>{},
+  //'pagelist':(tmpl)=>{},
 }
 //aliases
 tmpls.flatlist = tmpls.plainlist

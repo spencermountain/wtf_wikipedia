@@ -5,13 +5,13 @@ const defaults = {
   alt: true,
   links: true,
   thumb: true,
-  url: true
+  url: true,
 }
-//
-const toJson = function(img, options) {
+
+const toJson = function (img, options) {
   options = setDefaults(options, defaults)
   let json = {
-    file: img.file()
+    file: img.file(),
   }
   if (options.thumb !== false) {
     json.thumb = img.thumbnail()

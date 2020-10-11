@@ -3,13 +3,14 @@ const random = require('./_fetch/random')
 const category = require('./_fetch/category')
 const version = require('./_version')
 const Document = require('./01-document/Document')
+let templates = require('./template/templates')
 
 //the main 'factory' exported method
 const wtf = function (wiki, options) {
   return new Document(wiki, options)
 }
 
-// export classes for plugin development
+//export classes for plugin development
 const models = {
   Doc: require('./01-document/Document'),
   Section: require('./02-section/Section'),
@@ -25,21 +26,25 @@ const models = {
   http: require('./_fetch/http/server'),
   wtf: wtf,
 }
-let templates = require('./template/templates')
+
 
 wtf.fetch = function (title, lang, options, cb) {
   return fetch(title, lang, options, cb)
 }
+
 wtf.random = function (lang, options, cb) {
   return random(lang, options, cb)
 }
+
 wtf.category = function (cat, lang, options, cb) {
   return category(cat, lang, options, cb)
 }
+
 wtf.extend = function (fn) {
   fn(models, templates, this)
   return this
 }
+
 wtf.version = version
 
 module.exports = wtf

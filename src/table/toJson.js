@@ -1,6 +1,6 @@
 const encode = require('../_lib/encode')
-//
-const toJson = function(tables, options) {
+
+const toJson = function (tables, options) {
   return tables.map(table => {
     let row = {}
     Object.keys(table).forEach(k => {

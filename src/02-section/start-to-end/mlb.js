@@ -2,7 +2,7 @@ const tableParser = require('../../table/parse')
 //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
 
 //this is pretty nuts
-const whichHeadings = function(tmpl) {
+const whichHeadings = function (tmpl) {
   let headings = ['#', 'date', 'opponent', 'score', 'win', 'loss', 'save', 'attendance', 'record']
   if (/\|stadium=y/i.test(tmpl) === true) {
     headings.splice(7, 0, 'stadium') //save, stadium, attendance
@@ -16,7 +16,7 @@ const whichHeadings = function(tmpl) {
   return headings
 }
 
-const parseMlb = function(section) {
+const parseMlb = function (section) {
   let wiki = section.wiki
   wiki = wiki.replace(/\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi, tmpl => {
     let headings = whichHeadings(tmpl)

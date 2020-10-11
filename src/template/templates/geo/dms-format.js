@@ -16,9 +16,7 @@ function parseDms(arr) {
   if (/[SW]/i.test(hemisphere)) {
     sign = -1
   }
-  let decDeg = sign * (degrees + minutes / 60 + seconds / 3600)
-  return decDeg
+  return sign * (degrees + minutes / 60 + seconds / 3600)
 }
+
 module.exports = parseDms
-// console.log(parseDms([57, 18, 22, 'N']));
-// console.log(parseDms([4, 27, 32, 'W']));

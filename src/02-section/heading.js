@@ -4,7 +4,7 @@ const parseReferences = require('../reference/')
 const heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/
 
 //interpret depth, title of headings like '==See also=='
-const parseHeading = function(section, str) {
+const parseHeading = function (section, str) {
   let m = str.match(heading_reg)
   if (!m) {
     section.title = ''

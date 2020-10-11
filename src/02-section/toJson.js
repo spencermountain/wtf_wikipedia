@@ -10,10 +10,10 @@ const defaults = {
   templates: true,
   infoboxes: true,
   lists: true,
-  references: true
+  references: true,
 }
-//
-const toJSON = function(section, options) {
+
+const toJSON = function (section, options) {
   options = setDefaults(options, defaults)
   let data = {}
   if (options.headers === true) {

@@ -1,9 +1,9 @@
-// dumpster-dive throws everything into mongodb  - github.com/spencermountain/dumpster-dive
-// mongo has some opinions about what characters are allowed as keys and ids.
+//dumpster-dive throws everything into mongodb  - github.com/spencermountain/dumpster-dive
+//mongo has some opinions about what characters are allowed as keys and ids.
 //https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
 const specialChar = /[\\\.$]/
 
-const encodeStr = function(str) {
+const encodeStr = function (str) {
   if (typeof str !== 'string') {
     str = ''
   }
@@ -13,7 +13,7 @@ const encodeStr = function(str) {
   return str
 }
 
-const encodeObj = function(obj = {}) {
+const encodeObj = function (obj = {}) {
   let keys = Object.keys(obj)
   for (let i = 0; i < keys.length; i += 1) {
     if (specialChar.test(keys[i]) === true) {
@@ -28,5 +28,5 @@ const encodeObj = function(obj = {}) {
 }
 
 module.exports = {
-  encodeObj: encodeObj
+  encodeObj: encodeObj,
 }

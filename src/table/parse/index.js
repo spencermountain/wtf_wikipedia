@@ -14,11 +14,11 @@ const headings = {
   country: true,
   population: true,
   count: true,
-  number: true
+  number: true,
 }
 
 //additional table-cruft to remove before parseLine method
-const cleanText = function(str) {
+const cleanText = function (str) {
   str = parseSentence(str).text()
   //anything before a single-pipe is styling, so remove it
   if (str.match(/\|/)) {
@@ -31,7 +31,7 @@ const cleanText = function(str) {
   return str
 }
 
-const skipSpanRow = function(row) {
+const skipSpanRow = function (row) {
   row = row || []
   let len = row.length
   let hasTxt = row.filter(str => str).length
@@ -43,7 +43,7 @@ const skipSpanRow = function(row) {
 }
 
 //remove non-header span rows
-const removeMidSpans = function(rows) {
+const removeMidSpans = function (rows) {
   rows = rows.filter(row => {
     if (row.length === 1 && row[0] && isHeading.test(row[0]) && /rowspan/i.test(row[0]) === false) {
       return false
@@ -54,10 +54,10 @@ const removeMidSpans = function(rows) {
 }
 
 //'!' starts a header-row
-const findHeaders = function(rows = []) {
+const findHeaders = function (rows = []) {
   let headers = []
 
-  // is the first-row just a ton of colspan?
+  //is the first-row just a ton of colspan?
   if (skipSpanRow(rows[0])) {
     rows.shift()
   }
@@ -87,7 +87,7 @@ const findHeaders = function(rows = []) {
 }
 
 //turn headers, array into an object
-const parseRow = function(arr, headers) {
+const parseRow = function (arr, headers) {
   let row = {}
   arr.forEach((str, i) => {
     let h = headers[i] || 'col' + (i + 1)
@@ -99,7 +99,7 @@ const parseRow = function(arr, headers) {
 }
 
 //should we use the first row as a the headers?
-const firstRowHeader = function(rows) {
+const firstRowHeader = function (rows) {
   if (rows.length <= 3) {
     return []
   }
@@ -121,7 +121,7 @@ const firstRowHeader = function(rows) {
 }
 
 //turn a {|...table string into an array of arrays
-const parseTable = function(wiki) {
+const parseTable = function (wiki) {
   let lines = wiki
     .replace(/\r/g, '')
     .replace(/\n(\s*[^|!{\s])/g, ' $1') //remove unecessary newlines

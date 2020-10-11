@@ -2,8 +2,8 @@
 //@spencermountain MIT
 
 //(Rule-based sentence boundary segmentation) - chop given text into its proper sentences.
-// Ignore periods/questions/exclamations used in acronyms/abbreviations/numbers, etc.
-// @spencermountain 2015 MIT
+//Ignore periods/questions/exclamations used in acronyms/abbreviations/numbers, etc.
+//@spencermountain 2015 MIT
 const literalAbbreviations = require('./_abbreviations')
 const abbreviations = literalAbbreviations.concat('[^]][^]]')
 const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i')
@@ -32,7 +32,7 @@ const naiive_split = function (text) {
   return flatten(splits)
 }
 
-// if this looks like a period within a wikipedia link, return false
+//if this looks like a period within a wikipedia link, return false
 const isBalanced = function (str) {
   str = str || ''
   const open = str.split(/\[\[/) || []
@@ -56,9 +56,9 @@ const sentence_parser = function (text) {
   if (!text || typeof text !== 'string' || text.trim().length === 0) {
     return sentences
   }
-  // This was the splitter regex updated to fix quoted punctuation marks.
-  // let splits = text.split(/(\S.+?[.\?!])(?=\s+|$|")/g);
-  // todo: look for side effects in this regex replacement:
+  //This was the splitter regex updated to fix quoted punctuation marks.
+  //let splits = text.split(/(\S.+?[.\?!])(?=\s+|$|")/g);
+  //todo: look for side effects in this regex replacement:
   let splits = naiive_split(text)
   //filter-out the grap ones
   for (let i = 0; i < splits.length; i++) {

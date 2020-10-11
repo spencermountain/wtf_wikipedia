@@ -14,10 +14,10 @@ const monthList = [
   'sep',
   'oct',
   'nov',
-  'dec'
+  'dec',
 ]
 
-const toNumber = function(str) {
+const toNumber = function (str) {
   str = str.replace(/,/g, '')
   str = str.replace(/−/g, '-')
   let num = Number(str)
@@ -28,7 +28,7 @@ const toNumber = function(str) {
 }
 
 let templates = {
-  // this one is a handful!
+  //this one is a handful!
   //https://en.wikipedia.org/wiki/Template:Weather_box
   'weather box': (tmpl, list) => {
     let obj = parse(tmpl)
@@ -73,7 +73,7 @@ let templates = {
     obj.byMonth = {
       'high c': obj.list.slice(0, 12),
       'low c': obj.list.slice(12, 24),
-      'rain mm': obj.list.slice(24, 36)
+      'rain mm': obj.list.slice(24, 36),
     }
     delete obj.list
     obj.template = 'weather box'
@@ -86,7 +86,7 @@ let templates = {
     obj.byMonth = {
       'high f': obj.list.slice(0, 12),
       'low f': obj.list.slice(12, 24),
-      'rain inch': obj.list.slice(24, 36)
+      'rain inch': obj.list.slice(24, 36),
     }
     delete obj.list
     obj.template = 'weather box'
@@ -113,7 +113,7 @@ let templates = {
       months.push({
         low: toNumber(lines[i]),
         high: toNumber(lines[i + 1]),
-        precip: toNumber(lines[i + 2])
+        precip: toNumber(lines[i + 2]),
       })
     }
     let obj = {
@@ -121,12 +121,12 @@ let templates = {
       data: {
         title: title,
         source: source,
-        months: months
-      }
+        months: months,
+      },
     }
     list.push(obj)
     return ''
-  }
+  },
 }
 
 module.exports = templates

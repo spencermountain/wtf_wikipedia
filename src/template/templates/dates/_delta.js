@@ -3,12 +3,12 @@ const day = 1000 * 60 * 60 * 24
 const month = day * 30
 const year = day * 365
 
-const getEpoch = function(obj) {
+const getEpoch = function (obj) {
   return new Date(`${obj.year}-${obj.month || 0}-${obj.date || 1}`).getTime()
 }
 
 //very rough!
-const delta = function(from, to) {
+const delta = function (from, to) {
   from = getEpoch(from)
   to = getEpoch(to)
   let diff = to - from
@@ -29,7 +29,7 @@ const delta = function(from, to) {
   let days = Math.floor(diff / day, 10)
   if (days > 0) {
     obj.days = days
-    // diff -= (obj.days * day);
+    //diff -= (obj.days * day);
   }
   return obj
 }

@@ -2,10 +2,10 @@ const smartReplace = require('./_lib/smartReplace')
 
 const defaults = {
   links: true,
-  formatting: true
+  formatting: true,
 }
-// create links, bold, italic in html
-const doSentence = function(options) {
+//create links, bold, italic in html
+const doSentence = function (options) {
   options = Object.assign({}, defaults, options)
   let text = this.text()
   //turn links into <a href>

@@ -61,7 +61,7 @@ let all = {
 }
 
 //a bunch of aliases for these ones:
-// https://en.wikipedia.org/wiki/Category:Tournament_bracket_templates
+//https://en.wikipedia.org/wiki/Category:Tournament_bracket_templates
 const brackets = [
   '2teambracket',
   '4team2elimbracket',

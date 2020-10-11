@@ -7,7 +7,7 @@ const redirects = require('./redirects')
 const preProcess = require('./preProcess')
 const parse = {
   section: require('../02-section'),
-  categories: require('./categories')
+  categories: require('./categories'),
 }
 
 const isArray = function (arr) {
@@ -31,37 +31,37 @@ const defaults = {
 class Document {
   constructor(wiki, options) {
     options = options || {}
-    this._title = options.title || null;
-    this._pageID = options.pageID || options.id || null;
-    this._namespace = options.namespace || options.ns || null;
-    this._lang = options.lang || options.language || null;
-    this._domain = options.domain || null;
+    this._title = options.title || null
+    this._pageID = options.pageID || options.id || null
+    this._namespace = options.namespace || options.ns || null
+    this._lang = options.lang || options.language || null
+    this._domain = options.domain || null
     this._type = 'page'
-    this._redirectTo = null;
-    this._wikidata = options.wikidata || null;
-    this._wiki = wiki || '';
-    this._categories = [];
-    this._sections = [];
-    this._coordinates = [];
+    this._redirectTo = null
+    this._wikidata = options.wikidata || null
+    this._wiki = wiki || ''
+    this._categories = []
+    this._sections = []
+    this._coordinates = []
 
     //detect if page is just redirect, and return it
     if (redirects.isRedirect(this._wiki) === true) {
       this._type = 'redirect'
       this._redirectTo = redirects.parse(this._wiki)
 
-      const [categories, newWiki] = parse.categories(this._wiki);
-      this._categories = categories;
-      this._wiki = newWiki;
-      return;
+      const [categories, newWiki] = parse.categories(this._wiki)
+      this._categories = categories
+      this._wiki = newWiki
+      return
     }
 
     //give ourselves a little head-start
     this._wiki = preProcess(this._wiki)
 
     //pull-out [[category:whatevers]]
-    const [categories, newWiki] = parse.categories(this._wiki);
-    this._categories = categories;
-    this._wiki = newWiki;
+    const [categories, newWiki] = parse.categories(this._wiki)
+    this._categories = categories
+    this._wiki = newWiki
 
     //parse all the headings, and their texts/sentences
     this._sections = parse.section(this)
@@ -125,7 +125,7 @@ class Document {
     }
     let lang = this.language() || 'en'
     let domain = this.domain() || 'wikipedia.org'
-    // replace blank to underscore
+    //replace blank to underscore
     title = title.replace(/ /g, '_')
     title = encodeURIComponent(title)
     return `https://${lang}.${domain}/wiki/${title}`
@@ -139,7 +139,7 @@ class Document {
   }
 
   ns(ns) {
-    return this.namespace(ns);
+    return this.namespace(ns)
   }
 
   isRedirect() {
@@ -151,15 +151,15 @@ class Document {
   }
 
   redirectsTo() {
-    return this.redirectTo();
+    return this.redirectTo()
   }
 
   redirect() {
-    return this.redirectTo();
+    return this.redirectTo()
   }
 
   redirects() {
-    return this.redirectTo();
+    return this.redirectTo()
   }
 
   isDisambiguation() {
@@ -167,7 +167,7 @@ class Document {
   }
 
   isDisambig() {
-    return this.isDisambiguation();
+    return this.isDisambiguation()
   }
 
   categories(clue) {
@@ -178,7 +178,7 @@ class Document {
   }
 
   category(clue) {
-    return aliasWrapper(this.categories.bind(this), clue);
+    return aliasWrapper(this.categories.bind(this), clue)
   }
 
   sections(clue) {
@@ -201,7 +201,7 @@ class Document {
   }
 
   section(clue) {
-    return aliasWrapper(this.sections.bind(this), clue);
+    return aliasWrapper(this.sections.bind(this), clue)
   }
 
   paragraphs(n) {
@@ -235,7 +235,7 @@ class Document {
   }
 
   sentence(clue) {
-    return aliasWrapper(this.sentences.bind(this), clue);
+    return aliasWrapper(this.sentences.bind(this), clue)
   }
 
   images(clue) {
@@ -268,7 +268,7 @@ class Document {
   }
 
   image(clue) {
-    return aliasWrapper(this.images.bind(this), clue);
+    return aliasWrapper(this.images.bind(this), clue)
   }
 
   links(clue) {
@@ -276,7 +276,7 @@ class Document {
   }
 
   link(clue) {
-    return aliasWrapper(this.links.bind(this), clue);
+    return aliasWrapper(this.links.bind(this), clue)
   }
 
   interwiki(clue) {
@@ -288,7 +288,7 @@ class Document {
   }
 
   list(clue) {
-    return aliasWrapper(this.lists.bind(this), clue);
+    return aliasWrapper(this.lists.bind(this), clue)
   }
 
   tables(clue) {
@@ -296,7 +296,7 @@ class Document {
   }
 
   table(clue) {
-    return aliasWrapper(this.tables.bind(this), clue);
+    return aliasWrapper(this.tables.bind(this), clue)
   }
 
   templates(clue) {
@@ -304,7 +304,7 @@ class Document {
   }
 
   template(clue) {
-    return aliasWrapper(this.templates.bind(this), clue);
+    return aliasWrapper(this.templates.bind(this), clue)
   }
 
   references(clue) {
@@ -312,15 +312,15 @@ class Document {
   }
 
   reference(clue) {
-    return aliasWrapper(this.references.bind(this), clue);
+    return aliasWrapper(this.references.bind(this), clue)
   }
 
   citations(clue) {
-    return this.references(clue);
+    return this.references(clue)
   }
 
   citation(clue) {
-    return aliasWrapper(this.references.bind(this), clue);
+    return aliasWrapper(this.references.bind(this), clue)
   }
 
   coordinates(clue) {
@@ -328,7 +328,7 @@ class Document {
   }
 
   coordinate(clue) {
-    return aliasWrapper(this.coordinates.bind(this), clue);
+    return aliasWrapper(this.coordinates.bind(this), clue)
   }
 
   infoboxes(clue) {
@@ -347,7 +347,7 @@ class Document {
   }
 
   infobox(clue) {
-    return aliasWrapper(this.infoboxes.bind(this), clue);
+    return aliasWrapper(this.infoboxes.bind(this), clue)
   }
 
   text(options) {
@@ -361,7 +361,7 @@ class Document {
   }
 
   plaintext(options) {
-    return this.text(options);
+    return this.text(options)
   }
 
   json(options) {

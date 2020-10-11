@@ -35,7 +35,7 @@ let templates = {
     }
     return num + ' ' + word
   },
-  // https://en.wikipedia.org/wiki/Template:First_word
+  //https://en.wikipedia.org/wiki/Template:First_word
   'first word': (tmpl) => {
     let obj = parse(tmpl, ['text'])
     let str = obj.text

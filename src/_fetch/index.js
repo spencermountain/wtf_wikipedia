@@ -27,12 +27,12 @@ const fetch = function (title, options, c) {
   //support lang 2nd param
   if (typeof options === 'string') {
     c = c || {}
-    options = Object.assign({}, { lang: options }, c)
+    options = Object.assign({}, {lang: options}, c)
   }
   options = options || {}
   options = Object.assign({}, defaults, options)
   options.title = title
-  // parse url input
+  //parse url input
   if (isUrl.test(title)) {
     options = Object.assign(options, parseUrl(title))
   }

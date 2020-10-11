@@ -21,7 +21,7 @@ const parseParagraphs = function (section, doc) {
     }
     //parse the lists
     parse.list(paragraph)
-    // parse images
+    //parse images
     parse.image(paragraph, doc)
     //parse the sentences
     parseSentences(paragraph)

@@ -1,7 +1,7 @@
 const parse = require('../../_parsers/parse')
 
 let templates = {
-  /* mostly wiktionary*/
+  /*mostly wiktionary*/
   etyl: 1,
   mention: 1,
   link: 1,
@@ -30,7 +30,7 @@ let templates = {
 }
 
 //these are insane
-// https://en.wikipedia.org/wiki/Template:Tl
+//https://en.wikipedia.org/wiki/Template:Tl
 const links = [
   'lts',
   't',

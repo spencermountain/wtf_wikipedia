@@ -20,56 +20,56 @@ const sisterProjects = {
 }
 
 const parsers = {
-  // https://en.wikipedia.org/wiki/Template:About
+  //https://en.wikipedia.org/wiki/Template:About
   about: (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
     return ''
   },
 
-  // https://en.wikipedia.org/wiki/Template:Main
+  //https://en.wikipedia.org/wiki/Template:Main
   main: (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
     return ''
   },
 
-  // https://en.wikipedia.org/wiki/Template:Main_list
+  //https://en.wikipedia.org/wiki/Template:Main_list
   'main list': (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
     return ''
   },
 
-  // https://en.wikipedia.org/wiki/Template:See
+  //https://en.wikipedia.org/wiki/Template:See
   see: (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
     return ''
   },
 
-  // https://en.wikipedia.org/wiki/Template:For
+  //https://en.wikipedia.org/wiki/Template:For
   for: (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
     return ''
   },
 
-  // https://en.wikipedia.org/wiki/Template:Further
+  //https://en.wikipedia.org/wiki/Template:Further
   further: (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
     return ''
   },
 
-  // same as "further" (but this name is still in use)
+  //same as "further" (but this name is still in use)
   'further information': (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
     return ''
   },
 
-  // https://en.wikipedia.org/wiki/Template:Listen
+  //https://en.wikipedia.org/wiki/Template:Listen
   listen: (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
@@ -178,7 +178,7 @@ const parsers = {
       let img = {
         file: file,
       }
-      // TODO: add lang and domain information
+      //TODO: add lang and domain information
       return new Image(img).json()
     })
     obj = {
