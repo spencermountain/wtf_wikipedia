@@ -17,7 +17,7 @@
   "rules": {
     "semi": [ "warn", "never" ],
     "indent": [ "error", 2 ],
-    "spaced-comment": ["error", "never"],
+    "spaced-comment": [ "error", "never" ],
     "no-cond-assign": 2,
     "no-var": 1,
     "prefer-const": 0,
@@ -67,12 +67,13 @@
       }
     ],
     "require-jsdoc": [
-      2,
+      1,
       {
         "require": {
-          "FunctionDeclaration": false,
+          "ArrowFunctionExpression": false,
           "ClassDeclaration": true,
-          "FunctionExpression": false,
+          "FunctionDeclaration": true,
+          "FunctionExpression": true,
           "MethodDefinition": true
         }
       }

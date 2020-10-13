@@ -20,10 +20,11 @@
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
     "build:all": "node ./scripts/buildAll.js",
+    "build:types": "jsdoc -t node_modules/tsd-jsdoc/dist -r ./src",
     "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' npm run coverage:tests",
     "coverage:tests": "npm run test && npm run test:fetch",
     "codecov": "npm run coverage && codecov -t 62d2cc94-1c1f-4e21-a9af-42cc0cf39c51",
-    "lint": "eslint ./src/",
+    "lint": "eslint ./src/ ./plugins ./tests",
     "postinstall": "npm-recursive-install --rootDir=plugins",
     "start": "node ./scripts/demo.js",
     "test": "cross-env TESTENV=dev && node ./scripts/test.js",
@@ -88,7 +89,8 @@
     "rollup-plugin-terser": "7.0.2",
     "shelljs": "0.8.4",
     "tap-dancer": "0.2.0",
-    "tape": "5.0.1"
+    "tape": "5.0.1",
+    "tsd-jsdoc": "^2.5.0"
   },
   "eslintIgnore": [
     "builds/*.js"
