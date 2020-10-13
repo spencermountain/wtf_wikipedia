@@ -90,7 +90,7 @@ module.exports = {
   film: 'CreativeWork/Film', //183
   film_awards: 'Organization', //1
   film_festival: 'Organization', //2
-  //// food: 'Thing', //3
+  //food: 'Thing', //3
   football_biography: 'Person', //324
   football_club: 'Organization/SportsTeam', //42
   football_club_season: 'Event/SportsEvent', //13

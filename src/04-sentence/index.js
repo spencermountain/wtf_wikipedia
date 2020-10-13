@@ -4,6 +4,13 @@ const parseFmt = require('./formatting')
 const Sentence = require('./Sentence')
 const sentenceParser = require('./parse')
 
+/**
+ * This function removes some final characters from the sentence
+ *
+ * @private
+ * @param {string} line the wiki text for processing
+ * @returns {string} the processed string
+ */
 function postprocess(line) {
   //remove empty parentheses (sometimes caused by removing templates)
   line = line.replace(/\([,;: ]*\)/g, '')
@@ -15,7 +22,12 @@ function postprocess(line) {
   return line
 }
 
-// returns one sentence object
+/**
+ * returns one sentence object
+ *
+ * @param {string} str create a object from a sentence
+ * @returns {Sentence} the Sentence created from the text
+ */
 function fromText(str) {
   let obj = {
     text: str,

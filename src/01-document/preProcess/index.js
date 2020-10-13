@@ -1,6 +1,13 @@
 const kill_xml = require('./kill_xml')
 
-//this mostly-formatting stuff can be cleaned-up first, to make life easier
+/**
+ * removes unnecessary strings from the wikitext
+ * it is mostly-formatting stuff can be cleaned-up first, to make life easier
+ *
+ * @private
+ * @param {string} wiki the wikitext that needs processing
+ * @returns {string} the processed text
+ */
 function preProcess(wiki) {
   //remove comments
   wiki = wiki.replace(/<!--[\s\S]{0,2000}?-->/g, '')

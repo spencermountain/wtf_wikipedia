@@ -26,7 +26,7 @@ test('basic-latex', t => {
   want = 'that cat is \\href{http://www.wikiversity.org}{ab cd} cool dude'
   t.equal(tidy(have), tidy(want), 'link-external')
 
-  //   // Image simple
+  //Image simple
   have = wtf(`My image [File:my_image.png]`)
     .images(0)
     .latex()
@@ -43,8 +43,7 @@ test('latex-formatting', t => {
     .latex()
   var want = `i 'think' so`
   t.equal(tidy(have), tidy(want), 'one-tick')
-  //
-  //   //2 ticks
+  //2 ticks
   have = wtf(`i ''think'' so`)
     .sentences(0)
     .latex()
@@ -62,7 +61,7 @@ test('latex-formatting', t => {
   have = wtf(`i ''''think'''' so`)
     .sentences(0)
     .latex()
-  want = "i \\textbf{'think'} so"
+  want = 'i \\textbf{\'think\'} so'
   t.equal(tidy(have), tidy(want), 'four-tick')
 
   //5 ticks
