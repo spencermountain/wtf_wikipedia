@@ -42,7 +42,7 @@ const english = [
   'station' + d,
   'synagogue' + d,
   'taxonomic authority' + d,
-  'taxonomy' + d
+  'taxonomy' + d,
 ].reduce((h, str) => {
   h[str] = true
   return h
@@ -63,7 +63,7 @@ const isDisambig = function (doc) {
   if (found) {
     return true
   }
-  // try 'may refer to' on first line for en-wiki?
+  //try 'may refer to' on first line for en-wiki?
   if (doc.sentences(0)) {
     let firstLine = doc.sentences(0).text()
     if (firstLine !== null && firstLine[0]) {

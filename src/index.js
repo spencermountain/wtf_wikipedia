@@ -9,7 +9,7 @@ const wtf = function (wiki, options) {
   return new Document(wiki, options)
 }
 
-// export classes for plugin development
+//export classes for plugin development
 const models = {
   Doc: require('./01-document/Document'),
   Section: require('./02-section/Section'),

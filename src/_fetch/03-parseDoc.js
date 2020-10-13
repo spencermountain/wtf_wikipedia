@@ -1,7 +1,7 @@
 const Document = require('../01-document/Document')
 
-// flip response object into proper Doc objs
-const parseDoc = function(res) {
+//flip response object into proper Doc objs
+const parseDoc = function (res) {
   res = res.filter(o => o)
   let docs = res.map(o => {
     return new Document(o.wiki, o.meta)

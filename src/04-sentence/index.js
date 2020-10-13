@@ -43,9 +43,9 @@ function fromText(str) {
 
 //used for consistency with other class-definitions
 const byParagraph = function (paragraph) {
-  // array of texts
+  //array of texts
   let sentences = sentenceParser(paragraph.wiki)
-  // sentence objects
+  //sentence objects
   sentences = sentences.map(fromText)
   //remove :indented first line, as it is often a disambiguation
   if (sentences[0] && sentences[0].text() && sentences[0].text()[0] === ':') {

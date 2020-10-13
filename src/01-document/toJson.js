@@ -3,11 +3,11 @@ const defaults = {
   title: true,
   sections: true,
   pageID: true,
-  categories: true
+  categories: true,
 }
 
 //an opinionated output of the most-wanted data
-const toJSON = function(doc, options) {
+const toJSON = function (doc, options) {
   options = setDefaults(options, defaults)
   let data = {}
   if (options.title) {

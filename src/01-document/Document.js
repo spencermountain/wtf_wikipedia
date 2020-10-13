@@ -7,7 +7,7 @@ const redirects = require('./redirects')
 const preProcess = require('./preProcess')
 const parse = {
   section: require('../02-section'),
-  categories: require('./categories')
+  categories: require('./categories'),
 }
 
 /**
@@ -68,37 +68,37 @@ class Document {
    */
   constructor(wiki, options) {
     options = options || {}
-    this._title = options.title || null;
-    this._pageID = options.pageID || options.id || null;
-    this._namespace = options.namespace || options.ns || null;
-    this._lang = options.lang || options.language || null;
-    this._domain = options.domain || null;
+    this._title = options.title || null
+    this._pageID = options.pageID || options.id || null
+    this._namespace = options.namespace || options.ns || null
+    this._lang = options.lang || options.language || null
+    this._domain = options.domain || null
     this._type = 'page'
-    this._redirectTo = null;
-    this._wikidata = options.wikidata || null;
-    this._wiki = wiki || '';
-    this._categories = [];
-    this._sections = [];
-    this._coordinates = [];
+    this._redirectTo = null
+    this._wikidata = options.wikidata || null
+    this._wiki = wiki || ''
+    this._categories = []
+    this._sections = []
+    this._coordinates = []
 
     //detect if page is just redirect, and return it
     if (redirects.isRedirect(this._wiki) === true) {
       this._type = 'redirect'
       this._redirectTo = redirects.parse(this._wiki)
 
-      const [categories, newWiki] = parse.categories(this._wiki);
-      this._categories = categories;
-      this._wiki = newWiki;
-      return;
+      const [categories, newWiki] = parse.categories(this._wiki)
+      this._categories = categories
+      this._wiki = newWiki
+      return
     }
 
     //give ourselves a little head-start
     this._wiki = preProcess(this._wiki)
 
     //pull-out [[category:whatevers]]
-    const [categories, newWiki] = parse.categories(this._wiki);
-    this._categories = categories;
-    this._wiki = newWiki;
+    const [categories, newWiki] = parse.categories(this._wiki)
+    this._categories = categories
+    this._wiki = newWiki
 
     //parse all the headings, and their texts/sentences
     this._sections = parse.section(this)
@@ -208,7 +208,7 @@ class Document {
     }
     let lang = this.language() || 'en'
     let domain = this.domain() || 'wikipedia.org'
-    // replace blank to underscore
+    //replace blank to underscore
     title = title.replace(/ /g, '_')
     title = encodeURIComponent(title)
     return `https://${lang}.${domain}/wiki/${title}`
@@ -230,7 +230,7 @@ class Document {
 
   //eslint-disable-next-line require-jsdoc -- inherits from namespace
   ns(ns) {
-    return this.namespace(ns);
+    return this.namespace(ns)
   }
 
   /**
@@ -253,17 +253,17 @@ class Document {
 
   //eslint-disable-next-line require-jsdoc -- inherits from redirectTo
   redirectsTo() {
-    return this.redirectTo();
+    return this.redirectTo()
   }
 
   //eslint-disable-next-line require-jsdoc -- inherits from redirectTo
   redirect() {
-    return this.redirectTo();
+    return this.redirectTo()
   }
 
   //eslint-disable-next-line require-jsdoc -- inherits from redirectTo
   redirects() {
-    return this.redirectTo();
+    return this.redirectTo()
   }
 
   /**
@@ -277,7 +277,7 @@ class Document {
 
   //eslint-disable-next-line require-jsdoc -- inherits from isDisambiguation
   isDisambig() {
-    return this.isDisambiguation();
+    return this.isDisambiguation()
   }
 
   /**
@@ -301,7 +301,7 @@ class Document {
    * @returns {object|string|number} The category at the provided index
    */
   category(clue) {
-    return aliasWrapper(this.categories.bind(this), clue);
+    return aliasWrapper(this.categories.bind(this), clue)
   }
 
   /**
@@ -340,7 +340,7 @@ class Document {
    * @returns {Section} The section at the provided index
    */
   section(clue) {
-    return aliasWrapper(this.sections.bind(this), clue);
+    return aliasWrapper(this.sections.bind(this), clue)
   }
 
   /**
@@ -402,7 +402,7 @@ class Document {
    * @returns {Sentence} The sentence at the provided index
    */
   sentence(clue) {
-    return aliasWrapper(this.sentences.bind(this), clue);
+    return aliasWrapper(this.sentences.bind(this), clue)
   }
 
   /**
@@ -449,7 +449,7 @@ class Document {
    * @returns {Image} The image at the provided index
    */
   image(clue) {
-    return aliasWrapper(this.images.bind(this), clue);
+    return aliasWrapper(this.images.bind(this), clue)
   }
 
   /**
@@ -469,7 +469,7 @@ class Document {
    * @returns {object|string|number} The link at the provided index
    */
   link(clue) {
-    return aliasWrapper(this.links.bind(this), clue);
+    return aliasWrapper(this.links.bind(this), clue)
   }
 
   /**
@@ -500,7 +500,7 @@ class Document {
    * @returns {object|string|number} The list at the provided index
    */
   list(clue) {
-    return aliasWrapper(this.lists.bind(this), clue);
+    return aliasWrapper(this.lists.bind(this), clue)
   }
 
   /**
@@ -521,7 +521,7 @@ class Document {
    * @returns {object|string|number} The table at the provided index
    */
   table(clue) {
-    return aliasWrapper(this.tables.bind(this), clue);
+    return aliasWrapper(this.tables.bind(this), clue)
   }
 
   /**
@@ -542,7 +542,7 @@ class Document {
    * @returns {object|string|number} The template at the provided index
    */
   template(clue) {
-    return aliasWrapper(this.templates.bind(this), clue);
+    return aliasWrapper(this.templates.bind(this), clue)
   }
 
   /**
@@ -563,12 +563,12 @@ class Document {
    * @returns {object|string|number} The reference at the provided index
    */
   reference(clue) {
-    return aliasWrapper(this.references.bind(this), clue);
+    return aliasWrapper(this.references.bind(this), clue)
   }
 
   //eslint-disable-next-line require-jsdoc -- inherits from reference
   citations(clue) {
-    return this.references(clue);
+    return this.references(clue)
   }
 
   /**
@@ -578,7 +578,7 @@ class Document {
    * @returns {object|string|number} The citation at the provided index
    */
   citation(clue) {
-    return aliasWrapper(this.references.bind(this), clue);
+    return aliasWrapper(this.references.bind(this), clue)
   }
 
   /**
@@ -599,7 +599,7 @@ class Document {
    * @returns {object|string|number} The coordinate at the provided index
    */
   coordinate(clue) {
-    return aliasWrapper(this.coordinates.bind(this), clue);
+    return aliasWrapper(this.coordinates.bind(this), clue)
   }
 
   /**
@@ -632,7 +632,7 @@ class Document {
    * @returns {object|string|number} The infobox at the provided index
    */
   infobox(clue) {
-    return aliasWrapper(this.infoboxes.bind(this), clue);
+    return aliasWrapper(this.infoboxes.bind(this), clue)
   }
 
   /**
@@ -653,7 +653,7 @@ class Document {
 
   //eslint-disable-next-line require-jsdoc -- inherits from text
   plaintext(options) {
-    return this.text(options);
+    return this.text(options)
   }
 
   /**

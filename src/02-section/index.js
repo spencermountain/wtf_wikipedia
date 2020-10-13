@@ -19,7 +19,7 @@ const oneSection = function (section, doc) {
   parse.references(section)
   //parse-out all {{templates}}
   parse.templates(section, doc)
-  // //parse the tables
+  //parse the tables
   parse.table(section)
   //now parse all double-newlines
   parse.paragraphs(section, doc)
