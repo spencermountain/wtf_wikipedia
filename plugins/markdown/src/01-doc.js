@@ -2,10 +2,10 @@ const defaults = {
   redirects: true,
   infoboxes: true,
   templates: true,
-  sections: true
+  sections: true,
 }
-// we should try to make this look like the wikipedia does, i guess.
-const softRedirect = function(doc) {
+//we should try to make this look like the wikipedia does, i guess.
+const softRedirect = function (doc) {
   let link = doc.redirectTo()
   let href = link.page
   href = './' + href.replace(/ /g, '_')
@@ -16,9 +16,9 @@ const softRedirect = function(doc) {
 }
 
 //turn a Doc object into a markdown string
-const toMarkdown = function(options) {
+const toMarkdown = function (options) {
   options = Object.assign({}, defaults, options)
-  let data = this.data
+  let data = this
   let md = ''
   //if it's a redirect page, give it a 'soft landing':
   if (options.redirects === true && this.isRedirect() === true) {
@@ -32,7 +32,7 @@ const toMarkdown = function(options) {
   }
   //render each section
   if (options.sections === true || options.paragraphs === true || options.sentences === true) {
-    md += data.sections.map(s => s.markdown(options)).join('\n\n')
+    md += data.sections().map(s => s.markdown(options)).join('\n\n')
   }
   //default false
   if (options.references === true) {

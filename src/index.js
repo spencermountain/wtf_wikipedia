@@ -2,14 +2,14 @@ const fetch = require('./_fetch')
 const random = require('./_fetch/random')
 const category = require('./_fetch/category')
 const version = require('./_version')
-const parseDocument = require('./01-document/index.js')
+const Document = require('./01-document/Document')
 
 //the main 'factory' exported method
 const wtf = function (wiki, options) {
-  return parseDocument(wiki, options)
+  return new Document(wiki, options)
 }
 
-// export classes for plugin development
+//export classes for plugin development
 const models = {
   Doc: require('./01-document/Document'),
   Section: require('./02-section/Section'),

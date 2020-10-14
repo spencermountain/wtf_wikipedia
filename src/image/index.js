@@ -41,15 +41,15 @@ const oneImage = function (img, doc) {
   if (title) {
     let obj = {
       file: file,
-      lang: doc.lang,
-      domain: doc.domain,
+      lang: doc._lang,
+      domain: doc._domain,
     }
     //try to grab other metadata, too
     img = img.replace(/^\[\[/, '')
     img = img.replace(/\]\]$/, '')
 
     //https://en.wikipedia.org/wiki/Wikipedia:Extended_image_syntax
-    // - [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
+    //- [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
     let imgData = parseTemplate(img)
     let arr = imgData.list || []
     //parse-out alt text, if explicitly given

@@ -8,12 +8,12 @@ const skipPage = require('./_skip')
 const score = require('./score')
 
 const plugin = function (models) {
-  // add a new method to main class
+  //add a new method to main class
   models.Doc.prototype.classify = function (options) {
     let doc = this
     let res = {}
 
-    // dont classify these
+    //dont classify these
     if (skipPage(doc, options)) {
       return score(res, options)
     }
@@ -29,6 +29,7 @@ const plugin = function (models) {
 
     //look for 'foo (film)'
     res.title = byTitle(doc, options)
+
     //look for 'foo (film)'
     res.description = byDescription(doc, options)
 

@@ -6,30 +6,30 @@ const defaults = {
   references: true,
   paragraphs: true,
   templates: true,
-  infoboxes: true
+  infoboxes: true,
 }
 
 //the stuff between headings - 'History' section for example
-const Section = function(data) {
+const Section = function (data) {
   this.depth = data.depth
   this.doc = null
   this._title = data.title || ''
   Object.defineProperty(this, 'doc', {
     enumerable: false,
-    value: null
+    value: null,
   })
   data.templates = data.templates || []
   Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: data
+    value: data,
   })
 }
 
 const methods = {
-  title: function() {
+  title: function () {
     return this._title || ''
   },
-  index: function() {
+  index: function () {
     if (!this.doc) {
       return null
     }
@@ -39,10 +39,10 @@ const methods = {
     }
     return index
   },
-  indentation: function() {
+  indentation: function () {
     return this.depth
   },
-  sentences: function(n) {
+  sentences: function (n) {
     let arr = this.paragraphs().reduce((list, p) => {
       return list.concat(p.sentences())
     }, [])
@@ -51,21 +51,21 @@ const methods = {
     }
     return arr || []
   },
-  paragraphs: function(n) {
+  paragraphs: function (n) {
     let arr = this.data.paragraphs || []
     if (typeof n === 'number') {
       return arr[n]
     }
     return arr || []
   },
-  paragraph: function(n) {
+  paragraph: function (n) {
     let arr = this.data.paragraphs || []
     if (typeof n === 'number') {
       return arr[n]
     }
     return arr[0]
   },
-  links: function(n) {
+  links: function (n) {
     let arr = []
     this.infoboxes().forEach(templ => {
       templ.links(n).forEach(link => arr.push(link))
@@ -89,14 +89,14 @@ const methods = {
     }
     return arr
   },
-  tables: function(clue) {
+  tables: function (clue) {
     let arr = this.data.tables || []
     if (typeof clue === 'number') {
       return arr[clue]
     }
     return arr
   },
-  templates: function(clue) {
+  templates: function (clue) {
     let arr = this.data.templates || []
     arr = arr.map(t => t.json())
     if (typeof clue === 'number') {
@@ -108,14 +108,14 @@ const methods = {
     }
     return arr
   },
-  infoboxes: function(clue) {
+  infoboxes: function (clue) {
     let arr = this.data.infoboxes || []
     if (typeof clue === 'number') {
       return arr[clue]
     }
     return arr
   },
-  coordinates: function(clue) {
+  coordinates: function (clue) {
     let arr = [].concat(this.templates('coord'), this.templates('coor'))
     if (typeof clue === 'number') {
       if (!arr[clue]) {
@@ -125,7 +125,7 @@ const methods = {
     }
     return arr
   },
-  lists: function(clue) {
+  lists: function (clue) {
     let arr = []
     this.paragraphs().forEach(p => {
       arr = arr.concat(p.lists())
@@ -145,7 +145,7 @@ const methods = {
     }
     return arr || []
   },
-  images: function(clue) {
+  images: function (clue) {
     let arr = []
     this.paragraphs().forEach(p => {
       arr = arr.concat(p.images())
@@ -155,7 +155,7 @@ const methods = {
     }
     return arr || []
   },
-  references: function(clue) {
+  references: function (clue) {
     let arr = this.data.references || []
     if (typeof clue === 'number') {
       return arr[clue]
@@ -164,7 +164,7 @@ const methods = {
   },
 
   //transformations
-  remove: function() {
+  remove: function () {
     if (!this.doc) {
       return null
     }
@@ -172,14 +172,14 @@ const methods = {
     bads[this.title()] = true
     //remove children too
     this.children().forEach(sec => (bads[sec.title()] = true))
-    let arr = this.doc.data.sections
-    arr = arr.filter(sec => bads.hasOwnProperty(sec.title()) !== true)
-    this.doc.data.sections = arr
+    let sections = this.doc.sections()
+    sections = sections.filter(sec => bads.hasOwnProperty(sec.title()) !== true)
+    this.doc._sections = sections
     return this.doc
   },
 
   //move-around sections like in jquery
-  nextSibling: function() {
+  nextSibling: function () {
     if (!this.doc) {
       return null
     }
@@ -195,7 +195,7 @@ const methods = {
     }
     return null
   },
-  lastSibling: function() {
+  lastSibling: function () {
     if (!this.doc) {
       return null
     }
@@ -203,7 +203,7 @@ const methods = {
     let index = this.index()
     return sections[index - 1] || null
   },
-  children: function(n) {
+  children: function (n) {
     if (!this.doc) {
       return null
     }
@@ -230,7 +230,7 @@ const methods = {
     }
     return children
   },
-  parent: function() {
+  parent: function () {
     if (!this.doc) {
       return null
     }
@@ -243,16 +243,16 @@ const methods = {
     }
     return null
   },
-  text: function(options) {
+  text: function (options) {
     options = setDefaults(options, defaults)
     let pList = this.paragraphs()
     pList = pList.map(p => p.text(options))
     return pList.join('\n\n')
   },
-  json: function(options) {
+  json: function (options) {
     options = setDefaults(options, defaults)
     return toJSON(this, options)
-  }
+  },
 }
 //aliases
 methods.next = methods.nextSibling

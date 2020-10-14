@@ -1,8 +1,8 @@
 const parseSentence = require('../../04-sentence/').fromText
 const Image = require('../../image/Image')
-//okay, <gallery> is a xml-tag, with newline-seperated data, somehow pivoted by '|'...
+//okay, <gallery> is a xml-tag, with newline-separated data, somehow pivoted by '|'...
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
-// - not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
+//- not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
 const parseGallery = function (section, doc) {
   let wiki = section.wiki
   wiki = wiki.replace(/<gallery([^>]*?)>([\s\S]+?)<\/gallery>/g, (_, attrs, inside) => {
@@ -13,8 +13,8 @@ const parseGallery = function (section, doc) {
       let arr = str.split(/\|/)
       let obj = {
         file: arr[0].trim(),
-        lang: doc.language,
-        domain: doc.domain,
+        lang: doc._lang,
+        domain: doc._domain,
       }
       let img = new Image(obj).json()
       let caption = arr.slice(1).join('|')

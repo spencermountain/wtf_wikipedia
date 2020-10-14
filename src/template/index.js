@@ -26,19 +26,19 @@ const isInfobox = function (obj) {
 //reduce the scary recursive situations
 const allTemplates = function (section, doc) {
   let wiki = section.wiki
-  // nested data-structure of templates
+  //nested data-structure of templates
   let list = findTemplates(wiki)
   let keep = []
 
-  // recursive template-parser
+  //recursive template-parser
   const parseThem = function (obj, parent) {
     obj.parent = parent
-    // do tail-first recursion
+    //do tail-first recursion
     if (obj.children && obj.children.length > 0) {
       obj.children.forEach((ch) => parseThem(ch, obj))
     }
     obj.out = parse(obj, keep)
-    // remove the text from every parent
+    //remove the text from every parent
     const removeIt = function (node, body, out) {
       if (node.parent) {
         node.parent.body = node.parent.body.replace(body, out)
@@ -52,19 +52,19 @@ const allTemplates = function (section, doc) {
   //kick it off
   list.forEach((node) => parseThem(node, null))
 
-  // sort-out the templates we decide to keep
+  //sort-out the templates we decide to keep
   section.infoboxes = section.infoboxes || []
   section.references = section.references || []
   section.templates = section.templates || []
   section.templates = section.templates.concat(keep)
-  // remove references and infoboxes from our list
+  //remove references and infoboxes from our list
   section.templates = section.templates.filter((obj) => {
     if (isReference(obj) === true) {
       section.references.push(new Reference(obj))
       return false
     }
     if (isInfobox(obj) === true) {
-      obj.domain = doc.domain //
+      obj.domain = doc._domain
       section.infoboxes.push(new Infobox(obj))
       return false
     }
@@ -72,7 +72,7 @@ const allTemplates = function (section, doc) {
   })
   section.templates = section.templates.map((obj) => new Template(obj))
 
-  // remove the templates from our wiki text
+  //remove the templates from our wiki text
   list.forEach((node) => {
     wiki = wiki.replace(node.body, node.out)
   })

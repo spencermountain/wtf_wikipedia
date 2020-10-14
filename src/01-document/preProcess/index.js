@@ -1,8 +1,14 @@
 const kill_xml = require('./kill_xml')
 
-//this mostly-formatting stuff can be cleaned-up first, to make life easier
-function preProcess(doc) {
-  let wiki = doc.wiki
+/**
+ * removes unnecessary strings from the wikitext
+ * it is mostly-formatting stuff can be cleaned-up first, to make life easier
+ *
+ * @private
+ * @param {string} wiki the wikitext that needs processing
+ * @returns {string} the processed text
+ */
+function preProcess(wiki) {
   //remove comments
   wiki = wiki.replace(/<!--[\s\S]{0,2000}?-->/g, '')
   wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, '')
@@ -25,6 +31,7 @@ function preProcess(doc) {
   wiki = wiki.replace(/\([,;: ]+?\)/g, '')
   //these templates just screw things up, too
   wiki = wiki.replace(/{{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '')
-  doc.wiki = wiki
+  
+  return wiki
 }
 module.exports = preProcess

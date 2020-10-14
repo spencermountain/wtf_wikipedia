@@ -1,7 +1,7 @@
 module.exports = [
   'adkas', //br
   'aýdaw',
-  'doorverwijzing',
+  'doorverwijzing', //nl
   'ohjaus',
   'patrz', //pl
   'přesměruj',
@@ -33,5 +33,5 @@ module.exports = [
   'เปลี่ยนทาง', //th
   'ប្តូរទីតាំងទៅ', //km
   '転送', //ja
-  '重定向'
+  '重定向',
 ]

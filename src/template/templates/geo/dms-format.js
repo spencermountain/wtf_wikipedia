@@ -1,9 +1,16 @@
-//converts DMS (decimal-minute-second) geo format to lat/lng format.
-//major thank you to https://github.com/gmaclennan/parse-dms
-//and https://github.com/WSDOT-GIS/dms-js 👏
-
-//accepts an array of descending Degree, Minute, Second values, with a hemisphere at the end
-//must have N/S/E/W as last thing
+/**
+ * converts DMS (decimal-minute-second) geo format to lat/lng format.
+ *
+ * major thank you to https://github.com/gmaclennan/parse-dms
+ * and https://github.com/WSDOT-GIS/dms-js 👏
+ *
+ * accepts an array of descending Degree, Minute, Second values, with a hemisphere at the end
+ * must have N/S/E/W as last thing
+ *
+ * @private
+ * @param {Array.<number,string>} arr an array of descending Degree, Minute, Second values, with a hemisphere at the end
+ * @returns {number} the lat or lon in numbers
+ */
 function parseDms(arr) {
   let hemisphere = arr.pop()
   let degrees = Number(arr[0] || 0)
@@ -16,9 +23,8 @@ function parseDms(arr) {
   if (/[SW]/i.test(hemisphere)) {
     sign = -1
   }
-  let decDeg = sign * (degrees + minutes / 60 + seconds / 3600)
-  return decDeg
+  return sign * (degrees + minutes / 60 + seconds / 3600)
 }
 module.exports = parseDms
-// console.log(parseDms([57, 18, 22, 'N']));
-// console.log(parseDms([4, 27, 32, 'W']));
+//console.log(parseDms([57, 18, 22, 'N']));
+//console.log(parseDms([4, 27, 32, 'W']));
