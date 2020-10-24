@@ -2,15 +2,13 @@ const http = require('./http/server')
 const makeHeaders = require('./_headers')
 const getResult = require('./02-getResult')
 const parseDoc = require('./03-parseDoc')
+const {isObject} = require('../_lib/helpers')
 
 const defaults = {
   lang: 'en',
   wiki: 'wikipedia',
   domain: null,
   path: 'w/api.php', //some 3rd party sites use a weird path
-}
-const isObject = function (obj) {
-  return obj && Object.prototype.toString.call(obj) === '[object Object]'
 }
 
 const fetchRandom = function (lang, options) {

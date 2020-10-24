@@ -1,6 +1,12 @@
-// use the native client-side fetch function
+/**
+ * use the native client-side fetch function
+ *
+ * @private
+ * @param {string} url the url that well be fetched
+ * @param {RequestInit} opts the options for fetch
+ * @returns {Promise<Response>} the response from fetch
+ */
 const request = function (url, opts) {
-  //eslint-disable-next-line
   return fetch(url, opts).then(function (res) {
     return res.json()
   })
