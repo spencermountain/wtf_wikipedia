@@ -1,0 +1,21 @@
+{
+  "recurseDepth": 10,
+  "source": {
+    "includePattern": ".+\\.js(doc|x)?$"
+  },
+  "sourceType": "module",
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": [ "jsdoc", "closure" ]
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  },
+  "plugins": [ "./node_modules/tsd-jsdoc/dist/plugin" ],
+  "opts": {
+    "template": "./node_modules/tsd-jsdoc/dist",
+    "recurse": true,
+    "destination": "./builds/"
+  }
+}
