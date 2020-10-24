@@ -1,13 +1,13 @@
 const parseTable = require('./parse')
 const Table = require('./Table')
-// const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70kchars.
+//const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70k chars.
 const openReg = /^\s*{\|/
 const closeReg = /^\s*\|}/
 
 //tables can be recursive, so looky-here.
-const findTables = function(section) {
+const findTables = function (section) {
   let list = []
-  let wiki = section.wiki
+  let wiki = section._wiki
   let lines = wiki.split('\n')
   let stack = []
   for (let i = 0; i < lines.length; i += 1) {
@@ -32,7 +32,7 @@ const findTables = function(section) {
   let tables = []
   list.forEach(str => {
     if (str) {
-      //also reremove a newline at the end of the table (awkward)
+      //also re-remove a newline at the end of the table (awkward)
       wiki = wiki.replace(str + '\n', '')
       wiki = wiki.replace(str, '')
       let data = parseTable(str)
@@ -43,9 +43,9 @@ const findTables = function(section) {
   })
 
   if (tables.length > 0) {
-    section.tables = tables
+    section._tables = tables
   }
-  section.wiki = wiki
+  section._wiki = wiki
 }
 
 module.exports = findTables

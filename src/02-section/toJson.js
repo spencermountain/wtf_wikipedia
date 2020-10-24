@@ -20,7 +20,7 @@ const toJSON = function(section, options) {
     data.title = section.title()
   }
   if (options.depth === true) {
-    data.depth = section.depth
+    data.depth = section._depth
   }
   //these return objects
   if (options.paragraphs === true) {

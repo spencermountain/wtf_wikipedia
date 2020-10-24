@@ -307,7 +307,7 @@ class Document {
    */
   sections(clue) {
     let arr = this._sections || []
-    arr.forEach((sec) => (sec.doc = this))
+    arr.forEach((sec) => (sec._doc = this))
 
     //grab a specific section, by its title
     if (typeof clue === 'string') {
@@ -369,7 +369,7 @@ class Document {
   }
 
   /**
-   * if no clue is provided, it compile an array of sentences in the wiki text.
+   * if no clue is provided, it compiles an array of sentences in the wiki text.
    * if the clue is provided it return the sentence at the provided index
    *
    * @param {number} clue the index of the wanted sentence
@@ -574,7 +574,7 @@ class Document {
 
   /**
    * finds and returns all coordinates
-   * or if an clue is given, the coordinate ot the index
+   * or if an clue is given, the coordinate at the index
    *
    * @param {number} [clue] the index of the coordinate returned
    * @returns {object[]|object|null} if a clue is given, the coordinate of null, else an array of coordinates

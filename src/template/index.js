@@ -25,7 +25,7 @@ const isInfobox = function (obj) {
 
 //reduce the scary recursive situations
 const allTemplates = function (section, doc) {
-  let wiki = section.wiki
+  let wiki = section._wiki
   //nested data-structure of templates
   let list = findTemplates(wiki)
   let keep = []
@@ -53,30 +53,30 @@ const allTemplates = function (section, doc) {
   list.forEach((node) => parseThem(node, null))
 
   //sort-out the templates we decide to keep
-  section.infoboxes = section.infoboxes || []
-  section.references = section.references || []
-  section.templates = section.templates || []
-  section.templates = section.templates.concat(keep)
+  section._infoboxes = section._infoboxes || []
+  section._references = section._references || []
+  section._templates = section._templates || []
+  section._templates = section._templates.concat(keep)
   //remove references and infoboxes from our list
-  section.templates = section.templates.filter((obj) => {
+  section._templates = section._templates.filter((obj) => {
     if (isReference(obj) === true) {
-      section.references.push(new Reference(obj))
+      section._references.push(new Reference(obj))
       return false
     }
     if (isInfobox(obj) === true) {
       obj.domain = doc._domain
-      section.infoboxes.push(new Infobox(obj))
+      section._infoboxes.push(new Infobox(obj))
       return false
     }
     return true
   })
-  section.templates = section.templates.map((obj) => new Template(obj))
+  section._templates = section._templates.map((obj) => new Template(obj))
 
   //remove the templates from our wiki text
   list.forEach((node) => {
     wiki = wiki.replace(node.body, node.out)
   })
-  section.wiki = wiki
+  section._wiki = wiki
 }
 
 module.exports = allTemplates

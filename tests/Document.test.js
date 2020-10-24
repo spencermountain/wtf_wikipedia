@@ -383,13 +383,9 @@ test('sections - get - if the clue is a undefined / unset return the list of cat
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'Charlie-Milstead.txt'), 'utf-8')
   let doc = wtf(str)
 
-  const expected = [
-    {depth: 0, _title: ''},
-    {depth: 0, _title: 'Career'},
-    {depth: 0, _title: 'References'},
-  ]
+  const expected = [321, 401, 0]
 
-  t.deepEqual(JSON.stringify(doc.sections()), JSON.stringify(expected), 'the sections in the wiki text')
+  t.deepEqual(doc.sections().map(s => s.text().length), expected, 'the sections in the wiki text')
   t.end()
 })
 
@@ -397,7 +393,7 @@ test('sections - get - if the clue is a number return the sections in that index
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'Charlie-Milstead.txt'), 'utf-8')
   let doc = wtf(str)
 
-  t.equal(JSON.stringify(doc.sections(1)), JSON.stringify({depth: 0, _title: 'Career'}), 'the section at index 1')
+  t.equal(doc.sections(1).text().length, 401, 'the section at index 1')
   t.end()
 })
 
@@ -405,10 +401,7 @@ test('sections - get - if the clue is a string return the sections of that title
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'Charlie-Milstead.txt'), 'utf-8')
   let doc = wtf(str)
 
-  t.equal(JSON.stringify(doc.sections('Career')), JSON.stringify({
-    depth: 0,
-    _title: 'Career',
-  }), 'the section at index 1')
+  t.equal(doc.sections('Career').text().length, 401, 'the section with the title "Career"')
   t.end()
 })
 
@@ -416,10 +409,7 @@ test('sections - get - if the clue is a string return the sections of that title
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'Charlie-Milstead.txt'), 'utf-8')
   let doc = wtf(str)
 
-  t.equal(JSON.stringify(doc.sections('CAREER')), JSON.stringify({
-    depth: 0,
-    _title: 'Career',
-  }), 'the section at index 1')
+  t.equal(doc.sections('CAREER').text().length, 401, 'the section with the title "Career"')
   t.end()
 })
 
@@ -1012,7 +1002,7 @@ test('json - get - get the json version of the document', (t) => {
   let doc = wtf(str)
 
   //I used the length of the paragraphs as an analogue for the content.
-  t.deepEqual(JSON.stringify(doc.json()).length, 1971, 'version of the document')
+  t.deepEqual(JSON.stringify(doc.json()).length, 1971, 'JSON version of the document')
   t.end()
 })
 //debug
@@ -1051,7 +1041,9 @@ test('plurals / singular - all should exist', (t) => {
   let singels = {
     'section': [
       {
-        clue: undefined, json: true, expected: {
+        clue: undefined,
+        json: true,
+        expected: {
           'title': '',
           'depth': 0,
           'paragraphs': [{

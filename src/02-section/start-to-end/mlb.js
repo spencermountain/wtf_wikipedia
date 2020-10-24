@@ -2,7 +2,7 @@ const tableParser = require('../../table/parse')
 //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
 
 //this is pretty nuts
-const whichHeadings = function(tmpl) {
+const whichHeadings = function (tmpl) {
   let headings = ['#', 'date', 'opponent', 'score', 'win', 'loss', 'save', 'attendance', 'record']
   if (/\|stadium=y/i.test(tmpl) === true) {
     headings.splice(7, 0, 'stadium') //save, stadium, attendance
@@ -15,13 +15,18 @@ const whichHeadings = function(tmpl) {
   }
   return headings
 }
-
-const parseMlb = function(section) {
-  let wiki = section.wiki
-  wiki = wiki.replace(/\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi, tmpl => {
+/**
+ *
+ * @private
+ * @param {Catcher} catcher
+ */
+const parseMlb = function (catcher) {
+  catcher.text = catcher.text.replace(/\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi, tmpl => {
     let headings = whichHeadings(tmpl)
+
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
     tmpl = tmpl.replace(/\{\{mlb game log (section|month) end\}\}/i, '')
+
     let headers = '! ' + headings.join(' !! ')
     let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
     let rows = tableParser(table)
@@ -31,12 +36,14 @@ const parseMlb = function(section) {
       })
       return row
     })
-    section.templates.push({
+
+    catcher.templates.push({
       template: 'mlb game log section',
-      data: rows
+      data: rows,
     })
+
+    //return empty string to remove the template from the wiki text
     return ''
   })
-  section.wiki = wiki
 }
 module.exports = parseMlb

@@ -19,9 +19,9 @@ const parseHeading = function (section, str) {
   title = title.replace(/\{\{.+?\}\}/, '')
 
   //same for references (i know..)
-  let obj = { wiki: title }
+  let obj = {_wiki: title}
   parseReferences(obj)
-  title = obj.wiki
+  title = obj._wiki
 
   //trim leading/trailing whitespace
   title = trim_whitespace(title)
