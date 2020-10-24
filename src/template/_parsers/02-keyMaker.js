@@ -6,11 +6,11 @@ const hasKey = /^[a-z0-9\u00C0-\u00FF\._\- '()œ]+=/iu
 const reserved = {
   template: true,
   list: true,
-  prototype: true
+  prototype: true,
 }
 
 //turn 'key=val' into {key:key, val:val}
-const parseKey = function(str) {
+const parseKey = function (str) {
   let parts = str.split('=')
   let key = parts[0] || ''
   key = key.toLowerCase().trim()
@@ -21,15 +21,23 @@ const parseKey = function(str) {
   }
   return {
     key: key,
-    val: val.trim()
+    val: val.trim(),
   }
 }
 
-//turn [a, b=v, c] into {'1':a, b:v, '2':c}
-const keyMaker = function(arr, order) {
-  let o = 0
-  return arr.reduce((h, str) => {
-    str = (str || '').trim()
+/**
+ * turn [a, b=v, c] into {'1':a, b:v, '2':c}
+ *
+ * @private
+ * @param {string[]} arr the array of parameters
+ * @param {string[]} [order] the order in which the parameters are returned
+ * @returns {{}} and object with the names as the keys and the values as the values
+ */
+const keyMaker = function (arr, order) {
+  let keyIndex = 0
+  return arr.reduce((h, str = '') => {
+    str = str.trim()
+
     //support named keys - 'foo=bar'
     if (hasKey.test(str) === true) {
       let res = parseKey(str)
@@ -38,15 +46,17 @@ const keyMaker = function(arr, order) {
         return h
       }
     }
-    //try a key from given 'order' names
-    if (order && order[o]) {
-      let key = order[o] //here goes!
+
+    //if the current index is present in the order array then we have a name for the key
+    if (order && order[keyIndex]) {
+      let key = order[keyIndex]
       h[key] = str
     } else {
       h.list = h.list || []
       h.list.push(str)
     }
-    o += 1
+
+    keyIndex += 1
     return h
   }, {})
 }

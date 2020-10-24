@@ -2,23 +2,14 @@ const sectionMap = require('./_sectionMap')
 const toJSON = require('./toJson')
 const disambig = require('./disambig')
 const setDefaults = require('../_lib/setDefaults')
+const {isArray} = require('../_lib/helpers')
+
 const Image = require('../image/Image')
 const redirects = require('./redirects')
 const preProcess = require('./preProcess')
 const parse = {
   section: require('../02-section'),
   categories: require('./categories'),
-}
-
-/**
- * determines if an variable is an array or not
- *
- * @private
- * @param {*} arr the variable that needs judgment
- * @returns {boolean} whether the variable is an array
- */
-const isArray = function (arr) {
-  return Object.prototype.toString.call(arr) === '[object Array]'
 }
 
 /**
