@@ -667,7 +667,7 @@ class Document {
     console.log('\n')
     this.sections().forEach((sec) => {
       let indent = ' - '
-      for (let i = 0; i < sec.depth; i += 1) {
+      for (let i = 0; i < sec.depth(); i += 1) {
         indent = ' -' + indent
       }
       console.log(indent + (sec.title() || '(Intro)'))

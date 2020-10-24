@@ -75,8 +75,12 @@ class Section {
     return index
   }
 
-  indentation() {
+  depth(){
     return this._depth
+  }
+
+  indentation() {
+    return this.depth()
   }
 
   sentences(n) {
@@ -261,11 +265,11 @@ class Section {
     for (let i = index + 1; i < sections.length; i++) {
       //if the depth is smaller then the current depth then there is no next sibling
       //aka the depth of the section at position i a level higher then this section then this section is the last section at this depth
-      if (sections[i]._depth < this._depth) {
+      if (sections[i].depth() < this.depth()) {
         return null
       }
       //if the section has the same depth as the current section then it is the next sibling
-      if (sections[i]._depth === this._depth) {
+      if (sections[i].depth() === this.depth()) {
         return sections[i]
       }
     }
@@ -307,9 +311,9 @@ class Section {
     let index = this.index()
     let children = []
     //(immediately preceding sections with higher depth)
-    if (sections[index + 1] && sections[index + 1]._depth > this._depth) {
+    if (sections[index + 1] && sections[index + 1].depth() > this.depth()) {
       for (let i = index + 1; i < sections.length; i += 1) {
-        if (sections[i]._depth > this._depth) {
+        if (sections[i].depth() > this.depth()) {
           children.push(sections[i])
         } else {
           break
@@ -337,7 +341,7 @@ class Section {
     let sections = this._doc.sections()
     let index = this.index()
     for (let i = index; i >= 0; i -= 1) {
-      if (sections[i] && sections[i]._depth < this._depth) {
+      if (sections[i] && sections[i].depth() < this.depth()) {
         return sections[i]
       }
     }

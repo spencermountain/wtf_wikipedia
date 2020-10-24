@@ -27,6 +27,8 @@
     "lint": "eslint ./src/ ./plugins ./tests",
     "postinstall": "npm-recursive-install --rootDir=plugins",
     "start": "node ./scripts/demo.js",
+    "testSec": "nyc -r lcov -n 'src/02-section/*' tape tests/Section.test.js",
+    "testDoc": "nyc -r lcov -n 'src/02-section/*' tape tests/Document.test.js",
     "test": "cross-env TESTENV=dev && node ./scripts/test.js",
     "test:fetch": "cross-env TESTENV=dev && tape ./tests/fetch/*.test.js | tap-dancer",
     "test:spec": "cross-env TESTENV=dev && tape ./tests/fetch/*.test.js | tap-spec",

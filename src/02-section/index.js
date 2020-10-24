@@ -21,8 +21,8 @@ const removeReferenceSection = function (sections) {
       }
 
       //what it has children? awkward
-      if (sections[i + 1] && sections[i + 1].depth > s.depth) {
-        sections[i + 1].depth -= 1 //move it up a level?...
+      if (sections[i + 1] && sections[i + 1].depth() > s.depth()) {
+        sections[i + 1]._depth -= 1 //move it up a level?...
       }
       return false
     }
