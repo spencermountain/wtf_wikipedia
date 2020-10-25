@@ -3,7 +3,6 @@ node_modules
 viz
 coverage
 coverage.lcov
-codecov.yml
 npm-debug.log
 .nyc_output
 *.DS_Store
