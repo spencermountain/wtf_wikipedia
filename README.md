@@ -440,11 +440,10 @@ to fetch and parse all pages in a category, in an optimized way, see [wtf-plugin
 retrieves all pages and sub-categories belonging to a given category:
 
 ```js
-let result = await wtf.category('Category:Politicians_from_Paris')
-//{
-//  pages: [{title: 'Paul Bacon', pageid: 1266127 }, ...],
-//  categories: [ {title: 'Category:Mayors of Paris' } ]
-//}
+wtf.random().then((doc) => {
+  console.log(doc.title(), doc.categories())
+  //'Whistling'  ['Oral communication', 'Vocal skills']
+})
 ```
 
 ### Good practice:
