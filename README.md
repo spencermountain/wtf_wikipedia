@@ -435,9 +435,9 @@ to fetch and parse all pages in a category, in an optimized way, see [wtf-plugin
 
 ### fetch random article:
 
-**wtf.random(title, [lang], [options | callback])**
+**wtf.random([lang], [options], [callback])**
 
-retrieves all pages and sub-categories belonging to a given category:
+fetches a random wikipedia article, from a given language or domain
 
 ```js
 wtf.random().then((doc) => {
