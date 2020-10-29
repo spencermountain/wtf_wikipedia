@@ -16,9 +16,6 @@ const request = function (url, opts = {}) {
             let json = JSON.parse(data)
             resolve(json)
           } catch (e) {
-            console.log('error')
-            console.log(data)
-            resolve(data)
             reject(e)
           }
         })
