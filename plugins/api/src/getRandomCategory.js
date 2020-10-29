@@ -1,4 +1,4 @@
-const { defaults, toUrlParams } = require('../_fns')
+const { defaults, toUrlParams } = require('./_fns')
 
 const params = {
   format: 'json',

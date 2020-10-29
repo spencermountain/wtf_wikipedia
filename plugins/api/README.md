@@ -134,6 +134,28 @@ wtf.getTemplatePages('Template:Switzerland-badminton-bio-stub').then(docs => {
   })
 })
 ```
+
+## Fetch a List of pages
+`wtf.fetchList()` will fetch an array of articles, in a throttled-way.
+It is built to work in-concert with the other methods in this plugin, so you can compose them like this:
+```js
+let pages = await wtf.getTemplatePages('Template:Switzerland-badminton-bio-stub')
+let docs = await wtf.fetchList(pages)
+// grab infobox data of each badminton player:
+docs.forEach((doc) => {
+  let infobox = doc.infobox(0)
+  if (infobox && infobox.get('height')) {
+    console.log(doc.title(), infobox.get('height').text())
+  }
+})  
+// Christian Boesiger 1.73 m
+// Sabrina Jaquet 1.69m
+// Céline Burkart 1.65 m
+// Oliver Schaller 1.80 m
+// Anthony Dumartheray 1.78 m
+// Ayla Huser 1.68 m
+```
+
 ---
 ## API
 

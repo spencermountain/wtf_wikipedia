@@ -14,6 +14,23 @@ wtf.extend(require('./plugins/api/src'))
 //   // console.log(doc.images().map((j) => j.url()))
 // })
 
-wtf.getTemplate('Template:Switzerland-badminton-bio-stub').then((pages) => {
-  console.log(pages)
+// wtf.getTemplatePages('Template:Switzerland-badminton-bio-stub').then((pages) => {
+//   wtf.fetchList(pages).then((docs) => {
+//     docs.forEach((doc) => console.log(doc.sentences(0).text()))
+//   })
+// })
+
+// wtf.getCategoryPages('Category:Swiss skeleton racers').then(function (list) {
+//   console.log(list)
+// })
+
+wtf.getTemplatePages('Template:Switzerland-badminton-bio-stub').then(function (pages) {
+  wtf.fetchList(pages).then((docs) => {
+    docs.forEach((doc) => {
+      let infobox = doc.infobox(0)
+      if (infobox && infobox.get('height')) {
+        console.log(doc.title(), infobox.get('height').text())
+      }
+    })
+  })
 })

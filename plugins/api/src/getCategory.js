@@ -8,7 +8,7 @@ const chunkBy = function (arr, chunkSize = 5) {
   return groups
 }
 
-const fetchCat = function (cat, options, wtf) {
+const fetchCat = function (cat, options = {}, wtf) {
   if (!cat) {
     return { docs: [], categories: [] }
   }
