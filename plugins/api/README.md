@@ -45,7 +45,7 @@ They can be a rich source of linguistic data. On wikipedia, you can see all the 
 ```js
 // fetch all a page's redirects
 let doc = await wtf.fetch('Toronto Raptors')
-let redirects = await doc.redirects()
+let redirects = await doc.getRedirects()
 console.log(redirects)
 /*
 [
@@ -62,7 +62,7 @@ You can also get all pages that link to this page.
 ```js
 // get all pages that link to this document
 let doc = await wtf.fetch('Toronto Raptors')
-let list = await doc.incomingLinks()
+let list = await doc.getIncoming()
 console.log(list)
 /*
 [
@@ -80,7 +80,7 @@ By default, this method only returns full pages, and not redirects, or talk-page
 Wikipedia provides daily [page-view information](https://www.mediawiki.org/w/api.php?action=help&modules=query%2Bpageviews) providing a rough metric on a topic's popularity.
 ```js
 let doc = await wtf.fetch('Toronto Raptors')
-let byDay = await doc.pageViews()
+let byDay = await doc.getPageViews()
 console.log(byDay)
 /*
 {
@@ -94,23 +94,20 @@ console.log(byDay)
 */
 ```
 
-## randomCategory
+## Random Category
 get the name of a random wikipedia category, from a given wiki
 ```js
-wtf.randomCategory({lang:'fr'}).then(cat=>{
+wtf.getRandomCategory({lang:'fr'}).then(cat=>{
   console.log(cat)
   // 'Catégorie:Édifice religieux à Paris'
 })
 ```
 
-# Loops
-these methods return a list of parsed wikipedia documents.
-
-## fetchCategory
+## Category Pages
 fetch+parse all documents in a given category, to a specific depth.
 ```js
 // get the first sentence of all MLB stadiums:
-wtf.fetchCategory('Major League Baseball venues').then(docs => {
+wtf.getCategoryPages('Major League Baseball venues').then(docs => {
   docs.map(doc => doc.sentence(0).text())
   // [
   //  'Fenway park is a sports complex and major league baseball stadium...',
@@ -120,7 +117,7 @@ wtf.fetchCategory('Major League Baseball venues').then(docs => {
 ```
 
 
-## fetchTemplate
+## Template pages
 Sometimes you want to get all the data for one infobox, or template - in all the pages it belongs to.
 You can see a list pages of a specific template with [this tool](https://en.wikipedia.org/w/index.php?title=Special:WhatLinksHere/Template:Infobox_medical_condition_(new)&hidelinks=1&limit=500), and you can get a approximate count of pages with [this tool](https://templatecount.toolforge.org/index.php?lang=en&namespace=10&name=Infobox_medical_condition_(new)#bottom)
 
@@ -130,7 +127,7 @@ You can get the name of the template from viewing the page's source. Sometimes y
 to 
 ```js
 // parse all the chefs wikipedia articles
-wtf.fetchTemplate('Template:Switzerland-badminton-bio-stub').then(docs => {
+wtf.getTemplatePages('Template:Switzerland-badminton-bio-stub').then(docs => {
   docs.forEach(doc => {
     let height=doc.infobox(0).get('height')
     console.log(doc.title(), height)
@@ -140,10 +137,12 @@ wtf.fetchTemplate('Template:Switzerland-badminton-bio-stub').then(docs => {
 ---
 ## API
 
-* **doc.redirects()** - fetch all pages that redirect to this document
-* **doc.incomingLinks()** - fetch all pages that link to this document
-* **doc.pageViews()** - daily traffic report for this document
+* **doc.getRedirects()** - fetch all pages that redirect to this document
+* **doc.getIncoming()** - fetch all pages that link to this document
+* **doc.getPageViews()** - daily traffic report for this document
 
-
+* **wtf.getRandomCategory()** - 
+* **wtf.getTemplatePages()** - 
+* **wtf.getCategoryPages()** - 
 
 MIT
