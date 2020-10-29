@@ -1,6 +1,11 @@
 const Document = require('../01-document/Document')
-
-//flip response object into proper Doc objs
+/**
+ * this function puts all responses into proper Document objects
+ *
+ * @private
+ * @param {Array} res
+ * @returns {null| Document | Document[]} null if there are no results or Document if there is one responses and Document array if there are multiple responses
+ */
 const parseDoc = function (res) {
   res = res.filter(o => o)
   let docs = res.map(o => {

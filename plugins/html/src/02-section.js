@@ -3,14 +3,15 @@ const defaults = {
   images: true,
   tables: true,
   lists: true,
-  paragraphs: true
+  paragraphs: true,
 }
-const doSection = function(options) {
+
+const doSection = function (options) {
   options = Object.assign({}, defaults, options)
   let html = ''
   //make the header
   if (options.headers === true && this.title()) {
-    let num = 1 + this.depth
+    let num = 1 + this.depth()
     html += '  <h' + num + '>' + this.title() + '</h' + num + '>'
     html += '\n'
   }
@@ -27,12 +28,13 @@ const doSection = function(options) {
       .map(t => t.html(options))
       .join('\n')
   }
-  // //make a html bullet-list
+  //make a html bullet-list
   if (options.lists === true) {
     html += this.lists()
       .map(list => list.html(options))
       .join('\n')
   }
+
   //finally, write the sentence text.
   if (options.paragraphs === true && this.paragraphs().length > 0) {
     html += '  <div class="text">\n'
@@ -56,4 +58,5 @@ const doSection = function(options) {
   }
   return '<div class="section">\n' + html + '</div>\n'
 }
+
 module.exports = doSection

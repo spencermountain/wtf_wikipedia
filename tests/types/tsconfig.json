@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "lib": [],
+    "lib": [ ],
     "allowJs": true,
     "checkJs": true,
     "declaration": true,

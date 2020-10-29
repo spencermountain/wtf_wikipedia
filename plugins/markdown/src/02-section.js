@@ -3,20 +3,22 @@ const defaults = {
   images: true,
   tables: true,
   lists: true,
-  paragraphs: true
+  paragraphs: true,
 }
 
-const doSection = function(options) {
+const doSection = function (options) {
   options = Object.assign({}, defaults, options)
   let md = ''
+
   //make the header
   if (options.headers === true && this.title()) {
     let header = '##'
-    for (let i = 0; i < this.depth; i += 1) {
+    for (let i = 0; i < this.depth(); i += 1) {
       header += '#'
     }
     md += header + ' ' + this.title() + '\n'
   }
+
   //put any images under the header
   if (options.images === true) {
     let images = this.images()
@@ -25,7 +27,8 @@ const doSection = function(options) {
       md += '\n'
     }
   }
-  //make a mardown table
+
+  //make a markdown table
   if (options.tables === true) {
     let tables = this.tables()
     if (tables.length > 0) {
@@ -34,7 +37,8 @@ const doSection = function(options) {
       md += '\n'
     }
   }
-  //make a mardown bullet-list
+
+  //make a markdown bullet-list
   if (options.lists === true) {
     let lists = this.lists()
     if (lists.length > 0) {
@@ -42,6 +46,7 @@ const doSection = function(options) {
       md += '\n'
     }
   }
+
   //finally, write the sentence text.
   if (options.paragraphs === true || options.sentences === true) {
     md += this.paragraphs()
@@ -53,6 +58,7 @@ const doSection = function(options) {
       })
       .join('\n\n')
   }
+
   return md
 }
 module.exports = doSection

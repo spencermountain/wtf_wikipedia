@@ -1,3 +1,5 @@
+const {isArray} = require('../_lib/helpers');
+
 const isInterWiki = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/
 
 const defaults = {
@@ -11,6 +13,12 @@ const defaults = {
   redirects: 'true',
 }
 
+/**
+ *
+ * @private
+ * @param {Object<string, string | number | boolean>} obj
+ * @return {string}
+ */
 const toQueryString = function (obj) {
   return Object.entries(obj)
     .map(([key, value]) => {
@@ -19,22 +27,25 @@ const toQueryString = function (obj) {
     .join('&')
 }
 
-const isArray = function (arr) {
-  return Object.prototype.toString.call(arr) === '[object Array]'
-}
-
+/**
+ * cleans and prepares the tile by replacing the spaces with underscores (_) and trimming the whitespaces of the ends
+ *
+ * @private
+ * @param {string} page the title that needs cleaning
+ * @returns {string} the cleaned title
+ */
 const cleanTitle = (page) => {
   page = page.replace(/ /g, '_')
   page = page.trim()
-  // page = encodeURIComponent(page)
+  //page = encodeURIComponent(page)
   return page
 }
 
 const makeUrl = function (options) {
   let params = Object.assign({}, defaults)
-  // default url
+  //default url
   let url = `https://${options.lang}.${options.wiki}.org/w/api.php?`
-  // from a 3rd party wiki
+  //from a 3rd party wiki
   options.domain = options.domain || options.wikiUrl //support old syntax
   if (options.domain) {
     let path = options.path
@@ -47,7 +58,7 @@ const makeUrl = function (options) {
   if (!options.follow_redirects) {
     delete params.redirects
   }
-  // support numerical ids
+  //support numerical ids
   let page = options.title
   if (typeof page === 'number') {
     params.pageids = page //single pageId
@@ -57,10 +68,10 @@ const makeUrl = function (options) {
     //support array
     params.titles = page.map(cleanTitle).join('|')
   } else {
-    // single page
+    //single page
     params.titles = cleanTitle(page)
   }
-  // make it!
+  //make it!
   url += toQueryString(params)
   return url
 }

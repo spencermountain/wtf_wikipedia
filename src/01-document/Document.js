@@ -2,23 +2,14 @@ const sectionMap = require('./_sectionMap')
 const toJSON = require('./toJson')
 const disambig = require('./disambig')
 const setDefaults = require('../_lib/setDefaults')
+const {isArray} = require('../_lib/helpers')
+
 const Image = require('../image/Image')
 const redirects = require('./redirects')
 const preProcess = require('./preProcess')
 const parse = {
   section: require('../02-section'),
   categories: require('./categories'),
-}
-
-/**
- * determines if an variable is an array or not
- *
- * @private
- * @param {*} arr the variable that needs judgment
- * @returns {boolean} whether the variable is an array
- */
-const isArray = function (arr) {
-  return Object.prototype.toString.call(arr) === '[object Array]'
 }
 
 /**
@@ -316,7 +307,7 @@ class Document {
    */
   sections(clue) {
     let arr = this._sections || []
-    arr.forEach((sec) => (sec.doc = this))
+    arr.forEach((sec) => (sec._doc = this))
 
     //grab a specific section, by its title
     if (typeof clue === 'string') {
@@ -378,7 +369,7 @@ class Document {
   }
 
   /**
-   * if no clue is provided, it compile an array of sentences in the wiki text.
+   * if no clue is provided, it compiles an array of sentences in the wiki text.
    * if the clue is provided it return the sentence at the provided index
    *
    * @param {number} clue the index of the wanted sentence
@@ -583,7 +574,7 @@ class Document {
 
   /**
    * finds and returns all coordinates
-   * or if an clue is given, the coordinate ot the index
+   * or if an clue is given, the coordinate at the index
    *
    * @param {number} [clue] the index of the coordinate returned
    * @returns {object[]|object|null} if a clue is given, the coordinate of null, else an array of coordinates
@@ -676,7 +667,7 @@ class Document {
     console.log('\n')
     this.sections().forEach((sec) => {
       let indent = ' - '
-      for (let i = 0; i < sec.depth; i += 1) {
+      for (let i = 0; i < sec.depth(); i += 1) {
         indent = ' -' + indent
       }
       console.log(indent + (sec.title() || '(Intro)'))
