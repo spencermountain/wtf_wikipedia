@@ -10,16 +10,7 @@ test('smoketests', function (t) {
   t.equal(typeof doc.redirects, 'function', 'has redirect method')
   t.equal(typeof doc.incomingLinks, 'function', 'has incomingLinks method')
   t.equal(typeof doc.pageViews, 'function', 'has pageViews method')
-  t.equal(typeof wtf.randomCategory, 'function', 'has randomCategory method')
   t.end()
-})
-
-test('randomCategory', (t) => {
-  t.plan(1)
-  const p = wtf.randomCategory('en', opts)
-  p.then(function (cat) {
-    t.ok(cat, "got randomCategory: '" + cat + "'")
-  })
 })
 
 test('pageViews', (t) => {

@@ -14,8 +14,6 @@ wtf.extend(require('./plugins/api/src'))
 //   // console.log(doc.images().map((j) => j.url()))
 // })
 
-let doc = wtf('asf')
-console.log(doc.title('Marty Embry'))
-console.log(doc.lang('en'))
-doc.incomingLinks().then((byDate) => console.log(byDate))
-console.log(doc.title())
+wtf.getTemplate('Template:Switzerland-badminton-bio-stub').then((pages) => {
+  console.log(pages)
+})
