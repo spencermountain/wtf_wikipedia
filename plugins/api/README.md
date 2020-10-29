@@ -21,12 +21,16 @@
 
 Some helper methods for getting additional data from the wikimedia api.
 
-These methods simply grab data from the [wikipedia api](https://www.mediawiki.org/wiki/API:Main_page). 
+the main `wtf_wikipedia` library has a few basic methods for fetching data from the [wikipedia api](https://www.mediawiki.org/wiki/API:Main_page) - 
+you can get an article with `.fetch()`, a category with `.category()` or a random page with `.random()`.
 
-Please use the wikipedia API respectfully. They are not meant to be used at high-volumes.
+There are a bunch of cool ways to get data from the API though, and this plugin tries to help with that.
+
+Please use the wikipedia API respectfully. This is not meant to be used at high-volumes.
 If you are seeking information on for many wikipedia pages, consider [parsing the dump](https://github.com/spencermountain/dumpster-dive/) instead.
+There are also ways to batch requests, to reduce strain on wikimedia servers. These methods are meant to be simple wrappers for quick access.
 
-### Redirects
+## Page Redirects
 [Redirects](https://en.wikipedia.org/wiki/Wikipedia:Redirect) are an assortment of alternative names and mis-spellings for a wikipedia page.
 They can be a rich source of linguistic data. On wikipedia, you can see all the redirects for a page [here](https://en.wikipedia.org/w/index.php?title=Special%3AWhatLinksHere&hidetrans=1&hidelinks=1&target=Toronto+Raptors&namespace=)
 
@@ -48,7 +52,7 @@ console.log(redirects)
 
 ```
 
-### Incoming links
+## Incoming links
 You can also get all pages that link to this page.
 ```js
 const wtf = require('wtf_wikipedia')
@@ -70,7 +74,7 @@ console.log(list)
 By default, this method only returns full pages, and not redirects, or talk-pages.
 
 
-### Page views
+## Page views
 Wikipedia provides daily [page-view information](https://www.mediawiki.org/w/api.php?action=help&modules=query%2Bpageviews) providing a rough metric on a topic's popularity.
 ```js
 const wtf = require('wtf_wikipedia')
@@ -91,7 +95,8 @@ console.log(byDay)
 */
 ```
 
-### API
+---
+## API
 
 * **doc.redirects()** - fetch all pages that redirect to this document
 * **doc.incomingLinks()** - fetch all pages that link to this document

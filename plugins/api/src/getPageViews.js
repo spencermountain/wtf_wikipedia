@@ -1,13 +1,20 @@
-const { normalize, defaults } = require('./_fns')
+const { normalize, defaults, toUrlParams } = require('./_fns')
+
+const params = {
+  action: 'query',
+  prop: 'pageviews',
+  format: 'json',
+  origin: '*',
+  redirects: true
+}
 
 const makeUrl = function (title, options, cursor) {
-  title = normalize(title)
-  title = encodeURIComponent(title)
   let url = `https://${options.lang}.wikipedia.org/${options.path}?`
   if (options.domain) {
     url = `https://${options.domain}/${options.path}?`
   }
-  url += `action=query&titles=${title}&prop=pageviews&format=json&origin=*&redirects=true`
+  url += toUrlParams(params)
+  url += `&titles=${normalize(title)}`
   if (cursor) {
     url += '&rdcontinue=' + cursor
   }

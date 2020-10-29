@@ -3,8 +3,6 @@ const random = require('./_fetch/random')
 const category = require('./_fetch/category')
 const version = require('./_version')
 const Document = require('./01-document/Document')
-//this gets swapped for client-version in builds
-const http = require('./_fetch/http/server')
 
 //the main 'factory' exported method
 const wtf = function (wiki, options) {
@@ -39,7 +37,7 @@ wtf.category = function (cat, lang, options, cb) {
   return category(cat, lang, options, cb)
 }
 wtf.extend = function (fn) {
-  fn(models, templates, this, http)
+  fn(models, templates, this)
   return this
 }
 wtf.version = version

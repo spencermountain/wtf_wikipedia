@@ -1,13 +1,23 @@
-const { normalize, defaults } = require('./_fns')
+const { normalize, defaults, toUrlParams } = require('./_fns')
+
+const params = {
+  action: 'query',
+  lhnamespace: 0,
+  prop: 'linkshere',
+  lhshow: '!redirect',
+  lhlimit: 500,
+  format: 'json',
+  origin: '*',
+  redirects: true
+}
 
 const makeUrl = function (title, options, cursor) {
-  title = normalize(title)
-  title = encodeURIComponent(title)
   let url = `https://${options.lang}.wikipedia.org/${options.path}?`
   if (options.domain) {
     url = `https://${options.domain}/${options.path}?`
   }
-  url += `action=query&titles=${title}&lhnamespace=0&prop=linkshere&lhshow=!redirect&lhlimit=500&format=json&origin=*&redirects=true`
+  url += toUrlParams(params)
+  url += `&titles=${normalize(title)}`
   if (cursor) {
     url += '&lhcontinue=' + cursor
   }

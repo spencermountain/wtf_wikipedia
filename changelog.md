@@ -1,7 +1,8 @@
----
-
+<!--
 #### [unreleased]
-
+- **[breaking]** - move .random() to plugin-api
+- deprecate plugin-category (moved to plugin-api)
+-->
 #### 8.5.1
 
 - fix reference json encoding for mongodb
