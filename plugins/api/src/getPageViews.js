@@ -7,21 +7,21 @@ const makeUrl = function (title, options, cursor) {
   if (options.domain) {
     url = `https://${options.domain}/${options.path}?`
   }
-  url += `action=query&titles=${title}&rdnamespace=0&prop=redirects&rdlimit=500&format=json&origin=*&redirects=true`
+  url += `action=query&titles=${title}&prop=pageviews&format=json&origin=*&redirects=true`
   if (cursor) {
     url += '&rdcontinue=' + cursor
   }
   return url
 }
 
-const getRedirects = function (doc, http) {
+const getPageViews = function (doc, http) {
   let url = makeUrl(doc.title(), defaults)
   return http(url).then((res) => {
     let pages = Object.keys(res.query.pages || {})
     if (pages.length === 0) {
       return []
     }
-    return res.query.pages[pages[0]].redirects || []
+    return res.query.pages[pages[0]].pageviews || []
   })
 }
-module.exports = getRedirects
+module.exports = getPageViews

@@ -6,7 +6,7 @@ wtf.extend(require('./plugins/api/src'))
 // console.log(wtf(str).json())
 
 wtf.fetch('Toronto Raptors', 'en').then((doc) => {
-  doc.redirects().then((res) => {
+  doc.pageViews().then((res) => {
     console.log(res)
     console.log('done')
   })
