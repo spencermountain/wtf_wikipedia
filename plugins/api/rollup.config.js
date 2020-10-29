@@ -7,7 +7,7 @@ import nodeResolve from 'rollup-plugin-node-resolve'
 import { version } from './package.json'
 console.log('\n 📦  - running rollup..\n')
 
-const name = 'wtf-plugin-image'
+const name = 'wtf-plugin-api'
 const banner = `/* ${name} ${version}  MIT */`
 export default [
   // ===  es-module ===
