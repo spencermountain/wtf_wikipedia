@@ -10,11 +10,6 @@ wtf.extend(require('./plugins/wikitext/src'))
 //   console.log(doc.images().map((j) => j.url()))
 // })
 
-let str = `
-<ref name="Bond">{{cite magazine |last=Bond |first=Brian |date=October 1963 |title=Amritsar 1919 |magazine=History Today |volume=13 |uitgawe=10 |bls.=666–676}}</ref>
-`
-let doc = wtf(str)
-let json = doc.json({ encode: true }).sections[0].references
-console.log(json)
-// console.log(doc.infobox().image().url())
-// console.log(doc.images().map((img) => img.url()))
+let result = wtf.random().then((doc) => {
+  console.log(doc.title(), doc.categories())
+})

@@ -7,6 +7,10 @@
   "module": "./builds/wtf-plugin-category.mjs",
   "author": "Spencer Kelly (spencermountain)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/category#readme",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/spencermountain/wtf_wikipedia.git"
+  },
   "scripts": {
     "watch": "amble ./scratch.js",
     "test": "tape ./tests/**/*.test.js | tap-dancer",
@@ -43,5 +47,5 @@
     "tap-dancer": "^0.2.0",
     "tape": "5.0.0"
   },
-  "licence": "MIT"
+  "license": "MIT"
 }
