@@ -435,16 +435,15 @@ to fetch and parse all pages in a category, in an optimized way, see [wtf-plugin
 
 ### fetch random article:
 
-**wtf.random(title, [lang], [options | callback])**
+**wtf.random([lang], [options], [callback])**
 
-retrieves all pages and sub-categories belonging to a given category:
+fetches a random wikipedia article, from a given language or domain
 
 ```js
-let result = await wtf.category('Category:Politicians_from_Paris')
-//{
-//  pages: [{title: 'Paul Bacon', pageid: 1266127 }, ...],
-//  categories: [ {title: 'Category:Mayors of Paris' } ]
-//}
+wtf.random().then((doc) => {
+  console.log(doc.title(), doc.categories())
+  //'Whistling'  ['Oral communication', 'Vocal skills']
+})
 ```
 
 ### Good practice:
