@@ -11,12 +11,12 @@ const whoCares = {
   collapsible: true,
   list_style_type: true,
   'list-style-type': true,
-  colwidth: true
+  colwidth: true,
 }
 
 //remove wiki-cruft & some styling info from templates
-const cleanup = function(obj) {
-  Object.keys(obj).forEach(k => {
+const cleanup = function (obj) {
+  Object.keys(obj).forEach((k) => {
     if (whoCares[k.toLowerCase()] === true) {
       delete obj[k]
     }

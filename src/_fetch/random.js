@@ -2,7 +2,7 @@ const http = require('./http/server')
 const makeHeaders = require('./_headers')
 const getResult = require('./02-getResult')
 const parseDoc = require('./03-parseDoc')
-const {isObject} = require('../_lib/helpers')
+const { isObject } = require('../_lib/helpers')
 
 const defaults = {
   lang: 'en',

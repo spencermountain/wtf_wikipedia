@@ -8,7 +8,7 @@ let sports = {
     let str = `[[${res.name}]]`
     if (res.country) {
       let country = (res.country || '').toLowerCase()
-      let flag = flags.find(a => country === a[1] || country === a[2]) || []
+      let flag = flags.find((a) => country === a[1] || country === a[2]) || []
       if (flag && flag[0]) {
         str = flag[0] + '  ' + str
       }
@@ -24,20 +24,20 @@ let sports = {
     let res = parse(tmpl)
     let obj = {
       template: 'goal',
-      data: []
+      data: [],
     }
     let arr = res.list || []
     for (let i = 0; i < arr.length; i += 2) {
       obj.data.push({
         min: arr[i],
-        note: arr[i + 1] || ''
+        note: arr[i + 1] || '',
       })
     }
     list.push(obj)
     //generate a little text summary
     let summary = '⚽ '
     summary += obj.data
-      .map(o => {
+      .map((o) => {
         let note = o.note
         if (note) {
           note = ` (${note})`
@@ -74,13 +74,13 @@ let sports = {
   },
   pengoal: (tmpl, list) => {
     list.push({
-      template: 'pengoal'
+      template: 'pengoal',
     })
     return '✅'
   },
   penmiss: (tmpl, list) => {
     list.push({
-      template: 'penmiss'
+      template: 'penmiss',
     })
     return '❌'
   },
@@ -90,11 +90,11 @@ let sports = {
     let result = {
       template: 'sent off',
       cards: obj.cards,
-      minutes: obj.list || []
+      minutes: obj.list || [],
     }
     list.push(result)
-    let mins = result.minutes.map(m => m + "'").join(', ')
+    let mins = result.minutes.map((m) => m + "'").join(', ')
     return 'sent off: ' + mins
-  }
+  },
 }
 module.exports = sports

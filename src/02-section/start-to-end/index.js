@@ -9,7 +9,6 @@ const parseMlb = require('./mlb')
 const parseMMA = require('./mma')
 const parseMath = require('./math')
 
-
 /**
  * a catcher for the data used in these parsers
  *
@@ -31,10 +30,10 @@ const parseMath = require('./math')
  * @param {Document} doc
  * @return {Catcher}
  */
-const xmlTemplates = function ( section, doc) {
+const xmlTemplates = function (section, doc) {
   const catcher = {
     templates: [],
-    text: section._wiki
+    text: section._wiki,
   }
 
   parseElection(catcher)

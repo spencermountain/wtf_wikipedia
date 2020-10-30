@@ -1,6 +1,6 @@
 const parse = require('../_parsers/parse')
 
-const generic = function(tmpl, list, alias) {
+const generic = function (tmpl, list, alias) {
   let obj = parse(tmpl)
   if (alias) {
     obj.name = obj.template
@@ -58,18 +58,18 @@ const misc = {
     let obj = parse(tmpl, order)
     let template = {
       template: 'video game release',
-      releases: []
+      releases: [],
     }
     for (let i = 0; i < order.length; i += 2) {
       if (obj[order[i]]) {
         template.releases.push({
           region: obj[order[i]],
-          date: obj[order[i + 1]]
+          date: obj[order[i + 1]],
         })
       }
     }
     list.push(template)
-    let str = template.releases.map(o => `${o.region}: ${o.date || ''}`).join('\n\n')
+    let str = template.releases.map((o) => `${o.region}: ${o.date || ''}`).join('\n\n')
     return '\n' + str + '\n'
   },
   //barrels of oil https://en.wikipedia.org/wiki/Template:Bbl_to_t
@@ -90,13 +90,13 @@ const misc = {
       let num = data.list[i + 1]
       years.push({
         year: data.list[i],
-        val: Number(num) || num
+        val: Number(num) || num,
       })
     }
     data.data = years
     delete data.list
     list.push(data)
     return ''
-  }
+  },
 }
 module.exports = misc

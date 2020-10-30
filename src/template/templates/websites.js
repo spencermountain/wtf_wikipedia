@@ -48,7 +48,7 @@ const externals = {
 
   congbio: ['id', 'name', 'date'],
 
-  'hollywood walk of fame': ['name']
+  'hollywood walk of fame': ['name'],
 }
 //alias
 externals.imdb = externals['imdb name']

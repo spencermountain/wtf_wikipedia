@@ -100,7 +100,7 @@ const codes = {
   wse: 'wse', //https://en.wikipedia.org/wiki/Template:Warsaw_Stock_Exchange
   'zagreb stock exchange': 'zagreb stock exchange', //https://en.wikipedia.org/wiki/Template:Zagreb_Stock_Exchange
   'zimbabwe stock exchange': 'zimbabwe stock exchange', //https://en.wikipedia.org/wiki/Template:Zimbabwe_Stock_Exchange
-  zse: 'zse' //https://en.wikipedia.org/wiki/Template:Zagreb_Stock_Exchange
+  zse: 'zse', //https://en.wikipedia.org/wiki/Template:Zagreb_Stock_Exchange
 }
 
 const parseStockExchange = (tmpl, list) => {
@@ -123,7 +123,7 @@ const parseStockExchange = (tmpl, list) => {
 
 const exchanges = {}
 //the others fit the same pattern..
-Object.keys(codes).forEach(k => {
+Object.keys(codes).forEach((k) => {
   exchanges[k] = parseStockExchange
 })
 

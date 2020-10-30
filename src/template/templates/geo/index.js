@@ -11,7 +11,7 @@ const templates = {
     return ''
   },
   //https://en.wikivoyage.org/wiki/Template:Geo
-  geo: ['lat', 'lon', 'zoom']
+  geo: ['lat', 'lon', 'zoom'],
 }
 // {{coord|latitude|longitude|coordinate parameters|template parameters}}
 // {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}

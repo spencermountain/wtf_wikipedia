@@ -1,4 +1,4 @@
-const {trim_whitespace} = require('../_lib/helpers')
+const { trim_whitespace } = require('../_lib/helpers')
 const parseSentence = require('../04-sentence/').fromText
 const parseReferences = require('../reference/')
 const heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/
@@ -19,7 +19,7 @@ const parseHeading = function (section, str) {
   title = title.replace(/\{\{.+?\}\}/, '')
 
   //same for references (i know..)
-  let obj = {_wiki: title}
+  let obj = { _wiki: title }
   parseReferences(obj)
   title = obj._wiki
 

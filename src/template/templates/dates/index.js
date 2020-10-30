@@ -18,7 +18,7 @@ const months = [
   'September',
   'October',
   'November',
-  'December'
+  'December',
 ]
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
@@ -56,7 +56,7 @@ let dateTmpl = Object.assign({}, misc, {
   },
   //Explictly-set dates - https://en.wikipedia.org/wiki/Template:Date
   date: 0,
-  'time ago': tmpl => {
+  'time ago': (tmpl) => {
     let order = ['date', 'fmt']
     let time = parse(tmpl, order).date
     return timeSince(time)
@@ -134,7 +134,7 @@ let dateTmpl = Object.assign({}, misc, {
     return str
   },
   //sortable dates -
-  dts: tmpl => {
+  dts: (tmpl) => {
     //remove formatting stuff, ewww
     tmpl = tmpl.replace(/\|format=[ymd]+/i, '')
     tmpl = tmpl.replace(/\|abbr=(on|off)/i, '')
@@ -189,7 +189,7 @@ let dateTmpl = Object.assign({}, misc, {
   'age in years and months': parsers['diff-ym'],
   'age in years, months and days': parsers['diff-ymd'],
   'age in years and days': parsers['diff-yd'],
-  'age in days': parsers['diff-d']
+  'age in days': parsers['diff-d'],
   // 'age in years, months, weeks and days': true,
   // 'age as of date': true,
 })

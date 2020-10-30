@@ -2,7 +2,7 @@ const parse = require('../../_parsers/parse')
 
 const inline = {
   //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
-  convert: tmpl => {
+  convert: (tmpl) => {
     let order = ['num', 'two', 'three', 'four']
     let obj = parse(tmpl, order)
     //todo: support plural units
@@ -15,25 +15,25 @@ const inline = {
     return `${obj.num} ${obj.two}`
   },
   //https://en.wikipedia.org/wiki/Template:Term
-  term: tmpl => {
+  term: (tmpl) => {
     let obj = parse(tmpl, ['term'])
     return `${obj.term}:`
   },
   defn: 0,
   //https://en.wikipedia.org/wiki/Template:Linum
   lino: 0,
-  linum: tmpl => {
+  linum: (tmpl) => {
     let obj = parse(tmpl, ['num', 'text'])
     return `${obj.num}. ${obj.text}`
   },
   //https://en.wikipedia.org/wiki/Template:Interlanguage_link
-  ill: tmpl => {
+  ill: (tmpl) => {
     let order = ['text', 'lan1', 'text1', 'lan2', 'text2']
     let obj = parse(tmpl, order)
     return obj.text
   },
   //https://en.wikipedia.org/wiki/Template:Frac
-  frac: tmpl => {
+  frac: (tmpl) => {
     let order = ['a', 'b', 'c']
     let obj = parse(tmpl, order)
     if (obj.c) {
@@ -50,14 +50,14 @@ const inline = {
     list.push(obj)
     let result = []
     let units = ['m', 'cm', 'ft', 'in'] //order matters
-    units.forEach(unit => {
+    units.forEach((unit) => {
       if (obj.hasOwnProperty(unit) === true) {
         result.push(obj[unit] + unit)
       }
     })
     return result.join(' ')
   },
-  'block indent': tmpl => {
+  'block indent': (tmpl) => {
     let obj = parse(tmpl)
     if (obj['1']) {
       return '\n' + obj['1'] + '\n'
@@ -81,21 +81,21 @@ const inline = {
   },
 
   //https://en.wikipedia.org/wiki/Template:Lbs
-  lbs: tmpl => {
+  lbs: (tmpl) => {
     let obj = parse(tmpl, ['text'])
     return `[[${obj.text} Lifeboat Station|${obj.text}]]`
   },
   //Foo-class
-  lbc: tmpl => {
+  lbc: (tmpl) => {
     let obj = parse(tmpl, ['text'])
     return `[[${obj.text}-class lifeboat|${obj.text}-class]]`
   },
-  lbb: tmpl => {
+  lbb: (tmpl) => {
     let obj = parse(tmpl, ['text'])
     return `[[${obj.text}-class lifeboat|${obj.text}]]`
   },
   // https://en.wikipedia.org/wiki/Template:Own
-  own: tmpl => {
+  own: (tmpl) => {
     let obj = parse(tmpl, ['author'])
     let str = 'Own work'
     if (obj.author) {
@@ -113,7 +113,7 @@ const inline = {
     }
     list.push({
       template: 'sic',
-      word: word
+      word: word,
     })
     if (obj.nolink === 'y') {
       return word
@@ -121,7 +121,7 @@ const inline = {
     return `${word} [sic]`
   },
   //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-  formatnum: tmpl => {
+  formatnum: (tmpl) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['number'])
     let str = obj.number || ''
@@ -130,18 +130,18 @@ const inline = {
     return num.toLocaleString() || ''
   },
   //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-  '#dateformat': tmpl => {
+  '#dateformat': (tmpl) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['date', 'format'])
     return obj.date
   },
   //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-  lc: tmpl => {
+  lc: (tmpl) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['text'])
     return (obj.text || '').toLowerCase()
   },
-  lcfirst: tmpl => {
+  lcfirst: (tmpl) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['text'])
     let text = obj.text
@@ -151,12 +151,12 @@ const inline = {
     return text[0].toLowerCase() + text.substr(1)
   },
   //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-  uc: tmpl => {
+  uc: (tmpl) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['text'])
     return (obj.text || '').toUpperCase()
   },
-  ucfirst: tmpl => {
+  ucfirst: (tmpl) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['text'])
     let text = obj.text
@@ -165,13 +165,13 @@ const inline = {
     }
     return text[0].toUpperCase() + text.substr(1)
   },
-  padleft: tmpl => {
+  padleft: (tmpl) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['text', 'num'])
     let text = obj.text || ''
     return text.padStart(obj.num, obj.str || '0')
   },
-  padright: tmpl => {
+  padright: (tmpl) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['text', 'num'])
     let text = obj.text || ''
@@ -179,12 +179,12 @@ const inline = {
   },
   //abbreviation/meaning
   //https://en.wikipedia.org/wiki/Template:Abbr
-  abbr: tmpl => {
+  abbr: (tmpl) => {
     let obj = parse(tmpl, ['abbr', 'meaning', 'ipa'])
     return obj.abbr
   },
   //https://en.wikipedia.org/wiki/Template:Abbrlink
-  abbrlink: tmpl => {
+  abbrlink: (tmpl) => {
     let obj = parse(tmpl, ['abbr', 'page'])
     if (obj.page) {
       return `[[${obj.page}|${obj.abbr}]]`
@@ -197,7 +197,7 @@ const inline = {
   //https://en.wikipedia.org/wiki/Template:Finedetail
   finedetail: 0,
   //https://en.wikipedia.org/wiki/Template:Sort
-  sort: 1
+  sort: 1,
 }
 
 //aliases

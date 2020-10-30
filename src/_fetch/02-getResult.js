@@ -36,7 +36,7 @@ const getResult = function (data, options) {
       description: page.pageprops['wikibase-shortdesc'],
     })
     try {
-      return {wiki: text, meta: meta}
+      return { wiki: text, meta: meta }
     } catch (e) {
       console.error(e)
       throw e

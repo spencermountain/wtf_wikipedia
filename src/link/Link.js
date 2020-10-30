@@ -95,7 +95,7 @@ const methods = {
     return url
   },
 }
-Object.keys(methods).forEach(k => {
+Object.keys(methods).forEach((k) => {
   Link.prototype[k] = methods[k]
 })
 module.exports = Link

@@ -1,7 +1,7 @@
 const fmtName = require('./_fmtName')
 //get the name of the template
 //templates are usually '{{name|stuff}}'
-const getName = function(tmpl) {
+const getName = function (tmpl) {
   let name = null
   //{{name|foo}}
   if (/^\{\{[^\n]+\|/.test(tmpl)) {

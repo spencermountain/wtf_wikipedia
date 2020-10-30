@@ -24,7 +24,7 @@ module.exports = [
   [
     '🇧🇬',
     'bul', //dupe
-    'bulgaria'
+    'bulgaria',
   ],
   ['🇧🇭', 'bhr', 'bahrain'],
   ['🇧🇮', 'bdi', 'burundi'],
@@ -64,7 +64,7 @@ module.exports = [
   [
     '🇩🇪',
     'ger', //alias
-    'germany'
+    'germany',
   ],
   ['🇩🇯', 'dji', 'djibouti'],
   ['🇩🇰', 'dnk', 'denmark'],
@@ -245,7 +245,7 @@ module.exports = [
   [
     '🇺🇸',
     'us', //alias
-    'united states'
+    'united states',
   ],
   ['🇺🇾', 'ury', 'uruguay'],
   ['🇺🇿', 'uzb', 'uzbekistan'],
@@ -269,5 +269,5 @@ module.exports = [
   ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'],
   ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'],
   ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales'],
-  ['🇪🇺', 'eu', 'european union']
+  ['🇪🇺', 'eu', 'european union'],
 ]

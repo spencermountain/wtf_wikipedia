@@ -10,7 +10,7 @@ const parseTemplates = require('../../template')
  * @param {Catcher} catcher an object to provide and catch data
  */
 const parseElection = function (catcher) {
-  catcher.text = catcher.text.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, tmpl => {
+  catcher.text = catcher.text.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, (tmpl) => {
     let data = {
       _wiki: tmpl,
       _templates: [],
@@ -20,11 +20,11 @@ const parseElection = function (catcher) {
     parseTemplates(data)
 
     //okay, pull it apart into something sensible..
-    let templates = data._templates.map(t => t.json())
+    let templates = data._templates.map((t) => t.json())
 
-    let start = templates.find(t => t.template === 'election box') || {}
-    let candidates = templates.filter(t => t.template === 'election box candidate')
-    let summary = templates.find(t => t.template === 'election box gain' || t.template === 'election box hold') || {}
+    let start = templates.find((t) => t.template === 'election box') || {}
+    let candidates = templates.filter((t) => t.template === 'election box candidate')
+    let summary = templates.find((t) => t.template === 'election box gain' || t.template === 'election box hold') || {}
 
     if (candidates.length > 0 || summary) {
       catcher.templates.push({

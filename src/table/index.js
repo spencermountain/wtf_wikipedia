@@ -30,7 +30,7 @@ const findTables = function (section) {
   }
   //work-em together for a Table class
   let tables = []
-  list.forEach(str => {
+  list.forEach((str) => {
     if (str) {
       //also re-remove a newline at the end of the table (awkward)
       wiki = wiki.replace(str + '\n', '')

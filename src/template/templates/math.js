@@ -2,7 +2,7 @@ const parse = require('../_parsers/parse')
 // const parseSentence = require('../../04-sentence').fromText;
 
 //simply num/denom * 100
-const percentage = function(obj) {
+const percentage = function (obj) {
   if (!obj.numerator && !obj.denominator) {
     return null
   }
@@ -29,7 +29,7 @@ let templates = {
     let order = ['a', 'b', 'c']
     let obj = parse(tmpl, order)
     let data = {
-      template: 'sfrac'
+      template: 'sfrac',
     }
     if (obj.c) {
       data.integer = obj.a
@@ -49,13 +49,13 @@ let templates = {
     return `${data.numerator}⁄${data.denominator}`
   },
   //https://en.wikipedia.org/wiki/Template:Radic
-  radic: tmpl => {
+  radic: (tmpl) => {
     let order = ['after', 'before']
     let obj = parse(tmpl, order)
     return `${obj.before || ''}√${obj.after || ''}`
   },
   //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
-  percentage: tmpl => {
+  percentage: (tmpl) => {
     let obj = parse(tmpl, ['numerator', 'denominator', 'decimals'])
     let num = percentage(obj)
     if (num === null) {
@@ -64,12 +64,12 @@ let templates = {
     return num + '%'
   },
   // {{Percent-done|done=N|total=N|digits=N}}
-  'percent-done': tmpl => {
+  'percent-done': (tmpl) => {
     let obj = parse(tmpl, ['done', 'total', 'digits'])
     let num = percentage({
       numerator: obj.done,
       denominator: obj.total,
-      decimals: obj.digits
+      decimals: obj.digits,
     })
     if (num === null) {
       return ''
@@ -92,7 +92,7 @@ let templates = {
     let num = percentage({
       numerator: wins,
       denominator: games,
-      decimals: 1
+      decimals: 1,
     })
     if (num === null) {
       return ''
@@ -107,14 +107,14 @@ let templates = {
     let num = percentage({
       numerator: wins,
       denominator: wins + losses,
-      decimals: 1
+      decimals: 1,
     })
     if (num === null) {
       return ''
     }
     num = `.${num * 10}`
     return `${wins || 0} || ${losses || 0} || ${num || '-'}`
-  }
+  },
 }
 //aliases
 templates['sfrac'] = templates.frac

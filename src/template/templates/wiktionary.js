@@ -34,7 +34,7 @@ const templates = {
     let obj = parse(tmpl, ['word'])
     list.push(obj)
     return 'Rhymes: -' + (obj.word || '')
-  }
+  },
 }
 
 //https://en.wiktionary.org/wiki/Category:Form-of_templates
@@ -198,9 +198,9 @@ let conjugations = [
   'uncommon spelling',
   'verbal noun',
   'vocative plural',
-  'vocative singular'
+  'vocative singular',
 ]
-conjugations.forEach(name => {
+conjugations.forEach((name) => {
   templates[name + ' of'] = (tmpl, list) => {
     let obj = parse(tmpl, ['lemma'])
     obj.tags = obj.list

@@ -63,7 +63,7 @@ const parseRefs = function (section) {
 
   //now that we're done with xml, do a generic + dangerous xml-tag removal
   wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ \/]?> ?/g, ' ') //<samp name="asd">
-  section._references = references.map(r => new Reference(r))
+  section._references = references.map((r) => new Reference(r))
   section._wiki = wiki
 }
 

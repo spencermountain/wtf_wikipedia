@@ -2,12 +2,12 @@ const format = require('./_format')
 const parse = require('../../_parsers/parse')
 
 const misc = {
-  reign: tmpl => {
+  reign: (tmpl) => {
     let order = ['start', 'end']
     let obj = parse(tmpl, order)
     return `(r. ${obj.start} – ${obj.end})`
   },
-  circa: tmpl => {
+  circa: (tmpl) => {
     let obj = parse(tmpl, ['year'])
     return `c. ${obj.year}`
   },
@@ -20,7 +20,7 @@ const misc = {
   },
   monthname: 0,
   //https://en.wikipedia.org/wiki/Template:OldStyleDate
-  oldstyledate: tmpl => {
+  oldstyledate: (tmpl) => {
     let order = ['date', 'year']
     let obj = parse(tmpl, order)
     let str = obj.date
@@ -28,6 +28,6 @@ const misc = {
       str += ' ' + obj.year
     }
     return str
-  }
+  },
 }
 module.exports = misc

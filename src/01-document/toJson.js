@@ -20,7 +20,7 @@ const toJSON = function (doc, options) {
     data.categories = doc.categories()
   }
   if (options.sections) {
-    data.sections = doc.sections().map(i => i.json(options))
+    data.sections = doc.sections().map((i) => i.json(options))
   }
   if (doc.isRedirect() === true) {
     data.isRedirect = true
@@ -33,10 +33,10 @@ const toJSON = function (doc, options) {
     data.coordinates = doc.coordinates()
   }
   if (options.infoboxes) {
-    data.infoboxes = doc.infoboxes().map(i => i.json(options))
+    data.infoboxes = doc.infoboxes().map((i) => i.json(options))
   }
   if (options.images) {
-    data.images = doc.images().map(i => i.json(options))
+    data.images = doc.images().map((i) => i.json(options))
   }
   if (options.plaintext) {
     data.plaintext = doc.text(options)

@@ -42,10 +42,10 @@ let punctuation = [
   ['asterisk', '*'],
   ['long dash', '———'],
   ['clear', '\n\n'],
-  ['h.', 'ḥ']
+  ['h.', 'ḥ'],
 ]
 const templates = {}
-punctuation.forEach(a => {
+punctuation.forEach((a) => {
   templates[a[0]] = a[1]
 })
 module.exports = templates

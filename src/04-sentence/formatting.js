@@ -1,5 +1,5 @@
 //handle the bold/italics
-const formatting = function(obj) {
+const formatting = function (obj) {
   let bolds = []
   let italics = []
   let wiki = obj.text || ''

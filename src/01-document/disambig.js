@@ -57,7 +57,7 @@ const english = [
  */
 const isDisambig = function (doc) {
   let templates = doc.templates()
-  let found = templates.find(obj => {
+  let found = templates.find((obj) => {
     return english.hasOwnProperty(obj.template) || i18n.hasOwnProperty(obj.template)
   })
   if (found) {

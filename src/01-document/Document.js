@@ -2,7 +2,7 @@ const sectionMap = require('./_sectionMap')
 const toJSON = require('./toJson')
 const disambig = require('./disambig')
 const setDefaults = require('../_lib/setDefaults')
-const {isArray} = require('../_lib/helpers')
+const { isArray } = require('../_lib/helpers')
 
 const Image = require('../image/Image')
 const redirects = require('./redirects')

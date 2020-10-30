@@ -18,7 +18,7 @@ module.exports = {
   images: require('./images'),
   infoboxes: require('./infoboxes'),
   redirects: require('./redirects'),
-  references: require('./references')
+  references: require('./references'),
 
   //specials: [
   //'спэцыяльныя',

@@ -8,7 +8,7 @@ let templates = {
   'la-verb-form': 0,
   'la-ipa': 0,
   //https://en.wikipedia.org/wiki/Template:Sortname
-  sortname: tmpl => {
+  sortname: (tmpl) => {
     let order = ['first', 'last', 'target', 'sort']
     let obj = parse(tmpl, order)
     let name = `${obj.first || ''} ${obj.last || ''}`
@@ -26,7 +26,7 @@ let templates = {
       return `[[${obj.target}|${name}]]`
     }
     return `[[${name}]]`
-  }
+  },
 }
 
 //these are insane
@@ -56,12 +56,12 @@ const links = [
   'mli',
   'mlix',
   '#invoke',
-  'url' //https://en.wikipedia.org/wiki/Template:URL
+  'url', //https://en.wikipedia.org/wiki/Template:URL
 ]
 
 //keyValues
-links.forEach(k => {
-  templates[k] = tmpl => {
+links.forEach((k) => {
+  templates[k] = (tmpl) => {
     let order = ['first', 'second']
     let obj = parse(tmpl, order)
     return obj.second || obj.first

@@ -3,7 +3,7 @@ const parse = require('../../_parsers/parse')
 
 const tmpls = {
   //a strange, newline-based list - https://en.wikipedia.org/wiki/Template:Plainlist
-  plainlist: tmpl => {
+  plainlist: (tmpl) => {
     tmpl = strip(tmpl)
     //remove the title
     let arr = tmpl.split('|')
@@ -11,7 +11,7 @@ const tmpls = {
     tmpl = arr.join('|')
     //split on newline
     arr = tmpl.split(/\n ?\* ?/)
-    arr = arr.filter(s => s)
+    arr = arr.filter((s) => s)
     return arr.join('\n\n')
   },
 
@@ -32,7 +32,7 @@ const tmpls = {
         }
       }
     }
-    obj.list = obj.list.filter(s => s)
+    obj.list = obj.list.filter((s) => s)
     str += obj.list.join('\n\n')
     return str
   },
@@ -44,40 +44,40 @@ const tmpls = {
     let lines = obj.list.map((str, i) => `${i + 1}. ${str}`)
     return lines.join('\n\n')
   },
-  hlist: tmpl => {
+  hlist: (tmpl) => {
     let obj = parse(tmpl)
     obj.list = obj.list || []
     return obj.list.join(' · ')
   },
-  pagelist: tmpl => {
+  pagelist: (tmpl) => {
     let arr = parse(tmpl).list || []
     return arr.join(', ')
   },
   //actually rendering these links removes the text.
   //https://en.wikipedia.org/wiki/Template:Catlist
-  catlist: tmpl => {
+  catlist: (tmpl) => {
     let arr = parse(tmpl).list || []
     return arr.join(', ')
   },
   //https://en.wikipedia.org/wiki/Template:Br_separated_entries
-  'br separated entries': tmpl => {
+  'br separated entries': (tmpl) => {
     let arr = parse(tmpl).list || []
     return arr.join('\n\n')
   },
-  'comma separated entries': tmpl => {
+  'comma separated entries': (tmpl) => {
     let arr = parse(tmpl).list || []
     return arr.join(', ')
   },
   //https://en.wikipedia.org/wiki/Template:Bare_anchored_list
-  'anchored list': tmpl => {
+  'anchored list': (tmpl) => {
     let arr = parse(tmpl).list || []
     arr = arr.map((str, i) => `${i + 1}. ${str}`)
     return arr.join('\n\n')
   },
-  'bulleted list': tmpl => {
+  'bulleted list': (tmpl) => {
     let arr = parse(tmpl).list || []
-    arr = arr.filter(f => f)
-    arr = arr.map(str => '• ' + str)
+    arr = arr.filter((f) => f)
+    arr = arr.map((str) => '• ' + str)
     return arr.join('\n\n')
   },
   //https://en.wikipedia.org/wiki/Template:Columns-list
@@ -85,15 +85,15 @@ const tmpls = {
     let arr = parse(tmpl).list || []
     let str = arr[0] || ''
     let lines = str.split(/\n/)
-    lines = lines.filter(f => f)
-    lines = lines.map(s => s.replace(/\*/, ''))
+    lines = lines.filter((f) => f)
+    lines = lines.map((s) => s.replace(/\*/, ''))
     list.push({
       template: 'columns-list',
-      list: lines
+      list: lines,
     })
-    lines = lines.map(s => '• ' + s)
+    lines = lines.map((s) => '• ' + s)
     return lines.join('\n\n')
-  }
+  },
   // 'pagelist':(tmpl)=>{},
 }
 //aliases

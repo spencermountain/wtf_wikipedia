@@ -14,11 +14,11 @@ const headings = {
   country: true,
   population: true,
   count: true,
-  number: true
+  number: true,
 }
 
 //additional table-cruft to remove before parseLine method
-const cleanText = function(str) {
+const cleanText = function (str) {
   str = parseSentence(str).text()
   //anything before a single-pipe is styling, so remove it
   if (str.match(/\|/)) {
@@ -31,10 +31,10 @@ const cleanText = function(str) {
   return str
 }
 
-const skipSpanRow = function(row) {
+const skipSpanRow = function (row) {
   row = row || []
   let len = row.length
-  let hasTxt = row.filter(str => str).length
+  let hasTxt = row.filter((str) => str).length
   //does it have 3 empty spaces?
   if (len - hasTxt > 3) {
     return true
@@ -43,8 +43,8 @@ const skipSpanRow = function(row) {
 }
 
 //remove non-header span rows
-const removeMidSpans = function(rows) {
-  rows = rows.filter(row => {
+const removeMidSpans = function (rows) {
+  rows = rows.filter((row) => {
     if (row.length === 1 && row[0] && isHeading.test(row[0]) && /rowspan/i.test(row[0]) === false) {
       return false
     }
@@ -54,7 +54,7 @@ const removeMidSpans = function(rows) {
 }
 
 //'!' starts a header-row
-const findHeaders = function(rows = []) {
+const findHeaders = function (rows = []) {
   let headers = []
 
   // is the first-row just a ton of colspan?
@@ -64,7 +64,7 @@ const findHeaders = function(rows = []) {
 
   let first = rows[0]
   if (first && first[0] && first[1] && (/^!/.test(first[0]) || /^!/.test(first[1]))) {
-    headers = first.map(h => {
+    headers = first.map((h) => {
       h = h.replace(/^\! */, '')
       h = cleanText(h)
       return h
@@ -87,7 +87,7 @@ const findHeaders = function(rows = []) {
 }
 
 //turn headers, array into an object
-const parseRow = function(arr, headers) {
+const parseRow = function (arr, headers) {
   let row = {}
   arr.forEach((str, i) => {
     let h = headers[i] || 'col' + (i + 1)
@@ -99,12 +99,12 @@ const parseRow = function(arr, headers) {
 }
 
 //should we use the first row as a the headers?
-const firstRowHeader = function(rows) {
+const firstRowHeader = function (rows) {
   if (rows.length <= 3) {
     return []
   }
   let headers = rows[0].slice(0)
-  headers = headers.map(h => {
+  headers = headers.map((h) => {
     h = h.replace(/^\! */, '')
     h = parseSentence(h).text()
     h = cleanText(h)
@@ -121,14 +121,14 @@ const firstRowHeader = function(rows) {
 }
 
 //turn a {|...table string into an array of arrays
-const parseTable = function(wiki) {
+const parseTable = function (wiki) {
   let lines = wiki
     .replace(/\r/g, '')
     .replace(/\n(\s*[^|!{\s])/g, ' $1') //remove unecessary newlines
     .split(/\n/)
-    .map(l => l.trim())
+    .map((l) => l.trim())
   let rows = findRows(lines)
-  rows = rows.filter(r => r)
+  rows = rows.filter((r) => r)
   if (rows.length === 0) {
     return []
   }
@@ -151,7 +151,7 @@ const parseTable = function(wiki) {
     }
   }
   //index each column by it's header
-  let table = rows.map(arr => {
+  let table = rows.map((arr) => {
     return parseRow(arr, headers)
   })
   return table

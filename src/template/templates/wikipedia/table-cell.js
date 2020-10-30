@@ -1,7 +1,7 @@
 //random misc for inline wikipedia templates
 const parse = require('../../_parsers/parse')
 
-const titlecase = str => {
+const titlecase = (str) => {
   return str.charAt(0).toUpperCase() + str.substring(1)
 }
 
@@ -71,10 +71,10 @@ let cells = [
   'crecurring',
   'cguest',
   'not yet',
-  'optional'
+  'optional',
 ]
-cells.forEach(str => {
-  templates[str] = tmpl => {
+cells.forEach((str) => {
+  templates[str] = (tmpl) => {
     let data = parse(tmpl, ['text'])
     return data.text || titlecase(data.template)
   }
@@ -99,17 +99,17 @@ let moreCells = [
   ['dunno', '?'],
   ['draw', ''],
   ['cnone', ''],
-  ['nocontest', '']
+  ['nocontest', ''],
 ]
-moreCells.forEach(a => {
-  templates[a[0]] = tmpl => {
+moreCells.forEach((a) => {
+  templates[a[0]] = (tmpl) => {
     let data = parse(tmpl, ['text'])
     return data.text || a[1]
   }
 })
 
 //this one's a little different
-templates.won = tmpl => {
+templates.won = (tmpl) => {
   let data = parse(tmpl, ['text'])
   return data.place || data.text || titlecase(data.template)
 }

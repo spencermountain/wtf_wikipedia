@@ -17,10 +17,10 @@ const templates = {
       str += ` (${obj.kanji})`
     }
     return str
-  }
+  },
 }
 //https://en.wikipedia.org/wiki/Category:Lang-x_templates
-Object.keys(languages).forEach(k => {
+Object.keys(languages).forEach((k) => {
   templates['lang-' + k] = templates['lang-de']
 })
 templates['nihongo2'] = templates.nihongo

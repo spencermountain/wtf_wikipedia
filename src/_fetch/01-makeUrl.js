@@ -1,4 +1,4 @@
-const {isArray} = require('../_lib/helpers');
+const { isArray } = require('../_lib/helpers')
 
 const isInterWiki = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/
 

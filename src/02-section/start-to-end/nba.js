@@ -12,28 +12,31 @@ const keys = {
  * @param {Catcher} catcher
  */
 const parseNBA = function (catcher) {
-  catcher.text = catcher.text.replace(/\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi, (tmpl, name) => {
-    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
-    tmpl = tmpl.replace(/\{\{s-end\}\}/, '')
-    name = name.toLowerCase().trim()
+  catcher.text = catcher.text.replace(
+    /\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi,
+    (tmpl, name) => {
+      tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
+      tmpl = tmpl.replace(/\{\{s-end\}\}/, '')
+      name = name.toLowerCase().trim()
 
-    let headers = '! ' + keys[name].join(' !! ')
-    let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
-    let rows = tableParser(table)
-    rows = rows.map(row => {
-      Object.keys(row).forEach(k => {
-        row[k] = row[k].text()
+      let headers = '! ' + keys[name].join(' !! ')
+      let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
+      let rows = tableParser(table)
+      rows = rows.map((row) => {
+        Object.keys(row).forEach((k) => {
+          row[k] = row[k].text()
+        })
+        return row
       })
-      return row
-    })
 
-    catcher.templates.push({
-      template: 'NBA ' + name + ' statistics',
-      data: rows,
-    })
+      catcher.templates.push({
+        template: 'NBA ' + name + ' statistics',
+        data: rows,
+      })
 
-    //return empty string to remove the template from the wiki text
-    return ''
-  })
+      //return empty string to remove the template from the wiki text
+      return ''
+    }
+  )
 }
 module.exports = parseNBA

@@ -75,7 +75,7 @@ let templates = {
     let dataArray = rows.map((row) => {
       let parameters = row.split(';')
       let rowObject = {
-        options: new Map
+        options: new Map(),
       }
       let positionalIndex = 0
       for (let i = 0; i < parameters.length; i++) {

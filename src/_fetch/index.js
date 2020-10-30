@@ -4,7 +4,7 @@ const getResult = require('./02-getResult')
 const parseDoc = require('./03-parseDoc')
 const http = require('./http/server')
 const makeHeaders = require('./_headers')
-const {isObject} = require('../_lib/helpers')
+const { isObject } = require('../_lib/helpers')
 const isUrl = /^https?:\/\//
 
 /**
@@ -56,7 +56,7 @@ const fetch = function (title, options, c) {
 
   //support lang 2nd param
   if (typeof options === 'string') {
-    options = Object.assign({}, {lang: options}, isObject(c) ? c : defaults)
+    options = Object.assign({}, { lang: options }, isObject(c) ? c : defaults)
   }
 
   options = options || {}

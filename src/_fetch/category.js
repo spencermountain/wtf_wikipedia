@@ -1,6 +1,6 @@
 const http = require('./http/server')
 const makeHeaders = require('./_headers')
-const {isObject} = require('../_lib/helpers')
+const { isObject } = require('../_lib/helpers')
 
 const defaults = {
   lang: 'en',
@@ -23,7 +23,7 @@ const getResult = function (body) {
     pages: [],
     categories: [],
   }
-  list.forEach(p => {
+  list.forEach((p) => {
     if (p.ns === 14) {
       delete p.ns
       res.categories.push(p)
@@ -68,7 +68,7 @@ const fetchCategory = function (category, lang, options) {
       let url = makeUrl(category, options, cm)
       const headers = makeHeaders(options)
       return http(url, headers)
-        .then(body => {
+        .then((body) => {
           res = getResult(body, res)
           if (body.continue && body.continue.cmcontinue) {
             doit(body.continue.cmcontinue)
@@ -76,7 +76,7 @@ const fetchCategory = function (category, lang, options) {
             resolve(res)
           }
         })
-        .catch(e => {
+        .catch((e) => {
           console.error(e)
           reject(e)
         })

@@ -62,7 +62,7 @@ const codes = {
   us$: 'US$', // https://en.wikipedia.org/wiki/Template:US$
   usd: 'US$', // https://en.wikipedia.org/wiki/Template:US$
   yen: '¥', // https://en.wikipedia.org/wiki/Template:JPY
-  zar: 'R' //https://en.wikipedia.org/wiki/Template:ZAR
+  zar: 'R', //https://en.wikipedia.org/wiki/Template:ZAR
 }
 
 const parseCurrency = (tmpl, list) => {
@@ -74,13 +74,7 @@ const parseCurrency = (tmpl, list) => {
     if (!code) {
       o.code = code = 'usd' //Special case when currency template has no code argument
     }
-  } else if (
-    code === '' ||
-    code === 'monnaie' ||
-    code === 'unité' ||
-    code === 'nombre' ||
-    code === 'nb'
-  ) {
+  } else if (code === '' || code === 'monnaie' || code === 'unité' || code === 'nombre' || code === 'nb') {
     code = o.code
   }
   code = (code || '').toLowerCase()
@@ -144,10 +138,10 @@ const currencies = {
   nombre: parseCurrency,
   nb: parseCurrency,
   iso4217: parseCurrency,
-  inrconvert: inrConvert
+  inrconvert: inrConvert,
 }
 //the others fit the same pattern..
-Object.keys(codes).forEach(k => {
+Object.keys(codes).forEach((k) => {
   currencies[k] = parseCurrency
 })
 

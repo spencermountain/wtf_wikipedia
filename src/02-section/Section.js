@@ -33,7 +33,6 @@ class Section {
   constructor(data, doc) {
     this._doc = doc || null
 
-
     this._title = data.title || ''
     this._depth = data.depth
     this._wiki = data.wiki || ''
@@ -75,7 +74,7 @@ class Section {
     return index
   }
 
-  depth(){
+  depth() {
     return this._depth
   }
 
@@ -112,19 +111,19 @@ class Section {
   links(n) {
     let arr = []
 
-    this.infoboxes().forEach(templ => {
+    this.infoboxes().forEach((templ) => {
       arr.push(templ.links())
     })
 
-    this.sentences().forEach(s => {
+    this.sentences().forEach((s) => {
       arr.push(s.links())
     })
 
-    this.tables().forEach(t => {
+    this.tables().forEach((t) => {
       arr.push(t.links())
     })
 
-    this.lists().forEach(list => {
+    this.lists().forEach((list) => {
       arr.push(list.links())
     })
 
@@ -137,10 +136,9 @@ class Section {
     }
 
     if (typeof n === 'string') {
-
       n = n.toLowerCase()
 
-      let link = arr.find(o => o.page().toLowerCase() === n)
+      let link = arr.find((o) => o.page().toLowerCase() === n)
 
       return link === undefined ? [] : [link]
     }
@@ -158,13 +156,13 @@ class Section {
 
   templates(clue) {
     let arr = this._templates || []
-    arr = arr.map(t => t.json())
+    arr = arr.map((t) => t.json())
     if (typeof clue === 'number') {
       return arr[clue]
     }
     if (typeof clue === 'string') {
       clue = clue.toLowerCase()
-      return arr.filter(o => o.template === clue || o.name === clue)
+      return arr.filter((o) => o.template === clue || o.name === clue)
     }
     return arr
   }
@@ -190,7 +188,7 @@ class Section {
 
   lists(clue) {
     let arr = []
-    this.paragraphs().forEach(p => {
+    this.paragraphs().forEach((p) => {
       arr = arr.concat(p.lists())
     })
     if (typeof clue === 'number') {
@@ -201,7 +199,7 @@ class Section {
 
   interwiki(num) {
     let arr = []
-    this.paragraphs().forEach(p => {
+    this.paragraphs().forEach((p) => {
       arr = arr.concat(p.interwiki())
     })
     if (typeof num === 'number') {
@@ -212,7 +210,7 @@ class Section {
 
   images(clue) {
     let arr = []
-    this.paragraphs().forEach(p => {
+    this.paragraphs().forEach((p) => {
       arr = arr.concat(p.images())
     })
     if (typeof clue === 'number') {
@@ -241,9 +239,9 @@ class Section {
     let bads = {}
     bads[this.title()] = true
     //remove children too
-    this.children().forEach(sec => (bads[sec.title()] = true))
+    this.children().forEach((sec) => (bads[sec.title()] = true))
     let sections = this._doc.sections()
-    sections = sections.filter(sec => bads.hasOwnProperty(sec.title()) !== true)
+    sections = sections.filter((sec) => bads.hasOwnProperty(sec.title()) !== true)
     this._doc._sections = sections
     return this._doc
   }
@@ -322,7 +320,7 @@ class Section {
     }
     if (typeof n === 'string') {
       n = n.toLowerCase()
-      return children.find(s => s.title().toLowerCase() === n)
+      return children.find((s) => s.title().toLowerCase() === n)
     }
     if (typeof n === 'number') {
       return children[n]
@@ -351,7 +349,7 @@ class Section {
   text(options) {
     options = setDefaults(options, defaults)
     let pList = this.paragraphs()
-    pList = pList.map(p => p.text(options))
+    pList = pList.map((p) => p.text(options))
     return pList.join('\n\n')
   }
 

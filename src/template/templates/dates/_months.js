@@ -11,5 +11,5 @@ module.exports = [
   'September',
   'October',
   'November',
-  'December'
+  'December',
 ]

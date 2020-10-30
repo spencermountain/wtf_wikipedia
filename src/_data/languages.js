@@ -251,5 +251,5 @@ module.exports = {
   'zh-classical': 'ltr', //Classical
   'zh-min-nan': 'Bân-lâm-gú', //Minnan
   'zh-yue': '粵語', //Cantonese
-  zu: 'isiZulu' //Zulu
+  zu: 'isiZulu', //Zulu
 }

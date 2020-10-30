@@ -3,7 +3,7 @@ const parse = require('./_parsers/parse')
 const inf = require('./_infobox')
 const templates = require('./templates')
 const generic = require('./_parsers/parse')
-const {isArray} = require('../_lib/helpers')
+const { isArray } = require('../_lib/helpers')
 
 const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
 

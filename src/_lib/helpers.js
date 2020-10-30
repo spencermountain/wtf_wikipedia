@@ -51,12 +51,12 @@ function isArray(x) {
  * @returns {boolean} whether the variable is an object
  */
 function isObject(x) {
-  return (x && Object.prototype.toString.call(x) === '[object Object]')
+  return x && Object.prototype.toString.call(x) === '[object Object]'
 }
 
 module.exports = {
   capitalise,
   trim_whitespace,
   isArray,
-  isObject
+  isObject,
 }

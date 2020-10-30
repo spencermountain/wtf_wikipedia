@@ -59,9 +59,9 @@ const parser = function (tmpl, order = [], fmt) {
     delete obj['1']
   }
 
-  Object.keys(obj).forEach(k => {
+  Object.keys(obj).forEach((k) => {
     if (k === 'list') {
-      obj[k] = obj[k].map(v => makeFormat(v, fmt))
+      obj[k] = obj[k].map((v) => makeFormat(v, fmt))
       return
     }
     obj[k] = makeFormat(obj[k], fmt)

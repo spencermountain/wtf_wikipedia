@@ -9,15 +9,15 @@ let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round',
  * @param {Catcher} catcher
  */
 const parseMMA = function (catcher) {
-  catcher.text = catcher.text.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, tmpl => {
+  catcher.text = catcher.text.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, (tmpl) => {
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
     tmpl = tmpl.replace(/\{\{end\}\}/i, '')
 
     let headers = '! ' + headings.join(' !! ')
     let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
     let rows = tableParser(table)
-    rows = rows.map(row => {
-      Object.keys(row).forEach(k => {
+    rows = rows.map((row) => {
+      Object.keys(row).forEach((k) => {
         row[k] = row[k].text()
       })
       return row

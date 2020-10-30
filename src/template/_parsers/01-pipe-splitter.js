@@ -17,9 +17,10 @@ const pipeSplitter = function (tmpl) {
     //has '[[' but no ']]'
     //has equal number of opening and closing tags. handle nested case '[[[[' ']]'
     if (
-      /\[\[[^\]]+$/.test(a) || /{{[^}]+$/.test(a)
-      || (a.split('{{').length !== a.split('}}').length)
-      || (a.split('[[').length !== a.split(']]').length)
+      /\[\[[^\]]+$/.test(a) ||
+      /{{[^}]+$/.test(a) ||
+      a.split('{{').length !== a.split('}}').length ||
+      a.split('[[').length !== a.split(']]').length
     ) {
       arr[i + 1] = arr[i] + '|' + arr[i + 1]
       //@ts-expect-error we can ignore this error because we filter out all nulls later in
@@ -27,8 +28,8 @@ const pipeSplitter = function (tmpl) {
     }
   })
   //cleanup any mistakes we've made
-  arr = arr.filter(a => a !== null)
-  arr = arr.map(a => (a || '').trim())
+  arr = arr.filter((a) => a !== null)
+  arr = arr.map((a) => (a || '').trim())
 
   //remove empty fields, only at the end:
   for (let i = arr.length - 1; i >= 0; i -= 1) {
