@@ -21,11 +21,11 @@ let mapping = {
   taxobox: require('./data/taxobox')
 }
 
-const plugin = function(models, templates) {
-  Object.keys(mapping).forEach(k => {
-    mapping[k].forEach(name => {
+const plugin = function (models, templates) {
+  Object.keys(mapping).forEach((k) => {
+    mapping[k].forEach((name) => {
       // create template parser with alias
-      templates[name] = function(tmpl, list) {
+      templates[name] = function (tmpl, list) {
         return templates[k](tmpl, list, k)
       }
     })

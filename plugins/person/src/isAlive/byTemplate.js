@@ -18,7 +18,7 @@ const isAlive = {
   'blp one source': true,
   'active politician': true,
   activepol: true,
-  'current person': true
+  'current person': true,
 }
 
 const isDead = {
@@ -29,7 +29,7 @@ const isDead = {
   elegy: true,
   eulogy: true,
   panegyric: true,
-  memorial: true
+  memorial: true,
 }
 const byTemplate = function (doc) {
   let templates = doc.templates()

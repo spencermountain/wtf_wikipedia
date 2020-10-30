@@ -4,7 +4,7 @@ const aliveCats = {
   'Date of birth missing (living people)': true,
   'Place of birth missing (living people)': true,
   'Active politicians': true,
-  'Biography articles of living people': true
+  'Biography articles of living people': true,
 }
 
 const didDie = {
@@ -39,7 +39,7 @@ const didDie = {
   'Deaths from sepsis‎': true,
   'Deaths from pneumonia‎': true,
   'Deaths from dysentery‎‎': true,
-  'Deaths by drowning‎': true
+  'Deaths by drowning‎': true,
 }
 
 const byCat = function (doc) {

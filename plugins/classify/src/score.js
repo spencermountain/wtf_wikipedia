@@ -22,7 +22,7 @@ const parse = function (cat) {
   let split = cat.split(/\//)
   return {
     root: split[0],
-    child: split[1]
+    child: split[1],
   }
 }
 
@@ -44,7 +44,7 @@ const getScore = function (detail) {
     return {
       detail: detail,
       category: null,
-      score: 0
+      score: 0,
     }
   }
   let root = top[0]
@@ -89,7 +89,7 @@ const getScore = function (detail) {
     root: root,
     category: category,
     score: score,
-    detail: detail
+    detail: detail,
   }
 }
 module.exports = getScore

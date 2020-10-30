@@ -9,7 +9,7 @@ const list = require('./list')
 const reference = require('./reference')
 const table = require('./table')
 
-const plugin = function(models) {
+const plugin = function (models) {
   models.Doc.prototype.wikitext = doc
   models.Section.prototype.wikitext = section
   models.Paragraph.prototype.wikitext = paragraph

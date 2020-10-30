@@ -1,5 +1,5 @@
 //
-const toHtml = function(options) {
+const toHtml = function (options) {
   if (this.data && this.data.url && this.data.title) {
     let str = this.data.title
     if (options.links === true) {

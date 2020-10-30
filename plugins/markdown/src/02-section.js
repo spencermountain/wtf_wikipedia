@@ -3,7 +3,7 @@ const defaults = {
   images: true,
   tables: true,
   lists: true,
-  paragraphs: true,
+  paragraphs: true
 }
 
 const doSection = function (options) {
@@ -23,7 +23,7 @@ const doSection = function (options) {
   if (options.images === true) {
     let images = this.images()
     if (images.length > 0) {
-      md += images.map(img => img.markdown()).join('\n')
+      md += images.map((img) => img.markdown()).join('\n')
       md += '\n'
     }
   }
@@ -33,7 +33,7 @@ const doSection = function (options) {
     let tables = this.tables()
     if (tables.length > 0) {
       md += '\n'
-      md += tables.map(table => table.markdown(options)).join('\n')
+      md += tables.map((table) => table.markdown(options)).join('\n')
       md += '\n'
     }
   }
@@ -42,7 +42,7 @@ const doSection = function (options) {
   if (options.lists === true) {
     let lists = this.lists()
     if (lists.length > 0) {
-      md += lists.map(list => list.markdown(options)).join('\n')
+      md += lists.map((list) => list.markdown(options)).join('\n')
       md += '\n'
     }
   }
@@ -50,10 +50,10 @@ const doSection = function (options) {
   //finally, write the sentence text.
   if (options.paragraphs === true || options.sentences === true) {
     md += this.paragraphs()
-      .map(p => {
+      .map((p) => {
         return p
           .sentences()
-          .map(s => s.markdown(options))
+          .map((s) => s.markdown(options))
           .join(' ')
       })
       .join('\n\n')

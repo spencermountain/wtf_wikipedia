@@ -8,7 +8,7 @@ const patterns = {
     /. (phyla|genera)$/,
     /. taxonomic families$/,
     /plants used in ./,
-    / (funghi|reptiles|flora|fauna|fish|birds|trees|mammals|plants)$/
+    / (funghi|reptiles|flora|fauna|fish|birds|trees|mammals|plants)$/,
   ],
 
   // ==Person==
@@ -16,7 +16,7 @@ const patterns = {
     /politicians from ./,
     /politician stubs$/,
     /. (democrats|republicans|politicians)$/,
-    /mayors of ./
+    /mayors of ./,
   ],
   'Person/Athlete': [/sportspeople from ./, /(footballers|cricketers|defencemen|cyclists)/],
   'Person/Actor': [/actresses/, /actors from ./, /actor stubs$/, / (actors|actresses)$/],
@@ -32,7 +32,7 @@ const patterns = {
     /(alumni|fellows) of .$/,
     /(people|writer) stubs$/,
     /(american|english) (fe)?male ./,
-    /(american|english) (architects|people)/
+    /(american|english) (architects|people)/,
   ],
 
   // ==Place==
@@ -40,12 +40,12 @@ const patterns = {
     /(buildings|bridges) completed in /,
     /airports established in ./,
     /(airports|bridges) in ./,
-    /buildings and structures in ./
+    /buildings and structures in ./,
   ],
   'Place/BodyOfWater': [/(rivers|lakes|tributaries) of ./],
   'Place/City': [
     /^cities and towns in ./,
-    /(municipalities|settlements|villages|localities|townships) in ./
+    /(municipalities|settlements|villages|localities|townships) in ./,
   ],
   Place: [
     /populated places/,
@@ -54,7 +54,7 @@ const patterns = {
     /parks in ./,
     / district$/,
     /geography stubs$/,
-    /sports venue stubs$/
+    /sports venue stubs$/,
   ],
 
   // ==Creative Work==
@@ -67,11 +67,11 @@ const patterns = {
   // ==Event==
   'Event/SportsEvent': [
     /. league seasons$/,
-    /^(19|20)[0-9]{2} in (soccer|football|rugby|tennis|basketball|baseball|cricket|sports)/
+    /^(19|20)[0-9]{2} in (soccer|football|rugby|tennis|basketball|baseball|cricket|sports)/,
   ],
   'Event/MilitaryConflict': [
     /conflicts (in|of) [0-9]{4}/,
-    /(wars|battles|conflicts) (involving|of|in) ./
+    /(wars|battles|conflicts) (involving|of|in) ./,
   ],
   Event: [/^(19|20)[0-9]{2} in /, /^(years of the )?[0-9]{1,2}(st|nd|rd|th)? century in ./],
 
@@ -80,11 +80,11 @@ const patterns = {
     /musical groups from /,
     /musical groups (dis)?established in [0-9]{4}/,
     /musical group stubs/,
-    /. music(al)? (groups|duos|trios|quartets|quintets)$/
+    /. music(al)? (groups|duos|trios|quartets|quintets)$/,
   ],
   'Organization/SportsTeam': [
     /football clubs in ./,
-    /(basketball|hockey|baseball|football) teams (in|established) ./
+    /(basketball|hockey|baseball|football) teams (in|established) ./,
   ],
   'Organization/Company': [/companies (established|based) in ./],
   Organization: [
@@ -93,7 +93,7 @@ const patterns = {
     /(secondary|primary) schools/,
     /military units/,
     /magazines/,
-    /organi[sz]ation stubs$/
-  ]
+    /organi[sz]ation stubs$/,
+  ],
 }
 module.exports = patterns

@@ -11,13 +11,13 @@ const defaults = {
 }
 
 //
-const infobox = function(options) {
+const infobox = function (options) {
   options = Object.assign({}, defaults, options)
   let out = '\n \\vspace*{0.3cm} % Info Box\n\n'
   out += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n'
   out += '  \\hline  %horizontal line\n'
   //todo: render top image here
-  Object.keys(this.data).forEach(k => {
+  Object.keys(this.data).forEach((k) => {
     if (dontDo[k] === true) {
       return
     }

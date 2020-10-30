@@ -3,7 +3,7 @@ const defaults = {
   images: true,
   tables: true,
   lists: true,
-  paragraphs: true,
+  paragraphs: true
 }
 //map '==' depth to 'subsection', 'subsubsection', etc
 const doSection = function (options) {
@@ -17,30 +17,30 @@ const doSection = function (options) {
     let vOpen = '\n'
     let vClose = '}'
     switch (num) {
-    case 1:
-      vOpen += '\\chapter{'
-      break
-    case 2:
-      vOpen += '\\section{'
-      break
-    case 3:
-      vOpen += '\\subsection{'
-      break
-    case 4:
-      vOpen += '\\subsubsection{'
-      break
-    case 5:
-      vOpen += '\\paragraph{'
-      vClose = '} \\\\ \n'
-      break
-    case 6:
-      vOpen += '\\subparagraph{'
-      vClose = '} \\\\ \n'
-      break
-    default:
-      vOpen +=
-        '\n% section with depth=' + num + ' undefined - use subparagraph instead\n\\subparagraph{'
-      vClose = '} \\\\ \n'
+      case 1:
+        vOpen += '\\chapter{'
+        break
+      case 2:
+        vOpen += '\\section{'
+        break
+      case 3:
+        vOpen += '\\subsection{'
+        break
+      case 4:
+        vOpen += '\\subsubsection{'
+        break
+      case 5:
+        vOpen += '\\paragraph{'
+        vClose = '} \\\\ \n'
+        break
+      case 6:
+        vOpen += '\\subparagraph{'
+        vClose = '} \\\\ \n'
+        break
+      default:
+        vOpen +=
+          '\n% section with depth=' + num + ' undefined - use subparagraph instead\n\\subparagraph{'
+        vClose = '} \\\\ \n'
     }
     out += vOpen + this.title() + vClose
     out += '\n'
@@ -49,7 +49,7 @@ const doSection = function (options) {
   //put any images under the header
   if (options.images === true && this.images()) {
     out += this.images()
-      .map(img => img.latex(options))
+      .map((img) => img.latex(options))
       .join('\n')
     //out += '\n';
   }
@@ -57,21 +57,21 @@ const doSection = function (options) {
   //make a out table
   if (options.tables === true && this.tables()) {
     out += this.tables()
-      .map(t => t.latex(options))
+      .map((t) => t.latex(options))
       .join('\n')
   }
 
   //make a out bullet-list
   if (options.lists === true && this.lists()) {
     out += this.lists()
-      .map(list => list.latex(options))
+      .map((list) => list.latex(options))
       .join('\n')
   }
 
   //finally, write the sentence text.
   if (options.paragraphs === true || options.sentences === true) {
     out += this.paragraphs()
-      .map(s => s.latex(options))
+      .map((s) => s.latex(options))
       .join(' ')
     out += '\n'
   }

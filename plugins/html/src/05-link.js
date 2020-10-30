@@ -1,4 +1,4 @@
-const toHtml = function() {
+const toHtml = function () {
   let classNames = 'link'
   let href = this.href()
   href = href.replace(/ /g, '_')

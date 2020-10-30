@@ -122,5 +122,5 @@ module.exports = {
   'wikivoyage-inline': 'Place',
   'election box': 'Place',
   zh: 'Place',
-  'wide image': 'Place'
+  'wide image': 'Place',
 }

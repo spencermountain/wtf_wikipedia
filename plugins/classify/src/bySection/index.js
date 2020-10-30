@@ -1,8 +1,8 @@
 const sections = require('./mapping')
 
-const fromSection = function(doc) {
+const fromSection = function (doc) {
   let found = []
-  let titles = doc.sections().map(s => {
+  let titles = doc.sections().map((s) => {
     let str = s.title()
     str = str.toLowerCase().trim()
     return str

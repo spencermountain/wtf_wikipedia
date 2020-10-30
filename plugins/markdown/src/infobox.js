@@ -14,12 +14,12 @@ const defaults = {
 const pad = require('./_lib/pad')
 
 // render an infobox as a table with two columns, key + value
-const doInfobox = function(options) {
+const doInfobox = function (options) {
   options = Object.assign({}, defaults, options)
   let md = '|' + pad('', 35) + '|' + pad('', 30) + '|\n'
   md += '|' + pad('---', 35) + '|' + pad('---', 30) + '|\n'
   //todo: render top image here (somehow)
-  Object.keys(this.data).forEach(k => {
+  Object.keys(this.data).forEach((k) => {
     if (dontDo[k] === true) {
       return
     }

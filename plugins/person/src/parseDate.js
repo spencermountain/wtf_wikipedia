@@ -10,7 +10,7 @@ const parseDate = function (str) {
   // just the year
   if (str.match(/^[0-9]{4}$/)) {
     return {
-      year: parseInt(str, 10)
+      year: parseInt(str, 10),
     }
   }
   // parse the full date
@@ -18,7 +18,7 @@ const parseDate = function (str) {
   return {
     year: s.year(),
     month: s.month(),
-    date: s.date()
+    date: s.date(),
   }
 }
 module.exports = parseDate

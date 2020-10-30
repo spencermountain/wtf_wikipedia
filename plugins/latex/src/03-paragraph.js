@@ -2,7 +2,7 @@ const defaults = {
   sentences: true
 }
 
-const toLatex = function(options) {
+const toLatex = function (options) {
   options = Object.assign({}, defaults, options)
   let out = ''
   if (options.sentences === true) {

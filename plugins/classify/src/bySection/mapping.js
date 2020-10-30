@@ -197,7 +197,7 @@ module.exports = {
   'parks and recreation': 'Place',
   'public transportation': 'Place',
   'coat of arms': 'Place',
-  churches: 'Place'
+  churches: 'Place',
 
   // learned things
   //compatibility: 'Thing',

@@ -2,13 +2,13 @@ const skip = {
   disambiguation: true,
   surname: true,
   name: true,
-  'given name': true
+  'given name': true,
 }
 const paren = /\((.*)\)$/
 const listOf = /^list of ./
 const disambig = /\(disambiguation\)/
 
-const skipPage = function(doc) {
+const skipPage = function (doc) {
   let title = doc.title() || ''
 
   //look at parentheses like 'Tornado (film)'
