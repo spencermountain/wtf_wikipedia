@@ -1,7 +1,7 @@
-var test = require('tape')
-var wtf = require('./_lib')
+const test = require('tape')
+const wtf = require('./_lib')
 
-test('expand external interwiki link', t => {
+test('expand external interwiki link', (t) => {
   let str = `[[heroeswiki:cool]]`
   let doc = wtf(str)
   let html = doc.link().html()
@@ -14,7 +14,7 @@ test('expand external interwiki link', t => {
   t.end()
 })
 
-test('expand internal interwiki link', t => {
+test('expand internal interwiki link', (t) => {
   let str = `[[fr:cool]]`
   let doc = wtf(str)
 

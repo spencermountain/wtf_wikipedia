@@ -1,5 +1,5 @@
-var test = require('tape')
-var wtf = require('./lib')
+const test = require('tape')
+const wtf = require('./lib')
 
 test('support bold and italics', (t) => {
   let doc = wtf(`hi <b>world</b> there`)

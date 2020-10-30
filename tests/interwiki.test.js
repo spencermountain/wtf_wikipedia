@@ -1,8 +1,8 @@
-var test = require('tape')
-var wtf = require('./lib')
+const test = require('tape')
+const wtf = require('./lib')
 
-test('interwiki text', t => {
-  var doc = wtf('hi [[as:Plancton]] there')
+test('interwiki text', (t) => {
+  let doc = wtf('hi [[as:Plancton]] there')
   t.equal(doc.text(), 'hi Plancton there', 'strip full interwiki')
 
   doc = wtf(`hi [[wiktionary:Plancton]] there [[zh:天問|天問]]`)
@@ -11,7 +11,7 @@ test('interwiki text', t => {
   t.end()
 })
 
-test('expand external interwiki link', t => {
+test('expand external interwiki link', (t) => {
   let str = `[[heroeswiki:cool]]`
   let doc = wtf(str)
   let obj = doc.link().json()
@@ -32,7 +32,7 @@ test('expand external interwiki link', t => {
   t.end()
 })
 
-test('expand internal interwiki link', t => {
+test('expand internal interwiki link', (t) => {
   let str = `[[fr:cool]]`
   let doc = wtf(str)
   let obj = doc.link().json()

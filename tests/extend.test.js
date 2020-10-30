@@ -1,9 +1,9 @@
-var test = require('tape')
-var wtf = require('./lib')
+const test = require('tape')
+const wtf = require('./lib')
 
-test('extend model', t => {
-  wtf.extend(models => {
-    models.Doc.prototype.countLinks = function() {
+test('extend model', (t) => {
+  wtf.extend((models) => {
+    models.Doc.prototype.countLinks = function () {
       return this.links().length
     }
   })
@@ -14,7 +14,7 @@ test('extend model', t => {
   t.end()
 })
 
-test('extend templates', t => {
+test('extend templates', (t) => {
   wtf.extend((models, templates) => {
     // add a new template
     templates.missing = (tmpl, list) => {
@@ -32,7 +32,7 @@ test('extend templates', t => {
   t.end()
 })
 
-test('string template syntax', t => {
+test('string template syntax', (t) => {
   wtf.extend((models, templates) => {
     templates.nest = 'inside'
     templates.ignore = ''

@@ -220,7 +220,7 @@ wtf.fetch('Ziggy Stardust', 'fr').then((doc) => {
 | [classify](./plugins/classify)                             | person/place/thing                      |
 | [summary](./plugins/summary)                               | short description text                  |
 | [person](./plugins/person)                                 | birth/death information                 |
-| [category](./plugins/category)                             | parse all articles in a category        |
+| [api](./plugins/api)                                       | fetch more data from the API            |
 | [i18n](./plugins/i18n)                                     | improves multilingual template coverage |
 | [wtf-mlb](https://github.com/spencermountain/wtf-mlb)      | fetch baseball data                     |
 | [wtf-nhl](https://github.com/spencermountain/wtf-nhl)      | fetch hockey data                       |
@@ -431,7 +431,7 @@ let result = await wtf.category('Category:Politicians_from_Paris')
 //}
 ```
 
-to fetch and parse all pages in a category, in an optimized way, see [wtf-plugin-category](./plugins/category)
+to fetch and parse all pages in a category, in an optimized way, see [wtf-plugin-api](./plugins/api)
 
 ### fetch random article:
 

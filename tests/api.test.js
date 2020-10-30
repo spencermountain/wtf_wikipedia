@@ -1,15 +1,15 @@
-var test = require('tape')
-var fs = require('fs')
-var path = require('path')
-var wtf = require('./lib')
-var docs = require('./lib/api.json')
+const test = require('tape')
+const fs = require('fs')
+const path = require('path')
+const wtf = require('./lib')
+const docs = require('./lib/api.json')
 
 //read cached file
-var readFile = function(file) {
+const readFile = function (file) {
   return fs.readFileSync(path.join(__dirname, 'cache', file + '.txt'), 'utf-8')
 }
 
-var pages = [
+const pages = [
   'al_Haytham',
   'Mozilla-Firefox',
   'anarchism',
@@ -19,14 +19,14 @@ var pages = [
   'jodie_emery',
   'Allen-R.-Morris',
   'United-Kingdom',
-  'Irina-Saratovtseva'
+  'Irina-Saratovtseva',
 ]
 
-test('Document-methods-do-not-throw', t => {
-  pages.forEach(page => {
-    var doc = wtf(readFile(page))
-    docs.Document.forEach(obj => {
-      var desc = obj.name + ' - ' + page
+test('Document-methods-do-not-throw', (t) => {
+  pages.forEach((page) => {
+    const doc = wtf(readFile(page))
+    docs.Document.forEach((obj) => {
+      const desc = obj.name + ' - ' + page
       doc[obj.name]()
       t.ok(true, desc)
     })
@@ -34,12 +34,12 @@ test('Document-methods-do-not-throw', t => {
   t.end()
 })
 
-test('Section-methods-do-not-throw', t => {
-  pages.forEach(page => {
-    var doc = wtf(readFile(page))
-    var sec = doc.sections(0)
-    docs.Section.forEach(obj => {
-      var desc = obj.name + ' - ' + page
+test('Section-methods-do-not-throw', (t) => {
+  pages.forEach((page) => {
+    const doc = wtf(readFile(page))
+    const sec = doc.sections(0)
+    docs.Section.forEach((obj) => {
+      const desc = obj.name + ' - ' + page
       sec[obj.name]()
       t.ok(true, desc)
     })
@@ -47,12 +47,12 @@ test('Section-methods-do-not-throw', t => {
   t.end()
 })
 
-test('Sentence-methods-do-not-throw', t => {
-  pages.forEach(page => {
-    var doc = wtf(readFile(page))
-    var sen = doc.sentences(0)
-    docs.Sentence.forEach(obj => {
-      var desc = obj.name + ' - ' + page
+test('Sentence-methods-do-not-throw', (t) => {
+  pages.forEach((page) => {
+    const doc = wtf(readFile(page))
+    const sen = doc.sentences(0)
+    docs.Sentence.forEach((obj) => {
+      const desc = obj.name + ' - ' + page
       sen[obj.name]()
       t.ok(true, desc)
     })
@@ -60,12 +60,12 @@ test('Sentence-methods-do-not-throw', t => {
   t.end()
 })
 
-test('Reference-methods-do-not-throw', t => {
-  pages.forEach(page => {
-    var doc = wtf(readFile(page))
-    var sen = doc.references(0)
-    docs.Reference.forEach(obj => {
-      var desc = obj.name + ' - ' + page
+test('Reference-methods-do-not-throw', (t) => {
+  pages.forEach((page) => {
+    const doc = wtf(readFile(page))
+    const sen = doc.references(0)
+    docs.Reference.forEach((obj) => {
+      const desc = obj.name + ' - ' + page
       sen[obj.name]()
       t.ok(true, desc)
     })
@@ -73,12 +73,12 @@ test('Reference-methods-do-not-throw', t => {
   t.end()
 })
 
-test('Image-methods-do-not-throw', t => {
-  pages.forEach(page => {
-    var doc = wtf(readFile(page))
-    var sen = doc.images(0)
-    docs.Image.forEach(obj => {
-      var desc = obj.name + ' - ' + page
+test('Image-methods-do-not-throw', (t) => {
+  pages.forEach((page) => {
+    const doc = wtf(readFile(page))
+    const sen = doc.images(0)
+    docs.Image.forEach((obj) => {
+      const desc = obj.name + ' - ' + page
       sen[obj.name]()
       t.ok(true, desc)
     })
@@ -86,8 +86,8 @@ test('Image-methods-do-not-throw', t => {
   t.end()
 })
 
-test('Infobox-methods-do-not-throw', t => {
-  var mypages = [
+test('Infobox-methods-do-not-throw', (t) => {
+  const mypages = [
     'al_Haytham',
     'Mozilla-Firefox',
     'toronto',
@@ -95,13 +95,13 @@ test('Infobox-methods-do-not-throw', t => {
     'royal_cinema',
     'jodie_emery',
     'Allen-R.-Morris',
-    'Irina-Saratovtseva'
+    'Irina-Saratovtseva',
   ]
-  mypages.forEach(page => {
-    var doc = wtf(readFile(page))
-    var sen = doc.infoboxes(0)
-    docs.Infobox.forEach(obj => {
-      var desc = obj.name + ' - ' + page
+  mypages.forEach((page) => {
+    const doc = wtf(readFile(page))
+    const sen = doc.infoboxes(0)
+    docs.Infobox.forEach((obj) => {
+      const desc = obj.name + ' - ' + page
       sen[obj.name]()
       t.ok(true, desc)
     })
@@ -109,13 +109,13 @@ test('Infobox-methods-do-not-throw', t => {
   t.end()
 })
 
-test('List-methods-do-not-throw', t => {
-  var mypages = ['al_Haytham', 'Mozilla-Firefox', 'toronto', 'toronto_star', 'jodie_emery', 'Allen-R.-Morris']
-  mypages.forEach(page => {
-    var doc = wtf(readFile(page))
-    var sen = doc.lists(0)
-    docs.List.forEach(obj => {
-      var desc = obj.name + ' - ' + page
+test('List-methods-do-not-throw', (t) => {
+  const mypages = ['al_Haytham', 'Mozilla-Firefox', 'toronto', 'toronto_star', 'jodie_emery', 'Allen-R.-Morris']
+  mypages.forEach((page) => {
+    const doc = wtf(readFile(page))
+    const sen = doc.lists(0)
+    docs.List.forEach((obj) => {
+      const desc = obj.name + ' - ' + page
       sen[obj.name]()
       t.ok(true, desc)
     })
@@ -123,13 +123,13 @@ test('List-methods-do-not-throw', t => {
   t.end()
 })
 
-test('Table-methods-do-not-throw', t => {
-  var mypages = ['Mozilla-Firefox', 'toronto', 'Allen-R.-Morris', 'bluejays']
-  mypages.forEach(page => {
-    var doc = wtf(readFile(page))
-    var sen = doc.tables(0)
-    docs.Table.forEach(obj => {
-      var desc = obj.name + ' - ' + page
+test('Table-methods-do-not-throw', (t) => {
+  const mypages = ['Mozilla-Firefox', 'toronto', 'Allen-R.-Morris', 'bluejays']
+  mypages.forEach((page) => {
+    const doc = wtf(readFile(page))
+    const sen = doc.tables(0)
+    docs.Table.forEach((obj) => {
+      const desc = obj.name + ' - ' + page
       sen[obj.name]()
       t.ok(true, desc)
     })

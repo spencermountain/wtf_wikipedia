@@ -1,8 +1,8 @@
-var test = require('tape')
-var readFile = require('./lib/_cachedPage')
+const test = require('tape')
+const readFile = require('./lib/_cachedPage')
 
-test('royal_cinema options', t => {
-  var doc = readFile('royal_cinema')
+test('royal_cinema options', (t) => {
+  const doc = readFile('royal_cinema')
   t.equal(doc.images().length, 1, 'image-length')
   t.equal(doc.categories().length, 4, 'category-length')
   t.equal(doc.citations().length, 4, 'citations-length')
@@ -12,7 +12,7 @@ test('royal_cinema options', t => {
     categories: false,
     citations: false,
     images: false,
-    infoboxes: false
+    infoboxes: false,
   })
   t.equal(data.images, undefined, 'post-image-length')
   t.equal(data.categories, undefined, 'post-category-length')
@@ -21,8 +21,8 @@ test('royal_cinema options', t => {
   t.end()
 })
 
-test('other-pages', t => {
-  var pages = [
+test('other-pages', (t) => {
+  const pages = [
     'earthquakes',
     'United-Kingdom',
     'Chemical-biology',
@@ -31,18 +31,18 @@ test('other-pages', t => {
     'Wendy-Mogel',
     'Damphu-drum',
     'Direct-representation',
-    'al_Haytham'
+    'al_Haytham',
   ]
-  pages.forEach(page => {
-    var doc = readFile(page)
+  pages.forEach((page) => {
+    const doc = readFile(page)
     t.notEqual(doc.categories().length, 0, page + '-category-length')
     t.notEqual(doc.citations().length, 0, page + '-citations-length')
   })
   t.end()
 })
 
-test('turn all options off', t => {
-  var options = {
+test('turn all options off', (t) => {
+  const options = {
     sections: false,
     paragraphs: false,
     sentences: false,
@@ -50,10 +50,10 @@ test('turn all options off', t => {
     categories: false,
     coordinates: false,
     infoboxes: false,
-    pageID: false
+    pageID: false,
   }
-  var doc = readFile('United-Kingdom')
-  var out = JSON.stringify(doc.json(options))
+  const doc = readFile('United-Kingdom')
+  const out = JSON.stringify(doc.json(options))
   t.equal(out, '{}', 'json empty')
 
   t.end()

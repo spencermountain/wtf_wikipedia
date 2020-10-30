@@ -1,8 +1,8 @@
-var wtf = require('./lib')
-var test = require('tape')
+const wtf = require('./lib')
+const test = require('tape')
 
 test('external-links', function (t) {
-  var arr = [
+  const arr = [
     [`imdb title`, `{{IMDb title | id= 0426883 | title= Alpha Dog }}`],
     [`imdb name`, `{{IMDb name | 0000008 | Marlon Brando }}`],
     [`musicbrainz artist`, `{{MusicBrainz artist|mbid=31e7b30b-f960-408f-908b-c8e277308eab|name=Susumu Hirasawa}}`],
@@ -26,16 +26,16 @@ test('external-links', function (t) {
     ['unreferenced section', `{{Unreferenced section|date=November 2018}}`],
   ]
   arr.forEach((a) => {
-    var doc = wtf(a[1])
+    const doc = wtf(a[1])
     t.equal(doc.templates().length, 1, a[0] + ' count')
-    var tmpl = doc.templates(0) || {}
+    const tmpl = doc.templates(0) || {}
     t.equal(tmpl.template, a[0], a[1] + ' name')
   })
   t.end()
 })
 
 test('wikipedia-templates', function (t) {
-  var arr = [
+  const arr = [
     [`uss`, `{{USS|Constellation|1797}}`],
     [`italic title`, `{{italic title}}`],
     [`audio`, `{{Audio|en-us-Alabama.ogg|pronunciation of "Alabama"|help=no}}`],
@@ -115,9 +115,9 @@ test('wikipedia-templates', function (t) {
     // [``, ``],
   ]
   arr.forEach((a) => {
-    var doc = wtf(a[1])
+    const doc = wtf(a[1])
     t.equal(doc.templates().length, 1, a[0] + ' count')
-    var tmpl = doc.templates(0) || {}
+    const tmpl = doc.templates(0) || {}
     t.equal(tmpl.template, a[0], a[0] + ' name')
   })
   t.end()
@@ -144,7 +144,7 @@ test('weather', function (t) {
   |Dec high C = -0.8
   |source 1=[[Environment Canada]]<ref name="envcan"/>
   }}`
-  var arr = wtf(str).templates(0).byMonth['high c']
+  let arr = wtf(str).templates(0).byMonth['high c']
   t.equal(arr.length, 12, 'got twelve months')
   t.equal(arr[1], 0.7, 'got february')
 
@@ -160,7 +160,7 @@ test('weather', function (t) {
 })
 
 test('election', function (t) {
-  var str = `hello {{Election box begin |title=[[United Kingdom general election, 2005|General Election 2005]]: Strangford}}
+  const str = `hello {{Election box begin |title=[[United Kingdom general election, 2005|General Election 2005]]: Strangford}}
    {{Election box candidate
      |party      = Labour
      |candidate  = Tony Blair
@@ -182,17 +182,17 @@ test('election', function (t) {
   }}
    {{Election box end}}
    world`
-  var doc = wtf(str)
+  const doc = wtf(str)
   t.equal(doc.templates().length, 1, 'found one template')
-  var tmpl = doc.templates(0) || {}
+  const tmpl = doc.templates(0) || {}
   t.equal(tmpl.template, 'election box', 'template name')
   t.equal(tmpl.candidates.length, 2, 'two candidates')
   t.end()
 })
 
 test('test-flexible-format', function (t) {
-  var doc = wtf(`hello {{Hollywood Walk of Fame|Alan Alda}} world`)
-  var tmpl = doc.templates(0) || {}
+  let doc = wtf(`hello {{Hollywood Walk of Fame|Alan Alda}} world`)
+  let tmpl = doc.templates(0) || {}
   t.equal(tmpl.template, 'hollywood walk of fame', 'template1')
   t.equal(tmpl.name, 'Alan Alda', 'name1')
   t.equal(doc.text(), 'hello world', 'text1')
@@ -236,7 +236,7 @@ test('covid-1', function (t) {
 })
 
 test('playoff-brackets', function (t) {
-  var str = `{{4TeamBracket
+  const str = `{{4TeamBracket
   | RD2         = Final
 
   | seed-width  =

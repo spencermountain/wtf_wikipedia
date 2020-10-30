@@ -1,8 +1,8 @@
-var test = require('tape')
-var wtf = require('./lib')
+const test = require('tape')
+const wtf = require('./lib')
 
-test('infobox', function(t) {
-  var str = `
+test('infobox', function (t) {
+  const str = `
   {{Infobox settlement
   | name = New York City
   | official_name                   = City of New York
@@ -13,12 +13,12 @@ test('infobox', function(t) {
 
   The '''City of New York''', often called '''New York City'''
   `
-  var arr = wtf(str).infoboxes()
+  const arr = wtf(str).infoboxes()
   t.equal(arr.length, 1, 'have one infobox')
   t.end()
 })
 
-test('node.js-infobox-logo', function(t) {
+test('node.js-infobox-logo', function (t) {
   let str = `{{Infobox software
     | name = Node.js
     | logo = [[File:Node.js logo.svg|frameless]]
@@ -33,14 +33,12 @@ test('node.js-infobox-logo', function(t) {
     | license = [[MIT license]]<ref>{{cite web|title=node/LICENSE at master|url=https://github.com/nodejs/node/blob/master/LICENSE|website=GitHub|publisher=Node.js Foundation|accessdate = 17 September 2018|date=17 September 2018}}</ref><ref>{{cite web|title=The MIT License|url=https://opensource.org/licenses/MIT|website=Open Source Initiative|accessdate = 17 September 2018|date=17 September 2018}}</ref>
     }}
 `
-  let obj = wtf(str)
-    .infobox(0)
-    .keyValue()
+  let obj = wtf(str).infobox(0).keyValue()
   t.equal(obj[`logo`], 'Node.js logo.svg', 'found logo val')
   t.end()
 })
 
-test('french-infobox', function(t) {
+test('french-infobox', function (t) {
   let str = `{{Infobox Société
   | couleur boîte             = 706D6E
   | titre blanc               = oui
@@ -51,9 +49,7 @@ test('french-infobox', function(t) {
   | chiffre d'affaires        = found2
  }}
 `
-  let obj = wtf(str)
-    .infobox(0)
-    .keyValue()
+  let obj = wtf(str).infobox(0).keyValue()
   t.equal(obj[`secteurs d'activités`], 'found1', 'found secteurs val')
   t.equal(obj[`chiffre d'affaires`], 'found2', 'found chiffre val')
   t.equal(obj[`siège (ville)`], 'city', 'found city val')
@@ -61,7 +57,7 @@ test('french-infobox', function(t) {
   t.end()
 })
 
-test('nested-london-infobox', function(t) {
+test('nested-london-infobox', function (t) {
   let str = `{{Infobox country
   | common_name = United Kingdom
   | name = {{collapsible list
@@ -73,9 +69,7 @@ test('nested-london-infobox', function(t) {
    }}
   }}
 `
-  let obj = wtf(str)
-    .infobox(0)
-    .keyValue()
+  let obj = wtf(str).infobox(0).keyValue()
   t.equal(obj[`common_name`], 'United Kingdom', 'found common_name val')
   t.equal(obj[`name`], 'hello', 'found name val')
   t.end()

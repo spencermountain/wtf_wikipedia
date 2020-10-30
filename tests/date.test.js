@@ -1,8 +1,8 @@
-var test = require('tape')
-var wtf = require('./lib')
+const test = require('tape')
+const wtf = require('./lib')
 
-test('structured date templates', t => {
-  var arr = [
+test('structured date templates', (t) => {
+  const arr = [
     ['{{Birth date|1993|2|24}}', 'February 24, 1993'],
     ['{{Birth date|1993|2|4|df=yes}}', 'February 4, 1993'],
     ['{{Birth date|1919|12|4|df=yes}}', 'December 4, 1919'],
@@ -46,17 +46,17 @@ test('structured date templates', t => {
     ['{{Start date and age|1997|03|26}}', 'March 26, 1997'],
     ['{{Start date and age|1986|01|01|df=yes}}', 'January 1, 1986'],
     ['{{Start date and age|2019|03|08}}', 'March 8, 2019'],
-    ['{{Start date and age|2010|02|29|df=yes}}', 'February 29, 2010']
+    ['{{Start date and age|2010|02|29|df=yes}}', 'February 29, 2010'],
   ]
-  arr.forEach(a => {
-    var str = wtf(a[0]).text()
+  arr.forEach((a) => {
+    const str = wtf(a[0]).text()
     t.equal(str, a[1], a[0] + ' ' + str)
   })
   t.end()
 })
 
-test('hyphenated language-date templates', t => {
-  var arr = [
+test('hyphenated language-date templates', (t) => {
+  const arr = [
     ['{{start-date|December 7, 1942}}', 'December 7, 1942'],
     ['{{birth-date|7 December 1941}}', '7 December 1941'],
     ['{{end-date|7 December 1941}}', '7 December 1941'],
@@ -72,7 +72,7 @@ test('hyphenated language-date templates', t => {
     ['born on {{birth-date|17 June 1941}}', 'born on 17 June 1941'],
     [
       'around {{start-date|5:43PM HST, December 7th, 1941|tz=y}} this century',
-      'around 5:43PM HST, December 7th, 1941 this century'
+      'around 5:43PM HST, December 7th, 1941 this century',
     ],
     // ['{{Death-date and given age|2018|2|5|df=yes}}', 'February 5, 2018'],
     // ['{{birth date and age2 |1988|6|10 |1961|7|4 |df=y}}', '4 July 1961'],
@@ -80,20 +80,20 @@ test('hyphenated language-date templates', t => {
     ['{{BirthDeathAge|B|1976|6|6|1990|8|8}}', 'June 6, 1976'],
     ['{{BirthDeathAge| |1976| | |1990| |}}', '1990'],
     ['{{BirthDeathAge| |1976| | |1990|8|8}}', 'August 8, 1990'],
-    ['{{BirthDeathAge|{{^}}|1976|{{^}}|{{^}}|2007|1|1}}', 'January 1, 2007']
+    ['{{BirthDeathAge|{{^}}|1976|{{^}}|{{^}}|2007|1|1}}', 'January 1, 2007'],
     // ['{{Birth date based on age at death |age |1986|03|28}}', 'March 28, 1986'],
     // ['{{birth based on age as of date | 50 | 2017 | 02 | 16}}', '1966/1967']
   ]
-  arr.forEach(a => {
-    var str = wtf(a[0]).text()
+  arr.forEach((a) => {
+    const str = wtf(a[0]).text()
     t.equal(str, a[1], a[0])
   })
   t.end()
 })
 
 // test('date-data', t => {
-//   var obj = wtf('hello {{start date|1993|02|24|08|30}} world').sentences(0);
-//   var date = obj.dates(0);
+//   const obj = wtf('hello {{start date|1993|02|24|08|30}} world').sentences(0);
+//   const date = obj.dates(0);
 //   t.equal(date.year, 1993, 'got-year');
 //   t.equal(date.month, 2, 'got-month');
 //   t.equal(date.date, 24, 'got-date');
@@ -103,8 +103,8 @@ test('hyphenated language-date templates', t => {
 //   t.end();
 // });
 
-test('age templates', t => {
-  var arr = [
+test('age templates', (t) => {
+  const arr = [
     ['{{Age|1989|7|23|2003|7|14}}', '13'],
     ['{{Age|1989|7|23|2018|2|28}}', '28'],
     // ['{{Age|1989|7|23}}', '28'], //working but untestable
@@ -126,7 +126,7 @@ test('age templates', t => {
     // ['{{age in years and days|2007|03|02|2008|03|02}}', '1 year, 0 days'],
     // ['{{age in days|19 Aug 2008|4 Sep 2010}}', '746'],
     // ['{{age in days|27 May 2002}}', '5,744'],
-    ['{{Age nts|1989|7|23|2003|7|14}}', '13']
+    ['{{Age nts|1989|7|23|2003|7|14}}', '13'],
     // ['{{Age nts|1989|7|23}}', '28'],
     //
     //     ['{{Age as of date|50|2016|1|1}}', '52–53'],
@@ -135,8 +135,8 @@ test('age templates', t => {
     //     ['{{Age as of date|50|2016|Feb|16}}', '52'],
     //     ['{{Age as of date|50|2016|February|16}}', '52'],
   ]
-  arr.forEach(a => {
-    var str = wtf(a[0]).text()
+  arr.forEach((a) => {
+    const str = wtf(a[0]).text()
     t.equal(str, a[1], a[0])
   })
   t.end()

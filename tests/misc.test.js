@@ -1,8 +1,8 @@
-var test = require('tape')
-var wtf = require('./lib')
+const test = require('tape')
+const wtf = require('./lib')
 
-test('small headings', t => {
-  var str = `
+test('small headings', (t) => {
+  const str = `
 hello
 ===gdbserver===
 hi there
@@ -13,7 +13,7 @@ Displays memory at the specified virtual address using the specified format.
 ===xp===
 here too
   `
-  var sections = wtf(str).sections()
+  const sections = wtf(str).sections()
   t.equal(sections[1].title(), 'gdbserver', 'first heading exists')
   t.equal(sections[2].title(), 'x', 'x exists')
   t.ok(sections[3].title, 'xp', 'xp exists')
@@ -21,8 +21,8 @@ here too
   t.end()
 })
 
-test('font-size', t => {
-  var str = 'hello {{small|(1995-1997)}} world'
+test('font-size', (t) => {
+  let str = 'hello {{small|(1995-1997)}} world'
   t.equal(wtf(str).plaintext(), 'hello (1995-1997) world', '{{small}}')
 
   str = 'hello {{huge|world}}'
@@ -33,10 +33,10 @@ test('font-size', t => {
   t.end()
 })
 
-test('external links', t => {
-  var str = `The [http://w110.bcn.cat/portal/site/Eixample] is the quarter designed`
-  var obj = wtf(str)
-  var link = obj.sentences(0).links(0)
+test('external links', (t) => {
+  let str = `The [http://w110.bcn.cat/portal/site/Eixample] is the quarter designed`
+  let obj = wtf(str)
+  let link = obj.sentences(0).links(0)
   t.equal(link.text(), '', 'link-text')
   t.equal(link.site(), 'http://w110.bcn.cat/portal/site/Eixample', 'link-site')
   t.equal(link.type(), 'external', 'link-type')
@@ -50,8 +50,8 @@ test('external links', t => {
   t.end()
 })
 
-test('misc templates', t => {
-  var arr = [
+test('misc templates', (t) => {
+  const arr = [
     [`hello {{refn|group=groupname|name=name|Contents of the footnote}} world`, 'hello world'],
     [`hello {{tag|ref|content=haha}} world`, 'hello <ref >haha</ref> world'],
     [`{{convert|70|m}}`, '70 m'],
@@ -80,16 +80,16 @@ test('misc templates', t => {
     [`{{hlist|Winner|Runner-up|Third place|item_style=color:blue;|indent=2}}`, 'Winner · Runner-up · Third place'],
     [
       `{{block indent |1=The material to be indented here. May include markup, paragraph breaks, etc.}}`,
-      'The material to be indented here. May include markup, paragraph breaks, etc.'
+      'The material to be indented here. May include markup, paragraph breaks, etc.',
     ],
     [`{{Ordered list |entry1 |entry2| entry3 }}`, '1. entry1\n\n2. entry2\n\n3. entry3'],
-    [`{{unbulleted list|first item|second item|third item}}`, 'first item\n\nsecond item\n\nthird item']
+    [`{{unbulleted list|first item|second item|third item}}`, 'first item\n\nsecond item\n\nthird item'],
   ]
-  arr.forEach(a => {
-    var str = wtf(a[0]).plaintext()
+  arr.forEach((a) => {
+    const str = wtf(a[0]).plaintext()
     t.equal(str, a[1], a[0].substr(2, 12).replace(/\|.*/, ''))
   })
-  // var str = ` {{Monthyear}}`;
-  // var str = ` {{Time ago| Jan 6 2018|magnitude=weeks}}`;
+  // const str = ` {{Monthyear}}`;
+  // const str = ` {{Time ago| Jan 6 2018|magnitude=weeks}}`;
   t.end()
 })

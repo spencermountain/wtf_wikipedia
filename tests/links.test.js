@@ -1,8 +1,8 @@
-var test = require('tape')
-var wtf = require('./lib')
+const test = require('tape')
+const wtf = require('./lib')
 
 test('document-links', (t) => {
-  var str = `before [[the shining|movie]]
+  const str = `before [[the shining|movie]]
 {|
 ! h1 !! h2 || h3
 |-
@@ -21,7 +21,7 @@ after now
 * [[three]]
 * four
 `
-  var links = wtf(str).links()
+  const links = wtf(str).links()
   t.equal(links.length, 3, 'found-all-links')
   t.ok(
     links.find((l) => l.text()),
@@ -42,14 +42,14 @@ after now
 })
 
 test('anchor-links', (t) => {
-  var str = `[[Doug Ford#Personal Life]]`
-  var link = wtf(str).links(0)
+  let str = `[[Doug Ford#Personal Life]]`
+  let link = wtf(str).links(0)
   t.equal(link.page(), 'Doug Ford', 'page1')
   t.equal(link.text(), undefined, 'text1')
   t.equal(link.anchor(), 'Personal Life', 'anchor1')
 
   str = `[[Toronto_Blue_Jays#Problems|Tranno J birds]]`
-  var doc = wtf(str)
+  const doc = wtf(str)
   link = doc.links(0)
   t.equal(link.page(), 'Toronto_Blue_Jays', 'page2')
   t.equal(link.text(), 'Tranno J birds', 'text2')
@@ -83,9 +83,9 @@ test('title-case-links', (t) => {
 })
 
 test('tricksy-links', (t) => {
-  var doc = wtf(`[[US]]9999.2`)
+  const doc = wtf(`[[US]]9999.2`)
   t.equal(doc.text(), 'US9999.2', 'link-nospace')
-  //   var doc = wtf('then [[John Entwistle|John [Entwistle]]] and I');
+  //   const doc = wtf('then [[John Entwistle|John [Entwistle]]] and I');
   //   t.equal(doc.links(0).page, 'John Entwistle', 'page without bracket');
   //   t.equal(doc.links(0).text, 'John [Entwistle]', 'text with bracket');
   t.end()

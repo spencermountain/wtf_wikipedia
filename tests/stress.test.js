@@ -1,15 +1,15 @@
-var test = require('tape')
-var readFile = require('./lib/_cachedPage')
+const test = require('tape')
+const readFile = require('./lib/_cachedPage')
 
 function isCyclic(json) {
-  var seenObjects = []
+  const seenObjects = []
   function detect(obj) {
     if (obj && typeof obj === 'object') {
       if (seenObjects.indexOf(obj) !== -1) {
         return true
       }
       seenObjects.push(obj)
-      for (var key in obj) {
+      for (const key in obj) {
         if (obj.hasOwnProperty(key) && detect(obj[key])) {
           // console.log(obj, 'cycle at ' + key)
           return true
@@ -21,8 +21,8 @@ function isCyclic(json) {
   return detect(json)
 }
 
-test('stress-test-en', t => {
-  var arr = [
+test('stress-test-en', (t) => {
+  const arr = [
     '2008-British-motorcycle-Grand-Prix',
     'AACTA-Award-for-Outstanding-Achievement-in-Short-Film-Screen-Craft',
     'Alanine—oxo-acid-transaminase',
@@ -91,9 +91,9 @@ test('stress-test-en', t => {
     'statoil',
     'julia_kristeva',
     'toronto',
-    'toronto_star'
+    'toronto_star',
   ]
-  var noCitation = {
+  const noCitation = {
     list: true,
     africaans: true,
     'Sara-C.-Bisel': true,
@@ -106,38 +106,32 @@ test('stress-test-en', t => {
     Keilwelle: true,
     'HMS-Irresistible': true,
     'Ewelina-Setowska-Dryk': true,
-    'Alexander-Y-Type': true
+    'Alexander-Y-Type': true,
   }
-  arr.forEach(title => {
-    var doc = readFile(title)
+  arr.forEach((title) => {
+    const doc = readFile(title)
     //basic is-valid tests for the page parsing
     t.ok(true, title)
     t.equal(doc.isRedirect(), false, ' - - not-redirect')
     t.equal(doc.isDisambig(), false, ' - - not-disambiguation')
     t.ok(doc.categories().length > 0, ' - - cat-length')
     t.ok(doc.sections().length > 0, ' - - section-length')
-    var intro = doc.sections(0)
+    const intro = doc.sections(0)
     t.ok(intro.title() === '', ' - - intro-title-empty')
     t.ok(intro.indentation() === 0, ' - - depth=0')
     t.ok(intro.sentences().length > 0, ' - - sentences-length')
     t.ok(intro.sentences(0).text().length > 0, ' - - intro-text')
-    t.ok(
-      intro
-        .sentences(0)
-        .text()
-        .match(/[a-z]/),
-      ' - - intro-has words'
-    )
+    t.ok(intro.sentences(0).text().match(/[a-z]/), ' - - intro-has words')
     if (noCitation[title] === true) {
       t.equal(doc.citations().length, 0, title + ' has no citation')
     } else {
       t.ok(doc.citations().length > 0, title + ' has a citation')
     }
-    var text = doc.text()
+    const text = doc.text()
     t.ok(text.length > 40, ' - - text-length')
 
-    var json = doc.json({
-      encode: true
+    const json = doc.json({
+      encode: true,
     })
     t.ok(Object.keys(json).length >= 2, ' - - json-keys-ok')
     t.equal(isCyclic(json), false, ' - - not-cyclic')

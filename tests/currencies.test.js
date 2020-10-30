@@ -1,7 +1,7 @@
-var test = require('tape')
-var wtf = require('./lib')
+const test = require('tape')
+const wtf = require('./lib')
 
-test('currency-templates', function(t) {
+test('currency-templates', function (t) {
   let doc = wtf('hello {{GBP|123.45}} world.')
   t.equal(doc.text(), 'hello GB£123.45 world.', 'gbp')
 
@@ -70,7 +70,7 @@ test('currency-templates', function(t) {
   t.end()
 })
 
-test('inrConvert-templates', function(t) {
+test('inrConvert-templates', function (t) {
   let doc = wtf('{{INRConvert|93896}}')
   t.equal(doc.text(), 'inr 93896', 'inrConvert')
 

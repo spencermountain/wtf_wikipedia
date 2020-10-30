@@ -1,7 +1,7 @@
-var test = require('tape')
-var wtf = require('./lib')
+const test = require('tape')
+const wtf = require('./lib')
 
-test('arenas table', t => {
+test('arenas table', (t) => {
   let str = `{|class="wikitable" cellpadding="0" cellspacing="0" style="font-size: 85%; text-align: center;"
 |-
 ! style="width:14%; background: #FFCCCC;" | Team
@@ -30,7 +30,7 @@ test('arenas table', t => {
 |}`
   let doc = wtf(str)
   let rows = doc.tables(0).keyValue()
-  rows = rows.filter(r => r.Arena)
+  rows = rows.filter((r) => r.Arena)
   t.equal(rows.length, 2, 'two rows')
   t.equal(rows[0].Team, 'Boston Bruins', 'got team')
   t.equal(rows[0].Arena, 'Boston Garden', 'got arena')
@@ -39,7 +39,7 @@ test('arenas table', t => {
   t.end()
 })
 
-test('double-header baseball game', t => {
+test('double-header baseball game', (t) => {
   let str = `{|border="1" cellpadding="2" cellspacing="0" class="wikitable" style="text-align:center; width:100%;"
 |-style="background:#ddf"
 !width="4%"|#

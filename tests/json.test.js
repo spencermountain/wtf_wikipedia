@@ -1,8 +1,8 @@
-var test = require('tape')
-var readFile = require('./lib/_cachedPage')
+const test = require('tape')
+const readFile = require('./lib/_cachedPage')
 
-test('json-output-default', t => {
-  var data = readFile('royal_cinema').json()
+test('json-output-default', (t) => {
+  const data = readFile('royal_cinema').json()
   t.ok(data.title, 'title-exists')
   t.ok(data.categories, 'categories-exists')
   t.ok(data.sections, 'sections-exists')
@@ -12,8 +12,8 @@ test('json-output-default', t => {
   t.end()
 })
 
-test('json-output-options', t => {
-  var options = {
+test('json-output-options', (t) => {
+  const options = {
     title: false,
     pageID: false,
     categories: false,
@@ -23,9 +23,9 @@ test('json-output-options', t => {
     images: false,
     sections: false,
 
-    plaintext: true
+    plaintext: true,
   }
-  var data = readFile('royal_cinema').json(options)
+  const data = readFile('royal_cinema').json(options)
   t.ok(!data.title, 'title-gone')
   t.ok(!data.categories, 'categories-gone')
   t.ok(!data.citations, 'citations-gone')
@@ -37,12 +37,12 @@ test('json-output-options', t => {
   t.end()
 })
 
-test('section-output', t => {
-  var doc = readFile('royal_cinema')
-  var data = doc.section(0).json({
+test('section-output', (t) => {
+  const doc = readFile('royal_cinema')
+  const data = doc.section(0).json({
     links: false,
     formatting: false,
-    sentences: true
+    sentences: true,
   })
   t.equal(data.depth, 0, 'depth')
   t.ok(data.sentences[0].text, 'no formatting')
@@ -51,17 +51,17 @@ test('section-output', t => {
   t.end()
 })
 
-test('sentence-output', t => {
-  var doc = readFile('royal_cinema')
-  var sen = doc.sentences(0)
-  var data = sen.json()
+test('sentence-output', (t) => {
+  let doc = readFile('royal_cinema')
+  let sen = doc.sentences(0)
+  let data = sen.json()
   t.ok(data.text, 'text')
   t.ok(data.links, 'links')
   t.ok(data.formatting, 'formatting')
 
   data = sen.json({
     links: false,
-    formatting: false
+    formatting: false,
   })
   t.ok(data.text, 'text')
   t.ok(!data.links, 'links')

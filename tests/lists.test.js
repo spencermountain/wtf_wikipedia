@@ -1,8 +1,8 @@
-var test = require('tape')
-var wtf = require('./lib')
+const test = require('tape')
+const wtf = require('./lib')
 
-test('list-templates', function(t) {
-  var arr = [
+test('list-templates', function (t) {
+  const arr = [
     [`pagelist`, `{{Pagelist|X1|X2|X3|X4|X5}}`],
     [`catlist`, `{{Catlist|1989|1990|1991|1992|1993}}`],
     [`br`, `{{br separated entries|entry1|entry2| }}`],
@@ -17,7 +17,7 @@ test('list-templates', function(t) {
  * [[cow]]
  * [[sheep]]
  * [[pig]]
- }}`
+ }}`,
     ],
     [
       `bare anchored list`,
@@ -27,12 +27,12 @@ test('list-templates', function(t) {
 |So on
 ...
 |Last entry
-}}`
-    ]
+}}`,
+    ],
   ]
-  arr.forEach(a => {
-    var doc = wtf(a[1])
-    var len = doc.templates().length
+  arr.forEach((a) => {
+    const doc = wtf(a[1])
+    const len = doc.templates().length
     t.equal(len, 0, a[0] + ' count')
     t.notEqual(doc.text(), '', a[0] + ' text exists')
     t.notEqual(doc.text(), a[1], a[0] + ' text changed')
@@ -40,16 +40,16 @@ test('list-templates', function(t) {
   t.end()
 })
 
-test('collapsible list', function(t) {
-  var str = `{{Collapsible list
+test('collapsible list', function (t) {
+  let str = `{{Collapsible list
    | title = [[European Free Trade Association]] members
    | [[Iceland]]
    | [[Liechtenstein]]
    | [[Norway]]
    | [[Switzerland]]
   }}`
-  var doc = wtf(str)
-  var tmpl = doc.templates(0) || {}
+  let doc = wtf(str)
+  let tmpl = doc.templates(0) || {}
   t.equal(tmpl.title, 'European Free Trade Association members', 'got title 1')
   t.equal(tmpl.list.length, 4, 'got list')
   t.equal(tmpl.list[1], 'Liechtenstein', 'got list member')
@@ -77,10 +77,10 @@ test('collapsible list', function(t) {
   t.end()
 })
 
-test('unbulleted list', function(t) {
-  var str = `{{unbulleted list|first item|second item|third item|}}`
-  var doc = wtf(str)
-  var tmpl = doc.templates(0) || {}
+test('unbulleted list', function (t) {
+  const str = `{{unbulleted list|first item|second item|third item|}}`
+  const doc = wtf(str)
+  const tmpl = doc.templates(0) || {}
   t.equal(tmpl.title, undefined, 'got title 3')
   t.equal(tmpl.list.length, 3, 'got list3')
   t.equal(tmpl.list[1], 'second item', 'got list member3')
@@ -88,10 +88,10 @@ test('unbulleted list', function(t) {
   t.end()
 })
 
-test('ordered list', function(t) {
-  var str = `{{Ordered list|first item|second item|third item|}}`
-  var doc = wtf(str)
-  var tmpl = doc.templates(0) || {}
+test('ordered list', function (t) {
+  const str = `{{Ordered list|first item|second item|third item|}}`
+  const doc = wtf(str)
+  const tmpl = doc.templates(0) || {}
   t.equal(tmpl.title, undefined, 'got title 4')
   t.equal(tmpl.list.length, 3, 'got list4')
   t.equal(tmpl.list[1], 'second item', 'got list member4')

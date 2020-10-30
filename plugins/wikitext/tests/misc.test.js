@@ -1,7 +1,7 @@
-var test = require('tape')
-var wtf = require('./_lib')
+const test = require('tape')
+const wtf = require('./_lib')
 
-var tidy = (str) => {
+const tidy = (str) => {
   str = str.replace(/\s[\s]+/g, ' ')
   str = str.replace(/\n/g, '')
   str = str.trim()

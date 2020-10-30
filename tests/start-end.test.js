@@ -1,8 +1,8 @@
-var wtf = require('./lib')
-var test = require('tape')
+const wtf = require('./lib')
+const test = require('tape')
 
-test('nba-start-end', function(t) {
-  var str = `hello world
+test('nba-start-end', function (t) {
+  const str = `hello world
   {{NBA roster statistics start|team=Cleveland Cavaliers}}
   |-
   | style="text-align:left;"| {{sortname|Matthew|Dellavedova}} || 6 || 0 || 7.6 || .263 || .167 || .833 || 0.5 || 1.0 || 0.0 || 0.0 || 2.7
@@ -18,14 +18,14 @@ test('nba-start-end', function(t) {
   | style="text-align:left;"| {{sortname|Mo|Williams}} || 6 || 0 || 4.8 || .333 || .200 || .000 || 0.5 || 0.2 || 0.5 || 0.0 || 1.5
   {{s-end}}`
 
-  var doc = wtf(str)
+  const doc = wtf(str)
   t.equal(doc.text(), 'hello world', 'text')
   t.equal(doc.templates().length, 1, 'got-template')
   t.end()
 })
 
-test('mlb-start-end', function(t) {
-  var str = `hello world
+test('mlb-start-end', function (t) {
+  const str = `hello world
   {{MLB game log section|month=April|style=|hide=y}}
   |- style="background-color:#ffbbbb"
   | 1 || April 2 || @ [[Kansas City Royals|Royals]] || 7 – 1 || [[Gil Meche|Meche]] (1-0)|| '''[[Curt Schilling|Schilling]]''' (0-1) || || 41,257 || 0-1
@@ -39,21 +39,21 @@ test('mlb-start-end', function(t) {
   | 5 || April 7 || @ [[Texas Rangers (baseball)|Rangers]] || 8 – 2 || [[Kevin Millwood|Millwood]] (1-0) || '''[[Julián Tavárez|Tavárez]]''' (0-1) || ||40,865 || 2-3
   |- style="background-color:#bbffbb"
   {{MLB game log section end}}`
-  var doc = wtf(str)
+  const doc = wtf(str)
   t.equal(doc.text(), 'hello world', 'text')
   t.equal(doc.templates().length, 1, 'got-template')
   t.end()
 })
 
-test('mlb-start-end-fancy', function(t) {
-  var str = `hello world
+test('mlb-start-end-fancy', function (t) {
+  const str = `hello world
   {{MLB game log section|style={{Baseball secondary style|New York Yankees}}|stadium=y}}
   |- bgcolor=#fbb
   | [http://gd2.mlb.com/content/game/mlb/year_2018/month_10/day_05/gid_2018_10_05_nyamlb_bosmlb_1/boxscore_col.html 1] || October 5 || @ [[2018 Boston Red Sox season|Red Sox]] || 4−5 || [[Chris Sale|Sale]] (1–0) || '''[[J.A. Happ|Happ]]''' (0–1) || [[Craig Kimbrel|Kimbrel]] (1) || [[Fenway Park]] || 39,059 || 0–1
   |- bgcolor=#bfb
   | [http://gd2.mlb.com/content/game/mlb/year_2018/month_10/day_06/gid_2018_10_06_nyamlb_bosmlb_1/boxscore_col.html 2] || October 6 || @ [[2018 Boston Red Sox season|Red Sox]] || 6−2 || '''[[Masahiro Tanaka|Tanaka]]''' (1–0) || [[David Price (baseball)|Price]] (0–1) || — || [[Fenway Park]] || 39,151 || 1−1
   {{MLB game log section end}}`
-  var doc = wtf(str)
+  const doc = wtf(str)
   t.equal(doc.text(), 'hello world', 'text')
   t.equal(doc.templates().length, 1, 'got-template')
   let rows = doc.templates(0).data
@@ -65,8 +65,8 @@ test('mlb-start-end-fancy', function(t) {
   t.end()
 })
 
-test('mma-start-end', function(t) {
-  var str = `hello world
+test('mma-start-end', function (t) {
+  const str = `hello world
   {{MMA record start}}
   |-
   |{{no2}}Loss
@@ -103,7 +103,7 @@ test('mma-start-end', function(t) {
   |
 {{end}}`
 
-  var doc = wtf(str)
+  const doc = wtf(str)
   t.equal(doc.text(), 'hello world', 'text')
   t.equal(doc.templates().length, 1, 'got-template')
   t.end()

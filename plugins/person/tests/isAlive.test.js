@@ -1,5 +1,5 @@
-var test = require('tape')
-var wtf = require('./_lib')
+const test = require('tape')
+const wtf = require('./_lib')
 
 test('sentence-isAlive', (t) => {
   // let str = `'''Tom Anselmi''' (born {{circa|1956}}) is a Canadian [[sport]]s [[Senior management|executive]].`

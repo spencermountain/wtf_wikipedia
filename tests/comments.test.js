@@ -1,9 +1,9 @@
-var test = require('tape')
-var wtf = require('./lib')
+const test = require('tape')
+const wtf = require('./lib')
 
-test('tricky comments', t => {
-  var str = `hello <!-- <ref>blah blah</ref>  --> world`
-  var doc = wtf(str)
+test('tricky comments', (t) => {
+  let str = `hello <!-- <ref>blah blah</ref>  --> world`
+  const doc = wtf(str)
   t.equal(doc.text(), 'hello world', 'with brackets')
   t.equal(doc.references().length, 0, 'found no references')
 

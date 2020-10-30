@@ -1,11 +1,11 @@
-var test = require('tape')
-var wtf = require('./_lib')
-var tidy = (str) => {
+const test = require('tape')
+const wtf = require('./_lib')
+const tidy = (str) => {
   return str.trim()
 }
 
 test('table-header', (t) => {
-  var str = `{| class="wikitable"
+  const str = `{| class="wikitable"
 |-
 ! Header 1
 ! Header 2
@@ -20,7 +20,7 @@ test('table-header', (t) => {
 | row 2, cell 3
 |}`
 
-  var have = wtf(str).table().wikitext()
+  const have = wtf(str).table().wikitext()
 
   t.equal(tidy(have), tidy(str), 'with-header')
 
@@ -28,7 +28,7 @@ test('table-header', (t) => {
 })
 
 test('no-header', (t) => {
-  var str = `{| class="wikitable"
+  const str = `{| class="wikitable"
 |-
 | row 1, cell 1
 | row 1, cell 2
@@ -39,7 +39,7 @@ test('no-header', (t) => {
 | row 2, cell 3
 |}`
 
-  var have = wtf(str).table().wikitext()
+  const have = wtf(str).table().wikitext()
 
   t.equal(tidy(have), tidy(str), 'no-header')
 

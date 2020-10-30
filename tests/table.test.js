@@ -2,7 +2,7 @@ const test = require('tape')
 const wtf = require('./lib')
 const readFile = require('./lib/_cachedPage')
 
-test('bluejays table', t => {
+test('bluejays table', (t) => {
   const arr = readFile('bluejays').tables(0).data
   t.equal(arr.length, 8, 'table-length-bluejays')
   t.equal(arr[0]['Level'].text(), 'AAA', 'level-col')
@@ -12,7 +12,7 @@ test('bluejays table', t => {
   t.end()
 })
 
-test('rnli stations', t => {
+test('rnli stations', (t) => {
   const doc = readFile('rnli_stations')
   t.equal(doc.categories().length, 5, 'cat-length')
 
@@ -57,7 +57,7 @@ test('rnli stations', t => {
 })
 
 //https://en.wikipedia.org/wiki/Help:Table
-test('simple table', t => {
+test('simple table', (t) => {
   const simple = `{| class="wikitable"
 |-
 ! Header 1
@@ -84,7 +84,7 @@ test('simple table', t => {
   t.end()
 })
 
-test('multiplication table', t => {
+test('multiplication table', (t) => {
   const mult = `{| class="wikitable" style="text-align: center; width: 200px; height: 200px;"
 |+ Multiplication table
 |-
@@ -116,7 +116,7 @@ test('multiplication table', t => {
   t.end()
 })
 
-test('inline-table-test', t => {
+test('inline-table-test', (t) => {
   const inline = `{| class="wikitable"
 |+ style="text-align: left;" | Data reported for 2014–2015, by region<ref name="Garcia 2005" />
 |-
@@ -137,7 +137,7 @@ test('inline-table-test', t => {
   t.end()
 })
 
-test('floating-tables-test', t => {
+test('floating-tables-test', (t) => {
   //we don't (and probably can't) fully support this rn
   const floating = `{| class="wikitable floatright"
 | Col 1, row 1
@@ -162,7 +162,7 @@ test('floating-tables-test', t => {
   t.end()
 })
 
-test('wikisortable-tables-test', t => {
+test('wikisortable-tables-test', (t) => {
   //we don't (and probably can't) fully support this rn
   const sortable = `{| class="wikitable sortable"
 |+ Sortable table
@@ -196,7 +196,7 @@ test('wikisortable-tables-test', t => {
   t.end()
 })
 
-test('messy-table-test', t => {
+test('messy-table-test', (t) => {
   const messy = ` {| class="wikitable"
      |[[File:Worms 01.jpg|199x95px]]
       |[[File:Worms Wappen 2005-05-27.jpg|199x95px]]
@@ -218,7 +218,7 @@ test('messy-table-test', t => {
   t.end()
 })
 
-test('embedded-table', t => {
+test('embedded-table', (t) => {
   const str = ` {|
   | one
   | two
@@ -241,7 +241,7 @@ test('embedded-table', t => {
   t.end()
 })
 
-test('embedded-table-2', t => {
+test('embedded-table-2', (t) => {
   const str = ` {| class="oopsie"
   | first row
   |-
@@ -265,7 +265,7 @@ test('embedded-table-2', t => {
   t.end()
 })
 
-test('sortable table', t => {
+test('sortable table', (t) => {
   const str = `{|class="wikitable sortable"
   !Name and Surname!!Height
   |-
@@ -284,7 +284,7 @@ test('sortable table', t => {
   t.end()
 })
 
-test('missing-row test', t => {
+test('missing-row test', (t) => {
   const str = `{|class="wikitable"
   |-
   ! style="background:#ddf; width:0;"| #
@@ -313,7 +313,7 @@ test('missing-row test', t => {
   t.end()
 })
 
-test('table newline removal', t => {
+test('table newline removal', (t) => {
   const str = `hello this is the top
 {| class="wikitable" style="font-size: 95%;"
 | 1
@@ -331,7 +331,7 @@ test('table newline removal', t => {
   t.end()
 })
 
-test('table rowspan', t => {
+test('table rowspan', (t) => {
   const str = `{| class="wikitable"
 | rowspan="2"| one
 | two
@@ -351,7 +351,7 @@ test('table rowspan', t => {
   t.end()
 })
 
-test('table colspan', t => {
+test('table colspan', (t) => {
   const str = `{| class="wikitable"
 | colspan="2" style="text-align:center;"| one/two
 | three
@@ -373,7 +373,7 @@ test('table colspan', t => {
 })
 
 //use first row as the table header
-test('first-row as header', t => {
+test('first-row as header', (t) => {
   const simple = `{| class="wikitable"
 |-
 | Name
@@ -399,7 +399,7 @@ test('first-row as header', t => {
 })
 
 //two-row header composite
-test('two-rows as header', t => {
+test('two-rows as header', (t) => {
   const str = `{| class="wikitable"
   |-
   ! A
@@ -415,9 +415,7 @@ test('two-rows as header', t => {
   |-
   | a || b || c || d || e
   |}`
-  const table = wtf(str)
-    .tables(0)
-    .keyValue()
+  const table = wtf(str).tables(0).keyValue()
   t.equal(table.length, 1, '1 row')
   t.equal(table[0].A, 'a', 'got col 1')
   t.equal(table[0].D2, 'd', 'got col d2')
@@ -426,7 +424,7 @@ test('two-rows as header', t => {
 })
 
 //two-row header with spans
-test('two-header-rows-with-spans', t => {
+test('two-header-rows-with-spans', (t) => {
   const str = `{| class="wikitable"
   |-
   ! A
@@ -441,9 +439,7 @@ test('two-header-rows-with-spans', t => {
   |-
   | a || b || c || d || e
   |}`
-  const table = wtf(str)
-    .tables(0)
-    .keyValue()
+  const table = wtf(str).tables(0).keyValue()
   t.equal(table.length, 1, '1 row')
   t.equal(table[0].A, 'a', 'got col 1')
   t.equal(table[0].C, 'c', 'got col c')
@@ -453,7 +449,7 @@ test('two-header-rows-with-spans', t => {
 })
 
 //nfl football table
-test('junky-table', t => {
+test('junky-table', (t) => {
   const str = `{| class="navbox plainrowheaders wikitable" style="width:100%"
 ! A
 ! B
@@ -471,9 +467,7 @@ test('junky-table', t => {
 |[[Hard Rock Stadium]]
 |-
 |}`
-  const table = wtf(str)
-    .tables(0)
-    .keyValue()
+  const table = wtf(str).tables(0).keyValue()
   t.equal(table.length, 2, '2 row2')
   t.equal(table[0].A, 'East', 'got col a1')
   t.equal(table[0].C, 'Orchard Park, New York', 'got col c1')
@@ -482,7 +476,7 @@ test('junky-table', t => {
   t.end()
 })
 
-test('table double bar', t => {
+test('table double bar', (t) => {
   const str = `{| class="wikitable"
 |-
 ! h1
@@ -514,7 +508,7 @@ test('table double bar', t => {
 })
 
 //testing https://github.com/spencermountain/wtf_wikipedia/issues/332
-test('table newline', t => {
+test('table newline', (t) => {
   const str = `{| class="wikitable"
 |-
 ! h1

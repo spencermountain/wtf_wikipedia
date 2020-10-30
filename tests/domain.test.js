@@ -1,5 +1,5 @@
-var test = require('tape')
-var wtf = require('./lib')
+const test = require('tape')
+const wtf = require('./lib')
 
 test('domain - normal', (t) => {
   let str = `hello [[File:SpencerKelly.jpg]] world`

@@ -48,7 +48,11 @@ test('sentences - get', (t) => {
   let sec = wtf(str).section(3)
 
   const expected = [109, 229, 118, 120, 95, 94, 192, 107, 138, 143, 165, 155, 39, 100, 197, 101]
-  t.deepEqual(sec.sentences().map(s => s.text().length), expected, 'the index should equal the expected')
+  t.deepEqual(
+    sec.sentences().map((s) => s.text().length),
+    expected,
+    'the index should equal the expected'
+  )
   t.end()
 })
 
@@ -66,7 +70,11 @@ test('paragraphs - get', (t) => {
   let sec = wtf(str).section(3)
 
   const expected = [675, 1141, 299]
-  t.deepEqual(sec.paragraphs().map(s => s.text().length), expected, 'the paragraphs should equal the expected')
+  t.deepEqual(
+    sec.paragraphs().map((s) => s.text().length),
+    expected,
+    'the paragraphs should equal the expected'
+  )
   t.end()
 })
 
@@ -100,7 +108,11 @@ test('links - get', (t) => {
   let sec = wtf(str).section(3)
 
   const expected = [12, 10, 19, 34, 30, 25, 19, 25, 7, 21]
-  t.deepEqual(sec.links().map(l => l.href().length), expected, 'the links should equal the expected')
+  t.deepEqual(
+    sec.links().map((l) => l.href().length),
+    expected,
+    'the links should equal the expected'
+  )
   t.end()
 })
 
@@ -126,7 +138,11 @@ test('tables - get', (t) => {
   let sec = wtf(str).section(1)
 
   const expected = [18]
-  t.deepEqual(sec.tables().map(s => s.keyValue().length), expected, 'the tables should equal the expected')
+  t.deepEqual(
+    sec.tables().map((s) => s.keyValue().length),
+    expected,
+    'the tables should equal the expected'
+  )
   t.end()
 })
 
@@ -144,7 +160,11 @@ test('templates - get', (t) => {
   let sec = wtf(str).section(0)
 
   const expected = [148, 195, 54, 49, 727, 176, 182, 399, 70, 23, 18, 18, 21]
-  t.deepEqual(sec.templates().map(s => JSON.stringify(s).length), expected, 'the templates should equal the expected')
+  t.deepEqual(
+    sec.templates().map((s) => JSON.stringify(s).length),
+    expected,
+    'the templates should equal the expected'
+  )
   t.end()
 })
 
@@ -170,7 +190,11 @@ test('infoboxes - get', (t) => {
   let sec = wtf(str).section(0)
 
   const expected = [33]
-  t.deepEqual(sec.infoboxes().map(s => JSON.stringify(s).length), expected, 'the infoboxes should equal the expected')
+  t.deepEqual(
+    sec.infoboxes().map((s) => JSON.stringify(s).length),
+    expected,
+    'the infoboxes should equal the expected'
+  )
   t.end()
 })
 
@@ -188,7 +212,11 @@ test('coordinates - get', (t) => {
   let sec = wtf(str).section(0)
 
   const expected = [70]
-  t.deepEqual(sec.coordinates().map(s => JSON.stringify(s).length), expected, 'the coordinates should equal the expected')
+  t.deepEqual(
+    sec.coordinates().map((s) => JSON.stringify(s).length),
+    expected,
+    'the coordinates should equal the expected'
+  )
   t.end()
 })
 
@@ -213,7 +241,11 @@ test('lists - get', (t) => {
   let sec = wtf(str).section('See also')
 
   const expected = [22]
-  t.deepEqual(sec.lists().map(s => JSON.stringify(s.lines()).length), expected, 'the lists should equal the expected')
+  t.deepEqual(
+    sec.lists().map((s) => JSON.stringify(s.lines()).length),
+    expected,
+    'the lists should equal the expected'
+  )
   t.end()
 })
 
@@ -233,7 +265,11 @@ test('images - get', (t) => {
   let sec = wtf(str).section('Background')
 
   const expected = [124, 79, 89]
-  t.deepEqual(sec.images().map(s => s.url().length), expected, 'the images should equal the expected')
+  t.deepEqual(
+    sec.images().map((s) => s.url().length),
+    expected,
+    'the images should equal the expected'
+  )
   t.end()
 })
 
@@ -250,7 +286,11 @@ test('images - get', (t) => {
   let sec = wtf(str).section(0)
 
   const expected = []
-  t.deepEqual(sec.images().map(s => s.url().length), expected, 'the images should equal the expected')
+  t.deepEqual(
+    sec.images().map((s) => s.url().length),
+    expected,
+    'the images should equal the expected'
+  )
   t.end()
 })
 
@@ -259,8 +299,47 @@ test('references - get', (t) => {
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
 
-  const expected = [15, 104, 58, 38, 50, 0, 0, 0, 30, 33, 34, 0, 71, 0, 56, 85, 16, 59, 64, 29, 0, 0, 0, 0, 0, 26, 60, 0, 35, 87, 90, 42, 0, 0]
-  t.deepEqual(sec.references().map(s => s.title().length), expected, 'the references should equal the expected')
+  const expected = [
+    15,
+    104,
+    58,
+    38,
+    50,
+    0,
+    0,
+    0,
+    30,
+    33,
+    34,
+    0,
+    71,
+    0,
+    56,
+    85,
+    16,
+    59,
+    64,
+    29,
+    0,
+    0,
+    0,
+    0,
+    0,
+    26,
+    60,
+    0,
+    35,
+    87,
+    90,
+    42,
+    0,
+    0,
+  ]
+  t.deepEqual(
+    sec.references().map((s) => s.title().length),
+    expected,
+    'the references should equal the expected'
+  )
   t.end()
 })
 
@@ -276,8 +355,47 @@ test('references - get', (t) => {
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
 
-  const expected = [15, 104, 58, 38, 50, 0, 0, 0, 30, 33, 34, 0, 71, 0, 56, 85, 16, 59, 64, 29, 0, 0, 0, 0, 0, 26, 60, 0, 35, 87, 90, 42, 0, 0]
-  t.deepEqual(sec.citations().map(s => s.title().length), expected, 'the citations should equal the expected')
+  const expected = [
+    15,
+    104,
+    58,
+    38,
+    50,
+    0,
+    0,
+    0,
+    30,
+    33,
+    34,
+    0,
+    71,
+    0,
+    56,
+    85,
+    16,
+    59,
+    64,
+    29,
+    0,
+    0,
+    0,
+    0,
+    0,
+    26,
+    60,
+    0,
+    35,
+    87,
+    90,
+    42,
+    0,
+    0,
+  ]
+  t.deepEqual(
+    sec.citations().map((s) => s.title().length),
+    expected,
+    'the citations should equal the expected'
+  )
   t.end()
 })
 

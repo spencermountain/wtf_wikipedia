@@ -1,6 +1,6 @@
-var test = require('tape')
-var wtf = require('./_lib')
-var tidy = (str) => {
+const test = require('tape')
+const wtf = require('./_lib')
+const tidy = (str) => {
   str = str.replace(/\s[\s]+/g, ' ')
   str = str.replace(/\n/g, '')
   str = str.replace(/ >/g, '>')
@@ -8,7 +8,7 @@ var tidy = (str) => {
 }
 
 test('table-header', (t) => {
-  var str = `{| class="wikitable"
+  const str = `{| class="wikitable"
 |-
 ! Header 1
 ! Header 2
@@ -23,8 +23,8 @@ test('table-header', (t) => {
 | row 2, cell 3
 |}`
 
-  var have = wtf(str).table().html()
-  var want = `
+  const have = wtf(str).table().html()
+  const want = `
   <table class="table">
   <thead>
   <tr>
@@ -53,7 +53,7 @@ test('table-header', (t) => {
 })
 
 test('no-header', (t) => {
-  var str = `{| class="wikitable"
+  const str = `{| class="wikitable"
 |-
 | row 1, cell 1
 | row 1, cell 2
@@ -62,8 +62,8 @@ test('no-header', (t) => {
 | row 2, cell 2
 |}`
 
-  var have = wtf(str).table().html()
-  var want = `
+  const have = wtf(str).table().html()
+  const want = `
   <table class="table">
   <thead>
   <tr>

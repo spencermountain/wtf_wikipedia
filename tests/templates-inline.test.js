@@ -1,8 +1,8 @@
-var wtf = require('./lib')
-var test = require('tape')
+const wtf = require('./lib')
+const test = require('tape')
 
 test('inline-no-data', function (t) {
-  var arr = [
+  const arr = [
     [`plural`, `{{plural|1.5|page}}`],
     [`hlist`, `{{hlist|Winner|Runner-up|Third place|item_style=color:blue;}}`],
     [`lang`, `{{lang|fr|Je suis française.}}`],
@@ -72,8 +72,8 @@ test('inline-no-data', function (t) {
     ['nobr', '{{nobr}} nobr'],
   ]
   arr.forEach((a) => {
-    var doc = wtf(a[1])
-    var len = doc.templates().length
+    const doc = wtf(a[1])
+    const len = doc.templates().length
     t.equal(len, 0, a[0] + ': unexpected templates count')
     t.notEqual(doc.text(), '', a[0] + ': must not be empty')
     t.notEqual(doc.text(), a[1], a[0] + ': must change')
@@ -82,7 +82,7 @@ test('inline-no-data', function (t) {
 })
 
 test('inline-with-data', function (t) {
-  var arr = [
+  const arr = [
     [`cad`, `{{CAD|123.45|link=yes}}`],
     [`gbp`, `{{GBP|123.45}}`],
     [`yel`, `{{yel|67}}`],
@@ -117,8 +117,8 @@ test('inline-with-data', function (t) {
     ['infront 10000 écu behind', 'infront {{Monnaie|10000|écu}} behind'],
   ]
   arr.forEach((a) => {
-    var doc = wtf(a[1])
-    var len = doc.templates().length
+    const doc = wtf(a[1])
+    const len = doc.templates().length
     t.equal(len, 1, a[0] + ': unexpected templates count')
     t.notEqual(doc.text(), '', a[0] + ': must not be empty')
     t.notEqual(doc.text(), a[1], a[0] + ': must change')
@@ -127,7 +127,7 @@ test('inline-with-data', function (t) {
 })
 
 test('inline-output', (t) => {
-  var arr = [
+  const arr = [
     [`{{nobold| [[#Structure and name|↓]] }}`, `↓`],
     [`[[Salt]]{{•}} [[Pepper]]`, `Salt • Pepper`],
     [`[[Salt]]{{ndash}}[[Pepper]]`, `Salt–Pepper`],
@@ -158,8 +158,8 @@ test('inline-output', (t) => {
 })
 
 test('flags', function (t) {
-  var str = `one {{flag|USA}}, two {{flag|DEU|empire}}, three {{flag|CAN|name=Canadian}}.`
-  var doc = wtf(str)
+  const str = `one {{flag|USA}}, two {{flag|DEU|empire}}, three {{flag|CAN|name=Canadian}}.`
+  const doc = wtf(str)
   t.equal(doc.links().length, 3, 'found 3 link')
   t.equal(doc.links(1).text(), 'DEU', 'link text')
   t.equal(doc.links(1).page(), 'germany', 'link page')
@@ -169,8 +169,8 @@ test('flags', function (t) {
 
 //this example has it all!
 test('tricky-based-on', function (t) {
-  var str = `{{Based on|''[[Jurassic Park (novel)|Jurassic Park]]''|Michael Crichton}}`
-  var doc = wtf(str)
+  const str = `{{Based on|''[[Jurassic Park (novel)|Jurassic Park]]''|Michael Crichton}}`
+  const doc = wtf(str)
   // t.equal(doc.links().length, 1, 'found link');
   // t.equal(doc.links(0).text, 'Jurassic Park', 'found link text');
   // t.equal(doc.text(), `''Jurassic Park'' by Michael Crichton`, 'parsed properly');
