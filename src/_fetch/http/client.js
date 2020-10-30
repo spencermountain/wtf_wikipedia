@@ -3,7 +3,7 @@
  *
  * @private
  * @param {string} url the url that well be fetched
- * @param {RequestInit} opts the options for fetch
+ * @param {object} opts the options for fetch
  * @returns {Promise<Response>} the response from fetch
  */
 const request = function (url, opts) {

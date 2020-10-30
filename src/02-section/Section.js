@@ -27,7 +27,7 @@ class Section {
   /**
    * the stuff between headings - 'History' section for example
    *
-   * @param {Object} data the data already gathered about the section
+   * @param {object} data the data already gathered about the section
    * @param {Document} doc the document that this section belongs to
    */
   constructor(data, doc) {

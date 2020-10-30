@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-var wtf = require('./src/index')
-var args = process.argv.slice(2)
+const wtf = require('./src/index')
+const args = process.argv.slice(2)
 
-var modes = {
+const modes = {
   '--json': 'json',
   '--plaintext': 'plaintext',
 }
-var mode = 'json'
+let mode = 'json'
 args = args.filter((arg) => {
   if (modes.hasOwnProperty(arg) === true) {
     mode = modes[arg]
@@ -15,7 +15,7 @@ args = args.filter((arg) => {
   return true
 })
 
-var title = args.join(' ')
+let title = args.join(' ')
 if (!title) {
   throw new Error('Usage: wtf_wikipedia Toronto Blue Jays --plaintext')
 }

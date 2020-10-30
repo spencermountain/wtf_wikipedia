@@ -7,7 +7,7 @@ const parseTemplates = require('../../template')
  * https://en.wikipedia.org/wiki/Template:Election_box
  *
  * @private
- * @param {Catcher} catcher an object to provide and catch data
+ * @param {object} catcher an object to provide and catch data
  */
 const parseElection = function (catcher) {
   catcher.text = catcher.text.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, (tmpl) => {

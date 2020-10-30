@@ -78,13 +78,10 @@ const parseCurrency = (tmpl, list) => {
     code = o.code
   }
   code = (code || '').toLowerCase()
-  switch (code) {
-    case 'us':
-      o.code = code = 'usd'
-      break
-    case 'uk':
-      o.code = code = 'gbp'
-      break
+  if (code === 'us') {
+    o.code = code = 'usd'
+  } else if (code === 'uk') {
+    o.code = code = 'gbp'
   }
   let out = codes[code] || ''
   let str = `${out}${o.amount || ''}`
@@ -99,31 +96,17 @@ const inrConvert = (tmpl, list) => {
   let o = parse(tmpl, ['rupee_value', 'currency_formatting'])
   list.push(o)
   let formatting = o.currency_formatting
+  const mults = {
+    k: 1000,
+    m: 1000000,
+    b: 1000000000,
+    t: 1000000000000,
+    l: 100000,
+    c: 10000000,
+    lc: 1000000000000,
+  }
   if (formatting) {
-    let multiplier = 1
-    switch (formatting) {
-      case 'k':
-        multiplier = 1000
-        break
-      case 'm':
-        multiplier = 1000000
-        break
-      case 'b':
-        multiplier = 1000000000
-        break
-      case 't':
-        multiplier = 1000000000000
-        break
-      case 'l':
-        multiplier = 100000
-        break
-      case 'c':
-        multiplier = 10000000
-        break
-      case 'lc':
-        multiplier = 1000000000000
-        break
-    }
+    let multiplier = mults[formatting] || 1
     o.rupee_value = o.rupee_value * multiplier
   }
   let str = `inr ${o.rupee_value || ''}`

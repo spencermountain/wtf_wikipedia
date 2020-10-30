@@ -17,7 +17,7 @@ const defaults = {
  *
  * @private
  * @param {Object<string, string | number | boolean>} obj
- * @return {string}
+ * @returns {string}
  */
 const toQueryString = function (obj) {
   return Object.entries(obj)

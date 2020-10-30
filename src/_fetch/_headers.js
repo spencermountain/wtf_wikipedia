@@ -12,7 +12,7 @@
  * factory for header options
  *
  * @private
- * @param options
+ * @param {object} options
  * @returns {HeaderOptions} the generated options
  */
 const makeHeaders = function (options) {
