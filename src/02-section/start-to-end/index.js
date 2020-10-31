@@ -28,7 +28,7 @@ const parseMath = require('./math')
  * @private
  * @param {Section} section
  * @param {Document} doc
- * @return {Catcher}
+ * @returns {Catcher}
  */
 const xmlTemplates = function (section, doc) {
   const catcher = {

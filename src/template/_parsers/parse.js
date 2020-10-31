@@ -12,7 +12,7 @@ const cleanup = require('./03-cleanup')
  * @private
  * @param str
  * @param {'json' | 'raw'} [fmt]
- * @returns {Sentence|string|Object}
+ * @returns {Sentence|string|object}
  */
 const makeFormat = function (str, fmt) {
   let s = parseSentence(str)
@@ -33,7 +33,7 @@ const makeFormat = function (str, fmt) {
  * @param {string} tmpl the template text
  * @param {string[]} [order] the order in which the parameters are returned
  * @param {'json' | 'raw'} [fmt] whether you wan to parse the text of the template the raw object or just the text
- * @returns {Object} the parameters of the template in a usable format
+ * @returns {object} the parameters of the template in a usable format
  */
 const parser = function (tmpl, order = [], fmt) {
   //remove {{}}'s and split based on pipes

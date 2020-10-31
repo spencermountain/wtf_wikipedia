@@ -1,3 +1,5 @@
+//@ts-expect-error because this is some kind of type definition for jsdoc that's why typescript does not recognize it
+const Document = require('../01-document/Document')
 const Section = require('./Section')
 const i18n = require('../_data/i18n')
 const isReference = new RegExp('^(' + i18n.references.join('|') + '):?', 'i')
@@ -8,6 +10,12 @@ const parse = {
   heading: require('./heading'),
 }
 
+/**
+ * filters out the reference section and empty sections and
+ *
+ * @param {Section[]} sections
+ * @returns {Section[]} all the section
+ */
 const removeReferenceSection = function (sections) {
   return sections.filter((s, i) => {
     if (isReference.test(s.title()) === true) {
@@ -30,6 +38,15 @@ const removeReferenceSection = function (sections) {
   })
 }
 
+/**
+ * this function splits the wiki texts on '=' and puts every part in a Section Object
+ * it also pre processes the section text for the Section object
+ * then it filters out the reference section
+ *
+ * @private
+ * @param {Document} doc the document that contains the wiki text
+ * @returns {Section[]} the sections that are parsed out
+ */
 const parseSections = function (doc) {
   let sections = []
   let splits = doc._wiki.split(section_reg)

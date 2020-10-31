@@ -14,11 +14,8 @@ const isUrl = /^https?:\/\//
  * @property {string | undefined} [domain]
  * @property {boolean | undefined} [follow_redirects]
  * @property {string | undefined} [lang]
- *
- *
  * @property {string | number | Array<string | number>| undefined} [title]
- *
- * @property {string | undefined} ["Api-User-Agent"]
+ * @property {string | undefined} [Api-User-Agent]
  */
 
 /**
@@ -39,7 +36,7 @@ const defaults = {
  * @param {string | number | Array<number | string>} title the title, PageID, URL or an array of all three of the page(s) you want to fetch
  * @param {fetchDefaults| Function | string} [options] the options for the fetch or the language of the wiki for the article or the callback if you dont provide any options
  * @param {Function | fetchDefaults} [c] the callback function for the call or the options for the fetch
- * @returns {Promise<null | Document | Document[]>} promise of http result
+ * @returns {Promise<null | Document | Document[]>} either null if no page is found, Document if you asked for one result, and a array of Documents if you asked for muliple pages
  */
 const fetch = function (title, options, c) {
   let callback = null

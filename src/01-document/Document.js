@@ -5,6 +5,8 @@ const setDefaults = require('../_lib/setDefaults')
 const { isArray } = require('../_lib/helpers')
 
 const Image = require('../image/Image')
+const Section = require('../02-section/Section')
+
 const redirects = require('./redirects')
 const preProcess = require('./preProcess')
 const parse = {
@@ -39,15 +41,6 @@ const defaults = {
 
 /***
  * @class
- * @borrows Document#namespace as Document#ns
- * @borrows Document#text as Document#plaintext
- * @borrows Document#language as Document#lang
- *
- * @borrows Document#redirectTo as Document#redirectsTo
- * @borrows Document#redirectTo as Document#redirect
- * @borrows Document#redirectTo as Document#redirects
- *
- * @borrows Document#reference as Document#citations
  */
 class Document {
   /**
@@ -180,7 +173,13 @@ class Document {
     return this._lang
   }
 
-  //eslint-disable-next-line require-jsdoc -- inherits from language
+  /**
+   * If an language is given then it sets the language and returns the given language
+   * Else if the language is already set it returns the language
+   *
+   * @param {string} [lang] The language that will be set
+   * @returns {string|null} The given or found language
+   */
   lang(lang) {
     return this.language(lang)
   }
@@ -219,7 +218,13 @@ class Document {
     return this._namespace
   }
 
-  //eslint-disable-next-line require-jsdoc -- inherits from namespace
+  /**
+   * If an namespace is given then it sets the namespace and returns the given namespace
+   * Else if the namespace is already set it returns the namespace
+   *
+   * @param {string} [ns] The namespace that will be set
+   * @returns {string|null} The given or found namespace
+   */
   ns(ns) {
     return this.namespace(ns)
   }
@@ -236,23 +241,35 @@ class Document {
   /**
    * Returns information about the page this page redirects to
    *
-   * @returns {null|{}} The redirected page
+   * @returns {null|object} The redirected page
    */
   redirectTo() {
     return this._redirectTo
   }
 
-  //eslint-disable-next-line require-jsdoc -- inherits from redirectTo
+  /**
+   * Returns information about the page this page redirects to
+   *
+   * @returns {null|object} The redirected page
+   */
   redirectsTo() {
     return this.redirectTo()
   }
 
-  //eslint-disable-next-line require-jsdoc -- inherits from redirectTo
+  /**
+   * Returns information about the page this page redirects to
+   *
+   * @returns {null|object} The redirected page
+   */
   redirect() {
     return this.redirectTo()
   }
 
-  //eslint-disable-next-line require-jsdoc -- inherits from redirectTo
+  /**
+   * Returns information about the page this page redirects to
+   *
+   * @returns {null|object} The redirected page
+   */
   redirects() {
     return this.redirectTo()
   }
@@ -266,7 +283,11 @@ class Document {
     return disambig(this)
   }
 
-  //eslint-disable-next-line require-jsdoc -- inherits from isDisambiguation
+  /**
+   * This function finds out if a page is a disambiguation page
+   *
+   * @returns {boolean} Whether the page is a disambiguation page
+   */
   isDisambig() {
     return this.isDisambiguation()
   }
@@ -557,7 +578,12 @@ class Document {
     return aliasWrapper(this.references.bind(this), clue)
   }
 
-  //eslint-disable-next-line require-jsdoc -- inherits from reference
+  /**
+   * Returns the 0th or clue-th reference
+   *
+   * @param {number} [clue] The index of the wanted reference
+   * @returns {object|string|number} The reference at the provided index
+   */
   citations(clue) {
     return this.references(clue)
   }
@@ -642,7 +668,12 @@ class Document {
     return arr.join('\n\n')
   }
 
-  //eslint-disable-next-line require-jsdoc -- inherits from text
+  /**
+   * return a plain text version of the wiki article
+   *
+   * @param {object} [options] the options for the parser
+   * @returns {string} the plain text version of the article
+   */
   plaintext(options) {
     return this.text(options)
   }

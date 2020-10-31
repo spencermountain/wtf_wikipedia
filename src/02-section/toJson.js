@@ -1,6 +1,22 @@
 const setDefaults = require('../_lib/setDefaults')
 const encode = require('../_lib/encode')
+const Section = require('../02-section/Section')
 
+/**
+ * @typedef sectionToJsonOptions
+ * @property {boolean | undefined} headers
+ * @property {boolean | undefined} images
+ * @property {boolean | undefined} tables
+ * @property {boolean | undefined} depth
+ * @property {boolean | undefined} citations
+ * @property {boolean | undefined} references
+ * @property {boolean | undefined} lists
+ * @property {boolean | undefined} sentences
+ * @property {boolean | undefined} templates
+ * @property {boolean | undefined} infoboxes
+ * @property {boolean | undefined} paragraphs
+ * @property {boolean | undefined} encode
+ */
 const defaults = {
   headers: true,
   depth: true,
@@ -11,17 +27,46 @@ const defaults = {
   infoboxes: true,
   lists: true,
   references: true,
+  citations: true,
+  sentences: false,
 }
-//
+
+/**
+ * @typedef sectionToJsonReturn
+ * @property {string | undefined} title
+ * @property {number | undefined} depth
+ * @property {Paragraph[] | undefined} paragraphs
+ * @property {Image[] | undefined} images
+ * @property {Table[] | undefined} tables
+ * @property {Template[] | undefined} templates
+ * @property {Infobox[] | undefined} infoboxes
+ * @property {List[] | undefined} lists
+ * @property {Reference[] | undefined} references
+ * @property {Sentence[] | undefined} sentences
+ */
+
+/**
+ *
+ * @param {Section} section
+ * @param {sectionToJsonOptions} options
+ * @returns {sectionToJsonReturn}
+ */
 const toJSON = function (section, options) {
   options = setDefaults(options, defaults)
+
+  /**
+   * @type {sectionToJsonReturn}
+   */
   let data = {}
+
   if (options.headers === true) {
     data.title = section.title()
   }
+
   if (options.depth === true) {
     data.depth = section.depth()
   }
+
   //these return objects
   if (options.paragraphs === true) {
     let paragraphs = section.paragraphs().map((p) => p.json(options))
@@ -29,6 +74,7 @@ const toJSON = function (section, options) {
       data.paragraphs = paragraphs
     }
   }
+
   //image json data
   if (options.images === true) {
     let images = section.images().map((img) => img.json(options))
@@ -36,6 +82,7 @@ const toJSON = function (section, options) {
       data.images = images
     }
   }
+
   //table json data
   if (options.tables === true) {
     let tables = section.tables().map((t) => t.json(options))
@@ -43,6 +90,7 @@ const toJSON = function (section, options) {
       data.tables = tables
     }
   }
+
   //template json data
   if (options.templates === true) {
     let templates = section.templates()

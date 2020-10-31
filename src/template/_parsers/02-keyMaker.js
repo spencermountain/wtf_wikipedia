@@ -1,5 +1,5 @@
-// every value in {{tmpl|a|b|c}} needs a name
-// here we come up with names for them
+//every value in {{tmpl|a|b|c}} needs a name
+//here we come up with names for them
 const hasKey = /^[a-z0-9\u00C0-\u00FF\._\- '()œ]+=/iu
 
 //templates with these properties are asking for trouble
@@ -9,7 +9,18 @@ const reserved = {
   prototype: true,
 }
 
-//turn 'key=val' into {key:key, val:val}
+/**
+ * @typedef parseKeyReturn
+ * @property {string} val
+ * @property {string} key
+ */
+
+/**
+ * turn 'key=val' into {key:key, val:val}
+ *
+ * @param {string} str the string that will be parsed
+ * @returns {parseKeyReturn} the spit string
+ */
 const parseKey = function (str) {
   let parts = str.split('=')
   let key = parts[0] || ''
@@ -31,7 +42,7 @@ const parseKey = function (str) {
  * @private
  * @param {string[]} arr the array of parameters
  * @param {string[]} [order] the order in which the parameters are returned
- * @returns {{}} and object with the names as the keys and the values as the values
+ * @returns {object} and object with the names as the keys and the values as the values
  */
 const keyMaker = function (arr, order) {
   let keyIndex = 0
