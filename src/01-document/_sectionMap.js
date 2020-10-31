@@ -1,3 +1,6 @@
+const Document = require('./Document')
+
+
 /**
  * helper for looping around all sections of a document
  *

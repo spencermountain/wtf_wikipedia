@@ -3,7 +3,22 @@ const parseSentence = require('../04-sentence/').fromText
 const parseReferences = require('../reference/')
 const heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/
 
-//interpret depth, title of headings like '==See also=='
+
+/**
+ * @typedef fakeSection
+ * @property {string} title
+ * @property {null | number} depth
+ * @property {string} wiki
+ */
+
+/**
+ * estimates the depth of a section and parses the title to a normal format
+ *
+ * @private
+ * @param {fakeSection} section
+ * @param {string} str
+ * @returns {fakeSection} section the depth in a object
+ */
 const parseHeading = function (section, str) {
   let m = str.match(heading_reg)
   if (!m) {

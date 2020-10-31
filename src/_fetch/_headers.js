@@ -1,6 +1,8 @@
 /**
+ * @private
  * @typedef HeaderOptions
  * @property {string} redirect
+ * @property {object} headers
  * @property {*} headers.Origin
  * @property {string} headers.Content-Type
  * @property {string} headers.Api-User-Agent

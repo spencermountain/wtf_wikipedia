@@ -1,3 +1,6 @@
+const Document = require('./Document')
+
+
 const i18n = require('../_data/disambig').reduce((h, str) => {
   h[str] = true
   return h

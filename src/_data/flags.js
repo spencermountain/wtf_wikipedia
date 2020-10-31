@@ -21,11 +21,7 @@ module.exports = [
   ['🇧🇪', 'bel', 'belgium'],
   ['🇧🇫', 'bfa', 'burkina faso'],
   ['🇧🇬', 'bgr', 'bulgaria'],
-  [
-    '🇧🇬',
-    'bul', //dupe
-    'bulgaria',
-  ],
+  ['🇧🇬', 'bul', 'bulgaria'], //dupe
   ['🇧🇭', 'bhr', 'bahrain'],
   ['🇧🇮', 'bdi', 'burundi'],
   ['🇧🇯', 'ben', 'benin'],
@@ -47,7 +43,7 @@ module.exports = [
   ['🇨🇫', 'caf', 'central african republic'],
   ['🇨🇬', 'cog', 'congo'],
   ['🇨🇭', 'che', 'switzerland'],
-  ['🇨🇮', 'civ', "côte d'ivoire"],
+  ['🇨🇮', 'civ', 'côte d\'ivoire'],
   ['🇨🇰', 'cok', 'cook islands'],
   ['🇨🇱', 'chl', 'chile'],
   ['🇨🇲', 'cmr', 'cameroon'],
@@ -61,11 +57,7 @@ module.exports = [
   ['🇨🇾', 'cyp', 'cyprus'],
   ['🇨🇿', 'cze', 'czech republic'],
   ['🇩🇪', 'deu', 'germany'],
-  [
-    '🇩🇪',
-    'ger', //alias
-    'germany',
-  ],
+  ['🇩🇪', 'ger', 'germany'],//alias
   ['🇩🇯', 'dji', 'djibouti'],
   ['🇩🇰', 'dnk', 'denmark'],
   ['🇩🇲', 'dma', 'dominica'],
@@ -87,7 +79,7 @@ module.exports = [
   ['🇬🇦', 'gab', 'gabon'],
   ['🇬🇧', 'gbr', 'united kingdom'],
   ['🇬🇩', 'grd', 'grenada'],
-  // ['🇬🇪', 'geo', 'georgia'],
+  //['🇬🇪', 'geo', 'georgia'],
   ['🇬🇫', 'guf', 'french guiana'],
   ['🇬🇬', 'ggy', 'guernsey'],
   ['🇬🇭', 'gha', 'ghana'],
@@ -134,7 +126,7 @@ module.exports = [
   ['🇰🇼', 'kwt', 'kuwait'],
   ['🇰🇾', 'cym', 'cayman islands'],
   ['🇰🇿', 'kaz', 'kazakhstan'],
-  ['🇱🇦', 'lao', "lao people's democratic republic"],
+  ['🇱🇦', 'lao', 'lao people\'s democratic republic'],
   ['🇱🇧', 'lbn', 'lebanon'],
   ['🇱🇨', 'lca', 'saint lucia'],
   ['🇱🇮', 'lie', 'liechtenstein'],
@@ -241,12 +233,8 @@ module.exports = [
   ['🇺🇦', 'ukr', 'ukraine'],
   ['🇺🇬', 'uga', 'uganda'],
   ['🇺🇲', 'umi', 'united states minor outlying islands'],
+  ['🇺🇸', 'us', 'united states'],//alias
   ['🇺🇸', 'usa', 'united states'],
-  [
-    '🇺🇸',
-    'us', //alias
-    'united states',
-  ],
   ['🇺🇾', 'ury', 'uruguay'],
   ['🇺🇿', 'uzb', 'uzbekistan'],
   ['🇻🇦', 'vat', 'vatican city'],
@@ -256,7 +244,6 @@ module.exports = [
   ['🇻🇮', 'vir', 'virgin islands, u.s.'],
   ['🇻🇳', 'vnm', 'viet nam'],
   ['🇻🇺', 'vut', 'vanuatu'],
-  ['', 'win', 'west indies'],
   ['🇼🇫', 'wlf', 'wallis and futuna'],
   ['🇼🇸', 'wsm', 'samoa'],
   ['🇾🇪', 'yem', 'yemen'],
