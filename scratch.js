@@ -33,6 +33,4 @@ const str = `
 }}
 hello world  {{lkjsdf|foo=28|hs.he=90}}.`
 let doc = wtf(str)
-let json = doc.json({})
-// console.log(doc.sections(0).infoboxes())
-console.log(json.sections[0])
+console.log(doc)
