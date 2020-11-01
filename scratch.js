@@ -15,6 +15,24 @@ wtf.extend(require('./plugins/api/src'))
 //   })
 // })
 
-wtf.fetch('Toronto Raptors').then((doc) => {
-  console.log(doc)
-})
+// wtf.fetch('Toronto Raptors').then((doc) => {
+//   console.log(doc)
+// })
+// const path = require('path')
+// const fs = require('fs')
+// let str = fs.readFileSync(path.join(__dirname, './tests/cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
+// let doc = wtf(str)
+// console.log(doc.json().sections[0].paragraphs)
+// console.log(doc.sections(0).json())
+
+const str = `
+{{Infobox person
+  | name             = Jodie Emery
+  | birth.date       = January 4, 1985<ref name="facebook"/>
+  | known_for        = [[cannabis (drug)|Cannabis]] legalisation
+}}
+hello world  {{lkjsdf|foo=28|hs.he=90}}.`
+let doc = wtf(str)
+let json = doc.json({})
+// console.log(doc.sections(0).infoboxes())
+console.log(json.sections[0])

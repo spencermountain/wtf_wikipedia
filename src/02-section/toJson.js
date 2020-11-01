@@ -27,8 +27,6 @@ const defaults = {
   infoboxes: true,
   lists: true,
   references: true,
-  citations: true,
-  sentences: false,
 }
 
 /**
@@ -53,7 +51,6 @@ const defaults = {
  */
 const toJSON = function (section, options) {
   options = setDefaults(options, defaults)
-
   /**
    * @type {sectionToJsonReturn}
    */

@@ -192,7 +192,7 @@ class Section {
     }
 
     if (typeof clue === 'string') {
-      let link = arr.find(o => o.page().toLowerCase() === clue.toLowerCase())
+      let link = arr.find((o) => o.page().toLowerCase() === clue.toLowerCase())
       return link === undefined ? [] : [link]
     }
 
@@ -224,7 +224,7 @@ class Section {
    */
   templates(clue) {
     let arr = this._templates || []
-    arr = arr.map(t => t.json())
+    arr = arr.map((t) => t.json())
 
     if (typeof clue === 'number') {
       return arr[clue]
@@ -369,7 +369,7 @@ class Section {
     this.children().forEach((sec) => (bads[sec.title()] = true))
     let sections = this._doc.sections()
     sections = sections.filter((sec) => bads.hasOwnProperty(sec.title()) !== true)
-    sections = sections.filter(sec => bads.hasOwnProperty(sec.title()) !== true)
+    sections = sections.filter((sec) => bads.hasOwnProperty(sec.title()) !== true)
 
     this._doc._sections = sections
     return this._doc
@@ -390,7 +390,7 @@ class Section {
 
     //first we get the a list of sections and our own position in this list
     let sections = this._doc.sections()
-    let index = this.index()
+    let index = this.index() || 0
 
     //then we look trough the list looking for the next sibling
     //aka we look the next item at the same depth as us
@@ -430,7 +430,7 @@ class Section {
       return null
     }
     let sections = this._doc.sections()
-    let index = this.index()
+    let index = this.index() || 0
     return sections[index - 1] || null
   }
 
@@ -477,7 +477,7 @@ class Section {
     }
 
     let sections = this._doc.sections()
-    let index = this.index()
+    let index = this.index() || 0
     let children = []
 
     //(immediately preceding sections with higher depth)
@@ -492,7 +492,7 @@ class Section {
     }
 
     if (typeof clue === 'string') {
-      return children.find(s => s.title().toLowerCase() === clue.toLowerCase())
+      return children.find((s) => s.title().toLowerCase() === clue.toLowerCase())
     }
 
     if (typeof clue === 'number') {
@@ -526,7 +526,7 @@ class Section {
       return null
     }
     let sections = this._doc.sections()
-    let index = this.index()
+    let index = this.index() || 0
 
     for (let i = index; i >= 0; i -= 1) {
       if (sections[i] && sections[i].depth() < this.depth()) {
@@ -548,9 +548,8 @@ class Section {
   text(options) {
     options = setDefaults(options, defaults)
 
-    return this
-      .paragraphs()
-      .map(p => p.text(options))
+    return this.paragraphs()
+      .map((p) => p.text(options))
       .join('\n\n')
   }
 
@@ -571,14 +570,14 @@ class Section {
    * @private
    * @returns {object} the section without this._doc
    */
-  toJSON() {
-    return Object.entries(this)
-      .filter((entry) => entry[0] !== '_doc')
-      .reduce((accum, [k, v]) => {
-        accum[k] = v
-        return accum
-      }, {})
-  }
+  // toJSON() {
+  //   return Object.entries(this)
+  //     .filter((entry) => entry[0] !== '_doc')
+  //     .reduce((accum, [k, v]) => {
+  //       accum[k] = v
+  //       return accum
+  //     }, {})
+  // }
 }
 
 module.exports = Section

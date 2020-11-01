@@ -2053,7 +2053,6 @@ test('plurals / singular - all should exist', (t) => {
   Object.keys(singels).forEach((fn) => {
     singels[fn].forEach((testCase) => {
       const result = testCase.json ? doc[fn](testCase.clue).json() : doc[fn](testCase.clue)
-      //console.log(JSON.stringify(result))
       t.deepEqual(
         JSON.stringify(result),
         JSON.stringify(testCase.expected),

@@ -17,15 +17,9 @@ const Document = require('./Document')
  */
 const defaults = {
   title: true,
+  sections: true,
   pageID: true,
   categories: true,
-  sections: true,
-  coordinates: false,
-  infoboxes:false,
-  images: false,
-  plaintext: false,
-  citations: false,
-  references: false
 }
 
 /**
@@ -42,7 +36,6 @@ const defaults = {
  * @property {string | undefined} plaintext
  * @property {Reference[] | undefined} references
  */
-
 
 /**
  * an opinionated output of the most-wanted data
