@@ -1,5 +1,4 @@
-const { normalize, defaults, toUrlParams } = require('./_fns')
-const paginate = require('./_paginate')
+const { normalize, defaults, toUrlParams, fetchOne } = require('./_fns')
 
 const params = {
   action: 'query',
@@ -25,19 +24,6 @@ const makeUrl = function (title, options, append) {
   return url
 }
 
-const doOne = async function (url, http, prop) {
-  return http(url).then((res) => {
-    let pages = Object.keys(res.query.pages || {})
-    if (pages.length === 0) {
-      return { pages: [], cursor: null }
-    }
-    return {
-      pages: res.query.pages[pages[0]][prop] || [],
-      cursor: res.continue
-    }
-  })
-}
-
 // fetch all the pages that use a specific template
 const getTransclusions = async function (template, _options, http) {
   let list = []
@@ -45,7 +31,7 @@ const getTransclusions = async function (template, _options, http) {
   let append = ''
   while (getMore) {
     let url = makeUrl(template, defaults, append)
-    let { pages, cursor } = await doOne(url, http, 'transcludedin')
+    let { pages, cursor } = await fetchOne(url, http, 'transcludedin')
     list = list.concat(pages)
     if (cursor && cursor.ticontinue) {
       append = '&ticontinue=' + cursor.ticontinue

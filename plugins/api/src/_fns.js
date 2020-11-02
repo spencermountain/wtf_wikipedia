@@ -16,3 +16,16 @@ exports.toUrlParams = function (obj) {
   })
   return arr.join('&')
 }
+
+exports.fetchOne = function (url, http, prop) {
+  return http(url).then((res) => {
+    let pages = Object.keys(res.query.pages || {})
+    if (pages.length === 0) {
+      return { pages: [], cursor: null }
+    }
+    return {
+      pages: res.query.pages[pages[0]][prop] || [],
+      cursor: res.continue
+    }
+  })
+}

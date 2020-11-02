@@ -8,15 +8,15 @@ const params = {
   redirects: true
 }
 
-const makeUrl = function (title, options, cursor) {
+const makeUrl = function (title, options, append) {
   let url = `https://${options.lang}.wikipedia.org/${options.path}?`
   if (options.domain) {
     url = `https://${options.domain}/${options.path}?`
   }
   url += toUrlParams(params)
   url += `&titles=${normalize(title)}`
-  if (cursor) {
-    url += '&rdcontinue=' + cursor
+  if (append) {
+    url += append
   }
   return url
 }

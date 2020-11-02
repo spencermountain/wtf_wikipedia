@@ -9,10 +9,10 @@ const fetchList = require('./fetchList')
 const addMethod = function (models) {
   // doc methods
   models.Doc.prototype.getRedirects = function () {
-    return getRedirects(this, models.http)
+    return getRedirects(this.title(), models.http)
   }
   models.Doc.prototype.getIncoming = function () {
-    return getIncoming(this, models.http)
+    return getIncoming(this.title(), models.http)
   }
   models.Doc.prototype.getPageViews = function () {
     return getPageViews(this, models.http)
@@ -30,6 +30,12 @@ const addMethod = function (models) {
   }
   models.wtf.fetchList = function (list, options) {
     return fetchList(list, options, models.wtf)
+  }
+  models.wtf.getIncoming = function (title) {
+    return getIncoming(title, models.http)
+  }
+  models.wtf.getRedirects = function (title) {
+    return getRedirects(title, models.http)
   }
 }
 module.exports = addMethod
