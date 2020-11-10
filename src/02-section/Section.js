@@ -200,11 +200,11 @@ class Section {
   }
 
   /**
-   * returns all infoboxes in the section
-   * if an clue is provided then it returns the infobox at clue-th index
+   * returns all tables in the section
+   * if an clue is provided then it returns the table at clue-th index
    *
-   * @param {number} [clue] the clue for selecting the infobox
-   * @returns {Infobox | Infobox[]} all infoboxes in an array or the clue-th infobox
+   * @param {number} [clue] the clue for selecting the table
+   * @returns {Table | Tables[]} all tables in an array or the clue-th infobox
    */
   tables(clue) {
     let arr = this._tables || []
@@ -242,13 +242,17 @@ class Section {
    * returns all infoboxes in the section
    * if an clue is provided then it returns the infobox at clue-th index
    *
-   * @param {number} [clue] the clue for selecting the infobox
+   * @param {number|string} [clue] the clue for selecting the infobox
    * @returns {Infobox | Infobox[]} all infoboxes in an array or the clue-th infobox
    */
   infoboxes(clue) {
     let arr = this._infoboxes || []
     if (typeof clue === 'number') {
       return arr[clue]
+    } else if (typeof clue === 'string') {
+      clue = clue.replace(/^infobox /i, '')
+      clue = clue.trim().toLowerCase()
+      return arr.filter((info) => info._type === clue)
     }
     return arr
   }

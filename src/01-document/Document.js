@@ -628,7 +628,7 @@ class Document {
    * @returns {Infobox | Infobox[]} the selected infobox or an array of infoboxes
    */
   infoboxes(clue) {
-    let arr = sectionMap(this, 'infoboxes')
+    let arr = sectionMap(this, 'infoboxes', clue)
     //sort them by biggest-first
     arr = arr.sort((a, b) => {
       if (Object.keys(a.data).length > Object.keys(b.data).length) {
