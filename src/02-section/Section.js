@@ -1,5 +1,3 @@
-//@ts-expect-error because this is some kind of type definition for jsdoc that's why typescript does not recognize it
-const Document = require('../01-document/Document')
 const toJSON = require('./toJson')
 const setDefaults = require('../_lib/setDefaults')
 
@@ -34,9 +32,9 @@ class Section {
     /**
      *
      * @private
-     * @type {Document|null}
+     * @type {Document}
      */
-    this._doc = doc || null
+    this._doc = doc
 
     this._title = data.title || ''
     this._depth = data.depth
@@ -114,7 +112,7 @@ class Section {
    * if an clue is provided then it returns the sentence at clue-th index
    *
    * @param {number} [clue] the clue for selecting the sentence
-   * @returns {Sentence | Sentence[]} all sentences in an array or the clue-th sentence
+   * @returns {object | object[]} all sentences in an array or the clue-th sentence
    */
   sentences(clue) {
     let arr = this.paragraphs().reduce((list, p) => {
@@ -131,7 +129,7 @@ class Section {
    * if an clue is provided then it returns the paragraph at clue-th index
    *
    * @param {number} [clue] the clue for selecting the paragraph
-   * @returns {Paragraph | Paragraph[]} all paragraphs in an array or the clue-th paragraph
+   * @returns {object | object[]} all paragraphs in an array or the clue-th paragraph
    */
   paragraphs(clue) {
     let arr = this._paragraphs || []
@@ -146,7 +144,7 @@ class Section {
    * if an clue is provided then it returns the paragraph at clue-th index
    *
    * @param {number} [clue] the clue for selecting the paragraph
-   * @returns {Paragraph | Paragraph[]} all paragraphs in an array or the clue-th paragraph
+   * @returns {object | object[]} all paragraphs in an array or the clue-th paragraph
    */
   paragraph(clue) {
     let arr = this._paragraphs || []
@@ -162,7 +160,7 @@ class Section {
    * if an clue is provided and it is a string then it returns the link at the that content
    *
    * @param {number| string} [clue] the clue for selecting the link
-   * @returns {Link | Link[]} all links in an array or the clue-th link or the link with the content of clue
+   * @returns {object | object[]} all links in an array or the clue-th link or the link with the content of clue
    */
   links(clue) {
     let arr = []
@@ -204,7 +202,7 @@ class Section {
    * if an clue is provided then it returns the table at clue-th index
    *
    * @param {number} [clue] the clue for selecting the table
-   * @returns {Table | Tables[]} all tables in an array or the clue-th infobox
+   * @returns {object | object[]} all tables in an array or the clue-th infobox
    */
   tables(clue) {
     let arr = this._tables || []
@@ -220,7 +218,7 @@ class Section {
    * if an clue is provided and clue is a string then it returns all template with that name
    *
    * @param {number|string} [clue] the clue for selecting the template
-   * @returns {Template | Template[]} all templates in an array or the clue-th template or all template name `clue`
+   * @returns {object | object[]} all templates in an array or the clue-th template or all template name `clue`
    */
   templates(clue) {
     let arr = this._templates || []
@@ -243,7 +241,7 @@ class Section {
    * if an clue is provided then it returns the infobox at clue-th index
    *
    * @param {number|string} [clue] the clue for selecting the infobox
-   * @returns {Infobox | Infobox[]} all infoboxes in an array or the clue-th infobox
+   * @returns {object | object[]} all infoboxes in an array or the clue-th infobox
    */
   infoboxes(clue) {
     let arr = this._infoboxes || []
@@ -262,7 +260,7 @@ class Section {
    * if an clue is provided then it returns the list at clue-th index
    *
    * @param {number} [clue] the clue for selecting the list
-   * @returns {Link | Link[]} all lists in an array or the clue-th list
+   * @returns {object | object[]} all lists in an array or the clue-th list
    */
   coordinates(clue) {
     let arr = [...this.templates('coord'), ...this.templates('coor')]
@@ -280,7 +278,7 @@ class Section {
    * if an clue is provided then it returns the list at clue-th index
    *
    * @param {number} [clue] the clue for selecting the list
-   * @returns {Link | Link[]} all lists in an array or the clue-th list
+   * @returns {object | object[]} all lists in an array or the clue-th list
    */
   lists(clue) {
     let arr = []
@@ -298,7 +296,7 @@ class Section {
    * if an clue is provided then it returns the interwiki link at clue-th index
    *
    * @param {number} [clue] the clue for selecting the interwiki link
-   * @returns {Link | Link[]} all interwiki links in an array or the clue-th interwiki link
+   * @returns {object | object[]} all interwiki links in an array or the clue-th interwiki link
    */
   interwiki(clue) {
     let arr = []
@@ -334,7 +332,7 @@ class Section {
    * if an clue is provided then it returns the reference at clue-th index
    *
    * @param {number} [clue] the clue for selecting the reference
-   * @returns {Reference | Reference[]} all references in an array or the clue-th reference
+   * @returns {object | object[]} all references in an array or the clue-th reference
    */
   references(clue) {
     let arr = this._references || []
@@ -349,7 +347,7 @@ class Section {
    * if an clue is provided then it returns the reference at clue-th index
    *
    * @param {number} [clue] the clue for selecting the reference
-   * @returns {Reference | Reference[]} all references in an array or the clue-th reference
+   * @returns {object | object[]} all references in an array or the clue-th reference
    */
   citations(clue) {
     return this.references(clue)
@@ -546,7 +544,7 @@ class Section {
   /**
    * returns a plaintext version of the section
    *
-   * @param options options for the text transformation
+   * @param {object} options options for the text transformation
    * @returns {string} the section in text
    */
   text(options) {
@@ -560,28 +558,13 @@ class Section {
   /**
    * returns a json version of the section
    *
-   * @param {sectionToJsonOptions} options keys to include in the resulting json
+   * @param {object} options keys to include in the resulting json
    * @returns {object} the section in json
    */
   json(options) {
     options = setDefaults(options, defaults)
     return toJSON(this, options)
   }
-
-  /**
-   * this function removes the circular nature of including the document in the sections
-   *
-   * @private
-   * @returns {object} the section without this._doc
-   */
-  // toJSON() {
-  //   return Object.entries(this)
-  //     .filter((entry) => entry[0] !== '_doc')
-  //     .reduce((accum, [k, v]) => {
-  //       accum[k] = v
-  //       return accum
-  //     }, {})
-  // }
 }
 
 module.exports = Section

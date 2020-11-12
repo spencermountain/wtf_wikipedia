@@ -30,7 +30,7 @@
     "testDoc": "nyc -r lcov -n 'src/02-section/*' tape tests/Document.test.js",
     "test": "cross-env TESTENV=dev && node ./scripts/test.js",
     "test:fetch": "cross-env TESTENV=dev && tape ./tests/fetch/*.test.js | tap-dancer",
-    "test:spec": "cross-env TESTENV=dev && tape ./tests/fetch/*.test.js | tap-spec",
+    "test:spec": "cross-env TESTENV=dev && tape ./tests/**/*.test.js | tap-spec",
     "test:types": "ts-node ./tests/types/index.ts",
     "testb": "cross-env TESTENV=prod && node ./scripts/test.js",
     "watch": "amble ./scratch.js"

@@ -1,6 +1,3 @@
-const Document = require('./Document')
-
-
 const i18n = require('../_data/disambig').reduce((h, str) => {
   h[str] = true
   return h
@@ -67,8 +64,9 @@ const isDisambig = function (doc) {
     return true
   }
   //try 'may refer to' on first line for en-wiki?
-  if (doc.sentences(0)) {
-    let firstLine = doc.sentences(0).text()
+  let s = doc.sentences()[0]
+  if (s) {
+    let firstLine = s.text()
     if (firstLine !== null && firstLine[0]) {
       if (/. may refer to ./i.test(firstLine) === true) {
         return true

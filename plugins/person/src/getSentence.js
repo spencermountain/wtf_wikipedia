@@ -1,7 +1,7 @@
 const spacetime = require('spacetime')
 
 const parseSentence = function (doc) {
-  let s = doc.sentences(0)
+  let s = doc.sentence()
   if (!s) {
     return null
   }

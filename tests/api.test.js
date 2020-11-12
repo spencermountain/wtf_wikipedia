@@ -37,7 +37,7 @@ test('Document-methods-do-not-throw', (t) => {
 test('Section-methods-do-not-throw', (t) => {
   pages.forEach((page) => {
     const doc = wtf(readFile(page))
-    const sec = doc.sections(0)
+    const sec = doc.section()
     docs.Section.forEach((obj) => {
       const desc = obj.name + ' - ' + page
       sec[obj.name]()
@@ -50,7 +50,7 @@ test('Section-methods-do-not-throw', (t) => {
 test('Sentence-methods-do-not-throw', (t) => {
   pages.forEach((page) => {
     const doc = wtf(readFile(page))
-    const sen = doc.sentences(0)
+    const sen = doc.sentence()
     docs.Sentence.forEach((obj) => {
       const desc = obj.name + ' - ' + page
       sen[obj.name]()
@@ -63,7 +63,7 @@ test('Sentence-methods-do-not-throw', (t) => {
 test('Reference-methods-do-not-throw', (t) => {
   pages.forEach((page) => {
     const doc = wtf(readFile(page))
-    const sen = doc.references(0)
+    const sen = doc.reference()
     docs.Reference.forEach((obj) => {
       const desc = obj.name + ' - ' + page
       sen[obj.name]()
@@ -76,7 +76,7 @@ test('Reference-methods-do-not-throw', (t) => {
 test('Image-methods-do-not-throw', (t) => {
   pages.forEach((page) => {
     const doc = wtf(readFile(page))
-    const sen = doc.images(0)
+    const sen = doc.image()
     docs.Image.forEach((obj) => {
       const desc = obj.name + ' - ' + page
       sen[obj.name]()
@@ -99,7 +99,7 @@ test('Infobox-methods-do-not-throw', (t) => {
   ]
   mypages.forEach((page) => {
     const doc = wtf(readFile(page))
-    const sen = doc.infoboxes(0)
+    const sen = doc.infobox()
     docs.Infobox.forEach((obj) => {
       const desc = obj.name + ' - ' + page
       sen[obj.name]()
@@ -113,7 +113,7 @@ test('List-methods-do-not-throw', (t) => {
   const mypages = ['al_Haytham', 'Mozilla-Firefox', 'toronto', 'toronto_star', 'jodie_emery', 'Allen-R.-Morris']
   mypages.forEach((page) => {
     const doc = wtf(readFile(page))
-    const sen = doc.lists(0)
+    const sen = doc.list()
     docs.List.forEach((obj) => {
       const desc = obj.name + ' - ' + page
       sen[obj.name]()
@@ -127,7 +127,7 @@ test('Table-methods-do-not-throw', (t) => {
   const mypages = ['Mozilla-Firefox', 'toronto', 'Allen-R.-Morris', 'bluejays']
   mypages.forEach((page) => {
     const doc = wtf(readFile(page))
-    const sen = doc.tables(0)
+    const sen = doc.table()
     docs.Table.forEach((obj) => {
       const desc = obj.name + ' - ' + page
       sen[obj.name]()

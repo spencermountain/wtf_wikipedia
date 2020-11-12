@@ -2,10 +2,7 @@ const sectionMap = require('./_sectionMap')
 const toJSON = require('./toJson')
 const disambig = require('./disambig')
 const setDefaults = require('../_lib/setDefaults')
-const { isArray } = require('../_lib/helpers')
-
 const Image = require('../image/Image')
-const Section = require('../02-section/Section')
 
 const redirects = require('./redirects')
 const preProcess = require('./preProcess')
@@ -14,34 +11,12 @@ const parse = {
   categories: require('./categories'),
 }
 
-/**
- * Call the aliased function with the provided clue. if the clue is unavailable then we use 0 as the clue
- * If the return value from the aliased function is an array then we return the 0th element of the array
- *
- * Do not forget to bind this to have it available in the function
- *
- * @private
- * @param {Function} aliasedFunction The function to be wrapped
- * @param {number | string} [clue] The clue for the wrapped function
- * @returns {object|string|number} The return value of the wrapped function
- */
-function aliasWrapper(aliasedFunction, clue) {
-  const res = aliasedFunction(clue || 0)
-  if (isArray(res)) {
-    return res[0]
-  }
-  return res
-}
-
 const defaults = {
   tables: true,
   lists: true,
   paragraphs: true,
 }
 
-/***
- * @class
- */
 class Document {
   /**
    * The constructor for the document class
@@ -52,24 +27,33 @@ class Document {
    */
   constructor(wiki, options) {
     options = options || {}
-    this._title = options.title || null
-    this._pageID = options.pageID || options.id || null
-    this._namespace = options.namespace || options.ns || null
-    this._lang = options.lang || options.language || null
-    this._domain = options.domain || null
-    this._type = 'page'
-    this._redirectTo = null
-    this._wikidata = options.wikidata || null
-    this._wiki = wiki || ''
-    this._categories = []
-    this._sections = []
-    this._coordinates = []
+
+    let props = {
+      pageID: options.pageID || options.id || null,
+      namespace: options.namespace || options.ns || null,
+      lang: options.lang || options.language || null,
+      domain: options.domain || null,
+      type: 'page',
+      redirectTo: null,
+      wikidata: options.wikidata || null,
+      wiki: wiki || '',
+      categories: [],
+      sections: [],
+      coordinates: [],
+    }
+
+    Object.keys(props).forEach((k) => {
+      Object.defineProperty(this, '_' + k, {
+        enumerable: false,
+        writable: true,
+        value: props[k],
+      })
+    })
 
     //detect if page is just redirect, and return it
     if (redirects.isRedirect(this._wiki) === true) {
       this._type = 'redirect'
       this._redirectTo = redirects.parse(this._wiki)
-
       const [categories, newWiki] = parse.categories(this._wiki)
       this._categories = categories
       this._wiki = newWiki
@@ -110,7 +94,7 @@ class Document {
     }
     //guess the title of this page from first sentence bolding
     let guess = null
-    let sen = this.sentences(0)
+    let sen = this.sentences()[0]
     if (sen) {
       guess = sen.bolds(0)
     }
@@ -128,7 +112,7 @@ class Document {
     if (id !== undefined) {
       this._pageID = id
     }
-    return this._pageID
+    return this._pageID || null
   }
 
   /**
@@ -142,7 +126,7 @@ class Document {
     if (id !== undefined) {
       this._wikidata = id
     }
-    return this._wikidata
+    return this._wikidata || null
   }
 
   /**
@@ -156,7 +140,7 @@ class Document {
     if (str !== undefined) {
       this._domain = str
     }
-    return this._domain
+    return this._domain || null
   }
 
   /**
@@ -170,18 +154,7 @@ class Document {
     if (lang !== undefined) {
       this._lang = lang
     }
-    return this._lang
-  }
-
-  /**
-   * If an language is given then it sets the language and returns the given language
-   * Else if the language is already set it returns the language
-   *
-   * @param {string} [lang] The language that will be set
-   * @returns {string|null} The given or found language
-   */
-  lang(lang) {
-    return this.language(lang)
+    return this._lang || null
   }
 
   /**
@@ -215,18 +188,7 @@ class Document {
     if (ns !== undefined) {
       this._namespace = ns
     }
-    return this._namespace
-  }
-
-  /**
-   * If an namespace is given then it sets the namespace and returns the given namespace
-   * Else if the namespace is already set it returns the namespace
-   *
-   * @param {string} [ns] The namespace that will be set
-   * @returns {string|null} The given or found namespace
-   */
-  ns(ns) {
-    return this.namespace(ns)
+    return this._namespace || null
   }
 
   /**
@@ -248,48 +210,12 @@ class Document {
   }
 
   /**
-   * Returns information about the page this page redirects to
-   *
-   * @returns {null|object} The redirected page
-   */
-  redirectsTo() {
-    return this.redirectTo()
-  }
-
-  /**
-   * Returns information about the page this page redirects to
-   *
-   * @returns {null|object} The redirected page
-   */
-  redirect() {
-    return this.redirectTo()
-  }
-
-  /**
-   * Returns information about the page this page redirects to
-   *
-   * @returns {null|object} The redirected page
-   */
-  redirects() {
-    return this.redirectTo()
-  }
-
-  /**
    * This function finds out if a page is a disambiguation page
    *
    * @returns {boolean} Whether the page is a disambiguation page
    */
   isDisambiguation() {
     return disambig(this)
-  }
-
-  /**
-   * This function finds out if a page is a disambiguation page
-   *
-   * @returns {boolean} Whether the page is a disambiguation page
-   */
-  isDisambig() {
-    return this.isDisambiguation()
   }
 
   /**
@@ -300,20 +226,7 @@ class Document {
    * @returns {string | string[]} The category at the provided index or all categories
    */
   categories(clue) {
-    if (typeof clue === 'number') {
-      return this._categories[clue]
-    }
     return this._categories || []
-  }
-
-  /**
-   * Returns the 0th or clue-th category
-   *
-   * @param {number} [clue] The index of the wanted category
-   * @returns {object|string|number} The category at the provided index
-   */
-  category(clue) {
-    return aliasWrapper(this.categories.bind(this), clue)
   }
 
   /**
@@ -324,35 +237,23 @@ class Document {
    * Else it returns all the sections
    *
    * @param {number | string} [clue] A title of a section or a index of a wanted section
-   * @returns {Section | Section[]} A section or a array of sections
+   * @returns {object | object[]} A section or a array of sections
    */
   sections(clue) {
     let arr = this._sections || []
-    arr.forEach((sec) => (sec._doc = this))
+    arr.forEach((sec) => {
+      // link-up parent and child
+      sec._doc = this
+    })
 
     //grab a specific section, by its title
     if (typeof clue === 'string') {
       let str = clue.toLowerCase().trim()
-      return arr.find((s) => {
+      return arr.filter((s) => {
         return s.title().toLowerCase() === str
       })
     }
-
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
-
     return arr
-  }
-
-  /**
-   * Returns the 0th or clue-th category
-   *
-   * @param {number} [clue] The index of the wanted section
-   * @returns {Section} The section at the provided index
-   */
-  section(clue) {
-    return aliasWrapper(this.sections.bind(this), clue)
   }
 
   /**
@@ -362,31 +263,14 @@ class Document {
    * Else it returns all paragraphs in an array
    *
    * @param {number} [clue] The index of the to be selected paragraph
-   * @returns {Paragraph | Paragraph[]} the selected paragraph or an array of all paragraphs
+   * @returns {object | object[]} the selected paragraph or an array of all paragraphs
    */
   paragraphs(clue) {
     let arr = []
     this.sections().forEach((s) => {
       arr = arr.concat(s.paragraphs())
     })
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
     return arr
-  }
-
-  /**
-   * returns the first or the clue-th paragraph
-   *
-   * @param {number} [clue] the index of the paragraph
-   * @returns {Paragraph} The selected paragraph
-   */
-  paragraph(clue) {
-    let arr = this.paragraphs() || []
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
-    return arr[0]
   }
 
   /**
@@ -394,27 +278,14 @@ class Document {
    * if the clue is provided it return the sentence at the provided index
    *
    * @param {number} clue the index of the wanted sentence
-   * @returns {Sentence[]|Sentence} an array of sentences or a single sentence
+   * @returns {object[]|object} an array of sentences or a single sentence
    */
   sentences(clue) {
     let arr = []
     this.sections().forEach((sec) => {
       arr = arr.concat(sec.sentences())
     })
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
     return arr
-  }
-
-  /**
-   * Returns the 0th or clue-th sentence
-   *
-   * @param {number} [clue] The index of the wanted sentence
-   * @returns {Sentence} The sentence at the provided index
-   */
-  sentence(clue) {
-    return aliasWrapper(this.sentences.bind(this), clue)
   }
 
   /**
@@ -448,20 +319,7 @@ class Document {
         })
       }
     })
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
     return arr
-  }
-
-  /**
-   * Returns the 0th or clue-th image
-   *
-   * @param {number} [clue] The index of the wanted image
-   * @returns {Image} The image at the provided index
-   */
-  image(clue) {
-    return aliasWrapper(this.images.bind(this), clue)
   }
 
   /**
@@ -472,16 +330,6 @@ class Document {
    */
   links(clue) {
     return sectionMap(this, 'links', clue)
-  }
-
-  /**
-   * Returns the 0th or clue-th link
-   *
-   * @param {number} [clue] The index of the wanted link
-   * @returns {object|string|number} The link at the provided index
-   */
-  link(clue) {
-    return aliasWrapper(this.links.bind(this), clue)
   }
 
   /**
@@ -499,20 +347,10 @@ class Document {
    * Else return all lists
    *
    * @param {number} [clue] The index of the wanted list
-   * @returns {List | List[]} The list at the provided index or all lists
+   * @returns {object | object[]} The list at the provided index or all lists
    */
   lists(clue) {
     return sectionMap(this, 'lists', clue)
-  }
-
-  /**
-   * Returns the 0th or clue-th list
-   *
-   * @param {number} [clue] The index of the wanted list
-   * @returns {object|string|number} The list at the provided index
-   */
-  list(clue) {
-    return aliasWrapper(this.lists.bind(this), clue)
   }
 
   /**
@@ -520,20 +358,10 @@ class Document {
    * Else return all tables
    *
    * @param {number} [clue] The index of the wanted table
-   * @returns {Table | Tables[]} The table at the provided index or all tables
+   * @returns {object | object[]} The table at the provided index or all tables
    */
   tables(clue) {
     return sectionMap(this, 'tables', clue)
-  }
-
-  /**
-   * Returns the 0th or clue-th table
-   *
-   * @param {number} [clue] The index of the wanted table
-   * @returns {object|string|number} The table at the provided index
-   */
-  table(clue) {
-    return aliasWrapper(this.tables.bind(this), clue)
   }
 
   /**
@@ -541,20 +369,10 @@ class Document {
    * Else return all templates
    *
    * @param {number} [clue] The index of the wanted template
-   * @returns {Template | Template[]} The category at the provided index or all categories
+   * @returns {object | object[]} The category at the provided index or all categories
    */
   templates(clue) {
     return sectionMap(this, 'templates', clue)
-  }
-
-  /**
-   * Returns the 0th or clue-th template
-   *
-   * @param {number} [clue] The index of the wanted template
-   * @returns {object|string|number} The template at the provided index
-   */
-  template(clue) {
-    return aliasWrapper(this.templates.bind(this), clue)
   }
 
   /**
@@ -562,7 +380,7 @@ class Document {
    * Else return all references
    *
    * @param {number} [clue] The index of the wanted references
-   * @returns {Reference | Reference[]} The category at the provided index or all references
+   * @returns {object | object[]} The category at the provided index or all references
    */
   references(clue) {
     return sectionMap(this, 'references', clue)
@@ -574,28 +392,8 @@ class Document {
    * @param {number} [clue] The index of the wanted reference
    * @returns {object|string|number} The reference at the provided index
    */
-  reference(clue) {
-    return aliasWrapper(this.references.bind(this), clue)
-  }
-
-  /**
-   * Returns the 0th or clue-th reference
-   *
-   * @param {number} [clue] The index of the wanted reference
-   * @returns {object|string|number} The reference at the provided index
-   */
   citations(clue) {
     return this.references(clue)
-  }
-
-  /**
-   * Returns the 0th or clue-th citation
-   *
-   * @param {number} [clue] The index of the wanted citation
-   * @returns {object|string|number} The citation at the provided index
-   */
-  citation(clue) {
-    return aliasWrapper(this.references.bind(this), clue)
   }
 
   /**
@@ -610,22 +408,12 @@ class Document {
   }
 
   /**
-   * Returns the 0th or clue-th coordinate
-   *
-   * @param {number} [clue] The index of the wanted coordinate
-   * @returns {object|string|number} The coordinate at the provided index
-   */
-  coordinate(clue) {
-    return aliasWrapper(this.coordinates.bind(this), clue)
-  }
-
-  /**
    * If clue is unidentified then it returns all infoboxes
    * If clue is a number then it returns the infobox at that index
    * It always sorts the infoboxes by size
    *
    * @param {number} [clue] the index of the infobox you want to select
-   * @returns {Infobox | Infobox[]} the selected infobox or an array of infoboxes
+   * @returns {object | object[]} the selected infobox or an array of infoboxes
    */
   infoboxes(clue) {
     let arr = sectionMap(this, 'infoboxes', clue)
@@ -636,20 +424,8 @@ class Document {
       }
       return 1
     })
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
-    return arr
-  }
 
-  /**
-   * Returns the 0th or clue-th infobox
-   *
-   * @param {number} [clue] The index of the wanted infobox
-   * @returns {object|string|number} The infobox at the provided index
-   */
-  infobox(clue) {
-    return aliasWrapper(this.infoboxes.bind(this), clue)
+    return arr
   }
 
   /**
@@ -666,16 +442,6 @@ class Document {
     }
     let arr = this.sections().map((sec) => sec.text(options))
     return arr.join('\n\n')
-  }
-
-  /**
-   * return a plain text version of the wiki article
-   *
-   * @param {object} [options] the options for the parser
-   * @returns {string} the plain text version of the article
-   */
-  plaintext(options) {
-    return this.text(options)
   }
 
   /**
@@ -706,5 +472,41 @@ class Document {
     return this
   }
 }
+
+// aliases
+const singular = {
+  categories: 'category',
+  sections: 'section',
+  paragraphs: 'paragraph',
+  sentences: 'sentence',
+  images: 'image',
+  links: 'link',
+  // interwiki
+  lists: 'list',
+  tables: 'table',
+  templates: 'template',
+  references: 'reference',
+  citations: 'citation',
+  coordinates: 'coordinate',
+  infoboxes: 'infobox',
+}
+Object.keys(singular).forEach((k) => {
+  let sing = singular[k]
+  Document.prototype[sing] = function (clue) {
+    let arr = this[k](clue)
+    if (typeof clue === 'number') {
+      return arr[clue]
+    }
+    return arr[0]
+  }
+})
+Document.prototype.lang = Document.prototype.language
+Document.prototype.ns = Document.prototype.namespace
+Document.prototype.plaintext = Document.prototype.text
+Document.prototype.isDisambig = Document.prototype.isDisambiguation
+Document.prototype.citations = Document.prototype.references
+Document.prototype.redirectsTo = Document.prototype.redirectTo
+Document.prototype.redirect = Document.prototype.redirectTo
+Document.prototype.redirects = Document.prototype.redirectTo
 
 module.exports = Document

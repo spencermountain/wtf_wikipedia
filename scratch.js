@@ -1,8 +1,6 @@
 const wtf = require('./src/index')
 wtf.extend(require('./plugins/api/src'))
 
-const template = 'Template:Infobox medical condition (new)'
-
 // const getAll = async function (tmpl) {
 //   let pages = await wtf.getTemplatePages(tmpl)
 //   return pages.map((o) => o.title)
@@ -12,42 +10,11 @@ const template = 'Template:Infobox medical condition (new)'
 //   console.log(JSON.stringify(arr, null, 2))
 // })
 
-let str = `{{short description|Human disease}}
-{{Infobox medical condition (new)
-| name            = Bursitis
-| synonyms        = 
-| image           = Bursitis_Elbow_WC.JPG
-| caption         = Example of [[olecranon bursitis]]
-| pronounce       = 
-| field           = [[Orthopedics]]
-|| symptoms        = 
-| complications   = 
-| onset           = 
-| duration        = 
-| types           = 
-| causes          = 
-| risks           = 
-| diagnosis       = 
-| differential    = 
-| prevention      = 
-| treatment       = 
-| medication      = 
-| prognosis       = 
-| frequency       = 
-| deaths          = 
-}}
+let str = `
+Born in [[Basra]], he spent most of his productive period in the [[Fatimid Caliphate|Fatimid]] capital of [[Cairo]] and earned his living authoring various treatises and tutoring members of the nobilities.<ref>According to [[Al-Qifti]]. {{Harvnb|O'Connor|Robertson|1999}}.</ref>
 
-{{Medical resources
-  |  DiseasesDB = 31623
-  |  ICD10 = {{ICD10|M|70||m|70}}–{{ICD10|M|71||m|70}}
-  |  ICD9 = {{ICD9|727.3}}
-  |  ICDO =
-  |  OMIM =
-  |  MedlinePlus = 000419
-  |  eMedicineSubj = emerg
-  |  eMedicineTopic = 74
-  |  MeshID = D002062
-  }}
-'''Bursitis''' is the [[inflammation]] of one or `
+Two in [[Basra]], he spent most of his productive period in the [[Fatimid Caliphate|Fatimid]] capital of [[Cairo]] and earned his living authoring various treatises and tutoring members of the nobilities.<ref>According to [[Al-Qifti]]. {{Harvnb|O'Connor|Robertson|1999}}.</ref>
+`
 let doc = wtf(str)
-console.log(doc.infoboxes(`Infobox medical condition (new)`))
+console.log(doc.paragraph(1))
+// console.log(doc.infobox())

@@ -396,7 +396,7 @@ test('sections - get - if the clue is a number return the sections in that index
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'Charlie-Milstead.txt'), 'utf-8')
   let doc = wtf(str)
 
-  t.equal(doc.sections(1).text().length, 401, 'the section at index 1')
+  t.equal(doc.section(1).text().length, 401, 'the section at index 1')
   t.end()
 })
 
@@ -404,7 +404,7 @@ test('sections - get - if the clue is a string return the sections of that title
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'Charlie-Milstead.txt'), 'utf-8')
   let doc = wtf(str)
 
-  t.equal(doc.sections('Career').text().length, 401, 'the section with the title "Career"')
+  t.equal(doc.section('Career').text().length, 401, 'the section with the title "Career"')
   t.end()
 })
 
@@ -412,7 +412,7 @@ test('sections - get - if the clue is a string return the sections of that title
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'Charlie-Milstead.txt'), 'utf-8')
   let doc = wtf(str)
 
-  t.equal(doc.sections('CAREER').text().length, 401, 'the section with the title "Career"')
+  t.equal(doc.section('CAREER').text().length, 401, 'the section with the title "Career"')
   t.end()
 })
 
@@ -449,7 +449,7 @@ test('paragraphs - get - if the clue is a number return the paragraph at that in
   let doc = wtf(str)
 
   //I used the length of the paragraphs as an analogue for the content.
-  t.equal(JSON.stringify(doc.paragraphs(1).text().length), '66', 'the paragraph at index 1')
+  t.equal(JSON.stringify(doc.paragraph(1).text().length), '66', 'the paragraph at index 1')
   t.end()
 })
 
@@ -461,7 +461,7 @@ test('paragraphs - get - if the clue is a string (not number) return all the par
   const expected = [804, 66, 567, 474, 169, 159, 136, 167, 137, 451, 44, 17]
 
   t.deepEqual(
-    doc.paragraphs('string').map((p) => p.text().length),
+    doc.paragraph('string').map((p) => p.text().length),
     expected,
     'the paragraphs in the wiki text'
   )

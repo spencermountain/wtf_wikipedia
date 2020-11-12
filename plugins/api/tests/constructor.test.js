@@ -38,7 +38,7 @@ test('fetchList', (t) => {
   let arr = ['Marina Gilardoni', 'Jessica Kilian', 'Tanja Morel']
   wtf.fetchList(arr, opts).then(function (docs) {
     docs.forEach((doc) => {
-      t.ok(doc.sentences(0).text(), `got ${doc.title()}`)
+      t.ok(doc.sentence().text(), `got ${doc.title()}`)
     })
   })
 })

@@ -1,8 +1,10 @@
 <!--
-#### [unreleased]
-- **[breaking]** - move .random() to plugin-api
-- **[breaking]** - move .category() to plugin-api
+#### [unreleased 9.0.0]
+- **[breaking]** - move .random() and .category() to plugin-api
+- **[breaking]** - plural methods like .infoboxes() always return arrays, even with a 'clue' param
+- **[breaking]** - cleanup null|undefined responses from methods
 - deprecate plugin-category (moved to plugin-api)
+
 -->
 #### 8.5.1
 
