@@ -150,6 +150,15 @@ test('inline-output', (t) => {
     [`{{Winning percentage|30|20|50}}`, `.550`],
     [`{{Winning percentage|30|20}}`, `.600`],
     [`{{Winning percentage|30|20|50|ignore_ties=y}}`, `.300`],
+    [`asdf in {{Title year|match=1|nomatch=2008|page=}}`, 'asdf in 2008'],
+    [`{{Title century|page=Category:21st century in Ballyporeen}}`, '21'],
+    [`{{Title decade|page=Horticultural controversies in the 1790s in Xanadu}}`, '1790'],
+    ['[[{{Decade link|1960}}]]', '1960s'],
+    ['{{DECADE|1915}}', '1910s'],
+    ['{{CENTURY|1998}}', '20'],
+    ['{{CENTURY|2020}}', '21'],
+    ['{{MILLENNIUM|1999}}', '2nd millennium'],
+    ['{{MILLENNIUM|1|abbr=y}}', '1st'],
   ]
   arr.forEach((a) => {
     t.equal(wtf(a[0]).text(), a[1], a[0])

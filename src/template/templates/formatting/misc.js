@@ -198,6 +198,44 @@ const inline = {
   finedetail: 0,
   //https://en.wikipedia.org/wiki/Template:Sort
   sort: 1,
+
+  // these templates use the page's title
+  // https://en.wikipedia.org/wiki/Template:Title_year
+  'title year': (tmpl, _list, doc) => {
+    let obj = parse(tmpl, ['match', 'nomatch', 'page'])
+    let title = obj.page || doc.title()
+    if (title) {
+      let m = title.match(/\b[0-9]{4}\b/) //parse the year out of the title's name
+      if (m) {
+        return m[0]
+      }
+    }
+    return obj.nomatch || '' //use default response
+  },
+  // https://en.wikipedia.org/wiki/Template:Title_century
+  'title century': (tmpl, _list, doc) => {
+    let obj = parse(tmpl, ['match', 'nomatch', 'page'])
+    let title = obj.page || doc.title()
+    if (title) {
+      let m = title.match(/\b([0-9]+)(st|nd|rd|th)\b/) //parse the century out of the title's name
+      if (m) {
+        return m[1] || ''
+      }
+    }
+    return obj.nomatch || '' //use default response
+  },
+  // https://en.wikipedia.org/wiki/Template:Title_decade
+  'title decade': (tmpl, _list, doc) => {
+    let obj = parse(tmpl, ['match', 'nomatch', 'page'])
+    let title = obj.page || doc.title()
+    if (title) {
+      let m = title.match(/\b([0-9]+)s\b/) //parse the decade out of the title's name
+      if (m) {
+        return m[1] || ''
+      }
+    }
+    return obj.nomatch || '' //use default response
+  },
 }
 
 //aliases

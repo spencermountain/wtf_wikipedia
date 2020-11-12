@@ -10,7 +10,6 @@ wtf.extend(require('./plugins/html/src'))
 //   console.log(JSON.stringify(arr, null, 2))
 // })
 
-let str = `
-<div style="text-align:center;">inside div</div>
-`
-console.log(wtf(str).section(0).text())
+let doc = wtf('{{MILLENNIUM|1999}}')
+console.log(doc.text())
+// console.log(doc.templates())

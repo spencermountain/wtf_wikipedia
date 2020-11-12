@@ -37,7 +37,7 @@ const allTemplates = function (section, doc) {
     if (obj.children && obj.children.length > 0) {
       obj.children.forEach((ch) => parseThem(ch, obj))
     }
-    obj.out = parse(obj, keep)
+    obj.out = parse(obj, keep, doc)
     //remove the text from every parent
     const removeIt = function (node, body, out) {
       if (node.parent) {
