@@ -50,26 +50,26 @@
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-<div align="center">
-  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
-</div>
 
 ```js
 const wtf = require('wtf_wikipedia')
 
 wtf.fetch('Toronto Raptors').then((doc) => {
-  doc.sentences()[0].text()
-  //'The Toronto Raptors are a Canadian professional basketball team ...'
-
   let coach = doc.infobox().get('coach')
   coach.text() //'Nick Nurse'
+
+  doc.sentences()[0].text()
+  //'The Toronto Raptors are a Canadian professional basketball team ...'
 })
 ```
 
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
-## .text
+## .text()
 
 get clean plaintext:
 
@@ -92,7 +92,7 @@ doc.text()
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
 </div>
 
-## .json
+## .json()
 
 get all the data from a page:
 
@@ -103,7 +103,7 @@ doc.json()
 // { categories: ['Oral communication', 'Vocal skills'], sections: [{ title: 'Techniques' }], ...}
 ```
 
-the default json output is [really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json), but you can cherry-pick things like this:
+the default .json() output is *[really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json)*, but you can cherry-pick data by poking-around like this:
 
 ```js
 // get just the links:
@@ -134,8 +134,7 @@ run it on the client-side:
 ```html
 <script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
-  // follow a redirect:
-  wtf.fetch('On a Friday', function (err, doc) {
+  wtf.fetch('Radiohead', function (err, doc) {
     let members = doc.infobox().get('current members')
     members.links().map((l) => l.page())
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
@@ -143,7 +142,7 @@ run it on the client-side:
 </script>
 ```
 
-or from Deno/typescript/webpack:
+or in Deno/typescript/webpack:
 
 ```js
 import spacetime from 'https://unpkg.com/spacetime/builds/spacetime.mjs'
@@ -197,22 +196,20 @@ these add all sorts of new functionality:
 
 ```js
 wtf.extend(require('wtf-plugin-classify'))
-wtf.fetch('Toronto Raptors').then((doc) => doc.classify())
+await wtf.fetch('Toronto Raptors').classify()
 // 'Organization/SportsTeam'
 
 wtf.extend(require('wtf-plugin-summary'))
-wtf.fetch('Pulp Fiction').then((doc) => doc.summary())
+await wtf.fetch('Pulp Fiction').summary()
 // 'a 1994 American crime film'
 
 wtf.extend(require('wtf-plugin-person'))
-wtf.fetch('David Bowie').then((doc) => doc.birthDate())
+await wtf.fetch('David Bowie').birthDate()
 // {year:1947, date:8, month:1}
 
 wtf.extend(require('wtf-plugin-i18n'))
-wtf.fetch('Ziggy Stardust', 'fr').then((doc) => {
-  doc.infobox().json()
-  //{ nom:{text:"Ziggy Stardust"}, oeuvre:{text:"The Rise and Fall of Ziggy Stardust"} }
-})
+await wtf.fetch('Ziggy Stardust', 'fr').infobox().json()
+// {nom:{text:"Ziggy Stardust"}, oeuvre:{text:"The Rise and Fall of Ziggy Stardust"}}
 ```
 
 | **Plugin**                                                 |                                         |
@@ -323,7 +320,7 @@ import wtf from 'wtf_wikipedia'
 let txt = `
 ==Wood in Popular Culture==
 * harry potter's wand
-* the simpsons fence
+* the simpson's fence
 `
 wtf(txt)
 // Document {text(), json(), lists()...}
@@ -332,9 +329,8 @@ wtf(txt)
 #### **doc.links()**
 
 ```javascript
-let str = `Whistling is featured in a number of television shows, such as [[Lassie (1954 TV series)|''Lassie'']], and the title theme for ''[[The X-Files]]''.`
-let doc = wtf(str)
-doc.links().map((l) => l.page())
+let txt = `Whistling is featured in a number of television shows, such as [[Lassie (1954 TV series)|''Lassie'']], and the title theme for ''[[The X-Files]]''.`
+wtf(txt).links().map((l) => l.page())
 // [ 'Lassie (1954 TV series)',  'The X-Files' ]
 ```
 
@@ -343,9 +339,9 @@ doc.links().map((l) => l.page())
 returns nice plain-text of the article
 
 ```js
-var wiki =
+var txt =
   "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>"
-var text = wtf(wiki).text()
+wtf(txt).text()
 //"Boston's baseball field has a 37ft wall."
 ```
 
@@ -354,14 +350,14 @@ var text = wtf(wiki).text()
 a section is a heading _'==Like This=='_
 
 ```js
-wtf(page).section(1).children() //traverse nested sections
+wtf(page).sections()[1].children() //traverse nested sections
 wtf(page).section('see also').remove() //delete one
 ```
 
 #### **doc.sentences()**
 
 ```js
-s = wtf(page).sentence(4)
+let s = wtf(page).sentences()[4]
 s.links()
 s.bolds()
 s.italics()
@@ -370,15 +366,14 @@ s.italics()
 #### **doc.categories()**
 
 ```js
-let doc = await wtf.fetch('Whistling')
-doc.categories()
+await wtf.fetch('Whistling').categories()
 //['Oral communication', 'Vocal music', 'Vocal skills']
 ```
 
 #### **doc.images()**
 
 ```js
-img = wtf(page).images()[0]
+let img = wtf(page).images()[0]
 img.url() // the full-size wikimedia-hosted url
 img.thumbnail() // 300px, by default
 img.format() // jpg, png, ..
@@ -389,7 +384,7 @@ img.format() // jpg, png, ..
 
 ## Fetch
 
-This library can grab, and automatically-parse articles from [any wikimedia api](https://www.mediawiki.org/wiki/API:Main_page).
+You can grab and parse articles from *[any wiki api](https://www.mediawiki.org/wiki/API:Main_page)*.
 This includes any language, any wiki-project, and most **3rd-party wikis**.
 
 ```js
@@ -425,10 +420,12 @@ retrieves all pages and sub-categories belonging to a given category:
 
 ```js
 let result = await wtf.category('Category:Politicians_from_Paris')
-//{
-//  pages: [{title: 'Paul Bacon', pageid: 1266127 }, ...],
-//  categories: [ {title: 'Category:Mayors of Paris' } ]
-//}
+/*
+{
+  pages: [{title: 'Paul Bacon', pageid: 1266127 }, ...],
+  categories: [ {title: 'Category:Mayors of Paris' } ]
+}
+*/
 ```
 
 to fetch and parse all pages in a category, in an optimized way, see [wtf-plugin-api](./plugins/api)
