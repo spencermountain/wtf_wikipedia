@@ -15,27 +15,15 @@ const Paragraph = function (data) {
 
 const methods = {
   sentences: function (num) {
-    if (typeof num === 'number') {
-      return this.data.sentences[num]
-    }
     return this.data.sentences || []
   },
   references: function (num) {
-    if (typeof num === 'number') {
-      return this.data.references[num]
-    }
     return this.data.references
   },
   lists: function (num) {
-    if (typeof num === 'number') {
-      return this.data.lists[num]
-    }
     return this.data.lists
   },
   images(num) {
-    if (typeof num === 'number') {
-      return this.data.images[num]
-    }
     return this.data.images || []
   },
   links: function (n) {
@@ -43,9 +31,7 @@ const methods = {
     this.sentences().forEach((s) => {
       arr = arr.concat(s.links(n))
     })
-    if (typeof n === 'number') {
-      return arr[n]
-    } else if (typeof n === 'string') {
+    if (typeof n === 'string') {
       //grab a specific link like .links('Fortnight')
       n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
       let link = arr.find((o) => o.page() === n)
@@ -58,9 +44,6 @@ const methods = {
     this.sentences().forEach((s) => {
       arr = arr.concat(s.interwiki())
     })
-    if (typeof num === 'number') {
-      return arr[num]
-    }
     return arr || []
   },
   text: function (options) {
@@ -82,4 +65,25 @@ methods.citations = methods.references
 Object.keys(methods).forEach((k) => {
   Paragraph.prototype[k] = methods[k]
 })
+
+// aliases
+const singular = {
+  sentences: 'sentence',
+  references: 'reference',
+  citation: 'citations',
+  lists: 'list',
+  images: 'image',
+  links: 'link',
+}
+Object.keys(singular).forEach((k) => {
+  let sing = singular[k]
+  Paragraph.prototype[sing] = function (clue) {
+    let arr = this[k](clue)
+    if (typeof clue === 'number') {
+      return arr[clue]
+    }
+    return arr[0]
+  }
+})
+
 module.exports = Paragraph

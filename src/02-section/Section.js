@@ -18,9 +18,6 @@ const defaults = {
   infoboxes: true,
 }
 
-/**
- * @class
- */
 class Section {
   /**
    * the stuff between headings - 'History' section for example
@@ -137,21 +134,6 @@ class Section {
       return arr[clue]
     }
     return arr || []
-  }
-
-  /**
-   * returns all paragraphs in the section
-   * if an clue is provided then it returns the paragraph at clue-th index
-   *
-   * @param {number} [clue] the clue for selecting the paragraph
-   * @returns {object | object[]} all paragraphs in an array or the clue-th paragraph
-   */
-  paragraph(clue) {
-    let arr = this._paragraphs || []
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
-    return arr[0]
   }
 
   /**
@@ -340,17 +322,6 @@ class Section {
       return arr[clue]
     }
     return arr
-  }
-
-  /**
-   * returns all references in the section
-   * if an clue is provided then it returns the reference at clue-th index
-   *
-   * @param {number} [clue] the clue for selecting the reference
-   * @returns {object | object[]} all references in an array or the clue-th reference
-   */
-  citations(clue) {
-    return this.references(clue)
   }
 
   //transformations
@@ -549,7 +520,6 @@ class Section {
    */
   text(options) {
     options = setDefaults(options, defaults)
-
     return this.paragraphs()
       .map((p) => p.text(options))
       .join('\n\n')
@@ -566,5 +536,30 @@ class Section {
     return toJSON(this, options)
   }
 }
+Section.prototype.citations = Section.prototype.references
 
+// aliases
+const singular = {
+  sentences: 'sentence',
+  paragraphs: 'paragraph',
+  links: 'link',
+  tables: 'table',
+  templates: 'template',
+  infoboxes: 'infobox',
+  coordinates: 'coordinate',
+  lists: 'list',
+  images: 'image',
+  references: 'reference',
+  citations: 'reference',
+}
+Object.keys(singular).forEach((k) => {
+  let sing = singular[k]
+  Section.prototype[sing] = function (clue) {
+    let arr = this[k](clue)
+    if (typeof clue === 'number') {
+      return arr[clue]
+    }
+    return arr[0]
+  }
+})
 module.exports = Section
