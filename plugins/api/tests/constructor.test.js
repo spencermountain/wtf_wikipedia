@@ -21,8 +21,8 @@ test('randomCategory', (t) => {
 
 test('getCategory', (t) => {
   t.plan(1)
-  wtf.getCategoryPages('Swiss female skeleton racers', opts).then(function (list) {
-    t.ok(list.docs.length > 0, `got ${list.docs.length} pages for category`)
+  wtf.getCategoryPages('Swiss female skeleton racers', opts).then(function (docs) {
+    t.ok(docs.length > 0, `got ${docs.length} pages for category`)
   })
 })
 

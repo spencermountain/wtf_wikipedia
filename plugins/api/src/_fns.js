@@ -7,7 +7,7 @@ exports.normalize = function (title = '') {
 
 exports.defaults = {
   lang: 'en',
-  path: '/w/api.php'
+  path: 'w/api.php'
 }
 
 exports.toUrlParams = function (obj) {

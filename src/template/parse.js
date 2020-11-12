@@ -10,7 +10,6 @@ const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
 //this gets all the {{template}} strings and decides how to parse them
 const parseTemplate = function (tmpl, list, doc) {
   let name = tmpl.name
-
   if (ignore.hasOwnProperty(name) === true) {
     return ''
   }

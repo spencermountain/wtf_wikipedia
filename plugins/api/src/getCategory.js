@@ -1,34 +1,60 @@
-const slow = require('slow')
+const { normalize, defaults, toUrlParams } = require('./_fns')
 
-const chunkBy = function (arr, chunkSize = 5) {
-  let groups = []
-  for (let i = 0; i < arr.length; i += chunkSize) {
-    groups.push(arr.slice(i, i + chunkSize))
-  }
-  return groups
+const params = {
+  action: 'query',
+  list: 'categorymembers',
+  cmlimit: 500,
+  cmtype: 'page|subcat',
+  cmnamespace: 0,
+  format: 'json',
+  origin: '*',
+  redirects: true
 }
 
-const fetchCat = function (cat, options = {}, wtf) {
-  if (!cat) {
-    return { docs: [], categories: [] }
-  }
-  return wtf.category(cat, options.lang).then((resp) => {
-    let pages = resp.pages.map((o) => o.title)
-    let groups = chunkBy(pages)
-
-    const doit = function (group) {
-      return wtf.fetch(group, options) //returns a promise
+const fetchIt = function (url, http, prop) {
+  return http(url).then((res) => {
+    let pages = Object.keys(res.query[prop] || {})
+    if (pages.length === 0) {
+      return { pages: [], cursor: null }
     }
-    //only allow three requests at a time
-    return slow.three(groups, doit).then((responses) => {
-      //flatten the results
-      let docs = [].concat.apply([], responses)
-      return {
-        docs: docs,
-        categories: resp.categories
-      }
-    })
+    let arr = pages.map((k) => res.query[prop][k])
+    return {
+      pages: arr,
+      cursor: res.continue
+    }
   })
 }
 
-module.exports = fetchCat
+const makeUrl = function (title, options, append) {
+  let url = `https://${options.lang}.wikipedia.org/${options.path}?`
+  if (options.domain) {
+    url = `https://${options.domain}/${options.path}?`
+  }
+  url += toUrlParams(params)
+  if (/^Category/i.test(title) === false) {
+    title = 'Category:' + title
+  }
+  url += `&cmtitle=${normalize(title)}`
+  if (append) {
+    url += append
+  }
+  return url
+}
+
+const getCategory = async function (title, options, http) {
+  let list = []
+  let getMore = true
+  let append = ''
+  while (getMore) {
+    let url = makeUrl(title, defaults, append)
+    let { pages, cursor } = await fetchIt(url, http, 'categorymembers')
+    list = list.concat(pages)
+    if (cursor && cursor.cmcontinue) {
+      append = '&cmcontinue=' + cursor.lhcontinue
+    } else {
+      getMore = false
+    }
+  }
+  return list
+}
+module.exports = getCategory

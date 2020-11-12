@@ -3,6 +3,7 @@ const getIncoming = require('./getIncoming')
 const getPageViews = require('./getPageViews')
 const getTransclusions = require('./getTransclusions')
 const getCategory = require('./getCategory')
+const getRandomPage = require('./getRandom')
 const getRandomCategory = require('./getRandomCategory')
 const fetchList = require('./fetchList')
 
@@ -19,6 +20,9 @@ const addMethod = function (models) {
   }
 
   // constructor methods
+  models.wtf.getRandomPage = function (options) {
+    return getRandomPage(options, models.http)
+  }
   models.wtf.getRandomCategory = function (options) {
     return getRandomCategory(options, models.http)
   }
@@ -26,7 +30,7 @@ const addMethod = function (models) {
     return getTransclusions(template, options, models.http)
   }
   models.wtf.getCategoryPages = function (category, options) {
-    return getCategory(category, options, models.wtf)
+    return getCategory(category, options, models.http)
   }
   models.wtf.fetchList = function (list, options) {
     return fetchList(list, options, models.wtf)

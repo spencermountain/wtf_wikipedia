@@ -12,7 +12,8 @@ const references = {
 }
 
 const isReference = function (obj) {
-  return references[obj.template] === true || isCitation.test(obj.template) === true
+  let kind = obj.template || obj.type || obj.name
+  return references[kind] === true || isCitation.test(kind) === true
 }
 
 const isObject = function (obj) {
