@@ -26,9 +26,7 @@ const methods = {
     Object.keys(this.data).forEach((k) => {
       this.data[k].links().forEach((l) => arr.push(l))
     })
-    if (typeof n === 'number') {
-      return arr[n]
-    } else if (typeof n === 'string') {
+    if (typeof n === 'string') {
       //grab a link like .links('Fortnight')
       n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
       let link = arr.find((o) => o.page() === n)
@@ -75,7 +73,6 @@ const methods = {
   },
 }
 //aliases
-
 Object.keys(methods).forEach((k) => {
   Infobox.prototype[k] = methods[k]
 })

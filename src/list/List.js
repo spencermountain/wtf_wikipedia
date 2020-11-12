@@ -21,17 +21,15 @@ const methods = {
   lines() {
     return this.data
   },
-  links(n) {
+  links(clue) {
     let links = []
     this.lines().forEach((s) => {
       links = links.concat(s.links())
     })
-    if (typeof n === 'number') {
-      return links[n]
-    } else if (typeof n === 'string') {
+    if (typeof clue === 'string') {
       //grab a link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = links.find((o) => o.page() === n)
+      clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
+      let link = links.find((o) => o.page() === clue)
       return link === undefined ? [] : [link]
     }
     return links

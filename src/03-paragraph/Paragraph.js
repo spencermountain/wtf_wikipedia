@@ -14,32 +14,32 @@ const Paragraph = function (data) {
 }
 
 const methods = {
-  sentences: function (num) {
+  sentences: function () {
     return this.data.sentences || []
   },
-  references: function (num) {
+  references: function () {
     return this.data.references
   },
-  lists: function (num) {
+  lists: function () {
     return this.data.lists
   },
-  images(num) {
+  images() {
     return this.data.images || []
   },
-  links: function (n) {
+  links: function (clue) {
     let arr = []
     this.sentences().forEach((s) => {
-      arr = arr.concat(s.links(n))
+      arr = arr.concat(s.links(clue))
     })
-    if (typeof n === 'string') {
+    if (typeof clue === 'string') {
       //grab a specific link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = arr.find((o) => o.page() === n)
+      clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
+      let link = arr.find((o) => o.page() === clue)
       return link === undefined ? [] : [link]
     }
     return arr || []
   },
-  interwiki(num) {
+  interwiki() {
     let arr = []
     this.sentences().forEach((s) => {
       arr = arr.concat(s.interwiki())
