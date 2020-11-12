@@ -419,6 +419,7 @@ the fetch method follows redirects.
 retrieves all pages and sub-categories belonging to a given category:
 
 ```js
+wtf.extend(require('wtf-plugin-api'))
 let result = await wtf.category('Category:Politicians_from_Paris')
 /*
 {
@@ -428,7 +429,7 @@ let result = await wtf.category('Category:Politicians_from_Paris')
 */
 ```
 
-to fetch and parse all pages in a category, in an optimized way, see [wtf-plugin-api](./plugins/api)
+see [wtf-plugin-api](./plugins/api)
 
 ### fetch random article:
 
@@ -437,11 +438,13 @@ to fetch and parse all pages in a category, in an optimized way, see [wtf-plugin
 fetches a random wikipedia article, from a given language or domain
 
 ```js
+wtf.extend(require('wtf-plugin-api'))
 wtf.random().then((doc) => {
   console.log(doc.title(), doc.categories())
   //'Whistling'  ['Oral communication', 'Vocal skills']
 })
 ```
+see [wtf-plugin-api](./plugins/api)
 
 ### Good practice:
 

@@ -1,16 +1,16 @@
 const test = require('tape')
-const wtf = require('../lib')
+const wtf = require('./_lib')
 
-test('random', t => {
+test('random', (t) => {
   t.plan(1)
-  var p = wtf.random('simple', 'simple', {
+  let p = wtf.random('simple', 'simple', {
     follow_redirects: false,
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
   })
-  p.then(function(doc) {
+  p.then(function (doc) {
     t.ok(doc.title(), 'got redirect')
   })
-  p.catch(function(e) {
+  p.catch(function (e) {
     t.throw(e)
   })
 })

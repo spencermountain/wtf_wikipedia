@@ -1,6 +1,4 @@
 const fetch = require('./_fetch')
-const random = require('./_fetch/random')
-const category = require('./_fetch/category')
 const version = require('./_version')
 const Document = require('./01-document/Document')
 
@@ -29,12 +27,6 @@ let templates = require('./template/templates')
 
 wtf.fetch = function (title, lang, options, cb) {
   return fetch(title, lang, options, cb)
-}
-wtf.random = function (lang, options, cb) {
-  return random(lang, options, cb)
-}
-wtf.category = function (cat, lang, options, cb) {
-  return category(cat, lang, options, cb)
 }
 wtf.extend = function (fn) {
   fn(models, templates, this)
