@@ -58,7 +58,7 @@
 const wtf = require('wtf_wikipedia')
 
 wtf.fetch('Toronto Raptors').then((doc) => {
-  doc.sentences(0).text()
+  doc.sentences()[0].text()
   //'The Toronto Raptors are a Canadian professional basketball team ...'
 
   let coach = doc.infobox().get('coach')
@@ -111,11 +111,11 @@ doc.links().map((link) => link.json())
 //[{ page: 'Theatrical superstitions', text: 'supersitions' }]
 
 // just the images:
-doc.images(0).json()
+doc.images()[0].json()
 // { file: 'Image:Duveneck Whistling Boy.jpg', url: 'https://commons.wiki...' }
 
 // json for a particular section:
-doc.sections('see also').link().json()
+doc.section('see also').link().json()
 // { page: 'Slide Whistle' }
 ```
 
@@ -354,14 +354,14 @@ var text = wtf(wiki).text()
 a section is a heading _'==Like This=='_
 
 ```js
-wtf(page).sections(1).children() //traverse nested sections
-wtf(page).sections('see also').remove() //delete one
+wtf(page).section(1).children() //traverse nested sections
+wtf(page).section('see also').remove() //delete one
 ```
 
 #### **doc.sentences()**
 
 ```js
-s = wtf(page).sentences(4)
+s = wtf(page).sentence(4)
 s.links()
 s.bolds()
 s.italics()
@@ -378,7 +378,7 @@ doc.categories()
 #### **doc.images()**
 
 ```js
-img = wtf(page).images(0)
+img = wtf(page).images()[0]
 img.url() // the full-size wikimedia-hosted url
 img.thumbnail() // 300px, by default
 img.format() // jpg, png, ..
@@ -398,14 +398,14 @@ let doc = await wtf.fetch('https://muppet.fandom.com/wiki/Miss_Piggy')
 
 // wikipedia français
 doc = await wtf.fetch('Tony Hawk', 'fr')
-doc.sentences(0).text() // 'Tony Hawk est un skateboarder professionnel et un acteur ...'
+doc.sentence().text() // 'Tony Hawk est un skateboarder professionnel et un acteur ...'
 
 // accept an array, or wikimedia pageIDs
 let docs = wtf.fetch(['Whistling', 2983], { follow_redirects: false })
 
 // article from german wikivoyage
 wtf.fetch('Toronto', { lang: 'de', wiki: 'wikivoyage' }).then((doc) => {
-  console.log(doc.sentences(0).text()) // 'Toronto ist die Hauptstadt der Provinz Ontario'
+  console.log(doc.sentences()[0].text()) // 'Toronto ist die Hauptstadt der Provinz Ontario'
 })
 ```
 
@@ -483,16 +483,16 @@ wtf
 - **.redirectTo()** - the page this redirects to
 - **.isDisambiguation()** - is this a placeholder page to direct you to one-of-many possible pages
 - **.categories()** -
-- **.sections()** - return a list, or given-index of the Document's sections
-- **.paragraphs()** - return a list, or given-index of Paragraphs, in all sections
-- **.sentences()** - return a list, or given-index of all sentences in the document
+- **.sections()** - return a list of the Document's sections
+- **.paragraphs()** - return a list of Paragraphs, in all sections
+- **.sentences()** - return a list of all sentences in the document
 - **.images()** -
-- **.links()** - return a list, or given-index of all links, in all parts of the document
+- **.links()** - return a list of all links, in all parts of the document
 - **.lists()** - sections in a page where each line begins with a bullet point
-- **.tables()** - return a list, or given-index of all structured tables in the document
+- **.tables()** - return a list of all structured tables in the document
 - **.templates()** - any type of structured-data elements, typically wrapped in like {{this}}
 - **.infoboxes()** - specific type of template, that appear on the top-right of the page
-- **.references()** - return a list, or given-index of 'citations' in the document
+- **.references()** - return a list of 'citations' in the document
 - **.coordinates()** - geo-locations that appear on the page
 - **.text()** - plaintext, human-readable output for the page
 - **.json()** - a 'stringifyable' output of the page's main data
@@ -502,8 +502,8 @@ wtf
 - **.title()** - the name of the section, between ==these tags==
 - **.index()** - which number section is this, in the whole document.
 - **.indentation()** - how many steps deep into the table of contents it is
-- **.sentences()** - return a list, or given-index, of sentences in this section
-- **.paragraphs()** - return a list, or given-index, of paragraphs in this section
+- **.sentences()** - return a list of sentences in this section
+- **.paragraphs()** - return a list of paragraphs in this section
 - **.links()** -
 - **.tables()** -
 - **.templates()** -
@@ -511,8 +511,8 @@ wtf
 - **.coordinates()** -
 - **.lists()** -
 - **.interwiki()** - any links to other language wikis
-- **.images()** - return a list, or given index, of any images in this section
-- **.references()** - return a list, or given index, of 'citations' in this section
+- **.images()** - return a list of any images in this section
+- **.references()** - return a list of 'citations' in this section
 - **.remove()** - remove the current section from the document
 - **.nextSibling()** - a section following this one, under the current parent: eg. 1920s → 1930s
 - **.lastSibling()** - a section before this one, under the current parent: eg. 1930s → 1920s
