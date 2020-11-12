@@ -26,21 +26,24 @@ class Section {
    * @param {Document} doc the document that this section belongs to
    */
   constructor(data, doc) {
-    /**
-     *
-     * @private
-     * @type {Document}
-     */
-    this._doc = doc
-
-    this._title = data.title || ''
-    this._depth = data.depth
-    this._wiki = data.wiki || ''
-    this._templates = []
-    this._tables = []
-    this._infoboxes = []
-    this._references = []
-    this._paragraphs = []
+    let props = {
+      doc: doc,
+      title: data.title || '',
+      depth: data.depth,
+      wiki: data.wiki || '',
+      templates: [],
+      tables: [],
+      infoboxes: [],
+      references: [],
+      paragraphs: [],
+    }
+    Object.keys(props).forEach((k) => {
+      Object.defineProperty(this, '_' + k, {
+        enumerable: false,
+        writable: true,
+        value: props[k],
+      })
+    })
 
     //parse-out <template></template>' and {{start}}...{{end}} templates
     const startEndTemplates = parse.startEndTemplates(this, doc)
@@ -115,9 +118,6 @@ class Section {
     let arr = this.paragraphs().reduce((list, p) => {
       return list.concat(p.sentences())
     }, [])
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
     return arr || []
   }
 
@@ -130,9 +130,6 @@ class Section {
    */
   paragraphs(clue) {
     let arr = this._paragraphs || []
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
     return arr || []
   }
 
@@ -167,10 +164,6 @@ class Section {
       .reduce((acc, val) => acc.concat(val), []) //flatten the array
       .filter((val) => val !== undefined) //filter out all the undefined from the flattened empty arrays
 
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
-
     if (typeof clue === 'string') {
       let link = arr.find((o) => o.page().toLowerCase() === clue.toLowerCase())
       return link === undefined ? [] : [link]
@@ -188,9 +181,6 @@ class Section {
    */
   tables(clue) {
     let arr = this._tables || []
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
     return arr
   }
 
@@ -205,11 +195,6 @@ class Section {
   templates(clue) {
     let arr = this._templates || []
     arr = arr.map((t) => t.json())
-
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
-
     if (typeof clue === 'string') {
       clue = clue.toLowerCase()
       return arr.filter((o) => o.template === clue || o.name === clue)
@@ -227,9 +212,7 @@ class Section {
    */
   infoboxes(clue) {
     let arr = this._infoboxes || []
-    if (typeof clue === 'number') {
-      return arr[clue]
-    } else if (typeof clue === 'string') {
+    if (typeof clue === 'string') {
       clue = clue.replace(/^infobox /i, '')
       clue = clue.trim().toLowerCase()
       return arr.filter((info) => info._type === clue)
@@ -246,12 +229,6 @@ class Section {
    */
   coordinates(clue) {
     let arr = [...this.templates('coord'), ...this.templates('coor')]
-    if (typeof clue === 'number') {
-      if (!arr[clue]) {
-        return []
-      }
-      return arr[clue]
-    }
     return arr
   }
 
@@ -267,9 +244,6 @@ class Section {
     this.paragraphs().forEach((p) => {
       arr = arr.concat(p.lists())
     })
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
     return arr
   }
 
@@ -285,9 +259,6 @@ class Section {
     this.paragraphs().forEach((p) => {
       arr = arr.concat(p.interwiki())
     })
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
     return arr || []
   }
 
@@ -303,9 +274,6 @@ class Section {
     this.paragraphs().forEach((p) => {
       arr = arr.concat(p.images())
     })
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
     return arr || []
   }
 
@@ -318,9 +286,6 @@ class Section {
    */
   references(clue) {
     let arr = this._references || []
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
     return arr
   }
 
@@ -463,15 +428,9 @@ class Section {
         }
       }
     }
-
     if (typeof clue === 'string') {
       return children.find((s) => s.title().toLowerCase() === clue.toLowerCase())
     }
-
-    if (typeof clue === 'number') {
-      return children[clue]
-    }
-
     return children
   }
 
@@ -550,7 +509,7 @@ const singular = {
   lists: 'list',
   images: 'image',
   references: 'reference',
-  citations: 'reference',
+  citations: 'citation',
 }
 Object.keys(singular).forEach((k) => {
   let sing = singular[k]
@@ -559,7 +518,7 @@ Object.keys(singular).forEach((k) => {
     if (typeof clue === 'number') {
       return arr[clue]
     }
-    return arr[0]
+    return arr[0] || null
   }
 })
 module.exports = Section

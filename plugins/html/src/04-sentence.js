@@ -18,12 +18,12 @@ const doSentence = function (options) {
   }
   if (options.formatting === true) {
     //support bolds
-    this.bold().forEach((str) => {
+    this.bolds().forEach((str) => {
       let tag = '<b>' + str + '</b>'
       text = smartReplace(text, str, tag)
     })
     //do italics
-    this.italic().forEach((str) => {
+    this.italics().forEach((str) => {
       let tag = '<i>' + str + '</i>'
       text = smartReplace(text, str, tag)
     })

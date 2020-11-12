@@ -58,18 +58,7 @@
         "ignoreRegExpLiterals": true
       }
     ],
-    "require-jsdoc": [
-      0,
-      {
-        "require": {
-          "ArrowFunctionExpression": false,
-          "ClassDeclaration": true,
-          "FunctionDeclaration": true,
-          "FunctionExpression": true,
-          "MethodDefinition": true
-        }
-      }
-    ],
+    "require-jsdoc": 0,
     "jsdoc/require-param-description": 0,
     "jsdoc/require-property-description": 0
   }

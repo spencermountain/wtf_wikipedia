@@ -21,7 +21,7 @@ test('basic-latex', (t) => {
   t.equal(tidy(have), tidy(want), 'link-external')
 
   //Image simple
-  have = wtf(`My image [File:my_image.png]`).images(0).latex()
+  have = wtf(`My image [File:my_image.png]`).image(0).latex()
   want =
     '\\begin{figure}\n\\includegraphics[width=\\linewidth]{https://wikipedia.org/wiki/Special:Redirect/file/My_image.png?width=300}\n\\caption{my image}\n\\end{figure}'
   t.equal(tidy(have), tidy(want), 'image')

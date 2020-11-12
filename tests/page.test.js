@@ -8,7 +8,7 @@ test('royal_cinema page', (t) => {
   t.equal(doc.categories().length, 4, 'cat-length')
 
   t.equal(doc.infobox().get('opened').text(), '1939', 'year-string')
-  // t.equal(doc..infobox().keyValue()['opened'], 1939, 'year-number');
+  // t.equal(doc.infobox().keyValue()['opened'], 1939, 'year-number');
   t.end()
 })
 

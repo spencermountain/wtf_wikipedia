@@ -7,7 +7,7 @@ test('image-methods', function (t) {
       wiki: `wiktionary`
     })
     .then(function (doc) {
-      let img = doc.images(0)
+      let img = doc.image(0)
       img.exists().then((bool) => {
         t.equal(bool, true, 'img exists')
 

@@ -29,7 +29,7 @@ test('arenas table', (t) => {
 |-
 |}`
   let doc = wtf(str)
-  let rows = doc.tables(0).keyValue()
+  let rows = doc.table(0).keyValue()
   rows = rows.filter((r) => r.Arena)
   t.equal(rows.length, 2, 'two rows')
   t.equal(rows[0].Team, 'Boston Bruins', 'got team')
@@ -62,7 +62,7 @@ test('double-header baseball game', (t) => {
 |147||September 14||@ [[2018 Philadelphia Phillies season|Phillies]] || 2–14 || [[Zach Eflin|Eflin]] (10–7) || '''[[Wei-Yin Chen|Chen]]''' (6–11) || — || 21,671 || 57–90 || L4
 |}`
   let doc = wtf(str)
-  let rows = doc.tables(0).keyValue()
+  let rows = doc.table(0).keyValue()
   t.equal(rows.length, 4, 'all rows')
   t.equal(rows[0].Attendance, '20,423', '1')
   t.equal(rows[1].Attendance, '22,640', '2')
