@@ -33,7 +33,6 @@
     <!-- test es-module -->
     <script type="module">
       import wtf from '../builds/wtf_wikipedia-client.mjs'
-      console.log(wtf)
       wtf.fetch('Toronto Raptors').then(doc => {
         let coach = doc.infobox().get('coach')
         document.querySelector('#module').innerHTML = coach.text() //'Nick Nurse'
