@@ -36,3 +36,11 @@ lkjsdf
   t.equal(doc.sections().length, 4, 'got all sections')
   t.end()
 })
+
+test('div style replacement', function (t) {
+  let str = `
+<div style="text-align:center;">inside div</div>
+`
+  t.equal(wtf(str).section(0).text(), 'inside div', 'support css style')
+  t.end()
+})
