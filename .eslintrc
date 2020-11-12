@@ -1,4 +1,5 @@
 {
+  "root": true,
   "env": {
     "es6": true,
     "browser": true,
@@ -58,8 +59,10 @@
         "ignoreRegExpLiterals": true
       }
     ],
-    "require-jsdoc": 0,
+    "jsdoc/require-jsdoc": 0,
+    "jsdoc/require-description": 0,
     "jsdoc/require-param-description": 0,
+    "jsdoc/require-returns-description": 0,
     "jsdoc/require-property-description": 0
   }
 }
