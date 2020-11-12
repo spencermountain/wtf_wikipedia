@@ -11,9 +11,6 @@ wtf.extend(require('./plugins/html/src'))
 // })
 
 let str = `
+<div style="text-align:center;">inside div</div>
 `
-// let doc = wtf(str)
-// console.log(doc.infobox(0))
-
-let doc = wtf('', { title: 'Barack Obama' })
-console.log(doc.url())
+console.log(wtf(str).section(0).text())

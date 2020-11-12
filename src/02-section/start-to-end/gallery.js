@@ -1,5 +1,3 @@
-//@ts-expect-error because this is some kind of type definition for jsdoc that's why typescript does not recognize it
-const Document = require('../../01-document/Document')
 const Section = require('../Section')
 
 const parseSentence = require('../../04-sentence/').fromText
@@ -10,7 +8,7 @@ const Image = require('../../image/Image')
 /**
  *
  * @private
- * @param {Catcher} catcher
+ * @param {string} catcher
  * @param {Document} doc
  * @param {Section} section
  */

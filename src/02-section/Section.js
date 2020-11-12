@@ -111,26 +111,22 @@ class Section {
    * returns all sentences in the section
    * if an clue is provided then it returns the sentence at clue-th index
    *
-   * @param {number} [clue] the clue for selecting the sentence
    * @returns {object | object[]} all sentences in an array or the clue-th sentence
    */
-  sentences(clue) {
-    let arr = this.paragraphs().reduce((list, p) => {
+  sentences() {
+    return this.paragraphs().reduce((list, p) => {
       return list.concat(p.sentences())
     }, [])
-    return arr || []
   }
 
   /**
    * returns all paragraphs in the section
    * if an clue is provided then it returns the paragraph at clue-th index
    *
-   * @param {number} [clue] the clue for selecting the paragraph
    * @returns {object | object[]} all paragraphs in an array or the clue-th paragraph
    */
-  paragraphs(clue) {
-    let arr = this._paragraphs || []
-    return arr || []
+  paragraphs() {
+    return this._paragraphs || []
   }
 
   /**
@@ -176,12 +172,10 @@ class Section {
    * returns all tables in the section
    * if an clue is provided then it returns the table at clue-th index
    *
-   * @param {number} [clue] the clue for selecting the table
    * @returns {object | object[]} all tables in an array or the clue-th infobox
    */
-  tables(clue) {
-    let arr = this._tables || []
-    return arr
+  tables() {
+    return this._tables || []
   }
 
   /**
@@ -224,10 +218,9 @@ class Section {
    * returns all lists in the section
    * if an clue is provided then it returns the list at clue-th index
    *
-   * @param {number} [clue] the clue for selecting the list
    * @returns {object | object[]} all lists in an array or the clue-th list
    */
-  coordinates(clue) {
+  coordinates() {
     let arr = [...this.templates('coord'), ...this.templates('coor')]
     return arr
   }
@@ -236,10 +229,9 @@ class Section {
    * returns all lists in the section
    * if an clue is provided then it returns the list at clue-th index
    *
-   * @param {number} [clue] the clue for selecting the list
    * @returns {object | object[]} all lists in an array or the clue-th list
    */
-  lists(clue) {
+  lists() {
     let arr = []
     this.paragraphs().forEach((p) => {
       arr = arr.concat(p.lists())
@@ -251,42 +243,38 @@ class Section {
    * returns all interwiki links in the section
    * if an clue is provided then it returns the interwiki link at clue-th index
    *
-   * @param {number} [clue] the clue for selecting the interwiki link
    * @returns {object | object[]} all interwiki links in an array or the clue-th interwiki link
    */
-  interwiki(clue) {
+  interwiki() {
     let arr = []
     this.paragraphs().forEach((p) => {
       arr = arr.concat(p.interwiki())
     })
-    return arr || []
+    return arr
   }
 
   /**
    * returns all images in the section
    * if an clue is provided then it returns the image at clue-th index
    *
-   * @param {number} [clue] the clue for selecting the reference
    * @returns {Image | Image[]} all images in an array or the clue-th image
    */
-  images(clue) {
+  images() {
     let arr = []
     this.paragraphs().forEach((p) => {
       arr = arr.concat(p.images())
     })
-    return arr || []
+    return arr
   }
 
   /**
    * returns all references in the section
    * if an clue is provided then it returns the reference at clue-th index
    *
-   * @param {number} [clue] the clue for selecting the reference
    * @returns {object | object[]} all references in an array or the clue-th reference
    */
-  references(clue) {
-    let arr = this._references || []
-    return arr
+  references() {
+    return this._references || []
   }
 
   //transformations

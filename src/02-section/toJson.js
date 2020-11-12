@@ -33,26 +33,26 @@ const defaults = {
  * @typedef sectionToJsonReturn
  * @property {string | undefined} title
  * @property {number | undefined} depth
- * @property {Paragraph[] | undefined} paragraphs
+ * @property {object[] | undefined} paragraphs
  * @property {Image[] | undefined} images
- * @property {Table[] | undefined} tables
- * @property {Template[] | undefined} templates
- * @property {Infobox[] | undefined} infoboxes
- * @property {List[] | undefined} lists
- * @property {Reference[] | undefined} references
- * @property {Sentence[] | undefined} sentences
+ * @property {object[] | undefined} tables
+ * @property {object[] | undefined} templates
+ * @property {object[] | undefined} infoboxes
+ * @property {object[] | undefined} lists
+ * @property {object[] | undefined} references
+ * @property {object[] | undefined} sentences
  */
 
 /**
  *
  * @param {Section} section
  * @param {sectionToJsonOptions} options
- * @returns {sectionToJsonReturn}
+ * @returns {object}
  */
 const toJSON = function (section, options) {
   options = setDefaults(options, defaults)
   /**
-   * @type {sectionToJsonReturn}
+   * @type {object}
    */
   let data = {}
 

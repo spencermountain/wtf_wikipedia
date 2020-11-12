@@ -27,7 +27,7 @@ test('classify-test', async function (t) {
     ['al_Haytham', 'Person/Academic'],
     ['The-Field-of-Waterloo', 'CreativeWork'],
     ['bluejays', null], //partial page
-    ['Liste-der-argentinischen-Botschafter-in-Chile', null]
+    ['Liste-der-argentinischen-Botschafter-in-Chile', null],
   ]
   arr.forEach((a) => {
     let abs = path.join(__dirname, `../../../tests/cache/${a[0]}.txt`)

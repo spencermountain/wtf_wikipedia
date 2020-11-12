@@ -16,31 +16,24 @@ const doSection = function (options) {
     num = 1 + this.depth()
     let vOpen = '\n'
     let vClose = '}'
-    switch (num) {
-      case 1:
-        vOpen += '\\chapter{'
-        break
-      case 2:
-        vOpen += '\\section{'
-        break
-      case 3:
-        vOpen += '\\subsection{'
-        break
-      case 4:
-        vOpen += '\\subsubsection{'
-        break
-      case 5:
-        vOpen += '\\paragraph{'
-        vClose = '} \\\\ \n'
-        break
-      case 6:
-        vOpen += '\\subparagraph{'
-        vClose = '} \\\\ \n'
-        break
-      default:
-        vOpen +=
-          '\n% section with depth=' + num + ' undefined - use subparagraph instead\n\\subparagraph{'
-        vClose = '} \\\\ \n'
+    if (num === 1) {
+      vOpen += '\\chapter{'
+    } else if (num === 2) {
+      vOpen += '\\section{'
+    } else if (num === 3) {
+      vOpen += '\\subsection{'
+    } else if (num === 4) {
+      vOpen += '\\subsubsection{'
+    } else if (num === 5) {
+      vOpen += '\\paragraph{'
+      vClose = '} \\\\ \n'
+    } else if (num === 6) {
+      vOpen += '\\subparagraph{'
+      vClose = '} \\\\ \n'
+    } else {
+      vOpen +=
+        '\n% section with depth=' + num + ' undefined - use subparagraph instead\n\\subparagraph{'
+      vClose = '} \\\\ \n'
     }
     out += vOpen + this.title() + vClose
     out += '\n'

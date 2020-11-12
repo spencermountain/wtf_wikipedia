@@ -1,5 +1,3 @@
-//@ts-expect-error because this is some kind of type definition for jsdoc that's why typescript does not recognize it
-const Document = require('../01-document/Document')
 const Section = require('./Section')
 const i18n = require('../_data/i18n')
 const isReference = new RegExp('^(' + i18n.references.join('|') + '):?', 'i')

@@ -18,7 +18,7 @@ const whichHeadings = function (tmpl) {
 /**
  *
  * @private
- * @param {Catcher} catcher
+ * @param {object} catcher
  */
 const parseMlb = function (catcher) {
   catcher.text = catcher.text.replace(

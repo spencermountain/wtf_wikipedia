@@ -9,7 +9,7 @@ const keys = {
  * https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
  *
  * @private
- * @param {Catcher} catcher
+ * @param {object} catcher
  */
 const parseNBA = function (catcher) {
   catcher.text = catcher.text.replace(

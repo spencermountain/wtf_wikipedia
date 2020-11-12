@@ -19,27 +19,20 @@ const methods = {
     }
     return arr
   },
-  interwiki: function (n) {
-    let arr = this.links().filter((l) => l.wiki !== undefined)
-    return arr
+  interwiki: function () {
+    return this.links().filter((l) => l.wiki !== undefined)
   },
-  bolds: function (n) {
-    let arr = []
+  bolds: function () {
     if (this.data && this.data.fmt && this.data.fmt.bold) {
-      arr = this.data.fmt.bold || []
+      return this.data.fmt.bold || []
     }
-    return arr
+    return []
   },
-  italics: function (n) {
-    let arr = []
+  italics: function () {
     if (this.data && this.data.fmt && this.data.fmt.italic) {
-      arr = this.data.fmt.italic || []
+      return this.data.fmt.italic || []
     }
-    return arr
-  },
-  dates: function (n) {
-    let arr = []
-    return arr
+    return []
   },
   text: function (str) {
     if (str !== undefined && typeof str === 'string') {
@@ -62,7 +55,6 @@ const singular = {
   links: 'link',
   bolds: 'bold',
   italics: 'italic',
-  dates: 'date',
 }
 Object.keys(singular).forEach((k) => {
   let sing = singular[k]

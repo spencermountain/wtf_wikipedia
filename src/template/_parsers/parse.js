@@ -10,9 +10,9 @@ const cleanup = require('./03-cleanup')
  * most templates just want plaintext...
  *
  * @private
- * @param str
+ * @param {str} str
  * @param {'json' | 'raw'} [fmt]
- * @returns {Sentence|string|object}
+ * @returns {string} text
  */
 const makeFormat = function (str, fmt) {
   let s = parseSentence(str)

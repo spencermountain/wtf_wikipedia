@@ -2,13 +2,14 @@
 #### [unreleased 9.0.0]
 - **[breaking]** - move .random() and .category() to plugin-api
 - **[breaking]** - cleanup plural/singular method responses
-  - plural methods like .sentences() always return arrays, even with a 'clue' param.
-  - singular now methods return 0th or null, by default
+    - plural methods like .sentences() always return arrays, even with a 'clue' param.
+    - singular now methods return 0th or null, by default
     - bold() -> bolds()
     - italic() -> italics()
-    - interwiki() -> interwikiLinks()
+    - interwiki() -> interwikis()
 - **[breaking]** - cleanup null|undefined responses from methods
-- deprecate plugin-category (moved to plugin-api)
+- **[breaking]** - remove .dates() method (prev deprecated)
+- deprecate wtf-plugin-category (moved to wtf-plugin-api)
 
 -->
 #### 8.5.1

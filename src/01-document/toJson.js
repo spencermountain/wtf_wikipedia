@@ -1,6 +1,4 @@
 const setDefaults = require('../_lib/setDefaults')
-const Section = require('../02-section/Section')
-const Document = require('./Document')
 
 /**
  * @typedef DocumentToJsonOptions
@@ -27,14 +25,14 @@ const defaults = {
  * @property {string | undefined} title
  * @property {number | null | undefined} pageID
  * @property {string[] | undefined} categories
- * @property {Section[] | undefined} sections
+ * @property {object[] | undefined} sections
  * @property {boolean | undefined} isRedirect
  * @property {object | undefined} redirectTo
- * @property {Template[] | undefined} coordinates
- * @property {Infobox[] | undefined} infoboxes
+ * @property {object[] | undefined} coordinates
+ * @property {object[] | undefined} infoboxes
  * @property {Image[] | undefined} images
  * @property {string | undefined} plaintext
- * @property {Reference[] | undefined} references
+ * @property {object[] | undefined} references
  */
 
 /**

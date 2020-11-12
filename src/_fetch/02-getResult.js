@@ -4,9 +4,9 @@
  * the data-format from mediawiki api is nutso
  *
  * @private
- * @param data
- * @param {fetchDefaults} options
- * @returns {*}
+ * @param {object} data
+ * @param {object} options
+ * @returns {*} result
  */
 const getResult = function (data, options) {
   options = options || {}

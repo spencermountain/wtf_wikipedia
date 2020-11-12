@@ -1,5 +1,3 @@
-//@ts-expect-error because this is some kind of type definition for jsdoc that's why typescript does not recognize it
-const Document = require('../../01-document/Document')
 const Section = require('../Section')
 
 const parseGallery = require('./gallery')
@@ -8,15 +6,6 @@ const parseNBA = require('./nba')
 const parseMlb = require('./mlb')
 const parseMMA = require('./mma')
 const parseMath = require('./math')
-
-/**
- * a catcher for the data used in these parsers
- *
- * @private
- * @typedef Catcher
- * @property {Template[]} templates the found templates
- * @property {string} text the wiki text
- */
 
 /**
  * parses out non standard templates
@@ -28,7 +17,7 @@ const parseMath = require('./math')
  * @private
  * @param {Section} section
  * @param {Document} doc
- * @returns {Catcher}
+ * @returns {string} wikitext
  */
 const xmlTemplates = function (section, doc) {
   const catcher = {

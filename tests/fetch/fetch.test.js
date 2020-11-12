@@ -1,9 +1,9 @@
-var test = require('tape')
-var wtf = require('../lib')
+const test = require('tape')
+const wtf = require('../lib')
 
 test('fetch-as-promise', (t) => {
   t.plan(1)
-  var p = wtf.fetch('Tony Hawk', 'en', {
+  const p = wtf.fetch('Tony Hawk', 'en', {
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
   })
   p.then(function (doc) {
@@ -26,7 +26,7 @@ test('fetch-as-callback', (t) => {
 
 test('fetch-invalid', (t) => {
   t.plan(1)
-  var p = wtf.fetch('Taylor%20Swift', 'en', {
+  const p = wtf.fetch('Taylor%20Swift', 'en', {
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
   })
   p.then(function (doc) {
@@ -39,7 +39,7 @@ test('fetch-invalid', (t) => {
 
 test('fetch-missing', (t) => {
   t.plan(1)
-  var p = wtf.fetch('NonExistentPage', 'en', {
+  const p = wtf.fetch('NonExistentPage', 'en', {
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
   })
   p.then(function (doc) {
@@ -52,7 +52,7 @@ test('fetch-missing', (t) => {
 
 test('fetch-redirect', (t) => {
   t.plan(1)
-  var p = wtf.fetch('USA', {
+  const p = wtf.fetch('USA', {
     lang: 'simple',
     follow_redirects: false,
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
@@ -67,7 +67,7 @@ test('fetch-redirect', (t) => {
 
 test('fetch-alternate-wiki', (t) => {
   t.plan(1)
-  var p = wtf.fetch(336711, 'en', {
+  const p = wtf.fetch(336711, 'en', {
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
     domain: 'www.mixesdb.com',
     path: 'db/api.php',
@@ -82,7 +82,7 @@ test('fetch-alternate-wiki', (t) => {
 
 test('fetch-alternate-wiki-with-no-origin', (t) => {
   t.plan(1)
-  var p = wtf.fetch('Abyssal whip', {
+  const p = wtf.fetch('Abyssal whip', {
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
     domain: 'oldschool.runescape.wiki',
     noOrigin: true,
@@ -97,13 +97,13 @@ test('fetch-alternate-wiki-with-no-origin', (t) => {
 
 //uncomment for testing on node>6
 test('ambiguous-pageids', async function (t) {
-  var doc = await wtf.fetch(1984, 'en')
+  const doc = await wtf.fetch(1984, 'en')
   t.equal(doc.title(), 'Arab world', 'input as pageid')
 
   doc = await wtf.fetch('1984', 'en')
   t.equal(doc.title(), '1984', 'input as text')
 
-  var docs = await wtf.fetch([2983, 7493], 'en')
+  const docs = await wtf.fetch([2983, 7493], 'en')
   t.equal(docs.length, 2, 'got two pageid results')
   t.equal(docs[0].title(), 'Austria-Hungary', 'first pageid')
   t.equal(docs[1].title(), 'Talk:P versus NP problem/Archive 1', 'second pageid')
@@ -117,9 +117,20 @@ test('ambiguous-pageids', async function (t) {
 
 test('intensive', (t) => {
   /* fires a bunch of requests in parallel - this should be enough to get blocked by wikipedia if the user agent is not set correctly */
-  var pages = ['Mouse', 'Rat', 'Porcupine', 'Chipmunk', 'Vole', 'Chinchilla', 'Gopher', 'Capybara', 'Beaver', 'Hamster']
+  const pages = [
+    'Mouse',
+    'Rat',
+    'Porcupine',
+    'Chipmunk',
+    'Vole',
+    'Chinchilla',
+    'Gopher',
+    'Capybara',
+    'Beaver',
+    'Hamster',
+  ]
   t.plan(pages.length)
-  var promises = pages.map((page) =>
+  const promises = pages.map((page) =>
     wtf.fetch(page, 'en', {
       'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
     })

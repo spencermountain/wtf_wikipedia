@@ -1,21 +1,9 @@
 /**
- * @private
- * @typedef HeaderOptions
- * @property {string} redirect
- * @property {object} headers
- * @property {*} headers.Origin
- * @property {string} headers.Content-Type
- * @property {string} headers.Api-User-Agent
- * @property {string} headers.User-Agent
- * @property {string} method
- */
-
-/**
  * factory for header options
  *
  * @private
  * @param {object} options
- * @returns {HeaderOptions} the generated options
+ * @returns {object} the generated options
  */
 const makeHeaders = function (options) {
   let agent =

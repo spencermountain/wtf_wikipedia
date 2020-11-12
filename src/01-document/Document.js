@@ -222,10 +222,9 @@ class Document {
    * If a clue is available return the category at that index
    * Else return all categories
    *
-   * @param {number} [clue] The index of the wanted category
    * @returns {string | string[]} The category at the provided index or all categories
    */
-  categories(clue) {
+  categories() {
     return this._categories || []
   }
 
@@ -262,10 +261,9 @@ class Document {
    * If the clue is a number then it returns the paragraph at that index
    * Else it returns all paragraphs in an array
    *
-   * @param {number} [clue] The index of the to be selected paragraph
    * @returns {object | object[]} the selected paragraph or an array of all paragraphs
    */
-  paragraphs(clue) {
+  paragraphs() {
     let arr = []
     this.sections().forEach((s) => {
       arr = arr.concat(s.paragraphs())
@@ -277,10 +275,9 @@ class Document {
    * if no clue is provided, it compiles an array of sentences in the wiki text.
    * if the clue is provided it return the sentence at the provided index
    *
-   * @param {number} clue the index of the wanted sentence
    * @returns {object[]|object} an array of sentences or a single sentence
    */
-  sentences(clue) {
+  sentences() {
     let arr = []
     this.sections().forEach((sec) => {
       arr = arr.concat(sec.sentences())
@@ -293,10 +290,9 @@ class Document {
    * and then returns them in an array if no clue is provided.
    * if an clue is profieded then it returns the image at the clue-th index
    *
-   * @param {number} [clue] the index of the image to be selected
    * @returns {Image[]|Image} a single image or an array of images
    */
-  images(clue) {
+  images() {
     let arr = sectionMap(this, 'images', null)
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {

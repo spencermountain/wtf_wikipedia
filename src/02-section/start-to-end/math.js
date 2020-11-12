@@ -7,7 +7,7 @@ const parseSentence = require('../../04-sentence/').fromText
  * https://en.wikipedia.org/wiki/Help:Displaying_a_formula
  *
  * @private
- * @param {Catcher} catcher
+ * @param {object} catcher
  */
 const parseMath = function (catcher) {
   catcher.text = catcher.text.replace(/<math([^>]*?)>([\s\S]+?)<\/math>/g, (_, attrs, inside) => {
