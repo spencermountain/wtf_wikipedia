@@ -344,7 +344,7 @@ test('categories - get - if the clue is a number return the category in that ind
     [[Category:American people of German descent]]
     [[Category:American people of Scottish descent]]
   `)
-  t.equal(doc.categories(1), 'Writers from New York City', 'the categories at index 1')
+  t.equal(doc.category(1), 'Writers from New York City', 'the categories at index 1')
   t.end()
 })
 
@@ -494,45 +494,13 @@ test('sentences - get - if the sentences is in the option. ignore it', (t) => {
 test('sentences - get - if the clue is a undefined / unset return the list of sentences', (t) => {
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'statoil.txt'), 'utf-8')
   let doc = wtf(str)
-  const expected = [
-    90,
-    77,
-    104,
-    55,
-    62,
-    58,
-    94,
-    45,
-    91,
-    75,
-    43,
-    66,
-    126,
-    128,
-    100,
-    210,
-    83,
-    187,
-    43,
-    56,
-    101,
-    65,
-    103,
-    90,
-    68,
-    136,
-    91,
-    75,
-    122,
-    14,
-    116,
-    48,
-    98,
-    186,
-    17,
-  ]
-  t.deepEqual(
-    doc.sentences().map((p) => p.text().length),
+  const expected =
+    '90,77,104,55,62,58,94,45,91,75,43,66,126,128,100,210,83,187,43,56,101,65,103,90,68,136,91,75,122,14,116,48,98,186,17'
+  t.equal(
+    doc
+      .sentences()
+      .map((p) => p.text().length)
+      .join(','),
     expected,
     'the sentences in the wiki text'
   )
@@ -551,9 +519,12 @@ test('sentences - get - if the clue is a string (not number) return all the sent
   let doc = wtf(str)
   const expected =
     '90,77,104,55,62,58,94,45,91,75,43,66,126,128,100,210,83,187,43,56,101,65,103,90,68,136,91,75,122,14,116,48,98,186,17'
-  t.deepEqual(
-    doc.sentences('string').map((p) => p.text().length),
-    expected.split(','),
+  t.equal(
+    doc
+      .sentences('string')
+      .map((p) => p.text().length)
+      .join(','),
+    expected,
     'the sentences in the wiki text'
   )
   t.end()
@@ -806,9 +777,12 @@ test('references - get - return all templates', (t) => {
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
   let doc = wtf(str)
   const expected = '19,3,33,32,44,0,0,0,0,0,0,0,31,0,0,0,0,31,71,0,0,0,0,0,0,0,13,13,0,0,10,0,0,0'
-  t.deepEqual(
-    doc.references().map((r) => r.title().length),
-    expected.split(','),
+  t.equal(
+    doc
+      .references()
+      .map((r) => r.title().length)
+      .join(','),
+    expected,
     'returns all references'
   )
   t.end()
@@ -826,8 +800,11 @@ test('references - get - if the clue is any other type then return all reference
   let doc = wtf(str)
   const expected = '19,3,33,32,44,0,0,0,0,0,0,0,31,0,0,0,0,31,71,0,0,0,0,0,0,0,13,13,0,0,10,0,0,0'
   t.deepEqual(
-    doc.references('string').map((re) => re.title().length),
-    expected.split(','),
+    doc
+      .references('string')
+      .map((re) => re.title().length)
+      .join(','),
+    expected,
     'returns all references'
   )
   t.end()
@@ -838,9 +815,12 @@ test('citations - get - return all templates', (t) => {
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
   let doc = wtf(str)
   const expected = '19,3,33,32,44,0,0,0,0,0,0,0,31,0,0,0,0,31,71,0,0,0,0,0,0,0,13,13,0,0,10,0,0,0'
-  t.deepEqual(
-    doc.citations().map((c) => c.title().length),
-    expected.split(','),
+  t.equal(
+    doc
+      .citations()
+      .map((c) => c.title().length)
+      .join(','),
+    expected,
     'returns all citations'
   )
   t.end()
@@ -857,9 +837,12 @@ test('citations - get - if the clue is any other type then return all references
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
   let doc = wtf(str)
   const expected = '19,3,33,32,44,0,0,0,0,0,0,0,31,0,0,0,0,31,71,0,0,0,0,0,0,0,13,13,0,0,10,0,0,0'
-  t.deepEqual(
-    doc.citations('string').map((ci) => ci.title().length),
-    expected.split(','),
+  t.equal(
+    doc
+      .citations('string')
+      .map((ci) => ci.title().length)
+      .join(','),
+    expected,
     'returns all citations'
   )
   t.end()
@@ -897,7 +880,7 @@ test('coordinates - get - if the clue is a number return the coordinates at that
     lat: 39.18861,
     lon: -120.10889,
   }
-  t.deepEqual(doc.coordinates(1), expected, 'the coordinates at index 1')
+  t.deepEqual(doc.coordinate(1), expected, 'the coordinates at index 1')
   t.end()
 })
 
@@ -954,7 +937,7 @@ const infoboxPage = `
 }}
 `
 
-test('references - get - return all templates', (t) => {
+test('infoboxes - get - return all templates', (t) => {
   let doc = wtf(infoboxPage)
   const expected = [201, 201, 89]
   t.deepEqual(
@@ -965,19 +948,19 @@ test('references - get - return all templates', (t) => {
   t.end()
 })
 
-test('references - get - if the clue is a number return the references at that index', (t) => {
+test('infoboxes - get - if the clue is a number return the infoboxes at that index', (t) => {
   let doc = wtf(infoboxPage)
-  t.deepEqual(JSON.stringify(doc.infobox(1).json()).length, 201, 'the references at index 1')
+  t.deepEqual(JSON.stringify(doc.infobox(1).json()).length, 201, 'the infoboxes at index 1')
   t.end()
 })
 
-test('references - get - if the clue is any other type then return all references', (t) => {
+test('infoboxes - get - if the clue is any other type then return all references', (t) => {
   let doc = wtf(infoboxPage)
-  const expected = [201, 201, 89]
+  const expected = []
   t.deepEqual(
     doc.infoboxes('string').map((info) => JSON.stringify(info.json()).length),
     expected,
-    'returns all references'
+    'returns all infoboxes'
   )
   t.end()
 })

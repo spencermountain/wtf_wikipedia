@@ -114,7 +114,7 @@ test('bluejays table', function (t) {
 | 2 || April 7 || @ [[Minnesota Twins|Twins]] || 9 - 3 || '''[[David Wells|Wells]]''' (1-0) || [[Mike Lincoln|Lincoln]] (0-1) || '''[[Roy Halladay|Halladay]]''' (1) || 9,220 || 1-1
 |}
   `
-  const arr = wtf(bluejays).tables(0).data
+  const arr = wtf(bluejays).table(0).data
   t.equal(arr.length, 2)
   t.equal(arr[0]['Number'].text(), '1', 'number')
   t.equal(arr[0]['Date'].text(), 'April 6', 'date')

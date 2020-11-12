@@ -27,12 +27,12 @@ class Document {
    */
   constructor(wiki, options) {
     options = options || {}
-
     let props = {
       pageID: options.pageID || options.id || null,
       namespace: options.namespace || options.ns || null,
       lang: options.lang || options.language || null,
       domain: options.domain || null,
+      title: options.title || null,
       type: 'page',
       redirectTo: null,
       wikidata: options.wikidata || null,
