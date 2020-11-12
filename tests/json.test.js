@@ -53,7 +53,7 @@ test('section-output', (t) => {
 
 test('sentence-output', (t) => {
   let doc = readFile('royal_cinema')
-  let sen = doc.sentences(0)
+  let sen = doc.sentence()
   let data = sen.json()
   t.ok(data.text, 'text')
   t.ok(data.links, 'links')
