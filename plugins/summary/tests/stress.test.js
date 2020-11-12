@@ -8,7 +8,7 @@ const path = require('path')
 //   console.log(cat, '\n\n')
 //   wtf.parseCategory(cat).then((res) => {
 //     res.docs.forEach((doc) => {
-//       console.log(doc.sentences(0).text())
+//       console.log(doc.sentence().text())
 //       // console.log(padEnd(doc.title(), 26) + '       ' + doc.summary({ article: false }) || '-')
 //     })
 //   })

@@ -75,7 +75,7 @@ test('inline-test', (t) => {
 //   const str = `"Through Magic Doorways".<ref name="quote">[http://www.imdb.com/name/nm3225194/ Allen Morris IMDb profile]</ref> `;
 //   const arr = wtf(str).citations();
 //   t.equal(arr.length, 1, 'found-inline-citations');
-//   t.equal(arr[0].links(0).site, 'http://www.imdb.com/name/nm3225194/', 'inline-url');
+//   t.equal(arr[0].link().site, 'http://www.imdb.com/name/nm3225194/', 'inline-url');
 //   t.equal(arr[0].text(), 'Allen Morris IMDb profile', 'inline-text');
 //   t.end();
 // });
@@ -92,6 +92,6 @@ test('inline-test', (t) => {
 //   const str = `<ref name="ChapmanRoutledge">Siobhan Chapman, {{ISBN|0-19-518767-9}}, [https://books.google.com/books?id=Vfr Google Print, p. 166]</ref> She continued her education after.`;
 //   const arr = wtf(str).citations();
 //   t.equal(arr.length, 1, 'found-one-citation');
-//   t.equal(arr[0].links(0).site, 'https://books.google.com/books?id=Vfr', 'fould late link');
+//   t.equal(arr[0].link().site, 'https://books.google.com/books?id=Vfr', 'fould late link');
 //   t.end();
 // });

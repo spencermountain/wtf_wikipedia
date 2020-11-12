@@ -202,7 +202,7 @@ test('infoboxes - get - number', (t) => {
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
 
-  t.equal(JSON.stringify(sec.infoboxes(0)).length, 33, 'the infoboxes should equal the expected')
+  t.equal(JSON.stringify(sec..infobox()).length, 33, 'the infoboxes should equal the expected')
   t.end()
 })
 
@@ -253,7 +253,7 @@ test('lists - get - number', (t) => {
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section('See also')
 
-  t.equal(JSON.stringify(sec.lists(0).lines()).length, 22, 'the lists should equal the expected')
+  t.equal(JSON.stringify(sec.list().lines()).length, 22, 'the lists should equal the expected')
   t.end()
 })
 

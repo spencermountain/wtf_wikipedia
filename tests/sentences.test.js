@@ -29,7 +29,7 @@ test('tough sentence punctuation', function (t) {
   arr.forEach((str, i) => {
     const doc = wtf(str)
     t.equal(
-      doc.sentences(0).text(),
+      doc.sentence().text(),
       'he is credited as Mr. Lawrence and sometimes Doug Lawrence.',
       'tough-sentence #' + i
     )

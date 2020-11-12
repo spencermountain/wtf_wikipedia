@@ -92,7 +92,7 @@ test('hyphenated language-date templates', (t) => {
 })
 
 // test('date-data', t => {
-//   const obj = wtf('hello {{start date|1993|02|24|08|30}} world').sentences(0);
+//   const obj = wtf('hello {{start date|1993|02|24|08|30}} world').sentence();
 //   const date = obj.dates(0);
 //   t.equal(date.year, 1993, 'got-year');
 //   t.equal(date.month, 2, 'got-month');

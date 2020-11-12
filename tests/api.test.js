@@ -63,10 +63,10 @@ test('Sentence-methods-do-not-throw', (t) => {
 test('Reference-methods-do-not-throw', (t) => {
   pages.forEach((page) => {
     const doc = wtf(readFile(page))
-    const sen = doc.reference()
+    const ref = doc.reference()
     docs.Reference.forEach((obj) => {
       const desc = obj.name + ' - ' + page
-      sen[obj.name]()
+      ref[obj.name]()
       t.ok(true, desc)
     })
   })
@@ -76,10 +76,10 @@ test('Reference-methods-do-not-throw', (t) => {
 test('Image-methods-do-not-throw', (t) => {
   pages.forEach((page) => {
     const doc = wtf(readFile(page))
-    const sen = doc.image()
+    const img = doc.image()
     docs.Image.forEach((obj) => {
       const desc = obj.name + ' - ' + page
-      sen[obj.name]()
+      img[obj.name]()
       t.ok(true, desc)
     })
   })
@@ -99,10 +99,10 @@ test('Infobox-methods-do-not-throw', (t) => {
   ]
   mypages.forEach((page) => {
     const doc = wtf(readFile(page))
-    const sen = doc.infobox()
+    const inf = doc.infobox()
     docs.Infobox.forEach((obj) => {
       const desc = obj.name + ' - ' + page
-      sen[obj.name]()
+      inf[obj.name]()
       t.ok(true, desc)
     })
   })
@@ -113,10 +113,10 @@ test('List-methods-do-not-throw', (t) => {
   const mypages = ['al_Haytham', 'Mozilla-Firefox', 'toronto', 'toronto_star', 'jodie_emery', 'Allen-R.-Morris']
   mypages.forEach((page) => {
     const doc = wtf(readFile(page))
-    const sen = doc.list()
+    const list = doc.list()
     docs.List.forEach((obj) => {
       const desc = obj.name + ' - ' + page
-      sen[obj.name]()
+      list[obj.name]()
       t.ok(true, desc)
     })
   })
@@ -127,10 +127,10 @@ test('Table-methods-do-not-throw', (t) => {
   const mypages = ['Mozilla-Firefox', 'toronto', 'Allen-R.-Morris', 'bluejays']
   mypages.forEach((page) => {
     const doc = wtf(readFile(page))
-    const sen = doc.table()
+    const table = doc.table()
     docs.Table.forEach((obj) => {
       const desc = obj.name + ' - ' + page
-      sen[obj.name]()
+      table[obj.name]()
       t.ok(true, desc)
     })
   })

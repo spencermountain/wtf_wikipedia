@@ -51,7 +51,7 @@ const plugin = function (models) {
     if (this.sentences(1)) {
       txt = this.sentences(1).text()
     } else {
-      txt = this.sentences(0).text()
+      txt = this.sentence(0).text()
     }
     let doc = nlp(txt)
     let found = doc.match('(#Pronoun|#Article)').eq(0).text().toLowerCase()

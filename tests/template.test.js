@@ -37,15 +37,15 @@ test('boloZenden infobox', function (t) {
     | manageryears1  = 2012–2013 |managerclubs1 = [[Chelsea F.C.|Chelsea]] (assistant manager)
     | manageryears2  = 2013– |managerclubs2 = [[Jong PSV]] (assistant manager)
   }}`
-  const o = wtf(boloZenden).infoboxes(0).data
+  const o = wtf(boloZenden).infobox().data
   t.equal(o.years1.text(), '1993–1998')
   t.equal(o.clubs1.text(), 'PSV')
   t.equal(o.youthyears1.text(), '1985–1987')
   t.equal(o.youthclubs1.text(), 'MVV')
   t.equal(o.nationalyears1.text(), '1997–2004')
   t.equal(o.nationalteam1.text(), 'Netherlands')
-  t.equal(o.nationalteam1.links(0).page(), 'Netherlands national football team')
-  t.equal(o.nationalteam1.links(0).text(), 'Netherlands')
+  t.equal(o.nationalteam1.link().page(), 'Netherlands national football team')
+  t.equal(o.nationalteam1.link().text(), 'Netherlands')
   t.equal(o.nationalcaps1.text(), '54')
   t.equal(o.nationalgoals1.text(), '7')
   t.end()
@@ -70,11 +70,11 @@ test('hurricane infobox', function (t) {
   | Areas=[[Florida]]
   | Hurricane season=[[2002 Atlantic hurricane season]]
 }}`
-  const o = wtf(hurricane).infoboxes(0).data
+  const o = wtf(hurricane).infobox().data
   t.equal(o.name.text(), 'Tropical Storm Edouard')
   t.equal(o.dissipated.text(), 'September 6, 2002')
   t.equal(o['hurricane season'].text(), '2002 Atlantic hurricane season')
-  t.equal(o.areas.links(0).page(), 'Florida')
+  t.equal(o.areas.link().page(), 'Florida')
   t.end()
 })
 
@@ -97,7 +97,7 @@ test('parkplace disambig', function (t) {
   const o = wtf(park_place)
   t.equal(o.isDisambiguation(), true, 'is-disambiguation')
   t.equal(o.links().length, 4, 'links')
-  t.equal(o.links(0).page(), 'Park Place (TV series)', 'first-link')
+  t.equal(o.link().page(), 'Park Place (TV series)', 'first-link')
   t.end()
 })
 
@@ -155,7 +155,7 @@ const alabama = `
 }}
 `
 test('Alabama infobox', function (t) {
-  const infobox = wtf(alabama).infoboxes(0).data
+  const infobox = wtf(alabama).infobox().data
   t.equal(infobox.athletics.text(), 'NCAA Division I – SEC', 'athletics =' + infobox.athletics.text)
   t.equal(infobox.country.text(), 'U.S.', 'country =' + infobox.country.text)
   t.equal(infobox.president.text(), 'Stuart R. Bell', 'president =' + infobox.president.text)
@@ -199,7 +199,7 @@ test('Radiohead infobox', function (t) {
 * [[Ed O'Brien]]
 * [[Philip Selway]]
 }} `
-  const infobox = wtf(radiohead).infoboxes(0).data
+  const infobox = wtf(radiohead).infobox().data
   t.equal(infobox.current_members.text().match(/Greenwood/g).length, 2, 'current members')
   t.equal(infobox.genre.text(), 'Art rock\n\nalternative rock\n\nelectronica\n\nexperimental rock', 'genre')
   t.equal(infobox.associated_acts.text(), 'Atoms for Peace\n\n7 Worlds Collide', 'associated-acts')
@@ -313,7 +313,7 @@ test('microsoft currency parsing', function (t) {
 | website = {{URL|https://microsoft.com}}
 }}
   `
-  const infobox = wtf(microsoft).infoboxes(0).data
+  const infobox = wtf(microsoft).infobox().data
   t.equal(infobox.revenue.text(), 'US$89.95 billion', 'revenue =' + infobox.revenue.text)
   t.equal(infobox.operating_income.text(), 'US$22.27 billion', 'operating_income =' + infobox.operating_income.text)
   t.equal(infobox.net_income.text(), 'US$21.20 billion', 'net_income =' + infobox.net_income.text)
@@ -337,7 +337,7 @@ test('climate template', function (t) {
 | −3.1 |  2.1 | 61
 |float=right
 |source= Environment Canada }}`
-  const data = wtf(str).templates(0).data
+  const data = wtf(str).template().data
   t.equal(data.months[0].low, -6.7, 'jan low')
   t.equal(data.months[1].precip, 55, 'feb precip')
   t.end()

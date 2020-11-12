@@ -43,25 +43,25 @@ after now
 
 test('anchor-links', (t) => {
   let str = `[[Doug Ford#Personal Life]]`
-  let link = wtf(str).links(0)
+  let link = wtf(str).link(0)
   t.equal(link.page(), 'Doug Ford', 'page1')
   t.equal(link.text(), undefined, 'text1')
   t.equal(link.anchor(), 'Personal Life', 'anchor1')
 
   str = `[[Toronto_Blue_Jays#Problems|Tranno J birds]]`
   const doc = wtf(str)
-  link = doc.links(0)
+  link = doc.link(0)
   t.equal(link.page(), 'Toronto_Blue_Jays', 'page2')
   t.equal(link.text(), 'Tranno J birds', 'text2')
   t.equal(link.anchor(), 'Problems', 'anchor2')
 
   // t.equal(
-  //   doc.sentences(0).html(),
+  //   doc.sentence().html(),
   //   '<span class="sentence"><a class="link" href="./Toronto_Blue_Jays#Problems">Tranno J birds</a></span>',
   //   'html-anchor'
   // )
   // t.equal(
-  //   doc.sentences(0).markdown(),
+  //   doc.sentence().markdown(),
   //   '[Tranno J birds](./Toronto_Blue_Jays#Problems)',
   //   'markdown-anchor'
   // )
@@ -70,15 +70,15 @@ test('anchor-links', (t) => {
 })
 
 test('title-case-links', (t) => {
-  t.equal(wtf('[[john]]').links(0).page(), 'john', 'page')
-  t.equal(wtf('[[john]]').links(0).text(), 'john', 'lowercase text')
+  t.equal(wtf('[[john]]').link(0).page(), 'john', 'page')
+  t.equal(wtf('[[john]]').link(0).text(), 'john', 'lowercase text')
 
-  t.equal(wtf('[[John smith]]').links(0).page(), 'John smith', 'already titlecased')
-  t.equal(wtf('[[John]]').links(0).text(), undefined, 'no text stored when already titlecase')
+  t.equal(wtf('[[John smith]]').link().page(), 'John smith', 'already titlecased')
+  t.equal(wtf('[[John]]').link().text(), undefined, 'no text stored when already titlecase')
 
-  t.equal(wtf('[[john|his son]]').links(0).text(), 'his son', 'lowercase given text')
-  t.equal(wtf('[[john|his son]]').links(0).page(), 'john', 'titlecase given page')
-  t.equal(wtf('[[John|his son]]').links(0).page(), 'John', 'already titlecased given page')
+  t.equal(wtf('[[john|his son]]').link().text(), 'his son', 'lowercase given text')
+  t.equal(wtf('[[john|his son]]').link().page(), 'john', 'titlecase given page')
+  t.equal(wtf('[[John|his son]]').link().page(), 'John', 'already titlecased given page')
   t.end()
 })
 
@@ -86,7 +86,7 @@ test('tricksy-links', (t) => {
   const doc = wtf(`[[US]]9999.2`)
   t.equal(doc.text(), 'US9999.2', 'link-nospace')
   //   const doc = wtf('then [[John Entwistle|John [Entwistle]]] and I');
-  //   t.equal(doc.links(0).page, 'John Entwistle', 'page without bracket');
-  //   t.equal(doc.links(0).text, 'John [Entwistle]', 'text with bracket');
+  //   t.equal(doc.link().page, 'John Entwistle', 'page without bracket');
+  //   t.equal(doc.link().text, 'John [Entwistle]', 'text with bracket');
   t.end()
 })

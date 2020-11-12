@@ -49,7 +49,7 @@ test('collapsible list', function (t) {
    | [[Switzerland]]
   }}`
   let doc = wtf(str)
-  let tmpl = doc.templates(0) || {}
+  let tmpl = doc.template() || {}
   t.equal(tmpl.title, 'European Free Trade Association members', 'got title 1')
   t.equal(tmpl.list.length, 4, 'got list')
   t.equal(tmpl.list[1], 'Liechtenstein', 'got list member')
@@ -65,7 +65,7 @@ test('collapsible list', function (t) {
     |1=[[Dean Allison]] |2=[[Chris Charlton]] |3=[[David Christopherson]] |4=[[Wayne Marston]] |5=[[David Sweet]]
    }}`
   doc = wtf(str)
-  tmpl = doc.templates(0) || {}
+  tmpl = doc.template() || {}
   t.equal(tmpl.title, 'List of MPs', 'got title 2')
   t.equal(tmpl.list.length, 5, 'got list2')
   t.equal(tmpl.list[1], 'Chris Charlton', 'got list member2')
@@ -80,7 +80,7 @@ test('collapsible list', function (t) {
 test('unbulleted list', function (t) {
   const str = `{{unbulleted list|first item|second item|third item|}}`
   const doc = wtf(str)
-  const tmpl = doc.templates(0) || {}
+  const tmpl = doc.template() || {}
   t.equal(tmpl.title, undefined, 'got title 3')
   t.equal(tmpl.list.length, 3, 'got list3')
   t.equal(tmpl.list[1], 'second item', 'got list member3')
@@ -91,7 +91,7 @@ test('unbulleted list', function (t) {
 test('ordered list', function (t) {
   const str = `{{Ordered list|first item|second item|third item|}}`
   const doc = wtf(str)
-  const tmpl = doc.templates(0) || {}
+  const tmpl = doc.template() || {}
   t.equal(tmpl.title, undefined, 'got title 4')
   t.equal(tmpl.list.length, 3, 'got list4')
   t.equal(tmpl.list[1], 'second item', 'got list member4')

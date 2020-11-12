@@ -32,8 +32,8 @@ test('rnli stations', (t) => {
 
   const lifeboat = doc.sections(2)
   t.equal(lifeboat._depth, 1, 'lifeboat-depth')
-  t.equal(lifeboat.templates(0).list[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main')
-  t.equal(lifeboat.lists(0).json().length, 3, 'lifeboat-list')
+  t.equal(lifeboat.template().list[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main')
+  t.equal(lifeboat.list().json().length, 3, 'lifeboat-list')
   t.equal(lifeboat.sentences().length, 3, 'lifeboat-sentences')
   t.deepEqual(lifeboat.images(), [], 'lifeboat-no-images')
   t.deepEqual(lifeboat.tables(), [], 'lifeboat-no-tables')
@@ -260,7 +260,7 @@ test('embedded-table-2', (t) => {
   Actual first sentence is here`
   const doc = wtf(str)
   t.equal(doc.tables().length, 2, 'found both tables')
-  const text = doc.sentences(0).text()
+  const text = doc.sentence().text()
   t.equal('Actual first sentence is here', text, 'got proper first sentence')
   t.end()
 })

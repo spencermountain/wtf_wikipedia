@@ -115,7 +115,7 @@ doc.images(0).json()
 // { file: 'Image:Duveneck Whistling Boy.jpg', url: 'https://commons.wiki...' }
 
 // json for a particular section:
-doc.sections('see also').links(0).json()
+doc.sections('see also').link().json()
 // { page: 'Slide Whistle' }
 ```
 

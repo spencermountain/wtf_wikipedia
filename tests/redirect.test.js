@@ -17,8 +17,8 @@ test('redirect json', (t) => {
 test('is-redirect', (t) => {
   const doc = readFile('redirect')
   t.equal(doc.isRedirect(), true, 'is-redirect')
-  // t.equal(doc.links(0).page, 'Toronto', 'redirect-place');
-  t.equal(doc.infoboxes(0), undefined, t)
+  // t.equal(doc.link().page, 'Toronto', 'redirect-place');
+  t.equal(doc.infobox(), undefined, t)
   t.end()
 })
 

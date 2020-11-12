@@ -116,12 +116,12 @@ test('stress-test-en', (t) => {
     t.equal(doc.isDisambig(), false, ' - - not-disambiguation')
     t.ok(doc.categories().length > 0, ' - - cat-length')
     t.ok(doc.sections().length > 0, ' - - section-length')
-    const intro = doc.sections(0)
+    const intro = doc.section()
     t.ok(intro.title() === '', ' - - intro-title-empty')
     t.ok(intro.indentation() === 0, ' - - depth=0')
     t.ok(intro.sentences().length > 0, ' - - sentences-length')
-    t.ok(intro.sentences(0).text().length > 0, ' - - intro-text')
-    t.ok(intro.sentences(0).text().match(/[a-z]/), ' - - intro-has words')
+    t.ok(intro.sentence().text().length > 0, ' - - intro-text')
+    t.ok(intro.sentence().text().match(/[a-z]/), ' - - intro-has words')
     if (noCitation[title] === true) {
       t.equal(doc.citations().length, 0, title + ' has no citation')
     } else {

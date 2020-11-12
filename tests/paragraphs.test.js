@@ -15,7 +15,7 @@ Here is the third paragraph. Nobody knows if this will work.<ref>[http://commons
   t.equal(doc.sections().length, 2, 'sections')
   t.equal(doc.paragraphs().length, 3, 'paragraphs')
   t.equal(doc.references().length, 4, 'all references')
-  t.equal(doc.sections(0).references().length, 3, 'first references')
+  t.equal(doc.section().references().length, 3, 'first references')
   t.end()
 })
 
@@ -52,7 +52,7 @@ test('newlines in templates', (t) => {
 Paragraph two!`
   const doc = wtf(str)
   t.equal(doc.paragraphs().length, 2, 'paragraphs')
-  t.equal(doc.paragraphs(0).text(), 'hello world', 'first paragraph')
+  t.equal(doc.paragraph().text(), 'hello world', 'first paragraph')
   t.equal(doc.paragraphs(1).text(), 'Paragraph two!', '2nd paragraph')
   t.end()
 })
@@ -82,7 +82,7 @@ test('newlines in tables', (t) => {
 Second paragraph here.`
   const doc = wtf(str)
   t.equal(doc.paragraphs().length, 2, 'paragraphs')
-  t.equal(doc.paragraphs(0).text(), 'hello world. Up here.', 'first paragraph')
+  t.equal(doc.paragraph().text(), 'hello world. Up here.', 'first paragraph')
   t.equal(doc.paragraphs(1).text(), 'Second paragraph here.', '2nd paragraph')
   t.equal(doc.tables().length, 1, 'got broken table')
   t.end()

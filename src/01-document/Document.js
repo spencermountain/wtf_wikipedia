@@ -94,9 +94,9 @@ class Document {
     }
     //guess the title of this page from first sentence bolding
     let guess = null
-    let sen = this.sentences()[0]
+    let sen = this.sentence()
     if (sen) {
-      guess = sen.bolds(0)
+      guess = sen.bold()
     }
     return guess
   }

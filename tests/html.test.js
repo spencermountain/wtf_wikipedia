@@ -24,12 +24,12 @@ test('support bold and italics', (t) => {
 test('support sub and sup', (t) => {
   let doc = wtf(`hi <sub>world</sub> there`)
   t.equal(doc.text(), 'hi world there')
-  let tmpl = doc.templates(0) || {}
+  let tmpl = doc.template() || {}
   t.equal(tmpl.text, 'world', 'got sub template')
 
   doc = wtf(`hi <sup>world</sup> there`)
   t.equal(doc.text(), 'hi world there')
-  tmpl = doc.templates(0) || {}
+  tmpl = doc.template() || {}
   t.equal(tmpl.text, 'world', 'got sup template')
   t.end()
 })
