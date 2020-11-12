@@ -201,7 +201,7 @@ const inline = {
 
   // these templates use the page's title
   // https://en.wikipedia.org/wiki/Template:Title_year
-  'title year': (tmpl, _list, doc) => {
+  'title year': (tmpl, _list, _alias, doc) => {
     let obj = parse(tmpl, ['match', 'nomatch', 'page'])
     let title = obj.page || doc.title()
     if (title) {
@@ -213,7 +213,7 @@ const inline = {
     return obj.nomatch || '' //use default response
   },
   // https://en.wikipedia.org/wiki/Template:Title_century
-  'title century': (tmpl, _list, doc) => {
+  'title century': (tmpl, _list, _alias, doc) => {
     let obj = parse(tmpl, ['match', 'nomatch', 'page'])
     let title = obj.page || doc.title()
     if (title) {
@@ -225,7 +225,7 @@ const inline = {
     return obj.nomatch || '' //use default response
   },
   // https://en.wikipedia.org/wiki/Template:Title_decade
-  'title decade': (tmpl, _list, doc) => {
+  'title decade': (tmpl, _list, _alias, doc) => {
     let obj = parse(tmpl, ['match', 'nomatch', 'page'])
     let title = obj.page || doc.title()
     if (title) {

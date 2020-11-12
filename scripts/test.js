@@ -18,7 +18,7 @@ if (arg) {
 
 // run the main tests:
 let fail = false
-let code = sh.exec('tape "./tests/*.test.js" | tap-spec --color always').code
+let code = sh.exec('tape "./tests/*.test.js" | tap-dancer --color always').code
 if (code !== 0) {
   fail = true
 }

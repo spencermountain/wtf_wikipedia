@@ -9,13 +9,8 @@ wtf.extend(require('./plugins/api/src'))
 // getAll(template).then((arr) => {
 //   console.log(JSON.stringify(arr, null, 2))
 // })
-// const str = `hello {{citation|url=cool.com/?fun=yes}} `
-// const str = `{{Cita libru |url=cool.com |title= |last= |first= |date= |website= |publisher= |access-date= |quote=}}`
-// const arr = wtf(str)
-//   .references()
-//   .map((c) => c.json())
-// console.log(arr)
-
-wtf.getCategoryPages('Swiss female skeleton racers').then((doc) => {
-  console.log(doc)
-})
+const str = `hello {{citation |url=cool.com   }}`
+const arr = wtf(str)
+  .references()
+  .map((c) => c.json())
+console.log(arr)
