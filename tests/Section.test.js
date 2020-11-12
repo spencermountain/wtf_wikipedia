@@ -207,14 +207,7 @@ test('coordinates - get', (t) => {
 test('coordinates - get - number', (t) => {
   let str = fs.readFileSync(path.join(__dirname, 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
-  t.equal(JSON.stringify(sec.coordinates(0)).length, 70, 'the coordinates should equal the expected')
-  t.end()
-})
-
-test('coordinates - get - number', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, 'cache', 'United-Kingdom.txt'), 'utf-8')
-  let sec = wtf(str).section(0)
-  t.equal(JSON.stringify(sec.coordinates(54)).length, 2, 'the coordinates should equal the expected')
+  t.equal(JSON.stringify(sec.coordinate()).length, 70, 'the coordinates should equal the expected')
   t.end()
 })
 
@@ -278,8 +271,11 @@ test('references - get', (t) => {
   let sec = wtf(str).section(0)
   const expected = '15,104,58,38,50,0,0,0,30,33,34,0,71,0,56,85,16,59,64,29,0,0,0,0,0,26,60,0,35,87,90,42,0,0'
   t.equal(
-    sec.references().map((s) => s.title().length),
-    expected.split(','),
+    sec
+      .references()
+      .map((s) => s.title().length)
+      .join(','),
+    expected,
     'the references should equal the expected'
   )
   t.end()

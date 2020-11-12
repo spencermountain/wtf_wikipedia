@@ -161,8 +161,8 @@ test('flags', function (t) {
   const str = `one {{flag|USA}}, two {{flag|DEU|empire}}, three {{flag|CAN|name=Canadian}}.`
   const doc = wtf(str)
   t.equal(doc.links().length, 3, 'found 3 link')
-  t.equal(doc.links(1).text(), 'DEU', 'link text')
-  t.equal(doc.links(1).page(), 'germany', 'link page')
+  t.equal(doc.link(1).text(), 'DEU', 'link text')
+  t.equal(doc.link(1).page(), 'germany', 'link page')
   t.equal(doc.text(), 'one 🇺🇸 USA, two 🇩🇪 DEU, three 🇨🇦 CAN.', 'made emoji flags')
   t.end()
 })
@@ -175,6 +175,6 @@ test('tricky-based-on', function (t) {
   // t.equal(doc.links(0).text, 'Jurassic Park', 'found link text');
   // t.equal(doc.text(), `''Jurassic Park'' by Michael Crichton`, 'parsed properly');
   t.equal(doc.templates().length, 1, 'found one template')
-  t.equal(doc.templates(0).template, 'based on', 'found template name')
+  t.equal(doc.template(0).template, 'based on', 'found template name')
   t.end()
 })

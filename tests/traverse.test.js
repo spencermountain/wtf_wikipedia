@@ -17,7 +17,7 @@ test('traverse sections', (t) => {
   t.deepEqual(['Topography', 'Climate'], children, 'got two children')
 
   //go into both children, Topography+Climate
-  sec = sec.children(0)
+  sec = sec.children()[0]
   t.equal(sec.title(), 'Topography', 'first child')
   sec = sec.nextSibling()
   t.equal(sec.title(), 'Climate', 'first child')
@@ -26,11 +26,11 @@ test('traverse sections', (t) => {
   sec = sec.parent()
   t.equal(sec.title(), 'Geography', 'skip-over children')
   //access child by title
-  t.equal(sec.children(1).title(), 'Climate', 'second child')
+  t.equal(sec.children()[1].title(), 'Climate', 'second child')
 
   sec.remove()
   t.equal(doc.sections().length, 32, 'removed self and children')
-  doc.sections('See also').remove()
+  doc.section('See also').remove()
   t.equal(doc.sections().length, 31, 'removed one')
 
   t.end()

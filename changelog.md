@@ -1,7 +1,12 @@
 <!--
 #### [unreleased 9.0.0]
 - **[breaking]** - move .random() and .category() to plugin-api
-- **[breaking]** - plural methods like .infoboxes() always return arrays, even with a 'clue' param
+- **[breaking]** - cleanup plural/singular method responses
+  - plural methods like .sentences() always return arrays, even with a 'clue' param.
+  - singular now methods return 0th or null, by default
+    - bold() -> bolds()
+    - italic() -> italics()
+    - interwiki() -> interwikiLinks()
 - **[breaking]** - cleanup null|undefined responses from methods
 - deprecate plugin-category (moved to plugin-api)
 
