@@ -19,11 +19,11 @@ File:Anders Zorn - Ateljéidyll.jpg|G''Studio Idyll'', 1918
 The paintings have the freedom and energy of  sketches, using warm and cool light and shade areas<ref name="safran-arts.com"/> with contrasting areas of warm and cool tones, and an understanding of colour contrasts and reflected lights. Zorn's accomplished use of the brush allows the forms and the texture of the painted subject to reflect and transmit light. In addition to portraits and nudes, Zorn excelled in realistic depictions of water, as well as scenes depicting rustic life and customs.
   `
   const doc = wtf(str)
-  t.deepEqual(doc.sections('paintings').templates('gallery').length, 1, 'section-has-gallery')
-  const templ = doc.templates(0)
+  t.deepEqual(doc.section('paintings').templates('gallery').length, 1, 'section-has-gallery')
+  const templ = doc.template(0)
   t.deepEqual(templ.template, 'gallery', 'document-has-template')
   t.deepEqual(templ.images.length, 5, '5 images')
-  t.deepEqual(templ.images[0].caption.links(0).page(), 'Freyja', 'image has caption')
+  t.deepEqual(templ.images[0].caption.link().page(), 'Freyja', 'image has caption')
   t.deepEqual(doc.images().length, 5, 'images() finds gallery')
   t.end()
 })
@@ -43,7 +43,7 @@ test('gallery-tag-2', (t) => {
   </gallery>
 
   foo`)
-  const templ = doc.templates(0)
+  const templ = doc.template()
   t.deepEqual(templ.template, 'gallery', 'document-has-template')
   t.deepEqual(templ.images.length, 8, '8 images')
   t.deepEqual(templ.images[0].file, 'Culex-female.jpg', 'got filename')
@@ -57,7 +57,7 @@ test('gallery-template', (t) => {
 |File:Kurmi threshing.jpg|Another ethnographic print from 1916 showing a Kurmi family employing its beasts of burden to thresh wheat.
 |File:Kurmi winnowing.jpg|A third print from the same collection showing the Kurmi family winnowing.
 }} `
-  const templ = wtf(str).templates(0)
+  const templ = wtf(str).template()
   t.deepEqual(templ.template, 'gallery', 'document-has-template')
   t.deepEqual(templ.images.length, 4, 'has 4 images')
   t.end()
@@ -66,7 +66,7 @@ test('gallery-template', (t) => {
 test('from-infobox', (t) => {
   let doc = readFile('jodie_emery')
   t.equal(
-    doc.infobox(0).images(0).thumb(),
+    doc.infobox(0).image(0).thumb(),
     'https://wikipedia.org/wiki/Special:Redirect/file/Marc_Emery_and_Jodie_Emery.JPG?width=300',
     'has correct thumbnail'
   )
@@ -75,7 +75,7 @@ test('from-infobox', (t) => {
 
 test('img-alt', (t) => {
   let str = `[[File:Wikipedesketch1.png|thumb|alt=A cartoon centipede detailed description.|The Wikipede edits ''[[Myriapoda]]''.]]`
-  let img = wtf(str).images(0).json()
+  let img = wtf(str).image().json()
   t.equal(img.file, 'File:Wikipedesketch1.png', 'file')
   t.equal(img.thumb, 'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png?width=300', 'thumb')
   t.equal(img.url, 'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png', 'image')
@@ -87,7 +87,7 @@ test('img-alt', (t) => {
 
 test('parsed-captions', (t) => {
   let str = `[[File:Volkswagen W12.jpg|thumb|upright|[[Volkswagen Group]] W12 engine from the [[Volkswagen Phaeton|Volkswagen Phaeton W12]]]]`
-  let img = wtf(str).images(0).json()
+  let img = wtf(str).image().json()
   t.equal(img.caption, 'Volkswagen Group W12 engine from the Volkswagen Phaeton W12', 'caption')
   t.end()
 })

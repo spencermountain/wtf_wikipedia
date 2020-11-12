@@ -11,9 +11,7 @@ const Sentence = function (data) {
 const methods = {
   links: function (n) {
     let arr = this.data.links || []
-    if (typeof n === 'number') {
-      return arr[n]
-    } else if (typeof n === 'string') {
+    if (typeof n === 'string') {
       //grab a link like .links('Fortnight')
       n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
       let link = arr.find((o) => o.page === n)
@@ -23,18 +21,12 @@ const methods = {
   },
   interwiki: function (n) {
     let arr = this.links().filter((l) => l.wiki !== undefined)
-    if (typeof n === 'number') {
-      return arr[n]
-    }
     return arr
   },
   bolds: function (n) {
     let arr = []
     if (this.data && this.data.fmt && this.data.fmt.bold) {
       arr = this.data.fmt.bold || []
-    }
-    if (typeof n === 'number') {
-      return arr[n]
     }
     return arr
   },
@@ -43,16 +35,10 @@ const methods = {
     if (this.data && this.data.fmt && this.data.fmt.italic) {
       arr = this.data.fmt.italic || []
     }
-    if (typeof n === 'number') {
-      return arr[n]
-    }
     return arr
   },
   dates: function (n) {
     let arr = []
-    if (typeof n === 'number') {
-      return arr[n]
-    }
     return arr
   },
   text: function (str) {
@@ -70,8 +56,25 @@ const methods = {
 Object.keys(methods).forEach((k) => {
   Sentence.prototype[k] = methods[k]
 })
-Sentence.prototype.italic = Sentence.prototype.italics
-Sentence.prototype.bold = Sentence.prototype.bolds
+
+// aliases
+const singular = {
+  links: 'link',
+  bolds: 'bold',
+  italics: 'italic',
+  dates: 'date',
+}
+Object.keys(singular).forEach((k) => {
+  let sing = singular[k]
+  Sentence.prototype[sing] = function (clue) {
+    let arr = this[k](clue)
+    if (typeof clue === 'number') {
+      return arr[clue]
+    }
+    return arr[0]
+  }
+})
+
 Sentence.prototype.plaintext = Sentence.prototype.text
 
 module.exports = Sentence

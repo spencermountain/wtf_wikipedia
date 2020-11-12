@@ -5,12 +5,12 @@ test('bold/italics', (t) => {
   const str = `'''K. Nicole Mitchell''' is ''currently'' a [[U.S. Magistrate Judge]].
 
 	She is '''''very''''' good`
-  let sentence = wtf(str).sentences(0)
+  let sentence = wtf(str).sentence(0)
   t.deepEqual(sentence.bold(), ['K. Nicole Mitchell'], 'one bold')
   t.deepEqual(sentence.italic(), ['currently'], 'one italic')
   t.equal(sentence.links().length, 1, 'one link')
 
-  sentence = wtf(str).sentences(1)
+  sentence = wtf(str).sentence(1)
   t.deepEqual(sentence.bold(), ['very'], 'two bold')
   t.deepEqual(sentence.italic(), ['very'], 'two italic')
   t.end()
@@ -18,7 +18,7 @@ test('bold/italics', (t) => {
 
 test('inline mixquotes test', (t) => {
   const str = `this is ''''four'''' and this is '''''five'''''`
-  const sentence = wtf(str).sentences(0)
+  const sentence = wtf(str).sentences()[0]
   // t.deepEqual(sentence.fmt.bold, ['five', '\'four\''], 'two bold');
   t.deepEqual(sentence.italic(), ['five'], 'five is italic')
   t.end()
@@ -42,7 +42,7 @@ test('inline mixquotes test', (t) => {
 test('links-with-ticks', (t) => {
   const doc = wtf(`hello '''[[Palme d'Or]]''' world`)
   t.equal(doc.text(), `hello Palme d'Or world`, 'text')
-  t.equal(doc.links(0).page(), `Palme d'Or`, 'link')
-  t.equal(doc.sentences(0).data.fmt.bold[0], `Palme d'Or`, 'fmt-bold')
+  t.equal(doc.link(0).page(), `Palme d'Or`, 'link')
+  t.equal(doc.sentence(0).data.fmt.bold[0], `Palme d'Or`, 'fmt-bold')
   t.end()
 })

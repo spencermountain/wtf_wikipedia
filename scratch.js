@@ -33,5 +33,8 @@ let str = `{{redirect|Alhazen}}
 
 Born in [[Basra]], he spent most of his productive period in the [[Fatimid Caliphate|Fatimid]] capital of [[Cairo]] and earned his living authoring various treatises and tutoring members of the nobilities.<ref>According to [[Al-Qifti]]. {{Harvnb|O'Connor|Robertson|1999}}.</ref>
 `
-let doc = wtf(str)
-console.log(doc.infobox(0))
+// let doc = wtf(str)
+// console.log(doc.infobox(0))
+
+let doc = wtf('')
+console.log(doc.url())

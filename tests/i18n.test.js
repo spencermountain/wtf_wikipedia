@@ -6,7 +6,7 @@ test('nihongo templates templates', (t) => {
   let doc = wtf(str)
   t.equal(doc.text(), 'hello Tokyo Tower (東京タワー) world', 'sub english word')
   t.equal(doc.templates().length, 1, 'have template')
-  t.equal(doc.templates(0).romaji, 'Tōkyō tawā', 'have translation')
+  t.equal(doc.template(0).romaji, 'Tōkyō tawā', 'have translation')
 
   str = `In Japanese, {{Nihongo2|虚無僧}} reads ''komusō''.`
   doc = wtf(str)
@@ -20,7 +20,7 @@ test('nihongo templates templates', (t) => {
 
 test('hindi image', (t) => {
   const str = `[[चित्र:Gandhis ashes.jpg|thumb|left|[[राज घाट और अन्य स्मारक|राज घाट]] ([[:en:Raj Ghat and other memorials|Raj Ghat]]):आगा खान पैलेस में गांधी की अस्थियां (पुणे, भारत) .]]`
-  const img = wtf(str).images(0).json()
+  const img = wtf(str).image(0).json()
   t.equal(img.file, 'चित्र:Gandhis ashes.jpg')
   t.end()
 })
