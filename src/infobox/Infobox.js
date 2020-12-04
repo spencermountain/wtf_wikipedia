@@ -1,6 +1,7 @@
 const toJson = require('./toJson')
 const Image = require('../image/Image')
 const { isArray } = require('../_lib/helpers')
+const Sentence = require('../04-sentence/Sentence')
 
 const normalize = (str = '') => {
   str = str.toLowerCase()
@@ -36,7 +37,7 @@ const methods = {
     return arr
   },
   image: function () {
-    let s = this.get('image') || this.get('image2') || this.get('logo')
+    let s = this.data.image || this.data.image2 || this.data.logo
     if (!s) {
       return null
     }
@@ -56,7 +57,7 @@ const methods = {
           return this.data[allKeys[i]]
         }
       }
-      return null
+      return new Sentence()
     }
     if (isArray(keys)) {
       // support array-input
@@ -68,10 +69,10 @@ const methods = {
             return this.data[allKeys[i]]
           }
         }
-        return null
+        return new Sentence()
       })
     }
-    return null
+    return new Sentence()
   },
   text: function () {
     return ''

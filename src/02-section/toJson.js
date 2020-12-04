@@ -1,22 +1,6 @@
 const setDefaults = require('../_lib/setDefaults')
 const encode = require('../_lib/encode')
-const Section = require('../02-section/Section')
 
-/**
- * @typedef sectionToJsonOptions
- * @property {boolean | undefined} headers
- * @property {boolean | undefined} images
- * @property {boolean | undefined} tables
- * @property {boolean | undefined} depth
- * @property {boolean | undefined} citations
- * @property {boolean | undefined} references
- * @property {boolean | undefined} lists
- * @property {boolean | undefined} sentences
- * @property {boolean | undefined} templates
- * @property {boolean | undefined} infoboxes
- * @property {boolean | undefined} paragraphs
- * @property {boolean | undefined} encode
- */
 const defaults = {
   headers: true,
   depth: true,
@@ -28,20 +12,6 @@ const defaults = {
   lists: true,
   references: true,
 }
-
-/**
- * @typedef sectionToJsonReturn
- * @property {string | undefined} title
- * @property {number | undefined} depth
- * @property {object[] | undefined} paragraphs
- * @property {Image[] | undefined} images
- * @property {object[] | undefined} tables
- * @property {object[] | undefined} templates
- * @property {object[] | undefined} infoboxes
- * @property {object[] | undefined} lists
- * @property {object[] | undefined} references
- * @property {object[] | undefined} sentences
- */
 
 /**
  *

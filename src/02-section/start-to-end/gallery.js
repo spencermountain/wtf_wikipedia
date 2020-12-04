@@ -1,5 +1,3 @@
-const Section = require('../Section')
-
 const parseSentence = require('../../04-sentence/').fromText
 const Image = require('../../image/Image')
 //okay, <gallery> is a xml-tag, with newline-separated data, somehow pivoted by '|'...

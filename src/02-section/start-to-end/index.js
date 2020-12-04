@@ -1,5 +1,3 @@
-const Section = require('../Section')
-
 const parseGallery = require('./gallery')
 const parseElection = require('./election')
 const parseNBA = require('./nba')

@@ -1,7 +1,7 @@
 const toJSON = require('./toJson')
 
 //where we store the formatting, link, date information
-const Sentence = function (data) {
+const Sentence = function (data = {}) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data,
@@ -43,6 +43,9 @@ const methods = {
   },
   json: function (options) {
     return toJSON(this, options)
+  },
+  isEmpty: function () {
+    return this.data.text === ''
   },
 }
 
