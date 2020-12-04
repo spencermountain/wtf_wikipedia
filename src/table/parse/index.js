@@ -27,9 +27,9 @@ const cleanText = function (str) {
   str = str.replace(/style=['"].*?["']/, '')
   //'!' is used as a highlighed-column
   str = str.replace(/^!/, '')
-  str = str.replace(/\(.*?\)/, '')
+  // str = str.replace(/\(.*?\)/, '')
   str = str.trim()
-  str = str.toLowerCase()
+  // str = str.toLowerCase()
   return str
 }
 

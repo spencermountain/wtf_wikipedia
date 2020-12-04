@@ -1,5 +1,6 @@
 const toJson = require('./toJson')
 const Image = require('../image/Image')
+const { isArray } = require('../_lib/helpers')
 
 const normalize = (str = '') => {
   str = str.toLowerCase()
@@ -45,7 +46,7 @@ const methods = {
     obj.domain = this.domain // add domain information for image
     return new Image(obj)
   },
-  get: function (keys = []) {
+  get: function (keys) {
     let allKeys = Object.keys(this.data)
     if (typeof keys === 'string') {
       let key = normalize(keys)
@@ -57,17 +58,20 @@ const methods = {
       }
       return null
     }
-    // support array-input
-    keys = keys.map(normalize)
-    return keys.map((k) => {
-      for (let i = 0; i < allKeys.length; i += 1) {
-        let tmp = normalize(allKeys[i])
-        if (k === tmp) {
-          return this.data[allKeys[i]]
+    if (isArray(keys)) {
+      // support array-input
+      keys = keys.map(normalize)
+      return keys.map((k) => {
+        for (let i = 0; i < allKeys.length; i += 1) {
+          let tmp = normalize(allKeys[i])
+          if (k === tmp) {
+            return this.data[allKeys[i]]
+          }
         }
-      }
-      return null
-    })
+        return null
+      })
+    }
+    return null
   },
   text: function () {
     return ''

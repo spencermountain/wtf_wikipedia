@@ -30,7 +30,6 @@ const allTemplates = function (section, doc) {
   //nested data-structure of templates
   let list = findTemplates(wiki)
   let keep = []
-
   //recursive template-parser
   const parseThem = function (obj, parent) {
     obj.parent = parent

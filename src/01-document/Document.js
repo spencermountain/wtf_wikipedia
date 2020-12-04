@@ -493,7 +493,7 @@ Object.keys(singular).forEach((k) => {
     if (typeof clue === 'number') {
       return arr[clue]
     }
-    return arr[0]
+    return arr[0] || null
   }
 })
 Document.prototype.lang = Document.prototype.language
