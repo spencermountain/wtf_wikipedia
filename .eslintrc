@@ -10,8 +10,7 @@
     "sourceType": "module",
     "ecmaFeatures": {}
   },
-  "plugins": ["jsdoc"],
-  "extends": ["plugin:compat/recommended", "plugin:jsdoc/recommended"],
+  "extends": ["plugin:compat/recommended"],
   "rules": {
     "semi": ["warn", "never"],
     "indent": ["error", 2],
@@ -58,11 +57,6 @@
         "ignoreTemplateLiterals": true,
         "ignoreRegExpLiterals": true
       }
-    ],
-    "jsdoc/require-jsdoc": 0,
-    "jsdoc/require-description": 0,
-    "jsdoc/require-param-description": 0,
-    "jsdoc/require-returns-description": 0,
-    "jsdoc/require-property-description": 0
+    ]
   }
 }

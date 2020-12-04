@@ -9,6 +9,8 @@
     - interwiki() -> interwikis()
 - **[breaking]** - cleanup null|undefined responses from methods
 - **[breaking]** - remove .dates() method (prev deprecated)
+- **[breaking]** - normalize table rows
+- **[new]** - Table.get() method
 - deprecate wtf-plugin-category (moved to wtf-plugin-api)
 
 -->

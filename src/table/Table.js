@@ -2,6 +2,14 @@ const setDefaults = require('../_lib/setDefaults')
 const toJson = require('./toJson')
 const defaults = {}
 
+const normalize = function (key = '') {
+  key = key.toLowerCase()
+  key = key.replace(/[_-]/g, ' ')
+  key = key.replace(/\(.*?\)/, '')
+  key = key.trim()
+  return key
+}
+
 const Table = function (data) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
@@ -24,6 +32,25 @@ const methods = {
       return link === undefined ? [] : [link]
     }
     return links
+  },
+  get(keys) {
+    // string gets a flat-list
+    if (typeof keys === 'string') {
+      let key = normalize(keys)
+      return this.data.map((row) => {
+        return row[key] ? row[key].text() : null
+      })
+    }
+    // array gets obj-list
+    keys = keys.map(normalize)
+    return this.data.map((row) => {
+      return keys.reduce((h, k) => {
+        if (row[k]) {
+          h[k] = row[k].text()
+        }
+        return h
+      }, {})
+    })
   },
   keyValue(options) {
     let rows = this.json(options)
