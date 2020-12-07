@@ -18,6 +18,8 @@ declare module wtf {
 
   /** extend built-in functionality */
   export function extend(fn: any): any
+  /** extend built-in functionality */
+  export function plugin(fn: any): any
 
   /** grab wikipedia content from an API */
   export function fetch(titleOrId: string | number, lang?: string, options?: any, cb?: any): Promise<null | Document>

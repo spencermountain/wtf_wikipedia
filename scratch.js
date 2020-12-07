@@ -23,9 +23,7 @@ const getBox = function (doc) {
 //   console.log(getBox(doc))
 // })
 
-
+// wtf.fetch('https://wiki.openstreetmap.org/wiki/Tag:highway%3Dmotorway', { path: '/w/api.php' }).then((doc) => {
 wtf.fetch('https://wiki.openstreetmap.org/wiki/Tag:highway%3Dmotorway').then((doc) => {
-    //console.log(doc.sentences(0).text())
-    //console.log(doc.infobox())
-    //console.log(doc.infobox().json())
+  console.log(doc.templates('ValueDescription'))
 })

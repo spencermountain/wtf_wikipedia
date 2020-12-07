@@ -24,14 +24,16 @@ const models = {
   wtf: wtf,
 }
 let templates = require('./template/templates')
+let infoboxes = require('./infobox/_infoboxes')
 
 wtf.fetch = function (title, lang, options, cb) {
   return fetch(title, lang, options, cb)
 }
 wtf.extend = function (fn) {
-  fn(models, templates, this)
+  fn(models, templates, this, infoboxes)
   return this
 }
+wtf.plugin = wtf.extend
 wtf.version = version
 
 module.exports = wtf

@@ -1,4 +1,5 @@
 const i18n = require('../_data/i18n')
+const infoboxes = require('../infobox/_infoboxes')
 const i18nReg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i')
 //some looser ones
 const startReg = /^infobox /i
@@ -8,47 +9,11 @@ const yearIn = /$Year in [A-Z]/i
 //some known ones from
 //https://en.wikipedia.org/wiki/Wikipedia:List_of_infoboxes
 //and https://en.wikipedia.org/wiki/Category:Infobox_templates
-const known = {
-  'gnf protein box': true,
-  'automatic taxobox': true,
-  'chembox ': true,
-  editnotice: true,
-  geobox: true,
-  hybridbox: true,
-  ichnobox: true,
-  infraspeciesbox: true,
-  mycomorphbox: true,
-  oobox: true,
-  'paraphyletic group': true,
-  speciesbox: true,
-  subspeciesbox: true,
-  'starbox short': true,
-  taxobox: true,
-  nhlteamseason: true,
-  'asian games bid': true,
-  'canadian federal election results': true,
-  'dc thomson comic strip': true,
-  'daytona 24 races': true,
-  edencharacter: true,
-  'moldova national football team results': true,
-  samurai: true,
-  protein: true,
-  'sheet authority': true,
-  'order-of-approx': true,
-  'bacterial labs': true,
-  'medical resources': true,
-  ordination: true,
-  'hockey team coach': true,
-  'hockey team gm': true,
-  'pro hockey team': true,
-  'hockey team player': true,
-  'hockey team start': true,
-  mlbbioret: true,
-}
+
 //
 const isInfobox = function (name) {
   //known
-  if (known.hasOwnProperty(name) === true) {
+  if (infoboxes.hasOwnProperty(name) === true) {
     return true
   }
   if (i18nReg.test(name)) {
