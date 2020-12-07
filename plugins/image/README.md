@@ -9,8 +9,8 @@
   </a>
   
   <!-- file size -->
-  <a href="https://unpkg.com/wtf-plugin-markdown/builds/wtf-plugin-image.min.js">
-    <img src="https://badge-size.herokuapp.com/spencermountain/wtf-plugin-image/master/builds/wtf-plugin-image.min.js" />
+  <a href="https://unpkg.com/wtf-plugin-image/builds/wtf-plugin-image.min.js">
+    <img src="https://badge-size.herokuapp.com/spencermountain/wtf_wikipedia/master/plugins/image/builds/wtf-plugin-image.min.js" />
   </a>
    <hr/>
 </div>
