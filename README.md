@@ -393,7 +393,7 @@ let doc = await wtf.fetch('https://muppet.fandom.com/wiki/Miss_Piggy')
 
 // wikipedia français
 doc = await wtf.fetch('Tony Hawk', 'fr')
-doc.sentence().text() // 'Tony Hawk est un skateboarder professionnel et un acteur ...'
+doc.sentence().text() // 'Tony Hplawk est un skateboarder professionnel et un acteur ...'
 
 // accept an array, or wikimedia pageIDs
 let docs = wtf.fetch(['Whistling', 2983], { follow_redirects: false })
@@ -597,7 +597,7 @@ wtf.extend((models) => {
   }
 })
 
-await wtf.fetch('Stephen Harper').isPerson() //hmm?
+await wtf.fetch('Stephen Harper').isPerson()
 ```
 
 ### Adding new templates:
@@ -622,6 +622,13 @@ wtf.extend((models, templates) => {
   templates.asterisk = '*'
 })
 ```
+you can determine which templates are understood to be 'infoboxes' with the 3rd parameter:
+```js
+wtf.extend((models, templates, infoboxes) => {
+  Object.assign(infoboxes, {person:true, place:true, thing:true})
+})
+```
+
 
 <div align="right">
   <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-plugins">plugin docs</a>

@@ -42,3 +42,16 @@ test('string template syntax', (t) => {
   t.equal(doc.text(), 'before inside after', 'template as string')
   t.end()
 })
+
+test('extend infoboxes', (t) => {
+  let str = `{{ValueDescription
+    |key=aerialway
+    |value=cable_car}} cool`
+  t.equal(wtf(str).infoboxes().length, 0, 'found no infobox')
+  //add it
+  wtf.extend((models, templates, infoboxes) => {
+    Object.assign(infoboxes, { place: true, keydescription: true, valuedescription: true })
+  })
+  t.equal(wtf(str).infoboxes().length, 1, 'found infobox')
+  t.end()
+})

@@ -30,7 +30,7 @@ wtf.fetch = function (title, lang, options, cb) {
   return fetch(title, lang, options, cb)
 }
 wtf.extend = function (fn) {
-  fn(models, templates, this, infoboxes)
+  fn(models, templates, infoboxes)
   return this
 }
 wtf.plugin = wtf.extend
