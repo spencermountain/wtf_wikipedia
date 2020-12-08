@@ -11,6 +11,7 @@
 - **[breaking]** - remove .dates() method (prev deprecated)
 - **[breaking]** - normalize table rows
 - **[new]** - Table.get() method
+- **[new]** - set new infoboxes using .extend()
 - deprecate wtf-plugin-category (moved to wtf-plugin-api)
 
 -->
