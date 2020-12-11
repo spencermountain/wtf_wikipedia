@@ -41,6 +41,7 @@ class Document {
       sections: [],
       coordinates: [],
     }
+    this._missing_templates = [] //for stats+debugging purposes
 
     Object.keys(props).forEach((k) => {
       Object.defineProperty(this, '_' + k, {

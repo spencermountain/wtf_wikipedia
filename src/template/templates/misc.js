@@ -98,5 +98,21 @@ const misc = {
     list.push(data)
     return ''
   },
+  graph: (tmpl, list) => {
+    let data = parse(tmpl)
+    if (data.x) {
+      data.x = data.x.split(',').map((str) => str.trim())
+    }
+    if (data.y) {
+      data.y = data.y.split(',').map((str) => str.trim())
+    }
+    let y = 1
+    while (data['y' + y]) {
+      data['y' + y] = data['y' + y].split(',').map((str) => str.trim())
+      y += 1
+    }
+    list.push(data)
+    return ''
+  },
 }
 module.exports = misc
