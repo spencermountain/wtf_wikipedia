@@ -53,8 +53,10 @@ const parseTemplate = function (tmpl, list, doc) {
       return templates[name](tmpl.body, list, null, doc)
     }
   }
-  doc._missing_templates.push(name)
-
+  if (doc) {
+    doc._missing_templates[name] = doc._missing_templates[name] || 0
+    doc._missing_templates[name] += 1
+  }
   //unknown template, try to parse it
   let parsed = parse(tmpl.body)
   if (list && Object.keys(parsed).length > 0) {

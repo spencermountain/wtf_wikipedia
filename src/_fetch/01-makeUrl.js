@@ -34,7 +34,7 @@ const toQueryString = function (obj) {
  * @param {string} page the title that needs cleaning
  * @returns {string} the cleaned title
  */
-const cleanTitle = (page) => {
+const cleanTitle = (page = '') => {
   page = page.replace(/ /g, '_')
   page = page.trim()
   //page = encodeURIComponent(page)
