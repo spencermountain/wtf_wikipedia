@@ -24,6 +24,7 @@ const parseTeam = function (obj, round, team) {
   }
 }
 
+// https://en.wikipedia.org/wiki/Category:Tournament_bracket_templates
 //these are weird.
 const playoffBracket = function (tmpl) {
   let rounds = []
@@ -51,16 +52,4 @@ const playoffBracket = function (tmpl) {
   }
 }
 
-let templates = {
-  //playoff brackets
-  '4teambracket': function (tmpl, list) {
-    let obj = playoffBracket(tmpl)
-    list.push(obj)
-    return ''
-  },
-}
-
-//a bunch of aliases for these ones:
-// https://en.wikipedia.org/wiki/Category:Tournament_bracket_templates
-
-module.exports = templates
+module.exports = playoffBracket

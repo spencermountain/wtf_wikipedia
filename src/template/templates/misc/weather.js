@@ -1,25 +1,14 @@
 const parse = require('../../_parsers/parse')
+const toNumber = require('./_lib').toNumber
 const hasMonth = /^jan /i
 const isYear = /^year /i
-
-const monthList = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
-
-const toNumber = function (str) {
-  str = str.replace(/,/g, '')
-  str = str.replace(/−/g, '-')
-  let num = Number(str)
-  if (isNaN(num)) {
-    return str
-  }
-  return num
-}
 
 let templates = {
   // this one is a handful!
   //https://en.wikipedia.org/wiki/Template:Weather_box
   'weather box': (tmpl, list) => {
     let obj = parse(tmpl)
-    //collect all month-based data
+    const monthList = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
     let byMonth = {}
     let properties = Object.keys(obj).filter((k) => hasMonth.test(k))
     properties = properties.map((k) => k.replace(hasMonth, ''))

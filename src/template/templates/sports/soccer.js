@@ -1,7 +1,15 @@
 const parse = require('../../_parsers/parse')
 const flags = require('../../../_data/flags')
+const playoffBracket = require('./_lib')
 
 let sports = {
+  //playoff brackets
+  '4teambracket': function (tmpl, list) {
+    let obj = playoffBracket(tmpl)
+    list.push(obj)
+    return ''
+  },
+
   player: (tmpl, list) => {
     let res = parse(tmpl, ['number', 'country', 'name', 'dl'])
     list.push(res)

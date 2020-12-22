@@ -14,7 +14,7 @@ let templates = Object.assign(
 
   require('./dates'),
   require('./geo'),
-  require('./geo/flags'),
+  require('./misc/flags'),
   require('./wikipedia/links'),
   require('./wikipedia/page'),
   require('./wikipedia/table-cell'),
@@ -25,9 +25,10 @@ let templates = Object.assign(
   require('./misc/science'),
   require('./misc/stock-exchanges'),
   require('./misc/weather'),
-  require('./sports/brackets'),
+  require('./sports/_lib'),
   require('./sports/soccer'),
-  require('./sports/sports')
+  require('./sports/_lib'),
+  require('./sports/soccer')
 )
 
 Object.keys(aliases).forEach((k) => {

@@ -1,3 +1,5 @@
+const languages = require('../../_data/languages')
+
 //aliases
 let aliases = {
   imdb: 'imdb name',
@@ -99,6 +101,15 @@ let multi = {
     '16teambracket-tennis5',
   ],
 }
+
+// - other languages -
+// Polish, {{IPAc-pl}}	{{IPAc-pl|'|sz|cz|e|ć|i|n}} → [ˈʂt͡ʂɛt͡ɕin]
+// Portuguese, {{IPAc-pt}}	{{IPAc-pt|p|o|<|r|t|u|'|g|a|l|lang=pt}} and {{IPAc-pt|b|r|a|'|s|i|l|lang=br}} → [puɾtuˈɣaɫ] and [bɾaˈsiw]
+Object.keys(languages).forEach((lang) => {
+  aliases['ipa-' + lang] = 'ipa'
+  aliases['ipac-' + lang] = 'ipac'
+})
+
 // add each alias in
 Object.keys(multi).forEach((k) => {
   multi[k].forEach((str) => {
