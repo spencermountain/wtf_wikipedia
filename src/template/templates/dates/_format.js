@@ -1,5 +1,19 @@
 //assorted parsing methods for date/time templates
-const months = require('./_months')
+const months = [
+  undefined, //1-based months.. :/
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+]
 
 const monthName = months.reduce((h, str, i) => {
   if (i === 0) {

@@ -1,10 +1,7 @@
-const misc = require('./misc')
-const parsers = require('./parsers')
+const parsers = require('./_parsers')
 const parse = require('../../_parsers/parse')
-const timeSince = require('./_timeSince')
+const lib = require('./_lib')
 const format = require('./_format')
-const date = parsers.date
-const natural_date = parsers.natural_date
 
 const months = [
   'January',
@@ -20,17 +17,16 @@ const months = [
   'November',
   'December',
 ]
-const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 //date- templates we support
-let dateTmpl = Object.assign({}, misc, {
+module.exports = {
   currentday: () => {
     let d = new Date()
     return String(d.getDate())
   },
   currentdayname: () => {
     let d = new Date()
-    return days[d.getDay()]
+    return lib.days[d.getDay()]
   },
   currentmonth: () => {
     let d = new Date()
@@ -58,7 +54,7 @@ let dateTmpl = Object.assign({}, misc, {
   'time ago': (tmpl) => {
     let order = ['date', 'fmt']
     let time = parse(tmpl, order).date
-    return timeSince(time)
+    return lib.timeSince(time)
   },
   //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
   'birth date and age': (tmpl, list) => {
@@ -66,7 +62,7 @@ let dateTmpl = Object.assign({}, misc, {
     let obj = parse(tmpl, order)
     //support 'one property' version
     if (obj.year && /[a-z]/i.test(obj.year)) {
-      return natural_date(tmpl, list)
+      return parsers.natural_date(tmpl, list)
     }
     list.push(obj)
     obj = format.ymd([obj.year, obj.month, obj.day])
@@ -77,7 +73,7 @@ let dateTmpl = Object.assign({}, misc, {
     let obj = parse(tmpl, order)
     //support 'one property' version
     if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
-      return natural_date(tmpl, list)
+      return parsers.natural_date(tmpl, list)
     }
     list.push(obj)
     let age = new Date().getFullYear() - parseInt(obj.birth_year, 10)
@@ -93,7 +89,7 @@ let dateTmpl = Object.assign({}, misc, {
     let obj = parse(tmpl, order)
     //support 'one property' version
     if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
-      return natural_date(tmpl, list)
+      return parsers.natural_date(tmpl, list)
     }
     list.push(obj)
     obj = format.ymd([obj.death_year, obj.death_month])
@@ -157,29 +153,31 @@ let dateTmpl = Object.assign({}, misc, {
     }
     return ''
   },
+
+  //we can't do timezones, so fake this one a little bit
+  //https://en.wikipedia.org/wiki/Template:Time
+  time: () => {
+    let d = new Date()
+    let obj = format.ymd([d.getFullYear(), d.getMonth(), d.getDate()])
+    return format.toText(obj)
+  },
+
+  // https://en.wikipedia.org/wiki/Template:MILLENNIUM
+  millennium: (tmpl) => {
+    let obj = parse(tmpl, ['year'])
+    let year = Number(obj.year)
+    year = parseInt(year / 1000, 10) + 1
+    if (obj.abbr && obj.abbr === 'y') {
+      if (year < 0) {
+        return `${lib.toOrdinal(Math.abs(year))} BC`
+      }
+      return `${lib.toOrdinal(year)}`
+    }
+    return `${lib.toOrdinal(year)} millennium`
+  },
   //date/age/time templates
-  start: date,
-  end: date,
-  birth: date,
-  death: date,
-  'start date': date,
-  'end date': date,
-  'birth date': date,
-  'death date': date,
-  'start date and age': date,
-  'end date and age': date,
-  dob: date,
-
-  //this is insane (hyphen ones are different)
-  'start-date': natural_date,
-  'end-date': natural_date,
-  'birth-date': natural_date,
-  'death-date': natural_date,
-  'birth-date and age': natural_date,
-  'birth-date and given age': natural_date,
-  'death-date and age': natural_date,
-  'death-date and given age': natural_date,
-
+  start: parsers.date,
+  'start-date': parsers.natural_date,
   birthdeathage: parsers.two_dates,
   age: parsers.age,
   'age nts': parsers.age,
@@ -191,5 +189,4 @@ let dateTmpl = Object.assign({}, misc, {
   // 'birth date and age2': date,
   // 'age in years, months, weeks and days': true,
   // 'age as of date': true,
-})
-module.exports = dateTmpl
+}

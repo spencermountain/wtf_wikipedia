@@ -100,6 +100,29 @@ let multi = {
     '16teambracket-tennis3',
     '16teambracket-tennis5',
   ],
+
+  start: [
+    'end',
+    'birth',
+    'death',
+    'start date',
+    'end date',
+    'birth date',
+    'death date',
+    'start date and age',
+    'end date and age',
+    'dob',
+  ],
+
+  'start-date': [
+    'end-date',
+    'birth-date',
+    'death-date',
+    'birth-date and age',
+    'birth-date and given age',
+    'death-date and age',
+    'death-date and given age',
+  ],
 }
 
 // - other languages -

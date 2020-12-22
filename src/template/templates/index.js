@@ -6,10 +6,6 @@ let templates = Object.assign(
   require('./02-inline-text'),
   require('./03-inline-number'),
   require('./04-inline-arrays'),
-
-  require('./formatting/format'),
-  require('./formatting/ipa'),
-  require('./formatting/lists'),
   require('./formatting/misc'),
 
   require('./dates'),

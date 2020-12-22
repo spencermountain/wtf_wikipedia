@@ -1,9 +1,7 @@
 const strip = require('../../_parsers/_strip')
 const parse = require('../../_parsers/parse')
-const delta = require('./_delta')
+const delta = require('./_lib').delta
 const fmt = require('./_format')
-const ymd = fmt.ymd
-const toText = fmt.toText
 
 //wrap it up as a template
 const template = function (date) {
@@ -16,14 +14,14 @@ const template = function (date) {
 const getBoth = function (tmpl) {
   tmpl = strip(tmpl)
   let arr = tmpl.split('|')
-  let from = ymd(arr.slice(1, 4))
+  let from = fmt.ymd(arr.slice(1, 4))
   let to = arr.slice(4, 7)
   //assume now, if 'to' is empty
   if (to.length === 0) {
     let d = new Date()
     to = [d.getFullYear(), d.getMonth(), d.getDate()]
   }
-  to = ymd(to)
+  to = fmt.ymd(to)
   return {
     from: from,
     to: to,
@@ -35,8 +33,8 @@ const parsers = {
   date: (tmpl, list) => {
     let order = ['year', 'month', 'date', 'hour', 'minute', 'second', 'timezone']
     let obj = parse(tmpl, order)
-    let data = ymd([obj.year, obj.month, obj.date || obj.day])
-    obj.text = toText(data) //make the replacement string
+    let data = fmt.ymd([obj.year, obj.month, obj.date || obj.day])
+    obj.text = fmt.toText(data) //make the replacement string
     if (obj.timezone) {
       if (obj.timezone === 'Z') {
         obj.timezone = 'UTC'
@@ -99,13 +97,13 @@ const parsers = {
     let obj = parse(tmpl, order)
     //'b' means show birth-date, otherwise show death-date
     if (obj.b && obj.b.toLowerCase() === 'b') {
-      let date = ymd([obj.birth_year, obj.birth_month, obj.birth_date])
+      let date = fmt.ymd([obj.birth_year, obj.birth_month, obj.birth_date])
       list.push(template(date))
-      return toText(date)
+      return fmt.toText(date)
     }
-    let date = ymd([obj.death_year, obj.death_month, obj.death_date])
+    let date = fmt.ymd([obj.death_year, obj.death_month, obj.death_date])
     list.push(template(date))
-    return toText(date)
+    return fmt.toText(date)
   },
 
   age: (tmpl) => {
@@ -122,6 +120,7 @@ const parsers = {
     }
     return (diff.years || 0) + ' years'
   },
+
   'diff-ym': (tmpl) => {
     let d = getBoth(tmpl)
     let diff = delta(d.from, d.to)
@@ -138,6 +137,7 @@ const parsers = {
     }
     return arr.join(', ')
   },
+
   'diff-ymd': (tmpl) => {
     let d = getBoth(tmpl)
     let diff = delta(d.from, d.to)
@@ -159,6 +159,7 @@ const parsers = {
     }
     return arr.join(', ')
   },
+
   'diff-yd': (tmpl) => {
     let d = getBoth(tmpl)
     let diff = delta(d.from, d.to)
@@ -177,6 +178,7 @@ const parsers = {
     }
     return arr.join(', ')
   },
+
   'diff-d': (tmpl) => {
     let d = getBoth(tmpl)
     let diff = delta(d.from, d.to)
