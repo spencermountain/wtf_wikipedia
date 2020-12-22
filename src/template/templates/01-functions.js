@@ -655,5 +655,12 @@ let templates = {
     }
     return str
   },
+
+  // Large number of aliases - https://en.wikipedia.org/wiki/Template:Tl
+  tl: (tmpl) => {
+    let order = ['first', 'second']
+    let obj = parse(tmpl, order)
+    return obj.second || obj.first
+  },
 }
 module.exports = templates

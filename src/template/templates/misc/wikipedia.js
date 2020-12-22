@@ -1,23 +1,6 @@
 const parse = require('../../_parsers/parse')
 const Image = require('../../../image/Image')
-
-const sisterProjects = {
-  wikt: 'wiktionary',
-  commons: 'commons',
-  c: 'commons',
-  commonscat: 'commonscat',
-  n: 'wikinews',
-  q: 'wikiquote',
-  s: 'wikisource',
-  a: 'wikiauthor',
-  b: 'wikibooks',
-  voy: 'wikivoyage',
-  v: 'wikiversity',
-  d: 'wikidata',
-  species: 'wikispecies',
-  m: 'meta',
-  mw: 'mediawiki',
-}
+const lib = require('./_lib')
 
 const parsers = {
   //https://en.wikipedia.org/wiki/Template:Redirect
@@ -45,9 +28,9 @@ const parsers = {
     let data = parse(tmpl)
     //rename 'wd' to 'wikidata'
     let links = {}
-    Object.keys(sisterProjects).forEach((k) => {
+    Object.keys(lib.sisterProjects).forEach((k) => {
       if (data.hasOwnProperty(k) === true) {
-        links[sisterProjects[k]] = data[k] //.text();
+        links[lib.sisterProjects[k]] = data[k] //.text();
       }
     })
     let obj = {
@@ -63,8 +46,8 @@ const parsers = {
     let data = parse(tmpl)
     Object.keys(data).forEach((k) => {
       //rename 'voy' to 'wikivoyage'
-      if (sisterProjects.hasOwnProperty(k)) {
-        data[sisterProjects[k]] = data[k]
+      if (lib.sisterProjects.hasOwnProperty(k)) {
+        data[lib.sisterProjects[k]] = data[k]
         delete data[k]
       }
     })
@@ -85,7 +68,7 @@ const parsers = {
       let img = {
         file: file,
       }
-      // TODO: add lang and domain information
+      // todo: add lang and domain information
       return new Image(img).json()
     })
     obj = {
@@ -95,12 +78,12 @@ const parsers = {
     list.push(obj)
     return ''
   },
+
+  //this one's a little different
+  won: (tmpl) => {
+    let data = parse(tmpl, ['text'])
+    return data.place || data.text || lib.titlecase(data.template)
+  },
 }
-//aliases
-parsers['cite'] = parsers.citation
-parsers['unreferenced section'] = parsers.unreferenced
-parsers['redir'] = parsers.redirect
-parsers['sisterlinks'] = parsers['sister project links']
-parsers['main article'] = parsers['main']
 
 module.exports = parsers

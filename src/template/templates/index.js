@@ -6,14 +6,13 @@ let templates = Object.assign(
   require('./02-inline-text'),
   require('./03-inline-number'),
   require('./04-inline-arrays'),
-  require('./formatting/misc'),
+  require('./misc/formatting'),
 
   require('./dates'),
   require('./geo'),
   require('./misc/flags'),
-  require('./wikipedia/links'),
-  require('./wikipedia/page'),
-  require('./wikipedia/table-cell'),
+  require('./misc/wikipedia'),
+  require('./misc/table-cell'),
 
   require('./misc/currency'),
   require('./misc/math'),
@@ -22,9 +21,9 @@ let templates = Object.assign(
   require('./misc/stock-exchanges'),
   require('./misc/weather'),
   require('./sports/_lib'),
-  require('./sports/soccer'),
+  require('./sports/sports'),
   require('./sports/_lib'),
-  require('./sports/soccer')
+  require('./sports/sports')
 )
 
 Object.keys(aliases).forEach((k) => {

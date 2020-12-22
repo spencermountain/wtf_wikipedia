@@ -1,9 +1,6 @@
 //random misc for inline wikipedia templates
 const parse = require('../../_parsers/parse')
-
-const titlecase = (str) => {
-  return str.charAt(0).toUpperCase() + str.substring(1)
-}
+const titlecase = require('./_lib').titlecase
 
 //https://en.wikipedia.org/wiki/Template:Yes
 let templates = {}
@@ -107,11 +104,5 @@ moreCells.forEach((a) => {
     return data.text || a[1]
   }
 })
-
-//this one's a little different
-templates.won = (tmpl) => {
-  let data = parse(tmpl, ['text'])
-  return data.place || data.text || titlecase(data.template)
-}
 
 module.exports = templates

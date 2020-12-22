@@ -13,6 +13,11 @@ let aliases = {
   cricon: 'flagicon',
   sfrac: 'frac',
   sqrt: 'radic',
+  cite: 'citation',
+  'unreferenced section': 'unreferenced',
+  redir: 'redirect',
+  sisterlinks: 'sister project links',
+  'main article': 'main',
 }
 
 //multiple aliases
@@ -122,6 +127,34 @@ let multi = {
     'birth-date and given age',
     'death-date and age',
     'death-date and given age',
+  ],
+
+  tl: [
+    'lts',
+    't',
+    'tfd links',
+    'tiw',
+    'tltt',
+    'tetl',
+    'tsetl',
+    'ti',
+    'tic',
+    'tiw',
+    'tlt',
+    'ttl',
+    'twlh',
+    'tl2',
+    'tlu',
+    'demo',
+    'hatnote',
+    'xpd',
+    'para',
+    'elc',
+    'xtag',
+    'mli',
+    'mlix',
+    '#invoke',
+    'url', //https://en.wikipedia.org/wiki/Template:URL
   ],
 }
 
