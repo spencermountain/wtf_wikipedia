@@ -1,33 +1,6 @@
 const parse = require('../../_parsers/parse')
 
-let templates = {
-  /* mostly wiktionary*/
-  etyl: 1,
-  mention: 1,
-  link: 1,
-  'la-verb-form': 0,
-  'la-ipa': 0,
-  //https://en.wikipedia.org/wiki/Template:Sortname
-  sortname: (tmpl) => {
-    let order = ['first', 'last', 'target', 'sort']
-    let obj = parse(tmpl, order)
-    let name = `${obj.first || ''} ${obj.last || ''}`
-    name = name.trim()
-    if (obj.nolink) {
-      return obj.target || name
-    }
-    if (obj.dab) {
-      name += ` (${obj.dab})`
-      if (obj.target) {
-        obj.target += ` (${obj.dab})`
-      }
-    }
-    if (obj.target) {
-      return `[[${obj.target}|${name}]]`
-    }
-    return `[[${name}]]`
-  },
-}
+let templates = {}
 
 //these are insane
 // https://en.wikipedia.org/wiki/Template:Tl

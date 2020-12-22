@@ -1,5 +1,5 @@
-const parse = require('../_parsers/parse')
-const flags = require('../../_data/flags')
+const parse = require('../../_parsers/parse')
+const flags = require('../../../_data/flags')
 
 let sports = {
   player: (tmpl, list) => {
@@ -47,43 +47,7 @@ let sports = {
       .join(', ')
     return summary
   },
-  //yellow card
-  yel: (tmpl, list) => {
-    let obj = parse(tmpl, ['min'])
-    list.push(obj)
-    if (obj.min) {
-      return `yellow: ${obj.min || ''}'` //no yellow-card emoji
-    }
-    return ''
-  },
-  subon: (tmpl, list) => {
-    let obj = parse(tmpl, ['min'])
-    list.push(obj)
-    if (obj.min) {
-      return `sub on: ${obj.min || ''}'` //no yellow-card emoji
-    }
-    return ''
-  },
-  suboff: (tmpl, list) => {
-    let obj = parse(tmpl, ['min'])
-    list.push(obj)
-    if (obj.min) {
-      return `sub off: ${obj.min || ''}'` //no yellow-card emoji
-    }
-    return ''
-  },
-  pengoal: (tmpl, list) => {
-    list.push({
-      template: 'pengoal',
-    })
-    return '✅'
-  },
-  penmiss: (tmpl, list) => {
-    list.push({
-      template: 'penmiss',
-    })
-    return '❌'
-  },
+
   //'red' card - {{sent off|cards|min1|min2}}
   'sent off': (tmpl, list) => {
     let obj = parse(tmpl, ['cards'])

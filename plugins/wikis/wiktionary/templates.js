@@ -1,8 +1,12 @@
-const parse = require('../_parsers/parse')
+const parse = require('../../../src/template/_parsers/parse')
 // const strip = require('./_parsers/_strip');
 
 //wiktionary... who knows. we should atleast try.
 const templates = {
+  etyl: 1,
+  mention: 1,
+  link: 1,
+  'la-ipa': 0,
   //{{inflection of|avoir||3|p|pres|ind|lang=fr}}
   //https://en.wiktionary.org/wiki/Template:inflection_of
   inflection: (tmpl, list) => {

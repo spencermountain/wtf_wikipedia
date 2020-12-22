@@ -1,25 +1,32 @@
-module.exports = Object.assign(
+const aliases = require('./05-aliases')
+
+let templates = Object.assign(
   {},
+  require('./01-functions'),
+  require('./02-inline-text'),
+  require('./03-inline-number'),
+  require('./04-inline-arrays'),
+
   require('./dates'),
   require('./formatting'),
   require('./geo'),
+  require('./geo/flags'),
   require('./wikipedia'),
+  require('./formatting/ipa'),
 
-  require('./brackets'),
-  require('./currency'),
-  require('./elections'),
-  require('./flags'),
-  require('./ipa'),
-  require('./languages'),
-  require('./math'),
-  require('./misc'),
-  require('./punctuation'),
-  require('./science'),
-  require('./soccer'),
-  require('./sports'),
-  require('./stock-exchanges'),
-  require('./weather'),
-  require('./websites'),
-  require('./wiktionary'),
-  require('./wikivoyage')
+  require('./misc/currency'),
+  require('./misc/languages'),
+  require('./misc/math'),
+  require('./misc/misc'),
+  require('./misc/science'),
+  require('./misc/stock-exchanges'),
+  require('./misc/weather'),
+  require('./sports/brackets'),
+  require('./sports/soccer'),
+  require('./sports/sports')
 )
+
+Object.keys(aliases).forEach((k) => {
+  templates[k] = templates[aliases[k]]
+})
+module.exports = templates

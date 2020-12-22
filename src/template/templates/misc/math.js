@@ -1,5 +1,4 @@
-const parse = require('../_parsers/parse')
-// const parseSentence = require('../../04-sentence').fromText;
+const parse = require('../../_parsers/parse')
 
 //simply num/denom * 100
 const percentage = function (obj) {
@@ -17,11 +16,34 @@ const percentage = function (obj) {
 }
 
 let templates = {
-  // https://en.wikipedia.org/wiki/Template:Math
-  math: (tmpl, list) => {
-    let obj = parse(tmpl, ['formula'])
-    list.push(obj)
-    return '\n\n' + (obj.formula || '') + '\n\n'
+  //
+  inrconvert: (tmpl, list) => {
+    let o = parse(tmpl, ['rupee_value', 'currency_formatting'])
+    list.push(o)
+    const mults = {
+      k: 1000,
+      m: 1000000,
+      b: 1000000000,
+      t: 1000000000000,
+      l: 100000,
+      c: 10000000,
+      lc: 1000000000000,
+    }
+    if (o.currency_formatting) {
+      let multiplier = mults[o.currency_formatting] || 1
+      o.rupee_value = o.rupee_value * multiplier
+    }
+    return `inr ${o.rupee_value || ''}`
+  },
+
+  //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
+  percentage: (tmpl) => {
+    let obj = parse(tmpl, ['numerator', 'denominator', 'decimals'])
+    let num = percentage(obj)
+    if (num === null) {
+      return ''
+    }
+    return num + '%'
   },
 
   //fraction - https://en.wikipedia.org/wiki/Template:Sfrac
@@ -48,21 +70,7 @@ let templates = {
     }
     return `${data.numerator}⁄${data.denominator}`
   },
-  //https://en.wikipedia.org/wiki/Template:Radic
-  radic: (tmpl) => {
-    let order = ['after', 'before']
-    let obj = parse(tmpl, order)
-    return `${obj.before || ''}√${obj.after || ''}`
-  },
-  //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
-  percentage: (tmpl) => {
-    let obj = parse(tmpl, ['numerator', 'denominator', 'decimals'])
-    let num = percentage(obj)
-    if (num === null) {
-      return ''
-    }
-    return num + '%'
-  },
+
   // {{Percent-done|done=N|total=N|digits=N}}
   'percent-done': (tmpl) => {
     let obj = parse(tmpl, ['done', 'total', 'digits'])
@@ -76,6 +84,7 @@ let templates = {
     }
     return `${obj.done} (${num}%) done`
   },
+
   'winning percentage': (tmpl, list) => {
     let obj = parse(tmpl, ['wins', 'losses', 'ties'])
     list.push(obj)
@@ -99,6 +108,7 @@ let templates = {
     }
     return `.${num * 10}`
   },
+
   winlosspct: (tmpl, list) => {
     let obj = parse(tmpl, ['wins', 'losses'])
     list.push(obj)
@@ -116,12 +126,5 @@ let templates = {
     return `${wins || 0} || ${losses || 0} || ${num || '-'}`
   },
 }
-//aliases
-templates['sfrac'] = templates.frac
-templates['sqrt'] = templates.radic
-templates['pct'] = templates.percentage
-templates['percent'] = templates.percentage
-templates['winpct'] = templates['winning percentage']
-templates['winperc'] = templates['winning percentage']
 
 module.exports = templates

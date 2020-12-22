@@ -1,4 +1,4 @@
-const parse = require('../_parsers/parse')
+const parse = require('../../_parsers/parse')
 
 const codes = {
   '£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
@@ -83,8 +83,7 @@ const parseCurrency = (tmpl, list) => {
   } else if (code === 'uk') {
     o.code = code = 'gbp'
   }
-  let out = codes[code] || ''
-  let str = `${out}${o.amount || ''}`
+  let str = `${codes[code] || ''}${o.amount || ''}`
   //support unknown currencies after the number - like '5 BTC'
   if (o.code && !codes[o.code.toLowerCase()]) {
     str += ' ' + o.code
@@ -92,40 +91,12 @@ const parseCurrency = (tmpl, list) => {
   return str
 }
 
-const inrConvert = (tmpl, list) => {
-  let o = parse(tmpl, ['rupee_value', 'currency_formatting'])
-  list.push(o)
-  let formatting = o.currency_formatting
-  const mults = {
-    k: 1000,
-    m: 1000000,
-    b: 1000000000,
-    t: 1000000000000,
-    l: 100000,
-    c: 10000000,
-    lc: 1000000000000,
-  }
-  if (formatting) {
-    let multiplier = mults[formatting] || 1
-    o.rupee_value = o.rupee_value * multiplier
-  }
-  let str = `inr ${o.rupee_value || ''}`
-  return str
-}
-
-const currencies = {
-  //this one is generic https://en.wikipedia.org/wiki/Template:Currency
+let templates = {
   currency: parseCurrency,
-  monnaie: parseCurrency,
-  unité: parseCurrency,
-  nombre: parseCurrency,
-  nb: parseCurrency,
-  iso4217: parseCurrency,
-  inrconvert: inrConvert,
 }
-//the others fit the same pattern..
+//and the others fit the same pattern
 Object.keys(codes).forEach((k) => {
-  currencies[k] = parseCurrency
+  templates[k] = parseCurrency
 })
 
-module.exports = currencies
+module.exports = templates

@@ -54,8 +54,7 @@ let dateTmpl = Object.assign({}, misc, {
     d.setMonth(d.getMonth() + 1)
     return months[d.getMonth()] + ' ' + d.getFullYear()
   },
-  //Explictly-set dates - https://en.wikipedia.org/wiki/Template:Date
-  date: 0,
+
   'time ago': (tmpl) => {
     let order = ['date', 'fmt']
     let time = parse(tmpl, order).date
@@ -169,6 +168,8 @@ let dateTmpl = Object.assign({}, misc, {
   'death date': date,
   'start date and age': date,
   'end date and age': date,
+  dob: date,
+
   //this is insane (hyphen ones are different)
   'start-date': natural_date,
   'end-date': natural_date,
@@ -180,9 +181,6 @@ let dateTmpl = Object.assign({}, misc, {
   'death-date and given age': natural_date,
 
   birthdeathage: parsers.two_dates,
-  dob: date,
-  // 'birth date and age2': date,
-
   age: parsers.age,
   'age nts': parsers.age,
   'age in years': parsers['diff-y'],
@@ -190,17 +188,8 @@ let dateTmpl = Object.assign({}, misc, {
   'age in years, months and days': parsers['diff-ymd'],
   'age in years and days': parsers['diff-yd'],
   'age in days': parsers['diff-d'],
+  // 'birth date and age2': date,
   // 'age in years, months, weeks and days': true,
   // 'age as of date': true,
 })
-//aliases
-dateTmpl.localday = dateTmpl.currentday
-dateTmpl.localdayname = dateTmpl.currentdayname
-dateTmpl.localmonth = dateTmpl.currentmonth
-dateTmpl.localyear = dateTmpl.currentyear
-dateTmpl.currentmonthname = dateTmpl.currentmonth
-dateTmpl.currentmonthabbrev = dateTmpl.currentmonth
-dateTmpl['death date and age'] = dateTmpl['birth date and age']
-dateTmpl.bda = dateTmpl['birth date and age']
-dateTmpl['birth date based on age at death'] = dateTmpl['birth based on age as of date']
 module.exports = dateTmpl

@@ -1,21 +1,6 @@
-const parse = require('../_parsers/parse')
+const parse = require('../../_parsers/parse')
 
 let templates = {
-  //https://en.wikipedia.org/wiki/Template:Taxon_info
-  'taxon info': ['taxon', 'item'],
-
-  //minor planet - https://en.wikipedia.org/wiki/Template:MPC
-  mpc: (tmpl, list) => {
-    let obj = parse(tmpl, ['number', 'text'])
-    list.push(obj)
-    return `[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ${obj.text || obj.number}]`
-  },
-  //https://en.wikipedia.org/wiki/Template:Chem2
-  chem2: (tmpl, list) => {
-    let obj = parse(tmpl, ['equation'])
-    list.push(obj)
-    return obj.equation
-  },
   //https://en.wikipedia.org/wiki/Template:Sky
   sky: (tmpl, list) => {
     let obj = parse(tmpl, [
@@ -108,10 +93,6 @@ let templates = {
     obj.data = dataArray
     list.push(obj)
     return ''
-  },
-  'medical cases chart/row': (tmpl) => {
-    // Deprecated template; we keep it.
-    return tmpl
   },
 }
 module.exports = templates

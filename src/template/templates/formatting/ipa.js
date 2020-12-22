@@ -1,5 +1,5 @@
-const parse = require('../_parsers/parse')
-const languages = require('../../_data/languages')
+const parse = require('../../_parsers/parse')
+const languages = require('../../../_data/languages')
 
 const getLang = function (name) {
   //grab the language from the template name - 'ipa-de'
@@ -14,7 +14,7 @@ const getLang = function (name) {
 }
 
 // pronounciation info
-const templates = {
+let templates = {
   // https://en.wikipedia.org/wiki/Template:IPA
   ipa: (tmpl, list) => {
     let obj = parse(tmpl, ['transcription', 'lang', 'audio'])

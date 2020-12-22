@@ -1,4 +1,4 @@
-const parse = require('../_parsers/parse')
+const parse = require('../../_parsers/parse')
 const hasMonth = /^jan /i
 const isYear = /^year /i
 
@@ -36,7 +36,6 @@ let templates = {
     })
     //add these to original
     obj.byMonth = byMonth
-
     //collect year-based data
     let byYear = {}
     Object.keys(obj).forEach((k) => {
@@ -47,7 +46,6 @@ let templates = {
       }
     })
     obj.byYear = byYear
-
     list.push(obj)
     return ''
   },
@@ -67,6 +65,7 @@ let templates = {
     list.push(obj)
     return ''
   },
+
   'weather box/concise f': (tmpl, list) => {
     let obj = parse(tmpl)
     obj.list = obj.list.map((s) => toNumber(s))

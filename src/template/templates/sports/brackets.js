@@ -1,4 +1,4 @@
-const parse = require('../_parsers/parse')
+const parse = require('../../_parsers/parse')
 
 const zeroPad = function (num) {
   num = String(num)
@@ -51,7 +51,7 @@ const playoffBracket = function (tmpl) {
   }
 }
 
-let all = {
+let templates = {
   //playoff brackets
   '4teambracket': function (tmpl, list) {
     let obj = playoffBracket(tmpl)
@@ -62,41 +62,5 @@ let all = {
 
 //a bunch of aliases for these ones:
 // https://en.wikipedia.org/wiki/Category:Tournament_bracket_templates
-const brackets = [
-  '2teambracket',
-  '4team2elimbracket',
-  '8teambracket',
-  '16teambracket',
-  '32teambracket',
-  '4roundbracket-byes',
-  'cwsbracket',
-  'nhlbracket',
-  'nhlbracket-reseed',
-  '4teambracket-nhl',
-  '4teambracket-ncaa',
-  '4teambracket-mma',
-  '4teambracket-mlb',
-  '16teambracket-two-reseeds',
 
-  '8teambracket-nhl',
-  '8teambracket-mlb',
-  '8teambracket-ncaa',
-  '8teambracket-afc',
-  '8teambracket-afl',
-  '8teambracket-tennis3',
-  '8teambracket-tennis5',
-
-  '16teambracket-nhl',
-  '16teambracket-nhl divisional',
-  '16teambracket-nhl-reseed',
-  '16teambracket-nba',
-  '16teambracket-swtc',
-  '16teambracket-afc',
-  '16teambracket-tennis3',
-  '16teambracket-tennis5',
-]
-brackets.forEach((key) => {
-  all[key] = all['4teambracket']
-})
-
-module.exports = all
+module.exports = templates

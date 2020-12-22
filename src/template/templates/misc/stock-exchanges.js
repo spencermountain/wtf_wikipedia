@@ -1,4 +1,4 @@
-const parse = require('../_parsers/parse')
+const parse = require('../../_parsers/parse')
 
 const codes = {
   adx: 'adx', //https://en.wikipedia.org/wiki/Template:Abu_Dhabi_Securities_Exchange

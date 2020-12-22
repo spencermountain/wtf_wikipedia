@@ -65,15 +65,14 @@ test('templates-in-templates', (t) => {
 
 test('support-nowrap-in-infobox', (t) => {
   const str = `
-  {{Infobox scientist
-  | name        = Albert Einstein
-  | image       = Einstein 1921 by F Schmutzer - restoration.jpg
-  | spouse      = {{nowrap| {{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}} }}
-  | residence   = Germany, Italy, Switzerland, Austria (present-day Czech Republic), Belgium, United States
-  | signature = Albert Einstein signature 1934.svg
-  | chiffre = {{nobr|912 millions}}
-  }}
-  `
+{{Infobox scientist
+| name        = Albert Einstein
+| image       = Einstein 1921 by F Schmutzer - restoration.jpg
+| spouse      = {{nowrap| {{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}} }}
+| residence   = Germany, Italy, Switzerland, Austria (present-day Czech Republic), Belgium, United States
+| signature = Albert Einstein signature 1934.svg
+| chiffre = {{nobr|912 millions}}
+}}`
   const infobox = wtf(str).infobox()
   const data = infobox.json()
   t.equal(data.name.text, 'Albert Einstein', 'got infobox datad')

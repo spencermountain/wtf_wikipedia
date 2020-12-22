@@ -1,0 +1,17 @@
+{
+  "name": "wtf-plugin-wikinews",
+  "description": "plugin for wtf_wikipedia",
+  "version": "0.0.1",
+  "main": "./plugin.js",
+  "author": "Spencer Kelly (spencermountain)",
+  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/wikis/wikinews",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/spencermountain/wtf_wikipedia.git"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "wtf_wikipedia": "^8.0.0"
+  },
+  "license": "MIT"
+}

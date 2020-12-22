@@ -1,5 +1,5 @@
-const parse = require('../_parsers/parse')
-const flags = require('../../_data/flags')
+const parse = require('../../_parsers/parse')
+const flags = require('../../../_data/flags')
 
 let templates = {
   //https://en.wikipedia.org/wiki/Template:Flag
@@ -89,9 +89,4 @@ flags.forEach((a) => {
     return a[0]
   }
 })
-//cricket
-templates['cr'] = templates.flagcountry
-templates['cr-rt'] = templates.flagcountry
-templates['cricon'] = templates.flagicon
-
 module.exports = templates

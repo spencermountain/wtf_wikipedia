@@ -1,4 +1,4 @@
-const parse = require('../_parsers/parse')
+const parse = require('../../_parsers/parse')
 
 const generic = function (tmpl, list, alias) {
   let obj = parse(tmpl)
@@ -22,36 +22,6 @@ const misc = {
   'cite web': generic,
   'commons cat': generic,
 
-  // https://en.wikipedia.org/wiki/Template:Portuguese_name
-  'portuguese name': ['first', 'second', 'suffix'],
-  uss: ['ship', 'id'],
-  isbn: (tmpl, list) => {
-    let order = ['id', 'id2', 'id3']
-    let obj = parse(tmpl, order)
-    list.push(obj)
-    return 'ISBN: ' + (obj.id || '')
-  },
-  //https://en.wikipedia.org/wiki/Template:Marriage
-  //this one creates a template, and an inline response
-  marriage: (tmpl, list) => {
-    let data = parse(tmpl, ['spouse', 'from', 'to', 'end'])
-    list.push(data)
-    let str = `${data.spouse || ''}`
-    if (data.from) {
-      if (data.to) {
-        str += ` (m. ${data.from}-${data.to})`
-      } else {
-        str += ` (m. ${data.from})`
-      }
-    }
-    return str
-  },
-  //https://en.wikipedia.org/wiki/Template:Based_on
-  'based on': (tmpl, list) => {
-    let obj = parse(tmpl, ['title', 'author'])
-    list.push(obj)
-    return `${obj.title} by ${obj.author || ''}`
-  },
   //https://en.wikipedia.org/wiki/Template:Video_game_release
   'video game release': (tmpl, list) => {
     let order = ['region', 'date', 'region2', 'date2', 'region3', 'date3', 'region4', 'date4']
@@ -72,15 +42,7 @@ const misc = {
     let str = template.releases.map((o) => `${o.region}: ${o.date || ''}`).join('\n\n')
     return '\n' + str + '\n'
   },
-  //barrels of oil https://en.wikipedia.org/wiki/Template:Bbl_to_t
-  'bbl to t': (tmpl, list) => {
-    let obj = parse(tmpl, ['barrels'])
-    list.push(obj)
-    if (obj.barrels === '0') {
-      return obj.barrels + ' barrel'
-    }
-    return obj.barrels + ' barrels'
-  },
+
   //https://en.wikipedia.org/wiki/Template:Historical_populations
   'historical populations': (tmpl, list) => {
     let data = parse(tmpl)
@@ -98,6 +60,7 @@ const misc = {
     list.push(data)
     return ''
   },
+
   graph: (tmpl, list) => {
     let data = parse(tmpl)
     if (data.x) {

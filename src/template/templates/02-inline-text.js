@@ -1,13 +1,12 @@
-// okay, these just hurts my feelings
+// 'Magic words' templates
 // https://www.mediawiki.org/wiki/Help:Magic_words#Other
-let punctuation = [
+const inlineText = [
   // https://en.wikipedia.org/wiki/Template:%C2%B7
   ['·', '·'],
   ['·', '·'],
   ['dot', '·'],
   ['middot', '·'],
   ['•', ' • '],
-  //yup, oxford comma template
   [',', ','],
   ['1/2', '1⁄2'],
   ['1/3', '1⁄3'],
@@ -18,11 +17,9 @@ let punctuation = [
   ['ndash', '–'],
   ['en dash', '–'],
   ['spaced ndash', ' – '],
-
   ['—', '—'],
   ['mdash', '—'],
   ['em dash', '—'],
-
   ['number sign', '#'],
   ['ibeam', 'I'],
   ['&', '&'],
@@ -45,7 +42,7 @@ let punctuation = [
   ['h.', 'ḥ'],
 ]
 const templates = {}
-punctuation.forEach((a) => {
+inlineText.forEach((a) => {
   templates[a[0]] = a[1]
 })
 module.exports = templates
