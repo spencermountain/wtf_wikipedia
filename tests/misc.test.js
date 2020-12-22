@@ -61,7 +61,6 @@ test('misc templates', (t) => {
     [`hello {{small|2 February}}`, 'hello 2 February'],
     [`{{tiw|Hatnote}}`, 'Hatnote'],
     [`{{date|June 8 2018|mdy}}`, 'June 8 2018'],
-    [`{{l|cs|háček}}`, 'háček'],
     [`{{IPA|/ˈkærəktɚz/}}`, ''],
     [`{{IPAc-ar|2|a|l|l|u|gh|a|t_|a|l|3|a|r|a|b|i|y|y|a}}`, ''],
     [`{{dts|July 1, 1867}}`, 'July 1, 1867'],

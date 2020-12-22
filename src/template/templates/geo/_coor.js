@@ -1,4 +1,4 @@
-const convertDMS = require('./dms-format')
+const convertDMS = require('./_dms-format')
 const parse = require('../../_parsers/parse')
 
 const round = function (num) {

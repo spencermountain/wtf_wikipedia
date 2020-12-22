@@ -21,4 +21,4 @@ wtf.extend(require('./plugins/api/src'))
 //     console.log(doc)
 //   })
 
-console.log(wtf(`{{nowrap| asdfas }}`).text())
+console.log(wtf(`{{l|cs|háček}}`).text())

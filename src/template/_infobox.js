@@ -9,8 +9,6 @@ const yearIn = /$Year in [A-Z]/i
 //some known ones from
 //https://en.wikipedia.org/wiki/Wikipedia:List_of_infoboxes
 //and https://en.wikipedia.org/wiki/Category:Infobox_templates
-
-//
 const isInfobox = function (name) {
   //known
   if (infoboxes.hasOwnProperty(name) === true) {

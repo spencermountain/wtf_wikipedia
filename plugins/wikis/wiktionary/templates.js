@@ -214,4 +214,12 @@ conjugations.forEach((name) => {
     return obj.lemma || ''
   }
 })
+
+// aliases
+templates.m = templates.mention
+templates['m-self'] = templates.mention
+templates.l = templates.link
+templates.ll = templates.link
+templates['l-self'] = templates.link
+
 module.exports = templates

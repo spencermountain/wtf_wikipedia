@@ -40,10 +40,5 @@ links.forEach((k) => {
     return obj.second || obj.first
   }
 })
-//aliases
-templates.m = templates.mention
-templates['m-self'] = templates.mention
-templates.l = templates.link
-templates.ll = templates.link
-templates['l-self'] = templates.link
+
 module.exports = templates

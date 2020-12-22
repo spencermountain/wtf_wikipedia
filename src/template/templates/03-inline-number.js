@@ -1,3 +1,5 @@
+const languages = require('../../_data/languages')
+
 //grab the first, second or third pipe..
 let templates = {
   p1: 0,
@@ -6,6 +8,7 @@ let templates = {
   resize: 1, //https://en.wikipedia.org/wiki/Template:Resize
   lang: 1,
   'rtl-lang': 1,
+  l: 2,
   h: 1, //https://en.wikipedia.org/wiki/Template:Hover_title
   sort: 1, //https://en.wikipedia.org/wiki/Template:Sort
 }
@@ -67,4 +70,10 @@ let zeros = [
 zeros.forEach((k) => {
   templates[k] = 0
 })
+
+//https://en.wikipedia.org/wiki/Category:Lang-x_templates
+Object.keys(languages).forEach((k) => {
+  templates['lang-' + k] = 0
+})
+
 module.exports = templates

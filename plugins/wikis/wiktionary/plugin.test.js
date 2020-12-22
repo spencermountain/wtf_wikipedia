@@ -18,18 +18,16 @@ test('inline-with-data', function (t) {
   t.end()
 })
 
-// test('inline-output', (t) => {
-//   const arr = [
-//   ]
-//   arr.forEach((a) => {
-//     t.equal(wtf(a[0]).text(), a[1], a[0])
-//   })
-//   t.end()
-// })
+test('inline-output', (t) => {
+  const arr = [[`{{l|cs|háček}}`, 'háček']]
+  arr.forEach((a) => {
+    t.equal(wtf(a[0]).text(), a[1], a[0])
+  })
+  t.end()
+})
 
 // test('inline-no-data', function (t) {
-//   const arr = [
-//   ]
+//   const arr = []
 //   arr.forEach((a) => {
 //     const doc = wtf(a[1])
 //     const len = doc.templates().length

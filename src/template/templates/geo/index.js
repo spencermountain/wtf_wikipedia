@@ -1,4 +1,4 @@
-const parseCoor = require('./coor')
+const parseCoor = require('./_coor')
 
 const templates = {
   coord: (tmpl, list) => {

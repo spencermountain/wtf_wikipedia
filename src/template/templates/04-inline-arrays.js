@@ -18,7 +18,7 @@ let templates = {
 }
 
 // these all have ['id', 'name']
-let arr = [
+let idName = [
   'goodreads author',
   'twitter',
   'facebook',
@@ -36,12 +36,12 @@ let arr = [
   'ted speaker',
   'playmate',
 ]
-arr.forEach((name) => {
+idName.forEach((name) => {
   templates[name] = ['id', 'name']
 })
 
 // these all have ['id', 'title', 'description', 'section']
-arr = [
+let idTitle = [
   'imdb title', //https://en.wikipedia.org/wiki/Template:IMDb_title
   'imdb name',
   'imdb episode',
@@ -64,7 +64,7 @@ arr = [
   'goodreads book',
   'dmoz', //https://en.wikipedia.org/wiki/Template:DMOZ
 ]
-arr.forEach((name) => {
+idTitle.forEach((name) => {
   templates[name] = ['id', 'title', 'description', 'section']
 })
 
