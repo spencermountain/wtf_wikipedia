@@ -21,4 +21,8 @@ wtf.extend(require('./plugins/api/src'))
 //     console.log(doc)
 //   })
 
-console.log(wtf(`{{l|cs|háček}}`).text())
+// console.log(wtf(`{{l|cs|háček}}`).text())
+
+wtf.fetch('Richard_Feynman').then((doc) => {
+  console.log(doc.sections(0)[0].text())
+})

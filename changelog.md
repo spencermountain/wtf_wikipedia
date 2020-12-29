@@ -9,7 +9,8 @@
     - interwiki() -> interwikis()
 - **[breaking]** - cleanup null|undefined responses from methods
 - **[breaking]** - remove .dates() method (prev deprecated)
-- **[breaking]** - normalize table rows
+- **[change]** - normalize table rows
+- **[change]** - move wiktionary templates to `wtf-plugin-wiktionary`
 - **[new]** - Table.get() method
 - **[new]** - set new infoboxes using .extend()
 - deprecate wtf-plugin-category (moved to wtf-plugin-api)
