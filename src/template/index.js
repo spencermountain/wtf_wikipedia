@@ -9,6 +9,7 @@ const references = {
   citation: true,
   refn: true,
   harvnb: true,
+  source: true, //wikinews
 }
 
 const isReference = function (obj) {

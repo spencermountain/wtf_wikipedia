@@ -50,6 +50,7 @@ const parseTemplate = function (tmpl, list, doc) {
     }
     //handle function syntax
     if (typeof templates[name] === 'function') {
+      //(tmpl, list, alias, doc)
       return templates[name](tmpl.body, list, null, doc)
     }
   }

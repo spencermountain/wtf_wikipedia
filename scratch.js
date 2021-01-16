@@ -1,5 +1,6 @@
 const wtf = require('./src/index')
-wtf.extend(require('./plugins/api/src'))
+// wtf.extend(require('./plugins/wikis/wikinews'))
+wtf.extend(require('./plugins/disambig/src'))
 
 // const plugin = (models, templates) => {
 //   // add templates
@@ -11,18 +12,15 @@ wtf.extend(require('./plugins/api/src'))
 
 // wtf.extend(plugin)
 
-// wtf
-//   .fetch(
-//     // 'https://en.wikinews.org/wiki/Gregory_Kurtzer_discusses_plans_for_Rocky_Linux_with_Wikinews_as_Red_Hat_announces_moving_focus_away_from_CentOS'
-//     'https://fr.wiktionary.org/wiki/pasteur'
-//   )
-//   .then((doc) => {
-//     // console.log(doc.templates('ValueDescription'))
-//     console.log(doc)
-//   })
-
-// console.log(wtf(`{{l|cs|háček}}`).text())
-
-wtf.fetch('Richard_Feynman').then((doc) => {
-  console.log(doc.sections(0)[0].text())
+wtf.fetch('Template:2020–21_NHL_North_Division_standings').then((doc) => {
+  // console.log(doc.templates())
 })
+
+// let doc = wtf(`before {{w|Australia|Australians}} after`)
+// console.log(doc.templates())
+// console.log(doc.text())
+// console.log(doc.reference().json())
+
+// wtf.fetch('Cosmology').then((doc) => {
+//   console.log(doc.sections(0)[0].html({ images: false }))
+// })

@@ -68,5 +68,32 @@ let sports = {
     let mins = result.minutes.map((m) => m + "'").join(', ')
     return 'sent off: ' + mins
   },
+
+  //a transcluded sports module - https://en.m.wikipedia.org/w/index.php?title=Special:WhatLinksHere/Module:Sports_table
+  // https://en.wikipedia.org/wiki/Template:2020–21_NHL_North_Division_standings
+  'sports table': (tmpl, list) => {
+    let obj = parse(tmpl)
+    let byTeam = {}
+    let teams = Object.keys(obj)
+      .filter((k) => /^team[0-9]/.test(k))
+      .map((k) => obj[k].toLowerCase())
+    teams.forEach((team) => {
+      byTeam[team] = {
+        name: obj[`name_${team}`],
+        win: Number(obj[`win_${team}`]) || 0,
+        loss: Number(obj[`loss_${team}`]) || 0,
+        tie: Number(obj[`tie_${team}`]) || 0,
+        otloss: Number(obj[`otloss_${team}`]) || 0,
+        goals_for: Number(obj[`gf_${team}`]) || 0,
+        goals_against: Number(obj[`ga_${team}`]) || 0,
+      }
+    })
+    let res = {
+      date: obj.update,
+      header: obj.table_header,
+      teams: byTeam,
+    }
+    list.push(res)
+  },
 }
 module.exports = sports
