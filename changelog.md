@@ -11,6 +11,7 @@
 - **[breaking]** - remove .dates() method (prev deprecated)
 - **[change]** - normalize table rows
 - **[change]** - move wiktionary templates to `wtf-plugin-wiktionary`
+- **[change]** - Link.text() now returns page
 - **[new]** - Table.get() method
 - **[new]** - set new infoboxes using .extend()
 - deprecate wtf-plugin-category (moved to wtf-plugin-api)

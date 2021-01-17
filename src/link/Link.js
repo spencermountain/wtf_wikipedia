@@ -16,11 +16,11 @@ const methods = {
     if (str !== undefined) {
       this.data.text = str
     }
-    return this.data.text
+    return this.data.text || this.data.page || ''
   },
   json: function () {
     let obj = {
-      text: this.text(),
+      text: this.data.text,
       type: this.type(),
     }
     if (obj.type === 'internal') {

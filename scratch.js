@@ -44,6 +44,5 @@ let str = `'''[[Lothian]]''' is a traditional region in Scotland.
 `
 let doc = wtf(str)
 doc.title('Lothian (disambiguation)')
-console.log(doc.title())
-console.log(doc.isDisambig())
 console.log(doc.disambiguation())
+// console.log(doc.list().lines())
