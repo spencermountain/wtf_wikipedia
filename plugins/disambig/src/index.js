@@ -2,6 +2,13 @@
 
 const addMethod = function (models) {
   models.Doc.prototype.disambiguation = function () {
+    // remove 'see also'
+    let s = this.section('see also')
+    if (s !== null) {
+      s.remove()
+    }
+    // console.log(s)
+    console.log(this.sections().map((s) => s.title()))
     if (this.isDisambiguation() !== true) {
       return null
     }

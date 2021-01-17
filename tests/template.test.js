@@ -78,29 +78,6 @@ test('hurricane infobox', function (t) {
   t.end()
 })
 
-test('parkplace disambig', function (t) {
-  const park_place = `
-'''Park Place''' may refer to:
-{{TOC right}}
-
-== Media ==
-* [[Park Place (TV series)|Park Place]], a 1981 CBS sitcom
-
-== Places ==
-
-=== Canada ===
-* [[Park Place (Ontario)]], a park in the city of Barrie
-* [[Park Place (Vancouver)]], a skyscraper
-* [[Park Place Mall]], Lethbridge, Alberta
-{{disambiguation}}
-  `
-  const o = wtf(park_place)
-  t.equal(o.isDisambiguation(), true, 'is-disambiguation')
-  t.equal(o.links().length, 4, 'links')
-  t.equal(o.link().page(), 'Park Place (TV series)', 'first-link')
-  t.end()
-})
-
 test('bluejays table', function (t) {
   const bluejays = `
 {| border="1" cellpadding="2" cellspacing="0" class="wikitable"

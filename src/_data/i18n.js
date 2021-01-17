@@ -15,6 +15,7 @@
 module.exports = {
   categories: require('./categories'),
   disambig: require('./disambig'),
+  disambig_titles: require('./disambig_titles'),
   images: require('./images'),
   infoboxes: require('./infoboxes'),
   redirects: require('./redirects'),
