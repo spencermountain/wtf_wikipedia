@@ -15,7 +15,10 @@ const percentage = function (obj) {
   return Number(perc)
 }
 
-const toNumber = function (str) {
+const toNumber = function (str = '') {
+  if (typeof str === 'number') {
+    return str
+  }
   str = str.replace(/,/g, '')
   str = str.replace(/−/g, '-')
   let num = Number(str)

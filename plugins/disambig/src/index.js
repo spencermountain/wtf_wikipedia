@@ -2,14 +2,15 @@
 const shouldSkip = /see also/
 
 const addMethod = function (models) {
+  // parse a disambiguation page into an array of pages
   models.Doc.prototype.disambiguation = function () {
     if (this.isDisambiguation() !== true) {
       return null
     }
     // remove 'see also'
-    let s = this.section('see also')
-    if (s !== null) {
-      s.remove()
+    let sec = this.section('see also')
+    if (sec !== null) {
+      sec.remove()
     }
     let pages = []
     this.sections().forEach((s) => {
