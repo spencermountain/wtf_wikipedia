@@ -1,4 +1,4 @@
-const parse = require('../../toJSON')
+const parse = require('../../../toJSON')
 
 const zeroPad = function (num) {
   num = String(num)

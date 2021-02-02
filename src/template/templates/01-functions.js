@@ -651,6 +651,19 @@ let templates = {
     return obj.second || obj.first
   },
 
+  //'red' card - {{sent off|cards|min1|min2}}
+  'sent off': (tmpl, list) => {
+    let obj = parse(tmpl, ['cards'])
+    let result = {
+      template: 'sent off',
+      cards: obj.cards,
+      minutes: obj.list || [],
+    }
+    list.push(result)
+    let mins = result.minutes.map((m) => m + "'").join(', ')
+    return 'sent off: ' + mins
+  },
+
   //https://en.wikipedia.org/wiki/Template:Sfn
   sfn: (tmpl, list, alias) => {
     let order = ['author', 'year', 'location']

@@ -1,5 +1,5 @@
-const i18n = require('../_data/i18n')
-const infoboxes = require('../infobox/_infoboxes')
+const i18n = require('../../_data/i18n')
+const infoboxes = require('../../infobox/_infoboxes')
 const i18nReg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i')
 //some looser ones
 const startReg = /^infobox /i

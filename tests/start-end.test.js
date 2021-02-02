@@ -19,7 +19,7 @@ test('nba-start-end', function (t) {
   {{s-end}}`
 
   const doc = wtf(str)
-  t.equal(doc.text(), 'hello world', 'text')
+  t.equal(doc.text(), 'hello world', 'nba-text')
   t.equal(doc.templates().length, 1, 'got-template')
   t.end()
 })

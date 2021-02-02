@@ -1,5 +1,5 @@
-const parse = require('../../toJSON')
-const flags = require('../../../_data/flags')
+const parse = require('../../../toJSON')
+const flags = require('../../../../_data/flags')
 const playoffBracket = require('./_lib')
 
 let sports = {
@@ -54,19 +54,6 @@ let sports = {
       })
       .join(', ')
     return summary
-  },
-
-  //'red' card - {{sent off|cards|min1|min2}}
-  'sent off': (tmpl, list) => {
-    let obj = parse(tmpl, ['cards'])
-    let result = {
-      template: 'sent off',
-      cards: obj.cards,
-      minutes: obj.list || [],
-    }
-    list.push(result)
-    let mins = result.minutes.map((m) => m + "'").join(', ')
-    return 'sent off: ' + mins
   },
 
   //a transcluded sports module - https://en.m.wikipedia.org/w/index.php?title=Special:WhatLinksHere/Module:Sports_table

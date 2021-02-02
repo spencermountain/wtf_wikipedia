@@ -1,4 +1,4 @@
-const parse = require('../../toJSON')
+const parse = require('../../../toJSON')
 
 /**
  * converts DMS (decimal-minute-second) geo format to lat/lng format.

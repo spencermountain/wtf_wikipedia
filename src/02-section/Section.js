@@ -48,7 +48,7 @@ class Section {
     //parse-out <template></template>' and {{start}}...{{end}} templates
     const startEndTemplates = parse.startEndTemplates(this, doc)
     this._wiki = startEndTemplates.text
-    this._templates = [...this._templates, ...startEndTemplates.templates]
+    this._templates = this._templates.concat(startEndTemplates.templates)
 
     //parse-out the <ref></ref> tags
     parse.references(this)

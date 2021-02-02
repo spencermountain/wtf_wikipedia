@@ -1,32 +1,9 @@
-const Infobox = require('../infobox/Infobox')
-const Reference = require('../reference/Reference')
 const findTemplates = require('./find/01-nested')
 const parse = require('./parse')
-const Template = require('./Template')
-const isCitation = new RegExp('^(cite |citation)', 'i')
+const sortOut = require('./sortOut')
 
-const references = {
-  citation: true,
-  refn: true,
-  harvnb: true,
-  source: true, //wikinews
-}
-
-const isReference = function (obj) {
-  let kind = obj.template || obj.type || obj.name
-  return references[kind] === true || isCitation.test(kind) === true
-}
-
-const isObject = function (obj) {
-  return obj && Object.prototype.toString.call(obj) === '[object Object]'
-}
-
-const isInfobox = function (obj) {
-  return obj.template === 'infobox' && obj.data && isObject(obj.data)
-}
-
-//reduce the scary recursive situations
-const getTemplates = function (section, doc) {
+//find + parse all templates in the section
+const process = function (section, doc) {
   let wiki = section._wiki
   //nested data-structure of templates
   let list = findTemplates(wiki)
@@ -53,25 +30,17 @@ const getTemplates = function (section, doc) {
   //kick it off
   list.forEach((node) => parseThem(node, null))
 
+  let domain = doc ? doc._domain : null
+  let { infoboxes, references, templates } = sortOut(keep, domain)
+
   //sort-out the templates we decide to keep
   section._infoboxes = section._infoboxes || []
   section._references = section._references || []
   section._templates = section._templates || []
-  section._templates = section._templates.concat(keep)
-  //remove references and infoboxes from our list
-  section._templates = section._templates.filter((obj) => {
-    if (isReference(obj) === true) {
-      section._references.push(new Reference(obj))
-      return false
-    }
-    if (isInfobox(obj) === true) {
-      obj.domain = doc._domain
-      section._infoboxes.push(new Infobox(obj))
-      return false
-    }
-    return true
-  })
-  section._templates = section._templates.map((obj) => new Template(obj))
+
+  section._infoboxes = section._infoboxes.concat(infoboxes)
+  section._references = section._references.concat(references)
+  section._templates = section._templates.concat(templates)
 
   //remove the templates from our wiki text
   list.forEach((node) => {
@@ -80,4 +49,4 @@ const getTemplates = function (section, doc) {
   section._wiki = wiki
 }
 
-module.exports = getTemplates
+module.exports = process

@@ -6,24 +6,24 @@ let templates = Object.assign(
   require('./02-inline-text'),
   require('./03-inline-number'),
   require('./04-inline-arrays'),
-  require('./misc/formatting'),
+  require('./custom/formatting'),
 
-  require('./dates'),
-  require('./geo'),
-  require('./misc/flags'),
-  require('./misc/wikipedia'),
-  require('./misc/table-cell'),
+  require('./custom/dates'),
+  require('./custom/geo'),
+  require('./custom/flags'),
+  require('./custom/wikipedia'),
+  require('./custom/table-cell'),
 
-  require('./misc/currency'),
-  require('./misc/math'),
-  require('./misc/misc'),
-  require('./misc/science'),
-  require('./misc/stock-exchanges'),
-  require('./misc/weather'),
-  require('./sports/_lib'),
-  require('./sports/sports'),
-  require('./sports/_lib'),
-  require('./sports/sports')
+  require('./custom/currency'),
+  require('./custom/math'),
+  require('./custom/misc'),
+  require('./custom/science'),
+  require('./custom/stock-exchanges'),
+  require('./custom/weather'),
+  require('./custom/sports/_lib'),
+  require('./custom/sports/sports'),
+  require('./custom/sports/_lib'),
+  require('./custom/sports/sports')
 )
 
 Object.keys(aliases).forEach((k) => {
@@ -33,3 +33,5 @@ Object.keys(aliases).forEach((k) => {
   templates[k] = templates[aliases[k]]
 })
 module.exports = templates
+
+// console.log(Object.keys(templates).length)

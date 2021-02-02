@@ -1,24 +1,23 @@
 const ignore = require('./_ignore')
-const toJSON = require('./toJSON')
-const inf = require('./_infobox')
-const templates = require('./templates')
-const generic = require('./toJSON')
-const { isArray } = require('../_lib/helpers')
+const toJSON = require('../toJSON')
+const infobox = require('./_infobox')
+const templates = require('../templates')
+const generic = require('../toJSON')
+const { isArray } = require('../../_lib/helpers')
 
 const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
 
 //this gets all the {{template}} strings and decides how to parse them
 const parseTemplate = function (tmpl, list, doc) {
   let name = tmpl.name
+  // dont bother with some junk templates
   if (ignore.hasOwnProperty(name) === true) {
     return ''
   }
-
   //{{infobox settlement...}}
-  if (inf.isInfobox(name) === true) {
+  if (infobox.isInfobox(name) === true) {
     let obj = toJSON(tmpl.body, list, 'raw')
-    let infobox = inf.format(obj)
-    list.push(infobox)
+    list.push(infobox.format(obj))
     return ''
   }
   //cite book, cite arxiv...
@@ -29,8 +28,9 @@ const parseTemplate = function (tmpl, list, doc) {
     list.push(obj)
     return ''
   }
-
-  //known template
+  // ok, here we go!
+  let json = toJSON(tmpl.body)
+  //parse some known templates
   if (templates.hasOwnProperty(name) === true) {
     //handle number-syntax
     if (typeof templates[name] === 'number') {
@@ -54,14 +54,13 @@ const parseTemplate = function (tmpl, list, doc) {
       return templates[name](tmpl.body, list, null, doc)
     }
   }
-  if (doc) {
-    doc._missing_templates[name] = doc._missing_templates[name] || 0
-    doc._missing_templates[name] += 1
-  }
-  //unknown template, try to parse it
-  let parsed = toJSON(tmpl.body)
-  if (list && Object.keys(parsed).length > 0) {
-    list.push(parsed)
+  // if (doc) {
+  // doc._missing_templates[name] = doc._missing_templates[name] || 0
+  // doc._missing_templates[name] += 1
+  // }
+  //an unknown template with data, so just keep it.
+  if (list && Object.keys(json).length > 0) {
+    list.push(json)
   }
   //..then remove it
   return ''

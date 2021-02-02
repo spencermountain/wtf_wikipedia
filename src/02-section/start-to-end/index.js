@@ -4,6 +4,7 @@ const parseNBA = require('./nba')
 const parseMlb = require('./mlb')
 const parseMMA = require('./mma')
 const parseMath = require('./math')
+const Template = require('../../template/Template')
 
 /**
  * parses out non standard templates
@@ -18,19 +19,21 @@ const parseMath = require('./math')
  * @returns {string} wikitext
  */
 const xmlTemplates = function (section, doc) {
-  const catcher = {
+  const res = {
     templates: [],
     text: section._wiki,
   }
 
-  parseElection(catcher)
-  parseGallery(catcher, doc, section)
-  parseMath(catcher)
-  parseMlb(catcher)
-  parseMMA(catcher)
-  parseNBA(catcher)
+  parseElection(res)
+  parseGallery(res, doc, section)
+  parseMath(res)
+  parseMlb(res)
+  parseMMA(res)
+  parseNBA(res)
 
-  return catcher
+  // turn them into Template objects
+  res.templates = res.templates.map((obj) => new Template(obj))
+  return res
 }
 
 module.exports = xmlTemplates
