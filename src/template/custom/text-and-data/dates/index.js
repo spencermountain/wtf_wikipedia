@@ -1,5 +1,5 @@
 const parsers = require('./_parsers')
-const parse = require('../../../../parse/toJSON')
+const parse = require('../../../parse/toJSON')
 const lib = require('./_lib')
 const format = require('./_format')
 

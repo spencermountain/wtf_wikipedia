@@ -1,5 +1,5 @@
-const strip = require('../../../../parse/toJSON/_strip')
-const parse = require('../../../../parse/toJSON')
+const strip = require('../../../parse/toJSON/_strip')
+const parse = require('../../../parse/toJSON')
 const delta = require('./_lib').delta
 const fmt = require('./_format')
 

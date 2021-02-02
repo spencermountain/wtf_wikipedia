@@ -1,6 +1,6 @@
 //random misc for inline wikipedia templates
-const parse = require('../../../parse/toJSON')
-const titlecase = require('../../_lib').titlecase
+const parse = require('../../parse/toJSON')
+const titlecase = require('../_lib').titlecase
 
 //https://en.wikipedia.org/wiki/Template:Yes
 let templates = {}

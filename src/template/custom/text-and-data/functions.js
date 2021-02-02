@@ -1,4 +1,5 @@
 const parse = require('../../parse/toJSON')
+const lib = require('../_lib')
 
 let templates = {
   // https://en.wikipedia.org/wiki/Template:Math
@@ -219,6 +220,113 @@ let templates = {
       return word
     }
     return `${word} [sic]`
+  },
+
+  //
+  inrconvert: (tmpl, list) => {
+    let o = parse(tmpl, ['rupee_value', 'currency_formatting'])
+    list.push(o)
+    const mults = {
+      k: 1000,
+      m: 1000000,
+      b: 1000000000,
+      t: 1000000000000,
+      l: 100000,
+      c: 10000000,
+      lc: 1000000000000,
+    }
+    if (o.currency_formatting) {
+      let multiplier = mults[o.currency_formatting] || 1
+      o.rupee_value = o.rupee_value * multiplier
+    }
+    return `inr ${o.rupee_value || ''}`
+  },
+
+  //fraction - https://en.wikipedia.org/wiki/Template:Sfrac
+  frac: (tmpl, list) => {
+    let order = ['a', 'b', 'c']
+    let obj = parse(tmpl, order)
+    let data = {
+      template: 'sfrac',
+    }
+    if (obj.c) {
+      data.integer = obj.a
+      data.numerator = obj.b
+      data.denominator = obj.c
+    } else if (obj.b) {
+      data.numerator = obj.a
+      data.denominator = obj.b
+    } else {
+      data.numerator = 1
+      data.denominator = obj.a
+    }
+    list.push(data)
+    if (data.integer) {
+      return `${data.integer} ${data.numerator}⁄${data.denominator}`
+    }
+    return `${data.numerator}⁄${data.denominator}`
+  },
+
+  'winning percentage': (tmpl, list) => {
+    let obj = parse(tmpl, ['wins', 'losses', 'ties'])
+    list.push(obj)
+    let wins = Number(obj.wins)
+    let losses = Number(obj.losses)
+    let ties = Number(obj.ties) || 0
+    let games = wins + losses + ties
+    if (obj.ignore_ties === 'y') {
+      ties = 0
+    }
+    if (ties) {
+      wins += ties / 2
+    }
+    let num = lib.percentage({
+      numerator: wins,
+      denominator: games,
+      decimals: 1,
+    })
+    if (num === null) {
+      return ''
+    }
+    return `.${num * 10}`
+  },
+
+  winlosspct: (tmpl, list) => {
+    let obj = parse(tmpl, ['wins', 'losses'])
+    list.push(obj)
+    let wins = Number(obj.wins)
+    let losses = Number(obj.losses)
+    let num = lib.percentage({
+      numerator: wins,
+      denominator: wins + losses,
+      decimals: 1,
+    })
+    if (num === null) {
+      return ''
+    }
+    num = `.${num * 10}`
+    return `${wins || 0} || ${losses || 0} || ${num || '-'}`
+  },
+
+  //https://en.wikipedia.org/wiki/Template:Video_game_release
+  'video game release': (tmpl, list) => {
+    let order = ['region', 'date', 'region2', 'date2', 'region3', 'date3', 'region4', 'date4']
+    let obj = parse(tmpl, order)
+    let template = {
+      template: 'video game release',
+      releases: [],
+    }
+    for (let i = 0; i < order.length; i += 2) {
+      if (obj[order[i]]) {
+        template.releases.push({
+          region: obj[order[i]],
+          date: obj[order[i + 1]],
+        })
+      }
+    }
+    list.push(template)
+    let str = template.releases.map((o) => `${o.region}: ${o.date || ''}`).join('\n\n')
+    return '\n' + str + '\n'
   },
 }
 module.exports = templates

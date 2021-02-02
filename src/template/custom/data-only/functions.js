@@ -171,4 +171,234 @@ module.exports = {
     list.push(obj)
     return ''
   },
+
+  //https://en.wikipedia.org/wiki/Template:Sky
+  sky: (tmpl, list) => {
+    let obj = parse(tmpl, [
+      'asc_hours',
+      'asc_minutes',
+      'asc_seconds',
+      'dec_sign',
+      'dec_degrees',
+      'dec_minutes',
+      'dec_seconds',
+      'distance',
+    ])
+    let template = {
+      template: 'sky',
+      ascension: {
+        hours: obj.asc_hours,
+        minutes: obj.asc_minutes,
+        seconds: obj.asc_seconds,
+      },
+      declination: {
+        sign: obj.dec_sign,
+        degrees: obj.dec_degrees,
+        minutes: obj.dec_minutes,
+        seconds: obj.dec_seconds,
+      },
+      distance: obj.distance,
+    }
+    list.push(template)
+    return ''
+  },
+
+  // Parse https://en.wikipedia.org/wiki/Template:Medical_cases_chart -- see
+  // https://en.wikipedia.org/wiki/Module:Medical_cases_chart for the original
+  // parsing code.
+  'medical cases chart': (tmpl, list) => {
+    let order = [
+      'date',
+      'deathsExpr',
+      'recoveriesExpr',
+      'casesExpr',
+      '4thExpr',
+      '5thExpr',
+      'col1',
+      'col1Change',
+      'col2',
+      'col2Change',
+    ]
+
+    let obj = parse(tmpl)
+    obj.data = obj.data || ''
+    let rows = obj.data.split('\n')
+
+    // Mimic row parsing in _buildBars in the Lua source, from the following
+    // line on:
+    //
+    //     for parameter in mw.text.gsplit(line, ';') do
+    let dataArray = rows.map((row) => {
+      let parameters = row.split(';')
+      let rowObject = {
+        options: new Map(),
+      }
+      let positionalIndex = 0
+      for (let i = 0; i < parameters.length; i++) {
+        let parameter = parameters[i].trim()
+        if (parameter.match(/^[a-zA-Z_]/)) {
+          // Named argument
+          let [key, value] = parameter.split('=')
+          // At this point, the Lua code evaluates alttot1 and alttot2 values as
+          // #expr expressions, but we just pass them through. See also:
+          // https://www.mediawiki.org/wiki/Help:Extension:ParserFunctions##expr
+          if (value === undefined) {
+            value = null
+          }
+          rowObject.options.set(key, value)
+        } else {
+          // Positional argument
+          // Here again, the Lua code evaluates arguments at index 1 through 5
+          // as #expr expressions, but we just pass them through.
+          if (positionalIndex < order.length) {
+            rowObject[order[positionalIndex]] = parameter
+          }
+          positionalIndex++
+        }
+      }
+      for (; positionalIndex < order.length; positionalIndex++) {
+        rowObject[order[positionalIndex]] = null
+      }
+      return rowObject
+    })
+    obj.data = dataArray
+    list.push(obj)
+    return ''
+  },
+
+  graph: (tmpl, list) => {
+    let data = parse(tmpl)
+    if (data.x) {
+      data.x = data.x.split(',').map((str) => str.trim())
+    }
+    if (data.y) {
+      data.y = data.y.split(',').map((str) => str.trim())
+    }
+    let y = 1
+    while (data['y' + y]) {
+      data['y' + y] = data['y' + y].split(',').map((str) => str.trim())
+      y += 1
+    }
+    list.push(data)
+    return ''
+  },
+
+  //https://en.wikipedia.org/wiki/Template:Historical_populations
+  'historical populations': (tmpl, list) => {
+    let data = parse(tmpl)
+    data.list = data.list || []
+    let years = []
+    for (let i = 0; i < data.list.length; i += 2) {
+      let num = data.list[i + 1]
+      years.push({
+        year: data.list[i],
+        val: Number(num) || num,
+      })
+    }
+    data.data = years
+    delete data.list
+    list.push(data)
+    return ''
+  },
+
+  // this one is a handful!
+  //https://en.wikipedia.org/wiki/Template:Weather_box
+  'weather box': (tmpl, list) => {
+    const hasMonth = /^jan /i
+    const isYear = /^year /i
+    let obj = parse(tmpl)
+    const monthList = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+    let byMonth = {}
+    let properties = Object.keys(obj).filter((k) => hasMonth.test(k))
+    properties = properties.map((k) => k.replace(hasMonth, ''))
+    properties.forEach((prop) => {
+      byMonth[prop] = []
+      monthList.forEach((m) => {
+        let key = `${m} ${prop}`
+        if (obj.hasOwnProperty(key)) {
+          let num = lib.toNumber(obj[key])
+          delete obj[key]
+          byMonth[prop].push(num)
+        }
+      })
+    })
+    //add these to original
+    obj.byMonth = byMonth
+    //collect year-based data
+    let byYear = {}
+    Object.keys(obj).forEach((k) => {
+      if (isYear.test(k)) {
+        let prop = k.replace(isYear, '')
+        byYear[prop] = obj[k]
+        delete obj[k]
+      }
+    })
+    obj.byYear = byYear
+    list.push(obj)
+    return ''
+  },
+
+  //The 36 parameters are: 12 monthly highs (C), 12 lows (total 24) plus an optional 12 monthly rain/precipitation
+  //https://en.wikipedia.org/wiki/Template:Weather_box/concise_C
+  'weather box/concise c': (tmpl, list) => {
+    let obj = parse(tmpl)
+    obj.list = obj.list.map((s) => lib.toNumber(s))
+    obj.byMonth = {
+      'high c': obj.list.slice(0, 12),
+      'low c': obj.list.slice(12, 24),
+      'rain mm': obj.list.slice(24, 36),
+    }
+    delete obj.list
+    obj.template = 'weather box'
+    list.push(obj)
+    return ''
+  },
+
+  'weather box/concise f': (tmpl, list) => {
+    let obj = parse(tmpl)
+    obj.list = obj.list.map((s) => lib.toNumber(s))
+    obj.byMonth = {
+      'high f': obj.list.slice(0, 12),
+      'low f': obj.list.slice(12, 24),
+      'rain inch': obj.list.slice(24, 36),
+    }
+    delete obj.list
+    obj.template = 'weather box'
+    list.push(obj)
+    return ''
+  },
+
+  //https://en.wikipedia.org/wiki/Template:Climate_chart
+  'climate chart': (tmpl, list) => {
+    let lines = parse(tmpl).list || []
+    let title = lines[0]
+    let source = lines[38]
+    lines = lines.slice(1)
+    //amazingly, they use '−' symbol here instead of negatives...
+    lines = lines.map((str) => {
+      if (str && str[0] === '−') {
+        str = str.replace(/−/, '-')
+      }
+      return str
+    })
+    let months = []
+    //groups of three, for 12 months
+    for (let i = 0; i < 36; i += 3) {
+      months.push({
+        low: lib.toNumber(lines[i]),
+        high: lib.toNumber(lines[i + 1]),
+        precip: lib.toNumber(lines[i + 2]),
+      })
+    }
+    let obj = {
+      template: 'climate chart',
+      data: {
+        title: title,
+        source: source,
+        months: months,
+      },
+    }
+    list.push(obj)
+    return ''
+  },
 }

@@ -414,4 +414,28 @@ module.exports = {
     }
     return str
   },
+
+  //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
+  percentage: (tmpl) => {
+    let obj = parse(tmpl, ['numerator', 'denominator', 'decimals'])
+    let num = lib.percentage(obj)
+    if (num === null) {
+      return ''
+    }
+    return num + '%'
+  },
+
+  // {{Percent-done|done=N|total=N|digits=N}}
+  'percent-done': (tmpl) => {
+    let obj = parse(tmpl, ['done', 'total', 'digits'])
+    let num = lib.percentage({
+      numerator: obj.done,
+      denominator: obj.total,
+      decimals: obj.digits,
+    })
+    if (num === null) {
+      return ''
+    }
+    return `${obj.done} (${num}%) done`
+  },
 }
