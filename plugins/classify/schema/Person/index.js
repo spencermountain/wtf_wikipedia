@@ -7,7 +7,13 @@ module.exports = {
     Musician: require('./Musician'),
     Author: require('./Author'),
   },
-  properties: {},
+  properties: {
+    birth_date: () => {},
+    birth_place: () => {},
+    nationality: () => {},
+    death_date: () => {},
+    death_place: () => {},
+  },
   //
   categories: {
     mapping: [],

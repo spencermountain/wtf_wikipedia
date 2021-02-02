@@ -1,9 +1,10 @@
 module.exports = {
-  id: 'Author',
+  id: 'Organism',
   //
   children: {},
   properties: {
-    works: () => {},
+    // taxonomy: () => {},
+    // members: () => {},
   },
   //
   categories: {

@@ -1,12 +1,15 @@
 module.exports = {
-  id: 'Concept',
-  //
+  id: 'Creation',
   children: {
+    CreativeWork: require('./CreativeWork'),
     MedicalCondition: require('./MedicalCondition'),
     Organism: require('./Organism'),
+    Product: require('./Product'),
   },
+  //
   properties: {
-    creator: () => {},
+    creators: () => {},
+    date: () => {},
   },
   //
   categories: {

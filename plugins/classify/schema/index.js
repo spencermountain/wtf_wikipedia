@@ -4,7 +4,6 @@ module.exports = {
     Place: require('./Place'),
     Organization: require('./Organization'),
     Event: require('./Event'),
-    CreativeWork: require('./CreativeWork'),
-    // Product: require('./Product'),
+    Creation: require('./Creation'),
   },
 }

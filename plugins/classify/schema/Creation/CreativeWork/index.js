@@ -1,8 +1,17 @@
 module.exports = {
-  id: 'Organism',
+  id: 'CreativeWork',
+  children: {
+    Album: require('./Album'),
+    Book: require('./Book'),
+    Film: require('./Film'),
+    TVShow: require('./TVShow'),
+    Play: require('./Play'),
+    VideoGame: require('./VideoGame'),
+  },
   //
-  children: {},
-  properties: {},
+  properties: {
+    genre: () => {},
+  },
   //
   categories: {
     mapping: [],
