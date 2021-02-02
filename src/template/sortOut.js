@@ -10,10 +10,6 @@ const referenceTypes = {
   source: true, //wikinews
 }
 
-const isObject = function (obj) {
-  return obj && Object.prototype.toString.call(obj) === '[object Object]'
-}
-
 // split Infoboxes from templates and references
 const sortOut = function (keep, domain) {
   let res = {
@@ -30,8 +26,9 @@ const sortOut = function (keep, domain) {
       return
     }
     // is it an Infobox?
-    if (obj.template === 'infobox' && obj.data && isObject(obj.data)) {
+    if (obj.template === 'infobox' && obj.subbox !== 'yes') {
       obj.domain = domain //infoboxes need this for images, i guess
+      obj.data = obj.data || {} //validate it a little
       res.infoboxes.push(new Infobox(obj))
       return
     }

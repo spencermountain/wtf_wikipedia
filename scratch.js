@@ -14,18 +14,21 @@ wtf.extend(require('./plugins/disambig/src'))
 //   console.log(doc.disambiguation())
 // })
 
-let str = `
-* one is cool. so it is.
-* two
-** three
-** four
+let str = `{{Infobox | subbox = yes
+  | headerstyle = background-color:#ccc;
+  | labelstyle = background-color:#ddd;
+  | header1 = Sub 3-1
+  | header2 = Sub 3-2
+  |  label3 = Label 3-3 |   data3 = Data 3-3
+ }}
 `
 // str = `causes [[food browning|browning]]`
 // str = `[[2001 NBA Playoffs|2001]]`
-// let doc = wtf(str)
+let doc = wtf(str)
+console.log(doc.infobox())
 // doc.title('Lothian (disambiguation)')
 // console.log(doc.link().json())
 
-wtf.fetch('Facebook').then((doc) => {
-  console.log(doc.infobox().image().json())
-})
+// wtf.fetch('Facebook').then((doc) => {
+//   console.log(doc.infobox().image().json())
+// })

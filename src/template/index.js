@@ -30,6 +30,7 @@ const process = function (section, doc) {
   //kick it off
   list.forEach((node) => parseThem(node, null))
 
+  // split-out references and infoboxes
   let domain = doc ? doc._domain : null
   let { infoboxes, references, templates } = sortOut(keep, domain)
 
