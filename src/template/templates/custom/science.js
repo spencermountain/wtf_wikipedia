@@ -1,4 +1,4 @@
-const parse = require('../../toJSON')
+const parse = require('../../parse/toJSON')
 
 let templates = {
   //https://en.wikipedia.org/wiki/Template:Sky

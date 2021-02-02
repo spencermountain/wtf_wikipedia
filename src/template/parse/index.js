@@ -1,7 +1,7 @@
 const ignore = require('./_ignore')
 const infobox = require('./_infobox')
 const templates = require('../templates')
-const toJSON = require('../toJSON')
+const toJSON = require('./toJSON')
 const { isArray } = require('../../_lib/helpers')
 
 const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8']

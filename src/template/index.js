@@ -1,5 +1,5 @@
 const findTemplates = require('./find/01-nested')
-const halfParse = require('./half-parse')
+const parseTemplate = require('./parse')
 const sortOut = require('./sortOut')
 
 // return a flat list of all {{templates}}
@@ -8,14 +8,14 @@ const allTemplates = function (wiki, doc) {
   //nested data-structure of templates
   let nested = findTemplates(wiki)
   //recursive template-parser
-  const parseThem = function (obj, parent) {
+  const parseNested = function (obj, parent) {
     obj.parent = parent
     //do tail-first recursion
     if (obj.children && obj.children.length > 0) {
-      obj.children.forEach((ch) => parseThem(ch, obj))
+      obj.children.forEach((ch) => parseNested(ch, obj))
     }
-    //parse it enough that we can identify it
-    obj.out = halfParse(obj, list, doc)
+    //parse template into json, return replacement wikitext
+    obj.wiki = parseTemplate(obj, list, doc)
     //remove the text from every parent
     const removeIt = function (node, body, out) {
       if (node.parent) {
@@ -23,14 +23,14 @@ const allTemplates = function (wiki, doc) {
         removeIt(node.parent, body, out)
       }
     }
-    removeIt(obj, obj.body, obj.out)
-    wiki = wiki.replace(obj.body, obj.out)
+    removeIt(obj, obj.body, obj.wiki)
+    wiki = wiki.replace(obj.body, obj.wiki)
   }
   //kick it off
-  nested.forEach((node) => parseThem(node, null))
+  nested.forEach((node) => parseNested(node, null))
   //remove the templates from our wiki text
   nested.forEach((node) => {
-    wiki = wiki.replace(node.body, node.out)
+    wiki = wiki.replace(node.body, node.wiki)
   })
   return { list: list, wiki: wiki }
 }

@@ -1,6 +1,6 @@
 const i18n = require('../_data/i18n')
 const Image = require('./Image')
-const parseTemplate = require('../template/toJSON')
+const parseTemplate = require('../template/parse/toJSON')
 const parseSentence = require('../04-sentence').fromText
 const nested_find = require('./nested_find')
 //regexes:

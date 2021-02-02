@@ -1,4 +1,4 @@
-const parse = require('../../toJSON')
+const parse = require('../../parse/toJSON')
 const percentage = require('./_lib').percentage
 
 let templates = {

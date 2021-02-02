@@ -1,4 +1,4 @@
-const parse = require('../../../src/template/toJSON')
+const parse = require('../../../src/template/parse/toJSON')
 // const strip = require('./_parsers/_strip');
 
 //wiktionary... who knows. we should atleast try.

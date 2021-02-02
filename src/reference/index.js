@@ -1,4 +1,4 @@
-const parse = require('../template/toJSON')
+const parse = require('../template/parse/toJSON')
 //const parse = require('../../templates/wikipedia/page').citation;
 const parseSentence = require('../04-sentence').fromText
 const Reference = require('./Reference')

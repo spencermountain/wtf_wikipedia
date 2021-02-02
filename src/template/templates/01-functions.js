@@ -1,5 +1,5 @@
-const parse = require('../toJSON')
-const strip = require('../toJSON/_strip')
+const parse = require('../parse/toJSON')
+const strip = require('../parse/toJSON/_strip')
 
 let templates = {
   //https://en.wikipedia.org/wiki/Template:Election_box
