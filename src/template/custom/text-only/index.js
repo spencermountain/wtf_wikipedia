@@ -1,3 +1,1 @@
-let templates = {}
-templates = Object.assign(templates, require('./hardcoded'), require('./nth-prop'), require('./functions'))
-module.exports = templates
+module.exports = Object.assign({}, require('./hardcoded'), require('./shorthand'), require('./functions'))

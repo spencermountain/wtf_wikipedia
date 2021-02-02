@@ -1,11 +1,11 @@
-const aliases = require('./05-aliases')
+const aliases = require('./aliases')
 
 let templates = Object.assign(
   {},
-  require('./01-functions'),
+  require('./text-and-data/functions'),
   require('./text-only'),
   require('./data-only'),
-  require('./text-and-data/'),
+  require('./text-and-data'),
   require('./text-and-data/custom/formatting'),
   require('./text-and-data/custom/dates'),
   require('./text-and-data/custom/geo'),
