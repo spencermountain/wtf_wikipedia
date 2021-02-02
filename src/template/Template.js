@@ -1,9 +1,3 @@
-const Template = function (data) {
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data,
-  })
-}
 const methods = {
   text: function () {
     return ''
@@ -12,6 +6,14 @@ const methods = {
     return this.data
   },
 }
+
+const Template = function (data) {
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data,
+  })
+}
+
 Object.keys(methods).forEach((k) => {
   Template.prototype[k] = methods[k]
 })

@@ -1,4 +1,4 @@
-const parse = require('../../_parsers/parse')
+const parse = require('../../toJSON')
 const getLang = require('./_lib').getLang
 
 module.exports = {

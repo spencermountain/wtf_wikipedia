@@ -1,8 +1,8 @@
 const ignore = require('./_ignore')
-const parse = require('./_parsers/parse')
+const toJSON = require('./toJSON')
 const inf = require('./_infobox')
 const templates = require('./templates')
-const generic = require('./_parsers/parse')
+const generic = require('./toJSON')
 const { isArray } = require('../_lib/helpers')
 
 const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
@@ -16,14 +16,14 @@ const parseTemplate = function (tmpl, list, doc) {
 
   //{{infobox settlement...}}
   if (inf.isInfobox(name) === true) {
-    let obj = parse(tmpl.body, list, 'raw')
+    let obj = toJSON(tmpl.body, list, 'raw')
     let infobox = inf.format(obj)
     list.push(infobox)
     return ''
   }
   //cite book, cite arxiv...
   if (/^cite [a-z]/.test(name) === true) {
-    let obj = parse(tmpl.body, list)
+    let obj = toJSON(tmpl.body, list)
     obj.type = obj.template
     obj.template = 'citation'
     list.push(obj)
@@ -59,7 +59,7 @@ const parseTemplate = function (tmpl, list, doc) {
     doc._missing_templates[name] += 1
   }
   //unknown template, try to parse it
-  let parsed = parse(tmpl.body)
+  let parsed = toJSON(tmpl.body)
   if (list && Object.keys(parsed).length > 0) {
     list.push(parsed)
   }

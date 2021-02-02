@@ -1,4 +1,4 @@
-const parse = require('../../_parsers/parse')
+const parse = require('../../toJSON')
 
 const codes = {
   '£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP

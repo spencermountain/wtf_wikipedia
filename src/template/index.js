@@ -1,6 +1,6 @@
 const Infobox = require('../infobox/Infobox')
 const Reference = require('../reference/Reference')
-const findTemplates = require('./find')
+const findTemplates = require('./find/01-nested')
 const parse = require('./parse')
 const Template = require('./Template')
 const isCitation = new RegExp('^(cite |citation)', 'i')
@@ -26,7 +26,7 @@ const isInfobox = function (obj) {
 }
 
 //reduce the scary recursive situations
-const allTemplates = function (section, doc) {
+const getTemplates = function (section, doc) {
   let wiki = section._wiki
   //nested data-structure of templates
   let list = findTemplates(wiki)
@@ -80,4 +80,4 @@ const allTemplates = function (section, doc) {
   section._wiki = wiki
 }
 
-module.exports = allTemplates
+module.exports = getTemplates

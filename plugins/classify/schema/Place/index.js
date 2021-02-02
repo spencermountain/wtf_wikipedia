@@ -7,6 +7,7 @@ module.exports = {
   },
   properties: {
     location: () => {},
+    coordinates: () => {},
   },
   //
   categories: {

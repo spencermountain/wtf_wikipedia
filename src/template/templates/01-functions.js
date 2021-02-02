@@ -1,5 +1,5 @@
-const parse = require('../_parsers/parse')
-const strip = require('../_parsers/_strip')
+const parse = require('../toJSON')
+const strip = require('../toJSON/_strip')
 
 let templates = {
   //https://en.wikipedia.org/wiki/Template:Election_box
@@ -116,18 +116,6 @@ let templates = {
     let obj = parse(tmpl, order)
     obj.type = 'gnis'
     obj.template = 'citation'
-    list.push(obj)
-    return ''
-  },
-
-  //https://en.wikipedia.org/wiki/Template:Sfn
-  sfn: (tmpl, list, alias) => {
-    let order = ['author', 'year', 'location']
-    let obj = parse(tmpl, order)
-    if (alias) {
-      obj.name = obj.template
-      obj.teplate = alias
-    }
     list.push(obj)
     return ''
   },
@@ -661,6 +649,18 @@ let templates = {
     let order = ['first', 'second']
     let obj = parse(tmpl, order)
     return obj.second || obj.first
+  },
+
+  //https://en.wikipedia.org/wiki/Template:Sfn
+  sfn: (tmpl, list, alias) => {
+    let order = ['author', 'year', 'location']
+    let obj = parse(tmpl, order)
+    if (alias) {
+      obj.name = obj.template
+      obj.teplate = alias
+    }
+    list.push(obj)
+    return ''
   },
 }
 module.exports = templates

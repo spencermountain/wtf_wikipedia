@@ -1,5 +1,5 @@
-const findFlat = require('./flat')
-const getName = require('../_parsers/_getName')
+const findFlat = require('./02-flat')
+const getName = require('../toJSON/_getName')
 const hasTemplate = /\{\{/
 
 const parseTemplate = function (tmpl) {

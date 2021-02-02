@@ -1,4 +1,4 @@
-const parse = require('../../_parsers/parse')
+const parse = require('../../toJSON')
 
 const generic = function (tmpl, list, alias) {
   let obj = parse(tmpl)

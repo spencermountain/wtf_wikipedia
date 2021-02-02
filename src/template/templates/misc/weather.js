@@ -1,4 +1,4 @@
-const parse = require('../../_parsers/parse')
+const parse = require('../../toJSON')
 const toNumber = require('./_lib').toNumber
 const hasMonth = /^jan /i
 const isYear = /^year /i

@@ -1,4 +1,4 @@
-const parse = require('../../_parsers/parse')
+const parse = require('../../toJSON')
 const Image = require('../../../image/Image')
 const lib = require('./_lib')
 

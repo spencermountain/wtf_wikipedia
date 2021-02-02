@@ -22,6 +22,12 @@ const doChildren = function (obj, depth) {
     } else {
       console.log(`${name} : true`)
     }
+    // print properties
+    // if (hasData(obj.properties)) {
+    //   Object.keys(obj.properties).forEach((k) => {
+    //     console.log(indent(`[${k}]`, depth * 3 + 4))
+    //   })
+    // }
   }
   depth += 1
   Object.keys(obj.children).forEach((k) => {

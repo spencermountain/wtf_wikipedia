@@ -1,4 +1,4 @@
-const parse = require('../../_parsers/parse')
+const parse = require('../../toJSON')
 const flags = require('../../../_data/flags')
 const playoffBracket = require('./_lib')
 
