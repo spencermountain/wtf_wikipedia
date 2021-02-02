@@ -15,7 +15,8 @@
     "watch": "amble ./scratch.js",
     "test": "tape ./tests/**/*.test.js | tap-dancer",
     "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "schema": "node ./schema/_print.js"
   },
   "files": [
     "builds"

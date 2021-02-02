@@ -62,7 +62,12 @@ This library tries to do this sort of work, to determine if a page is about Pers
 
 ```yaml
 Person:
-  Athlete: true
+  Athlete:
+    BaseballPlayer: true
+    HockeyPlayer: true
+    BasketballPlayer: true
+    FootballPlayer: true
+    AmericanFootballPlayer: true
   Artist: true
   Politician: true
   Actor: true
