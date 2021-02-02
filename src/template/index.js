@@ -1,13 +1,12 @@
 const findTemplates = require('./find/01-nested')
-const parse = require('./parse')
+const halfParse = require('./half-parse')
 const sortOut = require('./sortOut')
 
-//find + parse all templates in the section
-const process = function (section, doc) {
-  let wiki = section._wiki
+// return a flat list of all {{templates}}
+const allTemplates = function (wiki, doc) {
+  let list = []
   //nested data-structure of templates
-  let list = findTemplates(wiki)
-  let keep = []
+  let nested = findTemplates(wiki)
   //recursive template-parser
   const parseThem = function (obj, parent) {
     obj.parent = parent
@@ -15,7 +14,8 @@ const process = function (section, doc) {
     if (obj.children && obj.children.length > 0) {
       obj.children.forEach((ch) => parseThem(ch, obj))
     }
-    obj.out = parse(obj, keep, doc)
+    //parse it enough that we can identify it
+    obj.out = halfParse(obj, list, doc)
     //remove the text from every parent
     const removeIt = function (node, body, out) {
       if (node.parent) {
@@ -26,13 +26,22 @@ const process = function (section, doc) {
     removeIt(obj, obj.body, obj.out)
     wiki = wiki.replace(obj.body, obj.out)
   }
-
   //kick it off
-  list.forEach((node) => parseThem(node, null))
+  nested.forEach((node) => parseThem(node, null))
+  //remove the templates from our wiki text
+  nested.forEach((node) => {
+    wiki = wiki.replace(node.body, node.out)
+  })
+  return { list: list, wiki: wiki }
+}
 
+//find + parse all templates in the section
+const process = function (section, doc) {
+  // find+parse them all
+  let { list, wiki } = allTemplates(section._wiki, doc)
   // split-out references and infoboxes
   let domain = doc ? doc._domain : null
-  let { infoboxes, references, templates } = sortOut(keep, domain)
+  let { infoboxes, references, templates } = sortOut(list, domain)
 
   //sort-out the templates we decide to keep
   section._infoboxes = section._infoboxes || []
@@ -43,10 +52,6 @@ const process = function (section, doc) {
   section._references = section._references.concat(references)
   section._templates = section._templates.concat(templates)
 
-  //remove the templates from our wiki text
-  list.forEach((node) => {
-    wiki = wiki.replace(node.body, node.out)
-  })
   section._wiki = wiki
 }
 
