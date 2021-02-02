@@ -140,5 +140,85 @@ let templates = {
     let mins = result.minutes.map((m) => m + "'").join(', ')
     return 'sent off: ' + mins
   },
+
+  transl: (tmpl, list) => {
+    let obj = parse(tmpl, ['lang', 'text', 'text2'])
+    // support 3-param
+    if (obj.text2) {
+      obj.iso = obj.text
+      obj.text = obj.text2
+      delete obj.text2
+    }
+    list.push(obj)
+    return obj.text || ''
+  },
+
+  //show/hide: https://en.wikipedia.org/wiki/Template:Collapsible_list
+  'collapsible list': (tmpl, list) => {
+    let obj = parse(tmpl)
+    list.push(obj)
+    let str = ''
+    if (obj.title) {
+      str += `'''${obj.title}'''` + '\n\n'
+    }
+    if (!obj.list) {
+      obj.list = []
+      for (let i = 1; i < 10; i += 1) {
+        if (obj[i]) {
+          obj.list.push(obj[i])
+          delete obj[i]
+        }
+      }
+    }
+    obj.list = obj.list.filter((s) => s)
+    str += obj.list.join('\n\n')
+    return str
+  },
+
+  //https://en.wikipedia.org/wiki/Template:Columns-list
+  'columns-list': (tmpl, list) => {
+    let arr = parse(tmpl).list || []
+    let str = arr[0] || ''
+    let lines = str.split(/\n/).filter((f) => f)
+    lines = lines.map((s) => s.replace(/\*/, ''))
+    list.push({
+      template: 'columns-list',
+      list: lines,
+    })
+    lines = lines.map((s) => '• ' + s)
+    return lines.join('\n\n')
+  },
+
+  //https://en.wikipedia.org/wiki/Template:Height - {{height|ft=6|in=1}}
+  height: (tmpl, list) => {
+    let obj = parse(tmpl)
+    list.push(obj)
+    let result = []
+    let units = ['m', 'cm', 'ft', 'in'] //order matters
+    units.forEach((unit) => {
+      if (obj.hasOwnProperty(unit) === true) {
+        result.push(obj[unit] + unit)
+      }
+    })
+    return result.join(' ')
+  },
+
+  //https://en.wikipedia.org/wiki/Template:Sic
+  sic: (tmpl, list) => {
+    let obj = parse(tmpl, ['one', 'two', 'three'])
+    let word = (obj.one || '') + (obj.two || '')
+    //support '[sic?]'
+    if (obj.one === '?') {
+      word = (obj.two || '') + (obj.three || '')
+    }
+    list.push({
+      template: 'sic',
+      word: word,
+    })
+    if (obj.nolink === 'y') {
+      return word
+    }
+    return `${word} [sic]`
+  },
 }
 module.exports = templates

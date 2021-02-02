@@ -1,5 +1,5 @@
-const parse = require('../../../parse/toJSON')
-const flags = require('../../../../_data/flags')
+const parse = require('../../parse/toJSON')
+const flags = require('../../../_data/flags')
 
 let templates = {
   //https://en.wikipedia.org/wiki/Template:Flag

@@ -1,4 +1,4 @@
-const languages = require('../../../../_data/languages')
+const languages = require('../../_data/languages')
 
 //simply num/denom * 100
 const percentage = function (obj) {
