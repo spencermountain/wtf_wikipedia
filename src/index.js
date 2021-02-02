@@ -23,7 +23,7 @@ const models = {
   http: require('./_fetch/http/server'),
   wtf: wtf,
 }
-let templates = require('./template/templates')
+let templates = require('./template/custom')
 let infoboxes = require('./infobox/_infoboxes')
 
 wtf.fetch = function (title, lang, options, cb) {

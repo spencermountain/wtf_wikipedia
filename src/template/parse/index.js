@@ -1,8 +1,8 @@
 const ignore = require('./_ignore')
 const infobox = require('./_infobox')
-const templates = require('../templates')
+const templates = require('../custom')
 const toJSON = require('./toJSON')
-const { isArray } = require('../../_lib/helpers')
+const { isArray, isObject } = require('../../_lib/helpers')
 
 const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
 
@@ -45,6 +45,12 @@ const parseTemplate = function (tmpl, list, doc) {
       let obj = toJSON(tmpl.body, templates[name])
       list.push(obj)
       return ''
+    }
+    //handle object sytax
+    if (isObject(templates[name]) === true) {
+      let obj = toJSON(tmpl.body, templates[name].props)
+      list.push(obj)
+      return obj[templates[name].out]
     }
     //handle function syntax
     if (typeof templates[name] === 'function') {

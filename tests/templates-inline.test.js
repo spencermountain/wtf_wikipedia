@@ -51,7 +51,6 @@ test('inline-no-data', function (t) {
 * Example 3
 }}`,
     ],
-    [`tooltip`, `{{Tooltip|G|Games played}}`],
     [`abbrlink`, `{{abbrlink|UK|United Kingdom}}`],
     [
       `h`,

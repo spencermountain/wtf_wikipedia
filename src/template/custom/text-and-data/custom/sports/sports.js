@@ -1,5 +1,5 @@
-const parse = require('../../../parse/toJSON')
-const flags = require('../../../../_data/flags')
+const parse = require('../../../../parse/toJSON')
+const flags = require('../../../../../_data/flags')
 const playoffBracket = require('./_lib')
 
 let sports = {

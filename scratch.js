@@ -14,18 +14,13 @@ wtf.extend(require('./plugins/disambig/src'))
 //   console.log(doc.disambiguation())
 // })
 
-let str = `{{Infobox | subbox = yes
-  | headerstyle = background-color:#ccc;
-  | labelstyle = background-color:#ddd;
-  | header1 = Sub 3-1
-  | header2 = Sub 3-2
-  |  label3 = Label 3-3 |   data3 = Data 3-3
- }}
+let str = `{{MLBplayer|number|name}}
 `
 // str = `causes [[food browning|browning]]`
 // str = `[[2001 NBA Playoffs|2001]]`
 let doc = wtf(str)
-console.log(doc.infobox())
+console.log(doc.templates())
+console.log(doc.text())
 // doc.title('Lothian (disambiguation)')
 // console.log(doc.link().json())
 

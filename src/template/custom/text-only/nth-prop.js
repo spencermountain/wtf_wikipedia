@@ -1,4 +1,4 @@
-const languages = require('../../_data/languages')
+const languages = require('../../../_data/languages')
 
 //grab the first, second or third pipe..
 let templates = {

@@ -112,6 +112,7 @@ test('wikipedia-templates', function (t) {
      | boxsize = yes
     }}`,
     ],
+    [`tooltip`, `{{Tooltip|G|Games played}}`],
     // [``, ``],
   ]
   arr.forEach((a) => {

@@ -2,12 +2,6 @@ const parse = require('../parse/toJSON')
 const strip = require('../parse/toJSON/_strip')
 
 let templates = {
-  mlbplayer: (tmpl, list) => {
-    let obj = parse(tmpl, ['number', 'name', 'dl'])
-    list.push(obj)
-    return obj.name
-  },
-
   //https://en.wikipedia.org/wiki/Template:Sortname
   sortname: (tmpl) => {
     let order = ['first', 'last', 'target', 'sort']
@@ -47,13 +41,6 @@ let templates = {
     return ''
   },
 
-  //https://en.wikipedia.org/wiki/Template:See_also
-  // 'see also': (tmpl, list) => {
-  //   let data = parse(tmpl)
-  //   list.push(data)
-  //   return ''
-  // },
-
   // https://en.wikipedia.org/wiki/Template:First_word
   'first word': (tmpl) => {
     let obj = parse(tmpl, ['text'])
@@ -76,57 +63,6 @@ let templates = {
     let start = parseInt(obj.start, 10) - 1
     let end = parseInt(obj.end, 10)
     return obj.str.substr(start, end)
-  },
-
-  syntaxhighlight: (tmpl, list) => {
-    let obj = parse(tmpl)
-    list.push(obj)
-    return obj.code || ''
-  },
-
-  samp: (tmpl, list) => {
-    let obj = parse(tmpl, ['1'])
-    list.push(obj)
-    return obj['1'] || ''
-  },
-
-  //https://en.wikipedia.org/wiki/Template:Ra
-  ra: (tmpl) => {
-    let obj = parse(tmpl, ['hours', 'minutes', 'seconds'])
-    return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':')
-  },
-
-  //https://en.wikipedia.org/wiki/Template:Deg2HMS
-  deg2hms: (tmpl) => {
-    //this template should do the conversion
-    let obj = parse(tmpl, ['degrees'])
-    return (obj.degrees || '') + '°'
-  },
-
-  hms2deg: (tmpl) => {
-    //this template should do the conversion too
-    let obj = parse(tmpl, ['hours', 'minutes', 'seconds'])
-    return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':')
-  },
-
-  decdeg: (tmpl) => {
-    //this template should do the conversion too
-    let obj = parse(tmpl, ['deg', 'min', 'sec', 'hem', 'rnd'])
-    return (obj.deg || obj.degrees) + '°'
-  },
-
-  //https://en.wikipedia.org/wiki/Template:Sub
-  sub: (tmpl, list) => {
-    let obj = parse(tmpl, ['text'])
-    list.push(obj)
-    return obj.text || ''
-  },
-
-  //https://en.wikipedia.org/wiki/Template:Sup
-  sup: (tmpl, list) => {
-    let obj = parse(tmpl, ['text'])
-    list.push(obj)
-    return obj.text || ''
   },
 
   reign: (tmpl) => {
@@ -205,13 +141,6 @@ let templates = {
     let obj = parse(tmpl, ['number', 'text'])
     list.push(obj)
     return `[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ${obj.text || obj.number}]`
-  },
-
-  //https://en.wikipedia.org/wiki/Template:Chem2
-  chem2: (tmpl, list) => {
-    let obj = parse(tmpl, ['equation'])
-    list.push(obj)
-    return obj.equation
   },
 
   'medical cases chart/row': (tmpl) => {
@@ -350,13 +279,6 @@ let templates = {
     return `${obj.num}. ${obj.text}`
   },
 
-  //https://en.wikipedia.org/wiki/Template:Interlanguage_link
-  ill: (tmpl) => {
-    let order = ['text', 'lan1', 'text1', 'lan2', 'text2']
-    let obj = parse(tmpl, order)
-    return obj.text
-  },
-
   'block indent': (tmpl) => {
     let obj = parse(tmpl)
     if (obj['1']) {
@@ -433,12 +355,6 @@ let templates = {
     let obj = parse(tmpl, ['text', 'num'])
     let text = obj.text || ''
     return text.padEnd(obj.num, obj.str || '0')
-  },
-
-  //https://en.wikipedia.org/wiki/Template:Abbr
-  abbr: (tmpl) => {
-    let obj = parse(tmpl, ['abbr', 'meaning', 'ipa'])
-    return obj.abbr
   },
 
   //https://en.wikipedia.org/wiki/Template:Abbrlink
