@@ -6,8 +6,15 @@ module.exports = {
   },
   //
   categories: {
-    mapping: [],
-    patterns: [],
+    mapping: [
+      '1904 summer olympics events',
+      '1900 summer olympics events',
+      '2002 winter olympics events',
+    ],
+    patterns: [
+      /. league seasons$/,
+      /^(19|20)[0-9]{2} in (soccer|football|rugby|tennis|basketball|baseball|cricket|sports)/,
+    ],
   },
   //
   descriptions: {

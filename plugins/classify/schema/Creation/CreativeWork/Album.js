@@ -3,8 +3,8 @@ module.exports = {
   children: {},
   //
   categories: {
-    mapping: [],
-    patterns: [],
+    mapping: ['albums recorded at abbey road studios'],
+    patterns: [/[0-9]{4}.*? albums/, /^albums /, / albums$/, /album stubs$/],
   },
   //
   descriptions: {

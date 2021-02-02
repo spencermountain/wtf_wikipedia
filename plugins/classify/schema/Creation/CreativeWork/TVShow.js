@@ -7,7 +7,7 @@ module.exports = {
   //
   categories: {
     mapping: [],
-    patterns: [],
+    patterns: [/television series/],
   },
   //
   descriptions: {

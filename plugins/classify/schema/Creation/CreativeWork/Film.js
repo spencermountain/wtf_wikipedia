@@ -4,7 +4,7 @@ module.exports = {
   //
   categories: {
     mapping: [],
-    patterns: [],
+    patterns: [/[0-9]{4}.*? films/, / films$/, /^films /],
   },
   //
   descriptions: {

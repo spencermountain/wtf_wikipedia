@@ -5,7 +5,10 @@ module.exports = {
   //
   categories: {
     mapping: [],
-    patterns: [],
+    patterns: [
+      /^cities and towns in ./,
+      /(municipalities|settlements|villages|localities|townships) in ./,
+    ],
   },
   //
   descriptions: {

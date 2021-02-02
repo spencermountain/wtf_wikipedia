@@ -3,7 +3,7 @@ module.exports = {
   children: {},
   //
   categories: {
-    mapping: [],
+    mapping: ['presidential elections in ireland'],
     patterns: [],
   },
   //

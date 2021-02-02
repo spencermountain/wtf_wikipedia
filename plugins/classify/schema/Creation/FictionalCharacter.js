@@ -1,10 +1,12 @@
 module.exports = {
-  id: 'Book',
+  id: 'FictionalCharacter',
+  //
   children: {},
+  properties: {},
   //
   categories: {
     mapping: [],
-    patterns: [/(film|novel) stubs$/, /[0-9]{4}.*? (poems|novels)/, / (poems|novels)$/],
+    patterns: [/(fictional|television) characters/],
   },
   //
   descriptions: {

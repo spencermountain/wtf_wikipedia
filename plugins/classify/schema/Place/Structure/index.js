@@ -11,7 +11,12 @@ module.exports = {
   //
   categories: {
     mapping: [],
-    patterns: [],
+    patterns: [
+      /(buildings|bridges) completed in /,
+      /airports established in ./,
+      /(airports|bridges) in ./,
+      /buildings and structures in ./,
+    ],
   },
   //
   descriptions: {

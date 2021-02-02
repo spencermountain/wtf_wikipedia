@@ -8,8 +8,8 @@ module.exports = {
   },
   //
   categories: {
-    mapping: [],
-    patterns: [],
+    mapping: ['male actors from new york city'],
+    patterns: [/actresses/, /actors from ./, /actor stubs$/, / (actors|actresses)$/],
   },
   //
   descriptions: {

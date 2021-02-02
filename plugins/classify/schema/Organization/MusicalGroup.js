@@ -7,8 +7,26 @@ module.exports = {
   },
   //
   categories: {
-    mapping: [],
-    patterns: [],
+    mapping: [
+      'musical quartets',
+      'musical duos',
+      'musical trios',
+      'musical quintets',
+      'english rock music groups',
+      'english new wave musical groups',
+      'african-american musical groups',
+      '21st-century american musicians',
+      'american alternative metal musical groups',
+      'english pop music groups',
+      'art rock musical groups',
+      'english post-punk music groups',
+    ],
+    patterns: [
+      /musical groups from /,
+      /musical groups (dis)?established in [0-9]{4}/,
+      /musical group stubs/,
+      /. music(al)? (groups|duos|trios|quartets|quintets)$/,
+    ],
   },
   //
   descriptions: {

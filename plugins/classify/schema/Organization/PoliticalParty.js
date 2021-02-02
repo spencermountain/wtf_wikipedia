@@ -4,7 +4,7 @@ module.exports = {
   children: {},
   //
   categories: {
-    mapping: [],
+    mapping: ['social democratic parties'],
     patterns: [],
   },
   //

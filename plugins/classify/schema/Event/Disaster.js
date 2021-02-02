@@ -6,7 +6,7 @@ module.exports = {
   },
   //
   categories: {
-    mapping: [],
+    mapping: ['retired atlantic hurricanes'],
     patterns: [],
   },
   //

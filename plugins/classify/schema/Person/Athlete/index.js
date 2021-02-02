@@ -14,7 +14,7 @@ module.exports = {
   //
   categories: {
     mapping: [],
-    patterns: [],
+    patterns: [/sportspeople from ./, /(footballers|cricketers|defencemen|cyclists)/],
   },
   //
   descriptions: {

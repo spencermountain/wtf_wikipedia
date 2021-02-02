@@ -7,8 +7,18 @@ module.exports = {
   },
   //
   categories: {
-    mapping: [],
-    patterns: [],
+    mapping: [
+      'football clubs in england',
+      'english football league clubs',
+      'southern football league clubs',
+      'football clubs in scotland',
+      'premier league clubs',
+      'national basketball association teams',
+    ],
+    patterns: [
+      /football clubs in ./,
+      /(basketball|hockey|baseball|football) teams (in|established) ./,
+    ],
   },
   //
   descriptions: {

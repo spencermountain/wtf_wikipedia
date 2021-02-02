@@ -12,7 +12,15 @@ module.exports = {
   //
   categories: {
     mapping: [],
-    patterns: [],
+    patterns: [
+      /populated places/,
+      /landforms of ./,
+      /railway stations/,
+      /parks in ./,
+      / district$/,
+      /geography stubs$/,
+      /sports venue stubs$/,
+    ],
   },
   //
   descriptions: {

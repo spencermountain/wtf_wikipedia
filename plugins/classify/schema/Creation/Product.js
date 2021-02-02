@@ -6,7 +6,7 @@ module.exports = {
   //
   categories: {
     mapping: [],
-    patterns: [],
+    patterns: [/products introduced in ./, /musical instruments/],
   },
   //
   descriptions: {
