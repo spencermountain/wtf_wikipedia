@@ -48,6 +48,7 @@ const parseTemplate = function (tmpl, list, doc) {
     }
     //handle function syntax
     if (typeof templates[name] === 'function') {
+      // let json = toJSON(tmpl.body)
       //(tmpl, list, alias, doc)
       return templates[name](tmpl.body, list, null, doc)
     }

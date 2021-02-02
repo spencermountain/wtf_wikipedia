@@ -2,31 +2,6 @@ const parse = require('../parse/toJSON')
 const strip = require('../parse/toJSON/_strip')
 
 let templates = {
-  //https://en.wikipedia.org/wiki/Template:Election_box
-  'election box begin': (tmpl, list) => {
-    let data = parse(tmpl)
-    list.push(data)
-    return ''
-  },
-
-  'election box candidate': (tmpl, list) => {
-    let data = parse(tmpl)
-    list.push(data)
-    return ''
-  },
-
-  'election box hold with party link': (tmpl, list) => {
-    let data = parse(tmpl)
-    list.push(data)
-    return ''
-  },
-
-  'election box gain with party link': (tmpl, list) => {
-    let data = parse(tmpl)
-    list.push(data)
-    return ''
-  },
-
   mlbplayer: (tmpl, list) => {
     let obj = parse(tmpl, ['number', 'name', 'dl'])
     list.push(obj)
@@ -54,62 +29,6 @@ let templates = {
     return `[[${name}]]`
   },
 
-  // https://en.wikipedia.org/wiki/Template:About
-  about: (tmpl, list) => {
-    let obj = parse(tmpl)
-    list.push(obj)
-    return ''
-  },
-
-  // https://en.wikipedia.org/wiki/Template:Main
-  main: (tmpl, list) => {
-    let obj = parse(tmpl)
-    list.push(obj)
-    return ''
-  },
-
-  // https://en.wikipedia.org/wiki/Template:Main_list
-  'main list': (tmpl, list) => {
-    let obj = parse(tmpl)
-    list.push(obj)
-    return ''
-  },
-
-  // https://en.wikipedia.org/wiki/Template:See
-  see: (tmpl, list) => {
-    let obj = parse(tmpl)
-    list.push(obj)
-    return ''
-  },
-
-  // https://en.wikipedia.org/wiki/Template:For
-  for: (tmpl, list) => {
-    let obj = parse(tmpl)
-    list.push(obj)
-    return ''
-  },
-
-  // https://en.wikipedia.org/wiki/Template:Further
-  further: (tmpl, list) => {
-    let obj = parse(tmpl)
-    list.push(obj)
-    return ''
-  },
-
-  // same as "further" (but this name is still in use)
-  'further information': (tmpl, list) => {
-    let obj = parse(tmpl)
-    list.push(obj)
-    return ''
-  },
-
-  // https://en.wikipedia.org/wiki/Template:Listen
-  listen: (tmpl, list) => {
-    let obj = parse(tmpl)
-    list.push(obj)
-    return ''
-  },
-
   //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
   'cite gnis': (tmpl, list) => {
     let order = ['id', 'name', 'type']
@@ -129,11 +48,11 @@ let templates = {
   },
 
   //https://en.wikipedia.org/wiki/Template:See_also
-  'see also': (tmpl, list) => {
-    let data = parse(tmpl)
-    list.push(data)
-    return ''
-  },
+  // 'see also': (tmpl, list) => {
+  //   let data = parse(tmpl)
+  //   list.push(data)
+  //   return ''
+  // },
 
   // https://en.wikipedia.org/wiki/Template:First_word
   'first word': (tmpl) => {
