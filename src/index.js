@@ -20,7 +20,7 @@ const models = {
   Reference: require('./reference/Reference'),
   Table: require('./table/Table'),
   Template: require('./template/Template'),
-  http: require('./_fetch/http/server'),
+  http: require('./_lib/fetch'),
   wtf: wtf,
 }
 let templates = require('./template/custom')

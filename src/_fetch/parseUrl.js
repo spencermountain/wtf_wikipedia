@@ -1,12 +1,12 @@
 /**
- * parses out the domain and title from a url
+ * Parses out the domain and title from a url
  *
  * @private
- * @param {string} url the url that will be parsed
- * @returns {{domain: string, title: string}} the domain and title of a url
+ * @param {string} url The url that will be parsed
+ * @returns {{domain: string, title: string}} The domain and title of a url
  */
 const parseUrl = function (url) {
-  let parsed = new URL(url) //eslint-disable-line
+  let parsed = new URL(url)
   let title = parsed.pathname.replace(/^\/(wiki\/)?/, '')
   title = decodeURIComponent(title)
   return {

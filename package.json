@@ -31,7 +31,7 @@
     "test:integration": "tape ./tests/integration/*.test.js | tap-dancer",
     "test:plugins": "node ./scripts/test.js",
     "test:types": "ts-node ./tests/types/index.ts",
-    "test:unit": "tape ./tests/unit/*.test.js | tap-dancer",
+    "test:unit": "tape ./tests/unit/**/*.test.js | tap-dancer",
     "test": "npm run test:unit && npm run test:integration && npm run test:plugins",
     "watch": "amble ./scratch.js"
   },
@@ -39,15 +39,16 @@
     "wtf_wikipedia": "./cli.js"
   },
   "engines": {
-    "node": ">=7.0.0"
+    "node": ">=10.0.0"
   },
   "browserslist": [
     "defaults",
     "not ie <= 11",
     "not op_mini all",
-    "node 7",
-    "node 8",
-    "node 9",
+    "node 10",
+    "node 11",
+    "node 12",
+    "node 13",
     "maintained node versions"
   ],
   "files": [
@@ -68,11 +69,13 @@
     "singleQuote": true,
     "printWidth": 120
   },
-  "dependencies": {},
+  "dependencies": {
+    "isomorphic-unfetch": "^3.1.0"
+  },
   "devDependencies": {
     "@babel/core": "7.12.9",
     "@babel/preset-env": "7.12.7",
-    "@rollup/plugin-alias": "3.1.1",
+    "@rollup/plugin-node-resolve": "^11.0.1",
     "amble": "1.2.0",
     "codecov": "3.8.1",
     "cross-env": "7.0.3",

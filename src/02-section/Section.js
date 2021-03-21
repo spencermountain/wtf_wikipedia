@@ -18,6 +18,12 @@ const defaults = {
   infoboxes: true,
 }
 
+/**
+ * the Section class represents the different sections of the article.
+ * we look for the == title == syntax and split and parse the sections from there
+ * 
+ * @class
+ */
 class Section {
   /**
    * the stuff between headings - 'History' section for example

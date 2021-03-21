@@ -1,11 +1,11 @@
 /**
- * capitalises the input
+ * capitalizes the input
  * hello -> Hello
  * hello there -> Hello there
  *
  * @private
- * @param {string} [str] the string that will be capitalised
- * @returns {string} the capitalised string
+ * @param {string} [str] the string that will be capitalized
+ * @returns {string} the capitalized string
  */
 function capitalise(str) {
   if (str && typeof str === 'string') {

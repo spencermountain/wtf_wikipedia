@@ -6,7 +6,7 @@ const Image = require('../../image/Image')
 /**
  *
  * @private
- * @param {string} catcher
+ * @param {object} catcher
  * @param {Document} doc
  * @param {Section} section
  */

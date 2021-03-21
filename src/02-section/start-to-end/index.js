@@ -16,7 +16,7 @@ const Template = require('../../template/Template')
  * @private
  * @param {Section} section
  * @param {Document} doc
- * @returns {string} wikitext
+ * @returns {Object} wikitext
  */
 const xmlTemplates = function (section, doc) {
   const res = {

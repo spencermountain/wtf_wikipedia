@@ -1,10 +1,10 @@
-const parseUrl = require('./00-parseUrl')
-const makeUrl = require('./01-makeUrl')
-const getResult = require('./02-getResult')
-const parseDoc = require('./03-parseDoc')
-const http = require('./http/server')
+const unfetch = require('isomorphic-unfetch')
+
+const parseUrl = require('./parseUrl')
+const makeUrl = require('./makeUrl')
+const getResult = require('./getResult')
+const parseDoc = require('./parseDoc')
 const makeHeaders = require('./_headers')
-const { isObject } = require('../_lib/helpers')
 const isUrl = /^https?:\/\//
 
 /**
@@ -14,12 +14,11 @@ const isUrl = /^https?:\/\//
  * @property {string | undefined} [domain]
  * @property {boolean | undefined} [follow_redirects]
  * @property {string | undefined} [lang]
- * @property {string | number | Array<string | number>| undefined} [title]
+ * @property {string | number | Array<string> | Array<number> | undefined} [title]
  * @property {string | undefined} [Api-User-Agent]
  */
 
 /**
- *
  * @type {fetchDefaults}
  */
 const defaults = {
@@ -31,42 +30,33 @@ const defaults = {
 }
 
 /**
- *  fetches the page from the wiki and returns a Promise with the parsed wikitext
- *
- * @param {string | number | Array<number | string>} title the title, PageID, URL or an array of all three of the page(s) you want to fetch
- * @param {fetchDefaults| Function | string} [options] the options for the fetch or the language of the wiki for the article or the callback if you dont provide any options
- * @param {Function | fetchDefaults} [c] the callback function for the call or the options for the fetch
- * @returns {Promise<null | Document | Document[]>} either null if no page is found, Document if you asked for one result, and a array of Documents if you asked for muliple pages
+ * @callback fetchCallback
+ * @param {Object} error
+ * @param {(null | Document | Document[])} response
  */
-const fetch = function (title, options, c) {
-  let callback = null
-  if (typeof options === 'function') {
-    callback = options
-    options = defaults
-  }
 
-  //if the call c is a function then its the callback
-  if (typeof c === 'function') {
-    callback = c
-  }
-
-  //support lang 2nd param
-  if (typeof options === 'string') {
-    options = Object.assign({}, { lang: options }, isObject(c) ? c : defaults)
-  }
-
-  options = options || {}
-  options = Object.assign({}, defaults, options)
+/**
+ *  fetches the page from the wiki and returns a Promise with the parsed wiki text
+ *
+ * @param {string | number | Array<number> | Array<string>} title the title, PageID, URL or an array of all three of the page(s) you want to fetch
+ * @param {fetchDefaults} [options] the options for the fetch or the language of the wiki for the article
+ * @param {fetchCallback} [callback] the callback function for the call
+ * @returns {Promise<null | Document | Document[]>} either null if the pages is not found, Document if you asked for one result, and a array of Documents if you asked for multiple pages
+ */
+const fetch = function (title, options, callback) {
+  options = { ...defaults, ...options }
   options.title = title
 
   //parse url input
   if (typeof title === 'string' && isUrl.test(title)) {
-    options = Object.assign(options, parseUrl(title))
+    options = { ...options, ...parseUrl(title) }
   }
 
   const url = makeUrl(options)
   const headers = makeHeaders(options)
-  return http(url, headers)
+
+  return unfetch(url, headers)
+    .then((res) => res.json())
     .then((res) => {
       let data = getResult(res, options)
       data = parseDoc(data)

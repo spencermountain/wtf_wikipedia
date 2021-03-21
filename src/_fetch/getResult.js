@@ -5,28 +5,37 @@
  *
  * @private
  * @param {object} data
- * @param {object} options
+ * @param {object} [options]
  * @returns {*} result
  */
-const getResult = function (data, options) {
-  options = options || {}
+const getResult = function (data, options = {}) {
+  //get all the pagesIds from the result
   let pages = Object.keys(data.query.pages)
+
+  // map over the pageIds to parse out all the information
   return pages.map((id) => {
+    // get the page by pageID
     let page = data.query.pages[id] || {}
+
+    // if the page is missing or not found than return null
     if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
       return null
     }
+
+    // get the text from the object
     let text = page.revisions[0]['*']
-    //console.log(page.revisions[0])
-    //us the 'generator' result format, for the random() method
+    // if the text is not found in the regular place than it is at the other place
     if (!text && page.revisions[0].slots) {
       text = page.revisions[0].slots.main['*']
     }
+
     page.pageprops = page.pageprops || {}
+
     let domain = options.domain
     if (!domain && options.wiki) {
       domain = `${options.wiki}.org`
     }
+
     let meta = Object.assign({}, options, {
       title: page.title,
       pageID: page.pageid,
@@ -35,12 +44,10 @@ const getResult = function (data, options) {
       wikidata: page.pageprops.wikibase_item,
       description: page.pageprops['wikibase-shortdesc'],
     })
-    try {
-      return { wiki: text, meta: meta }
-    } catch (e) {
-      console.error(e)
-      throw e
-    }
+
+
+    return { wiki: text, meta: meta }
   })
 }
+
 module.exports = getResult

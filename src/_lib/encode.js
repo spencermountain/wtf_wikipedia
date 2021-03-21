@@ -3,6 +3,13 @@
 //https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
 const specialChar = /[\\\.$]/
 
+/**
+ * this function encodes a string to make it mongodb compatible.
+ * https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
+ * 
+ * @param {string} str 
+ * @returns {string} the encoded string
+ */
 const encodeStr = function (str) {
   if (typeof str !== 'string') {
     str = ''
