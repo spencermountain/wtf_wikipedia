@@ -6,7 +6,7 @@ module.exports = {
   //
   categories: {
     mapping: [],
-    patterns: [/(rivers|lakes|tributaries) of ./,
+    patterns: [/(rivers|lakes|tributaries) of ./],
   },
   //
   descriptions: {
