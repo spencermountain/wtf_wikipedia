@@ -1,6 +1,6 @@
 //every value in {{tmpl|a|b|c}} needs a name
 //here we come up with names for them
-const hasKey = /^[a-z0-9\u00C0-\u00FF\._\- '()œ]+=/iu
+const hasKey = /^[a-z0-9\u00C0-\u00FF\u4e00-\u9faf\._\- '()œ]+=/iu
 
 //templates with these properties are asking for trouble
 const reserved = {
