@@ -24,7 +24,7 @@
     "coverage:tests": "npm run test && npm run test:fetch",
     "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' npm run coverage:tests",
     "lint": "eslint ./src/ ./plugins ./tests",
-    "postinstall": "npm-recursive-install --rootDir=plugins",
+    "postinstall": "path-exists ./plugins && npm-recursive-install --rootDir=plugins || echo 'nothing to install'",
     "start": "node ./scripts/demo.js",
     "test:build": "cross-env TESTENV=prod && npm run test",
     "test:fetch": "tape ./tests/fetch/*.test.js | tap-dancer",
@@ -70,7 +70,9 @@
     "printWidth": 120
   },
   "dependencies": {
-    "isomorphic-unfetch": "^3.1.0"
+    "isomorphic-unfetch": "^3.1.0",
+    "recursive-install": "1.4.0",
+    "path-exists-cli": "1.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.9",
@@ -82,7 +84,6 @@
     "eslint": "7.14.0",
     "eslint-plugin-compat": "^3.8.0",
     "nyc": "^15.1.0",
-    "recursive-install": "1.4.0",
     "rollup": "2.34.1",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-commonjs": "10.1.0",

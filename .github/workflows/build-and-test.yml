@@ -31,7 +31,7 @@ jobs:
         run: |
           npm ci
           npm run build
-          npm run testb
+          npm run test:build
           npm run test:fetch
         env:
           CI: true
