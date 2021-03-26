@@ -17,6 +17,13 @@ const defaults = {
   paragraphs: true,
 }
 
+/**
+ * The document class is the main entry point of wtf_wikipedia.
+ * this class represents an article of wikipedia. 
+ * from here you can go to the infoboxes or paragraphs
+ * 
+ * @class
+ */
 class Document {
   /**
    * The constructor for the document class

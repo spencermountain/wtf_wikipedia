@@ -18,36 +18,37 @@
   "sideEffects": false,
   "types": "types/index.d.ts",
   "scripts": {
-    "build": "node ./scripts/version.js && rollup -c",
     "build:all": "node ./scripts/buildAll.js",
-    "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' npm run coverage:tests",
-    "coverage:tests": "npm run test && npm run test:fetch",
+    "build": "node ./scripts/version.js && rollup -c",
     "codecov": "npm run coverage && codecov -t 62d2cc94-1c1f-4e21-a9af-42cc0cf39c51",
+    "coverage:tests": "npm run test && npm run test:fetch",
+    "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' npm run coverage:tests",
     "lint": "eslint ./src/ ./plugins ./tests",
-    "postinstall": "npm-recursive-install --rootDir=plugins",
+    "postinstall": "path-exists ./plugins && npm-recursive-install --rootDir=plugins || echo 'nothing to install'",
     "start": "node ./scripts/demo.js",
-    "testSec": "nyc -r lcov -n 'src/02-section/*' tape tests/Section.test.js",
-    "testDoc": "nyc -r lcov -n 'src/02-section/*' tape tests/Document.test.js",
-    "test": "cross-env TESTENV=dev && node ./scripts/test.js",
-    "test:fetch": "cross-env TESTENV=dev && tape ./tests/fetch/*.test.js | tap-dancer",
-    "test:spec": "cross-env TESTENV=dev && tape ./tests/*.test.js | tap-spec",
+    "test:build": "cross-env TESTENV=prod && npm run test",
+    "test:fetch": "tape ./tests/fetch/*.test.js | tap-dancer",
+    "test:integration": "tape ./tests/integration/*.test.js | tap-dancer",
+    "test:plugins": "node ./scripts/test.js",
     "test:types": "ts-node ./tests/types/index.ts",
-    "testb": "cross-env TESTENV=prod && node ./scripts/test.js",
+    "test:unit": "tape ./tests/unit/**/*.test.js | tap-dancer",
+    "test": "npm run test:unit && npm run test:integration && npm run test:plugins",
     "watch": "amble ./scratch.js"
   },
   "bin": {
     "wtf_wikipedia": "./cli.js"
   },
   "engines": {
-    "node": ">=7.0.0"
+    "node": ">=10.0.0"
   },
   "browserslist": [
     "defaults",
     "not ie <= 11",
     "not op_mini all",
-    "node 7",
-    "node 8",
-    "node 9",
+    "node 10",
+    "node 11",
+    "node 12",
+    "node 13",
     "maintained node versions"
   ],
   "files": [
@@ -68,18 +69,21 @@
     "singleQuote": true,
     "printWidth": 120
   },
-  "dependencies": {},
+  "dependencies": {
+    "isomorphic-unfetch": "^3.1.0",
+    "recursive-install": "1.4.0",
+    "path-exists-cli": "1.0.0"
+  },
   "devDependencies": {
     "@babel/core": "7.12.9",
     "@babel/preset-env": "7.12.7",
-    "@rollup/plugin-alias": "3.1.1",
+    "@rollup/plugin-node-resolve": "^11.0.1",
     "amble": "1.2.0",
     "codecov": "3.8.1",
     "cross-env": "7.0.3",
     "eslint": "7.14.0",
     "eslint-plugin-compat": "^3.8.0",
     "nyc": "^15.1.0",
-    "recursive-install": "1.4.0",
     "rollup": "2.34.1",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-commonjs": "10.1.0",
