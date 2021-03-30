@@ -1,5 +1,4 @@
-const patterns = {}
-const mapping = {}
+const { patterns, mappings } = require('../../schema/_data-fns')
 const byPattern = require('../_byPattern')
 
 const byCategory = function (doc) {
@@ -14,16 +13,16 @@ const byCategory = function (doc) {
   })
   // loop through each
   for (let i = 0; i < cats.length; i++) {
-    const cat = cats[i]
+    const category = cats[i]
     // try our 1-to-1 mapping
-    if (mapping.hasOwnProperty(cat)) {
-      found.push({ cat: mapping[cat], reason: cat })
+    if (mappings.categories.hasOwnProperty(category)) {
+      found.push({ type: mappings.categories[category], reason: category })
       continue
     }
     // loop through our patterns
-    let match = byPattern(cat, patterns)
+    let match = byPattern(category, patterns.categories)
     if (match) {
-      found.push({ cat: match, reason: cat })
+      found.push({ type: match, reason: category })
     }
   }
   return found

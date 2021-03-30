@@ -35,7 +35,6 @@ const plugin = function (models) {
 
     //look for 'Category: 1992 Births', etc
     res.category = byCategory(doc, options)
-
     return score(res, options)
   }
 }

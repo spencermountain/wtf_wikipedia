@@ -40,23 +40,23 @@ const doNode = function (node) {
       mappings.titles[str] = node.id
     })
     // collect patterns
-    node.categories.patterns.forEach((str) => {
-      patterns.categories.push(str)
+    node.categories.patterns.forEach((reg) => {
+      patterns.categories.push([reg, node.id])
     })
-    node.descriptions.patterns.forEach((str) => {
-      patterns.descriptions.push(str)
+    node.descriptions.patterns.forEach((reg) => {
+      patterns.descriptions.push([reg, node.id])
     })
-    node.infoboxes.patterns.forEach((str) => {
-      patterns.infoboxes.push(str)
+    node.infoboxes.patterns.forEach((reg) => {
+      patterns.infoboxes.push([reg, node.id])
     })
-    node.sections.patterns.forEach((str) => {
-      patterns.sections.push(str)
+    node.sections.patterns.forEach((reg) => {
+      patterns.sections.push([reg, node.id])
     })
-    node.templates.patterns.forEach((str) => {
-      patterns.templates.push(str)
+    node.templates.patterns.forEach((reg) => {
+      patterns.templates.push([reg, node.id])
     })
-    node.titles.patterns.forEach((str) => {
-      patterns.titles.push(str)
+    node.titles.patterns.forEach((reg) => {
+      patterns.titles.push([reg, node.id])
     })
   }
 
@@ -67,6 +67,4 @@ const doNode = function (node) {
   }
 }
 doNode(schema)
-
 module.exports = { patterns, mappings }
-console.log(patterns)

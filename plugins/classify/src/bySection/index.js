@@ -1,4 +1,4 @@
-const sections = {}
+const { mappings } = require('../../schema/_data-fns')
 
 const fromSection = function (doc) {
   let found = []
@@ -9,8 +9,8 @@ const fromSection = function (doc) {
   })
   for (let i = 0; i < titles.length; i++) {
     const title = titles[i]
-    if (sections.hasOwnProperty(title)) {
-      found.push({ cat: sections[title], reason: title })
+    if (mappings.sections.hasOwnProperty(title)) {
+      found.push({ type: mappings.sections[title], reason: title })
     }
   }
   return found

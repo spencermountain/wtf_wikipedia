@@ -34,7 +34,7 @@ test('classify-test', async function (t) {
     let txt = fs.readFileSync(abs).toString()
     let doc = wtf(txt)
     let res = doc.classify()
-    t.equal(res.category, a[1], a[0])
+    t.equal(res.type, a[1], a[0])
   })
   t.end()
 })

@@ -30,7 +30,7 @@ module.exports = {
   },
   //
   descriptions: {
-    patterns: [],
+    patterns: [/rock band/],
   },
   //
   infoboxes: {

@@ -1,5 +1,4 @@
-const mapping = {}
-const patterns = {}
+const { patterns, mappings } = require('../../schema/_data-fns')
 const byPattern = require('../_byPattern')
 const paren = /\((.*)\)$/
 
@@ -19,14 +18,14 @@ const byTitle = function (doc) {
   inside = inside.trim()
 
   //look at known parentheses
-  if (mapping.hasOwnProperty(inside)) {
-    return [{ cat: mapping[inside], reason: inside }]
+  if (mappings.titles.hasOwnProperty(inside)) {
+    return [{ type: mappings.titles[inside], reason: inside }]
   }
 
   // look at regex
-  let match = byPattern(title, patterns)
+  let match = byPattern(title, patterns.titles)
   if (match) {
-    return [{ cat: match, reason: title }]
+    return [{ type: match, reason: title }]
   }
   return []
 }
