@@ -83,7 +83,18 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: [
+      'american football player',
+      'football player',
+      'gaelic footballer',
+      'athlete',
+      'boxer',
+      'cricketer',
+      'footballer',
+      'wrestler',
+      'golfer',
+      'swimmer',
+    ],
     patterns: [],
   },
 }

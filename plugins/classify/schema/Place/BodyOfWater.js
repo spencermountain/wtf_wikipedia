@@ -29,7 +29,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['river'],
     patterns: [],
   },
 }

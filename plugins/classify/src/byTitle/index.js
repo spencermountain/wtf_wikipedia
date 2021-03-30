@@ -1,4 +1,4 @@
-const mapping = require('./mapping')
+const mapping = {}
 const patterns = require('./patterns')
 const byPattern = require('../_byPattern')
 const paren = /\((.*)\)$/

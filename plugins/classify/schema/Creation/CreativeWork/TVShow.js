@@ -30,7 +30,14 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: [
+      'tv series',
+      'game show',
+      'u.s. tv series',
+      'uk tv series',
+      'australian tv series',
+      'u.s. game show',
+    ],
     patterns: [],
   },
 }

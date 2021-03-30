@@ -77,7 +77,15 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: [
+      'australian politician',
+      'canadian politician',
+      'politician',
+      'british politician',
+      'governor',
+      'irish politician',
+      'mayor',
+    ],
     patterns: [],
   },
 }

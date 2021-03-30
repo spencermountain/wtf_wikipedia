@@ -43,7 +43,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['company', 'newspaper', 'restaurant', 'retailer', 'store'],
     patterns: [],
   },
 }

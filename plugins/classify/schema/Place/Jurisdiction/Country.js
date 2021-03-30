@@ -28,7 +28,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['country'],
     patterns: [],
   },
 }

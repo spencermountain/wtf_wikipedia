@@ -157,7 +157,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['plant', 'genus', 'fish', 'bird'],
     patterns: [],
   },
 }

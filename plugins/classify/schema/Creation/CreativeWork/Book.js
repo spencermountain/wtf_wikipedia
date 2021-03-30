@@ -27,7 +27,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['book', 'novel'],
     patterns: [],
   },
 }

@@ -28,7 +28,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['political party'],
     patterns: [],
   },
 }

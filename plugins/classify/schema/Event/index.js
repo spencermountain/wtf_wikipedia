@@ -162,7 +162,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['festival', '25 m', 'world war ii', 'conmebol', 'music festival', 'world war i'],
     patterns: [],
   },
 }

@@ -27,7 +27,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['album'],
     patterns: [],
   },
 }

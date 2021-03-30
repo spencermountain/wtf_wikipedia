@@ -57,7 +57,15 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: [
+      'band',
+      'american band',
+      'australian band',
+      'canadian band',
+      'uk band',
+      'japanese band',
+      'swedish band',
+    ],
     patterns: [],
   },
 }

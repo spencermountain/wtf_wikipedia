@@ -42,7 +42,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['computer game', 'candy', 'board game', 'card game', 'automobile'],
     patterns: [],
   },
 }

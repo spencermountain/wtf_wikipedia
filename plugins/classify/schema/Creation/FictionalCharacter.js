@@ -40,7 +40,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['character'],
     patterns: [],
   },
 }

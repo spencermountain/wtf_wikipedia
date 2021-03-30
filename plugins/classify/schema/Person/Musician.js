@@ -108,7 +108,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['composer', 'musician', 'rapper', 'singer'],
     patterns: [],
   },
 }

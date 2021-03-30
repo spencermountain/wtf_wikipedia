@@ -32,7 +32,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['actor', 'actress'],
     patterns: [],
   },
 }

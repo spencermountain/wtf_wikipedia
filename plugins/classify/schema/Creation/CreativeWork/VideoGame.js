@@ -57,7 +57,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['video game'],
     patterns: [],
   },
 }

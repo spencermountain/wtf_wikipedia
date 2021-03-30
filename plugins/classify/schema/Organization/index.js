@@ -155,7 +155,24 @@ module.exports = {
   },
   //
   titles: {
-    mapping: [],
+    mapping: [
+      'group',
+      'journal',
+      'am',
+      'fm',
+      'wehrmacht',
+      'tv channel',
+      'british band',
+      'organization',
+      'airline',
+      'publisher',
+      'brand',
+      'record label',
+      'union army',
+      'defunct',
+      'tv network',
+      'department store',
+    ],
     patterns: [],
   },
 }
