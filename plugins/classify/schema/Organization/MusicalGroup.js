@@ -34,7 +34,7 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: ['musical_artist'],
     patterns: [],
   },
   //

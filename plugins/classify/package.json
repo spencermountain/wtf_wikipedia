@@ -28,7 +28,6 @@
     "singleQuote": true,
     "printWidth": 100
   },
-  "dependencies": {},
   "peerDependencies": {
     "wtf_wikipedia": "^8.0.0"
   },

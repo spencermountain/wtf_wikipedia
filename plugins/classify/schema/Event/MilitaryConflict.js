@@ -25,7 +25,7 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: ['military_conflict', 'military conflict', 'civil conflict', 'civilian attack'],
     patterns: [],
   },
   //

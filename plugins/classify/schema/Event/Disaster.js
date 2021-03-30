@@ -15,7 +15,14 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: [
+      'aircraft_accident',
+      'airliner_accident',
+      'earthquake',
+      'hurricane',
+      'pandemic',
+      'airliner accident',
+    ],
     patterns: [],
   },
   //

@@ -14,7 +14,7 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: ['body_of_water', 'lake', 'river', 'sea', 'body of water'],
     patterns: [],
   },
   //

@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'OuterSpacePlace',
+  id: 'OuterSpaceLocation',
   //
   children: {},
   properties: {},
@@ -14,7 +14,7 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: ['constellation', 'planet', 'galaxy'],
     patterns: [],
   },
   //

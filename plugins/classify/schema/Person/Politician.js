@@ -43,7 +43,26 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: [
+      'canadianmp',
+      'governor',
+      'indian_politician',
+      'mp',
+      'officeholder',
+      'politician',
+      'politician_(general)',
+      'president',
+      'roman_emperor',
+      'state_representative',
+      'state_senator',
+      'congressman',
+      'prime minister',
+      'indian politician',
+      'senator',
+      'state representative',
+      'state senator',
+      'us cabinet official',
+    ],
     patterns: [],
   },
   //

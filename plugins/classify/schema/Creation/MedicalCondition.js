@@ -17,7 +17,7 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: ['medical condition (new)', 'medical condition', 'disease'],
     patterns: [],
   },
   //

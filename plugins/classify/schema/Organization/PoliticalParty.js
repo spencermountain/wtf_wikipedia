@@ -13,7 +13,7 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: ['political_party', 'political party'],
     patterns: [],
   },
   //

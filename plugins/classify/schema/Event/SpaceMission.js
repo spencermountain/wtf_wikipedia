@@ -36,7 +36,7 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: ['spaceflight', 'spaceflight/dock', 'spaceflight/ip'],
     patterns: [],
   },
   //

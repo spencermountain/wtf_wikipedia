@@ -14,7 +14,18 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: [
+      'character',
+      'comics_character',
+      'soap_character',
+      'mythical creature',
+      'd&d creature',
+      'vg character',
+      'animanga character',
+      'video game character',
+      'doctor who character',
+      'tolkien character',
+    ],
     patterns: [],
   },
   //

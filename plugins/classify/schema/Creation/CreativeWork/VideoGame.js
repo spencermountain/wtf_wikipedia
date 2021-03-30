@@ -42,7 +42,7 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: ['video game'],
     patterns: [],
   },
   //

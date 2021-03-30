@@ -14,7 +14,20 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: [
+      'automobile',
+      'beverage',
+      'cpu',
+      'electric_vehicle',
+      'gpu',
+      'mobile_phone',
+      'motorcycle',
+      'synthesizer',
+      'television',
+      'card game',
+      'computer',
+      'laboratory equipment',
+    ],
     patterns: [],
   },
   //

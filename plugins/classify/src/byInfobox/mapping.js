@@ -596,3 +596,11 @@ module.exports = {
   'u.s. congressional district': 'Place',
   'power station': 'Place/Structure',
 }
+let res = {}
+let obj = module.exports
+Object.keys(obj).forEach((k) => {
+  let val = obj[k]
+  res[val] = res[val] || []
+  res[val].push(k)
+})
+console.log(res)

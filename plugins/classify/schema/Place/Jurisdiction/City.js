@@ -16,7 +16,13 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: [
+      'swiss town',
+      'city japan',
+      'municipality br',
+      'russian town',
+      'south african town 2011',
+    ],
     patterns: [],
   },
   //

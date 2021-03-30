@@ -17,7 +17,7 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: ['actor'],
     patterns: [],
   },
   //

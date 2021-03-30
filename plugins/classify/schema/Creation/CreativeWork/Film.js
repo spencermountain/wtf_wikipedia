@@ -12,7 +12,7 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: ['film'],
     patterns: [],
   },
   //

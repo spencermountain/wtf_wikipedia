@@ -12,7 +12,7 @@ module.exports = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: ['album'],
     patterns: [],
   },
   //
