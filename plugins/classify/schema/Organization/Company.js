@@ -39,7 +39,7 @@ module.exports = {
   //
   templates: {
     mapping: [],
-    patterns: [],
+    patterns: [/-company-stub$/],
   },
   //
   titles: {

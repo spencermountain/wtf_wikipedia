@@ -79,7 +79,7 @@ module.exports = {
   //
   templates: {
     mapping: [],
-    patterns: [],
+    patterns: [/sport-bio-stub$/],
   },
   //
   titles: {

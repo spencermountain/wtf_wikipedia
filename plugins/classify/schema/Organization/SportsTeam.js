@@ -58,7 +58,7 @@ module.exports = {
   //
   templates: {
     mapping: [],
-    patterns: [],
+    patterns: [/-sport-team-stub$/],
   },
   //
   titles: {

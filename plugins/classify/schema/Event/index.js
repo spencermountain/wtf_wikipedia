@@ -146,7 +146,18 @@ module.exports = {
   },
   //
   templates: {
-    mapping: [],
+    mapping: [
+      'esc',
+      'year nav',
+      'year dab',
+      'goal',
+      'flagiocmedalist',
+      'm1 year in topic',
+      'year nav topic5',
+      'bc year in topic',
+      'flagiocathlete',
+      'year article header',
+    ],
     patterns: [],
   },
   //

@@ -104,7 +104,7 @@ module.exports = {
   //
   templates: {
     mapping: [],
-    patterns: [],
+    patterns: [/(musician|singer)-stub$/],
   },
   //
   titles: {

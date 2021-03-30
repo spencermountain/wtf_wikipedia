@@ -22,8 +22,8 @@ module.exports = {
   },
   //
   templates: {
-    mapping: [],
-    patterns: [],
+    mapping: ['track listing', 'tracklist'],
+    patterns: [/-album-stub$/],
   },
   //
   titles: {

@@ -25,7 +25,7 @@ module.exports = {
   },
   //
   templates: {
-    mapping: [],
+    mapping: ['episode list'],
     patterns: [],
   },
   //

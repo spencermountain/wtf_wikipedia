@@ -28,7 +28,7 @@ module.exports = {
   //
   templates: {
     mapping: [],
-    patterns: [],
+    patterns: [/actor-stub$/],
   },
   //
   titles: {

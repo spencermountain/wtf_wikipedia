@@ -22,8 +22,8 @@ module.exports = {
   },
   //
   templates: {
-    mapping: [],
-    patterns: [],
+    mapping: ['election summary party with leaders'],
+    patterns: [/-election-stub$/],
   },
   //
   titles: {

@@ -23,7 +23,7 @@ module.exports = {
   },
   //
   templates: {
-    mapping: [],
+    mapping: ['baseball year'],
     patterns: [],
   },
   //

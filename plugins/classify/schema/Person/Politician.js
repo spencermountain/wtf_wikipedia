@@ -72,8 +72,8 @@ module.exports = {
   },
   //
   templates: {
-    mapping: [],
-    patterns: [],
+    mapping: ['list of united states senators congress'],
+    patterns: [/(politician|mayor)-stub$/],
   },
   //
   titles: {

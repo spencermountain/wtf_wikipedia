@@ -177,8 +177,20 @@ module.exports = {
   },
   //
   templates: {
-    mapping: [],
-    patterns: [],
+    mapping: [
+      'coord',
+      'weather box',
+      'us census population',
+      'jct',
+      'geographic location',
+      'representative',
+      'historical populations',
+      'wikivoyage-inline',
+      'election box',
+      'zh',
+      'wide image',
+    ],
+    patterns: [/-geo-stub$/],
   },
   //
   titles: {

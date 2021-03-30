@@ -23,7 +23,7 @@ module.exports = {
   //
   templates: {
     mapping: [],
-    patterns: [],
+    patterns: [/-novel-stub$/],
   },
   //
   titles: {

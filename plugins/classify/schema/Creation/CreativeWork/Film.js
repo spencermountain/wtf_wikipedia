@@ -22,8 +22,8 @@ module.exports = {
   },
   //
   templates: {
-    mapping: [],
-    patterns: [],
+    mapping: ['imdb title', 'film date', 'rotten-tomatoes'],
+    patterns: [/-film-stub$/],
   },
   //
   titles: {

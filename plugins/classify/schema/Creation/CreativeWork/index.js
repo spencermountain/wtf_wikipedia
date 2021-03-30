@@ -148,8 +148,23 @@ module.exports = {
   },
   //
   templates: {
-    mapping: [],
-    patterns: [],
+    mapping: [
+      'rating',
+      'certification table entry',
+      'albumchart',
+      'music',
+      'album ratings',
+      'album chart',
+      'singles',
+      'isbnt',
+      'singlechart',
+      'tcmdb title',
+      'mojo title',
+      'based on',
+      'amg movie',
+      'duration',
+    ],
+    patterns: [/-song-stub$/],
   },
   //
   titles: {

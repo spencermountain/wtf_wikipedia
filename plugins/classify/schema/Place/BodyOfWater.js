@@ -25,7 +25,7 @@ module.exports = {
   //
   templates: {
     mapping: [],
-    patterns: [],
+    patterns: [/-river-stub$/],
   },
   //
   titles: {

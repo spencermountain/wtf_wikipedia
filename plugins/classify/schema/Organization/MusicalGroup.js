@@ -52,7 +52,7 @@ module.exports = {
   },
   //
   templates: {
-    mapping: [],
+    mapping: ['allmusic'],
     patterns: [],
   },
   //

@@ -150,7 +150,7 @@ module.exports = {
   },
   //
   templates: {
-    mapping: [],
+    mapping: ['composition bar', 'fs player', 'y', 'n', 'rws'],
     patterns: [],
   },
   //
