@@ -9,17 +9,17 @@ let mappings = {
   titles: {},
 }
 let patterns = {
-  categories: {},
-  descriptions: {},
-  infoboxes: {},
-  sections: {},
-  templates: {},
-  titles: {},
+  categories: [],
+  descriptions: [],
+  infoboxes: [],
+  sections: [],
+  templates: [],
+  titles: [],
 }
 
 const doNode = function (node) {
   if (node.id) {
-    console.log(node.name)
+    // collect mappings
     node.categories.mapping.forEach((str) => {
       mappings.categories[str] = node.id
     })
@@ -39,6 +39,25 @@ const doNode = function (node) {
     node.titles.mapping.forEach((str) => {
       mappings.titles[str] = node.id
     })
+    // collect patterns
+    node.categories.patterns.forEach((str) => {
+      patterns.categories.push(str)
+    })
+    node.descriptions.patterns.forEach((str) => {
+      patterns.descriptions.push(str)
+    })
+    node.infoboxes.patterns.forEach((str) => {
+      patterns.infoboxes.push(str)
+    })
+    node.sections.patterns.forEach((str) => {
+      patterns.sections.push(str)
+    })
+    node.templates.patterns.forEach((str) => {
+      patterns.templates.push(str)
+    })
+    node.titles.patterns.forEach((str) => {
+      patterns.titles.push(str)
+    })
   }
 
   if (node.children) {
@@ -50,4 +69,4 @@ const doNode = function (node) {
 doNode(schema)
 
 module.exports = { patterns, mappings }
-console.log(mappings)
+console.log(patterns)
