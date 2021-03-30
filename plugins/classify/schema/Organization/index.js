@@ -8,8 +8,8 @@ module.exports = {
     PoliticalParty: require('./PoliticalParty'),
   },
   properties: {
-    leaders: (doc) => {},
-    members: (doc) => {},
+    leaders: () => {},
+    members: () => {},
   },
   //
   categories: {
@@ -38,7 +38,7 @@ module.exports = {
   },
   //
   descriptions: {
-    patterns: [],
+    patterns: [/(charity|organization|ngo)/],
   },
   //
   infoboxes: {

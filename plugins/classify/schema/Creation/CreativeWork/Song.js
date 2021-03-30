@@ -1,19 +1,18 @@
 module.exports = {
-  id: 'PoliticalParty',
-  //
+  id: 'Song',
   children: {},
   //
   categories: {
-    mapping: ['social democratic parties'],
-    patterns: [],
+    mapping: [],
+    patterns: [/[0-9]{4}.*? songs/, /^songs /, / songs$/, /song stubs$/],
   },
   //
   descriptions: {
-    patterns: [/political party/],
+    patterns: [],
   },
   //
   infoboxes: {
-    mapping: ['political_party', 'political party'],
+    mapping: [],
     patterns: [],
   },
   //
@@ -28,7 +27,7 @@ module.exports = {
   },
   //
   titles: {
-    mapping: ['political party'],
+    mapping: ['song'],
     patterns: [],
   },
 }

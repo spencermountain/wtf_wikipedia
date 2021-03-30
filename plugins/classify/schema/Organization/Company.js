@@ -24,7 +24,7 @@ module.exports = {
   },
   //
   descriptions: {
-    patterns: [],
+    patterns: [/(company|subsidary)/],
   },
   //
   infoboxes: {

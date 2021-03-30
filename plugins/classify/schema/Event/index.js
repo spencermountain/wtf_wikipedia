@@ -163,6 +163,6 @@ module.exports = {
   //
   titles: {
     mapping: ['festival', '25 m', 'world war ii', 'conmebol', 'music festival', 'world war i'],
-    patterns: [],
+    patterns: [/ \((19|20)[0-9]{2}\)$/],
   },
 }

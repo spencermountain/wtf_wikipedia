@@ -13,7 +13,7 @@ module.exports = {
   },
   //
   descriptions: {
-    patterns: [],
+    patterns: [/(actor|actress)/],
   },
   //
   infoboxes: {

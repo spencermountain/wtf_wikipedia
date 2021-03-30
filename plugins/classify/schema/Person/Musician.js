@@ -89,7 +89,7 @@ module.exports = {
   },
   //
   descriptions: {
-    patterns: [],
+    patterns: [/(singer|musicianrapper|drummer)/, /(keyboard|guitar|bass) player/],
   },
   //
   infoboxes: {

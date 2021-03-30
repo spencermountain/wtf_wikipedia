@@ -11,7 +11,7 @@ module.exports = {
   },
   //
   descriptions: {
-    patterns: [],
+    patterns: [/television series/],
   },
   //
   infoboxes: {

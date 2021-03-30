@@ -6,6 +6,7 @@ module.exports = {
     Film: require('./Film'),
     TVShow: require('./TVShow'),
     Play: require('./Play'),
+    Song: require('./Song'),
     VideoGame: require('./VideoGame'),
   },
   //
@@ -209,6 +210,6 @@ module.exports = {
       'babylon 5',
       'madonna song',
     ],
-    patterns: [],
+    patterns: [/ \((.*? )song\)$/],
   },
 }

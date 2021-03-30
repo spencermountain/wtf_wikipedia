@@ -39,7 +39,7 @@ module.exports = {
   },
   //
   descriptions: {
-    patterns: [],
+    patterns: [/(politician|member of parliament)/],
   },
   //
   infoboxes: {

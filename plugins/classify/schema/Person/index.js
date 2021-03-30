@@ -93,7 +93,7 @@ module.exports = {
   },
   //
   descriptions: {
-    patterns: [],
+    patterns: [/(artist|painter|poet|writer|celebrity|activist)/],
   },
   //
   infoboxes: {

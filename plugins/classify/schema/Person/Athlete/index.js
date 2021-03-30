@@ -18,7 +18,7 @@ module.exports = {
   },
   //
   descriptions: {
-    patterns: [],
+    patterns: [/(hockey|soccer|backetball|football) player/],
   },
   //
   infoboxes: {

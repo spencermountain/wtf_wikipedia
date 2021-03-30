@@ -22,7 +22,7 @@ module.exports = {
   },
   //
   descriptions: {
-    patterns: [],
+    patterns: [/(basketball|hockey|soccer|football|sports) team/],
   },
   //
   infoboxes: {

@@ -8,7 +8,7 @@ module.exports = {
   },
   //
   descriptions: {
-    patterns: [],
+    patterns: [/[0-9]{4} film/],
   },
   //
   infoboxes: {
@@ -28,6 +28,6 @@ module.exports = {
   //
   titles: {
     mapping: ['movie'],
-    patterns: [],
+    patterns: [/ \([0-9]{4} film\)$/],
   },
 }
