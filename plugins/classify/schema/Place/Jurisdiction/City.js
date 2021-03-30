@@ -27,7 +27,13 @@ module.exports = {
   },
   //
   sections: {
-    mapping: ['sister cities'],
+    mapping: [
+      'sister cities',
+      'neighbourhoods',
+      'churches',
+      'parks and recreation',
+      'public transportation',
+    ],
     patterns: [],
   },
   //

@@ -18,7 +18,7 @@ module.exports = {
   },
   //
   sections: {
-    mapping: [],
+    mapping: ['international relations'],
     patterns: [],
   },
   //
