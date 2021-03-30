@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'Event',
+  name: 'Event',
   properties: {
     dates: () => {},
     places: () => {},

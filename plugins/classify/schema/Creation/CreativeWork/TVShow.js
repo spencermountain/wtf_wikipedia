@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'TVShow',
+  name: 'TVShow',
   children: {},
   properties: {
     seasons: () => {},

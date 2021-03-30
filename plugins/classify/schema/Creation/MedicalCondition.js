@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'MedicalCondition',
+  name: 'MedicalCondition',
   //
   children: {},
   properties: {

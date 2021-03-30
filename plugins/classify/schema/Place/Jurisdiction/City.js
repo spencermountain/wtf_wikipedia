@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'City',
+  name: 'City',
   //
   children: {},
   //

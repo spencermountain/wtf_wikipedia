@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'Person',
+  name: 'Person',
   children: {
     Athlete: require('./Athlete'),
     Actor: require('./Actor'),

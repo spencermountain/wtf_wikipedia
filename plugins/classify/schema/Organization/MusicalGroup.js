@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'MusicalGroup',
+  name: 'MusicalGroup',
   //
   children: {},
   properties: {

@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'OuterSpaceLocation',
+  name: 'OuterSpaceLocation',
   //
   children: {},
   properties: {},

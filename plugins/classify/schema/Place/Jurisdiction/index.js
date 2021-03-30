@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'Jurisdiction',
+  name: 'Jurisdiction',
   children: {
     City: require('./City'),
     Country: require('./Country'),

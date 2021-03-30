@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'SportsEvent',
+  name: 'SportsEvent',
   children: {},
   properties: {
     winners: () => {},

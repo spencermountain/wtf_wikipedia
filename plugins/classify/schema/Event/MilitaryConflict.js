@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'MilitaryConflict',
+  name: 'MilitaryConflict',
   children: {},
   //
   categories: {

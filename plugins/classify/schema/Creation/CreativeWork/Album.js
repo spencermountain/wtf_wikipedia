@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'Album',
+  name: 'Album',
   children: {},
   //
   categories: {

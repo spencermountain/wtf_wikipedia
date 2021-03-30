@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'Creation',
+  name: 'Creation',
   children: {
     CreativeWork: require('./CreativeWork'),
     MedicalCondition: require('./MedicalCondition'),

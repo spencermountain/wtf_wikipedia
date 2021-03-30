@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'Airport',
+  name: 'Airport',
   //
   children: {},
   properties: {

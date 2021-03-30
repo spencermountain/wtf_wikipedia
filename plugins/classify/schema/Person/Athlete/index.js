@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'Athlete',
+  name: 'Athlete',
   //
   properties: {
     leagues: () => {},

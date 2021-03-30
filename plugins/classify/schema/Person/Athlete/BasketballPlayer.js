@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'BasketballPlayer',
+  name: 'BasketballPlayer',
   //
   children: {},
   //

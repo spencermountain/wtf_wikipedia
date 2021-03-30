@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'Place',
+  name: 'Place',
   children: {
     Jurisdiction: require('./Jurisdiction'),
     Structure: require('./Structure'),

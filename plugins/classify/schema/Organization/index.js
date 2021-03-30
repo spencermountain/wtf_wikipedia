@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'Organization',
+  name: 'Organization',
   //
   children: {
     MusicalGroup: require('./MusicalGroup'),

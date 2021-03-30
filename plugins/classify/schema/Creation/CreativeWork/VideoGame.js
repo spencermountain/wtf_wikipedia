@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'VideoGame',
+  name: 'VideoGame',
   children: {},
   properties: {
     platforms: () => {},

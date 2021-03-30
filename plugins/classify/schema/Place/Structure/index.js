@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'Structure',
+  name: 'Structure',
   //
   children: {
     Bridge: require('./Bridge'),

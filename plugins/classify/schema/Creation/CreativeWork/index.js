@@ -1,5 +1,5 @@
 module.exports = {
-  id: 'CreativeWork',
+  name: 'CreativeWork',
   children: {
     Album: require('./Album'),
     Book: require('./Book'),
