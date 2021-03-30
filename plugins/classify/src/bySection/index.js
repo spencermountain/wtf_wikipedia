@@ -1,4 +1,4 @@
-const sections = require('./mapping')
+const sections = {}
 
 const fromSection = function (doc) {
   let found = []

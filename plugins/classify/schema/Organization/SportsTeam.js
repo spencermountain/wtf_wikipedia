@@ -52,7 +52,7 @@ module.exports = {
   },
   //
   sections: {
-    mapping: [],
+    mapping: ['coaching staff', 'head coaches', 'team records', 'current squad'],
     patterns: [],
   },
   //

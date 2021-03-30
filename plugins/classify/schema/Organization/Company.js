@@ -33,7 +33,7 @@ module.exports = {
   },
   //
   sections: {
-    mapping: [],
+    mapping: ['products'],
     patterns: [],
   },
   //

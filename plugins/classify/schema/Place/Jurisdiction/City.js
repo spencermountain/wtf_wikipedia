@@ -27,7 +27,7 @@ module.exports = {
   },
   //
   sections: {
-    mapping: [],
+    mapping: ['sister cities'],
     patterns: [],
   },
   //

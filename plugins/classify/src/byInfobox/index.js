@@ -1,4 +1,4 @@
-const mapping = require('./mapping')
+const mapping = {}
 
 const byInfobox = function (doc) {
   let infoboxes = doc.infoboxes()

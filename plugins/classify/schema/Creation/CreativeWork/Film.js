@@ -17,7 +17,7 @@ module.exports = {
   },
   //
   sections: {
-    mapping: [],
+    mapping: ['cast'],
     patterns: [],
   },
   //

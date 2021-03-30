@@ -17,7 +17,7 @@ module.exports = {
   },
   //
   sections: {
-    mapping: [],
+    mapping: ['track listing'],
     patterns: [],
   },
   //

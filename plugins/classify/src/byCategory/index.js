@@ -1,5 +1,5 @@
-const patterns = require('./patterns')
-const mapping = require('./mapping')
+const patterns = {}
+const mapping = {}
 const byPattern = require('../_byPattern')
 
 const byCategory = function (doc) {

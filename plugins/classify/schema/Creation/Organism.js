@@ -108,7 +108,15 @@ module.exports = {
   },
   //
   sections: {
-    mapping: [],
+    mapping: [
+      'habitat',
+      'morphology',
+      'phylogeny',
+      'distribution and diversity',
+      'distribution and habitat',
+      'reproduction and development',
+      'taxonomy and phylogeny',
+    ],
     patterns: [],
   },
   //

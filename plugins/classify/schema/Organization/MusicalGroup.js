@@ -39,7 +39,15 @@ module.exports = {
   },
   //
   sections: {
-    mapping: [],
+    mapping: [
+      'band members',
+      'albums',
+      'studio albums',
+      'compilation albums',
+      'live albums',
+      'compilations',
+      'eps',
+    ],
     patterns: [],
   },
   //

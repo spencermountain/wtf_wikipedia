@@ -41,7 +41,7 @@ module.exports = {
   },
   //
   sections: {
-    mapping: [],
+    mapping: ['mission highlights'],
     patterns: [],
   },
   //
