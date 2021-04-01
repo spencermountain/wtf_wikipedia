@@ -1,6 +1,6 @@
 const parse = require('../../parse/toJSON')
 
-const generic = function (tmpl, list, alias) {
+const generic = function (tmpl, list, _parser, alias) {
   let obj = parse(tmpl)
   if (alias) {
     obj.name = obj.template

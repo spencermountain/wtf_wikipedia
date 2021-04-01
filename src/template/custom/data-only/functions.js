@@ -85,7 +85,7 @@ module.exports = {
   },
 
   //https://en.wikipedia.org/wiki/Template:Sfn
-  sfn: (tmpl, list, alias) => {
+  sfn: (tmpl, list, parser, alias) => {
     let order = ['author', 'year', 'location']
     let obj = parse(tmpl, order)
     if (alias) {

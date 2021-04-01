@@ -2,7 +2,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.wtfI18n = factory());
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wtfI18n = factory());
 }(this, (function () { 'use strict';
 
   var birth_date_and_age = ['ålder', 'ani', 'b', // 'birth date',
@@ -95,7 +95,7 @@
   var taxobox = ['bảng phân loại', 'biotakso infokaste', 'blwch tacson', 'boks klassans', 'bosca sonraí tacsanomaíochta', 'capsa taxinomica', 'dora tewran', 'ficha de taxón', 'info/taxonomia', "infotaula d'ésser viu", 'kishtey fys baagh', 'kotak info taksonomi', 'puha fakafaʻahinga', 'takso kutusu', 'taksoboks', 'taksokvir', 'takson infobox', 'taksonitabel', 'taksonomia', 'taksonomiija', 'taksonomio', 'taksonomiýa', 'taksonomka', 'taksoqutu', 'tassobox', 'tassonomìa', // 'taxobox',
   'taxobox öömrang', 'taxobox2', 'taxoboxe', 'taxocaixa', 'taxonomio', 'taxotaula infotaula', 'ταξινομοπλαίσιο', 'таксанамічная інфармацыя', 'таксанамія', 'таксаҥа', 'таксобокс', 'таксон', 'таксономија', 'таксономиясь', 'таксономія', 'ტაქსოდაფა', 'տաքսոտուփ', 'מיון', 'جعبه اطلاعات آرایه زیستی', 'صندوق معلومات كائن', 'जीवचौकट', 'වර්ගීකරණකොටුව', 'ตารางจำแนกพันธุ์', 'ຕາລາງຈຳແໜກພັນ', '생물 분류', '物種明細模', '生物分類表'];
 
-  var mapping = {
+  let mapping = {
     'birth date and age': birth_date_and_age,
     citation: citation,
     'cite book': cite_book,
@@ -118,12 +118,12 @@
     taxobox: taxobox
   };
 
-  var plugin = function plugin(models, templates) {
-    Object.keys(mapping).forEach(function (k) {
-      mapping[k].forEach(function (name) {
+  const plugin = function (models, templates) {
+    Object.keys(mapping).forEach(k => {
+      mapping[k].forEach(name => {
         // create template parser with alias
-        templates[name] = function (tmpl, list) {
-          return templates[k](tmpl, list, k);
+        templates[name] = function (tmpl, list, parse) {
+          return templates[k](tmpl, list, parse, k);
         };
       });
     });

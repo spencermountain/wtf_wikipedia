@@ -603,8 +603,9 @@ does your wiki use a `{{foo}}` template? Add a custom parser for it:
 ```js
 wtf.extend((models, templates) => {
   // create a custom parser function
-  templates.foo = (text, data) => {
-    data.templates.push({ name: 'foo', cool: true })
+  templates.foo = (tmpl, list, parse) => {
+    let obj = parse(tmpl) //or do a custom regex
+    list.push(obj)
     return 'new-text'
   }
 

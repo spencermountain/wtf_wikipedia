@@ -1,22 +1,6 @@
 /* wtf-plugin-image 0.2.0  MIT */
 import https from 'https';
 
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function (obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function (obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function createCommonjsModule(fn, module) {
@@ -336,7 +320,7 @@ var hashes = createCommonjsModule(function (module, exports) {
        * @class Base64
        * @constructor
        */
-      Base64: function Base64() {
+      Base64: function () {
         // private properties
         var tab = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/',
             pad = '=',
@@ -447,7 +431,7 @@ var hashes = createCommonjsModule(function (module, exports) {
        * @param {String} str Input String
        * @return {String}
        */
-      CRC32: function CRC32(str) {
+      CRC32: function (str) {
         var crc = 0,
             x = 0,
             y = 0,
@@ -480,7 +464,7 @@ var hashes = createCommonjsModule(function (module, exports) {
        * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
        * See <http://pajhome.org.uk/crypt/md5> for more infHashes.
        */
-      MD5: function MD5(options) {
+      MD5: function (options) {
         /**
          * Private config properties. You may need to tweak these to be compatible with
          * the server-side, but the defaults work in most cases.
@@ -737,7 +721,7 @@ var hashes = createCommonjsModule(function (module, exports) {
        * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
        * See http://pajhome.org.uk/crypt/md5 for details.
        */
-      SHA1: function SHA1(options) {
+      SHA1: function (options) {
         /**
          * Private config properties. You may need to tweak these to be compatible with
          * the server-side, but the defaults work in most cases.
@@ -961,15 +945,15 @@ var hashes = createCommonjsModule(function (module, exports) {
        * See http://pajhome.org.uk/crypt/md5 for details.
        * Also http://anmar.eu.org/projects/jssha2/
        */
-      SHA256: function SHA256(options) {
+      SHA256: function (options) {
         /**
          * Private properties configuration variables. You may need to tweak these to be compatible with
          * the server-side, but the defaults work in most cases.
          * @see this.setUpperCase() method
          * @see this.setPad() method
          */
-        var hexcase = options && typeof options.uppercase === 'boolean' ? options.uppercase : false,
-            // hexadecimal output case format. false - lowercase; true - uppercase  */
+        options && typeof options.uppercase === 'boolean' ? options.uppercase : false;
+            var // hexadecimal output case format. false - lowercase; true - uppercase  */
         b64pad = options && typeof options.pad === 'string' ? options.pad : '=',
 
         /* base-64 pad character. Default '=' for strict RFC compliance   */
@@ -1025,9 +1009,6 @@ var hashes = createCommonjsModule(function (module, exports) {
 
 
         this.setUpperCase = function (a) {
-          if (typeof a === 'boolean') {
-            hexcase = a;
-          }
 
           return this;
         };
@@ -1195,16 +1176,16 @@ var hashes = createCommonjsModule(function (module, exports) {
        * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
        * See http://pajhome.org.uk/crypt/md5 for details.
        */
-      SHA512: function SHA512(options) {
+      SHA512: function (options) {
         /**
          * Private properties configuration variables. You may need to tweak these to be compatible with
          * the server-side, but the defaults work in most cases.
          * @see this.setUpperCase() method
          * @see this.setPad() method
          */
-        var hexcase = options && typeof options.uppercase === 'boolean' ? options.uppercase : false,
+        options && typeof options.uppercase === 'boolean' ? options.uppercase : false;
 
-        /* hexadecimal output case format. false - lowercase; true - uppercase  */
+        var /* hexadecimal output case format. false - lowercase; true - uppercase  */
         b64pad = options && typeof options.pad === 'string' ? options.pad : '=',
 
         /* base-64 pad character. Default '=' for strict RFC compliance   */
@@ -1260,9 +1241,6 @@ var hashes = createCommonjsModule(function (module, exports) {
 
 
         this.setUpperCase = function (a) {
-          if (typeof a === 'boolean') {
-            hexcase = a;
-          }
 
           return this;
         };
@@ -1535,16 +1513,16 @@ var hashes = createCommonjsModule(function (module, exports) {
        * See http://pajhome.org.uk/crypt/md5 for details.
        * Also http://www.ocf.berkeley.edu/~jjlin/jsotp/
        */
-      RMD160: function RMD160(options) {
+      RMD160: function (options) {
         /**
          * Private properties configuration variables. You may need to tweak these to be compatible with
          * the server-side, but the defaults work in most cases.
          * @see this.setUpperCase() method
          * @see this.setPad() method
          */
-        var hexcase = options && typeof options.uppercase === 'boolean' ? options.uppercase : false,
+        options && typeof options.uppercase === 'boolean' ? options.uppercase : false;
 
-        /* hexadecimal output case format. false - lowercase; true - uppercase  */
+        var /* hexadecimal output case format. false - lowercase; true - uppercase  */
         b64pad = options && typeof options.pad === 'string' ? options.pa : '=',
 
         /* base-64 pad character. Default '=' for strict RFC compliance   */
@@ -1603,9 +1581,6 @@ var hashes = createCommonjsModule(function (module, exports) {
 
 
         this.setUpperCase = function (a) {
-          if (typeof a === 'boolean') {
-            hexcase = a;
-          }
 
           return this;
         };
@@ -1783,19 +1758,19 @@ var hashes = createCommonjsModule(function (module, exports) {
       {
         freeExports = exports;
 
-        if (exports && _typeof(commonjsGlobal) === 'object' && commonjsGlobal && commonjsGlobal === commonjsGlobal.global) {
+        if (exports && typeof commonjsGlobal === 'object' && commonjsGlobal && commonjsGlobal === commonjsGlobal.global) {
           window = commonjsGlobal;
         }
       }
 
-      if (typeof undefined$1 === 'function' && _typeof(undefined$1.amd) === 'object' && undefined$1.amd) {
+      if (typeof undefined$1 === 'function' && typeof undefined$1.amd === 'object' && undefined$1.amd) {
         // define as an anonymous module, so, through path mapping, it can be aliased
         undefined$1(function () {
           return Hashes;
         });
       } else if (freeExports) {
         // in Node.js or RingoJS v0.8.0+
-        if ( module && module.exports === freeExports) {
+        if (module && module.exports === freeExports) {
           module.exports = Hashes;
         } // in Narwhal or RingoJS v0.7.0-
         else {
@@ -1810,10 +1785,10 @@ var hashes = createCommonjsModule(function (module, exports) {
 
 });
 
-var server = 'https://upload.wikimedia.org/wikipedia/commons/';
+const server$1 = 'https://upload.wikimedia.org/wikipedia/commons/';
 
-var encodeTitle = function encodeTitle(file) {
-  var title = file.replace(/^(image|file?)\:/i, ''); //titlecase it
+const encodeTitle = function (file) {
+  let title = file.replace(/^(image|file?)\:/i, ''); //titlecase it
 
   title = title.charAt(0).toUpperCase() + title.substring(1); //spaces to underscores
 
@@ -1823,35 +1798,34 @@ var encodeTitle = function encodeTitle(file) {
 //https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F
 
 
-var commonsURL = function commonsURL() {
-  var file = this.data.file;
-  var title = encodeTitle(file);
-  var hash = new hashes.MD5().hex(title);
-  var path = hash.substr(0, 1) + '/' + hash.substr(0, 2) + '/';
+const commonsURL = function () {
+  let file = this.data.file;
+  let title = encodeTitle(file);
+  let hash = new hashes.MD5().hex(title);
+  let path = hash.substr(0, 1) + '/' + hash.substr(0, 2) + '/';
   title = encodeURIComponent(title);
   path += title;
-  return server + path;
+  return server$1 + path;
 };
 
 var urlHash = commonsURL;
 
-var request = function request(url) {
-  var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  return new Promise(function (resolve, reject) {
-    https.get(url, opts, function (resp) {
-      var status = String(resp.statusCode) || '';
-      var bool = /^[23]/.test(status);
+const request = function (url, opts = {}) {
+  return new Promise((resolve, reject) => {
+    https.get(url, opts, resp => {
+      let status = String(resp.statusCode) || '';
+      let bool = /^[23]/.test(status);
       resolve(bool);
-    }).on('error', function (err) {
+    }).on('error', err => {
       reject(err);
     });
   });
 };
 
-var server$1 = request;
+var server = request;
 
-var imgExists = function imgExists(callback) {
-  return server$1(this.url(), {
+const imgExists = function (callback) {
+  return server(this.url(), {
     method: 'HEAD'
   }).then(function (bool) {
     //support callback non-promise form
@@ -1860,7 +1834,7 @@ var imgExists = function imgExists(callback) {
     }
 
     return bool;
-  })["catch"](function (e) {
+  }).catch(e => {
     console.error(e);
 
     if (callback) {
@@ -1871,8 +1845,16 @@ var imgExists = function imgExists(callback) {
 
 var imgExists_1 = imgExists;
 
-var addMethod = function addMethod(models) {
-  // add a new method to Image class
+// is there a good image of this
+const mainImage = function (opt = {}) {
+  return null;
+};
+
+var mainImage_1 = mainImage;
+
+const addMethod = function (models) {
+  models.Doc.mainImage = mainImage_1; // add a new method to Image class
+
   models.Image.prototype.commonsURL = urlHash;
   models.Image.prototype.exists = imgExists_1;
 };

@@ -1,19 +1,17 @@
 const wtf = require('./src/index')
 const test = require('tape')
+const fs = require('fs')
+const path = require('path')
 
 // wtf.extend(require('./plugins/wikis/wikinews'))
-// wtf.extend(require('./plugins/image/src'))
+wtf.extend(require('./plugins/i18n/src'))
+wtf.extend(require('./plugins/classify/src'))
+// const i18n = require('../../i18n')
+// wtf.extend(i18n)
 
-wtf.extend((models, templates) => {
-  templates.cooltime = (text, doc, alias, parse) => {
-    // console.log(text)
-    // console.log(doc)
-    console.log(parse)
-    return
-  }
-})
-
-let str = `{{cooltime|ohyeah}}`
-
-let doc = wtf(str)
-// console.log(doc.templates())
+let abs = path.join(__dirname, `./tests/cache/Sara-C.-Bisel.txt`)
+let txt = fs.readFileSync(abs).toString()
+let doc = wtf(txt)
+console.log(doc.templates())
+// let res = doc.classify()
+// console.log(res)

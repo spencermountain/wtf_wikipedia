@@ -1,24 +1,27 @@
 <!--
 #### [unreleased 9.0.0]
+
+- **[breaking]** - plural methods like .sentences() always return arrays, even with a 'clue' param.
+-->
+#### 9.0.0
+big cleanup of .fetch() (thanks wouter!), 'parse' param for templates.
+
+- **[breaking]** - change interpretation of reversed params in .fetch() method
+- **[breaking]** - change params to new templates added by plugins
 - **[breaking]** - move .random() and .category() to plugin-api
-- **[breaking]** - change interpretation of loose callback params in .fetch() method
-- **[breaking]** - cleanup plural/singular method responses
-    - plural methods like .sentences() always return arrays, even with a 'clue' param.
-    - singular now methods return 0th or null, by default
-    - bold() -> bolds()
-    - italic() -> italics()
-    - interwiki() -> interwikis()
-- **[breaking]** - cleanup null|undefined responses from methods
-- **[breaking]** - remove .dates() method (prev deprecated)
-- **[breaking]** - require node 10, ie > 11
+- **[possibly-breaking]** - cleanup null|undefined responses from methods
+- **[possibly-breaking]** - remove .dates() method (prev deprecated)
+- **[possibly-breaking]** - require node 10, ie > 11
 - **[change]** - normalize table rows
 - **[change]** - move wiktionary templates to `wtf-plugin-wiktionary`
 - **[change]** - Link.text() now returns page
-- **[new]** - api plugin, disambig plugin, person plugin
+- **[new]** - api plugin
+- **[new]** - disambig plugin
+- **[new]** - person plugin
 - **[new]** - Table.get() method
 - **[new]** - set new infoboxes using .extend()
 - deprecate wtf-plugin-category (move to wtf-plugin-api)
--->
+
 #### 8.5.1
 
 - fix reference json encoding for mongodb
