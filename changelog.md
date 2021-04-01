@@ -15,6 +15,7 @@ big cleanup of .fetch() (thanks wouter!), 'parse' param for templates.
 - **[change]** - normalize table rows
 - **[change]** - move wiktionary templates to `wtf-plugin-wiktionary`
 - **[change]** - Link.text() now returns page
+- **[change]** - improvements to 'soft' `isDisambiguation` detection
 - **[new]** - api plugin
 - **[new]** - disambig plugin
 - **[new]** - person plugin

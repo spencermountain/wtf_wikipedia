@@ -1,17 +1,25 @@
 const wtf = require('./src/index')
-const test = require('tape')
-const fs = require('fs')
-const path = require('path')
+wtf.extend(require('./plugins/disambig/src'))
 
-// wtf.extend(require('./plugins/wikis/wikinews'))
-wtf.extend(require('./plugins/i18n/src'))
-wtf.extend(require('./plugins/classify/src'))
-// const i18n = require('../../i18n')
-// wtf.extend(i18n)
+let str = `'''[[Barrie]]''' is a city in Ontario, Canada.
 
-let abs = path.join(__dirname, `./tests/cache/Sara-C.-Bisel.txt`)
-let txt = fs.readFileSync(abs).toString()
-let doc = wtf(txt)
-console.log(doc.templates())
-// let res = doc.classify()
-// console.log(res)
+'''Barrie''' may also refer to:
+
+* [[Barrie (electoral district)]], Canadian federal electoral district
+* [[Barrie (provincial electoral district)]], provincial electoral district
+* or I guess, if you're weird [[Barrie—Simcoe—Bradford]], former Canadian electoral district
+* [[Barrie School]], private school in Silver Spring, Maryland
+* [[Barrie (company)]], fashion company owned by Chanel
+* [[Little Barrie]], British band
+==Surname==
+* [[Barrie (name)]]
+
+==See also==
+* [[Barre (disambiguation)]]
+* [[Barry (disambiguation)]]
+* [[Berry (disambiguation)]]
+{{srt}}`
+
+let doc = wtf(str)
+// console.log(doc.isDisambiguation())
+console.log(doc.disambiguation())

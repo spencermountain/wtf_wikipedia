@@ -1,6 +1,6 @@
 const sectionMap = require('./_sectionMap')
 const toJSON = require('./toJson')
-const disambig = require('./disambig')
+const isDisambig = require('./isDisambig')
 const setDefaults = require('../_lib/setDefaults')
 const Image = require('../image/Image')
 
@@ -19,9 +19,9 @@ const defaults = {
 
 /**
  * The document class is the main entry point of wtf_wikipedia.
- * this class represents an article of wikipedia. 
+ * this class represents an article of wikipedia.
  * from here you can go to the infoboxes or paragraphs
- * 
+ *
  * @class
  */
 class Document {
@@ -223,7 +223,7 @@ class Document {
    * @returns {boolean} Whether the page is a disambiguation page
    */
   isDisambiguation() {
-    return disambig(this)
+    return isDisambig(this)
   }
 
   /**
