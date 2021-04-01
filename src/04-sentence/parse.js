@@ -10,7 +10,7 @@ const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`
 const acronym_reg = /[ .'][A-Z].? *?$/i
 const elipses_reg = /\.\.\.* +?$/
 const circa_reg = / c\.\s$/
-const hasWord = /[a-zа-яぁ-ゟ][a-zа-яぁ-ゟ゠-ヿ]/iu
+const hasWord = /\p{Letter}/iu
 
 //turn a nested array into one array
 const flatten = function (arr) {
