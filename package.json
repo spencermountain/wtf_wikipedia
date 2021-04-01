@@ -71,8 +71,8 @@
   },
   "dependencies": {
     "isomorphic-unfetch": "^3.1.0",
-    "recursive-install": "1.4.0",
-    "path-exists-cli": "1.0.0"
+    "path-exists-cli": "1.0.0",
+    "recursive-install": "1.4.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.9",

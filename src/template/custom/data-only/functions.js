@@ -3,6 +3,12 @@ const Image = require('../../../image/Image')
 const lib = require('../_lib')
 
 module.exports = {
+  // need this one for i18n mappings
+  main: (tmpl, list) => {
+    let obj = parse(tmpl)
+    list.push(obj)
+    return ''
+  },
   // https://en.wikipedia.org/wiki/Template:IPA
   ipa: (tmpl, list) => {
     let obj = parse(tmpl, ['transcription', 'lang', 'audio'])

@@ -1,6 +1,7 @@
 <!--
 #### [unreleased 9.0.0]
 - **[breaking]** - move .random() and .category() to plugin-api
+- **[breaking]** - change interpretation of loose callback params in .fetch() method
 - **[breaking]** - cleanup plural/singular method responses
     - plural methods like .sentences() always return arrays, even with a 'clue' param.
     - singular now methods return 0th or null, by default
@@ -15,7 +16,6 @@
 - **[new]** - Table.get() method
 - **[new]** - set new infoboxes using .extend()
 - deprecate wtf-plugin-category (moved to wtf-plugin-api)
-
 -->
 #### 8.5.1
 

@@ -9,7 +9,6 @@
     "type": "git",
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
-  "dependencies": {},
   "peerDependencies": {
     "wtf_wikipedia": "^8.0.0"
   },

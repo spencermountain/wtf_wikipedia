@@ -24,12 +24,11 @@ test('first-sentence cleanup summary', (t) => {
   let count = 0
   arr.forEach((txt) => {
     let str = wtf(txt).summary({ article: false })
-    // console.log(str)
     if (str) {
       count += 1
     }
   })
-  let want = parseInt(arr.length * 0.8, 10)
+  let want = parseInt(arr.length * 0.75, 10)
   t.ok(count > want, count + ' > ' + want)
   t.end()
 })

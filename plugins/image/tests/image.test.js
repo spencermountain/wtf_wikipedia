@@ -3,7 +3,8 @@ const wtf = require('./_lib')
 
 test('image-methods', function (t) {
   wtf
-    .fetch('casa', 'it', {
+    .fetch('casa', {
+      lang: 'it',
       wiki: `wiktionary`
     })
     .then(function (doc) {
