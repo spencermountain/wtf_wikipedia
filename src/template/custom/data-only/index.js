@@ -9,7 +9,6 @@ let templates = {
   'short description': ['description'],
   'coord missing': ['region'],
   unreferenced: ['date'],
-  uss: ['ship', 'id'],
   'taxon info': ['taxon', 'item'], //https://en.wikipedia.org/wiki/Template:Taxon_info
   'portuguese name': ['first', 'second', 'suffix'], // https://en.wikipedia.org/wiki/Template:Portuguese_name
   geo: ['lat', 'lon', 'zoom'], //https://en.wikivoyage.org/wiki/Template:Geo

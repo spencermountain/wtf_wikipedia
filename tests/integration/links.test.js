@@ -82,6 +82,17 @@ test('title-case-links', (t) => {
   t.end()
 })
 
+test('remove styling in link text', (t) => {
+  let doc = wtf(`[[cool|fun ''times'']]`)
+  let txt = doc.link().text()
+  t.equal(txt, `fun times`, 'no-italics')
+
+  doc = wtf(`[[cool stuff|fun '''times''' now]]`)
+  txt = doc.link().text()
+  t.equal(txt, `fun times now`, 'no-bold')
+  t.end()
+})
+
 test('tricksy-links', (t) => {
   const doc = wtf(`[[US]]9999.2`)
   t.equal(doc.text(), 'US9999.2', 'link-nospace')

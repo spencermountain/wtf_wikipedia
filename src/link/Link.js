@@ -16,7 +16,10 @@ const methods = {
     if (str !== undefined) {
       this.data.text = str
     }
-    return this.data.text || this.data.page || ''
+    let txt = this.data.text || this.data.page || ''
+    // remove bold/italics
+    txt = txt.replace(/''+/g, '')
+    return txt
   },
   json: function () {
     let obj = {

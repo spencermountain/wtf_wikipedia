@@ -1,25 +1,25 @@
 const wtf = require('./src/index')
 wtf.extend(require('./plugins/disambig/src'))
 
-let str = `'''[[Barrie]]''' is a city in Ontario, Canada.
+let str = `'''Barry''' may refer to:
+{{TOC right}}
 
-'''Barrie''' may also refer to:
+* [[Barry (UK Parliament constituency)]]
+* [[Barry University]], a private Catholic university in Miami Shores, Florida
+* [[Tropical Storm Barry]]
+* {{USS|Barry}}, four US destroyers
+* [[1703 Barry]], a minor planet
 
-* [[Barrie (electoral district)]], Canadian federal electoral district
-* [[Barrie (provincial electoral district)]], provincial electoral district
-* or I guess, if you're weird [[Barrie—Simcoe—Bradford]], former Canadian electoral district
-* [[Barrie School]], private school in Silver Spring, Maryland
-* [[Barrie (company)]], fashion company owned by Chanel
-* [[Little Barrie]], British band
-==Surname==
-* [[Barrie (name)]]
+{{srt}}
 
-==See also==
-* [[Barre (disambiguation)]]
-* [[Barry (disambiguation)]]
-* [[Berry (disambiguation)]]
-{{srt}}`
+{{Disambiguation|geo}}`
 
-let doc = wtf(str)
+// let doc = wtf(str)
+// console.log(doc._wiki)
+// console.log(doc.templates())
 // console.log(doc.isDisambiguation())
-console.log(doc.disambiguation())
+// console.log(doc.disambiguation())
+// console.log(doc.link(3).json())
+
+let doc = wtf(`[[cool|fun ''times'']]`)
+console.log(doc.link().text())

@@ -328,5 +328,14 @@ let templates = {
     let str = template.releases.map((o) => `${o.region}: ${o.date || ''}`).join('\n\n')
     return '\n' + str + '\n'
   },
+  // https://en.m.wikipedia.org/wiki/Template:USS
+  uss: (tmpl, list) => {
+    let obj = parse(tmpl, ['name', 'id'])
+    list.push(obj)
+    if (obj.id) {
+      return `[[USS ${obj.name} (${obj.id})|USS ''${obj.name}'' (${obj.id})]]`
+    }
+    return `[[USS ${obj.name}|USS ''${obj.name}'']]`
+  },
 }
 module.exports = templates
