@@ -5,18 +5,15 @@ const test = require('tape')
 // wtf.extend(require('./plugins/image/src'))
 
 wtf.extend((models, templates) => {
-  templates.cooltime = (text, data, c) => {
-    console.log(text)
-    console.log(data)
+  templates.cooltime = (text, doc, alias, parse) => {
+    // console.log(text)
+    // console.log(doc)
+    console.log(parse)
     return
   }
 })
 
 let str = `{{cooltime|ohyeah}}`
 
-// let doc = wtf(str)
+let doc = wtf(str)
 // console.log(doc.templates())
-const p = wtf.fetch('Tony Hawk', 'fr')
-p.then(function (doc) {
-  console.log(doc.sentence().text())
-})

@@ -4,7 +4,7 @@ const templates = require('../custom')
 const toJSON = require('./toJSON')
 const { isArray, isObject } = require('../../_lib/helpers')
 
-const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
+const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 //this gets all the {{template}} objects and decides how to parse them
 const parseTemplate = function (tmpl, list, doc) {
@@ -56,7 +56,7 @@ const parseTemplate = function (tmpl, list, doc) {
     if (typeof templates[name] === 'function') {
       // let json = toJSON(tmpl.body)
       //(tmpl, list, alias, doc)
-      return templates[name](tmpl.body, list, null, doc)
+      return templates[name](tmpl.body, list, null, toJSON, doc)
     }
   }
   // if (doc) {

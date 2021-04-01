@@ -14,9 +14,10 @@
 - **[change]** - normalize table rows
 - **[change]** - move wiktionary templates to `wtf-plugin-wiktionary`
 - **[change]** - Link.text() now returns page
+- **[new]** - api plugin, disambig plugin, person plugin
 - **[new]** - Table.get() method
 - **[new]** - set new infoboxes using .extend()
-- deprecate wtf-plugin-category (moved to wtf-plugin-api)
+- deprecate wtf-plugin-category (move to wtf-plugin-api)
 -->
 #### 8.5.1
 

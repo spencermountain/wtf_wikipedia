@@ -9,9 +9,9 @@ const generic = function (tmpl, list, alias) {
   list.push(obj)
   return ''
 }
-
+// it may seem redundant,
+// but we need these templates for our i18n mappings
 const misc = {
-  //i18n templates
   persondata: generic,
   taxobox: generic,
   citation: generic,
@@ -21,5 +21,8 @@ const misc = {
   'cite journal': generic,
   'cite web': generic,
   'commons cat': generic,
+  'election box candidate': generic,
+  'election box begin': generic,
+  main: generic,
 }
 module.exports = misc
