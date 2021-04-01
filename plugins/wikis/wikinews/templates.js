@@ -19,6 +19,9 @@ const templates = {
     let num = Number(obj.km) || 0
     let m = num * 0.62137
     m = Math.round(m * 10) / 10
+    if (!m) {
+      return `${obj.km} km`
+    }
     return `${obj.km} km (${m} mi)`
   },
   'mi to km': (tmpl, list, parser) => {
@@ -26,7 +29,7 @@ const templates = {
     let num = Number(obj.mi) || 0
     let m = num * 1.609344
     m = Math.round(m * 10) / 10
-    return `${obj.mi} km (${m} mi)`
+    return `${obj.mi} mi (${m} km)`
   },
 }
 templates.wikipediapar = templates.wikipedia
