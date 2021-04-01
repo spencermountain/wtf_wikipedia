@@ -83,6 +83,7 @@
     "cross-env": "7.0.3",
     "eslint": "7.23.0",
     "eslint-plugin-compat": "3.9.0",
+    "eslint-plugin-regexp": "^0.7.5",
     "nyc": "^15.1.0",
     "rollup": "2.44.0",
     "rollup-plugin-babel": "4.4.0",

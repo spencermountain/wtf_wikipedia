@@ -3,7 +3,7 @@ const imgExists = require('./img-exists')
 const mainImage = require('./mainImage')
 
 const addMethod = function (models) {
-  models.Doc.mainImage = mainImage
+  models.Doc.prototype.mainImage = mainImage
   // add a new method to Image class
   models.Image.prototype.commonsURL = commonsURL
   models.Image.prototype.exists = imgExists

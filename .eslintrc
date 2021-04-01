@@ -10,7 +10,7 @@
     "sourceType": "module",
     "ecmaFeatures": {}
   },
-  "extends": ["plugin:compat/recommended"],
+  "extends": ["plugin:compat/recommended", "plugin:regexp/recommended"],
   "rules": {
     "semi": ["warn", "never"],
     "indent": ["error", 2],
@@ -57,6 +57,7 @@
         "ignoreTemplateLiterals": true,
         "ignoreRegExpLiterals": true
       }
-    ]
+    ],
+    "regexp/prefer-d": 0
   }
 }

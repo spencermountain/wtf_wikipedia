@@ -1,5 +1,22 @@
 const test = require('tape')
 const wtf = require('./_lib')
+const path = require('path')
+const fs = require('fs')
+
+test('image-methods', function (t) {
+  let arr = [
+    ['toronto', ''],
+    ['United-Kingdom', '']
+  ]
+  arr.forEach((a) => {
+    let abs = path.join(__dirname, `../../../tests/cache/${a[0]}.txt`)
+    let txt = fs.readFileSync(abs).toString()
+    let doc = wtf(txt)
+    let img = doc.mainImage()
+    t.equal(img, a[1], a[0])
+  })
+  t.end()
+})
 
 test('image-methods', function (t) {
   wtf
