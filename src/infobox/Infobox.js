@@ -37,7 +37,7 @@ const methods = {
     return arr
   },
   image: function () {
-    let s = this.data.image || this.data.image2 || this.data.logo
+    let s = this.data.image || this.data.image2 || this.data.logo || this.data.image_skyline || this.data.image_flag
     if (!s) {
       return null
     }

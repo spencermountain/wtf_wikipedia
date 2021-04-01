@@ -1,11 +1,17 @@
 // is there a good image of this
-const mainImage = function (opt = {}) {
+const mainImage = function () {
   let box = this.infobox()
   if (box) {
     let img = box.image()
-    console.log(img)
+    if (img) {
+      return img
+    }
   }
-  // let images = this.images() || []
+  let s = this.section()
+  let imgs = s.images()
+  if (imgs.length === 1) {
+    return imgs[0]
+  }
   return null
 }
 module.exports = mainImage

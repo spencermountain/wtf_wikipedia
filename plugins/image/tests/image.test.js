@@ -3,16 +3,26 @@ const wtf = require('./_lib')
 const path = require('path')
 const fs = require('fs')
 
-test('image-methods', function (t) {
+test('mainImage', function (t) {
   let arr = [
-    ['toronto', ''],
-    ['United-Kingdom', '']
+    ['toronto', 'https://wikipedia.org/wiki/Special:Redirect/file/Montage_of_Toronto_7.jpg'],
+    [
+      'United-Kingdom',
+      'https://wikipedia.org/wiki/Special:Redirect/file/Flag_of_the_United_Kingdom.svg'
+    ],
+    ['Allen-R.-Morris', 'https://wikipedia.org/wiki/Special:Redirect/file/AllenMorrisHeadShot.jpg'],
+    [
+      'Arts_Club_of_Chicago',
+      'https://wikipedia.org/wiki/Special:Redirect/file/20070701_Arts_Club_of_Chicago.JPG'
+    ],
+    ['Britt-Morgan', 'https://wikipedia.org/wiki/Special:Redirect/file/Britt_Morgan.jpg']
+    // ['', '']
   ]
   arr.forEach((a) => {
     let abs = path.join(__dirname, `../../../tests/cache/${a[0]}.txt`)
     let txt = fs.readFileSync(abs).toString()
     let doc = wtf(txt)
-    let img = doc.mainImage()
+    let img = doc.mainImage().src()
     t.equal(img, a[1], a[0])
   })
   t.end()
