@@ -1,7 +1,8 @@
 const wtf = require('./src/index')
-wtf.extend(require('./plugins/wikis/wikivoyage/plugin'))
+wtf.extend(require('./plugins/wikis/wiktionary/plugin'))
 
-let str = `{{mile|2|on}}`
+let str = `{{hyphenation|en|mea|sure}}`
 let doc = wtf(str)
 console.log(doc.templates())
 console.log(doc.text())
+console.log(doc.link(0))

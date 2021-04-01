@@ -113,6 +113,11 @@ const templates = {
     list.push(obj)
     return `${obj.c}°C`
   },
+  pound: (tmpl, list, parser) => {
+    let obj = parser(tmpl, ['num'])
+    list.push(obj)
+    return `${obj.num} lb`
+  },
   fahrenheit: (tmpl, list, parser) => {
     let obj = parser(tmpl, ['c'])
     list.push(obj)
@@ -143,6 +148,7 @@ templates.mi = templates.mile
 templates.ft = templates.foot
 templates.c = templates.celsius
 templates.f = templates.fahrenheit
+templates.lb = templates.pound
 templates.otheruses = templates['other uses']
 
 module.exports = templates
