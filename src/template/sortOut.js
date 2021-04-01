@@ -1,7 +1,7 @@
 const Infobox = require('../infobox/Infobox')
 const Reference = require('../reference/Reference')
 const Template = require('./Template')
-const isCitation = new RegExp('^(cite |citation)', 'i')
+const isCitation = /^(cite |citation)/i
 
 const referenceTypes = {
   citation: true,

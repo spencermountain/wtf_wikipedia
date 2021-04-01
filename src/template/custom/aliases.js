@@ -13,7 +13,6 @@ let aliases = {
   cricon: 'flagicon',
   sfrac: 'frac',
   sqrt: 'radic',
-  cite: 'citation',
   'unreferenced section': 'unreferenced',
   redir: 'redirect',
   sisterlinks: 'sister project links',
@@ -22,6 +21,9 @@ let aliases = {
 
 //multiple aliases
 let multi = {
+  date: ['byline', 'dateline'], //wikinews
+  citation: ['cite', 'source', 'source-pr', 'source-science'],
+
   flagcountry: ['cr', 'cr-rt'],
 
   trunc: ['str left', 'str crop'],

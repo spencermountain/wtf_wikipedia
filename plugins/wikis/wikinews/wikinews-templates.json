@@ -1,3362 +1,842 @@
 [
-  [
-    "source",
-    71181
-  ],
-  [
-    "w",
-    64382
-  ],
-  [
-    "publish",
-    20198
-  ],
-  [
-    "archive",
-    13303
-  ],
-  [
-    "haveyoursay",
-    11703
-  ],
-  [
-    "wikinews",
-    8357
-  ],
-  [
-    "archived",
-    5731
-  ],
-  [
-    "image source",
-    3880
-  ],
-  [
-    "image credit",
-    3030
-  ],
-  [
-    "image",
-    2170
-  ],
-  [
-    "archive-unreviewed",
-    2144
-  ],
-  [
-    "cricket match batsman status",
-    2143
-  ],
-  [
-    "wniq",
-    2000
-  ],
-  [
-    "original",
-    1824
-  ],
-  [
-    "cricket match bowler status",
-    1211
-  ],
-  [
-    "pd-article",
-    1202
-  ],
-  [
-    "wni response",
-    1181
-  ],
-  [
-    "wikipediapar",
-    947
-  ],
-  [
-    "source-pr",
-    940
-  ],
-  [
-    "quoteleft",
-    863
-  ],
-  [
-    "quoteright",
-    770
-  ],
-  [
-    "wikipedia",
-    736
-  ],
-  [
-    "sisters",
-    553
-  ],
-  [
-    "missing image",
-    532
-  ],
-  [
-    "wikt",
-    482
-  ],
-  [
-    "interview",
-    470
-  ],
-  [
-    "united kingdom",
-    406
-  ],
-  [
-    "cricket match box end",
-    402
-  ],
-  [
-    "-",
-    380
-  ],
-  [
-    "new zealand",
-    375
-  ],
-  [
-    "crime and law",
-    366
-  ],
-  [
-    "wnir",
-    334
-  ],
-  [
-    "published",
-    328
-  ],
-  [
-    "footballbox",
-    313
-  ],
-  [
-    "voa",
-    305
-  ],
-  [
-    "wikipediapars",
-    302
-  ],
-  [
-    "byline",
-    299
-  ],
-  [
-    "es",
-    299
-  ],
-  [
-    "ice hockey box score",
-    297
-  ],
-  [
-    "australian news",
-    257
-  ],
-  [
-    "translated quote",
-    251
-  ],
-  [
-    "canadian news",
-    248
-  ],
-  [
-    "returnto",
-    244
-  ],
-  [
-    "translated wikinews",
-    235
-  ],
-  [
-    "obituaries",
-    232
-  ],
-  [
-    "booked",
-    231
-  ],
-  [
-    "original reporting",
-    227
-  ],
-  [
-    "hys question left",
-    217
-  ],
-  [
-    "india",
-    215
-  ],
-  [
-    "australia",
-    206
-  ],
-  [
-    "wikinews shorts header",
-    202
-  ],
-  [
-    "translation note",
-    202
-  ],
-  [
-    "cricket match batting box begin",
-    201
-  ],
-  [
-    "cricket match bowling box begin",
-    201
-  ],
-  [
-    "archive-sighted",
-    200
-  ],
-  [
-    "dateline",
-    199
-  ],
-  [
-    "user",
-    197
-  ],
-  [
-    "wikimediamention",
-    195
-  ],
-  [
-    "audio box 2",
-    182
-  ],
-  [
-    "pakistan",
-    180
-  ],
-  [
-    "canada",
-    171
-  ],
-  [
-    "picture select",
-    171
-  ],
-  [
-    "legend",
-    168
-  ],
-  [
-    "aviation",
-    168
-  ],
-  [
-    "disasters and accidents",
-    163
-  ],
-  [
-    "loss",
-    155
-  ],
-  [
-    "fa",
-    150
-  ],
-  [
-    "economy and business",
-    147
-  ],
-  [
-    "football",
-    145
-  ],
-  [
-    "afghanistan",
-    141
-  ],
-  [
-    "update",
-    137
-  ],
-  [
-    "politics and conflicts",
-    137
-  ],
-  [
-    "2008 beijing olympic medal count/sub",
-    136
-  ],
-  [
-    "space",
-    128
-  ],
-  [
-    "2008 us presidential election",
-    123
-  ],
-  [
-    "correction",
-    120
-  ],
-  [
-    "iraq",
-    118
-  ],
-  [
-    "china",
-    116
-  ],
-  [
-    "matchscore",
-    112
-  ],
-  [
-    "broadcast report",
-    109
-  ],
-  [
-    "sports",
-    107
-  ],
-  [
-    "internet",
-    105
-  ],
-  [
-    "united states",
-    102
-  ],
-  [
-    "health",
-    100
-  ],
-  [
-    "iran",
-    95
-  ],
-  [
-    "languageicon",
-    93
-  ],
-  [
-    "hys",
-    92
-  ],
-  [
-    "aussieissue",
-    90
-  ],
-  [
-    "russia",
-    87
-  ],
-  [
-    "2012 us presidential election",
-    87
-  ],
-  [
-    "uk",
-    85
-  ],
-  [
-    "commons",
-    83
-  ],
-  [
-    "footballbox-ver",
-    83
-  ],
-  [
-    "blogsource",
-    82
-  ],
-  [
-    "palestine",
-    81
-  ],
-  [
-    "brief credits",
-    79
-  ],
-  [
-    "turkey",
-    78
-  ],
-  [
-    "israel",
-    75
-  ],
-  [
-    "hys question right",
-    73
-  ],
-  [
-    "lgbt",
-    72
-  ],
-  [
-    "japan",
-    71
-  ],
-  [
-    "somalia",
-    67
-  ],
-  [
-    "scientology",
-    65
-  ],
-  [
-    "france",
-    65
-  ],
-  [
-    "worldcup2006",
-    64
-  ],
-  [
-    "zimbabwe",
-    63
-  ],
-  [
-    "chile",
-    62
-  ],
-  [
-    "infobox",
-    61
-  ],
-  [
-    "thailand",
-    59
-  ],
-  [
-    "philippines",
-    59
-  ],
-  [
-    "2012 olympic paralympics",
-    58
-  ],
-  [
-    "pedia",
-    57
-  ],
-  [
-    "nopublish",
-    57
-  ],
-  [
-    "commonscat",
-    57
-  ],
-  [
-    "indonesia",
-    57
-  ],
-  [
-    "picture select l",
-    57
-  ],
-  [
-    "ontarioprovincialelection2007",
-    56
-  ],
-  [
-    "egypt",
-    55
-  ],
-  [
-    "texas",
-    53
-  ],
-  [
-    "north korea",
-    52
-  ],
-  [
-    "wikinews shorts expand",
-    52
-  ],
-  [
-    "mainspace disambig",
-    51
-  ],
-  [
-    "zh",
-    51
-  ],
-  [
-    "libya",
-    50
-  ],
-  [
-    "q",
-    48
-  ],
-  [
-    "2006 israel-lebanon conflict",
-    47
-  ],
-  [
-    "germany",
-    47
-  ],
-  [
-    "ja",
-    46
-  ],
-  [
-    "infosectionend",
-    45
-  ],
-  [
-    "profit",
-    45
-  ],
-  [
-    "hidden",
-    44
-  ],
-  [
-    "infosectionstart",
-    43
-  ],
-  [
-    "2008-09 financial crisis",
-    43
-  ],
-  [
-    "quotation",
-    42
-  ],
-  [
-    "nigeria",
-    42
-  ],
-  [
-    "brazil",
-    41
-  ],
-  [
-    "source-science",
-    41
-  ],
-  [
-    "displaytitle",
-    41
-  ],
-  [
-    "pt",
-    40
-  ],
-  [
-    "infoboxend",
-    40
-  ],
-  [
-    "liveupdate",
-    40
-  ],
-  [
-    "syria",
-    39
-  ],
-  [
-    "italy",
-    39
-  ],
-  [
-    "km to mi",
-    38
-  ],
-  [
-    "matchresult",
-    38
-  ],
-  [
-    "iraq war",
-    38
-  ],
-  [
-    "mexico",
-    38
-  ],
-  [
-    "article-audiobrief",
-    38
-  ],
-  [
-    "south africa",
-    38
-  ],
-  [
-    "historical",
-    37
-  ],
-  [
-    "phonecontact",
-    37
-  ],
-  [
-    "audio box",
-    36
-  ],
-  [
-    "wikisource",
-    35
-  ],
-  [
-    "scotland",
-    35
-  ],
-  [
-    "exclusive story",
-    34
-  ],
-  [
-    "ru",
-    34
-  ],
-  [
-    "kenya",
-    34
-  ],
-  [
-    "nl",
-    33
-  ],
-  [
-    "pdf",
-    33
-  ],
-  [
-    "mi to km",
-    32
-  ],
-  [
-    "spanish",
-    32
-  ],
-  [
-    "greece",
-    31
-  ],
-  [
-    "de",
-    31
-  ],
-  [
-    "stanley cup playoffs 2007",
-    31
-  ],
-  [
-    "spain",
-    31
-  ],
-  [
-    "money",
-    31
-  ],
-  [
-    "prefix",
-    31
-  ],
-  [
-    "multiple image",
-    30
-  ],
-  [
-    "iran nuclear program",
-    28
-  ],
-  [
-    "north korea nuclear program",
-    28
-  ],
-  [
-    "crossword",
-    27
-  ],
-  [
-    "television",
-    27
-  ],
-  [
-    "interview model",
-    27
-  ],
-  [
-    "environment",
-    27
-  ],
-  [
-    "ukraine",
-    26
-  ],
-  [
-    "cquote2",
-    26
-  ],
-  [
-    "null",
-    25
-  ],
-  [
-    "torontoelection",
-    25
-  ],
-  [
-    "tour de france 2007",
-    24
-  ],
-  [
-    "saudi arabia",
-    24
-  ],
-  [
-    "source offline",
-    23
-  ],
-  [
-    "infoboxstart",
-    23
-  ],
-  [
-    "infosection",
-    23
-  ],
-  [
-    "yemen",
-    23
-  ],
-  [
-    "sudan",
-    23
-  ],
-  [
-    "new york",
-    23
-  ],
-  [
-    "nascar",
-    23
-  ],
-  [
-    "buffalo, n.y. hotel proposal controversy/infobox",
-    22
-  ],
-  [
-    "al-qaeda",
-    22
-  ],
-  [
-    "poland",
-    22
-  ],
-  [
-    "listenawnb",
-    22
-  ],
-  [
-    "wni first question",
-    22
-  ],
-  [
-    "united nations",
-    22
-  ],
-  [
-    "fr",
-    21
-  ],
-  [
-    "zh-tw",
-    21
-  ],
-  [
-    "belgium",
-    21
-  ],
-  [
-    "pl",
-    21
-  ],
-  [
-    "2008 olympic games",
-    21
-  ],
-  [
-    "science and technology",
-    21
-  ],
-  [
-    "israel/palestine conflict",
-    21
-  ],
-  [
-    "music",
-    21
-  ],
-  [
-    "uefa euro 2016",
-    21
-  ],
-  [
-    "reviewed",
-    20
-  ],
-  [
-    "venezuela",
-    20
-  ],
-  [
-    "cdnfed2008interview-on",
-    20
-  ],
-  [
-    "football stat",
-    20
-  ],
-  [
-    "2018 fifa world cup",
-    20
-  ],
-  [
-    "da",
-    19
-  ],
-  [
-    "wikileaks",
-    19
-  ],
-  [
-    "bbc",
-    19
-  ],
-  [
-    "picture select r",
-    19
-  ],
-  [
-    "rquote",
-    18
-  ],
-  [
-    "weather news",
-    18
-  ],
-  [
-    "2010 haiti earthquake",
-    18
-  ],
-  [
-    "{size",
-    18
-  ],
-  [
-    "audio wikinews brief",
-    18
-  ],
-  [
-    "european union",
-    17
-  ],
-  [
-    "climate change",
-    17
-  ],
-  [
-    "lebanon",
-    17
-  ],
-  [
-    "it",
-    17
-  ],
-  [
-    "news briefs footer",
-    17
-  ],
-  [
-    "netherlands",
-    17
-  ],
-  [
-    "south korea",
-    17
-  ],
-  [
-    "guatemala",
-    17
-  ],
-  [
-    "sri lanka",
-    17
-  ],
-  [
-    "okina",
-    17
-  ],
-  [
-    "ireland",
-    17
-  ],
-  [
-    "2016 us presidential election",
-    17
-  ],
-  [
-    "moldova",
-    16
-  ],
-  [
-    "fiji",
-    16
-  ],
-  [
-    "2007 iranian seizure of royal navy personnel",
-    16
-  ],
-  [
-    "iceland",
-    16
-  ],
-  [
-    "singapore",
-    16
-  ],
-  [
-    "myanmar",
-    16
-  ],
-  [
-    "basedon",
-    16
-  ],
-  [
-    "taiwan",
-    16
-  ],
-  [
-    "uk election latest",
-    15
-  ],
-  [
-    "tennis",
-    15
-  ],
-  [
-    "finland",
-    15
-  ],
-  [
-    "bristol",
-    15
-  ],
-  [
-    "pichilemu",
-    15
-  ],
-  [
-    "apple",
-    15
-  ],
-  [
-    "template",
-    14
-  ],
-  [
-    "malaysia",
-    14
-  ],
-  [
-    "nepal",
-    14
-  ],
-  [
-    "russian",
-    14
-  ],
-  [
-    "hong kong",
-    14
-  ],
-  [
-    "2011 sendai earthquake and tsunami horizontal",
-    14
-  ],
-  [
-    "culture and entertainment",
-    14
-  ],
-  [
-    "film",
-    13
-  ],
-  [
-    "germanelection2005",
-    13
-  ],
-  [
-    "sweden",
-    13
-  ],
-  [
-    "sv",
-    13
-  ],
-  [
-    "war in south ossetia (2008)",
-    13
-  ],
-  [
-    "haiti",
-    13
-  ],
-  [
-    "transport",
-    13
-  ],
-  [
-    "computing",
-    13
-  ],
-  [
-    "labor",
-    13
-  ],
-  [
-    "ivory coast",
-    13
-  ],
-  [
-    "double image",
-    13
-  ],
-  [
-    "education",
-    13
-  ],
-  [
-    "mormonism",
-    12
-  ],
-  [
-    "dutch",
-    12
-  ],
-  [
-    "switzerland",
-    12
-  ],
-  [
-    "2009 queensland election",
-    12
-  ],
-  [
-    "australian rules football",
-    12
-  ],
-  [
-    "lowercase",
-    11
-  ],
-  [
-    "出典・ウェブ",
-    11
-  ],
-  [
-    "sister",
-    11
-  ],
-  [
-    "3roundbracket",
-    11
-  ],
-  [
-    "peru",
-    11
-  ],
-  [
-    "denmark",
-    11
-  ],
-  [
-    "current",
-    11
-  ],
-  [
-    "democratic republic of the congo",
-    11
-  ],
-  [
-    "google",
-    11
-  ],
-  [
-    "eurovision",
-    11
-  ],
-  [
-    "swine flu",
-    11
-  ],
-  [
-    "biology",
-    11
-  ],
-  [
-    "colombia",
-    10
-  ],
-  [
-    "pmid/url",
-    10
-  ],
-  [
-    "wikimedia foundation",
-    10
-  ],
-  [
-    "bangladesh",
-    10
-  ],
-  [
-    "2008 tour de taiwan",
-    10
-  ],
-  [
-    "honduras",
-    10
-  ],
-  [
-    "ft to m",
-    10
-  ],
-  [
-    "piracy",
-    10
-  ],
-  [
-    "broadcast",
-    10
-  ],
-  [
-    "2020 united states presidential election",
-    10
-  ],
-  [
-    "microsoft",
-    9
-  ],
-  [
-    "awn brief",
-    9
-  ],
-  [
-    "sourcereg",
-    9
-  ],
-  [
-    "clr",
-    9
-  ],
-  [
-    "uganda",
-    9
-  ],
-  [
-    "cuba",
-    9
-  ],
-  [
-    "cambodia",
-    9
-  ],
-  [
-    "argentina",
-    9
-  ],
-  [
-    "2007bwc",
-    9
-  ],
-  [
-    "algeria",
-    9
-  ],
-  [
-    "2008tibe",
-    9
-  ],
-  [
-    "cyclone nargis",
-    9
-  ],
-  [
-    "norway",
-    9
-  ],
-  [
-    "2008 financial crisis",
-    9
-  ],
-  [
-    "guinea",
-    9
-  ],
-  [
-    "m to ft",
-    9
-  ],
-  [
-    "click",
-    9
-  ],
-  [
-    "rwanda",
-    9
-  ],
-  [
-    "obituary",
-    9
-  ],
-  [
-    "papersource",
-    8
-  ],
-  [
-    "fullurl",
-    8
-  ],
-  [
-    "pdflink",
-    8
-  ],
-  [
-    "sri lanka news",
-    8
-  ],
-  [
-    "welsh news",
-    8
-  ],
-  [
-    "hungary",
-    8
-  ],
-  [
-    "austria",
-    8
-  ],
-  [
-    "ghana",
-    8
-  ],
-  [
-    "serbia",
-    8
-  ],
-  [
-    "chad",
-    8
-  ],
-  [
-    "chinese",
-    8
-  ],
-  [
-    "2008 computex",
-    8
-  ],
-  [
-    "{countries}",
-    8
-  ],
-  [
-    "quote box",
-    8
-  ],
-  [
-    "czech republic",
-    8
-  ],
-  [
-    "papua new guinea",
-    8
-  ],
-  [
-    "ethiopia",
-    8
-  ],
-  [
-    "fullpagename",
-    8
-  ],
-  [
-    "{width",
-    8
-  ],
-  [
-    "{qwidth",
-    8
-  ],
-  [
-    "{2",
-    8
-  ],
-  [
-    "{height",
-    8
-  ],
-  [
-    "{qheight",
-    8
-  ],
-  [
-    "{3",
-    8
-  ],
-  [
-    "img",
-    8
-  ],
-  [
-    "macedonia",
-    7
-  ],
-  [
-    "apasource",
-    7
-  ],
-  [
-    "morocco",
-    7
-  ],
-  [
-    "2007 taipei it month",
-    7
-  ],
-  [
-    "video",
-    7
-  ],
-  [
-    "2010-olympics",
-    7
-  ],
-  [
-    "{clear",
-    7
-  ],
-  [
-    "portugal",
-    7
-  ],
-  [
-    "romania",
-    7
-  ],
-  [
-    "he",
-    7
-  ],
-  [
-    "fi",
-    7
-  ],
-  [
-    "cdnfed2008",
-    7
-  ],
-  [
-    "kyrgyzstan",
-    7
-  ],
-  [
-    "madagascar",
-    7
-  ],
-  [
-    "bahrain",
-    7
-  ],
-  [
-    "vietnam",
-    7
-  ],
-  [
-    "setimes",
-    7
-  ],
-  [
-    "color",
-    7
-  ],
-  [
-    "wikinewslang",
-    6
-  ],
-  [
-    "vatican city",
-    6
-  ],
-  [
-    "quakersnav",
-    6
-  ],
-  [
-    "2006 turin medal count",
-    6
-  ],
-  [
-    "pagename",
-    6
-  ],
-  [
-    "costa rica",
-    6
-  ],
-  [
-    "georgia",
-    6
-  ],
-  [
-    "larrycraig",
-    6
-  ],
-  [
-    "gitmo",
-    6
-  ],
-  [
-    "2008 taipei game show",
-    6
-  ],
-  [
-    "orsource",
-    6
-  ],
-  [
-    "cyprus",
-    6
-  ],
-  [
-    "united arab emirates",
-    6
-  ],
-  [
-    "gambia",
-    6
-  ],
-  [
-    "tunisia",
-    6
-  ],
-  [
-    "2008 beijing olympic medal count",
-    6
-  ],
-  [
-    "canada-h",
-    6
-  ],
-  [
-    "2009 australian by-elections",
-    6
-  ],
-  [
-    "itv",
-    6
-  ],
-  [
-    "image lead",
-    6
-  ],
-  [
-    "wikipedia2",
-    6
-  ],
-  [
-    "es icon",
-    6
-  ],
-  [
-    "formula one",
-    6
-  ],
-  [
-    "2011 sendai earthquake and tsunami",
-    6
-  ],
-  [
-    "tl",
-    6
-  ],
-  [
-    "french",
-    6
-  ],
-  [
-    "football (soccer)",
-    6
-  ],
-  [
-    "sisterprojects",
-    5
-  ],
-  [
-    "donate",
-    5
-  ],
-  [
-    "nz election scorecard",
-    5
-  ],
-  [
-    "apec2005",
-    5
-  ],
-  [
-    "turkish",
-    5
-  ],
-  [
-    "cl2007",
-    5
-  ],
-  [
-    "wdsc2007",
-    5
-  ],
-  [
-    "croatia",
-    5
-  ],
-  [
-    "scitech",
-    5
-  ],
-  [
-    "armenia",
-    5
-  ],
-  [
-    "ecuador",
-    5
-  ],
-  [
-    "ro",
-    5
-  ],
-  [
-    "2008 google developer day",
-    5
-  ],
-  [
-    "phoenix mission",
-    5
-  ],
-  [
-    "bahamas",
-    5
-  ],
-  [
-    "azerbaijan",
-    5
-  ],
-  [
-    "pakistan-h",
-    5
-  ],
-  [
-    "antarctica",
-    5
-  ],
-  [
-    "gabon",
-    5
-  ],
-  [
-    "slovakia",
-    5
-  ],
-  [
-    "mozambique",
-    5
-  ],
-  [
-    "jordan",
-    5
-  ],
-  [
-    "mali",
-    5
-  ],
-  [
-    "ftscore",
-    5
-  ],
-  [
-    "jamaica",
-    5
-  ],
-  [
-    "football match report",
-    5
-  ],
-  [
-    "south sudan",
-    5
-  ],
-  [
-    "urlencode",
-    5
-  ],
-  [
-    "england",
-    5
-  ],
-  [
-    "tennis scorecard",
-    5
-  ],
-  [
-    "aviation mishaps",
-    5
-  ],
-  [
-    "weather",
-    5
-  ],
-  [
-    "covid-19",
-    5
-  ],
-  [
-    "have your say",
-    4
-  ],
-  [
-    "togo",
-    4
-  ],
-  [
-    "katrina college list top",
-    4
-  ],
-  [
-    "oil prices surge",
-    4
-  ],
-  [
-    "prettytable",
-    4
-  ],
-  [
-    "coor d",
-    4
-  ],
-  [
-    "nba finals 2006",
-    4
-  ],
-  [
-    "ufo",
-    4
-  ],
-  [
-    "cameroon",
-    4
-  ],
-  [
-    "estonia",
-    4
-  ],
-  [
-    "sierra leone",
-    4
-  ],
-  [
-    "laos",
-    4
-  ],
-  [
-    "coordinates",
-    4
-  ],
-  [
-    "2007taipeimarathon",
-    4
-  ],
-  [
-    "2007 taitronics autumn",
-    4
-  ],
-  [
-    "2007apb",
-    4
-  ],
-  [
-    "cl2008",
-    4
-  ],
-  [
-    "scidev",
-    4
-  ],
-  [
-    "2008 wimax expo taipei",
-    4
-  ],
-  [
-    "bolivia",
-    4
-  ],
-  [
-    "cfl box score",
-    4
-  ],
-  [
-    "war in georgia (2008)",
-    4
-  ],
-  [
-    "zambia",
-    4
-  ],
-  [
-    "igd2008taipei",
-    4
-  ],
-  [
-    "is",
-    4
-  ],
-  [
-    "htab-box",
-    4
-  ],
-  [
-    "maldives",
-    4
-  ],
-  [
-    "namibia",
-    4
-  ],
-  [
-    "tonga",
-    4
-  ],
-  [
-    "niger",
-    4
-  ],
-  [
-    "belarus",
-    4
-  ],
-  [
-    "swaziland",
-    4
-  ],
-  [
-    "9/11",
-    4
-  ],
-  [
-    "human rights",
-    4
-  ],
-  [
-    "czech",
-    4
-  ],
-  [
-    "us politics",
-    4
-  ],
-  [
-    "arabic",
-    4
-  ],
-  [
-    "colorado",
-    4
-  ],
-  [
-    "qatar",
-    4
-  ],
-  [
-    "donut",
-    4
-  ],
-  [
-    "football bookings",
-    4
-  ],
-  [
-    "california",
-    4
-  ],
-  [
-    "xquote",
-    4
-  ],
-  [
-    "editor tasks",
-    3
-  ],
-  [
-    "server",
-    3
-  ],
-  [
-    "namespace",
-    3
-  ],
-  [
-    "wikisourcepar",
-    3
-  ],
-  [
-    "lead article",
-    3
-  ],
-  [
-    "aw",
-    3
-  ],
-  [
-    "specialpublish",
-    3
-  ],
-  [
-    "multi-video start",
-    3
-  ],
-  [
-    "multi-video item",
-    3
-  ],
-  [
-    "multi-video end",
-    3
-  ],
-  [
-    "fork",
-    3
-  ],
-  [
-    "doi",
-    3
-  ],
-  [
-    "hurricane wilma update",
-    3
-  ],
-  [
-    "commonspar",
-    3
-  ],
-  [
-    "or",
-    3
-  ],
-  [
-    "cricket",
-    3
-  ],
-  [
-    "new developments",
-    3
-  ],
-  [
-    "issues/basketball",
-    3
-  ],
-  [
-    "wikiquotepar",
-    3
-  ],
-  [
-    "liberia",
-    3
-  ],
-  [
-    "wikimania 2007",
-    3
-  ],
-  [
-    "semicontaiwan2007",
-    3
-  ],
-  [
-    "2007 wimax forum taipei showcase & conference",
-    3
-  ],
-  [
-    "2007 taipei 101 run up",
-    3
-  ],
-  [
-    "crude oil prices/core",
-    3
-  ],
-  [
-    "german",
-    3
-  ],
-  [
-    "wikiquote",
-    3
-  ],
-  [
-    "antigua and barbuda",
-    3
-  ],
-  [
-    "aus vs ind 3rd test nav",
-    3
-  ],
-  [
-    "albania",
-    3
-  ],
-  [
-    "kuwait",
-    3
-  ],
-  [
-    "2008 yodex",
-    3
-  ],
-  [
-    "liverpool",
-    3
-  ],
-  [
-    "equatorial guinea",
-    3
-  ],
-  [
-    "2008 tica",
-    3
-  ],
-  [
-    "mauritania",
-    3
-  ],
-  [
-    "location",
-    3
-  ],
-  [
-    "steady",
-    3
-  ],
-  [
-    "science and technology - horizontal",
-    3
-  ],
-  [
-    "lv",
-    3
-  ],
-  [
-    "stock market",
-    3
-  ],
-  [
-    "el salvador",
-    3
-  ],
-  [
-    "tanzania",
-    3
-  ],
-  [
-    "c to f",
-    3
-  ],
-  [
-    "xambox",
-    3
-  ],
-  [
-    "malawi",
-    3
-  ],
-  [
-    "air france flight 447",
-    3
-  ],
-  [
-    "hys question bottom",
-    3
-  ],
-  [
-    "bosnia and herzegovina",
-    3
-  ],
-  [
-    "image  credit",
-    3
-  ],
-  [
-    "slovenia",
-    3
-  ],
-  [
-    "cs",
-    3
-  ],
-  [
-    "maine",
-    3
-  ],
-  [
-    "mathematics",
-    3
-  ],
-  [
-    "page layout",
-    3
-  ],
-  [
-    "imbox",
-    3
-  ],
-  [
-    "broadcast-inline",
-    3
-  ],
-  [
-    "2012 olympic games",
-    3
-  ],
-  [
-    "religion",
-    3
-  ],
-  [
-    "nobel prize",
-    3
-  ],
-  [
-    "2016 united states presidential election",
-    3
-  ],
-  [
-    "anchors",
-    3
-  ],
-  [
-    "puerto rico",
-    3
-  ],
-  [
-    "athletics",
-    3
-  ],
-  [
-    "gain",
-    3
-  ],
-  [
-    "lead article 1",
-    2
-  ],
-  [
-    "main headlines",
-    2
-  ],
-  [
-    "lead article 2",
-    2
-  ],
-  [
-    "lead article 3",
-    2
-  ],
-  [
-    "lead article 4",
-    2
-  ],
-  [
-    "lead article 5",
-    2
-  ],
-  [
-    "leadstorysandbox",
-    2
-  ],
-  [
-    "latest news sandbox3",
-    2
-  ],
-  [
-    "weathernavsandbox3",
-    2
-  ],
-  [
-    "regionssandbox3",
-    2
-  ],
-  [
-    "welcomesandbox3",
-    2
-  ],
-  [
-    "ongoingnews3",
-    2
-  ],
-  [
-    "digestandoldernewssandbox3",
-    2
-  ],
-  [
-    "localurl",
-    2
-  ],
-  [
-    "market data/^dji/latest",
-    2
-  ],
-  [
-    "market data/^nya/latest",
-    2
-  ],
-  [
-    "market data/^ixic/latest",
-    2
-  ],
-  [
-    "market data/^aord/latest",
-    2
-  ],
-  [
-    "market data/^ftse/latest",
-    2
-  ],
-  [
-    "interview/media",
-    2
-  ],
-  [
-    "voa-by",
-    2
-  ],
-  [
-    "latest news",
-    2
-  ],
-  [
-    "new2",
-    2
-  ],
-  [
-    "norwegian",
-    2
-  ],
-  [
-    "imported",
-    2
-  ],
-  [
-    "audio2",
-    2
-  ],
-  [
-    "canelection2006",
-    2
-  ],
-  [
-    "clearright",
-    2
-  ],
-  [
-    "start an article",
-    2
-  ],
-  [
-    "second lead",
-    2
-  ],
-  [
-    "third lead",
-    2
-  ],
-  [
-    "original stories",
-    2
-  ],
-  [
-    "frontpagehistoricallist",
-    2
-  ],
-  [
-    "get involved",
-    2
-  ],
-  [
-    "2006europeanchampionshipsathletics",
-    2
-  ],
-  [
-    "nbc",
-    2
-  ],
-  [
-    "source/broken",
-    2
-  ],
-  [
-    "wikinews canada shorts header",
-    2
-  ],
-  [
-    "côte d'ivoire",
-    2
-  ],
-  [
-    "panama",
-    2
-  ],
-  [
-    "english football categories",
-    2
-  ],
-  [
-    "cricket summary",
-    2
-  ],
-  [
-    "wikimania 2008",
-    2
-  ],
-  [
-    "defaultsortkey",
-    2
-  ],
-  [
-    "english",
-    2
-  ],
-  [
-    "2007 taipei itf",
-    2
-  ],
-  [
-    "east timor",
-    2
-  ],
-  [
-    "sr",
-    2
-  ],
-  [
-    "2008 taiwan presidential election",
-    2
-  ],
-  [
-    "2008 secutech expo",
-    2
-  ],
-  [
-    "2008 autotronics taipei",
-    2
-  ],
-  [
-    "crude oil prices",
-    2
-  ],
-  [
-    "mongolia",
-    2
-  ],
-  [
-    "bulgaria",
-    2
-  ],
-  [
-    "2008 leisure taiwan",
-    2
-  ],
-  [
-    "olympic games",
-    2
-  ],
-  [
-    "2008 beijing paralympic medal count",
-    2
-  ],
-  [
-    "cdnfed2008interview-bc",
-    2
-  ],
-  [
-    "cdnfed2008interview-ab",
-    2
-  ],
-  [
-    "cdnfed2008interview-pr",
-    2
-  ],
-  [
-    "cdnfed2008interview-qc",
-    2
-  ],
-  [
-    "prezresult08",
-    2
-  ],
-  [
-    "obituaries-horizontal",
-    2
-  ],
-  [
-    "bhutan",
-    2
-  ],
-  [
-    "guinea-bissau",
-    2
-  ],
-  [
-    "botswana",
-    2
-  ],
-  [
-    "cn",
-    2
-  ],
-  [
-    "burkina faso",
-    2
-  ],
-  [
-    "kazakhstan",
-    2
-  ],
-  [
-    "senegal",
-    2
-  ],
-  [
-    "angola",
-    2
-  ],
-  [
-    "solomon islands",
-    2
-  ],
-  [
-    "location map",
-    2
-  ],
-  [
-    "orphan",
-    2
-  ],
-  [
-    "{align",
-    2
-  ],
-  [
-    "talkpagename",
-    2
-  ],
-  [
-    "sister float",
-    2
-  ],
-  [
-    "hawaii",
-    2
-  ],
-  [
-    "barbados",
-    2
-  ],
-  [
-    "bicentennial of chile",
-    2
-  ],
-  [
-    "kosovo",
-    2
-  ],
-  [
-    "dominican republic",
-    2
-  ],
-  [
-    "guyana",
-    2
-  ],
-  [
-    "benin",
-    2
-  ],
-  [
-    "cricket world cup",
-    2
-  ],
-  [
-    "{headerextension",
-    2
-  ],
-  [
-    "#time",
-    2
-  ],
-  [
-    "vanuatu",
-    2
-  ],
-  [
-    "wikipediamention",
-    2
-  ],
-  [
-    "uruguay",
-    2
-  ],
-  [
-    "indiana",
-    2
-  ],
-  [
-    "portuguese",
-    2
-  ],
-  [
-    "ukrainian",
-    2
-  ],
-  [
-    "slovak",
-    2
-  ],
-  [
-    "photo credit",
-    2
-  ],
-  [
-    "nato",
-    2
-  ],
-  [
-    "football kit",
-    2
-  ],
-  [
-    "olympics",
-    2
-  ],
-  [
-    "archaeology",
-    2
-  ],
-  [
-    "fuente",
-    2
-  ],
-  [
-    "2018 winter olympics",
-    2
-  ],
-  [
-    "road accidents",
-    2
-  ],
-  [
-    "samoa",
-    2
-  ],
-  [
-    "main page header",
-    1
-  ],
-  [
-    "main page portals",
-    1
-  ],
-  [
-    "main write",
-    1
-  ],
-  [
-    "main interviews",
-    1
-  ],
-  [
-    "main original",
-    1
-  ],
-  [
-    "main about",
-    1
-  ],
-  [
-    "main featured",
-    1
-  ],
-  [
-    "main around",
-    1
-  ],
-  [
-    "edit",
-    1
-  ],
-  [
-    "navigatorsandbox3",
-    1
-  ],
-  [
-    "welcomesandbox4",
-    1
-  ],
-  [
-    "latestnews",
-    1
-  ],
-  [
-    "weather world",
-    1
-  ],
-  [
-    "market data/index/summary",
-    1
-  ],
-  [
-    "market data/^dji/chart/year",
-    1
-  ],
-  [
-    "market data/^merv/latest",
-    1
-  ],
-  [
-    "market data/^merv/chart/year",
-    1
-  ],
-  [
-    "market data/^ftse/chart/year",
-    1
-  ],
-  [
-    "market data/^fchi/latest",
-    1
-  ],
-  [
-    "market data/^fchi/chart/year",
-    1
-  ],
-  [
-    "market data/^gdaxi/latest",
-    1
-  ],
-  [
-    "market data/^gdaxi/chart/year",
-    1
-  ],
-  [
-    "market data/^n225/latest",
-    1
-  ],
-  [
-    "market data/^n225/chart/year",
-    1
-  ],
-  [
-    "market data/^ixic/chart/year",
-    1
-  ],
-  [
-    "portalpar",
-    1
-  ],
-  [
-    "market data/^hsi/latest",
-    1
-  ],
-  [
-    "market data/^hsi/chart/year",
-    1
-  ],
-  [
-    "holcim ltd/infobox",
-    1
-  ],
-  [
-    "election scorecard",
-    1
-  ],
-  [
-    "ffl-sm",
-    1
-  ],
-  [
-    "wrongtitle",
-    1
-  ],
-  [
-    "market data/^aord/chart/year",
-    1
-  ],
-  [
-    "market data/^atx/latest",
-    1
-  ],
-  [
-    "market data/^bfx/latest",
-    1
-  ],
-  [
-    "market data/^bfx/chart/year",
-    1
-  ],
-  [
-    "market data/^bvsp/latest",
-    1
-  ],
-  [
-    "market data/^bvsp/chart/year",
-    1
-  ],
-  [
-    "market data/^gsptse/latest",
-    1
-  ],
-  [
-    "market data/^gsptse/chart/year",
-    1
-  ],
-  [
-    "market data/^ssec/latest",
-    1
-  ],
-  [
-    "market data/^ssec/chart/year",
-    1
-  ],
-  [
-    "market data/^px50/latest",
-    1
-  ],
-  [
-    "market data/^px50/chart/year",
-    1
-  ],
-  [
-    "market data/^kfx/latest",
-    1
-  ],
-  [
-    "market data/^kfx/chart/year",
-    1
-  ],
-  [
-    "market data/^ccsi/latest",
-    1
-  ],
-  [
-    "market data/^ccsi/chart/year",
-    1
-  ],
-  [
-    "market data/^bsesn/latest",
-    1
-  ],
-  [
-    "market data/^bsesn/chart/year",
-    1
-  ],
-  [
-    "market data/^jkse/latest",
-    1
-  ],
-  [
-    "market data/^jkse/chart/year",
-    1
-  ],
-  [
-    "market data/^ta100/latest",
-    1
-  ],
-  [
-    "market data/^ta100/chart/year",
-    1
-  ],
-  [
-    "market data/^mibtel/latest",
-    1
-  ],
-  [
-    "market data/^mibtel/chart/year",
-    1
-  ],
-  [
-    "market data/^klse/latest",
-    1
-  ],
-  [
-    "market data/^klse/chart/year",
-    1
-  ],
-  [
-    "market data/^mxx/latest",
-    1
-  ],
-  [
-    "market data/^mxx/chart/year",
-    1
-  ],
-  [
-    "historic",
-    1
-  ],
-  [
-    "market data/^aex/latest",
-    1
-  ],
-  [
-    "market data/^aex/chart/year",
-    1
-  ],
-  [
-    "market data/^nz50/latest",
-    1
-  ],
-  [
-    "market data/^nz50/chart/year",
-    1
-  ],
-  [
-    "market data/^oseax/latest",
-    1
-  ],
-  [
-    "market data/^oseax/chart/year",
-    1
-  ],
-  [
-    "market data/^mtms/latest",
-    1
-  ],
-  [
-    "market data/^mtms/chart/year",
-    1
-  ],
-  [
-    "market data/^sti/latest",
-    1
-  ],
-  [
-    "market data/^sti/chart/year",
-    1
-  ],
-  [
-    "market data/^ks11/latest",
-    1
-  ],
-  [
-    "market data/^ks11/chart/year",
-    1
-  ],
-  [
-    "market data/^smsi/latest",
-    1
-  ],
-  [
-    "market data/^smsi/chart/year",
-    1
-  ],
-  [
-    "market data/^sxaxpi/latest",
-    1
-  ],
-  [
-    "market data/^sxaxpi/chart/year",
-    1
-  ],
-  [
-    "market data/^ssmi/latest",
-    1
-  ],
-  [
-    "market data/^ssmi/chart/year",
-    1
-  ],
-  [
-    "market data/^twii/latest",
-    1
-  ],
-  [
-    "market data/^twii/chart/year",
-    1
-  ],
-  [
-    "market data/^xu100/latest",
-    1
-  ],
-  [
-    "market data/^xu100/chart/year",
-    1
-  ],
-  [
-    "market data/^nya/chart/year",
-    1
-  ],
-  [
-    "market data/^gspc/latest",
-    1
-  ],
-  [
-    "market data/^gspc/chart/year",
-    1
-  ],
-  [
-    "cl2005",
-    1
-  ],
-  [
-    "exitpollsbundestag",
-    1
-  ],
-  [
-    "katrina college list pages",
-    1
-  ],
-  [
-    "katrina college list index",
-    1
-  ],
-  [
-    "polish parliamentary election 2005/exits polls",
-    1
-  ],
-  [
-    "/-",
-    1
-  ],
-  [
-    "widenavigatorsandbox3",
-    1
-  ],
-  [
-    "sisterprojectsbarsandbox",
-    1
-  ],
-  [
-    "pmid",
-    1
-  ],
-  [
-    "develop",
-    1
-  ],
-  [
-    "wikispecies",
-    1
-  ],
-  [
-    "mainpagemenu",
-    1
-  ],
-  [
-    "mainpagesectionmenu",
-    1
-  ],
-  [
-    "recent interviews",
-    1
-  ],
-  [
-    "wc2006 mainpage",
-    1
-  ],
-  [
-    "mainpagemediamenu",
-    1
-  ],
-  [
-    "frontpagemenu",
-    1
-  ],
-  [
-    "latest news 2",
-    1
-  ],
-  [
-    "frontpagesectionmenu",
-    1
-  ],
-  [
-    "frontpagemediamenu",
-    1
-  ],
-  [
-    "developing stories",
-    1
-  ],
-  [
-    "commonwealth games count",
-    1
-  ],
-  [
-    "mergeto",
-    1
-  ],
-  [
-    "en",
-    1
-  ],
-  [
-    "finnish",
-    1
-  ],
-  [
-    "single source",
-    1
-  ],
-  [
-    "3roundbracket-byes",
-    1
-  ],
-  [
-    "ccc",
-    1
-  ],
-  [
-    "wiktionarypar",
-    1
-  ],
-  [
-    "asean",
-    1
-  ],
-  [
-    "paraguay",
-    1
-  ],
-  [
-    "ukmap1",
-    1
-  ],
-  [
-    "[w",
-    1
-  ],
-  [
-    "translated wikinews (voa)",
-    1
-  ],
-  [
-    "2009 summer deaflympics",
-    1
-  ],
-  [
-    "greek",
-    1
-  ],
-  [
-    "npov",
-    1
-  ],
-  [
-    "subpage",
-    1
-  ],
-  [
-    "archive top",
-    1
-  ],
-  [
-    "archive bottom",
-    1
-  ],
-  [
-    "2008 taipei in style",
-    1
-  ],
-  [
-    "amberalert",
-    1
-  ],
-  [
-    "pd-small",
-    1
-  ],
-  [
-    "2008 taipei ampa",
-    1
-  ],
-  [
-    "french guiana",
-    1
-  ],
-  [
-    "notice",
-    1
-  ],
-  [
-    "ice hockey box score/1ot",
-    1
-  ],
-  [
-    "userboxtop",
-    1
-  ],
-  [
-    "userboxbottom",
-    1
-  ],
-  [
-    "british columbia",
-    1
-  ],
-  [
-    "election box majority",
-    1
-  ],
-  [
-    "election box turnout",
-    1
-  ],
-  [
-    "swedish",
-    1
-  ],
-  [
-    "uzbekistan",
-    1
-  ],
-  [
-    "superimpose",
-    1
-  ],
-  [
-    "cdninterview",
-    1
-  ],
-  [
-    "cdnfed2008interview-m",
-    1
-  ],
-  [
-    "cdnfed2008interview",
-    1
-  ],
-  [
-    "stock markets/core",
-    1
-  ],
-  [
-    "translated wikinews-basedon",
-    1
-  ],
-  [
-    "stock market data",
-    1
-  ],
-  [
-    "{country}",
-    1
-  ],
-  [
-    "yemen horizontal",
-    1
-  ],
-  [
-    "disasters and accidents horizontal",
-    1
-  ],
-  [
-    "stock market data‎",
-    1
-  ],
-  [
-    "india-horizontal",
-    1
-  ],
-  [
-    "space-hz",
-    1
-  ],
-  [
-    "sports-hz",
-    1
-  ],
-  [
-    "nmi to km mi",
-    1
-  ],
-  [
-    "turks and caicos islands",
-    1
-  ],
-  [
-    "seychelles",
-    1
-  ],
-  [
-    "avian flu horizontal",
-    1
-  ],
-  [
-    "portals up",
-    1
-  ],
-  [
-    "lithuania",
-    1
-  ],
-  [
-    "monaco",
-    1
-  ],
-  [
-    "ep04 results",
-    1
-  ],
-  [
-    "f to c",
-    1
-  ],
-  [
-    "cape verde",
-    1
-  ],
-  [
-    "{color1",
-    1
-  ],
-  [
-    "{color2",
-    1
-  ],
-  [
-    "african news",
-    1
-  ],
-  [
-    "andorra",
-    1
-  ],
-  [
-    "2010 fifa world cup",
-    1
-  ],
-  [
-    "nflplayoffs",
-    1
-  ],
-  [
-    "isle of man",
-    1
-  ],
-  [
-    "softredirect",
-    1
-  ],
-  [
-    "5mcintyre",
-    1
-  ],
-  [
-    "refresh",
-    1
-  ],
-  [
-    "no.",
-    1
-  ],
-  [
-    "image label",
-    1
-  ],
-  [
-    "republic of the congo",
-    1
-  ],
-  [
-    "|greg biffle",
-    1
-  ],
-  [
-    "toyota",
-    1
-  ],
-  [
-    "saint lucia",
-    1
-  ],
-  [
-    "cy",
-    1
-  ],
-  [
-    "trinidad and tobago",
-    1
-  ],
-  [
-    "somalian piracy",
-    1
-  ],
-  [
-    "grenada",
-    1
-  ],
-  [
-    "tpi",
-    1
-  ],
-  [
-    "{header",
-    1
-  ],
-  [
-    "commonscat2",
-    1
-  ],
-  [
-    "box",
-    1
-  ],
-  [
-    "w article",
-    1
-  ],
-  [
-    "missing image/caption",
-    1
-  ],
-  [
-    "eritrea",
-    1
-  ],
-  [
-    "cm to in",
-    1
-  ],
-  [
-    "commons donate right",
-    1
-  ],
-  [
-    "tennessee",
-    1
-  ],
-  [
-    "worldseries",
-    1
-  ],
-  [
-    "new hampshire",
-    1
-  ],
-  [
-    "#switch",
-    1
-  ],
-  [
-    "japanese",
-    1
-  ],
-  [
-    "tibet",
-    1
-  ],
-  [
-    "luxembourg",
-    1
-  ],
-  [
-    "tocleft",
-    1
-  ],
-  [
-    "bn",
-    1
-  ],
-  [
-    "nauru",
-    1
-  ],
-  [
-    "toc right",
-    1
-  ],
-  [
-    "italian",
-    1
-  ],
-  [
-    "tocright-small",
-    1
-  ],
-  [
-    "wales",
-    1
-  ],
-  [
-    "hidden use",
-    1
-  ],
-  [
-    "oregon",
-    1
-  ],
-  [
-    "plainlinks",
-    1
-  ],
-  [
-    "athens, greece",
-    1
-  ],
-  [
-    "alaska",
-    1
-  ],
-  [
-    "crime and law horizontal",
-    1
-  ],
-  [
-    "vermont",
-    1
-  ],
-  [
-    "florida",
-    1
-  ],
-  [
-    "dinosaurs",
-    1
-  ],
-  [
-    "african union",
-    1
-  ],
-  [
-    "connecticut",
-    1
-  ],
-  [
-    "oman",
-    1
-  ]
+  // ["source", 71181],
+  // ["w", 64382],
+  ["publish", 20198],
+  ["archive", 13303],
+  ["haveyoursay", 11703],
+  ["wikinews", 8357],
+  ["archived", 5731],
+  ["image source", 3880],
+  ["image credit", 3030],
+  ["image", 2170],
+  ["archive-unreviewed", 2144],
+  ["cricket match batsman status", 2143],
+  ["wniq", 2000],
+  ["original", 1824],
+  ["cricket match bowler status", 1211],
+  ["pd-article", 1202],
+  ["wni response", 1181],
+  ["wikipediapar", 947],
+  ["source-pr", 940],
+  ["quoteleft", 863],
+  ["quoteright", 770],
+  ["wikipedia", 736],
+  ["sisters", 553],
+  ["missing image", 532],
+  ["wikt", 482],
+  ["interview", 470],
+  ["united kingdom", 406],
+  ["cricket match box end", 402],
+  ["-", 380],
+  ["new zealand", 375],
+  ["crime and law", 366],
+  ["wnir", 334],
+  ["published", 328],
+  ["footballbox", 313],
+  ["voa", 305],
+  ["wikipediapars", 302],
+  ["byline", 299],
+  ["es", 299],
+  ["ice hockey box score", 297],
+  ["australian news", 257],
+  ["translated quote", 251],
+  ["canadian news", 248],
+  ["returnto", 244],
+  ["translated wikinews", 235],
+  ["obituaries", 232],
+  ["booked", 231],
+  ["original reporting", 227],
+  ["hys question left", 217],
+  ["india", 215],
+  ["australia", 206],
+  ["wikinews shorts header", 202],
+  ["translation note", 202],
+  ["cricket match batting box begin", 201],
+  ["cricket match bowling box begin", 201],
+  ["archive-sighted", 200],
+  ["dateline", 199],
+  ["user", 197],
+  ["wikimediamention", 195],
+  ["audio box 2", 182],
+  ["pakistan", 180],
+  ["canada", 171],
+  ["picture select", 171],
+  ["legend", 168],
+  ["aviation", 168],
+  ["disasters and accidents", 163],
+  ["loss", 155],
+  ["fa", 150],
+  ["economy and business", 147],
+  ["football", 145],
+  ["afghanistan", 141],
+  ["update", 137],
+  ["politics and conflicts", 137],
+  ["2008 beijing olympic medal count/sub", 136],
+  ["space", 128],
+  ["2008 us presidential election", 123],
+  ["correction", 120],
+  ["iraq", 118],
+  ["china", 116],
+  ["matchscore", 112],
+  ["broadcast report", 109],
+  ["sports", 107],
+  ["internet", 105],
+  ["united states", 102],
+  ["health", 100],
+  ["iran", 95],
+  ["languageicon", 93],
+  ["hys", 92],
+  ["aussieissue", 90],
+  ["russia", 87],
+  ["2012 us presidential election", 87],
+  ["uk", 85],
+  ["commons", 83],
+  ["footballbox-ver", 83],
+  ["blogsource", 82],
+  ["palestine", 81],
+  ["brief credits", 79],
+  ["turkey", 78],
+  ["israel", 75],
+  ["hys question right", 73],
+  ["lgbt", 72],
+  ["japan", 71],
+  ["somalia", 67],
+  ["scientology", 65],
+  ["france", 65],
+  ["worldcup2006", 64],
+  ["zimbabwe", 63],
+  ["chile", 62],
+  ["infobox", 61],
+  ["thailand", 59],
+  ["philippines", 59],
+  ["2012 olympic paralympics", 58],
+  ["pedia", 57],
+  ["nopublish", 57],
+  ["commonscat", 57],
+  ["indonesia", 57],
+  ["picture select l", 57],
+  ["ontarioprovincialelection2007", 56],
+  ["egypt", 55],
+  ["texas", 53],
+  ["north korea", 52],
+  ["wikinews shorts expand", 52],
+  ["mainspace disambig", 51],
+  ["zh", 51],
+  ["libya", 50],
+  ["q", 48],
+  ["2006 israel-lebanon conflict", 47],
+  ["germany", 47],
+  ["ja", 46],
+  ["infosectionend", 45],
+  ["profit", 45],
+  ["hidden", 44],
+  ["infosectionstart", 43],
+  ["2008-09 financial crisis", 43],
+  ["quotation", 42],
+  ["nigeria", 42],
+  ["brazil", 41],
+  ["source-science", 41],
+  ["displaytitle", 41],
+  ["pt", 40],
+  ["infoboxend", 40],
+  ["liveupdate", 40],
+  ["syria", 39],
+  ["italy", 39],
+  ["km to mi", 38],
+  ["matchresult", 38],
+  ["iraq war", 38],
+  ["mexico", 38],
+  ["article-audiobrief", 38],
+  ["south africa", 38],
+  ["historical", 37],
+  ["phonecontact", 37],
+  ["audio box", 36],
+  ["wikisource", 35],
+  ["scotland", 35],
+  ["exclusive story", 34],
+  ["ru", 34],
+  ["kenya", 34],
+  ["nl", 33],
+  ["pdf", 33],
+  ["mi to km", 32],
+  ["spanish", 32],
+  ["greece", 31],
+  ["de", 31],
+  ["stanley cup playoffs 2007", 31],
+  ["spain", 31],
+  ["money", 31],
+  ["prefix", 31],
+  ["multiple image", 30],
+  ["iran nuclear program", 28],
+  ["north korea nuclear program", 28],
+  ["crossword", 27],
+  ["television", 27],
+  ["interview model", 27],
+  ["environment", 27],
+  ["ukraine", 26],
+  ["cquote2", 26],
+  ["null", 25],
+  ["torontoelection", 25],
+  ["tour de france 2007", 24],
+  ["saudi arabia", 24],
+  ["source offline", 23],
+  ["infoboxstart", 23],
+  ["infosection", 23],
+  ["yemen", 23],
+  ["sudan", 23],
+  ["new york", 23],
+  ["nascar", 23],
+  ["buffalo, n.y. hotel proposal controversy/infobox", 22],
+  ["al-qaeda", 22],
+  ["poland", 22],
+  ["listenawnb", 22],
+  ["wni first question", 22],
+  ["united nations", 22],
+  ["fr", 21],
+  ["zh-tw", 21],
+  ["belgium", 21],
+  ["pl", 21],
+  ["2008 olympic games", 21],
+  ["science and technology", 21],
+  ["israel/palestine conflict", 21],
+  ["music", 21],
+  ["uefa euro 2016", 21],
+  ["reviewed", 20],
+  ["venezuela", 20],
+  ["cdnfed2008interview-on", 20],
+  ["football stat", 20],
+  ["2018 fifa world cup", 20],
+  ["da", 19],
+  ["wikileaks", 19],
+  ["bbc", 19],
+  ["picture select r", 19],
+  ["rquote", 18],
+  ["weather news", 18],
+  ["2010 haiti earthquake", 18],
+  ["{size", 18],
+  ["audio wikinews brief", 18],
+  ["european union", 17],
+  ["climate change", 17],
+  ["lebanon", 17],
+  ["it", 17],
+  ["news briefs footer", 17],
+  ["netherlands", 17],
+  ["south korea", 17],
+  ["guatemala", 17],
+  ["sri lanka", 17],
+  ["okina", 17],
+  ["ireland", 17],
+  ["2016 us presidential election", 17],
+  ["moldova", 16],
+  ["fiji", 16],
+  ["2007 iranian seizure of royal navy personnel", 16],
+  ["iceland", 16],
+  ["singapore", 16],
+  ["myanmar", 16],
+  ["basedon", 16],
+  ["taiwan", 16],
+  ["uk election latest", 15],
+  ["tennis", 15],
+  ["finland", 15],
+  ["bristol", 15],
+  ["pichilemu", 15],
+  ["apple", 15],
+  ["template", 14],
+  ["malaysia", 14],
+  ["nepal", 14],
+  ["russian", 14],
+  ["hong kong", 14],
+  ["2011 sendai earthquake and tsunami horizontal", 14],
+  ["culture and entertainment", 14],
+  ["film", 13],
+  ["germanelection2005", 13],
+  ["sweden", 13],
+  ["sv", 13],
+  ["war in south ossetia (2008)", 13],
+  ["haiti", 13],
+  ["transport", 13],
+  ["computing", 13],
+  ["labor", 13],
+  ["ivory coast", 13],
+  ["double image", 13],
+  ["education", 13],
+  ["mormonism", 12],
+  ["dutch", 12],
+  ["switzerland", 12],
+  ["2009 queensland election", 12],
+  ["australian rules football", 12],
+  ["lowercase", 11],
+  ["出典・ウェブ", 11],
+  ["sister", 11],
+  ["3roundbracket", 11],
+  ["peru", 11],
+  ["denmark", 11],
+  ["current", 11],
+  ["democratic republic of the congo", 11],
+  ["google", 11],
+  ["eurovision", 11],
+  ["swine flu", 11],
+  ["biology", 11],
+  ["colombia", 10],
+  ["pmid/url", 10],
+  ["wikimedia foundation", 10],
+  ["bangladesh", 10],
+  ["2008 tour de taiwan", 10],
+  ["honduras", 10],
+  ["ft to m", 10],
+  ["piracy", 10],
+  ["broadcast", 10],
+  ["2020 united states presidential election", 10],
+  ["microsoft", 9],
+  ["awn brief", 9],
+  ["sourcereg", 9],
+  ["clr", 9],
+  ["uganda", 9],
+  ["cuba", 9],
+  ["cambodia", 9],
+  ["argentina", 9],
+  ["2007bwc", 9],
+  ["algeria", 9],
+  ["2008tibe", 9],
+  ["cyclone nargis", 9],
+  ["norway", 9],
+  ["2008 financial crisis", 9],
+  ["guinea", 9],
+  ["m to ft", 9],
+  ["click", 9],
+  ["rwanda", 9],
+  ["obituary", 9],
+  ["papersource", 8],
+  ["fullurl", 8],
+  ["pdflink", 8],
+  ["sri lanka news", 8],
+  ["welsh news", 8],
+  ["hungary", 8],
+  ["austria", 8],
+  ["ghana", 8],
+  ["serbia", 8],
+  ["chad", 8],
+  ["chinese", 8],
+  ["2008 computex", 8],
+  ["{countries}", 8],
+  ["quote box", 8],
+  ["czech republic", 8],
+  ["papua new guinea", 8],
+  ["ethiopia", 8],
+  ["fullpagename", 8],
+  ["{width", 8],
+  ["{qwidth", 8],
+  ["{2", 8],
+  ["{height", 8],
+  ["{qheight", 8],
+  ["{3", 8],
+  ["img", 8],
+  ["macedonia", 7],
+  ["apasource", 7],
+  ["morocco", 7],
+  ["2007 taipei it month", 7],
+  ["video", 7],
+  ["2010-olympics", 7],
+  ["{clear", 7],
+  ["portugal", 7],
+  ["romania", 7],
+  ["he", 7],
+  ["fi", 7],
+  ["cdnfed2008", 7],
+  ["kyrgyzstan", 7],
+  ["madagascar", 7],
+  ["bahrain", 7],
+  ["vietnam", 7],
+  ["setimes", 7],
+  ["color", 7],
+  ["wikinewslang", 6],
+  ["vatican city", 6],
+  ["quakersnav", 6],
+  ["2006 turin medal count", 6],
+  ["pagename", 6],
+  ["costa rica", 6],
+  ["georgia", 6],
+  ["larrycraig", 6],
+  ["gitmo", 6],
+  ["2008 taipei game show", 6],
+  ["orsource", 6],
+  ["cyprus", 6],
+  ["united arab emirates", 6],
+  ["gambia", 6],
+  ["tunisia", 6],
+  ["2008 beijing olympic medal count", 6],
+  ["canada-h", 6],
+  ["2009 australian by-elections", 6],
+  ["itv", 6],
+  ["image lead", 6],
+  ["wikipedia2", 6],
+  ["es icon", 6],
+  ["formula one", 6],
+  ["2011 sendai earthquake and tsunami", 6],
+  ["tl", 6],
+  ["french", 6],
+  ["football (soccer)", 6],
+  ["sisterprojects", 5],
+  ["donate", 5],
+  ["nz election scorecard", 5],
+  ["apec2005", 5],
+  ["turkish", 5],
+  ["cl2007", 5],
+  ["wdsc2007", 5],
+  ["croatia", 5],
+  ["scitech", 5],
+  ["armenia", 5],
+  ["ecuador", 5],
+  ["ro", 5],
+  ["2008 google developer day", 5],
+  ["phoenix mission", 5],
+  ["bahamas", 5],
+  ["azerbaijan", 5],
+  ["pakistan-h", 5],
+  ["antarctica", 5],
+  ["gabon", 5],
+  ["slovakia", 5],
+  ["mozambique", 5],
+  ["jordan", 5],
+  ["mali", 5],
+  ["ftscore", 5],
+  ["jamaica", 5],
+  ["football match report", 5],
+  ["south sudan", 5],
+  ["urlencode", 5],
+  ["england", 5],
+  ["tennis scorecard", 5],
+  ["aviation mishaps", 5],
+  ["weather", 5],
+  ["covid-19", 5],
+  ["have your say", 4],
+  ["togo", 4],
+  ["katrina college list top", 4],
+  ["oil prices surge", 4],
+  ["prettytable", 4],
+  ["coor d", 4],
+  ["nba finals 2006", 4],
+  ["ufo", 4],
+  ["cameroon", 4],
+  ["estonia", 4],
+  ["sierra leone", 4],
+  ["laos", 4],
+  ["coordinates", 4],
+  ["2007taipeimarathon", 4],
+  ["2007 taitronics autumn", 4],
+  ["2007apb", 4],
+  ["cl2008", 4],
+  ["scidev", 4],
+  ["2008 wimax expo taipei", 4],
+  ["bolivia", 4],
+  ["cfl box score", 4],
+  ["war in georgia (2008)", 4],
+  ["zambia", 4],
+  ["igd2008taipei", 4],
+  ["is", 4],
+  ["htab-box", 4],
+  ["maldives", 4],
+  ["namibia", 4],
+  ["tonga", 4],
+  ["niger", 4],
+  ["belarus", 4],
+  ["swaziland", 4],
+  ["9/11", 4],
+  ["human rights", 4],
+  ["czech", 4],
+  ["us politics", 4],
+  ["arabic", 4],
+  ["colorado", 4],
+  ["qatar", 4],
+  ["donut", 4],
+  ["football bookings", 4],
+  ["california", 4],
+  ["xquote", 4],
+  ["editor tasks", 3],
+  ["server", 3],
+  ["namespace", 3],
+  ["wikisourcepar", 3],
+  ["lead article", 3],
+  ["aw", 3],
+  ["specialpublish", 3],
+  ["multi-video start", 3],
+  ["multi-video item", 3],
+  ["multi-video end", 3],
+  ["fork", 3],
+  ["doi", 3],
+  ["hurricane wilma update", 3],
+  ["commonspar", 3],
+  ["or", 3],
+  ["cricket", 3],
+  ["new developments", 3],
+  ["issues/basketball", 3],
+  ["wikiquotepar", 3],
+  ["liberia", 3],
+  ["wikimania 2007", 3],
+  ["semicontaiwan2007", 3],
+  ["2007 wimax forum taipei showcase & conference", 3],
+  ["2007 taipei 101 run up", 3],
+  ["crude oil prices/core", 3],
+  ["german", 3],
+  ["wikiquote", 3],
+  ["antigua and barbuda", 3],
+  ["aus vs ind 3rd test nav", 3],
+  ["albania", 3],
+  ["kuwait", 3],
+  ["2008 yodex", 3],
+  ["liverpool", 3],
+  ["equatorial guinea", 3],
+  ["2008 tica", 3],
+  ["mauritania", 3],
+  ["location", 3],
+  ["steady", 3],
+  ["science and technology - horizontal", 3],
+  ["lv", 3],
+  ["stock market", 3],
+  ["el salvador", 3],
+  ["tanzania", 3],
+  ["c to f", 3],
+  ["xambox", 3],
+  ["malawi", 3],
+  ["air france flight 447", 3],
+  ["hys question bottom", 3],
+  ["bosnia and herzegovina", 3],
+  ["image  credit", 3],
+  ["slovenia", 3],
+  ["cs", 3],
+  ["maine", 3],
+  ["mathematics", 3],
+  ["page layout", 3],
+  ["imbox", 3],
+  ["broadcast-inline", 3],
+  ["2012 olympic games", 3],
+  ["religion", 3],
+  ["nobel prize", 3],
+  ["2016 united states presidential election", 3],
+  ["anchors", 3],
+  ["puerto rico", 3],
+  ["athletics", 3],
+  ["gain", 3],
+  ["lead article 1", 2],
+  ["main headlines", 2],
+  ["lead article 2", 2],
+  ["lead article 3", 2],
+  ["lead article 4", 2],
+  ["lead article 5", 2],
+  ["leadstorysandbox", 2],
+  ["latest news sandbox3", 2],
+  ["weathernavsandbox3", 2],
+  ["regionssandbox3", 2],
+  ["welcomesandbox3", 2],
+  ["ongoingnews3", 2],
+  ["digestandoldernewssandbox3", 2],
+  ["localurl", 2],
+  ["market data/^dji/latest", 2],
+  ["market data/^nya/latest", 2],
+  ["market data/^ixic/latest", 2],
+  ["market data/^aord/latest", 2],
+  ["market data/^ftse/latest", 2],
+  ["interview/media", 2],
+  ["voa-by", 2],
+  ["latest news", 2],
+  ["new2", 2],
+  ["norwegian", 2],
+  ["imported", 2],
+  ["audio2", 2],
+  ["canelection2006", 2],
+  ["clearright", 2],
+  ["start an article", 2],
+  ["second lead", 2],
+  ["third lead", 2],
+  ["original stories", 2],
+  ["frontpagehistoricallist", 2],
+  ["get involved", 2],
+  ["2006europeanchampionshipsathletics", 2],
+  ["nbc", 2],
+  ["source/broken", 2],
+  ["wikinews canada shorts header", 2],
+  ["côte d'ivoire", 2],
+  ["panama", 2],
+  ["english football categories", 2],
+  ["cricket summary", 2],
+  ["wikimania 2008", 2],
+  ["defaultsortkey", 2],
+  ["english", 2],
+  ["2007 taipei itf", 2],
+  ["east timor", 2],
+  ["sr", 2],
+  ["2008 taiwan presidential election", 2],
+  ["2008 secutech expo", 2],
+  ["2008 autotronics taipei", 2],
+  ["crude oil prices", 2],
+  ["mongolia", 2],
+  ["bulgaria", 2],
+  ["2008 leisure taiwan", 2],
+  ["olympic games", 2],
+  ["2008 beijing paralympic medal count", 2],
+  ["cdnfed2008interview-bc", 2],
+  ["cdnfed2008interview-ab", 2],
+  ["cdnfed2008interview-pr", 2],
+  ["cdnfed2008interview-qc", 2],
+  ["prezresult08", 2],
+  ["obituaries-horizontal", 2],
+  ["bhutan", 2],
+  ["guinea-bissau", 2],
+  ["botswana", 2],
+  ["cn", 2],
+  ["burkina faso", 2],
+  ["kazakhstan", 2],
+  ["senegal", 2],
+  ["angola", 2],
+  ["solomon islands", 2],
+  ["location map", 2],
+  ["orphan", 2],
+  ["{align", 2],
+  ["talkpagename", 2],
+  ["sister float", 2],
+  ["hawaii", 2],
+  ["barbados", 2],
+  ["bicentennial of chile", 2],
+  ["kosovo", 2],
+  ["dominican republic", 2],
+  ["guyana", 2],
+  ["benin", 2],
+  ["cricket world cup", 2],
+  ["{headerextension", 2],
+  ["#time", 2],
+  ["vanuatu", 2],
+  ["wikipediamention", 2],
+  ["uruguay", 2],
+  ["indiana", 2],
+  ["portuguese", 2],
+  ["ukrainian", 2],
+  ["slovak", 2],
+  ["photo credit", 2],
+  ["nato", 2],
+  ["football kit", 2],
+  ["olympics", 2],
+  ["archaeology", 2],
+  ["fuente", 2],
+  ["2018 winter olympics", 2],
+  ["road accidents", 2],
+  ["samoa", 2],
+  ["main page header", 1],
+  ["main page portals", 1],
+  ["main write", 1],
+  ["main interviews", 1],
+  ["main original", 1],
+  ["main about", 1],
+  ["main featured", 1],
+  ["main around", 1],
+  ["edit", 1],
+  ["navigatorsandbox3", 1],
+  ["welcomesandbox4", 1],
+  ["latestnews", 1],
+  ["weather world", 1],
+  ["market data/index/summary", 1],
+  ["market data/^dji/chart/year", 1],
+  ["market data/^merv/latest", 1],
+  ["market data/^merv/chart/year", 1],
+  ["market data/^ftse/chart/year", 1],
+  ["market data/^fchi/latest", 1],
+  ["market data/^fchi/chart/year", 1],
+  ["market data/^gdaxi/latest", 1],
+  ["market data/^gdaxi/chart/year", 1],
+  ["market data/^n225/latest", 1],
+  ["market data/^n225/chart/year", 1],
+  ["market data/^ixic/chart/year", 1],
+  ["portalpar", 1],
+  ["market data/^hsi/latest", 1],
+  ["market data/^hsi/chart/year", 1],
+  ["holcim ltd/infobox", 1],
+  ["election scorecard", 1],
+  ["ffl-sm", 1],
+  ["wrongtitle", 1],
+  ["market data/^aord/chart/year", 1],
+  ["market data/^atx/latest", 1],
+  ["market data/^bfx/latest", 1],
+  ["market data/^bfx/chart/year", 1],
+  ["market data/^bvsp/latest", 1],
+  ["market data/^bvsp/chart/year", 1],
+  ["market data/^gsptse/latest", 1],
+  ["market data/^gsptse/chart/year", 1],
+  ["market data/^ssec/latest", 1],
+  ["market data/^ssec/chart/year", 1],
+  ["market data/^px50/latest", 1],
+  ["market data/^px50/chart/year", 1],
+  ["market data/^kfx/latest", 1],
+  ["market data/^kfx/chart/year", 1],
+  ["market data/^ccsi/latest", 1],
+  ["market data/^ccsi/chart/year", 1],
+  ["market data/^bsesn/latest", 1],
+  ["market data/^bsesn/chart/year", 1],
+  ["market data/^jkse/latest", 1],
+  ["market data/^jkse/chart/year", 1],
+  ["market data/^ta100/latest", 1],
+  ["market data/^ta100/chart/year", 1],
+  ["market data/^mibtel/latest", 1],
+  ["market data/^mibtel/chart/year", 1],
+  ["market data/^klse/latest", 1],
+  ["market data/^klse/chart/year", 1],
+  ["market data/^mxx/latest", 1],
+  ["market data/^mxx/chart/year", 1],
+  ["historic", 1],
+  ["market data/^aex/latest", 1],
+  ["market data/^aex/chart/year", 1],
+  ["market data/^nz50/latest", 1],
+  ["market data/^nz50/chart/year", 1],
+  ["market data/^oseax/latest", 1],
+  ["market data/^oseax/chart/year", 1],
+  ["market data/^mtms/latest", 1],
+  ["market data/^mtms/chart/year", 1],
+  ["market data/^sti/latest", 1],
+  ["market data/^sti/chart/year", 1],
+  ["market data/^ks11/latest", 1],
+  ["market data/^ks11/chart/year", 1],
+  ["market data/^smsi/latest", 1],
+  ["market data/^smsi/chart/year", 1],
+  ["market data/^sxaxpi/latest", 1],
+  ["market data/^sxaxpi/chart/year", 1],
+  ["market data/^ssmi/latest", 1],
+  ["market data/^ssmi/chart/year", 1],
+  ["market data/^twii/latest", 1],
+  ["market data/^twii/chart/year", 1],
+  ["market data/^xu100/latest", 1],
+  ["market data/^xu100/chart/year", 1],
+  ["market data/^nya/chart/year", 1],
+  ["market data/^gspc/latest", 1],
+  ["market data/^gspc/chart/year", 1],
+  ["cl2005", 1],
+  ["exitpollsbundestag", 1],
+  ["katrina college list pages", 1],
+  ["katrina college list index", 1],
+  ["polish parliamentary election 2005/exits polls", 1],
+  ["/-", 1],
+  ["widenavigatorsandbox3", 1],
+  ["sisterprojectsbarsandbox", 1],
+  ["pmid", 1],
+  ["develop", 1],
+  ["wikispecies", 1],
+  ["mainpagemenu", 1],
+  ["mainpagesectionmenu", 1],
+  ["recent interviews", 1],
+  ["wc2006 mainpage", 1],
+  ["mainpagemediamenu", 1],
+  ["frontpagemenu", 1],
+  ["latest news 2", 1],
+  ["frontpagesectionmenu", 1],
+  ["frontpagemediamenu", 1],
+  ["developing stories", 1],
+  ["commonwealth games count", 1],
+  ["mergeto", 1],
+  ["en", 1],
+  ["finnish", 1],
+  ["single source", 1],
+  ["3roundbracket-byes", 1],
+  ["ccc", 1],
+  ["wiktionarypar", 1],
+  ["asean", 1],
+  ["paraguay", 1],
+  ["ukmap1", 1],
+  ["[w", 1],
+  ["translated wikinews (voa)", 1],
+  ["2009 summer deaflympics", 1],
+  ["greek", 1],
+  ["npov", 1],
+  ["subpage", 1],
+  ["archive top", 1],
+  ["archive bottom", 1],
+  ["2008 taipei in style", 1],
+  ["amberalert", 1],
+  ["pd-small", 1],
+  ["2008 taipei ampa", 1],
+  ["french guiana", 1],
+  ["notice", 1],
+  ["ice hockey box score/1ot", 1],
+  ["userboxtop", 1],
+  ["userboxbottom", 1],
+  ["british columbia", 1],
+  ["election box majority", 1],
+  ["election box turnout", 1],
+  ["swedish", 1],
+  ["uzbekistan", 1],
+  ["superimpose", 1],
+  ["cdninterview", 1],
+  ["cdnfed2008interview-m", 1],
+  ["cdnfed2008interview", 1],
+  ["stock markets/core", 1],
+  ["translated wikinews-basedon", 1],
+  ["stock market data", 1],
+  ["{country}", 1],
+  ["yemen horizontal", 1],
+  ["disasters and accidents horizontal", 1],
+  ["stock market data‎", 1],
+  ["india-horizontal", 1],
+  ["space-hz", 1],
+  ["sports-hz", 1],
+  ["nmi to km mi", 1],
+  ["turks and caicos islands", 1],
+  ["seychelles", 1],
+  ["avian flu horizontal", 1],
+  ["portals up", 1],
+  ["lithuania", 1],
+  ["monaco", 1],
+  ["ep04 results", 1],
+  ["f to c", 1],
+  ["cape verde", 1],
+  ["{color1", 1],
+  ["{color2", 1],
+  ["african news", 1],
+  ["andorra", 1],
+  ["2010 fifa world cup", 1],
+  ["nflplayoffs", 1],
+  ["isle of man", 1],
+  ["softredirect", 1],
+  ["5mcintyre", 1],
+  ["refresh", 1],
+  ["no.", 1],
+  ["image label", 1],
+  ["republic of the congo", 1],
+  ["|greg biffle", 1],
+  ["toyota", 1],
+  ["saint lucia", 1],
+  ["cy", 1],
+  ["trinidad and tobago", 1],
+  ["somalian piracy", 1],
+  ["grenada", 1],
+  ["tpi", 1],
+  ["{header", 1],
+  ["commonscat2", 1],
+  ["box", 1],
+  ["w article", 1],
+  ["missing image/caption", 1],
+  ["eritrea", 1],
+  ["cm to in", 1],
+  ["commons donate right", 1],
+  ["tennessee", 1],
+  ["worldseries", 1],
+  ["new hampshire", 1],
+  ["#switch", 1],
+  ["japanese", 1],
+  ["tibet", 1],
+  ["luxembourg", 1],
+  ["tocleft", 1],
+  ["bn", 1],
+  ["nauru", 1],
+  ["toc right", 1],
+  ["italian", 1],
+  ["tocright-small", 1],
+  ["wales", 1],
+  ["hidden use", 1],
+  ["oregon", 1],
+  ["plainlinks", 1],
+  ["athens, greece", 1],
+  ["alaska", 1],
+  ["crime and law horizontal", 1],
+  ["vermont", 1],
+  ["florida", 1],
+  ["dinosaurs", 1],
+  ["african union", 1],
+  ["connecticut", 1],
+  ["oman", 1]
 ]

@@ -1,36 +1,24 @@
 const wtf = require('./src/index')
-wtf.extend(require('./plugins/image/src'))
+wtf.extend(require('./plugins/wikis/wikinews/plugin'))
 
-let str = `{{Infobox settlement
-|name = Toronto
-|official_name = City of Toronto
-|settlement_type = [[List of cities in Ontario|City]] ([[List of municipalities in Ontario#Single-tier municipalities|single-tier]])
-|nickname = [[Name of Toronto|T.O., T-Dot, Hogtown, The Queen City, Toronto the Good, The City Within a Park]]<!-- Do not add Centre of the Universe, since there are no valid citations for that term, and it is originally a popular nickname for NYC not Toronto --><!-- Do not add El Toro, since it is just a marketing ploy by Eye Weekly (later re-branded as the Grid) --><!-- Do not add York, Upper Canada, since it is a historical name, not a nickname --><!-- Do not add The 6, since it is a promotional name used by Drake and his fans -->
-|motto = Diversity Our Strength
-}}
-
-[[File:Wikipedesketch1.png|thumb|alt=A cartoon centipede detailed description.|The Wikipede edits ''[[Myriapoda]]''.]]
-Toronto is a town.
-`
-
+let str = `{{Infobox animanga/Novel
+  | 著者 = [[白米良]]
+  | イラスト = [[たかやKi]]
+  | f出版社 = [[オーバーラップ (企業)|オーバーラップ]]
+  | 掲載誌 = [[小説家になろう]]
+  | レーベル = [[オーバーラップ文庫]]
+  | 開始号 = 2013年11月7日
+  | 終了号 = 
+  | 開始日 = 2015年6月24日
+  | 終了日 = 
+  | 巻数 = 既刊16巻（本編11巻+外伝4巻+短編集1巻）<br />（2020年7月現在）
+  | インターネット = 1
+  }}`
 // let doc = wtf(str)
-// console.log(doc.mainImage().src())
-// console.log(doc._wiki)
-// console.log(doc.templates())
-// console.log(doc.isDisambiguation())
-// console.log(doc.disambiguation())
-// console.log(doc.link(3).json())
+// console.log(doc.infoboxes(0).json())
 
-// let doc = wtf(`[[cool|fun ''times'']] and [[nice]]`)
-// console.log(doc.links(0))
-
-// str = `hello {{Coord|44.112|N|87.913|W|display=title}} world`
-// let obj = wtf(str).coordinate(0)
-// console.log(obj)
-
-wtf.fetch('toronto').then(function (doc) {
-  let img = doc.mainImage()
-  if (img) {
-    console.log(img.src())
-  }
-})
+// str = `{{image source|file=Wikinews article wizard workflow.svg|[[Commons:User:Pi zero|Pi zero]]}}`
+str = `'''Tom Anselmi''' (born {{circa|1956}}) is a Canadian [[sport]]s [[Senior management|executive]]. asdf  `
+let arr = wtf(str).sentences()
+// console.log(wtf(str).text())
+console.log(arr.map((s) => s.text()))

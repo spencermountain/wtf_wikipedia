@@ -9,7 +9,7 @@ const plugin = (models, templates, infoboxes) => {
   Object.assign(infoboxes, boxes)
   // add templates
   templates.tag = (text, data) => {
-    console.log(data)
+    // console.log(data)
     return
   }
 }

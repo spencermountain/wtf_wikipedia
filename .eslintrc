@@ -58,6 +58,7 @@
         "ignoreRegExpLiterals": true
       }
     ],
-    "regexp/prefer-d": 0
+    "regexp/prefer-d": 0,
+    "regexp/prefer-w": 0
   }
 }

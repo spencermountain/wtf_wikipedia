@@ -35,4 +35,7 @@ module.exports = {
   'long dash': '———',
   clear: '\n\n',
   'h.': 'ḥ',
+  profit: '▲',
+  loss: '▼',
+  gain: '▲',
 }
