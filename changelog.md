@@ -10,6 +10,7 @@
     - interwiki() -> interwikis()
 - **[breaking]** - cleanup null|undefined responses from methods
 - **[breaking]** - remove .dates() method (prev deprecated)
+- **[breaking]** - require node 10, ie > 11
 - **[change]** - normalize table rows
 - **[change]** - move wiktionary templates to `wtf-plugin-wiktionary`
 - **[change]** - Link.text() now returns page

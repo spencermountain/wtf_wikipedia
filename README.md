@@ -412,7 +412,7 @@ let doc = await wtf.fetch(64646, 'de')
 
 the fetch method follows redirects.
 
-### fetch categories:
+### API plugin
 
 **wtf.category(title, [lang], [options | callback])**
 
@@ -428,10 +428,6 @@ let result = await wtf.category('Category:Politicians_from_Paris')
 }
 */
 ```
-
-see [wtf-plugin-api](./plugins/api)
-
-### fetch random article:
 
 **wtf.random([lang], [options], [callback])**
 

@@ -3,7 +3,8 @@ const wtf = require('../lib')
 
 test('get metadata', (t) => {
   t.plan(2)
-  const p = wtf.fetch('Toronto Raptors', 'en', {
+  const p = wtf.fetch('Toronto Raptors', {
+    lang: 'en',
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
   })
   p.then(function (doc) {

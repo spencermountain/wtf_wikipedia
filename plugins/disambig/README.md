@@ -19,65 +19,8 @@
   <code>npm install wtf-plugin-disambig</code>
 </div>
 
-A plugin that finds `birth date, birth place`, and `death date` information for people, in its various places in a wikipedia article.
+disambig-details plugin for wtf_wikipedia
 
-```js
-const wtf = require('wtf_wikipedia')
-wtf.extend(require('wtf-plugin-disambig'))
-;(async () => {
-  await wtf.fetch('David Phillips (entrepreneur)').birthDate()
-  // {year: 1964, month:null, date:null}
-})()
-```
-
-<div align="center">
-  <h2><a href="https://observablehq.com/@spencermountain/wtf-plugin-disambig">Demo</a></h2>
-</div>
-
-## Notes:
-
-This library assumes that every article you give it is about a disambig. You may want to use it in conjunction with [wtf-plugin-classify](https://github.com/spencermountain/wtf_wikipedia/tree/master/plugins/classify)
-to ensure that a page is first about a disambig, and not a place, or musical group:
-
-```js
-wtf.fetch('Billy Elliot').then((doc) => {
-  let res = doc.classify() // 'CreativeWork/Play'
-  if (res.root === 'disambig') {
-    console.log(doc.birthPlace())
-  }
-})
-```
-
-### `.birthDate()`
-
-returns `month`, `year` and `date` properties, or a null response
-
-- looks at varous disambig-infoboxes, like `Infobox officeholder` or `Infobox ice hockey player`
-- looks at first-sentence parentheses, like `'Wayne Douglas Gretzky CC (/ˈɡrɛtski/; born January 26, 1961) is a ...'`
-- looks at category information, like `'Category:1933 births'`
-
-### `.birthPlace()`
-
-returns a string - and a wikipedia article title, if possible
-
-- looks at varous disambig infoboxes
-- looks at category information, like `'Category:People from Geneva'`
-
-### `.isAlive()`
-
-returns `true`, `false`, or `null` for unknown result.
-
-- looks for a `.deathDate()` or `.deathPlace()` result
-- looks at category information, like `Category:Dead people`
-- looks at template information, like `{{WikiProject Biography|living=yes }}`
-
-### `.deathDate()`
-
-same as `.birthDate()`
-
-### `.deathPlace()`
-
-same as `.birthPlace()`
 
 work-in-progress
 

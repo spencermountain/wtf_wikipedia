@@ -44,6 +44,10 @@ const defaults = {
  * @returns {Promise<null | Document | Document[]>} either null if the pages is not found, Document if you asked for one result, and a array of Documents if you asked for multiple pages
  */
 const fetch = function (title, options, callback) {
+  // support lang as 2nd param
+  if (typeof options === 'string') {
+    options = { lang: options }
+  }
   options = { ...defaults, ...options }
   options.title = title
 

@@ -3,7 +3,8 @@ const wtf = require('../lib')
 
 test('fetch-as-promise', (t) => {
   t.plan(1)
-  const p = wtf.fetch('Tony Hawk', 'en', {
+  const p = wtf.fetch('Tony Hawk', {
+    lang: 'en',
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
   })
   p.then(function (doc) {
@@ -26,7 +27,8 @@ test('fetch-as-callback', (t) => {
 
 test('fetch-invalid', (t) => {
   t.plan(1)
-  const p = wtf.fetch('Taylor%20Swift', 'en', {
+  const p = wtf.fetch('Taylor%20Swift', {
+    lang: 'en',
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
   })
   p.then(function (doc) {
@@ -39,7 +41,8 @@ test('fetch-invalid', (t) => {
 
 test('fetch-missing', (t) => {
   t.plan(1)
-  const p = wtf.fetch('NonExistentPage', 'en', {
+  const p = wtf.fetch('NonExistentPage', {
+    lang: 'en',
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
   })
   p.then(function (doc) {
@@ -67,7 +70,8 @@ test('fetch-redirect', (t) => {
 
 test('fetch-alternate-wiki', (t) => {
   t.plan(1)
-  const p = wtf.fetch(336711, 'en', {
+  const p = wtf.fetch(336711, {
+    lang: 'en',
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
     domain: 'www.mixesdb.com',
     path: 'db/api.php',
@@ -131,7 +135,8 @@ test('intensive', (t) => {
   ]
   t.plan(pages.length)
   const promises = pages.map((page) =>
-    wtf.fetch(page, 'en', {
+    wtf.fetch(page, {
+      lang: 'en',
       'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
     })
   )
