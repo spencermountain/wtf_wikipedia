@@ -6,11 +6,18 @@
 
 #### 9.0.0
 
-big cleanup of .fetch() (thanks wouter!), 'parse' param for templates.
+Tldr:
+
+- `.templates()` now return Template objects, instead of json.
+- cool new http library for `.fetch()`
+- custom templates recieve pre-parsed json
+- more development of plugins
+
+detail:
 
 - **[breaking]** - .templates() now returns Template objects, like other methods (call .json())
-- **[breaking]** - change interpretation of reversed params in .fetch() method
-- **[breaking]** - change params to new templates added by plugins
+- **[breaking]** - change interpretation of reversed params in .fetch() method (thanks wouter!)
+- **[breaking]** - change params for custom templates
 - **[breaking]** - move .random() and .category() to plugin-api
 - **[breaking]** - always return an array for plural methods, even with number param, like .links(3)
 - **[possibly-breaking]** - cleanup null|undefined responses from methods
@@ -20,12 +27,12 @@ big cleanup of .fetch() (thanks wouter!), 'parse' param for templates.
 - **[change]** - move wiktionary templates to `wtf-plugin-wiktionary`
 - **[change]** - Link.text() now returns page
 - **[change]** - improvements to 'soft' `isDisambiguation` detection
+- **[change]** - deprecate wtf-plugin-category (move to wtf-plugin-api)
 - **[new]** - api plugin
 - **[new]** - disambig plugin
 - **[new]** - person plugin
 - **[new]** - Table.get() method
 - **[new]** - set new infoboxes using .extend()
-- deprecate wtf-plugin-category (move to wtf-plugin-api)
 
 - plugin-api 0.0.1
 - plugin-classify 1.0.0

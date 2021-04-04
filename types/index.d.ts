@@ -66,29 +66,29 @@ declare module wtf {
     isDisambig(): boolean
 
     /** fetch a list of this page's categories */
-    categories(): string[]
+    categories(clue?: number): string[]
     /** fetch the first or nth category */
     category(clue?: number): string
 
     /**return a list, or given-index of the Document's sections */
-    sections(): Section[]
+    sections(clue?: number): Section[]
     /** fetch the nth section */
     sections(clue?: string): Section[]
     /** fetch the first Section */
     section(clue?: number | string): Section
 
     /**return a list, or given-index of Paragraphs, in all sections */
-    paragraphs(): Paragraph[]
+    paragraphs(clue?: number): Paragraph[]
     /**grab the first paragraph */
     paragraph(n?: number): Paragraph
 
     /** list of all sentences in the document*/
-    sentences(): Sentence[]
+    sentences(clue?: number): Sentence[]
     /** return the first sentence in the document*/
     sentence(n?: number): Sentence
 
     /** return all images in the document */
-    images(): Image[]
+    images(clue?: number): Image[]
     /** return the first image in the document */
     image(n?: number): Image
 
@@ -101,16 +101,16 @@ declare module wtf {
     interwiki(clue?: number): object
 
     /**sections in a page where each line begins with a bullet point */
-    lists(): List[]
+    lists(clue?: number): List[]
     lists(n?: number): List
 
     /**list of all structured tables in the document */
-    tables(): Table[]
+    tables(clue?: number): Table[]
     table(n?: number): Table
 
     /**list any type of structured-data elements, typically wrapped in like {{this}} */
-    templates(clue?: string): object[]
-    template(clue?: number): object
+    templates(clue?: string): Template[]
+    template(clue?: number): Template
 
     /**list of 'citations' in the document */
     references(clue?: string): Reference[]
@@ -126,14 +126,15 @@ declare module wtf {
     coordinate(clue?: string|number): object
 
     /**specific type of template, that appear on the top-right of the page */
-    infoboxes(): Infobox[]
+    infoboxes(clue?: number): Infobox[]
     infobox(clue?: number): Infobox
 
     /**plaintext, human-readable output for the page */
     text(options?: object): string
     /**a 'stringifyable' output of the page's main data */
     json(options?: object): object
-
+    /**original markup text */
+    wikitext(): string
     /** helper information for the document */
     debug(): Document
   }
@@ -151,36 +152,36 @@ declare module wtf {
     /**how many steps deep into the table of contents it is */
     indentation(): number
 
-    sentences(): Sentence[]
+    sentences(clue?: number): Sentence[]
     sentence(n: number): Sentence
 
-    paragraphs(): Paragraph[]
+    paragraphs(clue?: number): Paragraph[]
     paragraph(n?: number): Paragraph
 
     links(n?: string): object[]
     link(n?: number): object
 
-    tables(): Table[]
+    tables(clue?: number): Table[]
     table(n?: number): Table
 
-    templates(clue?: string): object[]
-    template(clue?: number): object
+    templates(clue?: string): Template[]
+    template(clue?: number): Template
 
-    infoboxes(): Infobox[]
+    infoboxes(clue?: number): Infobox[]
     infoboxe(clue?: number): Infobox
 
-    coordinates(): object[]
+    coordinates(clue?: number): object[]
     coordinate(clue?: number): object
 
-    lists(): List[]
+    lists(clue?: number): List[]
     list(clue?: number): List
 
     /**any links to other language wikis */
-    interwiki(): object[]
+    interwiki(clue?: number): object[]
     interwikis(num: number): object
 
     /**return a list of any images in this section */
-    images(): Image[]
+    images(clue?: number): Image[]
     image(clue?: number): Image
 
     references(clue?: string): Reference[]
@@ -215,10 +216,12 @@ declare module wtf {
     section(n?: number): Section
     /**the section, broader than this one: eg. 1920s → History */
     parent(): null | Section
-
+    /** readable plaintext */
     text(options?: object): string
-
+    /** all parsed data */
     json(options?: object): object
+    /**original markup text */
+    wikitext(): string
   }
 
   class Infobox {
@@ -242,9 +245,22 @@ declare module wtf {
     /** Alias of keyValue() */
     data(): object
 
+    /** readable plaintext */
     text(): string
-
+    /** all parsed data */
     json(options?: object): object
+    /** original wiki markup */
+    wikitext(): string
+  }
+
+  class Template {
+    private data: object
+    /** readable plaintext */
+    text(): string
+    /** all parsed data */
+    json(options?: object): object
+    /** original wiki markup */
+    wikitext(): string
   }
 
   class Table {
@@ -259,10 +275,12 @@ declare module wtf {
 
     // Alais of keyValue
     keyval(options?: object): object
-
+    /** readable plaintext */
     text(): string
-
+    /** all parsed data */
     json(options?: object): object
+    /** original wiki markup */
+    wikitext(): string
   }
 
   class Reference {
@@ -273,10 +291,12 @@ declare module wtf {
     links(n: number): object
 
     links(n?: string): object[]
-
+     /** readable plaintext */
     text(): string
-
+    /** all parsed data */
     json(options?: object): object
+    /** original wiki markup */
+    wikitext(): string
   }
 
   class Paragraph {
@@ -304,10 +324,12 @@ declare module wtf {
 
     interwiki(clue?: number): object
     interwiki(): object[]
-
+    /** readable plaintext */
     text(options?: object): string
-
+    /** all parsed data */
     json(options?: object): object
+    /** original wiki markup */
+    wikitext(): string
   }
 
   class Image {
@@ -332,10 +354,12 @@ declare module wtf {
     thumb(size?: number): string
 
     format(): string
-
+    /** readable plaintext */
     text(): string
-
+    /** all parsed data */
     json(options?: object): object
+    /** original wiki markup */
+    wikitext(): string
   }
 
   class List {
@@ -349,10 +373,12 @@ declare module wtf {
     interwiki(clue?: number): object[]
 
     interwiki(): object[]
-
+    /** readable plaintext */
     text(options?: object): string
-
+    /** all parsed data */
     json(options?: object): object
+    /** original wiki markup */
+    wikitext(): string
   }
 
   class Sentence {
@@ -370,13 +396,12 @@ declare module wtf {
 
     italics(clue?: number|string): string[]
     italic(clue?: number|string): string
-
+    /** readable plaintext */
     text(str?: string): string
-
-    /** Alias of text */
-    plaintext(str?: string): string
-
+    /** all parsed data */
     json(options?: object): object
+    /** original wiki markup */
+    wikitext(): string
   }
 }
 

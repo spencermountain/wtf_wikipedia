@@ -481,11 +481,11 @@ wtf
 - **.isRedirect()** - if the page is just a redirect to another page
 - **.redirectTo()** - the page this redirects to
 - **.isDisambiguation()** - is this a placeholder page to direct you to one-of-many possible pages
-- **.categories()** -
+- **.categories()** - return all categories of the document
 - **.sections()** - return a list of the Document's sections
 - **.paragraphs()** - return a list of Paragraphs, in all sections
 - **.sentences()** - return a list of all sentences in the document
-- **.images()** -
+- **.images()** - return all images found in the document
 - **.links()** - return a list of all links, in all parts of the document
 - **.lists()** - sections in a page where each line begins with a bullet point
 - **.tables()** - return a list of all structured tables in the document
@@ -495,6 +495,7 @@ wtf
 - **.coordinates()** - geo-locations that appear on the page
 - **.text()** - plaintext, human-readable output for the page
 - **.json()** - a 'stringifyable' output of the page's main data
+- **.wikitext()** - original wiki markup
 
 ### Section
 
@@ -503,12 +504,12 @@ wtf
 - **.indentation()** - how many steps deep into the table of contents it is
 - **.sentences()** - return a list of sentences in this section
 - **.paragraphs()** - return a list of paragraphs in this section
-- **.links()** -
-- **.tables()** -
-- **.templates()** -
-- **.infoboxes()** -
-- **.coordinates()** -
-- **.lists()** -
+- **.links()** - list of all links, in all paragraphs and templates
+- **.tables()** - list of all html tables
+- **.templates()** - list of all templates in this section
+- **.infoboxes()** - list of all infoboxes found in this section
+- **.coordinates()** - list of all coordinate templates found in this section
+- **.lists()** - list of all lists in this section
 - **.interwiki()** - any links to other language wikis
 - **.images()** - return a list of any images in this section
 - **.references()** - return a list of 'citations' in this section
@@ -517,26 +518,29 @@ wtf
 - **.lastSibling()** - a section before this one, under the current parent: eg. 1930s → 1920s
 - **.children()** - any sections more specific than this one: eg. History → [PreHistory, 1920s, 1930s]
 - **.parent()** - the section, broader than this one: eg. 1920s → History
-- **.text()** -
-- **.json()** -
+- **.text()** - readable plaintext for this section
+- **.json()** - return all section data
+- **.wikitext()** - original wiki markup
 
 ### Paragraph
 
-- **.sentences()** -
-- **.references()** -
-- **.lists()** -
-- **.images()** -
-- **.links()** -
-- **.interwiki()** -
+- **.sentences()** - return a list of sentence objects in this paragraph
+- **.references()** - any citations, or references in all sentences
+- **.lists()** - any lists found in this paragraph
+- **.images()** - any images found in this paragraph
+- **.links()** - list of all links in all sentences
+- **.interwiki()** - any links to other language wikis
 - **.text()** - generate readable plaintext for this paragraph
 - **.json()** - generate some generic data for this paragraph in JSON format
+- **.wikitext()** - original wiki markup
 
 ### Sentence
 
-- **.links()** -
-- **.bolds()** -
-- **.italics()** -
-- **.json()** -
+- **.links()** - list of all links
+- **.bolds()** - list of all bold texts
+- **.italics()** - list of all italic formatted text
+- **.json()** - return all sentence data
+- **.wikitext()** - original wiki markup
 
 ### Image
 
@@ -546,21 +550,24 @@ wtf
 - **.format()** - get file format (e.g. `jpg`)
 - **.json()** - return some generic metadata for this image
 - **.text()** - does nothing
+- **.wikitext()** - original wiki markup
 
 ### Template
 
 - **.text()** - does this template generate any readable plaintext?
 - **.json()** - get all the data for this template
+- **.wikitext()** - original wiki markup
 
 ### Infobox
 
-- **.links()** -
+- **.links()** - any internal or external links in this infobox
 - **.keyValue()** - generate simple key:value strings from this infobox
 - **.image()** - grab the main image from this infobox
 - **.get()** - lookup properties from their key
 - **.template()** - which infobox, eg 'Infobox Person'
 - **.text()** - generate readable plaintext for this infobox
 - **.json()** - generate some generic 'stringifyable' data for this infobox
+- **.wikitext()** - original wiki markup
 
 ### List
 
@@ -568,6 +575,7 @@ wtf
 - **.links()** - get all links mentioned in this list
 - **.text()** - generate readable plaintext for this list
 - **.json()** - generate some generic easily-parsable data for this list
+- **.wikitext()** - original wiki markup
 
 ### Reference
 
@@ -575,6 +583,7 @@ wtf
 - **.links()** - get any links mentioned in this reference
 - **.text()** - returns nothing
 - **.json()** - generate some generic metadata data for this reference
+- **.wikitext()** - original wiki markup
 
 ### Table
 
@@ -582,6 +591,7 @@ wtf
 - **.keyValue()** - generate a simple list of key:value objects for this table
 - **.text()** - returns nothing
 - **.json()** - generate some useful metadata data for this table
+- **.wikitext()** - original wiki markup
 
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
