@@ -82,7 +82,6 @@ const methods = {
     return toJson(this, options)
   },
   wikitext: function () {
-    console.log(this.data)
     return ''
   },
   keyValue: function () {

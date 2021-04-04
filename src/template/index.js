@@ -15,7 +15,16 @@ const allTemplates = function (wiki, doc) {
       obj.children.forEach((ch) => parseNested(ch, obj))
     }
     //parse template into json, return replacement wikitext
-    obj.wiki = parseTemplate(obj, list, doc)
+    let [text, json] = parseTemplate(obj, doc)
+    obj.wiki = text
+    if (json) {
+      list.push({
+        name: obj.name,
+        wiki: obj.body,
+        text: text,
+        json: json,
+      })
+    }
     //remove the text from every parent
     const removeIt = function (node, body, out) {
       if (node.parent) {

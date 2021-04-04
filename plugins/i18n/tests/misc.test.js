@@ -12,7 +12,7 @@ test('flag', (t) => {
 test('main', (t) => {
   let str = ` {{hlavný článok|USA}}`
   let doc = wtf(str)
-  let templates = doc.templates()
+  let templates = doc.templates().map((tmpl) => tmpl.json())
   t.equal(templates.length, 1, 'one templates')
   t.equal(doc.text(), ``, 'main text')
   t.end()
@@ -31,7 +31,7 @@ test('start date', (t) => {
 test('persondata', (t) => {
   let str = `{{personendaten|Full_name=c00l}}`
   let doc = wtf(str)
-  let templates = doc.templates()
+  let templates = doc.templates().map((tmpl) => tmpl.json())
   t.equal(templates.length, 1, 'template')
   t.equal(templates[0].template, 'persondata', 'maps to original template')
   t.equal(templates[0].name, 'personendaten', 'has alias')

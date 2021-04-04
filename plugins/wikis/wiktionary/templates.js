@@ -143,7 +143,6 @@ const templates = {
       pres: 'present',
       spos: 'single-possession',
     }
-    console.log(obj.list)
     let terms = obj.list.filter((k) => words[k])
     terms = terms.map((str) => words[str])
     return `${terms.join(', ')} of [[${obj.lemma}]]`

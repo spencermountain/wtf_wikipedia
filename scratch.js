@@ -34,10 +34,8 @@ wtf.extend(require('./plugins/wikitext/src'))
 // console.log(doc.infobox().wikitext())
 // console.log(doc.template())
 
-let doc = wtf(`hello [[world]]. {{cool|fun=yes}}`)
+let doc = wtf(`* {{USS|Barry}}, four US destroyers`)
 let tmpl = doc.template()
-console.log(tmpl.makeWikitext())
-// {{cool| fun = yes}}
-
-tmpl.data.more = 'yes'
-console.log(tmpl.makeWikitext())
+console.log(tmpl.wikitext())
+console.log(tmpl.text())
+// console.log(doc.text())

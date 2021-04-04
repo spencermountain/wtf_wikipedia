@@ -103,7 +103,7 @@ doc.json()
 // { categories: ['Oral communication', 'Vocal skills'], sections: [{ title: 'Techniques' }], ...}
 ```
 
-the default .json() output is *[really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json)*, but you can cherry-pick data by poking-around like this:
+the default .json() output is _[really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json)_, but you can cherry-pick data by poking-around like this:
 
 ```js
 // get just the links:
@@ -330,7 +330,9 @@ wtf(txt)
 
 ```javascript
 let txt = `Whistling is featured in a number of television shows, such as [[Lassie (1954 TV series)|''Lassie'']], and the title theme for ''[[The X-Files]]''.`
-wtf(txt).links().map((l) => l.page())
+wtf(txt)
+  .links()
+  .map((l) => l.page())
 // [ 'Lassie (1954 TV series)',  'The X-Files' ]
 ```
 
@@ -384,7 +386,7 @@ img.format() // jpg, png, ..
 
 ## Fetch
 
-You can grab and parse articles from *[any wiki api](https://www.mediawiki.org/wiki/API:Main_page)*.
+You can grab and parse articles from _[any wiki api](https://www.mediawiki.org/wiki/API:Main_page)_.
 This includes any language, any wiki-project, and most **3rd-party wikis**.
 
 ```js
@@ -440,6 +442,7 @@ wtf.random().then((doc) => {
   //'Whistling'  ['Oral communication', 'Vocal skills']
 })
 ```
+
 see [wtf-plugin-api](./plugins/api)
 
 ### Good practice:
@@ -544,6 +547,11 @@ wtf
 - **.json()** - return some generic metadata for this image
 - **.text()** - does nothing
 
+### Template
+
+- **.text()** - does this template generate any readable plaintext?
+- **.json()** - get all the data for this template
+
 ### Infobox
 
 - **.links()** -
@@ -619,13 +627,14 @@ wtf.extend((models, templates) => {
   templates.asterisk = '*'
 })
 ```
+
 you can determine which templates are understood to be 'infoboxes' with the 3rd parameter:
+
 ```js
 wtf.extend((models, templates, infoboxes) => {
-  Object.assign(infoboxes, {person:true, place:true, thing:true})
+  Object.assign(infoboxes, { person: true, place: true, thing: true })
 })
 ```
-
 
 <div align="right">
   <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-plugins">plugin docs</a>
@@ -655,7 +664,7 @@ some wikis will change the path of their API, from `./api.php` to elsewhere. If 
 
 ```js
 wtf.fetch('2016-06-04_-_J.Fernandes_@_FIL,_Lisbon', { domain: 'www.mixesdb.com', path: 'db/api.php' }).then((doc) => {
-  console.log(doc.templates('player'))
+  console.log(doc.template('player').json())
 })
 ```
 

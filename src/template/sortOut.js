@@ -11,29 +11,30 @@ const referenceTypes = {
 }
 
 // split Infoboxes from templates and references
-const sortOut = function (keep, domain) {
+const sortOut = function (list, domain) {
   let res = {
     infoboxes: [],
     templates: [],
     references: [],
   }
   //remove references and infoboxes from our list
-  keep.forEach((obj) => {
-    let kind = obj.template || obj.type || obj.name
+  list.forEach((obj) => {
+    let json = obj.json
+    let kind = json.template || json.type || json.name
     // is it a Reference?
     if (referenceTypes[kind] === true || isCitation.test(kind) === true) {
-      res.references.push(new Reference(obj))
+      res.references.push(new Reference(json))
       return
     }
     // is it an Infobox?
-    if (obj.template === 'infobox' && obj.subbox !== 'yes') {
-      obj.domain = domain //infoboxes need this for images, i guess
-      obj.data = obj.data || {} //validate it a little
-      res.infoboxes.push(new Infobox(obj))
+    if (json.template === 'infobox' && obj.subbox !== 'yes') {
+      json.domain = domain //infoboxes need this for images, i guess
+      json.data = json.data || {} //validate it a little
+      res.infoboxes.push(new Infobox(json))
       return
     }
     // otherwise, it's just a template
-    res.templates.push(new Template(obj))
+    res.templates.push(new Template(json, obj.text, obj.wiki))
   })
   return res
 }

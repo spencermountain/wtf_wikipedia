@@ -2,7 +2,7 @@ const { patterns, mappings } = require('../../schema/_data-fns')
 const byPattern = require('../_byPattern')
 
 const byTemplate = function (doc) {
-  let templates = doc.templates()
+  let templates = doc.templates().map((tmpl) => tmpl.json())
   let found = []
   for (let i = 0; i < templates.length; i++) {
     const title = templates[i].template

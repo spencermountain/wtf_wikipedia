@@ -29,7 +29,7 @@ const byText = function (s) {
  */
 const isDisambig = function (doc) {
   // check for a {{disambig}} template
-  let templates = doc.templates()
+  let templates = doc.templates().map((tmpl) => tmpl.json())
   let found = templates.find((obj) => {
     return alt_disambig.hasOwnProperty(obj.template) || i18n_templates.hasOwnProperty(obj.template)
   })

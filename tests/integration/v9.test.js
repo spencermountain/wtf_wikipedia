@@ -55,3 +55,11 @@ test('table-get', (t) => {
   t.equal(doc.table().wikitext(), str, 'table-wikitext')
   t.end()
 })
+
+test('template methods', (t) => {
+  let doc = wtf(`* {{USS|Barry}}, four US destroyers`)
+  let tmpl = doc.template()
+  t.equal(tmpl.wikitext(), '{{USS|Barry}}', 'tmpl wikitext')
+  t.equal(tmpl.text(), `USS Barry`, 'tmpl text')
+  t.end()
+})
