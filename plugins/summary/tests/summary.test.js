@@ -26,7 +26,9 @@ test('first-sentence cleanup summary', (t) => {
     [
       `Larchmont Yacht Club is a private, members-only yacht club situated on Larchmont Harbor in the Village of Larchmont, in Westchester County, New York. `,
       'a private, members-only yacht club'
-    ]
+    ],
+    [`she cleaned teeth very well [[Category:Female Orthadontists]] `, 'A female Orthadontist'],
+    [`he flipped around [[Category: Acrobats]][[Category: Living People]] `, 'An acrobat']
   ]
   arr.forEach((a, i) => {
     let str = wtf(a[0]).summary()

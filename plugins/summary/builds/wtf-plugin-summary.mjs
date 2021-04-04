@@ -10040,7 +10040,7 @@ var checkNeighbours = function checkNeighbours(terms, world) {
 };
 
 var _01Neighbours = checkNeighbours;
-var titleCase$5 = /^[A-Z][a-z'\u00C0-\u00FF]/;
+var titleCase = /^[A-Z][a-z'\u00C0-\u00FF]/;
 var hasNumber = /[0-9]/;
 /** look for any grammar signals based on capital/lowercase */
 
@@ -10052,7 +10052,7 @@ var checkCase = function checkCase(doc) {
     for (var i = 1; i < terms.length; i++) {
       var term = terms[i];
 
-      if (titleCase$5.test(term.text) === true && hasNumber.test(term.text) === false && term.tags.Date === undefined) {
+      if (titleCase.test(term.text) === true && hasNumber.test(term.text) === false && term.tags.Date === undefined) {
         term.tag('ProperNoun', 'titlecase-noun', world);
       }
     }
@@ -15276,8 +15276,23 @@ const fromCategory = function (doc) {
 
 var _01Choose = fromCategory;
 
-const titleCase = str => {
-  return str.charAt(0).toUpperCase() + str.substr(1);
+const useAn = function (str) {
+  const a_regexs = [/^onc?e/i, //'wu' sound of 'o'
+  /^u[bcfhjkqrstn][aeiou]/i, // 'yu' sound for hard 'u'
+  /^eul/i];
+
+  for (let i = 0; i < a_regexs.length; i++) {
+    if (a_regexs[i].test(str)) {
+      return false;
+    }
+  } //basic vowel-startings
+
+
+  if (/^[aeiou]/i.test(str)) {
+    return true;
+  }
+
+  return false;
 }; // 'American songwriters' to 'an American songwriter'
 
 
@@ -15286,14 +15301,12 @@ const changeCat = function (cat, options) {
   c.nouns().toSingular(); // add article to the front
 
   if (options.article) {
-    let article = 'A';
-    let noun = c.nouns(0);
+    let article = 'A'; // let noun = c.nouns(0)
 
-    if (noun && noun.found) {
-      article = c.nouns(0).json({
-        terms: false
-      })[0].article || article;
-      article = titleCase(article);
+    if (useAn(cat) === true) {
+      // console.log(c.nouns(0))
+      // article = c.nouns(0).json({ terms: false })[0].article || article
+      article = 'An';
     }
 
     let first = c.terms(0);

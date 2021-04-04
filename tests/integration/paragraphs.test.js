@@ -28,6 +28,15 @@ Closing remark`)
   t.end()
 })
 
+test('paragraph links', (t) => {
+  const str = `hello [[world]] I'm happy to see you. [[world wrestling]].
+
+new paragraph here  `
+  const doc = wtf(str)
+  t.equal(doc.paragraph().links().length, 2, 'plaintext has one newline')
+  t.end()
+})
+
 test('bring newlines to plaintext', (t) => {
   const str = `hello
 
