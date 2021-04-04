@@ -39,6 +39,10 @@ const methods = {
     }
     return obj
   },
+  wikitext: function () {
+    let txt = this.data.raw || ''
+    return txt
+  },
   page: function (str) {
     if (str !== undefined) {
       this.data.page = str

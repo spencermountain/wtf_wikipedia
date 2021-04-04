@@ -10,10 +10,14 @@ const toText = (list, options) => {
     .join('\n')
 }
 
-const List = function (data) {
+const List = function (data, wiki = '') {
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data,
+  })
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki,
   })
 }
 
@@ -40,6 +44,9 @@ const methods = {
   },
   text() {
     return toText(this.data)
+  },
+  wikitext() {
+    return this.wiki || ''
   },
 }
 

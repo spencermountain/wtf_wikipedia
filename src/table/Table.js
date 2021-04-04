@@ -10,10 +10,14 @@ const normalize = function (key = '') {
   return key
 }
 
-const Table = function (data) {
+const Table = function (data, wiki = '') {
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data,
+  })
+  Object.defineProperty(this, '_wiki', {
+    enumerable: false,
+    value: wiki,
   })
 }
 
@@ -77,6 +81,10 @@ const methods = {
 
   text() {
     return ''
+  },
+
+  wikitext() {
+    return this._wiki || ''
   },
 }
 methods.keyvalue = methods.keyValue

@@ -81,6 +81,10 @@ const methods = {
     options = options || {}
     return toJson(this, options)
   },
+  wikitext: function () {
+    console.log(this.data)
+    return ''
+  },
   keyValue: function () {
     return Object.keys(this.data).reduce((h, k) => {
       if (this.data[k]) {

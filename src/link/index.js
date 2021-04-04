@@ -15,7 +15,7 @@ const getLinks = function (data) {
   let links = parseLinks(wiki) || []
   data.links = links.map((link) => {
     wiki = wiki.replace(link.raw, link.text || link.page || '')
-    delete link.raw
+    // delete link.raw
     return new Link(link)
   })
   wiki = removeLinks(wiki)

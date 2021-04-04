@@ -2,7 +2,7 @@ const test = require('tape')
 const wtf = require('../lib')
 
 test('wikitext', (t) => {
-  const str = `'''K. Nicole Mitchell''' is ''currently'' a [[U.S. Magistrate Judge]].
+  let str = `'''K. Nicole Mitchell''' is ''currently'' a [[U.S. Magistrate Judge]].
 
 	She is '''''very''''' good`
   let doc = wtf(str)
@@ -11,7 +11,17 @@ test('wikitext', (t) => {
   let first = `'''K. Nicole Mitchell''' is ''currently'' a [[U.S. Magistrate Judge]].`
   t.equal(doc.paragraph().wikitext(), first, 'paragraph-wikitext')
   t.equal(doc.sentence().wikitext(), first, 'sentence-wikitext')
+  t.equal(doc.link().wikitext(), `[[U.S. Magistrate Judge]]`, 'sentence-wikitext')
 
+  str = 'hello [[File:cool.svg|yeah]] after'
+  doc = wtf(str)
+  t.equal(doc.image().wikitext(), `[[File:cool.svg|yeah]]`, 'image-wikitext')
+
+  str = `* one
+* Two  
+* three`
+  doc = wtf(str)
+  t.equal(doc.list().wikitext(), str, 'list-wikitext')
   t.end()
 })
 
@@ -41,5 +51,7 @@ test('table-get', (t) => {
   data = doc.table().get(['header 2', 'asdf', 'Header 1'])
   t.equal(data.length, 3, 'still three')
   t.equal(Object.keys(data).length, 3, 'three keys')
+
+  t.equal(doc.table().wikitext(), str, 'table-wikitext')
   t.end()
 })

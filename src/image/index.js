@@ -43,6 +43,7 @@ const oneImage = function (img, doc) {
       file: file,
       lang: doc._lang,
       domain: doc._domain,
+      wiki: img,
     }
     //try to grab other metadata, too
     img = img.replace(/^\[\[/, '')
