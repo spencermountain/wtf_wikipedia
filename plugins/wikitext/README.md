@@ -26,10 +26,28 @@ const wtf = require('wtf_wikipedia')
 wtf.extend(require('wtf-plugin-wikitext'))
 
 let doc = wtf('hello [[world]]')
-doc.wikitext()
+doc.makeWikitext()
 // 'hello [[world]]'
 ```
 
-work-in-progress
+all wtf_wikipedia models have a `.wikitext()` method that (tries to) return their original wikitext.
+This method will try to \_generate\* the wikitext, as best it can. This is a lossy, and error-prone process, but may be useful for some applications.
+
+```js
+let doc = wtf(`hello [[world]]. {{cool|fun=yes}}`)
+let tmpl = doc.template()
+console.log(tmpl.makeWikitext())
+// {{cool| fun = yes}}
+
+tmpl.data.more = 'yes'
+console.log(tmpl.makeWikitext())
+// {{cool| fun = yes| more = yes}}
+```
+
+Concievably, this could be part of a edit-bot workflow, although there are many unresolved problems still, to doing so.
+
+work-in-progress!
+
+PRs welcome
 
 MIT

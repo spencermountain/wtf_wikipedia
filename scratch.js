@@ -1,5 +1,5 @@
 const wtf = require('./src/index')
-wtf.extend(require('./plugins/wikis/wiktionary/plugin'))
+wtf.extend(require('./plugins/wikitext/src'))
 
 // one
 // let str = `[[one]] and [[two]]`
@@ -34,9 +34,10 @@ wtf.extend(require('./plugins/wikis/wiktionary/plugin'))
 // console.log(doc.infobox().wikitext())
 // console.log(doc.template())
 
-let str = `<gallery>
-File:YYZ Aerial 2.jpg
-</gallery>`
-let doc = wtf(str, { domain: 'cool.com' })
-// let img = doc.image(0).url()
-console.log(doc.section().json())
+let doc = wtf(`hello [[world]]. {{cool|fun=yes}}`)
+let tmpl = doc.template()
+console.log(tmpl.makeWikitext())
+// {{cool| fun = yes}}
+
+tmpl.data.more = 'yes'
+console.log(tmpl.makeWikitext())

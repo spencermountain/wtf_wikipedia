@@ -3,9 +3,12 @@
 
 - **[breaking]** - plural methods like .sentences() always return arrays, even with a 'clue' param.
 -->
+
 #### 9.0.0
+
 big cleanup of .fetch() (thanks wouter!), 'parse' param for templates.
 
+- **[breaking]** - .templates() now returns Template objects, like other methods (call .json())
 - **[breaking]** - change interpretation of reversed params in .fetch() method
 - **[breaking]** - change params to new templates added by plugins
 - **[breaking]** - move .random() and .category() to plugin-api

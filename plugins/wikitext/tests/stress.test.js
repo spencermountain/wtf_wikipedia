@@ -86,7 +86,7 @@ const pages = [
 test('try all pages', (t) => {
   pages.forEach((page) => {
     let doc = from_file(page)
-    let wiki = doc.wikitext()
+    let wiki = doc.makeWikitext()
     t.ok(wiki && wiki.length > 5, page)
   })
   t.end()
