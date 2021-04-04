@@ -44,6 +44,9 @@ const methods = {
   json: function (options) {
     return toJSON(this, options)
   },
+  wikitext: function () {
+    return this.data.wiki || ''
+  },
   isEmpty: function () {
     return this.data.text === ''
   },

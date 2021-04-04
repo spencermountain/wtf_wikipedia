@@ -1,0 +1,45 @@
+const test = require('tape')
+const wtf = require('../lib')
+
+test('wikitext', (t) => {
+  const str = `'''K. Nicole Mitchell''' is ''currently'' a [[U.S. Magistrate Judge]].
+
+	She is '''''very''''' good`
+  let doc = wtf(str)
+  t.equal(doc.wikitext(), str, 'doc-wikitext')
+  t.equal(doc.section().wikitext(), str, 'section-wikitext')
+  let first = `'''K. Nicole Mitchell''' is ''currently'' a [[U.S. Magistrate Judge]].`
+  t.equal(doc.paragraph().wikitext(), first, 'paragraph-wikitext')
+  t.equal(doc.sentence().wikitext(), first, 'sentence-wikitext')
+
+  t.end()
+})
+
+test('table-get', (t) => {
+  let str = `{| class="wikitable"
+|-
+! Header 1
+! Header 2
+! Header 3
+|-
+| row 1, cell 1
+| row 1, cell 2
+| row 1, cell 3
+|-
+| row 2, cell 1
+| row 2, cell 2
+| row 2, cell 3
+|-
+| row 3, cell 1
+| row 3, cell 2
+| row 3, cell 3
+|}`
+  let doc = wtf(str)
+  let data = doc.table().get('header 2')
+  t.deepEqual(data, ['row 1, cell 2', 'row 2, cell 2', 'row 3, cell 2'])
+
+  data = doc.table().get(['header 2', 'asdf', 'Header 1'])
+  t.equal(data.length, 3, 'still three')
+  t.equal(Object.keys(data).length, 3, 'three keys')
+  t.end()
+})

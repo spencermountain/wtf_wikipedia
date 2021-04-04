@@ -460,6 +460,15 @@ class Document {
   }
 
   /**
+   * return original wiki markup
+   *
+   * @returns {string} markup text
+   */
+  wikitext() {
+    return this._wiki || ''
+  }
+
+  /**
    * prints the title of every section
    *
    * @returns {Document} the document itself

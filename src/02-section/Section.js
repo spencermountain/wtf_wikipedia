@@ -21,7 +21,7 @@ const defaults = {
 /**
  * the Section class represents the different sections of the article.
  * we look for the == title == syntax and split and parse the sections from there
- * 
+ *
  * @class
  */
 class Section {
@@ -476,6 +476,14 @@ class Section {
     return this.paragraphs()
       .map((p) => p.text(options))
       .join('\n\n')
+  }
+  /**
+   * returns original wiki markup
+   *
+   * @returns {string} the original markup
+   */
+  wikitext() {
+    return this._wiki
   }
 
   /**

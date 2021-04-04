@@ -30,6 +30,7 @@ function postprocess(line) {
  */
 function fromText(str) {
   let obj = {
+    wiki: str,
     text: str,
   }
   //pull-out the [[links]]

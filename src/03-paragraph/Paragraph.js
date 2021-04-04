@@ -60,6 +60,9 @@ const methods = {
     options = setDefaults(options, defaults)
     return toJSON(this, options)
   },
+  wikitext: function () {
+    return this.data.wiki
+  },
 }
 methods.citations = methods.references
 Object.keys(methods).forEach((k) => {
