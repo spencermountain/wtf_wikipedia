@@ -23,6 +23,7 @@ const makeHeaders = function (options) {
       'Api-User-Agent': agent,
       'User-Agent': agent,
       Origin: origin,
+      'Accept-Encoding': 'gzip',
     },
     redirect: 'follow',
   }

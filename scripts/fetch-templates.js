@@ -12,7 +12,8 @@ const ns = 10 //templates
 //   listen: true,
 // }
 
-let url = 'https://en.wikipedia.org/w/api.php?action=query&list=allpages&aplimit=500&apnamespace=' + ns + '&format=json'
+let url =
+  'https://wiki.openstreetmap.org/w/api.php?action=query&list=allpages&aplimit=500&apnamespace=' + ns + '&format=json'
 
 const doit = function (from) {
   let myUrl = url + '&apfrom=' + encodeURIComponent(from)

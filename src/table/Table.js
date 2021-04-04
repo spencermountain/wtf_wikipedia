@@ -34,19 +34,28 @@ const methods = {
     return links
   },
   get(keys) {
+    // normalize mappings
+    let have = this.data[0] || {}
+    let mapping = Object.keys(have).reduce((h, k) => {
+      h[normalize(k)] = k
+      return h
+    }, {})
     // string gets a flat-list
     if (typeof keys === 'string') {
       let key = normalize(keys)
+      key = mapping[key] || key
       return this.data.map((row) => {
         return row[key] ? row[key].text() : null
       })
     }
     // array gets obj-list
-    keys = keys.map(normalize)
+    keys = keys.map(normalize).map((k) => mapping[k] || k)
     return this.data.map((row) => {
       return keys.reduce((h, k) => {
         if (row[k]) {
           h[k] = row[k].text()
+        } else {
+          h[k] = ''
         }
         return h
       }, {})
