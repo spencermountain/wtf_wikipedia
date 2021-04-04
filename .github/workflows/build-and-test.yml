@@ -27,10 +27,11 @@ jobs:
             ${{ runner.os }}-npm-${{ matrix.node-version }}-
             ${{ runner.os }}-npm-
 
-      - name: npm install, build, and test
+      - name: npm install, build, lint, and test
         run: |
           npm ci
           npm run build
+          npm run lint
           npm run test:build
           npm run test:fetch
         env:
