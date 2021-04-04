@@ -69,7 +69,7 @@ test('nested-london-infobox', function (t) {
    }}
   }}
 `
-  let obj = wtf(str).infobox(0).keyValue()
+  let obj = wtf(str).infobox('country').keyValue()
   t.equal(obj[`common_name`], 'United Kingdom', 'found common_name val')
   t.equal(obj[`name`], 'hello', 'found name val')
   t.end()

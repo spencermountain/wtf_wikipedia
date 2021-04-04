@@ -20,9 +20,12 @@ const sectionMap = function (doc, fn, clue) {
       arr.push(t)
     })
   })
-  // if (typeof clue === 'number') {
-  //   return arr[clue]
-  // }
+  if (typeof clue === 'number') {
+    if (arr[clue] === undefined) {
+      return []
+    }
+    return [arr[clue]]
+  }
   return arr
 }
 module.exports = sectionMap

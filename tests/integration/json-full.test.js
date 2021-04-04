@@ -472,7 +472,7 @@ test('plurals / singular - all should exist', (t) => {
       },
       {
         clue: 1,
-        expected: undefined,
+        expected: null,
       },
     ],
     table: [

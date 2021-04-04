@@ -2,10 +2,10 @@ if (typeof process !== undefined && typeof module !== undefined) {
   let wtf
   if (process.env.TESTENV === 'prod') {
     console.log('🧢  -  testing production')
-    wtf = require('../../../../types')
+    wtf = require('../../../types')
     wtf.extend(require(`..`))
   } else {
-    wtf = require('../../../../src')
+    wtf = require('../../../src')
     wtf.extend(require(`../src`))
   }
 

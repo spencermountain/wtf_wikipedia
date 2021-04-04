@@ -12,6 +12,7 @@ big cleanup of .fetch() (thanks wouter!), 'parse' param for templates.
 - **[breaking]** - change interpretation of reversed params in .fetch() method
 - **[breaking]** - change params to new templates added by plugins
 - **[breaking]** - move .random() and .category() to plugin-api
+- **[breaking]** - always return an array for plural methods, even with number param, like .links(3)
 - **[possibly-breaking]** - cleanup null|undefined responses from methods
 - **[possibly-breaking]** - remove .dates() method (prev deprecated)
 - **[possibly-breaking]** - require node 10, ie > 11

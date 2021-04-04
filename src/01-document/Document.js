@@ -232,8 +232,12 @@ class Document {
    *
    * @returns {string | string[]} The category at the provided index or all categories
    */
-  categories() {
-    return this._categories || []
+  categories(clue) {
+    let arr = this._categories || []
+    if (typeof clue === 'number') {
+      return [arr[clue]]
+    }
+    return arr
   }
 
   /**
@@ -259,6 +263,8 @@ class Document {
       return arr.filter((s) => {
         return s.title().toLowerCase() === str
       })
+    } else if (typeof clue === 'number') {
+      return [arr[clue]]
     }
     return arr
   }
@@ -268,28 +274,34 @@ class Document {
    *
    * If the clue is a number then it returns the paragraph at that index
    * Else it returns all paragraphs in an array
-   *
+   * @param {number | string} [clue] given index of a paragraph
    * @returns {object | object[]} the selected paragraph or an array of all paragraphs
    */
-  paragraphs() {
+  paragraphs(clue) {
     let arr = []
     this.sections().forEach((s) => {
       arr = arr.concat(s.paragraphs())
     })
+    if (typeof clue === 'number') {
+      return [arr[clue]]
+    }
     return arr
   }
 
   /**
    * if no clue is provided, it compiles an array of sentences in the wiki text.
    * if the clue is provided it return the sentence at the provided index
-   *
+   * @param {number | string} [clue] given index of a sentence
    * @returns {object[]|object} an array of sentences or a single sentence
    */
-  sentences() {
+  sentences(clue) {
     let arr = []
     this.sections().forEach((sec) => {
       arr = arr.concat(sec.sentences())
     })
+    if (typeof clue === 'number') {
+      return [arr[clue]]
+    }
     return arr
   }
 
@@ -300,7 +312,7 @@ class Document {
    *
    * @returns {Image[]|Image} a single image or an array of images
    */
-  images() {
+  images(clue) {
     let arr = sectionMap(this, 'images', null)
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
@@ -323,6 +335,9 @@ class Document {
         })
       }
     })
+    if (typeof clue === 'number') {
+      return [arr[clue]]
+    }
     return arr
   }
 
@@ -507,9 +522,6 @@ Object.keys(singular).forEach((k) => {
   let sing = singular[k]
   Document.prototype[sing] = function (clue) {
     let arr = this[k](clue)
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
     return arr[0] || null
   }
 })

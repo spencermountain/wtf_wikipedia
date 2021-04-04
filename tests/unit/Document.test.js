@@ -745,7 +745,7 @@ test('templates - get - return all templates', (t) => {
   let doc = wtf(str)
   const expected = [13, 12, 5, 4, 4, 7, 7, 18]
   t.deepEqual(
-    doc.templates().map((te) => te.template.length),
+    doc.templates().map((te) => te.json().template.length),
     expected,
     'returns all templates'
   )
@@ -756,7 +756,7 @@ test('templates - get - if the clue is a number return the templates at that ind
   let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
   let doc = wtf(str)
   //I used the length of the paragraphs as an analogue for the content.
-  t.deepEqual(doc.template(1).template.length, 12, 'the templates at index 1')
+  t.deepEqual(doc.template(1).json().template.length, 12, 'the templates at index 1')
   t.end()
 })
 
@@ -765,7 +765,7 @@ test('templates - get - if the clue is any other type then return all templates'
   let doc = wtf(str)
   const expected = [13, 12, 5, 4, 4, 7, 7, 18]
   t.deepEqual(
-    doc.templates().map((te) => te.template.length),
+    doc.templates().map((te) => te.json().template.length),
     expected,
     'returns all templates'
   )
