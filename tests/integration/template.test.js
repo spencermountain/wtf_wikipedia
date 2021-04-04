@@ -314,7 +314,7 @@ test('climate template', function (t) {
 | −3.1 |  2.1 | 61
 |float=right
 |source= Environment Canada }}`
-  const data = wtf(str).template().data
+  const data = wtf(str).template().json().data
   t.equal(data.months[0].low, -6.7, 'jan low')
   t.equal(data.months[1].precip, 55, 'feb precip')
   t.end()

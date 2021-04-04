@@ -183,6 +183,6 @@ test('tricky-based-on', function (t) {
   // t.equal(doc.links(0).text, 'Jurassic Park', 'found link text');
   // t.equal(doc.text(), `''Jurassic Park'' by Michael Crichton`, 'parsed properly');
   t.equal(doc.templates().length, 1, 'found one template')
-  t.equal(doc.template(0).template, 'based on', 'found template name')
+  t.equal(doc.template(0).json().template, 'based on', 'found template name')
   t.end()
 })

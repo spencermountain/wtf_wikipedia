@@ -60,7 +60,7 @@ const toJSON = function (section, options) {
 
   //template json data
   if (options.templates === true) {
-    let templates = section.templates()
+    let templates = section.templates().map((tmpl) => tmpl.json())
     if (templates.length > 0) {
       data.templates = templates
       //encode them, for mongodb

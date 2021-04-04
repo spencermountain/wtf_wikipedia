@@ -20,7 +20,7 @@ The paintings have the freedom and energy of  sketches, using warm and cool ligh
   `
   const doc = wtf(str)
   t.deepEqual(doc.section('paintings').templates('gallery').length, 1, 'section-has-gallery')
-  const templ = doc.template(0)
+  const templ = doc.template(0).json()
   t.deepEqual(templ.template, 'gallery', 'document-has-template')
   t.deepEqual(templ.images.length, 5, '5 images')
   t.deepEqual(templ.images[0].caption.link().page(), 'Freyja', 'image has caption')
@@ -43,7 +43,7 @@ test('gallery-tag-2', (t) => {
   </gallery>
 
   foo`)
-  const templ = doc.template()
+  const templ = doc.template().json()
   t.deepEqual(templ.template, 'gallery', 'document-has-template')
   t.deepEqual(templ.images.length, 8, '8 images')
   t.deepEqual(templ.images[0].file, 'Culex-female.jpg', 'got filename')
@@ -57,7 +57,7 @@ test('gallery-template', (t) => {
 |File:Kurmi threshing.jpg|Another ethnographic print from 1916 showing a Kurmi family employing its beasts of burden to thresh wheat.
 |File:Kurmi winnowing.jpg|A third print from the same collection showing the Kurmi family winnowing.
 }} `
-  const templ = wtf(str).template()
+  const templ = wtf(str).template().json()
   t.deepEqual(templ.template, 'gallery', 'document-has-template')
   t.deepEqual(templ.images.length, 4, 'has 4 images')
   t.end()

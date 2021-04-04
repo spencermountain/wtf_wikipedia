@@ -311,9 +311,9 @@ class Document {
     })
     //look for 'gallery' templates, too
     this.templates().forEach((obj) => {
-      if (obj.template === 'gallery') {
-        obj.images = obj.images || []
-        obj.images.forEach((img) => {
+      if (obj.data.template === 'gallery') {
+        obj.data.images = obj.data.images || []
+        obj.data.images.forEach((img) => {
           if (!(img instanceof Image)) {
             img.language = this.language()
             img.domain = this.domain()

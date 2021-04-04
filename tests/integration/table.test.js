@@ -32,7 +32,7 @@ test('rnli stations', (t) => {
 
   const lifeboat = doc.section(2)
   t.equal(lifeboat._depth, 1, 'lifeboat-depth')
-  t.equal(lifeboat.template().list[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main')
+  t.equal(lifeboat.template().json().list[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main')
   t.equal(lifeboat.list().json().length, 3, 'lifeboat-list')
   t.equal(lifeboat.sentences().length, 3, 'lifeboat-sentences')
   t.deepEqual(lifeboat.images(), [], 'lifeboat-no-images')

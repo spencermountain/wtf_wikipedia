@@ -697,8 +697,8 @@ test('plurals / singular - all should exist', (t) => {
       },
     ],
     template: [
-      { clue: undefined, expected: { date: 'August 2016', template: 'use mdy dates' } },
-      { clue: 1, expected: { template: 'good article' } },
+      { clue: undefined, json: true, expected: { date: 'August 2016', template: 'use mdy dates' } },
+      { clue: 1, json: true, expected: { template: 'good article' } },
     ],
     category: [
       { clue: undefined, expected: '1916 establishments in Illinois' },

@@ -194,10 +194,10 @@ class Section {
    */
   templates(clue) {
     let arr = this._templates || []
-    arr = arr.map((t) => t.json())
+    // arr = arr.map((t) => t.json())
     if (typeof clue === 'string') {
       clue = clue.toLowerCase()
-      return arr.filter((o) => o.template === clue || o.name === clue)
+      return arr.filter((o) => o.data.template === clue || o.data.name === clue)
     }
 
     return arr
@@ -228,7 +228,7 @@ class Section {
    */
   coordinates() {
     let arr = [...this.templates('coord'), ...this.templates('coor')]
-    return arr
+    return arr.map((tmpl) => tmpl.json())
   }
 
   /**

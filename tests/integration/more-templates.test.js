@@ -4,14 +4,14 @@ const wtf = require('../lib')
 test('imdb', (t) => {
   let str = `{{IMDb title | 0426883 | Alpha Dog }}`
   let doc = wtf(str)
-  let obj = doc.template()
+  let obj = doc.template().json()
   t.equal(obj.template, 'imdb title', 'imdb')
   t.equal(obj.id, '0426883', 'id1')
   t.equal(obj.title, 'Alpha Dog', 'title')
 
   str = `{{IMDb title | id= 0426883 | title= Alpha Dog }}`
   doc = wtf(str)
-  obj = doc.template()
+  obj = doc.template().json()
   t.equal(obj.id, '0426883', 'id1')
   t.equal(obj.title, 'Alpha Dog', 'title')
   t.end()
@@ -20,7 +20,7 @@ test('imdb', (t) => {
 test('taxon', (t) => {
   const str = `{{Taxon info|Felis|parent}}`
   const doc = wtf(str)
-  const obj = doc.template()
+  const obj = doc.template().json()
   t.equal(obj.taxon, 'Felis', 'taxon')
   t.end()
 })
@@ -28,7 +28,7 @@ test('taxon', (t) => {
 test('generic-list', (t) => {
   const str = `{{Portal bar|portal 1|portal 2}}`
   const doc = wtf(str)
-  const obj = doc.template()
+  const obj = doc.template().json()
   t.equal(obj.template, 'portal bar', 'name')
   t.equal(obj.list[0], 'portal 1', 'list1')
   t.equal(obj.list[1], 'portal 2', 'list2')
@@ -39,7 +39,7 @@ test('generic-list', (t) => {
 test('redirect-list', (t) => {
   const str = `{{Redirect|City of Toronto|the municipal government|Municipal government of Toronto|the historical part of the city prior to the 1998 amalgamation|Old Toronto}}`
   const doc = wtf(str)
-  const obj = doc.template()
+  const obj = doc.template().json()
   t.equal(obj.template, 'redirect', 'name')
   t.equal(obj.redirect, 'City of Toronto', 'main')
   t.equal(obj.links[0].page, 'Municipal government of Toronto', 'list1')
@@ -54,7 +54,9 @@ test('templates-in-templates', (t) => {
   t.equal(ref.template, 'citation', 'cite-book')
   t.equal(ref.url, 'https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233', 'url')
   t.equal(ref.isbn, '978-0-19-974376-6', 'isbn')
-  const templates = wtf(str).templates()
+  const templates = wtf(str)
+    .templates()
+    .map((tmpl) => tmpl.json())
   t.equal(templates[0].template, 'marriage', 'marriage1')
   t.equal(templates[1].template, 'marriage', 'marriage2')
   t.equal(templates[1].spouse, 'Elsa Löwenthal', 'marriage-1-name')
@@ -95,7 +97,7 @@ test('three-layer-templates', (t) => {
   const str = `she married {{nowrap| {{nowrap| {{marriage|Johnny-boy}} }}}}`
   const doc = wtf(str)
   t.equal(doc.text(), 'she married Johnny-boy', '3-template inline')
-  t.equal(doc.template().template, 'marriage', '3-template result')
+  t.equal(doc.template().json().template, 'marriage', '3-template result')
   t.end()
 })
 
@@ -107,10 +109,10 @@ test('austria-hungary', (t) => {
     'Austria-Hungary, often referred to as the Austro-Hungarian Empire or the Dual Monarchy',
     'got-plaintext'
   )
-  t.equal(doc.templates('for')[0].list[1], 'Austria–Hungary relations', 'nested emdash')
+  t.equal(doc.template('for').json().list[1], 'Austria–Hungary relations', 'nested emdash')
   t.equal(doc.links('budapest')[0].page(), 'Budapest', 'got Budapest link')
   t.equal(
-    doc.templates('short description')[0].description,
+    doc.templates('short description')[0].json().description,
     'Constitutional monarchic union from 1867 to October 1918',
     'short-description'
   )

@@ -11,7 +11,7 @@ test('currency-templates', function (t) {
   doc = wtf('{{Currency|1,000|JPY}} world')
   t.equal(doc.text(), '¥1,000 world', 'currency yen')
   t.equal(doc.templates().length, 1, 'got a template')
-  t.equal(doc.template().amount, '1,000', 'got template amount')
+  t.equal(doc.template().json().amount, '1,000', 'got template amount')
 
   doc = wtf('{{Currency|1000|USD}}')
   t.equal(doc.text(), 'US$1000', 'currency named parameters')

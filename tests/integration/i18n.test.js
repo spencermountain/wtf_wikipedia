@@ -6,7 +6,7 @@ test('nihongo templates templates', (t) => {
   let doc = wtf(str)
   t.equal(doc.text(), 'hello Tokyo Tower (東京タワー) world', 'sub english word')
   t.equal(doc.templates().length, 1, 'have template')
-  t.equal(doc.template(0).romaji, 'Tōkyō tawā', 'have translation')
+  t.equal(doc.template(0).json().romaji, 'Tōkyō tawā', 'have translation')
 
   str = `In Japanese, {{Nihongo2|虚無僧}} reads ''komusō''.`
   doc = wtf(str)
