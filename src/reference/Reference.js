@@ -1,10 +1,14 @@
 const encode = require('../_lib/encode')
 
 //also called 'citations'
-const Reference = function (data) {
+const Reference = function (data, wiki) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data,
+  })
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki,
   })
 }
 
@@ -32,7 +36,9 @@ const methods = {
   text: function () {
     return '' //nah, skip these.
   },
-
+  wikitext: function () {
+    return this.wiki || ''
+  },
   json: function (options = {}) {
     let json = this.data || {}
     //encode them, for mongodb

@@ -20,14 +20,16 @@ const toWiki = function (options) {
     text += `\n${side} ${this.title()} ${side}\n`
   }
   // render some templates?
-  this.templates().forEach((tmpl) => {
-    text += doTemplate(tmpl) + '\n'
-  })
+  if (options.templates === true) {
+    this.templates().forEach((tmpl) => {
+      text += doTemplate(tmpl.json()) + '\n'
+    })
+  }
 
   //make a table
   if (options.tables === true) {
     text += this.tables()
-      .map((t) => t.wikitext(options))
+      .map((t) => t.makeWikitext(options))
       .join('\n')
   }
 
@@ -39,14 +41,14 @@ const toWiki = function (options) {
   }
   text += this.paragraphs()
     .map((p) => {
-      return p.wikitext(options)
+      return p.makeWikitext(options)
     })
     .join('\n')
 
   // render references
   // these will be out of place
   this.references().forEach((ref) => {
-    text += ref.wikitext(options) + '\n'
+    text += ref.makeWikitext(options) + '\n'
   })
 
   return text

@@ -23,14 +23,14 @@ const sortOut = function (list, domain) {
     let kind = json.template || json.type || json.name
     // is it a Reference?
     if (referenceTypes[kind] === true || isCitation.test(kind) === true) {
-      res.references.push(new Reference(json))
+      res.references.push(new Reference(json, obj.wiki))
       return
     }
     // is it an Infobox?
-    if (json.template === 'infobox' && obj.subbox !== 'yes') {
+    if (json.template === 'infobox' && json.subbox !== 'yes') {
       json.domain = domain //infoboxes need this for images, i guess
       json.data = json.data || {} //validate it a little
-      res.infoboxes.push(new Infobox(json))
+      res.infoboxes.push(new Infobox(json, obj.wiki))
       return
     }
     // otherwise, it's just a template

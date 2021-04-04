@@ -31,15 +31,15 @@ const parseRefs = function (section) {
   let references = []
   let wiki = section._wiki
 
-  wiki = wiki.replace(/ ?<ref>([\s\S]{0,1800}?)<\/ref> ?/gi, function (_a, tmpl) {
+  wiki = wiki.replace(/ ?<ref>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
     if (hasCitation(tmpl)) {
       let obj = parseCitation(tmpl)
       if (obj) {
-        references.push(obj)
+        references.push({ json: obj, wiki: all })
       }
       wiki = wiki.replace(tmpl, '')
     } else {
-      references.push(parseInline(tmpl))
+      references.push({ json: parseInline(tmpl), wiki: all })
     }
     return ' '
   })
@@ -48,22 +48,22 @@ const parseRefs = function (section) {
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ')
 
   //<ref name=""></ref>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1800}?)<\/ref> ?/gi, function (a, tmpl) {
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
     if (hasCitation(tmpl)) {
       let obj = parseCitation(tmpl)
       if (obj) {
-        references.push(obj)
+        references.push({ json: obj, wiki: tmpl })
       }
       wiki = wiki.replace(tmpl, '')
     } else {
-      references.push(parseInline(tmpl))
+      references.push({ json: parseInline(tmpl), wiki: all })
     }
     return ' '
   })
 
   //now that we're done with xml, do a generic + dangerous xml-tag removal
   wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ \/]?> ?/g, ' ') //<samp name="asd">
-  section._references = references.map((r) => new Reference(r))
+  section._references = references.map((obj) => new Reference(obj.json, obj.wiki))
   section._wiki = wiki
 }
 

@@ -24,7 +24,8 @@ test('basic-wikitext', (t) => {
   ]
   arr.forEach((str) => {
     let doc = wtf(str)
-    t.equal(tidy(doc.makeWikitext()), tidy(str), str)
+    let have = doc.makeWikitext()
+    t.equal(tidy(have), tidy(str), str)
   })
   t.end()
 })

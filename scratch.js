@@ -14,28 +14,19 @@ wtf.extend(require('./plugins/wikitext/src'))
 // console.log(doc.sentence(133).json())
 // })
 
-// let str = `{{Infobox animanga/Novel
-// | 著者 = [[白米良]]
-// | イラスト = [[たかやKi]]
-// | 出版社 = [[オーバーラップ (企業)|オーバーラップ]]
-// | 掲載誌 = [[小説家になろう]]
-// | レーベル = [[オーバーラップ文庫]]
-// | 開始号 = 2013年11月7日
-// | 終了号 =
-// | 開始日 = 2015年6月24日
-// | 終了日 =
-// | 巻数 = 既刊16巻（本編11巻+外伝4巻+短編集1巻）<br />（2020年7月現在）
-// | インターネット = 1
-// }}`
+let str = `{{foobar | fun = true | key = val}}`
 // str = `{{hello|world}}
+// str = `Emery is a vegetarian,<ref>{{cite web|title=The princess of pot|url=http://thewalrus.ca/the-princess-of-pot/}}</ref>`
+
 // `
-// let doc = wtf(str)
+let doc = wtf(str)
 // console.log(doc.links(0).map((t) => t.text()))
-// console.log(doc.infobox().wikitext())
+// console.log(doc.reference().json())
+console.log(doc.makeWikitext())
 // console.log(doc.template())
 
-let doc = wtf(`* {{USS|Barry}}, four US destroyers`)
-let tmpl = doc.template()
-console.log(tmpl.wikitext())
-console.log(tmpl.text())
+// let doc = wtf(`* {{USS|Barry}}, four US destroyers`)
+// let tmpl = doc.template()
+// console.log(tmpl.wikitext())
+// console.log(tmpl.text())
 // console.log(doc.text())

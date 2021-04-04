@@ -63,3 +63,11 @@ test('template methods', (t) => {
   t.equal(tmpl.text(), `USS Barry`, 'tmpl text')
   t.end()
 })
+test('reference method', (t) => {
+  let str = `<ref>{{cite web|title=The princess of pot|url=http://thewalrus.ca/the-princess-of-pot/}}</ref>`
+  let doc = wtf(`the end.` + str)
+  let tmpl = doc.reference()
+  t.equal(tmpl.wikitext(), str, 'ref wikitext')
+  t.equal(tmpl.text(), ``, 'ref text')
+  t.end()
+})

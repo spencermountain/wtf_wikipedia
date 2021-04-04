@@ -10,12 +10,16 @@ const normalize = (str = '') => {
 }
 
 //a formal key-value data table about a topic
-const Infobox = function (obj) {
+const Infobox = function (obj, wiki) {
   this._type = obj.type
   this.domain = obj.domain
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: obj.data,
+  })
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki,
   })
 }
 
@@ -82,7 +86,7 @@ const methods = {
     return toJson(this, options)
   },
   wikitext: function () {
-    return ''
+    return this.wiki || ''
   },
   keyValue: function () {
     return Object.keys(this.data).reduce((h, k) => {

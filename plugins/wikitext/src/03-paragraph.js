@@ -7,16 +7,16 @@ const toWiki = function (options) {
 
   // do images
   this.images().forEach((img) => {
-    text += img.wikitext()
+    text += img.makeWikitext()
   })
   // do lists
   this.lists().forEach((list) => {
-    text += list.wikitext()
+    text += list.makeWikitext()
   })
   // render sentences
   text += this.sentences()
     .map((s) => {
-      return s.wikitext(options)
+      return s.makeWikitext(options)
     })
     .join('\n')
   return text
