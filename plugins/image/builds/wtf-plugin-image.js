@@ -1,4 +1,4 @@
-/* wtf-plugin-image 0.2.0  MIT */
+/* wtf-plugin-image 0.3.0  MIT */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('https')) :
 	typeof define === 'function' && define.amd ? define(['https'], factory) :
@@ -1854,14 +1854,31 @@
 	var imgExists_1 = imgExists;
 
 	// is there a good image of this
-	const mainImage = function (opt = {}) {
+	const mainImage = function () {
+	  let box = this.infobox();
+
+	  if (box) {
+	    let img = box.image();
+
+	    if (img) {
+	      return img;
+	    }
+	  }
+
+	  let s = this.section();
+	  let imgs = s.images();
+
+	  if (imgs.length === 1) {
+	    return imgs[0];
+	  }
+
 	  return null;
 	};
 
 	var mainImage_1 = mainImage;
 
 	const addMethod = function (models) {
-	  models.Doc.mainImage = mainImage_1; // add a new method to Image class
+	  models.Doc.prototype.mainImage = mainImage_1; // add a new method to Image class
 
 	  models.Image.prototype.commonsURL = urlHash;
 	  models.Image.prototype.exists = imgExists_1;

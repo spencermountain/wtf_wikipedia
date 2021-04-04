@@ -1,4 +1,4 @@
-/* wtf-plugin-summary 0.2.0  MIT */
+/* wtf-plugin-summary 0.3.0  MIT */
 /* compromise 13.10.5 MIT */
 function _typeof(obj) {
   "@babel/helpers - typeof";
@@ -14865,15 +14865,12 @@ var compromise = /*#__PURE__*/Object.freeze({
   'default': src$1
 });
 
-const isObject = function (obj) {
-  return obj && Object.prototype.toString.call(obj) === '[object Object]';
-};
-
 const fromTemplate = function (doc) {
   let tmpl = doc.template('short description');
 
-  if (tmpl && isObject(tmpl) && tmpl.description) {
-    return tmpl.description;
+  if (tmpl) {
+    let json = tmpl.json() || {};
+    return json.description || '';
   }
 
   return null;

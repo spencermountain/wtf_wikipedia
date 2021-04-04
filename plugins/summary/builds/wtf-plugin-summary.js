@@ -1,4 +1,4 @@
-/* wtf-plugin-summary 0.2.0  MIT */
+/* wtf-plugin-summary 0.3.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -14871,15 +14871,12 @@
     'default': src$1
   });
 
-  const isObject = function (obj) {
-    return obj && Object.prototype.toString.call(obj) === '[object Object]';
-  };
-
   const fromTemplate = function (doc) {
     let tmpl = doc.template('short description');
 
-    if (tmpl && isObject(tmpl) && tmpl.description) {
-      return tmpl.description;
+    if (tmpl) {
+      let json = tmpl.json() || {};
+      return json.description || '';
     }
 
     return null;

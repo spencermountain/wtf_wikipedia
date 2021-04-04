@@ -1,4 +1,4 @@
-/* wtf-plugin-classify 0.2.0  MIT */
+/* wtf-plugin-classify 1.0.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -1586,7 +1586,7 @@
   schema = setId(schema, '');
   var schema_1 = schema;
 
-  let mappings = {
+  let mappings$5 = {
     categories: {},
     descriptions: {},
     infoboxes: {},
@@ -1594,7 +1594,7 @@
     templates: {},
     titles: {}
   };
-  let patterns = {
+  let patterns$4 = {
     categories: [],
     descriptions: [],
     infoboxes: [],
@@ -1607,42 +1607,42 @@
     if (node.id) {
       // collect mappings
       node.categories.mapping.forEach(str => {
-        mappings.categories[str] = node.id;
+        mappings$5.categories[str] = node.id;
       });
       node.descriptions.mapping = node.descriptions.mapping || [];
       node.descriptions.mapping.forEach(str => {
-        mappings.descriptions[str] = node.id;
+        mappings$5.descriptions[str] = node.id;
       });
       node.infoboxes.mapping.forEach(str => {
-        mappings.infoboxes[str] = node.id;
+        mappings$5.infoboxes[str] = node.id;
       });
       node.sections.mapping.forEach(str => {
-        mappings.sections[str] = node.id;
+        mappings$5.sections[str] = node.id;
       });
       node.templates.mapping.forEach(str => {
-        mappings.templates[str] = node.id;
+        mappings$5.templates[str] = node.id;
       });
       node.titles.mapping.forEach(str => {
-        mappings.titles[str] = node.id;
+        mappings$5.titles[str] = node.id;
       }); // collect patterns
 
       node.categories.patterns.forEach(reg => {
-        patterns.categories.push([reg, node.id]);
+        patterns$4.categories.push([reg, node.id]);
       });
       node.descriptions.patterns.forEach(reg => {
-        patterns.descriptions.push([reg, node.id]);
+        patterns$4.descriptions.push([reg, node.id]);
       });
       node.infoboxes.patterns.forEach(reg => {
-        patterns.infoboxes.push([reg, node.id]);
+        patterns$4.infoboxes.push([reg, node.id]);
       });
       node.sections.patterns.forEach(reg => {
-        patterns.sections.push([reg, node.id]);
+        patterns$4.sections.push([reg, node.id]);
       });
       node.templates.patterns.forEach(reg => {
-        patterns.templates.push([reg, node.id]);
+        patterns$4.templates.push([reg, node.id]);
       });
       node.titles.patterns.forEach(reg => {
-        patterns.titles.push([reg, node.id]);
+        patterns$4.titles.push([reg, node.id]);
       });
     }
 
@@ -1655,12 +1655,12 @@
 
   doNode(schema_1);
   var _dataFns = {
-    patterns,
-    mappings
+    patterns: patterns$4,
+    mappings: mappings$5
   };
 
   const {
-    mappings: mappings$1
+    mappings: mappings$4
   } = _dataFns;
 
   const byInfobox = function (doc) {
@@ -1675,9 +1675,9 @@
       type = type.replace(/ /g, '_');
       type = type.trim();
 
-      if (mappings$1.infoboxes.hasOwnProperty(type)) {
+      if (mappings$4.infoboxes.hasOwnProperty(type)) {
         found.push({
-          type: mappings$1.infoboxes[type],
+          type: mappings$4.infoboxes[type],
           reason: type
         });
       }
@@ -1703,8 +1703,8 @@
   var _byPattern = byPattern;
 
   const {
-    patterns: patterns$1,
-    mappings: mappings$2
+    patterns: patterns$3,
+    mappings: mappings$3
   } = _dataFns;
 
   const byCategory = function (doc) {
@@ -1721,16 +1721,16 @@
     for (let i = 0; i < cats.length; i++) {
       const category = cats[i]; // try our 1-to-1 mapping
 
-      if (mappings$2.categories.hasOwnProperty(category)) {
+      if (mappings$3.categories.hasOwnProperty(category)) {
         found.push({
-          type: mappings$2.categories[category],
+          type: mappings$3.categories[category],
           reason: category
         });
         continue;
       } // loop through our patterns
 
 
-      let match = _byPattern(category, patterns$1.categories);
+      let match = _byPattern(category, patterns$3.categories);
 
       if (match) {
         found.push({
@@ -1747,19 +1747,19 @@
 
   const {
     patterns: patterns$2,
-    mappings: mappings$3
+    mappings: mappings$2
   } = _dataFns;
 
   const byTemplate = function (doc) {
-    let templates = doc.templates();
+    let templates = doc.templates().map(tmpl => tmpl.json());
     let found = [];
 
     for (let i = 0; i < templates.length; i++) {
       const title = templates[i].template;
 
-      if (mappings$3.templates.hasOwnProperty(title)) {
+      if (mappings$2.templates.hasOwnProperty(title)) {
         found.push({
-          type: mappings$3.templates[title],
+          type: mappings$2.templates[title],
           reason: title
         });
       } else {
@@ -1781,7 +1781,7 @@
   var byTemplate_1 = byTemplate;
 
   const {
-    mappings: mappings$4
+    mappings: mappings$1
   } = _dataFns;
 
   const fromSection = function (doc) {
@@ -1795,9 +1795,9 @@
     for (let i = 0; i < titles.length; i++) {
       const title = titles[i];
 
-      if (mappings$4.sections.hasOwnProperty(title)) {
+      if (mappings$1.sections.hasOwnProperty(title)) {
         found.push({
-          type: mappings$4.sections[title],
+          type: mappings$1.sections[title],
           reason: title
         });
       }
@@ -1809,10 +1809,10 @@
   var bySection = fromSection;
 
   const {
-    patterns: patterns$3,
-    mappings: mappings$5
+    patterns: patterns$1,
+    mappings
   } = _dataFns;
-  const paren = /\((.*)\)$/;
+  const paren$1 = /\((.*)\)$/;
 
   const byTitle = function (doc) {
     let title = doc.title();
@@ -1822,7 +1822,7 @@
     } //look at parentheses like 'Tornado (film)'
 
 
-    let m = title.match(paren);
+    let m = title.match(paren$1);
 
     if (!m) {
       return [];
@@ -1833,15 +1833,15 @@
     inside = inside.replace(/_/g, ' ');
     inside = inside.trim(); //look at known parentheses
 
-    if (mappings$5.titles.hasOwnProperty(inside)) {
+    if (mappings.titles.hasOwnProperty(inside)) {
       return [{
-        type: mappings$5.titles[inside],
+        type: mappings.titles[inside],
         reason: inside
       }];
     } // look at regex
 
 
-    let match = _byPattern(title, patterns$3.titles);
+    let match = _byPattern(title, patterns$1.titles);
 
     if (match) {
       return [{
@@ -1856,7 +1856,7 @@
   var byTitle_1 = byTitle;
 
   const {
-    patterns: patterns$4
+    patterns
   } = _dataFns;
 
   const byDescription = function (doc) {
@@ -1866,7 +1866,7 @@
       let desc = tmpl.description || '';
       desc = desc.toLowerCase(); // loop through our patterns
 
-      let match = _byPattern(desc, patterns$4.descriptions);
+      let match = _byPattern(desc, patterns.descriptions);
 
       if (match) {
         return [{
@@ -1887,14 +1887,14 @@
     name: true,
     'given name': true
   };
-  const paren$1 = /\((.*)\)$/;
+  const paren = /\((.*)\)$/;
   const listOf = /^list of ./;
   const disambig = /\(disambiguation\)/;
 
   const skipPage = function (doc) {
     let title = doc.title() || ''; //look at parentheses like 'Tornado (film)'
 
-    let m = title.match(paren$1);
+    let m = title.match(paren);
 
     if (!m) {
       return null;

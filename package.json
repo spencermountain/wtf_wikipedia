@@ -1,7 +1,7 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "8.5.1",
+  "version": "9.0.0",
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "test:types": "ts-node ./tests/types/index.ts",
     "test:unit": "tape ./tests/unit/**/*.test.js | tap-dancer",
     "test": "npm run test:unit && npm run test:integration && npm run test:plugins",
+    "testb": "TESTENV=prod npm run test",
     "watch": "amble ./scratch.js"
   },
   "bin": {

@@ -27,6 +27,17 @@ big cleanup of .fetch() (thanks wouter!), 'parse' param for templates.
 - **[new]** - set new infoboxes using .extend()
 - deprecate wtf-plugin-category (move to wtf-plugin-api)
 
+- plugin-api 0.0.1
+- plugin-classify 1.0.0
+- plugin-disambig 0.0.1
+- plugin-image 0.3.0
+- plugin-person 0.2.0
+- plugin-summary 0.3.0
+- plugin-wikitext 1.1.0
+- plugin-wikinews 0.0.1
+- plugin-wikivoyage 0.0.1
+- plugin-wiktionary 0.0.1
+
 #### 8.5.1
 
 - fix reference json encoding for mongodb

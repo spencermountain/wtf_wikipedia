@@ -1,7 +1,8 @@
-/* wtf-plugin-wikitext 0.2.0  MIT */
+/* wtf-plugin-wikitext 1.1.0  MIT */
 const defaults$3 = {
   images: true,
   tables: true,
+  templates: true,
   infoboxes: true,
   categories: true,
   lists: true,
@@ -9,7 +10,7 @@ const defaults$3 = {
   paragraphs: true
 };
 
-const toWiki$9 = function (options) {
+const toWiki$a = function (options) {
   options = options || {};
   options = Object.assign({}, defaults$3, options);
   let text = ''; //if it's a redirect page
@@ -20,14 +21,13 @@ const toWiki$9 = function (options) {
 
 
   if (options.infoboxes === true) {
-    text += this.infoboxes().map(i => i.wikitext(options)).join('\n');
+    text += this.infoboxes().map(i => i.makeWikitext(options)).join('\n');
   } //render each section
 
 
   if (options.sections === true || options.paragraphs === true || options.sentences === true) {
-    let sections = this.sections(); // sections = sections.filter((s) => s.title() !== 'References')
-
-    text += sections.map(s => s.wikitext(options)).join('\n');
+    let sections = this.sections();
+    text += sections.map(s => s.makeWikitext(options)).join('\n');
   } // add categories on the bottom
 
 
@@ -39,7 +39,7 @@ const toWiki$9 = function (options) {
   return text;
 };
 
-var _01Doc = toWiki$9;
+var _01Doc = toWiki$a;
 
 const defaults$2 = {};
 
@@ -54,7 +54,7 @@ const doTemplate = function (obj) {
   return `{{${name}${data}}} `;
 };
 
-const toWiki$8 = function (options) {
+const toWiki$9 = function (options) {
   options = options || {};
   options = Object.assign({}, defaults$2, options);
   let text = '';
@@ -65,12 +65,15 @@ const toWiki$8 = function (options) {
   } // render some templates?
 
 
-  this.templates().forEach(tmpl => {
-    text += doTemplate(tmpl) + '\n';
-  }); //make a table
+  if (options.templates === true) {
+    this.templates().forEach(tmpl => {
+      text += doTemplate(tmpl.json()) + '\n';
+    });
+  } //make a table
+
 
   if (options.tables === true) {
-    text += this.tables().map(t => t.wikitext(options)).join('\n');
+    text += this.tables().map(t => t.makeWikitext(options)).join('\n');
   } // make a html bullet-list
 
 
@@ -79,40 +82,40 @@ const toWiki$8 = function (options) {
   }
 
   text += this.paragraphs().map(p => {
-    return p.wikitext(options);
+    return p.makeWikitext(options);
   }).join('\n'); // render references
   // these will be out of place
 
   this.references().forEach(ref => {
-    text += ref.wikitext(options) + '\n';
+    text += ref.makeWikitext(options) + '\n';
   });
   return text;
 };
 
-var _02Section = toWiki$8;
+var _02Section = toWiki$9;
 
 const defaults$1 = {};
 
-const toWiki$7 = function (options) {
+const toWiki$8 = function (options) {
   options = options || {};
   options = Object.assign({}, defaults$1, options);
   let text = ''; // do images
 
   this.images().forEach(img => {
-    text += img.wikitext();
+    text += img.makeWikitext();
   }); // do lists
 
   this.lists().forEach(list => {
-    text += list.wikitext();
+    text += list.makeWikitext();
   }); // render sentences
 
   text += this.sentences().map(s => {
-    return s.wikitext(options);
+    return s.makeWikitext(options);
   }).join('\n');
   return text;
 };
 
-var _03Paragraph = toWiki$7;
+var _03Paragraph = toWiki$8;
 
 //escape a string like 'fun*2.Co' for a regExpr
 function escapeRegExp(string) {
@@ -150,7 +153,7 @@ const defaults = {
   links: true
 };
 
-const toWiki$6 = function (options) {
+const toWiki$7 = function (options) {
   options = options || {};
   options = Object.assign({}, defaults, options);
   let text = this.text();
@@ -158,7 +161,7 @@ const toWiki$6 = function (options) {
   if (options.links === true) {
     this.links().forEach(link => {
       let str = link.text() || link.page();
-      let tag = link.wikitext();
+      let tag = link.makeWikitext();
       text = smartReplace_1(text, str, tag);
     });
   }
@@ -179,10 +182,10 @@ const toWiki$6 = function (options) {
   return text;
 };
 
-var _04Sentence = toWiki$6;
+var _04Sentence = toWiki$7;
 
 // add `[text](href)` to the text
-const toWiki$5 = function () {
+const toWiki$6 = function () {
   //if it's an external link, we good
   if (this.site()) {
     if (this.text()) {
@@ -207,9 +210,9 @@ const toWiki$5 = function () {
   return `[[${page}]]`;
 };
 
-var _05Link = toWiki$5;
+var _05Link = toWiki$6;
 
-const toWiki$4 = function () {
+const toWiki$5 = function () {
   let text = `[[${this.file()}|thumb`;
   let caption = this.data.caption;
 
@@ -220,7 +223,26 @@ const toWiki$4 = function () {
   return text + ']]';
 };
 
-var image = toWiki$4;
+var image = toWiki$5;
+
+const toWiki$4 = function () {
+  let text = `{{${this.data.template || ''}`;
+  Object.keys(this.data).forEach(k => {
+    if (k === 'template') {
+      return;
+    }
+
+    let val = this.data[k];
+
+    if (val) {
+      text += `| ${k} = ${val || ''}`;
+    }
+  });
+  text += '}}\n';
+  return text;
+};
+
+var template = toWiki$4;
 
 const toWiki$3 = function () {
   let text = `{{Infobox ${this._type || ''}\n`;
@@ -293,16 +315,17 @@ const toWiki = function (options) {
 var table = toWiki;
 
 const plugin = function (models) {
-  models.Doc.prototype.wikitext = _01Doc;
-  models.Section.prototype.wikitext = _02Section;
-  models.Paragraph.prototype.wikitext = _03Paragraph;
-  models.Sentence.prototype.wikitext = _04Sentence;
-  models.Link.prototype.wikitext = _05Link;
-  models.Image.prototype.wikitext = image;
-  models.Infobox.prototype.wikitext = infobox;
-  models.Table.prototype.wikitext = table;
-  models.List.prototype.wikitext = list;
-  models.Reference.prototype.wikitext = reference;
+  models.Doc.prototype.makeWikitext = _01Doc;
+  models.Section.prototype.makeWikitext = _02Section;
+  models.Paragraph.prototype.makeWikitext = _03Paragraph;
+  models.Sentence.prototype.makeWikitext = _04Sentence;
+  models.Link.prototype.makeWikitext = _05Link;
+  models.Image.prototype.makeWikitext = image;
+  models.Infobox.prototype.makeWikitext = infobox;
+  models.Template.prototype.makeWikitext = template;
+  models.Table.prototype.makeWikitext = table;
+  models.List.prototype.makeWikitext = list;
+  models.Reference.prototype.makeWikitext = reference;
 };
 
 var src = plugin;

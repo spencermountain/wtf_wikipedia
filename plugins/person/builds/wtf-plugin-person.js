@@ -1,4 +1,4 @@
-/* wtf-plugin-person 0.1.0  MIT */
+/* wtf-plugin-person 0.2.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -4822,7 +4822,7 @@
   };
 
   const byTemplate = function (doc) {
-    let templates = doc.templates();
+    let templates = doc.templates().map(tmpl => tmpl.json());
 
     for (let i = 0; i < templates.length; i++) {
       let title = templates[i].template || '';
@@ -4841,7 +4841,8 @@
     let bio = doc.template('WikiProject Biography');
 
     if (bio) {
-      //living blp BLP
+      bio = bio.json(); //living blp BLP
+
       if (bio.living === 'yes' || bio.blp === 'yes' || bio.activepol === 'yes' || bio.BLP === 'yes') {
         return true;
       }

@@ -1,4 +1,4 @@
-/* wtf-plugin-person 0.1.0  MIT */
+/* wtf-plugin-person 0.2.0  MIT */
 // from ./plugins/classify/infobox, April 15 2020
 // https://en.wikipedia.org/wiki/Category:People_and_person_infobox_templates
 var _infoboxes = {
@@ -4816,7 +4816,7 @@ const isDead = {
 };
 
 const byTemplate = function (doc) {
-  let templates = doc.templates();
+  let templates = doc.templates().map(tmpl => tmpl.json());
 
   for (let i = 0; i < templates.length; i++) {
     let title = templates[i].template || '';
@@ -4835,7 +4835,8 @@ const byTemplate = function (doc) {
   let bio = doc.template('WikiProject Biography');
 
   if (bio) {
-    //living blp BLP
+    bio = bio.json(); //living blp BLP
+
     if (bio.living === 'yes' || bio.blp === 'yes' || bio.activepol === 'yes' || bio.BLP === 'yes') {
       return true;
     }
