@@ -34,7 +34,7 @@ detail:
 - **[new]** - Table.get() method
 - **[new]** - set new infoboxes using .extend()
 
-- plugin-api 0.0.1
+- plugin-api 0.1.0
 - plugin-classify 1.0.0
 - plugin-disambig 0.0.1
 - plugin-image 0.3.0

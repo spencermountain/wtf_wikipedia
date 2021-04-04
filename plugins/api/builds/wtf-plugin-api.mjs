@@ -1,4 +1,4 @@
-/* wtf-plugin-api 0.0.1  MIT */
+/* wtf-plugin-api 0.1.0  MIT */
 var normalize$5 = function (title = '') {
   title = title.replace(/ /g, '_');
   title = title.trim();
