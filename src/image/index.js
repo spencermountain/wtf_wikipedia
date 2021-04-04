@@ -1,6 +1,6 @@
 const i18n = require('../_data/i18n')
 const Image = require('./Image')
-const parseTemplate = require('../template/_parsers/parse')
+const parseTemplate = require('../template/parse/toJSON')
 const parseSentence = require('../04-sentence').fromText
 const nested_find = require('./nested_find')
 //regexes:
@@ -43,6 +43,7 @@ const oneImage = function (img, doc) {
       file: file,
       lang: doc._lang,
       domain: doc._domain,
+      wiki: img,
     }
     //try to grab other metadata, too
     img = img.replace(/^\[\[/, '')

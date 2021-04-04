@@ -14,53 +14,36 @@ const Paragraph = function (data) {
 }
 
 const methods = {
-  sentences: function (num) {
-    if (typeof num === 'number') {
-      return this.data.sentences[num]
-    }
+  sentences: function () {
     return this.data.sentences || []
   },
-  references: function (num) {
-    if (typeof num === 'number') {
-      return this.data.references[num]
-    }
+  references: function () {
     return this.data.references
   },
-  lists: function (num) {
-    if (typeof num === 'number') {
-      return this.data.lists[num]
-    }
+  lists: function () {
     return this.data.lists
   },
-  images(num) {
-    if (typeof num === 'number') {
-      return this.data.images[num]
-    }
+  images() {
     return this.data.images || []
   },
-  links: function (n) {
+  links: function (clue) {
     let arr = []
     this.sentences().forEach((s) => {
-      arr = arr.concat(s.links(n))
+      arr = arr.concat(s.links(clue))
     })
-    if (typeof n === 'number') {
-      return arr[n]
-    } else if (typeof n === 'string') {
+    if (typeof clue === 'string') {
       //grab a specific link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = arr.find((o) => o.page() === n)
+      clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
+      let link = arr.find((o) => o.page() === clue)
       return link === undefined ? [] : [link]
     }
     return arr || []
   },
-  interwiki(num) {
+  interwiki() {
     let arr = []
     this.sentences().forEach((s) => {
       arr = arr.concat(s.interwiki())
     })
-    if (typeof num === 'number') {
-      return arr[num]
-    }
     return arr || []
   },
   text: function (options) {
@@ -77,9 +60,33 @@ const methods = {
     options = setDefaults(options, defaults)
     return toJSON(this, options)
   },
+  wikitext: function () {
+    return this.data.wiki
+  },
 }
 methods.citations = methods.references
 Object.keys(methods).forEach((k) => {
   Paragraph.prototype[k] = methods[k]
 })
+
+// aliases
+const singular = {
+  sentences: 'sentence',
+  references: 'reference',
+  citation: 'citations',
+  lists: 'list',
+  images: 'image',
+  links: 'link',
+}
+Object.keys(singular).forEach((k) => {
+  let sing = singular[k]
+  Paragraph.prototype[sing] = function (clue) {
+    let arr = this[k](clue)
+    if (typeof clue === 'number') {
+      return arr[clue]
+    }
+    return arr[0]
+  }
+})
+
 module.exports = Paragraph

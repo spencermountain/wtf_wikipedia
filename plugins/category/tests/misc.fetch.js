@@ -1,5 +1,5 @@
-var test = require('tape')
-var wtf = require('./_lib')
+const test = require('tape')
+const wtf = require('./_lib')
 
 // this seems too much network traffic to run each test
 test('parseCategory', function (t) {

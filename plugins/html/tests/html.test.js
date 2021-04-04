@@ -1,15 +1,15 @@
-var test = require('tape')
-var wtf = require('./_lib')
-var tidy = str => {
+const test = require('tape')
+const wtf = require('./_lib')
+const tidy = (str) => {
   str = str.replace(/\s[\s]+/g, ' ')
   str = str.replace(/\n/g, '')
   str = str.replace(/ >/g, '>')
   return str
 }
 
-test('basic-html', t => {
-  var have = wtf('that cat is [[a]] cool dude').html()
-  var want = `
+test('basic-html', (t) => {
+  let have = wtf('that cat is [[a]] cool dude').html()
+  let want = `
 <div class="section">
   <div class="text">
     <p class="paragraph">

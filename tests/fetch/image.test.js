@@ -3,7 +3,7 @@ const wtf = require('../lib')
 
 test('3rd-party image bulbapedia', function (t) {
   t.plan(3)
-  var p = wtf.fetch('https://bulbapedia.bulbagarden.net/wiki/Aegislash_(Pok%C3%A9mon)', { path: 'w/api.php' })
+  const p = wtf.fetch('https://bulbapedia.bulbagarden.net/wiki/Aegislash_(Pok%C3%A9mon)', { path: 'w/api.php' })
 
   p.then((doc) => {
     t.equal(doc.domain(), 'bulbapedia.bulbagarden.net', 'got domain from url input')
@@ -19,7 +19,7 @@ test('3rd-party image bulbapedia', function (t) {
 
 test('3rd-party image mozilla', function (t) {
   t.plan(3)
-  var p = wtf.fetch('WeeklyUpdates/020-06-29', { domain: 'wiki.mozilla.org' })
+  const p = wtf.fetch('WeeklyUpdates/020-06-29', { domain: 'wiki.mozilla.org' })
   p.then((doc) => {
     t.equal(doc.domain(), 'wiki.mozilla.org', 'got domain from obj input')
 

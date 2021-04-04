@@ -460,5 +460,5 @@ module.exports = {
   s: 'en.wikisource.org/wiki/$1',
   chapter: 'en' + wm,
   v: 'en.wikiversity.org/wiki/$1',
-  voy: 'en.wikivoyage.org/wiki/$1'
+  voy: 'en.wikivoyage.org/wiki/$1',
 }

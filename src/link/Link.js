@@ -1,28 +1,30 @@
 const wikis = require('../_data/interwiki')
 
 const defaults = {
-  type: 'internal'
+  type: 'internal',
 }
-const Link = function(data) {
+const Link = function (data) {
   data = data || {}
   data = Object.assign({}, defaults, data)
-  // console.log(data)
   Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: data
+    value: data,
   })
 }
 const methods = {
-  text: function(str) {
+  text: function (str) {
     if (str !== undefined) {
       this.data.text = str
     }
-    return this.data.text
+    let txt = this.data.text || this.data.page || ''
+    // remove bold/italics
+    txt = txt.replace(/''+/g, '')
+    return txt
   },
-  json: function() {
+  json: function () {
     let obj = {
-      text: this.text(),
-      type: this.type()
+      text: this.data.text,
+      type: this.type(),
     }
     if (obj.type === 'internal') {
       obj.page = this.page()
@@ -37,38 +39,42 @@ const methods = {
     }
     return obj
   },
-  page: function(str) {
+  wikitext: function () {
+    let txt = this.data.raw || ''
+    return txt
+  },
+  page: function (str) {
     if (str !== undefined) {
       this.data.page = str
     }
     return this.data.page
   },
-  anchor: function(str) {
+  anchor: function (str) {
     if (str !== undefined) {
       this.data.anchor = str
     }
     return this.data.anchor || ''
   },
-  wiki: function(str) {
+  wiki: function (str) {
     if (str !== undefined) {
       this.data.wiki = str
     }
     return this.data.wiki
   },
-  type: function(str) {
+  type: function (str) {
     if (str !== undefined) {
       this.data.type = str
     }
     return this.data.type
   },
-  site: function(str) {
+  site: function (str) {
     if (str !== undefined) {
       this.data.site = str
     }
     return this.data.site
   },
-  // create a url for any type of link
-  href: function() {
+  //create a url for any type of link
+  href: function () {
     let type = this.type()
     if (type === 'external') {
       return this.site()
@@ -89,14 +95,14 @@ const methods = {
       //internal link
       url = `./${this.page()}`
     }
-    // add anchor on the end
+    //add anchor on the end
     if (this.anchor()) {
       url += '#' + this.anchor()
     }
     return url
-  }
+  },
 }
-Object.keys(methods).forEach(k => {
+Object.keys(methods).forEach((k) => {
   Link.prototype[k] = methods[k]
 })
 module.exports = Link

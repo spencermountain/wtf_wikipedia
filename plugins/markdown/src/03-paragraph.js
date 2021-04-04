@@ -2,7 +2,7 @@ const defaults = {
   sentences: true
 }
 
-const toMarkdown = function(options) {
+const toMarkdown = function (options) {
   options = Object.assign({}, defaults, options)
   let md = ''
   if (options.sentences === true) {

@@ -4,13 +4,13 @@ const languages = require('../_data/languages')
 const interwikis = require('../_data/interwiki')
 
 //add language prefixes too..
-Object.keys(languages).forEach(k => {
+Object.keys(languages).forEach((k) => {
   interwikis[k] = k + '.wikipedia.org/wiki/$1'
 })
 
 //this is predictably very complicated.
 // https://meta.wikimedia.org/wiki/Help:Interwiki_linking
-const parseInterwiki = function(obj) {
+const parseInterwiki = function (obj) {
   let str = obj.page || ''
   if (str.indexOf(':') !== -1) {
     let m = str.match(/^(.*):(.*)/)
@@ -22,9 +22,7 @@ const parseInterwiki = function(obj) {
     if (site.indexOf(':') !== -1) {
       let [, wiki, lang] = site.match(/^:?(.*):(.*)/)
       //only allow interwikis to these specific places
-      if (
-        interwikis.hasOwnProperty(wiki) && languages.hasOwnProperty(lang) === false
-      ) {
+      if (interwikis.hasOwnProperty(wiki) && languages.hasOwnProperty(lang) === false) {
         return obj
       }
       obj.wiki = { wiki: wiki, lang: lang }

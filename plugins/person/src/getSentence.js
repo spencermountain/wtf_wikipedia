@@ -1,7 +1,7 @@
 const spacetime = require('spacetime')
 
 const parseSentence = function (doc) {
-  let s = doc.sentences(0)
+  let s = doc.sentence()
   if (!s) {
     return null
   }
@@ -20,7 +20,7 @@ const parseSentence = function (doc) {
   if (split[0] && split[1] && split.length === 2) {
     return {
       birth: split[0],
-      death: split[1]
+      death: split[1],
     }
   }
   // try for just birth date in parentheses
@@ -29,7 +29,7 @@ const parseSentence = function (doc) {
     let d = spacetime(str)
     if (d.isValid()) {
       return {
-        birth: str
+        birth: str,
       }
     }
   }

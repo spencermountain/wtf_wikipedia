@@ -11,7 +11,7 @@ const toWiki = function (options) {
   if (options.links === true) {
     this.links().forEach((link) => {
       let str = link.text() || link.page()
-      let tag = link.wikitext()
+      let tag = link.makeWikitext()
       text = smartReplace(text, str, tag)
     })
   }

@@ -18,23 +18,23 @@ test('classify-test', async function (t) {
     ['Clint-Murchison-Sr.', 'Person'],
     ['Charlie-Milstead', 'Person/Athlete'],
     ['Gregory-Serper', 'Person'],
-    ['United-Kingdom', 'Place'],
+    ['United-Kingdom', 'Place/Jurisdiction'],
     ['Teymanak-e-Olya', 'Place'],
-    ['toronto', 'Place/City'],
+    ['toronto', 'Place/Jurisdiction'],
     ['royal_cinema', 'Place'],
-    ['Canton-of-Etaples', 'Place'],
+    ['Canton-of-Etaples', 'Place/Jurisdiction'],
     ['Arts_Club_of_Chicago', 'Place'],
-    ['al_Haytham', 'Person/Academic'],
-    ['The-Field-of-Waterloo', 'CreativeWork'],
+    ['al_Haytham', 'Person'],
+    ['The-Field-of-Waterloo', 'Creation/CreativeWork'],
     ['bluejays', null], //partial page
-    ['Liste-der-argentinischen-Botschafter-in-Chile', null]
+    ['Liste-der-argentinischen-Botschafter-in-Chile', null],
   ]
   arr.forEach((a) => {
     let abs = path.join(__dirname, `../../../tests/cache/${a[0]}.txt`)
     let txt = fs.readFileSync(abs).toString()
     let doc = wtf(txt)
     let res = doc.classify()
-    t.equal(res.category, a[1], a[0])
+    t.equal(res.type, a[1], a[0])
   })
   t.end()
 })

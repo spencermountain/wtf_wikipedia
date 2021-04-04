@@ -1,0 +1,16 @@
+{
+  "name": "wtf-plugin-wikivoyage",
+  "description": "plugin for wtf_wikipedia",
+  "version": "0.0.1",
+  "main": "./plugin.js",
+  "author": "Spencer Kelly (spencermountain)",
+  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/wikis/wikivoyage",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/spencermountain/wtf_wikipedia.git"
+  },
+  "peerDependencies": {
+    "wtf_wikipedia": "^8.0.0"
+  },
+  "license": "MIT"
+}

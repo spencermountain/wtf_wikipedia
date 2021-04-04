@@ -10,7 +10,7 @@ const dontDo = {
 }
 
 //
-const infobox = function(options) {
+const infobox = function (options) {
   options = Object.assign({}, defaults, options)
   let html = '<table class="infobox">\n'
   html += '  <thead>\n'
@@ -32,7 +32,7 @@ const infobox = function(options) {
     }
     html += '    </tr>\n'
   }
-  Object.keys(this.data).forEach(k => {
+  Object.keys(this.data).forEach((k) => {
     if (dontDo[k] === true) {
       return
     }

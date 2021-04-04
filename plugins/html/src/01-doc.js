@@ -3,7 +3,7 @@ const defaults = {
   infoboxes: true,
   headers: true,
   sections: true,
-  links: true,
+  links: true
 }
 //we should try to make this look like the wikipedia does, i guess.
 const softRedirect = function (doc) {
@@ -34,18 +34,20 @@ const toHtml = function (options) {
   //render infoboxes (up at the top)
   if (options.infoboxes === true) {
     html += this.infoboxes()
-      .map(i => i.html(options))
+      .map((i) => i.html(options))
       .join('\n')
   }
   //render each section
   if (options.sections === true || options.paragraphs === true || options.sentences === true) {
-    html += this.sections().map(s => s.html(options)).join('\n')
+    html += this.sections()
+      .map((s) => s.html(options))
+      .join('\n')
   }
   //default off
   if (options.references === true) {
     html += '<h2>References</h2>'
     html += this.references()
-      .map(c => c.html(options))
+      .map((c) => c.html(options))
       .join('\n')
   }
   return html

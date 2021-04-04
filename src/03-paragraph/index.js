@@ -8,7 +8,7 @@ const parse = {
 }
 
 const parseParagraphs = function (section, doc) {
-  let wiki = section.wiki
+  let wiki = section._wiki
   let paragraphs = wiki.split(twoNewLines)
   //don't create empty paragraphs
   paragraphs = paragraphs.filter((p) => p && p.trim().length > 0)
@@ -21,13 +21,13 @@ const parseParagraphs = function (section, doc) {
     }
     //parse the lists
     parse.list(paragraph)
-    // parse images
+    //parse images
     parse.image(paragraph, doc)
     //parse the sentences
     parseSentences(paragraph)
     return new Paragraph(paragraph)
   })
-  section.wiki = wiki
-  section.paragraphs = paragraphs
+  section._wiki = wiki
+  section._paragraphs = paragraphs
 }
 module.exports = parseParagraphs

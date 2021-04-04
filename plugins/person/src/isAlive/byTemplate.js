@@ -18,7 +18,7 @@ const isAlive = {
   'blp one source': true,
   'active politician': true,
   activepol: true,
-  'current person': true
+  'current person': true,
 }
 
 const isDead = {
@@ -29,10 +29,10 @@ const isDead = {
   elegy: true,
   eulogy: true,
   panegyric: true,
-  memorial: true
+  memorial: true,
 }
 const byTemplate = function (doc) {
-  let templates = doc.templates()
+  let templates = doc.templates().map((tmpl) => tmpl.json())
   for (let i = 0; i < templates.length; i++) {
     let title = templates[i].template || ''
     title = title.toLowerCase().trim()
@@ -46,6 +46,7 @@ const byTemplate = function (doc) {
   // `{{WikiProject Biography|living=yes|activepol=yes}}`
   let bio = doc.template('WikiProject Biography')
   if (bio) {
+    bio = bio.json()
     //living blp BLP
     if (bio.living === 'yes' || bio.blp === 'yes' || bio.activepol === 'yes' || bio.BLP === 'yes') {
       return true

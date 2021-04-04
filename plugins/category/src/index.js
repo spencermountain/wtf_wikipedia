@@ -2,9 +2,8 @@ const slow = require('slow')
 const random = require('./random')
 
 const chunkBy = function (arr, chunkSize = 5) {
-  var groups = [],
-    i
-  for (i = 0; i < arr.length; i += chunkSize) {
+  let groups = []
+  for (let i = 0; i < arr.length; i += chunkSize) {
     groups.push(arr.slice(i, i + chunkSize))
   }
   return groups

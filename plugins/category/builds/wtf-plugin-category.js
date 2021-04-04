@@ -2,7 +2,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.wtfCategory = factory());
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wtfCategory = factory());
 }(this, (function () { 'use strict';
 
   /* slow 1.1.0 MIT */
@@ -93,14 +93,14 @@
   methods.walk = methods.five;
   methods.run = methods.ten;
   methods.sprint = methods.fifteen;
-  var src = methods;
+  var src$1 = methods;
 
-  var slow = /*#__PURE__*/Object.freeze({
+  var slow$1 = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    'default': src
+    'default': src$1
   });
 
-  var defaults = {
+  const defaults = {
     lang: 'en',
     wiki: 'wikipedia',
     domain: null,
@@ -108,11 +108,11 @@
 
   };
 
-  var isObject = function isObject(obj) {
+  const isObject = function (obj) {
     return obj && Object.prototype.toString.call(obj) === '[object Object]';
   };
 
-  var fetchRandom = function fetchRandom(lang, options, http) {
+  const fetchRandom = function (lang, options, http) {
     options = options || {};
     options = Object.assign({}, defaults, options); //support lang 2nd param
 
@@ -122,22 +122,22 @@
       options = Object.assign(options, lang);
     }
 
-    var url = "https://".concat(options.lang, ".wikipedia.org/").concat(options.path, "?");
+    let url = `https://${options.lang}.wikipedia.org/${options.path}?`;
 
     if (options.domain) {
-      url = "https://".concat(options.domain, "/").concat(options.path, "?");
+      url = `https://${options.domain}/${options.path}?`;
     }
 
-    url += "format=json&action=query&generator=random&grnnamespace=14&prop=revisions&grnlimit=1&origin=*";
-    return http(url).then(function (res) {
+    url += `format=json&action=query&generator=random&grnnamespace=14&prop=revisions&grnlimit=1&origin=*`;
+    return http(url).then(res => {
       try {
-        var o = res.query.pages;
-        var key = Object.keys(o)[0];
+        let o = res.query.pages;
+        let key = Object.keys(o)[0];
         return o[key].title;
       } catch (e) {
         throw e;
       }
-    })["catch"](function (e) {
+    }).catch(e => {
       console.error(e);
       return null;
     });
@@ -149,21 +149,19 @@
   	return n && n['default'] || n;
   }
 
-  var slow$1 = getCjsExportFromNamespace(slow);
+  var slow = getCjsExportFromNamespace(slow$1);
 
-  var chunkBy = function chunkBy(arr) {
-    var chunkSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
-    var groups = [],
-        i;
+  const chunkBy = function (arr, chunkSize = 5) {
+    let groups = [];
 
-    for (i = 0; i < arr.length; i += chunkSize) {
+    for (let i = 0; i < arr.length; i += chunkSize) {
       groups.push(arr.slice(i, i + chunkSize));
     }
 
     return groups;
   };
 
-  var fetchCat = function fetchCat(wtf, cat, lang, opts) {
+  const fetchCat = function (wtf, cat, lang, opts) {
     if (!cat) {
       return {
         docs: [],
@@ -171,20 +169,18 @@
       };
     }
 
-    return wtf.category(cat, lang).then(function (resp) {
-      var pages = resp.pages.map(function (o) {
-        return o.title;
-      });
-      var groups = chunkBy(pages);
+    return wtf.category(cat, lang).then(resp => {
+      let pages = resp.pages.map(o => o.title);
+      let groups = chunkBy(pages);
 
-      var doit = function doit(group) {
+      const doit = function (group) {
         return wtf.fetch(group, opts); //returns a promise
       }; //only allow three requests at a time
 
 
-      return slow$1.three(groups, doit).then(function (responses) {
+      return slow.three(groups, doit).then(responses => {
         //flatten the results
-        var docs = [].concat.apply([], responses);
+        let docs = [].concat.apply([], responses);
         return {
           docs: docs,
           categories: resp.categories
@@ -193,7 +189,7 @@
     });
   };
 
-  var plugin = function plugin(models) {
+  const plugin = function (models) {
     models.wtf.parseCategory = function (cat, lang, opts) {
       return fetchCat(models.wtf, cat, lang, opts);
     };
@@ -205,9 +201,9 @@
     models.wtf.fetchCategory = models.wtf.parseCategory;
   };
 
-  var src$1 = plugin;
+  var src = plugin;
 
-  return src$1;
+  return src;
 
 })));
 //# sourceMappingURL=wtf-plugin-category.js.map

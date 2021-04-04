@@ -1,6 +1,6 @@
 //remove top-bottoms
-const cleanup = function(lines) {
-  lines = lines.filter(line => {
+const cleanup = function (lines) {
+  lines = lines.filter((line) => {
     //a '|+' row is a 'table caption', remove it.
     return line && /^\|\+/.test(line) !== true
   })
@@ -17,7 +17,7 @@ const cleanup = function(lines) {
 }
 
 //turn newline seperated into '|-' seperated
-const findRows = function(lines) {
+const findRows = function (lines) {
   let rows = []
   let row = []
   lines = cleanup(lines)
@@ -37,7 +37,7 @@ const findRows = function(lines) {
       if (!line[0] && line[1]) {
         line.shift()
       }
-      line.forEach(l => {
+      line.forEach((l) => {
         l = l.replace(/^\| */, '')
         l = l.trim()
         row.push(l)

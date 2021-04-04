@@ -1,7 +1,7 @@
 //
-const toMarkdown = function(options) {
+const toMarkdown = function (options) {
   return this.lines()
-    .map(s => {
+    .map((s) => {
       let str = s.markdown(options)
       return ' * ' + str
     })

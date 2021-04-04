@@ -1,6 +1,7 @@
 const defaults = {
   images: true,
   tables: true,
+  templates: true,
   infoboxes: true,
   categories: true,
   lists: true,
@@ -20,15 +21,14 @@ const toWiki = function (options) {
   //render infoboxes (up at the top)
   if (options.infoboxes === true) {
     text += this.infoboxes()
-      .map((i) => i.wikitext(options))
+      .map((i) => i.makeWikitext(options))
       .join('\n')
   }
 
   //render each section
   if (options.sections === true || options.paragraphs === true || options.sentences === true) {
     let sections = this.sections()
-    // sections = sections.filter((s) => s.title() !== 'References')
-    text += sections.map((s) => s.wikitext(options)).join('\n')
+    text += sections.map((s) => s.makeWikitext(options)).join('\n')
   }
 
   // add categories on the bottom

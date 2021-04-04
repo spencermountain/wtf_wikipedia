@@ -31,7 +31,7 @@ function preProcess(wiki) {
   wiki = wiki.replace(/\([,;: ]+?\)/g, '')
   //these templates just screw things up, too
   wiki = wiki.replace(/{{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '')
-  
+
   return wiki
 }
 module.exports = preProcess

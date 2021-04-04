@@ -1,8 +1,8 @@
-var test = require('tape')
-var wtf = require('./_lib')
+const test = require('tape')
+const wtf = require('./_lib')
 
-test('basic-markdown', t => {
-  var md = wtf('he is [[Spencer Kelly|so cool]] and [http://cool.com fresh]').markdown()
+test('basic-markdown', (t) => {
+  let md = wtf('he is [[Spencer Kelly|so cool]] and [http://cool.com fresh]').markdown()
   t.equal(
     md,
     'he is [so cool](./Spencer_Kelly) and [fresh](http://cool.com)',
@@ -33,8 +33,8 @@ hello world`,
   t.end()
 })
 
-test('markdown-tricks', t => {
-  var md = wtf('the is [[he]] nice').markdown()
+test('markdown-tricks', (t) => {
+  let md = wtf('the is [[he]] nice').markdown()
   t.equal(md, 'the is [he](./he) nice', 'matches whole-word')
 
   md = wtf('the is [[he]]. nice').markdown()

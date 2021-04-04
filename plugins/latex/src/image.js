@@ -1,5 +1,5 @@
 //
-const toLatex = function() {
+const toLatex = function () {
   let alt = this.alt()
   let out = '\\begin{figure}'
   out += '\n\\includegraphics[width=\\linewidth]{' + this.thumb() + '}'

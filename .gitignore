@@ -1,6 +1,5 @@
 node_modules
 .git
-viz
 coverage
 coverage.lcov
 codecov.yml
@@ -8,3 +7,4 @@ npm-debug.log
 .nyc_output
 *.DS_Store
 *.tsv
+_missing_templates.json

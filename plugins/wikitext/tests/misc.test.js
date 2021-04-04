@@ -1,7 +1,7 @@
-var test = require('tape')
-var wtf = require('./_lib')
+const test = require('tape')
+const wtf = require('./_lib')
 
-var tidy = (str) => {
+const tidy = (str) => {
   str = str.replace(/\s[\s]+/g, ' ')
   str = str.replace(/\n/g, '')
   str = str.trim()
@@ -24,7 +24,8 @@ test('basic-wikitext', (t) => {
   ]
   arr.forEach((str) => {
     let doc = wtf(str)
-    t.equal(tidy(doc.wikitext()), tidy(str), str)
+    let have = doc.makeWikitext()
+    t.equal(tidy(have), tidy(str), str)
   })
   t.end()
 })

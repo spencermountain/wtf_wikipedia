@@ -312,11 +312,6 @@
       "description": ""
     },
     {
-      "name": "dates",
-      "returns": "Array",
-      "description": ""
-    },
-    {
       "name": "json",
       "returns": "Object",
       "description": ""

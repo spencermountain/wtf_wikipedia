@@ -2,7 +2,7 @@ const Hashes = require('jshashes')
 
 const server = 'https://upload.wikimedia.org/wikipedia/commons/'
 
-const encodeTitle = function(file) {
+const encodeTitle = function (file) {
   let title = file.replace(/^(image|file?)\:/i, '')
   //titlecase it
   title = title.charAt(0).toUpperCase() + title.substring(1)
@@ -13,7 +13,7 @@ const encodeTitle = function(file) {
 
 //the wikimedia image url is a little silly:
 //https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F
-const commonsURL = function() {
+const commonsURL = function () {
   let file = this.data.file
   let title = encodeTitle(file)
   let hash = new Hashes.MD5().hex(title)

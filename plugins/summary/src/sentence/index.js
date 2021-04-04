@@ -16,7 +16,7 @@ const post = function (s) {
 
 // let count = 0
 const doSentence = function (doc, options) {
-  let sentence = doc.sentences(0)
+  let sentence = doc.sentence(0)
   if (!sentence) {
     return ''
   }

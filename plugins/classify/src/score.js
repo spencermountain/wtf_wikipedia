@@ -1,5 +1,3 @@
-const types = require('./_types')
-
 const topk = function (arr) {
   let obj = {}
   arr.forEach((a) => {
@@ -21,35 +19,32 @@ const topk = function (arr) {
 const parse = function (cat) {
   let split = cat.split(/\//)
   return {
-    root: split[0],
-    child: split[1]
+    root: split[1],
+    child: split[2],
   }
 }
 
 const getScore = function (detail) {
-  let cats = []
+  let types = []
   Object.keys(detail).forEach((k) => {
     detail[k].forEach((obj) => {
-      if (!types[obj.cat]) {
-        console.error('Missing: ' + obj.cat)
-      }
-      cats.push(parse(obj.cat))
+      types.push(parse(obj.type))
     })
   })
   // find top parent
-  let roots = cats.map((obj) => obj.root).filter((s) => s)
+  let roots = types.map((obj) => obj.root).filter((s) => s)
   let tops = topk(roots)
   let top = tops[0]
   if (!top) {
     return {
       detail: detail,
-      category: null,
-      score: 0
+      type: null,
+      score: 0,
     }
   }
   let root = top[0]
   // score as % of results
-  let score = top[1] / cats.length
+  let score = top[1] / types.length
   // punish low counts
   if (top[1] === 1) {
     score *= 0.75
@@ -70,12 +65,12 @@ const getScore = function (detail) {
   }
 
   // find 2nd level
-  let children = cats.filter((o) => o.root === root && o.child).map((obj) => obj.child)
+  let children = types.filter((o) => o.root === root && o.child).map((obj) => obj.child)
   let topKids = topk(children)
   top = topKids[0]
-  let category = root
+  let type = root
   if (top) {
-    category = `${root}/${top[0]}`
+    type = `${root}/${top[0]}`
     // punish for any conflicting children
     if (topKids.length > 1) {
       score *= 0.7
@@ -87,9 +82,9 @@ const getScore = function (detail) {
   }
   return {
     root: root,
-    category: category,
+    type: type,
     score: score,
-    detail: detail
+    details: detail,
   }
 }
 module.exports = getScore

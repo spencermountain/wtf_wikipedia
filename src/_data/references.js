@@ -8,5 +8,5 @@ module.exports = [
   '脚注',
   'referenser',
   'bronnen',
-  'примечания'
+  'примечания',
 ]

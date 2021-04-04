@@ -62,41 +62,46 @@ This library tries to do this sort of work, to determine if a page is about Pers
 
 ```yaml
 Person:
-  Athlete: true
-  Artist: true
-  Politician: true
-  Actor: true
-  Academic: true
-  ReligiousFigure: true
+  Athlete:
+      AmericanFootballPlayer : true
+      BaseballPlayer : true
+      FootballPlayer : true
+      BasketballPlayer : true
+      HockeyPlayer : true
+  Actor : true
+  Politician : true
+  Musician : true
+  Author : true
 Place:
-  Country: true
-  City: true
-  Structure: true
-  BodyOfWater: true
-  SpaceLocation: true
+  Jurisdiction:
+      City : true
+      Country : true
+  Structure:
+      Bridge : true
+      Airport : true
+  BodyOfWater : true
 Organization:
-  Company: true
-  SportsTeam: true
-  MusicalGroup: true
-  PoliticalParty: true
-CreativeWork:
-  Film: true
-  TVShow: true
-  Book: true
-  Play: true
-  Album: true
-  VideoGame: true
+  MusicalGroup : true
+  Company : true
+  SportsTeam : true
+  PoliticalParty : true
 Event:
-  Election: true
-  Disaster: true
-  SportsEvent: true
-  MilitaryConflict: true
-  SpaceMission: true
-Product: true
-Organism: true
-MedicalCondition: true
-Concept: true
-FictionalCharacter: true
+  Disaster : true
+  Election : true
+  MilitaryConflict : true
+  SportsEvent : true
+Creation:
+  CreativeWork:
+      Album : true
+      Book : true
+      Film : true
+      TVShow : true
+      Play : true
+      Song : true
+      VideoGame : true
+  MedicalCondition : true
+  Organism : true
+  Product : true
 ```
 
 as of March 2020, it can classify ~65% of english wikipedia articles:

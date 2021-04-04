@@ -1,17 +1,17 @@
-var test = require('tape')
-var wtf = require('./_lib')
-var fs = require('fs')
-var path = require('path')
+const test = require('tape')
+const wtf = require('./_lib')
+const fs = require('fs')
+const path = require('path')
 
 function from_file(page) {
-  var file = '../../../tests/cache/' + page + '.txt'
+  let file = '../../../tests/cache/' + page + '.txt'
   file = path.join(__dirname, file)
-  var str = fs.readFileSync(file, 'utf-8')
+  const str = fs.readFileSync(file, 'utf-8')
   return wtf(str)
 }
 module.exports = from_file
 
-var pages = [
+const pages = [
   '2008-British-motorcycle-Grand-Prix',
   'AACTA-Award-for-Outstanding-Achievement-in-Short-Film-Screen-Craft',
   'Alanine—oxo-acid-transaminase',
@@ -86,7 +86,7 @@ var pages = [
 test('try all pages', (t) => {
   pages.forEach((page) => {
     let doc = from_file(page)
-    let wiki = doc.wikitext()
+    let wiki = doc.makeWikitext()
     t.ok(wiki && wiki.length > 5, page)
   })
   t.end()

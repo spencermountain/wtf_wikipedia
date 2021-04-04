@@ -2,14 +2,14 @@ const test = require('tape')
 const wtf = require('../lib')
 
 function delay(time) {
-  return new Promise(function(resolve, reject) {
-    setTimeout(function() {
+  return new Promise(function (resolve) {
+    setTimeout(function () {
       resolve()
     }, time)
   })
 }
 
-test('test-formats', async function(t) {
+test('test-formats', async function (t) {
   let arr = [
     'Billy_Steele',
     `? (Enuff Z'nuff album)`,
@@ -17,7 +17,7 @@ test('test-formats', async function(t) {
     ['Billy Steele'],
     `https://en.m.wikipedia.org/wiki/Freebase`,
     `https://dota2.gamepedia.com/Abaddon`,
-    `https://muppet.fandom.com/wiki/Debra_Spinney`
+    `https://muppet.fandom.com/wiki/Debra_Spinney`,
   ]
   for (const a of arr) {
     let doc = await wtf.fetch(a)

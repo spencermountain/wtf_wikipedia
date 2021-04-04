@@ -50,26 +50,26 @@
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-<div align="center">
-  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
-</div>
 
 ```js
 const wtf = require('wtf_wikipedia')
 
 wtf.fetch('Toronto Raptors').then((doc) => {
-  doc.sentences(0).text()
-  //'The Toronto Raptors are a Canadian professional basketball team ...'
-
   let coach = doc.infobox().get('coach')
   coach.text() //'Nick Nurse'
+
+  doc.sentences()[0].text()
+  //'The Toronto Raptors are a Canadian professional basketball team ...'
 })
 ```
 
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
-## .text
+## .text()
 
 get clean plaintext:
 
@@ -92,7 +92,7 @@ doc.text()
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221837-0d142480-ffb8-11e9-9d30-90669f1b897c.png"/>
 </div>
 
-## .json
+## .json()
 
 get all the data from a page:
 
@@ -103,7 +103,7 @@ doc.json()
 // { categories: ['Oral communication', 'Vocal skills'], sections: [{ title: 'Techniques' }], ...}
 ```
 
-the default json output is [really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json), but you can cherry-pick things like this:
+the default .json() output is _[really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json)_, but you can cherry-pick data by poking-around like this:
 
 ```js
 // get just the links:
@@ -111,11 +111,11 @@ doc.links().map((link) => link.json())
 //[{ page: 'Theatrical superstitions', text: 'supersitions' }]
 
 // just the images:
-doc.images(0).json()
+doc.images()[0].json()
 // { file: 'Image:Duveneck Whistling Boy.jpg', url: 'https://commons.wiki...' }
 
 // json for a particular section:
-doc.sections('see also').links(0).json()
+doc.section('see also').link().json()
 // { page: 'Slide Whistle' }
 ```
 
@@ -134,8 +134,7 @@ run it on the client-side:
 ```html
 <script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
-  // follow a redirect:
-  wtf.fetch('On a Friday', function (err, doc) {
+  wtf.fetch('Radiohead', function (err, doc) {
     let members = doc.infobox().get('current members')
     members.links().map((l) => l.page())
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
@@ -143,7 +142,7 @@ run it on the client-side:
 </script>
 ```
 
-or from Deno/typescript/webpack:
+or in Deno/typescript/webpack:
 
 ```js
 import spacetime from 'https://unpkg.com/spacetime/builds/spacetime.mjs'
@@ -197,22 +196,20 @@ these add all sorts of new functionality:
 
 ```js
 wtf.extend(require('wtf-plugin-classify'))
-wtf.fetch('Toronto Raptors').then((doc) => doc.classify())
+await wtf.fetch('Toronto Raptors').classify()
 // 'Organization/SportsTeam'
 
 wtf.extend(require('wtf-plugin-summary'))
-wtf.fetch('Pulp Fiction').then((doc) => doc.summary())
+await wtf.fetch('Pulp Fiction').summary()
 // 'a 1994 American crime film'
 
 wtf.extend(require('wtf-plugin-person'))
-wtf.fetch('David Bowie').then((doc) => doc.birthDate())
+await wtf.fetch('David Bowie').birthDate()
 // {year:1947, date:8, month:1}
 
 wtf.extend(require('wtf-plugin-i18n'))
-wtf.fetch('Ziggy Stardust', 'fr').then((doc) => {
-  doc.infobox().json()
-  //{ nom:{text:"Ziggy Stardust"}, oeuvre:{text:"The Rise and Fall of Ziggy Stardust"} }
-})
+await wtf.fetch('Ziggy Stardust', 'fr').infobox().json()
+// {nom:{text:"Ziggy Stardust"}, oeuvre:{text:"The Rise and Fall of Ziggy Stardust"}}
 ```
 
 | **Plugin**                                                 |                                         |
@@ -220,7 +217,7 @@ wtf.fetch('Ziggy Stardust', 'fr').then((doc) => {
 | [classify](./plugins/classify)                             | person/place/thing                      |
 | [summary](./plugins/summary)                               | short description text                  |
 | [person](./plugins/person)                                 | birth/death information                 |
-| [category](./plugins/category)                             | parse all articles in a category        |
+| [api](./plugins/api)                                       | fetch more data from the API            |
 | [i18n](./plugins/i18n)                                     | improves multilingual template coverage |
 | [wtf-mlb](https://github.com/spencermountain/wtf-mlb)      | fetch baseball data                     |
 | [wtf-nhl](https://github.com/spencermountain/wtf-nhl)      | fetch hockey data                       |
@@ -323,7 +320,7 @@ import wtf from 'wtf_wikipedia'
 let txt = `
 ==Wood in Popular Culture==
 * harry potter's wand
-* the simpsons fence
+* the simpson's fence
 `
 wtf(txt)
 // Document {text(), json(), lists()...}
@@ -332,9 +329,10 @@ wtf(txt)
 #### **doc.links()**
 
 ```javascript
-let str = `Whistling is featured in a number of television shows, such as [[Lassie (1954 TV series)|''Lassie'']], and the title theme for ''[[The X-Files]]''.`
-let doc = wtf(str)
-doc.links().map((l) => l.page())
+let txt = `Whistling is featured in a number of television shows, such as [[Lassie (1954 TV series)|''Lassie'']], and the title theme for ''[[The X-Files]]''.`
+wtf(txt)
+  .links()
+  .map((l) => l.page())
 // [ 'Lassie (1954 TV series)',  'The X-Files' ]
 ```
 
@@ -343,9 +341,9 @@ doc.links().map((l) => l.page())
 returns nice plain-text of the article
 
 ```js
-var wiki =
+var txt =
   "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>"
-var text = wtf(wiki).text()
+wtf(txt).text()
 //"Boston's baseball field has a 37ft wall."
 ```
 
@@ -354,14 +352,14 @@ var text = wtf(wiki).text()
 a section is a heading _'==Like This=='_
 
 ```js
-wtf(page).sections(1).children() //traverse nested sections
-wtf(page).sections('see also').remove() //delete one
+wtf(page).sections()[1].children() //traverse nested sections
+wtf(page).section('see also').remove() //delete one
 ```
 
 #### **doc.sentences()**
 
 ```js
-s = wtf(page).sentences(4)
+let s = wtf(page).sentences()[4]
 s.links()
 s.bolds()
 s.italics()
@@ -370,15 +368,14 @@ s.italics()
 #### **doc.categories()**
 
 ```js
-let doc = await wtf.fetch('Whistling')
-doc.categories()
+await wtf.fetch('Whistling').categories()
 //['Oral communication', 'Vocal music', 'Vocal skills']
 ```
 
 #### **doc.images()**
 
 ```js
-img = wtf(page).images(0)
+let img = wtf(page).images()[0]
 img.url() // the full-size wikimedia-hosted url
 img.thumbnail() // 300px, by default
 img.format() // jpg, png, ..
@@ -389,7 +386,7 @@ img.format() // jpg, png, ..
 
 ## Fetch
 
-This library can grab, and automatically-parse articles from [any wikimedia api](https://www.mediawiki.org/wiki/API:Main_page).
+You can grab and parse articles from _[any wiki api](https://www.mediawiki.org/wiki/API:Main_page)_.
 This includes any language, any wiki-project, and most **3rd-party wikis**.
 
 ```js
@@ -398,14 +395,14 @@ let doc = await wtf.fetch('https://muppet.fandom.com/wiki/Miss_Piggy')
 
 // wikipedia français
 doc = await wtf.fetch('Tony Hawk', 'fr')
-doc.sentences(0).text() // 'Tony Hawk est un skateboarder professionnel et un acteur ...'
+doc.sentence().text() // 'Tony Hplawk est un skateboarder professionnel et un acteur ...'
 
 // accept an array, or wikimedia pageIDs
 let docs = wtf.fetch(['Whistling', 2983], { follow_redirects: false })
 
 // article from german wikivoyage
 wtf.fetch('Toronto', { lang: 'de', wiki: 'wikivoyage' }).then((doc) => {
-  console.log(doc.sentences(0).text()) // 'Toronto ist die Hauptstadt der Provinz Ontario'
+  console.log(doc.sentences()[0].text()) // 'Toronto ist die Hauptstadt der Provinz Ontario'
 })
 ```
 
@@ -417,34 +414,36 @@ let doc = await wtf.fetch(64646, 'de')
 
 the fetch method follows redirects.
 
-### fetch categories:
+### API plugin
 
 **wtf.category(title, [lang], [options | callback])**
 
 retrieves all pages and sub-categories belonging to a given category:
 
 ```js
+wtf.extend(require('wtf-plugin-api'))
 let result = await wtf.category('Category:Politicians_from_Paris')
-//{
-//  pages: [{title: 'Paul Bacon', pageid: 1266127 }, ...],
-//  categories: [ {title: 'Category:Mayors of Paris' } ]
-//}
+/*
+{
+  pages: [{title: 'Paul Bacon', pageid: 1266127 }, ...],
+  categories: [ {title: 'Category:Mayors of Paris' } ]
+}
+*/
 ```
-
-to fetch and parse all pages in a category, in an optimized way, see [wtf-plugin-category](./plugins/category)
-
-### fetch random article:
 
 **wtf.random([lang], [options], [callback])**
 
 fetches a random wikipedia article, from a given language or domain
 
 ```js
+wtf.extend(require('wtf-plugin-api'))
 wtf.random().then((doc) => {
   console.log(doc.title(), doc.categories())
   //'Whistling'  ['Oral communication', 'Vocal skills']
 })
 ```
+
+see [wtf-plugin-api](./plugins/api)
 
 ### Good practice:
 
@@ -482,62 +481,66 @@ wtf
 - **.isRedirect()** - if the page is just a redirect to another page
 - **.redirectTo()** - the page this redirects to
 - **.isDisambiguation()** - is this a placeholder page to direct you to one-of-many possible pages
-- **.categories()** -
-- **.sections()** - return a list, or given-index of the Document's sections
-- **.paragraphs()** - return a list, or given-index of Paragraphs, in all sections
-- **.sentences()** - return a list, or given-index of all sentences in the document
-- **.images()** -
-- **.links()** - return a list, or given-index of all links, in all parts of the document
+- **.categories()** - return all categories of the document
+- **.sections()** - return a list of the Document's sections
+- **.paragraphs()** - return a list of Paragraphs, in all sections
+- **.sentences()** - return a list of all sentences in the document
+- **.images()** - return all images found in the document
+- **.links()** - return a list of all links, in all parts of the document
 - **.lists()** - sections in a page where each line begins with a bullet point
-- **.tables()** - return a list, or given-index of all structured tables in the document
+- **.tables()** - return a list of all structured tables in the document
 - **.templates()** - any type of structured-data elements, typically wrapped in like {{this}}
 - **.infoboxes()** - specific type of template, that appear on the top-right of the page
-- **.references()** - return a list, or given-index of 'citations' in the document
+- **.references()** - return a list of 'citations' in the document
 - **.coordinates()** - geo-locations that appear on the page
 - **.text()** - plaintext, human-readable output for the page
 - **.json()** - a 'stringifyable' output of the page's main data
+- **.wikitext()** - original wiki markup
 
 ### Section
 
 - **.title()** - the name of the section, between ==these tags==
 - **.index()** - which number section is this, in the whole document.
 - **.indentation()** - how many steps deep into the table of contents it is
-- **.sentences()** - return a list, or given-index, of sentences in this section
-- **.paragraphs()** - return a list, or given-index, of paragraphs in this section
-- **.links()** -
-- **.tables()** -
-- **.templates()** -
-- **.infoboxes()** -
-- **.coordinates()** -
-- **.lists()** -
+- **.sentences()** - return a list of sentences in this section
+- **.paragraphs()** - return a list of paragraphs in this section
+- **.links()** - list of all links, in all paragraphs and templates
+- **.tables()** - list of all html tables
+- **.templates()** - list of all templates in this section
+- **.infoboxes()** - list of all infoboxes found in this section
+- **.coordinates()** - list of all coordinate templates found in this section
+- **.lists()** - list of all lists in this section
 - **.interwiki()** - any links to other language wikis
-- **.images()** - return a list, or given index, of any images in this section
-- **.references()** - return a list, or given index, of 'citations' in this section
+- **.images()** - return a list of any images in this section
+- **.references()** - return a list of 'citations' in this section
 - **.remove()** - remove the current section from the document
 - **.nextSibling()** - a section following this one, under the current parent: eg. 1920s → 1930s
 - **.lastSibling()** - a section before this one, under the current parent: eg. 1930s → 1920s
 - **.children()** - any sections more specific than this one: eg. History → [PreHistory, 1920s, 1930s]
 - **.parent()** - the section, broader than this one: eg. 1920s → History
-- **.text()** -
-- **.json()** -
+- **.text()** - readable plaintext for this section
+- **.json()** - return all section data
+- **.wikitext()** - original wiki markup
 
 ### Paragraph
 
-- **.sentences()** -
-- **.references()** -
-- **.lists()** -
-- **.images()** -
-- **.links()** -
-- **.interwiki()** -
+- **.sentences()** - return a list of sentence objects in this paragraph
+- **.references()** - any citations, or references in all sentences
+- **.lists()** - any lists found in this paragraph
+- **.images()** - any images found in this paragraph
+- **.links()** - list of all links in all sentences
+- **.interwiki()** - any links to other language wikis
 - **.text()** - generate readable plaintext for this paragraph
 - **.json()** - generate some generic data for this paragraph in JSON format
+- **.wikitext()** - original wiki markup
 
 ### Sentence
 
-- **.links()** -
-- **.bolds()** -
-- **.italics()** -
-- **.json()** -
+- **.links()** - list of all links
+- **.bolds()** - list of all bold texts
+- **.italics()** - list of all italic formatted text
+- **.json()** - return all sentence data
+- **.wikitext()** - original wiki markup
 
 ### Image
 
@@ -547,16 +550,24 @@ wtf
 - **.format()** - get file format (e.g. `jpg`)
 - **.json()** - return some generic metadata for this image
 - **.text()** - does nothing
+- **.wikitext()** - original wiki markup
+
+### Template
+
+- **.text()** - does this template generate any readable plaintext?
+- **.json()** - get all the data for this template
+- **.wikitext()** - original wiki markup
 
 ### Infobox
 
-- **.links()** -
+- **.links()** - any internal or external links in this infobox
 - **.keyValue()** - generate simple key:value strings from this infobox
 - **.image()** - grab the main image from this infobox
 - **.get()** - lookup properties from their key
 - **.template()** - which infobox, eg 'Infobox Person'
 - **.text()** - generate readable plaintext for this infobox
 - **.json()** - generate some generic 'stringifyable' data for this infobox
+- **.wikitext()** - original wiki markup
 
 ### List
 
@@ -564,6 +575,7 @@ wtf
 - **.links()** - get all links mentioned in this list
 - **.text()** - generate readable plaintext for this list
 - **.json()** - generate some generic easily-parsable data for this list
+- **.wikitext()** - original wiki markup
 
 ### Reference
 
@@ -571,6 +583,7 @@ wtf
 - **.links()** - get any links mentioned in this reference
 - **.text()** - returns nothing
 - **.json()** - generate some generic metadata data for this reference
+- **.wikitext()** - original wiki markup
 
 ### Table
 
@@ -578,6 +591,7 @@ wtf
 - **.keyValue()** - generate a simple list of key:value objects for this table
 - **.text()** - returns nothing
 - **.json()** - generate some useful metadata data for this table
+- **.wikitext()** - original wiki markup
 
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
@@ -597,7 +611,7 @@ wtf.extend((models) => {
   }
 })
 
-await wtf.fetch('Stephen Harper').isPerson() //hmm?
+await wtf.fetch('Stephen Harper').isPerson()
 ```
 
 ### Adding new templates:
@@ -607,8 +621,9 @@ does your wiki use a `{{foo}}` template? Add a custom parser for it:
 ```js
 wtf.extend((models, templates) => {
   // create a custom parser function
-  templates.foo = (text, data) => {
-    data.templates.push({ name: 'foo', cool: true })
+  templates.foo = (tmpl, list, parse) => {
+    let obj = parse(tmpl) //or do a custom regex
+    list.push(obj)
     return 'new-text'
   }
 
@@ -620,6 +635,14 @@ wtf.extend((models, templates) => {
 
   // replace the template with a string '{{asterisk}}' -> '*'
   templates.asterisk = '*'
+})
+```
+
+you can determine which templates are understood to be 'infoboxes' with the 3rd parameter:
+
+```js
+wtf.extend((models, templates, infoboxes) => {
+  Object.assign(infoboxes, { person: true, place: true, thing: true })
 })
 ```
 
@@ -651,7 +674,7 @@ some wikis will change the path of their API, from `./api.php` to elsewhere. If 
 
 ```js
 wtf.fetch('2016-06-04_-_J.Fernandes_@_FIL,_Lisbon', { domain: 'www.mixesdb.com', path: 'db/api.php' }).then((doc) => {
-  console.log(doc.templates('player'))
+  console.log(doc.template('player').json())
 })
 ```
 

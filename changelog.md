@@ -1,6 +1,49 @@
----
+<!--
+#### [unreleased 9.0.0]
 
-#### [unreleased]
+- **[breaking]** - plural methods like .sentences() always return arrays, even with a 'clue' param.
+-->
+
+#### 9.0.0
+
+Tldr:
+
+- `.templates()` now return Template objects, instead of json.
+- cool new http library for `.fetch()`
+- custom templates recieve pre-parsed json
+- more development of plugins
+
+detail:
+
+- **[breaking]** - .templates() now returns Template objects, like other methods (call .json())
+- **[breaking]** - change interpretation of reversed params in .fetch() method (thanks wouter!)
+- **[breaking]** - change params for custom templates
+- **[breaking]** - move .random() and .category() to plugin-api
+- **[breaking]** - always return an array for plural methods, even with number param, like .links(3)
+- **[possibly-breaking]** - cleanup null|undefined responses from methods
+- **[possibly-breaking]** - remove .dates() method (prev deprecated)
+- **[possibly-breaking]** - require node 10, ie > 11
+- **[change]** - normalize table rows
+- **[change]** - move wiktionary templates to `wtf-plugin-wiktionary`
+- **[change]** - Link.text() now returns page
+- **[change]** - improvements to 'soft' `isDisambiguation` detection
+- **[change]** - deprecate wtf-plugin-category (move to wtf-plugin-api)
+- **[new]** - api plugin
+- **[new]** - disambig plugin
+- **[new]** - person plugin
+- **[new]** - Table.get() method
+- **[new]** - set new infoboxes using .extend()
+
+- plugin-api 0.0.1
+- plugin-classify 1.0.0
+- plugin-disambig 0.0.1
+- plugin-image 0.3.0
+- plugin-person 0.2.0
+- plugin-summary 0.3.0
+- plugin-wikitext 1.1.0
+- plugin-wikinews 0.0.1
+- plugin-wikivoyage 0.0.1
+- plugin-wiktionary 0.0.1
 
 #### 8.5.1
 

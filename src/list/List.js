@@ -3,17 +3,21 @@ const defaults = {}
 
 const toText = (list, options) => {
   return list
-    .map(s => {
+    .map((s) => {
       let str = s.text(options)
       return ' * ' + str
     })
     .join('\n')
 }
 
-const List = function(data) {
+const List = function (data, wiki = '') {
   Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: data
+    value: data,
+  })
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki,
   })
 }
 
@@ -21,31 +25,32 @@ const methods = {
   lines() {
     return this.data
   },
-  links(n) {
+  links(clue) {
     let links = []
-    this.lines().forEach(s => {
+    this.lines().forEach((s) => {
       links = links.concat(s.links())
     })
-    if (typeof n === 'number') {
-      return links[n]
-    } else if (typeof n === 'string') {
+    if (typeof clue === 'string') {
       //grab a link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = links.find(o => o.page() === n)
+      clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
+      let link = links.find((o) => o.page() === clue)
       return link === undefined ? [] : [link]
     }
     return links
   },
   json(options) {
     options = setDefaults(options, defaults)
-    return this.lines().map(s => s.json(options))
+    return this.lines().map((s) => s.json(options))
   },
   text() {
     return toText(this.data)
-  }
+  },
+  wikitext() {
+    return this.wiki || ''
+  },
 }
 
-Object.keys(methods).forEach(k => {
+Object.keys(methods).forEach((k) => {
   List.prototype[k] = methods[k]
 })
 module.exports = List

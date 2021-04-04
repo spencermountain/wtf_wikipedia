@@ -1,12 +1,8 @@
-const byPattern = function(str, patterns) {
-  let types = Object.keys(patterns)
-  for (let i = 0; i < types.length; i++) {
-    const key = types[i]
-    for (let o = 0; o < patterns[key].length; o++) {
-      const reg = patterns[key][o]
-      if (reg.test(str) === true) {
-        return key
-      }
+const byPattern = function (str, patterns) {
+  for (let i = 0; i < patterns.length; i += 1) {
+    let reg = patterns[i][0]
+    if (reg.test(str) === true) {
+      return patterns[i][1]
     }
   }
   return null

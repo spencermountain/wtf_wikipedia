@@ -72,6 +72,9 @@ const methods = {
   text: function () {
     return ''
   },
+  wikitext: function () {
+    return this.data.wiki || ''
+  },
 }
 
 Object.keys(methods).forEach((k) => {

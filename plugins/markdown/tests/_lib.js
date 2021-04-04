@@ -3,7 +3,7 @@ if (typeof process !== undefined && typeof module !== undefined) {
   if (process.env.TESTENV === 'prod') {
     console.log('🧢  -  testing production')
     wtf = require('../../../')
-    wtf.extend(require(`../`))
+    wtf.extend(require(`..`))
   } else {
     wtf = require('../../../src')
     wtf.extend(require(`../src`))

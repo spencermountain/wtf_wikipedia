@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 13.x]
+        node-version: [10.x, 15.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -27,11 +27,12 @@ jobs:
             ${{ runner.os }}-npm-${{ matrix.node-version }}-
             ${{ runner.os }}-npm-
 
-      - name: npm install, build, and test
+      - name: npm install, build, lint, and test
         run: |
           npm ci
           npm run build
-          npm run testb
+          npm run lint
+          npm run test:build
           npm run test:fetch
         env:
           CI: true

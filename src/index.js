@@ -1,6 +1,4 @@
 const fetch = require('./_fetch')
-const random = require('./_fetch/random')
-const category = require('./_fetch/category')
 const version = require('./_version')
 const Document = require('./01-document/Document')
 
@@ -22,24 +20,20 @@ const models = {
   Reference: require('./reference/Reference'),
   Table: require('./table/Table'),
   Template: require('./template/Template'),
-  http: require('./_fetch/http/server'),
+  http: require('./_lib/fetch'),
   wtf: wtf,
 }
-let templates = require('./template/templates')
+let templates = require('./template/custom')
+let infoboxes = require('./infobox/_infoboxes')
 
 wtf.fetch = function (title, lang, options, cb) {
   return fetch(title, lang, options, cb)
 }
-wtf.random = function (lang, options, cb) {
-  return random(lang, options, cb)
-}
-wtf.category = function (cat, lang, options, cb) {
-  return category(cat, lang, options, cb)
-}
 wtf.extend = function (fn) {
-  fn(models, templates, this)
+  fn(models, templates, infoboxes)
   return this
 }
+wtf.plugin = wtf.extend
 wtf.version = version
 
 module.exports = wtf

@@ -4,16 +4,36 @@ const parseNBA = require('./nba')
 const parseMlb = require('./mlb')
 const parseMMA = require('./mma')
 const parseMath = require('./math')
-// Most templates are '{{template}}', but then, some are '<template></template>'.
-// ... others are {{start}}...{{end}}
-// -> these are those ones.
+const Template = require('../../template/Template')
+
+/**
+ * parses out non standard templates
+ *
+ * Most templates are '{{template}}',
+ * but then, some are '<template></template>' others are {{start}}...{{end}}
+ * -> the templates here are of the second type.
+ *
+ * @private
+ * @param {Section} section
+ * @param {Document} doc
+ * @returns {Object} wikitext
+ */
 const xmlTemplates = function (section, doc) {
-  parseElection(section)
-  parseGallery(section, doc)
-  parseMath(section)
-  parseMlb(section)
-  parseMMA(section)
-  parseNBA(section)
+  const res = {
+    templates: [],
+    text: section._wiki,
+  }
+
+  parseElection(res)
+  parseGallery(res, doc, section)
+  parseMath(res)
+  parseMlb(res)
+  parseMMA(res)
+  parseNBA(res)
+
+  // turn them into Template objects
+  res.templates = res.templates.map((obj) => new Template(obj))
+  return res
 }
 
 module.exports = xmlTemplates

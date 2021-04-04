@@ -123,5 +123,5 @@ module.exports = {
   'chess player': true,
   'pageant titleholder': true,
   'gaa player': true,
-  'us cabinet official': true
+  'us cabinet official': true,
 }
