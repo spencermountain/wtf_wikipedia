@@ -1,6 +1,6 @@
 const wtf = require('./src/index')
 // wtf.extend(require('./plugins/wikitext/src'))
-wtf.extend(require('./plugins/html/src'))
+wtf.extend(require('./plugins/html'))
 
 // one
 // let str = `[[one]] and [[two]] {{one}} and {{two}}`
@@ -14,6 +14,12 @@ wtf.extend(require('./plugins/html/src'))
 // let obj = wtf(str).infobox(0).json()
 // console.log(obj)
 
-wtf.fetch('https://tvtropes.org/pmwiki/pmwiki.php/Main/Japandering').then((doc) => {
-  console.log(doc)
-})
+// wtf.fetch('https://tvtropes.org/pmwiki/pmwiki.php/Main/Japandering').then((doc) => {
+//   console.log(doc)
+// })
+// const wtf = require('wtf_wikipedia')
+// wtf.extend(require('wtf-plugin-html'))
+
+var input = "'''some bold text'''"
+
+console.log(wtf(input).html())
