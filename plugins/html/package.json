@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-html",
   "description": "html plugin for wtf_wikipedia",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "./builds/wtf-plugin-html.js",
   "unpkg": "./builds/wtf-plugin-html.min.js",
   "module": "./builds/wtf-plugin-html.mjs",
@@ -31,9 +31,9 @@
     "wtf_wikipedia": "^8.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.13.14",
-    "@babel/preset-env": "7.13.12",
-    "rollup": "2.44.0",
+    "@babel/core": "7.14.0",
+    "@babel/preset-env": "7.14.1",
+    "rollup": "2.47.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-filesize-check": "0.0.1",
