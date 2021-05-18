@@ -26,8 +26,8 @@ const models = {
 let templates = require('./template/custom')
 let infoboxes = require('./infobox/_infoboxes')
 
-wtf.fetch = function (title, lang, options, cb) {
-  return fetch(title, lang, options, cb)
+wtf.fetch = function (title, options, cb) {
+  return fetch(title, options, cb)
 }
 wtf.extend = function (fn) {
   fn(models, templates, infoboxes)

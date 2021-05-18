@@ -1,12 +1,14 @@
 const Document = require('../01-document/Document')
+const { isArray } = require('../_lib/helpers')
 /**
  * this function puts all responses into proper Document objects
  *
  * @private
  * @param {Array} res
+ * @param {string | number | Array<number> | Array<string>} title
  * @returns {null| Document | Document[]} null if there are no results or Document if there is one responses and Document array if there are multiple responses
  */
-const parseDoc = function (res) {
+const parseDoc = function (res, title) {
   // filter out undefined
   res = res.filter((o) => o)
 
@@ -22,7 +24,7 @@ const parseDoc = function (res) {
   }
   
   // if there is only one response then we can get it out of the array
-  if (docs.length === 1) {
+  if (!isArray(title) && docs.length === 1) {
     return docs[0]
   }
 
