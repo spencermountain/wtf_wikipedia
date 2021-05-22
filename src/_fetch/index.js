@@ -63,7 +63,7 @@ const fetch = function (title, options, callback) {
     .then((res) => res.json())
     .then((res) => {
       let data = getResult(res, options)
-      data = parseDoc(data)
+      data = parseDoc(data, title)
       if (callback) {
         callback(null, data)
       }
