@@ -48,11 +48,22 @@ let multi = {
 
   nihongo: ['nihongo2', 'nihongo3', 'nihongo-s', 'nihongo foot'],
 
-  plainlist: ['flatlist', 'ublist', 'plain list'],
+  plainlist: ['flatlist', 'plain list'],
 
   'winning percentage': ['winpct', 'winperc'],
 
-  'collapsible list': ['unbulleted list', 'ubl'],
+  'collapsible list': [
+    'nblist',
+    'nonbulleted list',
+    'ubl',
+    'ublist',
+    'ubt',
+    'unbullet',
+    'unbulleted list',
+    'unbulleted',
+    'unbulletedlist',
+    'vunblist'
+  ],
 
   'election box begin': [
     'election box begin no change',
