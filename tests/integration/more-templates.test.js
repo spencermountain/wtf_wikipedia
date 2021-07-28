@@ -118,3 +118,33 @@ test('austria-hungary', (t) => {
   )
   t.end()
 })
+
+test('collapsible list', (t) => {
+  const str = `{{ubl|a|b}}`
+  const doc = wtf(str)
+  console.log(doc)
+  console.log(doc.template())
+  const obj = doc.template().json()
+  t.equal(obj.template, 'ubl', 'name')
+  t.equal(obj.list[0], 'a', 'list1')
+  t.equal(obj.list[1], 'b', 'list2')
+  t.equal(obj.list.length, 2, 'list-len')
+
+  //now sanity check all aliases
+  const testText = (template) => {
+    let actual = wtf(`{{${template}|a|b}}`).text().replace(/[\n]+/, ' ')
+    t.equal(actual, 'a b', template)
+  }
+  testText('collapsible list')
+  testText('ubl')
+  testText('unbullet')
+  testText('ubt')
+  testText('vunblist')
+  testText('ublist')
+  testText('unbulletedlist')
+  testText('unbulleted list')
+  testText('unbulleted')
+  testText('nblist')
+  testText('nonbulleted list')
+  t.end()
+})
