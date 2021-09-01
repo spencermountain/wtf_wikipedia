@@ -1,7 +1,7 @@
 //dumpster-dive throws everything into mongodb  - github.com/spencermountain/dumpster-dive
 //mongo has some opinions about what characters are allowed as keys and ids.
 //https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
-const specialChar = /[\\\.$]/
+const specialChar = /[\\.$]/
 
 /**
  * this function encodes a string to make it mongodb compatible.

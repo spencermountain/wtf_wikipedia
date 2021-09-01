@@ -1,6 +1,6 @@
 const List = require('./List')
 const parseSentence = require('../04-sentence/').fromText
-const list_reg = /^[#\*:;|]+/
+const list_reg = /^[#*:;|]+/
 const bullet_reg = /^\*+[^:,|]{4}/
 const number_reg = /^ ?#[^:,|]{4}/
 const has_word = /[a-z_0-9\]}]/i

@@ -8,9 +8,9 @@ const parse_categories = function (wiki) {
   if (tmp) {
     tmp.forEach(function (c) {
       c = c.replace(cat_remove_reg, '')
-      c = c.replace(/\|?[ \*]?\]\]$/i, '') //parse fancy ones..
+      c = c.replace(/\|?[ *]?\]\]$/, '') //parse fancy ones..
       c = c.replace(/\|.*/, '') //everything after the '|' is metadata
-      if (c && !c.match(/[\[\]]/)) {
+      if (c && !c.match(/[[\]]/)) {
         categories.push(c.trim())
       }
     })
