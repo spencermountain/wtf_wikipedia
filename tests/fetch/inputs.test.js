@@ -14,7 +14,7 @@ test('test-formats', async function (t) {
     'Billy_Steele',
     `? (Enuff Z'nuff album)`,
     `& Juliet`,
-    ['Billy Steele'],
+    376725,
     `https://en.m.wikipedia.org/wiki/Freebase`,
     `https://dota2.gamepedia.com/Abaddon`,
     `https://muppet.fandom.com/wiki/Debra_Spinney`,

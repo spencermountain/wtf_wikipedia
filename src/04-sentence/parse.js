@@ -8,7 +8,7 @@ const literalAbbreviations = require('./_abbreviations')
 const abbreviations = literalAbbreviations.concat('[^]][^]]')
 const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i')
 const acronym_reg = /[ .'][A-Z].? *?$/i
-const elipses_reg = /\.\.\.* +?$/
+const elipses_reg = /\.{3,} +?$/
 const circa_reg = / c\.\s$/
 const hasWord = /\p{Letter}/iu
 
@@ -27,7 +27,7 @@ const naiive_split = function (text) {
   splits = splits.filter((s) => s.match(/\S/))
   //split by period, question-mark, and exclamation-mark
   splits = splits.map(function (str) {
-    return str.split(/(\S.+?[.!?]"?)(?=\s+|$)/g) //\u3002
+    return str.split(/(\S.+?[.!?]"?)(?=\s|$)/g) //\u3002
   })
   return flatten(splits)
 }

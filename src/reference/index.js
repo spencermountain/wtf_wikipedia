@@ -5,7 +5,7 @@ const Reference = require('./Reference')
 
 //structured Cite templates - <ref>{{Cite..</ref>
 const hasCitation = function (str) {
-  return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false
+  return /^ *\{\{ *(cite|citation)/i.test(str) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false
 }
 
 const parseCitation = function (tmpl) {
@@ -48,7 +48,7 @@ const parseRefs = function (section) {
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ')
 
   //<ref name=""></ref>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
     if (hasCitation(tmpl)) {
       let obj = parseCitation(tmpl)
       if (obj) {
@@ -62,7 +62,7 @@ const parseRefs = function (section) {
   })
 
   //now that we're done with xml, do a generic + dangerous xml-tag removal
-  wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ \/]?> ?/g, ' ') //<samp name="asd">
+  wiki = wiki.replace(/ ?<[ /]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ /]?> ?/g, ' ') //<samp name="asd">
   section._references = references.map((obj) => new Reference(obj.json, obj.wiki))
   section._wiki = wiki
 }

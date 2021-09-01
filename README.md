@@ -48,6 +48,28 @@
 <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 </div>
 
+<div >
+  why do we always do this?
+  <br/>
+  <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+  we put our information in places we can't take it out.
+  <br/>
+  information in wikipedia can't <i>be used</i>
+</div>
+
+<!-- spacer -->
+<img height="15px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<div align="center">
+<div >and it's not just wikipedia</div>
+it's
+  <ul >
+    <li>dj set-lists</li>
+    <li>mathematical proofs</li>
+    <li>e-sports rankings</li>
+    <li>dictionary information</li>
+  </ul>
+</div>
+
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 

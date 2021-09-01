@@ -4,10 +4,10 @@ const cleanup = function (lines) {
     //a '|+' row is a 'table caption', remove it.
     return line && /^\|\+/.test(line) !== true
   })
-  if (/^{\|/.test(lines[0]) === true) {
+  if (/^\{\|/.test(lines[0]) === true) {
     lines.shift()
   }
-  if (/^\|}/.test(lines[lines.length - 1]) === true) {
+  if (/^\|\}/.test(lines[lines.length - 1]) === true) {
     lines.pop()
   }
   if (/^\|-/.test(lines[0]) === true) {
@@ -32,7 +32,7 @@ const findRows = function (lines) {
       }
     } else {
       //look for '||' inline row-splitter
-      line = line.split(/(?:\|\||!!)/)
+      line = line.split(/(?:\|\||!!)/) //eslint-disable-line
       //support newline -> '||'
       if (!line[0] && line[1]) {
         line.shift()

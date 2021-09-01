@@ -2,7 +2,7 @@ const toJson = require('./toJson')
 const server = 'wikipedia.org'
 
 const encodeTitle = function (file) {
-  let title = file.replace(/^(image|file?)\:/i, '')
+  let title = file.replace(/^(image|file?):/i, '')
   //titlecase it
   title = title.charAt(0).toUpperCase() + title.substring(1)
   //spaces to underscores

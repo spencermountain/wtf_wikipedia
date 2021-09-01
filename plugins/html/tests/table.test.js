@@ -1,7 +1,7 @@
 const test = require('tape')
 const wtf = require('./_lib')
 const tidy = (str) => {
-  str = str.replace(/\s[\s]+/g, ' ')
+  str = str.replace(/\s{2,}/g, ' ')
   str = str.replace(/\n/g, '')
   str = str.replace(/ >/g, '>')
   return str.trim()

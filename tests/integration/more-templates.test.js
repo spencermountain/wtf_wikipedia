@@ -122,8 +122,6 @@ test('austria-hungary', (t) => {
 test('collapsible list', (t) => {
   const str = `{{ubl|a|b}}`
   const doc = wtf(str)
-  console.log(doc)
-  console.log(doc.template())
   const obj = doc.template().json()
   t.equal(obj.template, 'ubl', 'name')
   t.equal(obj.list[0], 'a', 'list1')
@@ -132,7 +130,7 @@ test('collapsible list', (t) => {
 
   //now sanity check all aliases
   const testText = (template) => {
-    let actual = wtf(`{{${template}|a|b}}`).text().replace(/[\n]+/, ' ')
+    let actual = wtf(`{{${template}|a|b}}`).text().replace(/\n+/, ' ')
     t.equal(actual, 'a b', template)
   }
   testText('collapsible list')

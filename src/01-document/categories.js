@@ -1,6 +1,6 @@
 const i18n = require('../_data/i18n')
-const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'ig')
-const cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n.categories.join('|') + '):', 'ig')
+const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'gi')
+const cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n.categories.join('|') + '):', 'gi')
 
 const parse_categories = function (wiki) {
   const categories = []
@@ -8,9 +8,9 @@ const parse_categories = function (wiki) {
   if (tmp) {
     tmp.forEach(function (c) {
       c = c.replace(cat_remove_reg, '')
-      c = c.replace(/\|?[ \*]?\]\]$/i, '') //parse fancy ones..
+      c = c.replace(/\|?[ *]?\]\]$/, '') //parse fancy ones..
       c = c.replace(/\|.*/, '') //everything after the '|' is metadata
-      if (c && !c.match(/[\[\]]/)) {
+      if (c && !c.match(/[[\]]/)) {
         categories.push(c.trim())
       }
     })

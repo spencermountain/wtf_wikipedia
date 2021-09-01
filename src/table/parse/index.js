@@ -67,7 +67,7 @@ const findHeaders = function (rows = []) {
   let first = rows[0]
   if (first && first[0] && first[1] && (/^!/.test(first[0]) || /^!/.test(first[1]))) {
     headers = first.map((h) => {
-      h = h.replace(/^\! */, '')
+      h = h.replace(/^! */, '')
       h = cleanText(h)
       return h
     })
@@ -77,7 +77,7 @@ const findHeaders = function (rows = []) {
   first = rows[0]
   if (first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
     first.forEach((h, i) => {
-      h = h.replace(/^\! */, '')
+      h = h.replace(/^! */, '')
       h = cleanText(h)
       if (Boolean(h) === true) {
         headers[i] = h
@@ -107,7 +107,7 @@ const firstRowHeader = function (rows) {
   }
   let headers = rows[0].slice(0)
   headers = headers.map((h) => {
-    h = h.replace(/^\! */, '')
+    h = h.replace(/^! */, '')
     h = parseSentence(h).text()
     h = cleanText(h)
     h = h.toLowerCase()

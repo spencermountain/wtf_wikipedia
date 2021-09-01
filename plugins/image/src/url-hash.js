@@ -3,7 +3,7 @@ const Hashes = require('jshashes')
 const server = 'https://upload.wikimedia.org/wikipedia/commons/'
 
 const encodeTitle = function (file) {
-  let title = file.replace(/^(image|file?)\:/i, '')
+  let title = file.replace(/^(image|file?):/i, '')
   //titlecase it
   title = title.charAt(0).toUpperCase() + title.substring(1)
   //spaces to underscores

@@ -1,12 +1,9 @@
 const nlp = require('compromise')
-const titleCase = (str) => {
-  return str.charAt(0).toUpperCase() + str.substr(1)
-}
 
 const useAn = function (str) {
   const a_regexs = [
     /^onc?e/i, //'wu' sound of 'o'
-    /^u[bcfhjkqrstn][aeiou]/i, // 'yu' sound for hard 'u'
+    /^u[bcfhjknq-t][aeiou]/i, // 'yu' sound for hard 'u'
     /^eul/i
   ]
   for (let i = 0; i < a_regexs.length; i++) {

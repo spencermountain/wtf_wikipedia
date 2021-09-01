@@ -4,6 +4,12 @@
 - **[breaking]** - plural methods like .sentences() always return arrays, even with a 'clue' param.
 -->
 
+#### 9.0.1
+
+- **[fix]** - runtime error in cli (thanks maxlath!)
+- **[fix]** - linter fixes for regexes
+- update deps
+
 #### 9.0.0
 
 Tldr:
@@ -34,7 +40,7 @@ detail:
 - **[new]** - Table.get() method
 - **[new]** - set new infoboxes using .extend()
 
-- plugin-api 0.0.1
+- plugin-api 0.1.0
 - plugin-classify 1.0.0
 - plugin-disambig 0.0.1
 - plugin-image 0.3.0

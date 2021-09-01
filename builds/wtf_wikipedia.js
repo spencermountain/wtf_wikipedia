@@ -1,4 +1,4 @@
-/* wtf_wikipedia 9.0.0 MIT */
+/* wtf_wikipedia 9.0.1 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('isomorphic-unfetch')) :
   typeof define === 'function' && define.amd ? define(['isomorphic-unfetch'], factory) :
@@ -55,8 +55,8 @@
 
   function trim_whitespace$1(str) {
     if (str && typeof str === 'string') {
-      str = str.replace(/^\s\s*/, '');
-      str = str.replace(/\s\s*$/, '');
+      str = str.replace(/^\s+/, '');
+      str = str.replace(/\s+$/, '');
       str = str.replace(/ {2}/, ' ');
       str = str.replace(/\s, /, ', ');
       return str;
@@ -73,7 +73,7 @@
    */
 
 
-  function isArray$3(x) {
+  function isArray$4(x) {
     return Object.prototype.toString.call(x) === '[object Array]';
   }
   /**
@@ -92,12 +92,12 @@
   var helpers = {
     capitalise,
     trim_whitespace: trim_whitespace$1,
-    isArray: isArray$3,
+    isArray: isArray$4,
     isObject: isObject$1
   };
 
   const {
-    isArray: isArray$2
+    isArray: isArray$3
   } = helpers;
   const isInterWiki = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/;
   const defaults$c = {
@@ -171,10 +171,10 @@
     } else if (typeof title === 'string') {
       //single page title
       params.titles = cleanTitle(title);
-    } else if (title !== undefined && isArray$2(title) && typeof title[0] === 'number') {
+    } else if (title !== undefined && isArray$3(title) && typeof title[0] === 'number') {
       //pageid array
       params.pageids = title.join('|');
-    } else if (title !== undefined && isArray$2(title) === true && typeof title[0] === 'string') {
+    } else if (title !== undefined && isArray$3(title) === true && typeof title[0] === 'string') {
       //title array
       params.titles = title.map(cleanTitle).join('|');
     } else {
@@ -953,7 +953,7 @@
   const server = 'wikipedia.org';
 
   const encodeTitle = function (file) {
-    let title = file.replace(/^(image|file?)\:/i, ''); //titlecase it
+    let title = file.replace(/^(image|file?):/i, ''); //titlecase it
 
     title = title.charAt(0).toUpperCase() + title.substring(1); //spaces to underscores
 
@@ -1553,6 +1553,249 @@
     zu: 'isiZulu' //Zulu
 
   };
+  languages.aa;
+  languages.ab;
+  languages.af;
+  languages.ak;
+  languages.als;
+  languages.am;
+  languages.an;
+  languages.ang;
+  languages.ar;
+  languages.arc;
+  languages.as;
+  languages.ast;
+  languages.av;
+  languages.ay;
+  languages.az;
+  languages.ba;
+  languages.bar;
+  languages.bcl;
+  languages.be;
+  languages.bg;
+  languages.bh;
+  languages.bi;
+  languages.bm;
+  languages.bn;
+  languages.bo;
+  languages.bpy;
+  languages.br;
+  languages.bs;
+  languages.bug;
+  languages.bxr;
+  languages.ca;
+  languages.cdo;
+  languages.ce;
+  languages.ceb;
+  languages.ch;
+  languages.cho;
+  languages.chr;
+  languages.chy;
+  languages.co;
+  languages.cr;
+  languages.cs;
+  languages.csb;
+  languages.cu;
+  languages.cv;
+  languages.cy;
+  languages.da;
+  languages.de;
+  languages.diq;
+  languages.dsb;
+  languages.dv;
+  languages.dz;
+  languages.ee;
+  languages.far;
+  languages.el;
+  languages.en;
+  languages.eo;
+  languages.es;
+  languages.et;
+  languages.eu;
+  languages.ext;
+  languages.ff;
+  languages.fi;
+  languages.fj;
+  languages.fo;
+  languages.fr;
+  languages.frp;
+  languages.fur;
+  languages.fy;
+  languages.ga;
+  languages.gan;
+  languages.gd;
+  languages.gil;
+  languages.gl;
+  languages.gn;
+  languages.got;
+  languages.gu;
+  languages.gv;
+  languages.ha;
+  languages.hak;
+  languages.haw;
+  languages.he;
+  languages.hi;
+  languages.ho;
+  languages.hr;
+  languages.ht;
+  languages.hu;
+  languages.hy;
+  languages.hz;
+  languages.ia;
+  languages.id;
+  languages.ie;
+  languages.ig;
+  languages.ii;
+  languages.ik;
+  languages.ilo;
+  languages.io;
+  languages.is;
+  languages.it;
+  languages.iu;
+  languages.ja;
+  languages.jbo;
+  languages.jv;
+  languages.ka;
+  languages.kg;
+  languages.ki;
+  languages.kj;
+  languages.kk;
+  languages.kl;
+  languages.km;
+  languages.kn;
+  languages.khw;
+  languages.ko;
+  languages.kr;
+  languages.ks;
+  languages.ksh;
+  languages.ku;
+  languages.kv;
+  languages.kw;
+  languages.ky;
+  languages.la;
+  languages.lad;
+  languages.lan;
+  languages.lb;
+  languages.lg;
+  languages.li;
+  languages.lij;
+  languages.lmo;
+  languages.ln;
+  languages.lo;
+  languages.lt;
+  languages.lv;
+  languages.mg;
+  languages.man;
+  languages.mh;
+  languages.mi;
+  languages.min;
+  languages.mk;
+  languages.ml;
+  languages.mn;
+  languages.mo;
+  languages.mr;
+  languages.ms;
+  languages.mt;
+  languages.mus;
+  languages.my;
+  languages.na;
+  languages.nah;
+  languages.nap;
+  languages.nd;
+  languages.nds;
+  languages.ne;
+  languages.ng;
+  languages.nl;
+  languages.nn;
+  languages.no;
+  languages.nr;
+  languages.nso;
+  languages.nrm;
+  languages.nv;
+  languages.ny;
+  languages.oc;
+  languages.oj;
+  languages.om;
+  languages.or;
+  languages.os;
+  languages.pa;
+  languages.pag;
+  languages.pam;
+  languages.pap;
+  languages.pdc;
+  languages.pi;
+  languages.pih;
+  languages.pl;
+  languages.pms;
+  languages.ps;
+  languages.pt;
+  languages.qu;
+  languages.rm;
+  languages.rmy;
+  languages.rn;
+  languages.ro;
+  languages.ru;
+  languages.rw;
+  languages.sa;
+  languages.sc;
+  languages.scn;
+  languages.sco;
+  languages.sd;
+  languages.se;
+  languages.sg;
+  languages.sh;
+  languages.si;
+  languages.simple;
+  languages.sk;
+  languages.sl;
+  languages.sm;
+  languages.sn;
+  languages.so;
+  languages.sq;
+  languages.sr;
+  languages.ss;
+  languages.st;
+  languages.su;
+  languages.sv;
+  languages.sw;
+  languages.ta;
+  languages.te;
+  languages.tet;
+  languages.tg;
+  languages.th;
+  languages.ti;
+  languages.tk;
+  languages.tl;
+  languages.tlh;
+  languages.tn;
+  languages.to;
+  languages.tpi;
+  languages.tr;
+  languages.ts;
+  languages.tt;
+  languages.tum;
+  languages.tw;
+  languages.ty;
+  languages.udm;
+  languages.ug;
+  languages.uk;
+  languages.ur;
+  languages.uz;
+  languages.ve;
+  languages.vi;
+  languages.vec;
+  languages.vls;
+  languages.vo;
+  languages.wa;
+  languages.war;
+  languages.wo;
+  languages.xal;
+  languages.xh;
+  languages.yi;
+  languages.yo;
+  languages.za;
+  languages.zh;
+  languages.zu;
 
   const wp = '.wikipedia.org/wiki/$1';
   const wm = '.wikimedia.org/wiki/$1';
@@ -2017,6 +2260,447 @@
     v: 'en.wikiversity.org/wiki/$1',
     voy: 'en.wikivoyage.org/wiki/$1'
   };
+  interwiki$1.acronym;
+  interwiki$1.advisory;
+  interwiki$1.advogato;
+  interwiki$1.aew;
+  interwiki$1.appropedia;
+  interwiki$1.aquariumwiki;
+  interwiki$1.arborwiki;
+  interwiki$1.arxiv;
+  interwiki$1.atmwiki;
+  interwiki$1.baden;
+  interwiki$1.battlestarwiki;
+  interwiki$1.bcnbio;
+  interwiki$1.beacha;
+  interwiki$1.betawiki;
+  interwiki$1.bibcode;
+  interwiki$1.bibliowiki;
+  interwiki$1.bluwiki;
+  interwiki$1.blw;
+  interwiki$1.botwiki;
+  interwiki$1.boxrec;
+  interwiki$1.brickwiki;
+  interwiki$1.bugzilla;
+  interwiki$1.bulba;
+  interwiki$1.c;
+  interwiki$1.c2;
+  interwiki$1.c2find;
+  interwiki$1.cache;
+  interwiki$1.cellwiki;
+  interwiki$1.centralwikia;
+  interwiki$1.chej;
+  interwiki$1.choralwiki;
+  interwiki$1.citizendium;
+  interwiki$1.ckwiss;
+  interwiki$1.comixpedia;
+  interwiki$1.commons;
+  interwiki$1.communityscheme;
+  interwiki$1.communitywiki;
+  interwiki$1.comune;
+  interwiki$1.creativecommons;
+  interwiki$1.creativecommonswiki;
+  interwiki$1.cxej;
+  interwiki$1.dcc;
+  interwiki$1.dcdatabase;
+  interwiki$1.dcma;
+  interwiki$1.debian;
+  interwiki$1.delicious;
+  interwiki$1.devmo;
+  interwiki$1.dictionary;
+  interwiki$1.dict;
+  interwiki$1.disinfopedia;
+  interwiki$1.distributedproofreaders;
+  interwiki$1.distributedproofreadersca;
+  interwiki$1.dmoz;
+  interwiki$1.dmozs;
+  interwiki$1.doi;
+  interwiki$1.donate;
+  interwiki$1.doom_wiki;
+  interwiki$1.download;
+  interwiki$1.dbdump;
+  interwiki$1.dpd;
+  interwiki$1.drae;
+  interwiki$1.dreamhost;
+  interwiki$1.drumcorpswiki;
+  interwiki$1.dwjwiki;
+  interwiki$1.ecoreality;
+  interwiki$1.ecxei;
+  interwiki$1.elibre;
+  interwiki$1.emacswiki;
+  interwiki$1.encyc;
+  interwiki$1.energiewiki;
+  interwiki$1.englyphwiki;
+  interwiki$1.enkol;
+  interwiki$1.eokulturcentro;
+  interwiki$1.esolang;
+  interwiki$1.etherpad;
+  interwiki$1.ethnologue;
+  interwiki$1.ethnologuefamily;
+  interwiki$1.evowiki;
+  interwiki$1.exotica;
+  interwiki$1.fanimutationwiki;
+  interwiki$1.fedora;
+  interwiki$1.finalfantasy;
+  interwiki$1.finnix;
+  interwiki$1.flickruser;
+  interwiki$1.flickrphoto;
+  interwiki$1.floralwiki;
+  interwiki$1.foldoc;
+  interwiki$1.foundation;
+  interwiki$1.foundationsite;
+  interwiki$1.foxwiki;
+  interwiki$1.freebio;
+  interwiki$1.freebsdman;
+  interwiki$1.freeculturewiki;
+  interwiki$1.freedomdefined;
+  interwiki$1.freefeel;
+  interwiki$1.freekiwiki;
+  interwiki$1.freesoft;
+  interwiki$1.ganfyd;
+  interwiki$1.gardenology;
+  interwiki$1.gausswiki;
+  interwiki$1.gentoo;
+  interwiki$1.genwiki;
+  interwiki$1.gerrit;
+  interwiki$1.git;
+  interwiki$1.google;
+  interwiki$1.googledefine;
+  interwiki$1.googlegroups;
+  interwiki$1.guildwarswiki;
+  interwiki$1.guildwiki;
+  interwiki$1.guc;
+  interwiki$1.gucprefix;
+  interwiki$1.gutenberg;
+  interwiki$1.gutenbergwiki;
+  interwiki$1.hackerspaces;
+  interwiki$1.h2wiki;
+  interwiki$1.hammondwiki;
+  interwiki$1.hdl;
+  interwiki$1.heraldik;
+  interwiki$1.heroeswiki;
+  interwiki$1.horizonlabs;
+  interwiki$1.hrwiki;
+  interwiki$1.hrfwiki;
+  interwiki$1.hupwiki;
+  interwiki$1.iarchive;
+  interwiki$1.imdbname;
+  interwiki$1.imdbtitle;
+  interwiki$1.imdbcompany;
+  interwiki$1.imdbcharacter;
+  interwiki$1.incubator;
+  interwiki$1.infosecpedia;
+  interwiki$1.infosphere;
+  interwiki$1.issn;
+  interwiki$1.iuridictum;
+  interwiki$1.jaglyphwiki;
+  interwiki$1.jefo;
+  interwiki$1.jerseydatabase;
+  interwiki$1.jira;
+  interwiki$1.jspwiki;
+  interwiki$1.jstor;
+  interwiki$1.kamelo;
+  interwiki$1.karlsruhe;
+  interwiki$1.kinowiki;
+  interwiki$1.komicawiki;
+  interwiki$1.kontuwiki;
+  interwiki$1.wikitech;
+  interwiki$1.libreplanet;
+  interwiki$1.linguistlist;
+  interwiki$1.linuxwiki;
+  interwiki$1.linuxwikide;
+  interwiki$1.liswiki;
+  interwiki$1.literateprograms;
+  interwiki$1.livepedia;
+  interwiki$1.localwiki;
+  interwiki$1.lojban;
+  interwiki$1.lostpedia;
+  interwiki$1.lqwiki;
+  interwiki$1.luxo;
+  interwiki$1.mail;
+  interwiki$1.mailarchive;
+  interwiki$1.mariowiki;
+  interwiki$1.marveldatabase;
+  interwiki$1.meatball;
+  interwiki$1.mw;
+  interwiki$1.mediazilla;
+  interwiki$1.memoryalpha;
+  interwiki$1.metawiki;
+  interwiki$1.metawikimedia;
+  interwiki$1.metawikipedia;
+  interwiki$1.mineralienatlas;
+  interwiki$1.moinmoin;
+  interwiki$1.monstropedia;
+  interwiki$1.mosapedia;
+  interwiki$1.mozcom;
+  interwiki$1.mozillawiki;
+  interwiki$1.mozillazinekb;
+  interwiki$1.musicbrainz;
+  interwiki$1.mediawikiwiki;
+  interwiki$1.mwod;
+  interwiki$1.mwot;
+  interwiki$1.nkcells;
+  interwiki$1.nara;
+  interwiki$1.nosmoke;
+  interwiki$1.nost;
+  interwiki$1.nostalgia;
+  interwiki$1.oeis;
+  interwiki$1.oldwikisource;
+  interwiki$1.olpc;
+  interwiki$1.omegawiki;
+  interwiki$1.onelook;
+  interwiki$1.openlibrary;
+  interwiki$1.openstreetmap;
+  interwiki$1.openwetware;
+  interwiki$1.opera7wiki;
+  interwiki$1.organicdesign;
+  interwiki$1.orthodoxwiki;
+  interwiki$1.osmwiki;
+  interwiki$1.otrs;
+  interwiki$1.otrswiki;
+  interwiki$1.ourmedia;
+  interwiki$1.outreach;
+  interwiki$1.outreachwiki;
+  interwiki$1.owasp;
+  interwiki$1.panawiki;
+  interwiki$1.patwiki;
+  interwiki$1.personaltelco;
+  interwiki$1.petscan;
+  interwiki$1.phab;
+  interwiki$1.phabricator;
+  interwiki$1.phwiki;
+  interwiki$1.phpwiki;
+  interwiki$1.planetmath;
+  interwiki$1.pmeg;
+  interwiki$1.pmid;
+  interwiki$1.pokewiki;
+  interwiki$1.policy;
+  interwiki$1.proofwiki;
+  interwiki$1.pyrev;
+  interwiki$1.pythoninfo;
+  interwiki$1.pythonwiki;
+  interwiki$1.pywiki;
+  interwiki$1.psycle;
+  interwiki$1.quality;
+  interwiki$1.quarry;
+  interwiki$1.regiowiki;
+  interwiki$1.rev;
+  interwiki$1.revo;
+  interwiki$1.rfc;
+  interwiki$1.rheinneckar;
+  interwiki$1.robowiki;
+  interwiki$1.rodovid;
+  interwiki$1.reuterswiki;
+  interwiki$1.rowiki;
+  interwiki$1.rt;
+  interwiki$1.s23wiki;
+  interwiki$1.scholar;
+  interwiki$1.schoolswp;
+  interwiki$1.scores;
+  interwiki$1.scoutwiki;
+  interwiki$1.scramble;
+  interwiki$1.seapig;
+  interwiki$1.seattlewiki;
+  interwiki$1.slwiki;
+  interwiki$1.senseislibrary;
+  interwiki$1.sharemap;
+  interwiki$1.silcode;
+  interwiki$1.slashdot;
+  interwiki$1.sourceforge;
+  interwiki$1.spcom;
+  interwiki$1.species;
+  interwiki$1.squeak;
+  interwiki$1.stats;
+  interwiki$1.stewardry;
+  interwiki$1.strategy;
+  interwiki$1.strategywiki;
+  interwiki$1.sulutil;
+  interwiki$1.swtrain;
+  interwiki$1.svn;
+  interwiki$1.swinbrain;
+  interwiki$1.tabwiki;
+  interwiki$1.tclerswiki;
+  interwiki$1.technorati;
+  interwiki$1.tenwiki;
+  interwiki$1.testwiki;
+  interwiki$1.testwikidata;
+  interwiki$1.test2wiki;
+  interwiki$1.tfwiki;
+  interwiki$1.thelemapedia;
+  interwiki$1.theopedia;
+  interwiki$1.thinkwiki;
+  interwiki$1.ticket;
+  interwiki$1.tmbw;
+  interwiki$1.tmnet;
+  interwiki$1.tmwiki;
+  interwiki$1.toolforge;
+  interwiki$1.toollabs;
+  interwiki$1.tools;
+  interwiki$1.tswiki;
+  interwiki$1.translatewiki;
+  interwiki$1.tviv;
+  interwiki$1.tvtropes;
+  interwiki$1.twiki;
+  interwiki$1.tyvawiki;
+  interwiki$1.umap;
+  interwiki$1.uncyclopedia;
+  interwiki$1.unihan;
+  interwiki$1.unreal;
+  interwiki$1.urbandict;
+  interwiki$1.usej;
+  interwiki$1.usemod;
+  interwiki$1.usability;
+  interwiki$1.utrs;
+  interwiki$1.vikidia;
+  interwiki$1.vlos;
+  interwiki$1.vkol;
+  interwiki$1.voipinfo;
+  interwiki$1.votewiki;
+  interwiki$1.werelate;
+  interwiki$1.wg;
+  interwiki$1.wikia;
+  interwiki$1.wikiasite;
+  interwiki$1.wikiapiary;
+  interwiki$1.wikibooks;
+  interwiki$1.wikichristian;
+  interwiki$1.wikicities;
+  interwiki$1.wikicity;
+  interwiki$1.wikiconference;
+  interwiki$1.wikidata;
+  interwiki$1.wikif1;
+  interwiki$1.wikifur;
+  interwiki$1.wikihow;
+  interwiki$1.wikiindex;
+  interwiki$1.wikilemon;
+  interwiki$1.wikilivres;
+  interwiki$1.wikilivresru;
+  interwiki$1.wikimedia;
+  interwiki$1.wikinews;
+  interwiki$1.wikinfo;
+  interwiki$1.wikinvest;
+  interwiki$1.wikiotics;
+  interwiki$1.wikipapers;
+  interwiki$1.wikipedia;
+  interwiki$1.wikipediawikipedia;
+  interwiki$1.wikiquote;
+  interwiki$1.wikisophia;
+  interwiki$1.wikisource;
+  interwiki$1.wikispecies;
+  interwiki$1.wikispot;
+  interwiki$1.wikiskripta;
+  interwiki$1.labsconsole;
+  interwiki$1.wikiti;
+  interwiki$1.wikiversity;
+  interwiki$1.wikivoyage;
+  interwiki$1.betawikiversity;
+  interwiki$1.wikiwikiweb;
+  interwiki$1.wiktionary;
+  interwiki$1.wipipedia;
+  interwiki$1.wlug;
+  interwiki$1.wmam;
+  interwiki$1.wmar;
+  interwiki$1.wmat;
+  interwiki$1.wmau;
+  interwiki$1.wmbd;
+  interwiki$1.wmbe;
+  interwiki$1.wmbr;
+  interwiki$1.wmca;
+  interwiki$1.wmch;
+  interwiki$1.wmcl;
+  interwiki$1.wmcn;
+  interwiki$1.wmco;
+  interwiki$1.wmcz;
+  interwiki$1.wmdc;
+  interwiki$1.securewikidc;
+  interwiki$1.wmde;
+  interwiki$1.wmdk;
+  interwiki$1.wmee;
+  interwiki$1.wmec;
+  interwiki$1.wmes;
+  interwiki$1.wmet;
+  interwiki$1.wmfdashboard;
+  interwiki$1.wmfi;
+  interwiki$1.wmfr;
+  interwiki$1.wmge;
+  interwiki$1.wmhi;
+  interwiki$1.wmhk;
+  interwiki$1.wmhu;
+  interwiki$1.wmid;
+  interwiki$1.wmil;
+  interwiki$1.wmin;
+  interwiki$1.wmit;
+  interwiki$1.wmke;
+  interwiki$1.wmmk;
+  interwiki$1.wmmx;
+  interwiki$1.wmnl;
+  interwiki$1.wmnyc;
+  interwiki$1.wmno;
+  interwiki$1.wmph;
+  interwiki$1.wmpl;
+  interwiki$1.wmpt;
+  interwiki$1.wmpunjabi;
+  interwiki$1.wmromd;
+  interwiki$1.wmrs;
+  interwiki$1.wmru;
+  interwiki$1.wmse;
+  interwiki$1.wmsk;
+  interwiki$1.wmtr;
+  interwiki$1.wmtw;
+  interwiki$1.wmua;
+  interwiki$1.wmuk;
+  interwiki$1.wmve;
+  interwiki$1.wmza;
+  interwiki$1.wm2005;
+  interwiki$1.wm2006;
+  interwiki$1.wm2007;
+  interwiki$1.wm2008;
+  interwiki$1.wm2009;
+  interwiki$1.wm2010;
+  interwiki$1.wm2011;
+  interwiki$1.wm2012;
+  interwiki$1.wm2013;
+  interwiki$1.wm2014;
+  interwiki$1.wm2015;
+  interwiki$1.wm2016;
+  interwiki$1.wm2017;
+  interwiki$1.wm2018;
+  interwiki$1.wmania;
+  interwiki$1.wikimania;
+  interwiki$1.wmteam;
+  interwiki$1.wmf;
+  interwiki$1.wmfblog;
+  interwiki$1.wmdeblog;
+  interwiki$1.wookieepedia;
+  interwiki$1.wowwiki;
+  interwiki$1.wqy;
+  interwiki$1.wurmpedia;
+  interwiki$1.viaf;
+  interwiki$1.zrhwiki;
+  interwiki$1.zum;
+  interwiki$1.zwiki;
+  interwiki$1.m;
+  interwiki$1.meta;
+  interwiki$1.sep11;
+  interwiki$1.d;
+  interwiki$1.minnan;
+  interwiki$1.nb;
+  interwiki$1.nan;
+  interwiki$1.vro;
+  interwiki$1.cmn;
+  interwiki$1.lzh;
+  interwiki$1.rup;
+  interwiki$1.gsw;
+  interwiki$1.sgs;
+  interwiki$1.egl;
+  interwiki$1.w;
+  interwiki$1.wikt;
+  interwiki$1.q;
+  interwiki$1.b;
+  interwiki$1.n;
+  interwiki$1.s;
+  interwiki$1.chapter;
+  interwiki$1.v;
+  interwiki$1.voy;
 
   //so we have to whitelist allowable interwiki links
   //add language prefixes too..
@@ -2066,8 +2750,8 @@
 
   var interwiki = parseInterwiki;
 
-  const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i;
-  const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
+  const ignore_links = /^:?(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i;
+  const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ].*?)?\]/g;
   const link_reg = /\[\[(.{0,160}?)\]\]([a-z]+)?/gi; //allow dangling suffixes - "[[flanders]]s"
 
   const external_links = function (links, str) {
@@ -2209,14 +2893,14 @@
   const closeTag = `< ?/ ?(${ignore$1.join('|')}) ?>`;
   const anyChar = '\\s\\S'; //including newline
 
-  const noThanks = new RegExp(`${openTag}[${anyChar}]+?${closeTag}`, 'ig');
+  const noThanks = new RegExp(`${openTag}[${anyChar}]+?${closeTag}`, 'gi');
 
   const kill_xml = function (wiki) {
     //(<ref> tags are parsed in Section class) - luckily, refs can't be recursive.
     //types of html/xml that we want to trash completely.
     wiki = wiki.replace(noThanks, ' '); //some xml-like fragments we can also kill
 
-    wiki = wiki.replace(/ ?< ?(span|div|table|data) [a-zA-Z0-9=%\.\-#:;'" ]{2,100}\/? ?> ?/g, ' '); //<ref name="asd">
+    wiki = wiki.replace(/ ?< ?(span|div|table|data) [a-zA-Z0-9=%.\-#:;'" ]{2,100}\/? ?> ?/g, ' '); //<ref name="asd">
     //only kill ref tags if they are selfclosing
 
     wiki = wiki.replace(/ ?< ?(ref) [a-zA-Z0-9=" ]{2,100}\/ ?> ?/g, ' '); //<ref name="asd"/>
@@ -2228,11 +2912,11 @@
     wiki = wiki.replace(/<sub>(.*?)<\/sub>/g, `{{sub|$1}}`);
     wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, `{{sup|$1}}`); //some formatting xml, we'll keep their insides though
 
-    wiki = wiki.replace(/ ?<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?> ?/g, ' '); //<sub>, </sub>
+    wiki = wiki.replace(/ ?<[ /]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ /]?> ?/g, ' '); //<sub>, </sub>
 
-    wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ \/]?> ?/g, ' '); //<abbr>, </abbr>
+    wiki = wiki.replace(/ ?<[ /]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ /]?> ?/g, ' '); //<abbr>, </abbr>
 
-    wiki = wiki.replace(/ ?<[ \/]?h[0-9][ \/]?> ?/g, ' '); //<h2>, </h2>
+    wiki = wiki.replace(/ ?<[ /]?h[0-9][ /]?> ?/g, ' '); //<h2>, </h2>
 
     wiki = wiki.replace(/ ?< ?br ?\/> ?/g, '\n'); //<br />
 
@@ -2255,7 +2939,7 @@
     wiki = wiki.replace(/<!--[\s\S]{0,2000}?-->/g, '');
     wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, ''); //signitures
 
-    wiki = wiki.replace(/~~{1,3}/g, ''); //windows newlines
+    wiki = wiki.replace(/~{2,3}/g, ''); //windows newlines
 
     wiki = wiki.replace(/\r/g, ''); //japanese periods - '。'
 
@@ -2270,9 +2954,9 @@
 
     wiki = kill_xml_1(wiki); //({{template}},{{template}}) leaves empty parentheses
 
-    wiki = wiki.replace(/\([,;: ]+?\)/g, ''); //these templates just screw things up, too
+    wiki = wiki.replace(/\([,;: ]+\)/g, ''); //these templates just screw things up, too
 
-    wiki = wiki.replace(/{{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '');
+    wiki = wiki.replace(/\{\{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '');
     return wiki;
   }
 
@@ -2281,12 +2965,12 @@
   //dumpster-dive throws everything into mongodb  - github.com/spencermountain/dumpster-dive
   //mongo has some opinions about what characters are allowed as keys and ids.
   //https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
-  const specialChar = /[\\\.$]/;
+  const specialChar = /[\\.$]/;
   /**
    * this function encodes a string to make it mongodb compatible.
    * https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
-   * 
-   * @param {string} str 
+   *
+   * @param {string} str
    * @returns {string} the encoded string
    */
 
@@ -2454,7 +3138,7 @@
 
       let txt = this.data.text || this.data.page || ''; // remove bold/italics
 
-      txt = txt.replace(/''+/g, '');
+      txt = txt.replace(/'{2,}/g, '');
       return txt;
     },
     json: function () {
@@ -2563,7 +3247,7 @@
 
   const removeLinks = function (line) {
     // [[File:with|Size]]
-    line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$1');
+    line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+)\]\](\w{0,5})/g, '$1');
     return line;
   };
 
@@ -2756,7 +3440,7 @@
   const abbreviations = _abbreviations.concat('[^]][^]]');
   const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i');
   const acronym_reg = /[ .'][A-Z].? *?$/i;
-  const elipses_reg = /\.\.\.* +?$/;
+  const elipses_reg = /\.{3,} +?$/;
   const circa_reg = / c\.\s$/;
   const hasWord = /\p{Letter}/iu; //turn a nested array into one array
 
@@ -2774,7 +3458,7 @@
     splits = splits.filter(s => s.match(/\S/)); //split by period, question-mark, and exclamation-mark
 
     splits = splits.map(function (str) {
-      return str.split(/(\S.+?[.!?]"?)(?=\s+|$)/g); //\u3002
+      return str.split(/(\S.+?[.!?]"?)(?=\s|$)/g); //\u3002
     });
     return flatten(splits);
   }; // if this looks like a period within a wikipedia link, return false
@@ -2944,8 +3628,8 @@
    * @returns {string} the striped string
    */
   const strip = function (tmpl) {
-    tmpl = tmpl.replace(/^{{/, '');
-    tmpl = tmpl.replace(/}}$/, '');
+    tmpl = tmpl.replace(/^\{\{/, '');
+    tmpl = tmpl.replace(/\}\}$/, '');
     return tmpl;
   };
 
@@ -2980,7 +3664,7 @@
       //has equal number of opening and closing tags. handle nested case '[[[[' ']]'
 
 
-      if (/\[\[[^\]]+$/.test(a) || /{{[^}]+$/.test(a) || a.split('{{').length !== a.split('}}').length || a.split('[[').length !== a.split(']]').length) {
+      if (/\[\[[^\]]+$/.test(a) || /\{\{[^}]+$/.test(a) || a.split('{{').length !== a.split('}}').length || a.split('[[').length !== a.split(']]').length) {
         arr[i + 1] = arr[i] + '|' + arr[i + 1]; //@ts-expect-error we can ignore this error because we filter out all nulls later in
 
         arr[i] = null;
@@ -3005,7 +3689,7 @@
 
   //every value in {{tmpl|a|b|c}} needs a name
   //here we come up with names for them
-  const hasKey = /^[\p{Letter}0-9\._\- '()œ]+=/iu; //templates with these properties are asking for trouble
+  const hasKey = /^[\p{Letter}0-9._\- '()]+=/iu; //templates with these properties are asking for trouble
 
   const reserved = {
     template: true,
@@ -3243,7 +3927,7 @@
   const parseSentence$6 = _04Sentence.fromText; //structured Cite templates - <ref>{{Cite..</ref>
 
   const hasCitation = function (str) {
-    return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false;
+    return /^ *\{\{ *(cite|citation)/i.test(str) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false;
   };
 
   const parseCitation = function (tmpl) {
@@ -3292,7 +3976,7 @@
 
     wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' '); //<ref name=""></ref>
 
-    wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
+    wiki = wiki.replace(/ ?<ref [^>]{0,200}>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
       if (hasCitation(tmpl)) {
         let obj = parseCitation(tmpl);
 
@@ -3314,7 +3998,7 @@
       return ' ';
     }); //now that we're done with xml, do a generic + dangerous xml-tag removal
 
-    wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ \/]?> ?/g, ' '); //<samp name="asd">
+    wiki = wiki.replace(/ ?<[ /]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ /]?> ?/g, ' '); //<samp name="asd">
 
     section._references = references.map(obj => new Reference_1(obj.json, obj.wiki));
     section._wiki = wiki;
@@ -3385,11 +4069,11 @@
       return line && /^\|\+/.test(line) !== true;
     });
 
-    if (/^{\|/.test(lines[0]) === true) {
+    if (/^\{\|/.test(lines[0]) === true) {
       lines.shift();
     }
 
-    if (/^\|}/.test(lines[lines.length - 1]) === true) {
+    if (/^\|\}/.test(lines[lines.length - 1]) === true) {
       lines.pop();
     }
 
@@ -3417,7 +4101,8 @@
         }
       } else {
         //look for '||' inline row-splitter
-        line = line.split(/(?:\|\||!!)/); //support newline -> '||'
+        line = line.split(/(?:\|\||!!)/); //eslint-disable-line
+        //support newline -> '||'
 
         if (!line[0] && line[1]) {
           line.shift();
@@ -3441,8 +4126,8 @@
 
   var _findRows = findRows;
 
-  const getRowSpan = /.*rowspan *?= *?["']?([0-9]+)["']?[ \|]*/;
-  const getColSpan = /.*colspan *?= *?["']?([0-9]+)["']?[ \|]*/; //colspans stretch ←left/right→
+  const getRowSpan = /.*rowspan *= *["']?([0-9]+)["']?[ |]*/;
+  const getColSpan = /.*colspan *= *["']?([0-9]+)["']?[ |]*/; //colspans stretch ←left/right→
 
   const doColSpan = function (rows) {
     rows.forEach(row => {
@@ -3571,7 +4256,7 @@
 
     if (first && first[0] && first[1] && (/^!/.test(first[0]) || /^!/.test(first[1]))) {
       headers = first.map(h => {
-        h = h.replace(/^\! */, '');
+        h = h.replace(/^! */, '');
         h = cleanText(h);
         return h;
       });
@@ -3583,7 +4268,7 @@
 
     if (first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
       first.forEach((h, i) => {
-        h = h.replace(/^\! */, '');
+        h = h.replace(/^! */, '');
         h = cleanText(h);
 
         if (Boolean(h) === true) {
@@ -3616,7 +4301,7 @@
 
     let headers = rows[0].slice(0);
     headers = headers.map(h => {
-      h = h.replace(/^\! */, '');
+      h = h.replace(/^! */, '');
       h = parseSentence$4(h).text();
       h = cleanText(h);
       h = h.toLowerCase();
@@ -3793,8 +4478,8 @@
   });
   var Table_1 = Table;
 
-  const openReg = /^\s*{\|/;
-  const closeReg = /^\s*\|}/; //tables can be recursive, so looky-here.
+  const openReg = /^\s*\{\|/;
+  const closeReg = /^\s*\|\}/; //tables can be recursive, so looky-here.
 
   const findTables = function (section) {
     let list = [];
@@ -3987,16 +4672,16 @@
         open += 1;
       } //decrement close tag
       else if (c === closer) {
-          open -= 1;
+        open -= 1;
 
-          if (open < 0) {
-            open = 0;
-          }
-        } else if (last.length === 0) {
-          //If we're not inside of a pair of delimiters, we can discard the current letter.
-          //The return of this function is only used to extract images.
-          continue;
+        if (open < 0) {
+          open = 0;
         }
+      } else if (last.length === 0) {
+        //If we're not inside of a pair of delimiters, we can discard the current letter.
+        //The return of this function is only used to extract images.
+        continue;
+      }
 
       last.push(c);
 
@@ -4181,10 +4866,10 @@
   var List_1 = List;
 
   const parseSentence$2 = _04Sentence.fromText;
-  const list_reg = /^[#\*:;\|]+/;
-  const bullet_reg = /^\*+[^:,\|]{4}/;
-  const number_reg = /^ ?\#[^:,\|]{4}/;
-  const has_word = /[a-z_0-9\]\}]/i; // does it start with a bullet point or something?
+  const list_reg = /^[#*:;|]+/;
+  const bullet_reg = /^\*+[^:,|]{4}/;
+  const number_reg = /^ ?#[^:,|]{4}/;
+  const has_word = /[a-z_0-9\]}]/i; // does it start with a bullet point or something?
 
   const isList = function (line) {
     return list_reg.test(line) || bullet_reg.test(line) || number_reg.test(line);
@@ -4345,7 +5030,7 @@
       name = (tmpl.match(/^\{\{(.+?)\|/) || [])[1];
     } else if (tmpl.indexOf('\n') !== -1) {
       // {{name \n...
-      name = (tmpl.match(/^\{\{(.+?)\n/) || [])[1];
+      name = (tmpl.match(/^\{\{(.+)\n/) || [])[1];
     } else {
       //{{name here}}
       name = (tmpl.match(/^\{\{(.+?)\}\}$/) || [])[1];
@@ -4476,12 +5161,28 @@
     'hockey team start': true,
     mlbbioret: true
   };
+  _infoboxes.editnotice;
+  _infoboxes.geobox;
+  _infoboxes.hybridbox;
+  _infoboxes.ichnobox;
+  _infoboxes.infraspeciesbox;
+  _infoboxes.mycomorphbox;
+  _infoboxes.oobox;
+  _infoboxes.speciesbox;
+  _infoboxes.subspeciesbox;
+  _infoboxes.taxobox;
+  _infoboxes.nhlteamseason;
+  _infoboxes.edencharacter;
+  _infoboxes.samurai;
+  _infoboxes.protein;
+  _infoboxes.ordination;
+  _infoboxes.mlbbioret;
 
   const i18nReg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i'); //some looser ones
 
   const startReg = /^infobox /i;
   const endReg = / infobox$/i;
-  const yearIn = /$Year in [A-Z]/i; //some known ones from
+  const yearIn = /^year in [A-Z]/i; //some known ones from
   //https://en.wikipedia.org/wiki/Wikipedia:List_of_infoboxes
   //and https://en.wikipedia.org/wiki/Category:Infobox_templates
 
@@ -4568,9 +5269,9 @@
     coord: ['coor', 'coor title dms', 'coor title dec', 'coor dms', 'coor dm', 'coor dec'],
     'columns-list': ['cmn', 'col-list', 'columnslist', 'collist'],
     nihongo: ['nihongo2', 'nihongo3', 'nihongo-s', 'nihongo foot'],
-    plainlist: ['flatlist', 'ublist', 'plain list'],
+    plainlist: ['flatlist', 'plain list'],
     'winning percentage': ['winpct', 'winperc'],
-    'collapsible list': ['unbulleted list', 'ubl'],
+    'collapsible list': ['nblist', 'nonbulleted list', 'ubl', 'ublist', 'ubt', 'unbullet', 'unbulleted list', 'unbulleted', 'unbulletedlist', 'vunblist'],
     'election box begin': ['election box begin no change', 'election box begin no party', 'election box begin no party no change', 'election box inline begin', 'election box inline begin no change'],
     'election box candidate': ['election box candidate for alliance', 'election box candidate minor party', 'election box candidate no party link no change', 'election box candidate with party link', 'election box candidate with party link coalition 1918', 'election box candidate with party link no change', 'election box inline candidate', 'election box inline candidate no change', 'election box inline candidate with party link', 'election box inline candidate with party link no change', 'election box inline incumbent'],
     '4teambracket': ['2teambracket', '4team2elimbracket', '8teambracket', '16teambracket', '32teambracket', '4roundbracket-byes', 'cwsbracket', 'nhlbracket', 'nhlbracket-reseed', '4teambracket-nhl', '4teambracket-ncaa', '4teambracket-mma', '4teambracket-mlb', '16teambracket-two-reseeds', '8teambracket-nhl', '8teambracket-mlb', '8teambracket-ncaa', '8teambracket-afc', '8teambracket-afl', '8teambracket-tennis3', '8teambracket-tennis5', '16teambracket-nhl', '16teambracket-nhl divisional', '16teambracket-nhl-reseed', '16teambracket-nba', '16teambracket-swtc', '16teambracket-afc', '16teambracket-tennis3', '16teambracket-tennis5'],
@@ -4635,6 +5336,20 @@
     loss: '▼',
     gain: '▲'
   };
+  hardcoded.dot;
+  hardcoded.middot;
+  hardcoded.ndash;
+  hardcoded.mdash;
+  hardcoded.ibeam;
+  hardcoded.ampersand;
+  hardcoded.snds;
+  hardcoded.snd;
+  hardcoded.bracket;
+  hardcoded.asterisk;
+  hardcoded.clear;
+  hardcoded.profit;
+  hardcoded.loss;
+  hardcoded.gain;
 
   let templates$9 = {
     p1: 0,
@@ -5174,6 +5889,46 @@
       return `${obj.done} (${num}%) done`;
     }
   };
+  functions$2.ra;
+  functions$2.deg2hms;
+  functions$2.hms2deg;
+  functions$2.decdeg;
+  functions$2.sortname;
+  functions$2.trunc;
+  functions$2.reign;
+  functions$2.circa;
+  functions$2.decade;
+  functions$2.century;
+  functions$2.radic;
+  functions$2.oldstyledate;
+  functions$2.braces;
+  functions$2.hlist;
+  functions$2.pagelist;
+  functions$2.catlist;
+  functions$2.plainlist;
+  functions$2.term;
+  functions$2.linum;
+  functions$2.lbs;
+  functions$2.lbc;
+  functions$2.lbb;
+  functions$2.lc;
+  functions$2.uc;
+  functions$2.lcfirst;
+  functions$2.ucfirst;
+  functions$2.padleft;
+  functions$2.padright;
+  functions$2.abbrlink;
+  functions$2.own;
+  functions$2.formatnum;
+  functions$2.frac;
+  functions$2.convert;
+  functions$2.tl;
+  functions$2.won;
+  functions$2.tag;
+  functions$2.plural;
+  functions$2.dec;
+  functions$2.val;
+  functions$2.percentage;
 
   var flags = [['🇦🇩', 'and', 'andorra'], ['🇦🇪', 'are', 'united arab emirates'], ['🇦🇫', 'afg', 'afghanistan'], ['🇦🇬', 'atg', 'antigua and barbuda'], ['🇦🇮', 'aia', 'anguilla'], ['🇦🇱', 'alb', 'albania'], ['🇦🇲', 'arm', 'armenia'], ['🇦🇴', 'ago', 'angola'], ['🇦🇶', 'ata', 'antarctica'], ['🇦🇷', 'arg', 'argentina'], ['🇦🇸', 'asm', 'american samoa'], ['🇦🇹', 'aut', 'austria'], ['🇦🇺', 'aus', 'australia'], ['🇦🇼', 'abw', 'aruba'], ['🇦🇽', 'ala', 'åland islands'], ['🇦🇿', 'aze', 'azerbaijan'], ['🇧🇦', 'bih', 'bosnia and herzegovina'], ['🇧🇧', 'brb', 'barbados'], ['🇧🇩', 'bgd', 'bangladesh'], ['🇧🇪', 'bel', 'belgium'], ['🇧🇫', 'bfa', 'burkina faso'], ['🇧🇬', 'bgr', 'bulgaria'], ['🇧🇬', 'bul', 'bulgaria'], //dupe
   ['🇧🇭', 'bhr', 'bahrain'], ['🇧🇮', 'bdi', 'burundi'], ['🇧🇯', 'ben', 'benin'], ['🇧🇱', 'blm', 'saint barthélemy'], ['🇧🇲', 'bmu', 'bermuda'], ['🇧🇳', 'brn', 'brunei darussalam'], ['🇧🇴', 'bol', 'bolivia'], ['🇧🇶', 'bes', 'bonaire, sint eustatius and saba'], ['🇧🇷', 'bra', 'brazil'], ['🇧🇸', 'bhs', 'bahamas'], ['🇧🇹', 'btn', 'bhutan'], ['🇧🇻', 'bvt', 'bouvet island'], ['🇧🇼', 'bwa', 'botswana'], ['🇧🇾', 'blr', 'belarus'], ['🇧🇿', 'blz', 'belize'], ['🇨🇦', 'can', 'canada'], ['🇨🇨', 'cck', 'cocos (keeling) islands'], ['🇨🇩', 'cod', 'congo'], ['🇨🇫', 'caf', 'central african republic'], ['🇨🇬', 'cog', 'congo'], ['🇨🇭', 'che', 'switzerland'], ['🇨🇮', 'civ', 'côte d\'ivoire'], ['🇨🇰', 'cok', 'cook islands'], ['🇨🇱', 'chl', 'chile'], ['🇨🇲', 'cmr', 'cameroon'], ['🇨🇳', 'chn', 'china'], ['🇨🇴', 'col', 'colombia'], ['🇨🇷', 'cri', 'costa rica'], ['🇨🇺', 'cub', 'cuba'], ['🇨🇻', 'cpv', 'cape verde'], ['🇨🇼', 'cuw', 'curaçao'], ['🇨🇽', 'cxr', 'christmas island'], ['🇨🇾', 'cyp', 'cyprus'], ['🇨🇿', 'cze', 'czech republic'], ['🇩🇪', 'deu', 'germany'], ['🇩🇪', 'ger', 'germany'], //alias
@@ -5708,6 +6463,17 @@
       return '';
     }
   };
+  functions$1.ipa;
+  functions$1.ipac;
+  functions$1.quote;
+  functions$1.yel;
+  functions$1.subon;
+  functions$1.suboff;
+  functions$1.sfn;
+  functions$1.redirect;
+  functions$1.gallery;
+  functions$1.sky;
+  functions$1.graph;
 
   let templates$4 = {
     //https://en.wikipedia.org/wiki/Category:External_link_templates
@@ -5773,6 +6539,14 @@
     // },
 
   };
+  shorthand.mlbplayer;
+  shorthand.syntaxhighlight;
+  shorthand.samp;
+  shorthand.sub;
+  shorthand.sup;
+  shorthand.chem2;
+  shorthand.ill;
+  shorthand.abbr;
 
   let templates$3 = {
     // https://en.wikipedia.org/wiki/Template:Math
@@ -6886,6 +7660,17 @@
     // 'age as of date': true,
 
   };
+  dates.currentday;
+  dates.currentdayname;
+  dates.currentmonth;
+  dates.currentyear;
+  dates.monthyear;
+  dates.dts;
+  dates.time;
+  dates.millennium;
+  dates.start;
+  dates.birthdeathage;
+  dates.age;
 
   /**
    * converts DMS (decimal-minute-second) geo format to lat/lng format.
@@ -7450,7 +8235,7 @@
   var custom = templates; // console.log(Object.keys(templates).length)
 
   const {
-    isArray: isArray$1,
+    isArray: isArray$2,
     isObject
   } = helpers;
   const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']; //this gets all the {{template}} objects and decides how to parse them
@@ -7494,7 +8279,7 @@
       } //handle array sytax
 
 
-      if (isArray$1(custom[name]) === true) {
+      if (isArray$2(custom[name]) === true) {
         let obj = toJSON(tmpl.body, custom[name]); // list.push(obj)
 
         return ['', obj];
@@ -7550,7 +8335,7 @@
   var toJson_1 = toJson;
 
   const {
-    isArray
+    isArray: isArray$1
   } = helpers;
 
   const normalize = (str = '') => {
@@ -7624,7 +8409,7 @@
         return new Sentence_1();
       }
 
-      if (isArray(keys)) {
+      if (isArray$1(keys)) {
         // support array-input
         keys = keys.map(normalize);
         return keys.map(k => {
@@ -7836,7 +8621,7 @@
    */
 
   const parseGallery = function (catcher, doc, section) {
-    catcher.text = catcher.text.replace(/<gallery([^>]*?)>([\s\S]+?)<\/gallery>/g, (_, attrs, inside) => {
+    catcher.text = catcher.text.replace(/<gallery([^>]*)>([\s\S]+)<\/gallery>/g, (_, attrs, inside) => {
       let images = inside.split(/\n/g);
       images = images.filter(str => str && str.trim() !== ''); //parse the line, which has an image and sometimes a caption
 
@@ -8046,7 +8831,7 @@
    */
 
   const parseMath = function (catcher) {
-    catcher.text = catcher.text.replace(/<math([^>]*?)>([\s\S]+?)<\/math>/g, (_, attrs, inside) => {
+    catcher.text = catcher.text.replace(/<math([^>]*)>([\s\S]+)<\/math>/g, (_, attrs, inside) => {
       //clean it up a little?
       let formula = parseSentence(inside).text();
       catcher.templates.push({
@@ -8063,7 +8848,7 @@
       return '';
     }); //try chemistry version too
 
-    catcher.text = catcher.text.replace(/<chem([^>]*?)>([\s\S]+?)<\/chem>/g, (_, attrs, inside) => {
+    catcher.text = catcher.text.replace(/<chem([^>]*)>([\s\S]+?)<\/chem>/g, (_, attrs, inside) => {
       catcher.templates.push({
         template: 'chem',
         data: inside
@@ -8739,8 +9524,8 @@
 
   var _02Section = parseSections;
 
-  const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'ig');
-  const cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n.categories.join('|') + '):', 'ig');
+  const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'gi');
+  const cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n.categories.join('|') + '):', 'gi');
 
   const parse_categories = function (wiki) {
     const categories = [];
@@ -8749,11 +9534,11 @@
     if (tmp) {
       tmp.forEach(function (c) {
         c = c.replace(cat_remove_reg, '');
-        c = c.replace(/\|?[ \*]?\]\]$/i, ''); //parse fancy ones..
+        c = c.replace(/\|?[ *]?\]\]$/, ''); //parse fancy ones..
 
         c = c.replace(/\|.*/, ''); //everything after the '|' is metadata
 
-        if (c && !c.match(/[\[\]]/)) {
+        if (c && !c.match(/[[\]]/)) {
           categories.push(c.trim());
         }
       });
@@ -9343,15 +10128,19 @@
   Document.prototype.redirects = Document.prototype.redirectTo;
   var Document_1 = Document;
 
+  const {
+    isArray
+  } = helpers;
   /**
    * this function puts all responses into proper Document objects
    *
    * @private
    * @param {Array} res
+   * @param {string | number | Array<number> | Array<string>} title
    * @returns {null| Document | Document[]} null if there are no results or Document if there is one responses and Document array if there are multiple responses
    */
 
-  const parseDoc = function (res) {
+  const parseDoc = function (res, title) {
     // filter out undefined
     res = res.filter(o => o); // put all the responses into Document formats
 
@@ -9364,7 +10153,7 @@
     } // if there is only one response then we can get it out of the array
 
 
-    if (docs.length === 1) {
+    if (!isArray(title) && docs.length === 1) {
       return docs[0];
     }
 
@@ -9467,7 +10256,7 @@
     const headers = _headers(options);
     return isomorphicUnfetch__default['default'](url, headers).then(res => res.json()).then(res => {
       let data = getResult_1(res, options);
-      data = parseDoc_1(data);
+      data = parseDoc_1(data, title);
 
       if (callback) {
         callback(null, data);
@@ -9487,7 +10276,7 @@
 
   var _fetch = fetch$1;
 
-  var _version = '9.0.0';
+  var _version = '9.0.1';
 
   /**
    * use the native client-side fetch function
@@ -9527,8 +10316,8 @@
     wtf: wtf
   };
 
-  wtf.fetch = function (title, lang, options, cb) {
-    return _fetch(title, lang, options);
+  wtf.fetch = function (title, options, cb) {
+    return _fetch(title, options, cb);
   };
 
   wtf.extend = function (fn) {

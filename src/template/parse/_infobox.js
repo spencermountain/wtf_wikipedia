@@ -4,7 +4,7 @@ const i18nReg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]',
 //some looser ones
 const startReg = /^infobox /i
 const endReg = / infobox$/i
-const yearIn = /$Year in [A-Z]/i
+const yearIn = /^year in [A-Z]/i
 
 //some known ones from
 //https://en.wikipedia.org/wiki/Wikipedia:List_of_infoboxes

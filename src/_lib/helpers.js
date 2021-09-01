@@ -23,8 +23,8 @@ function capitalise(str) {
  */
 function trim_whitespace(str) {
   if (str && typeof str === 'string') {
-    str = str.replace(/^\s\s*/, '')
-    str = str.replace(/\s\s*$/, '')
+    str = str.replace(/^\s+/, '')
+    str = str.replace(/\s+$/, '')
     str = str.replace(/ {2}/, ' ')
     str = str.replace(/\s, /, ', ')
     return str

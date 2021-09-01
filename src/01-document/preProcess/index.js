@@ -13,7 +13,7 @@ function preProcess(wiki) {
   wiki = wiki.replace(/<!--[\s\S]{0,2000}?-->/g, '')
   wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, '')
   //signitures
-  wiki = wiki.replace(/~~{1,3}/g, '')
+  wiki = wiki.replace(/~{2,3}/g, '')
   //windows newlines
   wiki = wiki.replace(/\r/g, '')
   //japanese periods - '。'
@@ -28,9 +28,9 @@ function preProcess(wiki) {
   //give it the inglorious send-off it deserves..
   wiki = kill_xml(wiki)
   //({{template}},{{template}}) leaves empty parentheses
-  wiki = wiki.replace(/\([,;: ]+?\)/g, '')
+  wiki = wiki.replace(/\([,;: ]+\)/g, '')
   //these templates just screw things up, too
-  wiki = wiki.replace(/{{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '')
+  wiki = wiki.replace(/\{\{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '')
 
   return wiki
 }
