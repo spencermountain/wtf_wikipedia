@@ -130,7 +130,7 @@ test('collapsible list', (t) => {
 
   //now sanity check all aliases
   const testText = (template) => {
-    let actual = wtf(`{{${template}|a|b}}`).text().replace(/[\n]+/, ' ')
+    let actual = wtf(`{{${template}|a|b}}`).text().replace(/\n+/, ' ')
     t.equal(actual, 'a b', template)
   }
   testText('collapsible list')

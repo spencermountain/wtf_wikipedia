@@ -18,7 +18,7 @@ const methods = {
     }
     let txt = this.data.text || this.data.page || ''
     // remove bold/italics
-    txt = txt.replace(/''+/g, '')
+    txt = txt.replace(/'{2,}/g, '')
     return txt
   },
   json: function () {

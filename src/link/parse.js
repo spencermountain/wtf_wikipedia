@@ -1,6 +1,7 @@
 const parse_interwiki = require('./interwiki')
-const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i
-const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g
+const ignore_links =
+  /^:?(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i
+const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ].*?)?\]/g
 const link_reg = /\[\[(.{0,160}?)\]\]([a-z]+)?/gi //allow dangling suffixes - "[[flanders]]s"
 
 const external_links = function (links, str) {
