@@ -102,8 +102,8 @@
 
   function trim_whitespace$1(str) {
     if (str && typeof str === 'string') {
-      str = str.replace(/^\s\s*/, '');
-      str = str.replace(/\s\s*$/, '');
+      str = str.replace(/^\s+/, '');
+      str = str.replace(/\s+$/, '');
       str = str.replace(/ {2}/, ' ');
       str = str.replace(/\s, /, ', ');
       return str;
@@ -1024,7 +1024,7 @@
   const server = 'wikipedia.org';
 
   const encodeTitle = function (file) {
-    let title = file.replace(/^(image|file?)\:/i, ''); //titlecase it
+    let title = file.replace(/^(image|file?):/i, ''); //titlecase it
 
     title = title.charAt(0).toUpperCase() + title.substring(1); //spaces to underscores
 
@@ -2827,8 +2827,8 @@
 
   var parse_interwiki = interwiki;
 
-  const ignore_links = /^:?(category|catégorie|Kategorie|Categoría|Categoria|Categorie|Kategoria|تصنيف|image|file|image|fichier|datei|media):/i;
-  const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]\| ]{4,1500})([\| ].*?)?\]/g;
+  const ignore_links = /^:?(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i;
+  const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ].*?)?\]/g;
   const link_reg = /\[\[(.{0,160}?)\]\]([a-z]+)?/gi; //allow dangling suffixes - "[[flanders]]s"
 
   const external_links = function (links, str) {
@@ -2972,14 +2972,14 @@
   const closeTag = `< ?/ ?(${ignore$2.join('|')}) ?>`;
   const anyChar = '\\s\\S'; //including newline
 
-  const noThanks = new RegExp(`${openTag}[${anyChar}]+?${closeTag}`, 'ig');
+  const noThanks = new RegExp(`${openTag}[${anyChar}]+?${closeTag}`, 'gi');
 
   const kill_xml$1 = function (wiki) {
     //(<ref> tags are parsed in Section class) - luckily, refs can't be recursive.
     //types of html/xml that we want to trash completely.
     wiki = wiki.replace(noThanks, ' '); //some xml-like fragments we can also kill
 
-    wiki = wiki.replace(/ ?< ?(span|div|table|data) [a-zA-Z0-9=%\.\-#:;'" ]{2,100}\/? ?> ?/g, ' '); //<ref name="asd">
+    wiki = wiki.replace(/ ?< ?(span|div|table|data) [a-zA-Z0-9=%.\-#:;'" ]{2,100}\/? ?> ?/g, ' '); //<ref name="asd">
     //only kill ref tags if they are selfclosing
 
     wiki = wiki.replace(/ ?< ?(ref) [a-zA-Z0-9=" ]{2,100}\/ ?> ?/g, ' '); //<ref name="asd"/>
@@ -2991,11 +2991,11 @@
     wiki = wiki.replace(/<sub>(.*?)<\/sub>/g, `{{sub|$1}}`);
     wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, `{{sup|$1}}`); //some formatting xml, we'll keep their insides though
 
-    wiki = wiki.replace(/ ?<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?> ?/g, ' '); //<sub>, </sub>
+    wiki = wiki.replace(/ ?<[ /]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ /]?> ?/g, ' '); //<sub>, </sub>
 
-    wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ \/]?> ?/g, ' '); //<abbr>, </abbr>
+    wiki = wiki.replace(/ ?<[ /]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ /]?> ?/g, ' '); //<abbr>, </abbr>
 
-    wiki = wiki.replace(/ ?<[ \/]?h[0-9][ \/]?> ?/g, ' '); //<h2>, </h2>
+    wiki = wiki.replace(/ ?<[ /]?h[0-9][ /]?> ?/g, ' '); //<h2>, </h2>
 
     wiki = wiki.replace(/ ?< ?br ?\/> ?/g, '\n'); //<br />
 
@@ -3020,7 +3020,7 @@
     wiki = wiki.replace(/<!--[\s\S]{0,2000}?-->/g, '');
     wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, ''); //signitures
 
-    wiki = wiki.replace(/~~{1,3}/g, ''); //windows newlines
+    wiki = wiki.replace(/~{2,3}/g, ''); //windows newlines
 
     wiki = wiki.replace(/\r/g, ''); //japanese periods - '。'
 
@@ -3035,9 +3035,9 @@
 
     wiki = kill_xml(wiki); //({{template}},{{template}}) leaves empty parentheses
 
-    wiki = wiki.replace(/\([,;: ]+?\)/g, ''); //these templates just screw things up, too
+    wiki = wiki.replace(/\([,;: ]+\)/g, ''); //these templates just screw things up, too
 
-    wiki = wiki.replace(/{{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '');
+    wiki = wiki.replace(/\{\{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '');
     return wiki;
   }
 
@@ -3046,12 +3046,12 @@
   //dumpster-dive throws everything into mongodb  - github.com/spencermountain/dumpster-dive
   //mongo has some opinions about what characters are allowed as keys and ids.
   //https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
-  const specialChar = /[\\\.$]/;
+  const specialChar = /[\\.$]/;
   /**
    * this function encodes a string to make it mongodb compatible.
    * https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
-   * 
-   * @param {string} str 
+   *
+   * @param {string} str
    * @returns {string} the encoded string
    */
 
@@ -3221,7 +3221,7 @@
 
       let txt = this.data.text || this.data.page || ''; // remove bold/italics
 
-      txt = txt.replace(/''+/g, '');
+      txt = txt.replace(/'{2,}/g, '');
       return txt;
     },
     json: function () {
@@ -3332,7 +3332,7 @@
 
   const removeLinks = function (line) {
     // [[File:with|Size]]
-    line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+?)\]\](\w{0,5})/g, '$1');
+    line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+)\]\](\w{0,5})/g, '$1');
     return line;
   };
 
@@ -3529,7 +3529,7 @@
   const abbreviations = literalAbbreviations.concat('[^]][^]]');
   const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i');
   const acronym_reg = /[ .'][A-Z].? *?$/i;
-  const elipses_reg = /\.\.\.* +?$/;
+  const elipses_reg = /\.{3,} +?$/;
   const circa_reg = / c\.\s$/;
   const hasWord = /\p{Letter}/iu; //turn a nested array into one array
 
@@ -3547,7 +3547,7 @@
     splits = splits.filter(s => s.match(/\S/)); //split by period, question-mark, and exclamation-mark
 
     splits = splits.map(function (str) {
-      return str.split(/(\S.+?[.!?]"?)(?=\s+|$)/g); //\u3002
+      return str.split(/(\S.+?[.!?]"?)(?=\s|$)/g); //\u3002
     });
     return flatten(splits);
   }; // if this looks like a period within a wikipedia link, return false
@@ -3725,8 +3725,8 @@
    * @returns {string} the striped string
    */
   const strip$1 = function (tmpl) {
-    tmpl = tmpl.replace(/^{{/, '');
-    tmpl = tmpl.replace(/}}$/, '');
+    tmpl = tmpl.replace(/^\{\{/, '');
+    tmpl = tmpl.replace(/\}\}$/, '');
     return tmpl;
   };
 
@@ -3761,7 +3761,7 @@
       //has equal number of opening and closing tags. handle nested case '[[[[' ']]'
 
 
-      if (/\[\[[^\]]+$/.test(a) || /{{[^}]+$/.test(a) || a.split('{{').length !== a.split('}}').length || a.split('[[').length !== a.split(']]').length) {
+      if (/\[\[[^\]]+$/.test(a) || /\{\{[^}]+$/.test(a) || a.split('{{').length !== a.split('}}').length || a.split('[[').length !== a.split(']]').length) {
         arr[i + 1] = arr[i] + '|' + arr[i + 1]; //@ts-expect-error we can ignore this error because we filter out all nulls later in
 
         arr[i] = null;
@@ -3786,7 +3786,7 @@
 
   //every value in {{tmpl|a|b|c}} needs a name
   //here we come up with names for them
-  const hasKey = /^[\p{Letter}0-9\._\- '()œ]+=/iu; //templates with these properties are asking for trouble
+  const hasKey = /^[\p{Letter}0-9._\- '()]+=/iu; //templates with these properties are asking for trouble
 
   const reserved = {
     template: true,
@@ -4040,7 +4040,7 @@
   const parseSentence$6 = require$$0$7.fromText; //structured Cite templates - <ref>{{Cite..</ref>
 
   const hasCitation = function (str) {
-    return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false;
+    return /^ *\{\{ *(cite|citation)/i.test(str) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false;
   };
 
   const parseCitation = function (tmpl) {
@@ -4089,7 +4089,7 @@
 
     wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' '); //<ref name=""></ref>
 
-    wiki = wiki.replace(/ ?<ref [^>]{0,200}?>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
+    wiki = wiki.replace(/ ?<ref [^>]{0,200}>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
       if (hasCitation(tmpl)) {
         let obj = parseCitation(tmpl);
 
@@ -4111,7 +4111,7 @@
       return ' ';
     }); //now that we're done with xml, do a generic + dangerous xml-tag removal
 
-    wiki = wiki.replace(/ ?<[ \/]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ \/]?> ?/g, ' '); //<samp name="asd">
+    wiki = wiki.replace(/ ?<[ /]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ /]?> ?/g, ' '); //<samp name="asd">
 
     section._references = references.map(obj => new require$$7$1(obj.json, obj.wiki));
     section._wiki = wiki;
@@ -4184,11 +4184,11 @@
       return line && /^\|\+/.test(line) !== true;
     });
 
-    if (/^{\|/.test(lines[0]) === true) {
+    if (/^\{\|/.test(lines[0]) === true) {
       lines.shift();
     }
 
-    if (/^\|}/.test(lines[lines.length - 1]) === true) {
+    if (/^\|\}/.test(lines[lines.length - 1]) === true) {
       lines.pop();
     }
 
@@ -4216,7 +4216,8 @@
         }
       } else {
         //look for '||' inline row-splitter
-        line = line.split(/(?:\|\||!!)/); //support newline -> '||'
+        line = line.split(/(?:\|\||!!)/); //eslint-disable-line
+        //support newline -> '||'
 
         if (!line[0] && line[1]) {
           line.shift();
@@ -4240,8 +4241,8 @@
 
   var _findRows = findRows$1;
 
-  const getRowSpan = /.*rowspan *?= *?["']?([0-9]+)["']?[ \|]*/;
-  const getColSpan = /.*colspan *?= *?["']?([0-9]+)["']?[ \|]*/; //colspans stretch ←left/right→
+  const getRowSpan = /.*rowspan *= *["']?([0-9]+)["']?[ |]*/;
+  const getColSpan = /.*colspan *= *["']?([0-9]+)["']?[ |]*/; //colspans stretch ←left/right→
 
   const doColSpan = function (rows) {
     rows.forEach(row => {
@@ -4374,7 +4375,7 @@
 
     if (first && first[0] && first[1] && (/^!/.test(first[0]) || /^!/.test(first[1]))) {
       headers = first.map(h => {
-        h = h.replace(/^\! */, '');
+        h = h.replace(/^! */, '');
         h = cleanText(h);
         return h;
       });
@@ -4386,7 +4387,7 @@
 
     if (first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
       first.forEach((h, i) => {
-        h = h.replace(/^\! */, '');
+        h = h.replace(/^! */, '');
         h = cleanText(h);
 
         if (Boolean(h) === true) {
@@ -4419,7 +4420,7 @@
 
     let headers = rows[0].slice(0);
     headers = headers.map(h => {
-      h = h.replace(/^\! */, '');
+      h = h.replace(/^! */, '');
       h = parseSentence$4(h).text();
       h = cleanText(h);
       h = h.toLowerCase();
@@ -4602,8 +4603,8 @@
 
   var require$$8$1 = Table_1;
 
-  const openReg = /^\s*{\|/;
-  const closeReg = /^\s*\|}/; //tables can be recursive, so looky-here.
+  const openReg = /^\s*\{\|/;
+  const closeReg = /^\s*\|\}/; //tables can be recursive, so looky-here.
 
   const findTables = function (section) {
     let list = [];
@@ -4998,10 +4999,10 @@
   var require$$6$1 = List_1;
 
   const parseSentence$2 = require$$0$7.fromText;
-  const list_reg = /^[#\*:;\|]+/;
-  const bullet_reg = /^\*+[^:,\|]{4}/;
-  const number_reg = /^ ?\#[^:,\|]{4}/;
-  const has_word = /[a-z_0-9\]\}]/i; // does it start with a bullet point or something?
+  const list_reg = /^[#*:;|]+/;
+  const bullet_reg = /^\*+[^:,|]{4}/;
+  const number_reg = /^ ?#[^:,|]{4}/;
+  const has_word = /[a-z_0-9\]}]/i; // does it start with a bullet point or something?
 
   const isList = function (line) {
     return list_reg.test(line) || bullet_reg.test(line) || number_reg.test(line);
@@ -5168,7 +5169,7 @@
       name = (tmpl.match(/^\{\{(.+?)\|/) || [])[1];
     } else if (tmpl.indexOf('\n') !== -1) {
       // {{name \n...
-      name = (tmpl.match(/^\{\{(.+?)\n/) || [])[1];
+      name = (tmpl.match(/^\{\{(.+)\n/) || [])[1];
     } else {
       //{{name here}}
       name = (tmpl.match(/^\{\{(.+?)\}\}$/) || [])[1];
@@ -5326,7 +5327,7 @@
 
   const startReg = /^infobox /i;
   const endReg = / infobox$/i;
-  const yearIn = /$Year in [A-Z]/i; //some known ones from
+  const yearIn = /^year in [A-Z]/i; //some known ones from
   //https://en.wikipedia.org/wiki/Wikipedia:List_of_infoboxes
   //and https://en.wikipedia.org/wiki/Category:Infobox_templates
 
@@ -8837,7 +8838,7 @@
    */
 
   const parseGallery$1 = function (catcher, doc, section) {
-    catcher.text = catcher.text.replace(/<gallery([^>]*?)>([\s\S]+?)<\/gallery>/g, (_, attrs, inside) => {
+    catcher.text = catcher.text.replace(/<gallery([^>]*)>([\s\S]+)<\/gallery>/g, (_, attrs, inside) => {
       let images = inside.split(/\n/g);
       images = images.filter(str => str && str.trim() !== ''); //parse the line, which has an image and sometimes a caption
 
@@ -9049,7 +9050,7 @@
    */
 
   const parseMath$1 = function (catcher) {
-    catcher.text = catcher.text.replace(/<math([^>]*?)>([\s\S]+?)<\/math>/g, (_, attrs, inside) => {
+    catcher.text = catcher.text.replace(/<math([^>]*)>([\s\S]+)<\/math>/g, (_, attrs, inside) => {
       //clean it up a little?
       let formula = parseSentence(inside).text();
       catcher.templates.push({
@@ -9066,7 +9067,7 @@
       return '';
     }); //try chemistry version too
 
-    catcher.text = catcher.text.replace(/<chem([^>]*?)>([\s\S]+?)<\/chem>/g, (_, attrs, inside) => {
+    catcher.text = catcher.text.replace(/<chem([^>]*)>([\s\S]+?)<\/chem>/g, (_, attrs, inside) => {
       catcher.templates.push({
         template: 'chem',
         data: inside
@@ -9766,8 +9767,8 @@
 
   var _02Section = parseSections;
 
-  const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'ig');
-  const cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n.categories.join('|') + '):', 'ig');
+  const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'gi');
+  const cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n.categories.join('|') + '):', 'gi');
 
   const parse_categories = function (wiki) {
     const categories = [];
@@ -9776,11 +9777,11 @@
     if (tmp) {
       tmp.forEach(function (c) {
         c = c.replace(cat_remove_reg, '');
-        c = c.replace(/\|?[ \*]?\]\]$/i, ''); //parse fancy ones..
+        c = c.replace(/\|?[ *]?\]\]$/, ''); //parse fancy ones..
 
         c = c.replace(/\|.*/, ''); //everything after the '|' is metadata
 
-        if (c && !c.match(/[\[\]]/)) {
+        if (c && !c.match(/[[\]]/)) {
           categories.push(c.trim());
         }
       });
