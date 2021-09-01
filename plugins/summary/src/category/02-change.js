@@ -1,7 +1,5 @@
 const nlp = require('compromise')
-const titleCase = (str) => {
-  return str.charAt(0).toUpperCase() + str.substr(1)
-}
+
 
 const useAn = function (str) {
   const a_regexs = [

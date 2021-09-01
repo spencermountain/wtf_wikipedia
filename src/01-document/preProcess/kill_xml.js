@@ -23,7 +23,7 @@ const ignore = [
 const openTag = `< ?(${ignore.join('|')}) ?[^>]{0,200}?>`
 const closeTag = `< ?/ ?(${ignore.join('|')}) ?>`
 const anyChar = '\\s\\S' //including newline
-const noThanks = new RegExp(`${openTag}[${anyChar}]+?${closeTag}`, 'ig')
+const noThanks = new RegExp(`${openTag}[${anyChar}]+?${closeTag}`, 'gi')
 
 const kill_xml = function (wiki) {
   //(<ref> tags are parsed in Section class) - luckily, refs can't be recursive.
@@ -43,9 +43,9 @@ const kill_xml = function (wiki) {
   wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, `{{sup|$1}}`)
 
   //some formatting xml, we'll keep their insides though
-  wiki = wiki.replace(/ ?<[ \/]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ \/]?> ?/g, ' ') //<sub>, </sub>
-  wiki = wiki.replace(/ ?<[ \/]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ \/]?> ?/g, ' ') //<abbr>, </abbr>
-  wiki = wiki.replace(/ ?<[ \/]?h[0-9][ \/]?> ?/g, ' ') //<h2>, </h2>
+  wiki = wiki.replace(/ ?<[ /]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ /]?> ?/g, ' ') //<sub>, </sub>
+  wiki = wiki.replace(/ ?<[ /]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ /]?> ?/g, ' ') //<abbr>, </abbr>
+  wiki = wiki.replace(/ ?<[ /]?h[0-9][ /]?> ?/g, ' ') //<h2>, </h2>
   wiki = wiki.replace(/ ?< ?br ?\/> ?/g, '\n') //<br />
   return wiki.trim()
 }

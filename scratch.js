@@ -20,6 +20,6 @@ wtf.extend(require('./plugins/html'))
 // const wtf = require('wtf_wikipedia')
 // wtf.extend(require('wtf-plugin-html'))
 
-var input = "'''some bold text'''"
+const input = "'''some bold text'''"
 
 console.log(wtf(input).html())
