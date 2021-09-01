@@ -7,8 +7,8 @@
  * @returns {string} the striped string
  */
 const strip = function (tmpl) {
-  tmpl = tmpl.replace(/^{{/, '')
-  tmpl = tmpl.replace(/}}$/, '')
+  tmpl = tmpl.replace(/^\{\{/, '')
+  tmpl = tmpl.replace(/\}\}$/, '')
   return tmpl
 }
 module.exports = strip

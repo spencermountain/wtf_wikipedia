@@ -10,7 +10,7 @@ const parseSentence = require('../../04-sentence/').fromText
  * @param {object} catcher
  */
 const parseMath = function (catcher) {
-  catcher.text = catcher.text.replace(/<math([^>]*?)>([\s\S]+?)<\/math>/g, (_, attrs, inside) => {
+  catcher.text = catcher.text.replace(/<math([^>]*?)>([\s\S]+)<\/math>/g, (_, attrs, inside) => {
     //clean it up a little?
     let formula = parseSentence(inside).text()
 

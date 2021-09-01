@@ -5,7 +5,7 @@ const Reference = require('./Reference')
 
 //structured Cite templates - <ref>{{Cite..</ref>
 const hasCitation = function (str) {
-  return /^ *?\{\{ *?(cite|citation)/i.test(str) && /\}\} *?$/.test(str) && /citation needed/i.test(str) === false
+  return /^ *\{\{ *(cite|citation)/i.test(str) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false
 }
 
 const parseCitation = function (tmpl) {

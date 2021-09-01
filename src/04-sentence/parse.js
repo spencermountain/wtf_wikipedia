@@ -27,7 +27,7 @@ const naiive_split = function (text) {
   splits = splits.filter((s) => s.match(/\S/))
   //split by period, question-mark, and exclamation-mark
   splits = splits.map(function (str) {
-    return str.split(/(\S.+?[.!?]"?)(?=\s+|$)/g) //\u3002
+    return str.split(/(\S.+?[.!?]"?)(?=\s|$)/g) //\u3002
   })
   return flatten(splits)
 }

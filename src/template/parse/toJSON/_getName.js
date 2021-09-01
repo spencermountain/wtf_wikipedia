@@ -8,7 +8,7 @@ const getName = function (tmpl) {
     name = (tmpl.match(/^\{\{(.+?)\|/) || [])[1]
   } else if (tmpl.indexOf('\n') !== -1) {
     // {{name \n...
-    name = (tmpl.match(/^\{\{(.+?)\n/) || [])[1]
+    name = (tmpl.match(/^\{\{(.+)\n/) || [])[1]
   } else {
     //{{name here}}
     name = (tmpl.match(/^\{\{(.+?)\}\}$/) || [])[1]
