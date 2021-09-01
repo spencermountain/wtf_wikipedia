@@ -4,6 +4,11 @@
 - **[breaking]** - plural methods like .sentences() always return arrays, even with a 'clue' param.
 -->
 
+#### 9.0.1
+
+- **[fix]** - runtime error in cli (thanks maxlath!)
+- update deps
+
 #### 9.0.0
 
 Tldr:
