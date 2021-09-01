@@ -11,7 +11,7 @@ const Image = require('../../image/Image')
  * @param {Section} section
  */
 const parseGallery = function (catcher, doc, section) {
-  catcher.text = catcher.text.replace(/<gallery([^>]*?)>([\s\S]+)<\/gallery>/g, (_, attrs, inside) => {
+  catcher.text = catcher.text.replace(/<gallery([^>]*)>([\s\S]+)<\/gallery>/g, (_, attrs, inside) => {
     let images = inside.split(/\n/g)
     images = images.filter((str) => str && str.trim() !== '')
 

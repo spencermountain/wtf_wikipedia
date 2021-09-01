@@ -7,6 +7,7 @@
 #### 9.0.1
 
 - **[fix]** - runtime error in cli (thanks maxlath!)
+- **[fix]** - linter fixes for regexes
 - update deps
 
 #### 9.0.0

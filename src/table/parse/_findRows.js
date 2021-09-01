@@ -32,7 +32,7 @@ const findRows = function (lines) {
       }
     } else {
       //look for '||' inline row-splitter
-      line = line.split(/(?:\|\||!!)/)
+      line = line.split(/(?:\|\||!!)/) //eslint-disable-line
       //support newline -> '||'
       if (!line[0] && line[1]) {
         line.shift()
