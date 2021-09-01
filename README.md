@@ -167,7 +167,7 @@ run it on the client-side:
 or in Deno/typescript/webpack:
 
 ```js
-import spacetime from 'https://unpkg.com/spacetime/builds/spacetime.mjs'
+import wtf from 'https://unpkg.com/wtf_wikipedia'
 ```
 
 <!-- spacer -->
