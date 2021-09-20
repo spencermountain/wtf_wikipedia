@@ -156,7 +156,7 @@ run it on the client-side:
 ```html
 <script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
-  wtf.fetch('Radiohead', function (err, doc) {
+  wtf.fetch('Radiohead', {'Api-User-Agent': 'Name your script here'}, function (err, doc) {
     let members = doc.infobox().get('current members')
     members.links().map((l) => l.page())
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
