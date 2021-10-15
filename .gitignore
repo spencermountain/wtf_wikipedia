@@ -8,3 +8,4 @@ npm-debug.log
 *.DS_Store
 *.tsv
 _missing_templates.json
+.vscode/
