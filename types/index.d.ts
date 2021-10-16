@@ -1,27 +1,16 @@
 declare class Document {
-  constructor(wiki?: string, options?: object)
-  _pageID: any
-  _namespace: any
-  _lang: any
-  _domain: any
-  _title: any
-  _type: string
-  _redirectTo: any
-  _wikidata: any
-  _wiki: string
-  _categories: string[]
-  _sections: any[]
-  _coordinates: any[]
-
   categories(clue?: number): string[]
   category(clue?: number): string | null
   citations(clue?: number): Reference[]
+  citation(clue?: number): Reference | null
   coordinate(clue?: number): object | null
   coordinates(clue?: number): object[]
   debug(): Document
   domain(str?: string): string | null
   images(clue?: string | number): Image[]
+  image(clue?: string | number): Image | null
   infoboxes(clue?: number): Infobox[]
+  infobox(clue?: number): Infobox | null
   interwiki(clue?: number): string[]
   isDisambig: () => boolean
   isDisambiguation(): boolean
@@ -30,7 +19,9 @@ declare class Document {
   lang: (lang?: string) => string | null
   language(lang?: string): string | null
   links(clue?: number): string[]
+  link(clue?: number): string | null
   lists(clue?: number): List[]
+  list(clue?: number): List | null
   namespace(ns?: string): string | null
   ns: (ns?: string) => string | null
   pageID(id?: number): number | null
@@ -42,12 +33,15 @@ declare class Document {
   redirectsTo: () => null | object
   redirectTo(): null | object
   references(clue?: number): Reference[]
+  reference(clue?: number): Reference | null
   section(clue?: string | number): Section | null
   sections(clue?: string | number): Section[]
   sentence(clue?: number): Sentence | null
   sentences(clue?: string | number): Sentence[]
   tables(clue?: number): List[]
+  table(clue?: number): List | null
   templates(clue?: number): List[]
+  template(clue?: number): List | null
   text(options?: object): string
   title(str?: string): null | string
   url(): string | null
@@ -56,11 +50,6 @@ declare class Document {
 }
 
 declare class Section {
-  private doc: Document
-  private _title: string
-  private data: object
-  private depth: number
-
   children(clue?: string | number): Section | Section[] | null
   citations: () => object | object[]
   coordinates(): object | object[]
@@ -93,12 +82,6 @@ declare class Section {
 }
 
 declare class Infobox {
-  constructor(obj: object, wiki: string)
-  _type: any
-  _domain: any
-  _wiki: string
-  _data: any
-
   data: () => object
   get(keys: string | string[]): Sentence | undefined | unknown
   image(): Image | null
@@ -113,21 +96,12 @@ declare class Infobox {
 }
 
 declare class Template {
-  constructor(data: object, text?: string, wiki?: string)
-  _data: any
-  _text: string
-  _wiki: string
-
   json(): object
   text(): string
   wikitext(): string
 }
 
 declare class Table {
-  constructor(data: any[], wiki?: string)
-  _data: any[]
-  _wiki: string
-
   get(keys?: string | string[]): object
   json(options: object): object
   keyval(options: object): object
@@ -139,10 +113,6 @@ declare class Table {
 }
 
 declare class Reference {
-  constructor(data: object, wiki: string)
-  _data: any
-  _wiki: string
-
   json(options?: object): object
   links(n?: string | number): Link[]
   text(): string
@@ -151,19 +121,6 @@ declare class Reference {
 }
 
 declare class Paragraph {
-  constructor(data: {
-    wiki?: string | undefined
-    lists?: List[] | undefined
-    sentences?: Sentence[] | undefined
-    images?: Image[] | undefined
-    references?: Reference[] | undefined
-  })
-  _sentences: Sentence[]
-  _references: Reference[]
-  _lists: List[]
-  _images: Image[]
-  _wiki: string
-
   images(): Image[]
   interwiki(): Link[]
   json(options: object): object
@@ -176,22 +133,6 @@ declare class Paragraph {
 }
 
 declare class Image {
-  constructor(data: {
-    language?: string | undefined
-    lang?: string | null | undefined
-    domain?: string | undefined
-    file?: string | undefined
-    alt?: string | undefined
-    caption?: Sentence | undefined
-    wiki?: string | undefined
-  })
-  _language: string | null | undefined
-  _domain: string | undefined
-  _file: string
-  _alt: string | undefined
-  _caption: Sentence | undefined
-  _wiki: string | undefined
-
   alt(): string
   caption(): string
   file(): string
@@ -207,31 +148,18 @@ declare class Image {
 }
 
 declare class Link {
-  constructor(data: object);
-  _text: any;
-  _type: any;
-  _raw: any;
-  _page: any;
-  
   text(): string;
   json(): object;
   wikitext(): string;
   page(str?: string): string;
   anchor(str?: string): string;
-  _anchor: string | undefined;
   wiki(str?: string): string | undefined;
-  _wiki: string | undefined;
   type(str?: string): string;
   site(str?: string): string;
-  _site: string | undefined;
   href(): string;
 }
 
 declare class List {
-  constructor(data: Sentence[], wiki?: string)
-  _data: Sentence[]
-  _wiki: string
-
   json(options?: object): object
   lines(): object[]
   links(clue: string): Link[]
@@ -240,17 +168,6 @@ declare class List {
 }
 
 declare class Sentence {
-  constructor(data?: {
-    links?: Link[] | undefined
-    fmt?: object
-    wiki?: object
-    text?: object
-  })
-  _links: Link[]
-  _fmt: any
-  _wiki: any
-  _text: any
-
   bold(clue?: number): string
   bolds(): string[]
   interwiki(): Link[]
@@ -267,8 +184,6 @@ declare class Sentence {
 
 export = wtf
 
-type version = string
-
 type fetchDefaults = {
   path?: string | undefined;
   wiki?: string | undefined;
@@ -281,20 +196,24 @@ type fetchDefaults = {
 
 type fetchCallback = (error: any, response: (null | Document | Document[])) => any;
 
-declare function fetch(title: string | number | Array<number> | Array<string>, options?: fetchDefaults | undefined, callback?: fetchCallback): Promise<null | Document | Document[]>;
+declare function fetch(
+  title: string | number | Array<number> | Array<string>,
+  options?: fetchDefaults | undefined, callback?: fetchCallback
+): Promise<null | Document | Document[]>;
 
-declare function wtf(wiki: string, options: object): Document
+declare function wtf(wiki: string, options?: object): Document
 declare namespace wtf {
-    export { fetch }
-    export { extend }
-    export { extend as plugin }
-    export { version }
+  var version : string
+  export { fetch }
+  export { extend }
+  export { extend as plugin }
+  export { version }
 }
 
 declare function extend(fn: Function): {
-    (wiki: string, options: object): Document
-    fetch: (title: string | number | string[] | number[], options?: fetch.fetchDefaults | undefined, callback?: fetch.fetchCallback | undefined) => Promise<Document | Document[] | null>
-    extend: typeof extend
-    plugin: typeof extend
-    version: string
+  (wiki: string, options: object): Document
+  fetch: fetch
+  extend: typeof extend
+  plugin: typeof extend
+  version: string
 }

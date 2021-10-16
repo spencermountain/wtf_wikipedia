@@ -1,22 +1,38 @@
-// a smoke-test for our typescipt typings
+// a smoke-test for our typescript typings
 // to run:
 // npm install -g typescript
-// npm install -g ts-node
-// npm install --no-save @types/tape @types/node
 // npm run test:types
 
-import wtf from '../../builds/wtf_wikipedia'
-// import wtf from '../../'
+import wtf from '../../'
 
-const assert = function(a: any, b: any) {
-  if (a !== b) {
-    throw a
-  }
-}
+// general
+wtf('==header==');
+const version: string = wtf.version;
 
-const d = wtf('hello world')
-// wtf.fetch
-// wtf.random('en')
-// d.references()
-// d.links
-assert(d.text(), 'hello world')
+// fetch
+wtf.fetch("usa", {
+    follow_redirects: true
+});
+
+wtf.fetch("usa", {
+    // @ts-expect-error
+    follow_redirects: 1
+});
+
+wtf.fetch('On a Friday', { lang: 'en' })
+    .then((doc) => {
+        if (doc === null) {
+            return null
+        }
+
+        if (Array.isArray(doc)) {
+            return null
+        }
+
+        doc.infobox(0)?.get('current_members');
+
+        return;
+    })
+
+
+
