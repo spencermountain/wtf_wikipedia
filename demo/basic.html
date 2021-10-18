@@ -24,9 +24,9 @@
     <!-- load minified build -->
     <script src="../builds/wtf_wikipedia-client.min.js"></script>
     <script defer>
-      wtf.fetch('On a Friday', 'en').then(doc => {
+      wtf.fetch('On a Friday', { lang: 'en' }).then((doc) => {
         let val = doc.infobox(0).get('current_members')
-        let members = val.links().map(link => link.page())
+        let members = val.links().map((link) => link.page())
         document.querySelector('#result').innerHTML = members.join(', ')
       })
     </script>

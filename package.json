@@ -30,7 +30,7 @@
     "test:fetch": "tape ./tests/fetch/*.test.js | tap-dancer",
     "test:integration": "tape ./tests/integration/*.test.js | tap-dancer",
     "test:plugins": "node ./scripts/test.js",
-    "test:types": "ts-node ./tests/types/index.ts",
+    "test:types": "tsc -p ./tests/types/tsconfig.json",
     "test:unit": "tape ./tests/unit/**/*.test.js | tap-dancer",
     "test": "npm run test:unit && npm run test:integration && npm run test:plugins",
     "testb": "TESTENV=prod npm run test",
