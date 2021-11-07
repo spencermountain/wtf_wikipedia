@@ -31,6 +31,6 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.js", "plugins/**"],
+  "include": ["src/**/*.js", "plugins/**/*"],
   "exclude": ["node_modules", "**/node_modules/*", "**/builds/"]
 }

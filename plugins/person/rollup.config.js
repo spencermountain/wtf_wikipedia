@@ -1,6 +1,6 @@
-import commonjs from 'rollup-plugin-commonjs'
+import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
-import babel from 'rollup-plugin-babel'
+import { babel } from '@rollup/plugin-babel'
 import sizeCheck from 'rollup-plugin-filesize-check'
 import resolve from '@rollup/plugin-node-resolve' //import spacetime
 
@@ -16,8 +16,9 @@ export default [
     output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
     plugins: [
       resolve(),
-      commonjs(),
+      commonjs({ requireReturnsDefault: "auto" }),
       babel({
+        babelHelpers: "bundled",
         babelrc: false,
         presets: ['@babel/preset-env']
       })
@@ -38,8 +39,9 @@ export default [
     ],
     plugins: [
       resolve(),
-      commonjs(),
+      commonjs({ requireReturnsDefault: "auto" }),
       babel({
+        babelHelpers: "bundled",
         babelrc: false,
         presets: ['@babel/preset-env']
       })
@@ -59,8 +61,9 @@ export default [
     ],
     plugins: [
       resolve(),
-      commonjs(),
+      commonjs({ requireReturnsDefault: "auto" }),
       babel({
+        babelHelpers: "bundled",
         babelrc: false,
         presets: ['@babel/preset-env']
       }),
