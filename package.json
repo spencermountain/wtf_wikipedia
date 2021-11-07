@@ -46,10 +46,6 @@
     "defaults",
     "not ie <= 11",
     "not op_mini all",
-    "node 10",
-    "node 11",
-    "node 12",
-    "node 13",
     "maintained node versions"
   ],
   "files": [
