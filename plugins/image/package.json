@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-image",
   "description": "image plugin for wtf_wikipedia",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "./builds/wtf-plugin-image.js",
   "unpkg": "./builds/wtf-plugin-image.min.js",
   "module": "./builds/wtf-plugin-image.mjs",

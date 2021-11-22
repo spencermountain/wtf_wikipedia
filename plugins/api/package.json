@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-api",
   "description": "wikimedia api plugin for wtf_wikipedia",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "./builds/wtf-plugin-api.js",
   "unpkg": "./builds/wtf-plugin-api.min.js",
   "module": "./builds/wtf-plugin-api.mjs",

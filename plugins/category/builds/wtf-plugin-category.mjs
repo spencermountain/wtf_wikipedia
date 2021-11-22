@@ -1,4 +1,8 @@
-/* wtf-plugin-category 0.3.0  MIT */
+/* wtf-plugin-category 0.3.1  MIT */
+function getDefaultExportFromNamespaceIfNotNamed (n) {
+	return n && Object.prototype.hasOwnProperty.call(n, 'default') && Object.keys(n).length === 1 ? n['default'] : n;
+}
+
 /* slow 1.1.0 MIT */
 //only do foo promises at a time.
 var rateLimit = function rateLimit(arr, fn) {
@@ -90,9 +94,11 @@ methods.sprint = methods.fifteen;
 var src$1 = methods;
 
 var slow$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': src$1
+	__proto__: null,
+	'default': src$1
 });
+
+var require$$0 = /*@__PURE__*/getDefaultExportFromNamespaceIfNotNamed(slow$1);
 
 const defaults = {
   lang: 'en',
@@ -116,13 +122,13 @@ const fetchRandom = function (lang, options, http) {
     options = Object.assign(options, lang);
   }
 
-  let url = `https://${options.lang}.wikipedia.org/${options.path}?`;
+  let url = "https://".concat(options.lang, ".wikipedia.org/").concat(options.path, "?");
 
   if (options.domain) {
-    url = `https://${options.domain}/${options.path}?`;
+    url = "https://".concat(options.domain, "/").concat(options.path, "?");
   }
 
-  url += `format=json&action=query&generator=random&grnnamespace=14&prop=revisions&grnlimit=1&origin=*`;
+  url += "format=json&action=query&generator=random&grnnamespace=14&prop=revisions&grnlimit=1&origin=*";
   return http(url).then(res => {
     try {
       let o = res.query.pages;
@@ -137,15 +143,13 @@ const fetchRandom = function (lang, options, http) {
   });
 };
 
-var random = fetchRandom;
+var random$1 = fetchRandom;
 
-function getCjsExportFromNamespace (n) {
-	return n && n['default'] || n;
-}
+const slow = require$$0;
+const random = random$1;
 
-var slow = getCjsExportFromNamespace(slow$1);
-
-const chunkBy = function (arr, chunkSize = 5) {
+const chunkBy = function (arr) {
+  let chunkSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
   let groups = [];
 
   for (let i = 0; i < arr.length; i += chunkSize) {
@@ -197,4 +201,4 @@ const plugin = function (models) {
 
 var src = plugin;
 
-export default src;
+export { src as default };

@@ -1,5 +1,4 @@
-/* wtf-plugin-disambig 0.0.1  MIT */
-// const birthDate = require('./birthDate')
+/* wtf-plugin-disambig 0.0.2  MIT */
 const shouldSkip = /see also/;
 
 function escapeRegExp(str) {
@@ -111,4 +110,4 @@ const addMethod = function (models) {
 
 var src = addMethod;
 
-export default src;
+export { src as default };

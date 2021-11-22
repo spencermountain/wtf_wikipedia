@@ -1,4 +1,4 @@
-/* wtf-plugin-html 0.2.2  MIT */
+/* wtf-plugin-html 0.2.3  MIT */
 const defaults$4 = {
   title: true,
   infoboxes: true,
@@ -16,9 +16,7 @@ const softRedirect = function (doc) {
     href += '#' + link.anchor;
   }
 
-  return `  <div class="redirect">
-  ↳ <a class="link" href="./${href}">${link.text}</a>
-  </div>`;
+  return "  <div class=\"redirect\">\n  \u21B3 <a class=\"link\" href=\"./".concat(href, "\">").concat(link.text, "</a>\n  </div>");
 }; //turn a Doc object into a HTML string
 
 
@@ -129,13 +127,12 @@ const toHtml$4 = function (options) {
 
 var _03Paragraph = toHtml$4;
 
-//escape a string like 'fun*2.Co' for a regExpr
 function escapeRegExp(str) {
-  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+  return str.replace(/[\-[\]/{}()*+?.\\^$|]/g, '\\$&');
 } //sometimes text-replacements can be ambiguous - words used multiple times..
 
 
-const smartReplace = function (all, text, result) {
+const smartReplace$1 = function (all, text, result) {
   if (!text || !all) {
     return all;
   }
@@ -159,8 +156,9 @@ const smartReplace = function (all, text, result) {
   return all;
 };
 
-var smartReplace_1 = smartReplace;
+var smartReplace_1 = smartReplace$1;
 
+const smartReplace = smartReplace_1;
 const defaults$1 = {
   links: true,
   formatting: true
@@ -174,7 +172,7 @@ const doSentence = function (options) {
     this.links().forEach(link => {
       let str = link.text() || link.page();
       let tag = link.html();
-      text = smartReplace_1(text, str, tag);
+      text = smartReplace(text, str, tag);
     });
   }
 
@@ -182,12 +180,12 @@ const doSentence = function (options) {
     //support bolds
     this.bolds().forEach(str => {
       let tag = '<b>' + str + '</b>';
-      text = smartReplace_1(text, str, tag);
+      text = smartReplace(text, str, tag);
     }); //do italics
 
     this.italics().forEach(str => {
       let tag = '<i>' + str + '</i>';
-      text = smartReplace_1(text, str, tag);
+      text = smartReplace(text, str, tag);
     });
   }
 
@@ -201,7 +199,7 @@ const toHtml$3 = function () {
   let href = this.href();
   href = href.replace(/ /g, '_');
   let str = this.text() || this.page();
-  return `<a class="${classNames}" href="${href}">${str}</a>`;
+  return "<a class=\"".concat(classNames, "\" href=\"").concat(href, "\">").concat(str, "</a>");
 };
 
 var _05Link = toHtml$3;
@@ -217,7 +215,7 @@ const dontDo = {
   'signature alt': true
 }; //
 
-const infobox = function (options) {
+const infobox$1 = function (options) {
   options = Object.assign({}, defaults, options);
   let html = '<table class="infobox">\n';
   html += '  <thead>\n';
@@ -260,15 +258,14 @@ const infobox = function (options) {
   return html;
 };
 
-var infobox_1 = infobox;
+var infobox_1 = infobox$1;
 
 const makeImage = function () {
   return '  <img src="' + this.thumbnail() + '" alt="' + this.alt() + '"/>';
 };
 
-var image = makeImage;
+var image$1 = makeImage;
 
-//
 const toHtml$2 = function (options) {
   let html = '  <ul class="list">\n';
   this.lines().forEach(s => {
@@ -278,22 +275,21 @@ const toHtml$2 = function (options) {
   return html;
 };
 
-var list = toHtml$2;
+var list$1 = toHtml$2;
 
-//
 const toHtml$1 = function (options) {
   if (this.data && this.data.url && this.data.title) {
     let str = this.data.title;
 
     if (options.links === true) {
-      str = `<a href="${this.data.url}">${str}</a>`;
+      str = "<a href=\"".concat(this.data.url, "\">").concat(str, "</a>");
     }
 
-    return `<div class="reference">⌃ ${str} </div>`;
+    return "<div class=\"reference\">\u2303 ".concat(str, " </div>");
   }
 
   if (this.data.encyclopedia) {
-    return `<div class="reference">⌃ ${this.data.encyclopedia}</div>`;
+    return "<div class=\"reference\">\u2303 ".concat(this.data.encyclopedia, "</div>");
   }
 
   if (this.data.title) {
@@ -308,19 +304,18 @@ const toHtml$1 = function (options) {
       str += this.data.first + ' ' + this.data.last;
     }
 
-    return `<div class="reference">⌃ ${str}</div>`;
+    return "<div class=\"reference\">\u2303 ".concat(str, "</div>");
   }
 
   if (this.inline) {
-    return `<div class="reference">⌃ ${this.inline.html()}</div>`;
+    return "<div class=\"reference\">\u2303 ".concat(this.inline.html(), "</div>");
   }
 
   return '';
 };
 
-var reference = toHtml$1;
+var reference$1 = toHtml$1;
 
-//turn a json table into a html table
 const toHtml = function (options) {
   let rows = this.data;
   let html = '<table class="table">\n'; //make header
@@ -349,16 +344,27 @@ const toHtml = function (options) {
   return html;
 };
 
-var table = toHtml;
+var table$1 = toHtml;
+
+const doc = _01Doc;
+const section = _02Section;
+const paragraph = _03Paragraph;
+const sentence = _04Sentence;
+const link = _05Link;
+const infobox = infobox_1;
+const image = image$1;
+const list = list$1;
+const reference = reference$1;
+const table = table$1;
 
 const plugin = function (models) {
-  models.Doc.prototype.html = _01Doc;
-  models.Section.prototype.html = _02Section;
-  models.Paragraph.prototype.html = _03Paragraph;
-  models.Sentence.prototype.html = _04Sentence;
+  models.Doc.prototype.html = doc;
+  models.Section.prototype.html = section;
+  models.Paragraph.prototype.html = paragraph;
+  models.Sentence.prototype.html = sentence;
   models.Image.prototype.html = image;
-  models.Infobox.prototype.html = infobox_1;
-  models.Link.prototype.html = _05Link;
+  models.Infobox.prototype.html = infobox;
+  models.Link.prototype.html = link;
   models.List.prototype.html = list;
   models.Reference.prototype.html = reference;
   models.Table.prototype.html = table; // models.Template.html = function(opts) {}
@@ -366,4 +372,4 @@ const plugin = function (models) {
 
 var src = plugin;
 
-export default src;
+export { src as default };

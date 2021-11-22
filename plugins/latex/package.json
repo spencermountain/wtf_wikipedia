@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-latex",
   "description": "latex plugin for wtf_wikipedia",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "./builds/wtf-plugin-latex.js",
   "unpkg": "./builds/wtf-plugin-latex.min.js",
   "module": "./builds/wtf-plugin-latex.mjs",
