@@ -2,7 +2,6 @@ node_modules
 .git
 coverage
 coverage.lcov
-codecov.yml
 npm-debug.log
 .nyc_output
 *.DS_Store
