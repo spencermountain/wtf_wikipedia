@@ -7,8 +7,8 @@
 const literalAbbreviations = require('./_abbreviations')
 const abbreviations = literalAbbreviations.concat('[^]][^]]')
 const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i')
-const acronym_reg = /[ .'][A-Z].? *?$/i
-const elipses_reg = /\.{3,} +?$/
+const acronym_reg = /[ .'][A-Z].? *$/i
+const elipses_reg = /\.{3,} +$/
 const circa_reg = / c\.\s$/
 const hasWord = /\p{Letter}/iu
 

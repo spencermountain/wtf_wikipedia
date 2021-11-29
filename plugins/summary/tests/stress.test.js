@@ -19,8 +19,9 @@ test('first-sentence cleanup summary', (t) => {
   let arr = fs
     .readFileSync(abs)
     .toString()
-    .split(/\n/)
+    .split(/\r?\n/)
     .filter((s) => s)
+
   let count = 0
   arr.forEach((txt) => {
     let str = wtf(txt).summary({ article: false })
@@ -28,7 +29,10 @@ test('first-sentence cleanup summary', (t) => {
       count += 1
     }
   })
-  let want = parseInt(arr.length * 0.75, 10)
-  t.ok(count > want, count + ' > ' + want)
+
+  let want = arr.length * 0.75
+
+  console.log(count, want)
+  t.ok(count > want, 'stress test failed: ' + count + ' > ' + want)
   t.end()
 })

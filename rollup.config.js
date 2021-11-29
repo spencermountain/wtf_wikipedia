@@ -1,6 +1,6 @@
-import commonjs from 'rollup-plugin-commonjs'
+import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
-import babel from 'rollup-plugin-babel'
+import { babel } from '@rollup/plugin-babel'
 import sizeCheck from 'rollup-plugin-filesize-check'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 
@@ -17,6 +17,7 @@ export default [
     plugins: [
       commonjs(),
       babel({
+        babelHelpers: "bundled",
         babelrc: false,
         presets: ['@babel/preset-env'],
       }),
@@ -41,6 +42,7 @@ export default [
     plugins: [
       commonjs(),
       babel({
+        babelHelpers: "bundled",
         babelrc: false,
         presets: ['@babel/preset-env'],
       }),
@@ -66,6 +68,7 @@ export default [
       }),
       commonjs(),
       babel({
+        babelHelpers: "bundled",
         babelrc: false,
         presets: ['@babel/preset-env'],
       }),
@@ -90,6 +93,7 @@ export default [
       }),
       commonjs(),
       babel({
+        babelHelpers: "bundled",
         babelrc: false,
         presets: ['@babel/preset-env'],
       }),
@@ -115,6 +119,7 @@ export default [
       }),
       commonjs(),
       babel({
+        babelHelpers: "bundled",
         babelrc: false,
         presets: ['@babel/preset-env'],
       }),

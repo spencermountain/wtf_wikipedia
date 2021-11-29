@@ -20,6 +20,7 @@ wtf.extend(require('./plugins/html'))
 // const wtf = require('wtf_wikipedia')
 // wtf.extend(require('wtf-plugin-html'))
 
-const input = "'''some bold text'''"
-
-console.log(wtf(input).html())
+const input = "'''some bold text''' yeah"
+let doc = wtf(input, { pageID: 'foo' })
+// doc._wiki = 'foo'
+console.log(doc.pageID())

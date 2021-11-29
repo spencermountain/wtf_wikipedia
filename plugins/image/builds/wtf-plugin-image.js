@@ -1,34 +1,33 @@
-/* wtf-plugin-image 0.3.0  MIT */
+/* wtf-plugin-image 0.3.1  MIT */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('https')) :
 	typeof define === 'function' && define.amd ? define(['https'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wtfImage = factory(global.https));
-}(this, (function (https) { 'use strict';
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wtfImage = factory(global.require$$0));
+})(this, (function (require$$0) { 'use strict';
 
 	function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-	var https__default = /*#__PURE__*/_interopDefaultLegacy(https);
+	var require$$0__default = /*#__PURE__*/_interopDefaultLegacy(require$$0);
 
 	var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-	function createCommonjsModule(fn, module) {
-		return module = { exports: {} }, fn(module, module.exports), module.exports;
-	}
+	var hashes = {exports: {}};
 
-	var hashes = createCommonjsModule(function (module, exports) {
-	  /**
-	   * jshashes - https://github.com/h2non/jshashes
-	   * Released under the "New BSD" license
-	   *
-	   * Algorithms specification:
-	   *
-	   * MD5 - http://www.ietf.org/rfc/rfc1321.txt
-	   * RIPEMD-160 - http://homes.esat.kuleuven.be/~bosselae/ripemd160.html
-	   * SHA1   - http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf
-	   * SHA256 - http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf
-	   * SHA512 - http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf
-	   * HMAC - http://www.ietf.org/rfc/rfc2104.txt
-	   */
+	/**
+	 * jshashes - https://github.com/h2non/jshashes
+	 * Released under the "New BSD" license
+	 *
+	 * Algorithms specification:
+	 *
+	 * MD5 - http://www.ietf.org/rfc/rfc1321.txt
+	 * RIPEMD-160 - http://homes.esat.kuleuven.be/~bosselae/ripemd160.html
+	 * SHA1   - http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf
+	 * SHA256 - http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf
+	 * SHA512 - http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf
+	 * HMAC - http://www.ietf.org/rfc/rfc2104.txt
+	 */
+
+	(function (module, exports) {
 	  (function () {
 	    var Hashes;
 
@@ -1782,8 +1781,8 @@
 	          module.exports = Hashes;
 	        } // in Narwhal or RingoJS v0.7.0-
 	        else {
-	            freeExports.Hashes = Hashes;
-	          }
+	          freeExports.Hashes = Hashes;
+	        }
 	      } else {
 	        // in a browser or Rhino
 	        window.Hashes = Hashes;
@@ -1791,12 +1790,13 @@
 	    })(this);
 	  })(); // IIFE
 
-	});
+	})(hashes, hashes.exports);
 
+	const Hashes = hashes.exports;
 	const server$1 = 'https://upload.wikimedia.org/wikipedia/commons/';
 
 	const encodeTitle = function (file) {
-	  let title = file.replace(/^(image|file?)\:/i, ''); //titlecase it
+	  let title = file.replace(/^(image|file?):/i, ''); //titlecase it
 
 	  title = title.charAt(0).toUpperCase() + title.substring(1); //spaces to underscores
 
@@ -1806,21 +1806,24 @@
 	//https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F
 
 
-	const commonsURL = function () {
+	const commonsURL$1 = function () {
 	  let file = this.data.file;
 	  let title = encodeTitle(file);
-	  let hash = new hashes.MD5().hex(title);
+	  let hash = new Hashes.MD5().hex(title);
 	  let path = hash.substr(0, 1) + '/' + hash.substr(0, 2) + '/';
 	  title = encodeURIComponent(title);
 	  path += title;
 	  return server$1 + path;
 	};
 
-	var urlHash = commonsURL;
+	var urlHash = commonsURL$1;
 
-	const request = function (url, opts = {}) {
+	const https = require$$0__default["default"]; // use the native nodejs request function
+
+	const request = function (url) {
+	  let opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 	  return new Promise((resolve, reject) => {
-	    https__default['default'].get(url, opts, resp => {
+	    https.get(url, opts, resp => {
 	      let status = String(resp.statusCode) || '';
 	      let bool = /^[23]/.test(status);
 	      resolve(bool);
@@ -1832,8 +1835,10 @@
 
 	var server = request;
 
-	const imgExists = function (callback) {
-	  return server(this.url(), {
+	const http = server; // test if the image url exists or not
+
+	const imgExists$1 = function (callback) {
+	  return http(this.url(), {
 	    method: 'HEAD'
 	  }).then(function (bool) {
 	    //support callback non-promise form
@@ -1851,10 +1856,9 @@
 	  });
 	};
 
-	var imgExists_1 = imgExists;
+	var imgExists_1 = imgExists$1;
 
-	// is there a good image of this
-	const mainImage = function () {
+	const mainImage$1 = function () {
 	  let box = this.infobox();
 
 	  if (box) {
@@ -1875,18 +1879,22 @@
 	  return null;
 	};
 
-	var mainImage_1 = mainImage;
+	var mainImage_1 = mainImage$1;
+
+	const commonsURL = urlHash;
+	const imgExists = imgExists_1;
+	const mainImage = mainImage_1;
 
 	const addMethod = function (models) {
-	  models.Doc.prototype.mainImage = mainImage_1; // add a new method to Image class
+	  models.Doc.prototype.mainImage = mainImage; // add a new method to Image class
 
-	  models.Image.prototype.commonsURL = urlHash;
-	  models.Image.prototype.exists = imgExists_1;
+	  models.Image.prototype.commonsURL = commonsURL;
+	  models.Image.prototype.exists = imgExists;
 	};
 
 	var src = addMethod;
 
 	return src;
 
-})));
+}));
 //# sourceMappingURL=wtf-plugin-image.js.map

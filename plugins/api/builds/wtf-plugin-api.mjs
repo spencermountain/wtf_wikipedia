@@ -1,24 +1,32 @@
-/* wtf-plugin-api 0.1.0  MIT */
-var normalize$5 = function (title = '') {
+/* wtf-plugin-api 0.1.1  MIT */
+function getDefaultExportFromNamespaceIfNotNamed (n) {
+	return n && Object.prototype.hasOwnProperty.call(n, 'default') && Object.keys(n).length === 1 ? n['default'] : n;
+}
+
+var _fns = {};
+
+_fns.normalize = function () {
+  let title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   title = title.replace(/ /g, '_');
   title = title.trim();
   title = encodeURIComponent(title);
   return title;
 };
 
-var defaults$7 = {
+_fns.defaults = {
   lang: 'en',
   path: 'w/api.php'
 };
 
-var toUrlParams$7 = function (obj) {
-  let arr = Object.entries(obj).map(([key, value]) => {
-    return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+_fns.toUrlParams = function (obj) {
+  let arr = Object.entries(obj).map(_ref => {
+    let [key, value] = _ref;
+    return "".concat(encodeURIComponent(key), "=").concat(encodeURIComponent(value));
   });
   return arr.join('&');
 };
 
-var fetchOne$3 = function (url, http, prop) {
+_fns.fetchOne = function (url, http, prop) {
   return http(url).then(res => {
     let pages = Object.keys(res.query.pages || {});
 
@@ -34,13 +42,6 @@ var fetchOne$3 = function (url, http, prop) {
       cursor: res.continue
     };
   });
-};
-
-var _fns = {
-  normalize: normalize$5,
-  defaults: defaults$7,
-  toUrlParams: toUrlParams$7,
-  fetchOne: fetchOne$3
 };
 
 const {
@@ -60,14 +61,14 @@ const params$6 = {
 };
 
 const makeUrl$5 = function (title, options, append) {
-  let url = `https://${options.lang}.wikipedia.org/${options.path}?`;
+  let url = "https://".concat(options.lang, ".wikipedia.org/").concat(options.path, "?");
 
   if (options.domain) {
-    url = `https://${options.domain}/${options.path}?`;
+    url = "https://".concat(options.domain, "/").concat(options.path, "?");
   }
 
   url += toUrlParams$6(params$6);
-  url += `&titles=${normalize$4(title)}`;
+  url += "&titles=".concat(normalize$4(title));
 
   if (append) {
     url += append;
@@ -76,7 +77,7 @@ const makeUrl$5 = function (title, options, append) {
   return url;
 };
 
-const getRedirects = async function (title, http) {
+const getRedirects$1 = async function (title, http) {
   let list = [];
   let getMore = true;
   let append = '';
@@ -99,7 +100,7 @@ const getRedirects = async function (title, http) {
   return list;
 };
 
-var getRedirects_1 = getRedirects;
+var getRedirects_1 = getRedirects$1;
 
 const {
   normalize: normalize$3,
@@ -119,14 +120,14 @@ const params$5 = {
 };
 
 const makeUrl$4 = function (title, options, append) {
-  let url = `https://${options.lang}.wikipedia.org/${options.path}?`;
+  let url = "https://".concat(options.lang, ".wikipedia.org/").concat(options.path, "?");
 
   if (options.domain) {
-    url = `https://${options.domain}/${options.path}?`;
+    url = "https://".concat(options.domain, "/").concat(options.path, "?");
   }
 
   url += toUrlParams$5(params$5);
-  url += `&titles=${normalize$3(title)}`;
+  url += "&titles=".concat(normalize$3(title));
 
   if (append) {
     url += append;
@@ -135,7 +136,7 @@ const makeUrl$4 = function (title, options, append) {
   return url;
 };
 
-const getIncoming = async function (title, http) {
+const getIncoming$1 = async function (title, http) {
   let list = [];
   let getMore = true;
   let append = '';
@@ -158,7 +159,7 @@ const getIncoming = async function (title, http) {
   return list;
 };
 
-var getIncoming_1 = getIncoming;
+var getIncoming_1 = getIncoming$1;
 
 const {
   normalize: normalize$2,
@@ -174,14 +175,14 @@ const params$4 = {
 };
 
 const makeUrl$3 = function (title, options, append) {
-  let url = `https://${options.lang}.wikipedia.org/${options.path}?`;
+  let url = "https://".concat(options.lang, ".wikipedia.org/").concat(options.path, "?");
 
   if (options.domain) {
-    url = `https://${options.domain}/${options.path}?`;
+    url = "https://".concat(options.domain, "/").concat(options.path, "?");
   }
 
   url += toUrlParams$4(params$4);
-  url += `&titles=${normalize$2(title)}`;
+  url += "&titles=".concat(normalize$2(title));
 
   if (append) {
     url += append;
@@ -190,7 +191,7 @@ const makeUrl$3 = function (title, options, append) {
   return url;
 };
 
-const getPageViews = function (doc, http) {
+const getPageViews$1 = function (doc, http) {
   let url = makeUrl$3(doc.title(), defaults$4);
   return http(url).then(res => {
     let pages = Object.keys(res.query.pages || {});
@@ -203,7 +204,7 @@ const getPageViews = function (doc, http) {
   });
 };
 
-var getPageViews_1 = getPageViews;
+var getPageViews_1 = getPageViews$1;
 
 const {
   normalize: normalize$1,
@@ -222,14 +223,14 @@ const params$3 = {
 };
 
 const makeUrl$2 = function (title, options, append) {
-  let url = `https://${options.lang}.wikipedia.org/${options.path}?`;
+  let url = "https://".concat(options.lang, ".wikipedia.org/").concat(options.path, "?");
 
   if (options.domain) {
-    url = `https://${options.domain}/${options.path}?`;
+    url = "https://".concat(options.domain, "/").concat(options.path, "?");
   }
 
   url += toUrlParams$3(params$3);
-  url += `&titles=${normalize$1(title)}`; // support custom cursor params
+  url += "&titles=".concat(normalize$1(title)); // support custom cursor params
 
   if (append) {
     url += append;
@@ -239,7 +240,7 @@ const makeUrl$2 = function (title, options, append) {
 }; // fetch all the pages that use a specific template
 
 
-const getTransclusions = async function (template, _options, http) {
+const getTransclusions$1 = async function (template, _options, http) {
   let list = [];
   let getMore = true;
   let append = '';
@@ -262,7 +263,7 @@ const getTransclusions = async function (template, _options, http) {
   return list;
 };
 
-var getTransclusions_1 = getTransclusions;
+var getTransclusions_1 = getTransclusions$1;
 
 const {
   normalize,
@@ -300,10 +301,10 @@ const fetchIt$1 = function (url, http, prop) {
 };
 
 const makeUrl$1 = function (title, options, append) {
-  let url = `https://${options.lang}.wikipedia.org/${options.path}?`;
+  let url = "https://".concat(options.lang, ".wikipedia.org/").concat(options.path, "?");
 
   if (options.domain) {
-    url = `https://${options.domain}/${options.path}?`;
+    url = "https://".concat(options.domain, "/").concat(options.path, "?");
   }
 
   url += toUrlParams$2(params$2);
@@ -312,7 +313,7 @@ const makeUrl$1 = function (title, options, append) {
     title = 'Category:' + title;
   }
 
-  url += `&cmtitle=${normalize(title)}`;
+  url += "&cmtitle=".concat(normalize(title));
 
   if (append) {
     url += append;
@@ -321,7 +322,7 @@ const makeUrl$1 = function (title, options, append) {
   return url;
 };
 
-const getCategory = async function (title, options, http) {
+const getCategory$1 = async function (title, options, http) {
   let list = [];
   let getMore = true;
   let append = '';
@@ -344,7 +345,7 @@ const getCategory = async function (title, options, http) {
   return list;
 };
 
-var getCategory_1 = getCategory;
+var getCategory_1 = getCategory$1;
 
 const {
   defaults: defaults$1,
@@ -378,10 +379,10 @@ const fetchIt = function (url, http) {
 };
 
 const makeUrl = function (options) {
-  let url = `https://${options.lang}.wikipedia.org/${options.path}?`;
+  let url = "https://".concat(options.lang, ".wikipedia.org/").concat(options.path, "?");
 
   if (options.domain) {
-    url = `https://${options.domain}/${options.path}?`;
+    url = "https://".concat(options.domain, "/").concat(options.path, "?");
   }
 
   url += toUrlParams$1(params$1);
@@ -410,12 +411,14 @@ const params = {
   origin: '*'
 };
 
-const randomCategory = function (options = {}, http) {
+const randomCategory = function () {
+  let options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  let http = arguments.length > 1 ? arguments[1] : undefined;
   options = Object.assign({}, defaults, options);
-  let url = `https://${options.lang}.wikipedia.org/${options.path}?`;
+  let url = "https://".concat(options.lang, ".wikipedia.org/").concat(options.path, "?");
 
   if (options.domain) {
-    url = `https://${options.domain}/${options.path}?`;
+    url = "https://".concat(options.domain, "/").concat(options.path, "?");
   }
 
   url += toUrlParams(params);
@@ -433,7 +436,7 @@ const randomCategory = function (options = {}, http) {
   });
 };
 
-var getRandomCategory = randomCategory;
+var getRandomCategory$1 = randomCategory;
 
 /* slow 1.1.0 MIT */
 //only do foo promises at a time.
@@ -526,21 +529,20 @@ methods.sprint = methods.fifteen;
 var src$1 = methods;
 
 var slow$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': src$1
+	__proto__: null,
+	'default': src$1
 });
 
-function getCjsExportFromNamespace (n) {
-	return n && n['default'] || n;
-}
+var require$$0 = /*@__PURE__*/getDefaultExportFromNamespaceIfNotNamed(slow$1);
 
-var slow = getCjsExportFromNamespace(slow$1);
+const slow = require$$0;
 
 const isObject = function (obj) {
   return obj && Object.prototype.toString.call(obj) === '[object Object]';
 };
 
-const chunkBy = function (arr, chunkSize = 5) {
+const chunkBy = function (arr) {
+  let chunkSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
   let groups = [];
 
   for (let i = 0; i < arr.length; i += chunkSize) {
@@ -550,7 +552,7 @@ const chunkBy = function (arr, chunkSize = 5) {
   return groups;
 };
 
-const fetchList = function (pages, options, wtf) {
+const fetchList$1 = function (pages, options, wtf) {
   // support a list of strings, or objects
   if (pages[0] && isObject(pages[0])) {
     pages = pages.map(o => o.title);
@@ -573,25 +575,34 @@ const fetchList = function (pages, options, wtf) {
   });
 };
 
-var fetchList_1 = fetchList;
+var fetchList_1 = fetchList$1;
+
+const getRedirects = getRedirects_1;
+const getIncoming = getIncoming_1;
+const getPageViews = getPageViews_1;
+const getTransclusions = getTransclusions_1;
+const getCategory = getCategory_1;
+const getRandomPage = getRandom_1;
+const getRandomCategory = getRandomCategory$1;
+const fetchList = fetchList_1;
 
 const addMethod = function (models) {
   // doc methods
   models.Doc.prototype.getRedirects = function () {
-    return getRedirects_1(this.title(), models.http);
+    return getRedirects(this.title(), models.http);
   };
 
   models.Doc.prototype.getIncoming = function () {
-    return getIncoming_1(this.title(), models.http);
+    return getIncoming(this.title(), models.http);
   };
 
   models.Doc.prototype.getPageViews = function () {
-    return getPageViews_1(this, models.http);
+    return getPageViews(this, models.http);
   }; // constructor methods
 
 
   models.wtf.getRandomPage = function (options) {
-    return getRandom_1(options, models.http);
+    return getRandomPage(options, models.http);
   };
 
   models.wtf.getRandomCategory = function (options) {
@@ -599,26 +610,26 @@ const addMethod = function (models) {
   };
 
   models.wtf.getTemplatePages = function (template, options) {
-    return getTransclusions_1(template, options, models.http);
+    return getTransclusions(template, options, models.http);
   };
 
   models.wtf.getCategoryPages = function (category, options) {
-    return getCategory_1(category, options, models.http);
+    return getCategory(category, options, models.http);
   };
 
   models.wtf.fetchList = function (list, options) {
-    return fetchList_1(list, options, models.wtf);
+    return fetchList(list, options, models.wtf);
   };
 
   models.wtf.getIncoming = function (title) {
-    return getIncoming_1(title, models.http);
+    return getIncoming(title, models.http);
   };
 
   models.wtf.getRedirects = function (title) {
-    return getRedirects_1(title, models.http);
+    return getRedirects(title, models.http);
   };
 };
 
 var src = addMethod;
 
-export default src;
+export { src as default };

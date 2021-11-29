@@ -1,4 +1,4 @@
-/* wtf-plugin-classify 1.0.0  MIT */
+/* wtf-plugin-classify 1.0.1  MIT */
 var AmericanFootballPlayer = {
   name: 'AmericanFootballPlayer',
   //
@@ -1551,7 +1551,7 @@ var Creation = {
   }
 };
 
-let schema = {
+let schema$1 = {
   children: {
     Person: Person,
     Place: Place,
@@ -1577,9 +1577,10 @@ const setId = function (root, id) {
   return root;
 };
 
-schema = setId(schema, '');
-var schema_1 = schema;
+schema$1 = setId(schema$1, '');
+var schema_1 = schema$1;
 
+const schema = schema_1;
 let mappings$5 = {
   categories: {},
   descriptions: {},
@@ -1647,7 +1648,7 @@ const doNode = function (node) {
   }
 };
 
-doNode(schema_1);
+doNode(schema);
 var _dataFns = {
   patterns: patterns$4,
   mappings: mappings$5
@@ -1657,7 +1658,7 @@ const {
   mappings: mappings$4
 } = _dataFns;
 
-const byInfobox = function (doc) {
+const byInfobox$1 = function (doc) {
   let infoboxes = doc.infoboxes();
   let found = [];
 
@@ -1680,9 +1681,9 @@ const byInfobox = function (doc) {
   return found;
 };
 
-var byInfobox_1 = byInfobox;
+var byInfobox_1 = byInfobox$1;
 
-const byPattern = function (str, patterns) {
+const byPattern$4 = function (str, patterns) {
   for (let i = 0; i < patterns.length; i += 1) {
     let reg = patterns[i][0];
 
@@ -1694,14 +1695,15 @@ const byPattern = function (str, patterns) {
   return null;
 };
 
-var _byPattern = byPattern;
+var _byPattern = byPattern$4;
 
 const {
   patterns: patterns$3,
   mappings: mappings$3
 } = _dataFns;
+const byPattern$3 = _byPattern;
 
-const byCategory = function (doc) {
+const byCategory$1 = function (doc) {
   let found = [];
   let cats = doc.categories(); // clean them up a bit
 
@@ -1724,7 +1726,7 @@ const byCategory = function (doc) {
     } // loop through our patterns
 
 
-    let match = _byPattern(category, patterns$3.categories);
+    let match = byPattern$3(category, patterns$3.categories);
 
     if (match) {
       found.push({
@@ -1737,14 +1739,15 @@ const byCategory = function (doc) {
   return found;
 };
 
-var byCategory_1 = byCategory;
+var byCategory_1 = byCategory$1;
 
 const {
   patterns: patterns$2,
   mappings: mappings$2
 } = _dataFns;
+const byPattern$2 = _byPattern;
 
-const byTemplate = function (doc) {
+const byTemplate$1 = function (doc) {
   let templates = doc.templates().map(tmpl => tmpl.json());
   let found = [];
 
@@ -1758,7 +1761,7 @@ const byTemplate = function (doc) {
       });
     } else {
       // try regex-list on it
-      let type = _byPattern(title, patterns$2.templates);
+      let type = byPattern$2(title, patterns$2.templates);
 
       if (type) {
         found.push({
@@ -1772,7 +1775,7 @@ const byTemplate = function (doc) {
   return found;
 };
 
-var byTemplate_1 = byTemplate;
+var byTemplate_1 = byTemplate$1;
 
 const {
   mappings: mappings$1
@@ -1800,15 +1803,16 @@ const fromSection = function (doc) {
   return found;
 };
 
-var bySection = fromSection;
+var bySection$1 = fromSection;
 
 const {
   patterns: patterns$1,
   mappings
 } = _dataFns;
+const byPattern$1 = _byPattern;
 const paren$1 = /\((.*)\)$/;
 
-const byTitle = function (doc) {
+const byTitle$1 = function (doc) {
   let title = doc.title();
 
   if (!title) {
@@ -1835,7 +1839,7 @@ const byTitle = function (doc) {
   } // look at regex
 
 
-  let match = _byPattern(title, patterns$1.titles);
+  let match = byPattern$1(title, patterns$1.titles);
 
   if (match) {
     return [{
@@ -1847,20 +1851,21 @@ const byTitle = function (doc) {
   return [];
 };
 
-var byTitle_1 = byTitle;
+var byTitle_1 = byTitle$1;
 
 const {
   patterns
 } = _dataFns;
+const byPattern = _byPattern;
 
-const byDescription = function (doc) {
+const byDescription$1 = function (doc) {
   let tmpl = doc.template('short description');
 
   if (tmpl && tmpl.description) {
     let desc = tmpl.description || '';
     desc = desc.toLowerCase(); // loop through our patterns
 
-    let match = _byPattern(desc, patterns.descriptions);
+    let match = byPattern(desc, patterns.descriptions);
 
     if (match) {
       return [{
@@ -1873,7 +1878,7 @@ const byDescription = function (doc) {
   return [];
 };
 
-var byDescription_1 = byDescription;
+var byDescription_1 = byDescription$1;
 
 const skip = {
   disambiguation: true,
@@ -1885,7 +1890,7 @@ const paren = /\((.*)\)$/;
 const listOf = /^list of ./;
 const disambig = /\(disambiguation\)/;
 
-const skipPage = function (doc) {
+const skipPage$1 = function (doc) {
   let title = doc.title() || ''; //look at parentheses like 'Tornado (film)'
 
   let m = title.match(paren);
@@ -1915,7 +1920,7 @@ const skipPage = function (doc) {
   return false;
 };
 
-var _skip = skipPage;
+var _skip = skipPage$1;
 
 const topk = function (arr) {
   let obj = {};
@@ -1996,7 +2001,7 @@ const getScore = function (detail) {
   let type = root;
 
   if (top) {
-    type = `${root}/${top[0]}`; // punish for any conflicting children
+    type = "".concat(root, "/").concat(top[0]); // punish for any conflicting children
 
     if (topKids.length > 1) {
       score *= 0.7;
@@ -2016,7 +2021,16 @@ const getScore = function (detail) {
   };
 };
 
-var score = getScore;
+var score$1 = getScore;
+
+const byInfobox = byInfobox_1;
+const byCategory = byCategory_1;
+const byTemplate = byTemplate_1;
+const bySection = bySection$1;
+const byTitle = byTitle_1;
+const byDescription = byDescription_1;
+const skipPage = _skip;
+const score = score$1;
 
 const plugin = function (models) {
   //add a new method to main class
@@ -2024,26 +2038,26 @@ const plugin = function (models) {
     let doc = this;
     let res = {}; //dont classify these
 
-    if (_skip(doc)) {
+    if (skipPage(doc)) {
       return score(res);
     } //look for 'infobox person', etc
 
 
-    res.infobox = byInfobox_1(doc); //look for '{{coord}}'
+    res.infobox = byInfobox(doc); //look for '{{coord}}'
 
-    res.template = byTemplate_1(doc); //look for '==early life=='
+    res.template = byTemplate(doc); //look for '==early life=='
 
     res.section = bySection(doc); //look for 'foo (film)'
 
-    res.title = byTitle_1(doc); //look for 'foo (film)'
+    res.title = byTitle(doc); //look for 'foo (film)'
 
-    res.description = byDescription_1(doc); //look for 'Category: 1992 Births', etc
+    res.description = byDescription(doc); //look for 'Category: 1992 Births', etc
 
-    res.category = byCategory_1(doc);
+    res.category = byCategory(doc);
     return score(res);
   };
 };
 
 var src = plugin;
 
-export default src;
+export { src as default };

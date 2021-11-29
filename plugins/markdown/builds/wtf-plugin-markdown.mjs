@@ -1,4 +1,4 @@
-/* wtf-plugin-markdown 0.2.1  MIT */
+/* wtf-plugin-markdown 0.2.2  MIT */
 const defaults$4 = {
   redirects: true,
   infoboxes: true,
@@ -15,7 +15,7 @@ const softRedirect = function (doc) {
     href += '#' + link.anchor;
   }
 
-  return `↳ [${link.text}](${href})`;
+  return "\u21B3 [".concat(link.text, "](").concat(href, ")");
 }; //turn a Doc object into a markdown string
 
 
@@ -134,13 +134,12 @@ const toMarkdown$5 = function (options) {
 
 var _03Paragraph = toMarkdown$5;
 
-//escape a string like 'fun*2.Co' for a regExpr
 function escapeRegExp(str) {
-  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+  return str.replace(/[\-[\]/{}()*+?.\\^$|]/g, '\\$&');
 } //sometimes text-replacements can be ambiguous - words used multiple times..
 
 
-const smartReplace = function (all, text, result) {
+const smartReplace$1 = function (all, text, result) {
   if (!text || !all) {
     return all;
   }
@@ -164,8 +163,9 @@ const smartReplace = function (all, text, result) {
   return all;
 };
 
-var smartReplace_1 = smartReplace;
+var smartReplace_1 = smartReplace$1;
 
+const smartReplace = smartReplace_1;
 const defaults$1 = {
   links: true,
   formatting: true
@@ -179,18 +179,18 @@ const toMarkdown$4 = function (options) {
     this.links().forEach(link => {
       let mdLink = link.markdown();
       let str = link.text() || link.page();
-      md = smartReplace_1(md, str, mdLink);
+      md = smartReplace(md, str, mdLink);
     });
   } //turn bolds into **bold**
 
 
   if (options.formatting === true) {
     this.bolds().forEach(b => {
-      md = smartReplace_1(md, b, '**' + b + '**');
+      md = smartReplace(md, b, '**' + b + '**');
     }); //support *italics*
 
     this.italics().forEach(i => {
-      md = smartReplace_1(md, i, '*' + i + '*');
+      md = smartReplace(md, i, '*' + i + '*');
     });
   }
 
@@ -199,7 +199,6 @@ const toMarkdown$4 = function (options) {
 
 var _04Sentence = toMarkdown$4;
 
-// add `[text](href)` to the text
 const toMarkdown$3 = function () {
   let href = this.href();
   href = href.replace(/ /g, '_'); // href = encodeURIComponent(href)
@@ -210,17 +209,15 @@ const toMarkdown$3 = function () {
 
 var _05Link = toMarkdown$3;
 
-//markdown images are like this: ![alt text](href)
 const toMarkdown$2 = function () {
   let alt = this.data.file.replace(/^(file|image):/i, '');
   alt = alt.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
   return '![' + alt + '](' + this.thumbnail() + ')';
 };
 
-var image = toMarkdown$2;
+var image$1 = toMarkdown$2;
 
-//center-pad each cell, to make the table more legible
-const pad = (str, cellWidth) => {
+const pad$2 = (str, cellWidth) => {
   str = str || '';
   str = String(str);
   cellWidth = cellWidth || 15;
@@ -238,7 +235,7 @@ const pad = (str, cellWidth) => {
   return str;
 };
 
-var pad_1 = pad;
+var pad_1 = pad$2;
 
 const dontDo = {
   image: true,
@@ -250,12 +247,13 @@ const dontDo = {
 const defaults = {
   images: true
 }; //
-// render an infobox as a table with two columns, key + value
+
+const pad$1 = pad_1; // render an infobox as a table with two columns, key + value
 
 const doInfobox = function (options) {
   options = Object.assign({}, defaults, options);
-  let md = '|' + pad_1('', 35) + '|' + pad_1('', 30) + '|\n';
-  md += '|' + pad_1('---', 35) + '|' + pad_1('---', 30) + '|\n'; //todo: render top image here (somehow)
+  let md = '|' + pad$1('', 35) + '|' + pad$1('', 30) + '|\n';
+  md += '|' + pad$1('---', 35) + '|' + pad$1('---', 30) + '|\n'; //todo: render top image here (somehow)
 
   Object.keys(this.data).forEach(k => {
     if (dontDo[k] === true) {
@@ -267,14 +265,13 @@ const doInfobox = function (options) {
     let val = s.markdown(options); //markdown is more newline-sensitive than wiki
 
     val = val.split(/\n/g).join(', ');
-    md += '|' + pad_1(key, 35) + '|' + pad_1(val, 30) + ' |\n';
+    md += '|' + pad$1(key, 35) + '|' + pad$1(val, 30) + ' |\n';
   });
   return md;
 };
 
-var infobox = doInfobox;
+var infobox$1 = doInfobox;
 
-//
 const toMarkdown$1 = function (options) {
   return this.lines().map(s => {
     let str = s.markdown(options);
@@ -282,14 +279,13 @@ const toMarkdown$1 = function (options) {
   }).join('\n');
 };
 
-var list = toMarkdown$1;
+var list$1 = toMarkdown$1;
 
-//
 const toMarkdown = function () {
   if (this.data && this.data.url && this.data.title) {
-    return `⌃ [${this.data.title}](${this.data.url})`;
+    return "\u2303 [".concat(this.data.title, "](").concat(this.data.url, ")");
   } else if (this.data.encyclopedia) {
-    return `⌃ ${this.data.encyclopedia}`;
+    return "\u2303 ".concat(this.data.encyclopedia);
   } else if (this.data.title) {
     //cite book, etc
     let str = this.data.title;
@@ -302,16 +298,17 @@ const toMarkdown = function () {
       str += this.data.first + ' ' + this.data.last;
     }
 
-    return `⌃ ${str}`;
+    return "\u2303 ".concat(str);
   } else if (this.inline) {
-    return `⌃ ${this.inline.markdown()}`;
+    return "\u2303 ".concat(this.inline.markdown());
   }
 
   return '';
 };
 
-var reference = toMarkdown;
+var reference$1 = toMarkdown;
 
+const pad = pad_1;
 /* this is a markdown table:
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
@@ -321,7 +318,7 @@ var reference = toMarkdown;
 */
 
 const makeRow = arr => {
-  arr = arr.map(s => pad_1(s, 14));
+  arr = arr.map(s => pad(s, 14));
   return '| ' + arr.join(' | ') + ' |';
 }; //markdown tables are weird
 
@@ -363,14 +360,25 @@ const doTable = function (options) {
   return md + '\n';
 };
 
-var table = doTable;
+var table$1 = doTable;
+
+const doc = _01Doc;
+const section = _02Section;
+const paragraph = _03Paragraph;
+const sentence = _04Sentence;
+const link = _05Link;
+const image = image$1;
+const infobox = infobox$1;
+const list = list$1;
+const reference = reference$1;
+const table = table$1;
 
 const plugin = function (models) {
-  models.Doc.prototype.markdown = _01Doc;
-  models.Section.prototype.markdown = _02Section;
-  models.Paragraph.prototype.markdown = _03Paragraph;
-  models.Sentence.prototype.markdown = _04Sentence;
-  models.Link.prototype.markdown = _05Link;
+  models.Doc.prototype.markdown = doc;
+  models.Section.prototype.markdown = section;
+  models.Paragraph.prototype.markdown = paragraph;
+  models.Sentence.prototype.markdown = sentence;
+  models.Link.prototype.markdown = link;
   models.Image.prototype.markdown = image;
   models.Infobox.prototype.markdown = infobox;
   models.Table.prototype.markdown = table;
@@ -380,4 +388,4 @@ const plugin = function (models) {
 
 var src = plugin;
 
-export default src;
+export { src as default };

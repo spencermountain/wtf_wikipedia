@@ -1,9 +1,9 @@
-/* wtf-plugin-i18n 0.1.0  MIT */
+/* wtf-plugin-i18n 0.1.1  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wtfI18n = factory());
-}(this, (function () { 'use strict';
+})(this, (function () { 'use strict';
 
   var birth_date_and_age = ['ålder', 'ani', 'b', // 'birth date',
   // 'birth date and age',
@@ -133,5 +133,5 @@
 
   return src;
 
-})));
+}));
 //# sourceMappingURL=wtf-plugin-i18n.js.map

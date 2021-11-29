@@ -1,11 +1,10 @@
-/* wtf-plugin-disambig 0.0.1  MIT */
+/* wtf-plugin-disambig 0.0.2  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wtfdisambig = factory());
-}(this, (function () { 'use strict';
+})(this, (function () { 'use strict';
 
-  // const birthDate = require('./birthDate')
   const shouldSkip = /see also/;
 
   function escapeRegExp(str) {
@@ -119,5 +118,5 @@
 
   return src;
 
-})));
+}));
 //# sourceMappingURL=wtf-plugin-disambig.js.map
