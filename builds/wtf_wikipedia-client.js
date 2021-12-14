@@ -1,4 +1,4 @@
-/* wtf_wikipedia 9.0.2 MIT */
+/* wtf_wikipedia 9.0.3 MIT */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
@@ -533,6 +533,8 @@
 	'disamb', //en
 	'disambig', //en
 	'disambiguation', //en
+	// Disambiguation_message_boxes
+	'letter-numbercombdisambig', 'letter-number combination disambiguation', 'dmbox', 'airport disambiguation', 'biology disambiguation', 'call sign disambiguation', 'caselaw disambiguation', 'chinese title disambiguation', 'disambiguation cleanup', 'genus disambiguation', 'hospital disambiguation', 'human name disambiguation', 'human name disambiguation cleanup', 'letter-number combination disambiguation', 'mathematical disambiguation', 'military unit disambiguation', 'music disambiguation', 'number disambiguation', 'opus number disambiguation', 'phonetics disambiguation', 'place name disambiguation', 'portal disambiguation', 'road disambiguation', 'school disambiguation', 'species latin name abbreviation disambiguation', 'species latin name disambiguation', 'station disambiguation', 'synagogue disambiguation', 'taxonomic authority disambiguation', 'taxonomy disambiguation', 'template disambiguation', 'disamb2', 'disamb3', 'disamb4', 'disambiguation lead', 'disambiguation lead name', 'disambiguation name', 'disamb-term', 'disamb-terms', // i18n
 	'aðgreining', //is
 	'aimai', //ja
 	'ałtsʼáʼáztiin', //nv
@@ -9725,7 +9727,7 @@
 
 	var _fetch = fetch$2;
 
-	var _version = '9.0.2';
+	var _version = '9.0.3';
 
 	const unfetch = browser;
 	/**
