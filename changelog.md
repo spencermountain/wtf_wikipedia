@@ -4,6 +4,10 @@
 - **[breaking]** - plural methods like .sentences() always return arrays, even with a 'clue' param.
 -->
 
+#### 9.0.3
+- **[fix]** - typescript error
+- **[change]** - update demos
+
 #### 9.0.1
 
 - **[fix]** - runtime error in cli (thanks maxlath!)

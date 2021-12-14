@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/spencer-css" />
+</head>
+
+<body>
+  <div class="m4">
+    client-side plugin demo for <a href="https://github.com/spencermountain/wtf_wikipedia">wtf_wikipedia</a>
+  </div>
+  <script src="https://unpkg.com/wtf_wikipedia"></script>
+  <script src="https://unpkg.com/wtf-plugin-classify"></script>
+  <script defer>
+    window.onload = function () {
+      wtf.plugin(window.wtfClassify)
+      wtf.fetch('On a Friday', { lang: 'en' }).then((doc) => {
+        document.querySelector('#result').innerHTML = `
+        <div >${doc.title()}</div>
+        <pre >${JSON.stringify(doc.classify(), null, 2)}</pre>
+        `
+      })
+    }
+  </script>
+</body>
+
+</html>
