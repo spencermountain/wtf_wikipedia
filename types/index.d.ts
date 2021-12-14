@@ -212,7 +212,7 @@ declare namespace wtf {
 
 declare function extend(fn: Function): {
   (wiki: string, options: object): Document
-  fetch: fetch
+  fetch: typeof fetch
   extend: typeof extend
   plugin: typeof extend
   version: string
