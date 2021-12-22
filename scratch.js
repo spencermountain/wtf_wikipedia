@@ -20,7 +20,8 @@ wtf.extend(require('./plugins/html'))
 // const wtf = require('wtf_wikipedia')
 // wtf.extend(require('wtf-plugin-html'))
 
-const input = "'''some bold text''' yeah"
-let doc = wtf(input, { pageID: 'foo' })
-// doc._wiki = 'foo'
-console.log(doc.pageID())
+wtf.fetch('https://commons.wikimedia.org/wiki/File:ACMA_1331_Alexander_2.JPG').then(doc => {
+  let res = doc.templates().map(t => t.json())
+  res = res.filter(o => o.template === 'self' || o.template === 'pd-self' || o.template === 'information')
+  console.log(res)
+})

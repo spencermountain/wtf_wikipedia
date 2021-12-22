@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-wikitext",
   "description": "wikitext output plugin for wtf_wikipedia",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "./builds/wtf-plugin-wikitext.js",
   "unpkg": "./builds/wtf-plugin-wikitext.min.js",
   "module": "./builds/wtf-plugin-wikitext.mjs",
@@ -28,7 +28,7 @@
     "printWidth": 100
   },
   "peerDependencies": {
-    "wtf_wikipedia": "^8.0.0"
+    "wtf_wikipedia": ">=9.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.0",

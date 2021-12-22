@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-classify",
   "description": "basic classifier for wikipedia articles",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./builds/wtf-plugin-classify.js",
   "unpkg": "./builds/wtf-plugin-classify.min.js",
   "module": "./builds/wtf-plugin-classify.mjs",
@@ -29,7 +29,7 @@
     "printWidth": 100
   },
   "peerDependencies": {
-    "wtf_wikipedia": "^8.0.0"
+    "wtf_wikipedia": ">=9.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.0",

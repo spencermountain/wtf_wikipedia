@@ -10,7 +10,7 @@
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
   "peerDependencies": {
-    "wtf_wikipedia": "^8.0.0"
+    "wtf_wikipedia": ">=9.0.0"
   },
   "license": "MIT"
 }

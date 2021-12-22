@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-category",
   "description": "i18n plugin for wtf_wikipedia",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "main": "./builds/wtf-plugin-category.js",
   "unpkg": "./builds/wtf-plugin-category.min.js",
   "module": "./builds/wtf-plugin-category.mjs",
@@ -31,7 +31,7 @@
     "slow": "^1.1.0"
   },
   "peerDependencies": {
-    "wtf_wikipedia": "^8.0.0"
+    "wtf_wikipedia": ">=9.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.0",
