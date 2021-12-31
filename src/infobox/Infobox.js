@@ -46,8 +46,16 @@ const methods = {
       return null
     }
     let obj = s.json()
-    obj.file = obj.text
+    let file = obj.text
+    file = file.trim()
+    //titlecase it
+    file = file.charAt(0).toUpperCase() + file.substring(1)
+    //spaces to underscores
+    file = file.replace(/ /g, '_')
+    file = `File:${file}`
+    obj.file = file
     obj.text = ''
+    obj.caption = this.data.caption
     obj.domain = this.domain // add domain information for image
     return new Image(obj)
   },

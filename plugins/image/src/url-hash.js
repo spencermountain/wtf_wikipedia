@@ -4,10 +4,11 @@ const server = 'https://upload.wikimedia.org/wikipedia/commons/'
 
 const encodeTitle = function (file) {
   let title = file.replace(/^(image|file?):/i, '')
+  title = title.trim()
   //titlecase it
   title = title.charAt(0).toUpperCase() + title.substring(1)
   //spaces to underscores
-  title = title.trim().replace(/ /g, '_')
+  title = title.replace(/ /g, '_')
   return title
 }
 
