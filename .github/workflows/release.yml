@@ -28,7 +28,7 @@ jobs:
 
       - name: install
         run: |
-          npm ci
+          npm i
           npm i --no-save eslint
 
       - name: static checks
