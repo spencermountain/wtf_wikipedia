@@ -37,6 +37,12 @@ const defaults = {
 
 /**
  *  fetches the page from the wiki and returns a Promise with the parsed wiki text
+ * 
+ * if you supply it with a single pageID or title it will return a Document object.
+ * if you supply a wiki URL then we will parse it and use the tile and provide a single Document object
+ * if you supply it with an array with pageIDs or an array of titles it will return an array of document objects.
+ *
+ * there is another catch in the programming you need if you provide an array it needs to be eighter pageIDs or titles they can not be mixed.
  *
  * @param {string | number | Array<number> | Array<string>} title the title, PageID, URL or an array of all three of the page(s) you want to fetch
  * @param {fetchDefaults} [options] the options for the fetch or the language of the wiki for the article
