@@ -148,9 +148,9 @@ test('tables - get - number', (t) => {
 test('templates - get', (t) => {
   let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
-  const expected = [148, 195, 54, 49, 727, 176, 182, 399, 70, 23, 18, 18, 21]
+  const expected = [148, 195, 54, 49, 727, 176, 182, 399, 70, 97, 147, 78, 23, 18, 18, 21]
   t.deepEqual(
-    sec.templates().map((s) => JSON.stringify(s).length),
+    sec.templates().map((s) => JSON.stringify(s.json()).length),
     expected,
     'the templates should equal the expected'
   )
@@ -160,14 +160,14 @@ test('templates - get', (t) => {
 test('templates - get - number', (t) => {
   let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
-  t.equal(JSON.stringify(sec.template(1)).length, 195, 'the templates should equal the expected')
+  t.equal(JSON.stringify(sec.template(1).json()).length, 195, 'the templates should equal the expected')
   t.end()
 })
 
 test('templates - get - string', (t) => {
   let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
-  t.equal(JSON.stringify(sec.templates('coord')).length, 72, 'the templates should equal the expected')
+  t.equal(JSON.stringify(sec.templates('coord')[0].json()).length, 70, 'the templates should equal the expected')
   t.end()
 })
 

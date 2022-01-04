@@ -943,7 +943,7 @@ test('infoboxes - get - return all templates', (t) => {
   t.deepEqual(
     doc.infoboxes().map((i) => JSON.stringify(i.json()).length),
     expected,
-    'returns all references'
+    'returns all templates in the infobox'
   )
   t.end()
 })
@@ -1007,6 +1007,7 @@ test('json - get - get the json version of the document', (t) => {
   t.deepEqual(JSON.stringify(doc.json()).length, 1971, 'JSON version of the document')
   t.end()
 })
+
 //debug
 //we need something like sinon for mocking the console.log
 

@@ -68,7 +68,7 @@ test('raith rovers', (t) => {
   t.equal(doc.infobox(0).data.clubname.text(), 'Raith Rovers', 'clubname')
   t.equal(doc.categories().length, 10, 'cat-length')
   t.equal(doc.images().length, 2, 'img-length')
-  t.equal(doc.image(1).file(), "File:Stark's Park - geograph.org.uk - 204446.jpg", 'img-file')
+  t.equal(doc.image(1).file(), "File:Stark's_Park_-_geograph.org.uk_-_204446.jpg", 'img-file')
   t.equal(
     doc.image(1).url(),
     `https://wikipedia.org/wiki/Special:Redirect/file/Stark's_Park_-_geograph.org.uk_-_204446.jpg`,

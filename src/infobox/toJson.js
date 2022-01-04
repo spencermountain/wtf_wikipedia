@@ -1,6 +1,12 @@
 const encode = require('../_lib/encode')
 
-//turn an infobox into some nice json
+/**
+ * turn an infobox into some nice json
+ * 
+ * @param {Infobox} infobox 
+ * @param {object} [options] 
+ * @returns {object}
+ */
 const toJson = function (infobox, options) {
   let json = Object.keys(infobox.data).reduce((h, k) => {
     if (infobox.data[k]) {

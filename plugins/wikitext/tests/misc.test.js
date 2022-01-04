@@ -15,7 +15,7 @@ test('basic-wikitext', (t) => {
     'cool [[stuff]] **bold** too',
     '{{foobar | fun = true | key = val}}',
     // `[[Image:Levellers declaration and standard.gif|thumb|Woodcut from a [[Diggers]] document by [[William Everard (Digger)|William Everard]]]]`,
-    `[[Image:Levellers declaration and standard.gif|thumb|Woodcut from a Diggers document]]`,
+    `[[Image:Levellers_declaration_and_standard.gif|thumb|Woodcut from a Diggers document]]`,
     '== References ==\n{{ref-list}}',
     `{{Infobox award
 | name           = Outstanding Achievement in Short Film Screen Craft

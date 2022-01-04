@@ -21,7 +21,7 @@ test('nihongo templates templates', (t) => {
 test('hindi image', (t) => {
   const str = `[[चित्र:Gandhis ashes.jpg|thumb|left|[[राज घाट और अन्य स्मारक|राज घाट]] ([[:en:Raj Ghat and other memorials|Raj Ghat]]):आगा खान पैलेस में गांधी की अस्थियां (पुणे, भारत) .]]`
   const img = wtf(str).image(0).json()
-  t.equal(img.file, 'चित्र:Gandhis ashes.jpg')
+  t.equal(img.file, 'चित्र:Gandhis_ashes.jpg')
   t.end()
 })
 
