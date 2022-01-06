@@ -9,13 +9,14 @@ const isUrl = /^https?:\/\//
 
 /**
  * @typedef fetchDefaults
- * @property {string | undefined} [path]
- * @property {string | undefined} [wiki]
- * @property {string | undefined} [domain]
- * @property {boolean | undefined} [follow_redirects]
- * @property {string | undefined} [lang]
- * @property {string | number | Array<string> | Array<number> | undefined} [title]
- * @property {string | undefined} [Api-User-Agent]
+ * @property {string | undefined} [path] the path to the wiki api. default: api.php
+ * @property {string | undefined} [wiki] 
+ * @property {string | undefined} [domain] the domain of the wiki you want to query
+ * @property {boolean | undefined} [follow_redirects] should the library follow redirects
+ * @property {string | undefined} [lang] the language of the wiki
+ * @property {string | number | Array<string> | Array<number> | undefined} [title] 
+ * @property {string | undefined} [Api-User-Agent] the user agent of the application
+ * @property {string | undefined} [origin] the domain or the origin of the request
  */
 
 /**
