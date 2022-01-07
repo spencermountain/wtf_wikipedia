@@ -67,6 +67,12 @@ const makeUrl = function (options) {
     delete params.redirects
   }
 
+  // the origin header and url parameters need to be the same
+  // if one is provided we should change both the header and the parameter
+  if(options.origin){
+    params.origin = options.origin
+  }
+
   //support numerical ids
   let title = options.title
   if (typeof title === 'number') {
