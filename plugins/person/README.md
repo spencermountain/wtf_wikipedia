@@ -36,7 +36,7 @@ wtf.extend(require('wtf-plugin-person'))
 
 ## Notes:
 
-This library assumes that every article you give it is about a person. You may want to use it in conjunction with [wtf-plugin-classify](https://github.com/spencermountain/wtf_wikipedia/tree/master/plugins/classify)
+- This library assumes that every article you give it is about a person. You may want to use it in conjunction with [wtf-plugin-classify](https://github.com/spencermountain/wtf_wikipedia/tree/master/plugins/classify)
 to ensure that a page is first about a person, and not a place, or musical group:
 
 ```js
@@ -48,11 +48,13 @@ wtf.fetch('Billy Elliot').then((doc) => {
 })
 ```
 
+- For inaccurate dates, if the date is a range, finds the average rounded down; otherwise finds the minimum.
+  
 ### `.birthDate()`
 
-returns `month`, `year` and `date` properties, or a null response
+returns `month`, `year` and `date` properties (also `originalDate` if the date is inaccurate), or a null response
 
-- looks at varous person-infoboxes, like `Infobox officeholder` or `Infobox ice hockey player`
+- looks at various person-infoboxes, like `Infobox officeholder` or `Infobox ice hockey player`
 - looks at first-sentence parentheses, like `'Wayne Douglas Gretzky CC (/ˈɡrɛtski/; born January 26, 1961) is a ...'`
 - looks at category information, like `'Category:1933 births'`
 
@@ -60,7 +62,7 @@ returns `month`, `year` and `date` properties, or a null response
 
 returns a string - and a wikipedia article title, if possible
 
-- looks at varous person infoboxes
+- looks at various person infoboxes
 - looks at category information, like `'Category:People from Geneva'`
 
 ### `.isAlive()`

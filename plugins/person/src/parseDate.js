@@ -4,21 +4,98 @@ const parseDate = function (str) {
   if (!str) {
     return null
   }
+  // regexes
+  const regJustYear = /^(?:c\.\s*)?(\d+)\s*(bc|bce|ad|ce)?$/i
+  const regInaccurate = /((\d+)\s*(or|–|\/)\s*(\d+))\s*(?:bc|bce|ad|ce)?\b/gi
+  const regRangeSeparator = /–/
+  const regUptoSecondMill = /\b(\d{1,3})\s*(bc|bce|ad|ce)?$|\b(\d+)\s*(bc|bce)$/i
+  const regBCE = /(\d+)\s*(bc|bce)\b/i
   // remove parentheses
   str = str.replace(/\(.*\)/, '')
   str = str.trim()
-  // just the year
-  if (str.match(/^[0-9]{4}$/)) {
-    return {
-      year: parseInt(str, 10),
+  // check for inaccurate dates such as "20 or 21 July 356 BC", "c. 1155/1162", "183–181 BC"
+  let inaccurateOriginal
+  if (str.match(regInaccurate)) {
+    inaccurateOriginal = str // the original str will be added to the final result
+    // finds the average
+    function average(arr) {
+      return arr.reduce((partialSum, n) => partialSum + n)/arr.length
+    }
+    // replace number pairs with a single value
+    const inaccurate = [...str.matchAll(regInaccurate)]
+    for (const arr of inaccurate) {
+      // find the numbers
+      let onlyNumbers = [...arr]
+      const removeIndexes = [3,1,0]
+      removeIndexes.forEach(i => onlyNumbers.splice(i,1))
+      onlyNumbers = onlyNumbers.map(i => Number(i))
+      // if it's a range, replace with the average rounded down, otherwise with the minimum
+      if (arr[3].match(regRangeSeparator)) {
+        const ave = average(onlyNumbers)
+        if (arr[0].match(regBCE)) {
+          str = str.replace(arr[1], Math.ceil(ave))
+        }
+        else {
+          str = str.replace(arr[1], Math.floor(ave))
+        }
+      }
+      else {
+        if (arr[0].match(regBCE)) {
+          str = str.replace(arr[1], Math.max(...onlyNumbers))
+        }
+        else {
+          str = str.replace(arr[1], Math.min(...onlyNumbers))
+        }
+      }
     }
   }
-  // parse the full date
+  // just the year
+  const justYear = str.match(regJustYear)
+  let res = {}
+  if (justYear) {
+    if (inaccurateOriginal) {
+      Object.defineProperty(res,"originalDate", {
+        value: inaccurateOriginal
+      })
+    }
+    if (str.match(regBCE)) {
+      res.year = -parseInt(justYear[1], 10)
+    }
+    else {
+      res.year = parseInt(justYear[1], 10)
+    }
+    return res
+  }
+  // make the years up to the second millennium spacetime-friendly
+  const UptoSecondMill = str.match(regUptoSecondMill)
+  let year
+  if (UptoSecondMill) {
+    // trick spacetime to get the month and day correctly by replacing the year with 1000
+    str = str.replace(UptoSecondMill[0], "1000")
+    // assign the real year
+    year = UptoSecondMill.input.match(regBCE)? -Number(UptoSecondMill[1]) : Number(UptoSecondMill[1])
+  }
+  // parse the full date; return null if unsuccessful
   let s = spacetime(str)
-  return {
+  res = {
     year: s.year(),
     month: s.month(),
-    date: s.date(),
+    date: s.date()
   }
+  const epoch = { // epoch is returned when unsuccessful 
+    year: 1970,
+    month: 0,
+    date: 1
+  }
+  if (JSON.stringify(res) === JSON.stringify(epoch)) {
+    return null
+  }
+  res.year = year || s.year()
+  if (inaccurateOriginal) {
+    Object.defineProperty(res,"originalDate", {
+      value: inaccurateOriginal
+    })
+  }
+  return res
 }
 module.exports = parseDate
