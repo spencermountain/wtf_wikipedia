@@ -22,7 +22,7 @@ const parseInterwiki = function (obj) {
     if (site.indexOf(':') !== -1) {
       let [, wiki, lang] = site.match(/^:?(.*):(.*)/)
       //only allow interwikis to these specific places
-      if (interwikis.hasOwnProperty(wiki) && languages.hasOwnProperty(lang) === false) {
+      if (interwikis.hasOwnProperty(wiki) === false || languages.hasOwnProperty(lang) === false) {
         return obj
       }
       obj.wiki = { wiki: wiki, lang: lang }

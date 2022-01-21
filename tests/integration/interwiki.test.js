@@ -29,6 +29,21 @@ test('expand external interwiki link', (t) => {
   t.equal(obj.text, 'bonjour', 'text')
   t.deepEqual(obj.wiki, { wiki: 'wiktionary', lang: 'fr' }, 'wiki')
 
+  str = `[[ThisIsNotAWiki:text]]`
+  doc = wtf(str)
+  obj = doc.link().json()
+  t.notEqual(obj.type, 'interwiki')
+
+  str = `[[ThisIsNotAWiki:en:text]]`
+  doc = wtf(str)
+  obj = doc.link().json()
+  t.notEqual(obj.type, 'interwiki')
+
+  str = `[[wikipedia:ThisIsNotALanguage:text]]`
+  doc = wtf(str)
+  obj = doc.link().json()
+  t.notEqual(obj.type, 'interwiki')
+
   t.end()
 })
 
