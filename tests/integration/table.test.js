@@ -534,3 +534,12 @@ b2
   t.equal(data[0].h3, 'c', 'h3')
   t.end()
 })
+
+test('multiple pipes in a cell', (t) => {
+  const str = `{|
+  | styling | content | more content
+  |}`
+  const table = wtf(str).table(0).keyValue()
+  t.equal(table[0].col1, 'content | more content', 'col1')
+  t.end()
+})
