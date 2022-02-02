@@ -22,7 +22,7 @@ const cleanText = function (str) {
   str = parseSentence(str).text()
   //anything before a single-pipe is styling, so remove it
   if (str.match(/\|/)) {
-    str = str.replace(/.+?\| ?/, '') //class="unsortable"|title
+    str = str.replace(/.*?\| ?/, '') //class="unsortable"|title
   }
   str = str.replace(/style=['"].*?["']/, '')
   //'!' is used as a highlighed-column

@@ -538,8 +538,49 @@ b2
 test('multiple pipes in a cell', (t) => {
   const str = `{|
   | styling | content | more content
+  |-
+  || content | more content
   |}`
   const table = wtf(str).table(0).keyValue()
   t.equal(table[0].col1, 'content | more content', 'col1')
+  t.equal(table[1].col1, 'content | more content', 'col1 row2')
+  t.end()
+})
+
+test('empty cells', (t) => {
+  // Actually rendered table:
+  // A | B | C | D |   | F |   |   | I |   | K
+  //   | b |   | d | e | f | g | h | i | j | k
+  //   |   | c |   | e
+  const str = `{| class="wikitable"
+  ! A
+  ! B
+  ! C
+  ! D
+  !!! F
+  !!!!! I !!!! K
+  |-
+  ||| b |||| d || e || f || g || h || i || j || k
+  |-
+  ||||| c
+  |||| e
+  |}`
+  const table = wtf(str).table(0).keyValue()
+  t.equal(table[0].A, '', 'a1')
+  t.equal(table[0].B, 'b', 'b1')
+  t.equal(table[0].C, '', 'c1')
+  t.equal(table[0].D, 'd', 'd1')
+  t.equal(table[0].col5, 'e', 'e1')
+  t.equal(table[0].F, 'f', 'f1')
+  t.equal(table[0].col7, 'g', 'g1')
+  t.equal(table[0].col8, 'h', 'h1')
+  t.equal(table[0].I, 'i', 'i1')
+  t.equal(table[0].col10, 'j', 'j1')
+  t.equal(table[0].K, 'k', 'k1')
+  t.equal(table[1].A, '', 'a2')
+  t.equal(table[1].B, '', 'b2')
+  t.equal(table[1].C, 'c', 'c2')
+  t.equal(table[1].D, '', 'd2')
+  t.equal(table[1].col5, 'e', 'e2')
   t.end()
 })
