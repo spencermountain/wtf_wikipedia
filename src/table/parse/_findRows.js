@@ -31,14 +31,18 @@ const findRows = function (lines) {
         row = []
       }
     } else {
+      // remove leading | or ! for the ||/!! splitting
+      let startChar = line.charAt(0)
+      if (startChar === '|' || startChar === '!') {
+        line = line.substring(1)
+      }
       //look for '||' inline row-splitter
       line = line.split(/(?:\|\||!!)/) //eslint-disable-line
-      //support newline -> '||'
-      if (!line[0] && line[1]) {
-        line.shift()
+      // add leading ! back, because we later read it in header parsing functions
+      if (startChar === '!') {
+        line[0] = startChar + line[0]
       }
       line.forEach((l) => {
-        l = l.replace(/^\| */, '')
         l = l.trim()
         row.push(l)
       })
