@@ -19,15 +19,15 @@ const parseDate = function (str) {
     inaccurateOriginal = str // the original str will be added to the final result
     // finds the average
     function average(arr) {
-      return arr.reduce((partialSum, n) => partialSum + n)/arr.length
+      return arr.reduce((partialSum, n) => partialSum + n) / arr.length
     }
     // replace number pairs with a single value
     const inaccurate = [...str.matchAll(regInaccurate)]
     for (const arr of inaccurate) {
       // find the numbers
       let onlyNumbers = [...arr]
-      const removeIndexes = [3,1,0]
-      removeIndexes.forEach(i => onlyNumbers.splice(i,1))
+      const removeIndexes = [3, 1, 0]
+      removeIndexes.forEach(i => onlyNumbers.splice(i, 1))
       onlyNumbers = onlyNumbers.map(i => Number(i))
       // if it's a range, replace with the average rounded down, otherwise with the minimum
       if (arr[3].match(regRangeSeparator)) {
@@ -39,13 +39,11 @@ const parseDate = function (str) {
           str = str.replace(arr[1], Math.floor(ave))
         }
       }
+      else if (arr[0].match(regBCE)) {
+        str = str.replace(arr[1], Math.max(...onlyNumbers))
+      }
       else {
-        if (arr[0].match(regBCE)) {
-          str = str.replace(arr[1], Math.max(...onlyNumbers))
-        }
-        else {
-          str = str.replace(arr[1], Math.min(...onlyNumbers))
-        }
+        str = str.replace(arr[1], Math.min(...onlyNumbers))
       }
     }
   }
@@ -54,7 +52,7 @@ const parseDate = function (str) {
   let res = {}
   if (justYear) {
     if (inaccurateOriginal) {
-      Object.defineProperty(res,"originalDate", {
+      Object.defineProperty(res, "originalDate", {
         value: inaccurateOriginal
       })
     }
@@ -73,7 +71,7 @@ const parseDate = function (str) {
     // trick spacetime to get the month and day correctly by replacing the year with 1000
     str = str.replace(UptoSecondMill[0], "1000")
     // assign the real year
-    year = UptoSecondMill.input.match(regBCE)? -Number(UptoSecondMill[1]) : Number(UptoSecondMill[1])
+    year = UptoSecondMill.input.match(regBCE) ? -Number(UptoSecondMill[1]) : Number(UptoSecondMill[1])
   }
   // parse the full date; return null if unsuccessful
   let s = spacetime(str)
@@ -92,7 +90,7 @@ const parseDate = function (str) {
   }
   res.year = year || s.year()
   if (inaccurateOriginal) {
-    Object.defineProperty(res,"originalDate", {
+    Object.defineProperty(res, "originalDate", {
       value: inaccurateOriginal
     })
   }

@@ -25,3 +25,6 @@ wtf.fetch('https://commons.wikimedia.org/wiki/File:ACMA_1331_Alexander_2.JPG').t
   res = res.filter(o => o.template === 'self' || o.template === 'pd-self' || o.template === 'information')
   console.log(res)
 })
+
+// npm run test:build
+// npm run test:fetch
