@@ -43,10 +43,11 @@ const cleanTitle = (page) => {
  * 
  * @private
  * @param {import('.').fetchDefaults} options
+ * @param {Object} [parameters]
  * @returns {string} the url that can be used to make the fetch
  */
-const makeUrl = function (options) {
-  let params = Object.assign({}, defaults)
+const makeUrl = function (options, parameters = defaults) {
+  let params = Object.assign({}, parameters)
 
   //default url
   let apiPath = ''

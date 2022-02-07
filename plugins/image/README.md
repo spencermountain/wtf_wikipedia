@@ -31,13 +31,37 @@ wtf.fetch('casa', { lang:'it', wiki: `wiktionary` }).then(async function(doc) {
   // make a {method: 'HEAD'} request to test the image is there
   let bool = await image.exists()
 
-  //instead of using the redirect api, generate a direct img url
+  // instead of using the redirect api, generate a direct img url
   let url = image.commonsURL()
-  //https://upload.wikimedia.org/wikipedia/commons/4/4e/RybnoeDistrict_06-13_Konstantinovo_village_05.jpg
+  // https://upload.wikimedia.org/wikipedia/commons/4/4e/RybnoeDistrict_06-13_Konstantinovo_village_05.jpg
 
   let img = doc.mainImage()
   //
+  // make a request to get the license and attribution information (results are HTML formatted)
+  let license = await image.license()
+  /* 
+  {
+    license: 'CC BY-SA 3.0',
+    artist: '<b><span class="plainlinks"> ... (more HTML)',
+    credit: '<span class="int-own-work" lang="en">Own work</span>',
+    attributionRequired: 'true'
+  }
+  */
 })
+```
+The document's `images` method now also accepts an options object as its argument, possible options are:
+- `batch`  
+  Request-making methods that you want to call for all the images. (a string for one or array for more)  
+  It's a best practice as it prevents overwhelming the wiki's servers by making one request for all the  
+  images beforehand instead of multiple. (the return value of `images` would be a Promise)
+
+```js
+let images = await doc.images({batch: ['license', 'exists']}) // note the "await"
+let image = images[0]
+
+// even though they don't make requests, they still return Promises for consistency 
+let bool = await image.exists()
+let license = await image.license()
 ```
 
 plugin also has a method for choosing a good, or representative image for this page, if it exists:
@@ -54,5 +78,7 @@ console.log(img.src())
 - **image.exists()** - double-check that the image is on the server
 - **image.commonsURL()** - instead of the wikimedia redirect server, generate a url for the commons server.
 - **image.mainImage()** - get only an image that should represent this topic, as a thumbnail.
+- **image.license()** - get license and attribution information for the image.
+- **document.images()** - accepts an options object as argument.
 
 MIT
