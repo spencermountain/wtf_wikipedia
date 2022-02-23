@@ -27,7 +27,15 @@ const Image = function (data) {
 
 const methods = {
   file() {
-    return this.data.file || ''
+    let file = this.data.file || ''
+    if (file) {
+      file = file.trim()
+      //titlecase it
+      file = file.charAt(0).toUpperCase() + file.substring(1)
+      //spaces to underscores
+      file = file.replace(/ /g, '_')
+    }
+    return file
   },
   alt() {
     let str = this.data.alt || this.data.file || ''

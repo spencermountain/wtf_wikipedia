@@ -33,11 +33,6 @@ const oneImage = function (img, doc) {
     return null
   }
   let file = `${m[1]}:${m[2] || ''}`
-  file = file.trim()
-  //titlecase it
-  file = file.charAt(0).toUpperCase() + file.substring(1)
-  //spaces to underscores
-  file = file.replace(/ /g, '_')
   if (file) {
     let obj = {
       file: file,
