@@ -39,9 +39,16 @@ const parseFetched = function (titles, fetched, isDoc) {
     // sort the results because API response is not in order, then find the info we need
     const fetchedValues = Object.values(fetched.query.pages)
     const newMethodsRes = []
-    for (const i of titles) {
+    titles = titles.map(i => {
+      i = i.replace(/_/g, " ")
+      i = i.replace(/^.*?:/, "") // delete 'File:', 'Image:' etc.
+      i = i[0].toUpperCase() + i.substring(1) // capitalize all of them
+      return i
+    })
+    const regFileName = /^.*?:(.*)/
+    for (const t of titles) {
       for (const f of fetchedValues) {
-        if (f.title === i.replace(/_/g," ")) {
+        if (f.title.match(regFileName)[1] === t) {
           newMethodsRes.push(parseImage(f))
           break
         }
