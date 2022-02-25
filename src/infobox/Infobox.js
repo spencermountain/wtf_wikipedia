@@ -47,11 +47,6 @@ const methods = {
     }
     let obj = s.json()
     let file = obj.text
-    file = file.trim()
-    //titlecase it
-    file = file.charAt(0).toUpperCase() + file.substring(1)
-    //spaces to underscores
-    file = file.replace(/ /g, '_')
     file = `File:${file}`
     obj.file = file
     obj.text = ''
