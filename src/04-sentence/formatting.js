@@ -4,23 +4,23 @@ const formatting = function (obj) {
   let italics = []
   let wiki = obj.text || ''
   //bold and italics combined 5 's
-  wiki = wiki.replace(/'''''(.{0,200}?)'''''/g, (a, b) => {
+  wiki = wiki.replace(/'''''(.{0,2500}?)'''''/g, (a, b) => {
     bolds.push(b)
     italics.push(b)
     return b
   })
   //''''four'''' → bold with quotes
-  wiki = wiki.replace(/''''(.{0,200}?)''''/g, (a, b) => {
+  wiki = wiki.replace(/''''(.{0,2500}?)''''/g, (a, b) => {
     bolds.push(`'${b}'`)
     return `'${b}'`
   })
   //'''bold'''
-  wiki = wiki.replace(/'''(.{0,200}?)'''/g, (a, b) => {
+  wiki = wiki.replace(/'''(.{0,2500}?)'''/g, (a, b) => {
     bolds.push(b)
     return b
   })
   //''italic''
-  wiki = wiki.replace(/''(.{0,200}?)''/g, (a, b) => {
+  wiki = wiki.replace(/''(.{0,2500}?)''/g, (a, b) => {
     italics.push(b)
     return b
   })
