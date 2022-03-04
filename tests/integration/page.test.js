@@ -57,7 +57,7 @@ test('statoil', (t) => {
   // (doc.text.Intro.length >= 1).should.be.true;
   t.equal(doc.categories().length, 4, 'cat-length')
   t.equal(doc.images().length, 1, 'img-length')
-  t.equal(doc.image().file(), 'Fil:Statoil-Estonia.jpg', 'file')
+  t.equal(doc.image().file(), 'File:Statoil-Estonia.jpg', 'file')
   t.equal(doc.image().url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Statoil-Estonia.jpg', t)
   t.end()
 })

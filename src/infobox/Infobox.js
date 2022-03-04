@@ -47,7 +47,6 @@ const methods = {
     }
     let obj = s.json()
     let file = obj.text
-    file = `File:${file}`
     obj.file = file
     obj.text = ''
     obj.caption = this.data.caption
