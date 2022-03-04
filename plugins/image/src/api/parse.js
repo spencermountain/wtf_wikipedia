@@ -1,5 +1,5 @@
 /**
- * Parses the api response for a single image.
+ * Parses the API response for a single image.
  * 
  * @private
  * @param {Object} fetchedImage
@@ -7,7 +7,7 @@
  */
 const parseImage = function (fetchedImage) {
   // if the data is missing return empty object
-  if (fetchedImage['missing']) {
+  if (Object.hasOwn(fetchedImage, 'missing')) {
     return {}
   }
 
@@ -30,12 +30,12 @@ const parseImage = function (fetchedImage) {
  *
  * @private
  * @param {string[]} titles an array of images' titles (".file()" results)
- * @param {Object} fetched api response
+ * @param {Object} fetched API response
  * @param {boolean} isDoc whether the call is from a Document or an Image
  * @returns {Object | Object[]} 
  */
 const parseFetched = function (titles, fetched, isDoc) {
-  if (isDoc) {
+  if (isDoc) { // group of images
     // sort the results because API response is not in order, then find the info we need
     const fetchedValues = Object.values(fetched.query.pages)
     const newMethodsRes = []
@@ -56,7 +56,7 @@ const parseFetched = function (titles, fetched, isDoc) {
     }
     return newMethodsRes
   }
-
+  // a single image
   return parseImage(Object.values(fetched.query.pages)[0])
 }
 module.exports = parseFetched
