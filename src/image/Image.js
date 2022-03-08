@@ -29,6 +29,10 @@ const methods = {
   file() {
     let file = this.data.file || ''
     if (file) {
+      const regFile = /^(image|file):/i
+      if (!regFile.test(file)) {// if there's no 'File:', add it
+        file = `File:${file}`
+      }
       file = file.trim()
       //titlecase it
       file = file.charAt(0).toUpperCase() + file.substring(1)
