@@ -66,6 +66,18 @@ oh yeah
   t.end()
 })
 
+test('section titles with missing template', function (t) {
+  let str = `hello
+==== {{rando-missing-template}} ====
+oh yeah
+`
+  let json = wtf(str).json()
+
+  t.equal(json.sections.length, 2, 'have both sections')
+  t.equal(json.sections[1].title, '', 'empty title now')
+  t.end()
+})
+
 test('section titles with custom templates', function (t) {
   wtf.extend((_models, templates) => {
     templates['sustantivo'] = 'world'

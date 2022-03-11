@@ -3,7 +3,7 @@ const wtf = require('./src/index')
 wtf.extend(require('./plugins/html'))
 
 let str = `hello
-==== hello {{sustantivo}} ====
+==== hello {{foobar}} ====
 oh yeah
 `
 
