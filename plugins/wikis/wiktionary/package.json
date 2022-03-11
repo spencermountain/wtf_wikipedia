@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-wiktionary",
   "description": "plugin for wtf_wikipedia",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./plugin.js",
   "author": "Spencer Kelly (spencermountain)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/wikis/wiktionary",
@@ -9,8 +9,12 @@
     "type": "git",
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
+  "scripts": {
+    "test": "tape ./**/*.test.js | tap-dancer",
+    "testb": "TESTENV=prod tape ./**/*.test.js | tap-dancer"
+  },
   "peerDependencies": {
-    "wtf_wikipedia": "^8.0.0"
+    "wtf_wikipedia": ">=9.0.0"
   },
   "license": "MIT"
 }

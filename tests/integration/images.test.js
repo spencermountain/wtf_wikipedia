@@ -46,7 +46,7 @@ test('gallery-tag-2', (t) => {
   const templ = doc.template().json()
   t.deepEqual(templ.template, 'gallery', 'document-has-template')
   t.deepEqual(templ.images.length, 8, '8 images')
-  t.deepEqual(templ.images[0].file, 'Culex-female.jpg', 'got filename')
+  t.deepEqual(templ.images[0].file, 'File:Culex-female.jpg', 'got filename')
   t.end()
 })
 

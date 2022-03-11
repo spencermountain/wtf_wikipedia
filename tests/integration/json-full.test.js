@@ -679,7 +679,7 @@ test('plurals / singular - all should exist', (t) => {
         clue: undefined,
         json: true,
         expected: {
-          file: '20070701 Arts Club of Chicago.JPG',
+          file: 'File:20070701_Arts_Club_of_Chicago.JPG',
           thumb: 'https://wikipedia.org/wiki/Special:Redirect/file/20070701_Arts_Club_of_Chicago.JPG?width=300',
           url: 'https://wikipedia.org/wiki/Special:Redirect/file/20070701_Arts_Club_of_Chicago.JPG',
         },
@@ -688,7 +688,7 @@ test('plurals / singular - all should exist', (t) => {
         clue: 1,
         json: true,
         expected: {
-          file: 'File:20070711 Mies van der Rohe Staircase.JPG',
+          file: 'File:20070711_Mies_van_der_Rohe_Staircase.JPG',
           thumb: 'https://wikipedia.org/wiki/Special:Redirect/file/20070711_Mies_van_der_Rohe_Staircase.JPG?width=300',
           url: 'https://wikipedia.org/wiki/Special:Redirect/file/20070711_Mies_van_der_Rohe_Staircase.JPG',
           caption: 'Mies van der Rohe staircase and Alexander Calder mobile',

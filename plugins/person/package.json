@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-person",
   "description": "person-details plugin for wtf_wikipedia",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "./builds/wtf-plugin-person.js",
   "unpkg": "./builds/wtf-plugin-person.min.js",
   "module": "./builds/wtf-plugin-person.mjs",
@@ -32,7 +32,7 @@
     "spacetime": "6.16.3"
   },
   "peerDependencies": {
-    "wtf_wikipedia": "^8.0.0"
+    "wtf_wikipedia": ">=9.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.0",

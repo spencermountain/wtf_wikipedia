@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-html",
   "description": "html plugin for wtf_wikipedia",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "./builds/wtf-plugin-html.js",
   "unpkg": "./builds/wtf-plugin-html.min.js",
   "module": "./builds/wtf-plugin-html.mjs",
@@ -28,7 +28,7 @@
     "printWidth": 100
   },
   "peerDependencies": {
-    "wtf_wikipedia": "^8.0.0"
+    "wtf_wikipedia": ">=9.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.0",

@@ -33,17 +33,13 @@ const oneImage = function (img, doc) {
     return null
   }
   let file = `${m[1]}:${m[2] || ''}`
-  file = file.trim()
-  //titlecase it
-  let title = file.charAt(0).toUpperCase() + file.substring(1)
-  //spaces to underscores
-  title = title.replace(/ /g, '_')
-  if (title) {
+  if (file) {
     let obj = {
       file: file,
       lang: doc._lang,
       domain: doc._domain,
       wiki: img,
+      pluginData: {}
     }
     //try to grab other metadata, too
     img = img.replace(/^\[\[/, '')

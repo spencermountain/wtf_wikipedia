@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-api",
   "description": "wikimedia api plugin for wtf_wikipedia",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "./builds/wtf-plugin-api.js",
   "unpkg": "./builds/wtf-plugin-api.min.js",
   "module": "./builds/wtf-plugin-api.mjs",
@@ -31,7 +31,7 @@
     "slow": "^1.1.0"
   },
   "peerDependencies": {
-    "wtf_wikipedia": "^8.0.0"
+    "wtf_wikipedia": ">=9.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.0",

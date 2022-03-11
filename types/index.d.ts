@@ -86,7 +86,7 @@ declare class Infobox {
   get(keys: string | string[]): Sentence | undefined | unknown
   image(): Image | null
   images: () => Image | null
-  json(options: object): object
+  json(options?: object): object
   keyValue(): object
   links(clue?: string): Link[]
   template: () => string

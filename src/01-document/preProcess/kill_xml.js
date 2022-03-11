@@ -3,6 +3,7 @@
 
 //these are things we throw-away
 //these will mess-up if they're nested, but they're not usually.
+//'poem' was removed from the array because it is needed.
 const ignore = [
   'table',
   'code',
@@ -14,7 +15,6 @@ const ignore = [
   'imagemap',
   'inputbox',
   'nowiki',
-  'poem',
   'references',
   'source',
   'syntaxhighlight',
@@ -43,7 +43,7 @@ const kill_xml = function (wiki) {
   wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, `{{sup|$1}}`)
 
   //some formatting xml, we'll keep their insides though
-  wiki = wiki.replace(/ ?<[ /]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ /]?> ?/g, ' ') //<sub>, </sub>
+  wiki = wiki.replace(/ ?<[ /]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr|u)[ /]?> ?/g, ' ') //<sub>, </sub>
   wiki = wiki.replace(/ ?<[ /]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ /]?> ?/g, ' ') //<abbr>, </abbr>
   wiki = wiki.replace(/ ?<[ /]?h[0-9][ /]?> ?/g, ' ') //<h2>, </h2>
   wiki = wiki.replace(/ ?< ?br ?\/> ?/g, '\n') //<br />

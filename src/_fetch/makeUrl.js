@@ -43,10 +43,11 @@ const cleanTitle = (page) => {
  * 
  * @private
  * @param {import('.').fetchDefaults} options
+ * @param {Object} [parameters]
  * @returns {string} the url that can be used to make the fetch
  */
-const makeUrl = function (options) {
-  let params = Object.assign({}, defaults)
+const makeUrl = function (options, parameters = defaults) {
+  let params = Object.assign({}, parameters)
 
   //default url
   let apiPath = ''
@@ -65,6 +66,12 @@ const makeUrl = function (options) {
 
   if (!options.follow_redirects) {
     delete params.redirects
+  }
+
+  // the origin header and url parameters need to be the same
+  // if one is provided we should change both the header and the parameter
+  if(options.origin){
+    params.origin = options.origin
   }
 
   //support numerical ids

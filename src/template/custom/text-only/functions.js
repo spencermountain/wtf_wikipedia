@@ -80,7 +80,7 @@ module.exports = {
 
   circa: (tmpl) => {
     let obj = parse(tmpl, ['year'])
-    return `c. ${obj.year}`
+    return `c. ${obj.year}`
   },
 
   // https://en.wikipedia.org/wiki/Template:Decade_link

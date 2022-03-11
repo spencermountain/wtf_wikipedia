@@ -1,4 +1,4 @@
-/* wtf_wikipedia 9.0.3 MIT */
+/* wtf_wikipedia 9.1.0 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('isomorphic-unfetch')) :
   typeof define === 'function' && define.amd ? define(['isomorphic-unfetch'], factory) :
@@ -144,12 +144,14 @@
    * 
    * @private
    * @param {import('.').fetchDefaults} options
+   * @param {Object} [parameters]
    * @returns {string} the url that can be used to make the fetch
    */
 
 
   const makeUrl$1 = function (options) {
-    let params = Object.assign({}, defaults$c); //default url
+    let parameters = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaults$c;
+    let params = Object.assign({}, parameters); //default url
 
     let apiPath = ''; //add support for third party apis
 
@@ -165,6 +167,12 @@
 
     if (!options.follow_redirects) {
       delete params.redirects;
+    } // the origin header and url parameters need to be the same
+    // if one is provided we should change both the header and the parameter
+
+
+    if (options.origin) {
+      params.origin = options.origin;
     } //support numerical ids
 
 
@@ -992,7 +1000,24 @@
 
   const methods$8 = {
     file() {
-      return this.data.file || '';
+      let file = this.data.file || '';
+
+      if (file) {
+        const regFile = /^(image|file):/i;
+
+        if (!regFile.test(file)) {
+          // if there's no 'File:', add it
+          file = "File:".concat(file);
+        }
+
+        file = file.trim(); //titlecase it
+
+        file = file.charAt(0).toUpperCase() + file.substring(1); //spaces to underscores
+
+        file = file.replace(/ /g, '_');
+      }
+
+      return file;
     },
 
     alt() {
@@ -2058,7 +2083,7 @@
       if (site.indexOf(':') !== -1) {
         let [, wiki, lang] = site.match(/^:?(.*):(.*)/); //only allow interwikis to these specific places
 
-        if (interwikis.hasOwnProperty(wiki) && languages$3.hasOwnProperty(lang) === false) {
+        if (interwikis.hasOwnProperty(wiki) === false || languages$3.hasOwnProperty(lang) === false) {
           return obj;
         }
 
@@ -2223,8 +2248,9 @@
   //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
   //these are things we throw-away
   //these will mess-up if they're nested, but they're not usually.
+  //'poem' was removed from the array because it is needed.
 
-  const ignore$2 = ['table', 'code', 'score', 'data', 'categorytree', 'charinsert', 'hiero', 'imagemap', 'inputbox', 'nowiki', 'poem', 'references', 'source', 'syntaxhighlight', 'timeline'];
+  const ignore$2 = ['table', 'code', 'score', 'data', 'categorytree', 'charinsert', 'hiero', 'imagemap', 'inputbox', 'nowiki', 'references', 'source', 'syntaxhighlight', 'timeline'];
   const openTag = "< ?(".concat(ignore$2.join('|'), ") ?[^>]{0,200}?>");
   const closeTag = "< ?/ ?(".concat(ignore$2.join('|'), ") ?>");
   const anyChar = '\\s\\S'; //including newline
@@ -2248,7 +2274,7 @@
     wiki = wiki.replace(/<sub>(.*?)<\/sub>/g, "{{sub|$1}}");
     wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, "{{sup|$1}}"); //some formatting xml, we'll keep their insides though
 
-    wiki = wiki.replace(/ ?<[ /]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr)[ /]?> ?/g, ' '); //<sub>, </sub>
+    wiki = wiki.replace(/ ?<[ /]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr|u)[ /]?> ?/g, ' '); //<sub>, </sub>
 
     wiki = wiki.replace(/ ?<[ /]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ /]?> ?/g, ' '); //<abbr>, </abbr>
 
@@ -2613,23 +2639,23 @@
     let italics = [];
     let wiki = obj.text || ''; //bold and italics combined 5 's
 
-    wiki = wiki.replace(/'''''(.{0,200}?)'''''/g, (a, b) => {
+    wiki = wiki.replace(/'''''(.{0,2500}?)'''''/g, (a, b) => {
       bolds.push(b);
       italics.push(b);
       return b;
     }); //''''four'''' → bold with quotes
 
-    wiki = wiki.replace(/''''(.{0,200}?)''''/g, (a, b) => {
+    wiki = wiki.replace(/''''(.{0,2500}?)''''/g, (a, b) => {
       bolds.push("'".concat(b, "'"));
       return "'".concat(b, "'");
     }); //'''bold'''
 
-    wiki = wiki.replace(/'''(.{0,200}?)'''/g, (a, b) => {
+    wiki = wiki.replace(/'''(.{0,2500}?)'''/g, (a, b) => {
       bolds.push(b);
       return b;
     }); //''italic''
 
-    wiki = wiki.replace(/''(.{0,200}?)''/g, (a, b) => {
+    wiki = wiki.replace(/''(.{0,2500}?)''/g, (a, b) => {
       italics.push(b);
       return b;
     }); //pack it all up..
@@ -3372,995 +3398,6 @@
 
   var reference = parseRefs;
 
-  const {
-    trim_whitespace
-  } = helpers$1;
-  const parseSentence$5 = _04Sentence.fromText;
-  const parseReferences = reference;
-  const heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/;
-  /**
-   * @typedef fakeSection
-   * @property {string} title
-   * @property {null | number} depth
-   * @property {string} wiki
-   */
-
-  /**
-   * estimates the depth of a section and parses the title to a normal format
-   *
-   * @private
-   * @param {fakeSection} section
-   * @param {string} str
-   * @returns {fakeSection} section the depth in a object
-   */
-
-  const parseHeading = function (section, str) {
-    let m = str.match(heading_reg);
-
-    if (!m) {
-      section.title = '';
-      section.depth = 0;
-      return section;
-    }
-
-    let title = m[2] || '';
-    title = parseSentence$5(title).text(); //amazingly, you can see inline {{templates}} in this text, too
-    //... let's not think about that now.
-
-    title = title.replace(/\{\{.+?\}\}/, ''); //same for references (i know..)
-
-    let obj = {
-      _wiki: title
-    };
-    parseReferences(obj);
-    title = obj._wiki; //trim leading/trailing whitespace
-
-    title = trim_whitespace(title);
-    let depth = 0;
-
-    if (m[1]) {
-      depth = m[1].length - 2;
-    }
-
-    section.title = title;
-    section.depth = depth;
-    return section;
-  };
-
-  var heading = parseHeading;
-
-  const cleanup = function (lines) {
-    lines = lines.filter(line => {
-      //a '|+' row is a 'table caption', remove it.
-      return line && /^\|\+/.test(line) !== true;
-    });
-
-    if (/^\{\|/.test(lines[0]) === true) {
-      lines.shift();
-    }
-
-    if (/^\|\}/.test(lines[lines.length - 1]) === true) {
-      lines.pop();
-    }
-
-    if (/^\|-/.test(lines[0]) === true) {
-      lines.shift();
-    }
-
-    return lines;
-  }; //turn newline seperated into '|-' seperated
-
-
-  const findRows$1 = function (lines) {
-    let rows = [];
-    let row = [];
-    lines = cleanup(lines);
-
-    for (let i = 0; i < lines.length; i += 1) {
-      let line = lines[i]; //'|-' is a row-seperator
-
-      if (/^\|-/.test(line) === true) {
-        //okay, we're done the row
-        if (row.length > 0) {
-          rows.push(row);
-          row = [];
-        }
-      } else {
-        //look for '||' inline row-splitter
-        line = line.split(/(?:\|\||!!)/); //eslint-disable-line
-        //support newline -> '||'
-
-        if (!line[0] && line[1]) {
-          line.shift();
-        }
-
-        line.forEach(l => {
-          l = l.replace(/^\| */, '');
-          l = l.trim();
-          row.push(l);
-        });
-      }
-    } //finish the last one
-
-
-    if (row.length > 0) {
-      rows.push(row);
-    }
-
-    return rows;
-  };
-
-  var _findRows = findRows$1;
-
-  const getRowSpan = /.*rowspan *= *["']?([0-9]+)["']?[ |]*/;
-  const getColSpan = /.*colspan *= *["']?([0-9]+)["']?[ |]*/; //colspans stretch ←left/right→
-
-  const doColSpan = function (rows) {
-    rows.forEach(row => {
-      row.forEach((str, c) => {
-        let m = str.match(getColSpan);
-
-        if (m !== null) {
-          let num = parseInt(m[1], 10); //...maybe if num is so big, and centered, remove it?
-          // if (num > 3) {
-          //   rows[r] = []
-          //   return
-          // }
-          //splice-in n empty columns right here
-
-          row[c] = str.replace(getColSpan, '');
-
-          for (let i = 1; i < num; i += 1) {
-            row.splice(c + 1, 0, '');
-          }
-        }
-      });
-    });
-    rows = rows.filter(r => r.length > 0);
-    return rows;
-  }; //colspans stretch up/down
-
-
-  const doRowSpan = function (rows) {
-    rows.forEach((row, r) => {
-      row.forEach((str, c) => {
-        let m = str.match(getRowSpan);
-
-        if (m !== null) {
-          let num = parseInt(m[1], 10); //copy this cell down n rows
-
-          str = str.replace(getRowSpan, '');
-          row[c] = str;
-
-          for (let i = r + 1; i < r + num; i += 1) {
-            if (!rows[i]) {
-              break;
-            }
-
-            rows[i].splice(c, 0, str);
-          }
-        }
-      });
-    });
-    return rows;
-  }; //
-
-
-  const handleSpans$1 = function (rows) {
-    rows = doColSpan(rows);
-    rows = doRowSpan(rows);
-    return rows;
-  };
-
-  var _spans = handleSpans$1;
-
-  const parseSentence$4 = _04Sentence.fromText;
-  const findRows = _findRows;
-  const handleSpans = _spans;
-  const isHeading = /^!/; //common ones
-
-  const headings$1 = {
-    name: true,
-    age: true,
-    born: true,
-    date: true,
-    year: true,
-    city: true,
-    country: true,
-    population: true,
-    count: true,
-    number: true
-  }; //additional table-cruft to remove before parseLine method
-
-  const cleanText = function (str) {
-    str = parseSentence$4(str).text(); //anything before a single-pipe is styling, so remove it
-
-    if (str.match(/\|/)) {
-      str = str.replace(/.+\| ?/, ''); //class="unsortable"|title
-    }
-
-    str = str.replace(/style=['"].*?["']/, ''); //'!' is used as a highlighed-column
-
-    str = str.replace(/^!/, ''); // str = str.replace(/\(.*?\)/, '')
-
-    str = str.trim(); // str = str.toLowerCase()
-
-    return str;
-  };
-
-  const skipSpanRow = function (row) {
-    row = row || [];
-    let len = row.length;
-    let hasTxt = row.filter(str => str).length; //does it have 3 empty spaces?
-
-    if (len - hasTxt > 3) {
-      return true;
-    }
-
-    return false;
-  }; //remove non-header span rows
-
-
-  const removeMidSpans = function (rows) {
-    rows = rows.filter(row => {
-      if (row.length === 1 && row[0] && isHeading.test(row[0]) && /rowspan/i.test(row[0]) === false) {
-        return false;
-      }
-
-      return true;
-    });
-    return rows;
-  }; //'!' starts a header-row
-
-
-  const findHeaders = function () {
-    let rows = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    let headers = []; // is the first-row just a ton of colspan?
-
-    if (skipSpanRow(rows[0])) {
-      rows.shift();
-    }
-
-    let first = rows[0];
-
-    if (first && first[0] && first[1] && (/^!/.test(first[0]) || /^!/.test(first[1]))) {
-      headers = first.map(h => {
-        h = h.replace(/^! */, '');
-        h = cleanText(h);
-        return h;
-      });
-      rows.shift();
-    } //try the second row, too (overwrite first-row, if it exists)
-
-
-    first = rows[0];
-
-    if (first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
-      first.forEach((h, i) => {
-        h = h.replace(/^! */, '');
-        h = cleanText(h);
-
-        if (Boolean(h) === true) {
-          headers[i] = h;
-        }
-      });
-      rows.shift();
-    }
-
-    return headers;
-  }; //turn headers, array into an object
-
-
-  const parseRow = function (arr, headers) {
-    let row = {};
-    arr.forEach((str, i) => {
-      let h = headers[i] || 'col' + (i + 1);
-      let s = parseSentence$4(str);
-      s.text(cleanText(s.text()));
-      row[h] = s;
-    });
-    return row;
-  }; //should we use the first row as a the headers?
-
-
-  const firstRowHeader = function (rows) {
-    if (rows.length <= 3) {
-      return [];
-    }
-
-    let headers = rows[0].slice(0);
-    headers = headers.map(h => {
-      h = h.replace(/^! */, '');
-      h = parseSentence$4(h).text();
-      h = cleanText(h);
-      h = h.toLowerCase();
-      return h;
-    });
-
-    for (let i = 0; i < headers.length; i += 1) {
-      if (headings$1.hasOwnProperty(headers[i])) {
-        rows.shift();
-        return headers;
-      }
-    }
-
-    return [];
-  }; //turn a {|...table string into an array of arrays
-
-
-  const parseTable$1 = function (wiki) {
-    let lines = wiki.replace(/\r/g, '').replace(/\n(\s*[^|!{\s])/g, ' $1') //remove unecessary newlines
-    .split(/\n/).map(l => l.trim());
-    let rows = findRows(lines);
-    rows = rows.filter(r => r);
-
-    if (rows.length === 0) {
-      return [];
-    } //remove non-header span rows
-
-
-    rows = removeMidSpans(rows); //support colspan, rowspan...
-
-    rows = handleSpans(rows); //grab the header rows
-
-    let headers = findHeaders(rows);
-
-    if (!headers || headers.length <= 1) {
-      headers = firstRowHeader(rows);
-      let want = rows[rows.length - 1] || []; //try the second row
-
-      if (headers.length <= 1 && want.length > 2) {
-        headers = firstRowHeader(rows.slice(1));
-
-        if (headers.length > 0) {
-          rows = rows.slice(2); //remove them
-        }
-      }
-    } //index each column by it's header
-
-
-    let table = rows.map(arr => {
-      return parseRow(arr, headers);
-    });
-    return table;
-  };
-
-  var parse$i = parseTable$1;
-
-  const encode$1 = encode$4; //
-
-  const toJson$4 = function (tables, options) {
-    return tables.map(table => {
-      let row = {};
-      Object.keys(table).forEach(k => {
-        row[k] = table[k].json(); //(they're sentence objects)
-      }); //encode them, for mongodb
-
-      if (options.encode === true) {
-        row = encode$1.encodeObj(row);
-      }
-
-      return row;
-    });
-  };
-
-  var toJson_1$2 = toJson$4;
-
-  const setDefaults$5 = setDefaults_1;
-  const toJson$3 = toJson_1$2;
-  const defaults$6 = {};
-
-  const normalize$1 = function () {
-    let key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-    key = key.toLowerCase();
-    key = key.replace(/[_-]/g, ' ');
-    key = key.replace(/\(.*?\)/, '');
-    key = key.trim();
-    return key;
-  };
-
-  const Table$1 = function (data) {
-    let wiki = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data
-    });
-    Object.defineProperty(this, '_wiki', {
-      enumerable: false,
-      value: wiki
-    });
-  };
-
-  const methods$4 = {
-    links(n) {
-      let links = [];
-      this.data.forEach(r => {
-        Object.keys(r).forEach(k => {
-          links = links.concat(r[k].links());
-        });
-      });
-
-      if (typeof n === 'string') {
-        //grab a link like .links('Fortnight')
-        n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
-
-        let link = links.find(o => o.page() === n);
-        return link === undefined ? [] : [link];
-      }
-
-      return links;
-    },
-
-    get(keys) {
-      // normalize mappings
-      let have = this.data[0] || {};
-      let mapping = Object.keys(have).reduce((h, k) => {
-        h[normalize$1(k)] = k;
-        return h;
-      }, {}); // string gets a flat-list
-
-      if (typeof keys === 'string') {
-        let key = normalize$1(keys);
-        key = mapping[key] || key;
-        return this.data.map(row => {
-          return row[key] ? row[key].text() : null;
-        });
-      } // array gets obj-list
-
-
-      keys = keys.map(normalize$1).map(k => mapping[k] || k);
-      return this.data.map(row => {
-        return keys.reduce((h, k) => {
-          if (row[k]) {
-            h[k] = row[k].text();
-          } else {
-            h[k] = '';
-          }
-
-          return h;
-        }, {});
-      });
-    },
-
-    keyValue(options) {
-      let rows = this.json(options);
-      rows.forEach(row => {
-        Object.keys(row).forEach(k => {
-          row[k] = row[k].text;
-        });
-      });
-      return rows;
-    },
-
-    json(options) {
-      options = setDefaults$5(options, defaults$6);
-      return toJson$3(this.data, options);
-    },
-
-    text() {
-      return '';
-    },
-
-    wikitext() {
-      return this._wiki || '';
-    }
-
-  };
-  methods$4.keyvalue = methods$4.keyValue;
-  methods$4.keyval = methods$4.keyValue;
-  Object.keys(methods$4).forEach(k => {
-    Table$1.prototype[k] = methods$4[k];
-  });
-  var Table_1 = Table$1;
-
-  const parseTable = parse$i;
-  const Table = Table_1; //const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70k chars.
-
-  const openReg = /^\s*\{\|/;
-  const closeReg = /^\s*\|\}/; //tables can be recursive, so looky-here.
-
-  const findTables = function (section) {
-    let list = [];
-    let wiki = section._wiki;
-    let lines = wiki.split('\n');
-    let stack = [];
-
-    for (let i = 0; i < lines.length; i += 1) {
-      //start a table
-      if (openReg.test(lines[i]) === true) {
-        stack.push(lines[i]);
-        continue;
-      } //close a table
-
-
-      if (closeReg.test(lines[i]) === true) {
-        stack[stack.length - 1] += '\n' + lines[i];
-        let table = stack.pop();
-        list.push(table);
-        continue;
-      } //keep-going on one
-
-
-      if (stack.length > 0) {
-        stack[stack.length - 1] += '\n' + lines[i];
-      }
-    } //work-em together for a Table class
-
-
-    let tables = [];
-    list.forEach(str => {
-      if (str) {
-        //also re-remove a newline at the end of the table (awkward)
-        wiki = wiki.replace(str + '\n', '');
-        wiki = wiki.replace(str, '');
-        let data = parseTable(str);
-
-        if (data && data.length > 0) {
-          tables.push(new Table(data, str));
-        }
-      }
-    });
-
-    if (tables.length > 0) {
-      section._tables = tables;
-    }
-
-    section._wiki = wiki;
-  };
-
-  var table = findTables;
-
-  const setDefaults$4 = setDefaults_1;
-  const defaults$5 = {
-    sentences: true
-  };
-
-  const toJson$2 = function (p, options) {
-    options = setDefaults$4(options, defaults$5);
-    let data = {};
-
-    if (options.sentences === true) {
-      data.sentences = p.sentences().map(s => s.json(options));
-    }
-
-    return data;
-  };
-
-  var toJson_1$1 = toJson$2;
-
-  const toJSON$3 = toJson_1$1;
-  const setDefaults$3 = setDefaults_1;
-  const defaults$4 = {
-    sentences: true,
-    lists: true,
-    images: true
-  };
-
-  const Paragraph$1 = function (data) {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data
-    });
-  };
-
-  const methods$3 = {
-    sentences: function () {
-      return this.data.sentences || [];
-    },
-    references: function () {
-      return this.data.references;
-    },
-    lists: function () {
-      return this.data.lists;
-    },
-
-    images() {
-      return this.data.images || [];
-    },
-
-    links: function (clue) {
-      let arr = [];
-      this.sentences().forEach(s => {
-        arr = arr.concat(s.links(clue));
-      });
-
-      if (typeof clue === 'string') {
-        //grab a specific link like .links('Fortnight')
-        clue = clue.charAt(0).toUpperCase() + clue.substring(1); //titlecase it
-
-        let link = arr.find(o => o.page() === clue);
-        return link === undefined ? [] : [link];
-      }
-
-      return arr || [];
-    },
-
-    interwiki() {
-      let arr = [];
-      this.sentences().forEach(s => {
-        arr = arr.concat(s.interwiki());
-      });
-      return arr || [];
-    },
-
-    text: function (options) {
-      options = setDefaults$3(options, defaults$4);
-      let str = this.sentences().map(s => s.text(options)).join(' ');
-      this.lists().forEach(list => {
-        str += '\n' + list.text();
-      });
-      return str;
-    },
-    json: function (options) {
-      options = setDefaults$3(options, defaults$4);
-      return toJSON$3(this, options);
-    },
-    wikitext: function () {
-      return this.data.wiki;
-    }
-  };
-  methods$3.citations = methods$3.references;
-  Object.keys(methods$3).forEach(k => {
-    Paragraph$1.prototype[k] = methods$3[k];
-  }); // aliases
-
-  const singular$2 = {
-    sentences: 'sentence',
-    references: 'reference',
-    citation: 'citations',
-    lists: 'list',
-    images: 'image',
-    links: 'link'
-  };
-  Object.keys(singular$2).forEach(k => {
-    let sing = singular$2[k];
-
-    Paragraph$1.prototype[sing] = function (clue) {
-      let arr = this[k](clue);
-
-      if (typeof clue === 'number') {
-        return arr[clue];
-      }
-
-      return arr[0];
-    };
-  });
-  var Paragraph_1 = Paragraph$1;
-
-  const opener = '[';
-  const closer = ']';
-  /**
-   *
-   * find all the pairs of '[[...[[..]]...]]' in the text
-   * used to properly root out recursive template calls, [[.. [[...]] ]]
-   * basically just adds open tags, and subtracts closing tags
-   *
-   * @private
-   * @param {string} text the text in which is searched in
-   * @returns {string[]} all the links in the text
-   */
-
-  function nested_find$1(text) {
-    let out = [];
-    let last = [];
-    const chars = text.split('');
-    let open = 0;
-
-    for (let i = 0; i < chars.length; i++) {
-      const c = text[i]; //increment open tag
-
-      if (c === opener) {
-        open += 1;
-      } //decrement close tag
-      else if (c === closer) {
-        open -= 1;
-
-        if (open < 0) {
-          open = 0;
-        }
-      } else if (last.length === 0) {
-        //If we're not inside of a pair of delimiters, we can discard the current letter.
-        //The return of this function is only used to extract images.
-        continue;
-      }
-
-      last.push(c);
-
-      if (open === 0 && last.length > 0) {
-        //first, fix botched parse
-        let open_count = 0;
-        let close_count = 0;
-
-        for (let j = 0; j < last.length; j++) {
-          if (last[j] === opener) {
-            open_count++;
-          } else if (last[j] === closer) {
-            close_count++;
-          }
-        } //is it botched?
-
-
-        if (open_count > close_count) {
-          last.push(closer);
-        } //looks good, keep it
-
-
-        out.push(last.join(''));
-        last = [];
-      }
-    }
-
-    return out;
-  }
-
-  var nested_find_1 = nested_find$1;
-
-  const i18n$3 = i18n$6;
-  const Image$4 = Image_1;
-  const parseTemplate$3 = toJSON$4;
-  const parseSentence$3 = _04Sentence.fromText;
-  const nested_find = nested_find_1; //regexes:
-
-  const isFile = new RegExp('(' + i18n$3.images.join('|') + '):', 'i');
-  let fileNames = "(".concat(i18n$3.images.join('|'), ")");
-  const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'iu'); //style directives for Wikipedia:Extended_image_syntax
-
-  const imgLayouts = {
-    thumb: true,
-    thumbnail: true,
-    border: true,
-    right: true,
-    left: true,
-    center: true,
-    top: true,
-    bottom: true,
-    none: true,
-    upright: true,
-    baseline: true,
-    middle: true,
-    sub: true,
-    super: true
-  }; //images are usually [[image:my_pic.jpg]]
-
-  const oneImage = function (img, doc) {
-    let m = img.match(file_reg);
-
-    if (m === null || !m[2]) {
-      return null;
-    }
-
-    let file = "".concat(m[1], ":").concat(m[2] || '');
-    file = file.trim(); //titlecase it
-
-    let title = file.charAt(0).toUpperCase() + file.substring(1); //spaces to underscores
-
-    title = title.replace(/ /g, '_');
-
-    if (title) {
-      let obj = {
-        file: file,
-        lang: doc._lang,
-        domain: doc._domain,
-        wiki: img
-      }; //try to grab other metadata, too
-
-      img = img.replace(/^\[\[/, '');
-      img = img.replace(/\]\]$/, ''); //https://en.wikipedia.org/wiki/Wikipedia:Extended_image_syntax
-      //- [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
-
-      let imgData = parseTemplate$3(img);
-      let arr = imgData.list || []; //parse-out alt text, if explicitly given
-
-      if (imgData.alt) {
-        obj.alt = imgData.alt;
-      } //remove 'thumb' and things
-
-
-      arr = arr.filter(str => imgLayouts.hasOwnProperty(str) === false);
-
-      if (arr[arr.length - 1]) {
-        obj.caption = parseSentence$3(arr[arr.length - 1]);
-      }
-
-      return new Image$4(obj);
-    }
-
-    return null;
-  };
-
-  const parseImages = function (paragraph, doc) {
-    let wiki = paragraph.wiki; //parse+remove scary '[[ [[]] ]]' stuff
-
-    let matches = nested_find(wiki);
-    matches.forEach(function (s) {
-      if (isFile.test(s) === true) {
-        paragraph.images = paragraph.images || [];
-        let img = oneImage(s, doc);
-
-        if (img) {
-          paragraph.images.push(img);
-        }
-
-        wiki = wiki.replace(s, '');
-      }
-    });
-    paragraph.wiki = wiki;
-  };
-
-  var image = parseImages;
-
-  const setDefaults$2 = setDefaults_1;
-  const defaults$3 = {};
-
-  const toText$2 = (list, options) => {
-    return list.map(s => {
-      let str = s.text(options);
-      return ' * ' + str;
-    }).join('\n');
-  };
-
-  const List$1 = function (data) {
-    let wiki = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data
-    });
-    Object.defineProperty(this, 'wiki', {
-      enumerable: false,
-      value: wiki
-    });
-  };
-
-  const methods$2 = {
-    lines() {
-      return this.data;
-    },
-
-    links(clue) {
-      let links = [];
-      this.lines().forEach(s => {
-        links = links.concat(s.links());
-      });
-
-      if (typeof clue === 'string') {
-        //grab a link like .links('Fortnight')
-        clue = clue.charAt(0).toUpperCase() + clue.substring(1); //titlecase it
-
-        let link = links.find(o => o.page() === clue);
-        return link === undefined ? [] : [link];
-      }
-
-      return links;
-    },
-
-    json(options) {
-      options = setDefaults$2(options, defaults$3);
-      return this.lines().map(s => s.json(options));
-    },
-
-    text() {
-      return toText$2(this.data);
-    },
-
-    wikitext() {
-      return this.wiki || '';
-    }
-
-  };
-  Object.keys(methods$2).forEach(k => {
-    List$1.prototype[k] = methods$2[k];
-  });
-  var List_1 = List$1;
-
-  const List = List_1;
-  const parseSentence$2 = _04Sentence.fromText;
-  const list_reg = /^[#*:;|]+/;
-  const bullet_reg = /^\*+[^:,|]{4}/;
-  const number_reg = /^ ?#[^:,|]{4}/;
-  const has_word = /[a-z_0-9\]}]/i; // does it start with a bullet point or something?
-
-  const isList = function (line) {
-    return list_reg.test(line) || bullet_reg.test(line) || number_reg.test(line);
-  }; //make bullets/numbers into human-readable *'s
-
-
-  const cleanList = function (list) {
-    let number = 1;
-    list = list.filter(l => l);
-
-    for (let i = 0; i < list.length; i++) {
-      let line = list[i]; //add # numberings formatting
-
-      if (line.match(number_reg)) {
-        line = line.replace(/^ ?#*/, number + ') ');
-        line = line + '\n';
-        number += 1;
-      } else if (line.match(list_reg)) {
-        number = 1;
-        line = line.replace(list_reg, '');
-      }
-
-      list[i] = parseSentence$2(line);
-    }
-
-    return list;
-  };
-
-  const grabList = function (lines, i) {
-    let sub = [];
-
-    for (let o = i; o < lines.length; o++) {
-      if (isList(lines[o])) {
-        sub.push(lines[o]);
-      } else {
-        break;
-      }
-    }
-
-    sub = sub.filter(a => a && has_word.test(a));
-    sub = cleanList(sub);
-    return sub;
-  };
-
-  const parseList = function (paragraph) {
-    let wiki = paragraph.wiki;
-    let lines = wiki.split(/\n/g);
-    let lists = [];
-    let theRest = [];
-
-    for (let i = 0; i < lines.length; i++) {
-      if (isList(lines[i])) {
-        let sub = grabList(lines, i);
-
-        if (sub.length > 0) {
-          lists.push(sub);
-          i += sub.length - 1;
-        }
-      } else {
-        theRest.push(lines[i]);
-      }
-    }
-
-    paragraph.lists = lists.map(l => new List(l, wiki));
-    paragraph.wiki = theRest.join('\n');
-  };
-
-  var list$1 = parseList;
-
-  const Paragraph = Paragraph_1;
-  const parseSentences = _04Sentence.byParagraph;
-  const twoNewLines = /\r?\n\r?\n/;
-  const parse$h = {
-    image: image,
-    list: list$1
-  };
-
-  const parseParagraphs = function (section, doc) {
-    let wiki = section._wiki;
-    let paragraphs = wiki.split(twoNewLines); //don't create empty paragraphs
-
-    paragraphs = paragraphs.filter(p => p && p.trim().length > 0);
-    paragraphs = paragraphs.map(str => {
-      let paragraph = {
-        wiki: str,
-        lists: [],
-        sentences: [],
-        images: []
-      }; //parse the lists
-
-      parse$h.list(paragraph); //parse images
-
-      parse$h.image(paragraph, doc); //parse the sentences
-
-      parseSentences(paragraph);
-      return new Paragraph(paragraph);
-    });
-    section._wiki = wiki;
-    section._paragraphs = paragraphs;
-  };
-
-  var _03Paragraph = parseParagraphs;
-
   const open = '{';
   const close = '}'; //grab all first-level recursions of '{{...}}'
 
@@ -4438,9 +3475,9 @@
 
   const findFlat = _02Flat;
   const getName = _getName;
-  const hasTemplate = /\{\{/;
+  const hasTemplate$1 = /\{\{/;
 
-  const parseTemplate$2 = function (tmpl) {
+  const parseTemplate$3 = function (tmpl) {
     // this is some unexplained Lua thing
     tmpl = tmpl.replace(/#invoke:/, '');
     return {
@@ -4456,7 +3493,7 @@
     wiki = wiki.replace(/\}\}$/, ''); // get our child templates
 
     obj.children = findFlat(wiki);
-    obj.children = obj.children.map(parseTemplate$2);
+    obj.children = obj.children.map(parseTemplate$3);
 
     if (obj.children.length === 0) {
       return obj;
@@ -4466,7 +3503,7 @@
     obj.children.forEach(ch => {
       let inside = ch.body.substr(2);
 
-      if (hasTemplate.test(inside)) {
+      if (hasTemplate$1.test(inside)) {
         return doEach(ch); //keep going
       }
 
@@ -4478,14 +3515,14 @@
 
   const findTemplates$1 = function (wiki) {
     let list = findFlat(wiki);
-    list = list.map(parseTemplate$2);
+    list = list.map(parseTemplate$3);
     list = list.map(doEach);
     return list;
   };
 
   var _01Nested = findTemplates$1;
 
-  const list = [//https://en.wikipedia.org/wiki/category:templates_with_no_visible_output
+  const list$1 = [//https://en.wikipedia.org/wiki/category:templates_with_no_visible_output
   'anchor', 'defaultsort', 'use list-defined references', 'void', //https://en.wikipedia.org/wiki/Category:Protection_templates
   'pp', 'pp-move-indef', 'pp-semi-indef', 'pp-vandalism', //https://en.wikipedia.org/wiki/Template:R
   'r', //out-of-scope still - https://en.wikipedia.org/wiki/Template:Tag
@@ -4509,7 +3546,7 @@
   // 'weasel inline',
   //https://en.wikipedia.org/wiki/Template:End
   'pope list end', 'shipwreck list end', 'starbox end', 'end box', 'end', 's-end'];
-  const ignore$1 = list.reduce((h, str) => {
+  const ignore$1 = list$1.reduce((h, str) => {
     h[str] = true;
     return h;
   }, {});
@@ -4553,9 +3590,9 @@
     mlbbioret: true
   };
 
-  const i18n$2 = i18n$6;
+  const i18n$3 = i18n$6;
   const infoboxes$1 = _infoboxes;
-  const i18nReg = new RegExp('^(subst.)?(' + i18n$2.infoboxes.join('|') + ')[: \n]', 'i'); //some looser ones
+  const i18nReg = new RegExp('^(subst.)?(' + i18n$3.infoboxes.join('|') + ')[: \n]', 'i'); //some looser ones
 
   const startReg = /^infobox /i;
   const endReg = / infobox$/i;
@@ -4830,35 +3867,35 @@
     toNumber: toNumber
   };
 
-  const parse$g = toJSON$4;
+  const parse$i = toJSON$4;
   const strip$1 = _strip;
   const lib$3 = _lib$3;
   var functions$2 = {
     //https://en.wikipedia.org/wiki/Template:Ra
     ra: tmpl => {
-      let obj = parse$g(tmpl, ['hours', 'minutes', 'seconds']);
+      let obj = parse$i(tmpl, ['hours', 'minutes', 'seconds']);
       return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':');
     },
     //https://en.wikipedia.org/wiki/Template:Deg2HMS
     deg2hms: tmpl => {
       //this template should do the conversion
-      let obj = parse$g(tmpl, ['degrees']);
+      let obj = parse$i(tmpl, ['degrees']);
       return (obj.degrees || '') + '°';
     },
     hms2deg: tmpl => {
       //this template should do the conversion too
-      let obj = parse$g(tmpl, ['hours', 'minutes', 'seconds']);
+      let obj = parse$i(tmpl, ['hours', 'minutes', 'seconds']);
       return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':');
     },
     decdeg: tmpl => {
       //this template should do the conversion too
-      let obj = parse$g(tmpl, ['deg', 'min', 'sec', 'hem', 'rnd']);
+      let obj = parse$i(tmpl, ['deg', 'min', 'sec', 'hem', 'rnd']);
       return (obj.deg || obj.degrees) + '°';
     },
     //https://en.wikipedia.org/wiki/Template:Sortname
     sortname: tmpl => {
       let order = ['first', 'last', 'target', 'sort'];
-      let obj = parse$g(tmpl, order);
+      let obj = parse$i(tmpl, order);
       let name = "".concat(obj.first || '', " ").concat(obj.last || '');
       name = name.trim();
 
@@ -4882,7 +3919,7 @@
     },
     // https://en.wikipedia.org/wiki/Template:First_word
     'first word': tmpl => {
-      let obj = parse$g(tmpl, ['text']);
+      let obj = parse$i(tmpl, ['text']);
       let str = obj.text;
 
       if (obj.sep) {
@@ -4893,33 +3930,33 @@
     },
     trunc: tmpl => {
       let order = ['str', 'len'];
-      let obj = parse$g(tmpl, order);
+      let obj = parse$i(tmpl, order);
       return obj.str.substr(0, obj.len);
     },
     'str mid': tmpl => {
       let order = ['str', 'start', 'end'];
-      let obj = parse$g(tmpl, order);
+      let obj = parse$i(tmpl, order);
       let start = parseInt(obj.start, 10) - 1;
       let end = parseInt(obj.end, 10);
       return obj.str.substr(start, end);
     },
     reign: tmpl => {
       let order = ['start', 'end'];
-      let obj = parse$g(tmpl, order);
+      let obj = parse$i(tmpl, order);
       return "(r. ".concat(obj.start, " \u2013 ").concat(obj.end, ")");
     },
     circa: tmpl => {
-      let obj = parse$g(tmpl, ['year']);
-      return "c.\u2009".concat(obj.year);
+      let obj = parse$i(tmpl, ['year']);
+      return "c. ".concat(obj.year);
     },
     // https://en.wikipedia.org/wiki/Template:Decade_link
     'decade link': tmpl => {
-      let obj = parse$g(tmpl, ['year']);
+      let obj = parse$i(tmpl, ['year']);
       return "".concat(obj.year, "|").concat(obj.year, "s");
     },
     // https://en.wikipedia.org/wiki/Template:Decade
     decade: tmpl => {
-      let obj = parse$g(tmpl, ['year']);
+      let obj = parse$i(tmpl, ['year']);
       let year = Number(obj.year);
       year = parseInt(year / 10, 10) * 10; // round to decade
 
@@ -4927,7 +3964,7 @@
     },
     // https://en.wikipedia.org/wiki/Template:Century
     century: tmpl => {
-      let obj = parse$g(tmpl, ['year']);
+      let obj = parse$i(tmpl, ['year']);
       let year = Number(obj.year);
       year = parseInt(year / 100, 10) + 1;
       return "".concat(year);
@@ -4935,7 +3972,7 @@
     //https://en.wikipedia.org/wiki/Template:Radic
     radic: tmpl => {
       let order = ['after', 'before'];
-      let obj = parse$g(tmpl, order);
+      let obj = parse$i(tmpl, order);
       return "".concat(obj.before || '', "\u221A").concat(obj.after || '');
     },
     'medical cases chart/row': tmpl => {
@@ -4945,12 +3982,12 @@
     //https://en.wikipedia.org/wiki/Template:OldStyleDate
     oldstyledate: tmpl => {
       let order = ['date', 'year'];
-      let obj = parse$g(tmpl, order);
+      let obj = parse$i(tmpl, order);
       return obj.year ? obj.date + ' ' + obj.year : obj.date;
     },
     //formatting things - https://en.wikipedia.org/wiki/Template:Nobold
     braces: tmpl => {
-      let obj = parse$g(tmpl, ['text']);
+      let obj = parse$i(tmpl, ['text']);
       let attrs = '';
 
       if (obj.list) {
@@ -4960,37 +3997,37 @@
       return '{{' + (obj.text || '') + attrs + '}}';
     },
     hlist: tmpl => {
-      let obj = parse$g(tmpl);
+      let obj = parse$i(tmpl);
       obj.list = obj.list || [];
       return obj.list.join(' · ');
     },
     pagelist: tmpl => {
-      let arr = parse$g(tmpl).list || [];
+      let arr = parse$i(tmpl).list || [];
       return arr.join(', ');
     },
     //actually rendering these links removes the text.
     //https://en.wikipedia.org/wiki/Template:Catlist
     catlist: tmpl => {
-      let arr = parse$g(tmpl).list || [];
+      let arr = parse$i(tmpl).list || [];
       return arr.join(', ');
     },
     //https://en.wikipedia.org/wiki/Template:Br_separated_entries
     'br separated entries': tmpl => {
-      let arr = parse$g(tmpl).list || [];
+      let arr = parse$i(tmpl).list || [];
       return arr.join('\n\n');
     },
     'comma separated entries': tmpl => {
-      let arr = parse$g(tmpl).list || [];
+      let arr = parse$i(tmpl).list || [];
       return arr.join(', ');
     },
     //https://en.wikipedia.org/wiki/Template:Bare_anchored_list
     'anchored list': tmpl => {
-      let arr = parse$g(tmpl).list || [];
+      let arr = parse$i(tmpl).list || [];
       arr = arr.map((str, i) => "".concat(i + 1, ". ").concat(str));
       return arr.join('\n\n');
     },
     'bulleted list': tmpl => {
-      let arr = parse$g(tmpl).list || [];
+      let arr = parse$i(tmpl).list || [];
       arr = arr.filter(f => f);
       arr = arr.map(str => '• ' + str);
       return arr.join('\n\n');
@@ -5007,15 +4044,15 @@
     },
     //https://en.wikipedia.org/wiki/Template:Term
     term: tmpl => {
-      let obj = parse$g(tmpl, ['term']);
+      let obj = parse$i(tmpl, ['term']);
       return "".concat(obj.term, ":");
     },
     linum: tmpl => {
-      let obj = parse$g(tmpl, ['num', 'text']);
+      let obj = parse$i(tmpl, ['num', 'text']);
       return "".concat(obj.num, ". ").concat(obj.text);
     },
     'block indent': tmpl => {
-      let obj = parse$g(tmpl);
+      let obj = parse$i(tmpl);
 
       if (obj['1']) {
         return '\n' + obj['1'] + '\n';
@@ -5025,39 +4062,39 @@
     },
     //https://en.wikipedia.org/wiki/Template:Lbs
     lbs: tmpl => {
-      let obj = parse$g(tmpl, ['text']);
+      let obj = parse$i(tmpl, ['text']);
       return "[[".concat(obj.text, " Lifeboat Station|").concat(obj.text, "]]");
     },
     //Foo-class
     lbc: tmpl => {
-      let obj = parse$g(tmpl, ['text']);
+      let obj = parse$i(tmpl, ['text']);
       return "[[".concat(obj.text, "-class lifeboat|").concat(obj.text, "-class]]");
     },
     lbb: tmpl => {
-      let obj = parse$g(tmpl, ['text']);
+      let obj = parse$i(tmpl, ['text']);
       return "[[".concat(obj.text, "-class lifeboat|").concat(obj.text, "]]");
     },
     //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
     '#dateformat': tmpl => {
       tmpl = tmpl.replace(/:/, '|');
-      let obj = parse$g(tmpl, ['date', 'format']);
+      let obj = parse$i(tmpl, ['date', 'format']);
       return obj.date;
     },
     //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
     lc: tmpl => {
       tmpl = tmpl.replace(/:/, '|');
-      let obj = parse$g(tmpl, ['text']);
+      let obj = parse$i(tmpl, ['text']);
       return (obj.text || '').toLowerCase();
     },
     //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
     uc: tmpl => {
       tmpl = tmpl.replace(/:/, '|');
-      let obj = parse$g(tmpl, ['text']);
+      let obj = parse$i(tmpl, ['text']);
       return (obj.text || '').toUpperCase();
     },
     lcfirst: tmpl => {
       tmpl = tmpl.replace(/:/, '|');
-      let text = parse$g(tmpl, ['text']).text;
+      let text = parse$i(tmpl, ['text']).text;
 
       if (!text) {
         return '';
@@ -5067,7 +4104,7 @@
     },
     ucfirst: tmpl => {
       tmpl = tmpl.replace(/:/, '|');
-      let text = parse$g(tmpl, ['text']).text;
+      let text = parse$i(tmpl, ['text']).text;
 
       if (!text) {
         return '';
@@ -5077,19 +4114,19 @@
     },
     padleft: tmpl => {
       tmpl = tmpl.replace(/:/, '|');
-      let obj = parse$g(tmpl, ['text', 'num']);
+      let obj = parse$i(tmpl, ['text', 'num']);
       let text = obj.text || '';
       return text.padStart(obj.num, obj.str || '0');
     },
     padright: tmpl => {
       tmpl = tmpl.replace(/:/, '|');
-      let obj = parse$g(tmpl, ['text', 'num']);
+      let obj = parse$i(tmpl, ['text', 'num']);
       let text = obj.text || '';
       return text.padEnd(obj.num, obj.str || '0');
     },
     //https://en.wikipedia.org/wiki/Template:Abbrlink
     abbrlink: tmpl => {
-      let obj = parse$g(tmpl, ['abbr', 'page']);
+      let obj = parse$i(tmpl, ['abbr', 'page']);
 
       if (obj.page) {
         return "[[".concat(obj.page, "|").concat(obj.abbr, "]]");
@@ -5099,7 +4136,7 @@
     },
     // https://en.wikipedia.org/wiki/Template:Own
     own: tmpl => {
-      let obj = parse$g(tmpl, ['author']);
+      let obj = parse$i(tmpl, ['author']);
       let str = 'Own work';
 
       if (obj.author) {
@@ -5111,7 +4148,7 @@
     //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
     formatnum: tmpl => {
       tmpl = tmpl.replace(/:/, '|');
-      let obj = parse$g(tmpl, ['number']);
+      let obj = parse$i(tmpl, ['number']);
       let str = obj.number || '';
       str = str.replace(/,/g, '');
       let num = Number(str);
@@ -5120,7 +4157,7 @@
     //https://en.wikipedia.org/wiki/Template:Frac
     frac: tmpl => {
       let order = ['a', 'b', 'c'];
-      let obj = parse$g(tmpl, order);
+      let obj = parse$i(tmpl, order);
 
       if (obj.c) {
         return "".concat(obj.a, " ").concat(obj.b, "/").concat(obj.c);
@@ -5135,7 +4172,7 @@
     //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
     convert: tmpl => {
       let order = ['num', 'two', 'three', 'four'];
-      let obj = parse$g(tmpl, order); //todo: support plural units
+      let obj = parse$i(tmpl, order); //todo: support plural units
 
       if (obj.two === '-' || obj.two === 'to' || obj.two === 'and') {
         if (obj.four) {
@@ -5150,17 +4187,17 @@
     // Large number of aliases - https://en.wikipedia.org/wiki/Template:Tl
     tl: tmpl => {
       let order = ['first', 'second'];
-      let obj = parse$g(tmpl, order);
+      let obj = parse$i(tmpl, order);
       return obj.second || obj.first;
     },
     //this one's a little different
     won: tmpl => {
-      let data = parse$g(tmpl, ['text']);
+      let data = parse$i(tmpl, ['text']);
       return data.place || data.text || lib$3.titlecase(data.template);
     },
     //a convulated way to make a xml tag - https://en.wikipedia.org/wiki/Template:Tag
     tag: tmpl => {
-      let obj = parse$g(tmpl, ['tag', 'open']);
+      let obj = parse$i(tmpl, ['tag', 'open']);
       const ignore = {
         span: true,
         div: true,
@@ -5182,7 +4219,7 @@
     plural: tmpl => {
       tmpl = tmpl.replace(/plural:/, 'plural|');
       let order = ['num', 'word'];
-      let obj = parse$g(tmpl, order);
+      let obj = parse$i(tmpl, order);
       let num = Number(obj.num);
       let word = obj.word;
 
@@ -5198,7 +4235,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:DEC
     dec: tmpl => {
-      let obj = parse$g(tmpl, ['degrees', 'minutes', 'seconds']);
+      let obj = parse$i(tmpl, ['degrees', 'minutes', 'seconds']);
       let str = (obj.degrees || 0) + '°';
 
       if (obj.minutes) {
@@ -5213,7 +4250,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Val
     val: tmpl => {
-      let obj = parse$g(tmpl, ['number', 'uncertainty']);
+      let obj = parse$i(tmpl, ['number', 'uncertainty']);
       let num = obj.number;
 
       if (num && Number(num)) {
@@ -5239,7 +4276,7 @@
     },
     //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
     percentage: tmpl => {
-      let obj = parse$g(tmpl, ['numerator', 'denominator', 'decimals']);
+      let obj = parse$i(tmpl, ['numerator', 'denominator', 'decimals']);
       let num = lib$3.percentage(obj);
 
       if (num === null) {
@@ -5250,7 +4287,7 @@
     },
     // {{Percent-done|done=N|total=N|digits=N}}
     'percent-done': tmpl => {
-      let obj = parse$g(tmpl, ['done', 'total', 'digits']);
+      let obj = parse$i(tmpl, ['done', 'total', 'digits']);
       let num = lib$3.percentage({
         numerator: obj.done,
         denominator: obj.total,
@@ -5272,14 +4309,14 @@
   ['🇺🇸', 'usa', 'united states'], ['🇺🇾', 'ury', 'uruguay'], ['🇺🇿', 'uzb', 'uzbekistan'], ['🇻🇦', 'vat', 'vatican city'], ['🇻🇨', 'vct', 'saint vincent and the grenadines'], ['🇻🇪', 'ven', 'venezuela'], ['🇻🇬', 'vgb', 'virgin islands, british'], ['🇻🇮', 'vir', 'virgin islands, u.s.'], ['🇻🇳', 'vnm', 'viet nam'], ['🇻🇺', 'vut', 'vanuatu'], ['🇼🇫', 'wlf', 'wallis and futuna'], ['🇼🇸', 'wsm', 'samoa'], ['🇾🇪', 'yem', 'yemen'], ['🇾🇹', 'myt', 'mayotte'], ['🇿🇦', 'zaf', 'south africa'], ['🇿🇲', 'zmb', 'zambia'], ['🇿🇼 ', 'zwe', 'zimbabwe'], //others (later unicode versions)
   ['🇺🇳', 'un', 'united nations'], ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'], ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'], ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales'], ['🇪🇺', 'eu', 'european union']];
 
-  const parse$f = toJSON$4;
+  const parse$h = toJSON$4;
   const flags$1 = flags$2;
   let templates$a = {
     //https://en.wikipedia.org/wiki/Template:Flag
     // {{flag|USA}} →  USA
     flag: tmpl => {
       let order = ['flag', 'variant'];
-      let obj = parse$f(tmpl, order);
+      let obj = parse$h(tmpl, order);
       let name = obj.flag || '';
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]) || [];
@@ -5289,7 +4326,7 @@
     // {{flagcountry|USA}} →  United States
     flagcountry: tmpl => {
       let order = ['flag', 'variant'];
-      let obj = parse$f(tmpl, order);
+      let obj = parse$h(tmpl, order);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]) || [];
       let flag = found[0] || '';
@@ -5298,7 +4335,7 @@
     // (unlinked flag-country)
     flagcu: tmpl => {
       let order = ['flag', 'variant'];
-      let obj = parse$f(tmpl, order);
+      let obj = parse$h(tmpl, order);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]) || [];
       let flag = found[0] || '';
@@ -5308,7 +4345,7 @@
     // {{flagicon|USA}} → United States
     flagicon: tmpl => {
       let order = ['flag', 'variant'];
-      let obj = parse$f(tmpl, order);
+      let obj = parse$h(tmpl, order);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]);
 
@@ -5321,7 +4358,7 @@
     //unlinked flagicon
     flagdeco: tmpl => {
       let order = ['flag', 'variant'];
-      let obj = parse$f(tmpl, order);
+      let obj = parse$h(tmpl, order);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]) || [];
       return found[0] || '';
@@ -5329,7 +4366,7 @@
     //same, but a soccer team
     fb: tmpl => {
       let order = ['flag', 'variant'];
-      let obj = parse$f(tmpl, order);
+      let obj = parse$h(tmpl, order);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]);
 
@@ -5341,7 +4378,7 @@
     },
     fbicon: tmpl => {
       let order = ['flag', 'variant'];
-      let obj = parse$f(tmpl, order);
+      let obj = parse$h(tmpl, order);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]);
 
@@ -5353,7 +4390,7 @@
     },
     flagathlete: tmpl => {
       let order = ['name', 'flag', 'variant'];
-      let obj = parse$f(tmpl, order);
+      let obj = parse$h(tmpl, order);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]);
 
@@ -5372,14 +4409,14 @@
   });
   var flags_1 = templates$a;
 
-  const parse$e = toJSON$4;
+  const parse$g = toJSON$4;
   const titlecase = _lib$3.titlecase; //https://en.wikipedia.org/wiki/Template:Yes
 
   let templates$9 = {};
   let cells = ['rh', 'rh2', 'yes', 'no', 'maybe', 'eliminated', 'lost', 'safe', 'active', 'site active', 'coming soon', 'good', 'won', 'nom', 'sho', 'longlisted', 'tba', 'success', 'operational', 'failure', 'partial', 'regional', 'maybecheck', 'partial success', 'partial failure', 'okay', 'yes-no', 'some', 'nonpartisan', 'pending', 'unofficial', 'unofficial2', 'usually', 'rarely', 'sometimes', 'any', 'varies', 'black', 'non-album single', 'unreleased', 'unknown', 'perhaps', 'depends', 'included', 'dropped', 'terminated', 'beta', 'table-experimental', 'free', 'proprietary', 'nonfree', 'needs', 'nightly', 'release-candidate', 'planned', 'scheduled', 'incorrect', 'no result', 'cmain', 'calso starring', 'crecurring', 'cguest', 'not yet', 'optional'];
   cells.forEach(str => {
     templates$9[str] = tmpl => {
-      let data = parse$e(tmpl, ['text']);
+      let data = parse$g(tmpl, ['text']);
       return data.text || titlecase(data.template);
     };
   }); //these ones have a text result
@@ -5387,7 +4424,7 @@
   let moreCells = [['active fire', 'Active'], ['site active', 'Active'], ['site inactive', 'Inactive'], ['yes2', ''], ['no2', ''], ['ya', '✅'], ['na', '❌'], ['nom', 'Nominated'], ['sho', 'Shortlisted'], ['tba', 'TBA'], ['maybecheck', '✔️'], ['okay', 'Neutral'], ['n/a', 'N/A'], ['sdash', '—'], ['dunno', '?'], ['draw', ''], ['cnone', ''], ['nocontest', '']];
   moreCells.forEach(a => {
     templates$9[a[0]] = tmpl => {
-      let data = parse$e(tmpl, ['text']);
+      let data = parse$g(tmpl, ['text']);
       return data.text || a[1];
     };
   });
@@ -5413,13 +4450,13 @@
   });
   var idTitle_1 = templates$7;
 
-  const parse$d = toJSON$4;
-  const Image$3 = Image_1;
+  const parse$f = toJSON$4;
+  const Image$4 = Image_1;
   const lib$2 = _lib$3;
   var functions$1 = {
     // https://en.wikipedia.org/wiki/Template:IPA
     ipa: (tmpl, list) => {
-      let obj = parse$d(tmpl, ['transcription', 'lang', 'audio']);
+      let obj = parse$f(tmpl, ['transcription', 'lang', 'audio']);
       obj.lang = lib$2.getLang(obj.template);
       obj.template = 'ipa';
       list.push(obj);
@@ -5427,7 +4464,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:IPAc-en
     ipac: (tmpl, list) => {
-      let obj = parse$d(tmpl);
+      let obj = parse$f(tmpl);
       obj.transcription = (obj.list || []).join(',');
       delete obj.list;
       obj.lang = lib$2.getLang(obj.template);
@@ -5437,7 +4474,7 @@
     },
     quote: (tmpl, list) => {
       let order = ['text', 'author'];
-      let obj = parse$d(tmpl, order);
+      let obj = parse$f(tmpl, order);
       list.push(obj); //create plaintext version
 
       if (obj.text) {
@@ -5456,7 +4493,7 @@
     //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
     'cite gnis': (tmpl, list) => {
       let order = ['id', 'name', 'type'];
-      let obj = parse$d(tmpl, order);
+      let obj = parse$f(tmpl, order);
       obj.type = 'gnis';
       obj.template = 'citation';
       list.push(obj);
@@ -5464,14 +4501,14 @@
     },
     'spoken wikipedia': (tmpl, list) => {
       let order = ['file', 'date'];
-      let obj = parse$d(tmpl, order);
+      let obj = parse$f(tmpl, order);
       obj.template = 'audio';
       list.push(obj);
       return '';
     },
     //yellow card
     yel: (tmpl, list) => {
-      let obj = parse$d(tmpl, ['min']);
+      let obj = parse$f(tmpl, ['min']);
       list.push(obj);
 
       if (obj.min) {
@@ -5481,7 +4518,7 @@
       return '';
     },
     subon: (tmpl, list) => {
-      let obj = parse$d(tmpl, ['min']);
+      let obj = parse$f(tmpl, ['min']);
       list.push(obj);
 
       if (obj.min) {
@@ -5491,7 +4528,7 @@
       return '';
     },
     suboff: (tmpl, list) => {
-      let obj = parse$d(tmpl, ['min']);
+      let obj = parse$f(tmpl, ['min']);
       list.push(obj);
 
       if (obj.min) {
@@ -5503,7 +4540,7 @@
     //https://en.wikipedia.org/wiki/Template:Sfn
     sfn: (tmpl, list, parser, alias) => {
       let order = ['author', 'year', 'location'];
-      let obj = parse$d(tmpl, order);
+      let obj = parse$f(tmpl, order);
 
       if (alias) {
         obj.name = obj.template;
@@ -5515,7 +4552,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Redirect
     redirect: (tmpl, list) => {
-      let data = parse$d(tmpl, ['redirect']);
+      let data = parse$f(tmpl, ['redirect']);
       let lines = data.list || [];
       let links = [];
 
@@ -5536,7 +4573,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Sister_project_links
     'sister project links': (tmpl, list) => {
-      let data = parse$d(tmpl); //rename 'wd' to 'wikidata'
+      let data = parse$f(tmpl); //rename 'wd' to 'wikidata'
 
       let links = {};
       Object.keys(lib$2.sisterProjects).forEach(k => {
@@ -5553,7 +4590,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Subject_bar
     'subject bar': (tmpl, list) => {
-      let data = parse$d(tmpl);
+      let data = parse$f(tmpl);
       Object.keys(data).forEach(k => {
         //rename 'voy' to 'wikivoyage'
         if (lib$2.sisterProjects.hasOwnProperty(k)) {
@@ -5571,14 +4608,14 @@
     //amazingly, this one does not obey any known patterns
     //https://en.wikipedia.org/wiki/Template:Gallery
     gallery: (tmpl, list) => {
-      let obj = parse$d(tmpl);
+      let obj = parse$f(tmpl);
       let images = (obj.list || []).filter(line => /^ *File ?:/.test(line));
       images = images.map(file => {
         let img = {
           file: file
         }; // todo: add lang and domain information
 
-        return new Image$3(img).json();
+        return new Image$4(img).json();
       });
       obj = {
         template: 'gallery',
@@ -5589,7 +4626,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Sky
     sky: (tmpl, list) => {
-      let obj = parse$d(tmpl, ['asc_hours', 'asc_minutes', 'asc_seconds', 'dec_sign', 'dec_degrees', 'dec_minutes', 'dec_seconds', 'distance']);
+      let obj = parse$f(tmpl, ['asc_hours', 'asc_minutes', 'asc_seconds', 'dec_sign', 'dec_degrees', 'dec_minutes', 'dec_seconds', 'distance']);
       let template = {
         template: 'sky',
         ascension: {
@@ -5613,7 +4650,7 @@
     // parsing code.
     'medical cases chart': (tmpl, list) => {
       let order = ['date', 'deathsExpr', 'recoveriesExpr', 'casesExpr', '4thExpr', '5thExpr', 'col1', 'col1Change', 'col2', 'col2Change'];
-      let obj = parse$d(tmpl);
+      let obj = parse$f(tmpl);
       obj.data = obj.data || '';
       let rows = obj.data.split('\n'); // Mimic row parsing in _buildBars in the Lua source, from the following
       // line on:
@@ -5664,7 +4701,7 @@
       return '';
     },
     graph: (tmpl, list) => {
-      let data = parse$d(tmpl);
+      let data = parse$f(tmpl);
 
       if (data.x) {
         data.x = data.x.split(',').map(str => str.trim());
@@ -5686,7 +4723,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Historical_populations
     'historical populations': (tmpl, list) => {
-      let data = parse$d(tmpl);
+      let data = parse$f(tmpl);
       data.list = data.list || [];
       let years = [];
 
@@ -5708,7 +4745,7 @@
     'weather box': (tmpl, list) => {
       const hasMonth = /^jan /i;
       const isYear = /^year /i;
-      let obj = parse$d(tmpl);
+      let obj = parse$f(tmpl);
       const monthList = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
       let byMonth = {};
       let properties = Object.keys(obj).filter(k => hasMonth.test(k));
@@ -5743,7 +4780,7 @@
     //The 36 parameters are: 12 monthly highs (C), 12 lows (total 24) plus an optional 12 monthly rain/precipitation
     //https://en.wikipedia.org/wiki/Template:Weather_box/concise_C
     'weather box/concise c': (tmpl, list) => {
-      let obj = parse$d(tmpl);
+      let obj = parse$f(tmpl);
       obj.list = obj.list.map(s => lib$2.toNumber(s));
       obj.byMonth = {
         'high c': obj.list.slice(0, 12),
@@ -5756,7 +4793,7 @@
       return '';
     },
     'weather box/concise f': (tmpl, list) => {
-      let obj = parse$d(tmpl);
+      let obj = parse$f(tmpl);
       obj.list = obj.list.map(s => lib$2.toNumber(s));
       obj.byMonth = {
         'high f': obj.list.slice(0, 12),
@@ -5770,7 +4807,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Climate_chart
     'climate chart': (tmpl, list) => {
-      let lines = parse$d(tmpl).list || [];
+      let lines = parse$f(tmpl).list || [];
       let title = lines[0];
       let source = lines[38];
       lines = lines.slice(1); //amazingly, they use '−' symbol here instead of negatives...
@@ -5870,30 +4907,30 @@
 
   };
 
-  const parse$c = toJSON$4;
+  const parse$e = toJSON$4;
   const lib$1 = _lib$3;
   let templates$5 = {
     // https://en.wikipedia.org/wiki/Template:Math
     math: (tmpl, list) => {
-      let obj = parse$c(tmpl, ['formula']);
+      let obj = parse$e(tmpl, ['formula']);
       list.push(obj);
       return '\n\n' + (obj.formula || '') + '\n\n';
     },
     isbn: (tmpl, list) => {
       let order = ['id', 'id2', 'id3'];
-      let obj = parse$c(tmpl, order);
+      let obj = parse$e(tmpl, order);
       list.push(obj);
       return 'ISBN: ' + (obj.id || '');
     },
     //https://en.wikipedia.org/wiki/Template:Based_on
     'based on': (tmpl, list) => {
-      let obj = parse$c(tmpl, ['title', 'author']);
+      let obj = parse$e(tmpl, ['title', 'author']);
       list.push(obj);
       return "".concat(obj.title, " by ").concat(obj.author || '');
     },
     //barrels of oil https://en.wikipedia.org/wiki/Template:Bbl_to_t
     'bbl to t': (tmpl, list) => {
-      let obj = parse$c(tmpl, ['barrels']);
+      let obj = parse$e(tmpl, ['barrels']);
       list.push(obj);
 
       if (obj.barrels === '0') {
@@ -5904,7 +4941,7 @@
     },
     //minor planet - https://en.wikipedia.org/wiki/Template:MPC
     mpc: (tmpl, list) => {
-      let obj = parse$c(tmpl, ['number', 'text']);
+      let obj = parse$e(tmpl, ['number', 'text']);
       list.push(obj);
       return "[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ".concat(obj.text || obj.number, "]");
     },
@@ -5922,7 +4959,7 @@
     },
     // https://en.wikipedia.org/wiki/Template:Ordered_list
     'ordered list': (tmpl, list) => {
-      let obj = parse$c(tmpl);
+      let obj = parse$e(tmpl);
       list.push(obj);
       obj.list = obj.list || [];
       let lines = obj.list.map((str, i) => "".concat(i + 1, ". ").concat(str));
@@ -5930,7 +4967,7 @@
     },
     // https://en.wikipedia.org/wiki/Template:Title_year
     'title year': (tmpl, _list, _alias, _parse, doc) => {
-      let obj = parse$c(tmpl, ['match', 'nomatch', 'page']);
+      let obj = parse$e(tmpl, ['match', 'nomatch', 'page']);
       let title = obj.page || doc.title();
 
       if (title) {
@@ -5945,7 +4982,7 @@
     },
     // https://en.wikipedia.org/wiki/Template:Title_century
     'title century': (tmpl, _list, _alias, _parse, doc) => {
-      let obj = parse$c(tmpl, ['match', 'nomatch', 'page']);
+      let obj = parse$e(tmpl, ['match', 'nomatch', 'page']);
       let title = obj.page || doc.title();
 
       if (title) {
@@ -5960,7 +4997,7 @@
     },
     // https://en.wikipedia.org/wiki/Template:Title_decade
     'title decade': (tmpl, _list, _alias, _parse, doc) => {
-      let obj = parse$c(tmpl, ['match', 'nomatch', 'page']);
+      let obj = parse$e(tmpl, ['match', 'nomatch', 'page']);
       let title = obj.page || doc.title();
 
       if (title) {
@@ -5975,7 +5012,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Nihongo
     nihongo: (tmpl, list) => {
-      let obj = parse$c(tmpl, ['english', 'kanji', 'romaji', 'extra']);
+      let obj = parse$e(tmpl, ['english', 'kanji', 'romaji', 'extra']);
       list.push(obj);
       let str = obj.english || obj.romaji || '';
 
@@ -5988,7 +5025,7 @@
     //https://en.wikipedia.org/wiki/Template:Marriage
     //this one creates a template, and an inline response
     marriage: (tmpl, list) => {
-      let data = parse$c(tmpl, ['spouse', 'from', 'to', 'end']);
+      let data = parse$e(tmpl, ['spouse', 'from', 'to', 'end']);
       list.push(data);
       let str = data.spouse || '';
 
@@ -6004,7 +5041,7 @@
     },
     //'red' card - {{sent off|cards|min1|min2}}
     'sent off': (tmpl, list) => {
-      let obj = parse$c(tmpl, ['cards']);
+      let obj = parse$e(tmpl, ['cards']);
       let result = {
         template: 'sent off',
         cards: obj.cards,
@@ -6015,7 +5052,7 @@
       return 'sent off: ' + mins;
     },
     transl: (tmpl, list) => {
-      let obj = parse$c(tmpl, ['lang', 'text', 'text2']); // support 3-param
+      let obj = parse$e(tmpl, ['lang', 'text', 'text2']); // support 3-param
 
       if (obj.text2) {
         obj.iso = obj.text;
@@ -6028,7 +5065,7 @@
     },
     //show/hide: https://en.wikipedia.org/wiki/Template:Collapsible_list
     'collapsible list': (tmpl, list) => {
-      let obj = parse$c(tmpl);
+      let obj = parse$e(tmpl);
       list.push(obj);
       let str = '';
 
@@ -6053,7 +5090,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Columns-list
     'columns-list': (tmpl, list) => {
-      let arr = parse$c(tmpl).list || [];
+      let arr = parse$e(tmpl).list || [];
       let str = arr[0] || '';
       let lines = str.split(/\n/).filter(f => f);
       lines = lines.map(s => s.replace(/\*/, ''));
@@ -6066,7 +5103,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Height - {{height|ft=6|in=1}}
     height: (tmpl, list) => {
-      let obj = parse$c(tmpl);
+      let obj = parse$e(tmpl);
       list.push(obj);
       let result = [];
       let units = ['m', 'cm', 'ft', 'in']; //order matters
@@ -6080,7 +5117,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Sic
     sic: (tmpl, list) => {
-      let obj = parse$c(tmpl, ['one', 'two', 'three']);
+      let obj = parse$e(tmpl, ['one', 'two', 'three']);
       let word = (obj.one || '') + (obj.two || ''); //support '[sic?]'
 
       if (obj.one === '?') {
@@ -6100,7 +5137,7 @@
     },
     //
     inrconvert: (tmpl, list) => {
-      let o = parse$c(tmpl, ['rupee_value', 'currency_formatting']);
+      let o = parse$e(tmpl, ['rupee_value', 'currency_formatting']);
       list.push(o);
       const mults = {
         k: 1000,
@@ -6122,7 +5159,7 @@
     //fraction - https://en.wikipedia.org/wiki/Template:Sfrac
     frac: (tmpl, list) => {
       let order = ['a', 'b', 'c'];
-      let obj = parse$c(tmpl, order);
+      let obj = parse$e(tmpl, order);
       let data = {
         template: 'sfrac'
       };
@@ -6148,7 +5185,7 @@
       return "".concat(data.numerator, "\u2044").concat(data.denominator);
     },
     'winning percentage': (tmpl, list) => {
-      let obj = parse$c(tmpl, ['wins', 'losses', 'ties']);
+      let obj = parse$e(tmpl, ['wins', 'losses', 'ties']);
       list.push(obj);
       let wins = Number(obj.wins);
       let losses = Number(obj.losses);
@@ -6176,7 +5213,7 @@
       return ".".concat(num * 10);
     },
     winlosspct: (tmpl, list) => {
-      let obj = parse$c(tmpl, ['wins', 'losses']);
+      let obj = parse$e(tmpl, ['wins', 'losses']);
       list.push(obj);
       let wins = Number(obj.wins);
       let losses = Number(obj.losses);
@@ -6196,7 +5233,7 @@
     //https://en.wikipedia.org/wiki/Template:Video_game_release
     'video game release': (tmpl, list) => {
       let order = ['region', 'date', 'region2', 'date2', 'region3', 'date3', 'region4', 'date4'];
-      let obj = parse$c(tmpl, order);
+      let obj = parse$e(tmpl, order);
       let template = {
         template: 'video game release',
         releases: []
@@ -6217,7 +5254,7 @@
     },
     // https://en.m.wikipedia.org/wiki/Template:USS
     uss: (tmpl, list) => {
-      let obj = parse$c(tmpl, ['name', 'id']);
+      let obj = parse$e(tmpl, ['name', 'id']);
       list.push(obj);
 
       if (obj.id) {
@@ -6229,7 +5266,7 @@
   };
   var functions = templates$5;
 
-  const parse$b = toJSON$4;
+  const parse$d = toJSON$4;
   const codes$1 = {
     '£': 'GB£',
     // https://en.wikipedia.org/wiki/Template:GBP
@@ -6358,7 +5395,7 @@
   };
 
   const parseCurrency = (tmpl, list) => {
-    let o = parse$b(tmpl, ['amount', 'code']);
+    let o = parse$d(tmpl, ['amount', 'code']);
     list.push(o);
     let code = o.template || '';
 
@@ -6552,7 +5589,7 @@
     return String(num);
   };
 
-  const toText$1 = function (date) {
+  const toText$2 = function (date) {
     //eg '1995'
     let str = String(date.year || '');
 
@@ -6584,12 +5621,12 @@
   };
 
   var _format = {
-    toText: toText$1,
+    toText: toText$2,
     ymd: ymd
   }; // console.log(toText(ymd([2018, 3, 28])));
 
   const strip = _strip;
-  const parse$a = toJSON$4;
+  const parse$c = toJSON$4;
   const delta = _lib$2.delta;
   const fmt = _format; //wrap it up as a template
 
@@ -6622,7 +5659,7 @@
     //generic {{date|year|month|date}} template
     date: (tmpl, list) => {
       let order = ['year', 'month', 'date', 'hour', 'minute', 'second', 'timezone'];
-      let obj = parse$a(tmpl, order);
+      let obj = parse$c(tmpl, order);
       let data = fmt.ymd([obj.year, obj.month, obj.date || obj.day]);
       obj.text = fmt.toText(data); //make the replacement string
 
@@ -6651,7 +5688,7 @@
     //support parsing of 'February 10, 1992'
     natural_date: (tmpl, list) => {
       let order = ['text'];
-      let obj = parse$a(tmpl, order);
+      let obj = parse$c(tmpl, order);
       let str = obj.text || ''; // - just a year
 
       let date = {};
@@ -6677,7 +5714,7 @@
     //just grab the first value, and assume it's a year
     one_year: (tmpl, list) => {
       let order = ['year'];
-      let obj = parse$a(tmpl, order);
+      let obj = parse$c(tmpl, order);
       let year = Number(obj.year);
       list.push(template$1({
         year: year
@@ -6687,7 +5724,7 @@
     //assume 'y|m|d' | 'y|m|d' // {{BirthDeathAge|B|1976|6|6|1990|8|8}}
     two_dates: (tmpl, list) => {
       let order = ['b', 'birth_year', 'birth_month', 'birth_date', 'death_year', 'death_month', 'death_date'];
-      let obj = parse$a(tmpl, order); //'b' means show birth-date, otherwise show death-date
+      let obj = parse$c(tmpl, order); //'b' means show birth-date, otherwise show death-date
 
       if (obj.b && obj.b.toLowerCase() === 'b') {
         let date = fmt.ymd([obj.birth_year, obj.birth_month, obj.birth_date]);
@@ -6800,7 +5837,7 @@
   var _parsers = parsers$1;
 
   const parsers = _parsers;
-  const parse$9 = toJSON$4;
+  const parse$b = toJSON$4;
   const lib = _lib$2;
   const format = _format;
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; //date- templates we support
@@ -6838,13 +5875,13 @@
     },
     'time ago': tmpl => {
       let order = ['date', 'fmt'];
-      let time = parse$9(tmpl, order).date;
+      let time = parse$b(tmpl, order).date;
       return lib.timeSince(time);
     },
     //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
     'birth date and age': (tmpl, list) => {
       let order = ['year', 'month', 'day'];
-      let obj = parse$9(tmpl, order); //support 'one property' version
+      let obj = parse$b(tmpl, order); //support 'one property' version
 
       if (obj.year && /[a-z]/i.test(obj.year)) {
         return parsers.natural_date(tmpl, list);
@@ -6856,7 +5893,7 @@
     },
     'birth year and age': (tmpl, list) => {
       let order = ['birth_year', 'birth_month'];
-      let obj = parse$9(tmpl, order); //support 'one property' version
+      let obj = parse$b(tmpl, order); //support 'one property' version
 
       if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
         return parsers.natural_date(tmpl, list);
@@ -6875,7 +5912,7 @@
     },
     'death year and age': (tmpl, list) => {
       let order = ['death_year', 'birth_year', 'death_month'];
-      let obj = parse$9(tmpl, order); //support 'one property' version
+      let obj = parse$b(tmpl, order); //support 'one property' version
 
       if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
         return parsers.natural_date(tmpl, list);
@@ -6888,7 +5925,7 @@
     //https://en.wikipedia.org/wiki/Template:Birth_date_and_age2
     'birth date and age2': (tmpl, list) => {
       let order = ['at_year', 'at_month', 'at_day', 'birth_year', 'birth_month', 'birth_day'];
-      let obj = parse$9(tmpl, order);
+      let obj = parse$b(tmpl, order);
       list.push(obj);
       obj = format.ymd([obj.birth_year, obj.birth_month, obj.birth_day]);
       return format.toText(obj);
@@ -6896,7 +5933,7 @@
     //https://en.wikipedia.org/wiki/Template:Birth_based_on_age_as_of_date
     'birth based on age as of date': (tmpl, list) => {
       let order = ['age', 'year', 'month', 'day'];
-      let obj = parse$9(tmpl, order);
+      let obj = parse$b(tmpl, order);
       list.push(obj);
       let age = parseInt(obj.age, 10);
       let year = parseInt(obj.year, 10);
@@ -6911,7 +5948,7 @@
     //https://en.wikipedia.org/wiki/Template:Death_date_and_given_age
     'death date and given age': (tmpl, list) => {
       let order = ['year', 'month', 'day', 'age'];
-      let obj = parse$9(tmpl, order);
+      let obj = parse$b(tmpl, order);
       list.push(obj);
       obj = format.ymd([obj.year, obj.month, obj.day]);
       let str = format.toText(obj);
@@ -6928,7 +5965,7 @@
       tmpl = tmpl.replace(/\|format=[ymd]+/i, '');
       tmpl = tmpl.replace(/\|abbr=(on|off)/i, '');
       let order = ['year', 'month', 'date', 'bc'];
-      let obj = parse$9(tmpl, order);
+      let obj = parse$b(tmpl, order);
 
       if (obj.date && obj.month && obj.year) {
         //render 'june 5 2018'
@@ -6962,7 +5999,7 @@
     },
     // https://en.wikipedia.org/wiki/Template:MILLENNIUM
     millennium: tmpl => {
-      let obj = parse$9(tmpl, ['year']);
+      let obj = parse$b(tmpl, ['year']);
       let year = Number(obj.year);
       year = parseInt(year / 1000, 10) + 1;
 
@@ -6992,7 +6029,7 @@
 
   };
 
-  const parse$8 = toJSON$4;
+  const parse$a = toJSON$4;
   /**
    * converts DMS (decimal-minute-second) geo format to lat/lng format.
    * major thank you to https://github.com/gmaclennan/parse-dms and https://github.com/WSDOT-GIS/dms-js 👏
@@ -7102,7 +6139,7 @@
   };
 
   const parseCoor$1 = function (tmpl) {
-    let obj = parse$8(tmpl);
+    let obj = parse$a(tmpl);
     obj = parseParams(obj);
     let tmp = findLatLng(obj.list);
     obj.lat = round(tmp.lat);
@@ -7135,10 +6172,10 @@
 
   var geo = templates$3;
 
-  const parse$7 = toJSON$4;
+  const parse$9 = toJSON$4;
 
   const generic = function (tmpl, list, _parser, alias) {
-    let obj = parse$7(tmpl);
+    let obj = parse$9(tmpl);
 
     if (alias) {
       obj.name = obj.template;
@@ -7167,7 +6204,7 @@
   };
   var misc_1 = misc;
 
-  const parse$6 = toJSON$4;
+  const parse$8 = toJSON$4;
   const codes = {
     adx: 'adx',
     //https://en.wikipedia.org/wiki/Template:Abu_Dhabi_Securities_Exchange
@@ -7372,7 +6409,7 @@
   };
 
   const parseStockExchange = (tmpl, list) => {
-    let o = parse$6(tmpl, ['ticketnumber', 'code']);
+    let o = parse$8(tmpl, ['ticketnumber', 'code']);
     list.push(o);
     let code = o.template || '';
 
@@ -7401,7 +6438,7 @@
   });
   var stockExchanges = exchanges;
 
-  const parse$5 = toJSON$4;
+  const parse$7 = toJSON$4;
 
   const zeroPad = function (num) {
     num = String(num);
@@ -7436,7 +6473,7 @@
 
   const playoffBracket$1 = function (tmpl) {
     let rounds = [];
-    let obj = parse$5(tmpl); //try some rounds
+    let obj = parse$7(tmpl); //try some rounds
 
     for (let i = 1; i < 7; i += 1) {
       let round = [];
@@ -7466,7 +6503,7 @@
 
   var _lib = playoffBracket$1;
 
-  const parse$4 = toJSON$4;
+  const parse$6 = toJSON$4;
   const flags = flags$2;
   const playoffBracket = _lib;
   let sports = {
@@ -7477,7 +6514,7 @@
       return '';
     },
     player: (tmpl, list) => {
-      let res = parse$4(tmpl, ['number', 'country', 'name', 'dl']);
+      let res = parse$6(tmpl, ['number', 'country', 'name', 'dl']);
       list.push(res);
       let str = "[[".concat(res.name, "]]");
 
@@ -7498,7 +6535,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Goal
     goal: (tmpl, list) => {
-      let res = parse$4(tmpl);
+      let res = parse$6(tmpl);
       let obj = {
         template: 'goal',
         data: []
@@ -7529,7 +6566,7 @@
     //a transcluded sports module - https://en.m.wikipedia.org/w/index.php?title=Special:WhatLinksHere/Module:Sports_table
     // https://en.wikipedia.org/wiki/Template:2020–21_NHL_North_Division_standings
     'sports table': (tmpl, list) => {
-      let obj = parse$4(tmpl);
+      let obj = parse$6(tmpl);
       let byTeam = {};
       let teams = Object.keys(obj).filter(k => /^team[0-9]/.test(k)).map(k => obj[k].toLowerCase());
       teams.forEach(team => {
@@ -7568,14 +6605,14 @@
   const ignore = _ignore;
   const infobox = _infobox;
   const templates$1 = custom;
-  const toJSON$2 = toJSON$4;
+  const toJSON$3 = toJSON$4;
   const {
     isArray: isArray$2,
     isObject
   } = helpers$1;
   const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']; //this gets all the {{template}} objects and decides how to parse them
 
-  const parseTemplate$1 = function (tmpl, doc) {
+  const parseTemplate$2 = function (tmpl, doc) {
     let name = tmpl.name; // dont bother with some junk templates
 
     if (ignore.hasOwnProperty(name) === true) {
@@ -7584,14 +6621,14 @@
 
 
     if (infobox.isInfobox(name) === true) {
-      let obj = toJSON$2(tmpl.body, [], 'raw'); // list.push(infobox.format(obj))
+      let obj = toJSON$3(tmpl.body, [], 'raw'); // list.push(infobox.format(obj))
 
       return ['', infobox.format(obj)];
     } //cite book, cite arxiv...
 
 
     if (/^cite [a-z]/.test(name) === true) {
-      let obj = toJSON$2(tmpl.body);
+      let obj = toJSON$3(tmpl.body);
       obj.type = obj.template;
       obj.template = 'citation'; // list.push(obj)
 
@@ -7603,7 +6640,7 @@
     if (templates$1.hasOwnProperty(name) === true) {
       //handle number-syntax
       if (typeof templates$1[name] === 'number') {
-        let obj = toJSON$2(tmpl.body, nums);
+        let obj = toJSON$3(tmpl.body, nums);
         let key = String(templates$1[name]);
         return [obj[key] || ''];
       } //handle string-syntax
@@ -7615,14 +6652,14 @@
 
 
       if (isArray$2(templates$1[name]) === true) {
-        let obj = toJSON$2(tmpl.body, templates$1[name]); // list.push(obj)
+        let obj = toJSON$3(tmpl.body, templates$1[name]); // list.push(obj)
 
         return ['', obj];
       } //handle object sytax
 
 
       if (isObject(templates$1[name]) === true) {
-        let obj = toJSON$2(tmpl.body, templates$1[name].props); // list.push(obj)
+        let obj = toJSON$3(tmpl.body, templates$1[name].props); // list.push(obj)
 
         return [obj[templates$1[name].out], obj];
       } //handle function syntax
@@ -7632,13 +6669,13 @@
         // let json = toJSON(tmpl.body)
         //(tmpl, list, alias, doc)
         let arr = [];
-        let txt = templates$1[name](tmpl.body, arr, toJSON$2, null, doc);
+        let txt = templates$1[name](tmpl.body, arr, toJSON$3, null, doc);
         return [txt, arr[0]];
       }
     } //an unknown template with data, so just keep it.
 
 
-    let json = toJSON$2(tmpl.body);
+    let json = toJSON$3(tmpl.body);
 
     if (Object.keys(json).length === 0) {
       // list.push(json)
@@ -7649,9 +6686,1024 @@
     return ['', json];
   };
 
-  var parse$3 = parseTemplate$1;
+  var parse$5 = parseTemplate$2;
 
-  const encode = encode$4; //turn an infobox into some nice json
+  const {
+    trim_whitespace
+  } = helpers$1;
+  const parseSentence$5 = _04Sentence.fromText;
+  const parseReferences = reference;
+  const getTemplates = _01Nested;
+  const parseTemplates$1 = parse$5;
+  const heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/;
+  const hasTemplate = /\{\{.+?\}\}/;
+
+  const doInlineTemplates = function (wiki) {
+    let list = getTemplates(wiki);
+
+    if (list.length) {
+      let [txt] = parseTemplates$1(list[0]);
+      wiki = wiki.replace(list[0].body, txt);
+    }
+
+    return wiki;
+  };
+  /**
+   * @typedef fakeSection
+   * @property {string} title
+   * @property {null | number} depth
+   * @property {string} wiki
+   */
+
+  /**
+   * estimates the depth of a section and parses the title to a normal format
+   *
+   * @private
+   * @param {fakeSection} section
+   * @param {string} str
+   * @returns {fakeSection} section the depth in a object
+   */
+
+
+  const parseHeading = function (section, str) {
+    let m = str.match(heading_reg);
+
+    if (!m) {
+      section.title = '';
+      section.depth = 0;
+      return section;
+    }
+
+    let title = m[2] || '';
+    title = parseSentence$5(title).text(); //amazingly, you can see inline {{templates}} in this text, too
+
+    if (hasTemplate.test(title)) {
+      title = doInlineTemplates(title);
+    } //same for references (i know..)
+
+
+    let obj = {
+      _wiki: title
+    };
+    parseReferences(obj);
+    title = obj._wiki; //trim leading/trailing whitespace
+
+    title = trim_whitespace(title);
+    let depth = 0;
+
+    if (m[1]) {
+      depth = m[1].length - 2;
+    }
+
+    section.title = title;
+    section.depth = depth;
+    return section;
+  };
+
+  var heading = parseHeading;
+
+  const cleanup = function (lines) {
+    lines = lines.filter(line => {
+      //a '|+' row is a 'table caption', remove it.
+      return line && /^\|\+/.test(line) !== true;
+    });
+
+    if (/^\{\|/.test(lines[0]) === true) {
+      lines.shift();
+    }
+
+    if (/^\|\}/.test(lines[lines.length - 1]) === true) {
+      lines.pop();
+    }
+
+    if (/^\|-/.test(lines[0]) === true) {
+      lines.shift();
+    }
+
+    return lines;
+  }; //turn newline seperated into '|-' seperated
+
+
+  const findRows$1 = function (lines) {
+    let rows = [];
+    let row = [];
+    lines = cleanup(lines);
+
+    for (let i = 0; i < lines.length; i += 1) {
+      let line = lines[i]; //'|-' is a row-seperator
+
+      if (/^\|-/.test(line) === true) {
+        //okay, we're done the row
+        if (row.length > 0) {
+          rows.push(row);
+          row = [];
+        }
+      } else {
+        // remove leading | or ! for the ||/!! splitting
+        let startChar = line.charAt(0);
+
+        if (startChar === '|' || startChar === '!') {
+          line = line.substring(1);
+        } //look for '||' inline row-splitter
+
+
+        line = line.split(/(?:\|\||!!)/); //eslint-disable-line
+        // add leading ! back, because we later read it in header parsing functions
+
+        if (startChar === '!') {
+          line[0] = startChar + line[0];
+        }
+
+        line.forEach(l => {
+          l = l.trim();
+          row.push(l);
+        });
+      }
+    } //finish the last one
+
+
+    if (row.length > 0) {
+      rows.push(row);
+    }
+
+    return rows;
+  };
+
+  var _findRows = findRows$1;
+
+  const getRowSpan = /.*rowspan *= *["']?([0-9]+)["']?[ |]*/;
+  const getColSpan = /.*colspan *= *["']?([0-9]+)["']?[ |]*/; //colspans stretch ←left/right→
+
+  const doColSpan = function (rows) {
+    rows.forEach(row => {
+      row.forEach((str, c) => {
+        let m = str.match(getColSpan);
+
+        if (m !== null) {
+          let num = parseInt(m[1], 10); //...maybe if num is so big, and centered, remove it?
+          // if (num > 3) {
+          //   rows[r] = []
+          //   return
+          // }
+          //splice-in n empty columns right here
+
+          row[c] = str.replace(getColSpan, '');
+
+          for (let i = 1; i < num; i += 1) {
+            row.splice(c + 1, 0, '');
+          }
+        }
+      });
+    });
+    rows = rows.filter(r => r.length > 0);
+    return rows;
+  }; //colspans stretch up/down
+
+
+  const doRowSpan = function (rows) {
+    rows.forEach((row, r) => {
+      row.forEach((str, c) => {
+        let m = str.match(getRowSpan);
+
+        if (m !== null) {
+          let num = parseInt(m[1], 10); //copy this cell down n rows
+
+          str = str.replace(getRowSpan, '');
+          row[c] = str;
+
+          for (let i = r + 1; i < r + num; i += 1) {
+            if (!rows[i]) {
+              break;
+            }
+
+            rows[i].splice(c, 0, str);
+          }
+        }
+      });
+    });
+    return rows;
+  }; //
+
+
+  const handleSpans$1 = function (rows) {
+    rows = doColSpan(rows);
+    rows = doRowSpan(rows);
+    return rows;
+  };
+
+  var _spans = handleSpans$1;
+
+  const parseSentence$4 = _04Sentence.fromText;
+  const findRows = _findRows;
+  const handleSpans = _spans;
+  const isHeading = /^!/; //common ones
+
+  const headings$1 = {
+    name: true,
+    age: true,
+    born: true,
+    date: true,
+    year: true,
+    city: true,
+    country: true,
+    population: true,
+    count: true,
+    number: true
+  }; //additional table-cruft to remove before parseLine method
+
+  const cleanText = function (str) {
+    str = parseSentence$4(str).text(); //anything before a single-pipe is styling, so remove it
+
+    if (str.match(/\|/)) {
+      str = str.replace(/.*?\| ?/, ''); //class="unsortable"|title
+    }
+
+    str = str.replace(/style=['"].*?["']/, ''); //'!' is used as a highlighed-column
+
+    str = str.replace(/^!/, ''); // str = str.replace(/\(.*?\)/, '')
+
+    str = str.trim(); // str = str.toLowerCase()
+
+    return str;
+  };
+
+  const skipSpanRow = function (row) {
+    row = row || [];
+    let len = row.length;
+    let hasTxt = row.filter(str => str).length; //does it have 3 empty spaces?
+
+    if (len - hasTxt > 3) {
+      return true;
+    }
+
+    return false;
+  }; //remove non-header span rows
+
+
+  const removeMidSpans = function (rows) {
+    rows = rows.filter(row => {
+      if (row.length === 1 && row[0] && isHeading.test(row[0]) && /rowspan/i.test(row[0]) === false) {
+        return false;
+      }
+
+      return true;
+    });
+    return rows;
+  }; //'!' starts a header-row
+
+
+  const findHeaders = function () {
+    let rows = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    let headers = []; // is the first-row just a ton of colspan?
+
+    if (skipSpanRow(rows[0])) {
+      rows.shift();
+    }
+
+    let first = rows[0];
+
+    if (first && first[0] && first[1] && (/^!/.test(first[0]) || /^!/.test(first[1]))) {
+      headers = first.map(h => {
+        h = h.replace(/^! */, '');
+        h = cleanText(h);
+        return h;
+      });
+      rows.shift();
+    } //try the second row, too (overwrite first-row, if it exists)
+
+
+    first = rows[0];
+
+    if (first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
+      first.forEach((h, i) => {
+        h = h.replace(/^! */, '');
+        h = cleanText(h);
+
+        if (Boolean(h) === true) {
+          headers[i] = h;
+        }
+      });
+      rows.shift();
+    }
+
+    return headers;
+  }; //turn headers, array into an object
+
+
+  const parseRow = function (arr, headers) {
+    let row = {};
+    arr.forEach((str, i) => {
+      let h = headers[i] || 'col' + (i + 1);
+      let s = parseSentence$4(str);
+      s.text(cleanText(s.text()));
+      row[h] = s;
+    });
+    return row;
+  }; //should we use the first row as a the headers?
+
+
+  const firstRowHeader = function (rows) {
+    if (rows.length <= 3) {
+      return [];
+    }
+
+    let headers = rows[0].slice(0);
+    headers = headers.map(h => {
+      h = h.replace(/^! */, '');
+      h = parseSentence$4(h).text();
+      h = cleanText(h);
+      h = h.toLowerCase();
+      return h;
+    });
+
+    for (let i = 0; i < headers.length; i += 1) {
+      if (headings$1.hasOwnProperty(headers[i])) {
+        rows.shift();
+        return headers;
+      }
+    }
+
+    return [];
+  }; //turn a {|...table string into an array of arrays
+
+
+  const parseTable$1 = function (wiki) {
+    let lines = wiki.replace(/\r/g, '').replace(/\n(\s*[^|!{\s])/g, ' $1') //remove unecessary newlines
+    .split(/\n/).map(l => l.trim());
+    let rows = findRows(lines);
+    rows = rows.filter(r => r);
+
+    if (rows.length === 0) {
+      return [];
+    } //remove non-header span rows
+
+
+    rows = removeMidSpans(rows); //support colspan, rowspan...
+
+    rows = handleSpans(rows); //grab the header rows
+
+    let headers = findHeaders(rows);
+
+    if (!headers || headers.length <= 1) {
+      headers = firstRowHeader(rows);
+      let want = rows[rows.length - 1] || []; //try the second row
+
+      if (headers.length <= 1 && want.length > 2) {
+        headers = firstRowHeader(rows.slice(1));
+
+        if (headers.length > 0) {
+          rows = rows.slice(2); //remove them
+        }
+      }
+    } //index each column by it's header
+
+
+    let table = rows.map(arr => {
+      return parseRow(arr, headers);
+    });
+    return table;
+  };
+
+  var parse$4 = parseTable$1;
+
+  const encode$1 = encode$4; //
+
+  const toJson$4 = function (tables, options) {
+    return tables.map(table => {
+      let row = {};
+      Object.keys(table).forEach(k => {
+        row[k] = table[k].json(); //(they're sentence objects)
+      }); //encode them, for mongodb
+
+      if (options.encode === true) {
+        row = encode$1.encodeObj(row);
+      }
+
+      return row;
+    });
+  };
+
+  var toJson_1$2 = toJson$4;
+
+  const setDefaults$5 = setDefaults_1;
+  const toJson$3 = toJson_1$2;
+  const defaults$6 = {};
+
+  const normalize$1 = function () {
+    let key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    key = key.toLowerCase();
+    key = key.replace(/[_-]/g, ' ');
+    key = key.replace(/\(.*?\)/, '');
+    key = key.trim();
+    return key;
+  };
+
+  const Table$1 = function (data) {
+    let wiki = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+    Object.defineProperty(this, 'data', {
+      enumerable: false,
+      value: data
+    });
+    Object.defineProperty(this, '_wiki', {
+      enumerable: false,
+      value: wiki
+    });
+  };
+
+  const methods$4 = {
+    links(n) {
+      let links = [];
+      this.data.forEach(r => {
+        Object.keys(r).forEach(k => {
+          links = links.concat(r[k].links());
+        });
+      });
+
+      if (typeof n === 'string') {
+        //grab a link like .links('Fortnight')
+        n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+
+        let link = links.find(o => o.page() === n);
+        return link === undefined ? [] : [link];
+      }
+
+      return links;
+    },
+
+    get(keys) {
+      // normalize mappings
+      let have = this.data[0] || {};
+      let mapping = Object.keys(have).reduce((h, k) => {
+        h[normalize$1(k)] = k;
+        return h;
+      }, {}); // string gets a flat-list
+
+      if (typeof keys === 'string') {
+        let key = normalize$1(keys);
+        key = mapping[key] || key;
+        return this.data.map(row => {
+          return row[key] ? row[key].text() : null;
+        });
+      } // array gets obj-list
+
+
+      keys = keys.map(normalize$1).map(k => mapping[k] || k);
+      return this.data.map(row => {
+        return keys.reduce((h, k) => {
+          if (row[k]) {
+            h[k] = row[k].text();
+          } else {
+            h[k] = '';
+          }
+
+          return h;
+        }, {});
+      });
+    },
+
+    keyValue(options) {
+      let rows = this.json(options);
+      rows.forEach(row => {
+        Object.keys(row).forEach(k => {
+          row[k] = row[k].text;
+        });
+      });
+      return rows;
+    },
+
+    json(options) {
+      options = setDefaults$5(options, defaults$6);
+      return toJson$3(this.data, options);
+    },
+
+    text() {
+      return '';
+    },
+
+    wikitext() {
+      return this._wiki || '';
+    }
+
+  };
+  methods$4.keyvalue = methods$4.keyValue;
+  methods$4.keyval = methods$4.keyValue;
+  Object.keys(methods$4).forEach(k => {
+    Table$1.prototype[k] = methods$4[k];
+  });
+  var Table_1 = Table$1;
+
+  const parseTable = parse$4;
+  const Table = Table_1; //const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70k chars.
+
+  const openReg = /^\s*\{\|/;
+  const closeReg = /^\s*\|\}/; //tables can be recursive, so looky-here.
+
+  const findTables = function (section) {
+    let list = [];
+    let wiki = section._wiki;
+    let lines = wiki.split('\n');
+    let stack = [];
+
+    for (let i = 0; i < lines.length; i += 1) {
+      //start a table
+      if (openReg.test(lines[i]) === true) {
+        stack.push(lines[i]);
+        continue;
+      } //close a table
+
+
+      if (closeReg.test(lines[i]) === true) {
+        stack[stack.length - 1] += '\n' + lines[i];
+        let table = stack.pop();
+        list.push(table);
+        continue;
+      } //keep-going on one
+
+
+      if (stack.length > 0) {
+        stack[stack.length - 1] += '\n' + lines[i];
+      }
+    } //work-em together for a Table class
+
+
+    let tables = [];
+    list.forEach(str => {
+      if (str) {
+        //also re-remove a newline at the end of the table (awkward)
+        wiki = wiki.replace(str + '\n', '');
+        wiki = wiki.replace(str, '');
+        let data = parseTable(str);
+
+        if (data && data.length > 0) {
+          tables.push(new Table(data, str));
+        }
+      }
+    });
+
+    if (tables.length > 0) {
+      section._tables = tables;
+    }
+
+    section._wiki = wiki;
+  };
+
+  var table = findTables;
+
+  const setDefaults$4 = setDefaults_1;
+  const defaults$5 = {
+    sentences: true
+  };
+
+  const toJson$2 = function (p, options) {
+    options = setDefaults$4(options, defaults$5);
+    let data = {};
+
+    if (options.sentences === true) {
+      data.sentences = p.sentences().map(s => s.json(options));
+    }
+
+    return data;
+  };
+
+  var toJson_1$1 = toJson$2;
+
+  const toJSON$2 = toJson_1$1;
+  const setDefaults$3 = setDefaults_1;
+  const defaults$4 = {
+    sentences: true,
+    lists: true,
+    images: true
+  };
+
+  const Paragraph$1 = function (data) {
+    Object.defineProperty(this, 'data', {
+      enumerable: false,
+      value: data
+    });
+  };
+
+  const methods$3 = {
+    sentences: function () {
+      return this.data.sentences || [];
+    },
+    references: function () {
+      return this.data.references;
+    },
+    lists: function () {
+      return this.data.lists;
+    },
+
+    images() {
+      return this.data.images || [];
+    },
+
+    links: function (clue) {
+      let arr = [];
+      this.sentences().forEach(s => {
+        arr = arr.concat(s.links(clue));
+      });
+
+      if (typeof clue === 'string') {
+        //grab a specific link like .links('Fortnight')
+        clue = clue.charAt(0).toUpperCase() + clue.substring(1); //titlecase it
+
+        let link = arr.find(o => o.page() === clue);
+        return link === undefined ? [] : [link];
+      }
+
+      return arr || [];
+    },
+
+    interwiki() {
+      let arr = [];
+      this.sentences().forEach(s => {
+        arr = arr.concat(s.interwiki());
+      });
+      return arr || [];
+    },
+
+    text: function (options) {
+      options = setDefaults$3(options, defaults$4);
+      let str = this.sentences().map(s => s.text(options)).join(' ');
+      this.lists().forEach(list => {
+        str += '\n' + list.text();
+      });
+      return str;
+    },
+    json: function (options) {
+      options = setDefaults$3(options, defaults$4);
+      return toJSON$2(this, options);
+    },
+    wikitext: function () {
+      return this.data.wiki;
+    }
+  };
+  methods$3.citations = methods$3.references;
+  Object.keys(methods$3).forEach(k => {
+    Paragraph$1.prototype[k] = methods$3[k];
+  }); // aliases
+
+  const singular$2 = {
+    sentences: 'sentence',
+    references: 'reference',
+    citation: 'citations',
+    lists: 'list',
+    images: 'image',
+    links: 'link'
+  };
+  Object.keys(singular$2).forEach(k => {
+    let sing = singular$2[k];
+
+    Paragraph$1.prototype[sing] = function (clue) {
+      let arr = this[k](clue);
+
+      if (typeof clue === 'number') {
+        return arr[clue];
+      }
+
+      return arr[0];
+    };
+  });
+  var Paragraph_1 = Paragraph$1;
+
+  const opener = '[';
+  const closer = ']';
+  /**
+   *
+   * find all the pairs of '[[...[[..]]...]]' in the text
+   * used to properly root out recursive template calls, [[.. [[...]] ]]
+   * basically just adds open tags, and subtracts closing tags
+   *
+   * @private
+   * @param {string} text the text in which is searched in
+   * @returns {string[]} all the links in the text
+   */
+
+  function nested_find$1(text) {
+    let out = [];
+    let last = [];
+    const chars = text.split('');
+    let open = 0;
+
+    for (let i = 0; i < chars.length; i++) {
+      const c = text[i]; //increment open tag
+
+      if (c === opener) {
+        open += 1;
+      } //decrement close tag
+      else if (c === closer) {
+        open -= 1;
+
+        if (open < 0) {
+          open = 0;
+        }
+      } else if (last.length === 0) {
+        //If we're not inside of a pair of delimiters, we can discard the current letter.
+        //The return of this function is only used to extract images.
+        continue;
+      }
+
+      last.push(c);
+
+      if (open === 0 && last.length > 0) {
+        //first, fix botched parse
+        let open_count = 0;
+        let close_count = 0;
+
+        for (let j = 0; j < last.length; j++) {
+          if (last[j] === opener) {
+            open_count++;
+          } else if (last[j] === closer) {
+            close_count++;
+          }
+        } //is it botched?
+
+
+        if (open_count > close_count) {
+          last.push(closer);
+        } //looks good, keep it
+
+
+        out.push(last.join(''));
+        last = [];
+      }
+    }
+
+    return out;
+  }
+
+  var nested_find_1 = nested_find$1;
+
+  const i18n$2 = i18n$6;
+  const Image$3 = Image_1;
+  const parseTemplate$1 = toJSON$4;
+  const parseSentence$3 = _04Sentence.fromText;
+  const nested_find = nested_find_1; //regexes:
+
+  const isFile = new RegExp('(' + i18n$2.images.join('|') + '):', 'i');
+  let fileNames = "(".concat(i18n$2.images.join('|'), ")");
+  const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'iu'); //style directives for Wikipedia:Extended_image_syntax
+
+  const imgLayouts = {
+    thumb: true,
+    thumbnail: true,
+    border: true,
+    right: true,
+    left: true,
+    center: true,
+    top: true,
+    bottom: true,
+    none: true,
+    upright: true,
+    baseline: true,
+    middle: true,
+    sub: true,
+    super: true
+  }; //images are usually [[image:my_pic.jpg]]
+
+  const oneImage = function (img, doc) {
+    let m = img.match(file_reg);
+
+    if (m === null || !m[2]) {
+      return null;
+    }
+
+    let file = "".concat(m[1], ":").concat(m[2] || '');
+
+    if (file) {
+      let obj = {
+        file: file,
+        lang: doc._lang,
+        domain: doc._domain,
+        wiki: img,
+        pluginData: {}
+      }; //try to grab other metadata, too
+
+      img = img.replace(/^\[\[/, '');
+      img = img.replace(/\]\]$/, ''); //https://en.wikipedia.org/wiki/Wikipedia:Extended_image_syntax
+      //- [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
+
+      let imgData = parseTemplate$1(img);
+      let arr = imgData.list || []; //parse-out alt text, if explicitly given
+
+      if (imgData.alt) {
+        obj.alt = imgData.alt;
+      } //remove 'thumb' and things
+
+
+      arr = arr.filter(str => imgLayouts.hasOwnProperty(str) === false);
+
+      if (arr[arr.length - 1]) {
+        obj.caption = parseSentence$3(arr[arr.length - 1]);
+      }
+
+      return new Image$3(obj);
+    }
+
+    return null;
+  };
+
+  const parseImages = function (paragraph, doc) {
+    let wiki = paragraph.wiki; //parse+remove scary '[[ [[]] ]]' stuff
+
+    let matches = nested_find(wiki);
+    matches.forEach(function (s) {
+      if (isFile.test(s) === true) {
+        paragraph.images = paragraph.images || [];
+        let img = oneImage(s, doc);
+
+        if (img) {
+          paragraph.images.push(img);
+        }
+
+        wiki = wiki.replace(s, '');
+      }
+    });
+    paragraph.wiki = wiki;
+  };
+
+  var image = parseImages;
+
+  const setDefaults$2 = setDefaults_1;
+  const defaults$3 = {};
+
+  const toText$1 = (list, options) => {
+    return list.map(s => {
+      let str = s.text(options);
+      return ' * ' + str;
+    }).join('\n');
+  };
+
+  const List$1 = function (data) {
+    let wiki = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+    Object.defineProperty(this, 'data', {
+      enumerable: false,
+      value: data
+    });
+    Object.defineProperty(this, 'wiki', {
+      enumerable: false,
+      value: wiki
+    });
+  };
+
+  const methods$2 = {
+    lines() {
+      return this.data;
+    },
+
+    links(clue) {
+      let links = [];
+      this.lines().forEach(s => {
+        links = links.concat(s.links());
+      });
+
+      if (typeof clue === 'string') {
+        //grab a link like .links('Fortnight')
+        clue = clue.charAt(0).toUpperCase() + clue.substring(1); //titlecase it
+
+        let link = links.find(o => o.page() === clue);
+        return link === undefined ? [] : [link];
+      }
+
+      return links;
+    },
+
+    json(options) {
+      options = setDefaults$2(options, defaults$3);
+      return this.lines().map(s => s.json(options));
+    },
+
+    text() {
+      return toText$1(this.data);
+    },
+
+    wikitext() {
+      return this.wiki || '';
+    }
+
+  };
+  Object.keys(methods$2).forEach(k => {
+    List$1.prototype[k] = methods$2[k];
+  });
+  var List_1 = List$1;
+
+  const List = List_1;
+  const parseSentence$2 = _04Sentence.fromText;
+  const list_reg = /^[#*:;|]+/;
+  const bullet_reg = /^\*+[^:,|]{4}/;
+  const number_reg = /^ ?#[^:,|]{4}/;
+  const has_word = /[a-z_0-9\]}]/i; // does it start with a bullet point or something?
+
+  const isList = function (line) {
+    return list_reg.test(line) || bullet_reg.test(line) || number_reg.test(line);
+  }; //make bullets/numbers into human-readable *'s
+
+
+  const cleanList = function (list) {
+    let number = 1;
+    list = list.filter(l => l);
+
+    for (let i = 0; i < list.length; i++) {
+      let line = list[i]; //add # numberings formatting
+
+      if (line.match(number_reg)) {
+        line = line.replace(/^ ?#*/, number + ') ');
+        line = line + '\n';
+        number += 1;
+      } else if (line.match(list_reg)) {
+        number = 1;
+        line = line.replace(list_reg, '');
+      }
+
+      list[i] = parseSentence$2(line);
+    }
+
+    return list;
+  };
+
+  const grabList = function (lines, i) {
+    let sub = [];
+
+    for (let o = i; o < lines.length; o++) {
+      if (isList(lines[o])) {
+        sub.push(lines[o]);
+      } else {
+        break;
+      }
+    }
+
+    sub = sub.filter(a => a && has_word.test(a));
+    sub = cleanList(sub);
+    return sub;
+  };
+
+  const parseList = function (paragraph) {
+    let wiki = paragraph.wiki;
+    let lines = wiki.split(/\n/g);
+    let lists = [];
+    let theRest = [];
+
+    for (let i = 0; i < lines.length; i++) {
+      if (isList(lines[i])) {
+        let sub = grabList(lines, i);
+
+        if (sub.length > 0) {
+          lists.push(sub);
+          i += sub.length - 1;
+        }
+      } else {
+        theRest.push(lines[i]);
+      }
+    }
+
+    paragraph.lists = lists.map(l => new List(l, wiki));
+    paragraph.wiki = theRest.join('\n');
+  };
+
+  var list = parseList;
+
+  const Paragraph = Paragraph_1;
+  const parseSentences = _04Sentence.byParagraph;
+  const twoNewLines = /\r?\n\r?\n/;
+  const parse$3 = {
+    image: image,
+    list: list
+  };
+
+  const parseParagraphs = function (section, doc) {
+    let wiki = section._wiki;
+    let paragraphs = wiki.split(twoNewLines); //don't create empty paragraphs
+
+    paragraphs = paragraphs.filter(p => p && p.trim().length > 0);
+    paragraphs = paragraphs.map(str => {
+      let paragraph = {
+        wiki: str,
+        lists: [],
+        sentences: [],
+        images: []
+      }; //parse the lists
+
+      parse$3.list(paragraph); //parse images
+
+      parse$3.image(paragraph, doc); //parse the sentences
+
+      parseSentences(paragraph);
+      return new Paragraph(paragraph);
+    });
+    section._wiki = wiki;
+    section._paragraphs = paragraphs;
+  };
+
+  var _03Paragraph = parseParagraphs;
+
+  const encode = encode$4;
+  /**
+   * turn an infobox into some nice json
+   * 
+   * @param {Infobox} infobox 
+   * @param {object} [options] 
+   * @returns {object}
+   */
 
   const toJson$1 = function (infobox, options) {
     let json = Object.keys(infobox.data).reduce((h, k) => {
@@ -7727,8 +7779,10 @@
       }
 
       let obj = s.json();
-      obj.file = obj.text;
+      let file = obj.text;
+      obj.file = file;
       obj.text = '';
+      obj.caption = this.data.caption;
       obj.domain = this.domain; // add domain information for image
 
       return new Image$2(obj);
@@ -7880,7 +7934,7 @@
   var sortOut_1 = sortOut$1;
 
   const findTemplates = _01Nested;
-  const parseTemplate = parse$3;
+  const parseTemplate = parse$5;
   const sortOut = sortOut_1; // return a flat list of all {{templates}}
 
   const allTemplates = function (wiki, doc) {
@@ -8050,7 +8104,7 @@
 
   var election = parseElection$1;
 
-  const tableParser$2 = parse$i;
+  const tableParser$2 = parse$4;
   const keys = {
     coach: ['team', 'year', 'g', 'w', 'l', 'w-l%', 'finish', 'pg', 'pw', 'pl', 'pw-l%'],
     player: ['year', 'team', 'gp', 'gs', 'mpg', 'fg%', '3p%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
@@ -8088,7 +8142,7 @@
 
   var nba = parseNBA$1;
 
-  const tableParser$1 = parse$i; //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
+  const tableParser$1 = parse$4; //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
   //this is pretty nuts
 
   const whichHeadings = function (tmpl) {
@@ -8140,7 +8194,7 @@
 
   var mlb = parseMlb$1;
 
-  const tableParser = parse$i;
+  const tableParser = parse$4;
   let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes'];
   /**
    *
@@ -8963,7 +9017,9 @@
         wiki: wiki || '',
         categories: [],
         sections: [],
-        coordinates: []
+        coordinates: [],
+        // userAgent is used for successive calls to the API
+        userAgent: options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library'
       }; // this._missing_templates = {} //for stats+debugging purposes
 
       Object.keys(props).forEach(k => {
@@ -9579,13 +9635,14 @@
   const isUrl = /^https?:\/\//;
   /**
    * @typedef fetchDefaults
-   * @property {string | undefined} [path]
-   * @property {string | undefined} [wiki]
-   * @property {string | undefined} [domain]
-   * @property {boolean | undefined} [follow_redirects]
-   * @property {string | undefined} [lang]
-   * @property {string | number | Array<string> | Array<number> | undefined} [title]
-   * @property {string | undefined} [Api-User-Agent]
+   * @property {string | undefined} [path] the path to the wiki api. default: api.php
+   * @property {string | undefined} [wiki] 
+   * @property {string | undefined} [domain] the domain of the wiki you want to query
+   * @property {boolean | undefined} [follow_redirects] should the library follow redirects
+   * @property {string | undefined} [lang] the language of the wiki
+   * @property {string | number | Array<string> | Array<number> | undefined} [title] 
+   * @property {string | undefined} [Api-User-Agent] the user agent of the application
+   * @property {string | undefined} [origin] the domain or the origin of the request
    */
 
   /**
@@ -9608,6 +9665,12 @@
 
   /**
    *  fetches the page from the wiki and returns a Promise with the parsed wiki text
+   * 
+   * if you supply it with a single pageID or title it will return a Document object.
+   * if you supply a wiki URL then we will parse it and use the tile and provide a single Document object
+   * if you supply it with an array with pageIDs or an array of titles it will return an array of document objects.
+   *
+   * there is another catch in the programming you need if you provide an array it needs to be eighter pageIDs or titles they can not be mixed.
    *
    * @param {string | number | Array<number> | Array<string>} title the title, PageID, URL or an array of all three of the page(s) you want to fetch
    * @param {fetchDefaults} [options] the options for the fetch or the language of the wiki for the article
@@ -9658,7 +9721,7 @@
 
   var _fetch = fetch$2;
 
-  var _version = '9.0.3';
+  var _version = '9.1.0';
 
   const unfetch = require$$0__default["default"];
   /**

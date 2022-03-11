@@ -46,8 +46,10 @@ const methods = {
       return null
     }
     let obj = s.json()
-    obj.file = obj.text
+    let file = obj.text
+    obj.file = file
     obj.text = ''
+    obj.caption = this.data.caption
     obj.domain = this.domain // add domain information for image
     return new Image(obj)
   },

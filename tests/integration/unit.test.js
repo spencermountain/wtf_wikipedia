@@ -86,12 +86,12 @@ test('parse_categories', (t) => {
 
 test('parse_image', (t) => {
   ;[
-    ['[[File:Tony Danza]]', 'File:Tony Danza'],
-    ['[[Image:Tony Danza]]', 'Image:Tony Danza'],
-    ['[[Image:Tony Danza|left]]', 'Image:Tony Danza'],
+    ['[[File:Tony Danza]]', 'File:Tony_Danza'],
+    ['[[Image:Tony Danza]]', 'Image:Tony_Danza'],
+    ['[[Image:Tony Danza|left]]', 'Image:Tony_Danza'],
     [
       '[[Image:Edouard Recon (2002).jpg|right|thumb|200px|Tropical Storm Edouard seen by [[Hurricane Hunters]]]]',
-      'Image:Edouard Recon (2002).jpg',
+      'Image:Edouard_Recon_(2002).jpg',
     ],
   ].forEach((a) => {
     const arr = wtf(a[0])

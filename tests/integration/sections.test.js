@@ -54,3 +54,40 @@ how bout that
   t.deepEqual(sections, ['English'], 'extra-whitespace')
   t.end()
 })
+
+test('section titles with custom templates', function (t) {
+  let str = `hello
+==== {{Circa|1350|cap=yes}} ====
+oh yeah
+`
+  let doc = wtf(str)
+  let s = doc.section('c. 1350')
+  t.equal(s.title(), 'c. 1350', 'inline section template')
+  t.end()
+})
+
+test('section titles with missing template', function (t) {
+  let str = `hello
+==== {{rando-missing-template}} ====
+oh yeah
+`
+  let json = wtf(str).json()
+
+  t.equal(json.sections.length, 2, 'have both sections')
+  t.equal(json.sections[1].title, '', 'empty title now')
+  t.end()
+})
+
+test('section titles with custom templates', function (t) {
+  wtf.extend((_models, templates) => {
+    templates['sustantivo'] = 'world'
+  })
+  let str = `hello
+==== hello {{sustantivo}} ====
+oh yeah
+`
+  let doc = wtf(str)
+  let title = doc.sections()[1].title()
+  t.equal(title, 'hello world', 'inline section template')
+  t.end()
+})
