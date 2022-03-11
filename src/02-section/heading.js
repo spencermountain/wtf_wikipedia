@@ -1,7 +1,19 @@
 const { trim_whitespace } = require('../_lib/helpers')
 const parseSentence = require('../04-sentence/').fromText
 const parseReferences = require('../reference/')
+const getTemplates = require('../template/find/01-nested.js')
+const parseTemplates = require('../template/parse/index.js')
 const heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/
+const hasTemplate = /\{\{.+?\}\}/
+
+const doInlineTemplates = function (wiki) {
+  let list = getTemplates(wiki)
+  if (list.length) {
+    let [txt] = parseTemplates(list[0])
+    wiki = wiki.replace(list[0].body, txt)
+  }
+  return wiki
+}
 
 
 /**
@@ -30,9 +42,9 @@ const parseHeading = function (section, str) {
   title = parseSentence(title).text()
 
   //amazingly, you can see inline {{templates}} in this text, too
-  //... let's not think about that now.
-  title = title.replace(/\{\{.+?\}\}/, '')
-
+  if (hasTemplate.test(title)) {
+    title = doInlineTemplates(title)
+  }
   //same for references (i know..)
   let obj = { _wiki: title }
   parseReferences(obj)
@@ -44,7 +56,6 @@ const parseHeading = function (section, str) {
   if (m[1]) {
     depth = m[1].length - 2
   }
-
   section.title = title
   section.depth = depth
   return section

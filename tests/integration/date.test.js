@@ -82,7 +82,7 @@ test('hyphenated language-date templates', (t) => {
     ['{{BirthDeathAge| |1976| | |1990|8|8}}', 'August 8, 1990'],
     ['{{BirthDeathAge|{{^}}|1976|{{^}}|{{^}}|2007|1|1}}', 'January 1, 2007'],
     // ['{{Birth date based on age at death |age |1986|03|28}}', 'March 28, 1986'],
-    // ['{{birth based on age as of date | 50 | 2017 | 02 | 16}}', '1966/1967']
+    // ['{{birth based on age as of date | 50 | 2017 | 02 | 16}}', '1966/1967']
   ]
   arr.forEach((a) => {
     const str = wtf(a[0]).text()

@@ -13,7 +13,7 @@ const parseDate = function (str) {
   // remove parentheses
   str = str.replace(/\(.*\)/, '')
   str = str.trim()
-  // check for inaccurate dates such as "20 or 21 July 356 BC", "c. 1155/1162", "183–181 BC"
+  // check for inaccurate dates such as "20 or 21 July 356 BC", "c. 1155/1162", "183–181 BC"
   let inaccurateOriginal
   if (str.match(regInaccurate)) {
     inaccurateOriginal = str // the original str will be added to the final result

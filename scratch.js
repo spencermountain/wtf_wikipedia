@@ -2,29 +2,19 @@ const wtf = require('./src/index')
 // wtf.extend(require('./plugins/wikitext/src'))
 wtf.extend(require('./plugins/html'))
 
-// one
-// let str = `[[one]] and [[two]] {{one}} and {{two}}`
-// let doc = wtf(str)
-// console.log(doc.templates(1)[0].json())
+let str = `hello
+==== hello {{sustantivo}} ====
+oh yeah
+`
 
-// let str = `{{Infobox country
-// | common_name = United Kingdom
-// }}
-// `
-// let obj = wtf(str).infobox(0).json()
-// console.log(obj)
-
-// wtf.fetch('https://tvtropes.org/pmwiki/pmwiki.php/Main/Japandering').then((doc) => {
-//   console.log(doc)
-// })
-// const wtf = require('wtf_wikipedia')
-// wtf.extend(require('wtf-plugin-html'))
-
-wtf.fetch('https://commons.wikimedia.org/wiki/File:ACMA_1331_Alexander_2.JPG').then(doc => {
-  let res = doc.templates().map(t => t.json())
-  res = res.filter(o => o.template === 'self' || o.template === 'pd-self' || o.template === 'information')
-  console.log(res)
+wtf.extend((_models, templates) => {
+  templates['sustantivo'] = 'sustantivo'
 })
 
-// npm run test:build
-// npm run test:fetch
+let doc = wtf(str)
+// console.log(doc.templates('sustantivo masculino').map(t => t.json().template))
+// console.log(doc.section('sustantivo masculino'))
+// console.log(doc.json().sections)
+// let f = doc.templates('sustantivo femenino')
+// let m = doc.templates('sustantivo masculino')
+console.log(doc.json())

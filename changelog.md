@@ -4,6 +4,18 @@
 - **[breaking]** - plural methods like .sentences() always return arrays, even with a 'clue' param.
 -->
 
+#### 9.1.0 [March 2022]
+- **[change]** - support inline templates inside section titles
+- **[change]** - xml parsing fix
+- **[change]** - increase arbitrary char limit on bold & italixs
+- **[change]** - improve parsing for Image and File names
+- **[new]** - add `.license()` method for image plugin
+- **[fix]** - table parsing bugs
+- **[fix]** - typescript fixes
+update deps
+huge thank you to @FFatur !!
+
+
 #### 9.0.3
 - **[fix]** - typescript error
 - **[change]** - update demos
