@@ -17,21 +17,17 @@ test('3rd-party image bulbapedia', function (t) {
   })
 })
 
-test('3rd-party image mozilla', function (t) {
-  t.plan(3)
-  const p = wtf.fetch('WeeklyUpdates/020-06-29', { domain: 'wiki.mozilla.org' })
-  p.then((doc) => {
-    t.equal(doc.domain(), 'wiki.mozilla.org', 'got domain from obj input')
+// test('3rd-party image mozilla', function (t) {
+//   t.plan(3)
+//   const p = wtf.fetch('WeeklyUpdates/020-06-29', { domain: 'wiki.mozilla.org' })
+//   p.then((doc) => {
+//     t.equal(doc.domain(), 'wiki.mozilla.org', 'got domain from obj input')
 
-    let urls = doc.images().map((j) => j.url())
-    t.ok(urls.length === 1, 'got url')
-    t.equal(
-      urls[0],
-      'https://wiki.mozilla.org/wiki/Special:Redirect/file/Don%E2%80%99t_hurt_the_Web.png',
-      'got working image'
-    )
-  })
-  p.catch(function (e) {
-    t.throw(e)
-  })
-})
+//     let urls = doc.images().map((j) => j.url())
+//     t.ok(urls.length === 1, 'got url')
+//     t.equal(urls[0], 'https://wiki.mozilla.org/wiki/Special:Redirect/file/Don%E2%80%99t_hurt_the_Web.png', 'got working image')
+//   })
+//   p.catch(function (e) {
+//     t.throw(e)
+//   })
+// })
