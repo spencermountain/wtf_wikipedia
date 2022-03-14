@@ -337,5 +337,14 @@ let templates = {
     }
     return `[[USS ${obj.name}|USS ''${obj.name}'']]`
   },
+  // https://en.wikipedia.org/wiki/Template:Blockquote
+  blockquote: (tmpl, list) => {
+    let obj = parse(tmpl)
+    list.push(obj)
+    // replace double quotes with singles and put the text inside double quotes
+    let result = (obj.text || obj.list[0]).replace(/"/g,'\'')
+    result = '"' + result + '"'
+    return result
+  }
 }
 module.exports = templates
