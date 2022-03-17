@@ -46,7 +46,7 @@ const getCategory = async function (title, options, http) {
   let getMore = true
   let append = ''
   while (getMore) {
-    let url = makeUrl(title, defaults, append)
+    let url = makeUrl(title, options, append)
     let { pages, cursor } = await fetchIt(url, http, 'categorymembers')
     list = list.concat(pages)
     if (cursor && cursor.cmcontinue) {
