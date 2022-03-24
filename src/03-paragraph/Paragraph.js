@@ -73,7 +73,7 @@ Object.keys(methods).forEach((k) => {
 const singular = {
   sentences: 'sentence',
   references: 'reference',
-  citation: 'citations',
+  citations: 'citation',
   lists: 'list',
   images: 'image',
   links: 'link',
