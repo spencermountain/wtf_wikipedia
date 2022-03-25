@@ -42,6 +42,7 @@ const makeUrl = function (title, options, append) {
 }
 
 const getCategory = async function (title, options, http) {
+  options = { ...defaults, ...options }
   let list = []
   let getMore = true
   let append = ''
