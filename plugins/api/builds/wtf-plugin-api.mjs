@@ -1,4 +1,4 @@
-/* wtf-plugin-api 0.1.1  MIT */
+/* wtf-plugin-api 0.1.3  MIT */
 function getDefaultExportFromNamespaceIfNotNamed (n) {
 	return n && Object.prototype.hasOwnProperty.call(n, 'default') && Object.keys(n).length === 1 ? n['default'] : n;
 }
@@ -323,12 +323,15 @@ const makeUrl$1 = function (title, options, append) {
 };
 
 const getCategory$1 = async function (title, options, http) {
+  options = { ...defaults$2,
+    ...options
+  };
   let list = [];
   let getMore = true;
   let append = '';
 
   while (getMore) {
-    let url = makeUrl$1(title, defaults$2, append);
+    let url = makeUrl$1(title, options, append);
     let {
       pages,
       cursor
