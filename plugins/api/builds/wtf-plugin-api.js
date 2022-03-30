@@ -1,4 +1,4 @@
-/* wtf-plugin-api 0.1.1  MIT */
+/* wtf-plugin-api 0.1.3  MIT */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
@@ -329,12 +329,15 @@
 	};
 
 	const getCategory$1 = async function (title, options, http) {
+	  options = { ...defaults$2,
+	    ...options
+	  };
 	  let list = [];
 	  let getMore = true;
 	  let append = '';
 
 	  while (getMore) {
-	    let url = makeUrl$1(title, defaults$2, append);
+	    let url = makeUrl$1(title, options, append);
 	    let {
 	      pages,
 	      cursor
