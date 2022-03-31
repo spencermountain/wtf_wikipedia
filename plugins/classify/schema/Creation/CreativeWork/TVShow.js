@@ -1,8 +1,8 @@
-module.exports = {
+export default {
   name: 'TVShow',
   children: {},
   properties: {
-    seasons: () => {},
+    seasons: () => { },
   },
   //
   categories: {

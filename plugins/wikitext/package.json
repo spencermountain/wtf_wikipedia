@@ -2,6 +2,7 @@
   "name": "wtf-plugin-wikitext",
   "description": "wikitext output plugin for wtf_wikipedia",
   "version": "1.1.2",
+  "type": "module",
   "main": "./builds/wtf-plugin-wikitext.js",
   "unpkg": "./builds/wtf-plugin-wikitext.min.js",
   "module": "./builds/wtf-plugin-wikitext.mjs",

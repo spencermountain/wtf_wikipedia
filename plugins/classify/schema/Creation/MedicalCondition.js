@@ -1,10 +1,10 @@
-module.exports = {
+export default {
   name: 'MedicalCondition',
   //
   children: {},
   properties: {
-    causes: () => {},
-    treatments: () => {},
+    causes: () => { },
+    treatments: () => { },
   },
   //
   categories: {

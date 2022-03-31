@@ -1,8 +1,8 @@
-module.exports = {
+export default {
   name: 'VideoGame',
   children: {},
   properties: {
-    platforms: () => {},
+    platforms: () => { },
   },
   //
   categories: {

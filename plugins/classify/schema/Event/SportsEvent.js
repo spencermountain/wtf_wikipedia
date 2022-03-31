@@ -1,8 +1,8 @@
-module.exports = {
+export default {
   name: 'SportsEvent',
   children: {},
   properties: {
-    winners: () => {},
+    winners: () => { },
   },
   //
   categories: {

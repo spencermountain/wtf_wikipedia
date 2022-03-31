@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('./_lib')
+import test from 'tape'
+import wtf from './_lib.js'
 
 test('sentence-isAlive', (t) => {
   // let str = `'''Tom Anselmi''' (born {{circa|1956}}) is a Canadian [[sport]]s [[Senior management|executive]].`

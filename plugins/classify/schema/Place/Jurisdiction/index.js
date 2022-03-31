@@ -1,12 +1,15 @@
-module.exports = {
+import City from './City.js'
+import Country from './Country.js'
+
+export default {
   name: 'Jurisdiction',
   children: {
-    City: require('./City'),
-    Country: require('./Country'),
+    City,
+    Country
   },
   properties: {
-    population: () => {},
-    leader: () => {},
+    population: () => { },
+    leader: () => { },
   },
   //
   categories: {

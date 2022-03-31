@@ -1,5 +1,5 @@
-const { patterns } = require('../../schema/_data-fns')
-const byPattern = require('../_byPattern')
+import { patterns } from '../../schema/_data-fns.js'
+import byPattern from '../_byPattern.js'
 
 const byDescription = function (doc) {
   let tmpl = doc.template('short description')
@@ -14,4 +14,4 @@ const byDescription = function (doc) {
   }
   return []
 }
-module.exports = byDescription
+export default byDescription

@@ -1,4 +1,4 @@
-const { defaults, toUrlParams } = require('./_fns')
+import { defaults, toUrlParams } from './_fns.js'
 
 const params = {
   format: 'json',
@@ -32,4 +32,4 @@ const randomCategory = function (options = {}, http) {
       return null
     })
 }
-module.exports = randomCategory
+export default randomCategory

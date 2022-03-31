@@ -1,12 +1,15 @@
-module.exports = {
+import Bridge from './Bridge.js'
+import Airport from './Airport.js'
+
+export default {
   name: 'Structure',
   //
   children: {
-    Bridge: require('./Bridge'),
-    Airport: require('./Airport'),
+    Bridge,
+    Airport
   },
   properties: {
-    date_created: () => {},
+    date_created: () => { },
   },
   //
   categories: {

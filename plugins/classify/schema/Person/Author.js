@@ -1,9 +1,9 @@
-module.exports = {
+export default {
   name: 'Author',
   //
   children: {},
   properties: {
-    works: () => {},
+    works: () => { },
   },
   //
   categories: {

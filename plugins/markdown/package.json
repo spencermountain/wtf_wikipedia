@@ -2,6 +2,7 @@
   "name": "wtf-plugin-markdown",
   "description": "markdown plugin for wtf_wikipedia",
   "version": "0.2.3",
+  "type": "module",
   "main": "./builds/wtf-plugin-markdown.js",
   "unpkg": "./builds/wtf-plugin-markdown.min.js",
   "module": "./builds/wtf-plugin-markdown.mjs",

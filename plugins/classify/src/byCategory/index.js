@@ -1,5 +1,5 @@
-const { patterns, mappings } = require('../../schema/_data-fns')
-const byPattern = require('../_byPattern')
+import { patterns, mappings } from '../../schema/_data-fns.js'
+import byPattern from '../_byPattern.js'
 
 const byCategory = function (doc) {
   let found = []
@@ -27,4 +27,4 @@ const byCategory = function (doc) {
   }
   return found
 }
-module.exports = byCategory
+export default byCategory

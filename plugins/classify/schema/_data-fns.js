@@ -1,4 +1,4 @@
-const schema = require('./index')
+import schema from './index.js'
 
 let mappings = {
   categories: {},
@@ -67,4 +67,4 @@ const doNode = function (node) {
   }
 }
 doNode(schema)
-module.exports = { patterns, mappings }
+export { patterns, mappings }

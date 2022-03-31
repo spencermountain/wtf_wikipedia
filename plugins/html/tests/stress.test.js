@@ -1,7 +1,7 @@
-const test = require('tape')
-const wtf = require('./_lib')
-const fs = require('fs')
-const path = require('path')
+import test from 'tape'
+import wtf from './_lib.js'
+import fs from 'fs'
+import path from 'path'
 
 function from_file(page) {
   let file = '../../../tests/cache/' + page + '.txt'

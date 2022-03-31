@@ -2,6 +2,7 @@
   "name": "wtf-plugin-disambig",
   "description": "disambig-details plugin for wtf_wikipedia",
   "version": "0.0.3",
+  "type": "module",
   "main": "./builds/wtf-plugin-disambig.js",
   "unpkg": "./builds/wtf-plugin-disambig.min.js",
   "module": "./builds/wtf-plugin-disambig.mjs",

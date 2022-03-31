@@ -1,7 +1,7 @@
-const test = require('tape')
-const wtf = require('./_lib')
-const path = require('path')
-const fs = require('fs')
+import test from 'tape'
+import wtf from './_lib.js'
+import path from 'path'
+import fs from 'fs'
 
 test('mainImage', function (t) {
   let arr = [

@@ -1,11 +1,11 @@
-const getRedirects = require('./getRedirects')
-const getIncoming = require('./getIncoming')
-const getPageViews = require('./getPageViews')
-const getTransclusions = require('./getTransclusions')
-const getCategory = require('./getCategory')
-const getRandomPage = require('./getRandom')
-const getRandomCategory = require('./getRandomCategory')
-const fetchList = require('./fetchList')
+import getRedirects from './getRedirects.js'
+import getIncoming from './getIncoming.js'
+import getPageViews from './getPageViews.js'
+import getTransclusions from './getTransclusions.js'
+import getCategory from './getCategory.js'
+import getRandomPage from './getRandom.js'
+import getRandomCategory from './getRandomCategory.js'
+import fetchList from './fetchList.js'
 
 const addMethod = function (models) {
   // doc methods
@@ -42,4 +42,4 @@ const addMethod = function (models) {
     return getRedirects(title, models.http)
   }
 }
-module.exports = addMethod
+export default addMethod

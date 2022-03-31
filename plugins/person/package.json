@@ -2,6 +2,7 @@
   "name": "wtf-plugin-person",
   "description": "person-details plugin for wtf_wikipedia",
   "version": "0.2.2",
+  "type": "module",
   "main": "./builds/wtf-plugin-person.js",
   "unpkg": "./builds/wtf-plugin-person.min.js",
   "module": "./builds/wtf-plugin-person.mjs",

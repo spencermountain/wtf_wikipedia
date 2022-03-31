@@ -1,15 +1,21 @@
-module.exports = {
+import AmericanFootballPlayer from './AmericanFootballPlayer.js'
+import BaseballPlayer from './BaseballPlayer.js'
+import FootballPlayer from './FootballPlayer.js'
+import BasketballPlayer from './BasketballPlayer.js'
+import HockeyPlayer from './HockeyPlayer.js'
+
+export default {
   name: 'Athlete',
   //
   properties: {
-    leagues: () => {},
+    leagues: () => { },
   },
   children: {
-    AmericanFootballPlayer: require('./AmericanFootballPlayer'),
-    BaseballPlayer: require('./BaseballPlayer'),
-    FootballPlayer: require('./FootballPlayer'),
-    BasketballPlayer: require('./BasketballPlayer'),
-    HockeyPlayer: require('./HockeyPlayer'),
+    AmericanFootballPlayer,
+    BaseballPlayer,
+    FootballPlayer,
+    BasketballPlayer,
+    HockeyPlayer,
   },
   //
   categories: {

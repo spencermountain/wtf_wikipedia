@@ -2,6 +2,7 @@
   "name": "wtf-plugin-category",
   "description": "i18n plugin for wtf_wikipedia",
   "version": "0.3.2",
+  "type": "module",
   "main": "./builds/wtf-plugin-category.js",
   "unpkg": "./builds/wtf-plugin-category.min.js",
   "module": "./builds/wtf-plugin-category.mjs",

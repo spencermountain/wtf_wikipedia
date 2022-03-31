@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('./_lib')
+import test from 'tape'
+import wtf from './_lib.js'
 
 // this seems too much network traffic to run each test
 test('ensure functions are there', function (t) {

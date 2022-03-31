@@ -2,6 +2,7 @@
   "name": "wtf-plugin-image",
   "description": "image plugin for wtf_wikipedia",
   "version": "0.3.2",
+  "type": "module",
   "main": "./builds/wtf-plugin-image.js",
   "unpkg": "./builds/wtf-plugin-image.min.js",
   "module": "./builds/wtf-plugin-image.mjs",

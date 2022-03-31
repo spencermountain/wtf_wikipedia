@@ -1,9 +1,9 @@
-module.exports = {
+export default {
   name: 'Politician',
   //
   children: {},
   properties: {
-    parties: () => {},
+    parties: () => { },
   },
   //
   categories: {

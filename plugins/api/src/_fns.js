@@ -1,23 +1,23 @@
-exports.normalize = function (title = '') {
+export function normalize(title = '') {
   title = title.replace(/ /g, '_')
   title = title.trim()
   title = encodeURIComponent(title)
   return title
 }
 
-exports.defaults = {
+export const defaults = {
   lang: 'en',
   path: 'w/api.php'
 }
 
-exports.toUrlParams = function (obj) {
+export function toUrlParams(obj) {
   let arr = Object.entries(obj).map(([key, value]) => {
     return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
   })
   return arr.join('&')
 }
 
-exports.fetchOne = function (url, http, prop) {
+export function fetchOne(url, http, prop) {
   return http(url).then((res) => {
     let pages = Object.keys(res.query.pages || {})
     if (pages.length === 0) {

@@ -1,4 +1,4 @@
-const { normalize, defaults, toUrlParams, fetchOne } = require('./_fns')
+import { normalize, defaults, toUrlParams, fetchOne } from './_fns.js'
 
 const params = {
   action: 'query',
@@ -39,4 +39,4 @@ const getRedirects = async function (title, http) {
   }
   return list
 }
-module.exports = getRedirects
+export default getRedirects

@@ -1,4 +1,4 @@
-const schema = require('./index')
+import schema from './index'
 /** add spaces at the end */
 const indent = function (str = '', width) {
   let pad = ''.padStart(width, ' ')

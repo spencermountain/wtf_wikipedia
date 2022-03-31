@@ -1,4 +1,4 @@
-const { mappings } = require('../../schema/_data-fns')
+import { mappings } from '../../schema/_data-fns.js'
 
 const fromSection = function (doc) {
   let found = []
@@ -15,4 +15,4 @@ const fromSection = function (doc) {
   }
   return found
 }
-module.exports = fromSection
+export default fromSection

@@ -1,14 +1,19 @@
-module.exports = {
+import Disaster from './Disaster.js'
+import Election from './Election.js'
+import MilitaryConflict from './MilitaryConflict.js'
+import SportsEvent from './SportsEvent.js'
+
+export default {
   name: 'Event',
   properties: {
-    dates: () => {},
-    places: () => {},
+    dates: () => { },
+    places: () => { },
   },
   children: {
-    Disaster: require('./Disaster'),
-    Election: require('./Election'),
-    MilitaryConflict: require('./MilitaryConflict'),
-    SportsEvent: require('./SportsEvent'),
+    Disaster,
+    Election,
+    MilitaryConflict,
+    SportsEvent,
   },
   //
   categories: {

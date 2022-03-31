@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('./_lib')
+import test from 'tape'
+import wtf from './_lib.js'
 
 test('barrie', function (t) {
   let str = `'''[[Barrie]]''' is a city in Ontario, Canada.

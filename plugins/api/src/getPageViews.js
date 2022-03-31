@@ -1,4 +1,4 @@
-const { normalize, defaults, toUrlParams } = require('./_fns')
+import { normalize, defaults, toUrlParams } from './_fns.js'
 
 const params = {
   action: 'query',
@@ -31,4 +31,4 @@ const getPageViews = function (doc, http) {
     return res.query.pages[pages[0]].pageviews || []
   })
 }
-module.exports = getPageViews
+export default getPageViews

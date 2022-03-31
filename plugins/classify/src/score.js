@@ -1,3 +1,4 @@
+
 const topk = function (arr) {
   let obj = {}
   arr.forEach((a) => {
@@ -87,4 +88,4 @@ const getScore = function (detail) {
     details: detail,
   }
 }
-module.exports = getScore
+export default getScore

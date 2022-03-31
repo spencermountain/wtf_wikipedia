@@ -1,6 +1,6 @@
-const http = require('./http/server')
-const makeHeaders = require('./_headers')
-const { isObject } = require('../_lib/helpers')
+import http from './http/server.js'
+import makeHeaders from './_headers.js'
+import { isObject } from '../_lib/helpers.js'
 
 const defaults = {
   lang: 'en',
@@ -85,4 +85,4 @@ const fetchCategory = function (category, lang, options) {
   })
 }
 
-module.exports = fetchCategory
+export default fetchCategory

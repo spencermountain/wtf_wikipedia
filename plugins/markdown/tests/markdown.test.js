@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('./_lib')
+import test from 'tape'
+import wtf from './_lib.js'
 
 test('basic-markdown', (t) => {
   let md = wtf('he is [[Spencer Kelly|so cool]] and [http://cool.com fresh]').markdown()

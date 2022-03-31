@@ -1,6 +1,7 @@
-const wtf = require('../../../src').default
-wtf.plugin(require('./plugin'))
-const test = require('tape')
+import wtf from '../../../src/index.js'
+import plg from './plugin.js'
+import test from 'tape'
+wtf.plugin(plg)
 
 test('inline-with-data', function (t) {
   const arr = [

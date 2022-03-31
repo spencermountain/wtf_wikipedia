@@ -1,8 +1,8 @@
-module.exports = {
+export default {
   name: 'Disaster',
   children: {},
   properties: {
-    casualties: () => {},
+    casualties: () => { },
   },
   //
   categories: {

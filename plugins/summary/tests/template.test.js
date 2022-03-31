@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('./_lib')
+import test from 'tape'
+import wtf from './_lib.js'
 
 test('short description template summary', t => {
   let str = `{{short description|Baseball stadium in St. Petersburg, FL, USA}}

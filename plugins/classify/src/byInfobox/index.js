@@ -1,4 +1,4 @@
-const { mappings } = require('../../schema/_data-fns')
+import { mappings } from '../../schema/_data-fns.js'
 
 const byInfobox = function (doc) {
   let infoboxes = doc.infoboxes()
@@ -18,4 +18,4 @@ const byInfobox = function (doc) {
   }
   return found
 }
-module.exports = byInfobox
+export default byInfobox

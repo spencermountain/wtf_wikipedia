@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('./_lib')
+import test from 'tape'
+import wtf from './_lib.js'
 
 const opts = {
   'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
@@ -33,7 +33,7 @@ test('getTemplate', (t) => {
   })
 })
 
-test('fetchList', (t) => {
+test('wtf.fetchList', (t) => {
   t.plan(3)
   let arr = ['Marina Gilardoni', 'Jessica Kilian', 'Tanja Morel']
   wtf.fetchList(arr, opts).then(function (docs) {

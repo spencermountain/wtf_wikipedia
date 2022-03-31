@@ -1,9 +1,9 @@
-module.exports = {
+export default {
   name: 'MusicalGroup',
   //
   children: {},
   properties: {
-    albums: () => {},
+    albums: () => { },
   },
   //
   categories: {

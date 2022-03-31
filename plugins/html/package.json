@@ -2,6 +2,7 @@
   "name": "wtf-plugin-html",
   "description": "html plugin for wtf_wikipedia",
   "version": "0.2.4",
+  "type": "module",
   "main": "./builds/wtf-plugin-html.js",
   "unpkg": "./builds/wtf-plugin-html.min.js",
   "module": "./builds/wtf-plugin-html.mjs",

@@ -1,4 +1,4 @@
-const { defaults, toUrlParams } = require('./_fns')
+import { defaults, toUrlParams } from './_fns.js'
 
 const params = {
   action: 'query',
@@ -36,4 +36,4 @@ const getRandom = async function (_options, http) {
   let page = await fetchIt(url, http)
   return page
 }
-module.exports = getRandom
+export default getRandom

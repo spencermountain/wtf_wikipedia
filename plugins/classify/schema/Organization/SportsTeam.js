@@ -1,9 +1,9 @@
-module.exports = {
+export default {
   name: 'SportsTeam',
   //
   children: {},
   properties: {
-    coaches: () => {},
+    coaches: () => { },
   },
   //
   categories: {
