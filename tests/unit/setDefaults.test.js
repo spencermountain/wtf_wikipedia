@@ -1,5 +1,5 @@
 import test from 'tape'
-import setDefaults from '../../../src/_lib/setDefaults.js'
+import setDefaults from '../../src/_lib/setDefaults.js'
 
 test('should apply default', (t) => {
   const options = {}

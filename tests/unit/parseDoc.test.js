@@ -1,6 +1,6 @@
 import test from 'tape'
-import parseDoc from '../../../src/_fetch/parseDoc.js'
-import { isArray } from '../../../src/_lib/helpers.js'
+import parseDoc from '../../src/_fetch/parseDoc.js'
+import { isArray } from '../../src/_lib/helpers.js'
 
 const document = {
   text: '=== hello ===',

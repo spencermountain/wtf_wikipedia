@@ -2,8 +2,8 @@
 #### [unreleased ]
 -->
 #### 10.0.0 [April 2022]
-- **[breaking]** - drop ie11 & babel output
-- **[change]** - convert to esmodules
+- **[breaking]** - drop IE11 support - target evergreen browsers
+- **[change]** - convert to esmodules internally
 - **[change]** - add blockquote template
 update deps
 

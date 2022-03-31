@@ -1,5 +1,5 @@
 import test from 'tape'
-import parseUrl from '../../../src/_fetch/parseUrl.js'
+import parseUrl from '../../src/_fetch/parseUrl.js'
 
 const tests = [
   {

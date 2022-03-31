@@ -1,5 +1,5 @@
 import test from 'tape'
-import makeUrl from '../../../src/_fetch/makeUrl.js'
+import makeUrl from '../../src/_fetch/makeUrl.js'
 
 //makeUrl 
 const tests = [

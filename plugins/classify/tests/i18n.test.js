@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import i18n from '../../i18n/src/index.js'
 wtf.extend(i18n)
-let dir = new URL('./', import.meta.url).pathname
+let dir = new URL('./', import.meta.url).pathname  // eslint-disable-line
 
 test('i18n-classify-test', async function (t) {
   let arr = [

@@ -1,4 +1,4 @@
-import getResult from '../../../src/_fetch/getResult.js'
+import getResult from '../../src/_fetch/getResult.js'
 import test from 'tape'
 
 test('parse a normal case', (t) => {

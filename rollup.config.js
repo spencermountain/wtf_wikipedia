@@ -1,6 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
-import sizeCheck from 'rollup-plugin-filesize-check'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 
 import { version } from './package.json'
@@ -38,7 +37,6 @@ export default [
       }),
       commonjs(),
       terser(),
-      sizeCheck({ expect: 123, warn: 10 }),
     ],
   },
   // === client-side .mjs ===
@@ -49,7 +47,6 @@ export default [
       nodeResolve({ browser: true }),
       commonjs(),
       terser(),
-      sizeCheck({ expect: 123, warn: 10 }),
     ],
   },
 ]
