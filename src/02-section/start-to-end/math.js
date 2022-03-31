@@ -1,4 +1,4 @@
-const parseSentence = require('../../04-sentence/').fromText
+import { fromText as parseSentence } from '../../04-sentence/index.js'
 
 /**
  * try to parse out the math and chem templates
@@ -40,4 +40,4 @@ const parseMath = function (catcher) {
     return ''
   })
 }
-module.exports = parseMath
+export default parseMath

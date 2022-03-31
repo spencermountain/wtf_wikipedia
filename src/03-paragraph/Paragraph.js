@@ -1,5 +1,5 @@
-const toJSON = require('./toJson')
-const setDefaults = require('../_lib/setDefaults')
+import toJSON from './toJson.js'
+import setDefaults from '../_lib/setDefaults.js'
 const defaults = {
   sentences: true,
   lists: true,
@@ -89,4 +89,4 @@ Object.keys(singular).forEach((k) => {
   }
 })
 
-module.exports = Paragraph
+export default Paragraph

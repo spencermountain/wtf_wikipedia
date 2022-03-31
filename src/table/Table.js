@@ -1,5 +1,5 @@
-const setDefaults = require('../_lib/setDefaults')
-const toJson = require('./toJson')
+import setDefaults from '../_lib/setDefaults.js'
+import toJson from './toJson.js'
 const defaults = {}
 
 const normalize = function (key = '') {
@@ -93,4 +93,4 @@ methods.keyval = methods.keyValue
 Object.keys(methods).forEach((k) => {
   Table.prototype[k] = methods[k]
 })
-module.exports = Table
+export default Table

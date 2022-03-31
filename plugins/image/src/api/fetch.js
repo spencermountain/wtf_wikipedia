@@ -1,6 +1,6 @@
 const unfetch = require('isomorphic-unfetch')
-const makeUrl = require('../../../../src/_fetch/makeUrl')
-const makeHeaders = require('../../../../src/_fetch/_headers')
+const makeUrl = require('../../../../src/_fetch/makeUrl').default
+const makeHeaders = require('../../../../src/_fetch/_headers').default
 const parse = require('./parse')
 
 const methodsProps = { // the accepted methdos and the iiprop (imageinfo prop (URL parameter)) needed for each method
@@ -17,8 +17,8 @@ class InvalidMethod extends Error {
   constructor(invalidMethod) {
     super()
     const validMethods = Object.keys(methodsProps).join(', ')
-    this.message = `'${invalidMethod}' cannot be passed to the 'images' method; `+
-    `valid values are:\n${validMethods}`
+    this.message = `'${invalidMethod}' cannot be passed to the 'images' method; ` +
+      `valid values are:\n${validMethods}`
     this.name = this.constructor.name
   }
 }
@@ -31,14 +31,14 @@ class InvalidMethod extends Error {
  * @returns {Promise<Object[]>} methods' results for an array of images
  * @throws {InvalidMethod} throws if a passed method is invalid
  */
-function fetch( methods = "", images = []) {
-  
+function fetch(methods = "", images = []) {
+
   const isDoc = images.length ? true : false // whether the call is from a Document(".images()") or an Image
   let titles // will be a string or an array of strings
   let iiprop // will be a string
   const userAgent = isDoc ? this['_userAgent'] : this.data['_userAgent']
   const mpEntries = Object.entries(methodsProps)
-  
+
   if (isDoc) {
     titles = images.map(i => i.file())
 
@@ -82,7 +82,7 @@ function fetch( methods = "", images = []) {
       throw new InvalidMethod(methods)
     }
   }
-  
+
   const options = {
     title: titles,
     domain: "commons.wikimedia.org",
@@ -108,7 +108,7 @@ function fetch( methods = "", images = []) {
         }
         return null
       }
-      else{
+      else {
         return parse(titles, res, isDoc)
       }
     })

@@ -1,4 +1,4 @@
-const parseTemplates = require('../../template')
+import parseTemplates from '../../template/index.js'
 
 /**
  * parses out the `Election_box` template from the wiki text
@@ -40,4 +40,4 @@ const parseElection = function (catcher) {
   })
 }
 
-module.exports = parseElection
+export default parseElection

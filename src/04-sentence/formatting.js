@@ -37,4 +37,4 @@ const formatting = function (obj) {
   }
   return obj
 }
-module.exports = formatting
+export default formatting

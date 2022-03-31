@@ -1,7 +1,8 @@
-const i18n = require('../_data/i18n')
-const alt_disambig = require('./_disambig')
-const inTitle = new RegExp('. \\((' + i18n.disambig_titles.join('|') + ')\\)$', 'i')
-const i18n_templates = i18n.disambig_templates.reduce((h, str) => {
+import { disambig_titles, disambig_templates } from '../_data/i18n.js'
+import alt_disambig from './_disambig.js'
+
+const inTitle = new RegExp('. \\((' + disambig_titles.join('|') + ')\\)$', 'i')
+const i18n_templates = disambig_templates.reduce((h, str) => {
   h[str] = true
   return h
 }, {})
@@ -24,7 +25,7 @@ const byText = function (s) {
  * Parses the wikitext to find out if this page is a disambiguation
  *
  * @private
- * @param {Document} doc the document that is examined
+ * @param {object} doc the document that is examined
  * @returns {boolean} an indication if the document is a disambiguation page
  */
 const isDisambig = function (doc) {
@@ -48,4 +49,4 @@ const isDisambig = function (doc) {
   return false
 }
 
-module.exports = isDisambig
+export default isDisambig

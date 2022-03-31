@@ -1,4 +1,4 @@
-const parse = require('../../parse/toJSON')
+import parse from '../../parse/toJSON/index.js'
 
 const codes = {
   '£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
@@ -99,4 +99,4 @@ Object.keys(codes).forEach((k) => {
   templates[k] = parseCurrency
 })
 
-module.exports = templates
+export default templates

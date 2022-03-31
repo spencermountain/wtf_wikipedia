@@ -1,7 +1,5 @@
-const Link = require('./Link')
-const parseLinks = require('./parse')
-// const i18n = require('../_data/i18n')
-// const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]', 'gi')
+import Link from './Link.js'
+import parseLinks from './parse.js'
 
 //return only rendered text of wiki links
 const removeLinks = function (line) {
@@ -21,4 +19,4 @@ const getLinks = function (data) {
   wiki = removeLinks(wiki)
   data.text = wiki
 }
-module.exports = getLinks
+export default getLinks

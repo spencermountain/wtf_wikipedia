@@ -42,4 +42,4 @@ const templates = [
   h[str] = true
   return h
 }, {})
-module.exports = templates
+export default templates

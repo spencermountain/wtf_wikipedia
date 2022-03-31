@@ -1,4 +1,4 @@
-const setDefaults = require('../_lib/setDefaults')
+import setDefaults from '../_lib/setDefaults.js'
 
 /**
  * @typedef DocumentToJsonOptions
@@ -30,7 +30,7 @@ const defaults = {
  * @property {object | undefined} redirectTo
  * @property {object[] | undefined} coordinates
  * @property {object[] | undefined} infoboxes
- * @property {Image[] | undefined} images
+ * @property {object[] | undefined} images
  * @property {string | undefined} plaintext
  * @property {object[] | undefined} references
  */
@@ -39,7 +39,7 @@ const defaults = {
  * an opinionated output of the most-wanted data
  *
  * @private
- * @param {Document} doc
+ * @param {object} doc
  * @param {DocumentToJsonOptions} options
  * @returns {documentToJsonReturn}
  */
@@ -96,4 +96,4 @@ const toJSON = function (doc, options) {
 
   return data
 }
-module.exports = toJSON
+export default toJSON

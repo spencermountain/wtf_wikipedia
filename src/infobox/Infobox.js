@@ -1,7 +1,7 @@
-const toJson = require('./toJson')
-const Image = require('../image/Image')
-const { isArray } = require('../_lib/helpers')
-const Sentence = require('../04-sentence/Sentence')
+import toJson from './toJson.js'
+import Image from '../image/Image.js'
+import { isArray } from '../_lib/helpers.js'
+import Sentence from '../04-sentence/Sentence.js'
 
 const normalize = (str = '') => {
   str = str.toLowerCase()
@@ -106,4 +106,4 @@ Object.keys(methods).forEach((k) => {
 Infobox.prototype.data = Infobox.prototype.keyValue
 Infobox.prototype.template = Infobox.prototype.type
 Infobox.prototype.images = Infobox.prototype.image
-module.exports = Infobox
+export default Infobox

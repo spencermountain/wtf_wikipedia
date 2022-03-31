@@ -1,7 +1,7 @@
-const test = require('tape')
-const wtf = require('../lib')
-const fs = require('fs')
-const path = require('path')
+import test from 'tape'
+import wtf from '../lib/index.js'
+import fs from 'fs'
+import path from 'path'
 
 //title
 test('Tile - get', (t) => {

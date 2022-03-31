@@ -1,4 +1,4 @@
-const languages = require('../../../_data/languages')
+import languages from '../../../_data/languages.js'
 
 //grab the first, second or third pipe..
 let templates = {
@@ -76,4 +76,4 @@ Object.keys(languages).forEach((k) => {
   templates['lang-' + k] = 0
 })
 
-module.exports = templates
+export default templates

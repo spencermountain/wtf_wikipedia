@@ -1,12 +1,11 @@
-const Section = require('./Section')
-const i18n = require('../_data/i18n')
-const isReference = new RegExp('^(' + i18n.references.join('|') + '):?', 'i')
+import Section from './Section.js'
+import { references } from '../_data/i18n.js'
+//interpret ==heading== lines
+import parseHeading from './heading.js'
+
+const isReference = new RegExp('^(' + references.join('|') + '):?', 'i')
 const section_reg = /(?:\n|^)(={2,5}.{1,200}?={2,5})/g
 
-//interpret ==heading== lines
-const parse = {
-  heading: require('./heading'),
-}
 
 /**
  * filters out the reference section and empty sections and
@@ -42,7 +41,7 @@ const removeReferenceSection = function (sections) {
  * then it filters out the reference section
  *
  * @private
- * @param {Document} doc the document that contains the wiki text
+ * @param {object} doc the document that contains the wiki text
  * @returns {Section[]} the sections that are parsed out
  */
 const parseSections = function (doc) {
@@ -65,7 +64,7 @@ const parseSections = function (doc) {
     }
 
     //figure-out title and depth
-    parse.heading(data, heading)
+    parseHeading(data, heading)
 
     sections.push(new Section(data, doc))
   }
@@ -74,4 +73,4 @@ const parseSections = function (doc) {
   return removeReferenceSection(sections)
 }
 
-module.exports = parseSections
+export default parseSections

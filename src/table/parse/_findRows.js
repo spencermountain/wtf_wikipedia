@@ -54,4 +54,4 @@ const findRows = function (lines) {
   }
   return rows
 }
-module.exports = findRows
+export default findRows

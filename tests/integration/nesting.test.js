@@ -1,7 +1,7 @@
-const test = require('tape')
-const wtf = require('../lib')
+import test from 'tape'
+import wtf from '../lib/index.js'
 
-wtf.extend((models, templates) => {
+wtf.extend((_models, templates) => {
   templates.trynest = 0
 })
 

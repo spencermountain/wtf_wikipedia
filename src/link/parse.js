@@ -1,4 +1,4 @@
-const parse_interwiki = require('./interwiki')
+import parse_interwiki from './interwiki.js'
 const ignore_links =
   /^:?(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ].*?)?\]/g
@@ -91,4 +91,4 @@ const parse_links = function (str) {
   }
   return links
 }
-module.exports = parse_links
+export default parse_links

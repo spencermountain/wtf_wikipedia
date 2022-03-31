@@ -14,4 +14,4 @@ const parseUrl = function (url) {
     title: title,
   }
 }
-module.exports = parseUrl
+export default parseUrl

@@ -38,4 +38,4 @@ const findFlat = function (wiki) {
   }
   return list
 }
-module.exports = findFlat
+export default findFlat

@@ -5,7 +5,7 @@ if (typeof process !== undefined && typeof module !== undefined) {
     wtf = require('../../../')
     wtf.extend(require(`..`))
   } else {
-    wtf = require('../../../src')
+    wtf = require('../../../src').default
     wtf.extend(require(`../src`))
   }
 

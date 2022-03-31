@@ -1,4 +1,4 @@
-const kill_xml = require('./kill_xml')
+import kill_xml from './kill_xml.js'
 
 /**
  * removes unnecessary strings from the wikitext
@@ -34,4 +34,4 @@ function preProcess(wiki) {
 
   return wiki
 }
-module.exports = preProcess
+export default preProcess

@@ -28,4 +28,4 @@ const makeHeaders = function (options) {
     redirect: 'follow',
   }
 }
-module.exports = makeHeaders
+export default makeHeaders

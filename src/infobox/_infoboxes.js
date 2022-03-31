@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   'gnf protein box': true,
   'automatic taxobox': true,
   'chembox ': true,

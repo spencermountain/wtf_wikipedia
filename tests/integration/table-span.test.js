@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('../lib')
+import test from 'tape'
+import wtf from '../lib/index.js'
 
 test('arenas table', (t) => {
   let str = `{|class="wikitable" cellpadding="0" cellspacing="0" style="font-size: 85%; text-align: center;"

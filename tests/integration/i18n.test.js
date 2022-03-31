@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('../lib')
+import test from 'tape'
+import wtf from '../lib/index.js'
 
 test('nihongo templates templates', (t) => {
   let str = `hello {{Nihongo|Tokyo Tower|東京タワー|Tōkyō tawā}} world`

@@ -1,4 +1,4 @@
-const setDefaults = require('../_lib/setDefaults')
+import setDefaults from '../_lib/setDefaults.js'
 
 const defaults = {
   caption: true,
@@ -31,4 +31,4 @@ const toJson = function (img, options) {
   }
   return json
 }
-module.exports = toJson
+export default toJson

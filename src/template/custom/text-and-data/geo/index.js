@@ -1,4 +1,4 @@
-const parseCoor = require('./_lib')
+import parseCoor from './_lib.js'
 
 const templates = {
   coord: (tmpl, list) => {
@@ -17,4 +17,4 @@ const templates = {
 //{{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
 //{{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
 
-module.exports = templates
+export default templates

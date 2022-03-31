@@ -50,4 +50,4 @@ const kill_xml = function (wiki) {
   wiki = wiki.replace(/ ?< ?br ?\/> ?/g, '\n') //<br />
   return wiki.trim()
 }
-module.exports = kill_xml
+export default kill_xml

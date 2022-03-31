@@ -1,6 +1,6 @@
-const fs = require('fs')
-const path = require('path')
-const wtf = require('../../src/index')
+import fs from 'fs'
+import path from 'path'
+import wtf from '../../src/index.js'
 
 function from_file(page, options) {
   let file = '../cache/' + page + '.txt'
@@ -8,4 +8,4 @@ function from_file(page, options) {
   const str = fs.readFileSync(file, 'utf-8')
   return wtf(str, options)
 }
-module.exports = from_file
+export default from_file

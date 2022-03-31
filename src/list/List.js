@@ -1,4 +1,4 @@
-const setDefaults = require('../_lib/setDefaults')
+import setDefaults from '../_lib/setDefaults.js'
 const defaults = {}
 
 const toText = (list, options) => {
@@ -53,4 +53,4 @@ const methods = {
 Object.keys(methods).forEach((k) => {
   List.prototype[k] = methods[k]
 })
-module.exports = List
+export default List

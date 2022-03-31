@@ -2,7 +2,7 @@ const wp = '.wikipedia.org/wiki/$1'
 const wm = '.wikimedia.org/wiki/$1'
 const w = 'www.'
 
-module.exports = {
+export default {
   acronym: w + 'acronymfinder.com/$1.html',
   advisory: 'advisory' + wm,
   advogato: w + 'advogato.org/$1',

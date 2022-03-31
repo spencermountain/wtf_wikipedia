@@ -1,11 +1,11 @@
-const i18n = require('../_data/i18n')
-const Image = require('./Image')
-const parseTemplate = require('../template/parse/toJSON')
-const parseSentence = require('../04-sentence').fromText
-const nested_find = require('./nested_find')
+import { images } from '../_data/i18n.js'
+import Image from './Image.js'
+import parseTemplate from '../template/parse/toJSON/index.js'
+import { fromText as parseSentence } from '../04-sentence/index.js'
+import nested_find from './nested_find.js'
 //regexes:
-const isFile = new RegExp('(' + i18n.images.join('|') + '):', 'i')
-let fileNames = `(${i18n.images.join('|')})`
+const isFile = new RegExp('(' + images.join('|') + '):', 'i')
+let fileNames = `(${images.join('|')})`
 const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'iu')
 
 //style directives for Wikipedia:Extended_image_syntax
@@ -79,4 +79,4 @@ const parseImages = function (paragraph, doc) {
   })
   paragraph.wiki = wiki
 }
-module.exports = parseImages
+export default parseImages

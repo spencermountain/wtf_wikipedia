@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const wtf = require('../../src/index')
+const wtf = require('../../src/index').default
 wtf.extend(require('./src'))
 
 // `{{About|the British mathematician  John H. Conway |the American mathematician| John B. Conway|other people named John Conway|John Conway (disambiguation){{!}}John Conway}}`

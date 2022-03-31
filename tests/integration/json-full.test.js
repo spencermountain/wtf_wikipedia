@@ -1,7 +1,7 @@
-const wtf = require('../lib')
-const fs = require('fs')
-const path = require('path')
-const test = require('tape')
+import test from 'tape'
+import wtf from '../lib/index.js'
+import fs from 'fs'
+import path from 'path'
 
 test('plurals / singular - all should exist', (t) => {
   let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')

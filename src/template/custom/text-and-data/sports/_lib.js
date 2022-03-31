@@ -1,4 +1,4 @@
-const parse = require('../../../parse/toJSON')
+import parse from '../../../parse/toJSON/index.js'
 
 const zeroPad = function (num) {
   num = String(num)
@@ -52,4 +52,4 @@ const playoffBracket = function (tmpl) {
   }
 }
 
-module.exports = playoffBracket
+export default playoffBracket

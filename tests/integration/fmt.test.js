@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('../lib')
+import test from 'tape'
+import wtf from '../lib/index.js'
 
 test('bold/italics', (t) => {
   const str = `'''K. Nicole Mitchell''' is ''currently'' a [[U.S. Magistrate Judge]].

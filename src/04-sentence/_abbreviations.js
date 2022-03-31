@@ -1,5 +1,5 @@
 //these are used for the sentence-splitter
-module.exports = [
+export default [
   'ad',
   'adj',
   'adm',

@@ -1,6 +1,14 @@
-const aliases = require('./aliases')
+import aliases from './aliases.js'
+import textTmpl from './text-only/index.js'
+import dataTmpl from './data-only/index.js'
+import bothTmpl from './text-and-data/index.js'
 
-let templates = Object.assign({}, require('./text-only'), require('./data-only'), require('./text-and-data'))
+let templates = Object.assign(
+  {},
+  textTmpl,
+  dataTmpl,
+  bothTmpl
+)
 
 Object.keys(aliases).forEach((k) => {
   // if (templates[aliases[k]] === undefined) {
@@ -8,6 +16,6 @@ Object.keys(aliases).forEach((k) => {
   // }
   templates[k] = templates[aliases[k]]
 })
-module.exports = templates
+export default templates
 
 // console.log(Object.keys(templates).length)

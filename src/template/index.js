@@ -1,6 +1,6 @@
-const findTemplates = require('./find/01-nested')
-const parseTemplate = require('./parse')
-const sortOut = require('./sortOut')
+import findTemplates from './find/01-nested.js'
+import parseTemplate from './parse/index.js'
+import sortOut from './sortOut.js'
 
 // return a flat list of all {{templates}}
 const allTemplates = function (wiki, doc) {
@@ -64,4 +64,4 @@ const process = function (section, doc) {
   section._wiki = wiki
 }
 
-module.exports = process
+export default process

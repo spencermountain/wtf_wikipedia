@@ -1,4 +1,4 @@
-const encode = require('../_lib/encode')
+import encodeObj from '../_lib/encode.js'
 //
 const toJson = function (tables, options) {
   return tables.map((table) => {
@@ -8,9 +8,9 @@ const toJson = function (tables, options) {
     })
     //encode them, for mongodb
     if (options.encode === true) {
-      row = encode.encodeObj(row)
+      row = encodeObj(row)
     }
     return row
   })
 }
-module.exports = toJson
+export default toJson

@@ -1,6 +1,6 @@
-const parseSentence = require('../../04-sentence/').fromText
-const findRows = require('./_findRows')
-const handleSpans = require('./_spans')
+import { fromText as parseSentence } from '../../04-sentence/index.js'
+import findRows from './_findRows.js'
+import handleSpans from './_spans.js'
 const isHeading = /^!/
 
 //common ones
@@ -159,4 +159,4 @@ const parseTable = function (wiki) {
   return table
 }
 
-module.exports = parseTable
+export default parseTable

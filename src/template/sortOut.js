@@ -1,6 +1,6 @@
-const Infobox = require('../infobox/Infobox')
-const Reference = require('../reference/Reference')
-const Template = require('./Template')
+import Infobox from '../infobox/Infobox.js'
+import Reference from '../reference/Reference.js'
+import Template from './Template.js'
 const isCitation = /^(cite |citation)/i
 
 const referenceTypes = {
@@ -39,4 +39,4 @@ const sortOut = function (list, domain) {
   return res
 }
 
-module.exports = sortOut
+export default sortOut

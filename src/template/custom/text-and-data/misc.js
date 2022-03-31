@@ -1,4 +1,4 @@
-const parse = require('../../parse/toJSON')
+import parse from '../../parse/toJSON/index.js'
 
 const generic = function (tmpl, list, _parser, alias) {
   let obj = parse(tmpl)
@@ -25,4 +25,4 @@ const misc = {
   'election box begin': generic,
   main: generic,
 }
-module.exports = misc
+export default misc

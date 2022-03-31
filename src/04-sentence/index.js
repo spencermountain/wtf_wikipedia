@@ -1,8 +1,8 @@
-const helpers = require('../_lib/helpers')
-const parseLinks = require('../link')
-const parseFmt = require('./formatting')
-const Sentence = require('./Sentence')
-const sentenceParser = require('./parse')
+import { trim_whitespace } from '../_lib/helpers.js'
+import parseLinks from '../link/index.js'
+import parseFmt from './formatting.js'
+import Sentence from './Sentence.js'
+import sentenceParser from './parse.js'
 
 /**
  * This function removes some final characters from the sentence
@@ -17,7 +17,7 @@ function postprocess(line) {
   //these semi-colons in parentheses are particularly troublesome
   line = line.replace(/\( *(; ?)+/g, '(')
   //dangling punctuation
-  line = helpers.trim_whitespace(line)
+  line = trim_whitespace(line)
   line = line.replace(/ +\.$/, '.')
   return line
 }
@@ -55,7 +55,4 @@ const byParagraph = function (paragraph) {
   paragraph.sentences = sentences
 }
 
-module.exports = {
-  fromText: fromText,
-  byParagraph: byParagraph,
-}
+export { fromText, byParagraph }

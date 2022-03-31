@@ -1,4 +1,4 @@
-const wtf = require('../../../src')
+const wtf = require('../../../src').default
 wtf.plugin(require('./plugin'))
 const test = require('tape')
 

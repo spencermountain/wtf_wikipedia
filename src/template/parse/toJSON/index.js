@@ -1,10 +1,10 @@
 //remove the top/bottom off the template
-const strip = require('./_strip')
-const fmtName = require('./_fmtName')
-const parseSentence = require('../../../04-sentence').fromText
-const pipeSplitter = require('./01-pipe-splitter')
-const keyMaker = require('./02-keyMaker')
-const cleanup = require('./03-cleanup')
+import strip from './_strip.js'
+import fmtName from './_fmtName.js'
+import { fromText as parseSentence } from '../../../04-sentence/index.js'
+import pipeSplitter from './01-pipe-splitter.js'
+import keyMaker from './02-keyMaker.js'
+import cleanup from './03-cleanup.js'
 
 /**
  * most templates just want plaintext...
@@ -73,4 +73,4 @@ const parser = function (tmpl, order = [], fmt) {
   }
   return obj
 }
-module.exports = parser
+export default parser

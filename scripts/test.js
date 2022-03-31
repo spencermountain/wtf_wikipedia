@@ -1,4 +1,4 @@
-const sh = require('shelljs')
+import sh from 'shelljs'
 
 let code = 0
 let fail = false

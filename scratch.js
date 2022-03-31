@@ -1,6 +1,4 @@
-const wtf = require('./src/index')
-// wtf.extend(require('./plugins/wikitext/src'))
-wtf.extend(require('./plugins/html'))
+import wtf from './src/index.js'
 
 let str = `hello
 ==== hello {{foobar}} ====

@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('../lib')
+import test from 'tape'
+import wtf from '../lib/index.js'
 
 test('support bold and italics', (t) => {
   let doc = wtf(`hi <b>world</b> there`)

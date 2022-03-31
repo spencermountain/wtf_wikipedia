@@ -1,6 +1,6 @@
-const test = require('tape')
-const wtf = require('../lib')
-const readFile = require('../lib/_cachedPage')
+import test from 'tape'
+import wtf from '../lib/index.js'
+import readFile from '../lib/_cachedPage.js'
 
 test('bluejays table', (t) => {
   const arr = readFile('bluejays').table(0).data

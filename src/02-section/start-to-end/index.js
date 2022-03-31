@@ -1,10 +1,10 @@
-const parseGallery = require('./gallery')
-const parseElection = require('./election')
-const parseNBA = require('./nba')
-const parseMlb = require('./mlb')
-const parseMMA = require('./mma')
-const parseMath = require('./math')
-const Template = require('../../template/Template')
+import parseGallery from './gallery.js'
+import parseElection from './election.js'
+import parseNBA from './nba.js'
+import parseMlb from './mlb.js'
+import parseMMA from './mma.js'
+import parseMath from './math.js'
+import Template from '../../template/Template.js'
 
 /**
  * parses out non standard templates
@@ -14,8 +14,8 @@ const Template = require('../../template/Template')
  * -> the templates here are of the second type.
  *
  * @private
- * @param {Section} section
- * @param {Document} doc
+ * @param {object} section
+ * @param {object} doc
  * @returns {Object} wikitext
  */
 const xmlTemplates = function (section, doc) {
@@ -36,4 +36,4 @@ const xmlTemplates = function (section, doc) {
   return res
 }
 
-module.exports = xmlTemplates
+export default xmlTemplates

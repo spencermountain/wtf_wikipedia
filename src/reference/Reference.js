@@ -1,4 +1,4 @@
-const encode = require('../_lib/encode')
+import encodeObj from '../_lib/encode.js'
 
 //also called 'citations'
 const Reference = function (data, wiki) {
@@ -44,7 +44,7 @@ const methods = {
     //encode them, for mongodb
     if (options.encode === true) {
       json = Object.assign({}, json)
-      json = encode.encodeObj(json)
+      json = encodeObj(json)
     }
     return json
   },
@@ -52,4 +52,4 @@ const methods = {
 Object.keys(methods).forEach((k) => {
   Reference.prototype[k] = methods[k]
 })
-module.exports = Reference
+export default Reference

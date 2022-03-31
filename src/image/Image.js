@@ -1,4 +1,4 @@
-const toJson = require('./toJson')
+import toJson from './toJson.js'
 const server = 'wikipedia.org'
 
 const encodeTitle = function (file) {
@@ -95,4 +95,4 @@ Object.keys(methods).forEach((k) => {
 
 Image.prototype.src = Image.prototype.url
 Image.prototype.thumb = Image.prototype.thumbnail
-module.exports = Image
+export default Image

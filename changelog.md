@@ -1,7 +1,7 @@
 <!--
-#### [unreleased 9.0.0]
-
-- **[breaking]** - plural methods like .sentences() always return arrays, even with a 'clue' param.
+#### [unreleased ]
+- **[change]** - convert to esmodules
+- **[change]** - add blockquote template
 -->
 
 #### 9.1.0 [March 2022]

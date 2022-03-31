@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('../lib')
+import test from 'tape'
+import wtf from '../lib/index.js'
 
 test('currency-templates', function (t) {
   let doc = wtf('hello {{GBP|123.45}} world.')

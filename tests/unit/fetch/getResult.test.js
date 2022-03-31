@@ -1,7 +1,5 @@
-const test = require('tape')
-const getResult = require('../../../src/_fetch/getResult')
-
-
+import getResult from '../../../src/_fetch/getResult.js'
+import test from 'tape'
 
 test('parse a normal case', (t) => {
   const options = {

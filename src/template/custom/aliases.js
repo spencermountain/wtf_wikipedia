@@ -1,4 +1,4 @@
-const languages = require('../../_data/languages')
+import languages from '../../_data/languages.js'
 
 //aliases
 let aliases = {
@@ -186,4 +186,4 @@ Object.keys(multi).forEach((k) => {
   })
 })
 
-module.exports = aliases
+export default aliases

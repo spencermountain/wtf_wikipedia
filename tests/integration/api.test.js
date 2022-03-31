@@ -1,12 +1,12 @@
-const test = require('tape')
-const fs = require('fs')
-const path = require('path')
-const wtf = require('../lib')
-const docs = require('../lib/api.json')
-
+import docs from '../lib/api.js'
+import fs from 'fs'
+import path from 'path'
+import test from 'tape'
+import wtf from '../lib/index.js'
+let dir = new URL('./', import.meta.url).pathname // eslint-disable-line
 //read cached file
 const readFile = function (file) {
-  return fs.readFileSync(path.join(__dirname, '../', 'cache', file + '.txt'), 'utf-8')
+  return fs.readFileSync(path.join(dir, '../', 'cache', file + '.txt'), 'utf-8')
 }
 
 const pages = [

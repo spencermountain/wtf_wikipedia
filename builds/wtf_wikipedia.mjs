@@ -2264,11 +2264,12 @@ const kill_xml$1 = function (wiki) {
   wiki = wiki.replace(/<b>(.*?)<\/b>/g, "'''$1'''"); // these are better-handled with templates
 
   wiki = wiki.replace(/<sub>(.*?)<\/sub>/g, "{{sub|$1}}");
-  wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, "{{sup|$1}}"); //some formatting xml, we'll keep their insides though
+  wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, "{{sup|$1}}");
+  wiki = wiki.replace(/<blockquote>(.*?)<\/blockquote>/g, "{{blockquote|text=$1}}"); //some formatting xml, we'll keep their insides though
 
   wiki = wiki.replace(/ ?<[ /]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr|u)[ /]?> ?/g, ' '); //<sub>, </sub>
 
-  wiki = wiki.replace(/ ?<[ /]?(abbr|bdi|bdo|blockquote|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ /]?> ?/g, ' '); //<abbr>, </abbr>
+  wiki = wiki.replace(/ ?<[ /]?(abbr|bdi|bdo|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ /]?> ?/g, ' '); //<abbr>, </abbr>
 
   wiki = wiki.replace(/ ?<[ /]?h[0-9][ /]?> ?/g, ' '); //<h2>, </h2>
 
@@ -5254,6 +5255,15 @@ let templates$5 = {
     }
 
     return "[[USS ".concat(obj.name, "|USS ''").concat(obj.name, "'']]");
+  },
+  // https://en.wikipedia.org/wiki/Template:Blockquote
+  blockquote: (tmpl, list) => {
+    let obj = parse$e(tmpl);
+    list.push(obj); // replace double quotes with singles and put the text inside double quotes
+
+    let result = (obj.text || obj.list[0]).replace(/"/g, '\'');
+    result = '"' + result + '"';
+    return result;
   }
 };
 var functions = templates$5;
@@ -7338,7 +7348,7 @@ Object.keys(methods$3).forEach(k => {
 const singular$2 = {
   sentences: 'sentence',
   references: 'reference',
-  citation: 'citations',
+  citations: 'citation',
   lists: 'list',
   images: 'image',
   links: 'link'

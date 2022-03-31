@@ -1,6 +1,7 @@
-const test = require('tape')
-const parseDoc = require('../../../src/_fetch/parseDoc')
-const { isArray } = require('../../../src/_lib/helpers')
+import test from 'tape'
+import parseDoc from '../../../src/_fetch/parseDoc.js'
+import { isArray } from '../../../src/_lib/helpers.js'
+
 const document = {
   text: '=== hello ===',
   meta: {

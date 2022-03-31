@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   aa: 'Afar', //Afar
   ab: 'Аҧсуа', //Abkhazian
   af: 'Afrikaans', //Afrikaans

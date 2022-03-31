@@ -1,4 +1,4 @@
-const { isArray } = require('../_lib/helpers')
+import { isArray } from '../_lib/helpers.js'
 
 const isInterWiki = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/
 
@@ -70,7 +70,7 @@ const makeUrl = function (options, parameters = defaults) {
 
   // the origin header and url parameters need to be the same
   // if one is provided we should change both the header and the parameter
-  if(options.origin){
+  if (options.origin) {
     params.origin = options.origin
   }
 
@@ -95,4 +95,4 @@ const makeUrl = function (options, parameters = defaults) {
   //make it!
   return `${apiPath}${toQueryString(params)}`
 }
-module.exports = makeUrl
+export default makeUrl

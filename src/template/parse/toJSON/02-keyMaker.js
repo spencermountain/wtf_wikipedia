@@ -72,4 +72,4 @@ const keyMaker = function (arr, order) {
   }, {})
 }
 
-module.exports = keyMaker
+export default keyMaker

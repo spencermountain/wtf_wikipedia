@@ -1,4 +1,4 @@
-{
+export default {
   "Document": [
     {
       "name": "title",

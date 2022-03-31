@@ -50,4 +50,4 @@ const getResult = function (data, options = {}) {
   })
 }
 
-module.exports = getResult
+export default getResult
