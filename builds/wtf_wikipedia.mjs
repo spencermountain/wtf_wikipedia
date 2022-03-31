@@ -1,5 +1,5 @@
 /* wtf_wikipedia 9.1.0 MIT */
-import require$$0 from 'isomorphic-unfetch';
+import unfetch from 'isomorphic-unfetch';
 
 /**
  * Parses out the domain and title from a url
@@ -8,18 +8,15 @@ import require$$0 from 'isomorphic-unfetch';
  * @param {string} url The url that will be parsed
  * @returns {{domain: string, title: string}} The domain and title of a url
  */
-
-const parseUrl$1 = function (url) {
+const parseUrl = function (url) {
   let parsed = new URL(url);
   let title = parsed.pathname.replace(/^\/(wiki\/)?/, '');
   title = decodeURIComponent(title);
   return {
     domain: parsed.host,
-    title: title
-  };
+    title: title,
+  }
 };
-
-var parseUrl_1 = parseUrl$1;
 
 /**
  * capitalizes the input
@@ -31,13 +28,6 @@ var parseUrl_1 = parseUrl$1;
  * @returns {string} the capitalized string
  */
 
-function capitalise(str) {
-  if (str && typeof str === 'string') {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
-  return '';
-}
 /**
  * trim whitespaces of the ends normalize 2 spaces into one and removes whitespaces before commas
  *
@@ -45,19 +35,17 @@ function capitalise(str) {
  * @param {string} [str] the string that will be processed
  * @returns {string} the processed string
  */
-
-
-function trim_whitespace$1(str) {
+function trim_whitespace(str) {
   if (str && typeof str === 'string') {
     str = str.replace(/^\s+/, '');
     str = str.replace(/\s+$/, '');
     str = str.replace(/ {2}/, ' ');
     str = str.replace(/\s, /, ', ');
-    return str;
+    return str
   }
-
-  return '';
+  return ''
 }
+
 /**
  * determines if an variable is an array or not
  *
@@ -65,11 +53,10 @@ function trim_whitespace$1(str) {
  * @param {*} x the variable that needs to be checked
  * @returns {boolean} whether the variable is an array
  */
-
-
-function isArray$4(x) {
-  return Object.prototype.toString.call(x) === '[object Array]';
+function isArray(x) {
+  return Object.prototype.toString.call(x) === '[object Array]'
 }
+
 /**
  *  determines if an variable is an object or not
  *
@@ -77,34 +64,23 @@ function isArray$4(x) {
  * @param {*} x the variable that needs to be checked
  * @returns {boolean} whether the variable is an object
  */
-
-
-function isObject$1(x) {
-  return x && Object.prototype.toString.call(x) === '[object Object]';
+function isObject(x) {
+  return x && Object.prototype.toString.call(x) === '[object Object]'
 }
 
-var helpers$1 = {
-  capitalise,
-  trim_whitespace: trim_whitespace$1,
-  isArray: isArray$4,
-  isObject: isObject$1
-};
-
-const {
-  isArray: isArray$3
-} = helpers$1;
 const isInterWiki = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/;
+
 const defaults$c = {
   action: 'query',
-  prop: 'revisions|pageprops',
-  // we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
+  prop: 'revisions|pageprops', // we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
   rvprop: 'content',
   maxlag: 5,
   rvslots: 'main',
   origin: '*',
   format: 'json',
-  redirects: 'true'
+  redirects: 'true',
 };
+
 /**
  * turns a object into a query string
  * 
@@ -112,13 +88,12 @@ const defaults$c = {
  * @param {Object<string, string | number | boolean>} obj
  * @returns {string} QueryString
  */
-
 const toQueryString = function (obj) {
-  return Object.entries(obj).map(_ref => {
-    let [key, value] = _ref;
-    return "".concat(encodeURIComponent(key), "=").concat(encodeURIComponent(value));
-  }).join('&');
+  return Object.entries(obj)
+    .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+    .join('&')
 };
+
 /**
  * cleans and prepares the tile by replacing the spaces with underscores (_) and trimming the white spaces of the ends
  *
@@ -126,11 +101,11 @@ const toQueryString = function (obj) {
  * @param {string} page the title that needs cleaning
  * @returns {string} the cleaned title
  */
-
-
-const cleanTitle = page => {
-  return page.replace(/ /g, '_').trim();
+const cleanTitle = (page) => {
+  return page.replace(/ /g, '_')
+    .trim()
 };
+
 /**
  * generates the url for fetching the pages
  * 
@@ -139,58 +114,55 @@ const cleanTitle = page => {
  * @param {Object} [parameters]
  * @returns {string} the url that can be used to make the fetch
  */
+const makeUrl = function (options, parameters = defaults$c) {
+  let params = Object.assign({}, parameters);
 
+  //default url
+  let apiPath = '';
 
-const makeUrl$1 = function (options) {
-  let parameters = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaults$c;
-  let params = Object.assign({}, parameters); //default url
-
-  let apiPath = ''; //add support for third party apis
-
+  //add support for third party apis
   if (options.domain) {
     //wikimedia is the only api that uses `/w/api` as its path. other wikis use other paths
     let path = isInterWiki.test(options.domain) ? 'w/api.php' : options.path;
-    apiPath = "https://".concat(options.domain, "/").concat(path, "?");
+    apiPath = `https://${options.domain}/${path}?`;
   } else if (options.lang && options.wiki) {
-    apiPath = "https://".concat(options.lang, ".").concat(options.wiki, ".org/w/api.php?");
+    apiPath = `https://${options.lang}.${options.wiki}.org/w/api.php?`;
   } else {
-    return '';
+    return ''
   }
+
 
   if (!options.follow_redirects) {
     delete params.redirects;
-  } // the origin header and url parameters need to be the same
+  }
+
+  // the origin header and url parameters need to be the same
   // if one is provided we should change both the header and the parameter
-
-
   if (options.origin) {
     params.origin = options.origin;
-  } //support numerical ids
+  }
 
-
+  //support numerical ids
   let title = options.title;
-
   if (typeof title === 'number') {
     //single pageId
     params.pageids = title;
   } else if (typeof title === 'string') {
     //single page title
     params.titles = cleanTitle(title);
-  } else if (title !== undefined && isArray$3(title) && typeof title[0] === 'number') {
+  } else if (title !== undefined && isArray(title) && typeof title[0] === 'number') {
     //pageid array
     params.pageids = title.join('|');
-  } else if (title !== undefined && isArray$3(title) === true && typeof title[0] === 'string') {
+  } else if (title !== undefined && isArray(title) === true && typeof title[0] === 'string') {
     //title array
     params.titles = title.map(cleanTitle).join('|');
   } else {
-    return '';
-  } //make it!
+    return ''
+  }
 
-
-  return "".concat(apiPath).concat(toQueryString(params));
+  //make it!
+  return `${apiPath}${toQueryString(params)}`
 };
-
-var makeUrl_1 = makeUrl$1;
 
 /**
  * parses the media wiki api response to something we can use
@@ -202,32 +174,32 @@ var makeUrl_1 = makeUrl$1;
  * @param {object} [options]
  * @returns {*} result
  */
-
-const getResult$1 = function (data) {
-  let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+const getResult = function (data, options = {}) {
   //get all the pagesIds from the result
-  let pages = Object.keys(data.query.pages); // map over the pageIds to parse out all the information
+  let pages = Object.keys(data.query.pages);
 
-  return pages.map(id => {
+  // map over the pageIds to parse out all the information
+  return pages.map((id) => {
     // get the page by pageID
-    let page = data.query.pages[id] || {}; // if the page is missing or not found than return null
+    let page = data.query.pages[id] || {};
 
+    // if the page is missing or not found than return null
     if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
-      return null;
-    } // get the text from the object
+      return null
+    }
 
-
-    let text = page.revisions[0]['*']; // if the text is not found in the regular place than it is at the other place
-
+    // get the text from the object
+    let text = page.revisions[0]['*'];
+    // if the text is not found in the regular place than it is at the other place
     if (!text && page.revisions[0].slots) {
       text = page.revisions[0].slots.main['*'];
     }
 
     page.pageprops = page.pageprops || {};
-    let domain = options.domain;
 
+    let domain = options.domain;
     if (!domain && options.wiki) {
-      domain = "".concat(options.wiki, ".org");
+      domain = `${options.wiki}.org`;
     }
 
     let meta = Object.assign({}, options, {
@@ -236,55 +208,44 @@ const getResult$1 = function (data) {
       namespace: page.ns,
       domain: domain,
       wikidata: page.pageprops.wikibase_item,
-      description: page.pageprops['wikibase-shortdesc']
+      description: page.pageprops['wikibase-shortdesc'],
     });
-    return {
-      wiki: text,
-      meta: meta
-    };
-  });
-};
 
-var getResult_1 = getResult$1;
+
+    return { wiki: text, meta: meta }
+  })
+};
 
 /**
  * helper for looping around all sections of a document
  *
  * @private
- * @param {Document} doc the document with the sections
+ * @param {object} doc the document with the sections
  * @param {string} fn the function name of the function that will be called
  * @param {string | number} [clue] the clue that will be used with the function
  * @returns {Array|*} the array of item at the index of the clue
  */
-
-const sectionMap$1 = function (doc, fn, clue) {
+const sectionMap = function (doc, fn, clue) {
   let arr = [];
-  doc.sections().forEach(sec => {
+  doc.sections().forEach((sec) => {
     let list = [];
-
     if (typeof clue === 'string') {
       list = sec[fn](clue);
     } else {
       list = sec[fn]();
     }
-
-    list.forEach(t => {
+    list.forEach((t) => {
       arr.push(t);
     });
   });
-
   if (typeof clue === 'number') {
     if (arr[clue] === undefined) {
-      return [];
+      return []
     }
-
-    return [arr[clue]];
+    return [arr[clue]]
   }
-
-  return arr;
+  return arr
 };
-
-var _sectionMap = sectionMap$1;
 
 /**
  * applies the the key values of defaults to options
@@ -294,14 +255,10 @@ var _sectionMap = sectionMap$1;
  * @param {object} defaults the defaults
  * @returns {object} the user options with the defaults applied
  */
-
-const setDefaults$a = function (options, defaults) {
-  return Object.assign({}, defaults, options);
+const setDefaults = function (options, defaults) {
+  return Object.assign({}, defaults, options)
 };
 
-var setDefaults_1 = setDefaults$a;
-
-const setDefaults$9 = setDefaults_1;
 /**
  * @typedef DocumentToJsonOptions
  * @property {boolean | undefined} title
@@ -315,13 +272,13 @@ const setDefaults$9 = setDefaults_1;
  * @property {boolean | undefined} citations
  * @property {boolean | undefined} references
  */
-
 const defaults$b = {
   title: true,
   sections: true,
   pageID: true,
-  categories: true
+  categories: true,
 };
+
 /**
  * @typedef documentToJsonReturn
  * @property {string | undefined} title
@@ -332,7 +289,7 @@ const defaults$b = {
  * @property {object | undefined} redirectTo
  * @property {object[] | undefined} coordinates
  * @property {object[] | undefined} infoboxes
- * @property {Image[] | undefined} images
+ * @property {object[] | undefined} images
  * @property {string | undefined} plaintext
  * @property {object[] | undefined} references
  */
@@ -341,17 +298,16 @@ const defaults$b = {
  * an opinionated output of the most-wanted data
  *
  * @private
- * @param {Document} doc
+ * @param {object} doc
  * @param {DocumentToJsonOptions} options
  * @returns {documentToJsonReturn}
  */
+const toJSON$2 = function (doc, options) {
+  options = setDefaults(options, defaults$b);
 
-const toJSON$8 = function (doc, options) {
-  options = setDefaults$9(options, defaults$b);
   /**
    * @type {documentToJsonReturn}
    */
-
   let data = {};
 
   if (options.title) {
@@ -367,26 +323,26 @@ const toJSON$8 = function (doc, options) {
   }
 
   if (options.sections) {
-    data.sections = doc.sections().map(i => i.json(options));
+    data.sections = doc.sections().map((i) => i.json(options));
   }
 
   if (doc.isRedirect() === true) {
     data.isRedirect = true;
     data.redirectTo = doc.redirectTo();
     data.sections = [];
-  } //these are default-off
+  }
 
-
+  //these are default-off
   if (options.coordinates) {
     data.coordinates = doc.coordinates();
   }
 
   if (options.infoboxes) {
-    data.infoboxes = doc.infoboxes().map(i => i.json(options));
+    data.infoboxes = doc.infoboxes().map((i) => i.json(options));
   }
 
   if (options.images) {
-    data.images = doc.images().map(i => i.json(options));
+    data.images = doc.images().map((i) => i.json(options));
   }
 
   if (options.plaintext) {
@@ -397,1198 +353,971 @@ const toJSON$8 = function (doc, options) {
     data.references = doc.references();
   }
 
-  return data;
+  return data
 };
 
-var toJson$9 = toJSON$8;
+var _categories = [
+  'category', //en
 
-var categories$1 = ['category', //en
-'abdeeling', //	pdc
-'bólkur', //	fo
-'catagóir', //	ga
-'categori', //	cy
-'categoria', 'categoria', //	co
-'categoría', //	es
-'categorîa', //	lij
-'categorìa', //	pms
-'catégorie', 'categorie', 'catègorie', //	frp
-'category', 'categuria', //	lmo
-'catigurìa', //	scn
-'class', //	kw
-'ẹ̀ka', //	yo
-'flocc', 'flocc', //	ang
-'flokkur', 'grup', //	tpi
-'jamii', //	sw
-'kaarangay', //	war
-'kateggoría', //	lad
-'kategooria', //	et
-'kategori', //	da
-'kategorî', //	ku
-'kategoria', //	eu
-'kategória', //	hu
-'kategorie', //de
-'kategoriija', //	se
-'kategorija', //	sl
-'kategorio', //	eo
-'kategoriya', 'kategoriýa', //	tk
-'kategoriye', //	diq
-'kategory', //	fy
-'kategorya', //	tl
-'kateqoriya', //	az
-'katiguriya', //	qu
-'klad', //	vo
-'luokka', 'ñemohenda', //	gn
-'roinn', //-seòrsa	gd
-'ronney', //	gv
-'rummad', //	br
-'setensele', //	nso
-'sokajy', //	mg
-'sumut', // atassuseq	kl
-'thể', // loại	vi
-'turkum', //	uz
-'категорија', 'категория', //	ru
-'категорія', //	uk
-'катэгорыя', 'төркем', //	tt
-'קטגוריה', //	he
-'تصنيف', 'تۈر', //	ug
-'رده', 'श्रेणी', 'श्रेणी', //	hi
-'বিষয়শ্রেণী', //	bn
-'หมวดหมู่', //	th
-'분류', //	ko
-'분류', //ko
-'分类' //	za
-//--
+  'abdeeling', //	pdc
+  'bólkur', //	fo
+  'catagóir', //	ga
+  'categori', //	cy
+  'categoria',
+  'categoria', //	co
+  'categoría', //	es
+  'categorîa', //	lij
+  'categorìa', //	pms
+  'catégorie',
+  'categorie',
+  'catègorie', //	frp
+  'category',
+  'categuria', //	lmo
+  'catigurìa', //	scn
+  'class', //	kw
+  'ẹ̀ka', //	yo
+  'flocc',
+  'flocc', //	ang
+  'flokkur',
+  'grup', //	tpi
+  'jamii', //	sw
+  'kaarangay', //	war
+  'kateggoría', //	lad
+  'kategooria', //	et
+  'kategori', //	da
+  'kategorî', //	ku
+  'kategoria', //	eu
+  'kategória', //	hu
+  'kategorie', //de
+  'kategoriija', //	se
+  'kategorija', //	sl
+  'kategorio', //	eo
+  'kategoriya',
+  'kategoriýa', //	tk
+  'kategoriye', //	diq
+  'kategory', //	fy
+  'kategorya', //	tl
+  'kateqoriya', //	az
+  'katiguriya', //	qu
+  'klad', //	vo
+  'luokka',
+  'ñemohenda', //	gn
+  'roinn', //-seòrsa	gd
+  'ronney', //	gv
+  'rummad', //	br
+  'setensele', //	nso
+  'sokajy', //	mg
+  'sumut', // atassuseq	kl
+  'thể', // loại	vi
+  'turkum', //	uz
+  'категорија',
+  'категория', //	ru
+  'категорія', //	uk
+  'катэгорыя',
+  'төркем', //	tt
+  'קטגוריה', //	he
+  'تصنيف',
+  'تۈر', //	ug
+  'رده',
+  'श्रेणी',
+  'श्रेणी', //	hi
+  'বিষয়শ্রেণী', //	bn
+  'หมวดหมู่', //	th
+  '분류', //	ko
+  '분류', //ko
+  '分类', //	za
+  //--
 ];
 
-var disambig_templates = ['dab', //en
-'disamb', //en
-'disambig', //en
-'disambiguation', //en
-// Disambiguation_message_boxes
-'letter-numbercombdisambig', 'letter-number combination disambiguation', 'dmbox', 'airport disambiguation', 'biology disambiguation', 'call sign disambiguation', 'caselaw disambiguation', 'chinese title disambiguation', 'disambiguation cleanup', 'genus disambiguation', 'hospital disambiguation', 'human name disambiguation', 'human name disambiguation cleanup', 'letter-number combination disambiguation', 'mathematical disambiguation', 'military unit disambiguation', 'music disambiguation', 'number disambiguation', 'opus number disambiguation', 'phonetics disambiguation', 'place name disambiguation', 'portal disambiguation', 'road disambiguation', 'school disambiguation', 'species latin name abbreviation disambiguation', 'species latin name disambiguation', 'station disambiguation', 'synagogue disambiguation', 'taxonomic authority disambiguation', 'taxonomy disambiguation', 'template disambiguation', 'disamb2', 'disamb3', 'disamb4', 'disambiguation lead', 'disambiguation lead name', 'disambiguation name', 'disamb-term', 'disamb-terms', // i18n
-'aðgreining', //is
-'aimai', //ja
-'ałtsʼáʼáztiin', //nv
-'anlam ayrımı', //gag
-'anlam ayrımı', //tr
-'apartigilo', //eo
-'argipen', //eu
-'begriepskloorenge', //stq
-'begriffsklärung', //als
-'begriffsklärung', //de
-'begriffsklärung', //pdc
-'begriffsklearung', //bar
-'bisongidila', //kg
-'bkl', //pfl
-'bokokani', //ln
-'caddayn', //so
-'clerheans', //kw
-'cudakirin', //ku
-'čvor', //bs
-'db', //vls
-'desambig', //nov
-'desambigación', //an
-'desambiguação', //pt
-'desambiguació', //ca
-'desambiguación', //es
-'desambiguáncia', //ext
-'desambiguasion', //lad
-'desambiguassiù', //lmo
-'desambigui', //lfn
-'dezambiguizare', //ro
-'dəqiqləşdirmə', //az
-'disambigua', //it
-'disambigua', //lij
-'disambigua', //nap
-'disambìgua', //sc
-'disambigua', //scn
-'disambiguasi', //id
-'disambiguasi', //su
-'discretiva', //la
-'disheñvelout', //br
-'disingkek', //min
-'dixanbigua', //vec
-'dixebra', //ast
-'diżambigwazzjoni', //mt
-'doorverwijspagina', //nl
-'dp', //nl
-'dp', //zea
-'dubbelsinnig', //af
-'dudalipen', //rmy
-'dv', //nds_nl
-'egyért', //hu
-'fleiri týdningar', //fo
-'fleirtyding', //nn
-'flertydig', //da
-'förgrening', //sv
-'gì-ngiê', //cdo
-'giklaro', //ceb
-'gwahaniaethu', //cy
-'homonimo', //io
-'homónimos', //gl
-'homonymie', //fr
-'huaʻōlelo puana like', //haw
-'idirdhealú', //ga
-'khu-pia̍t', //zh_min_nan
-'kthjellim', //sq
-'kujekesa', //sn
-'maana', //sw
-'maneo bin', //diq
-'mehrdüdig begreep', //nds
-'menm non', //ht
-'muardüüdag artiikel', //frr
-'neibetsjuttings', //fy
-'nozīmju atdalīšana', //lv
-'nuorodinis', //lt
-'nyahkekaburan', //ms
-'omonimeye', //wa
-'omonimia', //oc
-'page dé frouque', //nrm
-'paglilinaw', //tl
-'panangilawlawag', //ilo
-'pansayod', //war
-'pejy mitovy anarana', //mg
-'peker', //no
-'razdvojba', //hr
-'razločitev', //sl
-'razvrstavanje', //sh
-'reddaghey', //gv
-'rozcestník', //cs
-'rozlišovacia stránka', //sk
-'sclerir noziun', //rm
-'selvendyssivu', //olo
-'soilleireachadh', //gd
-'suzmunski', //jbo
-'täpsustuslehekülg', //et
-'täsmennyssivu', //fi
-'telplänov', //vo
-'tlahtolmelahuacatlaliztli', //nah
-'trang định hướng', //vi
-'ujednoznacznienie', //pl
-'verdudeliking', //li
-'wěcejwóznamowosć', //dsb
-'wjacezmyslnosć', //hsb
-'zambiguaçon', //mwl
-'zeimeibu škiršona', //ltg
-'αποσαφήνιση', //el
-'айрық', //kk
-'аҵакырацәа', //ab
-'вишезначна одредница', //sr
-'ибҳомзудоӣ', //tg
-'кёб магъаналы', //krc
-'күп мәгънәләр', //tt
-'күп мәғәнәлелек', //ba
-'мъногосъмꙑслиѥ', //cu
-'неадназначнасць', //be
-'неадназначнасьць', //be_x_old
-'неоднозначность', //ru
-'олон удхатай', //bxr
-'појаснување', //mk
-'пояснение', //bg
-'са шумуд манавал', //lez
-'салаа утгатай', //mn
-'суолталар', //sah
-'текмаанисиздик', //ky
-'цо магіна гуреб', //av
-'чеперушка', //rue
-'чолхалла', //ce
-'шуко ончыктымаш-влак', //mhr
-'მრავალმნიშვნელოვანი', //ka
-'բազմիմաստութիւն', //hyw
-'բազմիմաստություն', //hy
-'באדייטן', //yi
-'פירושונים', //he
-'ابهام‌زدایی', //fa
-'توضيح', //ar
-'توضيح', //arz
-'دقیقلشدیرمه', //azb
-'ڕوونکردنەوە', //ckb
-'سلجهائپ', //sd
-'ضد ابہام', //ur
-'گجگجی بیری', //mzn
-'نامبهمېدنه', //ps
-'መንታ', //am
-'अस्पष्टता', //ne
-'बहुअर्थी', //bh
-'बहुविकल्पी शब्द', //hi
-'দ্ব্যর্থতা নিরসন', //bn
-'ਗੁੰਝਲ-ਖੋਲ੍ਹ', //pa
-'સંદિગ્ધ શીર્ષક', //gu
-'பக்கவழி நெறிப்படுத்தல்', //ta
-'అయోమయ నివృత్తి', //te
-'ದ್ವಂದ್ವ ನಿವಾರಣೆ', //kn
-'വിവക്ഷകൾ', //ml
-'වක්‍රෝත්ති', //si
-'แก้ความกำกวม', //th
-'သံတူကြောင်းကွဲ', //my
-'ណែនាំ', //km
-'동음이의', //ko
-'扤清楚', //gan
-'搞清楚', //zh_yue
-'曖昧さ回避', //ja
-'消歧义', //zh
-'釋義', //zh_classical
-"gestion dj'omònim", //pms
-"sut'ichana qillqa" //qu
-// 'z', //vep
-// 'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ', //shn
+var disambig_templates = [
+  'dab', //en
+  'disamb', //en
+  'disambig', //en
+  'disambiguation', //en
+
+  // Disambiguation_message_boxes
+  'letter-numbercombdisambig',
+  'letter-number combination disambiguation',
+  'dmbox',
+  'airport disambiguation',
+  'biology disambiguation',
+  'call sign disambiguation',
+  'caselaw disambiguation',
+  'chinese title disambiguation',
+  'disambiguation cleanup',
+  'genus disambiguation',
+  'hospital disambiguation',
+  'human name disambiguation',
+  'human name disambiguation cleanup',
+  'letter-number combination disambiguation',
+  'mathematical disambiguation',
+  'military unit disambiguation',
+  'music disambiguation',
+  'number disambiguation',
+  'opus number disambiguation',
+  'phonetics disambiguation',
+  'place name disambiguation',
+  'portal disambiguation',
+  'road disambiguation',
+  'school disambiguation',
+  'species latin name abbreviation disambiguation',
+  'species latin name disambiguation',
+  'station disambiguation',
+  'synagogue disambiguation',
+  'taxonomic authority disambiguation',
+  'taxonomy disambiguation',
+  'template disambiguation',
+  'disamb2',
+  'disamb3',
+  'disamb4',
+  'disambiguation lead',
+  'disambiguation lead name',
+  'disambiguation name',
+  'disamb-term',
+  'disamb-terms',
+
+
+  // i18n
+  'aðgreining', //is
+  'aimai', //ja
+  'ałtsʼáʼáztiin', //nv
+  'anlam ayrımı', //gag
+  'anlam ayrımı', //tr
+  'apartigilo', //eo
+  'argipen', //eu
+  'begriepskloorenge', //stq
+  'begriffsklärung', //als
+  'begriffsklärung', //de
+  'begriffsklärung', //pdc
+  'begriffsklearung', //bar
+  'bisongidila', //kg
+  'bkl', //pfl
+  'bokokani', //ln
+  'caddayn', //so
+  'clerheans', //kw
+  'cudakirin', //ku
+  'čvor', //bs
+  'db', //vls
+  'desambig', //nov
+  'desambigación', //an
+  'desambiguação', //pt
+  'desambiguació', //ca
+  'desambiguación', //es
+  'desambiguáncia', //ext
+  'desambiguasion', //lad
+  'desambiguassiù', //lmo
+  'desambigui', //lfn
+  'dezambiguizare', //ro
+  'dəqiqləşdirmə', //az
+  'disambigua', //it
+  'disambigua', //lij
+  'disambigua', //nap
+  'disambìgua', //sc
+  'disambigua', //scn
+  'disambiguasi', //id
+  'disambiguasi', //su
+  'discretiva', //la
+  'disheñvelout', //br
+  'disingkek', //min
+  'dixanbigua', //vec
+  'dixebra', //ast
+  'diżambigwazzjoni', //mt
+  'doorverwijspagina', //nl
+  'dp', //nl
+  'dp', //zea
+  'dubbelsinnig', //af
+  'dudalipen', //rmy
+  'dv', //nds_nl
+  'egyért', //hu
+  'fleiri týdningar', //fo
+  'fleirtyding', //nn
+  'flertydig', //da
+  'förgrening', //sv
+  'gì-ngiê', //cdo
+  'giklaro', //ceb
+  'gwahaniaethu', //cy
+  'homonimo', //io
+  'homónimos', //gl
+  'homonymie', //fr
+  'huaʻōlelo puana like', //haw
+  'idirdhealú', //ga
+  'khu-pia̍t', //zh_min_nan
+  'kthjellim', //sq
+  'kujekesa', //sn
+  'maana', //sw
+  'maneo bin', //diq
+  'mehrdüdig begreep', //nds
+  'menm non', //ht
+  'muardüüdag artiikel', //frr
+  'neibetsjuttings', //fy
+  'nozīmju atdalīšana', //lv
+  'nuorodinis', //lt
+  'nyahkekaburan', //ms
+  'omonimeye', //wa
+  'omonimia', //oc
+  'page dé frouque', //nrm
+  'paglilinaw', //tl
+  'panangilawlawag', //ilo
+  'pansayod', //war
+  'pejy mitovy anarana', //mg
+  'peker', //no
+  'razdvojba', //hr
+  'razločitev', //sl
+  'razvrstavanje', //sh
+  'reddaghey', //gv
+  'rozcestník', //cs
+  'rozlišovacia stránka', //sk
+  'sclerir noziun', //rm
+  'selvendyssivu', //olo
+  'soilleireachadh', //gd
+  'suzmunski', //jbo
+  'täpsustuslehekülg', //et
+  'täsmennyssivu', //fi
+  'telplänov', //vo
+  'tlahtolmelahuacatlaliztli', //nah
+  'trang định hướng', //vi
+  'ujednoznacznienie', //pl
+  'verdudeliking', //li
+  'wěcejwóznamowosć', //dsb
+  'wjacezmyslnosć', //hsb
+  'zambiguaçon', //mwl
+  'zeimeibu škiršona', //ltg
+  'αποσαφήνιση', //el
+  'айрық', //kk
+  'аҵакырацәа', //ab
+  'вишезначна одредница', //sr
+  'ибҳомзудоӣ', //tg
+  'кёб магъаналы', //krc
+  'күп мәгънәләр', //tt
+  'күп мәғәнәлелек', //ba
+  'мъногосъмꙑслиѥ', //cu
+  'неадназначнасць', //be
+  'неадназначнасьць', //be_x_old
+  'неоднозначность', //ru
+  'олон удхатай', //bxr
+  'појаснување', //mk
+  'пояснение', //bg
+  'са шумуд манавал', //lez
+  'салаа утгатай', //mn
+  'суолталар', //sah
+  'текмаанисиздик', //ky
+  'цо магіна гуреб', //av
+  'чеперушка', //rue
+  'чолхалла', //ce
+  'шуко ончыктымаш-влак', //mhr
+  'მრავალმნიშვნელოვანი', //ka
+  'բազմիմաստութիւն', //hyw
+  'բազմիմաստություն', //hy
+  'באדייטן', //yi
+  'פירושונים', //he
+  'ابهام‌زدایی', //fa
+  'توضيح', //ar
+  'توضيح', //arz
+  'دقیقلشدیرمه', //azb
+  'ڕوونکردنەوە', //ckb
+  'سلجهائپ', //sd
+  'ضد ابہام', //ur
+  'گجگجی بیری', //mzn
+  'نامبهمېدنه', //ps
+  'መንታ', //am
+  'अस्पष्टता', //ne
+  'बहुअर्थी', //bh
+  'बहुविकल्पी शब्द', //hi
+  'দ্ব্যর্থতা নিরসন', //bn
+  'ਗੁੰਝਲ-ਖੋਲ੍ਹ', //pa
+  'સંદિગ્ધ શીર્ષક', //gu
+  'பக்கவழி நெறிப்படுத்தல்', //ta
+  'అయోమయ నివృత్తి', //te
+  'ದ್ವಂದ್ವ ನಿವಾರಣೆ', //kn
+  'വിവക്ഷകൾ', //ml
+  'වක්‍රෝත්ති', //si
+  'แก้ความกำกวม', //th
+  'သံတူကြောင်းကွဲ', //my
+  'ណែនាំ', //km
+  '동음이의', //ko
+  '扤清楚', //gan
+  '搞清楚', //zh_yue
+  '曖昧さ回避', //ja
+  '消歧义', //zh
+  '釋義', //zh_classical
+  "gestion dj'omònim", //pms
+  "sut'ichana qillqa", //qu
+  // 'z', //vep
+  // 'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ', //shn
 ];
 
+// used in titles to denote disambiguation pages
 // see 'Football_(disambiguation)'
-
-var disambig_titles = ['disambiguation', //en
-'homonymie', //fr
-'توضيح', //ar
-'desambiguação', //pt
-'Begriffsklärung', //de
-'disambigua', //it
-'曖昧さ回避', //ja
-'消歧義', //zh
-'搞清楚', //zh-yue
-'значения', //ru
-'ابهام‌زدایی', //fa
-'د ابہام', //ur
-'동음이의', //ko
-'dubbelsinnig', //af
-'այլ կիրառումներ', //hy
-'ujednoznacznienie' //pl
+var disambig_titles = [
+  'disambiguation', //en
+  'homonymie', //fr
+  'توضيح', //ar
+  'desambiguação', //pt
+  'Begriffsklärung', //de
+  'disambigua', //it
+  '曖昧さ回避', //ja
+  '消歧義', //zh
+  '搞清楚', //zh-yue
+  'значения', //ru
+  'ابهام‌زدایی', //fa
+  'د ابہام', //ur
+  '동음이의', //ko
+  'dubbelsinnig', //af
+  'այլ կիրառումներ', //hy
+  'ujednoznacznienie', //pl
 ];
 
-var images = ['file', //en
-'image', //en
-'चित्र', //img
-'archivo', //es
-'attēls', //lv
-'berkas', //id
-'bestand', //nl
-'datei', //de
-'dosiero', //eo
-'dosya', //lad
-'fájl', //hu
-'fasciculus', //la
-'fichier', //fr
-'fil', //da
-'fitxategi', //eu
-'fitxer', //ca
-'gambar', //su
-'imagem', //pt
-'imej', //ms
-'immagine', //it
-'larawan', //tl
-'lêer', //af
-'plik', //pl
-'restr', //br
-'slika', //bs
-'wêne', //ku
-'wobraz', //dsb
-'выява', //be
-'податотека', //mk
-'слика', //sr
-'файл', //ru
-'სურათი', //ka
-'պատկեր', //hy
-'קובץ', //he
-'پرونده', //fa
-'دوتنه', //ps
-'ملف', //ar
-'وێنە', //ckb
-'चित्र', //hi
-'ไฟล์', //th
-'파일', //ko
-'ファイル' //ja
+var images = [
+  'file', //en
+  'image', //en
+  'चित्र', //img
+
+  'archivo', //es
+  'attēls', //lv
+  'berkas', //id
+  'bestand', //nl
+  'datei', //de
+  'dosiero', //eo
+  'dosya', //lad
+  'fájl', //hu
+  'fasciculus', //la
+  'fichier', //fr
+  'fil', //da
+  'fitxategi', //eu
+  'fitxer', //ca
+  'gambar', //su
+  'imagem', //pt
+  'imej', //ms
+  'immagine', //it
+  'larawan', //tl
+  'lêer', //af
+  'plik', //pl
+  'restr', //br
+  'slika', //bs
+  'wêne', //ku
+  'wobraz', //dsb
+  'выява', //be
+  'податотека', //mk
+  'слика', //sr
+  'файл', //ru
+  'სურათი', //ka
+  'պատկեր', //hy
+  'קובץ', //he
+  'پرونده', //fa
+  'دوتنه', //ps
+  'ملف', //ar
+  'وێنە', //ckb
+  'चित्र', //hi
+  'ไฟล์', //th
+  '파일', //ko
+  'ファイル', //ja
 ];
 
-var infoboxes$2 = ['infobox', //en
-'anfo', //mwl
-'anuāmapa', //haw
-'bilgi kutusu', //tr
-'bilgi', //tr
-'bilgiquti', //uz
-'boaty', //mg
-'boestkelaouiñ', //br
-'bosca', //ga
-'capsa', //la
-'diehtokássa', //se
-'faktamall', //sv
-'ficha', //es
-'generalni', //hr
-'gwybodlen3', //cy
-'info', //pt
-'infobokis', //tpi
-'infoboks', //da
-'infochascha', //rm
-'infokašćik', //dsb
-'infokast', //et
-'infokutija', //bs
-'infolentelė', //lt
-'infopolje', //sl
-'informkesto', //eo
-'infoskreine', //ltg
-'infotaula', //eu
-'inligtingskas', 'inligtingskas3', //af
-'inligtingskas4', //af
-'kishtey', //gv
-'kotak', //su
-'tertcita', //jbo
-'tietolaatikko', //fi
-'yerleşim bilgi kutusu', 'ynfoboks', //fy
-'πλαίσιο', //el
-'акарточка', //ab
-'аҥа', //mhr
-'инфобокс', //kk
-'инфокутија', //sr
-'инфокутия', //bg
-'інфобокс', //rue
-'канадский', 'картка', //be
-'карточка', //ru
-'карточка2', //mdf
-'карточкарус', //ba
-'картуш', //koi
-'қуттӣ', //tg
-'ინფოდაფა', //ka
-'տեղեկաքարտ', //hy
-'אינפאקעסטל', //yi
-'תבנית', //he
-'بطاقة', //ar
-'ڄاڻخانو', //sd
-'خانہ', //ur
-'لغة', 'ज्ञानसन्दूक', //hi
-'তথ্যছক', //bn
-'ਜਾਣਕਾਰੀਡੱਬਾ', //pa
-'సమాచారపెట్టె', //te
-'තොරතුරුකොටුව', //si
-'กล่องข้อมูล', //th
-'ប្រអប់ព័ត៌មាន', //km
-'정보상자', //ko
-'明細' //zh_yue
+var infoboxes$1 = [
+  'infobox', //en
+
+  'anfo', //mwl
+  'anuāmapa', //haw
+  'bilgi kutusu', //tr
+  'bilgi', //tr
+  'bilgiquti', //uz
+  'boaty', //mg
+  'boestkelaouiñ', //br
+  'bosca', //ga
+  'capsa', //la
+  'diehtokássa', //se
+  'faktamall', //sv
+  'ficha', //es
+  'generalni', //hr
+  'gwybodlen3', //cy
+  'info', //pt
+  'infobokis', //tpi
+  'infoboks', //da
+  'infochascha', //rm
+  'infokašćik', //dsb
+  'infokast', //et
+  'infokutija', //bs
+  'infolentelė', //lt
+  'infopolje', //sl
+  'informkesto', //eo
+  'infoskreine', //ltg
+  'infotaula', //eu
+  'inligtingskas',
+  'inligtingskas3', //af
+  'inligtingskas4', //af
+  'kishtey', //gv
+  'kotak', //su
+  'tertcita', //jbo
+  'tietolaatikko', //fi
+  'yerleşim bilgi kutusu',
+  'ynfoboks', //fy
+  'πλαίσιο', //el
+  'акарточка', //ab
+  'аҥа', //mhr
+  'инфобокс', //kk
+  'инфокутија', //sr
+  'инфокутия', //bg
+  'інфобокс', //rue
+  'канадский',
+  'картка', //be
+  'карточка', //ru
+  'карточка2', //mdf
+  'карточкарус', //ba
+  'картуш', //koi
+  'қуттӣ', //tg
+  'ინფოდაფა', //ka
+  'տեղեկաքարտ', //hy
+  'אינפאקעסטל', //yi
+  'תבנית', //he
+  'بطاقة', //ar
+  'ڄاڻخانو', //sd
+  'خانہ', //ur
+  'لغة',
+  'ज्ञानसन्दूक', //hi
+  'তথ্যছক', //bn
+  'ਜਾਣਕਾਰੀਡੱਬਾ', //pa
+  'సమాచారపెట్టె', //te
+  'තොරතුරුකොටුව', //si
+  'กล่องข้อมูล', //th
+  'ប្រអប់ព័ត៌មាន', //km
+  '정보상자', //ko
+  '明細', //zh_yue
 ];
 
-var redirects$2 = ['adkas', //br
-'aýdaw', 'doorverwijzing', //nl
-'ohjaus', 'patrz', //pl
-'přesměruj', 'redirección', 'redireccion', 'redirección', //es
-'redirecionamento', //pt
-'redirect', //en
-'redirection', 'redirection', //fr
-'rinvia', //it
-'tilvísun', 'uudelleenohjaus', 'weiterleitung', 'weiterleitung', //de
-'yönlendi̇r', 'yönlendirme', 'yönlendi̇rme', //tr
-'ανακατευθυνση', //el
-'айдау', 'перанакіраваньне', 'перенаправлення', //uk
-'пренасочување', //mk
-'преусмери', 'преусмјери', 'تغییر_مسیر', 'تغییرمسیر', 'تغییرمسیر', //fa
-'เปลี่ยนทาง', //th
-'ប្តូរទីតាំងទៅ', //km
-'転送', //ja
-'重定向'];
+var redirects = [
+  'adkas', //br
+  'aýdaw',
+  'doorverwijzing', //nl
+  'ohjaus',
+  'patrz', //pl
+  'přesměruj',
+  'redirección',
+  'redireccion',
+  'redirección', //es
+  'redirecionamento', //pt
+  'redirect', //en
+  'redirection',
+  'redirection', //fr
+  'rinvia', //it
+  'tilvísun',
+  'uudelleenohjaus',
+  'weiterleitung',
+  'weiterleitung', //de
+  'yönlendi̇r',
+  'yönlendirme',
+  'yönlendi̇rme', //tr
+  'ανακατευθυνση', //el
+  'айдау',
+  'перанакіраваньне',
+  'перенаправлення', //uk
+  'пренасочување', //mk
+  'преусмери',
+  'преусмјери',
+  'تغییر_مسیر',
+  'تغییرمسیر',
+  'تغییرمسیر', //fa
+  'เปลี่ยนทาง', //th
+  'ប្តូរទីតាំងទៅ', //km
+  '転送', //ja
+  '重定向',
+];
 
-var references = ['references', 'reference', 'einzelnachweise', 'referencias', 'références', 'notes et références', '脚注', 'referenser', 'bronnen', 'примечания'];
+var references = [
+  'references',
+  'reference',
+  'einzelnachweise',
+  'referencias',
+  'références',
+  'notes et références',
+  '脚注',
+  'referenser',
+  'bronnen',
+  'примечания',
+];
 
-/**
- * wikipedia special terms lifted and augmented from parsoid parser april 2015
- * and then manually on March 2020
- *
- * @private
- * @type {{
- *  images: string[],
- *  references: string[],
- *  redirects: string[],
- *  infoboxes: string[],
- *  categories: string[],
- *   disambig: string[]
- * }}
- */
-var i18n$6 = {
-  categories: categories$1,
-  disambig_templates: disambig_templates,
-  disambig_titles: disambig_titles,
-  images: images,
-  infoboxes: infoboxes$2,
-  redirects: redirects$2,
-  references: references //specials: [
-  //'спэцыяльныя',
-  //'especial',
-  //'speciální',
-  //'spezial',
-  //'special',
-  //'ویژه',
-  //'toiminnot',
-  //'kerfissíða',
-  //'arnawlı',
-  //'spécial',
-  //'speciaal',
-  //'посебно',
-  //'özel',
-  //'特別'
-  //],
-  //users: [
-  //'удзельнік',
-  //'usuari',
-  //'uživatel',
-  //'benutzer',
-  //'user',
-  //'usuario',
-  //'کاربر',
-  //'käyttäjä',
-  //'notandi',
-  //'paydalanıwshı',
-  //'utilisateur',
-  //'gebruiker',
-  //'корисник',
-  //'kullanıcı',
-  //'利用者'
-  //],
-  //sources: [
-  ////blacklist these headings, as they're not plain-text
-  //'references',
-  //'see also',
-  //'external links',
-  //'further reading',
-  //'notes et références',
-  //'voir aussi',
-  //'liens externes',
-  //'参考文献', //references (ja)
-  //'脚注', //citations (ja)
-  //'関連項目', //see also (ja)
-  //'外部リンク' //external links (ja)
-  //]
-
-};
-
+//alt disambig-templates en-wikipedia uses
 let d = ' disambiguation';
-const templates$c = ['dab', 'dab', 'disamb', 'disambig', 'geodis', 'hndis', 'setindex', 'ship index', 'split dab', 'sport index', 'wp disambig', 'disambiguation cleanup', 'airport' + d, 'biology' + d, 'call sign' + d, 'caselaw' + d, 'chinese title' + d, 'genus' + d, 'hospital' + d, 'lake index', 'letter' + d, 'letter-number combination' + d, 'mathematical' + d, 'military unit' + d, 'mountainindex', 'number' + d, 'phonetics' + d, 'place name' + d, 'portal' + d, 'road' + d, 'school' + d, 'species latin name abbreviation' + d, 'species latin name' + d, 'station' + d, 'synagogue' + d, 'taxonomic authority' + d, 'taxonomy' + d].reduce((h, str) => {
+const templates$a = [
+  'dab',
+  'dab',
+  'disamb',
+  'disambig',
+  'geodis',
+  'hndis',
+  'setindex',
+  'ship index',
+  'split dab',
+  'sport index',
+  'wp disambig',
+  'disambiguation cleanup',
+  'airport' + d,
+  'biology' + d,
+  'call sign' + d,
+  'caselaw' + d,
+  'chinese title' + d,
+  'genus' + d,
+  'hospital' + d,
+  'lake index',
+  'letter' + d,
+  'letter-number combination' + d,
+  'mathematical' + d,
+  'military unit' + d,
+  'mountainindex',
+  'number' + d,
+  'phonetics' + d,
+  'place name' + d,
+  'portal' + d,
+  'road' + d,
+  'school' + d,
+  'species latin name abbreviation' + d,
+  'species latin name' + d,
+  'station' + d,
+  'synagogue' + d,
+  'taxonomic authority' + d,
+  'taxonomy' + d,
+].reduce((h, str) => {
   h[str] = true;
-  return h;
+  return h
 }, {});
-var _disambig = templates$c;
 
-const i18n$5 = i18n$6;
-const alt_disambig = _disambig;
-const inTitle = new RegExp('. \\((' + i18n$5.disambig_titles.join('|') + ')\\)$', 'i');
-const i18n_templates = i18n$5.disambig_templates.reduce((h, str) => {
+const inTitle = new RegExp('. \\((' + disambig_titles.join('|') + ')\\)$', 'i');
+const i18n_templates = disambig_templates.reduce((h, str) => {
   h[str] = true;
-  return h;
-}, {}); // look for '... may refer to'
+  return h
+}, {});
 
+// look for '... may refer to'
 const byText = function (s) {
   if (!s) {
-    return false;
+    return false
   }
-
   let txt = s.text();
-
   if (txt !== null && txt[0]) {
     if (/. may (also)? refer to\b/i.test(txt) === true) {
-      return true;
+      return true
     }
   }
-
-  return false;
+  return false
 };
+
 /**
  * Parses the wikitext to find out if this page is a disambiguation
  *
  * @private
- * @param {Document} doc the document that is examined
+ * @param {object} doc the document that is examined
  * @returns {boolean} an indication if the document is a disambiguation page
  */
-
-
-const isDisambig$1 = function (doc) {
+const isDisambig = function (doc) {
   // check for a {{disambig}} template
-  let templates = doc.templates().map(tmpl => tmpl.json());
-  let found = templates.find(obj => {
-    return alt_disambig.hasOwnProperty(obj.template) || i18n_templates.hasOwnProperty(obj.template);
+  let templates = doc.templates().map((tmpl) => tmpl.json());
+  let found = templates.find((obj) => {
+    return templates$a.hasOwnProperty(obj.template) || i18n_templates.hasOwnProperty(obj.template)
   });
-
   if (found) {
-    return true;
-  } // check for (disambiguation) in title
-
-
-  let title = doc.title();
-
-  if (title && inTitle.test(title) === true) {
-    return true;
-  } //try 'may refer to' on first line for en-wiki?
-
-
-  if (byText(doc.sentence(0)) === true || byText(doc.sentence(1)) === true) {
-    return true;
+    return true
   }
-
-  return false;
+  // check for (disambiguation) in title
+  let title = doc.title();
+  if (title && inTitle.test(title) === true) {
+    return true
+  }
+  //try 'may refer to' on first line for en-wiki?
+  if (byText(doc.sentence(0)) === true || byText(doc.sentence(1)) === true) {
+    return true
+  }
+  return false
 };
 
-var isDisambig_1 = isDisambig$1;
-
-const setDefaults$8 = setDefaults_1;
 const defaults$a = {
   caption: true,
   alt: true,
   links: true,
   thumb: true,
-  url: true
-}; //
-
-const toJson$8 = function (img, options) {
-  options = setDefaults$8(options, defaults$a);
+  url: true,
+};
+//
+const toJson$3 = function (img, options) {
+  options = setDefaults(options, defaults$a);
   let json = {
-    file: img.file()
+    file: img.file(),
   };
-
   if (options.thumb !== false) {
     json.thumb = img.thumbnail();
   }
-
   if (options.url !== false) {
     json.url = img.url();
-  } //add captions
-
-
+  }
+  //add captions
   if (options.caption !== false && img.data.caption) {
     json.caption = img.caption();
-
     if (options.links !== false && img.data.caption.links()) {
       json.links = img.links();
     }
   }
-
   if (options.alt !== false && img.data.alt) {
     json.alt = img.alt();
   }
-
-  return json;
+  return json
 };
 
-var toJson_1$3 = toJson$8;
-
-const toJson$7 = toJson_1$3;
 const server = 'wikipedia.org';
 
 const encodeTitle = function (file) {
-  let title = file.replace(/^(image|file?):/i, ''); //titlecase it
-
-  title = title.charAt(0).toUpperCase() + title.substring(1); //spaces to underscores
-
+  let title = file.replace(/^(image|file?):/i, '');
+  //titlecase it
+  title = title.charAt(0).toUpperCase() + title.substring(1);
+  //spaces to underscores
   title = title.trim().replace(/ /g, '_');
-  return title;
-}; //the wikimedia image url is a little silly:
+  return title
+};
 
-
+//the wikimedia image url is a little silly:
 const makeSrc = function (file) {
   let title = encodeTitle(file);
   title = encodeURIComponent(title);
-  return title;
-}; //the class for our image generation functions
+  return title
+};
 
-
-const Image$5 = function (data) {
+//the class for our image generation functions
+const Image = function (data) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: data
+    value: data,
   });
 };
 
 const methods$8 = {
   file() {
     let file = this.data.file || '';
-
     if (file) {
       const regFile = /^(image|file):/i;
-
-      if (!regFile.test(file)) {
-        // if there's no 'File:', add it
-        file = "File:".concat(file);
+      if (!regFile.test(file)) {// if there's no 'File:', add it
+        file = `File:${file}`;
       }
-
-      file = file.trim(); //titlecase it
-
-      file = file.charAt(0).toUpperCase() + file.substring(1); //spaces to underscores
-
+      file = file.trim();
+      //titlecase it
+      file = file.charAt(0).toUpperCase() + file.substring(1);
+      //spaces to underscores
       file = file.replace(/ /g, '_');
     }
-
-    return file;
+    return file
   },
-
   alt() {
     let str = this.data.alt || this.data.file || '';
     str = str.replace(/^(file|image):/i, '');
     str = str.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
-    return str.replace(/_/g, ' ');
+    return str.replace(/_/g, ' ')
   },
-
   caption() {
     if (this.data.caption) {
-      return this.data.caption.text();
+      return this.data.caption.text()
     }
-
-    return '';
+    return ''
   },
-
   links() {
     if (this.data.caption) {
-      return this.data.caption.links();
+      return this.data.caption.links()
     }
-
-    return [];
+    return []
   },
-
   url() {
     // let lang = 'en' //this.language() || 'en' //hmm: get actual language?
     let fileName = makeSrc(this.file());
     let domain = this.data.domain || server;
-    let path = "wiki/Special:Redirect/file";
-    return "https://".concat(domain, "/").concat(path, "/").concat(fileName);
+    let path = `wiki/Special:Redirect/file`;
+    return `https://${domain}/${path}/${fileName}`
   },
-
   thumbnail(size) {
     size = size || 300;
-    return this.url() + '?width=' + size;
+    return this.url() + '?width=' + size
   },
-
   format() {
     let arr = this.file().split('.');
-
     if (arr[arr.length - 1]) {
-      return arr[arr.length - 1].toLowerCase();
+      return arr[arr.length - 1].toLowerCase()
     }
-
-    return null;
+    return null
   },
-
   json: function (options) {
     options = options || {};
-    return toJson$7(this, options);
+    return toJson$3(this, options)
   },
   text: function () {
-    return '';
+    return ''
   },
   wikitext: function () {
-    return this.data.wiki || '';
-  }
+    return this.data.wiki || ''
+  },
 };
-Object.keys(methods$8).forEach(k => {
-  Image$5.prototype[k] = methods$8[k];
+
+Object.keys(methods$8).forEach((k) => {
+  Image.prototype[k] = methods$8[k];
 });
-Image$5.prototype.src = Image$5.prototype.url;
-Image$5.prototype.thumb = Image$5.prototype.thumbnail;
-var Image_1 = Image$5;
 
-var languages$4 = {
-  aa: 'Afar',
-  //Afar
-  ab: 'Аҧсуа',
-  //Abkhazian
-  af: 'Afrikaans',
-  //Afrikaans
-  ak: 'Akana',
-  //Akan
-  als: 'Alemannisch',
-  //Alemannic
-  am: 'አማርኛ',
-  //Amharic
-  an: 'Aragonés',
-  //Aragonese
-  ang: 'Englisc',
-  //Anglo-Saxon
-  ar: 'العربية',
-  //Arabic
-  arc: 'ܣܘܪܬ',
-  //Aramaic
-  as: 'অসমীয়া',
-  //Assamese
-  ast: 'Asturianu',
-  //Asturian
-  av: 'Авар',
-  //Avar
-  ay: 'Aymar',
-  //Aymara
-  az: 'Azərbaycanca',
-  //Azerbaijani
-  ba: 'Башҡорт',
-  //Bashkir
-  bar: 'Boarisch',
-  //Bavarian
-  'bat-smg': 'Žemaitėška',
-  //Samogitian
-  bcl: 'Bikol',
-  //Bikol
-  be: 'Беларуская',
-  //Belarusian
-  'be-x-old': 'ltr',
-  //Belarusian
-  bg: 'Български',
-  //Bulgarian
-  bh: 'भोजपुरी',
-  //Bihari
-  bi: 'Bislama',
-  //Bislama
-  bm: 'Bamanankan',
-  //Bambara
-  bn: 'বাংলা',
-  //Bengali
-  bo: 'བོད་ཡིག',
-  //Tibetan
-  bpy: 'ltr',
-  //Bishnupriya
-  br: 'Brezhoneg',
-  //Breton
-  bs: 'Bosanski',
-  //Bosnian
-  bug: 'ᨅᨔ',
-  //Buginese
-  bxr: 'ltr',
-  //Buriat
-  ca: 'Català',
-  //Catalan
-  cdo: 'Chinese',
-  //Min
-  ce: 'Нохчийн',
-  //Chechen
-  ceb: 'Sinugboanong',
-  //Cebuano
-  ch: 'Chamoru',
-  //Chamorro
-  cho: 'Choctaw',
-  //Choctaw
-  chr: 'ᏣᎳᎩ',
-  //Cherokee
-  chy: 'Tsetsêhestâhese',
-  //Cheyenne
-  co: 'Corsu',
-  //Corsican
-  cr: 'Nehiyaw',
-  //Cree
-  cs: 'Česky',
-  //Czech
-  csb: 'Kaszëbsczi',
-  //Kashubian
-  cu: 'Slavonic',
-  //Old
-  cv: 'Чăваш',
-  //Chuvash
-  cy: 'Cymraeg',
-  //Welsh
-  da: 'Dansk',
-  //Danish
-  de: 'Deutsch',
-  //German
-  diq: 'Zazaki',
-  //Dimli
-  dsb: 'ltr',
-  //Lower
-  dv: 'ދިވެހިބަސް',
-  //Divehi
-  dz: 'ཇོང་ཁ',
-  //Dzongkha
-  ee: 'Ɛʋɛ',
-  //Ewe
-  far: 'فارسی',
-  //Farsi
-  el: 'Ελληνικά',
-  //Greek
-  en: 'English',
-  //English
-  eo: 'Esperanto',
-  //Esperanto
-  es: 'Español',
-  //Spanish
-  et: 'Eesti',
-  //Estonian
-  eu: 'Euskara',
-  //Basque
-  ext: 'Estremeñu',
-  //Extremaduran
-  ff: 'Fulfulde',
-  //Peul
-  fi: 'Suomi',
-  //Finnish
-  'fiu-vro': 'Võro',
-  //Võro
-  fj: 'Na',
-  //Fijian
-  fo: 'Føroyskt',
-  //Faroese
-  fr: 'Français',
-  //French
-  frp: 'Arpitan',
-  //Arpitan
-  fur: 'Furlan',
-  //Friulian
-  fy: 'ltr',
-  //West
-  ga: 'Gaeilge',
-  //Irish
-  gan: 'ltr',
-  //Gan
-  gd: 'ltr',
-  //Scottish
-  gil: 'Taetae',
-  //Gilbertese
-  gl: 'Galego',
-  //Galician
-  gn: "Avañe'ẽ",
-  //Guarani
-  got: 'gutisk',
-  //Gothic
-  gu: 'ગુજરાતી',
-  //Gujarati
-  gv: 'Gaelg',
-  //Manx
-  ha: 'هَوُسَ',
-  //Hausa
-  hak: 'ltr',
-  //Hakka
-  haw: 'Hawai`i',
-  //Hawaiian
-  he: 'עברית',
-  //Hebrew
-  hi: 'हिन्दी',
-  //Hindi
-  ho: 'ltr',
-  //Hiri
-  hr: 'Hrvatski',
-  //Croatian
-  ht: 'Krèyol',
-  //Haitian
-  hu: 'Magyar',
-  //Hungarian
-  hy: 'Հայերեն',
-  //Armenian
-  hz: 'Otsiherero',
-  //Herero
-  ia: 'Interlingua',
-  //Interlingua
-  id: 'Bahasa',
-  //Indonesian
-  ie: 'Interlingue',
-  //Interlingue
-  ig: 'Igbo',
-  //Igbo
-  ii: 'ltr',
-  //Sichuan
-  ik: 'Iñupiak',
-  //Inupiak
-  ilo: 'Ilokano',
-  //Ilokano
-  io: 'Ido',
-  //Ido
-  is: 'Íslenska',
-  //Icelandic
-  it: 'Italiano',
-  //Italian
-  iu: 'ᐃᓄᒃᑎᑐᑦ',
-  //Inuktitut
-  ja: '日本語',
-  //Japanese
-  jbo: 'Lojban',
-  //Lojban
-  jv: 'Basa',
-  //Javanese
-  ka: 'ქართული',
-  //Georgian
-  kg: 'KiKongo',
-  //Kongo
-  ki: 'Gĩkũyũ',
-  //Kikuyu
-  kj: 'Kuanyama',
-  //Kuanyama
-  kk: 'Қазақша',
-  //Kazakh
-  kl: 'Kalaallisut',
-  //Greenlandic
-  km: 'ភាសាខ្មែរ',
-  //Cambodian
-  kn: 'ಕನ್ನಡ',
-  //Kannada
-  khw: 'کھوار',
-  //Khowar
-  ko: '한국어',
-  //Korean
-  kr: 'Kanuri',
-  //Kanuri
-  ks: 'कश्मीरी',
-  //Kashmiri
-  ksh: 'Ripoarisch',
-  //Ripuarian
-  ku: 'Kurdî',
-  //Kurdish
-  kv: 'Коми',
-  //Komi
-  kw: 'Kernewek',
-  //Cornish
-  ky: 'Kırgızca',
-  //Kirghiz
-  la: 'Latina',
-  //Latin
-  lad: 'Dzhudezmo',
-  //Ladino
-  lan: 'Leb',
-  //Lango
-  lb: 'Lëtzebuergesch',
-  //Luxembourgish
-  lg: 'Luganda',
-  //Ganda
-  li: 'Limburgs',
-  //Limburgian
-  lij: 'Líguru',
-  //Ligurian
-  lmo: 'Lumbaart',
-  //Lombard
-  ln: 'Lingála',
-  //Lingala
-  lo: 'ລາວ',
-  //Laotian
-  lt: 'Lietuvių',
-  //Lithuanian
-  lv: 'Latviešu',
-  //Latvian
-  'map-bms': 'Basa',
-  //Banyumasan
-  mg: 'Malagasy',
-  //Malagasy
-  man: '官話',
-  //Mandarin
-  mh: 'Kajin',
-  //Marshallese
-  mi: 'Māori',
-  //Maori
-  min: 'Minangkabau',
-  //Minangkabau
-  mk: 'Македонски',
-  //Macedonian
-  ml: 'മലയാളം',
-  //Malayalam
-  mn: 'Монгол',
-  //Mongolian
-  mo: 'Moldovenească',
-  //Moldovan
-  mr: 'मराठी',
-  //Marathi
-  ms: 'Bahasa',
-  //Malay
-  mt: 'bil-Malti',
-  //Maltese
-  mus: 'Muskogee',
-  //Creek
-  my: 'Myanmasa',
-  //Burmese
-  na: 'Dorerin',
-  //Nauruan
-  nah: 'Nahuatl',
-  //Nahuatl
-  nap: 'Nnapulitano',
-  //Neapolitan
-  nd: 'ltr',
-  //North
-  nds: 'Plattdüütsch',
-  //Low German
-  'nds-nl': 'Saxon',
-  //Dutch
-  ne: 'नेपाली',
-  //Nepali
-  new: 'नेपालभाषा',
-  //Newar
-  ng: 'Oshiwambo',
-  //Ndonga
-  nl: 'Nederlands',
-  //Dutch
-  nn: 'ltr',
-  //Norwegian
-  no: 'Norsk',
-  //Norwegian
-  nr: 'ltr',
-  //South
-  nso: 'ltr',
-  //Northern
-  nrm: 'Nouormand',
-  //Norman
-  nv: 'Diné',
-  //Navajo
-  ny: 'Chi-Chewa',
-  //Chichewa
-  oc: 'Occitan',
-  //Occitan
-  oj: 'ᐊᓂᔑᓈᐯᒧᐎᓐ',
-  //Ojibwa
-  om: 'Oromoo',
-  //Oromo
-  or: 'ଓଡ଼ିଆ',
-  //Oriya
-  os: 'Иронау',
-  //Ossetian
-  pa: 'ਪੰਜਾਬੀ',
-  //Panjabi
-  pag: 'Pangasinan',
-  //Pangasinan
-  pam: 'Kapampangan',
-  //Kapampangan
-  pap: 'Papiamentu',
-  //Papiamentu
-  pdc: 'ltr',
-  //Pennsylvania
-  pi: 'Pāli',
-  //Pali
-  pih: 'Norfuk',
-  //Norfolk
-  pl: 'Polski',
-  //Polish
-  pms: 'Piemontèis',
-  //Piedmontese
-  ps: 'پښتو',
-  //Pashto
-  pt: 'Português',
-  //Portuguese
-  qu: 'Runa',
-  //Quechua
-  rm: 'ltr',
-  //Raeto
-  rmy: 'Romani',
-  //Romani
-  rn: 'Kirundi',
-  //Kirundi
-  ro: 'Română',
-  //Romanian
-  'roa-rup': 'Armâneashti',
-  //Aromanian
-  ru: 'Русский',
-  //Russian
-  rw: 'Kinyarwandi',
-  //Rwandi
-  sa: 'संस्कृतम्',
-  //Sanskrit
-  sc: 'Sardu',
-  //Sardinian
-  scn: 'Sicilianu',
-  //Sicilian
-  sco: 'Scots',
-  //Scots
-  sd: 'सिनधि',
-  //Sindhi
-  se: 'ltr',
-  //Northern
-  sg: 'Sängö',
-  //Sango
-  sh: 'Srpskohrvatski',
-  //Serbo-Croatian
-  si: 'සිංහල',
-  //Sinhalese
-  simple: 'ltr',
-  //Simple
-  sk: 'Slovenčina',
-  //Slovak
-  sl: 'Slovenščina',
-  //Slovenian
-  sm: 'Gagana',
-  //Samoan
-  sn: 'chiShona',
-  //Shona
-  so: 'Soomaaliga',
-  //Somalia
-  sq: 'Shqip',
-  //Albanian
-  sr: 'Српски',
-  //Serbian
-  ss: 'SiSwati',
-  //Swati
-  st: 'ltr',
-  //Southern
-  su: 'Basa',
-  //Sundanese
-  sv: 'Svenska',
-  //Swedish
-  sw: 'Kiswahili',
-  //Swahili
-  ta: 'தமிழ்',
-  //Tamil
-  te: 'తెలుగు',
-  //Telugu
-  tet: 'Tetun',
-  //Tetum
-  tg: 'Тоҷикӣ',
-  //Tajik
-  th: 'ไทย',
-  //Thai
-  ti: 'ትግርኛ',
-  //Tigrinya
-  tk: 'Туркмен',
-  //Turkmen
-  tl: 'Tagalog',
-  //Tagalog
-  tlh: 'tlhIngan-Hol',
-  //Klingon
-  tn: 'Setswana',
-  //Tswana
-  to: 'Lea',
-  //Tonga
-  tpi: 'ltr',
-  //Tok
-  tr: 'Türkçe',
-  //Turkish
-  ts: 'Xitsonga',
-  //Tsonga
-  tt: 'Tatarça',
-  //Tatar
-  tum: 'chiTumbuka',
-  //Tumbuka
-  tw: 'Twi',
-  //Twi
-  ty: 'Reo',
-  //Tahitian
-  udm: 'Удмурт',
-  //Udmurt
-  ug: 'Uyƣurqə',
-  //Uyghur
-  uk: 'Українська',
-  //Ukrainian
-  ur: 'اردو',
-  //Urdu
-  uz: 'Ўзбек',
-  //Uzbek
-  ve: 'Tshivenḓa',
-  //Venda
-  vi: 'Việtnam',
-  //Vietnamese
-  vec: 'Vèneto',
-  //Venetian
-  vls: 'ltr',
-  //West
-  vo: 'Volapük',
-  //Volapük
-  wa: 'Walon',
-  //Walloon
-  war: 'Winaray',
-  //Waray-Waray
-  wo: 'Wollof',
-  //Wolof
-  xal: 'Хальмг',
-  //Kalmyk
-  xh: 'isiXhosa',
-  //Xhosa
-  yi: 'ייִדיש',
-  //Yiddish
-  yo: 'Yorùbá',
-  //Yoruba
-  za: 'Cuengh',
-  //Zhuang
-  zh: '中文',
-  //Chinese
-  'zh-classical': 'ltr',
-  //Classical
-  'zh-min-nan': 'Bân-lâm-gú',
-  //Minnan
-  'zh-yue': '粵語',
-  //Cantonese
-  zu: 'isiZulu' //Zulu
+Image.prototype.src = Image.prototype.url;
+Image.prototype.thumb = Image.prototype.thumbnail;
 
+var languages = {
+  aa: 'Afar', //Afar
+  ab: 'Аҧсуа', //Abkhazian
+  af: 'Afrikaans', //Afrikaans
+  ak: 'Akana', //Akan
+  als: 'Alemannisch', //Alemannic
+  am: 'አማርኛ', //Amharic
+  an: 'Aragonés', //Aragonese
+  ang: 'Englisc', //Anglo-Saxon
+  ar: 'العربية', //Arabic
+  arc: 'ܣܘܪܬ', //Aramaic
+  as: 'অসমীয়া', //Assamese
+  ast: 'Asturianu', //Asturian
+  av: 'Авар', //Avar
+  ay: 'Aymar', //Aymara
+  az: 'Azərbaycanca', //Azerbaijani
+  ba: 'Башҡорт', //Bashkir
+  bar: 'Boarisch', //Bavarian
+  'bat-smg': 'Žemaitėška', //Samogitian
+  bcl: 'Bikol', //Bikol
+  be: 'Беларуская', //Belarusian
+  'be-x-old': 'ltr', //Belarusian
+  bg: 'Български', //Bulgarian
+  bh: 'भोजपुरी', //Bihari
+  bi: 'Bislama', //Bislama
+  bm: 'Bamanankan', //Bambara
+  bn: 'বাংলা', //Bengali
+  bo: 'བོད་ཡིག', //Tibetan
+  bpy: 'ltr', //Bishnupriya
+  br: 'Brezhoneg', //Breton
+  bs: 'Bosanski', //Bosnian
+  bug: 'ᨅᨔ', //Buginese
+  bxr: 'ltr', //Buriat
+  ca: 'Català', //Catalan
+  cdo: 'Chinese', //Min
+  ce: 'Нохчийн', //Chechen
+  ceb: 'Sinugboanong', //Cebuano
+  ch: 'Chamoru', //Chamorro
+  cho: 'Choctaw', //Choctaw
+  chr: 'ᏣᎳᎩ', //Cherokee
+  chy: 'Tsetsêhestâhese', //Cheyenne
+  co: 'Corsu', //Corsican
+  cr: 'Nehiyaw', //Cree
+  cs: 'Česky', //Czech
+  csb: 'Kaszëbsczi', //Kashubian
+  cu: 'Slavonic', //Old
+  cv: 'Чăваш', //Chuvash
+  cy: 'Cymraeg', //Welsh
+  da: 'Dansk', //Danish
+  de: 'Deutsch', //German
+  diq: 'Zazaki', //Dimli
+  dsb: 'ltr', //Lower
+  dv: 'ދިވެހިބަސް', //Divehi
+  dz: 'ཇོང་ཁ', //Dzongkha
+  ee: 'Ɛʋɛ', //Ewe
+  far: 'فارسی', //Farsi
+  el: 'Ελληνικά', //Greek
+  en: 'English', //English
+  eo: 'Esperanto', //Esperanto
+  es: 'Español', //Spanish
+  et: 'Eesti', //Estonian
+  eu: 'Euskara', //Basque
+  ext: 'Estremeñu', //Extremaduran
+  ff: 'Fulfulde', //Peul
+  fi: 'Suomi', //Finnish
+  'fiu-vro': 'Võro', //Võro
+  fj: 'Na', //Fijian
+  fo: 'Føroyskt', //Faroese
+  fr: 'Français', //French
+  frp: 'Arpitan', //Arpitan
+  fur: 'Furlan', //Friulian
+  fy: 'ltr', //West
+  ga: 'Gaeilge', //Irish
+  gan: 'ltr', //Gan
+  gd: 'ltr', //Scottish
+  gil: 'Taetae', //Gilbertese
+  gl: 'Galego', //Galician
+  gn: "Avañe'ẽ", //Guarani
+  got: 'gutisk', //Gothic
+  gu: 'ગુજરાતી', //Gujarati
+  gv: 'Gaelg', //Manx
+  ha: 'هَوُسَ', //Hausa
+  hak: 'ltr', //Hakka
+  haw: 'Hawai`i', //Hawaiian
+  he: 'עברית', //Hebrew
+  hi: 'हिन्दी', //Hindi
+  ho: 'ltr', //Hiri
+  hr: 'Hrvatski', //Croatian
+  ht: 'Krèyol', //Haitian
+  hu: 'Magyar', //Hungarian
+  hy: 'Հայերեն', //Armenian
+  hz: 'Otsiherero', //Herero
+  ia: 'Interlingua', //Interlingua
+  id: 'Bahasa', //Indonesian
+  ie: 'Interlingue', //Interlingue
+  ig: 'Igbo', //Igbo
+  ii: 'ltr', //Sichuan
+  ik: 'Iñupiak', //Inupiak
+  ilo: 'Ilokano', //Ilokano
+  io: 'Ido', //Ido
+  is: 'Íslenska', //Icelandic
+  it: 'Italiano', //Italian
+  iu: 'ᐃᓄᒃᑎᑐᑦ', //Inuktitut
+  ja: '日本語', //Japanese
+  jbo: 'Lojban', //Lojban
+  jv: 'Basa', //Javanese
+  ka: 'ქართული', //Georgian
+  kg: 'KiKongo', //Kongo
+  ki: 'Gĩkũyũ', //Kikuyu
+  kj: 'Kuanyama', //Kuanyama
+  kk: 'Қазақша', //Kazakh
+  kl: 'Kalaallisut', //Greenlandic
+  km: 'ភាសាខ្មែរ', //Cambodian
+  kn: 'ಕನ್ನಡ', //Kannada
+  khw: 'کھوار', //Khowar
+  ko: '한국어', //Korean
+  kr: 'Kanuri', //Kanuri
+  ks: 'कश्मीरी', //Kashmiri
+  ksh: 'Ripoarisch', //Ripuarian
+  ku: 'Kurdî', //Kurdish
+  kv: 'Коми', //Komi
+  kw: 'Kernewek', //Cornish
+  ky: 'Kırgızca', //Kirghiz
+  la: 'Latina', //Latin
+  lad: 'Dzhudezmo', //Ladino
+  lan: 'Leb', //Lango
+  lb: 'Lëtzebuergesch', //Luxembourgish
+  lg: 'Luganda', //Ganda
+  li: 'Limburgs', //Limburgian
+  lij: 'Líguru', //Ligurian
+  lmo: 'Lumbaart', //Lombard
+  ln: 'Lingála', //Lingala
+  lo: 'ລາວ', //Laotian
+  lt: 'Lietuvių', //Lithuanian
+  lv: 'Latviešu', //Latvian
+  'map-bms': 'Basa', //Banyumasan
+  mg: 'Malagasy', //Malagasy
+  man: '官話', //Mandarin
+  mh: 'Kajin', //Marshallese
+  mi: 'Māori', //Maori
+  min: 'Minangkabau', //Minangkabau
+  mk: 'Македонски', //Macedonian
+  ml: 'മലയാളം', //Malayalam
+  mn: 'Монгол', //Mongolian
+  mo: 'Moldovenească', //Moldovan
+  mr: 'मराठी', //Marathi
+  ms: 'Bahasa', //Malay
+  mt: 'bil-Malti', //Maltese
+  mus: 'Muskogee', //Creek
+  my: 'Myanmasa', //Burmese
+  na: 'Dorerin', //Nauruan
+  nah: 'Nahuatl', //Nahuatl
+  nap: 'Nnapulitano', //Neapolitan
+  nd: 'ltr', //North
+  nds: 'Plattdüütsch', //Low German
+  'nds-nl': 'Saxon', //Dutch
+  ne: 'नेपाली', //Nepali
+  new: 'नेपालभाषा', //Newar
+  ng: 'Oshiwambo', //Ndonga
+  nl: 'Nederlands', //Dutch
+  nn: 'ltr', //Norwegian
+  no: 'Norsk', //Norwegian
+  nr: 'ltr', //South
+  nso: 'ltr', //Northern
+  nrm: 'Nouormand', //Norman
+  nv: 'Diné', //Navajo
+  ny: 'Chi-Chewa', //Chichewa
+  oc: 'Occitan', //Occitan
+  oj: 'ᐊᓂᔑᓈᐯᒧᐎᓐ', //Ojibwa
+  om: 'Oromoo', //Oromo
+  or: 'ଓଡ଼ିଆ', //Oriya
+  os: 'Иронау', //Ossetian
+  pa: 'ਪੰਜਾਬੀ', //Panjabi
+  pag: 'Pangasinan', //Pangasinan
+  pam: 'Kapampangan', //Kapampangan
+  pap: 'Papiamentu', //Papiamentu
+  pdc: 'ltr', //Pennsylvania
+  pi: 'Pāli', //Pali
+  pih: 'Norfuk', //Norfolk
+  pl: 'Polski', //Polish
+  pms: 'Piemontèis', //Piedmontese
+  ps: 'پښتو', //Pashto
+  pt: 'Português', //Portuguese
+  qu: 'Runa', //Quechua
+  rm: 'ltr', //Raeto
+  rmy: 'Romani', //Romani
+  rn: 'Kirundi', //Kirundi
+  ro: 'Română', //Romanian
+  'roa-rup': 'Armâneashti', //Aromanian
+  ru: 'Русский', //Russian
+  rw: 'Kinyarwandi', //Rwandi
+  sa: 'संस्कृतम्', //Sanskrit
+  sc: 'Sardu', //Sardinian
+  scn: 'Sicilianu', //Sicilian
+  sco: 'Scots', //Scots
+  sd: 'सिनधि', //Sindhi
+  se: 'ltr', //Northern
+  sg: 'Sängö', //Sango
+  sh: 'Srpskohrvatski', //Serbo-Croatian
+  si: 'සිංහල', //Sinhalese
+  simple: 'ltr', //Simple
+  sk: 'Slovenčina', //Slovak
+  sl: 'Slovenščina', //Slovenian
+  sm: 'Gagana', //Samoan
+  sn: 'chiShona', //Shona
+  so: 'Soomaaliga', //Somalia
+  sq: 'Shqip', //Albanian
+  sr: 'Српски', //Serbian
+  ss: 'SiSwati', //Swati
+  st: 'ltr', //Southern
+  su: 'Basa', //Sundanese
+  sv: 'Svenska', //Swedish
+  sw: 'Kiswahili', //Swahili
+  ta: 'தமிழ்', //Tamil
+  te: 'తెలుగు', //Telugu
+  tet: 'Tetun', //Tetum
+  tg: 'Тоҷикӣ', //Tajik
+  th: 'ไทย', //Thai
+  ti: 'ትግርኛ', //Tigrinya
+  tk: 'Туркмен', //Turkmen
+  tl: 'Tagalog', //Tagalog
+  tlh: 'tlhIngan-Hol', //Klingon
+  tn: 'Setswana', //Tswana
+  to: 'Lea', //Tonga
+  tpi: 'ltr', //Tok
+  tr: 'Türkçe', //Turkish
+  ts: 'Xitsonga', //Tsonga
+  tt: 'Tatarça', //Tatar
+  tum: 'chiTumbuka', //Tumbuka
+  tw: 'Twi', //Twi
+  ty: 'Reo', //Tahitian
+  udm: 'Удмурт', //Udmurt
+  ug: 'Uyƣurqə', //Uyghur
+  uk: 'Українська', //Ukrainian
+  ur: 'اردو', //Urdu
+  uz: 'Ўзбек', //Uzbek
+  ve: 'Tshivenḓa', //Venda
+  vi: 'Việtnam', //Vietnamese
+  vec: 'Vèneto', //Venetian
+  vls: 'ltr', //West
+  vo: 'Volapük', //Volapük
+  wa: 'Walon', //Walloon
+  war: 'Winaray', //Waray-Waray
+  wo: 'Wollof', //Wolof
+  xal: 'Хальмг', //Kalmyk
+  xh: 'isiXhosa', //Xhosa
+  yi: 'ייִדיש', //Yiddish
+  yo: 'Yorùbá', //Yoruba
+  za: 'Cuengh', //Zhuang
+  zh: '中文', //Chinese
+  'zh-classical': 'ltr', //Classical
+  'zh-min-nan': 'Bân-lâm-gú', //Minnan
+  'zh-yue': '粵語', //Cantonese
+  zu: 'isiZulu', //Zulu
 };
 
 const wp = '.wikipedia.org/wiki/$1';
 const wm = '.wikimedia.org/wiki/$1';
 const w = 'www.';
-var interwiki$1 = {
+
+var wikis = {
   acronym: w + 'acronymfinder.com/$1.html',
   advisory: 'advisory' + wm,
   advogato: w + 'advogato.org/$1',
@@ -2046,61 +1775,45 @@ var interwiki$1 = {
   s: 'en.wikisource.org/wiki/$1',
   chapter: 'en' + wm,
   v: 'en.wikiversity.org/wiki/$1',
-  voy: 'en.wikivoyage.org/wiki/$1'
+  voy: 'en.wikivoyage.org/wiki/$1',
 };
 
-const languages$3 = languages$4; //some colon symbols are valid links, like `America: That place`
-//so we have to whitelist allowable interwiki links
+//add language prefixes too..
+Object.keys(languages).forEach((k) => {
+  wikis[k] = k + '.wikipedia.org/wiki/$1';
+});
 
-const interwikis = interwiki$1; //add language prefixes too..
-
-Object.keys(languages$3).forEach(k => {
-  interwikis[k] = k + '.wikipedia.org/wiki/$1';
-}); //this is predictably very complicated.
+//this is predictably very complicated.
 // https://meta.wikimedia.org/wiki/Help:Interwiki_linking
-
 const parseInterwiki = function (obj) {
   let str = obj.page || '';
-
   if (str.indexOf(':') !== -1) {
     let m = str.match(/^(.*):(.*)/);
-
     if (m === null) {
-      return obj;
+      return obj
     }
-
     let site = m[1] || '';
     site = site.toLowerCase();
-
     if (site.indexOf(':') !== -1) {
-      let [, wiki, lang] = site.match(/^:?(.*):(.*)/); //only allow interwikis to these specific places
-
-      if (interwikis.hasOwnProperty(wiki) === false || languages$3.hasOwnProperty(lang) === false) {
-        return obj;
+      let [, wiki, lang] = site.match(/^:?(.*):(.*)/);
+      //only allow interwikis to these specific places
+      if (wikis.hasOwnProperty(wiki) === false || languages.hasOwnProperty(lang) === false) {
+        return obj
       }
-
-      obj.wiki = {
-        wiki: wiki,
-        lang: lang
-      };
+      obj.wiki = { wiki: wiki, lang: lang };
     } else {
-      if (interwikis.hasOwnProperty(site) === false) {
-        return obj;
+      if (wikis.hasOwnProperty(site) === false) {
+        return obj
       }
-
       obj.wiki = site;
     }
-
     obj.page = m[2];
   }
-
-  return obj;
+  return obj
 };
 
-var interwiki = parseInterwiki;
-
-const parse_interwiki = interwiki;
-const ignore_links = /^:?(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i;
+const ignore_links =
+  /^:?(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i;
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ].*?)?\]/g;
 const link_reg = /\[\[(.{0,160}?)\]\]([a-z]+)?/gi; //allow dangling suffixes - "[[flanders]]s"
 
@@ -2111,176 +1824,160 @@ const external_links = function (links, str) {
       type: 'external',
       site: protocol + link,
       text: text.trim(),
-      raw: raw
+      raw: raw,
     });
-    return text;
+    return text
   });
-  return links;
+  return links
 };
 
 const internal_links = function (links, str) {
   //regular links
   str.replace(link_reg, function (raw, s, suffix) {
-    let txt = null; //make a copy of original
-
+    let txt = null;
+    //make a copy of original
     let link = s;
-
     if (s.match(/\|/)) {
       //replacement link [[link|text]]
       s = s.replace(/\[\[(.{2,100}?)\]\](\w{0,10})/g, '$1$2'); //remove ['s and keep suffix
-
       link = s.replace(/(.{2,100})\|.{0,200}/, '$1'); //replaced links
-
-      txt = s.replace(/.{2,100}?\|/, ''); //handle funky case of [[toronto|]]
-
+      txt = s.replace(/.{2,100}?\|/, '');
+      //handle funky case of [[toronto|]]
       if (txt === null && link.match(/\|$/)) {
         link = link.replace(/\|$/, '');
         txt = link;
       }
-    } //kill off non-wikipedia namespaces
-
-
+    }
+    //kill off non-wikipedia namespaces
     if (link.match(ignore_links)) {
-      return s;
-    } //kill off just these just-anchor links [[#history]]
+      return s
+    }
+    //kill off just these just-anchor links [[#history]]
     // if (link.match(/^#/i)) {
     //   console.log(s)
     //   return s
     // }
     //remove anchors from end [[toronto#history]]
-
-
     let obj = {
       page: link,
-      raw: raw
+      raw: raw,
     };
     obj.page = obj.page.replace(/#(.*)/, (a, b) => {
       obj.anchor = b;
-      return '';
-    }); //grab any fr:Paris parts
-
-    obj = parse_interwiki(obj);
-
+      return ''
+    });
+    //grab any fr:Paris parts
+    obj = parseInterwiki(obj);
     if (obj.wiki) {
       obj.type = 'interwiki';
     }
-
     if (txt !== null && txt !== obj.page) {
       obj.text = txt;
-    } //finally, support [[link]]'s apostrophe
-
-
+    }
+    //finally, support [[link]]'s apostrophe
     if (suffix) {
       obj.text = obj.text || obj.page;
       obj.text += suffix.trim();
-    } //titlecase it, if necessary
-
-
+    }
+    //titlecase it, if necessary
     if (obj.page && /^[A-Z]/.test(obj.page) === false) {
       if (!obj.text) {
         obj.text = obj.page;
       }
-
       obj.page = obj.page;
     }
-
     links.push(obj);
-    return s;
+    return s
   });
-  return links;
-}; //grab an array of internal links in the text
-
-
-const parse_links = function (str) {
-  let links = []; //first, parse external links
-
-  links = external_links(links, str); //internal links
-
-  links = internal_links(links, str);
-
-  if (links.length === 0) {
-    return undefined;
-  }
-
-  return links;
+  return links
 };
 
-var parse$m = parse_links;
+//grab an array of internal links in the text
+const parse_links = function (str) {
+  let links = [];
+  //first, parse external links
+  links = external_links(links, str);
+  //internal links
+  links = internal_links(links, str);
+  if (links.length === 0) {
+    return undefined
+  }
+  return links
+};
 
-const i18n$4 = i18n$6;
-const parseLink = parse$m; //pulls target link out of redirect page
-
-const REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + i18n$4.redirects.join('|') + ') *?(\\[\\[.{2,180}?\\]\\])', 'i');
+//pulls target link out of redirect page
+const REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + redirects.join('|') + ') *?(\\[\\[.{2,180}?\\]\\])', 'i');
 
 const isRedirect = function (wiki) {
   //too long to be a redirect?
   if (!wiki || wiki.length > 500) {
-    return false;
+    return false
   }
-
-  return REDIRECT_REGEX.test(wiki);
+  return REDIRECT_REGEX.test(wiki)
 };
 
-const parse$l = function (wiki) {
+const parse = function (wiki) {
   let m = wiki.match(REDIRECT_REGEX);
-
   if (m && m[2]) {
-    let links = parseLink(m[2]) || [];
-    return links[0];
+    let links = parse_links(m[2]) || [];
+    return links[0]
   }
-
-  return {};
+  return {}
 };
 
-var redirects$1 = {
-  isRedirect: isRedirect,
-  parse: parse$l
-};
-
+//okay, i know you're not supposed to regex html, but...
 //https://en.wikipedia.org/wiki/Help:HTML_in_wikitext
+
 //these are things we throw-away
 //these will mess-up if they're nested, but they're not usually.
 //'poem' was removed from the array because it is needed.
-
-const ignore$2 = ['table', 'code', 'score', 'data', 'categorytree', 'charinsert', 'hiero', 'imagemap', 'inputbox', 'nowiki', 'references', 'source', 'syntaxhighlight', 'timeline'];
-const openTag = "< ?(".concat(ignore$2.join('|'), ") ?[^>]{0,200}?>");
-const closeTag = "< ?/ ?(".concat(ignore$2.join('|'), ") ?>");
+const ignore$1 = [
+  'table',
+  'code',
+  'score',
+  'data',
+  'categorytree',
+  'charinsert',
+  'hiero',
+  'imagemap',
+  'inputbox',
+  'nowiki',
+  'references',
+  'source',
+  'syntaxhighlight',
+  'timeline',
+];
+const openTag = `< ?(${ignore$1.join('|')}) ?[^>]{0,200}?>`;
+const closeTag = `< ?/ ?(${ignore$1.join('|')}) ?>`;
 const anyChar = '\\s\\S'; //including newline
+const noThanks = new RegExp(`${openTag}[${anyChar}]+?${closeTag}`, 'gi');
 
-const noThanks = new RegExp("".concat(openTag, "[").concat(anyChar, "]+?").concat(closeTag), 'gi');
-
-const kill_xml$1 = function (wiki) {
+const kill_xml = function (wiki) {
   //(<ref> tags are parsed in Section class) - luckily, refs can't be recursive.
   //types of html/xml that we want to trash completely.
-  wiki = wiki.replace(noThanks, ' '); //some xml-like fragments we can also kill
-
+  wiki = wiki.replace(noThanks, ' ');
+  //some xml-like fragments we can also kill
   wiki = wiki.replace(/ ?< ?(span|div|table|data) [a-zA-Z0-9=%.\-#:;'" ]{2,100}\/? ?> ?/g, ' '); //<ref name="asd">
   //only kill ref tags if they are selfclosing
-
   wiki = wiki.replace(/ ?< ?(ref) [a-zA-Z0-9=" ]{2,100}\/ ?> ?/g, ' '); //<ref name="asd"/>
+
   // convert these html tags to known formatting
+  wiki = wiki.replace(/<i>(.*?)<\/i>/g, `''$1''`);
+  wiki = wiki.replace(/<b>(.*?)<\/b>/g, `'''$1'''`);
 
-  wiki = wiki.replace(/<i>(.*?)<\/i>/g, "''$1''");
-  wiki = wiki.replace(/<b>(.*?)<\/b>/g, "'''$1'''"); // these are better-handled with templates
+  // these are better-handled with templates
+  wiki = wiki.replace(/<sub>(.*?)<\/sub>/g, `{{sub|$1}}`);
+  wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, `{{sup|$1}}`);
+  wiki = wiki.replace(/<blockquote>(.*?)<\/blockquote>/g, `{{blockquote|text=$1}}`);
 
-  wiki = wiki.replace(/<sub>(.*?)<\/sub>/g, "{{sub|$1}}");
-  wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, "{{sup|$1}}");
-  wiki = wiki.replace(/<blockquote>(.*?)<\/blockquote>/g, "{{blockquote|text=$1}}"); //some formatting xml, we'll keep their insides though
-
+  //some formatting xml, we'll keep their insides though
   wiki = wiki.replace(/ ?<[ /]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr|u)[ /]?> ?/g, ' '); //<sub>, </sub>
-
   wiki = wiki.replace(/ ?<[ /]?(abbr|bdi|bdo|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ /]?> ?/g, ' '); //<abbr>, </abbr>
-
   wiki = wiki.replace(/ ?<[ /]?h[0-9][ /]?> ?/g, ' '); //<h2>, </h2>
-
   wiki = wiki.replace(/ ?< ?br ?\/> ?/g, '\n'); //<br />
-
-  return wiki.trim();
+  return wiki.trim()
 };
 
-var kill_xml_1 = kill_xml$1;
-
-const kill_xml = kill_xml_1;
 /**
  * removes unnecessary strings from the wikitext
  * it is mostly-formatting stuff can be cleaned-up first, to make life easier
@@ -2289,39 +1986,38 @@ const kill_xml = kill_xml_1;
  * @param {string} wiki the wikitext that needs processing
  * @returns {string} the processed text
  */
-
-function preProcess$1(wiki) {
+function preProcess(wiki) {
   //remove comments
   wiki = wiki.replace(/<!--[\s\S]{0,2000}?-->/g, '');
-  wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, ''); //signitures
-
-  wiki = wiki.replace(/~{2,3}/g, ''); //windows newlines
-
-  wiki = wiki.replace(/\r/g, ''); //japanese periods - '。'
-
-  wiki = wiki.replace(/\u3002/g, '. '); //horizontal rule
-
-  wiki = wiki.replace(/----/g, ''); //formatting for templates-in-templates...
-
+  wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, '');
+  //signitures
+  wiki = wiki.replace(/~{2,3}/g, '');
+  //windows newlines
+  wiki = wiki.replace(/\r/g, '');
+  //japanese periods - '。'
+  wiki = wiki.replace(/\u3002/g, '. ');
+  //horizontal rule
+  wiki = wiki.replace(/----/g, '');
+  //formatting for templates-in-templates...
   wiki = wiki.replace(/\{\{\}\}/g, ' – ');
-  wiki = wiki.replace(/\{\{\\\}\}/g, ' / '); //space
-
-  wiki = wiki.replace(/&nbsp;/g, ' '); //give it the inglorious send-off it deserves..
-
-  wiki = kill_xml(wiki); //({{template}},{{template}}) leaves empty parentheses
-
-  wiki = wiki.replace(/\([,;: ]+\)/g, ''); //these templates just screw things up, too
-
+  wiki = wiki.replace(/\{\{\\\}\}/g, ' / ');
+  //space
+  wiki = wiki.replace(/&nbsp;/g, ' ');
+  //give it the inglorious send-off it deserves..
+  wiki = kill_xml(wiki);
+  //({{template}},{{template}}) leaves empty parentheses
+  wiki = wiki.replace(/\([,;: ]+\)/g, '');
+  //these templates just screw things up, too
   wiki = wiki.replace(/\{\{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '');
-  return wiki;
+
+  return wiki
 }
 
-var preProcess_1 = preProcess$1;
-
+//dumpster-dive throws everything into mongodb  - github.com/spencermountain/dumpster-dive
 //mongo has some opinions about what characters are allowed as keys and ids.
 //https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
-
 const specialChar = /[\\.$]/;
+
 /**
  * this function encodes a string to make it mongodb compatible.
  * https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
@@ -2329,42 +2025,30 @@ const specialChar = /[\\.$]/;
  * @param {string} str
  * @returns {string} the encoded string
  */
-
 const encodeStr = function (str) {
   if (typeof str !== 'string') {
     str = '';
   }
-
   str = str.replace(/\\/g, '\\\\');
   str = str.replace(/^\$/, '\\u0024');
   str = str.replace(/\./g, '\\u002e');
-  return str;
+  return str
 };
 
-const encodeObj = function () {
-  let obj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+const encodeObj = function (obj = {}) {
   let keys = Object.keys(obj);
-
   for (let i = 0; i < keys.length; i += 1) {
     if (specialChar.test(keys[i]) === true) {
       let str = encodeStr(keys[i]);
-
       if (str !== keys[i]) {
         obj[str] = obj[keys[i]];
         delete obj[keys[i]];
       }
     }
   }
-
-  return obj;
+  return obj
 };
 
-var encode$4 = {
-  encodeObj: encodeObj
-};
-
-const setDefaults$7 = setDefaults_1;
-const encode$3 = encode$4;
 const defaults$9 = {
   headers: true,
   depth: true,
@@ -2374,21 +2058,20 @@ const defaults$9 = {
   templates: true,
   infoboxes: true,
   lists: true,
-  references: true
+  references: true,
 };
+
 /**
  *
- * @param {Section} section
- * @param {sectionToJsonOptions} options
+ * @param {object} section
+ * @param {object} options
  * @returns {object}
  */
-
-const toJSON$7 = function (section, options) {
-  options = setDefaults$7(options, defaults$9);
+const toJSON$1 = function (section, options) {
+  options = setDefaults(options, defaults$9);
   /**
    * @type {object}
    */
-
   let data = {};
 
   if (options.headers === true) {
@@ -2397,116 +2080,97 @@ const toJSON$7 = function (section, options) {
 
   if (options.depth === true) {
     data.depth = section.depth();
-  } //these return objects
+  }
 
-
+  //these return objects
   if (options.paragraphs === true) {
-    let paragraphs = section.paragraphs().map(p => p.json(options));
-
+    let paragraphs = section.paragraphs().map((p) => p.json(options));
     if (paragraphs.length > 0) {
       data.paragraphs = paragraphs;
     }
-  } //image json data
+  }
 
-
+  //image json data
   if (options.images === true) {
-    let images = section.images().map(img => img.json(options));
-
+    let images = section.images().map((img) => img.json(options));
     if (images.length > 0) {
       data.images = images;
     }
-  } //table json data
+  }
 
-
+  //table json data
   if (options.tables === true) {
-    let tables = section.tables().map(t => t.json(options));
-
+    let tables = section.tables().map((t) => t.json(options));
     if (tables.length > 0) {
       data.tables = tables;
     }
-  } //template json data
+  }
 
-
+  //template json data
   if (options.templates === true) {
-    let templates = section.templates().map(tmpl => tmpl.json());
-
+    let templates = section.templates().map((tmpl) => tmpl.json());
     if (templates.length > 0) {
-      data.templates = templates; //encode them, for mongodb
-
+      data.templates = templates;
+      //encode them, for mongodb
       if (options.encode === true) {
-        data.templates.forEach(t => encode$3.encodeObj(t));
+        data.templates.forEach((t) => encodeObj(t));
       }
     }
-  } //infobox json data
-
-
+  }
+  //infobox json data
   if (options.infoboxes === true) {
-    let infoboxes = section.infoboxes().map(i => i.json(options));
-
+    let infoboxes = section.infoboxes().map((i) => i.json(options));
     if (infoboxes.length > 0) {
       data.infoboxes = infoboxes;
     }
-  } //list json data
-
-
+  }
+  //list json data
   if (options.lists === true) {
-    let lists = section.lists().map(list => list.json(options));
-
+    let lists = section.lists().map((list) => list.json(options));
     if (lists.length > 0) {
       data.lists = lists;
     }
-  } //list references - default true
-
-
+  }
+  //list references - default true
   if (options.references === true || options.citations === true) {
-    let references = section.references().map(ref => ref.json(options));
-
+    let references = section.references().map((ref) => ref.json(options));
     if (references.length > 0) {
       data.references = references;
     }
-  } //default off
-
-
-  if (options.sentences === true) {
-    data.sentences = section.sentences().map(s => s.json(options));
   }
-
-  return data;
+  //default off
+  if (options.sentences === true) {
+    data.sentences = section.sentences().map((s) => s.json(options));
+  }
+  return data
 };
 
-var toJson$6 = toJSON$7;
-
-const wikis = interwiki$1;
 const defaults$8 = {
-  type: 'internal'
+  type: 'internal',
 };
-
-const Link$1 = function (data) {
+const Link = function (data) {
   data = data || {};
   data = Object.assign({}, defaults$8, data);
   Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: data
+    value: data,
   });
 };
-
 const methods$7 = {
   text: function (str) {
     if (str !== undefined) {
       this.data.text = str;
     }
-
-    let txt = this.data.text || this.data.page || ''; // remove bold/italics
-
+    let txt = this.data.text || this.data.page || '';
+    // remove bold/italics
     txt = txt.replace(/'{2,}/g, '');
-    return txt;
+    return txt
   },
   json: function () {
     let obj = {
       text: this.data.text,
-      type: this.type()
+      type: this.type(),
     };
-
     if (obj.type === 'internal') {
       obj.page = this.page();
     } else if (obj.type === 'interwiki') {
@@ -2514,62 +2178,52 @@ const methods$7 = {
     } else {
       obj.site = this.site();
     }
-
     let anchor = this.anchor();
-
     if (anchor) {
       obj.anchor = anchor;
     }
-
-    return obj;
+    return obj
   },
   wikitext: function () {
     let txt = this.data.raw || '';
-    return txt;
+    return txt
   },
   page: function (str) {
     if (str !== undefined) {
       this.data.page = str;
     }
-
-    return this.data.page;
+    return this.data.page
   },
   anchor: function (str) {
     if (str !== undefined) {
       this.data.anchor = str;
     }
-
-    return this.data.anchor || '';
+    return this.data.anchor || ''
   },
   wiki: function (str) {
     if (str !== undefined) {
       this.data.wiki = str;
     }
-
-    return this.data.wiki;
+    return this.data.wiki
   },
   type: function (str) {
     if (str !== undefined) {
       this.data.type = str;
     }
-
-    return this.data.type;
+    return this.data.type
   },
   site: function (str) {
     if (str !== undefined) {
       this.data.site = str;
     }
-
-    return this.data.site;
+    return this.data.site
   },
   //create a url for any type of link
   href: function () {
     let type = this.type();
-
     if (type === 'external') {
-      return this.site();
+      return this.site()
     }
-
     let page = this.page();
     page = page.replace(/ /g, '_');
     page = encodeURIComponent(page);
@@ -2578,332 +2232,502 @@ const methods$7 = {
     if (type === 'interwiki') {
       let wiki = this.wiki();
       url = 'https://en.wikipedia.org/wiki/$1';
-
       if (wikis.hasOwnProperty(wiki)) {
         url = 'http://' + wikis[this.wiki()];
       }
-
       url = url.replace(/\$1/g, page);
     } else {
       //internal link
-      url = "./".concat(this.page());
-    } //add anchor on the end
-
-
+      url = `./${this.page()}`;
+    }
+    //add anchor on the end
     if (this.anchor()) {
       url += '#' + this.anchor();
     }
-
-    return url;
-  }
+    return url
+  },
 };
-Object.keys(methods$7).forEach(k => {
-  Link$1.prototype[k] = methods$7[k];
+Object.keys(methods$7).forEach((k) => {
+  Link.prototype[k] = methods$7[k];
 });
-var Link_1 = Link$1;
 
-const Link = Link_1;
-const parseLinks$1 = parse$m; // const i18n = require('../_data/i18n')
-// const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):[^\\]\\]]{2,80}\\]\\]', 'gi')
 //return only rendered text of wiki links
-
 const removeLinks = function (line) {
   // [[File:with|Size]]
   line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+)\]\](\w{0,5})/g, '$1');
-  return line;
+  return line
 };
 
 const getLinks = function (data) {
   let wiki = data.text;
-  let links = parseLinks$1(wiki) || [];
-  data.links = links.map(link => {
-    wiki = wiki.replace(link.raw, link.text || link.page || ''); // delete link.raw
-
-    return new Link(link);
+  let links = parse_links(wiki) || [];
+  data.links = links.map((link) => {
+    wiki = wiki.replace(link.raw, link.text || link.page || '');
+    // delete link.raw
+    return new Link(link)
   });
   wiki = removeLinks(wiki);
   data.text = wiki;
 };
 
-var link = getLinks;
-
+//handle the bold/italics
 const formatting = function (obj) {
   let bolds = [];
   let italics = [];
-  let wiki = obj.text || ''; //bold and italics combined 5 's
-
+  let wiki = obj.text || '';
+  //bold and italics combined 5 's
   wiki = wiki.replace(/'''''(.{0,2500}?)'''''/g, (a, b) => {
     bolds.push(b);
     italics.push(b);
-    return b;
-  }); //''''four'''' → bold with quotes
-
+    return b
+  });
+  //''''four'''' → bold with quotes
   wiki = wiki.replace(/''''(.{0,2500}?)''''/g, (a, b) => {
-    bolds.push("'".concat(b, "'"));
-    return "'".concat(b, "'");
-  }); //'''bold'''
-
+    bolds.push(`'${b}'`);
+    return `'${b}'`
+  });
+  //'''bold'''
   wiki = wiki.replace(/'''(.{0,2500}?)'''/g, (a, b) => {
     bolds.push(b);
-    return b;
-  }); //''italic''
-
+    return b
+  });
+  //''italic''
   wiki = wiki.replace(/''(.{0,2500}?)''/g, (a, b) => {
     italics.push(b);
-    return b;
-  }); //pack it all up..
+    return b
+  });
 
+  //pack it all up..
   obj.text = wiki;
-
   if (bolds.length > 0) {
     obj.fmt = obj.fmt || {};
     obj.fmt.bold = bolds;
   }
-
   if (italics.length > 0) {
     obj.fmt = obj.fmt || {};
     obj.fmt.italic = italics;
   }
-
-  return obj;
+  return obj
 };
 
-var formatting_1 = formatting;
-
-const setDefaults$6 = setDefaults_1;
 const isNumber = /^[0-9,.]+$/;
+
 const defaults$7 = {
   text: true,
   links: true,
   formatting: true,
-  numbers: true
+  numbers: true,
 };
 
-const toJSON$6 = function (s, options) {
-  options = setDefaults$6(options, defaults$7);
+/**
+ * @private
+ * */
+const toJSON = function (s, options) {
+  options = setDefaults(options, defaults$7);
   let data = {};
   let text = s.text();
-
   if (options.text === true) {
     data.text = text;
-  } //add number field
-
-
+  }
+  //add number field
   if (options.numbers === true && isNumber.test(text)) {
     let num = Number(text.replace(/,/g, ''));
-
     if (isNaN(num) === false) {
       data.number = num;
     }
   }
-
   if (options.links && s.links().length > 0) {
-    data.links = s.links().map(l => l.json());
+    data.links = s.links().map((l) => l.json());
   }
-
   if (options.formatting && s.data.fmt) {
     data.formatting = s.data.fmt;
   }
-
-  return data;
+  return data
 };
 
-var toJson$5 = toJSON$6;
-
-const toJSON$5 = toJson$5; //where we store the formatting, link, date information
-
-const Sentence$2 = function () {
-  let data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+//where we store the formatting, link, date information
+const Sentence = function (data = {}) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: data
+    value: data,
   });
 };
 
 const methods$6 = {
   links: function (n) {
     let arr = this.data.links || [];
-
     if (typeof n === 'string') {
       //grab a link like .links('Fortnight')
       n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
-
-      let link = arr.find(o => o.page === n);
-      return link === undefined ? [] : [link];
+      let link = arr.find((o) => o.page === n);
+      return link === undefined ? [] : [link]
     }
-
-    return arr;
+    return arr
   },
   interwiki: function () {
-    return this.links().filter(l => l.wiki !== undefined);
+    return this.links().filter((l) => l.wiki !== undefined)
   },
   bolds: function () {
     if (this.data && this.data.fmt && this.data.fmt.bold) {
-      return this.data.fmt.bold || [];
+      return this.data.fmt.bold || []
     }
-
-    return [];
+    return []
   },
   italics: function () {
     if (this.data && this.data.fmt && this.data.fmt.italic) {
-      return this.data.fmt.italic || [];
+      return this.data.fmt.italic || []
     }
-
-    return [];
+    return []
   },
   text: function (str) {
     if (str !== undefined && typeof str === 'string') {
       //set the text?
       this.data.text = str;
     }
-
-    return this.data.text || '';
+    return this.data.text || ''
   },
   json: function (options) {
-    return toJSON$5(this, options);
+    return toJSON(this, options)
   },
   wikitext: function () {
-    return this.data.wiki || '';
+    return this.data.wiki || ''
   },
   isEmpty: function () {
-    return this.data.text === '';
-  }
+    return this.data.text === ''
+  },
 };
-Object.keys(methods$6).forEach(k => {
-  Sentence$2.prototype[k] = methods$6[k];
-}); // aliases
 
+Object.keys(methods$6).forEach((k) => {
+  Sentence.prototype[k] = methods$6[k];
+});
+
+// aliases
 const singular$3 = {
   links: 'link',
   bolds: 'bold',
-  italics: 'italic'
+  italics: 'italic',
 };
-Object.keys(singular$3).forEach(k => {
+Object.keys(singular$3).forEach((k) => {
   let sing = singular$3[k];
-
-  Sentence$2.prototype[sing] = function (clue) {
+  Sentence.prototype[sing] = function (clue) {
     let arr = this[k](clue);
-
     if (typeof clue === 'number') {
-      return arr[clue];
+      return arr[clue]
     }
-
-    return arr[0];
+    return arr[0]
   };
 });
-Sentence$2.prototype.plaintext = Sentence$2.prototype.text;
-var Sentence_1 = Sentence$2;
 
-var _abbreviations = ['ad', 'adj', 'adm', 'adv', 'al', 'alta', 'approx', 'apr', 'apt', 'arc', 'ariz', 'assn', 'asst', 'atty', 'aug', 'ave', 'ba', 'bc', 'bl', 'bldg', 'blvd', 'brig', 'bros', 'ca', 'cal', 'calif', 'capt', 'cca', 'cg', 'cl', 'cm', 'cmdr', 'co', 'col', 'colo', 'comdr', 'conn', 'corp', 'cpl', 'cres', 'ct', 'cyn', 'dak', 'dec', 'def', 'dept', 'det', 'dg', 'dist', 'dl', 'dm', 'dr', 'ea', 'eg', 'eng', 'esp', 'esq', 'est', 'etc', 'ex', 'exp', 'feb', 'fem', 'fig', 'fl oz', 'fl', 'fla', 'fm', 'fr', 'ft', 'fy', 'ga', 'gal', 'gb', 'gen', 'gov', 'hg', 'hon', 'hr', 'hrs', 'hwy', 'hz', 'ia', 'ida', 'ie', 'inc', 'inf', 'jan', 'jd', 'jr', 'jul', 'jun', 'kan', 'kans', 'kb', 'kg', 'km', 'kmph', 'lat', 'lb', 'lit', 'llb', 'lm', 'lng', 'lt', 'ltd', 'lx', 'ma', 'maj', 'mar', 'masc', 'mb', 'md', 'messrs', 'mg', 'mi', 'min', 'minn', 'misc', 'mister', 'ml', 'mlle', 'mm', 'mme', 'mph', 'mps', 'mr', 'mrs', 'ms', 'mstr', 'mt', 'neb', 'nebr', 'nee', 'no', 'nov', 'oct', 'okla', 'ont', 'op', 'ord', 'oz', 'pa', 'pd', 'penn', 'penna', 'phd', 'pl', 'pp', 'pref', 'prob', 'prof', 'pron', 'ps', 'psa', 'pseud', 'pt', 'pvt', 'qt', 'que', 'rb', 'rd', 'rep', 'reps', 'res', 'rev', 'sask', 'sec', 'sen', 'sens', 'sep', 'sept', 'sfc', 'sgt', 'sir', 'situ', 'sq ft', 'sq', 'sr', 'ss', 'st', 'supt', 'surg', 'tb', 'tbl', 'tbsp', 'tce', 'td', 'tel', 'temp', 'tenn', 'tex', 'tsp', 'univ', 'usafa', 'ut', 'va', 'vb', 'ver', 'vet', 'vitro', 'vivo', 'vol', 'vs', 'vt', 'wis', 'wisc', 'wr', 'wy', 'wyo', 'yb', 'µg'];
+Sentence.prototype.plaintext = Sentence.prototype.text;
 
-//@spencermountain MIT
-//(Rule-based sentence boundary segmentation) - chop given text into its proper sentences.
-// Ignore periods/questions/exclamations used in acronyms/abbreviations/numbers, etc.
-// @spencermountain 2015 MIT
+//these are used for the sentence-splitter
+var literalAbbreviations = [
+  'ad',
+  'adj',
+  'adm',
+  'adv',
+  'al',
+  'alta',
+  'approx',
+  'apr',
+  'apt',
+  'arc',
+  'ariz',
+  'assn',
+  'asst',
+  'atty',
+  'aug',
+  'ave',
+  'ba',
+  'bc',
+  'bl',
+  'bldg',
+  'blvd',
+  'brig',
+  'bros',
+  'ca',
+  'cal',
+  'calif',
+  'capt',
+  'cca',
+  'cg',
+  'cl',
+  'cm',
+  'cmdr',
+  'co',
+  'col',
+  'colo',
+  'comdr',
+  'conn',
+  'corp',
+  'cpl',
+  'cres',
+  'ct',
+  'cyn',
+  'dak',
+  'dec',
+  'def',
+  'dept',
+  'det',
+  'dg',
+  'dist',
+  'dl',
+  'dm',
+  'dr',
+  'ea',
+  'eg',
+  'eng',
+  'esp',
+  'esq',
+  'est',
+  'etc',
+  'ex',
+  'exp',
+  'feb',
+  'fem',
+  'fig',
+  'fl oz',
+  'fl',
+  'fla',
+  'fm',
+  'fr',
+  'ft',
+  'fy',
+  'ga',
+  'gal',
+  'gb',
+  'gen',
+  'gov',
+  'hg',
+  'hon',
+  'hr',
+  'hrs',
+  'hwy',
+  'hz',
+  'ia',
+  'ida',
+  'ie',
+  'inc',
+  'inf',
+  'jan',
+  'jd',
+  'jr',
+  'jul',
+  'jun',
+  'kan',
+  'kans',
+  'kb',
+  'kg',
+  'km',
+  'kmph',
+  'lat',
+  'lb',
+  'lit',
+  'llb',
+  'lm',
+  'lng',
+  'lt',
+  'ltd',
+  'lx',
+  'ma',
+  'maj',
+  'mar',
+  'masc',
+  'mb',
+  'md',
+  'messrs',
+  'mg',
+  'mi',
+  'min',
+  'minn',
+  'misc',
+  'mister',
+  'ml',
+  'mlle',
+  'mm',
+  'mme',
+  'mph',
+  'mps',
+  'mr',
+  'mrs',
+  'ms',
+  'mstr',
+  'mt',
+  'neb',
+  'nebr',
+  'nee',
+  'no',
+  'nov',
+  'oct',
+  'okla',
+  'ont',
+  'op',
+  'ord',
+  'oz',
+  'pa',
+  'pd',
+  'penn',
+  'penna',
+  'phd',
+  'pl',
+  'pp',
+  'pref',
+  'prob',
+  'prof',
+  'pron',
+  'ps',
+  'psa',
+  'pseud',
+  'pt',
+  'pvt',
+  'qt',
+  'que',
+  'rb',
+  'rd',
+  'rep',
+  'reps',
+  'res',
+  'rev',
+  'sask',
+  'sec',
+  'sen',
+  'sens',
+  'sep',
+  'sept',
+  'sfc',
+  'sgt',
+  'sir',
+  'situ',
+  'sq ft',
+  'sq',
+  'sr',
+  'ss',
+  'st',
+  'supt',
+  'surg',
+  'tb',
+  'tbl',
+  'tbsp',
+  'tce',
+  'td',
+  'tel',
+  'temp',
+  'tenn',
+  'tex',
+  'tsp',
+  'univ',
+  'usafa',
+  'ut',
+  'va',
+  'vb',
+  'ver',
+  'vet',
+  'vitro',
+  'vivo',
+  'vol',
+  'vs',
+  'vt',
+  'wis',
+  'wisc',
+  'wr',
+  'wy',
+  'wyo',
+  'yb',
+  'µg',
+];
 
-const literalAbbreviations = _abbreviations;
+//split text into sentences, using regex
 const abbreviations = literalAbbreviations.concat('[^]][^]]');
-const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + ")[.!?] ?$", 'i');
+const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i');
 const acronym_reg = /[ .'][A-Z].? *$/i;
 const elipses_reg = /\.{3,} +$/;
 const circa_reg = / c\.\s$/;
-const hasWord = /\p{Letter}/iu; //turn a nested array into one array
+const hasWord = /\p{Letter}/iu;
 
+//turn a nested array into one array
 const flatten = function (arr) {
   let all = [];
   arr.forEach(function (a) {
     all = all.concat(a);
   });
-  return all;
+  return all
 };
 
 const naiive_split = function (text) {
   //first, split by newline
   let splits = text.split(/(\n+)/);
-  splits = splits.filter(s => s.match(/\S/)); //split by period, question-mark, and exclamation-mark
-
+  splits = splits.filter((s) => s.match(/\S/));
+  //split by period, question-mark, and exclamation-mark
   splits = splits.map(function (str) {
-    return str.split(/(\S.+?[.!?]"?)(?=\s|$)/g); //\u3002
+    return str.split(/(\S.+?[.!?]"?)(?=\s|$)/g) //\u3002
   });
-  return flatten(splits);
-}; // if this looks like a period within a wikipedia link, return false
+  return flatten(splits)
+};
 
-
+// if this looks like a period within a wikipedia link, return false
 const isBalanced = function (str) {
   str = str || '';
   const open = str.split(/\[\[/) || [];
   const closed = str.split(/\]\]/) || [];
-
   if (open.length > closed.length) {
-    return false;
-  } //make sure quotes are closed too
-
-
-  const quotes = str.match(/"/g);
-
-  if (quotes && quotes.length % 2 !== 0 && str.length < 900) {
-    return false;
+    return false
   }
-
-  return true;
+  //make sure quotes are closed too
+  const quotes = str.match(/"/g);
+  if (quotes && quotes.length % 2 !== 0 && str.length < 900) {
+    return false
+  }
+  return true
 };
 
 const sentence_parser = function (text) {
-  let sentences = []; //first do a greedy-split..
-
-  let chunks = []; //ensure it 'smells like' a sentence
-
+  let sentences = [];
+  //first do a greedy-split..
+  let chunks = [];
+  //ensure it 'smells like' a sentence
   if (!text || typeof text !== 'string' || text.trim().length === 0) {
-    return sentences;
-  } // This was the splitter regex updated to fix quoted punctuation marks.
+    return sentences
+  }
+  // This was the splitter regex updated to fix quoted punctuation marks.
   // let splits = text.split(/(\S.+?[.\?!])(?=\s+|$|")/g);
   // todo: look for side effects in this regex replacement:
-
-
-  let splits = naiive_split(text); //filter-out the grap ones
-
+  let splits = naiive_split(text);
+  //filter-out the grap ones
   for (let i = 0; i < splits.length; i++) {
     let s = splits[i];
-
     if (!s || s === '') {
-      continue;
-    } //this is meaningful whitespace
-
-
+      continue
+    }
+    //this is meaningful whitespace
     if (!s.match(/\S/)) {
       //add it to the last one
       if (chunks[chunks.length - 1]) {
         chunks[chunks.length - 1] += s;
-        continue;
+        continue
       } else if (splits[i + 1]) {
         //add it to the next one
         splits[i + 1] = s + splits[i + 1];
-        continue;
+        continue
       }
     }
-
     chunks.push(s);
-  } //detection of non-sentence chunks
+  }
 
-
+  //detection of non-sentence chunks
   const isSentence = function (hmm) {
     if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg) || hmm.match(circa_reg)) {
-      return false;
-    } //too short? - no consecutive letters
-
-
+      return false
+    }
+    //too short? - no consecutive letters
     if (hasWord.test(hmm) === false) {
-      return false;
+      return false
     }
-
     if (!isBalanced(hmm)) {
-      return false;
+      return false
     }
-
-    return true;
-  }; //loop through these chunks, and join the non-sentence chunks back together..
-
-
+    return true
+  };
+  //loop through these chunks, and join the non-sentence chunks back together..
   for (let i = 0; i < chunks.length; i++) {
     //should this chunk be combined with the next one?
     if (chunks[i + 1] && !isSentence(chunks[i])) {
@@ -2913,23 +2737,14 @@ const sentence_parser = function (text) {
       sentences.push(chunks[i]);
       chunks[i] = '';
     }
-  } //if we never got a sentence, return the given text
-
-
-  if (sentences.length === 0) {
-    return [text];
   }
-
-  return sentences;
+  //if we never got a sentence, return the given text
+  if (sentences.length === 0) {
+    return [text]
+  }
+  return sentences
 };
 
-var parse$k = sentence_parser;
-
-const helpers = helpers$1;
-const parseLinks = link;
-const parseFmt = formatting_1;
-const Sentence$1 = Sentence_1;
-const sentenceParser = parse$k;
 /**
  * This function removes some final characters from the sentence
  *
@@ -2937,57 +2752,580 @@ const sentenceParser = parse$k;
  * @param {string} line the wiki text for processing
  * @returns {string} the processed string
  */
-
 function postprocess(line) {
   //remove empty parentheses (sometimes caused by removing templates)
-  line = line.replace(/\([,;: ]*\)/g, ''); //these semi-colons in parentheses are particularly troublesome
-
-  line = line.replace(/\( *(; ?)+/g, '('); //dangling punctuation
-
-  line = helpers.trim_whitespace(line);
+  line = line.replace(/\([,;: ]*\)/g, '');
+  //these semi-colons in parentheses are particularly troublesome
+  line = line.replace(/\( *(; ?)+/g, '(');
+  //dangling punctuation
+  line = trim_whitespace(line);
   line = line.replace(/ +\.$/, '.');
-  return line;
+  return line
 }
+
 /**
  * returns one sentence object
  *
  * @param {string} str create a object from a sentence
  * @returns {Sentence} the Sentence created from the text
  */
-
-
 function fromText(str) {
   let obj = {
     wiki: str,
-    text: str
-  }; //pull-out the [[links]]
+    text: str,
+  };
+  //pull-out the [[links]]
+  getLinks(obj);
+  obj.text = postprocess(obj.text);
+  //pull-out the bolds and ''italics''
+  obj = formatting(obj);
+  //pull-out things like {{start date|...}}
+  return new Sentence(obj)
+}
 
-  parseLinks(obj);
-  obj.text = postprocess(obj.text); //pull-out the bolds and ''italics''
-
-  obj = parseFmt(obj); //pull-out things like {{start date|...}}
-
-  return new Sentence$1(obj);
-} //used for consistency with other class-definitions
-
-
+//used for consistency with other class-definitions
 const byParagraph = function (paragraph) {
   //array of texts
-  let sentences = sentenceParser(paragraph.wiki); //sentence objects
-
-  sentences = sentences.map(fromText); //remove :indented first line, as it is often a disambiguation
-
+  let sentences = sentence_parser(paragraph.wiki);
+  //sentence objects
+  sentences = sentences.map(fromText);
+  //remove :indented first line, as it is often a disambiguation
   if (sentences[0] && sentences[0].text() && sentences[0].text()[0] === ':') {
     sentences = sentences.slice(1);
   }
-
   paragraph.sentences = sentences;
 };
 
-var _04Sentence = {
-  fromText: fromText,
-  byParagraph: byParagraph
+//remove top-bottoms
+const cleanup$1 = function (lines) {
+  lines = lines.filter((line) => {
+    //a '|+' row is a 'table caption', remove it.
+    return line && /^\|\+/.test(line) !== true
+  });
+  if (/^\{\|/.test(lines[0]) === true) {
+    lines.shift();
+  }
+  if (/^\|\}/.test(lines[lines.length - 1]) === true) {
+    lines.pop();
+  }
+  if (/^\|-/.test(lines[0]) === true) {
+    lines.shift();
+  }
+  return lines
 };
+
+//turn newline seperated into '|-' seperated
+const findRows = function (lines) {
+  let rows = [];
+  let row = [];
+  lines = cleanup$1(lines);
+  for (let i = 0; i < lines.length; i += 1) {
+    let line = lines[i];
+    //'|-' is a row-seperator
+    if (/^\|-/.test(line) === true) {
+      //okay, we're done the row
+      if (row.length > 0) {
+        rows.push(row);
+        row = [];
+      }
+    } else {
+      // remove leading | or ! for the ||/!! splitting
+      let startChar = line.charAt(0);
+      if (startChar === '|' || startChar === '!') {
+        line = line.substring(1);
+      }
+      //look for '||' inline row-splitter
+      line = line.split(/(?:\|\||!!)/); //eslint-disable-line
+      // add leading ! back, because we later read it in header parsing functions
+      if (startChar === '!') {
+        line[0] = startChar + line[0];
+      }
+      line.forEach((l) => {
+        l = l.trim();
+        row.push(l);
+      });
+    }
+  }
+  //finish the last one
+  if (row.length > 0) {
+    rows.push(row);
+  }
+  return rows
+};
+
+const getRowSpan = /.*rowspan *= *["']?([0-9]+)["']?[ |]*/;
+const getColSpan = /.*colspan *= *["']?([0-9]+)["']?[ |]*/;
+
+//colspans stretch ←left/right→
+const doColSpan = function (rows) {
+  rows.forEach((row) => {
+    row.forEach((str, c) => {
+      let m = str.match(getColSpan);
+      if (m !== null) {
+        let num = parseInt(m[1], 10);
+
+        //...maybe if num is so big, and centered, remove it?
+        // if (num > 3) {
+        //   rows[r] = []
+        //   return
+        // }
+        //splice-in n empty columns right here
+        row[c] = str.replace(getColSpan, '');
+        for (let i = 1; i < num; i += 1) {
+          row.splice(c + 1, 0, '');
+        }
+      }
+    });
+  });
+  rows = rows.filter((r) => r.length > 0);
+  return rows
+};
+
+//colspans stretch up/down
+const doRowSpan = function (rows) {
+  rows.forEach((row, r) => {
+    row.forEach((str, c) => {
+      let m = str.match(getRowSpan);
+      if (m !== null) {
+        let num = parseInt(m[1], 10);
+        //copy this cell down n rows
+        str = str.replace(getRowSpan, '');
+        row[c] = str;
+        for (let i = r + 1; i < r + num; i += 1) {
+          if (!rows[i]) {
+            break
+          }
+          rows[i].splice(c, 0, str);
+        }
+      }
+    });
+  });
+  return rows
+};
+
+//
+const handleSpans = function (rows) {
+  rows = doColSpan(rows);
+  rows = doRowSpan(rows);
+  return rows
+};
+
+const isHeading = /^!/;
+
+//common ones
+const headings$1 = {
+  name: true,
+  age: true,
+  born: true,
+  date: true,
+  year: true,
+  city: true,
+  country: true,
+  population: true,
+  count: true,
+  number: true,
+};
+
+//additional table-cruft to remove before parseLine method
+const cleanText = function (str) {
+  str = fromText(str).text();
+  //anything before a single-pipe is styling, so remove it
+  if (str.match(/\|/)) {
+    str = str.replace(/.*?\| ?/, ''); //class="unsortable"|title
+  }
+  str = str.replace(/style=['"].*?["']/, '');
+  //'!' is used as a highlighed-column
+  str = str.replace(/^!/, '');
+  // str = str.replace(/\(.*?\)/, '')
+  str = str.trim();
+  // str = str.toLowerCase()
+  return str
+};
+
+const skipSpanRow = function (row) {
+  row = row || [];
+  let len = row.length;
+  let hasTxt = row.filter((str) => str).length;
+  //does it have 3 empty spaces?
+  if (len - hasTxt > 3) {
+    return true
+  }
+  return false
+};
+
+//remove non-header span rows
+const removeMidSpans = function (rows) {
+  rows = rows.filter((row) => {
+    if (row.length === 1 && row[0] && isHeading.test(row[0]) && /rowspan/i.test(row[0]) === false) {
+      return false
+    }
+    return true
+  });
+  return rows
+};
+
+//'!' starts a header-row
+const findHeaders = function (rows = []) {
+  let headers = [];
+
+  // is the first-row just a ton of colspan?
+  if (skipSpanRow(rows[0])) {
+    rows.shift();
+  }
+
+  let first = rows[0];
+  if (first && first[0] && first[1] && (/^!/.test(first[0]) || /^!/.test(first[1]))) {
+    headers = first.map((h) => {
+      h = h.replace(/^! */, '');
+      h = cleanText(h);
+      return h
+    });
+    rows.shift();
+  }
+  //try the second row, too (overwrite first-row, if it exists)
+  first = rows[0];
+  if (first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
+    first.forEach((h, i) => {
+      h = h.replace(/^! */, '');
+      h = cleanText(h);
+      if (Boolean(h) === true) {
+        headers[i] = h;
+      }
+    });
+    rows.shift();
+  }
+  return headers
+};
+
+//turn headers, array into an object
+const parseRow = function (arr, headers) {
+  let row = {};
+  arr.forEach((str, i) => {
+    let h = headers[i] || 'col' + (i + 1);
+    let s = fromText(str);
+    s.text(cleanText(s.text()));
+    row[h] = s;
+  });
+  return row
+};
+
+//should we use the first row as a the headers?
+const firstRowHeader = function (rows) {
+  if (rows.length <= 3) {
+    return []
+  }
+  let headers = rows[0].slice(0);
+  headers = headers.map((h) => {
+    h = h.replace(/^! */, '');
+    h = fromText(h).text();
+    h = cleanText(h);
+    h = h.toLowerCase();
+    return h
+  });
+  for (let i = 0; i < headers.length; i += 1) {
+    if (headings$1.hasOwnProperty(headers[i])) {
+      rows.shift();
+      return headers
+    }
+  }
+  return []
+};
+
+//turn a {|...table string into an array of arrays
+const parseTable = function (wiki) {
+  let lines = wiki
+    .replace(/\r/g, '')
+    .replace(/\n(\s*[^|!{\s])/g, ' $1') //remove unecessary newlines
+    .split(/\n/)
+    .map((l) => l.trim());
+  let rows = findRows(lines);
+  rows = rows.filter((r) => r);
+  if (rows.length === 0) {
+    return []
+  }
+
+  //remove non-header span rows
+  rows = removeMidSpans(rows);
+  //support colspan, rowspan...
+  rows = handleSpans(rows);
+  //grab the header rows
+  let headers = findHeaders(rows);
+  if (!headers || headers.length <= 1) {
+    headers = firstRowHeader(rows);
+    let want = rows[rows.length - 1] || [];
+    //try the second row
+    if (headers.length <= 1 && want.length > 2) {
+      headers = firstRowHeader(rows.slice(1));
+      if (headers.length > 0) {
+        rows = rows.slice(2); //remove them
+      }
+    }
+  }
+  //index each column by it's header
+  let table = rows.map((arr) => {
+    return parseRow(arr, headers)
+  });
+  return table
+};
+
+//
+const toJson$2 = function (tables, options) {
+  return tables.map((table) => {
+    let row = {};
+    Object.keys(table).forEach((k) => {
+      row[k] = table[k].json(); //(they're sentence objects)
+    });
+    //encode them, for mongodb
+    if (options.encode === true) {
+      row = encodeObj(row);
+    }
+    return row
+  })
+};
+
+const defaults$6 = {};
+
+const normalize$1 = function (key = '') {
+  key = key.toLowerCase();
+  key = key.replace(/[_-]/g, ' ');
+  key = key.replace(/\(.*?\)/, '');
+  key = key.trim();
+  return key
+};
+
+const Table = function (data, wiki = '') {
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data,
+  });
+  Object.defineProperty(this, '_wiki', {
+    enumerable: false,
+    value: wiki,
+  });
+};
+
+const methods$5 = {
+  links(n) {
+    let links = [];
+    this.data.forEach((r) => {
+      Object.keys(r).forEach((k) => {
+        links = links.concat(r[k].links());
+      });
+    });
+    if (typeof n === 'string') {
+      //grab a link like .links('Fortnight')
+      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+      let link = links.find((o) => o.page() === n);
+      return link === undefined ? [] : [link]
+    }
+    return links
+  },
+  get(keys) {
+    // normalize mappings
+    let have = this.data[0] || {};
+    let mapping = Object.keys(have).reduce((h, k) => {
+      h[normalize$1(k)] = k;
+      return h
+    }, {});
+    // string gets a flat-list
+    if (typeof keys === 'string') {
+      let key = normalize$1(keys);
+      key = mapping[key] || key;
+      return this.data.map((row) => {
+        return row[key] ? row[key].text() : null
+      })
+    }
+    // array gets obj-list
+    keys = keys.map(normalize$1).map((k) => mapping[k] || k);
+    return this.data.map((row) => {
+      return keys.reduce((h, k) => {
+        if (row[k]) {
+          h[k] = row[k].text();
+        } else {
+          h[k] = '';
+        }
+        return h
+      }, {})
+    })
+  },
+  keyValue(options) {
+    let rows = this.json(options);
+    rows.forEach((row) => {
+      Object.keys(row).forEach((k) => {
+        row[k] = row[k].text;
+      });
+    });
+    return rows
+  },
+  json(options) {
+    options = setDefaults(options, defaults$6);
+    return toJson$2(this.data, options)
+  },
+
+  text() {
+    return ''
+  },
+
+  wikitext() {
+    return this._wiki || ''
+  },
+};
+methods$5.keyvalue = methods$5.keyValue;
+methods$5.keyval = methods$5.keyValue;
+
+Object.keys(methods$5).forEach((k) => {
+  Table.prototype[k] = methods$5[k];
+});
+
+//const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70k chars.
+const openReg = /^\s*\{\|/;
+const closeReg = /^\s*\|\}/;
+
+//tables can be recursive, so looky-here.
+const findTables = function (section) {
+  let list = [];
+  let wiki = section._wiki;
+  let lines = wiki.split('\n');
+  let stack = [];
+  for (let i = 0; i < lines.length; i += 1) {
+    //start a table
+    if (openReg.test(lines[i]) === true) {
+      stack.push(lines[i]);
+      continue
+    }
+    //close a table
+    if (closeReg.test(lines[i]) === true) {
+      stack[stack.length - 1] += '\n' + lines[i];
+      let table = stack.pop();
+      list.push(table);
+      continue
+    }
+    //keep-going on one
+    if (stack.length > 0) {
+      stack[stack.length - 1] += '\n' + lines[i];
+    }
+  }
+  //work-em together for a Table class
+  let tables = [];
+  list.forEach((str) => {
+    if (str) {
+      //also re-remove a newline at the end of the table (awkward)
+      wiki = wiki.replace(str + '\n', '');
+      wiki = wiki.replace(str, '');
+      let data = parseTable(str);
+      if (data && data.length > 0) {
+        tables.push(new Table(data, str));
+      }
+    }
+  });
+
+  if (tables.length > 0) {
+    section._tables = tables;
+  }
+  section._wiki = wiki;
+};
+
+const defaults$5 = {
+  sentences: true,
+};
+
+const toJson$1 = function (p, options) {
+  options = setDefaults(options, defaults$5);
+  let data = {};
+  if (options.sentences === true) {
+    data.sentences = p.sentences().map((s) => s.json(options));
+  }
+  return data
+};
+
+const defaults$4 = {
+  sentences: true,
+  lists: true,
+  images: true,
+};
+
+const Paragraph = function (data) {
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data,
+  });
+};
+
+const methods$4 = {
+  sentences: function () {
+    return this.data.sentences || []
+  },
+  references: function () {
+    return this.data.references
+  },
+  lists: function () {
+    return this.data.lists
+  },
+  images() {
+    return this.data.images || []
+  },
+  links: function (clue) {
+    let arr = [];
+    this.sentences().forEach((s) => {
+      arr = arr.concat(s.links(clue));
+    });
+    if (typeof clue === 'string') {
+      //grab a specific link like .links('Fortnight')
+      clue = clue.charAt(0).toUpperCase() + clue.substring(1); //titlecase it
+      let link = arr.find((o) => o.page() === clue);
+      return link === undefined ? [] : [link]
+    }
+    return arr || []
+  },
+  interwiki() {
+    let arr = [];
+    this.sentences().forEach((s) => {
+      arr = arr.concat(s.interwiki());
+    });
+    return arr || []
+  },
+  text: function (options) {
+    options = setDefaults(options, defaults$4);
+    let str = this.sentences()
+      .map((s) => s.text(options))
+      .join(' ');
+    this.lists().forEach((list) => {
+      str += '\n' + list.text();
+    });
+    return str
+  },
+  json: function (options) {
+    options = setDefaults(options, defaults$4);
+    return toJson$1(this, options)
+  },
+  wikitext: function () {
+    return this.data.wiki
+  },
+};
+methods$4.citations = methods$4.references;
+Object.keys(methods$4).forEach((k) => {
+  Paragraph.prototype[k] = methods$4[k];
+});
+
+// aliases
+const singular$2 = {
+  sentences: 'sentence',
+  references: 'reference',
+  citations: 'citation',
+  lists: 'list',
+  images: 'image',
+  links: 'link',
+};
+Object.keys(singular$2).forEach((k) => {
+  let sing = singular$2[k];
+  Paragraph.prototype[sing] = function (clue) {
+    let arr = this[k](clue);
+    if (typeof clue === 'number') {
+      return arr[clue]
+    }
+    return arr[0]
+  };
+});
 
 /**
  * removes the top and bottom off the template
@@ -2997,23 +3335,19 @@ var _04Sentence = {
  * @param {string} tmpl the string to be striped
  * @returns {string} the striped string
  */
-
-const strip$3 = function (tmpl) {
+const strip = function (tmpl) {
   tmpl = tmpl.replace(/^\{\{/, '');
   tmpl = tmpl.replace(/\}\}$/, '');
-  return tmpl;
+  return tmpl
 };
 
-var _strip = strip$3;
-
-const fmtName$2 = function (name) {
+//normalize template names
+const fmtName = function (name) {
   name = (name || '').trim();
   name = name.toLowerCase();
   name = name.replace(/_/g, ' ');
-  return name;
+  return name
 };
-
-var _fmtName = fmtName$2;
 
 /**
  * turn {{name|one|two|three}} into [name, one, two, three]
@@ -3022,51 +3356,52 @@ var _fmtName = fmtName$2;
  * @param {string} tmpl the template text
  * @returns {string[]} a array containing all the split parameters
  */
-
-const pipeSplitter$1 = function (tmpl) {
+const pipeSplitter = function (tmpl) {
   //start with a naive '|' split
-  let arr = tmpl.split(/\n?\|/); //we've split by '|', which is pretty lame
+  let arr = tmpl.split(/\n?\|/);
+  //we've split by '|', which is pretty lame
   //look for broken-up links and fix them :/
-
   arr.forEach((a, i) => {
     if (a === null) {
-      return;
-    } //has '[[' but no ']]'
+      return
+    }
+    //has '[[' but no ']]'
     //has equal number of opening and closing tags. handle nested case '[[[[' ']]'
-
-
-    if (/\[\[[^\]]+$/.test(a) || /\{\{[^}]+$/.test(a) || a.split('{{').length !== a.split('}}').length || a.split('[[').length !== a.split(']]').length) {
-      arr[i + 1] = arr[i] + '|' + arr[i + 1]; //@ts-expect-error we can ignore this error because we filter out all nulls later in
-
+    if (
+      /\[\[[^\]]+$/.test(a) ||
+      /\{\{[^}]+$/.test(a) ||
+      a.split('{{').length !== a.split('}}').length ||
+      a.split('[[').length !== a.split(']]').length
+    ) {
+      arr[i + 1] = arr[i] + '|' + arr[i + 1];
       arr[i] = null;
     }
-  }); //cleanup any mistakes we've made
+  });
+  //cleanup any mistakes we've made
+  arr = arr.filter((a) => a !== null);
+  arr = arr.map((a) => (a || '').trim());
 
-  arr = arr.filter(a => a !== null);
-  arr = arr.map(a => (a || '').trim()); //remove empty fields, only at the end:
-
+  //remove empty fields, only at the end:
   for (let i = arr.length - 1; i >= 0; i -= 1) {
     if (arr[i] === '') {
       arr.pop();
     }
-
-    break;
+    break
   }
-
-  return arr;
+  return arr
 };
 
-var _01PipeSplitter = pipeSplitter$1;
-
+//every value in {{tmpl|a|b|c}} needs a name
 //here we come up with names for them
+const hasKey = /^[\p{Letter}0-9._\- '()]+=/iu;
 
-const hasKey = /^[\p{Letter}0-9._\- '()]+=/iu; //templates with these properties are asking for trouble
-
+//templates with these properties are asking for trouble
 const reserved = {
   template: true,
   list: true,
-  prototype: true
+  prototype: true,
 };
+
 /**
  * @typedef parseKeyReturn
  * @property {string} val
@@ -3079,22 +3414,21 @@ const reserved = {
  * @param {string} str the string that will be parsed
  * @returns {parseKeyReturn} the spit string
  */
-
 const parseKey = function (str) {
   let parts = str.split('=');
   let key = parts[0] || '';
   key = key.toLowerCase().trim();
-  let val = parts.slice(1).join('='); //don't let it be called 'template'..
-
+  let val = parts.slice(1).join('=');
+  //don't let it be called 'template'..
   if (reserved.hasOwnProperty(key)) {
     key = '_' + key;
   }
-
   return {
     key: key,
-    val: val.trim()
-  };
+    val: val.trim(),
+  }
 };
+
 /**
  * turn [a, b=v, c] into {'1':a, b:v, '2':c}
  *
@@ -3103,24 +3437,21 @@ const parseKey = function (str) {
  * @param {string[]} [order] the order in which the parameters are returned
  * @returns {object} and object with the names as the keys and the values as the values
  */
-
-
-const keyMaker$1 = function (arr, order) {
+const keyMaker = function (arr, order) {
   let keyIndex = 0;
-  return arr.reduce(function (h) {
-    let str = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-    str = str.trim(); //support named keys - 'foo=bar'
+  return arr.reduce((h, str = '') => {
+    str = str.trim();
 
+    //support named keys - 'foo=bar'
     if (hasKey.test(str) === true) {
       let res = parseKey(str);
-
       if (res.key) {
         h[res.key] = res.val;
-        return h;
+        return h
       }
-    } //if the current index is present in the order array then we have a name for the key
+    }
 
-
+    //if the current index is present in the order array then we have a name for the key
     if (order && order[keyIndex]) {
       let key = order[keyIndex];
       h[key] = str;
@@ -3130,11 +3461,9 @@ const keyMaker$1 = function (arr, order) {
     }
 
     keyIndex += 1;
-    return h;
-  }, {});
+    return h
+  }, {})
 };
-
-var _02KeyMaker = keyMaker$1;
 
 const whoCares = {
   classname: true,
@@ -3149,31 +3478,25 @@ const whoCares = {
   collapsible: true,
   list_style_type: true,
   'list-style-type': true,
-  colwidth: true
-}; //remove wiki-cruft & some styling info from templates
+  colwidth: true,
+};
 
-const cleanup$2 = function (obj) {
-  Object.keys(obj).forEach(k => {
+//remove wiki-cruft & some styling info from templates
+const cleanup = function (obj) {
+  Object.keys(obj).forEach((k) => {
     if (whoCares[k.toLowerCase()] === true) {
       delete obj[k];
-    } //remove empty values, too
-
-
+    }
+    //remove empty values, too
     if (obj[k] === null || obj[k] === '') {
       delete obj[k];
     }
   });
-  return obj;
+  return obj
 };
 
-var _03Cleanup = cleanup$2;
+//remove the top/bottom off the template
 
-const strip$2 = _strip;
-const fmtName$1 = _fmtName;
-const parseSentence$7 = _04Sentence.fromText;
-const pipeSplitter = _01PipeSplitter;
-const keyMaker = _02KeyMaker;
-const cleanup$1 = _03Cleanup;
 /**
  * most templates just want plaintext...
  *
@@ -3182,19 +3505,18 @@ const cleanup$1 = _03Cleanup;
  * @param {'json' | 'raw'} [fmt]
  * @returns {string} text
  */
-
 const makeFormat = function (str, fmt) {
-  let s = parseSentence$7(str); //support various output formats
-
+  let s = fromText(str);
+  //support various output formats
   if (fmt === 'json') {
-    return s.json();
+    return s.json()
   } else if (fmt === 'raw') {
-    return s;
-  } //default to flat text
-
-
-  return s.text();
+    return s
+  }
+  //default to flat text
+  return s.text()
 };
+
 /**
  * parses the parameters of a template to a usable format
  *
@@ -3204,248 +3526,373 @@ const makeFormat = function (str, fmt) {
  * @param {'json' | 'raw'} [fmt] whether you wan to parse the text of the template the raw object or just the text
  * @returns {object} the parameters of the template in a usable format
  */
-
-
-const parser = function (tmpl) {
-  let order = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-  let fmt = arguments.length > 2 ? arguments[2] : undefined;
+const parser = function (tmpl, order = [], fmt) {
   //remove {{}}'s and split based on pipes
-  tmpl = strip$2(tmpl || '');
-  let arr = pipeSplitter(tmpl); //get template name
+  tmpl = strip(tmpl || '');
+  let arr = pipeSplitter(tmpl);
 
-  let name = arr.shift(); //name each value
+  //get template name
+  let name = arr.shift();
 
-  let obj = keyMaker(arr, order); //remove wiki-junk
+  //name each value
+  let obj = keyMaker(arr, order);
 
-  obj = cleanup$1(obj); //is this a infobox/reference?
+  //remove wiki-junk
+  obj = cleanup(obj);
+
+  //is this a infobox/reference?
   //let known = isKnown(obj);
-  //using '|1=content' is an escaping-thing..
 
+  //using '|1=content' is an escaping-thing..
   if (obj['1'] && order[0] && obj.hasOwnProperty(order[0]) === false) {
     //move it over..
     obj[order[0]] = obj['1'];
     delete obj['1'];
   }
 
-  Object.keys(obj).forEach(k => {
+  Object.keys(obj).forEach((k) => {
     if (k === 'list') {
-      obj[k] = obj[k].map(v => makeFormat(v, fmt));
-      return;
+      obj[k] = obj[k].map((v) => makeFormat(v, fmt));
+      return
     }
-
     obj[k] = makeFormat(obj[k], fmt);
-  }); //add the template name
+  });
 
+  //add the template name
   if (name) {
-    obj.template = fmtName$1(name);
+    obj.template = fmtName(name);
   }
-
-  return obj;
+  return obj
 };
 
-var toJSON$4 = parser;
+const opener = '[';
+const closer = ']';
 
-const encode$2 = encode$4; //also called 'citations'
+/**
+ *
+ * find all the pairs of '[[...[[..]]...]]' in the text
+ * used to properly root out recursive template calls, [[.. [[...]] ]]
+ * basically just adds open tags, and subtracts closing tags
+ *
+ * @private
+ * @param {string} text the text in which is searched in
+ * @returns {string[]} all the links in the text
+ */
+function nested_find(text) {
+  let out = [];
+  let last = [];
+  const chars = text.split('');
+  let open = 0;
+  for (let i = 0; i < chars.length; i++) {
+    const c = text[i];
+    //increment open tag
+    if (c === opener) {
+      open += 1;
+    }
+    //decrement close tag
+    else if (c === closer) {
+      open -= 1;
+      if (open < 0) {
+        open = 0;
+      }
+    } else if (last.length === 0) {
+      //If we're not inside of a pair of delimiters, we can discard the current letter.
+      //The return of this function is only used to extract images.
+      continue
+    }
 
-const Reference$2 = function (data, wiki) {
+    last.push(c);
+    if (open === 0 && last.length > 0) {
+      //first, fix botched parse
+      let open_count = 0;
+      let close_count = 0;
+      for (let j = 0; j < last.length; j++) {
+        if (last[j] === opener) {
+          open_count++;
+        } else if (last[j] === closer) {
+          close_count++;
+        }
+      }
+      //is it botched?
+      if (open_count > close_count) {
+        last.push(closer);
+      }
+      //looks good, keep it
+      out.push(last.join(''));
+      last = [];
+    }
+  }
+  return out
+}
+
+//regexes:
+const isFile = new RegExp('(' + images.join('|') + '):', 'i');
+let fileNames = `(${images.join('|')})`;
+const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'iu');
+
+//style directives for Wikipedia:Extended_image_syntax
+const imgLayouts = {
+  thumb: true,
+  thumbnail: true,
+  border: true,
+  right: true,
+  left: true,
+  center: true,
+  top: true,
+  bottom: true,
+  none: true,
+  upright: true,
+  baseline: true,
+  middle: true,
+  sub: true,
+  super: true,
+};
+
+//images are usually [[image:my_pic.jpg]]
+const oneImage = function (img, doc) {
+  let m = img.match(file_reg);
+  if (m === null || !m[2]) {
+    return null
+  }
+  let file = `${m[1]}:${m[2] || ''}`;
+  if (file) {
+    let obj = {
+      file: file,
+      lang: doc._lang,
+      domain: doc._domain,
+      wiki: img,
+      pluginData: {}
+    };
+    //try to grab other metadata, too
+    img = img.replace(/^\[\[/, '');
+    img = img.replace(/\]\]$/, '');
+
+    //https://en.wikipedia.org/wiki/Wikipedia:Extended_image_syntax
+    //- [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
+    let imgData = parser(img);
+    let arr = imgData.list || [];
+    //parse-out alt text, if explicitly given
+    if (imgData.alt) {
+      obj.alt = imgData.alt;
+    }
+    //remove 'thumb' and things
+    arr = arr.filter((str) => imgLayouts.hasOwnProperty(str) === false);
+    if (arr[arr.length - 1]) {
+      obj.caption = fromText(arr[arr.length - 1]);
+    }
+    return new Image(obj)
+  }
+  return null
+};
+
+const parseImages = function (paragraph, doc) {
+  let wiki = paragraph.wiki;
+  //parse+remove scary '[[ [[]] ]]' stuff
+  let matches = nested_find(wiki);
+  matches.forEach(function (s) {
+    if (isFile.test(s) === true) {
+      paragraph.images = paragraph.images || [];
+      let img = oneImage(s, doc);
+      if (img) {
+        paragraph.images.push(img);
+      }
+      wiki = wiki.replace(s, '');
+    }
+  });
+  paragraph.wiki = wiki;
+};
+
+const defaults$3 = {};
+
+const toText$1 = (list, options) => {
+  return list
+    .map((s) => {
+      let str = s.text(options);
+      return ' * ' + str
+    })
+    .join('\n')
+};
+
+const List = function (data, wiki = '') {
   Object.defineProperty(this, 'data', {
     enumerable: false,
-    value: data
+    value: data,
   });
   Object.defineProperty(this, 'wiki', {
     enumerable: false,
-    value: wiki
+    value: wiki,
   });
 };
 
-const methods$5 = {
-  title: function () {
-    let data = this.data;
-    return data.title || data.encyclopedia || data.author || '';
+const methods$3 = {
+  lines() {
+    return this.data
   },
-  links: function (n) {
-    let arr = [];
-
-    if (typeof n === 'number') {
-      return arr[n];
-    } //grab a specific link..
-
-
-    if (typeof n === 'number') {
-      return arr[n];
-    } else if (typeof n === 'string') {
+  links(clue) {
+    let links = [];
+    this.lines().forEach((s) => {
+      links = links.concat(s.links());
+    });
+    if (typeof clue === 'string') {
       //grab a link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
-
-      let link = arr.find(o => o.page() === n);
-      return link === undefined ? [] : [link];
+      clue = clue.charAt(0).toUpperCase() + clue.substring(1); //titlecase it
+      let link = links.find((o) => o.page() === clue);
+      return link === undefined ? [] : [link]
     }
-
-    return arr || [];
+    return links
   },
-  text: function () {
-    return ''; //nah, skip these.
+  json(options) {
+    options = setDefaults(options, defaults$3);
+    return this.lines().map((s) => s.json(options))
   },
-  wikitext: function () {
-    return this.wiki || '';
+  text() {
+    return toText$1(this.data)
   },
-  json: function () {
-    let options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    let json = this.data || {}; //encode them, for mongodb
-
-    if (options.encode === true) {
-      json = Object.assign({}, json);
-      json = encode$2.encodeObj(json);
-    }
-
-    return json;
-  }
+  wikitext() {
+    return this.wiki || ''
+  },
 };
-Object.keys(methods$5).forEach(k => {
-  Reference$2.prototype[k] = methods$5[k];
+
+Object.keys(methods$3).forEach((k) => {
+  List.prototype[k] = methods$3[k];
 });
-var Reference_1 = Reference$2;
 
-const parse$j = toJSON$4; //const parse = require('../../templates/wikipedia/page').citation;
+const list_reg = /^[#*:;|]+/;
+const bullet_reg = /^\*+[^:,|]{4}/;
+const number_reg = /^ ?#[^:,|]{4}/;
+const has_word = /[a-z_0-9\]}]/i;
 
-const parseSentence$6 = _04Sentence.fromText;
-const Reference$1 = Reference_1; //structured Cite templates - <ref>{{Cite..</ref>
-
-const hasCitation = function (str) {
-  return /^ *\{\{ *(cite|citation)/i.test(str) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false;
+// does it start with a bullet point or something?
+const isList = function (line) {
+  return list_reg.test(line) || bullet_reg.test(line) || number_reg.test(line)
 };
 
-const parseCitation = function (tmpl) {
-  let obj = parse$j(tmpl);
-  obj.type = obj.template.replace(/cite /, '');
-  obj.template = 'citation';
-  return obj;
-}; //handle unstructured ones - <ref>some text</ref>
+//make bullets/numbers into human-readable *'s
+const cleanList = function (list) {
+  let number = 1;
+  list = list.filter((l) => l);
+  for (let i = 0; i < list.length; i++) {
+    let line = list[i];
+    //add # numberings formatting
+    if (line.match(number_reg)) {
+      line = line.replace(/^ ?#*/, number + ') ');
+      line = line + '\n';
+      number += 1;
+    } else if (line.match(list_reg)) {
+      number = 1;
+      line = line.replace(list_reg, '');
+    }
+    list[i] = fromText(line);
+  }
+  return list
+};
 
+const grabList = function (lines, i) {
+  let sub = [];
+  for (let o = i; o < lines.length; o++) {
+    if (isList(lines[o])) {
+      sub.push(lines[o]);
+    } else {
+      break
+    }
+  }
+  sub = sub.filter((a) => a && has_word.test(a));
+  sub = cleanList(sub);
+  return sub
+};
 
-const parseInline = function (str) {
-  let obj = parseSentence$6(str) || {};
-  return {
-    template: 'citation',
-    type: 'inline',
-    data: {},
-    inline: obj
-  };
-}; //parse <ref></ref> xml tags
+const parseList = function (paragraph) {
+  let wiki = paragraph.wiki;
+  let lines = wiki.split(/\n/g);
+  let lists = [];
+  let theRest = [];
+  for (let i = 0; i < lines.length; i++) {
+    if (isList(lines[i])) {
+      let sub = grabList(lines, i);
+      if (sub.length > 0) {
+        lists.push(sub);
+        i += sub.length - 1;
+      }
+    } else {
+      theRest.push(lines[i]);
+    }
+  }
+  paragraph.lists = lists.map((l) => new List(l, wiki));
+  paragraph.wiki = theRest.join('\n');
+};
 
+const twoNewLines = /\r?\n\r?\n/;
 
-const parseRefs = function (section) {
-  let references = [];
+const parseParagraphs = function (section, doc) {
   let wiki = section._wiki;
-  wiki = wiki.replace(/ ?<ref>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
-    if (hasCitation(tmpl)) {
-      let obj = parseCitation(tmpl);
-
-      if (obj) {
-        references.push({
-          json: obj,
-          wiki: all
-        });
-      }
-
-      wiki = wiki.replace(tmpl, '');
-    } else {
-      references.push({
-        json: parseInline(tmpl),
-        wiki: all
-      });
-    }
-
-    return ' ';
-  }); //<ref name=""/>
-
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' '); //<ref name=""></ref>
-
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
-    if (hasCitation(tmpl)) {
-      let obj = parseCitation(tmpl);
-
-      if (obj) {
-        references.push({
-          json: obj,
-          wiki: tmpl
-        });
-      }
-
-      wiki = wiki.replace(tmpl, '');
-    } else {
-      references.push({
-        json: parseInline(tmpl),
-        wiki: all
-      });
-    }
-
-    return ' ';
-  }); //now that we're done with xml, do a generic + dangerous xml-tag removal
-
-  wiki = wiki.replace(/ ?<[ /]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ /]?> ?/g, ' '); //<samp name="asd">
-
-  section._references = references.map(obj => new Reference$1(obj.json, obj.wiki));
+  let paragraphs = wiki.split(twoNewLines);
+  //don't create empty paragraphs
+  paragraphs = paragraphs.filter((p) => p && p.trim().length > 0);
+  paragraphs = paragraphs.map((str) => {
+    let paragraph = {
+      wiki: str,
+      lists: [],
+      sentences: [],
+      images: [],
+    };
+    //parse the lists
+    parseList(paragraph);
+    //parse images
+    parseImages(paragraph, doc);
+    //parse the sentences
+    byParagraph(paragraph);
+    return new Paragraph(paragraph)
+  });
   section._wiki = wiki;
+  section._paragraphs = paragraphs;
 };
-
-var reference = parseRefs;
 
 const open = '{';
-const close = '}'; //grab all first-level recursions of '{{...}}'
+const close = '}';
 
-const findFlat$1 = function (wiki) {
+//grab all first-level recursions of '{{...}}'
+const findFlat = function (wiki) {
   let depth = 0;
   let list = [];
   let carry = [];
-
-  for (let i = wiki.indexOf(open); i !== -1 && i < wiki.length; depth > 0 ? i++ : i = wiki.indexOf(open, i + 1)) {
-    let c = wiki[i]; //open it
-
+  for (let i = wiki.indexOf(open); i !== -1 && i < wiki.length; depth > 0 ? i++ : (i = wiki.indexOf(open, i + 1))) {
+    let c = wiki[i];
+    //open it
     if (c === open) {
       depth += 1;
-    } //close it
-
-
+    }
+    //close it
     if (depth > 0) {
       if (c === close) {
         depth -= 1;
-
         if (depth === 0) {
           carry.push(c);
           let tmpl = carry.join('');
-          carry = []; //last check
-
+          carry = [];
+          //last check
           if (/\{\{/.test(tmpl) && /\}\}/.test(tmpl)) {
             list.push(tmpl);
           }
-
-          continue;
+          continue
         }
-      } //require two '{{' to open it
-
-
+      }
+      //require two '{{' to open it
       if (depth === 1 && c !== open && c !== close) {
         depth = 0;
         carry = [];
-        continue;
+        continue
       }
-
       carry.push(c);
     }
   }
-
-  return list;
+  return list
 };
 
-var _02Flat = findFlat$1;
-
-const fmtName = _fmtName; //get the name of the template
+//get the name of the template
 //templates are usually '{{name|stuff}}'
-
-const getName$1 = function (tmpl) {
-  let name = null; //{{name|foo}}
-
+const getName = function (tmpl) {
+  let name = null;
+  //{{name|foo}}
   if (/^\{\{[^\n]+\|/.test(tmpl)) {
     name = (tmpl.match(/^\{\{(.+?)\|/) || [])[1];
   } else if (tmpl.indexOf('\n') !== -1) {
@@ -3455,97 +3902,105 @@ const getName$1 = function (tmpl) {
     //{{name here}}
     name = (tmpl.match(/^\{\{(.+?)\}\}$/) || [])[1];
   }
-
   if (name) {
     name = name.replace(/:.*/, '');
     name = fmtName(name);
   }
-
-  return name || null;
+  return name || null
 };
 
-var _getName = getName$1;
-
-const findFlat = _02Flat;
-const getName = _getName;
 const hasTemplate$1 = /\{\{/;
 
-const parseTemplate$3 = function (tmpl) {
+const parseTemplate$1 = function (tmpl) {
   // this is some unexplained Lua thing
   tmpl = tmpl.replace(/#invoke:/, '');
   return {
     body: tmpl,
     name: getName(tmpl),
-    children: []
-  };
+    children: [],
+  }
 };
 
 const doEach = function (obj) {
   // peel-off top-level
   let wiki = obj.body.substr(2);
-  wiki = wiki.replace(/\}\}$/, ''); // get our child templates
+  wiki = wiki.replace(/\}\}$/, '');
 
+  // get our child templates
   obj.children = findFlat(wiki);
-  obj.children = obj.children.map(parseTemplate$3);
+  obj.children = obj.children.map(parseTemplate$1);
 
   if (obj.children.length === 0) {
-    return obj;
-  } // recurse through children
-
-
-  obj.children.forEach(ch => {
+    return obj
+  }
+  // recurse through children
+  obj.children.forEach((ch) => {
     let inside = ch.body.substr(2);
-
     if (hasTemplate$1.test(inside)) {
-      return doEach(ch); //keep going
+      return doEach(ch) //keep going
     }
-
-    return null;
+    return null
   });
-  return obj;
-}; // return a nested structure of all templates
-
-
-const findTemplates$1 = function (wiki) {
-  let list = findFlat(wiki);
-  list = list.map(parseTemplate$3);
-  list = list.map(doEach);
-  return list;
+  return obj
 };
 
-var _01Nested = findTemplates$1;
+// return a nested structure of all templates
+const findTemplates = function (wiki) {
+  let list = findFlat(wiki);
+  list = list.map(parseTemplate$1);
+  list = list.map(doEach);
+  return list
+};
 
-const list$1 = [//https://en.wikipedia.org/wiki/category:templates_with_no_visible_output
-'anchor', 'defaultsort', 'use list-defined references', 'void', //https://en.wikipedia.org/wiki/Category:Protection_templates
-'pp', 'pp-move-indef', 'pp-semi-indef', 'pp-vandalism', //https://en.wikipedia.org/wiki/Template:R
-'r', //out-of-scope still - https://en.wikipedia.org/wiki/Template:Tag
-'#tag', //https://en.wikipedia.org/wiki/Template:Navboxes
-// 'navboxes',
-// 'reflist',
-// 'ref-list',
-'div col', // 'authority control',
-//https://en.wikipedia.org/wiki/Template:Citation_needed
-// 'better source',
-// 'citation needed',
-// 'clarify',
-// 'cite quote',
-// 'dead link',
-// 'by whom',
-// 'dubious',
-// 'when',
-// 'who',
-// 'quantify',
-// 'refimprove',
-// 'weasel inline',
-//https://en.wikipedia.org/wiki/Template:End
-'pope list end', 'shipwreck list end', 'starbox end', 'end box', 'end', 's-end'];
-const ignore$1 = list$1.reduce((h, str) => {
+//we explicitly ignore these, because they sometimes have resolve some data
+const list = [
+  //https://en.wikipedia.org/wiki/category:templates_with_no_visible_output
+  'anchor',
+  'defaultsort',
+  'use list-defined references',
+  'void',
+  //https://en.wikipedia.org/wiki/Category:Protection_templates
+  'pp',
+  'pp-move-indef',
+  'pp-semi-indef',
+  'pp-vandalism',
+  //https://en.wikipedia.org/wiki/Template:R
+  'r',
+  //out-of-scope still - https://en.wikipedia.org/wiki/Template:Tag
+  '#tag',
+  //https://en.wikipedia.org/wiki/Template:Navboxes
+  // 'navboxes',
+  // 'reflist',
+  // 'ref-list',
+  'div col',
+  // 'authority control',
+  //https://en.wikipedia.org/wiki/Template:Citation_needed
+  // 'better source',
+  // 'citation needed',
+  // 'clarify',
+  // 'cite quote',
+  // 'dead link',
+  // 'by whom',
+  // 'dubious',
+  // 'when',
+  // 'who',
+  // 'quantify',
+  // 'refimprove',
+  // 'weasel inline',
+  //https://en.wikipedia.org/wiki/Template:End
+  'pope list end',
+  'shipwreck list end',
+  'starbox end',
+  'end box',
+  'end',
+  's-end',
+];
+const ignore = list.reduce((h, str) => {
   h[str] = true;
-  return h;
+  return h
 }, {});
-var _ignore = ignore$1;
 
-var _infoboxes = {
+var infoboxes = {
   'gnf protein box': true,
   'automatic taxobox': true,
   'chembox ': true,
@@ -3580,72 +4035,56 @@ var _infoboxes = {
   'pro hockey team': true,
   'hockey team player': true,
   'hockey team start': true,
-  mlbbioret: true
+  mlbbioret: true,
 };
 
-const i18n$3 = i18n$6;
-const infoboxes$1 = _infoboxes;
-const i18nReg = new RegExp('^(subst.)?(' + i18n$3.infoboxes.join('|') + ')[: \n]', 'i'); //some looser ones
-
+const i18nReg = new RegExp('^(subst.)?(' + infoboxes$1.join('|') + ')[: \n]', 'i');
+//some looser ones
 const startReg = /^infobox /i;
 const endReg = / infobox$/i;
-const yearIn = /^year in [A-Z]/i; //some known ones from
+const yearIn = /^year in [A-Z]/i;
+
+//some known ones from
 //https://en.wikipedia.org/wiki/Wikipedia:List_of_infoboxes
 //and https://en.wikipedia.org/wiki/Category:Infobox_templates
-
 const isInfobox = function (name) {
   //known
-  if (infoboxes$1.hasOwnProperty(name) === true) {
-    return true;
+  if (infoboxes.hasOwnProperty(name) === true) {
+    return true
   }
-
   if (i18nReg.test(name)) {
-    return true;
+    return true
   }
-
   if (startReg.test(name) || endReg.test(name)) {
-    return true;
-  } //these are also infoboxes: 'Year in Belarus'
-
-
-  if (yearIn.test(name)) {
-    return true;
+    return true
   }
+  //these are also infoboxes: 'Year in Belarus'
+  if (yearIn.test(name)) {
+    return true
+  }
+  return false
+};
 
-  return false;
-}; //turns template data into good infobox data
-
-
-const fmtInfobox = function () {
-  let obj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+//turns template data into good infobox data
+const fmtInfobox = function (obj = {}) {
   let m = obj.template.match(i18nReg);
   let type = obj.template;
-
   if (m && m[0]) {
     type = type.replace(m[0], '');
   }
-
   type = type.trim();
   let infobox = {
     template: 'infobox',
     type: type,
-    data: obj
+    data: obj,
   };
   delete infobox.data.template; //already have this.
-
   delete infobox.data.list; //just in case!
-
-  return infobox;
+  return infobox
 };
 
-var _infobox = {
-  isInfobox: isInfobox,
-  format: fmtInfobox
-};
-
-const languages$2 = languages$4; //aliases
-
-let aliases$1 = {
+//aliases
+let aliases = {
   imdb: 'imdb name',
   'imdb episodess': 'imdb episode',
   localday: 'currentday',
@@ -3660,50 +4099,175 @@ let aliases$1 = {
   'unreferenced section': 'unreferenced',
   redir: 'redirect',
   sisterlinks: 'sister project links',
-  'main article': 'main'
-}; //multiple aliases
+  'main article': 'main',
+};
 
+//multiple aliases
 let multi = {
-  date: ['byline', 'dateline'],
-  //wikinews
+  date: ['byline', 'dateline'], //wikinews
   citation: ['cite', 'source', 'source-pr', 'source-science'],
+
   flagcountry: ['cr', 'cr-rt'],
+
   trunc: ['str left', 'str crop'],
+
   percentage: ['pct', 'percentage'],
+
   rnd: ['rndfrac', 'rndnear'],
+
   abbr: ['tooltip', 'abbrv', 'define'],
+
   sfn: ['sfnref', 'harvid', 'harvnb'],
+
   'birth date and age': ['death date and age', 'bda'],
+
   currentmonth: ['localmonth', 'currentmonthname', 'currentmonthabbrev'],
+
   currency: ['monnaie', 'unité', 'nombre', 'nb', 'iso4217'],
+
   coord: ['coor', 'coor title dms', 'coor title dec', 'coor dms', 'coor dm', 'coor dec'],
+
   'columns-list': ['cmn', 'col-list', 'columnslist', 'collist'],
+
   nihongo: ['nihongo2', 'nihongo3', 'nihongo-s', 'nihongo foot'],
+
   plainlist: ['flatlist', 'plain list'],
+
   'winning percentage': ['winpct', 'winperc'],
-  'collapsible list': ['nblist', 'nonbulleted list', 'ubl', 'ublist', 'ubt', 'unbullet', 'unbulleted list', 'unbulleted', 'unbulletedlist', 'vunblist'],
-  'election box begin': ['election box begin no change', 'election box begin no party', 'election box begin no party no change', 'election box inline begin', 'election box inline begin no change'],
-  'election box candidate': ['election box candidate for alliance', 'election box candidate minor party', 'election box candidate no party link no change', 'election box candidate with party link', 'election box candidate with party link coalition 1918', 'election box candidate with party link no change', 'election box inline candidate', 'election box inline candidate no change', 'election box inline candidate with party link', 'election box inline candidate with party link no change', 'election box inline incumbent'],
-  '4teambracket': ['2teambracket', '4team2elimbracket', '8teambracket', '16teambracket', '32teambracket', '4roundbracket-byes', 'cwsbracket', 'nhlbracket', 'nhlbracket-reseed', '4teambracket-nhl', '4teambracket-ncaa', '4teambracket-mma', '4teambracket-mlb', '16teambracket-two-reseeds', '8teambracket-nhl', '8teambracket-mlb', '8teambracket-ncaa', '8teambracket-afc', '8teambracket-afl', '8teambracket-tennis3', '8teambracket-tennis5', '16teambracket-nhl', '16teambracket-nhl divisional', '16teambracket-nhl-reseed', '16teambracket-nba', '16teambracket-swtc', '16teambracket-afc', '16teambracket-tennis3', '16teambracket-tennis5'],
-  start: ['end', 'birth', 'death', 'start date', 'end date', 'birth date', 'death date', 'start date and age', 'end date and age', 'dob'],
-  'start-date': ['end-date', 'birth-date', 'death-date', 'birth-date and age', 'birth-date and given age', 'death-date and age', 'death-date and given age'],
-  tl: ['lts', 't', 'tfd links', 'tiw', 'tltt', 'tetl', 'tsetl', 'ti', 'tic', 'tiw', 'tlt', 'ttl', 'twlh', 'tl2', 'tlu', 'demo', 'hatnote', 'xpd', 'para', 'elc', 'xtag', 'mli', 'mlix', '#invoke', 'url' //https://en.wikipedia.org/wiki/Template:URL
-  ]
-}; // - other languages -
+
+  'collapsible list': [
+    'nblist',
+    'nonbulleted list',
+    'ubl',
+    'ublist',
+    'ubt',
+    'unbullet',
+    'unbulleted list',
+    'unbulleted',
+    'unbulletedlist',
+    'vunblist'
+  ],
+
+  'election box begin': [
+    'election box begin no change',
+    'election box begin no party',
+    'election box begin no party no change',
+    'election box inline begin',
+    'election box inline begin no change',
+  ],
+
+  'election box candidate': [
+    'election box candidate for alliance',
+    'election box candidate minor party',
+    'election box candidate no party link no change',
+    'election box candidate with party link',
+    'election box candidate with party link coalition 1918',
+    'election box candidate with party link no change',
+    'election box inline candidate',
+    'election box inline candidate no change',
+    'election box inline candidate with party link',
+    'election box inline candidate with party link no change',
+    'election box inline incumbent',
+  ],
+
+  '4teambracket': [
+    '2teambracket',
+    '4team2elimbracket',
+    '8teambracket',
+    '16teambracket',
+    '32teambracket',
+    '4roundbracket-byes',
+    'cwsbracket',
+    'nhlbracket',
+    'nhlbracket-reseed',
+    '4teambracket-nhl',
+    '4teambracket-ncaa',
+    '4teambracket-mma',
+    '4teambracket-mlb',
+    '16teambracket-two-reseeds',
+    '8teambracket-nhl',
+    '8teambracket-mlb',
+    '8teambracket-ncaa',
+    '8teambracket-afc',
+    '8teambracket-afl',
+    '8teambracket-tennis3',
+    '8teambracket-tennis5',
+    '16teambracket-nhl',
+    '16teambracket-nhl divisional',
+    '16teambracket-nhl-reseed',
+    '16teambracket-nba',
+    '16teambracket-swtc',
+    '16teambracket-afc',
+    '16teambracket-tennis3',
+    '16teambracket-tennis5',
+  ],
+
+  start: [
+    'end',
+    'birth',
+    'death',
+    'start date',
+    'end date',
+    'birth date',
+    'death date',
+    'start date and age',
+    'end date and age',
+    'dob',
+  ],
+
+  'start-date': [
+    'end-date',
+    'birth-date',
+    'death-date',
+    'birth-date and age',
+    'birth-date and given age',
+    'death-date and age',
+    'death-date and given age',
+  ],
+
+  tl: [
+    'lts',
+    't',
+    'tfd links',
+    'tiw',
+    'tltt',
+    'tetl',
+    'tsetl',
+    'ti',
+    'tic',
+    'tiw',
+    'tlt',
+    'ttl',
+    'twlh',
+    'tl2',
+    'tlu',
+    'demo',
+    'hatnote',
+    'xpd',
+    'para',
+    'elc',
+    'xtag',
+    'mli',
+    'mlix',
+    '#invoke',
+    'url', //https://en.wikipedia.org/wiki/Template:URL
+  ],
+};
+
+// - other languages -
 // Polish, {{IPAc-pl}}	{{IPAc-pl|'|sz|cz|e|ć|i|n}} → [ˈʂt͡ʂɛt͡ɕin]
 // Portuguese, {{IPAc-pt}}	{{IPAc-pt|p|o|<|r|t|u|'|g|a|l|lang=pt}} and {{IPAc-pt|b|r|a|'|s|i|l|lang=br}} → [puɾtuˈɣaɫ] and [bɾaˈsiw]
+Object.keys(languages).forEach((lang) => {
+  aliases['ipa-' + lang] = 'ipa';
+  aliases['ipac-' + lang] = 'ipac';
+});
 
-Object.keys(languages$2).forEach(lang => {
-  aliases$1['ipa-' + lang] = 'ipa';
-  aliases$1['ipac-' + lang] = 'ipac';
-}); // add each alias in
-
-Object.keys(multi).forEach(k => {
-  multi[k].forEach(str => {
-    aliases$1[str] = k;
+// add each alias in
+Object.keys(multi).forEach((k) => {
+  multi[k].forEach((str) => {
+    aliases[str] = k;
   });
 });
-var aliases_1 = aliases$1;
 
 var hardcoded = {
   '·': '·',
@@ -3744,95 +4308,126 @@ var hardcoded = {
   'h.': 'ḥ',
   profit: '▲',
   loss: '▼',
-  gain: '▲'
+  gain: '▲',
 };
 
-const languages$1 = languages$4; //grab the first, second or third pipe..
-
-let templates$b = {
+//grab the first, second or third pipe..
+let templates$9 = {
   p1: 0,
   p2: 1,
   p3: 2,
-  resize: 1,
-  //https://en.wikipedia.org/wiki/Template:Resize
+  resize: 1, //https://en.wikipedia.org/wiki/Template:Resize
   lang: 1,
   'rtl-lang': 1,
   l: 2,
-  h: 1,
-  //https://en.wikipedia.org/wiki/Template:Hover_title
-  sort: 1 //https://en.wikipedia.org/wiki/Template:Sort
+  h: 1, //https://en.wikipedia.org/wiki/Template:Hover_title
+  sort: 1, //https://en.wikipedia.org/wiki/Template:Sort
+};
 
-}; //templates that we simply grab their insides as plaintext
-
-let zeros = ['defn', 'lino', //https://en.wikipedia.org/wiki/Template:Linum
-'finedetail', //https://en.wikipedia.org/wiki/Template:Finedetail
-'nobold', 'noitalic', 'nocaps', 'vanchor', //https://en.wikipedia.org/wiki/Template:Visible_anchor
-'rnd', 'date', //Explictly-set dates - https://en.wikipedia.org/wiki/Template:Date
-'taste', 'monthname', 'baseball secondary style', 'lang-de', 'nowrap', 'nobr', 'big', 'cquote', 'pull quote', 'small', 'smaller', 'midsize', 'larger', 'big', 'kbd', 'bigger', 'large', 'mono', 'strongbad', 'stronggood', 'huge', 'xt', 'xt2', '!xt', 'xtn', 'xtd', 'dc', 'dcr', 'mxt', '!mxt', 'mxtn', 'mxtd', 'bxt', '!bxt', 'bxtn', 'bxtd', 'delink', //https://en.wikipedia.org/wiki/Template:Delink
-'pre', 'var', 'mvar', 'pre2', 'code'];
-zeros.forEach(k => {
-  templates$b[k] = 0;
-}); //https://en.wikipedia.org/wiki/Category:Lang-x_templates
-
-Object.keys(languages$1).forEach(k => {
-  templates$b['lang-' + k] = 0;
+//templates that we simply grab their insides as plaintext
+let zeros = [
+  'defn',
+  'lino', //https://en.wikipedia.org/wiki/Template:Linum
+  'finedetail', //https://en.wikipedia.org/wiki/Template:Finedetail
+  'nobold',
+  'noitalic',
+  'nocaps',
+  'vanchor', //https://en.wikipedia.org/wiki/Template:Visible_anchor
+  'rnd',
+  'date', //Explictly-set dates - https://en.wikipedia.org/wiki/Template:Date
+  'taste',
+  'monthname',
+  'baseball secondary style',
+  'lang-de',
+  'nowrap',
+  'nobr',
+  'big',
+  'cquote',
+  'pull quote',
+  'small',
+  'smaller',
+  'midsize',
+  'larger',
+  'big',
+  'kbd',
+  'bigger',
+  'large',
+  'mono',
+  'strongbad',
+  'stronggood',
+  'huge',
+  'xt',
+  'xt2',
+  '!xt',
+  'xtn',
+  'xtd',
+  'dc',
+  'dcr',
+  'mxt',
+  '!mxt',
+  'mxtn',
+  'mxtd',
+  'bxt',
+  '!bxt',
+  'bxtn',
+  'bxtd',
+  'delink', //https://en.wikipedia.org/wiki/Template:Delink
+  'pre',
+  'var',
+  'mvar',
+  'pre2',
+  'code',
+];
+zeros.forEach((k) => {
+  templates$9[k] = 0;
 });
-var shorthand$1 = templates$b;
 
-const languages = languages$4; //simply num/denom * 100
+//https://en.wikipedia.org/wiki/Category:Lang-x_templates
+Object.keys(languages).forEach((k) => {
+  templates$9['lang-' + k] = 0;
+});
 
+//simply num/denom * 100
 const percentage = function (obj) {
   if (!obj.numerator && !obj.denominator) {
-    return null;
+    return null
   }
-
   let perc = Number(obj.numerator) / Number(obj.denominator);
   perc *= 100;
   let dec = Number(obj.decimals);
-
   if (isNaN(dec)) {
     dec = 1;
   }
-
-  perc = perc.toFixed(dec);
-  return Number(perc);
+  return Number(perc.toFixed(dec))
 };
 
-const toNumber = function () {
-  let str = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-
+const toNumber = function (str = '') {
   if (typeof str === 'number') {
-    return str;
+    return str
   }
-
   str = str.replace(/,/g, '');
   str = str.replace(/−/g, '-');
   let num = Number(str);
-
   if (isNaN(num)) {
-    return str;
+    return str
   }
-
-  return num;
+  return num
 };
 
 const getLang = function (name) {
   //grab the language from the template name - 'ipa-de'
   let lang = name.match(/ipac?-(.+)/);
-
   if (lang !== null) {
     if (languages.hasOwnProperty(lang[1]) === true) {
-      return languages[lang[1]].english_title;
+      return languages[lang[1]].english_title
     }
-
-    return lang[1];
+    return lang[1]
   }
-
-  return null;
+  return null
 };
 
-const titlecase$1 = str => {
-  return str.charAt(0).toUpperCase() + str.substring(1);
+const titlecase = (str) => {
+  return str.charAt(0).toUpperCase() + str.substring(1)
 };
 
 const sisterProjects = {
@@ -3850,372 +4445,377 @@ const sisterProjects = {
   d: 'wikidata',
   species: 'wikispecies',
   m: 'meta',
-  mw: 'mediawiki'
-};
-var _lib$3 = {
-  titlecase: titlecase$1,
-  sisterProjects: sisterProjects,
-  getLang: getLang,
-  percentage: percentage,
-  toNumber: toNumber
+  mw: 'mediawiki',
 };
 
-const parse$i = toJSON$4;
-const strip$1 = _strip;
-const lib$3 = _lib$3;
-var functions$2 = {
+var functions = {
   //https://en.wikipedia.org/wiki/Template:Ra
-  ra: tmpl => {
-    let obj = parse$i(tmpl, ['hours', 'minutes', 'seconds']);
-    return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':');
+  ra: (tmpl) => {
+    let obj = parser(tmpl, ['hours', 'minutes', 'seconds']);
+    return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':')
   },
+
   //https://en.wikipedia.org/wiki/Template:Deg2HMS
-  deg2hms: tmpl => {
+  deg2hms: (tmpl) => {
     //this template should do the conversion
-    let obj = parse$i(tmpl, ['degrees']);
-    return (obj.degrees || '') + '°';
+    let obj = parser(tmpl, ['degrees']);
+    return (obj.degrees || '') + '°'
   },
-  hms2deg: tmpl => {
+
+  hms2deg: (tmpl) => {
     //this template should do the conversion too
-    let obj = parse$i(tmpl, ['hours', 'minutes', 'seconds']);
-    return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':');
+    let obj = parser(tmpl, ['hours', 'minutes', 'seconds']);
+    return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':')
   },
-  decdeg: tmpl => {
+
+  decdeg: (tmpl) => {
     //this template should do the conversion too
-    let obj = parse$i(tmpl, ['deg', 'min', 'sec', 'hem', 'rnd']);
-    return (obj.deg || obj.degrees) + '°';
+    let obj = parser(tmpl, ['deg', 'min', 'sec', 'hem', 'rnd']);
+    return (obj.deg || obj.degrees) + '°'
   },
   //https://en.wikipedia.org/wiki/Template:Sortname
-  sortname: tmpl => {
+  sortname: (tmpl) => {
     let order = ['first', 'last', 'target', 'sort'];
-    let obj = parse$i(tmpl, order);
-    let name = "".concat(obj.first || '', " ").concat(obj.last || '');
+    let obj = parser(tmpl, order);
+    let name = `${obj.first || ''} ${obj.last || ''}`;
     name = name.trim();
-
     if (obj.nolink) {
-      return obj.target || name;
+      return obj.target || name
     }
-
     if (obj.dab) {
-      name += " (".concat(obj.dab, ")");
-
+      name += ` (${obj.dab})`;
       if (obj.target) {
-        obj.target += " (".concat(obj.dab, ")");
+        obj.target += ` (${obj.dab})`;
       }
     }
-
     if (obj.target) {
-      return "[[".concat(obj.target, "|").concat(name, "]]");
+      return `[[${obj.target}|${name}]]`
     }
-
-    return "[[".concat(name, "]]");
+    return `[[${name}]]`
   },
+
   // https://en.wikipedia.org/wiki/Template:First_word
-  'first word': tmpl => {
-    let obj = parse$i(tmpl, ['text']);
+  'first word': (tmpl) => {
+    let obj = parser(tmpl, ['text']);
     let str = obj.text;
-
     if (obj.sep) {
-      return str.split(obj.sep)[0];
+      return str.split(obj.sep)[0]
     }
+    return str.split(' ')[0]
+  },
 
-    return str.split(' ')[0];
-  },
-  trunc: tmpl => {
+  trunc: (tmpl) => {
     let order = ['str', 'len'];
-    let obj = parse$i(tmpl, order);
-    return obj.str.substr(0, obj.len);
+    let obj = parser(tmpl, order);
+    return obj.str.substr(0, obj.len)
   },
-  'str mid': tmpl => {
+
+  'str mid': (tmpl) => {
     let order = ['str', 'start', 'end'];
-    let obj = parse$i(tmpl, order);
+    let obj = parser(tmpl, order);
     let start = parseInt(obj.start, 10) - 1;
     let end = parseInt(obj.end, 10);
-    return obj.str.substr(start, end);
+    return obj.str.substr(start, end)
   },
-  reign: tmpl => {
+
+  reign: (tmpl) => {
     let order = ['start', 'end'];
-    let obj = parse$i(tmpl, order);
-    return "(r. ".concat(obj.start, " \u2013 ").concat(obj.end, ")");
+    let obj = parser(tmpl, order);
+    return `(r. ${obj.start} – ${obj.end})`
   },
-  circa: tmpl => {
-    let obj = parse$i(tmpl, ['year']);
-    return "c. ".concat(obj.year);
+
+  circa: (tmpl) => {
+    let obj = parser(tmpl, ['year']);
+    return `c. ${obj.year}`
   },
+
   // https://en.wikipedia.org/wiki/Template:Decade_link
-  'decade link': tmpl => {
-    let obj = parse$i(tmpl, ['year']);
-    return "".concat(obj.year, "|").concat(obj.year, "s");
+  'decade link': (tmpl) => {
+    let obj = parser(tmpl, ['year']);
+    return `${obj.year}|${obj.year}s`
   },
+
   // https://en.wikipedia.org/wiki/Template:Decade
-  decade: tmpl => {
-    let obj = parse$i(tmpl, ['year']);
+  decade: (tmpl) => {
+    let obj = parser(tmpl, ['year']);
     let year = Number(obj.year);
-    year = parseInt(year / 10, 10) * 10; // round to decade
-
-    return "".concat(year, "s");
+    year = Math.floor(year / 10) * 10; // round to decade
+    return `${year}s`
   },
+
   // https://en.wikipedia.org/wiki/Template:Century
-  century: tmpl => {
-    let obj = parse$i(tmpl, ['year']);
-    let year = Number(obj.year);
-    year = parseInt(year / 100, 10) + 1;
-    return "".concat(year);
+  century: (tmpl) => {
+    let obj = parser(tmpl, ['year']);
+    let year = parseInt(obj.year, 10);
+    year = Math.floor(year / 100) + 1;
+    return `${year}`
   },
-  //https://en.wikipedia.org/wiki/Template:Radic
-  radic: tmpl => {
-    let order = ['after', 'before'];
-    let obj = parse$i(tmpl, order);
-    return "".concat(obj.before || '', "\u221A").concat(obj.after || '');
-  },
-  'medical cases chart/row': tmpl => {
-    // Deprecated template; we keep it.
-    return tmpl;
-  },
-  //https://en.wikipedia.org/wiki/Template:OldStyleDate
-  oldstyledate: tmpl => {
-    let order = ['date', 'year'];
-    let obj = parse$i(tmpl, order);
-    return obj.year ? obj.date + ' ' + obj.year : obj.date;
-  },
-  //formatting things - https://en.wikipedia.org/wiki/Template:Nobold
-  braces: tmpl => {
-    let obj = parse$i(tmpl, ['text']);
-    let attrs = '';
 
+  //https://en.wikipedia.org/wiki/Template:Radic
+  radic: (tmpl) => {
+    let order = ['after', 'before'];
+    let obj = parser(tmpl, order);
+    return `${obj.before || ''}√${obj.after || ''}`
+  },
+
+  'medical cases chart/row': (tmpl) => {
+    // Deprecated template; we keep it.
+    return tmpl
+  },
+
+  //https://en.wikipedia.org/wiki/Template:OldStyleDate
+  oldstyledate: (tmpl) => {
+    let order = ['date', 'year'];
+    let obj = parser(tmpl, order);
+    return obj.year ? obj.date + ' ' + obj.year : obj.date
+  },
+
+  //formatting things - https://en.wikipedia.org/wiki/Template:Nobold
+  braces: (tmpl) => {
+    let obj = parser(tmpl, ['text']);
+    let attrs = '';
     if (obj.list) {
       attrs = '|' + obj.list.join('|');
     }
+    return '{{' + (obj.text || '') + attrs + '}}'
+  },
 
-    return '{{' + (obj.text || '') + attrs + '}}';
-  },
-  hlist: tmpl => {
-    let obj = parse$i(tmpl);
+  hlist: (tmpl) => {
+    let obj = parser(tmpl);
     obj.list = obj.list || [];
-    return obj.list.join(' · ');
+    return obj.list.join(' · ')
   },
-  pagelist: tmpl => {
-    let arr = parse$i(tmpl).list || [];
-    return arr.join(', ');
+
+  pagelist: (tmpl) => {
+    let arr = parser(tmpl).list || [];
+    return arr.join(', ')
   },
+
   //actually rendering these links removes the text.
   //https://en.wikipedia.org/wiki/Template:Catlist
-  catlist: tmpl => {
-    let arr = parse$i(tmpl).list || [];
-    return arr.join(', ');
+  catlist: (tmpl) => {
+    let arr = parser(tmpl).list || [];
+    return arr.join(', ')
   },
+
   //https://en.wikipedia.org/wiki/Template:Br_separated_entries
-  'br separated entries': tmpl => {
-    let arr = parse$i(tmpl).list || [];
-    return arr.join('\n\n');
+  'br separated entries': (tmpl) => {
+    let arr = parser(tmpl).list || [];
+    return arr.join('\n\n')
   },
-  'comma separated entries': tmpl => {
-    let arr = parse$i(tmpl).list || [];
-    return arr.join(', ');
+
+  'comma separated entries': (tmpl) => {
+    let arr = parser(tmpl).list || [];
+    return arr.join(', ')
   },
+
   //https://en.wikipedia.org/wiki/Template:Bare_anchored_list
-  'anchored list': tmpl => {
-    let arr = parse$i(tmpl).list || [];
-    arr = arr.map((str, i) => "".concat(i + 1, ". ").concat(str));
-    return arr.join('\n\n');
+  'anchored list': (tmpl) => {
+    let arr = parser(tmpl).list || [];
+    arr = arr.map((str, i) => `${i + 1}. ${str}`);
+    return arr.join('\n\n')
   },
-  'bulleted list': tmpl => {
-    let arr = parse$i(tmpl).list || [];
-    arr = arr.filter(f => f);
-    arr = arr.map(str => '• ' + str);
-    return arr.join('\n\n');
+
+  'bulleted list': (tmpl) => {
+    let arr = parser(tmpl).list || [];
+    arr = arr.filter((f) => f);
+    arr = arr.map((str) => '• ' + str);
+    return arr.join('\n\n')
   },
+
   //a strange, newline-based list - https://en.wikipedia.org/wiki/Template:Plainlist
-  plainlist: tmpl => {
-    tmpl = strip$1(tmpl);
+  plainlist: (tmpl) => {
+    tmpl = strip(tmpl);
     let arr = tmpl.split('|').slice(1); //remove the title
-
     arr = arr.join('|').split(/\n ?\* ?/); //split on newline
-
-    arr = arr.filter(s => s);
-    return arr.join('\n\n');
+    arr = arr.filter((s) => s);
+    return arr.join('\n\n')
   },
+
   //https://en.wikipedia.org/wiki/Template:Term
-  term: tmpl => {
-    let obj = parse$i(tmpl, ['term']);
-    return "".concat(obj.term, ":");
+  term: (tmpl) => {
+    let obj = parser(tmpl, ['term']);
+    return `${obj.term}:`
   },
-  linum: tmpl => {
-    let obj = parse$i(tmpl, ['num', 'text']);
-    return "".concat(obj.num, ". ").concat(obj.text);
-  },
-  'block indent': tmpl => {
-    let obj = parse$i(tmpl);
 
+  linum: (tmpl) => {
+    let obj = parser(tmpl, ['num', 'text']);
+    return `${obj.num}. ${obj.text}`
+  },
+
+  'block indent': (tmpl) => {
+    let obj = parser(tmpl);
     if (obj['1']) {
-      return '\n' + obj['1'] + '\n';
+      return '\n' + obj['1'] + '\n'
     }
-
-    return '';
+    return ''
   },
+
   //https://en.wikipedia.org/wiki/Template:Lbs
-  lbs: tmpl => {
-    let obj = parse$i(tmpl, ['text']);
-    return "[[".concat(obj.text, " Lifeboat Station|").concat(obj.text, "]]");
+  lbs: (tmpl) => {
+    let obj = parser(tmpl, ['text']);
+    return `[[${obj.text} Lifeboat Station|${obj.text}]]`
   },
+
   //Foo-class
-  lbc: tmpl => {
-    let obj = parse$i(tmpl, ['text']);
-    return "[[".concat(obj.text, "-class lifeboat|").concat(obj.text, "-class]]");
+  lbc: (tmpl) => {
+    let obj = parser(tmpl, ['text']);
+    return `[[${obj.text}-class lifeboat|${obj.text}-class]]`
   },
-  lbb: tmpl => {
-    let obj = parse$i(tmpl, ['text']);
-    return "[[".concat(obj.text, "-class lifeboat|").concat(obj.text, "]]");
-  },
-  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-  '#dateformat': tmpl => {
-    tmpl = tmpl.replace(/:/, '|');
-    let obj = parse$i(tmpl, ['date', 'format']);
-    return obj.date;
-  },
-  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-  lc: tmpl => {
-    tmpl = tmpl.replace(/:/, '|');
-    let obj = parse$i(tmpl, ['text']);
-    return (obj.text || '').toLowerCase();
-  },
-  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-  uc: tmpl => {
-    tmpl = tmpl.replace(/:/, '|');
-    let obj = parse$i(tmpl, ['text']);
-    return (obj.text || '').toUpperCase();
-  },
-  lcfirst: tmpl => {
-    tmpl = tmpl.replace(/:/, '|');
-    let text = parse$i(tmpl, ['text']).text;
 
+  lbb: (tmpl) => {
+    let obj = parser(tmpl, ['text']);
+    return `[[${obj.text}-class lifeboat|${obj.text}]]`
+  },
+
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  '#dateformat': (tmpl) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let obj = parser(tmpl, ['date', 'format']);
+    return obj.date
+  },
+
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  lc: (tmpl) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let obj = parser(tmpl, ['text']);
+    return (obj.text || '').toLowerCase()
+  },
+
+  //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
+  uc: (tmpl) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let obj = parser(tmpl, ['text']);
+    return (obj.text || '').toUpperCase()
+  },
+
+  lcfirst: (tmpl) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let text = parser(tmpl, ['text']).text;
     if (!text) {
-      return '';
+      return ''
     }
-
-    return text[0].toLowerCase() + text.substr(1);
+    return text[0].toLowerCase() + text.substr(1)
   },
-  ucfirst: tmpl => {
-    tmpl = tmpl.replace(/:/, '|');
-    let text = parse$i(tmpl, ['text']).text;
 
+  ucfirst: (tmpl) => {
+    tmpl = tmpl.replace(/:/, '|');
+    let text = parser(tmpl, ['text']).text;
     if (!text) {
-      return '';
+      return ''
     }
+    return text[0].toUpperCase() + text.substr(1)
+  },
 
-    return text[0].toUpperCase() + text.substr(1);
-  },
-  padleft: tmpl => {
+  padleft: (tmpl) => {
     tmpl = tmpl.replace(/:/, '|');
-    let obj = parse$i(tmpl, ['text', 'num']);
+    let obj = parser(tmpl, ['text', 'num']);
     let text = obj.text || '';
-    return text.padStart(obj.num, obj.str || '0');
+    return text.padStart(obj.num, obj.str || '0')
   },
-  padright: tmpl => {
+
+  padright: (tmpl) => {
     tmpl = tmpl.replace(/:/, '|');
-    let obj = parse$i(tmpl, ['text', 'num']);
+    let obj = parser(tmpl, ['text', 'num']);
     let text = obj.text || '';
-    return text.padEnd(obj.num, obj.str || '0');
+    return text.padEnd(obj.num, obj.str || '0')
   },
+
   //https://en.wikipedia.org/wiki/Template:Abbrlink
-  abbrlink: tmpl => {
-    let obj = parse$i(tmpl, ['abbr', 'page']);
-
+  abbrlink: (tmpl) => {
+    let obj = parser(tmpl, ['abbr', 'page']);
     if (obj.page) {
-      return "[[".concat(obj.page, "|").concat(obj.abbr, "]]");
+      return `[[${obj.page}|${obj.abbr}]]`
     }
-
-    return "[[".concat(obj.abbr, "]]");
+    return `[[${obj.abbr}]]`
   },
-  // https://en.wikipedia.org/wiki/Template:Own
-  own: tmpl => {
-    let obj = parse$i(tmpl, ['author']);
-    let str = 'Own work';
 
+  // https://en.wikipedia.org/wiki/Template:Own
+  own: (tmpl) => {
+    let obj = parser(tmpl, ['author']);
+    let str = 'Own work';
     if (obj.author) {
       str += ' by ' + obj.author;
     }
-
-    return str;
+    return str
   },
+
   //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-  formatnum: tmpl => {
+  formatnum: (tmpl) => {
     tmpl = tmpl.replace(/:/, '|');
-    let obj = parse$i(tmpl, ['number']);
+    let obj = parser(tmpl, ['number']);
     let str = obj.number || '';
     str = str.replace(/,/g, '');
     let num = Number(str);
-    return num.toLocaleString() || '';
+    return num.toLocaleString() || ''
   },
+
   //https://en.wikipedia.org/wiki/Template:Frac
-  frac: tmpl => {
+  frac: (tmpl) => {
     let order = ['a', 'b', 'c'];
-    let obj = parse$i(tmpl, order);
-
+    let obj = parser(tmpl, order);
     if (obj.c) {
-      return "".concat(obj.a, " ").concat(obj.b, "/").concat(obj.c);
+      return `${obj.a} ${obj.b}/${obj.c}`
     }
-
     if (obj.b) {
-      return "".concat(obj.a, "/").concat(obj.b);
+      return `${obj.a}/${obj.b}`
     }
-
-    return "1/".concat(obj.b);
+    return `1/${obj.b}`
   },
-  //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
-  convert: tmpl => {
-    let order = ['num', 'two', 'three', 'four'];
-    let obj = parse$i(tmpl, order); //todo: support plural units
 
+  //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
+  convert: (tmpl) => {
+    let order = ['num', 'two', 'three', 'four'];
+    let obj = parser(tmpl, order);
+    //todo: support plural units
     if (obj.two === '-' || obj.two === 'to' || obj.two === 'and') {
       if (obj.four) {
-        return "".concat(obj.num, " ").concat(obj.two, " ").concat(obj.three, " ").concat(obj.four);
+        return `${obj.num} ${obj.two} ${obj.three} ${obj.four}`
       }
-
-      return "".concat(obj.num, " ").concat(obj.two, " ").concat(obj.three);
+      return `${obj.num} ${obj.two} ${obj.three}`
     }
+    return `${obj.num} ${obj.two}`
+  },
 
-    return "".concat(obj.num, " ").concat(obj.two);
-  },
   // Large number of aliases - https://en.wikipedia.org/wiki/Template:Tl
-  tl: tmpl => {
+  tl: (tmpl) => {
     let order = ['first', 'second'];
-    let obj = parse$i(tmpl, order);
-    return obj.second || obj.first;
+    let obj = parser(tmpl, order);
+    return obj.second || obj.first
   },
+
   //this one's a little different
-  won: tmpl => {
-    let data = parse$i(tmpl, ['text']);
-    return data.place || data.text || lib$3.titlecase(data.template);
+  won: (tmpl) => {
+    let data = parser(tmpl, ['text']);
+    return data.place || data.text || titlecase(data.template)
   },
+
   //a convulated way to make a xml tag - https://en.wikipedia.org/wiki/Template:Tag
-  tag: tmpl => {
-    let obj = parse$i(tmpl, ['tag', 'open']);
+  tag: (tmpl) => {
+    let obj = parser(tmpl, ['tag', 'open']);
     const ignore = {
       span: true,
       div: true,
-      p: true
-    }; //pair, empty, close, single
-
+      p: true,
+    };
+    //pair, empty, close, single
     if (!obj.open || obj.open === 'pair') {
       //just skip generating spans and things..
       if (ignore[obj.tag]) {
-        return obj.content || '';
+        return obj.content || ''
       }
-
-      return "<".concat(obj.tag, " ").concat(obj.attribs || '', ">").concat(obj.content || '', "</").concat(obj.tag, ">");
+      return `<${obj.tag} ${obj.attribs || ''}>${obj.content || ''}</${obj.tag}>`
     }
-
-    return '';
+    return ''
   },
+
   //dumb inflector - https://en.wikipedia.org/wiki/Template:Plural
-  plural: tmpl => {
+  plural: (tmpl) => {
     tmpl = tmpl.replace(/plural:/, 'plural|');
     let order = ['num', 'word'];
-    let obj = parse$i(tmpl, order);
+    let obj = parser(tmpl, order);
     let num = Number(obj.num);
     let word = obj.word;
-
     if (num !== 1) {
       if (/.y$/.test(word)) {
         word = word.replace(/y$/, 'ies');
@@ -4223,453 +4823,829 @@ var functions$2 = {
         word += 's';
       }
     }
-
-    return num + ' ' + word;
+    return num + ' ' + word
   },
+
   //https://en.wikipedia.org/wiki/Template:DEC
-  dec: tmpl => {
-    let obj = parse$i(tmpl, ['degrees', 'minutes', 'seconds']);
+  dec: (tmpl) => {
+    let obj = parser(tmpl, ['degrees', 'minutes', 'seconds']);
     let str = (obj.degrees || 0) + '°';
-
     if (obj.minutes) {
-      str += obj.minutes + "\u2032";
+      str += obj.minutes + `′`;
     }
-
     if (obj.seconds) {
       str += obj.seconds + '″';
     }
-
-    return str;
+    return str
   },
-  //https://en.wikipedia.org/wiki/Template:Val
-  val: tmpl => {
-    let obj = parse$i(tmpl, ['number', 'uncertainty']);
-    let num = obj.number;
 
+  //https://en.wikipedia.org/wiki/Template:Val
+  val: (tmpl) => {
+    let obj = parser(tmpl, ['number', 'uncertainty']);
+    let num = obj.number;
     if (num && Number(num)) {
       num = Number(num).toLocaleString();
     }
-
-    let str = num || ''; //prefix/suffix
-
+    let str = num || '';
+    //prefix/suffix
     if (obj.p) {
       str = obj.p + str;
     }
-
     if (obj.s) {
       str = obj.s + str;
-    } //add units, too
-
-
+    }
+    //add units, too
     if (obj.u || obj.ul || obj.upl) {
       str = str + ' ' + (obj.u || obj.ul || obj.upl);
     }
-
-    return str;
+    return str
   },
+
   //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
-  percentage: tmpl => {
-    let obj = parse$i(tmpl, ['numerator', 'denominator', 'decimals']);
-    let num = lib$3.percentage(obj);
-
+  percentage: (tmpl) => {
+    let obj = parser(tmpl, ['numerator', 'denominator', 'decimals']);
+    let num = percentage(obj);
     if (num === null) {
-      return '';
+      return ''
     }
-
-    return num + '%';
+    return num + '%'
   },
+
   // {{Percent-done|done=N|total=N|digits=N}}
-  'percent-done': tmpl => {
-    let obj = parse$i(tmpl, ['done', 'total', 'digits']);
-    let num = lib$3.percentage({
+  'percent-done': (tmpl) => {
+    let obj = parser(tmpl, ['done', 'total', 'digits']);
+    let num = percentage({
       numerator: obj.done,
       denominator: obj.total,
-      decimals: obj.digits
+      decimals: obj.digits,
     });
-
     if (num === null) {
-      return '';
+      return ''
     }
-
-    return "".concat(obj.done, " (").concat(num, "%) done");
-  }
+    return `${obj.done} (${num}%) done`
+  },
 };
 
-var flags$2 = [['🇦🇩', 'and', 'andorra'], ['🇦🇪', 'are', 'united arab emirates'], ['🇦🇫', 'afg', 'afghanistan'], ['🇦🇬', 'atg', 'antigua and barbuda'], ['🇦🇮', 'aia', 'anguilla'], ['🇦🇱', 'alb', 'albania'], ['🇦🇲', 'arm', 'armenia'], ['🇦🇴', 'ago', 'angola'], ['🇦🇶', 'ata', 'antarctica'], ['🇦🇷', 'arg', 'argentina'], ['🇦🇸', 'asm', 'american samoa'], ['🇦🇹', 'aut', 'austria'], ['🇦🇺', 'aus', 'australia'], ['🇦🇼', 'abw', 'aruba'], ['🇦🇽', 'ala', 'åland islands'], ['🇦🇿', 'aze', 'azerbaijan'], ['🇧🇦', 'bih', 'bosnia and herzegovina'], ['🇧🇧', 'brb', 'barbados'], ['🇧🇩', 'bgd', 'bangladesh'], ['🇧🇪', 'bel', 'belgium'], ['🇧🇫', 'bfa', 'burkina faso'], ['🇧🇬', 'bgr', 'bulgaria'], ['🇧🇬', 'bul', 'bulgaria'], //dupe
-['🇧🇭', 'bhr', 'bahrain'], ['🇧🇮', 'bdi', 'burundi'], ['🇧🇯', 'ben', 'benin'], ['🇧🇱', 'blm', 'saint barthélemy'], ['🇧🇲', 'bmu', 'bermuda'], ['🇧🇳', 'brn', 'brunei darussalam'], ['🇧🇴', 'bol', 'bolivia'], ['🇧🇶', 'bes', 'bonaire, sint eustatius and saba'], ['🇧🇷', 'bra', 'brazil'], ['🇧🇸', 'bhs', 'bahamas'], ['🇧🇹', 'btn', 'bhutan'], ['🇧🇻', 'bvt', 'bouvet island'], ['🇧🇼', 'bwa', 'botswana'], ['🇧🇾', 'blr', 'belarus'], ['🇧🇿', 'blz', 'belize'], ['🇨🇦', 'can', 'canada'], ['🇨🇨', 'cck', 'cocos (keeling) islands'], ['🇨🇩', 'cod', 'congo'], ['🇨🇫', 'caf', 'central african republic'], ['🇨🇬', 'cog', 'congo'], ['🇨🇭', 'che', 'switzerland'], ['🇨🇮', 'civ', 'côte d\'ivoire'], ['🇨🇰', 'cok', 'cook islands'], ['🇨🇱', 'chl', 'chile'], ['🇨🇲', 'cmr', 'cameroon'], ['🇨🇳', 'chn', 'china'], ['🇨🇴', 'col', 'colombia'], ['🇨🇷', 'cri', 'costa rica'], ['🇨🇺', 'cub', 'cuba'], ['🇨🇻', 'cpv', 'cape verde'], ['🇨🇼', 'cuw', 'curaçao'], ['🇨🇽', 'cxr', 'christmas island'], ['🇨🇾', 'cyp', 'cyprus'], ['🇨🇿', 'cze', 'czech republic'], ['🇩🇪', 'deu', 'germany'], ['🇩🇪', 'ger', 'germany'], //alias
-['🇩🇯', 'dji', 'djibouti'], ['🇩🇰', 'dnk', 'denmark'], ['🇩🇲', 'dma', 'dominica'], ['🇩🇴', 'dom', 'dominican republic'], ['🇩🇿', 'dza', 'algeria'], ['🇪🇨', 'ecu', 'ecuador'], ['🇪🇪', 'est', 'estonia'], ['🇪🇬', 'egy', 'egypt'], ['🇪🇭', 'esh', 'western sahara'], ['🇪🇷', 'eri', 'eritrea'], ['🇪🇸', 'esp', 'spain'], ['🇪🇹', 'eth', 'ethiopia'], ['🇫🇮', 'fin', 'finland'], ['🇫🇯', 'fji', 'fiji'], ['🇫🇰', 'flk', 'falkland islands (malvinas)'], ['🇫🇲', 'fsm', 'micronesia'], ['🇫🇴', 'fro', 'faroe islands'], ['🇫🇷', 'fra', 'france'], ['🇬🇦', 'gab', 'gabon'], ['🇬🇧', 'gbr', 'united kingdom'], ['🇬🇩', 'grd', 'grenada'], //['🇬🇪', 'geo', 'georgia'],
-['🇬🇫', 'guf', 'french guiana'], ['🇬🇬', 'ggy', 'guernsey'], ['🇬🇭', 'gha', 'ghana'], ['🇬🇮', 'gib', 'gibraltar'], ['🇬🇱', 'grl', 'greenland'], ['🇬🇲', 'gmb', 'gambia'], ['🇬🇳', 'gin', 'guinea'], ['🇬🇵', 'glp', 'guadeloupe'], ['🇬🇶', 'gnq', 'equatorial guinea'], ['🇬🇷', 'grc', 'greece'], ['🇬🇸', 'sgs', 'south georgia'], ['🇬🇹', 'gtm', 'guatemala'], ['🇬🇺', 'gum', 'guam'], ['🇬🇼', 'gnb', 'guinea-bissau'], ['🇬🇾', 'guy', 'guyana'], ['🇭🇰', 'hkg', 'hong kong'], ['🇭🇲', 'hmd', 'heard island and mcdonald islands'], ['🇭🇳', 'hnd', 'honduras'], ['🇭🇷', 'hrv', 'croatia'], ['🇭🇹', 'hti', 'haiti'], ['🇭🇺', 'hun', 'hungary'], ['🇮🇩', 'idn', 'indonesia'], ['🇮🇪', 'irl', 'ireland'], ['🇮🇱', 'isr', 'israel'], ['🇮🇲', 'imn', 'isle of man'], ['🇮🇳', 'ind', 'india'], ['🇮🇴', 'iot', 'british indian ocean territory'], ['🇮🇶', 'irq', 'iraq'], ['🇮🇷', 'irn', 'iran'], ['🇮🇸', 'isl', 'iceland'], ['🇮🇹', 'ita', 'italy'], ['🇯🇪', 'jey', 'jersey'], ['🇯🇲', 'jam', 'jamaica'], ['🇯🇴', 'jor', 'jordan'], ['🇯🇵', 'jpn', 'japan'], ['🇰🇪', 'ken', 'kenya'], ['🇰🇬', 'kgz', 'kyrgyzstan'], ['🇰🇭', 'khm', 'cambodia'], ['🇰🇮', 'kir', 'kiribati'], ['🇰🇲', 'com', 'comoros'], ['🇰🇳', 'kna', 'saint kitts and nevis'], ['🇰🇵', 'prk', 'north korea'], ['🇰🇷', 'kor', 'south korea'], ['🇰🇼', 'kwt', 'kuwait'], ['🇰🇾', 'cym', 'cayman islands'], ['🇰🇿', 'kaz', 'kazakhstan'], ['🇱🇦', 'lao', 'lao people\'s democratic republic'], ['🇱🇧', 'lbn', 'lebanon'], ['🇱🇨', 'lca', 'saint lucia'], ['🇱🇮', 'lie', 'liechtenstein'], ['🇱🇰', 'lka', 'sri lanka'], ['🇱🇷', 'lbr', 'liberia'], ['🇱🇸', 'lso', 'lesotho'], ['🇱🇹', 'ltu', 'lithuania'], ['🇱🇺', 'lux', 'luxembourg'], ['🇱🇻', 'lva', 'latvia'], ['🇱🇾', 'lby', 'libya'], ['🇲🇦', 'mar', 'morocco'], ['🇲🇨', 'mco', 'monaco'], ['🇲🇩', 'mda', 'moldova'], ['🇲🇪', 'mne', 'montenegro'], ['🇲🇫', 'maf', 'saint martin (french part)'], ['🇲🇬', 'mdg', 'madagascar'], ['🇲🇭', 'mhl', 'marshall islands'], ['🇲🇰', 'mkd', 'macedonia'], ['🇲🇱', 'mli', 'mali'], ['🇲🇲', 'mmr', 'myanmar'], ['🇲🇳', 'mng', 'mongolia'], ['🇲🇴', 'mac', 'macao'], ['🇲🇵', 'mnp', 'northern mariana islands'], ['🇲🇶', 'mtq', 'martinique'], ['🇲🇷', 'mrt', 'mauritania'], ['🇲🇸', 'msr', 'montserrat'], ['🇲🇹', 'mlt', 'malta'], ['🇲🇺', 'mus', 'mauritius'], ['🇲🇻', 'mdv', 'maldives'], ['🇲🇼', 'mwi', 'malawi'], ['🇲🇽', 'mex', 'mexico'], ['🇲🇾', 'mys', 'malaysia'], ['🇲🇿', 'moz', 'mozambique'], ['🇳🇦', 'nam', 'namibia'], ['🇳🇨', 'ncl', 'new caledonia'], ['🇳🇪', 'ner', 'niger'], ['🇳🇫', 'nfk', 'norfolk island'], ['🇳🇬', 'nga', 'nigeria'], ['🇳🇮', 'nic', 'nicaragua'], ['🇳🇱', 'nld', 'netherlands'], ['🇳🇴', 'nor', 'norway'], ['🇳🇵', 'npl', 'nepal'], ['🇳🇷', 'nru', 'nauru'], ['🇳🇺', 'niu', 'niue'], ['🇳🇿', 'nzl', 'new zealand'], ['🇴🇲', 'omn', 'oman'], ['🇵🇦', 'pan', 'panama'], ['🇵🇪', 'per', 'peru'], ['🇵🇫', 'pyf', 'french polynesia'], ['🇵🇬', 'png', 'papua new guinea'], ['🇵🇭', 'phl', 'philippines'], ['🇵🇰', 'pak', 'pakistan'], ['🇵🇱', 'pol', 'poland'], ['🇵🇲', 'spm', 'saint pierre and miquelon'], ['🇵🇳', 'pcn', 'pitcairn'], ['🇵🇷', 'pri', 'puerto rico'], ['🇵🇸', 'pse', 'palestinian territory'], ['🇵🇹', 'prt', 'portugal'], ['🇵🇼', 'plw', 'palau'], ['🇵🇾', 'pry', 'paraguay'], ['🇶🇦', 'qat', 'qatar'], ['🇷🇪', 'reu', 'réunion'], ['🇷🇴', 'rou', 'romania'], ['🇷🇸', 'srb', 'serbia'], ['🇷🇺', 'rus', 'russia'], ['🇷🇼', 'rwa', 'rwanda'], ['🇸🇦', 'sau', 'saudi arabia'], ['🇸🇧', 'slb', 'solomon islands'], ['🇸🇨', 'syc', 'seychelles'], ['🇸🇩', 'sdn', 'sudan'], ['🇸🇪', 'swe', 'sweden'], ['🇸🇬', 'sgp', 'singapore'], ['🇸🇭', 'shn', 'saint helena, ascension and tristan da cunha'], ['🇸🇮', 'svn', 'slovenia'], ['🇸🇯', 'sjm', 'svalbard and jan mayen'], ['🇸🇰', 'svk', 'slovakia'], ['🇸🇱', 'sle', 'sierra leone'], ['🇸🇲', 'smr', 'san marino'], ['🇸🇳', 'sen', 'senegal'], ['🇸🇴', 'som', 'somalia'], ['🇸🇷', 'sur', 'suriname'], ['🇸🇸', 'ssd', 'south sudan'], ['🇸🇹', 'stp', 'sao tome and principe'], ['🇸🇻', 'slv', 'el salvador'], ['🇸🇽', 'sxm', 'sint maarten (dutch part)'], ['🇸🇾', 'syr', 'syrian arab republic'], ['🇸🇿', 'swz', 'swaziland'], ['🇹🇨', 'tca', 'turks and caicos islands'], ['🇹🇩', 'tcd', 'chad'], ['🇹🇫', 'atf', 'french southern territories'], ['🇹🇬', 'tgo', 'togo'], ['🇹🇭', 'tha', 'thailand'], ['🇹🇯', 'tjk', 'tajikistan'], ['🇹🇰', 'tkl', 'tokelau'], ['🇹🇱', 'tls', 'timor-leste'], ['🇹🇲', 'tkm', 'turkmenistan'], ['🇹🇳', 'tun', 'tunisia'], ['🇹🇴', 'ton', 'tonga'], ['🇹🇷', 'tur', 'turkey'], ['🇹🇹', 'tto', 'trinidad and tobago'], ['🇹🇻', 'tuv', 'tuvalu'], ['🇹🇼', 'twn', 'taiwan'], ['🇹🇿', 'tza', 'tanzania'], ['🇺🇦', 'ukr', 'ukraine'], ['🇺🇬', 'uga', 'uganda'], ['🇺🇲', 'umi', 'united states minor outlying islands'], ['🇺🇸', 'us', 'united states'], //alias
-['🇺🇸', 'usa', 'united states'], ['🇺🇾', 'ury', 'uruguay'], ['🇺🇿', 'uzb', 'uzbekistan'], ['🇻🇦', 'vat', 'vatican city'], ['🇻🇨', 'vct', 'saint vincent and the grenadines'], ['🇻🇪', 'ven', 'venezuela'], ['🇻🇬', 'vgb', 'virgin islands, british'], ['🇻🇮', 'vir', 'virgin islands, u.s.'], ['🇻🇳', 'vnm', 'viet nam'], ['🇻🇺', 'vut', 'vanuatu'], ['🇼🇫', 'wlf', 'wallis and futuna'], ['🇼🇸', 'wsm', 'samoa'], ['🇾🇪', 'yem', 'yemen'], ['🇾🇹', 'myt', 'mayotte'], ['🇿🇦', 'zaf', 'south africa'], ['🇿🇲', 'zmb', 'zambia'], ['🇿🇼 ', 'zwe', 'zimbabwe'], //others (later unicode versions)
-['🇺🇳', 'un', 'united nations'], ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'], ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'], ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales'], ['🇪🇺', 'eu', 'european union']];
+var flags = [
+  ['🇦🇩', 'and', 'andorra'],
+  ['🇦🇪', 'are', 'united arab emirates'],
+  ['🇦🇫', 'afg', 'afghanistan'],
+  ['🇦🇬', 'atg', 'antigua and barbuda'],
+  ['🇦🇮', 'aia', 'anguilla'],
+  ['🇦🇱', 'alb', 'albania'],
+  ['🇦🇲', 'arm', 'armenia'],
+  ['🇦🇴', 'ago', 'angola'],
+  ['🇦🇶', 'ata', 'antarctica'],
+  ['🇦🇷', 'arg', 'argentina'],
+  ['🇦🇸', 'asm', 'american samoa'],
+  ['🇦🇹', 'aut', 'austria'],
+  ['🇦🇺', 'aus', 'australia'],
+  ['🇦🇼', 'abw', 'aruba'],
+  ['🇦🇽', 'ala', 'åland islands'],
+  ['🇦🇿', 'aze', 'azerbaijan'],
+  ['🇧🇦', 'bih', 'bosnia and herzegovina'],
+  ['🇧🇧', 'brb', 'barbados'],
+  ['🇧🇩', 'bgd', 'bangladesh'],
+  ['🇧🇪', 'bel', 'belgium'],
+  ['🇧🇫', 'bfa', 'burkina faso'],
+  ['🇧🇬', 'bgr', 'bulgaria'],
+  ['🇧🇬', 'bul', 'bulgaria'], //dupe
+  ['🇧🇭', 'bhr', 'bahrain'],
+  ['🇧🇮', 'bdi', 'burundi'],
+  ['🇧🇯', 'ben', 'benin'],
+  ['🇧🇱', 'blm', 'saint barthélemy'],
+  ['🇧🇲', 'bmu', 'bermuda'],
+  ['🇧🇳', 'brn', 'brunei darussalam'],
+  ['🇧🇴', 'bol', 'bolivia'],
+  ['🇧🇶', 'bes', 'bonaire, sint eustatius and saba'],
+  ['🇧🇷', 'bra', 'brazil'],
+  ['🇧🇸', 'bhs', 'bahamas'],
+  ['🇧🇹', 'btn', 'bhutan'],
+  ['🇧🇻', 'bvt', 'bouvet island'],
+  ['🇧🇼', 'bwa', 'botswana'],
+  ['🇧🇾', 'blr', 'belarus'],
+  ['🇧🇿', 'blz', 'belize'],
+  ['🇨🇦', 'can', 'canada'],
+  ['🇨🇨', 'cck', 'cocos (keeling) islands'],
+  ['🇨🇩', 'cod', 'congo'],
+  ['🇨🇫', 'caf', 'central african republic'],
+  ['🇨🇬', 'cog', 'congo'],
+  ['🇨🇭', 'che', 'switzerland'],
+  ['🇨🇮', 'civ', 'côte d\'ivoire'],
+  ['🇨🇰', 'cok', 'cook islands'],
+  ['🇨🇱', 'chl', 'chile'],
+  ['🇨🇲', 'cmr', 'cameroon'],
+  ['🇨🇳', 'chn', 'china'],
+  ['🇨🇴', 'col', 'colombia'],
+  ['🇨🇷', 'cri', 'costa rica'],
+  ['🇨🇺', 'cub', 'cuba'],
+  ['🇨🇻', 'cpv', 'cape verde'],
+  ['🇨🇼', 'cuw', 'curaçao'],
+  ['🇨🇽', 'cxr', 'christmas island'],
+  ['🇨🇾', 'cyp', 'cyprus'],
+  ['🇨🇿', 'cze', 'czech republic'],
+  ['🇩🇪', 'deu', 'germany'],
+  ['🇩🇪', 'ger', 'germany'],//alias
+  ['🇩🇯', 'dji', 'djibouti'],
+  ['🇩🇰', 'dnk', 'denmark'],
+  ['🇩🇲', 'dma', 'dominica'],
+  ['🇩🇴', 'dom', 'dominican republic'],
+  ['🇩🇿', 'dza', 'algeria'],
+  ['🇪🇨', 'ecu', 'ecuador'],
+  ['🇪🇪', 'est', 'estonia'],
+  ['🇪🇬', 'egy', 'egypt'],
+  ['🇪🇭', 'esh', 'western sahara'],
+  ['🇪🇷', 'eri', 'eritrea'],
+  ['🇪🇸', 'esp', 'spain'],
+  ['🇪🇹', 'eth', 'ethiopia'],
+  ['🇫🇮', 'fin', 'finland'],
+  ['🇫🇯', 'fji', 'fiji'],
+  ['🇫🇰', 'flk', 'falkland islands (malvinas)'],
+  ['🇫🇲', 'fsm', 'micronesia'],
+  ['🇫🇴', 'fro', 'faroe islands'],
+  ['🇫🇷', 'fra', 'france'],
+  ['🇬🇦', 'gab', 'gabon'],
+  ['🇬🇧', 'gbr', 'united kingdom'],
+  ['🇬🇩', 'grd', 'grenada'],
+  //['🇬🇪', 'geo', 'georgia'],
+  ['🇬🇫', 'guf', 'french guiana'],
+  ['🇬🇬', 'ggy', 'guernsey'],
+  ['🇬🇭', 'gha', 'ghana'],
+  ['🇬🇮', 'gib', 'gibraltar'],
+  ['🇬🇱', 'grl', 'greenland'],
+  ['🇬🇲', 'gmb', 'gambia'],
+  ['🇬🇳', 'gin', 'guinea'],
+  ['🇬🇵', 'glp', 'guadeloupe'],
+  ['🇬🇶', 'gnq', 'equatorial guinea'],
+  ['🇬🇷', 'grc', 'greece'],
+  ['🇬🇸', 'sgs', 'south georgia'],
+  ['🇬🇹', 'gtm', 'guatemala'],
+  ['🇬🇺', 'gum', 'guam'],
+  ['🇬🇼', 'gnb', 'guinea-bissau'],
+  ['🇬🇾', 'guy', 'guyana'],
+  ['🇭🇰', 'hkg', 'hong kong'],
+  ['🇭🇲', 'hmd', 'heard island and mcdonald islands'],
+  ['🇭🇳', 'hnd', 'honduras'],
+  ['🇭🇷', 'hrv', 'croatia'],
+  ['🇭🇹', 'hti', 'haiti'],
+  ['🇭🇺', 'hun', 'hungary'],
+  ['🇮🇩', 'idn', 'indonesia'],
+  ['🇮🇪', 'irl', 'ireland'],
+  ['🇮🇱', 'isr', 'israel'],
+  ['🇮🇲', 'imn', 'isle of man'],
+  ['🇮🇳', 'ind', 'india'],
+  ['🇮🇴', 'iot', 'british indian ocean territory'],
+  ['🇮🇶', 'irq', 'iraq'],
+  ['🇮🇷', 'irn', 'iran'],
+  ['🇮🇸', 'isl', 'iceland'],
+  ['🇮🇹', 'ita', 'italy'],
+  ['🇯🇪', 'jey', 'jersey'],
+  ['🇯🇲', 'jam', 'jamaica'],
+  ['🇯🇴', 'jor', 'jordan'],
+  ['🇯🇵', 'jpn', 'japan'],
+  ['🇰🇪', 'ken', 'kenya'],
+  ['🇰🇬', 'kgz', 'kyrgyzstan'],
+  ['🇰🇭', 'khm', 'cambodia'],
+  ['🇰🇮', 'kir', 'kiribati'],
+  ['🇰🇲', 'com', 'comoros'],
+  ['🇰🇳', 'kna', 'saint kitts and nevis'],
+  ['🇰🇵', 'prk', 'north korea'],
+  ['🇰🇷', 'kor', 'south korea'],
+  ['🇰🇼', 'kwt', 'kuwait'],
+  ['🇰🇾', 'cym', 'cayman islands'],
+  ['🇰🇿', 'kaz', 'kazakhstan'],
+  ['🇱🇦', 'lao', 'lao people\'s democratic republic'],
+  ['🇱🇧', 'lbn', 'lebanon'],
+  ['🇱🇨', 'lca', 'saint lucia'],
+  ['🇱🇮', 'lie', 'liechtenstein'],
+  ['🇱🇰', 'lka', 'sri lanka'],
+  ['🇱🇷', 'lbr', 'liberia'],
+  ['🇱🇸', 'lso', 'lesotho'],
+  ['🇱🇹', 'ltu', 'lithuania'],
+  ['🇱🇺', 'lux', 'luxembourg'],
+  ['🇱🇻', 'lva', 'latvia'],
+  ['🇱🇾', 'lby', 'libya'],
+  ['🇲🇦', 'mar', 'morocco'],
+  ['🇲🇨', 'mco', 'monaco'],
+  ['🇲🇩', 'mda', 'moldova'],
+  ['🇲🇪', 'mne', 'montenegro'],
+  ['🇲🇫', 'maf', 'saint martin (french part)'],
+  ['🇲🇬', 'mdg', 'madagascar'],
+  ['🇲🇭', 'mhl', 'marshall islands'],
+  ['🇲🇰', 'mkd', 'macedonia'],
+  ['🇲🇱', 'mli', 'mali'],
+  ['🇲🇲', 'mmr', 'myanmar'],
+  ['🇲🇳', 'mng', 'mongolia'],
+  ['🇲🇴', 'mac', 'macao'],
+  ['🇲🇵', 'mnp', 'northern mariana islands'],
+  ['🇲🇶', 'mtq', 'martinique'],
+  ['🇲🇷', 'mrt', 'mauritania'],
+  ['🇲🇸', 'msr', 'montserrat'],
+  ['🇲🇹', 'mlt', 'malta'],
+  ['🇲🇺', 'mus', 'mauritius'],
+  ['🇲🇻', 'mdv', 'maldives'],
+  ['🇲🇼', 'mwi', 'malawi'],
+  ['🇲🇽', 'mex', 'mexico'],
+  ['🇲🇾', 'mys', 'malaysia'],
+  ['🇲🇿', 'moz', 'mozambique'],
+  ['🇳🇦', 'nam', 'namibia'],
+  ['🇳🇨', 'ncl', 'new caledonia'],
+  ['🇳🇪', 'ner', 'niger'],
+  ['🇳🇫', 'nfk', 'norfolk island'],
+  ['🇳🇬', 'nga', 'nigeria'],
+  ['🇳🇮', 'nic', 'nicaragua'],
+  ['🇳🇱', 'nld', 'netherlands'],
+  ['🇳🇴', 'nor', 'norway'],
+  ['🇳🇵', 'npl', 'nepal'],
+  ['🇳🇷', 'nru', 'nauru'],
+  ['🇳🇺', 'niu', 'niue'],
+  ['🇳🇿', 'nzl', 'new zealand'],
+  ['🇴🇲', 'omn', 'oman'],
+  ['🇵🇦', 'pan', 'panama'],
+  ['🇵🇪', 'per', 'peru'],
+  ['🇵🇫', 'pyf', 'french polynesia'],
+  ['🇵🇬', 'png', 'papua new guinea'],
+  ['🇵🇭', 'phl', 'philippines'],
+  ['🇵🇰', 'pak', 'pakistan'],
+  ['🇵🇱', 'pol', 'poland'],
+  ['🇵🇲', 'spm', 'saint pierre and miquelon'],
+  ['🇵🇳', 'pcn', 'pitcairn'],
+  ['🇵🇷', 'pri', 'puerto rico'],
+  ['🇵🇸', 'pse', 'palestinian territory'],
+  ['🇵🇹', 'prt', 'portugal'],
+  ['🇵🇼', 'plw', 'palau'],
+  ['🇵🇾', 'pry', 'paraguay'],
+  ['🇶🇦', 'qat', 'qatar'],
+  ['🇷🇪', 'reu', 'réunion'],
+  ['🇷🇴', 'rou', 'romania'],
+  ['🇷🇸', 'srb', 'serbia'],
+  ['🇷🇺', 'rus', 'russia'],
+  ['🇷🇼', 'rwa', 'rwanda'],
+  ['🇸🇦', 'sau', 'saudi arabia'],
+  ['🇸🇧', 'slb', 'solomon islands'],
+  ['🇸🇨', 'syc', 'seychelles'],
+  ['🇸🇩', 'sdn', 'sudan'],
+  ['🇸🇪', 'swe', 'sweden'],
+  ['🇸🇬', 'sgp', 'singapore'],
+  ['🇸🇭', 'shn', 'saint helena, ascension and tristan da cunha'],
+  ['🇸🇮', 'svn', 'slovenia'],
+  ['🇸🇯', 'sjm', 'svalbard and jan mayen'],
+  ['🇸🇰', 'svk', 'slovakia'],
+  ['🇸🇱', 'sle', 'sierra leone'],
+  ['🇸🇲', 'smr', 'san marino'],
+  ['🇸🇳', 'sen', 'senegal'],
+  ['🇸🇴', 'som', 'somalia'],
+  ['🇸🇷', 'sur', 'suriname'],
+  ['🇸🇸', 'ssd', 'south sudan'],
+  ['🇸🇹', 'stp', 'sao tome and principe'],
+  ['🇸🇻', 'slv', 'el salvador'],
+  ['🇸🇽', 'sxm', 'sint maarten (dutch part)'],
+  ['🇸🇾', 'syr', 'syrian arab republic'],
+  ['🇸🇿', 'swz', 'swaziland'],
+  ['🇹🇨', 'tca', 'turks and caicos islands'],
+  ['🇹🇩', 'tcd', 'chad'],
+  ['🇹🇫', 'atf', 'french southern territories'],
+  ['🇹🇬', 'tgo', 'togo'],
+  ['🇹🇭', 'tha', 'thailand'],
+  ['🇹🇯', 'tjk', 'tajikistan'],
+  ['🇹🇰', 'tkl', 'tokelau'],
+  ['🇹🇱', 'tls', 'timor-leste'],
+  ['🇹🇲', 'tkm', 'turkmenistan'],
+  ['🇹🇳', 'tun', 'tunisia'],
+  ['🇹🇴', 'ton', 'tonga'],
+  ['🇹🇷', 'tur', 'turkey'],
+  ['🇹🇹', 'tto', 'trinidad and tobago'],
+  ['🇹🇻', 'tuv', 'tuvalu'],
+  ['🇹🇼', 'twn', 'taiwan'],
+  ['🇹🇿', 'tza', 'tanzania'],
+  ['🇺🇦', 'ukr', 'ukraine'],
+  ['🇺🇬', 'uga', 'uganda'],
+  ['🇺🇲', 'umi', 'united states minor outlying islands'],
+  ['🇺🇸', 'us', 'united states'],//alias
+  ['🇺🇸', 'usa', 'united states'],
+  ['🇺🇾', 'ury', 'uruguay'],
+  ['🇺🇿', 'uzb', 'uzbekistan'],
+  ['🇻🇦', 'vat', 'vatican city'],
+  ['🇻🇨', 'vct', 'saint vincent and the grenadines'],
+  ['🇻🇪', 'ven', 'venezuela'],
+  ['🇻🇬', 'vgb', 'virgin islands, british'],
+  ['🇻🇮', 'vir', 'virgin islands, u.s.'],
+  ['🇻🇳', 'vnm', 'viet nam'],
+  ['🇻🇺', 'vut', 'vanuatu'],
+  ['🇼🇫', 'wlf', 'wallis and futuna'],
+  ['🇼🇸', 'wsm', 'samoa'],
+  ['🇾🇪', 'yem', 'yemen'],
+  ['🇾🇹', 'myt', 'mayotte'],
+  ['🇿🇦', 'zaf', 'south africa'],
+  ['🇿🇲', 'zmb', 'zambia'],
+  ['🇿🇼 ', 'zwe', 'zimbabwe'],
+  //others (later unicode versions)
+  ['🇺🇳', 'un', 'united nations'],
+  ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'],
+  ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'],
+  ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales'],
+  ['🇪🇺', 'eu', 'european union'],
+];
 
-const parse$h = toJSON$4;
-const flags$1 = flags$2;
-let templates$a = {
+let templates$8 = {
   //https://en.wikipedia.org/wiki/Template:Flag
   // {{flag|USA}} →  USA
-  flag: tmpl => {
+  flag: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = parse$h(tmpl, order);
+    let obj = parser(tmpl, order);
     let name = obj.flag || '';
     obj.flag = (obj.flag || '').toLowerCase();
-    let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]) || [];
+    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
     let flag = found[0] || '';
-    return "".concat(flag, " [[").concat(found[2], "|").concat(name, "]]");
+    return `${flag} [[${found[2]}|${name}]]`
   },
   // {{flagcountry|USA}} →  United States
-  flagcountry: tmpl => {
+  flagcountry: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = parse$h(tmpl, order);
+    let obj = parser(tmpl, order);
     obj.flag = (obj.flag || '').toLowerCase();
-    let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]) || [];
+    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
     let flag = found[0] || '';
-    return "".concat(flag, " [[").concat(found[2], "]]");
+    return `${flag} [[${found[2]}]]`
   },
   // (unlinked flag-country)
-  flagcu: tmpl => {
+  flagcu: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = parse$h(tmpl, order);
+    let obj = parser(tmpl, order);
     obj.flag = (obj.flag || '').toLowerCase();
-    let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]) || [];
+    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
     let flag = found[0] || '';
-    return "".concat(flag, " ").concat(found[2]);
+    return `${flag} ${found[2]}`
   },
   //https://en.wikipedia.org/wiki/Template:Flagicon
   // {{flagicon|USA}} → United States
-  flagicon: tmpl => {
+  flagicon: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = parse$h(tmpl, order);
+    let obj = parser(tmpl, order);
     obj.flag = (obj.flag || '').toLowerCase();
-    let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]);
-
+    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
     if (!found) {
-      return '';
+      return ''
     }
-
-    return "[[".concat(found[2], "|").concat(found[0], "]]");
+    return `[[${found[2]}|${found[0]}]]`
   },
   //unlinked flagicon
-  flagdeco: tmpl => {
+  flagdeco: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = parse$h(tmpl, order);
+    let obj = parser(tmpl, order);
     obj.flag = (obj.flag || '').toLowerCase();
-    let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]) || [];
-    return found[0] || '';
+    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
+    return found[0] || ''
   },
   //same, but a soccer team
-  fb: tmpl => {
+  fb: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = parse$h(tmpl, order);
+    let obj = parser(tmpl, order);
     obj.flag = (obj.flag || '').toLowerCase();
-    let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]);
-
+    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
     if (!found) {
-      return '';
+      return ''
     }
-
-    return "".concat(found[0], " [[").concat(found[2], " national football team|").concat(found[2], "]]");
+    return `${found[0]} [[${found[2]} national football team|${found[2]}]]`
   },
-  fbicon: tmpl => {
+  fbicon: (tmpl) => {
     let order = ['flag', 'variant'];
-    let obj = parse$h(tmpl, order);
+    let obj = parser(tmpl, order);
     obj.flag = (obj.flag || '').toLowerCase();
-    let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]);
-
+    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
     if (!found) {
-      return '';
+      return ''
     }
-
-    return " [[".concat(found[2], " national football team|").concat(found[0], "]]");
+    return ` [[${found[2]} national football team|${found[0]}]]`
   },
-  flagathlete: tmpl => {
+  flagathlete: (tmpl) => {
     let order = ['name', 'flag', 'variant'];
-    let obj = parse$h(tmpl, order);
+    let obj = parser(tmpl, order);
     obj.flag = (obj.flag || '').toLowerCase();
-    let found = flags$1.find(a => obj.flag === a[1] || obj.flag === a[2]);
-
+    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
     if (!found) {
-      return "[[".concat(obj.name || '', "]]");
+      return `[[${obj.name || ''}]]`
     }
-
-    return "".concat(found[0], " [[").concat(obj.name || '', "]] (").concat(found[1].toUpperCase(), ")");
-  }
-}; //support {{can}}
-
-flags$1.forEach(a => {
-  templates$a[a[1]] = () => {
-    return a[0];
+    return `${found[0]} [[${obj.name || ''}]] (${found[1].toUpperCase()})`
+  },
+};
+//support {{can}}
+flags.forEach((a) => {
+  templates$8[a[1]] = () => {
+    return a[0]
   };
 });
-var flags_1 = templates$a;
 
-const parse$g = toJSON$4;
-const titlecase = _lib$3.titlecase; //https://en.wikipedia.org/wiki/Template:Yes
+//random misc for inline wikipedia templates
 
-let templates$9 = {};
-let cells = ['rh', 'rh2', 'yes', 'no', 'maybe', 'eliminated', 'lost', 'safe', 'active', 'site active', 'coming soon', 'good', 'won', 'nom', 'sho', 'longlisted', 'tba', 'success', 'operational', 'failure', 'partial', 'regional', 'maybecheck', 'partial success', 'partial failure', 'okay', 'yes-no', 'some', 'nonpartisan', 'pending', 'unofficial', 'unofficial2', 'usually', 'rarely', 'sometimes', 'any', 'varies', 'black', 'non-album single', 'unreleased', 'unknown', 'perhaps', 'depends', 'included', 'dropped', 'terminated', 'beta', 'table-experimental', 'free', 'proprietary', 'nonfree', 'needs', 'nightly', 'release-candidate', 'planned', 'scheduled', 'incorrect', 'no result', 'cmain', 'calso starring', 'crecurring', 'cguest', 'not yet', 'optional'];
-cells.forEach(str => {
-  templates$9[str] = tmpl => {
-    let data = parse$g(tmpl, ['text']);
-    return data.text || titlecase(data.template);
-  };
-}); //these ones have a text result
-
-let moreCells = [['active fire', 'Active'], ['site active', 'Active'], ['site inactive', 'Inactive'], ['yes2', ''], ['no2', ''], ['ya', '✅'], ['na', '❌'], ['nom', 'Nominated'], ['sho', 'Shortlisted'], ['tba', 'TBA'], ['maybecheck', '✔️'], ['okay', 'Neutral'], ['n/a', 'N/A'], ['sdash', '—'], ['dunno', '?'], ['draw', ''], ['cnone', ''], ['nocontest', '']];
-moreCells.forEach(a => {
-  templates$9[a[0]] = tmpl => {
-    let data = parse$g(tmpl, ['text']);
-    return data.text || a[1];
-  };
-});
-var tableCell = templates$9;
-
-var textOnly = Object.assign({}, hardcoded, shorthand$1, functions$2, flags_1, tableCell);
-
-let templates$8 = {}; // these all have ['id', 'name']
-
-let idName = ['goodreads author', 'twitter', 'facebook', 'instagram', 'tumblr', 'pinterest', 'espn nfl', 'espn nhl', 'espn fc', 'hockeydb', 'fifa player', 'worldcat', 'worldcat id', 'nfl player', 'ted speaker', 'playmate'];
-idName.forEach(name => {
-  templates$8[name] = ['id', 'name'];
-});
-var idName_1 = templates$8;
-
-let templates$7 = {}; // these all have ['id', 'title', 'description', 'section']
-
-let idTitle = ['imdb title', //https://en.wikipedia.org/wiki/Template:IMDb_title
-'imdb name', 'imdb episode', 'imdb event', 'afi film', 'allmovie title', 'allgame', 'tcmdb title', 'discogs artist', 'discogs label', 'discogs release', 'discogs master', 'librivox author', 'musicbrainz artist', 'musicbrainz label', 'musicbrainz recording', 'musicbrainz release', 'musicbrainz work', 'youtube', 'goodreads book', 'dmoz' //https://en.wikipedia.org/wiki/Template:DMOZ
+//https://en.wikipedia.org/wiki/Template:Yes
+let templates$7 = {};
+let cells = [
+  'rh',
+  'rh2',
+  'yes',
+  'no',
+  'maybe',
+  'eliminated',
+  'lost',
+  'safe',
+  'active',
+  'site active',
+  'coming soon',
+  'good',
+  'won',
+  'nom',
+  'sho',
+  'longlisted',
+  'tba',
+  'success',
+  'operational',
+  'failure',
+  'partial',
+  'regional',
+  'maybecheck',
+  'partial success',
+  'partial failure',
+  'okay',
+  'yes-no',
+  'some',
+  'nonpartisan',
+  'pending',
+  'unofficial',
+  'unofficial2',
+  'usually',
+  'rarely',
+  'sometimes',
+  'any',
+  'varies',
+  'black',
+  'non-album single',
+  'unreleased',
+  'unknown',
+  'perhaps',
+  'depends',
+  'included',
+  'dropped',
+  'terminated',
+  'beta',
+  'table-experimental',
+  'free',
+  'proprietary',
+  'nonfree',
+  'needs',
+  'nightly',
+  'release-candidate',
+  'planned',
+  'scheduled',
+  'incorrect',
+  'no result',
+  'cmain',
+  'calso starring',
+  'crecurring',
+  'cguest',
+  'not yet',
+  'optional',
 ];
-idTitle.forEach(name => {
-  templates$7[name] = ['id', 'title', 'description', 'section'];
+cells.forEach((str) => {
+  templates$7[str] = (tmpl) => {
+    let data = parser(tmpl, ['text']);
+    return data.text || titlecase(data.template)
+  };
 });
-var idTitle_1 = templates$7;
 
-const parse$f = toJSON$4;
-const Image$4 = Image_1;
-const lib$2 = _lib$3;
-var functions$1 = {
+//these ones have a text result
+let moreCells = [
+  ['active fire', 'Active'],
+  ['site active', 'Active'],
+  ['site inactive', 'Inactive'],
+  ['yes2', ''],
+  ['no2', ''],
+  ['ya', '✅'],
+  ['na', '❌'],
+  ['nom', 'Nominated'],
+  ['sho', 'Shortlisted'],
+  ['tba', 'TBA'],
+  ['maybecheck', '✔️'],
+  ['okay', 'Neutral'],
+  ['n/a', 'N/A'],
+  ['sdash', '—'],
+  ['dunno', '?'],
+  ['draw', ''],
+  ['cnone', ''],
+  ['nocontest', ''],
+];
+moreCells.forEach((a) => {
+  templates$7[a[0]] = (tmpl) => {
+    let data = parser(tmpl, ['text']);
+    return data.text || a[1]
+  };
+});
+
+var textTmpl = Object.assign(
+  {},
+  hardcoded,
+  templates$9,
+  functions,
+  templates$8,
+  templates$7,
+);
+
+let templates$6 = {};
+// these all have ['id', 'name']
+let idName = [
+  'goodreads author',
+  'twitter',
+  'facebook',
+  'instagram',
+  'tumblr',
+  'pinterest',
+  'espn nfl',
+  'espn nhl',
+  'espn fc',
+  'hockeydb',
+  'fifa player',
+  'worldcat',
+  'worldcat id',
+  'nfl player',
+  'ted speaker',
+  'playmate',
+];
+idName.forEach((name) => {
+  templates$6[name] = ['id', 'name'];
+});
+
+let templates$5 = {};
+// these all have ['id', 'title', 'description', 'section']
+let idTitle = [
+  'imdb title', //https://en.wikipedia.org/wiki/Template:IMDb_title
+  'imdb name',
+  'imdb episode',
+  'imdb event',
+  'afi film',
+  'allmovie title',
+  'allgame',
+  'tcmdb title',
+  'discogs artist',
+  'discogs label',
+  'discogs release',
+  'discogs master',
+  'librivox author',
+  'musicbrainz artist',
+  'musicbrainz label',
+  'musicbrainz recording',
+  'musicbrainz release',
+  'musicbrainz work',
+  'youtube',
+  'goodreads book',
+  'dmoz', //https://en.wikipedia.org/wiki/Template:DMOZ
+];
+idTitle.forEach((name) => {
+  templates$5[name] = ['id', 'title', 'description', 'section'];
+});
+
+var fns = {
   // https://en.wikipedia.org/wiki/Template:IPA
   ipa: (tmpl, list) => {
-    let obj = parse$f(tmpl, ['transcription', 'lang', 'audio']);
-    obj.lang = lib$2.getLang(obj.template);
+    let obj = parser(tmpl, ['transcription', 'lang', 'audio']);
+    obj.lang = getLang(obj.template);
     obj.template = 'ipa';
     list.push(obj);
-    return '';
+    return ''
   },
   //https://en.wikipedia.org/wiki/Template:IPAc-en
   ipac: (tmpl, list) => {
-    let obj = parse$f(tmpl);
+    let obj = parser(tmpl);
     obj.transcription = (obj.list || []).join(',');
     delete obj.list;
-    obj.lang = lib$2.getLang(obj.template);
+    obj.lang = getLang(obj.template);
     obj.template = 'ipac';
     list.push(obj);
-    return '';
+    return ''
   },
+
   quote: (tmpl, list) => {
     let order = ['text', 'author'];
-    let obj = parse$f(tmpl, order);
-    list.push(obj); //create plaintext version
-
+    let obj = parser(tmpl, order);
+    list.push(obj);
+    //create plaintext version
     if (obj.text) {
-      let str = "\"".concat(obj.text, "\"");
-
+      let str = `"${obj.text}"`;
       if (obj.author) {
         str += '\n\n';
-        str += "    - ".concat(obj.author);
+        str += `    - ${obj.author}`;
       }
-
-      return str + '\n';
+      return str + '\n'
     }
-
-    return '';
+    return ''
   },
+
   //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
   'cite gnis': (tmpl, list) => {
     let order = ['id', 'name', 'type'];
-    let obj = parse$f(tmpl, order);
+    let obj = parser(tmpl, order);
     obj.type = 'gnis';
     obj.template = 'citation';
     list.push(obj);
-    return '';
+    return ''
   },
+
   'spoken wikipedia': (tmpl, list) => {
     let order = ['file', 'date'];
-    let obj = parse$f(tmpl, order);
+    let obj = parser(tmpl, order);
     obj.template = 'audio';
     list.push(obj);
-    return '';
+    return ''
   },
+
   //yellow card
   yel: (tmpl, list) => {
-    let obj = parse$f(tmpl, ['min']);
+    let obj = parser(tmpl, ['min']);
     list.push(obj);
-
     if (obj.min) {
-      return "yellow: ".concat(obj.min || '', "'"); //no yellow-card emoji
+      return `yellow: ${obj.min || ''}'` //no yellow-card emoji
     }
-
-    return '';
+    return ''
   },
+
   subon: (tmpl, list) => {
-    let obj = parse$f(tmpl, ['min']);
+    let obj = parser(tmpl, ['min']);
     list.push(obj);
-
     if (obj.min) {
-      return "sub on: ".concat(obj.min || '', "'"); //no yellow-card emoji
+      return `sub on: ${obj.min || ''}'` //no yellow-card emoji
     }
-
-    return '';
+    return ''
   },
+
   suboff: (tmpl, list) => {
-    let obj = parse$f(tmpl, ['min']);
+    let obj = parser(tmpl, ['min']);
     list.push(obj);
-
     if (obj.min) {
-      return "sub off: ".concat(obj.min || '', "'"); //no yellow-card emoji
+      return `sub off: ${obj.min || ''}'` //no yellow-card emoji
     }
-
-    return '';
+    return ''
   },
-  //https://en.wikipedia.org/wiki/Template:Sfn
-  sfn: (tmpl, list, parser, alias) => {
-    let order = ['author', 'year', 'location'];
-    let obj = parse$f(tmpl, order);
 
+  //https://en.wikipedia.org/wiki/Template:Sfn
+  sfn: (tmpl, list, parser$1, alias) => {
+    let order = ['author', 'year', 'location'];
+    let obj = parser(tmpl, order);
     if (alias) {
       obj.name = obj.template;
       obj.teplate = alias;
     }
-
     list.push(obj);
-    return '';
+    return ''
   },
+
   //https://en.wikipedia.org/wiki/Template:Redirect
   redirect: (tmpl, list) => {
-    let data = parse$f(tmpl, ['redirect']);
+    let data = parser(tmpl, ['redirect']);
     let lines = data.list || [];
     let links = [];
-
     for (let i = 0; i < lines.length; i += 2) {
       links.push({
         page: lines[i + 1],
-        desc: lines[i]
+        desc: lines[i],
       });
     }
-
     let obj = {
       template: 'redirect',
       redirect: data.redirect,
-      links: links
+      links: links,
     };
     list.push(obj);
-    return '';
+    return ''
   },
+
   //https://en.wikipedia.org/wiki/Template:Sister_project_links
   'sister project links': (tmpl, list) => {
-    let data = parse$f(tmpl); //rename 'wd' to 'wikidata'
-
+    let data = parser(tmpl);
+    //rename 'wd' to 'wikidata'
     let links = {};
-    Object.keys(lib$2.sisterProjects).forEach(k => {
+    Object.keys(sisterProjects).forEach((k) => {
       if (data.hasOwnProperty(k) === true) {
-        links[lib$2.sisterProjects[k]] = data[k]; //.text();
+        links[sisterProjects[k]] = data[k]; //.text();
       }
     });
     let obj = {
       template: 'sister project links',
-      links: links
+      links: links,
     };
     list.push(obj);
-    return '';
+    return ''
   },
+
   //https://en.wikipedia.org/wiki/Template:Subject_bar
   'subject bar': (tmpl, list) => {
-    let data = parse$f(tmpl);
-    Object.keys(data).forEach(k => {
+    let data = parser(tmpl);
+    Object.keys(data).forEach((k) => {
       //rename 'voy' to 'wikivoyage'
-      if (lib$2.sisterProjects.hasOwnProperty(k)) {
-        data[lib$2.sisterProjects[k]] = data[k];
+      if (sisterProjects.hasOwnProperty(k)) {
+        data[sisterProjects[k]] = data[k];
         delete data[k];
       }
     });
     let obj = {
       template: 'subject bar',
-      links: data
+      links: data,
     };
     list.push(obj);
-    return '';
+    return ''
   },
+
   //amazingly, this one does not obey any known patterns
   //https://en.wikipedia.org/wiki/Template:Gallery
   gallery: (tmpl, list) => {
-    let obj = parse$f(tmpl);
-    let images = (obj.list || []).filter(line => /^ *File ?:/.test(line));
-    images = images.map(file => {
+    let obj = parser(tmpl);
+    let images = (obj.list || []).filter((line) => /^ *File ?:/.test(line));
+    images = images.map((file) => {
       let img = {
-        file: file
-      }; // todo: add lang and domain information
-
-      return new Image$4(img).json();
+        file: file,
+      };
+      // todo: add lang and domain information
+      return new Image(img).json()
     });
     obj = {
       template: 'gallery',
-      images: images
+      images: images,
     };
     list.push(obj);
-    return '';
+    return ''
   },
+
   //https://en.wikipedia.org/wiki/Template:Sky
   sky: (tmpl, list) => {
-    let obj = parse$f(tmpl, ['asc_hours', 'asc_minutes', 'asc_seconds', 'dec_sign', 'dec_degrees', 'dec_minutes', 'dec_seconds', 'distance']);
+    let obj = parser(tmpl, [
+      'asc_hours',
+      'asc_minutes',
+      'asc_seconds',
+      'dec_sign',
+      'dec_degrees',
+      'dec_minutes',
+      'dec_seconds',
+      'distance',
+    ]);
     let template = {
       template: 'sky',
       ascension: {
         hours: obj.asc_hours,
         minutes: obj.asc_minutes,
-        seconds: obj.asc_seconds
+        seconds: obj.asc_seconds,
       },
       declination: {
         sign: obj.dec_sign,
         degrees: obj.dec_degrees,
         minutes: obj.dec_minutes,
-        seconds: obj.dec_seconds
+        seconds: obj.dec_seconds,
       },
-      distance: obj.distance
+      distance: obj.distance,
     };
     list.push(template);
-    return '';
+    return ''
   },
+
   // Parse https://en.wikipedia.org/wiki/Template:Medical_cases_chart -- see
   // https://en.wikipedia.org/wiki/Module:Medical_cases_chart for the original
   // parsing code.
   'medical cases chart': (tmpl, list) => {
-    let order = ['date', 'deathsExpr', 'recoveriesExpr', 'casesExpr', '4thExpr', '5thExpr', 'col1', 'col1Change', 'col2', 'col2Change'];
-    let obj = parse$f(tmpl);
+    let order = [
+      'date',
+      'deathsExpr',
+      'recoveriesExpr',
+      'casesExpr',
+      '4thExpr',
+      '5thExpr',
+      'col1',
+      'col1Change',
+      'col2',
+      'col2Change',
+    ];
+
+    let obj = parser(tmpl);
     obj.data = obj.data || '';
-    let rows = obj.data.split('\n'); // Mimic row parsing in _buildBars in the Lua source, from the following
+    let rows = obj.data.split('\n');
+
+    // Mimic row parsing in _buildBars in the Lua source, from the following
     // line on:
     //
     //     for parameter in mw.text.gsplit(line, ';') do
-
-    let dataArray = rows.map(row => {
+    let dataArray = rows.map((row) => {
       let parameters = row.split(';');
       let rowObject = {
-        options: new Map()
+        options: new Map(),
       };
       let positionalIndex = 0;
-
       for (let i = 0; i < parameters.length; i++) {
         let parameter = parameters[i].trim();
-
         if (parameter.match(/^[a-zA-Z_]/)) {
           // Named argument
-          let [key, value] = parameter.split('='); // At this point, the Lua code evaluates alttot1 and alttot2 values as
+          let [key, value] = parameter.split('=');
+          // At this point, the Lua code evaluates alttot1 and alttot2 values as
           // #expr expressions, but we just pass them through. See also:
           // https://www.mediawiki.org/wiki/Help:Extension:ParserFunctions##expr
-
           if (value === undefined) {
             value = null;
           }
-
           rowObject.options.set(key, value);
         } else {
           // Positional argument
@@ -4678,88 +5654,80 @@ var functions$1 = {
           if (positionalIndex < order.length) {
             rowObject[order[positionalIndex]] = parameter;
           }
-
           positionalIndex++;
         }
       }
-
       for (; positionalIndex < order.length; positionalIndex++) {
         rowObject[order[positionalIndex]] = null;
       }
-
-      return rowObject;
+      return rowObject
     });
     obj.data = dataArray;
     list.push(obj);
-    return '';
+    return ''
   },
+
   graph: (tmpl, list) => {
-    let data = parse$f(tmpl);
-
+    let data = parser(tmpl);
     if (data.x) {
-      data.x = data.x.split(',').map(str => str.trim());
+      data.x = data.x.split(',').map((str) => str.trim());
     }
-
     if (data.y) {
-      data.y = data.y.split(',').map(str => str.trim());
+      data.y = data.y.split(',').map((str) => str.trim());
     }
-
     let y = 1;
-
     while (data['y' + y]) {
-      data['y' + y] = data['y' + y].split(',').map(str => str.trim());
+      data['y' + y] = data['y' + y].split(',').map((str) => str.trim());
       y += 1;
     }
-
     list.push(data);
-    return '';
+    return ''
   },
+
   //https://en.wikipedia.org/wiki/Template:Historical_populations
   'historical populations': (tmpl, list) => {
-    let data = parse$f(tmpl);
+    let data = parser(tmpl);
     data.list = data.list || [];
     let years = [];
-
     for (let i = 0; i < data.list.length; i += 2) {
       let num = data.list[i + 1];
       years.push({
         year: data.list[i],
-        val: Number(num) || num
+        val: Number(num) || num,
       });
     }
-
     data.data = years;
     delete data.list;
     list.push(data);
-    return '';
+    return ''
   },
+
   // this one is a handful!
   //https://en.wikipedia.org/wiki/Template:Weather_box
   'weather box': (tmpl, list) => {
     const hasMonth = /^jan /i;
     const isYear = /^year /i;
-    let obj = parse$f(tmpl);
+    let obj = parser(tmpl);
     const monthList = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
     let byMonth = {};
-    let properties = Object.keys(obj).filter(k => hasMonth.test(k));
-    properties = properties.map(k => k.replace(hasMonth, ''));
-    properties.forEach(prop => {
+    let properties = Object.keys(obj).filter((k) => hasMonth.test(k));
+    properties = properties.map((k) => k.replace(hasMonth, ''));
+    properties.forEach((prop) => {
       byMonth[prop] = [];
-      monthList.forEach(m => {
-        let key = "".concat(m, " ").concat(prop);
-
+      monthList.forEach((m) => {
+        let key = `${m} ${prop}`;
         if (obj.hasOwnProperty(key)) {
-          let num = lib$2.toNumber(obj[key]);
+          let num = toNumber(obj[key]);
           delete obj[key];
           byMonth[prop].push(num);
         }
       });
-    }); //add these to original
-
-    obj.byMonth = byMonth; //collect year-based data
-
+    });
+    //add these to original
+    obj.byMonth = byMonth;
+    //collect year-based data
     let byYear = {};
-    Object.keys(obj).forEach(k => {
+    Object.keys(obj).forEach((k) => {
       if (isYear.test(k)) {
         let prop = k.replace(isYear, '');
         byYear[prop] = obj[k];
@@ -4768,74 +5736,75 @@ var functions$1 = {
     });
     obj.byYear = byYear;
     list.push(obj);
-    return '';
+    return ''
   },
+
   //The 36 parameters are: 12 monthly highs (C), 12 lows (total 24) plus an optional 12 monthly rain/precipitation
   //https://en.wikipedia.org/wiki/Template:Weather_box/concise_C
   'weather box/concise c': (tmpl, list) => {
-    let obj = parse$f(tmpl);
-    obj.list = obj.list.map(s => lib$2.toNumber(s));
+    let obj = parser(tmpl);
+    obj.list = obj.list.map((s) => toNumber(s));
     obj.byMonth = {
       'high c': obj.list.slice(0, 12),
       'low c': obj.list.slice(12, 24),
-      'rain mm': obj.list.slice(24, 36)
+      'rain mm': obj.list.slice(24, 36),
     };
     delete obj.list;
     obj.template = 'weather box';
     list.push(obj);
-    return '';
+    return ''
   },
+
   'weather box/concise f': (tmpl, list) => {
-    let obj = parse$f(tmpl);
-    obj.list = obj.list.map(s => lib$2.toNumber(s));
+    let obj = parser(tmpl);
+    obj.list = obj.list.map((s) => toNumber(s));
     obj.byMonth = {
       'high f': obj.list.slice(0, 12),
       'low f': obj.list.slice(12, 24),
-      'rain inch': obj.list.slice(24, 36)
+      'rain inch': obj.list.slice(24, 36),
     };
     delete obj.list;
     obj.template = 'weather box';
     list.push(obj);
-    return '';
+    return ''
   },
+
   //https://en.wikipedia.org/wiki/Template:Climate_chart
   'climate chart': (tmpl, list) => {
-    let lines = parse$f(tmpl).list || [];
+    let lines = parser(tmpl).list || [];
     let title = lines[0];
     let source = lines[38];
-    lines = lines.slice(1); //amazingly, they use '−' symbol here instead of negatives...
-
-    lines = lines.map(str => {
+    lines = lines.slice(1);
+    //amazingly, they use '−' symbol here instead of negatives...
+    lines = lines.map((str) => {
       if (str && str[0] === '−') {
         str = str.replace(/−/, '-');
       }
-
-      return str;
+      return str
     });
-    let months = []; //groups of three, for 12 months
-
+    let months = [];
+    //groups of three, for 12 months
     for (let i = 0; i < 36; i += 3) {
       months.push({
-        low: lib$2.toNumber(lines[i]),
-        high: lib$2.toNumber(lines[i + 1]),
-        precip: lib$2.toNumber(lines[i + 2])
+        low: toNumber(lines[i]),
+        high: toNumber(lines[i + 1]),
+        precip: toNumber(lines[i + 2]),
       });
     }
-
     let obj = {
       template: 'climate chart',
       data: {
         title: title,
         source: source,
-        months: months
-      }
+        months: months,
+      },
     };
     list.push(obj);
-    return '';
-  }
+    return ''
+  },
 };
 
-let templates$6 = {
+let templates$4 = {
   //https://en.wikipedia.org/wiki/Category:External_link_templates
   'find a grave': ['id', 'name', 'work', 'last', 'first', 'date', 'accessdate'],
   congbio: ['id', 'name', 'date'],
@@ -4846,229 +5815,227 @@ let templates$6 = {
   'short description': ['description'],
   'coord missing': ['region'],
   unreferenced: ['date'],
-  'taxon info': ['taxon', 'item'],
-  //https://en.wikipedia.org/wiki/Template:Taxon_info
-  'portuguese name': ['first', 'second', 'suffix'],
-  // https://en.wikipedia.org/wiki/Template:Portuguese_name
-  geo: ['lat', 'lon', 'zoom'] //https://en.wikivoyage.org/wiki/Template:Geo
-
+  'taxon info': ['taxon', 'item'], //https://en.wikipedia.org/wiki/Template:Taxon_info
+  'portuguese name': ['first', 'second', 'suffix'], // https://en.wikipedia.org/wiki/Template:Portuguese_name
+  geo: ['lat', 'lon', 'zoom'], //https://en.wikivoyage.org/wiki/Template:Geo
 };
-templates$6 = Object.assign(templates$6, idName_1, idTitle_1, functions$1);
-var dataOnly = templates$6;
+
+templates$4 = Object.assign(
+  templates$4,
+  templates$6,
+  templates$5,
+  fns
+);
+
+var dataTmpl = templates$4;
+
+const mlbplayer = {
+  props: ['number', 'name', 'il'],
+  out: 'name',
+};
+const syntaxhighlight = {
+  props: [],
+  out: 'code',
+};
+const samp = {
+  props: ['1'],
+  out: '1',
+};
+const sub = {
+  props: ['text'],
+  out: 'text',
+};
+const sup = {
+  props: ['text'],
+  out: 'text',
+};
+const chem2 = {
+  props: ['equation'],
+  out: 'equation',
+};
+const ill = {
+  props: ['text', 'lan1', 'text1', 'lan2', 'text2'],
+  out: 'text',
+};
+const abbr = {
+  props: ['abbr', 'meaning', 'ipa'],
+  out: 'abbr',
+};
 
 var shorthand = {
-  mlbplayer: {
-    props: ['number', 'name', 'il'],
-    out: 'name'
-  },
-  syntaxhighlight: {
-    props: [],
-    out: 'code'
-  },
-  samp: {
-    props: ['1'],
-    out: '1'
-  },
-  //https://en.wikipedia.org/wiki/Template:Sub
-  sub: {
-    props: ['text'],
-    out: 'text'
-  },
-  //https://en.wikipedia.org/wiki/Template:Sup
-  sup: {
-    props: ['text'],
-    out: 'text'
-  },
-  //https://en.wikipedia.org/wiki/Template:Chem2
-  chem2: {
-    props: ['equation'],
-    out: 'equation'
-  },
-  //https://en.wikipedia.org/wiki/Template:Interlanguage_link
-  ill: {
-    props: ['text', 'lan1', 'text1', 'lan2', 'text2'],
-    out: 'text'
-  },
-  //https://en.wikipedia.org/wiki/Template:Abbr
-  abbr: {
-    props: ['abbr', 'meaning', 'ipa'],
-    out: 'abbr'
-  } // name: {
-  //   props: [],
-  //   out: '',
-  // },
-
+  mlbplayer,
+  syntaxhighlight,
+  samp,
+  sub,
+  sup,
+  chem2,
+  ill,
+  abbr,
 };
 
-const parse$e = toJSON$4;
-const lib$1 = _lib$3;
-let templates$5 = {
+let templates$3 = {
   // https://en.wikipedia.org/wiki/Template:Math
   math: (tmpl, list) => {
-    let obj = parse$e(tmpl, ['formula']);
+    let obj = parser(tmpl, ['formula']);
     list.push(obj);
-    return '\n\n' + (obj.formula || '') + '\n\n';
+    return '\n\n' + (obj.formula || '') + '\n\n'
   },
+
   isbn: (tmpl, list) => {
     let order = ['id', 'id2', 'id3'];
-    let obj = parse$e(tmpl, order);
+    let obj = parser(tmpl, order);
     list.push(obj);
-    return 'ISBN: ' + (obj.id || '');
+    return 'ISBN: ' + (obj.id || '')
   },
+
   //https://en.wikipedia.org/wiki/Template:Based_on
   'based on': (tmpl, list) => {
-    let obj = parse$e(tmpl, ['title', 'author']);
+    let obj = parser(tmpl, ['title', 'author']);
     list.push(obj);
-    return "".concat(obj.title, " by ").concat(obj.author || '');
+    return `${obj.title} by ${obj.author || ''}`
   },
+
   //barrels of oil https://en.wikipedia.org/wiki/Template:Bbl_to_t
   'bbl to t': (tmpl, list) => {
-    let obj = parse$e(tmpl, ['barrels']);
+    let obj = parser(tmpl, ['barrels']);
     list.push(obj);
-
     if (obj.barrels === '0') {
-      return obj.barrels + ' barrel';
+      return obj.barrels + ' barrel'
     }
-
-    return obj.barrels + ' barrels';
+    return obj.barrels + ' barrels'
   },
+
   //minor planet - https://en.wikipedia.org/wiki/Template:MPC
   mpc: (tmpl, list) => {
-    let obj = parse$e(tmpl, ['number', 'text']);
+    let obj = parser(tmpl, ['number', 'text']);
     list.push(obj);
-    return "[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ".concat(obj.text || obj.number, "]");
+    return `[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ${obj.text || obj.number}]`
   },
-  pengoal: (tmpl, list) => {
+
+  pengoal: (_tmpl, list) => {
     list.push({
-      template: 'pengoal'
+      template: 'pengoal',
     });
-    return '✅';
+    return '✅'
   },
-  penmiss: (tmpl, list) => {
+
+  penmiss: (_tmpl, list) => {
     list.push({
-      template: 'penmiss'
+      template: 'penmiss',
     });
-    return '❌';
+    return '❌'
   },
+
   // https://en.wikipedia.org/wiki/Template:Ordered_list
   'ordered list': (tmpl, list) => {
-    let obj = parse$e(tmpl);
+    let obj = parser(tmpl);
     list.push(obj);
     obj.list = obj.list || [];
-    let lines = obj.list.map((str, i) => "".concat(i + 1, ". ").concat(str));
-    return lines.join('\n\n');
+    let lines = obj.list.map((str, i) => `${i + 1}. ${str}`);
+    return lines.join('\n\n')
   },
+
   // https://en.wikipedia.org/wiki/Template:Title_year
   'title year': (tmpl, _list, _alias, _parse, doc) => {
-    let obj = parse$e(tmpl, ['match', 'nomatch', 'page']);
+    let obj = parser(tmpl, ['match', 'nomatch', 'page']);
     let title = obj.page || doc.title();
-
     if (title) {
       let m = title.match(/\b[0-9]{4}\b/); //parse the year out of the title's name
-
       if (m) {
-        return m[0];
+        return m[0]
       }
     }
-
-    return obj.nomatch || ''; //use default response
+    return obj.nomatch || '' //use default response
   },
+
   // https://en.wikipedia.org/wiki/Template:Title_century
   'title century': (tmpl, _list, _alias, _parse, doc) => {
-    let obj = parse$e(tmpl, ['match', 'nomatch', 'page']);
+    let obj = parser(tmpl, ['match', 'nomatch', 'page']);
     let title = obj.page || doc.title();
-
     if (title) {
       let m = title.match(/\b([0-9]+)(st|nd|rd|th)\b/); //parse the century out of the title's name
-
       if (m) {
-        return m[1] || '';
+        return m[1] || ''
       }
     }
-
-    return obj.nomatch || ''; //use default response
+    return obj.nomatch || '' //use default response
   },
+
   // https://en.wikipedia.org/wiki/Template:Title_decade
   'title decade': (tmpl, _list, _alias, _parse, doc) => {
-    let obj = parse$e(tmpl, ['match', 'nomatch', 'page']);
+    let obj = parser(tmpl, ['match', 'nomatch', 'page']);
     let title = obj.page || doc.title();
-
     if (title) {
       let m = title.match(/\b([0-9]+)s\b/); //parse the decade out of the title's name
-
       if (m) {
-        return m[1] || '';
+        return m[1] || ''
       }
     }
-
-    return obj.nomatch || ''; //use default response
+    return obj.nomatch || '' //use default response
   },
+
   //https://en.wikipedia.org/wiki/Template:Nihongo
   nihongo: (tmpl, list) => {
-    let obj = parse$e(tmpl, ['english', 'kanji', 'romaji', 'extra']);
+    let obj = parser(tmpl, ['english', 'kanji', 'romaji', 'extra']);
     list.push(obj);
     let str = obj.english || obj.romaji || '';
-
     if (obj.kanji) {
-      str += " (".concat(obj.kanji, ")");
+      str += ` (${obj.kanji})`;
     }
-
-    return str;
+    return str
   },
+
   //https://en.wikipedia.org/wiki/Template:Marriage
   //this one creates a template, and an inline response
   marriage: (tmpl, list) => {
-    let data = parse$e(tmpl, ['spouse', 'from', 'to', 'end']);
+    let data = parser(tmpl, ['spouse', 'from', 'to', 'end']);
     list.push(data);
     let str = data.spouse || '';
-
     if (data.from) {
       if (data.to) {
-        str += " (m. ".concat(data.from, "-").concat(data.to, ")");
+        str += ` (m. ${data.from}-${data.to})`;
       } else {
-        str += " (m. ".concat(data.from, ")");
+        str += ` (m. ${data.from})`;
       }
     }
-
-    return str;
+    return str
   },
+
   //'red' card - {{sent off|cards|min1|min2}}
   'sent off': (tmpl, list) => {
-    let obj = parse$e(tmpl, ['cards']);
+    let obj = parser(tmpl, ['cards']);
     let result = {
       template: 'sent off',
       cards: obj.cards,
-      minutes: obj.list || []
+      minutes: obj.list || [],
     };
     list.push(result);
-    let mins = result.minutes.map(m => m + "'").join(', ');
-    return 'sent off: ' + mins;
+    let mins = result.minutes.map((m) => m + "'").join(', ');
+    return 'sent off: ' + mins
   },
-  transl: (tmpl, list) => {
-    let obj = parse$e(tmpl, ['lang', 'text', 'text2']); // support 3-param
 
+  transl: (tmpl, list) => {
+    let obj = parser(tmpl, ['lang', 'text', 'text2']);
+    // support 3-param
     if (obj.text2) {
       obj.iso = obj.text;
       obj.text = obj.text2;
       delete obj.text2;
     }
-
     list.push(obj);
-    return obj.text || '';
+    return obj.text || ''
   },
+
   //show/hide: https://en.wikipedia.org/wiki/Template:Collapsible_list
   'collapsible list': (tmpl, list) => {
-    let obj = parse$e(tmpl);
+    let obj = parser(tmpl);
     list.push(obj);
     let str = '';
-
     if (obj.title) {
-      str += "'''".concat(obj.title, "'''") + '\n\n';
+      str += `'''${obj.title}'''` + '\n\n';
     }
-
     if (!obj.list) {
       obj.list = [];
-
       for (let i = 1; i < 10; i += 1) {
         if (obj[i]) {
           obj.list.push(obj[i]);
@@ -5076,61 +6043,60 @@ let templates$5 = {
         }
       }
     }
-
-    obj.list = obj.list.filter(s => s);
+    obj.list = obj.list.filter((s) => s);
     str += obj.list.join('\n\n');
-    return str;
+    return str
   },
+
   //https://en.wikipedia.org/wiki/Template:Columns-list
   'columns-list': (tmpl, list) => {
-    let arr = parse$e(tmpl).list || [];
+    let arr = parser(tmpl).list || [];
     let str = arr[0] || '';
-    let lines = str.split(/\n/).filter(f => f);
-    lines = lines.map(s => s.replace(/\*/, ''));
+    let lines = str.split(/\n/).filter((f) => f);
+    lines = lines.map((s) => s.replace(/\*/, ''));
     list.push({
       template: 'columns-list',
-      list: lines
+      list: lines,
     });
-    lines = lines.map(s => '• ' + s);
-    return lines.join('\n\n');
+    lines = lines.map((s) => '• ' + s);
+    return lines.join('\n\n')
   },
+
   //https://en.wikipedia.org/wiki/Template:Height - {{height|ft=6|in=1}}
   height: (tmpl, list) => {
-    let obj = parse$e(tmpl);
+    let obj = parser(tmpl);
     list.push(obj);
     let result = [];
     let units = ['m', 'cm', 'ft', 'in']; //order matters
-
-    units.forEach(unit => {
+    units.forEach((unit) => {
       if (obj.hasOwnProperty(unit) === true) {
         result.push(obj[unit] + unit);
       }
     });
-    return result.join(' ');
+    return result.join(' ')
   },
+
   //https://en.wikipedia.org/wiki/Template:Sic
   sic: (tmpl, list) => {
-    let obj = parse$e(tmpl, ['one', 'two', 'three']);
-    let word = (obj.one || '') + (obj.two || ''); //support '[sic?]'
-
+    let obj = parser(tmpl, ['one', 'two', 'three']);
+    let word = (obj.one || '') + (obj.two || '');
+    //support '[sic?]'
     if (obj.one === '?') {
       word = (obj.two || '') + (obj.three || '');
     }
-
     list.push({
       template: 'sic',
-      word: word
+      word: word,
     });
-
     if (obj.nolink === 'y') {
-      return word;
+      return word
     }
-
-    return "".concat(word, " [sic]");
+    return `${word} [sic]`
   },
+
   //
   inrconvert: (tmpl, list) => {
-    let o = parse$e(tmpl, ['rupee_value', 'currency_formatting']);
+    let o = parser(tmpl, ['rupee_value', 'currency_formatting']);
     list.push(o);
     const mults = {
       k: 1000,
@@ -5139,24 +6105,22 @@ let templates$5 = {
       t: 1000000000000,
       l: 100000,
       c: 10000000,
-      lc: 1000000000000
+      lc: 1000000000000,
     };
-
     if (o.currency_formatting) {
       let multiplier = mults[o.currency_formatting] || 1;
       o.rupee_value = o.rupee_value * multiplier;
     }
-
-    return "inr ".concat(o.rupee_value || '');
+    return `inr ${o.rupee_value || ''}`
   },
+
   //fraction - https://en.wikipedia.org/wiki/Template:Sfrac
   frac: (tmpl, list) => {
     let order = ['a', 'b', 'c'];
-    let obj = parse$e(tmpl, order);
+    let obj = parser(tmpl, order);
     let data = {
-      template: 'sfrac'
+      template: 'sfrac',
     };
-
     if (obj.c) {
       data.integer = obj.a;
       data.numerator = obj.b;
@@ -5168,395 +6132,305 @@ let templates$5 = {
       data.numerator = 1;
       data.denominator = obj.a;
     }
-
     list.push(data);
-
     if (data.integer) {
-      return "".concat(data.integer, " ").concat(data.numerator, "\u2044").concat(data.denominator);
+      return `${data.integer} ${data.numerator}⁄${data.denominator}`
     }
-
-    return "".concat(data.numerator, "\u2044").concat(data.denominator);
+    return `${data.numerator}⁄${data.denominator}`
   },
+
   'winning percentage': (tmpl, list) => {
-    let obj = parse$e(tmpl, ['wins', 'losses', 'ties']);
+    let obj = parser(tmpl, ['wins', 'losses', 'ties']);
     list.push(obj);
     let wins = Number(obj.wins);
     let losses = Number(obj.losses);
     let ties = Number(obj.ties) || 0;
     let games = wins + losses + ties;
-
     if (obj.ignore_ties === 'y') {
       ties = 0;
     }
-
     if (ties) {
       wins += ties / 2;
     }
-
-    let num = lib$1.percentage({
+    let num = percentage({
       numerator: wins,
       denominator: games,
-      decimals: 1
+      decimals: 1,
     });
-
     if (num === null) {
-      return '';
+      return ''
     }
-
-    return ".".concat(num * 10);
+    return `.${num * 10}`
   },
+
   winlosspct: (tmpl, list) => {
-    let obj = parse$e(tmpl, ['wins', 'losses']);
+    let obj = parser(tmpl, ['wins', 'losses']);
     list.push(obj);
     let wins = Number(obj.wins);
     let losses = Number(obj.losses);
-    let num = lib$1.percentage({
+    let num = percentage({
       numerator: wins,
       denominator: wins + losses,
-      decimals: 1
+      decimals: 1,
     });
-
     if (num === null) {
-      return '';
+      return ''
     }
-
-    num = ".".concat(num * 10);
-    return "".concat(wins || 0, " || ").concat(losses || 0, " || ").concat(num || '-');
+    let out = `.${num * 10}`;
+    return `${wins || 0} || ${losses || 0} || ${out || '-'}`
   },
+
   //https://en.wikipedia.org/wiki/Template:Video_game_release
   'video game release': (tmpl, list) => {
     let order = ['region', 'date', 'region2', 'date2', 'region3', 'date3', 'region4', 'date4'];
-    let obj = parse$e(tmpl, order);
+    let obj = parser(tmpl, order);
     let template = {
       template: 'video game release',
-      releases: []
+      releases: [],
     };
-
     for (let i = 0; i < order.length; i += 2) {
       if (obj[order[i]]) {
         template.releases.push({
           region: obj[order[i]],
-          date: obj[order[i + 1]]
+          date: obj[order[i + 1]],
         });
       }
     }
-
     list.push(template);
-    let str = template.releases.map(o => "".concat(o.region, ": ").concat(o.date || '')).join('\n\n');
-    return '\n' + str + '\n';
+    let str = template.releases.map((o) => `${o.region}: ${o.date || ''}`).join('\n\n');
+    return '\n' + str + '\n'
   },
   // https://en.m.wikipedia.org/wiki/Template:USS
   uss: (tmpl, list) => {
-    let obj = parse$e(tmpl, ['name', 'id']);
+    let obj = parser(tmpl, ['name', 'id']);
     list.push(obj);
-
     if (obj.id) {
-      return "[[USS ".concat(obj.name, " (").concat(obj.id, ")|USS ''").concat(obj.name, "'' (").concat(obj.id, ")]]");
+      return `[[USS ${obj.name} (${obj.id})|USS ''${obj.name}'' (${obj.id})]]`
     }
-
-    return "[[USS ".concat(obj.name, "|USS ''").concat(obj.name, "'']]");
+    return `[[USS ${obj.name}|USS ''${obj.name}'']]`
   },
   // https://en.wikipedia.org/wiki/Template:Blockquote
   blockquote: (tmpl, list) => {
-    let obj = parse$e(tmpl);
-    list.push(obj); // replace double quotes with singles and put the text inside double quotes
-
+    let obj = parser(tmpl);
+    list.push(obj);
+    // replace double quotes with singles and put the text inside double quotes
     let result = (obj.text || obj.list[0]).replace(/"/g, '\'');
     result = '"' + result + '"';
-    return result;
+    return result
   }
 };
-var functions = templates$5;
 
-const parse$d = toJSON$4;
 const codes$1 = {
-  '£': 'GB£',
-  // https://en.wikipedia.org/wiki/Template:GBP
-  '¥': '¥',
-  // https://en.wikipedia.org/wiki/Template:JPY
-  '৳': '৳',
-  // https://en.wikipedia.org/wiki/Template:BDT
-  '₩': '₩',
-  // https://en.wikipedia.org/wiki/Template:SK_won
-  '€': '€',
-  // https://en.wikipedia.org/wiki/Template:€
-  '₱': '₱',
-  // https://en.wikipedia.org/wiki/Template:Philippine_peso
-  '₹': '₹',
-  // https://en.wikipedia.org/wiki/Template:Indian_Rupee
-  '₽': '₽',
-  // https://en.wikipedia.org/wiki/Template:RUB
-  'cn¥': 'CN¥',
-  // https://en.wikipedia.org/wiki/Template:CNY
-  'gb£': 'GB£',
-  // https://en.wikipedia.org/wiki/Template:GBP
-  'india rs': '₹',
-  // https://en.wikipedia.org/wiki/Template:Indian_Rupee
-  'indian rupee symbol': '₹',
-  // https://en.wikipedia.org/wiki/Template:Indian_Rupee
-  'indian rupee': '₹',
-  // https://en.wikipedia.org/wiki/Template:Indian_Rupee
-  'indian rupees': '₹',
-  // https://en.wikipedia.org/wiki/Template:Indian_Rupee
-  'philippine peso': '₱',
-  // https://en.wikipedia.org/wiki/Template:Philippine_peso
-  'russian ruble': '₽',
-  // https://en.wikipedia.org/wiki/Template:Russian_ruble
-  'SK won': '₩',
-  // https://en.wikipedia.org/wiki/Template:SK_won
-  'turkish lira': 'TRY',
-  //https://en.wikipedia.org/wiki/Template:Turkish_lira
-  a$: 'A$',
-  // https://en.wikipedia.org/wiki/Template:AUD
-  au$: 'A$',
-  //https://en.wikipedia.org/wiki/Template:AUD
-  aud: 'A$',
-  //https://en.wikipedia.org/wiki/Template:AUD
-  bdt: 'BDT',
-  //https://en.wikipedia.org/wiki/Template:BDT
-  brl: 'BRL',
-  //https://en.wikipedia.org/wiki/Template:BRL
-  ca$: 'CA$',
-  // https://en.wikipedia.org/wiki/Template:CAD
-  cad: 'CA$',
-  // https://en.wikipedia.org/wiki/Template:CAD
-  chf: 'CHF',
-  // https://en.wikipedia.org/wiki/Template:CHF
-  cny: 'CN¥',
-  // https://en.wikipedia.org/wiki/Template:CNY
-  czk: 'czk',
-  // https://en.wikipedia.org/wiki/Template:CZK
-  dkk: 'dkk',
-  // https://en.wikipedia.org/wiki/Template:DKK
-  dkk2: 'dkk',
-  // https://en.wikipedia.org/wiki/Template:DKK
-  euro: '€',
-  // https://en.wikipedia.org/wiki/Template:€
-  gbp: 'GB£',
-  // https://en.wikipedia.org/wiki/Template:GBP
-  hk$: 'HK$',
-  // https://en.wikipedia.org/wiki/Template:HKD
-  hkd: 'HK$',
-  // https://en.wikipedia.org/wiki/Template:HKD
-  ils: 'ILS',
-  // https://en.wikipedia.org/wiki/Template:ILS
-  inr: '₹',
-  // https://en.wikipedia.org/wiki/Template:Indian_Rupee
-  jpy: '¥',
-  // https://en.wikipedia.org/wiki/Template:JPY
-  myr: 'MYR',
-  // https://en.wikipedia.org/wiki/Template:MYR
-  nis: 'ILS',
-  // https://en.wikipedia.org/wiki/Template:ILS
-  nok: 'NOK',
-  //https://en.wikipedia.org/wiki/Template:NOK
-  nok2: 'NOK',
-  //https://en.wikipedia.org/wiki/Template:NOK
-  nz$: 'NZ$',
-  //https://en.wikipedia.org/wiki/Template:NZD
-  nzd: 'NZ$',
-  //https://en.wikipedia.org/wiki/Template:NZD
-  peso: 'peso',
-  //https://en.wikipedia.org/wiki/Template:Peso
-  pkr: '₨',
-  // https://en.wikipedia.org/wiki/Template:Pakistani_Rupee
-  r$: 'BRL',
-  //https://en.wikipedia.org/wiki/Template:BRL
-  rmb: 'CN¥',
-  // https://en.wikipedia.org/wiki/Template:CNY
-  rub: '₽',
-  // https://en.wikipedia.org/wiki/Template:RUB
-  ruble: '₽',
-  // https://en.wikipedia.org/wiki/Template:Ruble
-  rupee: '₹',
-  // https://en.wikipedia.org/wiki/Template:Rupee
-  s$: 'sgd',
-  // https://en.wikipedia.org/wiki/Template:SGD
-  sek: 'SEK',
-  // https://en.wikipedia.org/wiki/Template:SEK
-  sek2: 'SEK',
-  // https://en.wikipedia.org/wiki/Template:SEK
-  sfr: 'CHF',
-  // https://en.wikipedia.org/wiki/Template:CHF
-  sgd: 'sgd',
-  // https://en.wikipedia.org/wiki/Template:SGD
-  shekel: 'ILS',
-  // https://en.wikipedia.org/wiki/Template:ILS
-  sheqel: 'ILS',
-  // https://en.wikipedia.org/wiki/Template:ILS
-  ttd: 'TTD',
-  //https://en.wikipedia.org/wiki/Template:TTD
-  us$: 'US$',
-  // https://en.wikipedia.org/wiki/Template:US$
-  usd: 'US$',
-  // https://en.wikipedia.org/wiki/Template:US$
-  yen: '¥',
-  // https://en.wikipedia.org/wiki/Template:JPY
-  zar: 'R' //https://en.wikipedia.org/wiki/Template:ZAR
-
+  '£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
+  '¥': '¥', // https://en.wikipedia.org/wiki/Template:JPY
+  '৳': '৳', // https://en.wikipedia.org/wiki/Template:BDT
+  '₩': '₩', // https://en.wikipedia.org/wiki/Template:SK_won
+  '€': '€', // https://en.wikipedia.org/wiki/Template:€
+  '₱': '₱', // https://en.wikipedia.org/wiki/Template:Philippine_peso
+  '₹': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
+  '₽': '₽', // https://en.wikipedia.org/wiki/Template:RUB
+  'cn¥': 'CN¥', // https://en.wikipedia.org/wiki/Template:CNY
+  'gb£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
+  'india rs': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
+  'indian rupee symbol': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
+  'indian rupee': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
+  'indian rupees': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
+  'philippine peso': '₱', // https://en.wikipedia.org/wiki/Template:Philippine_peso
+  'russian ruble': '₽', // https://en.wikipedia.org/wiki/Template:Russian_ruble
+  'SK won': '₩', // https://en.wikipedia.org/wiki/Template:SK_won
+  'turkish lira': 'TRY', //https://en.wikipedia.org/wiki/Template:Turkish_lira
+  a$: 'A$', // https://en.wikipedia.org/wiki/Template:AUD
+  au$: 'A$', //https://en.wikipedia.org/wiki/Template:AUD
+  aud: 'A$', //https://en.wikipedia.org/wiki/Template:AUD
+  bdt: 'BDT', //https://en.wikipedia.org/wiki/Template:BDT
+  brl: 'BRL', //https://en.wikipedia.org/wiki/Template:BRL
+  ca$: 'CA$', // https://en.wikipedia.org/wiki/Template:CAD
+  cad: 'CA$', // https://en.wikipedia.org/wiki/Template:CAD
+  chf: 'CHF', // https://en.wikipedia.org/wiki/Template:CHF
+  cny: 'CN¥', // https://en.wikipedia.org/wiki/Template:CNY
+  czk: 'czk', // https://en.wikipedia.org/wiki/Template:CZK
+  dkk: 'dkk', // https://en.wikipedia.org/wiki/Template:DKK
+  dkk2: 'dkk', // https://en.wikipedia.org/wiki/Template:DKK
+  euro: '€', // https://en.wikipedia.org/wiki/Template:€
+  gbp: 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
+  hk$: 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
+  hkd: 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
+  ils: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
+  inr: '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
+  jpy: '¥', // https://en.wikipedia.org/wiki/Template:JPY
+  myr: 'MYR', // https://en.wikipedia.org/wiki/Template:MYR
+  nis: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
+  nok: 'NOK', //https://en.wikipedia.org/wiki/Template:NOK
+  nok2: 'NOK', //https://en.wikipedia.org/wiki/Template:NOK
+  nz$: 'NZ$', //https://en.wikipedia.org/wiki/Template:NZD
+  nzd: 'NZ$', //https://en.wikipedia.org/wiki/Template:NZD
+  peso: 'peso', //https://en.wikipedia.org/wiki/Template:Peso
+  pkr: '₨', // https://en.wikipedia.org/wiki/Template:Pakistani_Rupee
+  r$: 'BRL', //https://en.wikipedia.org/wiki/Template:BRL
+  rmb: 'CN¥', // https://en.wikipedia.org/wiki/Template:CNY
+  rub: '₽', // https://en.wikipedia.org/wiki/Template:RUB
+  ruble: '₽', // https://en.wikipedia.org/wiki/Template:Ruble
+  rupee: '₹', // https://en.wikipedia.org/wiki/Template:Rupee
+  s$: 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
+  sek: 'SEK', // https://en.wikipedia.org/wiki/Template:SEK
+  sek2: 'SEK', // https://en.wikipedia.org/wiki/Template:SEK
+  sfr: 'CHF', // https://en.wikipedia.org/wiki/Template:CHF
+  sgd: 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
+  shekel: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
+  sheqel: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
+  ttd: 'TTD', //https://en.wikipedia.org/wiki/Template:TTD
+  us$: 'US$', // https://en.wikipedia.org/wiki/Template:US$
+  usd: 'US$', // https://en.wikipedia.org/wiki/Template:US$
+  yen: '¥', // https://en.wikipedia.org/wiki/Template:JPY
+  zar: 'R', //https://en.wikipedia.org/wiki/Template:ZAR
 };
 
 const parseCurrency = (tmpl, list) => {
-  let o = parse$d(tmpl, ['amount', 'code']);
+  let o = parser(tmpl, ['amount', 'code']);
   list.push(o);
   let code = o.template || '';
-
   if (code === 'currency') {
     code = o.code;
-
     if (!code) {
       o.code = code = 'usd'; //Special case when currency template has no code argument
     }
   } else if (code === '' || code === 'monnaie' || code === 'unité' || code === 'nombre' || code === 'nb') {
     code = o.code;
   }
-
   code = (code || '').toLowerCase();
-
   if (code === 'us') {
     o.code = code = 'usd';
   } else if (code === 'uk') {
     o.code = code = 'gbp';
   }
-
-  let str = "".concat(codes$1[code] || '').concat(o.amount || ''); //support unknown currencies after the number - like '5 BTC'
-
+  let str = `${codes$1[code] || ''}${o.amount || ''}`;
+  //support unknown currencies after the number - like '5 BTC'
   if (o.code && !codes$1[o.code.toLowerCase()]) {
     str += ' ' + o.code;
   }
-
-  return str;
+  return str
 };
 
-let templates$4 = {
-  currency: parseCurrency
-}; //and the others fit the same pattern
-
-Object.keys(codes$1).forEach(k => {
-  templates$4[k] = parseCurrency;
+let templates$2 = {
+  currency: parseCurrency,
+};
+//and the others fit the same pattern
+Object.keys(codes$1).forEach((k) => {
+  templates$2[k] = parseCurrency;
 });
-var currency = templates$4;
 
 const toOrdinal = function (i) {
   let j = i % 10;
   let k = i % 100;
-
   if (j === 1 && k !== 11) {
-    return i + 'st';
+    return i + 'st'
   }
-
   if (j === 2 && k !== 12) {
-    return i + 'nd';
+    return i + 'nd'
   }
-
   if (j === 3 && k !== 13) {
-    return i + 'rd';
+    return i + 'rd'
   }
+  return i + 'th'
+};
 
-  return i + 'th';
-}; //this is allowed to be rough
-
-
+//this is allowed to be rough
 const day = 1000 * 60 * 60 * 24;
 const month = day * 30;
 const year = day * 365;
 
 const getEpoch = function (obj) {
-  return new Date("".concat(obj.year, "-").concat(obj.month || 0, "-").concat(obj.date || 1)).getTime();
-}; //very rough!
+  return new Date(`${obj.year}-${obj.month || 0}-${obj.date || 1}`).getTime()
+};
 
-
-const delta$1 = function (from, to) {
+//very rough!
+const delta = function (from, to) {
   from = getEpoch(from);
   to = getEpoch(to);
   let diff = to - from;
-  let obj = {}; //get years
-
-  let years = Math.floor(diff / year, 10);
-
+  let obj = {};
+  //get years
+  let years = Math.floor(diff / year);
   if (years > 0) {
     obj.years = years;
     diff -= obj.years * year;
-  } //get months
-
-
-  let monthCount = Math.floor(diff / month, 10);
-
+  }
+  //get months
+  let monthCount = Math.floor(diff / month);
   if (monthCount > 0) {
     obj.months = monthCount;
     diff -= obj.months * month;
-  } //get days
-
-
-  let days = Math.floor(diff / day, 10);
-
-  if (days > 0) {
-    obj.days = days; // diff -= (obj.days * day);
   }
+  //get days
+  let days = Math.floor(diff / day);
+  if (days > 0) {
+    obj.days = days;
+    // diff -= (obj.days * day);
+  }
+  return obj
+};
 
-  return obj;
-}; //not all too fancy - used in {{timesince}}
-
-
+//not all too fancy - used in {{timesince}}
 const timeSince = function (str) {
   let d = new Date(str);
-
   if (isNaN(d.getTime())) {
-    return '';
+    return ''
   }
-
   let now = new Date();
   let delt = now.getTime() - d.getTime();
   let predicate = 'ago';
-
   if (delt < 0) {
     predicate = 'from now';
     delt = Math.abs(delt);
-  } //figure out units
-
-
+  }
+  //figure out units
   let hours = delt / 1000 / 60 / 60;
   let days = hours / 24;
-
   if (days < 365) {
-    return parseInt(days, 10) + ' days ' + predicate;
+    return Number(days) + ' days ' + predicate
   }
-
   let years = days / 365;
-  return parseInt(years, 10) + ' years ' + predicate;
+  return Number(years) + ' years ' + predicate
 };
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-var _lib$2 = {
-  days: days,
-  timeSince: timeSince,
-  delta: delta$1,
-  toOrdinal: toOrdinal
-};
 
-const months$1 = [undefined, //1-based months.. :/
-'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+//assorted parsing methods for date/time templates
+const months$1 = [
+  undefined, //1-based months.. :/
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
 const monthName = months$1.reduce((h, str, i) => {
   if (i === 0) {
-    return h;
+    return h
   }
-
   h[str.toLowerCase()] = i;
-  return h;
-}, {}); //parse year|month|date numbers
+  return h
+}, {});
 
+//parse year|month|date numbers
 const ymd = function (arr) {
   let obj = {};
-  let units = ['year', 'month', 'date', 'hour', 'minute', 'second']; //parse each unit in sequence..
-
+  let units = ['year', 'month', 'date', 'hour', 'minute', 'second'];
+  //parse each unit in sequence..
   for (let i = 0; i < units.length; i += 1) {
     //skip it
     if (!arr[i] && arr[1] !== 0) {
-      continue;
+      continue
     }
-
     let num = parseInt(arr[i], 10);
-
     if (isNaN(num) === false) {
       obj[units[i]] = num; //we good.
     } else if (units[i] === 'month' && monthName.hasOwnProperty(arr[i])) {
@@ -5567,134 +6441,113 @@ const ymd = function (arr) {
       //we dead. so skip this unit
       delete obj[units[i]];
     }
-  } //try for timezone,too ftw
-
-
+  }
+  //try for timezone,too ftw
   let last = arr[arr.length - 1] || '';
   last = String(last);
-
   if (last.toLowerCase() === 'z') {
     obj.tz = 'UTC';
   } else if (/[+-][0-9]+:[0-9]/.test(last)) {
     obj.tz = arr[6];
   }
-
-  return obj;
-}; //zero-pad a number
-
-
-const pad = function (num) {
-  if (num < 10) {
-    return '0' + num;
-  }
-
-  return String(num);
+  return obj
 };
 
-const toText$2 = function (date) {
+//zero-pad a number
+const pad = function (num) {
+  if (num < 10) {
+    return '0' + num
+  }
+  return String(num)
+};
+
+const toText = function (date) {
   //eg '1995'
   let str = String(date.year || '');
-
   if (date.month !== undefined && months$1.hasOwnProperty(date.month) === true) {
     if (date.date === undefined) {
       //January 1995
-      str = "".concat(months$1[date.month], " ").concat(date.year);
+      str = `${months$1[date.month]} ${date.year}`;
     } else {
       //January 5, 1995
-      str = "".concat(months$1[date.month], " ").concat(date.date, ", ").concat(date.year); //add times, if available
-
+      str = `${months$1[date.month]} ${date.date}, ${date.year}`;
+      //add times, if available
       if (date.hour !== undefined && date.minute !== undefined) {
-        let time = "".concat(pad(date.hour), ":").concat(pad(date.minute));
-
+        let time = `${pad(date.hour)}:${pad(date.minute)}`;
         if (date.second !== undefined) {
           time = time + ':' + pad(date.second);
         }
-
-        str = time + ', ' + str; //add timezone, if there, at the end in brackets
+        str = time + ', ' + str;
+        //add timezone, if there, at the end in brackets
       }
-
       if (date.tz) {
-        str += " (".concat(date.tz, ")");
+        str += ` (${date.tz})`;
       }
     }
   }
-
-  return str;
+  return str
 };
 
-var _format = {
-  toText: toText$2,
-  ymd: ymd
-}; // console.log(toText(ymd([2018, 3, 28])));
+// console.log(toText(ymd([2018, 3, 28])));
 
-const strip = _strip;
-const parse$c = toJSON$4;
-const delta = _lib$2.delta;
-const fmt = _format; //wrap it up as a template
-
-const template$1 = function (date) {
+//wrap it up as a template
+const template = function (date) {
   return {
     template: 'date',
-    data: date
-  };
+    data: date,
+  }
 };
 
 const getBoth = function (tmpl) {
   tmpl = strip(tmpl);
   let arr = tmpl.split('|');
-  let from = fmt.ymd(arr.slice(1, 4));
-  let to = arr.slice(4, 7); //assume now, if 'to' is empty
-
+  let from = ymd(arr.slice(1, 4));
+  let to = arr.slice(4, 7);
+  //assume now, if 'to' is empty
   if (to.length === 0) {
     let d = new Date();
     to = [d.getFullYear(), d.getMonth(), d.getDate()];
   }
-
-  to = fmt.ymd(to);
+  to = ymd(to);
   return {
     from: from,
-    to: to
-  };
+    to: to,
+  }
 };
 
-const parsers$1 = {
+const parsers = {
   //generic {{date|year|month|date}} template
   date: (tmpl, list) => {
     let order = ['year', 'month', 'date', 'hour', 'minute', 'second', 'timezone'];
-    let obj = parse$c(tmpl, order);
-    let data = fmt.ymd([obj.year, obj.month, obj.date || obj.day]);
-    obj.text = fmt.toText(data); //make the replacement string
-
+    let obj = parser(tmpl, order);
+    let data = ymd([obj.year, obj.month, obj.date || obj.day]);
+    obj.text = toText(data); //make the replacement string
     if (obj.timezone) {
       if (obj.timezone === 'Z') {
         obj.timezone = 'UTC';
       }
-
-      obj.text += " (".concat(obj.timezone, ")");
+      obj.text += ` (${obj.timezone})`;
     }
-
     if (obj.hour && obj.minute) {
       if (obj.second) {
-        obj.text = "".concat(obj.hour, ":").concat(obj.minute, ":").concat(obj.second, ", ") + obj.text;
+        obj.text = `${obj.hour}:${obj.minute}:${obj.second}, ` + obj.text;
       } else {
-        obj.text = "".concat(obj.hour, ":").concat(obj.minute, ", ") + obj.text;
+        obj.text = `${obj.hour}:${obj.minute}, ` + obj.text;
       }
     }
-
     if (obj.text) {
-      list.push(template$1(obj));
+      list.push(template(obj));
     }
-
-    return obj.text;
+    return obj.text
   },
+
   //support parsing of 'February 10, 1992'
   natural_date: (tmpl, list) => {
     let order = ['text'];
-    let obj = parse$c(tmpl, order);
-    let str = obj.text || ''; // - just a year
-
+    let obj = parser(tmpl, order);
+    let str = obj.text || '';
+    // - just a year
     let date = {};
-
     if (/^[0-9]{4}$/.test(str)) {
       date.year = parseInt(str, 10);
     } else {
@@ -5702,318 +6555,304 @@ const parsers$1 = {
       let txt = str.replace(/[a-z]+\/[a-z]+/i, '');
       txt = txt.replace(/[0-9]+:[0-9]+(am|pm)?/i, '');
       let d = new Date(txt);
-
       if (isNaN(d.getTime()) === false) {
         date.year = d.getFullYear();
         date.month = d.getMonth() + 1;
         date.date = d.getDate();
       }
     }
-
-    list.push(template$1(date));
-    return str.trim();
+    list.push(template(date));
+    return str.trim()
   },
+
   //just grab the first value, and assume it's a year
   one_year: (tmpl, list) => {
     let order = ['year'];
-    let obj = parse$c(tmpl, order);
+    let obj = parser(tmpl, order);
     let year = Number(obj.year);
-    list.push(template$1({
-      year: year
-    }));
-    return String(year);
+    list.push(
+      template({
+        year: year,
+      })
+    );
+    return String(year)
   },
+
   //assume 'y|m|d' | 'y|m|d' // {{BirthDeathAge|B|1976|6|6|1990|8|8}}
   two_dates: (tmpl, list) => {
     let order = ['b', 'birth_year', 'birth_month', 'birth_date', 'death_year', 'death_month', 'death_date'];
-    let obj = parse$c(tmpl, order); //'b' means show birth-date, otherwise show death-date
-
+    let obj = parser(tmpl, order);
+    //'b' means show birth-date, otherwise show death-date
     if (obj.b && obj.b.toLowerCase() === 'b') {
-      let date = fmt.ymd([obj.birth_year, obj.birth_month, obj.birth_date]);
-      list.push(template$1(date));
-      return fmt.toText(date);
+      let date = ymd([obj.birth_year, obj.birth_month, obj.birth_date]);
+      list.push(template(date));
+      return toText(date)
     }
-
-    let date = fmt.ymd([obj.death_year, obj.death_month, obj.death_date]);
-    list.push(template$1(date));
-    return fmt.toText(date);
+    let date = ymd([obj.death_year, obj.death_month, obj.death_date]);
+    list.push(template(date));
+    return toText(date)
   },
-  age: tmpl => {
+
+  age: (tmpl) => {
     let d = getBoth(tmpl);
     let diff = delta(d.from, d.to);
-    return diff.years || 0;
+    return diff.years || 0
   },
-  'diff-y': tmpl => {
+
+  'diff-y': (tmpl) => {
     let d = getBoth(tmpl);
     let diff = delta(d.from, d.to);
-
     if (diff.years === 1) {
-      return diff.years + ' year';
+      return diff.years + ' year'
     }
-
-    return (diff.years || 0) + ' years';
+    return (diff.years || 0) + ' years'
   },
-  'diff-ym': tmpl => {
+
+  'diff-ym': (tmpl) => {
     let d = getBoth(tmpl);
     let diff = delta(d.from, d.to);
     let arr = [];
-
     if (diff.years === 1) {
       arr.push(diff.years + ' year');
     } else if (diff.years && diff.years !== 0) {
       arr.push(diff.years + ' years');
     }
-
     if (diff.months === 1) {
       arr.push('1 month');
     } else if (diff.months && diff.months !== 0) {
       arr.push(diff.months + ' months');
     }
-
-    return arr.join(', ');
+    return arr.join(', ')
   },
-  'diff-ymd': tmpl => {
+
+  'diff-ymd': (tmpl) => {
     let d = getBoth(tmpl);
     let diff = delta(d.from, d.to);
     let arr = [];
-
     if (diff.years === 1) {
       arr.push(diff.years + ' year');
     } else if (diff.years && diff.years !== 0) {
       arr.push(diff.years + ' years');
     }
-
     if (diff.months === 1) {
       arr.push('1 month');
     } else if (diff.months && diff.months !== 0) {
       arr.push(diff.months + ' months');
     }
-
     if (diff.days === 1) {
       arr.push('1 day');
     } else if (diff.days && diff.days !== 0) {
       arr.push(diff.days + ' days');
     }
-
-    return arr.join(', ');
+    return arr.join(', ')
   },
-  'diff-yd': tmpl => {
+
+  'diff-yd': (tmpl) => {
     let d = getBoth(tmpl);
     let diff = delta(d.from, d.to);
     let arr = [];
-
     if (diff.years === 1) {
       arr.push(diff.years + ' year');
     } else if (diff.years && diff.years !== 0) {
       arr.push(diff.years + ' years');
-    } //ergh...
-
-
+    }
+    //ergh...
     diff.days += (diff.months || 0) * 30;
-
     if (diff.days === 1) {
       arr.push('1 day');
     } else if (diff.days && diff.days !== 0) {
       arr.push(diff.days + ' days');
     }
-
-    return arr.join(', ');
+    return arr.join(', ')
   },
-  'diff-d': tmpl => {
+
+  'diff-d': (tmpl) => {
     let d = getBoth(tmpl);
     let diff = delta(d.from, d.to);
-    let arr = []; //ergh...
-
+    let arr = [];
+    //ergh...
     diff.days += (diff.years || 0) * 365;
     diff.days += (diff.months || 0) * 30;
-
     if (diff.days === 1) {
       arr.push('1 day');
     } else if (diff.days && diff.days !== 0) {
       arr.push(diff.days + ' days');
     }
-
-    return arr.join(', ');
-  }
+    return arr.join(', ')
+  },
 };
-var _parsers = parsers$1;
 
-const parsers = _parsers;
-const parse$b = toJSON$4;
-const lib = _lib$2;
-const format = _format;
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; //date- templates we support
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
+//date- templates we support
 var dates = {
   currentday: () => {
     let d = new Date();
-    return String(d.getDate());
+    return String(d.getDate())
   },
   currentdayname: () => {
     let d = new Date();
-    return lib.days[d.getDay()];
+    return days[d.getDay()]
   },
   currentmonth: () => {
     let d = new Date();
-    return months[d.getMonth()];
+    return months[d.getMonth()]
   },
   currentyear: () => {
     let d = new Date();
-    return String(d.getFullYear());
+    return String(d.getFullYear())
   },
   monthyear: () => {
     let d = new Date();
-    return months[d.getMonth()] + ' ' + d.getFullYear();
+    return months[d.getMonth()] + ' ' + d.getFullYear()
   },
   'monthyear-1': () => {
     let d = new Date();
     d.setMonth(d.getMonth() - 1);
-    return months[d.getMonth()] + ' ' + d.getFullYear();
+    return months[d.getMonth()] + ' ' + d.getFullYear()
   },
   'monthyear+1': () => {
     let d = new Date();
     d.setMonth(d.getMonth() + 1);
-    return months[d.getMonth()] + ' ' + d.getFullYear();
+    return months[d.getMonth()] + ' ' + d.getFullYear()
   },
-  'time ago': tmpl => {
+
+  'time ago': (tmpl) => {
     let order = ['date', 'fmt'];
-    let time = parse$b(tmpl, order).date;
-    return lib.timeSince(time);
+    let time = parser(tmpl, order).date;
+    return timeSince(time)
   },
   //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
   'birth date and age': (tmpl, list) => {
     let order = ['year', 'month', 'day'];
-    let obj = parse$b(tmpl, order); //support 'one property' version
-
+    let obj = parser(tmpl, order);
+    //support 'one property' version
     if (obj.year && /[a-z]/i.test(obj.year)) {
-      return parsers.natural_date(tmpl, list);
+      return parsers.natural_date(tmpl, list)
     }
-
     list.push(obj);
-    obj = format.ymd([obj.year, obj.month, obj.day]);
-    return format.toText(obj);
+    obj = ymd([obj.year, obj.month, obj.day]);
+    return toText(obj)
   },
   'birth year and age': (tmpl, list) => {
     let order = ['birth_year', 'birth_month'];
-    let obj = parse$b(tmpl, order); //support 'one property' version
-
+    let obj = parser(tmpl, order);
+    //support 'one property' version
     if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
-      return parsers.natural_date(tmpl, list);
+      return parsers.natural_date(tmpl, list)
     }
-
     list.push(obj);
     let age = new Date().getFullYear() - parseInt(obj.birth_year, 10);
-    obj = format.ymd([obj.birth_year, obj.birth_month]);
-    let str = format.toText(obj);
-
+    obj = ymd([obj.birth_year, obj.birth_month]);
+    let str = toText(obj);
     if (age) {
-      str += " (age ".concat(age, ")");
+      str += ` (age ${age})`;
     }
-
-    return str;
+    return str
   },
   'death year and age': (tmpl, list) => {
     let order = ['death_year', 'birth_year', 'death_month'];
-    let obj = parse$b(tmpl, order); //support 'one property' version
-
+    let obj = parser(tmpl, order);
+    //support 'one property' version
     if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
-      return parsers.natural_date(tmpl, list);
+      return parsers.natural_date(tmpl, list)
     }
-
     list.push(obj);
-    obj = format.ymd([obj.death_year, obj.death_month]);
-    return format.toText(obj);
+    obj = ymd([obj.death_year, obj.death_month]);
+    return toText(obj)
   },
   //https://en.wikipedia.org/wiki/Template:Birth_date_and_age2
   'birth date and age2': (tmpl, list) => {
     let order = ['at_year', 'at_month', 'at_day', 'birth_year', 'birth_month', 'birth_day'];
-    let obj = parse$b(tmpl, order);
+    let obj = parser(tmpl, order);
     list.push(obj);
-    obj = format.ymd([obj.birth_year, obj.birth_month, obj.birth_day]);
-    return format.toText(obj);
+    obj = ymd([obj.birth_year, obj.birth_month, obj.birth_day]);
+    return toText(obj)
   },
   //https://en.wikipedia.org/wiki/Template:Birth_based_on_age_as_of_date
   'birth based on age as of date': (tmpl, list) => {
     let order = ['age', 'year', 'month', 'day'];
-    let obj = parse$b(tmpl, order);
+    let obj = parser(tmpl, order);
     list.push(obj);
     let age = parseInt(obj.age, 10);
     let year = parseInt(obj.year, 10);
     let born = year - age;
-
     if (born && age) {
-      return "".concat(born, " (age ").concat(obj.age, ")");
+      return `${born} (age ${obj.age})`
     }
-
-    return "(age ".concat(obj.age, ")");
+    return `(age ${obj.age})`
   },
   //https://en.wikipedia.org/wiki/Template:Death_date_and_given_age
   'death date and given age': (tmpl, list) => {
     let order = ['year', 'month', 'day', 'age'];
-    let obj = parse$b(tmpl, order);
+    let obj = parser(tmpl, order);
     list.push(obj);
-    obj = format.ymd([obj.year, obj.month, obj.day]);
-    let str = format.toText(obj);
-
+    obj = ymd([obj.year, obj.month, obj.day]);
+    let str = toText(obj);
     if (obj.age) {
-      str += " (age ".concat(obj.age, ")");
+      str += ` (age ${obj.age})`;
     }
-
-    return str;
+    return str
   },
   //sortable dates -
-  dts: tmpl => {
+  dts: (tmpl) => {
     //remove formatting stuff, ewww
     tmpl = tmpl.replace(/\|format=[ymd]+/i, '');
     tmpl = tmpl.replace(/\|abbr=(on|off)/i, '');
     let order = ['year', 'month', 'date', 'bc'];
-    let obj = parse$b(tmpl, order);
-
+    let obj = parser(tmpl, order);
     if (obj.date && obj.month && obj.year) {
       //render 'june 5 2018'
       if (/[a-z]/.test(obj.month) === true) {
-        return [obj.month, obj.date, obj.year].join(' ');
+        return [obj.month, obj.date, obj.year].join(' ')
       }
-
-      return [obj.year, obj.month, obj.date].join('-');
+      return [obj.year, obj.month, obj.date].join('-')
     }
-
     if (obj.month && obj.year) {
-      return [obj.year, obj.month].join('-');
+      return [obj.year, obj.month].join('-')
     }
-
     if (obj.year) {
       if (obj.year < 0) {
         obj.year = Math.abs(obj.year) + ' BC';
       }
-
-      return obj.year;
+      return obj.year
     }
-
-    return '';
+    return ''
   },
+
   //we can't do timezones, so fake this one a little bit
   //https://en.wikipedia.org/wiki/Template:Time
   time: () => {
     let d = new Date();
-    let obj = format.ymd([d.getFullYear(), d.getMonth(), d.getDate()]);
-    return format.toText(obj);
+    let obj = ymd([d.getFullYear(), d.getMonth(), d.getDate()]);
+    return toText(obj)
   },
-  // https://en.wikipedia.org/wiki/Template:MILLENNIUM
-  millennium: tmpl => {
-    let obj = parse$b(tmpl, ['year']);
-    let year = Number(obj.year);
-    year = parseInt(year / 1000, 10) + 1;
 
+  // https://en.wikipedia.org/wiki/Template:MILLENNIUM
+  millennium: (tmpl) => {
+    let obj = parser(tmpl, ['year']);
+    let year = parseInt(obj.year, 10);
+    year = Math.floor(year / 1000) + 1;
     if (obj.abbr && obj.abbr === 'y') {
       if (year < 0) {
-        return "".concat(lib.toOrdinal(Math.abs(year)), " BC");
+        return `${toOrdinal(Math.abs(year))} BC`
       }
-
-      return "".concat(lib.toOrdinal(year));
+      return `${toOrdinal(year)}`
     }
-
-    return "".concat(lib.toOrdinal(year), " millennium");
+    return `${toOrdinal(year)} millennium`
   },
   //date/age/time templates
   start: parsers.date,
@@ -6025,171 +6864,148 @@ var dates = {
   'age in years and months': parsers['diff-ym'],
   'age in years, months and days': parsers['diff-ymd'],
   'age in years and days': parsers['diff-yd'],
-  'age in days': parsers['diff-d'] // 'birth date and age2': date,
+  'age in days': parsers['diff-d'],
+  // 'birth date and age2': date,
   // 'age in years, months, weeks and days': true,
   // 'age as of date': true,
-
 };
 
-const parse$a = toJSON$4;
 /**
  * converts DMS (decimal-minute-second) geo format to lat/lng format.
  * major thank you to https://github.com/gmaclennan/parse-dms and https://github.com/WSDOT-GIS/dms-js 👏
  **/
-
 function parseDMS(arr) {
   let hemisphere = arr.pop();
   let degrees = Number(arr[0] || 0);
   let minutes = Number(arr[1] || 0);
   let seconds = Number(arr[2] || 0);
-
   if (typeof hemisphere !== 'string' || isNaN(degrees)) {
-    return null;
+    return null
   }
-
   let sign = 1;
-
   if (/[SW]/i.test(hemisphere)) {
     sign = -1;
   }
-
-  return sign * (degrees + minutes / 60 + seconds / 3600);
+  return sign * (degrees + minutes / 60 + seconds / 3600)
 }
 
 const round = function (num) {
   if (typeof num !== 'number') {
-    return num;
+    return num
   }
-
   let places = 100000;
-  return Math.round(num * places) / places;
-}; //these hemispheres mean negative decimals
+  return Math.round(num * places) / places
+};
 
-
+//these hemispheres mean negative decimals
 const negative = {
   s: true,
-  w: true
+  w: true,
 };
 
 const findLatLng = function (arr) {
-  const types = arr.map(s => typeof s).join('|'); //support {{lat|lng}}
-
+  const types = arr.map((s) => typeof s).join('|');
+  //support {{lat|lng}}
   if (arr.length === 2 && types === 'number|number') {
     return {
       lat: arr[0],
-      lon: arr[1]
-    };
-  } //support {{dd|N/S|dd|E/W}}
-
-
+      lon: arr[1],
+    }
+  }
+  //support {{dd|N/S|dd|E/W}}
   if (arr.length === 4 && types === 'number|string|number|string') {
     if (negative[arr[1].toLowerCase()]) {
       arr[0] *= -1;
     }
-
     if (arr[3].toLowerCase() === 'w') {
       arr[2] *= -1;
     }
-
     return {
       lat: arr[0],
-      lon: arr[2]
-    };
-  } //support {{dd|mm|N/S|dd|mm|E/W}}
-
-
+      lon: arr[2],
+    }
+  }
+  //support {{dd|mm|N/S|dd|mm|E/W}}
   if (arr.length === 6) {
     return {
       lat: parseDMS(arr.slice(0, 3)),
-      lon: parseDMS(arr.slice(3))
-    };
-  } //support {{dd|mm|ss|N/S|dd|mm|ss|E/W}}
-
-
+      lon: parseDMS(arr.slice(3)),
+    }
+  }
+  //support {{dd|mm|ss|N/S|dd|mm|ss|E/W}}
   if (arr.length === 8) {
     return {
       lat: parseDMS(arr.slice(0, 4)),
-      lon: parseDMS(arr.slice(4))
-    };
+      lon: parseDMS(arr.slice(4)),
+    }
   }
-
-  return {};
+  return {}
 };
 
 const parseParams = function (obj) {
   obj.list = obj.list || [];
-  obj.list = obj.list.map(str => {
+  obj.list = obj.list.map((str) => {
     let num = Number(str);
-
     if (!isNaN(num)) {
-      return num;
-    } //these are weird
-
-
+      return num
+    }
+    //these are weird
     let split = str.split(/:/);
-
     if (split.length > 1) {
       obj.props = obj.props || {};
       obj.props[split[0]] = split.slice(1).join(':');
-      return null;
+      return null
     }
-
-    return str;
+    return str
   });
-  obj.list = obj.list.filter(s => s !== null);
-  return obj;
+  obj.list = obj.list.filter((s) => s !== null);
+  return obj
 };
 
-const parseCoor$1 = function (tmpl) {
-  let obj = parse$a(tmpl);
+const parseCoor = function (tmpl) {
+  let obj = parser(tmpl);
   obj = parseParams(obj);
   let tmp = findLatLng(obj.list);
   obj.lat = round(tmp.lat);
   obj.lon = round(tmp.lon);
   obj.template = 'coord';
   delete obj.list;
-  return obj;
-}; //console.log(parseDms([57, 18, 22, 'N']));
-//console.log(parseDms([4, 27, 32, 'W']));
+  return obj
+};
+// {{Coor title dms|dd|mm|ss|N/S|dd|mm|ss|E/W|template parameters}}
+// {{Coor title dec|latitude|longitude|template parameters}}
+// {{Coor dms|dd|mm|ss|N/S|dd|mm|ss|E/W|template parameters}}
+// {{Coor dm|dd|mm|N/S|dd|mm|E/W|template parameters}}
+// {{Coor dec|latitude|longitude|template parameters}}
 
+// {{coord|latitude|longitude|coordinate parameters|template parameters}}
+// {{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
+// {{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
 
-var _lib$1 = parseCoor$1; // {{Coor title dms|dd|mm|ss|N/S|dd|mm|ss|E/W|template parameters}}
-
-const parseCoor = _lib$1;
-const templates$3 = {
+const templates$1 = {
   coord: (tmpl, list) => {
     let obj = parseCoor(tmpl);
-    list.push(obj); //display inline, by default
-
+    list.push(obj);
+    //display inline, by default
     if (!obj.display || obj.display.indexOf('inline') !== -1) {
-      return "".concat(obj.lat || '', "\xB0N, ").concat(obj.lon || '', "\xB0W");
+      return `${obj.lat || ''}°N, ${obj.lon || ''}°W`
     }
-
-    return '';
-  }
-}; //{{coord|latitude|longitude|coordinate parameters|template parameters}}
-//{{coord|dd|N/S|dd|E/W|coordinate parameters|template parameters}}
-//{{coord|dd|mm|N/S|dd|mm|E/W|coordinate parameters|template parameters}}
-//{{coord|dd|mm|ss|N/S|dd|mm|ss|E/W|coordinate parameters|template parameters}}
-
-var geo = templates$3;
-
-const parse$9 = toJSON$4;
+    return ''
+  },
+};
 
 const generic = function (tmpl, list, _parser, alias) {
-  let obj = parse$9(tmpl);
-
+  let obj = parser(tmpl);
   if (alias) {
     obj.name = obj.template;
     obj.template = alias;
   }
-
   list.push(obj);
-  return '';
-}; // it may seem redundant,
+  return ''
+};
+// it may seem redundant,
 // but we need these templates for our i18n mappings
-
-
 const misc = {
   persondata: generic,
   taxobox: generic,
@@ -6202,514 +7018,1550 @@ const misc = {
   'commons cat': generic,
   'election box candidate': generic,
   'election box begin': generic,
-  main: generic
+  main: generic,
 };
-var misc_1 = misc;
 
-const parse$8 = toJSON$4;
 const codes = {
-  adx: 'adx',
-  //https://en.wikipedia.org/wiki/Template:Abu_Dhabi_Securities_Exchange
-  aim: 'aim',
-  //https://en.wikipedia.org/wiki/Template:Alternative_Investment_Market
-  amex: 'amex',
-  //https://en.wikipedia.org/wiki/Template:NYSE_American
-  asx: 'asx',
-  //https://en.wikipedia.org/wiki/Template:Australian_Securities_Exchange
-  athex: 'athex',
-  //https://en.wikipedia.org/wiki/Template:Athens_Exchange
-  b3: 'b3',
-  //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa (redirects to B3 (stock exchange))
-  'B3 (stock exchange)': 'B3 (stock exchange)',
-  //https://en.wikipedia.org/wiki/Template:B3_(stock_exchange)
-  barbadosse: 'barbadosse',
-  //https://en.wikipedia.org/wiki/Template:Barbados_Stock_Exchange
-  bbv: 'bbv',
-  //https://en.wikipedia.org/wiki/Template:La_Paz_Stock_Exchange
-  bcba: 'bcba',
-  //https://en.wikipedia.org/wiki/Template:Buenos_Aires_Stock_Exchange
-  bcs: 'bcs',
-  //https://en.wikipedia.org/wiki/Template:Santiago_Stock_Exchange
-  bhse: 'bhse',
-  //https://en.wikipedia.org/wiki/Template:Bahrain_Bourse
-  bist: 'bist',
-  //https://en.wikipedia.org/wiki/Template:Borsa_Istanbul
-  bit: 'bit',
-  //https://en.wikipedia.org/wiki/Template:Borsa_Italiana
-  'bm&f bovespa': 'b3',
-  //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa
-  'bm&f': 'b3',
-  //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa
-  bmad: 'bmad',
-  //https://en.wikipedia.org/wiki/Template:Bolsa_de_Madrid
-  bmv: 'bmv',
-  //https://en.wikipedia.org/wiki/Template:Mexican_Stock_Exchange
-  'bombay stock exchange': 'bombay stock exchange',
-  //https://en.wikipedia.org/wiki/Template:Bombay_Stock_Exchange
-  'botswana stock exchange': 'botswana stock exchange',
-  //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa
-  bpse: 'bpse',
-  //https://en.wikipedia.org/wiki/Template:Budapest_Stock_Exchange
-  bse: 'bse',
-  //https://en.wikipedia.org/wiki/Template:Bombay_Stock_Exchange
-  bsx: 'bsx',
-  //https://en.wikipedia.org/wiki/Template:Bermuda_Stock_Exchange
-  bvb: 'bvb',
-  //https://en.wikipedia.org/wiki/Template:Bucharest_Stock_Exchange
-  bvc: 'bvc',
-  //https://en.wikipedia.org/wiki/Template:Colombian_Securities_Exchange
-  bvl: 'bvl',
-  //https://en.wikipedia.org/wiki/Template:Lima_Stock_Exchange
-  bvpasa: 'bvpasa',
-  //https://en.wikipedia.org/wiki/Template:BVPASA
-  bwse: 'bwse',
-  //https://en.wikipedia.org/wiki/Template:Botswana_Stock_Exchange
-  'canadian securities exchange': 'canadian securities exchange',
-  //https://en.wikipedia.org/wiki/Template:Canadian_Securities_Exchange
-  cse: 'cse',
-  //https://en.wikipedia.org/wiki/Template:Chittagong_Stock_Exchange
-  darse: 'darse',
-  //https://en.wikipedia.org/wiki/Template:Dar_es_Salaam_Stock_Exchange
-  dfm: 'dfm',
-  //https://en.wikipedia.org/wiki/Template:Dubai_Financial_Market
-  dse: 'dse',
-  //https://en.wikipedia.org/wiki/Template:Dhaka_Stock_Exchange
-  euronext: 'euronext',
-  //https://en.wikipedia.org/wiki/Template:Euronext
-  euronextparis: 'euronextparis',
-  //https://en.wikipedia.org/wiki/Template:EuronextParis
-  fse: 'fse',
-  //https://en.wikipedia.org/wiki/Template:Fukuoka_Stock_Exchange
-  fwb: 'fwb',
-  //https://en.wikipedia.org/wiki/Template:Frankfurt_Stock_Exchange
-  gse: 'gse',
-  //https://en.wikipedia.org/wiki/Template:Ghana_Stock_Exchange
-  gtsm: 'gtsm',
-  //https://en.wikipedia.org/wiki/Template:Gre_Tai_Securities_Market
-  idx: 'idx',
-  //https://en.wikipedia.org/wiki/Template:Indonesia_Stock_Exchange
-  ise: 'ise',
-  //https://en.wikipedia.org/wiki/Template:Irish_Stock_Exchange
-  iseq: 'iseq',
-  //https://en.wikipedia.org/wiki/Template:Irish_Stock_Exchange
-  isin: 'isin',
-  //https://en.wikipedia.org/wiki/Template:ISIN
-  jasdaq: 'jasdaq',
-  //https://en.wikipedia.org/wiki/Template:JASDAQ
-  jse: 'jse',
-  //https://en.wikipedia.org/wiki/Template:Johannesburg_Stock_Exchange
-  kase: 'kase',
-  //https://en.wikipedia.org/wiki/Template:Kazakhstan_Stock_Exchange
-  kn: 'kn',
-  //https://en.wikipedia.org/wiki/Template:Nairobi_Securities_Exchange
-  krx: 'krx',
-  //https://en.wikipedia.org/wiki/Template:Korea_Exchange
-  lse: 'lse',
-  //https://en.wikipedia.org/wiki/Template:London_Stock_Exchange
-  luxse: 'luxse',
-  //https://en.wikipedia.org/wiki/Template:Luxembourg_Stock_Exchange
-  'malta stock exchange': 'malta stock exchange',
-  //https://en.wikipedia.org/wiki/Template:Malta_Stock_Exchange
-  mai: 'mai',
-  //https://en.wikipedia.org/wiki/Template:Market_for_Alternative_Investment
-  mcx: 'mcx',
-  //https://en.wikipedia.org/wiki/Template:Moscow_Exchange
-  mutf: 'mutf',
-  //https://en.wikipedia.org/wiki/Template:Mutual_fund
-  myx: 'myx',
-  //https://en.wikipedia.org/wiki/Template:Bursa_Malaysia
-  nag: 'nag',
-  //https://en.wikipedia.org/wiki/Template:Nagoya_Stock_Exchange
-  'nasdaq dubai': 'nasdaq dubai',
-  //https://en.wikipedia.org/wiki/Template:NASDAQ_Dubai
-  nasdaq: 'nasdaq',
-  //https://en.wikipedia.org/wiki/Template:NASDAQ
-  neeq: 'neeq',
-  //https://en.wikipedia.org/wiki/Template:NEEQ
-  nepse: 'nepse',
-  //https://en.wikipedia.org/wiki/Template:Nepal_Stock_Exchange
-  nex: 'nex',
-  //https://en.wikipedia.org/wiki/Template:TSXV_NEX
-  nse: 'nse',
-  //https://en.wikipedia.org/wiki/Template:National_Stock_Exchange_of_India
-  newconnect: 'newconnect',
-  //https://en.wikipedia.org/wiki/Template:NewConnect
-  'nyse arca': 'nyse arca',
-  //https://en.wikipedia.org/wiki/Template:NYSE_Arca
-  nyse: 'nyse',
-  //https://en.wikipedia.org/wiki/Template:New_York_Stock_Exchange
-  nzx: 'nzx',
-  //https://en.wikipedia.org/wiki/Template:New_Zealand_Exchange
-  'omx baltic': 'omx baltic',
-  //https://en.wikipedia.org/wiki/Template:OMX_Baltic
-  omx: 'omx',
-  //https://en.wikipedia.org/wiki/Template:OMX
-  ose: 'ose',
-  //https://en.wikipedia.org/wiki/Template:Oslo_Stock_Exchange
-  'otc expert': 'otc expert',
-  //https://en.wikipedia.org/wiki/Template:OTC_Expert
-  'otc grey': 'otc grey',
-  //https://en.wikipedia.org/wiki/template:grey_market
-  'otc pink': 'otc pink',
-  //https://en.wikipedia.org/wiki/Template:OTC_Pink
-  otcqb: 'otcqb',
-  //https://en.wikipedia.org/wiki/Template:OTCQB
-  otcqx: 'otcqx',
-  //https://en.wikipedia.org/wiki/Template:OTCQX
-  'pfts ukraine stock exchange': 'pfts ukraine stock exchange',
-  //https://en.wikipedia.org/wiki/Template:PFTS_Ukraine_Stock_Exchange
-  'philippine stock exchange': 'philippine stock exchange',
-  //https://en.wikipedia.org/wiki/Template:Philippine_Stock_Exchange
-  prse: 'prse',
-  //https://en.wikipedia.org/wiki/Template:Prague_Stock_Exchange
-  psx: 'psx',
-  //https://en.wikipedia.org/wiki/Template:Pakistan_Stock_Exchange
-  karse: 'karse',
-  //https://en.wikipedia.org/w/index.php?title=Template:Karse&redirect=no (redirects to psx)
-  qe: 'qe',
-  //https://en.wikipedia.org/wiki/Template:Qatar_Stock_Exchange
-  'saudi stock exchange': 'saudi stock exchange',
-  //https://en.wikipedia.org/wiki/Template:Saudi_Stock_Exchange
-  sehk: 'sehk',
-  //https://en.wikipedia.org/wiki/Template:Hong_Kong_Stock_Exchange
-  'Stock Exchange of Thailand': 'Stock Exchange of Thailand',
-  //https://en.wikipedia.org/wiki/Template:Stock_Exchange_of_Thailand (alternative for SET)
-  set: 'set',
-  //https://en.wikipedia.org/wiki/Template:Stock_Exchange_of_Thailand
-  sgx: 'sgx',
-  //https://en.wikipedia.org/wiki/Template:Singapore_Exchange
-  sse: 'sse',
-  //https://en.wikipedia.org/wiki/Template:Shanghai_Stock_Exchange
-  swx: 'swx',
-  //https://en.wikipedia.org/wiki/Template:SIX_Swiss_Exchange
-  szse: 'szse',
-  //https://en.wikipedia.org/wiki/Template:Shenzhen_Stock_Exchange
-  tase: 'tase',
-  //https://en.wikipedia.org/wiki/Template:Tel_Aviv_Stock_Exchange
-  'tsx-v': 'tsx-v',
-  //https://en.wikipedia.org/wiki/Template:TSX_Venture_Exchange
-  tsx: 'tsx',
-  //https://en.wikipedia.org/wiki/Template:Toronto_Stock_Exchange
-  tsxv: 'tsxv',
-  //https://en.wikipedia.org/wiki/Template:TSX_Venture_Exchange
-  ttse: 'ttse',
-  //https://en.wikipedia.org/wiki/Template:Trinidad_and_Tobago_Stock_Exchange
-  twse: 'twse',
-  //https://en.wikipedia.org/wiki/Template:Taiwan_Stock_Exchange
-  tyo: 'tyo',
-  //https://en.wikipedia.org/wiki/Template:Tokyo_Stock_Exchange
-  wbag: 'wbag',
-  //https://en.wikipedia.org/wiki/Template:Wiener_B%C3%B6rse
-  wse: 'wse',
-  //https://en.wikipedia.org/wiki/Template:Warsaw_Stock_Exchange
-  'zagreb stock exchange': 'zagreb stock exchange',
-  //https://en.wikipedia.org/wiki/Template:Zagreb_Stock_Exchange
-  'zimbabwe stock exchange': 'zimbabwe stock exchange',
-  //https://en.wikipedia.org/wiki/Template:Zimbabwe_Stock_Exchange
-  zse: 'zse' //https://en.wikipedia.org/wiki/Template:Zagreb_Stock_Exchange
-
+  adx: 'adx', //https://en.wikipedia.org/wiki/Template:Abu_Dhabi_Securities_Exchange
+  aim: 'aim', //https://en.wikipedia.org/wiki/Template:Alternative_Investment_Market
+  amex: 'amex', //https://en.wikipedia.org/wiki/Template:NYSE_American
+  asx: 'asx', //https://en.wikipedia.org/wiki/Template:Australian_Securities_Exchange
+  athex: 'athex', //https://en.wikipedia.org/wiki/Template:Athens_Exchange
+  b3: 'b3', //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa (redirects to B3 (stock exchange))
+  'B3 (stock exchange)': 'B3 (stock exchange)', //https://en.wikipedia.org/wiki/Template:B3_(stock_exchange)
+  barbadosse: 'barbadosse', //https://en.wikipedia.org/wiki/Template:Barbados_Stock_Exchange
+  bbv: 'bbv', //https://en.wikipedia.org/wiki/Template:La_Paz_Stock_Exchange
+  bcba: 'bcba', //https://en.wikipedia.org/wiki/Template:Buenos_Aires_Stock_Exchange
+  bcs: 'bcs', //https://en.wikipedia.org/wiki/Template:Santiago_Stock_Exchange
+  bhse: 'bhse', //https://en.wikipedia.org/wiki/Template:Bahrain_Bourse
+  bist: 'bist', //https://en.wikipedia.org/wiki/Template:Borsa_Istanbul
+  bit: 'bit', //https://en.wikipedia.org/wiki/Template:Borsa_Italiana
+  'bm&f bovespa': 'b3', //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa
+  'bm&f': 'b3', //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa
+  bmad: 'bmad', //https://en.wikipedia.org/wiki/Template:Bolsa_de_Madrid
+  bmv: 'bmv', //https://en.wikipedia.org/wiki/Template:Mexican_Stock_Exchange
+  'bombay stock exchange': 'bombay stock exchange', //https://en.wikipedia.org/wiki/Template:Bombay_Stock_Exchange
+  'botswana stock exchange': 'botswana stock exchange', //https://en.wikipedia.org/wiki/Template:BM%26F_Bovespa
+  bpse: 'bpse', //https://en.wikipedia.org/wiki/Template:Budapest_Stock_Exchange
+  bse: 'bse', //https://en.wikipedia.org/wiki/Template:Bombay_Stock_Exchange
+  bsx: 'bsx', //https://en.wikipedia.org/wiki/Template:Bermuda_Stock_Exchange
+  bvb: 'bvb', //https://en.wikipedia.org/wiki/Template:Bucharest_Stock_Exchange
+  bvc: 'bvc', //https://en.wikipedia.org/wiki/Template:Colombian_Securities_Exchange
+  bvl: 'bvl', //https://en.wikipedia.org/wiki/Template:Lima_Stock_Exchange
+  bvpasa: 'bvpasa', //https://en.wikipedia.org/wiki/Template:BVPASA
+  bwse: 'bwse', //https://en.wikipedia.org/wiki/Template:Botswana_Stock_Exchange
+  'canadian securities exchange': 'canadian securities exchange', //https://en.wikipedia.org/wiki/Template:Canadian_Securities_Exchange
+  cse: 'cse', //https://en.wikipedia.org/wiki/Template:Chittagong_Stock_Exchange
+  darse: 'darse', //https://en.wikipedia.org/wiki/Template:Dar_es_Salaam_Stock_Exchange
+  dfm: 'dfm', //https://en.wikipedia.org/wiki/Template:Dubai_Financial_Market
+  dse: 'dse', //https://en.wikipedia.org/wiki/Template:Dhaka_Stock_Exchange
+  euronext: 'euronext', //https://en.wikipedia.org/wiki/Template:Euronext
+  euronextparis: 'euronextparis', //https://en.wikipedia.org/wiki/Template:EuronextParis
+  fse: 'fse', //https://en.wikipedia.org/wiki/Template:Fukuoka_Stock_Exchange
+  fwb: 'fwb', //https://en.wikipedia.org/wiki/Template:Frankfurt_Stock_Exchange
+  gse: 'gse', //https://en.wikipedia.org/wiki/Template:Ghana_Stock_Exchange
+  gtsm: 'gtsm', //https://en.wikipedia.org/wiki/Template:Gre_Tai_Securities_Market
+  idx: 'idx', //https://en.wikipedia.org/wiki/Template:Indonesia_Stock_Exchange
+  ise: 'ise', //https://en.wikipedia.org/wiki/Template:Irish_Stock_Exchange
+  iseq: 'iseq', //https://en.wikipedia.org/wiki/Template:Irish_Stock_Exchange
+  isin: 'isin', //https://en.wikipedia.org/wiki/Template:ISIN
+  jasdaq: 'jasdaq', //https://en.wikipedia.org/wiki/Template:JASDAQ
+  jse: 'jse', //https://en.wikipedia.org/wiki/Template:Johannesburg_Stock_Exchange
+  kase: 'kase', //https://en.wikipedia.org/wiki/Template:Kazakhstan_Stock_Exchange
+  kn: 'kn', //https://en.wikipedia.org/wiki/Template:Nairobi_Securities_Exchange
+  krx: 'krx', //https://en.wikipedia.org/wiki/Template:Korea_Exchange
+  lse: 'lse', //https://en.wikipedia.org/wiki/Template:London_Stock_Exchange
+  luxse: 'luxse', //https://en.wikipedia.org/wiki/Template:Luxembourg_Stock_Exchange
+  'malta stock exchange': 'malta stock exchange', //https://en.wikipedia.org/wiki/Template:Malta_Stock_Exchange
+  mai: 'mai', //https://en.wikipedia.org/wiki/Template:Market_for_Alternative_Investment
+  mcx: 'mcx', //https://en.wikipedia.org/wiki/Template:Moscow_Exchange
+  mutf: 'mutf', //https://en.wikipedia.org/wiki/Template:Mutual_fund
+  myx: 'myx', //https://en.wikipedia.org/wiki/Template:Bursa_Malaysia
+  nag: 'nag', //https://en.wikipedia.org/wiki/Template:Nagoya_Stock_Exchange
+  'nasdaq dubai': 'nasdaq dubai', //https://en.wikipedia.org/wiki/Template:NASDAQ_Dubai
+  nasdaq: 'nasdaq', //https://en.wikipedia.org/wiki/Template:NASDAQ
+  neeq: 'neeq', //https://en.wikipedia.org/wiki/Template:NEEQ
+  nepse: 'nepse', //https://en.wikipedia.org/wiki/Template:Nepal_Stock_Exchange
+  nex: 'nex', //https://en.wikipedia.org/wiki/Template:TSXV_NEX
+  nse: 'nse', //https://en.wikipedia.org/wiki/Template:National_Stock_Exchange_of_India
+  newconnect: 'newconnect', //https://en.wikipedia.org/wiki/Template:NewConnect
+  'nyse arca': 'nyse arca', //https://en.wikipedia.org/wiki/Template:NYSE_Arca
+  nyse: 'nyse', //https://en.wikipedia.org/wiki/Template:New_York_Stock_Exchange
+  nzx: 'nzx', //https://en.wikipedia.org/wiki/Template:New_Zealand_Exchange
+  'omx baltic': 'omx baltic', //https://en.wikipedia.org/wiki/Template:OMX_Baltic
+  omx: 'omx', //https://en.wikipedia.org/wiki/Template:OMX
+  ose: 'ose', //https://en.wikipedia.org/wiki/Template:Oslo_Stock_Exchange
+  'otc expert': 'otc expert', //https://en.wikipedia.org/wiki/Template:OTC_Expert
+  'otc grey': 'otc grey', //https://en.wikipedia.org/wiki/template:grey_market
+  'otc pink': 'otc pink', //https://en.wikipedia.org/wiki/Template:OTC_Pink
+  otcqb: 'otcqb', //https://en.wikipedia.org/wiki/Template:OTCQB
+  otcqx: 'otcqx', //https://en.wikipedia.org/wiki/Template:OTCQX
+  'pfts ukraine stock exchange': 'pfts ukraine stock exchange', //https://en.wikipedia.org/wiki/Template:PFTS_Ukraine_Stock_Exchange
+  'philippine stock exchange': 'philippine stock exchange', //https://en.wikipedia.org/wiki/Template:Philippine_Stock_Exchange
+  prse: 'prse', //https://en.wikipedia.org/wiki/Template:Prague_Stock_Exchange
+  psx: 'psx', //https://en.wikipedia.org/wiki/Template:Pakistan_Stock_Exchange
+  karse: 'karse', //https://en.wikipedia.org/w/index.php?title=Template:Karse&redirect=no (redirects to psx)
+  qe: 'qe', //https://en.wikipedia.org/wiki/Template:Qatar_Stock_Exchange
+  'saudi stock exchange': 'saudi stock exchange', //https://en.wikipedia.org/wiki/Template:Saudi_Stock_Exchange
+  sehk: 'sehk', //https://en.wikipedia.org/wiki/Template:Hong_Kong_Stock_Exchange
+  'Stock Exchange of Thailand': 'Stock Exchange of Thailand', //https://en.wikipedia.org/wiki/Template:Stock_Exchange_of_Thailand (alternative for SET)
+  set: 'set', //https://en.wikipedia.org/wiki/Template:Stock_Exchange_of_Thailand
+  sgx: 'sgx', //https://en.wikipedia.org/wiki/Template:Singapore_Exchange
+  sse: 'sse', //https://en.wikipedia.org/wiki/Template:Shanghai_Stock_Exchange
+  swx: 'swx', //https://en.wikipedia.org/wiki/Template:SIX_Swiss_Exchange
+  szse: 'szse', //https://en.wikipedia.org/wiki/Template:Shenzhen_Stock_Exchange
+  tase: 'tase', //https://en.wikipedia.org/wiki/Template:Tel_Aviv_Stock_Exchange
+  'tsx-v': 'tsx-v', //https://en.wikipedia.org/wiki/Template:TSX_Venture_Exchange
+  tsx: 'tsx', //https://en.wikipedia.org/wiki/Template:Toronto_Stock_Exchange
+  tsxv: 'tsxv', //https://en.wikipedia.org/wiki/Template:TSX_Venture_Exchange
+  ttse: 'ttse', //https://en.wikipedia.org/wiki/Template:Trinidad_and_Tobago_Stock_Exchange
+  twse: 'twse', //https://en.wikipedia.org/wiki/Template:Taiwan_Stock_Exchange
+  tyo: 'tyo', //https://en.wikipedia.org/wiki/Template:Tokyo_Stock_Exchange
+  wbag: 'wbag', //https://en.wikipedia.org/wiki/Template:Wiener_B%C3%B6rse
+  wse: 'wse', //https://en.wikipedia.org/wiki/Template:Warsaw_Stock_Exchange
+  'zagreb stock exchange': 'zagreb stock exchange', //https://en.wikipedia.org/wiki/Template:Zagreb_Stock_Exchange
+  'zimbabwe stock exchange': 'zimbabwe stock exchange', //https://en.wikipedia.org/wiki/Template:Zimbabwe_Stock_Exchange
+  zse: 'zse', //https://en.wikipedia.org/wiki/Template:Zagreb_Stock_Exchange
 };
 
 const parseStockExchange = (tmpl, list) => {
-  let o = parse$8(tmpl, ['ticketnumber', 'code']);
+  let o = parser(tmpl, ['ticketnumber', 'code']);
   list.push(o);
   let code = o.template || '';
-
   if (code === '') {
     code = o.code;
   }
-
   code = (code || '').toLowerCase();
   let str = codes[code] || '';
-
   if (o.ticketnumber) {
-    str = "".concat(str, ": ").concat(o.ticketnumber);
+    str = `${str}: ${o.ticketnumber}`;
   }
-
   if (o.code && !codes[o.code.toLowerCase()]) {
     str += ' ' + o.code;
   }
-
-  return str;
+  return str
 };
 
-const exchanges = {}; //the others fit the same pattern..
-
-Object.keys(codes).forEach(k => {
+const exchanges = {};
+//the others fit the same pattern..
+Object.keys(codes).forEach((k) => {
   exchanges[k] = parseStockExchange;
 });
-var stockExchanges = exchanges;
-
-const parse$7 = toJSON$4;
 
 const zeroPad = function (num) {
   num = String(num);
-
   if (num.length === 1) {
     num = '0' + num;
   }
-
-  return num;
+  return num
 };
 
 const parseTeam = function (obj, round, team) {
-  if (obj["rd".concat(round, "-team").concat(zeroPad(team))]) {
+  if (obj[`rd${round}-team${zeroPad(team)}`]) {
     team = zeroPad(team);
   }
-
-  let score = obj["rd".concat(round, "-score").concat(team)];
+  let score = obj[`rd${round}-score${team}`];
   let num = Number(score);
-
   if (isNaN(num) === false) {
     score = num;
   }
-
   return {
-    team: obj["rd".concat(round, "-team").concat(team)],
+    team: obj[`rd${round}-team${team}`],
     score: score,
-    seed: obj["rd".concat(round, "-seed").concat(team)]
-  };
-}; // https://en.wikipedia.org/wiki/Category:Tournament_bracket_templates
+    seed: obj[`rd${round}-seed${team}`],
+  }
+};
+
+// https://en.wikipedia.org/wiki/Category:Tournament_bracket_templates
 //these are weird.
-
-
-const playoffBracket$1 = function (tmpl) {
+const playoffBracket = function (tmpl) {
   let rounds = [];
-  let obj = parse$7(tmpl); //try some rounds
-
+  let obj = parser(tmpl);
+  //try some rounds
   for (let i = 1; i < 7; i += 1) {
     let round = [];
-
     for (let t = 1; t < 16; t += 2) {
-      let key = "rd".concat(i, "-team");
-
+      let key = `rd${i}-team`;
       if (obj[key + t] || obj[key + zeroPad(t)]) {
         let one = parseTeam(obj, i, t);
         let two = parseTeam(obj, i, t + 1);
         round.push([one, two]);
       } else {
-        break;
+        break
       }
     }
-
     if (round.length > 0) {
       rounds.push(round);
     }
   }
-
   return {
     template: 'playoffbracket',
-    rounds: rounds
-  };
+    rounds: rounds,
+  }
 };
 
-var _lib = playoffBracket$1;
-
-const parse$6 = toJSON$4;
-const flags = flags$2;
-const playoffBracket = _lib;
 let sports = {
   //playoff brackets
   '4teambracket': function (tmpl, list) {
     let obj = playoffBracket(tmpl);
     list.push(obj);
-    return '';
+    return ''
   },
-  player: (tmpl, list) => {
-    let res = parse$6(tmpl, ['number', 'country', 'name', 'dl']);
-    list.push(res);
-    let str = "[[".concat(res.name, "]]");
 
+  player: (tmpl, list) => {
+    let res = parser(tmpl, ['number', 'country', 'name', 'dl']);
+    list.push(res);
+    let str = `[[${res.name}]]`;
     if (res.country) {
       let country = (res.country || '').toLowerCase();
-      let flag = flags.find(a => country === a[1] || country === a[2]) || [];
-
+      let flag = flags.find((a) => country === a[1] || country === a[2]) || [];
       if (flag && flag[0]) {
         str = flag[0] + '  ' + str;
       }
     }
-
     if (res.number) {
       str = res.number + ' ' + str;
     }
-
-    return str;
+    return str
   },
+
   //https://en.wikipedia.org/wiki/Template:Goal
   goal: (tmpl, list) => {
-    let res = parse$6(tmpl);
+    let res = parser(tmpl);
     let obj = {
       template: 'goal',
-      data: []
+      data: [],
     };
     let arr = res.list || [];
-
     for (let i = 0; i < arr.length; i += 2) {
       obj.data.push({
         min: arr[i],
-        note: arr[i + 1] || ''
+        note: arr[i + 1] || '',
       });
     }
-
-    list.push(obj); //generate a little text summary
-
+    list.push(obj);
+    //generate a little text summary
     let summary = '⚽ ';
-    summary += obj.data.map(o => {
-      let note = o.note;
-
-      if (note) {
-        note = " (".concat(note, ")");
-      }
-
-      return o.min + "'" + note;
-    }).join(', ');
-    return summary;
+    summary += obj.data
+      .map((o) => {
+        let note = o.note;
+        if (note) {
+          note = ` (${note})`;
+        }
+        return o.min + "'" + note
+      })
+      .join(', ');
+    return summary
   },
+
   //a transcluded sports module - https://en.m.wikipedia.org/w/index.php?title=Special:WhatLinksHere/Module:Sports_table
   // https://en.wikipedia.org/wiki/Template:2020–21_NHL_North_Division_standings
   'sports table': (tmpl, list) => {
-    let obj = parse$6(tmpl);
+    let obj = parser(tmpl);
     let byTeam = {};
-    let teams = Object.keys(obj).filter(k => /^team[0-9]/.test(k)).map(k => obj[k].toLowerCase());
-    teams.forEach(team => {
+    let teams = Object.keys(obj)
+      .filter((k) => /^team[0-9]/.test(k))
+      .map((k) => obj[k].toLowerCase());
+    teams.forEach((team) => {
       byTeam[team] = {
-        name: obj["name_".concat(team)],
-        win: Number(obj["win_".concat(team)]) || 0,
-        loss: Number(obj["loss_".concat(team)]) || 0,
-        tie: Number(obj["tie_".concat(team)]) || 0,
-        otloss: Number(obj["otloss_".concat(team)]) || 0,
-        goals_for: Number(obj["gf_".concat(team)]) || 0,
-        goals_against: Number(obj["ga_".concat(team)]) || 0
+        name: obj[`name_${team}`],
+        win: Number(obj[`win_${team}`]) || 0,
+        loss: Number(obj[`loss_${team}`]) || 0,
+        tie: Number(obj[`tie_${team}`]) || 0,
+        otloss: Number(obj[`otloss_${team}`]) || 0,
+        goals_for: Number(obj[`gf_${team}`]) || 0,
+        goals_against: Number(obj[`ga_${team}`]) || 0,
       };
     });
     let res = {
       date: obj.update,
       header: obj.table_header,
-      teams: byTeam
+      teams: byTeam,
     };
     list.push(res);
-  }
+  },
 };
-var sports_1 = sports;
 
-var textAndData = Object.assign({}, shorthand, functions, currency, dates, geo, misc_1, stockExchanges, _lib, sports_1, _lib, sports_1);
+var bothTmpl = Object.assign(
+  {},
+  shorthand,
+  templates$3,
+  templates$2,
+  dates,
+  templates$1,
+  misc,
+  exchanges,
+  playoffBracket,
+  sports,
+);
 
-const aliases = aliases_1;
-let templates$2 = Object.assign({}, textOnly, dataOnly, textAndData);
-Object.keys(aliases).forEach(k => {
+let templates = Object.assign(
+  {},
+  textTmpl,
+  dataTmpl,
+  bothTmpl
+);
+
+Object.keys(aliases).forEach((k) => {
   // if (templates[aliases[k]] === undefined) {
   //   console.error(`Missing template: '${aliases[k]}'`)
   // }
-  templates$2[k] = templates$2[aliases[k]];
+  templates[k] = templates[aliases[k]];
 });
-var custom = templates$2; // console.log(Object.keys(templates).length)
 
-const ignore = _ignore;
-const infobox = _infobox;
-const templates$1 = custom;
-const toJSON$3 = toJSON$4;
-const {
-  isArray: isArray$2,
-  isObject
-} = helpers$1;
-const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']; //this gets all the {{template}} objects and decides how to parse them
+// console.log(Object.keys(templates).length)
 
-const parseTemplate$2 = function (tmpl, doc) {
-  let name = tmpl.name; // dont bother with some junk templates
+const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
+//this gets all the {{template}} objects and decides how to parse them
+const parseTemplate = function (tmpl, doc) {
+  let name = tmpl.name;
+  // dont bother with some junk templates
   if (ignore.hasOwnProperty(name) === true) {
-    return [''];
-  } //{{infobox settlement...}}
-
-
-  if (infobox.isInfobox(name) === true) {
-    let obj = toJSON$3(tmpl.body, [], 'raw'); // list.push(infobox.format(obj))
-
-    return ['', infobox.format(obj)];
-  } //cite book, cite arxiv...
-
-
+    return ['']
+  }
+  //{{infobox settlement...}}
+  if (isInfobox(name) === true) {
+    let obj = parser(tmpl.body, [], 'raw');
+    // list.push(infobox.format(obj))
+    return ['', fmtInfobox(obj)]
+  }
+  //cite book, cite arxiv...
   if (/^cite [a-z]/.test(name) === true) {
-    let obj = toJSON$3(tmpl.body);
+    let obj = parser(tmpl.body);
     obj.type = obj.template;
-    obj.template = 'citation'; // list.push(obj)
-
-    return ['', obj];
-  } // ok, here we go!
+    obj.template = 'citation';
+    // list.push(obj)
+    return ['', obj]
+  }
+  // ok, here we go!
   //parse some known templates
-
-
-  if (templates$1.hasOwnProperty(name) === true) {
+  if (templates.hasOwnProperty(name) === true) {
     //handle number-syntax
-    if (typeof templates$1[name] === 'number') {
-      let obj = toJSON$3(tmpl.body, nums);
-      let key = String(templates$1[name]);
-      return [obj[key] || ''];
-    } //handle string-syntax
-
-
-    if (typeof templates$1[name] === 'string') {
-      return [templates$1[name]];
-    } //handle array sytax
-
-
-    if (isArray$2(templates$1[name]) === true) {
-      let obj = toJSON$3(tmpl.body, templates$1[name]); // list.push(obj)
-
-      return ['', obj];
-    } //handle object sytax
-
-
-    if (isObject(templates$1[name]) === true) {
-      let obj = toJSON$3(tmpl.body, templates$1[name].props); // list.push(obj)
-
-      return [obj[templates$1[name].out], obj];
-    } //handle function syntax
-
-
-    if (typeof templates$1[name] === 'function') {
+    if (typeof templates[name] === 'number') {
+      let obj = parser(tmpl.body, nums);
+      let key = String(templates[name]);
+      return [obj[key] || '']
+    }
+    //handle string-syntax
+    if (typeof templates[name] === 'string') {
+      return [templates[name]]
+    }
+    //handle array sytax
+    if (isArray(templates[name]) === true) {
+      let obj = parser(tmpl.body, templates[name]);
+      // list.push(obj)
+      return ['', obj]
+    }
+    //handle object sytax
+    if (isObject(templates[name]) === true) {
+      let obj = parser(tmpl.body, templates[name].props);
+      // list.push(obj)
+      return [obj[templates[name].out], obj]
+    }
+    //handle function syntax
+    if (typeof templates[name] === 'function') {
       // let json = toJSON(tmpl.body)
       //(tmpl, list, alias, doc)
       let arr = [];
-      let txt = templates$1[name](tmpl.body, arr, toJSON$3, null, doc);
-      return [txt, arr[0]];
+      let txt = templates[name](tmpl.body, arr, parser, null, doc);
+      return [txt, arr[0]]
     }
-  } //an unknown template with data, so just keep it.
-
-
-  let json = toJSON$3(tmpl.body);
-
+  }
+  //an unknown template with data, so just keep it.
+  let json = parser(tmpl.body);
   if (Object.keys(json).length === 0) {
     // list.push(json)
     json = null;
-  } //..then remove it
-
-
-  return ['', json];
+  }
+  //..then remove it
+  return ['', json]
 };
 
-var parse$5 = parseTemplate$2;
+/**
+ * turn an infobox into some nice json
+ * 
+ * @param {object} infobox 
+ * @param {object} [options] 
+ * @returns {object}
+ */
+const toJson = function (infobox, options) {
+  let json = Object.keys(infobox.data).reduce((h, k) => {
+    if (infobox.data[k]) {
+      h[k] = infobox.data[k].json();
+    }
+    return h
+  }, {});
 
-const {
-  trim_whitespace
-} = helpers$1;
-const parseSentence$5 = _04Sentence.fromText;
-const parseReferences = reference;
-const getTemplates = _01Nested;
-const parseTemplates$1 = parse$5;
+  //support mongo-encoding keys
+  if (options.encode === true) {
+    json = encodeObj(json);
+  }
+  return json
+};
+
+const normalize = (str = '') => {
+  str = str.toLowerCase();
+  str = str.replace(/[-_]/g, ' ');
+  return str.trim()
+};
+
+//a formal key-value data table about a topic
+const Infobox = function (obj, wiki) {
+  this._type = obj.type;
+  this.domain = obj.domain;
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: obj.data,
+  });
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki,
+  });
+};
+
+const methods$2 = {
+  type: function () {
+    return this._type
+  },
+  links: function (n) {
+    let arr = [];
+    Object.keys(this.data).forEach((k) => {
+      this.data[k].links().forEach((l) => arr.push(l));
+    });
+    if (typeof n === 'string') {
+      //grab a link like .links('Fortnight')
+      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+      let link = arr.find((o) => o.page() === n);
+      return link === undefined ? [] : [link]
+    }
+    return arr
+  },
+  image: function () {
+    let s = this.data.image || this.data.image2 || this.data.logo || this.data.image_skyline || this.data.image_flag;
+    if (!s) {
+      return null
+    }
+    let obj = s.json();
+    let file = obj.text;
+    obj.file = file;
+    obj.text = '';
+    obj.caption = this.data.caption;
+    obj.domain = this.domain; // add domain information for image
+    return new Image(obj)
+  },
+  get: function (keys) {
+    let allKeys = Object.keys(this.data);
+    if (typeof keys === 'string') {
+      let key = normalize(keys);
+      for (let i = 0; i < allKeys.length; i += 1) {
+        let tmp = normalize(allKeys[i]);
+        if (key === tmp) {
+          return this.data[allKeys[i]]
+        }
+      }
+      return new Sentence()
+    }
+    if (isArray(keys)) {
+      // support array-input
+      keys = keys.map(normalize);
+      return keys.map((k) => {
+        for (let i = 0; i < allKeys.length; i += 1) {
+          let tmp = normalize(allKeys[i]);
+          if (k === tmp) {
+            return this.data[allKeys[i]]
+          }
+        }
+        return new Sentence()
+      })
+    }
+    return new Sentence()
+  },
+  text: function () {
+    return ''
+  },
+  json: function (options) {
+    options = options || {};
+    return toJson(this, options)
+  },
+  wikitext: function () {
+    return this.wiki || ''
+  },
+  keyValue: function () {
+    return Object.keys(this.data).reduce((h, k) => {
+      if (this.data[k]) {
+        h[k] = this.data[k].text();
+      }
+      return h
+    }, {})
+  },
+};
+//aliases
+Object.keys(methods$2).forEach((k) => {
+  Infobox.prototype[k] = methods$2[k];
+});
+Infobox.prototype.data = Infobox.prototype.keyValue;
+Infobox.prototype.template = Infobox.prototype.type;
+Infobox.prototype.images = Infobox.prototype.image;
+
+//also called 'citations'
+const Reference = function (data, wiki) {
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data,
+  });
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki,
+  });
+};
+
+const methods$1 = {
+  title: function () {
+    let data = this.data;
+    return data.title || data.encyclopedia || data.author || ''
+  },
+  links: function (n) {
+    let arr = [];
+    if (typeof n === 'number') {
+      return arr[n]
+    }
+    //grab a specific link..
+    if (typeof n === 'number') {
+      return arr[n]
+    } else if (typeof n === 'string') {
+      //grab a link like .links('Fortnight')
+      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
+      let link = arr.find((o) => o.page() === n);
+      return link === undefined ? [] : [link]
+    }
+    return arr || []
+  },
+  text: function () {
+    return '' //nah, skip these.
+  },
+  wikitext: function () {
+    return this.wiki || ''
+  },
+  json: function (options = {}) {
+    let json = this.data || {};
+    //encode them, for mongodb
+    if (options.encode === true) {
+      json = Object.assign({}, json);
+      json = encodeObj(json);
+    }
+    return json
+  },
+};
+Object.keys(methods$1).forEach((k) => {
+  Reference.prototype[k] = methods$1[k];
+});
+
+const methods = {
+  text: function () {
+    let str = this._text || '';
+    return fromText(str).text()
+  },
+  json: function () {
+    return this.data || {}
+  },
+  wikitext: function () {
+    return this.wiki || ''
+  },
+};
+
+const Template = function (data, text = '', wiki = '') {
+  Object.defineProperty(this, 'data', {
+    enumerable: false,
+    value: data,
+  });
+  Object.defineProperty(this, '_text', {
+    enumerable: false,
+    value: text,
+  });
+  Object.defineProperty(this, 'wiki', {
+    enumerable: false,
+    value: wiki,
+  });
+};
+
+Object.keys(methods).forEach((k) => {
+  Template.prototype[k] = methods[k];
+});
+
+const isCitation = /^(cite |citation)/i;
+
+const referenceTypes = {
+  citation: true,
+  refn: true,
+  harvnb: true,
+  source: true, //wikinews
+};
+
+// split Infoboxes from templates and references
+const sortOut = function (list, domain) {
+  let res = {
+    infoboxes: [],
+    templates: [],
+    references: [],
+  };
+  //remove references and infoboxes from our list
+  list.forEach((obj) => {
+    let json = obj.json;
+    let kind = json.template || json.type || json.name;
+    // is it a Reference?
+    if (referenceTypes[kind] === true || isCitation.test(kind) === true) {
+      res.references.push(new Reference(json, obj.wiki));
+      return
+    }
+    // is it an Infobox?
+    if (json.template === 'infobox' && json.subbox !== 'yes') {
+      json.domain = domain; //infoboxes need this for images, i guess
+      json.data = json.data || {}; //validate it a little
+      res.infoboxes.push(new Infobox(json, obj.wiki));
+      return
+    }
+    // otherwise, it's just a template
+    res.templates.push(new Template(json, obj.text, obj.wiki));
+  });
+  return res
+};
+
+// return a flat list of all {{templates}}
+const allTemplates = function (wiki, doc) {
+  let list = [];
+  //nested data-structure of templates
+  let nested = findTemplates(wiki);
+  //recursive template-parser
+  const parseNested = function (obj, parent) {
+    obj.parent = parent;
+    //do tail-first recursion
+    if (obj.children && obj.children.length > 0) {
+      obj.children.forEach((ch) => parseNested(ch, obj));
+    }
+    //parse template into json, return replacement wikitext
+    let [text, json] = parseTemplate(obj, doc);
+    obj.wiki = text;
+    if (json) {
+      list.push({
+        name: obj.name,
+        wiki: obj.body,
+        text: text,
+        json: json,
+      });
+    }
+    //remove the text from every parent
+    const removeIt = function (node, body, out) {
+      if (node.parent) {
+        node.parent.body = node.parent.body.replace(body, out);
+        removeIt(node.parent, body, out);
+      }
+    };
+    removeIt(obj, obj.body, obj.wiki);
+    wiki = wiki.replace(obj.body, obj.wiki);
+  };
+  //kick it off
+  nested.forEach((node) => parseNested(node, null));
+  //remove the templates from our wiki text
+  nested.forEach((node) => {
+    wiki = wiki.replace(node.body, node.wiki);
+  });
+  return { list: list, wiki: wiki }
+};
+
+//find + parse all templates in the section
+const process = function (section, doc) {
+  // find+parse them all
+  let { list, wiki } = allTemplates(section._wiki, doc);
+  // split-out references and infoboxes
+  let domain = doc ? doc._domain : null;
+  let { infoboxes, references, templates } = sortOut(list, domain);
+
+  //sort-out the templates we decide to keep
+  section._infoboxes = section._infoboxes || [];
+  section._references = section._references || [];
+  section._templates = section._templates || [];
+
+  section._infoboxes = section._infoboxes.concat(infoboxes);
+  section._references = section._references.concat(references);
+  section._templates = section._templates.concat(templates);
+
+  section._wiki = wiki;
+};
+
+//structured Cite templates - <ref>{{Cite..</ref>
+const hasCitation = function (str) {
+  return /^ *\{\{ *(cite|citation)/i.test(str) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false
+};
+
+const parseCitation = function (tmpl) {
+  let obj = parser(tmpl);
+  obj.type = obj.template.replace(/cite /, '');
+  obj.template = 'citation';
+  return obj
+};
+
+//handle unstructured ones - <ref>some text</ref>
+const parseInline = function (str) {
+  let obj = fromText(str) || {};
+  return {
+    template: 'citation',
+    type: 'inline',
+    data: {},
+    inline: obj,
+  }
+};
+
+//parse <ref></ref> xml tags
+const parseRefs = function (section) {
+  let references = [];
+  let wiki = section._wiki;
+
+  wiki = wiki.replace(/ ?<ref>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
+    if (hasCitation(tmpl)) {
+      let obj = parseCitation(tmpl);
+      if (obj) {
+        references.push({ json: obj, wiki: all });
+      }
+      wiki = wiki.replace(tmpl, '');
+    } else {
+      references.push({ json: parseInline(tmpl), wiki: all });
+    }
+    return ' '
+  });
+
+  //<ref name=""/>
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ');
+
+  //<ref name=""></ref>
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
+    if (hasCitation(tmpl)) {
+      let obj = parseCitation(tmpl);
+      if (obj) {
+        references.push({ json: obj, wiki: tmpl });
+      }
+      wiki = wiki.replace(tmpl, '');
+    } else {
+      references.push({ json: parseInline(tmpl), wiki: all });
+    }
+    return ' '
+  });
+
+  //now that we're done with xml, do a generic + dangerous xml-tag removal
+  wiki = wiki.replace(/ ?<[ /]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ /]?> ?/g, ' '); //<samp name="asd">
+  section._references = references.map((obj) => new Reference(obj.json, obj.wiki));
+  section._wiki = wiki;
+};
+
+//okay, <gallery> is a xml-tag, with newline-separated data, somehow pivoted by '|'...
+//all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
+//- not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
+/**
+ *
+ * @private
+ * @param {object} catcher
+ * @param {object} doc
+ * @param {object} section
+ */
+const parseGallery = function (catcher, doc, section) {
+  catcher.text = catcher.text.replace(/<gallery([^>]*)>([\s\S]+)<\/gallery>/g, (_, _attrs, inside) => {
+    let images = inside.split(/\n/g);
+    images = images.filter((str) => str && str.trim() !== '');
+
+    //parse the line, which has an image and sometimes a caption
+    images = images.map((str) => {
+      let arr = str.split(/\|/);
+      let obj = {
+        file: arr[0].trim(),
+        lang: doc.lang(),
+        domain: doc.domain(),
+      };
+      let img = new Image(obj).json();
+      let caption = arr.slice(1).join('|');
+      if (caption !== '') {
+        img.caption = fromText(caption);
+      }
+      return img
+    });
+
+    //add it to our templates list
+    if (images.length > 0) {
+      catcher.templates.push({
+        template: 'gallery',
+        images: images,
+        pos: section.title,
+      });
+    }
+
+    //return empty string to remove the template from the wiki text
+    return ''
+  });
+};
+
+/**
+ * parses out the `Election_box` template from the wiki text
+ *
+ * this is a non-traditional template, for some reason
+ * https://en.wikipedia.org/wiki/Template:Election_box
+ *
+ * @private
+ * @param {object} catcher an object to provide and catch data
+ */
+const parseElection = function (catcher) {
+  catcher.text = catcher.text.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, (tmpl) => {
+    let data = {
+      _wiki: tmpl,
+      _templates: [],
+    };
+
+    //put it through our full template parser..
+    process(data);
+
+    //okay, pull it apart into something sensible..
+    let templates = data._templates.map((t) => t.json());
+
+    let start = templates.find((t) => t.template === 'election box') || {};
+    let candidates = templates.filter((t) => t.template === 'election box candidate');
+    let summary = templates.find((t) => t.template === 'election box gain' || t.template === 'election box hold') || {};
+
+    if (candidates.length > 0 || summary) {
+      catcher.templates.push({
+        template: 'election box',
+        title: start.title,
+        candidates: candidates,
+        summary: summary.data,
+      });
+    }
+
+    //return empty string to remove the template from the wiki text
+    return ''
+  });
+};
+
+const keys = {
+  coach: ['team', 'year', 'g', 'w', 'l', 'w-l%', 'finish', 'pg', 'pw', 'pl', 'pw-l%'],
+  player: ['year', 'team', 'gp', 'gs', 'mpg', 'fg%', '3p%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
+  roster: ['player', 'gp', 'gs', 'mpg', 'fg%', '3fg%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
+};
+
+/**
+ * https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
+ *
+ * @private
+ * @param {object} catcher
+ */
+const parseNBA = function (catcher) {
+  catcher.text = catcher.text.replace(
+    /\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi,
+    (tmpl, name) => {
+      tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
+      tmpl = tmpl.replace(/\{\{s-end\}\}/, '');
+      name = name.toLowerCase().trim();
+
+      let headers = '! ' + keys[name].join(' !! ');
+      let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
+      let rows = parseTable(table);
+      rows = rows.map((row) => {
+        Object.keys(row).forEach((k) => {
+          row[k] = row[k].text();
+        });
+        return row
+      });
+
+      catcher.templates.push({
+        template: 'NBA ' + name + ' statistics',
+        data: rows,
+      });
+
+      //return empty string to remove the template from the wiki text
+      return ''
+    }
+  );
+};
+
+//https://en.wikipedia.org/wiki/Template:MLB_game_log_section
+
+//this is pretty nuts
+const whichHeadings = function (tmpl) {
+  let headings = ['#', 'date', 'opponent', 'score', 'win', 'loss', 'save', 'attendance', 'record'];
+  if (/\|stadium=y/i.test(tmpl) === true) {
+    headings.splice(7, 0, 'stadium'); //save, stadium, attendance
+  }
+  if (/\|time=y/i.test(tmpl) === true) {
+    headings.splice(7, 0, 'time'); //save, time, stadium, attendance
+  }
+  if (/\|box=y/i.test(tmpl) === true) {
+    headings.push('box'); //record, box
+  }
+  return headings
+};
+/**
+ *
+ * @private
+ * @param {object} catcher
+ */
+const parseMlb = function (catcher) {
+  catcher.text = catcher.text.replace(
+    /\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi,
+    (tmpl) => {
+      let headings = whichHeadings(tmpl);
+
+      tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
+      tmpl = tmpl.replace(/\{\{mlb game log (section|month) end\}\}/i, '');
+
+      let headers = '! ' + headings.join(' !! ');
+      let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
+      let rows = parseTable(table);
+      rows = rows.map((row) => {
+        Object.keys(row).forEach((k) => {
+          row[k] = row[k].text();
+        });
+        return row
+      });
+
+      catcher.templates.push({
+        template: 'mlb game log section',
+        data: rows,
+      });
+
+      //return empty string to remove the template from the wiki text
+      return ''
+    }
+  );
+};
+
+let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes'];
+
+/**
+ *
+ * https://en.wikipedia.org/wiki/Template:MMA_record_start
+ *
+ * @private
+ * @param {object} catcher
+ */
+const parseMMA = function (catcher) {
+  catcher.text = catcher.text.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, (tmpl) => {
+    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
+    tmpl = tmpl.replace(/\{\{end\}\}/i, '');
+
+    let headers = '! ' + headings.join(' !! ');
+    let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
+    let rows = parseTable(table);
+    rows = rows.map((row) => {
+      Object.keys(row).forEach((k) => {
+        row[k] = row[k].text();
+      });
+      return row
+    });
+
+    catcher.templates.push({
+      template: 'mma record start',
+      data: rows,
+    });
+
+    //return empty string to remove the template from the wiki text
+    return ''
+  });
+};
+
+/**
+ * try to parse out the math and chem templates
+ *
+ * xml <math>y=mx+b</math> support
+ * https://en.wikipedia.org/wiki/Help:Displaying_a_formula
+ *
+ * @private
+ * @param {object} catcher
+ */
+const parseMath = function (catcher) {
+  catcher.text = catcher.text.replace(/<math([^>]*)>([\s\S]+)<\/math>/g, (_, attrs, inside) => {
+    //clean it up a little?
+    let formula = fromText(inside).text();
+
+    catcher.templates.push({
+      template: 'math',
+      formula: formula,
+      raw: inside,
+    });
+
+    //should we at least try to render it in plaintext? :/
+    if (formula && formula.length < 12) {
+      return formula
+    }
+
+    //return empty string to remove the template from the wiki text
+    return ''
+  });
+
+  //try chemistry version too
+  catcher.text = catcher.text.replace(/<chem([^>]*)>([\s\S]+?)<\/chem>/g, (_, attrs, inside) => {
+    catcher.templates.push({
+      template: 'chem',
+      data: inside,
+    });
+
+    //return empty string to remove the template from the wiki text
+    return ''
+  });
+};
+
+/**
+ * parses out non standard templates
+ *
+ * Most templates are '{{template}}',
+ * but then, some are '<template></template>' others are {{start}}...{{end}}
+ * -> the templates here are of the second type.
+ *
+ * @private
+ * @param {object} section
+ * @param {object} doc
+ * @returns {Object} wikitext
+ */
+const xmlTemplates = function (section, doc) {
+  const res = {
+    templates: [],
+    text: section._wiki,
+  };
+
+  parseElection(res);
+  parseGallery(res, doc, section);
+  parseMath(res);
+  parseMlb(res);
+  parseMMA(res);
+  parseNBA(res);
+
+  // turn them into Template objects
+  res.templates = res.templates.map((obj) => new Template(obj));
+  return res
+};
+
+const defaults$2 = {
+  tables: true,
+  references: true,
+  paragraphs: true,
+  templates: true,
+  infoboxes: true,
+};
+
+/**
+ * the Section class represents the different sections of the article.
+ * we look for the == title == syntax and split and parse the sections from there
+ *
+ * @class
+ */
+class Section {
+  /**
+   * the stuff between headings - 'History' section for example
+   *
+   * @param {object} data the data already gathered about the section
+   * @param {object} doc the document that this section belongs to
+   */
+  constructor(data, doc) {
+    let props = {
+      doc: doc,
+      title: data.title || '',
+      depth: data.depth,
+      wiki: data.wiki || '',
+      templates: [],
+      tables: [],
+      infoboxes: [],
+      references: [],
+      paragraphs: [],
+    };
+    Object.keys(props).forEach((k) => {
+      Object.defineProperty(this, '_' + k, {
+        enumerable: false,
+        writable: true,
+        value: props[k],
+      });
+    });
+
+    //parse-out <template></template>' and {{start}}...{{end}} templates
+    const startEndTemplates = xmlTemplates(this, doc);
+    this._wiki = startEndTemplates.text;
+    this._templates = this._templates.concat(startEndTemplates.templates);
+
+    //parse-out the <ref></ref> tags
+    parseRefs(this);
+    //parse-out all {{templates}}
+    process(this, doc);
+
+    //parse the tables
+    findTables(this);
+
+    //now parse all double-newlines
+    parseParagraphs(this, doc);
+  }
+
+  /**
+   * returns the title of a section. if no title is available then it returns empty string
+   *
+   * @returns {string} the title of the section
+   */
+  title() {
+    return this._title || ''
+  }
+
+  /**
+   * returns the index of the current section in the document
+   *
+   * @returns {number | null} the index of the current section in the document
+   */
+  index() {
+    if (!this._doc) {
+      return null
+    }
+    let index = this._doc.sections().indexOf(this);
+    if (index === -1) {
+      return null
+    }
+    return index
+  }
+
+  /**
+   * returns the depth (or indentation) of the section
+   * aka how many levels deep is this section located
+   *
+   * @returns {number} the depth of the section
+   */
+  depth() {
+    return this._depth
+  }
+
+  /**
+   * returns the depth (or indentation) of the section
+   * aka how many levels deep is this section located
+   *
+   * @returns {number} the depth of the section
+   */
+  indentation() {
+    return this.depth()
+  }
+
+  /**
+   * returns all sentences in the section
+   * if an clue is provided then it returns the sentence at clue-th index
+   *
+   * @returns {object | object[]} all sentences in an array or the clue-th sentence
+   */
+  sentences() {
+    return this.paragraphs().reduce((list, p) => {
+      return list.concat(p.sentences())
+    }, [])
+  }
+
+  /**
+   * returns all paragraphs in the section
+   * if an clue is provided then it returns the paragraph at clue-th index
+   *
+   * @returns {object | object[]} all paragraphs in an array or the clue-th paragraph
+   */
+  paragraphs() {
+    return this._paragraphs || []
+  }
+
+  /**
+   * returns all links in the section
+   * if an clue is provided and it is a number then it returns the link at clue-th index
+   * if an clue is provided and it is a string then it returns the link at the that content
+   *
+   * @param {number| string} [clue] the clue for selecting the link
+   * @returns {object | object[]} all links in an array or the clue-th link or the link with the content of clue
+   */
+  links(clue) {
+    let arr = [];
+
+    this.infoboxes().forEach((templ) => {
+      arr.push(templ.links());
+    });
+
+    this.sentences().forEach((s) => {
+      arr.push(s.links());
+    });
+
+    this.tables().forEach((t) => {
+      arr.push(t.links());
+    });
+
+    this.lists().forEach((list) => {
+      arr.push(list.links());
+    });
+
+    arr = arr
+      .reduce((acc, val) => acc.concat(val), []) //flatten the array
+      .filter((val) => val !== undefined); //filter out all the undefined from the flattened empty arrays
+
+    if (typeof clue === 'string') {
+      let link = arr.find((o) => o.page().toLowerCase() === clue.toLowerCase());
+      return link === undefined ? [] : [link]
+    }
+
+    return arr
+  }
+
+  /**
+   * returns all tables in the section
+   * if an clue is provided then it returns the table at clue-th index
+   *
+   * @returns {object | object[]} all tables in an array or the clue-th infobox
+   */
+  tables() {
+    return this._tables || []
+  }
+
+  /**
+   * returns all templates in the section
+   * if an clue is provided and clue is a number then it returns the template at clue-th index
+   * if an clue is provided and clue is a string then it returns all template with that name
+   *
+   * @param {number|string} [clue] the clue for selecting the template
+   * @returns {object | object[]} all templates in an array or the clue-th template or all template name `clue`
+   */
+  templates(clue) {
+    let arr = this._templates || [];
+    // arr = arr.map((t) => t.json())
+    if (typeof clue === 'string') {
+      clue = clue.toLowerCase();
+      return arr.filter((o) => o.data.template === clue || o.data.name === clue)
+    }
+
+    return arr
+  }
+
+  /**
+   * returns all infoboxes in the section
+   * if an clue is provided then it returns the infobox at clue-th index
+   *
+   * @param {number|string} [clue] the clue for selecting the infobox
+   * @returns {object | object[]} all infoboxes in an array or the clue-th infobox
+   */
+  infoboxes(clue) {
+    let arr = this._infoboxes || [];
+    if (typeof clue === 'string') {
+      clue = clue.replace(/^infobox /i, '');
+      clue = clue.trim().toLowerCase();
+      return arr.filter((info) => info._type === clue)
+    }
+    return arr
+  }
+
+  /**
+   * returns all lists in the section
+   * if an clue is provided then it returns the list at clue-th index
+   *
+   * @returns {object | object[]} all lists in an array or the clue-th list
+   */
+  coordinates() {
+    let arr = [...this.templates('coord'), ...this.templates('coor')];
+    return arr.map((tmpl) => tmpl.json())
+  }
+
+  /**
+   * returns all lists in the section
+   * if an clue is provided then it returns the list at clue-th index
+   *
+   * @returns {object | object[]} all lists in an array or the clue-th list
+   */
+  lists() {
+    let arr = [];
+    this.paragraphs().forEach((p) => {
+      arr = arr.concat(p.lists());
+    });
+    return arr
+  }
+
+  /**
+   * returns all interwiki links in the section
+   * if an clue is provided then it returns the interwiki link at clue-th index
+   *
+   * @returns {object | object[]} all interwiki links in an array or the clue-th interwiki link
+   */
+  interwiki() {
+    let arr = [];
+    this.paragraphs().forEach((p) => {
+      arr = arr.concat(p.interwiki());
+    });
+    return arr
+  }
+
+  /**
+   * returns all images in the section
+   * if an clue is provided then it returns the image at clue-th index
+   *
+   * @returns {object | object[]} all images in an array or the clue-th image
+   */
+  images() {
+    let arr = [];
+    this.paragraphs().forEach((p) => {
+      arr = arr.concat(p.images());
+    });
+    return arr
+  }
+
+  /**
+   * returns all references in the section
+   * if an clue is provided then it returns the reference at clue-th index
+   *
+   * @returns {object | object[]} all references in an array or the clue-th reference
+   */
+  references() {
+    return this._references || []
+  }
+
+  //transformations
+  /**
+   * Removes the section from the document
+   *
+   * @returns {null|object} the document without this section. or null if there is no document
+   */
+  remove() {
+    if (!this._doc) {
+      return null
+    }
+
+    let bads = {};
+    bads[this.title()] = true;
+
+    //remove children too
+    this.children().forEach((sec) => (bads[sec.title()] = true));
+    let sections = this._doc.sections();
+    sections = sections.filter((sec) => bads.hasOwnProperty(sec.title()) !== true);
+    sections = sections.filter((sec) => bads.hasOwnProperty(sec.title()) !== true);
+
+    this._doc._sections = sections;
+    return this._doc
+  }
+
+  //move-around sections like in jquery
+  /**
+   * returns the next sibling of this section
+   * if it can find one then it returns null
+   *
+   * @returns {Section|null} the next sibling
+   */
+  nextSibling() {
+    //if this section is not part of a document then we can go to the next part of the document
+    if (!this._doc) {
+      return null
+    }
+
+    //first we get the a list of sections and our own position in this list
+    let sections = this._doc.sections();
+    let index = this.index() || 0;
+
+    //then we look trough the list looking for the next sibling
+    //aka we look the next item at the same depth as us
+    //so we start the loop at the next section in the list and go till the length of the list
+    for (let i = index + 1; i < sections.length; i++) {
+      //if the depth is smaller then the current depth then there is no next sibling
+      //aka the depth of the section at position i a level higher then this section then this section is the last section at this depth
+      if (sections[i].depth() < this.depth()) {
+        return null
+      }
+      //if the section has the same depth as the current section then it is the next sibling
+      if (sections[i].depth() === this.depth()) {
+        return sections[i]
+      }
+    }
+    //if the loop has no results then there is no next sibling and we are at the end of the file
+    return null
+  }
+
+  /**
+   * returns the next sibling of this section
+   * if it can find one then it returns null
+   *
+   * @returns {Section|null} the next sibling
+   */
+  next() {
+    return this.nextSibling()
+  }
+
+  /**
+   * returns the previous section
+   *
+   * @returns {Section|null} the previous section
+   */
+  lastSibling() {
+    if (!this._doc) {
+      return null
+    }
+    let sections = this._doc.sections();
+    let index = this.index() || 0;
+    return sections[index - 1] || null
+  }
+
+  /**
+   * returns the previous section
+   *
+   * @returns {Section|null} the previous section
+   */
+  last() {
+    return this.lastSibling()
+  }
+
+  /**
+   * returns the previous section
+   *
+   * @returns {Section|null} the previous section
+   */
+  previousSibling() {
+    return this.lastSibling()
+  }
+
+  /**
+   * returns the previous section
+   *
+   * @returns {Section|null} the previous section
+   */
+  previous() {
+    return this.lastSibling()
+  }
+
+  /**
+   * returns all the children of a section
+   *
+   * If the clue is a string then it will return the child with that exact title
+   * Else if the clue is a number then it returns the child at that index
+   * Else it returns all the children
+   *
+   * @param {number | string} [clue] A title of a section or a index of a wanted section
+   * @returns {Section | Section[] | null} A section or a array of sections
+   */
+  children(clue) {
+    if (!this._doc) {
+      return null
+    }
+
+    let sections = this._doc.sections();
+    let index = this.index() || 0;
+    let children = [];
+
+    //(immediately preceding sections with higher depth)
+    if (sections[index + 1] && sections[index + 1].depth() > this.depth()) {
+      for (let i = index + 1; i < sections.length; i += 1) {
+        if (sections[i].depth() > this.depth()) {
+          children.push(sections[i]);
+        } else {
+          break
+        }
+      }
+    }
+    if (typeof clue === 'string') {
+      return children.find((s) => s.title().toLowerCase() === clue.toLowerCase())
+    }
+    return children
+  }
+
+  /**
+   * returns all the children of a section
+   *
+   * If the clue is a string then it will return the child with that exact title
+   * Else if the clue is a number then it returns the child at that index
+   * Else it returns all the children
+   *
+   * @param {number | string} [clue] A title of a section or a index of a wanted section
+   * @returns {Section | Section[] | null} A section or a array of sections
+   */
+  sections(clue) {
+    return this.children(clue)
+  }
+
+  /**
+   * returns all the parent of a section
+   *
+   * @returns {Section | null} A section that is the parent of a section
+   */
+  parent() {
+    if (!this._doc) {
+      return null
+    }
+    let sections = this._doc.sections();
+    let index = this.index() || 0;
+
+    for (let i = index; i >= 0; i -= 1) {
+      if (sections[i] && sections[i].depth() < this.depth()) {
+        return sections[i]
+      }
+    }
+
+    return null
+  }
+
+  //outputs
+
+  /**
+   * returns a plaintext version of the section
+   *
+   * @param {object} options options for the text transformation
+   * @returns {string} the section in text
+   */
+  text(options) {
+    options = setDefaults(options, defaults$2);
+    return this.paragraphs()
+      .map((p) => p.text(options))
+      .join('\n\n')
+  }
+  /**
+   * returns original wiki markup
+   *
+   * @returns {string} the original markup
+   */
+  wikitext() {
+    return this._wiki
+  }
+
+  /**
+   * returns a json version of the section
+   *
+   * @param {object} options keys to include in the resulting json
+   * @returns {object} the section in json
+   */
+  json(options) {
+    options = setDefaults(options, defaults$2);
+    return toJSON$1(this, options)
+  }
+}
+Section.prototype.citations = Section.prototype.references;
+
+// aliases
+const singular$1 = {
+  sentences: 'sentence',
+  paragraphs: 'paragraph',
+  links: 'link',
+  tables: 'table',
+  templates: 'template',
+  infoboxes: 'infobox',
+  coordinates: 'coordinate',
+  lists: 'list',
+  images: 'image',
+  references: 'reference',
+  citations: 'citation',
+};
+Object.keys(singular$1).forEach((k) => {
+  let sing = singular$1[k];
+  Section.prototype[sing] = function (clue) {
+    let arr = this[k](clue);
+    if (typeof clue === 'number') {
+      return arr[clue]
+    }
+    return arr[0] || null
+  };
+});
+
 const heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/;
 const hasTemplate = /\{\{.+?\}\}/;
 
 const doInlineTemplates = function (wiki) {
-  let list = getTemplates(wiki);
-
+  let list = findTemplates(wiki);
   if (list.length) {
-    let [txt] = parseTemplates$1(list[0]);
+    let [txt] = parseTemplate(list[0]);
     wiki = wiki.replace(list[0].body, txt);
   }
-
-  return wiki;
+  return wiki
 };
+
+
 /**
  * @typedef fakeSection
  * @property {string} title
@@ -6725,2200 +8577,79 @@ const doInlineTemplates = function (wiki) {
  * @param {string} str
  * @returns {fakeSection} section the depth in a object
  */
-
-
 const parseHeading = function (section, str) {
   let m = str.match(heading_reg);
-
   if (!m) {
     section.title = '';
     section.depth = 0;
-    return section;
+    return section
   }
-
   let title = m[2] || '';
-  title = parseSentence$5(title).text(); //amazingly, you can see inline {{templates}} in this text, too
+  title = fromText(title).text();
 
+  //amazingly, you can see inline {{templates}} in this text, too
   if (hasTemplate.test(title)) {
     title = doInlineTemplates(title);
-  } //same for references (i know..)
+  }
+  //same for references (i know..)
+  let obj = { _wiki: title };
+  parseRefs(obj);
+  title = obj._wiki;
 
-
-  let obj = {
-    _wiki: title
-  };
-  parseReferences(obj);
-  title = obj._wiki; //trim leading/trailing whitespace
-
+  //trim leading/trailing whitespace
   title = trim_whitespace(title);
   let depth = 0;
-
   if (m[1]) {
     depth = m[1].length - 2;
   }
-
   section.title = title;
   section.depth = depth;
-  return section;
+  return section
 };
 
-var heading = parseHeading;
+const isReference = new RegExp('^(' + references.join('|') + '):?', 'i');
+const section_reg = /(?:\n|^)(={2,5}.{1,200}?={2,5})/g;
 
-const cleanup = function (lines) {
-  lines = lines.filter(line => {
-    //a '|+' row is a 'table caption', remove it.
-    return line && /^\|\+/.test(line) !== true;
-  });
 
-  if (/^\{\|/.test(lines[0]) === true) {
-    lines.shift();
-  }
-
-  if (/^\|\}/.test(lines[lines.length - 1]) === true) {
-    lines.pop();
-  }
-
-  if (/^\|-/.test(lines[0]) === true) {
-    lines.shift();
-  }
-
-  return lines;
-}; //turn newline seperated into '|-' seperated
-
-
-const findRows$1 = function (lines) {
-  let rows = [];
-  let row = [];
-  lines = cleanup(lines);
-
-  for (let i = 0; i < lines.length; i += 1) {
-    let line = lines[i]; //'|-' is a row-seperator
-
-    if (/^\|-/.test(line) === true) {
-      //okay, we're done the row
-      if (row.length > 0) {
-        rows.push(row);
-        row = [];
-      }
-    } else {
-      // remove leading | or ! for the ||/!! splitting
-      let startChar = line.charAt(0);
-
-      if (startChar === '|' || startChar === '!') {
-        line = line.substring(1);
-      } //look for '||' inline row-splitter
-
-
-      line = line.split(/(?:\|\||!!)/); //eslint-disable-line
-      // add leading ! back, because we later read it in header parsing functions
-
-      if (startChar === '!') {
-        line[0] = startChar + line[0];
-      }
-
-      line.forEach(l => {
-        l = l.trim();
-        row.push(l);
-      });
-    }
-  } //finish the last one
-
-
-  if (row.length > 0) {
-    rows.push(row);
-  }
-
-  return rows;
-};
-
-var _findRows = findRows$1;
-
-const getRowSpan = /.*rowspan *= *["']?([0-9]+)["']?[ |]*/;
-const getColSpan = /.*colspan *= *["']?([0-9]+)["']?[ |]*/; //colspans stretch ←left/right→
-
-const doColSpan = function (rows) {
-  rows.forEach(row => {
-    row.forEach((str, c) => {
-      let m = str.match(getColSpan);
-
-      if (m !== null) {
-        let num = parseInt(m[1], 10); //...maybe if num is so big, and centered, remove it?
-        // if (num > 3) {
-        //   rows[r] = []
-        //   return
-        // }
-        //splice-in n empty columns right here
-
-        row[c] = str.replace(getColSpan, '');
-
-        for (let i = 1; i < num; i += 1) {
-          row.splice(c + 1, 0, '');
-        }
-      }
-    });
-  });
-  rows = rows.filter(r => r.length > 0);
-  return rows;
-}; //colspans stretch up/down
-
-
-const doRowSpan = function (rows) {
-  rows.forEach((row, r) => {
-    row.forEach((str, c) => {
-      let m = str.match(getRowSpan);
-
-      if (m !== null) {
-        let num = parseInt(m[1], 10); //copy this cell down n rows
-
-        str = str.replace(getRowSpan, '');
-        row[c] = str;
-
-        for (let i = r + 1; i < r + num; i += 1) {
-          if (!rows[i]) {
-            break;
-          }
-
-          rows[i].splice(c, 0, str);
-        }
-      }
-    });
-  });
-  return rows;
-}; //
-
-
-const handleSpans$1 = function (rows) {
-  rows = doColSpan(rows);
-  rows = doRowSpan(rows);
-  return rows;
-};
-
-var _spans = handleSpans$1;
-
-const parseSentence$4 = _04Sentence.fromText;
-const findRows = _findRows;
-const handleSpans = _spans;
-const isHeading = /^!/; //common ones
-
-const headings$1 = {
-  name: true,
-  age: true,
-  born: true,
-  date: true,
-  year: true,
-  city: true,
-  country: true,
-  population: true,
-  count: true,
-  number: true
-}; //additional table-cruft to remove before parseLine method
-
-const cleanText = function (str) {
-  str = parseSentence$4(str).text(); //anything before a single-pipe is styling, so remove it
-
-  if (str.match(/\|/)) {
-    str = str.replace(/.*?\| ?/, ''); //class="unsortable"|title
-  }
-
-  str = str.replace(/style=['"].*?["']/, ''); //'!' is used as a highlighed-column
-
-  str = str.replace(/^!/, ''); // str = str.replace(/\(.*?\)/, '')
-
-  str = str.trim(); // str = str.toLowerCase()
-
-  return str;
-};
-
-const skipSpanRow = function (row) {
-  row = row || [];
-  let len = row.length;
-  let hasTxt = row.filter(str => str).length; //does it have 3 empty spaces?
-
-  if (len - hasTxt > 3) {
-    return true;
-  }
-
-  return false;
-}; //remove non-header span rows
-
-
-const removeMidSpans = function (rows) {
-  rows = rows.filter(row => {
-    if (row.length === 1 && row[0] && isHeading.test(row[0]) && /rowspan/i.test(row[0]) === false) {
-      return false;
-    }
-
-    return true;
-  });
-  return rows;
-}; //'!' starts a header-row
-
-
-const findHeaders = function () {
-  let rows = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  let headers = []; // is the first-row just a ton of colspan?
-
-  if (skipSpanRow(rows[0])) {
-    rows.shift();
-  }
-
-  let first = rows[0];
-
-  if (first && first[0] && first[1] && (/^!/.test(first[0]) || /^!/.test(first[1]))) {
-    headers = first.map(h => {
-      h = h.replace(/^! */, '');
-      h = cleanText(h);
-      return h;
-    });
-    rows.shift();
-  } //try the second row, too (overwrite first-row, if it exists)
-
-
-  first = rows[0];
-
-  if (first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
-    first.forEach((h, i) => {
-      h = h.replace(/^! */, '');
-      h = cleanText(h);
-
-      if (Boolean(h) === true) {
-        headers[i] = h;
-      }
-    });
-    rows.shift();
-  }
-
-  return headers;
-}; //turn headers, array into an object
-
-
-const parseRow = function (arr, headers) {
-  let row = {};
-  arr.forEach((str, i) => {
-    let h = headers[i] || 'col' + (i + 1);
-    let s = parseSentence$4(str);
-    s.text(cleanText(s.text()));
-    row[h] = s;
-  });
-  return row;
-}; //should we use the first row as a the headers?
-
-
-const firstRowHeader = function (rows) {
-  if (rows.length <= 3) {
-    return [];
-  }
-
-  let headers = rows[0].slice(0);
-  headers = headers.map(h => {
-    h = h.replace(/^! */, '');
-    h = parseSentence$4(h).text();
-    h = cleanText(h);
-    h = h.toLowerCase();
-    return h;
-  });
-
-  for (let i = 0; i < headers.length; i += 1) {
-    if (headings$1.hasOwnProperty(headers[i])) {
-      rows.shift();
-      return headers;
-    }
-  }
-
-  return [];
-}; //turn a {|...table string into an array of arrays
-
-
-const parseTable$1 = function (wiki) {
-  let lines = wiki.replace(/\r/g, '').replace(/\n(\s*[^|!{\s])/g, ' $1') //remove unecessary newlines
-  .split(/\n/).map(l => l.trim());
-  let rows = findRows(lines);
-  rows = rows.filter(r => r);
-
-  if (rows.length === 0) {
-    return [];
-  } //remove non-header span rows
-
-
-  rows = removeMidSpans(rows); //support colspan, rowspan...
-
-  rows = handleSpans(rows); //grab the header rows
-
-  let headers = findHeaders(rows);
-
-  if (!headers || headers.length <= 1) {
-    headers = firstRowHeader(rows);
-    let want = rows[rows.length - 1] || []; //try the second row
-
-    if (headers.length <= 1 && want.length > 2) {
-      headers = firstRowHeader(rows.slice(1));
-
-      if (headers.length > 0) {
-        rows = rows.slice(2); //remove them
-      }
-    }
-  } //index each column by it's header
-
-
-  let table = rows.map(arr => {
-    return parseRow(arr, headers);
-  });
-  return table;
-};
-
-var parse$4 = parseTable$1;
-
-const encode$1 = encode$4; //
-
-const toJson$4 = function (tables, options) {
-  return tables.map(table => {
-    let row = {};
-    Object.keys(table).forEach(k => {
-      row[k] = table[k].json(); //(they're sentence objects)
-    }); //encode them, for mongodb
-
-    if (options.encode === true) {
-      row = encode$1.encodeObj(row);
-    }
-
-    return row;
-  });
-};
-
-var toJson_1$2 = toJson$4;
-
-const setDefaults$5 = setDefaults_1;
-const toJson$3 = toJson_1$2;
-const defaults$6 = {};
-
-const normalize$1 = function () {
-  let key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-  key = key.toLowerCase();
-  key = key.replace(/[_-]/g, ' ');
-  key = key.replace(/\(.*?\)/, '');
-  key = key.trim();
-  return key;
-};
-
-const Table$1 = function (data) {
-  let wiki = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data
-  });
-  Object.defineProperty(this, '_wiki', {
-    enumerable: false,
-    value: wiki
-  });
-};
-
-const methods$4 = {
-  links(n) {
-    let links = [];
-    this.data.forEach(r => {
-      Object.keys(r).forEach(k => {
-        links = links.concat(r[k].links());
-      });
-    });
-
-    if (typeof n === 'string') {
-      //grab a link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
-
-      let link = links.find(o => o.page() === n);
-      return link === undefined ? [] : [link];
-    }
-
-    return links;
-  },
-
-  get(keys) {
-    // normalize mappings
-    let have = this.data[0] || {};
-    let mapping = Object.keys(have).reduce((h, k) => {
-      h[normalize$1(k)] = k;
-      return h;
-    }, {}); // string gets a flat-list
-
-    if (typeof keys === 'string') {
-      let key = normalize$1(keys);
-      key = mapping[key] || key;
-      return this.data.map(row => {
-        return row[key] ? row[key].text() : null;
-      });
-    } // array gets obj-list
-
-
-    keys = keys.map(normalize$1).map(k => mapping[k] || k);
-    return this.data.map(row => {
-      return keys.reduce((h, k) => {
-        if (row[k]) {
-          h[k] = row[k].text();
-        } else {
-          h[k] = '';
-        }
-
-        return h;
-      }, {});
-    });
-  },
-
-  keyValue(options) {
-    let rows = this.json(options);
-    rows.forEach(row => {
-      Object.keys(row).forEach(k => {
-        row[k] = row[k].text;
-      });
-    });
-    return rows;
-  },
-
-  json(options) {
-    options = setDefaults$5(options, defaults$6);
-    return toJson$3(this.data, options);
-  },
-
-  text() {
-    return '';
-  },
-
-  wikitext() {
-    return this._wiki || '';
-  }
-
-};
-methods$4.keyvalue = methods$4.keyValue;
-methods$4.keyval = methods$4.keyValue;
-Object.keys(methods$4).forEach(k => {
-  Table$1.prototype[k] = methods$4[k];
-});
-var Table_1 = Table$1;
-
-const parseTable = parse$4;
-const Table = Table_1; //const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70k chars.
-
-const openReg = /^\s*\{\|/;
-const closeReg = /^\s*\|\}/; //tables can be recursive, so looky-here.
-
-const findTables = function (section) {
-  let list = [];
-  let wiki = section._wiki;
-  let lines = wiki.split('\n');
-  let stack = [];
-
-  for (let i = 0; i < lines.length; i += 1) {
-    //start a table
-    if (openReg.test(lines[i]) === true) {
-      stack.push(lines[i]);
-      continue;
-    } //close a table
-
-
-    if (closeReg.test(lines[i]) === true) {
-      stack[stack.length - 1] += '\n' + lines[i];
-      let table = stack.pop();
-      list.push(table);
-      continue;
-    } //keep-going on one
-
-
-    if (stack.length > 0) {
-      stack[stack.length - 1] += '\n' + lines[i];
-    }
-  } //work-em together for a Table class
-
-
-  let tables = [];
-  list.forEach(str => {
-    if (str) {
-      //also re-remove a newline at the end of the table (awkward)
-      wiki = wiki.replace(str + '\n', '');
-      wiki = wiki.replace(str, '');
-      let data = parseTable(str);
-
-      if (data && data.length > 0) {
-        tables.push(new Table(data, str));
-      }
-    }
-  });
-
-  if (tables.length > 0) {
-    section._tables = tables;
-  }
-
-  section._wiki = wiki;
-};
-
-var table = findTables;
-
-const setDefaults$4 = setDefaults_1;
-const defaults$5 = {
-  sentences: true
-};
-
-const toJson$2 = function (p, options) {
-  options = setDefaults$4(options, defaults$5);
-  let data = {};
-
-  if (options.sentences === true) {
-    data.sentences = p.sentences().map(s => s.json(options));
-  }
-
-  return data;
-};
-
-var toJson_1$1 = toJson$2;
-
-const toJSON$2 = toJson_1$1;
-const setDefaults$3 = setDefaults_1;
-const defaults$4 = {
-  sentences: true,
-  lists: true,
-  images: true
-};
-
-const Paragraph$1 = function (data) {
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data
-  });
-};
-
-const methods$3 = {
-  sentences: function () {
-    return this.data.sentences || [];
-  },
-  references: function () {
-    return this.data.references;
-  },
-  lists: function () {
-    return this.data.lists;
-  },
-
-  images() {
-    return this.data.images || [];
-  },
-
-  links: function (clue) {
-    let arr = [];
-    this.sentences().forEach(s => {
-      arr = arr.concat(s.links(clue));
-    });
-
-    if (typeof clue === 'string') {
-      //grab a specific link like .links('Fortnight')
-      clue = clue.charAt(0).toUpperCase() + clue.substring(1); //titlecase it
-
-      let link = arr.find(o => o.page() === clue);
-      return link === undefined ? [] : [link];
-    }
-
-    return arr || [];
-  },
-
-  interwiki() {
-    let arr = [];
-    this.sentences().forEach(s => {
-      arr = arr.concat(s.interwiki());
-    });
-    return arr || [];
-  },
-
-  text: function (options) {
-    options = setDefaults$3(options, defaults$4);
-    let str = this.sentences().map(s => s.text(options)).join(' ');
-    this.lists().forEach(list => {
-      str += '\n' + list.text();
-    });
-    return str;
-  },
-  json: function (options) {
-    options = setDefaults$3(options, defaults$4);
-    return toJSON$2(this, options);
-  },
-  wikitext: function () {
-    return this.data.wiki;
-  }
-};
-methods$3.citations = methods$3.references;
-Object.keys(methods$3).forEach(k => {
-  Paragraph$1.prototype[k] = methods$3[k];
-}); // aliases
-
-const singular$2 = {
-  sentences: 'sentence',
-  references: 'reference',
-  citations: 'citation',
-  lists: 'list',
-  images: 'image',
-  links: 'link'
-};
-Object.keys(singular$2).forEach(k => {
-  let sing = singular$2[k];
-
-  Paragraph$1.prototype[sing] = function (clue) {
-    let arr = this[k](clue);
-
-    if (typeof clue === 'number') {
-      return arr[clue];
-    }
-
-    return arr[0];
-  };
-});
-var Paragraph_1 = Paragraph$1;
-
-const opener = '[';
-const closer = ']';
-/**
- *
- * find all the pairs of '[[...[[..]]...]]' in the text
- * used to properly root out recursive template calls, [[.. [[...]] ]]
- * basically just adds open tags, and subtracts closing tags
- *
- * @private
- * @param {string} text the text in which is searched in
- * @returns {string[]} all the links in the text
- */
-
-function nested_find$1(text) {
-  let out = [];
-  let last = [];
-  const chars = text.split('');
-  let open = 0;
-
-  for (let i = 0; i < chars.length; i++) {
-    const c = text[i]; //increment open tag
-
-    if (c === opener) {
-      open += 1;
-    } //decrement close tag
-    else if (c === closer) {
-      open -= 1;
-
-      if (open < 0) {
-        open = 0;
-      }
-    } else if (last.length === 0) {
-      //If we're not inside of a pair of delimiters, we can discard the current letter.
-      //The return of this function is only used to extract images.
-      continue;
-    }
-
-    last.push(c);
-
-    if (open === 0 && last.length > 0) {
-      //first, fix botched parse
-      let open_count = 0;
-      let close_count = 0;
-
-      for (let j = 0; j < last.length; j++) {
-        if (last[j] === opener) {
-          open_count++;
-        } else if (last[j] === closer) {
-          close_count++;
-        }
-      } //is it botched?
-
-
-      if (open_count > close_count) {
-        last.push(closer);
-      } //looks good, keep it
-
-
-      out.push(last.join(''));
-      last = [];
-    }
-  }
-
-  return out;
-}
-
-var nested_find_1 = nested_find$1;
-
-const i18n$2 = i18n$6;
-const Image$3 = Image_1;
-const parseTemplate$1 = toJSON$4;
-const parseSentence$3 = _04Sentence.fromText;
-const nested_find = nested_find_1; //regexes:
-
-const isFile = new RegExp('(' + i18n$2.images.join('|') + '):', 'i');
-let fileNames = "(".concat(i18n$2.images.join('|'), ")");
-const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'iu'); //style directives for Wikipedia:Extended_image_syntax
-
-const imgLayouts = {
-  thumb: true,
-  thumbnail: true,
-  border: true,
-  right: true,
-  left: true,
-  center: true,
-  top: true,
-  bottom: true,
-  none: true,
-  upright: true,
-  baseline: true,
-  middle: true,
-  sub: true,
-  super: true
-}; //images are usually [[image:my_pic.jpg]]
-
-const oneImage = function (img, doc) {
-  let m = img.match(file_reg);
-
-  if (m === null || !m[2]) {
-    return null;
-  }
-
-  let file = "".concat(m[1], ":").concat(m[2] || '');
-
-  if (file) {
-    let obj = {
-      file: file,
-      lang: doc._lang,
-      domain: doc._domain,
-      wiki: img,
-      pluginData: {}
-    }; //try to grab other metadata, too
-
-    img = img.replace(/^\[\[/, '');
-    img = img.replace(/\]\]$/, ''); //https://en.wikipedia.org/wiki/Wikipedia:Extended_image_syntax
-    //- [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
-
-    let imgData = parseTemplate$1(img);
-    let arr = imgData.list || []; //parse-out alt text, if explicitly given
-
-    if (imgData.alt) {
-      obj.alt = imgData.alt;
-    } //remove 'thumb' and things
-
-
-    arr = arr.filter(str => imgLayouts.hasOwnProperty(str) === false);
-
-    if (arr[arr.length - 1]) {
-      obj.caption = parseSentence$3(arr[arr.length - 1]);
-    }
-
-    return new Image$3(obj);
-  }
-
-  return null;
-};
-
-const parseImages = function (paragraph, doc) {
-  let wiki = paragraph.wiki; //parse+remove scary '[[ [[]] ]]' stuff
-
-  let matches = nested_find(wiki);
-  matches.forEach(function (s) {
-    if (isFile.test(s) === true) {
-      paragraph.images = paragraph.images || [];
-      let img = oneImage(s, doc);
-
-      if (img) {
-        paragraph.images.push(img);
-      }
-
-      wiki = wiki.replace(s, '');
-    }
-  });
-  paragraph.wiki = wiki;
-};
-
-var image = parseImages;
-
-const setDefaults$2 = setDefaults_1;
-const defaults$3 = {};
-
-const toText$1 = (list, options) => {
-  return list.map(s => {
-    let str = s.text(options);
-    return ' * ' + str;
-  }).join('\n');
-};
-
-const List$1 = function (data) {
-  let wiki = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data
-  });
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki
-  });
-};
-
-const methods$2 = {
-  lines() {
-    return this.data;
-  },
-
-  links(clue) {
-    let links = [];
-    this.lines().forEach(s => {
-      links = links.concat(s.links());
-    });
-
-    if (typeof clue === 'string') {
-      //grab a link like .links('Fortnight')
-      clue = clue.charAt(0).toUpperCase() + clue.substring(1); //titlecase it
-
-      let link = links.find(o => o.page() === clue);
-      return link === undefined ? [] : [link];
-    }
-
-    return links;
-  },
-
-  json(options) {
-    options = setDefaults$2(options, defaults$3);
-    return this.lines().map(s => s.json(options));
-  },
-
-  text() {
-    return toText$1(this.data);
-  },
-
-  wikitext() {
-    return this.wiki || '';
-  }
-
-};
-Object.keys(methods$2).forEach(k => {
-  List$1.prototype[k] = methods$2[k];
-});
-var List_1 = List$1;
-
-const List = List_1;
-const parseSentence$2 = _04Sentence.fromText;
-const list_reg = /^[#*:;|]+/;
-const bullet_reg = /^\*+[^:,|]{4}/;
-const number_reg = /^ ?#[^:,|]{4}/;
-const has_word = /[a-z_0-9\]}]/i; // does it start with a bullet point or something?
-
-const isList = function (line) {
-  return list_reg.test(line) || bullet_reg.test(line) || number_reg.test(line);
-}; //make bullets/numbers into human-readable *'s
-
-
-const cleanList = function (list) {
-  let number = 1;
-  list = list.filter(l => l);
-
-  for (let i = 0; i < list.length; i++) {
-    let line = list[i]; //add # numberings formatting
-
-    if (line.match(number_reg)) {
-      line = line.replace(/^ ?#*/, number + ') ');
-      line = line + '\n';
-      number += 1;
-    } else if (line.match(list_reg)) {
-      number = 1;
-      line = line.replace(list_reg, '');
-    }
-
-    list[i] = parseSentence$2(line);
-  }
-
-  return list;
-};
-
-const grabList = function (lines, i) {
-  let sub = [];
-
-  for (let o = i; o < lines.length; o++) {
-    if (isList(lines[o])) {
-      sub.push(lines[o]);
-    } else {
-      break;
-    }
-  }
-
-  sub = sub.filter(a => a && has_word.test(a));
-  sub = cleanList(sub);
-  return sub;
-};
-
-const parseList = function (paragraph) {
-  let wiki = paragraph.wiki;
-  let lines = wiki.split(/\n/g);
-  let lists = [];
-  let theRest = [];
-
-  for (let i = 0; i < lines.length; i++) {
-    if (isList(lines[i])) {
-      let sub = grabList(lines, i);
-
-      if (sub.length > 0) {
-        lists.push(sub);
-        i += sub.length - 1;
-      }
-    } else {
-      theRest.push(lines[i]);
-    }
-  }
-
-  paragraph.lists = lists.map(l => new List(l, wiki));
-  paragraph.wiki = theRest.join('\n');
-};
-
-var list = parseList;
-
-const Paragraph = Paragraph_1;
-const parseSentences = _04Sentence.byParagraph;
-const twoNewLines = /\r?\n\r?\n/;
-const parse$3 = {
-  image: image,
-  list: list
-};
-
-const parseParagraphs = function (section, doc) {
-  let wiki = section._wiki;
-  let paragraphs = wiki.split(twoNewLines); //don't create empty paragraphs
-
-  paragraphs = paragraphs.filter(p => p && p.trim().length > 0);
-  paragraphs = paragraphs.map(str => {
-    let paragraph = {
-      wiki: str,
-      lists: [],
-      sentences: [],
-      images: []
-    }; //parse the lists
-
-    parse$3.list(paragraph); //parse images
-
-    parse$3.image(paragraph, doc); //parse the sentences
-
-    parseSentences(paragraph);
-    return new Paragraph(paragraph);
-  });
-  section._wiki = wiki;
-  section._paragraphs = paragraphs;
-};
-
-var _03Paragraph = parseParagraphs;
-
-const encode = encode$4;
-/**
- * turn an infobox into some nice json
- * 
- * @param {Infobox} infobox 
- * @param {object} [options] 
- * @returns {object}
- */
-
-const toJson$1 = function (infobox, options) {
-  let json = Object.keys(infobox.data).reduce((h, k) => {
-    if (infobox.data[k]) {
-      h[k] = infobox.data[k].json();
-    }
-
-    return h;
-  }, {}); //support mongo-encoding keys
-
-  if (options.encode === true) {
-    json = encode.encodeObj(json);
-  }
-
-  return json;
-};
-
-var toJson_1 = toJson$1;
-
-const toJson = toJson_1;
-const Image$2 = Image_1;
-const {
-  isArray: isArray$1
-} = helpers$1;
-const Sentence = Sentence_1;
-
-const normalize = function () {
-  let str = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-  str = str.toLowerCase();
-  str = str.replace(/[-_]/g, ' ');
-  return str.trim();
-}; //a formal key-value data table about a topic
-
-
-const Infobox$1 = function (obj, wiki) {
-  this._type = obj.type;
-  this.domain = obj.domain;
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: obj.data
-  });
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki
-  });
-};
-
-const methods$1 = {
-  type: function () {
-    return this._type;
-  },
-  links: function (n) {
-    let arr = [];
-    Object.keys(this.data).forEach(k => {
-      this.data[k].links().forEach(l => arr.push(l));
-    });
-
-    if (typeof n === 'string') {
-      //grab a link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
-
-      let link = arr.find(o => o.page() === n);
-      return link === undefined ? [] : [link];
-    }
-
-    return arr;
-  },
-  image: function () {
-    let s = this.data.image || this.data.image2 || this.data.logo || this.data.image_skyline || this.data.image_flag;
-
-    if (!s) {
-      return null;
-    }
-
-    let obj = s.json();
-    let file = obj.text;
-    obj.file = file;
-    obj.text = '';
-    obj.caption = this.data.caption;
-    obj.domain = this.domain; // add domain information for image
-
-    return new Image$2(obj);
-  },
-  get: function (keys) {
-    let allKeys = Object.keys(this.data);
-
-    if (typeof keys === 'string') {
-      let key = normalize(keys);
-
-      for (let i = 0; i < allKeys.length; i += 1) {
-        let tmp = normalize(allKeys[i]);
-
-        if (key === tmp) {
-          return this.data[allKeys[i]];
-        }
-      }
-
-      return new Sentence();
-    }
-
-    if (isArray$1(keys)) {
-      // support array-input
-      keys = keys.map(normalize);
-      return keys.map(k => {
-        for (let i = 0; i < allKeys.length; i += 1) {
-          let tmp = normalize(allKeys[i]);
-
-          if (k === tmp) {
-            return this.data[allKeys[i]];
-          }
-        }
-
-        return new Sentence();
-      });
-    }
-
-    return new Sentence();
-  },
-  text: function () {
-    return '';
-  },
-  json: function (options) {
-    options = options || {};
-    return toJson(this, options);
-  },
-  wikitext: function () {
-    return this.wiki || '';
-  },
-  keyValue: function () {
-    return Object.keys(this.data).reduce((h, k) => {
-      if (this.data[k]) {
-        h[k] = this.data[k].text();
-      }
-
-      return h;
-    }, {});
-  }
-}; //aliases
-
-Object.keys(methods$1).forEach(k => {
-  Infobox$1.prototype[k] = methods$1[k];
-});
-Infobox$1.prototype.data = Infobox$1.prototype.keyValue;
-Infobox$1.prototype.template = Infobox$1.prototype.type;
-Infobox$1.prototype.images = Infobox$1.prototype.image;
-var Infobox_1 = Infobox$1;
-
-const toText = _04Sentence.fromText;
-const methods = {
-  text: function () {
-    let str = this._text || '';
-    return toText(str).text();
-  },
-  json: function () {
-    return this.data || {};
-  },
-  wikitext: function () {
-    return this.wiki || '';
-  }
-};
-
-const Template$2 = function (data) {
-  let text = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  let wiki = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data
-  });
-  Object.defineProperty(this, '_text', {
-    enumerable: false,
-    value: text
-  });
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki
-  });
-};
-
-Object.keys(methods).forEach(k => {
-  Template$2.prototype[k] = methods[k];
-});
-var Template_1 = Template$2;
-
-const Infobox = Infobox_1;
-const Reference = Reference_1;
-const Template$1 = Template_1;
-const isCitation = /^(cite |citation)/i;
-const referenceTypes = {
-  citation: true,
-  refn: true,
-  harvnb: true,
-  source: true //wikinews
-
-}; // split Infoboxes from templates and references
-
-const sortOut$1 = function (list, domain) {
-  let res = {
-    infoboxes: [],
-    templates: [],
-    references: []
-  }; //remove references and infoboxes from our list
-
-  list.forEach(obj => {
-    let json = obj.json;
-    let kind = json.template || json.type || json.name; // is it a Reference?
-
-    if (referenceTypes[kind] === true || isCitation.test(kind) === true) {
-      res.references.push(new Reference(json, obj.wiki));
-      return;
-    } // is it an Infobox?
-
-
-    if (json.template === 'infobox' && json.subbox !== 'yes') {
-      json.domain = domain; //infoboxes need this for images, i guess
-
-      json.data = json.data || {}; //validate it a little
-
-      res.infoboxes.push(new Infobox(json, obj.wiki));
-      return;
-    } // otherwise, it's just a template
-
-
-    res.templates.push(new Template$1(json, obj.text, obj.wiki));
-  });
-  return res;
-};
-
-var sortOut_1 = sortOut$1;
-
-const findTemplates = _01Nested;
-const parseTemplate = parse$5;
-const sortOut = sortOut_1; // return a flat list of all {{templates}}
-
-const allTemplates = function (wiki, doc) {
-  let list = []; //nested data-structure of templates
-
-  let nested = findTemplates(wiki); //recursive template-parser
-
-  const parseNested = function (obj, parent) {
-    obj.parent = parent; //do tail-first recursion
-
-    if (obj.children && obj.children.length > 0) {
-      obj.children.forEach(ch => parseNested(ch, obj));
-    } //parse template into json, return replacement wikitext
-
-
-    let [text, json] = parseTemplate(obj, doc);
-    obj.wiki = text;
-
-    if (json) {
-      list.push({
-        name: obj.name,
-        wiki: obj.body,
-        text: text,
-        json: json
-      });
-    } //remove the text from every parent
-
-
-    const removeIt = function (node, body, out) {
-      if (node.parent) {
-        node.parent.body = node.parent.body.replace(body, out);
-        removeIt(node.parent, body, out);
-      }
-    };
-
-    removeIt(obj, obj.body, obj.wiki);
-    wiki = wiki.replace(obj.body, obj.wiki);
-  }; //kick it off
-
-
-  nested.forEach(node => parseNested(node, null)); //remove the templates from our wiki text
-
-  nested.forEach(node => {
-    wiki = wiki.replace(node.body, node.wiki);
-  });
-  return {
-    list: list,
-    wiki: wiki
-  };
-}; //find + parse all templates in the section
-
-
-const process = function (section, doc) {
-  // find+parse them all
-  let {
-    list,
-    wiki
-  } = allTemplates(section._wiki, doc); // split-out references and infoboxes
-
-  let domain = doc ? doc._domain : null;
-  let {
-    infoboxes,
-    references,
-    templates
-  } = sortOut(list, domain); //sort-out the templates we decide to keep
-
-  section._infoboxes = section._infoboxes || [];
-  section._references = section._references || [];
-  section._templates = section._templates || [];
-  section._infoboxes = section._infoboxes.concat(infoboxes);
-  section._references = section._references.concat(references);
-  section._templates = section._templates.concat(templates);
-  section._wiki = wiki;
-};
-
-var template = process;
-
-const parseSentence$1 = _04Sentence.fromText;
-const Image$1 = Image_1; //okay, <gallery> is a xml-tag, with newline-separated data, somehow pivoted by '|'...
-//all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
-//- not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
-
-/**
- *
- * @private
- * @param {object} catcher
- * @param {Document} doc
- * @param {Section} section
- */
-
-const parseGallery$1 = function (catcher, doc, section) {
-  catcher.text = catcher.text.replace(/<gallery([^>]*)>([\s\S]+)<\/gallery>/g, (_, attrs, inside) => {
-    let images = inside.split(/\n/g);
-    images = images.filter(str => str && str.trim() !== ''); //parse the line, which has an image and sometimes a caption
-
-    images = images.map(str => {
-      let arr = str.split(/\|/);
-      let obj = {
-        file: arr[0].trim(),
-        lang: doc.lang(),
-        domain: doc.domain()
-      };
-      let img = new Image$1(obj).json();
-      let caption = arr.slice(1).join('|');
-
-      if (caption !== '') {
-        img.caption = parseSentence$1(caption);
-      }
-
-      return img;
-    }); //add it to our templates list
-
-    if (images.length > 0) {
-      catcher.templates.push({
-        template: 'gallery',
-        images: images,
-        pos: section.title
-      });
-    } //return empty string to remove the template from the wiki text
-
-
-    return '';
-  });
-};
-
-var gallery = parseGallery$1;
-
-const parseTemplates = template;
-/**
- * parses out the `Election_box` template from the wiki text
- *
- * this is a non-traditional template, for some reason
- * https://en.wikipedia.org/wiki/Template:Election_box
- *
- * @private
- * @param {object} catcher an object to provide and catch data
- */
-
-const parseElection$1 = function (catcher) {
-  catcher.text = catcher.text.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, tmpl => {
-    let data = {
-      _wiki: tmpl,
-      _templates: []
-    }; //put it through our full template parser..
-
-    parseTemplates(data); //okay, pull it apart into something sensible..
-
-    let templates = data._templates.map(t => t.json());
-
-    let start = templates.find(t => t.template === 'election box') || {};
-    let candidates = templates.filter(t => t.template === 'election box candidate');
-    let summary = templates.find(t => t.template === 'election box gain' || t.template === 'election box hold') || {};
-
-    if (candidates.length > 0 || summary) {
-      catcher.templates.push({
-        template: 'election box',
-        title: start.title,
-        candidates: candidates,
-        summary: summary.data
-      });
-    } //return empty string to remove the template from the wiki text
-
-
-    return '';
-  });
-};
-
-var election = parseElection$1;
-
-const tableParser$2 = parse$4;
-const keys = {
-  coach: ['team', 'year', 'g', 'w', 'l', 'w-l%', 'finish', 'pg', 'pw', 'pl', 'pw-l%'],
-  player: ['year', 'team', 'gp', 'gs', 'mpg', 'fg%', '3p%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
-  roster: ['player', 'gp', 'gs', 'mpg', 'fg%', '3fg%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg']
-};
-/**
- * https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
- *
- * @private
- * @param {object} catcher
- */
-
-const parseNBA$1 = function (catcher) {
-  catcher.text = catcher.text.replace(/\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi, (tmpl, name) => {
-    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
-    tmpl = tmpl.replace(/\{\{s-end\}\}/, '');
-    name = name.toLowerCase().trim();
-    let headers = '! ' + keys[name].join(' !! ');
-    let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
-    let rows = tableParser$2(table);
-    rows = rows.map(row => {
-      Object.keys(row).forEach(k => {
-        row[k] = row[k].text();
-      });
-      return row;
-    });
-    catcher.templates.push({
-      template: 'NBA ' + name + ' statistics',
-      data: rows
-    }); //return empty string to remove the template from the wiki text
-
-    return '';
-  });
-};
-
-var nba = parseNBA$1;
-
-const tableParser$1 = parse$4; //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
-//this is pretty nuts
-
-const whichHeadings = function (tmpl) {
-  let headings = ['#', 'date', 'opponent', 'score', 'win', 'loss', 'save', 'attendance', 'record'];
-
-  if (/\|stadium=y/i.test(tmpl) === true) {
-    headings.splice(7, 0, 'stadium'); //save, stadium, attendance
-  }
-
-  if (/\|time=y/i.test(tmpl) === true) {
-    headings.splice(7, 0, 'time'); //save, time, stadium, attendance
-  }
-
-  if (/\|box=y/i.test(tmpl) === true) {
-    headings.push('box'); //record, box
-  }
-
-  return headings;
-};
-/**
- *
- * @private
- * @param {object} catcher
- */
-
-
-const parseMlb$1 = function (catcher) {
-  catcher.text = catcher.text.replace(/\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi, tmpl => {
-    let headings = whichHeadings(tmpl);
-    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
-    tmpl = tmpl.replace(/\{\{mlb game log (section|month) end\}\}/i, '');
-    let headers = '! ' + headings.join(' !! ');
-    let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
-    let rows = tableParser$1(table);
-    rows = rows.map(row => {
-      Object.keys(row).forEach(k => {
-        row[k] = row[k].text();
-      });
-      return row;
-    });
-    catcher.templates.push({
-      template: 'mlb game log section',
-      data: rows
-    }); //return empty string to remove the template from the wiki text
-
-    return '';
-  });
-};
-
-var mlb = parseMlb$1;
-
-const tableParser = parse$4;
-let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes'];
-/**
- *
- * https://en.wikipedia.org/wiki/Template:MMA_record_start
- *
- * @private
- * @param {object} catcher
- */
-
-const parseMMA$1 = function (catcher) {
-  catcher.text = catcher.text.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, tmpl => {
-    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
-    tmpl = tmpl.replace(/\{\{end\}\}/i, '');
-    let headers = '! ' + headings.join(' !! ');
-    let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
-    let rows = tableParser(table);
-    rows = rows.map(row => {
-      Object.keys(row).forEach(k => {
-        row[k] = row[k].text();
-      });
-      return row;
-    });
-    catcher.templates.push({
-      template: 'mma record start',
-      data: rows
-    }); //return empty string to remove the template from the wiki text
-
-    return '';
-  });
-};
-
-var mma = parseMMA$1;
-
-const parseSentence = _04Sentence.fromText;
-/**
- * try to parse out the math and chem templates
- *
- * xml <math>y=mx+b</math> support
- * https://en.wikipedia.org/wiki/Help:Displaying_a_formula
- *
- * @private
- * @param {object} catcher
- */
-
-const parseMath$1 = function (catcher) {
-  catcher.text = catcher.text.replace(/<math([^>]*)>([\s\S]+)<\/math>/g, (_, attrs, inside) => {
-    //clean it up a little?
-    let formula = parseSentence(inside).text();
-    catcher.templates.push({
-      template: 'math',
-      formula: formula,
-      raw: inside
-    }); //should we at least try to render it in plaintext? :/
-
-    if (formula && formula.length < 12) {
-      return formula;
-    } //return empty string to remove the template from the wiki text
-
-
-    return '';
-  }); //try chemistry version too
-
-  catcher.text = catcher.text.replace(/<chem([^>]*)>([\s\S]+?)<\/chem>/g, (_, attrs, inside) => {
-    catcher.templates.push({
-      template: 'chem',
-      data: inside
-    }); //return empty string to remove the template from the wiki text
-
-    return '';
-  });
-};
-
-var math = parseMath$1;
-
-const parseGallery = gallery;
-const parseElection = election;
-const parseNBA = nba;
-const parseMlb = mlb;
-const parseMMA = mma;
-const parseMath = math;
-const Template = Template_1;
-/**
- * parses out non standard templates
- *
- * Most templates are '{{template}}',
- * but then, some are '<template></template>' others are {{start}}...{{end}}
- * -> the templates here are of the second type.
- *
- * @private
- * @param {Section} section
- * @param {Document} doc
- * @returns {Object} wikitext
- */
-
-const xmlTemplates = function (section, doc) {
-  const res = {
-    templates: [],
-    text: section._wiki
-  };
-  parseElection(res);
-  parseGallery(res, doc, section);
-  parseMath(res);
-  parseMlb(res);
-  parseMMA(res);
-  parseNBA(res); // turn them into Template objects
-
-  res.templates = res.templates.map(obj => new Template(obj));
-  return res;
-};
-
-var startToEnd = xmlTemplates;
-
-const toJSON$1 = toJson$6;
-const setDefaults$1 = setDefaults_1;
-const parse$2 = {
-  heading: heading,
-  table: table,
-  paragraphs: _03Paragraph,
-  templates: template,
-  references: reference,
-  startEndTemplates: startToEnd
-};
-const defaults$2 = {
-  tables: true,
-  references: true,
-  paragraphs: true,
-  templates: true,
-  infoboxes: true
-};
-/**
- * the Section class represents the different sections of the article.
- * we look for the == title == syntax and split and parse the sections from there
- *
- * @class
- */
-
-class Section$1 {
-  /**
-   * the stuff between headings - 'History' section for example
-   *
-   * @param {object} data the data already gathered about the section
-   * @param {Document} doc the document that this section belongs to
-   */
-  constructor(data, doc) {
-    let props = {
-      doc: doc,
-      title: data.title || '',
-      depth: data.depth,
-      wiki: data.wiki || '',
-      templates: [],
-      tables: [],
-      infoboxes: [],
-      references: [],
-      paragraphs: []
-    };
-    Object.keys(props).forEach(k => {
-      Object.defineProperty(this, '_' + k, {
-        enumerable: false,
-        writable: true,
-        value: props[k]
-      });
-    }); //parse-out <template></template>' and {{start}}...{{end}} templates
-
-    const startEndTemplates = parse$2.startEndTemplates(this, doc);
-    this._wiki = startEndTemplates.text;
-    this._templates = this._templates.concat(startEndTemplates.templates); //parse-out the <ref></ref> tags
-
-    parse$2.references(this); //parse-out all {{templates}}
-
-    parse$2.templates(this, doc); //parse the tables
-
-    parse$2.table(this); //now parse all double-newlines
-
-    parse$2.paragraphs(this, doc);
-  }
-  /**
-   * returns the title of a section. if no title is available then it returns empty string
-   *
-   * @returns {string} the title of the section
-   */
-
-
-  title() {
-    return this._title || '';
-  }
-  /**
-   * returns the index of the current section in the document
-   *
-   * @returns {number | null} the index of the current section in the document
-   */
-
-
-  index() {
-    if (!this._doc) {
-      return null;
-    }
-
-    let index = this._doc.sections().indexOf(this);
-
-    if (index === -1) {
-      return null;
-    }
-
-    return index;
-  }
-  /**
-   * returns the depth (or indentation) of the section
-   * aka how many levels deep is this section located
-   *
-   * @returns {number} the depth of the section
-   */
-
-
-  depth() {
-    return this._depth;
-  }
-  /**
-   * returns the depth (or indentation) of the section
-   * aka how many levels deep is this section located
-   *
-   * @returns {number} the depth of the section
-   */
-
-
-  indentation() {
-    return this.depth();
-  }
-  /**
-   * returns all sentences in the section
-   * if an clue is provided then it returns the sentence at clue-th index
-   *
-   * @returns {object | object[]} all sentences in an array or the clue-th sentence
-   */
-
-
-  sentences() {
-    return this.paragraphs().reduce((list, p) => {
-      return list.concat(p.sentences());
-    }, []);
-  }
-  /**
-   * returns all paragraphs in the section
-   * if an clue is provided then it returns the paragraph at clue-th index
-   *
-   * @returns {object | object[]} all paragraphs in an array or the clue-th paragraph
-   */
-
-
-  paragraphs() {
-    return this._paragraphs || [];
-  }
-  /**
-   * returns all links in the section
-   * if an clue is provided and it is a number then it returns the link at clue-th index
-   * if an clue is provided and it is a string then it returns the link at the that content
-   *
-   * @param {number| string} [clue] the clue for selecting the link
-   * @returns {object | object[]} all links in an array or the clue-th link or the link with the content of clue
-   */
-
-
-  links(clue) {
-    let arr = [];
-    this.infoboxes().forEach(templ => {
-      arr.push(templ.links());
-    });
-    this.sentences().forEach(s => {
-      arr.push(s.links());
-    });
-    this.tables().forEach(t => {
-      arr.push(t.links());
-    });
-    this.lists().forEach(list => {
-      arr.push(list.links());
-    });
-    arr = arr.reduce((acc, val) => acc.concat(val), []) //flatten the array
-    .filter(val => val !== undefined); //filter out all the undefined from the flattened empty arrays
-
-    if (typeof clue === 'string') {
-      let link = arr.find(o => o.page().toLowerCase() === clue.toLowerCase());
-      return link === undefined ? [] : [link];
-    }
-
-    return arr;
-  }
-  /**
-   * returns all tables in the section
-   * if an clue is provided then it returns the table at clue-th index
-   *
-   * @returns {object | object[]} all tables in an array or the clue-th infobox
-   */
-
-
-  tables() {
-    return this._tables || [];
-  }
-  /**
-   * returns all templates in the section
-   * if an clue is provided and clue is a number then it returns the template at clue-th index
-   * if an clue is provided and clue is a string then it returns all template with that name
-   *
-   * @param {number|string} [clue] the clue for selecting the template
-   * @returns {object | object[]} all templates in an array or the clue-th template or all template name `clue`
-   */
-
-
-  templates(clue) {
-    let arr = this._templates || []; // arr = arr.map((t) => t.json())
-
-    if (typeof clue === 'string') {
-      clue = clue.toLowerCase();
-      return arr.filter(o => o.data.template === clue || o.data.name === clue);
-    }
-
-    return arr;
-  }
-  /**
-   * returns all infoboxes in the section
-   * if an clue is provided then it returns the infobox at clue-th index
-   *
-   * @param {number|string} [clue] the clue for selecting the infobox
-   * @returns {object | object[]} all infoboxes in an array or the clue-th infobox
-   */
-
-
-  infoboxes(clue) {
-    let arr = this._infoboxes || [];
-
-    if (typeof clue === 'string') {
-      clue = clue.replace(/^infobox /i, '');
-      clue = clue.trim().toLowerCase();
-      return arr.filter(info => info._type === clue);
-    }
-
-    return arr;
-  }
-  /**
-   * returns all lists in the section
-   * if an clue is provided then it returns the list at clue-th index
-   *
-   * @returns {object | object[]} all lists in an array or the clue-th list
-   */
-
-
-  coordinates() {
-    let arr = [...this.templates('coord'), ...this.templates('coor')];
-    return arr.map(tmpl => tmpl.json());
-  }
-  /**
-   * returns all lists in the section
-   * if an clue is provided then it returns the list at clue-th index
-   *
-   * @returns {object | object[]} all lists in an array or the clue-th list
-   */
-
-
-  lists() {
-    let arr = [];
-    this.paragraphs().forEach(p => {
-      arr = arr.concat(p.lists());
-    });
-    return arr;
-  }
-  /**
-   * returns all interwiki links in the section
-   * if an clue is provided then it returns the interwiki link at clue-th index
-   *
-   * @returns {object | object[]} all interwiki links in an array or the clue-th interwiki link
-   */
-
-
-  interwiki() {
-    let arr = [];
-    this.paragraphs().forEach(p => {
-      arr = arr.concat(p.interwiki());
-    });
-    return arr;
-  }
-  /**
-   * returns all images in the section
-   * if an clue is provided then it returns the image at clue-th index
-   *
-   * @returns {Image | Image[]} all images in an array or the clue-th image
-   */
-
-
-  images() {
-    let arr = [];
-    this.paragraphs().forEach(p => {
-      arr = arr.concat(p.images());
-    });
-    return arr;
-  }
-  /**
-   * returns all references in the section
-   * if an clue is provided then it returns the reference at clue-th index
-   *
-   * @returns {object | object[]} all references in an array or the clue-th reference
-   */
-
-
-  references() {
-    return this._references || [];
-  } //transformations
-
-  /**
-   * Removes the section from the document
-   *
-   * @returns {null|Document} the document without this section. or null if there is no document
-   */
-
-
-  remove() {
-    if (!this._doc) {
-      return null;
-    }
-
-    let bads = {};
-    bads[this.title()] = true; //remove children too
-
-    this.children().forEach(sec => bads[sec.title()] = true);
-
-    let sections = this._doc.sections();
-
-    sections = sections.filter(sec => bads.hasOwnProperty(sec.title()) !== true);
-    sections = sections.filter(sec => bads.hasOwnProperty(sec.title()) !== true);
-    this._doc._sections = sections;
-    return this._doc;
-  } //move-around sections like in jquery
-
-  /**
-   * returns the next sibling of this section
-   * if it can find one then it returns null
-   *
-   * @returns {Section|null} the next sibling
-   */
-
-
-  nextSibling() {
-    //if this section is not part of a document then we can go to the next part of the document
-    if (!this._doc) {
-      return null;
-    } //first we get the a list of sections and our own position in this list
-
-
-    let sections = this._doc.sections();
-
-    let index = this.index() || 0; //then we look trough the list looking for the next sibling
-    //aka we look the next item at the same depth as us
-    //so we start the loop at the next section in the list and go till the length of the list
-
-    for (let i = index + 1; i < sections.length; i++) {
-      //if the depth is smaller then the current depth then there is no next sibling
-      //aka the depth of the section at position i a level higher then this section then this section is the last section at this depth
-      if (sections[i].depth() < this.depth()) {
-        return null;
-      } //if the section has the same depth as the current section then it is the next sibling
-
-
-      if (sections[i].depth() === this.depth()) {
-        return sections[i];
-      }
-    } //if the loop has no results then there is no next sibling and we are at the end of the file
-
-
-    return null;
-  }
-  /**
-   * returns the next sibling of this section
-   * if it can find one then it returns null
-   *
-   * @returns {Section|null} the next sibling
-   */
-
-
-  next() {
-    return this.nextSibling();
-  }
-  /**
-   * returns the previous section
-   *
-   * @returns {Section|null} the previous section
-   */
-
-
-  lastSibling() {
-    if (!this._doc) {
-      return null;
-    }
-
-    let sections = this._doc.sections();
-
-    let index = this.index() || 0;
-    return sections[index - 1] || null;
-  }
-  /**
-   * returns the previous section
-   *
-   * @returns {Section|null} the previous section
-   */
-
-
-  last() {
-    return this.lastSibling();
-  }
-  /**
-   * returns the previous section
-   *
-   * @returns {Section|null} the previous section
-   */
-
-
-  previousSibling() {
-    return this.lastSibling();
-  }
-  /**
-   * returns the previous section
-   *
-   * @returns {Section|null} the previous section
-   */
-
-
-  previous() {
-    return this.lastSibling();
-  }
-  /**
-   * returns all the children of a section
-   *
-   * If the clue is a string then it will return the child with that exact title
-   * Else if the clue is a number then it returns the child at that index
-   * Else it returns all the children
-   *
-   * @param {number | string} [clue] A title of a section or a index of a wanted section
-   * @returns {Section | Section[] | null} A section or a array of sections
-   */
-
-
-  children(clue) {
-    if (!this._doc) {
-      return null;
-    }
-
-    let sections = this._doc.sections();
-
-    let index = this.index() || 0;
-    let children = []; //(immediately preceding sections with higher depth)
-
-    if (sections[index + 1] && sections[index + 1].depth() > this.depth()) {
-      for (let i = index + 1; i < sections.length; i += 1) {
-        if (sections[i].depth() > this.depth()) {
-          children.push(sections[i]);
-        } else {
-          break;
-        }
-      }
-    }
-
-    if (typeof clue === 'string') {
-      return children.find(s => s.title().toLowerCase() === clue.toLowerCase());
-    }
-
-    return children;
-  }
-  /**
-   * returns all the children of a section
-   *
-   * If the clue is a string then it will return the child with that exact title
-   * Else if the clue is a number then it returns the child at that index
-   * Else it returns all the children
-   *
-   * @param {number | string} [clue] A title of a section or a index of a wanted section
-   * @returns {Section | Section[] | null} A section or a array of sections
-   */
-
-
-  sections(clue) {
-    return this.children(clue);
-  }
-  /**
-   * returns all the parent of a section
-   *
-   * @returns {Section | null} A section that is the parent of a section
-   */
-
-
-  parent() {
-    if (!this._doc) {
-      return null;
-    }
-
-    let sections = this._doc.sections();
-
-    let index = this.index() || 0;
-
-    for (let i = index; i >= 0; i -= 1) {
-      if (sections[i] && sections[i].depth() < this.depth()) {
-        return sections[i];
-      }
-    }
-
-    return null;
-  } //outputs
-
-  /**
-   * returns a plaintext version of the section
-   *
-   * @param {object} options options for the text transformation
-   * @returns {string} the section in text
-   */
-
-
-  text(options) {
-    options = setDefaults$1(options, defaults$2);
-    return this.paragraphs().map(p => p.text(options)).join('\n\n');
-  }
-  /**
-   * returns original wiki markup
-   *
-   * @returns {string} the original markup
-   */
-
-
-  wikitext() {
-    return this._wiki;
-  }
-  /**
-   * returns a json version of the section
-   *
-   * @param {object} options keys to include in the resulting json
-   * @returns {object} the section in json
-   */
-
-
-  json(options) {
-    options = setDefaults$1(options, defaults$2);
-    return toJSON$1(this, options);
-  }
-
-}
-
-Section$1.prototype.citations = Section$1.prototype.references; // aliases
-
-const singular$1 = {
-  sentences: 'sentence',
-  paragraphs: 'paragraph',
-  links: 'link',
-  tables: 'table',
-  templates: 'template',
-  infoboxes: 'infobox',
-  coordinates: 'coordinate',
-  lists: 'list',
-  images: 'image',
-  references: 'reference',
-  citations: 'citation'
-};
-Object.keys(singular$1).forEach(k => {
-  let sing = singular$1[k];
-
-  Section$1.prototype[sing] = function (clue) {
-    let arr = this[k](clue);
-
-    if (typeof clue === 'number') {
-      return arr[clue];
-    }
-
-    return arr[0] || null;
-  };
-});
-var Section_1 = Section$1;
-
-const Section = Section_1;
-const i18n$1 = i18n$6;
-const isReference = new RegExp('^(' + i18n$1.references.join('|') + '):?', 'i');
-const section_reg = /(?:\n|^)(={2,5}.{1,200}?={2,5})/g; //interpret ==heading== lines
-
-const parse$1 = {
-  heading: heading
-};
 /**
  * filters out the reference section and empty sections and
  *
  * @param {Section[]} sections
  * @returns {Section[]} all the section
  */
-
 const removeReferenceSection = function (sections) {
   return sections.filter((s, i) => {
     if (isReference.test(s.title()) === true) {
       if (s.paragraphs().length > 0) {
-        return true;
-      } //does it have some wacky templates?
+        return true
+      }
 
-
+      //does it have some wacky templates?
       if (s.templates().length > 0) {
-        return true;
-      } //what it has children? awkward
+        return true
+      }
 
-
+      //what it has children? awkward
       if (sections[i + 1] && sections[i + 1].depth() > s.depth()) {
         sections[i + 1]._depth -= 1; //move it up a level?...
       }
-
-      return false;
+      return false
     }
-
-    return true;
-  });
+    return true
+  })
 };
+
 /**
  * this function splits the wiki texts on '=' and puts every part in a Section Object
  * it also pre processes the section text for the Section object
  * then it filters out the reference section
  *
  * @private
- * @param {Document} doc the document that contains the wiki text
+ * @param {object} doc the document that contains the wiki text
  * @returns {Section[]} the sections that are parsed out
  */
-
-
 const parseSections = function (doc) {
   let sections = [];
-
   let splits = doc._wiki.split(section_reg);
 
   for (let i = 0; i < splits.length; i += 2) {
@@ -8927,68 +8658,51 @@ const parseSections = function (doc) {
 
     if (wiki === '' && heading === '') {
       //usually an empty 'intro' section
-      continue;
+      continue
     }
 
     let data = {
       title: '',
       depth: null,
-      wiki: wiki
-    }; //figure-out title and depth
+      wiki: wiki,
+    };
 
-    parse$1.heading(data, heading);
+    //figure-out title and depth
+    parseHeading(data, heading);
+
     sections.push(new Section(data, doc));
-  } //remove empty references section
+  }
 
-
-  return removeReferenceSection(sections);
+  //remove empty references section
+  return removeReferenceSection(sections)
 };
 
-var _02Section = parseSections;
-
-const i18n = i18n$6;
-const cat_reg = new RegExp('\\[\\[:?(' + i18n.categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'gi');
-const cat_remove_reg = new RegExp('^\\[\\[:?(' + i18n.categories.join('|') + '):', 'gi');
+const cat_reg = new RegExp('\\[\\[:?(' + _categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'gi');
+const cat_remove_reg = new RegExp('^\\[\\[:?(' + _categories.join('|') + '):', 'gi');
 
 const parse_categories = function (wiki) {
   const categories = [];
   let tmp = wiki.match(cat_reg); //regular links
-
   if (tmp) {
     tmp.forEach(function (c) {
       c = c.replace(cat_remove_reg, '');
       c = c.replace(/\|?[ *]?\]\]$/, ''); //parse fancy ones..
-
       c = c.replace(/\|.*/, ''); //everything after the '|' is metadata
-
       if (c && !c.match(/[[\]]/)) {
         categories.push(c.trim());
       }
     });
   }
-
   const newWiki = wiki.replace(cat_reg, '');
-  return [categories, newWiki];
+  return [categories, newWiki]
 };
 
-var categories = parse_categories;
-
-const sectionMap = _sectionMap;
-const toJSON = toJson$9;
-const isDisambig = isDisambig_1;
-const setDefaults = setDefaults_1;
-const Image = Image_1;
-const redirects = redirects$1;
-const preProcess = preProcess_1;
-const parse = {
-  section: _02Section,
-  categories: categories
-};
 const defaults$1 = {
   tables: true,
   lists: true,
-  paragraphs: true
+  paragraphs: true,
 };
+
 /**
  * The document class is the main entry point of wtf_wikipedia.
  * this class represents an article of wikipedia.
@@ -8996,8 +8710,7 @@ const defaults$1 = {
  *
  * @class
  */
-
-class Document$2 {
+class Document {
   /**
    * The constructor for the document class
    * This function starts parsing the wiki text and sets the options in the class
@@ -9022,34 +8735,39 @@ class Document$2 {
       coordinates: [],
       // userAgent is used for successive calls to the API
       userAgent: options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library'
-    }; // this._missing_templates = {} //for stats+debugging purposes
+    };
+    // this._missing_templates = {} //for stats+debugging purposes
 
-    Object.keys(props).forEach(k => {
+    Object.keys(props).forEach((k) => {
       Object.defineProperty(this, '_' + k, {
         enumerable: false,
         writable: true,
-        value: props[k]
+        value: props[k],
       });
-    }); //detect if page is just redirect, and return it
+    });
 
-    if (redirects.isRedirect(this._wiki) === true) {
+    //detect if page is just redirect, and return it
+    if (isRedirect(this._wiki) === true) {
       this._type = 'redirect';
-      this._redirectTo = redirects.parse(this._wiki);
-      const [categories, newWiki] = parse.categories(this._wiki);
+      this._redirectTo = parse(this._wiki);
+      const [categories, newWiki] = parse_categories(this._wiki);
       this._categories = categories;
       this._wiki = newWiki;
-      return;
-    } //give ourselves a little head-start
+      return
+    }
 
+    //give ourselves a little head-start
+    this._wiki = preProcess(this._wiki);
 
-    this._wiki = preProcess(this._wiki); //pull-out [[category:whatevers]]
-
-    const [categories, newWiki] = parse.categories(this._wiki);
+    //pull-out [[category:whatevers]]
+    const [categories, newWiki] = parse_categories(this._wiki);
     this._categories = categories;
-    this._wiki = newWiki; //parse all the headings, and their texts/sentences
+    this._wiki = newWiki;
 
-    this._sections = parse.section(this);
+    //parse all the headings, and their texts/sentences
+    this._sections = parseSections(this);
   }
+
   /**
    * Getter and setter for the tile.
    * If string is given then this function is a setter and sets the variable and returns the set value
@@ -9060,30 +8778,25 @@ class Document$2 {
    * @param {string} [str] The title that will be set
    * @returns {null|string} The title found or given
    */
-
-
   title(str) {
     //use like a setter
     if (str !== undefined) {
       this._title = str;
-      return str;
-    } //if we have it already
-
-
+      return str
+    }
+    //if we have it already
     if (this._title) {
-      return this._title;
-    } //guess the title of this page from first sentence bolding
-
-
+      return this._title
+    }
+    //guess the title of this page from first sentence bolding
     let guess = null;
-    let sen = this.sentence();
-
+    let sen = this.sentences()[0];
     if (sen) {
       guess = sen.bold();
     }
-
-    return guess;
+    return guess
   }
+
   /**
    * If an pageID is given then it sets the pageID and returns the given pageID
    * Else if the pageID is already set it returns the pageID
@@ -9091,15 +8804,13 @@ class Document$2 {
    * @param {number} [id] The pageID that will be set
    * @returns {number|null} The given or found pageID
    */
-
-
   pageID(id) {
     if (id !== undefined) {
       this._pageID = id;
     }
-
-    return this._pageID || null;
+    return this._pageID || null
   }
+
   /**
    * If an WikidataID is given then it sets the WikidataID and returns the given WikidataID
    * Else if the WikidataID is already set it returns the WikidataID
@@ -9107,15 +8818,13 @@ class Document$2 {
    * @param {string} [id] The WikidataID that will be set
    * @returns {string|null} The given or found WikidataID
    */
-
-
   wikidata(id) {
     if (id !== undefined) {
       this._wikidata = id;
     }
-
-    return this._wikidata || null;
+    return this._wikidata || null
   }
+
   /**
    * If an domain is given then it sets the domain and returns the given domain
    * Else if the domain is already set it returns the domain
@@ -9123,15 +8832,13 @@ class Document$2 {
    * @param {string} [str] The domain that will be set
    * @returns {string|null} The given or found domain
    */
-
-
   domain(str) {
     if (str !== undefined) {
       this._domain = str;
     }
-
-    return this._domain || null;
+    return this._domain || null
   }
+
   /**
    * If an language is given then it sets the language and returns the given language
    * Else if the language is already set it returns the language
@@ -9139,15 +8846,13 @@ class Document$2 {
    * @param {string} [lang] The language that will be set
    * @returns {string|null} The given or found language
    */
-
-
   language(lang) {
     if (lang !== undefined) {
       this._lang = lang;
     }
-
-    return this._lang || null;
+    return this._lang || null
   }
+
   /**
    * Gets the url of the page
    * If the language or domain is not available we substitute 'en' and 'wikipedia.org'
@@ -9155,22 +8860,19 @@ class Document$2 {
    *
    * @returns {string|null} The url of the page
    */
-
-
   url() {
     let title = this.title();
-
     if (!title) {
-      return null;
+      return null
     }
-
     let lang = this.language() || 'en';
-    let domain = this.domain() || 'wikipedia.org'; //replace blank to underscore
-
+    let domain = this.domain() || 'wikipedia.org';
+    //replace blank to underscore
     title = title.replace(/ /g, '_');
     title = encodeURIComponent(title);
-    return "https://".concat(lang, ".").concat(domain, "/wiki/").concat(title);
+    return `https://${lang}.${domain}/wiki/${title}`
   }
+
   /**
    * If an namespace is given then it sets the namespace and returns the given namespace
    * Else if the namespace is already set it returns the namespace
@@ -9178,62 +8880,54 @@ class Document$2 {
    * @param {string} [ns] The namespace that will be set
    * @returns {string|null} The given or found namespace
    */
-
-
   namespace(ns) {
     if (ns !== undefined) {
       this._namespace = ns;
     }
-
-    return this._namespace || null;
+    return this._namespace || null
   }
+
   /**
    * Returns if the page is a redirect
    *
    * @returns {boolean} Is the page a redirect
    */
-
-
   isRedirect() {
-    return this._type === 'redirect';
+    return this._type === 'redirect'
   }
+
   /**
    * Returns information about the page this page redirects to
    *
    * @returns {null|object} The redirected page
    */
-
-
   redirectTo() {
-    return this._redirectTo;
+    return this._redirectTo
   }
+
   /**
    * This function finds out if a page is a disambiguation page
    *
    * @returns {boolean} Whether the page is a disambiguation page
    */
-
-
   isDisambiguation() {
-    return isDisambig(this);
+    return isDisambig(this)
   }
+
   /**
    * If a clue is available return the category at that index
    * Else return all categories
    *
    * @returns {string | string[]} The category at the provided index or all categories
    */
-
-
   categories(clue) {
     let arr = this._categories || [];
-
     if (typeof clue === 'number') {
-      return [arr[clue]];
+      return [arr[clue]]
     }
-
-    return arr;
+    return arr
   }
+
   /**
    * returns the sections of the document
    *
@@ -9244,26 +8938,25 @@ class Document$2 {
    * @param {number | string} [clue] A title of a section or a index of a wanted section
    * @returns {object | object[]} A section or a array of sections
    */
-
-
   sections(clue) {
     let arr = this._sections || [];
-    arr.forEach(sec => {
+    arr.forEach((sec) => {
       // link-up parent and child
       sec._doc = this;
-    }); //grab a specific section, by its title
+    });
 
+    //grab a specific section, by its title
     if (typeof clue === 'string') {
       let str = clue.toLowerCase().trim();
-      return arr.filter(s => {
-        return s.title().toLowerCase() === str;
-      });
+      return arr.filter((s) => {
+        return s.title().toLowerCase() === str
+      })
     } else if (typeof clue === 'number') {
-      return [arr[clue]];
+      return [arr[clue]]
     }
-
-    return arr;
+    return arr
   }
+
   /**
    * Returns the paragraphs in the document
    *
@@ -9272,40 +8965,34 @@ class Document$2 {
    * @param {number | string} [clue] given index of a paragraph
    * @returns {object | object[]} the selected paragraph or an array of all paragraphs
    */
-
-
   paragraphs(clue) {
     let arr = [];
-    this.sections().forEach(s => {
+    this.sections().forEach((s) => {
       arr = arr.concat(s.paragraphs());
     });
-
     if (typeof clue === 'number') {
-      return [arr[clue]];
+      return [arr[clue]]
     }
-
-    return arr;
+    return arr
   }
+
   /**
    * if no clue is provided, it compiles an array of sentences in the wiki text.
    * if the clue is provided it return the sentence at the provided index
    * @param {number | string} [clue] given index of a sentence
    * @returns {object[]|object} an array of sentences or a single sentence
    */
-
-
   sentences(clue) {
     let arr = [];
-    this.sections().forEach(sec => {
+    this.sections().forEach((sec) => {
       arr = arr.concat(sec.sentences());
     });
-
     if (typeof clue === 'number') {
-      return [arr[clue]];
+      return [arr[clue]]
     }
-
-    return arr;
+    return arr
   }
+
   /**
    * This function search the whole page, including the infobox and image gallery templates for images
    * and then returns them in an array if no clue is provided.
@@ -9313,62 +9000,55 @@ class Document$2 {
    *
    * @returns {Image[]|Image} a single image or an array of images
    */
-
-
   images(clue) {
-    let arr = sectionMap(this, 'images', null); //grab image from infobox, first
-
-    this.infoboxes().forEach(info => {
+    let arr = sectionMap(this, 'images', null);
+    //grab image from infobox, first
+    this.infoboxes().forEach((info) => {
       let img = info.image();
-
       if (img) {
         arr.unshift(img); //put it at the top
       }
-    }); //look for 'gallery' templates, too
-
-    this.templates().forEach(obj => {
+    });
+    //look for 'gallery' templates, too
+    this.templates().forEach((obj) => {
       if (obj.data.template === 'gallery') {
         obj.data.images = obj.data.images || [];
-        obj.data.images.forEach(img => {
+        obj.data.images.forEach((img) => {
           if (!(img instanceof Image)) {
             img.language = this.language();
             img.domain = this.domain();
             img = new Image(img);
           }
-
           arr.push(img);
         });
       }
     });
-
     if (typeof clue === 'number') {
-      return [arr[clue]];
+      return [arr[clue]]
     }
-
-    return arr;
+    return arr
   }
+
   /**
    * Return all links or if a clue is provided only the link at that index
    *
    * @param {number} [clue] the index of the wanted link
    * @returns {string[]|string} all the links or the selected link
    */
-
-
   links(clue) {
-    return sectionMap(this, 'links', clue);
+    return sectionMap(this, 'links', clue)
   }
+
   /**
    * Return all inter wiki links or if a clue is provided only the inter wiki link at that index
    *
    * @param {number} [clue] the index of the wanted inter wiki link
    * @returns {string[]|string} all the inter wiki links or the selected inter wiki link
    */
-
-
   interwiki(clue) {
-    return sectionMap(this, 'interwiki', clue);
+    return sectionMap(this, 'interwiki', clue)
   }
+
   /**
    * If a clue is available return the list at that index
    * Else return all lists
@@ -9376,11 +9056,10 @@ class Document$2 {
    * @param {number} [clue] The index of the wanted list
    * @returns {object | object[]} The list at the provided index or all lists
    */
-
-
   lists(clue) {
-    return sectionMap(this, 'lists', clue);
+    return sectionMap(this, 'lists', clue)
   }
+
   /**
    * If a clue is available return the tables at that index
    * Else return all tables
@@ -9388,11 +9067,10 @@ class Document$2 {
    * @param {number} [clue] The index of the wanted table
    * @returns {object | object[]} The table at the provided index or all tables
    */
-
-
   tables(clue) {
-    return sectionMap(this, 'tables', clue);
+    return sectionMap(this, 'tables', clue)
   }
+
   /**
    * If a clue is available return the template at that index
    * Else return all templates
@@ -9400,11 +9078,10 @@ class Document$2 {
    * @param {number} [clue] The index of the wanted template
    * @returns {object | object[]} The category at the provided index or all categories
    */
-
-
   templates(clue) {
-    return sectionMap(this, 'templates', clue);
+    return sectionMap(this, 'templates', clue)
   }
+
   /**
    * If a clue is available return the references at that index
    * Else return all references
@@ -9412,22 +9089,20 @@ class Document$2 {
    * @param {number} [clue] The index of the wanted references
    * @returns {object | object[]} The category at the provided index or all references
    */
-
-
   references(clue) {
-    return sectionMap(this, 'references', clue);
+    return sectionMap(this, 'references', clue)
   }
+
   /**
    * Returns the 0th or clue-th reference
    *
    * @param {number} [clue] The index of the wanted reference
    * @returns {object|string|number} The reference at the provided index
    */
-
-
   citations(clue) {
-    return this.references(clue);
+    return this.references(clue)
   }
+
   /**
    * finds and returns all coordinates
    * or if an clue is given, the coordinate at the index
@@ -9435,11 +9110,10 @@ class Document$2 {
    * @param {number} [clue] the index of the coordinate returned
    * @returns {object[]|object|null} if a clue is given, the coordinate of null, else an array of coordinates
    */
-
-
   coordinates(clue) {
-    return sectionMap(this, 'coordinates', clue);
+    return sectionMap(this, 'coordinates', clue)
   }
+
   /**
    * If clue is unidentified then it returns all infoboxes
    * If clue is a number then it returns the infobox at that index
@@ -9448,84 +9122,74 @@ class Document$2 {
    * @param {number} [clue] the index of the infobox you want to select
    * @returns {object | object[]} the selected infobox or an array of infoboxes
    */
-
-
   infoboxes(clue) {
-    let arr = sectionMap(this, 'infoboxes', clue); //sort them by biggest-first
-
+    let arr = sectionMap(this, 'infoboxes', clue);
+    //sort them by biggest-first
     arr = arr.sort((a, b) => {
       if (Object.keys(a.data).length > Object.keys(b.data).length) {
-        return -1;
+        return -1
       }
-
-      return 1;
+      return 1
     });
-    return arr;
+
+    return arr
   }
+
   /**
    * return a plain text version of the wiki article
    *
    * @param {object} [options] the options for the parser
    * @returns {string} the plain text version of the article
    */
-
-
   text(options) {
-    options = setDefaults(options, defaults$1); //nah, skip these.
-
+    options = setDefaults(options, defaults$1);
+    //nah, skip these.
     if (this.isRedirect() === true) {
-      return '';
+      return ''
     }
-
-    let arr = this.sections().map(sec => sec.text(options));
-    return arr.join('\n\n');
+    let arr = this.sections().map((sec) => sec.text(options));
+    return arr.join('\n\n')
   }
+
   /**
    * return a json version of the Document class
    *
    * @param {object} [options] options for the rendering
    * @returns {object} this document as json
    */
-
-
   json(options) {
     options = setDefaults(options, defaults$1);
-    return toJSON(this, options);
+    return toJSON$2(this, options)
   }
+
   /**
    * return original wiki markup
    *
    * @returns {string} markup text
    */
-
-
   wikitext() {
-    return this._wiki || '';
+    return this._wiki || ''
   }
+
   /**
    * prints the title of every section
    *
    * @returns {Document} the document itself
    */
-
-
   debug() {
     console.log('\n');
-    this.sections().forEach(sec => {
+    this.sections().forEach((sec) => {
       let indent = ' - ';
-
       for (let i = 0; i < sec.depth(); i += 1) {
         indent = ' -' + indent;
       }
-
       console.log(indent + (sec.title() || '(Intro)'));
     });
-    return this;
+    return this
   }
+}
 
-} // aliases
-
-
+// aliases
 const singular = {
   categories: 'category',
   sections: 'section',
@@ -9540,30 +9204,24 @@ const singular = {
   references: 'reference',
   citations: 'citation',
   coordinates: 'coordinate',
-  infoboxes: 'infobox'
+  infoboxes: 'infobox',
 };
-Object.keys(singular).forEach(k => {
+Object.keys(singular).forEach((k) => {
   let sing = singular[k];
-
-  Document$2.prototype[sing] = function (clue) {
+  Document.prototype[sing] = function (clue) {
     let arr = this[k](clue);
-    return arr[0] || null;
+    return arr[0] || null
   };
 });
-Document$2.prototype.lang = Document$2.prototype.language;
-Document$2.prototype.ns = Document$2.prototype.namespace;
-Document$2.prototype.plaintext = Document$2.prototype.text;
-Document$2.prototype.isDisambig = Document$2.prototype.isDisambiguation;
-Document$2.prototype.citations = Document$2.prototype.references;
-Document$2.prototype.redirectsTo = Document$2.prototype.redirectTo;
-Document$2.prototype.redirect = Document$2.prototype.redirectTo;
-Document$2.prototype.redirects = Document$2.prototype.redirectTo;
-var Document_1 = Document$2;
+Document.prototype.lang = Document.prototype.language;
+Document.prototype.ns = Document.prototype.namespace;
+Document.prototype.plaintext = Document.prototype.text;
+Document.prototype.isDisambig = Document.prototype.isDisambiguation;
+Document.prototype.citations = Document.prototype.references;
+Document.prototype.redirectsTo = Document.prototype.redirectTo;
+Document.prototype.redirect = Document.prototype.redirectTo;
+Document.prototype.redirects = Document.prototype.redirectTo;
 
-const Document$1 = Document_1;
-const {
-  isArray
-} = helpers$1;
 /**
  * this function puts all responses into proper Document objects
  *
@@ -9572,28 +9230,28 @@ const {
  * @param {string | number | Array<number> | Array<string>} title
  * @returns {null| Document | Document[]} null if there are no results or Document if there is one responses and Document array if there are multiple responses
  */
-
-const parseDoc$1 = function (res, title) {
+const parseDoc = function (res, title) {
   // filter out undefined
-  res = res.filter(o => o); // put all the responses into Document formats
+  res = res.filter((o) => o);
 
-  let docs = res.map(o => {
-    return new Document$1(o.wiki, o.meta);
-  }); // if the list is empty than there are no results
 
+  // put all the responses into Document formats
+  let docs = res.map((o) => {
+    return new Document(o.wiki, o.meta)
+  });
+
+  // if the list is empty than there are no results
   if (docs.length === 0) {
-    return null;
-  } // if there is only one response then we can get it out of the array
-
-
-  if (!isArray(title) && docs.length === 1) {
-    return docs[0];
+    return null
   }
 
-  return docs;
-};
+  // if there is only one response then we can get it out of the array
+  if (!isArray(title) && docs.length === 1) {
+    return docs[0]
+  }
 
-var parseDoc_1 = parseDoc$1;
+  return docs
+};
 
 /**
  * factory for header options
@@ -9602,11 +9260,11 @@ var parseDoc_1 = parseDoc$1;
  * @param {object} options
  * @returns {object} the generated options
  */
+const makeHeaders = function (options) {
+  let agent =
+    options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library';
 
-const makeHeaders$1 = function (options) {
-  let agent = options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library';
   let origin;
-
   if (options.noOrigin) {
     origin = '';
   } else {
@@ -9620,21 +9278,14 @@ const makeHeaders$1 = function (options) {
       'Api-User-Agent': agent,
       'User-Agent': agent,
       Origin: origin,
-      'Accept-Encoding': 'gzip'
+      'Accept-Encoding': 'gzip',
     },
-    redirect: 'follow'
-  };
+    redirect: 'follow',
+  }
 };
 
-var _headers = makeHeaders$1;
-
-const unfetch$1 = require$$0;
-const parseUrl = parseUrl_1;
-const makeUrl = makeUrl_1;
-const getResult = getResult_1;
-const parseDoc = parseDoc_1;
-const makeHeaders = _headers;
 const isUrl = /^https?:\/\//;
+
 /**
  * @typedef fetchDefaults
  * @property {string | undefined} [path] the path to the wiki api. default: api.php
@@ -9650,19 +9301,18 @@ const isUrl = /^https?:\/\//;
 /**
  * @type {fetchDefaults}
  */
-
 const defaults = {
   lang: 'en',
   wiki: 'wikipedia',
   domain: undefined,
   follow_redirects: true,
-  path: 'api.php' //some 3rd party sites use a weird path
-
+  path: 'api.php', //some 3rd party sites use a weird path
 };
+
 /**
  * @callback fetchCallback
  * @param {Object} error
- * @param {(null | Document | Document[])} response
+ * @param {any} result
  */
 
 /**
@@ -9677,110 +9327,87 @@ const defaults = {
  * @param {string | number | Array<number> | Array<string>} title the title, PageID, URL or an array of all three of the page(s) you want to fetch
  * @param {fetchDefaults} [options] the options for the fetch or the language of the wiki for the article
  * @param {fetchCallback} [callback] the callback function for the call
- * @returns {Promise<null | Document | Document[]>} either null if the pages is not found, Document if you asked for one result, and a array of Documents if you asked for multiple pages
  */
-
-const fetch$2 = function (title, options, callback) {
+const fetch = function (title, options, callback) {
   // support lang as 2nd param
   if (typeof options === 'string') {
-    options = {
-      lang: options
-    };
+    options = { lang: options };
   }
+  options = { ...defaults, ...options };
+  options.title = title;
 
-  options = { ...defaults,
-    ...options
-  };
-  options.title = title; //parse url input
-
+  //parse url input
   if (typeof title === 'string' && isUrl.test(title)) {
-    options = { ...options,
-      ...parseUrl(title)
-    };
+    options = { ...options, ...parseUrl(title) };
   }
 
   const url = makeUrl(options);
   const headers = makeHeaders(options);
-  return unfetch$1(url, headers).then(res => res.json()).then(res => {
-    let data = getResult(res, options);
-    data = parseDoc(data, title);
 
-    if (callback) {
-      callback(null, data);
-    }
-
-    return data;
-  }).catch(e => {
-    console.error(e);
-
-    if (callback) {
-      callback(e, null);
-    }
-
-    return null;
-  });
+  return unfetch(url, headers)
+    .then((res) => res.json())
+    .then((res) => {
+      let data = getResult(res, options);
+      data = parseDoc(data, title);
+      if (callback) {
+        callback(null, data);
+      }
+      return data
+    })
+    .catch((e) => {
+      console.error(e);
+      if (callback) {
+        callback(e, null);
+      }
+      return null
+    })
 };
 
-var _fetch = fetch$2;
+var version = '9.1.0';
 
-var _version = '9.1.0';
-
-const unfetch = require$$0;
 /**
  * use the native client-side fetch function
  *
  * @private
  * @param {string} url the url that well be fetched
- * @param {RequestInit} opts the options for fetch
+ * @param {Object} opts the options for fetch
  * @returns {Promise<any>} the response from fetch
  */
-
 const request = function (url, opts) {
   return unfetch(url, opts).then(function (res) {
-    return res.json();
-  });
+    return res.json()
+  })
 };
 
-var fetch$1 = request;
-
-const fetch = _fetch;
-const version = _version;
-const Document = Document_1; //the main 'factory' exported method
-
+//the main 'factory' exported method
 const wtf = function (wiki, options) {
-  return new Document(wiki, options);
-}; //export classes for plugin development
-
+  return new Document(wiki, options)
+};
 
 const models = {
-  Doc: Document_1,
-  Section: Section_1,
-  Paragraph: Paragraph_1,
-  Sentence: Sentence_1,
-  Image: Image_1,
-  Infobox: Infobox_1,
-  Link: Link_1,
-  List: List_1,
-  Reference: Reference_1,
-  Table: Table_1,
-  Template: Template_1,
-  http: fetch$1,
-  wtf: wtf
+  Doc: Document,
+  Section,
+  Paragraph,
+  Sentence,
+  Image,
+  Infobox,
+  Link,
+  List,
+  Reference,
+  Table,
+  Template,
+  http: request,
+  wtf: wtf,
 };
-let templates = custom;
-let infoboxes = _infoboxes;
 
 wtf.fetch = function (title, options, cb) {
-  return fetch(title, options, cb);
+  return fetch(title, options, cb)
 };
-
 wtf.extend = function (fn) {
   fn(models, templates, infoboxes);
-  return this;
+  return this
 };
-
 wtf.plugin = wtf.extend;
 wtf.version = version;
-var src = wtf;
 
-export { src as default };
+export { wtf as default };

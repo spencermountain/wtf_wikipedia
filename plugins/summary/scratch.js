@@ -17,7 +17,7 @@ wtf.extend(require('./src').default)
 //     })
 //   })
 // })
-const dir = new URL('./', import.meta.url).pathname
+const dir = new URL('./', import.meta.url).pathname // eslint-disable-line
 let abs = path.join(dir, './tests/texts.txt')
 let arr = fs
   .readFileSync(abs)

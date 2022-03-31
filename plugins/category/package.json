@@ -19,7 +19,8 @@
     "build": "rollup -c"
   },
   "files": [
-    "builds"
+    "builds",
+    "src"
   ],
   "prettier": {
     "trailingComma": "none",

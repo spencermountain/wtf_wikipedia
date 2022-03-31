@@ -1,8 +1,11 @@
 <!--
 #### [unreleased ]
+-->
+#### 10.0.0 [April 2022]
+- **[breaking]** - drop ie11 & babel output
 - **[change]** - convert to esmodules
 - **[change]** - add blockquote template
--->
+update deps
 
 #### 9.1.0 [March 2022]
 - **[change]** - support inline templates inside section titles

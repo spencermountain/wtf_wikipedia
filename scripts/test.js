@@ -7,6 +7,7 @@ let fail = false
 sh.ls('./plugins').forEach(function (dir) {
   console.log(dir + ':')
   code = sh.exec(`tape "./plugins/${dir}/tests/*.test.js" | tap-dancer --color always`).code
+  console.log(code)
   if (code !== 0) {
     console.log(dir)
     fail = true

@@ -3,6 +3,17 @@
   "description": "parse wikiscript into json",
   "version": "9.1.0",
   "type": "module",
+  "main": "src/index.js",
+  "module": "builds/wtf_wikipedia.mjs",
+  "unpkg": "builds/wtf_wikipedia-client.min.js",
+  "browser": "builds/wtf_wikipedia-client.js",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./builds/wtf_wikipedia-client.cjs"
+    }
+  },
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "repository": {
     "type": "git",
@@ -11,11 +22,6 @@
   "man": [
     "./builds/man/wtf_wikipedia.1"
   ],
-  "main": "builds/wtf_wikipedia.js",
-  "module": "builds/wtf_wikipedia.mjs",
-  "unpkg": "builds/wtf_wikipedia-client.min.js",
-  "browser": "builds/wtf_wikipedia-client.js",
-  "sideEffects": false,
   "types": "types/index.d.ts",
   "scripts": {
     "build:all": "node ./scripts/buildAll.js",
@@ -40,14 +46,8 @@
     "wtf_wikipedia": "./cli.js"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12.0.0"
   },
-  "browserslist": [
-    "defaults",
-    "not ie <= 11",
-    "not op_mini all",
-    "maintained node versions"
-  ],
   "files": [
     "builds",
     "src",
@@ -71,17 +71,14 @@
     "path-exists-cli": "2.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.17.5",
-    "@babel/preset-env": "7.16.11",
-    "@rollup/plugin-babel": "5.3.1",
-    "@rollup/plugin-commonjs": "21.0.2",
+    "@rollup/plugin-commonjs": "21.0.3",
     "@rollup/plugin-node-resolve": "13.1.3",
     "amble": "1.3.0",
     "codecov": "3.8.3",
     "cross-env": "7.0.3",
-    "eslint": "8.10.0",
+    "eslint": "8.12.0",
     "eslint-plugin-compat": "4.0.2",
-    "eslint-plugin-regexp": "1.5.1",
+    "eslint-plugin-regexp": "1.6.0",
     "nyc": "^15.1.0",
     "recursive-install": "1.4.0",
     "rollup": "2.59.0",

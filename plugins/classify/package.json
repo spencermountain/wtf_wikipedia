@@ -20,7 +20,8 @@
     "schema": "node ./schema/_print.js"
   },
   "files": [
-    "builds"
+    "builds",
+    "src"
   ],
   "prettier": {
     "trailingComma": "es5",

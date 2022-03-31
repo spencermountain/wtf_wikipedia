@@ -5,8 +5,11 @@
     "browser": true,
     "node": true
   },
+  "globals": {
+    "URL": "writable"
+  },
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {}
   },

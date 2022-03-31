@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import wtf from '../../src/index.js'
 
-const dir = new URL('./', import.meta.url).pathname
+const dir = new URL('./', import.meta.url).pathname // eslint-disable-line
 
 function from_file(page, options) {
   let file = '../cache/' + page + '.txt'
