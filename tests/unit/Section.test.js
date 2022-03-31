@@ -2,17 +2,18 @@ import test from 'tape'
 import wtf from '../lib/index.js'
 import fs from 'fs'
 import path from 'path'
+const dir = new URL('./', import.meta.url).pathname
 
 //title
 test('Tile - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(1)
   t.equal(sec.title(), 'Introduction', 'the title should equal "Introduction"')
   t.end()
 })
 
 test('Tile - get - with no title', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(0)
   t.equal(sec.title(), '', 'the title should equal ""')
   t.end()
@@ -20,7 +21,7 @@ test('Tile - get - with no title', (t) => {
 
 //index
 test('index - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(1)
   t.equal(sec.index(), 1, 'the index should equal "1"')
   t.end()
@@ -28,14 +29,14 @@ test('index - get', (t) => {
 
 //indentation
 test('indentation - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(1)
   t.equal(sec.indentation(), 0, 'the index should equal "0"')
   t.end()
 })
 
 test('indentation - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(3)
   t.equal(sec.indentation(), 1, 'the index should equal "1"')
   t.end()
@@ -43,7 +44,7 @@ test('indentation - get', (t) => {
 
 //sentences
 test('sentences - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(3)
 
   const expected = [109, 229, 118, 120, 95, 94, 192, 107, 138, 143, 165, 155, 39, 100, 197, 101]
@@ -56,7 +57,7 @@ test('sentences - get', (t) => {
 })
 
 test('sentences - get - number', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(3)
   t.equal(sec.sentence(1).text().length, 229, 'the index should equal the expected')
   t.end()
@@ -64,7 +65,7 @@ test('sentences - get - number', (t) => {
 
 //paragraphs
 test('paragraphs - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(3)
   const expected = [675, 1141, 299]
   t.deepEqual(
@@ -76,7 +77,7 @@ test('paragraphs - get', (t) => {
 })
 
 test('paragraphs - get - number', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(3)
   t.equal(sec.paragraph(1).text().length, 1141, 'the paragraphs should equal the expected')
   t.end()
@@ -84,14 +85,14 @@ test('paragraphs - get - number', (t) => {
 
 //paragraph
 test('paragraphs - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(3)
   t.equal(sec.paragraph().text().length, 675, 'the paragraphs should equal the expected')
   t.end()
 })
 
 test('paragraphs - get - number', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(3)
   t.equal(sec.paragraph(1).text().length, 1141, 'the paragraphs should equal the expected')
   t.end()
@@ -99,7 +100,7 @@ test('paragraphs - get - number', (t) => {
 
 //links
 test('links - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(3)
   const expected = [12, 10, 19, 34, 30, 25, 19, 25, 7, 21]
   t.deepEqual(
@@ -111,14 +112,14 @@ test('links - get', (t) => {
 })
 
 test('links - get - number', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(3)
   t.equal(sec.link(1).href().length, 10, 'the links should equal the expected')
   t.end()
 })
 
 test('links - get - string', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Chemical-biology.txt'), 'utf-8')
   let sec = wtf(str).section(3)
   t.equal(sec.links('protein sequences')[0].href().length, 19, 'the links should equal the expected')
   t.end()
@@ -126,7 +127,7 @@ test('links - get - string', (t) => {
 
 //tables
 test('tables - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', '2008-British-motorcycle-Grand-Prix.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', '2008-British-motorcycle-Grand-Prix.txt'), 'utf-8')
   let sec = wtf(str).section(1)
   const expected = [18]
   t.deepEqual(
@@ -138,7 +139,7 @@ test('tables - get', (t) => {
 })
 
 test('tables - get - number', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', '2008-British-motorcycle-Grand-Prix.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', '2008-British-motorcycle-Grand-Prix.txt'), 'utf-8')
   let sec = wtf(str).section(1)
   t.equal(sec.table(0).keyValue().length, 18, 'the tables should equal the expected')
   t.end()
@@ -146,7 +147,7 @@ test('tables - get - number', (t) => {
 
 //templates
 test('templates - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
   const expected = [148, 195, 54, 49, 727, 176, 182, 399, 70, 97, 147, 78, 23, 18, 18, 21]
   t.deepEqual(
@@ -158,14 +159,14 @@ test('templates - get', (t) => {
 })
 
 test('templates - get - number', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
   t.equal(JSON.stringify(sec.template(1).json()).length, 195, 'the templates should equal the expected')
   t.end()
 })
 
 test('templates - get - string', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
   t.equal(JSON.stringify(sec.templates('coord')[0].json()).length, 70, 'the templates should equal the expected')
   t.end()
@@ -173,7 +174,7 @@ test('templates - get - string', (t) => {
 
 //infoboxes
 test('infoboxes - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
   const expected = [33]
   t.deepEqual(
@@ -185,7 +186,7 @@ test('infoboxes - get', (t) => {
 })
 
 test('infoboxes - get - number', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
   t.equal(JSON.stringify(sec.infobox()).length, 33, 'the infoboxes should equal the expected')
   t.end()
@@ -193,7 +194,7 @@ test('infoboxes - get - number', (t) => {
 
 //coordinates
 test('coordinates - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
   const expected = [70]
   t.deepEqual(
@@ -205,7 +206,7 @@ test('coordinates - get', (t) => {
 })
 
 test('coordinates - get - number', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
   t.equal(JSON.stringify(sec.coordinate()).length, 70, 'the coordinates should equal the expected')
   t.end()
@@ -213,7 +214,7 @@ test('coordinates - get - number', (t) => {
 
 //lists
 test('lists - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section('See also')
   const expected = [22]
   t.deepEqual(
@@ -225,7 +226,7 @@ test('lists - get', (t) => {
 })
 
 test('lists - get - number', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section('See also')
   t.equal(JSON.stringify(sec.list().lines()).length, 22, 'the lists should equal the expected')
   t.end()
@@ -235,7 +236,7 @@ test('lists - get - number', (t) => {
 
 //images
 test('images - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section('Background')
   const expected = [124, 79, 89]
   t.deepEqual(
@@ -247,14 +248,14 @@ test('images - get', (t) => {
 })
 
 test('images - get - number', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section('Background')
   t.equal(sec.image().url().length, 124, 'the images should equal the expected')
   t.end()
 })
 
 test('images - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
   const expected = []
   t.deepEqual(
@@ -267,7 +268,7 @@ test('images - get', (t) => {
 
 //references
 test('references - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
   const expected = '15,104,58,38,50,0,0,0,30,33,34,0,71,0,56,85,16,59,64,29,0,0,0,0,0,26,60,0,35,87,90,42,0,0'
   t.equal(
@@ -282,7 +283,7 @@ test('references - get', (t) => {
 })
 
 test('references - get - number', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
   t.equal(sec.reference().title().length, 15, 'the references should equal the expected')
   t.end()
@@ -290,7 +291,7 @@ test('references - get - number', (t) => {
 
 //citations -- alias of references
 test('references - get', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
   const expected = '15,104,58,38,50,0,0,0,30,33,34,0,71,0,56,85,16,59,64,29,0,0,0,0,0,26,60,0,35,87,90,42,0,0'
   t.equal(
@@ -305,7 +306,7 @@ test('references - get', (t) => {
 })
 
 test('citations - get - number', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section()
   t.equal(sec.citation().title().length, 15, 'the citations should equal the expected')
   t.end()

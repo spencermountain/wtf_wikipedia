@@ -3,13 +3,14 @@ import wtf from './_lib.js'
 import fs from 'fs'
 import path from 'path'
 
+const dir = new URL('./', import.meta.url).pathname
+
 function from_file(page) {
   let file = '../../../tests/cache/' + page + '.txt'
-  file = path.join(__dirname, file)
+  file = path.join(dir, file)
   const str = fs.readFileSync(file, 'utf-8')
   return wtf(str)
 }
-module.exports = from_file
 
 const pages = [
   '2008-British-motorcycle-Grand-Prix',

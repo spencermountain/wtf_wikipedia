@@ -1,7 +1,7 @@
-const unfetch = require('isomorphic-unfetch')
-const makeUrl = require('../../../../src/_fetch/makeUrl').default
-const makeHeaders = require('../../../../src/_fetch/_headers').default
-const parse = require('./parse')
+import unfetch from 'isomorphic-unfetch'
+import makeUrl from '../../../../src/_fetch/makeUrl.js'
+import makeHeaders from '../../../../src/_fetch/_headers.js'
+import parse from './parse.js'
 
 const methodsProps = { // the accepted methdos and the iiprop (imageinfo prop (URL parameter)) needed for each method
   license: "extmetadata",
@@ -116,4 +116,4 @@ function fetch(methods = "", images = []) {
       console.error(e)
     })
 }
-module.exports = fetch
+export default fetch

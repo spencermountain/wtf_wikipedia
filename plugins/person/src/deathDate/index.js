@@ -1,7 +1,7 @@
-const byInfobox = require('../getInfobox')
-const bySentence = require('../getSentence')
-const byCategory = require('./byCategory')
-const parseDate = require('../parseDate')
+import byInfobox from '../getInfobox.js'
+import bySentence from '../getSentence.js'
+import byCategory from './byCategory.js'
+import parseDate from '../parseDate.js'
 
 const deathDate = function (doc) {
   let res = byInfobox(doc, 'death_date')
@@ -21,4 +21,4 @@ const deathDate = function (doc) {
   }
   return null
 }
-module.exports = deathDate
+export default deathDate

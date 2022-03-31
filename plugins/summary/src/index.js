@@ -1,7 +1,7 @@
-const nlp = require('compromise')
-const fromTemplate = require('./template')
-const fromSentence = require('./sentence')
-const fromCategory = require('./category')
+import nlp from 'compromise'
+import fromTemplate from './template/index.js'
+import fromSentence from './sentence/index.js'
+import fromCategory from './category/index.js'
 
 const defaults = {
   article: true,
@@ -76,4 +76,4 @@ const plugin = function (models) {
     return 'Present'
   }
 }
-module.exports = plugin
+export default plugin

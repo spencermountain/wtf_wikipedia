@@ -1,4 +1,4 @@
-const pad = require('./_lib/pad')
+import pad from './_lib/pad.js'
 /* this is a markdown table:
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
@@ -47,4 +47,4 @@ const doTable = function (options) {
     .join('\n')
   return md + '\n'
 }
-module.exports = doTable
+export default doTable

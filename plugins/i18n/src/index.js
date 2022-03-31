@@ -1,24 +1,45 @@
+import citation from './data/citation.js'
+import coord from './data/coord.js'
+import flag from './data/flag.js'
+import flagicon from './data/flagicon.js'
+import formatnum from './data/formatnum.js'
+import ipa from './data/ipa.js'
+import isbn from './data/isbn.js'
+import main from './data/main.js'
+import portal from './data/portal.js'
+import reflist from './data/reflist.js'
+import sfn from './data/sfn.js'
+import small from './data/small.js'
+import persondata from './data/persondata.js'
+import taxobox from './data/taxobox.js'
+import birthDateAge from './data/birth_date_and_age.js'
+import citeBook from './data/cite_book.js'
+import citeJournal from './data/cite_journal.js'
+import citeWeb from './data/cite_web.js'
+import commonsCat from './data/commons_cat.js'
+import startDate from './data/start_date.js'
+
 let mapping = {
-  'birth date and age': require('./data/birth_date_and_age'),
-  citation: require('./data/citation'),
-  'cite book': require('./data/cite_book'),
-  'cite journal': require('./data/cite_journal'),
-  'cite web': require('./data/cite_web'),
-  'commons cat': require('./data/commons_cat'),
-  coord: require('./data/coord'),
-  flag: require('./data/flag'),
-  flagicon: require('./data/flagicon'),
-  formatnum: require('./data/formatnum'),
-  ipa: require('./data/ipa'),
-  isbn: require('./data/isbn'),
-  main: require('./data/main'),
-  portal: require('./data/portal'),
-  reflist: require('./data/reflist'),
-  sfn: require('./data/sfn'),
-  small: require('./data/small'),
-  'start date': require('./data/start_date'),
-  persondata: require('./data/persondata'),
-  taxobox: require('./data/taxobox')
+  citation,
+  coord,
+  flag,
+  flagicon,
+  formatnum,
+  ipa,
+  isbn,
+  main,
+  portal,
+  reflist,
+  sfn,
+  small,
+  persondata,
+  taxobox,
+  'birth date and age': birthDateAge,
+  'cite book': citeBook,
+  'cite journal': citeJournal,
+  'cite web': citeWeb,
+  'commons cat': commonsCat,
+  'start date': startDate,
 }
 
 const plugin = function (models, templates) {
@@ -31,4 +52,4 @@ const plugin = function (models, templates) {
     })
   })
 }
-module.exports = plugin
+export default plugin

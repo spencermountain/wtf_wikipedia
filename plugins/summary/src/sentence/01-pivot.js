@@ -30,4 +30,4 @@ const findPivot = function (s) {
     after: cleanUp(f.eq(2))
   }
 }
-module.exports = findPivot
+export default findPivot

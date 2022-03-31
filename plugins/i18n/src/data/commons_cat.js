@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'catcómhaoin',
   'categorìa ëd commons',
   'comincat',

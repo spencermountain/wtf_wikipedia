@@ -11,4 +11,4 @@ const byCategory = function (doc) {
   }
   return null
 }
-module.exports = byCategory
+export default byCategory

@@ -7,7 +7,7 @@
  */
 const parseImage = function (fetchedImage) {
   // if the data is missing return empty object
-  if (Object.hasOwn(fetchedImage, 'missing')) {
+  if (fetchedImage.hasOwnProperty('missing')) {
     return {}
   }
 
@@ -15,14 +15,14 @@ const parseImage = function (fetchedImage) {
   const url = fetchedImage.imageinfo[0].url // call to iiprop "url"
   return { // add the data for the properties that exists
     ...(metaData && {
-      licenseRes:{
+      licenseRes: {
         license: metaData.LicenseShortName && metaData.LicenseShortName.value || "",
         artist: metaData.Artist && metaData.Artist.value || "",
         credit: metaData.Credit && metaData.Credit.value || "",
         attributionRequired: metaData.AttributionRequired && metaData.AttributionRequired.value || ""
       }
     }),
-    ...(url && {existsRes: true})
+    ...(url && { existsRes: true })
   }
 }
 /**
@@ -59,4 +59,4 @@ const parseFetched = function (titles, fetched, isDoc) {
   // a single image
   return parseImage(Object.values(fetched.query.pages)[0])
 }
-module.exports = parseFetched
+export default parseFetched

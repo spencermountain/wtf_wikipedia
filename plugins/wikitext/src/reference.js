@@ -11,4 +11,4 @@ const toWiki = function () {
   })
   return `<ref>{{${type}${data}}}</ref>`
 }
-module.exports = toWiki
+export default toWiki

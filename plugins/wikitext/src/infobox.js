@@ -9,4 +9,4 @@ const toWiki = function () {
   text += '}}\n'
   return text
 }
-module.exports = toWiki
+export default toWiki

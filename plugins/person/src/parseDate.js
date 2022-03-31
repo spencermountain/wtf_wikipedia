@@ -1,15 +1,19 @@
-const spacetime = require('spacetime')
+import spacetime from 'spacetime'
+// regexes
+const regJustYear = /^(?:c\.\s*)?(\d+)\s*(bc|bce|ad|ce)?$/i
+const regInaccurate = /((\d+)\s*(or|–|\/)\s*(\d+))\s*(?:bc|bce|ad|ce)?\b/gi
+const regRangeSeparator = /–/
+const regUptoSecondMill = /\b(\d{1,3})\s*(bc|bce|ad|ce)?$|\b(\d+)\s*(bc|bce)$/i
+const regBCE = /(\d+)\s*(bc|bce)\b/i
+
+const findAverage = function (arr) {
+  return arr.reduce((partialSum, n) => partialSum + n) / arr.length
+}
 
 const parseDate = function (str) {
   if (!str) {
     return null
   }
-  // regexes
-  const regJustYear = /^(?:c\.\s*)?(\d+)\s*(bc|bce|ad|ce)?$/i
-  const regInaccurate = /((\d+)\s*(or|–|\/)\s*(\d+))\s*(?:bc|bce|ad|ce)?\b/gi
-  const regRangeSeparator = /–/
-  const regUptoSecondMill = /\b(\d{1,3})\s*(bc|bce|ad|ce)?$|\b(\d+)\s*(bc|bce)$/i
-  const regBCE = /(\d+)\s*(bc|bce)\b/i
   // remove parentheses
   str = str.replace(/\(.*\)/, '')
   str = str.trim()
@@ -17,10 +21,6 @@ const parseDate = function (str) {
   let inaccurateOriginal
   if (str.match(regInaccurate)) {
     inaccurateOriginal = str // the original str will be added to the final result
-    // finds the average
-    function average(arr) {
-      return arr.reduce((partialSum, n) => partialSum + n) / arr.length
-    }
     // replace number pairs with a single value
     const inaccurate = [...str.matchAll(regInaccurate)]
     for (const arr of inaccurate) {
@@ -31,25 +31,28 @@ const parseDate = function (str) {
       onlyNumbers = onlyNumbers.map(i => Number(i))
       // if it's a range, replace with the average rounded down, otherwise with the minimum
       if (arr[3].match(regRangeSeparator)) {
-        const ave = average(onlyNumbers)
+        const avg = findAverage(onlyNumbers)
         if (arr[0].match(regBCE)) {
-          str = str.replace(arr[1], Math.ceil(ave))
+          str = str.replace(arr[1], Math.ceil(avg))
+        } else {
+          str = str.replace(arr[1], Math.floor(avg))
         }
-        else {
-          str = str.replace(arr[1], Math.floor(ave))
-        }
-      }
-      else if (arr[0].match(regBCE)) {
+      } else if (arr[0].match(regBCE)) {
         str = str.replace(arr[1], Math.max(...onlyNumbers))
-      }
-      else {
+      } else {
         str = str.replace(arr[1], Math.min(...onlyNumbers))
       }
     }
   }
   // just the year
   const justYear = str.match(regJustYear)
-  let res = {}
+  // parse the full date; return null if unsuccessful
+  let s = spacetime(str)
+  let res = {
+    year: s.year(),
+    month: s.month(),
+    date: s.date()
+  }
   if (justYear) {
     if (inaccurateOriginal) {
       Object.defineProperty(res, "originalDate", {
@@ -58,8 +61,7 @@ const parseDate = function (str) {
     }
     if (str.match(regBCE)) {
       res.year = -parseInt(justYear[1], 10)
-    }
-    else {
+    } else {
       res.year = parseInt(justYear[1], 10)
     }
     return res
@@ -73,13 +75,7 @@ const parseDate = function (str) {
     // assign the real year
     year = UptoSecondMill.input.match(regBCE) ? -Number(UptoSecondMill[1]) : Number(UptoSecondMill[1])
   }
-  // parse the full date; return null if unsuccessful
-  let s = spacetime(str)
-  res = {
-    year: s.year(),
-    month: s.month(),
-    date: s.date()
-  }
+
   const epoch = { // epoch is returned when unsuccessful 
     year: 1970,
     month: 0,
@@ -96,4 +92,4 @@ const parseDate = function (str) {
   }
   return res
 }
-module.exports = parseDate
+export default parseDate

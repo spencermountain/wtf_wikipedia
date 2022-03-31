@@ -1,4 +1,4 @@
-const parse = require('../../../src/template/parse/toJSON').default
+import parse from '../../../src/template/parse/toJSON/index.js'
 // const strip = require('./_parsers/_strip');
 
 //wiktionary... who knows. we should atleast try.
@@ -337,4 +337,4 @@ templates.lbl = templates.label
 templates['t+'] = templates.t
 templates['tt+'] = templates.t
 
-module.exports = templates
+export default templates

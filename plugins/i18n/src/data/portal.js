@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   // 'atari',
   'awwur',
   'chủ đề',

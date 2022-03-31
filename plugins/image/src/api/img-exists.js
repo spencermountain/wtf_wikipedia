@@ -1,4 +1,4 @@
-const unfetch = require('isomorphic-unfetch')
+import unfetch from 'isomorphic-unfetch'
 
 // test if the image url exists or not
 const imgExists = function (callback) {
@@ -27,4 +27,4 @@ const imgExists = function (callback) {
       return null
     })
 }
-module.exports = imgExists
+export default imgExists

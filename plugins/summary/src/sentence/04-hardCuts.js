@@ -84,4 +84,4 @@ const hardCuts = function (s) {
   // }
   return s
 }
-module.exports = hardCuts
+export default hardCuts

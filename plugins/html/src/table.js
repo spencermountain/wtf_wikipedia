@@ -28,4 +28,4 @@ const toHtml = function (options) {
   html += '</table>\n'
   return html
 }
-module.exports = toHtml
+export default toHtml

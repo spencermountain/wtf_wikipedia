@@ -1,4 +1,4 @@
-const mapping = require('./_lib/_infoboxes')
+import mapping from './_lib/_infoboxes.js'
 
 const byInfobox = function (doc, prop) {
   let infoboxes = doc.infoboxes()
@@ -17,4 +17,4 @@ const byInfobox = function (doc, prop) {
   }
   return null
 }
-module.exports = byInfobox
+export default byInfobox

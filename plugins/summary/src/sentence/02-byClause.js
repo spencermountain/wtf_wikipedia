@@ -10,4 +10,4 @@ const byClause = function (s) {
 
   return s
 }
-module.exports = byClause
+export default byClause

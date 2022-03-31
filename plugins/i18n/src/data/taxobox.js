@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'bảng phân loại',
   'biotakso infokaste',
   'blwch tacson',

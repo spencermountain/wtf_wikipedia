@@ -47,4 +47,4 @@ const doTable = function (options) {
   out += '\n\\vspace*{0.3cm}\n\n'
   return out
 }
-module.exports = doTable
+export default doTable

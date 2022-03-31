@@ -1,4 +1,4 @@
-const fetch = require('./fetch')
+import fetch from './fetch.js'
 
 /**
  * The old "images" method
@@ -32,10 +32,10 @@ const images = function (oldMethod) {
    */
 
   const newMethod = function (clue) { // "this" refers to the document
-    
+
     // adds userAgent to each image, to use for methods that call the API.
     const addUserAgent = function (imgs) {
-      return imgs.map( i => {
+      return imgs.map(i => {
         i.data['_userAgent'] = this['_userAgent']
         return i
       })
@@ -56,7 +56,7 @@ const images = function (oldMethod) {
         return fetch.call(this, clue.batch, imagesArr).then(methodsRes => {
           let methodsRedefined = false
           imagesArr = imagesArr.map((image, ind) => {
-            
+
             // add the results to plugin data
             image.data.pluginData = {
               ...image.data.pluginData,
@@ -69,7 +69,7 @@ const images = function (oldMethod) {
                 methodsRedefined = true
                 const imageProto = Object.getPrototypeOf(image)
                 Object.keys(image.data.pluginData).forEach(k => {
-                  const methodName = k.slice(0,-3) // each key is like "<methodName>Res"
+                  const methodName = k.slice(0, -3) // each key is like "<methodName>Res"
                   imageProto[methodName] = function () {
                     // return a Promise for consistency
                     return Promise.resolve(this.data.pluginData[k] || null)
@@ -89,4 +89,4 @@ const images = function (oldMethod) {
   }
   return newMethod
 }
-module.exports = images
+export default images

@@ -6,4 +6,4 @@ const fromTemplate = function (doc) {
   }
   return null
 }
-module.exports = fromTemplate
+export default fromTemplate

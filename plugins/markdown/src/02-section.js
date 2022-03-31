@@ -61,4 +61,4 @@ const doSection = function (options) {
 
   return md
 }
-module.exports = doSection
+export default doSection

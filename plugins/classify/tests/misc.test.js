@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 let dir = new URL('./', import.meta.url).pathname
 
-test('classify-test', async function (t) {
+test('classify-test', function (t) {
   let arr = [
     ['2008-British-motorcycle-Grand-Prix', 'Event'],
     ['Allen-R.-Morris', 'Person'],

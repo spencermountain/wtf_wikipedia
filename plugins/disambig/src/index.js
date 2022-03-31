@@ -90,4 +90,4 @@ const addMethod = function (models) {
   // alias
   models.Doc.prototype.disambig = models.Doc.prototype.disambiguation
 }
-module.exports = addMethod
+export default addMethod

@@ -9,4 +9,4 @@ const lastTry = function (s) {
   s.remove('^(family|clade|genus|species|order) of')
   return s
 }
-module.exports = lastTry
+export default lastTry

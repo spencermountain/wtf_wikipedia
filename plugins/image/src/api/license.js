@@ -1,4 +1,4 @@
-const fetch = require('./fetch')
+import fetch from './fetch.js'
 
 /**
  * Returns the license information for the image.
@@ -9,4 +9,4 @@ const license = async function () {
   await fetch.call(this, "license")
   return this.data.pluginData.licenseRes || null
 }
-module.exports = license
+export default license

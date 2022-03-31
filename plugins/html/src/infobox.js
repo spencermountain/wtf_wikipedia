@@ -49,4 +49,4 @@ const infobox = function (options) {
   html += '</table>\n'
   return html
 }
-module.exports = infobox
+export default infobox

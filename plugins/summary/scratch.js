@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const wtf = require('../../src/index').default
-wtf.extend(require('./src'))
+wtf.extend(require('./src').default)
 
 // `{{About|the British mathematician  John H. Conway |the American mathematician| John B. Conway|other people named John Conway|John Conway (disambiguation){{!}}John Conway}}`
 
@@ -17,8 +17,8 @@ wtf.extend(require('./src'))
 //     })
 //   })
 // })
-
-let abs = path.join(__dirname, './tests/texts.txt')
+const dir = new URL('./', import.meta.url).pathname
+let abs = path.join(dir, './tests/texts.txt')
 let arr = fs
   .readFileSync(abs)
   .toString()

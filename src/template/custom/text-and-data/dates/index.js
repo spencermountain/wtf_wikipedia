@@ -165,8 +165,8 @@ export default {
   // https://en.wikipedia.org/wiki/Template:MILLENNIUM
   millennium: (tmpl) => {
     let obj = parse(tmpl, ['year'])
-    let year = Number(obj.year)
-    year = Number(year / 1000) + 1
+    let year = parseInt(obj.year, 10)
+    year = Math.floor(year / 1000) + 1
     if (obj.abbr && obj.abbr === 'y') {
       if (year < 0) {
         return `${toOrdinal(Math.abs(year))} BC`

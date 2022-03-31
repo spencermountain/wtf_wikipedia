@@ -1,4 +1,4 @@
-const byInfobox = require('../getInfobox')
+import byInfobox from '../getInfobox.js'
 
 const getNationality = function (doc) {
   let res = byInfobox(doc, 'nationality')
@@ -7,4 +7,4 @@ const getNationality = function (doc) {
   }
   return null
 }
-module.exports = getNationality
+export default getNationality

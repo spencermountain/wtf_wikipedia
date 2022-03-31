@@ -13,4 +13,4 @@ const plugin = (models, templates, infoboxes) => {
   //   return
   // }
 }
-module.exports = plugin
+export default plugin

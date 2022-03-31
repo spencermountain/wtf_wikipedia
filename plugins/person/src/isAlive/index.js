@@ -1,5 +1,5 @@
-const byCat = require('./byCategory')
-const byTemplate = require('./byTemplate')
+import byCat from './byCategory.js'
+import byTemplate from './byTemplate.js'
 
 // maximum age of a person
 let d = new Date()
@@ -33,4 +33,4 @@ const isAlive = function (doc) {
   }
   return null
 }
-module.exports = isAlive
+export default isAlive

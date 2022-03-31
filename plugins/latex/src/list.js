@@ -7,4 +7,4 @@ const toLatex = function (options) {
   out += '\\end{itemize}\n'
   return out
 }
-module.exports = toLatex
+export default toLatex

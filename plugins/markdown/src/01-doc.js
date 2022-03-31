@@ -46,4 +46,4 @@ const toMarkdown = function (options) {
   }
   return md
 }
-module.exports = toMarkdown
+export default toMarkdown

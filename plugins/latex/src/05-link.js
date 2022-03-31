@@ -4,4 +4,4 @@ const toLatex = function () {
   let str = this.text() || this.page()
   return '\\href{' + href + '}{' + str + '}'
 }
-module.exports = toLatex
+export default toLatex

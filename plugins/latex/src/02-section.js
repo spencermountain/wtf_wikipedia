@@ -74,4 +74,4 @@ const doSection = function (options) {
   //out = '\n% BEGIN' + title_tag + out + '\n% END' + title_tag;
   return out
 }
-module.exports = doSection
+export default doSection

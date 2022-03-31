@@ -93,15 +93,15 @@ export default {
   decade: (tmpl) => {
     let obj = parse(tmpl, ['year'])
     let year = Number(obj.year)
-    year = Number(year / 10) * 10 // round to decade
+    year = Math.floor(year / 10) * 10 // round to decade
     return `${year}s`
   },
 
   // https://en.wikipedia.org/wiki/Template:Century
   century: (tmpl) => {
     let obj = parse(tmpl, ['year'])
-    let year = Number(obj.year)
-    year = Number(year / 100) + 1
+    let year = parseInt(obj.year, 10)
+    year = Math.floor(year / 100) + 1
     return `${year}`
   },
 

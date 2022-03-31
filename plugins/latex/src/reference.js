@@ -3,4 +3,4 @@ const toLatex = function () {
   let str = this.title()
   return '⌃ ' + str + '\n'
 }
-module.exports = toLatex
+export default toLatex

@@ -19,4 +19,4 @@ const toMarkdown = function () {
   }
   return ''
 }
-module.exports = toMarkdown
+export default toMarkdown

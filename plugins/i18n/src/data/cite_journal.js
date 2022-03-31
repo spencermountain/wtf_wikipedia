@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'article',
   'chú thích tạp chí',
   'cita pubblicazione',

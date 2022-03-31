@@ -6,4 +6,4 @@ const toMarkdown = function () {
   let str = this.text() || this.page()
   return '[' + str + '](' + href + ')'
 }
-module.exports = toMarkdown
+export default toMarkdown

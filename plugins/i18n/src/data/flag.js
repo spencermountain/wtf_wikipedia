@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'al2',
   'bandeira',
   // 'bandera',
