@@ -1,10 +1,16 @@
 {
   "name": "wtf-plugin-i18n",
   "description": "i18n plugin for wtf_wikipedia",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "type": "module",
-  "main": "./builds/wtf-plugin-i18n.js",
+  "main": "./src/index.js",
   "unpkg": "./builds/wtf-plugin-i18n.min.js",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./builds/wtf-plugin-i18n.cjs"
+    }
+  },
   "module": "./builds/wtf-plugin-i18n.mjs",
   "author": "Spencer Kelly (spencermountain)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/i18n#readme",
