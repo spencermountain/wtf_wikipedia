@@ -38,6 +38,18 @@ const wtf = require('wtf_wikipedia')
 wtf.extend(require('wtf-plugin-api'))
 ```
 
+```html
+<script src="https://unpkg.com/wtf_wikipedia"></script>
+<script src="https://unpkg.com/wtf-plugin-api"></script>
+<script defer>
+  wtf.plugin(window.wtfApi)
+  wtf.fetch('Radiohead', function (err, doc) {
+    console.log(doc.getRedirects())
+  })
+</script>
+```
+
+
 ## Page Redirects
 [Redirects](https://en.wikipedia.org/wiki/Wikipedia:Redirect) are an assortment of alternative names and mis-spellings for a wikipedia page.
 They can be a rich source of data. On wikipedia, you can see all the redirects for a page [here](https://en.wikipedia.org/w/index.php?title=Special%3AWhatLinksHere&hidetrans=1&hidelinks=1&target=Toronto+Raptors&namespace=)

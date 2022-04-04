@@ -19,7 +19,9 @@
   <code>npm install wtf-plugin-html</code>
 </div>
 
-Output all, or part of a wikipedia article in HTML.
+Output all, or part of a wikipedia article in HTML. 
+
+This plugin can reliably convert links, bolds and italics to html - and it tries its best at more complex output like tables, lists, and templates.
 
 ```js
 const wtf = require('wtf_wikipedia')
@@ -30,6 +32,17 @@ doc.html()
 // 'hello <a href="./world">world</a>'
 ```
 
-work-in-progress
+```html
+<script src="https://unpkg.com/wtf_wikipedia"></script>
+<script src="https://unpkg.com/wtf-plugin-html"></script>
+<script defer>
+  wtf.plugin(window.wtfHtml)
+  wtf.fetch('Radiohead', function (err, doc) {
+    console.log(doc.sentences()[0].html())
+    // <b>Radiohead</b> are an English <a class="link" href="./Rock_music">rock</a> band ...
+  })
+</script>
+```
+
 
 MIT

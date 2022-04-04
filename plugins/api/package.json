@@ -6,8 +6,13 @@
   "main": "./builds/wtf-plugin-api.js",
   "unpkg": "./builds/wtf-plugin-api.min.js",
   "module": "./builds/wtf-plugin-api.mjs",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./builds/wtf_wikipedia.cjs"
+    }
+  },
   "author": "Spencer Kelly (spencermountain)",
-  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/api#readme",
   "repository": {
     "type": "git",
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"

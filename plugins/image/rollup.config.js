@@ -22,15 +22,7 @@ export default [
   // === .js ===
   {
     input: 'src/index.js',
-    output: [
-      {
-        banner: banner,
-        file: `builds/${name}.js`,
-        format: 'umd',
-        name: 'wtfImage',
-        sourcemap: true
-      }
-    ],
+    output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfImage', sourcemap: false }],
     plugins: [
       nodeResolve(),
       commonjs({ requireReturnsDefault: "auto" })
@@ -39,15 +31,7 @@ export default [
   // ===  min.js ===
   {
     input: 'src/index.js',
-    output: [
-      {
-        banner: banner,
-        file: `builds/${name}.min.js`,
-        format: 'umd',
-        name: 'wtfImage',
-        sourcemap: false
-      }
-    ],
+    output: [{ banner: banner, file: `builds/${name}.min.js`, format: 'umd', name: 'wtfImage', sourcemap: false }],
     plugins: [
       nodeResolve(),
       commonjs({ requireReturnsDefault: "auto" }),

@@ -19,9 +19,54 @@
   <code>npm install wtf-plugin-disambig</code>
 </div>
 
-disambig-details plugin for wtf_wikipedia
+a plugin for parsing [disambiguation pages](https://en.wikipedia.org/wiki/Wikipedia:Disambiguation) in wikipedia.
+
+```js
+const wtf = require('wtf_wikipedia')
+wtf.extend(require('wtf-plugin-disambig'))
+
+wtf.fetch('Raptor').then((doc) => {
+  let res = doc.disambig()
+  /*
+{
+  text: 'Raptor',
+  main: null,
+  pages: [
+    {
+      link: 'Raptor (bird)',
+      desc: 'or bird of prey, a bird that primarily hunts and feeds on vertebrates',
+      section: 'Animals'
+    },
+    {
+      link: 'Raptor (film)',
+      desc: 'a 2001 film',
+      section: 'Film and television'
+    },
+  ...
+  ]
+}
+*/
+```
 
 
-work-in-progress
+```html
+<script src="https://unpkg.com/wtf_wikipedia"></script>
+<script src="https://unpkg.com/wtf-plugin-disambig"></script>
+<script defer>
+  wtf.plugin(window.wtfDisambig)
+  wtf.fetch('spencer').then((doc) => {
+    let res = doc.disambig()
+    console.log(res)
+  })
+  /*{
+    text: 'Spencer',
+    main: null,
+    pages: [
+      { link: 'Spencer, Missouri', desc: '', section: 'United States' },
+      { link: 'Spencer (film)',  desc: 'a 2021 drama film about Princess Diana',  section: 'Other uses'   }
+    ]
+  }*/
+</script>
+```
 
 MIT

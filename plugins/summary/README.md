@@ -48,6 +48,20 @@ wtf.extend(require('wtf-plugin-summary'))
 })()
 ```
 
+```html
+<script src="https://unpkg.com/wtf_wikipedia"></script>
+<script src="https://unpkg.com/wtf-plugin-summary"></script>
+<script defer>
+  wtf.plugin(window.wtfSummary)
+  wtf.fetch('Elvis Presley').then((doc) => {
+    console.log(doc.summary())
+    // 'American singer and actor'
+  })
+</script>
+```
+
+---
+
 The idea is that every output is a short, uncomplicated 'is-a' text, and can be treated grammatically like:
 
 ```js

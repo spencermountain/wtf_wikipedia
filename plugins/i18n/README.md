@@ -34,6 +34,19 @@ doc.references().length
 // 1
 ```
 
+
+
+```html
+<script src="https://unpkg.com/wtf_wikipedia"></script>
+<script src="https://unpkg.com/wtf-plugin-i18n"></script>
+<script defer>
+  wtf.plugin(window.wtfI18n)
+  wtf.fetch('https://de.wikipedia.org/wiki/Hamburg').then((doc) => {
+    console.log(doc.coordinates())
+  })
+</script>
+```
+
 work-in-progress
 
 MIT

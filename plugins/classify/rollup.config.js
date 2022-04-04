@@ -20,15 +20,7 @@ export default [
   // === .js ===
   {
     input: 'src/index.js',
-    output: [
-      {
-        banner: banner,
-        file: `builds/${name}.js`,
-        format: 'umd',
-        name: 'wtfClassify',
-        sourcemap: true,
-      },
-    ],
+    output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfClassify', sourcemap: false }],
     plugins: [
       commonjs()
     ],
@@ -36,15 +28,7 @@ export default [
   // ===  min.js ===
   {
     input: 'src/index.js',
-    output: [
-      {
-        banner: banner,
-        file: `builds/${name}.min.js`,
-        format: 'umd',
-        name: 'wtfClassify',
-        sourcemap: false,
-      },
-    ],
+    output: [{ banner: banner, file: `builds/${name}.min.js`, format: 'umd', name: 'wtfClassify', sourcemap: false }],
     plugins: [
       commonjs(),
       terser(),

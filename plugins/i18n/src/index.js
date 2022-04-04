@@ -42,7 +42,7 @@ let mapping = {
   'start date': startDate,
 }
 
-const plugin = function (models, templates) {
+const plugin = function (_models, templates) {
   Object.keys(mapping).forEach((k) => {
     mapping[k].forEach((name) => {
       // create template parser with alias

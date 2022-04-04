@@ -30,6 +30,17 @@ doc.markdown()
 // 'hello <a href="./world">world</a>'
 ```
 
+```html
+<script src="https://unpkg.com/wtf_wikipedia"></script>
+<script src="https://unpkg.com/wtf-plugin-markdown"></script>
+<script defer>
+  wtf.plugin(window.wtfMarkdown)
+  wtf.fetch('Hamburg').then((doc) => {
+    console.log(doc.sentences()[0].markdown())
+    // **Hamburg** is the [second-largest city](./List_of_cities_in_Germany_by_population) in [Germany](./Germany) ...
+  })
+</script>
+```
 work-in-progress
 
 MIT
