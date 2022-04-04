@@ -1,11 +1,17 @@
 {
   "name": "wtf-plugin-wikitext",
   "description": "wikitext output plugin for wtf_wikipedia",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "type": "module",
-  "main": "./builds/wtf-plugin-wikitext.js",
+  "main": "./src/index.js",
   "unpkg": "./builds/wtf-plugin-wikitext.min.js",
   "module": "./builds/wtf-plugin-wikitext.mjs",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./builds/wtf-plugin-wikitext.cjs"
+    }
+  },
   "author": "Spencer Kelly (spencermountain)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/wikitext#readme",
   "repository": {
