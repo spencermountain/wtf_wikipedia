@@ -1,11 +1,17 @@
 {
   "name": "wtf-plugin-markdown",
   "description": "markdown plugin for wtf_wikipedia",
-  "version": "0.2.3",
+  "version": "1.0.0",
   "type": "module",
-  "main": "./builds/wtf-plugin-markdown.js",
+  "main": "./src/index.js",
   "unpkg": "./builds/wtf-plugin-markdown.min.js",
   "module": "./builds/wtf-plugin-markdown.mjs",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./builds/wtf-plugin-markdown.cjs"
+    }
+  },
   "author": "Spencer Kelly (spencermountain)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/markdown#readme",
   "repository": {
