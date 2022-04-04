@@ -1,11 +1,10 @@
-import parse from '../../../src/template/parse/toJSON/index.js'
 // const strip = require('./_parsers/_strip');
 
 //wiktionary... who knows. we should atleast try.
 const templates = {
   etyl: 1,
   mention: 1,
-  link: (tmpl, list) => {
+  link: (tmpl, list, parse) => {
     let obj = parse(tmpl, ['lang', 'page', 'display'])
     list.push(obj)
     if (obj.display) {
@@ -26,62 +25,62 @@ const templates = {
   // },
 
   //latin verbs
-  'la-verb-form': (tmpl, list) => {
+  'la-verb-form': (tmpl, list, parse) => {
     let obj = parse(tmpl, ['word'])
     list.push(obj)
     return obj.word || ''
   },
-  hyphenation: (tmpl, list) => {
+  hyphenation: (tmpl, list, parse) => {
     let obj = parse(tmpl, ['lang'])
     list.push(obj)
     return obj.list.join('‧')
   },
-  'feminine plural': (tmpl, list) => {
+  'feminine plural': (tmpl, list, parse) => {
     let obj = parse(tmpl, ['word'])
     list.push(obj)
     return obj.word || ''
   },
-  'male plural': (tmpl, list) => {
+  'male plural': (tmpl, list, parse) => {
     let obj = parse(tmpl, ['word'])
     list.push(obj)
     return obj.word || ''
   },
-  desc: (tmpl, list) => {
+  desc: (tmpl, list, parse) => {
     let obj = parse(tmpl, ['lang', 'word'])
     list.push(obj)
     return `→ ${obj.lang}: [[${obj.word}]]` //shouldn't use language code
   },
-  rhymes: (tmpl, list) => {
+  rhymes: (tmpl, list, parse) => {
     let obj = parse(tmpl, ['word'])
     list.push(obj)
     return 'Rhymes: -' + (obj.word || '')
   },
-  t: (tmpl, list) => {
+  t: (tmpl, list, parse) => {
     let obj = parse(tmpl, ['lang', 'word'])
     list.push(obj)
     return `[[${obj.lang}:${obj.word}]]`
   },
-  label: (tmpl, list) => {
+  label: (tmpl, list, parse) => {
     let obj = parse(tmpl, ['lang'])
     list.push(obj)
     return `(${obj.list.join(', ')})`
   },
-  sense: (tmpl, list) => {
+  sense: (tmpl, list, parse) => {
     let obj = parse(tmpl, ['context'])
     list.push(obj)
     return `(${obj.context})`
   },
-  suffix: (tmpl, list) => {
+  suffix: (tmpl, list, parse) => {
     let obj = parse(tmpl, ['lang', 'root', 'suffix'])
     list.push(obj)
     return `[[${obj.root}]] +[[-${obj.suffix}|${obj.suffix}]]`
   },
-  prefix: (tmpl, list) => {
+  prefix: (tmpl, list, parse) => {
     let obj = parse(tmpl, ['lang', 'root', 'prefix'])
     list.push(obj)
     return `[[${obj.prefix}-|${obj.prefix}]] + [[${obj.root}]]`
   },
-  compound: (tmpl, list) => {
+  compound: (tmpl, list, parse) => {
     let obj = parse(tmpl, ['lang', 'first', 'second'])
     list.push(obj)
     let arr = [obj.first, obj.second || '']
@@ -89,7 +88,7 @@ const templates = {
     arr = arr.map((str) => `[[${str}]]`)
     return arr.join(' + ')
   },
-  ux: (tmpl, list) => {
+  ux: (tmpl, list, parse) => {
     let obj = parse(tmpl, ['lang', 'example', 'translation'])
     list.push(obj)
     let str = `${obj.example}`
@@ -98,12 +97,12 @@ const templates = {
     }
     return str
   },
-  bor: (tmpl, list) => {
+  bor: (tmpl, list, parse) => {
     let obj = parse(tmpl, ['lang', 'source-lang', 'term'])
     list.push(obj)
     return `${obj['source-lang']} [[${obj.term}]]`
   },
-  w: (tmpl, list) => {
+  w: (tmpl, list, parse) => {
     let obj = parse(tmpl, ['page', 'label'])
     list.push(obj)
     let lang = obj.lang || 'en'
@@ -112,7 +111,7 @@ const templates = {
     }
     return `[https://${lang}.wikipedia.org/wiki/${obj.page}]`
   },
-  also: (tmpl, list) => {
+  also: (tmpl, list, parse) => {
     let obj = parse(tmpl, [])
     list.push(obj)
     let links = obj.list.map((str) => `[[${str}]]`)
@@ -120,7 +119,7 @@ const templates = {
   },
   wikipedia: ['article', 'link title'],
   // https://en.wiktionary.org/wiki/Template:inflection_of
-  'inflection of': (tmpl, list) => {
+  'inflection of': (tmpl, list, parse) => {
     let obj = parse(tmpl, ['lang', 'lemma', 'display'])
     list.push(obj)
     let words = {
@@ -313,7 +312,7 @@ let conjugations = [
   'vocative singular',
 ]
 conjugations.forEach((name) => {
-  templates[name + ' of'] = (tmpl, list) => {
+  templates[name + ' of'] = (tmpl, list, parse) => {
     let obj = parse(tmpl, ['lemma'])
     obj.tags = obj.list
     delete obj.list

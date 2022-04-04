@@ -1,4 +1,4 @@
-import templates from './templates'
+import templates from './templates.js'
 
 const plugin = (_models, _templates) => {
   // add new templates
