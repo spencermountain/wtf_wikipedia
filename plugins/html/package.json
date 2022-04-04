@@ -1,11 +1,17 @@
 {
   "name": "wtf-plugin-html",
   "description": "html plugin for wtf_wikipedia",
-  "version": "0.2.4",
+  "version": "1.0.0",
   "type": "module",
-  "main": "./builds/wtf-plugin-html.js",
+  "main": "./src/index.js",
   "unpkg": "./builds/wtf-plugin-html.min.js",
   "module": "./builds/wtf-plugin-html.mjs",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./builds/wtf-plugin-html.cjs"
+    }
+  },
   "author": "Spencer Kelly (spencermountain)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/html#readme",
   "repository": {

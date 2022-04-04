@@ -1,20 +1,20 @@
 const templates = {
   // https://en.wikinews.org/wiki/Template:W
-  w: (tmpl, list, parser) => {
+  w: (tmpl, _list, parser) => {
     let obj = parser(tmpl, ['target', 'label'])
     if (obj.label) {
       return `[[${obj.target}|${obj.label}]]`
     }
     return `[[${obj.target}]]`
   },
-  wikipedia: (tmpl, list, parser) => {
+  wikipedia: (tmpl, _list, parser) => {
     let obj = parser(tmpl, ['target', 'label'])
     if (obj.label) {
       return `[[${obj.target}|${obj.label}]]`
     }
     return `[[${obj.target}]]`
   },
-  'km to mi': (tmpl, list, parser) => {
+  'km to mi': (tmpl, _list, parser) => {
     let obj = parser(tmpl, ['km'])
     let num = Number(obj.km) || 0
     let m = num * 0.62137
@@ -24,7 +24,7 @@ const templates = {
     }
     return `${obj.km} km (${m} mi)`
   },
-  'mi to km': (tmpl, list, parser) => {
+  'mi to km': (tmpl, _list, parser) => {
     let obj = parser(tmpl, ['mi'])
     let num = Number(obj.mi) || 0
     let m = num * 1.609344

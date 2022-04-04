@@ -1,7 +1,7 @@
-const wtf = require('../../src').default
-const i18n = require('./src')
+import wtf from '../../src/index.js'
+import i18n from './src/index.js'
 wtf.extend(i18n)
 
-// wtf.fetch('Toronto').then((doc) => {
-//   console.log(doc.classify().details)
-// })
+wtf.fetch('https://ja.wikipedia.org/wiki/ベルリン').then((doc) => {
+  console.log(doc.coordinates())
+})

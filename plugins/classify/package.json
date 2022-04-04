@@ -1,11 +1,17 @@
 {
   "name": "wtf-plugin-classify",
   "description": "basic classifier for wikipedia articles",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "type": "module",
-  "main": "./builds/wtf-plugin-classify.js",
+  "main": "./src/index.js",
   "unpkg": "./builds/wtf-plugin-classify.min.js",
   "module": "./builds/wtf-plugin-classify.mjs",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./builds/wtf-plugin-classify.cjs"
+    }
+  },
   "author": "Spencer Kelly (spencermountain)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/classify#readme",
   "repository": {

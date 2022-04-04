@@ -47,6 +47,18 @@ wtf.fetch('Toronto Raptors').then((doc) => {
 })
 ```
 
+```html
+<script src="https://unpkg.com/wtf_wikipedia"></script>
+<script src="https://unpkg.com/wtf-plugin-classify"></script>
+<script defer>
+  wtf.plugin(window.wtfClassify)
+  wtf.fetch('Radiohead', function (err, doc) {
+    console.log(doc.classify())
+  })
+</script>
+```
+
+
 ### Justification:
 
 Traversing wikipedia's categories to find say, all the **People** or **Places** is a [notoriously](https://humane.computer/review-the-science-of-managing-our-digital-stuff/) broken strategy:

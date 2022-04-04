@@ -49,6 +49,19 @@ wtf.fetch('casa', { lang:'it', wiki: `wiktionary` }).then(async function(doc) {
   */
 })
 ```
+
+```html
+<script src="https://unpkg.com/wtf_wikipedia"></script>
+<script src="https://unpkg.com/wtf-plugin-images"></script>
+<script defer>
+  wtf.plugin(window.wtfImage)
+  wtf.fetch('Hamburg').then((doc) => {
+    console.log(doc.mainImage().thumb())
+    // https://wikipedia.org/wiki/Special:Redirect/file/Flag_of_Hamburg.svg?width=300
+  })
+</script>
+```
+
 The document's `images` method now also accepts an options object as its argument, possible options are:
 - `batch`  
   Request-making methods that you want to call for all the images. (a string for one or array for more)  

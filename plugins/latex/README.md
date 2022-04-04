@@ -30,6 +30,18 @@ doc.latex()
 // 'hello \href{./world}{world}'
 ```
 
+```html
+<script src="https://unpkg.com/wtf_wikipedia"></script>
+<script src="https://unpkg.com/wtf-plugin-latex"></script>
+<script defer>
+  wtf.plugin(window.wtfLatex)
+  wtf.fetch('Hamburg').then((doc) => {
+    console.log(doc.sentences()[0].latex())
+    // \textbf{Hamburg} officially the \textbf{Free and Hanseatic City of Hamburg}, is the \href{./List_of_cities_in_Germany_by_population}{second-largest city} ...
+  })
+</script>
+```
+
 work-in-progress
 
 MIT

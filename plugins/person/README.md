@@ -30,6 +30,20 @@ wtf.extend(require('wtf-plugin-person'))
 })()
 ```
 
+```html
+<script src="https://unpkg.com/wtf_wikipedia"></script>
+<script src="https://unpkg.com/wtf-plugin-person"></script>
+<script defer>
+  wtf.plugin(window.wtfPerson)
+  wtf.fetch('Elvis Presley').then((doc) => {
+    console.log(doc.deathPlace())
+    // Memphis, Tennessee, U.S.
+  })
+</script>
+```
+
+
+
 <div align="center">
   <h2><a href="https://observablehq.com/@spencermountain/wtf-plugin-person">Demo</a></h2>
 </div>
@@ -47,6 +61,7 @@ wtf.fetch('Billy Elliot').then((doc) => {
   }
 })
 ```
+
 
 - For inaccurate dates, if the date is a range, finds the average rounded down; otherwise finds the minimum.
   

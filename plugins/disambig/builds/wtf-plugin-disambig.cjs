@@ -1,101 +1,86 @@
-/* wtf-plugin-disambig 0.0.2  MIT */
+/* wtf-plugin-disambig 1.0.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wtfdisambig = factory());
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wtfDisambig = factory());
 })(this, (function () { 'use strict';
 
+  // const birthDate = require('./birthDate')
   const shouldSkip = /see also/;
 
   function escapeRegExp(str) {
     str = str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
-
-    return new RegExp(str, 'i');
+    return new RegExp(str, 'i')
   }
 
   const parseLine = function (line) {
     let link = line.link(0);
-
     if (!link || link.type() !== 'internal') {
-      return null;
+      return null
     }
-
     let desc = line.text();
-    let reg = escapeRegExp(link.text()); // ensure the link is toward the start of the sentence
-
+    let reg = escapeRegExp(link.text());
+    // ensure the link is toward the start of the sentence
     let m = desc.match(reg);
-
     if (!m || m.index > 20) {
-      return null;
+      return null
     }
-
     desc = desc.replace(reg, '');
     desc = desc.replace(/[,:]? ?/, '');
     return {
       link: link.page(),
-      desc: desc
-    };
-  }; // A '''[[berry]]''' is a small, pulpy and often edible fruit in non-technical language.
+      desc: desc,
+    }
+  };
 
-
+  // A '''[[berry]]''' is a small, pulpy and often edible fruit in non-technical language.
   const getMain = function (s) {
     let txt = s.text().slice(0, 120);
-
     if (!txt.match(/ is /)) {
-      return null;
+      return null
     }
-
     let link = s.link(0);
-
     if (!link) {
-      return null;
+      return null
     }
-
-    let reg = escapeRegExp(link.text()); // ensure the link is toward the start of the sentence
-
+    let reg = escapeRegExp(link.text());
+    // ensure the link is toward the start of the sentence
     let m = txt.match(reg);
-
     if (!m || m.index > 20) {
-      return null;
+      return null
     }
-
-    return link.page();
+    return link.page()
   };
 
   const getTitle = function (doc) {
     let title = doc.title() || '';
     title = title.replace(/ \(disambig|disambiguation\)$/, '');
-    return title;
+    return title
   };
 
   const addMethod = function (models) {
     // parse a disambiguation page into an array of pages
     models.Doc.prototype.disambiguation = function () {
       if (this.isDisambiguation() !== true) {
-        return null;
-      } // remove 'see also'
-
-
+        return null
+      }
+      // remove 'see also'
       let sec = this.section('see also');
-
       if (sec !== null) {
         sec.remove();
       }
-
       let intro = this.section().sentence();
       let main = getMain(intro);
+
       let pages = [];
-      this.sections().forEach(s => {
+      this.sections().forEach((s) => {
         let title = s.title();
-
         if (shouldSkip.test(title) === true) {
-          return;
+          return
         }
-
-        s.lists().forEach(list => {
-          list.lines().forEach(line => {
+        s.lists().forEach((list) => {
+          list.lines().forEach((line) => {
             let found = parseLine(line);
-
             if (found) {
               found.section = title;
               pages.push(found);
@@ -106,17 +91,13 @@
       return {
         text: getTitle(this),
         main: main,
-        pages: pages
-      };
-    }; // alias
-
-
+        pages: pages,
+      }
+    };
+    // alias
     models.Doc.prototype.disambig = models.Doc.prototype.disambiguation;
   };
 
-  var src = addMethod;
-
-  return src;
+  return addMethod;
 
 }));
-//# sourceMappingURL=wtf-plugin-disambig.js.map

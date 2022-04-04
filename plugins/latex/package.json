@@ -1,10 +1,16 @@
 {
   "name": "wtf-plugin-latex",
   "description": "latex plugin for wtf_wikipedia",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "type": "module",
-  "main": "./builds/wtf-plugin-latex.js",
+  "main": "./src/index.js",
   "unpkg": "./builds/wtf-plugin-latex.min.js",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./builds/wtf-plugin-latex.cjs"
+    }
+  },
   "module": "./builds/wtf-plugin-latex.mjs",
   "author": "Spencer Kelly (spencermountain)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/latex#readme",

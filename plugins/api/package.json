@@ -1,13 +1,18 @@
 {
   "name": "wtf-plugin-api",
   "description": "wikimedia api plugin for wtf_wikipedia",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "type": "module",
-  "main": "./builds/wtf-plugin-api.js",
+  "main": "./src/index.js",
   "unpkg": "./builds/wtf-plugin-api.min.js",
   "module": "./builds/wtf-plugin-api.mjs",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./builds/wtf-plugin-api.cjs"
+    }
+  },
   "author": "Spencer Kelly (spencermountain)",
-  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/api#readme",
   "repository": {
     "type": "git",
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"

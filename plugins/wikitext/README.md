@@ -30,6 +30,20 @@ doc.makeWikitext()
 // 'hello [[world]]'
 ```
 
+```html
+<script src="https://unpkg.com/wtf_wikipedia"></script>
+<script src="https://unpkg.com/wtf-plugin-wikitext"></script>
+<script defer>
+  wtf.plugin(window.wtfWikitext)
+  wtf.fetch('Hamburg').then((doc) => {
+    console.log(doc.sentences()[0].makeWikitext())
+    // Hamburg is the [[List of cities in Germany by population|second-largest city]] in Germany after [[Berlin]]
+  })
+</script>
+```
+
+---
+
 all wtf_wikipedia models have a `.wikitext()` method that (tries to) return their original wikitext.
 This method will try to \_generate\* the wikitext, as best it can. This is a lossy, and error-prone process, but may be useful for some applications.
 
