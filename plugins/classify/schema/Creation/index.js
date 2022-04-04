@@ -1,15 +1,20 @@
-module.exports = {
+import CreativeWork from './CreativeWork/index.js'
+import MedicalCondition from './MedicalCondition.js'
+import Organism from './Organism.js'
+import Product from './Product.js'
+
+export default {
   name: 'Creation',
   children: {
-    CreativeWork: require('./CreativeWork'),
-    MedicalCondition: require('./MedicalCondition'),
-    Organism: require('./Organism'),
-    Product: require('./Product'),
+    CreativeWork,
+    MedicalCondition,
+    Organism,
+    Product,
   },
   //
   properties: {
-    creators: () => {},
-    date: () => {},
+    creators: () => { },
+    date: () => { },
   },
   //
   categories: {

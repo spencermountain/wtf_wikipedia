@@ -1,5 +1,5 @@
-const wtf = require('../lib')
-const test = require('tape')
+import test from 'tape'
+import wtf from '../lib/index.js'
 
 test('remove wikitext from caption titles', function (t) {
   const str = `

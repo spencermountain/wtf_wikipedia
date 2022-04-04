@@ -1,15 +1,20 @@
-module.exports = {
+import MusicalGroup from './MusicalGroup.js'
+import Company from './Company.js'
+import SportsTeam from './SportsTeam.js'
+import PoliticalParty from './PoliticalParty.js'
+
+export default {
   name: 'Organization',
   //
   children: {
-    MusicalGroup: require('./MusicalGroup'),
-    Company: require('./Company'),
-    SportsTeam: require('./SportsTeam'),
-    PoliticalParty: require('./PoliticalParty'),
+    MusicalGroup,
+    Company,
+    SportsTeam,
+    PoliticalParty,
   },
   properties: {
-    leaders: () => {},
-    members: () => {},
+    leaders: () => { },
+    members: () => { },
   },
   //
   categories: {

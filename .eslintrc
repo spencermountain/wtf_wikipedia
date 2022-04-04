@@ -5,16 +5,31 @@
     "browser": true,
     "node": true
   },
+  "globals": {
+    "URL": "writable"
+  },
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {}
   },
-  "extends": ["plugin:compat/recommended", "plugin:regexp/recommended"],
+  "extends": [
+    "plugin:compat/recommended",
+    "plugin:regexp/recommended"
+  ],
   "rules": {
-    "semi": ["warn", "never"],
-    "indent": ["error", 2],
-    "spaced-comment": [0, "never"],
+    "semi": [
+      "warn",
+      "never"
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "spaced-comment": [
+      0,
+      "never"
+    ],
     "no-cond-assign": 2,
     "no-var": 1,
     "prefer-const": 0,
@@ -27,7 +42,11 @@
     "no-native-reassign": 2,
     "no-redeclare": 2,
     "radix": 1,
-    "quotes": [0, "single", "avoid-escape"],
+    "quotes": [
+      0,
+      "single",
+      "avoid-escape"
+    ],
     "no-shadow": 2,
     "no-unused-vars": 1,
     "no-lonely-if": 1,
@@ -39,7 +58,10 @@
     "no-octal-escape": 2,
     "no-constant-condition": 1,
     "no-unused-expressions": 2,
-    "comma-dangle": [1, "only-multiline"],
+    "comma-dangle": [
+      1,
+      "only-multiline"
+    ],
     "space-before-function-paren": [
       "error",
       {

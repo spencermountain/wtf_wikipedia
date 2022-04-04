@@ -1,5 +1,5 @@
-const Document = require('../01-document/Document')
-const { isArray } = require('../_lib/helpers')
+import Document from '../01-document/Document.js'
+import { isArray } from '../_lib/helpers.js'
 /**
  * this function puts all responses into proper Document objects
  *
@@ -22,7 +22,7 @@ const parseDoc = function (res, title) {
   if (docs.length === 0) {
     return null
   }
-  
+
   // if there is only one response then we can get it out of the array
   if (!isArray(title) && docs.length === 1) {
     return docs[0]
@@ -30,4 +30,4 @@ const parseDoc = function (res, title) {
 
   return docs
 }
-module.exports = parseDoc
+export default parseDoc

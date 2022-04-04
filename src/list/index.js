@@ -1,5 +1,5 @@
-const List = require('./List')
-const parseSentence = require('../04-sentence/').fromText
+import List from './List.js'
+import { fromText as parseSentence } from '../04-sentence/index.js'
 const list_reg = /^[#*:;|]+/
 const bullet_reg = /^\*+[^:,|]{4}/
 const number_reg = /^ ?#[^:,|]{4}/
@@ -63,4 +63,4 @@ const parseList = function (paragraph) {
   paragraph.lists = lists.map((l) => new List(l, wiki))
   paragraph.wiki = theRest.join('\n')
 }
-module.exports = parseList
+export default parseList

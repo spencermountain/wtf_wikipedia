@@ -53,4 +53,4 @@ const toWiki = function (options) {
 
   return text
 }
-module.exports = toWiki
+export default toWiki

@@ -1,6 +1,6 @@
 // from ./plugins/classify/infobox, April 15 2020
 // https://en.wikipedia.org/wiki/Category:People_and_person_infobox_templates
-module.exports = {
+export default {
   actor: true,
   adult_biography: true,
   afl_biography: true,

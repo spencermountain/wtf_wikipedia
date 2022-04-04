@@ -1,5 +1,5 @@
-const slow = require('slow')
-const random = require('./random')
+import slow from 'slow'
+import random from './random.js'
 
 const chunkBy = function (arr, chunkSize = 5) {
   let groups = []
@@ -41,4 +41,4 @@ const plugin = function (models) {
   }
   models.wtf.fetchCategory = models.wtf.parseCategory
 }
-module.exports = plugin
+export default plugin

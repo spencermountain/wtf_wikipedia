@@ -18,4 +18,4 @@ const toWiki = function () {
   }
   return `[[${page}]]`
 }
-module.exports = toWiki
+export default toWiki

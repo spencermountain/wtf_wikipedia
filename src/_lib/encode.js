@@ -34,6 +34,4 @@ const encodeObj = function (obj = {}) {
   return obj
 }
 
-module.exports = {
-  encodeObj: encodeObj,
-}
+export default encodeObj 

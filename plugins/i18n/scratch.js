@@ -1,4 +1,4 @@
-const wtf = require('../../src')
+const wtf = require('../../src').default
 const i18n = require('./src')
 wtf.extend(i18n)
 

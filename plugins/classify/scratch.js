@@ -1,5 +1,5 @@
-const wtf = require('../../src')
-const classify = require('./src')
+const wtf = require('../../src').default
+const classify = require('./src').default
 wtf.extend(classify)
 
 wtf.fetch('Toronto').then((doc) => {

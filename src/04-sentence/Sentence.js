@@ -1,4 +1,4 @@
-const toJSON = require('./toJson')
+import toJSON from './toJson.js'
 
 //where we store the formatting, link, date information
 const Sentence = function (data = {}) {
@@ -75,4 +75,4 @@ Object.keys(singular).forEach((k) => {
 
 Sentence.prototype.plaintext = Sentence.prototype.text
 
-module.exports = Sentence
+export default Sentence

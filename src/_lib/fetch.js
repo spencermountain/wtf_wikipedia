@@ -1,11 +1,11 @@
-const unfetch = require('isomorphic-unfetch')
+import unfetch from 'isomorphic-unfetch'
 
 /**
  * use the native client-side fetch function
  *
  * @private
  * @param {string} url the url that well be fetched
- * @param {RequestInit} opts the options for fetch
+ * @param {Object} opts the options for fetch
  * @returns {Promise<any>} the response from fetch
  */
 const request = function (url, opts) {
@@ -13,4 +13,4 @@ const request = function (url, opts) {
     return res.json()
   })
 }
-module.exports = request
+export default request

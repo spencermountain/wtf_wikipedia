@@ -2,6 +2,7 @@
   "name": "wtf-plugin-latex",
   "description": "latex plugin for wtf_wikipedia",
   "version": "0.2.2",
+  "type": "module",
   "main": "./builds/wtf-plugin-latex.js",
   "unpkg": "./builds/wtf-plugin-latex.min.js",
   "module": "./builds/wtf-plugin-latex.mjs",
@@ -18,7 +19,8 @@
     "build": "rollup -c"
   },
   "files": [
-    "builds"
+    "builds",
+    "src"
   ],
   "prettier": {
     "trailingComma": "none",
@@ -31,15 +33,12 @@
     "wtf_wikipedia": ">=9.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.16.0",
-    "@babel/preset-env": "7.16.4",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "rollup": "2.59.0",
+    "@rollup/plugin-commonjs": "21.0.3",
+    "rollup": "2.70.1",
     "rollup-plugin-filesize-check": "0.0.1",
     "rollup-plugin-terser": "7.0.2",
     "tap-dancer": "0.3.4",
-    "tape": "5.3.2"
+    "tape": "5.5.2"
   },
   "license": "MIT"
 }

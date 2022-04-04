@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   ['🇦🇩', 'and', 'andorra'],
   ['🇦🇪', 'are', 'united arab emirates'],
   ['🇦🇫', 'afg', 'afghanistan'],

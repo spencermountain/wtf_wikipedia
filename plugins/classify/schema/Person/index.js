@@ -1,18 +1,24 @@
-module.exports = {
+import Athlete from './Athlete/index.js'
+import Actor from './Actor.js'
+import Politician from './Politician.js'
+import Musician from './Musician.js'
+import Author from './Author.js'
+
+export default {
   name: 'Person',
   children: {
-    Athlete: require('./Athlete'),
-    Actor: require('./Actor'),
-    Politician: require('./Politician'),
-    Musician: require('./Musician'),
-    Author: require('./Author'),
+    Athlete,
+    Actor,
+    Politician,
+    Musician,
+    Author,
   },
   properties: {
-    birth_date: () => {},
-    birth_place: () => {},
-    nationality: () => {},
-    death_date: () => {},
-    death_place: () => {},
+    birth_date: () => { },
+    birth_place: () => { },
+    nationality: () => { },
+    death_date: () => { },
+    death_place: () => { },
   },
   //
   categories: {

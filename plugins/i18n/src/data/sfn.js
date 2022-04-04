@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'harvnp',
   'harvref',
   'kdş',

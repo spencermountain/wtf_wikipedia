@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'file', //en
   'image', //en
   'चित्र', //img

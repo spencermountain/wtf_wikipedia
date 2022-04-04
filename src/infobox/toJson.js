@@ -1,9 +1,9 @@
-const encode = require('../_lib/encode')
+import encodeObj from '../_lib/encode.js'
 
 /**
  * turn an infobox into some nice json
  * 
- * @param {Infobox} infobox 
+ * @param {object} infobox 
  * @param {object} [options] 
  * @returns {object}
  */
@@ -17,8 +17,8 @@ const toJson = function (infobox, options) {
 
   //support mongo-encoding keys
   if (options.encode === true) {
-    json = encode.encodeObj(json)
+    json = encodeObj(json)
   }
   return json
 }
-module.exports = toJson
+export default toJson

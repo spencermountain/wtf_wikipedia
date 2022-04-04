@@ -23,7 +23,6 @@ const pipeSplitter = function (tmpl) {
       a.split('[[').length !== a.split(']]').length
     ) {
       arr[i + 1] = arr[i] + '|' + arr[i + 1]
-      //@ts-expect-error we can ignore this error because we filter out all nulls later in
       arr[i] = null
     }
   })
@@ -40,4 +39,4 @@ const pipeSplitter = function (tmpl) {
   }
   return arr
 }
-module.exports = pipeSplitter
+export default pipeSplitter

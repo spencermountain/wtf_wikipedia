@@ -1,4 +1,4 @@
-const parse = require('../../parse/toJSON')
+import parse from '../../parse/toJSON/index.js'
 
 const codes = {
   adx: 'adx', //https://en.wikipedia.org/wiki/Template:Abu_Dhabi_Securities_Exchange
@@ -127,4 +127,4 @@ Object.keys(codes).forEach((k) => {
   exchanges[k] = parseStockExchange
 })
 
-module.exports = exchanges
+export default exchanges

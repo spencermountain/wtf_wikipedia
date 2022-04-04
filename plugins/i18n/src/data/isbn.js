@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   // 'isbn',
   'isbn2',
   'آئی ایس بی این',

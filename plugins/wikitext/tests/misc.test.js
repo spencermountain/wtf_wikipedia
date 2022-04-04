@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('./_lib')
+import test from 'tape'
+import wtf from './_lib.js'
 
 const tidy = (str) => {
   str = str.replace(/\s{2,}/g, ' ')

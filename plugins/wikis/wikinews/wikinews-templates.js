@@ -1,4 +1,4 @@
-[
+export default [
   // ["source", 71181],
   // ["w", 64382],
   ["publish", 20198],

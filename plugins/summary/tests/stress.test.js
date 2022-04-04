@@ -1,8 +1,9 @@
-const test = require('tape')
-const wtf = require('./_lib')
-const fs = require('fs')
-const path = require('path')
+import test from 'tape'
+import wtf from './_lib.js'
+import fs from 'fs'
+import path from 'path'
 
+const dir = new URL('./', import.meta.url).pathname
 // ;(async () => {
 //   let cat = await wtf.randomCategory()
 //   console.log(cat, '\n\n')
@@ -15,7 +16,7 @@ const path = require('path')
 // })()
 
 test('first-sentence cleanup summary', (t) => {
-  let abs = path.join(__dirname, './texts.txt')
+  let abs = path.join(dir, './texts.txt')
   let arr = fs
     .readFileSync(abs)
     .toString()
@@ -32,7 +33,7 @@ test('first-sentence cleanup summary', (t) => {
 
   let want = arr.length * 0.75
 
-  console.log(count, want)
+  // console.log(count, want)
   t.ok(count > want, 'stress test failed: ' + count + ' > ' + want)
   t.end()
 })

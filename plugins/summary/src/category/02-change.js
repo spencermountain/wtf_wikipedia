@@ -1,4 +1,4 @@
-const nlp = require('compromise')
+import nlp from 'compromise'
 
 const useAn = function (str) {
   const a_regexs = [
@@ -41,4 +41,4 @@ const changeCat = function (cat, options) {
   c.parentheses().remove()
   return c.text()
 }
-module.exports = changeCat
+export default changeCat

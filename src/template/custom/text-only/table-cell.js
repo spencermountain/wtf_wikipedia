@@ -1,6 +1,6 @@
 //random misc for inline wikipedia templates
-const parse = require('../../parse/toJSON')
-const titlecase = require('../_lib').titlecase
+import parse from '../../parse/toJSON/index.js'
+import { titlecase } from '../_lib.js'
 
 //https://en.wikipedia.org/wiki/Template:Yes
 let templates = {}
@@ -105,4 +105,4 @@ moreCells.forEach((a) => {
   }
 })
 
-module.exports = templates
+export default templates

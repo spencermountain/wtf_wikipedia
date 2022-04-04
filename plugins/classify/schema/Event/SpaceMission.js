@@ -1,8 +1,8 @@
-module.exports = {
+export default {
   name: 'SpaceMission',
   children: {},
   properties: {
-    destination: () => {},
+    destination: () => { },
   },
   //
   categories: {

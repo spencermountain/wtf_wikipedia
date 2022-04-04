@@ -1,6 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
-import { babel } from '@rollup/plugin-babel'
 import sizeCheck from 'rollup-plugin-filesize-check'
 
 import { version } from './package.json'
@@ -15,11 +14,6 @@ export default [
     output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
     plugins: [
       commonjs(),
-      babel({
-        babelHelpers: "bundled",
-        babelrc: false,
-        presets: ['@babel/preset-env']
-      })
     ]
   },
 
@@ -37,11 +31,6 @@ export default [
     ],
     plugins: [
       commonjs(),
-      babel({
-        babelHelpers: "bundled",
-        babelrc: false,
-        presets: ['@babel/preset-env']
-      })
     ]
   },
   // ===  min.js ===
@@ -58,11 +47,6 @@ export default [
     ],
     plugins: [
       commonjs(),
-      babel({
-        babelHelpers: "bundled",
-        babelrc: false,
-        presets: ['@babel/preset-env']
-      }),
       terser(),
       sizeCheck({ expect: 10, warn: 10 })
     ]

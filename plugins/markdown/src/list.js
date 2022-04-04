@@ -7,4 +7,4 @@ const toMarkdown = function (options) {
     })
     .join('\n')
 }
-module.exports = toMarkdown
+export default toMarkdown

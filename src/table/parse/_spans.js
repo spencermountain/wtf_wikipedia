@@ -54,4 +54,4 @@ const handleSpans = function (rows) {
   rows = doRowSpan(rows)
   return rows
 }
-module.exports = handleSpans
+export default handleSpans

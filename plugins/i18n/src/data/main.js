@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'aðalgrein',
   'ana madde',
   'antsipirihany',

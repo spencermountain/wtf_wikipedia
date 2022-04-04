@@ -1,5 +1,5 @@
-const wtf = require('../lib')
-const test = require('tape')
+import test from 'tape'
+import wtf from '../lib/index.js'
 
 test('inline-no-data', function (t) {
   const arr = [

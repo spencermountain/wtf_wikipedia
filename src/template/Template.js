@@ -1,9 +1,9 @@
-const toText = require('../04-sentence').fromText
+import { fromText } from '../04-sentence/index.js'
 
 const methods = {
   text: function () {
     let str = this._text || ''
-    return toText(str).text()
+    return fromText(str).text()
   },
   json: function () {
     return this.data || {}
@@ -31,4 +31,4 @@ const Template = function (data, text = '', wiki = '') {
 Object.keys(methods).forEach((k) => {
   Template.prototype[k] = methods[k]
 })
-module.exports = Template
+export default Template

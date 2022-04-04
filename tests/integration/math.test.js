@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('../lib')
+import test from 'tape'
+import wtf from '../lib/index.js'
 
 test('math-simple', (t) => {
   let str = `hello {{math|big=1|1 + 2 {{=}} 3}} world`

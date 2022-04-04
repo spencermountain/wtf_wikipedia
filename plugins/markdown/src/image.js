@@ -7,4 +7,4 @@ const toMarkdown = function () {
     .join(' ')
   return '![' + alt + '](' + this.thumbnail() + ')'
 }
-module.exports = toMarkdown
+export default toMarkdown

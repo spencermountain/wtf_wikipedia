@@ -1,9 +1,9 @@
-module.exports = {
+export default {
   name: 'Bridge',
   //
   children: {},
   properties: {
-    length: () => {},
+    length: () => { },
   },
   //
   categories: {

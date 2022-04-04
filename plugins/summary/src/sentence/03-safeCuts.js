@@ -34,4 +34,4 @@ const safeCuts = function (s) {
 
   return s
 }
-module.exports = safeCuts
+export default safeCuts

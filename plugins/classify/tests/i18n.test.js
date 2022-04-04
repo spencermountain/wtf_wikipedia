@@ -1,9 +1,10 @@
-const test = require('tape')
-const wtf = require('./_lib')
-const fs = require('fs')
-const path = require('path')
-const i18n = require('../../i18n')
+import test from 'tape'
+import wtf from './_lib.js'
+import fs from 'fs'
+import path from 'path'
+import i18n from '../../i18n/src/index.js'
 wtf.extend(i18n)
+let dir = new URL('./', import.meta.url).pathname  // eslint-disable-line
 
 test('i18n-classify-test', async function (t) {
   let arr = [
@@ -12,7 +13,7 @@ test('i18n-classify-test', async function (t) {
   ]
 
   arr.forEach((a) => {
-    let abs = path.join(__dirname, `../../../tests/cache/${a[0]}.txt`)
+    let abs = path.join(dir, `../../../tests/cache/${a[0]}.txt`)
     let txt = fs.readFileSync(abs).toString()
     let doc = wtf(txt)
     let res = doc.classify()

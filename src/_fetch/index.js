@@ -1,10 +1,10 @@
-const unfetch = require('isomorphic-unfetch')
+import unfetch from 'isomorphic-unfetch'
 
-const parseUrl = require('./parseUrl')
-const makeUrl = require('./makeUrl')
-const getResult = require('./getResult')
-const parseDoc = require('./parseDoc')
-const makeHeaders = require('./_headers')
+import parseUrl from './parseUrl.js'
+import makeUrl from './makeUrl.js'
+import getResult from './getResult.js'
+import parseDoc from './parseDoc.js'
+import makeHeaders from './_headers.js'
 const isUrl = /^https?:\/\//
 
 /**
@@ -33,7 +33,7 @@ const defaults = {
 /**
  * @callback fetchCallback
  * @param {Object} error
- * @param {(null | Document | Document[])} response
+ * @param {any} result
  */
 
 /**
@@ -48,7 +48,6 @@ const defaults = {
  * @param {string | number | Array<number> | Array<string>} title the title, PageID, URL or an array of all three of the page(s) you want to fetch
  * @param {fetchDefaults} [options] the options for the fetch or the language of the wiki for the article
  * @param {fetchCallback} [callback] the callback function for the call
- * @returns {Promise<null | Document | Document[]>} either null if the pages is not found, Document if you asked for one result, and a array of Documents if you asked for multiple pages
  */
 const fetch = function (title, options, callback) {
   // support lang as 2nd param
@@ -84,4 +83,4 @@ const fetch = function (title, options, callback) {
       return null
     })
 }
-module.exports = fetch
+export default fetch

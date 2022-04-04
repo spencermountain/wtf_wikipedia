@@ -1,15 +1,12 @@
-const sectionMap = require('./_sectionMap')
-const toJSON = require('./toJson')
-const isDisambig = require('./isDisambig')
-const setDefaults = require('../_lib/setDefaults')
-const Image = require('../image/Image')
-
-const redirects = require('./redirects')
-const preProcess = require('./preProcess')
-const parse = {
-  section: require('../02-section'),
-  categories: require('./categories'),
-}
+import sectionMap from './_sectionMap.js'
+import toJSON from './toJson.js'
+import isDisambig from './isDisambig.js'
+import setDefaults from '../_lib/setDefaults.js'
+import Image from '../image/Image.js'
+import { isRedirect, parse } from './redirects.js'
+import preProcess from './preProcess/index.js'
+import parseSection from '../02-section/index.js'
+import parseCategories from './categories.js'
 
 const defaults = {
   tables: true,
@@ -61,10 +58,10 @@ class Document {
     })
 
     //detect if page is just redirect, and return it
-    if (redirects.isRedirect(this._wiki) === true) {
+    if (isRedirect(this._wiki) === true) {
       this._type = 'redirect'
-      this._redirectTo = redirects.parse(this._wiki)
-      const [categories, newWiki] = parse.categories(this._wiki)
+      this._redirectTo = parse(this._wiki)
+      const [categories, newWiki] = parseCategories(this._wiki)
       this._categories = categories
       this._wiki = newWiki
       return
@@ -74,12 +71,12 @@ class Document {
     this._wiki = preProcess(this._wiki)
 
     //pull-out [[category:whatevers]]
-    const [categories, newWiki] = parse.categories(this._wiki)
+    const [categories, newWiki] = parseCategories(this._wiki)
     this._categories = categories
     this._wiki = newWiki
 
     //parse all the headings, and their texts/sentences
-    this._sections = parse.section(this)
+    this._sections = parseSection(this)
   }
 
   /**
@@ -104,7 +101,7 @@ class Document {
     }
     //guess the title of this page from first sentence bolding
     let guess = null
-    let sen = this.sentence()
+    let sen = this.sentences()[0]
     if (sen) {
       guess = sen.bold()
     }
@@ -536,4 +533,4 @@ Document.prototype.redirectsTo = Document.prototype.redirectTo
 Document.prototype.redirect = Document.prototype.redirectTo
 Document.prototype.redirects = Document.prototype.redirectTo
 
-module.exports = Document
+export default Document

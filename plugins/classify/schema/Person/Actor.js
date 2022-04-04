@@ -1,10 +1,10 @@
-module.exports = {
+export default {
   name: 'Actor',
   //
   children: {},
   properties: {
-    films: () => {},
-    tv_shows: () => {},
+    films: () => { },
+    tv_shows: () => { },
   },
   //
   categories: {

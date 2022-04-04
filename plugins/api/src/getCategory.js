@@ -1,4 +1,4 @@
-const { normalize, defaults, toUrlParams } = require('./_fns')
+import { normalize, defaults, toUrlParams } from './_fns.js'
 
 const params = {
   action: 'query',
@@ -58,4 +58,4 @@ const getCategory = async function (title, options, http) {
   }
   return list
 }
-module.exports = getCategory
+export default getCategory

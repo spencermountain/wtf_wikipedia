@@ -1,7 +1,7 @@
-const languages = require('../_data/languages')
+import languages from '../_data/languages.js'
 //some colon symbols are valid links, like `America: That place`
 //so we have to whitelist allowable interwiki links
-const interwikis = require('../_data/interwiki')
+import interwikis from '../_data/interwiki.js'
 
 //add language prefixes too..
 Object.keys(languages).forEach((k) => {
@@ -36,4 +36,4 @@ const parseInterwiki = function (obj) {
   }
   return obj
 }
-module.exports = parseInterwiki
+export default parseInterwiki

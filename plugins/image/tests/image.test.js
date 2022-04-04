@@ -1,7 +1,8 @@
-const test = require('tape')
-const wtf = require('./_lib')
-const path = require('path')
-const fs = require('fs')
+import test from 'tape'
+import wtf from './_lib.js'
+import path from 'path'
+import fs from 'fs'
+let dir = new URL('./', import.meta.url).pathname
 
 test('mainImage', function (t) {
   let arr = [
@@ -19,7 +20,7 @@ test('mainImage', function (t) {
     // ['', '']
   ]
   arr.forEach((a) => {
-    let abs = path.join(__dirname, `../../../tests/cache/${a[0]}.txt`)
+    let abs = path.join(dir, `../../../tests/cache/${a[0]}.txt`)
     let txt = fs.readFileSync(abs).toString()
     let doc = wtf(txt)
     let img = doc.mainImage().src()

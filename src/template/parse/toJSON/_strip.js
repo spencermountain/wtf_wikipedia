@@ -11,4 +11,4 @@ const strip = function (tmpl) {
   tmpl = tmpl.replace(/\}\}$/, '')
   return tmpl
 }
-module.exports = strip
+export default strip

@@ -1,10 +1,16 @@
+import Person from './Person/index.js'
+import Place from './Place/index.js'
+import Organization from './Organization/index.js'
+import Event from './Event/index.js'
+import Creation from './Creation/index.js'
+
 let schema = {
   children: {
-    Person: require('./Person'),
-    Place: require('./Place'),
-    Organization: require('./Organization'),
-    Event: require('./Event'),
-    Creation: require('./Creation'),
+    Person,
+    Place,
+    Organization,
+    Event,
+    Creation,
   },
 }
 
@@ -25,4 +31,4 @@ const setId = function (root, id) {
 
 schema = setId(schema, '')
 
-module.exports = schema
+export default schema

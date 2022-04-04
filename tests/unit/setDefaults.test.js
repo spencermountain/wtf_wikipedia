@@ -1,5 +1,5 @@
-const test = require('tape')
-const setDefaults = require('../../../src/_lib/setDefaults')
+import test from 'tape'
+import setDefaults from '../../src/_lib/setDefaults.js'
 
 test('should apply default', (t) => {
   const options = {}

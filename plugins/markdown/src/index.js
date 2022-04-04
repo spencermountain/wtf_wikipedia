@@ -1,13 +1,13 @@
-const doc = require('./01-doc')
-const section = require('./02-section')
-const paragraph = require('./03-paragraph')
-const sentence = require('./04-sentence')
-const link = require('./05-link')
-const image = require('./image')
-const infobox = require('./infobox')
-const list = require('./list')
-const reference = require('./reference')
-const table = require('./table')
+import doc from './01-doc.js'
+import section from './02-section.js'
+import paragraph from './03-paragraph.js'
+import sentence from './04-sentence.js'
+import link from './05-link.js'
+import image from './image.js'
+import infobox from './infobox.js'
+import list from './list.js'
+import reference from './reference.js'
+import table from './table.js'
 
 const plugin = function (models) {
   models.Doc.prototype.markdown = doc
@@ -21,4 +21,4 @@ const plugin = function (models) {
   models.List.prototype.markdown = list
   models.Reference.prototype.markdown = reference
 }
-module.exports = plugin
+export default plugin

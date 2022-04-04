@@ -1,6 +1,6 @@
-const fetch = require('./_fetch')
-const version = require('./_version')
-const Document = require('./01-document/Document')
+import fetch from './_fetch/index.js'
+import version from './_version.js'
+import Document from './01-document/Document.js'
 
 //the main 'factory' exported method
 const wtf = function (wiki, options) {
@@ -8,23 +8,36 @@ const wtf = function (wiki, options) {
 }
 
 //export classes for plugin development
+import Doc from './01-document/Document.js'
+import Section from './02-section/Section.js'
+import Paragraph from './03-paragraph/Paragraph.js'
+import Sentence from './04-sentence/Sentence.js'
+import Image from './image/Image.js'
+import Infobox from './infobox/Infobox.js'
+import Link from './link/Link.js'
+import List from './list/List.js'
+import Reference from './reference/Reference.js'
+import Table from './table/Table.js'
+import Template from './template/Template.js'
+import http from './_lib/fetch.js'
+import templates from './template/custom/index.js'
+import infoboxes from './infobox/_infoboxes.js'
+
 const models = {
-  Doc: require('./01-document/Document'),
-  Section: require('./02-section/Section'),
-  Paragraph: require('./03-paragraph/Paragraph'),
-  Sentence: require('./04-sentence/Sentence'),
-  Image: require('./image/Image'),
-  Infobox: require('./infobox/Infobox'),
-  Link: require('./link/Link'),
-  List: require('./list/List'),
-  Reference: require('./reference/Reference'),
-  Table: require('./table/Table'),
-  Template: require('./template/Template'),
-  http: require('./_lib/fetch'),
+  Doc,
+  Section,
+  Paragraph,
+  Sentence,
+  Image,
+  Infobox,
+  Link,
+  List,
+  Reference,
+  Table,
+  Template,
+  http,
   wtf: wtf,
 }
-let templates = require('./template/custom')
-let infoboxes = require('./infobox/_infoboxes')
 
 wtf.fetch = function (title, options, cb) {
   return fetch(title, options, cb)
@@ -36,4 +49,4 @@ wtf.extend = function (fn) {
 wtf.plugin = wtf.extend
 wtf.version = version
 
-module.exports = wtf
+export default wtf

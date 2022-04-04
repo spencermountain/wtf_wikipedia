@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('../lib')
+import test from 'tape'
+import wtf from '../lib/index.js'
 
 test('coord formats', (t) => {
   let str = `{{Coord|44.112|-87.913|display=title}}`

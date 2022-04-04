@@ -1,5 +1,5 @@
-const parse = require('../../parse/toJSON')
-const lib = require('../_lib')
+import parse from '../../parse/toJSON/index.js'
+import { percentage } from '../_lib.js'
 
 let templates = {
   // https://en.wikipedia.org/wiki/Template:Math
@@ -40,14 +40,14 @@ let templates = {
     return `[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ${obj.text || obj.number}]`
   },
 
-  pengoal: (tmpl, list) => {
+  pengoal: (_tmpl, list) => {
     list.push({
       template: 'pengoal',
     })
     return '✅'
   },
 
-  penmiss: (tmpl, list) => {
+  penmiss: (_tmpl, list) => {
     list.push({
       template: 'penmiss',
     })
@@ -280,7 +280,7 @@ let templates = {
     if (ties) {
       wins += ties / 2
     }
-    let num = lib.percentage({
+    let num = percentage({
       numerator: wins,
       denominator: games,
       decimals: 1,
@@ -296,7 +296,7 @@ let templates = {
     list.push(obj)
     let wins = Number(obj.wins)
     let losses = Number(obj.losses)
-    let num = lib.percentage({
+    let num = percentage({
       numerator: wins,
       denominator: wins + losses,
       decimals: 1,
@@ -304,8 +304,8 @@ let templates = {
     if (num === null) {
       return ''
     }
-    num = `.${num * 10}`
-    return `${wins || 0} || ${losses || 0} || ${num || '-'}`
+    let out = `.${num * 10}`
+    return `${wins || 0} || ${losses || 0} || ${out || '-'}`
   },
 
   //https://en.wikipedia.org/wiki/Template:Video_game_release
@@ -337,5 +337,14 @@ let templates = {
     }
     return `[[USS ${obj.name}|USS ''${obj.name}'']]`
   },
+  // https://en.wikipedia.org/wiki/Template:Blockquote
+  blockquote: (tmpl, list) => {
+    let obj = parse(tmpl)
+    list.push(obj)
+    // replace double quotes with singles and put the text inside double quotes
+    let result = (obj.text || obj.list[0]).replace(/"/g, '\'')
+    result = '"' + result + '"'
+    return result
+  }
 }
-module.exports = templates
+export default templates

@@ -13,4 +13,4 @@ const pad = (str, cellWidth) => {
   }
   return str
 }
-module.exports = pad
+export default pad

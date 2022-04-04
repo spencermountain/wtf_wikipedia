@@ -1,4 +1,4 @@
-const smartReplace = require('./_lib/smartReplace')
+import smartReplace from './_lib/smartReplace.js'
 
 const defaults = {
   links: true,
@@ -30,4 +30,4 @@ const doSentence = function (options) {
   }
   return '<span class="sentence">' + text + '</span>'
 }
-module.exports = doSentence
+export default doSentence

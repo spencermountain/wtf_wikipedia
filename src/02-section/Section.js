@@ -1,14 +1,11 @@
-const toJSON = require('./toJson')
-const setDefaults = require('../_lib/setDefaults')
-
-const parse = {
-  heading: require('./heading'),
-  table: require('../table'),
-  paragraphs: require('../03-paragraph'),
-  templates: require('../template'),
-  references: require('../reference'),
-  startEndTemplates: require('./start-to-end'),
-}
+import toJSON from './toJson.js'
+import setDefaults from '../_lib/setDefaults.js'
+// import parseHeading from './heading.js'
+import parseTable from '../table/index.js'
+import parseParagraphs from '../03-paragraph/index.js'
+import parseTemplates from '../template/index.js'
+import parseReferences from '../reference/index.js'
+import parseStartEndTemplates from './start-to-end/index.js'
 
 const defaults = {
   tables: true,
@@ -29,7 +26,7 @@ class Section {
    * the stuff between headings - 'History' section for example
    *
    * @param {object} data the data already gathered about the section
-   * @param {Document} doc the document that this section belongs to
+   * @param {object} doc the document that this section belongs to
    */
   constructor(data, doc) {
     let props = {
@@ -52,20 +49,20 @@ class Section {
     })
 
     //parse-out <template></template>' and {{start}}...{{end}} templates
-    const startEndTemplates = parse.startEndTemplates(this, doc)
+    const startEndTemplates = parseStartEndTemplates(this, doc)
     this._wiki = startEndTemplates.text
     this._templates = this._templates.concat(startEndTemplates.templates)
 
     //parse-out the <ref></ref> tags
-    parse.references(this)
+    parseReferences(this)
     //parse-out all {{templates}}
-    parse.templates(this, doc)
+    parseTemplates(this, doc)
 
     //parse the tables
-    parse.table(this)
+    parseTable(this)
 
     //now parse all double-newlines
-    parse.paragraphs(this, doc)
+    parseParagraphs(this, doc)
   }
 
   /**
@@ -263,7 +260,7 @@ class Section {
    * returns all images in the section
    * if an clue is provided then it returns the image at clue-th index
    *
-   * @returns {Image | Image[]} all images in an array or the clue-th image
+   * @returns {object | object[]} all images in an array or the clue-th image
    */
   images() {
     let arr = []
@@ -287,7 +284,7 @@ class Section {
   /**
    * Removes the section from the document
    *
-   * @returns {null|Document} the document without this section. or null if there is no document
+   * @returns {null|object} the document without this section. or null if there is no document
    */
   remove() {
     if (!this._doc) {
@@ -523,4 +520,4 @@ Object.keys(singular).forEach((k) => {
     return arr[0] || null
   }
 })
-module.exports = Section
+export default Section

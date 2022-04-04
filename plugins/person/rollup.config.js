@@ -1,6 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
-import { babel } from '@rollup/plugin-babel'
 import sizeCheck from 'rollup-plugin-filesize-check'
 import resolve from '@rollup/plugin-node-resolve' //import spacetime
 
@@ -17,11 +16,6 @@ export default [
     plugins: [
       resolve(),
       commonjs({ requireReturnsDefault: "auto" }),
-      babel({
-        babelHelpers: "bundled",
-        babelrc: false,
-        presets: ['@babel/preset-env']
-      })
     ]
   },
 
@@ -40,11 +34,6 @@ export default [
     plugins: [
       resolve(),
       commonjs({ requireReturnsDefault: "auto" }),
-      babel({
-        babelHelpers: "bundled",
-        babelrc: false,
-        presets: ['@babel/preset-env']
-      })
     ]
   },
   // ===  min.js ===
@@ -62,11 +51,6 @@ export default [
     plugins: [
       resolve(),
       commonjs({ requireReturnsDefault: "auto" }),
-      babel({
-        babelHelpers: "bundled",
-        babelrc: false,
-        presets: ['@babel/preset-env']
-      }),
       terser(),
       sizeCheck({ expect: 55, warn: 15 })
     ]

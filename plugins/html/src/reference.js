@@ -26,4 +26,4 @@ const toHtml = function (options) {
   }
   return ''
 }
-module.exports = toHtml
+export default toHtml

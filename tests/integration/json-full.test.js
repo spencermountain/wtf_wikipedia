@@ -1,10 +1,11 @@
-const wtf = require('../lib')
-const fs = require('fs')
-const path = require('path')
-const test = require('tape')
+import test from 'tape'
+import wtf from '../lib/index.js'
+import fs from 'fs'
+import path from 'path'
+const dir = new URL('./', import.meta.url).pathname
 
 test('plurals / singular - all should exist', (t) => {
-  let str = fs.readFileSync(path.join(__dirname, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
+  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
   let doc = wtf(str)
   let singels = {
     section: [

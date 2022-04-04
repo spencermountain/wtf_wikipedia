@@ -15,4 +15,4 @@ const toLatex = function (options) {
   }
   return out
 }
-module.exports = toLatex
+export default toLatex

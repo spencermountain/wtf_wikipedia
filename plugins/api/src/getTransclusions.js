@@ -1,4 +1,4 @@
-const { normalize, defaults, toUrlParams, fetchOne } = require('./_fns')
+import { normalize, defaults, toUrlParams, fetchOne } from './_fns.js'
 
 const params = {
   action: 'query',
@@ -41,4 +41,4 @@ const getTransclusions = async function (template, _options, http) {
   }
   return list
 }
-module.exports = getTransclusions
+export default getTransclusions

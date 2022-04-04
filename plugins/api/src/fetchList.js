@@ -1,4 +1,4 @@
-const slow = require('slow')
+import slow from 'slow'
 const isObject = function (obj) {
   return obj && Object.prototype.toString.call(obj) === '[object Object]'
 }
@@ -31,4 +31,4 @@ const fetchList = function (pages, options, wtf) {
     })
   })
 }
-module.exports = fetchList
+export default fetchList

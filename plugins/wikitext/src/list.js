@@ -5,4 +5,4 @@ const toWiki = function () {
   })
   return txt
 }
-module.exports = toWiki
+export default toWiki

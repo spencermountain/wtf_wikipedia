@@ -1,5 +1,5 @@
-const { patterns, mappings } = require('../../schema/_data-fns')
-const byPattern = require('../_byPattern')
+import { patterns, mappings } from '../../schema/_data-fns.js'
+import byPattern from '../_byPattern.js'
 const paren = /\((.*)\)$/
 
 const byTitle = function (doc) {
@@ -29,4 +29,4 @@ const byTitle = function (doc) {
   }
   return []
 }
-module.exports = byTitle
+export default byTitle

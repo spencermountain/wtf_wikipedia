@@ -1,5 +1,5 @@
-const parse = require('../../parse/toJSON')
-const flags = require('../../../_data/flags')
+import parse from '../../parse/toJSON/index.js'
+import flags from '../../../_data/flags.js'
 
 let templates = {
   //https://en.wikipedia.org/wiki/Template:Flag
@@ -89,4 +89,4 @@ flags.forEach((a) => {
     return a[0]
   }
 })
-module.exports = templates
+export default templates

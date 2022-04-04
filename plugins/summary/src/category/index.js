@@ -1,11 +1,11 @@
-const chooseCat = require('./01-choose')
-const change = require('./02-change')
+import chooseCat from './01-choose.js'
+import change from './02-change.js'
 
 const byCategory = function (doc, options) {
-  let cat = chooseCat(doc, options)
+  let cat = chooseCat(doc)
   if (!cat) {
     return ''
   }
   return change(cat, options)
 }
-module.exports = byCategory
+export default byCategory

@@ -1,6 +1,6 @@
-const parse = require('../../../parse/toJSON')
-const flags = require('../../../../_data/flags')
-const playoffBracket = require('./_lib')
+import parse from '../../../parse/toJSON/index.js'
+import flags from '../../../../_data/flags.js'
+import playoffBracket from './_lib.js'
 
 let sports = {
   //playoff brackets
@@ -83,4 +83,4 @@ let sports = {
     list.push(res)
   },
 }
-module.exports = sports
+export default sports

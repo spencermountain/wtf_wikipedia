@@ -1,13 +1,17 @@
-module.exports = {
+import Jurisdiction from './Jurisdiction/index.js'
+import Structure from './Structure/index.js'
+import BodyOfWater from './BodyOfWater.js'
+
+export default {
   name: 'Place',
   children: {
-    Jurisdiction: require('./Jurisdiction'),
-    Structure: require('./Structure'),
-    BodyOfWater: require('./BodyOfWater'),
+    Jurisdiction,
+    Structure,
+    BodyOfWater,
   },
   properties: {
-    location: () => {},
-    coordinates: () => {},
+    location: () => { },
+    coordinates: () => { },
   },
   //
   categories: {

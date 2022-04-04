@@ -1,20 +1,19 @@
-const wtf = require('./src/index')
-// wtf.extend(require('./plugins/wikitext/src'))
-wtf.extend(require('./plugins/html'))
+import wtf from './src/index.js'
 
 let str = `hello
-==== hello {{foobar}} ====
-oh yeah
+{{DECADE|1915}}
+
 `
 
-wtf.extend((_models, templates) => {
-  templates['sustantivo'] = 'sustantivo'
-})
+let doc = await wtf.fetch('Toronto Raptors')
+let coach = doc.infobox().get('coach')
+coach.text() //'Nick Nurse'
 
-let doc = wtf(str)
+
+// let doc = wtf(str)
 // console.log(doc.templates('sustantivo masculino').map(t => t.json().template))
 // console.log(doc.section('sustantivo masculino'))
 // console.log(doc.json().sections)
 // let f = doc.templates('sustantivo femenino')
 // let m = doc.templates('sustantivo masculino')
-console.log(doc.json())
+// console.log(doc.text())

@@ -1,4 +1,4 @@
-const parse = require('../../../parse/toJSON')
+import parse from '../../../parse/toJSON/index.js'
 
 /**
  * converts DMS (decimal-minute-second) geo format to lat/lng format.
@@ -106,7 +106,7 @@ const parseCoor = function (tmpl) {
 //console.log(parseDms([57, 18, 22, 'N']));
 //console.log(parseDms([4, 27, 32, 'W']));
 
-module.exports = parseCoor
+export default parseCoor
 // {{Coor title dms|dd|mm|ss|N/S|dd|mm|ss|E/W|template parameters}}
 // {{Coor title dec|latitude|longitude|template parameters}}
 // {{Coor dms|dd|mm|ss|N/S|dd|mm|ss|E/W|template parameters}}

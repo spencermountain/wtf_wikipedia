@@ -1,5 +1,5 @@
-const findFlat = require('./02-flat')
-const getName = require('../parse/toJSON/_getName')
+import findFlat from './02-flat.js'
+import getName from '../parse/toJSON/_getName.js'
 const hasTemplate = /\{\{/
 
 const parseTemplate = function (tmpl) {
@@ -43,4 +43,4 @@ const findTemplates = function (wiki) {
   return list
 }
 
-module.exports = findTemplates
+export default findTemplates

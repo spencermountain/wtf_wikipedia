@@ -1,4 +1,4 @@
-const wikis = require('../_data/interwiki')
+import wikis from '../_data/interwiki.js'
 
 const defaults = {
   type: 'internal',
@@ -105,4 +105,4 @@ const methods = {
 Object.keys(methods).forEach((k) => {
   Link.prototype[k] = methods[k]
 })
-module.exports = Link
+export default Link

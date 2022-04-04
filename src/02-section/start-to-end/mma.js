@@ -1,4 +1,4 @@
-const tableParser = require('../../table/parse')
+import tableParser from '../../table/parse/index.js'
 let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes']
 
 /**
@@ -32,4 +32,4 @@ const parseMMA = function (catcher) {
     return ''
   })
 }
-module.exports = parseMMA
+export default parseMMA

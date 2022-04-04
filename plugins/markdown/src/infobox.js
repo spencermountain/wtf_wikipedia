@@ -11,7 +11,7 @@ const defaults = {
 }
 
 //
-const pad = require('./_lib/pad')
+import pad from './_lib/pad.js'
 
 // render an infobox as a table with two columns, key + value
 const doInfobox = function (options) {
@@ -32,4 +32,4 @@ const doInfobox = function (options) {
   })
   return md
 }
-module.exports = doInfobox
+export default doInfobox

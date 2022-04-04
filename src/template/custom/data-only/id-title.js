@@ -26,4 +26,4 @@ let idTitle = [
 idTitle.forEach((name) => {
   templates[name] = ['id', 'title', 'description', 'section']
 })
-module.exports = templates
+export default templates

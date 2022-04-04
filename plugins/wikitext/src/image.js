@@ -6,4 +6,4 @@ const toWiki = function () {
   }
   return text + ']]'
 }
-module.exports = toWiki
+export default toWiki

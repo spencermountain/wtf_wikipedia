@@ -1,4 +1,4 @@
-const languages = require('../../_data/languages')
+import languages from '../../_data/languages.js'
 
 //simply num/denom * 100
 const percentage = function (obj) {
@@ -11,8 +11,7 @@ const percentage = function (obj) {
   if (isNaN(dec)) {
     dec = 1
   }
-  perc = perc.toFixed(dec)
-  return Number(perc)
+  return Number(perc.toFixed(dec))
 }
 
 const toNumber = function (str = '') {
@@ -62,10 +61,10 @@ const sisterProjects = {
   mw: 'mediawiki',
 }
 
-module.exports = {
-  titlecase: titlecase,
-  sisterProjects: sisterProjects,
-  getLang: getLang,
-  percentage: percentage,
-  toNumber: toNumber,
+export {
+  titlecase,
+  sisterProjects,
+  getLang,
+  percentage,
+  toNumber,
 }

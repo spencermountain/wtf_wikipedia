@@ -1,5 +1,5 @@
-const setDefaults = require('../_lib/setDefaults')
-const encode = require('../_lib/encode')
+import setDefaults from '../_lib/setDefaults.js'
+import encodeObj from '../_lib/encode.js'
 
 const defaults = {
   headers: true,
@@ -15,8 +15,8 @@ const defaults = {
 
 /**
  *
- * @param {Section} section
- * @param {sectionToJsonOptions} options
+ * @param {object} section
+ * @param {object} options
  * @returns {object}
  */
 const toJSON = function (section, options) {
@@ -65,7 +65,7 @@ const toJSON = function (section, options) {
       data.templates = templates
       //encode them, for mongodb
       if (options.encode === true) {
-        data.templates.forEach((t) => encode.encodeObj(t))
+        data.templates.forEach((t) => encodeObj(t))
       }
     }
   }
@@ -96,4 +96,4 @@ const toJSON = function (section, options) {
   }
   return data
 }
-module.exports = toJSON
+export default toJSON

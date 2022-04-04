@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'persoondata', //af
   'ব্যক্তিতথ্য', //as
   'personendaten', //de

@@ -21,4 +21,4 @@ const toWiki = function (options) {
     .join('\n')
   return text
 }
-module.exports = toWiki
+export default toWiki

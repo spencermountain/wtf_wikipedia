@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   // 'coor',
   'coor dd',
   // 'coor dm',

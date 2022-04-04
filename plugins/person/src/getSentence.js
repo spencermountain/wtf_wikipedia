@@ -1,4 +1,4 @@
-const spacetime = require('spacetime')
+import spacetime from 'spacetime'
 
 const parseSentence = function (doc) {
   let s = doc.sentence()
@@ -35,4 +35,4 @@ const parseSentence = function (doc) {
   }
   return null
 }
-module.exports = parseSentence
+export default parseSentence

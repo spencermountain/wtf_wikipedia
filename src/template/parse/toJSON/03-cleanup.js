@@ -27,4 +27,4 @@ const cleanup = function (obj) {
   })
   return obj
 }
-module.exports = cleanup
+export default cleanup

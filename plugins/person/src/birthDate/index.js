@@ -1,7 +1,7 @@
-const byInfobox = require('../getInfobox')
-const bySentence = require('../getSentence')
-const byCategory = require('./byCategory')
-const parseDate = require('../parseDate')
+import byInfobox from '../getInfobox.js'
+import bySentence from '../getSentence.js'
+import byCategory from './byCategory.js'
+import parseDate from '../parseDate.js'
 
 const birthDate = function (doc) {
   let res = byInfobox(doc, 'birth_date')
@@ -22,4 +22,4 @@ const birthDate = function (doc) {
   }
   return null
 }
-module.exports = birthDate
+export default birthDate

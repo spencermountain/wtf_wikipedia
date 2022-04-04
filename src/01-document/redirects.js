@@ -1,7 +1,8 @@
-const i18n = require('../_data/i18n')
-const parseLink = require('../link/parse')
+import { redirects } from '../_data/i18n.js'
+import parseLink from '../link/parse.js'
+
 //pulls target link out of redirect page
-const REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + i18n.redirects.join('|') + ') *?(\\[\\[.{2,180}?\\]\\])', 'i')
+const REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + redirects.join('|') + ') *?(\\[\\[.{2,180}?\\]\\])', 'i')
 
 const isRedirect = function (wiki) {
   //too long to be a redirect?
@@ -20,7 +21,4 @@ const parse = function (wiki) {
   return {}
 }
 
-module.exports = {
-  isRedirect: isRedirect,
-  parse: parse,
-}
+export { isRedirect, parse }

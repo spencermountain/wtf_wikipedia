@@ -8,4 +8,4 @@ const toLatex = function () {
   out += '\n\\end{figure}'
   return out
 }
-module.exports = toLatex
+export default toLatex

@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'atsauce',
   'chú thích',
   'cit',

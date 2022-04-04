@@ -5,4 +5,4 @@ const toHtml = function () {
   let str = this.text() || this.page()
   return `<a class="${classNames}" href="${href}">${str}</a>`
 }
-module.exports = toHtml
+export default toHtml

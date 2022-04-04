@@ -33,4 +33,4 @@ const templates = {
   },
 }
 templates.wikipediapar = templates.wikipedia
-module.exports = templates
+export default templates

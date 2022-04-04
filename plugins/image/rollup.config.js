@@ -1,6 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
-import { babel } from '@rollup/plugin-babel'
 import sizeCheck from 'rollup-plugin-filesize-check'
 import { nodeResolve } from '@rollup/plugin-node-resolve' //import https
 
@@ -17,11 +16,6 @@ export default [
     plugins: [
       nodeResolve(),
       commonjs({ requireReturnsDefault: "auto" }),
-      babel({
-        babelHelpers: "bundled",
-        babelrc: false,
-        presets: ['@babel/preset-env']
-      })
     ]
   },
 
@@ -39,12 +33,7 @@ export default [
     ],
     plugins: [
       nodeResolve(),
-      commonjs({ requireReturnsDefault: "auto" }),
-      babel({
-        babelHelpers: "bundled",
-        babelrc: false,
-        presets: ['@babel/preset-env']
-      })
+      commonjs({ requireReturnsDefault: "auto" })
     ]
   },
   // ===  min.js ===
@@ -62,11 +51,6 @@ export default [
     plugins: [
       nodeResolve(),
       commonjs({ requireReturnsDefault: "auto" }),
-      babel({
-        babelHelpers: "bundled",
-        babelrc: false,
-        presets: ['@babel/preset-env']
-      }),
       terser(),
       sizeCheck({ expect: 24, warn: 10 })
     ]

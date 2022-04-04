@@ -1,5 +1,5 @@
-const parseSentence = require('../../04-sentence/').fromText
-const Image = require('../../image/Image')
+import { fromText as parseSentence } from '../../04-sentence/index.js'
+import Image from '../../image/Image.js'
 //okay, <gallery> is a xml-tag, with newline-separated data, somehow pivoted by '|'...
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
 //- not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
@@ -7,11 +7,11 @@ const Image = require('../../image/Image')
  *
  * @private
  * @param {object} catcher
- * @param {Document} doc
- * @param {Section} section
+ * @param {object} doc
+ * @param {object} section
  */
 const parseGallery = function (catcher, doc, section) {
-  catcher.text = catcher.text.replace(/<gallery([^>]*)>([\s\S]+)<\/gallery>/g, (_, attrs, inside) => {
+  catcher.text = catcher.text.replace(/<gallery([^>]*)>([\s\S]+)<\/gallery>/g, (_, _attrs, inside) => {
     let images = inside.split(/\n/g)
     images = images.filter((str) => str && str.trim() !== '')
 
@@ -44,4 +44,4 @@ const parseGallery = function (catcher, doc, section) {
     return ''
   })
 }
-module.exports = parseGallery
+export default parseGallery

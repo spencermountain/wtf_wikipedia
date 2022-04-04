@@ -1,12 +1,12 @@
-const parse = require('../../parse/toJSON')
-const Image = require('../../../image/Image')
-const lib = require('../_lib')
+import parse from '../../parse/toJSON/index.js'
+import Image from '../../../image/Image.js'
+import { getLang, sisterProjects, toNumber } from '../_lib.js'
 
-module.exports = {
+export default {
   // https://en.wikipedia.org/wiki/Template:IPA
   ipa: (tmpl, list) => {
     let obj = parse(tmpl, ['transcription', 'lang', 'audio'])
-    obj.lang = lib.getLang(obj.template)
+    obj.lang = getLang(obj.template)
     obj.template = 'ipa'
     list.push(obj)
     return ''
@@ -16,7 +16,7 @@ module.exports = {
     let obj = parse(tmpl)
     obj.transcription = (obj.list || []).join(',')
     delete obj.list
-    obj.lang = lib.getLang(obj.template)
+    obj.lang = getLang(obj.template)
     obj.template = 'ipac'
     list.push(obj)
     return ''
@@ -121,9 +121,9 @@ module.exports = {
     let data = parse(tmpl)
     //rename 'wd' to 'wikidata'
     let links = {}
-    Object.keys(lib.sisterProjects).forEach((k) => {
+    Object.keys(sisterProjects).forEach((k) => {
       if (data.hasOwnProperty(k) === true) {
-        links[lib.sisterProjects[k]] = data[k] //.text();
+        links[sisterProjects[k]] = data[k] //.text();
       }
     })
     let obj = {
@@ -139,8 +139,8 @@ module.exports = {
     let data = parse(tmpl)
     Object.keys(data).forEach((k) => {
       //rename 'voy' to 'wikivoyage'
-      if (lib.sisterProjects.hasOwnProperty(k)) {
-        data[lib.sisterProjects[k]] = data[k]
+      if (sisterProjects.hasOwnProperty(k)) {
+        data[sisterProjects[k]] = data[k]
         delete data[k]
       }
     })
@@ -316,7 +316,7 @@ module.exports = {
       monthList.forEach((m) => {
         let key = `${m} ${prop}`
         if (obj.hasOwnProperty(key)) {
-          let num = lib.toNumber(obj[key])
+          let num = toNumber(obj[key])
           delete obj[key]
           byMonth[prop].push(num)
         }
@@ -342,7 +342,7 @@ module.exports = {
   //https://en.wikipedia.org/wiki/Template:Weather_box/concise_C
   'weather box/concise c': (tmpl, list) => {
     let obj = parse(tmpl)
-    obj.list = obj.list.map((s) => lib.toNumber(s))
+    obj.list = obj.list.map((s) => toNumber(s))
     obj.byMonth = {
       'high c': obj.list.slice(0, 12),
       'low c': obj.list.slice(12, 24),
@@ -356,7 +356,7 @@ module.exports = {
 
   'weather box/concise f': (tmpl, list) => {
     let obj = parse(tmpl)
-    obj.list = obj.list.map((s) => lib.toNumber(s))
+    obj.list = obj.list.map((s) => toNumber(s))
     obj.byMonth = {
       'high f': obj.list.slice(0, 12),
       'low f': obj.list.slice(12, 24),
@@ -385,9 +385,9 @@ module.exports = {
     //groups of three, for 12 months
     for (let i = 0; i < 36; i += 3) {
       months.push({
-        low: lib.toNumber(lines[i]),
-        high: lib.toNumber(lines[i + 1]),
-        precip: lib.toNumber(lines[i + 2]),
+        low: toNumber(lines[i]),
+        high: toNumber(lines[i + 1]),
+        precip: toNumber(lines[i + 2]),
       })
     }
     let obj = {

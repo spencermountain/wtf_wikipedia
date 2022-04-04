@@ -1,10 +1,10 @@
-module.exports = {
+export default {
   name: 'Musician',
   //
   children: {},
   properties: {
-    groups: () => {},
-    instruments: () => {},
+    groups: () => { },
+    instruments: () => { },
   },
   //
   categories: {

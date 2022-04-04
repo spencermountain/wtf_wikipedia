@@ -1,9 +1,9 @@
-const birthDate = require('./birthDate')
-const birthPlace = require('./birthPlace')
-const isAlive = require('./isAlive')
-const deathDate = require('./deathDate')
-const deathPlace = require('./deathPlace')
-const nationality = require('./nationality')
+import birthDate from './birthDate/index.js'
+import birthPlace from './birthPlace/index.js'
+import isAlive from './isAlive/index.js'
+import deathDate from './deathDate/index.js'
+import deathPlace from './deathPlace/index.js'
+import nationality from './nationality/index.js'
 
 const addMethod = function (models) {
   models.Doc.prototype.birthDate = function () {
@@ -25,4 +25,4 @@ const addMethod = function (models) {
     return nationality(this)
   }
 }
-module.exports = addMethod
+export default addMethod

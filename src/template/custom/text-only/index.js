@@ -1,8 +1,14 @@
-module.exports = Object.assign(
+import hardcoded from './hardcoded.js'
+import shorthand from './shorthand.js'
+import functions from './functions.js'
+import flags from './flags.js'
+import table from './table-cell.js'
+
+export default Object.assign(
   {},
-  require('./hardcoded'),
-  require('./shorthand'),
-  require('./functions'),
-  require('./flags'),
-  require('./table-cell')
+  hardcoded,
+  shorthand,
+  functions,
+  flags,
+  table,
 )

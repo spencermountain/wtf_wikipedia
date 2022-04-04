@@ -1,4 +1,4 @@
-const got = require('got')
+import got from 'got'
 const ns = 10 //templates
 
 // known templates we don't need custom stuff for

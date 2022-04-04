@@ -14,4 +14,4 @@ const mainImage = function () {
   }
   return null
 }
-module.exports = mainImage
+export default mainImage

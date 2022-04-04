@@ -1,4 +1,4 @@
-const sh = require('shelljs')
+import sh from 'shelljs'
 
 // run each plugin's tests:
 sh.cd('./plugins')

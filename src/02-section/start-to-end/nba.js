@@ -1,4 +1,4 @@
-const tableParser = require('../../table/parse')
+import tableParser from '../../table/parse/index.js'
 const keys = {
   coach: ['team', 'year', 'g', 'w', 'l', 'w-l%', 'finish', 'pg', 'pw', 'pl', 'pw-l%'],
   player: ['year', 'team', 'gp', 'gs', 'mpg', 'fg%', '3p%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
@@ -39,4 +39,4 @@ const parseNBA = function (catcher) {
     }
   )
 }
-module.exports = parseNBA
+export default parseNBA

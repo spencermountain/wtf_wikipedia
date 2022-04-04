@@ -1,4 +1,4 @@
-const { like, dislike, good, bad } = require('./regs')
+import { like, dislike, good, bad } from './regs.js'
 const hasYear = /[0-9]{4}/
 const isPlural = /s$/
 
@@ -65,4 +65,4 @@ const fromCategory = function (doc) {
 
   return cats[0]
 }
-module.exports = fromCategory
+export default fromCategory

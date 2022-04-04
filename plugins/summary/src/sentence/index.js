@@ -1,11 +1,11 @@
-const nlp = require('compromise')
-const preProcess = require('./00-preProcess')
-const findPivot = require('./01-pivot')
-const byClause = require('./02-byClause')
-const safeCut = require('./03-safeCuts')
-const hardCut = require('./04-hardCuts')
-const lastTry = require('./05-lastTry')
-const isGood = require('./_isGood')
+import nlp from 'compromise'
+import preProcess from './00-preProcess.js'
+import findPivot from './01-pivot.js'
+import byClause from './02-byClause.js'
+import safeCut from './03-safeCuts.js'
+import hardCut from './04-hardCuts.js'
+import lastTry from './05-lastTry.js'
+import isGood from './_isGood.js'
 
 const post = function (s) {
   s.remove('^(and|or|but)')
@@ -65,4 +65,4 @@ const doSentence = function (doc, options) {
   // console.log('\n')
   return ''
 }
-module.exports = doSentence
+export default doSentence

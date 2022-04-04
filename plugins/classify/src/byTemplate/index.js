@@ -1,5 +1,5 @@
-const { patterns, mappings } = require('../../schema/_data-fns')
-const byPattern = require('../_byPattern')
+import { patterns, mappings } from '../../schema/_data-fns.js'
+import byPattern from '../_byPattern.js'
 
 const byTemplate = function (doc) {
   let templates = doc.templates().map((tmpl) => tmpl.json())
@@ -19,4 +19,4 @@ const byTemplate = function (doc) {
   return found
 }
 
-module.exports = byTemplate
+export default byTemplate

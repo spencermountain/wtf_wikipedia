@@ -1,7 +1,7 @@
-const parsers = require('./_parsers')
-const parse = require('../../../parse/toJSON')
-const lib = require('./_lib')
-const format = require('./_format')
+import parsers from './_parsers.js'
+import parse from '../../../parse/toJSON/index.js'
+import { days, timeSince, toOrdinal } from './_lib.js'
+import { ymd, toText } from './_format.js'
 
 const months = [
   'January',
@@ -19,14 +19,14 @@ const months = [
 ]
 
 //date- templates we support
-module.exports = {
+export default {
   currentday: () => {
     let d = new Date()
     return String(d.getDate())
   },
   currentdayname: () => {
     let d = new Date()
-    return lib.days[d.getDay()]
+    return days[d.getDay()]
   },
   currentmonth: () => {
     let d = new Date()
@@ -54,7 +54,7 @@ module.exports = {
   'time ago': (tmpl) => {
     let order = ['date', 'fmt']
     let time = parse(tmpl, order).date
-    return lib.timeSince(time)
+    return timeSince(time)
   },
   //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
   'birth date and age': (tmpl, list) => {
@@ -65,8 +65,8 @@ module.exports = {
       return parsers.natural_date(tmpl, list)
     }
     list.push(obj)
-    obj = format.ymd([obj.year, obj.month, obj.day])
-    return format.toText(obj)
+    obj = ymd([obj.year, obj.month, obj.day])
+    return toText(obj)
   },
   'birth year and age': (tmpl, list) => {
     let order = ['birth_year', 'birth_month']
@@ -77,8 +77,8 @@ module.exports = {
     }
     list.push(obj)
     let age = new Date().getFullYear() - parseInt(obj.birth_year, 10)
-    obj = format.ymd([obj.birth_year, obj.birth_month])
-    let str = format.toText(obj)
+    obj = ymd([obj.birth_year, obj.birth_month])
+    let str = toText(obj)
     if (age) {
       str += ` (age ${age})`
     }
@@ -92,16 +92,16 @@ module.exports = {
       return parsers.natural_date(tmpl, list)
     }
     list.push(obj)
-    obj = format.ymd([obj.death_year, obj.death_month])
-    return format.toText(obj)
+    obj = ymd([obj.death_year, obj.death_month])
+    return toText(obj)
   },
   //https://en.wikipedia.org/wiki/Template:Birth_date_and_age2
   'birth date and age2': (tmpl, list) => {
     let order = ['at_year', 'at_month', 'at_day', 'birth_year', 'birth_month', 'birth_day']
     let obj = parse(tmpl, order)
     list.push(obj)
-    obj = format.ymd([obj.birth_year, obj.birth_month, obj.birth_day])
-    return format.toText(obj)
+    obj = ymd([obj.birth_year, obj.birth_month, obj.birth_day])
+    return toText(obj)
   },
   //https://en.wikipedia.org/wiki/Template:Birth_based_on_age_as_of_date
   'birth based on age as of date': (tmpl, list) => {
@@ -121,8 +121,8 @@ module.exports = {
     let order = ['year', 'month', 'day', 'age']
     let obj = parse(tmpl, order)
     list.push(obj)
-    obj = format.ymd([obj.year, obj.month, obj.day])
-    let str = format.toText(obj)
+    obj = ymd([obj.year, obj.month, obj.day])
+    let str = toText(obj)
     if (obj.age) {
       str += ` (age ${obj.age})`
     }
@@ -158,22 +158,22 @@ module.exports = {
   //https://en.wikipedia.org/wiki/Template:Time
   time: () => {
     let d = new Date()
-    let obj = format.ymd([d.getFullYear(), d.getMonth(), d.getDate()])
-    return format.toText(obj)
+    let obj = ymd([d.getFullYear(), d.getMonth(), d.getDate()])
+    return toText(obj)
   },
 
   // https://en.wikipedia.org/wiki/Template:MILLENNIUM
   millennium: (tmpl) => {
     let obj = parse(tmpl, ['year'])
-    let year = Number(obj.year)
-    year = parseInt(year / 1000, 10) + 1
+    let year = parseInt(obj.year, 10)
+    year = Math.floor(year / 1000) + 1
     if (obj.abbr && obj.abbr === 'y') {
       if (year < 0) {
-        return `${lib.toOrdinal(Math.abs(year))} BC`
+        return `${toOrdinal(Math.abs(year))} BC`
       }
-      return `${lib.toOrdinal(year)}`
+      return `${toOrdinal(year)}`
     }
-    return `${lib.toOrdinal(year)} millennium`
+    return `${toOrdinal(year)} millennium`
   },
   //date/age/time templates
   start: parsers.date,

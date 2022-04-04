@@ -1,5 +1,5 @@
-const test = require('tape')
-const makeUrl = require('../../../src/_fetch/makeUrl')
+import test from 'tape'
+import makeUrl from '../../src/_fetch/makeUrl.js'
 
 //makeUrl 
 const tests = [
@@ -63,7 +63,7 @@ const tests = [
       "domain": "en.wikipedia.org",
       "follow_redirects": true,
       "Api-User-Agent": "wtf_wikipedia test script - <spencermountain@gmail.com>",
-      "title":  [145422, 3120522]
+      "title": [145422, 3120522]
     },
     url: 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions%7Cpageprops&rvprop=content&maxlag=5&rvslots=main&origin=*&format=json&redirects=true&pageids=145422%7C3120522'
   },

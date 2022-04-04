@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'adkas', //br
   'aýdaw',
   'doorverwijzing', //nl

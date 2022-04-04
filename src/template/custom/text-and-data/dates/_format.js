@@ -91,9 +91,6 @@ const toText = function (date) {
   return str
 }
 
-module.exports = {
-  toText: toText,
-  ymd: ymd,
-}
+export { toText, ymd }
 
 // console.log(toText(ymd([2018, 3, 28])));

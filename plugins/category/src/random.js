@@ -39,4 +39,4 @@ const fetchRandom = function (lang, options, http) {
       return null
     })
 }
-module.exports = fetchRandom
+export default fetchRandom

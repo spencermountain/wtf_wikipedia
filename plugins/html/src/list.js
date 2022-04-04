@@ -7,4 +7,4 @@ const toHtml = function (options) {
   html += '  </ul>\n'
   return html
 }
-module.exports = toHtml
+export default toHtml

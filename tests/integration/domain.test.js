@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('../lib')
+import test from 'tape'
+import wtf from '../lib/index.js'
 
 test('domain - normal', (t) => {
   let str = `hello [[File:SpencerKelly.jpg]] world`

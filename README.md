@@ -52,37 +52,19 @@
   why do we always do this?
   <br/>
   <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-  we put our information in places we can't take it out.
-  <br/>
-  information in wikipedia can't <i>be used</i>
-</div>
+  we put our information where we can't take it out.
 
-<!-- spacer -->
-<img height="15px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-<div align="center">
-<div >and it's not just wikipedia</div>
-it's
-  <ul >
-    <li>dj set-lists</li>
-    <li>mathematical proofs</li>
-    <li>e-sports rankings</li>
-    <li>dictionary information</li>
-  </ul>
 </div>
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
 ```js
-const wtf = require('wtf_wikipedia')
+import wtf from 'wtf_wikipedia'
 
-wtf.fetch('Toronto Raptors').then((doc) => {
-  let coach = doc.infobox().get('coach')
-  coach.text() //'Nick Nurse'
-
-  doc.sentences()[0].text()
-  //'The Toronto Raptors are a Canadian professional basketball team ...'
-})
+let doc = await wtf.fetch('Toronto Raptors')
+let coach = doc.infobox().get('coach')
+coach.text() //'Nick Nurse'
 ```
 
 <div align="center">
@@ -103,7 +85,7 @@ wtf(str).text()
 
 ```js
 let doc = await wtf.fetch('Glastonbury', 'en')
-doc.text()
+doc.sentences()[0].text()
 // 'Glastonbury is a town and civil parish in Somerset, England, situated at a dry point ...'
 ```
 
@@ -137,7 +119,7 @@ doc.images()[0].json()
 // { file: 'Image:Duveneck Whistling Boy.jpg', url: 'https://commons.wiki...' }
 
 // json for a particular section:
-doc.section('see also').link().json()
+doc.section('see also').links()[0].json()
 // { page: 'Slide Whistle' }
 ```
 
@@ -164,10 +146,12 @@ run it on the client-side:
 </script>
 ```
 
-or in Deno/typescript/webpack:
+or the server-side:
 
 ```js
-import wtf from 'https://unpkg.com/wtf_wikipedia'
+import wtf from 'wtf_wikipedia'
+// or,
+const wtf = require('wtf_wikipedia')
 ```
 
 <!-- spacer -->
@@ -193,66 +177,6 @@ npm install -g dumpster-dive
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-<div align="center">
-  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
-</div>
-
-## Tutorials
-
-- [Gentle Introduction](https://observablehq.com/@spencermountain/wtf_wikipedia-tutorial?collection=@spencermountain/wtf_wikipedia) - Getting NBA Team data
-- [Parsing tables](https://observablehq.com/@spencermountain/parsing-wikipedia-tables) - getting all Apollo Astronauts as JSON
-- [Parsing Timezones](https://observablehq.com/@spencermountain/parsing-timezones-from-wikipedia)
-- [MBL season schedules](https://observablehq.com/@spencermountain/wikipedia-baseball-table-parser?collection=@spencermountain/wtf_wikipedia)
-- [Fetching a list of pages](https://observablehq.com/@spencermountain/parsing-a-list-of-wikipedia-articles)
-- [Parsing COVID outbreak table](https://observablehq.com/@spencermountain/parsing-wikipedias-coronavirus-outbreak-data?collection=@spencermountain/wtf_wikipedia)
-
-<!-- spacer -->
-<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-<div align="center">
-  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
-</div>
-
-## Plugins
-
-these add all sorts of new functionality:
-
-```js
-wtf.extend(require('wtf-plugin-classify'))
-await wtf.fetch('Toronto Raptors').classify()
-// 'Organization/SportsTeam'
-
-wtf.extend(require('wtf-plugin-summary'))
-await wtf.fetch('Pulp Fiction').summary()
-// 'a 1994 American crime film'
-
-wtf.extend(require('wtf-plugin-person'))
-await wtf.fetch('David Bowie').birthDate()
-// {year:1947, date:8, month:1}
-
-wtf.extend(require('wtf-plugin-i18n'))
-await wtf.fetch('Ziggy Stardust', 'fr').infobox().json()
-// {nom:{text:"Ziggy Stardust"}, oeuvre:{text:"The Rise and Fall of Ziggy Stardust"}}
-```
-
-| **Plugin**                                                 |                                         |
-| ---------------------------------------------------------- | --------------------------------------- |
-| [classify](./plugins/classify)                             | person/place/thing                      |
-| [summary](./plugins/summary)                               | short description text                  |
-| [person](./plugins/person)                                 | birth/death information                 |
-| [api](./plugins/api)                                       | fetch more data from the API            |
-| [i18n](./plugins/i18n)                                     | improves multilingual template coverage |
-| [wtf-mlb](https://github.com/spencermountain/wtf-mlb)      | fetch baseball data                     |
-| [wtf-nhl](https://github.com/spencermountain/wtf-nhl)      | fetch hockey data                       |
-| [nsfw](https://github.com/spencermountain/wtf-plugin-nsfw) | flag sexual/graphic/adult articles      |
-| [image](./plugins/image)                                   | additional methods for `.images()`      |
-| [html](./plugins/html)                                     | output html                             |
-| [wikitext](./plugins/wikitext)                             | output wikitext                         |
-| [markdown](./plugins/markdown)                             | output markdown                         |
-| [latex](./plugins/latex)                                   | output latex                            |
-
-<div align="right">
-  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-plugins">plugin docs</a>
-</div>
 <div align="center">
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
 </div>
@@ -324,7 +248,7 @@ Manually _spelunking_ the html is sometimes just as tricky and error-prone as sc
 
 The contributors to this library have come to that conclusion, [as many others have](https://www.mediawiki.org/wiki/Alternative_parsers).
 
-This library has (_lovingly_) borrowed a lot of code and data from the parsoid project, and is gracious to those contributors.
+This library is gracious to the Parsoid contributors.
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
@@ -332,7 +256,7 @@ This library has (_lovingly_) borrowed a lot of code and data from the parsoid p
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
 </div>
 
-## enough chat.
+#### okay,
 
 flip your wikitext into a Doc object
 
@@ -341,8 +265,8 @@ import wtf from 'wtf_wikipedia'
 
 let txt = `
 ==Wood in Popular Culture==
-* harry potter's wand
-* the simpson's fence
+* Harry Potter's wand
+* The Simpson's fence
 `
 wtf(txt)
 // Document {text(), json(), lists()...}
@@ -352,9 +276,7 @@ wtf(txt)
 
 ```javascript
 let txt = `Whistling is featured in a number of television shows, such as [[Lassie (1954 TV series)|''Lassie'']], and the title theme for ''[[The X-Files]]''.`
-wtf(txt)
-  .links()
-  .map((l) => l.page())
+wtf(txt).links().map((l) => l.page())
 // [ 'Lassie (1954 TV series)',  'The X-Files' ]
 ```
 
@@ -363,8 +285,7 @@ wtf(txt)
 returns nice plain-text of the article
 
 ```js
-var txt =
-  "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>"
+let txt = "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>"
 wtf(txt).text()
 //"Boston's baseball field has a 37ft wall."
 ```
@@ -467,6 +388,71 @@ wtf.random().then((doc) => {
 
 see [wtf-plugin-api](./plugins/api)
 
+
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+
+## Tutorials
+
+- [Gentle Introduction](https://observablehq.com/@spencermountain/wtf_wikipedia-tutorial?collection=@spencermountain/wtf_wikipedia) - Getting NBA Team data
+- [Parsing tables](https://observablehq.com/@spencermountain/parsing-wikipedia-tables) - getting all Apollo Astronauts as JSON
+- [Parsing Timezones](https://observablehq.com/@spencermountain/parsing-timezones-from-wikipedia)
+- [MBL season schedules](https://observablehq.com/@spencermountain/wikipedia-baseball-table-parser?collection=@spencermountain/wtf_wikipedia)
+- [Fetching a list of pages](https://observablehq.com/@spencermountain/parsing-a-list-of-wikipedia-articles)
+- [Parsing COVID outbreak table](https://observablehq.com/@spencermountain/parsing-wikipedias-coronavirus-outbreak-data?collection=@spencermountain/wtf_wikipedia)
+
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
+
+## Plugins
+
+these add all sorts of new functionality:
+
+```js
+wtf.extend(require('wtf-plugin-classify'))
+await wtf.fetch('Toronto Raptors').classify()
+// 'Organization/SportsTeam'
+
+wtf.extend(require('wtf-plugin-summary'))
+await wtf.fetch('Pulp Fiction').summary()
+// 'a 1994 American crime film'
+
+wtf.extend(require('wtf-plugin-person'))
+await wtf.fetch('David Bowie').birthDate()
+// {year:1947, date:8, month:1}
+
+wtf.extend(require('wtf-plugin-i18n'))
+await wtf.fetch('Ziggy Stardust', 'fr').infobox().json()
+// {nom:{text:"Ziggy Stardust"}, oeuvre:{text:"The Rise and Fall of Ziggy Stardust"}}
+```
+
+| **Plugin**                                                 |                                         |
+| ---------------------------------------------------------- | --------------------------------------- |
+| [classify](./plugins/classify)                             | person/place/thing                      |
+| [summary](./plugins/summary)                               | short description text                  |
+| [person](./plugins/person)                                 | birth/death information                 |
+| [api](./plugins/api)                                       | fetch more data from the API            |
+| [i18n](./plugins/i18n)                                     | improves multilingual template coverage |
+| [wtf-mlb](https://github.com/spencermountain/wtf-mlb)      | fetch baseball data                     |
+| [wtf-nhl](https://github.com/spencermountain/wtf-nhl)      | fetch hockey data                       |
+| [nsfw](https://github.com/spencermountain/wtf-plugin-nsfw) | flag sexual/graphic/adult articles      |
+| [image](./plugins/image)                                   | additional methods for `.images()`      |
+| [html](./plugins/html)                                     | output html                             |
+| [wikitext](./plugins/wikitext)                             | output wikitext                         |
+| [markdown](./plugins/markdown)                             | output markdown                         |
+| [latex](./plugins/latex)                                   | output latex                            |
+
+<div align="right">
+  <a href="https://observablehq.com/@spencermountain/wtf-wikipedia-plugins">plugin docs</a>
+</div>
+<div align="center">
+  <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
+
+
 ### Good practice:
 
 The wikipedia api is [pretty welcoming](https://www.mediawiki.org/wiki/API:Etiquette#Request_limit) though recommends three things, if you're going to hit it heavily -
@@ -491,7 +477,7 @@ wtf
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
-## API
+## Full API
 
 - **.title()** - get/set the title of the page from the first-sentence
 - **.pageID()** - get/set the wikimedia id of the page, if we have it.
@@ -721,12 +707,11 @@ Please make a PR if you see something missing for your language.
 
 this library ships seperate client-side and server-side builds, to preserve filesize.
 
-- _[./wtf_wikipedia-client.js](./builds/wtf_wikipedia-client.js)_ - with sourcemap
 - _[./wtf_wikipedia-client.mjs](./builds/wtf_wikipedia-client.mjs)_ - as es-module (or Deno)
 - _[./wtf_wikipedia-client.min.js](./builds/wtf_wikipedia-client.min.js)_ - for production
 
-- _[./wtf_wikipedia.js](./builds/wtf_wikipedia.js)_ - main node build
-- _[./wtf_wikipedia.mjs](./builds/wtf_wikipedia.mjs)_ - esmodule node (deno/typescript)
+- _[./wtf_wikipedia.cjs](./builds/wtf_wikipedia.js)_ - node commonjs build
+- _[./wtf_wikipedia.mjs](./builds/wtf_wikipedia.mjs)_ - node/deno/typescript esm build
 
 the browser version uses `fetch()` and the server version uses `require('https')`.
 
@@ -749,7 +734,7 @@ That's about 100 pages/second, per thread.
 
 ## See also:
 
-alternative javascript parsers:
+Other alternative javascript parsers:
 
 - [instaview](https://github.com/cscott/instaview)
 - [txtwiki](https://github.com/joaomsa/txtwiki.js)

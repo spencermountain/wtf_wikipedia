@@ -4,7 +4,7 @@
 //(Rule-based sentence boundary segmentation) - chop given text into its proper sentences.
 // Ignore periods/questions/exclamations used in acronyms/abbreviations/numbers, etc.
 // @spencermountain 2015 MIT
-const literalAbbreviations = require('./_abbreviations')
+import literalAbbreviations from './_abbreviations.js'
 const abbreviations = literalAbbreviations.concat('[^]][^]]')
 const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i')
 const acronym_reg = /[ .'][A-Z].? *$/i
@@ -113,4 +113,4 @@ const sentence_parser = function (text) {
   return sentences
 }
 
-module.exports = sentence_parser
+export default sentence_parser

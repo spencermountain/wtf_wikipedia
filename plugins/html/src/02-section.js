@@ -59,4 +59,4 @@ const doSection = function (options) {
   return '<div class="section">\n' + html + '</div>\n'
 }
 
-module.exports = doSection
+export default doSection

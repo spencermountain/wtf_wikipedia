@@ -1,5 +1,5 @@
-const parseTable = require('./parse')
-const Table = require('./Table')
+import parseTable from './parse/index.js'
+import Table from './Table.js'
 //const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70k chars.
 const openReg = /^\s*\{\|/
 const closeReg = /^\s*\|\}/
@@ -48,4 +48,4 @@ const findTables = function (section) {
   section._wiki = wiki
 }
 
-module.exports = findTables
+export default findTables

@@ -1,6 +1,6 @@
-const i18n = require('../../_data/i18n')
-const infoboxes = require('../../infobox/_infoboxes')
-const i18nReg = new RegExp('^(subst.)?(' + i18n.infoboxes.join('|') + ')[: \n]', 'i')
+import infoboxList from '../../infobox/_infoboxes.js'
+import { infoboxes } from '../../_data/i18n.js'
+const i18nReg = new RegExp('^(subst.)?(' + infoboxes.join('|') + ')[: \n]', 'i')
 //some looser ones
 const startReg = /^infobox /i
 const endReg = / infobox$/i
@@ -11,7 +11,7 @@ const yearIn = /^year in [A-Z]/i
 //and https://en.wikipedia.org/wiki/Category:Infobox_templates
 const isInfobox = function (name) {
   //known
-  if (infoboxes.hasOwnProperty(name) === true) {
+  if (infoboxList.hasOwnProperty(name) === true) {
     return true
   }
   if (i18nReg.test(name)) {
@@ -45,7 +45,4 @@ const fmtInfobox = function (obj = {}) {
   return infobox
 }
 
-module.exports = {
-  isInfobox: isInfobox,
-  format: fmtInfobox,
-}
+export { isInfobox, fmtInfobox }

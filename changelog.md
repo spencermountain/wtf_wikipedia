@@ -1,8 +1,11 @@
 <!--
-#### [unreleased 9.0.0]
-
-- **[breaking]** - plural methods like .sentences() always return arrays, even with a 'clue' param.
+#### [unreleased ]
 -->
+#### 10.0.0 [April 2022]
+- **[breaking]** - drop IE11 support - target evergreen browsers
+- **[change]** - convert to esmodules internally
+- **[change]** - add blockquote template
+update deps
 
 #### 9.1.0 [March 2022]
 - **[change]** - support inline templates inside section titles

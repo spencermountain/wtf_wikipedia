@@ -1,4 +1,4 @@
-const Hashes = require('jshashes')
+import jsHash from 'jshashes'
 
 const server = 'https://upload.wikimedia.org/wikipedia/commons/'
 
@@ -17,10 +17,10 @@ const encodeTitle = function (file) {
 const commonsURL = function () {
   let file = this.data.file
   let title = encodeTitle(file)
-  let hash = new Hashes.MD5().hex(title)
+  let hash = new jsHash.MD5().hex(title)
   let path = hash.substr(0, 1) + '/' + hash.substr(0, 2) + '/'
   title = encodeURIComponent(title)
   path += title
   return server + path
 }
-module.exports = commonsURL
+export default commonsURL

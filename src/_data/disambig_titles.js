@@ -1,6 +1,6 @@
 // used in titles to denote disambiguation pages
 // see 'Football_(disambiguation)'
-module.exports = [
+export default [
   'disambiguation', //en
   'homonymie', //fr
   'توضيح', //ar

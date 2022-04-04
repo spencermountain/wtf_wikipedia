@@ -1,7 +1,6 @@
-const parse = require('../template/parse/toJSON')
-//const parse = require('../../templates/wikipedia/page').citation;
-const parseSentence = require('../04-sentence').fromText
-const Reference = require('./Reference')
+import parse from '../template/parse/toJSON/index.js'
+import { fromText as parseSentence } from '../04-sentence/index.js'
+import Reference from './Reference.js'
 
 //structured Cite templates - <ref>{{Cite..</ref>
 const hasCitation = function (str) {
@@ -67,4 +66,4 @@ const parseRefs = function (section) {
   section._wiki = wiki
 }
 
-module.exports = parseRefs
+export default parseRefs

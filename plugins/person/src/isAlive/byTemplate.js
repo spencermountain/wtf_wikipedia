@@ -57,4 +57,4 @@ const byTemplate = function (doc) {
   }
   return null
 }
-module.exports = byTemplate
+export default byTemplate

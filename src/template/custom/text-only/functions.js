@@ -1,8 +1,8 @@
-const parse = require('../../parse/toJSON')
-const strip = require('../../parse/toJSON/_strip')
-const lib = require('../_lib')
+import parse from '../../parse/toJSON/index.js'
+import strip from '../../parse/toJSON/_strip.js'
+import { titlecase, percentage } from '../_lib.js'
 
-module.exports = {
+export default {
   //https://en.wikipedia.org/wiki/Template:Ra
   ra: (tmpl) => {
     let obj = parse(tmpl, ['hours', 'minutes', 'seconds'])
@@ -93,15 +93,15 @@ module.exports = {
   decade: (tmpl) => {
     let obj = parse(tmpl, ['year'])
     let year = Number(obj.year)
-    year = parseInt(year / 10, 10) * 10 // round to decade
+    year = Math.floor(year / 10) * 10 // round to decade
     return `${year}s`
   },
 
   // https://en.wikipedia.org/wiki/Template:Century
   century: (tmpl) => {
     let obj = parse(tmpl, ['year'])
-    let year = Number(obj.year)
-    year = parseInt(year / 100, 10) + 1
+    let year = parseInt(obj.year, 10)
+    year = Math.floor(year / 100) + 1
     return `${year}`
   },
 
@@ -341,7 +341,7 @@ module.exports = {
   //this one's a little different
   won: (tmpl) => {
     let data = parse(tmpl, ['text'])
-    return data.place || data.text || lib.titlecase(data.template)
+    return data.place || data.text || titlecase(data.template)
   },
 
   //a convulated way to make a xml tag - https://en.wikipedia.org/wiki/Template:Tag
@@ -418,7 +418,7 @@ module.exports = {
   //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
   percentage: (tmpl) => {
     let obj = parse(tmpl, ['numerator', 'denominator', 'decimals'])
-    let num = lib.percentage(obj)
+    let num = percentage(obj)
     if (num === null) {
       return ''
     }
@@ -428,7 +428,7 @@ module.exports = {
   // {{Percent-done|done=N|total=N|digits=N}}
   'percent-done': (tmpl) => {
     let obj = parse(tmpl, ['done', 'total', 'digits'])
-    let num = lib.percentage({
+    let num = percentage({
       numerator: obj.done,
       denominator: obj.total,
       decimals: obj.digits,

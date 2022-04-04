@@ -13,6 +13,17 @@ let templates = {
   'portuguese name': ['first', 'second', 'suffix'], // https://en.wikipedia.org/wiki/Template:Portuguese_name
   geo: ['lat', 'lon', 'zoom'], //https://en.wikivoyage.org/wiki/Template:Geo
 }
-templates = Object.assign(templates, require('./id-name'), require('./id-title'), require('./functions'))
 
-module.exports = templates
+
+import idName from './id-name.js'
+import idTitle from './id-title.js'
+import fns from './functions.js'
+
+templates = Object.assign(
+  templates,
+  idName,
+  idTitle,
+  fns
+)
+
+export default templates

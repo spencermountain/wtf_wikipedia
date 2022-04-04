@@ -1,8 +1,8 @@
-const ignore = require('./_ignore')
-const infobox = require('./_infobox')
-const templates = require('../custom')
-const toJSON = require('./toJSON')
-const { isArray, isObject } = require('../../_lib/helpers')
+import ignore from './_ignore.js'
+import { isInfobox, fmtInfobox } from './_infobox.js'
+import templates from '../custom/index.js'
+import toJSON from './toJSON/index.js'
+import { isArray, isObject } from '../../_lib/helpers.js'
 
 const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
@@ -14,10 +14,10 @@ const parseTemplate = function (tmpl, doc) {
     return ['']
   }
   //{{infobox settlement...}}
-  if (infobox.isInfobox(name) === true) {
+  if (isInfobox(name) === true) {
     let obj = toJSON(tmpl.body, [], 'raw')
     // list.push(infobox.format(obj))
-    return ['', infobox.format(obj)]
+    return ['', fmtInfobox(obj)]
   }
   //cite book, cite arxiv...
   if (/^cite [a-z]/.test(name) === true) {
@@ -70,4 +70,4 @@ const parseTemplate = function (tmpl, doc) {
   //..then remove it
   return ['', json]
 }
-module.exports = parseTemplate
+export default parseTemplate

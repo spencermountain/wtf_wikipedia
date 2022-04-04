@@ -1,10 +1,10 @@
-module.exports = {
+export default {
   name: 'Airport',
   //
   children: {},
   properties: {
-    airlines: () => {},
-    runways: () => {},
+    airlines: () => { },
+    runways: () => { },
   },
   //
   categories: {

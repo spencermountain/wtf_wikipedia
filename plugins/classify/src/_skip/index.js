@@ -34,4 +34,4 @@ const skipPage = function (doc) {
   }
   return false
 }
-module.exports = skipPage
+export default skipPage

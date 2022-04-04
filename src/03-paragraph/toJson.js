@@ -1,4 +1,4 @@
-const setDefaults = require('../_lib/setDefaults')
+import setDefaults from '../_lib/setDefaults.js'
 
 const defaults = {
   sentences: true,
@@ -12,4 +12,4 @@ const toJson = function (p, options) {
   }
   return data
 }
-module.exports = toJson
+export default toJson

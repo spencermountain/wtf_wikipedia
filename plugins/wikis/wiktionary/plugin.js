@@ -1,7 +1,7 @@
-const templates = require('./templates')
+import templates from './templates'
 
-const plugin = (models, _templates) => {
+const plugin = (_models, _templates) => {
   // add new templates
   Object.assign(_templates, templates)
 }
-module.exports = plugin
+export default plugin

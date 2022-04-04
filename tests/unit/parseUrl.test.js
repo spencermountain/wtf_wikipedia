@@ -1,5 +1,5 @@
-const test = require('tape')
-const parseUrl = require('../../../src/_fetch/parseUrl')
+import test from 'tape'
+import parseUrl from '../../src/_fetch/parseUrl.js'
 
 const tests = [
   {

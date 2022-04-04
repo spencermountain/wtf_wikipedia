@@ -32,4 +32,4 @@ const infobox = function (options) {
   out += '\n\\vspace*{0.3cm}\n\n'
   return out
 }
-module.exports = infobox
+export default infobox

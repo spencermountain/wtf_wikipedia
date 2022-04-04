@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'dab', //en
   'disamb', //en
   'disambig', //en

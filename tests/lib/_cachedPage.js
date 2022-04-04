@@ -1,11 +1,13 @@
-const fs = require('fs')
-const path = require('path')
-const wtf = require('../../src/index')
+import fs from 'fs'
+import path from 'path'
+import wtf from '../../src/index.js'
+
+const dir = new URL('./', import.meta.url).pathname // eslint-disable-line
 
 function from_file(page, options) {
   let file = '../cache/' + page + '.txt'
-  file = path.join(__dirname, file)
+  file = path.join(dir, file)
   const str = fs.readFileSync(file, 'utf-8')
   return wtf(str, options)
 }
-module.exports = from_file
+export default from_file

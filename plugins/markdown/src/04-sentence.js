@@ -1,4 +1,4 @@
-const smartReplace = require('./_lib/smartReplace')
+import smartReplace from './_lib/smartReplace.js'
 
 const defaults = {
   links: true,
@@ -29,4 +29,4 @@ const toMarkdown = function (options) {
   }
   return md
 }
-module.exports = toMarkdown
+export default toMarkdown

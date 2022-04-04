@@ -1,11 +1,9 @@
-const Paragraph = require('./Paragraph')
-const parseSentences = require('../04-sentence').byParagraph
+import Paragraph from './Paragraph.js'
+import { byParagraph as parseSentences } from '../04-sentence/index.js'
 
 const twoNewLines = /\r?\n\r?\n/
-const parse = {
-  image: require('../image'),
-  list: require('../list'),
-}
+import parseImage from '../image/index.js'
+import parseList from '../list/index.js'
 
 const parseParagraphs = function (section, doc) {
   let wiki = section._wiki
@@ -20,9 +18,9 @@ const parseParagraphs = function (section, doc) {
       images: [],
     }
     //parse the lists
-    parse.list(paragraph)
+    parseList(paragraph)
     //parse images
-    parse.image(paragraph, doc)
+    parseImage(paragraph, doc)
     //parse the sentences
     parseSentences(paragraph)
     return new Paragraph(paragraph)
@@ -30,4 +28,4 @@ const parseParagraphs = function (section, doc) {
   section._wiki = wiki
   section._paragraphs = paragraphs
 }
-module.exports = parseParagraphs
+export default parseParagraphs

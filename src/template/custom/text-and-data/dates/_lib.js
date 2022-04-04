@@ -29,19 +29,19 @@ const delta = function (from, to) {
   let diff = to - from
   let obj = {}
   //get years
-  let years = Math.floor(diff / year, 10)
+  let years = Math.floor(diff / year)
   if (years > 0) {
     obj.years = years
     diff -= obj.years * year
   }
   //get months
-  let monthCount = Math.floor(diff / month, 10)
+  let monthCount = Math.floor(diff / month)
   if (monthCount > 0) {
     obj.months = monthCount
     diff -= obj.months * month
   }
   //get days
-  let days = Math.floor(diff / day, 10)
+  let days = Math.floor(diff / day)
   if (days > 0) {
     obj.days = days
     // diff -= (obj.days * day);
@@ -66,17 +66,12 @@ const timeSince = function (str) {
   let hours = delt / 1000 / 60 / 60
   let days = hours / 24
   if (days < 365) {
-    return parseInt(days, 10) + ' days ' + predicate
+    return Number(days) + ' days ' + predicate
   }
   let years = days / 365
-  return parseInt(years, 10) + ' years ' + predicate
+  return Number(years) + ' years ' + predicate
 }
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-module.exports = {
-  days: days,
-  timeSince: timeSince,
-  delta: delta,
-  toOrdinal: toOrdinal,
-}
+export { days, timeSince, delta, toOrdinal }

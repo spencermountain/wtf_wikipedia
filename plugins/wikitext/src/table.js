@@ -22,4 +22,4 @@ const toWiki = function (options) {
   wiki += `|}`
   return wiki
 }
-module.exports = toWiki
+export default toWiki

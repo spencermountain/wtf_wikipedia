@@ -1,9 +1,10 @@
-const test = require('tape')
-const wtf = require('./_lib')
-const fs = require('fs')
-const path = require('path')
+import test from 'tape'
+import wtf from './_lib.js'
+import fs from 'fs'
+import path from 'path'
+let dir = new URL('./', import.meta.url).pathname
 
-test('classify-test', async function (t) {
+test('classify-test', function (t) {
   let arr = [
     ['2008-British-motorcycle-Grand-Prix', 'Event'],
     ['Allen-R.-Morris', 'Person'],
@@ -30,7 +31,7 @@ test('classify-test', async function (t) {
     ['Liste-der-argentinischen-Botschafter-in-Chile', null],
   ]
   arr.forEach((a) => {
-    let abs = path.join(__dirname, `../../../tests/cache/${a[0]}.txt`)
+    let abs = path.join(dir, `../../../tests/cache/${a[0]}.txt`)
     let txt = fs.readFileSync(abs).toString()
     let doc = wtf(txt)
     let res = doc.classify()

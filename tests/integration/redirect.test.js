@@ -1,6 +1,6 @@
-const test = require('tape')
-const readFile = require('../lib/_cachedPage')
-const wtf = require('../lib')
+import test from 'tape'
+import wtf from '../lib/index.js'
+import readFile from '../lib/_cachedPage.js'
 
 test('redirect json', (t) => {
   const str = `#REDIRECT [[Toronto Blue Jays#Stadium|Tranno]]`

@@ -5,4 +5,4 @@ const fmtName = function (name) {
   name = name.replace(/_/g, ' ')
   return name
 }
-module.exports = fmtName
+export default fmtName

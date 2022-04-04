@@ -1,5 +1,5 @@
-const test = require('tape')
-const readFile = require('../lib/_cachedPage')
+import test from 'tape'
+import readFile from '../lib/_cachedPage.js'
 
 test('json-output-default', (t) => {
   const data = readFile('royal_cinema').json()

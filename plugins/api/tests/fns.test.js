@@ -1,5 +1,5 @@
-const test = require('tape')
-const wtf = require('./_lib')
+import test from 'tape'
+import wtf from './_lib.js'
 
 const opts = {
   'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'

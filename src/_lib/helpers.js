@@ -54,7 +54,7 @@ function isObject(x) {
   return x && Object.prototype.toString.call(x) === '[object Object]'
 }
 
-module.exports = {
+export {
   capitalise,
   trim_whitespace,
   isArray,

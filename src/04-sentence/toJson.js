@@ -1,4 +1,4 @@
-const setDefaults = require('../_lib/setDefaults')
+import setDefaults from '../_lib/setDefaults.js'
 const isNumber = /^[0-9,.]+$/
 
 const defaults = {
@@ -8,6 +8,9 @@ const defaults = {
   numbers: true,
 }
 
+/**
+ * @private
+ * */
 const toJSON = function (s, options) {
   options = setDefaults(options, defaults)
   let data = {}
@@ -30,4 +33,4 @@ const toJSON = function (s, options) {
   }
   return data
 }
-module.exports = toJSON
+export default toJSON

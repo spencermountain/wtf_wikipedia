@@ -45,4 +45,4 @@ const ignore = list.reduce((h, str) => {
   h[str] = true
   return h
 }, {})
-module.exports = ignore
+export default ignore

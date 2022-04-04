@@ -18,9 +18,7 @@ const templates = {
     if (obj.lastedit) {
       updated = `(updated ${obj.lastedit})`
     }
-    let out = `${name} ${obj.address || ''} ${obj.directions || ''} ${phone} ${obj.hours || ''} ${obj.content} ${
-      obj.price
-    } ${updated}`
+    let out = `${name} ${obj.address || ''} ${obj.directions || ''} ${phone} ${obj.hours || ''} ${obj.content} ${obj.price} ${updated}`
     return out
   },
   // https://en.wikivoyage.org/wiki/Template:Station
@@ -52,7 +50,7 @@ const templates = {
     list.push(obj)
     return obj.number || ''
   },
-  kilometer: (tmpl, list, parser) => {
+  kilometer: (tmpl, _list, parser) => {
     let obj = parser(tmpl, ['km', 'adj'])
     let num = Number(obj.km) || 0
     let m = num * 0.62137
@@ -65,7 +63,7 @@ const templates = {
     }
     return `${obj.km} km (${m} mi)`
   },
-  mile: (tmpl, list, parser) => {
+  mile: (tmpl, _list, parser) => {
     let obj = parser(tmpl, ['mi', 'adj'])
     let num = Number(obj.mi) || 0
     let m = num * 1.609344
@@ -151,4 +149,4 @@ templates.f = templates.fahrenheit
 templates.lb = templates.pound
 templates.otheruses = templates['other uses']
 
-module.exports = templates
+export default templates

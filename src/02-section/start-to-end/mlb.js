@@ -1,4 +1,4 @@
-const tableParser = require('../../table/parse')
+import tableParser from '../../table/parse/index.js'
 //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
 
 //this is pretty nuts
@@ -49,4 +49,4 @@ const parseMlb = function (catcher) {
     }
   )
 }
-module.exports = parseMlb
+export default parseMlb

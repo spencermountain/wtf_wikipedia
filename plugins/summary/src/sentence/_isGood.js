@@ -8,4 +8,4 @@ const isGood = function (doc, options) {
   }
   return false
 }
-module.exports = isGood
+export default isGood

@@ -58,4 +58,4 @@ function nested_find(text) {
   return out
 }
 
-module.exports = nested_find
+export default nested_find

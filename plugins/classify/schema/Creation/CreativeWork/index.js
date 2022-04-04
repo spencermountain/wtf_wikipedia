@@ -1,17 +1,25 @@
-module.exports = {
+import Album from './Album.js'
+import Book from './Book.js'
+import Film from './Film.js'
+import TVShow from './TVShow.js'
+import Play from './Play.js'
+import Song from './Song.js'
+import VideoGame from './VideoGame.js'
+
+export default {
   name: 'CreativeWork',
   children: {
-    Album: require('./Album'),
-    Book: require('./Book'),
-    Film: require('./Film'),
-    TVShow: require('./TVShow'),
-    Play: require('./Play'),
-    Song: require('./Song'),
-    VideoGame: require('./VideoGame'),
+    Album,
+    Book,
+    Film,
+    TVShow,
+    Play,
+    Song,
+    VideoGame,
   },
   //
   properties: {
-    genre: () => {},
+    genre: () => { },
   },
   //
   categories: {

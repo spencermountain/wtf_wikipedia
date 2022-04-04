@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'bókaheimild',
   'book reference',
   'chú thích sách',

@@ -1,8 +1,8 @@
-const { trim_whitespace } = require('../_lib/helpers')
-const parseSentence = require('../04-sentence/').fromText
-const parseReferences = require('../reference/')
-const getTemplates = require('../template/find/01-nested.js')
-const parseTemplates = require('../template/parse/index.js')
+import { trim_whitespace } from '../_lib/helpers.js'
+import { fromText as parseSentence } from '../04-sentence/index.js'
+import parseReferences from '../reference/index.js'
+import getTemplates from '../template/find/01-nested.js'
+import parseTemplates from '../template/parse/index.js'
 const heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/
 const hasTemplate = /\{\{.+?\}\}/
 
@@ -61,4 +61,4 @@ const parseHeading = function (section, str) {
   return section
 }
 
-module.exports = parseHeading
+export default parseHeading
