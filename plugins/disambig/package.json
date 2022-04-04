@@ -1,11 +1,17 @@
 {
   "name": "wtf-plugin-disambig",
   "description": "disambig-details plugin for wtf_wikipedia",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "type": "module",
-  "main": "./builds/wtf-plugin-disambig.js",
+  "main": "./src/index.js",
   "unpkg": "./builds/wtf-plugin-disambig.min.js",
   "module": "./builds/wtf-plugin-disambig.mjs",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./builds/wtf-plugin-disambig.cjs"
+    }
+  },
   "author": "Spencer Kelly (spencermountain)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/disambig#readme",
   "repository": {
