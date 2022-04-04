@@ -1,11 +1,17 @@
 {
   "name": "wtf-plugin-person",
   "description": "person-details plugin for wtf_wikipedia",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "type": "module",
-  "main": "./builds/wtf-plugin-person.js",
+  "main": "./src/index.js",
   "unpkg": "./builds/wtf-plugin-person.min.js",
   "module": "./builds/wtf-plugin-person.mjs",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./builds/wtf-plugin-person.cjs"
+    }
+  },
   "author": "Spencer Kelly (spencermountain)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/person#readme",
   "repository": {
