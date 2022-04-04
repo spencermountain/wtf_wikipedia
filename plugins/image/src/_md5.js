@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 /*
  * JavaScript MD5
  * https://github.com/blueimp/JavaScript-MD5
@@ -16,11 +17,6 @@
  * Distributed under the BSD License
  * See http://pajhome.org.uk/crypt/md5 for more info.
  */
-
-/* global define */
-
-/* eslint-disable strict */
-
 
 
 /**
