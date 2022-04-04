@@ -13,6 +13,7 @@ export default [
   {
     input: 'src/index.js',
     output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
+    external: ['isomorphic-unfetch'],
     plugins: [
       nodeResolve(),
       commonjs({ requireReturnsDefault: "auto" }),
@@ -22,7 +23,8 @@ export default [
   // === .js ===
   {
     input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfImage', sourcemap: false }],
+    output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfImage', sourcemap: false, globals: { "isomorphic-unfetch": 'unfetch' } }],
+    external: ['isomorphic-unfetch'],
     plugins: [
       nodeResolve(),
       commonjs({ requireReturnsDefault: "auto" })
@@ -31,7 +33,8 @@ export default [
   // ===  min.js ===
   {
     input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.min.js`, format: 'umd', name: 'wtfImage', sourcemap: false }],
+    output: [{ banner: banner, file: `builds/${name}.min.js`, format: 'umd', name: 'wtfImage', sourcemap: false, globals: { "isomorphic-unfetch": 'unfetch' } }],
+    external: ['isomorphic-unfetch'],
     plugins: [
       nodeResolve(),
       commonjs({ requireReturnsDefault: "auto" }),
