@@ -52,7 +52,7 @@
   why do we always do this?
   <br/>
   <img height="30px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
-  we put our information in places we can't take it out.
+  we put our information where we can't take it out.
 
 </div>
 
@@ -60,15 +60,11 @@
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
 ```js
-import wtf from 'wtf_wikipedia' // or require('wtf_wikipedia')
+import wtf from 'wtf_wikipedia'
 
-wtf.fetch('Toronto Raptors').then((doc) => {
-  let coach = doc.infobox().get('coach')
-  coach.text() //'Nick Nurse'
-
-  doc.sentences()[0].text()
-  //'The Toronto Raptors are a Canadian professional basketball team ...'
-})
+let doc = await wtf.fetch('Toronto Raptors')
+let coach = doc.infobox().get('coach')
+coach.text() //'Nick Nurse'
 ```
 
 <div align="center">
@@ -89,7 +85,7 @@ wtf(str).text()
 
 ```js
 let doc = await wtf.fetch('Glastonbury', 'en')
-doc.text()
+doc.sentences()[0].text()
 // 'Glastonbury is a town and civil parish in Somerset, England, situated at a dry point ...'
 ```
 
@@ -123,7 +119,7 @@ doc.images()[0].json()
 // { file: 'Image:Duveneck Whistling Boy.jpg', url: 'https://commons.wiki...' }
 
 // json for a particular section:
-doc.section('see also').link().json()
+doc.section('see also').links()[0].json()
 // { page: 'Slide Whistle' }
 ```
 
@@ -154,6 +150,8 @@ or the server-side:
 
 ```js
 import wtf from 'wtf_wikipedia'
+// or,
+const wtf = require('wtf_wikipedia')
 ```
 
 <!-- spacer -->
@@ -250,7 +248,7 @@ Manually _spelunking_ the html is sometimes just as tricky and error-prone as sc
 
 The contributors to this library have come to that conclusion, [as many others have](https://www.mediawiki.org/wiki/Alternative_parsers).
 
-This library has (_lovingly_) borrowed a lot of code and data from the parsoid project, and is gracious to those contributors.
+This library is gracious to the Parsoid contributors.
 
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
@@ -267,8 +265,8 @@ import wtf from 'wtf_wikipedia'
 
 let txt = `
 ==Wood in Popular Culture==
-* harry potter's wand
-* the simpson's fence
+* Harry Potter's wand
+* The Simpson's fence
 `
 wtf(txt)
 // Document {text(), json(), lists()...}
@@ -278,9 +276,7 @@ wtf(txt)
 
 ```javascript
 let txt = `Whistling is featured in a number of television shows, such as [[Lassie (1954 TV series)|''Lassie'']], and the title theme for ''[[The X-Files]]''.`
-wtf(txt)
-  .links()
-  .map((l) => l.page())
+wtf(txt).links().map((l) => l.page())
 // [ 'Lassie (1954 TV series)',  'The X-Files' ]
 ```
 
@@ -289,8 +285,7 @@ wtf(txt)
 returns nice plain-text of the article
 
 ```js
-var txt =
-  "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>"
+let txt = "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>"
 wtf(txt).text()
 //"Boston's baseball field has a 37ft wall."
 ```
@@ -394,6 +389,8 @@ wtf.random().then((doc) => {
 see [wtf-plugin-api](./plugins/api)
 
 
+<!-- spacer -->
+<img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
 ## Tutorials
 
@@ -480,7 +477,7 @@ wtf
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
-## API
+## Full API
 
 - **.title()** - get/set the title of the page from the first-sentence
 - **.pageID()** - get/set the wikimedia id of the page, if we have it.
@@ -737,7 +734,7 @@ That's about 100 pages/second, per thread.
 
 ## See also:
 
-alternative javascript parsers:
+Other alternative javascript parsers:
 
 - [instaview](https://github.com/cscott/instaview)
 - [txtwiki](https://github.com/joaomsa/txtwiki.js)

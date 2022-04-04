@@ -1,4 +1,4 @@
-/* wtf_wikipedia 9.1.0 MIT */
+/* wtf_wikipedia 10.0.0 MIT */
 import unfetch from 'isomorphic-unfetch';
 
 /**
@@ -9,7 +9,7 @@ import unfetch from 'isomorphic-unfetch';
  * @returns {{domain: string, title: string}} The domain and title of a url
  */
 const parseUrl = function (url) {
-  let parsed = new URL(url);
+  let parsed = new URL(url); // eslint-disable-line
   let title = parsed.pathname.replace(/^\/(wiki\/)?/, '');
   title = decodeURIComponent(title);
   return {
@@ -9363,7 +9363,7 @@ const fetch = function (title, options, callback) {
     })
 };
 
-var version = '9.1.0';
+var version = '10.0.0';
 
 /**
  * use the native client-side fetch function

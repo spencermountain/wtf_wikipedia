@@ -1,13 +1,12 @@
 {
   "name": "wtf_wikipedia",
   "description": "parse wikiscript into json",
-  "version": "9.1.0",
+  "version": "10.0.0",
   "main": "src/index.js",
   "module": "builds/wtf_wikipedia.mjs",
   "unpkg": "builds/wtf_wikipedia-client.min.js",
   "browser": "builds/wtf_wikipedia-client.min.js",
   "type": "module",
-  "sideEffects": false,
   "exports": {
     ".": {
       "import": "./src/index.js",
