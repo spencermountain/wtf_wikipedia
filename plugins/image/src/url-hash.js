@@ -1,4 +1,6 @@
-import jsHash from 'jshashes'
+// import jsHash from 'jshashes'
+import md5 from './_md5.js'
+
 
 const server = 'https://upload.wikimedia.org/wikipedia/commons/'
 
@@ -17,7 +19,8 @@ const encodeTitle = function (file) {
 const commonsURL = function () {
   let file = this.data.file
   let title = encodeTitle(file)
-  let hash = new jsHash.MD5().hex(title)
+  // let hash = new jsHash.MD5().hex(title)
+  let hash = md5(title)
   let path = hash.substr(0, 1) + '/' + hash.substr(0, 2) + '/'
   title = encodeURIComponent(title)
   path += title

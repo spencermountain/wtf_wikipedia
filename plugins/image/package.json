@@ -35,9 +35,7 @@
     "singleQuote": true,
     "printWidth": 100
   },
-  "dependencies": {
-    "jshashes": "^1.0.8"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "wtf_wikipedia": ">=9.0.0"
   },
