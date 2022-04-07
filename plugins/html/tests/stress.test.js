@@ -2,8 +2,9 @@ import test from 'tape'
 import wtf from './_lib.js'
 import fs from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
 
-let dir = new URL('./', import.meta.url).pathname
+const dir = path.dirname(fileURLToPath(import.meta.url))
 
 function from_file(page) {
   let file = '../../../tests/cache/' + page + '.txt'

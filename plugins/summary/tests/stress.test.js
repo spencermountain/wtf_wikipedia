@@ -2,8 +2,9 @@ import test from 'tape'
 import wtf from './_lib.js'
 import fs from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
 
-const dir = new URL('./', import.meta.url).pathname
+const dir = path.dirname(fileURLToPath(import.meta.url))
 // ;(async () => {
 //   let cat = await wtf.randomCategory()
 //   console.log(cat, '\n\n')
