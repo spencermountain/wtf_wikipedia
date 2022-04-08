@@ -2,7 +2,9 @@ import test from 'tape'
 import wtf from '../lib/index.js'
 import fs from 'fs'
 import path from 'path'
-const dir = new URL('./', import.meta.url).pathname
+import { fileURLToPath } from 'url'
+
+const dir = path.dirname(fileURLToPath(import.meta.url))
 
 //title
 test('Tile - get - first sentence', (t) => {

@@ -2,9 +2,11 @@ import test from 'tape'
 import wtf from './_lib.js'
 import fs from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
 import i18n from '../../i18n/src/index.js'
 wtf.extend(i18n)
-let dir = new URL('./', import.meta.url).pathname  // eslint-disable-line
+
+const dir = path.dirname(fileURLToPath(import.meta.url))  // eslint-disable-line
 
 test('i18n-classify-test', async function (t) {
   let arr = [
