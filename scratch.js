@@ -1,15 +1,12 @@
 import wtf from './src/index.js'
+import plg from './plugins/api/src/index.js'
+wtf.plugin(plg)
+// let doc = await wtf.fetch('Toronto Raptors')
+// let coach = doc.infobox().get('coach')
+// coach.text() //'Nick Nurse'
 
-let str = `hello
-{{DECADE|1915}}
-
-`
-
-let doc = await wtf.fetch('Toronto Raptors')
-let coach = doc.infobox().get('coach')
-coach.text() //'Nick Nurse'
-
-
+let doc = await wtf.random()
+console.log(doc.text())
 // let doc = wtf(str)
 // console.log(doc.templates('sustantivo masculino').map(t => t.json().template))
 // console.log(doc.section('sustantivo masculino'))
