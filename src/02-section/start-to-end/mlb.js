@@ -21,7 +21,7 @@ const whichHeadings = function (tmpl) {
  * @param {object} catcher
  */
 const parseMlb = function (catcher) {
-  catcher.text = catcher.text.replace(/\{\{mlb game log /i, '{{game log ')
+  catcher.text = catcher.text.replace(/\{\{mlb game log /gi, '{{game log ')
   catcher.text = catcher.text.replace(/\{\{game log (section|month)[\s\S]+?\{\{game log (section|month) end\}\}/gi, (tmpl) => {
     let headings = whichHeadings(tmpl)
 

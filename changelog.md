@@ -1,11 +1,14 @@
 <!--
 #### [unreleased ]
+- **[new]** - wtf-plugin-sports for tricky nhl and mlb templates
+- **[change]** - .random() in api-plugin parses document
+- **[change]** - update dependencies
 -->
 #### 10.0.0 [April 2022]
 - **[breaking]** - drop IE11 support - target evergreen browsers
 - **[change]** - convert to esmodules internally
 - **[change]** - add blockquote template
-update deps
+- **[change]** - update dependencies
 
 #### 9.1.0 [March 2022]
 - **[change]** - support inline templates inside section titles
