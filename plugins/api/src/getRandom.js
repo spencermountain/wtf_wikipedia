@@ -4,7 +4,8 @@ const params = {
   action: 'query',
   generator: 'random',
   grnnamespace: '0',
-  prop: 'pageprops',
+  prop: 'revisions',
+  rvprop: 'content',
   grnlimit: '1',
   rvslots: 'main',
   format: 'json',
@@ -31,9 +32,15 @@ const makeUrl = function (options) {
   return url
 }
 
-const getRandom = async function (_options, http) {
+const getRandom = async function (_options, http, wtf) {
   let url = makeUrl(defaults)
-  let page = await fetchIt(url, http)
-  return page
+  let page = await fetchIt(url, http) || {}
+  let title = page.title
+  let wiki = ''
+  if (page.revisions && page.revisions[0] && page.revisions[0].slots) {
+    wiki = page.revisions[0].slots.main['*'] || ''
+  }
+  let doc = wtf(wiki, { title })
+  return doc
 }
 export default getRandom

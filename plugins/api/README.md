@@ -106,6 +106,15 @@ console.log(byDay)
 */
 ```
 
+## Random Page
+get the name of a random wikipedia category, from a given wiki
+```js
+wtf.getRandomPage({lang:'fr'}).then(doc=>{
+  console.log(doc.title())
+  // 'Édifice religieux à Paris'
+})
+```
+
 ## Random Category
 get the name of a random wikipedia category, from a given wiki
 ```js
