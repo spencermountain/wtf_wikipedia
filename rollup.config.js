@@ -5,7 +5,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { version } from './package.json'
 console.log('\n 📦  - running rollup..\n')
 
-const banner = '/* wtf_wikipedia ' + version + ' MIT */'
+const banner = '/*! wtf_wikipedia ' + version + ' MIT */'
 export default [
   // === server-side .mjs (typescript)===
   {
