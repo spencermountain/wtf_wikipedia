@@ -1,4 +1,4 @@
-/* wtf_wikipedia 10.0.0 MIT */
+/*! wtf_wikipedia 10.0.0 MIT */
 import unfetch from 'isomorphic-unfetch';
 
 /**
