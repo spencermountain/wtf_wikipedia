@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-image",
   "description": "image plugin for wtf_wikipedia",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "main": "./src/index.js",
   "unpkg": "./builds/wtf-plugin-image.min.js",
@@ -35,18 +35,17 @@
     "singleQuote": true,
     "printWidth": 100
   },
-  "dependencies": {},
   "peerDependencies": {
     "wtf_wikipedia": ">=9.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "21.0.3",
-    "@rollup/plugin-node-resolve": "13.1.3",
-    "rollup": "2.70.1",
+    "@rollup/plugin-commonjs": "22.0.0",
+    "@rollup/plugin-node-resolve": "13.3.0",
+    "rollup": "2.75.3",
     "rollup-plugin-filesize-check": "0.0.1",
     "rollup-plugin-terser": "7.0.2",
     "tap-dancer": "0.3.4",
-    "tape": "5.5.2"
+    "tape": "5.5.3"
   },
   "license": "MIT"
 }
