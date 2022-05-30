@@ -1,0 +1,50 @@
+{
+  "name": "wtf-plugin-sports",
+  "description": "plugin for wtf_wikipedia",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./src/index.js",
+  "unpkg": "./builds/wtf-plugin-sports.min.js",
+  "module": "./builds/wtf-plugin-sports.mjs",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./builds/wtf-plugin-sports.cjs"
+    }
+  },
+  "author": "Spencer Kelly (spencermountain)",
+  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/sports#readme",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/spencermountain/wtf_wikipedia.git"
+  },
+  "scripts": {
+    "watch": "amble ./scratch.js",
+    "test": "tape ./tests/**/*.test.js | tap-dancer",
+    "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
+    "build": "rollup -c"
+  },
+  "files": [
+    "builds",
+    "src"
+  ],
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
+  },
+  "peerDependencies": {
+    "wtf_wikipedia": ">=9.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "22.0.0",
+    "@rollup/plugin-node-resolve": "13.3.0",
+    "rollup": "2.75.3",
+    "rollup-plugin-terser": "7.0.2",
+    "tap-dancer": "0.3.4",
+    "tape": "5.5.3"
+  },
+  "license": "MIT"
+}

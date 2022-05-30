@@ -21,32 +21,30 @@ const whichHeadings = function (tmpl) {
  * @param {object} catcher
  */
 const parseMlb = function (catcher) {
-  catcher.text = catcher.text.replace(
-    /\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi,
-    (tmpl) => {
-      let headings = whichHeadings(tmpl)
+  catcher.text = catcher.text.replace(/\{\{mlb game log /gi, '{{game log ')
+  catcher.text = catcher.text.replace(/\{\{game log (section|month)[\s\S]+?\{\{game log (section|month) end\}\}/gi, (tmpl) => {
+    let headings = whichHeadings(tmpl)
 
-      tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
-      tmpl = tmpl.replace(/\{\{mlb game log (section|month) end\}\}/i, '')
+    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
+    tmpl = tmpl.replace(/\{\{game log (section|month) end\}\}/i, '')
 
-      let headers = '! ' + headings.join(' !! ')
-      let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
-      let rows = tableParser(table)
-      rows = rows.map((row) => {
-        Object.keys(row).forEach((k) => {
-          row[k] = row[k].text()
-        })
-        return row
+    let headers = '! ' + headings.join(' !! ')
+    let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
+    let rows = tableParser(table)
+    rows = rows.map((row) => {
+      Object.keys(row).forEach((k) => {
+        row[k] = row[k].text()
       })
+      return row
+    })
+    catcher.templates.push({
+      template: 'mlb game log section',
+      data: rows,
+    })
 
-      catcher.templates.push({
-        template: 'mlb game log section',
-        data: rows,
-      })
-
-      //return empty string to remove the template from the wiki text
-      return ''
-    }
+    //return empty string to remove the template from the wiki text
+    return ''
+  }
   )
 }
 export default parseMlb

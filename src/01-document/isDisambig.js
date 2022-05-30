@@ -1,5 +1,6 @@
 import { disambig_titles, disambig_templates } from '../_data/i18n.js'
 import alt_disambig from './_disambig.js'
+const mayAlsoReg = /. may (also )?refer to\b/i
 
 const inTitle = new RegExp('. \\((' + disambig_titles.join('|') + ')\\)$', 'i')
 const i18n_templates = disambig_templates.reduce((h, str) => {
@@ -14,7 +15,7 @@ const byText = function (s) {
   }
   let txt = s.text()
   if (txt !== null && txt[0]) {
-    if (/. may (also)? refer to\b/i.test(txt) === true) {
+    if (mayAlsoReg.test(txt) === true) {
       return true
     }
   }

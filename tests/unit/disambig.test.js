@@ -69,6 +69,19 @@ test('by title', function (t) {
   t.end()
 })
 
+test('by text', function (t) {
+  const str = `'''22''' may refer to:
+  * [[22 (number)]]
+  * [[22 BC]]
+  * [[AD 22]]
+  * [[1922]]
+  * [[2022]]
+  `
+  const doc = wtf(str)
+  t.equal(doc.isDisambiguation(), true, 'may-refer-to')
+  t.end()
+})
+
 test('by i18n title', function (t) {
   const str = `
 '''Park Place''' is cool:

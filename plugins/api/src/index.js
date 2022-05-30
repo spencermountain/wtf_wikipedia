@@ -21,7 +21,7 @@ const addMethod = function (models) {
 
   // constructor methods
   models.wtf.getRandomPage = function (options) {
-    return getRandomPage(options, models.http)
+    return getRandomPage(options, models.http, models.wtf)
   }
   models.wtf.getRandomCategory = function (options) {
     return getRandomCategory(options, models.http)
@@ -41,5 +41,7 @@ const addMethod = function (models) {
   models.wtf.getRedirects = function (title) {
     return getRedirects(title, models.http)
   }
+  // aliases
+  models.wtf.random = models.wtf.getRandomPage
 }
 export default addMethod
