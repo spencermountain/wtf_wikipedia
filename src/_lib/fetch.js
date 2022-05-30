@@ -11,6 +11,11 @@ import unfetch from 'isomorphic-unfetch'
 const request = function (url, opts) {
   return unfetch(url, opts).then(function (res) {
     return res.json()
+  }).catch((e) => {
+    console.error('\n\n=-=- http response error =-=-=-')
+    console.log(url)
+    console.log(e)
+    return {}
   })
 }
 export default request

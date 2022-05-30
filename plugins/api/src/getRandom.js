@@ -34,7 +34,12 @@ const makeUrl = function (options) {
 
 const getRandom = async function (_options, http, wtf) {
   let url = makeUrl(defaults)
-  let page = await fetchIt(url, http) || {}
+  let page = {}
+  try {
+    page = await fetchIt(url, http) || {}
+  } catch (e) {
+    console.log(e)
+  }
   let title = page.title
   let wiki = ''
   if (page.revisions && page.revisions[0] && page.revisions[0].slots) {
