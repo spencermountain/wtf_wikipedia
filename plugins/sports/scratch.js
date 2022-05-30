@@ -4,9 +4,12 @@ import { nhl, mlb } from './src/index.js'
 wtf.extend(mlb)
 wtf.extend(nhl)
 
-let res = await wtf.nhlSeason('Washington Capitals', 2017)
+
+wtf.nhlSeason('Washington Capitals', 2017).then((res) => {
+  console.log(res)
+
+})
 // let res = await wtf.mlbSeason('Washington Nationals', 2017)
-console.log(res)
 
 let str = `
 `

@@ -1,4 +1,4 @@
-const dashSplit = /(–|-|−|&ndash;)/
+const dashSplit = /(–|-|−|&ndash;)/ // eslint-disable-line
 
 const parseTeam = function (txt) {
   if (!txt) {
@@ -6,7 +6,7 @@ const parseTeam = function (txt) {
   }
   let away = /^ *@ */.test(txt)
   return {
-    name: txt.replace(/^ *\@ */, ''),
+    name: txt.replace(/^ +@ +/, ''),
     home: !away
   }
 }
