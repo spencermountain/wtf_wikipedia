@@ -1,4 +1,5 @@
 <div align="center">
+  <div><b>wtf-plugin-api</b></div>
   <img src="https://cloud.githubusercontent.com/assets/399657/23590290/ede73772-01aa-11e7-8915-181ef21027bc.png" />
 
   <div>a plugin for <a href="https://github.com/spencermountain/wtf_wikipedia/">wtf_wikipedia</a></div>
@@ -12,7 +13,6 @@
   <a href="https://unpkg.com/wtf-plugin-markdown/builds/wtf-plugin-api.min.js">
     <img src="https://badge-size.herokuapp.com/spencermountain/wtf-plugin-api/master/builds/wtf-plugin-api.min.js" />
   </a>
-   <hr/>
 </div>
 
 <div align="center">
