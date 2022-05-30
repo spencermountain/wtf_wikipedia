@@ -339,10 +339,17 @@ let templates = {
   },
   // https://en.wikipedia.org/wiki/Template:Blockquote
   blockquote: (tmpl, list) => {
-    let obj = parse(tmpl)
+    let props = ['text', 'author', 'title', 'source', 'character']
+    let obj = parse(tmpl, props)
     list.push(obj)
+    let txt = obj.text
+    // used first un-named param
+    if (!txt) {
+      obj.list = obj.list || []
+      txt = obj.list[0] || ''
+    }
     // replace double quotes with singles and put the text inside double quotes
-    let result = (obj.text || obj.list[0]).replace(/"/g, '\'')
+    let result = txt.replace(/"/g, '\'')
     result = '"' + result + '"'
     return result
   }
