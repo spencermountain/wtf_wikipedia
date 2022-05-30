@@ -73,6 +73,7 @@ const parseGames = function (doc, meta) {
   if (!s) {
     return games
   }
+  s = s[0]
   //do all subsections, too
   let tables = s.tables()
   s.children().forEach((c) => {

@@ -15,7 +15,7 @@ const toCardinal = function (str = '') {
 
 //
 const parseInfobox = function (doc) {
-  let info = doc.infobox('ice hockey team season')[0] || doc.infobox('NHLTeamSeason')[0]
+  let info = doc.infobox('ice hockey team season') || doc.infobox('NHLTeamSeason')
   if (!info) {
     return {}
   }

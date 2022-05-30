@@ -32,6 +32,10 @@ let res = await wtf.getSeason('Toronto Maple Leafs', 2018)
 wtf-mlb gets structured data for mlb baseball teams, supports a bunch of different variants of mlb game log variations, and tries to cleanup some complicated parts of wikipedia sometimes in the wild.
 
 ```js
+import wtf from 'wtf_wikipedia'
+import {mlb} from 'wtf-plugin-sports'
+wtf.extend(mlb)
+
 wtf.getSeason('Toronto Blue Jays', 2018).then((data) => {
   console.log(data)
   /*{
@@ -61,8 +65,10 @@ wtf.getSeason('Toronto Blue Jays', 2018).then((data) => {
 wtf-nhl gets structured data for nhl hockey teams, supports a bunch of different variants of nhl game log variations, and tries to cleanup some complicated parts of wikipedia sometimes in the wild.
 
 ```js
-const plugin = require('wtf-plugin-nhl')
-wtf.extend(plugin)
+import wtf from 'wtf_wikipedia'
+import {nhl} from 'wtf-plugin-sports'
+wtf.extend(nhl)
+
 wtf.getSeason('Toronto Maple Leafs', 2018).then((data) => {
   console.log(data)
   /*{

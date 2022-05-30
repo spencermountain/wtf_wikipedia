@@ -21,6 +21,7 @@ const parseRoster = function (doc) {
   if (!s) {
     return players
   }
+  s = s[0]
   //do all subsections, too
   let tables = s.tables()
   s.children().forEach((c) => {

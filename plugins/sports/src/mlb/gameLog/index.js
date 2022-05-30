@@ -1,10 +1,14 @@
 import parseGame from './parseGame.js'
 import addWinner from './winner.js'
 
+const isArray = function (arr) {
+  return Object.prototype.toString.call(arr) === '[object Array]'
+}
+
 const doTable = function (rows = []) {
   let games = []
   //is it a legend/junk table?
-  if (rows[1] && rows[1].Legend) {
+  if (rows[1] && rows[1].Legend || !isArray(rows)) {
     return games
   }
   rows.forEach(row => {
@@ -17,7 +21,7 @@ const doTable = function (rows = []) {
 
 const doSection = function (section) {
   let tables = section.tables()
-  //do all subsections, too
+  //do all subsection, too
   section.children().forEach(s => {
     tables = tables.concat(s.tables())
   })
@@ -35,8 +39,7 @@ const doSection = function (section) {
 const gameLog = function (doc) {
   let games = []
   // grab the generated section called 'Game Log'
-  let section = doc.sections('game log') || doc.sections('game log and schedule') || doc.sections('regular season') || doc.sections('season')
-  section = section[0]
+  let section = doc.section('game log') || doc.section('game log and schedule') || doc.section('regular season') || doc.section('season') || doc.section('schedule') || doc.section('schedule and results')
   if (!section) {
     console.warn('no game log section for: \'' + doc.title() + '\'')
     return games
@@ -53,11 +56,11 @@ const gameLog = function (doc) {
 const postSeason = function (doc) {
   let series = []
   //ok, try postseason, too
-  let section = doc.sections('postseason game log') || doc.sections('postseason') || doc.sections('playoffs') || doc.sections('playoff')
-  section = section[0]
+  let section = doc.section('postseason game log') || doc.section('postseason') || doc.section('playoffs') || doc.section('playoff')
   if (!section) {
     return series
   }
+  console.log(section)
   let tables = doSection(section)
   tables.forEach((table) => {
     let arr = doTable(table)
