@@ -16,12 +16,11 @@ const parseTitle = function (season = '') {
 }
 
 const parseRoster = function (doc) {
-  let s = doc.sections('skaters') || doc.sections('roster') || doc.sections('player statistics')
+  let s = doc.section('skaters') || doc.section('roster') || doc.section('player statistics')
   let players = []
   if (!s) {
     return players
   }
-  s = s[0]
   //do all subsections, too
   let tables = s.tables()
   s.children().forEach((c) => {

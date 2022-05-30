@@ -1,10 +1,8 @@
-var test = require('tape')
-var wtf = require('./_lib')
+import test from 'tape'
+import wtf from '../_lib.js'
 
 test('Washington Nationals 2017', (t) => {
-  wtf
-    .getSeason('Toronto Maple Leafs', 2017)
-    .catch(console.log)
+  wtf.nhlSeason('Toronto Maple Leafs', 2017)
     .then((res) => {
       var data = res.games
       t.notEqual(data[0].date, null, 'has game-0-date')

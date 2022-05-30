@@ -24,7 +24,7 @@ import wtf from 'wtf_wikipedia'
 import {mlb, nhl} from 'wtf-plugin-sports'
 wtf.extend(nhl)
 
-let res = await wtf.getSeason('Toronto Maple Leafs', 2018)
+let res = await wtf.nhlSeason('Toronto Maple Leafs', 2018)
 ```
 
 ### MLB
@@ -36,7 +36,7 @@ import wtf from 'wtf_wikipedia'
 import {mlb} from 'wtf-plugin-sports'
 wtf.extend(mlb)
 
-wtf.getSeason('Toronto Blue Jays', 2018).then((data) => {
+wtf.mlbSeason('Toronto Blue Jays', 2018).then((data) => {
   console.log(data)
   /*{
   games: [{
@@ -69,7 +69,7 @@ import wtf from 'wtf_wikipedia'
 import {nhl} from 'wtf-plugin-sports'
 wtf.extend(nhl)
 
-wtf.getSeason('Toronto Maple Leafs', 2018).then((data) => {
+wtf.nhlSeason('Toronto Maple Leafs', 2018).then((data) => {
   console.log(data)
   /*{
   games: [

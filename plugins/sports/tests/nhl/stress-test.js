@@ -1,11 +1,10 @@
-var test = require('tape')
-var wtf = require('./_lib')
-var teams = require('../src/teams')
+import test from 'tape'
+import { teamHistory } from './_lib'
+import teams from '../src/teams.js'
 
 const doTeam = function (i, t, cb) {
   let team = teams[i]
-  wtf
-    .teamHistory(team, 1988, 2018)
+  teamHistory(team, 1988, 2018)
     .catch(console.log)
     .then((seasons) => {
       seasons = seasons.sort((a, b) => (a.year < b.year ? -1 : 1))

@@ -1,8 +1,8 @@
 import test from 'tape'
-import wtf from './_lib'
+import wtf from '../_lib.js'
 
 test('Washington Nationals 2017', (t) => {
-  wtf.getSeason('Washington Nationals', 2017)
+  wtf.mlbSeason('Washington Nationals', 2017)
     .catch(console.log)
     .then((res) => {
       var data = res.games
@@ -19,7 +19,7 @@ test('Washington Nationals 2017', (t) => {
 })
 
 test('Blue Jays 2016', (t) => {
-  wtf.getSeason('Blue Jays', 2016)
+  wtf.mlbSeason('Blue Jays', 2016)
     .catch(console.log)
     .then((res) => {
       var data = res.games
@@ -36,7 +36,7 @@ test('Blue Jays 2016', (t) => {
 })
 
 test('New York Mets 2017', (t) => {
-  wtf.getSeason('New York Mets', 2017)
+  wtf.mlbSeason('New York Mets', 2017)
     .catch(console.log)
     .then((res) => {
       var data = res.games

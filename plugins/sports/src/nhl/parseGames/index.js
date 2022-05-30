@@ -69,13 +69,18 @@ const parseGame = function (row, meta) {
 //
 const parseGames = function (doc, meta) {
   let games = []
-  let s = doc.sections('regular season') || doc.sections('schedule and results')
+  let s = doc.section('schedule and results') || doc.section('schedule') || doc.section('regular season')
   if (!s) {
     return games
   }
-  s = s[0]
+  // support nested headers
+  let nested = s.children('regular season')
+  if (nested) {
+    s = nested
+  }
   //do all subsections, too
   let tables = s.tables()
+  console.log(tables)
   s.children().forEach((c) => {
     tables = tables.concat(c.tables())
   })
@@ -84,6 +89,7 @@ const parseGames = function (doc, meta) {
   }
   tables.forEach((table) => {
     let rows = table.keyValue()
+    console.log(rows)
     rows.forEach((row) => {
       games.push(parseGame(row, meta))
     })

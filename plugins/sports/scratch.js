@@ -2,9 +2,10 @@
 import wtf from '../../src/index.js'
 import { nhl, mlb } from './src/index.js'
 wtf.extend(mlb)
-// wtf.extend(nhl)
+wtf.extend(nhl)
 
-let res = await wtf.getSeason('Toronto Maple Leafs', 2021)
+// let res = await wtf.nhlSeason('Toronto Maple Leafs', 2017)
+let res = await wtf.mlbSeason('Toronto Blue Jays', 2017)
 console.log(res)
 
 let str = `

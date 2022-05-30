@@ -1,5 +1,5 @@
 import test from 'tape'
-import wtf from './_lib'
+import wtf from '../_lib'
 import teams from '../src/teams'
 
 const doTeam = function (i, t, cb) {
