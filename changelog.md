@@ -1,9 +1,12 @@
 <!--
 #### [unreleased ]
+-->
+#### 10.0.1 [May 2022]
+- **[fix]** - runtime error #484
 - **[new]** - wtf-plugin-sports for tricky nhl and mlb templates
 - **[change]** - .random() in api-plugin parses document
 - **[change]** - update dependencies
--->
+
 #### 10.0.0 [April 2022]
 - **[breaking]** - drop IE11 support - target evergreen browsers
 - **[change]** - convert to esmodules internally

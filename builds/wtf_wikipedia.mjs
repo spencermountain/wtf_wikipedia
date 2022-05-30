@@ -1,4 +1,4 @@
-/* wtf_wikipedia 10.0.0 MIT */
+/* wtf_wikipedia 10.0.1 MIT */
 import unfetch from 'isomorphic-unfetch';
 
 /**
@@ -880,6 +880,8 @@ const templates$a = [
   return h
 }, {});
 
+const mayAlsoReg = /. may (also )?refer to\b/i;
+
 const inTitle = new RegExp('. \\((' + disambig_titles.join('|') + ')\\)$', 'i');
 const i18n_templates = disambig_templates.reduce((h, str) => {
   h[str] = true;
@@ -893,7 +895,7 @@ const byText = function (s) {
   }
   let txt = s.text();
   if (txt !== null && txt[0]) {
-    if (/. may (also)? refer to\b/i.test(txt) === true) {
+    if (mayAlsoReg.test(txt) === true) {
       return true
     }
   }
@@ -6211,10 +6213,17 @@ let templates$3 = {
   },
   // https://en.wikipedia.org/wiki/Template:Blockquote
   blockquote: (tmpl, list) => {
-    let obj = parser(tmpl);
+    let props = ['text', 'author', 'title', 'source', 'character'];
+    let obj = parser(tmpl, props);
     list.push(obj);
+    let txt = obj.text;
+    // used first un-named param
+    if (!txt) {
+      obj.list = obj.list || [];
+      txt = obj.list[0] || '';
+    }
     // replace double quotes with singles and put the text inside double quotes
-    let result = (obj.text || obj.list[0]).replace(/"/g, '\'');
+    let result = txt.replace(/"/g, '\'');
     result = '"' + result + '"';
     return result
   }
@@ -7901,32 +7910,30 @@ const whichHeadings = function (tmpl) {
  * @param {object} catcher
  */
 const parseMlb = function (catcher) {
-  catcher.text = catcher.text.replace(
-    /\{\{mlb game log (section|month)[\s\S]+?\{\{mlb game log (section|month) end\}\}/gi,
-    (tmpl) => {
-      let headings = whichHeadings(tmpl);
+  catcher.text = catcher.text.replace(/\{\{mlb game log /gi, '{{game log ');
+  catcher.text = catcher.text.replace(/\{\{game log (section|month)[\s\S]+?\{\{game log (section|month) end\}\}/gi, (tmpl) => {
+    let headings = whichHeadings(tmpl);
 
-      tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
-      tmpl = tmpl.replace(/\{\{mlb game log (section|month) end\}\}/i, '');
+    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
+    tmpl = tmpl.replace(/\{\{game log (section|month) end\}\}/i, '');
 
-      let headers = '! ' + headings.join(' !! ');
-      let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
-      let rows = parseTable(table);
-      rows = rows.map((row) => {
-        Object.keys(row).forEach((k) => {
-          row[k] = row[k].text();
-        });
-        return row
+    let headers = '! ' + headings.join(' !! ');
+    let table = '{|\n' + headers + '\n' + tmpl + '\n|}';
+    let rows = parseTable(table);
+    rows = rows.map((row) => {
+      Object.keys(row).forEach((k) => {
+        row[k] = row[k].text();
       });
+      return row
+    });
+    catcher.templates.push({
+      template: 'mlb game log section',
+      data: rows,
+    });
 
-      catcher.templates.push({
-        template: 'mlb game log section',
-        data: rows,
-      });
-
-      //return empty string to remove the template from the wiki text
-      return ''
-    }
+    //return empty string to remove the template from the wiki text
+    return ''
+  }
   );
 };
 
@@ -9363,7 +9370,7 @@ const fetch = function (title, options, callback) {
     })
 };
 
-var version = '10.0.0';
+var version = '10.0.1';
 
 /**
  * use the native client-side fetch function
@@ -9376,6 +9383,11 @@ var version = '10.0.0';
 const request = function (url, opts) {
   return unfetch(url, opts).then(function (res) {
     return res.json()
+  }).catch((e) => {
+    console.error('\n\n=-=- http response error =-=-=-');
+    console.log(url);
+    console.log(e);
+    return {}
   })
 };
 
