@@ -9,8 +9,8 @@ const addMethod = function (models) {
     }) || team
     team = team.replace(/ /g, '_')
     year = year || new Date().getFullYear()
-    let nextYear = year % 100
-    let page = `${year}–${nextYear + 1}_${team}_season`
+    // let nextYear = year % 100
+    let page = `${year}_${team}_season`
     return models.wtf.fetch(page).catch(console.log).then(parse)
   }
   models.Doc.prototype.mlbSeason = function () {

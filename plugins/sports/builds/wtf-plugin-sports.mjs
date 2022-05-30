@@ -249,7 +249,6 @@ const postSeason = function (doc) {
   if (!section) {
     return series
   }
-  console.log(section);
   let tables = doSection(section);
   tables.forEach((table) => {
     let arr = doTable(table);
@@ -322,18 +321,18 @@ const parsePage = function (doc) {
 };
 
 const addMethod$1 = function (models) {
-  models.wtf.getSeason = function (team, year) {
+  models.wtf.mlbSeason = function (team, year) {
     //soften-up the team-input
     team = teams$1.find((t) => {
       return t === team || t.toLowerCase().includes(team.toLowerCase())
     }) || team;
     team = team.replace(/ /g, '_');
     year = year || new Date().getFullYear();
-    let nextYear = year % 100;
-    let page = `${year}–${nextYear + 1}_${team}_season`;
+    // let nextYear = year % 100
+    let page = `${year}_${team}_season`;
     return models.wtf.fetch(page).catch(console.log).then(parsePage)
   };
-  models.Doc.prototype.getSeason = function () {
+  models.Doc.prototype.mlbSeason = function () {
     return parsePage(this)
   };
 };
@@ -484,13 +483,18 @@ const parseGame = function (row, meta) {
 //
 const parseGames = function (doc, meta) {
   let games = [];
-  let s = doc.sections('regular season') || doc.sections('schedule and results');
+  let s = doc.section('schedule and results') || doc.section('schedule') || doc.section('regular season');
   if (!s) {
     return games
   }
-  s = s[0];
+  // support nested headers
+  let nested = s.children('regular season');
+  if (nested) {
+    s = nested;
+  }
   //do all subsections, too
   let tables = s.tables();
+  console.log(tables);
   s.children().forEach((c) => {
     tables = tables.concat(c.tables());
   });
@@ -499,6 +503,7 @@ const parseGames = function (doc, meta) {
   }
   tables.forEach((table) => {
     let rows = table.keyValue();
+    console.log(rows);
     rows.forEach((row) => {
       games.push(parseGame(row, meta));
     });
@@ -554,12 +559,11 @@ const parseTitle = function (season = '') {
 };
 
 const parseRoster = function (doc) {
-  let s = doc.sections('skaters') || doc.sections('roster') || doc.sections('player statistics');
+  let s = doc.section('skaters') || doc.section('roster') || doc.section('player statistics');
   let players = [];
   if (!s) {
     return players
   }
-  s = s[0];
   //do all subsections, too
   let tables = s.tables();
   s.children().forEach((c) => {
@@ -609,7 +613,7 @@ const makePage = function (team, year) {
 };
 
 const addMethod = function (models) {
-  models.wtf.getSeason = function (team, year) {
+  models.wtf.nhlSeason = function (team, year) {
     //soften-up the team-input
     team = teams.find((t) => {
       return t === team || t.toLowerCase().includes(team.toLowerCase())
@@ -618,7 +622,7 @@ const addMethod = function (models) {
     return models.wtf.fetch(page).catch(console.log).then(parse)
   };
   // add it here too
-  models.Doc.parseSeason = parse;
+  models.Doc.nhlSeason = parse;
 };
 
 export { addMethod$1 as mlb, addMethod as nhl };

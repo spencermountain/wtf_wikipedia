@@ -60,7 +60,6 @@ const postSeason = function (doc) {
   if (!section) {
     return series
   }
-  console.log(section)
   let tables = doSection(section)
   tables.forEach((table) => {
     let arr = doTable(table)
