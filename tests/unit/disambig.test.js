@@ -1,5 +1,5 @@
 import test from 'tape'
-import wtf from '../lib/index.js'
+import wtf from './lib/index.js'
 
 test('disambig template', function (t) {
   const str = `

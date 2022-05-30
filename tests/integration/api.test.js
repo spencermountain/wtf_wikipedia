@@ -3,7 +3,10 @@ import fs from 'fs'
 import path from 'path'
 import test from 'tape'
 import wtf from '../lib/index.js'
-let dir = new URL('./', import.meta.url).pathname // eslint-disable-line
+import { fileURLToPath } from 'url'
+
+const dir = path.dirname(fileURLToPath(import.meta.url))
+
 //read cached file
 const readFile = function (file) {
   return fs.readFileSync(path.join(dir, '../', 'cache', file + '.txt'), 'utf-8')

@@ -1,4 +1,4 @@
-/* wtf_wikipedia 10.0.1 MIT */
+/*! wtf_wikipedia 10.0.1 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('isomorphic-unfetch')) :
   typeof define === 'function' && define.amd ? define(['isomorphic-unfetch'], factory) :

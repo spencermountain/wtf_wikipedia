@@ -2,7 +2,9 @@ import test from 'tape'
 import wtf from './_lib.js'
 import path from 'path'
 import fs from 'fs'
-let dir = new URL('./', import.meta.url).pathname
+import { fileURLToPath } from 'url'
+
+const dir = path.dirname(fileURLToPath(import.meta.url))
 
 test('mainImage', function (t) {
   let arr = [
