@@ -47,6 +47,7 @@ const plugin = function (_models, templates) {
     mapping[k].forEach((name) => {
       // create template parser with alias
       templates[name] = function (tmpl, list, parse) {
+        console.log(k, tmpl)
         return templates[k](tmpl, list, parse, k)
       }
     })

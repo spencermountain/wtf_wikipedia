@@ -424,6 +424,14 @@ export default {
     }
     return num + '%'
   },
+  // this one is re-used by i18n
+  small: (tmpl) => {
+    let obj = parse(tmpl)
+    if (obj.list && obj.list[0]) {
+      return obj.list[0]
+    }
+    return ''
+  },
 
   // {{Percent-done|done=N|total=N|digits=N}}
   'percent-done': (tmpl) => {

@@ -33,7 +33,6 @@ let zeros = [
   'big',
   'cquote',
   'pull quote',
-  'small',
   'smaller',
   'midsize',
   'larger',
