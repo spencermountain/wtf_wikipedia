@@ -8556,7 +8556,7 @@ Object.keys(singular$1).forEach((k) => {
   };
 });
 
-const heading_reg = /^(={1,5})(.{1,200}?)={1,5}$/;
+const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/;
 const hasTemplate = /\{\{.+?\}\}/;
 
 const doInlineTemplates = function (wiki) {
@@ -8615,7 +8615,7 @@ const parseHeading = function (section, str) {
 };
 
 const isReference = new RegExp('^(' + references.join('|') + '):?', 'i');
-const section_reg = /(?:\n|^)(={2,5}.{1,200}?={2,5})/g;
+const section_reg = /(?:\n|^)(={2,6}.{1,200}?={2,6})/g;
 
 
 /**
