@@ -18,14 +18,11 @@ let str = `
 
 
 
-str = `
-{{hatnote|{{char|◦}} redirects here. For similar symbols, see [[circle symbol (disambiguation)]]}}
-
-
-In [[typography]], a '''bullet''' or '''bullet point''', {{char|•}}, is a typographical symbol or [[glyph]] `
+str = `{{Hatnote|"Dandelion" redirects here. It may refer to any species of the genus ''Taraxacum'' or specifically to ''[[Taraxacum officinale]]''. For similar plants, see [[False dandelion]]. For other uses, see [[Dandelion (disambiguation)]]}}
+'''''Taraxacum''''' ({{IPAc-en|t|ə|ˈ|r|æ|k|s|ə|k|ᵿ|m}}) is a large [[genus]] of [[flowering plant]]s`
 let doc = wtf(str)
 console.log(doc.text())
-console.log(doc.template().json())
+console.log(doc.isDisambiguation())
 
 
 
