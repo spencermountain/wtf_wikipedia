@@ -8,10 +8,10 @@ const hasTemplate = /\{\{.+?\}\}/
 
 const doInlineTemplates = function (wiki) {
   let list = getTemplates(wiki)
-  if (list.length) {
-    let [txt] = parseTemplates(list[0])
-    wiki = wiki.replace(list[0].body, txt)
-  }
+  list.forEach((item) => {
+    let [txt] = parseTemplates(item)
+    wiki = wiki.replace(item.body, txt)
+  })
   return wiki
 }
 
