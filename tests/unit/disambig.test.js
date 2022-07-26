@@ -99,5 +99,9 @@ test('false-positive', function (t) {
 '''''Taraxacum''''' ({{IPAc-en|t|ə|ˈ|r|æ|k|s|ə|k|ᵿ|m}}) is a large [[genus]] of [[flowering plant]]s`
   let doc = wtf(str)
   t.equal(doc.isDisambiguation(), false, 'skip-hatnote')
+
+  str = `{{about|foo}} Foo may refer to something undefined`
+  doc = wtf(str)
+  t.equal(doc.isDisambiguation(), false, 'skip-false-positive')
   t.end()
 })

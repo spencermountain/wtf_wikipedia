@@ -18,8 +18,7 @@ let str = `
 
 
 
-str = `{{Hatnote|"Dandelion" redirects here. It may refer to any species of the genus ''Taraxacum'' or specifically to ''[[Taraxacum officinale]]''. For similar plants, see [[False dandelion]]. For other uses, see [[Dandelion (disambiguation)]]}}
-'''''Taraxacum''''' ({{IPAc-en|t|ə|ˈ|r|æ|k|s|ə|k|ᵿ|m}}) is a large [[genus]] of [[flowering plant]]s`
+str = `{{about|foo}} Introspection is the examination of one's own conscious thoughts and feelings. In psychology, the process of introspection relies on the observation of one's mental state, while in a spiritual context it may refer to the examination of one's soul.[2] Introspection is closely related to human self-reflection and self-discovery and is contrasted with external observation.`
 let doc = wtf(str)
 console.log(doc.text())
 console.log(doc.isDisambiguation())

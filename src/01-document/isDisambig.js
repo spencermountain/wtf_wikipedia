@@ -2,6 +2,16 @@ import { disambig_titles, disambig_templates } from '../_data/i18n.js'
 import alt_disambig from './_disambig.js'
 const mayAlsoReg = /. may (also )?refer to\b/i
 
+// templates that signal page is not a disambiguation
+const notDisambig = {
+  about: true,
+  for: true,
+  'for multi': true,
+  'other people': true,
+  'other uses of': true,
+  'distinguish': true
+}
+
 const inTitle = new RegExp('. \\((' + disambig_titles.join('|') + ')\\)$', 'i')
 const i18n_templates = disambig_templates.reduce((h, str) => {
   h[str] = true
@@ -42,6 +52,11 @@ const isDisambig = function (doc) {
   let title = doc.title()
   if (title && inTitle.test(title) === true) {
     return true
+  }
+  // does it have a non-disambig template?
+  let notDisamb = templates.find((obj) => notDisambig.hasOwnProperty(obj.template))
+  if (notDisamb) {
+    return false
   }
   //try 'may refer to' on first line for en-wiki?
   if (byText(doc.sentence(0)) === true || byText(doc.sentence(1)) === true) {
