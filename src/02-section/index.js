@@ -4,7 +4,7 @@ import { references } from '../_data/i18n.js'
 import parseHeading from './heading.js'
 
 const isReference = new RegExp('^(' + references.join('|') + '):?', 'i')
-const section_reg = /(?:\n|^)(={2,5}.{1,200}?={2,5})/g
+const section_reg = /(?:\n|^)(={2,6}.{1,200}?={2,6})/g
 
 
 /**
