@@ -8569,10 +8569,10 @@
 
   const doInlineTemplates = function (wiki) {
     let list = findTemplates(wiki);
-    if (list.length) {
-      let [txt] = parseTemplate(list[0]);
-      wiki = wiki.replace(list[0].body, txt);
-    }
+    list.forEach((item) => {
+      let [txt] = parseTemplate(item);
+      wiki = wiki.replace(item.body, txt);
+    });
     return wiki
   };
 
