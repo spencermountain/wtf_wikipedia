@@ -65,6 +65,11 @@ let zeros = [
   'mvar',
   'pre2',
   'code',
+  'char',
+  'angle bracket',
+  'angbr',
+  'symb',
+  'key press', //needs work - https://en.m.wikipedia.org/wiki/Template:Key_press
 ]
 zeros.forEach((k) => {
   templates[k] = 0

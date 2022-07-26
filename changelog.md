@@ -2,6 +2,7 @@
 #### [unreleased ]
 - **[fix]** - multiple inline templates in a heading #489
 - **[fix]** - non-i18n list templates #475
+- **[fix]** - don't print hatnotes in .text()
 -->
 #### 10.0.1 [May 2022]
 - **[fix]** - runtime error #484

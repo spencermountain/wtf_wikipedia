@@ -18,11 +18,14 @@ let str = `
 
 
 
-str = `[[File:Comprehensive Scale of Rape (2018)
-{{legend|#d7301f|Rape is endemic in this society}}
-foo]]`
+str = `
+{{hatnote|{{char|◦}} redirects here. For similar symbols, see [[circle symbol (disambiguation)]]}}
+
+
+In [[typography]], a '''bullet''' or '''bullet point''', {{char|•}}, is a typographical symbol or [[glyph]] `
 let doc = wtf(str)
 console.log(doc.text())
+console.log(doc.template().json())
 
 
 
