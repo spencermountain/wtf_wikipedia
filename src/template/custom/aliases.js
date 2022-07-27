@@ -159,7 +159,6 @@ let multi = {
     'tl2',
     'tlu',
     'demo',
-    'hatnote',
     'xpd',
     'para',
     'elc',

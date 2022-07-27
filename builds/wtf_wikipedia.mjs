@@ -1,4 +1,4 @@
-/*! wtf_wikipedia 10.0.1 MIT */
+/*! wtf_wikipedia 10.0.2 MIT */
 import unfetch from 'isomorphic-unfetch';
 
 /**
@@ -882,6 +882,16 @@ const templates$a = [
 
 const mayAlsoReg = /. may (also )?refer to\b/i;
 
+// templates that signal page is not a disambiguation
+const notDisambig = {
+  about: true,
+  for: true,
+  'for multi': true,
+  'other people': true,
+  'other uses of': true,
+  'distinguish': true
+};
+
 const inTitle = new RegExp('. \\((' + disambig_titles.join('|') + ')\\)$', 'i');
 const i18n_templates = disambig_templates.reduce((h, str) => {
   h[str] = true;
@@ -922,6 +932,11 @@ const isDisambig = function (doc) {
   let title = doc.title();
   if (title && inTitle.test(title) === true) {
     return true
+  }
+  // does it have a non-disambig template?
+  let notDisamb = templates.find((obj) => notDisambig.hasOwnProperty(obj.template));
+  if (notDisamb) {
+    return false
   }
   //try 'may refer to' on first line for en-wiki?
   if (byText(doc.sentence(0)) === true || byText(doc.sentence(1)) === true) {
@@ -3762,7 +3777,7 @@ Object.keys(methods$3).forEach((k) => {
 const list_reg = /^[#*:;|]+/;
 const bullet_reg = /^\*+[^:,|]{4}/;
 const number_reg = /^ ?#[^:,|]{4}/;
-const has_word = /[a-z_0-9\]}]/i;
+const has_word = /[\p{Letter}_0-9\]}]/iu;
 
 // does it start with a bullet point or something?
 const isList = function (line) {
@@ -4244,7 +4259,6 @@ let multi = {
     'tl2',
     'tlu',
     'demo',
-    'hatnote',
     'xpd',
     'para',
     'elc',
@@ -4346,7 +4360,6 @@ let zeros = [
   'big',
   'cquote',
   'pull quote',
-  'small',
   'smaller',
   'midsize',
   'larger',
@@ -4379,6 +4392,11 @@ let zeros = [
   'mvar',
   'pre2',
   'code',
+  'char',
+  'angle bracket',
+  'angbr',
+  'symb',
+  'key press', //needs work - https://en.m.wikipedia.org/wiki/Template:Key_press
 ];
 zeros.forEach((k) => {
   templates$9[k] = 0;
@@ -4871,6 +4889,14 @@ var functions = {
       return ''
     }
     return num + '%'
+  },
+  // this one is re-used by i18n
+  small: (tmpl) => {
+    let obj = parser(tmpl);
+    if (obj.list && obj.list[0]) {
+      return obj.list[0]
+    }
+    return ''
   },
 
   // {{Percent-done|done=N|total=N|digits=N}}
@@ -5820,6 +5846,7 @@ let templates$4 = {
   'taxon info': ['taxon', 'item'], //https://en.wikipedia.org/wiki/Template:Taxon_info
   'portuguese name': ['first', 'second', 'suffix'], // https://en.wikipedia.org/wiki/Template:Portuguese_name
   geo: ['lat', 'lon', 'zoom'], //https://en.wikivoyage.org/wiki/Template:Geo
+  hatnote: ['text']
 };
 
 templates$4 = Object.assign(
@@ -5881,6 +5908,14 @@ let templates$3 = {
     let obj = parser(tmpl, ['formula']);
     list.push(obj);
     return '\n\n' + (obj.formula || '') + '\n\n'
+  },
+
+  //svg labels - https://en.m.wikipedia.org/wiki/Template:Legend
+  legend: (tmpl, list) => {
+    let order = ['color', 'label'];
+    let obj = parser(tmpl, order);
+    list.push(obj);
+    return obj.label || ' '
   },
 
   isbn: (tmpl, list) => {
@@ -9370,7 +9405,7 @@ const fetch = function (title, options, callback) {
     })
 };
 
-var version = '10.0.1';
+var version = '10.0.2';
 
 /**
  * use the native client-side fetch function
@@ -9385,8 +9420,8 @@ const request = function (url, opts) {
     return res.json()
   }).catch((e) => {
     console.error('\n\n=-=- http response error =-=-=-');
-    console.log(url);
-    console.log(e);
+    console.error(url);
+    console.error(e);
     return {}
   })
 };

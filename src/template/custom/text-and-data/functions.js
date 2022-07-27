@@ -9,6 +9,14 @@ let templates = {
     return '\n\n' + (obj.formula || '') + '\n\n'
   },
 
+  //svg labels - https://en.m.wikipedia.org/wiki/Template:Legend
+  legend: (tmpl, list) => {
+    let order = ['color', 'label']
+    let obj = parse(tmpl, order)
+    list.push(obj)
+    return obj.label || ' '
+  },
+
   isbn: (tmpl, list) => {
     let order = ['id', 'id2', 'id3']
     let obj = parse(tmpl, order)

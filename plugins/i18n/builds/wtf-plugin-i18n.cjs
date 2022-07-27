@@ -1,4 +1,4 @@
-/* wtf-plugin-i18n 1.0.0  MIT */
+/* wtf-plugin-i18n 1.0.1  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :

@@ -1,6 +1,13 @@
 <!--
 #### [unreleased ]
+
 -->
+#### 10.0.2 [Jul 2022]
+- **[fix]** - multiple inline templates in a heading #489
+- **[fix]** - non-i18n list templates #475
+- **[fix]** - don't print hatnotes in .text()
+- **[update]** - api, i18n, sports plugins
+
 #### 10.0.1 [May 2022]
 - **[fix]** - runtime error #484
 - **[new]** - wtf-plugin-sports for tricky nhl and mlb templates

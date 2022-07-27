@@ -1,4 +1,4 @@
-/*! wtf-plugin-sports 0.0.1  MIT */
+/*! wtf-plugin-sports 0.0.2  MIT */
 var teams$1 = [
   "Arizona Diamondbacks",
   "Atlanta Braves",
@@ -71,7 +71,7 @@ const playerStats = function (doc) {
   return res
 };
 
-const dashSplit$2 = /(–|-|−|&ndash;)/;
+const dashSplit$2 = /(–|-|−|&ndash;)/; // eslint-disable-line
 
 const parseTeam = function (txt) {
   if (!txt) {
@@ -79,7 +79,7 @@ const parseTeam = function (txt) {
   }
   let away = /^ *@ */.test(txt);
   return {
-    name: txt.replace(/^ *\@ */, ''),
+    name: txt.replace(/^ +@ +/, ''),
     home: !away
   }
 };
@@ -494,7 +494,6 @@ const parseGames = function (doc, meta) {
   }
   //do all subsections, too
   let tables = s.tables();
-  console.log(tables);
   s.children().forEach((c) => {
     tables = tables.concat(c.tables());
   });
@@ -503,7 +502,6 @@ const parseGames = function (doc, meta) {
   }
   tables.forEach((table) => {
     let rows = table.keyValue();
-    console.log(rows);
     rows.forEach((row) => {
       games.push(parseGame(row, meta));
     });

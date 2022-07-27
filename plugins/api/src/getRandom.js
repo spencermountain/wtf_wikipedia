@@ -38,7 +38,7 @@ const getRandom = async function (_options, http, wtf) {
   try {
     page = await fetchIt(url, http) || {}
   } catch (e) {
-    console.log(e)
+    console.error(e)
   }
   let title = page.title
   let wiki = ''

@@ -1,5 +1,5 @@
 import test from 'tape'
-import wtf from './lib/index.js'
+import wtf from '../lib/index.js'
 
 test('disambig template', function (t) {
   const str = `
@@ -91,5 +91,17 @@ test('by i18n title', function (t) {
   const doc = wtf(str)
   doc.title('Park Place (توضيح)')
   t.equal(doc.isDisambiguation(), true, 'is-disambiguation')
+  t.end()
+})
+
+test('false-positive', function (t) {
+  let str = `{{Hatnote|"Dandelion" redirects here. It may refer to any species of the genus ''Taraxacum'' or specifically to ''[[Taraxacum officinale]]''. For similar plants, see [[False dandelion]]. For other uses, see [[Dandelion (disambiguation)]]}}
+'''''Taraxacum''''' ({{IPAc-en|t|ə|ˈ|r|æ|k|s|ə|k|ᵿ|m}}) is a large [[genus]] of [[flowering plant]]s`
+  let doc = wtf(str)
+  t.equal(doc.isDisambiguation(), false, 'skip-hatnote')
+
+  str = `{{about|foo}} Foo may refer to something undefined`
+  doc = wtf(str)
+  t.equal(doc.isDisambiguation(), false, 'skip-false-positive')
   t.end()
 })

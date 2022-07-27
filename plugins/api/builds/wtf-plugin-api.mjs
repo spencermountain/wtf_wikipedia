@@ -1,4 +1,4 @@
-/* wtf-plugin-api 1.0.0  MIT */
+/* wtf-plugin-api 1.0.1  MIT */
 function normalize(title = '') {
   title = title.replace(/ /g, '_');
   title = title.trim();
@@ -249,7 +249,8 @@ const params$1 = {
   action: 'query',
   generator: 'random',
   grnnamespace: '0',
-  prop: 'pageprops',
+  prop: 'revisions',
+  rvprop: 'content',
   grnlimit: '1',
   rvslots: 'main',
   format: 'json',
@@ -276,10 +277,21 @@ const makeUrl = function (options) {
   return url
 };
 
-const getRandom = async function (_options, http) {
+const getRandom = async function (_options, http, wtf) {
   let url = makeUrl(defaults);
-  let page = await fetchIt(url, http);
-  return page
+  let page = {};
+  try {
+    page = await fetchIt(url, http) || {};
+  } catch (e) {
+    console.error(e);
+  }
+  let title = page.title;
+  let wiki = '';
+  if (page.revisions && page.revisions[0] && page.revisions[0].slots) {
+    wiki = page.revisions[0].slots.main['*'] || '';
+  }
+  let doc = wtf(wiki, { title });
+  return doc
 };
 
 const params = {
@@ -453,7 +465,7 @@ const addMethod = function (models) {
 
   // constructor methods
   models.wtf.getRandomPage = function (options) {
-    return getRandom(options, models.http)
+    return getRandom(options, models.http, models.wtf)
   };
   models.wtf.getRandomCategory = function (options) {
     return randomCategory(options, models.http)
@@ -473,6 +485,8 @@ const addMethod = function (models) {
   models.wtf.getRedirects = function (title) {
     return getRedirects(title, models.http)
   };
+  // aliases
+  models.wtf.random = models.wtf.getRandomPage;
 };
 
 export { addMethod as default };
