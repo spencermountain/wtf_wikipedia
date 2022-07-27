@@ -8,7 +8,7 @@
       "ES6"
     ] /* Specify library files to be included in the compilation. */,
     "allowJs": true /* Allow javascript files to be compiled. */,
-    "checkJs": true /* Report errors in .js files. */,
+    "checkJs": false /* Report errors in .js files. */,
     "declaration": true,
     "declarationDir": "./types",
     "emitDeclarationOnly": true,

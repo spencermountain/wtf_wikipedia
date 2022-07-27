@@ -80,7 +80,6 @@ const parseGames = function (doc, meta) {
   }
   //do all subsections, too
   let tables = s.tables()
-  console.log(tables)
   s.children().forEach((c) => {
     tables = tables.concat(c.tables())
   })
@@ -89,7 +88,6 @@ const parseGames = function (doc, meta) {
   }
   tables.forEach((table) => {
     let rows = table.keyValue()
-    console.log(rows)
     rows.forEach((row) => {
       games.push(parseGame(row, meta))
     })

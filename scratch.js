@@ -13,15 +13,15 @@ let str = `
 | posição    = esquerda
 }}
 `
+let doc = wtf(str)
+console.log(doc.templates()[0].json()['descrição'])
+
+
+
+// str = ``
 // let doc = wtf(str)
 // console.log(doc.text())
-
-
-
-str = `{{about|foo}} Introspection is the examination of one's own conscious thoughts and feelings. In psychology, the process of introspection relies on the observation of one's mental state, while in a spiritual context it may refer to the examination of one's soul.[2] Introspection is closely related to human self-reflection and self-discovery and is contrasted with external observation.`
-let doc = wtf(str)
-console.log(doc.text())
-console.log(doc.isDisambiguation())
+// console.log(doc.infobox().json())
 
 
 

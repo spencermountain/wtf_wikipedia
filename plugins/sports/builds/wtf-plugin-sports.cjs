@@ -1,4 +1,4 @@
-/*! wtf-plugin-sports 0.0.1  MIT */
+/*! wtf-plugin-sports 0.0.2  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -77,7 +77,7 @@
     return res
   };
 
-  const dashSplit$2 = /(–|-|−|&ndash;)/;
+  const dashSplit$2 = /(–|-|−|&ndash;)/; // eslint-disable-line
 
   const parseTeam = function (txt) {
     if (!txt) {
@@ -85,7 +85,7 @@
     }
     let away = /^ *@ */.test(txt);
     return {
-      name: txt.replace(/^ *\@ */, ''),
+      name: txt.replace(/^ +@ +/, ''),
       home: !away
     }
   };
@@ -500,7 +500,6 @@
     }
     //do all subsections, too
     let tables = s.tables();
-    console.log(tables);
     s.children().forEach((c) => {
       tables = tables.concat(c.tables());
     });
@@ -509,7 +508,6 @@
     }
     tables.forEach((table) => {
       let rows = table.keyValue();
-      console.log(rows);
       rows.forEach((row) => {
         games.push(parseGame(row, meta));
       });

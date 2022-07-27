@@ -13,8 +13,8 @@ const request = function (url, opts) {
     return res.json()
   }).catch((e) => {
     console.error('\n\n=-=- http response error =-=-=-')
-    console.log(url)
-    console.log(e)
+    console.error(url)
+    console.error(e)
     return {}
   })
 }
