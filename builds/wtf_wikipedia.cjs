@@ -1,4 +1,4 @@
-/*! wtf_wikipedia 10.0.2 MIT */
+/*! wtf_wikipedia 10.0.3 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('isomorphic-unfetch')) :
   typeof define === 'function' && define.amd ? define(['isomorphic-unfetch'], factory) :
@@ -2702,6 +2702,11 @@
     if (quotes && quotes.length % 2 !== 0 && str.length < 900) {
       return false
     }
+    //make sure quotes are closed too
+    const parens = str.match(/[()]/g);
+    if (parens && parens.length % 2 !== 0 && str.length < 900) {
+      return false
+    }
     return true
   };
 
@@ -4063,7 +4068,11 @@
     mlbbioret: true,
   };
 
-  const i18nReg = new RegExp('^(subst.)?(' + infoboxes$1.join('|') + ')[: \n]', 'i');
+  const i18nReg = new RegExp('^(subst.)?(' + infoboxes$1.join('|') + ')(?=:| |\n|$)', 'i');
+  infoboxes$1.forEach(name => {
+    infoboxes[name] = true;
+  });
+
   //some looser ones
   const startReg = /^infobox /i;
   const endReg = / infobox$/i;
@@ -7667,7 +7676,7 @@
         return
       }
       // is it an Infobox?
-      if (json.template === 'infobox' && json.subbox !== 'yes') {
+      if (json.template === 'infobox' && json.subbox !== 'yes' && !obj.nested) {
         json.domain = domain; //infoboxes need this for images, i guess
         json.data = json.data || {}; //validate it a little
         res.infoboxes.push(new Infobox(json, obj.wiki));
@@ -7698,6 +7707,7 @@
         list.push({
           name: obj.name,
           wiki: obj.body,
+          nested: Boolean(obj.parent),
           text: text,
           json: json,
         });
@@ -9413,7 +9423,7 @@
       })
   };
 
-  var version = '10.0.2';
+  var version = '10.0.3';
 
   /**
    * use the native client-side fetch function

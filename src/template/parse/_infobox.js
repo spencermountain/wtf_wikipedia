@@ -1,6 +1,10 @@
 import infoboxList from '../../infobox/_infoboxes.js'
 import { infoboxes } from '../../_data/i18n.js'
-const i18nReg = new RegExp('^(subst.)?(' + infoboxes.join('|') + ')[: \n]', 'i')
+const i18nReg = new RegExp('^(subst.)?(' + infoboxes.join('|') + ')(?=:| |\n|$)', 'i')
+infoboxes.forEach(name => {
+  infoboxList[name] = true
+})
+
 //some looser ones
 const startReg = /^infobox /i
 const endReg = / infobox$/i

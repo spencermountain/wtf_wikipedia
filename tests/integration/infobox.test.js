@@ -74,3 +74,29 @@ test('nested-london-infobox', function (t) {
   t.equal(obj[`name`], 'hello', 'found name val')
   t.end()
 })
+
+test('ukrainian-infobox', function (t) {
+  let str = `{{Картка
+  |foo = bar
+  |назва   = Приклад необов'язкового заголовка
+  }}`
+  let doc = wtf(str)
+  let json = { foo: {} }
+  if (doc.infoboxes()[0]) {
+    json = doc.infoboxes()[0].json()
+  }
+  t.equal(json.foo.text, 'bar', 'ukr infobox')
+
+
+  str = `{{Картка:Лідер
+| оригінал імені    = foo
+| жінка             = bar
+}}`
+  doc = wtf(str)
+  json = { foo: {} }
+  if (doc.infoboxes()[0]) {
+    json = doc.infoboxes()[0].json()
+  }
+  t.equal(json.жінка.text, 'bar', 'ukr officeholder infobox')
+  t.end()
+})

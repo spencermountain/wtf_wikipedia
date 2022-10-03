@@ -45,6 +45,11 @@ const isBalanced = function (str) {
   if (quotes && quotes.length % 2 !== 0 && str.length < 900) {
     return false
   }
+  //make sure quotes are closed too
+  const parens = str.match(/[()]/g)
+  if (parens && parens.length % 2 !== 0 && str.length < 900) {
+    return false
+  }
   return true
 }
 
