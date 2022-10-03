@@ -151,7 +151,7 @@ test('tables - get - number', (t) => {
 test('templates - get', (t) => {
   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
-  const expected = [148, 195, 54, 49, 727, 176, 182, 399, 70, 97, 147, 78, 23, 18, 18, 21]
+  const expected = [148, 195, 54, 49, 296, 176, 182, 399, 70, 97, 147, 78, 23, 18, 18, 21]
   t.deepEqual(
     sec.templates().map((s) => JSON.stringify(s.json()).length),
     expected,
