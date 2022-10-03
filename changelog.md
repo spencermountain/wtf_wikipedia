@@ -2,6 +2,11 @@
 #### [unreleased ]
 
 -->
+#### 10.0.3 [Oct 2022]
+- **[fix]** - improved i18n infobox classification
+- **[update]** - dependencies
+
+
 #### 10.0.2 [Jul 2022]
 - **[fix]** - multiple inline templates in a heading #489
 - **[fix]** - non-i18n list templates #475

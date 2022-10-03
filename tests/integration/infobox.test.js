@@ -85,6 +85,18 @@ test('ukrainian-infobox', function (t) {
   if (doc.infoboxes()[0]) {
     json = doc.infoboxes()[0].json()
   }
-  t.equal(json.foo.text, 'bar', 'uk infobox')
+  t.equal(json.foo.text, 'bar', 'ukr infobox')
+
+
+  str = `{{Картка:Лідер
+| оригінал імені    = foo
+| жінка             = bar
+}}`
+  doc = wtf(str)
+  json = { foo: {} }
+  if (doc.infoboxes()[0]) {
+    json = doc.infoboxes()[0].json()
+  }
+  t.equal(json.жінка.text, 'bar', 'ukr officeholder infobox')
   t.end()
 })
