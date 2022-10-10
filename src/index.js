@@ -8,6 +8,7 @@ const wtf = function (wiki, options) {
 }
 
 //export classes for plugin development
+// and export them for typescript compatibility
 import Doc from './01-document/Document.js'
 import Section from './02-section/Section.js'
 import Paragraph from './03-paragraph/Paragraph.js'
@@ -48,5 +49,17 @@ wtf.extend = function (fn) {
 }
 wtf.plugin = wtf.extend
 wtf.version = version
+
+wtf.Document = Doc
+wtf.Section = Section
+wtf.Paragraph = Paragraph
+wtf.Sentence = Sentence
+wtf.Image = Image
+wtf.Infobox = Infobox
+wtf.Link = Link
+wtf.List = List
+wtf.Reference = Reference
+wtf.Table = Table
+wtf.Template = Template
 
 export default wtf
