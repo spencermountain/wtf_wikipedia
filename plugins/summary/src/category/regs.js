@@ -17,11 +17,8 @@ const good = ['male', 'female'].map((str) => new RegExp(`\\b${str}\\b`, 'i'))
 
 const like = ['male', 'female', 'century'].map((str) => new RegExp(`\\b${str}\\b`, 'i'))
 
-const dislike = ['people', 'place', 'from', 'in', 'people from'].map((str) => new RegExp(`\\b${str}\\b`, 'i'))
+const dislike = ['people', 'place', 'from', 'in', 'people from'].map(
+  (str) => new RegExp(`\\b${str}\\b`, 'i'),
+)
 
-export {
-  good,
-  bad,
-  like,
-  dislike,
-}
+export { good, bad, like, dislike }

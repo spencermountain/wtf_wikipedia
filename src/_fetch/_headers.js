@@ -2,7 +2,7 @@
  * factory for header options
  *
  * @private
- * @param {object} options
+ * @param {fetchOptions} options
  * @returns {object} the generated options
  */
 function makeHeaders (options) {
@@ -28,4 +28,5 @@ function makeHeaders (options) {
     redirect: 'follow',
   }
 }
+
 export default makeHeaders

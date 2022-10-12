@@ -27,8 +27,8 @@ function parseDate (str) {
       // find the numbers
       let onlyNumbers = [...arr]
       const removeIndexes = [3, 1, 0]
-      removeIndexes.forEach(i => onlyNumbers.splice(i, 1))
-      onlyNumbers = onlyNumbers.map(i => Number(i))
+      removeIndexes.forEach((i) => onlyNumbers.splice(i, 1))
+      onlyNumbers = onlyNumbers.map((i) => Number(i))
       // if it's a range, replace with the average rounded down, otherwise with the minimum
       if (arr[3].match(regRangeSeparator)) {
         const avg = findAverage(onlyNumbers)
@@ -71,12 +71,15 @@ function parseDate (str) {
   let year
   if (UptoSecondMill) {
     // trick spacetime to get the month and day correctly by replacing the year with 1000
-    str = str.replace(UptoSecondMill[0], "1000")
+    str = str.replace(UptoSecondMill[0], '1000')
     // assign the real year
-    year = UptoSecondMill.input.match(regBCE) ? -Number(UptoSecondMill[1]) : Number(UptoSecondMill[1])
+    year = UptoSecondMill.input.match(regBCE)
+      ? -Number(UptoSecondMill[1])
+      : Number(UptoSecondMill[1])
   }
 
-  const epoch = { // epoch is returned when unsuccessful 
+  const epoch = {
+    // epoch is returned when unsuccessful
     year: 1970,
     month: 0,
     date: 1,

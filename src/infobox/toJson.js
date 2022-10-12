@@ -2,9 +2,9 @@ import encodeObj from '../_lib/encode.js'
 
 /**
  * turn an infobox into some nice json
- * 
- * @param {object} infobox 
- * @param {object} [options] 
+ *
+ * @param {object} infobox
+ * @param {object} [options]
  * @returns {object}
  */
 function toJson (infobox, options) {

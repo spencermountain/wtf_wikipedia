@@ -26,6 +26,7 @@ function naiive_split (text) {
   let splits = text.split(/(\n+)/)
   splits = splits.filter((s) => s.match(/\S/))
   //split by period, question-mark, and exclamation-mark
+  // @ts-expect-error it is to flatten the array
   splits = splits.map(function (str) {
     return str.split(/(\S.+?[.!?]"?)(?=\s|$)/g) //\u3002
   })
@@ -55,16 +56,20 @@ function isBalanced (str) {
 
 function sentence_parser (text) {
   let sentences = []
+
   //first do a greedy-split..
   let chunks = []
+
   //ensure it 'smells like' a sentence
   if (!text || typeof text !== 'string' || text.trim().length === 0) {
     return sentences
   }
+
   // This was the splitter regex updated to fix quoted punctuation marks.
   // let splits = text.split(/(\S.+?[.\?!])(?=\s+|$|")/g);
   // todo: look for side effects in this regex replacement:
   let splits = naiive_split(text)
+
   //filter-out the grap ones
   for (let i = 0; i < splits.length; i++) {
     let s = splits[i]
@@ -100,6 +105,7 @@ function sentence_parser (text) {
     }
     return true
   }
+
   //loop through these chunks, and join the non-sentence chunks back together..
   for (let i = 0; i < chunks.length; i++) {
     //should this chunk be combined with the next one?
@@ -111,10 +117,12 @@ function sentence_parser (text) {
       chunks[i] = ''
     }
   }
+
   //if we never got a sentence, return the given text
   if (sentences.length === 0) {
     return [text]
   }
+
   return sentences
 }
 

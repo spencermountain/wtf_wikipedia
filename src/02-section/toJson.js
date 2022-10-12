@@ -1,5 +1,6 @@
 import setDefaults from '../_lib/setDefaults.js'
 import encodeObj from '../_lib/encode.js'
+import Section from './Section.js'
 
 const defaults = {
   headers: true,
@@ -14,10 +15,11 @@ const defaults = {
 }
 
 /**
+ * convert a section to a json object
  *
- * @param {object} section
- * @param {object} options
- * @returns {object}
+ * @param {Section} section the section to be put to json
+ * @param {SectionJSONOptions} options the options to pass to toJSON
+ * @returns {object} a json object
  */
 function toJSON (section, options) {
   options = setDefaults(options, defaults)

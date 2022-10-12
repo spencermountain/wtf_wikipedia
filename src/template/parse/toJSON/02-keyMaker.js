@@ -10,16 +10,10 @@ const reserved = {
 }
 
 /**
- * @typedef parseKeyReturn
- * @property {string} val
- * @property {string} key
- */
-
-/**
  * turn 'key=val' into {key:key, val:val}
  *
  * @param {string} str the string that will be parsed
- * @returns {parseKeyReturn} the spit string
+ * @returns {object} the spit string
  */
 function parseKey (str) {
   let parts = str.split('=')

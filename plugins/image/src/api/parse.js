@@ -1,6 +1,6 @@
 /**
  * Parses the API response for a single image.
- * 
+ *
  * @private
  * @param {Object} fetchedImage
  * @returns {Object} method(s) results
@@ -13,7 +13,8 @@ function parseImage (fetchedImage) {
 
   const metaData = fetchedImage.imageinfo[0].extmetadata // call to iiprop "extmetadata"
   const url = fetchedImage.imageinfo[0].url // call to iiprop "url"
-  return { // add the data for the properties that exists
+  return {
+    // add the data for the properties that exists
     ...(metaData && {
       licenseRes: {
         license: metaData.LicenseShortName && metaData.LicenseShortName.value || "",
@@ -32,16 +33,17 @@ function parseImage (fetchedImage) {
  * @param {string[]} titles an array of images' titles (".file()" results)
  * @param {Object} fetched API response
  * @param {boolean} isDoc whether the call is from a Document or an Image
- * @returns {Object | Object[]} 
+ * @returns {Object | Object[]}
  */
 function parseFetched (titles, fetched, isDoc) {
-  if (isDoc) { // group of images
+  if (isDoc) {
+    // group of images
     // sort the results because API response is not in order, then find the info we need
     const fetchedValues = Object.values(fetched.query.pages)
     const newMethodsRes = []
-    titles = titles.map(i => {
-      i = i.replace(/_/g, " ")
-      i = i.replace(/^.*?:/, "") // delete 'File:', 'Image:' etc.
+    titles = titles.map((i) => {
+      i = i.replace(/_/g, ' ')
+      i = i.replace(/^.*?:/, '') // delete 'File:', 'Image:' etc.
       i = i[0].toUpperCase() + i.substring(1) // capitalize all of them
       return i
     })

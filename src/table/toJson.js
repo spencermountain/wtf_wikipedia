@@ -1,6 +1,6 @@
 import encodeObj from '../_lib/encode.js'
-//
-function toJson (tables, options) {
+
+export default function toJson (tables, options = {}) {
   return tables.map((table) => {
     let row = {}
     Object.keys(table).forEach((k) => {
@@ -13,4 +13,3 @@ function toJson (tables, options) {
     return row
   })
 }
-export default toJson

@@ -95,6 +95,7 @@ function parseParams (obj) {
 function parseCoor (tmpl) {
   let obj = parse(tmpl)
   obj = parseParams(obj)
+
   let tmp = findLatLng(obj.list)
   obj.lat = round(tmp.lat)
   obj.lon = round(tmp.lon)

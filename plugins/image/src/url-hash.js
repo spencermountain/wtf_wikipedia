@@ -1,7 +1,6 @@
 // import jsHash from 'jshashes'
 import md5 from './_md5.js'
 
-
 const server = 'https://upload.wikimedia.org/wikipedia/commons/'
 
 function encodeTitle (file) {

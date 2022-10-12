@@ -23,6 +23,7 @@ function pipeSplitter (tmpl) {
       a.split('[[').length !== a.split(']]').length
     ) {
       arr[i + 1] = arr[i] + '|' + arr[i + 1]
+      // @ts-expect-error
       arr[i] = null
     }
   })

@@ -151,7 +151,7 @@ test('tables - get - number', (t) => {
 test('templates - get', (t) => {
   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
-  const expected = [148, 195, 54, 49, 296, 176, 182, 399, 70, 97, 147, 78, 23, 18, 18, 21]
+  const expected = [148, 195, 54, 49, 2701, 176, 182, 399, 70, 97, 147, 78, 23, 18, 18, 21]
   t.deepEqual(
     sec.templates().map((s) => JSON.stringify(s.json()).length),
     expected,
@@ -178,7 +178,7 @@ test('templates - get - string', (t) => {
 test('infoboxes - get', (t) => {
   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
-  const expected = [33]
+  const expected = [18362]
   t.deepEqual(
     sec.infoboxes().map((s) => JSON.stringify(s).length),
     expected,
@@ -190,7 +190,7 @@ test('infoboxes - get', (t) => {
 test('infoboxes - get - number', (t) => {
   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section(0)
-  t.equal(JSON.stringify(sec.infobox()).length, 33, 'the infoboxes should equal the expected')
+  t.equal(JSON.stringify(sec.infobox()).length, 18362, 'the infoboxes should equal the expected')
   t.end()
 })
 
@@ -218,7 +218,7 @@ test('coordinates - get - number', (t) => {
 test('lists - get', (t) => {
   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section('See also')
-  const expected = [22]
+  const expected = [1421]
   t.deepEqual(
     sec.lists().map((s) => JSON.stringify(s.lines()).length),
     expected,
@@ -230,7 +230,7 @@ test('lists - get', (t) => {
 test('lists - get - number', (t) => {
   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section('See also')
-  t.equal(JSON.stringify(sec.list().lines()).length, 22, 'the lists should equal the expected')
+  t.equal(JSON.stringify(sec.list().lines()).length, 1421, 'the lists should equal the expected')
   t.end()
 })
 

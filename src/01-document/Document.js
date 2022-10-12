@@ -3,10 +3,12 @@ import toJSON from './toJson.js'
 import isDisambig from './isDisambig.js'
 import setDefaults from '../_lib/setDefaults.js'
 import Image from '../image/Image.js'
-import { isRedirect, parse } from './redirects.js'
+import { isRedirect, parse as ParseRedirect } from './redirects.js'
 import preProcess from './preProcess/index.js'
 import parseSection from '../02-section/index.js'
 import parseCategories from './categories.js'
+import Sentence from '../04-sentence/Sentence.js'
+import Reference from '../reference/Reference.js'
 
 const defaults = {
   tables: true,
@@ -27,40 +29,31 @@ class Document {
    * This function starts parsing the wiki text and sets the options in the class
    *
    * @param {string} [wiki] The wiki text
-   * @param {object} [options] The options for the parser
+   * @param {object} [DocumentOptions] The options for the parser
    */
   constructor (wiki, options) {
     options = options || {}
-    let props = {
-      pageID: options.pageID || options.id || null,
-      namespace: options.namespace || options.ns || null,
-      lang: options.lang || options.language || null,
-      domain: options.domain || null,
-      title: options.title || null,
-      type: 'page',
-      redirectTo: null,
-      wikidata: options.wikidata || null,
-      wiki: wiki || '',
-      categories: [],
-      sections: [],
-      coordinates: [],
-      // userAgent is used for successive calls to the API
-      userAgent: options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library',
-    }
+    this._pageID = options.pageID || options.id || null
+    this._namespace = options.namespace || options.ns || null
+    this._lang = options.lang || options.language || null
+    this._domain = options.domain || null
+    this._title = options.title || null
+    this._type = 'page'
+    this._redirectTo = null
+    this._wikidata = options.wikidata || null
+    this._wiki = wiki || ''
+    this._categories = []
+    this._sections = []
+    this._coordinates = []
+    // userAgent is used for successive calls to the API
+    this._userAgent = options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library'
+
     // this._missing_templates = {} //for stats+debugging purposes
 
-    Object.keys(props).forEach((k) => {
-      Object.defineProperty(this, '_' + k, {
-        enumerable: false,
-        writable: true,
-        value: props[k],
-      })
-    })
-
     //detect if page is just redirect, and return it
-    if (isRedirect(this._wiki) === true) {
+    if (isRedirect(this._wiki)) {
       this._type = 'redirect'
-      this._redirectTo = parse(this._wiki)
+      this._redirectTo = ParseRedirect(this._wiki)
       const [categories, newWiki] = parseCategories(this._wiki)
       this._categories = categories
       this._wiki = newWiki
@@ -290,8 +283,8 @@ class Document {
   /**
    * if no clue is provided, it compiles an array of sentences in the wiki text.
    * if the clue is provided it return the sentence at the provided index
-   * @param {number | string} [clue] given index of a sentence
-   * @returns {object[]|object} an array of sentences or a single sentence
+   * @param {number} [clue] given index of a sentence
+   * @returns {Sentence[]|Sentence} an array of sentences or a single sentence
    */
   sentences (clue) {
     let arr = []
@@ -398,7 +391,7 @@ class Document {
    * Else return all references
    *
    * @param {number} [clue] The index of the wanted references
-   * @returns {object | object[]} The category at the provided index or all references
+   * @returns {Reference | Reference[]} The category at the provided index or all references
    */
   references (clue) {
     return sectionMap(this, 'references', clue)
@@ -501,29 +494,33 @@ class Document {
 }
 
 // aliases
-const singular = {
-  categories: 'category',
-  sections: 'section',
-  paragraphs: 'paragraph',
-  sentences: 'sentence',
-  images: 'image',
-  links: 'link',
-  // interwiki
-  lists: 'list',
-  tables: 'table',
-  templates: 'template',
-  references: 'reference',
-  citations: 'citation',
-  coordinates: 'coordinate',
-  infoboxes: 'infobox',
-}
-Object.keys(singular).forEach((k) => {
-  let sing = singular[k]
-  Document.prototype[sing] = function (clue) {
-    let arr = this[k](clue)
+/**
+ * this function crates a function that calls the plural version of the method
+ *
+ * @param {string} plural the plural of the word
+ * @returns {function} a Function that calls the plural version of the method
+ */
+function singularFactory (plural) {
+  return function (clue) {
+    let arr = this[plural](clue)
     return arr[0] || null
   }
-})
+}
+
+Document.prototype.category = singularFactory('categories')
+Document.prototype.section = singularFactory('sections')
+Document.prototype.paragraph = singularFactory('paragraphs')
+Document.prototype.sentence = singularFactory('sentences')
+Document.prototype.image = singularFactory('images')
+Document.prototype.link = singularFactory('links')
+Document.prototype.list = singularFactory('lists')
+Document.prototype.table = singularFactory('tables')
+Document.prototype.template = singularFactory('templates')
+Document.prototype.reference = singularFactory('references')
+Document.prototype.citation = singularFactory('citations')
+Document.prototype.coordinate = singularFactory('coordinates')
+Document.prototype.infobox = singularFactory('infoboxes')
+
 Document.prototype.lang = Document.prototype.language
 Document.prototype.ns = Document.prototype.namespace
 Document.prototype.plaintext = Document.prototype.text

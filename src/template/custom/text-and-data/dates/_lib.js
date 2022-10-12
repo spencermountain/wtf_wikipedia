@@ -23,29 +23,33 @@ function getEpoch (obj) {
 }
 
 //very rough!
+
 function delta (from, to) {
-  from = getEpoch(from)
-  to = getEpoch(to)
-  let diff = to - from
+  let diff = getEpoch(to) - getEpoch(from)
+  // @ts-expect-error
   let obj = {}
+
   //get years
   let years = Math.floor(diff / year)
   if (years > 0) {
     obj.years = years
     diff -= obj.years * year
   }
+
   //get months
   let monthCount = Math.floor(diff / month)
   if (monthCount > 0) {
     obj.months = monthCount
     diff -= obj.months * month
   }
+
   //get days
   let days = Math.floor(diff / day)
   if (days > 0) {
     obj.days = days
     // diff -= (obj.days * day);
   }
+
   return obj
 }
 

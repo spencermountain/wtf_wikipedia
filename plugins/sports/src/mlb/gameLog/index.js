@@ -8,10 +8,10 @@ function isArray (arr) {
 function doTable (rows = []) {
   let games = []
   //is it a legend/junk table?
-  if (rows[1] && rows[1].Legend || !isArray(rows)) {
+  if ((rows[1] && rows[1].Legend) || !isArray(rows)) {
     return games
   }
-  rows.forEach(row => {
+  rows.forEach((row) => {
     games.push(parseGame(row))
   })
   //remove empty weird ones
@@ -22,7 +22,7 @@ function doTable (rows = []) {
 function doSection (section) {
   let tables = section.tables()
   //do all subsection, too
-  section.children().forEach(s => {
+  section.children().forEach((s) => {
     tables = tables.concat(s.tables())
   })
   //try to find a game log template
@@ -39,9 +39,15 @@ function doSection (section) {
 function gameLog (doc) {
   let games = []
   // grab the generated section called 'Game Log'
-  let section = doc.section('game log') || doc.section('game log and schedule') || doc.section('regular season') || doc.section('season') || doc.section('schedule') || doc.section('schedule and results')
+  let section =
+    doc.section('game log') ||
+    doc.section('game log and schedule') ||
+    doc.section('regular season') ||
+    doc.section('season') ||
+    doc.section('schedule') ||
+    doc.section('schedule and results')
   if (!section) {
-    console.warn('no game log section for: \'' + doc.title() + '\'')
+    console.warn("no game log section for: '" + doc.title() + "'")
     return games
   }
   let tables = doSection(section)
@@ -56,7 +62,11 @@ function gameLog (doc) {
 function postSeason (doc) {
   let series = []
   //ok, try postseason, too
-  let section = doc.section('postseason game log') || doc.section('postseason') || doc.section('playoffs') || doc.section('playoff')
+  let section =
+    doc.section('postseason game log') ||
+    doc.section('postseason') ||
+    doc.section('playoffs') ||
+    doc.section('playoff')
   if (!section) {
     return series
   }

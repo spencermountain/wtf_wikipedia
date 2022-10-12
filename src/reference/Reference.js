@@ -1,23 +1,26 @@
 import encodeObj from '../_lib/encode.js'
 
 //also called 'citations'
-function Reference (data, wiki) {
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data,
-  })
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki,
-  })
-}
+class Reference {
+  constructor (data, wiki) {
+    this.data = data
+    this.wiki = wiki
+  }
 
-const methods = {
-  title: function () {
-    let data = this.data
-    return data.title || data.encyclopedia || data.author || ''
-  },
-  links: function (n) {
+  /**
+   *
+   * @returns {string} tile of the reference
+   */
+  title () {
+    return this.data.title || this.data.encyclopedia || this.data.author || ''
+  }
+
+  /**
+   *
+   * @param {number | string} [n]
+   * @returns {}
+   */
+  links (n) {
     let arr = []
     if (typeof n === 'number') {
       return arr[n]
@@ -32,14 +35,31 @@ const methods = {
       return link === undefined ? [] : [link]
     }
     return arr || []
-  },
-  text: function () {
+  }
+
+  /**
+   * NOT IMPLEMENTED
+   *
+   * @returns {string} the text of the reference
+   */
+  text () {
     return '' //nah, skip these.
-  },
-  wikitext: function () {
+  }
+
+  /**
+   *
+   * @returns {string} the wiki text of the reference
+   */
+  wikitext () {
     return this.wiki || ''
-  },
-  json: function (options = {}) {
+  }
+
+  /**
+   *
+   * @param {object} options the options for the serialization
+   * @returns {object} the serialized reference
+   */
+  json (options = {}) {
     let json = this.data || {}
     //encode them, for mongodb
     if (options.encode === true) {
@@ -47,9 +67,7 @@ const methods = {
       json = encodeObj(json)
     }
     return json
-  },
+  }
 }
-Object.keys(methods).forEach((k) => {
-  Reference.prototype[k] = methods[k]
-})
+
 export default Reference

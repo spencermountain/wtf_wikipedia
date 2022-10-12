@@ -131,14 +131,17 @@ function parseTable (wiki) {
     .map((l) => l.trim())
   let rows = findRows(lines)
   rows = rows.filter((r) => r)
+
   if (rows.length === 0) {
     return []
   }
 
   //remove non-header span rows
   rows = removeMidSpans(rows)
+
   //support colspan, rowspan...
   rows = handleSpans(rows)
+
   //grab the header rows
   let headers = findHeaders(rows)
   if (!headers || headers.length <= 1) {
@@ -156,6 +159,7 @@ function parseTable (wiki) {
   let table = rows.map((arr) => {
     return parseRow(arr, headers)
   })
+
   return table
 }
 

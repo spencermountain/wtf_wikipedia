@@ -39,6 +39,7 @@ function internal_links (links, str) {
     if (link.match(ignore_links)) {
       return s
     }
+
     //kill off just these just-anchor links [[#history]]
     // if (link.match(/^#/i)) {
     //   console.log(s)
@@ -49,10 +50,12 @@ function internal_links (links, str) {
       page: link,
       raw: raw,
     }
+
     obj.page = obj.page.replace(/#(.*)/, (a, b) => {
       obj.anchor = b
       return ''
     })
+
     //grab any fr:Paris parts
     obj = parse_interwiki(obj)
     if (obj.wiki) {
@@ -61,11 +64,13 @@ function internal_links (links, str) {
     if (txt !== null && txt !== obj.page) {
       obj.text = txt
     }
+
     //finally, support [[link]]'s apostrophe
     if (suffix) {
       obj.text = obj.text || obj.page
       obj.text += suffix.trim()
     }
+
     //titlecase it, if necessary
     if (obj.page && /^[A-Z]/.test(obj.page) === false) {
       if (!obj.text) {
@@ -73,9 +78,11 @@ function internal_links (links, str) {
       }
       obj.page = obj.page
     }
+
     links.push(obj)
     return s
   })
+
   return links
 }
 
@@ -91,4 +98,5 @@ function parse_links (str) {
   }
   return links
 }
+
 export default parse_links

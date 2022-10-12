@@ -69,7 +69,8 @@ function parseGame (row, meta) {
 //
 function parseGames (doc, meta) {
   let games = []
-  let s = doc.section('schedule and results') || doc.section('schedule') || doc.section('regular season')
+  let s =
+    doc.section('schedule and results') || doc.section('schedule') || doc.section('regular season')
   if (!s) {
     return games
   }

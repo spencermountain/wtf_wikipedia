@@ -45,7 +45,6 @@ function getResult (data, options = {}) {
       description: page.pageprops['wikibase-shortdesc'],
     })
 
-
     return { wiki: text, meta: meta }
   })
 }

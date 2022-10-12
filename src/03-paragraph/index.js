@@ -1,10 +1,16 @@
 import Paragraph from './Paragraph.js'
+import Section from '../02-section/Section.js'
 import { byParagraph as parseSentences } from '../04-sentence/index.js'
 
 const twoNewLines = /\r?\n\r?\n/
 import parseImage from '../image/index.js'
 import parseList from '../list/index.js'
 
+/**
+ *
+ * @param {Section} section
+ * @param {Document} doc
+ */
 function parseParagraphs (section, doc) {
   let wiki = section._wiki
   let paragraphs = wiki.split(twoNewLines)

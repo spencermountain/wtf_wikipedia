@@ -49,6 +49,7 @@ function parseList (paragraph) {
   let lines = wiki.split(/\n/g)
   let lists = []
   let theRest = []
+
   for (let i = 0; i < lines.length; i++) {
     if (isList(lines[i])) {
       let sub = grabList(lines, i)
@@ -60,7 +61,9 @@ function parseList (paragraph) {
       theRest.push(lines[i])
     }
   }
+
   paragraph.lists = lists.map((l) => new List(l, wiki))
   paragraph.wiki = theRest.join('\n')
 }
+
 export default parseList

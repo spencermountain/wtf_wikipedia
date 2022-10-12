@@ -1,5 +1,9 @@
 import toJSON from './toJson.js'
 import setDefaults from '../_lib/setDefaults.js'
+import Paragraph from '../03-paragraph/Paragraph.js'
+import Link from '../link/Link.js'
+import List from '../list/List.js'
+
 // import parseHeading from './heading.js'
 import parseTable from '../table/index.js'
 import parseParagraphs from '../03-paragraph/index.js'
@@ -20,33 +24,29 @@ const defaults = {
  * we look for the == title == syntax and split and parse the sections from there
  *
  * @class
+ * @public
  */
 class Section {
   /**
    * the stuff between headings - 'History' section for example
    *
    * @param {object} data the data already gathered about the section
-   * @param {object} doc the document that this section belongs to
+   * @param {string} data.title the title of the section
+   * @param {number} data.depth the depth of the section
+   * @param {string} data.wiki the wiki text of the section
+   *
+   * @param {Document} doc the document that this section belongs to
    */
   constructor (data, doc) {
-    let props = {
-      doc: doc,
-      title: data.title || '',
-      depth: data.depth,
-      wiki: data.wiki || '',
-      templates: [],
-      tables: [],
-      infoboxes: [],
-      references: [],
-      paragraphs: [],
-    }
-    Object.keys(props).forEach((k) => {
-      Object.defineProperty(this, '_' + k, {
-        enumerable: false,
-        writable: true,
-        value: props[k],
-      })
-    })
+    this._doc = doc
+    this._title = data.title || ''
+    this._depth = data.depth
+    this._wiki = data.wiki || ''
+    this._templates = []
+    this._tables = []
+    this._infoboxes = []
+    this._references = []
+    this._paragraphs = []
 
     //parse-out <template></template>' and {{start}}...{{end}} templates
     const startEndTemplates = parseStartEndTemplates(this, doc)
@@ -124,9 +124,8 @@ class Section {
 
   /**
    * returns all paragraphs in the section
-   * if an clue is provided then it returns the paragraph at clue-th index
    *
-   * @returns {object | object[]} all paragraphs in an array or the clue-th paragraph
+   * @returns {Paragraph[]} all paragraphs in an array
    */
   paragraphs () {
     return this._paragraphs || []
@@ -232,9 +231,12 @@ class Section {
    * returns all lists in the section
    * if an clue is provided then it returns the list at clue-th index
    *
-   * @returns {object | object[]} all lists in an array or the clue-th list
+   * @returns {List[]} all lists in an array or the clue-th list
    */
   lists () {
+    /**
+     * @type {List[]}
+     */
     let arr = []
     this.paragraphs().forEach((p) => {
       arr = arr.concat(p.lists())
@@ -246,9 +248,12 @@ class Section {
    * returns all interwiki links in the section
    * if an clue is provided then it returns the interwiki link at clue-th index
    *
-   * @returns {object | object[]} all interwiki links in an array or the clue-th interwiki link
+   * @returns {Link[]} all interwiki links in an array or the clue-th interwiki link
    */
   interwiki () {
+    /**
+     * @type {Link[]}
+     */
     let arr = []
     this.paragraphs().forEach((p) => {
       arr = arr.concat(p.interwiki())
@@ -260,9 +265,12 @@ class Section {
    * returns all images in the section
    * if an clue is provided then it returns the image at clue-th index
    *
-   * @returns {object | object[]} all images in an array or the clue-th image
+   * @returns {Image[]} all images in an array or the clue-th image
    */
   images () {
+    /**
+     * @type {Image[]}
+     */
     let arr = []
     this.paragraphs().forEach((p) => {
       arr = arr.concat(p.images())
@@ -284,7 +292,7 @@ class Section {
   /**
    * Removes the section from the document
    *
-   * @returns {null|object} the document without this section. or null if there is no document
+   * @returns {null|Document} the document without this section. or null if there is no document
    */
   remove () {
     if (!this._doc) {
@@ -497,27 +505,33 @@ class Section {
 Section.prototype.citations = Section.prototype.references
 
 // aliases
-const singular = {
-  sentences: 'sentence',
-  paragraphs: 'paragraph',
-  links: 'link',
-  tables: 'table',
-  templates: 'template',
-  infoboxes: 'infobox',
-  coordinates: 'coordinate',
-  lists: 'list',
-  images: 'image',
-  references: 'reference',
-  citations: 'citation',
-}
-Object.keys(singular).forEach((k) => {
-  let sing = singular[k]
-  Section.prototype[sing] = function (clue) {
-    let arr = this[k](clue)
+
+/**
+ * this function crates a function that calls the plural version of the method
+ *
+ * @param {string} plural the plural of the word
+ * @returns {function} a Function that calls the plural version of the method
+ */
+function singularFactory (plural) {
+  return function (clue) {
+    let arr = this[plural](clue)
     if (typeof clue === 'number') {
       return arr[clue]
     }
     return arr[0] || null
   }
-})
+}
+
+Section.prototype.sentence = singularFactory('sentences')
+Section.prototype.paragraph = singularFactory('paragraphs')
+Section.prototype.link = singularFactory('links')
+Section.prototype.table = singularFactory('tables')
+Section.prototype.template = singularFactory('templates')
+Section.prototype.infobox = singularFactory('infoboxes')
+Section.prototype.coordinate = singularFactory('coordinates')
+Section.prototype.list = singularFactory('lists')
+Section.prototype.image = singularFactory('images')
+Section.prototype.reference = singularFactory('references')
+Section.prototype.citation = singularFactory('citations')
+
 export default Section

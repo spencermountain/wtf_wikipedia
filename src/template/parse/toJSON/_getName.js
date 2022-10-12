@@ -1,6 +1,13 @@
 import fmtName from './_fmtName.js'
-//get the name of the template
-//templates are usually '{{name|stuff}}'
+
+/**
+ * get the name of the template
+ * templates are usually '{{name|stuff}}'
+ *
+ * @private
+ * @param {string} tmpl the template text
+ * @returns {string | null} the name of the template
+ */
 function getName (tmpl) {
   let name = null
   //{{name|foo}}

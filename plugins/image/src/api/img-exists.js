@@ -10,7 +10,7 @@ function imgExists (callback) {
       'User-Agent': userAgent,
     },
   })
-    .then(resp => {
+    .then((resp) => {
       //support callback non-promise form
       let status = String(resp.status) || ''
       let bool = /^[23]/.test(status)
@@ -19,7 +19,7 @@ function imgExists (callback) {
       }
       return bool
     })
-    .catch(e => {
+    .catch((e) => {
       console.error(e)
       if (callback) {
         callback(e, null)

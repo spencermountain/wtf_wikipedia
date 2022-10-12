@@ -48,10 +48,10 @@ function doRowSpan (rows) {
   return rows
 }
 
-//
 function handleSpans (rows) {
   rows = doColSpan(rows)
   rows = doRowSpan(rows)
   return rows
 }
+
 export default handleSpans

@@ -23,4 +23,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - run: npm i
-      - run: npm run codecov
+      - run: npm run coverage
+
+      - name: Codecov
+        uses: codecov/codecov-action@v2.1.0

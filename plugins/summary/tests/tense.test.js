@@ -1,7 +1,7 @@
 import test from 'tape'
 import wtf from './_lib.js'
 
-test('tense', t => {
+test('tense', (t) => {
   let str = `CoolToday Park was a ballpark in North Port, Florida, located in the southern portion of Sarasota County, 35 miles south of Sarasota, Florida.`
   t.equal(wtf(str).tense(), 'Past', 'was a')
 
@@ -13,7 +13,7 @@ test('tense', t => {
   t.end()
 })
 
-test('article', t => {
+test('article', (t) => {
   let str = `CoolToday Park was a ballpark. He is 6 feet tall.`
   t.equal(wtf(str).article(), 'he', 'he')
 

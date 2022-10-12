@@ -1,6 +1,5 @@
 import setDefaults from '../_lib/setDefaults.js'
 import toJson from './toJson.js'
-const defaults = {}
 
 function normalize (key = '') {
   key = key.toLowerCase()
@@ -10,18 +9,12 @@ function normalize (key = '') {
   return key
 }
 
-function Table (data, wiki = '') {
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data,
-  })
-  Object.defineProperty(this, '_wiki', {
-    enumerable: false,
-    value: wiki,
-  })
-}
+class Table {
+  constructor (data, wiki = '') {
+    this.data = data
+    this._wiki = wiki
+  }
 
-const methods = {
   links (n) {
     let links = []
     this.data.forEach((r) => {
@@ -36,7 +29,8 @@ const methods = {
       return link === undefined ? [] : [link]
     }
     return links
-  },
+  }
+
   get (keys) {
     // normalize mappings
     let have = this.data[0] || {}
@@ -64,7 +58,8 @@ const methods = {
         return h
       }, {})
     })
-  },
+  }
+
   keyValue (options) {
     let rows = this.json(options)
     rows.forEach((row) => {
@@ -73,24 +68,24 @@ const methods = {
       })
     })
     return rows
-  },
+  }
+
   json (options) {
+    const defaults = {}
     options = setDefaults(options, defaults)
     return toJson(this.data, options)
-  },
+  }
 
   text () {
     return ''
-  },
+  }
 
   wikitext () {
     return this._wiki || ''
-  },
+  }
 }
-methods.keyvalue = methods.keyValue
-methods.keyval = methods.keyValue
 
-Object.keys(methods).forEach((k) => {
-  Table.prototype[k] = methods[k]
-})
+Table.prototype.keyvalue = Table.prototype.keyValue
+Table.prototype.keyval = Table.prototype.keyValue
+
 export default Table

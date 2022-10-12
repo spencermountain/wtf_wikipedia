@@ -12,9 +12,10 @@ function makePage (team, year) {
 function addMethod (models) {
   models.wtf.nhlSeason = function (team, year) {
     //soften-up the team-input
-    team = teams.find((t) => {
-      return t === team || t.toLowerCase().includes(team.toLowerCase())
-    }) || team
+    team =
+      teams.find((t) => {
+        return t === team || t.toLowerCase().includes(team.toLowerCase())
+      }) || team
     let page = makePage(team, year)
     return models.wtf.fetch(page).catch(console.log).then(parse)
   }

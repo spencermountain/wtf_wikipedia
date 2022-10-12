@@ -28,6 +28,7 @@ function findTables (section) {
       stack[stack.length - 1] += '\n' + lines[i]
     }
   }
+
   //work-em together for a Table class
   let tables = []
   list.forEach((str) => {

@@ -17,7 +17,7 @@ test('Tile - get - first sentence', (t) => {
 test('Tile - get - no bold in sentence ', (t) => {
   let str = 'no bold in first sentence'
   let doc = wtf(str)
-  t.equal(doc.title(), undefined, 'the title equals undefined')
+  t.equal(doc.title(), null, 'the title equals undefined')
   t.end()
 })
 

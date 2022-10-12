@@ -1,4 +1,5 @@
 import setDefaults from '../_lib/setDefaults.js'
+
 const isNumber = /^[0-9,.]+$/
 
 const defaults = {
@@ -25,12 +26,16 @@ function toJSON (s, options) {
       data.number = num
     }
   }
+
   if (options.links && s.links().length > 0) {
     data.links = s.links().map((l) => l.json())
   }
+
   if (options.formatting && s.data.fmt) {
     data.formatting = s.data.fmt
   }
+
   return data
 }
+
 export default toJSON

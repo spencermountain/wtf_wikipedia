@@ -10,28 +10,24 @@ function normalize (str = '') {
 }
 
 //a formal key-value data table about a topic
-function Infobox (obj, wiki) {
-  this._type = obj.type
-  this.domain = obj.domain
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: obj.data,
-  })
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki,
-  })
-}
+class Infobox {
+  constructor (obj, wiki) {
+    this._type = obj.type
+    this.domain = obj.domain
+    this.data = obj.data
+    this.wiki = wiki
+  }
 
-const methods = {
-  type: function () {
+  type () {
     return this._type
-  },
-  links: function (n) {
+  }
+
+  links (n) {
     let arr = []
     Object.keys(this.data).forEach((k) => {
       this.data[k].links().forEach((l) => arr.push(l))
     })
+
     if (typeof n === 'string') {
       //grab a link like .links('Fortnight')
       n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
@@ -39,8 +35,9 @@ const methods = {
       return link === undefined ? [] : [link]
     }
     return arr
-  },
-  image: function () {
+  }
+
+  image () {
     let s = this.data.image || this.data.image2 || this.data.logo || this.data.image_skyline || this.data.image_flag
     if (!s) {
       return null
@@ -52,8 +49,9 @@ const methods = {
     obj.caption = this.data.caption
     obj.domain = this.domain // add domain information for image
     return new Image(obj)
-  },
-  get: function (keys) {
+  }
+
+  get (keys) {
     let allKeys = Object.keys(this.data)
     if (typeof keys === 'string') {
       let key = normalize(keys)
@@ -79,31 +77,33 @@ const methods = {
       })
     }
     return new Sentence()
-  },
-  text: function () {
+  }
+
+  text () {
     return ''
-  },
-  json: function (options) {
+  }
+
+  json (options) {
     options = options || {}
     return toJson(this, options)
-  },
-  wikitext: function () {
+  }
+
+  wikitext () {
     return this.wiki || ''
-  },
-  keyValue: function () {
+  }
+
+  keyValue () {
     return Object.keys(this.data).reduce((h, k) => {
       if (this.data[k]) {
         h[k] = this.data[k].text()
       }
       return h
     }, {})
-  },
+  }
 }
 //aliases
-Object.keys(methods).forEach((k) => {
-  Infobox.prototype[k] = methods[k]
-})
 Infobox.prototype.data = Infobox.prototype.keyValue
 Infobox.prototype.template = Infobox.prototype.type
 Infobox.prototype.images = Infobox.prototype.image
+
 export default Infobox

@@ -1,5 +1,7 @@
 import { disambig_titles, disambig_templates } from '../_data/i18n.js'
 import alt_disambig from './_disambig.js'
+import Sentence from '../04-sentence/Sentence.js'
+
 const mayAlsoReg = /. may (also )?refer to\b/i
 
 // templates that signal page is not a disambiguation
@@ -19,16 +21,23 @@ const i18n_templates = disambig_templates.reduce((h, str) => {
 }, {})
 
 // look for '... may refer to'
+/**
+ *
+ * @param {Sentence} s
+ * @returns
+ */
 function byText (s) {
   if (!s) {
     return false
   }
+
   let txt = s.text()
   if (txt !== null && txt[0]) {
     if (mayAlsoReg.test(txt) === true) {
       return true
     }
   }
+
   return false
 }
 
@@ -36,7 +45,7 @@ function byText (s) {
  * Parses the wikitext to find out if this page is a disambiguation
  *
  * @private
- * @param {object} doc the document that is examined
+ * @param {Document} doc the document that is examined
  * @returns {boolean} an indication if the document is a disambiguation page
  */
 function isDisambig (doc) {
@@ -48,6 +57,7 @@ function isDisambig (doc) {
   if (found) {
     return true
   }
+
   // check for (disambiguation) in title
   let title = doc.title()
   if (title && inTitle.test(title) === true) {
@@ -62,6 +72,7 @@ function isDisambig (doc) {
   if (byText(doc.sentence(0)) === true || byText(doc.sentence(1)) === true) {
     return true
   }
+
   return false
 }
 

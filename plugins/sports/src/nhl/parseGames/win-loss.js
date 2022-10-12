@@ -1,4 +1,3 @@
-
 //amazingly, it's not clear who won the game, without the css styling.
 //try to pull-it out based on the team's record
 function addWinner (games) {

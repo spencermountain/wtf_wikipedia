@@ -12,4 +12,5 @@ function toJson (p, options) {
   }
   return data
 }
+
 export default toJson

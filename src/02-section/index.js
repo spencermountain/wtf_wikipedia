@@ -6,7 +6,6 @@ import parseHeading from './heading.js'
 const isReference = new RegExp('^(' + references.join('|') + '):?', 'i')
 const section_reg = /(?:\n|^)(={2,6}.{1,200}?={2,6})/g
 
-
 /**
  * filters out the reference section and empty sections and
  *
