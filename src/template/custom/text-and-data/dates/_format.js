@@ -24,7 +24,7 @@ const monthName = months.reduce((h, str, i) => {
 }, {})
 
 //parse year|month|date numbers
-const ymd = function (arr) {
+function ymd (arr) {
   let obj = {}
   let units = ['year', 'month', 'date', 'hour', 'minute', 'second']
   //parse each unit in sequence..
@@ -57,14 +57,14 @@ const ymd = function (arr) {
 }
 
 //zero-pad a number
-const pad = function (num) {
+function pad (num) {
   if (num < 10) {
     return '0' + num
   }
   return String(num)
 }
 
-const toText = function (date) {
+function toText (date) {
   //eg '1995'
   let str = String(date.year || '')
   if (date.month !== undefined && months.hasOwnProperty(date.month) === true) {

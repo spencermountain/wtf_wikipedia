@@ -3,7 +3,7 @@ import bySentence from '../getSentence.js'
 import byCategory from './byCategory.js'
 import parseDate from '../parseDate.js'
 
-const deathDate = function (doc) {
+function deathDate (doc) {
   let res = byInfobox(doc, 'death_date')
   if (res) {
     return parseDate(res)

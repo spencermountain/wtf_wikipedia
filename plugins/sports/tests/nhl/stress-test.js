@@ -2,7 +2,7 @@ import test from 'tape'
 import { teamHistory } from './_lib'
 import teams from '../src/teams.js'
 
-const doTeam = function (i, t, cb) {
+function doTeam (i, t, cb) {
   let team = teams[i]
   teamHistory(team, 1988, 2018)
     .catch(console.log)

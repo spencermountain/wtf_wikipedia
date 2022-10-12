@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url'
 const dir = path.dirname(fileURLToPath(import.meta.url))
 
 //read cached file
-const readFile = function (file) {
+function readFile (file) {
   return fs.readFileSync(path.join(dir, '../', 'cache', file + '.txt'), 'utf-8')
 }
 

@@ -10,7 +10,7 @@ import Image from '../../image/Image.js'
  * @param {object} doc
  * @param {object} section
  */
-const parseGallery = function (catcher, doc, section) {
+function parseGallery (catcher, doc, section) {
   catcher.text = catcher.text.replace(/<gallery([^>]*)>([\s\S]+)<\/gallery>/g, (_, _attrs, inside) => {
     let images = inside.split(/\n/g)
     images = images.filter((str) => str && str.trim() !== '')

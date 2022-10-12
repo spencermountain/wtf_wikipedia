@@ -6,12 +6,12 @@ const number_reg = /^ ?#[^:,|]{4}/
 const has_word = /[\p{Letter}_0-9\]}]/iu
 
 // does it start with a bullet point or something?
-const isList = function (line) {
+function isList (line) {
   return list_reg.test(line) || bullet_reg.test(line) || number_reg.test(line)
 }
 
 //make bullets/numbers into human-readable *'s
-const cleanList = function (list) {
+function cleanList (list) {
   let number = 1
   list = list.filter((l) => l)
   for (let i = 0; i < list.length; i++) {
@@ -30,7 +30,7 @@ const cleanList = function (list) {
   return list
 }
 
-const grabList = function (lines, i) {
+function grabList (lines, i) {
   let sub = []
   for (let o = i; o < lines.length; o++) {
     if (isList(lines[o])) {
@@ -44,7 +44,7 @@ const grabList = function (lines, i) {
   return sub
 }
 
-const parseList = function (paragraph) {
+function parseList (paragraph) {
   let wiki = paragraph.wiki
   let lines = wiki.split(/\n/g)
   let lists = []

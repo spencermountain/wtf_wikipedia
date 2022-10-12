@@ -13,7 +13,7 @@ const params = {
   redirects: 'true'
 }
 
-const fetchIt = function (url, http) {
+function fetchIt (url, http) {
   return http(url).then((res) => {
     let pages = Object.keys(res.query.pages || {})
     if (pages.length === 0) {
@@ -23,7 +23,7 @@ const fetchIt = function (url, http) {
   })
 }
 
-const makeUrl = function (options) {
+function makeUrl (options) {
   let url = `https://${options.lang}.wikipedia.org/${options.path}?`
   if (options.domain) {
     url = `https://${options.domain}/${options.path}?`

@@ -1,7 +1,7 @@
 import { patterns, mappings } from '../../schema/_data-fns.js'
 import byPattern from '../_byPattern.js'
 
-const byTemplate = function (doc) {
+function byTemplate (doc) {
   let templates = doc.templates().map((tmpl) => tmpl.json())
   let found = []
   for (let i = 0; i < templates.length; i++) {

@@ -2,7 +2,7 @@ const defaults = {
   sentences: true
 }
 
-const toHtml = function (options) {
+function toHtml (options) {
   options = Object.assign({}, defaults, options)
   let html = ''
   if (options.sentences === true) {

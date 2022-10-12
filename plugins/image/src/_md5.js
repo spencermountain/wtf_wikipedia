@@ -27,7 +27,7 @@
    * @param {number} y Second integer
    * @returns {number} Sum
    */
-function safeAdd(x, y) {
+function safeAdd (x, y) {
   let lsw = (x & 0xffff) + (y & 0xffff)
   let msw = (x >> 16) + (y >> 16) + (lsw >> 16)
   return (msw << 16) | (lsw & 0xffff)
@@ -40,7 +40,7 @@ function safeAdd(x, y) {
    * @param {number} cnt Rotation count
    * @returns {number} Rotated number
    */
-function bitRotateLeft(num, cnt) {
+function bitRotateLeft (num, cnt) {
   return (num << cnt) | (num >>> (32 - cnt))
 }
 
@@ -55,7 +55,7 @@ function bitRotateLeft(num, cnt) {
    * @param {number} t t
    * @returns {number} Result
    */
-function md5cmn(q, a, b, x, s, t) {
+function md5cmn (q, a, b, x, s, t) {
   return safeAdd(bitRotateLeft(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b)
 }
 /**
@@ -70,7 +70,7 @@ function md5cmn(q, a, b, x, s, t) {
    * @param {number} t t
    * @returns {number} Result
    */
-function md5ff(a, b, c, d, x, s, t) {
+function md5ff (a, b, c, d, x, s, t) {
   return md5cmn((b & c) | (~b & d), a, b, x, s, t)
 }
 /**
@@ -85,7 +85,7 @@ function md5ff(a, b, c, d, x, s, t) {
    * @param {number} t t
    * @returns {number} Result
    */
-function md5gg(a, b, c, d, x, s, t) {
+function md5gg (a, b, c, d, x, s, t) {
   return md5cmn((b & d) | (c & ~d), a, b, x, s, t)
 }
 /**
@@ -100,7 +100,7 @@ function md5gg(a, b, c, d, x, s, t) {
    * @param {number} t t
    * @returns {number} Result
    */
-function md5hh(a, b, c, d, x, s, t) {
+function md5hh (a, b, c, d, x, s, t) {
   return md5cmn(b ^ c ^ d, a, b, x, s, t)
 }
 /**
@@ -115,7 +115,7 @@ function md5hh(a, b, c, d, x, s, t) {
    * @param {number} t t
    * @returns {number} Result
    */
-function md5ii(a, b, c, d, x, s, t) {
+function md5ii (a, b, c, d, x, s, t) {
   return md5cmn(c ^ (b | ~d), a, b, x, s, t)
 }
 
@@ -126,7 +126,7 @@ function md5ii(a, b, c, d, x, s, t) {
    * @param {number} len Bit length
    * @returns {Array<number>} MD5 Array
    */
-function binlMD5(x, len) {
+function binlMD5 (x, len) {
   /* append padding */
   x[len >> 5] |= 0x80 << len % 32
   x[(((len + 64) >>> 9) << 4) + 14] = len
@@ -229,7 +229,7 @@ function binlMD5(x, len) {
    * @param {Array<number>} input MD5 Array
    * @returns {string} MD5 string
    */
-function binl2rstr(input) {
+function binl2rstr (input) {
   let i
   let output = ''
   let length32 = input.length * 32
@@ -246,7 +246,7 @@ function binl2rstr(input) {
    * @param {string} input Raw input string
    * @returns {Array<number>} Array of little-endian words
    */
-function rstr2binl(input) {
+function rstr2binl (input) {
   let i
   let output = []
   output[(input.length >> 2) - 1] = undefined
@@ -266,7 +266,7 @@ function rstr2binl(input) {
    * @param {string} s Input string
    * @returns {string} Raw MD5 string
    */
-function rstrMD5(s) {
+function rstrMD5 (s) {
   return binl2rstr(binlMD5(rstr2binl(s), s.length * 8))
 }
 
@@ -277,7 +277,7 @@ function rstrMD5(s) {
    * @param {string} data Raw input string
    * @returns {string} Raw MD5 string
    */
-function rstrHMACMD5(key, data) {
+function rstrHMACMD5 (key, data) {
   let i
   let bkey = rstr2binl(key)
   let ipad = []
@@ -301,7 +301,7 @@ function rstrHMACMD5(key, data) {
    * @param {string} input Raw input string
    * @returns {string} Hex encoded string
    */
-function rstr2hex(input) {
+function rstr2hex (input) {
   let hexTab = '0123456789abcdef'
   let output = ''
   let x
@@ -319,7 +319,7 @@ function rstr2hex(input) {
    * @param {string} input Input string
    * @returns {string} UTF8 string
    */
-function str2rstrUTF8(input) {
+function str2rstrUTF8 (input) {
   return unescape(encodeURIComponent(input))
 }
 
@@ -329,7 +329,7 @@ function str2rstrUTF8(input) {
    * @param {string} s Input string
    * @returns {string} Raw MD5 string
    */
-function rawMD5(s) {
+function rawMD5 (s) {
   return rstrMD5(str2rstrUTF8(s))
 }
 /**
@@ -338,7 +338,7 @@ function rawMD5(s) {
    * @param {string} s Input string
    * @returns {string} Hex encoded string
    */
-function hexMD5(s) {
+function hexMD5 (s) {
   return rstr2hex(rawMD5(s))
 }
 /**
@@ -348,7 +348,7 @@ function hexMD5(s) {
    * @param {string} d Input string
    * @returns {string} Raw MD5 string
    */
-function rawHMACMD5(k, d) {
+function rawHMACMD5 (k, d) {
   return rstrHMACMD5(str2rstrUTF8(k), str2rstrUTF8(d))
 }
 /**
@@ -358,7 +358,7 @@ function rawHMACMD5(k, d) {
    * @param {string} d Input string
    * @returns {string} Raw MD5 string
    */
-function hexHMACMD5(k, d) {
+function hexHMACMD5 (k, d) {
   return rstr2hex(rawHMACMD5(k, d))
 }
 
@@ -372,7 +372,7 @@ function hexHMACMD5(k, d) {
    * @param {boolean} [raw] Raw output switch
    * @returns {string} MD5 output
    */
-export default function md5(string, key, raw) {
+export default function md5 (string, key, raw) {
   if (!key) {
     if (!raw) {
       return hexMD5(string)

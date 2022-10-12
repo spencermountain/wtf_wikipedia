@@ -7,7 +7,7 @@ import getRandomPage from './getRandom.js'
 import getRandomCategory from './getRandomCategory.js'
 import fetchList from './fetchList.js'
 
-const addMethod = function (models) {
+function addMethod (models) {
   // doc methods
   models.Doc.prototype.getRedirects = function () {
     return getRedirects(this.title(), models.http)

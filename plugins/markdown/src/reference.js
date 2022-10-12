@@ -1,5 +1,5 @@
 //
-const toMarkdown = function () {
+function toMarkdown () {
   if (this.data && this.data.url && this.data.title) {
     return `⌃ [${this.data.title}](${this.data.url})`
   } else if (this.data.encyclopedia) {

@@ -3,7 +3,7 @@ import version from './_version.js'
 import Document from './01-document/Document.js'
 
 //the main 'factory' exported method
-const wtf = function (wiki, options) {
+function wtf (wiki, options) {
   return new Document(wiki, options)
 }
 

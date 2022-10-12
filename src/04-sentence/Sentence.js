@@ -1,7 +1,7 @@
 import toJSON from './toJson.js'
 
 //where we store the formatting, link, date information
-const Sentence = function (data = {}) {
+function Sentence (data = {}) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data,

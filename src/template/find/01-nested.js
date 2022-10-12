@@ -2,7 +2,7 @@ import findFlat from './02-flat.js'
 import getName from '../parse/toJSON/_getName.js'
 const hasTemplate = /\{\{/
 
-const parseTemplate = function (tmpl) {
+function parseTemplate (tmpl) {
   // this is some unexplained Lua thing
   tmpl = tmpl.replace(/#invoke:/, '')
   return {
@@ -12,7 +12,7 @@ const parseTemplate = function (tmpl) {
   }
 }
 
-const doEach = function (obj) {
+function doEach (obj) {
   // peel-off top-level
   let wiki = obj.body.substr(2)
   wiki = wiki.replace(/\}\}$/, '')
@@ -36,7 +36,7 @@ const doEach = function (obj) {
 }
 
 // return a nested structure of all templates
-const findTemplates = function (wiki) {
+function findTemplates (wiki) {
   let list = findFlat(wiki)
   list = list.map(parseTemplate)
   list = list.map(doEach)

@@ -1,4 +1,4 @@
-const lastTry = function (s) {
+function lastTry (s) {
   s.remove('(small|large|minor|major)')
   s.remove('(extinct|retired|annual|biweekly|monthly|daily)')
   s.remove('(female|male)')

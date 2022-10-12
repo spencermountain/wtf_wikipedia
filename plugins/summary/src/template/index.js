@@ -1,4 +1,4 @@
-const fromTemplate = function (doc) {
+function fromTemplate (doc) {
   let tmpl = doc.template('short description')
   if (tmpl) {
     let json = tmpl.json() || {}

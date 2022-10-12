@@ -4,7 +4,7 @@ const defaults = {
 }
 
 // we should try to make this look like the wikipedia does, i guess.
-const softRedirect = function (doc) {
+function softRedirect (doc) {
   let link = doc.redirectTo()
   let href = link.page
   href = './' + href.replace(/ /g, '_')
@@ -16,7 +16,7 @@ const softRedirect = function (doc) {
 }
 
 //
-const toLatex = function (options) {
+function toLatex (options) {
   options = Object.assign({}, defaults, options)
   let out = ''
   //if it's a redirect page, give it a 'soft landing':

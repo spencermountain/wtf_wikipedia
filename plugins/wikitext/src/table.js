@@ -1,4 +1,4 @@
-const toWiki = function (options) {
+function toWiki (options) {
   let rows = this.data
   let wiki = `{| class="wikitable"\n`
 

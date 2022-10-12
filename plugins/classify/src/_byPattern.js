@@ -1,4 +1,4 @@
-const byPattern = function (str, patterns) {
+function byPattern (str, patterns) {
   for (let i = 0; i < patterns.length; i += 1) {
     let reg = patterns[i][0]
     if (reg.test(str) === true) {

@@ -1,6 +1,6 @@
 import nlp from 'compromise'
 
-const useAn = function (str) {
+function useAn (str) {
   const a_regexs = [
     /^onc?e/i, //'wu' sound of 'o'
     /^u[bcfhjknq-t][aeiou]/i, // 'yu' sound for hard 'u'
@@ -19,7 +19,7 @@ const useAn = function (str) {
 }
 
 // 'American songwriters' to 'an American songwriter'
-const changeCat = function (cat, options) {
+function changeCat (cat, options) {
   let c = nlp(cat)
   c.nouns().toSingular()
   // add article to the front

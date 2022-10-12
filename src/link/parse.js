@@ -4,7 +4,7 @@ const ignore_links =
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ].*?)?\]/g
 const link_reg = /\[\[(.{0,160}?)\]\]([a-z]+)?/gi //allow dangling suffixes - "[[flanders]]s"
 
-const external_links = function (links, str) {
+function external_links (links, str) {
   str.replace(external_link, function (raw, protocol, link, text) {
     text = text || ''
     links.push({
@@ -18,7 +18,7 @@ const external_links = function (links, str) {
   return links
 }
 
-const internal_links = function (links, str) {
+function internal_links (links, str) {
   //regular links
   str.replace(link_reg, function (raw, s, suffix) {
     let txt = null
@@ -80,7 +80,7 @@ const internal_links = function (links, str) {
 }
 
 //grab an array of internal links in the text
-const parse_links = function (str) {
+function parse_links (str) {
   let links = []
   //first, parse external links
   links = external_links(links, str)

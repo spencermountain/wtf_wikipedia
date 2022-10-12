@@ -11,7 +11,7 @@ const closer = ']'
  * @param {string} text the text in which is searched in
  * @returns {string[]} all the links in the text
  */
-function nested_find(text) {
+function nested_find (text) {
   let out = []
   let last = []
   const chars = text.split('')

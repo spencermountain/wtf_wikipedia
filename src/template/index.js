@@ -3,12 +3,12 @@ import parseTemplate from './parse/index.js'
 import sortOut from './sortOut.js'
 
 // return a flat list of all {{templates}}
-const allTemplates = function (wiki, doc) {
+function allTemplates (wiki, doc) {
   let list = []
   //nested data-structure of templates
   let nested = findTemplates(wiki)
   //recursive template-parser
-  const parseNested = function (obj, parent) {
+  function parseNested (obj, parent) {
     obj.parent = parent
     //do tail-first recursion
     if (obj.children && obj.children.length > 0) {
@@ -27,7 +27,7 @@ const allTemplates = function (wiki, doc) {
       })
     }
     //remove the text from every parent
-    const removeIt = function (node, body, out) {
+    function removeIt (node, body, out) {
       if (node.parent) {
         node.parent.body = node.parent.body.replace(body, out)
         removeIt(node.parent, body, out)
@@ -46,7 +46,7 @@ const allTemplates = function (wiki, doc) {
 }
 
 //find + parse all templates in the section
-const process = function (section, doc) {
+function process (section, doc) {
   // find+parse them all
   let { list, wiki } = allTemplates(section._wiki, doc)
   // split-out references and infoboxes

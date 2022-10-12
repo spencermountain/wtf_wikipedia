@@ -1,4 +1,4 @@
-const toWiki = function () {
+function toWiki () {
   let text = `{{${this.data.template || ''}`
   Object.keys(this.data).forEach((k) => {
     if (k === 'template') {

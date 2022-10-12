@@ -3,14 +3,14 @@ import Image from '../image/Image.js'
 import { isArray } from '../_lib/helpers.js'
 import Sentence from '../04-sentence/Sentence.js'
 
-const normalize = (str = '') => {
+function normalize (str = '') {
   str = str.toLowerCase()
   str = str.replace(/[-_]/g, ' ')
   return str.trim()
 }
 
 //a formal key-value data table about a topic
-const Infobox = function (obj, wiki) {
+function Infobox (obj, wiki) {
   this._type = obj.type
   this.domain = obj.domain
   Object.defineProperty(this, 'data', {

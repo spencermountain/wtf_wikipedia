@@ -10,7 +10,7 @@ const params = {
   origin: '*'
 }
 
-const randomCategory = function (options = {}, http) {
+function randomCategory (options = {}, http) {
   options = Object.assign({}, defaults, options)
   let url = `https://${options.lang}.wikipedia.org/${options.path}?`
   if (options.domain) {

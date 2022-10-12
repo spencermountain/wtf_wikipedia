@@ -13,7 +13,7 @@ const circa_reg = / c\.\s$/
 const hasWord = /\p{Letter}/iu
 
 //turn a nested array into one array
-const flatten = function (arr) {
+function flatten (arr) {
   let all = []
   arr.forEach(function (a) {
     all = all.concat(a)
@@ -21,7 +21,7 @@ const flatten = function (arr) {
   return all
 }
 
-const naiive_split = function (text) {
+function naiive_split (text) {
   //first, split by newline
   let splits = text.split(/(\n+)/)
   splits = splits.filter((s) => s.match(/\S/))
@@ -33,7 +33,7 @@ const naiive_split = function (text) {
 }
 
 // if this looks like a period within a wikipedia link, return false
-const isBalanced = function (str) {
+function isBalanced (str) {
   str = str || ''
   const open = str.split(/\[\[/) || []
   const closed = str.split(/\]\]/) || []
@@ -53,7 +53,7 @@ const isBalanced = function (str) {
   return true
 }
 
-const sentence_parser = function (text) {
+function sentence_parser (text) {
   let sentences = []
   //first do a greedy-split..
   let chunks = []
@@ -87,7 +87,7 @@ const sentence_parser = function (text) {
   }
 
   //detection of non-sentence chunks
-  const isSentence = function (hmm) {
+  function isSentence (hmm) {
     if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg) || hmm.match(circa_reg)) {
       return false
     }

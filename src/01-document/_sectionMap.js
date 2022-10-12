@@ -7,7 +7,7 @@
  * @param {string | number} [clue] the clue that will be used with the function
  * @returns {Array|*} the array of item at the index of the clue
  */
-const sectionMap = function (doc, fn, clue) {
+function sectionMap (doc, fn, clue) {
   let arr = []
   doc.sections().forEach((sec) => {
     let list = []

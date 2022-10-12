@@ -10,7 +10,7 @@ const toText = (list, options) => {
     .join('\n')
 }
 
-const List = function (data, wiki = '') {
+function List (data, wiki = '') {
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data,
@@ -22,10 +22,10 @@ const List = function (data, wiki = '') {
 }
 
 const methods = {
-  lines() {
+  lines () {
     return this.data
   },
-  links(clue) {
+  links (clue) {
     let links = []
     this.lines().forEach((s) => {
       links = links.concat(s.links())
@@ -38,14 +38,14 @@ const methods = {
     }
     return links
   },
-  json(options) {
+  json (options) {
     options = setDefaults(options, defaults)
     return this.lines().map((s) => s.json(options))
   },
-  text() {
+  text () {
     return toText(this.data)
   },
-  wikitext() {
+  wikitext () {
     return this.wiki || ''
   },
 }

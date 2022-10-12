@@ -1,4 +1,4 @@
-const toWiki = function () {
+function toWiki () {
   if (this.data.inline) {
     return `<ref>${this.data.inline.wikitext()}</ref>`
   }

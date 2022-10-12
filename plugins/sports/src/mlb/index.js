@@ -1,7 +1,7 @@
 import teams from './teams.js'
 import parse from './parse.js'
 
-const addMethod = function (models) {
+function addMethod (models) {
   models.wtf.mlbSeason = function (team, year) {
     //soften-up the team-input
     team = teams.find((t) => {

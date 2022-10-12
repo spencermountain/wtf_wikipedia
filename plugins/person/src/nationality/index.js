@@ -1,6 +1,6 @@
 import byInfobox from '../getInfobox.js'
 
-const getNationality = function (doc) {
+function getNationality (doc) {
   let res = byInfobox(doc, 'nationality')
   if (res) {
     return res

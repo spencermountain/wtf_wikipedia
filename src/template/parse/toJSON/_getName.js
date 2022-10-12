@@ -1,7 +1,7 @@
 import fmtName from './_fmtName.js'
 //get the name of the template
 //templates are usually '{{name|stuff}}'
-const getName = function (tmpl) {
+function getName (tmpl) {
   let name = null
   //{{name|foo}}
   if (/^\{\{[^\n]+\|/.test(tmpl)) {

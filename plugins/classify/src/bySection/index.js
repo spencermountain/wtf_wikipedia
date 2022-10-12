@@ -1,6 +1,6 @@
 import { mappings } from '../../schema/_data-fns.js'
 
-const fromSection = function (doc) {
+function fromSection (doc) {
   let found = []
   let titles = doc.sections().map((s) => {
     let str = s.title()

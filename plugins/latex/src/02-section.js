@@ -6,7 +6,7 @@ const defaults = {
   paragraphs: true
 }
 //map '==' depth to 'subsection', 'subsubsection', etc
-const doSection = function (options) {
+function doSection (options) {
   options = Object.assign({}, defaults, options)
   let out = ''
   let num = 1

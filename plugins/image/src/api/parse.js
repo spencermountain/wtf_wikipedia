@@ -5,7 +5,7 @@
  * @param {Object} fetchedImage
  * @returns {Object} method(s) results
  */
-const parseImage = function (fetchedImage) {
+function parseImage (fetchedImage) {
   // if the data is missing return empty object
   if (fetchedImage.hasOwnProperty('missing')) {
     return {}
@@ -34,7 +34,7 @@ const parseImage = function (fetchedImage) {
  * @param {boolean} isDoc whether the call is from a Document or an Image
  * @returns {Object | Object[]} 
  */
-const parseFetched = function (titles, fetched, isDoc) {
+function parseFetched (titles, fetched, isDoc) {
   if (isDoc) { // group of images
     // sort the results because API response is not in order, then find the info we need
     const fetchedValues = Object.values(fetched.query.pages)

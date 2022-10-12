@@ -6,7 +6,7 @@ import parseTemplates from '../template/parse/index.js'
 const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/
 const hasTemplate = /\{\{.+?\}\}/
 
-const doInlineTemplates = function (wiki) {
+function doInlineTemplates (wiki) {
   let list = getTemplates(wiki)
   list.forEach((item) => {
     let [txt] = parseTemplates(item)
@@ -31,7 +31,7 @@ const doInlineTemplates = function (wiki) {
  * @param {string} str
  * @returns {fakeSection} section the depth in a object
  */
-const parseHeading = function (section, str) {
+function parseHeading (section, str) {
   let m = str.match(heading_reg)
   if (!m) {
     section.title = ''

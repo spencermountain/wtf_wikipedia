@@ -10,7 +10,7 @@ const dontDo = {
 }
 
 //
-const infobox = function (options) {
+function infobox (options) {
   options = Object.assign({}, defaults, options)
   let html = '<table class="infobox">\n'
   html += '  <thead>\n'

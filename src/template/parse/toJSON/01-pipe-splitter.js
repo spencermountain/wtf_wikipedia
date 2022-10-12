@@ -5,7 +5,7 @@
  * @param {string} tmpl the template text
  * @returns {string[]} a array containing all the split parameters
  */
-const pipeSplitter = function (tmpl) {
+function pipeSplitter (tmpl) {
   //start with a naive '|' split
   let arr = tmpl.split(/\n?\|/)
   //we've split by '|', which is pretty lame

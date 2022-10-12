@@ -1,7 +1,7 @@
 import unfetch from 'isomorphic-unfetch'
 
 // test if the image url exists or not
-const imgExists = function (callback) {
+function imgExists (callback) {
   const userAgent = this.data['_userAgent']
   return unfetch(this.url(), {
     method: 'HEAD',

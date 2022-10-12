@@ -8,7 +8,7 @@ import unfetch from 'isomorphic-unfetch'
  * @param {Object} opts the options for fetch
  * @returns {Promise<any>} the response from fetch
  */
-const request = function (url, opts) {
+function request (url, opts) {
   return unfetch(url, opts).then(function (res) {
     return res.json()
   }).catch((e) => {

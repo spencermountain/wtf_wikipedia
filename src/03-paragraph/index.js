@@ -5,7 +5,7 @@ const twoNewLines = /\r?\n\r?\n/
 import parseImage from '../image/index.js'
 import parseList from '../list/index.js'
 
-const parseParagraphs = function (section, doc) {
+function parseParagraphs (section, doc) {
   let wiki = section._wiki
   let paragraphs = wiki.split(twoNewLines)
   //don't create empty paragraphs

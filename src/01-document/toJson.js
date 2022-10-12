@@ -43,7 +43,7 @@ const defaults = {
  * @param {DocumentToJsonOptions} options
  * @returns {documentToJsonReturn}
  */
-const toJSON = function (doc, options) {
+function toJSON (doc, options) {
   options = setDefaults(options, defaults)
 
   /**

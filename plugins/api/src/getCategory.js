@@ -11,7 +11,7 @@ const params = {
   redirects: true
 }
 
-const fetchIt = function (url, http, prop) {
+function fetchIt (url, http, prop) {
   return http(url).then((res) => {
     let pages = Object.keys(res.query[prop] || {})
     if (pages.length === 0) {
@@ -25,7 +25,7 @@ const fetchIt = function (url, http, prop) {
   })
 }
 
-const makeUrl = function (title, options, append) {
+function makeUrl (title, options, append) {
   let url = `https://${options.lang}.wikipedia.org/${options.path}?`
   if (options.domain) {
     url = `https://${options.domain}/${options.path}?`

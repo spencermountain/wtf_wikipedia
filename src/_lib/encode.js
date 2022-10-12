@@ -10,7 +10,7 @@ const specialChar = /[\\.$]/
  * @param {string} str
  * @returns {string} the encoded string
  */
-const encodeStr = function (str) {
+function encodeStr (str) {
   if (typeof str !== 'string') {
     str = ''
   }
@@ -20,7 +20,7 @@ const encodeStr = function (str) {
   return str
 }
 
-const encodeObj = function (obj = {}) {
+function encodeObj (obj = {}) {
   let keys = Object.keys(obj)
   for (let i = 0; i < keys.length; i += 1) {
     if (specialChar.test(keys[i]) === true) {

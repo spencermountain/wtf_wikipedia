@@ -42,7 +42,7 @@ const didDie = {
   'Deaths by drowning': true,
 }
 
-const byCat = function (doc) {
+function byCat (doc) {
   let cats = doc.categories()
 
   //confirmed alive categories

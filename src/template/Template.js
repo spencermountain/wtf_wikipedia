@@ -13,7 +13,7 @@ const methods = {
   },
 }
 
-const Template = function (data, text = '', wiki = '') {
+function Template (data, text = '', wiki = '') {
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data,

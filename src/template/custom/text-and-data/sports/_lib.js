@@ -1,6 +1,6 @@
 import parse from '../../../parse/toJSON/index.js'
 
-const zeroPad = function (num) {
+function zeroPad (num) {
   num = String(num)
   if (num.length === 1) {
     num = '0' + num
@@ -8,7 +8,7 @@ const zeroPad = function (num) {
   return num
 }
 
-const parseTeam = function (obj, round, team) {
+function parseTeam (obj, round, team) {
   if (obj[`rd${round}-team${zeroPad(team)}`]) {
     team = zeroPad(team)
   }
@@ -26,7 +26,7 @@ const parseTeam = function (obj, round, team) {
 
 // https://en.wikipedia.org/wiki/Category:Tournament_bracket_templates
 //these are weird.
-const playoffBracket = function (tmpl) {
+function playoffBracket (tmpl) {
   let rounds = []
   let obj = parse(tmpl)
   //try some rounds

@@ -1,6 +1,6 @@
 const dashSplit = /([–\-−]|&ndash;)/
 
-const parseRecord = function (record = '') {
+function parseRecord (record = '') {
   let arr = record.split(dashSplit)
   let result = {
     wins: Number(arr[0]) || 0,

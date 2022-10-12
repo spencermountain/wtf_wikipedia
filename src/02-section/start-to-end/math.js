@@ -9,7 +9,7 @@ import { fromText as parseSentence } from '../../04-sentence/index.js'
  * @private
  * @param {object} catcher
  */
-const parseMath = function (catcher) {
+function parseMath (catcher) {
   catcher.text = catcher.text.replace(/<math([^>]*)>([\s\S]+)<\/math>/g, (_, attrs, inside) => {
     //clean it up a little?
     let formula = parseSentence(inside).text()

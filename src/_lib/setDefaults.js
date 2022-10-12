@@ -6,7 +6,7 @@
  * @param {object} defaults the defaults
  * @returns {object} the user options with the defaults applied
  */
-const setDefaults = function (options, defaults) {
+function setDefaults (options, defaults) {
   return Object.assign({}, defaults, options)
 }
 export default setDefaults

@@ -1,5 +1,5 @@
 
-const topk = function (arr) {
+function topk (arr) {
   let obj = {}
   arr.forEach((a) => {
     obj[a] = obj[a] || 0
@@ -17,7 +17,7 @@ const topk = function (arr) {
   return res
 }
 
-const parse = function (cat) {
+function parse (cat) {
   let split = cat.split(/\//)
   return {
     root: split[1],
@@ -25,7 +25,7 @@ const parse = function (cat) {
   }
 }
 
-const getScore = function (detail) {
+function getScore (detail) {
   let types = []
   Object.keys(detail).forEach((k) => {
     detail[k].forEach((obj) => {

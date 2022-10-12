@@ -1,6 +1,6 @@
 const defaults = {}
 
-const toWiki = function (options) {
+function toWiki (options) {
   options = options || {}
   options = Object.assign({}, defaults, options)
   let text = ''

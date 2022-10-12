@@ -1,7 +1,7 @@
 import teams from './teams.js'
 import parse from './parse.js'
 
-const makePage = function (team, year) {
+function makePage (team, year) {
   team = team.replace(/ /g, '_')
   year = year || new Date().getFullYear()
   let nextYear = Number(String(year).substr(2, 4)) + 1
@@ -9,7 +9,7 @@ const makePage = function (team, year) {
   return page
 }
 
-const addMethod = function (models) {
+function addMethod (models) {
   models.wtf.nhlSeason = function (team, year) {
     //soften-up the team-input
     team = teams.find((t) => {

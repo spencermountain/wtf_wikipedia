@@ -1,7 +1,7 @@
 import test from 'tape'
 import wtf from './_lib.js'
 
-const tidy = (str) => {
+function tidy (str) {
   return str.trim()
 }
 

@@ -6,7 +6,7 @@ const defaults = {
   links: true
 }
 //we should try to make this look like the wikipedia does, i guess.
-const softRedirect = function (doc) {
+function softRedirect (doc) {
   let link = doc.redirectTo()
   let href = link.page
   href = './' + href.replace(/ /g, '_')
@@ -19,7 +19,7 @@ const softRedirect = function (doc) {
 }
 
 //turn a Doc object into a HTML string
-const toHtml = function (options) {
+function toHtml (options) {
   options = Object.assign({}, defaults, options)
   let html = ''
   //add page title

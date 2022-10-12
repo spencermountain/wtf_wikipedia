@@ -19,7 +19,7 @@ const i18n_templates = disambig_templates.reduce((h, str) => {
 }, {})
 
 // look for '... may refer to'
-const byText = function (s) {
+function byText (s) {
   if (!s) {
     return false
   }
@@ -39,7 +39,7 @@ const byText = function (s) {
  * @param {object} doc the document that is examined
  * @returns {boolean} an indication if the document is a disambiguation page
  */
-const isDisambig = function (doc) {
+function isDisambig (doc) {
   // check for a {{disambig}} template
   let templates = doc.templates().map((tmpl) => tmpl.json())
   let found = templates.find((obj) => {

@@ -1,6 +1,6 @@
 import spacetime from 'spacetime'
 
-const parseSentence = function (doc) {
+function parseSentence (doc) {
   let s = doc.sentence()
   if (!s) {
     return null

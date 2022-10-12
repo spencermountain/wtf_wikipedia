@@ -18,7 +18,7 @@ import Template from '../../template/Template.js'
  * @param {object} doc
  * @returns {Object} wikitext
  */
-const xmlTemplates = function (section, doc) {
+function xmlTemplates (section, doc) {
   const res = {
     templates: [],
     text: section._wiki,

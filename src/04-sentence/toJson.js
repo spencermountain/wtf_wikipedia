@@ -11,7 +11,7 @@ const defaults = {
 /**
  * @private
  * */
-const toJSON = function (s, options) {
+function toJSON (s, options) {
   options = setDefaults(options, defaults)
   let data = {}
   let text = s.text()

@@ -15,7 +15,7 @@ const ns = 10 //templates
 let url =
   'https://wiki.openstreetmap.org/w/api.php?action=query&list=allpages&aplimit=500&apnamespace=' + ns + '&format=json'
 
-const doit = function (from) {
+function doit (from) {
   let myUrl = url + '&apfrom=' + encodeURIComponent(from)
 
   got(myUrl).then((res) => {

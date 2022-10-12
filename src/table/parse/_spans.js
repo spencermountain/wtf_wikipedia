@@ -2,7 +2,7 @@ const getRowSpan = /.*rowspan *= *["']?([0-9]+)["']?[ |]*/
 const getColSpan = /.*colspan *= *["']?([0-9]+)["']?[ |]*/
 
 //colspans stretch ←left/right→
-const doColSpan = function (rows) {
+function doColSpan (rows) {
   rows.forEach((row) => {
     row.forEach((str, c) => {
       let m = str.match(getColSpan)
@@ -27,7 +27,7 @@ const doColSpan = function (rows) {
 }
 
 //colspans stretch up/down
-const doRowSpan = function (rows) {
+function doRowSpan (rows) {
   rows.forEach((row, r) => {
     row.forEach((str, c) => {
       let m = str.match(getRowSpan)
@@ -49,7 +49,7 @@ const doRowSpan = function (rows) {
 }
 
 //
-const handleSpans = function (rows) {
+function handleSpans (rows) {
   rows = doColSpan(rows)
   rows = doRowSpan(rows)
   return rows

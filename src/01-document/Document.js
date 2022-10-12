@@ -29,7 +29,7 @@ class Document {
    * @param {string} [wiki] The wiki text
    * @param {object} [options] The options for the parser
    */
-  constructor(wiki, options) {
+  constructor (wiki, options) {
     options = options || {}
     let props = {
       pageID: options.pageID || options.id || null,
@@ -89,7 +89,7 @@ class Document {
    * @param {string} [str] The title that will be set
    * @returns {null|string} The title found or given
    */
-  title(str) {
+  title (str) {
     //use like a setter
     if (str !== undefined) {
       this._title = str
@@ -115,7 +115,7 @@ class Document {
    * @param {number} [id] The pageID that will be set
    * @returns {number|null} The given or found pageID
    */
-  pageID(id) {
+  pageID (id) {
     if (id !== undefined) {
       this._pageID = id
     }
@@ -129,7 +129,7 @@ class Document {
    * @param {string} [id] The WikidataID that will be set
    * @returns {string|null} The given or found WikidataID
    */
-  wikidata(id) {
+  wikidata (id) {
     if (id !== undefined) {
       this._wikidata = id
     }
@@ -143,7 +143,7 @@ class Document {
    * @param {string} [str] The domain that will be set
    * @returns {string|null} The given or found domain
    */
-  domain(str) {
+  domain (str) {
     if (str !== undefined) {
       this._domain = str
     }
@@ -157,7 +157,7 @@ class Document {
    * @param {string} [lang] The language that will be set
    * @returns {string|null} The given or found language
    */
-  language(lang) {
+  language (lang) {
     if (lang !== undefined) {
       this._lang = lang
     }
@@ -171,7 +171,7 @@ class Document {
    *
    * @returns {string|null} The url of the page
    */
-  url() {
+  url () {
     let title = this.title()
     if (!title) {
       return null
@@ -191,7 +191,7 @@ class Document {
    * @param {string} [ns] The namespace that will be set
    * @returns {string|null} The given or found namespace
    */
-  namespace(ns) {
+  namespace (ns) {
     if (ns !== undefined) {
       this._namespace = ns
     }
@@ -203,7 +203,7 @@ class Document {
    *
    * @returns {boolean} Is the page a redirect
    */
-  isRedirect() {
+  isRedirect () {
     return this._type === 'redirect'
   }
 
@@ -212,7 +212,7 @@ class Document {
    *
    * @returns {null|object} The redirected page
    */
-  redirectTo() {
+  redirectTo () {
     return this._redirectTo
   }
 
@@ -221,7 +221,7 @@ class Document {
    *
    * @returns {boolean} Whether the page is a disambiguation page
    */
-  isDisambiguation() {
+  isDisambiguation () {
     return isDisambig(this)
   }
 
@@ -231,7 +231,7 @@ class Document {
    *
    * @returns {string | string[]} The category at the provided index or all categories
    */
-  categories(clue) {
+  categories (clue) {
     let arr = this._categories || []
     if (typeof clue === 'number') {
       return [arr[clue]]
@@ -249,7 +249,7 @@ class Document {
    * @param {number | string} [clue] A title of a section or a index of a wanted section
    * @returns {object | object[]} A section or a array of sections
    */
-  sections(clue) {
+  sections (clue) {
     let arr = this._sections || []
     arr.forEach((sec) => {
       // link-up parent and child
@@ -276,7 +276,7 @@ class Document {
    * @param {number | string} [clue] given index of a paragraph
    * @returns {object | object[]} the selected paragraph or an array of all paragraphs
    */
-  paragraphs(clue) {
+  paragraphs (clue) {
     let arr = []
     this.sections().forEach((s) => {
       arr = arr.concat(s.paragraphs())
@@ -293,7 +293,7 @@ class Document {
    * @param {number | string} [clue] given index of a sentence
    * @returns {object[]|object} an array of sentences or a single sentence
    */
-  sentences(clue) {
+  sentences (clue) {
     let arr = []
     this.sections().forEach((sec) => {
       arr = arr.concat(sec.sentences())
@@ -311,7 +311,7 @@ class Document {
    *
    * @returns {Image[]|Image} a single image or an array of images
    */
-  images(clue) {
+  images (clue) {
     let arr = sectionMap(this, 'images', null)
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
@@ -346,7 +346,7 @@ class Document {
    * @param {number} [clue] the index of the wanted link
    * @returns {string[]|string} all the links or the selected link
    */
-  links(clue) {
+  links (clue) {
     return sectionMap(this, 'links', clue)
   }
 
@@ -356,7 +356,7 @@ class Document {
    * @param {number} [clue] the index of the wanted inter wiki link
    * @returns {string[]|string} all the inter wiki links or the selected inter wiki link
    */
-  interwiki(clue) {
+  interwiki (clue) {
     return sectionMap(this, 'interwiki', clue)
   }
 
@@ -367,7 +367,7 @@ class Document {
    * @param {number} [clue] The index of the wanted list
    * @returns {object | object[]} The list at the provided index or all lists
    */
-  lists(clue) {
+  lists (clue) {
     return sectionMap(this, 'lists', clue)
   }
 
@@ -378,7 +378,7 @@ class Document {
    * @param {number} [clue] The index of the wanted table
    * @returns {object | object[]} The table at the provided index or all tables
    */
-  tables(clue) {
+  tables (clue) {
     return sectionMap(this, 'tables', clue)
   }
 
@@ -389,7 +389,7 @@ class Document {
    * @param {number} [clue] The index of the wanted template
    * @returns {object | object[]} The category at the provided index or all categories
    */
-  templates(clue) {
+  templates (clue) {
     return sectionMap(this, 'templates', clue)
   }
 
@@ -400,7 +400,7 @@ class Document {
    * @param {number} [clue] The index of the wanted references
    * @returns {object | object[]} The category at the provided index or all references
    */
-  references(clue) {
+  references (clue) {
     return sectionMap(this, 'references', clue)
   }
 
@@ -410,7 +410,7 @@ class Document {
    * @param {number} [clue] The index of the wanted reference
    * @returns {object|string|number} The reference at the provided index
    */
-  citations(clue) {
+  citations (clue) {
     return this.references(clue)
   }
 
@@ -421,7 +421,7 @@ class Document {
    * @param {number} [clue] the index of the coordinate returned
    * @returns {object[]|object|null} if a clue is given, the coordinate of null, else an array of coordinates
    */
-  coordinates(clue) {
+  coordinates (clue) {
     return sectionMap(this, 'coordinates', clue)
   }
 
@@ -433,7 +433,7 @@ class Document {
    * @param {number} [clue] the index of the infobox you want to select
    * @returns {object | object[]} the selected infobox or an array of infoboxes
    */
-  infoboxes(clue) {
+  infoboxes (clue) {
     let arr = sectionMap(this, 'infoboxes', clue)
     //sort them by biggest-first
     arr = arr.sort((a, b) => {
@@ -452,7 +452,7 @@ class Document {
    * @param {object} [options] the options for the parser
    * @returns {string} the plain text version of the article
    */
-  text(options) {
+  text (options) {
     options = setDefaults(options, defaults)
     //nah, skip these.
     if (this.isRedirect() === true) {
@@ -468,7 +468,7 @@ class Document {
    * @param {object} [options] options for the rendering
    * @returns {object} this document as json
    */
-  json(options) {
+  json (options) {
     options = setDefaults(options, defaults)
     return toJSON(this, options)
   }
@@ -478,7 +478,7 @@ class Document {
    *
    * @returns {string} markup text
    */
-  wikitext() {
+  wikitext () {
     return this._wiki || ''
   }
 
@@ -487,7 +487,7 @@ class Document {
    *
    * @returns {Document} the document itself
    */
-  debug() {
+  debug () {
     console.log('\n')
     this.sections().forEach((sec) => {
       let indent = ' - '

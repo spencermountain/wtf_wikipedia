@@ -6,11 +6,11 @@ const regRangeSeparator = /–/
 const regUptoSecondMill = /\b(\d{1,3})\s*(bc|bce|ad|ce)?$|\b(\d+)\s*(bc|bce)$/i
 const regBCE = /(\d+)\s*(bc|bce)\b/i
 
-const findAverage = function (arr) {
+function findAverage (arr) {
   return arr.reduce((partialSum, n) => partialSum + n) / arr.length
 }
 
-const parseDate = function (str) {
+function parseDate (str) {
   if (!str) {
     return null
   }

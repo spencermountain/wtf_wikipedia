@@ -14,7 +14,7 @@ const methodsProps = { // the accepted methdos and the iiprop (imageinfo prop (U
  * @class
  */
 class InvalidMethod extends Error {
-  constructor(invalidMethod) {
+  constructor (invalidMethod) {
     super()
     const validMethods = Object.keys(methodsProps).join(', ')
     this.message = `'${invalidMethod}' cannot be passed to the 'images' method; ` +
@@ -31,7 +31,7 @@ class InvalidMethod extends Error {
  * @returns {Promise<Object[]>} methods' results for an array of images
  * @throws {InvalidMethod} throws if a passed method is invalid
  */
-function fetch(methods = "", images = []) {
+function fetch (methods = "", images = []) {
 
   const isDoc = images.length ? true : false // whether the call is from a Document(".images()") or an Image
   let titles // will be a string or an array of strings

@@ -2,7 +2,7 @@ import tableParser from '../../table/parse/index.js'
 //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
 
 //this is pretty nuts
-const whichHeadings = function (tmpl) {
+function whichHeadings (tmpl) {
   let headings = ['#', 'date', 'opponent', 'score', 'win', 'loss', 'save', 'attendance', 'record']
   if (/\|stadium=y/i.test(tmpl) === true) {
     headings.splice(7, 0, 'stadium') //save, stadium, attendance
@@ -20,7 +20,7 @@ const whichHeadings = function (tmpl) {
  * @private
  * @param {object} catcher
  */
-const parseMlb = function (catcher) {
+function parseMlb (catcher) {
   catcher.text = catcher.text.replace(/\{\{mlb game log /gi, '{{game log ')
   catcher.text = catcher.text.replace(/\{\{game log (section|month)[\s\S]+?\{\{game log (section|month) end\}\}/gi, (tmpl) => {
     let headings = whichHeadings(tmpl)

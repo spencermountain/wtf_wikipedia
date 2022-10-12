@@ -1,5 +1,5 @@
 //check text is appropriate length
-const isGood = function (doc, options) {
+function isGood (doc, options) {
   if (doc && typeof doc.text === 'function') {
     let text = doc.text()
     if (text && text.length > options.min && text.length < options.max) {

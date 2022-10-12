@@ -2,7 +2,7 @@ import { patterns, mappings } from '../../schema/_data-fns.js'
 import byPattern from '../_byPattern.js'
 const paren = /\((.*)\)$/
 
-const byTitle = function (doc) {
+function byTitle (doc) {
   let title = doc.title()
   if (!title) {
     return []

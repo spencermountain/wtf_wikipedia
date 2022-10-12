@@ -65,7 +65,7 @@ const codes = {
   zar: 'R', //https://en.wikipedia.org/wiki/Template:ZAR
 }
 
-const parseCurrency = (tmpl, list) => {
+function parseCurrency (tmpl, list) {
   let o = parse(tmpl, ['amount', 'code'])
   list.push(o)
   let code = o.template || ''

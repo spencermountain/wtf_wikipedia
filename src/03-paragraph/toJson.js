@@ -4,7 +4,7 @@ const defaults = {
   sentences: true,
 }
 
-const toJson = function (p, options) {
+function toJson (p, options) {
   options = setDefaults(options, defaults)
   let data = {}
   if (options.sentences === true) {

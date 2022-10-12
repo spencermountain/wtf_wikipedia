@@ -3,11 +3,11 @@ import { fromText as parseSentence } from '../04-sentence/index.js'
 import Reference from './Reference.js'
 
 //structured Cite templates - <ref>{{Cite..</ref>
-const hasCitation = function (str) {
+function hasCitation (str) {
   return /^ *\{\{ *(cite|citation)/i.test(str) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false
 }
 
-const parseCitation = function (tmpl) {
+function parseCitation (tmpl) {
   let obj = parse(tmpl)
   obj.type = obj.template.replace(/cite /, '')
   obj.template = 'citation'
@@ -15,7 +15,7 @@ const parseCitation = function (tmpl) {
 }
 
 //handle unstructured ones - <ref>some text</ref>
-const parseInline = function (str) {
+function parseInline (str) {
   let obj = parseSentence(str) || {}
   return {
     template: 'citation',
@@ -26,7 +26,7 @@ const parseInline = function (str) {
 }
 
 //parse <ref></ref> xml tags
-const parseRefs = function (section) {
+function parseRefs (section) {
   let references = []
   let wiki = section._wiki
 

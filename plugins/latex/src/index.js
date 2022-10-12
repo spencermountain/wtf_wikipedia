@@ -9,7 +9,7 @@ import list from './list.js'
 import reference from './reference.js'
 import table from './table.js'
 
-const plugin = function (models) {
+function plugin (models) {
   models.Doc.prototype.latex = doc
   models.Section.prototype.latex = section
   models.Paragraph.prototype.latex = paragraph

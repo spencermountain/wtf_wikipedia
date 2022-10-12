@@ -4,7 +4,7 @@ const boxes = {
   Place: true,
 }
 
-const plugin = (_models, _templates, infoboxes) => {
+function plugin (_models, _templates, infoboxes) {
   // add infoboxes
   Object.assign(infoboxes, boxes)
   // add templates

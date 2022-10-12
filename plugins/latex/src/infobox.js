@@ -11,7 +11,7 @@ const defaults = {
 }
 
 //
-const infobox = function (options) {
+function infobox (options) {
   options = Object.assign({}, defaults, options)
   let out = '\n \\vspace*{0.3cm} % Info Box\n\n'
   out += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n'

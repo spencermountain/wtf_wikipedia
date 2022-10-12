@@ -1,11 +1,11 @@
 import parseGame from './parseGame.js'
 import addWinner from './winner.js'
 
-const isArray = function (arr) {
+function isArray (arr) {
   return Object.prototype.toString.call(arr) === '[object Array]'
 }
 
-const doTable = function (rows = []) {
+function doTable (rows = []) {
   let games = []
   //is it a legend/junk table?
   if (rows[1] && rows[1].Legend || !isArray(rows)) {
@@ -19,7 +19,7 @@ const doTable = function (rows = []) {
   return games
 }
 
-const doSection = function (section) {
+function doSection (section) {
   let tables = section.tables()
   //do all subsection, too
   section.children().forEach(s => {
@@ -36,7 +36,7 @@ const doSection = function (section) {
 }
 
 //get games of regular season
-const gameLog = function (doc) {
+function gameLog (doc) {
   let games = []
   // grab the generated section called 'Game Log'
   let section = doc.section('game log') || doc.section('game log and schedule') || doc.section('regular season') || doc.section('season') || doc.section('schedule') || doc.section('schedule and results')
@@ -53,7 +53,7 @@ const gameLog = function (doc) {
   return games
 }
 
-const postSeason = function (doc) {
+function postSeason (doc) {
   let series = []
   //ok, try postseason, too
   let section = doc.section('postseason game log') || doc.section('postseason') || doc.section('playoffs') || doc.section('playoff')

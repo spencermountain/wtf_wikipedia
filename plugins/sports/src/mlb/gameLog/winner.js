@@ -1,7 +1,7 @@
 
 //amazingly, it's not clear who won the game, without the css styling.
 //try to pull-it out based on the team's record
-const addWinner = function (games) {
+function addWinner (games) {
   let wins = 0
   games.forEach((g) => {
     if (g.record.wins > wins) {

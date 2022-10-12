@@ -7,7 +7,7 @@ import encodeObj from '../_lib/encode.js'
  * @param {object} [options] 
  * @returns {object}
  */
-const toJson = function (infobox, options) {
+function toJson (infobox, options) {
   let json = Object.keys(infobox.data).reduce((h, k) => {
     if (infobox.data[k]) {
       h[k] = infobox.data[k].json()

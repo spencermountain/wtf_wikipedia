@@ -1,4 +1,4 @@
-const toWiki = function () {
+function toWiki () {
   let text = `{{Infobox ${this._type || ''}\n`
   Object.keys(this.data).forEach((k) => {
     let val = this.data[k]

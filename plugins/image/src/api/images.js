@@ -16,7 +16,7 @@ import fetch from './fetch.js'
  * @returns {newMethod}
  */
 
-const images = function (oldMethod) {
+function images (oldMethod) {
 
   /**
    * @typedef imagesOptions
@@ -31,10 +31,10 @@ const images = function (oldMethod) {
    * @returns {Promise<Object[]> | Object[]} an array of images or a single image
    */
 
-  const newMethod = function (clue) { // "this" refers to the document
+  function newMethod (clue) { // "this" refers to the document
 
     // adds userAgent to each image, to use for methods that call the API.
-    const addUserAgent = function (imgs) {
+    function addUserAgent (imgs) {
       return imgs.map(i => {
         i.data['_userAgent'] = this['_userAgent']
         return i

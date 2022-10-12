@@ -1,6 +1,6 @@
 import encodeObj from '../_lib/encode.js'
 //
-const toJson = function (tables, options) {
+function toJson (tables, options) {
   return tables.map((table) => {
     let row = {}
     Object.keys(table).forEach((k) => {

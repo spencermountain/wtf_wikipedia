@@ -1,7 +1,7 @@
 import toJson from './toJson.js'
 const server = 'wikipedia.org'
 
-const encodeTitle = function (file) {
+function encodeTitle (file) {
   let title = file.replace(/^(image|file?):/i, '')
   //titlecase it
   title = title.charAt(0).toUpperCase() + title.substring(1)
@@ -11,14 +11,14 @@ const encodeTitle = function (file) {
 }
 
 //the wikimedia image url is a little silly:
-const makeSrc = function (file) {
+function makeSrc (file) {
   let title = encodeTitle(file)
   title = encodeURIComponent(title)
   return title
 }
 
 //the class for our image generation functions
-const Image = function (data) {
+function Image (data) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data,
@@ -26,7 +26,7 @@ const Image = function (data) {
 }
 
 const methods = {
-  file() {
+  file () {
     let file = this.data.file || ''
     if (file) {
       const regFile = /^(image|file):/i
@@ -41,36 +41,36 @@ const methods = {
     }
     return file
   },
-  alt() {
+  alt () {
     let str = this.data.alt || this.data.file || ''
     str = str.replace(/^(file|image):/i, '')
     str = str.replace(/\.(jpg|jpeg|png|gif|svg)/i, '')
     return str.replace(/_/g, ' ')
   },
-  caption() {
+  caption () {
     if (this.data.caption) {
       return this.data.caption.text()
     }
     return ''
   },
-  links() {
+  links () {
     if (this.data.caption) {
       return this.data.caption.links()
     }
     return []
   },
-  url() {
+  url () {
     // let lang = 'en' //this.language() || 'en' //hmm: get actual language?
     let fileName = makeSrc(this.file())
     let domain = this.data.domain || server
     let path = `wiki/Special:Redirect/file`
     return `https://${domain}/${path}/${fileName}`
   },
-  thumbnail(size) {
+  thumbnail (size) {
     size = size || 300
     return this.url() + '?width=' + size
   },
-  format() {
+  format () {
     let arr = this.file().split('.')
     if (arr[arr.length - 1]) {
       return arr[arr.length - 1].toLowerCase()

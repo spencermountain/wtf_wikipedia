@@ -1,6 +1,6 @@
 
 //
-const playerStats = function (doc) {
+function playerStats (doc) {
   let players = []
   let s = doc.sections('player stats') || doc.sections('player statistics') || doc.sections('statistics')
   s = s[0]

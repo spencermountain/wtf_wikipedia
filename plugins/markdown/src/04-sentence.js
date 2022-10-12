@@ -6,7 +6,7 @@ const defaults = {
 }
 
 //create links, bold, italic in markdown
-const toMarkdown = function (options) {
+function toMarkdown (options) {
   options = Object.assign({}, defaults, options)
   let md = this.text()
   //turn links back into links

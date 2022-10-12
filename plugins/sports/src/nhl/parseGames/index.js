@@ -2,7 +2,7 @@ import addWinner from './win-loss.js'
 const dashSplit = /([–\-−]|&ndash;)/
 import parseRecord from './_record.js'
 
-const parseScore = function (score = '') {
+function parseScore (score = '') {
   let arr = score.split(dashSplit)
   if (!arr[0] && !arr[2]) {
     return {}
@@ -13,7 +13,7 @@ const parseScore = function (score = '') {
   }
 }
 
-const isFuture = function (games) {
+function isFuture (games) {
   games.forEach((g) => {
     if (!g.attendance && !g.points) {
       if (!g.record.wins && !g.record.lossess && !g.record.ties) {
@@ -25,7 +25,7 @@ const isFuture = function (games) {
   return games
 }
 
-const parseDate = function (row, title) {
+function parseDate (row, title) {
   let year = title.year
   let date = row.date || row.Date
   if (!date) {
@@ -40,7 +40,7 @@ const parseDate = function (row, title) {
   return date
 }
 
-const parseGame = function (row, meta) {
+function parseGame (row, meta) {
   let attendance = row.attendance || row.Attendance || ''
   attendance = Number(attendance.replace(/,/, '')) || null
   let res = {
@@ -67,7 +67,7 @@ const parseGame = function (row, meta) {
 }
 
 //
-const parseGames = function (doc, meta) {
+function parseGames (doc, meta) {
   let games = []
   let s = doc.section('schedule and results') || doc.section('schedule') || doc.section('regular season')
   if (!s) {

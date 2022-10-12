@@ -5,7 +5,7 @@ const defaults = {
   formatting: true
 }
 // create links, bold, italic in latex
-const toLatex = function (options) {
+function toLatex (options) {
   options = Object.assign({}, defaults, options)
   let text = this.text()
   //turn links back into links

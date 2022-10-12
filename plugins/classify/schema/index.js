@@ -15,7 +15,7 @@ let schema = {
 }
 
 // generate slash-based ids by descending recursively
-const setId = function (root, id) {
+function setId (root, id) {
   if (root.name) {
     root.id = id + '/' + root.name
   } else {

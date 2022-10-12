@@ -1,4 +1,4 @@
-export function normalize(title = '') {
+export function normalize (title = '') {
   title = title.replace(/ /g, '_')
   title = title.trim()
   title = encodeURIComponent(title)
@@ -10,14 +10,14 @@ export const defaults = {
   path: 'w/api.php'
 }
 
-export function toUrlParams(obj) {
+export function toUrlParams (obj) {
   let arr = Object.entries(obj).map(([key, value]) => {
     return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
   })
   return arr.join('&')
 }
 
-export function fetchOne(url, http, prop) {
+export function fetchOne (url, http, prop) {
   return http(url).then((res) => {
     let pages = Object.keys(res.query.pages || {})
     if (pages.length === 0) {

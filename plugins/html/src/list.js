@@ -1,5 +1,5 @@
 //
-const toHtml = function (options) {
+function toHtml (options) {
   let html = '  <ul class="list">\n'
   this.lines().forEach((s) => {
     html += '    <li>' + s.html(options) + '</li>\n'

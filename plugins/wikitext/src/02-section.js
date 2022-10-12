@@ -1,6 +1,6 @@
 const defaults = {}
 
-const doTemplate = function (obj) {
+function doTemplate (obj) {
   let data = ''
   let name = obj.template
   Object.keys(obj).forEach((k) => {
@@ -11,7 +11,7 @@ const doTemplate = function (obj) {
   return `{{${name}${data}}} `
 }
 
-const toWiki = function (options) {
+function toWiki (options) {
   options = options || {}
   options = Object.assign({}, defaults, options)
   let text = ''

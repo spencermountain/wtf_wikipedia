@@ -8,7 +8,7 @@
  * @param {object} [options]
  * @returns {*} result
  */
-const getResult = function (data, options = {}) {
+function getResult (data, options = {}) {
   //get all the pagesIds from the result
   let pages = Object.keys(data.query.pages)
 

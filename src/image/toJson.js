@@ -8,7 +8,7 @@ const defaults = {
   url: true,
 }
 //
-const toJson = function (img, options) {
+function toJson (img, options) {
   options = setDefaults(options, defaults)
   let json = {
     file: img.file(),

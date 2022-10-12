@@ -3,7 +3,7 @@ import wikis from '../_data/interwiki.js'
 const defaults = {
   type: 'internal',
 }
-const Link = function (data) {
+function Link (data) {
   data = data || {}
   data = Object.assign({}, defaults, data)
   Object.defineProperty(this, 'data', {

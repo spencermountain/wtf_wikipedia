@@ -1,6 +1,6 @@
 import byInfobox from '../getInfobox.js'
 
-const birthPlace = function (doc) {
+function birthPlace (doc) {
   let res = byInfobox(doc, 'birth_place')
   if (res) {
     return res

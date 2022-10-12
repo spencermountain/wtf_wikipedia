@@ -1,5 +1,5 @@
 //turn a json table into a html table
-const toHtml = function (options) {
+function toHtml (options) {
   let rows = this.data
   let html = '<table class="table">\n'
   //make header

@@ -28,7 +28,7 @@ class Section {
    * @param {object} data the data already gathered about the section
    * @param {object} doc the document that this section belongs to
    */
-  constructor(data, doc) {
+  constructor (data, doc) {
     let props = {
       doc: doc,
       title: data.title || '',
@@ -70,7 +70,7 @@ class Section {
    *
    * @returns {string} the title of the section
    */
-  title() {
+  title () {
     return this._title || ''
   }
 
@@ -79,7 +79,7 @@ class Section {
    *
    * @returns {number | null} the index of the current section in the document
    */
-  index() {
+  index () {
     if (!this._doc) {
       return null
     }
@@ -96,7 +96,7 @@ class Section {
    *
    * @returns {number} the depth of the section
    */
-  depth() {
+  depth () {
     return this._depth
   }
 
@@ -106,7 +106,7 @@ class Section {
    *
    * @returns {number} the depth of the section
    */
-  indentation() {
+  indentation () {
     return this.depth()
   }
 
@@ -116,7 +116,7 @@ class Section {
    *
    * @returns {object | object[]} all sentences in an array or the clue-th sentence
    */
-  sentences() {
+  sentences () {
     return this.paragraphs().reduce((list, p) => {
       return list.concat(p.sentences())
     }, [])
@@ -128,7 +128,7 @@ class Section {
    *
    * @returns {object | object[]} all paragraphs in an array or the clue-th paragraph
    */
-  paragraphs() {
+  paragraphs () {
     return this._paragraphs || []
   }
 
@@ -140,7 +140,7 @@ class Section {
    * @param {number| string} [clue] the clue for selecting the link
    * @returns {object | object[]} all links in an array or the clue-th link or the link with the content of clue
    */
-  links(clue) {
+  links (clue) {
     let arr = []
 
     this.infoboxes().forEach((templ) => {
@@ -177,7 +177,7 @@ class Section {
    *
    * @returns {object | object[]} all tables in an array or the clue-th infobox
    */
-  tables() {
+  tables () {
     return this._tables || []
   }
 
@@ -189,7 +189,7 @@ class Section {
    * @param {number|string} [clue] the clue for selecting the template
    * @returns {object | object[]} all templates in an array or the clue-th template or all template name `clue`
    */
-  templates(clue) {
+  templates (clue) {
     let arr = this._templates || []
     // arr = arr.map((t) => t.json())
     if (typeof clue === 'string') {
@@ -207,7 +207,7 @@ class Section {
    * @param {number|string} [clue] the clue for selecting the infobox
    * @returns {object | object[]} all infoboxes in an array or the clue-th infobox
    */
-  infoboxes(clue) {
+  infoboxes (clue) {
     let arr = this._infoboxes || []
     if (typeof clue === 'string') {
       clue = clue.replace(/^infobox /i, '')
@@ -223,7 +223,7 @@ class Section {
    *
    * @returns {object | object[]} all lists in an array or the clue-th list
    */
-  coordinates() {
+  coordinates () {
     let arr = [...this.templates('coord'), ...this.templates('coor')]
     return arr.map((tmpl) => tmpl.json())
   }
@@ -234,7 +234,7 @@ class Section {
    *
    * @returns {object | object[]} all lists in an array or the clue-th list
    */
-  lists() {
+  lists () {
     let arr = []
     this.paragraphs().forEach((p) => {
       arr = arr.concat(p.lists())
@@ -248,7 +248,7 @@ class Section {
    *
    * @returns {object | object[]} all interwiki links in an array or the clue-th interwiki link
    */
-  interwiki() {
+  interwiki () {
     let arr = []
     this.paragraphs().forEach((p) => {
       arr = arr.concat(p.interwiki())
@@ -262,7 +262,7 @@ class Section {
    *
    * @returns {object | object[]} all images in an array or the clue-th image
    */
-  images() {
+  images () {
     let arr = []
     this.paragraphs().forEach((p) => {
       arr = arr.concat(p.images())
@@ -276,7 +276,7 @@ class Section {
    *
    * @returns {object | object[]} all references in an array or the clue-th reference
    */
-  references() {
+  references () {
     return this._references || []
   }
 
@@ -286,7 +286,7 @@ class Section {
    *
    * @returns {null|object} the document without this section. or null if there is no document
    */
-  remove() {
+  remove () {
     if (!this._doc) {
       return null
     }
@@ -311,7 +311,7 @@ class Section {
    *
    * @returns {Section|null} the next sibling
    */
-  nextSibling() {
+  nextSibling () {
     //if this section is not part of a document then we can go to the next part of the document
     if (!this._doc) {
       return null
@@ -345,7 +345,7 @@ class Section {
    *
    * @returns {Section|null} the next sibling
    */
-  next() {
+  next () {
     return this.nextSibling()
   }
 
@@ -354,7 +354,7 @@ class Section {
    *
    * @returns {Section|null} the previous section
    */
-  lastSibling() {
+  lastSibling () {
     if (!this._doc) {
       return null
     }
@@ -368,7 +368,7 @@ class Section {
    *
    * @returns {Section|null} the previous section
    */
-  last() {
+  last () {
     return this.lastSibling()
   }
 
@@ -377,7 +377,7 @@ class Section {
    *
    * @returns {Section|null} the previous section
    */
-  previousSibling() {
+  previousSibling () {
     return this.lastSibling()
   }
 
@@ -386,7 +386,7 @@ class Section {
    *
    * @returns {Section|null} the previous section
    */
-  previous() {
+  previous () {
     return this.lastSibling()
   }
 
@@ -400,7 +400,7 @@ class Section {
    * @param {number | string} [clue] A title of a section or a index of a wanted section
    * @returns {Section | Section[] | null} A section or a array of sections
    */
-  children(clue) {
+  children (clue) {
     if (!this._doc) {
       return null
     }
@@ -435,7 +435,7 @@ class Section {
    * @param {number | string} [clue] A title of a section or a index of a wanted section
    * @returns {Section | Section[] | null} A section or a array of sections
    */
-  sections(clue) {
+  sections (clue) {
     return this.children(clue)
   }
 
@@ -444,7 +444,7 @@ class Section {
    *
    * @returns {Section | null} A section that is the parent of a section
    */
-  parent() {
+  parent () {
     if (!this._doc) {
       return null
     }
@@ -468,7 +468,7 @@ class Section {
    * @param {object} options options for the text transformation
    * @returns {string} the section in text
    */
-  text(options) {
+  text (options) {
     options = setDefaults(options, defaults)
     return this.paragraphs()
       .map((p) => p.text(options))
@@ -479,7 +479,7 @@ class Section {
    *
    * @returns {string} the original markup
    */
-  wikitext() {
+  wikitext () {
     return this._wiki
   }
 
@@ -489,7 +489,7 @@ class Section {
    * @param {object} options keys to include in the resulting json
    * @returns {object} the section in json
    */
-  json(options) {
+  json (options) {
     options = setDefaults(options, defaults)
     return toJSON(this, options)
   }

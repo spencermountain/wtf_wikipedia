@@ -1,7 +1,7 @@
 import encodeObj from '../_lib/encode.js'
 
 //also called 'citations'
-const Reference = function (data, wiki) {
+function Reference (data, wiki) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data,

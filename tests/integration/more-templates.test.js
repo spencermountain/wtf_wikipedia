@@ -129,7 +129,7 @@ test('collapsible list', (t) => {
   t.equal(obj.list.length, 2, 'list-len')
 
   //now sanity check all aliases
-  const testText = (template) => {
+  function testText (template) {
     let actual = wtf(`{{${template}|a|b}}`).text().replace(/\n+/, ' ')
     t.equal(actual, 'a b', template)
   }

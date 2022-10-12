@@ -1,5 +1,5 @@
 //normalize template names
-const fmtName = function (name) {
+function fmtName (name) {
   name = (name || '').trim()
   name = name.toLowerCase()
   name = name.replace(/_/g, ' ')

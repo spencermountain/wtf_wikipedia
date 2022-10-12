@@ -19,7 +19,7 @@ const defaults = {
  * @param {object} options
  * @returns {object}
  */
-const toJSON = function (section, options) {
+function toJSON (section, options) {
   options = setDefaults(options, defaults)
   /**
    * @type {object}

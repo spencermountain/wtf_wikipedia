@@ -2,7 +2,7 @@ import setDefaults from '../_lib/setDefaults.js'
 import toJson from './toJson.js'
 const defaults = {}
 
-const normalize = function (key = '') {
+function normalize (key = '') {
   key = key.toLowerCase()
   key = key.replace(/[_-]/g, ' ')
   key = key.replace(/\(.*?\)/, '')
@@ -10,7 +10,7 @@ const normalize = function (key = '') {
   return key
 }
 
-const Table = function (data, wiki = '') {
+function Table (data, wiki = '') {
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data,
@@ -22,7 +22,7 @@ const Table = function (data, wiki = '') {
 }
 
 const methods = {
-  links(n) {
+  links (n) {
     let links = []
     this.data.forEach((r) => {
       Object.keys(r).forEach((k) => {
@@ -37,7 +37,7 @@ const methods = {
     }
     return links
   },
-  get(keys) {
+  get (keys) {
     // normalize mappings
     let have = this.data[0] || {}
     let mapping = Object.keys(have).reduce((h, k) => {
@@ -65,7 +65,7 @@ const methods = {
       }, {})
     })
   },
-  keyValue(options) {
+  keyValue (options) {
     let rows = this.json(options)
     rows.forEach((row) => {
       Object.keys(row).forEach((k) => {
@@ -74,16 +74,16 @@ const methods = {
     })
     return rows
   },
-  json(options) {
+  json (options) {
     options = setDefaults(options, defaults)
     return toJson(this.data, options)
   },
 
-  text() {
+  text () {
     return ''
   },
 
-  wikitext() {
+  wikitext () {
     return this._wiki || ''
   },
 }

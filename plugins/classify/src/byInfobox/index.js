@@ -1,6 +1,6 @@
 import { mappings } from '../../schema/_data-fns.js'
 
-const byInfobox = function (doc) {
+function byInfobox (doc) {
   let infoboxes = doc.infoboxes()
   let found = []
   for (let i = 0; i < infoboxes.length; i++) {

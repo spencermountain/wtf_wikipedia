@@ -6,7 +6,7 @@ const defaults = {
   images: true,
 }
 
-const Paragraph = function (data) {
+function Paragraph (data) {
   Object.defineProperty(this, 'data', {
     enumerable: false,
     value: data,
@@ -23,7 +23,7 @@ const methods = {
   lists: function () {
     return this.data.lists
   },
-  images() {
+  images () {
     return this.data.images || []
   },
   links: function (clue) {
@@ -39,7 +39,7 @@ const methods = {
     }
     return arr || []
   },
-  interwiki() {
+  interwiki () {
     let arr = []
     this.sentences().forEach((s) => {
       arr = arr.concat(s.interwiki())
