@@ -51,12 +51,12 @@ function parseDate (str) {
   let res = {
     year: s.year(),
     month: s.month(),
-    date: s.date()
+    date: s.date(),
   }
   if (justYear) {
     if (inaccurateOriginal) {
       Object.defineProperty(res, "originalDate", {
-        value: inaccurateOriginal
+        value: inaccurateOriginal,
       })
     }
     if (str.match(regBCE)) {
@@ -79,7 +79,7 @@ function parseDate (str) {
   const epoch = { // epoch is returned when unsuccessful 
     year: 1970,
     month: 0,
-    date: 1
+    date: 1,
   }
   if (JSON.stringify(res) === JSON.stringify(epoch)) {
     return null
@@ -87,7 +87,7 @@ function parseDate (str) {
   res.year = year || s.year()
   if (inaccurateOriginal) {
     Object.defineProperty(res, "originalDate", {
-      value: inaccurateOriginal
+      value: inaccurateOriginal,
     })
   }
   return res

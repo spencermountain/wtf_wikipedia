@@ -27,7 +27,7 @@ function findPivot (s) {
     before: f.eq(0),
     verb: f.eq(1),
     article: article,
-    after: cleanUp(f.eq(2))
+    after: cleanUp(f.eq(2)),
   }
 }
 export default findPivot

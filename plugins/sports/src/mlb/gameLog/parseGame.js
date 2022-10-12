@@ -7,7 +7,7 @@ function parseTeam (txt) {
   let away = /^ *@ */.test(txt)
   return {
     name: txt.replace(/^ +@ +/, ''),
-    home: !away
+    home: !away,
   }
 }
 
@@ -84,7 +84,7 @@ function parseRow (row) {
     pitchers: parsePitchers(row),
     result: parseScore(row.score || row.Score || row['box score'] || row['Box Score']),
     record: record,
-    attendance: parseAttendance(row.attendance || row.Attendance || row['location (attendance)'] || row['Location (Attendance)'])
+    attendance: parseAttendance(row.attendance || row.Attendance || row['location (attendance)'] || row['Location (Attendance)']),
   }
   return obj
 }

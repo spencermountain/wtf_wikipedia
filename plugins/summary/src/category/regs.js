@@ -10,7 +10,7 @@ const bad = [
   'winners',
   'nominees',
   'alumni',
-  'other'
+  'other',
 ].map((str) => new RegExp(`\\b${str}\\b`, 'i'))
 
 const good = ['male', 'female'].map((str) => new RegExp(`\\b${str}\\b`, 'i'))

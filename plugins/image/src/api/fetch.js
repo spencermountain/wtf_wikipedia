@@ -5,7 +5,7 @@ import parse from './parse.js'
 
 const methodsProps = { // the accepted methdos and the iiprop (imageinfo prop (URL parameter)) needed for each method
   license: "extmetadata",
-  exists: "url"
+  exists: "url",
 }
 
 /**
@@ -86,7 +86,7 @@ function fetch (methods = "", images = []) {
   const options = {
     title: titles,
     domain: "commons.wikimedia.org",
-    userAgent: userAgent
+    userAgent: userAgent,
   }
   const params = {
     action: 'query',
@@ -104,7 +104,7 @@ function fetch (methods = "", images = []) {
       if (!isDoc) {
         this.data.pluginData = {
           ...this.data.pluginData,
-          ...parse(titles, res, isDoc)
+          ...parse(titles, res, isDoc),
         }
         return null
       }

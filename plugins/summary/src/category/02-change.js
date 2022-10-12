@@ -4,7 +4,7 @@ function useAn (str) {
   const a_regexs = [
     /^onc?e/i, //'wu' sound of 'o'
     /^u[bcfhjknq-t][aeiou]/i, // 'yu' sound for hard 'u'
-    /^eul/i
+    /^eul/i,
   ]
   for (let i = 0; i < a_regexs.length; i++) {
     if (a_regexs[i].test(str)) {

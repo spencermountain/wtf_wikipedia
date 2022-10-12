@@ -7,8 +7,8 @@ function imgExists (callback) {
     method: 'HEAD',
     headers: {
       'Api-User-Agent': userAgent,
-      'User-Agent': userAgent
-    }
+      'User-Agent': userAgent,
+    },
   })
     .then(resp => {
       //support callback non-promise form

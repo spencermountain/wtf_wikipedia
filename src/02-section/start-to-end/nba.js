@@ -36,7 +36,7 @@ function parseNBA (catcher) {
 
       //return empty string to remove the template from the wiki text
       return ''
-    }
+    },
   )
 }
 export default parseNBA

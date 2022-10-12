@@ -3,7 +3,7 @@ const defaults = {
   images: true,
   tables: true,
   lists: true,
-  paragraphs: true
+  paragraphs: true,
 }
 //map '==' depth to 'subsection', 'subsubsection', etc
 function doSection (options) {

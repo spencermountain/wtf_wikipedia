@@ -9,7 +9,7 @@ function parseTitle (season = '') {
   return {
     year: year,
     season: season,
-    team: team.trim()
+    team: team.trim(),
   }
 }
 

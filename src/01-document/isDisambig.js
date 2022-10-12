@@ -9,7 +9,7 @@ const notDisambig = {
   'for multi': true,
   'other people': true,
   'other uses of': true,
-  'distinguish': true
+  'distinguish': true,
 }
 
 const inTitle = new RegExp('. \\((' + disambig_titles.join('|') + ')\\)$', 'i')

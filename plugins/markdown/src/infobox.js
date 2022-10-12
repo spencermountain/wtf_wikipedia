@@ -3,11 +3,11 @@ const dontDo = {
   caption: true,
   alt: true,
   signature: true,
-  'signature alt': true
+  'signature alt': true,
 }
 
 const defaults = {
-  images: true
+  images: true,
 }
 
 //

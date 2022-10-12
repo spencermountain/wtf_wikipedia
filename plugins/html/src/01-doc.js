@@ -3,7 +3,7 @@ const defaults = {
   infoboxes: true,
   headers: true,
   sections: true,
-  links: true
+  links: true,
 }
 //we should try to make this look like the wikipedia does, i guess.
 function softRedirect (doc) {

@@ -7,7 +7,7 @@ let templates = Object.assign(
   {},
   textTmpl,
   dataTmpl,
-  bothTmpl
+  bothTmpl,
 )
 
 Object.keys(aliases).forEach((k) => {

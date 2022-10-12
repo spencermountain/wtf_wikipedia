@@ -5,7 +5,7 @@ const params = {
   prop: 'pageviews',
   format: 'json',
   origin: '*',
-  redirects: true
+  redirects: true,
 }
 
 function makeUrl (title, options, append) {

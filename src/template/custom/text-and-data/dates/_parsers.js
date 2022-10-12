@@ -86,7 +86,7 @@ const parsers = {
     list.push(
       template({
         year: year,
-      })
+      }),
     )
     return String(year)
   },

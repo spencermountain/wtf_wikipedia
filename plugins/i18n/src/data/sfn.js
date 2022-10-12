@@ -5,5 +5,5 @@ export default [
   'mallonga piednoto',
   'odn',
   //'sfn',
-  'зноска'
+  'зноска',
 ]

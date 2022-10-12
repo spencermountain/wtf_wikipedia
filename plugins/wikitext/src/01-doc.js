@@ -6,7 +6,7 @@ const defaults = {
   categories: true,
   lists: true,
   links: true,
-  paragraphs: true
+  paragraphs: true,
 }
 function toWiki (options) {
   options = options || {}

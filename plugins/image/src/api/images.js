@@ -60,7 +60,7 @@ function images (oldMethod) {
             // add the results to plugin data
             image.data.pluginData = {
               ...image.data.pluginData,
-              ...methodsRes[ind]
+              ...methodsRes[ind],
             }
 
             // redefine methods on the image prototype just once

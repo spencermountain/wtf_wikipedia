@@ -1,6 +1,6 @@
 const defaults = {
   infoboxes: true,
-  sections: true
+  sections: true,
 }
 
 // we should try to make this look like the wikipedia does, i guess.

@@ -13,8 +13,8 @@ export default [
     input: 'src/index.js',
     output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
     plugins: [
-      commonjs()
-    ]
+      commonjs(),
+    ],
   },
 
   // === .js ===
@@ -22,8 +22,8 @@ export default [
     input: 'src/index.js',
     output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfLatex', sourcemap: false }],
     plugins: [
-      commonjs()
-    ]
+      commonjs(),
+    ],
   },
   // ===  min.js ===
   {
@@ -32,7 +32,7 @@ export default [
     plugins: [
       commonjs(),
       terser(),
-      sizeCheck({ expect: 5, warn: 10 })
-    ]
-  }
+      sizeCheck({ expect: 5, warn: 10 }),
+    ],
+  },
 ]

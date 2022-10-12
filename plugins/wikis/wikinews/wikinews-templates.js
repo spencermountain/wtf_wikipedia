@@ -838,5 +838,5 @@ export default [
   ["dinosaurs", 1],
   ["african union", 1],
   ["connecticut", 1],
-  ["oman", 1]
+  ["oman", 1],
 ]

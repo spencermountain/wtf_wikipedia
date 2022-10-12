@@ -7,7 +7,7 @@ const params = {
   tilimit: 500,
   format: 'json',
   origin: '*',
-  redirects: true
+  redirects: true,
 }
 
 function makeUrl (title, options, append) {

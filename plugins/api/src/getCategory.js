@@ -8,7 +8,7 @@ const params = {
   cmnamespace: 0,
   format: 'json',
   origin: '*',
-  redirects: true
+  redirects: true,
 }
 
 function fetchIt (url, http, prop) {
@@ -20,7 +20,7 @@ function fetchIt (url, http, prop) {
     let arr = pages.map((k) => res.query[prop][k])
     return {
       pages: arr,
-      cursor: res.continue
+      cursor: res.continue,
     }
   })
 }

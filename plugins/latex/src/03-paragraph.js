@@ -1,5 +1,5 @@
 const defaults = {
-  sentences: true
+  sentences: true,
 }
 
 function toLatex (options) {

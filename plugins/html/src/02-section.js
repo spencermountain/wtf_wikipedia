@@ -3,7 +3,7 @@ const defaults = {
   images: true,
   tables: true,
   lists: true,
-  paragraphs: true
+  paragraphs: true,
 }
 
 function doSection (options) {

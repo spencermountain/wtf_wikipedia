@@ -360,6 +360,6 @@ let templates = {
     let result = txt.replace(/"/g, '\'')
     result = '"' + result + '"'
     return result
-  }
+  },
 }
 export default templates

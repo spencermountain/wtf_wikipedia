@@ -31,7 +31,7 @@ function hardCuts (s) {
     s.remove('(located|based) in #Place+$')
   } else if (
     s.has(
-      '(#Noun|#Value) (in|on) the #Adjective? (region|province|district|coast|city) of #Place+$'
+      '(#Noun|#Value) (in|on) the #Adjective? (region|province|district|coast|city) of #Place+$',
     )
   ) {
     s.remove('(in|on) the #Adjective? (region|province|district|coast|city) of #Place+$')

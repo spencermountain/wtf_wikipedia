@@ -2,7 +2,7 @@ import smartReplace from './_lib/smartReplace.js'
 
 const defaults = {
   links: true,
-  formatting: true
+  formatting: true,
 }
 
 //create links, bold, italic in markdown

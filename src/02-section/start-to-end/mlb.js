@@ -44,7 +44,7 @@ function parseMlb (catcher) {
 
     //return empty string to remove the template from the wiki text
     return ''
-  }
+  },
   )
 }
 export default parseMlb

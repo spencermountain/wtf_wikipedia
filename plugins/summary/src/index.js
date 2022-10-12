@@ -9,7 +9,7 @@ const defaults = {
   sentence: true,
   category: true,
   max: 80,
-  min: 3
+  min: 3,
 }
 
 function seemsGood (txt, options) {

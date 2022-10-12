@@ -10,7 +10,7 @@ const params = {
   rvslots: 'main',
   format: 'json',
   origin: '*',
-  redirects: 'true'
+  redirects: 'true',
 }
 
 function fetchIt (url, http) {

@@ -1,7 +1,7 @@
 import smartReplace from './_lib/smartReplace.js'
 
 const defaults = {
-  links: true
+  links: true,
 }
 
 function toWiki (options) {

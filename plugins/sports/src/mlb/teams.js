@@ -37,5 +37,5 @@ export default [
   "Kansas City Athletics",
   "Milwaukee Braves",
   "Washington Senators",
-  "Brooklyn Dodgers"
+  "Brooklyn Dodgers",
 ]

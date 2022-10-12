@@ -12,11 +12,11 @@ function doTeam (i, t, cb) {
       seasons.forEach((season) => {
         t.ok(
           season.games.length > 110,
-          `${season.year}-${team}  - found ${season.games.length} games`
+          `${season.year}-${team}  - found ${season.games.length} games`,
         )
         t.ok(
           season.roster.length > 40,
-          `${season.year}-${team}  - found ${season.roster.length} players`
+          `${season.year}-${team}  - found ${season.roster.length} players`,
         )
       })
       i += 1

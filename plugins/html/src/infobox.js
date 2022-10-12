@@ -1,12 +1,12 @@
 const defaults = {
-  images: true
+  images: true,
 }
 const dontDo = {
   image: true,
   caption: true,
   alt: true,
   signature: true,
-  'signature alt': true
+  'signature alt': true,
 }
 
 //

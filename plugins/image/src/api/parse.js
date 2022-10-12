@@ -19,10 +19,10 @@ function parseImage (fetchedImage) {
         license: metaData.LicenseShortName && metaData.LicenseShortName.value || "",
         artist: metaData.Artist && metaData.Artist.value || "",
         credit: metaData.Credit && metaData.Credit.value || "",
-        attributionRequired: metaData.AttributionRequired && metaData.AttributionRequired.value || ""
-      }
+        attributionRequired: metaData.AttributionRequired && metaData.AttributionRequired.value || "",
+      },
     }),
-    ...(url && { existsRes: true })
+    ...(url && { existsRes: true }),
   }
 }
 /**

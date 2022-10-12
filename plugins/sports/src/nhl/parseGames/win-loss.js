@@ -17,12 +17,12 @@ function addWinner (games) {
     if (g.win) {
       g.result = {
         us: res.win,
-        them: res.loss
+        them: res.loss,
       }
     } else {
       g.result = {
         us: res.loss,
-        them: res.win
+        them: res.win,
       }
     }
   })

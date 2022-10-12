@@ -17,7 +17,7 @@ export default [
     plugins: [
       nodeResolve(),
       commonjs({ requireReturnsDefault: "auto" }),
-    ]
+    ],
   },
 
   // === .js ===
@@ -27,8 +27,8 @@ export default [
     external: ['isomorphic-unfetch'],
     plugins: [
       nodeResolve(),
-      commonjs({ requireReturnsDefault: "auto" })
-    ]
+      commonjs({ requireReturnsDefault: "auto" }),
+    ],
   },
   // ===  min.js ===
   {
@@ -39,7 +39,7 @@ export default [
       nodeResolve(),
       commonjs({ requireReturnsDefault: "auto" }),
       terser(),
-      sizeCheck({ expect: 9, warn: 10 })
-    ]
-  }
+      sizeCheck({ expect: 9, warn: 10 }),
+    ],
+  },
 ]

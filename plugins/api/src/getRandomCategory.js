@@ -7,7 +7,7 @@ const params = {
   grnnamespace: 14,
   prop: 'revisions',
   grnlimit: 1,
-  origin: '*'
+  origin: '*',
 }
 
 function randomCategory (options = {}, http) {
