@@ -20,8 +20,13 @@ function encodeStr (str) {
   return str
 }
 
+/**
+ * 
+ * @param {object} obj - the object to encode
+ * @returns {object} the encoded object
+ */
 function encodeObj (obj = {}) {
-  let keys = Object.keys(obj)
+  const keys = Object.keys(obj)
   for (let i = 0; i < keys.length; i += 1) {
     if (specialChar.test(keys[i]) === true) {
       let str = encodeStr(keys[i])

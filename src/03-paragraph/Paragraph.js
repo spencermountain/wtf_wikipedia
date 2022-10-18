@@ -4,6 +4,7 @@ import Sentence from '../04-sentence/Sentence.js'
 import Reference from '../reference/Reference.js'
 import Link from '../link/Link.js'
 import List from '../list/List.js'
+import Image from '../image/Image.js'
 
 const toTextDefaults = {
   sentences: true,
@@ -12,6 +13,14 @@ const toTextDefaults = {
 }
 
 class Paragraph {
+  /**
+   * 
+   * @param {object} data 
+   * @param {string} data.wiki
+   * @param {Sentence[]} data.sentences
+   * @param {List[]} data.lists
+   * @param {Image[]} data.images
+   */
   constructor (data) {
     this.data = data
   }
@@ -24,6 +33,9 @@ class Paragraph {
     return this.data.sentences || []
   }
 
+
+  // TODO: should this work? 
+  // Wrongly passing
   /**
    * returns the references in this paragraph
    * @returns {Reference[]} an array of Reference objects
@@ -55,16 +67,15 @@ class Paragraph {
    * @returns {Link[]} an array of Link objects
    */
   links (clue) {
-    let arr = []
-    this.sentences().forEach((s) => {
-      arr = arr.concat(s.links(clue))
-    })
+    let arr =     this.sentences().map((s) => s.links(clue)).flat()
+    
     if (typeof clue === 'string') {
       //grab a specific link like .links('Fortnight')
       clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
       let link = arr.find((o) => o.page() === clue)
       return link === undefined ? [] : [link]
     }
+
     return arr || []
   }
 
@@ -73,10 +84,8 @@ class Paragraph {
    * @returns {Link[]} an array of Link objects
    */
   interwiki () {
-    let arr = []
-    this.sentences().forEach((s) => {
-      arr = arr.concat(s.interwiki())
-    })
+    let arr =     this.sentences().map((s) => s.interwiki()).flat()
+       
     return arr || []
   }
 
@@ -89,9 +98,11 @@ class Paragraph {
     let str = this.sentences()
       .map((s) => s.text())
       .join(' ')
+
     this.lists().forEach((list) => {
       str += '\n' + list.text()
     })
+
     return str
   }
 

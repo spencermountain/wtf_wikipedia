@@ -9,6 +9,13 @@ import parseSection from '../02-section/index.js'
 import parseCategories from './categories.js'
 import Sentence from '../04-sentence/Sentence.js'
 import Reference from '../reference/Reference.js'
+import Link from '../link/Link.js'
+import List from '../list/List.js'
+import Table from '../table/Table.js'
+import Infobox from '../infobox/Infobox.js'
+import Section from '../02-section/Section.js'
+import Paragraph from '../03-paragraph/Paragraph.js'
+import Template from '../template/Template.js'
 
 const defaults = {
   tables: true,
@@ -26,10 +33,25 @@ const defaults = {
 class Document {
   /**
    * The constructor for the document class
-   * This function starts parsing the wiki text and sets the options in the class
+   * This function starts parsing the wiki te1xt and sets the options in the class
    *
    * @param {string} [wiki] The wiki text
-   * @param {object} [DocumentOptions] The options for the parser
+   * @param {object} [options] The options for the parser
+   * @param {number} [options.pageID] The pageID of the page
+   * @param {number} [options.id] The pageID of the page
+   * @param {string} [options.namespace] The namespace of the page
+   * @param {string} [options.ns] The namespace of the page
+   * @param {string} [options.lang] The language of the page
+   * @param {string} [options.language] The language of the page
+   * @param {string} [options.domain] The domain of the page
+   * @param {string} [options.title] The title of the page
+   * @param {string} [options.wikidata] The WikidataID of the page
+   * 
+   * @param {string} [options.userAgent] the user-agent to use for http requests
+   * @param {string} [options.User-Agent ] the user-agent to use for http requests
+   * @param {string} [options.Api-User-Agent] the user-agent to use for http requests
+   * 
+   * 
    */
   constructor (wiki, options) {
     options = options || {}
@@ -41,7 +63,9 @@ class Document {
     this._type = 'page'
     this._redirectTo = null
     this._wikidata = options.wikidata || null
+
     this._wiki = wiki || ''
+    
     this._categories = []
     this._sections = []
     this._coordinates = []
@@ -79,8 +103,8 @@ class Document {
    * If it is available it returns the title.
    * Else it will look if the first sentence contains a bolded phrase and assumes that's the title and returns it
    *
-   * @param {string} [str] The title that will be set
-   * @returns {null|string} The title found or given
+   * @param {string} [str] - sets the title and returns the set title
+   * @returns {null|string|Sentence} The title found or given
    */
   title (str) {
     //use like a setter
@@ -88,10 +112,12 @@ class Document {
       this._title = str
       return str
     }
+
     //if we have it already
     if (this._title) {
       return this._title
     }
+
     //guess the title of this page from first sentence bolding
     let guess = null
     let sen = this.sentences()[0]
@@ -222,7 +248,8 @@ class Document {
    * If a clue is available return the category at that index
    * Else return all categories
    *
-   * @returns {string | string[]} The category at the provided index or all categories
+   * @param {number} [clue] The index of the category
+   * @returns {string[]} The category at the provided index or all categories
    */
   categories (clue) {
     let arr = this._categories || []
@@ -240,7 +267,7 @@ class Document {
    * Else it returns all the sections
    *
    * @param {number | string} [clue] A title of a section or a index of a wanted section
-   * @returns {object | object[]} A section or a array of sections
+   * @returns {Section[]} A section or a array of sections
    */
   sections (clue) {
     let arr = this._sections || []
@@ -266,17 +293,19 @@ class Document {
    *
    * If the clue is a number then it returns the paragraph at that index
    * Else it returns all paragraphs in an array
-   * @param {number | string} [clue] given index of a paragraph
-   * @returns {object | object[]} the selected paragraph or an array of all paragraphs
+   * 
+   * @param {number} [clue] The index of the wanted paragraph
+   * @returns {Paragraph[]} the selected paragraph or an array of all paragraphs
    */
   paragraphs (clue) {
-    let arr = []
-    this.sections().forEach((s) => {
-      arr = arr.concat(s.paragraphs())
-    })
+    let arr =     this.sections()
+      .map((s) => s.paragraphs())
+      .reduce((a, b) => a.concat(b), [])
+
     if (typeof clue === 'number') {
       return [arr[clue]]
     }
+    
     return arr
   }
 
@@ -284,25 +313,27 @@ class Document {
    * if no clue is provided, it compiles an array of sentences in the wiki text.
    * if the clue is provided it return the sentence at the provided index
    * @param {number} [clue] given index of a sentence
-   * @returns {Sentence[]|Sentence} an array of sentences or a single sentence
+   * @returns {Sentence[]} an array of sentences or a single sentence
    */
   sentences (clue) {
-    let arr = []
-    this.sections().forEach((sec) => {
-      arr = arr.concat(sec.sentences())
-    })
+    let arr = this.sections()
+      .map((sec) => sec.sentences())
+      .reduce((a, b) => a.concat(b), [])
+
     if (typeof clue === 'number') {
       return [arr[clue]]
     }
+
     return arr
   }
 
   /**
    * This function search the whole page, including the infobox and image gallery templates for images
    * and then returns them in an array if no clue is provided.
-   * if an clue is profieded then it returns the image at the clue-th index
+   * if an clue is provided then it returns the image at the clue-th index
    *
-   * @returns {Image[]|Image} a single image or an array of images
+   * @param {number} [clue] given index of an image
+   * @returns {Image[]} a single image or an array of images
    */
   images (clue) {
     let arr = sectionMap(this, 'images', null)
@@ -337,7 +368,7 @@ class Document {
    * Return all links or if a clue is provided only the link at that index
    *
    * @param {number} [clue] the index of the wanted link
-   * @returns {string[]|string} all the links or the selected link
+   * @returns {Link[]} all the links or the selected link
    */
   links (clue) {
     return sectionMap(this, 'links', clue)
@@ -347,7 +378,7 @@ class Document {
    * Return all inter wiki links or if a clue is provided only the inter wiki link at that index
    *
    * @param {number} [clue] the index of the wanted inter wiki link
-   * @returns {string[]|string} all the inter wiki links or the selected inter wiki link
+   * @returns {Link[]} all the inter wiki links or the selected inter wiki link
    */
   interwiki (clue) {
     return sectionMap(this, 'interwiki', clue)
@@ -358,7 +389,7 @@ class Document {
    * Else return all lists
    *
    * @param {number} [clue] The index of the wanted list
-   * @returns {object | object[]} The list at the provided index or all lists
+   * @returns {List[]} The list at the provided index or all lists
    */
   lists (clue) {
     return sectionMap(this, 'lists', clue)
@@ -369,7 +400,7 @@ class Document {
    * Else return all tables
    *
    * @param {number} [clue] The index of the wanted table
-   * @returns {object | object[]} The table at the provided index or all tables
+   * @returns {Table[]} The table at the provided index or all tables
    */
   tables (clue) {
     return sectionMap(this, 'tables', clue)
@@ -380,7 +411,7 @@ class Document {
    * Else return all templates
    *
    * @param {number} [clue] The index of the wanted template
-   * @returns {object | object[]} The category at the provided index or all categories
+   * @returns {Template[]} The category at the provided index or all categories
    */
   templates (clue) {
     return sectionMap(this, 'templates', clue)
@@ -391,7 +422,7 @@ class Document {
    * Else return all references
    *
    * @param {number} [clue] The index of the wanted references
-   * @returns {Reference | Reference[]} The category at the provided index or all references
+   * @returns {Reference[]} The category at the provided index or all references
    */
   references (clue) {
     return sectionMap(this, 'references', clue)
@@ -401,7 +432,7 @@ class Document {
    * Returns the 0th or clue-th reference
    *
    * @param {number} [clue] The index of the wanted reference
-   * @returns {object|string|number} The reference at the provided index
+   * @returns {Reference[]} The reference at the provided index
    */
   citations (clue) {
     return this.references(clue)
@@ -424,16 +455,16 @@ class Document {
    * It always sorts the infoboxes by size
    *
    * @param {number} [clue] the index of the infobox you want to select
-   * @returns {object | object[]} the selected infobox or an array of infoboxes
+   * @returns {Infobox[]} an array of infoboxes or a single infobox in an array
    */
   infoboxes (clue) {
     let arr = sectionMap(this, 'infoboxes', clue)
     //sort them by biggest-first
     arr = arr.sort((a, b) => {
       if (Object.keys(a.data).length > Object.keys(b.data).length) {
-        return -1
+        return 1
       }
-      return 1
+      return -1
     })
 
     return arr

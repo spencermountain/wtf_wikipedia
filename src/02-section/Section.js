@@ -10,6 +10,7 @@ import parseParagraphs from '../03-paragraph/index.js'
 import parseTemplates from '../template/index.js'
 import parseReferences from '../reference/index.js'
 import parseStartEndTemplates from './start-to-end/index.js'
+import Sentence from '../04-sentence/Sentence.js'
 
 const defaults = {
   tables: true,
@@ -55,6 +56,7 @@ class Section {
 
     //parse-out the <ref></ref> tags
     parseReferences(this)
+    
     //parse-out all {{templates}}
     parseTemplates(this, doc)
 
@@ -112,14 +114,13 @@ class Section {
 
   /**
    * returns all sentences in the section
-   * if an clue is provided then it returns the sentence at clue-th index
    *
-   * @returns {object | object[]} all sentences in an array or the clue-th sentence
+   * @returns {Sentence[]} all sentences in an array
    */
   sentences () {
-    return this.paragraphs().reduce((list, p) => {
-      return list.concat(p.sentences())
-    }, [])
+    return this.paragraphs()
+      .map((p) => p.sentences())
+      .reduce((acc, val) => acc.concat(val), [])
   }
 
   /**

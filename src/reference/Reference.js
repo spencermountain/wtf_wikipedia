@@ -1,7 +1,18 @@
+import Link from '../link/Link.js'
 import encodeObj from '../_lib/encode.js'
 
 //also called 'citations'
 class Reference {
+  /**
+   * 
+   * @param {object} data 
+   * @param {string} data.type
+   * @param {string} data.template
+   * @param {object} data.data
+   * @param {string} data.inline
+   * 
+   * @param {string} wiki 
+   */
   constructor (data, wiki) {
     this.data = data
     this.wiki = wiki
@@ -17,23 +28,25 @@ class Reference {
 
   /**
    *
-   * @param {number | string} [n]
-   * @returns {}
+   * @param {number | string} [clue]
+   * @returns {Link | Link[]}
    */
-  links (n) {
+  links (clue) {
     let arr = []
-    if (typeof n === 'number') {
-      return arr[n]
+    if (typeof clue === 'number') {
+      return arr[clue]
     }
+
     //grab a specific link..
-    if (typeof n === 'number') {
-      return arr[n]
-    } else if (typeof n === 'string') {
+    if (typeof clue === 'number') {
+      return arr[clue]
+    } else if (typeof clue === 'string') {
       //grab a link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = arr.find((o) => o.page() === n)
+      clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
+      let link = arr.find((o) => o.page() === clue)
       return link === undefined ? [] : [link]
     }
+
     return arr || []
   }
 

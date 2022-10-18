@@ -1,3 +1,5 @@
+import Document from './Document.js'
+
 /**
  * helper for looping around all sections of a document
  *
@@ -5,21 +7,16 @@
  * @param {Document} doc the document with the sections
  * @param {string} fn the function name of the function that will be called
  * @param {string | number} [clue] the clue that will be used with the function
- * @returns {Array|*} the array of item at the index of the clue
+ * @returns {Array<*>} the array of item at the index of the clue
  */
 function sectionMap (doc, fn, clue) {
-  let arr = []
-  doc.sections().forEach((sec) => {
-    let list = []
-    if (typeof clue === 'string') {
-      list = sec[fn](clue)
-    } else {
-      list = sec[fn]()
+  let arr = doc.sections().map((s) => {
+    if(typeof clue === 'string') {
+      return s[fn](clue)
     }
-    list.forEach((t) => {
-      arr.push(t)
-    })
-  })
+    return s[fn]()
+  }).flat()
+
   if (typeof clue === 'number') {
     if (arr[clue] === undefined) {
       return []

@@ -6,7 +6,7 @@ import version from './_version.js'
  * the main 'factory' exported method
  *
  * @param {string} [wiki]
- * @param {DocumentOptions} [options] options for parsing the wiki text
+ * @param {object} [options] options for parsing the wiki text
  * @returns {Document} a parsed document
  */
 function wtf (wiki, options) {

@@ -2,7 +2,7 @@
  * factory for header options
  *
  * @private
- * @param {fetchOptions} options
+ * @param {object} options
  * @returns {object} the generated options
  */
 function makeHeaders (options) {

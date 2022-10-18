@@ -1,3 +1,5 @@
+import Sentence from '../04-sentence/Sentence.js'
+import Link from '../link/Link.js'
 import toJson from './toJson.js'
 const server = 'wikipedia.org'
 
@@ -8,8 +10,10 @@ const server = 'wikipedia.org'
  */
 function encodeTitle (file) {
   let title = file.replace(/^(image|file?):/i, '')
+
   //titlecase it
   title = title.charAt(0).toUpperCase() + title.substring(1)
+
   //spaces to underscores
   title = title.trim().replace(/ /g, '_')
   return title
@@ -30,6 +34,16 @@ function makeSrc (file) {
 
 //the class for our image generation functions
 class Image {
+  /**
+   * 
+   * @param {object} data 
+   * @param {string} data.file
+   * @param {string} data.lang
+   * @param {string} data.domain
+   * @param {string} data.wiki
+   * @param {string} data.alt
+   * @param {Sentence} data.caption
+   */
   constructor (data) {
     this.data = data
   }
@@ -55,6 +69,10 @@ class Image {
     return file
   }
 
+  /**
+   * 
+   * @returns {string} the alt text of the image
+   */
   alt () {
     let str = this.data.alt || this.data.file || ''
     str = str.replace(/^(file|image):/i, '')
@@ -75,7 +93,7 @@ class Image {
 
   /**
    *
-   * @returns
+   * @returns {Link[]} links in the caption
    */
   links () {
     if (this.data.caption) {
@@ -121,7 +139,7 @@ class Image {
   /**
    *
    * @param {object} [options]
-   * @returns
+   * @returns {object} the image as json
    */
   json (options) {
     options = options || {}
@@ -143,9 +161,25 @@ class Image {
   wikitext () {
     return this.data.wiki || ''
   }
-}
 
-Image.prototype.src = Image.prototype.url
-Image.prototype.thumb = Image.prototype.thumbnail
+  // aliases
+
+  /**
+   *
+   * @returns {string} the url of the image
+   */
+  src () {
+    return this.url()
+  }
+
+  /**
+   *
+   * @param {number} [size] the size of the desired thumbnail
+   * @returns {string} the url of the thumbnail
+   */
+  thumb (size) {
+    return this.thumbnail(size)
+  }
+}
 
 export default Image

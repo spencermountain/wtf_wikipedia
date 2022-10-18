@@ -18,7 +18,7 @@ const defaults = {
  * convert a section to a json object
  *
  * @param {Section} section the section to be put to json
- * @param {SectionJSONOptions} options the options to pass to toJSON
+ * @param {object} options the options to pass to toJSON
  * @returns {object} a json object
  */
 function toJSON (section, options) {

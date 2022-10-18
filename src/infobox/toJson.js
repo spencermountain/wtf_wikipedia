@@ -8,9 +8,9 @@ import encodeObj from '../_lib/encode.js'
  * @returns {object}
  */
 function toJson (infobox, options) {
-  let json = Object.keys(infobox.data).reduce((h, k) => {
-    if (infobox.data[k]) {
-      h[k] = infobox.data[k].json()
+  let json = Object.keys(infobox._data).reduce((h, k) => {
+    if (infobox._data[k]) {
+      h[k] = infobox._data[k].json()
     }
     return h
   }, {})

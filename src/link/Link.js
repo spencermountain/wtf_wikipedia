@@ -4,7 +4,22 @@ const defaults = {
   type: 'internal',
 }
 
+/**
+ * A link to another page on the wiki
+ * 
+ * @class Link
+ * @classdesc A link to another page
+ */
 class Link {
+  /**
+   * 
+   * @param {Object} [data] - The link data
+   * @param {string} [data.type] - The type of link
+   * @param {string} [data.page] - The page name
+   * @param {string} [data.text] - The link text
+   * @param {string} [data.anchor] - The anchor text
+   * @param {string} [data.raw] - The raw link text
+   */
   constructor (data) {
     data = data || {}
     data = Object.assign({}, defaults, data)

@@ -1,6 +1,12 @@
 import { fromText } from '../04-sentence/index.js'
 
 class Template {
+  /**
+   * 
+   * @param {object} data 
+   * @param {string} [text] 
+   * @param {string} [wiki] 
+   */
   constructor (data, text = '', wiki = '') {
     this.data = data
     this._text = text
@@ -17,7 +23,7 @@ class Template {
   }
   /**
    *
-   * @returns {string} the data of the template in json format
+   * @returns {object} the data of the template in json format
    */
   json () {
     return this.data || {}

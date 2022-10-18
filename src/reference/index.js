@@ -1,6 +1,7 @@
 import parse from '../template/parse/toJSON/index.js'
 import { fromText as parseSentence } from '../04-sentence/index.js'
 import Reference from './Reference.js'
+import Section from '../02-section/Section.js'
 
 //structured Cite templates - <ref>{{Cite..</ref>
 function hasCitation (str) {
@@ -26,6 +27,12 @@ function parseInline (str) {
 }
 
 //parse <ref></ref> xml tags
+/**
+ * 
+ * @param {Section} section 
+ * @returns {void}
+ * 
+ */
 function parseRefs (section) {
   let references = []
   let wiki = section._wiki
