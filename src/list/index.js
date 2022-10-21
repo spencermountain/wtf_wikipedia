@@ -1,7 +1,6 @@
 import List from './List.js'
 import { fromText as parseSentence } from '../04-sentence/index.js'
 import Sentence from '../04-sentence/Sentence.js'
-import Paragraph from '../03-paragraph/Paragraph.js'
 import Image from '../image/Image.js'
 
 const list_reg = /^[#*:;|]+/

@@ -75,6 +75,7 @@ function parseRow (row) {
   if (!row) {
     return null
   }
+
   let team = parseTeam(row.opponent || row.Opponent)
   let record = parseRecord(row.record || row.Record)
   let obj = {
@@ -86,6 +87,7 @@ function parseRow (row) {
     record: record,
     attendance: parseAttendance(row.attendance || row.Attendance || row['location (attendance)'] || row['Location (Attendance)']),
   }
+  
   return obj
 }
 export default parseRow

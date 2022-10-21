@@ -12,7 +12,7 @@ import Document from '../01-document/Document.js'
  * @param {Section} section
  * @param {Document} doc
  */
-function parseParagraphs(section, doc) {
+function parseParagraphs (section, doc) {
   let wiki = section._wiki
   let paragraphs = wiki
     .split(twoNewLines)

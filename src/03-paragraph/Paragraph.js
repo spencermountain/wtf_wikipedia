@@ -67,7 +67,7 @@ class Paragraph {
    * @returns {Link[]} an array of Link objects
    */
   links (clue) {
-    let arr =     this.sentences().map((s) => s.links(clue)).flat()
+    let arr = this.sentences().map((s) => s.links(clue)).flat()
     
     if (typeof clue === 'string') {
       //grab a specific link like .links('Fortnight')
@@ -84,7 +84,7 @@ class Paragraph {
    * @returns {Link[]} an array of Link objects
    */
   interwiki () {
-    let arr =     this.sentences().map((s) => s.interwiki()).flat()
+    let arr = this.sentences().map((s) => s.interwiki()).flat()
        
     return arr || []
   }

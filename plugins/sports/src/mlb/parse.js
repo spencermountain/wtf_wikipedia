@@ -50,6 +50,7 @@ function parsePage (doc) {
   if (!doc) {
     return {}
   }
+
   let res = parseTitle(doc.title() || '')
   res.games = _season(doc)
   res.postseason = postseason(doc)
@@ -60,4 +61,5 @@ function parsePage (doc) {
   res.playerStats = playerStats(doc)
   return res
 }
+
 export default parsePage

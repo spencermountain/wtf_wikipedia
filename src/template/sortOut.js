@@ -11,7 +11,15 @@ const referenceTypes = {
 }
 
 // split Infoboxes from templates and references
-function sortOut(list, domain) {
+function sortOut (list, domain) {
+  /**
+   * @type {{
+   * infoboxes: Infobox[],
+   * templates: Template[],
+   * references: Reference[]
+   * }}
+   * 
+   */
   let res = {
     infoboxes: [],
     templates: [],

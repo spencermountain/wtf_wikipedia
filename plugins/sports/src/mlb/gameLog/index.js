@@ -7,13 +7,16 @@ function isArray (arr) {
 
 function doTable (rows = []) {
   let games = []
+
   //is it a legend/junk table?
   if ((rows[1] && rows[1].Legend) || !isArray(rows)) {
     return games
   }
+
   rows.forEach((row) => {
     games.push(parseGame(row))
   })
+
   //remove empty weird ones
   games = games.filter((g) => g.team && g.date) //&& g.result.winner !== undefined
   return games
@@ -25,6 +28,7 @@ function doSection (section) {
   section.children().forEach((s) => {
     tables = tables.concat(s.tables())
   })
+
   //try to find a game log template
   if (tables.length === 0) {
     tables = section.templates('mlb game log section') || section.templates('mlb game log month')
@@ -32,6 +36,7 @@ function doSection (section) {
   } else {
     tables = tables.map((t) => t.keyValue())
   }
+
   return tables
 }
 
@@ -46,15 +51,18 @@ function gameLog (doc) {
     doc.section('season') ||
     doc.section('schedule') ||
     doc.section('schedule and results')
+
   if (!section) {
     console.warn("no game log section for: '" + doc.title() + "'")
     return games
   }
+
   let tables = doSection(section)
   tables.forEach((table) => {
     let arr = doTable(table.data)
     games = games.concat(arr)
   })
+
   games = addWinner(games)
   return games
 }
