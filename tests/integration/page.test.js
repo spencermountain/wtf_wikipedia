@@ -75,7 +75,7 @@ test('raith rovers', (t) => {
   t.equal(
     doc.image(1).url(),
     `https://wikipedia.org/wiki/Special:Redirect/file/Stark's_Park_-_geograph.org.uk_-_204446.jpg`,
-    'image-url'
+    'image-url',
   )
   t.end()
 })

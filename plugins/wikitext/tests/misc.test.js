@@ -20,7 +20,7 @@ test('basic-wikitext', (t) => {
     `{{Infobox award
 | name           = Outstanding Achievement in Short Film Screen Craft
 | website        = http://www.aacta.org
-}}`
+}}`,
   ]
   arr.forEach((str) => {
     let doc = wtf(str)

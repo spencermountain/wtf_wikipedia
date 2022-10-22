@@ -53,7 +53,7 @@ test('sentences - get', (t) => {
   t.deepEqual(
     sec.sentences().map((s) => s.text().length),
     expected,
-    'the index should equal the expected'
+    'the index should equal the expected',
   )
   t.end()
 })
@@ -73,7 +73,7 @@ test('paragraphs - get', (t) => {
   t.deepEqual(
     sec.paragraphs().map((s) => s.text().length),
     expected,
-    'the paragraphs should equal the expected'
+    'the paragraphs should equal the expected',
   )
   t.end()
 })
@@ -108,7 +108,7 @@ test('links - get', (t) => {
   t.deepEqual(
     sec.links().map((l) => l.href().length),
     expected,
-    'the links should equal the expected'
+    'the links should equal the expected',
   )
   t.end()
 })
@@ -135,7 +135,7 @@ test('tables - get', (t) => {
   t.deepEqual(
     sec.tables().map((s) => s.keyValue().length),
     expected,
-    'the tables should equal the expected'
+    'the tables should equal the expected',
   )
   t.end()
 })
@@ -155,7 +155,7 @@ test('templates - get', (t) => {
   t.deepEqual(
     sec.templates().map((s) => JSON.stringify(s.json()).length),
     expected,
-    'the templates should equal the expected'
+    'the templates should equal the expected',
   )
   t.end()
 })
@@ -182,7 +182,7 @@ test('infoboxes - get', (t) => {
   t.deepEqual(
     sec.infoboxes().map((s) => JSON.stringify(s).length),
     expected,
-    'the infoboxes should equal the expected'
+    'the infoboxes should equal the expected',
   )
   t.end()
 })
@@ -202,7 +202,7 @@ test('coordinates - get', (t) => {
   t.deepEqual(
     sec.coordinates().map((s) => JSON.stringify(s).length),
     expected,
-    'the coordinates should equal the expected'
+    'the coordinates should equal the expected',
   )
   t.end()
 })
@@ -222,7 +222,7 @@ test('lists - get', (t) => {
   t.deepEqual(
     sec.lists().map((s) => JSON.stringify(s.lines()).length),
     expected,
-    'the lists should equal the expected'
+    'the lists should equal the expected',
   )
   t.end()
 })
@@ -244,7 +244,7 @@ test('images - get', (t) => {
   t.deepEqual(
     sec.images().map((s) => s.url().length),
     expected,
-    'the images should equal the expected'
+    'the images should equal the expected',
   )
   t.end()
 })
@@ -263,7 +263,7 @@ test('images - get', (t) => {
   t.deepEqual(
     sec.images().map((s) => s.url().length),
     expected,
-    'the images should equal the expected'
+    'the images should equal the expected',
   )
   t.end()
 })
@@ -279,7 +279,7 @@ test('references - get', (t) => {
       .map((s) => s.title().length)
       .join(','),
     expected,
-    'the references should equal the expected'
+    'the references should equal the expected',
   )
   t.end()
 })
@@ -302,7 +302,7 @@ test('references - get', (t) => {
       .map((s) => s.title().length)
       .join(','),
     expected,
-    'the citations should equal the expected'
+    'the citations should equal the expected',
   )
   t.end()
 })

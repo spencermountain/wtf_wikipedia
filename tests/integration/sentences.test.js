@@ -31,7 +31,7 @@ test('tough sentence punctuation', function (t) {
     t.equal(
       doc.sentence().text(),
       'he is credited as Mr. Lawrence and sometimes Doug Lawrence.',
-      'tough-sentence #' + i
+      'tough-sentence #' + i,
     )
   })
   t.end()

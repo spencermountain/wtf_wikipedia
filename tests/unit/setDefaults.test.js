@@ -7,7 +7,7 @@ test('should apply default', (t) => {
 
   t.deepEqual(
     setDefaults(options, defaults),
-    { a: 1, b: 2 }
+    { a: 1, b: 2 },
   )
 
   t.end()
@@ -19,7 +19,7 @@ test('should not overwrite options', (t) => {
 
   t.deepEqual(
     setDefaults(options, defaults),
-    { a: 2, b: 3 }
+    { a: 2, b: 3 },
   )
 
   t.end()
@@ -31,7 +31,7 @@ test('should mix options with defaults', (t) => {
 
   t.deepEqual(
     setDefaults(options, defaults),
-    { a: 2, b: 3, c: 3 }
+    { a: 2, b: 3, c: 3 },
   )
 
   t.end()

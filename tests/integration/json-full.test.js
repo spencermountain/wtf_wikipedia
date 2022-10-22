@@ -705,7 +705,7 @@ test('plurals / singular - all should exist', (t) => {
       t.deepEqual(
         JSON.stringify(result),
         JSON.stringify(testCase.expected),
-        'expect doc.' + fn + '(' + testCase.clue + ') to equal ' + testCase.expected
+        'expect doc.' + fn + '(' + testCase.clue + ') to equal ' + testCase.expected,
       )
     })
   })

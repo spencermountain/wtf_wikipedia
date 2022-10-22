@@ -11,14 +11,14 @@ test('mainImage', function (t) {
     ['toronto', 'https://wikipedia.org/wiki/Special:Redirect/file/Montage_of_Toronto_7.jpg'],
     [
       'United-Kingdom',
-      'https://wikipedia.org/wiki/Special:Redirect/file/Flag_of_the_United_Kingdom.svg'
+      'https://wikipedia.org/wiki/Special:Redirect/file/Flag_of_the_United_Kingdom.svg',
     ],
     ['Allen-R.-Morris', 'https://wikipedia.org/wiki/Special:Redirect/file/AllenMorrisHeadShot.jpg'],
     [
       'Arts_Club_of_Chicago',
-      'https://wikipedia.org/wiki/Special:Redirect/file/20070701_Arts_Club_of_Chicago.JPG'
+      'https://wikipedia.org/wiki/Special:Redirect/file/20070701_Arts_Club_of_Chicago.JPG',
     ],
-    ['Britt-Morgan', 'https://wikipedia.org/wiki/Special:Redirect/file/Britt_Morgan.jpg']
+    ['Britt-Morgan', 'https://wikipedia.org/wiki/Special:Redirect/file/Britt_Morgan.jpg'],
     // ['', '']
   ]
   arr.forEach((a) => {
@@ -35,7 +35,7 @@ test('image-methods', function (t) {
   wtf
     .fetch('casa', {
       lang: 'it',
-      wiki: `wiktionary`
+      wiki: `wiktionary`,
     })
     .then(function (doc) {
       let img = doc.image(0)

@@ -388,7 +388,7 @@ test('sections - get - if the clue is a undefined / unset return the list of cat
   t.deepEqual(
     doc.sections().map((s) => s.text().length),
     expected,
-    'the sections in the wiki text'
+    'the sections in the wiki text',
   )
   t.end()
 })
@@ -434,7 +434,7 @@ test('paragraphs - get - if the clue is a undefined / unset return the list of p
   t.deepEqual(
     doc.paragraphs().map((p) => p.text().length),
     expected,
-    'the paragraphs in the wiki text'
+    'the paragraphs in the wiki text',
   )
   t.end()
 })
@@ -454,7 +454,7 @@ test('paragraphs - get - if the clue is a string (not number) return all the par
   t.deepEqual(
     doc.paragraphs('string').map((p) => p.text().length),
     expected,
-    'the paragraphs in the wiki text'
+    'the paragraphs in the wiki text',
   )
   t.end()
 })
@@ -505,7 +505,7 @@ test('sentences - get - if the clue is a undefined / unset return the list of se
       .map((p) => p.text().length)
       .join(','),
     expected,
-    'the sentences in the wiki text'
+    'the sentences in the wiki text',
   )
   t.end()
 })
@@ -528,7 +528,7 @@ test('sentences - get - if the clue is a string (not number) return all the sent
       .map((p) => p.text().length)
       .join(','),
     expected,
-    'the sentences in the wiki text'
+    'the sentences in the wiki text',
   )
   t.end()
 })
@@ -560,7 +560,7 @@ test('images - get - if the clue is a undefined / unset return the list of image
   t.deepEqual(
     doc.images().map((p) => p.url().length),
     expected,
-    'the images in the wiki text'
+    'the images in the wiki text',
   )
   t.end()
 })
@@ -579,7 +579,7 @@ test('images - get - if the clue is a string (not number) return all the images'
   t.deepEqual(
     doc.images('string').map((p) => p.url().length),
     expected,
-    'the images in the wiki text'
+    'the images in the wiki text',
   )
   t.end()
 })
@@ -591,7 +591,7 @@ test('images - get - also get images from galeries', (t) => {
   t.deepEqual(
     doc.images('string').map((p) => p.url().length),
     expected,
-    'the images in the wiki text'
+    'the images in the wiki text',
   )
   t.end()
 })
@@ -612,7 +612,7 @@ test('links - get - return all links on the page', (t) => {
   t.deepEqual(
     doc.links().map((l) => JSON.stringify(l.json()).length),
     expected,
-    'returns all links'
+    'returns all links',
   )
   t.end()
 })
@@ -630,7 +630,7 @@ test('links - get - if the clue is a string return the link with that content', 
   t.deepEqual(
     JSON.stringify(doc.links('Jace Rocker')[0].json()).length,
     40,
-    "the link at index the content 'Jace Rocker'"
+    "the link at index the content 'Jace Rocker'",
   )
   t.end()
 })
@@ -642,7 +642,7 @@ test('links - get - if the clue is any other type then return all links', (t) =>
   t.deepEqual(
     doc.links([]).map((l) => JSON.stringify(l.json()).length),
     expected,
-    'returns all links'
+    'returns all links',
   )
   t.end()
 })
@@ -655,7 +655,7 @@ test('interwiki - get - return all interwiki on the page', (t) => {
   t.deepEqual(
     doc.interwiki().map((l) => JSON.stringify(l.json()).length),
     expected,
-    'returns all interwiki'
+    'returns all interwiki',
   )
   t.end()
 })
@@ -674,7 +674,7 @@ test('interwiki - get - if the clue is any other type then return all interwiki'
   t.deepEqual(
     doc.interwiki([]).map((l) => JSON.stringify(l.json()).length),
     expected,
-    'returns all interwiki'
+    'returns all interwiki',
   )
   t.end()
 })
@@ -687,7 +687,7 @@ test('lists - get - return all lists on the page', (t) => {
   t.deepEqual(
     doc.lists().map((l) => JSON.stringify(l.json()).length),
     expected,
-    'returns all lists'
+    'returns all lists',
   )
   t.end()
 })
@@ -706,7 +706,7 @@ test('lists - get - if the clue is any other type then return all lists', (t) =>
   t.deepEqual(
     doc.lists('string').map((l) => JSON.stringify(l.json()).length),
     expected,
-    'returns all lists'
+    'returns all lists',
   )
   t.end()
 })
@@ -750,7 +750,7 @@ test('templates - get - return all templates', (t) => {
   t.deepEqual(
     doc.templates().map((te) => te.json().template.length),
     expected,
-    'returns all templates'
+    'returns all templates',
   )
   t.end()
 })
@@ -770,7 +770,7 @@ test('templates - get - if the clue is any other type then return all templates'
   t.deepEqual(
     doc.templates().map((te) => te.json().template.length),
     expected,
-    'returns all templates'
+    'returns all templates',
   )
   t.end()
 })
@@ -786,7 +786,7 @@ test('references - get - return all templates', (t) => {
       .map((r) => r.title().length)
       .join(','),
     expected,
-    'returns all references'
+    'returns all references',
   )
   t.end()
 })
@@ -808,7 +808,7 @@ test('references - get - if the clue is any other type then return all reference
       .map((re) => re.title().length)
       .join(','),
     expected,
-    'returns all references'
+    'returns all references',
   )
   t.end()
 })
@@ -824,7 +824,7 @@ test('citations - get - return all templates', (t) => {
       .map((c) => c.title().length)
       .join(','),
     expected,
-    'returns all citations'
+    'returns all citations',
   )
   t.end()
 })
@@ -846,7 +846,7 @@ test('citations - get - if the clue is any other type then return all references
       .map((ci) => ci.title().length)
       .join(','),
     expected,
-    'returns all citations'
+    'returns all citations',
   )
   t.end()
 })
@@ -946,7 +946,7 @@ test('infoboxes - get - return all templates', (t) => {
   t.deepEqual(
     doc.infoboxes().map((i) => JSON.stringify(i.json()).length),
     expected,
-    'returns all templates in the infobox'
+    'returns all templates in the infobox',
   )
   t.end()
 })
@@ -963,7 +963,7 @@ test('infoboxes - get - if the clue is any other type then return all references
   t.deepEqual(
     doc.infoboxes('string').map((info) => JSON.stringify(info.json()).length),
     expected,
-    'returns all infoboxes'
+    'returns all infoboxes',
   )
   t.end()
 })

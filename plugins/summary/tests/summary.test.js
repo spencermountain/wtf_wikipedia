@@ -33,7 +33,7 @@ test('first-sentence cleanup summary', (t) => {
     //   'a private, members-only yacht club'
     // ],
     [`she cleaned teeth very well [[Category:Female Orthadontists]] `, 'A female orthadontist'],
-    [`he flipped around [[Category: Acrobats]][[Category: Living People]] `, 'An acrobat']
+    [`he flipped around [[Category: Acrobats]][[Category: Living People]] `, 'An acrobat'],
   ]
   arr.forEach((a, i) => {
     let str = wtf(a[0]).summary()

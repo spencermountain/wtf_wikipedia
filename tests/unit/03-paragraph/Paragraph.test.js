@@ -58,7 +58,7 @@ a list:
 * this is a list
 * with two items
 * and a third
-    `
+    `,
   )
 
   const arr = doc.paragraphs()[1].lists().map((s) => s.json())
@@ -79,11 +79,11 @@ test('images - should return all images', (t) => {
     `
 
 this is a image of the ferret [[File:ferret.jpg|thumb|300px|a ferret]]
-    `
+    `,
   )
 
   t.deepEqual(doc.paragraphs()[1].images().map((s) => s.json()), [
-    { file: 'File:ferret.jpg', thumb: 'https://wikipedia.org/wiki/Special:Redirect/file/Ferret.jpg?width=300', url: 'https://wikipedia.org/wiki/Special:Redirect/file/Ferret.jpg', caption: 'a ferret', links: [] }
+    { file: 'File:ferret.jpg', thumb: 'https://wikipedia.org/wiki/Special:Redirect/file/Ferret.jpg?width=300', url: 'https://wikipedia.org/wiki/Special:Redirect/file/Ferret.jpg', caption: 'a ferret', links: [] },
   ], 'found 1 image')
   t.end()
 })
@@ -103,11 +103,11 @@ test('links - should return all links', (t) => {
     `
 
 this is a link to [[wikipedia]]
-`
+`,
   )
 
   t.deepEqual(doc.paragraphs()[1].links().map((s) => s.json()), [
-    { text: 'wikipedia', type: 'internal', page: 'wikipedia' }
+    { text: 'wikipedia', type: 'internal', page: 'wikipedia' },
   ], 'found 1 link')
   t.end()
 })
@@ -126,11 +126,11 @@ test('interwiki - should return all interwiki', (t) => {
     `
 
 this is a link to [[fr:wikipedia]]
-`
+`,
   )
 
   t.deepEqual(doc.paragraphs()[1].interwiki().map((s) => s.json()), [
-    { text: 'wikipedia', type: 'interwiki', wiki: 'fr' }
+    { text: 'wikipedia', type: 'interwiki', wiki: 'fr' },
   ], 'found 1 interwiki')
   t.end()
 })
@@ -153,8 +153,8 @@ test('json - should return all json', (t) => {
       { text: 'world.' },
       { text: 'this is a test.' },
       { text: 'this is another sentence.' },
-      { text: 'and one final one.' }
-    ]
+      { text: 'and one final one.' },
+    ],
   }, 'found all json')
   t.end()
 })

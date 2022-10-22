@@ -4,7 +4,7 @@ import wtf from '../_lib.js'
 // TODO: Cannot Pass
 test.skip('Washington Nationals 2017', (t) => {
   wtf.nhlSeason('Toronto Maple Leafs', 2017).then((res) => {
-    var data = res.games
+    let data = res.games
     t.notEqual(data[0].date, null, 'has game-0-date')
     // t.equal(data.length, 170, 'has 162 games') //+ rain outs?
     t.ok(data.length > 70, 'has atleast 70 games') //+ rain outs?

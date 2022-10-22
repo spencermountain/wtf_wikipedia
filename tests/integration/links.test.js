@@ -26,17 +26,17 @@ after now
   t.ok(
     links.find((l) => l.text()),
     'movie',
-    'link-text'
+    'link-text',
   )
   t.ok(
     links.find((l) => l.page()),
     'Minnesota Twins',
-    'link-table'
+    'link-table',
   )
   t.ok(
     links.find((l) => l.page()),
     'three',
-    'link-list'
+    'link-list',
   )
   t.end()
 })
