@@ -28,7 +28,7 @@ class Table {
 
   /**
    * 
-   * @param {string} clue 
+   * @param {string} [clue] 
    * @returns {Link[]}
    */
   links (clue) {

@@ -11,6 +11,7 @@ import parseTemplates from '../template/index.js'
 import parseReferences from '../reference/index.js'
 import parseStartEndTemplates from './start-to-end/index.js'
 import Sentence from '../04-sentence/Sentence.js'
+import {singularFactoryWithNumber as singularFactory} from '../_lib/singularFactory.js'
 
 const defaults = {
   tables: true,
@@ -138,7 +139,7 @@ class Section {
    * if an clue is provided and it is a string then it returns the link at the that content
    *
    * @param {number| string} [clue] the clue for selecting the link
-   * @returns {object | object[]} all links in an array or the clue-th link or the link with the content of clue
+   * @returns {Link[]} all links in an array or the clue-th link or the link with the content of clue
    */
   links (clue) {
     let arr = []
@@ -205,7 +206,7 @@ class Section {
    * if an clue is provided then it returns the infobox at clue-th index
    *
    * @param {number|string} [clue] the clue for selecting the infobox
-   * @returns {object | object[]} all infoboxes in an array or the clue-th infobox
+   * @returns {object[]} all infoboxes in an array or the clue-th infobox
    */
   infoboxes (clue) {
     let arr = this._infoboxes || []
@@ -506,23 +507,6 @@ class Section {
 Section.prototype.citations = Section.prototype.references
 
 // aliases
-
-/**
- * this function crates a function that calls the plural version of the method
- *
- * @param {string} plural the plural of the word
- * @returns {function} a Function that calls the plural version of the method
- */
-function singularFactory (plural) {
-  return function (clue) {
-    let arr = this[plural](clue)
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
-    return arr[0] || null
-  }
-}
-
 Section.prototype.sentence = singularFactory('sentences')
 Section.prototype.paragraph = singularFactory('paragraphs')
 Section.prototype.link = singularFactory('links')

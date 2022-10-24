@@ -54,26 +54,26 @@ declare class Section {
     citations: () => object | object[]
     coordinates(): object | object[]
     depth(): number
-    images(): Image | Image[]
+    images(): Image[]
     indentation(): number
     index(): number | null
-    infoboxes(clue?: string | number): object | object[]
-    interwiki(): object | object[]
+    infoboxes(clue?: string | number): object[]
+    interwiki(): Link[]
     json(options: object): object
     last(): Section | null
     lastSibling(): Section | null
-    links(clue?: string | number): object | object[]
-    lists(): object | object[]
+    links(clue?: string | number): Link[]
+    lists(): List[]
     next(): Section | null
     nextSibling(): Section | null
-    paragraphs(): object | object[]
+    paragraphs(): Paragraph[]
     parent(): Section | null
     previous(): Section | null
     previousSibling(): Section | null
     references(): object | object[]
     remove(): null | Document
     sections(clue?: string | number): Section | Section[] | null
-    sentences(): object | object[]
+    sentences(): Sentence[]
     tables(): object | object[]
     templates(clue?: string | number): object | object[]
     text(options: object): string
@@ -83,7 +83,7 @@ declare class Section {
 
 declare class Infobox {
     data: () => object
-    get(keys: string | string[]): Sentence | undefined | unknown
+    get(keys: string | string[]): Sentence | Sentence[]
     image(): Image | null
     images: () => Image | null
     json(options?: object): object
@@ -91,7 +91,7 @@ declare class Infobox {
     links(clue?: string): Link[]
     template: () => string
     text(): string
-    type(): string
+    type(): string | undefined
     wikitext(): string
 }
 
@@ -114,7 +114,7 @@ declare class Table {
 
 declare class Reference {
     json(options?: object): object
-    links(n?: string | number): Link[]
+    links(n?: string | number): Link | Link[]
     text(): string
     title(): string
     wikitext(): string
@@ -128,7 +128,7 @@ declare class Paragraph {
     lists(): List[]
     references(): Reference[]
     sentences(): Sentence[]
-    text(options?: object): string
+    text(): string
     wikitext(): string
 }
 
@@ -148,20 +148,20 @@ declare class Image {
 }
 
 declare class Link {
-    text(): string;
-    json(): object;
-    wikitext(): string;
-    page(str?: string): string;
     anchor(str?: string): string;
-    wiki(str?: string): string | undefined;
-    type(str?: string): string;
-    site(str?: string): string;
     href(): string;
+    json(): object;
+    page(str?: string): string;
+    site(str?: string): string;
+    text(str?: string): string;
+    type(str?: string): string;
+    wiki(str?: string): string | undefined;
+    wikitext(): string;
 }
 
 declare class List {
     json(options?: object): object
-    lines(): object[]
+    lines(): Sentence[]
     links(clue: string): Link[]
     text(): string
     wikitext(): string

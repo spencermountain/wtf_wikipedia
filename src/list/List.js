@@ -29,6 +29,10 @@ class List {
     this.wiki = wiki
   }
 
+  /**
+   * 
+   * @returns {Sentence[]}
+   */
   lines () {
     return this.data
   }

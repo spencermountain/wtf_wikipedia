@@ -5,6 +5,7 @@ import Reference from '../reference/Reference.js'
 import Link from '../link/Link.js'
 import List from '../list/List.js'
 import Image from '../image/Image.js'
+import {singularFactoryWithNumber as singularFactory} from '../_lib/singularFactory.js'
 
 const toTextDefaults = {
   sentences: true,
@@ -128,23 +129,6 @@ class Paragraph {
 Paragraph.prototype.citations = Paragraph.prototype.references
 
 // aliases
-
-/**
- * this function crates a function that calls the plural version of the method
- *
- * @param {string} plural the plural of the word
- * @returns {function} a Function that calls the plural version of the method
- */
-function singularFactory (plural) {
-  return function (clue) {
-    let arr = this[plural](clue)
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
-    return arr[0]
-  }
-}
-
 Paragraph.prototype.sentence = singularFactory('sentences')
 Paragraph.prototype.reference = singularFactory('references')
 Paragraph.prototype.citation = singularFactory('citations')

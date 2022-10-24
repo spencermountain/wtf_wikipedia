@@ -29,7 +29,7 @@ class Link {
   /**
    * getter and setter for the link text
    *
-   * @param {string} str the text to set
+   * @param {string} [str] the text to set
    * @returns {string} the text
    */
   text (str) {

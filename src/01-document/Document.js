@@ -16,6 +16,7 @@ import Infobox from '../infobox/Infobox.js'
 import Section from '../02-section/Section.js'
 import Paragraph from '../03-paragraph/Paragraph.js'
 import Template from '../template/Template.js'
+import {singularFactory} from '../_lib/singularFactory.js'
 
 const defaults = {
   tables: true,
@@ -33,7 +34,7 @@ const defaults = {
 class Document {
   /**
    * The constructor for the document class
-   * This function starts parsing the wiki te1xt and sets the options in the class
+   * This function starts parsing the wiki text and sets the options in the class
    *
    * @param {string} [wiki] The wiki text
    * @param {object} [options] The options for the parser
@@ -525,19 +526,6 @@ class Document {
 }
 
 // aliases
-/**
- * this function crates a function that calls the plural version of the method
- *
- * @param {string} plural the plural of the word
- * @returns {function} a Function that calls the plural version of the method
- */
-function singularFactory (plural) {
-  return function (clue) {
-    let arr = this[plural](clue)
-    return arr[0] || null
-  }
-}
-
 Document.prototype.category = singularFactory('categories')
 Document.prototype.section = singularFactory('sections')
 Document.prototype.paragraph = singularFactory('paragraphs')

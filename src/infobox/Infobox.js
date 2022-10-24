@@ -60,7 +60,7 @@ class Infobox {
 
   /**
    * 
-   * @returns {Image[]} - the images in the infobox
+   * @returns {Image | null} - the image in the infobox
    */
   image () {
     let s = this._data.image

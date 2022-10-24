@@ -36,11 +36,8 @@ class Reference {
     if (typeof clue === 'number') {
       return arr[clue]
     }
-
-    //grab a specific link..
-    if (typeof clue === 'number') {
-      return arr[clue]
-    } else if (typeof clue === 'string') {
+    
+    if (typeof clue === 'string') {
       //grab a link like .links('Fortnight')
       clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
       let link = arr.find((o) => o.page() === clue)

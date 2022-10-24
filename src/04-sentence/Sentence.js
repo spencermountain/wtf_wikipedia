@@ -1,5 +1,6 @@
 import toJSON from './toJson.js'
 import Link from '../link/Link.js'
+import {singularFactory} from '../_lib/singularFactory.js'
 
 //where we store the formatting, link, date information
 
@@ -10,15 +11,15 @@ class Sentence {
 
   /**
    *
-   * @param {string} [n] string to filter on
+   * @param {string} [clue] string to filter on
    * @returns {Link[]} the links
    */
-  links (n) {
+  links (clue) {
     let arr = this.data.links || []
-    if (typeof n === 'string') {
+    if (typeof clue === 'string') {
       //grab a link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = arr.find((o) => o.page() === n)
+      clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
+      let link = arr.find((o) => o.page() === clue)
       return link === undefined ? [] : [link]
     }
     return arr
@@ -95,20 +96,6 @@ class Sentence {
 }
 
 // aliases
-
-/**
- * this function crates a function that calls the plural version of the method
- *
- * @param {string} plural the plural of the word
- * @returns {function} a Function that calls the plural version of the method
- */
-function singularFactory (plural) {
-  return function (clue) {
-    let arr = this[plural](clue)
-    return arr[0] || null
-  }
-}
-
 Sentence.prototype.link = singularFactory('links')
 Sentence.prototype.bold = singularFactory('bolds')
 Sentence.prototype.italic = singularFactory('italics')
