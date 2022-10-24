@@ -33,7 +33,7 @@ export default [
     plugins: [
       commonjs(),
       terser(),
-      sizeCheck({ expect: 10, warn: 10 })
+      sizeCheck({ expect: 15, warn: 10 })
     ]
   }
 ]

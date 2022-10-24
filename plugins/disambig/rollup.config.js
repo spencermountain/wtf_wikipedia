@@ -36,7 +36,7 @@ export default [
       nodeResolve(),
       commonjs({ requireReturnsDefault: "auto" }),
       terser(),
-      sizeCheck({ expect: 55, warn: 15 }),
+      sizeCheck({ expect: 2, warn: 15 }),
     ],
   },
 ]

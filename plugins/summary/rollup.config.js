@@ -36,7 +36,7 @@ export default [
       resolve(),
       commonjs(),
       terser(),
-      sizeCheck({ expect: 184, warn: 10 })
+      sizeCheck({ expect: 283, warn: 10 })
     ]
   }
 ]

@@ -3010,7 +3010,7 @@
   };
 
   // generate slash-based ids by descending recursively
-  const setId = function (root, id) {
+  function setId (root, id) {
     if (root.name) {
       root.id = id + '/' + root.name;
     } else {
@@ -3022,7 +3022,7 @@
       });
     }
     return root
-  };
+  }
 
   schema = setId(schema, '');
 
@@ -3045,7 +3045,7 @@
     titles: [],
   };
 
-  const doNode = function (node) {
+  function doNode (node) {
     if (node.id) {
       // collect mappings
       node.categories.mapping.forEach((str) => {
@@ -3093,10 +3093,10 @@
         doNode(node.children[k]);
       });
     }
-  };
+  }
   doNode(schema$1);
 
-  const byInfobox = function (doc) {
+  function byInfobox (doc) {
     let infoboxes = doc.infoboxes();
     let found = [];
     for (let i = 0; i < infoboxes.length; i++) {
@@ -3113,9 +3113,9 @@
       }
     }
     return found
-  };
+  }
 
-  const byPattern = function (str, patterns) {
+  function byPattern (str, patterns) {
     for (let i = 0; i < patterns.length; i += 1) {
       let reg = patterns[i][0];
       if (reg.test(str) === true) {
@@ -3123,9 +3123,9 @@
       }
     }
     return null
-  };
+  }
 
-  const byCategory = function (doc) {
+  function byCategory (doc) {
     let found = [];
     let cats = doc.categories();
     // clean them up a bit
@@ -3150,9 +3150,9 @@
       }
     }
     return found
-  };
+  }
 
-  const byTemplate = function (doc) {
+  function byTemplate (doc) {
     let templates = doc.templates().map((tmpl) => tmpl.json());
     let found = [];
     for (let i = 0; i < templates.length; i++) {
@@ -3168,9 +3168,9 @@
       }
     }
     return found
-  };
+  }
 
-  const fromSection = function (doc) {
+  function fromSection (doc) {
     let found = [];
     let titles = doc.sections().map((s) => {
       let str = s.title();
@@ -3184,11 +3184,11 @@
       }
     }
     return found
-  };
+  }
 
   const paren$1 = /\((.*)\)$/;
 
-  const byTitle = function (doc) {
+  function byTitle (doc) {
     let title = doc.title();
     if (!title) {
       return []
@@ -3214,9 +3214,9 @@
       return [{ type: match, reason: title }]
     }
     return []
-  };
+  }
 
-  const byDescription = function (doc) {
+  function byDescription (doc) {
     let tmpl = doc.template('short description');
     if (tmpl && tmpl.description) {
       let desc = tmpl.description || '';
@@ -3228,7 +3228,7 @@
       }
     }
     return []
-  };
+  }
 
   const skip = {
     disambiguation: true,
@@ -3240,7 +3240,7 @@
   const listOf = /^list of ./;
   const disambig = /\(disambiguation\)/;
 
-  const skipPage = function (doc) {
+  function skipPage (doc) {
     let title = doc.title() || '';
 
     //look at parentheses like 'Tornado (film)'
@@ -3265,9 +3265,9 @@
       return true
     }
     return false
-  };
+  }
 
-  const topk = function (arr) {
+  function topk (arr) {
     let obj = {};
     arr.forEach((a) => {
       obj[a] = obj[a] || 0;
@@ -3283,17 +3283,17 @@
       return 0
     });
     return res
-  };
+  }
 
-  const parse = function (cat) {
+  function parse (cat) {
     let split = cat.split(/\//);
     return {
       root: split[1],
       child: split[2],
     }
-  };
+  }
 
-  const getScore = function (detail) {
+  function getScore (detail) {
     let types = [];
     Object.keys(detail).forEach((k) => {
       detail[k].forEach((obj) => {
@@ -3355,9 +3355,9 @@
       score: score,
       details: detail,
     }
-  };
+  }
 
-  const plugin = function (models) {
+  function plugin (models) {
     //add a new method to main class
     models.Doc.prototype.classify = function () {
       let doc = this;
@@ -3387,7 +3387,7 @@
       res.category = byCategory(doc);
       return getScore(res)
     };
-  };
+  }
 
   return plugin;
 

@@ -39,7 +39,7 @@ export default [
       nodeResolve(),
       commonjs({ requireReturnsDefault: "auto" }),
       terser(),
-      sizeCheck({ expect: 24, warn: 10 })
+      sizeCheck({ expect: 9, warn: 10 })
     ]
   }
 ]

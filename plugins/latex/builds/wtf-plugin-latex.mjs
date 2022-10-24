@@ -5,7 +5,7 @@ const defaults$4 = {
 };
 
 // we should try to make this look like the wikipedia does, i guess.
-const softRedirect = function (doc) {
+function softRedirect (doc) {
   let link = doc.redirectTo();
   let href = link.page;
   href = './' + href.replace(/ /g, '_');
@@ -14,10 +14,10 @@ const softRedirect = function (doc) {
     href += '#' + link.anchor;
   }
   return '↳ \\href{' + href + '}{' + link.text + '}'
-};
+}
 
 //
-const toLatex$6 = function (options) {
+function toLatex$6 (options) {
   options = Object.assign({}, defaults$4, options);
   let out = '';
   //if it's a redirect page, give it a 'soft landing':
@@ -44,7 +44,7 @@ const toLatex$6 = function (options) {
       .join('\n');
   }
   return out
-};
+}
 
 const defaults$3 = {
   headers: true,
@@ -54,7 +54,7 @@ const defaults$3 = {
   paragraphs: true
 };
 //map '==' depth to 'subsection', 'subsubsection', etc
-const doSection = function (options) {
+function doSection (options) {
   options = Object.assign({}, defaults$3, options);
   let out = '';
   let num = 1;
@@ -121,13 +121,13 @@ const doSection = function (options) {
   //wrap a section comment
   //out = '\n% BEGIN' + title_tag + out + '\n% END' + title_tag;
   return out
-};
+}
 
 const defaults$2 = {
   sentences: true
 };
 
-const toLatex$5 = function (options) {
+function toLatex$5 (options) {
   options = Object.assign({}, defaults$2, options);
   let out = '';
   if (options.sentences === true) {
@@ -139,15 +139,15 @@ const toLatex$5 = function (options) {
     out += '% END Paragraph';
   }
   return out
-};
+}
 
 //escape a string like 'fun*2.Co' for a regExpr
-function escapeRegExp(str) {
+function escapeRegExp (str) {
   return str.replace(/[\-[\]/{}()*+?.\\^$|]/g, '\\$&')
 }
 
 //sometimes text-replacements can be ambiguous - words used multiple times..
-const smartReplace = function (all, text, result) {
+function smartReplace (all, text, result) {
   if (!text || !all) {
     return all
   }
@@ -166,14 +166,14 @@ const smartReplace = function (all, text, result) {
     all = all.replace(text, result);
   }
   return all
-};
+}
 
 const defaults$1 = {
   links: true,
   formatting: true
 };
 // create links, bold, italic in latex
-const toLatex$4 = function (options) {
+function toLatex$4 (options) {
   options = Object.assign({}, defaults$1, options);
   let text = this.text();
   //turn links back into links
@@ -201,17 +201,17 @@ const toLatex$4 = function (options) {
     }
   }
   return text
-};
+}
 
-const toLatex$3 = function () {
+function toLatex$3 () {
   let href = this.href();
   href = href.replace(/ /g, '_');
   let str = this.text() || this.page();
   return '\\href{' + href + '}{' + str + '}'
-};
+}
 
 //
-const toLatex$2 = function () {
+function toLatex$2 () {
   let alt = this.alt();
   let out = '\\begin{figure}';
   out += '\n\\includegraphics[width=\\linewidth]{' + this.thumb() + '}';
@@ -219,7 +219,7 @@ const toLatex$2 = function () {
   // out += '\n%\\label{fig:myimage1}';
   out += '\n\\end{figure}';
   return out
-};
+}
 
 const dontDo = {
   image: true,
@@ -234,7 +234,7 @@ const defaults = {
 };
 
 //
-const infobox = function (options) {
+function infobox (options) {
   options = Object.assign({}, defaults, options);
   let out = '\n \\vspace*{0.3cm} % Info Box\n\n';
   out += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n';
@@ -254,26 +254,26 @@ const infobox = function (options) {
   out += '\\end{tabular} \n';
   out += '\n\\vspace*{0.3cm}\n\n';
   return out
-};
+}
 
 //
-const toLatex$1 = function (options) {
+function toLatex$1 (options) {
   let out = '\\begin{itemize}\n';
   this.lines().forEach((s) => {
     out += '  \\item ' + s.text(options) + '\n';
   });
   out += '\\end{itemize}\n';
   return out
-};
+}
 
 //not so impressive right now
-const toLatex = function () {
+function toLatex () {
   let str = this.title();
   return '⌃ ' + str + '\n'
-};
+}
 
 //create a formal LATEX table
-const doTable = function (options) {
+function doTable (options) {
   let rows = this.data;
   let out = '\n%\\vspace*{0.3cm}\n';
   out +=
@@ -320,9 +320,9 @@ const doTable = function (options) {
   out += '\\end{tabular} \n';
   out += '\n\\vspace*{0.3cm}\n\n';
   return out
-};
+}
 
-const plugin = function (models) {
+function plugin (models) {
   models.Doc.prototype.latex = toLatex$6;
   models.Section.prototype.latex = doSection;
   models.Paragraph.prototype.latex = toLatex$5;
@@ -334,6 +334,6 @@ const plugin = function (models) {
   models.List.prototype.latex = toLatex$1;
   models.Reference.prototype.latex = toLatex;
   models.Table.prototype.latex = doTable;
-};
+}
 
 export { plugin as default };

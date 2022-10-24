@@ -48,7 +48,7 @@
   ];
 
   //
-  const playerStats = function (doc) {
+  function playerStats (doc) {
     let players = [];
     let s = doc.sections('player stats') || doc.sections('player statistics') || doc.sections('statistics');
     s = s[0];
@@ -75,11 +75,11 @@
       }
     });
     return res
-  };
+  }
 
   const dashSplit$2 = /(–|-|−|&ndash;)/; // eslint-disable-line
 
-  const parseTeam = function (txt) {
+  function parseTeam (txt) {
     if (!txt) {
       return {}
     }
@@ -88,9 +88,9 @@
       name: txt.replace(/^ +@ +/, ''),
       home: !away
     }
-  };
+  }
 
-  const parseRecord$1 = function (txt) {
+  function parseRecord$1 (txt) {
     if (!txt) {
       return {}
     }
@@ -103,9 +103,9 @@
     let plusMinus = obj.wins / obj.games;
     obj.plusMinus = Number(plusMinus.toFixed(2));
     return obj
-  };
+  }
 
-  const parseScore$1 = function (txt) {
+  function parseScore$1 (txt) {
     if (!txt) {
       return {}
     }
@@ -119,9 +119,9 @@
       return {}
     }
     return obj
-  };
+  }
 
-  const parseAttendance = function (txt = '') {
+  function parseAttendance (txt = '') {
     //support [[Rogers Center]] (23,987)
     if (txt.indexOf('(') !== -1) {
       let m = txt.match(/\(([0-9 ,]+)\)/);
@@ -131,9 +131,9 @@
     }
     txt = txt.replace(/,/g, '');
     return parseInt(txt, 10) || null
-  };
+  }
 
-  const parsePitchers = function (row) {
+  function parsePitchers (row) {
     let win = row.Win || row.win || '';
     win = win.replace(/\(.*?\)/, '').trim();
     let loss = row.Loss || row.loss || '';
@@ -148,9 +148,9 @@
       loss: loss,
       save: save,
     }
-  };
+  }
 
-  const parseRow = function (row) {
+  function parseRow (row) {
     if (!row) {
       return null
     }
@@ -166,11 +166,11 @@
       attendance: parseAttendance(row.attendance || row.Attendance || row['location (attendance)'] || row['Location (Attendance)'])
     };
     return obj
-  };
+  }
 
   //amazingly, it's not clear who won the game, without the css styling.
   //try to pull-it out based on the team's record
-  const addWinner$1 = function (games) {
+  function addWinner$1 (games) {
     let wins = 0;
     games.forEach((g) => {
       if (g.record.wins > wins) {
@@ -194,13 +194,13 @@
       }
     });
     return games
-  };
+  }
 
-  const isArray = function (arr) {
+  function isArray (arr) {
     return Object.prototype.toString.call(arr) === '[object Array]'
-  };
+  }
 
-  const doTable = function (rows = []) {
+  function doTable (rows = []) {
     let games = [];
     //is it a legend/junk table?
     if (rows[1] && rows[1].Legend || !isArray(rows)) {
@@ -212,9 +212,9 @@
     //remove empty weird ones
     games = games.filter((g) => g.team && g.date); //&& g.result.winner !== undefined
     return games
-  };
+  }
 
-  const doSection = function (section) {
+  function doSection (section) {
     let tables = section.tables();
     //do all subsection, too
     section.children().forEach(s => {
@@ -228,10 +228,10 @@
       tables = tables.map((t) => t.keyValue());
     }
     return tables
-  };
+  }
 
   //get games of regular season
-  const gameLog = function (doc) {
+  function gameLog (doc) {
     let games = [];
     // grab the generated section called 'Game Log'
     let section = doc.section('game log') || doc.section('game log and schedule') || doc.section('regular season') || doc.section('season') || doc.section('schedule') || doc.section('schedule and results');
@@ -246,9 +246,9 @@
     });
     games = addWinner$1(games);
     return games
-  };
+  }
 
-  const postSeason = function (doc) {
+  function postSeason (doc) {
     let series = [];
     //ok, try postseason, too
     let section = doc.section('postseason game log') || doc.section('postseason') || doc.section('playoffs') || doc.section('playoff');
@@ -264,13 +264,13 @@
     // games.forEach((g) => g.postSeason = true)
     series.forEach((games) => addWinner$1(games));
     return series
-  };
+  }
   const season = gameLog;
   const postseason = postSeason;
 
   //who knows!
 
-  const parseTitle$1 = function (season = '') {
+  function parseTitle$1 (season = '') {
     let num = season.match(/[0-9]+/) || [];
     let year = Number(num[0]) || season;
     let team = season.replace(/[0-9–]+/, '').replace(/_/g, ' ').replace(' season', '');
@@ -279,10 +279,10 @@
       season: season,
       team: team.trim()
     }
-  };
+  }
 
   //this is just a table in a 'roster' section
-  const parseRoster$1 = function (doc, res) {
+  function parseRoster$1 (doc, res) {
     let s = doc.sections('roster') || doc.sections('players') || doc.sections(res.year + ' roster');
     s = s[0];
     if (!s) {
@@ -294,10 +294,10 @@
       return o
     });
     return players
-  };
+  }
 
   //this is just a table in a '2008 draft picks' section
-  const draftPicks = function (doc) {
+  function draftPicks (doc) {
     let want = /\bdraft\b/i;
     let s = doc.sections().find(sec => want.test(sec.title()));
     if (!s) {
@@ -308,10 +308,10 @@
       return []
     }
     return table.json()
-  };
+  }
 
   //grab game-data from a MLB team's wikipedia page:
-  const parsePage = function (doc) {
+  function parsePage (doc) {
     if (!doc) {
       return {}
     }
@@ -324,9 +324,9 @@
     //get the per-player statistics
     res.playerStats = playerStats(doc);
     return res
-  };
+  }
 
-  const addMethod$1 = function (models) {
+  function addMethod$1 (models) {
     models.wtf.mlbSeason = function (team, year) {
       //soften-up the team-input
       team = teams$1.find((t) => {
@@ -341,7 +341,7 @@
     models.Doc.prototype.mlbSeason = function () {
       return parsePage(this)
     };
-  };
+  }
 
   var teams = [
     'Boston Bruins',
@@ -379,7 +379,7 @@
 
   //amazingly, it's not clear who won the game, without the css styling.
   //try to pull-it out based on the team's record
-  const addWinner = function (games) {
+  function addWinner (games) {
     let wins = 0;
     games.forEach((g) => {
       if (g.record.wins > wins) {
@@ -405,11 +405,11 @@
       }
     });
     return games
-  };
+  }
 
   const dashSplit$1 = /([–\-−]|&ndash;)/;
 
-  const parseRecord = function (record = '') {
+  function parseRecord (record = '') {
     let arr = record.split(dashSplit$1);
     let result = {
       wins: Number(arr[0]) || 0,
@@ -418,11 +418,11 @@
     };
     result.games = result.wins + result.losses + result.ties;
     return result
-  };
+  }
 
   const dashSplit = /([–\-−]|&ndash;)/;
 
-  const parseScore = function (score = '') {
+  function parseScore (score = '') {
     let arr = score.split(dashSplit);
     if (!arr[0] && !arr[2]) {
       return {}
@@ -431,9 +431,9 @@
       win: Number(arr[0]),
       loss: Number(arr[2]),
     }
-  };
+  }
 
-  const isFuture = function (games) {
+  function isFuture (games) {
     games.forEach((g) => {
       if (!g.attendance && !g.points) {
         if (!g.record.wins && !g.record.lossess && !g.record.ties) {
@@ -443,9 +443,9 @@
       }
     });
     return games
-  };
+  }
 
-  const parseDate = function (row, title) {
+  function parseDate (row, title) {
     let year = title.year;
     let date = row.date || row.Date;
     if (!date) {
@@ -458,9 +458,9 @@
       date += ' ' + year;
     }
     return date
-  };
+  }
 
-  const parseGame = function (row, meta) {
+  function parseGame (row, meta) {
     let attendance = row.attendance || row.Attendance || '';
     attendance = Number(attendance.replace(/,/, '')) || null;
     let res = {
@@ -484,10 +484,10 @@
     res.opponent = res.opponent.replace(/@ /, '');
     res.opponent = res.opponent.trim();
     return res
-  };
+  }
 
   //
-  const parseGames = function (doc, meta) {
+  function parseGames (doc, meta) {
     let games = [];
     let s = doc.section('schedule and results') || doc.section('schedule') || doc.section('regular season');
     if (!s) {
@@ -516,11 +516,11 @@
     games = addWinner(games);
     games = isFuture(games);
     return games
-  };
+  }
 
   const ordinal = /([0-9])(st|nd|rd|th)$/i;
 
-  const toCardinal = function (str = '') {
+  function toCardinal (str = '') {
     str = str.trim();
     if (ordinal.test(str)) {
       str = str.replace(ordinal, '$1');
@@ -530,10 +530,10 @@
       return Number(str)
     }
     return str
-  };
+  }
 
   //
-  const parseInfobox = function (doc) {
+  function parseInfobox (doc) {
     let info = doc.infobox('ice hockey team season') || doc.infobox('NHLTeamSeason');
     if (!info) {
       return {}
@@ -546,9 +546,9 @@
       data.record = parseRecord(data.record);
     }
     return data
-  };
+  }
 
-  const parseTitle = function (season = '') {
+  function parseTitle (season = '') {
     let num = season.match(/[0-9]+/) || [];
     let year = Number(num[0]) || season;
     let team = season
@@ -560,9 +560,9 @@
       season: season,
       team: team.trim(),
     }
-  };
+  }
 
-  const parseRoster = function (doc) {
+  function parseRoster (doc) {
     let s = doc.section('skaters') || doc.section('roster') || doc.section('player statistics');
     let players = [];
     if (!s) {
@@ -592,10 +592,10 @@
     });
     players = players.filter((o) => o && o.name && o.name !== 'Total');
     return players
-  };
+  }
 
   //
-  const parse = function (doc) {
+  function parse (doc) {
     let meta = parseTitle(doc.title());
     let res = {
       team: meta.team,
@@ -606,17 +606,17 @@
     };
     res.games = parseGames(doc, meta);
     return res
-  };
+  }
 
-  const makePage = function (team, year) {
+  function makePage (team, year) {
     team = team.replace(/ /g, '_');
     year = year || new Date().getFullYear();
     let nextYear = Number(String(year).substr(2, 4)) + 1;
     let page = `${year}–${nextYear}_${team}_season`; //2018–19_Toronto_Maple_Leafs_season
     return page
-  };
+  }
 
-  const addMethod = function (models) {
+  function addMethod (models) {
     models.wtf.nhlSeason = function (team, year) {
       //soften-up the team-input
       team = teams.find((t) => {
@@ -627,7 +627,7 @@
     };
     // add it here too
     models.Doc.nhlSeason = parse;
-  };
+  }
 
   exports.mlb = addMethod$1;
   exports.nhl = addMethod;
