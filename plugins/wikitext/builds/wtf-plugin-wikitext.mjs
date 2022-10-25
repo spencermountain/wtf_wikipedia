@@ -9,7 +9,7 @@ const defaults$3 = {
   links: true,
   paragraphs: true
 };
-const toWiki$a = function (options) {
+function toWiki$a (options) {
   options = options || {};
   options = Object.assign({}, defaults$3, options);
   let text = '';
@@ -38,11 +38,11 @@ const toWiki$a = function (options) {
     this.categories().forEach((cat) => (text += `\n[[Category: ${cat}]]`));
   }
   return text
-};
+}
 
 const defaults$2 = {};
 
-const doTemplate = function (obj) {
+function doTemplate (obj) {
   let data = '';
   let name = obj.template;
   Object.keys(obj).forEach((k) => {
@@ -51,9 +51,9 @@ const doTemplate = function (obj) {
     }
   });
   return `{{${name}${data}}} `
-};
+}
 
-const toWiki$9 = function (options) {
+function toWiki$9 (options) {
   options = options || {};
   options = Object.assign({}, defaults$2, options);
   let text = '';
@@ -94,11 +94,11 @@ const toWiki$9 = function (options) {
   });
 
   return text
-};
+}
 
 const defaults$1 = {};
 
-const toWiki$8 = function (options) {
+function toWiki$8 (options) {
   options = options || {};
   options = Object.assign({}, defaults$1, options);
   let text = '';
@@ -118,15 +118,15 @@ const toWiki$8 = function (options) {
     })
     .join('\n');
   return text
-};
+}
 
 //escape a string like 'fun*2.Co' for a regExpr
-function escapeRegExp(string) {
+function escapeRegExp (string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // $& means the whole matched string
 }
 
 //sometimes text-replacements can be ambiguous - words used multiple times..
-const smartReplace = function (all, text, result) {
+function smartReplace (all, text, result) {
   if (!text || !all) {
     return all
   }
@@ -145,13 +145,13 @@ const smartReplace = function (all, text, result) {
     all = all.replace(text, result);
   }
   return all
-};
+}
 
 const defaults = {
   links: true
 };
 
-const toWiki$7 = function (options) {
+function toWiki$7 (options) {
   options = options || {};
   options = Object.assign({}, defaults, options);
   let text = this.text();
@@ -176,10 +176,10 @@ const toWiki$7 = function (options) {
   }
 
   return text
-};
+}
 
 // add `[text](href)` to the text
-const toWiki$6 = function () {
+function toWiki$6 () {
   //if it's an external link, we good
   if (this.site()) {
     if (this.text()) {
@@ -197,18 +197,18 @@ const toWiki$6 = function () {
     return `[[${page}|${str}]]`
   }
   return `[[${page}]]`
-};
+}
 
-const toWiki$5 = function () {
+function toWiki$5 () {
   let text = `[[${this.file()}|thumb`;
   let caption = this.data.caption;
   if (caption) {
     text += `|${this.data.caption.wikitext()}`;
   }
   return text + ']]'
-};
+}
 
-const toWiki$4 = function () {
+function toWiki$4 () {
   let text = `{{${this.data.template || ''}`;
   Object.keys(this.data).forEach((k) => {
     if (k === 'template') {
@@ -221,9 +221,9 @@ const toWiki$4 = function () {
   });
   text += '}}\n';
   return text
-};
+}
 
-const toWiki$3 = function () {
+function toWiki$3 () {
   let text = `{{Infobox ${this._type || ''}\n`;
   Object.keys(this.data).forEach((k) => {
     let val = this.data[k];
@@ -233,17 +233,17 @@ const toWiki$3 = function () {
   });
   text += '}}\n';
   return text
-};
+}
 
-const toWiki$2 = function () {
+function toWiki$2 () {
   let txt = '';
   this.lines().forEach((s) => {
     txt += `* ${s.wikitext()}\n`;
   });
   return txt
-};
+}
 
-const toWiki$1 = function () {
+function toWiki$1 () {
   if (this.data.inline) {
     return `<ref>${this.data.inline.wikitext()}</ref>`
   }
@@ -255,9 +255,9 @@ const toWiki$1 = function () {
     }
   });
   return `<ref>{{${type}${data}}}</ref>`
-};
+}
 
-const toWiki = function (options) {
+function toWiki (options) {
   let rows = this.data;
   let wiki = `{| class="wikitable"\n`;
 
@@ -280,9 +280,9 @@ const toWiki = function (options) {
   });
   wiki += `|}`;
   return wiki
-};
+}
 
-const plugin = function (models) {
+function plugin (models) {
   models.Doc.prototype.makeWikitext = toWiki$a;
   models.Section.prototype.makeWikitext = toWiki$9;
   models.Paragraph.prototype.makeWikitext = toWiki$8;
@@ -294,6 +294,6 @@ const plugin = function (models) {
   models.Table.prototype.makeWikitext = toWiki;
   models.List.prototype.makeWikitext = toWiki$2;
   models.Reference.prototype.makeWikitext = toWiki$1;
-};
+}
 
 export { plugin as default };

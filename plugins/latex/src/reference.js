@@ -1,5 +1,5 @@
 //not so impressive right now
-const toLatex = function () {
+function toLatex () {
   let str = this.title()
   return '⌃ ' + str + '\n'
 }

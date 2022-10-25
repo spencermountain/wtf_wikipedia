@@ -62,7 +62,7 @@ let multi = {
     'unbulleted list',
     'unbulleted',
     'unbulletedlist',
-    'vunblist'
+    'vunblist',
   ],
 
   'election box begin': [

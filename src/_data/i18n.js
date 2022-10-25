@@ -26,5 +26,5 @@ export {
   images,
   infoboxes,
   redirects,
-  references
+  references,
 }

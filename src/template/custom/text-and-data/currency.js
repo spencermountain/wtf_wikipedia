@@ -65,7 +65,7 @@ const codes = {
   zar: 'R', //https://en.wikipedia.org/wiki/Template:ZAR
 }
 
-const parseCurrency = (tmpl, list) => {
+function parseCurrency (tmpl, list) {
   let o = parse(tmpl, ['amount', 'code'])
   list.push(o)
   let code = o.template || ''
@@ -78,12 +78,15 @@ const parseCurrency = (tmpl, list) => {
     code = o.code
   }
   code = (code || '').toLowerCase()
+
   if (code === 'us') {
     o.code = code = 'usd'
   } else if (code === 'uk') {
     o.code = code = 'gbp'
   }
+
   let str = `${codes[code] || ''}${o.amount || ''}`
+
   //support unknown currencies after the number - like '5 BTC'
   if (o.code && !codes[o.code.toLowerCase()]) {
     str += ' ' + o.code

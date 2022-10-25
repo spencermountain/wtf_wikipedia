@@ -45,7 +45,6 @@ export default [
   'disamb-term',
   'disamb-terms',
 
-
   // i18n
   'aðgreining', //is
   'aimai', //ja

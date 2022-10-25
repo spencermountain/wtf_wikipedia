@@ -5,10 +5,10 @@ const params = {
   prop: 'pageviews',
   format: 'json',
   origin: '*',
-  redirects: true
+  redirects: true,
 }
 
-const makeUrl = function (title, options, append) {
+function makeUrl (title, options, append) {
   let url = `https://${options.lang}.wikipedia.org/${options.path}?`
   if (options.domain) {
     url = `https://${options.domain}/${options.path}?`
@@ -21,7 +21,7 @@ const makeUrl = function (title, options, append) {
   return url
 }
 
-const getPageViews = function (doc, http) {
+function getPageViews (doc, http) {
   let url = makeUrl(doc.title(), defaults)
   return http(url).then((res) => {
     let pages = Object.keys(res.query.pages || {})

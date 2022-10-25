@@ -1,7 +1,7 @@
 import parseGames from './parseGames/index.js'
 import parseInfobox from './infobox.js'
 
-const parseTitle = function (season = '') {
+function parseTitle (season = '') {
   let num = season.match(/[0-9]+/) || []
   let year = Number(num[0]) || season
   let team = season
@@ -15,7 +15,7 @@ const parseTitle = function (season = '') {
   }
 }
 
-const parseRoster = function (doc) {
+function parseRoster (doc) {
   let s = doc.section('skaters') || doc.section('roster') || doc.section('player statistics')
   let players = []
   if (!s) {
@@ -48,7 +48,7 @@ const parseRoster = function (doc) {
 }
 
 //
-const parse = function (doc) {
+function parse (doc) {
   let meta = parseTitle(doc.title())
   let res = {
     team: meta.team,

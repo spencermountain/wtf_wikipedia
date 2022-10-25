@@ -25,7 +25,7 @@ const closeTag = `< ?/ ?(${ignore.join('|')}) ?>`
 const anyChar = '\\s\\S' //including newline
 const noThanks = new RegExp(`${openTag}[${anyChar}]+?${closeTag}`, 'gi')
 
-const kill_xml = function (wiki) {
+function kill_xml (wiki) {
   //(<ref> tags are parsed in Section class) - luckily, refs can't be recursive.
   //types of html/xml that we want to trash completely.
   wiki = wiki.replace(noThanks, ' ')

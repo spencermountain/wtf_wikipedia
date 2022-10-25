@@ -2,10 +2,10 @@ const defaults = {
   redirects: true,
   infoboxes: true,
   templates: true,
-  sections: true
+  sections: true,
 }
 //we should try to make this look like the wikipedia does, i guess.
-const softRedirect = function (doc) {
+function softRedirect (doc) {
   let link = doc.redirectTo()
   let href = link.page
   href = './' + href.replace(/ /g, '_')
@@ -16,7 +16,7 @@ const softRedirect = function (doc) {
 }
 
 //turn a Doc object into a markdown string
-const toMarkdown = function (options) {
+function toMarkdown (options) {
   options = Object.assign({}, defaults, options)
   let data = this
   let md = ''

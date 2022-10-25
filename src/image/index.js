@@ -27,7 +27,7 @@ const imgLayouts = {
 }
 
 //images are usually [[image:my_pic.jpg]]
-const oneImage = function (img, doc) {
+function oneImage (img, doc) {
   let m = img.match(file_reg)
   if (m === null || !m[2]) {
     return null
@@ -39,7 +39,7 @@ const oneImage = function (img, doc) {
       lang: doc._lang,
       domain: doc._domain,
       wiki: img,
-      pluginData: {}
+      pluginData: {},
     }
     //try to grab other metadata, too
     img = img.replace(/^\[\[/, '')
@@ -63,7 +63,7 @@ const oneImage = function (img, doc) {
   return null
 }
 
-const parseImages = function (paragraph, doc) {
+function parseImages (paragraph, doc) {
   let wiki = paragraph.wiki
   //parse+remove scary '[[ [[]] ]]' stuff
   let matches = nested_find(wiki)

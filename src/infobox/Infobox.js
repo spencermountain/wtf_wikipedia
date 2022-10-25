@@ -2,65 +2,101 @@ import toJson from './toJson.js'
 import Image from '../image/Image.js'
 import { isArray } from '../_lib/helpers.js'
 import Sentence from '../04-sentence/Sentence.js'
+import Link from '../link/Link.js'
 
-const normalize = (str = '') => {
+function normalize (str = '') {
   str = str.toLowerCase()
   str = str.replace(/[-_]/g, ' ')
   return str.trim()
 }
 
 //a formal key-value data table about a topic
-const Infobox = function (obj, wiki) {
-  this._type = obj.type
-  this.domain = obj.domain
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: obj.data,
-  })
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki,
-  })
-}
+class Infobox {
+  /**
+   * 
+   * @param {object} obj 
+   * @param {string} [obj.wiki] - the wikitext of the infobox
+   * @param {string} [obj.type] - the type of infobox
+   * @param {string} [obj.domain] - the domain of the infobox
+   * @param {object} [obj.data] - the data of the infobox
+   * @param {string} [wiki] 
+   */
+  constructor (obj, wiki) {
+    this._type = obj.type
+    this.domain = obj.domain
+    this._data = obj.data
+    this.wiki = wiki
+  }
 
-const methods = {
-  type: function () {
+  /**
+   * 
+   * @returns {string | undefined} - the type of infobox
+   */
+  type () {
     return this._type
-  },
-  links: function (n) {
+  }
+
+  /**
+   * get the links from the infobox
+   * 
+   * @param {string} [n] - the index of the link
+   * @returns {Link[]} - the links in the infobox
+   */
+  links (n) {
     let arr = []
-    Object.keys(this.data).forEach((k) => {
-      this.data[k].links().forEach((l) => arr.push(l))
+    Object.keys(this._data).forEach((k) => {
+      this._data[k].links().forEach((l) => arr.push(l))
     })
+
     if (typeof n === 'string') {
       //grab a link like .links('Fortnight')
       n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
       let link = arr.find((o) => o.page() === n)
       return link === undefined ? [] : [link]
     }
+
     return arr
-  },
-  image: function () {
-    let s = this.data.image || this.data.image2 || this.data.logo || this.data.image_skyline || this.data.image_flag
+  }
+
+  /**
+   * 
+   * @returns {Image | null} - the image in the infobox
+   */
+  image () {
+    let s = this._data.image
+      || this._data.image2
+      || this._data.logo
+      || this._data.image_skyline
+      || this._data.image_flag
+
     if (!s) {
       return null
     }
+
     let obj = s.json()
     let file = obj.text
     obj.file = file
     obj.text = ''
-    obj.caption = this.data.caption
+    obj.caption = this._data.caption
     obj.domain = this.domain // add domain information for image
+
     return new Image(obj)
-  },
-  get: function (keys) {
-    let allKeys = Object.keys(this.data)
+  }
+
+  /**
+   * get the value of from the infobox
+   * 
+   * @param {string | string[]} keys - the key or keys of the infobox 
+   * @returns {Sentence | Sentence[]} - the value or values of the infobox
+   */
+  get (keys) {
+    let allKeys = Object.keys(this._data)
     if (typeof keys === 'string') {
       let key = normalize(keys)
       for (let i = 0; i < allKeys.length; i += 1) {
         let tmp = normalize(allKeys[i])
         if (key === tmp) {
-          return this.data[allKeys[i]]
+          return this._data[allKeys[i]]
         }
       }
       return new Sentence()
@@ -72,38 +108,67 @@ const methods = {
         for (let i = 0; i < allKeys.length; i += 1) {
           let tmp = normalize(allKeys[i])
           if (k === tmp) {
-            return this.data[allKeys[i]]
+            return this._data[allKeys[i]]
           }
         }
         return new Sentence()
       })
     }
     return new Sentence()
-  },
-  text: function () {
+  }
+
+  /**
+   * 
+   * @returns {string} - the text from the infobox
+   */
+  text () {
     return ''
-  },
-  json: function (options) {
+  }
+
+  /**
+   * 
+   * @param {object} options 
+   * @returns {object}
+   */
+  json (options) {
     options = options || {}
     return toJson(this, options)
-  },
-  wikitext: function () {
+  }
+
+  /**
+   * 
+   * @returns {string} - the wikitext of the infobox
+   */
+  wikitext () {
     return this.wiki || ''
-  },
-  keyValue: function () {
-    return Object.keys(this.data).reduce((h, k) => {
-      if (this.data[k]) {
-        h[k] = this.data[k].text()
+  }
+
+  /**
+   * 
+   * @returns {object} - the key-value data of the infobox
+   */
+  keyValue () {
+    return Object.keys(this._data).reduce((h, k) => {
+      if (this._data[k]) {
+        h[k] = this._data[k].text()
       }
       return h
     }, {})
-  },
+  }
+
+  // aliases
+  data () {
+    return this.keyValue()
+  }
+
+  template () {
+    return this.type()
+  }
+
+  images () {
+    return this.image()
+  }
+
 }
-//aliases
-Object.keys(methods).forEach((k) => {
-  Infobox.prototype[k] = methods[k]
-})
-Infobox.prototype.data = Infobox.prototype.keyValue
-Infobox.prototype.template = Infobox.prototype.type
-Infobox.prototype.images = Infobox.prototype.image
+
 export default Infobox

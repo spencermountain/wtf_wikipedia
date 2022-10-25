@@ -107,14 +107,14 @@ test('austria-hungary', (t) => {
   t.equal(
     doc.text(),
     'Austria-Hungary, often referred to as the Austro-Hungarian Empire or the Dual Monarchy',
-    'got-plaintext'
+    'got-plaintext',
   )
   t.equal(doc.template('for').json().list[1], 'Austria–Hungary relations', 'nested emdash')
   t.equal(doc.links('budapest')[0].page(), 'Budapest', 'got Budapest link')
   t.equal(
     doc.templates('short description')[0].json().description,
     'Constitutional monarchic union from 1867 to October 1918',
-    'short-description'
+    'short-description',
   )
   t.end()
 })
@@ -129,7 +129,7 @@ test('collapsible list', (t) => {
   t.equal(obj.list.length, 2, 'list-len')
 
   //now sanity check all aliases
-  const testText = (template) => {
+  function testText (template) {
     let actual = wtf(`{{${template}|a|b}}`).text().replace(/\n+/, ' ')
     t.equal(actual, 'a b', template)
   }

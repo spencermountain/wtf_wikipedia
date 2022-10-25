@@ -1,24 +1,38 @@
 //handle the bold/italics
-const formatting = function (obj) {
+/**
+ *
+ * @param {object} obj
+ * @param {string} obj.text
+ * @param {string} obj.wiki
+ * @param {object} obj.fmt
+ * @param {string[]} [obj.fmt.bold]
+ * @param {string[]} [obj.fmt.italic]
+ * @returns
+ */
+function formatting (obj) {
   let bolds = []
   let italics = []
   let wiki = obj.text || ''
+
   //bold and italics combined 5 's
   wiki = wiki.replace(/'''''(.{0,2500}?)'''''/g, (a, b) => {
     bolds.push(b)
     italics.push(b)
     return b
   })
+
   //''''four'''' → bold with quotes
   wiki = wiki.replace(/''''(.{0,2500}?)''''/g, (a, b) => {
     bolds.push(`'${b}'`)
     return `'${b}'`
   })
+
   //'''bold'''
   wiki = wiki.replace(/'''(.{0,2500}?)'''/g, (a, b) => {
     bolds.push(b)
     return b
   })
+
   //''italic''
   wiki = wiki.replace(/''(.{0,2500}?)''/g, (a, b) => {
     italics.push(b)
@@ -35,6 +49,8 @@ const formatting = function (obj) {
     obj.fmt = obj.fmt || {}
     obj.fmt.italic = italics
   }
+
   return obj
 }
+
 export default formatting

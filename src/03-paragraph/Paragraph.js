@@ -1,92 +1,139 @@
 import toJSON from './toJson.js'
 import setDefaults from '../_lib/setDefaults.js'
-const defaults = {
+import Sentence from '../04-sentence/Sentence.js'
+import Reference from '../reference/Reference.js'
+import Link from '../link/Link.js'
+import List from '../list/List.js'
+import Image from '../image/Image.js'
+import {singularFactoryWithNumber as singularFactory} from '../_lib/singularFactory.js'
+
+const toTextDefaults = {
   sentences: true,
   lists: true,
   images: true,
 }
 
-const Paragraph = function (data) {
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data,
-  })
-}
+class Paragraph {
+  /**
+   * 
+   * @param {object} data 
+   * @param {string} data.wiki
+   * @param {Sentence[]} data.sentences
+   * @param {List[]} data.lists
+   * @param {Image[]} data.images
+   */
+  constructor (data) {
+    this.data = data
+  }
 
-const methods = {
-  sentences: function () {
+  /**
+   * returns the sentences in this paragraph
+   * @returns {Sentence[]} an array of Sentence objects
+   */
+  sentences () {
     return this.data.sentences || []
-  },
-  references: function () {
+  }
+
+
+  // TODO: should this work? 
+  // Wrongly passing
+  /**
+   * returns the references in this paragraph
+   * @returns {Reference[]} an array of Reference objects
+   */
+  references () {
     return this.data.references
-  },
-  lists: function () {
+  }
+
+  /**
+   * returns the lists in this paragraph
+   * @returns {List[]} an array of List objects
+   */
+  lists () {
     return this.data.lists
-  },
-  images() {
+  }
+
+  /**
+   * returns the images in this paragraph
+   * @returns {Image[]} an array of Image objects
+   */
+  images () {
     return this.data.images || []
-  },
-  links: function (clue) {
-    let arr = []
-    this.sentences().forEach((s) => {
-      arr = arr.concat(s.links(clue))
-    })
+  }
+
+  /**
+   * returns the links in this paragraph
+   *
+   * @param {string} [clue] a string to filter the links by
+   * @returns {Link[]} an array of Link objects
+   */
+  links (clue) {
+    let arr = this.sentences().map((s) => s.links(clue)).flat()
+    
     if (typeof clue === 'string') {
       //grab a specific link like .links('Fortnight')
       clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
       let link = arr.find((o) => o.page() === clue)
       return link === undefined ? [] : [link]
     }
+
     return arr || []
-  },
-  interwiki() {
-    let arr = []
-    this.sentences().forEach((s) => {
-      arr = arr.concat(s.interwiki())
-    })
+  }
+
+  /**
+   * returns all the interwiki links in this paragraph
+   * @returns {Link[]} an array of Link objects
+   */
+  interwiki () {
+    let arr = this.sentences().map((s) => s.interwiki()).flat()
+       
     return arr || []
-  },
-  text: function (options) {
-    options = setDefaults(options, defaults)
+  }
+
+  /**
+   * returns the paragraphs as text
+   *
+   * @returns {String}
+   */
+  text () {
     let str = this.sentences()
-      .map((s) => s.text(options))
+      .map((s) => s.text())
       .join(' ')
+
     this.lists().forEach((list) => {
       str += '\n' + list.text()
     })
+
     return str
-  },
-  json: function (options) {
-    options = setDefaults(options, defaults)
+  }
+
+  /**
+   * returns the paragraphs as JSON
+   * @param {*} options
+   * @returns {Object}
+   */
+  json (options) {
+    options = setDefaults(options, toTextDefaults)
     return toJSON(this, options)
-  },
-  wikitext: function () {
+  }
+
+  /**
+   * returns the wikitext of this paragraph
+   * @returns {String}
+   */
+  wikitext () {
     return this.data.wiki
-  },
+  }
 }
-methods.citations = methods.references
-Object.keys(methods).forEach((k) => {
-  Paragraph.prototype[k] = methods[k]
-})
+
+Paragraph.prototype.citations = Paragraph.prototype.references
 
 // aliases
-const singular = {
-  sentences: 'sentence',
-  references: 'reference',
-  citations: 'citation',
-  lists: 'list',
-  images: 'image',
-  links: 'link',
-}
-Object.keys(singular).forEach((k) => {
-  let sing = singular[k]
-  Paragraph.prototype[sing] = function (clue) {
-    let arr = this[k](clue)
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
-    return arr[0]
-  }
-})
+Paragraph.prototype.sentence = singularFactory('sentences')
+Paragraph.prototype.reference = singularFactory('references')
+Paragraph.prototype.citation = singularFactory('citations')
+Paragraph.prototype.list = singularFactory('lists')
+Paragraph.prototype.image = singularFactory('images')
+Paragraph.prototype.link = singularFactory('links')
 
 export default Paragraph

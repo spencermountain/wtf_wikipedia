@@ -1,17 +1,17 @@
 const dashSplit = /(–|-|−|&ndash;)/ // eslint-disable-line
 
-const parseTeam = function (txt) {
+function parseTeam (txt) {
   if (!txt) {
     return {}
   }
   let away = /^ *@ */.test(txt)
   return {
     name: txt.replace(/^ +@ +/, ''),
-    home: !away
+    home: !away,
   }
 }
 
-const parseRecord = function (txt) {
+function parseRecord (txt) {
   if (!txt) {
     return {}
   }
@@ -26,7 +26,7 @@ const parseRecord = function (txt) {
   return obj
 }
 
-const parseScore = function (txt) {
+function parseScore (txt) {
   if (!txt) {
     return {}
   }
@@ -42,7 +42,7 @@ const parseScore = function (txt) {
   return obj
 }
 
-const parseAttendance = function (txt = '') {
+function parseAttendance (txt = '') {
   //support [[Rogers Center]] (23,987)
   if (txt.indexOf('(') !== -1) {
     let m = txt.match(/\(([0-9 ,]+)\)/)
@@ -54,7 +54,7 @@ const parseAttendance = function (txt = '') {
   return parseInt(txt, 10) || null
 }
 
-const parsePitchers = function (row) {
+function parsePitchers (row) {
   let win = row.Win || row.win || ''
   win = win.replace(/\(.*?\)/, '').trim()
   let loss = row.Loss || row.loss || ''
@@ -71,10 +71,11 @@ const parsePitchers = function (row) {
   }
 }
 
-const parseRow = function (row) {
+function parseRow (row) {
   if (!row) {
     return null
   }
+
   let team = parseTeam(row.opponent || row.Opponent)
   let record = parseRecord(row.record || row.Record)
   let obj = {
@@ -84,8 +85,9 @@ const parseRow = function (row) {
     pitchers: parsePitchers(row),
     result: parseScore(row.score || row.Score || row['box score'] || row['Box Score']),
     record: record,
-    attendance: parseAttendance(row.attendance || row.Attendance || row['location (attendance)'] || row['Location (Attendance)'])
+    attendance: parseAttendance(row.attendance || row.Attendance || row['location (attendance)'] || row['Location (Attendance)']),
   }
+  
   return obj
 }
 export default parseRow

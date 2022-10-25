@@ -2,7 +2,7 @@ import test from 'tape'
 import wtf from '../_lib'
 import teams from '../src/teams'
 
-const doTeam = function (i, t, cb) {
+function doTeam (i, t, cb) {
   let team = teams[i]
   wtf.teamHistory(team, 1988, 2018)
     .catch(console.log)
@@ -12,11 +12,11 @@ const doTeam = function (i, t, cb) {
       seasons.forEach((season) => {
         t.ok(
           season.games.length > 110,
-          `${season.year}-${team}  - found ${season.games.length} games`
+          `${season.year}-${team}  - found ${season.games.length} games`,
         )
         t.ok(
           season.roster.length > 40,
-          `${season.year}-${team}  - found ${season.roster.length} players`
+          `${season.year}-${team}  - found ${season.roster.length} players`,
         )
       })
       i += 1

@@ -5,7 +5,7 @@
  * @param {object} options
  * @returns {object} the generated options
  */
-const makeHeaders = function (options) {
+function makeHeaders (options) {
   let agent =
     options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library'
 
@@ -28,4 +28,5 @@ const makeHeaders = function (options) {
     redirect: 'follow',
   }
 }
+
 export default makeHeaders

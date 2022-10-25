@@ -3,8 +3,8 @@ export default {
   //
   children: {},
   properties: {
-    // taxonomy: () => {},
-    // members: () => {},
+    // taxonomy: () => { },
+    // members: () => { },
   },
   //
   categories: {

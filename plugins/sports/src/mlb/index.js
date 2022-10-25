@@ -1,7 +1,7 @@
 import teams from './teams.js'
 import parse from './parse.js'
 
-const addMethod = function (models) {
+function addMethod (models) {
   models.wtf.mlbSeason = function (team, year) {
     //soften-up the team-input
     team = teams.find((t) => {
@@ -10,7 +10,8 @@ const addMethod = function (models) {
     team = team.replace(/ /g, '_')
     year = year || new Date().getFullYear()
     // let nextYear = year % 100
-    let page = `${year}_${team}_season`
+
+    const page = `${year}_${team}_season`
     return models.wtf.fetch(page).catch(console.log).then(parse)
   }
   models.Doc.prototype.mlbSeason = function () {

@@ -49,7 +49,7 @@ const defaults = {
  * @param {fetchDefaults} [options] the options for the fetch or the language of the wiki for the article
  * @param {fetchCallback} [callback] the callback function for the call
  */
-const fetch = function (title, options, callback) {
+function fetch (title, options, callback) {
   // support lang as 2nd param
   if (typeof options === 'string') {
     options = { lang: options }

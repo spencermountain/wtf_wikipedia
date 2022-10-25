@@ -87,7 +87,6 @@ test('ukrainian-infobox', function (t) {
   }
   t.equal(json.foo.text, 'bar', 'ukr infobox')
 
-
   str = `{{Картка:Лідер
 | оригінал імені    = foo
 | жінка             = bar

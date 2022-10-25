@@ -15,8 +15,8 @@ export default [
     output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
     plugins: [
       nodeResolve(),
-      commonjs({ requireReturnsDefault: "auto" })
-    ]
+      commonjs({ requireReturnsDefault: "auto" }),
+    ],
   },
 
   // === .js ===
@@ -25,8 +25,8 @@ export default [
     output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfApi', sourcemap: false }],
     plugins: [
       nodeResolve(),
-      commonjs({ requireReturnsDefault: "auto" })
-    ]
+      commonjs({ requireReturnsDefault: "auto" }),
+    ],
   },
   // ===  min.js ===
   {
@@ -36,7 +36,7 @@ export default [
       nodeResolve(),
       commonjs({ requireReturnsDefault: "auto" }),
       terser(),
-      sizeCheck({ expect: 24, warn: 10 })
-    ]
-  }
+      sizeCheck({ expect: 6, warn: 10 }),
+    ],
+  },
 ]

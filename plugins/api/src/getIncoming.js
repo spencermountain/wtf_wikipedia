@@ -8,10 +8,10 @@ const params = {
   lhlimit: 500,
   format: 'json',
   origin: '*',
-  redirects: true
+  redirects: true,
 }
 
-const makeUrl = function (title, options, append) {
+function makeUrl (title, options, append) {
   let url = `https://${options.lang}.wikipedia.org/${options.path}?`
   if (options.domain) {
     url = `https://${options.domain}/${options.path}?`

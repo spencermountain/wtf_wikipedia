@@ -5,7 +5,7 @@ const openReg = /^\s*\{\|/
 const closeReg = /^\s*\|\}/
 
 //tables can be recursive, so looky-here.
-const findTables = function (section) {
+function findTables (section) {
   let list = []
   let wiki = section._wiki
   let lines = wiki.split('\n')
@@ -28,6 +28,7 @@ const findTables = function (section) {
       stack[stack.length - 1] += '\n' + lines[i]
     }
   }
+
   //work-em together for a Table class
   let tables = []
   list.forEach((str) => {

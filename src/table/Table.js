@@ -1,8 +1,13 @@
+import Link from '../link/Link.js'
 import setDefaults from '../_lib/setDefaults.js'
 import toJson from './toJson.js'
-const defaults = {}
 
-const normalize = function (key = '') {
+/**
+ * 
+ * @param {string} key 
+ * @returns {string}
+ */
+function normalize (key = '') {
   key = key.toLowerCase()
   key = key.replace(/[_-]/g, ' ')
   key = key.replace(/\(.*?\)/, '')
@@ -10,40 +15,53 @@ const normalize = function (key = '') {
   return key
 }
 
-const Table = function (data, wiki = '') {
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data,
-  })
-  Object.defineProperty(this, '_wiki', {
-    enumerable: false,
-    value: wiki,
-  })
-}
+class Table {
+  /**
+   * will be Record<string, Sentence>[]
+   * @param {object[]} data 
+   * @param {string} wiki 
+   */
+  constructor (data, wiki = '') {
+    this.data = data
+    this._wiki = wiki
+  }
 
-const methods = {
-  links(n) {
-    let links = []
-    this.data.forEach((r) => {
-      Object.keys(r).forEach((k) => {
-        links = links.concat(r[k].links())
+  /**
+   * 
+   * @param {string} [clue] 
+   * @returns {Link[]}
+   */
+  links (clue) {
+    let links = this.data.map((row) => {
+      return Object.values(row).map((cell) => {
+        return cell.links(clue)
       })
-    })
-    if (typeof n === 'string') {
+    }).flat(2)
+
+
+    if (typeof clue === 'string') {
       //grab a link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = links.find((o) => o.page() === n)
+      clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
+      let link = links.find((o) => o.page() === clue)
       return link === undefined ? [] : [link]
     }
+
     return links
-  },
-  get(keys) {
+  }
+
+  /**
+   * 
+   * @param {string[]} keys 
+   * @returns 
+   */
+  get (keys) {
     // normalize mappings
     let have = this.data[0] || {}
     let mapping = Object.keys(have).reduce((h, k) => {
       h[normalize(k)] = k
       return h
     }, {})
+
     // string gets a flat-list
     if (typeof keys === 'string') {
       let key = normalize(keys)
@@ -52,6 +70,7 @@ const methods = {
         return row[key] ? row[key].text() : null
       })
     }
+
     // array gets obj-list
     keys = keys.map(normalize).map((k) => mapping[k] || k)
     return this.data.map((row) => {
@@ -64,8 +83,14 @@ const methods = {
         return h
       }, {})
     })
-  },
-  keyValue(options) {
+  }
+
+  /**
+   * 
+   * @param {object} options 
+   * @returns {object}
+   */
+  keyValue (options) {
     let rows = this.json(options)
     rows.forEach((row) => {
       Object.keys(row).forEach((k) => {
@@ -73,24 +98,37 @@ const methods = {
       })
     })
     return rows
-  },
-  json(options) {
+  }
+
+  /**
+   * 
+   * @param {object} options 
+   * @returns {object}
+   */
+  json (options) {
+    const defaults = {}
     options = setDefaults(options, defaults)
     return toJson(this.data, options)
-  },
+  }
 
-  text() {
+  /**
+   * 
+   * @returns {string}
+   */
+  text () {
     return ''
-  },
+  }
 
-  wikitext() {
+  /**
+   * 
+   * @returns {string}
+   */
+  wikitext () {
     return this._wiki || ''
-  },
+  }
 }
-methods.keyvalue = methods.keyValue
-methods.keyval = methods.keyValue
 
-Object.keys(methods).forEach((k) => {
-  Table.prototype[k] = methods[k]
-})
+Table.prototype.keyvalue = Table.prototype.keyValue
+Table.prototype.keyval = Table.prototype.keyValue
+
 export default Table

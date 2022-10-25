@@ -1,34 +1,41 @@
 import { fromText } from '../04-sentence/index.js'
 
-const methods = {
-  text: function () {
+class Template {
+  /**
+   * 
+   * @param {object} data 
+   * @param {string} [text] 
+   * @param {string} [wiki] 
+   */
+  constructor (data, text = '', wiki = '') {
+    this.data = data
+    this._text = text
+    this.wiki = wiki
+  }
+
+  /**
+   *
+   * @returns {string} the text of the template
+   */
+  text () {
     let str = this._text || ''
     return fromText(str).text()
-  },
-  json: function () {
+  }
+  /**
+   *
+   * @returns {object} the data of the template in json format
+   */
+  json () {
     return this.data || {}
-  },
-  wikitext: function () {
+  }
+
+  /**
+   *
+   * @returns {string} the wiki text of the template
+   */
+  wikitext () {
     return this.wiki || ''
-  },
+  }
 }
 
-const Template = function (data, text = '', wiki = '') {
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data,
-  })
-  Object.defineProperty(this, '_text', {
-    enumerable: false,
-    value: text,
-  })
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki,
-  })
-}
-
-Object.keys(methods).forEach((k) => {
-  Template.prototype[k] = methods[k]
-})
 export default Template

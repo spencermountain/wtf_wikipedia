@@ -1,4 +1,4 @@
-/* wtf-plugin-summary 0.3.2  MIT */
+/* wtf-plugin-summary 1.0.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -2081,7 +2081,7 @@
     //turn them into objects
     tokens = tokens.map(str => parseToken$1(str, opts));
     //clean up anything weird
-    tokens = postProcess$1(tokens, opts);
+    tokens = postProcess$1(tokens);
     // console.log(tokens)
     return tokens
   };
@@ -4436,7 +4436,7 @@
     for (let i = 0; i < chunks.length; i++) {
       let c = chunks[i];
       //should this chunk be combined with the next one?
-      if (chunks[i + 1] && isSentence$1(c, abbrevs, hasLetter) === false) {
+      if (chunks[i + 1] && isSentence$1(c, abbrevs) === false) {
         chunks[i + 1] = c + (chunks[i + 1] || '');
       } else if (c && c.length > 0) {
         //this chunk is a proper sentence..
@@ -12650,7 +12650,7 @@
     matches = cache$1(matches, methods);
 
     // organize them according to need...
-    let byGroup = group(matches, methods);
+    let byGroup = group(matches);
 
     // Every sentence has a Noun/Verb,
     // assume any match will be found on another need
@@ -13232,8 +13232,8 @@
     easyMode$1(document);
     matcher$1(document, world);
     matcher$1(document, world); //run it 2nd time
-    fallback$1(document, world);
-    fixUp$1(document, world);
+    fallback$1(document);
+    fixUp$1(document);
   };
   var compute = { chunks: findChunks };
 
@@ -15674,39 +15674,39 @@
       }
       toPastTense(n) {
         return getNth$5(this, n).map(s => {
-          let parsed = parse$3(s);
-          return toPast$3(s, parsed)
+          parse$3(s);
+          return toPast$3(s)
         })
       }
       toPresentTense(n) {
         return getNth$5(this, n).map(s => {
-          let parsed = parse$3(s);
-          return toPresent$3(s, parsed)
+          parse$3(s);
+          return toPresent$3(s)
         })
       }
       toFutureTense(n) {
         return getNth$5(this, n).map(s => {
-          let parsed = parse$3(s);
-          s = toFuture$3(s, parsed);
+          parse$3(s);
+          s = toFuture$3(s);
           return s
         })
       }
       toInfinitive(n) {
         return getNth$5(this, n).map(s => {
-          let parsed = parse$3(s);
-          return toInfinitive$5(s, parsed)
+          parse$3(s);
+          return toInfinitive$5(s)
         })
       }
       toNegative(n) {
         return getNth$5(this, n).map(vb => {
-          let parsed = parse$3(vb);
-          return toNegative$2(vb, parsed)
+          parse$3(vb);
+          return toNegative$2(vb)
         })
       }
       toPositive(n) {
         return getNth$5(this, n).map(vb => {
-          let parsed = parse$3(vb);
-          return toPositive(vb, parsed)
+          parse$3(vb);
+          return toPositive(vb)
         })
       }
       isQuestion(n) {
@@ -16449,7 +16449,7 @@
   const noop = vb => vb;
 
   const isPlural$1 = (vb, parsed) => {
-    let subj = getSubject$1(vb, parsed);
+    let subj = getSubject$1(vb);
     let m = subj.subject;
     if (m.has('i') || m.has('we')) {
       return true
@@ -16458,7 +16458,7 @@
   };
 
   const wasWere = (vb, parsed) => {
-    let { subject, plural } = getSubject$1(vb, parsed);
+    let { subject, plural } = getSubject$1(vb);
     if (plural || subject.has('we')) {
       return 'were'
     }
@@ -16472,7 +16472,7 @@
       return 'are'
     }
     // 'i was' -> i am
-    let { subject, plural } = getSubject$1(vb, parsed);
+    let { subject, plural } = getSubject$1(vb);
     if (subject.has('i')) {
       return 'am'
     }
@@ -16485,7 +16485,7 @@
 
 
   const doDoes = function (vb, parsed) {
-    let subj = getSubject$1(vb, parsed);
+    let subj = getSubject$1(vb);
     let m = subj.subject;
     if (m.has('i') || m.has('we')) {
       return 'do'
@@ -16594,7 +16594,7 @@
       if (!vb.has('not')) {
         vb.prepend('not');
       }
-      let does = doDoes(vb, parsed);
+      let does = doDoes(vb);
       vb.prepend(does);
     }
     vb.fullSentence().compute(['lexicon', 'preTagger', 'postTagger', 'chunks']);
@@ -16630,7 +16630,7 @@
       // but skip the 'is' participle..
       str = str === 'been' ? 'was' : str;
       if (str === 'was') {
-        str = wasWere(vb, parsed);
+        str = wasWere(vb);
       }
       if (str) {
         vb.replace(root, str, keep$4);
@@ -16819,12 +16819,12 @@
     let str = root.text('normal');
     str = verbToInfinitive(str, vb.model, getTense(root));
     // 'i walk' vs 'he walks'
-    if (isPlural$1(vb, parsed) === false) {
+    if (isPlural$1(vb) === false) {
       str = verbConjugate(str, vb.model).PresentTense;
     }
     // handle copula
     if (root.has('#Copula')) {
-      str = isAreAm(vb, parsed);
+      str = isAreAm(vb);
     }
     if (str) {
       vb = vb.replace(root, str, keep$3);
@@ -16840,7 +16840,7 @@
     let str = root.text('normal');
     str = verbToInfinitive(str, vb.model, getTense(root));
     // 'i walk' vs 'he walks'
-    if (isPlural$1(vb, parsed) === false) {
+    if (isPlural$1(vb) === false) {
       str = verbConjugate(str, vb.model).Gerund;
     }
     if (str) {
@@ -16872,9 +16872,9 @@
       let { root } = parsed;
       // is it *only* a infinitive? - 'we buy' etc
       if (root.has('#Infinitive')) {
-        let subj = getSubject$1(vb, parsed);
+        let subj = getSubject$1(vb);
         let m = subj.subject;
-        if (isPlural$1(vb, parsed) || m.has('i')) {
+        if (isPlural$1(vb) || m.has('i')) {
           // keep it infinitive
           return vb
         }
@@ -16893,7 +16893,7 @@
       const { root, auxiliary } = parsed;
       // handle 'will be'
       if (auxiliary.has('will') && root.has('be')) {
-        let str = isAreAm(vb, parsed);
+        let str = isAreAm(vb);
         vb.replace(root, str);
         vb = vb.remove('will');
         vb.replace('not ' + str, str + ' not');
@@ -16908,7 +16908,7 @@
     'present-progressive': noop,
     // was walking -> is walking
     'past-progressive': (vb, parsed) => {
-      let str = isAreAm(vb, parsed);
+      let str = isAreAm(vb);
       return vb.replace('(were|was)', str, keep$3)
     },
     // will be walking -> is walking
@@ -16928,9 +16928,9 @@
     // had walked -> has walked
     'past-perfect': (vb, parsed) => {
       // not 'we has walked'
-      let subj = getSubject$1(vb, parsed);
+      let subj = getSubject$1(vb);
       let m = subj.subject;
-      if (isPlural$1(vb, parsed) || m.has('i')) {
+      if (isPlural$1(vb) || m.has('i')) {
         vb = toInf(vb, parsed);// we walk
         vb.remove('had');
         return vb
@@ -16958,7 +16958,7 @@
     // was walked -> is walked
     // had been walked -> is walked
     'passive-past': (vb, parsed) => {
-      let str = isAreAm(vb, parsed);
+      let str = isAreAm(vb);
       if (vb.has('(had|have|has)') && vb.has('been')) {
         vb.replace('(had|have|has)', str, keep$3);
         vb.replace('been', 'being');
@@ -16993,7 +16993,7 @@
     'auxiliary-past': (vb, parsed) => {
       // 'did provide' -> 'does provide'
       if (parsed.auxiliary.has('did')) {
-        let str = doDoes(vb, parsed);
+        let str = doDoes(vb);
         vb.replace(parsed.auxiliary, str);
         return vb
       }
@@ -17020,7 +17020,7 @@
     // wanted to walk
     'want-infinitive': (vb, parsed) => {
       let str = 'wants';
-      if (isPlural$1(vb, parsed)) {
+      if (isPlural$1(vb)) {
         str = 'want';//we want
       }
       vb.replace('(want|wanted|wants)', str, keep$3);
@@ -17207,7 +17207,7 @@
     let gerund = verbConjugate(str, vb.model).Gerund;
     // 'are walking', 'is walking'
     if (gerund) {
-      gerund = `${isAreAm(vb, parsed)} ${gerund}`;
+      gerund = `${isAreAm(vb)} ${gerund}`;
       // console.log(root, gerund)
       // vb.match(root).debug()
       vb.replace(root, gerund, keep$1);
@@ -17228,7 +17228,7 @@
 
   // do/does not walk 
   const doesNot = function (vb, parsed) {
-    let does = doDoes(vb, parsed);
+    let does = doDoes(vb);
     vb.prepend(does + ' not');
     return vb
   };
@@ -17264,7 +17264,7 @@
       // he walk
       vb = toInf(vb, parsed);
       // does not 
-      vb = doesNot(vb, parsed);
+      vb = doesNot(vb);
       return vb
     },
     // 'he walked' -> 'he did not walk'
@@ -17291,7 +17291,7 @@
       if (hasCopula(vb) === true) {
         return isWas(vb)
       }
-      return doesNot(vb, parsed)
+      return doesNot(vb)
     },
 
     'passive-past': (vb) => {
@@ -17327,7 +17327,7 @@
     // wants to walk
     'want-infinitive': (vb, parsed) => {
       // does not 
-      vb = doesNot(vb, parsed);
+      vb = doesNot(vb);
       // want
       vb = vb.replace('wants', 'want', keep);
       return vb
@@ -17393,8 +17393,8 @@
       }
       subjects(n) {
         return getNth(this, n).map(vb => {
-          let parsed = parseVerb$1(vb);
-          return getSubject$1(vb, parsed).subject
+          parseVerb$1(vb);
+          return getSubject$1(vb).subject
         })
       }
       adverbs(n) {
@@ -17517,28 +17517,28 @@
   nlp$1.plugin(topics); //
   nlp$1.plugin(verbs); //
 
-  const fromTemplate = function (doc) {
+  function fromTemplate (doc) {
     let tmpl = doc.template('short description');
     if (tmpl) {
       let json = tmpl.json() || {};
       return json.description || ''
     }
     return null
-  };
+  }
 
-  const preProcess = function (doc) {
+  function preProcess (doc) {
     doc.parentheses().remove();
     return doc
-  };
+  }
 
-  const cleanUp = function (s) {
+  function cleanUp (s) {
     // 'an actor and was a politician'
     s.remove('and #Copula .*');
     return s
-  };
+  }
 
   //  founded in 1952 as the flagship ..
-  const findPivot = function (s) {
+  function findPivot (s) {
     let m = s.matchOne('#Copula+ (a|an|the|any|one) of?');
     if (!m.found) {
       m = s.matchOne('#Copula+');
@@ -17562,9 +17562,9 @@
       article: article,
       after: cleanUp(f.eq(2))
     }
-  };
+  }
 
-  const byClause = function (s) {
+  function byClause (s) {
     // 'an actor and also a politician'
     s.remove('and (also|eventually) (a|an|the|#Possessive) .*');
     // 'an actor who was a politician'
@@ -17575,9 +17575,9 @@
     s.remove('#Adverb? (located|situated|founded|found|formed|built|developed) .*');
 
     return s
-  };
+  }
 
-  const safeCuts = function (s) {
+  function safeCuts (s) {
     // 'in hamilton, Canada'
     if (s.has('(#Place && @hasComma) #Country+$')) {
       s.remove('#Country+$');
@@ -17612,9 +17612,9 @@
     s.remove('^the name of');
 
     return s
-  };
+  }
 
-  const isIndependent = function (c) {
+  function isIndependent (c) {
     if (c.has('^(and|the|which|who|whom|also|a|an|the)')) {
       return true
     }
@@ -17639,9 +17639,9 @@
       return true
     }
     return false
-  };
+  }
 
-  const hardCuts = function (s) {
+  function hardCuts (s) {
     // .. in san fransisco
     if (s.has('#Noun (located|based|situated|sited|found|discovered) (in|on) #Place+$')) {
       s.remove('(located|based) in #Place+$');
@@ -17699,9 +17699,9 @@
     //   s.remove('(which|who) .*')
     // }
     return s
-  };
+  }
 
-  const lastTry = function (s) {
+  function lastTry (s) {
     s.remove('(small|large|minor|major)');
     s.remove('(extinct|retired|annual|biweekly|monthly|daily)');
     s.remove('(female|male)');
@@ -17711,10 +17711,10 @@
     //
     s.remove('^(family|clade|genus|species|order) of');
     return s
-  };
+  }
 
   //check text is appropriate length
-  const isGood = function (doc, options) {
+  function isGood (doc, options) {
     if (doc && typeof doc.text === 'function') {
       let text = doc.text();
       if (text && text.length > options.min && text.length < options.max) {
@@ -17722,17 +17722,17 @@
       }
     }
     return false
-  };
+  }
 
-  const post = function (s) {
+  function post (s) {
     s.remove('^(and|or|but)');
     s.remove('(and|or|but)$');
     s.post(''); // remove trailing comma
     return s.text()
-  };
+  }
 
   // let count = 0
-  const doSentence = function (doc, options) {
+  function doSentence (doc, options) {
     let sentence = doc.sentence(0);
     if (!sentence) {
       return ''
@@ -17781,7 +17781,7 @@
     // console.log(after.text())
     // console.log('\n')
     return ''
-  };
+  }
 
   const bad = [
     'living',
@@ -17807,7 +17807,7 @@
   const hasYear = /[0-9]{4}/;
   const isPlural = /s$/;
 
-  const fromCategory = function (doc) {
+  function fromCategory (doc) {
     let cats = doc.categories();
 
     // try to focus on the best ones, first
@@ -17869,9 +17869,9 @@
     // console.log(cats)
 
     return cats[0]
-  };
+  }
 
-  const useAn = function (str) {
+  function useAn (str) {
     const a_regexs = [
       /^onc?e/i, //'wu' sound of 'o'
       /^u[bcfhjknq-t][aeiou]/i, // 'yu' sound for hard 'u'
@@ -17887,10 +17887,10 @@
       return true
     }
     return false
-  };
+  }
 
   // 'American songwriters' to 'an American songwriter'
-  const changeCat = function (cat, options) {
+  function changeCat (cat, options) {
     let c = nlp$1(cat);
     c.nouns().toSingular();
     // add article to the front
@@ -17911,15 +17911,15 @@
     // remove any parentheses
     c.parentheses().remove();
     return c.text()
-  };
+  }
 
-  const byCategory = function (doc, options) {
+  function byCategory (doc, options) {
     let cat = fromCategory(doc);
     if (!cat) {
       return ''
     }
     return changeCat(cat, options)
-  };
+  }
 
   const defaults = {
     article: true,
@@ -17930,11 +17930,11 @@
     min: 3
   };
 
-  const seemsGood = function (txt, options) {
+  function seemsGood (txt, options) {
     return txt && txt.length > 5 && txt.length < options.max
-  };
+  }
 
-  const plugin = function (models) {
+  function plugin (models) {
     // add a new method to main class
     models.Doc.prototype.summary = function (options) {
       let doc = this;
@@ -17993,7 +17993,7 @@
       }
       return 'Present'
     };
-  };
+  }
 
   return plugin;
 

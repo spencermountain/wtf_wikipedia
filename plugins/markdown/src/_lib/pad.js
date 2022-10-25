@@ -1,5 +1,5 @@
 //center-pad each cell, to make the table more legible
-const pad = (str, cellWidth) => {
+function pad (str, cellWidth) {
   str = str || ''
   str = String(str)
   cellWidth = cellWidth || 15

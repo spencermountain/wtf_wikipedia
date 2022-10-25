@@ -13,6 +13,9 @@
     "sourceType": "module",
     "ecmaFeatures": {}
   },
+  "plugins": [
+    "jsdoc"
+  ],
   "extends": [
     "plugin:compat/recommended",
     "plugin:regexp/recommended"
@@ -59,14 +62,14 @@
     "no-constant-condition": 1,
     "no-unused-expressions": 2,
     "comma-dangle": [
-      1,
-      "only-multiline"
+      "error",
+      "always-multiline"
     ],
     "space-before-function-paren": [
       "error",
       {
         "anonymous": "always",
-        "named": "never",
+        "named": "always",
         "asyncArrow": "always"
       }
     ],
@@ -82,6 +85,7 @@
     ],
     "regexp/prefer-d": 0,
     "regexp/prefer-w": 0,
-    "regexp/no-unused-capturing-group": 0
+    "regexp/no-unused-capturing-group": 0,
+    "jsdoc/no-undefined-types": 1
   }
 }

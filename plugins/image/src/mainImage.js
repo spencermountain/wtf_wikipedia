@@ -1,5 +1,5 @@
 // is there a good image of this
-const mainImage = function () {
+function mainImage () {
   let box = this.infobox()
   if (box) {
     let img = box.image()

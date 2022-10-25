@@ -1,9 +1,9 @@
 import test from 'tape'
 import readFile from '../lib/_cachedPage.js'
 
-function isCyclic(json) {
+function isCyclic (json) {
   const seenObjects = []
-  function detect(obj) {
+  function detect (obj) {
     if (obj && typeof obj === 'object') {
       if (seenObjects.indexOf(obj) !== -1) {
         return true

@@ -9,7 +9,7 @@ import parseTemplates from '../../template/index.js'
  * @private
  * @param {object} catcher an object to provide and catch data
  */
-const parseElection = function (catcher) {
+function parseElection (catcher) {
   catcher.text = catcher.text.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, (tmpl) => {
     let data = {
       _wiki: tmpl,

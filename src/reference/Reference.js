@@ -1,45 +1,75 @@
+import Link from '../link/Link.js'
 import encodeObj from '../_lib/encode.js'
 
 //also called 'citations'
-const Reference = function (data, wiki) {
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data,
-  })
-  Object.defineProperty(this, 'wiki', {
-    enumerable: false,
-    value: wiki,
-  })
-}
+class Reference {
+  /**
+   * 
+   * @param {object} data 
+   * @param {string} data.type
+   * @param {string} data.template
+   * @param {object} data.data
+   * @param {string} data.inline
+   * 
+   * @param {string} wiki 
+   */
+  constructor (data, wiki) {
+    this.data = data
+    this.wiki = wiki
+  }
 
-const methods = {
-  title: function () {
-    let data = this.data
-    return data.title || data.encyclopedia || data.author || ''
-  },
-  links: function (n) {
+  /**
+   *
+   * @returns {string} tile of the reference
+   */
+  title () {
+    return this.data.title || this.data.encyclopedia || this.data.author || ''
+  }
+
+  /**
+   *
+   * @param {number | string} [clue]
+   * @returns {Link | Link[]}
+   */
+  links (clue) {
     let arr = []
-    if (typeof n === 'number') {
-      return arr[n]
+    if (typeof clue === 'number') {
+      return arr[clue]
     }
-    //grab a specific link..
-    if (typeof n === 'number') {
-      return arr[n]
-    } else if (typeof n === 'string') {
+    
+    if (typeof clue === 'string') {
       //grab a link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = arr.find((o) => o.page() === n)
+      clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
+      let link = arr.find((o) => o.page() === clue)
       return link === undefined ? [] : [link]
     }
+
     return arr || []
-  },
-  text: function () {
+  }
+
+  /**
+   * NOT IMPLEMENTED
+   *
+   * @returns {string} the text of the reference
+   */
+  text () {
     return '' //nah, skip these.
-  },
-  wikitext: function () {
+  }
+
+  /**
+   *
+   * @returns {string} the wiki text of the reference
+   */
+  wikitext () {
     return this.wiki || ''
-  },
-  json: function (options = {}) {
+  }
+
+  /**
+   *
+   * @param {object} options the options for the serialization
+   * @returns {object} the serialized reference
+   */
+  json (options = {}) {
     let json = this.data || {}
     //encode them, for mongodb
     if (options.encode === true) {
@@ -47,9 +77,7 @@ const methods = {
       json = encodeObj(json)
     }
     return json
-  },
+  }
 }
-Object.keys(methods).forEach((k) => {
-  Reference.prototype[k] = methods[k]
-})
+
 export default Reference

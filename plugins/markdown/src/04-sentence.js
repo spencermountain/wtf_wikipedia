@@ -2,11 +2,11 @@ import smartReplace from './_lib/smartReplace.js'
 
 const defaults = {
   links: true,
-  formatting: true
+  formatting: true,
 }
 
 //create links, bold, italic in markdown
-const toMarkdown = function (options) {
+function toMarkdown (options) {
   options = Object.assign({}, defaults, options)
   let md = this.text()
   //turn links back into links

@@ -2,7 +2,7 @@ const open = '{'
 const close = '}'
 
 //grab all first-level recursions of '{{...}}'
-const findFlat = function (wiki) {
+function findFlat (wiki) {
   let depth = 0
   let list = []
   let carry = []

@@ -1,4 +1,4 @@
-const isIndependent = function (c) {
+function isIndependent (c) {
   if (c.has('^(and|the|which|who|whom|also|a|an|the)')) {
     return true
   }
@@ -25,13 +25,13 @@ const isIndependent = function (c) {
   return false
 }
 
-const hardCuts = function (s) {
+function hardCuts (s) {
   // .. in san fransisco
   if (s.has('#Noun (located|based|situated|sited|found|discovered) (in|on) #Place+$')) {
     s.remove('(located|based) in #Place+$')
   } else if (
     s.has(
-      '(#Noun|#Value) (in|on) the #Adjective? (region|province|district|coast|city) of #Place+$'
+      '(#Noun|#Value) (in|on) the #Adjective? (region|province|district|coast|city) of #Place+$',
     )
   ) {
     s.remove('(in|on) the #Adjective? (region|province|district|coast|city) of #Place+$')

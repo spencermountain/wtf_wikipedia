@@ -4,5 +4,5 @@ export default [
   'puntudecimal',
   'szám',
   'try formatnum',
-  '형식 숫자'
+  '형식 숫자',
 ]

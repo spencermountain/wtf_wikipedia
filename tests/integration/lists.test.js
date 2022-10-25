@@ -56,7 +56,7 @@ test('collapsible list', function (t) {
   t.equal(
     doc.text(),
     'European Free Trade Association members\n\nIceland\n\nLiechtenstein\n\nNorway\n\nSwitzerland',
-    'text 3'
+    'text 3',
   )
 
   str = `{{Collapsible list
@@ -72,7 +72,7 @@ test('collapsible list', function (t) {
   t.equal(
     doc.text(),
     'List of MPs\n\nDean Allison\n\nChris Charlton\n\nDavid Christopherson\n\nWayne Marston\n\nDavid Sweet',
-    'text 2'
+    'text 2',
   )
   t.end()
 })

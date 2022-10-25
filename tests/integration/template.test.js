@@ -37,7 +37,7 @@ test('boloZenden infobox', function (t) {
     | manageryears1  = 2012–2013 |managerclubs1 = [[Chelsea F.C.|Chelsea]] (assistant manager)
     | manageryears2  = 2013– |managerclubs2 = [[Jong PSV]] (assistant manager)
   }}`
-  const o = wtf(boloZenden).infobox().data
+  const o = wtf(boloZenden).infobox()._data
   t.equal(o.years1.text(), '1993–1998')
   t.equal(o.clubs1.text(), 'PSV')
   t.equal(o.youthyears1.text(), '1985–1987')
@@ -70,7 +70,7 @@ test('hurricane infobox', function (t) {
   | Areas=[[Florida]]
   | Hurricane season=[[2002 Atlantic hurricane season]]
 }}`
-  const o = wtf(hurricane).infobox().data
+  const o = wtf(hurricane).infobox()._data
   t.equal(o.name.text(), 'Tropical Storm Edouard')
   t.equal(o.dissipated.text(), 'September 6, 2002')
   t.equal(o['hurricane season'].text(), '2002 Atlantic hurricane season')
@@ -132,7 +132,7 @@ const alabama = `
 }}
 `
 test('Alabama infobox', function (t) {
-  const infobox = wtf(alabama).infobox().data
+  const infobox = wtf(alabama).infobox()._data
   t.equal(infobox.athletics.text(), 'NCAA Division I – SEC', 'athletics =' + infobox.athletics.text)
   t.equal(infobox.country.text(), 'U.S.', 'country =' + infobox.country.text)
   t.equal(infobox.president.text(), 'Stuart R. Bell', 'president =' + infobox.president.text)
@@ -176,7 +176,7 @@ test('Radiohead infobox', function (t) {
 * [[Ed O'Brien]]
 * [[Philip Selway]]
 }} `
-  const infobox = wtf(radiohead).infobox().data
+  const infobox = wtf(radiohead).infobox()._data
   t.equal(infobox.current_members.text().match(/Greenwood/g).length, 2, 'current members')
   t.equal(infobox.genre.text(), 'Art rock\n\nalternative rock\n\nelectronica\n\nexperimental rock', 'genre')
   t.equal(infobox.associated_acts.text(), 'Atoms for Peace\n\n7 Worlds Collide', 'associated-acts')
@@ -290,7 +290,7 @@ test('microsoft currency parsing', function (t) {
 | website = {{URL|https://microsoft.com}}
 }}
   `
-  const infobox = wtf(microsoft).infobox().data
+  const infobox = wtf(microsoft).infobox()._data
   t.equal(infobox.revenue.text(), 'US$89.95 billion', 'revenue =' + infobox.revenue.text)
   t.equal(infobox.operating_income.text(), 'US$22.27 billion', 'operating_income =' + infobox.operating_income.text)
   t.equal(infobox.net_income.text(), 'US$21.20 billion', 'net_income =' + infobox.net_income.text)

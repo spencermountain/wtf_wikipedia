@@ -10,7 +10,7 @@ Object.keys(languages).forEach((k) => {
 
 //this is predictably very complicated.
 // https://meta.wikimedia.org/wiki/Help:Interwiki_linking
-const parseInterwiki = function (obj) {
+function parseInterwiki (obj) {
   let str = obj.page || ''
   if (str.indexOf(':') !== -1) {
     let m = str.match(/^(.*):(.*)/)

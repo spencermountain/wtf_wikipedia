@@ -1,4 +1,4 @@
-const toWiki = function () {
+function toWiki () {
   let text = `[[${this.file()}|thumb`
   let caption = this.data.caption
   if (caption) {

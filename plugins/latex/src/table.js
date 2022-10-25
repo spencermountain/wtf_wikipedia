@@ -1,5 +1,5 @@
 //create a formal LATEX table
-const doTable = function (options) {
+function doTable (options) {
   let rows = this.data
   let out = '\n%\\vspace*{0.3cm}\n'
   out +=

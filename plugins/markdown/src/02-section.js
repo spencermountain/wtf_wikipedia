@@ -3,10 +3,10 @@ const defaults = {
   images: true,
   tables: true,
   lists: true,
-  paragraphs: true
+  paragraphs: true,
 }
 
-const doSection = function (options) {
+function doSection (options) {
   options = Object.assign({}, defaults, options)
   let md = ''
 

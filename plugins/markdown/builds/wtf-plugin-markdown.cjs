@@ -12,7 +12,7 @@
     sections: true
   };
   //we should try to make this look like the wikipedia does, i guess.
-  const softRedirect = function (doc) {
+  function softRedirect (doc) {
     let link = doc.redirectTo();
     let href = link.page;
     href = './' + href.replace(/ /g, '_');
@@ -20,10 +20,10 @@
       href += '#' + link.anchor;
     }
     return `↳ [${link.text}](${href})`
-  };
+  }
 
   //turn a Doc object into a markdown string
-  const toMarkdown$6 = function (options) {
+  function toMarkdown$6 (options) {
     options = Object.assign({}, defaults$4, options);
     let data = this;
     let md = '';
@@ -52,7 +52,7 @@
         .join('\n');
     }
     return md
-  };
+  }
 
   const defaults$3 = {
     headers: true,
@@ -62,7 +62,7 @@
     paragraphs: true
   };
 
-  const doSection = function (options) {
+  function doSection (options) {
     options = Object.assign({}, defaults$3, options);
     let md = '';
 
@@ -116,13 +116,13 @@
     }
 
     return md
-  };
+  }
 
   const defaults$2 = {
     sentences: true
   };
 
-  const toMarkdown$5 = function (options) {
+  function toMarkdown$5 (options) {
     options = Object.assign({}, defaults$2, options);
     let md = '';
     if (options.sentences === true) {
@@ -132,15 +132,15 @@
       }, {});
     }
     return md
-  };
+  }
 
   //escape a string like 'fun*2.Co' for a regExpr
-  function escapeRegExp(str) {
+  function escapeRegExp (str) {
     return str.replace(/[\-[\]/{}()*+?.\\^$|]/g, '\\$&')
   }
 
   //sometimes text-replacements can be ambiguous - words used multiple times..
-  const smartReplace = function (all, text, result) {
+  function smartReplace (all, text, result) {
     if (!text || !all) {
       return all
     }
@@ -159,7 +159,7 @@
       all = all.replace(text, result);
     }
     return all
-  };
+  }
 
   const defaults$1 = {
     links: true,
@@ -167,7 +167,7 @@
   };
 
   //create links, bold, italic in markdown
-  const toMarkdown$4 = function (options) {
+  function toMarkdown$4 (options) {
     options = Object.assign({}, defaults$1, options);
     let md = this.text();
     //turn links back into links
@@ -189,29 +189,29 @@
       });
     }
     return md
-  };
+  }
 
   // add `[text](href)` to the text
-  const toMarkdown$3 = function () {
+  function toMarkdown$3 () {
     let href = this.href();
     href = href.replace(/ /g, '_');
     // href = encodeURIComponent(href)
     let str = this.text() || this.page();
     return '[' + str + '](' + href + ')'
-  };
+  }
 
   //markdown images are like this: ![alt text](href)
-  const toMarkdown$2 = function () {
+  function toMarkdown$2 () {
     let alt = this.data.file.replace(/^(file|image):/i, '');
     alt = alt
       .replace(/\.(jpg|jpeg|png|gif|svg)/i, '')
       .split('_')
       .join(' ');
     return '![' + alt + '](' + this.thumbnail() + ')'
-  };
+  }
 
   //center-pad each cell, to make the table more legible
-  const pad = (str, cellWidth) => {
+  function pad (str, cellWidth) {
     str = str || '';
     str = String(str);
     cellWidth = cellWidth || 15;
@@ -224,7 +224,7 @@
       }
     }
     return str
-  };
+  }
 
   const dontDo = {
     image: true,
@@ -239,7 +239,7 @@
   };
 
   // render an infobox as a table with two columns, key + value
-  const doInfobox = function (options) {
+  function doInfobox (options) {
     options = Object.assign({}, defaults, options);
     let md = '|' + pad('', 35) + '|' + pad('', 30) + '|\n';
     md += '|' + pad('---', 35) + '|' + pad('---', 30) + '|\n';
@@ -256,20 +256,20 @@
       md += '|' + pad(key, 35) + '|' + pad(val, 30) + ' |\n';
     });
     return md
-  };
+  }
 
   //
-  const toMarkdown$1 = function (options) {
+  function toMarkdown$1 (options) {
     return this.lines()
       .map((s) => {
         let str = s.markdown(options);
         return ' * ' + str
       })
       .join('\n')
-  };
+  }
 
   //
-  const toMarkdown = function () {
+  function toMarkdown () {
     if (this.data && this.data.url && this.data.title) {
       return `⌃ [${this.data.title}](${this.data.url})`
     } else if (this.data.encyclopedia) {
@@ -288,7 +288,7 @@
       return `⌃ ${this.inline.markdown()}`
     }
     return ''
-  };
+  }
 
   /* this is a markdown table:
   | Tables        | Are           | Cool  |
@@ -298,13 +298,13 @@
   | zebra stripes | are neat      |    $1 |
   */
 
-  const makeRow = (arr) => {
+  function makeRow (arr) {
     arr = arr.map((s) => pad(s, 14));
     return '| ' + arr.join(' | ') + ' |'
-  };
+  }
 
   //markdown tables are weird
-  const doTable = function (options) {
+  function doTable (options) {
     let md = '';
     if (!this || this.length === 0) {
       return md
@@ -337,9 +337,9 @@
       })
       .join('\n');
     return md + '\n'
-  };
+  }
 
-  const plugin = function (models) {
+  function plugin (models) {
     models.Doc.prototype.markdown = toMarkdown$6;
     models.Section.prototype.markdown = doSection;
     models.Paragraph.prototype.markdown = toMarkdown$5;
@@ -350,7 +350,7 @@
     models.Table.prototype.markdown = doTable;
     models.List.prototype.markdown = toMarkdown$1;
     models.Reference.prototype.markdown = toMarkdown;
-  };
+  }
 
   return plugin;
 

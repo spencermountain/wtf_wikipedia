@@ -6,9 +6,9 @@ const defaults = {
   categories: true,
   lists: true,
   links: true,
-  paragraphs: true
+  paragraphs: true,
 }
-const toWiki = function (options) {
+function toWiki (options) {
   options = options || {}
   options = Object.assign({}, defaults, options)
   let text = ''

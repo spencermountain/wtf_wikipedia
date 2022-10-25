@@ -9,7 +9,7 @@ test('expand external interwiki link', (t) => {
   t.equal(
     html,
     '<a class="link" href="http://heroeswiki.com/cool">cool</a>',
-    'expand external link'
+    'expand external link',
   )
   t.end()
 })
@@ -22,7 +22,7 @@ test('expand internal interwiki link', (t) => {
   t.equal(
     href,
     '<a class="link" href="http://fr.wikipedia.org/wiki/cool">cool</a>',
-    'expand external link'
+    'expand external link',
   )
   t.end()
 })

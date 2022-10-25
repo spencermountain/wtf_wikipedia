@@ -14,7 +14,7 @@ export default [
     output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
     plugins: [
       commonjs(),
-    ]
+    ],
   },
 
   // === .js ===
@@ -23,17 +23,17 @@ export default [
     output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfI18n', sourcemap: false }],
     plugins: [
       commonjs(),
-    ]
+    ],
   },
   // ===  min.js ===
   {
     input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.min.js`, format: 'umd', name: 'wtfI18n', sourcemap: false }
+    output: [{ banner: banner, file: `builds/${name}.min.js`, format: 'umd', name: 'wtfI18n', sourcemap: false },
     ],
     plugins: [
       commonjs(),
       terser(),
-      sizeCheck({ expect: 10, warn: 10 })
-    ]
-  }
+      sizeCheck({ expect: 15, warn: 10 }),
+    ],
+  },
 ]

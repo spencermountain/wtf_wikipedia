@@ -1,7 +1,7 @@
 import test from 'tape'
 import wtf from '../lib/index.js'
 
-function delay(time) {
+function delay (time) {
   return new Promise(function (resolve) {
     setTimeout(function () {
       resolve()

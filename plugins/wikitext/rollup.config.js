@@ -14,7 +14,7 @@ export default [
     output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
     plugins: [
       commonjs(),
-    ]
+    ],
   },
 
   // === .js ===
@@ -23,7 +23,7 @@ export default [
     output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfWikitext', sourcemap: false }],
     plugins: [
       commonjs(),
-    ]
+    ],
   },
   // ===  min.js ===
   {
@@ -32,7 +32,7 @@ export default [
     plugins: [
       commonjs(),
       terser(),
-      sizeCheck({ expect: 10, warn: 10 })
-    ]
-  }
+      sizeCheck({ expect: 4, warn: 10 }),
+    ],
+  },
 ]

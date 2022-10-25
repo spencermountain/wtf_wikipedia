@@ -16,7 +16,7 @@ export default [
     plugins: [
       resolve(),
       commonjs({ requireReturnsDefault: "auto" }),
-    ]
+    ],
   },
 
   // === .js ===
@@ -26,7 +26,7 @@ export default [
     plugins: [
       resolve(),
       commonjs({ requireReturnsDefault: "auto" }),
-    ]
+    ],
   },
   // ===  min.js ===
   {
@@ -36,7 +36,7 @@ export default [
       resolve(),
       commonjs({ requireReturnsDefault: "auto" }),
       terser(),
-      sizeCheck({ expect: 55, warn: 15 })
-    ]
-  }
+      sizeCheck({ expect: 55, warn: 15 }),
+    ],
+  },
 ]

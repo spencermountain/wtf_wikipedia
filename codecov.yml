@@ -1,11 +1,10 @@
-comment: false
-branches:
-  - 'master'
-codecov:
-  require_ci_to_pass: no
+ignore:
+    - "builds/*"
+    - "**/builds/*"
+    - "tests/*"
+    - "**/tests/*"
+    - "scratch.js"
 coverage:
-  status:
-    project:
-      default:
-        target: 80%    # the required coverage value
-        threshold: 15%  # the leniency in hitting the target
+  precision: 2
+  round: down
+  range: "80...100"

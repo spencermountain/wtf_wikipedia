@@ -9,7 +9,7 @@ import list from './list.js'
 import reference from './reference.js'
 import table from './table.js'
 
-const plugin = function (models) {
+function plugin (models) {
   models.Doc.prototype.html = doc
 
   models.Section.prototype.html = section
@@ -30,6 +30,6 @@ const plugin = function (models) {
 
   models.Table.prototype.html = table
 
-  // models.Template.html = function(opts) {}
+  // models.Template.html = function (opts) {}
 }
 export default plugin

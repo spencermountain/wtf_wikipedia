@@ -8,7 +8,7 @@ import kill_xml from './kill_xml.js'
  * @param {string} wiki the wikitext that needs processing
  * @returns {string} the processed text
  */
-function preProcess(wiki) {
+function preProcess (wiki) {
   //remove comments
   wiki = wiki.replace(/<!--[\s\S]{0,2000}?-->/g, '')
   wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, '')

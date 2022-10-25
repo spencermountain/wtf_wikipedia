@@ -1,4 +1,4 @@
-const toLatex = function () {
+function toLatex () {
   let href = this.href()
   href = href.replace(/ /g, '_')
   let str = this.text() || this.page()

@@ -5,16 +5,17 @@ import { fromText as parseSentence } from '../../../04-sentence/index.js'
 import pipeSplitter from './01-pipe-splitter.js'
 import keyMaker from './02-keyMaker.js'
 import cleanup from './03-cleanup.js'
+import Sentence from '../../../04-sentence/Sentence.js'
 
 /**
  * most templates just want plaintext...
  *
  * @private
- * @param {str} str
+ * @param {string} str
  * @param {'json' | 'raw'} [fmt]
- * @returns {string} text
+ * @returns {string | Sentence | object} text
  */
-const makeFormat = function (str, fmt) {
+function makeFormat (str, fmt) {
   let s = parseSentence(str)
   //support various output formats
   if (fmt === 'json') {
@@ -35,7 +36,7 @@ const makeFormat = function (str, fmt) {
  * @param {'json' | 'raw'} [fmt] whether you wan to parse the text of the template the raw object or just the text
  * @returns {object} the parameters of the template in a usable format
  */
-const parser = function (tmpl, order = [], fmt) {
+function parser (tmpl, order = [], fmt) {
   //remove {{}}'s and split based on pipes
   tmpl = strip(tmpl || '')
   let arr = pipeSplitter(tmpl)

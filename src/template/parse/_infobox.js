@@ -13,7 +13,7 @@ const yearIn = /^year in [A-Z]/i
 //some known ones from
 //https://en.wikipedia.org/wiki/Wikipedia:List_of_infoboxes
 //and https://en.wikipedia.org/wiki/Category:Infobox_templates
-const isInfobox = function (name) {
+function isInfobox (name) {
   //known
   if (infoboxList.hasOwnProperty(name) === true) {
     return true
@@ -32,7 +32,7 @@ const isInfobox = function (name) {
 }
 
 //turns template data into good infobox data
-const fmtInfobox = function (obj = {}) {
+function fmtInfobox (obj = {}) {
   let m = obj.template.match(i18nReg)
   let type = obj.template
   if (m && m[0]) {

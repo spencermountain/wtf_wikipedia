@@ -2,12 +2,12 @@
 // const birthDate = require('./birthDate')
 const shouldSkip = /see also/;
 
-function escapeRegExp(str) {
+function escapeRegExp (str) {
   str = str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
   return new RegExp(str, 'i')
 }
 
-const parseLine = function (line) {
+function parseLine (line) {
   let link = line.link(0);
   if (!link || link.type() !== 'internal') {
     return null
@@ -25,10 +25,10 @@ const parseLine = function (line) {
     link: link.page(),
     desc: desc,
   }
-};
+}
 
 // A '''[[berry]]''' is a small, pulpy and often edible fruit in non-technical language.
-const getMain = function (s) {
+function getMain (s) {
   let txt = s.text().slice(0, 120);
   if (!txt.match(/ is /)) {
     return null
@@ -44,15 +44,15 @@ const getMain = function (s) {
     return null
   }
   return link.page()
-};
+}
 
-const getTitle = function (doc) {
+function getTitle (doc) {
   let title = doc.title() || '';
   title = title.replace(/ \(disambig|disambiguation\)$/, '');
   return title
-};
+}
 
-const addMethod = function (models) {
+function addMethod (models) {
   // parse a disambiguation page into an array of pages
   models.Doc.prototype.disambiguation = function () {
     if (this.isDisambiguation() !== true) {
@@ -90,6 +90,6 @@ const addMethod = function (models) {
   };
   // alias
   models.Doc.prototype.disambig = models.Doc.prototype.disambiguation;
-};
+}
 
 export { addMethod as default };

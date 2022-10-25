@@ -1,16 +1,16 @@
 import unfetch from 'isomorphic-unfetch'
 
 // test if the image url exists or not
-const imgExists = function (callback) {
+function imgExists (callback) {
   const userAgent = this.data['_userAgent']
   return unfetch(this.url(), {
     method: 'HEAD',
     headers: {
       'Api-User-Agent': userAgent,
-      'User-Agent': userAgent
-    }
+      'User-Agent': userAgent,
+    },
   })
-    .then(resp => {
+    .then((resp) => {
       //support callback non-promise form
       let status = String(resp.status) || ''
       let bool = /^[23]/.test(status)
@@ -19,7 +19,7 @@ const imgExists = function (callback) {
       }
       return bool
     })
-    .catch(e => {
+    .catch((e) => {
       console.error(e)
       if (callback) {
         callback(e, null)

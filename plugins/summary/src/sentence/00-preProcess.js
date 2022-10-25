@@ -1,4 +1,4 @@
-const preProcess = function (doc) {
+function preProcess (doc) {
   doc.parentheses().remove()
   return doc
 }

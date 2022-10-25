@@ -7,13 +7,13 @@ import pad from './_lib/pad.js'
 | zebra stripes | are neat      |    $1 |
 */
 
-const makeRow = (arr) => {
+function makeRow (arr) {
   arr = arr.map((s) => pad(s, 14))
   return '| ' + arr.join(' | ') + ' |'
 }
 
 //markdown tables are weird
-const doTable = function (options) {
+function doTable (options) {
   let md = ''
   if (!this || this.length === 0) {
     return md

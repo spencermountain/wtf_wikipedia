@@ -11,9 +11,8 @@ const document = {
     domain: 'http://localhost:80',
     wikidata: 'Q12',
     description: 'general greeting',
-  }
+  },
 }
-
 
 test('should filter out all the undefined values', (t) => {
   const result = parseDoc([undefined, document], ['not hallo', 'hallo'])
