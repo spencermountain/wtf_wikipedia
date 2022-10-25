@@ -45,7 +45,9 @@
   },
   "browserslist": [
     "node > 12",
-    "> 0.2% and not dead"
+    "> 0.2% and not dead",
+    "not ie 6-11",
+    "not op_mini all"
   ],
   "files": [
     "builds",
