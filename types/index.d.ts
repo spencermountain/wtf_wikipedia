@@ -202,13 +202,6 @@ declare function fetch(
 ): Promise<null | Document | Document[]>;
 
 declare function wtf(wiki: string, options?: object): Document
-declare namespace wtf {
-    var version: string
-    export { fetch }
-    export { extend }
-    export { extend as plugin }
-    export { version }
-}
 
 declare function extend(fn: Function): {
     (wiki: string, options: object): Document
@@ -216,4 +209,24 @@ declare function extend(fn: Function): {
     extend: typeof extend
     plugin: typeof extend
     version: string
+}
+
+declare namespace wtf {
+  var version: string
+  export { fetch }
+  export { extend }
+  export { extend as plugin }
+  export { version }
+
+  export { Document }
+  export { Section }
+  export { Paragraph }
+  export { Sentence }
+  export { Image }
+  export { Infobox }
+  export { Link }
+  export { List }
+  export { Reference }
+  export { Table }
+  export { Template }
 }

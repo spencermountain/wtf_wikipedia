@@ -9475,6 +9475,18 @@
   wtf.plugin = wtf.extend;
   wtf.version = version;
 
+  wtf.Document = Document;
+  wtf.Section = Section;
+  wtf.Paragraph = Paragraph;
+  wtf.Sentence = Sentence;
+  wtf.Image = Image;
+  wtf.Infobox = Infobox;
+  wtf.Link = Link;
+  wtf.List = List;
+  wtf.Reference = Reference;
+  wtf.Table = Table;
+  wtf.Template = Template;
+
   return wtf;
 
 }));
