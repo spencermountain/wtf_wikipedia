@@ -18,115 +18,114 @@
  * See http://pajhome.org.uk/crypt/md5 for more info.
  */
 
-
 /**
-   * Add integers, wrapping at 2^32.
-   * This uses 16-bit operations internally to work around bugs in interpreters.
-   *
-   * @param {number} x First integer
-   * @param {number} y Second integer
-   * @returns {number} Sum
-   */
-function safeAdd(x, y) {
+ * Add integers, wrapping at 2^32.
+ * This uses 16-bit operations internally to work around bugs in interpreters.
+ *
+ * @param {number} x First integer
+ * @param {number} y Second integer
+ * @returns {number} Sum
+ */
+function safeAdd (x, y) {
   let lsw = (x & 0xffff) + (y & 0xffff)
   let msw = (x >> 16) + (y >> 16) + (lsw >> 16)
   return (msw << 16) | (lsw & 0xffff)
 }
 
 /**
-   * Bitwise rotate a 32-bit number to the left.
-   *
-   * @param {number} num 32-bit number
-   * @param {number} cnt Rotation count
-   * @returns {number} Rotated number
-   */
-function bitRotateLeft(num, cnt) {
+ * Bitwise rotate a 32-bit number to the left.
+ *
+ * @param {number} num 32-bit number
+ * @param {number} cnt Rotation count
+ * @returns {number} Rotated number
+ */
+function bitRotateLeft (num, cnt) {
   return (num << cnt) | (num >>> (32 - cnt))
 }
 
 /**
-   * Basic operation the algorithm uses.
-   *
-   * @param {number} q q
-   * @param {number} a a
-   * @param {number} b b
-   * @param {number} x x
-   * @param {number} s s
-   * @param {number} t t
-   * @returns {number} Result
-   */
-function md5cmn(q, a, b, x, s, t) {
+ * Basic operation the algorithm uses.
+ *
+ * @param {number} q q
+ * @param {number} a a
+ * @param {number} b b
+ * @param {number} x x
+ * @param {number} s s
+ * @param {number} t t
+ * @returns {number} Result
+ */
+function md5cmn (q, a, b, x, s, t) {
   return safeAdd(bitRotateLeft(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b)
 }
 /**
-   * Basic operation the algorithm uses.
-   *
-   * @param {number} a a
-   * @param {number} b b
-   * @param {number} c c
-   * @param {number} d d
-   * @param {number} x x
-   * @param {number} s s
-   * @param {number} t t
-   * @returns {number} Result
-   */
-function md5ff(a, b, c, d, x, s, t) {
+ * Basic operation the algorithm uses.
+ *
+ * @param {number} a a
+ * @param {number} b b
+ * @param {number} c c
+ * @param {number} d d
+ * @param {number} x x
+ * @param {number} s s
+ * @param {number} t t
+ * @returns {number} Result
+ */
+function md5ff (a, b, c, d, x, s, t) {
   return md5cmn((b & c) | (~b & d), a, b, x, s, t)
 }
 /**
-   * Basic operation the algorithm uses.
-   *
-   * @param {number} a a
-   * @param {number} b b
-   * @param {number} c c
-   * @param {number} d d
-   * @param {number} x x
-   * @param {number} s s
-   * @param {number} t t
-   * @returns {number} Result
-   */
-function md5gg(a, b, c, d, x, s, t) {
+ * Basic operation the algorithm uses.
+ *
+ * @param {number} a a
+ * @param {number} b b
+ * @param {number} c c
+ * @param {number} d d
+ * @param {number} x x
+ * @param {number} s s
+ * @param {number} t t
+ * @returns {number} Result
+ */
+function md5gg (a, b, c, d, x, s, t) {
   return md5cmn((b & d) | (c & ~d), a, b, x, s, t)
 }
 /**
-   * Basic operation the algorithm uses.
-   *
-   * @param {number} a a
-   * @param {number} b b
-   * @param {number} c c
-   * @param {number} d d
-   * @param {number} x x
-   * @param {number} s s
-   * @param {number} t t
-   * @returns {number} Result
-   */
-function md5hh(a, b, c, d, x, s, t) {
+ * Basic operation the algorithm uses.
+ *
+ * @param {number} a a
+ * @param {number} b b
+ * @param {number} c c
+ * @param {number} d d
+ * @param {number} x x
+ * @param {number} s s
+ * @param {number} t t
+ * @returns {number} Result
+ */
+function md5hh (a, b, c, d, x, s, t) {
   return md5cmn(b ^ c ^ d, a, b, x, s, t)
 }
 /**
-   * Basic operation the algorithm uses.
-   *
-   * @param {number} a a
-   * @param {number} b b
-   * @param {number} c c
-   * @param {number} d d
-   * @param {number} x x
-   * @param {number} s s
-   * @param {number} t t
-   * @returns {number} Result
-   */
-function md5ii(a, b, c, d, x, s, t) {
+ * Basic operation the algorithm uses.
+ *
+ * @param {number} a a
+ * @param {number} b b
+ * @param {number} c c
+ * @param {number} d d
+ * @param {number} x x
+ * @param {number} s s
+ * @param {number} t t
+ * @returns {number} Result
+ */
+function md5ii (a, b, c, d, x, s, t) {
   return md5cmn(c ^ (b | ~d), a, b, x, s, t)
 }
 
 /**
-   * Calculate the MD5 of an array of little-endian words, and a bit length.
-   *
-   * @param {Array} x Array of little-endian words
-   * @param {number} len Bit length
-   * @returns {Array<number>} MD5 Array
-   */
-function binlMD5(x, len) {
+ * Calculate the MD5 of an array of little-endian words, and a bit length.
+ *
+ * @param {Array} x Array of little-endian words
+ * @param {number} len Bit length
+ * @returns {Array<number>} MD5 Array
+ */
+function binlMD5 (x, len) {
   /* append padding */
   x[len >> 5] |= 0x80 << len % 32
   x[(((len + 64) >>> 9) << 4) + 14] = len
@@ -224,12 +223,12 @@ function binlMD5(x, len) {
 }
 
 /**
-   * Convert an array of little-endian words to a string
-   *
-   * @param {Array<number>} input MD5 Array
-   * @returns {string} MD5 string
-   */
-function binl2rstr(input) {
+ * Convert an array of little-endian words to a string
+ *
+ * @param {Array<number>} input MD5 Array
+ * @returns {string} MD5 string
+ */
+function binl2rstr (input) {
   let i
   let output = ''
   let length32 = input.length * 32
@@ -240,13 +239,13 @@ function binl2rstr(input) {
 }
 
 /**
-   * Convert a raw string to an array of little-endian words
-   * Characters >255 have their high-byte silently ignored.
-   *
-   * @param {string} input Raw input string
-   * @returns {Array<number>} Array of little-endian words
-   */
-function rstr2binl(input) {
+ * Convert a raw string to an array of little-endian words
+ * Characters >255 have their high-byte silently ignored.
+ *
+ * @param {string} input Raw input string
+ * @returns {Array<number>} Array of little-endian words
+ */
+function rstr2binl (input) {
   let i
   let output = []
   output[(input.length >> 2) - 1] = undefined
@@ -261,23 +260,23 @@ function rstr2binl(input) {
 }
 
 /**
-   * Calculate the MD5 of a raw string
-   *
-   * @param {string} s Input string
-   * @returns {string} Raw MD5 string
-   */
-function rstrMD5(s) {
+ * Calculate the MD5 of a raw string
+ *
+ * @param {string} s Input string
+ * @returns {string} Raw MD5 string
+ */
+function rstrMD5 (s) {
   return binl2rstr(binlMD5(rstr2binl(s), s.length * 8))
 }
 
 /**
-   * Calculates the HMAC-MD5 of a key and some data (raw strings)
-   *
-   * @param {string} key HMAC key
-   * @param {string} data Raw input string
-   * @returns {string} Raw MD5 string
-   */
-function rstrHMACMD5(key, data) {
+ * Calculates the HMAC-MD5 of a key and some data (raw strings)
+ *
+ * @param {string} key HMAC key
+ * @param {string} data Raw input string
+ * @returns {string} Raw MD5 string
+ */
+function rstrHMACMD5 (key, data) {
   let i
   let bkey = rstr2binl(key)
   let ipad = []
@@ -296,12 +295,12 @@ function rstrHMACMD5(key, data) {
 }
 
 /**
-   * Convert a raw string to a hex string
-   *
-   * @param {string} input Raw input string
-   * @returns {string} Hex encoded string
-   */
-function rstr2hex(input) {
+ * Convert a raw string to a hex string
+ *
+ * @param {string} input Raw input string
+ * @returns {string} Hex encoded string
+ */
+function rstr2hex (input) {
   let hexTab = '0123456789abcdef'
   let output = ''
   let x
@@ -314,65 +313,65 @@ function rstr2hex(input) {
 }
 
 /**
-   * Encode a string as UTF-8
-   *
-   * @param {string} input Input string
-   * @returns {string} UTF8 string
-   */
-function str2rstrUTF8(input) {
+ * Encode a string as UTF-8
+ *
+ * @param {string} input Input string
+ * @returns {string} UTF8 string
+ */
+function str2rstrUTF8 (input) {
   return unescape(encodeURIComponent(input))
 }
 
 /**
-   * Encodes input string as raw MD5 string
-   *
-   * @param {string} s Input string
-   * @returns {string} Raw MD5 string
-   */
-function rawMD5(s) {
+ * Encodes input string as raw MD5 string
+ *
+ * @param {string} s Input string
+ * @returns {string} Raw MD5 string
+ */
+function rawMD5 (s) {
   return rstrMD5(str2rstrUTF8(s))
 }
 /**
-   * Encodes input string as Hex encoded string
-   *
-   * @param {string} s Input string
-   * @returns {string} Hex encoded string
-   */
-function hexMD5(s) {
+ * Encodes input string as Hex encoded string
+ *
+ * @param {string} s Input string
+ * @returns {string} Hex encoded string
+ */
+function hexMD5 (s) {
   return rstr2hex(rawMD5(s))
 }
 /**
-   * Calculates the raw HMAC-MD5 for the given key and data
-   *
-   * @param {string} k HMAC key
-   * @param {string} d Input string
-   * @returns {string} Raw MD5 string
-   */
-function rawHMACMD5(k, d) {
+ * Calculates the raw HMAC-MD5 for the given key and data
+ *
+ * @param {string} k HMAC key
+ * @param {string} d Input string
+ * @returns {string} Raw MD5 string
+ */
+function rawHMACMD5 (k, d) {
   return rstrHMACMD5(str2rstrUTF8(k), str2rstrUTF8(d))
 }
 /**
-   * Calculates the Hex encoded HMAC-MD5 for the given key and data
-   *
-   * @param {string} k HMAC key
-   * @param {string} d Input string
-   * @returns {string} Raw MD5 string
-   */
-function hexHMACMD5(k, d) {
+ * Calculates the Hex encoded HMAC-MD5 for the given key and data
+ *
+ * @param {string} k HMAC key
+ * @param {string} d Input string
+ * @returns {string} Raw MD5 string
+ */
+function hexHMACMD5 (k, d) {
   return rstr2hex(rawHMACMD5(k, d))
 }
 
 /**
-   * Calculates MD5 value for a given string.
-   * If a key is provided, calculates the HMAC-MD5 value.
-   * Returns a Hex encoded string unless the raw argument is given.
-   *
-   * @param {string} string Input string
-   * @param {string} [key] HMAC key
-   * @param {boolean} [raw] Raw output switch
-   * @returns {string} MD5 output
-   */
-export default function md5(string, key, raw) {
+ * Calculates MD5 value for a given string.
+ * If a key is provided, calculates the HMAC-MD5 value.
+ * Returns a Hex encoded string unless the raw argument is given.
+ *
+ * @param {string} string Input string
+ * @param {string} [key] HMAC key
+ * @param {boolean} [raw] Raw output switch
+ * @returns {string} MD5 output
+ */
+export default function md5 (string, key, raw) {
   if (!key) {
     if (!raw) {
       return hexMD5(string)
@@ -384,5 +383,3 @@ export default function md5(string, key, raw) {
   }
   return rawHMACMD5(key, string)
 }
-
-

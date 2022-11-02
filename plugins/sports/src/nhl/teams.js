@@ -29,5 +29,5 @@ export default [
   'Los Angeles Kings',
   'San Jose Sharks',
   'Vancouver Canucks',
-  'Vegas Golden Knights'
+  'Vegas Golden Knights',
 ]

@@ -20,7 +20,7 @@ const defaults = {
  * @param {Object<string, string | number | boolean>} obj
  * @returns {string} QueryString
  */
-const toQueryString = function (obj) {
+function toQueryString (obj) {
   return Object.entries(obj)
     .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
     .join('&')
@@ -33,7 +33,7 @@ const toQueryString = function (obj) {
  * @param {string} page the title that needs cleaning
  * @returns {string} the cleaned title
  */
-const cleanTitle = (page) => {
+function cleanTitle (page) {
   return page.replace(/ /g, '_')
     .trim()
 }
@@ -46,7 +46,7 @@ const cleanTitle = (page) => {
  * @param {Object} [parameters]
  * @returns {string} the url that can be used to make the fetch
  */
-const makeUrl = function (options, parameters = defaults) {
+function makeUrl (options, parameters = defaults) {
   let params = Object.assign({}, parameters)
 
   //default url

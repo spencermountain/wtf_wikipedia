@@ -1,4 +1,4 @@
-const toOrdinal = function (i) {
+function toOrdinal (i) {
   let j = i % 10
   let k = i % 100
   if (j === 1 && k !== 11) {
@@ -18,39 +18,43 @@ const day = 1000 * 60 * 60 * 24
 const month = day * 30
 const year = day * 365
 
-const getEpoch = function (obj) {
+function getEpoch (obj) {
   return new Date(`${obj.year}-${obj.month || 0}-${obj.date || 1}`).getTime()
 }
 
 //very rough!
-const delta = function (from, to) {
-  from = getEpoch(from)
-  to = getEpoch(to)
-  let diff = to - from
+
+function delta (from, to) {
+  let diff = getEpoch(to) - getEpoch(from)
+  // @ts-expect-error
   let obj = {}
+
   //get years
   let years = Math.floor(diff / year)
   if (years > 0) {
     obj.years = years
     diff -= obj.years * year
   }
+
   //get months
   let monthCount = Math.floor(diff / month)
   if (monthCount > 0) {
     obj.months = monthCount
     diff -= obj.months * month
   }
+
   //get days
   let days = Math.floor(diff / day)
   if (days > 0) {
     obj.days = days
     // diff -= (obj.days * day);
   }
+
   return obj
 }
 
 //not all too fancy - used in {{timesince}}
-const timeSince = function (str) {
+function timeSince (str) {
   let d = new Date(str)
   if (isNaN(d.getTime())) {
     return ''

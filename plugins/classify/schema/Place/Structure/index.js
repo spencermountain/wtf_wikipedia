@@ -6,7 +6,7 @@ export default {
   //
   children: {
     Bridge,
-    Airport
+    Airport,
   },
   properties: {
     date_created: () => { },

@@ -1,5 +1,5 @@
 //
-const toLatex = function (options) {
+function toLatex (options) {
   let out = '\\begin{itemize}\n'
   this.lines().forEach((s) => {
     out += '  \\item ' + s.text(options) + '\n'

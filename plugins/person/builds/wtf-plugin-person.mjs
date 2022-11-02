@@ -127,7 +127,7 @@ var mapping$2 = {
   'us cabinet official': true,
 };
 
-const byInfobox = function (doc, prop) {
+function byInfobox (doc, prop) {
   let infoboxes = doc.infoboxes();
   for (let i = 0; i < infoboxes.length; i++) {
     let inf = infoboxes[i];
@@ -143,7 +143,7 @@ const byInfobox = function (doc, prop) {
     }
   }
   return null
-};
+}
 
 const MSEC_IN_HOUR = 60 * 60 * 1000;
 
@@ -2648,7 +2648,7 @@ const units = [
 const methods$4 = {
   set: function (input, tz) {
     let s = this.clone();
-    s = handleInput(s, input, null);
+    s = handleInput(s, input);
     if (tz) {
       this.tz = findTz(tz);
     }
@@ -4209,7 +4209,7 @@ main.version = version;
 main.plugin = main.extend;
 var spacetime = main;
 
-const parseSentence = function (doc) {
+function parseSentence (doc) {
   let s = doc.sentence();
   if (!s) {
     return null
@@ -4243,9 +4243,9 @@ const parseSentence = function (doc) {
     }
   }
   return null
-};
+}
 
-const byCategory$1 = function (doc) {
+function byCategory$1 (doc) {
   let cats = doc.categories();
   for (let i = 0; i < cats.length; i += 1) {
     let m = cats[i].match(/([0-9]{4}) births/);
@@ -4257,7 +4257,7 @@ const byCategory$1 = function (doc) {
     }
   }
   return null
-};
+}
 
 // regexes
 const regJustYear = /^(?:c\.\s*)?(\d+)\s*(bc|bce|ad|ce)?$/i;
@@ -4266,11 +4266,11 @@ const regRangeSeparator = /–/;
 const regUptoSecondMill = /\b(\d{1,3})\s*(bc|bce|ad|ce)?$|\b(\d+)\s*(bc|bce)$/i;
 const regBCE = /(\d+)\s*(bc|bce)\b/i;
 
-const findAverage = function (arr) {
+function findAverage (arr) {
   return arr.reduce((partialSum, n) => partialSum + n) / arr.length
-};
+}
 
-const parseDate = function (str) {
+function parseDate (str) {
   if (!str) {
     return null
   }
@@ -4351,9 +4351,9 @@ const parseDate = function (str) {
     });
   }
   return res
-};
+}
 
-const birthDate = function (doc) {
+function birthDate (doc) {
   let res = byInfobox(doc, 'birth_date');
   if (res) {
     return parseDate(res)
@@ -4371,15 +4371,15 @@ const birthDate = function (doc) {
     return { year: year }
   }
   return null
-};
+}
 
-const birthPlace = function (doc) {
+function birthPlace (doc) {
   let res = byInfobox(doc, 'birth_place');
   if (res) {
     return res
   }
   return null
-};
+}
 
 const aliveCats = {
   'Living people': true,
@@ -4425,7 +4425,7 @@ const didDie = {
   'Deaths by drowning': true,
 };
 
-const byCat = function (doc) {
+function byCat (doc) {
   let cats = doc.categories();
 
   //confirmed alive categories
@@ -4437,7 +4437,7 @@ const byCat = function (doc) {
     return false
   }
   return null
-};
+}
 
 // blp = biography of living persons
 
@@ -4472,7 +4472,7 @@ const isDead = {
   panegyric: true,
   memorial: true,
 };
-const byTemplate = function (doc) {
+function byTemplate (doc) {
   let templates = doc.templates().map((tmpl) => tmpl.json());
   for (let i = 0; i < templates.length; i++) {
     let title = templates[i].template || '';
@@ -4497,13 +4497,13 @@ const byTemplate = function (doc) {
     }
   }
   return null
-};
+}
 
 // maximum age of a person
 let d = new Date();
 const minYear = d.getFullYear() - 105;
 
-const isAlive = function (doc) {
+function isAlive (doc) {
   // if we have a death date
   let death = doc.deathDate();
   if (death) {
@@ -4530,9 +4530,9 @@ const isAlive = function (doc) {
     return true
   }
   return null
-};
+}
 
-const byCategory = function (doc) {
+function byCategory (doc) {
   let cats = doc.categories();
   for (let i = 0; i < cats.length; i += 1) {
     let m = cats[i].match(/([0-9]{4}) deaths/);
@@ -4544,9 +4544,9 @@ const byCategory = function (doc) {
     }
   }
   return null
-};
+}
 
-const deathDate = function (doc) {
+function deathDate (doc) {
   let res = byInfobox(doc, 'death_date');
   if (res) {
     return parseDate(res)
@@ -4563,25 +4563,25 @@ const deathDate = function (doc) {
     return { year: year }
   }
   return null
-};
+}
 
-const deathPlace = function (doc) {
+function deathPlace (doc) {
   let res = byInfobox(doc, 'death_place');
   if (res) {
     return res
   }
   return null
-};
+}
 
-const getNationality = function (doc) {
+function getNationality (doc) {
   let res = byInfobox(doc, 'nationality');
   if (res) {
     return res
   }
   return null
-};
+}
 
-const addMethod = function (models) {
+function addMethod (models) {
   models.Doc.prototype.birthDate = function () {
     return birthDate(this)
   };
@@ -4600,6 +4600,6 @@ const addMethod = function (models) {
   models.Doc.prototype.nationality = function () {
     return getNationality(this)
   };
-};
+}
 
 export { addMethod as default };

@@ -1,4 +1,4 @@
-const byClause = function (s) {
+function byClause (s) {
   // 'an actor and also a politician'
   s.remove('and (also|eventually) (a|an|the|#Possessive) .*')
   // 'an actor who was a politician'

@@ -8,7 +8,7 @@ let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round',
  * @private
  * @param {object} catcher
  */
-const parseMMA = function (catcher) {
+function parseMMA (catcher) {
   catcher.text = catcher.text.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, (tmpl) => {
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
     tmpl = tmpl.replace(/\{\{end\}\}/i, '')

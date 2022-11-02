@@ -3,10 +3,20 @@ import toJSON from './toJson.js'
 import isDisambig from './isDisambig.js'
 import setDefaults from '../_lib/setDefaults.js'
 import Image from '../image/Image.js'
-import { isRedirect, parse } from './redirects.js'
+import { isRedirect, parse as ParseRedirect } from './redirects.js'
 import preProcess from './preProcess/index.js'
 import parseSection from '../02-section/index.js'
 import parseCategories from './categories.js'
+import Sentence from '../04-sentence/Sentence.js'
+import Reference from '../reference/Reference.js'
+import Link from '../link/Link.js'
+import List from '../list/List.js'
+import Table from '../table/Table.js'
+import Infobox from '../infobox/Infobox.js'
+import Section from '../02-section/Section.js'
+import Paragraph from '../03-paragraph/Paragraph.js'
+import Template from '../template/Template.js'
+import {singularFactory} from '../_lib/singularFactory.js'
 
 const defaults = {
   tables: true,
@@ -28,39 +38,47 @@ class Document {
    *
    * @param {string} [wiki] The wiki text
    * @param {object} [options] The options for the parser
+   * @param {number} [options.pageID] The pageID of the page
+   * @param {number} [options.id] The pageID of the page
+   * @param {string} [options.namespace] The namespace of the page
+   * @param {string} [options.ns] The namespace of the page
+   * @param {string} [options.lang] The language of the page
+   * @param {string} [options.language] The language of the page
+   * @param {string} [options.domain] The domain of the page
+   * @param {string} [options.title] The title of the page
+   * @param {string} [options.wikidata] The WikidataID of the page
+   * 
+   * @param {string} [options.userAgent] the user-agent to use for http requests
+   * @param {string} [options.User-Agent ] the user-agent to use for http requests
+   * @param {string} [options.Api-User-Agent] the user-agent to use for http requests
+   * 
+   * 
    */
-  constructor(wiki, options) {
+  constructor (wiki, options) {
     options = options || {}
-    let props = {
-      pageID: options.pageID || options.id || null,
-      namespace: options.namespace || options.ns || null,
-      lang: options.lang || options.language || null,
-      domain: options.domain || null,
-      title: options.title || null,
-      type: 'page',
-      redirectTo: null,
-      wikidata: options.wikidata || null,
-      wiki: wiki || '',
-      categories: [],
-      sections: [],
-      coordinates: [],
-      // userAgent is used for successive calls to the API
-      userAgent: options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library'
-    }
+    this._pageID = options.pageID || options.id || null
+    this._namespace = options.namespace || options.ns || null
+    this._lang = options.lang || options.language || null
+    this._domain = options.domain || null
+    this._title = options.title || null
+    this._type = 'page'
+    this._redirectTo = null
+    this._wikidata = options.wikidata || null
+
+    this._wiki = wiki || ''
+    
+    this._categories = []
+    this._sections = []
+    this._coordinates = []
+    // userAgent is used for successive calls to the API
+    this._userAgent = options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library'
+
     // this._missing_templates = {} //for stats+debugging purposes
 
-    Object.keys(props).forEach((k) => {
-      Object.defineProperty(this, '_' + k, {
-        enumerable: false,
-        writable: true,
-        value: props[k],
-      })
-    })
-
     //detect if page is just redirect, and return it
-    if (isRedirect(this._wiki) === true) {
+    if (isRedirect(this._wiki)) {
       this._type = 'redirect'
-      this._redirectTo = parse(this._wiki)
+      this._redirectTo = ParseRedirect(this._wiki)
       const [categories, newWiki] = parseCategories(this._wiki)
       this._categories = categories
       this._wiki = newWiki
@@ -86,19 +104,21 @@ class Document {
    * If it is available it returns the title.
    * Else it will look if the first sentence contains a bolded phrase and assumes that's the title and returns it
    *
-   * @param {string} [str] The title that will be set
-   * @returns {null|string} The title found or given
+   * @param {string} [str] - sets the title and returns the set title
+   * @returns {null|string|Sentence} The title found or given
    */
-  title(str) {
+  title (str) {
     //use like a setter
     if (str !== undefined) {
       this._title = str
       return str
     }
+
     //if we have it already
     if (this._title) {
       return this._title
     }
+
     //guess the title of this page from first sentence bolding
     let guess = null
     let sen = this.sentences()[0]
@@ -115,7 +135,7 @@ class Document {
    * @param {number} [id] The pageID that will be set
    * @returns {number|null} The given or found pageID
    */
-  pageID(id) {
+  pageID (id) {
     if (id !== undefined) {
       this._pageID = id
     }
@@ -129,7 +149,7 @@ class Document {
    * @param {string} [id] The WikidataID that will be set
    * @returns {string|null} The given or found WikidataID
    */
-  wikidata(id) {
+  wikidata (id) {
     if (id !== undefined) {
       this._wikidata = id
     }
@@ -143,7 +163,7 @@ class Document {
    * @param {string} [str] The domain that will be set
    * @returns {string|null} The given or found domain
    */
-  domain(str) {
+  domain (str) {
     if (str !== undefined) {
       this._domain = str
     }
@@ -157,7 +177,7 @@ class Document {
    * @param {string} [lang] The language that will be set
    * @returns {string|null} The given or found language
    */
-  language(lang) {
+  language (lang) {
     if (lang !== undefined) {
       this._lang = lang
     }
@@ -171,7 +191,7 @@ class Document {
    *
    * @returns {string|null} The url of the page
    */
-  url() {
+  url () {
     let title = this.title()
     if (!title) {
       return null
@@ -191,7 +211,7 @@ class Document {
    * @param {string} [ns] The namespace that will be set
    * @returns {string|null} The given or found namespace
    */
-  namespace(ns) {
+  namespace (ns) {
     if (ns !== undefined) {
       this._namespace = ns
     }
@@ -203,7 +223,7 @@ class Document {
    *
    * @returns {boolean} Is the page a redirect
    */
-  isRedirect() {
+  isRedirect () {
     return this._type === 'redirect'
   }
 
@@ -212,7 +232,7 @@ class Document {
    *
    * @returns {null|object} The redirected page
    */
-  redirectTo() {
+  redirectTo () {
     return this._redirectTo
   }
 
@@ -221,7 +241,7 @@ class Document {
    *
    * @returns {boolean} Whether the page is a disambiguation page
    */
-  isDisambiguation() {
+  isDisambiguation () {
     return isDisambig(this)
   }
 
@@ -229,9 +249,10 @@ class Document {
    * If a clue is available return the category at that index
    * Else return all categories
    *
-   * @returns {string | string[]} The category at the provided index or all categories
+   * @param {number} [clue] The index of the category
+   * @returns {string[]} The category at the provided index or all categories
    */
-  categories(clue) {
+  categories (clue) {
     let arr = this._categories || []
     if (typeof clue === 'number') {
       return [arr[clue]]
@@ -247,9 +268,9 @@ class Document {
    * Else it returns all the sections
    *
    * @param {number | string} [clue] A title of a section or a index of a wanted section
-   * @returns {object | object[]} A section or a array of sections
+   * @returns {Section[]} A section or a array of sections
    */
-  sections(clue) {
+  sections (clue) {
     let arr = this._sections || []
     arr.forEach((sec) => {
       // link-up parent and child
@@ -273,45 +294,49 @@ class Document {
    *
    * If the clue is a number then it returns the paragraph at that index
    * Else it returns all paragraphs in an array
-   * @param {number | string} [clue] given index of a paragraph
-   * @returns {object | object[]} the selected paragraph or an array of all paragraphs
+   * 
+   * @param {number} [clue] The index of the wanted paragraph
+   * @returns {Paragraph[]} the selected paragraph or an array of all paragraphs
    */
-  paragraphs(clue) {
-    let arr = []
-    this.sections().forEach((s) => {
-      arr = arr.concat(s.paragraphs())
-    })
+  paragraphs (clue) {
+    let arr =     this.sections()
+      .map((s) => s.paragraphs())
+      .reduce((a, b) => a.concat(b), [])
+
     if (typeof clue === 'number') {
       return [arr[clue]]
     }
+    
     return arr
   }
 
   /**
    * if no clue is provided, it compiles an array of sentences in the wiki text.
    * if the clue is provided it return the sentence at the provided index
-   * @param {number | string} [clue] given index of a sentence
-   * @returns {object[]|object} an array of sentences or a single sentence
+   * @param {number} [clue] given index of a sentence
+   * @returns {Sentence[]} an array of sentences or a single sentence
    */
-  sentences(clue) {
-    let arr = []
-    this.sections().forEach((sec) => {
-      arr = arr.concat(sec.sentences())
-    })
+  sentences (clue) {
+    let arr = this.sections()
+      .map((sec) => sec.sentences())
+      .reduce((a, b) => a.concat(b), [])
+
     if (typeof clue === 'number') {
       return [arr[clue]]
     }
+
     return arr
   }
 
   /**
    * This function search the whole page, including the infobox and image gallery templates for images
    * and then returns them in an array if no clue is provided.
-   * if an clue is profieded then it returns the image at the clue-th index
+   * if an clue is provided then it returns the image at the clue-th index
    *
-   * @returns {Image[]|Image} a single image or an array of images
+   * @param {number} [clue] given index of an image
+   * @returns {Image[]} a single image or an array of images
    */
-  images(clue) {
+  images (clue) {
     let arr = sectionMap(this, 'images', null)
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
@@ -344,9 +369,9 @@ class Document {
    * Return all links or if a clue is provided only the link at that index
    *
    * @param {number} [clue] the index of the wanted link
-   * @returns {string[]|string} all the links or the selected link
+   * @returns {Link[]} all the links or the selected link
    */
-  links(clue) {
+  links (clue) {
     return sectionMap(this, 'links', clue)
   }
 
@@ -354,9 +379,9 @@ class Document {
    * Return all inter wiki links or if a clue is provided only the inter wiki link at that index
    *
    * @param {number} [clue] the index of the wanted inter wiki link
-   * @returns {string[]|string} all the inter wiki links or the selected inter wiki link
+   * @returns {Link[]} all the inter wiki links or the selected inter wiki link
    */
-  interwiki(clue) {
+  interwiki (clue) {
     return sectionMap(this, 'interwiki', clue)
   }
 
@@ -365,9 +390,9 @@ class Document {
    * Else return all lists
    *
    * @param {number} [clue] The index of the wanted list
-   * @returns {object | object[]} The list at the provided index or all lists
+   * @returns {List[]} The list at the provided index or all lists
    */
-  lists(clue) {
+  lists (clue) {
     return sectionMap(this, 'lists', clue)
   }
 
@@ -376,9 +401,9 @@ class Document {
    * Else return all tables
    *
    * @param {number} [clue] The index of the wanted table
-   * @returns {object | object[]} The table at the provided index or all tables
+   * @returns {Table[]} The table at the provided index or all tables
    */
-  tables(clue) {
+  tables (clue) {
     return sectionMap(this, 'tables', clue)
   }
 
@@ -387,9 +412,9 @@ class Document {
    * Else return all templates
    *
    * @param {number} [clue] The index of the wanted template
-   * @returns {object | object[]} The category at the provided index or all categories
+   * @returns {Template[]} The category at the provided index or all categories
    */
-  templates(clue) {
+  templates (clue) {
     return sectionMap(this, 'templates', clue)
   }
 
@@ -398,9 +423,9 @@ class Document {
    * Else return all references
    *
    * @param {number} [clue] The index of the wanted references
-   * @returns {object | object[]} The category at the provided index or all references
+   * @returns {Reference[]} The category at the provided index or all references
    */
-  references(clue) {
+  references (clue) {
     return sectionMap(this, 'references', clue)
   }
 
@@ -408,9 +433,9 @@ class Document {
    * Returns the 0th or clue-th reference
    *
    * @param {number} [clue] The index of the wanted reference
-   * @returns {object|string|number} The reference at the provided index
+   * @returns {Reference[]} The reference at the provided index
    */
-  citations(clue) {
+  citations (clue) {
     return this.references(clue)
   }
 
@@ -421,7 +446,7 @@ class Document {
    * @param {number} [clue] the index of the coordinate returned
    * @returns {object[]|object|null} if a clue is given, the coordinate of null, else an array of coordinates
    */
-  coordinates(clue) {
+  coordinates (clue) {
     return sectionMap(this, 'coordinates', clue)
   }
 
@@ -431,16 +456,16 @@ class Document {
    * It always sorts the infoboxes by size
    *
    * @param {number} [clue] the index of the infobox you want to select
-   * @returns {object | object[]} the selected infobox or an array of infoboxes
+   * @returns {Infobox[]} an array of infoboxes or a single infobox in an array
    */
-  infoboxes(clue) {
+  infoboxes (clue) {
     let arr = sectionMap(this, 'infoboxes', clue)
     //sort them by biggest-first
     arr = arr.sort((a, b) => {
       if (Object.keys(a.data).length > Object.keys(b.data).length) {
-        return -1
+        return 1
       }
-      return 1
+      return -1
     })
 
     return arr
@@ -452,7 +477,7 @@ class Document {
    * @param {object} [options] the options for the parser
    * @returns {string} the plain text version of the article
    */
-  text(options) {
+  text (options) {
     options = setDefaults(options, defaults)
     //nah, skip these.
     if (this.isRedirect() === true) {
@@ -468,7 +493,7 @@ class Document {
    * @param {object} [options] options for the rendering
    * @returns {object} this document as json
    */
-  json(options) {
+  json (options) {
     options = setDefaults(options, defaults)
     return toJSON(this, options)
   }
@@ -478,7 +503,7 @@ class Document {
    *
    * @returns {string} markup text
    */
-  wikitext() {
+  wikitext () {
     return this._wiki || ''
   }
 
@@ -487,7 +512,7 @@ class Document {
    *
    * @returns {Document} the document itself
    */
-  debug() {
+  debug () {
     console.log('\n')
     this.sections().forEach((sec) => {
       let indent = ' - '
@@ -501,29 +526,20 @@ class Document {
 }
 
 // aliases
-const singular = {
-  categories: 'category',
-  sections: 'section',
-  paragraphs: 'paragraph',
-  sentences: 'sentence',
-  images: 'image',
-  links: 'link',
-  // interwiki
-  lists: 'list',
-  tables: 'table',
-  templates: 'template',
-  references: 'reference',
-  citations: 'citation',
-  coordinates: 'coordinate',
-  infoboxes: 'infobox',
-}
-Object.keys(singular).forEach((k) => {
-  let sing = singular[k]
-  Document.prototype[sing] = function (clue) {
-    let arr = this[k](clue)
-    return arr[0] || null
-  }
-})
+Document.prototype.category = singularFactory('categories')
+Document.prototype.section = singularFactory('sections')
+Document.prototype.paragraph = singularFactory('paragraphs')
+Document.prototype.sentence = singularFactory('sentences')
+Document.prototype.image = singularFactory('images')
+Document.prototype.link = singularFactory('links')
+Document.prototype.list = singularFactory('lists')
+Document.prototype.table = singularFactory('tables')
+Document.prototype.template = singularFactory('templates')
+Document.prototype.reference = singularFactory('references')
+Document.prototype.citation = singularFactory('citations')
+Document.prototype.coordinate = singularFactory('coordinates')
+Document.prototype.infobox = singularFactory('infoboxes')
+
 Document.prototype.lang = Document.prototype.language
 Document.prototype.ns = Document.prototype.namespace
 Document.prototype.plaintext = Document.prototype.text

@@ -2,7 +2,7 @@ import test from 'tape'
 import wtf from './_lib.js'
 
 const opts = {
-  'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
+  'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
 }
 
 test('smoketests', function (t) {

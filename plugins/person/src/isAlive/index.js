@@ -5,7 +5,7 @@ import byTemplate from './byTemplate.js'
 let d = new Date()
 const minYear = d.getFullYear() - 105
 
-const isAlive = function (doc) {
+function isAlive (doc) {
   // if we have a death date
   let death = doc.deathDate()
   if (death) {

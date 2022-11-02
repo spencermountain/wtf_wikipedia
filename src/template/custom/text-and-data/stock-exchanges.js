@@ -103,7 +103,7 @@ const codes = {
   zse: 'zse', //https://en.wikipedia.org/wiki/Template:Zagreb_Stock_Exchange
 }
 
-const parseStockExchange = (tmpl, list) => {
+function parseStockExchange (tmpl, list) {
   let o = parse(tmpl, ['ticketnumber', 'code'])
   list.push(o)
   let code = o.template || ''

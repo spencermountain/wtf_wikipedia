@@ -8,7 +8,7 @@ const paren = /\((.*)\)$/
 const listOf = /^list of ./
 const disambig = /\(disambiguation\)/
 
-const skipPage = function (doc) {
+function skipPage (doc) {
   let title = doc.title() || ''
 
   //look at parentheses like 'Tornado (film)'

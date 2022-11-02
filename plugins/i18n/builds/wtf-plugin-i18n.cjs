@@ -877,7 +877,7 @@
     'start date': startDate,
   };
 
-  const plugin = function (_models, templates) {
+  function plugin (_models, templates) {
     Object.keys(mapping).forEach((k) => {
       mapping[k].forEach((name) => {
         // create template parser with alias
@@ -886,7 +886,7 @@
         };
       });
     });
-  };
+  }
 
   return plugin;
 

@@ -11,7 +11,7 @@ const keys = {
  * @private
  * @param {object} catcher
  */
-const parseNBA = function (catcher) {
+function parseNBA (catcher) {
   catcher.text = catcher.text.replace(
     /\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi,
     (tmpl, name) => {
@@ -36,7 +36,7 @@ const parseNBA = function (catcher) {
 
       //return empty string to remove the template from the wiki text
       return ''
-    }
+    },
   )
 }
 export default parseNBA

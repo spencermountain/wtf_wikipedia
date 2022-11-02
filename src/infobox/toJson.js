@@ -2,15 +2,15 @@ import encodeObj from '../_lib/encode.js'
 
 /**
  * turn an infobox into some nice json
- * 
- * @param {object} infobox 
- * @param {object} [options] 
+ *
+ * @param {object} infobox
+ * @param {object} [options]
  * @returns {object}
  */
-const toJson = function (infobox, options) {
-  let json = Object.keys(infobox.data).reduce((h, k) => {
-    if (infobox.data[k]) {
-      h[k] = infobox.data[k].json()
+function toJson (infobox, options) {
+  let json = Object.keys(infobox._data).reduce((h, k) => {
+    if (infobox._data[k]) {
+      h[k] = infobox._data[k].json()
     }
     return h
   }, {})

@@ -1,6 +1,6 @@
 import mapping from './_lib/_infoboxes.js'
 
-const byInfobox = function (doc, prop) {
+function byInfobox (doc, prop) {
   let infoboxes = doc.infoboxes()
   for (let i = 0; i < infoboxes.length; i++) {
     let inf = infoboxes[i]

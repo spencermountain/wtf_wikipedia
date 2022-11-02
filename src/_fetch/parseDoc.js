@@ -8,10 +8,9 @@ import { isArray } from '../_lib/helpers.js'
  * @param {string | number | Array<number> | Array<string>} title
  * @returns {null| Document | Document[]} null if there are no results or Document if there is one responses and Document array if there are multiple responses
  */
-const parseDoc = function (res, title) {
+function parseDoc (res, title) {
   // filter out undefined
   res = res.filter((o) => o)
-
 
   // put all the responses into Document formats
   let docs = res.map((o) => {

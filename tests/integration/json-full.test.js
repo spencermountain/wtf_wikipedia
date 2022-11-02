@@ -21,8 +21,7 @@ test('plurals / singular - all should exist', (t) => {
             {
               sentences: [
                 {
-                  text:
-                    'Arts Club of Chicago is a private club located in the Near North Side community area of Chicago in Cook County, Illinois, United States, a block east of the Magnificent Mile, that exhibits international contemporary art.',
+                  text: 'Arts Club of Chicago is a private club located in the Near North Side community area of Chicago in Cook County, Illinois, United States, a block east of the Magnificent Mile, that exhibits international contemporary art.',
                   links: [
                     {
                       text: 'Near North Side',
@@ -49,8 +48,7 @@ test('plurals / singular - all should exist', (t) => {
                   formatting: { bold: ['Arts Club of Chicago'] },
                 },
                 {
-                  text:
-                    "It was founded in 1916, inspired by the success of the Art Institute of Chicago's handling of the Armory Show.",
+                  text: "It was founded in 1916, inspired by the success of the Art Institute of Chicago's handling of the Armory Show.",
                   links: [
                     { type: 'internal', page: 'Art Institute of Chicago' },
                     {
@@ -60,16 +58,14 @@ test('plurals / singular - all should exist', (t) => {
                   ],
                 },
                 {
-                  text:
-                    'Its founding was viewed as a statement that art had become an important component of civilized urban life.',
+                  text: 'Its founding was viewed as a statement that art had become an important component of civilized urban life.',
                 },
                 {
                   text: 'The Arts Club is said to have been pro-Modernist from its founding.',
                   links: [{ text: 'Modernist', type: 'internal', page: 'Modernism' }],
                 },
                 {
-                  text:
-                    'The Club strove to break new ground with its shows, rather than collect the works of established artists as the Art Institute does.',
+                  text: 'The Club strove to break new ground with its shows, rather than collect the works of established artists as the Art Institute does.',
                 },
               ],
             },
@@ -80,16 +76,14 @@ test('plurals / singular - all should exist', (t) => {
                   links: [{ type: 'internal', page: 'Pablo Picasso' }],
                 },
                 {
-                  text:
-                    'In addition, the 1951 exhibition by Jean Dubuffet and his "Anticultural Positions" lecture at the Arts Club were tremendous influences on what would become the mid-1960s Imagist movement.',
+                  text: 'In addition, the 1951 exhibition by Jean Dubuffet and his "Anticultural Positions" lecture at the Arts Club were tremendous influences on what would become the mid-1960s Imagist movement.',
                   links: [
                     { type: 'internal', page: 'Jean Dubuffet' },
                     { type: 'internal', page: 'Imagist' },
                   ],
                 },
                 {
-                  text:
-                    'Another important presentation in the history of the Arts Club was the Fernand Léger showing of Le Ballet Mecanique.',
+                  text: 'Another important presentation in the history of the Arts Club was the Fernand Léger showing of Le Ballet Mecanique.',
                   links: [{ type: 'internal', page: 'Fernand Léger' }],
                   formatting: { italic: ['Le Ballet Mecanique'] },
                 },
@@ -98,8 +92,7 @@ test('plurals / singular - all should exist', (t) => {
             {
               sentences: [
                 {
-                  text:
-                    "The Club's move in 1997 to its current location at 201 E. Ontario Street was not without controversy because the club demolished its former interior space designed by Ludwig Mies van der Rohe and moved only the central staircase to the new gallery space.",
+                  text: "The Club's move in 1997 to its current location at 201 E. Ontario Street was not without controversy because the club demolished its former interior space designed by Ludwig Mies van der Rohe and moved only the central staircase to the new gallery space.",
                   links: [{ type: 'internal', page: 'Ludwig Mies van der Rohe' }],
                 },
                 { text: 'However, the new space is 19000 sqft, which is 7000 sqft larger than the old space.' },
@@ -195,8 +188,7 @@ test('plurals / singular - all should exist', (t) => {
               type: 'web',
             },
             {
-              url:
-                'http://www.aiachicago.org/special_features/1996_Design_Awards/Unbuilt/Awards/Winners/unbuilt_171.html',
+              url: 'http://www.aiachicago.org/special_features/1996_Design_Awards/Unbuilt/Awards/Winners/unbuilt_171.html',
               'archive-url':
                 'https://web.archive.org/web/20011124011911/http://www.aiachicago.org/special_features/1996_Design_Awards/Unbuilt/Awards/Winners/unbuilt_171.html',
               'dead-url': 'yes',
@@ -231,12 +223,10 @@ test('plurals / singular - all should exist', (t) => {
             {
               sentences: [
                 {
-                  text:
-                    'The inaugural mission of the club was "to encourage higher standards of art, maintain galleries for that purpose, and to promote the mutual acquaintance of art lovers and art workers."',
+                  text: 'The inaugural mission of the club was "to encourage higher standards of art, maintain galleries for that purpose, and to promote the mutual acquaintance of art lovers and art workers."',
                 },
                 {
-                  text:
-                    'This mission arose from the contemporary Chicago active art scene, which had 30 commercial art galleries showing traditional art and an internationally recognized museum.',
+                  text: 'This mission arose from the contemporary Chicago active art scene, which had 30 commercial art galleries showing traditional art and an internationally recognized museum.',
                   links: [{ text: 'art galleries', type: 'internal', page: 'art gallery' }],
                 },
                 {
@@ -259,12 +249,10 @@ test('plurals / singular - all should exist', (t) => {
                   links: [{ text: 'avant-garde', type: 'internal', page: 'avant-garde' }],
                 },
                 {
-                  text:
-                    'The local galleries emphasized American, English and the occasional French work, emphasizing prints and drawings.',
+                  text: 'The local galleries emphasized American, English and the occasional French work, emphasizing prints and drawings.',
                 },
                 {
-                  text:
-                    'This necessitated trips to New York City, London or Paris for Chicagoans who wanted to buy art.',
+                  text: 'This necessitated trips to New York City, London or Paris for Chicagoans who wanted to buy art.',
                 },
               ],
             },
@@ -276,7 +264,20 @@ test('plurals / singular - all should exist', (t) => {
               ],
             },
           ],
-          references: [{ template: 'citation', type: 'inline', data: {}, inline: {} }],
+          references: [
+            {
+              template: 'citation',
+              type: 'inline',
+              data: {},
+              inline: {
+                data: {
+                  wiki: 'Wells, p. 6',
+                  text: 'Wells, p. 6',
+                  links: [],
+                },
+              },
+            },
+          ],
         },
       },
     ],
@@ -363,8 +364,7 @@ test('plurals / singular - all should exist', (t) => {
         clue: undefined,
         json: true,
         expected: {
-          text:
-            'Arts Club of Chicago is a private club located in the Near North Side community area of Chicago in Cook County, Illinois, United States, a block east of the Magnificent Mile, that exhibits international contemporary art.',
+          text: 'Arts Club of Chicago is a private club located in the Near North Side community area of Chicago in Cook County, Illinois, United States, a block east of the Magnificent Mile, that exhibits international contemporary art.',
           links: [
             {
               text: 'Near North Side',
@@ -392,8 +392,7 @@ test('plurals / singular - all should exist', (t) => {
         clue: 1,
         json: true,
         expected: {
-          text:
-            "It was founded in 1916, inspired by the success of the Art Institute of Chicago's handling of the Armory Show.",
+          text: "It was founded in 1916, inspired by the success of the Art Institute of Chicago's handling of the Armory Show.",
           links: [
             { type: 'internal', page: 'Art Institute of Chicago' },
             {
@@ -593,13 +592,11 @@ test('plurals / singular - all should exist', (t) => {
         json: true,
         expected: [
           {
-            text:
-              'Red Petals, plate steel, steel wire, sheet aluminum, soft-iron bolts, and aluminum paint, 1942, by Alexander Calder',
+            text: 'Red Petals, plate steel, steel wire, sheet aluminum, soft-iron bolts, and aluminum paint, 1942, by Alexander Calder',
             formatting: { italic: ['Red Petals'] },
           },
           {
-            text:
-              'Main Staircase for The Arts Club of Chicago, steel, travertine marble, 1948-1951, by Ludwig Mies van der Rohe',
+            text: 'Main Staircase for The Arts Club of Chicago, steel, travertine marble, 1948-1951, by Ludwig Mies van der Rohe',
             formatting: { italic: ['Main Staircase for The Arts Club of Chicago'] },
           },
           {
@@ -608,15 +605,13 @@ test('plurals / singular - all should exist', (t) => {
             formatting: { italic: ['Untitled'] },
           },
           {
-            text:
-              'Personage and Birds in Front of the Sun (Personnage et oiseaux devant le soleil), ink and gouache on paper, 1942, by Joan Miró',
+            text: 'Personage and Birds in Front of the Sun (Personnage et oiseaux devant le soleil), ink and gouache on paper, 1942, by Joan Miró',
             formatting: {
               italic: ['Personage and Birds in Front of the Sun (Personnage et oiseaux devant le soleil)'],
             },
           },
           {
-            text:
-              'This Thing is Made to Perpetuate My Memory (Cette Chose est faite pour perpetuer mon souvenir), ink, gouache or watercolor, and silver and bronze paint on board, 1915, by Francis Picabia',
+            text: 'This Thing is Made to Perpetuate My Memory (Cette Chose est faite pour perpetuer mon souvenir), ink, gouache or watercolor, and silver and bronze paint on board, 1915, by Francis Picabia',
             formatting: {
               italic: [
                 'This Thing is Made to Perpetuate My Memory (Cette Chose est faite pour perpetuer mon souvenir)',
@@ -624,8 +619,7 @@ test('plurals / singular - all should exist', (t) => {
             },
           },
           {
-            text:
-              'Head of a Woman (Tete de femme), red and black chalk with chalk wash on tan laid paper, laid down on lightweight Japanese paper, 1922, by Pablo Picasso',
+            text: 'Head of a Woman (Tete de femme), red and black chalk with chalk wash on tan laid paper, laid down on lightweight Japanese paper, 1922, by Pablo Picasso',
             formatting: { italic: ['Head of a Woman (Tete de femme)'] },
           },
         ],
@@ -635,21 +629,18 @@ test('plurals / singular - all should exist', (t) => {
         json: true,
         expected: [
           {
-            text:
-              'Fitzgerald, Michael C. (1984). Making Modernism: Picasso and the Creation of the Market for Twentieth Century Art. Farrar Straus & Giroux. ISBN: 0-37410-611-8.',
+            text: 'Fitzgerald, Michael C. (1984). Making Modernism: Picasso and the Creation of the Market for Twentieth Century Art. Farrar Straus & Giroux. ISBN: 0-37410-611-8.',
             formatting: {
               italic: ['Making Modernism: Picasso and the Creation of the Market for Twentieth Century Art'],
             },
           },
           {
-            text:
-              'Shaw, Sophia (ed.) (1997). The Arts Club of Chicago: The Collection 1916-1996. The Arts Club of Chicago. ISBN: 0-96434-403-3.',
+            text: 'Shaw, Sophia (ed.) (1997). The Arts Club of Chicago: The Collection 1916-1996. The Arts Club of Chicago. ISBN: 0-96434-403-3.',
             links: [
               {
                 text: 'The Arts Club of Chicago: The Collection 1916-1996',
                 type: 'external',
-                site:
-                  'https://web.archive.org/web/20060918054331/http://www.press.uchicago.edu/cgi-bin/hfs.cgi/00/13456.ctl',
+                site: 'https://web.archive.org/web/20060918054331/http://www.press.uchicago.edu/cgi-bin/hfs.cgi/00/13456.ctl',
               },
             ],
             formatting: { italic: ['The Arts Club of Chicago: The Collection 1916-1996'] },
@@ -714,7 +705,7 @@ test('plurals / singular - all should exist', (t) => {
       t.deepEqual(
         JSON.stringify(result),
         JSON.stringify(testCase.expected),
-        'expect doc.' + fn + '(' + testCase.clue + ') to equal ' + testCase.expected
+        'expect doc.' + fn + '(' + testCase.clue + ') to equal ' + testCase.expected,
       )
     })
   })

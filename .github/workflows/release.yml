@@ -15,29 +15,16 @@ jobs:
 
       - uses: actions/setup-node@v1
         with:
-          node-version: 12.x
-
-      - name: cache dependencies
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-10.x-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-10.x-
-            ${{ runner.os }}-npm-
+          node-version: 18.x
 
       - name: install
-        run: |
-          npm i
-          npm i --no-save eslint
+        run: npm install
 
       - name: static checks
-        run: |
-          npm run lint
+        run: npm run lint
 
       - name: build
-        run: |
-          npm run build
+        run: npm run build
 
       - name: test
         run: |

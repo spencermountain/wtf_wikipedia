@@ -6,7 +6,7 @@
  * @param {string} tmpl the string to be striped
  * @returns {string} the striped string
  */
-const strip = function (tmpl) {
+function strip (tmpl) {
   tmpl = tmpl.replace(/^\{\{/, '')
   tmpl = tmpl.replace(/\}\}$/, '')
   return tmpl

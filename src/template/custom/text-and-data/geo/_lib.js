@@ -4,7 +4,7 @@ import parse from '../../../parse/toJSON/index.js'
  * converts DMS (decimal-minute-second) geo format to lat/lng format.
  * major thank you to https://github.com/gmaclennan/parse-dms and https://github.com/WSDOT-GIS/dms-js 👏
  **/
-function parseDMS(arr) {
+function parseDMS (arr) {
   let hemisphere = arr.pop()
   let degrees = Number(arr[0] || 0)
   let minutes = Number(arr[1] || 0)
@@ -19,7 +19,7 @@ function parseDMS(arr) {
   return sign * (degrees + minutes / 60 + seconds / 3600)
 }
 
-const round = function (num) {
+function round (num) {
   if (typeof num !== 'number') {
     return num
   }
@@ -33,7 +33,7 @@ const negative = {
   w: true,
 }
 
-const findLatLng = function (arr) {
+function findLatLng (arr) {
   const types = arr.map((s) => typeof s).join('|')
   //support {{lat|lng}}
   if (arr.length === 2 && types === 'number|number') {
@@ -72,7 +72,7 @@ const findLatLng = function (arr) {
   return {}
 }
 
-const parseParams = function (obj) {
+function parseParams (obj) {
   obj.list = obj.list || []
   obj.list = obj.list.map((str) => {
     let num = Number(str)
@@ -92,9 +92,10 @@ const parseParams = function (obj) {
   return obj
 }
 
-const parseCoor = function (tmpl) {
+function parseCoor (tmpl) {
   let obj = parse(tmpl)
   obj = parseParams(obj)
+
   let tmp = findLatLng(obj.list)
   obj.lat = round(tmp.lat)
   obj.lon = round(tmp.lon)

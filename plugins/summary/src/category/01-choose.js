@@ -2,7 +2,7 @@ import { like, dislike, good, bad } from './regs.js'
 const hasYear = /[0-9]{4}/
 const isPlural = /s$/
 
-const fromCategory = function (doc) {
+function fromCategory (doc) {
   let cats = doc.categories()
 
   // try to focus on the best ones, first

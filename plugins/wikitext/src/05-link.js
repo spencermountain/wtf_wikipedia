@@ -1,5 +1,5 @@
 // add `[text](href)` to the text
-const toWiki = function () {
+function toWiki () {
   //if it's an external link, we good
   if (this.site()) {
     if (this.text()) {

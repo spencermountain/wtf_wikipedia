@@ -3,64 +3,64 @@ import test from 'tape'
 
 test('parse a normal case', (t) => {
   const options = {
-    "domain": "liquipedia.net",
-    "path": "counterstrike/api.php",
-    "follow_redirects": true,
-    "Api-User-Agent": "wtf_wikipedia test script - <spencermountain@gmail.com>",
-    "title": "Team_Liquid"
+    domain: 'liquipedia.net',
+    path: 'counterstrike/api.php',
+    follow_redirects: true,
+    'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
+    title: 'Team_Liquid',
   }
 
   const response = {
-    "warnings": {
-      "main": {
-        "*": "Unrecognized parameter: rvslots."
-      }
+    warnings: {
+      main: {
+        '*': 'Unrecognized parameter: rvslots.',
+      },
     },
-    "batchcomplete": "",
-    "query": {
-      "normalized": [
+    batchcomplete: '',
+    query: {
+      normalized: [
         {
-          "from": "Team_Liquid",
-          "to": "Team Liquid"
-        }
+          from: 'Team_Liquid',
+          to: 'Team Liquid',
+        },
       ],
-      "pages": {
-        "19571": {
-          "pageid": 19571,
-          "ns": 0,
-          "title": "Team Liquid",
-          "revisions": [
+      pages: {
+        '19571': {
+          pageid: 19571,
+          ns: 0,
+          title: 'Team Liquid',
+          revisions: [
             {
-              "contentformat": "text/x-wiki",
-              "contentmodel": "wikitext",
-              "*": "test"
-            }
+              contentformat: 'text/x-wiki',
+              contentmodel: 'wikitext',
+              '*': 'test',
+            },
           ],
-          "pageprops": {
-            "displaytitle": "Team Liquid",
-            "metaimage": "Team Liquid 2020.png",
-            "metaimageurl": "https://liquipedia.net/commons/images/7/7e/Team_Liquid_2020.png",
-          }
-        }
-      }
-    }
+          pageprops: {
+            displaytitle: 'Team Liquid',
+            metaimage: 'Team Liquid 2020.png',
+            metaimageurl: 'https://liquipedia.net/commons/images/7/7e/Team_Liquid_2020.png',
+          },
+        },
+      },
+    },
   }
 
   const expected = [
     {
-      wiki: "test",
+      wiki: 'test',
       meta: {
-        "domain": "liquipedia.net",
-        "path": "counterstrike/api.php",
-        "follow_redirects": true,
-        "Api-User-Agent": "wtf_wikipedia test script - <spencermountain@gmail.com>",
-        "title": "Team Liquid",
+        domain: 'liquipedia.net',
+        path: 'counterstrike/api.php',
+        follow_redirects: true,
+        'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
+        title: 'Team Liquid',
         pageID: 19571,
         namespace: 0,
         wikidata: undefined,
         description: undefined,
-      }
-    }
+      },
+    },
   ]
 
   const result = getResult(response, options)
@@ -70,38 +70,38 @@ test('parse a normal case', (t) => {
 
 test('parse a normal case from wikimedia', (t) => {
   const options = {
-    "lang": "it",
-    "wiki": "wiktionary",
-    "follow_redirects": true,
-    "path": "api.php",
-    "title": "casa"
+    lang: 'it',
+    wiki: 'wiktionary',
+    follow_redirects: true,
+    path: 'api.php',
+    title: 'casa',
   }
 
   const response = {
-    "batchcomplete": "",
-    "query": {
-      "pages": {
-        "742": {
-          "pageid": 742,
-          "ns": 0,
-          "title": "casa",
-          "revisions": [
+    batchcomplete: '',
+    query: {
+      pages: {
+        '742': {
+          pageid: 742,
+          ns: 0,
+          title: 'casa',
+          revisions: [
             {
-              "slots": {
-                "main": {
-                  "contentmodel": "wikitext",
-                  "contentformat": "text/x-wiki",
-                  "*": "Italian wiktionary"
-                }
-              }
-            }
+              slots: {
+                main: {
+                  contentmodel: 'wikitext',
+                  contentformat: 'text/x-wiki',
+                  '*': 'Italian wiktionary',
+                },
+              },
+            },
           ],
-          "pageprops": {
-            "page_image_free": "RybnoeDistrict_06-13_Konstantinovo_village_05.jpg"
-          }
-        }
-      }
-    }
+          pageprops: {
+            page_image_free: 'RybnoeDistrict_06-13_Konstantinovo_village_05.jpg',
+          },
+        },
+      },
+    },
   }
 
   const expected = [
@@ -117,9 +117,9 @@ test('parse a normal case from wikimedia', (t) => {
         namespace: 0,
         domain: 'wiktionary.org',
         wikidata: undefined,
-        description: undefined
-      }
-    }
+        description: undefined,
+      },
+    },
   ]
 
   const result = getResult(response, options)
@@ -129,15 +129,18 @@ test('parse a normal case from wikimedia', (t) => {
 
 test('parse a not found case', (t) => {
   const options = {
-    "lang": "en",
-    "wiki": "wikipedia",
-    "follow_redirects": true,
-    "path": "api.php",
-    "Api-User-Agent": "wtf_wikipedia test script - <spencermountain@gmail.com>",
-    "title": "165111651dfasfasdfsadfas"
+    lang: 'en',
+    wiki: 'wikipedia',
+    follow_redirects: true,
+    path: 'api.php',
+    'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
+    title: '165111651dfasfasdfsadfas',
   }
 
-  const response = { "batchcomplete": "", "query": { "pages": { "-1": { "ns": 0, "title": "165111651dfasfasdfsadfas", "missing": "" } } } }
+  const response = {
+    batchcomplete: '',
+    query: { pages: { '-1': { ns: 0, title: '165111651dfasfasdfsadfas', missing: '' } } },
+  }
 
   const expected = [null]
 

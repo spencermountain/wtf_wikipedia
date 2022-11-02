@@ -3,18 +3,18 @@ const dontDo = {
   caption: true,
   alt: true,
   signature: true,
-  'signature alt': true
+  'signature alt': true,
 }
 
 const defaults = {
-  images: true
+  images: true,
 }
 
 //
 import pad from './_lib/pad.js'
 
 // render an infobox as a table with two columns, key + value
-const doInfobox = function (options) {
+function doInfobox (options) {
   options = Object.assign({}, defaults, options)
   let md = '|' + pad('', 35) + '|' + pad('', 30) + '|\n'
   md += '|' + pad('---', 35) + '|' + pad('---', 30) + '|\n'

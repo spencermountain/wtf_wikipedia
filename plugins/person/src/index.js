@@ -5,7 +5,7 @@ import deathDate from './deathDate/index.js'
 import deathPlace from './deathPlace/index.js'
 import nationality from './nationality/index.js'
 
-const addMethod = function (models) {
+function addMethod (models) {
   models.Doc.prototype.birthDate = function () {
     return birthDate(this)
   }

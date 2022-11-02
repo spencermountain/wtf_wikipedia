@@ -123,7 +123,7 @@ test('intensive', (t) => {
     wtf.fetch(page, {
       lang: 'en',
       'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
-    })
+    }),
   )
   Promise.all(promises)
     .then((results) => {

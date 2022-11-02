@@ -26,7 +26,7 @@ Some additional methods for using and rendering images in wtf_wikipedia
 const wtf = require('wtf_wikipedia')
 wtf.extend(require('wtf-plugin-image'))
 
-wtf.fetch('casa', { lang:'it', wiki: `wiktionary` }).then(async function(doc) {
+wtf.fetch('casa', { lang:'it', wiki: `wiktionary` }).then(async function (doc) {
   let image = doc.images()[0]
 
   // make a {method: 'HEAD'} request to test the image is there

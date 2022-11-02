@@ -1,10 +1,10 @@
 //escape a string like 'fun*2.Co' for a regExpr
-function escapeRegExp(str) {
+function escapeRegExp (str) {
   return str.replace(/[\-[\]/{}()*+?.\\^$|]/g, '\\$&')
 }
 
 //sometimes text-replacements can be ambiguous - words used multiple times..
-const smartReplace = function (all, text, result) {
+function smartReplace (all, text, result) {
   if (!text || !all) {
     return all
   }

@@ -8,14 +8,16 @@ import unfetch from 'isomorphic-unfetch'
  * @param {Object} opts the options for fetch
  * @returns {Promise<any>} the response from fetch
  */
-const request = function (url, opts) {
-  return unfetch(url, opts).then(function (res) {
-    return res.json()
-  }).catch((e) => {
-    console.error('\n\n=-=- http response error =-=-=-')
-    console.error(url)
-    console.error(e)
-    return {}
-  })
+function request (url, opts) {
+  return unfetch(url, opts)
+    .then(function (res) {
+      return res.json()
+    })
+    .catch((e) => {
+      console.error('\n\n=-=- http response error =-=-=-')
+      console.error(url)
+      console.error(e)
+      return {}
+    })
 }
 export default request

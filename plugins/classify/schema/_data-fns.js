@@ -17,7 +17,7 @@ let patterns = {
   titles: [],
 }
 
-const doNode = function (node) {
+function doNode (node) {
   if (node.id) {
     // collect mappings
     node.categories.mapping.forEach((str) => {

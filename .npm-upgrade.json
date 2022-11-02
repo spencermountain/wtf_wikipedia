@@ -1,0 +1,8 @@
+{
+  "ignore": {
+    "rollup": {
+      "versions": "^3.0.0",
+      "reason": "not ready yet"
+    }
+  }
+}

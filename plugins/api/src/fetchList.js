@@ -1,9 +1,9 @@
 import slow from 'slow'
-const isObject = function (obj) {
+function isObject (obj) {
   return obj && Object.prototype.toString.call(obj) === '[object Object]'
 }
 
-const chunkBy = function (arr, chunkSize = 5) {
+function chunkBy (arr, chunkSize = 5) {
   let groups = []
   for (let i = 0; i < arr.length; i += chunkSize) {
     groups.push(arr.slice(i, i + chunkSize))
@@ -11,7 +11,7 @@ const chunkBy = function (arr, chunkSize = 5) {
   return groups
 }
 
-const fetchList = function (pages, options, wtf) {
+function fetchList (pages, options, wtf) {
   // support a list of strings, or objects
   if (pages[0] && isObject(pages[0])) {
     pages = pages.map((o) => o.title)
@@ -19,7 +19,7 @@ const fetchList = function (pages, options, wtf) {
   // fetch in groups of 5
   let groups = chunkBy(pages)
 
-  const doit = function (group) {
+  function doit (group) {
     return wtf.fetch(group, options) //returns a promise
   }
   //only allow three requests at a time

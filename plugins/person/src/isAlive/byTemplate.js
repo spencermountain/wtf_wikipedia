@@ -31,7 +31,7 @@ const isDead = {
   panegyric: true,
   memorial: true,
 }
-const byTemplate = function (doc) {
+function byTemplate (doc) {
   let templates = doc.templates().map((tmpl) => tmpl.json())
   for (let i = 0; i < templates.length; i++) {
     let title = templates[i].template || ''

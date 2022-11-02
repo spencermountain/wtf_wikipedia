@@ -52,7 +52,7 @@ test('long redirects', (t) => {
   t.equal(
     doc.redirectsTo().page,
     'List of Directors and Commissioners-General of the United Nations Relief and Works Agency for Palestine Refugees in the Near East',
-    'redirectsto'
+    'redirectsto',
   )
 
   //another one

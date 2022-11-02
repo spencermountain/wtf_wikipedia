@@ -7,7 +7,7 @@ import hardCut from './04-hardCuts.js'
 import lastTry from './05-lastTry.js'
 import isGood from './_isGood.js'
 
-const post = function (s) {
+function post (s) {
   s.remove('^(and|or|but)')
   s.remove('(and|or|but)$')
   s.post('') // remove trailing comma
@@ -15,7 +15,7 @@ const post = function (s) {
 }
 
 // let count = 0
-const doSentence = function (doc, options) {
+function doSentence (doc, options) {
   let sentence = doc.sentence(0)
   if (!sentence) {
     return ''

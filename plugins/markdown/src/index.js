@@ -9,7 +9,7 @@ import list from './list.js'
 import reference from './reference.js'
 import table from './table.js'
 
-const plugin = function (models) {
+function plugin (models) {
   models.Doc.prototype.markdown = doc
   models.Section.prototype.markdown = section
   models.Paragraph.prototype.markdown = paragraph

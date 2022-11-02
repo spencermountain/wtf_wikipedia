@@ -5,7 +5,7 @@ export default {
   name: 'Jurisdiction',
   children: {
     City,
-    Country
+    Country,
   },
   properties: {
     population: () => { },

@@ -1,6 +1,6 @@
 import parse from '../../parse/toJSON/index.js'
 
-const generic = function (tmpl, list, _parser, alias) {
+function generic (tmpl, list, _parser, alias) {
   let obj = parse(tmpl)
   if (alias) {
     obj.name = obj.template

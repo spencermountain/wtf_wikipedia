@@ -1,11 +1,20 @@
 import fetch from './_fetch/index.js'
-import version from './_version.js'
 import Document from './01-document/Document.js'
+import version from './_version.js'
 
-//the main 'factory' exported method
-const wtf = function (wiki, options) {
+/**
+ * the main 'factory' exported method
+ *
+ * @param {string} [wiki]
+ * @param {object} [options] options for parsing the wiki text
+ * @returns {Document} a parsed document
+ */
+function wtf (wiki, options) {
   return new Document(wiki, options)
 }
+
+wtf.fetch = fetch
+wtf.version = version
 
 //export classes for plugin development
 // and export them for typescript compatibility
@@ -40,15 +49,18 @@ const models = {
   wtf: wtf,
 }
 
-wtf.fetch = function (title, options, cb) {
-  return fetch(title, options, cb)
-}
+/**
+ * there are multiple plugins available for wtf_wikipedia
+ * these enable new parse options or different ways of outputting the wiki text
+ *
+ * @param {function} fn a wtf_wikipedia plugin
+ * @returns {wtf} the extended
+ */
 wtf.extend = function (fn) {
   fn(models, templates, infoboxes)
   return this
 }
 wtf.plugin = wtf.extend
-wtf.version = version
 
 wtf.Document = Doc
 wtf.Section = Section

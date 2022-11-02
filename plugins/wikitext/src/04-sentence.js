@@ -1,10 +1,10 @@
 import smartReplace from './_lib/smartReplace.js'
 
 const defaults = {
-  links: true
+  links: true,
 }
 
-const toWiki = function (options) {
+function toWiki (options) {
   options = options || {}
   options = Object.assign({}, defaults, options)
   let text = this.text()

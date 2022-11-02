@@ -1,6 +1,8 @@
 import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
+import sizeCheck from 'rollup-plugin-filesize-check'
 import resolve from '@rollup/plugin-node-resolve' //import compromise
+
 import { version } from './package.json'
 console.log('\n 📦  - running rollup..\n')
 
@@ -14,7 +16,7 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
-    ]
+    ],
   },
 
   // === .js ===
@@ -24,7 +26,7 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
-    ]
+    ],
   },
   // ===  min.js ===
   {
@@ -34,6 +36,7 @@ export default [
       resolve(),
       commonjs(),
       terser(),
-    ]
-  }
+      sizeCheck({ expect: 9, warn: 10 }),
+    ],
+  },
 ]

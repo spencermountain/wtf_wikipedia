@@ -3,15 +3,15 @@ const dontDo = {
   caption: true,
   alt: true,
   signature: true,
-  'signature alt': true
+  'signature alt': true,
 }
 
 const defaults = {
-  images: true
+  images: true,
 }
 
 //
-const infobox = function (options) {
+function infobox (options) {
   options = Object.assign({}, defaults, options)
   let out = '\n \\vspace*{0.3cm} % Info Box\n\n'
   out += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n'

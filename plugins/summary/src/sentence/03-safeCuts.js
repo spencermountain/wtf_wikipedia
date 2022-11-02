@@ -1,4 +1,4 @@
-const safeCuts = function (s) {
+function safeCuts (s) {
   // 'in hamilton, Canada'
   if (s.has('(#Place && @hasComma) #Country+$')) {
     s.remove('#Country+$')

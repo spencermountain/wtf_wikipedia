@@ -1,7 +1,7 @@
 import test from 'tape'
 import wtf from './_lib.js'
 
-const tidy = (str) => {
+function tidy (str) {
   str = str.replace(/\s{2,}/g, ' ')
   str = str.replace(/\n/g, '')
   str = str.replace(/ >/g, '>')

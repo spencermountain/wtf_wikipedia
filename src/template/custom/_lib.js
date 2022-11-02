@@ -1,7 +1,7 @@
 import languages from '../../_data/languages.js'
 
 //simply num/denom * 100
-const percentage = function (obj) {
+function percentage (obj) {
   if (!obj.numerator && !obj.denominator) {
     return null
   }
@@ -14,7 +14,7 @@ const percentage = function (obj) {
   return Number(perc.toFixed(dec))
 }
 
-const toNumber = function (str = '') {
+function toNumber (str = '') {
   if (typeof str === 'number') {
     return str
   }
@@ -27,7 +27,7 @@ const toNumber = function (str = '') {
   return num
 }
 
-const getLang = function (name) {
+function getLang (name) {
   //grab the language from the template name - 'ipa-de'
   let lang = name.match(/ipac?-(.+)/)
   if (lang !== null) {
@@ -39,7 +39,7 @@ const getLang = function (name) {
   return null
 }
 
-const titlecase = (str) => {
+function titlecase (str) {
   return str.charAt(0).toUpperCase() + str.substring(1)
 }
 

@@ -4,14 +4,14 @@ import { delta } from './_lib.js'
 import { ymd, toText } from './_format.js'
 
 //wrap it up as a template
-const template = function (date) {
+function template (date) {
   return {
     template: 'date',
     data: date,
   }
 }
 
-const getBoth = function (tmpl) {
+function getBoth (tmpl) {
   tmpl = strip(tmpl)
   let arr = tmpl.split('|')
   let from = ymd(arr.slice(1, 4))
@@ -86,7 +86,7 @@ const parsers = {
     list.push(
       template({
         year: year,
-      })
+      }),
     )
     return String(year)
   },

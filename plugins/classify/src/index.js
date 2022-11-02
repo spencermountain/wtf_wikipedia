@@ -7,7 +7,7 @@ import byDescription from './byDescription/index.js'
 import skipPage from './_skip/index.js'
 import score from './score.js'
 
-const plugin = function (models) {
+function plugin (models) {
   //add a new method to main class
   models.Doc.prototype.classify = function () {
     let doc = this

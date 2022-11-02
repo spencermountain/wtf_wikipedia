@@ -13,7 +13,7 @@ const circa_reg = / c\.\s$/
 const hasWord = /\p{Letter}/iu
 
 //turn a nested array into one array
-const flatten = function (arr) {
+function flatten (arr) {
   let all = []
   arr.forEach(function (a) {
     all = all.concat(a)
@@ -21,11 +21,12 @@ const flatten = function (arr) {
   return all
 }
 
-const naiive_split = function (text) {
+function naiive_split (text) {
   //first, split by newline
   let splits = text.split(/(\n+)/)
   splits = splits.filter((s) => s.match(/\S/))
   //split by period, question-mark, and exclamation-mark
+  // @ts-expect-error it is to flatten the array
   splits = splits.map(function (str) {
     return str.split(/(\S.+?[.!?]"?)(?=\s|$)/g) //\u3002
   })
@@ -33,7 +34,7 @@ const naiive_split = function (text) {
 }
 
 // if this looks like a period within a wikipedia link, return false
-const isBalanced = function (str) {
+function isBalanced (str) {
   str = str || ''
   const open = str.split(/\[\[/) || []
   const closed = str.split(/\]\]/) || []
@@ -53,18 +54,22 @@ const isBalanced = function (str) {
   return true
 }
 
-const sentence_parser = function (text) {
+function sentence_parser (text) {
   let sentences = []
+
   //first do a greedy-split..
   let chunks = []
+
   //ensure it 'smells like' a sentence
   if (!text || typeof text !== 'string' || text.trim().length === 0) {
     return sentences
   }
+
   // This was the splitter regex updated to fix quoted punctuation marks.
   // let splits = text.split(/(\S.+?[.\?!])(?=\s+|$|")/g);
   // todo: look for side effects in this regex replacement:
   let splits = naiive_split(text)
+
   //filter-out the grap ones
   for (let i = 0; i < splits.length; i++) {
     let s = splits[i]
@@ -87,7 +92,7 @@ const sentence_parser = function (text) {
   }
 
   //detection of non-sentence chunks
-  const isSentence = function (hmm) {
+  function isSentence (hmm) {
     if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg) || hmm.match(circa_reg)) {
       return false
     }
@@ -100,6 +105,7 @@ const sentence_parser = function (text) {
     }
     return true
   }
+
   //loop through these chunks, and join the non-sentence chunks back together..
   for (let i = 0; i < chunks.length; i++) {
     //should this chunk be combined with the next one?
@@ -111,10 +117,12 @@ const sentence_parser = function (text) {
       chunks[i] = ''
     }
   }
+
   //if we never got a sentence, return the given text
   if (sentences.length === 0) {
     return [text]
   }
+
   return sentences
 }
 

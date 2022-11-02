@@ -68,7 +68,7 @@ test('from-infobox', (t) => {
   t.equal(
     doc.infobox(0).image(0).thumb(),
     'https://wikipedia.org/wiki/Special:Redirect/file/Marc_Emery_and_Jodie_Emery.JPG?width=300',
-    'has correct thumbnail'
+    'has correct thumbnail',
   )
   t.end()
 })

@@ -1,5 +1,5 @@
 //
-const toMarkdown = function (options) {
+function toMarkdown (options) {
   return this.lines()
     .map((s) => {
       let str = s.markdown(options)

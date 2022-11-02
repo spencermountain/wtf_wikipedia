@@ -1,11 +1,11 @@
-const cleanUp = function (s) {
+function cleanUp (s) {
   // 'an actor and was a politician'
   s.remove('and #Copula .*')
   return s
 }
 
 //  founded in 1952 as the flagship ..
-const findPivot = function (s) {
+function findPivot (s) {
   let m = s.matchOne('#Copula+ (a|an|the|any|one) of?')
   if (!m.found) {
     m = s.matchOne('#Copula+')
@@ -27,7 +27,7 @@ const findPivot = function (s) {
     before: f.eq(0),
     verb: f.eq(1),
     article: article,
-    after: cleanUp(f.eq(2))
+    after: cleanUp(f.eq(2)),
   }
 }
 export default findPivot

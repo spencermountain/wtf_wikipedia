@@ -11,7 +11,7 @@ import sentenceParser from './parse.js'
  * @param {string} line the wiki text for processing
  * @returns {string} the processed string
  */
-function postprocess(line) {
+function postprocess (line) {
   //remove empty parentheses (sometimes caused by removing templates)
   line = line.replace(/\([,;: ]*\)/g, '')
   //these semi-colons in parentheses are particularly troublesome
@@ -28,7 +28,7 @@ function postprocess(line) {
  * @param {string} str create a object from a sentence
  * @returns {Sentence} the Sentence created from the text
  */
-function fromText(str) {
+function fromText (str) {
   let obj = {
     wiki: str,
     text: str,
@@ -43,11 +43,11 @@ function fromText(str) {
 }
 
 //used for consistency with other class-definitions
-const byParagraph = function (paragraph) {
+function byParagraph (paragraph) {
   //array of texts
-  let sentences = sentenceParser(paragraph.wiki)
+  let sentencesStrings = sentenceParser(paragraph.wiki)
   //sentence objects
-  sentences = sentences.map(fromText)
+  let sentences = sentencesStrings.map(fromText)
   //remove :indented first line, as it is often a disambiguation
   if (sentences[0] && sentences[0].text() && sentences[0].text()[0] === ':') {
     sentences = sentences.slice(1)

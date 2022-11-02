@@ -9,14 +9,14 @@ const defaults = {
   sentence: true,
   category: true,
   max: 80,
-  min: 3
+  min: 3,
 }
 
-const seemsGood = function (txt, options) {
+function seemsGood (txt, options) {
   return txt && txt.length > 5 && txt.length < options.max
 }
 
-const plugin = function (models) {
+function plugin (models) {
   // add a new method to main class
   models.Doc.prototype.summary = function (options) {
     let doc = this

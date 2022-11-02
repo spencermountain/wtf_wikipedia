@@ -2,7 +2,7 @@ import tableParser from '../../table/parse/index.js'
 //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
 
 //this is pretty nuts
-const whichHeadings = function (tmpl) {
+function whichHeadings (tmpl) {
   let headings = ['#', 'date', 'opponent', 'score', 'win', 'loss', 'save', 'attendance', 'record']
   if (/\|stadium=y/i.test(tmpl) === true) {
     headings.splice(7, 0, 'stadium') //save, stadium, attendance
@@ -20,31 +20,33 @@ const whichHeadings = function (tmpl) {
  * @private
  * @param {object} catcher
  */
-const parseMlb = function (catcher) {
+function parseMlb (catcher) {
   catcher.text = catcher.text.replace(/\{\{mlb game log /gi, '{{game log ')
-  catcher.text = catcher.text.replace(/\{\{game log (section|month)[\s\S]+?\{\{game log (section|month) end\}\}/gi, (tmpl) => {
-    let headings = whichHeadings(tmpl)
+  catcher.text = catcher.text.replace(
+    /\{\{game log (section|month)[\s\S]+?\{\{game log (section|month) end\}\}/gi,
+    (tmpl) => {
+      let headings = whichHeadings(tmpl)
 
-    tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
-    tmpl = tmpl.replace(/\{\{game log (section|month) end\}\}/i, '')
+      tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
+      tmpl = tmpl.replace(/\{\{game log (section|month) end\}\}/i, '')
 
-    let headers = '! ' + headings.join(' !! ')
-    let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
-    let rows = tableParser(table)
-    rows = rows.map((row) => {
-      Object.keys(row).forEach((k) => {
-        row[k] = row[k].text()
+      let headers = '! ' + headings.join(' !! ')
+      let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
+      let rows = tableParser(table)
+      rows = rows.map((row) => {
+        Object.keys(row).forEach((k) => {
+          row[k] = row[k].text()
+        })
+        return row
       })
-      return row
-    })
-    catcher.templates.push({
-      template: 'mlb game log section',
-      data: rows,
-    })
+      catcher.templates.push({
+        template: 'mlb game log section',
+        data: rows,
+      })
 
-    //return empty string to remove the template from the wiki text
-    return ''
-  }
+      //return empty string to remove the template from the wiki text
+      return ''
+    },
   )
 }
 export default parseMlb

@@ -1,7 +1,7 @@
 import { patterns } from '../../schema/_data-fns.js'
 import byPattern from '../_byPattern.js'
 
-const byDescription = function (doc) {
+function byDescription (doc) {
   let tmpl = doc.template('short description')
   if (tmpl && tmpl.description) {
     let desc = tmpl.description || ''

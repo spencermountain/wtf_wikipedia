@@ -1,7 +1,7 @@
 import { patterns, mappings } from '../../schema/_data-fns.js'
 import byPattern from '../_byPattern.js'
 
-const byCategory = function (doc) {
+function byCategory (doc) {
   let found = []
   let cats = doc.categories()
   // clean them up a bit

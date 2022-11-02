@@ -1,7 +1,7 @@
 import parseRecord from './parseGames/_record.js'
 const ordinal = /([0-9])(st|nd|rd|th)$/i
 
-const toCardinal = function (str = '') {
+function toCardinal (str = '') {
   str = str.trim()
   if (ordinal.test(str)) {
     str = str.replace(ordinal, '$1')
@@ -14,7 +14,7 @@ const toCardinal = function (str = '') {
 }
 
 //
-const parseInfobox = function (doc) {
+function parseInfobox (doc) {
   let info = doc.infobox('ice hockey team season') || doc.infobox('NHLTeamSeason')
   if (!info) {
     return {}

@@ -7,7 +7,7 @@ const defaults$4 = {
   links: true
 };
 //we should try to make this look like the wikipedia does, i guess.
-const softRedirect = function (doc) {
+function softRedirect (doc) {
   let link = doc.redirectTo();
   let href = link.page;
   href = './' + href.replace(/ /g, '_');
@@ -17,10 +17,10 @@ const softRedirect = function (doc) {
   return `  <div class="redirect">
   ↳ <a class="link" href="./${href}">${link.text}</a>
   </div>`
-};
+}
 
 //turn a Doc object into a HTML string
-const toHtml$5 = function (options) {
+function toHtml$5 (options) {
   options = Object.assign({}, defaults$4, options);
   let html = '';
   //add page title
@@ -52,7 +52,7 @@ const toHtml$5 = function (options) {
       .join('\n');
   }
   return html
-};
+}
 
 const defaults$3 = {
   headers: true,
@@ -62,7 +62,7 @@ const defaults$3 = {
   paragraphs: true
 };
 
-const doSection = function (options) {
+function doSection (options) {
   options = Object.assign({}, defaults$3, options);
   let html = '';
   //make the header
@@ -113,13 +113,13 @@ const doSection = function (options) {
         .join(' ');
   }
   return '<div class="section">\n' + html + '</div>\n'
-};
+}
 
 const defaults$2 = {
   sentences: true
 };
 
-const toHtml$4 = function (options) {
+function toHtml$4 (options) {
   options = Object.assign({}, defaults$2, options);
   let html = '';
   if (options.sentences === true) {
@@ -128,15 +128,15 @@ const toHtml$4 = function (options) {
       .join('\n');
   }
   return html
-};
+}
 
 //escape a string like 'fun*2.Co' for a regExpr
-function escapeRegExp(str) {
+function escapeRegExp (str) {
   return str.replace(/[\-[\]/{}()*+?.\\^$|]/g, '\\$&')
 }
 
 //sometimes text-replacements can be ambiguous - words used multiple times..
-const smartReplace = function (all, text, result) {
+function smartReplace (all, text, result) {
   if (!text || !all) {
     return all
   }
@@ -155,14 +155,14 @@ const smartReplace = function (all, text, result) {
     all = all.replace(text, result);
   }
   return all
-};
+}
 
 const defaults$1 = {
   links: true,
   formatting: true
 };
 // create links, bold, italic in html
-const doSentence = function (options) {
+function doSentence (options) {
   options = Object.assign({}, defaults$1, options);
   let text = this.text();
   //turn links into <a href>
@@ -186,15 +186,15 @@ const doSentence = function (options) {
     });
   }
   return '<span class="sentence">' + text + '</span>'
-};
+}
 
-const toHtml$3 = function () {
+function toHtml$3 () {
   let classNames = 'link';
   let href = this.href();
   href = href.replace(/ /g, '_');
   let str = this.text() || this.page();
   return `<a class="${classNames}" href="${href}">${str}</a>`
-};
+}
 
 const defaults = {
   images: true
@@ -208,7 +208,7 @@ const dontDo = {
 };
 
 //
-const infobox = function (options) {
+function infobox (options) {
   options = Object.assign({}, defaults, options);
   let html = '<table class="infobox">\n';
   html += '  <thead>\n';
@@ -246,24 +246,24 @@ const infobox = function (options) {
   html += '  </tbody>\n';
   html += '</table>\n';
   return html
-};
+}
 
-const makeImage = function () {
+function makeImage () {
   return '  <img src="' + this.thumbnail() + '" alt="' + this.alt() + '"/>'
-};
+}
 
 //
-const toHtml$2 = function (options) {
+function toHtml$2 (options) {
   let html = '  <ul class="list">\n';
   this.lines().forEach((s) => {
     html += '    <li>' + s.html(options) + '</li>\n';
   });
   html += '  </ul>\n';
   return html
-};
+}
 
 //
-const toHtml$1 = function (options) {
+function toHtml$1 (options) {
   if (this.data && this.data.url && this.data.title) {
     let str = this.data.title;
     if (options.links === true) {
@@ -289,10 +289,10 @@ const toHtml$1 = function (options) {
     return `<div class="reference">⌃ ${this.inline.html()}</div>`
   }
   return ''
-};
+}
 
 //turn a json table into a html table
-const toHtml = function (options) {
+function toHtml (options) {
   let rows = this.data;
   let html = '<table class="table">\n';
   //make header
@@ -320,9 +320,9 @@ const toHtml = function (options) {
   html += '  </tbody>\n';
   html += '</table>\n';
   return html
-};
+}
 
-const plugin = function (models) {
+function plugin (models) {
   models.Doc.prototype.html = toHtml$5;
 
   models.Section.prototype.html = doSection;
@@ -343,7 +343,7 @@ const plugin = function (models) {
 
   models.Table.prototype.html = toHtml;
 
-  // models.Template.html = function(opts) {}
-};
+  // models.Template.html = function (opts) {}
+}
 
 export { plugin as default };

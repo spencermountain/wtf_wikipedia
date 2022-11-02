@@ -4,7 +4,7 @@ import mainImage from './mainImage.js'
 import images from './api/images.js'
 import license from './api/license.js'
 
-const addMethod = function (models) {
+function addMethod (models) {
   models.Doc.prototype.mainImage = mainImage
   // add a new method to Image class
   models.Image.prototype.commonsURL = commonsURL

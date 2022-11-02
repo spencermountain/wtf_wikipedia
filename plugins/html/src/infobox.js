@@ -1,16 +1,16 @@
 const defaults = {
-  images: true
+  images: true,
 }
 const dontDo = {
   image: true,
   caption: true,
   alt: true,
   signature: true,
-  'signature alt': true
+  'signature alt': true,
 }
 
 //
-const infobox = function (options) {
+function infobox (options) {
   options = Object.assign({}, defaults, options)
   let html = '<table class="infobox">\n'
   html += '  <thead>\n'

@@ -30,7 +30,7 @@ import unfetch from 'isomorphic-unfetch';
    * @param {number} y Second integer
    * @returns {number} Sum
    */
-function safeAdd(x, y) {
+function safeAdd (x, y) {
   let lsw = (x & 0xffff) + (y & 0xffff);
   let msw = (x >> 16) + (y >> 16) + (lsw >> 16);
   return (msw << 16) | (lsw & 0xffff)
@@ -43,7 +43,7 @@ function safeAdd(x, y) {
    * @param {number} cnt Rotation count
    * @returns {number} Rotated number
    */
-function bitRotateLeft(num, cnt) {
+function bitRotateLeft (num, cnt) {
   return (num << cnt) | (num >>> (32 - cnt))
 }
 
@@ -58,7 +58,7 @@ function bitRotateLeft(num, cnt) {
    * @param {number} t t
    * @returns {number} Result
    */
-function md5cmn(q, a, b, x, s, t) {
+function md5cmn (q, a, b, x, s, t) {
   return safeAdd(bitRotateLeft(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b)
 }
 /**
@@ -73,7 +73,7 @@ function md5cmn(q, a, b, x, s, t) {
    * @param {number} t t
    * @returns {number} Result
    */
-function md5ff(a, b, c, d, x, s, t) {
+function md5ff (a, b, c, d, x, s, t) {
   return md5cmn((b & c) | (~b & d), a, b, x, s, t)
 }
 /**
@@ -88,7 +88,7 @@ function md5ff(a, b, c, d, x, s, t) {
    * @param {number} t t
    * @returns {number} Result
    */
-function md5gg(a, b, c, d, x, s, t) {
+function md5gg (a, b, c, d, x, s, t) {
   return md5cmn((b & d) | (c & ~d), a, b, x, s, t)
 }
 /**
@@ -103,7 +103,7 @@ function md5gg(a, b, c, d, x, s, t) {
    * @param {number} t t
    * @returns {number} Result
    */
-function md5hh(a, b, c, d, x, s, t) {
+function md5hh (a, b, c, d, x, s, t) {
   return md5cmn(b ^ c ^ d, a, b, x, s, t)
 }
 /**
@@ -118,7 +118,7 @@ function md5hh(a, b, c, d, x, s, t) {
    * @param {number} t t
    * @returns {number} Result
    */
-function md5ii(a, b, c, d, x, s, t) {
+function md5ii (a, b, c, d, x, s, t) {
   return md5cmn(c ^ (b | ~d), a, b, x, s, t)
 }
 
@@ -129,7 +129,7 @@ function md5ii(a, b, c, d, x, s, t) {
    * @param {number} len Bit length
    * @returns {Array<number>} MD5 Array
    */
-function binlMD5(x, len) {
+function binlMD5 (x, len) {
   /* append padding */
   x[len >> 5] |= 0x80 << len % 32;
   x[(((len + 64) >>> 9) << 4) + 14] = len;
@@ -232,7 +232,7 @@ function binlMD5(x, len) {
    * @param {Array<number>} input MD5 Array
    * @returns {string} MD5 string
    */
-function binl2rstr(input) {
+function binl2rstr (input) {
   let i;
   let output = '';
   let length32 = input.length * 32;
@@ -249,7 +249,7 @@ function binl2rstr(input) {
    * @param {string} input Raw input string
    * @returns {Array<number>} Array of little-endian words
    */
-function rstr2binl(input) {
+function rstr2binl (input) {
   let i;
   let output = [];
   output[(input.length >> 2) - 1] = undefined;
@@ -269,7 +269,7 @@ function rstr2binl(input) {
    * @param {string} s Input string
    * @returns {string} Raw MD5 string
    */
-function rstrMD5(s) {
+function rstrMD5 (s) {
   return binl2rstr(binlMD5(rstr2binl(s), s.length * 8))
 }
 
@@ -280,7 +280,7 @@ function rstrMD5(s) {
    * @param {string} data Raw input string
    * @returns {string} Raw MD5 string
    */
-function rstrHMACMD5(key, data) {
+function rstrHMACMD5 (key, data) {
   let i;
   let bkey = rstr2binl(key);
   let ipad = [];
@@ -304,7 +304,7 @@ function rstrHMACMD5(key, data) {
    * @param {string} input Raw input string
    * @returns {string} Hex encoded string
    */
-function rstr2hex(input) {
+function rstr2hex (input) {
   let hexTab = '0123456789abcdef';
   let output = '';
   let x;
@@ -322,7 +322,7 @@ function rstr2hex(input) {
    * @param {string} input Input string
    * @returns {string} UTF8 string
    */
-function str2rstrUTF8(input) {
+function str2rstrUTF8 (input) {
   return unescape(encodeURIComponent(input))
 }
 
@@ -332,7 +332,7 @@ function str2rstrUTF8(input) {
    * @param {string} s Input string
    * @returns {string} Raw MD5 string
    */
-function rawMD5(s) {
+function rawMD5 (s) {
   return rstrMD5(str2rstrUTF8(s))
 }
 /**
@@ -341,7 +341,7 @@ function rawMD5(s) {
    * @param {string} s Input string
    * @returns {string} Hex encoded string
    */
-function hexMD5(s) {
+function hexMD5 (s) {
   return rstr2hex(rawMD5(s))
 }
 /**
@@ -351,7 +351,7 @@ function hexMD5(s) {
    * @param {string} d Input string
    * @returns {string} Raw MD5 string
    */
-function rawHMACMD5(k, d) {
+function rawHMACMD5 (k, d) {
   return rstrHMACMD5(str2rstrUTF8(k), str2rstrUTF8(d))
 }
 /**
@@ -361,7 +361,7 @@ function rawHMACMD5(k, d) {
    * @param {string} d Input string
    * @returns {string} Raw MD5 string
    */
-function hexHMACMD5(k, d) {
+function hexHMACMD5 (k, d) {
   return rstr2hex(rawHMACMD5(k, d))
 }
 
@@ -375,7 +375,7 @@ function hexHMACMD5(k, d) {
    * @param {boolean} [raw] Raw output switch
    * @returns {string} MD5 output
    */
-function md5(string, key, raw) {
+function md5 (string, key, raw) {
   if (!key) {
     if (!raw) {
       return hexMD5(string)
@@ -393,7 +393,7 @@ function md5(string, key, raw) {
 
 const server = 'https://upload.wikimedia.org/wikipedia/commons/';
 
-const encodeTitle = function (file) {
+function encodeTitle (file) {
   let title = file.replace(/^(image|file?):/i, '');
   title = title.trim();
   //titlecase it
@@ -401,11 +401,11 @@ const encodeTitle = function (file) {
   //spaces to underscores
   title = title.replace(/ /g, '_');
   return title
-};
+}
 
 //the wikimedia image url is a little silly:
 //https://commons.wikimedia.org/wiki/Commons:FAQ#What_are_the_strangely_named_components_in_file_paths.3F
-const commonsURL = function () {
+function commonsURL () {
   let file = this.data.file;
   let title = encodeTitle(file);
   // let hash = new jsHash.MD5().hex(title)
@@ -414,10 +414,10 @@ const commonsURL = function () {
   title = encodeURIComponent(title);
   path += title;
   return server + path
-};
+}
 
 // test if the image url exists or not
-const imgExists = function (callback) {
+function imgExists (callback) {
   const userAgent = this.data['_userAgent'];
   return unfetch(this.url(), {
     method: 'HEAD',
@@ -442,10 +442,10 @@ const imgExists = function (callback) {
       }
       return null
     })
-};
+}
 
 // is there a good image of this
-const mainImage = function () {
+function mainImage () {
   let box = this.infobox();
   if (box) {
     let img = box.image();
@@ -459,7 +459,7 @@ const mainImage = function () {
     return imgs[0]
   }
   return null
-};
+}
 
 /**
  * capitalizes the input
@@ -478,11 +478,22 @@ const mainImage = function () {
  * @param {*} x the variable that needs to be checked
  * @returns {boolean} whether the variable is an array
  */
-function isArray(x) {
+function isArray (x) {
   return Object.prototype.toString.call(x) === '[object Array]'
 }
 
 const isInterWiki = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/;
+
+const defaults = {
+  action: 'query',
+  prop: 'revisions|pageprops', // we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
+  rvprop: 'content',
+  maxlag: 5,
+  rvslots: 'main',
+  origin: '*',
+  format: 'json',
+  redirects: 'true',
+};
 
 /**
  * turns a object into a query string
@@ -491,11 +502,11 @@ const isInterWiki = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|
  * @param {Object<string, string | number | boolean>} obj
  * @returns {string} QueryString
  */
-const toQueryString = function (obj) {
+function toQueryString (obj) {
   return Object.entries(obj)
     .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
     .join('&')
-};
+}
 
 /**
  * cleans and prepares the tile by replacing the spaces with underscores (_) and trimming the white spaces of the ends
@@ -504,10 +515,10 @@ const toQueryString = function (obj) {
  * @param {string} page the title that needs cleaning
  * @returns {string} the cleaned title
  */
-const cleanTitle = (page) => {
+function cleanTitle (page) {
   return page.replace(/ /g, '_')
     .trim()
-};
+}
 
 /**
  * generates the url for fetching the pages
@@ -517,7 +528,7 @@ const cleanTitle = (page) => {
  * @param {Object} [parameters]
  * @returns {string} the url that can be used to make the fetch
  */
-const makeUrl = function (options, parameters) {
+function makeUrl (options, parameters = defaults) {
   let params = Object.assign({}, parameters);
 
   //default url
@@ -565,7 +576,7 @@ const makeUrl = function (options, parameters) {
 
   //make it!
   return `${apiPath}${toQueryString(params)}`
-};
+}
 
 /**
  * factory for header options
@@ -574,7 +585,7 @@ const makeUrl = function (options, parameters) {
  * @param {object} options
  * @returns {object} the generated options
  */
-const makeHeaders = function (options) {
+function makeHeaders (options) {
   let agent =
     options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library';
 
@@ -596,7 +607,7 @@ const makeHeaders = function (options) {
     },
     redirect: 'follow',
   }
-};
+}
 
 /**
  * Parses the API response for a single image.
@@ -605,7 +616,7 @@ const makeHeaders = function (options) {
  * @param {Object} fetchedImage
  * @returns {Object} method(s) results
  */
-const parseImage = function (fetchedImage) {
+function parseImage (fetchedImage) {
   // if the data is missing return empty object
   if (fetchedImage.hasOwnProperty('missing')) {
     return {}
@@ -624,7 +635,7 @@ const parseImage = function (fetchedImage) {
     }),
     ...(url && { existsRes: true })
   }
-};
+}
 /**
  * Parses the wikimedia API's "imageinfo" prop response for an array of images or a single image.
  *
@@ -634,7 +645,7 @@ const parseImage = function (fetchedImage) {
  * @param {boolean} isDoc whether the call is from a Document or an Image
  * @returns {Object | Object[]} 
  */
-const parseFetched = function (titles, fetched, isDoc) {
+function parseFetched (titles, fetched, isDoc) {
   if (isDoc) { // group of images
     // sort the results because API response is not in order, then find the info we need
     const fetchedValues = Object.values(fetched.query.pages);
@@ -658,7 +669,7 @@ const parseFetched = function (titles, fetched, isDoc) {
   }
   // a single image
   return parseImage(Object.values(fetched.query.pages)[0])
-};
+}
 
 const methodsProps = { // the accepted methdos and the iiprop (imageinfo prop (URL parameter)) needed for each method
   license: "extmetadata",
@@ -671,7 +682,7 @@ const methodsProps = { // the accepted methdos and the iiprop (imageinfo prop (U
  * @class
  */
 class InvalidMethod extends Error {
-  constructor(invalidMethod) {
+  constructor (invalidMethod) {
     super();
     const validMethods = Object.keys(methodsProps).join(', ');
     this.message = `'${invalidMethod}' cannot be passed to the 'images' method; ` +
@@ -688,7 +699,7 @@ class InvalidMethod extends Error {
  * @returns {Promise<Object[]>} methods' results for an array of images
  * @throws {InvalidMethod} throws if a passed method is invalid
  */
-function fetch(methods = "", images = []) {
+function fetch (methods = "", images = []) {
 
   const isDoc = images.length ? true : false; // whether the call is from a Document(".images()") or an Image
   let titles; // will be a string or an array of strings
@@ -790,7 +801,7 @@ function fetch(methods = "", images = []) {
  * @returns {newMethod}
  */
 
-const images = function (oldMethod) {
+function images (oldMethod) {
 
   /**
    * @typedef imagesOptions
@@ -805,15 +816,15 @@ const images = function (oldMethod) {
    * @returns {Promise<Object[]> | Object[]} an array of images or a single image
    */
 
-  const newMethod = function (clue) { // "this" refers to the document
+  function newMethod (clue) { // "this" refers to the document
 
     // adds userAgent to each image, to use for methods that call the API.
-    const addUserAgent = function (imgs) {
+    function addUserAgent (imgs) {
       return imgs.map(i => {
         i.data['_userAgent'] = this['_userAgent'];
         return i
       })
-    };
+    }
     let imagesArr;
 
     // return a single image (oldMethod accepts a number clue)
@@ -860,9 +871,9 @@ const images = function (oldMethod) {
     imagesArr = oldMethod.call(this);
     imagesArr = addUserAgent.call(this, imagesArr);
     return imagesArr
-  };
+  }
   return newMethod
-};
+}
 
 /**
  * Returns the license information for the image.
@@ -874,7 +885,7 @@ const license = async function () {
   return this.data.pluginData.licenseRes || null
 };
 
-const addMethod = function (models) {
+function addMethod (models) {
   models.Doc.prototype.mainImage = mainImage;
   // add a new method to Image class
   models.Image.prototype.commonsURL = commonsURL;
@@ -883,6 +894,6 @@ const addMethod = function (models) {
   // redefine the "images" method
   const oldImages = models.Doc.prototype.images; // store the old method to use in the new one
   models.Doc.prototype.images = images(oldImages);
-};
+}
 
 export { addMethod as default };

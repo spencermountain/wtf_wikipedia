@@ -7,7 +7,7 @@
  * @param {string} [str] the string that will be capitalized
  * @returns {string} the capitalized string
  */
-function capitalise(str) {
+function capitalise (str) {
   if (str && typeof str === 'string') {
     return str.charAt(0).toUpperCase() + str.slice(1)
   }
@@ -21,7 +21,7 @@ function capitalise(str) {
  * @param {string} [str] the string that will be processed
  * @returns {string} the processed string
  */
-function trim_whitespace(str) {
+function trim_whitespace (str) {
   if (str && typeof str === 'string') {
     str = str.replace(/^\s+/, '')
     str = str.replace(/\s+$/, '')
@@ -39,7 +39,7 @@ function trim_whitespace(str) {
  * @param {*} x the variable that needs to be checked
  * @returns {boolean} whether the variable is an array
  */
-function isArray(x) {
+function isArray (x) {
   return Object.prototype.toString.call(x) === '[object Array]'
 }
 
@@ -50,7 +50,7 @@ function isArray(x) {
  * @param {*} x the variable that needs to be checked
  * @returns {boolean} whether the variable is an object
  */
-function isObject(x) {
+function isObject (x) {
   return x && Object.prototype.toString.call(x) === '[object Object]'
 }
 

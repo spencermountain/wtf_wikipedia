@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 
 const dir = path.dirname(fileURLToPath(import.meta.url)) // eslint-disable-line
 
-function from_file(page) {
+function from_file (page) {
   let file = '../../../tests/cache/' + page + '.txt'
   file = path.join(dir, file)
   const str = fs.readFileSync(file, 'utf-8')
@@ -82,7 +82,7 @@ const pages = [
   'statoil',
   'julia_kristeva',
   'toronto',
-  'toronto_star'
+  'toronto_star',
 ]
 
 test('try all pages', (t) => {

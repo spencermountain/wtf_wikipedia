@@ -3,20 +3,25 @@ import parseTemplate from './parse/index.js'
 import sortOut from './sortOut.js'
 
 // return a flat list of all {{templates}}
-const allTemplates = function (wiki, doc) {
+function allTemplates (wiki, doc) {
   let list = []
+
   //nested data-structure of templates
   let nested = findTemplates(wiki)
+
   //recursive template-parser
-  const parseNested = function (obj, parent) {
+  function parseNested (obj, parent) {
     obj.parent = parent
+
     //do tail-first recursion
     if (obj.children && obj.children.length > 0) {
       obj.children.forEach((ch) => parseNested(ch, obj))
     }
+
     //parse template into json, return replacement wikitext
     let [text, json] = parseTemplate(obj, doc)
     obj.wiki = text
+
     if (json) {
       list.push({
         name: obj.name,
@@ -26,8 +31,9 @@ const allTemplates = function (wiki, doc) {
         json: json,
       })
     }
+
     //remove the text from every parent
-    const removeIt = function (node, body, out) {
+    function removeIt (node, body, out) {
       if (node.parent) {
         node.parent.body = node.parent.body.replace(body, out)
         removeIt(node.parent, body, out)
@@ -36,17 +42,20 @@ const allTemplates = function (wiki, doc) {
     removeIt(obj, obj.body, obj.wiki)
     wiki = wiki.replace(obj.body, obj.wiki)
   }
+
   //kick it off
   nested.forEach((node) => parseNested(node, null))
+
   //remove the templates from our wiki text
   nested.forEach((node) => {
     wiki = wiki.replace(node.body, node.wiki)
   })
+
   return { list: list, wiki: wiki }
 }
 
 //find + parse all templates in the section
-const process = function (section, doc) {
+function process (section, doc) {
   // find+parse them all
   let { list, wiki } = allTemplates(section._wiki, doc)
   // split-out references and infoboxes

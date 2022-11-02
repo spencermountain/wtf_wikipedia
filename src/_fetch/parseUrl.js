@@ -5,7 +5,7 @@
  * @param {string} url The url that will be parsed
  * @returns {{domain: string, title: string}} The domain and title of a url
  */
-const parseUrl = function (url) {
+function parseUrl (url) {
   let parsed = new URL(url) // eslint-disable-line
   let title = parsed.pathname.replace(/^\/(wiki\/)?/, '')
   title = decodeURIComponent(title)

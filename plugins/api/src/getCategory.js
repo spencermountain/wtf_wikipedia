@@ -8,10 +8,10 @@ const params = {
   cmnamespace: 0,
   format: 'json',
   origin: '*',
-  redirects: true
+  redirects: true,
 }
 
-const fetchIt = function (url, http, prop) {
+function fetchIt (url, http, prop) {
   return http(url).then((res) => {
     let pages = Object.keys(res.query[prop] || {})
     if (pages.length === 0) {
@@ -20,12 +20,12 @@ const fetchIt = function (url, http, prop) {
     let arr = pages.map((k) => res.query[prop][k])
     return {
       pages: arr,
-      cursor: res.continue
+      cursor: res.continue,
     }
   })
 }
 
-const makeUrl = function (title, options, append) {
+function makeUrl (title, options, append) {
   let url = `https://${options.lang}.wikipedia.org/${options.path}?`
   if (options.domain) {
     url = `https://${options.domain}/${options.path}?`

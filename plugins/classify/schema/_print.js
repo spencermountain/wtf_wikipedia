@@ -1,11 +1,11 @@
 import schema from './index'
 /** add spaces at the end */
-const indent = function (str = '', width) {
+function indent (str = '', width) {
   let pad = ''.padStart(width, ' ')
   return pad + str
 }
 
-const hasData = function (obj) {
+function hasData (obj) {
   // is it an object
   if (!obj || Object.prototype.toString.call(obj) !== '[object Object]') {
     return false
@@ -14,7 +14,7 @@ const hasData = function (obj) {
   return Object.keys(obj).length > 0
 }
 
-const doChildren = function (obj, depth) {
+function doChildren (obj, depth) {
   if (obj.id) {
     let name = indent('' + obj.id, depth * 3)
     if (hasData(obj.children)) {
