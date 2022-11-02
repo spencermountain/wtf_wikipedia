@@ -203,14 +203,6 @@ declare function fetch(
 
 declare function wtf(wiki: string, options?: object): Document
 
-declare namespace wtf {
-    var version: string
-    export { fetch }
-    export { extend }
-    export { extend as plugin }
-    export { version }
-}
-
 declare function extend(fn: Function): {
     (wiki: string, options: object): Document
     fetch: typeof fetch
@@ -218,6 +210,7 @@ declare function extend(fn: Function): {
     plugin: typeof extend
     version: string
 }
+
 declare namespace wtf {
   var version: string
   export { fetch }
