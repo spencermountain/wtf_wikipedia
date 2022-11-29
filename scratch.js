@@ -9,10 +9,17 @@ wtf.plugin(plg)
 // let doc = wtf(str)
 // console.log(doc.sentences()[0].text())
 
-let str = `
-{{Картка:Лідер
-| оригінал імені    = foo
-| жінка             = bar
-}}`
+let str = `[[File:Jewish people around the world.svg|thumb|Map of the Jewish diaspora.<br />
+more img|240x240px]]
+foobar
+`
+
+// const file_reg = new RegExp('file:(.+?)[|\\]]', 'iu')
+// console.log(str.match(file_reg))
 let doc = wtf(str)
-console.log(doc.infoboxes().map(t => t.json()))
+console.log(doc.sentence(0).text())
+// console.log(doc.infoboxes().map(t => t.json()))
+
+// wtf.fetch('Jewish diaspora').then((doc) => {
+//   console.log(doc.sentence(0).text())
+// })
