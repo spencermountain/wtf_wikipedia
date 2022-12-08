@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const wtf = require('./src/index')
+import wtf from './src/index.js'
 let args = process.argv.slice(2)
 
 const modes = {

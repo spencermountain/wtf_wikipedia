@@ -1,4 +1,4 @@
-/*! wtf_wikipedia 10.0.4 MIT */
+/*! wtf_wikipedia 10.0.5 MIT */
 import unfetch from 'isomorphic-unfetch';
 
 /**
@@ -9418,7 +9418,7 @@ const fetch = function (title, options, callback) {
     })
 };
 
-var version = '10.0.4';
+var version = '10.0.5';
 
 /**
  * use the native client-side fetch function

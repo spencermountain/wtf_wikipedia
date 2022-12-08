@@ -1,4 +1,4 @@
-/*! wtf_wikipedia 10.0.4 MIT */
+/*! wtf_wikipedia 10.0.5 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('isomorphic-unfetch')) :
   typeof define === 'function' && define.amd ? define(['isomorphic-unfetch'], factory) :
@@ -9426,7 +9426,7 @@
       })
   };
 
-  var version = '10.0.4';
+  var version = '10.0.5';
 
   /**
    * use the native client-side fetch function
