@@ -14,9 +14,19 @@ str = `
 }}
 
 `
-let doc = wtf(str)
-console.log(doc.infobox().json())
+// let doc = wtf(str)
+// console.log(doc.infobox().json())
 // console.log('after')
 
 // wtf.fetch('December_1').then((doc) => {
 // })
+
+wtf
+  .fetch(['Royal Cinema', 'Aldous Huxley'], {
+    lang: 'en',
+    'Api-User-Agent': 'spencermountain@gmail.com',
+  })
+  .then((docList) => {
+    let links = docList.map((doc) => doc.links())
+    console.log(links)
+  })

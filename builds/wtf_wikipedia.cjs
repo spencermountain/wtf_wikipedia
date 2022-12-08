@@ -1,4 +1,4 @@
-/*! wtf_wikipedia 10.0.3 MIT */
+/*! wtf_wikipedia 10.0.4 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('isomorphic-unfetch')) :
   typeof define === 'function' && define.amd ? define(['isomorphic-unfetch'], factory) :
@@ -160,10 +160,10 @@
       params.titles = cleanTitle(title);
     } else if (title !== undefined && isArray(title) && typeof title[0] === 'number') {
       //pageid array
-      params.pageids = title.join('|');
+      params.pageids = title.filter(t => t).join('|');
     } else if (title !== undefined && isArray(title) === true && typeof title[0] === 'string') {
       //title array
-      params.titles = title.map(cleanTitle).join('|');
+      params.titles = title.filter(t => t).map(cleanTitle).join('|');
     } else {
       return ''
     }
@@ -1819,6 +1819,7 @@
       }
       let site = m[1] || '';
       site = site.toLowerCase();
+      // double colon - [[m:Help:Help]] 
       if (site.indexOf(':') !== -1) {
         let [, wiki, lang] = site.match(/^:?(.*):(.*)/);
         //only allow interwikis to these specific places
@@ -1827,6 +1828,7 @@
         }
         obj.wiki = { wiki: wiki, lang: lang };
       } else {
+        // [[fr:cool]]
         if (wikis.hasOwnProperty(site) === false) {
           return obj
         }
@@ -2200,6 +2202,7 @@
         obj.page = this.page();
       } else if (obj.type === 'interwiki') {
         obj.wiki = this.wiki();
+        obj.page = this.page();
       } else {
         obj.site = this.site();
       }
@@ -3423,7 +3426,7 @@
 
   //every value in {{tmpl|a|b|c}} needs a name
   //here we come up with names for them
-  const hasKey = /^[\p{Letter}0-9._\- '()]+=/iu;
+  const hasKey = /^[\p{Letter}0-9._\- '()\t]+=/iu;
 
   //templates with these properties are asking for trouble
   const reserved = {
@@ -3560,7 +3563,6 @@
     //remove {{}}'s and split based on pipes
     tmpl = strip(tmpl || '');
     let arr = pipeSplitter(tmpl);
-
     //get template name
     let name = arr.shift();
 
@@ -5932,7 +5934,8 @@
       let order = ['color', 'label'];
       let obj = parser(tmpl, order);
       list.push(obj);
-      return obj.label || ' '
+      // return obj.label || ' '
+      return tmpl // keep the wiki?
     },
 
     isbn: (tmpl, list) => {
@@ -9423,7 +9426,7 @@
       })
   };
 
-  var version = '10.0.3';
+  var version = '10.0.4';
 
   /**
    * use the native client-side fetch function
