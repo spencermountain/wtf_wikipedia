@@ -14,7 +14,8 @@ let templates = {
     let order = ['color', 'label']
     let obj = parse(tmpl, order)
     list.push(obj)
-    return obj.label || ' '
+    // return obj.label || ' '
+    return tmpl // keep the wiki?
   },
 
   isbn: (tmpl, list) => {

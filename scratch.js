@@ -1,18 +1,32 @@
 import wtf from './src/index.js'
-import plg from './plugins/i18n/src/index.js'
+import plg from './plugins/html/src/index.js'
 wtf.plugin(plg)
-// let doc = await wtf.fetch('Toronto Raptors')
-// let coach = doc.infobox().get('coach')
-// coach.text() //'Nick Nurse'
 
-// let str = `The '''Byzantine Empire''' {{IPAc-en|z|{|n}} also referred to as the Eastern Roman Empire`
+let str = `= some heading =
+after
+`
+
+str = `
+{{Infobox officeholder
+|successor1		= [[Wistin Abela]]
+|term_end2		= March 1997
+|alma_mater             = [[St Peter's College, Oxford]]
+}}
+
+`
 // let doc = wtf(str)
-// console.log(doc.sentences()[0].text())
+// console.log(doc.infobox().json())
+// console.log('after')
 
-let str = `
-{{Картка:Лідер
-| оригінал імені    = foo
-| жінка             = bar
-}}`
-let doc = wtf(str)
-console.log(doc.infoboxes().map(t => t.json()))
+// wtf.fetch('December_1').then((doc) => {
+// })
+
+wtf
+  .fetch(['Royal Cinema', 'Aldous Huxley'], {
+    lang: 'en',
+    'Api-User-Agent': 'spencermountain@gmail.com',
+  })
+  .then((docList) => {
+    let links = docList.map((doc) => doc.links())
+    console.log(links)
+  })

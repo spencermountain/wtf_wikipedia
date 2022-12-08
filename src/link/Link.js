@@ -30,6 +30,7 @@ const methods = {
       obj.page = this.page()
     } else if (obj.type === 'interwiki') {
       obj.wiki = this.wiki()
+      obj.page = this.page()
     } else {
       obj.site = this.site()
     }

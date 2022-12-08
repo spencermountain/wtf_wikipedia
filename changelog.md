@@ -2,6 +2,12 @@
 #### [unreleased ]
 
 -->
+#### 10.0.4 [Dec 2022]
+- **[fix]** - mangled interwiki link #502
+- **[fix]** - tabs in infoboxes #435
+- **[update]** - dependencies
+
+
 #### 10.0.3 [Oct 2022]
 - **[fix]** - improved i18n infobox classification
 - **[update]** - dependencies

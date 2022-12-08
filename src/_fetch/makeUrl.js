@@ -84,10 +84,10 @@ const makeUrl = function (options, parameters = defaults) {
     params.titles = cleanTitle(title)
   } else if (title !== undefined && isArray(title) && typeof title[0] === 'number') {
     //pageid array
-    params.pageids = title.join('|')
+    params.pageids = title.filter(t => t).join('|')
   } else if (title !== undefined && isArray(title) === true && typeof title[0] === 'string') {
     //title array
-    params.titles = title.map(cleanTitle).join('|')
+    params.titles = title.filter(t => t).map(cleanTitle).join('|')
   } else {
     return ''
   }

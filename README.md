@@ -463,7 +463,8 @@ The wikipedia api is [pretty welcoming](https://www.mediawiki.org/wiki/API:Etiqu
 
 ```js
 wtf
-  .fetch(['Royal Cinema', 'Aldous Huxley'], 'en', {
+  .fetch(['Royal Cinema', 'Aldous Huxley'], {
+    lang: 'en',
     'Api-User-Agent': 'spencermountain@gmail.com',
   })
   .then((docList) => {
