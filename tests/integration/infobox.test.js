@@ -75,6 +75,7 @@ test('nested-london-infobox', function (t) {
   t.end()
 })
 
+
 test('ukrainian-infobox', function (t) {
   let str = `{{Картка
   |foo = bar
@@ -98,5 +99,20 @@ test('ukrainian-infobox', function (t) {
     json = doc.infoboxes()[0].json()
   }
   t.equal(json.жінка.text, 'bar', 'ukr officeholder infobox')
+  t.end()
+})
+
+
+test('tabs-in-infobox', function (t) {
+  let str = `{{Infobox officeholder
+|successor1		= [[Wistin Abela]]
+|term_end2		= March 1997
+|alma_mater             = [[St Peter's College, Oxford]]
+}}
+`
+  let obj = wtf(str).infobox().keyValue()
+  t.equal(obj[`successor1`], 'Wistin Abela', 'found successor1 val')
+  t.equal(obj[`term_end2`], 'March 1997', 'found term_end2 val')
+  t.equal(obj[`alma_mater`], `St Peter's College, Oxford`, 'found alma_mater val')
   t.end()
 })

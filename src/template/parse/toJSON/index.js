@@ -39,7 +39,6 @@ const parser = function (tmpl, order = [], fmt) {
   //remove {{}}'s and split based on pipes
   tmpl = strip(tmpl || '')
   let arr = pipeSplitter(tmpl)
-
   //get template name
   let name = arr.shift()
 
