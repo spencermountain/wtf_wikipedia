@@ -1834,7 +1834,7 @@ const parseInterwiki = function (obj) {
 const ignore_links =
   /^:?(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i;
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ].*?)?\]/g;
-const link_reg = /\[\[(.{0,160}?)\]\]([a-z]+)?/gi; //allow dangling suffixes - "[[flanders]]s"
+const link_reg = /\[\[(.{0,1600}?)\]\]([a-z]+)?/gi; //allow dangling suffixes - "[[flanders]]s"
 
 const external_links = function (links, str) {
   str.replace(external_link, function (raw, protocol, link, text) {
@@ -1858,9 +1858,9 @@ const internal_links = function (links, str) {
     let link = s;
     if (s.match(/\|/)) {
       //replacement link [[link|text]]
-      s = s.replace(/\[\[(.{2,100}?)\]\](\w{0,10})/g, '$1$2'); //remove ['s and keep suffix
-      link = s.replace(/(.{2,100})\|.{0,200}/, '$1'); //replaced links
-      txt = s.replace(/.{2,100}?\|/, '');
+      s = s.replace(/\[\[(.{2,1000}?)\]\](\w{0,10})/g, '$1$2'); //remove ['s and keep suffix
+      link = s.replace(/(.{2,1000})\|.{0,2000}/, '$1'); //replaced links
+      txt = s.replace(/.{2,1000}?\|/, '');
       //handle funky case of [[toronto|]]
       if (txt === null && link.match(/\|$/)) {
         link = link.replace(/\|$/, '');
