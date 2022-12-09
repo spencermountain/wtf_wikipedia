@@ -2,6 +2,10 @@
 #### [unreleased ]
 
 -->
+#### 10.0.5 [Dec 2022]
+- **[fix]** - broken cli script #504
+
+
 #### 10.0.4 [Dec 2022]
 - **[fix]** - mangled interwiki link #502
 - **[fix]** - tabs in infoboxes #435
