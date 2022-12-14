@@ -45,7 +45,8 @@ class Document {
       sections: [],
       coordinates: [],
       // userAgent is used for successive calls to the API
-      userAgent: options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library'
+      userAgent: options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library',
+      templateFallbackFn: options.templateFallbackFn || null,
     }
     // this._missing_templates = {} //for stats+debugging purposes
 

@@ -6,10 +6,10 @@ import parseTemplates from '../template/parse/index.js'
 const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/
 const hasTemplate = /\{\{.+?\}\}/
 
-const doInlineTemplates = function (wiki) {
+const doInlineTemplates = function (wiki, doc) {
   let list = getTemplates(wiki)
   list.forEach((item) => {
-    let [txt] = parseTemplates(item)
+    let [txt] = parseTemplates(item, doc)
     wiki = wiki.replace(item.body, txt)
   })
   return wiki
@@ -29,9 +29,10 @@ const doInlineTemplates = function (wiki) {
  * @private
  * @param {fakeSection} section
  * @param {string} str
+ * @param {Document} doc
  * @returns {fakeSection} section the depth in a object
  */
-const parseHeading = function (section, str) {
+const parseHeading = function (section, str, doc) {
   let m = str.match(heading_reg)
   if (!m) {
     section.title = ''
@@ -43,7 +44,7 @@ const parseHeading = function (section, str) {
 
   //amazingly, you can see inline {{templates}} in this text, too
   if (hasTemplate.test(title)) {
-    title = doInlineTemplates(title)
+    title = doInlineTemplates(title, doc)
   }
   //same for references (i know..)
   let obj = { _wiki: title }

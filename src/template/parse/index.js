@@ -61,6 +61,14 @@ const parseTemplate = function (tmpl, doc) {
       return [txt, arr[0]]
     }
   }
+  //if set, try using the global template fallback parser
+  if (doc && doc._templateFallbackFn) {
+    let arr = []
+    let txt = doc._templateFallbackFn(tmpl.body, arr, toJSON, null, doc)
+    if (txt !== null) {
+      return [txt, arr[0]]
+    }
+  }
   //an unknown template with data, so just keep it.
   let json = toJSON(tmpl.body)
   if (Object.keys(json).length === 0) {
