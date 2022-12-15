@@ -1,5 +1,6 @@
 <!--
 #### [unreleased ]
+- **[new]** - fallbackTemplateFn handler #509
 
 -->
 #### 10.0.5 [Dec 2022]
