@@ -7424,6 +7424,14 @@ const parseTemplate = function (tmpl, doc) {
       return [txt, arr[0]]
     }
   }
+  //if set, try using the global template fallback parser
+  if (doc && doc._templateFallbackFn) {
+    let arr = [];
+    let txt = doc._templateFallbackFn(tmpl.body, arr, parser, null, doc);
+    if (txt !== null) {
+      return [txt, arr[0]]
+    }
+  }
   //an unknown template with data, so just keep it.
   let json = parser(tmpl.body);
   if (Object.keys(json).length === 0) {
@@ -7863,8 +7871,9 @@ const parseGallery = function (catcher, doc, section) {
  *
  * @private
  * @param {object} catcher an object to provide and catch data
+ * @param {Document} doc
  */
-const parseElection = function (catcher) {
+const parseElection = function (catcher, doc) {
   catcher.text = catcher.text.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, (tmpl) => {
     let data = {
       _wiki: tmpl,
@@ -7872,7 +7881,7 @@ const parseElection = function (catcher) {
     };
 
     //put it through our full template parser..
-    process(data);
+    process(data, doc);
 
     //okay, pull it apart into something sensible..
     let templates = data._templates.map((t) => t.json());
@@ -8078,7 +8087,7 @@ const xmlTemplates = function (section, doc) {
     text: section._wiki,
   };
 
-  parseElection(res);
+  parseElection(res, doc);
   parseGallery(res, doc, section);
   parseMath(res);
   parseMlb(res);
@@ -8607,10 +8616,10 @@ Object.keys(singular$1).forEach((k) => {
 const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/;
 const hasTemplate = /\{\{.+?\}\}/;
 
-const doInlineTemplates = function (wiki) {
+const doInlineTemplates = function (wiki, doc) {
   let list = findTemplates(wiki);
   list.forEach((item) => {
-    let [txt] = parseTemplate(item);
+    let [txt] = parseTemplate(item, doc);
     wiki = wiki.replace(item.body, txt);
   });
   return wiki
@@ -8630,9 +8639,10 @@ const doInlineTemplates = function (wiki) {
  * @private
  * @param {fakeSection} section
  * @param {string} str
+ * @param {Document} doc
  * @returns {fakeSection} section the depth in a object
  */
-const parseHeading = function (section, str) {
+const parseHeading = function (section, str, doc) {
   let m = str.match(heading_reg);
   if (!m) {
     section.title = '';
@@ -8644,7 +8654,7 @@ const parseHeading = function (section, str) {
 
   //amazingly, you can see inline {{templates}} in this text, too
   if (hasTemplate.test(title)) {
-    title = doInlineTemplates(title);
+    title = doInlineTemplates(title, doc);
   }
   //same for references (i know..)
   let obj = { _wiki: title };
@@ -8723,7 +8733,7 @@ const parseSections = function (doc) {
     };
 
     //figure-out title and depth
-    parseHeading(data, heading);
+    parseHeading(data, heading, doc);
 
     sections.push(new Section(data, doc));
   }
@@ -8789,7 +8799,8 @@ class Document {
       sections: [],
       coordinates: [],
       // userAgent is used for successive calls to the API
-      userAgent: options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library'
+      userAgent: options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library',
+      templateFallbackFn: options.templateFallbackFn || null,
     };
     // this._missing_templates = {} //for stats+debugging purposes
 

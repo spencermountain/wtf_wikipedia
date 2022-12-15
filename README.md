@@ -647,6 +647,19 @@ wtf.extend((models, templates) => {
 })
 ```
 
+by default, if there's no parser for a template, it will be just ignored and generate an empty string.
+However, it's possible to configure a fallback parser function to handle these templates:
+
+```js
+wtf(wiki, { 
+  templateFallbackFn: (tmpl, list, parse) => {
+    let obj = parse(tmpl) //or do a custom regex
+    list.push(obj)
+    return '[unsupported template]' // or return null to ignore this template
+  }
+})
+```
+
 you can determine which templates are understood to be 'infoboxes' with the 3rd parameter:
 
 ```js

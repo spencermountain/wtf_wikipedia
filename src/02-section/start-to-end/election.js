@@ -8,8 +8,9 @@ import parseTemplates from '../../template/index.js'
  *
  * @private
  * @param {object} catcher an object to provide and catch data
+ * @param {Document} doc
  */
-const parseElection = function (catcher) {
+const parseElection = function (catcher, doc) {
   catcher.text = catcher.text.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, (tmpl) => {
     let data = {
       _wiki: tmpl,
@@ -17,7 +18,7 @@ const parseElection = function (catcher) {
     }
 
     //put it through our full template parser..
-    parseTemplates(data)
+    parseTemplates(data, doc)
 
     //okay, pull it apart into something sensible..
     let templates = data._templates.map((t) => t.json())
