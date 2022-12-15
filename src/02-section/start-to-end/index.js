@@ -24,7 +24,7 @@ const xmlTemplates = function (section, doc) {
     text: section._wiki,
   }
 
-  parseElection(res)
+  parseElection(res, doc)
   parseGallery(res, doc, section)
   parseMath(res)
   parseMlb(res)

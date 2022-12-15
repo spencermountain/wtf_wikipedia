@@ -64,7 +64,7 @@ const parseSections = function (doc) {
     }
 
     //figure-out title and depth
-    parseHeading(data, heading)
+    parseHeading(data, heading, doc)
 
     sections.push(new Section(data, doc))
   }
