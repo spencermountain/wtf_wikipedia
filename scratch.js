@@ -6,19 +6,34 @@ let str = `= some heading =
 after
 `
 
-str = `
-[[File:Jewish people around the world.svg|thumb|Map of the Jewish diaspora.<br />
-{{Legend|#000000|Israel}}
-{{Legend|#00216bff|+ 1,000,000}}
-{{Legend|#0038b8ff|+ 100,000}}
-{{Legend|#578bffff|+ 10,000}}
-{{Legend|#b3cbffff|+ 1,000}}|240x240px]]
+str = `{{Infobox pageant titleholder
+  | name         = Dee-Ann Kentish-Rogers
+  | birth_date   = {{birth date and age|1993|01|13|df=yes}}
+  | birth_place  = [[The Valley, Anguilla|The Valley]], [[Anguilla]]
+  | image        = Dee Anne Kentish-Rogers political promo pose.jpg
+  | caption      = Kentish-Rogers in a 2020 political advertisement
+  | manager      = 
+  | measurements = 
+  | module={{Infobox officeholder |embed=yes
+  |name         = 
+  |image        = 
+  |office       = 
+  |monarch      = 
+  |governor     =
+  |office1      = Member of the [[Anguilla House of Assembly|House of Assembly]] for [[Valley South (Anguilla House of Assembly Constituency)|Valley South]]
+  |term_start1  = 30 June 2020
+  |predecessor1  = [[Victor Banks]]
+  |successor1    =
+  |term_end1    = 
+  |party        = [[Anguilla Progressive Movement]]
+  }}
+  }}
 `
 let doc = wtf(str)
-console.log(doc.images())
+console.log(doc.infoboxes())
 // console.log('after')
 
-// wtf.fetch('December_1').then((doc) => {
+// wtf.fetch('Dee-Ann Kentish-Rogers').then((doc) => {
 // })
 
 // wtf
