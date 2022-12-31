@@ -9,6 +9,7 @@
 - **[update]** - dependencies
 - **[change]** - allow embedded infoboxes #506
 - **[change]** - support :File and :Category syntax for #308
+- **[new]** - support {{medalcount}} template #428
 
 #### 10.0.5 [Dec 2022]
 - **[fix]** - broken cli script #504

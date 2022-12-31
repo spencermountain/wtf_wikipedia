@@ -1,4 +1,4 @@
-/*! wtf_wikipedia 10.0.5 MIT */
+/*! wtf_wikipedia 10.1.0 MIT */
 import unfetch from 'isomorphic-unfetch';
 
 /**
@@ -1525,8 +1525,8 @@ var wikis = {
   nkcells: w + 'nkcells.info/index.php?title=$1',
   nara: 'catalog.archives.gov/id/$1',
   nosmoke: 'no-smok.net/nsmk/$1',
-  nost: 'nostalgia.' + wp,
-  nostalgia: 'nostalgia.' + wp,
+  nost: 'nostalgia' + wp,
+  nostalgia: 'nostalgia' + wp,
   oeis: 'oeis.org/$1',
   oldwikisource: 'wikisource.org/wiki/$1',
   olpc: 'wiki.laptop.org/go/$1',
@@ -1607,10 +1607,10 @@ var wikis = {
   tabwiki: w + 'tabwiki.com/index.php/$1',
   tclerswiki: 'wiki.tcl.tk/$1',
   technorati: w + 'technorati.com/search/$1',
-  tenwiki: 'ten.' + wp,
-  testwiki: 'test.' + wp,
+  tenwiki: 'ten' + wp,
+  testwiki: 'test' + wp,
   testwikidata: 'test.wikidata.org/wiki/$1',
-  test2wiki: 'test2.' + wp,
+  test2wiki: 'test2' + wp,
   tfwiki: 'tfwiki.net/wiki/$1',
   thelemapedia: w + 'thelemapedia.org/index.php/$1',
   theopedia: w + 'theopedia.com/$1',
@@ -1643,7 +1643,7 @@ var wikis = {
   voipinfo: w + 'voip-info.org/wiki/view/$1',
   votewiki: 'vote' + wm,
   werelate: w + 'werelate.org/wiki/$1',
-  wg: 'wg-en.' + wp,
+  wg: 'wg-en' + wp,
   wikia: w + 'wikia.com/wiki/w:c:$1',
   wikiasite: w + 'wikia.com/wiki/w:c:$1',
   wikiapiary: 'wikiapiary.com/wiki/$1',
@@ -1667,7 +1667,7 @@ var wikis = {
   wikinvest: 'meta.wikimedia.org/wiki/Interwiki_map/discontinued#Wikinvest',
   wikiotics: 'wikiotics.org/$1',
   wikipapers: 'wikipapers.referata.com/wiki/$1',
-  wikipedia: 'en.' + wp,
+  wikipedia: 'en' + wp,
   wikipediawikipedia: 'en.wikipedia.org/wiki/Wikipedia:$1',
   wikiquote: 'en.wikiquote.org/wiki/$1',
   wikisophia: 'wikisophia.org/index.php?title=$1',
@@ -1768,23 +1768,23 @@ var wikis = {
   zwiki: w + 'zwiki.org/$1',
   m: 'meta' + wm,
   meta: 'meta' + wm,
-  sep11: 'sep11.' + wp,
+  sep11: 'sep11' + wp,
   d: w + 'wikidata.org/wiki/$1',
-  minnan: 'zh-min-nan.' + wp,
-  nb: 'no.' + wp,
-  'zh-cfr': 'zh-min-nan.' + wp,
-  'zh-cn': 'zh.' + wp,
-  'zh-tw': 'zh.' + wp,
-  nan: 'zh-min-nan.' + wp,
-  vro: 'fiu-vro.' + wp,
-  cmn: 'zh.' + wp,
-  lzh: 'zh-classical.' + wp,
-  rup: 'roa-rup.' + wp,
-  gsw: 'als.' + wp,
-  'be-tarask': 'be-x-old.' + wp,
-  sgs: 'bat-smg.' + wp,
-  egl: 'eml.' + wp,
-  w: 'en.' + wp,
+  minnan: 'zh-min-nan' + wp,
+  nb: 'no' + wp,
+  'zh-cfr': 'zh-min-nan' + wp,
+  'zh-cn': 'zh' + wp,
+  'zh-tw': 'zh' + wp,
+  nan: 'zh-min-nan' + wp,
+  vro: 'fiu-vro' + wp,
+  cmn: 'zh' + wp,
+  lzh: 'zh-classical' + wp,
+  rup: 'roa-rup' + wp,
+  gsw: 'als' + wp,
+  'be-tarask': 'be-x-old' + wp,
+  sgs: 'bat-smg' + wp,
+  egl: 'eml' + wp,
+  w: 'en' + wp,
   wikt: 'en.wiktionary.org/wiki/$1',
   q: 'en.wikiquote.org/wiki/$1',
   b: 'en.wikibooks.org/wiki/$1',
@@ -1832,7 +1832,7 @@ const parseInterwiki = function (obj) {
 };
 
 const ignore_links =
-  /^:?(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i;
+  /^(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i;
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ].*?)?\]/g;
 const link_reg = /\[\[(.{0,1600}?)\]\]([a-z]+)?/gi; //allow dangling suffixes - "[[flanders]]s"
 
@@ -1904,6 +1904,10 @@ const internal_links = function (links, str) {
         obj.text = obj.page;
       }
       obj.page = obj.page;
+    }
+    // support [[:Category:Foo]] syntax
+    if (obj.text && obj.text.startsWith(':')) {
+      obj.text = obj.text.replace(/^:/, '');
     }
     links.push(obj);
     return s
@@ -3653,6 +3657,7 @@ function nested_find(text) {
 const isFile = new RegExp('(' + images.join('|') + '):', 'i');
 let fileNames = `(${images.join('|')})`;
 const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'iu');
+const linkToFile = /^\[\[:/;
 
 //style directives for Wikipedia:Extended_image_syntax
 const imgLayouts = {
@@ -3676,6 +3681,9 @@ const imgLayouts = {
 const oneImage = function (img, doc) {
   let m = img.match(file_reg);
   if (m === null || !m[2]) {
+    return null
+  }
+  if (linkToFile.test(img)) {
     return null
   }
   let file = `${m[1]}:${m[2] || ''}`;
@@ -3719,8 +3727,8 @@ const parseImages = function (paragraph, doc) {
       let img = oneImage(s, doc);
       if (img) {
         paragraph.images.push(img);
+        wiki = wiki.replace(s, '');
       }
-      wiki = wiki.replace(s, '');
     }
   });
   paragraph.wiki = wiki;
@@ -5841,6 +5849,26 @@ var fns = {
     list.push(obj);
     return ''
   },
+  //https://en.wikipedia.org/wiki/Template:MedalCount
+  'medalcount': (tmpl, list) => {
+    let all = parser(tmpl).list || [];
+    let lines = [];
+    for (let i = 0; i < all.length; i += 4) {
+      lines.push({
+        name: all[i],
+        '1st': Number(all[i + 1]),
+        '2nd': Number(all[i + 2]),
+        '3rd': Number(all[i + 3]),
+      });
+      console.log(all[i]);
+    }
+    let obj = {
+      template: 'medalcount',
+      list: lines
+    };
+    list.push(obj);
+    return ''
+  }
 };
 
 let templates$4 = {
@@ -7679,7 +7707,7 @@ const sortOut = function (list, domain) {
       return
     }
     // is it an Infobox?
-    if (json.template === 'infobox' && json.subbox !== 'yes' && !obj.nested) {
+    if (json.template === 'infobox' && json.subbox !== 'yes') {
       json.domain = domain; //infoboxes need this for images, i guess
       json.data = json.data || {}; //validate it a little
       res.infoboxes.push(new Infobox(json, obj.wiki));
@@ -8742,7 +8770,7 @@ const parseSections = function (doc) {
   return removeReferenceSection(sections)
 };
 
-const cat_reg = new RegExp('\\[\\[:?(' + _categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'gi');
+const cat_reg = new RegExp('\\[\\[(' + _categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'gi');
 const cat_remove_reg = new RegExp('^\\[\\[:?(' + _categories.join('|') + '):', 'gi');
 
 const parse_categories = function (wiki) {
@@ -9429,7 +9457,7 @@ const fetch = function (title, options, callback) {
     })
 };
 
-var version = '10.0.5';
+var version = '10.1.0';
 
 /**
  * use the native client-side fetch function
