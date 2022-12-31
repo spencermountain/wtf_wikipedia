@@ -3,12 +3,12 @@
 - **[new]** - fallbackTemplateFn handler #509
 
 -->
-#### 10.0.6 [Dec 2022]
+#### 10.1.0 [Dec 2022]
 - **[fix]** - extra dots in interwiki links #510
 - **[new]** - configure unsupported template behaviour - templateFallbackFn #509
 - **[update]** - dependencies
 - **[change]** - allow embedded infoboxes #506
-<!-- rollback interwiki change -->
+- **[change]** - support :File and :Category syntax for #308
 
 #### 10.0.5 [Dec 2022]
 - **[fix]** - broken cli script #504

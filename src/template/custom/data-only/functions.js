@@ -401,4 +401,24 @@ export default {
     list.push(obj)
     return ''
   },
+  //https://en.wikipedia.org/wiki/Template:MedalCount
+  'medalcount': (tmpl, list) => {
+    let all = parse(tmpl).list || []
+    let lines = []
+    for (let i = 0; i < all.length; i += 4) {
+      lines.push({
+        name: all[i],
+        '1st': Number(all[i + 1]),
+        '2nd': Number(all[i + 2]),
+        '3rd': Number(all[i + 3]),
+      })
+      console.log(all[i])
+    }
+    let obj = {
+      template: 'medalcount',
+      list: lines
+    }
+    list.push(obj)
+    return ''
+  }
 }
