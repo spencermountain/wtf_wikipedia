@@ -15,19 +15,9 @@ pre [[File:Foo.png|Bar]] post
 pre [[:File:Foo.png|Bar]] post
 `
 
-str = `
-pre [[Category:Foo]] post
-
-pre [[:Category:Foo]] post
-
-pre [[Category:Foo|Bar]] post
-
-pre [[:Category:Foo|Bar]] post
-`
-
-str = `pre [[:Category:Foo]] post`
+str = `pre [[:File:pagename]] post`
 let doc = wtf(str)
-console.log(doc.links().map(l => l.json()))
+// console.log(doc.links().map(l => l.json()))
 console.log(doc.text())
 // console.log(doc.categories())
 // console.log('after')

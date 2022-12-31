@@ -7,6 +7,7 @@ import nested_find from './nested_find.js'
 const isFile = new RegExp('(' + images.join('|') + '):', 'i')
 let fileNames = `(${images.join('|')})`
 const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'iu')
+const linkToFile = /^\[\[:/
 
 //style directives for Wikipedia:Extended_image_syntax
 const imgLayouts = {
@@ -30,6 +31,9 @@ const imgLayouts = {
 const oneImage = function (img, doc) {
   let m = img.match(file_reg)
   if (m === null || !m[2]) {
+    return null
+  }
+  if (linkToFile.test(img)) {
     return null
   }
   let file = `${m[1]}:${m[2] || ''}`
@@ -73,8 +77,8 @@ const parseImages = function (paragraph, doc) {
       let img = oneImage(s, doc)
       if (img) {
         paragraph.images.push(img)
+        wiki = wiki.replace(s, '')
       }
-      wiki = wiki.replace(s, '')
     }
   })
   paragraph.wiki = wiki

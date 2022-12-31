@@ -49,3 +49,12 @@ test('image-methods', function (t) {
       })
     })
 })
+
+
+test('link-to-file', (t) => {
+  let doc = wtf(`pre [[:File:pagename]] post`)
+  t.equal(doc.links().length, 1, 'found one link')
+  t.equal(doc.text(), 'pre :File:pagename post', 'found text')
+  t.equal(doc.images().length, 0, 'found no images')
+  t.end()
+})
