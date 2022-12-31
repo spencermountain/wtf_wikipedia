@@ -27,7 +27,7 @@ const sortOut = function (list, domain) {
       return
     }
     // is it an Infobox?
-    if (json.template === 'infobox' && json.subbox !== 'yes' && !obj.nested) {
+    if (json.template === 'infobox' && json.subbox !== 'yes') {
       json.domain = domain //infoboxes need this for images, i guess
       json.data = json.data || {} //validate it a little
       res.infoboxes.push(new Infobox(json, obj.wiki))

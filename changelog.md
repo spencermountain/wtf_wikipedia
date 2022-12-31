@@ -7,7 +7,7 @@
 - **[fix]** - extra dots in interwiki links #510
 - **[new]** - configure unsupported template behaviour - templateFallbackFn #509
 - **[update]** - dependencies
-<!-- embedded infobox change -->
+- **[change]** - allow embedded infoboxes #506
 <!-- rollback interwiki change -->
 
 #### 10.0.5 [Dec 2022]
