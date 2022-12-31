@@ -1,7 +1,19 @@
 <!--
 #### [unreleased ]
+- **[new]** - fallbackTemplateFn handler #509
 
 -->
+#### 10.1.0 [Dec 2022]
+- **[fix]** - extra dots in interwiki links #510
+- **[new]** - configure unsupported template behaviour - templateFallbackFn #509
+- **[update]** - dependencies
+- **[change]** - allow embedded infoboxes #506
+- **[change]** - support :File and :Category syntax for #308
+- **[new]** - support {{medalcount}} template #428
+
+#### 10.0.5 [Dec 2022]
+- **[fix]** - broken cli script #504
+
 #### 10.0.4 [Dec 2022]
 - **[fix]** - mangled interwiki link #502
 - **[fix]** - tabs in infoboxes #435

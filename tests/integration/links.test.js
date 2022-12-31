@@ -101,3 +101,11 @@ test('tricksy-links', (t) => {
   //   t.equal(doc.link().text, 'John [Entwistle]', 'text with bracket');
   t.end()
 })
+
+test('link-to-category', (t) => {
+  let doc = wtf(`pre [[:Category:Foo]] post`)
+  t.equal(doc.links().length, 1, 'found one link')
+  t.equal(doc.text(), 'pre Category:Foo post', 'found text')
+  t.equal(doc.categories().length, 0, 'found no categories')
+  t.end()
+})

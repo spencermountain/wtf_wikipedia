@@ -68,3 +68,20 @@ test('expand internal interwiki link', (t) => {
   t.equal(href, 'http://fr.wikipedia.org/wiki/cool', 'expand external link')
   t.end()
 })
+
+test('interwiki link', (t) => {
+
+
+  let str = `pre [[File:Foo.png]] post
+pre [[:File:Foo.png]] post  
+pre [[File:Foo.png|Bar]] post  
+pre [[:File:Foo.png|Bar]] post`
+
+  str = `
+pre [[Category:Foo]] post  
+pre [[:Category:Foo]] post  
+pre [[Category:Foo|Bar]] post  
+pre [[:Category:Foo|Bar]] post`
+
+  t.end()
+})
