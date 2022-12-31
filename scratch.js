@@ -24,8 +24,12 @@ pre [[Category:Foo|Bar]] post
 
 pre [[:Category:Foo|Bar]] post
 `
+
+str = `pre [[:Category:Foo]] post`
 let doc = wtf(str)
+console.log(doc.links().map(l => l.json()))
 console.log(doc.text())
+// console.log(doc.categories())
 // console.log('after')
 
 // wtf.fetch('Dee-Ann Kentish-Rogers').then((doc) => {

@@ -1,6 +1,6 @@
 import parse_interwiki from './interwiki.js'
 const ignore_links =
-  /^:?(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i
+  /^(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ].*?)?\]/g
 const link_reg = /\[\[(.{0,1600}?)\]\]([a-z]+)?/gi //allow dangling suffixes - "[[flanders]]s"
 
@@ -72,6 +72,10 @@ const internal_links = function (links, str) {
         obj.text = obj.page
       }
       obj.page = obj.page
+    }
+    // support [[:Category:Foo]] syntax
+    if (obj.text && obj.text.startsWith(':')) {
+      obj.text = obj.text.replace(/^:/, '')
     }
     links.push(obj)
     return s
