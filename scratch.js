@@ -65,29 +65,10 @@ str = `'''Gunaroš''' ({{lang-sr-cyr|Гунарош}}, [[Hungarian language|Hung
 
 str = `{{CBB roster/Player|first=Demetrius|last=McReynolds|num=1|pos=G|ft=6|in=2|lbs=210|class=sr|rs=|home=[[Louisville, Kentucky]]}}`
 
-str = `====Results by round====
-{{#invoke:sports rbr table|table|legendpos=b
-|header=Round
-|label1= Ground
-| res1=H/A/H/A/H/A/A/H/H/A/A/H/A/H/H/A/H/A/H/A/H/A/H/A/A/H/A/H/A/H/H/A/A/H/A/H/H/A/H/A/A/H/A/H/A/H
-|label2= Result
-| res2=D/D/W/D/W/W/L/D/D/W/W/W/D/W/L/W/W/W/D/W/D/L/W/D/W/L/W/D/W/L/L/W/W/W/D/L/W/W/D/D/W/L/D/W/W/W
-|label3= Position
-| res3=15/16/10/9/5/4/8/5/6/6/5/3/3/3/3/2/2/2/2/1/2/3/2/3/3/3/3/3/3/3/3/3/3/2/2/2/2/2/2/2/2/2/3/3/3/2
-<!-- -->
-|text_H=Home|text_A=Away
-|color_W=green2|text_W=Win
-|color_D=yellow2|text_D=Draw
-|color_L=red2|text_L=Loss
-|color_1=1st|color_2=2nd|color_3=3rd|color_23-=red1
+str = `{{Invoke|math|min|9|7|8}}`
+str = `{{min|9|7|8}}`
 
-|updated=7 May 2016
-|source=see below 
-|date=May 2016
-}}`
-
-str = ' The ad cost $250,000 (${{Inflation|US|0.25|1971|r=1|fmt=c}} million today)'
-str = ` ({{Baseball year|1902}})`
+// str = ' The ad cost $250,000 (${{Inflation|US|0.25|1971|r=1|fmt=c}} million today)'
 let doc = wtf(str)
 console.log(doc.text())
 

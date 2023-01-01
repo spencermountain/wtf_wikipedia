@@ -41,6 +41,14 @@ test('inline text', (t) => {
       to: `before TEXT after`
     },
     {
+      from: `before
+{{#invoke:sports rbr table
+|header=Round
+|label1= Ground
+}} after`,
+      to: `before after`
+    },
+    {
       from: ``,
       to: ``
     },
@@ -49,7 +57,7 @@ test('inline text', (t) => {
   ]
   arr.forEach((o) => {
     const doc = wtf(o.from)
-    t.equal(doc.text(), o.to)
+    t.equal(doc.text(), o.to, o.to)
   })
   t.end()
 })

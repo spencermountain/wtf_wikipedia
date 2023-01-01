@@ -171,7 +171,6 @@ let multi = {
     'xtag',
     'mli',
     'mlix',
-    '#invoke',
     'url', //https://en.wikipedia.org/wiki/Template:URL
   ],
 

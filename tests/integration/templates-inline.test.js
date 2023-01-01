@@ -171,9 +171,17 @@ test('inline-output', (t) => {
     ['{{not done}}', '❌'],
     ['{{by|1998|color=purple}}', '1998 in baseball'],
     ['{{YEAR|1999-12-12}}', '1999'],
+    ['{{YEAR|1 January 1992}}', '1992'],
     ['{{NFL Year|1999|2000}}', '1999–2000'],
     ['{{NFL playoff year|1978}}', '1978'],
     ['{{NBA Year|1999}}', '1999–2000'],
+    ['{{min|9|7|8}}', '7'],
+    ['{{max|9|7|8}}', '9'],
+    ['{{plural|2|page}}', '2 pages'],
+    ['{{abbr|UK|United Kingdom|class=country-name|id=foobar}}', 'UK'],
+    ['{{abbrlink|UK|United Kingdom}}', 'UK'],
+    ['{{USpolabbr|R|NH|link=y}}', 'R‑NH'],
+    ['{{USpolabbr|D|CA|47}}', 'D‑CA 47th'],
     // ['', ''],
   ]
   arr.forEach((a) => {

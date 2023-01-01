@@ -1,6 +1,7 @@
 import parsers from './_parsers.js'
 import parse from '../../../parse/toJSON/index.js'
-import { days, timeSince, toOrdinal } from './_lib.js'
+import { days, timeSince } from './_lib.js'
+import { toOrdinal } from '../../_lib.js'
 import { ymd, toText } from './_format.js'
 
 const months = [
@@ -49,6 +50,15 @@ export default {
     let d = new Date()
     d.setMonth(d.getMonth() + 1)
     return months[d.getMonth()] + ' ' + d.getFullYear()
+  },
+
+  'year': (tmpl) => {
+    let date = parse(tmpl, ['date']).date
+    let d = new Date(date)
+    if (date && isNaN(d.getTime()) === false) {
+      return String(d.getFullYear())
+    }
+    return ''
   },
 
   'time ago': (tmpl) => {

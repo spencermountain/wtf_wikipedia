@@ -1,7 +1,6 @@
 import parse from '../../parse/toJSON/index.js'
 import strip from '../../parse/toJSON/_strip.js'
-import { titlecase, percentage } from '../_lib.js'
-
+import { titlecase, percentage, toOrdinal } from '../_lib.js'
 export default {
   //https://en.wikipedia.org/wiki/Template:Ra
   ra: (tmpl) => {
@@ -521,4 +520,40 @@ export default {
     let after = year + 1
     return `[[${year}–${after} NHL season|${year}–${after}]]`
   },
+  // some math
+  'min': (tmpl) => {
+    let arr = parse(tmpl).list
+    let min = Number(arr[0]) || 0
+    arr.forEach(str => {
+      let n = Number(str)
+      if (!isNaN(n) && n < min) {
+        min = n
+      }
+    })
+    return String(min)
+  },
+  'max': (tmpl) => {
+    let arr = parse(tmpl).list
+    let max = Number(arr[0]) || 0
+    arr.forEach(str => {
+      let n = Number(str)
+      if (!isNaN(n) && n > max) {
+        max = n
+      }
+    })
+    return String(max)
+  },
+  // US-politics
+  'uspolabbr': (tmpl) => {
+    let { party, state, house } = parse(tmpl, ['party', 'state', 'house', 'link'])
+    if (!party || !state) {
+      return ''
+    }
+    let out = `${party}‑${state}`
+    if (house) {
+      out += ` ${toOrdinal(house)}`
+    }
+    return out
+  },
+
 }

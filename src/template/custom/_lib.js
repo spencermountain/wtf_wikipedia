@@ -43,6 +43,21 @@ const titlecase = (str) => {
   return str.charAt(0).toUpperCase() + str.substring(1)
 }
 
+const toOrdinal = function (i) {
+  let j = i % 10
+  let k = i % 100
+  if (j === 1 && k !== 11) {
+    return i + 'st'
+  }
+  if (j === 2 && k !== 12) {
+    return i + 'nd'
+  }
+  if (j === 3 && k !== 13) {
+    return i + 'rd'
+  }
+  return i + 'th'
+}
+
 const sisterProjects = {
   wikt: 'wiktionary',
   commons: 'commons',
@@ -65,6 +80,7 @@ export {
   titlecase,
   sisterProjects,
   getLang,
+  toOrdinal,
   percentage,
   toNumber,
 }
