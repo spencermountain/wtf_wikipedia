@@ -446,4 +446,42 @@ export default {
     }
     return `${obj.done} (${num}%) done`
   },
+
+  'loop': (tmpl) => {
+    let data = parse(tmpl, ['times', 'text'])
+    let n = Number(data.times) || 0
+    let out = ''
+    for (let i = 0; i < n; i += 1) {
+      out += data.text || ''
+    }
+    return out
+  },
+  'str len': (tmpl) => {
+    let data = parse(tmpl, ['text'])
+    return String((data.text || '').trim().length)
+  },
+  'digits': (tmpl) => {
+    let data = parse(tmpl, ['text'])
+    return (data.text || '').replace(/[^0-9]/g, '')
+  },
+  'replace': (tmpl) => {
+    let data = parse(tmpl, ['text', 'from', 'to'])
+    if (!data.from || !data.to) {
+      return data.text || ''
+    }
+    return (data.text || '').replace(data.from, data.to)
+  },
+
+  'title case': (tmpl) => {
+    let data = parse(tmpl, ['text'])
+    let txt = data.text || ''
+    return txt.split(/ /).map((w, i) => {
+      if (i > 0 && w === 'the' || w === 'of') {
+        return w
+      }
+      return titlecase(w)
+    }).join(' ')
+
+  },
+
 }

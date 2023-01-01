@@ -158,6 +158,13 @@ test('inline-output', (t) => {
     ['{{CENTURY|2020}}', '21'],
     ['{{MILLENNIUM|1999}}', '2nd millennium'],
     ['{{MILLENNIUM|1|abbr=y}}', '1st'],
+    ['{{Unstrip|Some text}}', 'Some text'],
+    ['{{Title case|the quick brown fox jumped over the lazy dog}}', 'The Quick Brown Fox Jumped Over the Lazy Dog'],
+    ['{{str len| {{loop|50|abcdefghij}} }}', '500'], //woo!
+    ['{{digits|12px}}', '12'],
+    // ['{{replace|foo_bar|_| }}', 'foo bar'],
+    ['{{replace|foo_bar|_|-}}', 'foo-bar'],
+    // ['', ''],
   ]
   arr.forEach((a) => {
     t.equal(wtf(a[0]).text(), a[1], a[0])

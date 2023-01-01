@@ -86,11 +86,13 @@ str = `====Results by round====
 |date=May 2016
 }}`
 
+str = ` {{Unité|7}} hello`
 str = ` ({{Baseball year|1902}})`
 str = ' The ad cost $250,000 (${{Inflation|US|0.25|1971|r=1|fmt=c}} million today)'
 str = `comprehensive education of <nowiki>[the]</nowiki> students`
-str = `<nowiki>TEXT</nowiki>`
-
+str = `{{nowiki2 | TEXT | tag = TAG | style = STYLE }}`
+str = `{{str len| {{loop|50|abcdefghij}} }}`
+str = `{{replace|foo_bar|_| }}`
 let doc = wtf(str)
 console.log(doc.text())
 

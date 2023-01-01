@@ -70,6 +70,14 @@ let zeros = [
   'angbr',
   'symb',
   'key press', //needs work - https://en.m.wikipedia.org/wiki/Template:Key_press
+  // these should escape certain chars
+  'nowiki',
+  'nowiki2',
+  'unstrip',
+  'UnstripNoWiki',
+  'plain text',
+  'make code',
+  'killmarkers',
 ]
 zeros.forEach((k) => {
   templates[k] = 0

@@ -30,7 +30,7 @@
     "lint": "eslint ./src/ ./plugins ./tests",
     "postinstall": "path-exists ./plugins && npm-recursive-install --rootDir=plugins || echo 'nothing to install'",
     "start": "node ./scripts/demo.js",
-    "test": "tape ./tests/**/*.test.js | tap-dancer",
+    "test": "NODE_NO_WARNINGS=1 tape ./tests/**/*.test.js | tap-dancer",
     "testb": "TESTENV=prod npm run test",
     "test:fetch": "tape ./tests/fetch/*.test.js | tap-dancer",
     "test:integration": "tape ./tests/integration/*.test.js | tap-dancer",
