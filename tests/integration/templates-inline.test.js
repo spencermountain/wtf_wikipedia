@@ -185,6 +185,11 @@ test('inline-output', (t) => {
     ['{{ushr|New York|AL|X}}', 'New York At-large'],
     ['{{ushr|California|51}}', `California's 51st congressional district`],
     ['{{Metro|Jamaica}}', 'Jamaica'],
+    ['{{Metro|Bloor–Yonge}}', 'Bloor–Yonge'],
+    ['{{stnlnk|Bramley|Hampshire}}', 'Bramley'],
+    ['{{metrod|Temple|Paris}}', 'Temple'],
+    ['{{tstop|The Point|Luas}}', 'The Point'],
+    ['{{Station link|MTR|University}}', 'University'],
     // ['', ''],
   ]
   arr.forEach((a) => {

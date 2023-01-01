@@ -580,7 +580,80 @@ export default {
       }
     }
     return `[[${link}]]`
+  },
 
-  }
+  // transit station links
+  'metro': (tmpl) => {
+    let { name, dab } = parse(tmpl, ['name', 'dab'])
+    if (dab) {
+      return `[[${name} station (${dab})|${name}]]`
+    }
+    return `[[${name} station|${name}]]`
+  },
+  'station': (tmpl) => {
+    let { name, dab } = parse(tmpl, ['name', 'x', 'dab'])
+    if (dab) {
+      return `[[${name} station (${dab})|${name}]]`
+    }
+    return `[[${name} station|${name}]]`
+  },
+  'bssrws': (tmpl) => {
+    let { one, two } = parse(tmpl, ['one', 'two'])
+    let name = one
+    if (two) {
+      name += ' ' + two
+    }
+    return `[[${name} railway station|${name}]]`
+  },
+  'stnlnk': (tmpl) => {
+    let { name, dab } = parse(tmpl, ['name', 'dab'])
+    if (dab) {
+      return `[[${name} railway station (${dab})|${name}]]`
+    }
+    return `[[${name} railway station|${name}]]`
+  },
+  // https://en.wikipedia.org/wiki/Template:Station_link
+  'station link': (tmpl) => {
+    let { station, system } = parse(tmpl, ['system', 'station']) //incomplete
+    return station || system
+  },
+  'line link': (tmpl) => {
+    let { station, system } = parse(tmpl, ['system', 'station']) //incomplete
+    return station || system
+  },
+  'subway': (tmpl) => {
+    let { name } = parse(tmpl, ['name'])
+    return `[[${name} subway station|${name}]]`
+  },
+  'lrt station': (tmpl) => {
+    let { name } = parse(tmpl, ['name'])
+    return `[[${name} LRT station|${name}]]`
+  },
+  'mrt station': (tmpl) => {
+    let { name } = parse(tmpl, ['name'])
+    return `[[${name} MRT station|${name}]]`
+  },
+  'rht': (tmpl) => {
+    let { name } = parse(tmpl, ['name'])
+    return `[[${name} railway halt|${name}]]`
+  },
+  'ferry': (tmpl) => {
+    let { name } = parse(tmpl, ['name'])
+    return `[[${name} ferry wharf|${name}]]`
+  },
+  'tram': (tmpl) => {
+    let { name, dab } = parse(tmpl, ['name', 'dab'])
+    if (dab) {
+      return `[[${name} tram stop (${dab})|${name}]]`
+    }
+    return `[[${name} tram stop|${name}]]`
+  },
+  'tstop': (tmpl) => {
+    let { name, dab } = parse(tmpl, ['name', 'dab'])
+    if (dab) {
+      return `[[${name} ${dab} stop|${name}]]`
+    }
+    return `[[${name} stop|${name}]]`
+  },
 
 }

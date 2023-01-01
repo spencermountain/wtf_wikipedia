@@ -23,6 +23,9 @@ let aliases = {
   //not perfect..
   'str rep': 'replace',
   'ushr2': 'ushr',
+  'stn': 'station',
+  'metrod': 'metro',
+  'fw': 'ferry',
 }
 
 //multiple aliases
@@ -31,6 +34,9 @@ let multi = {
   citation: ['cite', 'source', 'source-pr', 'source-science'],
 
   'no spam': ['email', '@', 'no spam blue'],
+
+  'lrt station': ['lrt', 'lrts'],
+  'mrt station': ['mrt', 'mrts'],
 
   flagcountry: ['cr', 'cr-rt'],
 
@@ -246,6 +252,22 @@ let multi = {
     'resolved1',
     'check mark-n',
     'checked box',
+  ],
+  // https://en.wikipedia.org/wiki/Template:Ferry
+  'station link': [
+    'amtk',
+    'cta',
+    'bts',
+    'mnrr',
+    'mtams',
+    'munis',
+    'njts',
+    'scax',
+    'wmata',
+    'rwsa',
+    '',
+    '',
+    '',
   ]
 }
 
