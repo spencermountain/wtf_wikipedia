@@ -26,6 +26,7 @@ let aliases = {
   'stn': 'station',
   'metrod': 'metro',
   'fw': 'ferry',
+  'rws': 'stnlnk',
 }
 
 //multiple aliases

@@ -169,7 +169,7 @@ test('inline-output', (t) => {
     ['{{No spam|account|example.com}}', 'account@example.com'],
     ['{{Template:GoldMedal}}', ''],
     ['{{not done}}', '❌'],
-    ['{{by|1998|color=purple}}', '1998 in baseball'],
+    ['{{by|1998|color=purple}}', '1998'],
     ['{{YEAR|1999-12-12}}', '1999'],
     ['{{YEAR|1 January 1992}}', '1992'],
     ['{{NFL Year|1999|2000}}', '1999–2000'],
@@ -190,6 +190,9 @@ test('inline-output', (t) => {
     ['{{metrod|Temple|Paris}}', 'Temple'],
     ['{{tstop|The Point|Luas}}', 'The Point'],
     ['{{Station link|MTR|University}}', 'University'],
+    ['service between {{stn|Bellegarde}} and {{rws|Genève-Cornavin}}.', 'service between Bellegarde and Genève-Cornavin.'],
+    ['(28 May 1932 &ndash; 23 May 1979)', '(28 May 1932 – 23 May 1979)'],
+    ['{{dabsearch|Investment}}', 'Investment'],
     // ['', ''],
   ]
   arr.forEach((a) => {

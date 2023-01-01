@@ -4,7 +4,6 @@ wtf.plugin(plg)
 
 let str = `  `
 // missing
-str = `{{updated|4 June 2021|}}`
 
 // {{Updated|date|<ref>reference</ref>}}
 // {{Soccerway | ID | NAME }}
@@ -16,11 +15,8 @@ str = `{{updated|4 June 2021|}}`
 
 {{convert|190|lb|kg|abbr=on}}
 
-{{lang-ru|Еле́на Ю́рьевна Гага́рина}}
-
 {{convert|1391|mm|in}}  -> output 'millimeters'? 
 
-(28 May 1932 &ndash; 23 May 1979)   -> '–'
 
 
 {{nihongo|'''Mikirō Sasaki'''|佐々木 幹郎|Sasaki Mikirō|October 20, 1947}} is a Japanese [[Poetry|poet]]
@@ -38,12 +34,10 @@ str = `{{updated|4 June 2021|}}`
 * {{in title|Big Tree}}
 {{canned search|big-tree|big-trees}}
 
-service between {{stn|Bellegarde}} and {{rws|Genève-Cornavin}}.
 
 
 ferry {{MV|Senopati Nusantara}} sinks
 
-{{Metro|Jamaica}} expands to [[Jamaica metro station|Jamaica]]
 */
 
 // title='Limit of a sequence'
@@ -53,9 +47,6 @@ ferry {{MV|Senopati Nusantara}} sinks
 
 // CBB schedule start  - gross template
 
-str = `# The return of the government's control of [[Idlib]],
-# Transfer the management of the [[Reyhanlı]],
-# Opening a commercial corridor ,`
 
 str = `around 650 students on roll drawn from a
 community that has high levels of social deprivation`
@@ -63,8 +54,17 @@ community that has high levels of social deprivation`
 str = `'''Gunaroš''' ({{lang-sr-cyr|Гунарош}}, [[Hungarian language|Hungarian]]: ''Gunaras'') is a village `
 
 str = `{{CBB roster/Player|first=Demetrius|last=McReynolds|num=1|pos=G|ft=6|in=2|lbs=210|class=sr|rs=|home=[[Louisville, Kentucky]]}}`
-str = `{{Metro|Jamaica}}`
 
+str = `# The return of the government's control of [[Idlib]],
+# Transfer the management of the [[Reyhanlı]],
+# Opening a commercial corridor ,`
+
+str = `{{div-col}}
+* 2011: "Temple of Love" with Latexxx Teens
+* 2012: "Kannst du mich seh'n" (Remix) for [[Staubkind]]
+{{div-col-end}}`
+
+// str = `{{lang-ru|Еле́на Ю́рьевна Гага́рина}}`
 // str = ' The ad cost $250,000 (${{Inflation|US|0.25|1971|r=1|fmt=c}} million today)'
 let doc = wtf(str)
 console.log(doc.text())

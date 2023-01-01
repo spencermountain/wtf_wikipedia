@@ -7,18 +7,14 @@ test('inline text', (t) => {
       from: `education of <nowiki>[the]</nowiki> students`,
       to: `education of [the] students`
     },
-    //     {
-    //       from: `in ({{Baseball year|1902}})`,
-    //       to: `in 1902`
-    //     },
+    {
+      from: `in ({{Baseball year|1902}})`,
+      to: `in (1902)`
+    },
     //     {
     //       from: `650 students drawn from a
     // community that has one`,
     //       to: `650 students drawn from a community that has one`
-    //     },
-    //     {
-    //       from: `(28 May 1932 &ndash; 23 May 1979)`,
-    //       to: ``
     //     },
     //     {
     //       from: `{{fdate|8 March 2012|MDY}})`,
@@ -49,9 +45,18 @@ test('inline text', (t) => {
       to: `before after`
     },
     {
-      from: ``,
-      to: ``
+      from: `{{div-col}}
+* 2011: "Temple of Love"
+* 2012: "Kannst du mich seh'n" (Remix)
+{{div-col-end}}`,
+      to: `
+ * 2011: "Temple of Love"
+ * 2012: "Kannst du mich seh'n" (Remix)`
     },
+    // {
+    //   from: ``,
+    //   to: ``
+    // },
 
 
   ]

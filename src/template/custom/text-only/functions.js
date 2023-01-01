@@ -481,26 +481,26 @@ export default {
   },
   'baseball year': (tmpl) => {
     let year = parse(tmpl, ['year']).year || ''
-    return `[[${year} in baseball]]`
+    return `[[${year} in baseball|${year}]]`
   },
   'mlb year': (tmpl) => {
     let year = parse(tmpl, ['year']).year || ''
-    return `[[${year} Major League Baseball season]]`
+    return `[[${year} Major League Baseball season|${year}]]`
   },
   'nlds year': (tmpl) => {
     let { year } = parse(tmpl, ['year'])
-    return `[[${year || ''} National League Division Series]]`
+    return `[[${year || ''} National League Division Series|${year}]]`
   },
   'alds year': (tmpl) => {
     let { year } = parse(tmpl, ['year'])
-    return `[[${year || ''} American League Division Series]]`
+    return `[[${year || ''} American League Division Series|${year}]]`
   },
   'nfl year': (tmpl) => {
     let { year, other } = parse(tmpl, ['year', 'other'])
     if (other && year) {
       return `[[${year} NFL season|${year}]]–[[${other} NFL season|${other}]]`
     }
-    return `[[${year || ''} NFL season]]`
+    return `[[${year || ''} NFL season|${year}]]`
   },
   'nfl playoff year': (tmpl) => {
     let { year } = parse(tmpl, ['year'])
@@ -654,6 +654,28 @@ export default {
       return `[[${name} ${dab} stop|${name}]]`
     }
     return `[[${name} stop|${name}]]`
+  },
+
+  // https://en.wikipedia.org/wiki/Template:In_title
+  'in title': (tmpl) => {
+    let { title, text } = parse(tmpl, ['title', 'text'])
+    if (text) {
+      return text
+    }
+    if (title) {
+      return `All pages with titles containing ${title}`//[[Special: ..]]
+    }
+    return ''
+  },
+  'look from': (tmpl) => {
+    let { title, text } = parse(tmpl, ['title', 'text'])
+    if (text) {
+      return text
+    }
+    if (title) {
+      return `All pages with titles beginning with ${title}`//[[Special: ..]]
+    }
+    return ''
   },
 
 }

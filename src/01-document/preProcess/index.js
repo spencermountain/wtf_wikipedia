@@ -23,8 +23,10 @@ function preProcess(wiki) {
   //formatting for templates-in-templates...
   wiki = wiki.replace(/\{\{\}\}/g, ' – ')
   wiki = wiki.replace(/\{\{\\\}\}/g, ' / ')
-  //space
+  // some html escaping
   wiki = wiki.replace(/&nbsp;/g, ' ')
+  wiki = wiki.replace(/&ndash;/g, '–')
+
   //give it the inglorious send-off it deserves..
   wiki = kill_xml(wiki)
   //({{template}},{{template}}) leaves empty parentheses

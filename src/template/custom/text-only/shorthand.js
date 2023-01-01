@@ -69,6 +69,7 @@ let zeros = [
   'angle bracket',
   'angbr',
   'symb',
+  'dabsearch',
   'key press', //needs work - https://en.m.wikipedia.org/wiki/Template:Key_press
   // these should escape certain chars
   'nowiki',
