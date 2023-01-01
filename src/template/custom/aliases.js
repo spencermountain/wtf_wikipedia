@@ -3,7 +3,7 @@ import languages from '../../_data/languages.js'
 //aliases
 let aliases = {
   imdb: 'imdb name',
-  'imdb episodess': 'imdb episode',
+  'imdb episodes': 'imdb episode',
   localday: 'currentday',
   localdayname: 'currentdayname',
   localyear: 'currentyear',
@@ -17,12 +17,15 @@ let aliases = {
   redir: 'redirect',
   sisterlinks: 'sister project links',
   'main article': 'main',
+  'str rep': 'replace',//not perfect
 }
 
 //multiple aliases
 let multi = {
   date: ['byline', 'dateline'], //wikinews
   citation: ['cite', 'source', 'source-pr', 'source-science'],
+
+  'no spam': ['email', '@', 'no spam blue'],
 
   flagcountry: ['cr', 'cr-rt'],
 
@@ -168,6 +171,78 @@ let multi = {
     '#invoke',
     'url', //https://en.wikipedia.org/wiki/Template:URL
   ],
+
+  // https://en.wikipedia.org/wiki/Template:Done/See_also
+  done: [
+    'resolved mark large',
+    'implemented',
+    'pimplemented',
+    'resolved mark',
+    'accepted',
+    'agree',
+    'approved',
+    'checked2',
+    'verified',
+    'conditional yes',
+    'confirmed',
+    'confirmed-nc',
+    'tallyho',
+    'tick',
+    'helped',
+    'doneu|example',
+    'edited2',
+    'donetask',
+    'unprod',
+    'autp',
+    'responded',
+    'sure',
+    'merge done',
+    'marked',
+    'pass',
+    'aye',
+    'yes check',
+    'y&',
+    'yeac',
+    'yeag',
+  ],
+  xmark: [
+    'expired',
+    'deleted',
+    'not done',
+    'not done empty request',
+    'not done unclear',
+    'not done not likely',
+    'stale-small',
+    'smallrejected',
+    'x mark',
+    'nay',
+    'no mark',
+    'not done-t',
+    'fail',
+    'n&',
+    'x mark-n',
+    'xed box',
+    'cancelled',
+    'deleted-image',
+    'already declined',
+    'opblocked',
+    'user-blocked',
+    'notabug',
+    'notfixed',
+    'won\'t fix',
+    'withdraw',
+    'nojoy',
+    'unrelated',
+    'off-topic talk',
+    'nayc',
+    'nayg',
+  ],
+  checked: [
+    'already done',
+    'resolved1',
+    'check mark-n',
+    'checked box',
+  ]
 }
 
 // - other languages -

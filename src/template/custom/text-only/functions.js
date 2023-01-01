@@ -464,6 +464,11 @@ export default {
     let data = parse(tmpl, ['text'])
     return (data.text || '').replace(/[^0-9]/g, '')
   },
+  'last word': (tmpl) => {
+    let data = parse(tmpl, ['text'])
+    let arr = (data.text || '').split(/ /g)
+    return arr[arr.length - 1] || ''
+  },
   'replace': (tmpl) => {
     let data = parse(tmpl, ['text', 'from', 'to'])
     if (!data.from || !data.to) {
@@ -471,7 +476,6 @@ export default {
     }
     return (data.text || '').replace(data.from, data.to)
   },
-
   'title case': (tmpl) => {
     let data = parse(tmpl, ['text'])
     let txt = data.text || ''
@@ -481,7 +485,9 @@ export default {
       }
       return titlecase(w)
     }).join(' ')
-
   },
-
+  'no spam': (tmpl) => {
+    let data = parse(tmpl, ['account', 'domain'])
+    return `${data.account || ''}@${data.domain}`
+  },
 }

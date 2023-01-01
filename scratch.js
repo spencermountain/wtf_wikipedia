@@ -93,6 +93,7 @@ str = `comprehensive education of <nowiki>[the]</nowiki> students`
 str = `{{nowiki2 | TEXT | tag = TAG | style = STYLE }}`
 str = `{{str len| {{loop|50|abcdefghij}} }}`
 str = `{{replace|foo_bar|_| }}`
+str = `{{Template:GoldMedal}}`
 let doc = wtf(str)
 console.log(doc.text())
 

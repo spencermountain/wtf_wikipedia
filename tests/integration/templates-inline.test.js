@@ -164,6 +164,11 @@ test('inline-output', (t) => {
     ['{{digits|12px}}', '12'],
     // ['{{replace|foo_bar|_| }}', 'foo bar'],
     ['{{replace|foo_bar|_|-}}', 'foo-bar'],
+    ['{{Last word|Select last word}}', 'word'],
+    ['{{sortname|Tom|Jones}}', 'Tom Jones'],
+    ['{{No spam|account|example.com}}', 'account@example.com'],
+    ['{{Template:GoldMedal}}', ''],
+    ['{{not done}}', '❌'],
     // ['', ''],
   ]
   arr.forEach((a) => {
