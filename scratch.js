@@ -5,11 +5,7 @@ wtf.plugin(plg)
 let str = `  `
 // missing
 
-// {{Updated|date|<ref>reference</ref>}}
-// {{Soccerway | ID | NAME }}
-// {{In lang|de}} → (in German)
-// {{IndexFungorum|133136}}
-//  ''The Telegraph''{{'}}s reviewer 
+
 
 /*
 
@@ -36,7 +32,6 @@ let str = `  `
 
 
 
-ferry {{MV|Senopati Nusantara}} sinks
 
 */
 
@@ -47,25 +42,22 @@ ferry {{MV|Senopati Nusantara}} sinks
 
 // CBB schedule start  - gross template
 
-
-str = `around 650 students on roll drawn from a
-community that has high levels of social deprivation`
+// https://en.wikipedia.org/wiki/Template:MV
 
 str = `'''Gunaroš''' ({{lang-sr-cyr|Гунарош}}, [[Hungarian language|Hungarian]]: ''Gunaras'') is a village `
 
-str = `{{CBB roster/Player|first=Demetrius|last=McReynolds|num=1|pos=G|ft=6|in=2|lbs=210|class=sr|rs=|home=[[Louisville, Kentucky]]}}`
+
+str = `650 students drawn from a
+community that has levels`
 
 str = `# The return of the government's control of [[Idlib]],
 # Transfer the management of the [[Reyhanlı]],
 # Opening a commercial corridor ,`
 
-str = `{{div-col}}
-* 2011: "Temple of Love" with Latexxx Teens
-* 2012: "Kannst du mich seh'n" (Remix) for [[Staubkind]]
-{{div-col-end}}`
+str = `{{GTS|Infinity|2001}}`
+str = `''The Telegraph''{{'}}s reviewer`
 
-// str = `{{lang-ru|Еле́на Ю́рьевна Гага́рина}}`
-// str = ' The ad cost $250,000 (${{Inflation|US|0.25|1971|r=1|fmt=c}} million today)'
+
 let doc = wtf(str)
 console.log(doc.text())
 

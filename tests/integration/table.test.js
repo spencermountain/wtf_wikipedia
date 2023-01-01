@@ -584,3 +584,13 @@ test('empty cells', (t) => {
   t.equal(table[1].col5, 'e', 'e2')
   t.end()
 })
+
+test('generated table', (t) => {
+  let str = `
+{{CBB roster/Header|year=|team=|sex=}}
+{{CBB roster/Player|first=Demetrius|last=McReynolds|num=1|pos=G|ft=6|in=2|lbs=210|class=sr|rs=|home=[[Louisville, Kentucky]]}}
+{{CBB roster/Footer}}`
+  let doc = wtf(str)
+  t.equal(doc.tables().length, 1, 'cbb roster')
+  t.end()
+})

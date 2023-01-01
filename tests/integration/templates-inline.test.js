@@ -193,6 +193,9 @@ test('inline-output', (t) => {
     ['service between {{stn|Bellegarde}} and {{rws|Genève-Cornavin}}.', 'service between Bellegarde and Genève-Cornavin.'],
     ['(28 May 1932 &ndash; 23 May 1979)', '(28 May 1932 – 23 May 1979)'],
     ['{{dabsearch|Investment}}', 'Investment'],
+    ['{{MV|Aurora|2000}}', 'MV Aurora (2000)'],
+    ['{{ship|ARA|General Belgrano}}', 'ARA General Belgrano'],
+    [`''The Telegraph''{{'}}s reviewer`, `The Telegraph's reviewer`],
     // ['', ''],
   ]
   arr.forEach((a) => {

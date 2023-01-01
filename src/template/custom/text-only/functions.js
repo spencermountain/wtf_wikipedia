@@ -655,6 +655,19 @@ export default {
     }
     return `[[${name} stop|${name}]]`
   },
+  // ships
+  // https://en.wikipedia.org/wiki/Template:MV
+  'mv': (tmpl) => {
+    let { name, id } = parse(tmpl, ['name', 'id'])
+    if (id) {
+      return `[[MV ${name} (${id})]]`
+    }
+    return `[[MV ${name}]]`
+  },
+  'ship': (tmpl) => {
+    let { prefix, name } = parse(tmpl, ['prefix', 'name', 'id'])
+    return `[[${prefix} ${name}]]`
+  },
 
   // https://en.wikipedia.org/wiki/Template:In_title
   'in title': (tmpl) => {
