@@ -22,7 +22,7 @@ let templates = {
     let order = ['id', 'id2', 'id3']
     let obj = parse(tmpl, order)
     list.push(obj)
-    return 'ISBN: ' + (obj.id || '')
+    return 'ISBN ' + (obj.id || '')
   },
 
   //https://en.wikipedia.org/wiki/Template:Based_on

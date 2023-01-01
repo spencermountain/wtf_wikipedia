@@ -34,7 +34,7 @@
     "testb": "TESTENV=prod npm run test",
     "test:fetch": "tape ./tests/fetch/*.test.js | tap-dancer",
     "test:integration": "tape ./tests/integration/*.test.js | tap-dancer",
-    "watch": "amble ./scratch.js"
+    "watch": "NODE_NO_WARNINGS=1 amble ./scratch.js"
   },
   "bin": {
     "wtf_wikipedia": "./cli.js"
