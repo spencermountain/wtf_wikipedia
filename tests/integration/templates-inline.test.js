@@ -182,6 +182,9 @@ test('inline-output', (t) => {
     ['{{abbrlink|UK|United Kingdom}}', 'UK'],
     ['{{USpolabbr|R|NH|link=y}}', 'R‑NH'],
     ['{{USpolabbr|D|CA|47}}', 'D‑CA 47th'],
+    ['{{ushr|New York|AL|X}}', 'New York At-large'],
+    ['{{ushr|California|51}}', `California's 51st congressional district`],
+    ['{{Metro|Jamaica}}', 'Jamaica'],
     // ['', ''],
   ]
   arr.forEach((a) => {

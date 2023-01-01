@@ -13,7 +13,6 @@ str = `{{updated|4 June 2021|}}`
 //  ''The Telegraph''{{'}}s reviewer 
 
 /*
-{{OldStyleDate|2 February|1905|20 January}}  - Result: 2 February [O.S. 20 January] 1905
 
 {{convert|190|lb|kg|abbr=on}}
 
@@ -64,9 +63,7 @@ community that has high levels of social deprivation`
 str = `'''Gunaroš''' ({{lang-sr-cyr|Гунарош}}, [[Hungarian language|Hungarian]]: ''Gunaras'') is a village `
 
 str = `{{CBB roster/Player|first=Demetrius|last=McReynolds|num=1|pos=G|ft=6|in=2|lbs=210|class=sr|rs=|home=[[Louisville, Kentucky]]}}`
-
-str = `{{Invoke|math|min|9|7|8}}`
-str = `{{min|9|7|8}}`
+str = `{{Metro|Jamaica}}`
 
 // str = ' The ad cost $250,000 (${{Inflation|US|0.25|1971|r=1|fmt=c}} million today)'
 let doc = wtf(str)

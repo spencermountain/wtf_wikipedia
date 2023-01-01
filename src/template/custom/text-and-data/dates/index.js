@@ -62,14 +62,12 @@ export default {
   },
 
   'time ago': (tmpl) => {
-    let order = ['date', 'fmt']
-    let time = parse(tmpl, order).date
+    let time = parse(tmpl, ['date', 'fmt']).date
     return timeSince(time)
   },
   //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
   'birth date and age': (tmpl, list) => {
-    let order = ['year', 'month', 'day']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['year', 'month', 'day'])
     //support 'one property' version
     if (obj.year && /[a-z]/i.test(obj.year)) {
       return parsers.natural_date(tmpl, list)
@@ -79,8 +77,7 @@ export default {
     return toText(obj)
   },
   'birth year and age': (tmpl, list) => {
-    let order = ['birth_year', 'birth_month']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['birth_year', 'birth_month'])
     //support 'one property' version
     if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
       return parsers.natural_date(tmpl, list)
@@ -95,8 +92,7 @@ export default {
     return str
   },
   'death year and age': (tmpl, list) => {
-    let order = ['death_year', 'birth_year', 'death_month']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['death_year', 'birth_year', 'death_month'])
     //support 'one property' version
     if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
       return parsers.natural_date(tmpl, list)
@@ -115,8 +111,7 @@ export default {
   },
   //https://en.wikipedia.org/wiki/Template:Birth_based_on_age_as_of_date
   'birth based on age as of date': (tmpl, list) => {
-    let order = ['age', 'year', 'month', 'day']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['age', 'year', 'month', 'day'])
     list.push(obj)
     let age = parseInt(obj.age, 10)
     let year = parseInt(obj.year, 10)
@@ -128,8 +123,7 @@ export default {
   },
   //https://en.wikipedia.org/wiki/Template:Death_date_and_given_age
   'death date and given age': (tmpl, list) => {
-    let order = ['year', 'month', 'day', 'age']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['year', 'month', 'day', 'age'])
     list.push(obj)
     obj = ymd([obj.year, obj.month, obj.day])
     let str = toText(obj)
@@ -143,8 +137,7 @@ export default {
     //remove formatting stuff, ewww
     tmpl = tmpl.replace(/\|format=[ymd]+/i, '')
     tmpl = tmpl.replace(/\|abbr=(on|off)/i, '')
-    let order = ['year', 'month', 'date', 'bc']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['year', 'month', 'date', 'bc'])
     if (obj.date && obj.month && obj.year) {
       //render 'june 5 2018'
       if (/[a-z]/.test(obj.month) === true) {

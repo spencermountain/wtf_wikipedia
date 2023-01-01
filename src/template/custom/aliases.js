@@ -20,7 +20,9 @@ let aliases = {
   'by': 'baseball year',
   'aldsy': 'alds year',
   'nldsy': 'nlds year',
-  'str rep': 'replace',//not perfect
+  //not perfect..
+  'str rep': 'replace',
+  'ushr2': 'ushr',
 }
 
 //multiple aliases

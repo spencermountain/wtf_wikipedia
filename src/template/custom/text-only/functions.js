@@ -74,14 +74,14 @@ export default {
   },
 
   circa: (tmpl) => {
-    let obj = parse(tmpl, ['year'])
-    return `c. ${obj.year}`
+    let { year } = parse(tmpl, ['year'])
+    return `c. ${year}`
   },
 
   // https://en.wikipedia.org/wiki/Template:Decade_link
   'decade link': (tmpl) => {
-    let obj = parse(tmpl, ['year'])
-    return `${obj.year}|${obj.year}s`
+    let { year } = parse(tmpl, ['year'])
+    return `${year}|${year}s`
   },
 
   // https://en.wikipedia.org/wiki/Template:Decade
@@ -186,8 +186,8 @@ export default {
   },
 
   linum: (tmpl) => {
-    let obj = parse(tmpl, ['num', 'text'])
-    return `${obj.num}. ${obj.text}`
+    let { num, text } = parse(tmpl, ['num', 'text'])
+    return `${num}. ${text}`
   },
 
   'block indent': (tmpl) => {
@@ -488,29 +488,29 @@ export default {
     return `[[${year} Major League Baseball season]]`
   },
   'nlds year': (tmpl) => {
-    let data = parse(tmpl, ['year'])
-    return `[[${data.year || ''} National League Division Series]]`
+    let { year } = parse(tmpl, ['year'])
+    return `[[${year || ''} National League Division Series]]`
   },
   'alds year': (tmpl) => {
-    let data = parse(tmpl, ['year'])
-    return `[[${data.year || ''} American League Division Series]]`
+    let { year } = parse(tmpl, ['year'])
+    return `[[${year || ''} American League Division Series]]`
   },
   'nfl year': (tmpl) => {
-    let data = parse(tmpl, ['year', 'other'])
-    if (data.other && data.year) {
-      return `[[${data.year} NFL season|${data.year}]]–[[${data.other} NFL season|${data.other}]]`
+    let { year, other } = parse(tmpl, ['year', 'other'])
+    if (other && year) {
+      return `[[${year} NFL season|${year}]]–[[${other} NFL season|${other}]]`
     }
-    return `[[${data.year || ''} NFL season]]`
+    return `[[${year || ''} NFL season]]`
   },
   'nfl playoff year': (tmpl) => {
-    let data = parse(tmpl, ['year'])
-    let year = Number(data.year)
+    let { year } = parse(tmpl, ['year'])
+    year = Number(year)
     let after = year + 1
     return `[[${year}–${after} NFL playoffs|${year}]]`
   },
   'nba year': (tmpl) => {
-    let data = parse(tmpl, ['year'])
-    let year = Number(data.year)
+    let { year } = parse(tmpl, ['year'])
+    year = Number(year)
     let after = year + 1
     return `[[${year}–${after} NBA season|${year}–${after}]]`
   },
@@ -555,5 +555,32 @@ export default {
     }
     return out
   },
+  // https://en.wikipedia.org/wiki/Template:Ushr
+  'ushr': (tmpl) => {
+    let { state, num, type } = parse(tmpl, ['state', 'num', 'type'])
+    let link = ''
+    if (num === 'AL') {
+      link = `${state}'s at-large congressional district`
+    } else {
+      num = toOrdinal(Number(num))
+      return `${state}'s ${num} congressional district`
+    }
+    if (type) {
+      type = type.toLowerCase()
+      num = num === 'AL' ? 'At-large' : num
+      // there are many of these
+      if (type === 'e') {
+        return `[[${link}|${num}]]`
+      }
+      if (type === 'u') {
+        return `[[${link}|${state}]]`
+      }
+      if (type === 'b' || type === 'x') {
+        return `[[${link}|${state} ${num}]]`
+      }
+    }
+    return `[[${link}]]`
+
+  }
 
 }
