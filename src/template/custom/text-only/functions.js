@@ -29,8 +29,7 @@ export default {
   },
   //https://en.wikipedia.org/wiki/Template:Sortname
   sortname: (tmpl) => {
-    let order = ['first', 'last', 'target', 'sort']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['first', 'last', 'target', 'sort'])
     let name = `${obj.first || ''} ${obj.last || ''}`
     name = name.trim()
     if (obj.nolink) {
@@ -59,22 +58,19 @@ export default {
   },
 
   trunc: (tmpl) => {
-    let order = ['str', 'len']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['str', 'len'])
     return obj.str.substr(0, obj.len)
   },
 
   'str mid': (tmpl) => {
-    let order = ['str', 'start', 'end']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['str', 'start', 'end'])
     let start = parseInt(obj.start, 10) - 1
     let end = parseInt(obj.end, 10)
     return obj.str.substr(start, end)
   },
 
   reign: (tmpl) => {
-    let order = ['start', 'end']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['start', 'end'])
     return `(r. ${obj.start} – ${obj.end})`
   },
 
@@ -107,8 +103,7 @@ export default {
 
   //https://en.wikipedia.org/wiki/Template:Radic
   radic: (tmpl) => {
-    let order = ['after', 'before']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['after', 'before'])
     return `${obj.before || ''}√${obj.after || ''}`
   },
 
@@ -119,8 +114,7 @@ export default {
 
   //https://en.wikipedia.org/wiki/Template:OldStyleDate
   oldstyledate: (tmpl) => {
-    let order = ['date', 'year']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['date', 'year'])
     return obj.year ? obj.date + ' ' + obj.year : obj.date
   },
 
@@ -306,8 +300,7 @@ export default {
 
   //https://en.wikipedia.org/wiki/Template:Frac
   frac: (tmpl) => {
-    let order = ['a', 'b', 'c']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['a', 'b', 'c'])
     if (obj.c) {
       return `${obj.a} ${obj.b}/${obj.c}`
     }
@@ -319,8 +312,7 @@ export default {
 
   //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
   convert: (tmpl) => {
-    let order = ['num', 'two', 'three', 'four']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['num', 'two', 'three', 'four'])
     //todo: support plural units
     if (obj.two === '-' || obj.two === 'to' || obj.two === 'and') {
       if (obj.four) {
@@ -333,8 +325,7 @@ export default {
 
   // Large number of aliases - https://en.wikipedia.org/wiki/Template:Tl
   tl: (tmpl) => {
-    let order = ['first', 'second']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['first', 'second'])
     return obj.second || obj.first
   },
 
@@ -366,8 +357,7 @@ export default {
   //dumb inflector - https://en.wikipedia.org/wiki/Template:Plural
   plural: (tmpl) => {
     tmpl = tmpl.replace(/plural:/, 'plural|')
-    let order = ['num', 'word']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['num', 'word'])
     let num = Number(obj.num)
     let word = obj.word
     if (num !== 1) {
@@ -489,5 +479,46 @@ export default {
   'no spam': (tmpl) => {
     let data = parse(tmpl, ['account', 'domain'])
     return `${data.account || ''}@${data.domain}`
+  },
+  'baseball year': (tmpl) => {
+    let year = parse(tmpl, ['year']).year || ''
+    return `[[${year} in baseball]]`
+  },
+  'mlb year': (tmpl) => {
+    let year = parse(tmpl, ['year']).year || ''
+    return `[[${year} Major League Baseball season]]`
+  },
+  'nlds year': (tmpl) => {
+    let data = parse(tmpl, ['year'])
+    return `[[${data.year || ''} National League Division Series]]`
+  },
+  'alds year': (tmpl) => {
+    let data = parse(tmpl, ['year'])
+    return `[[${data.year || ''} American League Division Series]]`
+  },
+  'nfl year': (tmpl) => {
+    let data = parse(tmpl, ['year', 'other'])
+    if (data.other && data.year) {
+      return `[[${data.year} NFL season|${data.year}]]–[[${data.other} NFL season|${data.other}]]`
+    }
+    return `[[${data.year || ''} NFL season]]`
+  },
+  'nfl playoff year': (tmpl) => {
+    let data = parse(tmpl, ['year'])
+    let year = Number(data.year)
+    let after = year + 1
+    return `[[${year}–${after} NFL playoffs|${year}]]`
+  },
+  'nba year': (tmpl) => {
+    let data = parse(tmpl, ['year'])
+    let year = Number(data.year)
+    let after = year + 1
+    return `[[${year}–${after} NBA season|${year}–${after}]]`
+  },
+  'mhl year': (tmpl) => {
+    let data = parse(tmpl, ['year'])
+    let year = Number(data.year)
+    let after = year + 1
+    return `[[${year}–${after} NHL season|${year}–${after}]]`
   },
 }

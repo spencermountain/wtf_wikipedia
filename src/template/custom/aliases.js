@@ -17,6 +17,9 @@ let aliases = {
   redir: 'redirect',
   sisterlinks: 'sister project links',
   'main article': 'main',
+  'by': 'baseball year',
+  'aldsy': 'alds year',
+  'nldsy': 'nlds year',
   'str rep': 'replace',//not perfect
 }
 

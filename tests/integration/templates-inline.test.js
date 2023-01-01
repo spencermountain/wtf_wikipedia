@@ -169,6 +169,11 @@ test('inline-output', (t) => {
     ['{{No spam|account|example.com}}', 'account@example.com'],
     ['{{Template:GoldMedal}}', ''],
     ['{{not done}}', '❌'],
+    ['{{by|1998|color=purple}}', '1998 in baseball'],
+    ['{{YEAR|1999-12-12}}', '1999'],
+    ['{{NFL Year|1999|2000}}', '1999–2000'],
+    ['{{NFL playoff year|1978}}', '1978'],
+    ['{{NBA Year|1999}}', '1999–2000'],
     // ['', ''],
   ]
   arr.forEach((a) => {
