@@ -1,5 +1,3 @@
-import languages from '../../../_data/languages.js'
-
 //grab the first, second or third pipe..
 let templates = {
   p1: 0,
@@ -83,46 +81,5 @@ zeros.forEach((k) => {
   templates[k] = 0
 })
 
-//https://en.wikipedia.org/wiki/Category:Lang-x_templates
-Object.keys(languages).forEach((k) => {
-  templates['lang-' + k] = 0
-})
-// more languages
-let more = [
-  'sr-latn-cyrl', //first parameter latin, second cyrillic
-  'sr-cyrl-latn', //first parameter cyrillic, second latin
-  'sr-latn', //one parameter latin
-  'sr-cyrl', //one parameter cyrillic
-  'sr-cyr',
-  'sh-latn-cyrl', //for both Latin and Cyrillic in that order
-  'sh-cyrl-latn', //for both Cyrillic and Latin in that order
-  'sh-latn', //for Latin
-  'sh-cyrl', //for Cyrillic
-  'cel-1bd',
-  'cel-x-proto',
-  'en-emodeng',
-  'de-at',
-  'de-ch',
-  'gem-x-proto',
-  'gsw-fr',
-  'nds-nl',
-  'nl-be',
-  'ku-arab',
-  'ku-cyrl',
-  'pt-br',
-  'fra-frc',
-  'fra-que',
-  'roa-leo',
-  'roa-nor',
-  'ca-valencia',
-  'ast-leo',
-  'grc-gre',
-  'grc-x-doric',
-  'grc-x-proto',
-  'grc-x-medieval'
-]
-more.forEach((k) => {
-  templates['lang-' + k] = 0
-})
 
 export default templates
