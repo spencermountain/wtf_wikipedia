@@ -104,7 +104,12 @@ const sentence_parser = function (text) {
   for (let i = 0; i < chunks.length; i++) {
     //should this chunk be combined with the next one?
     if (chunks[i + 1] && !isSentence(chunks[i])) {
-      chunks[i + 1] = chunks[i] + (chunks[i + 1] || '') //.replace(/ +/g, ' ');
+      // need a space to connect these?
+      if (!/^\s/.test(chunks[i + 1]) && !/\s$/.test(chunks[i])) {
+        chunks[i + 1] = chunks[i] + ' ' + chunks[i + 1]
+      } else {
+        chunks[i + 1] = chunks[i] + chunks[i + 1]
+      }
     } else if (chunks[i] && chunks[i].length > 0) {
       //this chunk is a proper sentence..
       sentences.push(chunks[i])

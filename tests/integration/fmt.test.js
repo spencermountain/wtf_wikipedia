@@ -16,6 +16,14 @@ test('bold/italics', (t) => {
   t.end()
 })
 
+test('newline combine', (t) => {
+  let str = `650 students drawn from a
+community that has levels`
+  let doc = wtf(str)
+  t.equal(doc.text(), `650 students drawn from a community that has levels`, 'combine newline w/ splace')
+  t.end()
+})
+
 test('inline mixquotes test', (t) => {
   const str = `this is ''''four'''' and this is '''''five'''''`
   const sentence = wtf(str).sentences()[0]
