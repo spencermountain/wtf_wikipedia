@@ -82,3 +82,11 @@ hello
   t.equal(doc.text(), want, 'lists rendered in text output')
   t.end()
 })
+
+test('inline lang templates', (t) => {
+  let str = `'''Gunaroš''' ({{lang-sr-cyr|Гунарош}}, [[Hungarian language|Hungarian]]: ''Gunaras'') is a village `
+  let want = 'Gunaroš (Гунарош, Hungarian: Gunaras) is a village'
+  const doc = wtf(str)
+  t.equal(doc.text(), want, 'inline-lang')
+  t.end()
+})

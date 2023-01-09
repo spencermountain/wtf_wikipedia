@@ -28,10 +28,6 @@ let str = `  `
 
 str = `{{GTS|Infinity|2001}}`
 
-
-str = `'''Gunaroš''' ({{lang-sr-cyr|Гунарош}}, [[Hungarian language|Hungarian]]: ''Gunaras'') is a village `
-
-
 let doc = wtf(str)
 console.log(doc.text())
 
