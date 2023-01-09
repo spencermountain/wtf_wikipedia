@@ -5,29 +5,28 @@ let templates = {
   p1: 0,
   p2: 1,
   p3: 2,
-  resize: 1, //https://en.wikipedia.org/wiki/Template:Resize
+  resize: 1, //https://en.wikipedia.org/wiki/'Resize',
   lang: 1,
   'rtl-lang': 1,
   l: 2,
-  h: 1, //https://en.wikipedia.org/wiki/Template:Hover_title
-  sort: 1, //https://en.wikipedia.org/wiki/Template:Sort
+  h: 1, //https://en.wikipedia.org/wiki/'Hover_title',
+  sort: 1, //https://en.wikipedia.org/wiki/'Sort',
 }
 
 //templates that we simply grab their insides as plaintext
 let zeros = [
   'defn',
-  'lino', //https://en.wikipedia.org/wiki/Template:Linum
-  'finedetail', //https://en.wikipedia.org/wiki/Template:Finedetail
+  'lino', //https://en.wikipedia.org/wiki/'Linum',
+  'finedetail', //https://en.wikipedia.org/wiki/'Finedetail',
   'nobold',
   'noitalic',
   'nocaps',
-  'vanchor', //https://en.wikipedia.org/wiki/Template:Visible_anchor
+  'vanchor', //https://en.wikipedia.org/wiki/'Visible_anchor',
   'rnd',
-  'date', //Explictly-set dates - https://en.wikipedia.org/wiki/Template:Date
+  'date', //Explictly-set dates - https://en.wikipedia.org/wiki/'Date',
   'taste',
   'monthname',
   'baseball secondary style',
-  'lang-de',
   'nowrap',
   'nobr',
   'big',
@@ -59,7 +58,7 @@ let zeros = [
   '!bxt',
   'bxtn',
   'bxtd',
-  'delink', //https://en.wikipedia.org/wiki/Template:Delink
+  'delink', //https://en.wikipedia.org/wiki/'Delink',
   'pre',
   'var',
   'mvar',
@@ -70,7 +69,7 @@ let zeros = [
   'angbr',
   'symb',
   'dabsearch',
-  'key press', //needs work - https://en.m.wikipedia.org/wiki/Template:Key_press
+  'key press', //needs work - https://en.m.wikipedia.org/wiki/'Key_press',
   // these should escape certain chars
   'nowiki',
   'nowiki2',
@@ -86,6 +85,43 @@ zeros.forEach((k) => {
 
 //https://en.wikipedia.org/wiki/Category:Lang-x_templates
 Object.keys(languages).forEach((k) => {
+  templates['lang-' + k] = 0
+})
+// more languages
+let more = [
+  'sr-latn-cyrl', //first parameter latin, second cyrillic
+  'sr-cyrl-latn', //first parameter cyrillic, second latin
+  'sr-latn', //one parameter latin
+  'sr-cyrl', //one parameter cyrillic
+  'sr-cyr',
+  'sh-latn-cyrl', //for both Latin and Cyrillic in that order
+  'sh-cyrl-latn', //for both Cyrillic and Latin in that order
+  'sh-latn', //for Latin
+  'sh-cyrl', //for Cyrillic
+  'cel-1bd',
+  'cel-x-proto',
+  'en-emodeng',
+  'de-at',
+  'de-ch',
+  'gem-x-proto',
+  'gsw-fr',
+  'nds-nl',
+  'nl-be',
+  'ku-arab',
+  'ku-cyrl',
+  'pt-br',
+  'fra-frc',
+  'fra-que',
+  'roa-leo',
+  'roa-nor',
+  'ca-valencia',
+  'ast-leo',
+  'grc-gre',
+  'grc-x-doric',
+  'grc-x-proto',
+  'grc-x-medieval'
+]
+more.forEach((k) => {
   templates['lang-' + k] = 0
 })
 

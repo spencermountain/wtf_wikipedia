@@ -26,22 +26,12 @@ let str = `  `
 
 // https://en.wikipedia.org/wiki/Template:MV
 
+str = `{{GTS|Infinity|2001}}`
+
+
 str = `'''Gunaroš''' ({{lang-sr-cyr|Гунарош}}, [[Hungarian language|Hungarian]]: ''Gunaras'') is a village `
 
 
-
-str = `# The return of the government's control of [[Idlib]],
-# Transfer the management of the [[Reyhanlı]],
-# Opening a commercial corridor ,`
-
-str = `{{GTS|Infinity|2001}}`
-
-str = `650 students drawn from a
-community that has levels`
-
-str = `'''K. Nicole Mitchell''' is ''currently'' a [[U.S. Magistrate Judge]].
-
-She is '''''very''''' good`
 let doc = wtf(str)
 console.log(doc.text())
 
