@@ -1,4 +1,4 @@
-/*! wtf_wikipedia 10.1.0 MIT */
+/*! wtf_wikipedia 10.1.1 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('isomorphic-unfetch')) :
   typeof define === 'function' && define.amd ? define(['isomorphic-unfetch'], factory) :
@@ -845,7 +845,7 @@
 
   //alt disambig-templates en-wikipedia uses
   let d = ' disambiguation';
-  const templates$a = [
+  const templates$c = [
     'dab',
     'dab',
     'disamb',
@@ -931,7 +931,7 @@
     // check for a {{disambig}} template
     let templates = doc.templates().map((tmpl) => tmpl.json());
     let found = templates.find((obj) => {
-      return templates$a.hasOwnProperty(obj.template) || i18n_templates.hasOwnProperty(obj.template)
+      return templates$c.hasOwnProperty(obj.template) || i18n_templates.hasOwnProperty(obj.template)
     });
     if (found) {
       return true
@@ -1961,7 +1961,6 @@
 
   //these are things we throw-away
   //these will mess-up if they're nested, but they're not usually.
-  //'poem' was removed from the array because it is needed.
   const ignore$1 = [
     'table',
     'code',
@@ -1972,7 +1971,6 @@
     'hiero',
     'imagemap',
     'inputbox',
-    'nowiki',
     'references',
     'source',
     'syntaxhighlight',
@@ -2032,8 +2030,10 @@
     //formatting for templates-in-templates...
     wiki = wiki.replace(/\{\{\}\}/g, ' – ');
     wiki = wiki.replace(/\{\{\\\}\}/g, ' / ');
-    //space
+    // some html escaping
     wiki = wiki.replace(/&nbsp;/g, ' ');
+    wiki = wiki.replace(/&ndash;/g, '–');
+
     //give it the inglorious send-off it deserves..
     wiki = kill_xml(wiki);
     //({{template}},{{template}}) leaves empty parentheses
@@ -2768,7 +2768,12 @@
     for (let i = 0; i < chunks.length; i++) {
       //should this chunk be combined with the next one?
       if (chunks[i + 1] && !isSentence(chunks[i])) {
-        chunks[i + 1] = chunks[i] + (chunks[i + 1] || ''); //.replace(/ +/g, ' ');
+        // need a space to connect these?
+        if (!/^\s/.test(chunks[i + 1]) && !/\s$/.test(chunks[i])) {
+          chunks[i + 1] = chunks[i] + ' ' + chunks[i + 1];
+        } else {
+          chunks[i + 1] = chunks[i] + chunks[i + 1];
+        }
       } else if (chunks[i] && chunks[i].length > 0) {
         //this chunk is a proper sentence..
         sentences.push(chunks[i]);
@@ -3953,7 +3958,6 @@
 
   const parseTemplate$1 = function (tmpl) {
     // this is some unexplained Lua thing
-    tmpl = tmpl.replace(/#invoke:/, '');
     return {
       body: tmpl,
       name: getName(tmpl),
@@ -4130,7 +4134,7 @@
   //aliases
   let aliases = {
     imdb: 'imdb name',
-    'imdb episodess': 'imdb episode',
+    'imdb episodes': 'imdb episode',
     localday: 'currentday',
     localdayname: 'currentdayname',
     localyear: 'currentyear',
@@ -4144,12 +4148,28 @@
     redir: 'redirect',
     sisterlinks: 'sister project links',
     'main article': 'main',
+    'by': 'baseball year',
+    'aldsy': 'alds year',
+    'nldsy': 'nlds year',
+    //not perfect..
+    'str rep': 'replace',
+    'ushr2': 'ushr',
+    'stn': 'station',
+    'metrod': 'metro',
+    'fw': 'ferry',
+    'rws': 'stnlnk',
+    sclass2: 'sclass'
   };
 
   //multiple aliases
   let multi = {
     date: ['byline', 'dateline'], //wikinews
     citation: ['cite', 'source', 'source-pr', 'source-science'],
+
+    'no spam': ['email', '@', 'no spam blue'],
+
+    'lrt station': ['lrt', 'lrts'],
+    'mrt station': ['mrt', 'mrts'],
 
     flagcountry: ['cr', 'cr-rt'],
 
@@ -4292,9 +4312,93 @@
       'xtag',
       'mli',
       'mlix',
-      '#invoke',
       'url', //https://en.wikipedia.org/wiki/Template:URL
     ],
+
+    // https://en.wikipedia.org/wiki/Template:Done/See_also
+    done: [
+      'resolved mark large',
+      'implemented',
+      'pimplemented',
+      'resolved mark',
+      'accepted',
+      'agree',
+      'approved',
+      'checked2',
+      'verified',
+      'conditional yes',
+      'confirmed',
+      'confirmed-nc',
+      'tallyho',
+      'tick',
+      'helped',
+      'doneu|example',
+      'edited2',
+      'donetask',
+      'unprod',
+      'autp',
+      'responded',
+      'sure',
+      'merge done',
+      'marked',
+      'pass',
+      'aye',
+      'yes check',
+      'y&',
+      'yeac',
+      'yeag',
+    ],
+    xmark: [
+      'expired',
+      'deleted',
+      'not done',
+      'not done empty request',
+      'not done unclear',
+      'not done not likely',
+      'stale-small',
+      'smallrejected',
+      'x mark',
+      'nay',
+      'no mark',
+      'not done-t',
+      'fail',
+      'n&',
+      'x mark-n',
+      'xed box',
+      'cancelled',
+      'deleted-image',
+      'already declined',
+      'opblocked',
+      'user-blocked',
+      'notabug',
+      'notfixed',
+      'won\'t fix',
+      'withdraw',
+      'nojoy',
+      'unrelated',
+      'off-topic talk',
+      'nayc',
+      'nayg',
+    ],
+    checked: [
+      'already done',
+      'resolved1',
+      'check mark-n',
+      'checked box',
+    ],
+    // https://en.wikipedia.org/wiki/Template:Ferry
+    'station link': [
+      'amtk',
+      'cta',
+      'bts',
+      'mnrr',
+      'mtams',
+      'munis',
+      'njts',
+      'scax',
+      'wmata',
+      'rwsa',
+    ]
   };
 
   // - other languages -
@@ -4318,6 +4422,7 @@
     middot: '·',
     '•': ' • ',
     ',': ',',
+    '=': '=',
     '1/2': '1⁄2',
     '1/3': '1⁄3',
     '2/3': '2⁄3',
@@ -4329,19 +4434,23 @@
     'spaced ndash': ' – ',
     '—': '—',
     mdash: '—',
+    spd: ' – ',
     'em dash': '—',
     'number sign': '#',
+    'hash-tag': '#',
     ibeam: 'I',
     '&': '&',
     ';': ';',
     ampersand: '&',
+    'dagger': '†',
+    'double-dagger': '‡',
     snds: ' – ',
     snd: ' – ',
     '^': ' ',
     '!': '|',
+    "'": `'`,
     '\\': ' /',
     '`': '`',
-    '=': '=',
     bracket: '[',
     '[': '[',
     '*': '*',
@@ -4352,36 +4461,50 @@
     profit: '▲',
     loss: '▼',
     gain: '▲',
+    ell: 'ℓ',
+    '1~': '~',
+    '2~': '~~',
+    '3~': '~~~',
+    '4~': '~~~~',
+    '5~': '~~~~~',
+    // some emoji replacements
+    goldmedal: '🥇',
+    silvermedal: '🥈',
+    bronzemedal: '🥉',
+    done: '✅',
+    xmark: '❌',
+    checked: '✔️',
+    'thumbs up': '👍',
+    'thumbs down': '👎',
   };
 
   //grab the first, second or third pipe..
-  let templates$9 = {
+  let templates$b = {
     p1: 0,
     p2: 1,
     p3: 2,
-    resize: 1, //https://en.wikipedia.org/wiki/Template:Resize
+    resize: 1, //https://en.wikipedia.org/wiki/'Resize',
     lang: 1,
     'rtl-lang': 1,
     l: 2,
-    h: 1, //https://en.wikipedia.org/wiki/Template:Hover_title
-    sort: 1, //https://en.wikipedia.org/wiki/Template:Sort
+    h: 1, //https://en.wikipedia.org/wiki/'Hover_title',
+    sort: 1, //https://en.wikipedia.org/wiki/'Sort',
   };
 
   //templates that we simply grab their insides as plaintext
   let zeros = [
     'defn',
-    'lino', //https://en.wikipedia.org/wiki/Template:Linum
-    'finedetail', //https://en.wikipedia.org/wiki/Template:Finedetail
+    'lino', //https://en.wikipedia.org/wiki/'Linum',
+    'finedetail', //https://en.wikipedia.org/wiki/'Finedetail',
     'nobold',
     'noitalic',
     'nocaps',
-    'vanchor', //https://en.wikipedia.org/wiki/Template:Visible_anchor
+    'vanchor', //https://en.wikipedia.org/wiki/'Visible_anchor',
     'rnd',
-    'date', //Explictly-set dates - https://en.wikipedia.org/wiki/Template:Date
+    'date', //Explictly-set dates - https://en.wikipedia.org/wiki/'Date',
     'taste',
     'monthname',
     'baseball secondary style',
-    'lang-de',
     'nowrap',
     'nobr',
     'big',
@@ -4413,7 +4536,7 @@
     '!bxt',
     'bxtn',
     'bxtd',
-    'delink', //https://en.wikipedia.org/wiki/Template:Delink
+    'delink', //https://en.wikipedia.org/wiki/'Delink',
     'pre',
     'var',
     'mvar',
@@ -4423,15 +4546,104 @@
     'angle bracket',
     'angbr',
     'symb',
-    'key press', //needs work - https://en.m.wikipedia.org/wiki/Template:Key_press
+    'dabsearch',
+    'key press', //needs work - https://en.m.wikipedia.org/wiki/'Key_press',
+    // these should escape certain chars
+    'nowiki',
+    'nowiki2',
+    'unstrip',
+    'UnstripNoWiki',
+    'plain text',
+    'make code',
+    'killmarkers',
   ];
   zeros.forEach((k) => {
-    templates$9[k] = 0;
+    templates$b[k] = 0;
   });
 
-  //https://en.wikipedia.org/wiki/Category:Lang-x_templates
-  Object.keys(languages).forEach((k) => {
-    templates$9['lang-' + k] = 0;
+  let templates$a = {};
+  // these templates all have a predictable pattern
+  // {{HSC|Ship Name|ID}} -> [[HSC Name (id)]]
+  let arr = [
+    // ships
+    'mv',
+    'm/v',
+    'gts',
+    'hsc',
+    'ms',
+    'm/s',
+    'my',
+    'm/y',
+    'ps',
+    'rms',
+    'rv',
+    'r/v',
+    'sb',
+    'ss',
+    's/s',
+    'sv',
+    's/v',
+    'sy',
+    's/y',
+    'tss',
+    'ans',
+    'hmas',
+    'hmbs',
+    'bns',
+    'hmcs',
+    'ccgs',
+    'arc',
+    'hdms',
+    'bae',
+    'ens',
+    'eml',
+    'rfns',
+    'fns',
+    'hs',
+    'sms',
+    'smu',
+    'gs',
+    'icgv',
+    'ins',
+    'kri',
+    'lé',
+    'jsub',
+    'jds',
+    'js',
+    'hnlms',
+    'hmnzs',
+    'nns',
+    'hnoms',
+    'hmpngs',
+    'bap',
+    'rps',
+    'brp',
+    'orp',
+    'nrp',
+    'nms',
+    'rss',
+    'sas',
+    'hmsas',
+    'roks',
+    'hswms',
+    'htms',
+    'tcg',
+    'hms',
+    'hmt',
+    'rfaux',
+    'usat',
+    'uscgc',
+    'usns',
+    'usrc',
+    'uss',
+    'usav'
+  ];
+
+  arr.forEach(word => {
+    templates$a[word] = (tmpl) => {
+      let { name, id } = parser(tmpl, ['name', 'id']);
+      return id ? `[[${word.toUpperCase()} ${name} (${id})]]` : `[[${word.toUpperCase()} ${name}]]`
+    };
   });
 
   //simply num/denom * 100
@@ -4475,6 +4687,21 @@
 
   const titlecase = (str) => {
     return str.charAt(0).toUpperCase() + str.substring(1)
+  };
+
+  const toOrdinal = function (i) {
+    let j = i % 10;
+    let k = i % 100;
+    if (j === 1 && k !== 11) {
+      return i + 'st'
+    }
+    if (j === 2 && k !== 12) {
+      return i + 'nd'
+    }
+    if (j === 3 && k !== 13) {
+      return i + 'rd'
+    }
+    return i + 'th'
   };
 
   const sisterProjects = {
@@ -4522,8 +4749,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Sortname
     sortname: (tmpl) => {
-      let order = ['first', 'last', 'target', 'sort'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['first', 'last', 'target', 'sort']);
       let name = `${obj.first || ''} ${obj.last || ''}`;
       name = name.trim();
       if (obj.nolink) {
@@ -4552,34 +4778,31 @@
     },
 
     trunc: (tmpl) => {
-      let order = ['str', 'len'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['str', 'len']);
       return obj.str.substr(0, obj.len)
     },
 
     'str mid': (tmpl) => {
-      let order = ['str', 'start', 'end'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['str', 'start', 'end']);
       let start = parseInt(obj.start, 10) - 1;
       let end = parseInt(obj.end, 10);
       return obj.str.substr(start, end)
     },
 
     reign: (tmpl) => {
-      let order = ['start', 'end'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['start', 'end']);
       return `(r. ${obj.start} – ${obj.end})`
     },
 
     circa: (tmpl) => {
-      let obj = parser(tmpl, ['year']);
-      return `c. ${obj.year}`
+      let { year } = parser(tmpl, ['year']);
+      return year ? `c. ${year}` : 'c. '
     },
 
     // https://en.wikipedia.org/wiki/Template:Decade_link
     'decade link': (tmpl) => {
-      let obj = parser(tmpl, ['year']);
-      return `${obj.year}|${obj.year}s`
+      let { year } = parser(tmpl, ['year']);
+      return `${year}|${year}s`
     },
 
     // https://en.wikipedia.org/wiki/Template:Decade
@@ -4600,8 +4823,7 @@
 
     //https://en.wikipedia.org/wiki/Template:Radic
     radic: (tmpl) => {
-      let order = ['after', 'before'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['after', 'before']);
       return `${obj.before || ''}√${obj.after || ''}`
     },
 
@@ -4612,8 +4834,7 @@
 
     //https://en.wikipedia.org/wiki/Template:OldStyleDate
     oldstyledate: (tmpl) => {
-      let order = ['date', 'year'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['date', 'year']);
       return obj.year ? obj.date + ' ' + obj.year : obj.date
     },
 
@@ -4686,8 +4907,8 @@
     },
 
     linum: (tmpl) => {
-      let obj = parser(tmpl, ['num', 'text']);
-      return `${obj.num}. ${obj.text}`
+      let { num, text } = parser(tmpl, ['num', 'text']);
+      return `${num}. ${text}`
     },
 
     'block indent': (tmpl) => {
@@ -4799,8 +5020,7 @@
 
     //https://en.wikipedia.org/wiki/Template:Frac
     frac: (tmpl) => {
-      let order = ['a', 'b', 'c'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['a', 'b', 'c']);
       if (obj.c) {
         return `${obj.a} ${obj.b}/${obj.c}`
       }
@@ -4812,8 +5032,7 @@
 
     //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
     convert: (tmpl) => {
-      let order = ['num', 'two', 'three', 'four'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['num', 'two', 'three', 'four']);
       //todo: support plural units
       if (obj.two === '-' || obj.two === 'to' || obj.two === 'and') {
         if (obj.four) {
@@ -4826,8 +5045,7 @@
 
     // Large number of aliases - https://en.wikipedia.org/wiki/Template:Tl
     tl: (tmpl) => {
-      let order = ['first', 'second'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['first', 'second']);
       return obj.second || obj.first
     },
 
@@ -4859,8 +5077,7 @@
     //dumb inflector - https://en.wikipedia.org/wiki/Template:Plural
     plural: (tmpl) => {
       tmpl = tmpl.replace(/plural:/, 'plural|');
-      let order = ['num', 'word'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['num', 'word']);
       let num = Number(obj.num);
       let word = obj.word;
       if (num !== 1) {
@@ -4939,7 +5156,729 @@
       }
       return `${obj.done} (${num}%) done`
     },
+
+    'loop': (tmpl) => {
+      let data = parser(tmpl, ['times', 'text']);
+      let n = Number(data.times) || 0;
+      let out = '';
+      for (let i = 0; i < n; i += 1) {
+        out += data.text || '';
+      }
+      return out
+    },
+    'str len': (tmpl) => {
+      let data = parser(tmpl, ['text']);
+      return String((data.text || '').trim().length)
+    },
+    'digits': (tmpl) => {
+      let data = parser(tmpl, ['text']);
+      return (data.text || '').replace(/[^0-9]/g, '')
+    },
+    'last word': (tmpl) => {
+      let data = parser(tmpl, ['text']);
+      let arr = (data.text || '').split(/ /g);
+      return arr[arr.length - 1] || ''
+    },
+    'replace': (tmpl) => {
+      let data = parser(tmpl, ['text', 'from', 'to']);
+      if (!data.from || !data.to) {
+        return data.text || ''
+      }
+      return (data.text || '').replace(data.from, data.to)
+    },
+    'title case': (tmpl) => {
+      let data = parser(tmpl, ['text']);
+      let txt = data.text || '';
+      return txt.split(/ /).map((w, i) => {
+        if (i > 0 && w === 'the' || w === 'of') {
+          return w
+        }
+        return titlecase(w)
+      }).join(' ')
+    },
+    'no spam': (tmpl) => {
+      let data = parser(tmpl, ['account', 'domain']);
+      return `${data.account || ''}@${data.domain}`
+    },
+    'baseball year': (tmpl) => {
+      let year = parser(tmpl, ['year']).year || '';
+      return `[[${year} in baseball|${year}]]`
+    },
+    'mlb year': (tmpl) => {
+      let year = parser(tmpl, ['year']).year || '';
+      return `[[${year} Major League Baseball season|${year}]]`
+    },
+    'nlds year': (tmpl) => {
+      let { year } = parser(tmpl, ['year']);
+      return `[[${year || ''} National League Division Series|${year}]]`
+    },
+    'alds year': (tmpl) => {
+      let { year } = parser(tmpl, ['year']);
+      return `[[${year || ''} American League Division Series|${year}]]`
+    },
+    'nfl year': (tmpl) => {
+      let { year, other } = parser(tmpl, ['year', 'other']);
+      if (other && year) {
+        return `[[${year} NFL season|${year}]]–[[${other} NFL season|${other}]]`
+      }
+      return `[[${year || ''} NFL season|${year}]]`
+    },
+    'nfl playoff year': (tmpl) => {
+      let { year } = parser(tmpl, ['year']);
+      year = Number(year);
+      let after = year + 1;
+      return `[[${year}–${after} NFL playoffs|${year}]]`
+    },
+    'nba year': (tmpl) => {
+      let { year } = parser(tmpl, ['year']);
+      year = Number(year);
+      let after = year + 1;
+      return `[[${year}–${after} NBA season|${year}–${after}]]`
+    },
+    'mhl year': (tmpl) => {
+      let data = parser(tmpl, ['year']);
+      let year = Number(data.year);
+      let after = year + 1;
+      return `[[${year}–${after} NHL season|${year}–${after}]]`
+    },
+    // some math
+    'min': (tmpl) => {
+      let arr = parser(tmpl).list;
+      let min = Number(arr[0]) || 0;
+      arr.forEach(str => {
+        let n = Number(str);
+        if (!isNaN(n) && n < min) {
+          min = n;
+        }
+      });
+      return String(min)
+    },
+    'max': (tmpl) => {
+      let arr = parser(tmpl).list;
+      let max = Number(arr[0]) || 0;
+      arr.forEach(str => {
+        let n = Number(str);
+        if (!isNaN(n) && n > max) {
+          max = n;
+        }
+      });
+      return String(max)
+    },
+    // US-politics
+    'uspolabbr': (tmpl) => {
+      let { party, state, house } = parser(tmpl, ['party', 'state', 'house', 'link']);
+      if (!party || !state) {
+        return ''
+      }
+      let out = `${party}‑${state}`;
+      if (house) {
+        out += ` ${toOrdinal(house)}`;
+      }
+      return out
+    },
+    // https://en.wikipedia.org/wiki/Template:Ushr
+    'ushr': (tmpl) => {
+      let { state, num, type } = parser(tmpl, ['state', 'num', 'type']);
+      let link = '';
+      if (num === 'AL') {
+        link = `${state}'s at-large congressional district`;
+      } else {
+        num = toOrdinal(Number(num));
+        return `${state}'s ${num} congressional district`
+      }
+      if (type) {
+        type = type.toLowerCase();
+        num = num === 'AL' ? 'At-large' : num;
+        // there are many of these
+        if (type === 'e') {
+          return `[[${link}|${num}]]`
+        }
+        if (type === 'u') {
+          return `[[${link}|${state}]]`
+        }
+        if (type === 'b' || type === 'x') {
+          return `[[${link}|${state} ${num}]]`
+        }
+      }
+      return `[[${link}]]`
+    },
+
+    // transit station links
+    'metro': (tmpl) => {
+      let { name, dab } = parser(tmpl, ['name', 'dab']);
+      if (dab) {
+        return `[[${name} station (${dab})|${name}]]`
+      }
+      return `[[${name} station|${name}]]`
+    },
+    'station': (tmpl) => {
+      let { name, dab } = parser(tmpl, ['name', 'x', 'dab']);
+      if (dab) {
+        return `[[${name} station (${dab})|${name}]]`
+      }
+      return `[[${name} station|${name}]]`
+    },
+    'bssrws': (tmpl) => {
+      let { one, two } = parser(tmpl, ['one', 'two']);
+      let name = one;
+      if (two) {
+        name += ' ' + two;
+      }
+      return `[[${name} railway station|${name}]]`
+    },
+    'stnlnk': (tmpl) => {
+      let { name, dab } = parser(tmpl, ['name', 'dab']);
+      if (dab) {
+        return `[[${name} railway station (${dab})|${name}]]`
+      }
+      return `[[${name} railway station|${name}]]`
+    },
+    // https://en.wikipedia.org/wiki/Template:Station_link
+    'station link': (tmpl) => {
+      let { station, system } = parser(tmpl, ['system', 'station']); //incomplete
+      return station || system
+    },
+    'line link': (tmpl) => {
+      let { station, system } = parser(tmpl, ['system', 'station']); //incomplete
+      return station || system
+    },
+    'subway': (tmpl) => {
+      let { name } = parser(tmpl, ['name']);
+      return `[[${name} subway station|${name}]]`
+    },
+    'lrt station': (tmpl) => {
+      let { name } = parser(tmpl, ['name']);
+      return `[[${name} LRT station|${name}]]`
+    },
+    'mrt station': (tmpl) => {
+      let { name } = parser(tmpl, ['name']);
+      return `[[${name} MRT station|${name}]]`
+    },
+    'rht': (tmpl) => {
+      let { name } = parser(tmpl, ['name']);
+      return `[[${name} railway halt|${name}]]`
+    },
+    'ferry': (tmpl) => {
+      let { name } = parser(tmpl, ['name']);
+      return `[[${name} ferry wharf|${name}]]`
+    },
+    'tram': (tmpl) => {
+      let { name, dab } = parser(tmpl, ['name', 'dab']);
+      if (dab) {
+        return `[[${name} tram stop (${dab})|${name}]]`
+      }
+      return `[[${name} tram stop|${name}]]`
+    },
+    'tstop': (tmpl) => {
+      let { name, dab } = parser(tmpl, ['name', 'dab']);
+      if (dab) {
+        return `[[${name} ${dab} stop|${name}]]`
+      }
+      return `[[${name} stop|${name}]]`
+    },
+    // boats
+    'ship': (tmpl) => {
+      let { prefix, name, id } = parser(tmpl, ['prefix', 'name', 'id']);
+      return id ? `[[${prefix.toUpperCase()} ${name}]]` : `[[${prefix.toUpperCase()} ${name}]]`
+    },
+    'sclass': (tmpl) => {
+      let { cl, type } = parser(tmpl, ['cl', 'type', 'fmt']);
+      return `[[${cl}-class ${type} |''${cl}''-class]] [[${type}]]`
+    },
+
+
+    // https://en.wikipedia.org/wiki/Template:In_title
+    'in title': (tmpl) => {
+      let { title, text } = parser(tmpl, ['title', 'text']);
+      if (text) {
+        return text
+      }
+      if (title) {
+        return `All pages with titles containing ${title}`//[[Special: ..]]
+      }
+      return ''
+    },
+    'look from': (tmpl) => {
+      let { title, text } = parser(tmpl, ['title', 'text']);
+      if (text) {
+        return text
+      }
+      if (title) {
+        return `All pages with titles beginning with ${title}`//[[Special: ..]]
+      }
+      return ''
+    },
+
   };
+
+  let templates$9 = {};
+  let more = [
+    'sr-latn-cyrl', //first parameter latin, second cyrillic
+    'sr-cyrl-latn', //first parameter cyrillic, second latin
+    'sr-latn', //one parameter latin
+    'sr-cyrl', //one parameter cyrillic
+    'sr-cyr',
+    'sh-latn-cyrl', //for both Latin and Cyrillic in that order
+    'sh-cyrl-latn', //for both Cyrillic and Latin in that order
+    'sh-latn', //for Latin
+    'sh-cyrl', //for Cyrillic
+    'cel-1bd',
+    'cel-x-proto',
+    'en-emodeng',
+    'de-at',
+    'de-ch',
+    'gem-x-proto',
+    'gsw-fr',
+    'nds-nl',
+    'nl-be',
+    'ku-arab',
+    'ku-cyrl',
+    'pt-br',
+    'fra-frc',
+    'fra-que',
+    'roa-leo',
+    'roa-nor',
+    'ca-valencia',
+    'ast-leo',
+    'grc-gre',
+    'grc-x-doric',
+    'grc-x-proto',
+    'grc-x-medieval',
+    'cpg',
+    'gmy',
+    'grc',
+    'grk-x-proto',
+    'pnt',
+    'mga',
+    'owl',
+    'pgl',
+    'sga',
+    'wlm',
+    'xbm',
+    'xcb',
+    'xcg',
+    'xpi',
+    'aae',
+    'aln',
+    'sq-definite',
+    'bs-cyrl',
+    'hsb',
+    'ltg',
+    'orv',
+    'prg',
+    'rsk',
+    'rue',
+    'rus',
+    'sgs',
+    'sla',
+    'szl',
+    'wen',
+    'aoa',
+    'chn',
+    'cri',
+    'dlm',
+    'egl',
+    'fax',
+    'frc',
+    'frm',
+    'fro',
+    'fr-gallo',
+    'oc-gascon',
+    'gcf',
+    'gcr',
+    'ist',
+    'la-x-medieval',
+    'lij-mc',
+    'lld',
+    'lou',
+    'mfe',
+    'mol',
+    'mwl',
+    'mxi',
+    'nrf',
+    'osc',
+    'osp',
+    'pcd',
+    'pln',
+    'rcf',
+    'rgn',
+    'roa',
+    'ruo',
+    'rup',
+    'ruq',
+    'sdc',
+    'sdn',
+    'src',
+    'sro',
+    'xvo',
+    'bzj',
+    'cim',
+    'dum',
+    'enm',
+    'frk',
+    'frr',
+    'frs',
+    'gmh',
+    'gml',
+    'gmw',
+    'goh',
+    'gos',
+    'gsw',
+    'gyn',
+    'icr',
+    'jam',
+    'kri',
+    'lng',
+    'nb',
+    'non',
+    'nrn',
+    'odt',
+    'ofs',
+    'osx',
+    'pey',
+    'sli',
+    'srm',
+    'srn',
+    'stq',
+    'swg',
+    'vmf',
+    'wae',
+    'wep',
+    'wes',
+    'zea',
+    'hmd',
+    'hoc',
+    'kha',
+    'mnw',
+    'mtq',
+    'vi-chunom',
+    'vi-hantu',
+    'mvi',
+    'rys',
+    'ryu',
+    'yoi',
+    'ace',
+    'akl',
+    'ami',
+    'bew',
+    'bik',
+    'bjn',
+    'bya',
+    'cal',
+    'cbk',
+    'cjm',
+    'coa',
+    'cyo',
+    'dev',
+    'fil',
+    'gad',
+    'hil',
+    'iba',
+    'ibg',
+    'ibl',
+    'ilp',
+    'itv',
+    'ivv',
+    'jax',
+    'kne',
+    'krj',
+    'kxd',
+    'ljp',
+    'mad',
+    'mak',
+    'mdh',
+    'mrv',
+    'mrw',
+    'ms-arab',
+    'nia',
+    'niu',
+    'pau',
+    'pwn',
+    'rap',
+    'rar',
+    'sgd',
+    'su-fonts',
+    'szy',
+    'tao',
+    'tkl',
+    'tsg',
+    'tvl',
+    'uli',
+    'wls',
+    'xsb',
+    'yap',
+    'yka',
+    'ckt',
+    'itl',
+    'brh',
+    'oty',
+    'tcy',
+    'abq',
+    'ady',
+    'ddo',
+    'inh',
+    'kbd',
+    'lbe',
+    'lez',
+    'rut',
+    'tab',
+    'uby',
+    'udi',
+    'bai',
+    'bin',
+    'bsq',
+    'dag',
+    'dyu',
+    'efi',
+    'fan',
+    'fmp',
+    'fuc',
+    'fuf',
+    'gaa',
+    'ibb',
+    'kbp',
+    'kcg',
+    'kpo',
+    'ktu',
+    'lu',
+    'lua',
+    'lun',
+    'mkw',
+    'mos',
+    'oaa',
+    'sjo',
+    'ude',
+    'anm',
+    'bft',
+    'blk',
+    'brx',
+    'dng',
+    'kjp',
+    'kjz',
+    'ksw',
+    'lbj',
+    'lus',
+    'aae',
+    'aaq',
+    'abe',
+    'abq',
+    'aca',
+    'ace',
+    'acf',
+    'acm',
+    'acw',
+    'ady',
+    'ae',
+    'aeb',
+    'aec',
+    'aer',
+    'afb',
+    'aht',
+    'aii',
+    'aij',
+    'ain',
+    'aiq',
+    'akk',
+    'akl',
+    'akz',
+    'ale',
+    'aln',
+    'alq',
+    'alt',
+    'ami',
+    'anm',
+    'aoa',
+    'apj',
+    'apm',
+    'apw',
+    'ayn',
+    'arb',
+    'arh',
+    'ari',
+    'arn',
+    'arp',
+    'arq',
+    'ary',
+    'arz',
+    'asb',
+    'ath',
+    'ats',
+    'awa',
+    'axm',
+    'azb',
+    'azd',
+    'azj',
+    'bai',
+    'bal',
+    'ban',
+    'bax',
+    'bdz',
+    'bea',
+    'ber',
+    'bew',
+    'bft',
+    'bgn',
+    'bho',
+    'bik',
+    'bin',
+    'bjn',
+    'bla',
+    'blc',
+    'blk',
+    'bqi',
+    'brh',
+    'brx',
+    'bsk',
+    'bsq',
+    'bua',
+    'bvb',
+    'bya',
+    'bzj',
+    'cal',
+    'cay',
+    'cbk',
+    'ccp',
+    'chg',
+    'chm',
+    'chn',
+    'chp',
+    'cic',
+    'cim',
+    'ciw',
+    'cjm',
+    'cjs',
+    'ckb',
+    'ckt',
+    'cku',
+    'cld',
+    'clm',
+    'cmg',
+    'cmn',
+    'cms',
+    'cnu',
+    'coa',
+    'coc',
+    'coj',
+    'com',
+    'coo',
+    'cop',
+    'cpg',
+    'crg',
+    'crh',
+    'cri',
+    'crj',
+    'crk',
+    'crl',
+    'crm',
+    'cro',
+    'csw',
+    'csz',
+    'ctg',
+    'ctm',
+    'cyo',
+    'dag',
+    'dak',
+    'ddo',
+    'deh',
+    'del',
+    'den',
+    'dev',
+    'din',
+    'dlm',
+    'dng',
+    'dum',
+    'dyu',
+    'efi',
+    'egl',
+    'egy',
+    'elx',
+    'eml',
+    'ems',
+    'cmn',
+    'och',
+    'yue',
+    'mjw',
+    'mni',
+    'my-name-mlcts',
+    'nan',
+    'nwc',
+    'omp',
+    'otb',
+    'pwo',
+    'sip',
+    'xct',
+    'xsr',
+    '1ca',
+    'alt',
+    'az-arab',
+    'azb',
+    'azj',
+    'chg',
+    'cjs',
+    'crh',
+    'crh3',
+    'kaa',
+    'kjh',
+    'krc',
+    'kum',
+    'nog',
+    'ota',
+    'otk',
+    'sah',
+    'slr',
+    'sty',
+    'tt-arab',
+    'tt-cyrl',
+    'tt-latn',
+    'tyv',
+    'uniturk',
+    'chm',
+    'est-sea',
+    'fit',
+    'fkv',
+    'izh',
+    'jmy',
+    'koi',
+    'krl',
+    'liv',
+    'mdf',
+    'mhr',
+    'mrj',
+    'myv',
+    'olo',
+    'sia',
+    'sjd',
+    'sje',
+    'sjk',
+    'sjt',
+    'sju',
+    'sma',
+    'smi',
+    'smj',
+    'smn',
+    'sms',
+    'vep',
+    'vot',
+    'vro',
+    'yrk',
+    'din',
+    'luo',
+    'srr',
+    'sus',
+    'swh',
+    'umb',
+    'yao',
+  ];
+
+  // more languages
+  more.forEach((k) => {
+    templates$9['lang-' + k] = 0;
+  });
+
+  //https://en.wikipedia.org/wiki/Category:Lang-x_templates
+  Object.keys(languages).forEach((k) => {
+    templates$9['lang-' + k] = 0;
+  });
 
   var flags = [
     ['🇦🇩', 'and', 'andorra'],
@@ -5202,11 +6141,11 @@
     ['🇪🇺', 'eu', 'european union'],
   ];
 
+  const order = ['flag', 'variant'];
   let templates$8 = {
     //https://en.wikipedia.org/wiki/Template:Flag
     // {{flag|USA}} →  USA
     flag: (tmpl) => {
-      let order = ['flag', 'variant'];
       let obj = parser(tmpl, order);
       let name = obj.flag || '';
       obj.flag = (obj.flag || '').toLowerCase();
@@ -5216,7 +6155,6 @@
     },
     // {{flagcountry|USA}} →  United States
     flagcountry: (tmpl) => {
-      let order = ['flag', 'variant'];
       let obj = parser(tmpl, order);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
@@ -5225,7 +6163,6 @@
     },
     // (unlinked flag-country)
     flagcu: (tmpl) => {
-      let order = ['flag', 'variant'];
       let obj = parser(tmpl, order);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
@@ -5235,7 +6172,6 @@
     //https://en.wikipedia.org/wiki/Template:Flagicon
     // {{flagicon|USA}} → United States
     flagicon: (tmpl) => {
-      let order = ['flag', 'variant'];
       let obj = parser(tmpl, order);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
@@ -5246,7 +6182,6 @@
     },
     //unlinked flagicon
     flagdeco: (tmpl) => {
-      let order = ['flag', 'variant'];
       let obj = parser(tmpl, order);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || [];
@@ -5254,7 +6189,6 @@
     },
     //same, but a soccer team
     fb: (tmpl) => {
-      let order = ['flag', 'variant'];
       let obj = parser(tmpl, order);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
@@ -5264,7 +6198,6 @@
       return `${found[0]} [[${found[2]} national football team|${found[2]}]]`
     },
     fbicon: (tmpl) => {
-      let order = ['flag', 'variant'];
       let obj = parser(tmpl, order);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
@@ -5274,8 +6207,7 @@
       return ` [[${found[2]} national football team|${found[0]}]]`
     },
     flagathlete: (tmpl) => {
-      let order = ['name', 'flag', 'variant'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['name', 'flag', 'variant']);
       obj.flag = (obj.flag || '').toLowerCase();
       let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]);
       if (!found) {
@@ -5399,8 +6331,10 @@
   var textTmpl = Object.assign(
     {},
     hardcoded,
-    templates$9,
+    templates$b,
+    templates$a,
     functions,
+    templates$9,
     templates$8,
     templates$7,
   );
@@ -5479,8 +6413,7 @@
     },
 
     quote: (tmpl, list) => {
-      let order = ['text', 'author'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['text', 'author']);
       list.push(obj);
       //create plaintext version
       if (obj.text) {
@@ -5496,8 +6429,7 @@
 
     //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
     'cite gnis': (tmpl, list) => {
-      let order = ['id', 'name', 'type'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['id', 'name', 'type']);
       obj.type = 'gnis';
       obj.template = 'citation';
       list.push(obj);
@@ -5505,8 +6437,7 @@
     },
 
     'spoken wikipedia': (tmpl, list) => {
-      let order = ['file', 'date'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['file', 'date']);
       obj.template = 'audio';
       list.push(obj);
       return ''
@@ -5542,8 +6473,7 @@
 
     //https://en.wikipedia.org/wiki/Template:Sfn
     sfn: (tmpl, list, parser$1, alias) => {
-      let order = ['author', 'year', 'location'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['author', 'year', 'location']);
       if (alias) {
         obj.name = obj.template;
         obj.teplate = alias;
@@ -5959,18 +6889,16 @@
 
     //svg labels - https://en.m.wikipedia.org/wiki/Template:Legend
     legend: (tmpl, list) => {
-      let order = ['color', 'label'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['color', 'label']);
       list.push(obj);
       // return obj.label || ' '
       return tmpl // keep the wiki?
     },
 
     isbn: (tmpl, list) => {
-      let order = ['id', 'id2', 'id3'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['id', 'id2', 'id3']);
       list.push(obj);
-      return 'ISBN: ' + (obj.id || '')
+      return 'ISBN ' + (obj.id || '')
     },
 
     //https://en.wikipedia.org/wiki/Template:Based_on
@@ -6201,8 +7129,7 @@
 
     //fraction - https://en.wikipedia.org/wiki/Template:Sfrac
     frac: (tmpl, list) => {
-      let order = ['a', 'b', 'c'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['a', 'b', 'c']);
       let data = {
         template: 'sfrac',
       };
@@ -6309,7 +7236,8 @@
       let result = txt.replace(/"/g, '\'');
       result = '"' + result + '"';
       return result
-    }
+    },
+
   };
 
   const codes$1 = {
@@ -6410,21 +7338,6 @@
   Object.keys(codes$1).forEach((k) => {
     templates$2[k] = parseCurrency;
   });
-
-  const toOrdinal = function (i) {
-    let j = i % 10;
-    let k = i % 100;
-    if (j === 1 && k !== 11) {
-      return i + 'st'
-    }
-    if (j === 2 && k !== 12) {
-      return i + 'nd'
-    }
-    if (j === 3 && k !== 13) {
-      return i + 'rd'
-    }
-    return i + 'th'
-  };
 
   //this is allowed to be rough
   const day = 1000 * 60 * 60 * 24;
@@ -6635,8 +7548,7 @@
 
     //support parsing of 'February 10, 1992'
     natural_date: (tmpl, list) => {
-      let order = ['text'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['text']);
       let str = obj.text || '';
       // - just a year
       let date = {};
@@ -6659,8 +7571,7 @@
 
     //just grab the first value, and assume it's a year
     one_year: (tmpl, list) => {
-      let order = ['year'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['year']);
       let year = Number(obj.year);
       list.push(
         template({
@@ -6822,15 +7733,22 @@
       return months[d.getMonth()] + ' ' + d.getFullYear()
     },
 
+    'year': (tmpl) => {
+      let date = parser(tmpl, ['date']).date;
+      let d = new Date(date);
+      if (date && isNaN(d.getTime()) === false) {
+        return String(d.getFullYear())
+      }
+      return ''
+    },
+
     'time ago': (tmpl) => {
-      let order = ['date', 'fmt'];
-      let time = parser(tmpl, order).date;
+      let time = parser(tmpl, ['date', 'fmt']).date;
       return timeSince(time)
     },
     //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
     'birth date and age': (tmpl, list) => {
-      let order = ['year', 'month', 'day'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['year', 'month', 'day']);
       //support 'one property' version
       if (obj.year && /[a-z]/i.test(obj.year)) {
         return parsers.natural_date(tmpl, list)
@@ -6840,8 +7758,7 @@
       return toText(obj)
     },
     'birth year and age': (tmpl, list) => {
-      let order = ['birth_year', 'birth_month'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['birth_year', 'birth_month']);
       //support 'one property' version
       if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
         return parsers.natural_date(tmpl, list)
@@ -6856,8 +7773,7 @@
       return str
     },
     'death year and age': (tmpl, list) => {
-      let order = ['death_year', 'birth_year', 'death_month'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['death_year', 'birth_year', 'death_month']);
       //support 'one property' version
       if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
         return parsers.natural_date(tmpl, list)
@@ -6876,8 +7792,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Birth_based_on_age_as_of_date
     'birth based on age as of date': (tmpl, list) => {
-      let order = ['age', 'year', 'month', 'day'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['age', 'year', 'month', 'day']);
       list.push(obj);
       let age = parseInt(obj.age, 10);
       let year = parseInt(obj.year, 10);
@@ -6889,8 +7804,7 @@
     },
     //https://en.wikipedia.org/wiki/Template:Death_date_and_given_age
     'death date and given age': (tmpl, list) => {
-      let order = ['year', 'month', 'day', 'age'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['year', 'month', 'day', 'age']);
       list.push(obj);
       obj = ymd([obj.year, obj.month, obj.day]);
       let str = toText(obj);
@@ -6904,8 +7818,7 @@
       //remove formatting stuff, ewww
       tmpl = tmpl.replace(/\|format=[ymd]+/i, '');
       tmpl = tmpl.replace(/\|abbr=(on|off)/i, '');
-      let order = ['year', 'month', 'date', 'bc'];
-      let obj = parser(tmpl, order);
+      let obj = parser(tmpl, ['year', 'month', 'date', 'bc']);
       if (obj.date && obj.month && obj.year) {
         //render 'june 5 2018'
         if (/[a-z]/.test(obj.month) === true) {
@@ -7300,6 +8213,7 @@
       return ''
     },
 
+
     player: (tmpl, list) => {
       let res = parser(tmpl, ['number', 'country', 'name', 'dl']);
       list.push(res);
@@ -7371,6 +8285,39 @@
         teams: byTeam,
       };
       list.push(res);
+    },
+
+    // college baseketball rosters
+    'cbb roster/header': function () {
+      return `{| class="wikitable"
+    |-
+    ! POS
+    ! #
+    ! Name
+    ! Height
+    ! Weight
+    ! Year
+    ! Previous School
+    ! Hometown
+    |-\n`
+    },
+    'cbb roster/player': function (tmpl, list) {
+      let data = parser(tmpl);
+      list.push(data);
+      // first=|last=|dab=|num=|pos=|ft=|in=|lbs=|class=|rs=|home=
+      return `|-
+| ${data.pos || ''}
+| ${data.num || ''}
+| ${data.first || ''} ${data.last || ''}
+| ${data.ft || ''}${data.in || ''}
+| ${data.lbs || ''}
+| ${data.class || ''}
+| ${data.high_school || ''}
+| ${data.home || ''}
+`
+    },
+    'cbb roster/footer': function () {
+      return `\n|}`
     },
   };
 
@@ -8074,10 +9021,9 @@
    * @param {object} catcher
    */
   const parseMath = function (catcher) {
-    catcher.text = catcher.text.replace(/<math([^>]*)>([\s\S]+)<\/math>/g, (_, attrs, inside) => {
+    catcher.text = catcher.text.replace(/<math([^>]*)>([\s\S]*?)<\/math>/g, (_, attrs, inside) => {
       //clean it up a little?
       let formula = fromText(inside).text();
-
       catcher.templates.push({
         template: 'math',
         formula: formula,
@@ -8094,7 +9040,7 @@
     });
 
     //try chemistry version too
-    catcher.text = catcher.text.replace(/<chem([^>]*)>([\s\S]+?)<\/chem>/g, (_, attrs, inside) => {
+    catcher.text = catcher.text.replace(/<chem([^>]*)>([\s\S]*?)<\/chem>/g, (_, attrs, inside) => {
       catcher.templates.push({
         template: 'chem',
         data: inside,
@@ -9465,7 +10411,7 @@
       })
   };
 
-  var version = '10.1.0';
+  var version = '10.1.1';
 
   /**
    * use the native client-side fetch function

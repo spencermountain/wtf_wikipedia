@@ -3,6 +3,11 @@
 - **[new]** - fallbackTemplateFn handler #509
 
 -->
+#### 10.1.1 [Jan 2023]
+- **[change]** - support many more inline templates
+- **[fix]** - wikitext newline join issue
+- **[update]** - dependencies
+
 #### 10.1.0 [Dec 2022]
 - **[fix]** - extra dots in interwiki links #510
 - **[new]** - configure unsupported template behaviour - templateFallbackFn #509

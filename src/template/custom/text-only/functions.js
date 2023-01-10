@@ -75,7 +75,7 @@ export default {
 
   circa: (tmpl) => {
     let { year } = parse(tmpl, ['year'])
-    return `c. ${year}`
+    return year ? `c. ${year}` : 'c. '
   },
 
   // https://en.wikipedia.org/wiki/Template:Decade_link
