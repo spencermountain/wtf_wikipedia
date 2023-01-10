@@ -27,6 +27,7 @@ let aliases = {
   'metrod': 'metro',
   'fw': 'ferry',
   'rws': 'stnlnk',
+  sclass2: 'sclass'
 }
 
 //multiple aliases
@@ -266,9 +267,6 @@ let multi = {
     'scax',
     'wmata',
     'rwsa',
-    '',
-    '',
-    '',
   ]
 }
 

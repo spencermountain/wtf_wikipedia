@@ -196,6 +196,9 @@ test('inline-output', (t) => {
     ['{{MV|Aurora|2000}}', 'MV Aurora (2000)'],
     ['{{ship|ARA|General Belgrano}}', 'ARA General Belgrano'],
     [`''The Telegraph''{{'}}s reviewer`, `The Telegraph's reviewer`],
+    ['{{TCG|Gediz|F 495}}', 'TCG Gediz (F 495)'],
+    ['{{sclass |Valiant |harbor tug }}', 'Valiant-class harbor tug'],
+    ['{{sclass2 |Flower |corvette}}', 'Flower-class corvette'],
     // ['', ''],
   ]
   arr.forEach((a) => {

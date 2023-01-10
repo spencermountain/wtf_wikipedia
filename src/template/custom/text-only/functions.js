@@ -655,19 +655,16 @@ export default {
     }
     return `[[${name} stop|${name}]]`
   },
-  // ships
-  // https://en.wikipedia.org/wiki/Template:MV
-  'mv': (tmpl) => {
-    let { name, id } = parse(tmpl, ['name', 'id'])
-    if (id) {
-      return `[[MV ${name} (${id})]]`
-    }
-    return `[[MV ${name}]]`
-  },
+  // boats
   'ship': (tmpl) => {
-    let { prefix, name } = parse(tmpl, ['prefix', 'name', 'id'])
-    return `[[${prefix} ${name}]]`
+    let { prefix, name, id } = parse(tmpl, ['prefix', 'name', 'id'])
+    return id ? `[[${prefix.toUpperCase()} ${name}]]` : `[[${prefix.toUpperCase()} ${name}]]`
   },
+  'sclass': (tmpl) => {
+    let { cl, type } = parse(tmpl, ['cl', 'type', 'fmt'])
+    return `[[${cl}-class ${type} |''${cl}''-class]] [[${type}]]`
+  },
+
 
   // https://en.wikipedia.org/wiki/Template:In_title
   'in title': (tmpl) => {
