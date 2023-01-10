@@ -1,7 +1,6 @@
 import parse from '../../parse/toJSON/index.js'
 import strip from '../../parse/toJSON/_strip.js'
-import { titlecase, percentage } from '../_lib.js'
-
+import { titlecase, percentage, toOrdinal } from '../_lib.js'
 export default {
   //https://en.wikipedia.org/wiki/Template:Ra
   ra: (tmpl) => {
@@ -29,8 +28,7 @@ export default {
   },
   //https://en.wikipedia.org/wiki/Template:Sortname
   sortname: (tmpl) => {
-    let order = ['first', 'last', 'target', 'sort']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['first', 'last', 'target', 'sort'])
     let name = `${obj.first || ''} ${obj.last || ''}`
     name = name.trim()
     if (obj.nolink) {
@@ -59,34 +57,31 @@ export default {
   },
 
   trunc: (tmpl) => {
-    let order = ['str', 'len']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['str', 'len'])
     return obj.str.substr(0, obj.len)
   },
 
   'str mid': (tmpl) => {
-    let order = ['str', 'start', 'end']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['str', 'start', 'end'])
     let start = parseInt(obj.start, 10) - 1
     let end = parseInt(obj.end, 10)
     return obj.str.substr(start, end)
   },
 
   reign: (tmpl) => {
-    let order = ['start', 'end']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['start', 'end'])
     return `(r. ${obj.start} – ${obj.end})`
   },
 
   circa: (tmpl) => {
-    let obj = parse(tmpl, ['year'])
-    return `c. ${obj.year}`
+    let { year } = parse(tmpl, ['year'])
+    return year ? `c. ${year}` : 'c. '
   },
 
   // https://en.wikipedia.org/wiki/Template:Decade_link
   'decade link': (tmpl) => {
-    let obj = parse(tmpl, ['year'])
-    return `${obj.year}|${obj.year}s`
+    let { year } = parse(tmpl, ['year'])
+    return `${year}|${year}s`
   },
 
   // https://en.wikipedia.org/wiki/Template:Decade
@@ -107,8 +102,7 @@ export default {
 
   //https://en.wikipedia.org/wiki/Template:Radic
   radic: (tmpl) => {
-    let order = ['after', 'before']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['after', 'before'])
     return `${obj.before || ''}√${obj.after || ''}`
   },
 
@@ -119,8 +113,7 @@ export default {
 
   //https://en.wikipedia.org/wiki/Template:OldStyleDate
   oldstyledate: (tmpl) => {
-    let order = ['date', 'year']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['date', 'year'])
     return obj.year ? obj.date + ' ' + obj.year : obj.date
   },
 
@@ -193,8 +186,8 @@ export default {
   },
 
   linum: (tmpl) => {
-    let obj = parse(tmpl, ['num', 'text'])
-    return `${obj.num}. ${obj.text}`
+    let { num, text } = parse(tmpl, ['num', 'text'])
+    return `${num}. ${text}`
   },
 
   'block indent': (tmpl) => {
@@ -306,8 +299,7 @@ export default {
 
   //https://en.wikipedia.org/wiki/Template:Frac
   frac: (tmpl) => {
-    let order = ['a', 'b', 'c']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['a', 'b', 'c'])
     if (obj.c) {
       return `${obj.a} ${obj.b}/${obj.c}`
     }
@@ -319,8 +311,7 @@ export default {
 
   //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
   convert: (tmpl) => {
-    let order = ['num', 'two', 'three', 'four']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['num', 'two', 'three', 'four'])
     //todo: support plural units
     if (obj.two === '-' || obj.two === 'to' || obj.two === 'and') {
       if (obj.four) {
@@ -333,8 +324,7 @@ export default {
 
   // Large number of aliases - https://en.wikipedia.org/wiki/Template:Tl
   tl: (tmpl) => {
-    let order = ['first', 'second']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['first', 'second'])
     return obj.second || obj.first
   },
 
@@ -366,8 +356,7 @@ export default {
   //dumb inflector - https://en.wikipedia.org/wiki/Template:Plural
   plural: (tmpl) => {
     tmpl = tmpl.replace(/plural:/, 'plural|')
-    let order = ['num', 'word']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['num', 'word'])
     let num = Number(obj.num)
     let word = obj.word
     if (num !== 1) {
@@ -446,4 +435,257 @@ export default {
     }
     return `${obj.done} (${num}%) done`
   },
+
+  'loop': (tmpl) => {
+    let data = parse(tmpl, ['times', 'text'])
+    let n = Number(data.times) || 0
+    let out = ''
+    for (let i = 0; i < n; i += 1) {
+      out += data.text || ''
+    }
+    return out
+  },
+  'str len': (tmpl) => {
+    let data = parse(tmpl, ['text'])
+    return String((data.text || '').trim().length)
+  },
+  'digits': (tmpl) => {
+    let data = parse(tmpl, ['text'])
+    return (data.text || '').replace(/[^0-9]/g, '')
+  },
+  'last word': (tmpl) => {
+    let data = parse(tmpl, ['text'])
+    let arr = (data.text || '').split(/ /g)
+    return arr[arr.length - 1] || ''
+  },
+  'replace': (tmpl) => {
+    let data = parse(tmpl, ['text', 'from', 'to'])
+    if (!data.from || !data.to) {
+      return data.text || ''
+    }
+    return (data.text || '').replace(data.from, data.to)
+  },
+  'title case': (tmpl) => {
+    let data = parse(tmpl, ['text'])
+    let txt = data.text || ''
+    return txt.split(/ /).map((w, i) => {
+      if (i > 0 && w === 'the' || w === 'of') {
+        return w
+      }
+      return titlecase(w)
+    }).join(' ')
+  },
+  'no spam': (tmpl) => {
+    let data = parse(tmpl, ['account', 'domain'])
+    return `${data.account || ''}@${data.domain}`
+  },
+  'baseball year': (tmpl) => {
+    let year = parse(tmpl, ['year']).year || ''
+    return `[[${year} in baseball|${year}]]`
+  },
+  'mlb year': (tmpl) => {
+    let year = parse(tmpl, ['year']).year || ''
+    return `[[${year} Major League Baseball season|${year}]]`
+  },
+  'nlds year': (tmpl) => {
+    let { year } = parse(tmpl, ['year'])
+    return `[[${year || ''} National League Division Series|${year}]]`
+  },
+  'alds year': (tmpl) => {
+    let { year } = parse(tmpl, ['year'])
+    return `[[${year || ''} American League Division Series|${year}]]`
+  },
+  'nfl year': (tmpl) => {
+    let { year, other } = parse(tmpl, ['year', 'other'])
+    if (other && year) {
+      return `[[${year} NFL season|${year}]]–[[${other} NFL season|${other}]]`
+    }
+    return `[[${year || ''} NFL season|${year}]]`
+  },
+  'nfl playoff year': (tmpl) => {
+    let { year } = parse(tmpl, ['year'])
+    year = Number(year)
+    let after = year + 1
+    return `[[${year}–${after} NFL playoffs|${year}]]`
+  },
+  'nba year': (tmpl) => {
+    let { year } = parse(tmpl, ['year'])
+    year = Number(year)
+    let after = year + 1
+    return `[[${year}–${after} NBA season|${year}–${after}]]`
+  },
+  'mhl year': (tmpl) => {
+    let data = parse(tmpl, ['year'])
+    let year = Number(data.year)
+    let after = year + 1
+    return `[[${year}–${after} NHL season|${year}–${after}]]`
+  },
+  // some math
+  'min': (tmpl) => {
+    let arr = parse(tmpl).list
+    let min = Number(arr[0]) || 0
+    arr.forEach(str => {
+      let n = Number(str)
+      if (!isNaN(n) && n < min) {
+        min = n
+      }
+    })
+    return String(min)
+  },
+  'max': (tmpl) => {
+    let arr = parse(tmpl).list
+    let max = Number(arr[0]) || 0
+    arr.forEach(str => {
+      let n = Number(str)
+      if (!isNaN(n) && n > max) {
+        max = n
+      }
+    })
+    return String(max)
+  },
+  // US-politics
+  'uspolabbr': (tmpl) => {
+    let { party, state, house } = parse(tmpl, ['party', 'state', 'house', 'link'])
+    if (!party || !state) {
+      return ''
+    }
+    let out = `${party}‑${state}`
+    if (house) {
+      out += ` ${toOrdinal(house)}`
+    }
+    return out
+  },
+  // https://en.wikipedia.org/wiki/Template:Ushr
+  'ushr': (tmpl) => {
+    let { state, num, type } = parse(tmpl, ['state', 'num', 'type'])
+    let link = ''
+    if (num === 'AL') {
+      link = `${state}'s at-large congressional district`
+    } else {
+      num = toOrdinal(Number(num))
+      return `${state}'s ${num} congressional district`
+    }
+    if (type) {
+      type = type.toLowerCase()
+      num = num === 'AL' ? 'At-large' : num
+      // there are many of these
+      if (type === 'e') {
+        return `[[${link}|${num}]]`
+      }
+      if (type === 'u') {
+        return `[[${link}|${state}]]`
+      }
+      if (type === 'b' || type === 'x') {
+        return `[[${link}|${state} ${num}]]`
+      }
+    }
+    return `[[${link}]]`
+  },
+
+  // transit station links
+  'metro': (tmpl) => {
+    let { name, dab } = parse(tmpl, ['name', 'dab'])
+    if (dab) {
+      return `[[${name} station (${dab})|${name}]]`
+    }
+    return `[[${name} station|${name}]]`
+  },
+  'station': (tmpl) => {
+    let { name, dab } = parse(tmpl, ['name', 'x', 'dab'])
+    if (dab) {
+      return `[[${name} station (${dab})|${name}]]`
+    }
+    return `[[${name} station|${name}]]`
+  },
+  'bssrws': (tmpl) => {
+    let { one, two } = parse(tmpl, ['one', 'two'])
+    let name = one
+    if (two) {
+      name += ' ' + two
+    }
+    return `[[${name} railway station|${name}]]`
+  },
+  'stnlnk': (tmpl) => {
+    let { name, dab } = parse(tmpl, ['name', 'dab'])
+    if (dab) {
+      return `[[${name} railway station (${dab})|${name}]]`
+    }
+    return `[[${name} railway station|${name}]]`
+  },
+  // https://en.wikipedia.org/wiki/Template:Station_link
+  'station link': (tmpl) => {
+    let { station, system } = parse(tmpl, ['system', 'station']) //incomplete
+    return station || system
+  },
+  'line link': (tmpl) => {
+    let { station, system } = parse(tmpl, ['system', 'station']) //incomplete
+    return station || system
+  },
+  'subway': (tmpl) => {
+    let { name } = parse(tmpl, ['name'])
+    return `[[${name} subway station|${name}]]`
+  },
+  'lrt station': (tmpl) => {
+    let { name } = parse(tmpl, ['name'])
+    return `[[${name} LRT station|${name}]]`
+  },
+  'mrt station': (tmpl) => {
+    let { name } = parse(tmpl, ['name'])
+    return `[[${name} MRT station|${name}]]`
+  },
+  'rht': (tmpl) => {
+    let { name } = parse(tmpl, ['name'])
+    return `[[${name} railway halt|${name}]]`
+  },
+  'ferry': (tmpl) => {
+    let { name } = parse(tmpl, ['name'])
+    return `[[${name} ferry wharf|${name}]]`
+  },
+  'tram': (tmpl) => {
+    let { name, dab } = parse(tmpl, ['name', 'dab'])
+    if (dab) {
+      return `[[${name} tram stop (${dab})|${name}]]`
+    }
+    return `[[${name} tram stop|${name}]]`
+  },
+  'tstop': (tmpl) => {
+    let { name, dab } = parse(tmpl, ['name', 'dab'])
+    if (dab) {
+      return `[[${name} ${dab} stop|${name}]]`
+    }
+    return `[[${name} stop|${name}]]`
+  },
+  // boats
+  'ship': (tmpl) => {
+    let { prefix, name, id } = parse(tmpl, ['prefix', 'name', 'id'])
+    return id ? `[[${prefix.toUpperCase()} ${name}]]` : `[[${prefix.toUpperCase()} ${name}]]`
+  },
+  'sclass': (tmpl) => {
+    let { cl, type } = parse(tmpl, ['cl', 'type', 'fmt'])
+    return `[[${cl}-class ${type} |''${cl}''-class]] [[${type}]]`
+  },
+
+
+  // https://en.wikipedia.org/wiki/Template:In_title
+  'in title': (tmpl) => {
+    let { title, text } = parse(tmpl, ['title', 'text'])
+    if (text) {
+      return text
+    }
+    if (title) {
+      return `All pages with titles containing ${title}`//[[Special: ..]]
+    }
+    return ''
+  },
+  'look from': (tmpl) => {
+    let { title, text } = parse(tmpl, ['title', 'text'])
+    if (text) {
+      return text
+    }
+    if (title) {
+      return `All pages with titles beginning with ${title}`//[[Special: ..]]
+    }
+    return ''
+  },
+
 }

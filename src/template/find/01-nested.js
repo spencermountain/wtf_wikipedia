@@ -4,7 +4,6 @@ const hasTemplate = /\{\{/
 
 const parseTemplate = function (tmpl) {
   // this is some unexplained Lua thing
-  tmpl = tmpl.replace(/#invoke:/, '')
   return {
     body: tmpl,
     name: getName(tmpl),

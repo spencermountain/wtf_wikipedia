@@ -10,6 +10,7 @@ let sports = {
     return ''
   },
 
+
   player: (tmpl, list) => {
     let res = parse(tmpl, ['number', 'country', 'name', 'dl'])
     list.push(res)
@@ -81,6 +82,39 @@ let sports = {
       teams: byTeam,
     }
     list.push(res)
+  },
+
+  // college baseketball rosters
+  'cbb roster/header': function () {
+    return `{| class="wikitable"
+    |-
+    ! POS
+    ! #
+    ! Name
+    ! Height
+    ! Weight
+    ! Year
+    ! Previous School
+    ! Hometown
+    |-\n`
+  },
+  'cbb roster/player': function (tmpl, list) {
+    let data = parse(tmpl)
+    list.push(data)
+    // first=|last=|dab=|num=|pos=|ft=|in=|lbs=|class=|rs=|home=
+    return `|-
+| ${data.pos || ''}
+| ${data.num || ''}
+| ${data.first || ''} ${data.last || ''}
+| ${data.ft || ''}${data.in || ''}
+| ${data.lbs || ''}
+| ${data.class || ''}
+| ${data.high_school || ''}
+| ${data.home || ''}
+`
+  },
+  'cbb roster/footer': function () {
+    return `\n|}`
   },
 }
 export default sports

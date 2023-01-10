@@ -1,17 +1,4 @@
-const toOrdinal = function (i) {
-  let j = i % 10
-  let k = i % 100
-  if (j === 1 && k !== 11) {
-    return i + 'st'
-  }
-  if (j === 2 && k !== 12) {
-    return i + 'nd'
-  }
-  if (j === 3 && k !== 13) {
-    return i + 'rd'
-  }
-  return i + 'th'
-}
+
 
 //this is allowed to be rough
 const day = 1000 * 60 * 60 * 24
@@ -74,4 +61,4 @@ const timeSince = function (str) {
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-export { days, timeSince, delta, toOrdinal }
+export { days, timeSince, delta }

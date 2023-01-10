@@ -636,14 +636,14 @@ test('plurals / singular - all should exist', (t) => {
         expected: [
           {
             text:
-              'Fitzgerald, Michael C. (1984). Making Modernism: Picasso and the Creation of the Market for Twentieth Century Art. Farrar Straus & Giroux. ISBN: 0-37410-611-8.',
+              'Fitzgerald, Michael C. (1984). Making Modernism: Picasso and the Creation of the Market for Twentieth Century Art. Farrar Straus & Giroux. ISBN 0-37410-611-8.',
             formatting: {
               italic: ['Making Modernism: Picasso and the Creation of the Market for Twentieth Century Art'],
             },
           },
           {
             text:
-              'Shaw, Sophia (ed.) (1997). The Arts Club of Chicago: The Collection 1916-1996. The Arts Club of Chicago. ISBN: 0-96434-403-3.',
+              'Shaw, Sophia (ed.) (1997). The Arts Club of Chicago: The Collection 1916-1996. The Arts Club of Chicago. ISBN 0-96434-403-3.',
             links: [
               {
                 text: 'The Arts Club of Chicago: The Collection 1916-1996',

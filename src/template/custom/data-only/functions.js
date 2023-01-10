@@ -23,8 +23,7 @@ export default {
   },
 
   quote: (tmpl, list) => {
-    let order = ['text', 'author']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['text', 'author'])
     list.push(obj)
     //create plaintext version
     if (obj.text) {
@@ -40,8 +39,7 @@ export default {
 
   //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
   'cite gnis': (tmpl, list) => {
-    let order = ['id', 'name', 'type']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['id', 'name', 'type'])
     obj.type = 'gnis'
     obj.template = 'citation'
     list.push(obj)
@@ -49,8 +47,7 @@ export default {
   },
 
   'spoken wikipedia': (tmpl, list) => {
-    let order = ['file', 'date']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['file', 'date'])
     obj.template = 'audio'
     list.push(obj)
     return ''
@@ -86,8 +83,7 @@ export default {
 
   //https://en.wikipedia.org/wiki/Template:Sfn
   sfn: (tmpl, list, parser, alias) => {
-    let order = ['author', 'year', 'location']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['author', 'year', 'location'])
     if (alias) {
       obj.name = obj.template
       obj.teplate = alias

@@ -11,18 +11,16 @@ let templates = {
 
   //svg labels - https://en.m.wikipedia.org/wiki/Template:Legend
   legend: (tmpl, list) => {
-    let order = ['color', 'label']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['color', 'label'])
     list.push(obj)
     // return obj.label || ' '
     return tmpl // keep the wiki?
   },
 
   isbn: (tmpl, list) => {
-    let order = ['id', 'id2', 'id3']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['id', 'id2', 'id3'])
     list.push(obj)
-    return 'ISBN: ' + (obj.id || '')
+    return 'ISBN ' + (obj.id || '')
   },
 
   //https://en.wikipedia.org/wiki/Template:Based_on
@@ -253,8 +251,7 @@ let templates = {
 
   //fraction - https://en.wikipedia.org/wiki/Template:Sfrac
   frac: (tmpl, list) => {
-    let order = ['a', 'b', 'c']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['a', 'b', 'c'])
     let data = {
       template: 'sfrac',
     }
@@ -361,6 +358,7 @@ let templates = {
     let result = txt.replace(/"/g, '\'')
     result = '"' + result + '"'
     return result
-  }
+  },
+
 }
 export default templates

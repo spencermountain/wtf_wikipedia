@@ -56,8 +56,7 @@ const parsers = {
 
   //support parsing of 'February 10, 1992'
   natural_date: (tmpl, list) => {
-    let order = ['text']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['text'])
     let str = obj.text || ''
     // - just a year
     let date = {}
@@ -80,8 +79,7 @@ const parsers = {
 
   //just grab the first value, and assume it's a year
   one_year: (tmpl, list) => {
-    let order = ['year']
-    let obj = parse(tmpl, order)
+    let obj = parse(tmpl, ['year'])
     let year = Number(obj.year)
     list.push(
       template({

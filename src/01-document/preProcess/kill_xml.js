@@ -3,7 +3,6 @@
 
 //these are things we throw-away
 //these will mess-up if they're nested, but they're not usually.
-//'poem' was removed from the array because it is needed.
 const ignore = [
   'table',
   'code',
@@ -14,7 +13,6 @@ const ignore = [
   'hiero',
   'imagemap',
   'inputbox',
-  'nowiki',
   'references',
   'source',
   'syntaxhighlight',

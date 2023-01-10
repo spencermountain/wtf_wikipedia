@@ -14,6 +14,11 @@ test('math-simple', (t) => {
   t.equal(tmpl.formula, 'y^3', 'xml inline')
   t.equal(doc.text(), 'y^3', 'xml inline output')
 
+  str = `before <math>Gamma</math> between <math>Alpha</math> after`
+  doc = wtf(str)
+  t.equal(doc.templates().length, 2, 'got both math templates')
+  t.equal(doc.text(), 'before Gamma between Alpha after', 'xml inline output')
+
   str = `<math display="inline">sum_{i=0}^infty 2^{-i}</math>`
   doc = wtf(str)
   tmpl = doc.template().json() || {}
@@ -25,6 +30,22 @@ test('math-simple', (t) => {
   tmpl = doc.template().json() || {}
   t.ok(tmpl.formula.length > 10, 'tmpl formula3')
   t.equal(doc.text(), '', 'no text output3')
+  t.end()
+})
+
+test('math-infobox', (t) => {
+  let str = `{{Probability distribution
+| name       = Complex Wishart
+| type       =density
+| notation   ={{math|''A'' ~ ''CW<sub>p</sub>''('''<math>\Gamma</math>''', ''n'')}}
+| mean       =<math>\operatorname{E}[A]=n\Gamma</math>
+}}
+   
+In [[statistics]], the '''complex Wishart distribution''' is a version of the [[Wishart distribution]]. 
+`
+  let doc = wtf(str)
+  let want = `In statistics, the complex Wishart distribution is a version of the Wishart distribution.`
+  t.equal(doc.text(), want, 'math infobox')
   t.end()
 })
 
