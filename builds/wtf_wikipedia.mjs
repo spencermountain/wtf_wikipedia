@@ -1,4 +1,4 @@
-/*! wtf_wikipedia 10.1.1 MIT */
+/*! wtf_wikipedia 10.1.2 MIT */
 import unfetch from 'isomorphic-unfetch';
 
 /**
@@ -5371,6 +5371,7 @@ var functions = {
   // boats
   'ship': (tmpl) => {
     let { prefix, name, id } = parser(tmpl, ['prefix', 'name', 'id']);
+    prefix = prefix || '';
     return id ? `[[${prefix.toUpperCase()} ${name}]]` : `[[${prefix.toUpperCase()} ${name}]]`
   },
   'sclass': (tmpl) => {
@@ -10403,7 +10404,7 @@ const fetch = function (title, options, callback) {
     })
 };
 
-var version = '10.1.1';
+var version = '10.1.2';
 
 /**
  * use the native client-side fetch function

@@ -1,4 +1,4 @@
-/*! wtf_wikipedia 10.1.1 MIT */
+/*! wtf_wikipedia 10.1.2 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('isomorphic-unfetch')) :
   typeof define === 'function' && define.amd ? define(['isomorphic-unfetch'], factory) :
@@ -5379,6 +5379,7 @@
     // boats
     'ship': (tmpl) => {
       let { prefix, name, id } = parser(tmpl, ['prefix', 'name', 'id']);
+      prefix = prefix || '';
       return id ? `[[${prefix.toUpperCase()} ${name}]]` : `[[${prefix.toUpperCase()} ${name}]]`
     },
     'sclass': (tmpl) => {
@@ -10411,7 +10412,7 @@
       })
   };
 
-  var version = '10.1.1';
+  var version = '10.1.2';
 
   /**
    * use the native client-side fetch function

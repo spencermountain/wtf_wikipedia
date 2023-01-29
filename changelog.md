@@ -3,6 +3,10 @@
 - **[new]** - fallbackTemplateFn handler #509
 
 -->
+#### 10.1.2 [Jan 2023]
+- **[fix]** - #514 runtime error
+- **[update]** - dependencies
+
 #### 10.1.1 [Jan 2023]
 - **[change]** - support many more inline templates
 - **[fix]** - wikitext newline join issue
