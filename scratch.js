@@ -13,11 +13,11 @@ let str = `  `
 */
 
 
-str = `{{nihongo|'''Mikirō Sasaki'''|佐々木 幹郎|Sasaki Mikirō|October 20, 1947}} is a Japanese [[Poetry|poet]]`
-let doc = wtf(str)
-console.log(doc.text())
+// str = `{{nihongo|'''Mikirō Sasaki'''|佐々木 幹郎|Sasaki Mikirō|October 20, 1947}} is a Japanese [[Poetry|poet]]`
+// let doc = wtf(str)
+// console.log(doc.text())
 
 
-// wtf.fetch(`Alice von Hildebrand`).then((doc) => {
-//   console.log(doc.text())
-// })
+wtf.fetch(`https://en.wikipedia.org/wiki/Mick_Fuller`).then((doc) => {
+  console.log(doc.text())
+})

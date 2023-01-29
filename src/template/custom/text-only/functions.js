@@ -658,6 +658,7 @@ export default {
   // boats
   'ship': (tmpl) => {
     let { prefix, name, id } = parse(tmpl, ['prefix', 'name', 'id'])
+    prefix = prefix || ''
     return id ? `[[${prefix.toUpperCase()} ${name}]]` : `[[${prefix.toUpperCase()} ${name}]]`
   },
   'sclass': (tmpl) => {
