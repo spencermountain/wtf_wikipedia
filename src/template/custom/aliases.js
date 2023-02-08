@@ -267,6 +267,11 @@ let multi = {
     'scax',
     'wmata',
     'rwsa',
+  ],
+  'br separated entries': [
+    'br list',
+    'br-separated entries',
+    'br separated entries',
   ]
 }
 
