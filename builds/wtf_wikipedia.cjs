@@ -1,4 +1,4 @@
-/*! wtf_wikipedia 10.1.2 MIT */
+/*! wtf_wikipedia 10.1.3 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('isomorphic-unfetch')) :
   typeof define === 'function' && define.amd ? define(['isomorphic-unfetch'], factory) :
@@ -3435,7 +3435,7 @@
 
   //every value in {{tmpl|a|b|c}} needs a name
   //here we come up with names for them
-  const hasKey = /^[\p{Letter}0-9._\- '()\t]+=/iu;
+  const hasKey = /^[\p{Letter}0-9._/\- '()\t]+=/iu;
 
   //templates with these properties are asking for trouble
   const reserved = {
@@ -4398,7 +4398,12 @@
       'scax',
       'wmata',
       'rwsa',
-    ]
+    ],
+    // 'br separated entries': [
+    //   'br list',
+    //   'br-separated entries',
+    //   'br separated entries',
+    // ]
   };
 
   // - other languages -
@@ -7423,6 +7428,7 @@
       return h
     }
     h[str.toLowerCase()] = i;
+    h[str.substring(0, 3).toLowerCase()] = i;
     return h
   }, {});
 
@@ -7439,10 +7445,13 @@
       let num = parseInt(arr[i], 10);
       if (isNaN(num) === false) {
         obj[units[i]] = num; //we good.
-      } else if (units[i] === 'month' && monthName.hasOwnProperty(arr[i])) {
+      } else if (units[i] === 'month') {
+        let m = arr[i].toLowerCase().trim();
         //try for month-name, like 'january
-        let month = monthName[arr[i]];
-        obj[units[i]] = month;
+        if (monthName.hasOwnProperty(m)) {
+          let month = monthName[m];
+          obj[units[i]] = month;
+        }
       } else {
         //we dead. so skip this unit
         delete obj[units[i]];
@@ -10412,7 +10421,7 @@
       })
   };
 
-  var version = '10.1.2';
+  var version = '10.1.3';
 
   /**
    * use the native client-side fetch function

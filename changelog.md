@@ -3,6 +3,11 @@
 - **[new]** - fallbackTemplateFn handler #509
 
 -->
+#### 10.1.3 [Mar 2023]
+- **[fix]** - #519 date parsing issue
+- **[fix]** - #518 support slash in infobox property
+- **[fix]** - #516 better support {{br}} template
+
 #### 10.1.2 [Jan 2023]
 - **[fix]** - #514 runtime error
 - **[update]** - dependencies
