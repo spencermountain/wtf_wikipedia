@@ -20,6 +20,7 @@ const monthName = months.reduce((h, str, i) => {
     return h
   }
   h[str.toLowerCase()] = i
+  h[str.substring(0, 3).toLowerCase()] = i
   return h
 }, {})
 
@@ -36,10 +37,13 @@ const ymd = function (arr) {
     let num = parseInt(arr[i], 10)
     if (isNaN(num) === false) {
       obj[units[i]] = num //we good.
-    } else if (units[i] === 'month' && monthName.hasOwnProperty(arr[i])) {
+    } else if (units[i] === 'month') {
+      let m = arr[i].toLowerCase().trim()
       //try for month-name, like 'january
-      let month = monthName[arr[i]]
-      obj[units[i]] = month
+      if (monthName.hasOwnProperty(m)) {
+        let month = monthName[m]
+        obj[units[i]] = month
+      }
     } else {
       //we dead. so skip this unit
       delete obj[units[i]]

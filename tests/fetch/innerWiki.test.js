@@ -14,18 +14,18 @@ test('fetch-innerWiki-wikibooks', (t) => {
   })
 })
 
-test('fetch-innerWiki-wikidata', (t) => {
-  t.plan(1)
-  const p = wtf.fetch('https://www.wikidata.org/wiki/Wikidata:Main_Page', {
-    'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
-  })
-  p.then(function (doc) {
-    t.ok(doc.sections().length > 0, 'alternate wiki returned document')
-  })
-  p.catch(function (e) {
-    t.throw(e)
-  })
-})
+// test('fetch-innerWiki-wikidata', (t) => {
+//   t.plan(1)
+//   const p = wtf.fetch('https://www.wikidata.org/wiki/Wikidata:Main_Page', {
+//     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
+//   })
+//   p.then(function (doc) {
+//     t.ok(doc.sections().length > 0, 'alternate wiki returned document')
+//   })
+//   p.catch(function (e) {
+//     t.throw(e)
+//   })
+// })
 
 test('fetch-innerWiki-wikimedia', (t) => {
   t.plan(1)

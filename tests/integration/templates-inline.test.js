@@ -228,3 +228,16 @@ test('tricky-based-on', function (t) {
   t.equal(doc.template(0).json().template, 'based on', 'found template name')
   t.end()
 })
+
+test('start-date in infobox', function (t) {
+  let str = ` 
+{{Infobox officeholder
+|term_start   = {{start date|2022|May|6}}
+|term_end     = {{end date|2023|January|11}}
+}}`
+  let doc = wtf(str)
+  let json = doc.infobox().json()
+  t.equal(json.term_start.text, 'May 6, 2022', 'term_start')
+  t.equal(json.term_end.text, 'January 11, 2023', 'term_end')
+  t.end()
+})

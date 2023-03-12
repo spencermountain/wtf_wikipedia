@@ -116,3 +116,20 @@ test('tabs-in-infobox', function (t) {
   t.equal(obj[`alma_mater`], `St Peter's College, Oxford`, 'found alma_mater val')
   t.end()
 })
+
+
+test('slash-in-infobox', function (t) {
+  let str = ` 
+{{Infobox officeholder
+  | predecessor2        = [[Dick Cheney]]
+  | successor2          = [[Mike Pence]]
+  | jr/sr3              = United States Senator
+  | term_end3           = January 15, 2009 
+}}`
+
+  let doc = wtf(str)
+  let json = doc.infobox().json()
+  t.equal(json.term_end3.text, 'January 15, 2009', 'term_end3')
+  t.equal(json['jr/sr3'].text, 'United States Senator', 'slash')
+  t.end()
+})

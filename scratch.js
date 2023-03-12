@@ -1,23 +1,16 @@
 import wtf from './src/index.js'
-import plg from './plugins/html/src/index.js'
+import plg from './plugins/api/src/index.js'
 wtf.plugin(plg)
 
-let str = `  `
-/*
+let str = ` 
+{{Infobox officeholder
+|term_start   = {{start date|2022|May|6}}
+|term_end     = {{end date|2023|January|11}}
+}}`
 
-{{convert|190|lb|kg|abbr=on}}
-{{convert|1391|mm|in}}  -> output 'millimeters'? 
+let doc = wtf(str)
+console.log(doc.infobox().json())
 
-
-
-*/
-
-
-// str = `{{nihongo|'''Mikirō Sasaki'''|佐々木 幹郎|Sasaki Mikirō|October 20, 1947}} is a Japanese [[Poetry|poet]]`
-// let doc = wtf(str)
-// console.log(doc.text())
-
-
-wtf.fetch(`https://en.wikipedia.org/wiki/Mick_Fuller`).then((doc) => {
-  console.log(doc.text())
-})
+// let res = await wtf.getIncoming('Python (programming language)')
+// console.log(res)
+// console.log(res.length)
