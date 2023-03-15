@@ -5,7 +5,7 @@ const params = {
   list: 'categorymembers',
   cmlimit: 500,
   cmtype: 'page|subcat',
-  cmnamespace: 0,
+  cmnamespace: '0|14',
   format: 'json',
   origin: '*',
   redirects: true
@@ -51,7 +51,7 @@ const getCategory = async function (title, options, http) {
     let { pages, cursor } = await fetchIt(url, http, 'categorymembers')
     list = list.concat(pages)
     if (cursor && cursor.cmcontinue) {
-      append = '&cmcontinue=' + cursor.lhcontinue
+      append = '&cmcontinue=' + cursor.cmcontinue
     } else {
       getMore = false
     }

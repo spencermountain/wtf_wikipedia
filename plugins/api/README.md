@@ -125,14 +125,17 @@ wtf.getRandomCategory({lang:'fr'}).then(cat=>{
 ```
 
 ## Category Pages
-fetch+parse all documents in a given category, to a specific depth.
+fetch all documents and sub-categories in a given category. Only returns identifying information for the page, not the actual page content.
 ```js
 // get the first sentence of all MLB stadiums:
-wtf.getCategoryPages('Major League Baseball venues').then(docs => {
-  docs.map(doc => doc.sentence(0).text())
+wtf.getCategoryPages('Major League Baseball venues').then(pages => {
+  pages.map(page => page.title)
   // [
-  //  'Fenway park is a sports complex and major league baseball stadium...',
-  //  'Rogers Center is a entertainment venue ...'
+  //  'List of current Major League Baseball stadiums',
+  //  'List of former Major League Baseball stadiums'
+  //  ...
+  //  'Category:Spring training ballparks',
+  //  'Category:Wrigley Field'
   //]
 })
 ```
