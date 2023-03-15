@@ -359,22 +359,27 @@ the fetch method follows redirects.
 
 ### API plugin
 
-**wtf.category(title, [lang], [options | callback])**
+**wtf.getCategoryPages(title, [options])**
 
 retrieves all pages and sub-categories belonging to a given category:
 
 ```js
 wtf.extend(require('wtf-plugin-api'))
-let result = await wtf.category('Category:Politicians_from_Paris')
+let result = await wtf.getCategoryPages('Category:Politicians_from_Paris')
 /*
 {
-  pages: [{title: 'Paul Bacon', pageid: 1266127 }, ...],
-  categories: [ {title: 'Category:Mayors of Paris' } ]
+  [
+    {"pageid":52502362,"ns":0,"title":"William Abitbol"},
+    {"pageid":50101413,"ns":0,"title":"Marie-Joseph Charles des Acres de L'Aigle"}
+    ...
+    {"pageid":62721979,"ns":14,"title":"Category:Councillors of Paris"},
+    {"pageid":856891,"ns":14,"title":"Category:Mayors of Paris"}
+  ]
 }
 */
 ```
 
-**wtf.random([lang], [options], [callback])**
+**wtf.random([options])**
 
 fetches a random wikipedia article, from a given language or domain
 
