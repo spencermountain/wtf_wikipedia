@@ -23,13 +23,14 @@ const makeUrl = function (title, options, append) {
   return url
 }
 
-const getRedirects = async function (title, http) {
+const getRedirects = async function (title, options, http) {
+  options = { ...defaults, ...options }
   let list = []
   let getMore = true
   let append = ''
   while (getMore) {
-    let url = makeUrl(title, defaults, append)
-    let { pages, cursor } = await fetchOne(url, http, 'redirects')
+    let url = makeUrl(title, options, append)
+    let { pages, cursor } = await fetchOne(url, options, http, 'redirects')
     list = list.concat(pages)
     if (cursor && cursor.rdcontinue) {
       append = '&rdcontinue=' + cursor.lhcontinue

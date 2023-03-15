@@ -1,3 +1,4 @@
+import makeHeaders from 'wtf_wikipedia/src/_fetch/_headers.js'
 import { defaults, toUrlParams } from './_fns.js'
 
 const params = {
@@ -17,7 +18,8 @@ const randomCategory = function (options = {}, http) {
     url = `https://${options.domain}/${options.path}?`
   }
   url += toUrlParams(params)
-  return http(url)
+  const headers = makeHeaders(options)
+  return http(url, headers)
     .then((res) => {
       try {
         let o = res.query.pages

@@ -14,7 +14,7 @@ test('smoketests', function (t) {
 
 test('randomCategory', (t) => {
   t.plan(1)
-  wtf.getRandomCategory('en', opts).then(function (cat) {
+  wtf.getRandomCategory(opts).then(function (cat) {
     t.ok(cat, "got randomCategory: '" + cat + "'")
   })
 })

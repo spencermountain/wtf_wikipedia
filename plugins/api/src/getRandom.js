@@ -1,3 +1,4 @@
+import makeHeaders from 'wtf_wikipedia/src/_fetch/_headers.js'
 import { defaults, toUrlParams } from './_fns.js'
 
 const params = {
@@ -13,8 +14,9 @@ const params = {
   redirects: 'true'
 }
 
-const fetchIt = function (url, http) {
-  return http(url).then((res) => {
+const fetchIt = function (url, options, http) {
+  const headers = makeHeaders(options)
+  return http(url, headers).then((res) => {
     let pages = Object.keys(res.query.pages || {})
     if (pages.length === 0) {
       return { pages: [], cursor: null }
@@ -33,10 +35,11 @@ const makeUrl = function (options) {
 }
 
 const getRandom = async function (_options, http, wtf) {
-  let url = makeUrl(defaults)
+  let options = { ...defaults, ..._options }
+  let url = makeUrl(options)
   let page = {}
   try {
-    page = await fetchIt(url, http) || {}
+    page = await fetchIt(url, options, http) || {}
   } catch (e) {
     console.error(e)
   }
