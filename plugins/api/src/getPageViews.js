@@ -1,3 +1,4 @@
+import makeHeaders from 'wtf_wikipedia/src/_fetch/_headers.js'
 import { normalize, defaults, toUrlParams } from './_fns.js'
 
 const params = {
@@ -21,9 +22,11 @@ const makeUrl = function (title, options, append) {
   return url
 }
 
-const getPageViews = function (doc, http) {
-  let url = makeUrl(doc.title(), defaults)
-  return http(url).then((res) => {
+const getPageViews = function (doc, options, http) {
+  options = { ...defaults, ...options }
+  let url = makeUrl(doc.title(), options)
+  const headers = makeHeaders(options)
+  return http(url, headers).then((res) => {
     let pages = Object.keys(res.query.pages || {})
     if (pages.length === 0) {
       return []

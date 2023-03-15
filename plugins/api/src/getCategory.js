@@ -1,3 +1,4 @@
+import makeHeaders from 'wtf_wikipedia/src/_fetch/_headers.js'
 import { normalize, defaults, toUrlParams } from './_fns.js'
 
 const params = {
@@ -11,8 +12,9 @@ const params = {
   redirects: true
 }
 
-const fetchIt = function (url, http, prop) {
-  return http(url).then((res) => {
+const fetchIt = function (url, options, http, prop) {
+  const headers = makeHeaders(options)
+  return http(url, headers).then((res) => {
     let pages = Object.keys(res.query[prop] || {})
     if (pages.length === 0) {
       return { pages: [], cursor: null }
@@ -48,7 +50,7 @@ const getCategory = async function (title, options, http) {
   let append = ''
   while (getMore) {
     let url = makeUrl(title, options, append)
-    let { pages, cursor } = await fetchIt(url, http, 'categorymembers')
+    let { pages, cursor } = await fetchIt(url, options, http, 'categorymembers')
     list = list.concat(pages)
     if (cursor && cursor.cmcontinue) {
       append = '&cmcontinue=' + cursor.lhcontinue

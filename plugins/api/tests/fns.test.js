@@ -15,10 +15,10 @@ test('smoketests', function (t) {
 
 test('getPageViews', (t) => {
   t.plan(1)
-  let doc = wtf('')
+  let doc = wtf('', opts)
   doc.title('Toronto Raptors')
   doc.lang('en')
-  doc.getPageViews(opts).then(function (byDate) {
+  doc.getPageViews().then(function (byDate) {
     let dates = Object.keys(byDate)
     t.ok(dates.length > 5, `got pageViews for ${dates.length} days`)
   })
@@ -26,20 +26,20 @@ test('getPageViews', (t) => {
 
 test('getRedirects', (t) => {
   t.plan(1)
-  let doc = wtf('')
+  let doc = wtf('', opts)
   doc.title('Toronto Raptors')
   doc.lang('en')
-  doc.getRedirects(opts).then(function (links) {
+  doc.getRedirects().then(function (links) {
     t.ok(links.length > 3, `got ${links.length} redirects for Toronto Raptors`)
   })
 })
 
 test('incomingLinks', (t) => {
   t.plan(1)
-  let doc = wtf('')
+  let doc = wtf('', opts)
   doc.title('Marty Embry')
   doc.lang('en')
-  doc.getIncoming(opts).then(function (links) {
+  doc.getIncoming().then(function (links) {
     t.ok(links.length > 3, `got ${links.length} links for Marty Embry`)
   })
 })

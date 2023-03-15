@@ -31,6 +31,7 @@ class Document {
    */
   constructor(wiki, options) {
     options = options || {}
+    this._options = options
     let props = {
       pageID: options.pageID || options.id || null,
       namespace: options.namespace || options.ns || null,
@@ -498,6 +499,10 @@ class Document {
       console.log(indent + (sec.title() || '(Intro)'))
     })
     return this
+  }
+
+  options() {
+    return this._options
   }
 }
 
