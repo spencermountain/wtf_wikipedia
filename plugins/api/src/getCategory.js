@@ -37,14 +37,14 @@ const makeUrl = function (title, options, append) {
     title = 'Category:' + title
   }
   url += `&cmtitle=${normalize(title)}`
+  url += `&cmprop=ids|title|type`
   if (append) {
     url += append
   }
   return url
 }
 
-const getCategory = async function (title, options, http) {
-  options = { ...defaults, ...options }
+const getOneCategory = async function (title, options, http) {
   let list = []
   let getMore = true
   let append = ''
@@ -60,4 +60,29 @@ const getCategory = async function (title, options, http) {
   }
   return list
 }
+
+async function getCategoriesRecursively(title, options, exclusions, http) {
+  let results = await getOneCategory(title, options, http)
+  let categories = results.filter((entry) => entry.type == 'subcat')
+  if (exclusions) {
+    categories = categories.filter((category) => !exclusions.includes(category.title))
+  }
+  let subCatPromises = categories.map((category) =>
+    getCategoriesRecursively(category.title, options, exclusions, http)
+  )
+  const subCatResults = await Promise.all(subCatPromises)
+  return results.concat(...subCatResults)
+}
+
+async function getCategory(title, options, http) {
+  options = { ...defaults, ...options }
+  let exclusions = options?.categoryExclusions
+  let recursive = options?.recursive === true
+  if (recursive) {
+    return await getCategoriesRecursively(title, options, exclusions, http)
+  } else {
+    return await getOneCategory(title, options, http)
+  }
+}
+
 export default getCategory
