@@ -63,14 +63,15 @@ const getOneCategory = async function (title, options, http) {
 
 async function getCategoriesRecursively(title, options, exclusions, http) {
   let results = await getOneCategory(title, options, http)
-  let categories = results.filter((entry) => entry.type == 'subcat')
+  let categories = results.filter((entry) => entry.type === 'subcat')
   if (exclusions) {
     categories = categories.filter((category) => !exclusions.includes(category.title))
   }
-  let subCatPromises = categories.map((category) =>
-    getCategoriesRecursively(category.title, options, exclusions, http)
-  )
-  const subCatResults = await Promise.all(subCatPromises)
+  const subCatResults = []
+  for (let category of categories) {
+    let subCatResult = await getCategoriesRecursively(category.title, options, exclusions, http)
+    subCatResults.push(subCatResult)
+  }
   return results.concat(...subCatResults)
 }
 
