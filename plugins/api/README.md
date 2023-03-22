@@ -127,7 +127,6 @@ wtf.getRandomCategory({lang:'fr'}).then(cat=>{
 ## Category Pages
 fetch all documents and sub-categories in a given category. Only returns identifying information for the page, not the actual page content.
 ```js
-// get the first sentence of all MLB stadiums:
 wtf.getCategoryPages('Major League Baseball venues').then(pages => {
   pages.map(page => page.title)
   // [
@@ -137,6 +136,20 @@ wtf.getCategoryPages('Major League Baseball venues').then(pages => {
   //  'Category:Spring training ballparks',
   //  'Category:Wrigley Field'
   //]
+})
+```
+Pages can be retrieved cursively from all sub-categories by passing `recursive: true` as part of options:
+```js
+wtf.getCategoryPages('Major League Baseball venues', {recursive: true})
+```
+To exclude certain categories from being expanded, specify these as part of `categoryExclusions`. The categories to exclude must be specified with the `Category:` prefix, but without the underscores commonly seen in wikipedia page titles. Note that the category pages themselves will still be returned, but the pages within those sub-categories will not.
+```js
+wtf.getCategoryPages('Major League Baseball venues', {
+  recursive: true,
+  categoryExclusions: [
+    'Category:Defunct Major League Baseball venues',
+    'Category:Major League ballpark logos'
+  ]
 })
 ```
 
@@ -187,8 +200,8 @@ docs.forEach((doc) => {
 * **doc.getIncoming()** - fetch all pages that link to this document
 * **doc.getPageViews()** - daily traffic report for this document
 
-* **wtf.getRandomCategory()** - 
-* **wtf.getTemplatePages()** - 
-* **wtf.getCategoryPages()** - 
+* **wtf.getRandomCategory()** - get the name of a random wikipedia category
+* **wtf.getTemplatePages()** - fetches all pages that use a specific template or infobox
+* **wtf.getCategoryPages()** - fetch all pages in a specified category
 
 MIT
