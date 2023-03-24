@@ -152,6 +152,10 @@ wtf.getCategoryPages('Major League Baseball venues', {
   ]
 })
 ```
+As a safety limit, a maximum depth can be specified which limits how many sub-categories recursive mode will traverse down. **This is off by default.**
+```js
+wtf.getCategoryPages('Major League Baseball venues', {recursive: true, maxDepth: 2})
+```
 
 
 ## Template pages

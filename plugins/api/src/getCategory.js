@@ -61,29 +61,51 @@ const getOneCategory = async function (title, options, http) {
   return list
 }
 
-async function getCategoriesRecursively(title, options, exclusions, pagesSeen, http) {
+async function getCategoriesRecursively(
+  title,
+  options,
+  exclusions,
+  maxDepth,
+  currentDepth,
+  pagesSeen,
+  http
+) {
   let results = await getOneCategory(title, options, http)
-  let categories = results.filter((entry) => entry.type === 'subcat')
-  if (exclusions) {
-    categories = categories.filter((category) => !exclusions.includes(category.title))
+  //check if we should recur - either if maxDepth not set or if we're not going to exceed it in this recursion
+  if (maxDepth === undefined || currentDepth < maxDepth) {
+    let categories = results.filter((entry) => entry.type === 'subcat')
+    if (exclusions) {
+      categories = categories.filter((category) => !exclusions.includes(category.title))
+    }
+    //prevent infinite loops by discarding any subcats we've already seen
+    categories = categories.filter((category) => !pagesSeen.includes(category.title))
+    pagesSeen.push(...categories.map((category) => category.title))
+    const subCatResults = []
+    for (let category of categories) {
+      let subCatResult = await getCategoriesRecursively(
+        category.title,
+        options,
+        exclusions,
+        maxDepth,
+        currentDepth + 1,
+        pagesSeen,
+        http
+      )
+      subCatResults.push(subCatResult)
+    }
+    return results.concat(...subCatResults)
+  } else {
+    return results
   }
-  //prevent infinite loops by discarding any subcats we've already seen
-  categories = categories.filter((category) => !pagesSeen.includes(category.title))
-  pagesSeen.push(...categories.map(category => category.title))
-  const subCatResults = []
-  for (let category of categories) {
-    let subCatResult = await getCategoriesRecursively(category.title, options, exclusions, pagesSeen, http)
-    subCatResults.push(subCatResult)
-  }
-  return results.concat(...subCatResults)
 }
 
 async function getCategory(title, options, http) {
   options = { ...defaults, ...options }
   let exclusions = options?.categoryExclusions
   let recursive = options?.recursive === true
+  let maxDepth = options?.maxDepth
   if (recursive) {
-    return await getCategoriesRecursively(title, options, exclusions, [], http)
+    return await getCategoriesRecursively(title, options, exclusions, maxDepth, 0, [], http)
   } else {
     return await getOneCategory(title, options, http)
   }
