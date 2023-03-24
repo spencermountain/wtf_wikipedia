@@ -1,3 +1,5 @@
+import makeHeaders from './_headers.js'
+
 export function normalize(title = '') {
   title = title.replace(/ /g, '_')
   title = title.trim()
@@ -17,8 +19,9 @@ export function toUrlParams(obj) {
   return arr.join('&')
 }
 
-export function fetchOne(url, http, prop) {
-  return http(url).then((res) => {
+export function fetchOne(url, options, http, prop) {
+  const headers = makeHeaders(options)
+  return http(url, headers).then((res) => {
     let pages = Object.keys(res.query.pages || {})
     if (pages.length === 0) {
       return { pages: [], cursor: null }

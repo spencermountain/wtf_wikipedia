@@ -125,16 +125,36 @@ wtf.getRandomCategory({lang:'fr'}).then(cat=>{
 ```
 
 ## Category Pages
-fetch+parse all documents in a given category, to a specific depth.
+fetch all documents and sub-categories in a given category. Only returns identifying information for the page, not the actual page content.
 ```js
-// get the first sentence of all MLB stadiums:
-wtf.getCategoryPages('Major League Baseball venues').then(docs => {
-  docs.map(doc => doc.sentence(0).text())
+wtf.getCategoryPages('Major League Baseball venues').then(pages => {
+  pages.map(page => page.title)
   // [
-  //  'Fenway park is a sports complex and major league baseball stadium...',
-  //  'Rogers Center is a entertainment venue ...'
+  //  'List of current Major League Baseball stadiums',
+  //  'List of former Major League Baseball stadiums'
+  //  ...
+  //  'Category:Spring training ballparks',
+  //  'Category:Wrigley Field'
   //]
 })
+```
+Pages can be retrieved cursively from all sub-categories by passing `recursive: true` as part of options:
+```js
+wtf.getCategoryPages('Major League Baseball venues', {recursive: true})
+```
+To exclude certain categories from being expanded, specify these as part of `categoryExclusions`. The categories to exclude must be specified with the `Category:` prefix, but without the underscores commonly seen in wikipedia page titles. Note that the category pages themselves will still be returned, but the pages within those sub-categories will not.
+```js
+wtf.getCategoryPages('Major League Baseball venues', {
+  recursive: true,
+  categoryExclusions: [
+    'Category:Defunct Major League Baseball venues',
+    'Category:Major League ballpark logos'
+  ]
+})
+```
+As a safety limit, a maximum depth can be specified which limits how many sub-categories recursive mode will traverse down. **This is off by default.**
+```js
+wtf.getCategoryPages('Major League Baseball venues', {recursive: true, maxDepth: 2})
 ```
 
 
@@ -184,8 +204,8 @@ docs.forEach((doc) => {
 * **doc.getIncoming()** - fetch all pages that link to this document
 * **doc.getPageViews()** - daily traffic report for this document
 
-* **wtf.getRandomCategory()** - 
-* **wtf.getTemplatePages()** - 
-* **wtf.getCategoryPages()** - 
+* **wtf.getRandomCategory()** - get the name of a random wikipedia category
+* **wtf.getTemplatePages()** - fetches all pages that use a specific template or infobox
+* **wtf.getCategoryPages()** - fetch all pages in a specified category
 
 MIT
