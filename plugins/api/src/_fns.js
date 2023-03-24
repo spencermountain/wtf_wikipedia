@@ -1,4 +1,4 @@
-import makeHeaders from 'wtf_wikipedia/src/_fetch/_headers.js'
+import makeHeaders from './_headers.js'
 
 export function normalize(title = '') {
   title = title.replace(/ /g, '_')

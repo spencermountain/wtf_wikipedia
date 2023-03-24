@@ -1,4 +1,4 @@
-import makeHeaders from 'wtf_wikipedia/src/_fetch/_headers.js'
+import makeHeaders from './_headers.js'
 import { defaults, toUrlParams } from './_fns.js'
 
 const params = {
