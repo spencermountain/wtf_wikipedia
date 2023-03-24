@@ -1,9 +1,40 @@
-/* wtf-plugin-api 1.0.1  MIT */
+/* wtf-plugin-api 2.0.0  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wtfApi = factory());
 })(this, (function () { 'use strict';
+
+  /**
+   * factory for header options
+   *
+   * @private
+   * @param {object} options
+   * @returns {object} the generated options
+   */
+  const makeHeaders = function (options) {
+    let agent =
+      options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library';
+
+    let origin;
+    if (options.noOrigin) {
+      origin = '';
+    } else {
+      origin = options.origin || options.Origin || '*';
+    }
+
+    return {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Api-User-Agent': agent,
+        'User-Agent': agent,
+        Origin: origin,
+        'Accept-Encoding': 'gzip',
+      },
+      redirect: 'follow',
+    }
+  };
 
   function normalize(title = '') {
     title = title.replace(/ /g, '_');
@@ -24,8 +55,9 @@
     return arr.join('&')
   }
 
-  function fetchOne(url, http, prop) {
-    return http(url).then((res) => {
+  function fetchOne(url, options, http, prop) {
+    const headers = makeHeaders(options);
+    return http(url, headers).then((res) => {
       let pages = Object.keys(res.query.pages || {});
       if (pages.length === 0) {
         return { pages: [], cursor: null }
@@ -60,13 +92,14 @@
     return url
   };
 
-  const getRedirects = async function (title, http) {
+  const getRedirects = async function (title, options, http) {
+    options = { ...defaults, ...options };
     let list = [];
     let getMore = true;
     let append = '';
     while (getMore) {
-      let url = makeUrl$5(title, defaults, append);
-      let { pages, cursor } = await fetchOne(url, http, 'redirects');
+      let url = makeUrl$5(title, options, append);
+      let { pages, cursor } = await fetchOne(url, options, http, 'redirects');
       list = list.concat(pages);
       if (cursor && cursor.rdcontinue) {
         append = '&rdcontinue=' + cursor.lhcontinue;
@@ -101,13 +134,14 @@
     return url
   };
 
-  const getIncoming = async function (title, http) {
+  const getIncoming = async function (title, options, http) {
+    options = { ...defaults, ...options };
     let list = [];
     let getMore = true;
     let append = '';
     while (getMore) {
-      let url = makeUrl$4(title, defaults, append);
-      let { pages, cursor } = await fetchOne(url, http, 'linkshere');
+      let url = makeUrl$4(title, options, append);
+      let { pages, cursor } = await fetchOne(url, options, http, 'linkshere');
       list = list.concat(pages);
       if (cursor && cursor.lhcontinue) {
         append = '&lhcontinue=' + cursor.lhcontinue;
@@ -139,9 +173,11 @@
     return url
   };
 
-  const getPageViews = function (doc, http) {
-    let url = makeUrl$3(doc.title(), defaults);
-    return http(url).then((res) => {
+  const getPageViews = function (doc, options, http) {
+    options = { ...defaults, ...options };
+    let url = makeUrl$3(doc.title(), options);
+    const headers = makeHeaders(options);
+    return http(url, headers).then((res) => {
       let pages = Object.keys(res.query.pages || {});
       if (pages.length === 0) {
         return []
@@ -176,12 +212,13 @@
 
   // fetch all the pages that use a specific template
   const getTransclusions = async function (template, _options, http) {
+    let options = { ...defaults, ..._options };
     let list = [];
     let getMore = true;
     let append = '';
     while (getMore) {
-      let url = makeUrl$2(template, defaults, append);
-      let { pages, cursor } = await fetchOne(url, http, 'transcludedin');
+      let url = makeUrl$2(template, options, append);
+      let { pages, cursor } = await fetchOne(url, options, http, 'transcludedin');
       list = list.concat(pages);
       if (cursor && cursor.ticontinue) {
         append = '&ticontinue=' + cursor.ticontinue;
@@ -197,14 +234,15 @@
     list: 'categorymembers',
     cmlimit: 500,
     cmtype: 'page|subcat',
-    cmnamespace: 0,
+    cmnamespace: '0|14',
     format: 'json',
     origin: '*',
     redirects: true
   };
 
-  const fetchIt$1 = function (url, http, prop) {
-    return http(url).then((res) => {
+  const fetchIt$1 = function (url, options, http, prop) {
+    const headers = makeHeaders(options);
+    return http(url, headers).then((res) => {
       let pages = Object.keys(res.query[prop] || {});
       if (pages.length === 0) {
         return { pages: [], cursor: null }
@@ -227,29 +265,79 @@
       title = 'Category:' + title;
     }
     url += `&cmtitle=${normalize(title)}`;
+    url += `&cmprop=ids|title|type`;
     if (append) {
       url += append;
     }
     return url
   };
 
-  const getCategory = async function (title, options, http) {
-    options = { ...defaults, ...options };
+  const getOneCategory = async function (title, options, http) {
     let list = [];
     let getMore = true;
     let append = '';
     while (getMore) {
       let url = makeUrl$1(title, options, append);
-      let { pages, cursor } = await fetchIt$1(url, http, 'categorymembers');
+      let { pages, cursor } = await fetchIt$1(url, options, http, 'categorymembers');
       list = list.concat(pages);
       if (cursor && cursor.cmcontinue) {
-        append = '&cmcontinue=' + cursor.lhcontinue;
+        append = '&cmcontinue=' + cursor.cmcontinue;
       } else {
         getMore = false;
       }
     }
     return list
   };
+
+  async function getCategoriesRecursively(
+    title,
+    options,
+    exclusions,
+    maxDepth,
+    currentDepth,
+    pagesSeen,
+    http
+  ) {
+    let results = await getOneCategory(title, options, http);
+    //check if we should recur - either if maxDepth not set or if we're not going to exceed it in this recursion
+    if (maxDepth === undefined || currentDepth < maxDepth) {
+      let categories = results.filter((entry) => entry.type === 'subcat');
+      if (exclusions) {
+        categories = categories.filter((category) => !exclusions.includes(category.title));
+      }
+      //prevent infinite loops by discarding any subcats we've already seen
+      categories = categories.filter((category) => !pagesSeen.includes(category.title));
+      pagesSeen.push(...categories.map((category) => category.title));
+      const subCatResults = [];
+      for (let category of categories) {
+        let subCatResult = await getCategoriesRecursively(
+          category.title,
+          options,
+          exclusions,
+          maxDepth,
+          currentDepth + 1,
+          pagesSeen,
+          http
+        );
+        subCatResults.push(subCatResult);
+      }
+      return results.concat(...subCatResults)
+    } else {
+      return results
+    }
+  }
+
+  async function getCategory(title, options, http) {
+    options = { ...defaults, ...options };
+    let exclusions = options?.categoryExclusions;
+    let recursive = options?.recursive === true;
+    let maxDepth = options?.maxDepth;
+    if (recursive) {
+      return await getCategoriesRecursively(title, options, exclusions, maxDepth, 0, [], http)
+    } else {
+      return await getOneCategory(title, options, http)
+    }
+  }
 
   const params$1 = {
     action: 'query',
@@ -264,8 +352,9 @@
     redirects: 'true'
   };
 
-  const fetchIt = function (url, http) {
-    return http(url).then((res) => {
+  const fetchIt = function (url, options, http) {
+    const headers = makeHeaders(options);
+    return http(url, headers).then((res) => {
       let pages = Object.keys(res.query.pages || {});
       if (pages.length === 0) {
         return { pages: [], cursor: null }
@@ -284,10 +373,11 @@
   };
 
   const getRandom = async function (_options, http, wtf) {
-    let url = makeUrl(defaults);
+    let options = { ...defaults, ..._options };
+    let url = makeUrl(options);
     let page = {};
     try {
-      page = await fetchIt(url, http) || {};
+      page = await fetchIt(url, options, http) || {};
     } catch (e) {
       console.error(e);
     }
@@ -317,7 +407,8 @@
       url = `https://${options.domain}/${options.path}?`;
     }
     url += toUrlParams(params);
-    return http(url)
+    const headers = makeHeaders(options);
+    return http(url, headers)
       .then((res) => {
         try {
           let o = res.query.pages;
@@ -460,13 +551,13 @@
   const addMethod = function (models) {
     // doc methods
     models.Doc.prototype.getRedirects = function () {
-      return getRedirects(this.title(), models.http)
+      return getRedirects(this.title(), this.options(), models.http)
     };
     models.Doc.prototype.getIncoming = function () {
-      return getIncoming(this.title(), models.http)
+      return getIncoming(this.title(), this.options(), models.http)
     };
     models.Doc.prototype.getPageViews = function () {
-      return getPageViews(this, models.http)
+      return getPageViews(this, this.options(), models.http)
     };
 
     // constructor methods
@@ -485,11 +576,11 @@
     models.wtf.fetchList = function (list, options) {
       return fetchList(list, options, models.wtf)
     };
-    models.wtf.getIncoming = function (title) {
-      return getIncoming(title, models.http)
+    models.wtf.getIncoming = function (title, options) {
+      return getIncoming(title, options, models.http)
     };
-    models.wtf.getRedirects = function (title) {
-      return getRedirects(title, models.http)
+    models.wtf.getRedirects = function (title, options) {
+      return getRedirects(title, options, models.http)
     };
     // aliases
     models.wtf.random = models.wtf.getRandomPage;
