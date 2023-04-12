@@ -408,7 +408,6 @@ export default {
         '2nd': Number(all[i + 2]),
         '3rd': Number(all[i + 3]),
       })
-      console.log(all[i])
     }
     let obj = {
       template: 'medalcount',
