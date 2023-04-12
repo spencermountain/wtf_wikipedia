@@ -6796,7 +6796,6 @@ var fns = {
         '2nd': Number(all[i + 2]),
         '3rd': Number(all[i + 3]),
       });
-      console.log(all[i]);
     }
     let obj = {
       template: 'medalcount',
@@ -9769,6 +9768,7 @@ class Document {
    */
   constructor(wiki, options) {
     options = options || {};
+    this._options = options;
     let props = {
       pageID: options.pageID || options.id || null,
       namespace: options.namespace || options.ns || null,
@@ -10236,6 +10236,10 @@ class Document {
       console.log(indent + (sec.title() || '(Intro)'));
     });
     return this
+  }
+
+  options() {
+    return this._options
   }
 }
 
