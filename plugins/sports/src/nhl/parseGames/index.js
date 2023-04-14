@@ -13,17 +13,7 @@ const parseScore = function (score = '') {
   }
 }
 
-const isFuture = function (games) {
-  games.forEach((g) => {
-    if (!g.attendance && !g.points) {
-      if (!g.record.wins && !g.record.lossess && !g.record.ties) {
-        g.inFuture = true
-        g.win = null
-      }
-    }
-  })
-  return games
-}
+
 
 const parseDate = function (row, title) {
   let year = title.year
@@ -40,13 +30,36 @@ const parseDate = function (row, title) {
   return date
 }
 
+const doSection = function (section) {
+  let tables = section.tables()
+  //do all subsection, too
+  section.children().forEach(s => {
+    tables = tables.concat(s.tables())
+  })
+  //try to find a game log template
+  if (tables.length === 0) {
+    let templates = section.templates('game log section') || section.templates('game log month')
+    let out = []
+    templates.forEach((m) => {
+      out = out.concat(m.data.data)
+    })
+    return out
+  } else {
+    let out = []
+    tables = tables.forEach((t) => {
+      out = out.concat(t.keyValue())
+    })
+    return out
+  }
+}
+
 const parseGame = function (row, meta) {
   let attendance = row.attendance || row.Attendance || ''
   attendance = Number(attendance.replace(/,/, '')) || null
   let res = {
     game: Number(row['#'] || row.Game),
     date: parseDate(row, meta),
-    opponent: row.Opponent,
+    opponent: row.Opponent || row.opponent,
     result: parseScore(row.score || row.Score),
     overtime: (row.ot || row.OT || '').toLowerCase() === 'ot',
     // goalie: row.decision,
@@ -54,7 +67,7 @@ const parseGame = function (row, meta) {
     attendance: attendance,
     points: Number(row.pts || row.points || row.Pts || row.Points) || 0,
   }
-  res.location = row.Location
+  res.location = row.Location || row.location
   res.home = row.home || row.Home
   res.visitor = row.visitor || row.Visitor
   if (!res.opponent) {
@@ -79,22 +92,13 @@ const parseGames = function (doc, meta) {
     s = nested
   }
   //do all subsections, too
-  let tables = s.tables()
-  s.children().forEach((c) => {
-    tables = tables.concat(c.tables())
-  })
-  if (!tables[0]) {
-    return games
-  }
-  tables.forEach((table) => {
-    let rows = table.keyValue()
-    rows.forEach((row) => {
-      games.push(parseGame(row, meta))
-    })
+  let rows = doSection(s)
+  rows.forEach((row) => {
+    games.push(parseGame(row, meta))
   })
   games = games.filter((g) => g && g.date)
   games = addWinner(games)
-  games = isFuture(games)
+  // games = isFuture(games)
   return games
 }
 export default parseGames

@@ -11,7 +11,7 @@ const percentage = function (obj) {
   if (isNaN(dec)) {
     dec = 1
   }
-  return Number(perc.toFixed(dec))
+  return parseInt(perc, 10)
 }
 
 const toNumber = function (str = '') {

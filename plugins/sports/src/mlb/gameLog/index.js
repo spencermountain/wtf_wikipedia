@@ -27,7 +27,7 @@ const doSection = function (section) {
   })
   //try to find a game log template
   if (tables.length === 0) {
-    tables = section.templates('mlb game log section') || section.templates('mlb game log month')
+    tables = section.templates('mlb game log section') || section.templates('mlb game log month') || section.templates('game log section')
     tables = tables.map((m) => m.data) //make it look like a table
   } else {
     tables = tables.map((t) => t.keyValue())
