@@ -3,6 +3,11 @@
 - **[new]** - fallbackTemplateFn handler #509
 
 -->
+#### 10.1.4 [Apr 2023]
+- **[fix]** - #528 template runtime errors
+- **[fix]** - remove stray console.log (thank you @mxunknown)
+- **[update]** - some work on gamelog template
+
 #### 10.1.3 [Mar 2023]
 - **[fix]** - #519 date parsing issue
 - **[fix]** - #518 support slash in infobox property

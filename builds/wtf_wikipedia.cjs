@@ -1,4 +1,4 @@
-/*! wtf_wikipedia 10.1.3 MIT */
+/*! wtf_wikipedia 10.1.4 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('isomorphic-unfetch')) :
   typeof define === 'function' && define.amd ? define(['isomorphic-unfetch'], factory) :
@@ -4658,11 +4658,8 @@
     }
     let perc = Number(obj.numerator) / Number(obj.denominator);
     perc *= 100;
-    let dec = Number(obj.decimals);
-    if (isNaN(dec)) {
-      dec = 1;
-    }
-    return Number(perc.toFixed(dec))
+    Number(obj.decimals);
+    return parseInt(perc, 10)
   };
 
   const toNumber = function (str = '') {
@@ -4775,7 +4772,7 @@
     // https://en.wikipedia.org/wiki/Template:First_word
     'first word': (tmpl) => {
       let obj = parser(tmpl, ['text']);
-      let str = obj.text;
+      let str = obj.text || '';
       if (obj.sep) {
         return str.split(obj.sep)[0]
       }
@@ -4784,7 +4781,7 @@
 
     trunc: (tmpl) => {
       let obj = parser(tmpl, ['str', 'len']);
-      return obj.str.substr(0, obj.len)
+      return (obj.str || '').substr(0, obj.len)
     },
 
     'str mid': (tmpl) => {
@@ -5248,7 +5245,7 @@
     },
     // some math
     'min': (tmpl) => {
-      let arr = parser(tmpl).list;
+      let arr = parser(tmpl).list || [];
       let min = Number(arr[0]) || 0;
       arr.forEach(str => {
         let n = Number(str);
@@ -10425,7 +10422,7 @@
       })
   };
 
-  var version = '10.1.3';
+  var version = '10.1.4';
 
   /**
    * use the native client-side fetch function

@@ -49,7 +49,7 @@ export default {
   // https://en.wikipedia.org/wiki/Template:First_word
   'first word': (tmpl) => {
     let obj = parse(tmpl, ['text'])
-    let str = obj.text
+    let str = obj.text || ''
     if (obj.sep) {
       return str.split(obj.sep)[0]
     }
@@ -58,7 +58,7 @@ export default {
 
   trunc: (tmpl) => {
     let obj = parse(tmpl, ['str', 'len'])
-    return obj.str.substr(0, obj.len)
+    return (obj.str || '').substr(0, obj.len)
   },
 
   'str mid': (tmpl) => {
@@ -522,7 +522,7 @@ export default {
   },
   // some math
   'min': (tmpl) => {
-    let arr = parse(tmpl).list
+    let arr = parse(tmpl).list || []
     let min = Number(arr[0]) || 0
     arr.forEach(str => {
       let n = Number(str)
