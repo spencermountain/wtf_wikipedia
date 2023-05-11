@@ -133,3 +133,16 @@ test('slash-in-infobox', function (t) {
   t.equal(json['jr/sr3'].text, 'United States Senator', 'slash')
   t.end()
 })
+
+test('double-prop-infobox', function (t) {
+  let str = ` {{Infobox officeholder
+    | name                = Dr. Rajesh Sonkar
+    | office              = [[President Bhartiya Janta Party(BJP) Indore, Madhya Pradesh]]
+    | term_start          = 10 May 2020
+    | Office              =
+    }}`
+  let doc = wtf(str)
+  let json = doc.infobox().json()
+  t.equal(json['office'].text, 'President Bhartiya Janta Party(BJP) Indore, Madhya Pradesh', 'office')
+  t.end()
+})

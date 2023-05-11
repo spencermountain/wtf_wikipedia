@@ -4,9 +4,20 @@ wtf.plugin(plg)
 
 // let str = `{{float |top=2.0em |left=2px |width=10em | the content to float}}.`
 // let str = `{{splitspan|foo|bar}}`
-let str = `  {{font|text=也可以只選用其中一項選項。|size=25px}}  `
+// let str = `  {{font|text=也可以只選用其中一項選項。|size=25px}}  `
+// let doc = wtf(str)
+// console.log(doc.text())
+
+
+let str = ` {{Infobox officeholder
+  | name                = Dr. Rajesh Sonkar
+  | office              = [[President Bhartiya Janta Party(BJP) Indore, Madhya Pradesh]]
+  | term_start          = 10 May 2020
+  | Office              =
+  }}`
 let doc = wtf(str)
-console.log(doc.text())
+console.log(doc.infobox().json())
+
 
 // wtf.fetch("Formula One drivers from Finland", "en")
 // trunc
