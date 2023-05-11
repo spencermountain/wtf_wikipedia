@@ -1,4 +1,4 @@
-/*! wtf_wikipedia 10.1.4 MIT */
+/*! wtf_wikipedia  MIT */
 import unfetch from 'isomorphic-unfetch';
 
 /**
@@ -1933,7 +1933,7 @@ const REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + redirects.join('|') + ') *?(\
 
 const isRedirect = function (wiki) {
   //too long to be a redirect?
-  if (!wiki || wiki.length > 500) {
+  if (!wiki) {
     return false
   }
   return REDIRECT_REGEX.test(wiki)
@@ -2661,6 +2661,8 @@ var literalAbbreviations = [
 ];
 
 //split text into sentences, using regex
+//@spencermountain MIT
+
 const abbreviations = literalAbbreviations.concat('[^]][^]]');
 const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i');
 const acronym_reg = /[ .'][A-Z].? *$/i;
@@ -3480,6 +3482,10 @@ const keyMaker = function (arr, order) {
     if (hasKey.test(str) === true) {
       let res = parseKey(str);
       if (res.key) {
+        // don't overwrite if empty
+        if (h[res.key] && !res.val) {
+          return h
+        }
         h[res.key] = res.val;
         return h
       }
@@ -4150,7 +4156,10 @@ let aliases = {
   'metrod': 'metro',
   'fw': 'ferry',
   'rws': 'stnlnk',
-  sclass2: 'sclass'
+  sclass2: 'sclass',
+  under: 'underline',
+  brackets: 'bracket',
+  raise: 'lower'
 };
 
 //multiple aliases
@@ -4448,7 +4457,7 @@ var hardcoded = {
   "'": `'`,
   '\\': ' /',
   '`': '`',
-  bracket: '[',
+  // bracket: '[',
   '[': '[',
   '*': '*',
   asterisk: '*',
@@ -4473,6 +4482,8 @@ var hardcoded = {
   checked: '✔️',
   'thumbs up': '👍',
   'thumbs down': '👎',
+  'minusplus': '∓',
+  'plusminus': '±'
 };
 
 //grab the first, second or third pipe..
@@ -4549,13 +4560,46 @@ let zeros = [
   'nowiki',
   'nowiki2',
   'unstrip',
-  'UnstripNoWiki',
+  'unstripnowiki',
   'plain text',
   'make code',
   'killmarkers',
+  'longitem',
+  'longlink',
+  'strikethrough',
+  'underline',
+  'uuline',
+  'not a typo',
+  'text',
+  'resize',
+  'var serif',
+  'double underline',
+  'nee',
+  'ne',
+  'left',
+  'right',
+  'center',
+  'centered',
+  'justify',
+  'smalldiv',
+  'bold div',
+  'monodiv',
+  'italic div',
+  'bigdiv',
+  'strikethroughdiv',
+  'strikethrough color',
+  'pbpe'//pt
 ];
 zeros.forEach((k) => {
   templates$b[k] = 0;
+});
+
+// templates we simply grab the 2nd param of
+let ones = [
+  'line-height'
+];
+ones.forEach((k) => {
+  templates$b[k] = 1;
 });
 
 let templates$a = {};
@@ -5379,6 +5423,43 @@ var functions = {
   'sclass': (tmpl) => {
     let { cl, type } = parser(tmpl, ['cl', 'type', 'fmt']);
     return `[[${cl}-class ${type} |''${cl}''-class]] [[${type}]]`
+  },
+  'center block': (tmpl) => {
+    let { txt } = parser(tmpl, ['txt']);
+    return txt || ''
+  },
+  'align': (tmpl) => {
+    let { txt } = parser(tmpl, ['dir', 'txt']);
+    return txt || ''
+  },
+  'font': (tmpl) => {
+    let { txt } = parser(tmpl, ['txt']);
+    return txt || ''
+  },
+  'float': (tmpl) => {
+    let { txt, dir } = parser(tmpl, ['dir', 'txt']);
+    if (!txt) {
+      return dir
+    }
+    return txt || ''
+  },
+  'lower': (tmpl) => {
+    let { txt, n } = parser(tmpl, ['n', 'txt']);
+    if (!txt) {
+      return n
+    }
+    return txt || ''
+  },
+  'splitspan': (tmpl) => {
+    let { left, right } = parser(tmpl, ['left', 'right']);
+    return (left || '') + '\n' + (right || '')
+  },
+  'bracket': (tmpl) => {
+    let { word } = parser(tmpl, ['word']);
+    if (word) {
+      return `[${word}]`
+    }
+    return '['
   },
 
 
