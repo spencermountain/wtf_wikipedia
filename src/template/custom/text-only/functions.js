@@ -673,39 +673,39 @@ export default {
     return `[[${cl}-class ${type} |''${cl}''-class]] [[${type}]]`
   },
   'center block': (tmpl) => {
-    let { txt } = parse(tmpl, ['txt'])
-    return txt || ''
+    let { text } = parse(tmpl, ['text'])
+    return text || ''
   },
   'align': (tmpl) => {
-    let { txt } = parse(tmpl, ['dir', 'txt'])
-    return txt || ''
+    let { text } = parse(tmpl, ['dir', 'text'])
+    return text || ''
   },
   'font': (tmpl) => {
-    let { txt } = parse(tmpl, ['txt'])
-    return txt || ''
+    let { text } = parse(tmpl, ['text'])
+    return text || ''
   },
   'float': (tmpl) => {
-    let { txt, dir } = parse(tmpl, ['dir', 'txt'])
-    if (!txt) {
+    let { text, dir } = parse(tmpl, ['dir', 'text'])
+    if (!text) {
       return dir
     }
-    return txt || ''
+    return text || ''
   },
   'lower': (tmpl) => {
-    let { txt, n } = parse(tmpl, ['n', 'txt'])
-    if (!txt) {
+    let { text, n } = parse(tmpl, ['n', 'text'])
+    if (!text) {
       return n
     }
-    return txt || ''
+    return text || ''
   },
   'splitspan': (tmpl) => {
-    let { left, right } = parse(tmpl, ['left', 'right'])
-    return (left || '') + '\n' + (right || '')
+    let list = parse(tmpl).list || []
+    return (list[0] || '') + '\n' + (list[1] || '')
   },
   'bracket': (tmpl) => {
-    let { word } = parse(tmpl, ['word'])
-    if (word) {
-      return `[${word}]`
+    let { text } = parse(tmpl, ['text'])
+    if (text) {
+      return `[${text}]`
     }
     return '['
   },
