@@ -656,7 +656,7 @@ by default, if there's no parser for a template, it will be just ignored and gen
 However, it's possible to configure a fallback parser function to handle these templates:
 
 ```js
-wtf(wiki, { 
+wtf('some {{weird_template}} here', { 
   templateFallbackFn: (tmpl, list, parse) => {
     let obj = parse(tmpl) //or do a custom regex
     list.push(obj)
