@@ -4494,6 +4494,7 @@ let templates$b = {
   resize: 1, //https://en.wikipedia.org/wiki/'Resize',
   lang: 1,
   'rtl-lang': 1,
+  'line-height': 1,
   l: 2,
   h: 1, //https://en.wikipedia.org/wiki/'Hover_title',
   sort: 1, //https://en.wikipedia.org/wiki/'Sort',
@@ -4571,7 +4572,6 @@ let zeros = [
   'uuline',
   'not a typo',
   'text',
-  'resize',
   'var serif',
   'double underline',
   'nee',
@@ -4592,14 +4592,6 @@ let zeros = [
 ];
 zeros.forEach((k) => {
   templates$b[k] = 0;
-});
-
-// templates we simply grab the 2nd param of
-let ones = [
-  'line-height'
-];
-ones.forEach((k) => {
-  templates$b[k] = 1;
 });
 
 let templates$a = {};
@@ -5212,6 +5204,13 @@ var functions = {
     let data = parser(tmpl, ['text']);
     return (data.text || '').replace(/[^0-9]/g, '')
   },
+  'resize': (tmpl) => {
+    let { n, text } = parser(tmpl, ['n', 'text']);
+    if (!text) {
+      return n || ''
+    }
+    return text || ''
+  },
   'last word': (tmpl) => {
     let data = parser(tmpl, ['text']);
     let arr = (data.text || '').split(/ /g);
@@ -5425,39 +5424,39 @@ var functions = {
     return `[[${cl}-class ${type} |''${cl}''-class]] [[${type}]]`
   },
   'center block': (tmpl) => {
-    let { txt } = parser(tmpl, ['txt']);
-    return txt || ''
+    let { text } = parser(tmpl, ['text']);
+    return text || ''
   },
   'align': (tmpl) => {
-    let { txt } = parser(tmpl, ['dir', 'txt']);
-    return txt || ''
+    let { text } = parser(tmpl, ['dir', 'text']);
+    return text || ''
   },
   'font': (tmpl) => {
-    let { txt } = parser(tmpl, ['txt']);
-    return txt || ''
+    let { text } = parser(tmpl, ['text']);
+    return text || ''
   },
   'float': (tmpl) => {
-    let { txt, dir } = parser(tmpl, ['dir', 'txt']);
-    if (!txt) {
+    let { text, dir } = parser(tmpl, ['dir', 'text']);
+    if (!text) {
       return dir
     }
-    return txt || ''
+    return text || ''
   },
   'lower': (tmpl) => {
-    let { txt, n } = parser(tmpl, ['n', 'txt']);
-    if (!txt) {
+    let { text, n } = parser(tmpl, ['n', 'text']);
+    if (!text) {
       return n
     }
-    return txt || ''
+    return text || ''
   },
   'splitspan': (tmpl) => {
-    let { left, right } = parser(tmpl, ['left', 'right']);
-    return (left || '') + '\n' + (right || '')
+    let list = parser(tmpl).list || [];
+    return (list[0] || '') + '\n' + (list[1] || '')
   },
   'bracket': (tmpl) => {
-    let { word } = parser(tmpl, ['word']);
-    if (word) {
-      return `[${word}]`
+    let { text } = parser(tmpl, ['text']);
+    if (text) {
+      return `[${text}]`
     }
     return '['
   },
@@ -10495,7 +10494,7 @@ const fetch = function (title, options, callback) {
     })
 };
 
-var version = '10.1.4';
+var version = '10.1.5';
 
 /**
  * use the native client-side fetch function
