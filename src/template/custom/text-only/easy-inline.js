@@ -100,6 +100,7 @@ let zeros = [
   'bigdiv',
   'strikethroughdiv',
   'strikethrough color',
+  'pbpe'//pt
 ]
 zeros.forEach((k) => {
   templates[k] = 0

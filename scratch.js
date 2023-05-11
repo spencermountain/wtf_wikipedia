@@ -9,14 +9,15 @@ wtf.plugin(plg)
 // console.log(doc.text())
 
 
-let str = ` {{Infobox officeholder
-  | name                = Dr. Rajesh Sonkar
-  | office              = [[President Bhartiya Janta Party(BJP) Indore, Madhya Pradesh]]
-  | term_start          = 10 May 2020
-  | Office              =
-  }}`
+let str = `
+{{PBPE|Camiseta|''t-shirt''}} ({{IPA-pt|tiˈʃɐrt|}}; {{IPA-en|ˈtiː ʃɜːɹt}}), é uma pequena [[camisa]], de mangas curtas ou sem mangas, geralmente em [[malharia|malha]] de [[algodão]], e mais recentemente em vários outros materiais, tais como [[poliéster]].<ref>{{Citar web|titulo=Significado de Camiseta|url=https://www.dicio.com.br/camiseta/|acessodata=10 de outubro de 2019|publicado=Dicio}}</ref>
+
+Trata-se de um elemento do [[vestuário]], que na contemporaneidade é utilizada pelas empresas de [[moda]] para estampar [[imagem|imagens]] e [[frase]]s chamativas. As estampas podem ser de temática [[política]], artística ou de identificação de um grupo, por exemplo militares, funcionário de uma empresa, torcida de um time de futebol, etc.
+
+
+`
 let doc = wtf(str)
-console.log(doc.infobox().json())
+console.log(doc.text())
 
 
 // wtf.fetch("Formula One drivers from Finland", "en")
