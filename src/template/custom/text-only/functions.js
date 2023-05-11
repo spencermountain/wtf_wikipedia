@@ -665,6 +665,43 @@ export default {
     let { cl, type } = parse(tmpl, ['cl', 'type', 'fmt'])
     return `[[${cl}-class ${type} |''${cl}''-class]] [[${type}]]`
   },
+  'center block': (tmpl) => {
+    let { txt } = parse(tmpl, ['txt'])
+    return txt || ''
+  },
+  'align': (tmpl) => {
+    let { txt } = parse(tmpl, ['dir', 'txt'])
+    return txt || ''
+  },
+  'font': (tmpl) => {
+    let { txt } = parse(tmpl, ['txt'])
+    return txt || ''
+  },
+  'float': (tmpl) => {
+    let { txt, dir } = parse(tmpl, ['dir', 'txt'])
+    if (!txt) {
+      return dir
+    }
+    return txt || ''
+  },
+  'lower': (tmpl) => {
+    let { txt, n } = parse(tmpl, ['n', 'txt'])
+    if (!txt) {
+      return n
+    }
+    return txt || ''
+  },
+  'splitspan': (tmpl) => {
+    let { left, right } = parse(tmpl, ['left', 'right'])
+    return (left || '') + '\n' + (right || '')
+  },
+  'bracket': (tmpl) => {
+    let { word } = parse(tmpl, ['word'])
+    if (word) {
+      return `[${word}]`
+    }
+    return '['
+  },
 
 
   // https://en.wikipedia.org/wiki/Template:In_title

@@ -6,7 +6,7 @@ const REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + redirects.join('|') + ') *?(\
 
 const isRedirect = function (wiki) {
   //too long to be a redirect?
-  if (!wiki || wiki.length > 500) {
+  if (!wiki) {
     return false
   }
   return REDIRECT_REGEX.test(wiki)

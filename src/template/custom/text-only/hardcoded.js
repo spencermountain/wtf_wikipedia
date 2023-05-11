@@ -33,7 +33,7 @@ export default {
   "'": `'`,
   '\\': ' /',
   '`': '`',
-  bracket: '[',
+  // bracket: '[',
   '[': '[',
   '*': '*',
   asterisk: '*',
@@ -58,4 +58,6 @@ export default {
   checked: '✔️',
   'thumbs up': '👍',
   'thumbs down': '👎',
+  'minusplus': '∓',
+  'plusminus': '±'
 }

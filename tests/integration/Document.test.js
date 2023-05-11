@@ -216,19 +216,13 @@ test('isRedirect - get - should initially be false', (t) => {
 
 test('isRedirect - get - if the type of page is should default to page and return false', (t) => {
   let doc = wtf('', { type: 'redirect' })
-  t.equal(doc.isRedirect(), false, 'the isRedirect equals false')
+  t.equal(doc.isRedirect(), false, 'the empty-string isRedirect equals false')
   t.end()
 })
 
 test('isRedirect - get - if the page is a redirect than return true', (t) => {
   let doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.equal(doc.isRedirect(), true, 'the isRedirect equals true')
-  t.end()
-})
-
-test('isRedirect - get - if the page is too long to be a redirect page than return false', (t) => {
-  let doc = wtf('#DOORVERWIJZING [[Doelpagina]]' + 'l'.repeat(505))
-  t.equal(doc.isRedirect(), false, 'the isRedirect equals false')
+  t.equal(doc.isRedirect(), true, 'the DOORVERWIJZING isRedirect equals true')
   t.end()
 })
 

@@ -72,13 +72,45 @@ let zeros = [
   'nowiki',
   'nowiki2',
   'unstrip',
-  'UnstripNoWiki',
+  'unstripnowiki',
   'plain text',
   'make code',
   'killmarkers',
+  'longitem',
+  'longlink',
+  'strikethrough',
+  'underline',
+  'uuline',
+  'not a typo',
+  'text',
+  'resize',
+  'var serif',
+  'double underline',
+  'nee',
+  'ne',
+  'left',
+  'right',
+  'center',
+  'centered',
+  'justify',
+  'smalldiv',
+  'bold div',
+  'monodiv',
+  'italic div',
+  'bigdiv',
+  'strikethroughdiv',
+  'strikethrough color',
 ]
 zeros.forEach((k) => {
   templates[k] = 0
+})
+
+// templates we simply grab the 2nd param of
+let ones = [
+  'line-height'
+]
+ones.forEach((k) => {
+  templates[k] = 1
 })
 
 
