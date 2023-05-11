@@ -453,6 +453,13 @@ export default {
     let data = parse(tmpl, ['text'])
     return (data.text || '').replace(/[^0-9]/g, '')
   },
+  'resize': (tmpl) => {
+    let { n, text } = parse(tmpl, ['n', 'text'])
+    if (!text) {
+      return n || ''
+    }
+    return text || ''
+  },
   'last word': (tmpl) => {
     let data = parse(tmpl, ['text'])
     let arr = (data.text || '').split(/ /g)

@@ -6,6 +6,7 @@ let templates = {
   resize: 1, //https://en.wikipedia.org/wiki/'Resize',
   lang: 1,
   'rtl-lang': 1,
+  'line-height': 1,
   l: 2,
   h: 1, //https://en.wikipedia.org/wiki/'Hover_title',
   sort: 1, //https://en.wikipedia.org/wiki/'Sort',
@@ -83,7 +84,6 @@ let zeros = [
   'uuline',
   'not a typo',
   'text',
-  'resize',
   'var serif',
   'double underline',
   'nee',
@@ -104,14 +104,6 @@ let zeros = [
 ]
 zeros.forEach((k) => {
   templates[k] = 0
-})
-
-// templates we simply grab the 2nd param of
-let ones = [
-  'line-height'
-]
-ones.forEach((k) => {
-  templates[k] = 1
 })
 
 
