@@ -27,7 +27,10 @@ let aliases = {
   'metrod': 'metro',
   'fw': 'ferry',
   'rws': 'stnlnk',
-  sclass2: 'sclass'
+  sclass2: 'sclass',
+  under: 'underline',
+  brackets: 'bracket',
+  raise: 'lower'
 }
 
 //multiple aliases

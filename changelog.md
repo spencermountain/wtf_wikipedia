@@ -3,6 +3,11 @@
 - **[new]** - fallbackTemplateFn handler #509
 
 -->
+#### 10.1.5 [May 2023]
+- **[fix]** - support inline templates
+- **[change]** - dont overwrite duplicate props in infobox #530
+- **[update]** - deps
+
 #### 10.1.4 [Apr 2023]
 - **[fix]** - #528 template runtime errors
 - **[fix]** - remove stray console.log (thank you @mxunknown)

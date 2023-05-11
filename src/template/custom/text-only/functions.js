@@ -453,6 +453,13 @@ export default {
     let data = parse(tmpl, ['text'])
     return (data.text || '').replace(/[^0-9]/g, '')
   },
+  'resize': (tmpl) => {
+    let { n, text } = parse(tmpl, ['n', 'text'])
+    if (!text) {
+      return n || ''
+    }
+    return text || ''
+  },
   'last word': (tmpl) => {
     let data = parse(tmpl, ['text'])
     let arr = (data.text || '').split(/ /g)
@@ -664,6 +671,43 @@ export default {
   'sclass': (tmpl) => {
     let { cl, type } = parse(tmpl, ['cl', 'type', 'fmt'])
     return `[[${cl}-class ${type} |''${cl}''-class]] [[${type}]]`
+  },
+  'center block': (tmpl) => {
+    let { text } = parse(tmpl, ['text'])
+    return text || ''
+  },
+  'align': (tmpl) => {
+    let { text } = parse(tmpl, ['dir', 'text'])
+    return text || ''
+  },
+  'font': (tmpl) => {
+    let { text } = parse(tmpl, ['text'])
+    return text || ''
+  },
+  'float': (tmpl) => {
+    let { text, dir } = parse(tmpl, ['dir', 'text'])
+    if (!text) {
+      return dir
+    }
+    return text || ''
+  },
+  'lower': (tmpl) => {
+    let { text, n } = parse(tmpl, ['n', 'text'])
+    if (!text) {
+      return n
+    }
+    return text || ''
+  },
+  'splitspan': (tmpl) => {
+    let list = parse(tmpl).list || []
+    return (list[0] || '') + '\n' + (list[1] || '')
+  },
+  'bracket': (tmpl) => {
+    let { text } = parse(tmpl, ['text'])
+    if (text) {
+      return `[${text}]`
+    }
+    return '['
   },
 
 

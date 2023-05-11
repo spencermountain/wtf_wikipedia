@@ -1,11 +1,10 @@
 import commonjs from '@rollup/plugin-commonjs'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 
-import { version } from './package.json'
 console.log('\n 📦  - running rollup..\n')
 
-const banner = '/*! wtf_wikipedia ' + version + ' MIT */'
+const banner = '/*! wtf_wikipedia  MIT */'
 export default [
   // === server-side .mjs (typescript)===
   {

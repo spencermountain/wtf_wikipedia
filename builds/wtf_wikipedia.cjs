@@ -1,13 +1,9 @@
-/*! wtf_wikipedia 10.1.4 MIT */
+/*! wtf_wikipedia  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('isomorphic-unfetch')) :
   typeof define === 'function' && define.amd ? define(['isomorphic-unfetch'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wtf = factory(global.unfetch));
 })(this, (function (unfetch) { 'use strict';
-
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-  var unfetch__default = /*#__PURE__*/_interopDefaultLegacy(unfetch);
 
   /**
    * Parses out the domain and title from a url
@@ -1941,7 +1937,7 @@
 
   const isRedirect = function (wiki) {
     //too long to be a redirect?
-    if (!wiki || wiki.length > 500) {
+    if (!wiki) {
       return false
     }
     return REDIRECT_REGEX.test(wiki)
@@ -2669,6 +2665,8 @@
   ];
 
   //split text into sentences, using regex
+  //@spencermountain MIT
+
   const abbreviations = literalAbbreviations.concat('[^]][^]]');
   const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i');
   const acronym_reg = /[ .'][A-Z].? *$/i;
@@ -3488,6 +3486,10 @@
       if (hasKey.test(str) === true) {
         let res = parseKey(str);
         if (res.key) {
+          // don't overwrite if empty
+          if (h[res.key] && !res.val) {
+            return h
+          }
           h[res.key] = res.val;
           return h
         }
@@ -4158,7 +4160,10 @@
     'metrod': 'metro',
     'fw': 'ferry',
     'rws': 'stnlnk',
-    sclass2: 'sclass'
+    sclass2: 'sclass',
+    under: 'underline',
+    brackets: 'bracket',
+    raise: 'lower'
   };
 
   //multiple aliases
@@ -4456,7 +4461,7 @@
     "'": `'`,
     '\\': ' /',
     '`': '`',
-    bracket: '[',
+    // bracket: '[',
     '[': '[',
     '*': '*',
     asterisk: '*',
@@ -4481,6 +4486,8 @@
     checked: '✔️',
     'thumbs up': '👍',
     'thumbs down': '👎',
+    'minusplus': '∓',
+    'plusminus': '±'
   };
 
   //grab the first, second or third pipe..
@@ -4491,6 +4498,7 @@
     resize: 1, //https://en.wikipedia.org/wiki/'Resize',
     lang: 1,
     'rtl-lang': 1,
+    'line-height': 1,
     l: 2,
     h: 1, //https://en.wikipedia.org/wiki/'Hover_title',
     sort: 1, //https://en.wikipedia.org/wiki/'Sort',
@@ -4557,10 +4565,34 @@
     'nowiki',
     'nowiki2',
     'unstrip',
-    'UnstripNoWiki',
+    'unstripnowiki',
     'plain text',
     'make code',
     'killmarkers',
+    'longitem',
+    'longlink',
+    'strikethrough',
+    'underline',
+    'uuline',
+    'not a typo',
+    'text',
+    'var serif',
+    'double underline',
+    'nee',
+    'ne',
+    'left',
+    'right',
+    'center',
+    'centered',
+    'justify',
+    'smalldiv',
+    'bold div',
+    'monodiv',
+    'italic div',
+    'bigdiv',
+    'strikethroughdiv',
+    'strikethrough color',
+    'pbpe'//pt
   ];
   zeros.forEach((k) => {
     templates$b[k] = 0;
@@ -5176,6 +5208,13 @@
       let data = parser(tmpl, ['text']);
       return (data.text || '').replace(/[^0-9]/g, '')
     },
+    'resize': (tmpl) => {
+      let { n, text } = parser(tmpl, ['n', 'text']);
+      if (!text) {
+        return n || ''
+      }
+      return text || ''
+    },
     'last word': (tmpl) => {
       let data = parser(tmpl, ['text']);
       let arr = (data.text || '').split(/ /g);
@@ -5387,6 +5426,43 @@
     'sclass': (tmpl) => {
       let { cl, type } = parser(tmpl, ['cl', 'type', 'fmt']);
       return `[[${cl}-class ${type} |''${cl}''-class]] [[${type}]]`
+    },
+    'center block': (tmpl) => {
+      let { text } = parser(tmpl, ['text']);
+      return text || ''
+    },
+    'align': (tmpl) => {
+      let { text } = parser(tmpl, ['dir', 'text']);
+      return text || ''
+    },
+    'font': (tmpl) => {
+      let { text } = parser(tmpl, ['text']);
+      return text || ''
+    },
+    'float': (tmpl) => {
+      let { text, dir } = parser(tmpl, ['dir', 'text']);
+      if (!text) {
+        return dir
+      }
+      return text || ''
+    },
+    'lower': (tmpl) => {
+      let { text, n } = parser(tmpl, ['n', 'text']);
+      if (!text) {
+        return n
+      }
+      return text || ''
+    },
+    'splitspan': (tmpl) => {
+      let list = parser(tmpl).list || [];
+      return (list[0] || '') + '\n' + (list[1] || '')
+    },
+    'bracket': (tmpl) => {
+      let { text } = parser(tmpl, ['text']);
+      if (text) {
+        return `[${text}]`
+      }
+      return '['
     },
 
 
@@ -10403,7 +10479,7 @@
     const url = makeUrl(options);
     const headers = makeHeaders(options);
 
-    return unfetch__default["default"](url, headers)
+    return unfetch(url, headers)
       .then((res) => res.json())
       .then((res) => {
         let data = getResult(res, options);
@@ -10422,7 +10498,7 @@
       })
   };
 
-  var version = '10.1.4';
+  var version = '10.1.5';
 
   /**
    * use the native client-side fetch function
@@ -10433,7 +10509,7 @@
    * @returns {Promise<any>} the response from fetch
    */
   const request = function (url, opts) {
-    return unfetch__default["default"](url, opts).then(function (res) {
+    return unfetch(url, opts).then(function (res) {
       return res.json()
     }).catch((e) => {
       console.error('\n\n=-=- http response error =-=-=-');

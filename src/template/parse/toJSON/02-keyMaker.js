@@ -53,6 +53,10 @@ const keyMaker = function (arr, order) {
     if (hasKey.test(str) === true) {
       let res = parseKey(str)
       if (res.key) {
+        // don't overwrite if empty
+        if (h[res.key] && !res.val) {
+          return h
+        }
         h[res.key] = res.val
         return h
       }
