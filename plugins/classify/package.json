@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-classify",
   "description": "basic classifier for wikipedia articles",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "main": "./src/index.js",
   "unpkg": "./builds/wtf-plugin-classify.min.js",
@@ -25,10 +25,6 @@
     "build": "rollup -c",
     "schema": "node ./schema/_print.js"
   },
-  "files": [
-    "builds",
-    "src"
-  ],
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 2,
