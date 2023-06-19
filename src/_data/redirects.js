@@ -1,16 +1,19 @@
 export default [
+  'aanstuur',//af
   'adkas', //br
+  'alih',//id
   'aýdaw',
+  'beralîkirin',//ku
   'doorverwijzing', //nl
+  'lencong',//ms
   'ohjaus',
   'patrz', //pl
   'přesměruj',
-  'redirección',
+  'preusmjeri',//hr
   'redireccion',
   'redirección', //es
   'redirecionamento', //pt
   'redirect', //en
-  'redirection',
   'redirection', //fr
   'rinvia', //it
   'tilvísun',
@@ -21,17 +24,25 @@ export default [
   'yönlendirme',
   'yönlendi̇rme', //tr
   'ανακατευθυνση', //el
-  'айдау',
+  'айдау',//kk
   'перанакіраваньне',
+  'перенаправление',//ru
   'перенаправлення', //uk
   'пренасочување', //mk
-  'преусмери',
+  'преусмери',//sr
   'преусмјери',
+  'ווייטערפירן',//yi
+  'تحويل',//ar
   'تغییر_مسیر',
-  'تغییرمسیر',
   'تغییرمسیر', //fa
+  'رجوع مکرر',//ur
+  'رجوع_مکرر',//ur
+  'अनुप्रेषित',//hi
+  'पुनर्निर्देशन',//hi
+  'পুননির্দেশ',//bn
   'เปลี่ยนทาง', //th
   'ប្តូរទីតាំងទៅ', //km
+  'リダイレクト',//ja
   '転送', //ja
-  '重定向',
+  '重定向',//zh
 ]

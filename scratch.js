@@ -1,18 +1,18 @@
 import wtf from './src/index.js'
-import plg from './plugins/api/src/index.js'
+import plg from './plugins/i18n/src/index.js'
 wtf.plugin(plg)
 
-let str = `{{splitspan|foo|bar}}`
+let str = `#AANSTUUR[[Xai-Xai]]
+`
 // let str = `  {{font|text=也可以只選用其中一項選項。|size=25px}}  `
 let doc = wtf(str)
 console.log(doc.text())
-
-
 // doc.templates().map((s) => s.json())
 // console.log(doc.templates()[4].json())
 
 
-// wtf.fetch("Formula One drivers from Finland", "en")
+// let doc = await wtf.fetch("Space_disco", "it")
+// console.log(doc.text())
 // trunc
 // wtf.fetch("2007 FIFA Women's World Cup Group A", "en")
 
