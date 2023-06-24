@@ -48,3 +48,23 @@ test('markdown-tricks', (t) => {
 
   t.end()
 })
+
+test('handles references', (t) => {
+  const md = wtf(`
+  <ref>{{cite web
+    | last = fake
+    | title = Fake reference title
+    | url=http://example.com/fake/ref
+    | accessdate = 2023-09-14 }}</ref>
+
+  == References ==
+  {{ref-list}}
+  `).markdown({references: true})
+  
+  t.equal(md, "== References ==## References⌃ [Fake reference title](http://example.com/fake/ref)", "supports markdown")
+  t.equal(md, md, "supports markdown");
+
+  
+  t.end()
+})
+
