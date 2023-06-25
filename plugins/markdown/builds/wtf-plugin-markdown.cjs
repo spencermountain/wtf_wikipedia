@@ -1,4 +1,4 @@
-/* wtf-plugin-markdown 1.0.0  MIT */
+/* wtf-plugin-markdown 1.0.1  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -48,7 +48,7 @@
     if (options.references === true) {
       md += '## References';
       md += this.citations()
-        .map((c) => c.json(options))
+        .map((c) => c.markdown(options))
         .join('\n');
     }
     return md
