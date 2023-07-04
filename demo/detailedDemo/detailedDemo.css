@@ -1,0 +1,172 @@
+/** wtf_wikipedia/demo/detailedDemo/detailedDemo.css **/
+
+:root {
+  --almostBlack:      rgb( 30,  30,  30);
+  --almostWhite:      rgb(250, 250, 250);
+
+  --fontColor:        rgb( 50,  50,  50);
+  --lighterFontColor: rgb(120, 120, 120);
+
+  --m3dleyPurple:     rgb(120,  20, 155);
+  --lightPurple:      rgb(170,  25, 220);
+  --extraLightPurple: rgb(220, 140, 245);
+
+  --shadow:           3px 3px 5px rgb(180, 180, 180);
+
+  --buttonBgColor:      var(--m3dleyPurple);
+  --buttonFgColor:      var(--almostWhite);
+  --buttonHoverBgColor: var(--lightPurple);
+  --buttonHoverFgColor: var(--buttonFgColor);
+  --buttonHeight:       2rem;
+  --buttonWidth:        10rem;
+
+  --logoDelay:        0.25s;
+  --logoSpd:          0.75s;
+
+  --projectCardWidth: 200px;
+  --projectCardHeight: calc(var(--projectCardWidth) + 3rem);
+  --projectCardHeight: calc(var(--projectCardWidth)/3 + 3rem);
+}
+
+@keyframes fadeUpAnim {
+    0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  animation: fadeUpAnim 1s ease-in-out 0.2s forwards;
+  background: white;
+  background-size: cover;
+  color: var(--fontColor);
+  display: flex;
+  flex-direction: column;
+  font-family: arial;
+  height: 100%;
+  justify-content: flex-start;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 1rem;
+  width: 100%;
+}
+
+.date {
+  color: var(--extraLightPurple);
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+}
+
+.mainSection {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.logoContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 150px;
+  margin-top: 150px;
+  position: relative;
+}
+
+.logo {
+  color: var(--m3dleyPurple);
+  font-family: arial;
+  font-size: 6rem;
+  text-shadow: var(--shadow);
+  z-index: 2;
+}
+
+.logoQuote {
+  color: var(--m3dleyPurple);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.logoNote1 {
+  align-self: start;
+  color: red;
+  font-size: 3rem;
+  opacity: 0.25;
+  opacity: 0;
+  position: absolute;
+  transform: translate(-5rem, 2rem) rotate(-15deg);
+  z-index: 1;
+}
+
+.logoNote2 {
+  align-self: start;
+  color: green;
+  font-size: 3rem;
+  opacity: 0.25;
+  opacity: 0;
+  position: absolute;
+  transform: translate(18rem, 8rem) rotate(25deg);
+  z-index: 1;
+}
+
+
+.logoNote3 {
+  align-self: start;
+  color: blue;
+  font-size: 3rem;
+  opacity: 0.10;
+  opacity: 0;
+  position: absolute;
+  transform: translate(27rem, 0) rotate(25deg);
+  z-index: 1;
+}
+
+.buttonList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-around;
+  max-width: 800px;
+  overflow-y: auto;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.footer {
+  align-items: center;
+  color: var(--lightPurple);
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  font-size: 0.7rem;
+  justify-content: center;
+  letter-spacing: 1px;
+  overflow: hidden;
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
