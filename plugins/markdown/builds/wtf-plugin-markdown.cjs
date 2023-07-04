@@ -48,7 +48,7 @@
     if (options.references === true) {
       md += '## References';
       md += this.citations()
-        .map((c) => c.json(options))
+        .map((c) => c.markdown(options))
         .join('\n');
     }
     return md
