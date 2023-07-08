@@ -22,7 +22,6 @@ const byCategory = function (doc) {
     // loop through our patterns
     let match = byPattern(category, patterns.categories)
     if (match) {
-      console.log(category, match)
       found.push({ type: match, reason: category })
     }
   }

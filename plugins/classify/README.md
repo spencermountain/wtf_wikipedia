@@ -81,10 +81,12 @@ Person:
       FootballPlayer : true
       BasketballPlayer : true
       HockeyPlayer : true
-  Actor : true
+  Creator:
+    Actor : true
+    Musician : true
+    Author : true
+    Director : true
   Politician : true
-  Musician : true
-  Author : true
 Place:
   Jurisdiction:
       City : true

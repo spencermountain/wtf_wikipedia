@@ -1,17 +1,13 @@
 import Athlete from './Athlete/index.js'
-import Actor from './Actor.js'
 import Politician from './Politician.js'
-import Musician from './Musician.js'
-import Author from './Author.js'
+import Creator from './Creator/index.js'
 
 export default {
   name: 'Person',
   children: {
     Athlete,
-    Actor,
+    Creator,
     Politician,
-    Musician,
-    Author,
   },
   properties: {
     birth_date: () => { },

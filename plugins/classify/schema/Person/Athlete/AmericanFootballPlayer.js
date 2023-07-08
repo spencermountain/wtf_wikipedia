@@ -5,7 +5,7 @@ export default {
   //
   categories: {
     mapping: [],
-    patterns: [],
+    patterns: [/football players/],
   },
   //
   descriptions: {
