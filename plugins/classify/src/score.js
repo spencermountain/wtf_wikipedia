@@ -21,7 +21,8 @@ const parse = function (cat) {
   let split = cat.split(/\//)
   return {
     root: split[1],
-    child: split[2],
+    second: split[2],
+    third: split[3],
   }
 }
 
@@ -66,12 +67,14 @@ const getScore = function (detail) {
   }
 
   // find 2nd level
-  let children = types.filter((o) => o.root === root && o.child).map((obj) => obj.child)
+  let children = types.filter((o) => o.root === root && o.second).map((obj) => obj.second)
   let topKids = topk(children)
   top = topKids[0]
+  let second = null
   let type = root
   if (top) {
-    type = `${root}/${top[0]}`
+    second = top[0]
+    type = `${root}/${second}`
     // punish for any conflicting children
     if (topKids.length > 1) {
       score *= 0.7
@@ -79,6 +82,26 @@ const getScore = function (detail) {
     // punish for low count
     if (top[1] === 1) {
       score *= 0.8
+    }
+
+    // try for 3rd level?
+    if (second) {
+      children = types.filter((o) => o.second === second && o.third).map((obj) => obj.third)
+      topKids = topk(children)
+      top = topKids[0]
+      // type = root
+      if (top) {
+        type += `/${top[0]}`
+        // punish for any conflicting children
+        if (topKids.length > 1) {
+          score *= 0.7
+        }
+        // punish for low count
+        if (top[1] === 1) {
+          score *= 0.8
+        }
+      }
+
     }
   }
   return {

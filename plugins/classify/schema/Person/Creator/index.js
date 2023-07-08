@@ -16,8 +16,8 @@ export default {
   },
   //
   categories: {
-    mapping: [],
-    patterns: [],
+    mapping: ['Fellows of the Royal Society'],
+    patterns: [/(engineers|inventors)/],
   },
   //
   descriptions: {
@@ -31,7 +31,7 @@ export default {
   //
   sections: {
     mapping: [],
-    patterns: [/filmography/, /bibliography/, /collaberators/, /early influences/],
+    patterns: [/filmography/, /bibliography/, /collaberators/, /early influences/, /discovery/],
   },
   //
   templates: {
