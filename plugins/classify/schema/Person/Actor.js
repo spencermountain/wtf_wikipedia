@@ -8,8 +8,8 @@ export default {
   },
   //
   categories: {
-    mapping: ['male actors from new york city'],
-    patterns: [/actresses/, /actors from ./, /actor stubs$/, / (actors|actresses)$/],
+    mapping: [],
+    patterns: [/(actors|actresses)/i],
   },
   //
   descriptions: {

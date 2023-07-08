@@ -33,7 +33,7 @@ export default {
     patterns: [
       /politicians from ./,
       /politician stubs$/,
-      /. (democrats|republicans|politicians)$/,
+      /. politicians$/, //democrats|republicans
       /mayors of ./,
     ],
   },
