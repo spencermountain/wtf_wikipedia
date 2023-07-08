@@ -7,7 +7,7 @@ export default {
     mapping: [],
     patterns: [
       /^cities and towns in ./,
-      /(municipalities|settlements|villages|localities|townships) in ./,
+      /(^former )(municipalities|settlements|villages|localities|townships) in ./,
     ],
   },
   //

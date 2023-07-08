@@ -85,7 +85,7 @@ export default {
       'guitarists from texas',
       'vaudeville performers',
     ],
-    patterns: [/musicians from ./, /(singers|songwriters|painters|poets)/],
+    patterns: [/musicians from ./, /(singers|songwriters)/],
   },
   //
   descriptions: {

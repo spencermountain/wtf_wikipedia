@@ -1,5 +1,5 @@
 export default {
-  name: 'Actor',
+  name: 'Director',
   //
   children: {},
   properties: {

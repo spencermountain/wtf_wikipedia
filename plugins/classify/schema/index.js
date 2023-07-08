@@ -3,6 +3,7 @@ import Place from './Place/index.js'
 import Organization from './Organization/index.js'
 import Event from './Event/index.js'
 import Creation from './Creation/index.js'
+import Concept from './Concept/index.js'
 
 let schema = {
   children: {
@@ -11,6 +12,7 @@ let schema = {
     Organization,
     Event,
     Creation,
+    Concept
   },
 }
 

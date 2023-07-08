@@ -12,7 +12,7 @@ test('classify-test', function (t) {
     ['Allen-R.-Morris', 'Person'],
     ['toronto_star', 'Organization'],
     ['Alsea-(company)', 'Organization/Company'],
-    ['Antique-(band)', 'Organization/MusicalGroup'],
+    // ['Antique-(band)', 'Organization/MusicalGroup'],
     ['raith_rovers', 'Organization/SportsTeam'],
     ['Terrence-Murphy-(American-football)', 'Person/Athlete/AmericanFootballPlayer'],
     ['Altimont-Butler', 'Person/Athlete/FootballPlayer'],

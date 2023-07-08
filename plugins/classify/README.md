@@ -114,9 +114,11 @@ Creation:
       Play : true
       Song : true
       VideoGame : true
+  Product : true
+  FictionalCharacter : true
+Concept:
   MedicalCondition : true
   Organism : true
-  Product : true
 ```
 
 as of March 2020, it can classify ~65% of english wikipedia articles:

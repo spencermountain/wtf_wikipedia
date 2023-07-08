@@ -10,7 +10,6 @@ export default {
     mapping: [
       '20th-century american novelists',
       'american male novelists',
-      'american film directors',
       '21st-century american novelists',
       'american film producers',
       'american male screenwriters',

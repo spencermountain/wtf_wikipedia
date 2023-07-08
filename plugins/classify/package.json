@@ -21,6 +21,7 @@
   "scripts": {
     "watch": "amble ./scratch.js",
     "test": "tape ./tests/**/*.test.js | tap-dancer",
+    "fetch:test": "node ./tests/fetch-test.js",
     "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
     "build": "rollup -c",
     "schema": "node ./schema/_print.js"

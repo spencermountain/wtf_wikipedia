@@ -1,13 +1,11 @@
-import CreativeWork from './CreativeWork/index.js'
-import Product from './Product.js'
-import FictionalCharacter from './FictionalCharacter.js'
+import MedicalCondition from './MedicalCondition.js'
+import Organism from './Organism.js'
 
 export default {
-  name: 'Creation',
+  name: 'Concept',
   children: {
-    CreativeWork,
-    Product,
-    FictionalCharacter
+    MedicalCondition,
+    Organism,
   },
   //
   properties: {

@@ -3,6 +3,6 @@ import classify from './src/index.js'
 
 wtf.extend(classify)
 
-wtf.fetch('Danny Devito').then((doc) => {
+wtf.fetch('Antique (band)').then((doc) => {
   console.dir(doc.classify(), { depth: 5 })
 })
