@@ -10,11 +10,6 @@ export default {
     FictionalCharacter
   },
   //
-  properties: {
-    creators: () => { },
-    date: () => { },
-  },
-  //
   categories: {
     mapping: [],
     patterns: [],

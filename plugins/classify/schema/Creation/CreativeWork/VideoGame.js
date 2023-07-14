@@ -1,9 +1,6 @@
 export default {
   name: 'VideoGame',
   children: {},
-  properties: {
-    platforms: () => { },
-  },
   //
   categories: {
     mapping: [
@@ -42,7 +39,7 @@ export default {
   },
   //
   infoboxes: {
-    mapping: ['video game'],
+    mapping: ['video_game'],
     patterns: [],
   },
   //

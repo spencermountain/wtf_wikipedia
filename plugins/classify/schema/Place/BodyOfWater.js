@@ -2,7 +2,6 @@ export default {
   name: 'BodyOfWater',
   //
   children: {},
-  properties: {},
   //
   categories: {
     mapping: [],
@@ -14,7 +13,7 @@ export default {
   },
   //
   infoboxes: {
-    mapping: ['body_of_water', 'lake', 'river', 'sea', 'body of water'],
+    mapping: ['body_of_water', 'lake', 'river', 'sea'],
     patterns: [],
   },
   //

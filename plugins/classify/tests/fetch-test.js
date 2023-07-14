@@ -63,7 +63,10 @@ let arr = [
   ['Eve Biddle', 'Person/Creator'],
 
   ['Immigration and Naturalization Service v. Delgado', 'Event'],
-  ['Acacia viscidula', 'Creation/Organism'],
+  ['Acacia viscidula', 'Concept/Organism'],
+  ['Boston College Eagles baseball', 'Organization/SportsTeam'],
+  ['Bishop Michael Eldon School', 'Organization/School'],
+  // ['',''],
 ]
 
 const green = str => '\x1b[32m' + str + '\x1b[0m'

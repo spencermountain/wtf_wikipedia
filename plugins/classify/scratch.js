@@ -3,6 +3,7 @@ import classify from './src/index.js'
 
 wtf.extend(classify)
 
-wtf.fetch('Antique (band)').then((doc) => {
+wtf.fetch('Diabetes').then((doc) => {
+  // console.log(doc.infoboxes().map(i => i.type()))
   console.dir(doc.classify(), { depth: 5 })
 })

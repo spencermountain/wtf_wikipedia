@@ -2,9 +2,6 @@ export default {
   name: 'Author',
   //
   children: {},
-  properties: {
-    works: () => { },
-  },
   //
   categories: {
     mapping: [
@@ -31,6 +28,11 @@ export default {
       'writers from new york city',
       '21st-century women writers',
       'english male writers',
+      'academic',
+      'art historian',
+      'economist',
+      'philosopher',
+      'theologian',
     ],
     patterns: [/novelists from ./],
   },

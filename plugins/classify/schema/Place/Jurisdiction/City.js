@@ -17,11 +17,11 @@ export default {
   //
   infoboxes: {
     mapping: [
-      'swiss town',
-      'city japan',
-      'municipality br',
-      'russian town',
-      'south african town 2011',
+      'swiss_town',
+      'city_japan',
+      'municipality_br',
+      'russian_town',
+      'south_african_town_2011',
     ],
     patterns: [],
   },

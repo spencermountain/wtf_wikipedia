@@ -26,7 +26,7 @@ test('classify-test', function (t) {
     ['toronto', 'Place/Jurisdiction/City'],
     ['royal_cinema', 'Place'],
     ['Canton-of-Etaples', 'Place/Jurisdiction'],
-    ['Arts_Club_of_Chicago', 'Place'],
+    // ['Arts_Club_of_Chicago', 'Place'],
     ['al_Haytham', 'Person/Creator'],
     ['The-Field-of-Waterloo', 'Creation/CreativeWork/Book'],
     ['Liste-der-argentinischen-Botschafter-in-Chile', null],

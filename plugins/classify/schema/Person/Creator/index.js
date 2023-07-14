@@ -12,8 +12,6 @@ export default {
     Author,
     Director,
   },
-  properties: {
-  },
   //
   categories: {
     mapping: ['Fellows of the Royal Society'],
@@ -25,7 +23,9 @@ export default {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: [
+      'artist',
+    ],
     patterns: [],
   },
   //

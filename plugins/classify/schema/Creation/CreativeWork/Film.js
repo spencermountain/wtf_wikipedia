@@ -1,9 +1,6 @@
 export default {
   name: 'Film',
   children: {},
-  properties: {
-    creators: () => { },
-  },
   //
   categories: {
     mapping: [],

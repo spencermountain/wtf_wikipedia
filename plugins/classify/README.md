@@ -100,6 +100,7 @@ Organization:
   Company : true
   SportsTeam : true
   PoliticalParty : true
+  School : true
 Event:
   Disaster : true
   Election : true

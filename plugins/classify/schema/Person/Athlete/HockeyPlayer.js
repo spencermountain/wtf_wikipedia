@@ -74,7 +74,7 @@ export default {
   },
   //
   infoboxes: {
-    mapping: ['ice hockey player'],
+    mapping: ['ice_hockey_player'],
     patterns: [],
   },
   //

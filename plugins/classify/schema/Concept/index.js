@@ -8,11 +8,6 @@ export default {
     Organism,
   },
   //
-  properties: {
-    creators: () => { },
-    date: () => { },
-  },
-  //
   categories: {
     mapping: [],
     patterns: [],

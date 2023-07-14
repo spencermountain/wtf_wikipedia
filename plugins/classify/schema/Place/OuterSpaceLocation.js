@@ -2,7 +2,6 @@ export default {
   name: 'OuterSpaceLocation',
   //
   children: {},
-  properties: {},
   //
   categories: {
     mapping: [],

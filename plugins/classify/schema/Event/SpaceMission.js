@@ -1,9 +1,6 @@
 export default {
   name: 'SpaceMission',
   children: {},
-  properties: {
-    destination: () => { },
-  },
   //
   categories: {
     mapping: [

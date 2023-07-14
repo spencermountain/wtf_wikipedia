@@ -2,10 +2,6 @@ export default {
   name: 'Director',
   //
   children: {},
-  properties: {
-    films: () => { },
-    tv_shows: () => { },
-  },
   //
   categories: {
     mapping: ['Directors of Palme d\'Or winners', 'Best Director AACTA International Award winners'],

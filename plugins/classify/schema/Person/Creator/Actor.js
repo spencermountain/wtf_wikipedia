@@ -2,10 +2,6 @@ export default {
   name: 'Actor',
   //
   children: {},
-  properties: {
-    films: () => { },
-    tv_shows: () => { },
-  },
   //
   categories: {
     mapping: [],

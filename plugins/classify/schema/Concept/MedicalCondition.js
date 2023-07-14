@@ -2,10 +2,6 @@ export default {
   name: 'MedicalCondition',
   //
   children: {},
-  properties: {
-    causes: () => { },
-    treatments: () => { },
-  },
   //
   categories: {
     mapping: [],
@@ -17,7 +13,7 @@ export default {
   },
   //
   infoboxes: {
-    mapping: ['medical condition (new)', 'medical condition', 'disease'],
+    mapping: ['medical_condition_(new)', 'medical_condition', 'disease'],
     patterns: [],
   },
   //
