@@ -19,6 +19,56 @@ test('schema-lint', function (t) {
           t.ok(false, `${obj.name} has infobox '${k}'`)
         }
       })
+      // no spaces allowed in templates
+      obj.templates.mapping.forEach(k => {
+        if (k.match(/_/)) {
+          t.ok(false, `${obj.name} has templates '${k}'`)
+        }
+      })
+      // categories use spaces
+      obj.categories.mapping.forEach(k => {
+        if (k.match(/_/)) {
+          t.ok(false, `${obj.name} has category '${k}'`)
+        }
+        if (k.match(/[A-Z]/)) {
+          t.ok(false, `${obj.name} uppercase category '${k}'`)
+        }
+      })
+    }
+    Object.keys(obj.children || {}).forEach(k => validate(obj.children[k]))
+  }
+  validate(schema, true)
+  t.end()
+})
+
+
+test('no-dupe-templates', function (t) {
+  let all = new Set()
+  const validate = function (obj, isRoot) {
+    if (!isRoot) {
+      (obj.templates.mapping || []).forEach(k => {
+        if (all.has(k)) {
+          t.ok(false, `dupe template ${k}`)
+        }
+        all.add(k)
+      })
+    }
+    Object.keys(obj.children || {}).forEach(k => validate(obj.children[k]))
+  }
+  validate(schema, true)
+  t.end()
+})
+
+test('no-dupe-infoboxes', function (t) {
+  let all = new Set()
+  const validate = function (obj, isRoot) {
+    if (!isRoot) {
+      (obj.infoboxes.mapping || []).forEach(k => {
+        if (all.has(k)) {
+          t.ok(false, `dupe template ${k}`)
+        }
+        all.add(k)
+      })
     }
     Object.keys(obj.children || {}).forEach(k => validate(obj.children[k]))
   }

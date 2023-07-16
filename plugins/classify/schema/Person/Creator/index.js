@@ -14,7 +14,7 @@ export default {
   },
   //
   categories: {
-    mapping: ['Fellows of the Royal Society'],
+    mapping: ['fellows of the royal society'],
     patterns: [/(engineers|inventors|artists|painters|sculpters|choreographers)/],
   },
   //

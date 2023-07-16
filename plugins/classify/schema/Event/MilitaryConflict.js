@@ -25,7 +25,7 @@ export default {
   },
   //
   infoboxes: {
-    mapping: ['military_conflict', 'civil_conflict', 'civilian_attack'],
+    mapping: ['military_conflict', 'civilian_attack'],
     patterns: [],
   },
   //

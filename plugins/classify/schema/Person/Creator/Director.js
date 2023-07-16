@@ -4,7 +4,7 @@ export default {
   children: {},
   //
   categories: {
-    mapping: ['Directors of Palme d\'Or winners', 'Best Director AACTA International Award winners'],
+    mapping: ['directors of palme d\'or winners', 'best director aacta international award winners'],
     patterns: [/film directors/i],
   },
   //
