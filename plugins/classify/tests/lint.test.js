@@ -75,3 +75,20 @@ test('no-dupe-infoboxes', function (t) {
   validate(schema, true)
   t.end()
 })
+
+test('no-dupe-categories', function (t) {
+  let all = new Set()
+  const validate = function (obj, isRoot) {
+    if (!isRoot) {
+      (obj.categories.mapping || []).forEach(k => {
+        if (all.has(k)) {
+          t.ok(false, `dupe category ${k}`)
+        }
+        all.add(k)
+      })
+    }
+    Object.keys(obj.children || {}).forEach(k => validate(obj.children[k]))
+  }
+  validate(schema, true)
+  t.end()
+})
