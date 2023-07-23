@@ -62,3 +62,8 @@ wtf.Helper.chunk = function(list=null, chunkSize=5) {
 
   return result;
 }
+
+// format a number to have commas in it and obey international styles
+wtf.Helper.formatNumber = function(num, minFractDigits = 0) {
+  return num.toLocaleString(undefined,{minimumFractionDigits:minFractDigits});
+}
