@@ -2,123 +2,109 @@
  * @fileoverview wtf_wikipedia/demo/detailedDemo/detailedDemo.js
  * demonstrates a detailed example of the wtf_wikipedia API.
  */
+const TEXT_SHOW_LENGTH = 150;        // how much of the text string to show
+const NF = wtf.Helper.formatNumber;  // alias to shorten the function name
 
 wtf.Helper.init(main);  // calls main after doc loaded, breaks back button cache
 
-const NF = wtf.Helper.formatNumber;  // alias to shorten the function name
 
 // main entry point for the app
 async function main() {
-  let msg = '<div class=header>wtf_wikipedia API demo</div>';
+  let resultsStr = '';
 
-  msg = await showQueryResults(msg, 'Grace Hopper');
-  // msg += showAListOfResults();
-
-  document.body.innerHTML = msg;
-}
-
-
-// build up the html and then add it all at once to minimize redraws
-async function showQueryResults(msg, queryString) {
-  const TEXT_SHOW_LENGTH = 150;
-  const TAB = '&nbsp;&nbsp;';
-  let subMsg = '';
-
+  let queryString = 'Grace Hopper';
   let doc = await wtf.Helper.fetchNicely(queryString);
 
+  resultsStr += showTopLevelApi(queryString, doc);
+  let section = doc.sections()[0];
+  resultsStr += showSectionApi(section);
 
-  msg += '<div class=fetchLine>wtf.fetch(' + queryString + ')</div>';
-  msg += '<div class=mainSection>';
+  document.querySelector('.mainSection').innerHTML = resultsStr;
+}
 
-  msg = addToMsg(msg, 'title()', doc.title());
-  msg = addToMsg(msg, 'pageID()', doc.pageID());
-  msg = addToMsg(msg, 'wikidata()', doc.wikidata());
-  msg = addToMsg(msg, 'domain()', doc.domain());
-  msg = addToMsg(msg, 'url()', doc.url());
+function showTopLevelApi(queryString, doc) {
+  let msg = '<h2>let doc = wtf.fetch("' + queryString + '")</h2>';
 
-  msg = addToMsg(msg, 'lang()', doc.lang());
-  msg = addToMsg(msg, 'namespace()', doc.namespace());
-  msg = addToMsg(msg, 'isRedirect()', doc.isRedirect());
-  msg = addToMsg(msg, 'redirectTo()', doc.redirectTo());
-  msg = addToMsg(msg, 'isDisambiguation()', doc.isDisambiguation());
+  msg += addToMsg('doc,title()', doc.title());
+  msg += addToMsg('doc.pageID()', doc.pageID());
+  msg += addToMsg('doc.wikidata()', doc.wikidata());
+  msg += addToMsg('doc.domain()', doc.domain());
+  msg += addToMsg('doc.url()', doc.url());
+  msg += addToMsg('doc.lang()', doc.lang());
+  msg += addToMsg('doc.namespace()', doc.namespace());
+  msg += addToMsg('doc.isRedirect()', doc.isRedirect());
+  msg += addToMsg('doc.redirectTo()', doc.redirectTo());
+  msg += addToMsg('doc.isDisambiguation()', doc.isDisambiguation());
+  msg += addToMsg('doc.coordinates()', doc.coordinates());
+  msg += showCount('doc.categories', doc.categories(),
+                   ': [' + doc.categories().join(', ').substring(0,80)+'...]');
+  msg += showCount('doc.sections', doc.sections());
+  msg += showCount('doc.paragraphs', doc.paragraphs());
+  msg += showCount('doc.sentences', doc.sentences());
+  msg += showCount('doc.images', doc.images());
+  msg += showCount('doc.links', doc.links());
+  msg += showCount('doc.lists', doc.lists());
+  msg += showCount('doc.tables', doc.tables());
+  msg += showCount('doc.templates', doc.templates());
+  msg += showCount('doc.infoboxes', doc.infoboxes());
+  msg += showCount('doc.references', doc.references());
 
-  let catList = doc.categories();
-  let catStr = '[' + catList.join(', ').substring(0, TEXT_SHOW_LENGTH) + '...]';
-  subMsg = 'there are ' + NF(catList.length) + ' categories: ' + catStr;
-  msg = addToMsg(msg, 'categories()', subMsg);
+  msg += showPartialText('doc.text', doc.text());
+  msg += showPartialText('doc.json', JSON.stringify(doc.json()));
+  msg += showPartialText('doc.wikitext', doc.wikitext());
 
-  let sectionList = doc.sections();
-  subMsg = 'there are ' + NF(sectionList.length) + ' sections<br>';
-  msg = addToMsg(msg, 'sections()', subMsg);
-
-  let paragraphList = doc.paragraphs();
-  subMsg = 'there are ' + NF(paragraphList.length) + ' paragraphs<br>';
-  msg = addToMsg(msg, 'paragraphs()', subMsg);
-
-  let sentenceList = doc.sentences();
-  subMsg = 'there are ' + NF(sentenceList.length) + ' sentences<br>';
-  msg = addToMsg(msg, 'sentences()', subMsg);
-
-  let imageList = doc.images();
-  subMsg = 'there are ' + NF(imageList.length) + ' images<br>';
-  msg = addToMsg(msg, 'images()', subMsg);
-  console.log('show the first 10 images');
-
-  let linkList = doc.links();
-  subMsg = 'there are ' + NF(linkList.length) + ' links<br>';
-  msg = addToMsg(msg, 'links()', subMsg);
-
-  let listList = doc.lists();
-  subMsg = 'there are ' + NF(listList.length) + ' lists<br>';
-  msg = addToMsg(msg, 'lists()', subMsg);
-  console.log('show the first 10 lists');
-
-  let tableList = doc.tables();
-  subMsg = 'there are ' + NF(tableList.length) + ' tables<br>';
-  msg = addToMsg(msg, 'tables()', subMsg);
-  console.log('show the first 10 tables');
-
-  let templateList = doc.templates();
-  subMsg = 'there are ' + NF(templateList.length) + ' templates<br>';
-  msg = addToMsg(msg, 'templates()', subMsg);
-  console.log('show the first 10 templates');
-
-  let infoBoxList = doc.infoboxes();
-  subMsg = 'there are ' + NF(infoBoxList.length) + ' infoBoxes<br>';
-  msg = addToMsg(msg, 'infoBoxes()', subMsg);
-  console.log('show infoBox info');
-
-  let referenceList = doc.references();
-  subMsg = 'there are ' + NF(referenceList.length) + ' references<br>';
-  msg = addToMsg(msg, 'references()', subMsg);
-  console.log('show reference info');
-
-  msg = addToMsg(msg, 'coordinates()', doc.coordinates());
-
-  let text = doc.text();
-  subMsg = 'text is ' + NF(text.length) + ' characters long: "' +
-    text.substring(0, TEXT_SHOW_LENGTH) + '..."';
-  msg = addToMsg(msg, 'text()', subMsg);
-
-  let json = doc.json();
-  let jsonStr = JSON.stringify(json);
-  subMsg = 'json snippet: ' + jsonStr.substring(0, TEXT_SHOW_LENGTH) + '...}';
-  msg = addToMsg(msg, 'json()', subMsg);
-
-  let wikiText = doc.wikitext();
-  subMsg = 'wikitext is ' + NF(wikiText.length) + ' characters long: ' +
-    wikiText.substring(0, TEXT_SHOW_LENGTH) + '...';
-  msg = addToMsg(msg, 'wikitext()', subMsg);
-
-  msg += '</div> <!-- mainSection -->';
   return msg;
 }
 
-function addToMsg(msg, key, value) {
-  msg += '<div class=line>' +
-    '<div class=key>' + key + '</div> ' +
-    '<div class=value>' + value + '</div>' +
-    '</div>';
+
+function showSectionApi(section) {
+  let msg = '<br><h2>let section = doc.sections()[0]</h2>';
+
+  msg += addToMsg('section.title()', section.title());
+  msg += addToMsg('section.index()', section.index());
+  msg += addToMsg('section.indentation()', section.indentation());
+  msg += addToMsg('section.coordinates()', section.coordinates());
+
+  msg += showCount('section.paragraphs', section.paragraphs());
+  msg += showCount('section.sentences', section.sentences());
+  msg += showCount('section.images', section.images());
+  msg += showCount('section.links', section.links());
+
+  msg += showCount('section.lists', section.lists());
+  msg += showCount('section.tables', section.tables());
+  msg += showCount('section.templates', section.templates());
+  msg += showCount('section.infoboxes', section.infoboxes());
+  msg += showCount('section.references', section.references());
+  msg += showCount('section.interwiki', section.interwiki());
+
+  msg += addToMsg('section.remove()', ); //section.remove());
+  msg += addToMsg('section.nextSibling()', section.nextSibling());
+  msg += addToMsg('section.lastSibling()', section.lastSibling());
+  msg += addToMsg('section.children()', section.children());
+  msg += addToMsg('section.parent()', section.parent());
+
+  msg += showPartialText('section.text', section.text());
+  msg += showPartialText('section.json', JSON.stringify(section.json()));
+  msg += showPartialText('section.wikitext', section.wikitext());
 
   return msg;
+}
+
+function showCount(listName, list, optStr='') {
+  let subName = listName.substring(listName.indexOf('.') + 1);
+  let str = 'there are ' + NF(list.length) + ' ' + subName + optStr;
+  return addToMsg(listName + '()', str);
+}
+
+function showPartialText(listName, text) {
+  let str = 'text is ' + NF(text.length) + ' chars: ' +
+      text.substring(0, TEXT_SHOW_LENGTH) + '...';
+  return addToMsg(listName + '()', str);
+}
+
+function addToMsg(key='<br>', value='') {
+  return '<div class=line>' +
+      '<div class=key>' + key + '</div> ' +
+      '<div class=value>' + value + '</div>' +
+    '</div>';
 }

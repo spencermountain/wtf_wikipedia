@@ -56,20 +56,20 @@ input, button, textarea, select {
   display: flex;
   flex-direction: row;
   flex-grow: 0;
-  font-size: 2em;
+  font-size: 1.5em;
   justify-content: center;
+  margin-bottom: 0.5em;
   overflow: hidden;
   width: 100%;
 }
 
 .mainSection {
+  border: solid 1px rgb(200, 200, 200);
+  border-radius: 10px;
   height: 100%;
-  width: 100%;
   overflow: auto;
-}
-
-.fetchLine {
-  font-size: 1.5em;
+  padding: 0.5em;
+  width: 100%;
 }
 
 .line {
@@ -83,7 +83,7 @@ input, button, textarea, select {
   flex-grow: 0;
   font-weight: 600;
   margin-left: 2em;
-  min-width: 10em;
+  min-width: 12em;
 }
 
 
