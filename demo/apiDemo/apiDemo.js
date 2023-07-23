@@ -16,8 +16,15 @@ async function main() {
   let doc = await wtf.Helper.fetchNicely(queryString);
 
   resultsStr += showTopLevelApi(queryString, doc);
-  let section = doc.sections()[0];
-  resultsStr += showSectionApi(section);
+  resultsStr += showSectionApi(doc.sections()[0]);
+  resultsStr += showParagraphApi(doc.paragraphs()[0]);
+  resultsStr += showSentenceApi(doc.sentences()[0]);
+  resultsStr += showImageApi(doc.images()[0]);
+  resultsStr += showTemplateApi(doc.templates()[0]);
+  resultsStr += showInfoboxApi(doc.infoboxes()[0]);
+  resultsStr += showListApi(doc.lists()[0]) ;
+  resultsStr += showReferenceApi(doc.references()[0]) ;
+  resultsStr += showTableApi(doc.tables()[0]) ;
 
   document.querySelector('.mainSection').innerHTML = resultsStr;
 }
@@ -69,13 +76,13 @@ function showSectionApi(section) {
   msg += showCount('section.sentences', section.sentences());
   msg += showCount('section.images', section.images());
   msg += showCount('section.links', section.links());
+  msg += showCount('section.interwiki', section.interwiki());
 
   msg += showCount('section.lists', section.lists());
   msg += showCount('section.tables', section.tables());
   msg += showCount('section.templates', section.templates());
   msg += showCount('section.infoboxes', section.infoboxes());
   msg += showCount('section.references', section.references());
-  msg += showCount('section.interwiki', section.interwiki());
 
   msg += addToMsg('section.remove()', ); //section.remove());
   msg += addToMsg('section.nextSibling()', section.nextSibling());
@@ -90,17 +97,164 @@ function showSectionApi(section) {
   return msg;
 }
 
+function showParagraphApi(paragraph) {
+  let msg = '<br><h2>let paragraph = doc.paragraphs()[0]</h2>';
+
+  msg += showCount('paragraph.sentences', paragraph.sentences());
+  msg += showCount('paragraph.references', paragraph.references());
+  msg += showCount('paragraph.images', paragraph.images());
+  msg += showCount('paragraph.links', paragraph.links());
+  msg += showCount('paragraph.interwiki', paragraph.interwiki());
+  msg += showCount('paragraph.lists', paragraph.lists());
+
+  msg += showPartialText('paragraph.text', paragraph.text());
+  msg += showPartialText('paragraph.json', JSON.stringify(paragraph.json()));
+  msg += showPartialText('paragraph.wikitext', paragraph.wikitext());
+
+  return msg;
+}
+
+
+function showSentenceApi(sentence) {
+  let msg = '<br><h2>let sentence = doc.sentences()[0]</h2>';
+  msg += showCount('sentence.links', sentence.links());
+  msg += showCount('sentence.bolds', sentence.bolds());
+  msg += showCount('sentence.italics', sentence.italics());
+
+  msg += showPartialText('sentence.text', sentence.text());
+  msg += showPartialText('sentence.json', JSON.stringify(sentence.json()));
+  msg += showPartialText('sentence.wikitext', sentence.wikitext());
+
+  return msg;
+}
+
+
+function showImageApi(image) {
+  let msg = '<br><h2>let image = doc.images()[0]</h2>';
+  msg += addToMsg('image.url()', image.url());
+  msg += addToMsg('image.thumbnail()', image.thumbnail());
+  msg += showCount('image.links', image.links());
+  msg += addToMsg('image.format()', image.format());
+
+  msg += showPartialText('image.text', image.text());
+  msg += showPartialText('image.json', JSON.stringify(image.json()));
+  msg += showPartialText('image.wikitext', image.wikitext());
+
+  return msg;
+}
+
+
+function showTemplateApi(template) {
+  let msg = '<br><h2>let template = doc.templates()[0]</h2>';
+
+  msg += showPartialText('template.text', template.text());
+  msg += showPartialText('template.json', JSON.stringify(template.json()));
+  msg += showPartialText('template.wikitext', template.wikitext());
+
+  return msg;
+}
+
+
+function showInfoboxApi(infobox) {
+  let msg = '<br><h2>let infobox = doc.infoboxes()[0]</h2>';
+  msg += showCount('infobox.links', infobox.links());
+
+  msg += addToMsg('infobox.keyValue()', showKeyValObj(infobox.keyValue()));
+
+  msg += addToMsg('infobox.image()', infobox.image());
+  msg += addToMsg('infobox.get("name")', infobox.get('name'));
+  msg += addToMsg('infobox.template()', infobox.template());
+
+  msg += showPartialText('infobox.text', infobox.text());
+  msg += showPartialText('infobox.json', JSON.stringify(infobox.json()));
+  msg += showPartialText('infobox.wikitext', infobox.wikitext());
+
+  return msg;
+}
+
+
+function showListApi(list) {
+  let msg = '<br><h2>let list = doc.lists()[0]</h2>';
+
+  msg += showCount('list.lines', list.lines());
+  msg += showCount('list.links', list.links());
+
+  msg += showPartialText('list.text', list.text());
+  msg += showPartialText('list.json', JSON.stringify(list.json()));
+  msg += showPartialText('list.wikitext', list.wikitext());
+
+  return msg;
+}
+
+
+function showReferenceApi(reference) {
+  let msg = '<br><h2>let reference = doc.references()[0]</h2>';
+  msg += addToMsg('reference.title()', reference.title());
+  msg += showCount('reference.links', reference.links());
+
+  msg += showPartialText('reference.text', reference.text());
+  msg += showPartialText('reference.json', JSON.stringify(reference.json()));
+  msg += showPartialText('reference.wikitext', reference.wikitext());
+
+  return msg;
+}
+
+
+function showTableApi(table) {
+  let msg = '<br><h2>let table = doc.tables()[0]</h2>';
+
+  msg += showCount('table.links', table.links());
+  msg += addToMsg('table.keyValue()', showKeyValObj(table.keyValue()));
+
+  msg += showPartialText('table.text', table.text());
+  msg += showPartialText('table.json', JSON.stringify(table.json()));
+  msg += showPartialText('table.wikitext', table.wikitext());
+
+  return msg;
+}
+
+
 function showCount(listName, list, optStr='') {
+  list = list || [];  // force list to exist
   let subName = listName.substring(listName.indexOf('.') + 1);
   let str = 'there are ' + NF(list.length) + ' ' + subName + optStr;
   return addToMsg(listName + '()', str);
 }
 
+
 function showPartialText(listName, text) {
-  let str = 'text is ' + NF(text.length) + ' chars: ' +
-      text.substring(0, TEXT_SHOW_LENGTH) + '...';
+  text = text || '';  // force text to exist
+  let truncatedStr = text.substring(0, TEXT_SHOW_LENGTH);
+  if (text.length > truncatedStr.length) {
+    truncatedStr += '...';
+  }
+
+  if (truncatedStr.length > 0) {
+    truncatedStr = ': ' + truncatedStr;
+  }
+
+  let str = 'text is ' + NF(text.length) + ' chars' + truncatedStr;
+
   return addToMsg(listName + '()', str);
 }
+
+
+function showKeyValObj(keyValObj) {
+  let entryList = Object.entries(keyValObj);
+  let entryCount = entryList.length;
+  let msg = 'there are ' + entryCount + ' key-value pairs: ';
+
+  for (let i = 0; i < entryCount; ++i) {
+    msg += '[' + entryList[i].join(':') + '] ';
+  }
+
+  if (msg.length > 90) {
+    msg = msg.substring(0, 90) + '...';
+  }
+
+  return msg;
+}
+
 
 function addToMsg(key='<br>', value='') {
   return '<div class=line>' +
