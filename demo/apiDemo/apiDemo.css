@@ -1,0 +1,71 @@
+/** wtf_wikipedia/demo/apiDemo/apiDemo.css **/
+@keyframes fadeUpAnim {
+    0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  height: 100%;
+  text-size-adjust: none;
+  width: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  animation: fadeUpAnim 1s ease-in-out 0.2s forwards;
+  background-size: cover;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  font-family: arial;
+  height: 100%;
+  justify-content: flex-start;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0;
+  text-rendering: optimizelegibility;
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  overflow-wrap: break-word;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 1rem;
+  width: 100%;
+}
+
+.mainSection {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+  width: 100%;
+}
