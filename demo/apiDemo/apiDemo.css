@@ -25,14 +25,14 @@ body {
   color: black;
   display: flex;
   flex-direction: column;
-  font-family: arial;
+  font-family: helvetica;
   height: 100%;
   justify-content: flex-start;
   line-height: 1.5;
   margin: 0;
   opacity: 0;
   overflow: hidden;
-  padding: 0;
+  padding: 2em;
   text-rendering: optimizelegibility;
   width: 100%;
 }
@@ -52,20 +52,41 @@ input, button, textarea, select {
 
 .header {
   align-items: center;
+  color: rgb(100, 100, 100);
   display: flex;
   flex-direction: row;
   flex-grow: 0;
+  font-size: 2em;
   justify-content: center;
   overflow: hidden;
-  padding-top: 1rem;
   width: 100%;
 }
 
 .mainSection {
-  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.fetchLine {
+  font-size: 1.5em;
+}
+
+.line {
   display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  flex-direction: row;
   justify-content: flex-start;
   width: 100%;
+}
+
+.key {
+  flex-grow: 0;
+  font-weight: 600;
+  margin-left: 2em;
+  min-width: 10em;
+}
+
+
+.value {
+  min-width: 10em;
 }
