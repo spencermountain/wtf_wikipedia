@@ -49,7 +49,8 @@ function showTopLevelApi(queryString, doc) {
   msg += showCount('doc.paragraphs', doc.paragraphs());
   msg += showCount('doc.sentences', doc.sentences());
   msg += showCount('doc.images', doc.images());
-  msg += showCount('doc.links', doc.links());
+  msg += createImageListHtml(doc.images());
+  msg += showPartialLinkList('doc.links', doc.links());
   msg += showCount('doc.lists', doc.lists());
   msg += showCount('doc.tables', doc.tables());
   msg += showCount('doc.templates', doc.templates());
@@ -75,7 +76,7 @@ function showSectionApi(section) {
   msg += showCount('section.paragraphs', section.paragraphs());
   msg += showCount('section.sentences', section.sentences());
   msg += showCount('section.images', section.images());
-  msg += showCount('section.links', section.links());
+  msg += showPartialLinkList('section.links', section.links());
   msg += showCount('section.interwiki', section.interwiki());
 
   msg += showCount('section.lists', section.lists());
@@ -104,6 +105,7 @@ function showParagraphApi(paragraph) {
   msg += showCount('paragraph.references', paragraph.references());
   msg += showCount('paragraph.images', paragraph.images());
   msg += showCount('paragraph.links', paragraph.links());
+  msg += showPartialLinkList('paragraph.links', paragraph.links());
   msg += showCount('paragraph.interwiki', paragraph.interwiki());
   msg += showCount('paragraph.lists', paragraph.lists());
 
@@ -117,7 +119,7 @@ function showParagraphApi(paragraph) {
 
 function showSentenceApi(sentence) {
   let msg = '<br><h2>let sentence = doc.sentences()[0]</h2>';
-  msg += showCount('sentence.links', sentence.links());
+  msg += showPartialLinkList('sentence.links', sentence.links());
   msg += showCount('sentence.bolds', sentence.bolds());
   msg += showCount('sentence.italics', sentence.italics());
 
@@ -133,7 +135,7 @@ function showImageApi(image) {
   let msg = '<br><h2>let image = doc.images()[0]</h2>';
   msg += addToMsg('image.url()', image.url());
   msg += addToMsg('image.thumbnail()', image.thumbnail());
-  msg += showCount('image.links', image.links());
+  msg += showPartialLinkList('image.links', image.links());
   msg += addToMsg('image.format()', image.format());
 
   msg += showPartialText('image.text', image.text());
@@ -157,7 +159,7 @@ function showTemplateApi(template) {
 
 function showInfoboxApi(infobox) {
   let msg = '<br><h2>let infobox = doc.infoboxes()[0]</h2>';
-  msg += showCount('infobox.links', infobox.links());
+  msg += showPartialLinkList('infobox.links', infobox.links());
 
   msg += addToMsg('infobox.keyValue()', showKeyValObj(infobox.keyValue()));
 
@@ -177,7 +179,7 @@ function showListApi(list) {
   let msg = '<br><h2>let list = doc.lists()[0]</h2>';
 
   msg += showCount('list.lines', list.lines());
-  msg += showCount('list.links', list.links());
+  msg += showPartialLinkList('list.links', list.links());
 
   msg += showPartialText('list.text', list.text());
   msg += showPartialText('list.json', JSON.stringify(list.json()));
@@ -190,7 +192,7 @@ function showListApi(list) {
 function showReferenceApi(reference) {
   let msg = '<br><h2>let reference = doc.references()[0]</h2>';
   msg += addToMsg('reference.title()', reference.title());
-  msg += showCount('reference.links', reference.links());
+  msg += showPartialLinkList('reference.links', reference.links());
 
   msg += showPartialText('reference.text', reference.text());
   msg += showPartialText('reference.json', JSON.stringify(reference.json()));
@@ -203,7 +205,7 @@ function showReferenceApi(reference) {
 function showTableApi(table) {
   let msg = '<br><h2>let table = doc.tables()[0]</h2>';
 
-  msg += showCount('table.links', table.links());
+  msg += showPartialLinkList('table.links', table.links());
   msg += addToMsg('table.keyValue()', showKeyValObj(table.keyValue()));
 
   msg += showPartialText('table.text', table.text());
@@ -213,6 +215,44 @@ function showTableApi(table) {
   return msg;
 }
 
+function showPartialLinkList(title, linkList) {
+  let msg = '';
+
+  if (Array.isArray(linkList) && linkList.length > 0) {
+    let linkStr = [];
+    for (let i = 0, iCount = linkList.length; i < iCount; ++i) {
+      let page = linkList[i].page();
+      if (page && page !== 'undefined') {
+        linkStr.push(page);
+      }
+    }
+    linkStr = ': [' + linkStr.join(', ');
+    if (linkStr.length > 200) {
+      linkStr = linkStr.substring(0, 200) + '...]';
+    } else {
+      linkStr += ']';
+    }
+
+    msg += showCount(title, linkList, linkStr);
+  }
+
+  return msg;
+}
+
+function createImageListHtml(imageList) {
+  let msg = '';
+
+  if (Array.isArray(imageList) && imageList.length > 0) {
+    msg += '<div class=imageListContainer>';
+    for (let i = 0, iCount = imageList.length; i < iCount; ++i) {
+      let image = imageList[i];
+      msg += '<img class=image src="' + image.url() + '"/>';
+    }
+    msg += '</div>';
+  }
+
+  return msg;
+}
 
 function showCount(listName, list, optStr='') {
   list = list || [];  // force list to exist

@@ -1,4 +1,13 @@
-/** wtf_wikipedia/demo/apiDemo/apiDemo.css **/
+/** apiDemo.css **/
+:root {
+  --green:                 rgb(0, 140, 70);
+  --grey200:               rgb(200, 200, 200);
+  --orange:                rgb(255, 110, 0);
+  --borderColor:           var(--grey200);
+  --borderRadius:          10px;
+  --border:                solid 1px var(--borderColor);
+}
+
 @keyframes fadeUpAnim {
     0% { opacity: 0; }
   100% { opacity: 1; }
@@ -25,7 +34,8 @@ body {
   color: black;
   display: flex;
   flex-direction: column;
-  font-family: helvetica;
+  font-family: "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  font-size: 15px;
   height: 100%;
   justify-content: flex-start;
   line-height: 1.5;
@@ -41,6 +51,12 @@ h1, h2, h3, h4, h5, h6, p {
   overflow-wrap: break-word;
 }
 
+h2 {
+  color: var(--green);
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
@@ -52,7 +68,7 @@ input, button, textarea, select {
 
 .header {
   align-items: center;
-  color: rgb(100, 100, 100);
+  color: var(--orange);
   display: flex;
   flex-direction: row;
   flex-grow: 0;
@@ -64,8 +80,8 @@ input, button, textarea, select {
 }
 
 .mainSection {
-  border: solid 1px rgb(200, 200, 200);
-  border-radius: 10px;
+  border: var(--border);
+  border-top-left-radius: var(--borderRadius);
   height: 100%;
   overflow: auto;
   padding: 0.5em 0.5em 2em 0.5em;
@@ -77,6 +93,23 @@ input, button, textarea, select {
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
+}
+
+.imageListContainer {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  height: 200px;
+  justify-content: flex-start;
+  margin: 0.5em 0em 1em 2em;
+  padding: 0.5em 0em 0.5em 0em;
+  width: calc(100% - 4em);
+  overflow-x: auto;
+}
+
+.image {
+  height: calc(200px - 1em - 20px);
 }
 
 .key {
