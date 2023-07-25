@@ -1,304 +1,222 @@
-/**
- * @fileoverview wtf_wikipedia/demo/detailedDemo/detailedDemo.js
- * demonstrates a detailed example of the wtf_wikipedia API.
- */
-const TEXT_SHOW_LENGTH = 150;        // how much of the text string to show
-const NF = wtf.Helper.formatNumber;  // alias to shorten the function name
+// @fileoverview apiDemoMain.js (non ES6)
+//
+// apiDemo exercises the wtf_wikipedia API, showing the api functions
+// and their results. The wtf_wikipedia apis are:
+//     toplevel api
+//     section api
+//     paragraph api
+//     sentence api
+//     image api
+//     template api
+//     infobox api
+//     list api
+//     reference api
+//     table api
+// ----------------------------------------------------------------------
+'use strict';
 
-wtf.Helper.init(main);  // calls main after doc loaded, breaks back button cache
+let wtfHelper = new WtfHelper();       // load useful wtf helper functions
+let html = new ApiDemoHtml(wtfHelper); // creates apiDemo HTML elements
+wtfHelper.loadMain(main);              // call main() after the HTML doc loads
 
-
-// main entry point for the app
 async function main() {
-  let resultsStr = '';
-
   let queryString = 'Grace Hopper';
-  let doc = await wtf.Helper.fetchNicely(queryString);
+  let doc = await wtfHelper.fetchNicely(queryString);
 
-  resultsStr += showTopLevelApi(queryString, doc);
-  resultsStr += showSectionApi(doc.sections()[0]);
-  resultsStr += showParagraphApi(doc.paragraphs()[0]);
-  resultsStr += showSentenceApi(doc.sentences()[0]);
-  resultsStr += showImageApi(doc.images()[0]);
-  resultsStr += showTemplateApi(doc.templates()[0]);
-  resultsStr += showInfoboxApi(doc.infoboxes()[0]);
-  resultsStr += showListApi(doc.lists()[0]) ;
-  resultsStr += showReferenceApi(doc.references()[0]) ;
-  resultsStr += showTableApi(doc.tables()[0]) ;
+  html.init('wtf_wikipedia API demo'); // creates header and main section
 
-  document.querySelector('.mainSection').innerHTML = resultsStr;
+  // generate results for the wtf_wikipedia apis
+  showTopLevelApi(doc, queryString);
+  showSectionApi(doc.sections()[0]);
+  showParagraphApi(doc.paragraphs()[0]);
+  showSentenceApi(doc.sentences()[0]);
+  showImageApi(doc.images()[0]);
+  showTemplateApi(doc.templates()[0]);
+  showInfoboxApi(doc.infoboxes()[0]);
+  showListApi(doc.lists()[0]) ;
+  showReferenceApi(doc.references()[0]) ;
+  showTableApi(doc.tables()[0]) ;
+
+  html.render();
 }
 
-function showTopLevelApi(queryString, doc) {
-  let msg = '<h2>let doc = wtf.fetch("' + queryString + '")</h2>';
 
-  msg += addToMsg('doc,title()', doc.title());
-  msg += addToMsg('doc.pageID()', doc.pageID());
-  msg += addToMsg('doc.wikidata()', doc.wikidata());
-  msg += addToMsg('doc.domain()', doc.domain());
-  msg += addToMsg('doc.url()', doc.url());
-  msg += addToMsg('doc.lang()', doc.lang());
-  msg += addToMsg('doc.namespace()', doc.namespace());
-  msg += addToMsg('doc.isRedirect()', doc.isRedirect());
-  msg += addToMsg('doc.redirectTo()', doc.redirectTo());
-  msg += addToMsg('doc.isDisambiguation()', doc.isDisambiguation());
-  msg += addToMsg('doc.coordinates()', doc.coordinates());
-  msg += showCount('doc.categories', doc.categories(),
-                   ': [' + doc.categories().join(', ').substring(0,80)+'...]');
-  msg += showCount('doc.sections', doc.sections());
-  msg += showCount('doc.paragraphs', doc.paragraphs());
-  msg += showCount('doc.sentences', doc.sentences());
-  msg += showCount('doc.images', doc.images());
-  msg += createImageListHtml(doc.images());
-  msg += showPartialLinkList('doc.links', doc.links());
-  msg += showCount('doc.lists', doc.lists());
-  msg += showCount('doc.tables', doc.tables());
-  msg += showCount('doc.templates', doc.templates());
-  msg += showCount('doc.infoboxes', doc.infoboxes());
-  msg += showCount('doc.references', doc.references());
-
-  msg += showPartialText('doc.text', doc.text());
-  msg += showPartialText('doc.json', JSON.stringify(doc.json()));
-  msg += showPartialText('doc.wikitext', doc.wikitext());
-
-  return msg;
+function showTopLevelApi(doc, queryString) {
+  html.createFirstApiSectionHeader('let doc = wtf.fetch("'+queryString+'")');
+  html.createEntry('doc.title()', doc.title());
+  html.createEntry('doc.pageID()', doc.pageID());
+  html.createEntry('doc.wikidata()', doc.wikidata());
+  html.createEntry('doc.domain()', doc.domain());
+  html.createEntry('doc.url()', doc.url());
+  html.createEntry('doc.lang()', doc.lang());
+  html.createEntry('doc.namespace()', doc.namespace());
+  html.createEntry('doc.isRedirect()', doc.isRedirect());
+  html.createEntry('doc.redirectTo()', doc.redirectTo());
+  html.createEntry('doc.isDisambiguation()', doc.isDisambiguation());
+  html.createEntry('doc.coordinates()', doc.coordinates());
+  html.createEntry('doc.categories()', doc.categories(), true);
+  html.createEntry('doc.sections()', doc.sections());
+  html.createEntry('doc.paragraphs()', doc.paragraphs());
+  html.createEntry('doc.sentences()', doc.sentences());
+  html.createEntry('doc.images()', doc.images());
+  html.createImageList(doc.images());
+  html.createLinksHtml('doc.links()', doc.links());
+  html.createEntry('doc.lists()', doc.lists());
+  html.createEntry('doc.tables()', doc.tables());
+  html.createEntry('doc.templates()', doc.templates());
+  html.createEntry('doc.infoboxes()', doc.infoboxes());
+  html.createEntry('doc.references()', doc.references());
+  html.createEntry('doc.text()', doc.text(), true);
+  html.createEntry('doc.json()', JSON.stringify(doc.json()), true);
+  html.createEntry('doc.wikitext()', doc.wikitext(), true);
 }
 
 
 function showSectionApi(section) {
-  let msg = '<br><h2>let section = doc.sections()[0]</h2>';
+  html.createApiSectionHeader('let section = doc.sections()[0]');
 
-  msg += addToMsg('section.title()', section.title());
-  msg += addToMsg('section.index()', section.index());
-  msg += addToMsg('section.indentation()', section.indentation());
-  msg += addToMsg('section.coordinates()', section.coordinates());
+  html.createEntry('section.title()', section.title());
+  html.createEntry('section.index()', section.index());
+  html.createEntry('section.indentation()', section.indentation());
+  html.createEntry('section.coordinates()', section.coordinates());
 
-  msg += showCount('section.paragraphs', section.paragraphs());
-  msg += showCount('section.sentences', section.sentences());
-  msg += showCount('section.images', section.images());
-  msg += showPartialLinkList('section.links', section.links());
-  msg += showCount('section.interwiki', section.interwiki());
+  html.createEntry('section.paragraphs()', section.paragraphs());
+  html.createEntry('section.sentences()', section.sentences());
+  html.createEntry('section.images()', section.images());
+  html.createLinksHtml('section.links()', section.links());
+  html.createEntry('section.interwiki()', section.interwiki());
 
-  msg += showCount('section.lists', section.lists());
-  msg += showCount('section.tables', section.tables());
-  msg += showCount('section.templates', section.templates());
-  msg += showCount('section.infoboxes', section.infoboxes());
-  msg += showCount('section.references', section.references());
+  html.createEntry('section.lists()', section.lists());
+  html.createEntry('section.tables()', section.tables());
+  html.createEntry('section.templates()', section.templates());
+  html.createEntry('section.infoboxes()', section.infoboxes());
+  html.createEntry('section.references()', section.references());
 
-  msg += addToMsg('section.remove()', ); //section.remove());
-  msg += addToMsg('section.nextSibling()', section.nextSibling());
-  msg += addToMsg('section.lastSibling()', section.lastSibling());
-  msg += addToMsg('section.children()', section.children());
-  msg += addToMsg('section.parent()', section.parent());
+  html.createEntry('section.remove()', ''); //section.remove());
+  html.createEntry('section.nextSibling()', section.nextSibling());
+  html.createEntry('section.lastSibling()', section.lastSibling());
+  html.createEntry('section.children()', section.children());
+  html.createEntry('section.parent()', section.parent());
 
-  msg += showPartialText('section.text', section.text());
-  msg += showPartialText('section.json', JSON.stringify(section.json()));
-  msg += showPartialText('section.wikitext', section.wikitext());
-
-  return msg;
+  html.createEntry('section.text()', section.text());
+  html.createEntry('section.json()', JSON.stringify(section.json()));
+  html.createEntry('section.wikitext()', section.wikitext());
 }
 
+
 function showParagraphApi(paragraph) {
-  let msg = '<br><h2>let paragraph = doc.paragraphs()[0]</h2>';
+  html.createApiSectionHeader('let paragraph = doc.paragraphs()[0]');
 
-  msg += showCount('paragraph.sentences', paragraph.sentences());
-  msg += showCount('paragraph.references', paragraph.references());
-  msg += showCount('paragraph.images', paragraph.images());
-  msg += showCount('paragraph.links', paragraph.links());
-  msg += showPartialLinkList('paragraph.links', paragraph.links());
-  msg += showCount('paragraph.interwiki', paragraph.interwiki());
-  msg += showCount('paragraph.lists', paragraph.lists());
+  html.createEntry('paragraph.sentences()', paragraph.sentences());
+  html.createEntry('paragraph.references()', paragraph.references());
+  html.createEntry('paragraph.images()', paragraph.images());
+  html.createLinksHtml('paragraph.links()', paragraph.links());
+  html.createEntry('paragraph.interwiki()', paragraph.interwiki());
+  html.createEntry('paragraph.lists()', paragraph.lists());
 
-  msg += showPartialText('paragraph.text', paragraph.text());
-  msg += showPartialText('paragraph.json', JSON.stringify(paragraph.json()));
-  msg += showPartialText('paragraph.wikitext', paragraph.wikitext());
-
-  return msg;
+  html.createEntry('paragraph.text()', paragraph.text());
+  html.createEntry('paragraph.json()', JSON.stringify(paragraph.json()));
+  html.createEntry('paragraph.wikitext()', paragraph.wikitext());
 }
 
 
 function showSentenceApi(sentence) {
-  let msg = '<br><h2>let sentence = doc.sentences()[0]</h2>';
-  msg += showPartialLinkList('sentence.links', sentence.links());
-  msg += showCount('sentence.bolds', sentence.bolds());
-  msg += showCount('sentence.italics', sentence.italics());
+  html.createApiSectionHeader('let sentence = doc.sentences()[0]');
+  html.createLinksHtml('sentence.links()', sentence.links());
+  html.createEntry('sentence.bolds()', sentence.bolds());
+  html.createEntry('sentence.italics()', sentence.italics());
 
-  msg += showPartialText('sentence.text', sentence.text());
-  msg += showPartialText('sentence.json', JSON.stringify(sentence.json()));
-  msg += showPartialText('sentence.wikitext', sentence.wikitext());
-
-  return msg;
+  html.createEntry('sentence.text()', sentence.text());
+  html.createEntry('sentence.json()', JSON.stringify(sentence.json()));
+  html.createEntry('sentence.wikitext()', sentence.wikitext());
 }
 
 
 function showImageApi(image) {
-  let msg = '<br><h2>let image = doc.images()[0]</h2>';
-  msg += addToMsg('image.url()', image.url());
-  msg += addToMsg('image.thumbnail()', image.thumbnail());
-  msg += showPartialLinkList('image.links', image.links());
-  msg += addToMsg('image.format()', image.format());
+  html.createApiSectionHeader('let image = doc.images()[0]');
+  html.createEntry('image.url()', image.url());
+  html.createEntry('image.thumbnail()', image.thumbnail());
+  html.createLinksHtml('image.links()', image.links());
+  html.createEntry('image.format()', image.format());
 
-  msg += showPartialText('image.text', image.text());
-  msg += showPartialText('image.json', JSON.stringify(image.json()));
-  msg += showPartialText('image.wikitext', image.wikitext());
-
-  return msg;
+  html.createEntry('image.text()', image.text());
+  html.createEntry('image.json()', JSON.stringify(image.json()));
+  html.createEntry('image.wikitext()', image.wikitext());
 }
 
 
 function showTemplateApi(template) {
-  let msg = '<br><h2>let template = doc.templates()[0]</h2>';
+  html.createApiSectionHeader('let template = doc.templates()[0]');
 
-  msg += showPartialText('template.text', template.text());
-  msg += showPartialText('template.json', JSON.stringify(template.json()));
-  msg += showPartialText('template.wikitext', template.wikitext());
-
-  return msg;
+  html.createEntry('template.text()', template.text());
+  html.createEntry('template.json()', JSON.stringify(template.json()));
+  html.createEntry('template.wikitext()', template.wikitext());
 }
 
 
 function showInfoboxApi(infobox) {
-  let msg = '<br><h2>let infobox = doc.infoboxes()[0]</h2>';
-  msg += showPartialLinkList('infobox.links', infobox.links());
+  html.createApiSectionHeader('let infobox = doc.infoboxes()[0]');
+  html.createLinksHtml('infobox.links()', infobox.links());
 
-  msg += addToMsg('infobox.keyValue()', showKeyValObj(infobox.keyValue()));
+  html.createEntry('infobox.keyValue()', showKeyValObj(infobox.keyValue()));
 
-  msg += addToMsg('infobox.image()', infobox.image());
-  msg += addToMsg('infobox.get("name")', infobox.get('name'));
-  msg += addToMsg('infobox.template()', infobox.template());
+  html.createEntry('infobox.image()', infobox.image());
+  html.createEntry('infobox.get("name")', infobox.get('name'));
+  html.createEntry('infobox.template()', infobox.template());
 
-  msg += showPartialText('infobox.text', infobox.text());
-  msg += showPartialText('infobox.json', JSON.stringify(infobox.json()));
-  msg += showPartialText('infobox.wikitext', infobox.wikitext());
-
-  return msg;
+  html.createEntry('infobox.text()', infobox.text());
+  html.createEntry('infobox.json()', JSON.stringify(infobox.json()));
+  html.createEntry('infobox.wikitext()', infobox.wikitext());
 }
 
 
 function showListApi(list) {
-  let msg = '<br><h2>let list = doc.lists()[0]</h2>';
+  html.createApiSectionHeader('let list = doc.lists()[0]');
 
-  msg += showCount('list.lines', list.lines());
-  msg += showPartialLinkList('list.links', list.links());
+  html.createEntry('list.lines()', list.lines());
+  html.createLinksHtml('list.links()', list.links());
 
-  msg += showPartialText('list.text', list.text());
-  msg += showPartialText('list.json', JSON.stringify(list.json()));
-  msg += showPartialText('list.wikitext', list.wikitext());
-
-  return msg;
+  html.createEntry('list.text()', list.text());
+  html.createEntry('list.json()', JSON.stringify(list.json()));
+  html.createEntry('list.wikitext()', list.wikitext());
 }
 
 
 function showReferenceApi(reference) {
-  let msg = '<br><h2>let reference = doc.references()[0]</h2>';
-  msg += addToMsg('reference.title()', reference.title());
-  msg += showPartialLinkList('reference.links', reference.links());
+  html.createApiSectionHeader('let reference = doc.references()[0]');
+  html.createEntry('reference.title()', reference.title());
+  html.createLinksHtml('reference.links()', reference.links());
 
-  msg += showPartialText('reference.text', reference.text());
-  msg += showPartialText('reference.json', JSON.stringify(reference.json()));
-  msg += showPartialText('reference.wikitext', reference.wikitext());
-
-  return msg;
+  html.createEntry('reference.text()', reference.text());
+  html.createEntry('reference.json()', JSON.stringify(reference.json()));
+  html.createEntry('reference.wikitext()', reference.wikitext());
 }
 
 
 function showTableApi(table) {
-  let msg = '<br><h2>let table = doc.tables()[0]</h2>';
+  html.createApiSectionHeader('let table = doc.tables()[0]');
 
-  msg += showPartialLinkList('table.links', table.links());
-  msg += addToMsg('table.keyValue()', showKeyValObj(table.keyValue()));
+  html.createLinksHtml('table.links()', table.links());
+  html.createEntry('table.keyValue()', showKeyValObj(table.keyValue()));
 
-  msg += showPartialText('table.text', table.text());
-  msg += showPartialText('table.json', JSON.stringify(table.json()));
-  msg += showPartialText('table.wikitext', table.wikitext());
-
-  return msg;
-}
-
-function showPartialLinkList(title, linkList) {
-  let msg = '';
-
-  if (Array.isArray(linkList) && linkList.length > 0) {
-    let linkStr = [];
-    for (let i = 0, iCount = linkList.length; i < iCount; ++i) {
-      let page = linkList[i].page();
-      if (page && page !== 'undefined') {
-        linkStr.push(page);
-      }
-    }
-    linkStr = ': [' + linkStr.join(', ');
-    if (linkStr.length > 200) {
-      linkStr = linkStr.substring(0, 200) + '...]';
-    } else {
-      linkStr += ']';
-    }
-
-    msg += showCount(title, linkList, linkStr);
-  }
-
-  return msg;
-}
-
-function createImageListHtml(imageList) {
-  let msg = '';
-
-  if (Array.isArray(imageList) && imageList.length > 0) {
-    msg += '<div class=imageListContainer>';
-    for (let i = 0, iCount = imageList.length; i < iCount; ++i) {
-      let image = imageList[i];
-      msg += '<img class=image src="' + image.url() + '"/>';
-    }
-    msg += '</div>';
-  }
-
-  return msg;
-}
-
-function showCount(listName, list, optStr='') {
-  list = list || [];  // force list to exist
-  let subName = listName.substring(listName.indexOf('.') + 1);
-  let str = 'there are ' + NF(list.length) + ' ' + subName + optStr;
-  return addToMsg(listName + '()', str);
-}
-
-
-function showPartialText(listName, text) {
-  text = text || '';  // force text to exist
-  let truncatedStr = text.substring(0, TEXT_SHOW_LENGTH);
-  if (text.length > truncatedStr.length) {
-    truncatedStr += '...';
-  }
-
-  if (truncatedStr.length > 0) {
-    truncatedStr = ': ' + truncatedStr;
-  }
-
-  let str = 'text is ' + NF(text.length) + ' chars' + truncatedStr;
-
-  return addToMsg(listName + '()', str);
+  html.createEntry('table.text()', table.text());
+  html.createEntry('table.json()', JSON.stringify(table.json()));
+  html.createEntry('table.wikitext()', table.wikitext());
 }
 
 
 function showKeyValObj(keyValObj) {
   let entryList = Object.entries(keyValObj);
   let entryCount = entryList.length;
-  let msg = 'there are ' + entryCount + ' key-value pairs: ';
+  let result = 'there are ' + entryCount + ' key-value pairs: ';
 
   for (let i = 0; i < entryCount; ++i) {
-    msg += '[' + entryList[i].join(':') + '] ';
+    result += '[' + entryList[i].join(':') + '] ';
   }
 
-  if (msg.length > 90) {
-    msg = msg.substring(0, 90) + '...';
+  if (result.length > 90) {
+    result = result.substring(0, 90) + '...';
   }
 
-  return msg;
-}
-
-
-function addToMsg(key='<br>', value='') {
-  return '<div class=line>' +
-      '<div class=key>' + key + '</div> ' +
-      '<div class=value>' + value + '</div>' +
-    '</div>';
+  return result;
 }
