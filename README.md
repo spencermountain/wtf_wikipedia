@@ -306,6 +306,8 @@ let s = wtf(page).sentences()[4]
 s.links()
 s.bolds()
 s.italics()
+s.text()
+s.wikitext()
 ```
 
 #### **doc.categories()**
@@ -553,6 +555,7 @@ wtf
 - **.links()** - list of all links
 - **.bolds()** - list of all bold texts
 - **.italics()** - list of all italic formatted text
+- **.text()** - generate readable plaintext
 - **.json()** - return all sentence data
 - **.wikitext()** - original wiki markup
 
@@ -562,8 +565,8 @@ wtf
 - **.thumbnail()** - return url to thumbnail (pass `size` to customize)
 - **.links()** - any links from the caption (if present)
 - **.format()** - get file format (e.g. `jpg`)
-- **.json()** - return some generic metadata for this image
 - **.text()** - does nothing
+- **.json()** - return some generic metadata for this image
 - **.wikitext()** - original wiki markup
 
 ### Template
