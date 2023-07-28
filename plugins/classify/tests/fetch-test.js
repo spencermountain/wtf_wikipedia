@@ -1,4 +1,5 @@
-import test from 'tape'
+/* eslint-disable no-unused-vars */
+// import test from 'tape'
 import wtf from './_lib.js'
 
 let arr = [
@@ -75,15 +76,17 @@ const dim = str => '\x1b[2m' + str + '\x1b[0m'
 const blue = str => '\x1b[34m' + str + '\x1b[0m'
 const magenta = str => '\x1b[35m' + str + '\x1b[0m'
 
-for (let i = 0; i < arr.length; i += 1) {
-  let [name, type] = arr[i]
-  let doc = await wtf.fetch(name)
-  let res = doc.classify()
-  if (res.type === type) {
-    console.log(green('• '), dim(name))
-  } else {
-    console.log('❌ ', dim(name), blue(res.type), magenta(type))
+const doit = async function () {
+  for (let i = 0; i < arr.length; i += 1) {
+    let [name, type] = arr[i]
+    let doc = await wtf.fetch(name)
+    let res = doc.classify()
+    if (res.type === type) {
+      console.log(green('• '), dim(name))
+    } else {
+      console.log(red('❌ '), dim(name), blue(res.type), magenta(type))
+    }
   }
 }
-
+// doit()
 
