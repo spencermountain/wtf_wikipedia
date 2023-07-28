@@ -1,4 +1,4 @@
-import schema from './index'
+import schema from './index.js'
 /** add spaces at the end */
 const indent = function (str = '', width) {
   let pad = ''.padStart(width, ' ')

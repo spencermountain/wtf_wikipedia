@@ -2,10 +2,6 @@ export default {
   name: 'Airport',
   //
   children: {},
-  properties: {
-    airlines: () => { },
-    runways: () => { },
-  },
   //
   categories: {
     mapping: [],

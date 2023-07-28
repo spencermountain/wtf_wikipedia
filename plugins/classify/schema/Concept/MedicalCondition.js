@@ -1,11 +1,11 @@
 export default {
-  name: 'BasketballPlayer',
+  name: 'MedicalCondition',
   //
   children: {},
   //
   categories: {
     mapping: [],
-    patterns: [/basketball players/],
+    patterns: [],
   },
   //
   descriptions: {
@@ -13,7 +13,7 @@ export default {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: ['medical_condition_(new)', 'medical_condition', 'disease'],
     patterns: [],
   },
   //

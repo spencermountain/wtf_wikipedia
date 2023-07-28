@@ -8,9 +8,6 @@ export default {
     Bridge,
     Airport
   },
-  properties: {
-    date_created: () => { },
-  },
   //
   categories: {
     mapping: [],
@@ -31,15 +28,12 @@ export default {
       'airport',
       'bridge',
       'building',
+      'lighthouse',
+      'military_structure',
       'power_station',
       'religious_building',
+      'shopping_mall',
       'stadium',
-      'uk school',
-      'military structure',
-      'religious building',
-      'shopping mall',
-      'lighthouse',
-      'power station',
     ],
     patterns: [],
   },

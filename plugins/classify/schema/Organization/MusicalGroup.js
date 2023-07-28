@@ -2,9 +2,6 @@ export default {
   name: 'MusicalGroup',
   //
   children: {},
-  properties: {
-    albums: () => { },
-  },
   //
   categories: {
     mapping: [
@@ -34,7 +31,7 @@ export default {
   },
   //
   infoboxes: {
-    mapping: ['musical_artist'],
+    mapping: ['musical_artist', 'marching_band'],
     patterns: [],
   },
   //

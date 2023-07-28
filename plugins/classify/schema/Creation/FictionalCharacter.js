@@ -2,7 +2,6 @@ export default {
   name: 'FictionalCharacter',
   //
   children: {},
-  properties: {},
   //
   categories: {
     mapping: [],
@@ -15,16 +14,16 @@ export default {
   //
   infoboxes: {
     mapping: [
+      'animanga_character',
       'character',
       'comics_character',
+      'd&d_creature',
+      'doctor_who_character',
+      'mythical_creature',
       'soap_character',
-      'mythical creature',
-      'd&d creature',
-      'vg character',
-      'animanga character',
-      'video game character',
-      'doctor who character',
-      'tolkien character',
+      'tolkien_character',
+      'vg_character',
+      'video_game_character',
     ],
     patterns: [],
   },

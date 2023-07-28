@@ -13,7 +13,7 @@ export default {
   },
   //
   infoboxes: {
-    mapping: ['political_party', 'political party'],
+    mapping: ['political_party'],
     patterns: [],
   },
   //

@@ -1,9 +1,6 @@
 export default {
   name: 'TVShow',
   children: {},
-  properties: {
-    seasons: () => { },
-  },
   //
   categories: {
     mapping: [],

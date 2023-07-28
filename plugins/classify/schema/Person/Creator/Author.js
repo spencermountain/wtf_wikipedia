@@ -2,15 +2,11 @@ export default {
   name: 'Author',
   //
   children: {},
-  properties: {
-    works: () => { },
-  },
   //
   categories: {
     mapping: [
       '20th-century american novelists',
       'american male novelists',
-      'american film directors',
       '21st-century american novelists',
       'american film producers',
       'american male screenwriters',
@@ -32,6 +28,11 @@ export default {
       'writers from new york city',
       '21st-century women writers',
       'english male writers',
+      'academic',
+      'art historian',
+      'economist',
+      'philosopher',
+      'theologian',
     ],
     patterns: [/novelists from ./],
   },

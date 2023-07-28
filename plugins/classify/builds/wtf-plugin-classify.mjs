@@ -1,4 +1,4 @@
-/* wtf-plugin-classify 2.0.0  MIT */
+/* wtf-plugin-classify 2.1.0  MIT */
 var AmericanFootballPlayer = {
   name: 'AmericanFootballPlayer',
   //
@@ -6,7 +6,7 @@ var AmericanFootballPlayer = {
   //
   categories: {
     mapping: [],
-    patterns: [],
+    patterns: [/football players/],
   },
   //
   descriptions: {
@@ -41,7 +41,7 @@ var BaseballPlayer = {
   //
   categories: {
     mapping: [],
-    patterns: [],
+    patterns: [/baseball players/],
   },
   //
   descriptions: {
@@ -76,7 +76,7 @@ var FootballPlayer = {
   //
   categories: {
     mapping: [],
-    patterns: [],
+    patterns: [/ f.c. players/, /soccer players/],
   },
   //
   descriptions: {
@@ -111,7 +111,7 @@ var BasketballPlayer = {
   //
   categories: {
     mapping: [],
-    patterns: [],
+    patterns: [/basketball players/],
   },
   //
   descriptions: {
@@ -145,8 +145,69 @@ var HockeyPlayer = {
   children: {},
   //
   categories: {
-    mapping: [],
-    patterns: [],
+    mapping: [
+      'stanley cup champions',
+      'anaheim ducks players',
+      'arizona coyotes players',
+      'atlanta flames players',
+      'atlanta thrashers players',
+      'boston bruins players',
+      'brooklyn americans players',
+      'buffalo sabres players',
+      'calgary flames players',
+      'california golden seals players',
+      'carolina hurricanes players',
+      'chicago blackhawks players',
+      'cleveland barons (nhl) players',
+      'colorado avalanche players',
+      'colorado rockies (nhl) players',
+      'columbus blue jackets players',
+      'dallas stars players',
+      'detroit cougars players',
+      'detroit falcons players',
+      'detroit red wings players',
+      'edmonton oilers players',
+      'florida panthers players',
+      'hamilton tigers (ice hockey) players',
+      'hartford whalers players',
+      'kansas city scouts players',
+      'los angeles kings players',
+      'mighty ducks of anaheim players',
+      'minnesota north stars players',
+      'minnesota wild players',
+      'montreal canadiens players',
+      'montreal maroons players',
+      'montreal wanderers (nhl) players',
+      'nashville predators players',
+      'new jersey devils players',
+      'new york americans players',
+      'new york islanders players',
+      'new york rangers players',
+      'oakland seals players',
+      'ottawa senators (1917) players',
+      'ottawa senators players',
+      'philadelphia flyers players',
+      'philadelphia quakers (nhl) players',
+      'phoenix coyotes players',
+      'pittsburgh penguins players',
+      'pittsburgh pirates (nhl) players',
+      'quebec bulldogs players',
+      'quebec nordiques players',
+      'san jose sharks players',
+      'seattle kraken players',
+      'st. louis blues players',
+      'st. louis eagles players',
+      'tampa bay lightning players',
+      'toronto arenas players',
+      'toronto maple leafs players',
+      'toronto st. pats players',
+      'vancouver canucks players',
+      'vegas golden knights players',
+      'washington capitals players',
+      'winnipeg jets (1979–1996) players',
+      'winnipeg jets players',
+    ],
+    patterns: [/ice hockey players/],
   },
   //
   descriptions: {
@@ -154,7 +215,7 @@ var HockeyPlayer = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: ['ice_hockey_player', 'hockey_team_player'],
     patterns: [],
   },
   //
@@ -177,9 +238,6 @@ var HockeyPlayer = {
 var Athlete = {
   name: 'Athlete',
   //
-  properties: {
-    leagues: () => { },
-  },
   children: {
     AmericanFootballPlayer,
     BaseballPlayer,
@@ -210,10 +268,11 @@ var Athlete = {
       'cyclist',
       'field_hockey_player',
       'figure_skater',
+      'football_biography',
       'gaa_player',
       'golfer',
       'gymnast',
-      'ice_hockey_player',
+
       'lacrosse_player',
       'martial_artist',
       'mlb_player',
@@ -229,21 +288,6 @@ var Athlete = {
       'tennis_biography',
       'volleyball_biography',
       'volleyball_player',
-      'hockey team player',
-      'football biography',
-      'baseball biography',
-      'ice hockey player',
-      'nfl player',
-      'basketball biography',
-      'professional wrestler',
-      'tennis biography',
-      'afl biography',
-      'nfl biography',
-      'rugby biography',
-      'rugby league biography',
-      'nba biography',
-      'figure skater',
-      'gaa player',
     ],
     patterns: [],
   },
@@ -275,52 +319,10 @@ var Athlete = {
   },
 };
 
-var Actor = {
-  name: 'Actor',
-  //
-  children: {},
-  properties: {
-    films: () => { },
-    tv_shows: () => { },
-  },
-  //
-  categories: {
-    mapping: ['male actors from new york city'],
-    patterns: [/actresses/, /actors from ./, /actor stubs$/, / (actors|actresses)$/],
-  },
-  //
-  descriptions: {
-    patterns: [/(actor|actress)/],
-  },
-  //
-  infoboxes: {
-    mapping: ['actor'],
-    patterns: [],
-  },
-  //
-  sections: {
-    mapping: [],
-    patterns: [],
-  },
-  //
-  templates: {
-    mapping: [],
-    patterns: [/actor-stub$/],
-  },
-  //
-  titles: {
-    mapping: ['actor', 'actress'],
-    patterns: [],
-  },
-};
-
 var Politician = {
   name: 'Politician',
   //
   children: {},
-  properties: {
-    parties: () => { },
-  },
   //
   categories: {
     mapping: [
@@ -349,7 +351,7 @@ var Politician = {
     patterns: [
       /politicians from ./,
       /politician stubs$/,
-      /. (democrats|republicans|politicians)$/,
+      /. politicians$/, //democrats|republicans
       /mayors of ./,
     ],
   },
@@ -359,25 +361,103 @@ var Politician = {
   },
   //
   infoboxes: {
+    // transcluded to officeholder
     mapping: [
+      'am',
+      'ambassador',
+      'canadian_mp',
+      'canadian_politician',
+      'canadian_senator',
       'canadianmp',
-      'governor',
-      'indian_politician',
-      'mp',
-      'officeholder',
-      'politician',
-      'politician_(general)',
-      'president',
-      'roman_emperor',
-      'state_representative',
-      'state_senator',
+      'canadiansenator',
+      'candidate',
+      'chairman',
+      'chancellor',
+      'chief_executive',
+      'chief_justice',
+      'civil_servant',
+      'congressional_candidate',
       'congressman',
-      'prime minister',
-      'indian politician',
+      'congressperson',
+      'congresswoman',
+      'defence_minister',
+      'defense_minister',
+      'deputy_first_minister',
+      'deputy_prime_minister',
+      'doge',
+      'eritrea_cabinet_official',
+      'first_gentleman',
+      'first_lady',
+      'first_minister',
+      'general_secretary',
+      'governor_general',
+      'governor-elect',
+      'governor-general',
+      'governor',
+      'indian_government_official',
+      'indian_politician',
+      'league_commissioner',
+      'lt_governor',
+      'mayor',
+      'member_of_parliament',
+      'member_of_state_duma',
+      'mep',
+      'mla',
+      'mp',
+      'mpp',
+      'msp',
+      'new_york_state_senator',
+      'office_holder',
+      'officeholder_infobox',
+      'officeholder',
+      'ontariompp',
+      'people\'s_deputy',
+      'pm',
+      'politician_(general)',
+      'politician_basic',
+      'politician_infobox',
+      'politician',
+      'politicien',
+      'premier',
+      'president-elect',
+      'president',
+      'prime_minister-elect',
+      'prime_minister',
+      'quebecmna',
+      'representative_elect',
+      'representative-elect',
+      'roman_emperor',
+      'royalofficeholder',
+      'scc_chief_justice',
+      'scc_puisne_justice',
+      'second_gentleman',
+      'second_lady',
+      'secretary-general',
+      'secretary',
+      'senator-elect',
       'senator',
-      'state representative',
-      'state senator',
-      'us cabinet official',
+      'speaker',
+      'spouse_of_the_president',
+      'spouse_of_the_vice_president',
+      'state_representative',
+      'state_sc_associate_justice',
+      'state_sc_justice',
+      'state_senator',
+      'ukrainian_legislative_office',
+      'university_chancellor',
+      'university_president',
+      'university_pro-chancellor',
+      'university_rector',
+      'university_vice-chancellor',
+      'uruguayan_politician',
+      'us_ambassador',
+      'us_associate_justice',
+      'us_cabinet_official',
+      'us_chief_justice',
+      'us_territorial_governor',
+      'vice_president',
+      'vice-president',
+      'welsh_assembly_member',
     ],
     patterns: [],
   },
@@ -406,14 +486,45 @@ var Politician = {
   },
 };
 
+var Actor = {
+  name: 'Actor',
+  //
+  children: {},
+  //
+  categories: {
+    mapping: [],
+    patterns: [/(actors|actresses)/i],
+  },
+  //
+  descriptions: {
+    patterns: [/(actor|actress)/],
+  },
+  //
+  infoboxes: {
+    mapping: ['actor'],
+    patterns: [],
+  },
+  //
+  sections: {
+    mapping: [],
+    patterns: [],
+  },
+  //
+  templates: {
+    mapping: [],
+    patterns: [/actor-stub$/],
+  },
+  //
+  titles: {
+    mapping: ['actor', 'actress'],
+    patterns: [],
+  },
+};
+
 var Musician = {
   name: 'Musician',
   //
   children: {},
-  properties: {
-    groups: () => { },
-    instruments: () => { },
-  },
   //
   categories: {
     mapping: [
@@ -492,8 +603,9 @@ var Musician = {
       'slide guitarists',
       'guitarists from texas',
       'vaudeville performers',
+      'classical composer',
     ],
-    patterns: [/musicians from ./, /(singers|songwriters|painters|poets)/],
+    patterns: [/musicians from ./, /(singers|songwriters)/],
   },
   //
   descriptions: {
@@ -525,15 +637,11 @@ var Author = {
   name: 'Author',
   //
   children: {},
-  properties: {
-    works: () => { },
-  },
   //
   categories: {
     mapping: [
       '20th-century american novelists',
       'american male novelists',
-      'american film directors',
       '21st-century american novelists',
       'american film producers',
       'american male screenwriters',
@@ -555,6 +663,11 @@ var Author = {
       'writers from new york city',
       '21st-century women writers',
       'english male writers',
+      'academic',
+      'art historian',
+      'economist',
+      'philosopher',
+      'theologian',
     ],
     patterns: [/novelists from ./],
   },
@@ -584,21 +697,89 @@ var Author = {
   },
 };
 
+var Director = {
+  name: 'Director',
+  //
+  children: {},
+  //
+  categories: {
+    mapping: ['directors of palme d\'or winners', 'best director aacta international award winners'],
+    patterns: [/film directors/i],
+  },
+  //
+  descriptions: {
+    patterns: [/director/],
+  },
+  //
+  infoboxes: {
+    mapping: ['director'],
+    patterns: [],
+  },
+  //
+  sections: {
+    mapping: [],
+    patterns: [],
+  },
+  //
+  templates: {
+    mapping: [],
+    patterns: [/director-stub$/],
+  },
+  //
+  titles: {
+    mapping: ['director'],
+    patterns: [],
+  },
+};
+
+var Creator = {
+  name: 'Creator',
+  //
+  children: {
+    Actor,
+    Musician,
+    Author,
+    Director,
+  },
+  //
+  categories: {
+    mapping: ['fellows of the royal society'],
+    patterns: [/(engineers|inventors|artists|painters|sculpters|choreographers)/],
+  },
+  //
+  descriptions: {
+    patterns: [],
+  },
+  //
+  infoboxes: {
+    mapping: [
+      'artist',
+    ],
+    patterns: [],
+  },
+  //
+  sections: {
+    mapping: [],
+    patterns: [/filmography/, /bibliography/, /collaberators/, /early influences/, /discovery/],
+  },
+  //
+  templates: {
+    mapping: [],
+    patterns: [],
+  },
+  //
+  titles: {
+    mapping: [],
+    patterns: [],
+  },
+};
+
 var Person = {
   name: 'Person',
   children: {
     Athlete,
-    Actor,
+    Creator,
     Politician,
-    Musician,
-    Author,
-  },
-  properties: {
-    birth_date: () => { },
-    birth_place: () => { },
-    nationality: () => { },
-    death_date: () => { },
-    death_place: () => { },
   },
   //
   categories: {
@@ -606,7 +787,6 @@ var Person = {
       'living people',
       'possibly living people',
       'year of birth unknown',
-      'fellows of the royal society',
       'members of the privy council of the united kingdom',
       'american people of english descent',
       'guggenheim fellows',
@@ -663,6 +843,55 @@ var Person = {
       'roman catholic monarchs',
       'popes',
       'italian popes',
+      // redirects to infobox person
+      'actor voice',
+      'actor',
+      'actress',
+      'adult biography',
+      'adult female',
+      'adult male',
+      'architect',
+      'astronaut',
+      'aviator',
+      'bio',
+      'biography',
+      'celebrity',
+      'chef',
+      'clergy',
+      'criminal',
+      'dancer',
+      'director',
+      'engineer',
+      'entertainer',
+      'fashion designer',
+      'film actor',
+      'film director',
+      'human being',
+      'human',
+      'indian businessmen',
+      'journalist',
+      'medical person',
+      'model',
+      'pageant titleholder',
+      'people',
+      'performer',
+      'person ii',
+      'person',
+      'person/measurements',
+      'personality',
+      'personbox',
+      'photographer',
+      'pirate',
+      'police officer',
+      'presenter',
+      'professional bowler',
+      'real person',
+      'scientist',
+      'sports announcer',
+      'spy',
+      'student',
+      'trade unionist',
+      'victim',
     ],
     patterns: [
       /[0-9]{4} births/,
@@ -684,19 +913,26 @@ var Person = {
   //
   infoboxes: {
     mapping: [
+
       'adult_biography',
+      'archbishop',
       'architect',
+      'astronaut',
+      'bishop',
       'chef',
       'chess_player',
+      'chinese-language_singer_and_actor',
       'christian_leader',
+      'coa_wide',
       'college_coach',
       'college_football_player',
       'comedian',
       'comics_creator',
       'criminal',
+      'economist',
       'engineer',
+      'f1_driver',
       'fashion_designer',
-      'football_biography',
       'gridiron_football_person',
       'handball_biography',
       'hindu_leader',
@@ -705,9 +941,11 @@ var Person = {
       'mass_murderer',
       'medical_person',
       'military_person',
+      'minister',
       'model',
       'monarch',
       'nascar_driver',
+      'pageant_titleholder',
       'person',
       'philosopher',
       'police_officer',
@@ -715,38 +953,13 @@ var Person = {
       'racing_driver',
       'religious_biography',
       'royalty',
+      'saint',
+      'scholar',
+      'scientist',
+      'snooker_player',
       'sportsperson',
       'wrc_driver',
       'writer',
-      'snooker player',
-      'military person',
-      'college coach',
-      'f1 driver',
-      'gridiron football person',
-      'racing driver',
-      'martial artist',
-      'chinese-language singer and actor',
-      'astronaut',
-      'nascar driver',
-      'adult biography',
-      'coa wide',
-      'chess player',
-      'pageant titleholder',
-
-      //religious person
-      'archbishop',
-      'minister',
-      'saint',
-      'bishop',
-      'christian leader',
-      'religious biography',
-      // artist
-      'artist',
-      'comics creator',
-      // academic
-      'economist',
-      'scholar',
-      'scientist',
     ],
     patterns: [],
   },
@@ -887,7 +1100,7 @@ var City = {
     mapping: [],
     patterns: [
       /^cities and towns in ./,
-      /(municipalities|settlements|villages|localities|townships) in ./,
+      /(^former )(municipalities|settlements|villages|localities|townships) in ./,
     ],
   },
   //
@@ -897,11 +1110,11 @@ var City = {
   //
   infoboxes: {
     mapping: [
-      'swiss town',
-      'city japan',
-      'municipality br',
-      'russian town',
-      'south african town 2011',
+      'swiss_town',
+      'city_japan',
+      'municipality_br',
+      'russian_town',
+      'south_african_town_2011',
     ],
     patterns: [],
   },
@@ -968,10 +1181,6 @@ var Jurisdiction = {
   children: {
     City,
     Country
-  },
-  properties: {
-    population: () => { },
-    leader: () => { },
   },
   //
   categories: {
@@ -1043,9 +1252,6 @@ var Bridge = {
   name: 'Bridge',
   //
   children: {},
-  properties: {
-    length: () => { },
-  },
   //
   categories: {
     mapping: [],
@@ -1081,10 +1287,6 @@ var Airport = {
   name: 'Airport',
   //
   children: {},
-  properties: {
-    airlines: () => { },
-    runways: () => { },
-  },
   //
   categories: {
     mapping: [],
@@ -1123,9 +1325,6 @@ var Structure = {
     Bridge,
     Airport
   },
-  properties: {
-    date_created: () => { },
-  },
   //
   categories: {
     mapping: [],
@@ -1146,15 +1345,12 @@ var Structure = {
       'airport',
       'bridge',
       'building',
+      'lighthouse',
+      'military_structure',
       'power_station',
       'religious_building',
+      'shopping_mall',
       'stadium',
-      'uk school',
-      'military structure',
-      'religious building',
-      'shopping mall',
-      'lighthouse',
-      'power station',
     ],
     patterns: [],
   },
@@ -1179,7 +1375,6 @@ var BodyOfWater = {
   name: 'BodyOfWater',
   //
   children: {},
-  properties: {},
   //
   categories: {
     mapping: [],
@@ -1191,7 +1386,7 @@ var BodyOfWater = {
   },
   //
   infoboxes: {
-    mapping: ['body_of_water', 'lake', 'river', 'sea', 'body of water'],
+    mapping: ['body_of_water', 'lake', 'river', 'sea'],
     patterns: [],
   },
   //
@@ -1218,10 +1413,6 @@ var Place = {
     Structure,
     BodyOfWater,
   },
-  properties: {
-    location: () => { },
-    coordinates: () => { },
-  },
   //
   categories: {
     mapping: [],
@@ -1245,97 +1436,75 @@ var Place = {
       'amusement_park',
       'ancient_site',
       'australian_place',
+      'belgium_municipality',
+      'canada_electoral_district',
       'casino',
       'cemetery',
       'church',
       'cricket_ground',
       'dam',
+      'ecoregion',
       'feature_on_mars',
+      'finnish_municipality/population_count',
       'former_country',
       'former_subdivision',
       'french_commune',
+      'gb_station',
+      'geobox',
       'german_location',
       'golf_facility',
+      'greek_dimos',
       'historic_site',
+      'historic_subdivision',
       'hospital',
       'hotel',
       'islands',
       'israel_village',
       'italian_comune',
+      'kommune',
       'launch_pad',
+      'london_station',
+      'lunar_crater',
       'military_memorial',
-      'military_structure',
       'monument',
-      'mountain',
       'mountain_pass',
       'mountain_range',
-      'museum',
+      'mountain',
       'neighborhood_portland_or',
+      'nycs',
       'oil_field',
       'park',
       'prison',
       'province_or_territory_of_canada',
-      'road',
       'road_small',
+      'road',
       'russian_inhabited_locality',
-      'russian_town',
       'russian_urban-type_settlement',
-      'school',
       'scotland_council_area',
       'settlement',
-      'shopping_mall',
       'south_african_subplace_2011',
       'state',
       'station',
       'street',
-      'swiss_town',
       'temple',
+      'theatre',
       'town_at',
+      'u.s._congressional_district',
+      'u.s._county',
       'u.s._metropolitan_area',
       'u.s._state',
+      'uk_constituency_main',
       'uk_constituency',
       'uk_disused_station',
       'uk_place',
-      'uk_school',
+      'uk_station',
       'unesco_world_heritage_site',
       'university_of_notre_dame_residence_hall',
       'venue',
       'waterfall',
       'windmill',
+      'world_heritage_site',
       'zoo',
-      'ecoregion',
-      'uk place',
-      'italian comune',
-      'geobox',
-      'australian place',
-      'french commune',
-      'german location',
-      'u.s. county',
-      'former country',
-      'road small',
-      'lunar crater',
-      'gb station',
-      'greek dimos',
-      'uk constituency main',
-      'finnish municipality/population count',
-      'ancient site',
-      'mountain range',
-      'london station',
-      'former subdivision',
-      'uk station',
-      'historic site',
-      'world heritage site',
-      'diocese',
-      'uk disused station',
-      'belgium municipality',
-      'uk constituency',
-      'theatre',
-      'canada electoral district',
-      'nycs',
-      'mountain pass',
-      'kommune',
-      'historic subdivision',
-      'u.s. congressional district',
     ],
     patterns: [],
   },
@@ -1423,9 +1592,6 @@ var MusicalGroup = {
   name: 'MusicalGroup',
   //
   children: {},
-  properties: {
-    albums: () => { },
-  },
   //
   categories: {
     mapping: [
@@ -1455,7 +1621,7 @@ var MusicalGroup = {
   },
   //
   infoboxes: {
-    mapping: ['musical_artist'],
+    mapping: ['musical_artist', 'marching_band'],
     patterns: [],
   },
   //
@@ -1512,6 +1678,7 @@ var Company = {
       'defunct video game companies',
       'companies formed by merger',
       'entertainment companies based in california',
+      'acquisition',
     ],
     patterns: [/companies (established|based) in ./],
   },
@@ -1521,7 +1688,41 @@ var Company = {
   },
   //
   infoboxes: {
-    mapping: [],
+    mapping: [
+      'advertising',
+      'airline_alliance',
+      'ambulance_company',
+      'architectural_practice',
+      'brand',
+      'bus_company',
+      'business_park',
+      'central_bank',
+      'certification_mark',
+      'company',
+      'company/unternehmen',
+      'disney_resort',
+      'economy',
+      'exchange',
+      'financial_index',
+      'fishery',
+      'industrial_process',
+      'interbank_network',
+      'law_firm',
+      'livery_company',
+      'loyalty_program',
+      'mine',
+      'mining',
+      'occupation',
+      'product',
+      'property_development',
+      'record_label',
+      'restaurant',
+      'television_channel',
+      'television_station',
+      'toy',
+      'u.s._national_banks',
+      'winery',
+    ],
     patterns: [],
   },
   //
@@ -1545,9 +1746,6 @@ var SportsTeam = {
   name: 'SportsTeam',
   //
   children: {},
-  properties: {
-    coaches: () => { },
-  },
   //
   categories: {
     mapping: [
@@ -1570,26 +1768,40 @@ var SportsTeam = {
   //
   infoboxes: {
     mapping: [
+      'baseball_team',
       'basketball_club',
-      'pro_hockey_team',
+      'college_baseball_team',
+      'college_basketball_team',
+      'college_cross_country_team',
+      'college_fencing_team',
+      'college_football_team',
+      'college_golf_team',
+      'college_gymnastics_team',
       'college_ice_hockey_team',
+      'college_lacrosse_team',
+      'college_rifle_team',
+      'college_rowing_team',
+      'college_sailing_team',
+      'college_ski_team',
       'college_soccer_team',
+      'college_softball_team',
+      'college_swim_team',
+      'college_tennis_team',
+      'college_track_and_field_team',
+      'college_volleyball_team',
+      'college_water_polo_team',
+      'college_wrestling_team',
       'cricket_team',
+      'football_club_infobox',
       'football_club',
+      'hockey_team',
+      'national_football_team',
       'non_test_cricket_team',
       'non-profit',
+      'pro_hockey_team',
       'rugby_league_club',
       'rugby_league_representative_team',
       'rugby_team',
-      'baseball team',
-      'football club',
-      'rugby team',
-      'national football team',
-      'basketball club',
-      'hockey team',
-      'rugby league club',
-      'football club infobox',
-      'cricket team',
     ],
     patterns: [],
   },
@@ -1625,7 +1837,7 @@ var PoliticalParty = {
   },
   //
   infoboxes: {
-    mapping: ['political_party', 'political party'],
+    mapping: ['political_party'],
     patterns: [],
   },
   //
@@ -1645,6 +1857,54 @@ var PoliticalParty = {
   },
 };
 
+var School = {
+  name: 'School',
+  //
+  children: {},
+  //
+  categories: {
+    mapping: [
+      'land-grant universities and colleges',
+    ],
+    patterns: [
+      /schools in ./,
+      /(secondary|primary|high|elementary|public|private) schools/,
+      /(schools|universities|colleges) established in [0-9]{4}/,
+    ],
+  },
+  //
+  descriptions: {
+    patterns: [/(private|public|high|middle|elementary|primary|secondary) school/],
+  },
+  //
+  infoboxes: {
+    mapping: [
+      'college',
+      'school',
+      'university',
+      'residential_college',
+      'law_school',
+      'uk_school',
+    ],
+    patterns: [],
+  },
+  //
+  sections: {
+    mapping: [],
+    patterns: [/alumni/],
+  },
+  //
+  templates: {
+    mapping: [],
+    patterns: [/-school-stub$/],
+  },
+  //
+  titles: {
+    mapping: [],
+    patterns: [],
+  },
+};
+
 var Organization = {
   name: 'Organization',
   //
@@ -1653,10 +1913,7 @@ var Organization = {
     Company,
     SportsTeam,
     PoliticalParty,
-  },
-  properties: {
-    leaders: () => { },
-    members: () => { },
+    School
   },
   //
   categories: {
@@ -1668,16 +1925,13 @@ var Organization = {
       'government-owned airlines',
       'baptist denominations in north america',
       'baptist denominations established in the 20th century',
-      'land-grant universities and colleges',
-      'organizations based in washington, d.c.',
       'video game publishers',
       'defunct motor vehicle manufacturers of the united states',
       'alternative rock groups from california',
     ],
     patterns: [
       /(organi[sz]ations|publications) based in /,
-      /(organi[sz]ations|publications|schools|awards) established in [0-9]{4}/,
-      /(secondary|primary) schools/,
+      /(organi[sz]ations|publications|awards) established in [0-9]{4}/,
       /military units/,
       /magazines/,
       /organi[sz]ation stubs$/,
@@ -1690,82 +1944,82 @@ var Organization = {
   //
   infoboxes: {
     mapping: [
+
       'airline',
+      'athletic_conference',
+      'brewery',
       'broadcasting_network',
+      'bus_transit',
+      'caste',
       'cbb_team',
       'choir',
-      'college',
-      'company',
+      'christian_denomination',
+      'clan',
+      'court',
+      'criminal_organization',
+      'detention_facility',
+      'diocese',
       'dot-com_company',
+      'ethnic_group',
+      'family',
+      'fictional_organisation',
       'film_awards',
       'film_festival',
+      'fire_department',
       'football_league',
+      'former_monarchy',
+      'fraternity',
       'gaa_club',
       'government_agency',
       'government_cabinet',
+      'government',
+      'grand_lodge',
+      'hereditary_title',
+      'india_university_ranking',
+      'institute',
+      'iwi',
       'journal',
       'laboratory',
       'law_enforcement_agency',
       'legislature',
       'library',
+      // 'magazine',
+      'military_gear',
+      'military_rank',
       'military_unit',
+      'monarchy',
+      'monastery',
+      'museum',
       'national_military',
       'ncaa_football_school',
       'newspaper',
       'nobility',
+      'observatory',
+      'order',
       'organization',
       'public_transit',
       'publisher',
       'radio_station',
       'rail_line',
       'rail_service',
-      'record_label',
+      'rail',
+      'religious_group',
       'school_district',
+      'sg_rail',
+      'space_agency',
       'sport_governing_body',
       'sports_league',
-      'television_channel',
+      'tribe',
       'tv_channel',
       'u.s._cabinet',
       'u.s._legislation',
       'uk_legislation',
-      'university',
-      'v8_supercar_team',
-      'former monarchy',
-      'criminal organization',
-      'radio station',
-      'military unit',
-      'government agency',
-      'rail line',
-      'record label',
-      'school district',
-      'tv channel',
-      'sports league',
-      'football league',
-      'worldscouting',
-      'sg rail',
-      'law enforcement agency',
-      'uk legislation',
-      'public transit',
-      'us university ranking',
-      'television channel',
-      'bus transit',
+      'uk_university_rankings',
       'union',
-      'broadcasting network',
-      'christian denomination',
-      'film awards',
-      'gaa club',
-      'fraternity',
-      'rail',
-      'rail service',
-      'national military',
-      'sport governing body',
-      'political party/seats',
-      'athletic conference',
-      'film festival',
-      'dot-com company',
-      'india university ranking',
-      'uk university rankings',
-      'government cabinet',
+      'us_university_ranking',
+      'v8_supercar_team',
+      'website',
+      'worldscouting',
     ],
     patterns: [],
   },
@@ -1827,9 +2081,6 @@ var Organization = {
 var Disaster = {
   name: 'Disaster',
   children: {},
-  properties: {
-    casualties: () => { },
-  },
   //
   categories: {
     mapping: ['retired atlantic hurricanes'],
@@ -1847,7 +2098,6 @@ var Disaster = {
       'earthquake',
       'hurricane',
       'pandemic',
-      'airliner accident',
     ],
     patterns: [],
   },
@@ -1929,7 +2179,7 @@ var MilitaryConflict = {
   },
   //
   infoboxes: {
-    mapping: ['military_conflict', 'military conflict', 'civil conflict', 'civilian attack'],
+    mapping: ['military_conflict', 'civilian_attack'],
     patterns: [],
   },
   //
@@ -1952,9 +2202,6 @@ var MilitaryConflict = {
 var SportsEvent = {
   name: 'SportsEvent',
   children: {},
-  properties: {
-    winners: () => { },
-  },
   //
   categories: {
     mapping: [
@@ -1975,45 +2222,36 @@ var SportsEvent = {
   infoboxes: {
     mapping: [
       'athletics_championships',
+      'australian_rules_football_season',
       'badminton_event',
       'boxingmatch',
+      'canadian_football_game',
+      'cricket_tour',
+      'cricket_tournament',
+      'cycling_race_report',
       'fila_wrestling_event',
       'football_club_season',
       'football_country_season',
       'football_league_season',
       'football_match',
       'football_tournament_season',
+      'football_tournament',
+      'international_football_competition',
+      'international_ice_hockey_competition',
       'little_league_world_series',
+      'mma_event',
       'nba_season',
       'ncaa_baseball_conference_tournament',
       'ncaa_football_single_game',
       'ncaa_team_season',
       'nfl_season',
       'nfl_single_game',
+      'olympic_event',
       'sports_season',
       'tennis_event',
       'tennis_grand_slam_events',
+      'world_series_expanded',
       'wrestling_event',
-      'football tournament',
-      'olympic event',
-      'international football competition',
-      'wrestling event',
-      'sports season',
-      'cycling race report',
-      'ncaa team season',
-      'cricket tournament',
-      'football match',
-      'world series expanded',
-      'mma event',
-      'nfl season',
-      'nfl draft',
-      'athletics championships',
-      'football club season',
-      'canadian football game',
-      'australian rules football season',
-      'football tournament season',
-      'international ice hockey competition',
-      'cricket tour',
     ],
     patterns: [],
   },
@@ -2036,10 +2274,6 @@ var SportsEvent = {
 
 var Event = {
   name: 'Event',
-  properties: {
-    dates: () => { },
-    places: () => { },
-  },
   children: {
     Disaster,
     Election,
@@ -2109,44 +2343,36 @@ var Event = {
   //
   infoboxes: {
     mapping: [
+      'australian_year',
       'beauty_pageant',
       'civil_conflict',
+      'coa_case',
       'concert_tour',
       'court_case',
+      'esc_national_year',
       'event',
+      'grand_prix_motorcycle_race_report',
+      'grand_prix_race_report',
       'historical_era',
+      'historical_event',
       'holiday',
       'horseraces',
+      'individual_darts_tournament',
       'individual_snooker_tournament',
+      'indy500',
+      'international_handball_competition',
+      'international_labour_organization_convention',
       'legislative_term',
       'music_festival',
+      'national_political_convention',
       'nfl_draft',
       'pba_draft',
       'reality_music_competition',
       'recurring_event',
+      'referendum',
+      'scotus_case',
       'song_contest',
       'summit',
-      'grand prix race report',
-      'recurring event',
-      'music festival',
-      'football league season',
-      'scotus case',
-      'court case',
-      'concert tour',
-      'international labour organization convention',
-      'song contest',
-      'australian year',
-      'individual darts tournament',
-      'beauty pageant',
-      'historical event',
-      'grand prix motorcycle race report',
-      'international handball competition',
-      'coa case',
-      'individual snooker tournament',
-      'esc national year',
-      'indy500',
-      'national political convention',
-      'referendum',
     ],
     patterns: [],
   },
@@ -2308,9 +2534,6 @@ var Film = {
 var TVShow = {
   name: 'TVShow',
   children: {},
-  properties: {
-    seasons: () => { },
-  },
   //
   categories: {
     mapping: [],
@@ -2420,9 +2643,6 @@ var Song = {
 var VideoGame = {
   name: 'VideoGame',
   children: {},
-  properties: {
-    platforms: () => { },
-  },
   //
   categories: {
     mapping: [
@@ -2461,7 +2681,7 @@ var VideoGame = {
   },
   //
   infoboxes: {
-    mapping: ['video game'],
+    mapping: ['video_game'],
     patterns: [],
   },
   //
@@ -2491,10 +2711,6 @@ var CreativeWork = {
     Play,
     Song,
     VideoGame,
-  },
-  //
-  properties: {
-    genre: () => { },
   },
   //
   categories: {
@@ -2537,56 +2753,45 @@ var CreativeWork = {
   //
   infoboxes: {
     mapping: [
+      'animanga/other',
+      'anthem',
       'artwork',
+      'audio_drama',
+      'big_finish',
       'book_series',
       'broadcast',
       'comic_book_title',
       'comic_strip',
+      'comics_character_and_title',
+      'comics_meta_series',
+      'comics_organization',
+      'comics_story_arc',
       'doctor_who_episode',
+      'folk_tale',
+      'futurama_episode',
+      'graphic_novel',
       'hollywood_cartoon',
       'magazine',
-      'musical',
+      'media_franchise',
       'musical_composition',
+      'musical',
+      'name_module',
       'opera',
       'painting',
       'radio_show',
-      'song',
+      'rpg',
+      'short_story',
+      'simpsons_episode',
       'song_contest_entry',
+      'song',
+      'sw_comics',
       'television_episode',
       'television_season',
+      'the_goodies_episode',
       'treaty',
-      'video_game',
-      'anthem',
-      'television episode',
-      'comic book title',
-      'song contest entry',
-      'short story',
-      'hollywood cartoon',
-      'radio show',
-      'simpsons episode',
-      'musical composition',
-      'book series',
-      'comic strip',
-      'television season',
-      'comics organization',
-      'doctor who episode',
-      'animanga/other',
-      'graphic novel',
-      'rpg',
-      'big finish',
-      'vg series',
-      'name module',
-      'comics story arc',
-      'video game series',
-      'futurama episode',
-      'comics character and title',
-      'comics meta series',
+      'vg_series',
+      'video_game_series',
       'webcomic',
-      'the goodies episode',
-      'audio drama',
-      'sw comics',
-      'media franchise',
-      'folk tale',
     ],
     patterns: [],
   },
@@ -2697,13 +2902,106 @@ var CreativeWork = {
   },
 };
 
-var MedicalCondition = {
-  name: 'MedicalCondition',
+var Product = {
+  name: 'Product',
   //
   children: {},
-  properties: {
-    causes: () => { },
-    treatments: () => { },
+  //
+  categories: {
+    mapping: [],
+    patterns: [/products introduced in ./, /musical instruments/],
+  },
+  //
+  descriptions: {
+    patterns: [],
+  },
+  //
+  infoboxes: {
+    mapping: [
+      'automobile',
+      'beverage',
+      'cpu',
+      'electric_vehicle',
+      'gpu',
+      'mobile_phone',
+      'motorcycle',
+      'synthesizer',
+      'television',
+      'card_game',
+      'computer',
+      'laboratory_equipment',
+    ],
+    patterns: [],
+  },
+  //
+  sections: {
+    mapping: [],
+    patterns: [],
+  },
+  //
+  templates: {
+    mapping: [],
+    patterns: [],
+  },
+  //
+  titles: {
+    mapping: ['computer game', 'candy', 'board game', 'card game', 'automobile'],
+    patterns: [],
+  },
+};
+
+var FictionalCharacter = {
+  name: 'FictionalCharacter',
+  //
+  children: {},
+  //
+  categories: {
+    mapping: [],
+    patterns: [/(fictional|television) characters/],
+  },
+  //
+  descriptions: {
+    patterns: [],
+  },
+  //
+  infoboxes: {
+    mapping: [
+      'animanga_character',
+      'character',
+      'comics_character',
+      'd&d_creature',
+      'doctor_who_character',
+      'mythical_creature',
+      'soap_character',
+      'tolkien_character',
+      'vg_character',
+      'video_game_character',
+    ],
+    patterns: [],
+  },
+  //
+  sections: {
+    mapping: [],
+    patterns: [],
+  },
+  //
+  templates: {
+    mapping: [],
+    patterns: [],
+  },
+  //
+  titles: {
+    mapping: ['character'],
+    patterns: [],
+  },
+};
+
+var Creation = {
+  name: 'Creation',
+  children: {
+    CreativeWork,
+    Product,
+    FictionalCharacter
   },
   //
   categories: {
@@ -2716,7 +3014,42 @@ var MedicalCondition = {
   },
   //
   infoboxes: {
-    mapping: ['medical condition (new)', 'medical condition', 'disease'],
+    mapping: [],
+    patterns: [],
+  },
+  //
+  sections: {
+    mapping: [],
+    patterns: [],
+  },
+  //
+  templates: {
+    mapping: [],
+    patterns: [],
+  },
+  //
+  titles: {
+    mapping: [],
+    patterns: [],
+  },
+};
+
+var MedicalCondition = {
+  name: 'MedicalCondition',
+  //
+  children: {},
+  //
+  categories: {
+    mapping: [],
+    patterns: [],
+  },
+  //
+  descriptions: {
+    patterns: [],
+  },
+  //
+  infoboxes: {
+    mapping: ['medical_condition_(new)', 'medical_condition', 'disease'],
     patterns: [],
   },
   //
@@ -2740,66 +3073,62 @@ var Organism = {
   name: 'Organism',
   //
   children: {},
-  properties: {
-    // taxonomy: () => {},
-    // members: () => {},
-  },
   //
   categories: {
     mapping: [
-      'taxa named by carl linnaeus',
-      'ornamental trees',
-      'birds by common name',
-      'living fossils',
-      'taxa named by john edward gray',
-      'phelsuma',
-      'multituberculates',
-      'angiosperm orders',
-      'cimolodonts',
-      'urban animals',
-      'flowers',
-      'geckos',
-      'herbs',
-      'spices',
-      'skinks',
-      'cretaceous mammals',
-      'commercial fish',
-      'paleocene mammals',
-      'bird families',
-      'edible nuts and seeds',
-      'invasive plant species',
-      'leaf vegetables',
-      'root vegetables',
-      'corvus (genus)',
-      'insects in culture',
-      'ducks',
       'agamidae',
-      'edge species',
-      'tropical fruit',
-      'pinus',
-      'tropical agriculture',
-      'indian spices',
-      'paleocene genus extinctions',
-      'epiphytic orchids',
-      'crops',
-      'fruits originating in asia',
-      'calidris',
-      'ptilodontoids',
-      'plants and pollinators',
-      'mammal families',
-      'marine edible fish',
-      'taxa named by leopold fitzinger',
-      'setophaga',
-      'shorebirds',
-      'berries',
-      'megafauna',
+      'american inventions',
+      'angiosperm orders',
       'animal dance',
       'animal phyla',
-      'american inventions',
-      'entheogens',
+      'berries',
+      'bird families',
+      'birds by common name',
+      'calidris',
+      'cimolodonts',
+      'commercial fish',
+      'corvus (genus)',
+      'cretaceous mammals',
       'crops originating from the americas',
-      'non-timber forest products',
+      'crops',
+      'ducks',
+      'edge species',
+      'edible nuts and seeds',
+      'entheogens',
+      'epiphytic orchids',
+      'flowers',
+      'fruits originating in asia',
+      'geckos',
       'geese',
+      'herbs',
+      'indian spices',
+      'insects in culture',
+      'invasive plant species',
+      'leaf vegetables',
+      'living fossils',
+      'mammal families',
+      'marine edible fish',
+      'megafauna',
+      'multituberculates',
+      'non-timber forest products',
+      'ornamental trees',
+      'paleocene genus extinctions',
+      'paleocene mammals',
+      'phelsuma',
+      'pinus',
+      'plants and pollinators',
+      'ptilodontoids',
+      'root vegetables',
+      'setophaga',
+      'shorebirds',
+      'skinks',
+      'spices',
+      'taxa named by carl linnaeus',
+      'taxa named by john edward gray',
+      'taxa named by leopold fitzinger',
+      'tropical agriculture',
+      'tropical fruit',
+      'urban animals',
     ],
     patterns: [
       /(funghi|reptiles|flora|fauna|fish|birds|trees|mammals|plants) of ./,
@@ -2819,28 +3148,28 @@ var Organism = {
   infoboxes: {
     mapping: [
       'speciesbox',
-      'automatic taxobox',
+      'automatic_taxobox',
       'dogbreed',
-      'dog breed',
-      'cat breed',
-      'grape variety',
+      'dog_breed',
+      'cat_breed',
+      'grape_variety',
       'taxobox',
       'subspeciesbox',
       'mycomorphbox',
-      'paraphyletic group',
-      'nutritional value',
+      'paraphyletic_group',
+      'nutritional_value',
       'infraspeciesbox',
       'horse',
       'haplogroup',
       'bird',
       'bird/population',
-      'medical resources',
-      'nc name',
-      'pig breed',
-      'botanical product',
-      'cattle breed',
-      'horse breed',
-      'poultry breed',
+      'medical_resources',
+      'nc_name',
+      'pig_breed',
+      'botanical_product',
+      'cattle_breed',
+      'horse_breed',
+      'poultry_breed',
     ],
     patterns: [],
   },
@@ -2900,67 +3229,11 @@ var Organism = {
   },
 };
 
-var Product = {
-  name: 'Product',
-  //
-  children: {},
-  properties: {},
-  //
-  categories: {
-    mapping: [],
-    patterns: [/products introduced in ./, /musical instruments/],
-  },
-  //
-  descriptions: {
-    patterns: [],
-  },
-  //
-  infoboxes: {
-    mapping: [
-      'automobile',
-      'beverage',
-      'cpu',
-      'electric_vehicle',
-      'gpu',
-      'mobile_phone',
-      'motorcycle',
-      'synthesizer',
-      'television',
-      'card game',
-      'computer',
-      'laboratory equipment',
-    ],
-    patterns: [],
-  },
-  //
-  sections: {
-    mapping: [],
-    patterns: [],
-  },
-  //
-  templates: {
-    mapping: [],
-    patterns: [],
-  },
-  //
-  titles: {
-    mapping: ['computer game', 'candy', 'board game', 'card game', 'automobile'],
-    patterns: [],
-  },
-};
-
-var Creation = {
-  name: 'Creation',
+var Concept = {
+  name: 'Concept',
   children: {
-    CreativeWork,
     MedicalCondition,
     Organism,
-    Product,
-  },
-  //
-  properties: {
-    creators: () => { },
-    date: () => { },
   },
   //
   categories: {
@@ -3000,6 +3273,7 @@ let schema = {
     Organization,
     Event,
     Creation,
+    Concept
   },
 };
 
@@ -3040,6 +3314,12 @@ let patterns = {
 };
 
 const doNode = function (node) {
+  // try children patterns first
+  if (node.children) {
+    Object.keys(node.children).forEach((k) => {
+      doNode(node.children[k]);
+    });
+  }
   if (node.id) {
     // collect mappings
     node.categories.mapping.forEach((str) => {
@@ -3082,11 +3362,7 @@ const doNode = function (node) {
     });
   }
 
-  if (node.children) {
-    Object.keys(node.children).forEach((k) => {
-      doNode(node.children[k]);
-    });
-  }
+
 };
 doNode(schema$1);
 
@@ -3283,7 +3559,8 @@ const parse = function (cat) {
   let split = cat.split(/\//);
   return {
     root: split[1],
-    child: split[2],
+    second: split[2],
+    third: split[3],
   }
 };
 
@@ -3328,12 +3605,14 @@ const getScore = function (detail) {
   }
 
   // find 2nd level
-  let children = types.filter((o) => o.root === root && o.child).map((obj) => obj.child);
+  let children = types.filter((o) => o.root === root && o.second).map((obj) => obj.second);
   let topKids = topk(children);
   top = topKids[0];
+  let second = null;
   let type = root;
   if (top) {
-    type = `${root}/${top[0]}`;
+    second = top[0];
+    type = `${root}/${second}`;
     // punish for any conflicting children
     if (topKids.length > 1) {
       score *= 0.7;
@@ -3341,6 +3620,26 @@ const getScore = function (detail) {
     // punish for low count
     if (top[1] === 1) {
       score *= 0.8;
+    }
+
+    // try for 3rd level?
+    if (second) {
+      children = types.filter((o) => o.second === second && o.third).map((obj) => obj.third);
+      topKids = topk(children);
+      top = topKids[0];
+      // type = root
+      if (top) {
+        type += `/${top[0]}`;
+        // punish for any conflicting children
+        if (topKids.length > 1) {
+          score *= 0.7;
+        }
+        // punish for low count
+        if (top[1] === 1) {
+          score *= 0.8;
+        }
+      }
+
     }
   }
   return {

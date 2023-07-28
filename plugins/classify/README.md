@@ -41,9 +41,9 @@ wtf.extend(require('wtf-plugin-classify'))
 wtf.fetch('Toronto Raptors').then((doc) => {
   let res = doc.classify()
   //{
-  //  category: 'Organization/SportsTeam',
-  //  confidence: 0.9,
-  //  detail: {...}
+  //  type: 'Organization/SportsTeam',
+  //  score: 0.9,
+  //  details: {...}
   //}
 })
 ```
@@ -81,10 +81,12 @@ Person:
       FootballPlayer : true
       BasketballPlayer : true
       HockeyPlayer : true
-  Actor : true
+  Creator:
+    Actor : true
+    Musician : true
+    Author : true
+    Director : true
   Politician : true
-  Musician : true
-  Author : true
 Place:
   Jurisdiction:
       City : true
@@ -98,6 +100,7 @@ Organization:
   Company : true
   SportsTeam : true
   PoliticalParty : true
+  School : true
 Event:
   Disaster : true
   Election : true
@@ -112,9 +115,11 @@ Creation:
       Play : true
       Song : true
       VideoGame : true
+  Product : true
+  FictionalCharacter : true
+Concept:
   MedicalCondition : true
   Organism : true
-  Product : true
 ```
 
 as of March 2020, it can classify ~65% of english wikipedia articles:

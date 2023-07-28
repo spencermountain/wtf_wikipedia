@@ -1,11 +1,16 @@
+import MedicalCondition from './MedicalCondition.js'
+import Organism from './Organism.js'
+
 export default {
-  name: 'BasketballPlayer',
-  //
-  children: {},
+  name: 'Concept',
+  children: {
+    MedicalCondition,
+    Organism,
+  },
   //
   categories: {
     mapping: [],
-    patterns: [/basketball players/],
+    patterns: [],
   },
   //
   descriptions: {
