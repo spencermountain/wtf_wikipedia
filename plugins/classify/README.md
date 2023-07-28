@@ -41,9 +41,9 @@ wtf.extend(require('wtf-plugin-classify'))
 wtf.fetch('Toronto Raptors').then((doc) => {
   let res = doc.classify()
   //{
-  //  category: 'Organization/SportsTeam',
-  //  confidence: 0.9,
-  //  detail: {...}
+  //  type: 'Organization/SportsTeam',
+  //  score: 0.9,
+  //  details: {...}
   //}
 })
 ```

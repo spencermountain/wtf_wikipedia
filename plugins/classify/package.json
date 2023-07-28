@@ -1,7 +1,7 @@
 {
   "name": "wtf-plugin-classify",
   "description": "basic classifier for wikipedia articles",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "type": "module",
   "main": "./src/index.js",
   "unpkg": "./builds/wtf-plugin-classify.min.js",
