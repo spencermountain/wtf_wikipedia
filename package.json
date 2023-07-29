@@ -1,0 +1,13 @@
+{
+  "name": "huh.wiki",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "npx http-server -c-1 -o "
+  },
+  "author": "",
+  "license": "ISC"
+}
