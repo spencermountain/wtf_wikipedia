@@ -339,8 +339,13 @@ const deleteAll = function () {
 }
 
 async function newPage() {
+  await main('Danny Devito')
+  await sleep(5000)
+
+  deleteAll()
   await main('Toronto Raptors')
   await sleep(5000)
+
   deleteAll()
   await main('Grace Hopper')
 }
