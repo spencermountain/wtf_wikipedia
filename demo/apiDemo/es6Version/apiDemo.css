@@ -1,0 +1,100 @@
+/** apiDemoMain.css **/
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  animation: wtfHelperFadeUpAnim 1s ease-in-out 0.2s forwards;
+  font-size: 14px;
+  height: 100%;
+  opacity: 0;
+  overflow: hidden;
+  padding: 2em;
+  width: 100%;
+}
+
+.apiDemoRoot {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+}
+
+.apiDemoHeader {
+  align-items: center;
+  color: var(--wtfHelperOrange);
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  font-size: 1.5em;
+  justify-content: center;
+  margin-bottom: 0.5em;
+  overflow: hidden;
+  width: 100%;
+}
+
+.apiDemoMainContainer {
+  border: var(--wtfHelperBorder);
+  border-top-left-radius: var(--wtfHelperBorderRadius);
+  height: 100%;
+  overflow: auto;
+  padding: 0.5em 0.5em 2em 0.5em;
+  width: 100%;
+}
+
+.apiDemoSectionHeader,
+.apiDemoSectionHeaderFirst {
+  border-top: var(--wtfHelperBorder);
+  color: var(--wtfHelperGreen);
+  font-size: 1.3em;
+  font-weight: 500;
+  margin-top: 2em;
+}
+
+.apiDemoSectionHeaderFirst {
+  border-top: none;
+  margin-top: 0;
+}
+
+.apiDemoEntry,
+.apiDemoEntryWithSpacing {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.apiDemoEntryWithSpacing {
+  margin-bottom: 1em;
+}
+
+.apiDemoEntryTitle {
+  flex-grow: 0;
+  font-weight: 600;
+  margin-left: 2em;
+  min-width: 12em;
+}
+
+.apiDemoEntryResult {
+  min-width: 10em;
+}
+
+.apiDemoImageListContainer {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  height: 200px;
+  justify-content: flex-start;
+  margin: 0.5em 0em 1em 2em;
+  overflow-x: auto;
+  padding: 0.5em 0em 0.5em 0em;
+  width: calc(100% - 4em);
+}
+
+.apiDemoImage {
+  height: calc(200px - 1em - 20px);
+}
