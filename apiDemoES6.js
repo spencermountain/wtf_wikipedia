@@ -330,11 +330,18 @@ const sleep = function (ms = 1500) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
+// purge existing dom elements
+const deleteAll = function () {
+  const boxes = document.querySelectorAll('.apiDemoRoot');
+  boxes.forEach(box => {
+    box.remove();
+  });
+}
+
 async function newPage() {
-  console.log('=-=-=-= before -=-=-=-')
   await main('Toronto Raptors')
-  await sleep()
-  console.log('=-=-=-= after -=-=-=-')
+  await sleep(5000)
+  deleteAll()
   await main('Grace Hopper')
 }
 

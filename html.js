@@ -36,6 +36,7 @@ function createImg(parent, className, url) {
   return element;
 }
 
+
 export {
   createBr,
   createDiv,
