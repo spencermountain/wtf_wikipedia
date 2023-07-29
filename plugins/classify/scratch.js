@@ -1,7 +1,9 @@
-const wtf = require('../../src').default
-const classify = require('./src').default
+import wtf from '../../src/index.js'
+import classify from './src/index.js'
+
 wtf.extend(classify)
 
-wtf.fetch('Toronto').then((doc) => {
-  console.log(doc.classify().details)
+wtf.fetch('Radek Dvořák').then((doc) => {
+  // console.log(doc.infoboxes().map(i => i.type()))
+  console.dir(doc.classify(), { depth: 5 })
 })

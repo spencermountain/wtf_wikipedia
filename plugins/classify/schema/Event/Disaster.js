@@ -1,9 +1,6 @@
 export default {
   name: 'Disaster',
   children: {},
-  properties: {
-    casualties: () => { },
-  },
   //
   categories: {
     mapping: ['retired atlantic hurricanes'],
@@ -21,7 +18,6 @@ export default {
       'earthquake',
       'hurricane',
       'pandemic',
-      'airliner accident',
     ],
     patterns: [],
   },

@@ -18,6 +18,12 @@ let patterns = {
 }
 
 const doNode = function (node) {
+  // try children patterns first
+  if (node.children) {
+    Object.keys(node.children).forEach((k) => {
+      doNode(node.children[k])
+    })
+  }
   if (node.id) {
     // collect mappings
     node.categories.mapping.forEach((str) => {
@@ -60,11 +66,7 @@ const doNode = function (node) {
     })
   }
 
-  if (node.children) {
-    Object.keys(node.children).forEach((k) => {
-      doNode(node.children[k])
-    })
-  }
+
 }
 doNode(schema)
 export { patterns, mappings }

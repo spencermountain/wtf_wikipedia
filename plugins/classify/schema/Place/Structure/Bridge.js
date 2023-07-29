@@ -2,9 +2,6 @@ export default {
   name: 'Bridge',
   //
   children: {},
-  properties: {
-    length: () => { },
-  },
   //
   categories: {
     mapping: [],

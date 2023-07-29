@@ -2,7 +2,6 @@ export default {
   name: 'Product',
   //
   children: {},
-  properties: {},
   //
   categories: {
     mapping: [],
@@ -24,9 +23,9 @@ export default {
       'motorcycle',
       'synthesizer',
       'television',
-      'card game',
+      'card_game',
       'computer',
-      'laboratory equipment',
+      'laboratory_equipment',
     ],
     patterns: [],
   },

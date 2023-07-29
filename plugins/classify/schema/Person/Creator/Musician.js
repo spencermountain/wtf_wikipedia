@@ -2,10 +2,6 @@ export default {
   name: 'Musician',
   //
   children: {},
-  properties: {
-    groups: () => { },
-    instruments: () => { },
-  },
   //
   categories: {
     mapping: [
@@ -84,8 +80,9 @@ export default {
       'slide guitarists',
       'guitarists from texas',
       'vaudeville performers',
+      'classical composer',
     ],
-    patterns: [/musicians from ./, /(singers|songwriters|painters|poets)/],
+    patterns: [/musicians from ./, /(singers|songwriters)/],
   },
   //
   descriptions: {

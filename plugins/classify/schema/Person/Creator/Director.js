@@ -1,23 +1,19 @@
 export default {
-  name: 'MedicalCondition',
+  name: 'Director',
   //
   children: {},
-  properties: {
-    causes: () => { },
-    treatments: () => { },
-  },
   //
   categories: {
-    mapping: [],
-    patterns: [],
+    mapping: ['directors of palme d\'or winners', 'best director aacta international award winners'],
+    patterns: [/film directors/i],
   },
   //
   descriptions: {
-    patterns: [],
+    patterns: [/director/],
   },
   //
   infoboxes: {
-    mapping: ['medical condition (new)', 'medical condition', 'disease'],
+    mapping: ['director'],
     patterns: [],
   },
   //
@@ -28,11 +24,11 @@ export default {
   //
   templates: {
     mapping: [],
-    patterns: [],
+    patterns: [/director-stub$/],
   },
   //
   titles: {
-    mapping: [],
+    mapping: ['director'],
     patterns: [],
   },
 }
