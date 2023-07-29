@@ -1,7 +1,5 @@
-// @fileoverview apiDemoMain.js (non ES6)
-//
-// apiDemo exercises the wtf_wikipedia API, showing the api functions
-// and their results. The wtf_wikipedia apis are:
+// @fileoverview apiDemo.js (non ES6) -- shows the wtf_wikipedia API functions
+// The wtf_wikipedia apis are:
 //     toplevel api
 //     section api
 //     paragraph api

@@ -1,0 +1,57 @@
+/* wtfHelper.css -- resets the html styles and provides helpful css styles */
+
+:root {
+  --wtfHelperGreen:        rgb(0, 140, 70);
+  --wtfHelperGrey200:      rgb(200, 200, 200);
+  --wtfHelperOrange:       rgb(255, 110, 0);
+
+  --wtfHelperBorderColor:  var(--wtfHelperGrey200);
+  --wtfHelperBorderRadius: 10px;
+  --wtfHelperBorder:       solid 1px var(--wtfHelperBorderColor);
+
+  --wtfHelperFontFamily:   Helvetica, Arial, sans-serif;
+}
+
+@keyframes wtfHelperFadeUpAnim {
+    0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background-color: white;
+  color: black;
+  font-family: var(--wtfHelperFontFamily);
+  line-height: 1.5;
+  text-rendering: optimizelegibility;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  overflow-wrap: break-word;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+}
+
+h1, h2, h3, h4, h5, h6, p {           /* css resets to reasonable values */
+  overflow-wrap: break-word;
+}
