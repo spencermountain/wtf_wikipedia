@@ -68,6 +68,9 @@ const fetch = function (title, options, callback) {
   return unfetch(url, headers)
     .then((res) => res.json())
     .then((res) => {
+      if(!data){
+        throw new Error(`No JSON Data Found For ${url}`)
+      }
       let data = getResult(res, options)
       data = parseDoc(data, title)
       if (callback) {
