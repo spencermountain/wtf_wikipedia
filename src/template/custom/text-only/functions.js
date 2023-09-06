@@ -62,10 +62,10 @@ export default {
   },
 
   'str mid': (tmpl) => {
-    let obj = parse(tmpl, ['str', 'start', 'end'])
+    let obj = parse(tmpl, ['str', 'start', 'end']) || {}
     let start = parseInt(obj.start, 10) - 1
     let end = parseInt(obj.end, 10)
-    return obj.str.substr(start, end)
+    return (obj.str || '').substr(start, end)
   },
 
   reign: (tmpl) => {
@@ -436,7 +436,7 @@ export default {
     return `${obj.done} (${num}%) done`
   },
 
-  'loop': (tmpl) => {
+  loop: (tmpl) => {
     let data = parse(tmpl, ['times', 'text'])
     let n = Number(data.times) || 0
     let out = ''
@@ -449,11 +449,11 @@ export default {
     let data = parse(tmpl, ['text'])
     return String((data.text || '').trim().length)
   },
-  'digits': (tmpl) => {
+  digits: (tmpl) => {
     let data = parse(tmpl, ['text'])
     return (data.text || '').replace(/[^0-9]/g, '')
   },
-  'resize': (tmpl) => {
+  resize: (tmpl) => {
     let { n, text } = parse(tmpl, ['n', 'text'])
     if (!text) {
       return n || ''
@@ -465,7 +465,7 @@ export default {
     let arr = (data.text || '').split(/ /g)
     return arr[arr.length - 1] || ''
   },
-  'replace': (tmpl) => {
+  replace: (tmpl) => {
     let data = parse(tmpl, ['text', 'from', 'to'])
     if (!data.from || !data.to) {
       return data.text || ''
@@ -475,12 +475,15 @@ export default {
   'title case': (tmpl) => {
     let data = parse(tmpl, ['text'])
     let txt = data.text || ''
-    return txt.split(/ /).map((w, i) => {
-      if (i > 0 && w === 'the' || w === 'of') {
-        return w
-      }
-      return titlecase(w)
-    }).join(' ')
+    return txt
+      .split(/ /)
+      .map((w, i) => {
+        if ((i > 0 && w === 'the') || w === 'of') {
+          return w
+        }
+        return titlecase(w)
+      })
+      .join(' ')
   },
   'no spam': (tmpl) => {
     let data = parse(tmpl, ['account', 'domain'])
@@ -528,10 +531,10 @@ export default {
     return `[[${year}–${after} NHL season|${year}–${after}]]`
   },
   // some math
-  'min': (tmpl) => {
+  min: (tmpl) => {
     let arr = parse(tmpl).list || []
     let min = Number(arr[0]) || 0
-    arr.forEach(str => {
+    arr.forEach((str) => {
       let n = Number(str)
       if (!isNaN(n) && n < min) {
         min = n
@@ -539,10 +542,10 @@ export default {
     })
     return String(min)
   },
-  'max': (tmpl) => {
-    let arr = parse(tmpl).list
+  max: (tmpl) => {
+    let arr = parse(tmpl).list || []
     let max = Number(arr[0]) || 0
-    arr.forEach(str => {
+    arr.forEach((str) => {
       let n = Number(str)
       if (!isNaN(n) && n > max) {
         max = n
@@ -551,7 +554,7 @@ export default {
     return String(max)
   },
   // US-politics
-  'uspolabbr': (tmpl) => {
+  uspolabbr: (tmpl) => {
     let { party, state, house } = parse(tmpl, ['party', 'state', 'house', 'link'])
     if (!party || !state) {
       return ''
@@ -563,7 +566,7 @@ export default {
     return out
   },
   // https://en.wikipedia.org/wiki/Template:Ushr
-  'ushr': (tmpl) => {
+  ushr: (tmpl) => {
     let { state, num, type } = parse(tmpl, ['state', 'num', 'type'])
     let link = ''
     if (num === 'AL') {
@@ -590,21 +593,21 @@ export default {
   },
 
   // transit station links
-  'metro': (tmpl) => {
+  metro: (tmpl) => {
     let { name, dab } = parse(tmpl, ['name', 'dab'])
     if (dab) {
       return `[[${name} station (${dab})|${name}]]`
     }
     return `[[${name} station|${name}]]`
   },
-  'station': (tmpl) => {
+  station: (tmpl) => {
     let { name, dab } = parse(tmpl, ['name', 'x', 'dab'])
     if (dab) {
       return `[[${name} station (${dab})|${name}]]`
     }
     return `[[${name} station|${name}]]`
   },
-  'bssrws': (tmpl) => {
+  bssrws: (tmpl) => {
     let { one, two } = parse(tmpl, ['one', 'two'])
     let name = one
     if (two) {
@@ -612,7 +615,7 @@ export default {
     }
     return `[[${name} railway station|${name}]]`
   },
-  'stnlnk': (tmpl) => {
+  stnlnk: (tmpl) => {
     let { name, dab } = parse(tmpl, ['name', 'dab'])
     if (dab) {
       return `[[${name} railway station (${dab})|${name}]]`
@@ -628,7 +631,7 @@ export default {
     let { station, system } = parse(tmpl, ['system', 'station']) //incomplete
     return station || system
   },
-  'subway': (tmpl) => {
+  subway: (tmpl) => {
     let { name } = parse(tmpl, ['name'])
     return `[[${name} subway station|${name}]]`
   },
@@ -640,22 +643,22 @@ export default {
     let { name } = parse(tmpl, ['name'])
     return `[[${name} MRT station|${name}]]`
   },
-  'rht': (tmpl) => {
+  rht: (tmpl) => {
     let { name } = parse(tmpl, ['name'])
     return `[[${name} railway halt|${name}]]`
   },
-  'ferry': (tmpl) => {
+  ferry: (tmpl) => {
     let { name } = parse(tmpl, ['name'])
     return `[[${name} ferry wharf|${name}]]`
   },
-  'tram': (tmpl) => {
+  tram: (tmpl) => {
     let { name, dab } = parse(tmpl, ['name', 'dab'])
     if (dab) {
       return `[[${name} tram stop (${dab})|${name}]]`
     }
     return `[[${name} tram stop|${name}]]`
   },
-  'tstop': (tmpl) => {
+  tstop: (tmpl) => {
     let { name, dab } = parse(tmpl, ['name', 'dab'])
     if (dab) {
       return `[[${name} ${dab} stop|${name}]]`
@@ -663,12 +666,12 @@ export default {
     return `[[${name} stop|${name}]]`
   },
   // boats
-  'ship': (tmpl) => {
+  ship: (tmpl) => {
     let { prefix, name, id } = parse(tmpl, ['prefix', 'name', 'id'])
     prefix = prefix || ''
     return id ? `[[${prefix.toUpperCase()} ${name}]]` : `[[${prefix.toUpperCase()} ${name}]]`
   },
-  'sclass': (tmpl) => {
+  sclass: (tmpl) => {
     let { cl, type } = parse(tmpl, ['cl', 'type', 'fmt'])
     return `[[${cl}-class ${type} |''${cl}''-class]] [[${type}]]`
   },
@@ -676,40 +679,39 @@ export default {
     let { text } = parse(tmpl, ['text'])
     return text || ''
   },
-  'align': (tmpl) => {
+  align: (tmpl) => {
     let { text } = parse(tmpl, ['dir', 'text'])
     return text || ''
   },
-  'font': (tmpl) => {
+  font: (tmpl) => {
     let { text } = parse(tmpl, ['text'])
     return text || ''
   },
-  'float': (tmpl) => {
+  float: (tmpl) => {
     let { text, dir } = parse(tmpl, ['dir', 'text'])
     if (!text) {
       return dir
     }
     return text || ''
   },
-  'lower': (tmpl) => {
+  lower: (tmpl) => {
     let { text, n } = parse(tmpl, ['n', 'text'])
     if (!text) {
       return n
     }
     return text || ''
   },
-  'splitspan': (tmpl) => {
+  splitspan: (tmpl) => {
     let list = parse(tmpl).list || []
     return (list[0] || '') + '\n' + (list[1] || '')
   },
-  'bracket': (tmpl) => {
+  bracket: (tmpl) => {
     let { text } = parse(tmpl, ['text'])
     if (text) {
       return `[${text}]`
     }
     return '['
   },
-
 
   // https://en.wikipedia.org/wiki/Template:In_title
   'in title': (tmpl) => {
@@ -718,7 +720,7 @@ export default {
       return text
     }
     if (title) {
-      return `All pages with titles containing ${title}`//[[Special: ..]]
+      return `All pages with titles containing ${title}` //[[Special: ..]]
     }
     return ''
   },
@@ -728,9 +730,8 @@ export default {
       return text
     }
     if (title) {
-      return `All pages with titles beginning with ${title}`//[[Special: ..]]
+      return `All pages with titles beginning with ${title}` //[[Special: ..]]
     }
     return ''
   },
-
 }
