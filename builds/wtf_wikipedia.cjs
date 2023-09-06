@@ -789,18 +789,21 @@
   ];
 
   var redirects = [
+    'aanstuur',//af
     'adkas', //br
+    'alih',//id
     'aýdaw',
+    'beralîkirin',//ku
     'doorverwijzing', //nl
+    'lencong',//ms
     'ohjaus',
     'patrz', //pl
     'přesměruj',
-    'redirección',
+    'preusmjeri',//hr
     'redireccion',
     'redirección', //es
     'redirecionamento', //pt
     'redirect', //en
-    'redirection',
     'redirection', //fr
     'rinvia', //it
     'tilvísun',
@@ -811,19 +814,27 @@
     'yönlendirme',
     'yönlendi̇rme', //tr
     'ανακατευθυνση', //el
-    'айдау',
+    'айдау',//kk
     'перанакіраваньне',
+    'перенаправление',//ru
     'перенаправлення', //uk
     'пренасочување', //mk
-    'преусмери',
+    'преусмери',//sr
     'преусмјери',
+    'ווייטערפירן',//yi
+    'تحويل',//ar
     'تغییر_مسیر',
-    'تغییرمسیر',
     'تغییرمسیر', //fa
+    'رجوع مکرر',//ur
+    'رجوع_مکرر',//ur
+    'अनुप्रेषित',//hi
+    'पुनर्निर्देशन',//hi
+    'পুননির্দেশ',//bn
     'เปลี่ยนทาง', //th
     'ប្តូរទីតាំងទៅ', //km
+    'リダイレクト',//ja
     '転送', //ja
-    '重定向',
+    '重定向',//zh
   ];
 
   var references = [
@@ -4817,10 +4828,10 @@
     },
 
     'str mid': (tmpl) => {
-      let obj = parser(tmpl, ['str', 'start', 'end']);
+      let obj = parser(tmpl, ['str', 'start', 'end']) || {};
       let start = parseInt(obj.start, 10) - 1;
       let end = parseInt(obj.end, 10);
-      return obj.str.substr(start, end)
+      return (obj.str || '').substr(start, end)
     },
 
     reign: (tmpl) => {
@@ -5191,7 +5202,7 @@
       return `${obj.done} (${num}%) done`
     },
 
-    'loop': (tmpl) => {
+    loop: (tmpl) => {
       let data = parser(tmpl, ['times', 'text']);
       let n = Number(data.times) || 0;
       let out = '';
@@ -5204,11 +5215,11 @@
       let data = parser(tmpl, ['text']);
       return String((data.text || '').trim().length)
     },
-    'digits': (tmpl) => {
+    digits: (tmpl) => {
       let data = parser(tmpl, ['text']);
       return (data.text || '').replace(/[^0-9]/g, '')
     },
-    'resize': (tmpl) => {
+    resize: (tmpl) => {
       let { n, text } = parser(tmpl, ['n', 'text']);
       if (!text) {
         return n || ''
@@ -5220,7 +5231,7 @@
       let arr = (data.text || '').split(/ /g);
       return arr[arr.length - 1] || ''
     },
-    'replace': (tmpl) => {
+    replace: (tmpl) => {
       let data = parser(tmpl, ['text', 'from', 'to']);
       if (!data.from || !data.to) {
         return data.text || ''
@@ -5230,12 +5241,15 @@
     'title case': (tmpl) => {
       let data = parser(tmpl, ['text']);
       let txt = data.text || '';
-      return txt.split(/ /).map((w, i) => {
-        if (i > 0 && w === 'the' || w === 'of') {
-          return w
-        }
-        return titlecase(w)
-      }).join(' ')
+      return txt
+        .split(/ /)
+        .map((w, i) => {
+          if ((i > 0 && w === 'the') || w === 'of') {
+            return w
+          }
+          return titlecase(w)
+        })
+        .join(' ')
     },
     'no spam': (tmpl) => {
       let data = parser(tmpl, ['account', 'domain']);
@@ -5283,10 +5297,10 @@
       return `[[${year}–${after} NHL season|${year}–${after}]]`
     },
     // some math
-    'min': (tmpl) => {
+    min: (tmpl) => {
       let arr = parser(tmpl).list || [];
       let min = Number(arr[0]) || 0;
-      arr.forEach(str => {
+      arr.forEach((str) => {
         let n = Number(str);
         if (!isNaN(n) && n < min) {
           min = n;
@@ -5294,10 +5308,10 @@
       });
       return String(min)
     },
-    'max': (tmpl) => {
-      let arr = parser(tmpl).list;
+    max: (tmpl) => {
+      let arr = parser(tmpl).list || [];
       let max = Number(arr[0]) || 0;
-      arr.forEach(str => {
+      arr.forEach((str) => {
         let n = Number(str);
         if (!isNaN(n) && n > max) {
           max = n;
@@ -5306,7 +5320,7 @@
       return String(max)
     },
     // US-politics
-    'uspolabbr': (tmpl) => {
+    uspolabbr: (tmpl) => {
       let { party, state, house } = parser(tmpl, ['party', 'state', 'house', 'link']);
       if (!party || !state) {
         return ''
@@ -5318,7 +5332,7 @@
       return out
     },
     // https://en.wikipedia.org/wiki/Template:Ushr
-    'ushr': (tmpl) => {
+    ushr: (tmpl) => {
       let { state, num, type } = parser(tmpl, ['state', 'num', 'type']);
       let link = '';
       if (num === 'AL') {
@@ -5345,21 +5359,21 @@
     },
 
     // transit station links
-    'metro': (tmpl) => {
+    metro: (tmpl) => {
       let { name, dab } = parser(tmpl, ['name', 'dab']);
       if (dab) {
         return `[[${name} station (${dab})|${name}]]`
       }
       return `[[${name} station|${name}]]`
     },
-    'station': (tmpl) => {
+    station: (tmpl) => {
       let { name, dab } = parser(tmpl, ['name', 'x', 'dab']);
       if (dab) {
         return `[[${name} station (${dab})|${name}]]`
       }
       return `[[${name} station|${name}]]`
     },
-    'bssrws': (tmpl) => {
+    bssrws: (tmpl) => {
       let { one, two } = parser(tmpl, ['one', 'two']);
       let name = one;
       if (two) {
@@ -5367,7 +5381,7 @@
       }
       return `[[${name} railway station|${name}]]`
     },
-    'stnlnk': (tmpl) => {
+    stnlnk: (tmpl) => {
       let { name, dab } = parser(tmpl, ['name', 'dab']);
       if (dab) {
         return `[[${name} railway station (${dab})|${name}]]`
@@ -5383,7 +5397,7 @@
       let { station, system } = parser(tmpl, ['system', 'station']); //incomplete
       return station || system
     },
-    'subway': (tmpl) => {
+    subway: (tmpl) => {
       let { name } = parser(tmpl, ['name']);
       return `[[${name} subway station|${name}]]`
     },
@@ -5395,22 +5409,22 @@
       let { name } = parser(tmpl, ['name']);
       return `[[${name} MRT station|${name}]]`
     },
-    'rht': (tmpl) => {
+    rht: (tmpl) => {
       let { name } = parser(tmpl, ['name']);
       return `[[${name} railway halt|${name}]]`
     },
-    'ferry': (tmpl) => {
+    ferry: (tmpl) => {
       let { name } = parser(tmpl, ['name']);
       return `[[${name} ferry wharf|${name}]]`
     },
-    'tram': (tmpl) => {
+    tram: (tmpl) => {
       let { name, dab } = parser(tmpl, ['name', 'dab']);
       if (dab) {
         return `[[${name} tram stop (${dab})|${name}]]`
       }
       return `[[${name} tram stop|${name}]]`
     },
-    'tstop': (tmpl) => {
+    tstop: (tmpl) => {
       let { name, dab } = parser(tmpl, ['name', 'dab']);
       if (dab) {
         return `[[${name} ${dab} stop|${name}]]`
@@ -5418,12 +5432,12 @@
       return `[[${name} stop|${name}]]`
     },
     // boats
-    'ship': (tmpl) => {
+    ship: (tmpl) => {
       let { prefix, name, id } = parser(tmpl, ['prefix', 'name', 'id']);
       prefix = prefix || '';
       return id ? `[[${prefix.toUpperCase()} ${name}]]` : `[[${prefix.toUpperCase()} ${name}]]`
     },
-    'sclass': (tmpl) => {
+    sclass: (tmpl) => {
       let { cl, type } = parser(tmpl, ['cl', 'type', 'fmt']);
       return `[[${cl}-class ${type} |''${cl}''-class]] [[${type}]]`
     },
@@ -5431,40 +5445,39 @@
       let { text } = parser(tmpl, ['text']);
       return text || ''
     },
-    'align': (tmpl) => {
+    align: (tmpl) => {
       let { text } = parser(tmpl, ['dir', 'text']);
       return text || ''
     },
-    'font': (tmpl) => {
+    font: (tmpl) => {
       let { text } = parser(tmpl, ['text']);
       return text || ''
     },
-    'float': (tmpl) => {
+    float: (tmpl) => {
       let { text, dir } = parser(tmpl, ['dir', 'text']);
       if (!text) {
         return dir
       }
       return text || ''
     },
-    'lower': (tmpl) => {
+    lower: (tmpl) => {
       let { text, n } = parser(tmpl, ['n', 'text']);
       if (!text) {
         return n
       }
       return text || ''
     },
-    'splitspan': (tmpl) => {
+    splitspan: (tmpl) => {
       let list = parser(tmpl).list || [];
       return (list[0] || '') + '\n' + (list[1] || '')
     },
-    'bracket': (tmpl) => {
+    bracket: (tmpl) => {
       let { text } = parser(tmpl, ['text']);
       if (text) {
         return `[${text}]`
       }
       return '['
     },
-
 
     // https://en.wikipedia.org/wiki/Template:In_title
     'in title': (tmpl) => {
@@ -5473,7 +5486,7 @@
         return text
       }
       if (title) {
-        return `All pages with titles containing ${title}`//[[Special: ..]]
+        return `All pages with titles containing ${title}` //[[Special: ..]]
       }
       return ''
     },
@@ -5483,11 +5496,10 @@
         return text
       }
       if (title) {
-        return `All pages with titles beginning with ${title}`//[[Special: ..]]
+        return `All pages with titles beginning with ${title}` //[[Special: ..]]
       }
       return ''
     },
-
   };
 
   let templates$9 = {};
@@ -10482,6 +10494,9 @@
     return unfetch(url, headers)
       .then((res) => res.json())
       .then((res) => {
+        if (!res){
+          throw new Error(`No JSON Data Found For ${url}`)
+        }
         let data = getResult(res, options);
         data = parseDoc(data, title);
         if (callback) {
@@ -10498,7 +10513,7 @@
       })
   };
 
-  var version = '10.1.5';
+  var version = '10.1.6';
 
   /**
    * use the native client-side fetch function
