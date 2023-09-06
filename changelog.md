@@ -3,31 +3,44 @@
 - **[new]** - fallbackTemplateFn handler #509
 
 -->
+
+#### 10.1.6 [Sep 2023]
+
+- **[change]** - handle fetch data errors
+- **[fix]** - template runtime error #550
+- **[update]** - deps
+
 #### 10.1.5 [May 2023]
+
 - **[fix]** - support inline templates
 - **[change]** - dont overwrite duplicate props in infobox #530
 - **[update]** - deps
 
 #### 10.1.4 [Apr 2023]
+
 - **[fix]** - #528 template runtime errors
 - **[fix]** - remove stray console.log (thank you @mxunknown)
 - **[update]** - some work on gamelog template
 
 #### 10.1.3 [Mar 2023]
+
 - **[fix]** - #519 date parsing issue
 - **[fix]** - #518 support slash in infobox property
 - **[fix]** - #516 better support {{br}} template
 
 #### 10.1.2 [Jan 2023]
+
 - **[fix]** - #514 runtime error
 - **[update]** - dependencies
 
 #### 10.1.1 [Jan 2023]
+
 - **[change]** - support many more inline templates
 - **[fix]** - wikitext newline join issue
 - **[update]** - dependencies
 
 #### 10.1.0 [Dec 2022]
+
 - **[fix]** - extra dots in interwiki links #510
 - **[new]** - configure unsupported template behaviour - templateFallbackFn #509
 - **[update]** - dependencies
@@ -36,38 +49,43 @@
 - **[new]** - support {{medalcount}} template #428
 
 #### 10.0.5 [Dec 2022]
+
 - **[fix]** - broken cli script #504
 
 #### 10.0.4 [Dec 2022]
+
 - **[fix]** - mangled interwiki link #502
 - **[fix]** - tabs in infoboxes #435
 - **[update]** - dependencies
 
-
 #### 10.0.3 [Oct 2022]
+
 - **[fix]** - improved i18n infobox classification
 - **[update]** - dependencies
 
-
 #### 10.0.2 [Jul 2022]
+
 - **[fix]** - multiple inline templates in a heading #489
 - **[fix]** - non-i18n list templates #475
 - **[fix]** - don't print hatnotes in .text()
 - **[update]** - api, i18n, sports plugins
 
 #### 10.0.1 [May 2022]
+
 - **[fix]** - runtime error #484
 - **[new]** - wtf-plugin-sports for tricky nhl and mlb templates
 - **[change]** - .random() in api-plugin parses document
 - **[change]** - update dependencies
 
 #### 10.0.0 [April 2022]
+
 - **[breaking]** - drop IE11 support - target evergreen browsers
 - **[change]** - convert to esmodules internally
 - **[change]** - add blockquote template
 - **[change]** - update dependencies
 
 #### 9.1.0 [March 2022]
+
 - **[change]** - support inline templates inside section titles
 - **[change]** - xml parsing fix
 - **[change]** - increase arbitrary char limit on bold & italixs
@@ -75,11 +93,11 @@
 - **[new]** - add `.license()` method for image plugin
 - **[fix]** - table parsing bugs
 - **[fix]** - typescript fixes
-update deps
-huge thank you to @FFatur !!
-
+  update deps
+  huge thank you to @FFatur !!
 
 #### 9.0.3
+
 - **[fix]** - typescript error
 - **[change]** - update demos
 
