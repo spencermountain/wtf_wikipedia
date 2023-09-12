@@ -14,6 +14,10 @@ const getResult = function (data, options = {}) {
 
   // map over the pageIds to parse out all the information
   return pages.map((id) => {
+   // handle nothing found or no data passed
+   if(!data?.query?.pages || !data?.query || !data){
+     return null
+   }
     // get the page by pageID
     let page = data.query.pages[id] || {}
 
