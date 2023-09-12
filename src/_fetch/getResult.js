@@ -9,6 +9,11 @@
  * @returns {*} result
  */
 const getResult = function (data, options = {}) {
+  // handle nothing found or no data passed
+  if(!data?.query?.pages || !data?.query || !data){
+     return null
+  }
+  
   //get all the pagesIds from the result
   let pages = Object.keys(data.query.pages)
 
