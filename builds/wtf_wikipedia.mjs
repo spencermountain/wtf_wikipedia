@@ -175,12 +175,18 @@ const makeUrl = function (options, parameters = defaults$c) {
  * @returns {*} result
  */
 const getResult = function (data, options = {}) {
+  // handle nothing found or no data passed
+  if(!data?.query?.pages || !data?.query || !data){
+    return null
+  }
+  
   //get all the pagesIds from the result
   let pages = Object.keys(data.query.pages);
 
   // map over the pageIds to parse out all the information
   return pages.map((id) => {
     // get the page by pageID
+    
     let page = data.query.pages[id] || {};
 
     // if the page is missing or not found than return null
@@ -1978,13 +1984,14 @@ const ignore$1 = [
   'source',
   'syntaxhighlight',
   'timeline',
+  'maplink',
 ];
 const openTag = `< ?(${ignore$1.join('|')}) ?[^>]{0,200}?>`;
 const closeTag = `< ?/ ?(${ignore$1.join('|')}) ?>`;
 const anyChar = '\\s\\S'; //including newline
 const noThanks = new RegExp(`${openTag}[${anyChar}]+?${closeTag}`, 'gi');
 
-const kill_xml = function (wiki) {
+const kill_xml = function(wiki) {
   //(<ref> tags are parsed in Section class) - luckily, refs can't be recursive.
   //types of html/xml that we want to trash completely.
   wiki = wiki.replace(noThanks, ' ');
@@ -10509,7 +10516,7 @@ const fetch = function (title, options, callback) {
     })
 };
 
-var version = '10.1.6';
+var version = '10.1.7';
 
 /**
  * use the native client-side fetch function

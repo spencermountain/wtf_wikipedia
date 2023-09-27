@@ -4,6 +4,9 @@
 
 -->
 
+#### 10.1.7 [Sep 2023]
+- **[fix]** - don't crash on huge geojson blob #555
+
 #### 10.1.6 [Sep 2023]
 
 - **[change]** - handle fetch data errors
