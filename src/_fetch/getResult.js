@@ -9,12 +9,18 @@
  * @returns {*} result
  */
 const getResult = function (data, options = {}) {
+  // handle nothing found or no data passed
+  if(!data?.query?.pages || !data?.query || !data){
+    return null
+  }
+  
   //get all the pagesIds from the result
   let pages = Object.keys(data.query.pages)
 
   // map over the pageIds to parse out all the information
   return pages.map((id) => {
     // get the page by pageID
+    
     let page = data.query.pages[id] || {}
 
     // if the page is missing or not found than return null

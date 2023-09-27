@@ -1,23 +1,38 @@
 import wtf from './src/index.js'
-import plg from './plugins/i18n/src/index.js'
-wtf.plugin(plg)
+console.log('start')
 
-let str = `#AANSTUUR[[Xai-Xai]]
+let str = `hello
+{{usableitinerary}}
+{{PartOfItinerary|North America itineraries}}
+<maplink text="" zoom="5" group="route1" class="no-icon">
+
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+                        [
+                            -117.02964,
+                            32.54259
+                        ],
+                        [
+                            -117.03059,
+                            32.54305
+                        ]
+
+        ]
+      }
+    }
+  ]
+}
+
+</maplink>
 `
-// let str = `  {{font|text=也可以只選用其中一項選項。|size=25px}}  `
-let doc = wtf(str)
-console.log(doc.text())
-// doc.templates().map((s) => s.json())
-// console.log(doc.templates()[4].json())
+// let doc = wtf(str)
+const doc = await wtf.fetch('https://en.wikivoyage.org/wiki/Interstate_5');
 
-
-// let doc = await wtf.fetch("Space_disco", "it")
-// console.log(doc.text())
-// trunc
-// wtf.fetch("2007 FIFA Women's World Cup Group A", "en")
-
-// fails on percentage template
-// wtf.fetch("Sacramento Mountain Lions", "es")
-
-// fails on min template
-// wtf.fetch("Phase finale du Championnat du monde masculin de handball 2019", "fr")
+console.log(doc.text());

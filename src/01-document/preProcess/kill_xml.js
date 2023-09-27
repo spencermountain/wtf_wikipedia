@@ -17,6 +17,7 @@ const ignore = [
   'source',
   'syntaxhighlight',
   'timeline',
+  'maplink',
 ]
 const openTag = `< ?(${ignore.join('|')}) ?[^>]{0,200}?>`
 const closeTag = `< ?/ ?(${ignore.join('|')}) ?>`
