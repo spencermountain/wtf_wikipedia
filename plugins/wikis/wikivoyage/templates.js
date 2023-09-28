@@ -27,7 +27,8 @@ const templates = {
     list.push(obj)
     return obj.name || '' //missing some labels
   },
-  pagebanner: (tmpl, list, parser) => {
+  // Commenting "pagebanner" logic as its causing extra "undefined" text blocks to be added to the document (see spencermountain/wtf_wikipedia#557)
+  /*pagebanner: (tmpl, list, parser) => {
     let obj = parser(tmpl, [
       'image',
       'caption',
@@ -41,7 +42,7 @@ const templates = {
       'TOC box',
     ])
     list.push(obj)
-  },
+  },*/
   isPartOf: ['place'],
   mapframe: ['lat', 'lng'],
   // phone numbers
