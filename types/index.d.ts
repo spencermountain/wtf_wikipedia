@@ -208,6 +208,17 @@ declare namespace wtf {
   export { extend }
   export { extend as plugin }
   export { version }
+  export { Document }
+  export { Section }
+  export { Infobox }
+  export { Template }
+  export { Table }
+  export { Reference }
+  export { Paragraph }
+  export { Image }
+  export { Link }
+  export { List }
+  export { Sentence }
 }
 
 declare function extend(fn: Function): {
