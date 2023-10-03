@@ -10520,7 +10520,7 @@
       })
   };
 
-  var version = '10.1.7';
+  var version = '10.2.0';
 
   /**
    * use the native client-side fetch function
