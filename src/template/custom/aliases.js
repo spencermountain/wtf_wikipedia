@@ -31,6 +31,9 @@ let aliases = {
   under: 'underline',
   brackets: 'bracket',
   raise: 'lower',
+  'born-in': 'born in',
+  'c.': 'circa',
+  'r.': 'reign',
 }
 
 //multiple aliases
@@ -256,6 +259,7 @@ let multi = {
   // https://en.wikipedia.org/wiki/Template:Ferry
   'station link': ['amtk', 'cta', 'bts', 'mnrr', 'mtams', 'munis', 'njts', 'scax', 'wmata', 'rwsa'],
   'video game release': ['vgrelease', 'video game release hlist', 'vgrtbl', 'vgrelease hlist', 'vgrh'],
+  aka: ['a.k.a.', 'also known as'],
 }
 
 // - other languages -

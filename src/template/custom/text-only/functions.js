@@ -73,11 +73,6 @@ export default {
     return `(r. ${obj.start} – ${obj.end})`
   },
 
-  circa: (tmpl) => {
-    let { year } = parse(tmpl, ['year'])
-    return year ? `c. ${year}` : 'c. '
-  },
-
   // https://en.wikipedia.org/wiki/Template:Decade_link
   'decade link': (tmpl) => {
     let { year } = parse(tmpl, ['year'])

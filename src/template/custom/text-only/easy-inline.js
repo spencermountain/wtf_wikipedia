@@ -100,11 +100,14 @@ let zeros = [
   'bigdiv',
   'strikethroughdiv',
   'strikethrough color',
-  'pbpe'//pt
+  'pbpe', //pt
+  'video game release/abbr',
+  'nobel abbr',
+  'gloss',
+  'gcl',
 ]
 zeros.forEach((k) => {
   templates[k] = 0
 })
-
 
 export default templates
