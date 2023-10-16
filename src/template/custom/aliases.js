@@ -17,20 +17,21 @@ let aliases = {
   redir: 'redirect',
   sisterlinks: 'sister project links',
   'main article': 'main',
-  'by': 'baseball year',
-  'aldsy': 'alds year',
-  'nldsy': 'nlds year',
+  by: 'baseball year',
+  aldsy: 'alds year',
+  nldsy: 'nlds year',
   //not perfect..
   'str rep': 'replace',
-  'ushr2': 'ushr',
-  'stn': 'station',
-  'metrod': 'metro',
-  'fw': 'ferry',
-  'rws': 'stnlnk',
+  ushr2: 'ushr',
+  stn: 'station',
+  metrod: 'metro',
+  fw: 'ferry',
+  rws: 'stnlnk',
   sclass2: 'sclass',
   under: 'underline',
   brackets: 'bracket',
-  raise: 'lower'
+  raise: 'lower',
+  vgrelease: 'video game release',
 }
 
 //multiple aliases
@@ -81,7 +82,7 @@ let multi = {
     'unbulleted list',
     'unbulleted',
     'unbulletedlist',
-    'vunblist'
+    'vunblist',
   ],
 
   'election box begin': [
@@ -244,7 +245,7 @@ let multi = {
     'user-blocked',
     'notabug',
     'notfixed',
-    'won\'t fix',
+    "won't fix",
     'withdraw',
     'nojoy',
     'unrelated',
@@ -252,25 +253,9 @@ let multi = {
     'nayc',
     'nayg',
   ],
-  checked: [
-    'already done',
-    'resolved1',
-    'check mark-n',
-    'checked box',
-  ],
+  checked: ['already done', 'resolved1', 'check mark-n', 'checked box'],
   // https://en.wikipedia.org/wiki/Template:Ferry
-  'station link': [
-    'amtk',
-    'cta',
-    'bts',
-    'mnrr',
-    'mtams',
-    'munis',
-    'njts',
-    'scax',
-    'wmata',
-    'rwsa',
-  ],
+  'station link': ['amtk', 'cta', 'bts', 'mnrr', 'mtams', 'munis', 'njts', 'scax', 'wmata', 'rwsa'],
   // 'br separated entries': [
   //   'br list',
   //   'br-separated entries',
