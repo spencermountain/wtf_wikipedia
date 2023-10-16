@@ -1,7 +1,7 @@
 import wtf from './src/index.js'
 console.log('start')
 
-let str = `before {{literal translation|a|b}} after
+let str = `before {{lit|a|b}} after
 
 `
 

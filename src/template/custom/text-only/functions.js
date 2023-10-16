@@ -133,6 +133,12 @@ export default {
     return arr.join(', ')
   },
 
+  // not perfect - https://en.m.wikipedia.org/wiki/Template:Interlinear
+  interlinear: (tmpl) => {
+    let arr = parse(tmpl).list || []
+    return arr.join('\n\n')
+  },
+
   //actually rendering these links removes the text.
   //https://en.wikipedia.org/wiki/Template:Catlist
   catlist: (tmpl) => {
@@ -728,5 +734,11 @@ export default {
       return `All pages with titles beginning with ${title}` //[[Special: ..]]
     }
     return ''
+  },
+
+  'literal translation': (tmpl) => {
+    let arr = parse(tmpl).list || []
+    arr = arr.map((str) => `'${str}'`)
+    return 'lit. ' + arr.join(' or ')
   },
 }

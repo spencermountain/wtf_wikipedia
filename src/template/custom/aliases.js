@@ -260,6 +260,7 @@ let multi = {
   'station link': ['amtk', 'cta', 'bts', 'mnrr', 'mtams', 'munis', 'njts', 'scax', 'wmata', 'rwsa'],
   'video game release': ['vgrelease', 'video game release hlist', 'vgrtbl', 'vgrelease hlist', 'vgrh'],
   aka: ['a.k.a.', 'also known as'],
+  'literal translation': ['lit', 'literal', 'literally'],
 }
 
 // - other languages -
