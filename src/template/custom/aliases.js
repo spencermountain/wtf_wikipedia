@@ -31,7 +31,6 @@ let aliases = {
   under: 'underline',
   brackets: 'bracket',
   raise: 'lower',
-  vgrelease: 'video game release',
 }
 
 //multiple aliases
@@ -256,11 +255,7 @@ let multi = {
   checked: ['already done', 'resolved1', 'check mark-n', 'checked box'],
   // https://en.wikipedia.org/wiki/Template:Ferry
   'station link': ['amtk', 'cta', 'bts', 'mnrr', 'mtams', 'munis', 'njts', 'scax', 'wmata', 'rwsa'],
-  // 'br separated entries': [
-  //   'br list',
-  //   'br-separated entries',
-  //   'br separated entries',
-  // ]
+  'video game release': ['vgrelease', 'video game release hlist', 'vgrtbl', 'vgrelease hlist', 'vgrh'],
 }
 
 // - other languages -
