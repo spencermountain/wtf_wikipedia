@@ -64,7 +64,7 @@ import wtf from 'wtf_wikipedia'
 
 let doc = await wtf.fetch('Toronto Raptors')
 let coach = doc.infobox().get('coach')
-coach.text() //'Nick Nurse'
+coach.text() //'Darko Rajaković'
 ```
 
 <div align="center">
