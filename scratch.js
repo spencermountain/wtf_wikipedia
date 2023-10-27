@@ -1,12 +1,13 @@
 import wtf from './src/index.js'
-console.log('start')
 
-let str = `before {{lit|a|b}} after
+let str = `
+<ref>{{cite book |last= Bushnell|first= Ian}}
+ {{cite book |last= Walker|first= James W. St. G.}}</ref>
 
 `
 
 let doc = wtf(str)
-// const doc = await wtf.fetch('https://en.wikivoyage.org/wiki/Interstate_5')
+// const doc = await wtf.fetch('Grand Bend')
 
 // console.log(doc.template().json())
-console.log(doc.text())
+console.log(doc.references().map((r) => r.json()))
