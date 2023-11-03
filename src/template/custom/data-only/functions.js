@@ -398,7 +398,7 @@ export default {
     return ''
   },
   //https://en.wikipedia.org/wiki/Template:MedalCount
-  'medalcount': (tmpl, list) => {
+  medalcount: (tmpl, list) => {
     let all = parse(tmpl).list || []
     let lines = []
     for (let i = 0; i < all.length; i += 4) {
@@ -411,9 +411,9 @@ export default {
     }
     let obj = {
       template: 'medalcount',
-      list: lines
+      list: lines,
     }
     list.push(obj)
     return ''
-  }
+  },
 }
