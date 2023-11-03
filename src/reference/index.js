@@ -31,6 +31,7 @@ const parseRefs = function (section) {
   let wiki = section._wiki
 
   wiki = wiki.replace(/ ?<ref>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
+    // console.log(tmpl)
     if (hasCitation(tmpl)) {
       let obj = parseCitation(tmpl)
       if (obj) {
