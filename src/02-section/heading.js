@@ -15,7 +15,6 @@ const doInlineTemplates = function (wiki, doc) {
   return wiki
 }
 
-
 /**
  * @typedef fakeSection
  * @property {string} title
