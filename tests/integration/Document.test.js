@@ -56,6 +56,26 @@ test('pageID - get / set - if the pageID is set then it should return the same '
   t.end()
 })
 
+//revisionID
+test('revisionID - get - should initially be null', (t) => {
+  let doc = wtf('')
+  t.equal(doc.revisionID(), null, 'the revisionID equals null')
+  t.end()
+})
+
+test('revisionID - get - if the revisionID is already set than get it from internal object', (t) => {
+  let doc = wtf('', { revisionID: 1 })
+  t.equal(doc.revisionID(), 1, 'the revisionID equals 1')
+  t.end()
+})
+
+test('revisionID - get / set - if the revisionID is set then it should return the same ', (t) => {
+  let doc = wtf('')
+  doc.revisionID(1)
+  t.equal(doc.revisionID(), 1, 'the revisionID equals 1')
+  t.end()
+})
+
 //wikidata
 test('wikidata - get - should initially be null', (t) => {
   let doc = wtf('')
