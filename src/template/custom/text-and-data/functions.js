@@ -355,10 +355,26 @@ let templates = {
       txt = obj.list[0] || ''
     }
     // replace double quotes with singles and put the text inside double quotes
-    let result = txt.replace(/"/g, '\'')
+    let result = txt.replace(/"/g, "'")
     result = '"' + result + '"'
     return result
   },
 
+  // https://de.m.wikipedia.org/wiki/Vorlage:ReptileDatabase
+  ReptileDatabase: (tmpl, list) => {
+    let obj = parse(tmpl, ['taxon', 'genus', 'species', 'abruf', 'pure_url'])
+    list.push(obj)
+    let str = ''
+    if (obj.genus || obj.species) {
+      str = `${obj.genus || ''} ${obj.species || ''} `
+    }
+    return `${str}In: [[The Reptile Database]]`
+  },
+  //https://en.m.wikipedia.org/wiki/Template:GEOnet3
+  GEOnet3: (tmpl, list) => {
+    let obj = parse(tmpl, ['ufi', 'name'])
+    list.push(obj)
+    return `GEOnet3 can be found at [[GEOnet Names Server]], at [http://geonames.nga.mil/namesgaz/ this link]`
+  },
 }
 export default templates
