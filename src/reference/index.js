@@ -1,6 +1,7 @@
 import parse from '../template/parse/toJSON/index.js'
 import { fromText as parseSentence } from '../04-sentence/index.js'
 import Reference from './Reference.js'
+import getTemplates from '../template/find/02-flat.js'
 
 //structured Cite templates - <ref>{{Cite..</ref>
 const hasCitation = function (str) {
@@ -30,15 +31,23 @@ const parseRefs = function (section) {
   let references = []
   let wiki = section._wiki
 
-  wiki = wiki.replace(/ ?<ref>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
-    if (hasCitation(tmpl)) {
-      let obj = parseCitation(tmpl)
-      if (obj) {
-        references.push({ json: obj, wiki: all })
+  wiki = wiki.replace(/ ?<ref>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, txt) {
+    let found = false
+    // there could be more than 1 template inside a <ref><ref>
+    let arr = getTemplates(txt)
+    arr.forEach((tmpl) => {
+      if (hasCitation(tmpl)) {
+        let obj = parseCitation(tmpl)
+        if (obj) {
+          references.push({ json: obj, wiki: all })
+          found = true
+        }
+        wiki = wiki.replace(tmpl, '')
       }
-      wiki = wiki.replace(tmpl, '')
-    } else {
-      references.push({ json: parseInline(tmpl), wiki: all })
+    })
+    // parse as an inline reference
+    if (!found) {
+      references.push({ json: parseInline(txt), wiki: all })
     }
     return ' '
   })
@@ -46,16 +55,24 @@ const parseRefs = function (section) {
   //<ref name=""/>
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ')
 
-  //<ref name=""></ref>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
-    if (hasCitation(tmpl)) {
-      let obj = parseCitation(tmpl)
-      if (obj) {
-        references.push({ json: obj, wiki: tmpl })
+  //<ref name=""></ref> (a gross copy of above parsing)
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, txt) {
+    let found = false
+    // there could be more than 1 template inside a <ref><ref>
+    let arr = getTemplates(txt)
+    arr.forEach((tmpl) => {
+      if (hasCitation(tmpl)) {
+        let obj = parseCitation(tmpl)
+        if (obj) {
+          references.push({ json: obj, wiki: all })
+          found = true
+        }
+        wiki = wiki.replace(tmpl, '')
       }
-      wiki = wiki.replace(tmpl, '')
-    } else {
-      references.push({ json: parseInline(tmpl), wiki: all })
+    })
+    // parse as an inline reference
+    if (!found) {
+      references.push({ json: parseInline(txt), wiki: all })
     }
     return ' '
   })

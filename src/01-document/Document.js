@@ -48,6 +48,7 @@ class Document {
       // userAgent is used for successive calls to the API
       userAgent: options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library',
       templateFallbackFn: options.templateFallbackFn || null,
+      revisionID: options.revisionID || null,
     }
     // this._missing_templates = {} //for stats+debugging purposes
 
@@ -499,6 +500,20 @@ class Document {
       console.log(indent + (sec.title() || '(Intro)'))
     })
     return this
+  }
+
+  /**
+   * If a revisionID is given then it sets the revisionID and returns the given revisionID
+   * Else if the revisionID is already set it returns the revisionID
+   *
+   * @param {number} [id] The revisionID that will be set
+   * @returns {number|null} The given or found revisionID
+   */
+  revisionID(id) {
+    if (id !== undefined) {
+      this._revisionID = id
+    }
+    return this._revisionID || null
   }
 
   options() {

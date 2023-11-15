@@ -4,6 +4,12 @@
 
 -->
 
+#### 10.2.1 [Nov 2023]
+
+- **[change]** - support more templates
+- **[change]** - support multiple citations inside a ref tag
+- **[new]** - add `revisionID()` - thanks Dag-Inge! #568
+
 #### 10.2.0 [Oct 2023]
 
 - **[change]** - typescript export helpers

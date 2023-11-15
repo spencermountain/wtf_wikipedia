@@ -232,7 +232,7 @@ export default {
       let positionalIndex = 0
       for (let i = 0; i < parameters.length; i++) {
         let parameter = parameters[i].trim()
-        if (parameter.match(/^[a-zA-Z_]/)) {
+        if (parameter.match(/^[a-z_]/i)) {
           // Named argument
           let [key, value] = parameter.split('=')
           // At this point, the Lua code evaluates alttot1 and alttot2 values as
@@ -398,7 +398,7 @@ export default {
     return ''
   },
   //https://en.wikipedia.org/wiki/Template:MedalCount
-  'medalcount': (tmpl, list) => {
+  medalcount: (tmpl, list) => {
     let all = parse(tmpl).list || []
     let lines = []
     for (let i = 0; i < all.length; i += 4) {
@@ -411,9 +411,9 @@ export default {
     }
     let obj = {
       template: 'medalcount',
-      list: lines
+      list: lines,
     }
     list.push(obj)
     return ''
-  }
+  },
 }

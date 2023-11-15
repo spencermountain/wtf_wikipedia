@@ -1,3 +1,8 @@
+import idName from './id-name.js'
+import idTitle from './id-title.js'
+import dummies from './dummy-templates.js'
+import fns from './functions.js'
+
 let templates = {
   //https://en.wikipedia.org/wiki/Category:External_link_templates
   'find a grave': ['id', 'name', 'work', 'last', 'first', 'date', 'accessdate'],
@@ -12,19 +17,9 @@ let templates = {
   'taxon info': ['taxon', 'item'], //https://en.wikipedia.org/wiki/Template:Taxon_info
   'portuguese name': ['first', 'second', 'suffix'], // https://en.wikipedia.org/wiki/Template:Portuguese_name
   geo: ['lat', 'lon', 'zoom'], //https://en.wikivoyage.org/wiki/Template:Geo
-  hatnote: ['text']
+  hatnote: ['text'],
 }
 
-
-import idName from './id-name.js'
-import idTitle from './id-title.js'
-import fns from './functions.js'
-
-templates = Object.assign(
-  templates,
-  idName,
-  idTitle,
-  fns
-)
+templates = Object.assign(templates, dummies, idName, idTitle, fns)
 
 export default templates

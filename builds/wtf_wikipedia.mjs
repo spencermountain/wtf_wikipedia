@@ -854,7 +854,7 @@ var references = [
 
 //alt disambig-templates en-wikipedia uses
 let d = ' disambiguation';
-const templates$c = [
+const templates$d = [
   'dab',
   'dab',
   'disamb',
@@ -940,7 +940,7 @@ const isDisambig = function (doc) {
   // check for a {{disambig}} template
   let templates = doc.templates().map((tmpl) => tmpl.json());
   let found = templates.find((obj) => {
-    return templates$c.hasOwnProperty(obj.template) || i18n_templates.hasOwnProperty(obj.template)
+    return templates$d.hasOwnProperty(obj.template) || i18n_templates.hasOwnProperty(obj.template)
   });
   if (found) {
     return true
@@ -4164,20 +4164,23 @@ let aliases = {
   redir: 'redirect',
   sisterlinks: 'sister project links',
   'main article': 'main',
-  'by': 'baseball year',
-  'aldsy': 'alds year',
-  'nldsy': 'nlds year',
+  by: 'baseball year',
+  aldsy: 'alds year',
+  nldsy: 'nlds year',
   //not perfect..
   'str rep': 'replace',
-  'ushr2': 'ushr',
-  'stn': 'station',
-  'metrod': 'metro',
-  'fw': 'ferry',
-  'rws': 'stnlnk',
+  ushr2: 'ushr',
+  stn: 'station',
+  metrod: 'metro',
+  fw: 'ferry',
+  rws: 'stnlnk',
   sclass2: 'sclass',
   under: 'underline',
   brackets: 'bracket',
-  raise: 'lower'
+  raise: 'lower',
+  'born-in': 'born in',
+  'c.': 'circa',
+  'r.': 'reign',
 };
 
 //multiple aliases
@@ -4228,7 +4231,7 @@ let multi = {
     'unbulleted list',
     'unbulleted',
     'unbulletedlist',
-    'vunblist'
+    'vunblist',
   ],
 
   'election box begin': [
@@ -4391,7 +4394,7 @@ let multi = {
     'user-blocked',
     'notabug',
     'notfixed',
-    'won\'t fix',
+    "won't fix",
     'withdraw',
     'nojoy',
     'unrelated',
@@ -4399,30 +4402,75 @@ let multi = {
     'nayc',
     'nayg',
   ],
-  checked: [
-    'already done',
-    'resolved1',
-    'check mark-n',
-    'checked box',
-  ],
+  checked: ['already done', 'resolved1', 'check mark-n', 'checked box'],
   // https://en.wikipedia.org/wiki/Template:Ferry
-  'station link': [
-    'amtk',
-    'cta',
-    'bts',
-    'mnrr',
-    'mtams',
-    'munis',
-    'njts',
-    'scax',
-    'wmata',
-    'rwsa',
+  'station link': ['amtk', 'cta', 'bts', 'mnrr', 'mtams', 'munis', 'njts', 'scax', 'wmata', 'rwsa'],
+  'video game release': ['vgrelease', 'video game release hlist', 'vgrtbl', 'vgrelease hlist', 'vgrh'],
+  aka: ['a.k.a.', 'also known as'],
+  'literal translation': ['lit', 'literal', 'literally'],
+  'citation needed': [
+    'are you sure?',
+    'cb',
+    'ciation needed',
+    'cit',
+    'cita requerida',
+    'citaiton needed',
+    'citation missing',
+    'citation need',
+    'citation requested',
+    'citation required',
+    'citation-needed',
+    'citationeeded',
+    'citationneeded',
+    'citationrequired',
+    'citazione necessaria',
+    'cite missing',
+    'cite needed',
+    'cite source',
+    'cite-needed',
+    'citeneeded',
+    'citesource',
+    'citn',
+    'cn needed',
+    'cn',
+    'ctn',
+    'fact?',
+    'fact',
+    'facts',
+    'fcitation needed',
+    'me-fact',
+    'need citation',
+    'need sources',
+    'need-ref',
+    'needcitation',
+    'needcite',
+    'needs citation',
+    'needs citations',
+    'needs reference',
+    'needs source',
+    'needs-cite',
+    'needsref',
+    'no source given',
+    'prov-statement',
+    'prove it',
+    'proveit',
+    'ref needed',
+    'ref-needed',
+    'ref?',
+    'reference necessary',
+    'reference needed',
+    'reference required',
+    'refnec',
+    'refneeded',
+    'refplease',
+    'request citation',
+    'source needed',
+    'source?',
+    'sourceme',
+    'uncited',
+    'unreferenced inline',
+    'unsourced-inline',
   ],
-  // 'br separated entries': [
-  //   'br list',
-  //   'br-separated entries',
-  //   'br separated entries',
-  // ]
 };
 
 // - other languages -
@@ -4505,7 +4553,7 @@ var hardcoded = {
 };
 
 //grab the first, second or third pipe..
-let templates$b = {
+let templates$c = {
   p1: 0,
   p2: 1,
   p3: 2,
@@ -4606,13 +4654,17 @@ let zeros = [
   'bigdiv',
   'strikethroughdiv',
   'strikethrough color',
-  'pbpe'//pt
+  'pbpe', //pt
+  'video game release/abbr',
+  'nobel abbr',
+  'gloss',
+  'gcl',
 ];
 zeros.forEach((k) => {
-  templates$b[k] = 0;
+  templates$c[k] = 0;
 });
 
-let templates$a = {};
+let templates$b = {};
 // these templates all have a predictable pattern
 // {{HSC|Ship Name|ID}} -> [[HSC Name (id)]]
 let arr = [
@@ -4691,7 +4743,7 @@ let arr = [
 ];
 
 arr.forEach(word => {
-  templates$a[word] = (tmpl) => {
+  templates$b[word] = (tmpl) => {
     let { name, id } = parser(tmpl, ['name', 'id']);
     return id ? `[[${word.toUpperCase()} ${name} (${id})]]` : `[[${word.toUpperCase()} ${name}]]`
   };
@@ -4842,11 +4894,6 @@ var functions = {
     return `(r. ${obj.start} – ${obj.end})`
   },
 
-  circa: (tmpl) => {
-    let { year } = parser(tmpl, ['year']);
-    return year ? `c. ${year}` : 'c. '
-  },
-
   // https://en.wikipedia.org/wiki/Template:Decade_link
   'decade link': (tmpl) => {
     let { year } = parser(tmpl, ['year']);
@@ -4905,6 +4952,12 @@ var functions = {
   pagelist: (tmpl) => {
     let arr = parser(tmpl).list || [];
     return arr.join(', ')
+  },
+
+  // not perfect - https://en.m.wikipedia.org/wiki/Template:Interlinear
+  interlinear: (tmpl) => {
+    let arr = parser(tmpl).list || [];
+    return arr.join('\n\n')
   },
 
   //actually rendering these links removes the text.
@@ -5503,9 +5556,66 @@ var functions = {
     }
     return ''
   },
+
+  'literal translation': (tmpl) => {
+    let arr = parser(tmpl).list || [];
+    arr = arr.map((str) => `'${str}'`);
+    return 'lit. ' + arr.join(' or ')
+  },
 };
 
-let templates$9 = {};
+let shorthands = [
+  // {{HWV|251d}} - handel, bach
+  ['bwv', 'BWV'],
+  ['hwv', 'HWV'],
+  ['d.', 'D '], //Deutsch catalogue
+  ['aka', 'a.k.a. '],
+
+  // date abbreviations
+  ['cf.', 'cf. '],
+  ['fl.', 'fl. '],
+  ['circa', 'c. '],
+  ['born in', 'b. '],
+  ['died-in', 'd. '],
+  ['married-in', 'm. '],
+];
+// create a function for each one
+let fns$1 = shorthands.reduce((h, a) => {
+  let [name, out] = a;
+  h[name] = (tmpl) => {
+    let { first } = parser(tmpl, ['first']);
+    if (first || first === 0) {
+      return out + (first || '')
+    }
+    return out
+  };
+  return h
+}, {});
+
+// return only the name of the template
+let justNames = [
+  'they',
+  'them',
+  'their',
+  'theirs',
+  'themself',
+  'they are',
+  'they were',
+  'they have',
+  'they do',
+  'he or she',
+  'him or her',
+  'his or her',
+  'his or hers',
+  'he/she',
+  'him/her',
+  'his/her',
+];
+justNames.forEach((str) => {
+  fns$1[str] = str;
+});
+
+let templates$a = {};
 let more = [
   'sr-latn-cyrl', //first parameter latin, second cyrillic
   'sr-cyrl-latn', //first parameter cyrillic, second latin
@@ -5966,12 +6076,12 @@ let more = [
 
 // more languages
 more.forEach((k) => {
-  templates$9['lang-' + k] = 0;
+  templates$a['lang-' + k] = 0;
 });
 
 //https://en.wikipedia.org/wiki/Category:Lang-x_templates
 Object.keys(languages).forEach((k) => {
-  templates$9['lang-' + k] = 0;
+  templates$a['lang-' + k] = 0;
 });
 
 var flags = [
@@ -6236,7 +6346,7 @@ var flags = [
 ];
 
 const order = ['flag', 'variant'];
-let templates$8 = {
+let templates$9 = {
   //https://en.wikipedia.org/wiki/Template:Flag
   // {{flag|USA}} →  USA
   flag: (tmpl) => {
@@ -6312,7 +6422,7 @@ let templates$8 = {
 };
 //support {{can}}
 flags.forEach((a) => {
-  templates$8[a[1]] = () => {
+  templates$9[a[1]] = () => {
     return a[0]
   };
 });
@@ -6320,7 +6430,7 @@ flags.forEach((a) => {
 //random misc for inline wikipedia templates
 
 //https://en.wikipedia.org/wiki/Template:Yes
-let templates$7 = {};
+let templates$8 = {};
 let cells = [
   'rh',
   'rh2',
@@ -6388,7 +6498,7 @@ let cells = [
   'optional',
 ];
 cells.forEach((str) => {
-  templates$7[str] = (tmpl) => {
+  templates$8[str] = (tmpl) => {
     let data = parser(tmpl, ['text']);
     return data.text || titlecase(data.template)
   };
@@ -6416,24 +6526,15 @@ let moreCells = [
   ['nocontest', ''],
 ];
 moreCells.forEach((a) => {
-  templates$7[a[0]] = (tmpl) => {
+  templates$8[a[0]] = (tmpl) => {
     let data = parser(tmpl, ['text']);
     return data.text || a[1]
   };
 });
 
-var textTmpl = Object.assign(
-  {},
-  hardcoded,
-  templates$b,
-  templates$a,
-  functions,
-  templates$9,
-  templates$8,
-  templates$7,
-);
+var textTmpl = Object.assign({}, hardcoded, templates$c, templates$b, functions, templates$a, fns$1, templates$9, templates$8);
 
-let templates$6 = {};
+let templates$7 = {};
 // these all have ['id', 'name']
 let idName = [
   'goodreads author',
@@ -6454,10 +6555,10 @@ let idName = [
   'playmate',
 ];
 idName.forEach((name) => {
-  templates$6[name] = ['id', 'name'];
+  templates$7[name] = ['id', 'name'];
 });
 
-let templates$5 = {};
+let templates$6 = {};
 // these all have ['id', 'title', 'description', 'section']
 let idTitle = [
   'imdb title', //https://en.wikipedia.org/wiki/Template:IMDb_title
@@ -6483,7 +6584,19 @@ let idTitle = [
   'dmoz', //https://en.wikipedia.org/wiki/Template:DMOZ
 ];
 idTitle.forEach((name) => {
-  templates$5[name] = ['id', 'title', 'description', 'section'];
+  templates$6[name] = ['id', 'title', 'description', 'section'];
+});
+
+// dummy templates that get parsed properly already,
+// but present here for for aliases + template coverage tests
+let templates$5 = {};
+let dummies = ['citation needed'];
+dummies.forEach((name) => {
+  // just parse it and do nothing
+  templates$5[name] = (tmpl, list) => {
+    list.push(parser(tmpl));
+    return ''
+  };
 });
 
 var fns = {
@@ -6716,7 +6829,7 @@ var fns = {
       let positionalIndex = 0;
       for (let i = 0; i < parameters.length; i++) {
         let parameter = parameters[i].trim();
-        if (parameter.match(/^[a-zA-Z_]/)) {
+        if (parameter.match(/^[a-z_]/i)) {
           // Named argument
           let [key, value] = parameter.split('=');
           // At this point, the Lua code evaluates alttot1 and alttot2 values as
@@ -6882,7 +6995,7 @@ var fns = {
     return ''
   },
   //https://en.wikipedia.org/wiki/Template:MedalCount
-  'medalcount': (tmpl, list) => {
+  medalcount: (tmpl, list) => {
     let all = parser(tmpl).list || [];
     let lines = [];
     for (let i = 0; i < all.length; i += 4) {
@@ -6895,11 +7008,11 @@ var fns = {
     }
     let obj = {
       template: 'medalcount',
-      list: lines
+      list: lines,
     };
     list.push(obj);
     return ''
-  }
+  },
 };
 
 let templates$4 = {
@@ -6916,15 +7029,10 @@ let templates$4 = {
   'taxon info': ['taxon', 'item'], //https://en.wikipedia.org/wiki/Template:Taxon_info
   'portuguese name': ['first', 'second', 'suffix'], // https://en.wikipedia.org/wiki/Template:Portuguese_name
   geo: ['lat', 'lon', 'zoom'], //https://en.wikivoyage.org/wiki/Template:Geo
-  hatnote: ['text']
+  hatnote: ['text'],
 };
 
-templates$4 = Object.assign(
-  templates$4,
-  templates$6,
-  templates$5,
-  fns
-);
+templates$4 = Object.assign(templates$4, templates$5, templates$7, templates$6, fns);
 
 var dataTmpl = templates$4;
 
@@ -7326,11 +7434,27 @@ let templates$3 = {
       txt = obj.list[0] || '';
     }
     // replace double quotes with singles and put the text inside double quotes
-    let result = txt.replace(/"/g, '\'');
+    let result = txt.replace(/"/g, "'");
     result = '"' + result + '"';
     return result
   },
 
+  // https://de.m.wikipedia.org/wiki/Vorlage:ReptileDatabase
+  ReptileDatabase: (tmpl, list) => {
+    let obj = parser(tmpl, ['taxon', 'genus', 'species', 'abruf', 'pure_url']);
+    list.push(obj);
+    let str = '';
+    if (obj.genus || obj.species) {
+      str = `${obj.genus || ''} ${obj.species || ''} `;
+    }
+    return `${str}In: [[The Reptile Database]]`
+  },
+  //https://en.m.wikipedia.org/wiki/Template:GEOnet3
+  GEOnet3: (tmpl, list) => {
+    let obj = parser(tmpl, ['ufi', 'name']);
+    list.push(obj);
+    return `GEOnet3 can be found at [[GEOnet Names Server]], at [http://geonames.nga.mil/namesgaz/ this link]`
+  },
 };
 
 const codes$1 = {
@@ -8431,17 +8555,12 @@ var bothTmpl = Object.assign(
   sports,
 );
 
-let templates = Object.assign(
-  {},
-  textTmpl,
-  dataTmpl,
-  bothTmpl
-);
+let templates = Object.assign({}, textTmpl, dataTmpl, bothTmpl);
 
 Object.keys(aliases).forEach((k) => {
-  // if (templates[aliases[k]] === undefined) {
-  //   console.error(`Missing template: '${aliases[k]}'`)
-  // }
+  if (templates[aliases[k]] === undefined) {
+    console.error(`Missing template: '${aliases[k]}'`);
+  }
   templates[k] = templates[aliases[k]];
 });
 
@@ -8862,15 +8981,23 @@ const parseRefs = function (section) {
   let references = [];
   let wiki = section._wiki;
 
-  wiki = wiki.replace(/ ?<ref>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
-    if (hasCitation(tmpl)) {
-      let obj = parseCitation(tmpl);
-      if (obj) {
-        references.push({ json: obj, wiki: all });
+  wiki = wiki.replace(/ ?<ref>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, txt) {
+    let found = false;
+    // there could be more than 1 template inside a <ref><ref>
+    let arr = findFlat(txt);
+    arr.forEach((tmpl) => {
+      if (hasCitation(tmpl)) {
+        let obj = parseCitation(tmpl);
+        if (obj) {
+          references.push({ json: obj, wiki: all });
+          found = true;
+        }
+        wiki = wiki.replace(tmpl, '');
       }
-      wiki = wiki.replace(tmpl, '');
-    } else {
-      references.push({ json: parseInline(tmpl), wiki: all });
+    });
+    // parse as an inline reference
+    if (!found) {
+      references.push({ json: parseInline(txt), wiki: all });
     }
     return ' '
   });
@@ -8878,16 +9005,24 @@ const parseRefs = function (section) {
   //<ref name=""/>
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, ' ');
 
-  //<ref name=""></ref>
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, tmpl) {
-    if (hasCitation(tmpl)) {
-      let obj = parseCitation(tmpl);
-      if (obj) {
-        references.push({ json: obj, wiki: tmpl });
+  //<ref name=""></ref> (a gross copy of above parsing)
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, txt) {
+    let found = false;
+    // there could be more than 1 template inside a <ref><ref>
+    let arr = findFlat(txt);
+    arr.forEach((tmpl) => {
+      if (hasCitation(tmpl)) {
+        let obj = parseCitation(tmpl);
+        if (obj) {
+          references.push({ json: obj, wiki: all });
+          found = true;
+        }
+        wiki = wiki.replace(tmpl, '');
       }
-      wiki = wiki.replace(tmpl, '');
-    } else {
-      references.push({ json: parseInline(tmpl), wiki: all });
+    });
+    // parse as an inline reference
+    if (!found) {
+      references.push({ json: parseInline(txt), wiki: all });
     }
     return ' '
   });
@@ -9704,7 +9839,6 @@ const doInlineTemplates = function (wiki, doc) {
   return wiki
 };
 
-
 /**
  * @typedef fakeSection
  * @property {string} title
@@ -9881,6 +10015,7 @@ class Document {
       // userAgent is used for successive calls to the API
       userAgent: options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library',
       templateFallbackFn: options.templateFallbackFn || null,
+      revisionID: options.revisionID || null,
     };
     // this._missing_templates = {} //for stats+debugging purposes
 
@@ -10334,6 +10469,20 @@ class Document {
     return this
   }
 
+  /**
+   * If a revisionID is given then it sets the revisionID and returns the given revisionID
+   * Else if the revisionID is already set it returns the revisionID
+   *
+   * @param {number} [id] The revisionID that will be set
+   * @returns {number|null} The given or found revisionID
+   */
+  revisionID(id) {
+    if (id !== undefined) {
+      this._revisionID = id;
+    }
+    return this._revisionID || null
+  }
+
   options() {
     return this._options
   }
@@ -10516,7 +10665,7 @@ const fetch = function (title, options, callback) {
     })
 };
 
-var version = '10.2.0';
+var version = '10.2.1';
 
 /**
  * use the native client-side fetch function

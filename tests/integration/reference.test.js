@@ -1,12 +1,13 @@
 import test from 'tape'
 import wtf from '../lib/index.js'
+const here = ' [reference-test]'
 
 test('basic-citation', (t) => {
   const str = `Emery is a vegetarian,<ref>{{cite web|title=The princess of pot|url=http://thewalrus.ca/the-princess-of-pot/}}</ref>`
   const arr = wtf(str)
     .citations()
     .map((c) => c.json())
-  t.equal(arr.length, 1, 'found-one-citation')
+  t.equal(arr.length, 1, 'basic- found-one-citation')
   t.equal(arr[0].type, 'web', 'cite web')
   t.equal(arr[0].title, 'The princess of pot', 'title')
   t.equal(arr[0].url, 'http://thewalrus.ca/the-princess-of-pot/', 'url')
@@ -19,7 +20,7 @@ test('complex-citation', (t) => {
   const arr = wtf(str)
     .citations()
     .map((c) => c.json())
-  t.equal(arr.length, 1, 'found-one-citation')
+  t.equal(arr.length, 1, 'complex - found-one-citation')
   t.equal(arr[0].type, 'web', 'cite web')
   t.equal(arr[0].foo, 'bar', 'foo')
   t.equal(arr[0].url, 'http://cool.com/?fun=cool/', 'url')
@@ -71,27 +72,40 @@ test('inline-test', (t) => {
   t.equal(refs[1].date, 'August 2003', 'got data 2')
   t.end()
 })
-// test('inline-test', t => {
-//   const str = `"Through Magic Doorways".<ref name="quote">[http://www.imdb.com/name/nm3225194/ Allen Morris IMDb profile]</ref> `;
-//   const arr = wtf(str).citations();
-//   t.equal(arr.length, 1, 'found-inline-citations');
-//   t.equal(arr[0].link().site, 'http://www.imdb.com/name/nm3225194/', 'inline-url');
-//   t.equal(arr[0].text(), 'Allen Morris IMDb profile', 'inline-text');
-//   t.end();
-// });
-//
-// test('inline-test2', t => {
-//   const str = `in 1826.<ref name="brake">Brake (2009)</ref>  `;
-//   const arr = wtf(str).citations();
-//   t.equal(arr.length, 1, 'found-inline-citations');
-//   t.equal(arr[0].text(), 'Brake (2009)', 'inline-text');
-//   t.end();
-// });
 
-// test('inline harder-citation', t => {
-//   const str = `<ref name="ChapmanRoutledge">Siobhan Chapman, {{ISBN|0-19-518767-9}}, [https://books.google.com/books?id=Vfr Google Print, p. 166]</ref> She continued her education after.`;
-//   const arr = wtf(str).citations();
-//   t.equal(arr.length, 1, 'found-one-citation');
-//   t.equal(arr[0].link().site, 'https://books.google.com/books?id=Vfr', 'fould late link');
-//   t.end();
-// });
+test('inline-test', (t) => {
+  const str = `"Through Magic Doorways".<ref name="quote">[http://www.imdb.com/name/nm3225194/ Allen Morris IMDb profile]</ref> `
+  const arr = wtf(str).citations()
+  t.equal(arr.length, 1, 'found-inline-citations')
+  // t.equal(arr[0].links()[0].site, 'http://www.imdb.com/name/nm3225194/', 'inline-url')
+  t.equal(arr[0].json().inline.text(), 'Allen Morris IMDb profile', 'inline-text')
+  t.end()
+})
+
+test('inline-test2', (t) => {
+  const str = `in 1826.<ref name="brake">Brake (2009)</ref>  `
+  const arr = wtf(str).citations()
+  t.equal(arr.length, 1, 'found-inline-citations')
+  t.equal(arr[0].json().inline.text(), 'Brake (2009)', 'inline-text')
+  t.end()
+})
+
+test('inline harder-citation', (t) => {
+  const str = `<ref name="ChapmanRoutledge">Siobhan Chapman, {{ISBN|0-19-518767-9}}, [https://books.google.com/books?id=Vfr Google Print, p. 166]</ref> She continued her education after.`
+  const arr = wtf(str).citations()
+  t.equal(arr.length, 1, 'inline found-one-citation')
+  // t.equal(arr[0].links()[0].site, 'https://books.google.com/books?id=Vfr', 'fould late link')
+  t.end()
+})
+
+test('double template', (t) => {
+  let str = `<ref>{{cite book |last= Bushnell|first= Ian}}
+{{cite book |last= Walker|first= James W. St. G.}}</ref>`
+  let doc = wtf(str)
+  let arr = doc.references().map((r) => r.json())
+  t.equal(arr.length, 2, here + 'got both references')
+  t.equal(arr[0].last, 'Bushnell', here + 'parsed prop #1')
+  t.equal(arr[0].first, 'Ian', here + 'parsed prop #2')
+  t.equal((arr[1] || {}).last, 'Walker', here + 'parsed prop #2')
+  t.end()
+})

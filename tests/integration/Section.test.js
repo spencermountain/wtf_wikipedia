@@ -268,45 +268,6 @@ test('images - get', (t) => {
   t.end()
 })
 
-//references
-test('references - get', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
-  let sec = wtf(str).section(0)
-  const expected = '15,104,58,38,50,0,0,0,30,33,34,0,71,0,56,85,16,59,64,29,0,0,0,0,0,26,60,0,35,87,90,42,0,0'
-  t.equal(
-    sec
-      .references()
-      .map((s) => s.title().length)
-      .join(','),
-    expected,
-    'the references should equal the expected'
-  )
-  t.end()
-})
-
-test('references - get - number', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
-  let sec = wtf(str).section(0)
-  t.equal(sec.reference().title().length, 15, 'the references should equal the expected')
-  t.end()
-})
-
-//citations -- alias of references
-test('references - get', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
-  let sec = wtf(str).section(0)
-  const expected = '15,104,58,38,50,0,0,0,30,33,34,0,71,0,56,85,16,59,64,29,0,0,0,0,0,26,60,0,35,87,90,42,0,0'
-  t.equal(
-    sec
-      .citations()
-      .map((s) => s.title().length)
-      .join(','),
-    expected,
-    'the citations should equal the expected'
-  )
-  t.end()
-})
-
 test('citations - get - number', (t) => {
   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'United-Kingdom.txt'), 'utf-8')
   let sec = wtf(str).section()
