@@ -7,7 +7,7 @@ test('basic-citation', (t) => {
   const arr = wtf(str)
     .citations()
     .map((c) => c.json())
-  t.equal(arr.length, 1, 'found-one-citation')
+  t.equal(arr.length, 1, 'basic- found-one-citation')
   t.equal(arr[0].type, 'web', 'cite web')
   t.equal(arr[0].title, 'The princess of pot', 'title')
   t.equal(arr[0].url, 'http://thewalrus.ca/the-princess-of-pot/', 'url')
@@ -20,7 +20,7 @@ test('complex-citation', (t) => {
   const arr = wtf(str)
     .citations()
     .map((c) => c.json())
-  t.equal(arr.length, 1, 'found-one-citation')
+  t.equal(arr.length, 1, 'complex - found-one-citation')
   t.equal(arr[0].type, 'web', 'cite web')
   t.equal(arr[0].foo, 'bar', 'foo')
   t.equal(arr[0].url, 'http://cool.com/?fun=cool/', 'url')
@@ -93,7 +93,7 @@ test('inline-test2', (t) => {
 test('inline harder-citation', (t) => {
   const str = `<ref name="ChapmanRoutledge">Siobhan Chapman, {{ISBN|0-19-518767-9}}, [https://books.google.com/books?id=Vfr Google Print, p. 166]</ref> She continued her education after.`
   const arr = wtf(str).citations()
-  t.equal(arr.length, 1, 'found-one-citation')
+  t.equal(arr.length, 1, 'inline found-one-citation')
   // t.equal(arr[0].links()[0].site, 'https://books.google.com/books?id=Vfr', 'fould late link')
   t.end()
 })

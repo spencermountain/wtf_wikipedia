@@ -6,12 +6,13 @@ let str = `
 
 `
 
-str = `{{de-conj|ab.tun<irreg>}}`
+str = `<ref> Chapman {{Foo}} </ref> `
 // str = `{{Refplease|date=November 2023|reason=Your explanation here}} in [[Jolgeh-ye Musaabad Rural District]],`
 
 let doc = wtf(str)
 // const doc = await wtf.fetch('Grand Bend')
 
 // console.log(doc.template().json())
-// console.log(doc.references().map((r) => r.json()))
-console.log(doc.templates().map((r) => r.json()))
+// console.log(doc.text())
+console.log(doc.references().map((r) => r.json()))
+// console.log(doc.templates().map((r) => r.json()))

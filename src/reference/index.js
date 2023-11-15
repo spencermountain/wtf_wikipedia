@@ -32,21 +32,23 @@ const parseRefs = function (section) {
   let wiki = section._wiki
 
   wiki = wiki.replace(/ ?<ref>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, txt) {
+    let found = false
     // there could be more than 1 template inside a <ref><ref>
     let arr = getTemplates(txt)
-    // parse as an inline reference
-    if (arr.length === 0) {
-      references.push({ json: parseInline(txt), wiki: all })
-    }
     arr.forEach((tmpl) => {
       if (hasCitation(tmpl)) {
         let obj = parseCitation(tmpl)
         if (obj) {
           references.push({ json: obj, wiki: all })
+          found = true
         }
         wiki = wiki.replace(tmpl, '')
       }
     })
+    // parse as an inline reference
+    if (!found) {
+      references.push({ json: parseInline(txt), wiki: all })
+    }
     return ' '
   })
 
@@ -55,21 +57,23 @@ const parseRefs = function (section) {
 
   //<ref name=""></ref> (a gross copy of above parsing)
   wiki = wiki.replace(/ ?<ref [^>]{0,200}>([\s\S]{0,1800}?)<\/ref> ?/gi, function (all, txt) {
+    let found = false
     // there could be more than 1 template inside a <ref><ref>
     let arr = getTemplates(txt)
-    // parse as an inline reference
-    if (arr.length === 0) {
-      references.push({ json: parseInline(txt), wiki: all })
-    }
     arr.forEach((tmpl) => {
       if (hasCitation(tmpl)) {
         let obj = parseCitation(tmpl)
         if (obj) {
           references.push({ json: obj, wiki: all })
+          found = true
         }
         wiki = wiki.replace(tmpl, '')
       }
     })
+    // parse as an inline reference
+    if (!found) {
+      references.push({ json: parseInline(txt), wiki: all })
+    }
     return ' '
   })
 
