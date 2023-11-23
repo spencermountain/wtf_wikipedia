@@ -4,51 +4,10 @@ export default [
   'disambig', //en
   'disambiguation', //en
 
-  // Disambiguation_message_boxes
-  'letter-numbercombdisambig',
-  'letter-number combination disambiguation',
-  'dmbox',
-  'airport disambiguation',
-  'biology disambiguation',
-  'call sign disambiguation',
-  'caselaw disambiguation',
-  'chinese title disambiguation',
-  'disambiguation cleanup',
-  'genus disambiguation',
-  'hospital disambiguation',
-  'human name disambiguation',
-  'human name disambiguation cleanup',
-  'letter-number combination disambiguation',
-  'mathematical disambiguation',
-  'military unit disambiguation',
-  'music disambiguation',
-  'number disambiguation',
-  'opus number disambiguation',
-  'phonetics disambiguation',
-  'place name disambiguation',
-  'portal disambiguation',
-  'road disambiguation',
-  'school disambiguation',
-  'species latin name abbreviation disambiguation',
-  'species latin name disambiguation',
-  'station disambiguation',
-  'synagogue disambiguation',
-  'taxonomic authority disambiguation',
-  'taxonomy disambiguation',
-  'template disambiguation',
-  'disamb2',
-  'disamb3',
-  'disamb4',
-  'disambiguation lead',
-  'disambiguation lead name',
-  'disambiguation name',
-  'disamb-term',
-  'disamb-terms',
-
-
-  // i18n
+  'aðgreining',
   'aðgreining', //is
   'aimai', //ja
+  'airport disambiguation',
   'ałtsʼáʼáztiin', //nv
   'anlam ayrımı', //gag
   'anlam ayrımı', //tr
@@ -59,10 +18,14 @@ export default [
   'begriffsklärung', //de
   'begriffsklärung', //pdc
   'begriffsklearung', //bar
+  'biology disambiguation',
   'bisongidila', //kg
   'bkl', //pfl
   'bokokani', //ln
   'caddayn', //so
+  'call sign disambiguation',
+  'caselaw disambiguation',
+  'chinese title disambiguation',
   'clerheans', //kw
   'cudakirin', //ku
   'čvor', //bs
@@ -77,88 +40,129 @@ export default [
   'desambiguassiù', //lmo
   'desambigui', //lfn
   'dezambiguizare', //ro
+  'dezanbìgua',
+  'dəqiqləşdirmə',
   'dəqiqləşdirmə', //az
+  'disamb-term',
+  'disamb-terms',
+  'disamb2',
+  'disamb3',
+  'disamb4',
   'disambigua', //it
-  'disambigua', //lij
-  'disambigua', //nap
   'disambìgua', //sc
-  'disambigua', //scn
-  'disambiguasi', //id
-  'disambiguasi', //su
+  'disambiguasi',
+  'disambiguation cleanup',
+  'disambiguation lead name',
+  'disambiguation lead',
+  'disambiguation name',
+  'disambiguazion',
+  'disambigue',
+  'discretiva',
   'discretiva', //la
   'disheñvelout', //br
   'disingkek', //min
   'dixanbigua', //vec
   'dixebra', //ast
   'diżambigwazzjoni', //mt
+  'dmbox',
   'doorverwijspagina', //nl
   'dp', //nl
-  'dp', //zea
+  'dubbelsinnig',
   'dubbelsinnig', //af
   'dudalipen', //rmy
   'dv', //nds_nl
   'egyért', //hu
+  'faaleaogaina',
   'fleiri týdningar', //fo
   'fleirtyding', //nn
   'flertydig', //da
   'förgrening', //sv
+  'genus disambiguation',
   'gì-ngiê', //cdo
   'giklaro', //ceb
   'gwahaniaethu', //cy
   'homonimo', //io
   'homónimos', //gl
   'homonymie', //fr
+  'hospital disambiguation',
+  'huaʻōlelo puana like',
   'huaʻōlelo puana like', //haw
+  'human name disambiguation cleanup',
+  'human name disambiguation',
   'idirdhealú', //ga
   'khu-pia̍t', //zh_min_nan
   'kthjellim', //sq
   'kujekesa', //sn
+  'letter-number combination disambiguation',
+  'letter-numbercombdisambig',
   'maana', //sw
   'maneo bin', //diq
+  'mathematical disambiguation',
   'mehrdüdig begreep', //nds
   'menm non', //ht
+  'military unit disambiguation',
   'muardüüdag artiikel', //frr
+  'music disambiguation',
+  'myesakãrã',
   'neibetsjuttings', //fy
   'nozīmju atdalīšana', //lv
+  'number disambiguation',
   'nuorodinis', //lt
   'nyahkekaburan', //ms
   'omonimeye', //wa
+  'omonimi',
   'omonimia', //oc
+  'opus number disambiguation',
   'page dé frouque', //nrm
   'paglilinaw', //tl
   'panangilawlawag', //ilo
   'pansayod', //war
   'pejy mitovy anarana', //mg
   'peker', //no
+  'phonetics disambiguation',
+  'place name disambiguation',
+  'portal disambiguation',
   'razdvojba', //hr
   'razločitev', //sl
   'razvrstavanje', //sh
   'reddaghey', //gv
+  'road disambiguation',
   'rozcestník', //cs
   'rozlišovacia stránka', //sk
+  'school disambiguation',
   'sclerir noziun', //rm
   'selvendyssivu', //olo
   'soilleireachadh', //gd
+  'species latin name abbreviation disambiguation',
+  'species latin name disambiguation',
+  'station disambiguation',
   'suzmunski', //jbo
+  'synagogue disambiguation',
   'täpsustuslehekülg', //et
   'täsmennyssivu', //fi
+  'taxonomic authority disambiguation',
+  'taxonomy disambiguation',
   'telplänov', //vo
+  'template disambiguation',
   'tlahtolmelahuacatlaliztli', //nah
   'trang định hướng', //vi
   'ujednoznacznienie', //pl
   'verdudeliking', //li
   'wěcejwóznamowosć', //dsb
   'wjacezmyslnosć', //hsb
+  'z',
   'zambiguaçon', //mwl
   'zeimeibu škiršona', //ltg
   'αποσαφήνιση', //el
   'айрық', //kk
   'аҵакырацәа', //ab
+  'бир аайы јок',
   'вишезначна одредница', //sr
   'ибҳомзудоӣ', //tg
   'кёб магъаналы', //krc
   'күп мәгънәләр', //tt
   'күп мәғәнәлелек', //ba
+  'массехк маӏан хилар',
   'мъногосъмꙑслиѥ', //cu
   'неадназначнасць', //be
   'неадназначнасьць', //be_x_old
@@ -202,7 +206,9 @@ export default [
   'වක්‍රෝත්ති', //si
   'แก้ความกำกวม', //th
   'သံတူကြောင်းကွဲ', //my
+  'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ',
   'ណែនាំ', //km
+  'អសង្ស័យកម្ម',
   '동음이의', //ko
   '扤清楚', //gan
   '搞清楚', //zh_yue
@@ -213,4 +219,6 @@ export default [
   "sut'ichana qillqa", //qu
   // 'z', //vep
   // 'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ', //shn
+  `gestion dj'omònim`,
+  `sut'ichana qillqa`,
 ]
