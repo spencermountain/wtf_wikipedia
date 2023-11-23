@@ -45,4 +45,5 @@ export default [
   'リダイレクト',//ja
   '転送', //ja
   '重定向',//zh
+  'omdirigering',//no
 ]
