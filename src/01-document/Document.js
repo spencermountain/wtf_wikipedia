@@ -32,27 +32,28 @@ class Document {
   constructor(wiki, options) {
     options = options || {}
     this._options = options
+    let userAgent = options.userAgent || options['User-Agent'] || options['Api-User-Agent']
+    userAgent = userAgent || 'User of the wtf_wikipedia library'
     let props = {
-      pageID: options.pageID || options.id || null,
-      namespace: options.namespace || options.ns || null,
-      lang: options.lang || options.language || null,
-      domain: options.domain || null,
       title: options.title || null,
       type: 'page',
+      userAgent,
       redirectTo: null,
-      wikidata: options.wikidata || null,
       wiki: wiki || '',
       categories: [],
       sections: [],
       coordinates: [],
-      // userAgent is used for successive calls to the API
-      userAgent:
-        options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library',
       templateFallbackFn: options.templateFallbackFn || null,
       revisionID: options.revisionID || null,
       timestamp: options.timestamp || null,
+      description: options.description || null,
+      wikidata: options.wikidata || null,
+      pageImage: options.pageImage || null,
+      pageID: options.pageID || options.id || null,
+      namespace: options.namespace || options.ns || null,
+      lang: options.lang || options.language || null,
+      domain: options.domain || null,
     }
-    // this._missing_templates = {} //for stats+debugging purposes
 
     Object.keys(props).forEach((k) => {
       Object.defineProperty(this, '_' + k, {

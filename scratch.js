@@ -10,8 +10,9 @@ str = `<ref> Chapman {{Foo}} </ref> `
 // str = `{{Refplease|date=November 2023|reason=Your explanation here}} in [[Jolgeh-ye Musaabad Rural District]],`
 
 // let doc = wtf(str)
-const doc = await wtf.fetch('Grand Bend')
+const doc = await wtf.fetch('Tony Hawk')
 // console.log(doc.json())
+console.log(doc.wikidata() + '|')
 
 // console.log(doc.template().json())
 // console.log(doc.text())

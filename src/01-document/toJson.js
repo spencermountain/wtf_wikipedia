@@ -18,6 +18,13 @@ const defaults = {
   sections: true,
   pageID: true,
   categories: true,
+  wikidata: true,
+  revisionID: true,
+  description: true,
+  timestamp: false,
+  pageImage: false,
+  domain: false,
+  language: false,
 }
 
 /**

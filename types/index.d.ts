@@ -47,7 +47,11 @@ declare class Document {
   url(): string | null
   wikidata(id?: string): string | null
   wikitext(): string
-  revisionID(): string | null
+  revisionID(id?: number): number | null
+  description(desc?: string): string | null
+  timestamp(iso?: string): string | null
+  pageImage(img?: string): string | null
+  domain(domain?: string): string | null
 }
 
 declare class Section {
