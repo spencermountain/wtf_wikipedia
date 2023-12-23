@@ -1,11 +1,12 @@
 import { isArray } from '../_lib/helpers.js'
 
-const isInterWiki = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/
+const isInterWiki =
+  /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/
 
 const defaults = {
   action: 'query',
   prop: 'revisions|pageprops', // we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-  rvprop: 'content',
+  rvprop: 'content|ids|timestamp',
   maxlag: 5,
   rvslots: 'main',
   origin: '*',
@@ -15,7 +16,7 @@ const defaults = {
 
 /**
  * turns a object into a query string
- * 
+ *
  * @private
  * @param {Object<string, string | number | boolean>} obj
  * @returns {string} QueryString
@@ -34,13 +35,12 @@ const toQueryString = function (obj) {
  * @returns {string} the cleaned title
  */
 const cleanTitle = (page) => {
-  return page.replace(/ /g, '_')
-    .trim()
+  return page.replace(/ /g, '_').trim()
 }
 
 /**
  * generates the url for fetching the pages
- * 
+ *
  * @private
  * @param {import('.').fetchDefaults} options
  * @param {Object} [parameters]
@@ -63,7 +63,6 @@ const makeUrl = function (options, parameters = defaults) {
     return ''
   }
 
-
   if (!options.follow_redirects) {
     delete params.redirects
   }
@@ -84,10 +83,13 @@ const makeUrl = function (options, parameters = defaults) {
     params.titles = cleanTitle(title)
   } else if (title !== undefined && isArray(title) && typeof title[0] === 'number') {
     //pageid array
-    params.pageids = title.filter(t => t).join('|')
+    params.pageids = title.filter((t) => t).join('|')
   } else if (title !== undefined && isArray(title) === true && typeof title[0] === 'string') {
     //title array
-    params.titles = title.filter(t => t).map(cleanTitle).join('|')
+    params.titles = title
+      .filter((t) => t)
+      .map(cleanTitle)
+      .join('|')
   } else {
     return ''
   }

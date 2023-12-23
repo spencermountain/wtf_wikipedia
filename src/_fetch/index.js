@@ -10,11 +10,11 @@ const isUrl = /^https?:\/\//
 /**
  * @typedef fetchDefaults
  * @property {string | undefined} [path] the path to the wiki api. default: api.php
- * @property {string | undefined} [wiki] 
+ * @property {string | undefined} [wiki]
  * @property {string | undefined} [domain] the domain of the wiki you want to query
  * @property {boolean | undefined} [follow_redirects] should the library follow redirects
  * @property {string | undefined} [lang] the language of the wiki
- * @property {string | number | Array<string> | Array<number> | undefined} [title] 
+ * @property {string | number | Array<string> | Array<number> | undefined} [title]
  * @property {string | undefined} [Api-User-Agent] the user agent of the application
  * @property {string | undefined} [origin] the domain or the origin of the request
  */
@@ -38,7 +38,7 @@ const defaults = {
 
 /**
  *  fetches the page from the wiki and returns a Promise with the parsed wiki text
- * 
+ *
  * if you supply it with a single pageID or title it will return a Document object.
  * if you supply a wiki URL then we will parse it and use the tile and provide a single Document object
  * if you supply it with an array with pageIDs or an array of titles it will return an array of document objects.
@@ -61,14 +61,13 @@ const fetch = function (title, options, callback) {
   if (typeof title === 'string' && isUrl.test(title)) {
     options = { ...options, ...parseUrl(title) }
   }
-
   const url = makeUrl(options)
   const headers = makeHeaders(options)
 
   return unfetch(url, headers)
     .then((res) => res.json())
     .then((res) => {
-      if (!res){
+      if (!res) {
         throw new Error(`No JSON Data Found For ${url}`)
       }
       let data = getResult(res, options)
