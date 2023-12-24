@@ -9,13 +9,10 @@ let str = `
 str = `<ref> Chapman {{Foo}} </ref> `
 // str = `{{Refplease|date=November 2023|reason=Your explanation here}} in [[Jolgeh-ye Musaabad Rural District]],`
 
-wtf.extend((models, templates) => {
-  templates.egiptekas = '{|-\n'
-})
 // let doc = wtf(str)
-const doc = await wtf.fetch('3de Dinastie van Egipte', 'af')
-// console.log(doc.json())
-console.log(doc.text())
+const doc = await wtf.fetch('Royal Cinema')
+console.log(doc.isStub())
+// console.log(doc.text())
 // console.log(doc.wikidata() + '|')
 
 // console.log(doc.template().json())

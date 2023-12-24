@@ -15,6 +15,7 @@ declare class Document {
   isDisambig: () => boolean
   isDisambiguation(): boolean
   isRedirect(): boolean
+  isStub(): boolean
   json(options?: object): object
   lang: (lang?: string) => string | null
   language(lang?: string): string | null

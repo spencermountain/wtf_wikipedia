@@ -1,6 +1,7 @@
 import sectionMap from './_sectionMap.js'
 import toJSON from './toJson.js'
 import isDisambig from './isDisambig.js'
+import isStub from './isStub.js'
 import setDefaults from '../_lib/setDefaults.js'
 import Image from '../image/Image.js'
 import { isRedirect, parse } from './redirects.js'
@@ -211,6 +212,14 @@ class Document {
    */
   isRedirect() {
     return this._type === 'redirect'
+  }
+  /**
+   * Returns true if the page includes a stub template
+   *
+   * @returns {boolean} Is the page a stub
+   */
+  isStub() {
+    return isStub(this)
   }
 
   /**
