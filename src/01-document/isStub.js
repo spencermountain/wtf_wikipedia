@@ -9,10 +9,12 @@ const isStub = function (doc) {
     let name = t.template || ''
     // try i18n templates like 'stubo'
     if (allStubs.has(name)) {
+      // console.log(name)
       return true
     }
     // english forms
     if (name === 'stub' || name.endsWith('-stub')) {
+      // console.log(name)
       return true
     }
     // look for i18n in last-word, like {{foo-stubo}}
@@ -20,6 +22,7 @@ const isStub = function (doc) {
     if (words.length > 1) {
       let word = words[words.length - 1]
       if (allStubs.has(word)) {
+        // console.log(name)
         return true
       }
     }

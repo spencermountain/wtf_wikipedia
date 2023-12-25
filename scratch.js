@@ -6,10 +6,10 @@ let str = `
 
 // str = `{{Refplease|date=November 2023|reason=Your explanation here}} in [[Jolgeh-ye Musaabad Rural District]],`
 
-let doc = wtf(str)
-// const doc = await wtf.fetch('Royal Cinema')
-// console.log(doc.isStub())
-console.log(doc.text())
+// let doc = wtf(str)
+const doc = await wtf.fetch('United Kingdom')
+console.log(doc.isStub())
+// console.log(doc.text())
 // console.log(doc.wikidata() + '|')
 
 // console.log(doc.template().json())

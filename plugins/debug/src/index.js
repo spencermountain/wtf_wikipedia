@@ -34,6 +34,20 @@ const plugin = function (models) {
     return false
   }
 
+  models.Doc.prototype.isLongStub = function () {
+    let txt = this.text()
+    if (this.isStub() && txt.length > 2000) {
+      return 'long-stub'
+    }
+    if (this.isRedirect() && txt.length > 2000) {
+      return 'long-redirect'
+    }
+    if (this.isDisambiguation() && txt.length > 2000) {
+      return 'long-disambig'
+    }
+    return false
+  }
+
   models.Doc.prototype.hasIPAPunct = function () {
     if (this.isDisambiguation() || this.isRedirect()) {
       return false
@@ -58,7 +72,7 @@ const plugin = function (models) {
   }
 
   models.Doc.prototype.isBad = function () {
-    return this.hasBadTable() || this.hasNoText() || this.hasIPAPunct()
+    return this.hasBadTable() || this.hasNoText() || this.hasIPAPunct() || this.isLongStub()
   }
 }
 

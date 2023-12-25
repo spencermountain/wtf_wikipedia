@@ -19,8 +19,8 @@ const defaults = {
   pageID: true,
   categories: true,
   wikidata: true,
-  revisionID: true,
   description: true,
+  revisionID: false,
   timestamp: false,
   pageImage: false,
   domain: false,
@@ -62,43 +62,58 @@ const toJSON = function (doc, options) {
     data.title = doc.title()
   }
 
-  if (options.pageID) {
-    data.pageID = doc.pageID()
-  }
-
-  if (options.categories) {
-    data.categories = doc.categories()
-  }
-
-  if (options.sections) {
-    data.sections = doc.sections().map((i) => i.json(options))
-  }
-
+  // present only if true
   if (doc.isRedirect() === true) {
     data.isRedirect = true
     data.redirectTo = doc.redirectTo()
     data.sections = []
   }
+  if (doc.isStub() === true) {
+    data.isStub = true
+  }
+  if (doc.isDisambiguation() === true) {
+    data.isDisambiguation = true
+  }
 
-  //these are default-off
+  // metadata
+  if (options.pageID) {
+    data.pageID = doc.pageID()
+  }
+  if (options.pageID) {
+    data.wikidata = doc.wikidata()
+  }
+  if (options.revisionID) {
+    data.revisionID = doc.revisionID()
+  }
+  if (options.timestamp) {
+    data.timestamp = doc.timestamp()
+  }
+  if (options.description) {
+    data.description = doc.description()
+  }
+
+  // page sections
+  if (options.categories) {
+    data.categories = doc.categories()
+  }
+  if (options.sections) {
+    data.sections = doc.sections().map((i) => i.json(options))
+  }
+  if (options.infoboxes) {
+    data.infoboxes = doc.infoboxes().map((i) => i.json(options))
+  }
+  if (options.images) {
+    data.images = doc.images().map((i) => i.json(options))
+  }
+  if (options.citations || options.references) {
+    data.references = doc.references()
+  }
   if (options.coordinates) {
     data.coordinates = doc.coordinates()
   }
 
-  if (options.infoboxes) {
-    data.infoboxes = doc.infoboxes().map((i) => i.json(options))
-  }
-
-  if (options.images) {
-    data.images = doc.images().map((i) => i.json(options))
-  }
-
   if (options.plaintext) {
     data.plaintext = doc.text(options)
-  }
-
-  if (options.citations || options.references) {
-    data.references = doc.references()
   }
 
   return data
