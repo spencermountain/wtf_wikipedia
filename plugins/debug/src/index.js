@@ -3,24 +3,62 @@ const plugin = function (models) {
   models.Doc.prototype.hasBadTable = function () {
     let txt = this.text()
     if (/class="wikitable"/.test(txt)) {
-      return true
+      return 'wikitable'
     }
     if (/style="/.test(txt)) {
-      return true
+      return 'style'
     }
     if (/width="/.test(txt)) {
-      return true
+      return 'width'
     }
     if (/^! "/.test(txt)) {
-      return true
+      return '^!'
     }
-    if (/^|-"/.test(txt)) {
-      return true
+    if (/^\|-"/.test(txt)) {
+      return '|-'
     }
     if (/colspan/.test(txt)) {
-      return true
+      return 'colspan'
     }
     return false
+  }
+
+  models.Doc.prototype.hasNoText = function () {
+    if (this.isDisambiguation() || this.isRedirect()) {
+      return false
+    }
+    let txt = this.text()
+    if (txt.length < 200) {
+      return 'no-text'
+    }
+    return false
+  }
+
+  models.Doc.prototype.hasIPAPunct = function () {
+    if (this.isDisambiguation() || this.isRedirect()) {
+      return false
+    }
+    let str = this.sentences()[0].text()
+    if (/[{|}]/.test(str)) {
+      return 'has-punct'
+    }
+    if (/[ (],[ )(]/.test(str)) {
+      return 'dangling-comma'
+    }
+    if (/ ;/.test(str)) {
+      return 'dangling-semicolon'
+    }
+    if (/\(/.test(str) && !/\)/.test(str)) {
+      return 'unclosed-paren'
+    }
+    if (!/\(/.test(str) && /\)/.test(str)) {
+      return 'unopened-paren'
+    }
+    return false
+  }
+
+  models.Doc.prototype.isBad = function () {
+    return this.hasBadTable() || this.hasNoText() || this.hasIPAPunct()
   }
 }
 
