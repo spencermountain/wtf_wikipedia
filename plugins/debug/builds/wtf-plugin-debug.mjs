@@ -1,7 +1,8 @@
+/* wtf-plugin-debug 0.0.1  MIT */
 const plugin = function (models) {
   // look for unprocessed table wikitext
   models.Doc.prototype.hasBadTable = function () {
-    let txt = this.text()
+    let txt = this.text();
     if (/class="wikitable"/.test(txt)) {
       return 'unparsed-wikitable'
     }
@@ -21,21 +22,21 @@ const plugin = function (models) {
       return 'unparsed-colspan'
     }
     return false
-  }
+  };
 
   models.Doc.prototype.hasNoText = function () {
     if (this.isDisambiguation() || this.isRedirect()) {
       return false
     }
-    let txt = this.text()
+    let txt = this.text();
     if (txt.length < 200) {
       return 'no-text'
     }
     return false
-  }
+  };
 
   models.Doc.prototype.isLongStub = function () {
-    let txt = this.text()
+    let txt = this.text();
     if (this.isStub() && txt.length > 2000) {
       return 'long-stub'
     }
@@ -46,13 +47,13 @@ const plugin = function (models) {
       return 'long-disambig'
     }
     return false
-  }
+  };
 
   models.Doc.prototype.hasIPAPunct = function () {
     if (this.isDisambiguation() || this.isRedirect()) {
       return false
     }
-    let str = this.sentences()[0].text()
+    let str = this.sentences()[0].text();
     if (/[{|}]/.test(str)) {
       return 'has-punct'
     }
@@ -69,11 +70,11 @@ const plugin = function (models) {
       return 'unopened-paren'
     }
     return false
-  }
+  };
 
   models.Doc.prototype.isBad = function () {
     return this.hasBadTable() || this.hasNoText() || this.hasIPAPunct() || this.isLongStub()
-  }
-}
+  };
+};
 
-export default plugin
+export { plugin as default };

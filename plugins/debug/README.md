@@ -21,3 +21,26 @@
 </div>
 
 Some helper methods for finding borked pages and parsing errors in i18n wikipedias
+
+```js
+const wtf = require('wtf_wikipedia')
+wtf.extend(require('wtf-plugin-debug'))
+
+let doc = wtf(`hello , world`)
+doc.isBad()
+// 'dangling-comma'
+
+let doc = wtf(`hello (  world.`)
+doc.isBad()
+// 'unclosed-paren'
+
+let doc = wtf(`hello style="width:50%"`)
+doc.isBad()
+// 'unparsed-style'
+
+let doc = await wtf.fetch('Hamburg')
+doc.isBad()
+//maybe
+```
+
+MIT
