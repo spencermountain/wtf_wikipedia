@@ -76,19 +76,19 @@ const toJSON = function (doc, options) {
   }
 
   // metadata
-  if (options.pageID) {
+  if (options.pageID && doc.pageID()) {
     data.pageID = doc.pageID()
   }
-  if (options.pageID) {
+  if (options.wikidata && doc.wikidata()) {
     data.wikidata = doc.wikidata()
   }
-  if (options.revisionID) {
+  if (options.revisionID && doc.revisionID()) {
     data.revisionID = doc.revisionID()
   }
-  if (options.timestamp) {
+  if (options.timestamp && doc.timestamp()) {
     data.timestamp = doc.timestamp()
   }
-  if (options.description) {
+  if (options.description && doc.description()) {
     data.description = doc.description()
   }
 

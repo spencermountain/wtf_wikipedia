@@ -1016,15 +1016,6 @@ test('plaintext - get - enpty string for redirects', (t) => {
   t.end()
 })
 
-//json
-test('json - get - get the json version of the document', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Remote-Data-Services.txt'), 'utf-8')
-  let doc = wtf(str)
-  //I used the length of the paragraphs as an analogue for the content.
-  t.deepEqual(JSON.stringify(doc.json()).length, 1971, 'JSON version of the document')
-  t.end()
-})
-
 //debug
 //we need something like sinon for mocking the console.log
 

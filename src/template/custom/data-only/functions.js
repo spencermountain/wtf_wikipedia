@@ -9,7 +9,7 @@ export default {
     obj.lang = getLang(obj.template)
     obj.template = 'ipa'
     list.push(obj)
-    return ''
+    return '' //obj.transcription
   },
   //https://en.wikipedia.org/wiki/Template:IPAc-en
   ipac: (tmpl, list) => {

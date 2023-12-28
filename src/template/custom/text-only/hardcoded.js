@@ -61,5 +61,6 @@ export default {
   minusplus: '∓',
   plusminus: '±',
 
+  // 'hbeff début': '{|-\n',
   egiptekas: '{|-\n',
 }

@@ -7,8 +7,8 @@ let str = `
 // str = `{{Refplease|date=November 2023|reason=Your explanation here}} in [[Jolgeh-ye Musaabad Rural District]],`
 
 // let doc = wtf(str)
-const doc = await wtf.fetch('United Kingdom')
-console.log(doc.isStub())
+const doc = await wtf.fetch('Philharmonie de Berlin', 'fr')
+console.log(doc.text())
 // console.log(doc.text())
 // console.log(doc.wikidata() + '|')
 
