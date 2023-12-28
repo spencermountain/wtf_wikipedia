@@ -543,7 +543,8 @@ class Document {
     if (str !== undefined) {
       this._pageImage = str
     }
-    return this._pageImage || null
+    let file = this._pageImage || null
+    return new Image({ file })
   }
 
   options() {

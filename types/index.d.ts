@@ -51,7 +51,7 @@ declare class Document {
   revisionID(id?: number): number | null
   description(desc?: string): string | null
   timestamp(iso?: string): string | null
-  pageImage(img?: string): string | null
+  pageImage(img?: string): Image
   domain(domain?: string): string | null
 }
 

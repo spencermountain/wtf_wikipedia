@@ -7,8 +7,7 @@ test('null page metadata', (t) => {
   t.equal(doc.pageID(), null)
   t.equal(doc.description(), null)
   t.equal(doc.timestamp(), null)
-  t.equal(doc.pageImage(), null)
-
+  t.equal(doc.pageImage().data.file, null)
   t.end()
 })
 
@@ -33,7 +32,7 @@ test('found page metadata', (t) => {
   t.equal(doc.pageID(), meta.pageID)
   t.equal(doc.description(), meta.description)
   t.equal(doc.timestamp(), meta.timestamp)
-  t.equal(doc.pageImage(), meta.pageImage)
+  t.equal(doc.pageImage().data.file, meta.pageImage)
   t.equal(doc.domain(), meta.domain)
   t.equal(doc.wikidata(), meta.wikidata)
   t.equal(doc.language(), meta.lang)
@@ -50,7 +49,7 @@ test('found page metadata', (t) => {
   t.notEqual(doc.pageID(), meta.pageID)
   t.notEqual(doc.description(), meta.description)
   t.notEqual(doc.timestamp(), meta.timestamp)
-  t.notEqual(doc.pageImage(), meta.pageImage)
+  t.notEqual(doc.pageImage().file(), meta.pageImage)
   t.notEqual(doc.domain(), meta.domain)
   t.notEqual(doc.wikidata(), meta.wikidata)
   t.notEqual(doc.language(), meta.wikidata)

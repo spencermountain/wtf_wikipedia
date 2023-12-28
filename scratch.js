@@ -8,7 +8,7 @@ let str = `
 
 // let doc = wtf(str)
 const doc = await wtf.fetch('Philharmonie de Berlin', 'fr')
-console.log(doc.text())
+console.log(doc.pageImage().json())
 // console.log(doc.text())
 // console.log(doc.wikidata() + '|')
 

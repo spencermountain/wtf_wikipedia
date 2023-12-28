@@ -514,6 +514,10 @@ wtf
 - **.text()** - plaintext, human-readable output for the page
 - **.json()** - a 'stringifyable' output of the page's main data
 - **.wikitext()** - original wiki markup
+- **.description()** - get/set the page's short description, if we have one.
+- **.pageImage()** - get/set the page's representative image, if we have one.
+- **.revisionID()** - get/set the latest edit id of the page, if we have it.
+- **.timestamp()** - get/set the time of the most recent edit of the page, if we have it.
 
 ### Section
 
