@@ -8,7 +8,8 @@
 - **[new]** - fallbackTemplateFn handler #509
 - **[new]** - more i18n redirects and templates
 - **[new]** - metadata methods `.revisionID()`, `.description()`, `.timestamp()`, `.pageImage()`
-- **[new]** - i18n `.isStub()`
+- **[new]** - i18n `.isStub()` method
+- **[new]** - debug plugin for finding parsing errors
 
 #### 10.2.1 [Nov 2023]
 

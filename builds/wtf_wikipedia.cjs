@@ -72,12 +72,13 @@
     return x && Object.prototype.toString.call(x) === '[object Object]'
   }
 
-  const isInterWiki = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/;
+  const isInterWiki =
+    /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/;
 
   const defaults$c = {
     action: 'query',
     prop: 'revisions|pageprops', // we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
-    rvprop: 'content',
+    rvprop: 'content|ids|timestamp',
     maxlag: 5,
     rvslots: 'main',
     origin: '*',
@@ -87,7 +88,7 @@
 
   /**
    * turns a object into a query string
-   * 
+   *
    * @private
    * @param {Object<string, string | number | boolean>} obj
    * @returns {string} QueryString
@@ -106,13 +107,12 @@
    * @returns {string} the cleaned title
    */
   const cleanTitle = (page) => {
-    return page.replace(/ /g, '_')
-      .trim()
+    return page.replace(/ /g, '_').trim()
   };
 
   /**
    * generates the url for fetching the pages
-   * 
+   *
    * @private
    * @param {import('.').fetchDefaults} options
    * @param {Object} [parameters]
@@ -135,7 +135,6 @@
       return ''
     }
 
-
     if (!options.follow_redirects) {
       delete params.redirects;
     }
@@ -156,10 +155,13 @@
       params.titles = cleanTitle(title);
     } else if (title !== undefined && isArray(title) && typeof title[0] === 'number') {
       //pageid array
-      params.pageids = title.filter(t => t).join('|');
+      params.pageids = title.filter((t) => t).join('|');
     } else if (title !== undefined && isArray(title) === true && typeof title[0] === 'string') {
       //title array
-      params.titles = title.filter(t => t).map(cleanTitle).join('|');
+      params.titles = title
+        .filter((t) => t)
+        .map(cleanTitle)
+        .join('|');
     } else {
       return ''
     }
@@ -180,17 +182,17 @@
    */
   const getResult = function (data, options = {}) {
     // handle nothing found or no data passed
-    if(!data?.query?.pages || !data?.query || !data){
+    if (!data?.query?.pages || !data?.query || !data) {
       return null
     }
-    
+
     //get all the pagesIds from the result
     let pages = Object.keys(data.query.pages);
 
     // map over the pageIds to parse out all the information
     return pages.map((id) => {
       // get the page by pageID
-      
+
       let page = data.query.pages[id] || {};
 
       // if the page is missing or not found than return null
@@ -204,6 +206,8 @@
       if (!text && page.revisions[0].slots) {
         text = page.revisions[0].slots.main['*'];
       }
+      let revisionID = page.revisions[0].revid;
+      let timestamp = page.revisions[0].timestamp;
 
       page.pageprops = page.pageprops || {};
 
@@ -216,11 +220,13 @@
         title: page.title,
         pageID: page.pageid,
         namespace: page.ns,
-        domain: domain,
+        domain,
+        revisionID,
+        timestamp,
+        pageImage: page.pageprops['page_image_free'],
         wikidata: page.pageprops.wikibase_item,
         description: page.pageprops['wikibase-shortdesc'],
       });
-
 
       return { wiki: text, meta: meta }
     })
@@ -287,6 +293,13 @@
     sections: true,
     pageID: true,
     categories: true,
+    wikidata: true,
+    description: true,
+    revisionID: false,
+    timestamp: false,
+    pageImage: false,
+    domain: false,
+    language: false,
   };
 
   /**
@@ -324,43 +337,58 @@
       data.title = doc.title();
     }
 
-    if (options.pageID) {
-      data.pageID = doc.pageID();
-    }
-
-    if (options.categories) {
-      data.categories = doc.categories();
-    }
-
-    if (options.sections) {
-      data.sections = doc.sections().map((i) => i.json(options));
-    }
-
+    // present only if true
     if (doc.isRedirect() === true) {
       data.isRedirect = true;
       data.redirectTo = doc.redirectTo();
       data.sections = [];
     }
+    if (doc.isStub() === true) {
+      data.isStub = true;
+    }
+    if (doc.isDisambiguation() === true) {
+      data.isDisambiguation = true;
+    }
 
-    //these are default-off
+    // metadata
+    if (options.pageID && doc.pageID()) {
+      data.pageID = doc.pageID();
+    }
+    if (options.wikidata && doc.wikidata()) {
+      data.wikidata = doc.wikidata();
+    }
+    if (options.revisionID && doc.revisionID()) {
+      data.revisionID = doc.revisionID();
+    }
+    if (options.timestamp && doc.timestamp()) {
+      data.timestamp = doc.timestamp();
+    }
+    if (options.description && doc.description()) {
+      data.description = doc.description();
+    }
+
+    // page sections
+    if (options.categories) {
+      data.categories = doc.categories();
+    }
+    if (options.sections) {
+      data.sections = doc.sections().map((i) => i.json(options));
+    }
+    if (options.infoboxes) {
+      data.infoboxes = doc.infoboxes().map((i) => i.json(options));
+    }
+    if (options.images) {
+      data.images = doc.images().map((i) => i.json(options));
+    }
+    if (options.citations || options.references) {
+      data.references = doc.references();
+    }
     if (options.coordinates) {
       data.coordinates = doc.coordinates();
     }
 
-    if (options.infoboxes) {
-      data.infoboxes = doc.infoboxes().map((i) => i.json(options));
-    }
-
-    if (options.images) {
-      data.images = doc.images().map((i) => i.json(options));
-    }
-
     if (options.plaintext) {
       data.plaintext = doc.text(options);
-    }
-
-    if (options.citations || options.references) {
-      data.references = doc.references();
     }
 
     return data
@@ -445,51 +473,10 @@
     'disambig', //en
     'disambiguation', //en
 
-    // Disambiguation_message_boxes
-    'letter-numbercombdisambig',
-    'letter-number combination disambiguation',
-    'dmbox',
-    'airport disambiguation',
-    'biology disambiguation',
-    'call sign disambiguation',
-    'caselaw disambiguation',
-    'chinese title disambiguation',
-    'disambiguation cleanup',
-    'genus disambiguation',
-    'hospital disambiguation',
-    'human name disambiguation',
-    'human name disambiguation cleanup',
-    'letter-number combination disambiguation',
-    'mathematical disambiguation',
-    'military unit disambiguation',
-    'music disambiguation',
-    'number disambiguation',
-    'opus number disambiguation',
-    'phonetics disambiguation',
-    'place name disambiguation',
-    'portal disambiguation',
-    'road disambiguation',
-    'school disambiguation',
-    'species latin name abbreviation disambiguation',
-    'species latin name disambiguation',
-    'station disambiguation',
-    'synagogue disambiguation',
-    'taxonomic authority disambiguation',
-    'taxonomy disambiguation',
-    'template disambiguation',
-    'disamb2',
-    'disamb3',
-    'disamb4',
-    'disambiguation lead',
-    'disambiguation lead name',
-    'disambiguation name',
-    'disamb-term',
-    'disamb-terms',
-
-
-    // i18n
+    'aðgreining',
     'aðgreining', //is
     'aimai', //ja
+    'airport disambiguation',
     'ałtsʼáʼáztiin', //nv
     'anlam ayrımı', //gag
     'anlam ayrımı', //tr
@@ -500,10 +487,14 @@
     'begriffsklärung', //de
     'begriffsklärung', //pdc
     'begriffsklearung', //bar
+    'biology disambiguation',
     'bisongidila', //kg
     'bkl', //pfl
     'bokokani', //ln
     'caddayn', //so
+    'call sign disambiguation',
+    'caselaw disambiguation',
+    'chinese title disambiguation',
     'clerheans', //kw
     'cudakirin', //ku
     'čvor', //bs
@@ -518,88 +509,129 @@
     'desambiguassiù', //lmo
     'desambigui', //lfn
     'dezambiguizare', //ro
+    'dezanbìgua',
+    'dəqiqləşdirmə',
     'dəqiqləşdirmə', //az
+    'disamb-term',
+    'disamb-terms',
+    'disamb2',
+    'disamb3',
+    'disamb4',
     'disambigua', //it
-    'disambigua', //lij
-    'disambigua', //nap
     'disambìgua', //sc
-    'disambigua', //scn
-    'disambiguasi', //id
-    'disambiguasi', //su
+    'disambiguasi',
+    'disambiguation cleanup',
+    'disambiguation lead name',
+    'disambiguation lead',
+    'disambiguation name',
+    'disambiguazion',
+    'disambigue',
+    'discretiva',
     'discretiva', //la
     'disheñvelout', //br
     'disingkek', //min
     'dixanbigua', //vec
     'dixebra', //ast
     'diżambigwazzjoni', //mt
+    'dmbox',
     'doorverwijspagina', //nl
     'dp', //nl
-    'dp', //zea
+    'dubbelsinnig',
     'dubbelsinnig', //af
     'dudalipen', //rmy
     'dv', //nds_nl
     'egyért', //hu
+    'faaleaogaina',
     'fleiri týdningar', //fo
     'fleirtyding', //nn
     'flertydig', //da
     'förgrening', //sv
+    'genus disambiguation',
     'gì-ngiê', //cdo
     'giklaro', //ceb
     'gwahaniaethu', //cy
     'homonimo', //io
     'homónimos', //gl
     'homonymie', //fr
+    'hospital disambiguation',
+    'huaʻōlelo puana like',
     'huaʻōlelo puana like', //haw
+    'human name disambiguation cleanup',
+    'human name disambiguation',
     'idirdhealú', //ga
     'khu-pia̍t', //zh_min_nan
     'kthjellim', //sq
     'kujekesa', //sn
+    'letter-number combination disambiguation',
+    'letter-numbercombdisambig',
     'maana', //sw
     'maneo bin', //diq
+    'mathematical disambiguation',
     'mehrdüdig begreep', //nds
     'menm non', //ht
+    'military unit disambiguation',
     'muardüüdag artiikel', //frr
+    'music disambiguation',
+    'myesakãrã',
     'neibetsjuttings', //fy
     'nozīmju atdalīšana', //lv
+    'number disambiguation',
     'nuorodinis', //lt
     'nyahkekaburan', //ms
     'omonimeye', //wa
+    'omonimi',
     'omonimia', //oc
+    'opus number disambiguation',
     'page dé frouque', //nrm
     'paglilinaw', //tl
     'panangilawlawag', //ilo
     'pansayod', //war
     'pejy mitovy anarana', //mg
     'peker', //no
+    'phonetics disambiguation',
+    'place name disambiguation',
+    'portal disambiguation',
     'razdvojba', //hr
     'razločitev', //sl
     'razvrstavanje', //sh
     'reddaghey', //gv
+    'road disambiguation',
     'rozcestník', //cs
     'rozlišovacia stránka', //sk
+    'school disambiguation',
     'sclerir noziun', //rm
     'selvendyssivu', //olo
     'soilleireachadh', //gd
+    'species latin name abbreviation disambiguation',
+    'species latin name disambiguation',
+    'station disambiguation',
     'suzmunski', //jbo
+    'synagogue disambiguation',
     'täpsustuslehekülg', //et
     'täsmennyssivu', //fi
+    'taxonomic authority disambiguation',
+    'taxonomy disambiguation',
     'telplänov', //vo
+    'template disambiguation',
     'tlahtolmelahuacatlaliztli', //nah
     'trang định hướng', //vi
     'ujednoznacznienie', //pl
     'verdudeliking', //li
     'wěcejwóznamowosć', //dsb
     'wjacezmyslnosć', //hsb
+    'z',
     'zambiguaçon', //mwl
     'zeimeibu škiršona', //ltg
     'αποσαφήνιση', //el
     'айрық', //kk
     'аҵакырацәа', //ab
+    'бир аайы јок',
     'вишезначна одредница', //sr
     'ибҳомзудоӣ', //tg
     'кёб магъаналы', //krc
     'күп мәгънәләр', //tt
     'күп мәғәнәлелек', //ba
+    'массехк маӏан хилар',
     'мъногосъмꙑслиѥ', //cu
     'неадназначнасць', //be
     'неадназначнасьць', //be_x_old
@@ -643,7 +675,9 @@
     'වක්‍රෝත්ති', //si
     'แก้ความกำกวม', //th
     'သံတူကြောင်းကွဲ', //my
+    'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ',
     'ណែនាំ', //km
+    'អសង្ស័យកម្ម',
     '동음이의', //ko
     '扤清楚', //gan
     '搞清楚', //zh_yue
@@ -654,6 +688,8 @@
     "sut'ichana qillqa", //qu
     // 'z', //vep
     // 'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ', //shn
+    `gestion dj'omònim`,
+    `sut'ichana qillqa`,
   ];
 
   // used in titles to denote disambiguation pages
@@ -723,14 +759,155 @@
     'ファイル', //ja
   ];
 
+  // https://en.m.wikipedia.org/wiki/Template:Stub#/languages
+  var stubs = [
+    'aboç',
+    'ahurhire',
+    'aizmetnis',
+    'amud',
+    'avixo de spigaso',
+    // 'begin',
+    'beginnetje',
+    'bibarilo',
+    'borrador',
+    'buáng-nàng-hâ',
+    'bun',
+    'buntato',
+    'c-supranu',
+    'cahrot',
+    'chala',
+    'choutchette',
+    'ciot',
+    'csonk',
+    'cung',
+    'danvez pennad',
+    'djermon',
+    'ébauche',
+    'ébeuche',
+    'ebòch',
+    'édéntạ',
+    'eginyn',
+    'ẹ̀kúnrẹ́rẹ́',
+    'en progreso',
+    'entamu',
+    'esboço',
+    'esborrany',
+    'esbòs',
+    'esbozo',
+    'ĝermo',
+    'gumud',
+    'ʻōmuku',
+    'junj',
+    'klado',
+    'maramara',
+    'mayele',
+    'mbegu',
+    'mrva',
+    'na mulno',
+    'nadabeigts rakstīņs',
+    'nalta',
+    'narcce',
+    'pahýl',
+    'pecietta',
+    'phí',
+    'pondok',
+    'por mejoral',
+    'potuʻi',
+    'pungol',
+    'qaralama',
+    'rabisco',
+    'rancangan',
+    'rintisan',
+    'saadjie',
+    'saha',
+    'sbozz',
+    'sid',
+    'síol',
+    'şitil',
+    'sjtumpke',
+    'skizz',
+    'skizze',
+    'škrbina',
+    'sơ khai',
+    'spire',
+    'stipula',
+    'stob',
+    'stobbe',
+    // 'stock',
+    'stompje',
+    'stub',
+    'stubben',
+    'stubbi',
+    'stubbur',
+    'stump',
+    'stumpen',
+    'stycce',
+    'suli',
+    'taslak',
+    'taslaq',
+    'tunas',
+    'turók',
+    'tynkä',
+    // 'u začetku',
+    'vangovango',
+    'vernuşte',
+    'výhonok',
+    'xinnoo',
+    'zarodk',
+    'zirriborroa',
+    'επέκταση',
+    'әҙерләмә',
+    'заготовка',
+    'керф',
+    'кечдар',
+    'клица',
+    'къæртт',
+    'кьурхь',
+    'мәкалә төпчеге',
+    'мъниче',
+    'накід',
+    'нєꙁаврьшєнъ члѣнъ',
+    'никулец',
+    'омоон',
+    'стыржень',
+    'хурд',
+    'хӏадурунжо',
+    'ესკიზი',
+    'መዋቅር',
+    'መዋቕር',
+    'अपूर्णलेखः',
+    'आधार',
+    'ठुटो',
+    'धाक्टें पान',
+    'विस्तार',
+    'অসম্পূর্ণ',
+    'পোখালি',
+    'સ્ટબ',
+    'ଅଧାଗଢ଼ା',
+    'குறுங்கட்டுரை',
+    'మొలక',
+    'ಎಲ್ಯ',
+    'ಚುಟುಕು',
+    'അപൂർണ്ണം',
+    'අංකුරය',
+    'โครง',
+    'ཆ་མི་ཚང་བ',
+    'អត្ថបទខ្លីមិនពេញលេញ',
+    '토막글',
+    '楔',
+    '芻文',
+  ];
+
   var infoboxes$1 = [
     'infobox', //en
 
+    'amatl',
     'anfo', //mwl
     'anuāmapa', //haw
     'bilgi kutusu', //tr
     'bilgi', //tr
     'bilgiquti', //uz
+    'boaty fampahalalana',
     'boaty', //mg
     'boestkelaouiñ', //br
     'bosca', //ga
@@ -740,27 +917,42 @@
     'ficha', //es
     'generalni', //hr
     'gwybodlen3', //cy
+    'hộp thông tin',
     'info', //pt
+    'infoboesse 2',
     'infobokis', //tpi
     'infoboks', //da
+    'infobox deleted',
+    'infobox generic',
+    'infobox generiek',
     'infochascha', //rm
     'infokašćik', //dsb
     'infokast', //et
     'infokutija', //bs
     'infolentelė', //lt
+    'infookvir',
     'infopolje', //sl
     'informkesto', //eo
+    'infoschede',
     'infoskreine', //ltg
     'infotaula', //eu
     'inligtingskas',
     'inligtingskas3', //af
     'inligtingskas4', //af
-    'kishtey', //gv
+    'kishtey fys',
+    'kotak info',
     'kotak', //su
+    'məlumat qutusu',
+    'simple box',
+    'tertcita tanxe',
     'tertcita', //jbo
+    'tiätuloová',
     'tietolaatikko', //fi
+    'wd bosca sonraí',
     'yerleşim bilgi kutusu',
+    'ynfoboks generyk',
     'ynfoboks', //fy
+    'πλαίσιο πληροφοριών',
     'πλαίσιο', //el
     'акарточка', //ab
     'аҥа', //mhr
@@ -777,70 +969,110 @@
     'қуттӣ', //tg
     'ინფოდაფა', //ka
     'տեղեկաքարտ', //hy
-    'אינפאקעסטל', //yi
     'תבנית', //he
     'بطاقة', //ar
     'ڄاڻخانو', //sd
     'خانہ', //ur
     'لغة',
+    'معلوٗمات ڈَبہٕ',
     'ज्ञानसन्दूक', //hi
     'তথ্যছক', //bn
     'ਜਾਣਕਾਰੀਡੱਬਾ', //pa
     'సమాచారపెట్టె', //te
     'තොරතුරුකොටුව', //si
     'กล่องข้อมูล', //th
+    'ກ່ອງຂໍ້ມູນ',
     'ប្រអប់ព័ត៌មាន', //km
     '정보상자', //ko
     '明細', //zh_yue
   ];
 
   var redirects = [
-    'aanstuur',//af
+    'aanstuur', //af
+    'aastiurey',
     'adkas', //br
-    'alih',//id
+    'ailgyfeirio',
+    'alidirekto',
+    'alih', //id
     'aýdaw',
-    'beralîkirin',//ku
+    'baw-ing',
+    'beralîkirin', //ku
+    'birzuzendu',
+    'đổi hướng đến đây',
     'doorverwijzing', //nl
-    'lencong',//ms
+    'header',
+    'i̇stiqamətləndirmə',
+    'lencong', //ms
+    'ohjaa tänne',
     'ohjaus',
+    'omdirigering', //no
+    'pāradresācija',
     'patrz', //pl
+    'přesměrování',
     'přesměruj',
-    'preusmjeri',//hr
+    'preusmeritev',
+    'preusmjerava',
+    'preusmjerenje',
+    'preusmjeri', //hr
+    'przekierowanie',
+    'redir',
+    'redirecció',
     'redireccion',
     'redirección', //es
     'redirecionamento', //pt
     'redirect', //en
+    'redirect3',
     'redirection', //fr
+    'redirige aquí',
+    'redirige',
+    'redirixe equí',
+    'rindirizz',
     'rinvia', //it
+    'stivre deike',
+    'suunamine',
     'tilvísun',
+    'trimite',
     'uudelleenohjaus',
-    'weiterleitung',
     'weiterleitung', //de
+    'weiterleitungshinweis',
+    'yoʻnaltirish',
     'yönlendi̇r',
-    'yönlendirme',
     'yönlendi̇rme', //tr
     'ανακατευθυνση', //el
-    'айдау',//kk
+    'айдау', //kk
+    'багыттама',
+    'буссинаби',
+    'дӏасахьажорг',
+    'от пренасочване',
+    'перанакіраванне',
     'перанакіраваньне',
-    'перенаправление',//ru
+    'перанакіроўваецца сюды',
+    'перенаправление', //ru
     'перенаправлення', //uk
+    'перенаправлено',
     'пренасочување', //mk
-    'преусмери',//sr
+    'преусмерава ',
+    'преусмери', //sr
     'преусмјери',
-    'ווייטערפירן',//yi
-    'تحويل',//ar
+    'равонакунӣ',
+    'ווייטערפירן', //yi
+    'تحويل', //ar
     'تغییر_مسیر',
     'تغییرمسیر', //fa
-    'رجوع مکرر',//ur
-    'رجوع_مکرر',//ur
-    'अनुप्रेषित',//hi
-    'पुनर्निर्देशन',//hi
-    'পুননির্দেশ',//bn
-    'เปลี่ยนทาง', //th
+    'رجوع مکرر', //ur
+    'رجوع_مکرر', //ur
+    'अनुप्रेषित', //hi
+    'पुनर्निर्देशन', //hi
+    'পুননির্দেশ', //bn
+    'পুনর্নির্দেশ',
+    'යළියොමුව',
+    'เปลี่ยนทาง',
     'ប្តូរទីតាំងទៅ', //km
-    'リダイレクト',//ja
+    '다른 뜻 넘어옴',
+    'リダイレクト', //ja
+    '跳轉',
     '転送', //ja
-    '重定向',//zh
+    '重定向', //zh
   ];
 
   var references = [
@@ -964,6 +1196,37 @@
       return true
     }
     return false
+  };
+
+  let allStubs = new Set(stubs);
+
+  const isStub = function (doc) {
+    // check for a {{disambig}} template
+    let templates = doc.templates().map((tmpl) => tmpl.json());
+
+    return templates.some((t) => {
+      let name = t.template || '';
+      // try i18n templates like 'stubo'
+      if (allStubs.has(name)) {
+        // console.log(name)
+        return true
+      }
+      // english forms
+      if (name === 'stub' || name.endsWith('-stub')) {
+        // console.log(name)
+        return true
+      }
+      // look for i18n in last-word, like {{foo-stubo}}
+      let words = name.split(/[- ]/);
+      if (words.length > 1) {
+        let word = words[words.length - 1];
+        if (allStubs.has(word)) {
+          // console.log(name)
+          return true
+        }
+      }
+      return false
+    })
   };
 
   const defaults$a = {
@@ -4518,7 +4781,7 @@
     '&': '&',
     ';': ';',
     ampersand: '&',
-    'dagger': '†',
+    dagger: '†',
     'double-dagger': '‡',
     snds: ' – ',
     snd: ' – ',
@@ -4552,8 +4815,11 @@
     checked: '✔️',
     'thumbs up': '👍',
     'thumbs down': '👎',
-    'minusplus': '∓',
-    'plusminus': '±'
+    minusplus: '∓',
+    plusminus: '±',
+
+    // 'hbeff début': '{|-\n',
+    egiptekas: '{|-\n',
   };
 
   //grab the first, second or third pipe..
@@ -6610,7 +6876,7 @@
       obj.lang = getLang(obj.template);
       obj.template = 'ipa';
       list.push(obj);
-      return ''
+      return '' //obj.transcription
     },
     //https://en.wikipedia.org/wiki/Template:IPAc-en
     ipac: (tmpl, list) => {
@@ -10003,25 +10269,28 @@
     constructor(wiki, options) {
       options = options || {};
       this._options = options;
+      let userAgent = options.userAgent || options['User-Agent'] || options['Api-User-Agent'];
+      userAgent = userAgent || 'User of the wtf_wikipedia library';
       let props = {
-        pageID: options.pageID || options.id || null,
-        namespace: options.namespace || options.ns || null,
-        lang: options.lang || options.language || null,
-        domain: options.domain || null,
         title: options.title || null,
         type: 'page',
+        userAgent,
         redirectTo: null,
-        wikidata: options.wikidata || null,
         wiki: wiki || '',
         categories: [],
         sections: [],
         coordinates: [],
-        // userAgent is used for successive calls to the API
-        userAgent: options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library',
         templateFallbackFn: options.templateFallbackFn || null,
         revisionID: options.revisionID || null,
+        timestamp: options.timestamp || null,
+        description: options.description || null,
+        wikidata: options.wikidata || null,
+        pageImage: options.pageImage || null,
+        pageID: options.pageID || options.id || null,
+        namespace: options.namespace || options.ns || null,
+        lang: options.lang || options.language || null,
+        domain: options.domain || null,
       };
-      // this._missing_templates = {} //for stats+debugging purposes
 
       Object.keys(props).forEach((k) => {
         Object.defineProperty(this, '_' + k, {
@@ -10179,6 +10448,14 @@
      */
     isRedirect() {
       return this._type === 'redirect'
+    }
+    /**
+     * Returns true if the page includes a stub template
+     *
+     * @returns {boolean} Is the page a stub
+     */
+    isStub() {
+      return isStub(this)
     }
 
     /**
@@ -10486,6 +10763,25 @@
       }
       return this._revisionID || null
     }
+    timestamp(str) {
+      if (str !== undefined) {
+        this._timestamp = str;
+      }
+      return this._timestamp || null
+    }
+    description(str) {
+      if (str !== undefined) {
+        this._description = str;
+      }
+      return this._description || null
+    }
+    pageImage(str) {
+      if (str !== undefined) {
+        this._pageImage = str;
+      }
+      let file = this._pageImage || null;
+      return new Image({ file })
+    }
 
     options() {
       return this._options
@@ -10536,7 +10832,6 @@
   const parseDoc = function (res, title) {
     // filter out undefined
     res = res.filter((o) => o);
-
 
     // put all the responses into Document formats
     let docs = res.map((o) => {
@@ -10592,11 +10887,11 @@
   /**
    * @typedef fetchDefaults
    * @property {string | undefined} [path] the path to the wiki api. default: api.php
-   * @property {string | undefined} [wiki] 
+   * @property {string | undefined} [wiki]
    * @property {string | undefined} [domain] the domain of the wiki you want to query
    * @property {boolean | undefined} [follow_redirects] should the library follow redirects
    * @property {string | undefined} [lang] the language of the wiki
-   * @property {string | number | Array<string> | Array<number> | undefined} [title] 
+   * @property {string | number | Array<string> | Array<number> | undefined} [title]
    * @property {string | undefined} [Api-User-Agent] the user agent of the application
    * @property {string | undefined} [origin] the domain or the origin of the request
    */
@@ -10620,7 +10915,7 @@
 
   /**
    *  fetches the page from the wiki and returns a Promise with the parsed wiki text
-   * 
+   *
    * if you supply it with a single pageID or title it will return a Document object.
    * if you supply a wiki URL then we will parse it and use the tile and provide a single Document object
    * if you supply it with an array with pageIDs or an array of titles it will return an array of document objects.
@@ -10643,14 +10938,13 @@
     if (typeof title === 'string' && isUrl.test(title)) {
       options = { ...options, ...parseUrl(title) };
     }
-
     const url = makeUrl(options);
     const headers = makeHeaders(options);
 
     return unfetch(url, headers)
       .then((res) => res.json())
       .then((res) => {
-        if (!res){
+        if (!res) {
           throw new Error(`No JSON Data Found For ${url}`)
         }
         let data = getResult(res, options);
@@ -10669,7 +10963,7 @@
       })
   };
 
-  var version = '10.2.1';
+  var version = '10.3.0';
 
   /**
    * use the native client-side fetch function
