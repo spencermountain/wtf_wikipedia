@@ -24,7 +24,7 @@ export default {
   '&': '&',
   ';': ';',
   ampersand: '&',
-  'dagger': '†',
+  dagger: '†',
   'double-dagger': '‡',
   snds: ' – ',
   snd: ' – ',
@@ -58,6 +58,9 @@ export default {
   checked: '✔️',
   'thumbs up': '👍',
   'thumbs down': '👎',
-  'minusplus': '∓',
-  'plusminus': '±'
+  minusplus: '∓',
+  plusminus: '±',
+
+  // 'hbeff début': '{|-\n',
+  egiptekas: '{|-\n',
 }

@@ -1,6 +1,7 @@
 import sectionMap from './_sectionMap.js'
 import toJSON from './toJson.js'
 import isDisambig from './isDisambig.js'
+import isStub from './isStub.js'
 import setDefaults from '../_lib/setDefaults.js'
 import Image from '../image/Image.js'
 import { isRedirect, parse } from './redirects.js'
@@ -32,25 +33,28 @@ class Document {
   constructor(wiki, options) {
     options = options || {}
     this._options = options
+    let userAgent = options.userAgent || options['User-Agent'] || options['Api-User-Agent']
+    userAgent = userAgent || 'User of the wtf_wikipedia library'
     let props = {
-      pageID: options.pageID || options.id || null,
-      namespace: options.namespace || options.ns || null,
-      lang: options.lang || options.language || null,
-      domain: options.domain || null,
       title: options.title || null,
       type: 'page',
+      userAgent,
       redirectTo: null,
-      wikidata: options.wikidata || null,
       wiki: wiki || '',
       categories: [],
       sections: [],
       coordinates: [],
-      // userAgent is used for successive calls to the API
-      userAgent: options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library',
       templateFallbackFn: options.templateFallbackFn || null,
       revisionID: options.revisionID || null,
+      timestamp: options.timestamp || null,
+      description: options.description || null,
+      wikidata: options.wikidata || null,
+      pageImage: options.pageImage || null,
+      pageID: options.pageID || options.id || null,
+      namespace: options.namespace || options.ns || null,
+      lang: options.lang || options.language || null,
+      domain: options.domain || null,
     }
-    // this._missing_templates = {} //for stats+debugging purposes
 
     Object.keys(props).forEach((k) => {
       Object.defineProperty(this, '_' + k, {
@@ -208,6 +212,14 @@ class Document {
    */
   isRedirect() {
     return this._type === 'redirect'
+  }
+  /**
+   * Returns true if the page includes a stub template
+   *
+   * @returns {boolean} Is the page a stub
+   */
+  isStub() {
+    return isStub(this)
   }
 
   /**
@@ -514,6 +526,25 @@ class Document {
       this._revisionID = id
     }
     return this._revisionID || null
+  }
+  timestamp(str) {
+    if (str !== undefined) {
+      this._timestamp = str
+    }
+    return this._timestamp || null
+  }
+  description(str) {
+    if (str !== undefined) {
+      this._description = str
+    }
+    return this._description || null
+  }
+  pageImage(str) {
+    if (str !== undefined) {
+      this._pageImage = str
+    }
+    let file = this._pageImage || null
+    return new Image({ file })
   }
 
   options() {

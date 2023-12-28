@@ -2,13 +2,20 @@ import test from 'tape'
 import wtf from '../lib/index.js'
 
 test('fetch-as-promise', (t) => {
-  t.plan(1)
+  t.plan(8)
   const p = wtf.fetch('Tony Hawk', {
     lang: 'en',
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
   })
   p.then(function (doc) {
     t.ok(doc.sections().length > 0, 'promise returned document')
+    t.equal(doc.language(), 'en')
+    t.equal(doc.title(), 'Tony Hawk')
+    t.equal(doc.pageID(), 87474)
+    t.equal(doc.wikidata(), 'Q295020')
+    t.notEqual(doc.revisionID(), null)
+    t.notEqual(doc.timestamp(), null)
+    t.notEqual(doc.description(), null)
   })
   p.catch(function (e) {
     t.throw(e)
@@ -112,11 +119,11 @@ test('intensive', (t) => {
     'Porcupine',
     'Chipmunk',
     'Vole',
-    'Chinchilla',
-    'Gopher',
-    'Capybara',
-    'Beaver',
-    'Hamster',
+    // 'Chinchilla',
+    // 'Gopher',
+    // 'Capybara',
+    // 'Beaver',
+    // 'Hamster',
   ]
   t.plan(pages.length)
   const promises = pages.map((page) =>

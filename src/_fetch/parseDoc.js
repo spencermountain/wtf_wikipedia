@@ -12,7 +12,6 @@ const parseDoc = function (res, title) {
   // filter out undefined
   res = res.filter((o) => o)
 
-
   // put all the responses into Document formats
   let docs = res.map((o) => {
     return new Document(o.wiki, o.meta)

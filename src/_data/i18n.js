@@ -15,16 +15,9 @@ import categories from './categories.js'
 import disambig_templates from './disambig_templates.js'
 import disambig_titles from './disambig_titles.js'
 import images from './images.js'
+import stubs from './stubs.js'
 import infoboxes from './infoboxes.js'
 import redirects from './redirects.js'
 import references from './references.js'
 
-export {
-  categories,
-  disambig_templates,
-  disambig_titles,
-  images,
-  infoboxes,
-  redirects,
-  references
-}
+export { categories, disambig_templates, disambig_titles, images, stubs, infoboxes, redirects, references }

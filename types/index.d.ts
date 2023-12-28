@@ -15,6 +15,7 @@ declare class Document {
   isDisambig: () => boolean
   isDisambiguation(): boolean
   isRedirect(): boolean
+  isStub(): boolean
   json(options?: object): object
   lang: (lang?: string) => string | null
   language(lang?: string): string | null
@@ -47,7 +48,11 @@ declare class Document {
   url(): string | null
   wikidata(id?: string): string | null
   wikitext(): string
-  revisionID(): string | null
+  revisionID(id?: number): number | null
+  description(desc?: string): string | null
+  timestamp(iso?: string): string | null
+  pageImage(img?: string): Image
+  domain(domain?: string): string | null
 }
 
 declare class Section {

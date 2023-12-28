@@ -138,7 +138,7 @@ run it on the client-side:
 ```html
 <script src="https://unpkg.com/wtf_wikipedia"></script>
 <script>
-  wtf.fetch('Radiohead', {'Api-User-Agent': 'Name your script here'}, function (err, doc) {
+  wtf.fetch('Radiohead', { 'Api-User-Agent': 'Name your script here' }, function (err, doc) {
     let members = doc.infobox().get('current members')
     members.links().map((l) => l.page())
     //['Thom Yorke', 'Jonny Greenwood', 'Colin Greenwood'...]
@@ -276,7 +276,9 @@ wtf(txt)
 
 ```javascript
 let txt = `Whistling is featured in a number of television shows, such as [[Lassie (1954 TV series)|''Lassie'']], and the title theme for ''[[The X-Files]]''.`
-wtf(txt).links().map((l) => l.page())
+wtf(txt)
+  .links()
+  .map((l) => l.page())
 // [ 'Lassie (1954 TV series)',  'The X-Files' ]
 ```
 
@@ -285,7 +287,8 @@ wtf(txt).links().map((l) => l.page())
 returns nice plain-text of the article
 
 ```js
-let txt = "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>"
+let txt =
+  "[[Greater_Boston|Boston]]'s [[Fenway_Park|baseball field]] has a {{convert|37|ft}} wall.<ref>{{cite web|blah}}</ref>"
 wtf(txt).text()
 //"Boston's baseball field has a 37ft wall."
 ```
@@ -395,7 +398,6 @@ wtf.random().then((doc) => {
 
 see [wtf-plugin-api](./plugins/api)
 
-
 <!-- spacer -->
 <img height="50px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
@@ -459,7 +461,6 @@ await wtf.fetch('Ziggy Stardust', 'fr').infobox().json()
   <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
 </div>
 
-
 ### Good practice:
 
 The wikipedia api is [pretty welcoming](https://www.mediawiki.org/wiki/API:Etiquette#Request_limit) though recommends three things, if you're going to hit it heavily -
@@ -497,6 +498,7 @@ wtf
 - **.isRedirect()** - if the page is just a redirect to another page
 - **.redirectTo()** - the page this redirects to
 - **.isDisambiguation()** - is this a placeholder page to direct you to one-of-many possible pages
+- **.isStub()** - if the page is flagged as incomplete
 - **.categories()** - return all categories of the document
 - **.sections()** - return a list of the Document's sections
 - **.paragraphs()** - return a list of Paragraphs, in all sections
@@ -512,6 +514,10 @@ wtf
 - **.text()** - plaintext, human-readable output for the page
 - **.json()** - a 'stringifyable' output of the page's main data
 - **.wikitext()** - original wiki markup
+- **.description()** - get/set the page's short description, if we have one.
+- **.pageImage()** - get/set the page's representative image, if we have one.
+- **.revisionID()** - get/set the latest edit id of the page, if we have it.
+- **.timestamp()** - get/set the time of the most recent edit of the page, if we have it.
 
 ### Section
 
@@ -659,12 +665,12 @@ by default, if there's no parser for a template, it will be just ignored and gen
 However, it's possible to configure a fallback parser function to handle these templates:
 
 ```js
-wtf('some {{weird_template}} here', { 
+wtf('some {{weird_template}} here', {
   templateFallbackFn: (tmpl, list, parse) => {
     let obj = parse(tmpl) //or do a custom regex
     list.push(obj)
     return '[unsupported template]' // or return null to ignore this template
-  }
+  },
 })
 ```
 

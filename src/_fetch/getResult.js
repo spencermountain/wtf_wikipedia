@@ -10,17 +10,17 @@
  */
 const getResult = function (data, options = {}) {
   // handle nothing found or no data passed
-  if(!data?.query?.pages || !data?.query || !data){
+  if (!data?.query?.pages || !data?.query || !data) {
     return null
   }
-  
+
   //get all the pagesIds from the result
   let pages = Object.keys(data.query.pages)
 
   // map over the pageIds to parse out all the information
   return pages.map((id) => {
     // get the page by pageID
-    
+
     let page = data.query.pages[id] || {}
 
     // if the page is missing or not found than return null
@@ -34,6 +34,8 @@ const getResult = function (data, options = {}) {
     if (!text && page.revisions[0].slots) {
       text = page.revisions[0].slots.main['*']
     }
+    let revisionID = page.revisions[0].revid
+    let timestamp = page.revisions[0].timestamp
 
     page.pageprops = page.pageprops || {}
 
@@ -46,11 +48,13 @@ const getResult = function (data, options = {}) {
       title: page.title,
       pageID: page.pageid,
       namespace: page.ns,
-      domain: domain,
+      domain,
+      revisionID,
+      timestamp,
+      pageImage: page.pageprops['page_image_free'],
       wikidata: page.pageprops.wikibase_item,
       description: page.pageprops['wikibase-shortdesc'],
     })
-
 
     return { wiki: text, meta: meta }
   })
