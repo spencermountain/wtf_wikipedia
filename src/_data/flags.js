@@ -253,7 +253,7 @@ export default [
   ['🇿🇼 ', 'zwe', 'zimbabwe'],
   //others (later unicode versions)
   ['🇺🇳', 'un', 'united nations'],
-  ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'],
+  ['🏴󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'],
   ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'],
   ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales'],
   ['🇪🇺', 'eu', 'european union'],
