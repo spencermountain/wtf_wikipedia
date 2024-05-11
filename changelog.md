@@ -3,6 +3,13 @@
 
 -->
 
+#### 10.3.1 [May 2024]
+
+- **[fix]** - unicode glitch token #573
+- **[fix]** - retire mixesdb wiki test
+- **[fix]** - support birthdate template aliases #537
+- **[update]** - dependencies
+
 #### 10.3.0 [Dec 2023]
 
 - **[new]** - fallbackTemplateFn handler #509

@@ -75,22 +75,6 @@ test('fetch-redirect', (t) => {
   })
 })
 
-test('fetch-alternate-wiki', (t) => {
-  t.plan(1)
-  const p = wtf.fetch(336711, {
-    lang: 'en',
-    'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
-    domain: 'www.mixesdb.com',
-    path: 'db/api.php',
-  })
-  p.then(function (doc) {
-    t.ok(doc.sections().length > 0, 'alternate wiki returned document')
-  })
-  p.catch(function (e) {
-    t.throw(e)
-  })
-})
-
 //uncomment for testing on node>6
 test('ambiguous-pageids', async function (t) {
   let doc = await wtf.fetch(1984, 'en')
