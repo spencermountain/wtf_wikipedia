@@ -4472,7 +4472,7 @@
 
     sfn: ['sfnref', 'harvid', 'harvnb'],
 
-    'birth date and age': ['death date and age', 'bda'],
+    'birth date and age': ['death date and age', 'bda', 'b-da'],
 
     currentmonth: ['localmonth', 'currentmonthname', 'currentmonthabbrev'],
 
@@ -4562,6 +4562,7 @@
       'start date',
       'end date',
       'birth date',
+      'birthdate',
       'death date',
       'start date and age',
       'end date and age',
@@ -6609,7 +6610,7 @@
     ['🇿🇼 ', 'zwe', 'zimbabwe'],
     //others (later unicode versions)
     ['🇺🇳', 'un', 'united nations'],
-    ['🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'],
+    ['🏴󠁧󠁢󠁥󠁮󠁧󠁿', 'eng', 'england'],
     ['🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'sct', 'scotland'],
     ['🏴󠁧󠁢󠁷󠁬󠁳󠁿', 'wal', 'wales'],
     ['🇪🇺', 'eu', 'european union'],
@@ -8224,7 +8225,7 @@
       return months[d.getMonth()] + ' ' + d.getFullYear()
     },
 
-    'year': (tmpl) => {
+    year: (tmpl) => {
       let date = parser(tmpl, ['date']).date;
       let d = new Date(date);
       if (date && isNaN(d.getTime()) === false) {
@@ -8236,6 +8237,12 @@
     'time ago': (tmpl) => {
       let time = parser(tmpl, ['date', 'fmt']).date;
       return timeSince(time)
+    },
+    'birth date': (tmpl, list) => {
+      let obj = parser(tmpl, ['year', 'month', 'date']);
+      list.push(obj);
+      obj = ymd([obj.year, obj.month, obj.day]);
+      return toText(obj)
     },
     //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
     'birth date and age': (tmpl, list) => {
@@ -10963,7 +10970,7 @@
       })
   };
 
-  var version = '10.3.0';
+  var version = '10.3.1';
 
   /**
    * use the native client-side fetch function

@@ -1,15 +1,16 @@
 import wtf from './src/index.js'
 
 let str = `
-'''Hamburg''' ({{IPA-de|ˈhambʊʁk|lang|GeoTrinity Hamburg.ogg}}, {{IPA-dedia|ˈhambʊɪ̯ç|locally also|GeoTrinity Hamburch.ogg}}; {{lang-nds|label=[[Hamburg German|Low Saxon]]|Hamborg}} {{IPA-nds|ˈhambɔːç||GT Hamborch.ogg}}), officially the '''Free and Hanseatic City of Hamburg'''
-`
+{{Birth date and age|df=y|1968|12|9}}
+{{birthdate|1944|04|28|df=y}}
+{{b-da|9 March 1958}}`
 
 // str = `{{Refplease|date=November 2023|reason=Your explanation here}} in [[Jolgeh-ye Musaabad Rural District]],`
 
-// let doc = wtf(str)
-const doc = await wtf.fetch('Philharmonie de Berlin', 'fr')
-console.log(doc.pageImage().json())
-// console.log(doc.text())
+let doc = wtf(str)
+// const doc = await wtf.fetch('Philharmonie de Berlin', 'fr')
+// console.log(doc.pageImage().json())
+console.log(doc.text())
 // console.log(doc.wikidata() + '|')
 
 // console.log(doc.template().json())
