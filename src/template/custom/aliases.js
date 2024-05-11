@@ -58,7 +58,7 @@ let multi = {
 
   sfn: ['sfnref', 'harvid', 'harvnb'],
 
-  'birth date and age': ['death date and age', 'bda'],
+  'birth date and age': ['death date and age', 'bda', 'b-da'],
 
   currentmonth: ['localmonth', 'currentmonthname', 'currentmonthabbrev'],
 
@@ -148,6 +148,7 @@ let multi = {
     'start date',
     'end date',
     'birth date',
+    'birthdate',
     'death date',
     'start date and age',
     'end date and age',

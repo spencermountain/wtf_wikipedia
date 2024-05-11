@@ -52,7 +52,7 @@ export default {
     return months[d.getMonth()] + ' ' + d.getFullYear()
   },
 
-  'year': (tmpl) => {
+  year: (tmpl) => {
     let date = parse(tmpl, ['date']).date
     let d = new Date(date)
     if (date && isNaN(d.getTime()) === false) {
@@ -64,6 +64,12 @@ export default {
   'time ago': (tmpl) => {
     let time = parse(tmpl, ['date', 'fmt']).date
     return timeSince(time)
+  },
+  'birth date': (tmpl, list) => {
+    let obj = parse(tmpl, ['year', 'month', 'date'])
+    list.push(obj)
+    obj = ymd([obj.year, obj.month, obj.day])
+    return toText(obj)
   },
   //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
   'birth date and age': (tmpl, list) => {
