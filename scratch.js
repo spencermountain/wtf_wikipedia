@@ -17,7 +17,7 @@ str = `{{SubSup|...}}`
 str = `{{normal|text-string}}`
 str = `{{pp.|2|sq.}}`
 str = `{{spaces|5}}`
-str = `For example, fact.{{r|RefName|p=22}}`
+// str = `For example, fact {{r|RefName|p=22}}`
 
 // str = `before
 // :indent
@@ -36,7 +36,6 @@ str = `For example, fact.{{r|RefName|p=22}}`
 
 let doc = wtf(str)
 console.log(doc.text())
-console.log(doc.json())
 // console.log(doc.json().sections[0])
 // const doc = await wtf.fetch('Philharmonie de Berlin', 'fr')
 // console.log(doc.pageImage().json())

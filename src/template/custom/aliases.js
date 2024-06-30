@@ -333,7 +333,7 @@ let multi = {
   ],
 
   'en dash': ['ndash', 'nsndns'],
-  'spaced en dash': ['snd', 'spnd', 'sndash', 'spndash'],
+  'spaced en dash': ['spnd', 'sndash', 'spndash'],
   'spaced en dash space': ['snds', 'spndsp', 'sndashs', 'spndashsp'],
   'zero width joiner em dash zero width non joiner': ['nsmdns', 'nsmdashns', 'nsemdashns', 'mdashb'],
 }

@@ -416,4 +416,11 @@ export default {
     list.push(obj)
     return ''
   },
+
+  r: (tmpl, list) => {
+    let obj = parse(tmpl, ['name'])
+    obj.template = 'citation'
+    list.push(obj)
+    return ''
+  },
 }

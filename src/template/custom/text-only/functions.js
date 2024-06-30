@@ -813,9 +813,9 @@ export default {
       return data['custom label']
     }
     if (n > 0) {
-      return `▲ +${n}`
+      return ` +${n}` //▲
     } else if (n < 0) {
-      return `▼ ${n}`
+      return ` ${n}` //▼
     } else if (n === 0) {
       return ` no change `
     }
