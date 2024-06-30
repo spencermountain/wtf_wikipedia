@@ -104,6 +104,10 @@ let zeros = [
   'nobel abbr',
   'gloss',
   'gcl',
+  'overline',
+  'underline',
+  'overarc',
+  'normal',
 ]
 zeros.forEach((k) => {
   templates[k] = 0

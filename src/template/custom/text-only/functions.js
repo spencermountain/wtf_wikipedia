@@ -795,6 +795,17 @@ export default {
     let data = parse(tmpl, ['text'])
     return `|${data.text || ''}| `
   },
+  'p.': (tmpl) => {
+    let data = parse(tmpl, ['a', 'b'])
+    if (data.b) {
+      if (parseInt(data.b, 10)) {
+        return `pp. ${data.a}–${data.b}` //page-range
+      } else {
+        return `pp. ${data.a}${data.b}`
+      }
+    }
+    return `p. ${data.a || ''}`
+  },
   intmath: (tmpl) => {
     let data = parse(tmpl, ['sign', 'subscript', 'superscript'])
     const signs = {

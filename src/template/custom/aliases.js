@@ -37,6 +37,7 @@ let aliases = {
   frac: 'fraction',
   rdelim: 'ldelim',
   abs: 'pipe',
+  'pp.': 'p.',
 }
 
 //multiple aliases

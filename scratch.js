@@ -14,7 +14,8 @@ str = `{{#if|....}}`
 str = `{{gap|...}}`
 str = `{{su|...}}`
 str = `{{SubSup|...}}`
-str = `{{pipe}}`
+str = `{{normal|text-string}}`
+str = `{{pp.|2|sq.}}`
 
 // str = `{{Φ}}`
 
