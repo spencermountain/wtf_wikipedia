@@ -14,9 +14,7 @@ str = `{{#if|....}}`
 str = `{{gap|...}}`
 str = `{{su|...}}`
 str = `{{SubSup|...}}`
-str = `{{angle bracket|ŋ}}`
-str = `{{infix}}`
-str = `{{epsilon|noitalic=true}}`
+str = `{{pipe}}`
 
 // str = `{{Φ}}`
 

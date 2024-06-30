@@ -35,6 +35,8 @@ let aliases = {
   'c.': 'circa',
   'r.': 'reign',
   frac: 'fraction',
+  rdelim: 'ldelim',
+  abs: 'pipe',
 }
 
 //multiple aliases

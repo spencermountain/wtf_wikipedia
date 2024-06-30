@@ -767,11 +767,21 @@ export default {
   },
   'angle bracket': (tmpl) => {
     let data = parse(tmpl, ['txt'])
-    return `⟨${data.txt}⟩`
+    return `⟨${data.txt || ''}⟩`
   },
   'bra-ket': (tmpl) => {
     let data = parse(tmpl, ['a', 'b'])
     return `⟨${data.a || ''}|${data.b || ''}⟩`
+  },
+  braket: (tmpl) => {
+    let data = parse(tmpl, ['sym', 'a', 'b'])
+    if (data.sym === 'bra') {
+      return `⟨${data.a}|`
+    } else if (data.sym === 'ket') {
+      return `⟨|${data.a || ''}⟩`
+    } else {
+      return `⟨${data.a || ''}|${data.b || ''}⟩`
+    }
   },
   pars: (tmpl) => {
     let data = parse(tmpl, ['text', 's'])
@@ -779,7 +789,11 @@ export default {
   },
   circumfix: (tmpl) => {
     let data = parse(tmpl, ['text'])
-    return `⟩${data.text}}⟨`
+    return `⟩${data.text || ''}⟨`
+  },
+  pipe: (tmpl) => {
+    let data = parse(tmpl, ['text'])
+    return `|${data.text || ''}| `
   },
   intmath: (tmpl) => {
     let data = parse(tmpl, ['sign', 'subscript', 'superscript'])
@@ -794,5 +808,19 @@ export default {
       oiiint: '∰',
     }
     return `${signs[data.sign] || ''} ${data.superscript || ''} ${data.subscript || ''} `
+  },
+  ldelim: (tmpl) => {
+    let data = parse(tmpl, ['a', 'b', 'sub', 'sup'])
+    let after = `${data.sub || ''}${data.sup || ''}`
+    if (data.a === 'square') {
+      return `[${data.b || ''}]${after}`
+    } else if (data.a === 'round') {
+      return `(${data.b || ''})${after}`
+    } else if (data.a === 'vert') {
+      return `|${data.b || ''}|${after}`
+    } else if (data.a === 'doublevert') {
+      return `||${data.b || ''}||${after}`
+    }
+    return `${data.b || ''} ${after}`
   },
 }
