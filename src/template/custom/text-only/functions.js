@@ -888,12 +888,42 @@ export default {
     let data = parse(tmpl, ['a', 'b'])
     return Number(data.a) + Number(data.b)
   },
+  round: (tmpl) => {
+    let data = parse(tmpl, ['val', 'decimals'])
+    let n = Number(data.val)
+    //todo: handle decimal place
+    return Math.round(n) || ''
+  },
+  rounddown: (tmpl) => {
+    let data = parse(tmpl, ['val', 'decimals'])
+    let n = Number(data.val)
+    //todo: handle decimal place
+    return Math.floor(n) || ''
+  },
+  roundup: (tmpl) => {
+    let data = parse(tmpl, ['val', 'decimals'])
+    let n = Number(data.val)
+    //todo: handle decimal place
+    return Math.ceil(n) || ''
+  },
   parity: (tmpl) => {
     let data = parse(tmpl, ['val', 'even', 'odd'])
     if (Number(data.val) % 2 === 0) {
       return data.even || 'even'
     }
     return data.odd || 'odd'
+  },
+  hexadecimal: (tmpl) => {
+    let data = parse(tmpl, ['val'])
+    let n = Number(data.val)
+    if (!n) {
+      return data.val
+    }
+    return n.toString(16).toUpperCase()
+  },
+  hex2dec: (tmpl) => {
+    let data = parse(tmpl, ['val'])
+    return parseInt(data.val, 16) || data.val
   },
   'order of magnitude': (tmpl) => {
     let data = parse(tmpl, ['val'])

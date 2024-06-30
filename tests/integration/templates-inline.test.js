@@ -212,6 +212,7 @@ test('inline-output', (t) => {
     ['{{Order of magnitude|123.4}}', '2'],
     ['{{Order of magnitude|12.34}}', '1'],
     ['{{Order of magnitude|1.234}}', '0'],
+    ['{{plural|2|page}}', '2 pages'],
     // ['{{Order of magnitude|.1234}} ', '-1'],
     [`{{Parity|4|foo|bar}}`, 'foo'],
     [`{{Parity|9}}`, 'odd'],
@@ -220,6 +221,14 @@ test('inline-output', (t) => {
     // [`{{Percentage | 1111 | 10000 | 4 }}`, '11.11%'],
     ['{{percent and number|3333|20000}}', '17% (3,333)'],
     ['{{percent and number|3333|20000|3}}', '16.665% (3,333)'],
+    ['{{Rounddown|3.14159}}', '3'],
+    ['{{Round|54.376}}', '54'],
+    // ['{{Round|54.376|2}}', '54.37'],
+    // ['{{Rounddown|3.14159|3}}', '3.141'],
+    // ['{{Rounddown|314159|-3}}', '314000'],
+    ['{{Hexadecimal|15|hex}}', 'F'],
+    ['{{Hexadecimal|A B}}', 'A B'],
+    ['{{hex2dec|0x7C0}}', '1984'],
     // ['', ''],
   ]
   arr.forEach((a) => {

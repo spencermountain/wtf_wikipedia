@@ -12,7 +12,9 @@ str = `{{music|...}}`
 str = `{{thinspace|...}}`
 str = `{{#if|....}}`
 str = `{{multiply|4|5}}`
-str = `{{Percentage | 1111 | 10000 | 4 }}`
+str = '{{Hexadecimal|15|hex}}'
+str = '{{hex2dec|0x7C0}}'
+// str = `{{Rounddown|3.14159|3}}`
 
 // str = `{{SubSup|a|b|C}}`
 // str = `For example, fact {{r|RefName|p=22}}`
