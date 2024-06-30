@@ -108,6 +108,7 @@ let zeros = [
   'underline',
   'overarc',
   'normal',
+  'norm',
 ]
 zeros.forEach((k) => {
   templates[k] = 0

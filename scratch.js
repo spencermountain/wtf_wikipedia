@@ -17,15 +17,16 @@ str = `{{SubSup|...}}`
 str = `{{normal|text-string}}`
 str = `{{pp.|2|sq.}}`
 str = `{{spaces|5}}`
-str = `Some text.{{indent|5}}Some more text.`
-str = `before
-:indent
-after`
+str = `For example, fact.{{r|RefName|p=22}}`
 
-str = `hello
-: first reply
-:: second reply
-world`
+// str = `before
+// :indent
+// after`
+
+// str = `hello
+// : first
+// :: second
+// world`
 
 // console.log(wtf('This is an\n:before\nafter').text())
 
@@ -35,6 +36,7 @@ world`
 
 let doc = wtf(str)
 console.log(doc.text())
+console.log(doc.json())
 // console.log(doc.json().sections[0])
 // const doc = await wtf.fetch('Philharmonie de Berlin', 'fr')
 // console.log(doc.pageImage().json())

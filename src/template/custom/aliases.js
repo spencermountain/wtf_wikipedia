@@ -38,6 +38,7 @@ let aliases = {
   rdelim: 'ldelim',
   abs: 'pipe',
   'pp.': 'p.',
+  'iss.': 'vol.',
 }
 
 //multiple aliases
@@ -330,6 +331,11 @@ let multi = {
     'unreferenced inline',
     'unsourced-inline',
   ],
+
+  'en dash': ['ndash', 'nsndns'],
+  'spaced en dash': ['snd', 'spnd', 'sndash', 'spndash'],
+  'spaced en dash space': ['snds', 'spndsp', 'sndashs', 'spndashsp'],
+  'zero width joiner em dash zero width non joiner': ['nsmdns', 'nsmdashns', 'nsemdashns', 'mdashb'],
 }
 
 // - other languages -

@@ -757,6 +757,21 @@ export default {
     let data = parse(tmpl, ['txt'])
     return `⌊${data.txt}⌋`
   },
+  'vol.': (tmpl) => {
+    let data = parse(tmpl, ['n'])
+    return `vol. ${data.n}`
+  },
+  rp: (tmpl) => {
+    let data = parse(tmpl, ['page'])
+    if (data.pages) {
+      return `pp${data.pages}`
+    }
+    return `p. ${data.page || ''}`
+  },
+  gaps: (tmpl) => {
+    let data = parse(tmpl)
+    return data.list.join('  ')
+  },
   bra: (tmpl) => {
     let data = parse(tmpl, ['a'])
     return `⟨${data.a || ''}|`
@@ -791,10 +806,22 @@ export default {
     let data = parse(tmpl, ['text'])
     return `⟩${data.text || ''}⟨`
   },
-  pipe: (tmpl) => {
-    let data = parse(tmpl, ['text'])
-    return `|${data.text || ''}| `
+  fluc: (tmpl) => {
+    let data = parse(tmpl, ['val', 'type'])
+    let n = Number(data.val)
+    if (data['custom label']) {
+      return data['custom label']
+    }
+    if (n > 0) {
+      return `▲ +${n}`
+    } else if (n < 0) {
+      return `▼ ${n}`
+    } else if (n === 0) {
+      return ` no change `
+    }
+    return data.val || ''
   },
+
   'p.': (tmpl) => {
     let data = parse(tmpl, ['a', 'b'])
     if (data.b) {
