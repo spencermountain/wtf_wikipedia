@@ -65,7 +65,6 @@ let zeros = [
   'code',
   'char',
   'angle bracket',
-  'angbr',
   'symb',
   'dabsearch',
   'key press', //needs work - https://en.m.wikipedia.org/wiki/'Key_press',

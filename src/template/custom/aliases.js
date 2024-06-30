@@ -43,6 +43,7 @@ let multi = {
   citation: ['cite', 'source', 'source-pr', 'source-science'],
 
   'no spam': ['email', '@', 'no spam blue'],
+  'angle bracket': ['angbr', 'infix', 'angbr ipa'],
 
   'lrt station': ['lrt', 'lrts'],
   'mrt station': ['mrt', 'mrts'],

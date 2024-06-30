@@ -765,6 +765,10 @@ export default {
     let data = parse(tmpl, ['a'])
     return `${data.a || ''}⟩`
   },
+  'angle bracket': (tmpl) => {
+    let data = parse(tmpl, ['txt'])
+    return `⟨${data.txt}⟩`
+  },
   'bra-ket': (tmpl) => {
     let data = parse(tmpl, ['a', 'b'])
     return `⟨${data.a || ''}|${data.b || ''}⟩`
@@ -772,6 +776,10 @@ export default {
   pars: (tmpl) => {
     let data = parse(tmpl, ['text', 's'])
     return `(${data.text || ''})`
+  },
+  circumfix: (tmpl) => {
+    let data = parse(tmpl, ['text'])
+    return `⟩${data.text}}⟨`
   },
   intmath: (tmpl) => {
     let data = parse(tmpl, ['sign', 'subscript', 'superscript'])

@@ -14,7 +14,11 @@ str = `{{#if|....}}`
 str = `{{gap|...}}`
 str = `{{su|...}}`
 str = `{{SubSup|...}}`
-str = `{{intmath|int|0|∞}}`
+str = `{{angle bracket|ŋ}}`
+str = `{{infix}}`
+str = `{{epsilon|noitalic=true}}`
+
+// str = `{{Φ}}`
 
 // str = `{{Refplease|date=November 2023|reason=Your explanation here}} in [[Jolgeh-ye Musaabad Rural District]],`
 
