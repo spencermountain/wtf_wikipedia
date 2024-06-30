@@ -216,6 +216,8 @@ test('inline-output', (t) => {
     [`{{Parity|4|foo|bar}}`, 'foo'],
     [`{{Parity|9}}`, 'odd'],
     [`{{Parity|8}}`, 'even'],
+    [`{{Percentage | 1111 | 10000}}`, '11%'],
+    // [`{{Percentage | 1111 | 10000 | 4 }}`, '11.11%'],
     ['{{percent and number|3333|20000}}', '17% (3,333)'],
     ['{{percent and number|3333|20000|3}}', '16.665% (3,333)'],
     // ['', ''],

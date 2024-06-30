@@ -408,11 +408,13 @@ export default {
   //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
   percentage: (tmpl) => {
     let obj = parse(tmpl, ['numerator', 'denominator', 'decimals'])
-    let num = percentage(obj)
+    let num = Number(obj.numerator) / Number(obj.denominator)
+    num *= 100
     if (num === null) {
       return ''
     }
-    return num + '%'
+    let dec = Number(obj.decimals) || 0
+    return `${num.toFixed(dec)}%`
   },
   // this one is re-used by i18n
   small: (tmpl) => {

@@ -12,7 +12,7 @@ str = `{{music|...}}`
 str = `{{thinspace|...}}`
 str = `{{#if|....}}`
 str = `{{multiply|4|5}}`
-str = `{{percent and number|3333|20000|3}}`
+str = `{{Percentage | 1111 | 10000 | 4 }}`
 
 // str = `{{SubSup|a|b|C}}`
 // str = `For example, fact {{r|RefName|p=22}}`
