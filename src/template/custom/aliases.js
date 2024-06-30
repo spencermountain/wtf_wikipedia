@@ -34,6 +34,7 @@ let aliases = {
   'born-in': 'born in',
   'c.': 'circa',
   'r.': 'reign',
+  frac: 'fraction',
 }
 
 //multiple aliases

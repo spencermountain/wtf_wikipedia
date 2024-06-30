@@ -299,7 +299,7 @@ export default {
   },
 
   //https://en.wikipedia.org/wiki/Template:Frac
-  frac: (tmpl) => {
+  fraction: (tmpl) => {
     let obj = parse(tmpl, ['a', 'b', 'c'])
     if (obj.c) {
       return `${obj.a} ${obj.b}/${obj.c}`
@@ -740,5 +740,51 @@ export default {
     let arr = parse(tmpl).list || []
     arr = arr.map((str) => `'${str}'`)
     return 'lit. ' + arr.join(' or ')
+  },
+  overset: (tmpl) => {
+    let data = parse(tmpl, ['over', 'base'])
+    return [data.over || '', data.base || ''].join(' ')
+  },
+  underset: (tmpl) => {
+    let data = parse(tmpl, ['under', 'base'])
+    return [data.base || '', data.under || ''].join(' ')
+  },
+  ceil: (tmpl) => {
+    let data = parse(tmpl, ['txt'])
+    return `⌈${data.txt}⌉`
+  },
+  floor: (tmpl) => {
+    let data = parse(tmpl, ['txt'])
+    return `⌊${data.txt}⌋`
+  },
+  bra: (tmpl) => {
+    let data = parse(tmpl, ['a'])
+    return `⟨${data.a || ''}|`
+  },
+  ket: (tmpl) => {
+    let data = parse(tmpl, ['a'])
+    return `${data.a || ''}⟩`
+  },
+  'bra-ket': (tmpl) => {
+    let data = parse(tmpl, ['a', 'b'])
+    return `⟨${data.a || ''}|${data.b || ''}⟩`
+  },
+  pars: (tmpl) => {
+    let data = parse(tmpl, ['text', 's'])
+    return `(${data.text || ''})`
+  },
+  intmath: (tmpl) => {
+    let data = parse(tmpl, ['sign', 'subscript', 'superscript'])
+    const signs = {
+      int: '∫',
+      iint: '∬',
+      iiint: '∭',
+      oint: '∮',
+      varointclockwise: '∲',
+      ointctrclockwise: '∳',
+      oiint: '∯',
+      oiiint: '∰',
+    }
+    return `${signs[data.sign] || ''} ${data.superscript || ''} ${data.subscript || ''} `
   },
 }

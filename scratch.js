@@ -1,9 +1,20 @@
 import wtf from './src/index.js'
 
-let str = `
-{{Birth date and age|df=y|1968|12|9}}
-{{birthdate|1944|04|28|df=y}}
-{{b-da|9 March 1958}}`
+let str = ``
+
+str = `{[vec|...}}`
+str = `{{font color|...}}`
+str = `{{color|...}}`
+str = `{{pars|...}}`
+str = `{{nuclide|...}}`
+str = `{{Subatomic Particle|...}}`
+str = `{{music|...}}`
+str = `{{thinspace|...}}`
+str = `{{#if|....}}`
+str = `{{gap|...}}`
+str = `{{su|...}}`
+str = `{{SubSup|...}}`
+str = `{{intmath|int|0|∞}}`
 
 // str = `{{Refplease|date=November 2023|reason=Your explanation here}} in [[Jolgeh-ye Musaabad Rural District]],`
 
