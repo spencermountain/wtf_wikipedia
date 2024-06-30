@@ -181,6 +181,7 @@ export default [
   'sr',
   'ss',
   'st',
+  'ste',
   'supt',
   'surg',
   'tb',
