@@ -11,12 +11,10 @@ str = `{{Subatomic Particle|...}}`
 str = `{{music|...}}`
 str = `{{thinspace|...}}`
 str = `{{#if|....}}`
-str = `{{gap|...}}`
-str = `{{su|...}}`
-str = `{{SubSup|...}}`
-str = `{{normal|text-string}}`
-str = `{{pp.|2|sq.}}`
-str = `{{spaces|5}}`
+str = `{{multiply|4|5}}`
+str = `{{percent and number|3333|20000|3}}`
+
+// str = `{{SubSup|a|b|C}}`
 // str = `For example, fact {{r|RefName|p=22}}`
 
 // str = `before

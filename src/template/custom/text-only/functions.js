@@ -833,6 +833,23 @@ export default {
     }
     return `p. ${data.a || ''}`
   },
+  subsup: (tmpl) => {
+    let data = parse(tmpl, ['symbol', 'subscript', 'superscript'])
+    return `${data.symbol || ''} ${data.subscript || ''} ${data.superscript || ''}`
+  },
+  su: (tmpl) => {
+    let data = parse(tmpl, ['p', 'b'])
+    return `${data.p || ''} ${data.b || ''}`
+  },
+  precision: (tmpl) => {
+    let data = parse(tmpl, ['num'])
+    let num = data.num || ''
+    if (!num.match(/\./) && num.match(/0*$/) && num !== '0') {
+      return num.match(/0*$/)[0].length * -1
+    }
+    let dec = num.split(/\./)[1] || ''
+    return dec.length
+  },
   intmath: (tmpl) => {
     let data = parse(tmpl, ['sign', 'subscript', 'superscript'])
     const signs = {
@@ -860,5 +877,36 @@ export default {
       return `||${data.b || ''}||${after}`
     }
     return `${data.b || ''} ${after}`
+  },
+  multiply: (tmpl) => {
+    let data = parse(tmpl, ['a', 'b'])
+    return Number(data.a) * Number(data.b)
+  },
+  sum: (tmpl) => {
+    let data = parse(tmpl, ['a', 'b'])
+    return Number(data.a) + Number(data.b)
+  },
+  parity: (tmpl) => {
+    let data = parse(tmpl, ['val', 'even', 'odd'])
+    if (Number(data.val) % 2 === 0) {
+      return data.even || 'even'
+    }
+    return data.odd || 'odd'
+  },
+  'order of magnitude': (tmpl) => {
+    let data = parse(tmpl, ['val'])
+    let num = parseInt(data.val, 10)
+    //todo: support decimal forms
+    if (num || num === 0) {
+      return String(num).length - 1
+    }
+    return '0'
+  },
+  'percent and number': (tmpl) => {
+    let data = parse(tmpl, ['number', 'total', 'decimals'])
+    let n = Number(data.number) / Number(data.total)
+    n *= 100
+    let dec = Number(data.decimals) || 0
+    return `${n.toFixed(dec)}% (${Number(data.number).toLocaleString()})`
   },
 }

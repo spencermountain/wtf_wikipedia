@@ -109,6 +109,8 @@ let zeros = [
   'overarc',
   'normal',
   'norm',
+  'tmath',
+  'vec',
 ]
 zeros.forEach((k) => {
   templates[k] = 0

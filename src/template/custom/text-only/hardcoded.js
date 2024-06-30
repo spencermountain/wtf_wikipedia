@@ -99,6 +99,7 @@ export default {
   quad: '    ',
   spaces: '    ',
   in5: '     ',
+  tombstone: '◻',
   // increase: '▲',
   // decrease: '▼',
   'no.': '#',
