@@ -39,6 +39,7 @@ let aliases = {
   abs: 'pipe',
   'pp.': 'p.',
   'iss.': 'vol.',
+  h2d: 'hex2dec',
 }
 
 //multiple aliases

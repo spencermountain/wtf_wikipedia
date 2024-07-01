@@ -8,12 +8,7 @@ str = `{{color|...}}`
 str = `{{pars|...}}`
 str = `{{nuclide|...}}`
 str = `{{Subatomic Particle|...}}`
-str = `{{music|...}}`
-str = `{{thinspace|...}}`
-str = `{{#if|....}}`
-str = `{{multiply|4|5}}`
-str = '{{Hexadecimal|15|hex}}'
-str = '{{hex2dec|0x7C0}}'
+str = `{{music|bassclef}}`
 // str = `{{Rounddown|3.14159|3}}`
 
 // str = `{{SubSup|a|b|C}}`

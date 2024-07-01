@@ -921,9 +921,47 @@ export default {
     }
     return n.toString(16).toUpperCase()
   },
+  octal: (tmpl) => {
+    let data = parse(tmpl, ['val'])
+    let n = Number(data.val)
+    if (!n) {
+      return data.val
+    }
+    return n.toString(8).toUpperCase() + '₈'
+  },
+  decimal2base: (tmpl) => {
+    let data = parse(tmpl, ['n', 'radix'])
+    let n = Number(data.n)
+    let radix = Number(data.radix)
+    if (!n || !radix) {
+      return data.n
+    }
+    return n.toString(radix).toUpperCase()
+  },
   hex2dec: (tmpl) => {
     let data = parse(tmpl, ['val'])
     return parseInt(data.val, 16) || data.val
+  },
+  ifnotempty: (tmpl) => {
+    let data = parse(tmpl, ['cond', 'a', 'b'])
+    if (data.cond) {
+      return data.a
+    }
+    return data.b
+  },
+  both: (tmpl) => {
+    let data = parse(tmpl, ['a', 'b'])
+    if (data.a && data.b) {
+      return '1'
+    }
+    return ''
+  },
+  ifnumber: (tmpl) => {
+    let data = parse(tmpl, ['n', 'yes', 'no'])
+    if (!isNaN(Number(data.n))) {
+      return data.yes || '1'
+    }
+    return data.no || ''
   },
   'order of magnitude': (tmpl) => {
     let data = parse(tmpl, ['val'])
@@ -940,5 +978,35 @@ export default {
     n *= 100
     let dec = Number(data.decimals) || 0
     return `${n.toFixed(dec)}% (${Number(data.number).toLocaleString()})`
+  },
+  music: (tmpl) => {
+    let data = parse(tmpl, ['glyph'])
+    // these have unicode working character subs
+    let glyphs = {
+      flat: '♭',
+      b: '♭',
+      sharp: '♯',
+      '#': '♯',
+      natural: '♮',
+      n: '♮',
+      doubleflat: '𝄫',
+      bb: '𝄫',
+      '##': '𝄪',
+      doublesharp: '𝄪',
+      quarternote: '♩',
+      quarter: '♩',
+      treble: '𝄞',
+      trebleclef: '𝄞',
+      bass: '𝄢',
+      bassclef: '𝄢',
+      altoclef: '𝄡',
+      alto: '𝄡',
+      tenor: '𝄡',
+      tenorclef: '𝄡',
+    }
+    if (glyphs.hasOwnProperty(data.glyph)) {
+      return glyphs[data.glyph]
+    }
+    return ''
   },
 }

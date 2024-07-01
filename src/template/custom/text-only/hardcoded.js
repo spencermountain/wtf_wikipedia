@@ -104,6 +104,7 @@ export default {
   // decrease: '▼',
   'no.': '#',
   'thin space': ' ',
+  thinspace: ' ',
   'very thin space': ' ',
   'word joiner': ' ',
   'figure space': ' ',
@@ -123,4 +124,6 @@ export default {
   '!+': '|+',
   '!-': '|-',
   '!)': '|}',
+  flat: '♭',
+  sharp: '♯',
 }
