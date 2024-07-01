@@ -1,4 +1,4 @@
-/* wtf-plugin-i18n 1.0.1  MIT */
+/* wtf-plugin-i18n 1.0.2  MIT */
 var citation = [
   'atsauce',
   'chú thích',
@@ -869,6 +869,7 @@ let mapping = {
   'cite web': citeWeb,
   'commons cat': commonsCat,
   'start date': startDate,
+  nihongo: ['japonês', 'japonais', 'нихонго']
 };
 
 const plugin = function (_models, templates) {
