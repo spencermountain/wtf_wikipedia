@@ -10,6 +10,8 @@ let templates = {
   l: 2,
   h: 1, //https://en.wikipedia.org/wiki/'Hover_title',
   sort: 1, //https://en.wikipedia.org/wiki/'Sort',
+  color: 1,
+  'background color': 1,
 }
 
 //templates that we simply grab their insides as plaintext
@@ -111,6 +113,9 @@ let zeros = [
   'norm',
   'tmath',
   'vec',
+  'subst',
+  'highlight',
+  'tq',
 ]
 zeros.forEach((k) => {
   templates[k] = 0

@@ -126,4 +126,6 @@ export default {
   '!)': '|}',
   flat: '♭',
   sharp: '♯',
+  lbf: 'lbF',
+  lbm: 'lbm',
 }

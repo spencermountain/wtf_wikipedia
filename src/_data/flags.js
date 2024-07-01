@@ -43,7 +43,7 @@ export default [
   ['🇨🇫', 'caf', 'central african republic'],
   ['🇨🇬', 'cog', 'congo'],
   ['🇨🇭', 'che', 'switzerland'],
-  ['🇨🇮', 'civ', 'côte d\'ivoire'],
+  ['🇨🇮', 'civ', "côte d'ivoire"],
   ['🇨🇰', 'cok', 'cook islands'],
   ['🇨🇱', 'chl', 'chile'],
   ['🇨🇲', 'cmr', 'cameroon'],
@@ -57,7 +57,7 @@ export default [
   ['🇨🇾', 'cyp', 'cyprus'],
   ['🇨🇿', 'cze', 'czech republic'],
   ['🇩🇪', 'deu', 'germany'],
-  ['🇩🇪', 'ger', 'germany'],//alias
+  ['🇩🇪', 'ger', 'germany'], //alias
   ['🇩🇯', 'dji', 'djibouti'],
   ['🇩🇰', 'dnk', 'denmark'],
   ['🇩🇲', 'dma', 'dominica'],
@@ -126,7 +126,7 @@ export default [
   ['🇰🇼', 'kwt', 'kuwait'],
   ['🇰🇾', 'cym', 'cayman islands'],
   ['🇰🇿', 'kaz', 'kazakhstan'],
-  ['🇱🇦', 'lao', 'lao people\'s democratic republic'],
+  ['🇱🇦', 'lao', "lao people's democratic republic"],
   ['🇱🇧', 'lbn', 'lebanon'],
   ['🇱🇨', 'lca', 'saint lucia'],
   ['🇱🇮', 'lie', 'liechtenstein'],
@@ -221,7 +221,7 @@ export default [
   ['🇹🇭', 'tha', 'thailand'],
   ['🇹🇯', 'tjk', 'tajikistan'],
   ['🇹🇰', 'tkl', 'tokelau'],
-  ['🇹🇱', 'tls', 'timor-leste'],
+  // ['🇹🇱', 'tls', 'timor-leste'],
   ['🇹🇲', 'tkm', 'turkmenistan'],
   ['🇹🇳', 'tun', 'tunisia'],
   ['🇹🇴', 'ton', 'tonga'],
@@ -233,7 +233,7 @@ export default [
   ['🇺🇦', 'ukr', 'ukraine'],
   ['🇺🇬', 'uga', 'uganda'],
   ['🇺🇲', 'umi', 'united states minor outlying islands'],
-  ['🇺🇸', 'us', 'united states'],//alias
+  ['🇺🇸', 'us', 'united states'], //alias
   ['🇺🇸', 'usa', 'united states'],
   ['🇺🇾', 'ury', 'uruguay'],
   ['🇺🇿', 'uzb', 'uzbekistan'],

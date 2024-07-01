@@ -1009,4 +1009,23 @@ export default {
     }
     return ''
   },
+  simplenuclide: (tmpl) => {
+    let data = parse(tmpl, ['name', 'mass'])
+    return `[[${data.name}|${data.mass || ''}${data.name}]]`
+  },
+  'colored link': (tmpl) => {
+    let data = parse(tmpl, ['color', 'title', 'text'])
+    return `[[${data.title}|${data.text || data.title}]]`
+  },
+  tls: (tmpl) => {
+    let data = parse(tmpl, ['name', 'one', 'two'])
+    let out = `subst:${data.name}`
+    if (data.one) {
+      out += '|' + data.one
+    }
+    if (data.two) {
+      out += '|' + data.two
+    }
+    return `{{${out}}}`
+  },
 }
