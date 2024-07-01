@@ -1,5 +1,6 @@
 import makeHeaders from './_headers.js'
 import { normalize, defaults, toUrlParams } from './_fns.js'
+const isCategory = /^(category|catégorie|kategorie|categoría|categoria|categorie|kategoria)/i
 
 const params = {
   action: 'query',
@@ -33,7 +34,7 @@ const makeUrl = function (title, options, append) {
     url = `https://${options.domain}/${options.path}?`
   }
   url += toUrlParams(params)
-  if (/^Category/i.test(title) === false) {
+  if (isCategory.test(title) === false) {
     title = 'Category:' + title
   }
   url += `&cmtitle=${normalize(title)}`

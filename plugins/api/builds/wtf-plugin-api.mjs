@@ -1,4 +1,4 @@
-/* wtf-plugin-api 2.0.0  MIT */
+/* wtf-plugin-api 2.0.1  MIT */
 /**
  * factory for header options
  *
@@ -223,6 +223,8 @@ const getTransclusions = async function (template, _options, http) {
   return list
 };
 
+const isCategory = /^(category|catégorie|kategorie|categoría|categoria|categorie|kategoria)/i;
+
 const params$2 = {
   action: 'query',
   list: 'categorymembers',
@@ -255,7 +257,7 @@ const makeUrl$1 = function (title, options, append) {
     url = `https://${options.domain}/${options.path}?`;
   }
   url += toUrlParams(params$2);
-  if (/^Category/i.test(title) === false) {
+  if (isCategory.test(title) === false) {
     title = 'Category:' + title;
   }
   url += `&cmtitle=${normalize(title)}`;

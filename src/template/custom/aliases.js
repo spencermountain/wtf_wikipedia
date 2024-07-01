@@ -34,6 +34,12 @@ let aliases = {
   'born-in': 'born in',
   'c.': 'circa',
   'r.': 'reign',
+  frac: 'fraction',
+  rdelim: 'ldelim',
+  abs: 'pipe',
+  'pp.': 'p.',
+  'iss.': 'vol.',
+  h2d: 'hex2dec',
 }
 
 //multiple aliases
@@ -42,6 +48,7 @@ let multi = {
   citation: ['cite', 'source', 'source-pr', 'source-science'],
 
   'no spam': ['email', '@', 'no spam blue'],
+  'angle bracket': ['angbr', 'infix', 'angbr ipa'],
 
   'lrt station': ['lrt', 'lrts'],
   'mrt station': ['mrt', 'mrts'],
@@ -325,6 +332,12 @@ let multi = {
     'unreferenced inline',
     'unsourced-inline',
   ],
+
+  'en dash': ['ndash', 'nsndns'],
+  'spaced en dash': ['spnd', 'sndash', 'spndash'],
+  'spaced en dash space': ['snds', 'spndsp', 'sndashs', 'spndashsp'],
+  'zero width joiner em dash zero width non joiner': ['nsmdns', 'nsmdashns', 'nsemdashns', 'mdashb'],
+  color: ['colour', 'colored text', 'fgcolor'],
 }
 
 // - other languages -

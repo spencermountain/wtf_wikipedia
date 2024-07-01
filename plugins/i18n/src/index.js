@@ -40,6 +40,7 @@ let mapping = {
   'cite web': citeWeb,
   'commons cat': commonsCat,
   'start date': startDate,
+  nihongo: ['japonês', 'japonais', 'нихонго']
 }
 
 const plugin = function (_models, templates) {

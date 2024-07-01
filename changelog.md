@@ -3,6 +3,13 @@
 
 -->
 
+#### 10.3.2 [Jul 2024]
+
+- **[new]** - support many new inline templates
+- **[new]** - support recursive i18n category queries
+- **[update]** - dependencies
+- **[update]** - i18n and api plugins
+
 #### 10.3.1 [May 2024]
 
 - **[fix]** - unicode glitch token #573

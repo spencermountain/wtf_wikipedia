@@ -10,8 +10,6 @@ const list = [
   'pp-move-indef',
   'pp-semi-indef',
   'pp-vandalism',
-  //https://en.wikipedia.org/wiki/Template:R
-  'r',
   //out-of-scope still - https://en.wikipedia.org/wiki/Template:Tag
   '#tag',
   //https://en.wikipedia.org/wiki/Template:Navboxes
@@ -20,19 +18,6 @@ const list = [
   // 'ref-list',
   'div col',
   // 'authority control',
-  //https://en.wikipedia.org/wiki/Template:Citation_needed
-  // 'better source',
-  // 'citation needed',
-  // 'clarify',
-  // 'cite quote',
-  // 'dead link',
-  // 'by whom',
-  // 'dubious',
-  // 'when',
-  // 'who',
-  // 'quantify',
-  // 'refimprove',
-  // 'weasel inline',
   //https://en.wikipedia.org/wiki/Template:End
   'pope list end',
   'shipwreck list end',

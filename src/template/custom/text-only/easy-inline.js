@@ -10,6 +10,8 @@ let templates = {
   l: 2,
   h: 1, //https://en.wikipedia.org/wiki/'Hover_title',
   sort: 1, //https://en.wikipedia.org/wiki/'Sort',
+  color: 1,
+  'background color': 1,
 }
 
 //templates that we simply grab their insides as plaintext
@@ -65,7 +67,6 @@ let zeros = [
   'code',
   'char',
   'angle bracket',
-  'angbr',
   'symb',
   'dabsearch',
   'key press', //needs work - https://en.m.wikipedia.org/wiki/'Key_press',
@@ -105,6 +106,19 @@ let zeros = [
   'nobel abbr',
   'gloss',
   'gcl',
+  'overline',
+  'underline',
+  'overarc',
+  'normal',
+  'norm',
+  'tmath',
+  'vec',
+  'subst',
+  'highlight',
+  'tq',
+  'subst:nft',
+  'subst:nwft',
+  'subst:nfa',
 ]
 zeros.forEach((k) => {
   templates[k] = 0

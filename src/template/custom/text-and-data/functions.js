@@ -376,5 +376,25 @@ let templates = {
     list.push(obj)
     return `GEOnet3 can be found at [[GEOnet Names Server]], at [http://geonames.nga.mil/namesgaz/ this link]`
   },
+  'poem quote': (tmpl, list) => {
+    let obj = parse(tmpl, ['text', 'char', 'sign', 'source', 'title'])
+    list.push(obj)
+    let out = obj.text || ''
+    if (obj.char || obj.sign || obj.source || obj.title) {
+      out += '\n\n —'
+      out += obj.char ? ' ' + obj.char : ''
+      out += obj.sign ? ' ' + obj.sign : ''
+      out += obj.source ? ' ' + obj.source : ''
+      out += obj.title ? ' ' + obj.title : ''
+    }
+    return out
+  },
+  tweet: (tmpl, list) => {
+    let obj = parse(tmpl)
+    list.push(obj)
+    let out = obj.text || ''
+    out += obj.date ? ' ' + obj.date : ''
+    return out
+  },
 }
 export default templates

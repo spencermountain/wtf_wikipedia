@@ -20,11 +20,8 @@
     <a href="https://npmjs.org/package/wtf_wikipedia">
     <img src="https://img.shields.io/npm/v/wtf_wikipedia.svg?style=flat-square" />
   </a>
-  <a href="https://codecov.io/gh/spencermountain/wtf_wikipedia">
-    <img src="https://codecov.io/gh/spencermountain/wtf_wikipedia/branch/master/graph/badge.svg" />
-  </a>
   <a href="https://bundlephobia.com/result?p=wtf_wikipedia">
-    <img src="https://badge-size.herokuapp.com/spencermountain/wtf_wikipedia/master/builds/wtf_wikipedia-client.min.js" />
+    <img src="https://img.shields.io/bundlephobia/min/wtf_wikipedia" />
   </a>
   </div>
 </div>

@@ -74,13 +74,24 @@ let arr = [
   'usns',
   'usrc',
   'uss',
-  'usav'
+  'usav',
 ]
 
-arr.forEach(word => {
+arr.forEach((word) => {
   templates[word] = (tmpl) => {
     let { name, id } = parse(tmpl, ['name', 'id'])
     return id ? `[[${word.toUpperCase()} ${name} (${id})]]` : `[[${word.toUpperCase()} ${name}]]`
+  }
+})
+
+let links = ['no redirect', 'tl-r', 'template link no redirect', 'redirect?', 'subatomic particle', 'auto link', 'bl']
+links.forEach((word) => {
+  templates[word] = (tmpl) => {
+    let data = parse(tmpl, ['page', 'text'])
+    if (data.text && data.text !== data.page) {
+      return `[[${data.page}|${data.text}]]`
+    }
+    return `[[${data.page}]]`
   }
 })
 export default templates

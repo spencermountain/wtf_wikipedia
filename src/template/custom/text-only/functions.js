@@ -299,7 +299,7 @@ export default {
   },
 
   //https://en.wikipedia.org/wiki/Template:Frac
-  frac: (tmpl) => {
+  fraction: (tmpl) => {
     let obj = parse(tmpl, ['a', 'b', 'c'])
     if (obj.c) {
       return `${obj.a} ${obj.b}/${obj.c}`
@@ -408,11 +408,13 @@ export default {
   //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
   percentage: (tmpl) => {
     let obj = parse(tmpl, ['numerator', 'denominator', 'decimals'])
-    let num = percentage(obj)
+    let num = Number(obj.numerator) / Number(obj.denominator)
+    num *= 100
     if (num === null) {
       return ''
     }
-    return num + '%'
+    let dec = Number(obj.decimals) || 0
+    return `${num.toFixed(dec)}%`
   },
   // this one is re-used by i18n
   small: (tmpl) => {
@@ -740,5 +742,301 @@ export default {
     let arr = parse(tmpl).list || []
     arr = arr.map((str) => `'${str}'`)
     return 'lit. ' + arr.join(' or ')
+  },
+  overset: (tmpl) => {
+    let data = parse(tmpl, ['over', 'base'])
+    return [data.over || '', data.base || ''].join(' ')
+  },
+  underset: (tmpl) => {
+    let data = parse(tmpl, ['under', 'base'])
+    return [data.base || '', data.under || ''].join(' ')
+  },
+  ceil: (tmpl) => {
+    let data = parse(tmpl, ['txt'])
+    return `⌈${data.txt}⌉`
+  },
+  floor: (tmpl) => {
+    let data = parse(tmpl, ['txt'])
+    return `⌊${data.txt}⌋`
+  },
+  'vol.': (tmpl) => {
+    let data = parse(tmpl, ['n'])
+    return `vol. ${data.n}`
+  },
+  rp: (tmpl) => {
+    let data = parse(tmpl, ['page'])
+    if (data.pages) {
+      return `pp${data.pages}`
+    }
+    return `p. ${data.page || ''}`
+  },
+  gaps: (tmpl) => {
+    let data = parse(tmpl)
+    return data.list.join('  ')
+  },
+  bra: (tmpl) => {
+    let data = parse(tmpl, ['a'])
+    return `⟨${data.a || ''}|`
+  },
+  ket: (tmpl) => {
+    let data = parse(tmpl, ['a'])
+    return `${data.a || ''}⟩`
+  },
+  'angle bracket': (tmpl) => {
+    let data = parse(tmpl, ['txt'])
+    return `⟨${data.txt || ''}⟩`
+  },
+  'bra-ket': (tmpl) => {
+    let data = parse(tmpl, ['a', 'b'])
+    return `⟨${data.a || ''}|${data.b || ''}⟩`
+  },
+  braket: (tmpl) => {
+    let data = parse(tmpl, ['sym', 'a', 'b'])
+    if (data.sym === 'bra') {
+      return `⟨${data.a}|`
+    } else if (data.sym === 'ket') {
+      return `⟨|${data.a || ''}⟩`
+    } else {
+      return `⟨${data.a || ''}|${data.b || ''}⟩`
+    }
+  },
+  pars: (tmpl) => {
+    let data = parse(tmpl, ['text', 's'])
+    return `(${data.text || ''})`
+  },
+  circumfix: (tmpl) => {
+    let data = parse(tmpl, ['text'])
+    return `⟩${data.text || ''}⟨`
+  },
+  fluc: (tmpl) => {
+    let data = parse(tmpl, ['val', 'type'])
+    let n = Number(data.val)
+    if (data['custom label']) {
+      return data['custom label']
+    }
+    if (n > 0) {
+      return ` +${n}` //▲
+    } else if (n < 0) {
+      return ` ${n}` //▼
+    } else if (n === 0) {
+      return ` no change `
+    }
+    return data.val || ''
+  },
+
+  'p.': (tmpl) => {
+    let data = parse(tmpl, ['a', 'b'])
+    if (data.b) {
+      if (parseInt(data.b, 10)) {
+        return `pp. ${data.a}–${data.b}` //page-range
+      } else {
+        return `pp. ${data.a}${data.b}`
+      }
+    }
+    return `p. ${data.a || ''}`
+  },
+  subsup: (tmpl) => {
+    let data = parse(tmpl, ['symbol', 'subscript', 'superscript'])
+    return `${data.symbol || ''} ${data.subscript || ''} ${data.superscript || ''}`
+  },
+  su: (tmpl) => {
+    let data = parse(tmpl, ['p', 'b'])
+    return `${data.p || ''} ${data.b || ''}`
+  },
+  precision: (tmpl) => {
+    let data = parse(tmpl, ['num'])
+    let num = data.num || ''
+    if (!num.match(/\./) && num.match(/0*$/) && num !== '0') {
+      return num.match(/0*$/)[0].length * -1
+    }
+    let dec = num.split(/\./)[1] || ''
+    return dec.length
+  },
+  intmath: (tmpl) => {
+    let data = parse(tmpl, ['sign', 'subscript', 'superscript'])
+    const signs = {
+      int: '∫',
+      iint: '∬',
+      iiint: '∭',
+      oint: '∮',
+      varointclockwise: '∲',
+      ointctrclockwise: '∳',
+      oiint: '∯',
+      oiiint: '∰',
+    }
+    return `${signs[data.sign] || ''} ${data.superscript || ''} ${data.subscript || ''} `
+  },
+  ldelim: (tmpl) => {
+    let data = parse(tmpl, ['a', 'b', 'sub', 'sup'])
+    let after = `${data.sub || ''}${data.sup || ''}`
+    if (data.a === 'square') {
+      return `[${data.b || ''}]${after}`
+    } else if (data.a === 'round') {
+      return `(${data.b || ''})${after}`
+    } else if (data.a === 'vert') {
+      return `|${data.b || ''}|${after}`
+    } else if (data.a === 'doublevert') {
+      return `||${data.b || ''}||${after}`
+    }
+    return `${data.b || ''} ${after}`
+  },
+  multiply: (tmpl) => {
+    let data = parse(tmpl, ['a', 'b'])
+    return Number(data.a) * Number(data.b)
+  },
+  sum: (tmpl) => {
+    let data = parse(tmpl, ['a', 'b'])
+    return Number(data.a) + Number(data.b)
+  },
+  round: (tmpl) => {
+    let data = parse(tmpl, ['val', 'decimals'])
+    let n = Number(data.val)
+    //todo: handle decimal place
+    return Math.round(n) || ''
+  },
+  rounddown: (tmpl) => {
+    let data = parse(tmpl, ['val', 'decimals'])
+    let n = Number(data.val)
+    //todo: handle decimal place
+    return Math.floor(n) || ''
+  },
+  roundup: (tmpl) => {
+    let data = parse(tmpl, ['val', 'decimals'])
+    let n = Number(data.val)
+    //todo: handle decimal place
+    return Math.ceil(n) || ''
+  },
+  parity: (tmpl) => {
+    let data = parse(tmpl, ['val', 'even', 'odd'])
+    if (Number(data.val) % 2 === 0) {
+      return data.even || 'even'
+    }
+    return data.odd || 'odd'
+  },
+  hexadecimal: (tmpl) => {
+    let data = parse(tmpl, ['val'])
+    let n = Number(data.val)
+    if (!n) {
+      return data.val
+    }
+    return n.toString(16).toUpperCase()
+  },
+  octal: (tmpl) => {
+    let data = parse(tmpl, ['val'])
+    let n = Number(data.val)
+    if (!n) {
+      return data.val
+    }
+    return n.toString(8).toUpperCase() + '₈'
+  },
+  decimal2base: (tmpl) => {
+    let data = parse(tmpl, ['n', 'radix'])
+    let n = Number(data.n)
+    let radix = Number(data.radix)
+    if (!n || !radix) {
+      return data.n
+    }
+    return n.toString(radix).toUpperCase()
+  },
+  hex2dec: (tmpl) => {
+    let data = parse(tmpl, ['val'])
+    return parseInt(data.val, 16) || data.val
+  },
+  ifnotempty: (tmpl) => {
+    let data = parse(tmpl, ['cond', 'a', 'b'])
+    if (data.cond) {
+      return data.a
+    }
+    return data.b
+  },
+  both: (tmpl) => {
+    let data = parse(tmpl, ['a', 'b'])
+    if (data.a && data.b) {
+      return '1'
+    }
+    return ''
+  },
+  ifnumber: (tmpl) => {
+    let data = parse(tmpl, ['n', 'yes', 'no'])
+    if (!isNaN(Number(data.n))) {
+      return data.yes || '1'
+    }
+    return data.no || ''
+  },
+  'order of magnitude': (tmpl) => {
+    let data = parse(tmpl, ['val'])
+    let num = parseInt(data.val, 10)
+    //todo: support decimal forms
+    if (num || num === 0) {
+      return String(num).length - 1
+    }
+    return '0'
+  },
+  'percent and number': (tmpl) => {
+    let data = parse(tmpl, ['number', 'total', 'decimals'])
+    let n = Number(data.number) / Number(data.total)
+    n *= 100
+    let dec = Number(data.decimals) || 0
+    return `${n.toFixed(dec)}% (${Number(data.number).toLocaleString()})`
+  },
+  music: (tmpl) => {
+    let data = parse(tmpl, ['glyph'])
+    // these have unicode working character subs
+    let glyphs = {
+      flat: '♭',
+      b: '♭',
+      sharp: '♯',
+      '#': '♯',
+      natural: '♮',
+      n: '♮',
+      doubleflat: '𝄫',
+      bb: '𝄫',
+      '##': '𝄪',
+      doublesharp: '𝄪',
+      quarternote: '♩',
+      quarter: '♩',
+      treble: '𝄞',
+      trebleclef: '𝄞',
+      bass: '𝄢',
+      bassclef: '𝄢',
+      altoclef: '𝄡',
+      alto: '𝄡',
+      tenor: '𝄡',
+      tenorclef: '𝄡',
+    }
+    if (glyphs.hasOwnProperty(data.glyph)) {
+      return glyphs[data.glyph]
+    }
+    return ''
+  },
+  simplenuclide: (tmpl) => {
+    let data = parse(tmpl, ['name', 'mass'])
+    return `[[${data.name}|${data.mass || ''}${data.name}]]`
+  },
+  'font color': (tmpl) => {
+    let data = parse(tmpl, ['fg', 'bg', 'text'])
+    if (data.bg && data.text) {
+      return data.text
+    }
+    return data.bg
+  },
+  'colored link': (tmpl) => {
+    let data = parse(tmpl, ['color', 'title', 'text'])
+    return `[[${data.title}|${data.text || data.title}]]`
+  },
+  nftu: (tmpl) => {
+    let data = parse(tmpl, ['age', 'team'])
+    return `${data.team} U${data.age}`
+  },
+  tls: (tmpl) => {
+    let data = parse(tmpl, ['name', 'one', 'two'])
+    let out = `subst:${data.name}`
+    if (data.one) {
+      out += '|' + data.one
+    }
+    if (data.two) {
+      out += '|' + data.two
+    }
+    return `{{${out}}}`
   },
 }
