@@ -1,4 +1,4 @@
-/* wtf-plugin-api 2.0.0  MIT */
+/* wtf-plugin-api 2.0.1  MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -229,6 +229,8 @@
     return list
   };
 
+  const isCategory = /^(category|catégorie|kategorie|categoría|categoria|categorie|kategoria)/i;
+
   const params$2 = {
     action: 'query',
     list: 'categorymembers',
@@ -261,7 +263,7 @@
       url = `https://${options.domain}/${options.path}?`;
     }
     url += toUrlParams(params$2);
-    if (/^Category/i.test(title) === false) {
+    if (isCategory.test(title) === false) {
       title = 'Category:' + title;
     }
     url += `&cmtitle=${normalize(title)}`;
