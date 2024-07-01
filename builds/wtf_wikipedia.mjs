@@ -2290,7 +2290,7 @@ const kill_xml = function (wiki) {
  */
 function preProcess(wiki) {
   //remove comments
-  wiki = wiki.replace(/<!--[\s\S]{0,2000}?-->/g, '');
+  wiki = wiki.replace(/<!--[\s\S]{0,3000}?-->/g, '');
   wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, '');
   //signitures
   wiki = wiki.replace(/~{2,3}/g, '');
@@ -2908,6 +2908,7 @@ var literalAbbreviations = [
   'sr',
   'ss',
   'st',
+  'ste',
   'supt',
   'surg',
   'tb',
@@ -4287,8 +4288,6 @@ const list = [
   'pp-move-indef',
   'pp-semi-indef',
   'pp-vandalism',
-  //https://en.wikipedia.org/wiki/Template:R
-  'r',
   //out-of-scope still - https://en.wikipedia.org/wiki/Template:Tag
   '#tag',
   //https://en.wikipedia.org/wiki/Template:Navboxes
@@ -4297,19 +4296,6 @@ const list = [
   // 'ref-list',
   'div col',
   // 'authority control',
-  //https://en.wikipedia.org/wiki/Template:Citation_needed
-  // 'better source',
-  // 'citation needed',
-  // 'clarify',
-  // 'cite quote',
-  // 'dead link',
-  // 'by whom',
-  // 'dubious',
-  // 'when',
-  // 'who',
-  // 'quantify',
-  // 'refimprove',
-  // 'weasel inline',
   //https://en.wikipedia.org/wiki/Template:End
   'pope list end',
   'shipwreck list end',
@@ -4444,6 +4430,12 @@ let aliases = {
   'born-in': 'born in',
   'c.': 'circa',
   'r.': 'reign',
+  frac: 'fraction',
+  rdelim: 'ldelim',
+  abs: 'pipe',
+  'pp.': 'p.',
+  'iss.': 'vol.',
+  h2d: 'hex2dec',
 };
 
 //multiple aliases
@@ -4452,6 +4444,7 @@ let multi = {
   citation: ['cite', 'source', 'source-pr', 'source-science'],
 
   'no spam': ['email', '@', 'no spam blue'],
+  'angle bracket': ['angbr', 'infix', 'angbr ipa'],
 
   'lrt station': ['lrt', 'lrts'],
   'mrt station': ['mrt', 'mrts'],
@@ -4735,6 +4728,12 @@ let multi = {
     'unreferenced inline',
     'unsourced-inline',
   ],
+
+  'en dash': ['ndash', 'nsndns'],
+  'spaced en dash': ['spnd', 'sndash', 'spndash'],
+  'spaced en dash space': ['snds', 'spndsp', 'sndashs', 'spndashsp'],
+  'zero width joiner em dash zero width non joiner': ['nsmdns', 'nsmdashns', 'nsemdashns', 'mdashb'],
+  color: ['colour', 'colored text', 'fgcolor'],
 };
 
 // - other languages -
@@ -4795,8 +4794,8 @@ var hardcoded = {
   clear: '\n\n',
   'h.': 'ḥ',
   profit: '▲',
-  loss: '▼',
-  gain: '▲',
+  // loss: '▼',
+  // gain: '▲',
   ell: 'ℓ',
   '1~': '~',
   '2~': '~~',
@@ -4817,6 +4816,71 @@ var hardcoded = {
 
   // 'hbeff début': '{|-\n',
   egiptekas: '{|-\n',
+  langle: '⟨',
+  rangle: '⟩',
+  epsilon: 'ε',
+  xi: '𝜉',
+  Φ: 'Φ',
+  phi: '𝜙',
+  varphi: '𝜑',
+  upsilon: '𝜐',
+  tau: '𝜏',
+  varsigma: '𝜍',
+  sigma: '𝜎',
+  pi: 'π',
+  mu: '𝜇',
+  lambda: '𝜆',
+  kappa: '𝜘',
+  vartheta: '𝜗',
+  theta: '𝜃',
+  varepsilon: '𝜀',
+  gamma: '𝛾',
+  shy: '-',
+  mdashb: '—‌',
+  'spaced en dash': ' –',
+  'spaced en dash space': ' – ',
+  'zero width joiner em dash zero width non joiner': '—‌',
+  colon: ':',
+  pipe: '|',
+  '-?': '?',
+  zwsp: ' ',
+  sp: ' ',
+  px2: ' ',
+  indent: '    ',
+  nb5: '    ',
+  ns: '    ',
+  quad: '    ',
+  spaces: '    ',
+  in5: '     ',
+  tombstone: '◻',
+  // increase: '▲',
+  // decrease: '▼',
+  'no.': '#',
+  'thin space': ' ',
+  thinspace: ' ',
+  'very thin space': ' ',
+  'word joiner': ' ',
+  'figure space': ' ',
+  'zero width joiner': ' ',
+  'hair space': ' ',
+  'narrow no-break space': ' ',
+  'non breaking hyphen': '-',
+  '!((': '[[',
+  '))!': ']]',
+  '(': '{',
+  '((': '{{',
+  '(((': '{{{',
+  ')': '}',
+  '))': '}}',
+  ')))': '}}}',
+  '(!': '{|',
+  '!+': '|+',
+  '!-': '|-',
+  '!)': '|}',
+  flat: '♭',
+  sharp: '♯',
+  lbf: 'lbF',
+  lbm: 'lbm',
 };
 
 //grab the first, second or third pipe..
@@ -4831,6 +4895,8 @@ let templates$c = {
   l: 2,
   h: 1, //https://en.wikipedia.org/wiki/'Hover_title',
   sort: 1, //https://en.wikipedia.org/wiki/'Sort',
+  color: 1,
+  'background color': 1,
 };
 
 //templates that we simply grab their insides as plaintext
@@ -4886,7 +4952,6 @@ let zeros = [
   'code',
   'char',
   'angle bracket',
-  'angbr',
   'symb',
   'dabsearch',
   'key press', //needs work - https://en.m.wikipedia.org/wiki/'Key_press',
@@ -4926,6 +4991,19 @@ let zeros = [
   'nobel abbr',
   'gloss',
   'gcl',
+  'overline',
+  'underline',
+  'overarc',
+  'normal',
+  'norm',
+  'tmath',
+  'vec',
+  'subst',
+  'highlight',
+  'tq',
+  'subst:nft',
+  'subst:nwft',
+  'subst:nfa',
 ];
 zeros.forEach((k) => {
   templates$c[k] = 0;
@@ -5006,13 +5084,24 @@ let arr = [
   'usns',
   'usrc',
   'uss',
-  'usav'
+  'usav',
 ];
 
-arr.forEach(word => {
+arr.forEach((word) => {
   templates$b[word] = (tmpl) => {
     let { name, id } = parser(tmpl, ['name', 'id']);
     return id ? `[[${word.toUpperCase()} ${name} (${id})]]` : `[[${word.toUpperCase()} ${name}]]`
+  };
+});
+
+let links = ['no redirect', 'tl-r', 'template link no redirect', 'redirect?', 'subatomic particle', 'auto link', 'bl'];
+links.forEach((word) => {
+  templates$b[word] = (tmpl) => {
+    let data = parser(tmpl, ['page', 'text']);
+    if (data.text && data.text !== data.page) {
+      return `[[${data.page}|${data.text}]]`
+    }
+    return `[[${data.page}]]`
   };
 });
 
@@ -5387,7 +5476,7 @@ var functions = {
   },
 
   //https://en.wikipedia.org/wiki/Template:Frac
-  frac: (tmpl) => {
+  fraction: (tmpl) => {
     let obj = parser(tmpl, ['a', 'b', 'c']);
     if (obj.c) {
       return `${obj.a} ${obj.b}/${obj.c}`
@@ -5496,11 +5585,13 @@ var functions = {
   //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
   percentage: (tmpl) => {
     let obj = parser(tmpl, ['numerator', 'denominator', 'decimals']);
-    let num = percentage(obj);
+    let num = Number(obj.numerator) / Number(obj.denominator);
+    num *= 100;
     if (num === null) {
       return ''
     }
-    return num + '%'
+    let dec = Number(obj.decimals) || 0;
+    return `${num.toFixed(dec)}%`
   },
   // this one is re-used by i18n
   small: (tmpl) => {
@@ -5828,6 +5919,302 @@ var functions = {
     let arr = parser(tmpl).list || [];
     arr = arr.map((str) => `'${str}'`);
     return 'lit. ' + arr.join(' or ')
+  },
+  overset: (tmpl) => {
+    let data = parser(tmpl, ['over', 'base']);
+    return [data.over || '', data.base || ''].join(' ')
+  },
+  underset: (tmpl) => {
+    let data = parser(tmpl, ['under', 'base']);
+    return [data.base || '', data.under || ''].join(' ')
+  },
+  ceil: (tmpl) => {
+    let data = parser(tmpl, ['txt']);
+    return `⌈${data.txt}⌉`
+  },
+  floor: (tmpl) => {
+    let data = parser(tmpl, ['txt']);
+    return `⌊${data.txt}⌋`
+  },
+  'vol.': (tmpl) => {
+    let data = parser(tmpl, ['n']);
+    return `vol. ${data.n}`
+  },
+  rp: (tmpl) => {
+    let data = parser(tmpl, ['page']);
+    if (data.pages) {
+      return `pp${data.pages}`
+    }
+    return `p. ${data.page || ''}`
+  },
+  gaps: (tmpl) => {
+    let data = parser(tmpl);
+    return data.list.join('  ')
+  },
+  bra: (tmpl) => {
+    let data = parser(tmpl, ['a']);
+    return `⟨${data.a || ''}|`
+  },
+  ket: (tmpl) => {
+    let data = parser(tmpl, ['a']);
+    return `${data.a || ''}⟩`
+  },
+  'angle bracket': (tmpl) => {
+    let data = parser(tmpl, ['txt']);
+    return `⟨${data.txt || ''}⟩`
+  },
+  'bra-ket': (tmpl) => {
+    let data = parser(tmpl, ['a', 'b']);
+    return `⟨${data.a || ''}|${data.b || ''}⟩`
+  },
+  braket: (tmpl) => {
+    let data = parser(tmpl, ['sym', 'a', 'b']);
+    if (data.sym === 'bra') {
+      return `⟨${data.a}|`
+    } else if (data.sym === 'ket') {
+      return `⟨|${data.a || ''}⟩`
+    } else {
+      return `⟨${data.a || ''}|${data.b || ''}⟩`
+    }
+  },
+  pars: (tmpl) => {
+    let data = parser(tmpl, ['text', 's']);
+    return `(${data.text || ''})`
+  },
+  circumfix: (tmpl) => {
+    let data = parser(tmpl, ['text']);
+    return `⟩${data.text || ''}⟨`
+  },
+  fluc: (tmpl) => {
+    let data = parser(tmpl, ['val', 'type']);
+    let n = Number(data.val);
+    if (data['custom label']) {
+      return data['custom label']
+    }
+    if (n > 0) {
+      return ` +${n}` //▲
+    } else if (n < 0) {
+      return ` ${n}` //▼
+    } else if (n === 0) {
+      return ` no change `
+    }
+    return data.val || ''
+  },
+
+  'p.': (tmpl) => {
+    let data = parser(tmpl, ['a', 'b']);
+    if (data.b) {
+      if (parseInt(data.b, 10)) {
+        return `pp. ${data.a}–${data.b}` //page-range
+      } else {
+        return `pp. ${data.a}${data.b}`
+      }
+    }
+    return `p. ${data.a || ''}`
+  },
+  subsup: (tmpl) => {
+    let data = parser(tmpl, ['symbol', 'subscript', 'superscript']);
+    return `${data.symbol || ''} ${data.subscript || ''} ${data.superscript || ''}`
+  },
+  su: (tmpl) => {
+    let data = parser(tmpl, ['p', 'b']);
+    return `${data.p || ''} ${data.b || ''}`
+  },
+  precision: (tmpl) => {
+    let data = parser(tmpl, ['num']);
+    let num = data.num || '';
+    if (!num.match(/\./) && num.match(/0*$/) && num !== '0') {
+      return num.match(/0*$/)[0].length * -1
+    }
+    let dec = num.split(/\./)[1] || '';
+    return dec.length
+  },
+  intmath: (tmpl) => {
+    let data = parser(tmpl, ['sign', 'subscript', 'superscript']);
+    const signs = {
+      int: '∫',
+      iint: '∬',
+      iiint: '∭',
+      oint: '∮',
+      varointclockwise: '∲',
+      ointctrclockwise: '∳',
+      oiint: '∯',
+      oiiint: '∰',
+    };
+    return `${signs[data.sign] || ''} ${data.superscript || ''} ${data.subscript || ''} `
+  },
+  ldelim: (tmpl) => {
+    let data = parser(tmpl, ['a', 'b', 'sub', 'sup']);
+    let after = `${data.sub || ''}${data.sup || ''}`;
+    if (data.a === 'square') {
+      return `[${data.b || ''}]${after}`
+    } else if (data.a === 'round') {
+      return `(${data.b || ''})${after}`
+    } else if (data.a === 'vert') {
+      return `|${data.b || ''}|${after}`
+    } else if (data.a === 'doublevert') {
+      return `||${data.b || ''}||${after}`
+    }
+    return `${data.b || ''} ${after}`
+  },
+  multiply: (tmpl) => {
+    let data = parser(tmpl, ['a', 'b']);
+    return Number(data.a) * Number(data.b)
+  },
+  sum: (tmpl) => {
+    let data = parser(tmpl, ['a', 'b']);
+    return Number(data.a) + Number(data.b)
+  },
+  round: (tmpl) => {
+    let data = parser(tmpl, ['val', 'decimals']);
+    let n = Number(data.val);
+    //todo: handle decimal place
+    return Math.round(n) || ''
+  },
+  rounddown: (tmpl) => {
+    let data = parser(tmpl, ['val', 'decimals']);
+    let n = Number(data.val);
+    //todo: handle decimal place
+    return Math.floor(n) || ''
+  },
+  roundup: (tmpl) => {
+    let data = parser(tmpl, ['val', 'decimals']);
+    let n = Number(data.val);
+    //todo: handle decimal place
+    return Math.ceil(n) || ''
+  },
+  parity: (tmpl) => {
+    let data = parser(tmpl, ['val', 'even', 'odd']);
+    if (Number(data.val) % 2 === 0) {
+      return data.even || 'even'
+    }
+    return data.odd || 'odd'
+  },
+  hexadecimal: (tmpl) => {
+    let data = parser(tmpl, ['val']);
+    let n = Number(data.val);
+    if (!n) {
+      return data.val
+    }
+    return n.toString(16).toUpperCase()
+  },
+  octal: (tmpl) => {
+    let data = parser(tmpl, ['val']);
+    let n = Number(data.val);
+    if (!n) {
+      return data.val
+    }
+    return n.toString(8).toUpperCase() + '₈'
+  },
+  decimal2base: (tmpl) => {
+    let data = parser(tmpl, ['n', 'radix']);
+    let n = Number(data.n);
+    let radix = Number(data.radix);
+    if (!n || !radix) {
+      return data.n
+    }
+    return n.toString(radix).toUpperCase()
+  },
+  hex2dec: (tmpl) => {
+    let data = parser(tmpl, ['val']);
+    return parseInt(data.val, 16) || data.val
+  },
+  ifnotempty: (tmpl) => {
+    let data = parser(tmpl, ['cond', 'a', 'b']);
+    if (data.cond) {
+      return data.a
+    }
+    return data.b
+  },
+  both: (tmpl) => {
+    let data = parser(tmpl, ['a', 'b']);
+    if (data.a && data.b) {
+      return '1'
+    }
+    return ''
+  },
+  ifnumber: (tmpl) => {
+    let data = parser(tmpl, ['n', 'yes', 'no']);
+    if (!isNaN(Number(data.n))) {
+      return data.yes || '1'
+    }
+    return data.no || ''
+  },
+  'order of magnitude': (tmpl) => {
+    let data = parser(tmpl, ['val']);
+    let num = parseInt(data.val, 10);
+    //todo: support decimal forms
+    if (num || num === 0) {
+      return String(num).length - 1
+    }
+    return '0'
+  },
+  'percent and number': (tmpl) => {
+    let data = parser(tmpl, ['number', 'total', 'decimals']);
+    let n = Number(data.number) / Number(data.total);
+    n *= 100;
+    let dec = Number(data.decimals) || 0;
+    return `${n.toFixed(dec)}% (${Number(data.number).toLocaleString()})`
+  },
+  music: (tmpl) => {
+    let data = parser(tmpl, ['glyph']);
+    // these have unicode working character subs
+    let glyphs = {
+      flat: '♭',
+      b: '♭',
+      sharp: '♯',
+      '#': '♯',
+      natural: '♮',
+      n: '♮',
+      doubleflat: '𝄫',
+      bb: '𝄫',
+      '##': '𝄪',
+      doublesharp: '𝄪',
+      quarternote: '♩',
+      quarter: '♩',
+      treble: '𝄞',
+      trebleclef: '𝄞',
+      bass: '𝄢',
+      bassclef: '𝄢',
+      altoclef: '𝄡',
+      alto: '𝄡',
+      tenor: '𝄡',
+      tenorclef: '𝄡',
+    };
+    if (glyphs.hasOwnProperty(data.glyph)) {
+      return glyphs[data.glyph]
+    }
+    return ''
+  },
+  simplenuclide: (tmpl) => {
+    let data = parser(tmpl, ['name', 'mass']);
+    return `[[${data.name}|${data.mass || ''}${data.name}]]`
+  },
+  'font color': (tmpl) => {
+    let data = parser(tmpl, ['fg', 'bg', 'text']);
+    if (data.bg && data.text) {
+      return data.text
+    }
+    return data.bg
+  },
+  'colored link': (tmpl) => {
+    let data = parser(tmpl, ['color', 'title', 'text']);
+    return `[[${data.title}|${data.text || data.title}]]`
+  },
+  nftu: (tmpl) => {
+    let data = parser(tmpl, ['age', 'team']);
+    return `${data.team} U${data.age}`
+  },
+  tls: (tmpl) => {
+    let data = parser(tmpl, ['name', 'one', 'two']);
+    let out = `subst:${data.name}`;
+    if (data.one) {
+      out += '|' + data.one;
+    }
+    if (data.two) {
+      out += '|' + data.two;
+    }
+    return `{{${out}}}`
   },
 };
 
@@ -6396,7 +6783,7 @@ var flags = [
   ['🇨🇫', 'caf', 'central african republic'],
   ['🇨🇬', 'cog', 'congo'],
   ['🇨🇭', 'che', 'switzerland'],
-  ['🇨🇮', 'civ', 'côte d\'ivoire'],
+  ['🇨🇮', 'civ', "côte d'ivoire"],
   ['🇨🇰', 'cok', 'cook islands'],
   ['🇨🇱', 'chl', 'chile'],
   ['🇨🇲', 'cmr', 'cameroon'],
@@ -6410,7 +6797,7 @@ var flags = [
   ['🇨🇾', 'cyp', 'cyprus'],
   ['🇨🇿', 'cze', 'czech republic'],
   ['🇩🇪', 'deu', 'germany'],
-  ['🇩🇪', 'ger', 'germany'],//alias
+  ['🇩🇪', 'ger', 'germany'], //alias
   ['🇩🇯', 'dji', 'djibouti'],
   ['🇩🇰', 'dnk', 'denmark'],
   ['🇩🇲', 'dma', 'dominica'],
@@ -6479,7 +6866,7 @@ var flags = [
   ['🇰🇼', 'kwt', 'kuwait'],
   ['🇰🇾', 'cym', 'cayman islands'],
   ['🇰🇿', 'kaz', 'kazakhstan'],
-  ['🇱🇦', 'lao', 'lao people\'s democratic republic'],
+  ['🇱🇦', 'lao', "lao people's democratic republic"],
   ['🇱🇧', 'lbn', 'lebanon'],
   ['🇱🇨', 'lca', 'saint lucia'],
   ['🇱🇮', 'lie', 'liechtenstein'],
@@ -6574,7 +6961,7 @@ var flags = [
   ['🇹🇭', 'tha', 'thailand'],
   ['🇹🇯', 'tjk', 'tajikistan'],
   ['🇹🇰', 'tkl', 'tokelau'],
-  ['🇹🇱', 'tls', 'timor-leste'],
+  // ['🇹🇱', 'tls', 'timor-leste'],
   ['🇹🇲', 'tkm', 'turkmenistan'],
   ['🇹🇳', 'tun', 'tunisia'],
   ['🇹🇴', 'ton', 'tonga'],
@@ -6586,7 +6973,7 @@ var flags = [
   ['🇺🇦', 'ukr', 'ukraine'],
   ['🇺🇬', 'uga', 'uganda'],
   ['🇺🇲', 'umi', 'united states minor outlying islands'],
-  ['🇺🇸', 'us', 'united states'],//alias
+  ['🇺🇸', 'us', 'united states'], //alias
   ['🇺🇸', 'usa', 'united states'],
   ['🇺🇾', 'ury', 'uruguay'],
   ['🇺🇿', 'uzb', 'uzbekistan'],
@@ -7280,6 +7667,13 @@ var fns = {
     list.push(obj);
     return ''
   },
+
+  r: (tmpl, list) => {
+    let obj = parser(tmpl, ['name']);
+    obj.template = 'citation';
+    list.push(obj);
+    return ''
+  },
 };
 
 let templates$4 = {
@@ -7721,6 +8115,26 @@ let templates$3 = {
     let obj = parser(tmpl, ['ufi', 'name']);
     list.push(obj);
     return `GEOnet3 can be found at [[GEOnet Names Server]], at [http://geonames.nga.mil/namesgaz/ this link]`
+  },
+  'poem quote': (tmpl, list) => {
+    let obj = parser(tmpl, ['text', 'char', 'sign', 'source', 'title']);
+    list.push(obj);
+    let out = obj.text || '';
+    if (obj.char || obj.sign || obj.source || obj.title) {
+      out += '\n\n —';
+      out += obj.char ? ' ' + obj.char : '';
+      out += obj.sign ? ' ' + obj.sign : '';
+      out += obj.source ? ' ' + obj.source : '';
+      out += obj.title ? ' ' + obj.title : '';
+    }
+    return out
+  },
+  tweet: (tmpl, list) => {
+    let obj = parser(tmpl);
+    list.push(obj);
+    let out = obj.text || '';
+    out += obj.date ? ' ' + obj.date : '';
+    return out
   },
 };
 
@@ -10966,7 +11380,7 @@ const fetch = function (title, options, callback) {
     })
 };
 
-var version = '10.3.1';
+var version = '10.3.2';
 
 /**
  * use the native client-side fetch function
