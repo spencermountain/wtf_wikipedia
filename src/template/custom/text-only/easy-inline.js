@@ -116,6 +116,9 @@ let zeros = [
   'subst',
   'highlight',
   'tq',
+  'subst:nft',
+  'subst:nwft',
+  'subst:nfa',
 ]
 zeros.forEach((k) => {
   templates[k] = 0

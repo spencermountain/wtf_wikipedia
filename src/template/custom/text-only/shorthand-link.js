@@ -84,11 +84,14 @@ arr.forEach((word) => {
   }
 })
 
-let links = ['no redirect', 'tl-r', 'template link no redirect', 'redirect?', 'subatomic particle']
+let links = ['no redirect', 'tl-r', 'template link no redirect', 'redirect?', 'subatomic particle', 'auto link', 'bl']
 links.forEach((word) => {
   templates[word] = (tmpl) => {
     let data = parse(tmpl, ['page', 'text'])
-    return `[[${data.page}|${data.text || data.page}]]`
+    if (data.text && data.text !== data.page) {
+      return `[[${data.page}|${data.text}]]`
+    }
+    return `[[${data.page}]]`
   }
 })
 export default templates

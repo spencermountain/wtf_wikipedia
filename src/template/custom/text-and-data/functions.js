@@ -389,5 +389,12 @@ let templates = {
     }
     return out
   },
+  tweet: (tmpl, list) => {
+    let obj = parse(tmpl)
+    list.push(obj)
+    let out = obj.text || ''
+    out += obj.date ? ' ' + obj.date : ''
+    return out
+  },
 }
 export default templates

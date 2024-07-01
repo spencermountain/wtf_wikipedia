@@ -337,7 +337,7 @@ let multi = {
   'spaced en dash': ['spnd', 'sndash', 'spndash'],
   'spaced en dash space': ['snds', 'spndsp', 'sndashs', 'spndashsp'],
   'zero width joiner em dash zero width non joiner': ['nsmdns', 'nsmdashns', 'nsemdashns', 'mdashb'],
-  color: ['colour', 'colored text', 'fgcolor', 'font color'],
+  color: ['colour', 'colored text', 'fgcolor'],
 }
 
 // - other languages -

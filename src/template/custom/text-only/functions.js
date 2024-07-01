@@ -1013,9 +1013,20 @@ export default {
     let data = parse(tmpl, ['name', 'mass'])
     return `[[${data.name}|${data.mass || ''}${data.name}]]`
   },
+  'font color': (tmpl) => {
+    let data = parse(tmpl, ['fg', 'bg', 'text'])
+    if (data.bg && data.text) {
+      return data.text
+    }
+    return data.bg
+  },
   'colored link': (tmpl) => {
     let data = parse(tmpl, ['color', 'title', 'text'])
     return `[[${data.title}|${data.text || data.title}]]`
+  },
+  nftu: (tmpl) => {
+    let data = parse(tmpl, ['age', 'team'])
+    return `${data.team} U${data.age}`
   },
   tls: (tmpl) => {
     let data = parse(tmpl, ['name', 'one', 'two'])
