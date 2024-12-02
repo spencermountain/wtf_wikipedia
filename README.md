@@ -719,7 +719,7 @@ Some wikis, (like wikia) have intentionally disabled this.
 wikitext is (amazingly) used across all languages, wikis, and even in right-to-left languages.
 This parser actually does an okay job at it too.
 
-Wikipedia I18n langauge information for _Redirects, Infoboxes, Categories, and Images_ are included in the library, with pretty-decent coverage.
+Wikipedia I18n language information for _Redirects, Infoboxes, Categories, and Images_ are included in the library, with pretty-decent coverage.
 
 To improve coverage of i18n templates, use [wtf-plugin-i18n](./plugins/i18n)
 
@@ -730,12 +730,12 @@ Please make a PR if you see something missing for your language.
 
 ## Builds:
 
-this library ships seperate client-side and server-side builds, to preserve filesize.
+this library ships separate client-side and server-side builds, to preserve filesize.
 
 - _[./wtf_wikipedia-client.mjs](./builds/wtf_wikipedia-client.mjs)_ - as es-module (or Deno)
 - _[./wtf_wikipedia-client.min.js](./builds/wtf_wikipedia-client.min.js)_ - for production
 
-- _[./wtf_wikipedia.cjs](./builds/wtf_wikipedia.js)_ - node commonjs build
+- _[./wtf_wikipedia.cjs](./builds/wtf_wikipedia.cjs)_ - node commonjs build
 - _[./wtf_wikipedia.mjs](./builds/wtf_wikipedia.mjs)_ - node/deno/typescript esm build
 
 the browser version uses `fetch()` and the server version uses `require('https')`.
