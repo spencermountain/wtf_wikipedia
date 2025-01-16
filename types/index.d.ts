@@ -188,7 +188,7 @@ declare class Sentence {
   wikitext(): string
 }
 
-export = wtf
+export default wtf
 
 type fetchDefaults = {
   path?: string | undefined;
