@@ -2,7 +2,7 @@ import parsers from './_parsers.js'
 import parse from '../../../parse/toJSON/index.js'
 import { days, timeSince } from './_lib.js'
 import { toOrdinal } from '../../_lib.js'
-import { ymd, toText } from './_format.js'
+import { ymd, toText, toTextBritish } from './_format.js'
 
 const months = [
   'January',
@@ -198,4 +198,34 @@ export default {
   // 'birth date and age2': date,
   // 'age in years, months, weeks and days': true,
   // 'age as of date': true,
+  // https://en.wikipedia.org/wiki/Template:As_of
+  'as of': (tmpl) => {
+    let obj = parse(tmpl, ['year', 'month', 'day'])
+    if (obj.alt) {
+      return obj.alt
+    }
+    let out = 'As of '
+    if (obj.since) {
+      out = 'Since '
+    }
+    if (obj.lc) {
+      out = out.toLowerCase()
+    }
+    if (obj.bare) {
+      out = ''
+    }
+    if (obj.pre) {
+      out += obj.pre + ' '
+    }
+    let format = toTextBritish
+    if (obj.df == "US") {
+      format = toText
+    }
+    let dateObj = ymd([obj.year, obj.month, obj.day])
+    out += format(dateObj)
+    if (obj.post) {
+      out += obj.post
+    }
+    return out
+  }
 }

@@ -141,3 +141,22 @@ test('age templates', (t) => {
   })
   t.end()
 })
+
+test('as of template', (t) => {
+  const arr = [
+    ['{{As of|2025}}', 'As of 2025'],
+    ['{{As of|2025|01}}', 'As of January 2025'],
+    ['{{As of|2025|01|28}}', 'As of 28 January 2025'],
+    ['{{As of|2025|01|28|df=US}}', 'As of January 28, 2025'],
+    ['{{As of|2025|01|28|lc=y}}', 'as of 28 January 2025'],
+    ['{{As of|2010|4|1|alt=as of the [[2010 United States census]]}}', 'as of the 2010 United States census'],
+    ['{{As of|2025|01|url=https://en.wikipedia.org/}}', 'As of January 2025'],
+    ['{{As of|2025|01|28|df=US|since=y}}', 'Since January 28, 2025'],
+    ['{{As of|2025|01|28|lc=y|since=y}}', 'since 28 January 2025'],
+  ]
+  arr.forEach((a) => {
+    const str = wtf(a[0]).text()
+    t.equal(str, a[1], a[0])
+  })
+  t.end()
+})
