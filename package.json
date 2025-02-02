@@ -9,9 +9,14 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./src/index.js",
-      "require": "./builds/wtf_wikipedia.cjs",
-      "types": "./types/index.d.ts"
+      "import": {
+        "types": "./types/index.d.ts",
+        "default": "./src/index.js"
+      },
+      "require": {
+        "types": "./types/index.d.ts",
+        "default": "./builds/wtf_wikipedia.cjs"
+      }
     }
   },
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",

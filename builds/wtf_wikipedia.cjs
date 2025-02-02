@@ -8399,6 +8399,33 @@
     return str
   };
 
+  const toTextBritish = function (date) {
+    //eg '1995'
+    let str = String(date.year || '');
+    if (date.month !== undefined && months$1.hasOwnProperty(date.month) === true) {
+      if (date.date === undefined) {
+        //January 1995
+        str = `${months$1[date.month]} ${date.year}`;
+      } else {
+        //5 January 1995
+        str = `${date.date} ${months$1[date.month]} ${date.year}`;
+        //add times, if available
+        if (date.hour !== undefined && date.minute !== undefined) {
+          let time = `${pad(date.hour)}:${pad(date.minute)}`;
+          if (date.second !== undefined) {
+            time = time + ':' + pad(date.second);
+          }
+          str = time + ', ' + str;
+          //add timezone, if there, at the end in brackets
+        }
+        if (date.tz) {
+          str += ` (${date.tz})`;
+        }
+      }
+    }
+    return str
+  };
+
   // console.log(toText(ymd([2018, 3, 28])));
 
   //wrap it up as a template
@@ -8785,6 +8812,36 @@
     // 'birth date and age2': date,
     // 'age in years, months, weeks and days': true,
     // 'age as of date': true,
+    // https://en.wikipedia.org/wiki/Template:As_of
+    'as of': (tmpl) => {
+      let obj = parser(tmpl, ['year', 'month', 'day']);
+      if (obj.alt) {
+        return obj.alt
+      }
+      let out = 'As of ';
+      if (obj.since) {
+        out = 'Since ';
+      }
+      if (obj.lc) {
+        out = out.toLowerCase();
+      }
+      if (obj.bare) {
+        out = '';
+      }
+      if (obj.pre) {
+        out += obj.pre + ' ';
+      }
+      let format = toTextBritish;
+      if (obj.df == "US") {
+        format = toText;
+      }
+      let dateObj = ymd([obj.year, obj.month, obj.day]);
+      out += format(dateObj);
+      if (obj.post) {
+        out += obj.post;
+      }
+      return out
+    }
   };
 
   /**
@@ -11251,6 +11308,7 @@
    * @returns {null| Document | Document[]} null if there are no results or Document if there is one responses and Document array if there are multiple responses
    */
   const parseDoc = function (res, title) {
+    res = res || [];
     // filter out undefined
     res = res.filter((o) => o);
 
