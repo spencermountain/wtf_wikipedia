@@ -1,4 +1,4 @@
-const dashSplit = /(–|-|−|&ndash;)/ // eslint-disable-line
+const dashSplit = /(–|-|−|&ndash;)/
 
 const parseTeam = function (txt) {
   if (!txt) {

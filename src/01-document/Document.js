@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import sectionMap from './_sectionMap.js'
 import toJSON from './toJson.js'
 import isDisambig from './isDisambig.js'

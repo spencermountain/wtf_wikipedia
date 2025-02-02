@@ -37,7 +37,7 @@ const findRows = function (lines) {
         line = line.substring(1)
       }
       //look for '||' inline row-splitter
-      line = line.split(/(?:\|\||!!)/) //eslint-disable-line
+      line = line.split(/(?:\|\||!!)/)
       // add leading ! back, because we later read it in header parsing functions
       if (startChar === '!') {
         line[0] = startChar + line[0]

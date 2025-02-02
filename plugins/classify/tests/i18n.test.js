@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 import i18n from '../../i18n/src/index.js'
 wtf.extend(i18n)
 
-const dir = path.dirname(fileURLToPath(import.meta.url))  // eslint-disable-line
+const dir = path.dirname(fileURLToPath(import.meta.url))
 
 test('i18n-classify-test', async function (t) {
   let arr = [

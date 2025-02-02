@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import parseGame from './parseGame.js'
 import addWinner from './winner.js'
 

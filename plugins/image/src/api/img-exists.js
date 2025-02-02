@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import unfetch from 'isomorphic-unfetch'
 
 // test if the image url exists or not

@@ -41,7 +41,6 @@ const internal_links = function (links, str) {
     }
     //kill off just these just-anchor links [[#history]]
     // if (link.match(/^#/i)) {
-    //   console.log(s)
     //   return s
     // }
     //remove anchors from end [[toronto#history]]

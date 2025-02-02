@@ -1,5 +1,5 @@
+/* eslint-disable no-console */
 import unfetch from 'isomorphic-unfetch'
-
 import parseUrl from './parseUrl.js'
 import makeUrl from './makeUrl.js'
 import getResult from './getResult.js'

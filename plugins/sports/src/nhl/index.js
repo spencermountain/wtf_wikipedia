@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import teams from './teams.js'
 import parse from './parse.js'
 

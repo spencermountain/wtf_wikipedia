@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import test from 'tape'
 import wtf from '../_lib.js'
 

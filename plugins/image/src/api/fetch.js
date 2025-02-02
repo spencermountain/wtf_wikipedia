@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import unfetch from 'isomorphic-unfetch'
 import makeUrl from '../../../../src/_fetch/makeUrl.js'
 import makeHeaders from '../../../../src/_fetch/_headers.js'

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import makeHeaders from './_headers.js'
 import { defaults, toUrlParams } from './_fns.js'
 
