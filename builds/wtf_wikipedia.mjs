@@ -11438,7 +11438,7 @@ const fetch = function (title, options, callback) {
     })
 };
 
-var version = '10.3.2';
+var version = '10.4.0';
 
 /**
  * use the native client-side fetch function
