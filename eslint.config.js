@@ -1,10 +1,14 @@
-// eslint.config.js
+import * as regexpPlugin from "eslint-plugin-regexp"
+
 export default [
+  regexpPlugin.configs["flat/recommended"],
   {
     rules: {
       'no-console': 2,
-      'no-bitwise': 2
-
+      'no-bitwise': 2,
+      "regexp/prefer-d": 0,
+      "regexp/prefer-w": 0,
+      "regexp/no-unused-capturing-group": 0
     }
   },
   {

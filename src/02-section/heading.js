@@ -3,7 +3,7 @@ import { fromText as parseSentence } from '../04-sentence/index.js'
 import parseReferences from '../reference/index.js'
 import getTemplates from '../template/find/01-nested.js'
 import parseTemplates from '../template/parse/index.js'
-const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/
+const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/ //eslint-disable-line
 const hasTemplate = /\{\{.+?\}\}/
 
 const doInlineTemplates = function (wiki, doc) {
