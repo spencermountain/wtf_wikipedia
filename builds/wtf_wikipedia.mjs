@@ -9,7 +9,7 @@ import unfetch from 'isomorphic-unfetch';
  * @returns {{domain: string, title: string}} The domain and title of a url
  */
 const parseUrl = function (url) {
-  let parsed = new URL(url); // eslint-disable-line
+  let parsed = new URL(url); //eslint-disable-line
   let title = parsed.pathname.replace(/^\/(wiki\/)?/, '');
   title = decodeURIComponent(title);
   return {
@@ -1204,12 +1204,10 @@ const isStub = function (doc) {
     let name = t.template || '';
     // try i18n templates like 'stubo'
     if (allStubs.has(name)) {
-      // console.log(name)
       return true
     }
     // english forms
     if (name === 'stub' || name.endsWith('-stub')) {
-      // console.log(name)
       return true
     }
     // look for i18n in last-word, like {{foo-stubo}}
@@ -1217,7 +1215,6 @@ const isStub = function (doc) {
     if (words.length > 1) {
       let word = words[words.length - 1];
       if (allStubs.has(word)) {
-        // console.log(name)
         return true
       }
     }
@@ -2153,7 +2150,6 @@ const internal_links = function (links, str) {
     }
     //kill off just these just-anchor links [[#history]]
     // if (link.match(/^#/i)) {
-    //   console.log(s)
     //   return s
     // }
     //remove anchors from end [[toronto#history]]
@@ -9299,6 +9295,8 @@ var bothTmpl = Object.assign(
   sports,
 );
 
+/* eslint-disable no-console */
+
 let templates = Object.assign({}, textTmpl, dataTmpl, bothTmpl);
 
 Object.keys(aliases).forEach((k) => {
@@ -9307,8 +9305,6 @@ Object.keys(aliases).forEach((k) => {
   }
   templates[k] = templates[aliases[k]];
 });
-
-// console.log(Object.keys(templates).length)
 
 const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
@@ -10571,7 +10567,7 @@ Object.keys(singular$1).forEach((k) => {
   };
 });
 
-const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/;
+const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/; //eslint-disable-line
 const hasTemplate = /\{\{.+?\}\}/;
 
 const doInlineTemplates = function (wiki, doc) {
@@ -10718,6 +10714,8 @@ const parse_categories = function (wiki) {
   const newWiki = wiki.replace(cat_reg, '');
   return [categories, newWiki]
 };
+
+/* eslint-disable no-console */
 
 const defaults$1 = {
   tables: true,
@@ -11357,6 +11355,7 @@ const makeHeaders = function (options) {
   }
 };
 
+/* eslint-disable no-console */
 const isUrl = /^https?:\/\//;
 
 /**
@@ -11439,6 +11438,8 @@ const fetch = function (title, options, callback) {
 };
 
 var version = '10.4.0';
+
+/* eslint-disable no-console */
 
 /**
  * use the native client-side fetch function
