@@ -1,7 +1,9 @@
 import * as regexpPlugin from "eslint-plugin-regexp"
+import compat from "eslint-plugin-compat";
 
 export default [
   regexpPlugin.configs["flat/recommended"],
+  compat.configs["flat/recommended"],
   {
     rules: {
       'no-console': 2,

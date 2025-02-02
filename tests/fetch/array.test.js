@@ -2,7 +2,7 @@ import test from 'tape'
 import wtf from '../lib/index.js'
 
 function delay(time) {
-  return new Promise(function (resolve) {
+  return new Promise(function (resolve) { //eslint-disable-line
     setTimeout(function () {
       resolve()
     }, time)

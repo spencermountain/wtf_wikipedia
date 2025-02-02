@@ -116,7 +116,7 @@ test('intensive', (t) => {
       'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
     })
   )
-  Promise.all(promises)
+  Promise.all(promises) //eslint-disable-line
     .then((results) => {
       results.forEach((result) => {
         t.ok(result.title(), 'got a page')
