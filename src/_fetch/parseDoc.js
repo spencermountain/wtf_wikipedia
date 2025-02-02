@@ -9,6 +9,7 @@ import { isArray } from '../_lib/helpers.js'
  * @returns {null| Document | Document[]} null if there are no results or Document if there is one responses and Document array if there are multiple responses
  */
 const parseDoc = function (res, title) {
+  res = res || []
   // filter out undefined
   res = res.filter((o) => o)
 

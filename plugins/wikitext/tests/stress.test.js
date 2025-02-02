@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-const dir = path.dirname(fileURLToPath(import.meta.url)) // eslint-disable-line
+const dir = path.dirname(fileURLToPath(import.meta.url))
 
 function from_file(page) {
   let file = '../../../tests/cache/' + page + '.txt'

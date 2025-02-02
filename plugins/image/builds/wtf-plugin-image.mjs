@@ -1,4 +1,4 @@
-/* wtf-plugin-image 1.1.0  MIT */
+/* wtf-plugin-image 1.1.1  MIT */
 import unfetch from 'isomorphic-unfetch';
 
 /* eslint-disable no-bitwise */
@@ -482,11 +482,12 @@ function isArray(x) {
   return Object.prototype.toString.call(x) === '[object Array]'
 }
 
-const isInterWiki = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/;
+const isInterWiki =
+  /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/;
 
 /**
  * turns a object into a query string
- * 
+ *
  * @private
  * @param {Object<string, string | number | boolean>} obj
  * @returns {string} QueryString
@@ -505,13 +506,12 @@ const toQueryString = function (obj) {
  * @returns {string} the cleaned title
  */
 const cleanTitle = (page) => {
-  return page.replace(/ /g, '_')
-    .trim()
+  return page.replace(/ /g, '_').trim()
 };
 
 /**
  * generates the url for fetching the pages
- * 
+ *
  * @private
  * @param {import('.').fetchDefaults} options
  * @param {Object} [parameters]
@@ -534,7 +534,6 @@ const makeUrl = function (options, parameters) {
     return ''
   }
 
-
   if (!options.follow_redirects) {
     delete params.redirects;
   }
@@ -555,10 +554,13 @@ const makeUrl = function (options, parameters) {
     params.titles = cleanTitle(title);
   } else if (title !== undefined && isArray(title) && typeof title[0] === 'number') {
     //pageid array
-    params.pageids = title.join('|');
+    params.pageids = title.filter((t) => t).join('|');
   } else if (title !== undefined && isArray(title) === true && typeof title[0] === 'string') {
     //title array
-    params.titles = title.map(cleanTitle).join('|');
+    params.titles = title
+      .filter((t) => t)
+      .map(cleanTitle)
+      .join('|');
   } else {
     return ''
   }

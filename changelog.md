@@ -3,6 +3,13 @@
 
 -->
 
+#### 10.4.0 [Feb 2025]
+- **[update]** -  export esm/require syntax
+- **[update]** -  #581 - use export default to fix ESM incompatibility
+- **[new]** -  #585 Support 'as of' template
+- **[fix]** - readme typos
+- **[update]** - dependencies
+
 #### 10.3.2 [Jul 2024]
 
 - **[new]** - support many new inline templates

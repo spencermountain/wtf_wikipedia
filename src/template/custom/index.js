@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import aliases from './aliases.js'
 import textTmpl from './text-only/index.js'
 import dataTmpl from './data-only/index.js'
@@ -12,5 +13,3 @@ Object.keys(aliases).forEach((k) => {
   templates[k] = templates[aliases[k]]
 })
 export default templates
-
-// console.log(Object.keys(templates).length)

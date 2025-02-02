@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import schema from './index.js'
 /** add spaces at the end */
 const indent = function (str = '', width) {

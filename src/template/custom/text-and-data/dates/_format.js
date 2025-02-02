@@ -95,6 +95,33 @@ const toText = function (date) {
   return str
 }
 
-export { toText, ymd }
+const toTextBritish = function (date) {
+  //eg '1995'
+  let str = String(date.year || '')
+  if (date.month !== undefined && months.hasOwnProperty(date.month) === true) {
+    if (date.date === undefined) {
+      //January 1995
+      str = `${months[date.month]} ${date.year}`
+    } else {
+      //5 January 1995
+      str = `${date.date} ${months[date.month]} ${date.year}`
+      //add times, if available
+      if (date.hour !== undefined && date.minute !== undefined) {
+        let time = `${pad(date.hour)}:${pad(date.minute)}`
+        if (date.second !== undefined) {
+          time = time + ':' + pad(date.second)
+        }
+        str = time + ', ' + str
+        //add timezone, if there, at the end in brackets
+      }
+      if (date.tz) {
+        str += ` (${date.tz})`
+      }
+    }
+  }
+  return str
+}
+
+export { toText, toTextBritish, ymd }
 
 // console.log(toText(ymd([2018, 3, 28])));
