@@ -16,7 +16,7 @@
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/markdown#readme",
   "repository": {
     "type": "git",
-    "url": "git://github.com/spencermountain/wtf_wikipedia.git"
+    "url": "git+https://github.com/spencermountain/wtf_wikipedia.git"
   },
   "scripts": {
     "watch": "amble ./scratch.js",
