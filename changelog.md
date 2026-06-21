@@ -3,6 +3,10 @@
 
 -->
 
+#### 10.5.0 [Jun 2026]
+- **[update]** - dependencies
+- **[fix]** - typescript type issues
+
 #### 10.4.2 [May 2026]
 - **[fix]** - wdl template #595
 - **[fix]** - xml parsing issue
