@@ -191,6 +191,24 @@ declare class Sentence {
 
 export default wtf
 
+// The classes below are exposed for typing and plugin development only.
+// At runtime the default export (`wtf`) is a function carrying just
+// .fetch/.extend/.plugin/.version — the classes are NOT attached to it.
+// Import them as types: `import type { Document } from 'wtf_wikipedia'`.
+export type {
+  Document,
+  Section,
+  Infobox,
+  Template,
+  Table,
+  Reference,
+  Paragraph,
+  Image,
+  Link,
+  List,
+  Sentence,
+}
+
 type FetchOptions = {
   path?: string | undefined;
   wiki?: string | undefined;
@@ -219,17 +237,19 @@ declare namespace wtf {
   export { extend }
   export { extend as plugin }
   export { version }
-  export { Document }
-  export { Section }
-  export { Infobox }
-  export { Template }
-  export { Table }
-  export { Reference }
-  export { Paragraph }
-  export { Image }
-  export { Link }
-  export { List }
-  export { Sentence }
+  // type-only: these are accessible as `wtf.Document` for typing, but are
+  // not runtime properties of the default export.
+  export type { Document }
+  export type { Section }
+  export type { Infobox }
+  export type { Template }
+  export type { Table }
+  export type { Reference }
+  export type { Paragraph }
+  export type { Image }
+  export type { Link }
+  export type { List }
+  export type { Sentence }
 }
 
 declare function extend(fn: Function): {
