@@ -16,21 +16,7 @@ const defaults = {
   paragraphs: true,
 }
 
-/**
- * The document class is the main entry point of wtf_wikipedia.
- * this class represents an article of wikipedia.
- * from here you can go to the infoboxes or paragraphs
- *
- * @class
- */
 class Document {
-  /**
-   * The constructor for the document class
-   * This function starts parsing the wiki text and sets the options in the class
-   *
-   * @param {string} [wiki] The wiki text
-   * @param {object} [options] The options for the parser
-   */
   constructor(wiki, options) {
     options = options || {}
     this._options = options
@@ -87,16 +73,7 @@ class Document {
     this._sections = parseSection(this)
   }
 
-  /**
-   * Getter and setter for the tile.
-   * If string is given then this function is a setter and sets the variable and returns the set value
-   * If the string is not given then it will check if the title is available
-   * If it is available it returns the title.
-   * Else it will look if the first sentence contains a bolded phrase and assumes that's the title and returns it
-   *
-   * @param {string} [str] The title that will be set
-   * @returns {null|string} The title found or given
-   */
+  // if no title is set, guess it from a bolded phrase in the first sentence
   title(str) {
     //use like a setter
     if (str !== undefined) {
@@ -116,13 +93,6 @@ class Document {
     return guess
   }
 
-  /**
-   * If an pageID is given then it sets the pageID and returns the given pageID
-   * Else if the pageID is already set it returns the pageID
-   *
-   * @param {number} [id] The pageID that will be set
-   * @returns {number|null} The given or found pageID
-   */
   pageID(id) {
     if (id !== undefined) {
       this._pageID = id
@@ -130,13 +100,6 @@ class Document {
     return this._pageID || null
   }
 
-  /**
-   * If an WikidataID is given then it sets the WikidataID and returns the given WikidataID
-   * Else if the WikidataID is already set it returns the WikidataID
-   *
-   * @param {string} [id] The WikidataID that will be set
-   * @returns {string|null} The given or found WikidataID
-   */
   wikidata(id) {
     if (id !== undefined) {
       this._wikidata = id
@@ -144,13 +107,6 @@ class Document {
     return this._wikidata || null
   }
 
-  /**
-   * If an domain is given then it sets the domain and returns the given domain
-   * Else if the domain is already set it returns the domain
-   *
-   * @param {string} [str] The domain that will be set
-   * @returns {string|null} The given or found domain
-   */
   domain(str) {
     if (str !== undefined) {
       this._domain = str
@@ -158,13 +114,6 @@ class Document {
     return this._domain || null
   }
 
-  /**
-   * If an language is given then it sets the language and returns the given language
-   * Else if the language is already set it returns the language
-   *
-   * @param {string} [lang] The language that will be set
-   * @returns {string|null} The given or found language
-   */
   language(lang) {
     if (lang !== undefined) {
       this._lang = lang
@@ -172,13 +121,7 @@ class Document {
     return this._lang || null
   }
 
-  /**
-   * Gets the url of the page
-   * If the language or domain is not available we substitute 'en' and 'wikipedia.org'
-   * Then we use the template of `https://${lang}.${domain}/wiki/${title}` to make the url
-   *
-   * @returns {string|null} The url of the page
-   */
+  // falls back to 'en' and 'wikipedia.org' when language or domain are missing
   url() {
     let title = this.title()
     if (!title) {
@@ -192,13 +135,6 @@ class Document {
     return `https://${lang}.${domain}/wiki/${title}`
   }
 
-  /**
-   * If an namespace is given then it sets the namespace and returns the given namespace
-   * Else if the namespace is already set it returns the namespace
-   *
-   * @param {string} [ns] The namespace that will be set
-   * @returns {string|null} The given or found namespace
-   */
   namespace(ns) {
     if (ns !== undefined) {
       this._namespace = ns
@@ -206,47 +142,21 @@ class Document {
     return this._namespace || null
   }
 
-  /**
-   * Returns if the page is a redirect
-   *
-   * @returns {boolean} Is the page a redirect
-   */
   isRedirect() {
     return this._type === 'redirect'
   }
-  /**
-   * Returns true if the page includes a stub template
-   *
-   * @returns {boolean} Is the page a stub
-   */
   isStub() {
     return isStub(this)
   }
 
-  /**
-   * Returns information about the page this page redirects to
-   *
-   * @returns {null|object} The redirected page
-   */
   redirectTo() {
     return this._redirectTo
   }
 
-  /**
-   * This function finds out if a page is a disambiguation page
-   *
-   * @returns {boolean} Whether the page is a disambiguation page
-   */
   isDisambiguation() {
     return isDisambig(this)
   }
 
-  /**
-   * If a clue is available return the category at that index
-   * Else return all categories
-   *
-   * @returns {string | string[]} The category at the provided index or all categories
-   */
   categories(clue) {
     let arr = this._categories || []
     if (typeof clue === 'number') {
@@ -255,16 +165,6 @@ class Document {
     return arr
   }
 
-  /**
-   * returns the sections of the document
-   *
-   * If the clue is a string then it will return the section with that exact title
-   * Else if the clue is a number then it returns the section at that index
-   * Else it returns all the sections
-   *
-   * @param {number | string} [clue] A title of a section or a index of a wanted section
-   * @returns {object | object[]} A section or a array of sections
-   */
   sections(clue) {
     let arr = this._sections || []
     arr.forEach((sec) => {
@@ -284,14 +184,6 @@ class Document {
     return arr
   }
 
-  /**
-   * Returns the paragraphs in the document
-   *
-   * If the clue is a number then it returns the paragraph at that index
-   * Else it returns all paragraphs in an array
-   * @param {number | string} [clue] given index of a paragraph
-   * @returns {object | object[]} the selected paragraph or an array of all paragraphs
-   */
   paragraphs(clue) {
     let arr = []
     this.sections().forEach((s) => {
@@ -303,12 +195,6 @@ class Document {
     return arr
   }
 
-  /**
-   * if no clue is provided, it compiles an array of sentences in the wiki text.
-   * if the clue is provided it return the sentence at the provided index
-   * @param {number | string} [clue] given index of a sentence
-   * @returns {object[]|object} an array of sentences or a single sentence
-   */
   sentences(clue) {
     let arr = []
     this.sections().forEach((sec) => {
@@ -320,13 +206,7 @@ class Document {
     return arr
   }
 
-  /**
-   * This function search the whole page, including the infobox and image gallery templates for images
-   * and then returns them in an array if no clue is provided.
-   * if an clue is profieded then it returns the image at the clue-th index
-   *
-   * @returns {Image[]|Image} a single image or an array of images
-   */
+  // searches the whole page, including infobox and gallery templates, for images
   images(clue) {
     let arr = sectionMap(this, 'images', null)
     //grab image from infobox, first
@@ -356,99 +236,38 @@ class Document {
     return arr
   }
 
-  /**
-   * Return all links or if a clue is provided only the link at that index
-   *
-   * @param {number} [clue] the index of the wanted link
-   * @returns {string[]|string} all the links or the selected link
-   */
   links(clue) {
     return sectionMap(this, 'links', clue)
   }
 
-  /**
-   * Return all inter wiki links or if a clue is provided only the inter wiki link at that index
-   *
-   * @param {number} [clue] the index of the wanted inter wiki link
-   * @returns {string[]|string} all the inter wiki links or the selected inter wiki link
-   */
   interwiki(clue) {
     return sectionMap(this, 'interwiki', clue)
   }
 
-  /**
-   * If a clue is available return the list at that index
-   * Else return all lists
-   *
-   * @param {number} [clue] The index of the wanted list
-   * @returns {object | object[]} The list at the provided index or all lists
-   */
   lists(clue) {
     return sectionMap(this, 'lists', clue)
   }
 
-  /**
-   * If a clue is available return the tables at that index
-   * Else return all tables
-   *
-   * @param {number} [clue] The index of the wanted table
-   * @returns {object | object[]} The table at the provided index or all tables
-   */
   tables(clue) {
     return sectionMap(this, 'tables', clue)
   }
 
-  /**
-   * If a clue is available return the template at that index
-   * Else return all templates
-   *
-   * @param {number} [clue] The index of the wanted template
-   * @returns {object | object[]} The category at the provided index or all categories
-   */
   templates(clue) {
     return sectionMap(this, 'templates', clue)
   }
 
-  /**
-   * If a clue is available return the references at that index
-   * Else return all references
-   *
-   * @param {number} [clue] The index of the wanted references
-   * @returns {object | object[]} The category at the provided index or all references
-   */
   references(clue) {
     return sectionMap(this, 'references', clue)
   }
 
-  /**
-   * Returns the 0th or clue-th reference
-   *
-   * @param {number} [clue] The index of the wanted reference
-   * @returns {object|string|number} The reference at the provided index
-   */
   citations(clue) {
     return this.references(clue)
   }
 
-  /**
-   * finds and returns all coordinates
-   * or if an clue is given, the coordinate at the index
-   *
-   * @param {number} [clue] the index of the coordinate returned
-   * @returns {object[]|object|null} if a clue is given, the coordinate of null, else an array of coordinates
-   */
   coordinates(clue) {
     return sectionMap(this, 'coordinates', clue)
   }
 
-  /**
-   * If clue is unidentified then it returns all infoboxes
-   * If clue is a number then it returns the infobox at that index
-   * It always sorts the infoboxes by size
-   *
-   * @param {number} [clue] the index of the infobox you want to select
-   * @returns {object | object[]} the selected infobox or an array of infoboxes
-   */
   infoboxes(clue) {
     let arr = sectionMap(this, 'infoboxes', clue)
     //sort them by biggest-first
@@ -462,12 +281,6 @@ class Document {
     return arr
   }
 
-  /**
-   * return a plain text version of the wiki article
-   *
-   * @param {object} [options] the options for the parser
-   * @returns {string} the plain text version of the article
-   */
   text(options) {
     options = setDefaults(options, defaults)
     //nah, skip these.
@@ -478,31 +291,15 @@ class Document {
     return arr.join('\n\n')
   }
 
-  /**
-   * return a json version of the Document class
-   *
-   * @param {object} [options] options for the rendering
-   * @returns {object} this document as json
-   */
   json(options) {
     options = setDefaults(options, defaults)
     return toJSON(this, options)
   }
 
-  /**
-   * return original wiki markup
-   *
-   * @returns {string} markup text
-   */
   wikitext() {
     return this._wiki || ''
   }
 
-  /**
-   * prints the title of every section
-   *
-   * @returns {Document} the document itself
-   */
   debug() {
     console.log('\n')
     this.sections().forEach((sec) => {
@@ -515,13 +312,6 @@ class Document {
     return this
   }
 
-  /**
-   * If a revisionID is given then it sets the revisionID and returns the given revisionID
-   * Else if the revisionID is already set it returns the revisionID
-   *
-   * @param {number} [id] The revisionID that will be set
-   * @returns {number|null} The given or found revisionID
-   */
   revisionID(id) {
     if (id !== undefined) {
       this._revisionID = id

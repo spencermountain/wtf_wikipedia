@@ -6,18 +6,8 @@ import parseMMA from './mma.js'
 import parseMath from './math.js'
 import Template from '../../template/Template.js'
 
-/**
- * parses out non standard templates
- *
- * Most templates are '{{template}}',
- * but then, some are '<template></template>' others are {{start}}...{{end}}
- * -> the templates here are of the second type.
- *
- * @private
- * @param {object} section
- * @param {object} doc
- * @returns {Object} wikitext
- */
+//parses out non-standard templates - the '<template></template>' and {{start}}...{{end}} forms,
+//rather than the usual '{{template}}'
 const xmlTemplates = function (section, doc) {
   const res = {
     templates: [],

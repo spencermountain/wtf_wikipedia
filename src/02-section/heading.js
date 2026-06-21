@@ -15,22 +15,7 @@ const doInlineTemplates = function (wiki, doc) {
   return wiki
 }
 
-/**
- * @typedef fakeSection
- * @property {string} title
- * @property {null | number} depth
- * @property {string} wiki
- */
-
-/**
- * estimates the depth of a section and parses the title to a normal format
- *
- * @private
- * @param {fakeSection} section
- * @param {string} str
- * @param {Document} doc
- * @returns {fakeSection} section the depth in a object
- */
+//estimates the depth of a section and normalizes its title
 const parseHeading = function (section, str, doc) {
   let m = str.match(heading_reg)
   if (!m) {

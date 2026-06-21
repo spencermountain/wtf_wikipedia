@@ -3,13 +3,6 @@ import Image from '../../image/Image.js'
 //okay, <gallery> is a xml-tag, with newline-separated data, somehow pivoted by '|'...
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
 //- not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
-/**
- *
- * @private
- * @param {object} catcher
- * @param {object} doc
- * @param {object} section
- */
 const parseGallery = function (catcher, doc, section) {
   catcher.text = catcher.text.replace(/<gallery([^>]*)>([\s\S]+)<\/gallery>/g, (_, _attrs, inside) => {
     let images = inside.split(/\n/g)

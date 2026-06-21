@@ -1,13 +1,4 @@
-/**
- * parses the media wiki api response to something we can use
- *
- * the data-format from mediawiki api is nutso
- *
- * @private
- * @param {object} data
- * @param {object} [options]
- * @returns {*} result
- */
+//parses the mediawiki api response into something usable - its data-format is nutso
 const getResult = function (data, options = {}) {
   // handle nothing found or no data passed
   if (!data?.query?.pages || !data?.query || !data) {

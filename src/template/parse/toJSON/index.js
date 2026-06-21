@@ -6,14 +6,6 @@ import pipeSplitter from './01-pipe-splitter.js'
 import keyMaker from './02-keyMaker.js'
 import cleanup from './03-cleanup.js'
 
-/**
- * most templates just want plaintext...
- *
- * @private
- * @param {str} str
- * @param {'json' | 'raw'} [fmt]
- * @returns {string} text
- */
 const makeFormat = function (str, fmt) {
   let s = parseSentence(str)
   //support various output formats
@@ -26,15 +18,6 @@ const makeFormat = function (str, fmt) {
   return s.text()
 }
 
-/**
- * parses the parameters of a template to a usable format
- *
- * @private
- * @param {string} tmpl the template text
- * @param {string[]} [order] the order in which the parameters are returned
- * @param {'json' | 'raw'} [fmt] whether you wan to parse the text of the template the raw object or just the text
- * @returns {object} the parameters of the template in a usable format
- */
 const parser = function (tmpl, order = [], fmt) {
   //remove {{}}'s and split based on pipes
   tmpl = strip(tmpl || '')

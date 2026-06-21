@@ -5,12 +5,7 @@ const keys = {
   roster: ['player', 'gp', 'gs', 'mpg', 'fg%', '3fg%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
 }
 
-/**
- * https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
- *
- * @private
- * @param {object} catcher
- */
+//https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
 const parseNBA = function (catcher) {
   catcher.text = catcher.text.replace(
     /\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi,

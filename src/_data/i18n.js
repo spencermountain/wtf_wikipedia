@@ -1,16 +1,5 @@
-/**
- * wikipedia special terms lifted and augmented from parsoid parser april 2015
- * and then manually on March 2020
- *
- * @type {{
- *  images: string[],
- *  references: string[],
- *  redirects: string[],
- *  infoboxes: string[],
- *  categories: string[],
- *   disambig: string[]
- * }}
- */
+//wikipedia special terms lifted and augmented from parsoid parser april 2015
+//and then manually on March 2020
 import categories from './categories.js'
 import disambig_templates from './disambig_templates.js'
 import disambig_titles from './disambig_titles.js'

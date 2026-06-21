@@ -1,15 +1,7 @@
 import parseTemplates from '../../template/index.js'
 
-/**
- * parses out the `Election_box` template from the wiki text
- *
- * this is a non-traditional template, for some reason
- * https://en.wikipedia.org/wiki/Template:Election_box
- *
- * @private
- * @param {object} catcher an object to provide and catch data
- * @param {Document} doc
- */
+//parses out the `Election_box` template - a non-traditional template, for some reason
+//https://en.wikipedia.org/wiki/Template:Election_box
 const parseElection = function (catcher, doc) {
   catcher.text = catcher.text.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, (tmpl) => {
     let data = {

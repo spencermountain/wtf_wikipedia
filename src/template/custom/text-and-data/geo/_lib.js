@@ -1,9 +1,7 @@
 import parse from '../../../parse/toJSON/index.js'
 
-/**
- * converts DMS (decimal-minute-second) geo format to lat/lng format.
- * major thank you to https://github.com/gmaclennan/parse-dms and https://github.com/WSDOT-GIS/dms-js 👏
- **/
+//converts DMS (decimal-minute-second) geo format to lat/lng format.
+//thanks to https://github.com/gmaclennan/parse-dms and https://github.com/WSDOT-GIS/dms-js
 function parseDMS(arr) {
   let hemisphere = arr.pop()
   let degrees = Number(arr[0] || 0)

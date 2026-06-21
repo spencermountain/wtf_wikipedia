@@ -1,13 +1,7 @@
 import tableParser from '../../table/parse/index.js'
 let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes']
 
-/**
- *
- * https://en.wikipedia.org/wiki/Template:MMA_record_start
- *
- * @private
- * @param {object} catcher
- */
+//https://en.wikipedia.org/wiki/Template:MMA_record_start
 const parseMMA = function (catcher) {
   catcher.text = catcher.text.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, (tmpl) => {
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')

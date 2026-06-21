@@ -1,10 +1,4 @@
-/**
- * turn {{name|one|two|three}} into [name, one, two, three]
- *
- * @private
- * @param {string} tmpl the template text
- * @returns {string[]} a array containing all the split parameters
- */
+//turn {{name|one|two|three}} into [name, one, two, three]
 const pipeSplitter = function (tmpl) {
   //start with a naive '|' split
   let arr = tmpl.split(/\n?\|/)

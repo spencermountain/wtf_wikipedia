@@ -8,9 +8,6 @@ const defaults = {
   numbers: true,
 }
 
-/**
- * @private
- * */
 const toJSON = function (s, options) {
   options = setDefaults(options, defaults)
   let data = {}

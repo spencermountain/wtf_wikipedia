@@ -9,18 +9,7 @@ const reserved = {
   prototype: true,
 }
 
-/**
- * @typedef parseKeyReturn
- * @property {string} val
- * @property {string} key
- */
-
-/**
- * turn 'key=val' into {key:key, val:val}
- *
- * @param {string} str the string that will be parsed
- * @returns {parseKeyReturn} the spit string
- */
+//turn 'key=val' into {key:key, val:val}
 const parseKey = function (str) {
   let parts = str.split('=')
   let key = parts[0] || ''
@@ -36,14 +25,7 @@ const parseKey = function (str) {
   }
 }
 
-/**
- * turn [a, b=v, c] into {'1':a, b:v, '2':c}
- *
- * @private
- * @param {string[]} arr the array of parameters
- * @param {string[]} [order] the order in which the parameters are returned
- * @returns {object} and object with the names as the keys and the values as the values
- */
+//turn [a, b=v, c] into {'1':a, b:v, '2':c}
 const keyMaker = function (arr, order) {
   let keyIndex = 0
   return arr.reduce((h, str = '') => {

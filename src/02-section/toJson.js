@@ -13,17 +13,8 @@ const defaults = {
   references: true,
 }
 
-/**
- *
- * @param {object} section
- * @param {object} options
- * @returns {object}
- */
 const toJSON = function (section, options) {
   options = setDefaults(options, defaults)
-  /**
-   * @type {object}
-   */
   let data = {}
 
   if (options.headers === true) {

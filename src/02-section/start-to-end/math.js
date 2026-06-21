@@ -1,14 +1,7 @@
 import { fromText as parseSentence } from '../../04-sentence/index.js'
 
-/**
- * try to parse out the math and chem templates
- *
- * xml <math>y=mx+b</math> support
- * https://en.wikipedia.org/wiki/Help:Displaying_a_formula
- *
- * @private
- * @param {object} catcher
- */
+//parse out math and chem templates - e.g. xml <math>y=mx+b</math>
+//https://en.wikipedia.org/wiki/Help:Displaying_a_formula
 const parseMath = function (catcher) {
   catcher.text = catcher.text.replace(/<math([^>]*)>([\s\S]*?)<\/math>/g, (_, attrs, inside) => {
     //clean it up a little?

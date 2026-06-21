@@ -6,13 +6,6 @@ import parseHeading from './heading.js'
 const isReference = new RegExp('^(' + references.join('|') + '):?', 'i')
 const section_reg = /(?:\n|^)(={2,6}.{1,200}?={2,6})/g
 
-
-/**
- * filters out the reference section and empty sections and
- *
- * @param {Section[]} sections
- * @returns {Section[]} all the section
- */
 const removeReferenceSection = function (sections) {
   return sections.filter((s, i) => {
     if (isReference.test(s.title()) === true) {
@@ -35,15 +28,7 @@ const removeReferenceSection = function (sections) {
   })
 }
 
-/**
- * this function splits the wiki texts on '=' and puts every part in a Section Object
- * it also pre processes the section text for the Section object
- * then it filters out the reference section
- *
- * @private
- * @param {object} doc the document that contains the wiki text
- * @returns {Section[]} the sections that are parsed out
- */
+//split the wiki text on '=' headings, wrap each part in a Section, then drop the reference section
 const parseSections = function (doc) {
   let sections = []
   let splits = doc._wiki.split(section_reg)

@@ -32,13 +32,6 @@ const byText = function (s) {
   return false
 }
 
-/**
- * Parses the wikitext to find out if this page is a disambiguation
- *
- * @private
- * @param {object} doc the document that is examined
- * @returns {boolean} an indication if the document is a disambiguation page
- */
 const isDisambig = function (doc) {
   // check for a {{disambig}} template
   let templates = doc.templates().map((tmpl) => tmpl.json())

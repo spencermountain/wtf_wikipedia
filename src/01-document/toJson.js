@@ -1,18 +1,5 @@
 import setDefaults from '../_lib/setDefaults.js'
 
-/**
- * @typedef DocumentToJsonOptions
- * @property {boolean | undefined} title
- * @property {boolean | undefined} pageID
- * @property {boolean | undefined} categories
- * @property {boolean | undefined} sections
- * @property {boolean | undefined} coordinates
- * @property {boolean | undefined} infoboxes
- * @property {boolean | undefined} images
- * @property {boolean | undefined} plaintext
- * @property {boolean | undefined} citations
- * @property {boolean | undefined} references
- */
 const defaults = {
   title: true,
   sections: true,
@@ -27,35 +14,10 @@ const defaults = {
   language: false,
 }
 
-/**
- * @typedef documentToJsonReturn
- * @property {string | undefined} title
- * @property {number | null | undefined} pageID
- * @property {string[] | undefined} categories
- * @property {object[] | undefined} sections
- * @property {boolean | undefined} isRedirect
- * @property {object | undefined} redirectTo
- * @property {object[] | undefined} coordinates
- * @property {object[] | undefined} infoboxes
- * @property {object[] | undefined} images
- * @property {string | undefined} plaintext
- * @property {object[] | undefined} references
- */
-
-/**
- * an opinionated output of the most-wanted data
- *
- * @private
- * @param {object} doc
- * @param {DocumentToJsonOptions} options
- * @returns {documentToJsonReturn}
- */
+// an opinionated output of the most-wanted data
 const toJSON = function (doc, options) {
   options = setDefaults(options, defaults)
 
-  /**
-   * @type {documentToJsonReturn}
-   */
   let data = {}
 
   if (options.title) {

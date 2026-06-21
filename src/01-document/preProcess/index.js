@@ -1,13 +1,6 @@
 import kill_xml from './kill_xml.js'
 
-/**
- * removes unnecessary strings from the wikitext
- * it is mostly-formatting stuff can be cleaned-up first, to make life easier
- *
- * @private
- * @param {string} wiki the wikitext that needs processing
- * @returns {string} the processed text
- */
+// strips out formatting cruft up-front to make the later parsing easier
 function preProcess(wiki) {
   //remove comments
   wiki = wiki.replace(/<!--[\s\S]{0,3000}?-->/g, '')

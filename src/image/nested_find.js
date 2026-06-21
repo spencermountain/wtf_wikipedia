@@ -1,16 +1,9 @@
 const opener = '['
 const closer = ']'
 
-/**
- *
- * find all the pairs of '[[...[[..]]...]]' in the text
- * used to properly root out recursive template calls, [[.. [[...]] ]]
- * basically just adds open tags, and subtracts closing tags
- *
- * @private
- * @param {string} text the text in which is searched in
- * @returns {string[]} all the links in the text
- */
+//find all the pairs of '[[...[[..]]...]]' in the text
+//used to root out recursive template calls, [[.. [[...]] ]]
+//basically just adds open tags, and subtracts closing tags
 function nested_find(text) {
   let out = []
   let last = []
