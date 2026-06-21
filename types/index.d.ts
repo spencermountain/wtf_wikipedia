@@ -209,7 +209,7 @@ declare function fetch<T extends string | number | string[] | number[] | URL>(
 ): Promise<FetchResult<T>>;
 
 type FetchResult<T> = T extends unknown[]
-  ? Documents[]
+  ? Document[]
   : Document | null;
 
 declare function wtf(wiki: string, options?: object): Document

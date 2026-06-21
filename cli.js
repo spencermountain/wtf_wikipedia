@@ -22,11 +22,14 @@ if (!title) {
 
 wtf.fetch(title, 'en', function (err, doc) {
   if (err) {
+    // eslint-disable-next-line no-console
     console.error(err)
   }
   if (mode === 'json') {
+    // eslint-disable-next-line no-console
     console.log(JSON.stringify(doc[mode](), null, 0))
   } else {
+    // eslint-disable-next-line no-console
     console.log(doc[mode]())
   }
 })

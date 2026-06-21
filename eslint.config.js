@@ -21,6 +21,7 @@ export default [
       "*.test.js",
       "**/scratch.js",
       "**/rollup.config.js",
+      "scripts/*",
     ],
   }
 ];
