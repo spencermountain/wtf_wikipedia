@@ -4,8 +4,11 @@
 -->
 
 #### 10.5.0 [Jun 2026]
-- **[update]** - dependencies
 - **[fix]** - typescript type issues
+- **[fix]** - x-site html validation fix #600
+- **[change]** - replace postinstall script to avoid pnpm warning
+- **[update]** - dependencies
+
 
 #### 10.4.2 [May 2026]
 - **[fix]** - wdl template #595
