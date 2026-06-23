@@ -8,6 +8,7 @@
 - **[fix]** - x-site html validation fix #600
 - **[change]** - replace postinstall script to avoid pnpm warning
 - **[update]** - dependencies
+- **[update]** - plugin dependencies
 
 
 #### 10.4.2 [May 2026]
