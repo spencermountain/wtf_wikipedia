@@ -50,7 +50,7 @@ const plugin = function (models) {
     // prefer the 2nd sentence
     if (this.sentence(1)) {
       txt = this.sentence(1).text()
-    } else {
+    } else if (this.sentence(0)) {
       txt = this.sentence(0).text()
     }
     let doc = nlp(txt)
@@ -60,7 +60,7 @@ const plugin = function (models) {
 
   // was event in past? is person dead?
   models.Doc.prototype.tense = function () {
-    let txt = this.sentence().text()
+    let txt = this.sentence() ? this.sentence().text() : ''
     let doc = nlp(txt)
     let copula = doc.match('#Copula+').first()
     if (copula.has('was')) {

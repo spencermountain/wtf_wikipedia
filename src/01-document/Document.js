@@ -292,7 +292,6 @@ class Document {
   }
 
   json(options) {
-    options = setDefaults(options, defaults)
     return toJSON(this, options)
   }
 

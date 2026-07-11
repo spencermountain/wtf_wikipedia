@@ -104,7 +104,15 @@ doc.json()
 // { categories: ['Oral communication', 'Vocal skills'], sections: [{ title: 'Techniques' }], ...}
 ```
 
-the default .json() output is _[really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json)_, but you can cherry-pick data by poking-around like this:
+the default .json() output is _[really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json)_ - you can grab a preset-size instead:
+
+```js
+doc.json('sm') // title, description, infoboxes, categories
+doc.json('md') // sm + images, links, templates, references, coordinates, plaintext
+doc.json('lg') // md + all section data
+```
+
+or you can cherry-pick data by poking-around like this:
 
 ```js
 // get just the links:
@@ -313,7 +321,8 @@ s.wikitext()
 #### **doc.categories()**
 
 ```js
-await wtf.fetch('Whistling').categories()
+let doc = await wtf.fetch('Whistling')
+doc.categories()
 //['Oral communication', 'Vocal music', 'Vocal skills']
 ```
 
@@ -340,10 +349,10 @@ let doc = await wtf.fetch('https://muppet.fandom.com/wiki/Miss_Piggy')
 
 // wikipedia français
 doc = await wtf.fetch('Tony Hawk', 'fr')
-doc.sentence().text() // 'Tony Hplawk est un skateboarder professionnel et un acteur ...'
+doc.sentence().text() // 'Tony Hawk est un skateboarder professionnel et un acteur ...'
 
-// accept an array, or wikimedia pageIDs
-let docs = wtf.fetch(['Whistling', 2983], { follow_redirects: false })
+// accept an array of titles, or wikimedia pageIDs
+let docs = await wtf.fetch(['Whistling', 'Toronto'], { follow_redirects: false })
 
 // article from german wikivoyage
 wtf.fetch('Toronto', { lang: 'de', wiki: 'wikivoyage' }).then((doc) => {
@@ -419,19 +428,23 @@ these add all sorts of new functionality:
 
 ```js
 wtf.extend(require('wtf-plugin-classify'))
-await wtf.fetch('Toronto Raptors').classify()
+let doc = await wtf.fetch('Toronto Raptors')
+doc.classify()
 // 'Organization/SportsTeam'
 
 wtf.extend(require('wtf-plugin-summary'))
-await wtf.fetch('Pulp Fiction').summary()
+doc = await wtf.fetch('Pulp Fiction')
+doc.summary()
 // 'a 1994 American crime film'
 
 wtf.extend(require('wtf-plugin-person'))
-await wtf.fetch('David Bowie').birthDate()
+doc = await wtf.fetch('David Bowie')
+doc.birthDate()
 // {year:1947, date:8, month:1}
 
 wtf.extend(require('wtf-plugin-i18n'))
-await wtf.fetch('Ziggy Stardust', 'fr').infobox().json()
+doc = await wtf.fetch('Ziggy Stardust', 'fr')
+doc.infobox().json()
 // {nom:{text:"Ziggy Stardust"}, oeuvre:{text:"The Rise and Fall of Ziggy Stardust"}}
 ```
 
@@ -502,6 +515,7 @@ wtf
 - **.sentences()** - return a list of all sentences in the document
 - **.images()** - return all images found in the document
 - **.links()** - return a list of all links, in all parts of the document
+- **.interwiki()** - return a list of links to other language wikis
 - **.lists()** - sections in a page where each line begins with a bullet point
 - **.tables()** - return a list of all structured tables in the document
 - **.templates()** - any type of structured-data elements, typically wrapped in like {{this}}
@@ -608,6 +622,7 @@ wtf
 ### Table
 
 - **.links()** - get any links mentioned in this table
+- **.get(key)** - grab the values of a given column (or columns) of the table
 - **.keyValue()** - generate a simple list of key:value objects for this table
 - **.text()** - returns nothing
 - **.json()** - generate some useful metadata data for this table
@@ -631,7 +646,8 @@ wtf.extend((models) => {
   }
 })
 
-await wtf.fetch('Stephen Harper').isPerson()
+let doc = await wtf.fetch('Stephen Harper')
+doc.isPerson()
 ```
 
 ### Adding new templates:

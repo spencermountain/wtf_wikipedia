@@ -17,21 +17,8 @@ const methods = {
     let data = this.data
     return data.title || data.encyclopedia || data.author || ''
   },
-  links: function (n) {
-    let arr = []
-    if (typeof n === 'number') {
-      return arr[n]
-    }
-    //grab a specific link..
-    if (typeof n === 'number') {
-      return arr[n]
-    } else if (typeof n === 'string') {
-      //grab a link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = arr.find((o) => o.page() === n)
-      return link === undefined ? [] : [link]
-    }
-    return arr || []
+  links: function () {
+    return [] //nah, skip these.
   },
   text: function () {
     return '' //nah, skip these.

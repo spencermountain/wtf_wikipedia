@@ -410,7 +410,7 @@ export default {
     let obj = parse(tmpl, ['numerator', 'denominator', 'decimals'])
     let num = Number(obj.numerator) / Number(obj.denominator)
     num *= 100
-    if (num === null) {
+    if (isNaN(num)) {
       return ''
     }
     let dec = Number(obj.decimals) || 0
@@ -693,16 +693,16 @@ export default {
   float: (tmpl) => {
     let { text, dir } = parse(tmpl, ['dir', 'text'])
     if (!text) {
-      return dir
+      return dir || ''
     }
-    return text || ''
+    return text
   },
   lower: (tmpl) => {
     let { text, n } = parse(tmpl, ['n', 'text'])
     if (!text) {
-      return n
+      return n || ''
     }
-    return text || ''
+    return text
   },
   splitspan: (tmpl) => {
     let list = parse(tmpl).list || []
@@ -772,7 +772,7 @@ export default {
   },
   gaps: (tmpl) => {
     let data = parse(tmpl)
-    return data.list.join('  ')
+    return (data.list || []).join('  ')
   },
   bra: (tmpl) => {
     let data = parse(tmpl, ['a'])

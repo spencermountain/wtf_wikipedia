@@ -338,7 +338,7 @@ export default {
   //https://en.wikipedia.org/wiki/Template:Weather_box/concise_C
   'weather box/concise c': (tmpl, list) => {
     let obj = parse(tmpl)
-    obj.list = obj.list.map((s) => toNumber(s))
+    obj.list = (obj.list || []).map((s) => toNumber(s))
     obj.byMonth = {
       'high c': obj.list.slice(0, 12),
       'low c': obj.list.slice(12, 24),
@@ -352,7 +352,7 @@ export default {
 
   'weather box/concise f': (tmpl, list) => {
     let obj = parse(tmpl)
-    obj.list = obj.list.map((s) => toNumber(s))
+    obj.list = (obj.list || []).map((s) => toNumber(s))
     obj.byMonth = {
       'high f': obj.list.slice(0, 12),
       'low f': obj.list.slice(12, 24),

@@ -34,7 +34,7 @@ function preProcess(wiki) {
   //({{template}},{{template}}) leaves empty parentheses
   wiki = wiki.replace(/\([,;: ]+\)/g, '')
   //these templates just screw things up, too
-  wiki = wiki.replace(/\{\{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '')
+  wiki = wiki.replace(/\{\{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/gi, '')
 
   return wiki
 }

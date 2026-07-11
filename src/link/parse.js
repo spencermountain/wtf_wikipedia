@@ -65,12 +65,11 @@ const internal_links = function (links, str) {
       obj.text = obj.text || obj.page
       obj.text += suffix.trim()
     }
-    //titlecase it, if necessary
+    //keep the display-text, for lowercase pages
     if (obj.page && /^[A-Z]/.test(obj.page) === false) {
       if (!obj.text) {
         obj.text = obj.page
       }
-      obj.page = obj.page
     }
     // support [[:Category:Foo]] syntax
     if (obj.text && obj.text.startsWith(':')) {

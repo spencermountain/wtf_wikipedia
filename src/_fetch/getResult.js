@@ -1,7 +1,7 @@
 //parses the mediawiki api response into something usable - its data-format is nutso
 const getResult = function (data, options = {}) {
   // handle nothing found or no data passed
-  if (!data?.query?.pages || !data?.query || !data) {
+  if (!data?.query?.pages) {
     return null
   }
 
@@ -19,14 +19,19 @@ const getResult = function (data, options = {}) {
       return null
     }
 
-    // get the text from the object
-    let text = page.revisions[0]['*']
-    // if the text is not found in the regular place than it is at the other place
-    if (!text && page.revisions[0].slots) {
-      text = page.revisions[0].slots.main['*']
+    // a page can exist without any revisions - protect against it
+    let rev = page.revisions?.[0]
+    if (!rev) {
+      return null
     }
-    let revisionID = page.revisions[0].revid
-    let timestamp = page.revisions[0].timestamp
+    // get the text from the object
+    let text = rev['*']
+    // if the text is not found in the regular place than it is at the other place
+    if (!text && rev.slots) {
+      text = rev.slots.main['*']
+    }
+    let revisionID = rev.revid
+    let timestamp = rev.timestamp
 
     page.pageprops = page.pageprops || {}
 

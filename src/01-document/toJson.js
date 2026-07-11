@@ -1,5 +1,40 @@
 import setDefaults from '../_lib/setDefaults.js'
 
+// handy preset outputs, like `.json('md')`
+const sizes = {
+  sm: {
+    title: true,
+    description: true,
+    infoboxes: true,
+    categories: true,
+  },
+  md: {
+    title: true,
+    description: true,
+    infoboxes: true,
+    categories: true,
+    coordinates: true,
+    images: true,
+    links: true,
+    templates: true,
+    text: true,
+    references: true,
+  },
+  lg: {
+    title: true,
+    description: true,
+    infoboxes: true,
+    categories: true,
+    coordinates: true,
+    images: true,
+    links: true,
+    templates: true,
+    sections: true,
+    text: true,
+    references: true,
+  },
+}
+
 const defaults = {
   title: true,
   sections: true,
@@ -16,8 +51,13 @@ const defaults = {
 
 // an opinionated output of the most-wanted data
 const toJSON = function (doc, options) {
-  options = setDefaults(options, defaults)
-
+  let isPreset = false
+  if (typeof options === 'string') {
+    options = sizes[options] || sizes.md
+    isPreset = true
+  } else {
+    options = setDefaults(options, defaults)
+  }
   let data = {}
 
   if (options.title) {
@@ -50,8 +90,15 @@ const toJSON = function (doc, options) {
   if (options.timestamp && doc.timestamp()) {
     data.timestamp = doc.timestamp()
   }
-  if (options.description && doc.description()) {
-    data.description = doc.description()
+  if (options.description) {
+    let desc = doc.description()
+    // for presets, fall-back to the first sentence when the wikidata description is missing
+    if (!desc && isPreset && doc.sentence()) {
+      desc = doc.sentence().text()
+    }
+    if (desc) {
+      data.description = desc
+    }
   }
 
   // page sections
@@ -73,9 +120,20 @@ const toJSON = function (doc, options) {
   if (options.coordinates) {
     data.coordinates = doc.coordinates()
   }
-
-  if (options.plaintext) {
-    data.plaintext = doc.text(options)
+  if (options.links) {
+    data.links = doc.links().map((i) => i.json(options))
+  }
+  if (options.templates) {
+    data.templates = doc.templates().map((i) => i.json(options))
+  }
+  if (options.plaintext || options.text) {
+    let text = doc.text(options)
+    if (options.text) {
+      data.text = text
+    }
+    if (options.plaintext) {
+      data.plaintext = text //support old plaintext key, too
+    }
   }
 
   return data

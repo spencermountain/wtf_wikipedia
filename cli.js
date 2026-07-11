@@ -23,7 +23,13 @@ if (!title) {
 wtf.fetch(title, 'en', function (err, doc) {
   if (err) {
     // eslint-disable-next-line no-console
-    console.error(err)
+    console.error(err.message || err)
+    process.exit(1)
+  }
+  if (!doc) {
+    // eslint-disable-next-line no-console
+    console.error(`Could not find a wikipedia page for '${title}'`)
+    process.exit(1)
   }
   if (mode === 'json') {
     // eslint-disable-next-line no-console

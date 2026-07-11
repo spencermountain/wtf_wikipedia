@@ -13,15 +13,16 @@ let sports = {
   'win draw lose': function (tmpl, list) {
     let obj = parse(tmpl)
     list.push(obj)
-    let draw = parseInt(obj.list[2]) || 0
-    let lose = parseInt(obj.list[3]) || 0;
-    let win = parseInt(obj.list[1]) || 0;
+    let arr = obj.list || []
+    let draw = parseInt(arr[2]) || 0
+    let lose = parseInt(arr[3]) || 0;
+    let win = parseInt(arr[1]) || 0;
     let total = win + draw + lose;
     let winPercentage = ''
     if (total > 0) {
       winPercentage = ((win / total) * 100).toFixed(1);
     }
-    return '\n| ' + obj.list.join('\n| ') + '\n| ' + winPercentage + '%'
+    return '\n| ' + arr.join('\n| ') + '\n| ' + winPercentage + '%'
   },
 
   'win-loss record': function (tmpl, list) {

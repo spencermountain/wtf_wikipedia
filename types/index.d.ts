@@ -1,3 +1,19 @@
+
+declare class Image {
+  alt(): string
+  caption(): string
+  file(): string
+  format(): string | null
+  json(options?: object): object
+  links(): Link[]
+  src(): string
+  text(): string
+  thumb(size?: number): string
+  thumbnail(size?: number): string
+  url(): string
+  wikitext(): string
+}
+
 declare class Document {
   categories(clue?: number): string[]
   category(clue?: number): string | null
@@ -11,16 +27,16 @@ declare class Document {
   image(clue?: string | number): Image | null
   infoboxes(clue?: number): Infobox[]
   infobox(clue?: number): Infobox | null
-  interwiki(clue?: number): string[]
+  interwiki(clue?: number): Link[]
   isDisambig: () => boolean
   isDisambiguation(): boolean
   isRedirect(): boolean
   isStub(): boolean
-  json(options?: object): object
+  json(options?: object | 'sm' | 'md' | 'lg'): object
   lang: (lang?: string) => string | null
   language(lang?: string): string | null
-  links(clue?: number): string[]
-  link(clue?: number): string | null
+  links(clue?: string | number): Link[]
+  link(clue?: string | number): Link | null
   lists(clue?: number): List[]
   list(clue?: number): List | null
   namespace(ns?: string): string | null
@@ -39,10 +55,10 @@ declare class Document {
   sections(clue?: string | number): Section[]
   sentence(clue?: number): Sentence | null
   sentences(clue?: string | number): Sentence[]
-  tables(clue?: number): List[]
-  table(clue?: number): List | null
-  templates(clue?: number): List[]
-  template(clue?: number): List | null
+  tables(clue?: number): Table[]
+  table(clue?: number): Table | null
+  templates(clue?: number): Template[]
+  template(clue?: number): Template | null
   text(options?: object): string
   title(str?: string): null | string
   url(): string | null
@@ -52,37 +68,36 @@ declare class Document {
   description(desc?: string): string | null
   timestamp(iso?: string): string | null
   pageImage(img?: string): Image
-  domain(domain?: string): string | null
 }
 
 declare class Section {
   children(clue?: string | number): Section | Section[] | null
-  citations: () => object | object[]
-  coordinates(): object | object[]
+  citations: () => Reference[]
+  coordinates(): object[]
   depth(): number
-  images(): Image | Image[]
+  images(): Image[]
   indentation(): number
   index(): number | null
-  infoboxes(clue?: string | number): object | object[]
-  interwiki(): object | object[]
-  json(options: object): object
+  infoboxes(clue?: number): Infobox[]
+  interwiki(): Link[]
+  json(options?: object): object
   last(): Section | null
   lastSibling(): Section | null
-  links(clue?: string | number): object | object[]
-  lists(): object | object[]
+  links(clue?: string | number): Link[]
+  lists(): List[]
   next(): Section | null
   nextSibling(): Section | null
-  paragraphs(): object | object[]
+  paragraphs(): Paragraph[]
   parent(): Section | null
   previous(): Section | null
   previousSibling(): Section | null
-  references(): object | object[]
+  references(): Reference[]
   remove(): null | Document
   sections(clue?: string | number): Section | Section[] | null
-  sentences(): object | object[]
-  tables(): object | object[]
-  templates(clue?: string | number): object | object[]
-  text(options: object): string
+  sentences(): Sentence[]
+  tables(): Table[]
+  templates(clue?: string | number): Template[]
+  text(options?: object): string
   title(): string
   wikitext(): string
 }
@@ -110,10 +125,10 @@ declare class Template {
 
 declare class Table {
   get(keys?: string | string[]): object
-  json(options: object): object
-  keyval(options: object): object
-  keyValue(options: object): object
-  keyvalue(options: object): object
+  json(options?: object): object
+  keyval(options?: object): object
+  keyValue(options?: object): object
+  keyvalue(options?: object): object
   links(n?: string): Link[]
   text(): string
   wikitext(): string
@@ -121,7 +136,7 @@ declare class Table {
 
 declare class Reference {
   json(options?: object): object
-  links(n?: string | number): Link[]
+  links(): Link[]
   text(): string
   title(): string
   wikitext(): string
@@ -130,27 +145,12 @@ declare class Reference {
 declare class Paragraph {
   images(): Image[]
   interwiki(): Link[]
-  json(options: object): object
-  links(clue: string): Link[]
+  json(options?: object): object
+  links(clue?: string): Link[]
   lists(): List[]
   references(): Reference[]
   sentences(): Sentence[]
   text(options?: object): string
-  wikitext(): string
-}
-
-declare class Image {
-  alt(): string
-  caption(): string
-  file(): string
-  format(): string | null
-  json(options?: object): object
-  links(): Link[]
-  src(): string
-  text(): string
-  thumb(size?: number): string
-  thumbnail(size?: number): string
-  url(): string
   wikitext(): string
 }
 
@@ -222,7 +222,7 @@ type FetchCallback<T> = (...args: [err: Error, result: null] | [err: null, resul
 
 declare function fetch<T extends string | number | string[] | number[] | URL>(
   title: T,
-  options?: FetchOptions | undefined,
+  options?: FetchOptions | string | undefined, // a string is a language-code, like 'en'
   callback?: FetchCallback<T>
 ): Promise<FetchResult<T>>;
 

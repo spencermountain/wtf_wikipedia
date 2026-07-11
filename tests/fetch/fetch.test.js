@@ -31,8 +31,9 @@ test('promise rejects on error if no callback', async (t) => {
     err = e
   }
 
-  // attempting to parse response will generate a SyntaxError due to not being JSON
-  t.equal(err.name, 'SyntaxError')
+  // a non-api url will respond with a http error
+  t.equal(err.name, 'Error')
+  t.match(err.message, /^HTTP \d+/)
 
   t.end()
 })
@@ -40,8 +41,9 @@ test('promise rejects on error if no callback', async (t) => {
 test("if callback supplied, error scenario calls errback and doesn't reject promise", async (t) => {
   await wtf.fetch('https://example.com', 'en', (err, data) => {
     t.equal(data, null)
-    // attempting to parse response will generate a SyntaxError due to not being JSON
-    t.equal(err.name, 'SyntaxError')
+    // a non-api url will respond with a http error
+    t.equal(err.name, 'Error')
+    t.match(err.message, /^HTTP \d+/)
   })
 
   t.end()
@@ -138,7 +140,7 @@ test('intensive', (t) => {
       'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
     })
   )
-  Promise.all(promises) //eslint-disable-line
+  Promise.all(promises)  
     .then((results) => {
       results.forEach((result) => {
         t.ok(result.title(), 'got a page')

@@ -10,7 +10,6 @@ export default [
   {
     input: 'src/index.js',
     output: [{ banner: banner, file: 'builds/wtf_wikipedia.mjs', format: 'esm' }],
-    external: ['isomorphic-unfetch'],
     plugins: [
       commonjs()
     ],
@@ -19,8 +18,7 @@ export default [
   // === server-side .js ===
   {
     input: 'src/index.js',
-    output: [{ banner: banner, file: 'builds/wtf_wikipedia.cjs', format: 'umd', name: 'wtf', globals: { "isomorphic-unfetch": 'unfetch' } }],
-    external: ['isomorphic-unfetch'],
+    output: [{ banner: banner, file: 'builds/wtf_wikipedia.cjs', format: 'umd', name: 'wtf' }],
     plugins: [
       commonjs()
     ],

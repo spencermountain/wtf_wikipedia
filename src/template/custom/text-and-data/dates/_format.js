@@ -30,8 +30,8 @@ const ymd = function (arr) {
   let units = ['year', 'month', 'date', 'hour', 'minute', 'second']
   //parse each unit in sequence..
   for (let i = 0; i < units.length; i += 1) {
-    //skip it
-    if (!arr[i] && arr[1] !== 0) {
+    //skip it, unless it's a literal zero
+    if (!arr[i] && arr[i] !== 0) {
       continue
     }
     let num = parseInt(arr[i], 10)

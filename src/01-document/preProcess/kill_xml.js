@@ -22,7 +22,8 @@ const ignore = [
 const openTag = `< ?(${ignore.join('|')}) ?[^>]{0,200}>`
 const closeTag = `< ?/ ?(${ignore.join('|')}) ?>`
 const anyChar = '\\s\\S' //including newline
-const noThanks = new RegExp(`${openTag}[${anyChar}]+?${closeTag}`, 'gi')
+//bound the content-length, so unclosed tags don't scan to the end of large pages
+const noThanks = new RegExp(`${openTag}[${anyChar}]{1,40000}?${closeTag}`, 'gi')
 
 const kill_xml = function (wiki) {
   //(<ref> tags are parsed in Section class) - luckily, refs can't be recursive.

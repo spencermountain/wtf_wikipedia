@@ -19,20 +19,20 @@ export default {
   'bat-smg': 'Žemaitėška', //Samogitian
   bcl: 'Bikol', //Bikol
   be: 'Беларуская', //Belarusian
-  'be-x-old': 'ltr', //Belarusian
+  'be-x-old': 'Беларуская (тарашкевіца)', //Belarusian (Taraškievica)
   bg: 'Български', //Bulgarian
   bh: 'भोजपुरी', //Bihari
   bi: 'Bislama', //Bislama
   bm: 'Bamanankan', //Bambara
   bn: 'বাংলা', //Bengali
   bo: 'བོད་ཡིག', //Tibetan
-  bpy: 'ltr', //Bishnupriya
+  bpy: 'বিষ্ণুপ্রিয়া মণিপুরী', //Bishnupriya Manipuri
   br: 'Brezhoneg', //Breton
   bs: 'Bosanski', //Bosnian
   bug: 'ᨅᨔ', //Buginese
-  bxr: 'ltr', //Buriat
+  bxr: 'Буряад', //Buriat
   ca: 'Català', //Catalan
-  cdo: 'Chinese', //Min
+  cdo: 'Mìng-dĕ̤ng-ngṳ̄', //Min Dong Chinese
   ce: 'Нохчийн', //Chechen
   ceb: 'Sinugboanong', //Cebuano
   ch: 'Chamoru', //Chamorro
@@ -43,13 +43,13 @@ export default {
   cr: 'Nehiyaw', //Cree
   cs: 'Česky', //Czech
   csb: 'Kaszëbsczi', //Kashubian
-  cu: 'Slavonic', //Old
+  cu: 'Словѣньскъ', //Old Church Slavonic
   cv: 'Чăваш', //Chuvash
   cy: 'Cymraeg', //Welsh
   da: 'Dansk', //Danish
   de: 'Deutsch', //German
   diq: 'Zazaki', //Dimli
-  dsb: 'ltr', //Lower
+  dsb: 'Dolnoserbski', //Lower Sorbian
   dv: 'ދިވެހިބަސް', //Divehi
   dz: 'ཇོང་ཁ', //Dzongkha
   ee: 'Ɛʋɛ', //Ewe
@@ -69,10 +69,10 @@ export default {
   fr: 'Français', //French
   frp: 'Arpitan', //Arpitan
   fur: 'Furlan', //Friulian
-  fy: 'ltr', //West
+  fy: 'Frysk', //West Frisian
   ga: 'Gaeilge', //Irish
-  gan: 'ltr', //Gan
-  gd: 'ltr', //Scottish
+  gan: '贛語', //Gan Chinese
+  gd: 'Gàidhlig', //Scottish Gaelic
   gil: 'Taetae', //Gilbertese
   gl: 'Galego', //Galician
   gn: "Avañe'ẽ", //Guarani
@@ -80,11 +80,11 @@ export default {
   gu: 'ગુજરાતી', //Gujarati
   gv: 'Gaelg', //Manx
   ha: 'هَوُسَ', //Hausa
-  hak: 'ltr', //Hakka
+  hak: 'Hak-kâ-fa', //Hakka
   haw: 'Hawai`i', //Hawaiian
   he: 'עברית', //Hebrew
   hi: 'हिन्दी', //Hindi
-  ho: 'ltr', //Hiri
+  ho: 'Hiri Motu', //Hiri Motu
   hr: 'Hrvatski', //Croatian
   ht: 'Krèyol', //Haitian
   hu: 'Magyar', //Hungarian
@@ -94,7 +94,7 @@ export default {
   id: 'Bahasa', //Indonesian
   ie: 'Interlingue', //Interlingue
   ig: 'Igbo', //Igbo
-  ii: 'ltr', //Sichuan
+  ii: 'ꆇꉙ', //Sichuan Yi
   ik: 'Iñupiak', //Inupiak
   ilo: 'Ilokano', //Ilokano
   io: 'Ido', //Ido
@@ -151,17 +151,17 @@ export default {
   na: 'Dorerin', //Nauruan
   nah: 'Nahuatl', //Nahuatl
   nap: 'Nnapulitano', //Neapolitan
-  nd: 'ltr', //North
+  nd: 'isiNdebele', //North Ndebele
   nds: 'Plattdüütsch', //Low German
-  'nds-nl': 'Saxon', //Dutch
+  'nds-nl': 'Nedersaksisch', //Dutch Low Saxon
   ne: 'नेपाली', //Nepali
   new: 'नेपालभाषा', //Newar
   ng: 'Oshiwambo', //Ndonga
   nl: 'Nederlands', //Dutch
-  nn: 'ltr', //Norwegian
+  nn: 'Nynorsk', //Norwegian Nynorsk
   no: 'Norsk', //Norwegian
-  nr: 'ltr', //South
-  nso: 'ltr', //Northern
+  nr: 'isiNdebele', //South Ndebele
+  nso: 'Sesotho sa Leboa', //Northern Sotho
   nrm: 'Nouormand', //Norman
   nv: 'Diné', //Navajo
   ny: 'Chi-Chewa', //Chichewa
@@ -174,7 +174,7 @@ export default {
   pag: 'Pangasinan', //Pangasinan
   pam: 'Kapampangan', //Kapampangan
   pap: 'Papiamentu', //Papiamentu
-  pdc: 'ltr', //Pennsylvania
+  pdc: 'Deitsch', //Pennsylvania German
   pi: 'Pāli', //Pali
   pih: 'Norfuk', //Norfolk
   pl: 'Polski', //Polish
@@ -182,7 +182,7 @@ export default {
   ps: 'پښتو', //Pashto
   pt: 'Português', //Portuguese
   qu: 'Runa', //Quechua
-  rm: 'ltr', //Raeto
+  rm: 'Rumantsch', //Raeto-Romance
   rmy: 'Romani', //Romani
   rn: 'Kirundi', //Kirundi
   ro: 'Română', //Romanian
@@ -194,11 +194,11 @@ export default {
   scn: 'Sicilianu', //Sicilian
   sco: 'Scots', //Scots
   sd: 'सिनधि', //Sindhi
-  se: 'ltr', //Northern
+  se: 'Davvisámegiella', //Northern Sami
   sg: 'Sängö', //Sango
   sh: 'Srpskohrvatski', //Serbo-Croatian
   si: 'සිංහල', //Sinhalese
-  simple: 'ltr', //Simple
+  simple: 'Simple English', //Simple English
   sk: 'Slovenčina', //Slovak
   sl: 'Slovenščina', //Slovenian
   sm: 'Gagana', //Samoan
@@ -207,7 +207,7 @@ export default {
   sq: 'Shqip', //Albanian
   sr: 'Српски', //Serbian
   ss: 'SiSwati', //Swati
-  st: 'ltr', //Southern
+  st: 'Sesotho', //Southern Sotho
   su: 'Basa', //Sundanese
   sv: 'Svenska', //Swedish
   sw: 'Kiswahili', //Swahili
@@ -222,7 +222,7 @@ export default {
   tlh: 'tlhIngan-Hol', //Klingon
   tn: 'Setswana', //Tswana
   to: 'Lea', //Tonga
-  tpi: 'ltr', //Tok
+  tpi: 'Tok Pisin', //Tok Pisin
   tr: 'Türkçe', //Turkish
   ts: 'Xitsonga', //Tsonga
   tt: 'Tatarça', //Tatar
@@ -237,7 +237,7 @@ export default {
   ve: 'Tshivenḓa', //Venda
   vi: 'Việtnam', //Vietnamese
   vec: 'Vèneto', //Venetian
-  vls: 'ltr', //West
+  vls: 'West-Vlams', //West Flemish
   vo: 'Volapük', //Volapük
   wa: 'Walon', //Walloon
   war: 'Winaray', //Waray-Waray
@@ -248,7 +248,7 @@ export default {
   yo: 'Yorùbá', //Yoruba
   za: 'Cuengh', //Zhuang
   zh: '中文', //Chinese
-  'zh-classical': 'ltr', //Classical
+  'zh-classical': '文言', //Classical Chinese
   'zh-min-nan': 'Bân-lâm-gú', //Minnan
   'zh-yue': '粵語', //Cantonese
   zu: 'isiZulu', //Zulu

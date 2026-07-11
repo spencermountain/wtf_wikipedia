@@ -1,17 +1,10 @@
 /*! wtf_wikipedia  MIT */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('isomorphic-unfetch')) :
-  typeof define === 'function' && define.amd ? define(['isomorphic-unfetch'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wtf = factory(global.unfetch));
-})(this, (function (unfetch) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wtf = factory());
+})(this, (function () { 'use strict';
 
-  /**
-   * Parses out the domain and title from a url
-   *
-   * @private
-   * @param {string} url The url that will be parsed
-   * @returns {{domain: string, title: string}} The domain and title of a url
-   */
   const parseUrl = function (url) {
     let parsed = new URL(url); //eslint-disable-line
     let title = parsed.pathname.replace(/^\/(wiki\/)?/, '');
@@ -22,52 +15,22 @@
     }
   };
 
-  /**
-   * capitalizes the input
-   * hello -> Hello
-   * hello there -> Hello there
-   *
-   * @private
-   * @param {string} [str] the string that will be capitalized
-   * @returns {string} the capitalized string
-   */
-
-  /**
-   * trim whitespaces of the ends normalize 2 spaces into one and removes whitespaces before commas
-   *
-   * @private
-   * @param {string} [str] the string that will be processed
-   * @returns {string} the processed string
-   */
+  //trims the ends, collapses double-spaces, and removes whitespace before commas
   function trim_whitespace(str) {
     if (str && typeof str === 'string') {
       str = str.replace(/^\s+/, '');
       str = str.replace(/\s+$/, '');
-      str = str.replace(/ {2}/, ' ');
-      str = str.replace(/\s, /, ', ');
+      str = str.replace(/ {2,}/g, ' ');
+      str = str.replace(/\s, /g, ', ');
       return str
     }
     return ''
   }
 
-  /**
-   * determines if an variable is an array or not
-   *
-   * @private
-   * @param {*} x the variable that needs to be checked
-   * @returns {boolean} whether the variable is an array
-   */
   function isArray(x) {
     return Object.prototype.toString.call(x) === '[object Array]'
   }
 
-  /**
-   *  determines if an variable is an object or not
-   *
-   * @private
-   * @param {*} x the variable that needs to be checked
-   * @returns {boolean} whether the variable is an object
-   */
   function isObject(x) {
     return x && Object.prototype.toString.call(x) === '[object Object]'
   }
@@ -86,38 +49,16 @@
     redirects: 'true',
   };
 
-  /**
-   * turns a object into a query string
-   *
-   * @private
-   * @param {Object<string, string | number | boolean>} obj
-   * @returns {string} QueryString
-   */
   const toQueryString = function (obj) {
     return Object.entries(obj)
       .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
       .join('&')
   };
 
-  /**
-   * cleans and prepares the tile by replacing the spaces with underscores (_) and trimming the white spaces of the ends
-   *
-   * @private
-   * @param {string} page the title that needs cleaning
-   * @returns {string} the cleaned title
-   */
   const cleanTitle = (page) => {
     return page.replace(/ /g, '_').trim()
   };
 
-  /**
-   * generates the url for fetching the pages
-   *
-   * @private
-   * @param {import('.').fetchDefaults} options
-   * @param {Object} [parameters]
-   * @returns {string} the url that can be used to make the fetch
-   */
   const makeUrl = function (options, parameters = defaults$c) {
     let params = Object.assign({}, parameters);
 
@@ -170,19 +111,10 @@
     return `${apiPath}${toQueryString(params)}`
   };
 
-  /**
-   * parses the media wiki api response to something we can use
-   *
-   * the data-format from mediawiki api is nutso
-   *
-   * @private
-   * @param {object} data
-   * @param {object} [options]
-   * @returns {*} result
-   */
+  //parses the mediawiki api response into something usable - its data-format is nutso
   const getResult = function (data, options = {}) {
     // handle nothing found or no data passed
-    if (!data?.query?.pages || !data?.query || !data) {
+    if (!data?.query?.pages) {
       return null
     }
 
@@ -200,14 +132,19 @@
         return null
       }
 
-      // get the text from the object
-      let text = page.revisions[0]['*'];
-      // if the text is not found in the regular place than it is at the other place
-      if (!text && page.revisions[0].slots) {
-        text = page.revisions[0].slots.main['*'];
+      // a page can exist without any revisions - protect against it
+      let rev = page.revisions?.[0];
+      if (!rev) {
+        return null
       }
-      let revisionID = page.revisions[0].revid;
-      let timestamp = page.revisions[0].timestamp;
+      // get the text from the object
+      let text = rev['*'];
+      // if the text is not found in the regular place than it is at the other place
+      if (!text && rev.slots) {
+        text = rev.slots.main['*'];
+      }
+      let revisionID = rev.revid;
+      let timestamp = rev.timestamp;
 
       page.pageprops = page.pageprops || {};
 
@@ -232,15 +169,7 @@
     })
   };
 
-  /**
-   * helper for looping around all sections of a document
-   *
-   * @private
-   * @param {object} doc the document with the sections
-   * @param {string} fn the function name of the function that will be called
-   * @param {string | number} [clue] the clue that will be used with the function
-   * @returns {Array|*} the array of item at the index of the clue
-   */
+  // calls sec[fn](clue) across every section and flattens the results
   const sectionMap = function (doc, fn, clue) {
     let arr = [];
     doc.sections().forEach((sec) => {
@@ -263,31 +192,45 @@
     return arr
   };
 
-  /**
-   * applies the the key values of defaults to options
-   *
-   * @private
-   * @param {object} options the user options
-   * @param {object} defaults the defaults
-   * @returns {object} the user options with the defaults applied
-   */
   const setDefaults = function (options, defaults) {
     return Object.assign({}, defaults, options)
   };
 
-  /**
-   * @typedef DocumentToJsonOptions
-   * @property {boolean | undefined} title
-   * @property {boolean | undefined} pageID
-   * @property {boolean | undefined} categories
-   * @property {boolean | undefined} sections
-   * @property {boolean | undefined} coordinates
-   * @property {boolean | undefined} infoboxes
-   * @property {boolean | undefined} images
-   * @property {boolean | undefined} plaintext
-   * @property {boolean | undefined} citations
-   * @property {boolean | undefined} references
-   */
+  // handy preset outputs, like `.json('md')`
+  const sizes = {
+    sm: {
+      title: true,
+      description: true,
+      infoboxes: true,
+      categories: true,
+    },
+    md: {
+      title: true,
+      description: true,
+      infoboxes: true,
+      categories: true,
+      coordinates: true,
+      images: true,
+      links: true,
+      templates: true,
+      text: true,
+      references: true,
+    },
+    lg: {
+      title: true,
+      description: true,
+      infoboxes: true,
+      categories: true,
+      coordinates: true,
+      images: true,
+      links: true,
+      templates: true,
+      sections: true,
+      text: true,
+      references: true,
+    },
+  };
+
   const defaults$b = {
     title: true,
     sections: true,
@@ -302,35 +245,15 @@
     language: false,
   };
 
-  /**
-   * @typedef documentToJsonReturn
-   * @property {string | undefined} title
-   * @property {number | null | undefined} pageID
-   * @property {string[] | undefined} categories
-   * @property {object[] | undefined} sections
-   * @property {boolean | undefined} isRedirect
-   * @property {object | undefined} redirectTo
-   * @property {object[] | undefined} coordinates
-   * @property {object[] | undefined} infoboxes
-   * @property {object[] | undefined} images
-   * @property {string | undefined} plaintext
-   * @property {object[] | undefined} references
-   */
-
-  /**
-   * an opinionated output of the most-wanted data
-   *
-   * @private
-   * @param {object} doc
-   * @param {DocumentToJsonOptions} options
-   * @returns {documentToJsonReturn}
-   */
+  // an opinionated output of the most-wanted data
   const toJSON$2 = function (doc, options) {
-    options = setDefaults(options, defaults$b);
-
-    /**
-     * @type {documentToJsonReturn}
-     */
+    let isPreset = false;
+    if (typeof options === 'string') {
+      options = sizes[options] || sizes.md;
+      isPreset = true;
+    } else {
+      options = setDefaults(options, defaults$b);
+    }
     let data = {};
 
     if (options.title) {
@@ -363,8 +286,15 @@
     if (options.timestamp && doc.timestamp()) {
       data.timestamp = doc.timestamp();
     }
-    if (options.description && doc.description()) {
-      data.description = doc.description();
+    if (options.description) {
+      let desc = doc.description();
+      // for presets, fall-back to the first sentence when the wikidata description is missing
+      if (!desc && isPreset && doc.sentence()) {
+        desc = doc.sentence().text();
+      }
+      if (desc) {
+        data.description = desc;
+      }
     }
 
     // page sections
@@ -386,9 +316,20 @@
     if (options.coordinates) {
       data.coordinates = doc.coordinates();
     }
-
-    if (options.plaintext) {
-      data.plaintext = doc.text(options);
+    if (options.links) {
+      data.links = doc.links().map((i) => i.json(options));
+    }
+    if (options.templates) {
+      data.templates = doc.templates().map((i) => i.json(options));
+    }
+    if (options.plaintext || options.text) {
+      let text = doc.text(options);
+      if (options.text) {
+        data.text = text;
+      }
+      if (options.plaintext) {
+        data.plaintext = text; //support old plaintext key, too
+      }
     }
 
     return data
@@ -1165,13 +1106,6 @@
     return false
   };
 
-  /**
-   * Parses the wikitext to find out if this page is a disambiguation
-   *
-   * @private
-   * @param {object} doc the document that is examined
-   * @returns {boolean} an indication if the document is a disambiguation page
-   */
   const isDisambig = function (doc) {
     // check for a {{disambig}} template
     let templates = doc.templates().map((tmpl) => tmpl.json());
@@ -1376,20 +1310,20 @@
     'bat-smg': 'Žemaitėška', //Samogitian
     bcl: 'Bikol', //Bikol
     be: 'Беларуская', //Belarusian
-    'be-x-old': 'ltr', //Belarusian
+    'be-x-old': 'Беларуская (тарашкевіца)', //Belarusian (Taraškievica)
     bg: 'Български', //Bulgarian
     bh: 'भोजपुरी', //Bihari
     bi: 'Bislama', //Bislama
     bm: 'Bamanankan', //Bambara
     bn: 'বাংলা', //Bengali
     bo: 'བོད་ཡིག', //Tibetan
-    bpy: 'ltr', //Bishnupriya
+    bpy: 'বিষ্ণুপ্রিয়া মণিপুরী', //Bishnupriya Manipuri
     br: 'Brezhoneg', //Breton
     bs: 'Bosanski', //Bosnian
     bug: 'ᨅᨔ', //Buginese
-    bxr: 'ltr', //Buriat
+    bxr: 'Буряад', //Buriat
     ca: 'Català', //Catalan
-    cdo: 'Chinese', //Min
+    cdo: 'Mìng-dĕ̤ng-ngṳ̄', //Min Dong Chinese
     ce: 'Нохчийн', //Chechen
     ceb: 'Sinugboanong', //Cebuano
     ch: 'Chamoru', //Chamorro
@@ -1400,13 +1334,13 @@
     cr: 'Nehiyaw', //Cree
     cs: 'Česky', //Czech
     csb: 'Kaszëbsczi', //Kashubian
-    cu: 'Slavonic', //Old
+    cu: 'Словѣньскъ', //Old Church Slavonic
     cv: 'Чăваш', //Chuvash
     cy: 'Cymraeg', //Welsh
     da: 'Dansk', //Danish
     de: 'Deutsch', //German
     diq: 'Zazaki', //Dimli
-    dsb: 'ltr', //Lower
+    dsb: 'Dolnoserbski', //Lower Sorbian
     dv: 'ދިވެހިބަސް', //Divehi
     dz: 'ཇོང་ཁ', //Dzongkha
     ee: 'Ɛʋɛ', //Ewe
@@ -1426,10 +1360,10 @@
     fr: 'Français', //French
     frp: 'Arpitan', //Arpitan
     fur: 'Furlan', //Friulian
-    fy: 'ltr', //West
+    fy: 'Frysk', //West Frisian
     ga: 'Gaeilge', //Irish
-    gan: 'ltr', //Gan
-    gd: 'ltr', //Scottish
+    gan: '贛語', //Gan Chinese
+    gd: 'Gàidhlig', //Scottish Gaelic
     gil: 'Taetae', //Gilbertese
     gl: 'Galego', //Galician
     gn: "Avañe'ẽ", //Guarani
@@ -1437,11 +1371,11 @@
     gu: 'ગુજરાતી', //Gujarati
     gv: 'Gaelg', //Manx
     ha: 'هَوُسَ', //Hausa
-    hak: 'ltr', //Hakka
+    hak: 'Hak-kâ-fa', //Hakka
     haw: 'Hawai`i', //Hawaiian
     he: 'עברית', //Hebrew
     hi: 'हिन्दी', //Hindi
-    ho: 'ltr', //Hiri
+    ho: 'Hiri Motu', //Hiri Motu
     hr: 'Hrvatski', //Croatian
     ht: 'Krèyol', //Haitian
     hu: 'Magyar', //Hungarian
@@ -1451,7 +1385,7 @@
     id: 'Bahasa', //Indonesian
     ie: 'Interlingue', //Interlingue
     ig: 'Igbo', //Igbo
-    ii: 'ltr', //Sichuan
+    ii: 'ꆇꉙ', //Sichuan Yi
     ik: 'Iñupiak', //Inupiak
     ilo: 'Ilokano', //Ilokano
     io: 'Ido', //Ido
@@ -1508,17 +1442,17 @@
     na: 'Dorerin', //Nauruan
     nah: 'Nahuatl', //Nahuatl
     nap: 'Nnapulitano', //Neapolitan
-    nd: 'ltr', //North
+    nd: 'isiNdebele', //North Ndebele
     nds: 'Plattdüütsch', //Low German
-    'nds-nl': 'Saxon', //Dutch
+    'nds-nl': 'Nedersaksisch', //Dutch Low Saxon
     ne: 'नेपाली', //Nepali
     new: 'नेपालभाषा', //Newar
     ng: 'Oshiwambo', //Ndonga
     nl: 'Nederlands', //Dutch
-    nn: 'ltr', //Norwegian
+    nn: 'Nynorsk', //Norwegian Nynorsk
     no: 'Norsk', //Norwegian
-    nr: 'ltr', //South
-    nso: 'ltr', //Northern
+    nr: 'isiNdebele', //South Ndebele
+    nso: 'Sesotho sa Leboa', //Northern Sotho
     nrm: 'Nouormand', //Norman
     nv: 'Diné', //Navajo
     ny: 'Chi-Chewa', //Chichewa
@@ -1531,7 +1465,7 @@
     pag: 'Pangasinan', //Pangasinan
     pam: 'Kapampangan', //Kapampangan
     pap: 'Papiamentu', //Papiamentu
-    pdc: 'ltr', //Pennsylvania
+    pdc: 'Deitsch', //Pennsylvania German
     pi: 'Pāli', //Pali
     pih: 'Norfuk', //Norfolk
     pl: 'Polski', //Polish
@@ -1539,7 +1473,7 @@
     ps: 'پښتو', //Pashto
     pt: 'Português', //Portuguese
     qu: 'Runa', //Quechua
-    rm: 'ltr', //Raeto
+    rm: 'Rumantsch', //Raeto-Romance
     rmy: 'Romani', //Romani
     rn: 'Kirundi', //Kirundi
     ro: 'Română', //Romanian
@@ -1551,11 +1485,11 @@
     scn: 'Sicilianu', //Sicilian
     sco: 'Scots', //Scots
     sd: 'सिनधि', //Sindhi
-    se: 'ltr', //Northern
+    se: 'Davvisámegiella', //Northern Sami
     sg: 'Sängö', //Sango
     sh: 'Srpskohrvatski', //Serbo-Croatian
     si: 'සිංහල', //Sinhalese
-    simple: 'ltr', //Simple
+    simple: 'Simple English', //Simple English
     sk: 'Slovenčina', //Slovak
     sl: 'Slovenščina', //Slovenian
     sm: 'Gagana', //Samoan
@@ -1564,7 +1498,7 @@
     sq: 'Shqip', //Albanian
     sr: 'Српски', //Serbian
     ss: 'SiSwati', //Swati
-    st: 'ltr', //Southern
+    st: 'Sesotho', //Southern Sotho
     su: 'Basa', //Sundanese
     sv: 'Svenska', //Swedish
     sw: 'Kiswahili', //Swahili
@@ -1579,7 +1513,7 @@
     tlh: 'tlhIngan-Hol', //Klingon
     tn: 'Setswana', //Tswana
     to: 'Lea', //Tonga
-    tpi: 'ltr', //Tok
+    tpi: 'Tok Pisin', //Tok Pisin
     tr: 'Türkçe', //Turkish
     ts: 'Xitsonga', //Tsonga
     tt: 'Tatarça', //Tatar
@@ -1594,7 +1528,7 @@
     ve: 'Tshivenḓa', //Venda
     vi: 'Việtnam', //Vietnamese
     vec: 'Vèneto', //Venetian
-    vls: 'ltr', //West
+    vls: 'West-Vlams', //West Flemish
     vo: 'Volapük', //Volapük
     wa: 'Walon', //Walloon
     war: 'Winaray', //Waray-Waray
@@ -1605,7 +1539,7 @@
     yo: 'Yorùbá', //Yoruba
     za: 'Cuengh', //Zhuang
     zh: '中文', //Chinese
-    'zh-classical': 'ltr', //Classical
+    'zh-classical': '文言', //Classical Chinese
     'zh-min-nan': 'Bân-lâm-gú', //Minnan
     'zh-yue': '粵語', //Cantonese
     zu: 'isiZulu', //Zulu
@@ -2178,12 +2112,11 @@
         obj.text = obj.text || obj.page;
         obj.text += suffix.trim();
       }
-      //titlecase it, if necessary
+      //keep the display-text, for lowercase pages
       if (obj.page && /^[A-Z]/.test(obj.page) === false) {
         if (!obj.text) {
           obj.text = obj.page;
         }
-        obj.page = obj.page;
       }
       // support [[:Category:Foo]] syntax
       if (obj.text && obj.text.startsWith(':')) {
@@ -2252,7 +2185,8 @@
   const openTag = `< ?(${ignore$1.join('|')}) ?[^>]{0,200}>`;
   const closeTag = `< ?/ ?(${ignore$1.join('|')}) ?>`;
   const anyChar = '\\s\\S'; //including newline
-  const noThanks = new RegExp(`${openTag}[${anyChar}]+?${closeTag}`, 'gi');
+  //bound the content-length, so unclosed tags don't scan to the end of large pages
+  const noThanks = new RegExp(`${openTag}[${anyChar}]{1,40000}?${closeTag}`, 'gi');
 
   const kill_xml = function (wiki) {
     //(<ref> tags are parsed in Section class) - luckily, refs can't be recursive.
@@ -2280,14 +2214,7 @@
     return wiki.trim()
   };
 
-  /**
-   * removes unnecessary strings from the wikitext
-   * it is mostly-formatting stuff can be cleaned-up first, to make life easier
-   *
-   * @private
-   * @param {string} wiki the wikitext that needs processing
-   * @returns {string} the processed text
-   */
+  // strips out formatting cruft up-front to make the later parsing easier
   function preProcess(wiki) {
     //remove comments
     wiki = wiki.replace(/<!--[\s\S]{0,3000}?-->/g, '');
@@ -2321,7 +2248,7 @@
     //({{template}},{{template}}) leaves empty parentheses
     wiki = wiki.replace(/\([,;: ]+\)/g, '');
     //these templates just screw things up, too
-    wiki = wiki.replace(/\{\{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/i, '');
+    wiki = wiki.replace(/\{\{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/gi, '');
 
     return wiki
   }
@@ -2331,13 +2258,8 @@
   //https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
   const specialChar = /[\\.$]/;
 
-  /**
-   * this function encodes a string to make it mongodb compatible.
-   * https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
-   *
-   * @param {string} str
-   * @returns {string} the encoded string
-   */
+  //encodes a string to make it mongodb-compatible
+  //https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
   const encodeStr = function (str) {
     if (typeof str !== 'string') {
       str = '';
@@ -2374,17 +2296,8 @@
     references: true,
   };
 
-  /**
-   *
-   * @param {object} section
-   * @param {object} options
-   * @returns {object}
-   */
   const toJSON$1 = function (section, options) {
     options = setDefaults(options, defaults$9);
-    /**
-     * @type {object}
-     */
     let data = {};
 
     if (options.headers === true) {
@@ -2633,9 +2546,6 @@
     numbers: true,
   };
 
-  /**
-   * @private
-   * */
   const toJSON = function (s, options) {
     options = setDefaults(options, defaults$7);
     let data = {};
@@ -3072,13 +2982,6 @@
     return sentences
   };
 
-  /**
-   * This function removes some final characters from the sentence
-   *
-   * @private
-   * @param {string} line the wiki text for processing
-   * @returns {string} the processed string
-   */
   function postprocess(line) {
     //remove empty parentheses (sometimes caused by removing templates)
     line = line.replace(/\([,;: ]*\)/g, '');
@@ -3090,12 +2993,6 @@
     return line
   }
 
-  /**
-   * returns one sentence object
-   *
-   * @param {string} str create a object from a sentence
-   * @returns {Sentence} the Sentence created from the text
-   */
   function fromText(str) {
     let obj = {
       wiki: str,
@@ -3654,14 +3551,6 @@
     };
   });
 
-  /**
-   * removes the top and bottom off the template
-   * so it removes tje '{{' and '}}'
-   *
-   * @private
-   * @param {string} tmpl the string to be striped
-   * @returns {string} the striped string
-   */
   const strip = function (tmpl) {
     tmpl = tmpl.replace(/^\{\{/, '');
     tmpl = tmpl.replace(/\}\}$/, '');
@@ -3676,13 +3565,7 @@
     return name
   };
 
-  /**
-   * turn {{name|one|two|three}} into [name, one, two, three]
-   *
-   * @private
-   * @param {string} tmpl the template text
-   * @returns {string[]} a array containing all the split parameters
-   */
+  //turn {{name|one|two|three}} into [name, one, two, three]
   const pipeSplitter = function (tmpl) {
     //start with a naive '|' split
     let arr = tmpl.split(/\n?\|/);
@@ -3695,10 +3578,11 @@
       //has '[[' but no ']]'
       //has equal number of opening and closing tags. handle nested case '[[[[' ']]'
       if (
-        /\[\[[^\]]+$/.test(a) ||
-        /\{\{[^}]+$/.test(a) ||
-        a.split('{{').length !== a.split('}}').length ||
-        a.split('[[').length !== a.split(']]').length
+        i + 1 < arr.length &&
+        (/\[\[[^\]]+$/.test(a) ||
+          /\{\{[^}]+$/.test(a) ||
+          a.split('{{').length !== a.split('}}').length ||
+          a.split('[[').length !== a.split(']]').length)
       ) {
         arr[i + 1] = arr[i] + '|' + arr[i + 1];
         arr[i] = null;
@@ -3712,8 +3596,9 @@
     for (let i = arr.length - 1; i >= 0; i -= 1) {
       if (arr[i] === '') {
         arr.pop();
+      } else {
+        break
       }
-      break
     }
     return arr
   };
@@ -3729,18 +3614,7 @@
     prototype: true,
   };
 
-  /**
-   * @typedef parseKeyReturn
-   * @property {string} val
-   * @property {string} key
-   */
-
-  /**
-   * turn 'key=val' into {key:key, val:val}
-   *
-   * @param {string} str the string that will be parsed
-   * @returns {parseKeyReturn} the spit string
-   */
+  //turn 'key=val' into {key:key, val:val}
   const parseKey = function (str) {
     let parts = str.split('=');
     let key = parts[0] || '';
@@ -3756,14 +3630,7 @@
     }
   };
 
-  /**
-   * turn [a, b=v, c] into {'1':a, b:v, '2':c}
-   *
-   * @private
-   * @param {string[]} arr the array of parameters
-   * @param {string[]} [order] the order in which the parameters are returned
-   * @returns {object} and object with the names as the keys and the values as the values
-   */
+  //turn [a, b=v, c] into {'1':a, b:v, '2':c}
   const keyMaker = function (arr, order) {
     let keyIndex = 0;
     return arr.reduce((h, str = '') => {
@@ -3828,14 +3695,6 @@
 
   //remove the top/bottom off the template
 
-  /**
-   * most templates just want plaintext...
-   *
-   * @private
-   * @param {str} str
-   * @param {'json' | 'raw'} [fmt]
-   * @returns {string} text
-   */
   const makeFormat = function (str, fmt) {
     let s = fromText(str);
     //support various output formats
@@ -3848,15 +3707,6 @@
     return s.text()
   };
 
-  /**
-   * parses the parameters of a template to a usable format
-   *
-   * @private
-   * @param {string} tmpl the template text
-   * @param {string[]} [order] the order in which the parameters are returned
-   * @param {'json' | 'raw'} [fmt] whether you wan to parse the text of the template the raw object or just the text
-   * @returns {object} the parameters of the template in a usable format
-   */
   const parser = function (tmpl, order = [], fmt) {
     //remove {{}}'s and split based on pipes
     tmpl = strip(tmpl || '');
@@ -3898,16 +3748,9 @@
   const opener = '[';
   const closer = ']';
 
-  /**
-   *
-   * find all the pairs of '[[...[[..]]...]]' in the text
-   * used to properly root out recursive template calls, [[.. [[...]] ]]
-   * basically just adds open tags, and subtracts closing tags
-   *
-   * @private
-   * @param {string} text the text in which is searched in
-   * @returns {string[]} all the links in the text
-   */
+  //find all the pairs of '[[...[[..]]...]]' in the text
+  //used to root out recursive template calls, [[.. [[...]] ]]
+  //basically just adds open tags, and subtracts closing tags
   function nested_find(text) {
     let out = [];
     let last = [];
@@ -5140,12 +4983,9 @@
   };
 
   const getLang = function (name) {
-    //grab the language from the template name - 'ipa-de'
+    //grab the language-code from the template name - 'ipa-de'
     let lang = name.match(/ipac?-(.+)/);
     if (lang !== null) {
-      if (languages.hasOwnProperty(lang[1]) === true) {
-        return languages[lang[1]].english_title
-      }
       return lang[1]
     }
     return null
@@ -5597,7 +5437,7 @@
       let obj = parser(tmpl, ['numerator', 'denominator', 'decimals']);
       let num = Number(obj.numerator) / Number(obj.denominator);
       num *= 100;
-      if (num === null) {
+      if (isNaN(num)) {
         return ''
       }
       let dec = Number(obj.decimals) || 0;
@@ -5880,16 +5720,16 @@
     float: (tmpl) => {
       let { text, dir } = parser(tmpl, ['dir', 'text']);
       if (!text) {
-        return dir
+        return dir || ''
       }
-      return text || ''
+      return text
     },
     lower: (tmpl) => {
       let { text, n } = parser(tmpl, ['n', 'text']);
       if (!text) {
-        return n
+        return n || ''
       }
-      return text || ''
+      return text
     },
     splitspan: (tmpl) => {
       let list = parser(tmpl).list || [];
@@ -5959,7 +5799,7 @@
     },
     gaps: (tmpl) => {
       let data = parser(tmpl);
-      return data.list.join('  ')
+      return (data.list || []).join('  ')
     },
     bra: (tmpl) => {
       let data = parser(tmpl, ['a']);
@@ -7599,7 +7439,7 @@
     //https://en.wikipedia.org/wiki/Template:Weather_box/concise_C
     'weather box/concise c': (tmpl, list) => {
       let obj = parser(tmpl);
-      obj.list = obj.list.map((s) => toNumber(s));
+      obj.list = (obj.list || []).map((s) => toNumber(s));
       obj.byMonth = {
         'high c': obj.list.slice(0, 12),
         'low c': obj.list.slice(12, 24),
@@ -7613,7 +7453,7 @@
 
     'weather box/concise f': (tmpl, list) => {
       let obj = parser(tmpl);
-      obj.list = obj.list.map((s) => toNumber(s));
+      obj.list = (obj.list || []).map((s) => toNumber(s));
       obj.byMonth = {
         'high f': obj.list.slice(0, 12),
         'low f': obj.list.slice(12, 24),
@@ -7929,7 +7769,7 @@
         }
       }
       obj.list = obj.list.filter((s) => s);
-      str += obj.list.join('\n\n');
+      str += '\n' + obj.list.join('\n\n') + '\n';
       return str
     },
 
@@ -8340,8 +8180,8 @@
     let units = ['year', 'month', 'date', 'hour', 'minute', 'second'];
     //parse each unit in sequence..
     for (let i = 0; i < units.length; i += 1) {
-      //skip it
-      if (!arr[i] && arr[1] !== 0) {
+      //skip it, unless it's a literal zero
+      if (!arr[i] && arr[i] !== 0) {
         continue
       }
       let num = parseInt(arr[i], 10);
@@ -8450,7 +8290,7 @@
     //assume now, if 'to' is empty
     if (to.length === 0) {
       let d = new Date();
-      to = [d.getFullYear(), d.getMonth(), d.getDate()];
+      to = [d.getFullYear(), d.getMonth() + 1, d.getDate()];
     }
     to = ymd(to);
     return {
@@ -8850,10 +8690,8 @@
     }
   };
 
-  /**
-   * converts DMS (decimal-minute-second) geo format to lat/lng format.
-   * major thank you to https://github.com/gmaclennan/parse-dms and https://github.com/WSDOT-GIS/dms-js 👏
-   **/
+  //converts DMS (decimal-minute-second) geo format to lat/lng format.
+  //thanks to https://github.com/gmaclennan/parse-dms and https://github.com/WSDOT-GIS/dms-js
   function parseDMS(arr) {
     let hemisphere = arr.pop();
     let degrees = Number(arr[0] || 0);
@@ -9191,15 +9029,16 @@
     'win draw lose': function (tmpl, list) {
       let obj = parser(tmpl);
       list.push(obj);
-      let draw = parseInt(obj.list[2]) || 0;
-      let lose = parseInt(obj.list[3]) || 0;
-      let win = parseInt(obj.list[1]) || 0;
+      let arr = obj.list || [];
+      let draw = parseInt(arr[2]) || 0;
+      let lose = parseInt(arr[3]) || 0;
+      let win = parseInt(arr[1]) || 0;
       let total = win + draw + lose;
       let winPercentage = '';
       if (total > 0) {
         winPercentage = ((win / total) * 100).toFixed(1);
       }
-      return '\n| ' + obj.list.join('\n| ') + '\n| ' + winPercentage + '%'
+      return '\n| ' + arr.join('\n| ') + '\n| ' + winPercentage + '%'
     },
 
     'win-loss record': function (tmpl, list) {
@@ -9419,13 +9258,6 @@
     return ['', json]
   };
 
-  /**
-   * turn an infobox into some nice json
-   * 
-   * @param {object} infobox 
-   * @param {object} [options] 
-   * @returns {object}
-   */
   const toJson = function (infobox, options) {
     let json = Object.keys(infobox.data).reduce((h, k) => {
       if (infobox.data[k]) {
@@ -9611,21 +9443,8 @@
       let data = this.data;
       return data.title || data.encyclopedia || data.author || ''
     },
-    links: function (n) {
-      let arr = [];
-      if (typeof n === 'number') {
-        return arr[n]
-      }
-      //grab a specific link..
-      if (typeof n === 'number') {
-        return arr[n]
-      } else if (typeof n === 'string') {
-        //grab a link like .links('Fortnight')
-        n = n.charAt(0).toUpperCase() + n.substring(1); //titlecase it
-        let link = arr.find((o) => o.page() === n);
-        return link === undefined ? [] : [link]
-      }
-      return arr || []
+    links: function () {
+      return [] //nah, skip these.
     },
     text: function () {
       return '' //nah, skip these.
@@ -9863,13 +9682,6 @@
   //okay, <gallery> is a xml-tag, with newline-separated data, somehow pivoted by '|'...
   //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
   //- not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
-  /**
-   *
-   * @private
-   * @param {object} catcher
-   * @param {object} doc
-   * @param {object} section
-   */
   const parseGallery = function (catcher, doc, section) {
     catcher.text = catcher.text.replace(/<gallery([^>]*)>([\s\S]+)<\/gallery>/g, (_, _attrs, inside) => {
       let images = inside.split(/\n/g);
@@ -9905,16 +9717,8 @@
     });
   };
 
-  /**
-   * parses out the `Election_box` template from the wiki text
-   *
-   * this is a non-traditional template, for some reason
-   * https://en.wikipedia.org/wiki/Template:Election_box
-   *
-   * @private
-   * @param {object} catcher an object to provide and catch data
-   * @param {Document} doc
-   */
+  //parses out the `Election_box` template - a non-traditional template, for some reason
+  //https://en.wikipedia.org/wiki/Template:Election_box
   const parseElection = function (catcher, doc) {
     catcher.text = catcher.text.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, (tmpl) => {
       let data = {
@@ -9952,12 +9756,7 @@
     roster: ['player', 'gp', 'gs', 'mpg', 'fg%', '3fg%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
   };
 
-  /**
-   * https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
-   *
-   * @private
-   * @param {object} catcher
-   */
+  //https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
   const parseNBA = function (catcher) {
     catcher.text = catcher.text.replace(
       /\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi,
@@ -10003,11 +9802,6 @@
     }
     return headings
   };
-  /**
-   *
-   * @private
-   * @param {object} catcher
-   */
   const parseMlb = function (catcher) {
     catcher.text = catcher.text.replace(/\{\{mlb game log /gi, '{{game log ');
     catcher.text = catcher.text.replace(/\{\{game log (section|month)[\s\S]+?\{\{game log (section|month) end\}\}/gi, (tmpl) => {
@@ -10038,13 +9832,7 @@
 
   let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes'];
 
-  /**
-   *
-   * https://en.wikipedia.org/wiki/Template:MMA_record_start
-   *
-   * @private
-   * @param {object} catcher
-   */
+  //https://en.wikipedia.org/wiki/Template:MMA_record_start
   const parseMMA = function (catcher) {
     catcher.text = catcher.text.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, (tmpl) => {
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, '');
@@ -10070,15 +9858,8 @@
     });
   };
 
-  /**
-   * try to parse out the math and chem templates
-   *
-   * xml <math>y=mx+b</math> support
-   * https://en.wikipedia.org/wiki/Help:Displaying_a_formula
-   *
-   * @private
-   * @param {object} catcher
-   */
+  //parse out math and chem templates - e.g. xml <math>y=mx+b</math>
+  //https://en.wikipedia.org/wiki/Help:Displaying_a_formula
   const parseMath = function (catcher) {
     catcher.text = catcher.text.replace(/<math([^>]*)>([\s\S]*?)<\/math>/g, (_, attrs, inside) => {
       //clean it up a little?
@@ -10110,18 +9891,8 @@
     });
   };
 
-  /**
-   * parses out non standard templates
-   *
-   * Most templates are '{{template}}',
-   * but then, some are '<template></template>' others are {{start}}...{{end}}
-   * -> the templates here are of the second type.
-   *
-   * @private
-   * @param {object} section
-   * @param {object} doc
-   * @returns {Object} wikitext
-   */
+  //parses out non-standard templates - the '<template></template>' and {{start}}...{{end}} forms,
+  //rather than the usual '{{template}}'
   const xmlTemplates = function (section, doc) {
     const res = {
       templates: [],
@@ -10148,19 +9919,8 @@
     infoboxes: true,
   };
 
-  /**
-   * the Section class represents the different sections of the article.
-   * we look for the == title == syntax and split and parse the sections from there
-   *
-   * @class
-   */
+  //the Section class represents the == title == sections of an article
   class Section {
-    /**
-     * the stuff between headings - 'History' section for example
-     *
-     * @param {object} data the data already gathered about the section
-     * @param {object} doc the document that this section belongs to
-     */
     constructor(data, doc) {
       let props = {
         doc: doc,
@@ -10198,20 +9958,10 @@
       parseParagraphs(this, doc);
     }
 
-    /**
-     * returns the title of a section. if no title is available then it returns empty string
-     *
-     * @returns {string} the title of the section
-     */
     title() {
       return this._title || ''
     }
 
-    /**
-     * returns the index of the current section in the document
-     *
-     * @returns {number | null} the index of the current section in the document
-     */
     index() {
       if (!this._doc) {
         return null
@@ -10223,56 +9973,24 @@
       return index
     }
 
-    /**
-     * returns the depth (or indentation) of the section
-     * aka how many levels deep is this section located
-     *
-     * @returns {number} the depth of the section
-     */
     depth() {
       return this._depth
     }
 
-    /**
-     * returns the depth (or indentation) of the section
-     * aka how many levels deep is this section located
-     *
-     * @returns {number} the depth of the section
-     */
     indentation() {
       return this.depth()
     }
 
-    /**
-     * returns all sentences in the section
-     * if an clue is provided then it returns the sentence at clue-th index
-     *
-     * @returns {object | object[]} all sentences in an array or the clue-th sentence
-     */
     sentences() {
       return this.paragraphs().reduce((list, p) => {
         return list.concat(p.sentences())
       }, [])
     }
 
-    /**
-     * returns all paragraphs in the section
-     * if an clue is provided then it returns the paragraph at clue-th index
-     *
-     * @returns {object | object[]} all paragraphs in an array or the clue-th paragraph
-     */
     paragraphs() {
       return this._paragraphs || []
     }
 
-    /**
-     * returns all links in the section
-     * if an clue is provided and it is a number then it returns the link at clue-th index
-     * if an clue is provided and it is a string then it returns the link at the that content
-     *
-     * @param {number| string} [clue] the clue for selecting the link
-     * @returns {object | object[]} all links in an array or the clue-th link or the link with the content of clue
-     */
     links(clue) {
       let arr = [];
 
@@ -10304,24 +10022,10 @@
       return arr
     }
 
-    /**
-     * returns all tables in the section
-     * if an clue is provided then it returns the table at clue-th index
-     *
-     * @returns {object | object[]} all tables in an array or the clue-th infobox
-     */
     tables() {
       return this._tables || []
     }
 
-    /**
-     * returns all templates in the section
-     * if an clue is provided and clue is a number then it returns the template at clue-th index
-     * if an clue is provided and clue is a string then it returns all template with that name
-     *
-     * @param {number|string} [clue] the clue for selecting the template
-     * @returns {object | object[]} all templates in an array or the clue-th template or all template name `clue`
-     */
     templates(clue) {
       let arr = this._templates || [];
       // arr = arr.map((t) => t.json())
@@ -10333,13 +10037,6 @@
       return arr
     }
 
-    /**
-     * returns all infoboxes in the section
-     * if an clue is provided then it returns the infobox at clue-th index
-     *
-     * @param {number|string} [clue] the clue for selecting the infobox
-     * @returns {object | object[]} all infoboxes in an array or the clue-th infobox
-     */
     infoboxes(clue) {
       let arr = this._infoboxes || [];
       if (typeof clue === 'string') {
@@ -10350,12 +10047,6 @@
       return arr
     }
 
-    /**
-     * returns all lists in the section
-     * if an clue is provided then it returns the list at clue-th index
-     *
-     * @returns {object | object[]} all lists in an array or the clue-th list
-     */
     coordinates() {
       let arr = [...this.templates('coord'), ...this.templates('coor')];
       let list = arr.map((tmpl) => tmpl.json());
@@ -10367,12 +10058,6 @@
       return list
     }
 
-    /**
-     * returns all lists in the section
-     * if an clue is provided then it returns the list at clue-th index
-     *
-     * @returns {object | object[]} all lists in an array or the clue-th list
-     */
     lists() {
       let arr = [];
       this.paragraphs().forEach((p) => {
@@ -10381,12 +10066,6 @@
       return arr
     }
 
-    /**
-     * returns all interwiki links in the section
-     * if an clue is provided then it returns the interwiki link at clue-th index
-     *
-     * @returns {object | object[]} all interwiki links in an array or the clue-th interwiki link
-     */
     interwiki() {
       let arr = [];
       this.paragraphs().forEach((p) => {
@@ -10395,12 +10074,6 @@
       return arr
     }
 
-    /**
-     * returns all images in the section
-     * if an clue is provided then it returns the image at clue-th index
-     *
-     * @returns {object | object[]} all images in an array or the clue-th image
-     */
     images() {
       let arr = [];
       this.paragraphs().forEach((p) => {
@@ -10409,22 +10082,11 @@
       return arr
     }
 
-    /**
-     * returns all references in the section
-     * if an clue is provided then it returns the reference at clue-th index
-     *
-     * @returns {object | object[]} all references in an array or the clue-th reference
-     */
     references() {
       return this._references || []
     }
 
     //transformations
-    /**
-     * Removes the section from the document
-     *
-     * @returns {null|object} the document without this section. or null if there is no document
-     */
     remove() {
       if (!this._doc) {
         return null
@@ -10437,19 +10099,12 @@
       this.children().forEach((sec) => (bads[sec.title()] = true));
       let sections = this._doc.sections();
       sections = sections.filter((sec) => bads.hasOwnProperty(sec.title()) !== true);
-      sections = sections.filter((sec) => bads.hasOwnProperty(sec.title()) !== true);
 
       this._doc._sections = sections;
       return this._doc
     }
 
     //move-around sections like in jquery
-    /**
-     * returns the next sibling of this section
-     * if it can find one then it returns null
-     *
-     * @returns {Section|null} the next sibling
-     */
     nextSibling() {
       //if this section is not part of a document then we can go to the next part of the document
       if (!this._doc) {
@@ -10478,21 +10133,10 @@
       return null
     }
 
-    /**
-     * returns the next sibling of this section
-     * if it can find one then it returns null
-     *
-     * @returns {Section|null} the next sibling
-     */
     next() {
       return this.nextSibling()
     }
 
-    /**
-     * returns the previous section
-     *
-     * @returns {Section|null} the previous section
-     */
     lastSibling() {
       if (!this._doc) {
         return null
@@ -10502,43 +10146,18 @@
       return sections[index - 1] || null
     }
 
-    /**
-     * returns the previous section
-     *
-     * @returns {Section|null} the previous section
-     */
     last() {
       return this.lastSibling()
     }
 
-    /**
-     * returns the previous section
-     *
-     * @returns {Section|null} the previous section
-     */
     previousSibling() {
       return this.lastSibling()
     }
 
-    /**
-     * returns the previous section
-     *
-     * @returns {Section|null} the previous section
-     */
     previous() {
       return this.lastSibling()
     }
 
-    /**
-     * returns all the children of a section
-     *
-     * If the clue is a string then it will return the child with that exact title
-     * Else if the clue is a number then it returns the child at that index
-     * Else it returns all the children
-     *
-     * @param {number | string} [clue] A title of a section or a index of a wanted section
-     * @returns {Section | Section[] | null} A section or a array of sections
-     */
     children(clue) {
       if (!this._doc) {
         return null
@@ -10564,25 +10183,10 @@
       return children
     }
 
-    /**
-     * returns all the children of a section
-     *
-     * If the clue is a string then it will return the child with that exact title
-     * Else if the clue is a number then it returns the child at that index
-     * Else it returns all the children
-     *
-     * @param {number | string} [clue] A title of a section or a index of a wanted section
-     * @returns {Section | Section[] | null} A section or a array of sections
-     */
     sections(clue) {
       return this.children(clue)
     }
 
-    /**
-     * returns all the parent of a section
-     *
-     * @returns {Section | null} A section that is the parent of a section
-     */
     parent() {
       if (!this._doc) {
         return null
@@ -10601,33 +10205,16 @@
 
     //outputs
 
-    /**
-     * returns a plaintext version of the section
-     *
-     * @param {object} options options for the text transformation
-     * @returns {string} the section in text
-     */
     text(options) {
       options = setDefaults(options, defaults$2);
       return this.paragraphs()
         .map((p) => p.text(options))
         .join('\n\n')
     }
-    /**
-     * returns original wiki markup
-     *
-     * @returns {string} the original markup
-     */
     wikitext() {
       return this._wiki
     }
 
-    /**
-     * returns a json version of the section
-     *
-     * @param {object} options keys to include in the resulting json
-     * @returns {object} the section in json
-     */
     json(options) {
       options = setDefaults(options, defaults$2);
       return toJSON$1(this, options)
@@ -10672,22 +10259,7 @@
     return wiki
   };
 
-  /**
-   * @typedef fakeSection
-   * @property {string} title
-   * @property {null | number} depth
-   * @property {string} wiki
-   */
-
-  /**
-   * estimates the depth of a section and parses the title to a normal format
-   *
-   * @private
-   * @param {fakeSection} section
-   * @param {string} str
-   * @param {Document} doc
-   * @returns {fakeSection} section the depth in a object
-   */
+  //estimates the depth of a section and normalizes its title
   const parseHeading = function (section, str, doc) {
     let m = str.match(heading_reg);
     if (!m) {
@@ -10721,13 +10293,6 @@
   const isReference = new RegExp('^(' + references.join('|') + '):?', 'i');
   const section_reg = /(?:\n|^)(={2,6}.{1,200}?={2,6})/g;
 
-
-  /**
-   * filters out the reference section and empty sections and
-   *
-   * @param {Section[]} sections
-   * @returns {Section[]} all the section
-   */
   const removeReferenceSection = function (sections) {
     return sections.filter((s, i) => {
       if (isReference.test(s.title()) === true) {
@@ -10750,15 +10315,7 @@
     })
   };
 
-  /**
-   * this function splits the wiki texts on '=' and puts every part in a Section Object
-   * it also pre processes the section text for the Section object
-   * then it filters out the reference section
-   *
-   * @private
-   * @param {object} doc the document that contains the wiki text
-   * @returns {Section[]} the sections that are parsed out
-   */
+  //split the wiki text on '=' headings, wrap each part in a Section, then drop the reference section
   const parseSections = function (doc) {
     let sections = [];
     let splits = doc._wiki.split(section_reg);
@@ -10816,21 +10373,7 @@
     paragraphs: true,
   };
 
-  /**
-   * The document class is the main entry point of wtf_wikipedia.
-   * this class represents an article of wikipedia.
-   * from here you can go to the infoboxes or paragraphs
-   *
-   * @class
-   */
   class Document {
-    /**
-     * The constructor for the document class
-     * This function starts parsing the wiki text and sets the options in the class
-     *
-     * @param {string} [wiki] The wiki text
-     * @param {object} [options] The options for the parser
-     */
     constructor(wiki, options) {
       options = options || {};
       this._options = options;
@@ -10887,16 +10430,7 @@
       this._sections = parseSections(this);
     }
 
-    /**
-     * Getter and setter for the tile.
-     * If string is given then this function is a setter and sets the variable and returns the set value
-     * If the string is not given then it will check if the title is available
-     * If it is available it returns the title.
-     * Else it will look if the first sentence contains a bolded phrase and assumes that's the title and returns it
-     *
-     * @param {string} [str] The title that will be set
-     * @returns {null|string} The title found or given
-     */
+    // if no title is set, guess it from a bolded phrase in the first sentence
     title(str) {
       //use like a setter
       if (str !== undefined) {
@@ -10916,13 +10450,6 @@
       return guess
     }
 
-    /**
-     * If an pageID is given then it sets the pageID and returns the given pageID
-     * Else if the pageID is already set it returns the pageID
-     *
-     * @param {number} [id] The pageID that will be set
-     * @returns {number|null} The given or found pageID
-     */
     pageID(id) {
       if (id !== undefined) {
         this._pageID = id;
@@ -10930,13 +10457,6 @@
       return this._pageID || null
     }
 
-    /**
-     * If an WikidataID is given then it sets the WikidataID and returns the given WikidataID
-     * Else if the WikidataID is already set it returns the WikidataID
-     *
-     * @param {string} [id] The WikidataID that will be set
-     * @returns {string|null} The given or found WikidataID
-     */
     wikidata(id) {
       if (id !== undefined) {
         this._wikidata = id;
@@ -10944,13 +10464,6 @@
       return this._wikidata || null
     }
 
-    /**
-     * If an domain is given then it sets the domain and returns the given domain
-     * Else if the domain is already set it returns the domain
-     *
-     * @param {string} [str] The domain that will be set
-     * @returns {string|null} The given or found domain
-     */
     domain(str) {
       if (str !== undefined) {
         this._domain = str;
@@ -10958,13 +10471,6 @@
       return this._domain || null
     }
 
-    /**
-     * If an language is given then it sets the language and returns the given language
-     * Else if the language is already set it returns the language
-     *
-     * @param {string} [lang] The language that will be set
-     * @returns {string|null} The given or found language
-     */
     language(lang) {
       if (lang !== undefined) {
         this._lang = lang;
@@ -10972,13 +10478,7 @@
       return this._lang || null
     }
 
-    /**
-     * Gets the url of the page
-     * If the language or domain is not available we substitute 'en' and 'wikipedia.org'
-     * Then we use the template of `https://${lang}.${domain}/wiki/${title}` to make the url
-     *
-     * @returns {string|null} The url of the page
-     */
+    // falls back to 'en' and 'wikipedia.org' when language or domain are missing
     url() {
       let title = this.title();
       if (!title) {
@@ -10992,13 +10492,6 @@
       return `https://${lang}.${domain}/wiki/${title}`
     }
 
-    /**
-     * If an namespace is given then it sets the namespace and returns the given namespace
-     * Else if the namespace is already set it returns the namespace
-     *
-     * @param {string} [ns] The namespace that will be set
-     * @returns {string|null} The given or found namespace
-     */
     namespace(ns) {
       if (ns !== undefined) {
         this._namespace = ns;
@@ -11006,47 +10499,21 @@
       return this._namespace || null
     }
 
-    /**
-     * Returns if the page is a redirect
-     *
-     * @returns {boolean} Is the page a redirect
-     */
     isRedirect() {
       return this._type === 'redirect'
     }
-    /**
-     * Returns true if the page includes a stub template
-     *
-     * @returns {boolean} Is the page a stub
-     */
     isStub() {
       return isStub(this)
     }
 
-    /**
-     * Returns information about the page this page redirects to
-     *
-     * @returns {null|object} The redirected page
-     */
     redirectTo() {
       return this._redirectTo
     }
 
-    /**
-     * This function finds out if a page is a disambiguation page
-     *
-     * @returns {boolean} Whether the page is a disambiguation page
-     */
     isDisambiguation() {
       return isDisambig(this)
     }
 
-    /**
-     * If a clue is available return the category at that index
-     * Else return all categories
-     *
-     * @returns {string | string[]} The category at the provided index or all categories
-     */
     categories(clue) {
       let arr = this._categories || [];
       if (typeof clue === 'number') {
@@ -11055,16 +10522,6 @@
       return arr
     }
 
-    /**
-     * returns the sections of the document
-     *
-     * If the clue is a string then it will return the section with that exact title
-     * Else if the clue is a number then it returns the section at that index
-     * Else it returns all the sections
-     *
-     * @param {number | string} [clue] A title of a section or a index of a wanted section
-     * @returns {object | object[]} A section or a array of sections
-     */
     sections(clue) {
       let arr = this._sections || [];
       arr.forEach((sec) => {
@@ -11084,14 +10541,6 @@
       return arr
     }
 
-    /**
-     * Returns the paragraphs in the document
-     *
-     * If the clue is a number then it returns the paragraph at that index
-     * Else it returns all paragraphs in an array
-     * @param {number | string} [clue] given index of a paragraph
-     * @returns {object | object[]} the selected paragraph or an array of all paragraphs
-     */
     paragraphs(clue) {
       let arr = [];
       this.sections().forEach((s) => {
@@ -11103,12 +10552,6 @@
       return arr
     }
 
-    /**
-     * if no clue is provided, it compiles an array of sentences in the wiki text.
-     * if the clue is provided it return the sentence at the provided index
-     * @param {number | string} [clue] given index of a sentence
-     * @returns {object[]|object} an array of sentences or a single sentence
-     */
     sentences(clue) {
       let arr = [];
       this.sections().forEach((sec) => {
@@ -11120,13 +10563,7 @@
       return arr
     }
 
-    /**
-     * This function search the whole page, including the infobox and image gallery templates for images
-     * and then returns them in an array if no clue is provided.
-     * if an clue is profieded then it returns the image at the clue-th index
-     *
-     * @returns {Image[]|Image} a single image or an array of images
-     */
+    // searches the whole page, including infobox and gallery templates, for images
     images(clue) {
       let arr = sectionMap(this, 'images', null);
       //grab image from infobox, first
@@ -11156,99 +10593,38 @@
       return arr
     }
 
-    /**
-     * Return all links or if a clue is provided only the link at that index
-     *
-     * @param {number} [clue] the index of the wanted link
-     * @returns {string[]|string} all the links or the selected link
-     */
     links(clue) {
       return sectionMap(this, 'links', clue)
     }
 
-    /**
-     * Return all inter wiki links or if a clue is provided only the inter wiki link at that index
-     *
-     * @param {number} [clue] the index of the wanted inter wiki link
-     * @returns {string[]|string} all the inter wiki links or the selected inter wiki link
-     */
     interwiki(clue) {
       return sectionMap(this, 'interwiki', clue)
     }
 
-    /**
-     * If a clue is available return the list at that index
-     * Else return all lists
-     *
-     * @param {number} [clue] The index of the wanted list
-     * @returns {object | object[]} The list at the provided index or all lists
-     */
     lists(clue) {
       return sectionMap(this, 'lists', clue)
     }
 
-    /**
-     * If a clue is available return the tables at that index
-     * Else return all tables
-     *
-     * @param {number} [clue] The index of the wanted table
-     * @returns {object | object[]} The table at the provided index or all tables
-     */
     tables(clue) {
       return sectionMap(this, 'tables', clue)
     }
 
-    /**
-     * If a clue is available return the template at that index
-     * Else return all templates
-     *
-     * @param {number} [clue] The index of the wanted template
-     * @returns {object | object[]} The category at the provided index or all categories
-     */
     templates(clue) {
       return sectionMap(this, 'templates', clue)
     }
 
-    /**
-     * If a clue is available return the references at that index
-     * Else return all references
-     *
-     * @param {number} [clue] The index of the wanted references
-     * @returns {object | object[]} The category at the provided index or all references
-     */
     references(clue) {
       return sectionMap(this, 'references', clue)
     }
 
-    /**
-     * Returns the 0th or clue-th reference
-     *
-     * @param {number} [clue] The index of the wanted reference
-     * @returns {object|string|number} The reference at the provided index
-     */
     citations(clue) {
       return this.references(clue)
     }
 
-    /**
-     * finds and returns all coordinates
-     * or if an clue is given, the coordinate at the index
-     *
-     * @param {number} [clue] the index of the coordinate returned
-     * @returns {object[]|object|null} if a clue is given, the coordinate of null, else an array of coordinates
-     */
     coordinates(clue) {
       return sectionMap(this, 'coordinates', clue)
     }
 
-    /**
-     * If clue is unidentified then it returns all infoboxes
-     * If clue is a number then it returns the infobox at that index
-     * It always sorts the infoboxes by size
-     *
-     * @param {number} [clue] the index of the infobox you want to select
-     * @returns {object | object[]} the selected infobox or an array of infoboxes
-     */
     infoboxes(clue) {
       let arr = sectionMap(this, 'infoboxes', clue);
       //sort them by biggest-first
@@ -11262,12 +10638,6 @@
       return arr
     }
 
-    /**
-     * return a plain text version of the wiki article
-     *
-     * @param {object} [options] the options for the parser
-     * @returns {string} the plain text version of the article
-     */
     text(options) {
       options = setDefaults(options, defaults$1);
       //nah, skip these.
@@ -11278,31 +10648,14 @@
       return arr.join('\n\n')
     }
 
-    /**
-     * return a json version of the Document class
-     *
-     * @param {object} [options] options for the rendering
-     * @returns {object} this document as json
-     */
     json(options) {
-      options = setDefaults(options, defaults$1);
       return toJSON$2(this, options)
     }
 
-    /**
-     * return original wiki markup
-     *
-     * @returns {string} markup text
-     */
     wikitext() {
       return this._wiki || ''
     }
 
-    /**
-     * prints the title of every section
-     *
-     * @returns {Document} the document itself
-     */
     debug() {
       console.log('\n');
       this.sections().forEach((sec) => {
@@ -11315,13 +10668,6 @@
       return this
     }
 
-    /**
-     * If a revisionID is given then it sets the revisionID and returns the given revisionID
-     * Else if the revisionID is already set it returns the revisionID
-     *
-     * @param {number} [id] The revisionID that will be set
-     * @returns {number|null} The given or found revisionID
-     */
     revisionID(id) {
       if (id !== undefined) {
         this._revisionID = id;
@@ -11386,14 +10732,6 @@
   Document.prototype.redirect = Document.prototype.redirectTo;
   Document.prototype.redirects = Document.prototype.redirectTo;
 
-  /**
-   * this function puts all responses into proper Document objects
-   *
-   * @private
-   * @param {Array} res
-   * @param {string | number | Array<number> | Array<string>} title
-   * @returns {null | Document | Document[]} `Document | null` if `title` is scalar, `or Document[]` if `title` is an array
-   */
   const parseDoc = function (res, title) {
     const results = (res ?? [])
       .filter((o) => o != null)
@@ -11402,13 +10740,6 @@
     return isArray(title) ? results : results[0] ?? null
   };
 
-  /**
-   * factory for header options
-   *
-   * @private
-   * @param {object} options
-   * @returns {object} the generated options
-   */
   const makeHeaders = function (options) {
     let agent =
       options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library';
@@ -11435,21 +10766,9 @@
 
   const isUrl = /^https?:\/\//;
 
-  /**
-   * @typedef fetchDefaults
-   * @property {string | undefined} [path] the path to the wiki api. default: api.php
-   * @property {string | undefined} [wiki]
-   * @property {string | undefined} [domain] the domain of the wiki you want to query
-   * @property {boolean | undefined} [follow_redirects] should the library follow redirects
-   * @property {string | undefined} [lang] the language of the wiki
-   * @property {string | number | Array<string> | Array<number> | undefined} [title]
-   * @property {string | undefined} [Api-User-Agent] the user agent of the application
-   * @property {string | undefined} [origin] the domain or the origin of the request
-   */
+  //the mediawiki api only allows 50 titles or pageids per request
+  const chunkSize = 50;
 
-  /**
-   * @type {fetchDefaults}
-   */
   const defaults = {
     lang: 'en',
     wiki: 'wikipedia',
@@ -11458,31 +10777,24 @@
     path: 'api.php', //some 3rd party sites use a weird path
   };
 
-  /**
-   * @callback fetchCallback
-   * @param {Object} error
-   * @param {any} result
-   */
+  const getJson = function (url, headers) {
+    return fetch(url, headers).then((res) => {
+      if (res.ok !== true) {
+        throw new Error(`HTTP ${res.status} error fetching: ${url}`)
+      }
+      return res.json()
+    })
+  };
 
-  /**
-   *  fetches the page from the wiki and returns a Promise with the parsed wiki text
-   *
-   * if you supply it with a single pageID or title it will return a Document object.
-   * if you supply a wiki URL then we will parse it and use the tile and provide a single Document object
-   * if you supply it with an array with pageIDs or an array of titles it will return an array of document objects.
-   *
-   * there is another catch in the programming you need if you provide an array it needs to be eighter pageIDs or titles they can not be mixed.
-   *
-   * @param {string | number | Array<number> | Array<string>} title the title, PageID, URL or an array of all three of the page(s) you want to fetch
-   * @param {fetchDefaults} [options] the options for the fetch or the language of the wiki for the article
-   * @param {fetchCallback} [callback] the callback function for the call
-   */
-  const fetch = function (title, options, callback) {
+  //a single pageID, title, or URL returns one Document; an array of pageIDs or
+  //titles returns an array of Documents. an array must be all pageIDs or all
+  //titles - the two can't be mixed.
+  const fetchPage = function (title, options, callback) {
     // support lang as 2nd param
     if (typeof options === 'string') {
       options = { lang: options };
     }
-    if (typeof title.href === 'string') {
+    if (title && typeof title.href === 'string') {
       title = title.href;
     }
     options = { ...defaults, ...options };
@@ -11492,42 +10804,54 @@
     if (typeof title === 'string' && isUrl.test(title)) {
       options = { ...options, ...parseUrl(title) };
     }
-    const url = makeUrl(options);
     const headers = makeHeaders(options);
 
-    const promise = unfetch(url, headers)
-      .then((res) => res.json())
-      .then((res) => {
-        if (!res) {
-          throw new Error(`No JSON Data Found For ${url}`)
-        }
-        const result = getResult(res, options);
-        const data = parseDoc(result, title);
-        if (typeof callback === 'function') {
-          callback(null, data);
-        }
-        return data
+    //split larger requests into groups the api will accept
+    let groups = [options.title];
+    if (isArray(options.title) && options.title.length > chunkSize) {
+      groups = [];
+      for (let i = 0; i < options.title.length; i += chunkSize) {
+        groups.push(options.title.slice(i, i + chunkSize));
+      }
+    }
+
+    const promise = Promise.resolve()
+      .then(() =>
+        Promise.all(
+          groups.map((group) => {
+            const url = makeUrl({ ...options, title: group });
+            if (!url) {
+              throw new Error(`Could not create a fetch-url from '${title}'`)
+            }
+            return getJson(url, headers).then((res) => {
+              if (!res) {
+                throw new Error(`No JSON Data Found For ${url}`)
+              }
+              return getResult(res, options) || []
+            })
+          })
+        )
+      )
+      .then((results) => {
+        const found = [].concat(...results);
+        return parseDoc(found, title)
       });
 
-    return typeof callback === 'function'
-      ? promise.catch((e) => callback(e, null))
-      : promise
+    if (typeof callback === 'function') {
+      return promise.then(
+        (data) => callback(null, data),
+        (e) => callback(e, null)
+      )
+    }
+    return promise
   };
 
-  var version = '10.4.2';
+  var version = '10.5.0';
 
   /* eslint-disable no-console */
 
-  /**
-   * use the native client-side fetch function
-   *
-   * @private
-   * @param {string} url the url that well be fetched
-   * @param {Object} opts the options for fetch
-   * @returns {Promise<any>} the response from fetch
-   */
   const request = function (url, opts) {
-    return unfetch(url, opts).then(function (res) {
+    return fetch(url, opts).then(function (res) {
       return res.json()
     }).catch((e) => {
       console.error('\n\n=-=- http response error =-=-=-');
@@ -11559,7 +10883,7 @@
   };
 
   wtf.fetch = function (title, options, cb) {
-    return fetch(title, options, cb)
+    return fetchPage(title, options, cb)
   };
   wtf.extend = function (fn) {
     fn(models, templates, infoboxes);

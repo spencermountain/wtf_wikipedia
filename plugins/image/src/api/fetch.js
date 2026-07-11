@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-import unfetch from 'isomorphic-unfetch'
 import makeUrl from '../../../../src/_fetch/makeUrl.js'
 import makeHeaders from '../../../../src/_fetch/_headers.js'
 import parse from './parse.js'
@@ -32,7 +31,7 @@ class InvalidMethod extends Error {
  * @returns {Promise<Object[]>} methods' results for an array of images
  * @throws {InvalidMethod} throws if a passed method is invalid
  */
-function fetch(methods = "", images = []) {
+function fetchImages(methods = "", images = []) {
 
   const isDoc = images.length ? true : false // whether the call is from a Document(".images()") or an Image
   let titles // will be a string or an array of strings
@@ -99,7 +98,7 @@ function fetch(methods = "", images = []) {
   }
   const url = makeUrl(options, params)
   const headers = makeHeaders(options)
-  return unfetch(url, headers)
+  return fetch(url, headers)
     .then(res => res.json())
     .then(res => {
       if (!isDoc) {
@@ -117,4 +116,4 @@ function fetch(methods = "", images = []) {
       console.error(e)
     })
 }
-export default fetch
+export default fetchImages

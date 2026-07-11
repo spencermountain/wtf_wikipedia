@@ -194,7 +194,6 @@ class Section {
     this.children().forEach((sec) => (bads[sec.title()] = true))
     let sections = this._doc.sections()
     sections = sections.filter((sec) => bads.hasOwnProperty(sec.title()) !== true)
-    sections = sections.filter((sec) => bads.hasOwnProperty(sec.title()) !== true)
 
     this._doc._sections = sections
     return this._doc

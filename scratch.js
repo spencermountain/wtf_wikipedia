@@ -3,27 +3,17 @@ import plg from './plugins/i18n/src/index.js'
 wtf.plugin(plg)
 
 
-let input = `{| class="wikitable"
-|-
-! AAA
-! BBB
-! CCC
-! DDD
-|-
-| {{unbulleted list|A1}}
-| {{unbulleted list|B1|B2}}
-| {{ubl|{{Lbb|C1}}|{{nowrap|{{Lbc|C2|C3}}}}}}
-| {{unbulleted list|[[D1]],|[[D2]]}}
-|}`
-input = `
-| {{unbulleted list|A1}}
-| {{unbulleted list|B1|B2}}
-| {{ubl|{{Lbb|C1}}|{{nowrap|{{Lbc|C2|C3}}}}}}
-| {{unbulleted list|[[D1]],|[[D2]]}}
+let input = `cool beans
+{{infobox
+| name = cool beans
+| description = cool beans are cool
+}}
+cool beans are cool
 
+[[Category:Cool beans]]
 `
 
-console.log(wtf(input).text())
+console.log(wtf(input).json('md'))
 
 // const tables = wtf(input).tables()[0]
 // console.log(tables.json())

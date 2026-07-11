@@ -444,7 +444,7 @@ test('paragraphs - get - if the paragraphs is in the option. ignore it', (t) => 
 test('paragraphs - get - if the clue is a undefined / unset return the list of paragraphs', (t) => {
   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
   let doc = wtf(str)
-  const expected = [804, 66, 567, 474, 169, 159, 136, 167, 137, 451, 44, 17]
+  const expected = [804, 66, 567, 474, 169, 159, 136, 167, 137, 450, 44, 17]
   t.deepEqual(
     doc.paragraphs().map((p) => p.text().length),
     expected,
@@ -464,7 +464,7 @@ test('paragraphs - get - if the clue is a number return the paragraph at that in
 test('paragraphs - get - if the clue is a string (not number) return all the paragraphs', (t) => {
   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
   let doc = wtf(str)
-  const expected = [804, 66, 567, 474, 169, 159, 136, 167, 137, 451, 44, 17]
+  const expected = [804, 66, 567, 474, 169, 159, 136, 167, 137, 450, 44, 17]
   t.deepEqual(
     doc.paragraphs('string').map((p) => p.text().length),
     expected,
@@ -512,7 +512,7 @@ test('sentences - get - if the clue is a undefined / unset return the list of se
   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
   let doc = wtf(str)
   const expected =
-    '90,77,104,55,62,58,94,45,91,75,43,66,126,128,100,210,83,187,43,56,101,65,103,90,68,136,91,75,122,14,116,48,98,186,17'
+    '90,77,104,55,62,58,94,45,91,75,43,66,126,128,100,210,83,187,43,56,101,65,103,90,68,136,91,75,122,14,116,48,98,185,17'
   t.equal(
     doc
       .sentences()
@@ -535,7 +535,7 @@ test('sentences - get - if the clue is a string (not number) return all the sent
   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
   let doc = wtf(str)
   const expected =
-    '90,77,104,55,62,58,94,45,91,75,43,66,126,128,100,210,83,187,43,56,101,65,103,90,68,136,91,75,122,14,116,48,98,186,17'
+    '90,77,104,55,62,58,94,45,91,75,43,66,126,128,100,210,83,187,43,56,101,65,103,90,68,136,91,75,122,14,116,48,98,185,17'
   t.equal(
     doc
       .sentences('string')

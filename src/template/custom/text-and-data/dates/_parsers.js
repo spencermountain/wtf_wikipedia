@@ -19,7 +19,7 @@ const getBoth = function (tmpl) {
   //assume now, if 'to' is empty
   if (to.length === 0) {
     let d = new Date()
-    to = [d.getFullYear(), d.getMonth(), d.getDate()]
+    to = [d.getFullYear(), d.getMonth() + 1, d.getDate()]
   }
   to = ymd(to)
   return {
