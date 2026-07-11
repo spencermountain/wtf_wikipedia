@@ -1,6 +1,6 @@
 const cleanUp = function (s) {
   // 'an actor and was a politician'
-  s.remove('and #Copula .*')
+  s = s.remove('and #Copula .*')
   return s
 }
 
@@ -21,13 +21,14 @@ const findPivot = function (s) {
   }
   let f = s.splitOn(m)
   let verb = f.eq(1)
+  // grab the article from the pivot, before any mutation -
+  // in compromise v14, .remove() shifts the other views' pointers
   let article = verb.match(`(a|an|the|any)? of?`)
-  verb.remove(`(a|an|the|any)? of?`)
   return {
     before: f.eq(0),
-    verb: f.eq(1),
+    verb: verb,
     article: article,
-    after: cleanUp(f.eq(2))
+    after: cleanUp(f.eq(2)),
   }
 }
 export default findPivot

@@ -21,7 +21,15 @@ const useAn = function (str) {
 // 'American songwriters' to 'an American songwriter'
 const changeCat = function (cat, options) {
   let c = nlp(cat)
+  let hadCapital = c.terms().out('array').map((w) => /^[A-Z]/.test(w))
   c.nouns().toSingular()
+  // compromise-14 lowercases words when it singularizes them - restore our capitals
+  let terms = c.terms()
+  hadCapital.forEach((had, i) => {
+    if (had && terms.eq(i).found) {
+      terms.eq(i).toTitleCase()
+    }
+  })
   // add article to the front
   if (options.article) {
     let article = 'A'

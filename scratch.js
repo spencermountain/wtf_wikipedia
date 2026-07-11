@@ -17,6 +17,7 @@ wtf.plugin(plg)
 // let doc = wtf(str)
 // console.log(doc.images())
 
+// links json clean
 let str = `a block east of the [[Magnificent Mile]], that exhibits international [[contemporary art]].  `
 let doc = wtf(str)
 console.log(doc.links().map(l => l.json()))

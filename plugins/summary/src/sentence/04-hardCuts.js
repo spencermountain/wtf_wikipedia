@@ -60,8 +60,7 @@ const hardCuts = function (s) {
       // can we remove the last clause, atleast?
       let last = clauses.last()
       if (isIndependent(last)) {
-        clauses.list.pop()
-        s = clauses.join()
+        s = clauses.slice(0, clauses.length - 1)
       }
     }
   }
