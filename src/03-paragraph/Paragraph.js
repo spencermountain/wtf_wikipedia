@@ -6,27 +6,63 @@ const defaults = {
   images: true,
 }
 
-const Paragraph = function (data) {
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data,
-  })
+//return the first, or n-th element of an array
+const getNth = function (arr, clue) {
+  if (typeof clue === 'number') {
+    return arr[clue]
+  }
+  return arr[0]
 }
 
-const methods = {
-  sentences: function () {
+class Paragraph {
+  constructor(data) {
+    Object.defineProperty(this, 'data', {
+      enumerable: false,
+      value: data,
+    })
+  }
+
+  sentences() {
     return this.data.sentences || []
-  },
-  references: function () {
+  }
+
+  sentence(clue) {
+    return getNth(this.sentences(clue), clue)
+  }
+
+  references() {
     return this.data.references
-  },
-  lists: function () {
+  }
+
+  reference(clue) {
+    return getNth(this.references(clue), clue)
+  }
+
+  citations(clue) {
+    return this.references(clue)
+  }
+
+  citation(clue) {
+    return getNth(this.citations(clue), clue)
+  }
+
+  lists() {
     return this.data.lists
-  },
+  }
+
+  list(clue) {
+    return getNth(this.lists(clue), clue)
+  }
+
   images() {
     return this.data.images || []
-  },
-  links: function (clue) {
+  }
+
+  image(clue) {
+    return getNth(this.images(clue), clue)
+  }
+
+  links(clue) {
     let arr = []
     this.sentences().forEach((s) => {
       arr = arr.concat(s.links(clue))
@@ -38,15 +74,21 @@ const methods = {
       return link === undefined ? [] : [link]
     }
     return arr || []
-  },
+  }
+
+  link(clue) {
+    return getNth(this.links(clue), clue)
+  }
+
   interwiki() {
     let arr = []
     this.sentences().forEach((s) => {
       arr = arr.concat(s.interwiki())
     })
     return arr || []
-  },
-  text: function (options) {
+  }
+
+  text(options) {
     options = setDefaults(options, defaults)
     let str = this.sentences()
       .map((s) => s.text(options))
@@ -55,38 +97,16 @@ const methods = {
       str += '\n' + list.text()
     })
     return str
-  },
-  json: function (options) {
+  }
+
+  json(options) {
     options = setDefaults(options, defaults)
     return toJSON(this, options)
-  },
-  wikitext: function () {
-    return this.data.wiki
-  },
-}
-methods.citations = methods.references
-Object.keys(methods).forEach((k) => {
-  Paragraph.prototype[k] = methods[k]
-})
-
-// aliases
-const singular = {
-  sentences: 'sentence',
-  references: 'reference',
-  citations: 'citation',
-  lists: 'list',
-  images: 'image',
-  links: 'link',
-}
-Object.keys(singular).forEach((k) => {
-  let sing = singular[k]
-  Paragraph.prototype[sing] = function (clue) {
-    let arr = this[k](clue)
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
-    return arr[0]
   }
-})
+
+  wikitext() {
+    return this.data.wiki
+  }
+}
 
 export default Paragraph

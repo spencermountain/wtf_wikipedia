@@ -6,7 +6,7 @@
 })(this, (function () { 'use strict';
 
   const parseUrl = function (url) {
-    let parsed = new URL(url); //eslint-disable-line
+    let parsed = new URL(url);  
     let title = parsed.pathname.replace(/^\/(wiki\/)?/, '');
     title = decodeURIComponent(title);
     return {
@@ -1211,14 +1211,14 @@
   };
 
   //the class for our image generation functions
-  const Image = function (data) {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    });
-  };
+  class Image {
+    constructor(data) {
+      Object.defineProperty(this, 'data', {
+        enumerable: false,
+        value: data,
+      });
+    }
 
-  const methods$8 = {
     file() {
       let file = this.data.file || '';
       if (file) {
@@ -1233,61 +1233,71 @@
         file = file.replace(/ /g, '_');
       }
       return file
-    },
+    }
+
     alt() {
       let str = this.data.alt || this.data.file || '';
       str = str.replace(/^(file|image):/i, '');
       str = str.replace(/\.(jpg|jpeg|png|gif|svg)/i, '');
       return str.replace(/_/g, ' ')
-    },
+    }
+
     caption() {
       if (this.data.caption) {
         return this.data.caption.text()
       }
       return ''
-    },
+    }
+
     links() {
       if (this.data.caption) {
         return this.data.caption.links()
       }
       return []
-    },
+    }
+
     url() {
       // let lang = 'en' //this.language() || 'en' //hmm: get actual language?
       let fileName = makeSrc(this.file());
       let domain = this.data.domain || server;
       let path = `wiki/Special:Redirect/file`;
       return `https://${domain}/${path}/${fileName}`
-    },
+    }
+
+    src() {
+      return this.url()
+    }
+
     thumbnail(size) {
       size = size || 300;
       return this.url() + '?width=' + size
-    },
+    }
+
+    thumb(size) {
+      return this.thumbnail(size)
+    }
+
     format() {
       let arr = this.file().split('.');
       if (arr[arr.length - 1]) {
         return arr[arr.length - 1].toLowerCase()
       }
       return null
-    },
-    json: function (options) {
+    }
+
+    json(options) {
       options = options || {};
       return toJson$3(this, options)
-    },
-    text: function () {
+    }
+
+    text() {
       return ''
-    },
-    wikitext: function () {
+    }
+
+    wikitext() {
       return this.data.wiki || ''
-    },
-  };
-
-  Object.keys(methods$8).forEach((k) => {
-    Image.prototype[k] = methods$8[k];
-  });
-
-  Image.prototype.src = Image.prototype.url;
-  Image.prototype.thumb = Image.prototype.thumbnail;
+    }
+  }
 
   var languages = {
     aa: 'Afar', //Afar
@@ -2374,16 +2384,18 @@
   const defaults$8 = {
     type: 'internal',
   };
-  const Link = function (data) {
-    data = data || {};
-    data = Object.assign({}, defaults$8, data);
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    });
-  };
-  const methods$7 = {
-    text: function (str) {
+
+  class Link {
+    constructor(data) {
+      data = data || {};
+      data = Object.assign({}, defaults$8, data);
+      Object.defineProperty(this, 'data', {
+        enumerable: false,
+        value: data,
+      });
+    }
+
+    text(str) {
       if (str !== undefined) {
         this.data.text = str;
       }
@@ -2391,8 +2403,9 @@
       // remove bold/italics
       txt = txt.replace(/'{2,}/g, '');
       return txt
-    },
-    json: function () {
+    }
+
+    json() {
       let obj = {
         text: this.data.text,
         type: this.type(),
@@ -2410,43 +2423,50 @@
         obj.anchor = anchor;
       }
       return obj
-    },
-    wikitext: function () {
+    }
+
+    wikitext() {
       let txt = this.data.raw || '';
       return txt
-    },
-    page: function (str) {
+    }
+
+    page(str) {
       if (str !== undefined) {
         this.data.page = str;
       }
       return this.data.page
-    },
-    anchor: function (str) {
+    }
+
+    anchor(str) {
       if (str !== undefined) {
         this.data.anchor = str;
       }
       return this.data.anchor || ''
-    },
-    wiki: function (str) {
+    }
+
+    wiki(str) {
       if (str !== undefined) {
         this.data.wiki = str;
       }
       return this.data.wiki
-    },
-    type: function (str) {
+    }
+
+    type(str) {
       if (str !== undefined) {
         this.data.type = str;
       }
       return this.data.type
-    },
-    site: function (str) {
+    }
+
+    site(str) {
       if (str !== undefined) {
         this.data.site = str;
       }
       return this.data.site
-    },
+    }
+
     //create a url for any type of link
-    href: function () {
+    href() {
       let type = this.type();
       if (type === 'external') {
         return this.site()
@@ -2472,11 +2492,8 @@
         url += '#' + this.anchor();
       }
       return url
-    },
-  };
-  Object.keys(methods$7).forEach((k) => {
-    Link.prototype[k] = methods$7[k];
-  });
+    }
+  }
 
   //return only rendered text of wiki links
   const removeLinks = function (line) {
@@ -2570,15 +2587,15 @@
   };
 
   //where we store the formatting, link, date information
-  const Sentence = function (data = {}) {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    });
-  };
+  class Sentence {
+    constructor(data = {}) {
+      Object.defineProperty(this, 'data', {
+        enumerable: false,
+        value: data,
+      });
+    }
 
-  const methods$6 = {
-    links: function (n) {
+    links(n) {
       let arr = this.data.links || [];
       if (typeof n === 'string') {
         //grab a link like .links('Fortnight')
@@ -2587,62 +2604,74 @@
         return link === undefined ? [] : [link]
       }
       return arr
-    },
-    interwiki: function () {
+    }
+
+    link(clue) {
+      let arr = this.links(clue);
+      if (typeof clue === 'number') {
+        return arr[clue]
+      }
+      return arr[0]
+    }
+
+    interwiki() {
       return this.links().filter((l) => l.wiki !== undefined)
-    },
-    bolds: function () {
+    }
+
+    bolds() {
       if (this.data && this.data.fmt && this.data.fmt.bold) {
         return this.data.fmt.bold || []
       }
       return []
-    },
-    italics: function () {
+    }
+
+    bold(clue) {
+      let arr = this.bolds(clue);
+      if (typeof clue === 'number') {
+        return arr[clue]
+      }
+      return arr[0]
+    }
+
+    italics() {
       if (this.data && this.data.fmt && this.data.fmt.italic) {
         return this.data.fmt.italic || []
       }
       return []
-    },
-    text: function (str) {
+    }
+
+    italic(clue) {
+      let arr = this.italics(clue);
+      if (typeof clue === 'number') {
+        return arr[clue]
+      }
+      return arr[0]
+    }
+
+    text(str) {
       if (str !== undefined && typeof str === 'string') {
         //set the text?
         this.data.text = str;
       }
       return this.data.text || ''
-    },
-    json: function (options) {
+    }
+
+    plaintext(str) {
+      return this.text(str)
+    }
+
+    json(options) {
       return toJSON(this, options)
-    },
-    wikitext: function () {
+    }
+
+    wikitext() {
       return this.data.wiki || ''
-    },
-    isEmpty: function () {
+    }
+
+    isEmpty() {
       return this.data.text === ''
-    },
-  };
-
-  Object.keys(methods$6).forEach((k) => {
-    Sentence.prototype[k] = methods$6[k];
-  });
-
-  // aliases
-  const singular$3 = {
-    links: 'link',
-    bolds: 'bold',
-    italics: 'italic',
-  };
-  Object.keys(singular$3).forEach((k) => {
-    let sing = singular$3[k];
-    Sentence.prototype[sing] = function (clue) {
-      let arr = this[k](clue);
-      if (typeof clue === 'number') {
-        return arr[clue]
-      }
-      return arr[0]
-    };
-  });
-
-  Sentence.prototype.plaintext = Sentence.prototype.text;
+    }
+  }
 
   //these are used for the sentence-splitter
   var literalAbbreviations = [
@@ -3317,18 +3346,18 @@
     return key
   };
 
-  const Table = function (data, wiki = '') {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    });
-    Object.defineProperty(this, '_wiki', {
-      enumerable: false,
-      value: wiki,
-    });
-  };
+  class Table {
+    constructor(data, wiki = '') {
+      Object.defineProperty(this, 'data', {
+        enumerable: false,
+        value: data,
+      });
+      Object.defineProperty(this, '_wiki', {
+        enumerable: false,
+        value: wiki,
+      });
+    }
 
-  const methods$5 = {
     links(n) {
       let links = [];
       this.data.forEach((r) => {
@@ -3343,7 +3372,8 @@
         return link === undefined ? [] : [link]
       }
       return links
-    },
+    }
+
     get(keys) {
       // normalize mappings
       let have = this.data[0] || {};
@@ -3371,7 +3401,8 @@
           return h
         }, {})
       })
-    },
+    }
+
     keyValue(options) {
       let rows = this.json(options);
       rows.forEach((row) => {
@@ -3380,26 +3411,29 @@
         });
       });
       return rows
-    },
+    }
+
+    keyvalue(options) {
+      return this.keyValue(options)
+    }
+
+    keyval(options) {
+      return this.keyValue(options)
+    }
+
     json(options) {
       options = setDefaults(options, defaults$6);
       return toJson$2(this.data, options)
-    },
+    }
 
     text() {
       return ''
-    },
+    }
 
     wikitext() {
       return this._wiki || ''
-    },
-  };
-  methods$5.keyvalue = methods$5.keyValue;
-  methods$5.keyval = methods$5.keyValue;
-
-  Object.keys(methods$5).forEach((k) => {
-    Table.prototype[k] = methods$5[k];
-  });
+    }
+  }
 
   //const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70k chars.
   const openReg = /^\s*\{\|/;
@@ -3468,27 +3502,63 @@
     images: true,
   };
 
-  const Paragraph = function (data) {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    });
+  //return the first, or n-th element of an array
+  const getNth$1 = function (arr, clue) {
+    if (typeof clue === 'number') {
+      return arr[clue]
+    }
+    return arr[0]
   };
 
-  const methods$4 = {
-    sentences: function () {
+  class Paragraph {
+    constructor(data) {
+      Object.defineProperty(this, 'data', {
+        enumerable: false,
+        value: data,
+      });
+    }
+
+    sentences() {
       return this.data.sentences || []
-    },
-    references: function () {
+    }
+
+    sentence(clue) {
+      return getNth$1(this.sentences(clue), clue)
+    }
+
+    references() {
       return this.data.references
-    },
-    lists: function () {
+    }
+
+    reference(clue) {
+      return getNth$1(this.references(clue), clue)
+    }
+
+    citations(clue) {
+      return this.references(clue)
+    }
+
+    citation(clue) {
+      return getNth$1(this.citations(clue), clue)
+    }
+
+    lists() {
       return this.data.lists
-    },
+    }
+
+    list(clue) {
+      return getNth$1(this.lists(clue), clue)
+    }
+
     images() {
       return this.data.images || []
-    },
-    links: function (clue) {
+    }
+
+    image(clue) {
+      return getNth$1(this.images(clue), clue)
+    }
+
+    links(clue) {
       let arr = [];
       this.sentences().forEach((s) => {
         arr = arr.concat(s.links(clue));
@@ -3500,15 +3570,21 @@
         return link === undefined ? [] : [link]
       }
       return arr || []
-    },
+    }
+
+    link(clue) {
+      return getNth$1(this.links(clue), clue)
+    }
+
     interwiki() {
       let arr = [];
       this.sentences().forEach((s) => {
         arr = arr.concat(s.interwiki());
       });
       return arr || []
-    },
-    text: function (options) {
+    }
+
+    text(options) {
       options = setDefaults(options, defaults$4);
       let str = this.sentences()
         .map((s) => s.text(options))
@@ -3517,39 +3593,17 @@
         str += '\n' + list.text();
       });
       return str
-    },
-    json: function (options) {
+    }
+
+    json(options) {
       options = setDefaults(options, defaults$4);
       return toJson$1(this, options)
-    },
-    wikitext: function () {
-      return this.data.wiki
-    },
-  };
-  methods$4.citations = methods$4.references;
-  Object.keys(methods$4).forEach((k) => {
-    Paragraph.prototype[k] = methods$4[k];
-  });
+    }
 
-  // aliases
-  const singular$2 = {
-    sentences: 'sentence',
-    references: 'reference',
-    citations: 'citation',
-    lists: 'list',
-    images: 'image',
-    links: 'link',
-  };
-  Object.keys(singular$2).forEach((k) => {
-    let sing = singular$2[k];
-    Paragraph.prototype[sing] = function (clue) {
-      let arr = this[k](clue);
-      if (typeof clue === 'number') {
-        return arr[clue]
-      }
-      return arr[0]
-    };
-  });
+    wikitext() {
+      return this.data.wiki
+    }
+  }
 
   const strip = function (tmpl) {
     tmpl = tmpl.replace(/^\{\{/, '');
@@ -3890,21 +3944,22 @@
       .join('\n')
   };
 
-  const List = function (data, wiki = '') {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    });
-    Object.defineProperty(this, 'wiki', {
-      enumerable: false,
-      value: wiki,
-    });
-  };
+  class List {
+    constructor(data, wiki = '') {
+      Object.defineProperty(this, 'data', {
+        enumerable: false,
+        value: data,
+      });
+      Object.defineProperty(this, 'wiki', {
+        enumerable: false,
+        value: wiki,
+      });
+    }
 
-  const methods$3 = {
     lines() {
       return this.data
-    },
+    }
+
     links(clue) {
       let links = [];
       this.lines().forEach((s) => {
@@ -3917,22 +3972,21 @@
         return link === undefined ? [] : [link]
       }
       return links
-    },
+    }
+
     json(options) {
       options = setDefaults(options, defaults$3);
       return this.lines().map((s) => s.json(options))
-    },
+    }
+
     text() {
       return toText$1(this.data)
-    },
+    }
+
     wikitext() {
       return this.wiki || ''
-    },
-  };
-
-  Object.keys(methods$3).forEach((k) => {
-    List.prototype[k] = methods$3[k];
-  });
+    }
+  }
 
   const list_reg = /^[#*:;|]+/;
   const bullet_reg = /^\*+[^:,|]{4}/;
@@ -9317,24 +9371,29 @@
   };
 
   //a formal key-value data table about a topic
-  const Infobox = function (obj, wiki) {
-    this._type = obj.type;
-    this.domain = obj.domain;
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: obj.data,
-    });
-    Object.defineProperty(this, 'wiki', {
-      enumerable: false,
-      value: wiki,
-    });
-  };
+  class Infobox {
+    constructor(obj, wiki) {
+      this._type = obj.type;
+      this.domain = obj.domain;
+      Object.defineProperty(this, 'data', {
+        enumerable: false,
+        value: obj.data,
+      });
+      Object.defineProperty(this, 'wiki', {
+        enumerable: false,
+        value: wiki,
+      });
+    }
 
-  const methods$2 = {
-    type: function () {
+    type() {
       return this._type
-    },
-    links: function (n) {
+    }
+
+    template() {
+      return this.type()
+    }
+
+    links(n) {
       let arr = [];
       Object.keys(this.data).forEach((k) => {
         this.data[k].links().forEach((l) => arr.push(l));
@@ -9346,8 +9405,9 @@
         return link === undefined ? [] : [link]
       }
       return arr
-    },
-    image: function () {
+    }
+
+    image() {
       let s = this.data.image || this.data.image2 || this.data.logo || this.data.image_skyline || this.data.image_flag;
       if (!s) {
         return null
@@ -9359,8 +9419,13 @@
       obj.caption = this.data.caption;
       obj.domain = this.domain; // add domain information for image
       return new Image(obj)
-    },
-    get: function (keys) {
+    }
+
+    images() {
+      return this.image()
+    }
+
+    get(keys) {
       let allKeys = Object.keys(this.data);
       if (typeof keys === 'string') {
         let key = normalize(keys);
@@ -9386,26 +9451,31 @@
         })
       }
       return new Sentence()
-    },
-    text: function () {
+    }
+
+    text() {
       return ''
-    },
-    json: function (options) {
+    }
+
+    json(options) {
       options = options || {};
       return toJson(this, options)
-    },
-    wikitext: function () {
+    }
+
+    wikitext() {
       return this.wiki || ''
-    },
-    keyValue: function () {
+    }
+
+    keyValue() {
       return Object.keys(this.data).reduce((h, k) => {
         if (this.data[k]) {
           h[k] = this.data[k].text();
         }
         return h
       }, {})
-    },
-    coordinates: function () {
+    }
+
+    coordinates() {
       // loop through i18n latitude and longitude properties
       for (let i = 0; i < latLngs.length; i += 1) {
         let a = latLngs[i];
@@ -9416,43 +9486,40 @@
         }
       }
       return null
-    },
-  };
-  //aliases
-  Object.keys(methods$2).forEach((k) => {
-    Infobox.prototype[k] = methods$2[k];
-  });
-  Infobox.prototype.data = Infobox.prototype.keyValue;
-  Infobox.prototype.template = Infobox.prototype.type;
-  Infobox.prototype.images = Infobox.prototype.image;
+    }
+  }
 
   //also called 'citations'
-  const Reference = function (data, wiki) {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    });
-    Object.defineProperty(this, 'wiki', {
-      enumerable: false,
-      value: wiki,
-    });
-  };
+  class Reference {
+    constructor(data, wiki) {
+      Object.defineProperty(this, 'data', {
+        enumerable: false,
+        value: data,
+      });
+      Object.defineProperty(this, 'wiki', {
+        enumerable: false,
+        value: wiki,
+      });
+    }
 
-  const methods$1 = {
-    title: function () {
+    title() {
       let data = this.data;
       return data.title || data.encyclopedia || data.author || ''
-    },
-    links: function () {
+    }
+
+    links() {
       return [] //nah, skip these.
-    },
-    text: function () {
+    }
+
+    text() {
       return '' //nah, skip these.
-    },
-    wikitext: function () {
+    }
+
+    wikitext() {
       return this.wiki || ''
-    },
-    json: function (options = {}) {
+    }
+
+    json(options = {}) {
       let json = this.data || {};
       //encode them, for mongodb
       if (options.encode === true) {
@@ -9460,43 +9527,38 @@
         json = encodeObj(json);
       }
       return json
-    },
-  };
-  Object.keys(methods$1).forEach((k) => {
-    Reference.prototype[k] = methods$1[k];
-  });
+    }
+  }
 
-  const methods = {
-    text: function () {
+  class Template {
+    constructor(data, text = '', wiki = '') {
+      Object.defineProperty(this, 'data', {
+        enumerable: false,
+        value: data,
+      });
+      Object.defineProperty(this, '_text', {
+        enumerable: false,
+        value: text,
+      });
+      Object.defineProperty(this, 'wiki', {
+        enumerable: false,
+        value: wiki,
+      });
+    }
+
+    text() {
       let str = this._text || '';
       return fromText(str).text()
-    },
-    json: function () {
+    }
+
+    json() {
       return this.data || {}
-    },
-    wikitext: function () {
+    }
+
+    wikitext() {
       return this.wiki || ''
-    },
-  };
-
-  const Template = function (data, text = '', wiki = '') {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    });
-    Object.defineProperty(this, '_text', {
-      enumerable: false,
-      value: text,
-    });
-    Object.defineProperty(this, 'wiki', {
-      enumerable: false,
-      value: wiki,
-    });
-  };
-
-  Object.keys(methods).forEach((k) => {
-    Template.prototype[k] = methods[k];
-  });
+    }
+  }
 
   const isCitation = /^(cite |citation)/i;
 
@@ -9919,6 +9981,14 @@
     infoboxes: true,
   };
 
+  //return the first, or n-th element of an array
+  const getNth = function (arr, clue) {
+    if (typeof clue === 'number') {
+      return arr[clue]
+    }
+    return arr[0] || null
+  };
+
   //the Section class represents the == title == sections of an article
   class Section {
     constructor(data, doc) {
@@ -10219,33 +10289,46 @@
       options = setDefaults(options, defaults$2);
       return toJSON$1(this, options)
     }
-  }
-  Section.prototype.citations = Section.prototype.references;
 
-  // aliases
-  const singular$1 = {
-    sentences: 'sentence',
-    paragraphs: 'paragraph',
-    links: 'link',
-    tables: 'table',
-    templates: 'template',
-    infoboxes: 'infobox',
-    coordinates: 'coordinate',
-    lists: 'list',
-    images: 'image',
-    references: 'reference',
-    citations: 'citation',
-  };
-  Object.keys(singular$1).forEach((k) => {
-    let sing = singular$1[k];
-    Section.prototype[sing] = function (clue) {
-      let arr = this[k](clue);
-      if (typeof clue === 'number') {
-        return arr[clue]
-      }
-      return arr[0] || null
-    };
-  });
+    citations(clue) {
+      return this.references(clue)
+    }
+
+    // singular aliases
+    sentence(clue) {
+      return getNth(this.sentences(clue), clue)
+    }
+    paragraph(clue) {
+      return getNth(this.paragraphs(clue), clue)
+    }
+    link(clue) {
+      return getNth(this.links(clue), clue)
+    }
+    table(clue) {
+      return getNth(this.tables(clue), clue)
+    }
+    template(clue) {
+      return getNth(this.templates(clue), clue)
+    }
+    infobox(clue) {
+      return getNth(this.infoboxes(clue), clue)
+    }
+    coordinate(clue) {
+      return getNth(this.coordinates(clue), clue)
+    }
+    list(clue) {
+      return getNth(this.lists(clue), clue)
+    }
+    image(clue) {
+      return getNth(this.images(clue), clue)
+    }
+    reference(clue) {
+      return getNth(this.references(clue), clue)
+    }
+    citation(clue) {
+      return getNth(this.citations(clue), clue)
+    }
+  }
 
   const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/; //eslint-disable-line
   const hasTemplate = /\{\{.+?\}\}/;
@@ -10697,40 +10780,71 @@
     options() {
       return this._options
     }
-  }
 
-  // aliases
-  const singular = {
-    categories: 'category',
-    sections: 'section',
-    paragraphs: 'paragraph',
-    sentences: 'sentence',
-    images: 'image',
-    links: 'link',
-    // interwiki
-    lists: 'list',
-    tables: 'table',
-    templates: 'template',
-    references: 'reference',
-    citations: 'citation',
-    coordinates: 'coordinate',
-    infoboxes: 'infobox',
-  };
-  Object.keys(singular).forEach((k) => {
-    let sing = singular[k];
-    Document.prototype[sing] = function (clue) {
-      let arr = this[k](clue);
-      return arr[0] || null
-    };
-  });
-  Document.prototype.lang = Document.prototype.language;
-  Document.prototype.ns = Document.prototype.namespace;
-  Document.prototype.plaintext = Document.prototype.text;
-  Document.prototype.isDisambig = Document.prototype.isDisambiguation;
-  Document.prototype.citations = Document.prototype.references;
-  Document.prototype.redirectsTo = Document.prototype.redirectTo;
-  Document.prototype.redirect = Document.prototype.redirectTo;
-  Document.prototype.redirects = Document.prototype.redirectTo;
+    // singular aliases
+    category(clue) {
+      return this.categories(clue)[0] || null
+    }
+    section(clue) {
+      return this.sections(clue)[0] || null
+    }
+    paragraph(clue) {
+      return this.paragraphs(clue)[0] || null
+    }
+    sentence(clue) {
+      return this.sentences(clue)[0] || null
+    }
+    image(clue) {
+      return this.images(clue)[0] || null
+    }
+    link(clue) {
+      return this.links(clue)[0] || null
+    }
+    list(clue) {
+      return this.lists(clue)[0] || null
+    }
+    table(clue) {
+      return this.tables(clue)[0] || null
+    }
+    template(clue) {
+      return this.templates(clue)[0] || null
+    }
+    reference(clue) {
+      return this.references(clue)[0] || null
+    }
+    citation(clue) {
+      return this.citations(clue)[0] || null
+    }
+    coordinate(clue) {
+      return this.coordinates(clue)[0] || null
+    }
+    infobox(clue) {
+      return this.infoboxes(clue)[0] || null
+    }
+
+    // aliases
+    lang(str) {
+      return this.language(str)
+    }
+    ns(str) {
+      return this.namespace(str)
+    }
+    plaintext(options) {
+      return this.text(options)
+    }
+    isDisambig() {
+      return this.isDisambiguation()
+    }
+    redirectsTo() {
+      return this.redirectTo()
+    }
+    redirect() {
+      return this.redirectTo()
+    }
+    redirects() {
+      return this.redirectTo()
+    }
+  }
 
   const parseDoc = function (res, title) {
     const results = (res ?? [])

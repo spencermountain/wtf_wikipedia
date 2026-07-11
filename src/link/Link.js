@@ -3,16 +3,18 @@ import wikis from '../_data/interwiki.js'
 const defaults = {
   type: 'internal',
 }
-const Link = function (data) {
-  data = data || {}
-  data = Object.assign({}, defaults, data)
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data,
-  })
-}
-const methods = {
-  text: function (str) {
+
+class Link {
+  constructor(data) {
+    data = data || {}
+    data = Object.assign({}, defaults, data)
+    Object.defineProperty(this, 'data', {
+      enumerable: false,
+      value: data,
+    })
+  }
+
+  text(str) {
     if (str !== undefined) {
       this.data.text = str
     }
@@ -20,8 +22,9 @@ const methods = {
     // remove bold/italics
     txt = txt.replace(/'{2,}/g, '')
     return txt
-  },
-  json: function () {
+  }
+
+  json() {
     let obj = {
       text: this.data.text,
       type: this.type(),
@@ -39,43 +42,50 @@ const methods = {
       obj.anchor = anchor
     }
     return obj
-  },
-  wikitext: function () {
+  }
+
+  wikitext() {
     let txt = this.data.raw || ''
     return txt
-  },
-  page: function (str) {
+  }
+
+  page(str) {
     if (str !== undefined) {
       this.data.page = str
     }
     return this.data.page
-  },
-  anchor: function (str) {
+  }
+
+  anchor(str) {
     if (str !== undefined) {
       this.data.anchor = str
     }
     return this.data.anchor || ''
-  },
-  wiki: function (str) {
+  }
+
+  wiki(str) {
     if (str !== undefined) {
       this.data.wiki = str
     }
     return this.data.wiki
-  },
-  type: function (str) {
+  }
+
+  type(str) {
     if (str !== undefined) {
       this.data.type = str
     }
     return this.data.type
-  },
-  site: function (str) {
+  }
+
+  site(str) {
     if (str !== undefined) {
       this.data.site = str
     }
     return this.data.site
-  },
+  }
+
   //create a url for any type of link
-  href: function () {
+  href() {
     let type = this.type()
     if (type === 'external') {
       return this.site()
@@ -101,9 +111,7 @@ const methods = {
       url += '#' + this.anchor()
     }
     return url
-  },
+  }
 }
-Object.keys(methods).forEach((k) => {
-  Link.prototype[k] = methods[k]
-})
+
 export default Link

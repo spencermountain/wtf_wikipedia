@@ -340,39 +340,70 @@ class Document {
   options() {
     return this._options
   }
-}
 
-// aliases
-const singular = {
-  categories: 'category',
-  sections: 'section',
-  paragraphs: 'paragraph',
-  sentences: 'sentence',
-  images: 'image',
-  links: 'link',
-  // interwiki
-  lists: 'list',
-  tables: 'table',
-  templates: 'template',
-  references: 'reference',
-  citations: 'citation',
-  coordinates: 'coordinate',
-  infoboxes: 'infobox',
-}
-Object.keys(singular).forEach((k) => {
-  let sing = singular[k]
-  Document.prototype[sing] = function (clue) {
-    let arr = this[k](clue)
-    return arr[0] || null
+  // singular aliases
+  category(clue) {
+    return this.categories(clue)[0] || null
   }
-})
-Document.prototype.lang = Document.prototype.language
-Document.prototype.ns = Document.prototype.namespace
-Document.prototype.plaintext = Document.prototype.text
-Document.prototype.isDisambig = Document.prototype.isDisambiguation
-Document.prototype.citations = Document.prototype.references
-Document.prototype.redirectsTo = Document.prototype.redirectTo
-Document.prototype.redirect = Document.prototype.redirectTo
-Document.prototype.redirects = Document.prototype.redirectTo
+  section(clue) {
+    return this.sections(clue)[0] || null
+  }
+  paragraph(clue) {
+    return this.paragraphs(clue)[0] || null
+  }
+  sentence(clue) {
+    return this.sentences(clue)[0] || null
+  }
+  image(clue) {
+    return this.images(clue)[0] || null
+  }
+  link(clue) {
+    return this.links(clue)[0] || null
+  }
+  list(clue) {
+    return this.lists(clue)[0] || null
+  }
+  table(clue) {
+    return this.tables(clue)[0] || null
+  }
+  template(clue) {
+    return this.templates(clue)[0] || null
+  }
+  reference(clue) {
+    return this.references(clue)[0] || null
+  }
+  citation(clue) {
+    return this.citations(clue)[0] || null
+  }
+  coordinate(clue) {
+    return this.coordinates(clue)[0] || null
+  }
+  infobox(clue) {
+    return this.infoboxes(clue)[0] || null
+  }
+
+  // aliases
+  lang(str) {
+    return this.language(str)
+  }
+  ns(str) {
+    return this.namespace(str)
+  }
+  plaintext(options) {
+    return this.text(options)
+  }
+  isDisambig() {
+    return this.isDisambiguation()
+  }
+  redirectsTo() {
+    return this.redirectTo()
+  }
+  redirect() {
+    return this.redirectTo()
+  }
+  redirects() {
+    return this.redirectTo()
+  }
+}
 
 export default Document

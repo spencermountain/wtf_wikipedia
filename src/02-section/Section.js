@@ -14,6 +14,14 @@ const defaults = {
   infoboxes: true,
 }
 
+//return the first, or n-th element of an array
+const getNth = function (arr, clue) {
+  if (typeof clue === 'number') {
+    return arr[clue]
+  }
+  return arr[0] || null
+}
+
 //the Section class represents the == title == sections of an article
 class Section {
   constructor(data, doc) {
@@ -314,31 +322,44 @@ class Section {
     options = setDefaults(options, defaults)
     return toJSON(this, options)
   }
-}
-Section.prototype.citations = Section.prototype.references
 
-// aliases
-const singular = {
-  sentences: 'sentence',
-  paragraphs: 'paragraph',
-  links: 'link',
-  tables: 'table',
-  templates: 'template',
-  infoboxes: 'infobox',
-  coordinates: 'coordinate',
-  lists: 'list',
-  images: 'image',
-  references: 'reference',
-  citations: 'citation',
-}
-Object.keys(singular).forEach((k) => {
-  let sing = singular[k]
-  Section.prototype[sing] = function (clue) {
-    let arr = this[k](clue)
-    if (typeof clue === 'number') {
-      return arr[clue]
-    }
-    return arr[0] || null
+  citations(clue) {
+    return this.references(clue)
   }
-})
+
+  // singular aliases
+  sentence(clue) {
+    return getNth(this.sentences(clue), clue)
+  }
+  paragraph(clue) {
+    return getNth(this.paragraphs(clue), clue)
+  }
+  link(clue) {
+    return getNth(this.links(clue), clue)
+  }
+  table(clue) {
+    return getNth(this.tables(clue), clue)
+  }
+  template(clue) {
+    return getNth(this.templates(clue), clue)
+  }
+  infobox(clue) {
+    return getNth(this.infoboxes(clue), clue)
+  }
+  coordinate(clue) {
+    return getNth(this.coordinates(clue), clue)
+  }
+  list(clue) {
+    return getNth(this.lists(clue), clue)
+  }
+  image(clue) {
+    return getNth(this.images(clue), clue)
+  }
+  reference(clue) {
+    return getNth(this.references(clue), clue)
+  }
+  citation(clue) {
+    return getNth(this.citations(clue), clue)
+  }
+}
 export default Section

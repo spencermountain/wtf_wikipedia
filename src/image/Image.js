@@ -18,14 +18,14 @@ const makeSrc = function (file) {
 }
 
 //the class for our image generation functions
-const Image = function (data) {
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data,
-  })
-}
+class Image {
+  constructor(data) {
+    Object.defineProperty(this, 'data', {
+      enumerable: false,
+      value: data,
+    })
+  }
 
-const methods = {
   file() {
     let file = this.data.file || ''
     if (file) {
@@ -40,59 +40,70 @@ const methods = {
       file = file.replace(/ /g, '_')
     }
     return file
-  },
+  }
+
   alt() {
     let str = this.data.alt || this.data.file || ''
     str = str.replace(/^(file|image):/i, '')
     str = str.replace(/\.(jpg|jpeg|png|gif|svg)/i, '')
     return str.replace(/_/g, ' ')
-  },
+  }
+
   caption() {
     if (this.data.caption) {
       return this.data.caption.text()
     }
     return ''
-  },
+  }
+
   links() {
     if (this.data.caption) {
       return this.data.caption.links()
     }
     return []
-  },
+  }
+
   url() {
     // let lang = 'en' //this.language() || 'en' //hmm: get actual language?
     let fileName = makeSrc(this.file())
     let domain = this.data.domain || server
     let path = `wiki/Special:Redirect/file`
     return `https://${domain}/${path}/${fileName}`
-  },
+  }
+
+  src() {
+    return this.url()
+  }
+
   thumbnail(size) {
     size = size || 300
     return this.url() + '?width=' + size
-  },
+  }
+
+  thumb(size) {
+    return this.thumbnail(size)
+  }
+
   format() {
     let arr = this.file().split('.')
     if (arr[arr.length - 1]) {
       return arr[arr.length - 1].toLowerCase()
     }
     return null
-  },
-  json: function (options) {
+  }
+
+  json(options) {
     options = options || {}
     return toJson(this, options)
-  },
-  text: function () {
+  }
+
+  text() {
     return ''
-  },
-  wikitext: function () {
+  }
+
+  wikitext() {
     return this.data.wiki || ''
-  },
+  }
 }
 
-Object.keys(methods).forEach((k) => {
-  Image.prototype[k] = methods[k]
-})
-
-Image.prototype.src = Image.prototype.url
-Image.prototype.thumb = Image.prototype.thumbnail
 export default Image

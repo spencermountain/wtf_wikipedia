@@ -10,18 +10,18 @@ const normalize = function (key = '') {
   return key
 }
 
-const Table = function (data, wiki = '') {
-  Object.defineProperty(this, 'data', {
-    enumerable: false,
-    value: data,
-  })
-  Object.defineProperty(this, '_wiki', {
-    enumerable: false,
-    value: wiki,
-  })
-}
+class Table {
+  constructor(data, wiki = '') {
+    Object.defineProperty(this, 'data', {
+      enumerable: false,
+      value: data,
+    })
+    Object.defineProperty(this, '_wiki', {
+      enumerable: false,
+      value: wiki,
+    })
+  }
 
-const methods = {
   links(n) {
     let links = []
     this.data.forEach((r) => {
@@ -36,7 +36,8 @@ const methods = {
       return link === undefined ? [] : [link]
     }
     return links
-  },
+  }
+
   get(keys) {
     // normalize mappings
     let have = this.data[0] || {}
@@ -64,7 +65,8 @@ const methods = {
         return h
       }, {})
     })
-  },
+  }
+
   keyValue(options) {
     let rows = this.json(options)
     rows.forEach((row) => {
@@ -73,24 +75,28 @@ const methods = {
       })
     })
     return rows
-  },
+  }
+
+  keyvalue(options) {
+    return this.keyValue(options)
+  }
+
+  keyval(options) {
+    return this.keyValue(options)
+  }
+
   json(options) {
     options = setDefaults(options, defaults)
     return toJson(this.data, options)
-  },
+  }
 
   text() {
     return ''
-  },
+  }
 
   wikitext() {
     return this._wiki || ''
-  },
+  }
 }
-methods.keyvalue = methods.keyValue
-methods.keyval = methods.keyValue
 
-Object.keys(methods).forEach((k) => {
-  Table.prototype[k] = methods[k]
-})
 export default Table

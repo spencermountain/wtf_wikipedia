@@ -1,17 +1,13 @@
 {
+  // this config is just for editor intellisense -
+  // our types are hand-written, in ./types/index.d.ts
   "compilerOptions": {
-    /* Basic Options */
-    "target": "es2018" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */,
-    "module": "system" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */,
-    "moduleResolution": "node",
-    "lib": [
-      "ES6"
-    ] /* Specify library files to be included in the compilation. */,
+    "target": "es2018",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "allowJs": true /* Allow javascript files to be compiled. */,
     "checkJs": false /* Report errors in .js files. */,
-    "declaration": true,
-    "declarationDir": "./types",
-    "emitDeclarationOnly": true,
+    "noEmit": true,
     /* Strict Type-Checking Options */
     "strict": false /* Enable all strict type-checking options. */,
     "noImplicitAny": false /* Raise error on expressions and declarations with an implied 'any' type. */,
