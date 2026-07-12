@@ -1,9 +1,9 @@
-import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import sizeCheck from 'rollup-plugin-filesize-check'
-import { nodeResolve } from '@rollup/plugin-node-resolve' //import https
+import esbuild from 'rollup-plugin-esbuild'
 
-import { version } from './package.json'
+import fs from 'fs'
+const { version } = JSON.parse(fs.readFileSync('./package.json', 'utf-8'))
 console.log('\n 📦  - running rollup..\n')
 
 const name = 'wtf-plugin-image'
@@ -13,31 +13,25 @@ export default [
   {
     input: 'src/index.js',
     output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
-    external: ['isomorphic-unfetch'],
     plugins: [
-      nodeResolve(),
-      commonjs({ requireReturnsDefault: "auto" }),
+      esbuild({ target: 'es2018' }),
     ]
   },
 
   // === .js ===
   {
     input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfImage', sourcemap: false, globals: { "isomorphic-unfetch": 'unfetch' } }],
-    external: ['isomorphic-unfetch'],
+    output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfImage', sourcemap: false }],
     plugins: [
-      nodeResolve(),
-      commonjs({ requireReturnsDefault: "auto" })
+      esbuild({ target: 'es2018' }),
     ]
   },
   // ===  min.js ===
   {
     input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.min.js`, format: 'umd', name: 'wtfImage', sourcemap: false, globals: { "isomorphic-unfetch": 'unfetch' } }],
-    external: ['isomorphic-unfetch'],
+    output: [{ banner: banner, file: `builds/${name}.min.js`, format: 'umd', name: 'wtfImage', sourcemap: false }],
     plugins: [
-      nodeResolve(),
-      commonjs({ requireReturnsDefault: "auto" }),
+      esbuild({ target: 'es2018' }),
       terser(),
       sizeCheck({ expect: 24, warn: 10 })
     ]

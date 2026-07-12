@@ -1,31 +1,31 @@
 {
-  // this config is just for editor intellisense -
-  // our types are hand-written, in ./types/index.d.ts
+  // this config is for the editor, and `npm run check` -
+  // our public types are hand-written, in ./types/index.d.ts
+  // typing is deliberately loose - the goal is editor help, not full coverage
   "compilerOptions": {
     "target": "es2018",
     "module": "esnext",
     "moduleResolution": "bundler",
-    "allowJs": true /* Allow javascript files to be compiled. */,
-    "checkJs": false /* Report errors in .js files. */,
-    "noEmit": true,
-    /* Strict Type-Checking Options */
-    "strict": false /* Enable all strict type-checking options. */,
-    "noImplicitAny": false /* Raise error on expressions and declarations with an implied 'any' type. */,
-    /* Additional Checks */
-    "noUnusedLocals": false /* Report errors on unused locals. */,
-    "noUnusedParameters": true /* Report errors on unused parameters. */,
-    "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
-    "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */,
+    "allowImportingTsExtensions": true /* import './foo.ts' - what nodejs runs directly */,
+    "erasableSyntaxOnly": true /* only typescript syntax that nodejs can strip - no enums etc */,
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true /* rollup+esbuild makes ./builds - tsc never emits */,
+    /* deliberately loose type-checking */
+    "strict": false,
+    "noImplicitAny": false,
+    /* additional checks */
+    "noUnusedLocals": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "allowUnreachableCode": false,
-    /* Module Resolution Options */
-    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
-    /* Advanced Options */
-    "skipLibCheck": true /* Skip type checking of declaration files. */,
-    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "src/**/*.js",
+    "src/**/*",
     "plugins/**/*"
   ],
   "exclude": [

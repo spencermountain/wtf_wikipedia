@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import wtf from './src/index.js'
+import wtf from './builds/wtf_wikipedia.mjs'
 let args = process.argv.slice(2)
 
 const modes = {

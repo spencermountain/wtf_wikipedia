@@ -3,7 +3,7 @@
   "description": "parse wikiscript into json",
   "version": "10.5.0",
   "type": "module",
-  "main": "src/index.js",
+  "main": "builds/wtf_wikipedia.cjs",
   "module": "builds/wtf_wikipedia.mjs",
   "unpkg": "builds/wtf_wikipedia-client.min.js",
   "browser": "builds/wtf_wikipedia-client.min.js",
@@ -26,7 +26,7 @@
       },
       "import": {
         "types": "./types/index.d.ts",
-        "default": "./src/index.js"
+        "default": "./builds/wtf_wikipedia.mjs"
       },
       "require": {
         "types": "./types/index.d.cts",
@@ -34,7 +34,7 @@
       },
       "default": {
         "types": "./types/index.d.ts",
-        "default": "./src/index.js"
+        "default": "./builds/wtf_wikipedia.mjs"
       }
     },
     "./package.json": "./package.json"
@@ -49,6 +49,7 @@
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
     "build:all": "node ./scripts/buildAll.js",
+    "check": "tsc --noEmit",
     "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' npm run test && npm run test:fetch",
     "lint": "eslint ./src/ ./plugins ./tests",
     "prepare": "node ./scripts/install-plugins.js",
@@ -92,14 +93,18 @@
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-terser": "1.0.0",
+    "esbuild": "^0.28.1",
     "eslint": "10.5.0",
     "eslint-plugin-compat": "7.0.2",
     "eslint-plugin-regexp": "3.1.0",
     "nyc": "18.0.0",
     "rollup": "4.62.2",
+    "rollup-plugin-esbuild": "^6.2.1",
     "shelljs": "0.10.0",
     "tap-dancer": "0.3.4",
-    "tape": "5.10.2"
+    "tape": "5.10.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.63.0"
   },
   "eslintIgnore": [
     "builds/*.js"

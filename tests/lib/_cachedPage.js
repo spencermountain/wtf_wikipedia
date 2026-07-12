@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import wtf from '../../src/index.js'
+import wtf from '../../src/index.ts'
 import { fileURLToPath } from 'url'
 
 const dir = path.dirname(fileURLToPath(import.meta.url))

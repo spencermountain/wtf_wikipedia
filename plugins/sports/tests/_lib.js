@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import build from '../../../builds/wtf_wikipedia.mjs'
-import src from '../../../src/index.js'
+import src from '../../../src/index.ts'
 import { nhl, mlb } from '../src/index.js'
 // import {mlb} from '../../builds/wtf-plugin-sports.mjs'
 

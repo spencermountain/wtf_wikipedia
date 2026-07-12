@@ -1,4 +1,4 @@
-import wtf from './src/index.js'
+import wtf from './src/index.ts'
 import plg from './plugins/i18n/src/index.js'
 wtf.plugin(plg)
 

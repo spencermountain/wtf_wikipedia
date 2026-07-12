@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import makeUrl from '../../../../src/_fetch/makeUrl.js'
-import makeHeaders from '../../../../src/_fetch/_headers.js'
+import makeUrl from '../../../../src/_fetch/makeUrl.ts'
+import makeHeaders from '../../../../src/_fetch/_headers.ts'
 import parse from './parse.js'
 
 const methodsProps = { // the accepted methdos and the iiprop (imageinfo prop (URL parameter)) needed for each method

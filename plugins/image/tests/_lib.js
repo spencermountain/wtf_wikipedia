@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import build from '../../../builds/wtf_wikipedia.mjs'
-import src from '../../../src/index.js'
+import src from '../../../src/index.ts'
 import plgSrc from '../src/index.js'
 import plgBuild from '../builds/wtf-plugin-image.mjs'
 

@@ -1,49 +1,34 @@
-import commonjs from '@rollup/plugin-commonjs'
 import terser from '@rollup/plugin-terser'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
+import esbuild from 'rollup-plugin-esbuild'
 
 console.log('\n 📦  - running rollup..\n')
 
 const banner = '/*! wtf_wikipedia  MIT */'
 export default [
-  // === server-side .mjs (typescript)===
+  // === server-side .mjs ===
   {
-    input: 'src/index.js',
+    input: 'src/index.ts',
     output: [{ banner: banner, file: 'builds/wtf_wikipedia.mjs', format: 'esm' }],
-    plugins: [
-      commonjs()
-    ],
+    plugins: [esbuild({ target: 'es2018' })],
   },
 
   // === server-side .js ===
   {
-    input: 'src/index.js',
+    input: 'src/index.ts',
     output: [{ banner: banner, file: 'builds/wtf_wikipedia.cjs', format: 'umd', name: 'wtf' }],
-    plugins: [
-      commonjs()
-    ],
+    plugins: [esbuild({ target: 'es2018' })],
   },
 
   // === client-side min.js ===
   {
-    input: 'src/index.js',
+    input: 'src/index.ts',
     output: [{ banner: banner, file: 'builds/wtf_wikipedia-client.min.js', format: 'umd', name: 'wtf', sourcemap: false }],
-    plugins: [
-      nodeResolve({
-        browser: true
-      }),
-      commonjs(),
-      terser(),
-    ],
+    plugins: [esbuild({ target: 'es2018' }), terser()],
   },
   // === client-side .mjs ===
   {
-    input: 'src/index.js',
+    input: 'src/index.ts',
     output: [{ banner: banner, file: 'builds/wtf_wikipedia-client.mjs', format: 'esm', name: 'wtf', sourcemap: false }],
-    plugins: [
-      nodeResolve({ browser: true }),
-      commonjs(),
-      terser(),
-    ],
+    plugins: [esbuild({ target: 'es2018' }), terser()],
   },
 ]

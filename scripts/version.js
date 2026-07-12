@@ -4,4 +4,4 @@ import fs from 'fs'
 let pkg = JSON.parse(fs.readFileSync('./package.json').toString())
 
 //set new version number
-fs.writeFileSync('./src/_version.js', `export default '${pkg.version}'`)
+fs.writeFileSync('./src/_version.ts', `export default '${pkg.version}'`)
