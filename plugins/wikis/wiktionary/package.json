@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "main": "./plugin.js",
-  "types": "./index.d.ts",
+  "types": "./types/index.d.ts",
   "author": "Spencer Kelly (spencermountain)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/wikis/wiktionary",
   "repository": {

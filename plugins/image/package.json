@@ -4,17 +4,17 @@
   "version": "1.1.1",
   "type": "module",
   "main": "./src/index.js",
-  "types": "./index.d.ts",
+  "types": "./types/index.d.ts",
   "unpkg": "./builds/wtf-plugin-image.min.js",
   "module": "./builds/wtf-plugin-image.mjs",
   "exports": {
     ".": {
       "import": {
-        "types": "./index.d.ts",
+        "types": "./types/index.d.ts",
         "default": "./src/index.js"
       },
       "require": {
-        "types": "./index.d.cts",
+        "types": "./types/index.d.cts",
         "default": "./builds/wtf-plugin-image.cjs"
       }
     }
@@ -54,7 +54,6 @@
   },
   "license": "MIT",
   "files": [
-    "index.d.ts",
-    "index.d.cts"
+    "types"
   ]
 }

@@ -4,17 +4,17 @@
   "version": "2.0.1",
   "type": "module",
   "main": "./src/index.js",
-  "types": "./index.d.ts",
+  "types": "./types/index.d.ts",
   "unpkg": "./builds/wtf-plugin-api.min.js",
   "module": "./builds/wtf-plugin-api.mjs",
   "exports": {
     ".": {
       "import": {
-        "types": "./index.d.ts",
+        "types": "./types/index.d.ts",
         "default": "./src/index.js"
       },
       "require": {
-        "types": "./index.d.cts",
+        "types": "./types/index.d.cts",
         "default": "./builds/wtf-plugin-api.cjs"
       }
     }
@@ -31,8 +31,7 @@
     "build": "rollup -c"
   },
   "files": [
-    "index.d.ts",
-    "index.d.cts",
+    "types",
     "builds",
     "src"
   ],

@@ -39,9 +39,10 @@ const getScore = function (detail) {
   let top = tops[0]
   if (!top) {
     return {
-      detail: detail,
+      root: null,
       type: null,
       score: 0,
+      details: detail,
     }
   }
   let root = top[0]

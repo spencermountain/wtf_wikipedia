@@ -57,6 +57,7 @@
     "start": "node ./scripts/demo.js",
     "test": "NODE_NO_WARNINGS=1 tape ./tests/**/*.test.js | tap-dancer",
     "testb": "TESTENV=prod npm run test",
+    "test:plugins": "node ./scripts/test-plugins.js",
     "test:fetch": "tape ./tests/fetch/*.test.js | tap-dancer",
     "test:integration": "tape ./tests/integration/*.test.js | tap-dancer",
     "watch": "node --watch ./scratch.js"

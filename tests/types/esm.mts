@@ -48,7 +48,7 @@ if (info) {
   const both: Sentence[] = info.get(['name', 'birth_place']) // array key -> Sentence[]
   const kv: Record<string, string> = info.keyValue()
   const raw: Record<string, Sentence> = info.data
-  const geo: { template: string; lat: number; lng: number } | null = info.coordinates()
+  const geo: { template: string; lat: number; lon: number } | null = info.coordinates()
   console.log(name, both, kv, raw, geo)
 }
 

@@ -6,7 +6,7 @@ import classifyPlugin = require('wtf-plugin-classify')
 import sports = require('wtf-plugin-sports')
 
 const fn1: Plugin = htmlPlugin
-const c: classifyPlugin.ClassifyResult = { type: null, score: 0 }
+const c: classifyPlugin.ClassifyResult = { root: null, type: null, score: 0, details: {} }
 const fn2: Plugin = sports.mlb
 const fn3: Plugin = sports.nhl
 console.log(fn1, c, fn2, fn3)

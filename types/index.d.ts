@@ -132,7 +132,7 @@ declare class Infobox {
   text(): string
   type(): string
   wikitext(): string
-  coordinates(): { template: string; lat: number; lng: number } | null
+  coordinates(): { template: string; lat: number; lon: number } | null
 }
 
 declare class Template {
@@ -318,12 +318,11 @@ type ImageJson = {
   [key: string]: unknown
 }
 
-/** a parsed coordinate. coord-templates use `lat`/`lon`; infoboxes use `lat`/`lng` */
+/** a parsed coordinate, from a coord-template or an infobox */
 type Coordinate = {
   template?: string
   lat?: number
   lon?: number
-  lng?: number
   [key: string]: unknown
 }
 

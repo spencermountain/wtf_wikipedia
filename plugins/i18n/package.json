@@ -4,16 +4,16 @@
   "version": "1.0.2",
   "type": "module",
   "main": "./src/index.js",
-  "types": "./index.d.ts",
+  "types": "./types/index.d.ts",
   "unpkg": "./builds/wtf-plugin-i18n.min.js",
   "exports": {
     ".": {
       "import": {
-        "types": "./index.d.ts",
+        "types": "./types/index.d.ts",
         "default": "./src/index.js"
       },
       "require": {
-        "types": "./index.d.cts",
+        "types": "./types/index.d.cts",
         "default": "./builds/wtf-plugin-i18n.cjs"
       }
     }
@@ -32,8 +32,7 @@
     "build": "rollup -c"
   },
   "files": [
-    "index.d.ts",
-    "index.d.cts",
+    "types",
     "builds",
     "src"
   ],

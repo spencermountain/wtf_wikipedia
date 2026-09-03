@@ -3,6 +3,7 @@
 - **[breaking]** - use native fetch, drop support for (ancient) Node 12–16
 - **[new]** - .json('sm/md/lg') methods
 - **[fix]** - typescript type issues
+- **[fix]** - choose coordinate name 'lon' vs 'lng'
 
 -->
 

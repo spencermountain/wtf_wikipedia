@@ -125,9 +125,9 @@ class Infobox {
     for (let i = 0; i < latLngs.length; i += 1) {
       let a = latLngs[i]
       let lat = this.get(a[0])?.json()?.number
-      let lng = this.get(a[1])?.json()?.number
-      if (lat && lng) {
-        return { template: 'infobox/lat-long', lat, lng }
+      let lon = this.get(a[1])?.json()?.number
+      if (lat && lon) {
+        return { template: 'infobox/lat-long', lat, lon }
       }
     }
     return null

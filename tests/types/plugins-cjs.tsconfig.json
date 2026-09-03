@@ -11,9 +11,9 @@
     "baseUrl": ".",
     "paths": {
       "wtf_wikipedia": ["../../types/index.d.ts"],
-      "wtf-plugin-html": ["../../plugins/html/index.d.cts"],
-      "wtf-plugin-classify": ["../../plugins/classify/index.d.cts"],
-      "wtf-plugin-sports": ["../../plugins/sports/index.d.cts"]
+      "wtf-plugin-html": ["../../plugins/html/types/index.d.cts"],
+      "wtf-plugin-classify": ["../../plugins/classify/types/index.d.cts"],
+      "wtf-plugin-sports": ["../../plugins/sports/types/index.d.cts"]
     }
   },
   "files": ["./plugins-cjs.cts"]
