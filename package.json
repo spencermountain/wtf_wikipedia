@@ -50,6 +50,7 @@
     "build": "node ./scripts/version.js && rollup -c",
     "build:all": "node ./scripts/buildAll.js",
     "check": "tsc --noEmit",
+    "test:types": "tsc -p ./tests/types && tsc -p ./tests/types/plugins.tsconfig.json && tsc -p ./tests/types/plugins-cjs.tsconfig.json",
     "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' npm run test && npm run test:fetch",
     "lint": "eslint ./src/ ./plugins ./tests",
     "prepare": "node ./scripts/install-plugins.js",

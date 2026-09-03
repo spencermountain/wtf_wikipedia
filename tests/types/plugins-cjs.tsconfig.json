@@ -1,0 +1,20 @@
+{
+  // checks the bundled plugins' CommonJS declarations (index.d.cts)
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": false,
+    "types": [],
+    "baseUrl": ".",
+    "paths": {
+      "wtf_wikipedia": ["../../types/index.d.ts"],
+      "wtf-plugin-html": ["../../plugins/html/index.d.cts"],
+      "wtf-plugin-classify": ["../../plugins/classify/index.d.cts"],
+      "wtf-plugin-sports": ["../../plugins/sports/index.d.cts"]
+    }
+  },
+  "files": ["./plugins-cjs.cts"]
+}

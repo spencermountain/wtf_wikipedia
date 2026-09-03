@@ -4,12 +4,19 @@
   "version": "2.0.1",
   "type": "module",
   "main": "./src/index.js",
+  "types": "./index.d.ts",
   "unpkg": "./builds/wtf-plugin-api.min.js",
   "module": "./builds/wtf-plugin-api.mjs",
   "exports": {
     ".": {
-      "import": "./src/index.js",
-      "require": "./builds/wtf-plugin-api.cjs"
+      "import": {
+        "types": "./index.d.ts",
+        "default": "./src/index.js"
+      },
+      "require": {
+        "types": "./index.d.cts",
+        "default": "./builds/wtf-plugin-api.cjs"
+      }
     }
   },
   "author": "Spencer Kelly (spencermountain)",
@@ -24,6 +31,8 @@
     "build": "rollup -c"
   },
   "files": [
+    "index.d.ts",
+    "index.d.cts",
     "builds",
     "src"
   ],

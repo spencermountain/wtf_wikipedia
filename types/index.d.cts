@@ -19,6 +19,14 @@ declare namespace wtf {
   export type Link = import('./index.js', { with: { 'resolution-mode': 'import' } }).Link
   export type List = import('./index.js', { with: { 'resolution-mode': 'import' } }).List
   export type Sentence = import('./index.js', { with: { 'resolution-mode': 'import' } }).Sentence
+  export type DocumentOptions = import('./index.js', { with: { 'resolution-mode': 'import' } }).DocumentOptions
+  export type TemplateJson = import('./index.js', { with: { 'resolution-mode': 'import' } }).TemplateJson
+  export type LinkJson = import('./index.js', { with: { 'resolution-mode': 'import' } }).LinkJson
+  export type ImageJson = import('./index.js', { with: { 'resolution-mode': 'import' } }).ImageJson
+  export type Coordinate = import('./index.js', { with: { 'resolution-mode': 'import' } }).Coordinate
+  export type Models = import('./index.js', { with: { 'resolution-mode': 'import' } }).Models
+  export type Plugin = import('./index.js', { with: { 'resolution-mode': 'import' } }).Plugin
+  export type Wtf = import('./index.js', { with: { 'resolution-mode': 'import' } }).Wtf
 }
 
 export = wtf

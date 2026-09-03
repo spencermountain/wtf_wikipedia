@@ -1,0 +1,14 @@
+{
+  // compiles types/index.d.ts AND types/index.d.cts with strict settings,
+  // from a consumer's point of view - `npm run test:types`
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": false,
+    "types": []
+  },
+  "files": ["./esm.mts", "./cjs.cts"]
+}

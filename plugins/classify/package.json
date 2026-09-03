@@ -4,12 +4,19 @@
   "version": "2.1.0",
   "type": "module",
   "main": "./src/index.js",
+  "types": "./index.d.ts",
   "unpkg": "./builds/wtf-plugin-classify.min.js",
   "module": "./builds/wtf-plugin-classify.mjs",
   "exports": {
     ".": {
-      "import": "./src/index.js",
-      "require": "./builds/wtf-plugin-classify.cjs"
+      "import": {
+        "types": "./index.d.ts",
+        "default": "./src/index.js"
+      },
+      "require": {
+        "types": "./index.d.cts",
+        "default": "./builds/wtf-plugin-classify.cjs"
+      }
     }
   },
   "author": "Spencer Kelly (spencermountain)",
@@ -44,5 +51,9 @@
     "tap-dancer": "0.3.4",
     "tape": "5.10.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "index.d.ts",
+    "index.d.cts"
+  ]
 }

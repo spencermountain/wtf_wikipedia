@@ -22,7 +22,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    /* lets the plugin type-declarations resolve the main package, in `npm run check` */
+    "baseUrl": ".",
+    "paths": {
+      "wtf_wikipedia": ["./types/index.d.ts"]
+    }
   },
   "include": [
     "src/**/*",
