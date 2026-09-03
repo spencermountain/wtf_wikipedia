@@ -16,7 +16,7 @@
     "testb": "TESTENV=prod tape ./**/*.test.js | tap-dancer"
   },
   "peerDependencies": {
-    "wtf_wikipedia": ">=9.0.0"
+    "wtf_wikipedia": ">=11.0.0"
   },
   "license": "MIT"
 }

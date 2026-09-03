@@ -219,7 +219,7 @@ this library supports many **_recursive shenanigans_**, depreciated and **obscur
   from **File:XYZ.png** filenames
 - Properly resolve dynamic templates like _{{CURRENTMONTH}}_ and _{{CONVERT ..}}_
 - Parse **images**, **headings**, and **categories**
-- converts 'DMS-formatted' **_(59°12\'7.7"N)_** geo-coordinates to lat/lng
+- converts 'DMS-formatted' **_(59°12\'7.7"N)_** geo-coordinates to lat/lon
 - parse and combine citation and reference metadata
 - Eliminate xml, latex, css, and table-sorting cruft
 
@@ -648,6 +648,18 @@ wtf.extend((models) => {
 
 let doc = await wtf.fetch('Stephen Harper')
 doc.isPerson()
+```
+
+### TypeScript:
+
+type declarations are included:
+
+```ts
+import wtf from 'wtf_wikipedia'
+import type { Document, Section } from 'wtf_wikipedia'
+
+let doc = wtf(wikiText) // a Document
+let secs: Section[] = doc.sections()
 ```
 
 ### Adding new templates:

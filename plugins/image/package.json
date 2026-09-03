@@ -39,7 +39,7 @@
     "printWidth": 100
   },
   "peerDependencies": {
-    "wtf_wikipedia": ">=9.0.0"
+    "wtf_wikipedia": ">=11.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "29.0.3",

@@ -23,6 +23,8 @@ jobs:
           npm install
           npm run build
           npm run lint
+          npm run check
+          npm run test:types
           npm run testb
           npm run test:fetch
         env:

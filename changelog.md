@@ -4,6 +4,8 @@
 - **[new]** - .json('sm/md/lg') methods
 - **[fix]** - typescript type issues
 - **[fix]** - choose coordinate name 'lon' vs 'lng'
+- **[new]** - typescript declarations for all bundled plugins
+- **[change]** - classify plugin's empty result uses the same shape (root/details keys)
 
 -->
 
