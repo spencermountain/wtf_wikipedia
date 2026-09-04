@@ -8,7 +8,7 @@ Conventions used below:
   methods with a number return a **one-element array** (`doc.links(1)` →
   `[secondLink]`, or `[]` when out of range). They never return a bare item.
 - Singular forms (`.link()`, `.section()`, …) return the first (or clue-th)
-  item — `null` on Document, **`undefined` on Section/Paragraph/Sentence**.
+  item, or **`null`** when there isn't one — consistently, on every class.
 - `.json()` returns plain serializable data. `.text()` returns plaintext.
   `.wikitext()` returns the original markup. Every class has all three.
 
@@ -104,8 +104,7 @@ Output:
   **but a number clue is ignored on Section plurals** — use the singular form
   for indexing: `sec.sentence(2)`. String clues still filter
   (`sec.templates('coord')`, `sec.infoboxes('person')`, `sec.links('Fortnight')`).
-- Singulars (`.sentence()`, `.link()`, `.template()`, …) return `undefined`
-  when missing (not `null`).
+- Singulars (`.sentence()`, `.link()`, `.template()`, …) return `null` when missing.
 - Navigation: `.parent()`, `.children(titleStr?)` (alias `.sections()`),
   `.nextSibling()` / `.next()`, `.previousSibling()` / `.previous()`,
   `.lastSibling()` / `.last()` — all return `Section | null`
@@ -122,15 +121,15 @@ doc.section('A').children().map((s) => s.title()) // ['B']
 
 `.sentences()`, `.references()`/`.citations()`, `.lists()`, `.images()`,
 `.links()`, `.interwiki()`, plus singulars (`.sentence()`, `.image()`, …
-→ `undefined` when missing), and `.text()` / `.json()` / `.wikitext()`.
+→ `null` when missing), and `.text()` / `.json()` / `.wikitext()`.
 
 ## Sentence
 
 - `.text(str?)` → `string` (passing a string overwrites it)
 - `.plaintext()` alias
-- `.links(clue?)` → `Link[]`, `.link(clue?)` → `Link | undefined`
-- `.bolds()` → `string[]`, `.bold(n?)` → `string | undefined`
-- `.italics()` → `string[]`, `.italic(n?)` → `string | undefined`
+- `.links(clue?)` → `Link[]`, `.link(clue?)` → `Link | null`
+- `.bolds()` → `string[]`, `.bold(n?)` → `string | null`
+- `.italics()` → `string[]`, `.italic(n?)` → `string | null`
 - `.interwiki()` → `Link[]`, `.isEmpty()` → `boolean`
 - `.json()` → `{ text, links?, formatting? }`:
 

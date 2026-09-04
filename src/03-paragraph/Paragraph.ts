@@ -9,9 +9,9 @@ const defaults = {
 //return the first, or n-th element of an array
 const getNth = function (arr, clue) {
   if (typeof clue === 'number') {
-    return arr[clue]
+    return arr[clue] || null
   }
-  return arr[0]
+  return arr[0] || null
 }
 
 class Paragraph {
@@ -33,7 +33,7 @@ class Paragraph {
   }
 
   references(clue?) {
-    return this.data.references
+    return this.data.references || []
   }
 
   reference(clue) {
@@ -49,7 +49,7 @@ class Paragraph {
   }
 
   lists(clue?) {
-    return this.data.lists
+    return this.data.lists || []
   }
 
   list(clue) {

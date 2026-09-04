@@ -35,9 +35,9 @@ console.log(cats, secs, sec, sens, sen, imgs, infos, tmpls, coords, opts2, title
 if (sec) {
   const kids: Section[] | null = sec.children()
   const kid: Section | null | undefined = sec.children('Early life')
-  const p: Paragraph | undefined = sec.paragraph(0)
-  const tm: Template | undefined = sec.template('coord')
-  const rf: Reference | undefined = sec.reference(0)
+  const p: Paragraph | null = sec.paragraph(0)
+  const tm: Template | null = sec.template('coord')
+  const rf: Reference | null = sec.reference(0)
   console.log(kids, kid, p, tm, rf)
 }
 
@@ -64,7 +64,7 @@ declare const link: Link
 const lj: LinkJson = link.json()
 const page: string | undefined = lj.page
 declare const s2: Sentence
-const b: string | undefined = s2.bold(0)
+const b: string | null = s2.bold(0)
 declare const img2: Image
 const ij: ImageJson = img2.json()
 const file: string = ij.file

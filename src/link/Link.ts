@@ -27,10 +27,11 @@ class Link {
   }
 
   json() {
-    let obj: any = {
-      text: this.data.text,
-      type: this.type(),
+    let obj: any = {}
+    if (this.data.text !== undefined) {
+      obj.text = this.data.text
     }
+    obj.type = this.type()
     if (obj.type === 'internal') {
       obj.page = this.page()
     } else if (obj.type === 'interwiki') {

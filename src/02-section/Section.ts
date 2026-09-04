@@ -17,7 +17,7 @@ const defaults = {
 //return the first, or n-th element of an array
 const getNth = function (arr, clue) {
   if (typeof clue === 'number') {
-    return arr[clue]
+    return arr[clue] || null
   }
   return arr[0] || null
 }

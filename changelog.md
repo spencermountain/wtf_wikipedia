@@ -6,6 +6,11 @@
 - **[fix]** - choose coordinate name 'lon' vs 'lng'
 - **[new]** - typescript declarations for all bundled plugins
 - **[change]** - classify plugin's empty result uses the same shape (root/details keys)
+- **[change]** - singular methods (.section(), .link()...) return null on a miss, on every class (some returned undefined)
+- **[fix]** - .interwiki() returned every link, instead of just interwiki links
+- **[fix]** - paragraph .references()/.citations() crashed on reference-less paragraphs
+- **[fix]** - .title() could return undefined instead of null
+- **[fix]** - link .json() no longer includes an undefined text key
 
 -->
 

@@ -2830,10 +2830,11 @@
       return txt;
     }
     json() {
-      let obj = {
-        text: this.data.text,
-        type: this.type()
-      };
+      let obj = {};
+      if (this.data.text !== void 0) {
+        obj.text = this.data.text;
+      }
+      obj.type = this.type();
       if (obj.type === "internal") {
         obj.page = this.page();
       } else if (obj.type === "interwiki") {
@@ -3005,12 +3006,12 @@
     link(clue) {
       let arr = this.links(clue);
       if (typeof clue === "number") {
-        return arr[clue];
+        return arr[clue] || null;
       }
-      return arr[0];
+      return arr[0] || null;
     }
     interwiki() {
-      return this.links().filter((l) => l.wiki !== void 0);
+      return this.links().filter((l) => l.type() === "interwiki");
     }
     bolds(clue) {
       if (this.data && this.data.fmt && this.data.fmt.bold) {
@@ -3021,9 +3022,9 @@
     bold(clue) {
       let arr = this.bolds(clue);
       if (typeof clue === "number") {
-        return arr[clue];
+        return arr[clue] || null;
       }
-      return arr[0];
+      return arr[0] || null;
     }
     italics(clue) {
       if (this.data && this.data.fmt && this.data.fmt.italic) {
@@ -3034,9 +3035,9 @@
     italic(clue) {
       let arr = this.italics(clue);
       if (typeof clue === "number") {
-        return arr[clue];
+        return arr[clue] || null;
       }
-      return arr[0];
+      return arr[0] || null;
     }
     text(str) {
       if (str !== void 0 && typeof str === "string") {
@@ -3761,9 +3762,9 @@
   };
   const getNth$1 = function(arr, clue) {
     if (typeof clue === "number") {
-      return arr[clue];
+      return arr[clue] || null;
     }
-    return arr[0];
+    return arr[0] || null;
   };
   class Paragraph {
     constructor(data) {
@@ -3779,7 +3780,7 @@
       return getNth$1(this.sentences(clue), clue);
     }
     references(clue) {
-      return this.data.references;
+      return this.data.references || [];
     }
     reference(clue) {
       return getNth$1(this.references(clue), clue);
@@ -3791,7 +3792,7 @@
       return getNth$1(this.citations(clue), clue);
     }
     lists(clue) {
-      return this.data.lists;
+      return this.data.lists || [];
     }
     list(clue) {
       return getNth$1(this.lists(clue), clue);
@@ -9382,9 +9383,9 @@
       for (let i = 0; i < latLngs.length; i += 1) {
         let a = latLngs[i];
         let lat = (_b = (_a = this.get(a[0])) == null ? void 0 : _a.json()) == null ? void 0 : _b.number;
-        let lng = (_d = (_c = this.get(a[1])) == null ? void 0 : _c.json()) == null ? void 0 : _d.number;
-        if (lat && lng) {
-          return { template: "infobox/lat-long", lat, lng };
+        let lon = (_d = (_c = this.get(a[1])) == null ? void 0 : _c.json()) == null ? void 0 : _d.number;
+        if (lat && lon) {
+          return { template: "infobox/lat-long", lat, lon };
         }
       }
       return null;
@@ -9783,7 +9784,7 @@
   };
   const getNth = function(arr, clue) {
     if (typeof clue === "number") {
-      return arr[clue];
+      return arr[clue] || null;
     }
     return arr[0] || null;
   };
@@ -10211,7 +10212,7 @@
       let guess = null;
       let sen = this.sentences()[0];
       if (sen) {
-        guess = sen.bold();
+        guess = sen.bold() || null;
       }
       return guess;
     }

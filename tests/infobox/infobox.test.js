@@ -146,3 +146,13 @@ test('double-prop-infobox', function (t) {
   t.equal(json['office'].text, 'President Bhartiya Janta Party(BJP) Indore, Madhya Pradesh', 'office')
   t.end()
 })
+
+test('infobox image', (t) => {
+  const inf = wtf('{{Infobox building|name=Arts Club|image=Foo bar.jpg|caption=neat}}').infobox()
+  const img = inf.image()
+  t.equal(img.file(), 'File:Foo_bar.jpg')
+  t.equal(img.caption(), 'neat')
+  t.equal(img.url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Foo_bar.jpg')
+  t.equal(wtf('{{Infobox person|name=NoPic}}').infobox().image(), null, 'no image is null')
+  t.end()
+})

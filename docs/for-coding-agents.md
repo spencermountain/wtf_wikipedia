@@ -16,7 +16,8 @@ src/                   the parser, in TypeScript (erasable-syntax only — node 
   _fetch/              wtf.fetch implementation
   index.ts             entry: builds `wtf`, wires extend()
 types/                 HAND-WRITTEN declarations: index.d.ts (ESM) + index.d.cts (CJS)
-tests/                 tape tests (unit/, integration/, fetch/) + tests/types/ (tsc)
+tests/                 tape tests, one dir per subject (see tests/README.md)
+                       live-network tests are tests/fetch/*.fetch.js (opt-in)
 plugins/               13 plugin packages + plugins/wikis/* — each self-contained
                        (own package.json, src/, tests/, types/, node_modules)
 builds/                rollup output — generated, never edit
@@ -33,7 +34,8 @@ scratch.js             playground file
 | `npm run lint` | eslint over src, plugins, tests | no |
 | `npm run check` | loose `tsc --noEmit` over src + plugins | no |
 | `npm run test:types` | strict tsc over the type declarations (3 configs) | no |
-| `npm run test:fetch` | live-API tests | **yes** |
+| `npm run test:fetch` | live-API tests (`tests/fetch/*.fetch.js`) | **yes** |
+| `npm run goldens:update` | regenerate tests/golden/ snapshots | no |
 
 Per-plugin tests run inside the plugin dir: `cd plugins/classify && npm test`.
 

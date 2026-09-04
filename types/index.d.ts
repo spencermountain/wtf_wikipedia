@@ -76,42 +76,42 @@ declare class Section {
   children(clue: string): Section | null | undefined
   children(clue?: number): Section[] | null
   citations(clue?: number): Reference[]
-  citation(clue?: number): Reference | undefined
+  citation(clue?: number): Reference | null
   coordinates(clue?: number): Coordinate[]
-  coordinate(clue?: number): Coordinate | undefined
+  coordinate(clue?: number): Coordinate | null
   depth(): number
   images(clue?: number): Image[]
-  image(clue?: number): Image | undefined
+  image(clue?: number): Image | null
   indentation(): number
   index(): number | null
   infoboxes(clue?: string | number): Infobox[]
-  infobox(clue?: string | number): Infobox | undefined
+  infobox(clue?: string | number): Infobox | null
   interwiki(): Link[]
   json(options?: object): Record<string, unknown>
   last(): Section | null
   lastSibling(): Section | null
   links(clue?: string | number): Link[]
-  link(clue?: string | number): Link | undefined
+  link(clue?: string | number): Link | null
   lists(clue?: number): List[]
-  list(clue?: number): List | undefined
+  list(clue?: number): List | null
   next(): Section | null
   nextSibling(): Section | null
   paragraphs(clue?: number): Paragraph[]
-  paragraph(clue?: number): Paragraph | undefined
+  paragraph(clue?: number): Paragraph | null
   parent(): Section | null
   previous(): Section | null
   previousSibling(): Section | null
   references(clue?: number): Reference[]
-  reference(clue?: number): Reference | undefined
+  reference(clue?: number): Reference | null
   remove(): null | Document
   sections(clue: string): Section | null | undefined
   sections(clue?: number): Section[] | null
   sentences(clue?: number): Sentence[]
-  sentence(clue?: number): Sentence | undefined
+  sentence(clue?: number): Sentence | null
   tables(clue?: number): Table[]
-  table(clue?: number): Table | undefined
+  table(clue?: number): Table | null
   templates(clue?: string | number): Template[]
-  template(clue?: string | number): Template | undefined
+  template(clue?: string | number): Template | null
   text(options?: object): string
   title(): string
   wikitext(): string
@@ -164,19 +164,19 @@ declare class Reference {
 
 declare class Paragraph {
   citations(clue?: number): Reference[]
-  citation(clue?: number): Reference | undefined
+  citation(clue?: number): Reference | null
   images(clue?: number): Image[]
-  image(clue?: number): Image | undefined
+  image(clue?: number): Image | null
   interwiki(): Link[]
   json(options?: object): Record<string, unknown>
   links(clue?: string | number): Link[]
-  link(clue?: string | number): Link | undefined
+  link(clue?: string | number): Link | null
   lists(clue?: number): List[]
-  list(clue?: number): List | undefined
+  list(clue?: number): List | null
   references(clue?: number): Reference[]
-  reference(clue?: number): Reference | undefined
+  reference(clue?: number): Reference | null
   sentences(clue?: number): Sentence[]
-  sentence(clue?: number): Sentence | undefined
+  sentence(clue?: number): Sentence | null
   text(options?: object): string
   wikitext(): string
 }
@@ -202,14 +202,14 @@ declare class List {
 }
 
 declare class Sentence {
-  bold(clue?: number): string | undefined
+  bold(clue?: number): string | null
   bolds(clue?: number): string[]
   interwiki(): Link[]
   isEmpty(): boolean
-  italic(clue?: number): string | undefined
+  italic(clue?: number): string | null
   italics(clue?: number): string[]
   json(options?: object): Record<string, unknown>
-  link(clue?: string | number): Link | undefined
+  link(clue?: string | number): Link | null
   links(clue?: string): Link[]
   plaintext(str?: string): string
   text(str?: string): string

@@ -25,13 +25,13 @@ class Sentence {
   link(clue) {
     let arr = this.links(clue)
     if (typeof clue === 'number') {
-      return arr[clue]
+      return arr[clue] || null
     }
-    return arr[0]
+    return arr[0] || null
   }
 
   interwiki() {
-    return this.links().filter((l) => l.wiki !== undefined)
+    return this.links().filter((l) => l.type() === 'interwiki')
   }
 
   bolds(clue?) {
@@ -44,9 +44,9 @@ class Sentence {
   bold(clue) {
     let arr = this.bolds(clue)
     if (typeof clue === 'number') {
-      return arr[clue]
+      return arr[clue] || null
     }
-    return arr[0]
+    return arr[0] || null
   }
 
   italics(clue?) {
@@ -59,9 +59,9 @@ class Sentence {
   italic(clue) {
     let arr = this.italics(clue)
     if (typeof clue === 'number') {
-      return arr[clue]
+      return arr[clue] || null
     }
-    return arr[0]
+    return arr[0] || null
   }
 
   text(str?) {

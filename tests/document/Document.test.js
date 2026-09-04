@@ -17,7 +17,7 @@ test('Tile - get - first sentence', (t) => {
 test('Tile - get - no bold in sentence ', (t) => {
   let str = 'no bold in first sentence'
   let doc = wtf(str)
-  t.equal(doc.title(), undefined, 'the title equals undefined')
+  t.equal(doc.title(), null, 'the title equals null')
   t.end()
 })
 
@@ -395,36 +395,62 @@ test('sections - get - if the sections is in the option. ignore it', (t) => {
   t.end()
 })
 
-test('sections - get - if the clue is a undefined / unset return the list of categories', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Charlie-Milstead.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [321, 401, 0]
+// one small page exercises every content accessor - real values, no cached pages
+const PAGE = `'''Testville''' is a small test page. It has two sentences.
+{{Infobox person
+| name = Jane Doe
+| age = 44
+}}
+{{coord|43.65|-79.38|display=title}}
+
+==History==
+The [[Rome|city]] was founded in 1904. It grew [[quickly]].
+
+A second paragraph, with a [[Fun|link]] here.
+
+===Early days===
+* one fish
+* two fish
+[[File:Crest.jpg|thumb|the crest]]
+Nested text here.<ref>{{cite web|url=http://example.com|title=Some Ref}}</ref>
+
+{| class="wikitable"
+! name !! age
+|-
+| jane || 40
+|}
+
+==Career==
+Career text goes here. See [[fr:Ville]] too.
+<gallery>
+File:Second.jpg|second image
+</gallery>
+
+==See also==
+* [[Other page]]
+`
+const page = wtf(PAGE)
+
+test('sections - get - if the clue is a undefined / unset return the list of sections', (t) => {
   t.deepEqual(
-    doc.sections().map((s) => s.text().length),
-    expected,
-    'the sections in the wiki text'
+    page.sections().map((s) => s.title()),
+    ['', 'History', 'Early days', 'Career', 'See also']
   )
   t.end()
 })
 
-test('sections - get - if the clue is a number return the sections in that index', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Charlie-Milstead.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.equal(doc.section(1).text().length, 401, 'the section at index 1')
+test('sections - get - if the clue is a number return the section at that index', (t) => {
+  t.equal(page.section(1).title(), 'History', 'the section at index 1')
   t.end()
 })
 
-test('sections - get - if the clue is a string return the sections of that title', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Charlie-Milstead.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.equal(doc.section('Career').text().length, 401, 'the section with the title "Career"')
+test('sections - get - if the clue is a string return the section of that title', (t) => {
+  t.equal(page.section('History').sentence().text(), 'The city was founded in 1904.')
   t.end()
 })
 
-test('sections - get - if the clue is a string return the sections of that title even if the cases dont match', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Charlie-Milstead.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.equal(doc.section('CAREER').text().length, 401, 'the section with the title "Career"')
+test('sections - get - string clue is case-insensitive', (t) => {
+  t.equal(page.section('HISTORY').title(), 'History')
   t.end()
 })
 
@@ -442,56 +468,32 @@ test('paragraphs - get - if the paragraphs is in the option. ignore it', (t) => 
 })
 
 test('paragraphs - get - if the clue is a undefined / unset return the list of paragraphs', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [804, 66, 567, 474, 169, 159, 136, 167, 137, 450, 44, 17]
   t.deepEqual(
-    doc.paragraphs().map((p) => p.text().length),
-    expected,
-    'the paragraphs in the wiki text'
+    page.paragraphs().map((p) => p.text()),
+    [
+      'Testville is a small test page. It has two sentences.',
+      'The city was founded in 1904. It grew quickly.',
+      'A second paragraph, with a link here.',
+      'Nested text here.\n * one fish\n * two fish',
+      'Career text goes here. See Ville too.',
+      '\n * Other page',
+    ]
   )
   t.end()
 })
 
-test('paragraphs - get - if the clue is a number return the paragraph at that index', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
-  let doc = wtf(str)
-  //I used the length of the paragraphs as an analogue for the content.
-  t.equal(JSON.stringify(doc.paragraph(1).text().length), '66', 'the paragraph at index 1')
-  t.end()
-})
-
-test('paragraphs - get - if the clue is a string (not number) return all the paragraphs', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [804, 66, 567, 474, 169, 159, 136, 167, 137, 450, 44, 17]
-  t.deepEqual(
-    doc.paragraphs('string').map((p) => p.text().length),
-    expected,
-    'the paragraphs in the wiki text'
-  )
-  t.end()
-})
-
-//paragraph
 test('paragraph - get - if the clue is a number return the paragraph at that index', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.equal(JSON.stringify(doc.paragraph(1).text().length), '66', 'the paragraph at index 1')
+  t.equal(page.paragraph(1).text(), 'The city was founded in 1904. It grew quickly.')
   t.end()
 })
 
 test('paragraph - get - if the clue is unset or undefined return the first paragraph', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.equal(JSON.stringify(doc.paragraph().text().length), '804', 'the paragraph at index 0')
+  t.equal(page.paragraph().text(), 'Testville is a small test page. It has two sentences.')
   t.end()
 })
 
 test('paragraph - get - if the clue is not a number return the first paragraph', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.equal(JSON.stringify(doc.paragraph('string').text().length), '804', 'the paragraph at index 0')
+  t.equal(page.paragraph('string').text(), 'Testville is a small test page. It has two sentences.')
   t.end()
 })
 
@@ -509,48 +511,34 @@ test('sentences - get - if the sentences is in the option. ignore it', (t) => {
 })
 
 test('sentences - get - if the clue is a undefined / unset return the list of sentences', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected =
-    '90,77,104,55,62,58,94,45,91,75,43,66,126,128,100,210,83,187,43,56,101,65,103,90,68,136,91,75,122,14,116,48,98,185,17'
-  t.equal(
-    doc
-      .sentences()
-      .map((p) => p.text().length)
-      .join(','),
-    expected,
-    'the sentences in the wiki text'
+  t.deepEqual(
+    page.sentences().map((s) => s.text()),
+    [
+      'Testville is a small test page.',
+      'It has two sentences.',
+      'The city was founded in 1904.',
+      'It grew quickly.',
+      'A second paragraph, with a link here.',
+      'Nested text here.',
+      'Career text goes here.',
+      'See Ville too.',
+    ]
   )
   t.end()
 })
 
-test('sentences - get - if the clue is a number return the paragraph at that index', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.equal(JSON.stringify(doc.sentence(1).text().length), '77', 'the sentences at index 1')
+test('sentences - get - if the clue is a number return the sentence at that index', (t) => {
+  t.equal(page.sentence(1).text(), 'It has two sentences.')
   t.end()
 })
 
 test('sentences - get - if the clue is a string (not number) return all the sentences', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected =
-    '90,77,104,55,62,58,94,45,91,75,43,66,126,128,100,210,83,187,43,56,101,65,103,90,68,136,91,75,122,14,116,48,98,185,17'
-  t.equal(
-    doc
-      .sentences('string')
-      .map((p) => p.text().length)
-      .join(','),
-    expected,
-    'the sentences in the wiki text'
-  )
+  t.equal(page.sentences('string').length, page.sentences().length, 'string clue returns all')
   t.end()
 })
-//sentence
+
 test('sentence - get - should return the first sentence', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'statoil.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.deepEqual(doc.sentence().text().length, 90, 'the first sentence in the wiki text')
+  t.equal(page.sentence().text(), 'Testville is a small test page.')
   t.end()
 })
 
@@ -567,418 +555,139 @@ test('images - get - if the images is in the option. ignore it', (t) => {
   t.end()
 })
 
-test('images - get - if the clue is a undefined / unset return the list of images', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [82, 89]
+test('images - get - finds inline, and gallery images', (t) => {
   t.deepEqual(
-    doc.images().map((p) => p.url().length),
-    expected,
-    'the images in the wiki text'
+    page.images().map((i) => i.file()),
+    ['File:Crest.jpg', 'File:Second.jpg']
   )
   t.end()
 })
 
-test('images - get - if the clue is a number return the images at that index', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.equal(JSON.stringify(doc.image(1).url().length), '89', 'the images at index 1')
+test('images - get - if the clue is a number return the image at that index', (t) => {
+  t.equal(page.image(1).file(), 'File:Second.jpg')
   t.end()
 })
 
-test('images - get - if the clue is a string (not number) return all the images', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [82, 89]
-  t.deepEqual(
-    doc.images('string').map((p) => p.url().length),
-    expected,
-    'the images in the wiki text'
-  )
-  t.end()
-})
-
-test('images - get - also get images from galeries', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Goryeo-ware.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [137, 67, 137, 222, 120]
-  t.deepEqual(
-    doc.images('string').map((p) => p.url().length),
-    expected,
-    'the images in the wiki text'
-  )
-  t.end()
-})
-
-//image
 test('image - get - return the first image on the page', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.deepEqual(doc.image().url().length, 82, 'the first image on the page')
+  t.equal(page.image().file(), 'File:Crest.jpg')
+  t.equal(page.image().url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg')
   t.end()
 })
 
 //links
 test('links - get - return all links on the page', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Britt-Morgan.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [41, 71, 82, 94, 38, 40, 104, 40]
   t.deepEqual(
-    doc.links().map((l) => JSON.stringify(l.json()).length),
-    expected,
-    'returns all links'
+    page.links().map((l) => l.page()),
+    ['Rome', 'quickly', 'Fun', 'Ville', 'Other page']
   )
   t.end()
 })
 
 test('links - get - if the clue is a number return the link at that index', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Britt-Morgan.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.deepEqual(JSON.stringify(doc.link(1).json()).length, 71, 'the link at index 1')
+  t.equal(page.link(1).page(), 'quickly')
   t.end()
 })
 
-test('links - get - if the clue is a string return the link with that content', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Britt-Morgan.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.deepEqual(
-    JSON.stringify(doc.links('Jace Rocker')[0].json()).length,
-    40,
-    "the link at index the content 'Jace Rocker'"
-  )
+test('links - get - if the clue is a string return the link with that page', (t) => {
+  t.deepEqual(page.links('fun').map((l) => l.page()), ['Fun'], 'case-insensitive match')
   t.end()
 })
 
 test('links - get - if the clue is any other type then return all links', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Britt-Morgan.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [41, 71, 82, 94, 38, 40, 104, 40]
-  t.deepEqual(
-    doc.links([]).map((l) => JSON.stringify(l.json()).length),
-    expected,
-    'returns all links'
-  )
+  t.equal(page.links([]).length, page.links().length)
   t.end()
 })
 
 //interwiki
-test('interwiki - get - return all interwiki on the page', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Britt-Morgan.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [82, 94]
-  t.deepEqual(
-    doc.interwiki().map((l) => JSON.stringify(l.json()).length),
-    expected,
-    'returns all interwiki'
-  )
-  t.end()
-})
-
-test('interwiki - get - if the clue is a number return the interwiki at that index', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Britt-Morgan.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.deepEqual(JSON.stringify(doc.interwiki()[1].json()).length, 94, 'the interwiki at index 1')
-  t.end()
-})
-
-test('interwiki - get - if the clue is any other type then return all interwiki', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Britt-Morgan.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [82, 94]
-  t.deepEqual(
-    doc.interwiki([]).map((l) => JSON.stringify(l.json()).length),
-    expected,
-    'returns all interwiki'
-  )
+test('interwiki - get - return only the interwiki links', (t) => {
+  t.deepEqual(page.interwiki().map((l) => l.json()), [{ type: 'interwiki', wiki: 'fr', page: 'Ville' }])
   t.end()
 })
 
 //lists
 test('lists - get - return all lists on the page', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'anarchism.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [1926, 815, 4907, 2246]
   t.deepEqual(
-    doc.lists().map((l) => JSON.stringify(l.json()).length),
-    expected,
-    'returns all lists'
+    page.lists().map((l) => l.lines().map((s) => s.text())),
+    [
+      ['one fish', 'two fish'],
+      ['Other page'],
+    ]
   )
   t.end()
 })
 
-test('lists - get - if the clue is a number return the lists at that index', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'anarchism.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.deepEqual(JSON.stringify(doc.list(1).json()).length, 815, 'the lists at index 1')
+test('lists - get - if the clue is a number return the list at that index', (t) => {
+  t.deepEqual(page.list(1).lines().map((s) => s.text()), ['Other page'])
   t.end()
 })
 
-test('lists - get - if the clue is any other type then return all lists', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'anarchism.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [1926, 815, 4907, 2246]
-  t.deepEqual(
-    doc.lists('string').map((l) => JSON.stringify(l.json()).length),
-    expected,
-    'returns all lists'
-  )
-  t.end()
-})
 //tables
-// test('tables - get - return all tables', (t) => {
-//   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-//   let doc = wtf(str)
-//   const expected = [1638, 783]
-//   t.deepEqual(
-//     doc.tables().map((l) => JSON.stringify(l.json()).length),
-//     expected,
-//     'returns all tables'
-//   )
-//   t.end()
-// })
-
-test('tables - get - if the clue is a number return the tables at that index', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.deepEqual(JSON.stringify(doc.tables()[1].json()).length, 783, 'the tables at index 1')
+test('tables - get - return all tables', (t) => {
+  t.deepEqual(page.tables().map((tb) => tb.keyValue()), [[{ name: 'jane', age: '40' }]])
   t.end()
 })
 
-// test('tables - get - if the clue is any other type then return all tables', (t) => {
-//   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-//   let doc = wtf(str)
-//   const expected = [1638, 783]
-//   t.deepEqual(
-//     doc.tables('string').map((l) => JSON.stringify(l.json()).length),
-//     expected,
-//     'returns all tables'
-//   )
-//   t.end()
-// })
+test('tables - get - if the clue is a number return the table at that index', (t) => {
+  t.deepEqual(page.table(0).keyValue(), [{ name: 'jane', age: '40' }])
+  t.end()
+})
 
 //templates
 test('templates - get - return all templates', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [13, 12, 5, 4, 4, 7, 7, 18]
   t.deepEqual(
-    doc.templates().map((te) => te.json().template.length),
-    expected,
-    'returns all templates'
+    page.templates().map((te) => te.json().template),
+    ['coord', 'gallery']
   )
   t.end()
 })
 
-test('templates - get - if the clue is a number return the templates at that index', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  //I used the length of the paragraphs as an analogue for the content.
-  t.deepEqual(doc.template(1).json().template.length, 12, 'the templates at index 1')
+test('templates - get - if the clue is a number return the template at that index', (t) => {
+  t.deepEqual(page.template(0).json(), { display: 'title', template: 'coord', lat: 43.65, lon: -79.38 })
   t.end()
 })
 
-test('templates - get - if the clue is any other type then return all templates', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [13, 12, 5, 4, 4, 7, 7, 18]
-  t.deepEqual(
-    doc.templates().map((te) => te.json().template.length),
-    expected,
-    'returns all templates'
-  )
+test('templates - get - if the clue is a string return templates of that name', (t) => {
+  t.equal(page.templates('coord').length, 1)
   t.end()
 })
 
 //references -- same as citations
-test('references - get - return all templates', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = '19,3,33,32,44,0,0,0,0,0,0,0,31,0,0,0,0,31,71,0,0,0,0,0,0,0,13,13,0,0,10,0,0,0'
-  t.equal(
-    doc
-      .references()
-      .map((r) => r.title().length)
-      .join(','),
-    expected,
-    'returns all references'
-  )
+test('references - get - return all references', (t) => {
+  t.deepEqual(page.references().map((r) => r.title()), ['Some Ref'])
   t.end()
 })
 
-test('references - get - if the clue is a number return the references at that index', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.deepEqual(doc.reference(1).title().length, 3, 'the references at index 1')
+test('references - get - if the clue is a number return the reference at that index', (t) => {
+  t.equal(page.reference(0).title(), 'Some Ref')
   t.end()
 })
 
-test('references - get - if the clue is any other type then return all references', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = '19,3,33,32,44,0,0,0,0,0,0,0,31,0,0,0,0,31,71,0,0,0,0,0,0,0,13,13,0,0,10,0,0,0'
-  t.deepEqual(
-    doc
-      .references('string')
-      .map((re) => re.title().length)
-      .join(','),
-    expected,
-    'returns all references'
-  )
-  t.end()
-})
-
-//citations -- same as references
-test('citations - get - return all templates', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = '19,3,33,32,44,0,0,0,0,0,0,0,31,0,0,0,0,31,71,0,0,0,0,0,0,0,13,13,0,0,10,0,0,0'
-  t.equal(
-    doc
-      .citations()
-      .map((c) => c.title().length)
-      .join(','),
-    expected,
-    'returns all citations'
-  )
-  t.end()
-})
-
-test('citations - get - if the clue is a number return the citations at that index', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  t.deepEqual(doc.citation(1).title().length, 3, 'the citations at index 1')
-  t.end()
-})
-
-test('citations - get - if the clue is any other type then return all references', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Arts_Club_of_Chicago.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = '19,3,33,32,44,0,0,0,0,0,0,0,31,0,0,0,0,31,71,0,0,0,0,0,0,0,13,13,0,0,10,0,0,0'
-  t.equal(
-    doc
-      .citations('string')
-      .map((ci) => ci.title().length)
-      .join(','),
-    expected,
-    'returns all citations'
-  )
+test('citations - get - is an alias of references', (t) => {
+  t.deepEqual(page.citations().map((r) => r.title()), ['Some Ref'])
+  t.equal(page.citation().title(), 'Some Ref')
   t.end()
 })
 
 //coordinates
 test('coordinates - get - return all coordinates', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Dollar-Point,-California.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [
-    {
-      display: 'inline,title',
-      template: 'coord',
-      props: { region: 'US_type:city' },
-      lat: 39.18861,
-      lon: -120.10889,
-    },
-    {
-      template: 'coord',
-      props: { type: 'city' },
-      lat: 39.18861,
-      lon: -120.10889,
-    },
-  ]
-  t.deepEqual(doc.coordinates(), expected, 'returns all coordinates')
+  t.deepEqual(page.coordinates(), [{ display: 'title', template: 'coord', lat: 43.65, lon: -79.38 }])
   t.end()
 })
 
-test('coordinates - get - if the clue is a number return the coordinates at that index', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Dollar-Point,-California.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = {
-    template: 'coord',
-    props: { type: 'city' },
-    lat: 39.18861,
-    lon: -120.10889,
-  }
-  t.deepEqual(doc.coordinate(1), expected, 'the coordinates at index 1')
-  t.end()
-})
-
-test('coordinates - get - if the clue is any other type then return all coordinates', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../', 'cache', 'Dollar-Point,-California.txt'), 'utf-8')
-  let doc = wtf(str)
-  const expected = [
-    {
-      display: 'inline,title',
-      template: 'coord',
-      props: { region: 'US_type:city' },
-      lat: 39.18861,
-      lon: -120.10889,
-    },
-    {
-      template: 'coord',
-      props: { type: 'city' },
-      lat: 39.18861,
-      lon: -120.10889,
-    },
-  ]
-  t.deepEqual(doc.coordinates('string'), expected, 'returns all coordinates')
+test('coordinates - get - if the clue is a number return the coordinate at that index', (t) => {
+  t.equal(page.coordinate(0).lat, 43.65)
   t.end()
 })
 
 //infoboxes
-const infoboxPage = `
-{{Infobox venue
-| name = Royal Cinema
-| nickname            =
-| former names        = The Pylon, The Golden Princess
-| logo_image          =
-| logo_caption        =
-}}
-{{Infobox venue
-| name = Royal Cinema
-| nickname            =
-| former names        = The Pylon, The Golden Princess
-| logo_image          =
-| logo_caption        =
-| image               = Royal_Cinema.JPG
-| image_size          = 250px
-| caption             = The Royal Cinema in 2009
-}}
-{{Infobox venue
-| name = Royal Cinema
-| nickname            =
-| former names        = The Pylon, The Golden Princess
-| logo_image          =
-| logo_caption        =
-| image               = Royal_Cinema.JPG
-| image_size          = 250px
-| caption             = The Royal Cinema in 2009
-}}
-`
-
-test('infoboxes - get - return all templates', (t) => {
-  let doc = wtf(infoboxPage)
-  const expected = [201, 201, 89]
-  t.deepEqual(
-    doc.infoboxes().map((i) => JSON.stringify(i.json()).length),
-    expected,
-    'returns all templates in the infobox'
-  )
+test('infoboxes - get - return all infoboxes', (t) => {
+  t.deepEqual(page.infoboxes().map((i) => i.type()), ['person'])
   t.end()
 })
 
-test('infoboxes - get - if the clue is a number return the infoboxes at that index', (t) => {
-  let doc = wtf(infoboxPage)
-  t.deepEqual(JSON.stringify(doc.infobox(1).json()).length, 201, 'the infoboxes at index 1')
-  t.end()
-})
-
-test('infoboxes - get - if the clue is any other type then return all references', (t) => {
-  let doc = wtf(infoboxPage)
-  const expected = []
-  t.deepEqual(
-    doc.infoboxes('string').map((info) => JSON.stringify(info.json()).length),
-    expected,
-    'returns all infoboxes'
-  )
+test('infoboxes - get - field access', (t) => {
+  t.equal(page.infobox().get('name').text(), 'Jane Doe')
+  t.deepEqual(page.infobox().keyValue(), { name: 'Jane Doe', age: '44' })
   t.end()
 })
 

@@ -32,8 +32,8 @@ of the library.
 ## Return-type traps
 
 - `wtf.fetch()` of a missing page resolves **`null`**, it does not throw.
-- Singular getters return `null` on Document but `undefined` on
-  Section/Paragraph/Sentence. Check truthiness, not `=== null`.
+- Singular getters (`.section()`, `.link()`, `.sentence()`, …) return `null`
+  on a miss, on every class.
 - `infobox.get('missing key')` returns an **empty Sentence**, never
   null/undefined — `.text()` on it gives `''`. Check `.text().length`.
 - `table.text()` and `reference.text()` intentionally return `''` —
