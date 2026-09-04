@@ -76,7 +76,9 @@
   "files": [
     "builds",
     "src",
-    "types"
+    "types",
+    "docs",
+    "llms.txt"
   ],
   "keywords": [
     "wikipedia",

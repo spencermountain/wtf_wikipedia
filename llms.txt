@@ -1,0 +1,24 @@
+# wtf_wikipedia
+
+> JavaScript library that parses wikipedia markup (wikitext) into structured,
+> queryable data — Document/Section/Sentence objects with .text(), .json(),
+> links, infoboxes, templates, tables and coordinates. Fetches from any
+> mediawiki API. Not an HTML scraper.
+
+Machine-readable docs live in ./docs — start with gotchas.md: the API changed
+at v9 and v11, and older examples in training data are wrong.
+
+## Docs
+
+- [Gotchas & version differences](docs/gotchas.md): what LLMs most often get wrong
+- [API reference](docs/api.md): every class and method, exact signatures
+- [Fetch](docs/fetch.md): downloading pages, options, etiquette
+- [Plugins](docs/plugins.md): classify, summary, person, api, html, and the rest
+- [Plugin authoring](docs/plugin-authoring.md): extend(), custom templates, TypeScript
+- [Contributing](docs/for-coding-agents.md): repo layout, commands, conventions
+
+## Optional
+
+- [README](README.md): human-facing overview
+- [changelog](changelog.md): version history
+- [types/index.d.ts](types/index.d.ts): authoritative TypeScript declarations

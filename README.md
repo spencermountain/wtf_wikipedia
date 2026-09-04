@@ -409,6 +409,7 @@ see [wtf-plugin-api](./plugins/api)
 
 ## Tutorials
 
+- [Markdown docs](./docs) - plain-text documentation, written for LLMs and coding agents
 - [Gentle Introduction](https://observablehq.com/@spencermountain/wtf_wikipedia-tutorial?collection=@spencermountain/wtf_wikipedia) - Getting NBA Team data
 - [Parsing tables](https://observablehq.com/@spencermountain/parsing-wikipedia-tables) - getting all Apollo Astronauts as JSON
 - [Parsing Timezones](https://observablehq.com/@spencermountain/parsing-timezones-from-wikipedia)
@@ -440,7 +441,7 @@ doc.summary()
 wtf.extend(require('wtf-plugin-person'))
 doc = await wtf.fetch('David Bowie')
 doc.birthDate()
-// {year:1947, date:8, month:1}
+// {year:1947, date:8, month:0}
 
 wtf.extend(require('wtf-plugin-i18n'))
 doc = await wtf.fetch('Ziggy Stardust', 'fr')
