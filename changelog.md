@@ -8,6 +8,7 @@
 - **[change]** - classify plugin's empty result uses the same shape (root/details keys)
 - **[change]** - singular methods (.section(), .link()...) return null on a miss, on every class (some returned undefined)
 - **[fix]** - .interwiki() returned every link, instead of just interwiki links
+- **[fix]** - section .previousSibling() returned the raw previous section, instead of the actual sibling
 - **[fix]** - paragraph .references()/.citations() crashed on reference-less paragraphs
 - **[fix]** - .title() could return undefined instead of null
 - **[fix]** - link .json() no longer includes an undefined text key

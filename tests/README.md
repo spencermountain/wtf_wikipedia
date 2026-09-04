@@ -6,11 +6,15 @@ what keeps them out of the default `*.test.js` glob.
 
 ## layout
 
-One directory per subject, mirroring `src/`:
-`document/ section/ paragraph/ sentence/ link/ image/ infobox/ table/ list/
-reference/ templates/ output/ preprocess/ i18n/ fetch-offline/ regressions/`
+`unit/` holds the everyday offline tests - one directory per subject,
+mirroring `src/`:
+`unit/document/ unit/section/ unit/paragraph/ unit/sentence/ unit/link/
+unit/image/ unit/infobox/ unit/table/ unit/list/ unit/reference/
+unit/templates/ unit/output/ unit/preprocess/ unit/i18n/ unit/fetch-offline/
+unit/regressions/`
 
-Two special ones:
+Everything else stays in the test root - helpers (`lib/`, `cache/`, `golden/`,
+`types/`) and the special suites:
 - `contract/` — the api contract: every public method runs against every page
   in `cache/`, checked for throw-safety and the return shape promised in
   `types/index.d.ts`. If you add or change a method, update the table in

@@ -55,7 +55,7 @@
     "lint": "eslint ./src/ ./plugins ./tests",
     "prepare": "node ./scripts/install-plugins.js",
     "start": "node ./scripts/demo.js",
-    "test": "NODE_NO_WARNINGS=1 tape ./tests/**/*.test.js | tap-dancer",
+    "test": "NODE_NO_WARNINGS=1 tape ./tests/*/*.test.js ./tests/unit/*/*.test.js | tap-dancer",
     "goldens:update": "UPDATE_GOLDENS=1 npm run test",
     "testb": "TESTENV=prod npm run test",
     "test:plugins": "node ./scripts/test-plugins.js",

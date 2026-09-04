@@ -9956,7 +9956,15 @@
       }
       let sections = this._doc.sections();
       let index = this.index() || 0;
-      return sections[index - 1] || null;
+      for (let i = index - 1; i >= 0; i--) {
+        if (sections[i].depth() < this.depth()) {
+          return null;
+        }
+        if (sections[i].depth() === this.depth()) {
+          return sections[i];
+        }
+      }
+      return null;
     }
     last() {
       return this.lastSibling();

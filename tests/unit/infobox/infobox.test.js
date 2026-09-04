@@ -1,0 +1,158 @@
+import test from 'tape'
+import wtf from '../../lib/index.js'
+
+test('infobox', function (t) {
+  const str = `
+  {{Infobox settlement
+  | name = New York City
+  | official_name                   = City of New York
+  | settlement_type                 = [[City]]
+  | named_for                       = [[James II of England|James, Duke of York]]
+  | coordinates                     = {{coord|40.7127|N|74.0059|W|region:US-NY|format=dms|display=inline,title}}
+  }}
+
+  The '''City of New York''', often called '''New York City'''
+  `
+  const arr = wtf(str).infoboxes()
+  t.equal(arr.length, 1, 'have one infobox')
+  t.end()
+})
+
+test('node.js-infobox-logo', function (t) {
+  let str = `{{Infobox software
+    | name = Node.js
+    | logo = [[File:Node.js logo.svg|frameless]]
+    | author = [[Ryan Dahl]]
+    | developer = Various
+    | released = {{Start date and age|2009|05|27}}<ref>{{cite web | url=https://github.com/joyent/node/tags?after=v0.0.4 | accessdate = 2 August 2014|title=node-v0.x-archive on GitHub}}</ref>
+    | latest release version = 13.5.0
+    | latest release date = {{Start date and age|2019|12|18}}<ref>{{cite web|url=https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V13.md|accessdate = 22 November 2019|title= Node.js 13 ChangeLog|via=[[GitHub]]}}</ref>
+    | programming language = [[C (programming language)|C]], [[C++]], [[JavaScript]]
+    | operating system = [[Linux]], [[macOS]], [[Microsoft Windows]], [[SmartOS]], [[FreeBSD]], [[OpenBSD]], [[IBM AIX]]<ref name="supportedOS">{{cite web|url=https://github.com/nodejs/node/blob/master/BUILDING.md|title=nodejs/node|website=GitHub}}</ref>
+    | genre = [[Runtime system|Runtime environment]]
+    | license = [[MIT license]]<ref>{{cite web|title=node/LICENSE at master|url=https://github.com/nodejs/node/blob/master/LICENSE|website=GitHub|publisher=Node.js Foundation|accessdate = 17 September 2018|date=17 September 2018}}</ref><ref>{{cite web|title=The MIT License|url=https://opensource.org/licenses/MIT|website=Open Source Initiative|accessdate = 17 September 2018|date=17 September 2018}}</ref>
+    }}
+`
+  let obj = wtf(str).infobox(0).keyValue()
+  t.equal(obj[`logo`], 'Node.js logo.svg', 'found logo val')
+  t.end()
+})
+
+test('french-infobox', function (t) {
+  let str = `{{Infobox Société
+  | couleur boîte             = 706D6E
+  | titre blanc               = oui
+  | nom                       = Microsoft Corporation
+  | secteurs d'activités      = found1
+  | siège (ville)             = city
+  | société sœur              = sister
+  | chiffre d'affaires        = found2
+ }}
+`
+  let obj = wtf(str).infobox(0).keyValue()
+  t.equal(obj[`secteurs d'activités`], 'found1', 'found secteurs val')
+  t.equal(obj[`chiffre d'affaires`], 'found2', 'found chiffre val')
+  t.equal(obj[`siège (ville)`], 'city', 'found city val')
+  t.equal(obj[`société sœur`], 'sister', 'found sister val')
+  t.end()
+})
+
+test('nested-london-infobox', function (t) {
+  let str = `{{Infobox country
+  | common_name = United Kingdom
+  | name = {{collapsible list
+   | title = hello
+   | {{Infobox
+    | data1={{lang|foo}}
+    | data2=bar
+    }}
+   }}
+  }}
+`
+  let obj = wtf(str).infobox('country').keyValue()
+  t.equal(obj[`common_name`], 'United Kingdom', 'found common_name val')
+  t.equal(obj[`name`], 'hello', 'found name val')
+  t.end()
+})
+
+
+test('ukrainian-infobox', function (t) {
+  let str = `{{Картка
+  |foo = bar
+  |назва   = Приклад необов'язкового заголовка
+  }}`
+  let doc = wtf(str)
+  let json = { foo: {} }
+  if (doc.infoboxes()[0]) {
+    json = doc.infoboxes()[0].json()
+  }
+  t.equal(json.foo.text, 'bar', 'ukr infobox')
+
+
+  str = `{{Картка:Лідер
+| оригінал імені    = foo
+| жінка             = bar
+}}`
+  doc = wtf(str)
+  json = { foo: {} }
+  if (doc.infoboxes()[0]) {
+    json = doc.infoboxes()[0].json()
+  }
+  t.equal(json.жінка.text, 'bar', 'ukr officeholder infobox')
+  t.end()
+})
+
+
+test('tabs-in-infobox', function (t) {
+  let str = `{{Infobox officeholder
+|successor1		= [[Wistin Abela]]
+|term_end2		= March 1997
+|alma_mater             = [[St Peter's College, Oxford]]
+}}
+`
+  let obj = wtf(str).infobox().keyValue()
+  t.equal(obj[`successor1`], 'Wistin Abela', 'found successor1 val')
+  t.equal(obj[`term_end2`], 'March 1997', 'found term_end2 val')
+  t.equal(obj[`alma_mater`], `St Peter's College, Oxford`, 'found alma_mater val')
+  t.end()
+})
+
+
+test('slash-in-infobox', function (t) {
+  let str = ` 
+{{Infobox officeholder
+  | predecessor2        = [[Dick Cheney]]
+  | successor2          = [[Mike Pence]]
+  | jr/sr3              = United States Senator
+  | term_end3           = January 15, 2009 
+}}`
+
+  let doc = wtf(str)
+  let json = doc.infobox().json()
+  t.equal(json.term_end3.text, 'January 15, 2009', 'term_end3')
+  t.equal(json['jr/sr3'].text, 'United States Senator', 'slash')
+  t.end()
+})
+
+test('double-prop-infobox', function (t) {
+  let str = ` {{Infobox officeholder
+    | name                = Dr. Rajesh Sonkar
+    | office              = [[President Bhartiya Janta Party(BJP) Indore, Madhya Pradesh]]
+    | term_start          = 10 May 2020
+    | Office              =
+    }}`
+  let doc = wtf(str)
+  let json = doc.infobox().json()
+  t.equal(json['office'].text, 'President Bhartiya Janta Party(BJP) Indore, Madhya Pradesh', 'office')
+  t.end()
+})
+
+test('infobox image', (t) => {
+  const inf = wtf('{{Infobox building|name=Arts Club|image=Foo bar.jpg|caption=neat}}').infobox()
+  const img = inf.image()
+  t.equal(img.file(), 'File:Foo_bar.jpg')
+  t.equal(img.caption(), 'neat')
+  t.equal(img.url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Foo_bar.jpg')
+  t.equal(wtf('{{Infobox person|name=NoPic}}').infobox().image(), null, 'no image is null')
+  t.end()
+})

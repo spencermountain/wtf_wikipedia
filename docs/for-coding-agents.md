@@ -16,7 +16,7 @@ src/                   the parser, in TypeScript (erasable-syntax only — node 
   _fetch/              wtf.fetch implementation
   index.ts             entry: builds `wtf`, wires extend()
 types/                 HAND-WRITTEN declarations: index.d.ts (ESM) + index.d.cts (CJS)
-tests/                 tape tests, one dir per subject (see tests/README.md)
+tests/                 tape tests: unit/<subject>/ dirs + contract/ + golden/ (see tests/README.md)
                        live-network tests are tests/fetch/*.fetch.js (opt-in)
 plugins/               13 plugin packages + plugins/wikis/* — each self-contained
                        (own package.json, src/, tests/, types/, node_modules)
