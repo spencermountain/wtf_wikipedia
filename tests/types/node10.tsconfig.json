@@ -1,0 +1,17 @@
+{
+  // Legacy resolution ignores exports; resolve the package directory to check main/types.
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "commonjs",
+    "moduleResolution": "node10",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": false,
+    "types": [],
+    "baseUrl": ".",
+    "paths": {
+      "wtf_wikipedia": ["../.."]
+    }
+  },
+  "files": ["./cjs.cts"]
+}
