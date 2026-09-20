@@ -1,8 +1,9 @@
 import commonjs from '@rollup/plugin-commonjs'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
 import sizeCheck from 'rollup-plugin-filesize-check'
 
-import { version } from './package.json'
+import { readFileSync } from 'node:fs'
+const { version } = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'))
 console.log('\n 📦  - running rollup..\n')
 
 const name = 'wtf-plugin-markdown'

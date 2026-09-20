@@ -22,29 +22,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+
       - uses: actions/setup-node@v4
         with: 
-          node-version: 'lts/*'
+          node-version: '24.x'
+          cache: pnpm
           registry-url: 'https://registry.npmjs.org'
 
       - name: install
         run: |
-          npm install -g npm@latest
-          npm i
-          npm i --no-save eslint
+          pnpm install --frozen-lockfile
 
       - name: static checks
         run: |
-          npm run lint
+          pnpm run lint
+          pnpm run check
+          pnpm run test:types
 
       - name: build
         run: |
-          npm run build
+          pnpm run build:all
 
       - name: test
         run: |
-          npm run testb
-          npm run test:fetch
+          pnpm run testb
+          pnpm run test:plugins:built
+          pnpm run test:fetch
 
       # And finally... publish it!  Note that we create the .npmrc file
       # "just in time" so that `npm publish` can get the auth token from the

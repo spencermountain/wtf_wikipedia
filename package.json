@@ -48,20 +48,20 @@
   "types": "types/index.d.cts",
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
-    "build:all": "node ./scripts/buildAll.js",
+    "build:all": "pnpm run build && pnpm --filter \"wtf-plugin-*\" run build",
     "check": "tsc --noEmit",
     "test:types": "tsc -p ./tests/types && tsc -p ./tests/types/node10.tsconfig.json && tsc -p ./tests/types/plugins.tsconfig.json && tsc -p ./tests/types/plugins-cjs.tsconfig.json",
     "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' npm run test && npm run test:fetch",
     "lint": "eslint ./src/ ./plugins ./tests",
-    "prepare": "node ./scripts/install-plugins.js",
     "start": "node ./scripts/demo.js",
     "test": "NODE_NO_WARNINGS=1 tape ./tests/*/*.test.js ./tests/unit/*/*.test.js | tap-dancer",
     "goldens:update": "UPDATE_GOLDENS=1 npm run test",
     "testb": "TESTENV=prod npm run test",
-    "test:plugins": "node ./scripts/test-plugins.js",
+    "test:plugins": "pnpm --no-bail --filter \"wtf-plugin-*\" run test",
     "test:fetch": "tape ./tests/fetch/*.fetch.js | tap-dancer",
     "test:integration": "tape ./tests/integration/*.test.js | tap-dancer",
-    "watch": "node --watch ./scratch.js"
+    "watch": "node --watch ./scratch.js",
+    "test:plugins:built": "pnpm --no-bail --filter \"wtf-plugin-*\" run testb"
   },
   "bin": {
     "wtf_wikipedia": "cli.js"
@@ -98,21 +98,18 @@
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-terser": "1.0.0",
-    "esbuild": "^0.28.1",
-    "eslint": "10.5.0",
+    "esbuild": "0.28.2",
+    "eslint": "10.11.0",
     "eslint-plugin-compat": "7.0.2",
-    "eslint-plugin-regexp": "3.1.0",
+    "eslint-plugin-regexp": "3.3.1",
     "nyc": "18.0.0",
-    "rollup": "4.62.2",
-    "rollup-plugin-esbuild": "^6.2.1",
-    "shelljs": "0.10.0",
+    "rollup": "4.63.4",
+    "rollup-plugin-esbuild": "6.2.1",
     "tap-dancer": "0.3.4",
     "tape": "5.10.2",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.63.0"
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.70.0"
   },
-  "eslintIgnore": [
-    "builds/*.js"
-  ],
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "pnpm@12.5.1"
 }

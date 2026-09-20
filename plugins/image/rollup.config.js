@@ -1,4 +1,4 @@
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
 import sizeCheck from 'rollup-plugin-filesize-check'
 import esbuild from 'rollup-plugin-esbuild'
 

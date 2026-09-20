@@ -1,7 +1,5 @@
 {
   // checks the bundled plugins' type declarations against the local ./types
-  // (each plugin's own node_modules holds a published wtf_wikipedia, so the
-  //  paths entry pins every file in this compile to the local declarations)
   "compilerOptions": {
     "target": "es2022",
     "module": "nodenext",
@@ -10,7 +8,6 @@
     "noEmit": true,
     "skipLibCheck": false,
     "types": [],
-    "baseUrl": ".",
     "paths": {
       "wtf_wikipedia": ["../../types/index.d.ts"],
       "wtf-plugin-html": ["../../plugins/html/types/index.d.ts"],

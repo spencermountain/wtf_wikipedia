@@ -12,11 +12,16 @@
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
   "scripts": {
-    "test": "tape ./**/*.test.js | tap-dancer",
-    "testb": "TESTENV=prod tape ./**/*.test.js | tap-dancer"
+    "test": "tape ./*.test.js | tap-dancer",
+    "testb": "TESTENV=prod tape ./*.test.js | tap-dancer"
   },
   "peerDependencies": {
-    "wtf_wikipedia": ">=11.0.0"
+    "wtf_wikipedia": ">=10.5.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "wtf_wikipedia": "10.5.0",
+    "tape": "5.10.2",
+    "tap-dancer": "0.3.4"
+  }
 }

@@ -8,3 +8,4 @@ npm-debug.log
 *.tsv
 _missing_templates.json
 .vscode/
+.pnpm-store/

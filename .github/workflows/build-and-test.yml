@@ -5,27 +5,27 @@ on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [18.x, 22.x]
-
+        node-version: [24.x, 26.x]
     steps:
-      - uses: actions/checkout@v2
-
-      - name: use node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: npm install, build, lint, and test
+          cache: pnpm
+      - name: Install, build, lint, and test
         run: |
-          npm install
-          npm run build
-          npm run lint
-          npm run check
-          npm run test:types
-          npm run testb
-          npm run test:fetch
+          pnpm install --frozen-lockfile
+          pnpm run build:all
+          pnpm run lint
+          pnpm run check
+          pnpm run test:types
+          pnpm test
+          pnpm run testb
+          pnpm run test:plugins
+          pnpm run test:plugins:built
+          pnpm run test:fetch
         env:
           CI: true

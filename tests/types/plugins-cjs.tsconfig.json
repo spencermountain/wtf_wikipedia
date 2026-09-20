@@ -8,7 +8,6 @@
     "noEmit": true,
     "skipLibCheck": false,
     "types": [],
-    "baseUrl": ".",
     "paths": {
       "wtf_wikipedia": ["../../types/index.d.ts"],
       "wtf-plugin-html": ["../../plugins/html/types/index.d.cts"],

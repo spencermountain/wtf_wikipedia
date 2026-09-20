@@ -26,7 +26,6 @@
     "url": "git://github.com/spencermountain/wtf_wikipedia.git"
   },
   "scripts": {
-    "watch": "amble ./scratch.js",
     "test": "tape ./tests/**/*.test.js | tap-dancer",
     "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
     "build": "rollup -c"
@@ -44,15 +43,16 @@
     "printWidth": 100
   },
   "peerDependencies": {
-    "wtf_wikipedia": ">=11.0.0"
+    "wtf_wikipedia": ">=10.5.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
-    "rollup": "4.62.2",
-    "rollup-plugin-terser": "7.0.2",
+    "rollup": "4.63.4",
     "tap-dancer": "0.3.4",
-    "tape": "5.10.2"
+    "tape": "5.10.2",
+    "@rollup/plugin-terser": "1.0.0",
+    "wtf_wikipedia": "10.5.0"
   },
   "license": "MIT"
 }
