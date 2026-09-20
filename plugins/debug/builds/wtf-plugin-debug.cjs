@@ -31,7 +31,7 @@
     };
 
     models.Doc.prototype.hasNoText = function () {
-      if (this.isDisambiguation() || this.isRedirect()) {
+      if (this.isDisambiguation() || this.isRedirect() || this.isStub()) {
         return false
       }
       let txt = this.text();
@@ -43,7 +43,7 @@
 
     models.Doc.prototype.isLongStub = function () {
       let txt = this.text();
-      if (this.isStub() && txt.length > 2000) {
+      if (this.isStub() && txt.length > 5000) {
         return 'long-stub'
       }
       if (this.isRedirect() && txt.length > 2000) {

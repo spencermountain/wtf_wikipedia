@@ -55,13 +55,14 @@
     "lint": "eslint ./src/ ./plugins ./tests",
     "start": "node ./scripts/demo.js",
     "test": "NODE_NO_WARNINGS=1 tape ./tests/*/*.test.js ./tests/unit/*/*.test.js | tap-dancer",
+    "test:all": "pnpm run test:types && pnpm test && pnpm run test:plugins && pnpm run test:fetch",
     "goldens:update": "UPDATE_GOLDENS=1 npm run test",
     "testb": "TESTENV=prod npm run test",
-    "test:plugins": "pnpm --no-bail --filter \"wtf-plugin-*\" run test",
+    "test:plugins": "pnpm --bail --workspace-concurrency=1 --filter \"wtf-plugin-*\" run test",
     "test:fetch": "tape ./tests/fetch/*.fetch.js | tap-dancer",
     "test:integration": "tape ./tests/integration/*.test.js | tap-dancer",
     "watch": "node --watch ./scratch.js",
-    "test:plugins:built": "pnpm --no-bail --filter \"wtf-plugin-*\" run testb"
+    "test:plugins:built": "pnpm --bail --workspace-concurrency=1 --filter \"wtf-plugin-*\" run testb"
   },
   "bin": {
     "wtf_wikipedia": "cli.js"
@@ -100,8 +101,8 @@
     "@rollup/plugin-terser": "1.0.0",
     "esbuild": "0.28.2",
     "eslint": "10.11.0",
-    "eslint-plugin-compat": "7.0.2",
     "eslint-plugin-regexp": "3.3.1",
+    "eslint-plugin-compat": "7.0.2",
     "nyc": "18.0.0",
     "rollup": "4.63.4",
     "rollup-plugin-esbuild": "6.2.1",

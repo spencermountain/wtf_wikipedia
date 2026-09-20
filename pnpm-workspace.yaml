@@ -8,6 +8,8 @@ preferWorkspacePackages: true
 saveWorkspaceProtocol: false
 
 allowBuilds:
+  '@pnpm/exe': true
   esbuild: true
+  pnpm: true
 minimumReleaseAgeExclude:
   - eslint-plugin-regexp@3.3.1

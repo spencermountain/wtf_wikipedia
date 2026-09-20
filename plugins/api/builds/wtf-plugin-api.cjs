@@ -167,9 +167,6 @@
     }
     url += toUrlParams(params$4);
     url += `&titles=${normalize(title)}`;
-    if (append) {
-      url += append;
-    }
     return url
   };
 
@@ -341,6 +338,8 @@
     }
   }
 
+  /* eslint-disable no-console */
+
   const params$1 = {
     action: 'query',
     generator: 'random',
@@ -391,6 +390,8 @@
     let doc = wtf(wiki, { title });
     return doc
   };
+
+  /* eslint-disable no-console */
 
   const params = {
     format: 'json',

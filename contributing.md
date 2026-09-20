@@ -7,6 +7,7 @@ Development uses Node 24+ and pnpm (the exact pnpm version is pinned in `package
 Run `pnpm install` from the repository root to install the core and every plugin, including `plugins/wikis/*`. Commit the shared `pnpm-lock.yaml`; do not generate per-plugin npm lockfiles.
 
 ```sh
+pnpm run test:all           # types, core, plugins, then fetch tests; stops on failure (uses network)
 pnpm run build:all          # core first, then plugins with build scripts
 pnpm test                  # core source tests
 pnpm run testb             # core built-output tests
@@ -17,6 +18,8 @@ pnpm run check
 pnpm run test:types
 pnpm --filter wtf-plugin-html run test
 ```
+
+Plugin suites run one at a time and stop at the first nonzero exit status.
 
 Plugins use ordinary npm version ranges. pnpm links their matching development dependency on `wtf_wikipedia` to the local root package. When bumping the core version, update the plugins' development dependencies and peer minimums together: latest plugins are developed and tested against the latest core. There are no `workspace:` or `catalog:` dependency references.
 

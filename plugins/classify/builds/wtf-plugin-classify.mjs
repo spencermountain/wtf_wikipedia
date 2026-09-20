@@ -1,4 +1,4 @@
-/* wtf-plugin-classify 2.1.0  MIT */
+/* wtf-plugin-classify 3.0.0  MIT */
 var AmericanFootballPlayer = {
   name: 'AmericanFootballPlayer',
   //
@@ -3577,9 +3577,10 @@ const getScore = function (detail) {
   let top = tops[0];
   if (!top) {
     return {
-      detail: detail,
+      root: null,
       type: null,
       score: 0,
+      details: detail,
     }
   }
   let root = top[0];

@@ -190,9 +190,12 @@ const doSentence = function (options) {
 
 const toHtml$3 = function () {
   let classNames = 'link';
-  let href = this.href();
+  let href = this.href() || '';
   href = href.replace(/ /g, '_');
-  let str = this.text() || this.page();
+  //use the url as the text, for bare external links like [https://foo.com]
+  let str = this.text() || this.page() || this.site() || '';
+  str = str.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  href = href.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   return `<a class="${classNames}" href="${href}">${str}</a>`
 };
 
@@ -265,23 +268,25 @@ const toHtml$2 = function (options) {
 //
 const toHtml$1 = function (options) {
   if (this.data && this.data.url && this.data.title) {
-    let str = this.data.title;
+    let str = this.data.title.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    let url = this.data.url.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     if (options.links === true) {
-      str = `<a href="${this.data.url}">${str}</a>`;
+      str = `<a href="${url}">${str}</a>`;
     }
     return `<div class="reference">⌃ ${str} </div>`
   }
   if (this.data.encyclopedia) {
-    return `<div class="reference">⌃ ${this.data.encyclopedia}</div>`
+    let str = this.data.encyclopedia.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    return `<div class="reference">⌃ ${str}</div>`
   }
   if (this.data.title) {
     //cite book, etc
-    let str = this.data.title;
+    let str = this.data.title.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     if (this.data.author) {
-      str += this.data.author;
+      str += this.data.author.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
     if (this.data.first && this.data.last) {
-      str += this.data.first + ' ' + this.data.last;
+      str += this.data.first.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') + ' ' + this.data.last.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
     return `<div class="reference">⌃ ${str}</div>`
   }

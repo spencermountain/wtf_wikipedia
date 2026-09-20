@@ -71,7 +71,7 @@ const playerStats = function (doc) {
   return res
 };
 
-const dashSplit$2 = /(–|-|−|&ndash;)/; // eslint-disable-line
+const dashSplit$2 = /(–|-|−|&ndash;)/; //eslint-disable-line
 
 const parseTeam = function (txt) {
   if (!txt) {
@@ -190,6 +190,8 @@ const addWinner$1 = function (games) {
   return games
 };
 
+/* eslint-disable no-console */
+
 const isArray = function (arr) {
   return Object.prototype.toString.call(arr) === '[object Array]'
 };
@@ -208,7 +210,7 @@ const doTable = function (rows = []) {
   return games
 };
 
-const doSection = function (section) {
+const doSection$1 = function (section) {
   let tables = section.tables();
   //do all subsection, too
   section.children().forEach(s => {
@@ -216,7 +218,7 @@ const doSection = function (section) {
   });
   //try to find a game log template
   if (tables.length === 0) {
-    tables = section.templates('mlb game log section') || section.templates('mlb game log month');
+    tables = section.templates('mlb game log section') || section.templates('mlb game log month') || section.templates('game log section');
     tables = tables.map((m) => m.data); //make it look like a table
   } else {
     tables = tables.map((t) => t.keyValue());
@@ -233,7 +235,7 @@ const gameLog = function (doc) {
     console.warn('no game log section for: \'' + doc.title() + '\'');
     return games
   }
-  let tables = doSection(section);
+  let tables = doSection$1(section);
   tables.forEach((table) => {
     let arr = doTable(table.data);
     games = games.concat(arr);
@@ -249,7 +251,7 @@ const postSeason = function (doc) {
   if (!section) {
     return series
   }
-  let tables = doSection(section);
+  let tables = doSection$1(section);
   tables.forEach((table) => {
     let arr = doTable(table);
     series.push(arr);
@@ -319,6 +321,8 @@ const parsePage = function (doc) {
   res.playerStats = playerStats(doc);
   return res
 };
+
+/* eslint-disable no-console */
 
 const addMethod$1 = function (models) {
   models.wtf.mlbSeason = function (team, year) {
@@ -427,17 +431,7 @@ const parseScore = function (score = '') {
   }
 };
 
-const isFuture = function (games) {
-  games.forEach((g) => {
-    if (!g.attendance && !g.points) {
-      if (!g.record.wins && !g.record.lossess && !g.record.ties) {
-        g.inFuture = true;
-        g.win = null;
-      }
-    }
-  });
-  return games
-};
+
 
 const parseDate = function (row, title) {
   let year = title.year;
@@ -454,13 +448,36 @@ const parseDate = function (row, title) {
   return date
 };
 
+const doSection = function (section) {
+  let tables = section.tables();
+  //do all subsection, too
+  section.children().forEach(s => {
+    tables = tables.concat(s.tables());
+  });
+  //try to find a game log template
+  if (tables.length === 0) {
+    let templates = section.templates('game log section') || section.templates('game log month');
+    let out = [];
+    templates.forEach((m) => {
+      out = out.concat(m.data.data);
+    });
+    return out
+  } else {
+    let out = [];
+    tables = tables.forEach((t) => {
+      out = out.concat(t.keyValue());
+    });
+    return out
+  }
+};
+
 const parseGame = function (row, meta) {
   let attendance = row.attendance || row.Attendance || '';
   attendance = Number(attendance.replace(/,/, '')) || null;
   let res = {
     game: Number(row['#'] || row.Game),
     date: parseDate(row, meta),
-    opponent: row.Opponent,
+    opponent: row.Opponent || row.opponent,
     result: parseScore(row.score || row.Score),
     overtime: (row.ot || row.OT || '').toLowerCase() === 'ot',
     // goalie: row.decision,
@@ -468,7 +485,7 @@ const parseGame = function (row, meta) {
     attendance: attendance,
     points: Number(row.pts || row.points || row.Pts || row.Points) || 0,
   };
-  res.location = row.Location;
+  res.location = row.Location || row.location;
   res.home = row.home || row.Home;
   res.visitor = row.visitor || row.Visitor;
   if (!res.opponent) {
@@ -493,22 +510,13 @@ const parseGames = function (doc, meta) {
     s = nested;
   }
   //do all subsections, too
-  let tables = s.tables();
-  s.children().forEach((c) => {
-    tables = tables.concat(c.tables());
-  });
-  if (!tables[0]) {
-    return games
-  }
-  tables.forEach((table) => {
-    let rows = table.keyValue();
-    rows.forEach((row) => {
-      games.push(parseGame(row, meta));
-    });
+  let rows = doSection(s);
+  rows.forEach((row) => {
+    games.push(parseGame(row, meta));
   });
   games = games.filter((g) => g && g.date);
   games = addWinner(games);
-  games = isFuture(games);
+  // games = isFuture(games)
   return games
 };
 
@@ -601,6 +609,8 @@ const parse = function (doc) {
   res.games = parseGames(doc, meta);
   return res
 };
+
+/* eslint-disable no-console */
 
 const makePage = function (team, year) {
   team = team.replace(/ /g, '_');
