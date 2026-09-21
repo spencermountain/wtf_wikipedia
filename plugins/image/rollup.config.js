@@ -8,32 +8,26 @@ console.log('\n 📦  - running rollup..\n')
 
 const name = 'wtf-plugin-image'
 const banner = `/* ${name} ${version}  MIT */`
-export default [
-  // ===  es-module ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
-    plugins: [
-      esbuild({ target: 'es2018' }),
-    ]
-  },
-
-  // === .js ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfImage', sourcemap: false }],
-    plugins: [
-      esbuild({ target: 'es2018' }),
-    ]
-  },
-  // ===  min.js ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.min.js`, format: 'umd', name: 'wtfImage', sourcemap: false }],
-    plugins: [
-      esbuild({ target: 'es2018' }),
-      terser(),
-      sizeCheck({ expect: 24, warn: 10 })
-    ]
-  }
-]
+export default {
+  input: 'src/index.js',
+  plugins: [esbuild({ target: 'es2018' })],
+  output: [
+    {
+      banner,
+      file: `builds/${name}.mjs`,
+      format: 'esm',
+    },
+    {
+      banner,
+      file: `builds/${name}.cjs`,
+      format: 'cjs',
+    },
+    {
+      banner,
+      file: `builds/${name}.min.js`,
+      format: 'umd',
+      name: 'wtfImage',
+      plugins: [terser(), sizeCheck({ expect: 24, warn: 10 })],
+    },
+  ],
+}

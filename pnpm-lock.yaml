@@ -6,6 +6,9 @@ importers:
   .:
     configDependencies: {}
     packageManagerDependencies:
+      '@pnpm/exe':
+        specifier: 12.5.1
+        version: 12.5.1
       pnpm:
         specifier: 12.5.1
         version: 12.5.1
@@ -89,6 +92,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@pnpm/exe@12.5.1':
+    resolution: {integrity: sha512-AS6hSlb/JoHYS/XRKF7NQiOfo2Y6+EwNwLtXzCLk4MvA6ruGEhsyrNocSVnvXYYE6aRU6tEei6QqaB4mgpfQ5g==}
+    engines: {node: '>=18.*'}
+    hasBin: true
+
   pnpm@12.5.1:
     resolution: {integrity: sha512-4/MFvHhKK8ifWtO2E4iJRw+ujSr182thIW7JHCw9ZAiXdfneOKrDMQROpA8kXLDVZmOS399lgk4ZB+9qLGLeXw==}
     engines: {node: '>=18.*'}
@@ -137,6 +145,23 @@ snapshots:
 
   '@pnpm/exe.win32-x64@12.5.1':
     optional: true
+
+  '@pnpm/exe@12.5.1':
+    optionalDependencies:
+      '@pnpm/exe.android-arm64': 12.5.1
+      '@pnpm/exe.android-x64': 12.5.1
+      '@pnpm/exe.darwin-arm64': 12.5.1
+      '@pnpm/exe.darwin-x64': 12.5.1
+      '@pnpm/exe.freebsd-x64': 12.5.1
+      '@pnpm/exe.linux-arm64': 12.5.1
+      '@pnpm/exe.linux-arm64-musl': 12.5.1
+      '@pnpm/exe.linux-ppc64': 12.5.1
+      '@pnpm/exe.linux-riscv64': 12.5.1
+      '@pnpm/exe.linux-s390x': 12.5.1
+      '@pnpm/exe.linux-x64': 12.5.1
+      '@pnpm/exe.linux-x64-musl': 12.5.1
+      '@pnpm/exe.win32-arm64': 12.5.1
+      '@pnpm/exe.win32-x64': 12.5.1
 
   pnpm@12.5.1:
     optionalDependencies:
@@ -231,8 +256,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(rollup@4.63.4)
       tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
+        specifier: 0.4.0
+        version: 0.4.0
       tape:
         specifier: 5.10.2
         version: 5.10.2
@@ -255,8 +280,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(rollup@4.63.4)
       tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
+        specifier: 0.4.0
+        version: 0.4.0
       tape:
         specifier: 5.10.2
         version: 5.10.2
@@ -279,8 +304,8 @@ importers:
         specifier: 4.63.4
         version: 4.63.4
       tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
+        specifier: 0.4.0
+        version: 0.4.0
       tape:
         specifier: 5.10.2
         version: 5.10.2
@@ -313,8 +338,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(rollup@4.63.4)
       tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
+        specifier: 0.4.0
+        version: 0.4.0
       tape:
         specifier: 5.10.2
         version: 5.10.2
@@ -337,8 +362,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(rollup@4.63.4)
       tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
+        specifier: 0.4.0
+        version: 0.4.0
       tape:
         specifier: 5.10.2
         version: 5.10.2
@@ -361,8 +386,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(rollup@4.63.4)
       tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
+        specifier: 0.4.0
+        version: 0.4.0
       tape:
         specifier: 5.10.2
         version: 5.10.2
@@ -394,8 +419,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(rollup@4.63.4)
       tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
+        specifier: 0.4.0
+        version: 0.4.0
       tape:
         specifier: 5.10.2
         version: 5.10.2
@@ -418,8 +443,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(rollup@4.63.4)
       tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
+        specifier: 0.4.0
+        version: 0.4.0
       tape:
         specifier: 5.10.2
         version: 5.10.2
@@ -442,8 +467,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(rollup@4.63.4)
       tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
+        specifier: 0.4.0
+        version: 0.4.0
       tape:
         specifier: 5.10.2
         version: 5.10.2
@@ -476,8 +501,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(rollup@4.63.4)
       tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
+        specifier: 0.4.0
+        version: 0.4.0
       tape:
         specifier: 5.10.2
         version: 5.10.2
@@ -500,8 +525,8 @@ importers:
         specifier: 4.63.4
         version: 4.63.4
       tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
+        specifier: 0.4.0
+        version: 0.4.0
       tape:
         specifier: 5.10.2
         version: 5.10.2
@@ -531,8 +556,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(rollup@4.63.4)
       tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
+        specifier: 0.4.0
+        version: 0.4.0
       tape:
         specifier: 5.10.2
         version: 5.10.2
@@ -585,8 +610,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(rollup@4.63.4)
       tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
+        specifier: 0.4.0
+        version: 0.4.0
       tape:
         specifier: 5.10.2
         version: 5.10.2

@@ -9,35 +9,26 @@ console.log('\n 📦  - running rollup..\n')
 
 const name = 'wtf-plugin-disambig'
 const banner = `/* ${name} ${version}  MIT */`
-export default [
-  // ===  es-module ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
-    plugins: [
-      nodeResolve(),
-      commonjs({ requireReturnsDefault: "auto" })
-    ],
-  },
-
-  // === .js ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfDisambig', sourcemap: false }],
-    plugins: [
-      nodeResolve(),
-      commonjs({ requireReturnsDefault: "auto" })
-    ],
-  },
-  // ===  min.js ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.min.js`, format: 'umd', name: 'wtfDisambig', sourcemap: false }],
-    plugins: [
-      nodeResolve(),
-      commonjs({ requireReturnsDefault: "auto" }),
-      terser(),
-      sizeCheck({ expect: 55, warn: 15 }),
-    ],
-  },
-]
+export default {
+  input: 'src/index.js',
+  plugins: [nodeResolve(), commonjs({ requireReturnsDefault: 'auto' })],
+  output: [
+    {
+      banner,
+      file: `builds/${name}.mjs`,
+      format: 'esm',
+    },
+    {
+      banner,
+      file: `builds/${name}.cjs`,
+      format: 'cjs',
+    },
+    {
+      banner,
+      file: `builds/${name}.min.js`,
+      format: 'umd',
+      name: 'wtfDisambig',
+      plugins: [terser(), sizeCheck({ expect: 55, warn: 15 })],
+    },
+  ],
+}
