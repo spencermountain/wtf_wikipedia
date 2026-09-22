@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import test from 'tape'
 import wtf from '../../lib/index.js'
 

@@ -88,5 +88,5 @@ const doit = async function () {
     }
   }
 }
-// doit()
+doit()
 

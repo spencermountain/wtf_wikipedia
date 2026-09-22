@@ -36,7 +36,7 @@ test('fallback fn returning text and template', (t) => {
 })
 
 test('fallback fn returning only text', (t) => {
-  const templateFallbackFn = (_tmpl, _list, parse) => {
+  const templateFallbackFn = (_tmpl, _list) => {
     return `[template not found]`
   }
   const str = `Hello, {{special123|foo}}`

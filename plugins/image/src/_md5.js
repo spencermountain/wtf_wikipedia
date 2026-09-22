@@ -1,4 +1,4 @@
-/* eslint-disable no-bitwise */
+/* eslint-disable no-bitwise, max-params, no-multi-assign */
 /*
  * JavaScript MD5
  * https://github.com/blueimp/JavaScript-MD5

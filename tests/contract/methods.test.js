@@ -1,3 +1,4 @@
+/* eslint-disable max-nested-callbacks */
 import test from 'tape'
 import fs from 'node:fs'
 import path from 'node:path'

@@ -58,7 +58,7 @@
     "check": "tsc --noEmit",
     "test:types": "tsc -p ./tests/types && tsc -p ./tests/types/node10.tsconfig.json && tsc -p ./tests/types/plugins.tsconfig.json && tsc -p ./tests/types/plugins-cjs.tsconfig.json",
     "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' npm run test && npm run test:fetch",
-    "lint": "eslint ./src/ ./plugins ./tests",
+    "lint": "eslint .",
     "start": "node ./scripts/demo.js",
     "test": "NODE_NO_WARNINGS=1 tape ./tests/*/*.test.js ./tests/unit/*/*.test.js | tap-dancer",
     "test:all": "pnpm run test:types && pnpm test && pnpm run test:plugins && pnpm run test:fetch",

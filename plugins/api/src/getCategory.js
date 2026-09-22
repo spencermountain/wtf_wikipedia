@@ -62,6 +62,7 @@ const getOneCategory = async function (title, options, http) {
   return list
 }
 
+// eslint-disable-next-line max-params
 async function getCategoriesRecursively(
   title,
   options,
