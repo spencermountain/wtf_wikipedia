@@ -5,12 +5,9 @@
   "type": "module",
   "main": "./plugin.js",
   "types": "./types/index.d.ts",
-  "author": "Spencer Kelly (spencermountain)",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/wikis/openstreetmap",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/spencermountain/wtf_wikipedia.git"
-  },
+  "repository": "github:spencermountain/wtf_wikipedia",
   "peerDependencies": {
     "wtf_wikipedia": ">=10.5.0"
   },

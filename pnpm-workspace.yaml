@@ -3,14 +3,5 @@ packages:
   - 'plugins/wikis/*'
 
 # Keep ordinary npm-compatible ranges while linking matching local packages.
-linkWorkspacePackages: true
-preferWorkspacePackages: true
-saveWorkspaceProtocol: false
-
 allowBuilds:
-  '@pnpm/exe': true
   esbuild: true
-  pnpm: true
-minimumReleaseAgeExclude:
-  - eslint-plugin-regexp@3.3.1
-  - tap-dancer@0.4.0

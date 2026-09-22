@@ -19,12 +19,9 @@
       }
     }
   },
-  "author": "Spencer Kelly (spencermountain)",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/disambig#readme",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/spencermountain/wtf_wikipedia.git"
-  },
+  "repository": "github:spencermountain/wtf_wikipedia",
   "scripts": {
     "test": "tape ./tests/**/*.test.js | tap-dancer",
     "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
@@ -56,8 +53,7 @@
     "rollup-plugin-filesize-check": "1.2.0",
     "tap-dancer": "0.4.0",
     "tape": "5.10.2",
-    "@rollup/plugin-terser": "1.0.0",
-    "wtf_wikipedia": "10.5.0"
+    "@rollup/plugin-terser": "1.0.0"
   },
   "license": "MIT"
 }

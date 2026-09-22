@@ -7,11 +7,9 @@
   "module": "builds/wtf_wikipedia.mjs",
   "unpkg": "builds/wtf_wikipedia-client.min.js",
   "browser": "builds/wtf_wikipedia-client.min.js",
-  "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/spencermountain/wtf_wikipedia.git"
-  },
+  "homepage": "https://huh.wiki",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
+  "repository": "github:spencermountain/wtf_wikipedia",
   "exports": {
     ".": {
       "browser": {

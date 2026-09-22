@@ -19,12 +19,9 @@
       }
     }
   },
-  "author": "Spencer Kelly (spencermountain)",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/classify#readme",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/spencermountain/wtf_wikipedia.git"
-  },
+  "repository": "github:spencermountain/wtf_wikipedia",
   "scripts": {
     "test": "tape ./tests/**/*.test.js | tap-dancer",
     "fetch:test": "node ./tests/fetch-test.js",

@@ -19,11 +19,8 @@
       }
     }
   },
-  "author": "Spencer Kelly (spencermountain)",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/spencermountain/wtf_wikipedia.git"
-  },
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
+  "repository": "github:spencermountain/wtf_wikipedia",
   "scripts": {
     "test": "tape ./tests/**/*.test.js | tap-dancer",
     "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
