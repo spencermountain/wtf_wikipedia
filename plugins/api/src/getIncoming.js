@@ -27,16 +27,16 @@ const makeUrl = function (title, options, append) {
 const getIncoming = async function (title, options, http) {
   options = { ...defaults, ...options }
   let list = []
-  let getMore = true
+  let keepGoing = true
   let append = ''
-  while (getMore) {
+  while (keepGoing) {
     const url = makeUrl(title, options, append)
     const { pages, cursor } = await fetchOne(url, options, http, 'linkshere')
     list = list.concat(pages)
     if (cursor && cursor.lhcontinue) {
       append = '&lhcontinue=' + cursor.lhcontinue
     } else {
-      getMore = false
+      keepGoing = false
     }
   }
   return list

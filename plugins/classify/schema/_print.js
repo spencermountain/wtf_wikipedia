@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import schema from './index.js'
-/** add spaces at the end */
+// add spaces at the end
 const indent = function (str = '', width) {
   const pad = ''.padStart(width, ' ')
   return pad + str

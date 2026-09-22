@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import wtf from '../../../src/index.js'
 import languages from '../../../src/_data/languages.js'
 const langs = Object.keys(languages)
@@ -16,9 +17,7 @@ for (let i = 0; i < langs.length; i += 1) {
   }
   const coordinates = infobox.coordinates()
   if (!coordinates) {
-    //eslint-disable-next-line no-console
     console.log(lang, infobox.json())
-    continue
   }
   // console.log('✅', lang, coordinates)
 }
