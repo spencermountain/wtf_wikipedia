@@ -7,6 +7,7 @@
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/debug#readme",
   "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": {
       "import": {

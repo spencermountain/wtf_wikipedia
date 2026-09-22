@@ -29,6 +29,7 @@
     "build": "rollup -c",
     "schema": "node ./schema/_print.js"
   },
+  "sideEffects": false,
   "files": [
     "builds",
     "schema",
