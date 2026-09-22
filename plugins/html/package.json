@@ -7,7 +7,6 @@
   "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/html#readme",
   "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
   "type": "module",
-  "sideEffects": false,
   "exports": {
     ".": {
       "import": {
@@ -23,6 +22,7 @@
   "main": "./src/index.js",
   "module": "./builds/wtf-plugin-html.mjs",
   "types": "./types/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "test": "tape ./tests/**/*.test.js | tap-dancer",
     "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",

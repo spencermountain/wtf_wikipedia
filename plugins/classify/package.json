@@ -22,6 +22,7 @@
   "main": "./src/index.js",
   "module": "./builds/wtf-plugin-classify.mjs",
   "types": "./types/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "test": "tape ./tests/**/*.test.js | tap-dancer",
     "fetch:test": "node ./tests/fetch-test.js",
@@ -29,7 +30,6 @@
     "build": "rollup -c",
     "schema": "node ./schema/_print.js"
   },
-  "sideEffects": false,
   "files": [
     "builds",
     "schema",

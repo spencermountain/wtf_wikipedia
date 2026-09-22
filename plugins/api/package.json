@@ -21,6 +21,7 @@
   "main": "./src/index.js",
   "module": "./builds/wtf-plugin-api.mjs",
   "types": "./types/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "test": "tape ./tests/**/*.test.js | tap-dancer",
     "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
@@ -31,7 +32,6 @@
     "src",
     "types"
   ],
-  "sideEffects": false,
   "dependencies": {
     "slow": "^1.1.0"
   },
