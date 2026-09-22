@@ -21,8 +21,7 @@ test('first-sentence cleanup summary', (t) => {
   const arr = fs
     .readFileSync(abs)
     .toString()
-    .split(/\r?\n/)
-    .filter((s) => s)
+    .split(/\r?\n/).filter(Boolean)
 
   let count = 0
   arr.forEach((txt) => {

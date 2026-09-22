@@ -91,7 +91,7 @@ const templates = {
   ux: (tmpl, list, parse) => {
     const obj = parse(tmpl, ['lang', 'example', 'translation'])
     list.push(obj)
-    let str = `${obj.example}`
+    let str = obj.example
     if (obj.translation) {
       str += `\n` + obj.translation
     }

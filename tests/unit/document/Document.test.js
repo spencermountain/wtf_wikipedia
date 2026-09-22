@@ -8,7 +8,7 @@ const dir = path.dirname(fileURLToPath(import.meta.url))
 
 //title
 test('Tile - get - first sentence', (t) => {
-  const str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Charlie-Milstead.txt'), 'utf-8')
+  const str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Charlie-Milstead.txt'), 'utf8')
   const doc = wtf(str)
   t.equal(doc.title(), 'Charles Frank Milstead', 'the title equals the fist bolded text')
   t.end()
@@ -693,7 +693,7 @@ test('infoboxes - get - field access', (t) => {
 
 //text
 test('text - get - get the text version of the document', (t) => {
-  const str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Remote-Data-Services.txt'), 'utf-8')
+  const str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Remote-Data-Services.txt'), 'utf8')
   const doc = wtf(str)
   const expected =
     'Remote Data Services (RDS, formerly known as Advanced Data Connector or ADC) is a Microsoft technology used in conjunction with ActiveX Data Objects (ADO) that allowed the retrieval of a set of data from a database server, which the client then altered in some way and then sent back to the server for further processing. With the popular adoption of Transact-SQL, which extends SQL with such programming constructs as loops and conditional statements, this became less necessary and it was eventually deprecated in Microsoft Data Access Components version 2.7. Microsoft produced SOAP Toolkit 2.0, which allows clients to do this via an open XML-based standard.\n\n\n * MSDN Remote Data Service (RDS) description'
@@ -710,7 +710,7 @@ test('text - get - enpty string for redirects', (t) => {
 
 //plaintext -- same as text
 test('plaintext - get - get the plaintext version of the document', (t) => {
-  const str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Remote-Data-Services.txt'), 'utf-8')
+  const str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Remote-Data-Services.txt'), 'utf8')
   const doc = wtf(str)
   const expected =
     'Remote Data Services (RDS, formerly known as Advanced Data Connector or ADC) is a Microsoft technology used in conjunction with ActiveX Data Objects (ADO) that allowed the retrieval of a set of data from a database server, which the client then altered in some way and then sent back to the server for further processing. With the popular adoption of Transact-SQL, which extends SQL with such programming constructs as loops and conditional statements, this became less necessary and it was eventually deprecated in Microsoft Data Access Components version 2.7. Microsoft produced SOAP Toolkit 2.0, which allows clients to do this via an open XML-based standard.\n\n\n * MSDN Remote Data Service (RDS) description'

@@ -9,7 +9,7 @@ const dir = path.dirname(fileURLToPath(import.meta.url))
 function from_file(page) {
   let file = '../../../tests/cache/' + page + '.txt'
   file = path.join(dir, file)
-  const str = fs.readFileSync(file, 'utf-8')
+  const str = fs.readFileSync(file, 'utf8')
   return wtf(str)
 }
 

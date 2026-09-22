@@ -10,7 +10,7 @@ const dir = path.dirname(fileURLToPath(import.meta.url))
 // full json output of every singular accessor, on a real page,
 // snapshotted in tests/golden/ (regenerate with `npm run goldens:update`)
 test('singular json output - Arts Club of Chicago', (t) => {
-  const str = fs.readFileSync(path.join(dir, '../../cache/Arts_Club_of_Chicago.txt'), 'utf-8')
+  const str = fs.readFileSync(path.join(dir, '../../cache/Arts_Club_of_Chicago.txt'), 'utf8')
   const doc = wtf(str)
   const methods = [
     'section',
@@ -38,7 +38,7 @@ test('singular json output - Arts Club of Chicago', (t) => {
 })
 
 test('document json output - Arts Club of Chicago', (t) => {
-  const str = fs.readFileSync(path.join(dir, '../../cache/Arts_Club_of_Chicago.txt'), 'utf-8')
+  const str = fs.readFileSync(path.join(dir, '../../cache/Arts_Club_of_Chicago.txt'), 'utf8')
   const doc = wtf(str)
   golden(t, 'arts-club-json', {
     'json()': doc.json(),

@@ -1,6 +1,7 @@
 import spacetime from 'spacetime'
 // regexes
-const regJustYear = /^(?:c\.\s*)?(\d+)\s*(bc|bce|ad|ce)?$/i
+const regJustYear = /^(?:c\.\s*)?(?=(\d+))\1\s*(bc|bce|ad|ce)?$/i
+
 const regInaccurate = /((\d+)\s*(or|–|\/)\s*(\d+))\s*(?:bc|bce|ad|ce)?\b/gi
 const regRangeSeparator = /–/
 const regUptoSecondMill = /\b(\d{1,3})\s*(bc|bce|ad|ce)?$|\b(\d+)\s*(bc|bce)$/i

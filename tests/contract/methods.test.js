@@ -17,7 +17,7 @@ const pages = fs
   .map((f) => f.replace(/\.txt$/, ''))
 
 const parsed = pages.map((page) => {
-  const str = fs.readFileSync(path.join(cacheDir, page + '.txt'), 'utf-8')
+  const str = fs.readFileSync(path.join(cacheDir, page + '.txt'), 'utf8')
   return { page, doc: wtf(str) }
 })
 

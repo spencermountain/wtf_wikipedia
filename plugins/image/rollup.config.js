@@ -3,7 +3,7 @@ import sizeCheck from 'rollup-plugin-filesize-check'
 import esbuild from 'rollup-plugin-esbuild'
 
 import fs from 'node:fs'
-const { version } = JSON.parse(fs.readFileSync('./package.json', 'utf-8'))
+const { version } = JSON.parse(fs.readFileSync('./package.json', 'utf8'))
 console.log('\n 📦  - running rollup..\n')
 
 const name = 'wtf-plugin-image'

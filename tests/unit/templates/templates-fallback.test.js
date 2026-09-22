@@ -20,8 +20,8 @@ test('fallback fn returning null', (t) => {
 })
 
 test('fallback fn returning text and template', (t) => {
-  const templateFallbackFn = (tmpl, list, parse) => {
-    const obj = parse(tmpl, ["text", "opt"])
+  const templateFallbackFn = (tmplate, list, parse) => {
+    const obj = parse(tmplate, ['text', 'opt'])
     list.push(obj)
     return `${obj.text} (${obj.opt})`
   }
@@ -36,7 +36,7 @@ test('fallback fn returning text and template', (t) => {
 })
 
 test('fallback fn returning only text', (t) => {
-  const templateFallbackFn = (tmpl, list, parse) => {
+  const templateFallbackFn = (_tmpl, _list, parse) => {
     return `[template not found]`
   }
   const str = `Hello, {{special123|foo}}`
@@ -65,14 +65,14 @@ test('fallback fn also works on headings', (t) => {
 })
 
 test('fallback fn is not used instead of custom parser', (t) => {
-  wtf.extend((models, templates) => {
+  wtf.extend((_models, templates) => {
     templates.missing = (tmpl, list) => {
       list.push({ working: true })
       return 'working'
     }
   })
 
-  const templateFallbackFn = (tmpl, list, parse) => {
+  const templateFallbackFn = (_tmpl, _list) => {
     return `Don't call me`
   }
   const str = `{{missing|foo}}`

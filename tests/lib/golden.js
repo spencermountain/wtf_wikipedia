@@ -12,6 +12,7 @@ const golden = function (t, name, actual) {
   actual = JSON.parse(JSON.stringify(actual)) // normalize: goldens hold what survives serialization
   const file = path.join(goldenDir, name + '.json')
   if (process.env.UPDATE_GOLDENS) {
+    // eslint-disable-next-line
     fs.writeFileSync(file, JSON.stringify(actual, null, 2) + '\n')
     t.ok(true, `updated golden: ${name}`)
     return
@@ -20,7 +21,7 @@ const golden = function (t, name, actual) {
     t.fail(`missing golden file '${name}.json' - run \`npm run goldens:update\``)
     return
   }
-  const expected = JSON.parse(fs.readFileSync(file, 'utf-8'))
+  const expected = JSON.parse(fs.readFileSync(file, 'utf8'))
   t.deepEqual(Object.keys(actual), Object.keys(expected), `${name}: same result-keys`)
   Object.keys(expected).forEach((key) => {
     t.deepEqual(actual[key], expected[key], `${name}: ${key}`)
