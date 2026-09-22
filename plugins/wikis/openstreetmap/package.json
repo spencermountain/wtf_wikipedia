@@ -1,18 +1,18 @@
 {
   "name": "wtf-plugin-openstreetmap",
-  "description": "plugin for wtf_wikipedia",
   "version": "0.1.0",
+  "description": "plugin for wtf_wikipedia",
+  "license": "MIT",
+  "repository": "github:spencermountain/wtf_wikipedia",
+  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/wikis/openstreetmap",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
   "type": "module",
   "main": "./plugin.js",
   "types": "./types/index.d.ts",
-  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
-  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/wikis/openstreetmap",
-  "repository": "github:spencermountain/wtf_wikipedia",
-  "peerDependencies": {
-    "wtf_wikipedia": ">=10.5.0"
-  },
-  "license": "MIT",
   "devDependencies": {
     "wtf_wikipedia": "10.5.0"
+  },
+  "peerDependencies": {
+    "wtf_wikipedia": ">=10.5.0"
   }
 }

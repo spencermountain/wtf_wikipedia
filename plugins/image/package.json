@@ -1,12 +1,12 @@
 {
   "name": "wtf-plugin-image",
-  "description": "image plugin for wtf_wikipedia",
   "version": "1.1.1",
+  "description": "image plugin for wtf_wikipedia",
+  "license": "MIT",
+  "repository": "github:spencermountain/wtf_wikipedia",
+  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/image#readme",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
   "type": "module",
-  "main": "./builds/wtf-plugin-image.cjs",
-  "types": "./types/index.d.ts",
-  "unpkg": "./builds/wtf-plugin-image.min.js",
-  "module": "./builds/wtf-plugin-image.mjs",
   "exports": {
     ".": {
       "import": {
@@ -19,40 +19,40 @@
       }
     }
   },
-  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
-  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/image#readme",
-  "repository": "github:spencermountain/wtf_wikipedia",
+  "main": "./builds/wtf-plugin-image.cjs",
+  "module": "./builds/wtf-plugin-image.mjs",
+  "types": "./types/index.d.ts",
   "scripts": {
     "test": "tape ./tests/**/*.test.js | tap-dancer",
     "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
     "build": "rollup -c"
   },
-  "prettier": {
-    "trailingComma": "none",
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true,
-    "printWidth": 100
-  },
-  "peerDependencies": {
-    "wtf_wikipedia": ">=10.5.0"
-  },
+  "files": [
+    "builds",
+    "src",
+    "types"
+  ],
   "devDependencies": {
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
+    "@rollup/plugin-terser": "1.0.0",
     "esbuild": "0.28.2",
     "rollup": "4.63.4",
     "rollup-plugin-esbuild": "6.2.1",
     "rollup-plugin-filesize-check": "1.2.0",
     "tap-dancer": "0.4.0",
     "tape": "5.10.2",
-    "@rollup/plugin-terser": "1.0.0",
     "wtf_wikipedia": "10.5.0"
   },
-  "license": "MIT",
-  "files": [
-    "types",
-    "builds",
-    "src"
-  ]
+  "peerDependencies": {
+    "wtf_wikipedia": ">=10.5.0"
+  },
+  "unpkg": "./builds/wtf-plugin-image.min.js",
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
+  }
 }

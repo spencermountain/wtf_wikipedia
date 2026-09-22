@@ -1,15 +1,12 @@
 {
   "name": "wtf_wikipedia",
-  "description": "parse wikiscript into json",
   "version": "10.5.0",
-  "type": "module",
-  "main": "builds/wtf_wikipedia.cjs",
-  "module": "builds/wtf_wikipedia.mjs",
-  "unpkg": "builds/wtf_wikipedia-client.min.js",
-  "browser": "builds/wtf_wikipedia-client.min.js",
+  "description": "parse wikiscript into json",
+  "license": "MIT",
+  "repository": "github:spencermountain/wtf_wikipedia",
   "homepage": "https://huh.wiki",
   "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
-  "repository": "github:spencermountain/wtf_wikipedia",
+  "type": "module",
   "exports": {
     ".": {
       "browser": {
@@ -37,13 +34,24 @@
     },
     "./package.json": "./package.json"
   },
-  "publishConfig": {
-    "provenance": true
+  "main": "./builds/wtf_wikipedia.cjs",
+  "module": "./builds/wtf_wikipedia.mjs",
+  "browser": "./builds/wtf_wikipedia-client.min.js",
+  "types": "./types/index.d.cts",
+  "bin": {
+    "wtf_wikipedia": "./cli.js"
   },
   "man": [
     "./builds/man/wtf_wikipedia.1"
   ],
-  "types": "types/index.d.cts",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "provenance": true
+  },
+  "packageManager": "pnpm@12.5.1",
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
     "build:all": "pnpm run build && pnpm --filter \"wtf-plugin-*\" run build",
@@ -62,23 +70,12 @@
     "watch": "node --watch ./scratch.js",
     "test:plugins:built": "pnpm --bail --workspace-concurrency=1 --filter \"wtf-plugin-*\" run testb"
   },
-  "bin": {
-    "wtf_wikipedia": "cli.js"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "sideEffects": false,
-  "browserslist": [
-    "defaults",
-    "not op_mini all"
-  ],
   "files": [
     "builds",
-    "src",
-    "types",
     "docs",
-    "llms.txt"
+    "llms.txt",
+    "src",
+    "types"
   ],
   "keywords": [
     "wikipedia",
@@ -86,21 +83,14 @@
     "wikipedia markup",
     "wikiscript"
   ],
-  "prettier": {
-    "trailingComma": "es5",
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true,
-    "printWidth": 120
-  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-terser": "1.0.0",
     "esbuild": "0.28.2",
     "eslint": "10.11.0",
-    "eslint-plugin-regexp": "3.3.1",
     "eslint-plugin-compat": "7.0.2",
+    "eslint-plugin-regexp": "3.3.1",
     "nyc": "18.0.0",
     "rollup": "4.63.4",
     "rollup-plugin-esbuild": "6.2.1",
@@ -109,6 +99,16 @@
     "typescript": "6.0.3",
     "typescript-eslint": "8.70.0"
   },
-  "license": "MIT",
-  "packageManager": "pnpm@12.5.1"
+  "unpkg": "builds/wtf_wikipedia-client.min.js",
+  "browserslist": [
+    "defaults",
+    "not op_mini all"
+  ],
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 120
+  }
 }

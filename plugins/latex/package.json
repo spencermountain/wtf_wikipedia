@@ -1,11 +1,12 @@
 {
   "name": "wtf-plugin-latex",
-  "description": "latex plugin for wtf_wikipedia",
   "version": "1.0.0",
+  "description": "latex plugin for wtf_wikipedia",
+  "license": "MIT",
+  "repository": "github:spencermountain/wtf_wikipedia",
+  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/latex#readme",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
   "type": "module",
-  "main": "./src/index.js",
-  "types": "./types/index.d.ts",
-  "unpkg": "./builds/wtf-plugin-latex.min.js",
   "exports": {
     ".": {
       "import": {
@@ -18,38 +19,37 @@
       }
     }
   },
+  "main": "./src/index.js",
   "module": "./builds/wtf-plugin-latex.mjs",
-  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
-  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/latex#readme",
-  "repository": "github:spencermountain/wtf_wikipedia",
+  "types": "./types/index.d.ts",
   "scripts": {
     "test": "tape ./tests/**/*.test.js | tap-dancer",
     "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
     "build": "rollup -c"
   },
   "files": [
-    "types",
     "builds",
-    "src"
+    "src",
+    "types"
   ],
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "29.0.3",
+    "@rollup/plugin-terser": "1.0.0",
+    "rollup": "4.63.4",
+    "rollup-plugin-filesize-check": "1.2.0",
+    "tap-dancer": "0.4.0",
+    "tape": "5.10.2",
+    "wtf_wikipedia": "10.5.0"
+  },
+  "peerDependencies": {
+    "wtf_wikipedia": ">=10.5.0"
+  },
+  "unpkg": "./builds/wtf-plugin-latex.min.js",
   "prettier": {
     "trailingComma": "none",
     "tabWidth": 2,
     "semi": false,
     "singleQuote": true,
     "printWidth": 100
-  },
-  "peerDependencies": {
-    "wtf_wikipedia": ">=10.5.0"
-  },
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "29.0.3",
-    "rollup": "4.63.4",
-    "rollup-plugin-filesize-check": "1.2.0",
-    "tap-dancer": "0.4.0",
-    "tape": "5.10.2",
-    "@rollup/plugin-terser": "1.0.0",
-    "wtf_wikipedia": "10.5.0"
-  },
-  "license": "MIT"
+  }
 }
