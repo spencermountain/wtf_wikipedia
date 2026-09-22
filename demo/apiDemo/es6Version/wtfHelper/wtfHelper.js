@@ -12,7 +12,7 @@ export {
 
 // chunk array into smaller arrays ['a','b','c','d'] => [['a','b'],['c','d']]
 /*export*/ function chunk(list=null, chunkSize=5) {
-  let result = [];
+  const result = [];
 
   if (Array.isArray(list) && chunkSize > 0) {
     for (let i = 0, iCount = list.length; i < iCount; i += chunkSize) {
@@ -44,15 +44,15 @@ export {
     return wtf.fetch(urlOrUrlList, options);
   }
 
-  let chunkList = this.chunk(urlOrUrlList);
+  const chunkList = this.chunk(urlOrUrlList);
 
-  if (chunkList.length < 1) {
+  if (chunkList.length === 0) {
     return null;
   }
 
-  let resultList = [];
+  const resultList = [];
   for (let i = 0, iCount = chunkList.length; i < iCount; ++i) {
-    let subList = chunkList[i];
+    const subList = chunkList[i];
     resultList.push(await wtf.fetch(subList, options));
   }
 

@@ -1,8 +1,8 @@
 import test from 'tape'
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import wtf from '../lib/index.js'
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from 'node:url'
 
 // the api contract: every public method, run against every cached page,
 // checked against the return-shape promised in types/index.d.ts.

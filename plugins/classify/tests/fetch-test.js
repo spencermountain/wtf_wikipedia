@@ -2,7 +2,7 @@
 // import test from 'tape'
 import wtf from './_lib.js'
 
-let arr = [
+const arr = [
   // biologists
   ['Ernst Haeckel', 'Person/Creator/Author'],
   ['David Haig (biologist)', 'Person'],
@@ -78,9 +78,9 @@ const magenta = str => '\x1b[35m' + str + '\x1b[0m'
 
 const doit = async function () {
   for (let i = 0; i < arr.length; i += 1) {
-    let [name, type] = arr[i]
-    let doc = await wtf.fetch(name)
-    let res = doc.classify()
+    const [name, type] = arr[i]
+    const doc = await wtf.fetch(name)
+    const res = doc.classify()
     if (res.type === type) {
       console.log(green('• '), dim(name))
     } else {

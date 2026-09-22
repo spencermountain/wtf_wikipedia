@@ -43,7 +43,7 @@ const didDie = {
 }
 
 const byCat = function (doc) {
-  let cats = doc.categories()
+  const cats = doc.categories()
 
   //confirmed alive categories
   if (cats.find((c) => aliveCats.hasOwnProperty(c))) {

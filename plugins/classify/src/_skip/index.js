@@ -9,10 +9,10 @@ const listOf = /^list of ./
 const disambig = /\(disambiguation\)/
 
 const skipPage = function (doc) {
-  let title = doc.title() || ''
+  const title = doc.title() || ''
 
   //look at parentheses like 'Tornado (film)'
-  let m = title.match(paren)
+  const m = title.match(paren)
   if (!m) {
     return null
   }

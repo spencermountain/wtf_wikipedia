@@ -2,7 +2,7 @@ import terser from '@rollup/plugin-terser'
 import sizeCheck from 'rollup-plugin-filesize-check'
 import esbuild from 'rollup-plugin-esbuild'
 
-import fs from 'fs'
+import fs from 'node:fs'
 const { version } = JSON.parse(fs.readFileSync('./package.json', 'utf-8'))
 console.log('\n 📦  - running rollup..\n')
 

@@ -2,7 +2,7 @@ import test from 'tape'
 import wtf from './_lib.js'
 
 test('first-sentence cleanup summary', (t) => {
-  let arr = [
+  const arr = [
     [
       'Susan Allen (May 10, 1951 &amp;ndash; September 7, 2015) was an American harpist and singer',
       'an American harpist and singer'
@@ -31,7 +31,7 @@ test('first-sentence cleanup summary', (t) => {
     [`he flipped around [[Category: Acrobats]][[Category: Living People]] `, 'An acrobat']
   ]
   arr.forEach((a, i) => {
-    let str = wtf(a[0]).summary()
+    const str = wtf(a[0]).summary()
     t.equal(str, a[1], 'extract-' + i)
   })
   t.end()

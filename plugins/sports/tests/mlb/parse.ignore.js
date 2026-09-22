@@ -3,7 +3,7 @@ import test from 'tape'
 import wtf from '../_lib.js'
 
 test('rain-out', (t) => {
-  let str = ` 
+  const str = ` 
 ===Game log===
 {{Game log start|style={{Baseball primary style|Toronto Blue Jays}}|title= 2022 Game Log: 92–70 (Home: 47–34; Road: 45–36)}}
 {{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}}|title=October: 4–1 (Home: 2–0; Road: 2–1)| #| Date| Opponent| Score| Win| Loss| Save| Attendance| Record| GB}}
@@ -24,7 +24,7 @@ test('rain-out', (t) => {
 {{Game log end}}
 `
 
-  let doc = wtf(str)
+  const doc = wtf(str)
   console.log(doc.mlbSeason().games)
   t.end()
 })

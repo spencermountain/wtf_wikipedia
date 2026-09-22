@@ -7,14 +7,14 @@ function escapeRegExp(str) {
 }
 
 const parseLine = function (line) {
-  let link = line.link(0)
+  const link = line.link(0)
   if (!link || link.type() !== 'internal') {
     return null
   }
   let desc = line.text()
-  let reg = escapeRegExp(link.text())
+  const reg = escapeRegExp(link.text())
   // ensure the link is toward the start of the sentence
-  let m = desc.match(reg)
+  const m = desc.match(reg)
   if (!m || m.index > 20) {
     return null
   }
@@ -28,17 +28,17 @@ const parseLine = function (line) {
 
 // A '''[[berry]]''' is a small, pulpy and often edible fruit in non-technical language.
 const getMain = function (s) {
-  let txt = s.text().slice(0, 120)
-  if (!txt.match(/ is /)) {
+  const txt = s.text().slice(0, 120)
+  if (!/ is /.test(txt)) {
     return null
   }
-  let link = s.link(0)
+  const link = s.link(0)
   if (!link) {
     return null
   }
-  let reg = escapeRegExp(link.text())
+  const reg = escapeRegExp(link.text())
   // ensure the link is toward the start of the sentence
-  let m = txt.match(reg)
+  const m = txt.match(reg)
   if (!m || m.index > 20) {
     return null
   }
@@ -58,22 +58,22 @@ const addMethod = function (models) {
       return null
     }
     // remove 'see also'
-    let sec = this.section('see also')
+    const sec = this.section('see also')
     if (sec !== null) {
       sec.remove()
     }
-    let intro = this.section().sentence()
-    let main = getMain(intro)
+    const intro = this.section().sentence()
+    const main = getMain(intro)
 
-    let pages = []
+    const pages = []
     this.sections().forEach((s) => {
-      let title = s.title()
+      const title = s.title()
       if (shouldSkip.test(title) === true) {
         return
       }
       s.lists().forEach((list) => {
         list.lines().forEach((line) => {
-          let found = parseLine(line)
+          const found = parseLine(line)
           if (found) {
             found.section = title
             pages.push(found)

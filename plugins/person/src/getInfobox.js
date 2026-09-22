@@ -1,15 +1,15 @@
 import mapping from './_lib/_infoboxes.js'
 
 const byInfobox = function (doc, prop) {
-  let infoboxes = doc.infoboxes()
+  const infoboxes = doc.infoboxes()
   for (let i = 0; i < infoboxes.length; i++) {
-    let inf = infoboxes[i]
+    const inf = infoboxes[i]
     let type = inf.type()
     type = type.toLowerCase()
     type = type.trim()
 
     if (mapping.hasOwnProperty(type)) {
-      let s = inf.get(prop)
+      const s = inf.get(prop)
       if (s) {
         return s.text()
       }

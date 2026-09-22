@@ -19,7 +19,7 @@ import citeWeb from './data/cite_web.js'
 import commonsCat from './data/commons_cat.js'
 import startDate from './data/start_date.js'
 
-let mapping = {
+const mapping = {
   citation,
   coord,
   flag,

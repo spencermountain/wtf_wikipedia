@@ -19,7 +19,7 @@ test('expand external interwiki link', (t) => {
   t.equal(obj.text, 'cool', 'text')
   t.equal(obj.wiki, 'heroeswiki', 'wiki')
 
-  let href = doc.link().href()
+  const href = doc.link().href()
   t.equal(href, 'http://heroeswiki.com/cool', 'expand external link')
 
   str = `[[Wiktionary:fr:bonjour]]`
@@ -57,14 +57,14 @@ test('expand external interwiki link', (t) => {
 })
 
 test('expand internal interwiki link', (t) => {
-  let str = `[[fr:cool]]`
-  let doc = wtf(str)
-  let obj = doc.link().json()
+  const str = `[[fr:cool]]`
+  const doc = wtf(str)
+  const obj = doc.link().json()
   t.equal(obj.type, 'interwiki', 'interwiki')
   t.equal(obj.text, 'cool', 'text')
   t.equal(obj.wiki, 'fr', 'wiki')
 
-  let href = doc.link().href()
+  const href = doc.link().href()
   t.equal(href, 'http://fr.wikipedia.org/wiki/cool', 'expand external link')
   t.end()
 })

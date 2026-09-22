@@ -2,9 +2,9 @@ import parseGames from './parseGames/index.js'
 import parseInfobox from './infobox.js'
 
 const parseTitle = function (season = '') {
-  let num = season.match(/[0-9]+/) || []
-  let year = Number(num[0]) || season
-  let team = season
+  const num = season.match(/[0-9]+/) || []
+  const year = Number(num[0]) || season
+  const team = season
     .replace(/[0-9\-–]+/, '')
     .replace(/_/g, ' ')
     .replace(' season', '')
@@ -16,7 +16,7 @@ const parseTitle = function (season = '') {
 }
 
 const parseRoster = function (doc) {
-  let s = doc.section('skaters') || doc.section('roster') || doc.section('player statistics')
+  const s = doc.section('skaters') || doc.section('roster') || doc.section('player statistics')
   let players = []
   if (!s) {
     return players
@@ -49,8 +49,8 @@ const parseRoster = function (doc) {
 
 //
 const parse = function (doc) {
-  let meta = parseTitle(doc.title())
-  let res = {
+  const meta = parseTitle(doc.title())
+  const res = {
     team: meta.team,
     year: meta.year,
     page: meta.season,

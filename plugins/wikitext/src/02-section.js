@@ -2,7 +2,7 @@ const defaults = {}
 
 const doTemplate = function (obj) {
   let data = ''
-  let name = obj.template
+  const name = obj.template
   Object.keys(obj).forEach((k) => {
     if (k !== 'template') {
       data += ` | ${k} = ${obj[k]}`
@@ -16,7 +16,7 @@ const toWiki = function (options) {
   options = Object.assign({}, defaults, options)
   let text = ''
   if (this.title()) {
-    let side = '=='
+    const side = '=='
     text += `\n${side} ${this.title()} ${side}\n`
   }
   // render some templates?

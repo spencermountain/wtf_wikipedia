@@ -1,7 +1,7 @@
 import byInfobox from '../getInfobox.js'
 
 const deathPlace = function (doc) {
-  let res = byInfobox(doc, 'death_place')
+  const res = byInfobox(doc, 'death_place')
   if (res) {
     return res
   }

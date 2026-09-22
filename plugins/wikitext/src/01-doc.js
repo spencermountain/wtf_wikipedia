@@ -27,7 +27,7 @@ const toWiki = function (options) {
 
   //render each section
   if (options.sections === true || options.paragraphs === true || options.sentences === true) {
-    let sections = this.sections()
+    const sections = this.sections()
     text += sections.map((s) => s.makeWikitext(options)).join('\n')
   }
 

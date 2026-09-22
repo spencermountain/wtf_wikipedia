@@ -2,14 +2,14 @@
 const toHtml = function (options) {
   if (this.data && this.data.url && this.data.title) {
     let str = this.data.title.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
-    let url = this.data.url.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    const url = this.data.url.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
     if (options.links === true) {
       str = `<a href="${url}">${str}</a>`
     }
     return `<div class="reference">⌃ ${str} </div>`
   }
   if (this.data.encyclopedia) {
-    let str = this.data.encyclopedia.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    const str = this.data.encyclopedia.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
     return `<div class="reference">⌃ ${str}</div>`
   }
   if (this.data.title) {

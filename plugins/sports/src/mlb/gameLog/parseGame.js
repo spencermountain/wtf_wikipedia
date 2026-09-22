@@ -4,7 +4,7 @@ const parseTeam = function (txt) {
   if (!txt) {
     return {}
   }
-  let away = /^ *@ */.test(txt)
+  const away = /^ *@ */.test(txt)
   return {
     name: txt.replace(/^ +@ +/, ''),
     home: !away
@@ -15,13 +15,13 @@ const parseRecord = function (txt) {
   if (!txt) {
     return {}
   }
-  let arr = txt.split(dashSplit)
-  let obj = {
+  const arr = txt.split(dashSplit)
+  const obj = {
     wins: parseInt(arr[0], 10) || 0,
     losses: parseInt(arr[2], 10) || 0,
   }
   obj.games = obj.wins + obj.losses
-  let plusMinus = obj.wins / obj.games
+  const plusMinus = obj.wins / obj.games
   obj.plusMinus = Number(plusMinus.toFixed(2))
   return obj
 }
@@ -31,8 +31,8 @@ const parseScore = function (txt) {
     return {}
   }
   txt = txt.replace(/^[wl] /i, '')
-  let arr = txt.split(dashSplit)
-  let obj = {
+  const arr = txt.split(dashSplit)
+  const obj = {
     winner: parseInt(arr[0], 10),
     loser: parseInt(arr[2], 10),
   }
@@ -45,7 +45,7 @@ const parseScore = function (txt) {
 const parseAttendance = function (txt = '') {
   //support [[Rogers Center]] (23,987)
   if (txt.indexOf('(') !== -1) {
-    let m = txt.match(/\(([0-9 ,]+)\)/)
+    const m = txt.match(/\(([0-9 ,]+)\)/)
     if (m && m[1]) {
       txt = m[1]
     }
@@ -75,9 +75,9 @@ const parseRow = function (row) {
   if (!row) {
     return null
   }
-  let team = parseTeam(row.opponent || row.Opponent)
-  let record = parseRecord(row.record || row.Record)
-  let obj = {
+  const team = parseTeam(row.opponent || row.Opponent)
+  const record = parseRecord(row.record || row.Record)
+  const obj = {
     date: row.date || row.Date,
     team: team.name || team.Name,
     home: team.home || team.Home || false,

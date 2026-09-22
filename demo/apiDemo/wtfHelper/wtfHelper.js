@@ -2,7 +2,7 @@
 // writing wtf_wikipedia apps. wtfHelper requires the wtf variable.
 'use strict';
 
-let WtfHelper = function() {};
+const WtfHelper = function() {};
 
 
 // calls mainFn() after the HTML document loads; breaks the back button cache.
@@ -32,15 +32,15 @@ WtfHelper.prototype.fetchNicely = async function(urlOrUrlList = null,
     return wtf.fetch(urlOrUrlList, options);
   }
 
-  let chunkList = this.chunk(urlOrUrlList);
+  const chunkList = this.chunk(urlOrUrlList);
 
-  if (chunkList.length < 1) {
+  if (chunkList.length === 0) {
     return null;
   }
 
-  let resultList = [];
+  const resultList = [];
   for (let i = 0, iCount = chunkList.length; i < iCount; ++i) {
-    let subList = chunkList[i];
+    const subList = chunkList[i];
     resultList.push(await wtf.fetch(subList, options));
   }
 
@@ -50,7 +50,7 @@ WtfHelper.prototype.fetchNicely = async function(urlOrUrlList = null,
 
 // chunk array into smaller arrays ['a','b','c','d'] => [['a','b'],['c','d']]
 WtfHelper.prototype.chunk = function(list=null, chunkSize=5) {
-  let result = [];
+  const result = [];
 
   if (Array.isArray(list) && chunkSize > 0) {
     for (let i = 0, iCount = list.length; i < iCount; i += chunkSize) {
@@ -70,7 +70,7 @@ WtfHelper.prototype.formatNumber = function(num, minFractDigits = 0) {
 
 // create HTML element of tagName type (e.g. 'div' or 'img')
 WtfHelper.prototype.createElement = function(parent, className, tagName) {
-  let element = document.createElement(tagName);
+  const element = document.createElement(tagName);
   className ? element.className = className : null;
   parent ? parent.appendChild(element) : null;
   return element;
@@ -78,27 +78,27 @@ WtfHelper.prototype.createElement = function(parent, className, tagName) {
 
 
 WtfHelper.prototype.createBr = function(parent) {
-  let element = this.createElement(parent, null, 'br');
+  const element = this.createElement(parent, null, 'br');
   return element;
 }
 
 
 WtfHelper.prototype.createDiv = function(parent, className, text) {
-  let element = this.createElement(parent, className, 'div');
+  const element = this.createElement(parent, className, 'div');
   text ? element.insertAdjacentText('beforeend', text): null;
   return element;
 }
 
 
 WtfHelper.prototype.createH2 = function(parent, className, text) {
-  let element = this.createElement(parent, className, 'H2');
+  const element = this.createElement(parent, className, 'H2');
   text ? element.insertAdjacentText('beforeend', text): null;
   return element;
 }
 
 
 WtfHelper.prototype.createImg = function(parent, className, url) {
-  let element = this.createElement(parent, className, 'img');
+  const element = this.createElement(parent, className, 'img');
   url ? element.src = url : null;
   return element;
 }

@@ -2,7 +2,7 @@ import test from 'tape'
 import wtf from '../../lib/index.js'
 
 test('arenas table', (t) => {
-  let str = `{|class="wikitable" cellpadding="0" cellspacing="0" style="font-size: 85%; text-align: center;"
+  const str = `{|class="wikitable" cellpadding="0" cellspacing="0" style="font-size: 85%; text-align: center;"
 |-
 ! style="width:14%; background: #FFCCCC;" | Team
 ! style="width:25%; background: #FFCCCC;" | Arena
@@ -28,7 +28,7 @@ test('arenas table', (t) => {
 | <ref>{{cite web|first=Allan|last=Muir|title=Seven Wonders of the Hockey World: Places a fan must visit|url=https://www.si.com/nhl/2015/08/21/seven-wonders-hockey-world-places|website=SI.com|date=August 21, 2015|accessdate=August 7, 2018}}</ref>
 |-
 |}`
-  let doc = wtf(str)
+  const doc = wtf(str)
   let rows = doc.table(0).keyValue()
   rows = rows.filter((r) => r.Arena)
   t.equal(rows.length, 2, 'two rows')
@@ -40,7 +40,7 @@ test('arenas table', (t) => {
 })
 
 test('double-header baseball game', (t) => {
-  let str = `{|border="1" cellpadding="2" cellspacing="0" class="wikitable" style="text-align:center; width:100%;"
+  const str = `{|border="1" cellpadding="2" cellspacing="0" class="wikitable" style="text-align:center; width:100%;"
 |-style="background:#ddf"
 !width="4%"|#
 !width="11%"|Date
@@ -61,8 +61,8 @@ test('double-header baseball game', (t) => {
 |-style=background:#fcc
 |147||September 14||@ [[2018 Philadelphia Phillies season|Phillies]] || 2–14 || [[Zach Eflin|Eflin]] (10–7) || '''[[Wei-Yin Chen|Chen]]''' (6–11) || — || 21,671 || 57–90 || L4
 |}`
-  let doc = wtf(str)
-  let rows = doc.table(0).keyValue()
+  const doc = wtf(str)
+  const rows = doc.table(0).keyValue()
   t.equal(rows.length, 4, 'all rows')
   t.equal(rows[0].Attendance, '20,423', '1')
   t.equal(rows[1].Attendance, '22,640', '2')

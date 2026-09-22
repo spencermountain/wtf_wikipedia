@@ -4,7 +4,7 @@ const toMarkdown = function () {
   href = href.replace(/ /g, '_')
   // href = encodeURIComponent(href)
   //use the url as the text, for bare external links like [https://foo.com]
-  let str = this.text() || this.page() || this.site() || ''
+  const str = this.text() || this.page() || this.site() || ''
   return '[' + str + '](' + href + ')'
 }
 export default toMarkdown

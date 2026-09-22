@@ -52,8 +52,8 @@ test('section-output', (t) => {
 })
 
 test('sentence-output', (t) => {
-  let doc = readFile('royal_cinema')
-  let sen = doc.sentence()
+  const doc = readFile('royal_cinema')
+  const sen = doc.sentence()
   let data = sen.json()
   t.ok(data.text, 'text')
   t.ok(data.links, 'links')

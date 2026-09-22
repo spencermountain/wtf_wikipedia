@@ -23,8 +23,8 @@ const randomCategory = function (options = {}, http) {
   return http(url, headers)
     .then((res) => {
       try {
-        let o = res.query.pages
-        let key = Object.keys(o)[0]
+        const o = res.query.pages
+        const key = Object.keys(o)[0]
         return o[key].title
       } catch (e) {
         throw e

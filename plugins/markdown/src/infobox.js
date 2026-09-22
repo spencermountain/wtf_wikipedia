@@ -23,8 +23,8 @@ const doInfobox = function (options) {
     if (dontDo[k] === true) {
       return
     }
-    let key = '**' + k + '**'
-    let s = this.data[k]
+    const key = '**' + k + '**'
+    const s = this.data[k]
     let val = s.markdown(options)
     //markdown is more newline-sensitive than wiki
     val = val.split(/\n/g).join(', ')

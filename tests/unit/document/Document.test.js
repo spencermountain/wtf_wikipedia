@@ -1,36 +1,36 @@
 import test from 'tape'
 import wtf from '../../lib/index.js'
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const dir = path.dirname(fileURLToPath(import.meta.url))
 
 //title
 test('Tile - get - first sentence', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Charlie-Milstead.txt'), 'utf-8')
-  let doc = wtf(str)
+  const str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Charlie-Milstead.txt'), 'utf-8')
+  const doc = wtf(str)
   t.equal(doc.title(), 'Charles Frank Milstead', 'the title equals the fist bolded text')
   t.end()
 })
 
 test('Tile - get - no bold in sentence ', (t) => {
-  let str = 'no bold in first sentence'
-  let doc = wtf(str)
+  const str = 'no bold in first sentence'
+  const doc = wtf(str)
   t.equal(doc.title(), null, 'the title equals null')
   t.end()
 })
 
 test('Tile - get - return null if there are no sentences', (t) => {
-  let str = ''
-  let doc = wtf(str)
+  const str = ''
+  const doc = wtf(str)
   t.equal(doc.title(), null, 'the title equals null')
   t.end()
 })
 
 test('Tile - get / set - if the title is already set than get it from internal object', (t) => {
-  let str = 'no bold in first sentence'
-  let doc = wtf(str)
+  const str = 'no bold in first sentence'
+  const doc = wtf(str)
   doc.title('some title')
   t.equal(doc.title(), 'some title', 'the title equals the set title')
   t.end()
@@ -38,19 +38,19 @@ test('Tile - get / set - if the title is already set than get it from internal o
 
 //pageID
 test('pageID - get - should initially be null', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.pageID(), null, 'the pageID equals null')
   t.end()
 })
 
 test('pageID - get - if the pageID is already set than get it from internal object', (t) => {
-  let doc = wtf('', { pageID: 1 })
+  const doc = wtf('', { pageID: 1 })
   t.equal(doc.pageID(), 1, 'the pageID equals 1')
   t.end()
 })
 
 test('pageID - get / set - if the pageID is set then it should return the same ', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   doc.pageID(1)
   t.equal(doc.pageID(), 1, 'the pageID equals 1')
   t.end()
@@ -58,19 +58,19 @@ test('pageID - get / set - if the pageID is set then it should return the same '
 
 //revisionID
 test('revisionID - get - should initially be null', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.revisionID(), null, 'the revisionID equals null')
   t.end()
 })
 
 test('revisionID - get - if the revisionID is already set than get it from internal object', (t) => {
-  let doc = wtf('', { revisionID: 1 })
+  const doc = wtf('', { revisionID: 1 })
   t.equal(doc.revisionID(), 1, 'the revisionID equals 1')
   t.end()
 })
 
 test('revisionID - get / set - if the revisionID is set then it should return the same ', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   doc.revisionID(1)
   t.equal(doc.revisionID(), 1, 'the revisionID equals 1')
   t.end()
@@ -78,19 +78,19 @@ test('revisionID - get / set - if the revisionID is set then it should return th
 
 //wikidata
 test('wikidata - get - should initially be null', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.wikidata(), null, 'the wikidata equals null')
   t.end()
 })
 
 test('wikidata - get - if the wikidata is already set than get it from internal object', (t) => {
-  let doc = wtf('', { wikidata: 'Q42' })
+  const doc = wtf('', { wikidata: 'Q42' })
   t.equal(doc.wikidata(), 'Q42', "the wikidata equals 'Q42'")
   t.end()
 })
 
 test('wikidata - get / set - if the wikidata is set then it should return the same ', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   doc.wikidata('Q42')
   t.equal(doc.wikidata(), 'Q42', "the wikidata equals 'Q42'")
   t.end()
@@ -98,19 +98,19 @@ test('wikidata - get / set - if the wikidata is set then it should return the sa
 
 //domain
 test('domain - get - should initially be null', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.domain(), null, 'the null equals undefined')
   t.end()
 })
 
 test('domain - get - if the domain is already set than get it from internal object', (t) => {
-  let doc = wtf('', { domain: 'wikidata.org' })
+  const doc = wtf('', { domain: 'wikidata.org' })
   t.equal(doc.domain(), 'wikidata.org', "the domain equals 'wikidata.org'")
   t.end()
 })
 
 test('domain - get / set - if the domain is set then it should return the same ', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   doc.domain('wikidata.org')
   t.equal(doc.domain(), 'wikidata.org', "the domain equals 'wikidata.org'")
   t.end()
@@ -118,19 +118,19 @@ test('domain - get / set - if the domain is set then it should return the same '
 
 //language  - Same test as lang
 test('language - get - should initially be null', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.language(), null, 'the language equals null')
   t.end()
 })
 
 test('language - get - if the language is already set than get it from internal object', (t) => {
-  let doc = wtf('', { language: 'nl' })
+  const doc = wtf('', { language: 'nl' })
   t.equal(doc.language(), 'nl', "the language equals 'nl'")
   t.end()
 })
 
 test('language - get / set - if the language is set then it should return the same ', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   doc.language('nl')
   t.equal(doc.language(), 'nl', "the language equals 'nl'")
   t.end()
@@ -138,19 +138,19 @@ test('language - get / set - if the language is set then it should return the sa
 
 //lang - Same test as language
 test('lang - get - should initially be null', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.lang(), null, 'the lang equals null')
   t.end()
 })
 
 test('lang - get - if the lang is already set than get it from internal object', (t) => {
-  let doc = wtf('', { language: 'nl' })
+  const doc = wtf('', { language: 'nl' })
   t.equal(doc.lang(), 'nl', "the lang equals 'nl'")
   t.end()
 })
 
 test('lang - get / set - if the lang is set then it should return the same ', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   doc.lang('nl')
   t.equal(doc.lang(), 'nl', "the lang equals 'nl'")
   t.end()
@@ -158,44 +158,44 @@ test('lang - get / set - if the lang is set then it should return the same ', (t
 
 //url
 test('url - get - if there is no title return null', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.url(), null, 'the url equals null')
   t.end()
 })
 
 test('url - get - if lang and domain are undefined then default to en.wikipedia.org', (t) => {
-  let doc = wtf('', { title: 'Barack Obama' })
+  const doc = wtf('', { title: 'Barack Obama' })
   t.equal(doc.url(), 'https://en.wikipedia.org/wiki/Barack_Obama', 'the url equals the right page')
   t.end()
 })
 
 test('url - get - if lang and domain are set then use them', (t) => {
-  let doc = wtf('', { title: 'Barack Obama', language: 'military', domain: 'wikia.org' })
+  const doc = wtf('', { title: 'Barack Obama', language: 'military', domain: 'wikia.org' })
   t.equal(doc.url(), 'https://military.wikia.org/wiki/Barack_Obama', 'the url equals the right page')
   t.end()
 })
 
 //namespace  - same test as ns
 test('namespace - get - should initially be null', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.namespace(), null, 'the namespace equals null')
   t.end()
 })
 
 test('namespace - get - if the namespace is already set than get it from internal object', (t) => {
-  let doc = wtf('', { ns: 'talk' })
+  const doc = wtf('', { ns: 'talk' })
   t.equal(doc.namespace(), 'talk', "the namespace equals 'talk'")
   t.end()
 })
 
 test('namespace - get - if the namespace is already set the other way than get it from internal object', (t) => {
-  let doc = wtf('', { namespace: 'talk' })
+  const doc = wtf('', { namespace: 'talk' })
   t.equal(doc.namespace(), 'talk', "the namespace equals 'talk'")
   t.end()
 })
 
 test('namespace - get / set - if the namespace is set then it should return the same ', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   doc.namespace('talk')
   t.equal(doc.namespace(), 'talk', "the namespace equals 'talk'")
   t.end()
@@ -203,25 +203,25 @@ test('namespace - get / set - if the namespace is set then it should return the 
 
 //ns - same test as namespace
 test('ns - get - should initially be null', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.ns(), null, 'the ns equals null')
   t.end()
 })
 
 test('ns - get - if the ns is already set than get it from internal object', (t) => {
-  let doc = wtf('', { ns: 'talk' })
+  const doc = wtf('', { ns: 'talk' })
   t.equal(doc.ns(), 'talk', "the ns equals 'talk'")
   t.end()
 })
 
 test('ns - get - if the ns is already set the other way than get it from internal object', (t) => {
-  let doc = wtf('', { ns: 'talk' })
+  const doc = wtf('', { ns: 'talk' })
   t.equal(doc.ns(), 'talk', "the ns equals 'talk'")
   t.end()
 })
 
 test('ns - get / set - if the ns is set then it should return the same ', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   doc.ns('talk')
   t.equal(doc.ns(), 'talk', "the ns equals 'talk'")
   t.end()
@@ -229,116 +229,116 @@ test('ns - get / set - if the ns is set then it should return the same ', (t) =>
 
 //isRedirect
 test('isRedirect - get - should initially be false', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.isRedirect(), false, 'the isRedirect equals false')
   t.end()
 })
 
 test('isRedirect - get - if the type of page is should default to page and return false', (t) => {
-  let doc = wtf('', { type: 'redirect' })
+  const doc = wtf('', { type: 'redirect' })
   t.equal(doc.isRedirect(), false, 'the empty-string isRedirect equals false')
   t.end()
 })
 
 test('isRedirect - get - if the page is a redirect than return true', (t) => {
-  let doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
+  const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
   t.equal(doc.isRedirect(), true, 'the DOORVERWIJZING isRedirect equals true')
   t.end()
 })
 
 //redirectTo -- same as redirectsTo & redirect & redirects
 test('redirectTo - get - should initially be null', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.redirectTo(), null, 'the redirectTo equals null')
   t.end()
 })
 
 test('redirectTo - get - if the page is a redirect than return the target page', (t) => {
-  let doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
+  const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
   t.deepEqual(doc.redirectTo(), { page: 'Doelpagina', raw: '[[Doelpagina]]' }, "the redirectTo equals 'Doelpagina'")
   t.end()
 })
 
 //redirectsTo -- same as redirectTo
 test('redirectsTo - get - should initially be null', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.redirectsTo(), null, 'the redirectsTo equals null')
   t.end()
 })
 
 test('redirectsTo - get - if the page is a redirect than return the target page', (t) => {
-  let doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
+  const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
   t.deepEqual(doc.redirectsTo(), { page: 'Doelpagina', raw: '[[Doelpagina]]' }, "the redirectsTo equals 'Doelpagina'")
   t.end()
 })
 
 //redirect -- same as redirectTo
 test('redirect - get - should initially be null', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.redirect(), null, 'the redirect equals null')
   t.end()
 })
 
 test('redirect - get - if the page is a redirect than return the target page', (t) => {
-  let doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
+  const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
   t.deepEqual(doc.redirect(), { page: 'Doelpagina', raw: '[[Doelpagina]]' }, "the redirect equals 'Doelpagina'")
   t.end()
 })
 
 //redirects -- same as redirectTo
 test('redirects - get - should initially be null', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(doc.redirects(), null, 'the redirects equals null')
   t.end()
 })
 
 test('redirects - get - if the page is a redirect than return the target page', (t) => {
-  let doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
+  const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
   t.deepEqual(doc.redirects(), { page: 'Doelpagina', raw: '[[Doelpagina]]' }, "the redirects equals 'Doelpagina'")
   t.end()
 })
 
 //isDisambiguation -- same as isDisambig
 test('isDisambiguation - get - if the page is not a Disambiguation page than return false', (t) => {
-  let doc = wtf('not disambiguation')
+  const doc = wtf('not disambiguation')
   t.equal(doc.isDisambiguation(), false, 'the isDisambiguation equals false')
   t.end()
 })
 
 test('isDisambiguation - get - if the page is a Disambiguation page than return true', (t) => {
-  let doc = wtf('{{dp}}')
+  const doc = wtf('{{dp}}')
   t.equal(doc.isDisambiguation(), true, 'the isDisambiguation equals true')
   t.end()
 })
 
 //isDisambig -- same as isDisambiguation
 test('isDisambig - get - if the page is not a Disambiguation page than return false', (t) => {
-  let doc = wtf('not disambiguation')
+  const doc = wtf('not disambiguation')
   t.equal(doc.isDisambig(), false, 'the isDisambig equals false')
   t.end()
 })
 
 test('isDisambig - get - if the page is a Disambiguation page than return true', (t) => {
-  let doc = wtf('{{dp}}')
+  const doc = wtf('{{dp}}')
   t.equal(doc.isDisambig(), true, 'the isDisambig equals true')
   t.end()
 })
 
 //categories
 test('categories - get - should initially be []', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.deepEqual(doc.categories(), [], 'the categories equals []')
   t.end()
 })
 
 test('categories - get - if the categories is in the option. ignore it', (t) => {
-  let doc = wtf('', { categories: ['Q42'] })
+  const doc = wtf('', { categories: ['Q42'] })
   t.deepEqual(doc.categories(), [], 'the categories equals []')
   t.end()
 })
 
 test('categories - get - if the clue is a undefined / unset return the list of categories', (t) => {
-  let doc = wtf(`
+  const doc = wtf(`
     [[Category:WWE Hall of Fame inductees]]
     [[Category:Writers from New York City]]
     [[Category:American people of German descent]]
@@ -355,7 +355,7 @@ test('categories - get - if the clue is a undefined / unset return the list of c
 })
 
 test('categories - get - if the clue is a number return the category in that index', (t) => {
-  let doc = wtf(`
+  const doc = wtf(`
     [[Category:WWE Hall of Fame inductees]]
     [[Category:Writers from New York City]]
     [[Category:American people of German descent]]
@@ -366,7 +366,7 @@ test('categories - get - if the clue is a number return the category in that ind
 })
 
 test('categories - get - if the clue is not a number return the list of categories', (t) => {
-  let doc = wtf(`
+  const doc = wtf(`
     [[Category:WWE Hall of Fame inductees]]
     [[Category:Writers from New York City]]
     [[Category:American people of German descent]]
@@ -384,13 +384,13 @@ test('categories - get - if the clue is not a number return the list of categori
 
 //sections
 test('sections - get - should initially be []', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.deepEqual(doc.sections(), [], 'the sections equals []')
   t.end()
 })
 
 test('sections - get - if the sections is in the option. ignore it', (t) => {
-  let doc = wtf('', { sections: ['Q42'] })
+  const doc = wtf('', { sections: ['Q42'] })
   t.deepEqual(doc.sections(), [], 'the sections equals []')
   t.end()
 })
@@ -456,13 +456,13 @@ test('sections - get - string clue is case-insensitive', (t) => {
 
 //paragraphs
 test('paragraphs - get - should initially be []', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.deepEqual(doc.paragraphs(), [], 'the paragraphs equals []')
   t.end()
 })
 
 test('paragraphs - get - if the paragraphs is in the option. ignore it', (t) => {
-  let doc = wtf('', { paragraphs: ['Q42'] })
+  const doc = wtf('', { paragraphs: ['Q42'] })
   t.deepEqual(doc.paragraphs(), [], 'the paragraphs equals []')
   t.end()
 })
@@ -499,13 +499,13 @@ test('paragraph - get - if the clue is not a number return the first paragraph',
 
 //sentences
 test('sentences - get - should initially be []', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.deepEqual(doc.sentences(), [], 'the sentences equals []')
   t.end()
 })
 
 test('sentences - get - if the sentences is in the option. ignore it', (t) => {
-  let doc = wtf('', { sentences: ['Q42'] })
+  const doc = wtf('', { sentences: ['Q42'] })
   t.deepEqual(doc.sentences(), [], 'the sentences equals []')
   t.end()
 })
@@ -544,13 +544,13 @@ test('sentence - get - should return the first sentence', (t) => {
 
 //images
 test('images - get - should initially be []', (t) => {
-  let doc = wtf('')
+  const doc = wtf('')
   t.deepEqual(doc.images(), [], 'the images equals []')
   t.end()
 })
 
 test('images - get - if the images is in the option. ignore it', (t) => {
-  let doc = wtf('', { images: ['Q42'] })
+  const doc = wtf('', { images: ['Q42'] })
   t.deepEqual(doc.images(), [], 'the images equals []')
   t.end()
 })
@@ -693,8 +693,8 @@ test('infoboxes - get - field access', (t) => {
 
 //text
 test('text - get - get the text version of the document', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Remote-Data-Services.txt'), 'utf-8')
-  let doc = wtf(str)
+  const str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Remote-Data-Services.txt'), 'utf-8')
+  const doc = wtf(str)
   const expected =
     'Remote Data Services (RDS, formerly known as Advanced Data Connector or ADC) is a Microsoft technology used in conjunction with ActiveX Data Objects (ADO) that allowed the retrieval of a set of data from a database server, which the client then altered in some way and then sent back to the server for further processing. With the popular adoption of Transact-SQL, which extends SQL with such programming constructs as loops and conditional statements, this became less necessary and it was eventually deprecated in Microsoft Data Access Components version 2.7. Microsoft produced SOAP Toolkit 2.0, which allows clients to do this via an open XML-based standard.\n\n\n * MSDN Remote Data Service (RDS) description'
   t.deepEqual(doc.text(), expected, 'Text version of the document')
@@ -702,7 +702,7 @@ test('text - get - get the text version of the document', (t) => {
 })
 
 test('text - get - enpty string for redirects', (t) => {
-  let doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
+  const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
   const expected = ''
   t.deepEqual(doc.text(), expected, 'empty string')
   t.end()
@@ -710,8 +710,8 @@ test('text - get - enpty string for redirects', (t) => {
 
 //plaintext -- same as text
 test('plaintext - get - get the plaintext version of the document', (t) => {
-  let str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Remote-Data-Services.txt'), 'utf-8')
-  let doc = wtf(str)
+  const str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Remote-Data-Services.txt'), 'utf-8')
+  const doc = wtf(str)
   const expected =
     'Remote Data Services (RDS, formerly known as Advanced Data Connector or ADC) is a Microsoft technology used in conjunction with ActiveX Data Objects (ADO) that allowed the retrieval of a set of data from a database server, which the client then altered in some way and then sent back to the server for further processing. With the popular adoption of Transact-SQL, which extends SQL with such programming constructs as loops and conditional statements, this became less necessary and it was eventually deprecated in Microsoft Data Access Components version 2.7. Microsoft produced SOAP Toolkit 2.0, which allows clients to do this via an open XML-based standard.\n\n\n * MSDN Remote Data Service (RDS) description'
   t.deepEqual(doc.plaintext(), expected, 'Text version of the document')
@@ -719,7 +719,7 @@ test('plaintext - get - get the plaintext version of the document', (t) => {
 })
 
 test('plaintext - get - enpty string for redirects', (t) => {
-  let doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
+  const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
   const expected = ''
   t.deepEqual(doc.plaintext(), expected, 'empty string')
   t.end()
@@ -730,8 +730,8 @@ test('plaintext - get - enpty string for redirects', (t) => {
 
 //singular-methods
 test('plurals / singular - all should exist', (t) => {
-  let doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  let singels = [
+  const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
+  const singels = [
     'section',
     'infobox',
     'sentence',

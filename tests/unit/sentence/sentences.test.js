@@ -56,12 +56,12 @@ test('unicode sentences', function (t) {
 })
 
 test('unicode paragraphs', function (t) {
-  let str = `Соединённые Штаты Америки, штат Вайоминг, шестидесятые годы.
+  const str = `Соединённые Штаты Америки, штат Вайоминг, шестидесятые годы.
 
 Yellow lkjsdfö.
 
   Так начинается их роман`
-  let arr = wtf(str).paragraphs()
+  const arr = wtf(str).paragraphs()
   t.equal(arr.length, 3, 'two cyrillic paragraphs')
   t.end()
 })

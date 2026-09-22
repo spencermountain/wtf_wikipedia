@@ -21,8 +21,8 @@ hello world  {{lkjsdf|foo=28|hs.he=90}}.
 | row 2, cell 2
 |}
 `
-  let doc = wtf(str)
-  let json = doc.json({
+  const doc = wtf(str)
+  const json = doc.json({
     encode: true,
   })
   const table = json.sections[0].tables[0]

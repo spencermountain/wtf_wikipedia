@@ -1,6 +1,6 @@
 import schema from './index.js'
 
-let mappings = {
+const mappings = {
   categories: {},
   descriptions: {},
   infoboxes: {},
@@ -8,7 +8,7 @@ let mappings = {
   templates: {},
   titles: {},
 }
-let patterns = {
+const patterns = {
   categories: [],
   descriptions: [],
   infoboxes: [],

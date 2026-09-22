@@ -29,8 +29,8 @@ const getRedirects = async function (title, options, http) {
   let getMore = true
   let append = ''
   while (getMore) {
-    let url = makeUrl(title, options, append)
-    let { pages, cursor } = await fetchOne(url, options, http, 'redirects')
+    const url = makeUrl(title, options, append)
+    const { pages, cursor } = await fetchOne(url, options, http, 'redirects')
     list = list.concat(pages)
     if (cursor && cursor.rdcontinue) {
       append = '&rdcontinue=' + cursor.lhcontinue

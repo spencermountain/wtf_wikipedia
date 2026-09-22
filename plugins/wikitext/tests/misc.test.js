@@ -9,7 +9,7 @@ const tidy = (str) => {
 }
 
 test('basic-wikitext', (t) => {
-  let arr = [
+  const arr = [
     'that cat is [[a]] cool dude',
     `one [[two|2]] three`,
     'cool [[stuff]] **bold** too',
@@ -23,8 +23,8 @@ test('basic-wikitext', (t) => {
 }}`
   ]
   arr.forEach((str) => {
-    let doc = wtf(str)
-    let have = doc.makeWikitext()
+    const doc = wtf(str)
+    const have = doc.makeWikitext()
     t.equal(tidy(have), tidy(str), str)
   })
   t.end()

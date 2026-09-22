@@ -10,20 +10,20 @@ const toWiki = function (options) {
   let text = this.text()
   if (options.links === true) {
     this.links().forEach((link) => {
-      let str = link.text() || link.page()
-      let tag = link.makeWikitext()
+      const str = link.text() || link.page()
+      const tag = link.makeWikitext()
       text = smartReplace(text, str, tag)
     })
   }
   if (options.formatting === true) {
     //support bolds
     this.bold().forEach((str) => {
-      let tag = '**' + str + '**'
+      const tag = '**' + str + '**'
       text = smartReplace(text, str, tag)
     })
     //do italics
     this.italic().forEach((str) => {
-      let tag = '***' + str + '***'
+      const tag = '***' + str + '***'
       text = smartReplace(text, str, tag)
     })
   }

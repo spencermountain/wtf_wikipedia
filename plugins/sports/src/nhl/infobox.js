@@ -15,11 +15,11 @@ const toCardinal = function (str = '') {
 
 //
 const parseInfobox = function (doc) {
-  let info = doc.infobox('ice hockey team season') || doc.infobox('NHLTeamSeason')
+  const info = doc.infobox('ice hockey team season') || doc.infobox('NHLTeamSeason')
   if (!info) {
     return {}
   }
-  let data = info.keyValue()
+  const data = info.keyValue()
   Object.keys(data).forEach((k) => {
     data[k] = toCardinal(data[k])
   })

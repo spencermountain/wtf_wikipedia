@@ -4,7 +4,7 @@ const isObject = function (obj) {
 }
 
 const chunkBy = function (arr, chunkSize = 5) {
-  let groups = []
+  const groups = []
   for (let i = 0; i < arr.length; i += chunkSize) {
     groups.push(arr.slice(i, i + chunkSize))
   }
@@ -17,7 +17,7 @@ const fetchList = function (pages, options, wtf) {
     pages = pages.map((o) => o.title)
   }
   // fetch in groups of 5
-  let groups = chunkBy(pages)
+  const groups = chunkBy(pages)
 
   const doit = function (group) {
     return wtf.fetch(group, options) //returns a promise

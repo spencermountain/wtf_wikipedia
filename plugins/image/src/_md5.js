@@ -28,8 +28,8 @@
    * @returns {number} Sum
    */
 function safeAdd(x, y) {
-  let lsw = (x & 0xffff) + (y & 0xffff)
-  let msw = (x >> 16) + (y >> 16) + (lsw >> 16)
+  const lsw = (x & 0xffff) + (y & 0xffff)
+  const msw = (x >> 16) + (y >> 16) + (lsw >> 16)
   return (msw << 16) | (lsw & 0xffff)
 }
 
@@ -232,7 +232,7 @@ function binlMD5(x, len) {
 function binl2rstr(input) {
   let i
   let output = ''
-  let length32 = input.length * 32
+  const length32 = input.length * 32
   for (i = 0; i < length32; i += 8) {
     output += String.fromCharCode((input[i >> 5] >>> i % 32) & 0xff)
   }
@@ -248,12 +248,12 @@ function binl2rstr(input) {
    */
 function rstr2binl(input) {
   let i
-  let output = []
+  const output = []
   output[(input.length >> 2) - 1] = undefined
   for (i = 0; i < output.length; i += 1) {
     output[i] = 0
   }
-  let length8 = input.length * 8
+  const length8 = input.length * 8
   for (i = 0; i < length8; i += 8) {
     output[i >> 5] |= (input.charCodeAt(i / 8) & 0xff) << i % 32
   }
@@ -280,8 +280,8 @@ function rstrMD5(s) {
 function rstrHMACMD5(key, data) {
   let i
   let bkey = rstr2binl(key)
-  let ipad = []
-  let opad = []
+  const ipad = []
+  const opad = []
   let hash
   ipad[15] = opad[15] = undefined
   if (bkey.length > 16) {
@@ -302,7 +302,7 @@ function rstrHMACMD5(key, data) {
    * @returns {string} Hex encoded string
    */
 function rstr2hex(input) {
-  let hexTab = '0123456789abcdef'
+  const hexTab = '0123456789abcdef'
   let output = ''
   let x
   let i

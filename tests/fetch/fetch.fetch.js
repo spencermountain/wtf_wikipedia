@@ -104,7 +104,7 @@ test('fetch-redirect', (t) => {
 
 //uncomment for testing on node>6
 test('ambiguous-pageids', async function (t) {
-  let doc = await wtf.fetch(1984, 'en')
+  const doc = await wtf.fetch(1984, 'en')
   t.equal(doc.title(), 'Arab world', 'input as pageid')
 
   let docs = await wtf.fetch([2983, 7493], 'en')

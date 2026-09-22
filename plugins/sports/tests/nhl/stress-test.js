@@ -4,7 +4,7 @@ import wtf from '../_lib.js'
 import teams from '../../src/nhl/teams.js'
 
 const doTeam = async function (i, t, cb) {
-  let team = teams[i]
+  const team = teams[i]
   await wtf.nhlSeason(team, 2017)
     .catch(console.log)
     .then((season) => {

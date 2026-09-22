@@ -1,6 +1,6 @@
 const toWiki = function () {
   let text = `[[${this.file()}|thumb`
-  let caption = this.data.caption
+  const caption = this.data.caption
   if (caption) {
     text += `|${this.data.caption.wikitext()}`
   }

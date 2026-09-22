@@ -2,7 +2,7 @@ import test from 'tape'
 import readFile from '../../lib/_cachedPage.js'
 
 test('traverse sections', (t) => {
-  let doc = readFile('toronto')
+  const doc = readFile('toronto')
   t.equal(doc.sections().length, 35, 'init section count')
 
   //start with history
@@ -13,7 +13,7 @@ test('traverse sections', (t) => {
   sec = sec.nextSibling()
   t.equal(sec.title(), 'Geography', 'skip-over children')
 
-  let children = sec.children().map((s) => s.title())
+  const children = sec.children().map((s) => s.title())
   t.deepEqual(['Topography', 'Climate'], children, 'got two children')
 
   //go into both children, Topography+Climate

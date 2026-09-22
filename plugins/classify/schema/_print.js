@@ -2,7 +2,7 @@
 import schema from './index.js'
 /** add spaces at the end */
 const indent = function (str = '', width) {
-  let pad = ''.padStart(width, ' ')
+  const pad = ''.padStart(width, ' ')
   return pad + str
 }
 
@@ -17,7 +17,7 @@ const hasData = function (obj) {
 
 const doChildren = function (obj, depth) {
   if (obj.id) {
-    let name = indent('' + obj.id, depth * 3)
+    const name = indent('' + obj.id, depth * 3)
     if (hasData(obj.children)) {
       console.log(`${name}:`)
     } else {

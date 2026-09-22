@@ -33,7 +33,7 @@ class InvalidMethod extends Error {
  */
 function fetchImages(methods = "", images = []) {
 
-  const isDoc = images.length ? true : false // whether the call is from a Document(".images()") or an Image
+  const isDoc = images.length > 0 ? true : false // whether the call is from a Document(".images()") or an Image
   let titles // will be a string or an array of strings
   let iiprop // will be a string
   const userAgent = isDoc ? this['_userAgent'] : this.data['_userAgent']

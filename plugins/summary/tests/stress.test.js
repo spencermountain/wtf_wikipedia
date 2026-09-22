@@ -1,8 +1,8 @@
 import test from 'tape'
 import wtf from './_lib.js'
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const dir = path.dirname(fileURLToPath(import.meta.url))
 // ;(async () => {
@@ -17,8 +17,8 @@ const dir = path.dirname(fileURLToPath(import.meta.url))
 // })()
 
 test('first-sentence cleanup summary', (t) => {
-  let abs = path.join(dir, './texts.txt')
-  let arr = fs
+  const abs = path.join(dir, './texts.txt')
+  const arr = fs
     .readFileSync(abs)
     .toString()
     .split(/\r?\n/)
@@ -26,13 +26,13 @@ test('first-sentence cleanup summary', (t) => {
 
   let count = 0
   arr.forEach((txt) => {
-    let str = wtf(txt).summary({ article: false })
+    const str = wtf(txt).summary({ article: false })
     if (str) {
       count += 1
     }
   })
 
-  let want = arr.length * 0.75
+  const want = arr.length * 0.75
 
   // console.log(count, want)
   t.ok(count > want, 'stress test failed: ' + count + ' > ' + want)

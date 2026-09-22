@@ -18,7 +18,7 @@ const params = {
 const fetchIt = function (url, options, http) {
   const headers = makeHeaders(options)
   return http(url, headers).then((res) => {
-    let pages = Object.keys(res.query.pages || {})
+    const pages = Object.keys(res.query.pages || {})
     if (pages.length === 0) {
       return { pages: [], cursor: null }
     }
@@ -36,20 +36,20 @@ const makeUrl = function (options) {
 }
 
 const getRandom = async function (_options, http, wtf) {
-  let options = { ...defaults, ..._options }
-  let url = makeUrl(options)
+  const options = { ...defaults, ..._options }
+  const url = makeUrl(options)
   let page = {}
   try {
     page = await fetchIt(url, options, http) || {}
   } catch (e) {
     console.error(e)
   }
-  let title = page.title
+  const title = page.title
   let wiki = ''
   if (page.revisions && page.revisions[0] && page.revisions[0].slots) {
     wiki = page.revisions[0].slots.main['*'] || ''
   }
-  let doc = wtf(wiki, { title })
+  const doc = wtf(wiki, { title })
   return doc
 }
 export default getRandom

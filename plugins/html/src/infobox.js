@@ -23,7 +23,7 @@ const infobox = function (options) {
     html += '       ' + this.image().html() + '\n'
     html += '       </td>\n'
     if (this.data.caption || this.data.alt) {
-      let caption = this.data.caption
+      const caption = this.data.caption
         ? this.data.caption.html(options)
         : this.data.alt.html(options)
       html += '       <td colspan="2" style="text-align:center">\n'
@@ -36,10 +36,10 @@ const infobox = function (options) {
     if (dontDo[k] === true) {
       return
     }
-    let s = this.data[k]
+    const s = this.data[k]
     let key = k.replace(/_/g, ' ')
     key = key.charAt(0).toUpperCase() + key.substring(1) //titlecase it
-    let val = s.html(options)
+    const val = s.html(options)
     html += '    <tr>\n'
     html += '      <td>' + key + '</td>\n'
     html += '      <td>' + val + '</td>\n'

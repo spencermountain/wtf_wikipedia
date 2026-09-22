@@ -13,13 +13,13 @@ const playerStats = function (doc) {
       players = players.concat(t.keyValue())
     })
   })
-  let res = {
+  const res = {
     batters: [],
     pitchers: [],
   }
   players.forEach((p) => {
-    let rbi = p.RBI || p.rbi
-    let hr = p.HR || p.hr
+    const rbi = p.RBI || p.rbi
+    const hr = p.HR || p.hr
     if (rbi !== undefined || hr !== undefined) {
       res.batters.push(p)
     } else {

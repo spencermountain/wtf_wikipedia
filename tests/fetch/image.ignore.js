@@ -8,7 +8,7 @@ test('3rd-party image bulbapedia', function (t) {
   p.then((doc) => {
     t.equal(doc.domain(), 'bulbapedia.bulbagarden.net', 'got domain from url input')
 
-    let urls = doc.images().map((j) => j.url())
+    const urls = doc.images().map((j) => j.url())
     t.ok(urls.length > 2, 'got urls')
     t.ok(urls[0].match(/bulbapedia\.bulbagarden\.net/), '3rd-party image url')
   })

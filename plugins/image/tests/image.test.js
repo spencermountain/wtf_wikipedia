@@ -1,13 +1,13 @@
 import test from 'tape'
 import wtf from './_lib.js'
-import path from 'path'
-import fs from 'fs'
-import { fileURLToPath } from 'url'
+import path from 'node:path'
+import fs from 'node:fs'
+import { fileURLToPath } from 'node:url'
 
 const dir = path.dirname(fileURLToPath(import.meta.url))
 
 test('mainImage', function (t) {
-  let arr = [
+  const arr = [
     ['toronto', 'https://wikipedia.org/wiki/Special:Redirect/file/Montage_of_Toronto_7.jpg'],
     [
       'United-Kingdom',
@@ -22,10 +22,10 @@ test('mainImage', function (t) {
     // ['', '']
   ]
   arr.forEach((a) => {
-    let abs = path.join(dir, `../../../tests/cache/${a[0]}.txt`)
-    let txt = fs.readFileSync(abs).toString()
-    let doc = wtf(txt)
-    let img = doc.mainImage().src()
+    const abs = path.join(dir, `../../../tests/cache/${a[0]}.txt`)
+    const txt = fs.readFileSync(abs).toString()
+    const doc = wtf(txt)
+    const img = doc.mainImage().src()
     t.equal(img, a[1], a[0])
   })
   t.end()
@@ -38,11 +38,11 @@ test('image-methods', function (t) {
       wiki: `wiktionary`
     })
     .then(function (doc) {
-      let img = doc.image(0)
+      const img = doc.image(0)
       img.exists().then((bool) => {
         t.equal(bool, true, 'img exists')
 
-        let url = img.commonsURL()
+        const url = img.commonsURL()
         t.ok(url, 'commons-url')
 
         t.end()
@@ -52,7 +52,7 @@ test('image-methods', function (t) {
 
 
 test('link-to-file', (t) => {
-  let doc = wtf(`pre [[:File:pagename]] post`)
+  const doc = wtf(`pre [[:File:pagename]] post`)
   t.equal(doc.links().length, 1, 'found one link')
   t.equal(doc.text(), 'pre File:pagename post', 'found text')
   t.equal(doc.images().length, 0, 'found no images')

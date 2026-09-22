@@ -32,7 +32,7 @@ const isDead = {
   memorial: true,
 }
 const byTemplate = function (doc) {
-  let templates = doc.templates().map((tmpl) => tmpl.json())
+  const templates = doc.templates().map((tmpl) => tmpl.json())
   for (let i = 0; i < templates.length; i++) {
     let title = templates[i].template || ''
     title = title.toLowerCase().trim()

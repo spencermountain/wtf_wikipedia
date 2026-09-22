@@ -19,7 +19,7 @@ test('infobox', function (t) {
 })
 
 test('node.js-infobox-logo', function (t) {
-  let str = `{{Infobox software
+  const str = `{{Infobox software
     | name = Node.js
     | logo = [[File:Node.js logo.svg|frameless]]
     | author = [[Ryan Dahl]]
@@ -33,13 +33,13 @@ test('node.js-infobox-logo', function (t) {
     | license = [[MIT license]]<ref>{{cite web|title=node/LICENSE at master|url=https://github.com/nodejs/node/blob/master/LICENSE|website=GitHub|publisher=Node.js Foundation|accessdate = 17 September 2018|date=17 September 2018}}</ref><ref>{{cite web|title=The MIT License|url=https://opensource.org/licenses/MIT|website=Open Source Initiative|accessdate = 17 September 2018|date=17 September 2018}}</ref>
     }}
 `
-  let obj = wtf(str).infobox(0).keyValue()
+  const obj = wtf(str).infobox(0).keyValue()
   t.equal(obj[`logo`], 'Node.js logo.svg', 'found logo val')
   t.end()
 })
 
 test('french-infobox', function (t) {
-  let str = `{{Infobox Société
+  const str = `{{Infobox Société
   | couleur boîte             = 706D6E
   | titre blanc               = oui
   | nom                       = Microsoft Corporation
@@ -49,7 +49,7 @@ test('french-infobox', function (t) {
   | chiffre d'affaires        = found2
  }}
 `
-  let obj = wtf(str).infobox(0).keyValue()
+  const obj = wtf(str).infobox(0).keyValue()
   t.equal(obj[`secteurs d'activités`], 'found1', 'found secteurs val')
   t.equal(obj[`chiffre d'affaires`], 'found2', 'found chiffre val')
   t.equal(obj[`siège (ville)`], 'city', 'found city val')
@@ -58,7 +58,7 @@ test('french-infobox', function (t) {
 })
 
 test('nested-london-infobox', function (t) {
-  let str = `{{Infobox country
+  const str = `{{Infobox country
   | common_name = United Kingdom
   | name = {{collapsible list
    | title = hello
@@ -69,7 +69,7 @@ test('nested-london-infobox', function (t) {
    }}
   }}
 `
-  let obj = wtf(str).infobox('country').keyValue()
+  const obj = wtf(str).infobox('country').keyValue()
   t.equal(obj[`common_name`], 'United Kingdom', 'found common_name val')
   t.equal(obj[`name`], 'hello', 'found name val')
   t.end()
@@ -104,13 +104,13 @@ test('ukrainian-infobox', function (t) {
 
 
 test('tabs-in-infobox', function (t) {
-  let str = `{{Infobox officeholder
+  const str = `{{Infobox officeholder
 |successor1		= [[Wistin Abela]]
 |term_end2		= March 1997
 |alma_mater             = [[St Peter's College, Oxford]]
 }}
 `
-  let obj = wtf(str).infobox().keyValue()
+  const obj = wtf(str).infobox().keyValue()
   t.equal(obj[`successor1`], 'Wistin Abela', 'found successor1 val')
   t.equal(obj[`term_end2`], 'March 1997', 'found term_end2 val')
   t.equal(obj[`alma_mater`], `St Peter's College, Oxford`, 'found alma_mater val')
@@ -119,7 +119,7 @@ test('tabs-in-infobox', function (t) {
 
 
 test('slash-in-infobox', function (t) {
-  let str = ` 
+  const str = ` 
 {{Infobox officeholder
   | predecessor2        = [[Dick Cheney]]
   | successor2          = [[Mike Pence]]
@@ -127,22 +127,22 @@ test('slash-in-infobox', function (t) {
   | term_end3           = January 15, 2009 
 }}`
 
-  let doc = wtf(str)
-  let json = doc.infobox().json()
+  const doc = wtf(str)
+  const json = doc.infobox().json()
   t.equal(json.term_end3.text, 'January 15, 2009', 'term_end3')
   t.equal(json['jr/sr3'].text, 'United States Senator', 'slash')
   t.end()
 })
 
 test('double-prop-infobox', function (t) {
-  let str = ` {{Infobox officeholder
+  const str = ` {{Infobox officeholder
     | name                = Dr. Rajesh Sonkar
     | office              = [[President Bhartiya Janta Party(BJP) Indore, Madhya Pradesh]]
     | term_start          = 10 May 2020
     | Office              =
     }}`
-  let doc = wtf(str)
-  let json = doc.infobox().json()
+  const doc = wtf(str)
+  const json = doc.infobox().json()
   t.equal(json['office'].text, 'President Bhartiya Janta Party(BJP) Indore, Madhya Pradesh', 'office')
   t.end()
 })

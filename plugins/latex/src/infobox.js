@@ -21,8 +21,8 @@ const infobox = function (options) {
     if (dontDo[k] === true) {
       return
     }
-    let s = this.data[k]
-    let val = s.latex(options)
+    const s = this.data[k]
+    const val = s.latex(options)
     out += '  % ---------- \n'
     out += '      ' + k + ' & \n'
     out += '      ' + val + '\\\\ \n'

@@ -8,7 +8,7 @@ test('royal_cinema options', (t) => {
   t.equal(doc.citations().length, 4, 'citations-length')
   t.equal(doc.infoboxes().length, 1, 'infoboxes-length')
 
-  let data = readFile('royal_cinema').json({
+  const data = readFile('royal_cinema').json({
     categories: false,
     citations: false,
     images: false,

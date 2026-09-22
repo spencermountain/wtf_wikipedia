@@ -2,7 +2,7 @@ import test from 'tape'
 import wtf from '../../lib/index.js'
 
 test('null page metadata', (t) => {
-  let doc = wtf('oh yeah')
+  const doc = wtf('oh yeah')
   t.equal(doc.revisionID(), null)
   t.equal(doc.pageID(), null)
   t.equal(doc.description(), null)
@@ -12,7 +12,7 @@ test('null page metadata', (t) => {
 })
 
 test('found page metadata', (t) => {
-  let meta = {
+  const meta = {
     lang: 'en',
     wiki: 'wikipedia',
     domain: 'wikipedia.org',
@@ -27,7 +27,7 @@ test('found page metadata', (t) => {
     wikidata: 'Q1542518',
     description: 'Place in Ontario, Canada',
   }
-  let doc = wtf('oh yeah', meta)
+  const doc = wtf('oh yeah', meta)
   t.equal(doc.revisionID(), meta.revisionID)
   t.equal(doc.pageID(), meta.pageID)
   t.equal(doc.description(), meta.description)

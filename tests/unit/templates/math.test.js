@@ -34,7 +34,7 @@ test('math-simple', (t) => {
 })
 
 test('math-infobox', (t) => {
-  let str = `{{Probability distribution
+  const str = `{{Probability distribution
 | name       = Complex Wishart
 | type       =density
 | notation   ={{math|''A'' ~ ''CW<sub>p</sub>''('''<math>\Gamma</math>''', ''n'')}}
@@ -43,8 +43,8 @@ test('math-infobox', (t) => {
    
 In [[statistics]], the '''complex Wishart distribution''' is a version of the [[Wishart distribution]]. 
 `
-  let doc = wtf(str)
-  let want = `In statistics, the complex Wishart distribution is a version of the Wishart distribution.`
+  const doc = wtf(str)
+  const want = `In statistics, the complex Wishart distribution is a version of the Wishart distribution.`
   t.equal(doc.text(), want, 'math infobox')
   t.end()
 })

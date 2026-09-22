@@ -6,7 +6,7 @@ const defaults = {
 }
 //we should try to make this look like the wikipedia does, i guess.
 const softRedirect = function (doc) {
-  let link = doc.redirectTo()
+  const link = doc.redirectTo()
   let href = link.page
   href = './' + href.replace(/ /g, '_')
   if (link.anchor) {
@@ -18,7 +18,7 @@ const softRedirect = function (doc) {
 //turn a Doc object into a markdown string
 const toMarkdown = function (options) {
   options = Object.assign({}, defaults, options)
-  let data = this
+  const data = this
   let md = ''
   //if it's a redirect page, give it a 'soft landing':
   if (options.redirects === true && this.isRedirect() === true) {

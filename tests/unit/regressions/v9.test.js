@@ -8,7 +8,7 @@ test('wikitext', (t) => {
   let doc = wtf(str)
   t.equal(doc.wikitext(), str, 'doc-wikitext')
   t.equal(doc.section().wikitext(), str, 'section-wikitext')
-  let first = `'''K. Nicole Mitchell''' is ''currently'' a [[U.S. Magistrate Judge]].`
+  const first = `'''K. Nicole Mitchell''' is ''currently'' a [[U.S. Magistrate Judge]].`
   t.equal(doc.paragraph().wikitext(), first, 'paragraph-wikitext')
   t.equal(doc.sentence().wikitext(), first, 'sentence-wikitext')
   t.equal(doc.link().wikitext(), `[[U.S. Magistrate Judge]]`, 'sentence-wikitext')
@@ -26,7 +26,7 @@ test('wikitext', (t) => {
 })
 
 test('table-get', (t) => {
-  let str = `{| class="wikitable"
+  const str = `{| class="wikitable"
 |-
 ! Header 1
 ! Header 2
@@ -44,7 +44,7 @@ test('table-get', (t) => {
 | row 3, cell 2
 | row 3, cell 3
 |}`
-  let doc = wtf(str)
+  const doc = wtf(str)
   let data = doc.table().get('header 2')
   t.deepEqual(data, ['row 1, cell 2', 'row 2, cell 2', 'row 3, cell 2'])
 
@@ -57,16 +57,16 @@ test('table-get', (t) => {
 })
 
 test('template methods', (t) => {
-  let doc = wtf(`* {{USS|Barry}}, four US destroyers`)
-  let tmpl = doc.template()
+  const doc = wtf(`* {{USS|Barry}}, four US destroyers`)
+  const tmpl = doc.template()
   t.equal(tmpl.wikitext(), '{{USS|Barry}}', 'tmpl wikitext')
   t.equal(tmpl.text(), `USS Barry`, 'tmpl text')
   t.end()
 })
 test('reference method', (t) => {
-  let str = `<ref>{{cite web|title=The princess of pot|url=http://thewalrus.ca/the-princess-of-pot/}}</ref>`
-  let doc = wtf(`the end.` + str)
-  let tmpl = doc.reference()
+  const str = `<ref>{{cite web|title=The princess of pot|url=http://thewalrus.ca/the-princess-of-pot/}}</ref>`
+  const doc = wtf(`the end.` + str)
+  const tmpl = doc.reference()
   t.equal(tmpl.wikitext(), str, 'ref wikitext')
   t.equal(tmpl.text(), ``, 'ref text')
   t.end()

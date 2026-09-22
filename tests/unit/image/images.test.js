@@ -64,7 +64,7 @@ test('gallery-template', (t) => {
 })
 
 test('from-infobox', (t) => {
-  let doc = readFile('jodie_emery')
+  const doc = readFile('jodie_emery')
   t.equal(
     doc.infobox(0).image(0).thumb(),
     'https://wikipedia.org/wiki/Special:Redirect/file/Marc_Emery_and_Jodie_Emery.JPG?width=300',
@@ -74,8 +74,8 @@ test('from-infobox', (t) => {
 })
 
 test('img-alt', (t) => {
-  let str = `[[File:Wikipedesketch1.png|thumb|alt=A cartoon centipede detailed description.|The Wikipede edits ''[[Myriapoda]]''.]]`
-  let img = wtf(str).image().json()
+  const str = `[[File:Wikipedesketch1.png|thumb|alt=A cartoon centipede detailed description.|The Wikipede edits ''[[Myriapoda]]''.]]`
+  const img = wtf(str).image().json()
   t.equal(img.file, 'File:Wikipedesketch1.png', 'file')
   t.equal(img.thumb, 'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png?width=300', 'thumb')
   t.equal(img.url, 'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png', 'image')
@@ -86,8 +86,8 @@ test('img-alt', (t) => {
 })
 
 test('parsed-captions', (t) => {
-  let str = `[[File:Volkswagen W12.jpg|thumb|upright|[[Volkswagen Group]] W12 engine from the [[Volkswagen Phaeton|Volkswagen Phaeton W12]]]]`
-  let img = wtf(str).image().json()
+  const str = `[[File:Volkswagen W12.jpg|thumb|upright|[[Volkswagen Group]] W12 engine from the [[Volkswagen Phaeton|Volkswagen Phaeton W12]]]]`
+  const img = wtf(str).image().json()
   t.equal(img.caption, 'Volkswagen Group W12 engine from the Volkswagen Phaeton W12', 'caption')
   t.end()
 })

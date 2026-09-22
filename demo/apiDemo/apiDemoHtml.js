@@ -1,7 +1,7 @@
 // @fileoverview apiDemoHtml.js (non ES6) -- creates HTML for apiDemo
 'use strict';
 
-let ApiDemoHtml = function(wtfHelper) {
+const ApiDemoHtml = function(wtfHelper) {
   this.root = null;
   this.mainContainer = null;
   this.wtfHelper = wtfHelper;
@@ -11,7 +11,7 @@ ApiDemoHtml.SHORT_TEXT_LEN = 80;  // len of a one-liner partial result
 ApiDemoHtml.LONG_TEXT_LEN = 300;  // len of a multi-liner partial result
 
 
-let HtmlProto = ApiDemoHtml.prototype;  // alias for ease of function naming
+const HtmlProto = ApiDemoHtml.prototype;  // alias for ease of function naming
 
 HtmlProto.init = function(title) { // create header and scrollable main section
   this.root = this.wtfHelper.createDiv(null, 'apiDemoRoot');
@@ -51,7 +51,7 @@ HtmlProto.createApiSectionHeader = function(title) {
 // show the entry as a row with functionName  result
 // the result may be a string or a count of the elements
 HtmlProto.createEntry = function(functionName, result, showPartial=false) {
-  let entryEle = this.wtfHelper.createDiv(this.mainContainer,  'apiDemoEntry');
+  const entryEle = this.wtfHelper.createDiv(this.mainContainer,  'apiDemoEntry');
   this.wtfHelper.createDiv(entryEle, 'apiDemoEntryTitle', functionName);
 
   // if the result is an array, show the item count, else show the results
@@ -85,7 +85,7 @@ HtmlProto.getResultCountString = function(functionName, resultList) {
   let endPos = functionName.indexOf('(');
   endPos = endPos < 0 ? functionName.length : endPos;
 
-  let itemName = functionName.substring(startPos, endPos);
+  const itemName = functionName.substring(startPos, endPos);
 
   return 'there are ' + resultList.length + ' ' + itemName;
 };
@@ -109,11 +109,11 @@ HtmlProto.getPartialList = function(resultList, showListLength) {
 
 
 HtmlProto.createImageList = function(imageList) {
-  if (!Array.isArray(imageList) || imageList.length < 1) {
+  if (!Array.isArray(imageList) || imageList.length === 0) {
     return null;
   }
 
-  let ele =
+  const ele =
       this.wtfHelper.createDiv(this.mainContainer, 'apiDemoImageListContainer');
 
   for (let i = 0, iCount = imageList.length; i < iCount; ++i) {
@@ -125,11 +125,11 @@ HtmlProto.createImageList = function(imageList) {
 
 
 HtmlProto.createLinksHtml = function(functionName, linkList) {
-  let linkStr = this.getResultCountString(functionName, linkList);
+  const linkStr = this.getResultCountString(functionName, linkList);
 
-  let tempList = [];
+  const tempList = [];
   for (let i = 0, iCount = linkList.length; i < iCount; ++i) {
-    let page = linkList[i].page();
+    const page = linkList[i].page();
     if (page && page !== 'undefined') {
       tempList.push(page);
     }

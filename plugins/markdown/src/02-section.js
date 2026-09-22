@@ -21,7 +21,7 @@ const doSection = function (options) {
 
   //put any images under the header
   if (options.images === true) {
-    let images = this.images()
+    const images = this.images()
     if (images.length > 0) {
       md += images.map((img) => img.markdown()).join('\n')
       md += '\n'
@@ -30,7 +30,7 @@ const doSection = function (options) {
 
   //make a markdown table
   if (options.tables === true) {
-    let tables = this.tables()
+    const tables = this.tables()
     if (tables.length > 0) {
       md += '\n'
       md += tables.map((table) => table.markdown(options)).join('\n')
@@ -40,7 +40,7 @@ const doSection = function (options) {
 
   //make a markdown bullet-list
   if (options.lists === true) {
-    let lists = this.lists()
+    const lists = this.lists()
     if (lists.length > 0) {
       md += lists.map((list) => list.markdown(options)).join('\n')
       md += '\n'

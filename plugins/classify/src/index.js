@@ -10,8 +10,8 @@ import score from './score.js'
 const plugin = function (models) {
   //add a new method to main class
   models.Doc.prototype.classify = function () {
-    let doc = this
-    let res = {}
+    const doc = this
+    const res = {}
 
     //dont classify these
     if (skipPage(doc)) {

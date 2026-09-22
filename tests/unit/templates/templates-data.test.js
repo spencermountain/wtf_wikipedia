@@ -210,7 +210,7 @@ test('test-flexible-format', function (t) {
 })
 
 test('covid-1', function (t) {
-  let str = `
+  const str = `
   {{Medical cases chart
     |numwidth=mw
     
@@ -228,8 +228,8 @@ test('covid-1', function (t) {
     2009-04-17;2000;;9500;;;~9,500;+60.6%
     }}
   `
-  let doc = wtf(str)
-  let obj = doc.template().json()
+  const doc = wtf(str)
+  const obj = doc.template().json()
   t.equal(obj.location, 'Savannah', 'location')
   t.equal(obj.data.length, 5, '5 rows')
   t.equal(obj.data[0].date, '2009-04-13', 'row[0]')
@@ -265,10 +265,10 @@ test('playoff-brackets', function (t) {
   | RD2-team2   = '''{{cr|WIN}}'''
   | RD2-score2  = '''218/8 (48.5 overs)'''
   }}`
-  let doc = wtf(str)
-  let rounds = doc.template().json().rounds
+  const doc = wtf(str)
+  const rounds = doc.template().json().rounds
   t.equal(rounds.length, 2, 'two rounds')
-  let final = rounds[1][0]
+  const final = rounds[1][0]
   t.equal(final[0].score, '217 (49.4 overs)', 'got score')
   t.end()
 })

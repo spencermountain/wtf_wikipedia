@@ -3,7 +3,7 @@ import plg from './src/index.js'
 wtf.extend(plg)
 
 wtf.fetch('Radiohead').then((doc) => {
-  let res = doc.sentences()[0].html()
+  const res = doc.sentences()[0].html()
   console.log(res)
 })
 /*

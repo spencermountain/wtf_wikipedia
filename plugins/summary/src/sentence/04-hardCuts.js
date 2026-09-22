@@ -43,10 +43,10 @@ const hardCuts = function (s) {
   }
 
   // by clause
-  let clauses = s.clauses()
+  const clauses = s.clauses()
   if (clauses.length > 1) {
-    let first = clauses.eq(0)
-    let second = clauses.eq(1)
+    const first = clauses.eq(0)
+    const second = clauses.eq(1)
     //can we just choose the first clause?
     if (isIndependent(second)) {
       s = clauses.eq(0)
@@ -58,7 +58,7 @@ const hardCuts = function (s) {
       s = clauses.eq(0)
     } else {
       // can we remove the last clause, atleast?
-      let last = clauses.last()
+      const last = clauses.last()
       if (isIndependent(last)) {
         s = clauses.slice(0, clauses.length - 1)
       }

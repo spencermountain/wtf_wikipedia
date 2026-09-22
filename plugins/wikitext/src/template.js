@@ -4,7 +4,7 @@ const toWiki = function () {
     if (k === 'template') {
       return
     }
-    let val = this.data[k]
+    const val = this.data[k]
     if (val) {
       text += `| ${k} = ${val || ''}`
     }

@@ -99,10 +99,10 @@ test('inline harder-citation', (t) => {
 })
 
 test('double template', (t) => {
-  let str = `<ref>{{cite book |last= Bushnell|first= Ian}}
+  const str = `<ref>{{cite book |last= Bushnell|first= Ian}}
 {{cite book |last= Walker|first= James W. St. G.}}</ref>`
-  let doc = wtf(str)
-  let arr = doc.references().map((r) => r.json())
+  const doc = wtf(str)
+  const arr = doc.references().map((r) => r.json())
   t.equal(arr.length, 2, here + 'got both references')
   t.equal(arr[0].last, 'Bushnell', here + 'parsed prop #1')
   t.equal(arr[0].first, 'Ian', here + 'parsed prop #2')

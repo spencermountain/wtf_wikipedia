@@ -2,7 +2,7 @@ const toWiki = function () {
   if (this.data.inline) {
     return `<ref>${this.data.inline.wikitext()}</ref>`
   }
-  let type = this.data.type || 'cite web'
+  const type = this.data.type || 'cite web'
   let data = ''
   Object.keys(this.data).forEach((k) => {
     if (k !== 'template' && k !== 'type') {

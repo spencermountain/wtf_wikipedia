@@ -35,7 +35,7 @@ test('getTemplate', (t) => {
 
 test('wtf.fetchList', (t) => {
   t.plan(3)
-  let arr = ['Marina Gilardoni', 'Jessica Kilian', 'Tanja Morel']
+  const arr = ['Marina Gilardoni', 'Jessica Kilian', 'Tanja Morel']
   wtf.fetchList(arr, opts).then(function (docs) {
     docs.forEach((doc) => {
       t.ok(doc.sentence().text(), `got ${doc.title()}`)

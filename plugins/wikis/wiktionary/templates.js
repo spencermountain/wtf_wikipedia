@@ -5,7 +5,7 @@ const templates = {
   etyl: 1,
   mention: 1,
   link: (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['lang', 'page', 'display'])
+    const obj = parse(tmpl, ['lang', 'page', 'display'])
     list.push(obj)
     if (obj.display) {
       return `[[${obj.page}|${obj.display}]]`
@@ -26,62 +26,62 @@ const templates = {
 
   //latin verbs
   'la-verb-form': (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['word'])
+    const obj = parse(tmpl, ['word'])
     list.push(obj)
     return obj.word || ''
   },
   hyphenation: (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['lang'])
+    const obj = parse(tmpl, ['lang'])
     list.push(obj)
     return obj.list.join('‧')
   },
   'feminine plural': (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['word'])
+    const obj = parse(tmpl, ['word'])
     list.push(obj)
     return obj.word || ''
   },
   'male plural': (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['word'])
+    const obj = parse(tmpl, ['word'])
     list.push(obj)
     return obj.word || ''
   },
   desc: (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['lang', 'word'])
+    const obj = parse(tmpl, ['lang', 'word'])
     list.push(obj)
     return `→ ${obj.lang}: [[${obj.word}]]` //shouldn't use language code
   },
   rhymes: (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['word'])
+    const obj = parse(tmpl, ['word'])
     list.push(obj)
     return 'Rhymes: -' + (obj.word || '')
   },
   t: (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['lang', 'word'])
+    const obj = parse(tmpl, ['lang', 'word'])
     list.push(obj)
     return `[[${obj.lang}:${obj.word}]]`
   },
   label: (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['lang'])
+    const obj = parse(tmpl, ['lang'])
     list.push(obj)
     return `(${obj.list.join(', ')})`
   },
   sense: (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['context'])
+    const obj = parse(tmpl, ['context'])
     list.push(obj)
     return `(${obj.context})`
   },
   suffix: (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['lang', 'root', 'suffix'])
+    const obj = parse(tmpl, ['lang', 'root', 'suffix'])
     list.push(obj)
     return `[[${obj.root}]] +[[-${obj.suffix}|${obj.suffix}]]`
   },
   prefix: (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['lang', 'root', 'prefix'])
+    const obj = parse(tmpl, ['lang', 'root', 'prefix'])
     list.push(obj)
     return `[[${obj.prefix}-|${obj.prefix}]] + [[${obj.root}]]`
   },
   compound: (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['lang', 'first', 'second'])
+    const obj = parse(tmpl, ['lang', 'first', 'second'])
     list.push(obj)
     let arr = [obj.first, obj.second || '']
     arr = arr.concat(obj.list || [])
@@ -89,7 +89,7 @@ const templates = {
     return arr.join(' + ')
   },
   ux: (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['lang', 'example', 'translation'])
+    const obj = parse(tmpl, ['lang', 'example', 'translation'])
     list.push(obj)
     let str = `${obj.example}`
     if (obj.translation) {
@@ -98,31 +98,31 @@ const templates = {
     return str
   },
   bor: (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['lang', 'source-lang', 'term'])
+    const obj = parse(tmpl, ['lang', 'source-lang', 'term'])
     list.push(obj)
     return `${obj['source-lang']} [[${obj.term}]]`
   },
   w: (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['page', 'label'])
+    const obj = parse(tmpl, ['page', 'label'])
     list.push(obj)
-    let lang = obj.lang || 'en'
+    const lang = obj.lang || 'en'
     if (obj.label) {
       return `[https://${lang}.wikipedia.org/wiki/${obj.page}|${obj.label}]`
     }
     return `[https://${lang}.wikipedia.org/wiki/${obj.page}]`
   },
   also: (tmpl, list, parse) => {
-    let obj = parse(tmpl, [])
+    const obj = parse(tmpl, [])
     list.push(obj)
-    let links = obj.list.map((str) => `[[${str}]]`)
+    const links = obj.list.map((str) => `[[${str}]]`)
     return `See also: ${links.join(', ')}\n`
   },
   wikipedia: ['article', 'link title'],
   // https://en.wiktionary.org/wiki/Template:inflection_of
   'inflection of': (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['lang', 'lemma', 'display'])
+    const obj = parse(tmpl, ['lang', 'lemma', 'display'])
     list.push(obj)
-    let words = {
+    const words = {
       1: 'first-person',
       impers: 'first-person',
       2: 'second-person',
@@ -149,7 +149,7 @@ const templates = {
 }
 
 //https://en.wiktionary.org/wiki/Category:Form-of_templates
-let conjugations = [
+const conjugations = [
   'abbreviation',
   'abessive plural',
   'abessive singular',
@@ -313,7 +313,7 @@ let conjugations = [
 ]
 conjugations.forEach((name) => {
   templates[name + ' of'] = (tmpl, list, parse) => {
-    let obj = parse(tmpl, ['lemma'])
+    const obj = parse(tmpl, ['lemma'])
     obj.tags = obj.list
     delete obj.list
     obj.type = 'form-of'

@@ -15,7 +15,7 @@ args = args.filter((arg) => {
   return true
 })
 
-let title = args.join(' ')
+const title = args.join(' ')
 if (!title) {
   throw new Error('Usage: wtf_wikipedia Toronto Blue Jays --plaintext')
 }

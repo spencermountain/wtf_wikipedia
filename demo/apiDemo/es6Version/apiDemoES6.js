@@ -22,8 +22,8 @@ loadMain(main);              // call main() after the HTML doc loads
 async function main() {
   let root, mainContainer;
 
-  let queryString = 'Grace Hopper';
-  let doc = await fetchNicely(queryString);
+  const queryString = 'Grace Hopper';
+  const doc = await fetchNicely(queryString);
 
   root = createDiv(null, 'apiDemoRoot');
   createDiv(root, 'apiDemoHeader', 'wtf_wikipedia API demo'); // create header
@@ -210,8 +210,8 @@ function showTableApi(parent, table) {
 
 
 function showKeyValObj(keyValObj) {
-  let entryList = Object.entries(keyValObj);
-  let entryCount = entryList.length;
+  const entryList = Object.entries(keyValObj);
+  const entryCount = entryList.length;
   let result = 'there are ' + entryCount + ' key-value pairs: ';
 
   for (let i = 0; i < entryCount; ++i) {
@@ -239,7 +239,7 @@ function createApiSectionHeader(parent, title) {
 // show the entry as a row with functionName  result
 // the result may be a string or a count of the elements
 function createEntry(parent, functionName, result, showPartial=false) {
-  let entryEle = createDiv(parent,  'apiDemoEntry');
+  const entryEle = createDiv(parent,  'apiDemoEntry');
   createDiv(entryEle, 'apiDemoEntryTitle', functionName);
 
   // if the result is an array, show the item count, else show the results
@@ -273,7 +273,7 @@ function getResultCountString (functionName, resultList) {
   let endPos = functionName.indexOf('(');
   endPos = endPos < 0 ? functionName.length : endPos;
 
-  let itemName = functionName.substring(startPos, endPos);
+  const itemName = functionName.substring(startPos, endPos);
 
   return 'there are ' + resultList.length + ' ' + itemName;
 }
@@ -297,10 +297,10 @@ function getPartialList (resultList, showListLength) {
 
 
 function createImageList (parent, imageList) {
-  let ele = null;
+  const ele = null;
 
   if (Array.isArray(imageList) && imageList.length > 0) {
-    let ele = createDiv(parent, 'apiDemoImageListContainer');
+    const ele = createDiv(parent, 'apiDemoImageListContainer');
 
     for (let i = 0, iCount = imageList.length; i < iCount; ++i) {
       createImg(ele, 'apiDemoImage', imageList[i].url());
@@ -312,11 +312,11 @@ function createImageList (parent, imageList) {
 
 
 function createLinksHtml (parent, functionName, linkList) {
-  let linkStr = getResultCountString(functionName, linkList);
+  const linkStr = getResultCountString(functionName, linkList);
 
-  let tempList = [];
+  const tempList = [];
   for (let i = 0, iCount = linkList.length; i < iCount; ++i) {
-    let page = linkList[i].page();
+    const page = linkList[i].page();
     if (page && page !== 'undefined') {
       tempList.push(page);
     }

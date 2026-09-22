@@ -1,13 +1,13 @@
 import test from 'tape'
 import wtf from './_lib.js'
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const dir = path.dirname(fileURLToPath(import.meta.url))
 
 test('classify-test', function (t) {
-  let arr = [
+  const arr = [
     ['2008-British-motorcycle-Grand-Prix', 'Event'],
     ['Allen-R.-Morris', 'Person'],
     ['toronto_star', 'Organization'],
@@ -32,10 +32,10 @@ test('classify-test', function (t) {
     ['Liste-der-argentinischen-Botschafter-in-Chile', null],
   ]
   arr.forEach((a) => {
-    let abs = path.join(dir, `../../../tests/cache/${a[0]}.txt`)
-    let txt = fs.readFileSync(abs).toString()
-    let doc = wtf(txt)
-    let res = doc.classify()
+    const abs = path.join(dir, `../../../tests/cache/${a[0]}.txt`)
+    const txt = fs.readFileSync(abs).toString()
+    const doc = wtf(txt)
+    const res = doc.classify()
     t.equal(res.type, a[1], a[0])
   })
   t.end()

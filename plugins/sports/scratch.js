@@ -11,7 +11,7 @@ wtf.nhlSeason('Washington Capitals', 2017).then((res) => {
 })
 // let res = await wtf.mlbSeason('Washington Nationals', 2017)
 
-let str = `
+const str = `
 `
 
 // let doc = wtf(str)

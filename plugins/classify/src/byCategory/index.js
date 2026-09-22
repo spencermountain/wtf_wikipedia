@@ -2,7 +2,7 @@ import { patterns, mappings } from '../../schema/_data-fns.js'
 import byPattern from '../_byPattern.js'
 
 const byCategory = function (doc) {
-  let found = []
+  const found = []
   let cats = doc.categories()
   // clean them up a bit
   cats = cats.map((cat) => {
@@ -20,7 +20,7 @@ const byCategory = function (doc) {
       continue
     }
     // loop through our patterns
-    let match = byPattern(category, patterns.categories)
+    const match = byPattern(category, patterns.categories)
     if (match) {
       found.push({ type: match, reason: category })
     }

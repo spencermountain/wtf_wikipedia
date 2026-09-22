@@ -1,8 +1,8 @@
 import { mappings } from '../../schema/_data-fns.js'
 
 const fromSection = function (doc) {
-  let found = []
-  let titles = doc.sections().map((s) => {
+  const found = []
+  const titles = doc.sections().map((s) => {
     let str = s.title()
     str = str.toLowerCase().trim()
     return str

@@ -17,9 +17,9 @@ test('bold/italics', (t) => {
 })
 
 test('newline combine', (t) => {
-  let str = `650 students drawn from a
+  const str = `650 students drawn from a
 community that has levels`
-  let doc = wtf(str)
+  const doc = wtf(str)
   t.equal(doc.text(), `650 students drawn from a community that has levels`, 'combine newline w/ splace')
   t.end()
 })

@@ -2,7 +2,7 @@ import test from 'tape'
 import wtf from '../../lib/index.js'
 
 test('obscure lang templates', (t) => {
-  let arr = [
+  const arr = [
     'Lang-cpg',
     'Lang-el',
     'Lang-gmy',
@@ -681,7 +681,7 @@ test('obscure lang templates', (t) => {
     'Lang-zu'
   ]
   arr.forEach(tmpl => {
-    let doc = wtf(`{{${tmpl}|foobar}}`)
+    const doc = wtf(`{{${tmpl}|foobar}}`)
     t.equal(doc.text(), 'foobar', tmpl)
   })
   t.end()

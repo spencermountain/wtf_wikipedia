@@ -13,7 +13,7 @@ const addWinner = function (games) {
       g.win = false
     }
     //improve the result format, now that we know who won..
-    let res = g.result
+    const res = g.result
     if (g.win) {
       g.result = {
         us: res.win,

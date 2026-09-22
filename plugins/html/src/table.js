@@ -1,6 +1,6 @@
 //turn a json table into a html table
 const toHtml = function (options) {
-  let rows = this.data
+  const rows = this.data
   let html = '<table class="table">\n'
   //make header
   html += '  <thead>\n'
@@ -19,7 +19,7 @@ const toHtml = function (options) {
   rows.forEach((o) => {
     html += '  <tr>\n'
     Object.keys(o).forEach((k) => {
-      let val = o[k].html(options)
+      const val = o[k].html(options)
       html += '    <td>' + val + '</td>\n'
     })
     html += '  </tr>\n'

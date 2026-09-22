@@ -1,8 +1,8 @@
 import test from 'tape'
 import wtf from './_lib.js'
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const dir = path.dirname(fileURLToPath(import.meta.url))
 
@@ -87,8 +87,8 @@ const pages = [
 
 test('try all pages', (t) => {
   pages.forEach((page) => {
-    let doc = from_file(page)
-    let html = doc.html()
+    const doc = from_file(page)
+    const html = doc.html()
     t.ok(html && html.length > 5, page)
   })
   t.end()

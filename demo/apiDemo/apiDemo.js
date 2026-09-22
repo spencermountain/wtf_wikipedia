@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------
 'use strict';
 
-let wtfHelper = new WtfHelper();       // load useful wtf helper functions
-let html = new ApiDemoHtml(wtfHelper); // creates apiDemo HTML elements
+const wtfHelper = new WtfHelper();       // load useful wtf helper functions
+const html = new ApiDemoHtml(wtfHelper); // creates apiDemo HTML elements
 wtfHelper.loadMain(main);              // call main() after the HTML doc loads
 
 async function main() {
-  let queryString = 'Grace Hopper';
-  let doc = await wtfHelper.fetchNicely(queryString);
+  const queryString = 'Grace Hopper';
+  const doc = await wtfHelper.fetchNicely(queryString);
 
   html.init('wtf_wikipedia API demo'); // creates header and main section
 
@@ -204,8 +204,8 @@ function showTableApi(table) {
 
 
 function showKeyValObj(keyValObj) {
-  let entryList = Object.entries(keyValObj);
-  let entryCount = entryList.length;
+  const entryList = Object.entries(keyValObj);
+  const entryCount = entryList.length;
   let result = 'there are ' + entryCount + ' key-value pairs: ';
 
   for (let i = 0; i < entryCount; ++i) {

@@ -1,6 +1,6 @@
 //create a formal LATEX table
 const doTable = function (options) {
-  let rows = this.data
+  const rows = this.data
   let out = '\n%\\vspace*{0.3cm}\n'
   out +=
     '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns'
@@ -34,8 +34,8 @@ const doTable = function (options) {
     vSep = ' '
     out += '\n  % ----- table row -----'
     Object.keys(o).forEach((k) => {
-      let s = o[k]
-      let val = s.latex(options)
+      const s = o[k]
+      const val = s.latex(options)
       out += '\n    ' + vSep + val + ''
       vSep = ' & '
     })

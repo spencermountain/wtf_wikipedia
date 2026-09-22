@@ -38,7 +38,7 @@ lkjsdf
 })
 
 test('div style replacement', function (t) {
-  let str = `
+  const str = `
 <div style="text-align:center;">inside div</div>
 `
   t.equal(wtf(str).section(0).text(), 'inside div', 'support css style')

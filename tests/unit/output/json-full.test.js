@@ -1,9 +1,9 @@
 import test from 'tape'
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import wtf from '../../lib/index.js'
 import golden from '../../lib/golden.js'
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from 'node:url'
 
 const dir = path.dirname(fileURLToPath(import.meta.url))
 

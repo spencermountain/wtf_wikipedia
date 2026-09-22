@@ -100,14 +100,14 @@ test('ordered list', function (t) {
 })
 
 test('empty lists', function (t) {
-  let str = `
+  const str = `
 *{{cite news|title=Love—In Other Words}}
 *{{cite news|title=Christmas to Me}}
 *{{cite news|title=When Children Discover America}}
 *{{cite news|title=Romance and High Adventure}} Show Just once.
 *{{cite news|title=Open letter to Oprah Winfrey}} 
 `
-  let doc = wtf(str)
+  const doc = wtf(str)
   t.equal(doc.lists().length, 1, 'got 1 list')
   t.equal(doc.text(), '\n * Show Just once.', 'list text output')
   t.end()

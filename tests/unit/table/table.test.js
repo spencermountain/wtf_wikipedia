@@ -586,11 +586,11 @@ test('empty cells', (t) => {
 })
 
 test('generated table', (t) => {
-  let str = `
+  const str = `
 {{CBB roster/Header|year=|team=|sex=}}
 {{CBB roster/Player|first=Demetrius|last=McReynolds|num=1|pos=G|ft=6|in=2|lbs=210|class=sr|rs=|home=[[Louisville, Kentucky]]}}
 {{CBB roster/Footer}}`
-  let doc = wtf(str)
+  const doc = wtf(str)
   t.equal(doc.tables().length, 1, 'cbb roster')
   t.end()
 })
