@@ -11,7 +11,7 @@
   
   <!-- file size -->
   <a href="https://unpkg.com/wtf-plugin-html/builds/wtf-plugin-wikitext.min.js">
-    <img src="https://badge-size.herokuapp.com/spencermountain/wtf-plugin-html/master/builds/wtf-plugin-wikitext.min.js" />
+    <img src="https://img.shields.io/bundlephobia/min/wtf-plugin-wikitext.min.js" />
   </a>
    <hr/>
 </div>
