@@ -14,9 +14,9 @@ let sports = {
     let obj = parse(tmpl)
     list.push(obj)
     let arr = obj.list || []
-    let draw = parseInt(arr[2]) || 0
-    let lose = parseInt(arr[3]) || 0;
-    let win = parseInt(arr[1]) || 0;
+    let draw = parseInt(arr[2], 10) || 0
+    let lose = parseInt(arr[3], 10) || 0
+    let win = parseInt(arr[1], 10) || 0
     let total = win + draw + lose;
     let winPercentage = ''
     if (total > 0) {

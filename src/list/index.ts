@@ -3,7 +3,6 @@ import { fromText as parseSentence } from '../04-sentence/index.ts'
 const list_reg = /^[#*:;|]+/
 const bullet_reg = /^\*+[^:,|]{4}/
 const number_reg = /^ ?#[^:,|]{4}/
-const has_word = /[\p{Letter}_0-9\]}]/iu
 
 // does it start with a bullet point or something?
 const isList = function (line) {

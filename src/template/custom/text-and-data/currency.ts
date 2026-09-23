@@ -72,16 +72,19 @@ const parseCurrency = (tmpl, list) => {
   if (code === 'currency') {
     code = o.code
     if (!code) {
-      o.code = code = 'usd' //Special case when currency template has no code argument
+      code = 'usd' //Special case when currency template has no code argument
+      o.code = code
     }
   } else if (code === '' || code === 'monnaie' || code === 'unité' || code === 'nombre' || code === 'nb') {
     code = o.code
   }
   code = (code || '').toLowerCase()
   if (code === 'us') {
-    o.code = code = 'usd'
+    code = 'usd'
+    o.code = code
   } else if (code === 'uk') {
-    o.code = code = 'gbp'
+    code = 'gbp'
+    o.code = code
   }
   let str = `${codes[code] || ''}${o.amount || ''}`
   //support unknown currencies after the number - like '5 BTC'

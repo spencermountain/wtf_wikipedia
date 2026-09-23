@@ -1,4 +1,4 @@
-import type { Plugin, Document } from 'wtf_wikipedia'
+import type { Plugin } from 'wtf_wikipedia'
 
 declare module 'wtf_wikipedia' {
   interface Document {
