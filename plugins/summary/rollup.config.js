@@ -1,7 +1,32 @@
-import pluginBuild from '../../scripts/rollup-plugin.js'
+import { readFileSync } from 'node:fs'
+import terser from '@rollup/plugin-terser'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
+import sizeCheck from 'rollup-plugin-filesize-check'
 
-export default pluginBuild(import.meta.url, {
-  global: 'wtfSummary',
-  size: { expect: 184, warn: 10 },
-  resolve: true,
-})
+const { name, version } = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'))
+const banner = `/*! ${name} ${version} MIT */`
+
+export default {
+  input: 'src/index.js',
+  plugins: [nodeResolve(), commonjs()],
+  output: [
+    {
+      banner,
+      file: `builds/${name}.mjs`,
+      format: 'esm',
+    },
+    {
+      banner,
+      file: `builds/${name}.cjs`,
+      format: 'cjs',
+    },
+    {
+      banner,
+      file: `builds/${name}.min.js`,
+      format: 'umd',
+      name: 'wtfSummary',
+      plugins: [terser(), sizeCheck({ expect: 184, warn: 10 })],
+    },
+  ],
+}

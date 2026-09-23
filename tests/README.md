@@ -1,13 +1,11 @@
 # tests
 
-Run with `pnpm test` (offline, fast). Live-network tests are separate:
-`pnpm run test:network` runs `tests/fetch/*.fetch.js` — the `.fetch.js` suffix is
-what keeps them out of the default `*.test.js` glob.
+Run with `pnpm test`. All tests use `*.test.js`, including live Wikimedia API
+tests, so the suite requires network access.
 
 `pnpm run test:all` builds and verifies the whole workspace, including each
-plugin's source tests, built tests, packed consumer tests, and live API tests.
-Use `pnpm --filter wtf-plugin-html test:all` to verify one plugin after building
-the core. Plugin network tests use `*.network.js` and `test:network`.
+plugin's source and built tests. Use `pnpm --filter wtf-plugin-html test:all`
+to verify one plugin after building the core.
 
 ## layout
 
@@ -37,7 +35,7 @@ Everything else stays in the test root - helpers (`lib/`, `cache/`, `golden/`,
 3. Whole pages in `cache/` are for the contract harness, stress tests and
    goldens — not for pinning behavior. Don't add a cached page to test one
    template; write the template inline.
-4. Live-network tests end in `.fetch.js` and live in `fetch/`. Everything else
-   must pass offline.
+4. Core live API tests live in `fetch/` and use the same `.test.js` suffix
+   as the rest of the suite.
 5. Singular accessors return `null` on a miss (every class). Plural accessors
    always return arrays.

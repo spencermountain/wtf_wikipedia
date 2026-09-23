@@ -1,6 +1,31 @@
-import pluginBuild from '../../scripts/rollup-plugin.js'
+import { readFileSync } from 'node:fs'
+import terser from '@rollup/plugin-terser'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 
-export default pluginBuild(import.meta.url, {
-  global: 'wtfSports',
-  resolve: true,
-})
+const { name, version } = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'))
+const banner = `/*! ${name} ${version} MIT */`
+
+export default {
+  input: 'src/index.js',
+  plugins: [nodeResolve(), commonjs()],
+  output: [
+    {
+      banner,
+      file: `builds/${name}.mjs`,
+      format: 'esm',
+    },
+    {
+      banner,
+      file: `builds/${name}.cjs`,
+      format: 'cjs',
+    },
+    {
+      banner,
+      file: `builds/${name}.min.js`,
+      format: 'umd',
+      name: 'wtfSports',
+      plugins: [terser()],
+    },
+  ],
+}

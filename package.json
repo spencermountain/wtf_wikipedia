@@ -59,12 +59,12 @@
     "test:types": "tsc -p ./tests/types && tsc -p ./tests/types/node10.tsconfig.json && tsc -p ./tests/types/plugins.tsconfig.json && tsc -p ./tests/types/plugins-cjs.tsconfig.json",
     "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' pnpm test",
     "lint": "eslint .",
-    "test": "node ./scripts/test.js source",
-    "test:all": "pnpm run build && pnpm run lint && pnpm run check && pnpm run test:types && pnpm test && pnpm run test:built && pnpm -r --workspace-concurrency=1 run test:all && pnpm run test:network",
+    "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
+    "test:all": "pnpm run build && pnpm run lint && pnpm run check && pnpm run test:types && pnpm test && pnpm run test:built && pnpm run test:plugins",
+    "test:plugins": "pnpm -r --workspace-concurrency=1 run test:all",
     "goldens:update": "UPDATE_GOLDENS=1 pnpm test",
     "watch": "node --watch ./scratch.js",
-    "test:built": "node ./scripts/test.js built",
-    "test:network": "node ./scripts/test.js network"
+    "test:built": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer"
   },
   "files": [
     "builds",

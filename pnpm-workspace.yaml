@@ -4,7 +4,3 @@ packages:
 
 allowBuilds:
   esbuild: true
-
-minimumReleaseAgeExclude:
-  - tap-dancer@0.4.1
-  - rollup-plugin-filesize-check@2.0.0
