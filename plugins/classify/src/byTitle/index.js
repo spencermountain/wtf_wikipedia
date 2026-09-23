@@ -1,6 +1,7 @@
 import { patterns, mappings } from '../../schema/_data-fns.js'
 import byPattern from '../_byPattern.js'
-const paren = /\((.*)\)$/
+// Start once per line; the closing parenthesis must still end the whole title.
+const paren = /^[^(\r\n\u2028\u2029]*\((.*)\)(?![\s\S])/m
 
 const byTitle = function (doc) {
   const title = doc.title()

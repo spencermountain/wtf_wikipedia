@@ -5,7 +5,7 @@ const defaults = {}
 const normalize = function (key = '') {
   key = key.toLowerCase()
   key = key.replace(/[_-]/g, ' ')
-  key = key.replace(/\(.*?\)/, '')
+  key = key.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1')
   key = key.trim()
   return key
 }

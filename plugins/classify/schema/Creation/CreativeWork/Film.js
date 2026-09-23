@@ -4,7 +4,8 @@ export default {
   //
   categories: {
     mapping: [],
-    patterns: [/[0-9]{4}.*? films/, / films$/, /^films /],
+    // The lookahead commits to the first year on each line, avoiding repeated suffix scans.
+    patterns: [/^(?=(.*?[0-9]{4}))\1.*? films/m, / films$/, /^films /],
   },
   //
   descriptions: {

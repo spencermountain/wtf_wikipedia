@@ -8,7 +8,7 @@ import literalAbbreviations from './_abbreviations.ts'
 const abbreviations = literalAbbreviations.concat('[^]][^]]')
 const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`, 'i')
 const acronym_reg = /[ .'][A-Z].? *$/i
-const elipses_reg = /\.{3,} +$/
+const elipses_reg = /(?:^|[^.])\.{3,} +$/
 const circa_reg = / c\.\s$/
 const hasWord = /\p{Letter}/iu
 
@@ -21,14 +21,40 @@ const flatten = function (arr) {
   return all
 }
 
+// Try only the first non-whitespace position in each remaining line. If it
+// cannot reach sentence punctuation, later starts on that line cannot either.
+const splitPunctuation = function (text) {
+  const sentence = /(\S.+?[.!?]"?)(?=\s|$)/y
+  let splits = []
+  let end = 0
+  for (const line of text.matchAll(/[^\r\n\u2028\u2029]+/g)) {
+    let offset = 0
+    while (offset < line[0].length) {
+      const leading = line[0].slice(offset).search(/\S/)
+      if (leading === -1) {
+        break
+      }
+      const start = offset + leading
+      sentence.lastIndex = start
+      const match = sentence.exec(line[0])
+      if (!match) {
+        break
+      }
+      splits.push(text.slice(end, line.index + start), match[1])
+      offset = sentence.lastIndex
+      end = line.index + offset
+    }
+  }
+  splits.push(text.slice(end))
+  return splits
+}
+
 const naiive_split = function (text) {
   //first, split by newline
   let splits = text.split(/(\n+)/)
   splits = splits.filter((s) => s.match(/\S/))
   //split by period, question-mark, and exclamation-mark
-  splits = splits.map(function (str) {
-    return str.split(/(\S.+?[.!?]"?)(?=\s|$)/g) //\u3002
-  })
+  splits = splits.map(splitPunctuation)
   return flatten(splits)
 }
 

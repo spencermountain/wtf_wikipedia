@@ -12,8 +12,8 @@ const pipeSplitter = function (tmpl) {
     //has equal number of opening and closing tags. handle nested case '[[[[' ']]'
     if (
       i + 1 < arr.length &&
-      (/\[\[[^\]]+$/.test(a) ||
-        /\{\{[^}]+$/.test(a) ||
+      (a.slice(a.lastIndexOf(']') + 1, -1).includes('[[') ||
+        a.slice(a.lastIndexOf('}') + 1, -1).includes('{{') ||
         a.split('{{').length !== a.split('}}').length ||
         a.split('[[').length !== a.split(']]').length)
     ) {

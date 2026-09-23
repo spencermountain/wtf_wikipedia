@@ -1,4 +1,5 @@
 import * as regexpPlugin from "eslint-plugin-regexp"
+import tseslint from 'typescript-eslint'
 
 export default [
   { ignores: ['**/builds/*', '**/scratch.js', '**/rollup.config.js'] },
@@ -11,20 +12,13 @@ export default [
         // Node globals
         console: 'readonly',
         process: 'readonly',
-        Buffer: 'readonly',
         setTimeout: 'readonly',
         clearTimeout: 'readonly',
         setInterval: 'readonly',
         clearInterval: 'readonly',
         __dirname: 'readonly',
         __filename: 'readonly',
-        // client-side globals
-        self: 'readonly',
-        window: 'readonly',
-        document: 'readonly',
         fetch: 'readonly',
-        URL: 'readonly',
-        Event: 'readonly',
       }
     },
     // custom rules setup
@@ -66,6 +60,22 @@ export default [
       'prefer-const': 'off',
       'regexp/prefer-d': 'off',
       'regexp/no-unused-capturing-group': 'off',
+      'regexp/no-super-linear-move': 'warn',
     }
+  },
+  {
+    files: ['**/*.{ts,mts,cts,tsx}'],
+    languageOptions: { parser: tseslint.parser },
+    plugins: { '@typescript-eslint': tseslint.plugin },
+    rules: {
+      // TypeScript resolves type names and globals through tsc.
+      'no-undef': 'off',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^_', argsIgnorePattern: '^_' }],
+      'no-shadow': 'off',
+      '@typescript-eslint/no-shadow': 'error',
+      'no-use-before-define': 'off',
+      '@typescript-eslint/no-use-before-define': 'warn',
+    },
   }
 ]

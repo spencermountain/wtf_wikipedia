@@ -8,8 +8,7 @@ function capitalise(str) {
 //trims the ends, collapses double-spaces, and removes whitespace before commas
 function trim_whitespace(str) {
   if (str && typeof str === 'string') {
-    str = str.replace(/^\s+/, '')
-    str = str.replace(/\s+$/, '')
+    str = str.trim()
     str = str.replace(/ {2,}/g, ' ')
     str = str.replace(/\s, /g, ', ')
     return str

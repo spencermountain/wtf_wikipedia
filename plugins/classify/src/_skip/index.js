@@ -4,7 +4,8 @@ const skip = {
   name: true,
   'given name': true,
 }
-const paren = /\((.*)\)$/
+// Start once per line; the closing parenthesis must still end the whole title.
+const paren = /^[^(\r\n\u2028\u2029]*\((.*)\)(?![\s\S])/m
 const listOf = /^list of ./
 const disambig = /\(disambiguation\)/
 

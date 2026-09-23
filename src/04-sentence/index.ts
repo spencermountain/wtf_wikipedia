@@ -11,7 +11,7 @@ function postprocess(line) {
   line = line.replace(/\( *(; ?)+/g, '(')
   //dangling punctuation
   line = trim_whitespace(line)
-  line = line.replace(/ +\.$/, '.')
+  line = line.replace(/(^|[^ ]) +\.$/, '$1.')
   return line
 }
 

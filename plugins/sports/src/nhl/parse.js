@@ -31,7 +31,7 @@ const parseRoster = function (doc) {
   }
   players = tables[0].keyValue().map((o) => {
     let name = o.Player || ''
-    name = name.replace(/\(.*?\)/, '')
+    name = name.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1')
     name = name.replace(/[‡†]/, '')
     name = name.trim()
     return {

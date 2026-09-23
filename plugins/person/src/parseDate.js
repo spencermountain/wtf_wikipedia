@@ -2,10 +2,10 @@ import spacetime from 'spacetime'
 // regexes
 const regJustYear = /^(?:c\.\s*)?(?=(\d+))\1\s*(bc|bce|ad|ce)?$/i
 
-const regInaccurate = /((\d+)\s*(or|–|\/)\s*(\d+))\s*(?:bc|bce|ad|ce)?\b/gi
+const regInaccurate = /(?<!\d)((\d+)\s*(or|–|\/)\s*(\d+))\s*(?:bc|bce|ad|ce)?\b/gi
 const regRangeSeparator = /–/
 const regUptoSecondMill = /\b(\d{1,3})\s*(bc|bce|ad|ce)?$|\b(\d+)\s*(bc|bce)$/i
-const regBCE = /(\d+)\s*(bc|bce)\b/i
+const regBCE = /(?<!\d)(\d+)\s*(bc|bce)\b/i
 
 const findAverage = function (arr) {
   return arr.reduce((partialSum, n) => partialSum + n) / arr.length
@@ -16,7 +16,7 @@ const parseDate = function (str) {
     return null
   }
   // remove parentheses
-  str = str.replace(/\(.*\)/, '')
+  str = str.replace(/(^[^(\r\n\u2028\u2029]*)\(.*\)/m, '$1')
   str = str.trim()
   // check for inaccurate dates such as "20 or 21 July 356 BC", "c. 1155/1162", "183–181 BC"
   let inaccurateOriginal

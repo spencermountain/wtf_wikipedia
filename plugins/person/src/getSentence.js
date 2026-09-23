@@ -6,11 +6,11 @@ const parseSentence = function (doc) {
     return null
   }
   let txt = s.text() || ''
-  const paren = txt.match(/\(.*\)/)
-  if (!paren || !paren[0]) {
+  const paren = txt.match(/^[^(\r\n\u2028\u2029]*(\(.*\))/m)
+  if (!paren || !paren[1]) {
     return null
   }
-  txt = paren[0] || ''
+  txt = paren[1] || ''
   txt = txt.trim()
   txt = txt.replace(/^\(/, '')
   txt = txt.replace(/\)$/, '')

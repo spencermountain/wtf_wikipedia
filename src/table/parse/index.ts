@@ -22,7 +22,7 @@ const cleanText = function (str) {
   str = parseSentence(str).text()
   //anything before a single-pipe is styling, so remove it
   if (str.match(/\|/)) {
-    str = str.replace(/.*?\| ?/, '') //class="unsortable"|title
+    str = str.replace(/^.*?\| ?/m, '') //class="unsortable"|title
   }
   str = str.replace(/style=['"].*?["']/, '')
   //'!' is used as a highlighed-column
@@ -126,7 +126,11 @@ const firstRowHeader = function (rows) {
 const parseTable = function (wiki) {
   let lines = wiki
     .replace(/\r/g, '')
-    .replace(/\n(\s*[^|!{\s])/g, ' $1') //remove unecessary newlines
+    // Scan each whitespace run once, including runs before table markers.
+    .replace(/\n\s*/g, (space, offset, text) => {
+      const next = text[offset + space.length]
+      return next && !'|!{'.includes(next) ? ' ' + space.slice(1) : space
+    }) //remove unecessary newlines
     .split(/\n/)
     .map((l) => l.trim())
   let rows = findRows(lines)

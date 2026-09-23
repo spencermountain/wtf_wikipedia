@@ -4,7 +4,8 @@ export default {
   //
   categories: {
     mapping: [],
-    patterns: [/[0-9]{4}.*? songs/, /^songs /, / songs$/, /song stubs$/],
+    // The lookahead commits to the first year on each line, avoiding repeated suffix scans.
+    patterns: [/^(?=(.*?[0-9]{4}))\1.*? songs/m, /^songs /, / songs$/, /song stubs$/],
   },
   //
   descriptions: {

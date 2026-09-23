@@ -56,11 +56,11 @@ const parseAttendance = function (txt = '') {
 
 const parsePitchers = function (row) {
   let win = row.Win || row.win || ''
-  win = win.replace(/\(.*?\)/, '').trim()
+  win = win.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1').trim()
   let loss = row.Loss || row.loss || ''
-  loss = loss.replace(/\(.*?\)/, '').trim()
+  loss = loss.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1').trim()
   let save = row.Save || row.save || ''
-  save = save.replace(/\(.*?\)/, '').trim()
+  save = save.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1').trim()
   if (dashSplit.test(save) === true) {
     save = null
   }

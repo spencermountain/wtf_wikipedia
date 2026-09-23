@@ -64,8 +64,8 @@ const parsers = {
       date.year = parseInt(str, 10)
     } else {
       //parse the date, using the js date object (for now?)
-      let txt = str.replace(/[a-z]+\/[a-z]+/i, '')
-      txt = txt.replace(/[0-9]+:[0-9]+(am|pm)?/i, '')
+      let txt = str.replace(/(?<![a-z])[a-z]+\/[a-z]+/i, '')
+      txt = txt.replace(/(?<![0-9])[0-9]+:[0-9]+(am|pm)?/i, '')
       let d = new Date(txt)
       if (isNaN(d.getTime()) === false) {
         date.year = d.getFullYear()

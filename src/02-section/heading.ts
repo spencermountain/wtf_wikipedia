@@ -4,7 +4,8 @@ import parseReferences from '../reference/index.ts'
 import getTemplates from '../template/find/01-nested.ts'
 import parseTemplates from '../template/parse/index.ts'
 const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/ //eslint-disable-line
-const hasTemplate = /\{\{.+?\}\}/
+// Commit to the first opening delimiter on each line before looking for its end.
+const hasTemplate = /^(?=(.*?\{\{))\1.+?\}\}/m
 
 const doInlineTemplates = function (wiki, doc) {
   let list = getTemplates(wiki)

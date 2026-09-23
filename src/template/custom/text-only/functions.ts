@@ -846,8 +846,12 @@ export default {
   precision: (tmpl) => {
     let data = parse(tmpl, ['num'])
     let num = data.num || ''
-    if (!num.match(/\./) && num.match(/0*$/) && num !== '0') {
-      return num.match(/0*$/)[0].length * -1
+    if (!num.includes('.') && num !== '0') {
+      let end = num.length
+      while (end > 0 && num[end - 1] === '0') {
+        end -= 1
+      }
+      return (num.length - end) * -1
     }
     let dec = num.split(/\./)[1] || ''
     return dec.length
