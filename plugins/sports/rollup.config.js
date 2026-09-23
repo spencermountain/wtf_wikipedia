@@ -1,33 +1,6 @@
-/* eslint-disable no-console */
-import commonjs from '@rollup/plugin-commonjs'
-import terser from '@rollup/plugin-terser'
-import resolve from '@rollup/plugin-node-resolve' //import compromise
-import { readFileSync } from 'node:fs'
-const { version } = JSON.parse(readFileSync(new URL('package.json', import.meta.url), 'utf8'))
-console.log('\n 📦  - running rollup..\n')
+import pluginBuild from '../../scripts/rollup-plugin.js'
 
-const name = 'wtf-plugin-sports'
-const banner = `/*! ${name} ${version}  MIT */`
-export default {
-  input: 'src/index.js',
-  plugins: [resolve(), commonjs()],
-  output: [
-    {
-      banner,
-      file: `builds/${name}.mjs`,
-      format: 'esm',
-    },
-    {
-      banner,
-      file: `builds/${name}.cjs`,
-      format: 'cjs',
-    },
-    {
-      banner,
-      file: `builds/${name}.min.js`,
-      format: 'umd',
-      name: 'wtfSports',
-      plugins: [terser()],
-    },
-  ],
-}
+export default pluginBuild(import.meta.url, {
+  global: 'wtfSports',
+  resolve: true,
+})

@@ -1,7 +1,7 @@
-/* wtf-plugin-image 1.1.1  MIT */
+/*! wtf-plugin-image 1.1.1 MIT */
 function safeAdd(x, y) {
-  let lsw = (x & 65535) + (y & 65535);
-  let msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+  const lsw = (x & 65535) + (y & 65535);
+  const msw = (x >> 16) + (y >> 16) + (lsw >> 16);
   return msw << 16 | lsw & 65535;
 }
 function bitRotateLeft(num, cnt) {
@@ -113,7 +113,7 @@ function binlMD5(x, len) {
 function binl2rstr(input) {
   let i;
   let output = "";
-  let length32 = input.length * 32;
+  const length32 = input.length * 32;
   for (i = 0; i < length32; i += 8) {
     output += String.fromCharCode(input[i >> 5] >>> i % 32 & 255);
   }
@@ -121,12 +121,12 @@ function binl2rstr(input) {
 }
 function rstr2binl(input) {
   let i;
-  let output = [];
+  const output = [];
   output[(input.length >> 2) - 1] = void 0;
   for (i = 0; i < output.length; i += 1) {
     output[i] = 0;
   }
-  let length8 = input.length * 8;
+  const length8 = input.length * 8;
   for (i = 0; i < length8; i += 8) {
     output[i >> 5] |= (input.charCodeAt(i / 8) & 255) << i % 32;
   }
@@ -136,7 +136,7 @@ function rstrMD5(s) {
   return binl2rstr(binlMD5(rstr2binl(s), s.length * 8));
 }
 function rstr2hex(input) {
-  let hexTab = "0123456789abcdef";
+  const hexTab = "0123456789abcdef";
   let output = "";
   let x;
   let i;
@@ -172,9 +172,9 @@ const encodeTitle = function(file) {
   return title;
 };
 const commonsURL = function() {
-  let file = this.data.file;
+  const file = this.data.file;
   let title = encodeTitle(file);
-  let hash = md5(title);
+  const hash = md5(title);
   let path = hash.substr(0, 1) + "/" + hash.substr(0, 2) + "/";
   title = encodeURIComponent(title);
   path += title;
@@ -190,8 +190,8 @@ const imgExists = function(callback) {
       "User-Agent": userAgent
     }
   }).then((resp) => {
-    let status = String(resp.status) || "";
-    let bool = /^[23]/.test(status);
+    const status = String(resp.status) || "";
+    const bool = /^[23]/.test(status);
     if (callback) {
       callback(null, bool);
     }
@@ -206,15 +206,15 @@ const imgExists = function(callback) {
 };
 
 const mainImage = function() {
-  let box = this.infobox();
+  const box = this.infobox();
   if (box) {
-    let img = box.image();
+    const img = box.image();
     if (img) {
       return img;
     }
   }
-  let s = this.section();
-  let imgs = s.images();
+  const s = this.section();
+  const imgs = s.images();
   if (imgs.length === 1) {
     return imgs[0];
   }
@@ -354,7 +354,7 @@ ${validMethods}`;
   }
 }
 function fetchImages(methods = "", images = []) {
-  const isDoc = images.length ? true : false;
+  const isDoc = images.length > 0 ? true : false;
   let titles;
   let iiprop;
   const userAgent = isDoc ? this["_userAgent"] : this.data["_userAgent"];
@@ -429,13 +429,13 @@ function fetchImages(methods = "", images = []) {
 }
 
 const images = function(oldMethod) {
+  const addUserAgent = function(imgs) {
+    return imgs.map((i) => {
+      i.data["_userAgent"] = this["_userAgent"];
+      return i;
+    });
+  };
   const newMethod = function(clue) {
-    const addUserAgent = function(imgs) {
-      return imgs.map((i) => {
-        i.data["_userAgent"] = this["_userAgent"];
-        return i;
-      });
-    };
     let imagesArr;
     if (typeof clue === "number") {
       imagesArr = oldMethod.call(this, clue);

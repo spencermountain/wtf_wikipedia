@@ -1,7 +1,8 @@
 import terser from '@rollup/plugin-terser'
 import esbuild from 'rollup-plugin-esbuild'
+import sizeCheck from 'rollup-plugin-filesize-check'
 
-const banner = '/*! wtf_wikipedia  MIT */'
+const banner = '/*! spencermountain/wtf_wikipedia  MIT */'
 
 export default {
   input: 'src/index.ts',
@@ -22,7 +23,14 @@ export default {
       file: 'builds/wtf_wikipedia-client.min.js',
       format: 'umd',
       name: 'wtf',
-      plugins: [terser()],
+      plugins: [
+        terser(),
+        sizeCheck({
+          expect: 141,
+          warn: 10, // acceptable (+/-)
+          throw: 25, // unacceptable (+/-)
+        }),
+      ],
     },
     {
       banner,

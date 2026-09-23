@@ -21,12 +21,15 @@
   },
   "main": "./builds/wtf-plugin-image.cjs",
   "module": "./builds/wtf-plugin-image.mjs",
-  "types": "./types/index.d.ts",
+  "types": "./types/index.d.cts",
   "sideEffects": false,
   "scripts": {
-    "test": "tape ./tests/**/*.test.js | tap-dancer",
-    "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "test": "node ../../scripts/test.js source",
+    "test:built": "node ../../scripts/test.js built",
+    "test:package": "node ../../scripts/test-package.js",
+    "test:all": "pnpm run build && pnpm test && pnpm run test:built && pnpm run test:package && pnpm run test:network",
+    "test:network": "node ../../scripts/test.js network"
   },
   "files": [
     "builds",
@@ -34,26 +37,10 @@
     "types"
   ],
   "devDependencies": {
-    "@rollup/plugin-commonjs": "29.0.3",
-    "@rollup/plugin-node-resolve": "16.0.3",
-    "@rollup/plugin-terser": "1.0.0",
-    "esbuild": "0.28.2",
-    "rollup": "4.63.4",
-    "rollup-plugin-esbuild": "6.2.1",
-    "rollup-plugin-filesize-check": "1.2.0",
-    "tap-dancer": "0.4.0",
-    "tape": "5.10.2",
-    "wtf_wikipedia": "10.5.0"
+    "wtf_wikipedia": "workspace:*"
   },
   "peerDependencies": {
-    "wtf_wikipedia": ">=10.5.0"
+    "wtf_wikipedia": ">=9.0.0"
   },
-  "unpkg": "./builds/wtf-plugin-image.min.js",
-  "prettier": {
-    "trailingComma": "none",
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true,
-    "printWidth": 100
-  }
+  "unpkg": "./builds/wtf-plugin-image.min.js"
 }

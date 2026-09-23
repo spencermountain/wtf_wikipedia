@@ -1,8 +1,13 @@
 # tests
 
-Run with `npm test` (offline, fast). Live-network tests are separate:
-`npm run test:fetch` runs `tests/fetch/*.fetch.js` — the `.fetch.js` suffix is
+Run with `pnpm test` (offline, fast). Live-network tests are separate:
+`pnpm run test:network` runs `tests/fetch/*.fetch.js` — the `.fetch.js` suffix is
 what keeps them out of the default `*.test.js` glob.
+
+`pnpm run test:all` builds and verifies the whole workspace, including each
+plugin's source tests, built tests, packed consumer tests, and live API tests.
+Use `pnpm --filter wtf-plugin-html test:all` to verify one plugin after building
+the core. Plugin network tests use `*.network.js` and `test:network`.
 
 ## layout
 
@@ -20,7 +25,7 @@ Everything else stays in the test root - helpers (`lib/`, `cache/`, `golden/`,
   `types/index.d.ts`. If you add or change a method, update the table in
   `contract/methods.test.js`.
 - `golden/` — snapshot files for large json outputs. Never edit them by hand;
-  regenerate with `npm run goldens:update` and review the diff.
+  regenerate with `pnpm run goldens:update` and review the diff.
 
 ## rules
 

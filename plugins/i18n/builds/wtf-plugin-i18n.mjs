@@ -1,4 +1,4 @@
-/* wtf-plugin-i18n 1.0.2  MIT */
+/*! wtf-plugin-i18n 1.0.2 MIT */
 var citation = [
   'atsauce',
   'chú thích',
@@ -848,7 +848,7 @@ var startDate = [
   '시작 날짜'
 ];
 
-let mapping = {
+const mapping = {
   citation,
   coord,
   flag,

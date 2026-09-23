@@ -4,34 +4,34 @@ Before making a big PR, please open an issue to ask questions.
 
 Development uses Node 24+ and pnpm (the exact pnpm version is pinned in `package.json`). The lightly-typed TypeScript source runs directly in Node using native type stripping. Published users get the compiled `builds` files and only need Node 18.
 
-Run `pnpm install` from the repository root to install the core and every plugin, including `plugins/wikis/*`. Commit the shared `pnpm-lock.yaml`; do not generate per-plugin npm lockfiles.
+Run `pnpm install` from the repository root. The active packages are the core and `plugins/*`; the experimental `plugins/wikis/*` packages are currently excluded. Commit the shared `pnpm-lock.yaml`; do not generate per-plugin lockfiles.
 
 ```sh
-pnpm run test:all           # types, core, plugins, then fetch tests; stops on failure (uses network)
-pnpm run build:all          # core first, then plugins with build scripts
-pnpm test                  # core source tests
-pnpm run testb             # core built-output tests
-pnpm run test:plugins      # plugin source tests
-pnpm run test:plugins:built # plugin built-output tests
-pnpm run lint
-pnpm run check
-pnpm run test:types
-pnpm --filter wtf-plugin-html run test
+pnpm run test:all                   # build, lint, types, source/built/package tests, and live network tests
+pnpm run build:all                  # core first, then all workspace plugins
+pnpm test                          # core source tests; no build required
+pnpm run test:built                 # core built-output tests; build first
+pnpm run test:network               # core live Wikimedia tests
+pnpm -r run test                    # every plugin's offline source tests
+pnpm --filter wtf-plugin-html test:all
 ```
 
-Plugin suites run one at a time and stop at the first nonzero exit status.
+`test:all` is the complete verification command, both at the root and in each plugin. The root builds the core first, then runs plugin suites one at a time. A plugin's `test:all` builds that plugin, runs source and built tests, and checks its packed ESM/CommonJS entrypoints and declarations against the packed local core. Build the core once before running a plugin's `test:all` in isolation. Plugins with live API tests also run `test:network`; ordinary `test` commands stay offline.
 
-Plugins use ordinary npm version ranges. pnpm links their matching development dependency on `wtf_wikipedia` to the local root package. When bumping the core version, update the plugins' development dependencies and peer minimums together: latest plugins are developed and tested against the latest core. There are no `workspace:` or `catalog:` dependency references.
+All plugins target the current core, including unreleased changes. Their development dependency is `wtf_wikipedia: workspace:*`, and their peer dependency is `>=9.0.0`: there are no upper-version guards or compatibility branches for older releases. Install from the workspace root; the core is never fetched from the registry for plugin development.
 
-Each package keeps its own version and can be published independently. After building and testing, the existing npm workflow still works:
+Shared development tools and formatting settings live in the root `package.json`. Plugin runtime dependencies stay in each plugin's manifest. Build settings live in `scripts/rollup-plugin.js`; each plugin's Rollup config supplies its browser global, optional size budget, and bundling options. Tape execution lives in `scripts/test.js`, and `tests/lib/plugin.js` loads only the requested source or built entrypoint. Tests use `*.test.js` for offline cases and `*.network.js` for live requests (core network tests also use `*.fetch.js`).
+
+Each package keeps its own version and can be published independently. Use pnpm to pack and publish so workspace dependency references are converted to npm-compatible versions:
 
 ```sh
-cd plugins/html
-npm run build
-npm run testb
-npm publish --dry-run
-npm publish
+pnpm run build
+pnpm --filter wtf-plugin-html test:all
+pnpm --filter wtf-plugin-html pack --pack-destination /tmp
+pnpm --filter wtf-plugin-html publish
 ```
+
+The release workflow verifies the whole workspace and publishes the core. Plugin publishing remains an explicit, independently versioned operation.
 
 TypeScript is pinned to 6.0.3, the latest version supported by typescript-eslint 8.70.0. Upgrade it when the parser supports TypeScript 7; the legacy Node 10 module-resolution declaration test will also need revisiting then.
 

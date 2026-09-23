@@ -1,4 +1,4 @@
-/* wtf-plugin-api 2.0.1  MIT */
+/*! wtf-plugin-api 2.0.1 MIT */
 'use strict';
 
 /**
@@ -9,7 +9,7 @@
  * @returns {object} the generated options
  */
 const makeHeaders = function (options) {
-  let agent =
+  const agent =
     options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library';
 
   let origin;
@@ -45,7 +45,7 @@ const defaults = {
 };
 
 function toUrlParams(obj) {
-  let arr = Object.entries(obj).map(([key, value]) => {
+  const arr = Object.entries(obj).map(([key, value]) => {
     return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
   });
   return arr.join('&')
@@ -54,7 +54,7 @@ function toUrlParams(obj) {
 function fetchOne(url, options, http, prop) {
   const headers = makeHeaders(options);
   return http(url, headers).then((res) => {
-    let pages = Object.keys(res.query.pages || {});
+    const pages = Object.keys(res.query.pages || {});
     if (pages.length === 0) {
       return { pages: [], cursor: null }
     }
@@ -94,8 +94,8 @@ const getRedirects = async function (title, options, http) {
   let getMore = true;
   let append = '';
   while (getMore) {
-    let url = makeUrl$5(title, options, append);
-    let { pages, cursor } = await fetchOne(url, options, http, 'redirects');
+    const url = makeUrl$5(title, options, append);
+    const { pages, cursor } = await fetchOne(url, options, http, 'redirects');
     list = list.concat(pages);
     if (cursor && cursor.rdcontinue) {
       append = '&rdcontinue=' + cursor.lhcontinue;
@@ -133,16 +133,16 @@ const makeUrl$4 = function (title, options, append) {
 const getIncoming = async function (title, options, http) {
   options = { ...defaults, ...options };
   let list = [];
-  let getMore = true;
+  let keepGoing = true;
   let append = '';
-  while (getMore) {
-    let url = makeUrl$4(title, options, append);
-    let { pages, cursor } = await fetchOne(url, options, http, 'linkshere');
+  while (keepGoing) {
+    const url = makeUrl$4(title, options, append);
+    const { pages, cursor } = await fetchOne(url, options, http, 'linkshere');
     list = list.concat(pages);
     if (cursor && cursor.lhcontinue) {
       append = '&lhcontinue=' + cursor.lhcontinue;
     } else {
-      getMore = false;
+      keepGoing = false;
     }
   }
   return list
@@ -168,10 +168,10 @@ const makeUrl$3 = function (title, options, append) {
 
 const getPageViews = function (doc, options, http) {
   options = { ...defaults, ...options };
-  let url = makeUrl$3(doc.title(), options);
+  const url = makeUrl$3(doc.title(), options);
   const headers = makeHeaders(options);
   return http(url, headers).then((res) => {
-    let pages = Object.keys(res.query.pages || {});
+    const pages = Object.keys(res.query.pages || {});
     if (pages.length === 0) {
       return []
     }
@@ -205,13 +205,13 @@ const makeUrl$2 = function (title, options, append) {
 
 // fetch all the pages that use a specific template
 const getTransclusions = async function (template, _options, http) {
-  let options = { ...defaults, ..._options };
+  const options = { ...defaults, ..._options };
   let list = [];
   let getMore = true;
   let append = '';
   while (getMore) {
-    let url = makeUrl$2(template, options, append);
-    let { pages, cursor } = await fetchOne(url, options, http, 'transcludedin');
+    const url = makeUrl$2(template, options, append);
+    const { pages, cursor } = await fetchOne(url, options, http, 'transcludedin');
     list = list.concat(pages);
     if (cursor && cursor.ticontinue) {
       append = '&ticontinue=' + cursor.ticontinue;
@@ -238,11 +238,11 @@ const params$2 = {
 const fetchIt$1 = function (url, options, http, prop) {
   const headers = makeHeaders(options);
   return http(url, headers).then((res) => {
-    let pages = Object.keys(res.query[prop] || {});
+    const pages = Object.keys(res.query[prop] || {});
     if (pages.length === 0) {
       return { pages: [], cursor: null }
     }
-    let arr = pages.map((k) => res.query[prop][k]);
+    const arr = pages.map((k) => res.query[prop][k]);
     return {
       pages: arr,
       cursor: res.continue
@@ -272,8 +272,8 @@ const getOneCategory = async function (title, options, http) {
   let getMore = true;
   let append = '';
   while (getMore) {
-    let url = makeUrl$1(title, options, append);
-    let { pages, cursor } = await fetchIt$1(url, options, http, 'categorymembers');
+    const url = makeUrl$1(title, options, append);
+    const { pages, cursor } = await fetchIt$1(url, options, http, 'categorymembers');
     list = list.concat(pages);
     if (cursor && cursor.cmcontinue) {
       append = '&cmcontinue=' + cursor.cmcontinue;
@@ -284,6 +284,7 @@ const getOneCategory = async function (title, options, http) {
   return list
 };
 
+// eslint-disable-next-line max-params
 async function getCategoriesRecursively(
   title,
   options,
@@ -293,7 +294,7 @@ async function getCategoriesRecursively(
   pagesSeen,
   http
 ) {
-  let results = await getOneCategory(title, options, http);
+  const results = await getOneCategory(title, options, http);
   //check if we should recur - either if maxDepth not set or if we're not going to exceed it in this recursion
   if (maxDepth === undefined || currentDepth < maxDepth) {
     let categories = results.filter((entry) => entry.type === 'subcat');
@@ -304,8 +305,8 @@ async function getCategoriesRecursively(
     categories = categories.filter((category) => !pagesSeen.includes(category.title));
     pagesSeen.push(...categories.map((category) => category.title));
     const subCatResults = [];
-    for (let category of categories) {
-      let subCatResult = await getCategoriesRecursively(
+    for (const category of categories) {
+      const subCatResult = await getCategoriesRecursively(
         category.title,
         options,
         exclusions,
@@ -324,9 +325,9 @@ async function getCategoriesRecursively(
 
 async function getCategory(title, options, http) {
   options = { ...defaults, ...options };
-  let exclusions = options?.categoryExclusions;
-  let recursive = options?.recursive === true;
-  let maxDepth = options?.maxDepth;
+  const exclusions = options?.categoryExclusions;
+  const recursive = options?.recursive === true;
+  const maxDepth = options?.maxDepth;
   if (recursive) {
     return await getCategoriesRecursively(title, options, exclusions, maxDepth, 0, [], http)
   } else {
@@ -352,7 +353,7 @@ const params$1 = {
 const fetchIt = function (url, options, http) {
   const headers = makeHeaders(options);
   return http(url, headers).then((res) => {
-    let pages = Object.keys(res.query.pages || {});
+    const pages = Object.keys(res.query.pages || {});
     if (pages.length === 0) {
       return { pages: [], cursor: null }
     }
@@ -370,20 +371,20 @@ const makeUrl = function (options) {
 };
 
 const getRandom = async function (_options, http, wtf) {
-  let options = { ...defaults, ..._options };
-  let url = makeUrl(options);
+  const options = { ...defaults, ..._options };
+  const url = makeUrl(options);
   let page = {};
   try {
     page = await fetchIt(url, options, http) || {};
   } catch (e) {
     console.error(e);
   }
-  let title = page.title;
+  const title = page.title;
   let wiki = '';
   if (page.revisions && page.revisions[0] && page.revisions[0].slots) {
     wiki = page.revisions[0].slots.main['*'] || '';
   }
-  let doc = wtf(wiki, { title });
+  const doc = wtf(wiki, { title });
   return doc
 };
 
@@ -410,8 +411,8 @@ const randomCategory = function (options = {}, http) {
   return http(url, headers)
     .then((res) => {
       try {
-        let o = res.query.pages;
-        let key = Object.keys(o)[0];
+        const o = res.query.pages;
+        const key = Object.keys(o)[0];
         return o[key].title
       } catch (e) {
         throw e
@@ -519,7 +520,7 @@ const isObject = function (obj) {
 };
 
 const chunkBy = function (arr, chunkSize = 5) {
-  let groups = [];
+  const groups = [];
   for (let i = 0; i < arr.length; i += chunkSize) {
     groups.push(arr.slice(i, i + chunkSize));
   }
@@ -532,7 +533,7 @@ const fetchList = function (pages, options, wtf) {
     pages = pages.map((o) => o.title);
   }
   // fetch in groups of 5
-  let groups = chunkBy(pages);
+  const groups = chunkBy(pages);
 
   const doit = function (group) {
     return wtf.fetch(group, options) //returns a promise

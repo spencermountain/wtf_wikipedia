@@ -1,9 +1,5 @@
-/* eslint-disable no-console */
-import build from '../../builds/wtf_wikipedia.mjs'
-import src from '../../src/index.ts'
-let lib = src
-if (process.env.TESTENV === 'prod') {
-  console.warn('== production build test 🚀 ==')
-  lib = build
-}
-export default lib
+const entry = process.env.TESTENV === 'prod'
+  ? '../../builds/wtf_wikipedia.mjs'
+  : '../../src/index.ts'
+
+export default (await import(entry)).default

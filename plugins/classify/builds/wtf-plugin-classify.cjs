@@ -1,4 +1,4 @@
-/* wtf-plugin-classify 3.0.0  MIT */
+/*! wtf-plugin-classify 3.0.0 MIT */
 'use strict';
 
 var AmericanFootballPlayer = {
@@ -2437,7 +2437,8 @@ var Album = {
   //
   categories: {
     mapping: ['albums recorded at abbey road studios'],
-    patterns: [/[0-9]{4}.*? albums/, /^albums /, / albums$/, /album stubs$/],
+    // The lookahead commits to the first year on each line, avoiding repeated suffix scans.
+    patterns: [/^(?=(.*?[0-9]{4}))\1.*? albums/m, /^albums /, / albums$/, /album stubs$/],
   },
   //
   descriptions: {
@@ -2471,7 +2472,8 @@ var Book = {
   //
   categories: {
     mapping: [],
-    patterns: [/(film|novel) stubs$/, /[0-9]{4}.*? (poems|novels)/, / (poems|novels)$/],
+    // The lookahead commits to the first year on each line, avoiding repeated suffix scans.
+    patterns: [/(film|novel) stubs$/, /^(?=(.*?[0-9]{4}))\1.*? (poems|novels)/m, / (poems|novels)$/],
   },
   //
   descriptions: {
@@ -2505,7 +2507,8 @@ var Film = {
   //
   categories: {
     mapping: [],
-    patterns: [/[0-9]{4}.*? films/, / films$/, /^films /],
+    // The lookahead commits to the first year on each line, avoiding repeated suffix scans.
+    patterns: [/^(?=(.*?[0-9]{4}))\1.*? films/m, / films$/, /^films /],
   },
   //
   descriptions: {
@@ -2614,7 +2617,8 @@ var Song = {
   //
   categories: {
     mapping: [],
-    patterns: [/[0-9]{4}.*? songs/, /^songs /, / songs$/, /song stubs$/],
+    // The lookahead commits to the first year on each line, avoiding repeated suffix scans.
+    patterns: [/^(?=(.*?[0-9]{4}))\1.*? songs/m, /^songs /, / songs$/, /song stubs$/],
   },
   //
   descriptions: {
@@ -3298,7 +3302,7 @@ schema$1 = setId(schema$1, '');
 
 var schema = schema$1;
 
-let mappings = {
+const mappings = {
   categories: {},
   descriptions: {},
   infoboxes: {},
@@ -3306,7 +3310,7 @@ let mappings = {
   templates: {},
   titles: {},
 };
-let patterns = {
+const patterns = {
   categories: [],
   descriptions: [],
   infoboxes: [],
@@ -3369,10 +3373,10 @@ const doNode = function (node) {
 doNode(schema);
 
 const byInfobox = function (doc) {
-  let infoboxes = doc.infoboxes();
-  let found = [];
+  const infoboxes = doc.infoboxes();
+  const found = [];
   for (let i = 0; i < infoboxes.length; i++) {
-    let inf = infoboxes[i];
+    const inf = infoboxes[i];
     let type = inf.type();
 
     type = type.toLowerCase();
@@ -3389,7 +3393,7 @@ const byInfobox = function (doc) {
 
 const byPattern = function (str, patterns) {
   for (let i = 0; i < patterns.length; i += 1) {
-    let reg = patterns[i][0];
+    const reg = patterns[i][0];
     if (reg.test(str) === true) {
       return patterns[i][1]
     }
@@ -3398,7 +3402,7 @@ const byPattern = function (str, patterns) {
 };
 
 const byCategory = function (doc) {
-  let found = [];
+  const found = [];
   let cats = doc.categories();
   // clean them up a bit
   cats = cats.map((cat) => {
@@ -3416,7 +3420,7 @@ const byCategory = function (doc) {
       continue
     }
     // loop through our patterns
-    let match = byPattern(category, patterns.categories);
+    const match = byPattern(category, patterns.categories);
     if (match) {
       found.push({ type: match, reason: category });
     }
@@ -3425,15 +3429,15 @@ const byCategory = function (doc) {
 };
 
 const byTemplate = function (doc) {
-  let templates = doc.templates().map((tmpl) => tmpl.json());
-  let found = [];
+  const templates = doc.templates().map((tmpl) => tmpl.json());
+  const found = [];
   for (let i = 0; i < templates.length; i++) {
     const title = templates[i].template;
     if (mappings.templates.hasOwnProperty(title)) {
       found.push({ type: mappings.templates[title], reason: title });
     } else {
       // try regex-list on it
-      let type = byPattern(title, patterns.templates);
+      const type = byPattern(title, patterns.templates);
       if (type) {
         found.push({ type: type, reason: title });
       }
@@ -3443,8 +3447,8 @@ const byTemplate = function (doc) {
 };
 
 const fromSection = function (doc) {
-  let found = [];
-  let titles = doc.sections().map((s) => {
+  const found = [];
+  const titles = doc.sections().map((s) => {
     let str = s.title();
     str = str.toLowerCase().trim();
     return str
@@ -3458,15 +3462,16 @@ const fromSection = function (doc) {
   return found
 };
 
-const paren$1 = /\((.*)\)$/;
+// Start once per line; the closing parenthesis must still end the whole title.
+const paren$1 = /^[^(\r\n\u2028\u2029]*\((.*)\)(?![\s\S])/m;
 
 const byTitle = function (doc) {
-  let title = doc.title();
+  const title = doc.title();
   if (!title) {
     return []
   }
   //look at parentheses like 'Tornado (film)'
-  let m = title.match(paren$1);
+  const m = title.match(paren$1);
   if (!m) {
     return []
   }
@@ -3481,7 +3486,7 @@ const byTitle = function (doc) {
   }
 
   // look at regex
-  let match = byPattern(title, patterns.titles);
+  const match = byPattern(title, patterns.titles);
   if (match) {
     return [{ type: match, reason: title }]
   }
@@ -3489,12 +3494,12 @@ const byTitle = function (doc) {
 };
 
 const byDescription = function (doc) {
-  let tmpl = doc.template('short description');
+  const tmpl = doc.template('short description');
   if (tmpl && tmpl.description) {
     let desc = tmpl.description || '';
     desc = desc.toLowerCase();
     // loop through our patterns
-    let match = byPattern(desc, patterns.descriptions);
+    const match = byPattern(desc, patterns.descriptions);
     if (match) {
       return [{ type: match, reason: desc }]
     }
@@ -3508,15 +3513,16 @@ const skip = {
   name: true,
   'given name': true,
 };
-const paren = /\((.*)\)$/;
+// Start once per line; the closing parenthesis must still end the whole title.
+const paren = /^[^(\r\n\u2028\u2029]*\((.*)\)(?![\s\S])/m;
 const listOf = /^list of ./;
 const disambig = /\(disambiguation\)/;
 
 const skipPage = function (doc) {
-  let title = doc.title() || '';
+  const title = doc.title() || '';
 
   //look at parentheses like 'Tornado (film)'
-  let m = title.match(paren);
+  const m = title.match(paren);
   if (!m) {
     return null
   }
@@ -3540,7 +3546,7 @@ const skipPage = function (doc) {
 };
 
 const topk = function (arr) {
-  let obj = {};
+  const obj = {};
   arr.forEach((a) => {
     obj[a] = obj[a] || 0;
     obj[a] += 1;
@@ -3558,7 +3564,7 @@ const topk = function (arr) {
 };
 
 const parse = function (cat) {
-  let split = cat.split(/\//);
+  const split = cat.split(/\//);
   return {
     root: split[1],
     second: split[2],
@@ -3567,15 +3573,15 @@ const parse = function (cat) {
 };
 
 const getScore = function (detail) {
-  let types = [];
+  const types = [];
   Object.keys(detail).forEach((k) => {
     detail[k].forEach((obj) => {
       types.push(parse(obj.type));
     });
   });
   // find top parent
-  let roots = types.map((obj) => obj.root).filter((s) => s);
-  let tops = topk(roots);
+  const roots = types.map((obj) => obj.root).filter((s) => s);
+  const tops = topk(roots);
   let top = tops[0];
   if (!top) {
     return {
@@ -3585,7 +3591,7 @@ const getScore = function (detail) {
       details: detail,
     }
   }
-  let root = top[0];
+  const root = top[0];
   // score as % of results
   let score = top[1] / types.length;
   // punish low counts
@@ -3656,8 +3662,8 @@ const getScore = function (detail) {
 const plugin = function (models) {
   //add a new method to main class
   models.Doc.prototype.classify = function () {
-    let doc = this;
-    let res = {};
+    const doc = this;
+    const res = {};
 
     //dont classify these
     if (skipPage(doc)) {

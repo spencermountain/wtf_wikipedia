@@ -34,28 +34,15 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
 
-      - name: static checks
-        run: |
-          pnpm run lint
-          pnpm run check
-          pnpm run test:types
-
-      - name: build
-        run: |
-          pnpm run build:all
-
-      - name: test
-        run: |
-          pnpm run testb
-          pnpm run test:plugins:built
-          pnpm run test:fetch
+      - name: build and test
+        run: pnpm run test:all
 
       # And finally... publish it!  Note that we create the .npmrc file
-      # "just in time" so that `npm publish` can get the auth token from the
+      # "just in time" so that `pnpm publish` can get the auth token from the
       # environment
       - name: publish
         run: |
           echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
-          npm publish --provenance
+          pnpm publish --provenance
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

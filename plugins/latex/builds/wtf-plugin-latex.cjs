@@ -1,4 +1,4 @@
-/* wtf-plugin-latex 1.0.0  MIT */
+/*! wtf-plugin-latex 1.0.0 MIT */
 'use strict';
 
 const defaults$4 = {
@@ -8,7 +8,7 @@ const defaults$4 = {
 
 // we should try to make this look like the wikipedia does, i guess.
 const softRedirect = function (doc) {
-  let link = doc.redirectTo();
+  const link = doc.redirectTo();
   let href = link.page;
   href = './' + href.replace(/ /g, '_');
   //add anchor
@@ -159,7 +159,7 @@ const smartReplace = function (all, text, result) {
   }
   text = escapeRegExp(text);
   //try a word-boundary replace
-  let reg = new RegExp('\\b' + text + '\\b');
+  const reg = new RegExp('\\b' + text + '\\b');
   if (reg.test(all) === true) {
     all = all.replace(reg, result);
   } else {
@@ -181,8 +181,8 @@ const toLatex$4 = function (options) {
   //turn links back into links
   if (options.links === true && this.links().length > 0) {
     this.links().forEach((link) => {
-      let tag = link.latex();
-      let str = link.text() || link.page();
+      const tag = link.latex();
+      const str = link.text() || link.page();
       text = smartReplace(text, str, tag);
     });
   }
@@ -190,13 +190,13 @@ const toLatex$4 = function (options) {
     if (this.data.fmt) {
       if (this.data.fmt.bold) {
         this.data.fmt.bold.forEach((str) => {
-          let tag = '\\textbf{' + str + '}';
+          const tag = '\\textbf{' + str + '}';
           text = smartReplace(text, str, tag);
         });
       }
       if (this.data.fmt.italic) {
         this.data.fmt.italic.forEach((str) => {
-          let tag = '\\textit{' + str + '}';
+          const tag = '\\textit{' + str + '}';
           text = smartReplace(text, str, tag);
         });
       }
@@ -208,13 +208,13 @@ const toLatex$4 = function (options) {
 const toLatex$3 = function () {
   let href = this.href();
   href = href.replace(/ /g, '_');
-  let str = this.text() || this.page();
+  const str = this.text() || this.page();
   return '\\href{' + href + '}{' + str + '}'
 };
 
 //
 const toLatex$2 = function () {
-  let alt = this.alt();
+  const alt = this.alt();
   let out = '\\begin{figure}';
   out += '\n\\includegraphics[width=\\linewidth]{' + this.thumb() + '}';
   out += '\n\\caption{' + alt + '}';
@@ -246,8 +246,8 @@ const infobox = function (options) {
     if (dontDo[k] === true) {
       return
     }
-    let s = this.data[k];
-    let val = s.latex(options);
+    const s = this.data[k];
+    const val = s.latex(options);
     out += '  % ---------- \n';
     out += '      ' + k + ' & \n';
     out += '      ' + val + '\\\\ \n';
@@ -270,13 +270,13 @@ const toLatex$1 = function (options) {
 
 //not so impressive right now
 const toLatex = function () {
-  let str = this.title();
+  const str = this.title();
   return '⌃ ' + str + '\n'
 };
 
 //create a formal LATEX table
 const doTable = function (options) {
-  let rows = this.data;
+  const rows = this.data;
   let out = '\n%\\vspace*{0.3cm}\n';
   out +=
     '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns';
@@ -310,8 +310,8 @@ const doTable = function (options) {
     vSep = ' ';
     out += '\n  % ----- table row -----';
     Object.keys(o).forEach((k) => {
-      let s = o[k];
-      let val = s.latex(options);
+      const s = o[k];
+      const val = s.latex(options);
       out += '\n    ' + vSep + val + '';
       vSep = ' & ';
     });

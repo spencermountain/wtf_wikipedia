@@ -1,4 +1,4 @@
-/*! wtf_wikipedia  MIT */
+/*! spencermountain/wtf_wikipedia  MIT */
 'use strict';
 
 const parseUrl = function(url) {
@@ -13,8 +13,7 @@ const parseUrl = function(url) {
 
 function trim_whitespace(str) {
   if (str && typeof str === "string") {
-    str = str.replace(/^\s+/, "");
-    str = str.replace(/\s+$/, "");
+    str = str.trim();
     str = str.replace(/ {2,}/g, " ");
     str = str.replace(/\s, /g, ", ");
     return str;
@@ -3274,7 +3273,7 @@ var literalAbbreviations = [
 const abbreviations = literalAbbreviations.concat("[^]][^]]");
 const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join("|") + `)[.!?] ?$`, "i");
 const acronym_reg = /[ .'][A-Z].? *$/i;
-const elipses_reg = /\.{3,} +$/;
+const elipses_reg = /(?:^|[^.])\.{3,} +$/;
 const circa_reg = / c\.\s$/;
 const hasWord = /\p{Letter}/iu;
 const flatten = function(arr) {
@@ -3284,12 +3283,35 @@ const flatten = function(arr) {
   });
   return all;
 };
+const splitPunctuation = function(text) {
+  const sentence = /(\S.+?[.!?]"?)(?=\s|$)/y;
+  let splits = [];
+  let end = 0;
+  for (const line of text.matchAll(/[^\r\n\u2028\u2029]+/g)) {
+    let offset = 0;
+    while (offset < line[0].length) {
+      const leading = line[0].slice(offset).search(/\S/);
+      if (leading === -1) {
+        break;
+      }
+      const start = offset + leading;
+      sentence.lastIndex = start;
+      const match = sentence.exec(line[0]);
+      if (!match) {
+        break;
+      }
+      splits.push(text.slice(end, line.index + start), match[1]);
+      offset = sentence.lastIndex;
+      end = line.index + offset;
+    }
+  }
+  splits.push(text.slice(end));
+  return splits;
+};
 const naiive_split = function(text) {
   let splits = text.split(/(\n+)/);
   splits = splits.filter((s) => s.match(/\S/));
-  splits = splits.map(function(str) {
-    return str.split(/(\S.+?[.!?]"?)(?=\s|$)/g);
-  });
+  splits = splits.map(splitPunctuation);
   return flatten(splits);
 };
 const isBalanced = function(str) {
@@ -3366,7 +3388,7 @@ function postprocess(line) {
   line = line.replace(/\([,;: ]*\)/g, "");
   line = line.replace(/\( *(; ?)+/g, "(");
   line = trim_whitespace(line);
-  line = line.replace(/ +\.$/, ".");
+  line = line.replace(/(^|[^ ]) +\.$/, "$1.");
   return line;
 }
 function fromText(str) {
@@ -3435,8 +3457,8 @@ const findRows = function(lines) {
   return rows;
 };
 
-const getRowSpan = /.*rowspan *= *["']?([0-9]+)["']?[ |]*/;
-const getColSpan = /.*colspan *= *["']?([0-9]+)["']?[ |]*/;
+const getRowSpan = /^.*rowspan *= *["']?([0-9]+)["']?[ |]*/m;
+const getColSpan = /^.*colspan *= *["']?([0-9]+)["']?[ |]*/m;
 const doColSpan = function(rows) {
   rows.forEach((row) => {
     row.forEach((str, c) => {
@@ -3494,7 +3516,7 @@ const headings$1 = {
 const cleanText = function(str) {
   str = fromText(str).text();
   if (str.match(/\|/)) {
-    str = str.replace(/.*?\| ?/, "");
+    str = str.replace(/^.*?\| ?/m, "");
   }
   str = str.replace(/style=['"].*?["']/, "");
   str = str.replace(/^!/, "");
@@ -3577,7 +3599,10 @@ const firstRowHeader = function(rows) {
   return [];
 };
 const parseTable = function(wiki) {
-  let lines = wiki.replace(/\r/g, "").replace(/\n(\s*[^|!{\s])/g, " $1").split(/\n/).map((l) => l.trim());
+  let lines = wiki.replace(/\r/g, "").replace(/\n\s*/g, (space, offset, text) => {
+    const next = text[offset + space.length];
+    return next && !"|!{".includes(next) ? " " + space.slice(1) : space;
+  }).split(/\n/).map((l) => l.trim());
   let rows = findRows(lines);
   rows = rows.filter((r) => r);
   if (rows.length === 0) {
@@ -3619,7 +3644,7 @@ const defaults$6 = {};
 const normalize$1 = function(key = "") {
   key = key.toLowerCase();
   key = key.replace(/[_-]/g, " ");
-  key = key.replace(/\(.*?\)/, "");
+  key = key.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, "$1");
   key = key.trim();
   return key;
 };
@@ -3857,7 +3882,7 @@ const pipeSplitter = function(tmpl) {
     if (a === null) {
       return;
     }
-    if (i + 1 < arr.length && (/\[\[[^\]]+$/.test(a) || /\{\{[^}]+$/.test(a) || a.split("{{").length !== a.split("}}").length || a.split("[[").length !== a.split("]]").length)) {
+    if (i + 1 < arr.length && (a.slice(a.lastIndexOf("]") + 1, -1).includes("[[") || a.slice(a.lastIndexOf("}") + 1, -1).includes("{{") || a.split("{{").length !== a.split("}}").length || a.split("[[").length !== a.split("]]").length)) {
       arr[i + 1] = arr[i] + "|" + arr[i + 1];
       arr[i] = null;
     }
@@ -5921,8 +5946,12 @@ var functions = {
   precision: (tmpl) => {
     let data = parser(tmpl, ["num"]);
     let num = data.num || "";
-    if (!num.match(/\./) && num.match(/0*$/) && num !== "0") {
-      return num.match(/0*$/)[0].length * -1;
+    if (!num.includes(".") && num !== "0") {
+      let end = num.length;
+      while (end > 0 && num[end - 1] === "0") {
+        end -= 1;
+      }
+      return (num.length - end) * -1;
     }
     let dec = num.split(/\./)[1] || "";
     return dec.length;
@@ -8090,16 +8119,19 @@ const parseCurrency = (tmpl, list) => {
   if (code === "currency") {
     code = o.code;
     if (!code) {
-      o.code = code = "usd";
+      code = "usd";
+      o.code = code;
     }
   } else if (code === "" || code === "monnaie" || code === "unit\xE9" || code === "nombre" || code === "nb") {
     code = o.code;
   }
   code = (code || "").toLowerCase();
   if (code === "us") {
-    o.code = code = "usd";
+    code = "usd";
+    o.code = code;
   } else if (code === "uk") {
-    o.code = code = "gbp";
+    code = "gbp";
+    o.code = code;
   }
   let str = `${codes$1[code] || ""}${o.amount || ""}`;
   if (o.code && !codes$1[o.code.toLowerCase()]) {
@@ -8319,8 +8351,8 @@ const parsers = {
     if (/^[0-9]{4}$/.test(str)) {
       date.year = parseInt(str, 10);
     } else {
-      let txt = str.replace(/[a-z]+\/[a-z]+/i, "");
-      txt = txt.replace(/[0-9]+:[0-9]+(am|pm)?/i, "");
+      let txt = str.replace(/(?<![a-z])[a-z]+\/[a-z]+/i, "");
+      txt = txt.replace(/(?<![0-9])[0-9]+:[0-9]+(am|pm)?/i, "");
       let d = new Date(txt);
       if (isNaN(d.getTime()) === false) {
         date.year = d.getFullYear();
@@ -9057,9 +9089,9 @@ let sports = {
     let obj = parser(tmpl);
     list.push(obj);
     let arr = obj.list || [];
-    let draw = parseInt(arr[2]) || 0;
-    let lose = parseInt(arr[3]) || 0;
-    let win = parseInt(arr[1]) || 0;
+    let draw = parseInt(arr[2], 10) || 0;
+    let lose = parseInt(arr[3], 10) || 0;
+    let win = parseInt(arr[1], 10) || 0;
     let total = win + draw + lose;
     let winPercentage = "";
     if (total > 0) {
@@ -10060,7 +10092,7 @@ class Section {
 }
 
 const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/;
-const hasTemplate = /\{\{.+?\}\}/;
+const hasTemplate = /^(?=(.*?\{\{))\1.+?\}\}/m;
 const doInlineTemplates = function(wiki, doc) {
   let list = findTemplates(wiki);
   list.forEach((item) => {

@@ -54,21 +54,17 @@
   "packageManager": "pnpm@12.5.1",
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
-    "build:all": "pnpm run build && pnpm --filter \"wtf-plugin-*\" run build",
+    "build:all": "pnpm run build && pnpm -r run build",
     "check": "tsc --noEmit",
     "test:types": "tsc -p ./tests/types && tsc -p ./tests/types/node10.tsconfig.json && tsc -p ./tests/types/plugins.tsconfig.json && tsc -p ./tests/types/plugins-cjs.tsconfig.json",
-    "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' npm run test && npm run test:fetch",
+    "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' pnpm test",
     "lint": "eslint .",
-    "start": "node ./scripts/demo.js",
-    "test": "NODE_NO_WARNINGS=1 tape ./tests/*/*.test.js ./tests/unit/*/*.test.js | tap-dancer",
-    "test:all": "pnpm run test:types && pnpm test && pnpm run test:plugins && pnpm run test:fetch",
-    "goldens:update": "UPDATE_GOLDENS=1 npm run test",
-    "testb": "TESTENV=prod npm run test",
-    "test:plugins": "pnpm --bail --workspace-concurrency=1 --filter \"wtf-plugin-*\" run test",
-    "test:fetch": "tape ./tests/fetch/*.fetch.js | tap-dancer",
-    "test:integration": "tape ./tests/integration/*.test.js | tap-dancer",
+    "test": "node ./scripts/test.js source",
+    "test:all": "pnpm run build && pnpm run lint && pnpm run check && pnpm run test:types && pnpm test && pnpm run test:built && pnpm -r --workspace-concurrency=1 run test:all && pnpm run test:network",
+    "goldens:update": "UPDATE_GOLDENS=1 pnpm test",
     "watch": "node --watch ./scratch.js",
-    "test:plugins:built": "pnpm --bail --workspace-concurrency=1 --filter \"wtf-plugin-*\" run testb"
+    "test:built": "node ./scripts/test.js built",
+    "test:network": "node ./scripts/test.js network"
   },
   "files": [
     "builds",
@@ -94,7 +90,8 @@
     "nyc": "18.0.0",
     "rollup": "4.63.4",
     "rollup-plugin-esbuild": "6.2.1",
-    "tap-dancer": "0.4.0",
+    "rollup-plugin-filesize-check": "2.0.0",
+    "tap-dancer": "0.4.1",
     "tape": "5.10.2",
     "typescript": "6.0.3",
     "typescript-eslint": "8.70.0"

@@ -11,7 +11,7 @@
     ".": {
       "import": {
         "types": "./types/index.d.ts",
-        "default": "./src/index.js"
+        "default": "./builds/wtf-plugin-disambig.mjs"
       },
       "require": {
         "types": "./types/index.d.cts",
@@ -19,14 +19,16 @@
       }
     }
   },
-  "main": "./src/index.js",
+  "main": "./builds/wtf-plugin-disambig.cjs",
   "module": "./builds/wtf-plugin-disambig.mjs",
-  "types": "./types/index.d.ts",
+  "types": "./types/index.d.cts",
   "sideEffects": false,
   "scripts": {
-    "test": "tape ./tests/**/*.test.js | tap-dancer",
-    "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "test": "node ../../scripts/test.js source",
+    "test:built": "node ../../scripts/test.js built",
+    "test:package": "node ../../scripts/test-package.js",
+    "test:all": "pnpm run build && pnpm test && pnpm run test:built && pnpm run test:package"
   },
   "files": [
     "builds",
@@ -38,23 +40,10 @@
     "spacetime": "7.12.1"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "29.0.3",
-    "@rollup/plugin-node-resolve": "16.0.3",
-    "@rollup/plugin-terser": "1.0.0",
-    "rollup": "4.63.4",
-    "rollup-plugin-filesize-check": "1.2.0",
-    "tap-dancer": "0.4.0",
-    "tape": "5.10.2"
+    "wtf_wikipedia": "workspace:*"
   },
   "peerDependencies": {
-    "wtf_wikipedia": ">=10.5.0"
+    "wtf_wikipedia": ">=9.0.0"
   },
-  "unpkg": "./builds/wtf-plugin-disambig.min.js",
-  "prettier": {
-    "trailingComma": "es5",
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true,
-    "printWidth": 100
-  }
+  "unpkg": "./builds/wtf-plugin-disambig.min.js"
 }

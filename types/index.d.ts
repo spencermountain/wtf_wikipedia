@@ -393,6 +393,7 @@ type Wtf_ = Wtf
 declare const wtf: Wtf
 // type-only: these are accessible as `wtf.Document` for typing, but are
 // not runtime properties of the default export.
+/* eslint-disable @typescript-eslint/no-shadow -- Public namespace aliases intentionally reuse exported type names. */
 declare namespace wtf {
   export type Document = Document_
   export type Section = Section_
@@ -414,5 +415,6 @@ declare namespace wtf {
   export type Plugin = Plugin_
   export type Wtf = Wtf_
 }
+/* eslint-enable @typescript-eslint/no-shadow */
 
 declare function extend(fn: Plugin): Wtf

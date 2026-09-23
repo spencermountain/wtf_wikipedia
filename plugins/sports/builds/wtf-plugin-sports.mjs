@@ -1,4 +1,4 @@
-/*! wtf-plugin-sports 0.0.2  MIT */
+/*! wtf-plugin-sports 0.0.2 MIT */
 var teams$1 = [
   "Arizona Diamondbacks",
   "Atlanta Braves",
@@ -55,13 +55,13 @@ const playerStats = function (doc) {
       players = players.concat(t.keyValue());
     });
   });
-  let res = {
+  const res = {
     batters: [],
     pitchers: [],
   };
   players.forEach((p) => {
-    let rbi = p.RBI || p.rbi;
-    let hr = p.HR || p.hr;
+    const rbi = p.RBI || p.rbi;
+    const hr = p.HR || p.hr;
     if (rbi !== undefined || hr !== undefined) {
       res.batters.push(p);
     } else {
@@ -77,7 +77,7 @@ const parseTeam = function (txt) {
   if (!txt) {
     return {}
   }
-  let away = /^ *@ */.test(txt);
+  const away = /^ *@ */.test(txt);
   return {
     name: txt.replace(/^ +@ +/, ''),
     home: !away
@@ -88,13 +88,13 @@ const parseRecord$1 = function (txt) {
   if (!txt) {
     return {}
   }
-  let arr = txt.split(dashSplit$2);
-  let obj = {
+  const arr = txt.split(dashSplit$2);
+  const obj = {
     wins: parseInt(arr[0], 10) || 0,
     losses: parseInt(arr[2], 10) || 0,
   };
   obj.games = obj.wins + obj.losses;
-  let plusMinus = obj.wins / obj.games;
+  const plusMinus = obj.wins / obj.games;
   obj.plusMinus = Number(plusMinus.toFixed(2));
   return obj
 };
@@ -104,8 +104,8 @@ const parseScore$1 = function (txt) {
     return {}
   }
   txt = txt.replace(/^[wl] /i, '');
-  let arr = txt.split(dashSplit$2);
-  let obj = {
+  const arr = txt.split(dashSplit$2);
+  const obj = {
     winner: parseInt(arr[0], 10),
     loser: parseInt(arr[2], 10),
   };
@@ -118,7 +118,7 @@ const parseScore$1 = function (txt) {
 const parseAttendance = function (txt = '') {
   //support [[Rogers Center]] (23,987)
   if (txt.indexOf('(') !== -1) {
-    let m = txt.match(/\(([0-9 ,]+)\)/);
+    const m = txt.match(/\(([0-9 ,]+)\)/);
     if (m && m[1]) {
       txt = m[1];
     }
@@ -129,11 +129,11 @@ const parseAttendance = function (txt = '') {
 
 const parsePitchers = function (row) {
   let win = row.Win || row.win || '';
-  win = win.replace(/\(.*?\)/, '').trim();
+  win = win.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1').trim();
   let loss = row.Loss || row.loss || '';
-  loss = loss.replace(/\(.*?\)/, '').trim();
+  loss = loss.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1').trim();
   let save = row.Save || row.save || '';
-  save = save.replace(/\(.*?\)/, '').trim();
+  save = save.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1').trim();
   if (dashSplit$2.test(save) === true) {
     save = null;
   }
@@ -148,9 +148,9 @@ const parseRow = function (row) {
   if (!row) {
     return null
   }
-  let team = parseTeam(row.opponent || row.Opponent);
-  let record = parseRecord$1(row.record || row.Record);
-  let obj = {
+  const team = parseTeam(row.opponent || row.Opponent);
+  const record = parseRecord$1(row.record || row.Record);
+  const obj = {
     date: row.date || row.Date,
     team: team.name || team.Name,
     home: team.home || team.Home || false,
@@ -174,7 +174,7 @@ const addWinner$1 = function (games) {
       g.win = false;
     }
     //improve the result format, now that we know who won..
-    let res = g.result;
+    const res = g.result;
     if (g.win) {
       g.result = {
         us: res.winner,
@@ -230,14 +230,14 @@ const doSection$1 = function (section) {
 const gameLog = function (doc) {
   let games = [];
   // grab the generated section called 'Game Log'
-  let section = doc.section('game log') || doc.section('game log and schedule') || doc.section('regular season') || doc.section('season') || doc.section('schedule') || doc.section('schedule and results');
+  const section = doc.section('game log') || doc.section('game log and schedule') || doc.section('regular season') || doc.section('season') || doc.section('schedule') || doc.section('schedule and results');
   if (!section) {
     console.warn('no game log section for: \'' + doc.title() + '\'');
     return games
   }
-  let tables = doSection$1(section);
+  const tables = doSection$1(section);
   tables.forEach((table) => {
-    let arr = doTable(table.data);
+    const arr = doTable(table.data);
     games = games.concat(arr);
   });
   games = addWinner$1(games);
@@ -245,15 +245,15 @@ const gameLog = function (doc) {
 };
 
 const postSeason = function (doc) {
-  let series = [];
+  const series = [];
   //ok, try postseason, too
-  let section = doc.section('postseason game log') || doc.section('postseason') || doc.section('playoffs') || doc.section('playoff');
+  const section = doc.section('postseason game log') || doc.section('postseason') || doc.section('playoffs') || doc.section('playoff');
   if (!section) {
     return series
   }
-  let tables = doSection$1(section);
+  const tables = doSection$1(section);
   tables.forEach((table) => {
-    let arr = doTable(table);
+    const arr = doTable(table);
     series.push(arr);
   });
   //tag them as postseason
@@ -267,9 +267,9 @@ const postseason = postSeason;
 //who knows!
 
 const parseTitle$1 = function (season = '') {
-  let num = season.match(/[0-9]+/) || [];
-  let year = Number(num[0]) || season;
-  let team = season.replace(/[0-9–]+/, '').replace(/_/g, ' ').replace(' season', '');
+  const num = season.match(/[0-9]+/) || [];
+  const year = Number(num[0]) || season;
+  const team = season.replace(/[0-9–]+/, '').replace(/_/g, ' ').replace(' season', '');
   return {
     year: year,
     season: season,
@@ -294,12 +294,12 @@ const parseRoster$1 = function (doc, res) {
 
 //this is just a table in a '2008 draft picks' section
 const draftPicks = function (doc) {
-  let want = /\bdraft\b/i;
-  let s = doc.sections().find(sec => want.test(sec.title()));
+  const want = /\bdraft\b/i;
+  const s = doc.sections().find(sec => want.test(sec.title()));
   if (!s) {
     return []
   }
-  let table = s.tables()[0];
+  const table = s.tables()[0];
   if (!table) {
     return []
   }
@@ -311,7 +311,7 @@ const parsePage = function (doc) {
   if (!doc) {
     return {}
   }
-  let res = parseTitle$1(doc.title() || '');
+  const res = parseTitle$1(doc.title() || '');
   res.games = season(doc);
   res.postseason = postseason(doc);
   //grab the roster/draft data
@@ -333,7 +333,7 @@ const addMethod$1 = function (models) {
     team = team.replace(/ /g, '_');
     year = year || new Date().getFullYear();
     // let nextYear = year % 100
-    let page = `${year}_${team}_season`;
+    const page = `${year}_${team}_season`;
     return models.wtf.fetch(page).catch(console.log).then(parsePage)
   };
   models.Doc.prototype.mlbSeason = function () {
@@ -389,7 +389,7 @@ const addWinner = function (games) {
       g.win = false;
     }
     //improve the result format, now that we know who won..
-    let res = g.result;
+    const res = g.result;
     if (g.win) {
       g.result = {
         us: res.win,
@@ -408,8 +408,8 @@ const addWinner = function (games) {
 const dashSplit$1 = /([–\-−]|&ndash;)/;
 
 const parseRecord = function (record = '') {
-  let arr = record.split(dashSplit$1);
-  let result = {
+  const arr = record.split(dashSplit$1);
+  const result = {
     wins: Number(arr[0]) || 0,
     losses: Number(arr[2]) || 0,
     ties: Number(arr[4]) || 0
@@ -421,7 +421,7 @@ const parseRecord = function (record = '') {
 const dashSplit = /([–\-−]|&ndash;)/;
 
 const parseScore = function (score = '') {
-  let arr = score.split(dashSplit);
+  const arr = score.split(dashSplit);
   if (!arr[0] && !arr[2]) {
     return {}
   }
@@ -434,7 +434,7 @@ const parseScore = function (score = '') {
 
 
 const parseDate = function (row, title) {
-  let year = title.year;
+  const year = title.year;
   let date = row.date || row.Date;
   if (!date) {
     return ''
@@ -456,7 +456,7 @@ const doSection = function (section) {
   });
   //try to find a game log template
   if (tables.length === 0) {
-    let templates = section.templates('game log section') || section.templates('game log month');
+    const templates = section.templates('game log section') || section.templates('game log month');
     let out = [];
     templates.forEach((m) => {
       out = out.concat(m.data.data);
@@ -474,7 +474,7 @@ const doSection = function (section) {
 const parseGame = function (row, meta) {
   let attendance = row.attendance || row.Attendance || '';
   attendance = Number(attendance.replace(/,/, '')) || null;
-  let res = {
+  const res = {
     game: Number(row['#'] || row.Game),
     date: parseDate(row, meta),
     opponent: row.Opponent || row.opponent,
@@ -505,12 +505,12 @@ const parseGames = function (doc, meta) {
     return games
   }
   // support nested headers
-  let nested = s.children('regular season');
+  const nested = s.children('regular season');
   if (nested) {
     s = nested;
   }
   //do all subsections, too
-  let rows = doSection(s);
+  const rows = doSection(s);
   rows.forEach((row) => {
     games.push(parseGame(row, meta));
   });
@@ -536,11 +536,11 @@ const toCardinal = function (str = '') {
 
 //
 const parseInfobox = function (doc) {
-  let info = doc.infobox('ice hockey team season') || doc.infobox('NHLTeamSeason');
+  const info = doc.infobox('ice hockey team season') || doc.infobox('NHLTeamSeason');
   if (!info) {
     return {}
   }
-  let data = info.keyValue();
+  const data = info.keyValue();
   Object.keys(data).forEach((k) => {
     data[k] = toCardinal(data[k]);
   });
@@ -551,9 +551,9 @@ const parseInfobox = function (doc) {
 };
 
 const parseTitle = function (season = '') {
-  let num = season.match(/[0-9]+/) || [];
-  let year = Number(num[0]) || season;
-  let team = season
+  const num = season.match(/[0-9]+/) || [];
+  const year = Number(num[0]) || season;
+  const team = season
     .replace(/[0-9\-–]+/, '')
     .replace(/_/g, ' ')
     .replace(' season', '');
@@ -565,7 +565,7 @@ const parseTitle = function (season = '') {
 };
 
 const parseRoster = function (doc) {
-  let s = doc.section('skaters') || doc.section('roster') || doc.section('player statistics');
+  const s = doc.section('skaters') || doc.section('roster') || doc.section('player statistics');
   let players = [];
   if (!s) {
     return players
@@ -580,7 +580,7 @@ const parseRoster = function (doc) {
   }
   players = tables[0].keyValue().map((o) => {
     let name = o.Player || '';
-    name = name.replace(/\(.*?\)/, '');
+    name = name.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1');
     name = name.replace(/[‡†]/, '');
     name = name.trim();
     return {
@@ -598,8 +598,8 @@ const parseRoster = function (doc) {
 
 //
 const parse = function (doc) {
-  let meta = parseTitle(doc.title());
-  let res = {
+  const meta = parseTitle(doc.title());
+  const res = {
     team: meta.team,
     year: meta.year,
     page: meta.season,
@@ -615,8 +615,8 @@ const parse = function (doc) {
 const makePage = function (team, year) {
   team = team.replace(/ /g, '_');
   year = year || new Date().getFullYear();
-  let nextYear = Number(String(year).substr(2, 4)) + 1;
-  let page = `${year}–${nextYear}_${team}_season`; //2018–19_Toronto_Maple_Leafs_season
+  const nextYear = Number(String(year).substr(2, 4)) + 1;
+  const page = `${year}–${nextYear}_${team}_season`; //2018–19_Toronto_Maple_Leafs_season
   return page
 };
 
@@ -626,7 +626,7 @@ const addMethod = function (models) {
     team = teams.find((t) => {
       return t === team || t.toLowerCase().includes(team.toLowerCase())
     }) || team;
-    let page = makePage(team, year);
+    const page = makePage(team, year);
     return models.wtf.fetch(page).catch(console.log).then(parse)
   };
   // add it here too

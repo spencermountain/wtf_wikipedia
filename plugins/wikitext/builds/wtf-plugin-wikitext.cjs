@@ -1,4 +1,4 @@
-/* wtf-plugin-wikitext 2.0.0  MIT */
+/*! wtf-plugin-wikitext 2.0.0 MIT */
 'use strict';
 
 const defaults$3 = {
@@ -30,7 +30,7 @@ const toWiki$a = function (options) {
 
   //render each section
   if (options.sections === true || options.paragraphs === true || options.sentences === true) {
-    let sections = this.sections();
+    const sections = this.sections();
     text += sections.map((s) => s.makeWikitext(options)).join('\n');
   }
 
@@ -46,7 +46,7 @@ const defaults$2 = {};
 
 const doTemplate = function (obj) {
   let data = '';
-  let name = obj.template;
+  const name = obj.template;
   Object.keys(obj).forEach((k) => {
     if (k !== 'template') {
       data += ` | ${k} = ${obj[k]}`;
@@ -60,7 +60,7 @@ const toWiki$9 = function (options) {
   options = Object.assign({}, defaults$2, options);
   let text = '';
   if (this.title()) {
-    let side = '==';
+    const side = '==';
     text += `\n${side} ${this.title()} ${side}\n`;
   }
   // render some templates?
@@ -138,7 +138,7 @@ const smartReplace = function (all, text, result) {
   }
   text = escapeRegExp(text);
   //try a word-boundary replace
-  let reg = new RegExp('\\b' + text + '\\b');
+  const reg = new RegExp('\\b' + text + '\\b');
   if (reg.test(all) === true) {
     all = all.replace(reg, result);
   } else {
@@ -159,20 +159,20 @@ const toWiki$7 = function (options) {
   let text = this.text();
   if (options.links === true) {
     this.links().forEach((link) => {
-      let str = link.text() || link.page();
-      let tag = link.makeWikitext();
+      const str = link.text() || link.page();
+      const tag = link.makeWikitext();
       text = smartReplace(text, str, tag);
     });
   }
   if (options.formatting === true) {
     //support bolds
     this.bold().forEach((str) => {
-      let tag = '**' + str + '**';
+      const tag = '**' + str + '**';
       text = smartReplace(text, str, tag);
     });
     //do italics
     this.italic().forEach((str) => {
-      let tag = '***' + str + '***';
+      const tag = '***' + str + '***';
       text = smartReplace(text, str, tag);
     });
   }
@@ -194,7 +194,7 @@ const toWiki$6 = function () {
     page += `#${this.anchor()}`;
   }
 
-  let str = this.text() || '';
+  const str = this.text() || '';
   if (str && str.toLowerCase() !== page.toLowerCase()) {
     return `[[${page}|${str}]]`
   }
@@ -203,7 +203,7 @@ const toWiki$6 = function () {
 
 const toWiki$5 = function () {
   let text = `[[${this.file()}|thumb`;
-  let caption = this.data.caption;
+  const caption = this.data.caption;
   if (caption) {
     text += `|${this.data.caption.wikitext()}`;
   }
@@ -216,7 +216,7 @@ const toWiki$4 = function () {
     if (k === 'template') {
       return
     }
-    let val = this.data[k];
+    const val = this.data[k];
     if (val) {
       text += `| ${k} = ${val || ''}`;
     }
@@ -228,7 +228,7 @@ const toWiki$4 = function () {
 const toWiki$3 = function () {
   let text = `{{Infobox ${this._type || ''}\n`;
   Object.keys(this.data).forEach((k) => {
-    let val = this.data[k];
+    const val = this.data[k];
     if (val) {
       text += `| ${k} = ${val.wikitext() || ''}\n`;
     }
@@ -249,7 +249,7 @@ const toWiki$1 = function () {
   if (this.data.inline) {
     return `<ref>${this.data.inline.wikitext()}</ref>`
   }
-  let type = this.data.type || 'cite web';
+  const type = this.data.type || 'cite web';
   let data = '';
   Object.keys(this.data).forEach((k) => {
     if (k !== 'template' && k !== 'type') {
@@ -260,7 +260,7 @@ const toWiki$1 = function () {
 };
 
 const toWiki = function (options) {
-  let rows = this.data;
+  const rows = this.data;
   let wiki = `{| class="wikitable"\n`;
 
   // draw headers
@@ -276,7 +276,7 @@ const toWiki = function (options) {
   rows.forEach((o) => {
     wiki += '|-\n';
     Object.keys(o).forEach((k) => {
-      let val = o[k].wikitext(options);
+      const val = o[k].wikitext(options);
       wiki += '| ' + val + '\n';
     });
   });

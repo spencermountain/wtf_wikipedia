@@ -1,15 +1,3 @@
-/* eslint-disable no-console */
-import build from '../../../builds/wtf_wikipedia.mjs'
-import src from '../../../src/index.ts'
-import plgSrc from '../src/index.js'
-import plgBuild from '../builds/wtf-plugin-wikitext.mjs'
+import loadPlugin from '../../../tests/lib/plugin.js'
 
-let lib = src
-if (process.env.TESTENV === 'prod') {
-  console.warn('== production build test 🚀 ==')
-  lib = build
-  lib.plugin(plgBuild)
-} else {
-  lib.plugin(plgSrc)
-}
-export default lib
+export default await loadPlugin(new URL('../', import.meta.url))

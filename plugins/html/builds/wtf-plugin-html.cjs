@@ -1,4 +1,4 @@
-/* wtf-plugin-html 1.0.0  MIT */
+/*! wtf-plugin-html 1.0.0 MIT */
 'use strict';
 
 const defaults$4 = {
@@ -10,7 +10,7 @@ const defaults$4 = {
 };
 //we should try to make this look like the wikipedia does, i guess.
 const softRedirect = function (doc) {
-  let link = doc.redirectTo();
+  const link = doc.redirectTo();
   let href = link.page;
   href = './' + href.replace(/ /g, '_');
   if (link.anchor) {
@@ -69,13 +69,13 @@ const doSection = function (options) {
   let html = '';
   //make the header
   if (options.headers === true && this.title()) {
-    let num = 1 + this.depth();
+    const num = 1 + this.depth();
     html += '  <h' + num + '>' + this.title() + '</h' + num + '>';
     html += '\n';
   }
   //put any images under the header
   if (options.images === true) {
-    let imgs = this.images();
+    const imgs = this.images();
     if (imgs.length > 0) {
       html += imgs.map((image) => image.html(options)).join('\n');
     }
@@ -148,7 +148,7 @@ const smartReplace = function (all, text, result) {
   }
   text = escapeRegExp(text);
   //try a word-boundary replace
-  let reg = new RegExp('\\b' + text + '\\b');
+  const reg = new RegExp('\\b' + text + '\\b');
   if (reg.test(all) === true) {
     all = all.replace(reg, result);
   } else {
@@ -170,20 +170,20 @@ const doSentence = function (options) {
   //turn links into <a href>
   if (options.links === true) {
     this.links().forEach((link) => {
-      let str = link.text() || link.page();
-      let tag = link.html();
+      const str = link.text() || link.page();
+      const tag = link.html();
       text = smartReplace(text, str, tag);
     });
   }
   if (options.formatting === true) {
     //support bolds
     this.bolds().forEach((str) => {
-      let tag = '<b>' + str + '</b>';
+      const tag = '<b>' + str + '</b>';
       text = smartReplace(text, str, tag);
     });
     //do italics
     this.italics().forEach((str) => {
-      let tag = '<i>' + str + '</i>';
+      const tag = '<i>' + str + '</i>';
       text = smartReplace(text, str, tag);
     });
   }
@@ -191,7 +191,7 @@ const doSentence = function (options) {
 };
 
 const toHtml$3 = function () {
-  let classNames = 'link';
+  const classNames = 'link';
   let href = this.href() || '';
   href = href.replace(/ /g, '_');
   //use the url as the text, for bare external links like [https://foo.com]
@@ -226,7 +226,7 @@ const infobox = function (options) {
     html += '       ' + this.image().html() + '\n';
     html += '       </td>\n';
     if (this.data.caption || this.data.alt) {
-      let caption = this.data.caption
+      const caption = this.data.caption
         ? this.data.caption.html(options)
         : this.data.alt.html(options);
       html += '       <td colspan="2" style="text-align:center">\n';
@@ -239,10 +239,10 @@ const infobox = function (options) {
     if (dontDo[k] === true) {
       return
     }
-    let s = this.data[k];
+    const s = this.data[k];
     let key = k.replace(/_/g, ' ');
     key = key.charAt(0).toUpperCase() + key.substring(1); //titlecase it
-    let val = s.html(options);
+    const val = s.html(options);
     html += '    <tr>\n';
     html += '      <td>' + key + '</td>\n';
     html += '      <td>' + val + '</td>\n';
@@ -271,14 +271,14 @@ const toHtml$2 = function (options) {
 const toHtml$1 = function (options) {
   if (this.data && this.data.url && this.data.title) {
     let str = this.data.title.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-    let url = this.data.url.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    const url = this.data.url.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     if (options.links === true) {
       str = `<a href="${url}">${str}</a>`;
     }
     return `<div class="reference">⌃ ${str} </div>`
   }
   if (this.data.encyclopedia) {
-    let str = this.data.encyclopedia.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    const str = this.data.encyclopedia.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     return `<div class="reference">⌃ ${str}</div>`
   }
   if (this.data.title) {
@@ -300,7 +300,7 @@ const toHtml$1 = function (options) {
 
 //turn a json table into a html table
 const toHtml = function (options) {
-  let rows = this.data;
+  const rows = this.data;
   let html = '<table class="table">\n';
   //make header
   html += '  <thead>\n';
@@ -319,7 +319,7 @@ const toHtml = function (options) {
   rows.forEach((o) => {
     html += '  <tr>\n';
     Object.keys(o).forEach((k) => {
-      let val = o[k].html(options);
+      const val = o[k].html(options);
       html += '    <td>' + val + '</td>\n';
     });
     html += '  </tr>\n';

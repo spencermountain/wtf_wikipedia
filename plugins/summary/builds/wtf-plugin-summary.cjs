@@ -1,4 +1,4 @@
-/* wtf-plugin-summary 1.0.0  MIT */
+/*! wtf-plugin-summary 1.0.0 MIT */
 'use strict';
 
 const methods$o = {
@@ -21210,9 +21210,9 @@ nlp.plugin(topics); //
 nlp.plugin(verbs); //
 
 const fromTemplate = function (doc) {
-  let tmpl = doc.template('short description');
+  const tmpl = doc.template('short description');
   if (tmpl) {
-    let json = tmpl.json() || {};
+    const json = tmpl.json() || {};
     return json.description || ''
   }
   return null
@@ -21244,11 +21244,11 @@ const findPivot = function (s) {
   if (!m.found) {
     return null
   }
-  let f = s.splitOn(m);
-  let verb = f.eq(1);
+  const f = s.splitOn(m);
+  const verb = f.eq(1);
   // grab the article from the pivot, before any mutation -
   // in compromise v14, .remove() shifts the other views' pointers
-  let article = verb.match(`(a|an|the|any)? of?`);
+  const article = verb.match(`(a|an|the|any)? of?`);
   return {
     before: f.eq(0),
     verb: verb,
@@ -21352,10 +21352,10 @@ const hardCuts = function (s) {
   }
 
   // by clause
-  let clauses = s.clauses();
+  const clauses = s.clauses();
   if (clauses.length > 1) {
-    let first = clauses.eq(0);
-    let second = clauses.eq(1);
+    const first = clauses.eq(0);
+    const second = clauses.eq(1);
     //can we just choose the first clause?
     if (isIndependent(second)) {
       s = clauses.eq(0);
@@ -21367,7 +21367,7 @@ const hardCuts = function (s) {
       s = clauses.eq(0);
     } else {
       // can we remove the last clause, atleast?
-      let last = clauses.last();
+      const last = clauses.last();
       if (isIndependent(last)) {
         s = clauses.slice(0, clauses.length - 1);
       }
@@ -21408,7 +21408,7 @@ const lastTry = function (s) {
 //check text is appropriate length
 const isGood = function (doc, options) {
   if (doc && typeof doc.text === 'function') {
-    let text = doc.text();
+    const text = doc.text();
     if (text && text.length > options.min && text.length < options.max) {
       return true
     }
@@ -21425,15 +21425,15 @@ const post = function (s) {
 
 // let count = 0
 const doSentence = function (doc, options) {
-  let sentence = doc.sentence(0);
+  const sentence = doc.sentence(0);
   if (!sentence) {
     return ''
   }
-  let txt = sentence.text();
-  let s = nlp(txt);
+  const txt = sentence.text();
+  const s = nlp(txt);
   preProcess(s);
 
-  let pivot = findPivot(s);
+  const pivot = findPivot(s);
   // if we can't pivot it properly, don't bother
   if (!pivot || !pivot.verb || !pivot.verb.found) {
     return ''
@@ -21549,8 +21549,8 @@ const fromCategory = function (doc) {
 
   // sort them by most words
   cats = cats.sort((a, b) => {
-    let aWords = a.split(' ').length;
-    let bWords = b.split(' ').length;
+    const aWords = a.split(' ').length;
+    const bWords = b.split(' ').length;
     if (aWords > bWords) {
       return -1
     } else if (aWords < bWords) {
@@ -21583,11 +21583,11 @@ const useAn = function (str) {
 
 // 'American songwriters' to 'an American songwriter'
 const changeCat = function (cat, options) {
-  let c = nlp(cat);
-  let hadCapital = c.terms().out('array').map((w) => /^[A-Z]/.test(w));
+  const c = nlp(cat);
+  const hadCapital = c.terms().out('array').map((w) => /^[A-Z]/.test(w));
   c.nouns().toSingular();
   // compromise-14 lowercases words when it singularizes them - restore our capitals
-  let terms = c.terms();
+  const terms = c.terms();
   hadCapital.forEach((had, i) => {
     if (had && terms.eq(i).found) {
       terms.eq(i).toTitleCase();
@@ -21602,7 +21602,7 @@ const changeCat = function (cat, options) {
       // article = c.nouns(0).json({ terms: false })[0].article || article
       article = 'An';
     }
-    let first = c.terms(0);
+    const first = c.terms(0);
     if (first.has('#ProperNoun') === false) {
       first.toLowerCase();
     }
@@ -21614,7 +21614,7 @@ const changeCat = function (cat, options) {
 };
 
 const byCategory = function (doc, options) {
-  let cat = fromCategory(doc);
+  const cat = fromCategory(doc);
   if (!cat) {
     return ''
   }
@@ -21637,7 +21637,7 @@ const seemsGood = function (txt, options) {
 const plugin = function (models) {
   // add a new method to main class
   models.Doc.prototype.summary = function (options) {
-    let doc = this;
+    const doc = this;
     options = options || {};
     options = Object.assign({}, defaults, options);
 
@@ -21671,20 +21671,20 @@ const plugin = function (models) {
     } else if (this.sentence(0)) {
       txt = this.sentence(0).text();
     }
-    let doc = nlp(txt);
-    let found = doc.match('(#Pronoun|#Article)').eq(0).text().toLowerCase();
+    const doc = nlp(txt);
+    const found = doc.match('(#Pronoun|#Article)').eq(0).text().toLowerCase();
     return found || 'it'
   };
 
   // was event in past? is person dead?
   models.Doc.prototype.tense = function () {
-    let txt = this.sentence() ? this.sentence().text() : '';
-    let doc = nlp(txt);
-    let copula = doc.match('#Copula+').first();
+    const txt = this.sentence() ? this.sentence().text() : '';
+    const doc = nlp(txt);
+    const copula = doc.match('#Copula+').first();
     if (copula.has('was')) {
       return 'Past'
     }
-    let vb = doc.verbs(0);
+    const vb = doc.verbs(0);
     if (vb.has('#PastTense')) {
       return 'Past'
     }

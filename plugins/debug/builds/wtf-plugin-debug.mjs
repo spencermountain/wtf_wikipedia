@@ -1,8 +1,8 @@
-/* wtf-plugin-debug 0.0.1  MIT */
+/*! wtf-plugin-debug 0.0.1 MIT */
 const plugin = function (models) {
   // look for unprocessed table wikitext
   models.Doc.prototype.hasBadTable = function () {
-    let txt = this.text();
+    const txt = this.text();
     if (/class="wikitable"/.test(txt)) {
       return 'unparsed-wikitable'
     }
@@ -28,7 +28,7 @@ const plugin = function (models) {
     if (this.isDisambiguation() || this.isRedirect() || this.isStub()) {
       return false
     }
-    let txt = this.text();
+    const txt = this.text();
     if (txt.length < 200) {
       return 'no-text'
     }
@@ -36,7 +36,7 @@ const plugin = function (models) {
   };
 
   models.Doc.prototype.isLongStub = function () {
-    let txt = this.text();
+    const txt = this.text();
     if (this.isStub() && txt.length > 5000) {
       return 'long-stub'
     }
@@ -53,7 +53,7 @@ const plugin = function (models) {
     if (this.isDisambiguation() || this.isRedirect()) {
       return false
     }
-    let str = this.sentences()[0].text();
+    const str = this.sentences()[0].text();
     if (/[{|}]/.test(str)) {
       return 'has-punct'
     }

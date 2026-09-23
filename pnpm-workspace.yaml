@@ -1,7 +1,10 @@
 packages:
   - 'plugins/*'
-  - 'plugins/wikis/*'
+  # - 'plugins/wikis/*'
 
-# Keep ordinary npm-compatible ranges while linking matching local packages.
 allowBuilds:
   esbuild: true
+
+minimumReleaseAgeExclude:
+  - tap-dancer@0.4.1
+  - rollup-plugin-filesize-check@2.0.0

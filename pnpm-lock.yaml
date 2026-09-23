@@ -196,9 +196,12 @@ importers:
       rollup-plugin-esbuild:
         specifier: 6.2.1
         version: 6.2.1(esbuild@0.28.2)(rollup@4.63.4)(supports-color@7.2.0)
+      rollup-plugin-filesize-check:
+        specifier: 2.0.0
+        version: 2.0.0(rollup@4.63.4)
       tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
+        specifier: 0.4.1
+        version: 0.4.1
       tape:
         specifier: 5.10.2
         version: 5.10.2
@@ -215,77 +218,20 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
     devDependencies:
-      '@rollup/plugin-commonjs':
-        specifier: 29.0.3
-        version: 29.0.3(rollup@4.63.4)
-      '@rollup/plugin-node-resolve':
-        specifier: 16.0.3
-        version: 16.0.3(rollup@4.63.4)
-      '@rollup/plugin-terser':
-        specifier: 1.0.0
-        version: 1.0.0(rollup@4.63.4)
-      rollup:
-        specifier: 4.63.4
-        version: 4.63.4
-      rollup-plugin-filesize-check:
-        specifier: 1.2.0
-        version: 1.2.0(rollup@4.63.4)
-      tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
       wtf_wikipedia:
-        specifier: 10.5.0
+        specifier: workspace:*
         version: link:../..
 
   plugins/classify:
     devDependencies:
-      '@rollup/plugin-commonjs':
-        specifier: 29.0.3
-        version: 29.0.3(rollup@4.63.4)
-      '@rollup/plugin-terser':
-        specifier: 1.0.0
-        version: 1.0.0(rollup@4.63.4)
-      rollup:
-        specifier: 4.63.4
-        version: 4.63.4
-      rollup-plugin-filesize-check:
-        specifier: 1.2.0
-        version: 1.2.0(rollup@4.63.4)
-      tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
       wtf_wikipedia:
-        specifier: 10.5.0
+        specifier: workspace:*
         version: link:../..
 
   plugins/debug:
     devDependencies:
-      '@rollup/plugin-commonjs':
-        specifier: 29.0.3
-        version: 29.0.3(rollup@4.63.4)
-      '@rollup/plugin-node-resolve':
-        specifier: 16.0.3
-        version: 16.0.3(rollup@4.63.4)
-      '@rollup/plugin-terser':
-        specifier: 1.0.0
-        version: 1.0.0(rollup@4.63.4)
-      rollup:
-        specifier: 4.63.4
-        version: 4.63.4
-      tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
       wtf_wikipedia:
-        specifier: 10.5.0
+        specifier: workspace:*
         version: link:../..
 
   plugins/disambig:
@@ -296,159 +242,39 @@ importers:
       spacetime:
         specifier: 7.12.1
         version: 7.12.1
-      wtf_wikipedia:
-        specifier: '>=10.5.0'
-        version: link:../..
     devDependencies:
-      '@rollup/plugin-commonjs':
-        specifier: 29.0.3
-        version: 29.0.3(rollup@4.63.4)
-      '@rollup/plugin-node-resolve':
-        specifier: 16.0.3
-        version: 16.0.3(rollup@4.63.4)
-      '@rollup/plugin-terser':
-        specifier: 1.0.0
-        version: 1.0.0(rollup@4.63.4)
-      rollup:
-        specifier: 4.63.4
-        version: 4.63.4
-      rollup-plugin-filesize-check:
-        specifier: 1.2.0
-        version: 1.2.0(rollup@4.63.4)
-      tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
+      wtf_wikipedia:
+        specifier: workspace:*
+        version: link:../..
 
   plugins/html:
     devDependencies:
-      '@rollup/plugin-commonjs':
-        specifier: 29.0.3
-        version: 29.0.3(rollup@4.63.4)
-      '@rollup/plugin-terser':
-        specifier: 1.0.0
-        version: 1.0.0(rollup@4.63.4)
-      rollup:
-        specifier: 4.63.4
-        version: 4.63.4
-      rollup-plugin-filesize-check:
-        specifier: 1.2.0
-        version: 1.2.0(rollup@4.63.4)
-      tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
       wtf_wikipedia:
-        specifier: 10.5.0
+        specifier: workspace:*
         version: link:../..
 
   plugins/i18n:
     devDependencies:
-      '@rollup/plugin-commonjs':
-        specifier: 29.0.3
-        version: 29.0.3(rollup@4.63.4)
-      '@rollup/plugin-terser':
-        specifier: 1.0.0
-        version: 1.0.0(rollup@4.63.4)
-      rollup:
-        specifier: 4.63.4
-        version: 4.63.4
-      rollup-plugin-filesize-check:
-        specifier: 1.2.0
-        version: 1.2.0(rollup@4.63.4)
-      tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
       wtf_wikipedia:
-        specifier: 10.5.0
+        specifier: workspace:*
         version: link:../..
 
   plugins/image:
     devDependencies:
-      '@rollup/plugin-commonjs':
-        specifier: 29.0.3
-        version: 29.0.3(rollup@4.63.4)
-      '@rollup/plugin-node-resolve':
-        specifier: 16.0.3
-        version: 16.0.3(rollup@4.63.4)
-      '@rollup/plugin-terser':
-        specifier: 1.0.0
-        version: 1.0.0(rollup@4.63.4)
-      esbuild:
-        specifier: 0.28.2
-        version: 0.28.2
-      rollup:
-        specifier: 4.63.4
-        version: 4.63.4
-      rollup-plugin-esbuild:
-        specifier: 6.2.1
-        version: 6.2.1(esbuild@0.28.2)(rollup@4.63.4)(supports-color@7.2.0)
-      rollup-plugin-filesize-check:
-        specifier: 1.2.0
-        version: 1.2.0(rollup@4.63.4)
-      tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
       wtf_wikipedia:
-        specifier: 10.5.0
+        specifier: workspace:*
         version: link:../..
 
   plugins/latex:
     devDependencies:
-      '@rollup/plugin-commonjs':
-        specifier: 29.0.3
-        version: 29.0.3(rollup@4.63.4)
-      '@rollup/plugin-terser':
-        specifier: 1.0.0
-        version: 1.0.0(rollup@4.63.4)
-      rollup:
-        specifier: 4.63.4
-        version: 4.63.4
-      rollup-plugin-filesize-check:
-        specifier: 1.2.0
-        version: 1.2.0(rollup@4.63.4)
-      tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
       wtf_wikipedia:
-        specifier: 10.5.0
+        specifier: workspace:*
         version: link:../..
 
   plugins/markdown:
     devDependencies:
-      '@rollup/plugin-commonjs':
-        specifier: 29.0.3
-        version: 29.0.3(rollup@4.63.4)
-      '@rollup/plugin-terser':
-        specifier: 1.0.0
-        version: 1.0.0(rollup@4.63.4)
-      rollup:
-        specifier: 4.63.4
-        version: 4.63.4
-      rollup-plugin-filesize-check:
-        specifier: 1.2.0
-        version: 1.2.0(rollup@4.63.4)
-      tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
       wtf_wikipedia:
-        specifier: 10.5.0
+        specifier: workspace:*
         version: link:../..
 
   plugins/person:
@@ -460,53 +286,14 @@ importers:
         specifier: 7.12.1
         version: 7.12.1
     devDependencies:
-      '@rollup/plugin-commonjs':
-        specifier: 29.0.3
-        version: 29.0.3(rollup@4.63.4)
-      '@rollup/plugin-node-resolve':
-        specifier: 16.0.3
-        version: 16.0.3(rollup@4.63.4)
-      '@rollup/plugin-terser':
-        specifier: 1.0.0
-        version: 1.0.0(rollup@4.63.4)
-      rollup:
-        specifier: 4.63.4
-        version: 4.63.4
-      rollup-plugin-filesize-check:
-        specifier: 1.2.0
-        version: 1.2.0(rollup@4.63.4)
-      tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
       wtf_wikipedia:
-        specifier: 10.5.0
+        specifier: workspace:*
         version: link:../..
 
   plugins/sports:
     devDependencies:
-      '@rollup/plugin-commonjs':
-        specifier: 29.0.3
-        version: 29.0.3(rollup@4.63.4)
-      '@rollup/plugin-node-resolve':
-        specifier: 16.0.3
-        version: 16.0.3(rollup@4.63.4)
-      '@rollup/plugin-terser':
-        specifier: 1.0.0
-        version: 1.0.0(rollup@4.63.4)
-      rollup:
-        specifier: 4.63.4
-        version: 4.63.4
-      tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
       wtf_wikipedia:
-        specifier: 10.5.0
+        specifier: workspace:*
         version: link:../..
 
   plugins/summary:
@@ -515,83 +302,14 @@ importers:
         specifier: 14.15.1
         version: 14.15.1
     devDependencies:
-      '@rollup/plugin-commonjs':
-        specifier: 29.0.3
-        version: 29.0.3(rollup@4.63.4)
-      '@rollup/plugin-node-resolve':
-        specifier: 16.0.3
-        version: 16.0.3(rollup@4.63.4)
-      '@rollup/plugin-terser':
-        specifier: 1.0.0
-        version: 1.0.0(rollup@4.63.4)
-      rollup:
-        specifier: 4.63.4
-        version: 4.63.4
-      rollup-plugin-filesize-check:
-        specifier: 1.2.0
-        version: 1.2.0(rollup@4.63.4)
-      tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
       wtf_wikipedia:
-        specifier: 10.5.0
+        specifier: workspace:*
         version: link:../..
-
-  plugins/wikis/openstreetmap:
-    devDependencies:
-      wtf_wikipedia:
-        specifier: 10.5.0
-        version: link:../../..
-
-  plugins/wikis/wikinews:
-    devDependencies:
-      wtf_wikipedia:
-        specifier: 10.5.0
-        version: link:../../..
-
-  plugins/wikis/wikivoyage:
-    devDependencies:
-      wtf_wikipedia:
-        specifier: 10.5.0
-        version: link:../../..
-
-  plugins/wikis/wiktionary:
-    devDependencies:
-      tap-dancer:
-        specifier: 0.3.4
-        version: 0.3.4
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
-      wtf_wikipedia:
-        specifier: 10.5.0
-        version: link:../../..
 
   plugins/wikitext:
     devDependencies:
-      '@rollup/plugin-commonjs':
-        specifier: 29.0.3
-        version: 29.0.3(rollup@4.63.4)
-      '@rollup/plugin-terser':
-        specifier: 1.0.0
-        version: 1.0.0(rollup@4.63.4)
-      rollup:
-        specifier: 4.63.4
-        version: 4.63.4
-      rollup-plugin-filesize-check:
-        specifier: 1.2.0
-        version: 1.2.0(rollup@4.63.4)
-      tap-dancer:
-        specifier: 0.4.0
-        version: 0.4.0
-      tape:
-        specifier: 5.10.2
-        version: 5.10.2
       wtf_wikipedia:
-        specifier: 10.5.0
+        specifier: workspace:*
         version: link:../..
 
 packages:
@@ -1313,9 +1031,6 @@ packages:
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
 
-  colorette@1.4.0:
-    resolution: {integrity: sha512-Y2oEozpomLn7Q3HFP7dpww7AtMJplbM9lGZP6RDfHqmbeRjiwRg4n6VM6j4KLmRke85uWEI7JqF17f3pqdRA0g==}
-
   commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
 
@@ -1338,9 +1053,6 @@ packages:
 
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
-
-  core-util-is@1.0.3:
-    resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
 
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
@@ -1869,9 +1581,6 @@ packages:
     resolution: {integrity: sha512-eXK1UInq2bPmjyX6e3VHIzMLobc4J94i4AWn+Hpq3OU5KkrRC96OAcR3PRJ/pGu6m8TRnBHP9dkXQVsT/COVIA==}
     engines: {node: '>=0.10.0'}
 
-  isarray@1.0.0:
-    resolution: {integrity: sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==}
-
   isarray@2.0.5:
     resolution: {integrity: sha512-xHjhDr3cNBK0BzdUJSPXZntQUx/mwMS5Rw4A7lPJ90XGAO6ISP/ePDNuo0vhqOZU+UD5JoodwCAAoZQd3FeAKw==}
 
@@ -2104,6 +1813,10 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
+  picomatch@4.0.3:
+    resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
+    engines: {node: '>=12'}
+
   picomatch@4.0.4:
     resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
     engines: {node: '>=12'}
@@ -2120,9 +1833,6 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  process-nextick-args@2.0.1:
-    resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
-
   process-on-spawn@1.1.0:
     resolution: {integrity: sha512-JOnOPQ/8TZgjs1JIH/m9ni7FfimjNa/PRx7y/Wb5qdItsnhO0jE4AT7fC0HjC28DUQWDr50dwSYZLdRMlqDq3Q==}
     engines: {node: '>=8'}
@@ -2134,12 +1844,6 @@ packages:
   qified@0.10.1:
     resolution: {integrity: sha512-+Owyggi9IxT1ePKGafcI87ubSmxol6smwJ+RAHDQlx9+9cPwFWDiKFFCPuWhr9ignlGpZ9vDQLw67N4dcTVFEA==}
     engines: {node: '>=20'}
-
-  re-emitter@1.1.4:
-    resolution: {integrity: sha512-C0SIXdXDSus2yqqvV7qifnb4NoWP7mEBXJq3axci301mXHCZb8Djwm4hrEZo4UeXRaEnfjH98uQ8EBppk2oNWA==}
-
-  readable-stream@2.3.7:
-    resolution: {integrity: sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw==}
 
   refa@0.12.1:
     resolution: {integrity: sha512-J8rn6v4DBb2nnFqkqwy6/NnTYMcgLA+sLr0iIO41qpv0n+ngb7ksag2tMRl0inb1bbO/esUwzW1vbJi7K0sI0g==}
@@ -2197,10 +1901,11 @@ packages:
       esbuild: '>=0.18.0'
       rollup: ^1.20.0 || ^2.0.0 || ^3.0.0 || ^4.0.0
 
-  rollup-plugin-filesize-check@1.2.0:
-    resolution: {integrity: sha512-d6ZX4BLz6gCvkqkoH+PqwVZCRmakX9DFXgUJYDWjspv0hla5B1wJDT3NY3vYWVNKqmngigaJeS83HcNfhGOjbA==}
+  rollup-plugin-filesize-check@2.0.0:
+    resolution: {integrity: sha512-vHnj25AKScXFaf/IKlqeSYZru6nPqNlOvKhwnYN1NSiaISFYOsucNEu146wprOMTSxwpXvgavQ/rSfNajPGYLg==}
+    engines: {node: '>=18.0.0'}
     peerDependencies:
-      rollup: '*'
+      rollup: '>=2.78.0'
 
   rollup@4.63.4:
     resolution: {integrity: sha512-4U0liVayNIoLp3GFl1FcI8561WepLnZ1rqfraGh7S9B3Ur5F9S283y8Futii7RUU2C/97tOBmBy7nYvhoiOpbQ==}
@@ -2210,9 +1915,6 @@ packages:
   safe-array-concat@1.1.4:
     resolution: {integrity: sha512-wtZlHyOje6OZTGqAoaDKxFkgRtkF9CnHAVnCHKfuj200wAgL+bSJhdsCD2l0Qx/2ekEXjPWcyKkfGb5CPboslg==}
     engines: {node: '>=0.4'}
-
-  safe-buffer@5.1.2:
-    resolution: {integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==}
 
   safe-push-apply@1.0.0:
     resolution: {integrity: sha512-iKE9w/Z7xCzUMIZqdBsp6pEQvwuEebH4vdpjcDWnyzaI6yl6O9FHvVpmGelvEHNsoY6wGblkxR6Zty/h00WiSA==}
@@ -2306,9 +2008,6 @@ packages:
     resolution: {integrity: sha512-z+s5vv4KzFPJVddGab0xX2n7kQPGMdNUX5l9T8EJqsXdKTWpcxmAqWHpsgHEXoC1taGBCc7b79bi62M5kdbrxQ==}
     engines: {node: '>=8'}
 
-  split@1.0.1:
-    resolution: {integrity: sha512-mTyOoPbrivtXnwnIxZRFYRrPNtEFKlpB2fvjSnCQUiAA6qAZzqwna5envK4uk6OIeP17CsdF3rSBGYVBsU0Tkg==}
-
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
 
@@ -2332,9 +2031,6 @@ packages:
     resolution: {integrity: sha512-UXSH262CSZY1tfu3G3Secr6uGLCFVPMhIqHjlgCUtCCcgihYc/xKs9djMTMUOb2j1mVSeU8EU6NWc/iQKU6Gfg==}
     engines: {node: '>= 0.4'}
 
-  string_decoder@1.1.1:
-    resolution: {integrity: sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==}
-
   strip-ansi@6.0.1:
     resolution: {integrity: sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==}
     engines: {node: '>=8'}
@@ -2354,18 +2050,9 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  tap-dancer@0.3.4:
-    resolution: {integrity: sha512-pRrO9k2XY69/jzW1DaWT8ttK4I7y51y2DTYdcgNJScDKhjiAXugyur8xIoVGN84v3QEJV+tBb+13TQ4/cNnrjg==}
-    hasBin: true
-
-  tap-dancer@0.4.0:
-    resolution: {integrity: sha512-njF4CU+QyafCf9osgXFp/6tkOsWrH6nwOGyqGkhT1d8T26iB/AiTVtOb+aVeAE7WNkID5raStAcrQqvj0JXWfQ==}
-    engines: {node: 20 || >=22}
-    hasBin: true
-
-  tap-in@3.2.1:
-    resolution: {integrity: sha512-JlMpyAcXHaYsQC5R74YBMQH1ksPRu4okT7mqTvj7T1JESum1Ttw5MGACL+YLf1jIELIdBfx/4x1c3wtfXX/sSQ==}
-    engines: {node: '>=8.0.0'}
+  tap-dancer@0.4.1:
+    resolution: {integrity: sha512-hM1MNzebpyXqI8WKD4+TTYSLG4+hAr+xUmmQxGTpkDtkhQJM5Wn0PdEfATmOCCiC9O9BXbBud8d1P8j308NxnA==}
+    engines: {node: '>=20'}
     hasBin: true
 
   tap-parser@18.3.4:
@@ -2390,16 +2077,9 @@ packages:
     resolution: {integrity: sha512-ZOffsNrXYggvU1mDGHk54I96r26P8SyMjO5slMKSc7+IWmtB/MQKnEC2fP51imB3/pT6YK5cT5E8f+Dd9KdyOQ==}
     engines: {node: 20 || >=22}
 
-  through@2.3.8:
-    resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
-
   tinyglobby@0.2.17:
     resolution: {integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==}
     engines: {node: '>=12.0.0'}
-
-  trim@1.0.1:
-    resolution: {integrity: sha512-3JVP2YVqITUisXblCDq/Bi4P9457G/sdEamInkyvCsjbTcXLXIiG7XCb4kGMFWh6JGXesS3TKxOPtrncN/xe8w==}
-    deprecated: Use String.prototype.trim() instead
 
   ts-api-utils@2.5.0:
     resolution: {integrity: sha512-OJ/ibxhPlqrMM0UiNHJ/0CKQkoKF243/AEmplt3qpRgkW8VG7IfOS41h7V8TjITqdByHzrjcS/2si+y4lIh8NA==}
@@ -2465,9 +2145,6 @@ packages:
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
-
-  util-deprecate@1.0.2:
-    resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
   which-boxed-primitive@1.1.1:
     resolution: {integrity: sha512-TbX3mj8n0odCBFVlY8AxkqcHASw3L60jIuF8jFP78az3C2YhmGvqbHBpAjTRH2/xqYunrJ9g1jSyjCjpoWzIAA==}
@@ -3203,8 +2880,6 @@ snapshots:
 
   color-name@1.1.4: {}
 
-  colorette@1.4.0: {}
-
   commander@2.20.3: {}
 
   comment-parser@1.4.9: {}
@@ -3222,8 +2897,6 @@ snapshots:
   convert-source-map@1.9.0: {}
 
   convert-source-map@2.0.0: {}
-
-  core-util-is@1.0.3: {}
 
   cross-spawn@7.0.6:
     dependencies:
@@ -3884,8 +3557,6 @@ snapshots:
 
   is-windows@1.0.2: {}
 
-  isarray@1.0.0: {}
-
   isarray@2.0.5: {}
 
   isexe@2.0.0: {}
@@ -4158,6 +3829,8 @@ snapshots:
 
   picocolors@1.1.1: {}
 
+  picomatch@4.0.3: {}
+
   picomatch@4.0.4: {}
 
   pkg-dir@4.2.0:
@@ -4168,8 +3841,6 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  process-nextick-args@2.0.1: {}
-
   process-on-spawn@1.1.0:
     dependencies:
       fromentries: 1.3.2
@@ -4179,18 +3850,6 @@ snapshots:
   qified@0.10.1:
     dependencies:
       hookified: 2.2.0
-
-  re-emitter@1.1.4: {}
-
-  readable-stream@2.3.7:
-    dependencies:
-      core-util-is: 1.0.3
-      inherits: 2.0.4
-      isarray: 1.0.0
-      process-nextick-args: 2.0.1
-      safe-buffer: 5.1.2
-      string_decoder: 1.1.1
-      util-deprecate: 1.0.2
 
   refa@0.12.1:
     dependencies:
@@ -4265,8 +3924,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  rollup-plugin-filesize-check@1.2.0(rollup@4.63.4):
+  rollup-plugin-filesize-check@2.0.0(rollup@4.63.4):
     dependencies:
+      picomatch: 4.0.3
       rollup: 4.63.4
 
   rollup@4.63.4:
@@ -4308,8 +3968,6 @@ snapshots:
       get-intrinsic: 1.3.0
       has-symbols: 1.1.0
       isarray: 2.0.5
-
-  safe-buffer@5.1.2: {}
 
   safe-push-apply@1.0.0:
     dependencies:
@@ -4419,10 +4077,6 @@ snapshots:
       signal-exit: 3.0.7
       which: 2.0.2
 
-  split@1.0.1:
-    dependencies:
-      through: 2.3.8
-
   sprintf-js@1.0.3: {}
 
   stop-iteration-iterator@1.1.0:
@@ -4460,10 +4114,6 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.1.2
 
-  string_decoder@1.1.1:
-    dependencies:
-      safe-buffer: 5.1.2
-
   strip-ansi@6.0.1:
     dependencies:
       ansi-regex: 5.0.1
@@ -4478,21 +4128,9 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  tap-dancer@0.3.4:
-    dependencies:
-      colorette: 1.4.0
-      tap-in: 3.2.1
-
-  tap-dancer@0.4.0:
+  tap-dancer@0.4.1:
     dependencies:
       tap-parser: 18.3.4
-
-  tap-in@3.2.1:
-    dependencies:
-      re-emitter: 1.1.4
-      readable-stream: 2.3.7
-      split: 1.0.1
-      trim: 1.0.1
 
   tap-parser@18.3.4:
     dependencies:
@@ -4545,14 +4183,10 @@ snapshots:
       glob: 13.0.6
       minimatch: 10.2.5
 
-  through@2.3.8: {}
-
   tinyglobby@0.2.17:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
-
-  trim@1.0.1: {}
 
   ts-api-utils@2.5.0(typescript@6.0.3):
     dependencies:
@@ -4637,8 +4271,6 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
-
-  util-deprecate@1.0.2: {}
 
   which-boxed-primitive@1.1.1:
     dependencies:
