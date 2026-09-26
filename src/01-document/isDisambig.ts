@@ -3,20 +3,17 @@ import alt_disambig from './_disambig.ts'
 const mayAlsoReg = /. may (also )?refer to\b/i
 
 // templates that signal page is not a disambiguation
-const notDisambig = {
-  about: true,
-  for: true,
-  'for multi': true,
-  'other people': true,
-  'other uses of': true,
-  'distinguish': true
-}
+const notDisambig = new Set([
+  'about',
+  'for',
+  'for multi',
+  'other people',
+  'other uses of',
+  'distinguish',
+])
 
 const inTitle = new RegExp('. \\((' + disambig_titles.join('|') + ')\\)$', 'i')
-const i18n_templates = disambig_templates.reduce((h, str) => {
-  h[str] = true
-  return h
-}, {})
+const i18n_templates = new Set(disambig_templates)
 
 // look for '... may refer to'
 const byText = function (s) {
@@ -36,7 +33,7 @@ const isDisambig = function (doc) {
   // check for a {{disambig}} template
   let templates = doc.templates().map((tmpl) => tmpl.json())
   let found = templates.find((obj) => {
-    return alt_disambig.hasOwnProperty(obj.template) || i18n_templates.hasOwnProperty(obj.template)
+    return alt_disambig.has(obj.template) || i18n_templates.has(obj.template)
   })
   if (found) {
     return true
@@ -47,7 +44,7 @@ const isDisambig = function (doc) {
     return true
   }
   // does it have a non-disambig template?
-  let notDisamb = templates.find((obj) => notDisambig.hasOwnProperty(obj.template))
+  let notDisamb = templates.find((obj) => notDisambig.has(obj.template))
   if (notDisamb) {
     return false
   }

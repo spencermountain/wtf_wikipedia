@@ -28,11 +28,11 @@ const formatting = function (obj) {
   //pack it all up..
   obj.text = wiki
   if (bolds.length > 0) {
-    obj.fmt = obj.fmt || {}
+    obj.fmt ||= {}
     obj.fmt.bold = bolds
   }
   if (italics.length > 0) {
-    obj.fmt = obj.fmt || {}
+    obj.fmt ||= {}
     obj.fmt.italic = italics
   }
   return obj

@@ -25,7 +25,7 @@ const cleanTitle = (page) => {
 }
 
 const makeUrl = function (options, parameters = defaults) {
-  let params: any = Object.assign({}, parameters)
+  let params: any = { ...parameters }
 
   //default url
   let apiPath = ''

@@ -118,7 +118,7 @@ export default {
     //rename 'wd' to 'wikidata'
     let links = {}
     Object.keys(sisterProjects).forEach((k) => {
-      if (data.hasOwnProperty(k) === true) {
+      if (Object.hasOwn(data, k) === true) {
         links[sisterProjects[k]] = data[k] //.text();
       }
     })
@@ -135,7 +135,7 @@ export default {
     let data = parse(tmpl)
     Object.keys(data).forEach((k) => {
       //rename 'voy' to 'wikivoyage'
-      if (sisterProjects.hasOwnProperty(k)) {
+      if (Object.hasOwn(sisterProjects, k)) {
         data[sisterProjects[k]] = data[k]
         delete data[k]
       }
@@ -217,7 +217,7 @@ export default {
     ]
 
     let obj = parse(tmpl)
-    obj.data = obj.data || ''
+    obj.data ||= ''
     let rows = obj.data.split('\n')
 
     // Mimic row parsing in _buildBars in the Lua source, from the following
@@ -282,7 +282,7 @@ export default {
   //https://en.wikipedia.org/wiki/Template:Historical_populations
   'historical populations': (tmpl, list) => {
     let data = parse(tmpl)
-    data.list = data.list || []
+    data.list ||= []
     let years = []
     for (let i = 0; i < data.list.length; i += 2) {
       let num = data.list[i + 1]
@@ -311,7 +311,7 @@ export default {
       byMonth[prop] = []
       monthList.forEach((m) => {
         let key = `${m} ${prop}`
-        if (obj.hasOwnProperty(key)) {
+        if (Object.hasOwn(obj, key)) {
           let num = toNumber(obj[key])
           delete obj[key]
           byMonth[prop].push(num)

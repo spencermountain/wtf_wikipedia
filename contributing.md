@@ -2,7 +2,9 @@ Pull requests are always welcome and respected. Cosmetic things are never blocke
 
 Before making a big PR, please open an issue to ask questions.
 
-Development uses Node 24+ and pnpm (the exact pnpm version is pinned in `package.json`). The lightly-typed TypeScript source runs directly in Node using native type stripping. Published users get the compiled `builds` files and only need Node 18.
+Development uses Node 24+ and pnpm (the exact pnpm version is pinned in `package.json`). The lightly-typed TypeScript source runs directly in Node using native type stripping. Published users get the compiled `builds` files and only need Node 18. Runtime source and builds target ES2022. Browser bundles require ES2022-capable browsers, including native `Object.hasOwn`, `Array.prototype.at`, and `String.prototype.replaceAll`; builds do not include polyfills.
+
+CI builds on the development Node versions, then checks the compiled package on Node 18. `pnpm run test:runtime` runs the offline public API suites against the built core; tests that import TypeScript internals remain in the development-node suite.
 
 Run `pnpm install` from the repository root. The active packages are the core and `plugins/*`; the experimental `plugins/wikis/*` packages are currently excluded. Commit the shared `pnpm-lock.yaml`; do not generate per-plugin lockfiles.
 

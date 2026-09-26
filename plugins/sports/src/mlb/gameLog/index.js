@@ -21,11 +21,8 @@ const doTable = function (rows = []) {
 }
 
 const doSection = function (section) {
-  let tables = section.tables()
-  //do all subsection, too
-  section.children().forEach(s => {
-    tables = tables.concat(s.tables())
-  })
+  // Include the section's own tables and all subsections.
+  let tables = [section, ...section.children()].flatMap((s) => s.tables())
   //try to find a game log template
   if (tables.length === 0) {
     tables = section.templates('mlb game log section') || section.templates('mlb game log month') || section.templates('game log section')
@@ -46,10 +43,7 @@ const gameLog = function (doc) {
     return games
   }
   const tables = doSection(section)
-  tables.forEach((table) => {
-    const arr = doTable(table.data)
-    games = games.concat(arr)
-  })
+  games = tables.flatMap((table) => doTable(table.data))
   games = addWinner(games)
   return games
 }

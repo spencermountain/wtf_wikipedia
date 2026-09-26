@@ -22,10 +22,7 @@ const parseRoster = function (doc) {
     return players
   }
   //do all subsections, too
-  let tables = s.tables()
-  s.children().forEach((c) => {
-    tables = tables.concat(c.tables())
-  })
+  let tables = [s, ...s.children()].flatMap((c) => c.tables())
   if (!tables[0]) {
     return players
   }

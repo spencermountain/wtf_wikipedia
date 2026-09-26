@@ -246,7 +246,7 @@ const cleanTitle = (page) => {
   return page.replace(/ /g, "_").trim();
 };
 const makeUrl = function(options, parameters = defaults) {
-  let params = Object.assign({}, parameters);
+  let params = { ...parameters };
   let apiPath = "";
   if (options.domain) {
     let path = isInterWiki.test(options.domain) ? "w/api.php" : options.path;
@@ -299,7 +299,7 @@ const makeHeaders = function(options) {
 };
 
 const parseImage = function(fetchedImage) {
-  if (fetchedImage.hasOwnProperty("missing")) {
+  if (Object.hasOwn(fetchedImage, "missing")) {
     return {};
   }
   const metaData = fetchedImage.imageinfo[0].extmetadata;

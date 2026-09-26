@@ -37,7 +37,7 @@ class Reference {
     let json = this.data || {}
     //encode them, for mongodb
     if (options.encode === true) {
-      json = Object.assign({}, json)
+      json = { ...json }
       json = encodeObj(json)
     }
     return json

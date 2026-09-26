@@ -5,8 +5,8 @@ const defaults = {
 }
 
 const toWiki = function (options) {
-  options = options || {}
-  options = Object.assign({}, defaults, options)
+  options ||= {}
+  options = { ...defaults, ...options }
   let text = this.text()
   if (options.links === true) {
     this.links().forEach((link) => {

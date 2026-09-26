@@ -25,10 +25,7 @@ const fetchList = function (pages, options, wtf) {
   //only allow three requests at a time
   return slow.three(groups, doit).then((res) => {
     // flatten into one list
-    return res.reduce((arr, a) => {
-      arr = arr.concat(a)
-      return arr
-    })
+    return res.flat()
   })
 }
 export default fetchList

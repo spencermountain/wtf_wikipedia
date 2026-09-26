@@ -3,7 +3,7 @@ import parseTemplates from '../../template/index.ts'
 //parses out the `Election_box` template - a non-traditional template, for some reason
 //https://en.wikipedia.org/wiki/Template:Election_box
 const parseElection = function (catcher, doc) {
-  catcher.text = catcher.text.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, (tmpl) => {
+  catcher.text = catcher.text.replace(/\{\{election box begin(.+?)\{\{election box end\}\}/gis, (tmpl) => {
     let data = {
       _wiki: tmpl,
       _templates: [],

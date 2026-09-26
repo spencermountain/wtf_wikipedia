@@ -35,7 +35,7 @@ const parser = function (tmpl, order = [], fmt?: string) {
   //let known = isKnown(obj);
 
   //using '|1=content' is an escaping-thing..
-  if (obj['1'] && order[0] && obj.hasOwnProperty(order[0]) === false) {
+  if (obj['1'] && order[0] && Object.hasOwn(obj, order[0]) === false) {
     //move it over..
     obj[order[0]] = obj['1']
     delete obj['1']

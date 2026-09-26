@@ -10,8 +10,8 @@ const defaults$3 = {
   paragraphs: true
 };
 const toWiki$a = function (options) {
-  options = options || {};
-  options = Object.assign({}, defaults$3, options);
+  options ||= {};
+  options = { ...defaults$3, ...options };
   let text = '';
 
   //if it's a redirect page
@@ -54,8 +54,8 @@ const doTemplate = function (obj) {
 };
 
 const toWiki$9 = function (options) {
-  options = options || {};
-  options = Object.assign({}, defaults$2, options);
+  options ||= {};
+  options = { ...defaults$2, ...options };
   let text = '';
   if (this.title()) {
     const side = '==';
@@ -99,8 +99,8 @@ const toWiki$9 = function (options) {
 const defaults$1 = {};
 
 const toWiki$8 = function (options) {
-  options = options || {};
-  options = Object.assign({}, defaults$1, options);
+  options ||= {};
+  options = { ...defaults$1, ...options };
   let text = '';
 
   // do images
@@ -152,8 +152,8 @@ const defaults = {
 };
 
 const toWiki$7 = function (options) {
-  options = options || {};
-  options = Object.assign({}, defaults, options);
+  options ||= {};
+  options = { ...defaults, ...options };
   let text = this.text();
   if (options.links === true) {
     this.links().forEach((link) => {

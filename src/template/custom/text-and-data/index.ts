@@ -8,16 +8,14 @@ import stock from './stock-exchanges.ts'
 import sportsLib from './sports/_lib.ts'
 import sports from './sports/sports.ts'
 
-
-export default Object.assign(
-  {},
-  shorthand,
-  functions,
-  currency,
-  dates,
-  geo,
-  misc,
-  stock,
-  sportsLib,
-  sports,
-)
+export default {
+  ...shorthand,
+  ...functions,
+  ...currency,
+  ...dates,
+  ...geo,
+  ...misc,
+  ...stock,
+  ...sportsLib,
+  ...sports,
+}

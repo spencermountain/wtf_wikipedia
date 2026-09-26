@@ -20,7 +20,7 @@ const softRedirect = function (doc) {
 
 //
 const toLatex$6 = function (options) {
-  options = Object.assign({}, defaults$4, options);
+  options = { ...defaults$4, ...options };
   let out = '';
   //if it's a redirect page, give it a 'soft landing':
   if (this.isRedirect() === true) {
@@ -57,7 +57,7 @@ const defaults$3 = {
 };
 //map '==' depth to 'subsection', 'subsubsection', etc
 const doSection = function (options) {
-  options = Object.assign({}, defaults$3, options);
+  options = { ...defaults$3, ...options };
   let out = '';
   let num = 1;
 
@@ -130,7 +130,7 @@ const defaults$2 = {
 };
 
 const toLatex$5 = function (options) {
-  options = Object.assign({}, defaults$2, options);
+  options = { ...defaults$2, ...options };
   let out = '';
   if (options.sentences === true) {
     out += '\n\n% BEGIN Paragraph\n';
@@ -176,7 +176,7 @@ const defaults$1 = {
 };
 // create links, bold, italic in latex
 const toLatex$4 = function (options) {
-  options = Object.assign({}, defaults$1, options);
+  options = { ...defaults$1, ...options };
   let text = this.text();
   //turn links back into links
   if (options.links === true && this.links().length > 0) {
@@ -237,7 +237,7 @@ const defaults = {
 
 //
 const infobox = function (options) {
-  options = Object.assign({}, defaults, options);
+  options = { ...defaults, ...options };
   let out = '\n \\vspace*{0.3cm} % Info Box\n\n';
   out += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n';
   out += '  \\hline  %horizontal line\n';

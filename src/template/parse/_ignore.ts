@@ -26,8 +26,5 @@ const list = [
   'end',
   's-end',
 ]
-const ignore = list.reduce((h, str) => {
-  h[str] = true
-  return h
-}, {})
+const ignore = new Set(list)
 export default ignore

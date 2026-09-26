@@ -33,15 +33,15 @@ class Document {
   declare _wikidata: string | null
   declare _pageImage: string | null
   declare _pageID: number | null
-  declare _namespace: string | null
+  declare _namespace: string | number | null
   declare _lang: string | null
   declare _domain: string | null
 
   constructor(wiki, options) {
-    options = options || {}
+    options ||= {}
     this._options = options
     let userAgent = options.userAgent || options['User-Agent'] || options['Api-User-Agent']
-    userAgent = userAgent || 'User of the wtf_wikipedia library'
+    userAgent ||= 'User of the wtf_wikipedia library'
     let props = {
       title: options.title || null,
       type: 'page',
@@ -58,7 +58,7 @@ class Document {
       wikidata: options.wikidata || null,
       pageImage: options.pageImage || null,
       pageID: options.pageID || options.id || null,
-      namespace: options.namespace || options.ns || null,
+      namespace: options.namespace ?? options.ns ?? null,
       lang: options.lang || options.language || null,
       domain: options.domain || null,
     }
@@ -159,7 +159,7 @@ class Document {
     if (ns !== undefined) {
       this._namespace = ns
     }
-    return this._namespace || null
+    return this._namespace ?? null
   }
 
   isRedirect() {
@@ -205,10 +205,7 @@ class Document {
   }
 
   paragraphs(clue?) {
-    let arr = []
-    this.sections().forEach((s) => {
-      arr = arr.concat(s.paragraphs())
-    })
+    let arr = this.sections().flatMap((s) => s.paragraphs())
     if (typeof clue === 'number') {
       return [arr[clue]]
     }
@@ -216,10 +213,7 @@ class Document {
   }
 
   sentences(clue?) {
-    let arr = []
-    this.sections().forEach((sec) => {
-      arr = arr.concat(sec.sentences())
-    })
+    let arr = this.sections().flatMap((sec) => sec.sentences())
     if (typeof clue === 'number') {
       return [arr[clue]]
     }
@@ -239,7 +233,7 @@ class Document {
     //look for 'gallery' templates, too
     this.templates().forEach((obj) => {
       if (obj.data.template === 'gallery') {
-        obj.data.images = obj.data.images || []
+        obj.data.images ||= []
         obj.data.images.forEach((img) => {
           if (!(img instanceof Image)) {
             img.language = this.language()

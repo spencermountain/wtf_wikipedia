@@ -8,8 +8,8 @@ class Link {
   declare data: any
 
   constructor(data) {
-    data = data || {}
-    data = Object.assign({}, defaults, data)
+    data ||= {}
+    data = { ...defaults, ...data }
     Object.defineProperty(this, 'data', {
       enumerable: false,
       value: data,
@@ -101,7 +101,7 @@ class Link {
     if (type === 'interwiki') {
       let wiki = this.wiki()
       url = 'https://en.wikipedia.org/wiki/$1'
-      if (wikis.hasOwnProperty(wiki)) {
+      if (Object.hasOwn(wikis, wiki)) {
         url = 'http://' + wikis[this.wiki()]
       }
       url = url.replace(/\$1/g, page)

@@ -135,7 +135,7 @@ const byInfobox = function (doc, prop) {
     type = type.toLowerCase();
     type = type.trim();
 
-    if (mapping.hasOwnProperty(type)) {
+    if (Object.hasOwn(mapping, type)) {
       const s = inf.get(prop);
       if (s) {
         return s.text()
@@ -368,11 +368,11 @@ const byCat = function (doc) {
   const cats = doc.categories();
 
   //confirmed alive categories
-  if (cats.find((c) => aliveCats.hasOwnProperty(c))) {
+  if (cats.find((c) => Object.hasOwn(aliveCats, c))) {
     return true
   }
   //confirmed death categories
-  if (cats.find((c) => didDie.hasOwnProperty(c))) {
+  if (cats.find((c) => Object.hasOwn(didDie, c))) {
     return false
   }
   return null
@@ -416,10 +416,10 @@ const byTemplate = function (doc) {
   for (let i = 0; i < templates.length; i++) {
     let title = templates[i].template || '';
     title = title.toLowerCase().trim();
-    if (isAlive$1.hasOwnProperty(title)) {
+    if (Object.hasOwn(isAlive$1, title)) {
       return true
     }
-    if (isDead.hasOwnProperty(title)) {
+    if (Object.hasOwn(isDead, title)) {
       return false
     }
   }

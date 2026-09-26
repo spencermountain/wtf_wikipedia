@@ -73,7 +73,7 @@ const fetchPage = function (title, options, callback) {
       )
     )
     .then((results) => {
-      const found = [].concat(...results)
+      const found = results.flat()
       return parseDoc(found, title)
     })
 

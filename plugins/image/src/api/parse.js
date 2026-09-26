@@ -7,7 +7,7 @@
  */
 const parseImage = function (fetchedImage) {
   // if the data is missing return empty object
-  if (fetchedImage.hasOwnProperty('missing')) {
+  if (Object.hasOwn(fetchedImage, 'missing')) {
     return {}
   }
 

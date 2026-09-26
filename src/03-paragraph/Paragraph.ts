@@ -65,10 +65,7 @@ class Paragraph {
   }
 
   links(clue?) {
-    let arr = []
-    this.sentences().forEach((s) => {
-      arr = arr.concat(s.links(clue))
-    })
+    let arr = this.sentences().flatMap((s) => s.links(clue))
     if (typeof clue === 'string') {
       //grab a specific link like .links('Fortnight')
       clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
@@ -83,10 +80,7 @@ class Paragraph {
   }
 
   interwiki() {
-    let arr = []
-    this.sentences().forEach((s) => {
-      arr = arr.concat(s.interwiki())
-    })
+    let arr = this.sentences().flatMap((s) => s.interwiki())
     return arr || []
   }
 

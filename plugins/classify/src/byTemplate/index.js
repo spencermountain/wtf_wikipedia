@@ -6,7 +6,7 @@ const byTemplate = function (doc) {
   const found = []
   for (let i = 0; i < templates.length; i++) {
     const title = templates[i].template
-    if (mappings.templates.hasOwnProperty(title)) {
+    if (Object.hasOwn(mappings.templates, title)) {
       found.push({ type: mappings.templates[title], reason: title })
     } else {
       // try regex-list on it

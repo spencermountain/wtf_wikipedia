@@ -9,8 +9,8 @@ const defaults = {
   paragraphs: true
 }
 const toWiki = function (options) {
-  options = options || {}
-  options = Object.assign({}, defaults, options)
+  options ||= {}
+  options = { ...defaults, ...options }
   let text = ''
 
   //if it's a redirect page

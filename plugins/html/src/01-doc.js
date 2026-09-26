@@ -20,7 +20,7 @@ const softRedirect = function (doc) {
 
 //turn a Doc object into a HTML string
 const toHtml = function (options) {
-  options = Object.assign({}, defaults, options)
+  options = { ...defaults, ...options }
   let html = ''
   //add page title
   if (options.title === true && this._title) {

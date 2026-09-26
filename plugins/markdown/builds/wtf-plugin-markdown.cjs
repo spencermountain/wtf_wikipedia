@@ -20,7 +20,7 @@ const softRedirect = function (doc) {
 
 //turn a Doc object into a markdown string
 const toMarkdown$6 = function (options) {
-  options = Object.assign({}, defaults$4, options);
+  options = { ...defaults$4, ...options };
   const data = this;
   let md = '';
   //if it's a redirect page, give it a 'soft landing':
@@ -59,7 +59,7 @@ const defaults$3 = {
 };
 
 const doSection = function (options) {
-  options = Object.assign({}, defaults$3, options);
+  options = { ...defaults$3, ...options };
   let md = '';
 
   //make the header
@@ -119,7 +119,7 @@ const defaults$2 = {
 };
 
 const toMarkdown$5 = function (options) {
-  options = Object.assign({}, defaults$2, options);
+  options = { ...defaults$2, ...options };
   let md = '';
   if (options.sentences === true) {
     md += this.sentences().reduce((str, s) => {
@@ -164,7 +164,7 @@ const defaults$1 = {
 
 //create links, bold, italic in markdown
 const toMarkdown$4 = function (options) {
-  options = Object.assign({}, defaults$1, options);
+  options = { ...defaults$1, ...options };
   let md = this.text();
   //turn links back into links
   if (options.links === true) {
@@ -209,9 +209,9 @@ const toMarkdown$2 = function () {
 
 //center-pad each cell, to make the table more legible
 const pad = (str, cellWidth) => {
-  str = str || '';
+  str ||= '';
   str = String(str);
-  cellWidth = cellWidth || 15;
+  cellWidth ||= 15;
   let diff = cellWidth - str.length;
   diff = Math.ceil(diff / 2);
   for (let i = 0; i < diff; i += 1) {
@@ -237,7 +237,7 @@ const defaults = {
 
 // render an infobox as a table with two columns, key + value
 const doInfobox = function (options) {
-  options = Object.assign({}, defaults, options);
+  options = { ...defaults, ...options };
   let md = '|' + pad('', 35) + '|' + pad('', 30) + '|\n';
   md += '|' + pad('---', 35) + '|' + pad('---', 30) + '|\n';
   //todo: render top image here (somehow)
@@ -249,7 +249,7 @@ const doInfobox = function (options) {
     const s = this.data[k];
     let val = s.markdown(options);
     //markdown is more newline-sensitive than wiki
-    val = val.split(/\n/g).join(', ');
+    val = val.replaceAll('\n', ', ');
     md += '|' + pad(key, 35) + '|' + pad(val, 30) + ' |\n';
   });
   return md

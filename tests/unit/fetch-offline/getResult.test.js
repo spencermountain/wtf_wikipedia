@@ -22,3 +22,11 @@ test('parse a not found case', (t) => {
   t.deepEqual(expected, result)
   t.end()
 })
+
+test('API pages can shadow hasOwnProperty or lack a prototype', (t) => {
+  const page = { title: 'Example', ns: 0, revisions: [{ '*': 'hello' }], hasOwnProperty: 'metadata' }
+  t.equal(getResult({ query: { pages: { 1: page } } })[0].wiki, 'hello', 'shadowed method is harmless')
+  const missing = Object.assign(Object.create(null), { missing: '' })
+  t.deepEqual(getResult({ query: { pages: { 1: missing } } }), [null], 'null-prototype missing page is recognized')
+  t.end()
+})

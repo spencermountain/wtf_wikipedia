@@ -8,7 +8,7 @@ const banner = `/*! ${name} ${version} MIT */`
 
 export default {
   input: 'src/index.js',
-  plugins: [esbuild({ target: 'es2018' })],
+  plugins: [esbuild({ target: 'es2022' })],
   output: [
     {
       banner,

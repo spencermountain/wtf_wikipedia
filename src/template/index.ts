@@ -54,9 +54,9 @@ const process = function (section, doc) {
   let { infoboxes, references, templates } = sortOut(list, domain)
 
   //sort-out the templates we decide to keep
-  section._infoboxes = section._infoboxes || []
-  section._references = section._references || []
-  section._templates = section._templates || []
+  section._infoboxes ||= []
+  section._references ||= []
+  section._templates ||= []
 
   section._infoboxes = section._infoboxes.concat(infoboxes)
   section._references = section._references.concat(references)

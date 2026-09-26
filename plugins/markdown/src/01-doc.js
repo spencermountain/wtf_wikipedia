@@ -17,7 +17,7 @@ const softRedirect = function (doc) {
 
 //turn a Doc object into a markdown string
 const toMarkdown = function (options) {
-  options = Object.assign({}, defaults, options)
+  options = { ...defaults, ...options }
   const data = this
   let md = ''
   //if it's a redirect page, give it a 'soft landing':

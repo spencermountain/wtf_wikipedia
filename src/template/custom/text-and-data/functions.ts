@@ -65,7 +65,7 @@ let templates = {
   'ordered list': (tmpl, list) => {
     let obj = parse(tmpl)
     list.push(obj)
-    obj.list = obj.list || []
+    obj.list ||= []
     let lines = obj.list.map((str, i) => `${i + 1}. ${str}`)
     return lines.join('\n\n')
   },
@@ -204,7 +204,7 @@ let templates = {
     let result = []
     let units = ['m', 'cm', 'ft', 'in'] //order matters
     units.forEach((unit) => {
-      if (obj.hasOwnProperty(unit) === true) {
+      if (Object.hasOwn(obj, unit) === true) {
         result.push(obj[unit] + unit)
       }
     })
@@ -351,7 +351,7 @@ let templates = {
     let txt = obj.text
     // used first un-named param
     if (!txt) {
-      obj.list = obj.list || []
+      obj.list ||= []
       txt = obj.list[0] || ''
     }
     // replace double quotes with singles and put the text inside double quotes

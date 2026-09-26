@@ -64,12 +64,13 @@
     "test:plugins": "pnpm -r --workspace-concurrency=1 run test:all",
     "goldens:update": "UPDATE_GOLDENS=1 pnpm test",
     "watch": "node --watch ./scratch.js",
-    "test:built": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer"
+    "test:built": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
+    "test:runtime": "TESTENV=prod tape --strict --ignore tests/runtime.ignore \"tests/unit/**/*.test.js\" \"tests/contract/**/*.test.js\" && node tests/runtime/exports.js"
   },
   "files": [
     "builds",
     "docs",
-    "llms.txt",
+    "AGENTS.md",
     "src",
     "types"
   ],

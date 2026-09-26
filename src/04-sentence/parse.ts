@@ -12,15 +12,6 @@ const elipses_reg = /(?:^|[^.])\.{3,} +$/
 const circa_reg = / c\.\s$/
 const hasWord = /\p{Letter}/iu
 
-//turn a nested array into one array
-const flatten = function (arr) {
-  let all = []
-  arr.forEach(function (a) {
-    all = all.concat(a)
-  })
-  return all
-}
-
 // Try only the first non-whitespace position in each remaining line. If it
 // cannot reach sentence punctuation, later starts on that line cannot either.
 const splitPunctuation = function (text) {
@@ -54,13 +45,12 @@ const naiive_split = function (text) {
   let splits = text.split(/(\n+)/)
   splits = splits.filter((s) => s.match(/\S/))
   //split by period, question-mark, and exclamation-mark
-  splits = splits.map(splitPunctuation)
-  return flatten(splits)
+  return splits.flatMap(splitPunctuation)
 }
 
 // if this looks like a period within a wikipedia link, return false
 const isBalanced = function (str) {
-  str = str || ''
+  str ||= ''
   const open = str.split(/\[\[/) || []
   const closed = str.split(/\]\]/) || []
   if (open.length > closed.length) {

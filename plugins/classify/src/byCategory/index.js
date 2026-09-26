@@ -15,7 +15,7 @@ const byCategory = function (doc) {
   for (let i = 0; i < cats.length; i++) {
     const category = cats[i]
     // try our 1-to-1 mapping
-    if (mappings.categories.hasOwnProperty(category)) {
+    if (Object.hasOwn(mappings.categories, category)) {
       found.push({ type: mappings.categories[category], reason: category })
       continue
     }

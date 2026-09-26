@@ -10,7 +10,7 @@ const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 const parseTemplate = function (tmpl, doc) {
   let name = tmpl.name
   // dont bother with some junk templates
-  if (ignore.hasOwnProperty(name) === true) {
+  if (ignore.has(name) === true) {
     return ['']
   }
   //{{infobox settlement...}}
@@ -29,7 +29,7 @@ const parseTemplate = function (tmpl, doc) {
   }
   // ok, here we go!
   //parse some known templates
-  if (templates.hasOwnProperty(name) === true) {
+  if (Object.hasOwn(templates, name) === true) {
     //handle number-syntax
     if (typeof templates[name] === 'number') {
       let obj = toJSON(tmpl.body, nums)

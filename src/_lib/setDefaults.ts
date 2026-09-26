@@ -1,4 +1,4 @@
 const setDefaults = function (options, defaults) {
-  return Object.assign({}, defaults, options)
+  return { ...defaults, ...options }
 }
 export default setDefaults

@@ -40,7 +40,7 @@ const ymd = function (arr) {
     } else if (units[i] === 'month') {
       let m = arr[i].toLowerCase().trim()
       //try for month-name, like 'january
-      if (monthName.hasOwnProperty(m)) {
+      if (Object.hasOwn(monthName, m)) {
         let month = monthName[m]
         obj[units[i]] = month
       }
@@ -50,7 +50,7 @@ const ymd = function (arr) {
     }
   }
   //try for timezone,too ftw
-  let last = arr[arr.length - 1] || ''
+  let last = arr.at(-1) || ''
   last = String(last)
   if (last.toLowerCase() === 'z') {
     obj.tz = 'UTC'
@@ -71,7 +71,7 @@ const pad = function (num) {
 const toText = function (date) {
   //eg '1995'
   let str = String(date.year || '')
-  if (date.month !== undefined && months.hasOwnProperty(date.month) === true) {
+  if (date.month !== undefined && Object.hasOwn(months, date.month) === true) {
     if (date.date === undefined) {
       //January 1995
       str = `${months[date.month]} ${date.year}`
@@ -98,7 +98,7 @@ const toText = function (date) {
 const toTextBritish = function (date) {
   //eg '1995'
   let str = String(date.year || '')
-  if (date.month !== undefined && months.hasOwnProperty(date.month) === true) {
+  if (date.month !== undefined && Object.hasOwn(months, date.month) === true) {
     if (date.date === undefined) {
       //January 1995
       str = `${months[date.month]} ${date.year}`

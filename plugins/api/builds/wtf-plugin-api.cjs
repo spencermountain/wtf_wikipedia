@@ -401,7 +401,7 @@ const params = {
 };
 
 const randomCategory = function (options = {}, http) {
-  options = Object.assign({}, defaults, options);
+  options = { ...defaults, ...options };
   let url = `https://${options.lang}.wikipedia.org/${options.path}?`;
   if (options.domain) {
     url = `https://${options.domain}/${options.path}?`;
@@ -541,10 +541,7 @@ const fetchList = function (pages, options, wtf) {
   //only allow three requests at a time
   return src.three(groups, doit).then((res) => {
     // flatten into one list
-    return res.reduce((arr, a) => {
-      arr = arr.concat(a);
-      return arr
-    })
+    return res.flat()
   })
 };
 

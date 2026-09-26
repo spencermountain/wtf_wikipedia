@@ -29,7 +29,7 @@ const doNode = function (node) {
     node.categories.mapping.forEach((str) => {
       mappings.categories[str] = node.id
     })
-    node.descriptions.mapping = node.descriptions.mapping || []
+    node.descriptions.mapping ||= []
     node.descriptions.mapping.forEach((str) => {
       mappings.descriptions[str] = node.id
     })

@@ -58,9 +58,9 @@ const oneImage = function (img, doc) {
       obj.alt = imgData.alt
     }
     //remove 'thumb' and things
-    arr = arr.filter((str) => imgLayouts.hasOwnProperty(str) === false)
-    if (arr[arr.length - 1]) {
-      obj.caption = parseSentence(arr[arr.length - 1])
+    arr = arr.filter((str) => Object.hasOwn(imgLayouts, str) === false)
+    if (arr.at(-1)) {
+      obj.caption = parseSentence(arr.at(-1))
     }
     return new Image(obj)
   }
@@ -73,7 +73,7 @@ const parseImages = function (paragraph, doc) {
   let matches = nested_find(wiki)
   matches.forEach(function (s) {
     if (isFile.test(s) === true) {
-      paragraph.images = paragraph.images || []
+      paragraph.images ||= []
       let img = oneImage(s, doc)
       if (img) {
         paragraph.images.push(img)

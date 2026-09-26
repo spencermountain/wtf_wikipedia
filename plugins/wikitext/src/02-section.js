@@ -12,8 +12,8 @@ const doTemplate = function (obj) {
 }
 
 const toWiki = function (options) {
-  options = options || {}
-  options = Object.assign({}, defaults, options)
+  options ||= {}
+  options = { ...defaults, ...options }
   let text = ''
   if (this.title()) {
     const side = '=='

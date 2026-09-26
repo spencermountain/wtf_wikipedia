@@ -24,18 +24,6 @@ builds/                rollup output — generated, never edit
 scratch.js             playground file
 ```
 
-## Commands
-
-| command | what it does | needs network? |
-| --- | --- | --- |
-| `npm test` | tape suite against `src/` (~4k assertions, fast) | no |
-| `npm run testb` | same suite against the production build (build first) | no |
-| `npm run build` | rollup → `builds/` | no |
-| `npm run lint` | eslint over src, plugins, tests | no |
-| `npm run check` | loose `tsc --noEmit` over src + plugins | no |
-| `npm run test:types` | strict tsc over the type declarations (3 configs) | no |
-| `npm run test:fetch` | live-API tests (`tests/fetch/*.fetch.js`) | **yes** |
-| `npm run goldens:update` | regenerate tests/golden/ snapshots | no |
 
 Per-plugin tests run inside the plugin dir: `cd plugins/classify && npm test`.
 

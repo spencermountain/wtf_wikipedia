@@ -6,7 +6,7 @@ const banner = '/*! spencermountain/wtf_wikipedia  MIT */'
 
 export default {
   input: 'src/index.ts',
-  plugins: [esbuild({ target: 'es2018' })],
+  plugins: [esbuild({ target: 'es2022' })],
   output: [
     {
       banner,

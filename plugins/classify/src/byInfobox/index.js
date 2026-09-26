@@ -12,7 +12,7 @@ const byInfobox = function (doc) {
     type = type.replace(/ /g, '_')
     type = type.trim()
 
-    if (mappings.infoboxes.hasOwnProperty(type)) {
+    if (Object.hasOwn(mappings.infoboxes, type)) {
       found.push({ type: mappings.infoboxes[type], reason: type })
     }
   }

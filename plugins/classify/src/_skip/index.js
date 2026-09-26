@@ -23,7 +23,7 @@ const skipPage = function (doc) {
   inside = inside.trim()
 
   //look at known parentheses
-  if (skip.hasOwnProperty(inside)) {
+  if (Object.hasOwn(skip, inside)) {
     return true
   }
   //try a regex

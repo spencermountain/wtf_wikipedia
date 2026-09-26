@@ -3329,7 +3329,7 @@ const doNode = function (node) {
     node.categories.mapping.forEach((str) => {
       mappings.categories[str] = node.id;
     });
-    node.descriptions.mapping = node.descriptions.mapping || [];
+    node.descriptions.mapping ||= [];
     node.descriptions.mapping.forEach((str) => {
       mappings.descriptions[str] = node.id;
     });
@@ -3382,7 +3382,7 @@ const byInfobox = function (doc) {
     type = type.replace(/ /g, '_');
     type = type.trim();
 
-    if (mappings.infoboxes.hasOwnProperty(type)) {
+    if (Object.hasOwn(mappings.infoboxes, type)) {
       found.push({ type: mappings.infoboxes[type], reason: type });
     }
   }
@@ -3413,7 +3413,7 @@ const byCategory = function (doc) {
   for (let i = 0; i < cats.length; i++) {
     const category = cats[i];
     // try our 1-to-1 mapping
-    if (mappings.categories.hasOwnProperty(category)) {
+    if (Object.hasOwn(mappings.categories, category)) {
       found.push({ type: mappings.categories[category], reason: category });
       continue
     }
@@ -3431,7 +3431,7 @@ const byTemplate = function (doc) {
   const found = [];
   for (let i = 0; i < templates.length; i++) {
     const title = templates[i].template;
-    if (mappings.templates.hasOwnProperty(title)) {
+    if (Object.hasOwn(mappings.templates, title)) {
       found.push({ type: mappings.templates[title], reason: title });
     } else {
       // try regex-list on it
@@ -3453,7 +3453,7 @@ const fromSection = function (doc) {
   });
   for (let i = 0; i < titles.length; i++) {
     const title = titles[i];
-    if (mappings.sections.hasOwnProperty(title)) {
+    if (Object.hasOwn(mappings.sections, title)) {
       found.push({ type: mappings.sections[title], reason: title });
     }
   }
@@ -3479,7 +3479,7 @@ const byTitle = function (doc) {
   inside = inside.trim();
 
   //look at known parentheses
-  if (mappings.titles.hasOwnProperty(inside)) {
+  if (Object.hasOwn(mappings.titles, inside)) {
     return [{ type: mappings.titles[inside], reason: inside }]
   }
 
@@ -3530,7 +3530,7 @@ const skipPage = function (doc) {
   inside = inside.trim();
 
   //look at known parentheses
-  if (skip.hasOwnProperty(inside)) {
+  if (Object.hasOwn(skip, inside)) {
     return true
   }
   //try a regex
@@ -3546,7 +3546,7 @@ const skipPage = function (doc) {
 const topk = function (arr) {
   const obj = {};
   arr.forEach((a) => {
-    obj[a] = obj[a] || 0;
+    obj[a] ||= 0;
     obj[a] += 1;
   });
   let res = Object.keys(obj).map((k) => [k, obj[k]]);

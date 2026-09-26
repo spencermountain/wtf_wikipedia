@@ -8,7 +8,7 @@ const keys = {
 //https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
 const parseNBA = function (catcher) {
   catcher.text = catcher.text.replace(
-    /\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi,
+    /\{\{nba (coach|player|roster) statistics start(.+?)\{\{s-end\}\}/gis,
     (tmpl, name) => {
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
       tmpl = tmpl.replace(/\{\{s-end\}\}/, '')

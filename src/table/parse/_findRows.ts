@@ -7,7 +7,7 @@ const cleanup = function (lines) {
   if (/^\{\|/.test(lines[0]) === true) {
     lines.shift()
   }
-  if (/^\|\}/.test(lines[lines.length - 1]) === true) {
+  if (/^\|\}/.test(lines.at(-1)) === true) {
     lines.pop()
   }
   if (/^\|-/.test(lines[0]) === true) {

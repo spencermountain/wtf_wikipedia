@@ -46,7 +46,7 @@ const cleanTitle = (page) => {
   return page.replace(/ /g, "_").trim();
 };
 const makeUrl = function(options, parameters = defaults$c) {
-  let params = Object.assign({}, parameters);
+  let params = { ...parameters };
   let apiPath = "";
   if (options.domain) {
     let path = isInterWiki.test(options.domain) ? "w/api.php" : options.path;
@@ -78,18 +78,16 @@ const makeUrl = function(options, parameters = defaults$c) {
 };
 
 const getResult = function(data, options = {}) {
-  var _a;
-  if (!((_a = data == null ? void 0 : data.query) == null ? void 0 : _a.pages)) {
+  if (!data?.query?.pages) {
     return null;
   }
   let pages = Object.keys(data.query.pages);
   return pages.map((id) => {
-    var _a2;
     let page = data.query.pages[id] || {};
-    if (page.hasOwnProperty("missing") || page.hasOwnProperty("invalid")) {
+    if (Object.hasOwn(page, "missing") || Object.hasOwn(page, "invalid")) {
       return null;
     }
-    let rev = (_a2 = page.revisions) == null ? void 0 : _a2[0];
+    let rev = page.revisions?.[0];
     if (!rev) {
       return null;
     }
@@ -99,12 +97,13 @@ const getResult = function(data, options = {}) {
     }
     let revisionID = rev.revid;
     let timestamp = rev.timestamp;
-    page.pageprops = page.pageprops || {};
+    page.pageprops ||= {};
     let domain = options.domain;
     if (!domain && options.wiki) {
       domain = `${options.wiki}.org`;
     }
-    let meta = Object.assign({}, options, {
+    let meta = {
+      ...options,
       title: page.title,
       pageID: page.pageid,
       namespace: page.ns,
@@ -114,7 +113,7 @@ const getResult = function(data, options = {}) {
       pageImage: page.pageprops["page_image_free"],
       wikidata: page.pageprops.wikibase_item,
       description: page.pageprops["wikibase-shortdesc"]
-    });
+    };
     return { wiki: text, meta };
   });
 };
@@ -142,7 +141,7 @@ const sectionMap = function(doc, fn, clue) {
 };
 
 const setDefaults = function(options, defaults) {
-  return Object.assign({}, defaults, options);
+  return { ...defaults, ...options };
 };
 
 const sizes = {
@@ -1329,7 +1328,7 @@ var references = [
 ];
 
 let d = " disambiguation";
-const templates$d = [
+const templates$d = /* @__PURE__ */ new Set([
   "dab",
   "dab",
   "disamb",
@@ -1367,25 +1366,19 @@ const templates$d = [
   "synagogue" + d,
   "taxonomic authority" + d,
   "taxonomy" + d
-].reduce((h, str) => {
-  h[str] = true;
-  return h;
-}, {});
+]);
 
 const mayAlsoReg = /. may (also )?refer to\b/i;
-const notDisambig = {
-  about: true,
-  for: true,
-  "for multi": true,
-  "other people": true,
-  "other uses of": true,
-  "distinguish": true
-};
+const notDisambig = /* @__PURE__ */ new Set([
+  "about",
+  "for",
+  "for multi",
+  "other people",
+  "other uses of",
+  "distinguish"
+]);
 const inTitle = new RegExp(". \\((" + disambig_titles.join("|") + ")\\)$", "i");
-const i18n_templates = disambig_templates.reduce((h, str) => {
-  h[str] = true;
-  return h;
-}, {});
+const i18n_templates = new Set(disambig_templates);
 const byText = function(s) {
   if (!s) {
     return false;
@@ -1401,7 +1394,7 @@ const byText = function(s) {
 const isDisambig = function(doc) {
   let templates = doc.templates().map((tmpl) => tmpl.json());
   let found = templates.find((obj) => {
-    return templates$d.hasOwnProperty(obj.template) || i18n_templates.hasOwnProperty(obj.template);
+    return templates$d.has(obj.template) || i18n_templates.has(obj.template);
   });
   if (found) {
     return true;
@@ -1410,7 +1403,7 @@ const isDisambig = function(doc) {
   if (title && inTitle.test(title) === true) {
     return true;
   }
-  let notDisamb = templates.find((obj) => notDisambig.hasOwnProperty(obj.template));
+  let notDisamb = templates.find((obj) => notDisambig.has(obj.template));
   if (notDisamb) {
     return false;
   }
@@ -1433,7 +1426,7 @@ const isStub = function(doc) {
     }
     let words = name.split(/[- ]/);
     if (words.length > 1) {
-      let word = words[words.length - 1];
+      let word = words.at(-1);
       if (allStubs.has(word)) {
         return true;
       }
@@ -1532,7 +1525,7 @@ class Image {
     return this.url();
   }
   thumbnail(size) {
-    size = size || 300;
+    size ||= 300;
     return this.url() + "?width=" + size;
   }
   thumb(size) {
@@ -1540,13 +1533,13 @@ class Image {
   }
   format() {
     let arr = this.file().split(".");
-    if (arr[arr.length - 1]) {
-      return arr[arr.length - 1].toLowerCase();
+    if (arr.at(-1)) {
+      return arr.at(-1).toLowerCase();
     }
     return null;
   }
   json(options) {
-    options = options || {};
+    options ||= {};
     return toJson$3(this, options);
   }
   text() {
@@ -2544,12 +2537,12 @@ const parseInterwiki = function(obj) {
     site = site.toLowerCase();
     if (site.indexOf(":") !== -1) {
       let [, wiki, lang] = site.match(/^:?(.*):(.*)/);
-      if (wikis.hasOwnProperty(wiki) === false || languages.hasOwnProperty(lang) === false) {
+      if (Object.hasOwn(wikis, wiki) === false || Object.hasOwn(languages, lang) === false) {
         return obj;
       }
       obj.wiki = { wiki, lang };
     } else {
-      if (wikis.hasOwnProperty(site) === false) {
+      if (Object.hasOwn(wikis, site) === false) {
         return obj;
       }
       obj.wiki = site;
@@ -2564,7 +2557,7 @@ const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500
 const link_reg = /\[\[(.{0,1600}?)\]\]([a-z]+)?/gi;
 const external_links = function(links, str) {
   str.replace(external_link, function(raw, protocol, link, text) {
-    text = text || "";
+    text ||= "";
     links.push({
       type: "external",
       site: protocol + link,
@@ -2607,7 +2600,7 @@ const internal_links = function(links, str) {
       obj.text = txt;
     }
     if (suffix) {
-      obj.text = obj.text || obj.page;
+      obj.text ||= obj.page;
       obj.text += suffix.trim();
     }
     if (obj.page && /^[A-Z]/.test(obj.page) === false) {
@@ -2686,23 +2679,23 @@ const kill_xml = function(wiki) {
 };
 
 function preProcess(wiki) {
-  wiki = wiki.replace(/<!--[\s\S]{0,3000}?-->/g, "");
+  wiki = wiki.replace(/<!--.{0,3000}?-->/gs, "");
   wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, "");
   wiki = wiki.replace(/~{2,3}/g, "");
-  wiki = wiki.replace(/\r/g, "");
-  wiki = wiki.replace(/\u3002/g, ". ");
-  wiki = wiki.replace(/----/g, "");
-  wiki = wiki.replace(/\{\{\}\}/g, " \u2013 ");
-  wiki = wiki.replace(/\{\{\\\}\}/g, " / ");
-  wiki = wiki.replace(/&nbsp;/g, " ");
-  wiki = wiki.replace(/&ndash;/g, "\u2013");
-  wiki = wiki.replace(/&mdash;/g, "\u2014");
-  wiki = wiki.replace(/&amp;/g, "&");
-  wiki = wiki.replace(/&quot;/g, '"');
-  wiki = wiki.replace(/&apos;/g, "'");
-  wiki = wiki.replace(/&copy;/g, "\xA9");
-  wiki = wiki.replace(/&reg;/g, "\xAE");
-  wiki = wiki.replace(/&trade;/g, "\u2122");
+  wiki = wiki.replaceAll("\r", "");
+  wiki = wiki.replaceAll("\u3002", ". ");
+  wiki = wiki.replaceAll("----", "");
+  wiki = wiki.replaceAll("{{}}", " \u2013 ");
+  wiki = wiki.replaceAll("{{\\}}", " / ");
+  wiki = wiki.replaceAll("&nbsp;", " ");
+  wiki = wiki.replaceAll("&ndash;", "\u2013");
+  wiki = wiki.replaceAll("&mdash;", "\u2014");
+  wiki = wiki.replaceAll("&amp;", "&");
+  wiki = wiki.replaceAll("&quot;", '"');
+  wiki = wiki.replaceAll("&apos;", "'");
+  wiki = wiki.replaceAll("&copy;", "\xA9");
+  wiki = wiki.replaceAll("&reg;", "\xAE");
+  wiki = wiki.replaceAll("&trade;", "\u2122");
   wiki = kill_xml(wiki);
   wiki = wiki.replace(/\([,;: ]+\)/g, "");
   wiki = wiki.replace(/\{\{(baseball|basketball) (primary|secondary) (style|color).*?\}\}/gi, "");
@@ -2809,8 +2802,8 @@ const defaults$8 = {
 };
 class Link {
   constructor(data) {
-    data = data || {};
-    data = Object.assign({}, defaults$8, data);
+    data ||= {};
+    data = { ...defaults$8, ...data };
     Object.defineProperty(this, "data", {
       enumerable: false,
       value: data
@@ -2891,7 +2884,7 @@ class Link {
     if (type === "interwiki") {
       let wiki = this.wiki();
       url = "https://en.wikipedia.org/wiki/$1";
-      if (wikis.hasOwnProperty(wiki)) {
+      if (Object.hasOwn(wikis, wiki)) {
         url = "http://" + wikis[this.wiki()];
       }
       url = url.replace(/\$1/g, page);
@@ -2943,11 +2936,11 @@ const formatting = function(obj) {
   });
   obj.text = wiki;
   if (bolds.length > 0) {
-    obj.fmt = obj.fmt || {};
+    obj.fmt ||= {};
     obj.fmt.bold = bolds;
   }
   if (italics.length > 0) {
-    obj.fmt = obj.fmt || {};
+    obj.fmt ||= {};
     obj.fmt.italic = italics;
   }
   return obj;
@@ -3276,13 +3269,6 @@ const acronym_reg = /[ .'][A-Z].? *$/i;
 const elipses_reg = /(?:^|[^.])\.{3,} +$/;
 const circa_reg = / c\.\s$/;
 const hasWord = /\p{Letter}/iu;
-const flatten = function(arr) {
-  let all = [];
-  arr.forEach(function(a) {
-    all = all.concat(a);
-  });
-  return all;
-};
 const splitPunctuation = function(text) {
   const sentence = /(\S.+?[.!?]"?)(?=\s|$)/y;
   let splits = [];
@@ -3311,11 +3297,10 @@ const splitPunctuation = function(text) {
 const naiive_split = function(text) {
   let splits = text.split(/(\n+)/);
   splits = splits.filter((s) => s.match(/\S/));
-  splits = splits.map(splitPunctuation);
-  return flatten(splits);
+  return splits.flatMap(splitPunctuation);
 };
 const isBalanced = function(str) {
-  str = str || "";
+  str ||= "";
   const open = str.split(/\[\[/) || [];
   const closed = str.split(/\]\]/) || [];
   if (open.length > closed.length) {
@@ -3417,7 +3402,7 @@ const cleanup$1 = function(lines) {
   if (/^\{\|/.test(lines[0]) === true) {
     lines.shift();
   }
-  if (/^\|\}/.test(lines[lines.length - 1]) === true) {
+  if (/^\|\}/.test(lines.at(-1)) === true) {
     lines.pop();
   }
   if (/^\|-/.test(lines[0]) === true) {
@@ -3524,7 +3509,7 @@ const cleanText = function(str) {
   return str;
 };
 const skipSpanRow = function(row) {
-  row = row || [];
+  row ||= [];
   let len = row.length;
   let hasTxt = row.filter((str) => str).length;
   if (len - hasTxt > 3) {
@@ -3591,7 +3576,7 @@ const firstRowHeader = function(rows) {
     return h;
   });
   for (let i = 0; i < headers.length; i += 1) {
-    if (headings$1.hasOwnProperty(headers[i])) {
+    if (Object.hasOwn(headings$1, headers[i])) {
       rows.shift();
       return headers;
     }
@@ -3613,7 +3598,7 @@ const parseTable = function(wiki) {
   let headers = findHeaders(rows);
   if (!headers || headers.length <= 1) {
     headers = firstRowHeader(rows);
-    let want = rows[rows.length - 1] || [];
+    let want = rows.at(-1) || [];
     if (headers.length <= 1 && want.length > 2) {
       headers = firstRowHeader(rows.slice(1));
       if (headers.length > 0) {
@@ -3660,12 +3645,7 @@ class Table {
     });
   }
   links(n) {
-    let links = [];
-    this.data.forEach((r) => {
-      Object.keys(r).forEach((k) => {
-        links = links.concat(r[k].links());
-      });
-    });
+    let links = this.data.flatMap((row) => Object.keys(row).flatMap((key) => row[key].links()));
     if (typeof n === "string") {
       n = n.charAt(0).toUpperCase() + n.substring(1);
       let link = links.find((o) => o.page() === n);
@@ -3675,10 +3655,7 @@ class Table {
   }
   get(keys) {
     let have = this.data[0] || {};
-    let mapping = Object.keys(have).reduce((h, k) => {
-      h[normalize$1(k)] = k;
-      return h;
-    }, {});
+    let mapping = Object.fromEntries(Object.keys(have).map((k) => [normalize$1(k), k]));
     if (typeof keys === "string") {
       let key = normalize$1(keys);
       key = mapping[key] || key;
@@ -3688,14 +3665,7 @@ class Table {
     }
     keys = keys.map(normalize$1).map((k) => mapping[k] || k);
     return this.data.map((row) => {
-      return keys.reduce((h, k) => {
-        if (row[k]) {
-          h[k] = row[k].text();
-        } else {
-          h[k] = "";
-        }
-        return h;
-      }, {});
+      return Object.fromEntries(keys.map((k) => [k, row[k] ? row[k].text() : ""]));
     });
   }
   keyValue(options) {
@@ -3825,10 +3795,7 @@ class Paragraph {
     return getNth$1(this.images(clue), clue);
   }
   links(clue) {
-    let arr = [];
-    this.sentences().forEach((s) => {
-      arr = arr.concat(s.links(clue));
-    });
+    let arr = this.sentences().flatMap((s) => s.links(clue));
     if (typeof clue === "string") {
       clue = clue.charAt(0).toUpperCase() + clue.substring(1);
       let link = arr.find((o) => o.page() === clue);
@@ -3840,10 +3807,7 @@ class Paragraph {
     return getNth$1(this.links(clue), clue);
   }
   interwiki() {
-    let arr = [];
-    this.sentences().forEach((s) => {
-      arr = arr.concat(s.interwiki());
-    });
+    let arr = this.sentences().flatMap((s) => s.interwiki());
     return arr || [];
   }
   text(options) {
@@ -3910,7 +3874,7 @@ const parseKey = function(str) {
   let key = parts[0] || "";
   key = key.toLowerCase().trim();
   let val = parts.slice(1).join("=");
-  if (reserved.hasOwnProperty(key)) {
+  if (Object.hasOwn(reserved, key)) {
     key = "_" + key;
   }
   return {
@@ -3936,7 +3900,7 @@ const keyMaker = function(arr, order) {
       let key = order[keyIndex];
       h[key] = str;
     } else {
-      h.list = h.list || [];
+      h.list ||= [];
       h.list.push(str);
     }
     keyIndex += 1;
@@ -3986,7 +3950,7 @@ const parser = function(tmpl, order = [], fmt) {
   let name = arr.shift();
   let obj = keyMaker(arr, order);
   obj = cleanup(obj);
-  if (obj["1"] && order[0] && obj.hasOwnProperty(order[0]) === false) {
+  if (obj["1"] && order[0] && Object.hasOwn(obj, order[0]) === false) {
     obj[order[0]] = obj["1"];
     delete obj["1"];
   }
@@ -4087,9 +4051,9 @@ const oneImage = function(img, doc) {
     if (imgData.alt) {
       obj.alt = imgData.alt;
     }
-    arr = arr.filter((str) => imgLayouts.hasOwnProperty(str) === false);
-    if (arr[arr.length - 1]) {
-      obj.caption = fromText(arr[arr.length - 1]);
+    arr = arr.filter((str) => Object.hasOwn(imgLayouts, str) === false);
+    if (arr.at(-1)) {
+      obj.caption = fromText(arr.at(-1));
     }
     return new Image(obj);
   }
@@ -4100,7 +4064,7 @@ const parseImages = function(paragraph, doc) {
   let matches = nested_find(wiki);
   matches.forEach(function(s) {
     if (isFile.test(s) === true) {
-      paragraph.images = paragraph.images || [];
+      paragraph.images ||= [];
       let img = oneImage(s, doc);
       if (img) {
         paragraph.images.push(img);
@@ -4133,10 +4097,7 @@ class List {
     return this.data;
   }
   links(clue) {
-    let links = [];
-    this.lines().forEach((s) => {
-      links = links.concat(s.links());
-    });
+    let links = this.lines().flatMap((s) => s.links());
     if (typeof clue === "string") {
       clue = clue.charAt(0).toUpperCase() + clue.substring(1);
       let link = links.find((o) => o.page() === clue);
@@ -4343,10 +4304,7 @@ const list = [
   "end",
   "s-end"
 ];
-const ignore = list.reduce((h, str) => {
-  h[str] = true;
-  return h;
-}, {});
+const ignore = new Set(list);
 
 var infoboxes = {
   "gnf protein box": true,
@@ -4394,7 +4352,7 @@ const startReg = /^infobox /i;
 const endReg = / infobox$/i;
 const yearIn = /^year in [A-Z]/i;
 const isInfobox = function(name) {
-  if (infoboxes.hasOwnProperty(name) === true) {
+  if (Object.hasOwn(infoboxes, name) === true) {
     return true;
   }
   if (i18nReg.test(name)) {
@@ -5272,7 +5230,7 @@ var functions = {
   },
   hlist: (tmpl) => {
     let obj = parser(tmpl);
-    obj.list = obj.list || [];
+    obj.list ||= [];
     return obj.list.join(" \xB7 ");
   },
   pagelist: (tmpl) => {
@@ -5574,7 +5532,7 @@ var functions = {
   "last word": (tmpl) => {
     let data = parser(tmpl, ["text"]);
     let arr = (data.text || "").split(/ /g);
-    return arr[arr.length - 1] || "";
+    return arr.at(-1) || "";
   },
   replace: (tmpl) => {
     let data = parser(tmpl, ["text", "from", "to"]);
@@ -5774,7 +5732,7 @@ var functions = {
   // boats
   ship: (tmpl) => {
     let { prefix, name, id } = parser(tmpl, ["prefix", "name", "id"]);
-    prefix = prefix || "";
+    prefix ||= "";
     return id ? `[[${prefix.toUpperCase()} ${name}]]` : `[[${prefix.toUpperCase()} ${name}]]`;
   },
   sclass: (tmpl) => {
@@ -6103,7 +6061,7 @@ var functions = {
       tenor: "\u{1D121}",
       tenorclef: "\u{1D121}"
     };
-    if (glyphs.hasOwnProperty(data.glyph)) {
+    if (Object.hasOwn(glyphs, data.glyph)) {
       return glyphs[data.glyph];
     }
     return "";
@@ -7106,7 +7064,7 @@ moreCells.forEach((a) => {
   };
 });
 
-var textTmpl = Object.assign({}, hardcoded, templates$c, templates$b, functions, templates$a, fns$1, templates$9, templates$8);
+var textTmpl = { ...hardcoded, ...templates$c, ...templates$b, ...functions, ...templates$a, ...fns$1, ...templates$9, ...templates$8 };
 
 let templates$7 = {};
 let idName = [
@@ -7275,7 +7233,7 @@ var fns = {
     let data = parser(tmpl);
     let links = {};
     Object.keys(sisterProjects).forEach((k) => {
-      if (data.hasOwnProperty(k) === true) {
+      if (Object.hasOwn(data, k) === true) {
         links[sisterProjects[k]] = data[k];
       }
     });
@@ -7290,7 +7248,7 @@ var fns = {
   "subject bar": (tmpl, list) => {
     let data = parser(tmpl);
     Object.keys(data).forEach((k) => {
-      if (sisterProjects.hasOwnProperty(k)) {
+      if (Object.hasOwn(sisterProjects, k)) {
         data[sisterProjects[k]] = data[k];
         delete data[k];
       }
@@ -7367,7 +7325,7 @@ var fns = {
       "col2Change"
     ];
     let obj = parser(tmpl);
-    obj.data = obj.data || "";
+    obj.data ||= "";
     let rows = obj.data.split("\n");
     let dataArray = rows.map((row) => {
       let parameters = row.split(";");
@@ -7418,7 +7376,7 @@ var fns = {
   //https://en.wikipedia.org/wiki/Template:Historical_populations
   "historical populations": (tmpl, list) => {
     let data = parser(tmpl);
-    data.list = data.list || [];
+    data.list ||= [];
     let years = [];
     for (let i = 0; i < data.list.length; i += 2) {
       let num = data.list[i + 1];
@@ -7446,7 +7404,7 @@ var fns = {
       byMonth[prop] = [];
       monthList.forEach((m) => {
         let key = `${m} ${prop}`;
-        if (obj.hasOwnProperty(key)) {
+        if (Object.hasOwn(obj, key)) {
           let num = toNumber(obj[key]);
           delete obj[key];
           byMonth[prop].push(num);
@@ -7672,7 +7630,7 @@ let templates$3 = {
   "ordered list": (tmpl, list) => {
     let obj = parser(tmpl);
     list.push(obj);
-    obj.list = obj.list || [];
+    obj.list ||= [];
     let lines = obj.list.map((str, i) => `${i + 1}. ${str}`);
     return lines.join("\n\n");
   },
@@ -7802,7 +7760,7 @@ let templates$3 = {
     let result = [];
     let units = ["m", "cm", "ft", "in"];
     units.forEach((unit) => {
-      if (obj.hasOwnProperty(unit) === true) {
+      if (Object.hasOwn(obj, unit) === true) {
         result.push(obj[unit] + unit);
       }
     });
@@ -7941,7 +7899,7 @@ let templates$3 = {
     list.push(obj);
     let txt = obj.text;
     if (!txt) {
-      obj.list = obj.list || [];
+      obj.list ||= [];
       txt = obj.list[0] || "";
     }
     let result = txt.replace(/"/g, "'");
@@ -8231,7 +8189,7 @@ const ymd = function(arr) {
       obj[units[i]] = num;
     } else if (units[i] === "month") {
       let m = arr[i].toLowerCase().trim();
-      if (monthName.hasOwnProperty(m)) {
+      if (Object.hasOwn(monthName, m)) {
         let month = monthName[m];
         obj[units[i]] = month;
       }
@@ -8239,7 +8197,7 @@ const ymd = function(arr) {
       delete obj[units[i]];
     }
   }
-  let last = arr[arr.length - 1] || "";
+  let last = arr.at(-1) || "";
   last = String(last);
   if (last.toLowerCase() === "z") {
     obj.tz = "UTC";
@@ -8256,7 +8214,7 @@ const pad = function(num) {
 };
 const toText = function(date) {
   let str = String(date.year || "");
-  if (date.month !== void 0 && months$1.hasOwnProperty(date.month) === true) {
+  if (date.month !== void 0 && Object.hasOwn(months$1, date.month) === true) {
     if (date.date === void 0) {
       str = `${months$1[date.month]} ${date.year}`;
     } else {
@@ -8277,7 +8235,7 @@ const toText = function(date) {
 };
 const toTextBritish = function(date) {
   let str = String(date.year || "");
-  if (date.month !== void 0 && months$1.hasOwnProperty(date.month) === true) {
+  if (date.month !== void 0 && Object.hasOwn(months$1, date.month) === true) {
     if (date.date === void 0) {
       str = `${months$1[date.month]} ${date.year}`;
     } else {
@@ -8744,7 +8702,7 @@ const findLatLng = function(arr) {
   return {};
 };
 const parseParams = function(obj) {
-  obj.list = obj.list || [];
+  obj.list ||= [];
   obj.list = obj.list.map((str) => {
     let num = Number(str);
     if (!isNaN(num)) {
@@ -8752,7 +8710,7 @@ const parseParams = function(obj) {
     }
     let split = str.split(/:/);
     if (split.length > 1) {
-      obj.props = obj.props || {};
+      obj.props ||= {};
       obj.props[split[0]] = split.slice(1).join(":");
       return null;
     }
@@ -9209,20 +9167,19 @@ let sports = {
   }
 };
 
-var bothTmpl = Object.assign(
-  {},
-  shorthand,
-  templates$3,
-  templates$2,
-  dates,
-  templates$1,
-  misc,
-  exchanges,
-  playoffBracket,
-  sports
-);
+var bothTmpl = {
+  ...shorthand,
+  ...templates$3,
+  ...templates$2,
+  ...dates,
+  ...templates$1,
+  ...misc,
+  ...exchanges,
+  ...playoffBracket,
+  ...sports
+};
 
-let templates = Object.assign({}, textTmpl, dataTmpl, bothTmpl);
+let templates = { ...textTmpl, ...dataTmpl, ...bothTmpl };
 Object.keys(aliases).forEach((k) => {
   if (templates[aliases[k]] === void 0) {
     console.error(`Missing template: '${aliases[k]}'`);
@@ -9233,7 +9190,7 @@ Object.keys(aliases).forEach((k) => {
 const nums = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const parseTemplate = function(tmpl, doc) {
   let name = tmpl.name;
-  if (ignore.hasOwnProperty(name) === true) {
+  if (ignore.has(name) === true) {
     return [""];
   }
   if (isInfobox(name) === true) {
@@ -9246,7 +9203,7 @@ const parseTemplate = function(tmpl, doc) {
     obj.template = "citation";
     return ["", obj];
   }
-  if (templates.hasOwnProperty(name) === true) {
+  if (Object.hasOwn(templates, name) === true) {
     if (typeof templates[name] === "number") {
       let obj = parser(tmpl.body, nums);
       let key = String(templates[name]);
@@ -9284,12 +9241,9 @@ const parseTemplate = function(tmpl, doc) {
 };
 
 const toJson = function(infobox, options) {
-  let json = Object.keys(infobox.data).reduce((h, k) => {
-    if (infobox.data[k]) {
-      h[k] = infobox.data[k].json();
-    }
-    return h;
-  }, {});
+  let json = Object.fromEntries(
+    Object.keys(infobox.data).filter((k) => infobox.data[k]).map((k) => [k, infobox.data[k].json()])
+  );
   if (options.encode === true) {
     json = encodeObj(json);
   }
@@ -9335,10 +9289,7 @@ class Infobox {
     return this.type();
   }
   links(n) {
-    let arr = [];
-    Object.keys(this.data).forEach((k) => {
-      this.data[k].links().forEach((l) => arr.push(l));
-    });
+    let arr = Object.values(this.data).flatMap((sentence) => sentence.links());
     if (typeof n === "string") {
       n = n.charAt(0).toUpperCase() + n.substring(1);
       let link = arr.find((o) => o.page() === n);
@@ -9392,27 +9343,23 @@ class Infobox {
     return "";
   }
   json(options) {
-    options = options || {};
+    options ||= {};
     return toJson(this, options);
   }
   wikitext() {
     return this.wiki || "";
   }
   keyValue() {
-    return Object.keys(this.data).reduce((h, k) => {
-      if (this.data[k]) {
-        h[k] = this.data[k].text();
-      }
-      return h;
-    }, {});
+    return Object.fromEntries(
+      Object.keys(this.data).filter((k) => this.data[k]).map((k) => [k, this.data[k].text()])
+    );
   }
   coordinates() {
-    var _a, _b, _c, _d;
     for (let i = 0; i < latLngs.length; i += 1) {
       let a = latLngs[i];
-      let lat = (_b = (_a = this.get(a[0])) == null ? void 0 : _a.json()) == null ? void 0 : _b.number;
-      let lon = (_d = (_c = this.get(a[1])) == null ? void 0 : _c.json()) == null ? void 0 : _d.number;
-      if (lat && lon) {
+      let lat = this.get(a[0])?.json()?.number;
+      let lon = this.get(a[1])?.json()?.number;
+      if (typeof lat === "number" && typeof lon === "number" && Number.isFinite(lat) && Number.isFinite(lon)) {
         return { template: "infobox/lat-long", lat, lon };
       }
     }
@@ -9447,7 +9394,7 @@ class Reference {
   json(options = {}) {
     let json = this.data || {};
     if (options.encode === true) {
-      json = Object.assign({}, json);
+      json = { ...json };
       json = encodeObj(json);
     }
     return json;
@@ -9504,7 +9451,7 @@ const sortOut = function(list, domain) {
     }
     if (json.template === "infobox" && json.subbox !== "yes") {
       json.domain = domain;
-      json.data = json.data || {};
+      json.data ||= {};
       res.infoboxes.push(new Infobox(json, obj.wiki));
       return;
     }
@@ -9551,9 +9498,9 @@ const process = function(section, doc) {
   let { list, wiki } = allTemplates(section._wiki, doc);
   let domain = doc ? doc._domain : null;
   let { infoboxes, references, templates } = sortOut(list, domain);
-  section._infoboxes = section._infoboxes || [];
-  section._references = section._references || [];
-  section._templates = section._templates || [];
+  section._infoboxes ||= [];
+  section._references ||= [];
+  section._templates ||= [];
   section._infoboxes = section._infoboxes.concat(infoboxes);
   section._references = section._references.concat(references);
   section._templates = section._templates.concat(templates);
@@ -9581,7 +9528,7 @@ const parseInline = function(str) {
 const parseRefs = function(section) {
   let references = [];
   let wiki = section._wiki;
-  wiki = wiki.replace(/ ?<ref>([\s\S]{0,4000}?)<\/ref> ?/gi, function(all, txt) {
+  wiki = wiki.replace(/ ?<ref>(.{0,4000}?)<\/ref> ?/gis, function(all, txt) {
     let found = false;
     let arr = findFlat(txt);
     arr.forEach((tmpl) => {
@@ -9600,7 +9547,7 @@ const parseRefs = function(section) {
     return " ";
   });
   wiki = wiki.replace(/ ?<ref [^>]{0,200}?\/> ?/gi, " ");
-  wiki = wiki.replace(/ ?<ref [^>]{0,200}>([\s\S]{0,1800}?)<\/ref> ?/gi, function(all, txt) {
+  wiki = wiki.replace(/ ?<ref [^>]{0,200}>(.{0,1800}?)<\/ref> ?/gis, function(all, txt) {
     let found = false;
     let arr = findFlat(txt);
     arr.forEach((tmpl) => {
@@ -9624,7 +9571,7 @@ const parseRefs = function(section) {
 };
 
 const parseGallery = function(catcher, doc, section) {
-  catcher.text = catcher.text.replace(/<gallery([^>]*)>([\s\S]+)<\/gallery>/g, (_, _attrs, inside) => {
+  catcher.text = catcher.text.replace(/<gallery([^>]*)>(.+)<\/gallery>/gs, (_, _attrs, inside) => {
     let images = inside.split(/\n/g);
     images = images.filter((str) => str && str.trim() !== "");
     images = images.map((str) => {
@@ -9653,7 +9600,7 @@ const parseGallery = function(catcher, doc, section) {
 };
 
 const parseElection = function(catcher, doc) {
-  catcher.text = catcher.text.replace(/\{\{election box begin([\s\S]+?)\{\{election box end\}\}/gi, (tmpl) => {
+  catcher.text = catcher.text.replace(/\{\{election box begin(.+?)\{\{election box end\}\}/gis, (tmpl) => {
     let data = {
       _wiki: tmpl,
       _templates: []
@@ -9682,7 +9629,7 @@ const keys = {
 };
 const parseNBA = function(catcher) {
   catcher.text = catcher.text.replace(
-    /\{\{nba (coach|player|roster) statistics start([\s\S]+?)\{\{s-end\}\}/gi,
+    /\{\{nba (coach|player|roster) statistics start(.+?)\{\{s-end\}\}/gis,
     (tmpl, name) => {
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, "");
       tmpl = tmpl.replace(/\{\{s-end\}\}/, "");
@@ -9721,7 +9668,7 @@ const whichHeadings = function(tmpl) {
 const parseMlb = function(catcher) {
   catcher.text = catcher.text.replace(/\{\{mlb game log /gi, "{{game log ");
   catcher.text = catcher.text.replace(
-    /\{\{game log (section|month)[\s\S]+?\{\{game log (section|month) end\}\}/gi,
+    /\{\{game log (section|month).+?\{\{game log (section|month) end\}\}/gis,
     (tmpl) => {
       let headings = whichHeadings(tmpl);
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, "");
@@ -9746,7 +9693,7 @@ const parseMlb = function(catcher) {
 
 let headings = ["res", "record", "opponent", "method", "event", "date", "round", "time", "location", "notes"];
 const parseMMA = function(catcher) {
-  catcher.text = catcher.text.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, (tmpl) => {
+  catcher.text = catcher.text.replace(/\{\{mma record start.+?\{\{end\}\}/gis, (tmpl) => {
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, "");
     tmpl = tmpl.replace(/\{\{end\}\}/i, "");
     let headers = "! " + headings.join(" !! ");
@@ -9767,7 +9714,7 @@ const parseMMA = function(catcher) {
 };
 
 const parseMath = function(catcher) {
-  catcher.text = catcher.text.replace(/<math([^>]*)>([\s\S]*?)<\/math>/g, (_, attrs, inside) => {
+  catcher.text = catcher.text.replace(/<math([^>]*)>(.*?)<\/math>/gs, (_, attrs, inside) => {
     let formula = fromText(inside).text();
     catcher.templates.push({
       template: "math",
@@ -9779,7 +9726,7 @@ const parseMath = function(catcher) {
     }
     return "";
   });
-  catcher.text = catcher.text.replace(/<chem([^>]*)>([\s\S]*?)<\/chem>/g, (_, attrs, inside) => {
+  catcher.text = catcher.text.replace(/<chem([^>]*)>(.*?)<\/chem>/gs, (_, attrs, inside) => {
     catcher.templates.push({
       template: "chem",
       data: inside
@@ -9864,9 +9811,7 @@ class Section {
     return this.depth();
   }
   sentences(clue) {
-    return this.paragraphs().reduce((list, p) => {
-      return list.concat(p.sentences());
-    }, []);
+    return this.paragraphs().flatMap((p) => p.sentences());
   }
   paragraphs(clue) {
     return this._paragraphs || [];
@@ -9885,7 +9830,7 @@ class Section {
     this.lists().forEach((list) => {
       arr.push(list.links());
     });
-    arr = arr.reduce((acc, val) => acc.concat(val), []).filter((val) => val !== void 0);
+    arr = arr.flat().filter((val) => val !== void 0);
     if (typeof clue === "string") {
       let link = arr.find((o) => o.page().toLowerCase() === clue.toLowerCase());
       return link === void 0 ? [] : [link];
@@ -9916,30 +9861,22 @@ class Section {
     let arr = [...this.templates("coord"), ...this.templates("coor")];
     let list = arr.map((tmpl) => tmpl.json());
     let inf = this.infoboxes()[0];
-    if (inf && inf.coordinates()) {
-      list.push(inf.coordinates());
+    const coordinates = inf?.coordinates();
+    if (coordinates) {
+      list.push(coordinates);
     }
     return list;
   }
   lists(clue) {
-    let arr = [];
-    this.paragraphs().forEach((p) => {
-      arr = arr.concat(p.lists());
-    });
+    let arr = this.paragraphs().flatMap((p) => p.lists());
     return arr;
   }
   interwiki() {
-    let arr = [];
-    this.paragraphs().forEach((p) => {
-      arr = arr.concat(p.interwiki());
-    });
+    let arr = this.paragraphs().flatMap((p) => p.interwiki());
     return arr;
   }
   images(clue) {
-    let arr = [];
-    this.paragraphs().forEach((p) => {
-      arr = arr.concat(p.images());
-    });
+    let arr = this.paragraphs().flatMap((p) => p.images());
     return arr;
   }
   references(clue) {
@@ -9950,11 +9887,10 @@ class Section {
     if (!this._doc) {
       return null;
     }
-    let bads = {};
-    bads[this.title()] = true;
-    this.children().forEach((sec) => bads[sec.title()] = true);
+    let bads = /* @__PURE__ */ new Set([this.title()]);
+    this.children().forEach((sec) => bads.add(sec.title()));
     let sections = this._doc.sections();
-    sections = sections.filter((sec) => bads.hasOwnProperty(sec.title()) !== true);
+    sections = sections.filter((sec) => !bads.has(sec.title()));
     this._doc._sections = sections;
     return this._doc;
   }
@@ -10191,10 +10127,10 @@ const defaults$1 = {
 };
 class Document {
   constructor(wiki, options) {
-    options = options || {};
+    options ||= {};
     this._options = options;
     let userAgent = options.userAgent || options["User-Agent"] || options["Api-User-Agent"];
-    userAgent = userAgent || "User of the wtf_wikipedia library";
+    userAgent ||= "User of the wtf_wikipedia library";
     let props = {
       title: options.title || null,
       type: "page",
@@ -10211,7 +10147,7 @@ class Document {
       wikidata: options.wikidata || null,
       pageImage: options.pageImage || null,
       pageID: options.pageID || options.id || null,
-      namespace: options.namespace || options.ns || null,
+      namespace: options.namespace ?? options.ns ?? null,
       lang: options.lang || options.language || null,
       domain: options.domain || null
     };
@@ -10292,7 +10228,7 @@ class Document {
     if (ns !== void 0) {
       this._namespace = ns;
     }
-    return this._namespace || null;
+    return this._namespace ?? null;
   }
   isRedirect() {
     return this._type === "redirect";
@@ -10329,20 +10265,14 @@ class Document {
     return arr;
   }
   paragraphs(clue) {
-    let arr = [];
-    this.sections().forEach((s) => {
-      arr = arr.concat(s.paragraphs());
-    });
+    let arr = this.sections().flatMap((s) => s.paragraphs());
     if (typeof clue === "number") {
       return [arr[clue]];
     }
     return arr;
   }
   sentences(clue) {
-    let arr = [];
-    this.sections().forEach((sec) => {
-      arr = arr.concat(sec.sentences());
-    });
+    let arr = this.sections().flatMap((sec) => sec.sentences());
     if (typeof clue === "number") {
       return [arr[clue]];
     }
@@ -10359,7 +10289,7 @@ class Document {
     });
     this.templates().forEach((obj) => {
       if (obj.data.template === "gallery") {
-        obj.data.images = obj.data.images || [];
+        obj.data.images ||= [];
         obj.data.images.forEach((img) => {
           if (!(img instanceof Image)) {
             img.language = this.language();
@@ -10527,9 +10457,8 @@ class Document {
 }
 
 const parseDoc = function(res, title) {
-  var _a;
-  const results = (res != null ? res : []).filter((o) => o != null).map((o) => new Document(o.wiki, o.meta));
-  return isArray(title) ? results : (_a = results[0]) != null ? _a : null;
+  const results = (res ?? []).filter((o) => o != null).map((o) => new Document(o.wiki, o.meta));
+  return isArray(title) ? results : results[0] ?? null;
 };
 
 const makeHeaders = function(options) {
@@ -10607,7 +10536,7 @@ const fetchPage = function(title, options, callback) {
       })
     )
   ).then((results) => {
-    const found = [].concat(...results);
+    const found = results.flat();
     return parseDoc(found, title);
   });
   if (typeof callback === "function") {

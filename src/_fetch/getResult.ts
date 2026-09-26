@@ -15,7 +15,7 @@ const getResult = function (data, options: any = {}) {
     let page = data.query.pages[id] || {}
 
     // if the page is missing or not found than return null
-    if (page.hasOwnProperty('missing') || page.hasOwnProperty('invalid')) {
+    if (Object.hasOwn(page, 'missing') || Object.hasOwn(page, 'invalid')) {
       return null
     }
 
@@ -33,14 +33,15 @@ const getResult = function (data, options: any = {}) {
     let revisionID = rev.revid
     let timestamp = rev.timestamp
 
-    page.pageprops = page.pageprops || {}
+    page.pageprops ||= {}
 
     let domain = options.domain
     if (!domain && options.wiki) {
       domain = `${options.wiki}.org`
     }
 
-    let meta = Object.assign({}, options, {
+    let meta = {
+      ...options,
       title: page.title,
       pageID: page.pageid,
       namespace: page.ns,
@@ -50,7 +51,7 @@ const getResult = function (data, options: any = {}) {
       pageImage: page.pageprops['page_image_free'],
       wikidata: page.pageprops.wikibase_item,
       description: page.pageprops['wikibase-shortdesc'],
-    })
+    }
 
     return { wiki: text, meta: meta }
   })

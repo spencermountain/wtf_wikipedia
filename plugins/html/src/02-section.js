@@ -7,7 +7,7 @@ const defaults = {
 }
 
 const doSection = function (options) {
-  options = Object.assign({}, defaults, options)
+  options = { ...defaults, ...options }
   let html = ''
   //make the header
   if (options.headers === true && this.title()) {

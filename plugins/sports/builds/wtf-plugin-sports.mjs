@@ -50,11 +50,7 @@ const playerStats = function (doc) {
     return players
   }
 
-  s.children().forEach((c) => {
-    c.tables().forEach((t) => {
-      players = players.concat(t.keyValue());
-    });
-  });
+  players = s.children().flatMap((c) => c.tables().flatMap((t) => t.keyValue()));
   const res = {
     batters: [],
     pitchers: [],
@@ -211,11 +207,8 @@ const doTable = function (rows = []) {
 };
 
 const doSection$1 = function (section) {
-  let tables = section.tables();
-  //do all subsection, too
-  section.children().forEach(s => {
-    tables = tables.concat(s.tables());
-  });
+  // Include the section's own tables and all subsections.
+  let tables = [section, ...section.children()].flatMap((s) => s.tables());
   //try to find a game log template
   if (tables.length === 0) {
     tables = section.templates('mlb game log section') || section.templates('mlb game log month') || section.templates('game log section');
@@ -236,10 +229,7 @@ const gameLog = function (doc) {
     return games
   }
   const tables = doSection$1(section);
-  tables.forEach((table) => {
-    const arr = doTable(table.data);
-    games = games.concat(arr);
-  });
+  games = tables.flatMap((table) => doTable(table.data));
   games = addWinner$1(games);
   return games
 };
@@ -331,7 +321,7 @@ const addMethod$1 = function (models) {
       return t === team || t.toLowerCase().includes(team.toLowerCase())
     }) || team;
     team = team.replace(/ /g, '_');
-    year = year || new Date().getFullYear();
+    year ||= new Date().getFullYear();
     // let nextYear = year % 100
     const page = `${year}_${team}_season`;
     return models.wtf.fetch(page).catch(console.log).then(parsePage)
@@ -449,25 +439,14 @@ const parseDate = function (row, title) {
 };
 
 const doSection = function (section) {
-  let tables = section.tables();
-  //do all subsection, too
-  section.children().forEach(s => {
-    tables = tables.concat(s.tables());
-  });
+  // Include the section's own tables and all subsections.
+  let tables = [section, ...section.children()].flatMap((s) => s.tables());
   //try to find a game log template
   if (tables.length === 0) {
     const templates = section.templates('game log section') || section.templates('game log month');
-    let out = [];
-    templates.forEach((m) => {
-      out = out.concat(m.data.data);
-    });
-    return out
+    return templates.flatMap((m) => m.data.data)
   } else {
-    let out = [];
-    tables = tables.forEach((t) => {
-      out = out.concat(t.keyValue());
-    });
-    return out
+    return tables.flatMap((t) => t.keyValue())
   }
 };
 
@@ -491,7 +470,7 @@ const parseGame = function (row, meta) {
   if (!res.opponent) {
     res.opponent = meta.team.includes(res.home) ? res.visitors : res.home;
   }
-  res.opponent = res.opponent || '';
+  res.opponent ||= '';
   res.opponent = res.opponent.replace(/@ /, '');
   res.opponent = res.opponent.trim();
   return res
@@ -571,10 +550,7 @@ const parseRoster = function (doc) {
     return players
   }
   //do all subsections, too
-  let tables = s.tables();
-  s.children().forEach((c) => {
-    tables = tables.concat(c.tables());
-  });
+  let tables = [s, ...s.children()].flatMap((c) => c.tables());
   if (!tables[0]) {
     return players
   }
@@ -614,7 +590,7 @@ const parse = function (doc) {
 
 const makePage = function (team, year) {
   team = team.replace(/ /g, '_');
-  year = year || new Date().getFullYear();
+  year ||= new Date().getFullYear();
   const nextYear = Number(String(year).substr(2, 4)) + 1;
   const page = `${year}–${nextYear}_${team}_season`; //2018–19_Toronto_Maple_Leafs_season
   return page

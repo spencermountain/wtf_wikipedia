@@ -1,5 +1,10 @@
 <!--
 #### [11.0.0 ]
+- **[change]** - target ES2022 in core and image builds; use native modern collection, object, string, and regex features
+- **[fix]** - preserve namespace ID 0 and accept numeric namespaces in public types
+- **[fix]** - preserve infobox coordinates on the equator and prime meridian
+- **[fix]** - own-property checks tolerate shadowed methods and null-prototype objects
+- **[fix]** - API fetchList handles an empty batch result without reducing an empty array
 - **[breaking]** - use native fetch, drop support for (ancient) Node 12–16
 - **[new]** - .json('sm/md/lg') methods
 - **[fix]** - typescript type issues

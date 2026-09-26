@@ -124,7 +124,7 @@ export default {
 
   hlist: (tmpl) => {
     let obj = parse(tmpl)
-    obj.list = obj.list || []
+    obj.list ||= []
     return obj.list.join(' · ')
   },
 
@@ -466,7 +466,7 @@ export default {
   'last word': (tmpl) => {
     let data = parse(tmpl, ['text'])
     let arr = (data.text || '').split(/ /g)
-    return arr[arr.length - 1] || ''
+    return arr.at(-1) || ''
   },
   replace: (tmpl) => {
     let data = parse(tmpl, ['text', 'from', 'to'])
@@ -671,7 +671,7 @@ export default {
   // boats
   ship: (tmpl) => {
     let { prefix, name, id } = parse(tmpl, ['prefix', 'name', 'id'])
-    prefix = prefix || ''
+    prefix ||= ''
     return id ? `[[${prefix.toUpperCase()} ${name}]]` : `[[${prefix.toUpperCase()} ${name}]]`
   },
   sclass: (tmpl) => {
@@ -1008,7 +1008,7 @@ export default {
       tenor: '𝄡',
       tenorclef: '𝄡',
     }
-    if (glyphs.hasOwnProperty(data.glyph)) {
+    if (Object.hasOwn(glyphs, data.glyph)) {
       return glyphs[data.glyph]
     }
     return ''

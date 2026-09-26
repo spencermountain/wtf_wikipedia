@@ -34,7 +34,7 @@ const cleanText = function (str) {
 }
 
 const skipSpanRow = function (row) {
-  row = row || []
+  row ||= []
   let len = row.length
   let hasTxt = row.filter((str) => str).length
   //does it have 3 empty spaces?
@@ -114,7 +114,7 @@ const firstRowHeader = function (rows) {
     return h
   })
   for (let i = 0; i < headers.length; i += 1) {
-    if (headings.hasOwnProperty(headers[i])) {
+    if (Object.hasOwn(headings, headers[i])) {
       rows.shift()
       return headers
     }
@@ -147,7 +147,7 @@ const parseTable = function (wiki) {
   let headers = findHeaders(rows)
   if (!headers || headers.length <= 1) {
     headers = firstRowHeader(rows)
-    let want = rows[rows.length - 1] || []
+    let want = rows.at(-1) || []
     //try the second row
     if (headers.length <= 1 && want.length > 2) {
       headers = firstRowHeader(rows.slice(1))

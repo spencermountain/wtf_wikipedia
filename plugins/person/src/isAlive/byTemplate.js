@@ -36,10 +36,10 @@ const byTemplate = function (doc) {
   for (let i = 0; i < templates.length; i++) {
     let title = templates[i].template || ''
     title = title.toLowerCase().trim()
-    if (isAlive.hasOwnProperty(title)) {
+    if (Object.hasOwn(isAlive, title)) {
       return true
     }
-    if (isDead.hasOwnProperty(title)) {
+    if (Object.hasOwn(isDead, title)) {
       return false
     }
   }

@@ -39,8 +39,8 @@ declare class Document {
   link(clue?: string | number): Link | null
   lists(clue?: number): List[]
   list(clue?: number): List | null
-  namespace(ns?: string): string | null
-  ns(ns?: string): string | null
+  namespace(ns?: string | number): string | number | null
+  ns(ns?: string | number): string | number | null
   options(): DocumentOptions
   pageID(id?: number): number | null
   paragraph(clue?: string | number): Paragraph | null
@@ -273,8 +273,8 @@ type DocumentOptions = {
   title?: string
   pageID?: number
   id?: number
-  namespace?: string
-  ns?: string
+  namespace?: string | number
+  ns?: string | number
   lang?: string
   language?: string
   domain?: string

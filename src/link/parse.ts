@@ -6,7 +6,7 @@ const link_reg = /\[\[(.{0,1600}?)\]\]([a-z]+)?/gi //allow dangling suffixes - "
 
 const external_links = function (links, str) {
   str.replace(external_link, function (raw, protocol, link, text) {
-    text = text || ''
+    text ||= ''
     links.push({
       type: 'external',
       site: protocol + link,
@@ -62,7 +62,7 @@ const internal_links = function (links, str) {
     }
     //finally, support [[link]]'s apostrophe
     if (suffix) {
-      obj.text = obj.text || obj.page
+      obj.text ||= obj.page
       obj.text += suffix.trim()
     }
     //keep the display-text, for lowercase pages

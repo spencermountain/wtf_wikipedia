@@ -30,6 +30,7 @@ test('found page metadata', (t) => {
   const doc = wtf('oh yeah', meta)
   t.equal(doc.revisionID(), meta.revisionID)
   t.equal(doc.pageID(), meta.pageID)
+  t.equal(doc.namespace(), meta.namespace)
   t.equal(doc.description(), meta.description)
   t.equal(doc.timestamp(), meta.timestamp)
   t.equal(doc.pageImage().data.file, meta.pageImage)
@@ -54,5 +55,16 @@ test('found page metadata', (t) => {
   t.notEqual(doc.wikidata(), meta.wikidata)
   t.notEqual(doc.language(), meta.wikidata)
 
+  t.end()
+})
+
+test('namespace zero survives initialization, aliases, and updates', (t) => {
+  t.equal(wtf('', { namespace: 0, ns: 1 }).namespace(), 0, 'explicit zero wins over alias')
+  t.equal(wtf('', { ns: 0 }).ns(), 0, 'numeric alias is preserved')
+  const doc = wtf('', { namespace: 'talk' })
+  t.equal(doc.namespace(0), 0, 'setter returns zero')
+  t.equal(doc.ns(), 0, 'alias reads zero')
+  t.equal(doc.ns('talk'), 'talk', 'string namespaces remain supported')
+  t.equal(wtf('').namespace(), null, 'missing namespace remains null')
   t.end()
 })

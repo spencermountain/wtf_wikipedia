@@ -18,7 +18,7 @@ const isStub = function (doc) {
     // look for i18n in last-word, like {{foo-stubo}}
     let words = name.split(/[- ]/)
     if (words.length > 1) {
-      let word = words[words.length - 1]
+      let word = words.at(-1)
       if (allStubs.has(word)) {
         return true
       }

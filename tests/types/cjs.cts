@@ -14,3 +14,8 @@ const plug: wtf.Plugin = (models: wtf.Models) => {
 }
 wtf.extend(plug)
 wtf.fetch(['a', 'b']).then((docs) => console.log(docs.length))
+
+// Namespace IDs from MediaWiki are numeric, including main namespace 0.
+const numericNamespace: string | number | null = wtf('', { namespace: 0 }).namespace()
+const aliasNamespace: string | number | null = wtf('', { ns: 0 }).ns(0)
+console.log(numericNamespace, aliasNamespace)

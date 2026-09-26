@@ -78,7 +78,7 @@ class Image {
   }
 
   thumbnail(size?) {
-    size = size || 300
+    size ||= 300
     return this.url() + '?width=' + size
   }
 
@@ -88,14 +88,14 @@ class Image {
 
   format() {
     let arr = this.file().split('.')
-    if (arr[arr.length - 1]) {
-      return arr[arr.length - 1].toLowerCase()
+    if (arr.at(-1)) {
+      return arr.at(-1).toLowerCase()
     }
     return null
   }
 
   json(options?) {
-    options = options || {}
+    options ||= {}
     return toJson(this, options)
   }
 

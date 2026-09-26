@@ -95,9 +95,7 @@ class Section {
   }
 
   sentences(clue?) {
-    return this.paragraphs().reduce((list, p) => {
-      return list.concat(p.sentences())
-    }, [])
+    return this.paragraphs().flatMap((p) => p.sentences())
   }
 
   paragraphs(clue?) {
@@ -124,7 +122,7 @@ class Section {
     })
 
     arr = arr
-      .reduce((acc, val) => acc.concat(val), []) //flatten the array
+      .flat()
       .filter((val) => val !== undefined) //filter out all the undefined from the flattened empty arrays
 
     if (typeof clue === 'string') {
@@ -165,33 +163,25 @@ class Section {
     let list = arr.map((tmpl) => tmpl.json())
     //try to get coord from infoboxes
     let inf = this.infoboxes()[0]
-    if (inf && inf.coordinates()) {
-      list.push(inf.coordinates())
+    const coordinates = inf?.coordinates()
+    if (coordinates) {
+      list.push(coordinates)
     }
     return list
   }
 
   lists(clue?) {
-    let arr = []
-    this.paragraphs().forEach((p) => {
-      arr = arr.concat(p.lists())
-    })
+    let arr = this.paragraphs().flatMap((p) => p.lists())
     return arr
   }
 
   interwiki() {
-    let arr = []
-    this.paragraphs().forEach((p) => {
-      arr = arr.concat(p.interwiki())
-    })
+    let arr = this.paragraphs().flatMap((p) => p.interwiki())
     return arr
   }
 
   images(clue?) {
-    let arr = []
-    this.paragraphs().forEach((p) => {
-      arr = arr.concat(p.images())
-    })
+    let arr = this.paragraphs().flatMap((p) => p.images())
     return arr
   }
 
@@ -205,13 +195,12 @@ class Section {
       return null
     }
 
-    let bads = {}
-    bads[this.title()] = true
+    let bads = new Set([this.title()])
 
     //remove children too
-    this.children().forEach((sec) => (bads[sec.title()] = true))
+    this.children().forEach((sec) => bads.add(sec.title()))
     let sections = this._doc.sections()
-    sections = sections.filter((sec) => bads.hasOwnProperty(sec.title()) !== true)
+    sections = sections.filter((sec) => !bads.has(sec.title()))
 
     this._doc._sections = sections
     return this._doc

@@ -31,25 +31,14 @@ const parseDate = function (row, title) {
 }
 
 const doSection = function (section) {
-  let tables = section.tables()
-  //do all subsection, too
-  section.children().forEach(s => {
-    tables = tables.concat(s.tables())
-  })
+  // Include the section's own tables and all subsections.
+  let tables = [section, ...section.children()].flatMap((s) => s.tables())
   //try to find a game log template
   if (tables.length === 0) {
     const templates = section.templates('game log section') || section.templates('game log month')
-    let out = []
-    templates.forEach((m) => {
-      out = out.concat(m.data.data)
-    })
-    return out
+    return templates.flatMap((m) => m.data.data)
   } else {
-    let out = []
-    tables = tables.forEach((t) => {
-      out = out.concat(t.keyValue())
-    })
-    return out
+    return tables.flatMap((t) => t.keyValue())
   }
 }
 
@@ -73,7 +62,7 @@ const parseGame = function (row, meta) {
   if (!res.opponent) {
     res.opponent = meta.team.includes(res.home) ? res.visitors : res.home
   }
-  res.opponent = res.opponent || ''
+  res.opponent ||= ''
   res.opponent = res.opponent.replace(/@ /, '')
   res.opponent = res.opponent.trim()
   return res

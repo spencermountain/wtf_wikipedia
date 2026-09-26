@@ -4,7 +4,7 @@ import textTmpl from './text-only/index.ts'
 import dataTmpl from './data-only/index.ts'
 import bothTmpl from './text-and-data/index.ts'
 
-let templates = Object.assign({}, textTmpl, dataTmpl, bothTmpl)
+let templates = { ...textTmpl, ...dataTmpl, ...bothTmpl }
 
 Object.keys(aliases).forEach((k) => {
   if (templates[aliases[k]] === undefined) {

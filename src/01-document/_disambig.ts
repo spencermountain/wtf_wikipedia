@@ -1,6 +1,6 @@
 //alt disambig-templates en-wikipedia uses
 let d = ' disambiguation'
-const templates = [
+const templates = new Set([
   'dab',
   'dab',
   'disamb',
@@ -38,8 +38,5 @@ const templates = [
   'synagogue' + d,
   'taxonomic authority' + d,
   'taxonomy' + d,
-].reduce((h, str) => {
-  h[str] = true
-  return h
-}, {})
+])
 export default templates

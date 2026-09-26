@@ -1,12 +1,11 @@
 import encodeObj from '../_lib/encode.ts'
 
 const toJson = function (infobox, options) {
-  let json = Object.keys(infobox.data).reduce((h, k) => {
-    if (infobox.data[k]) {
-      h[k] = infobox.data[k].json()
-    }
-    return h
-  }, {})
+  let json = Object.fromEntries(
+    Object.keys(infobox.data)
+      .filter((k) => infobox.data[k])
+      .map((k) => [k, infobox.data[k].json()])
+  )
 
   //support mongo-encoding keys
   if (options.encode === true) {

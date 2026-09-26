@@ -4,7 +4,7 @@ import Image from '../../image/Image.ts'
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
 //- not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
 const parseGallery = function (catcher, doc, section) {
-  catcher.text = catcher.text.replace(/<gallery([^>]*)>([\s\S]+)<\/gallery>/g, (_, _attrs, inside) => {
+  catcher.text = catcher.text.replace(/<gallery([^>]*)>(.+)<\/gallery>/gs, (_, _attrs, inside) => {
     let images = inside.split(/\n/g)
     images = images.filter((str) => str && str.trim() !== '')
 

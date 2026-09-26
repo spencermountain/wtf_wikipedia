@@ -19,7 +19,7 @@ const byTitle = function (doc) {
   inside = inside.trim()
 
   //look at known parentheses
-  if (mappings.titles.hasOwnProperty(inside)) {
+  if (Object.hasOwn(mappings.titles, inside)) {
     return [{ type: mappings.titles[inside], reason: inside }]
   }
 

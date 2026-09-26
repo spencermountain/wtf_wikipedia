@@ -21,3 +21,22 @@ jobs:
           pnpm run test:all
         env:
           CI: true
+
+  minimum-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+          cache: pnpm
+      - name: Build published artifacts with development tools
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run build:all
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.0.0'
+      - name: Verify built packages on the minimum supported Node
+        run: npm run test:runtime

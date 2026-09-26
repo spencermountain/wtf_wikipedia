@@ -17,7 +17,7 @@ const softRedirect = function (doc) {
 
 //
 const toLatex = function (options) {
-  options = Object.assign({}, defaults, options)
+  options = { ...defaults, ...options }
   let out = ''
   //if it's a redirect page, give it a 'soft landing':
   if (this.isRedirect() === true) {

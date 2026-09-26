@@ -39,10 +39,7 @@ class Infobox {
   }
 
   links(n?) {
-    let arr = []
-    Object.keys(this.data).forEach((k) => {
-      this.data[k].links().forEach((l) => arr.push(l))
-    })
+    let arr = Object.values(this.data).flatMap((sentence: Sentence) => sentence.links())
     if (typeof n === 'string') {
       //grab a link like .links('Fortnight')
       n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
@@ -103,7 +100,7 @@ class Infobox {
   }
 
   json(options?) {
-    options = options || {}
+    options ||= {}
     return toJson(this, options)
   }
 
@@ -112,12 +109,11 @@ class Infobox {
   }
 
   keyValue() {
-    return Object.keys(this.data).reduce((h, k) => {
-      if (this.data[k]) {
-        h[k] = this.data[k].text()
-      }
-      return h
-    }, {})
+    return Object.fromEntries(
+      Object.keys(this.data)
+        .filter((k) => this.data[k])
+        .map((k) => [k, this.data[k].text()])
+    )
   }
 
   coordinates() {
@@ -126,7 +122,7 @@ class Infobox {
       let a = latLngs[i]
       let lat = this.get(a[0])?.json()?.number
       let lon = this.get(a[1])?.json()?.number
-      if (lat && lon) {
+      if (typeof lat === 'number' && typeof lon === 'number' && Number.isFinite(lat) && Number.isFinite(lon)) {
         return { template: 'infobox/lat-long', lat, lon }
       }
     }

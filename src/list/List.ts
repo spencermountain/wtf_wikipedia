@@ -30,10 +30,7 @@ class List {
   }
 
   links(clue?) {
-    let links = []
-    this.lines().forEach((s) => {
-      links = links.concat(s.links())
-    })
+    let links = this.lines().flatMap((s) => s.links())
     if (typeof clue === 'string') {
       //grab a link like .links('Fortnight')
       clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it

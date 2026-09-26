@@ -42,7 +42,7 @@ Metadata get/setters (call with an argument to set):
 | `.wikidata(id?)` | `string \| null` | |
 | `.domain(str?)` | `string \| null` | |
 | `.language(lang?)` / `.lang()` | `string \| null` | |
-| `.namespace(ns?)` / `.ns()` | `string \| null` | |
+| `.namespace(ns?)` / `.ns()` | `string \| number \| null` | Preserves numeric namespace IDs, including `0`. |
 | `.url()` | `string \| null` | built from title + lang + domain |
 | `.description(str?)` | `string \| null` | the 'short description' |
 | `.timestamp(iso?)` | `string \| null` | last-edit time, when fetched |

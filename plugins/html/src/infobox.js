@@ -11,7 +11,7 @@ const dontDo = {
 
 //
 const infobox = function (options) {
-  options = Object.assign({}, defaults, options)
+  options = { ...defaults, ...options }
   let html = '<table class="infobox">\n'
   html += '  <thead>\n'
   html += '  </thead>\n'

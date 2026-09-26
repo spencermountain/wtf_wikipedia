@@ -26,12 +26,7 @@ class Table {
   }
 
   links(n?) {
-    let links = []
-    this.data.forEach((r) => {
-      Object.keys(r).forEach((k) => {
-        links = links.concat(r[k].links())
-      })
-    })
+    let links = this.data.flatMap((row) => Object.keys(row).flatMap((key) => row[key].links()))
     if (typeof n === 'string') {
       //grab a link like .links('Fortnight')
       n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
@@ -44,10 +39,7 @@ class Table {
   get(keys?) {
     // normalize mappings
     let have = this.data[0] || {}
-    let mapping = Object.keys(have).reduce((h, k) => {
-      h[normalize(k)] = k
-      return h
-    }, {})
+    let mapping = Object.fromEntries(Object.keys(have).map((k) => [normalize(k), k]))
     // string gets a flat-list
     if (typeof keys === 'string') {
       let key = normalize(keys)
@@ -59,14 +51,7 @@ class Table {
     // array gets obj-list
     keys = keys.map(normalize).map((k) => mapping[k] || k)
     return this.data.map((row) => {
-      return keys.reduce((h, k) => {
-        if (row[k]) {
-          h[k] = row[k].text()
-        } else {
-          h[k] = ''
-        }
-        return h
-      }, {})
+      return Object.fromEntries(keys.map((k) => [k, row[k] ? row[k].text() : '']))
     })
   }
 

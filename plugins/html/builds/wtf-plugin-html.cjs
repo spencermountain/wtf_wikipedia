@@ -23,7 +23,7 @@ const softRedirect = function (doc) {
 
 //turn a Doc object into a HTML string
 const toHtml$5 = function (options) {
-  options = Object.assign({}, defaults$4, options);
+  options = { ...defaults$4, ...options };
   let html = '';
   //add page title
   if (options.title === true && this._title) {
@@ -65,7 +65,7 @@ const defaults$3 = {
 };
 
 const doSection = function (options) {
-  options = Object.assign({}, defaults$3, options);
+  options = { ...defaults$3, ...options };
   let html = '';
   //make the header
   if (options.headers === true && this.title()) {
@@ -122,7 +122,7 @@ const defaults$2 = {
 };
 
 const toHtml$4 = function (options) {
-  options = Object.assign({}, defaults$2, options);
+  options = { ...defaults$2, ...options };
   let html = '';
   if (options.sentences === true) {
     html += this.sentences()
@@ -165,7 +165,7 @@ const defaults$1 = {
 };
 // create links, bold, italic in html
 const doSentence = function (options) {
-  options = Object.assign({}, defaults$1, options);
+  options = { ...defaults$1, ...options };
   let text = this.text();
   //turn links into <a href>
   if (options.links === true) {
@@ -214,7 +214,7 @@ const dontDo = {
 
 //
 const infobox = function (options) {
-  options = Object.assign({}, defaults, options);
+  options = { ...defaults, ...options };
   let html = '<table class="infobox">\n';
   html += '  <thead>\n';
   html += '  </thead>\n';

@@ -1,8 +1,8 @@
 //center-pad each cell, to make the table more legible
 const pad = (str, cellWidth) => {
-  str = str || ''
+  str ||= ''
   str = String(str)
-  cellWidth = cellWidth || 15
+  cellWidth ||= 15
   let diff = cellWidth - str.length
   diff = Math.ceil(diff / 2)
   for (let i = 0; i < diff; i += 1) {

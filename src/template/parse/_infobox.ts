@@ -15,7 +15,7 @@ const yearIn = /^year in [A-Z]/i
 //and https://en.wikipedia.org/wiki/Category:Infobox_templates
 const isInfobox = function (name) {
   //known
-  if (infoboxList.hasOwnProperty(name) === true) {
+  if (Object.hasOwn(infoboxList, name) === true) {
     return true
   }
   if (i18nReg.test(name)) {

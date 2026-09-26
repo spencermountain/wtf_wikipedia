@@ -7,7 +7,7 @@ const defaults = {
 }
 //map '==' depth to 'subsection', 'subsubsection', etc
 const doSection = function (options) {
-  options = Object.assign({}, defaults, options)
+  options = { ...defaults, ...options }
   let out = ''
   let num = 1
 

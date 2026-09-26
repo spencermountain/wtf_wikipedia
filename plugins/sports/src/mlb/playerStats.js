@@ -8,11 +8,7 @@ const playerStats = function (doc) {
     return players
   }
 
-  s.children().forEach((c) => {
-    c.tables().forEach((t) => {
-      players = players.concat(t.keyValue())
-    })
-  })
+  players = s.children().flatMap((c) => c.tables().flatMap((t) => t.keyValue()))
   const res = {
     batters: [],
     pitchers: [],

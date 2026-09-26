@@ -6,7 +6,7 @@ const defaults = {
 }
 // create links, bold, italic in latex
 const toLatex = function (options) {
-  options = Object.assign({}, defaults, options)
+  options = { ...defaults, ...options }
   let text = this.text()
   //turn links back into links
   if (options.links === true && this.links().length > 0) {

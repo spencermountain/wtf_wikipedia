@@ -9,7 +9,7 @@ const fromSection = function (doc) {
   })
   for (let i = 0; i < titles.length; i++) {
     const title = titles[i]
-    if (mappings.sections.hasOwnProperty(title)) {
+    if (Object.hasOwn(mappings.sections, title)) {
       found.push({ type: mappings.sections[title], reason: title })
     }
   }

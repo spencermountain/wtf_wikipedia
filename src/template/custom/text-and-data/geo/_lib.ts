@@ -71,7 +71,7 @@ const findLatLng = function (arr) {
 }
 
 const parseParams = function (obj) {
-  obj.list = obj.list || []
+  obj.list ||= []
   obj.list = obj.list.map((str) => {
     let num = Number(str)
     if (!isNaN(num)) {
@@ -80,7 +80,7 @@ const parseParams = function (obj) {
     //these are weird
     let split = str.split(/:/)
     if (split.length > 1) {
-      obj.props = obj.props || {}
+      obj.props ||= {}
       obj.props[split[0]] = split.slice(1).join(':')
       return null
     }

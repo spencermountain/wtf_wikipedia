@@ -3,7 +3,7 @@ let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round',
 
 //https://en.wikipedia.org/wiki/Template:MMA_record_start
 const parseMMA = function (catcher) {
-  catcher.text = catcher.text.replace(/\{\{mma record start[\s\S]+?\{\{end\}\}/gi, (tmpl) => {
+  catcher.text = catcher.text.replace(/\{\{mma record start.+?\{\{end\}\}/gis, (tmpl) => {
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
     tmpl = tmpl.replace(/\{\{end\}\}/i, '')
 

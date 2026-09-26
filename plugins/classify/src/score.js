@@ -2,7 +2,7 @@
 const topk = function (arr) {
   const obj = {}
   arr.forEach((a) => {
-    obj[a] = obj[a] || 0
+    obj[a] ||= 0
     obj[a] += 1
   })
   let res = Object.keys(obj).map((k) => [k, obj[k]])

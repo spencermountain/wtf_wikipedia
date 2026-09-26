@@ -4,7 +4,7 @@ import parse from './parse.js'
 
 const makePage = function (team, year) {
   team = team.replace(/ /g, '_')
-  year = year || new Date().getFullYear()
+  year ||= new Date().getFullYear()
   const nextYear = Number(String(year).substr(2, 4)) + 1
   const page = `${year}–${nextYear}_${team}_season` //2018–19_Toronto_Maple_Leafs_season
   return page

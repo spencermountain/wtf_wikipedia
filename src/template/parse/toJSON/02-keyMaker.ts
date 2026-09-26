@@ -16,7 +16,7 @@ const parseKey = function (str) {
   key = key.toLowerCase().trim()
   let val = parts.slice(1).join('=')
   //don't let it be called 'template'..
-  if (reserved.hasOwnProperty(key)) {
+  if (Object.hasOwn(reserved, key)) {
     key = '_' + key
   }
   return {
@@ -49,7 +49,7 @@ const keyMaker = function (arr, order) {
       let key = order[keyIndex]
       h[key] = str
     } else {
-      h.list = h.list || []
+      h.list ||= []
       h.list.push(str)
     }
 

@@ -21638,8 +21638,8 @@ const plugin = function (models) {
   // add a new method to main class
   models.Doc.prototype.summary = function (options) {
     const doc = this;
-    options = options || {};
-    options = Object.assign({}, defaults, options);
+    options ||= {};
+    options = { ...defaults, ...options };
 
     // generate from {{short description}} template
     let txt = '';
