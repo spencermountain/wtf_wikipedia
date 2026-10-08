@@ -1,19 +1,9 @@
 import { trim_whitespace } from '../_lib/helpers.js'
+import postprocess from '../_lib/postprocess.js'
 import parseLinks from '../link/index.js'
 import parseFmt from './formatting.js'
 import Sentence from './Sentence.js'
 import sentenceParser from './parse.js'
-
-function postprocess(line) {
-  //remove empty parentheses (sometimes caused by removing templates)
-  line = line.replace(/\([,;: ]*\)/g, '')
-  //these semi-colons in parentheses are particularly troublesome
-  line = line.replace(/\( *(; ?)+/g, '(')
-  //dangling punctuation
-  line = trim_whitespace(line)
-  line = line.replace(/ +\.$/, '.')
-  return line
-}
 
 function fromText(str) {
   let obj = {

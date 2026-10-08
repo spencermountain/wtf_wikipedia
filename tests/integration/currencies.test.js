@@ -6,7 +6,7 @@ test('currency-templates', function (t) {
   t.equal(doc.text(), 'hello GB£123.45 world.', 'gbp')
 
   doc = wtf('and now {{US$|21.20&nbsp;billion}}')
-  t.equal(doc.text(), 'and now US$21.20 billion', 'usd')
+  t.equal(doc.text(), 'and now US$21.20\xa0billion', 'usd')
 
   doc = wtf('{{Currency|1,000|JPY}} world')
   t.equal(doc.text(), '¥1,000 world', 'currency yen')

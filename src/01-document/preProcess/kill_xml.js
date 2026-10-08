@@ -43,8 +43,15 @@ const kill_xml = function (wiki) {
   wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, `{{sup|$1}}`)
   wiki = wiki.replace(/<blockquote>(.*?)<\/blockquote>/g, `{{blockquote|text=$1}}`)
 
+  // convert `nowiki` content
+  wiki = wiki.replace(
+    /<nowiki>([\s\S]*?)<\/nowiki>/gi,
+    // replace all ASCII punctuation and symbols with HTML entities so they pass through literally
+    (_, content) => content.replace(/[!-\/:-@\[-`\{-~]/g, (m) => `&#${m.charCodeAt(0)};`)
+  )
+
   //some formatting xml, we'll keep their insides though
-  wiki = wiki.replace(/ ?<[ /]?(p|sub|sup|span|nowiki|div|table|br|tr|td|th|pre|pre2|hr|u)[ /]?> ?/g, ' ') //<sub>, </sub>
+  wiki = wiki.replace(/ ?<[ /]?(p|sub|sup|span|div|table|br|tr|td|th|pre|pre2|hr|u)[ /]?> ?/g, ' ') //<sub>, </sub>
   wiki = wiki.replace(/ ?<[ /]?(abbr|bdi|bdo|cite|del|dfn|em|ins|kbd|mark|q|s|small)[ /]?> ?/g, ' ') //<abbr>, </abbr>
   wiki = wiki.replace(/ ?<[ /]?h[0-9][ /]?> ?/g, ' ') //<h2>, </h2>
   wiki = wiki.replace(/ ?< ?br ?\/> ?/g, '\n') //<br />
