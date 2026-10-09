@@ -14,5 +14,5 @@ declare module 'wtf_wikipedia' {
 }
 
 /** adds .markdown() to documents and their parts - pass to wtf.extend() */
-declare const markdownPlugin: Plugin
+declare const markdownPlugin: Plugin & { version: string }
 export default markdownPlugin

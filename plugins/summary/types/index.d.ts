@@ -20,5 +20,5 @@ declare module 'wtf_wikipedia' {
   }
 }
 
-declare const summaryPlugin: Plugin
+declare const summaryPlugin: Plugin & { version: string }
 export default summaryPlugin

@@ -1,3 +1,4 @@
+import version from './_version.js'
 import byInfobox from './byInfobox/index.js'
 import byCategory from './byCategory/index.js'
 import byTemplate from './byTemplate/index.js'
@@ -38,4 +39,6 @@ const plugin = function (models) {
     return score(res)
   }
 }
+plugin.version = version
+
 export default plugin

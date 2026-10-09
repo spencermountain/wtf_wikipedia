@@ -1,4 +1,6 @@
 /*! wtf-plugin-i18n 1.0.2 MIT */
+var version = '1.0.2';
+
 var citation = [
   'atsauce',
   'chú thích',
@@ -882,5 +884,6 @@ const plugin = function (_models, templates) {
     });
   });
 };
+plugin.version = version;
 
 export { plugin as default };

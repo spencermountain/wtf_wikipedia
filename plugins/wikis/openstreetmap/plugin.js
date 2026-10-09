@@ -1,3 +1,4 @@
+import version from './_version.js'
 const boxes = {
   KeyDescription: true,
   ValueDescription: true,
@@ -13,4 +14,6 @@ const plugin = (_models, _templates, infoboxes) => {
   //   return
   // }
 }
+plugin.version = version
+
 export default plugin

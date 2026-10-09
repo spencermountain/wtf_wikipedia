@@ -1,3 +1,4 @@
+import version from './_version.js'
 import birthDate from './birthDate/index.js'
 import birthPlace from './birthPlace/index.js'
 import isAlive from './isAlive/index.js'
@@ -25,4 +26,6 @@ const addMethod = function (models) {
     return nationality(this)
   }
 }
+addMethod.version = version
+
 export default addMethod

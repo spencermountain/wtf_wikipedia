@@ -1,4 +1,6 @@
 /*! wtf-plugin-person 1.0.0 MIT */
+var version = '1.0.0';
+
 // from ./plugins/classify/infobox, April 15 2020
 // https://en.wikipedia.org/wiki/Category:People_and_person_infobox_templates
 var mapping = {
@@ -540,5 +542,6 @@ const addMethod = function (models) {
     return getNationality(this)
   };
 };
+addMethod.version = version;
 
 export { addMethod as default };

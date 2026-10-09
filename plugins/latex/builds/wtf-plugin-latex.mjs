@@ -1,4 +1,6 @@
 /*! wtf-plugin-latex 1.0.0 MIT */
+var version = '1.0.0';
+
 const defaults$4 = {
   infoboxes: true,
   sections: true
@@ -335,5 +337,6 @@ const plugin = function (models) {
   models.Reference.prototype.latex = toLatex;
   models.Table.prototype.latex = doTable;
 };
+plugin.version = version;
 
 export { plugin as default };

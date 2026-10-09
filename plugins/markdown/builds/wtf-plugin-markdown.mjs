@@ -1,4 +1,6 @@
 /*! wtf-plugin-markdown 1.0.1 MIT */
+var version = '1.0.1';
+
 const defaults$4 = {
   redirects: true,
   infoboxes: true,
@@ -346,5 +348,6 @@ const plugin = function (models) {
   models.List.prototype.markdown = toMarkdown$1;
   models.Reference.prototype.markdown = toMarkdown;
 };
+plugin.version = version;
 
 export { plugin as default };

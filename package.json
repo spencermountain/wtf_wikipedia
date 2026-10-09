@@ -54,6 +54,7 @@
   "packageManager": "pnpm@12.5.1",
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
+    "version": "node ./scripts/version.js",
     "build:all": "pnpm run build && pnpm -r run build",
     "check": "tsc --noEmit",
     "test:types": "tsc -p ./tests/types && tsc -p ./tests/types/node10.tsconfig.json && tsc -p ./tests/types/plugins.tsconfig.json && tsc -p ./tests/types/plugins-cjs.tsconfig.json",

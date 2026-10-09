@@ -1,6 +1,8 @@
 /*! wtf-plugin-html 1.0.0 MIT */
 'use strict';
 
+var version = '1.0.0';
+
 const defaults$4 = {
   title: true,
   infoboxes: true,
@@ -352,5 +354,6 @@ const plugin = function (models) {
 
   // models.Template.html = function(opts) {}
 };
+plugin.version = version;
 
 module.exports = plugin;

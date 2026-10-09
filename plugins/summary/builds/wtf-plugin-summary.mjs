@@ -1,4 +1,6 @@
 /*! wtf-plugin-summary 1.0.0 MIT */
+var version$1 = '1.0.0';
+
 const methods$o = {
   one: {},
   two: {},
@@ -21692,5 +21694,6 @@ const plugin = function (models) {
     return 'Present'
   };
 };
+plugin.version = version$1;
 
 export { plugin as default };

@@ -1,5 +1,5 @@
 import type { Plugin } from 'wtf_wikipedia'
 
 /** registers wiktionary-specific templates and infoboxes - pass to wtf.extend() */
-declare const wiktionaryPlugin: Plugin
+declare const wiktionaryPlugin: Plugin & { version: string }
 export default wiktionaryPlugin

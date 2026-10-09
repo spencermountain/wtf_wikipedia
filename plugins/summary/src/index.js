@@ -1,3 +1,4 @@
+import version from './_version.js'
 import nlp from 'compromise'
 import fromTemplate from './template/index.js'
 import fromSentence from './sentence/index.js'
@@ -76,4 +77,6 @@ const plugin = function (models) {
     return 'Present'
   }
 }
+plugin.version = version
+
 export default plugin

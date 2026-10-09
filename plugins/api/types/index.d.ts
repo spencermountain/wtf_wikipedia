@@ -23,5 +23,5 @@ declare module 'wtf_wikipedia' {
 }
 
 /** adds api-fetching helpers to documents and to wtf itself - pass to wtf.extend() */
-declare const apiPlugin: Plugin
+declare const apiPlugin: Plugin & { version: string }
 export default apiPlugin

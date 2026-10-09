@@ -15,5 +15,5 @@ declare module 'wtf_wikipedia' {
 }
 
 /** adds .makeWikitext() to documents and their parts - pass to wtf.extend() */
-declare const wikitextPlugin: Plugin
+declare const wikitextPlugin: Plugin & { version: string }
 export default wikitextPlugin

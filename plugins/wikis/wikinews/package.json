@@ -14,5 +14,9 @@
   },
   "peerDependencies": {
     "wtf_wikipedia": ">=10.5.0"
+  },
+  "scripts": {
+    "version": "node ./scripts/version.js",
+    "build": "node ./scripts/version.js"
   }
 }

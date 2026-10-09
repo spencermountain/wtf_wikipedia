@@ -1,6 +1,8 @@
 /*! wtf-plugin-disambig 1.0.0 MIT */
 'use strict';
 
+var version = '1.0.0';
+
 // const birthDate = require('./birthDate')
 const shouldSkip = /see also/;
 
@@ -93,5 +95,6 @@ const addMethod = function (models) {
   // alias
   models.Doc.prototype.disambig = models.Doc.prototype.disambiguation;
 };
+addMethod.version = version;
 
 module.exports = addMethod;

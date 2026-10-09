@@ -1,6 +1,8 @@
 /*! wtf-plugin-classify 3.0.0 MIT */
 'use strict';
 
+var version = '3.0.0';
+
 var AmericanFootballPlayer = {
   name: 'AmericanFootballPlayer',
   //
@@ -3690,5 +3692,6 @@ const plugin = function (models) {
     return getScore(res)
   };
 };
+plugin.version = version;
 
 module.exports = plugin;

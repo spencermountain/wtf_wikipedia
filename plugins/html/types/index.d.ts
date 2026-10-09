@@ -14,5 +14,5 @@ declare module 'wtf_wikipedia' {
 }
 
 /** adds .html() to documents and their parts - pass to wtf.extend() */
-declare const htmlPlugin: Plugin
+declare const htmlPlugin: Plugin & { version: string }
 export default htmlPlugin

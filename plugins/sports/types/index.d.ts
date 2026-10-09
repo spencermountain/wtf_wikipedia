@@ -14,3 +14,5 @@ declare module 'wtf_wikipedia' {
 /** pass each to wtf.extend() */
 export declare const mlb: Plugin
 export declare const nhl: Plugin
+
+export declare const version: string

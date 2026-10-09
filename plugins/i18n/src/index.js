@@ -1,3 +1,4 @@
+import version from './_version.js'
 import citation from './data/citation.js'
 import coord from './data/coord.js'
 import flag from './data/flag.js'
@@ -53,4 +54,6 @@ const plugin = function (_models, templates) {
     })
   })
 }
+plugin.version = version
+
 export default plugin

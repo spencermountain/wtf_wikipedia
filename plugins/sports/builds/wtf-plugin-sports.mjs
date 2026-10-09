@@ -1,4 +1,6 @@
 /*! wtf-plugin-sports 0.0.2 MIT */
+var _version = '0.0.2';
+
 var teams$1 = [
   "Arizona Diamondbacks",
   "Atlanta Braves",
@@ -609,4 +611,4 @@ const addMethod = function (models) {
   models.Doc.nhlSeason = parse;
 };
 
-export { addMethod$1 as mlb, addMethod as nhl };
+export { addMethod$1 as mlb, addMethod as nhl, _version as version };

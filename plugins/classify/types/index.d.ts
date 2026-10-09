@@ -15,5 +15,5 @@ declare module 'wtf_wikipedia' {
   }
 }
 
-declare const classifyPlugin: Plugin
+declare const classifyPlugin: Plugin & { version: string }
 export default classifyPlugin

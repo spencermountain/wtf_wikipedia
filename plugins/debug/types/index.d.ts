@@ -11,5 +11,5 @@ declare module 'wtf_wikipedia' {
   }
 }
 
-declare const debugPlugin: Plugin
+declare const debugPlugin: Plugin & { version: string }
 export default debugPlugin

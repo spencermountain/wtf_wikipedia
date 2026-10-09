@@ -14,5 +14,5 @@ declare module 'wtf_wikipedia' {
 }
 
 /** adds .latex() to documents and their parts - pass to wtf.extend() */
-declare const latexPlugin: Plugin
+declare const latexPlugin: Plugin & { version: string }
 export default latexPlugin

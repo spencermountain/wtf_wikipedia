@@ -3,6 +3,7 @@
 type Esm = typeof import('./index.js', { with: { 'resolution-mode': 'import' } })
 
 declare const sports: {
+  version: Esm['version']
   mlb: Esm['mlb']
   nhl: Esm['nhl']
 }

@@ -19,5 +19,5 @@ declare module 'wtf_wikipedia' {
   }
 }
 
-declare const disambigPlugin: Plugin
+declare const disambigPlugin: Plugin & { version: string }
 export default disambigPlugin

@@ -1,4 +1,6 @@
 /*! wtf-plugin-debug 0.0.1 MIT */
+var version = '0.0.1';
+
 const plugin = function (models) {
   // look for unprocessed table wikitext
   models.Doc.prototype.hasBadTable = function () {
@@ -76,5 +78,7 @@ const plugin = function (models) {
     return this.hasBadTable() || this.hasNoText() || this.hasIPAPunct() || this.isLongStub()
   };
 };
+
+plugin.version = version;
 
 export { plugin as default };

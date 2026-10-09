@@ -1,6 +1,8 @@
 /*! wtf-plugin-api 2.0.1 MIT */
 'use strict';
 
+var version = '2.0.1';
+
 /**
  * factory for header options
  *
@@ -582,5 +584,6 @@ const addMethod = function (models) {
   // aliases
   models.wtf.random = models.wtf.getRandomPage;
 };
+addMethod.version = version;
 
 module.exports = addMethod;

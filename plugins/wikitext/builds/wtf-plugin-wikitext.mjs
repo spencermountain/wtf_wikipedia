@@ -1,4 +1,6 @@
 /*! wtf-plugin-wikitext 2.0.0 MIT */
+var version = '2.0.0';
+
 const defaults$3 = {
   images: true,
   tables: true,
@@ -295,5 +297,6 @@ const plugin = function (models) {
   models.List.prototype.makeWikitext = toWiki$2;
   models.Reference.prototype.makeWikitext = toWiki$1;
 };
+plugin.version = version;
 
 export { plugin as default };

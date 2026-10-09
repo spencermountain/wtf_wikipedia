@@ -18,5 +18,5 @@ declare module 'wtf_wikipedia' {
   }
 }
 
-declare const personPlugin: Plugin
+declare const personPlugin: Plugin & { version: string }
 export default personPlugin

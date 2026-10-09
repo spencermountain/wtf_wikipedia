@@ -21,7 +21,7 @@
     <img src="https://img.shields.io/npm/v/wtf_wikipedia.svg?style=flat-square" />
   </a>
   <a href="https://bundlephobia.com/result?p=wtf_wikipedia">
-    <img src="https://img.shields.io/bundlephobia/min/wtf_wikipedia" />
+    <img src="https://badgen.net/bundlejs/min/wtf_wikipedia" />
   </a>
   </div>
 </div>

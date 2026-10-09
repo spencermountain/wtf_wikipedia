@@ -1,3 +1,4 @@
+import version from './_version.js'
 import getRedirects from './getRedirects.js'
 import getIncoming from './getIncoming.js'
 import getPageViews from './getPageViews.js'
@@ -44,4 +45,6 @@ const addMethod = function (models) {
   // aliases
   models.wtf.random = models.wtf.getRandomPage
 }
+addMethod.version = version
+
 export default addMethod

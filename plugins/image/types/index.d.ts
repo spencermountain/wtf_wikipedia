@@ -15,5 +15,5 @@ declare module 'wtf_wikipedia' {
   }
 }
 
-declare const imagePlugin: Plugin
+declare const imagePlugin: Plugin & { version: string }
 export default imagePlugin

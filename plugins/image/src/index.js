@@ -1,3 +1,4 @@
+import version from './_version.js'
 import commonsURL from './url-hash.js'
 import imgExists from './api/img-exists.js'
 import mainImage from './mainImage.js'
@@ -14,4 +15,6 @@ const addMethod = function (models) {
   const oldImages = models.Doc.prototype.images // store the old method to use in the new one
   models.Doc.prototype.images = images(oldImages)
 }
+addMethod.version = version
+
 export default addMethod

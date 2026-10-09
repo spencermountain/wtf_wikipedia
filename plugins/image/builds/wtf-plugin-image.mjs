@@ -1,4 +1,6 @@
 /*! wtf-plugin-image 1.1.1 MIT */
+var version = "1.1.1";
+
 function safeAdd(x, y) {
   const lsw = (x & 65535) + (y & 65535);
   const msw = (x >> 16) + (y >> 16) + (lsw >> 16);
@@ -490,5 +492,6 @@ const addMethod = function(models) {
   const oldImages = models.Doc.prototype.images;
   models.Doc.prototype.images = images(oldImages);
 };
+addMethod.version = version;
 
 export { addMethod as default };

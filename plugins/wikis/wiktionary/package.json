@@ -11,7 +11,9 @@
   "types": "./types/index.d.ts",
   "scripts": {
     "test": "tape ./*.test.js | tap-dancer",
-    "testb": "TESTENV=prod tape ./*.test.js | tap-dancer"
+    "testb": "TESTENV=prod tape ./*.test.js | tap-dancer",
+    "version": "node ./scripts/version.js",
+    "build": "node ./scripts/version.js"
   },
   "devDependencies": {
     "tap-dancer": "0.3.4",
