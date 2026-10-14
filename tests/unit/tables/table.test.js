@@ -84,6 +84,28 @@ test('simple table', (t) => {
   t.end()
 })
 
+test('template list values stay in their table cell', (t) => {
+  const input = `{| class="wikitable"
+|-
+! AAA
+! BBB
+! CCC
+! DDD
+|-
+| {{unbulleted list|A1}}
+| {{unbulleted list|B1|B2}}
+| {{ubl|{{Lbb|C1}}|{{nowrap|{{Lbc|C2|C3}}}}}}
+| {{unbulleted list|[[D1]],|[[D2]]}}
+|}`
+  const row = wtf(input).table(0).data[0]
+  t.deepEqual(Object.keys(row), ['AAA', 'BBB', 'CCC', 'DDD'], 'template lines do not create extra columns')
+  t.equal(row.AAA.text(), 'A1', 'first cell')
+  t.equal(row.BBB.text().includes('B1') && row.BBB.text().includes('B2'), true, 'list stays in second cell')
+  t.equal(row.CCC.text().includes('C1') && row.CCC.text().includes('C2'), true, 'nested templates stay in third cell')
+  t.equal(row.DDD.text().includes('D1') && row.DDD.text().includes('D2'), true, 'linked list stays in fourth cell')
+  t.end()
+})
+
 test('multiplication table', (t) => {
   const mult = `{| class="wikitable" style="text-align: center; width: 200px; height: 200px;"
 |+ Multiplication table

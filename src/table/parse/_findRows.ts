@@ -33,6 +33,12 @@ const findRows = function (lines) {
     } else {
       // remove leading | or ! for the ||/!! splitting
       let startChar = line.charAt(0)
+      // Template expansion can leave cell content on following unmarked lines.
+      // Keep that content in the current cell instead of creating new columns.
+      if (startChar !== '|' && startChar !== '!' && row.length > 0) {
+        row[row.length - 1] = `${row[row.length - 1]} ${line.trim()}`.trim()
+        continue
+      }
       if (startChar === '|' || startChar === '!') {
         line = line.substring(1)
       }
