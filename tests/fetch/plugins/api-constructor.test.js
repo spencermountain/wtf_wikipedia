@@ -5,33 +5,29 @@ const opts = {
   'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
 }
 
-test('randomCategory', (t) => {
+test('randomCategory', async (t) => {
   t.plan(1)
-  wtf.getRandomCategory(opts).then(function (cat) {
-    t.ok(cat, "got randomCategory: '" + cat + "'")
-  })
+  const cat = await wtf.getRandomCategory(opts)
+  t.ok(cat, "got randomCategory: '" + cat + "'")
 })
 
-test('getCategory', (t) => {
+test('getCategory', async (t) => {
   t.plan(1)
-  wtf.getCategoryPages('Swiss female skeleton racers', opts).then(function (docs) {
-    t.ok(docs.length > 0, `got ${docs.length} pages for category`)
-  })
+  const docs = await wtf.getCategoryPages('Swiss female skeleton racers', opts)
+  t.ok(docs.length > 0, `got ${docs.length} pages for category`)
 })
 
-test('getTemplate', (t) => {
+test('getTemplate', async (t) => {
   t.plan(1)
-  wtf.getTemplatePages('Template:Switzerland-badminton-bio-stub', opts).then(function (list) {
-    t.ok(list.length > 0, `got ${list.length} pages for template`)
-  })
+  const list = await wtf.getTemplatePages('Template:Switzerland-badminton-bio-stub', opts)
+  t.ok(list.length > 0, `got ${list.length} pages for template`)
 })
 
-test('wtf.fetchList', (t) => {
+test('wtf.fetchList', async (t) => {
   t.plan(3)
   const arr = ['Marina Gilardoni', 'Jessica Kilian', 'Tanja Morel']
-  wtf.fetchList(arr, opts).then(function (docs) {
-    docs.forEach((doc) => {
-      t.ok(doc.sentence().text(), `got ${doc.title()}`)
-    })
+  const docs = await wtf.fetchList(arr, opts)
+  docs.forEach((doc) => {
+    t.ok(doc.sentence().text(), `got ${doc.title()}`)
   })
 })

@@ -1,7 +1,7 @@
 import test from 'tape'
-import makeUrl from '../../../src/_fetch/makeUrl.ts'
+import wtf from '../../lib/index.js'
+import mockFetch from '../../lib/mockFetch.js'
 
-//makeUrl
 const tests = [
   {
     options: {
@@ -77,10 +77,23 @@ const tests = [
   },
 ]
 
-tests.forEach((testCase) => {
-  test('make the correct url', (t) => {
-    const result = makeUrl(testCase.options)
-    t.equal(testCase.url, result)
+tests.forEach(({ options, url }) => {
+  test('fetch constructs the request URL: ' + (options.title || 'missing title'), async (t) => {
+    await mockFetch({ query: { pages: {} } }, async (requests) => {
+      if (!url) {
+        let error
+        try {
+          await wtf.fetch(options.title, options)
+        } catch (err) {
+          error = err
+        }
+        t.ok(error instanceof Error, 'missing title rejects')
+        t.equal(requests.length, 0, 'no request is sent')
+      } else {
+        await wtf.fetch(options.title, options)
+        t.equal(requests[0].url, url)
+      }
+    })
     t.end()
   })
 })

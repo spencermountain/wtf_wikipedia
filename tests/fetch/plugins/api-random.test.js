@@ -1,16 +1,12 @@
 import test from 'tape'
 import wtf from '../../../plugins/api/tests/_lib.js'
 
-test('random', (t) => {
-  t.plan(1)
-  const p = wtf.getRandomPage({
+test('random', async (t) => {
+  t.plan(2)
+  const page = await wtf.getRandomPage({
     follow_redirects: false,
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
   })
-  p.then(function (page) {
-    t.ok(page.title, 'got random page ' + page.title)
-  })
-  p.catch(function (e) {
-    t.throw(e)
-  })
+  t.equal(typeof page.title(), 'string', 'title is a string')
+  t.ok(page.title().trim(), 'random page has a nonempty title')
 })

@@ -1,5 +1,6 @@
 import test from 'tape'
-import parseUrl from '../../../src/_fetch/parseUrl.ts'
+import wtf from '../../lib/index.js'
+import mockFetch from '../../lib/mockFetch.js'
 
 const tests = [
   {
@@ -24,11 +25,14 @@ const tests = [
   }
 ]
 
-tests.forEach(testCase => {
-  test('parse the urls ' + testCase.title, (t) => {
-    const result = parseUrl(testCase.test)
-    t.equal(result.domain, testCase.domain)
-    t.equal(result.title, testCase.title)
+tests.forEach((testCase) => {
+  test('fetch accepts page URLs: ' + testCase.title, async (t) => {
+    await mockFetch({ query: { pages: {} } }, async (requests) => {
+      await wtf.fetch(testCase.test)
+      const url = new URL(requests[0].url)
+      t.equal(url.hostname, testCase.domain)
+      t.equal(url.searchParams.get('titles'), testCase.title)
+    })
     t.end()
   })
 })

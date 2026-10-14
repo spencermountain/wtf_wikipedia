@@ -5,33 +5,30 @@ const opts = {
   'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
 }
 
-test('getPageViews', (t) => {
+test('getPageViews', async (t) => {
   t.plan(1)
   const doc = wtf('', opts)
   doc.title('Toronto Raptors')
   doc.lang('en')
-  doc.getPageViews().then(function (byDate) {
-    const dates = Object.keys(byDate)
-    t.ok(dates.length > 5, `got pageViews for ${dates.length} days`)
-  })
+  const byDate = await doc.getPageViews()
+  const dates = Object.keys(byDate)
+  t.ok(dates.length > 5, `got pageViews for ${dates.length} days`)
 })
 
-test('getRedirects', (t) => {
+test('getRedirects', async (t) => {
   t.plan(1)
   const doc = wtf('', opts)
   doc.title('Toronto Raptors')
   doc.lang('en')
-  doc.getRedirects().then(function (links) {
-    t.ok(links.length > 3, `got ${links.length} redirects for Toronto Raptors`)
-  })
+  const links = await doc.getRedirects()
+  t.ok(links.length > 3, `got ${links.length} redirects for Toronto Raptors`)
 })
 
-test('incomingLinks', (t) => {
+test('incomingLinks', async (t) => {
   t.plan(1)
   const doc = wtf('', opts)
   doc.title('Marty Embry')
   doc.lang('en')
-  doc.getIncoming().then(function (links) {
-    t.ok(links.length > 3, `got ${links.length} links for Marty Embry`)
-  })
+  const links = await doc.getIncoming()
+  t.ok(links.length > 3, `got ${links.length} links for Marty Embry`)
 })

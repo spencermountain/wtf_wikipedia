@@ -13,7 +13,6 @@ test('test-formats', async function (t) {
   const arr = [
     'Billy_Steele',
     `? (Enuff Z'nuff album)`,
-    // `& Juliet`,
     376725,
     `https://en.m.wikipedia.org/wiki/Freebase_(database)`,
     `https://dota2.gamepedia.com/Abaddon`,

@@ -22,7 +22,7 @@ test('rnli stations', (t) => {
   t.equal(intro.sentences().length > 0, true, 'intro-sentence-length')
 
   const key = doc.section(1)
-  t.equal(key._depth, 0, 'key-depth')
+  t.equal(key.indentation(), 0, 'key-depth')
   t.equal(key.title(), 'Key', 'key-title')
   t.equal(key.sentences().length, 0, 'key-no-sentences')
   t.deepEqual(key.images(), [], 'key-no-images')
@@ -31,7 +31,7 @@ test('rnli stations', (t) => {
   t.deepEqual(key.tables(), [], 'key-no-tables')
 
   const lifeboat = doc.section(2)
-  t.equal(lifeboat._depth, 1, 'lifeboat-depth')
+  t.equal(lifeboat.indentation(), 1, 'lifeboat-depth')
   t.equal(lifeboat.template().json().list[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main')
   t.equal(lifeboat.list().json().length, 3, 'lifeboat-list')
   t.equal(lifeboat.sentences().length, 3, 'lifeboat-sentences')
