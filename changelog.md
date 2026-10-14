@@ -18,10 +18,11 @@
   - **[change]** - classify plugin's empty result uses the same shape (root/details keys)
 
 * Misc Issues:
-  - **[fix]** #358: HTML links containing parentheses and brackets now render.
-  - **[fix]** #572: Transliteration text and nihongo extra text are retained.
-  - **[fix]** #303: Image captions survive reordered size and layout options.
-  - **[fix]** #599: Keep template list values in their table cells
+  - **[fix]** - #358 HTML links containing parentheses and brackets now render.
+  - **[fix]** - #572 Transliteration text and nihongo extra text are retained.
+  - **[fix]** - #303 Image captions survive reordered size and layout options.
+  - **[fix]** - #599 Keep template list values in their table cells
+  - **[fix]** - #303 Image caption parsing
   - **[fix]** - .interwiki() returned every link, instead of just interwiki links
   - **[fix]** - section .previousSibling() returned the raw previous section, instead of the actual sibling
   - **[fix]** - paragraph .references()/.citations() crashed on reference-less paragraphs

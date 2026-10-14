@@ -17,6 +17,27 @@ function parseDMS(arr) {
   return sign * (degrees + minutes / 60 + seconds / 3600)
 }
 
+// German Coordinate templates use NS=52/31/7/N and EW=13/24/30/E.
+const parseNamedDMS = (value, directions, limit) => {
+  if (typeof value !== 'string') {
+    return null
+  }
+  let parts = value.split('/').map((part) => part.trim())
+  let hemisphere = parts.at(-1).toLowerCase()
+  if (parts.length < 2 || parts.length > 4 || !directions.includes(hemisphere) || hemisphere.length !== 1) {
+    return null
+  }
+  let numbers = parts.slice(0, -1).map(Number)
+  if (!parts[0] || !numbers.every(Number.isFinite) || numbers.some((num) => num < 0)) {
+    return null
+  }
+  if (numbers.slice(1).some((num) => num >= 60)) {
+    return null
+  }
+  let result = parseDMS([...numbers, hemisphere])
+  return Math.abs(result) <= limit ? result : null
+}
+
 const round = function (num) {
   if (typeof num !== 'number') {
     return num
@@ -94,6 +115,12 @@ const parseCoor = function (tmpl) {
   let obj = parse(tmpl)
   obj = parseParams(obj)
   let tmp = findLatLng(obj.list)
+  if (obj.list.length === 0 && (obj.ns !== undefined || obj.ew !== undefined)) {
+    tmp = {
+      lat: parseNamedDMS(obj.ns, 'ns', 90),
+      lon: parseNamedDMS(obj.ew, 'ew', 180),
+    }
+  }
   obj.lat = round(tmp.lat)
   obj.lon = round(tmp.lon)
   obj.template = 'coord'
