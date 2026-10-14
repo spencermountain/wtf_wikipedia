@@ -1,5 +1,5 @@
 import test from 'tape'
-import wtf from './_lib.js'
+import wtf from '../../../plugins/api/tests/_lib.js'
 
 const defaultOptions = {
   'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'

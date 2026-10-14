@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 // import test from 'tape'
-import wtf from './_lib.js'
+import wtf from '../../../plugins/classify/tests/_lib.js'
 
 const arr = [
   // biologists

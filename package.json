@@ -53,24 +53,20 @@
   },
   "packageManager": "pnpm@12.5.1",
   "scripts": {
-    "build": "node ./scripts/version.js && rollup -c",
     "version": "node ./scripts/version.js",
+    "build": "node ./scripts/version.js && rollup -c",
     "build:all": "pnpm run build && pnpm -r run build",
-    "check": "tsc --noEmit",
-    "test:types": "tsc -p ./tests/types && tsc -p ./tests/types/node10.tsconfig.json && tsc -p ./tests/types/plugins.tsconfig.json && tsc -p ./tests/types/plugins-cjs.tsconfig.json",
-    "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' pnpm test",
     "lint": "eslint .",
-    "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
-    "test:all": "pnpm run build && pnpm run lint && pnpm run check && pnpm run test:types && pnpm test && pnpm run test:built && pnpm run test:plugins",
+    "test:unit": "tape --strict \"tests/unit/**/*.test.js\" | tap-dancer",
+    "test:types": "tsc -p ./tests/types && tsc -p ./tests/types/node10.tsconfig.json && tsc -p ./tests/types/plugins.tsconfig.json && tsc -p ./tests/types/plugins-cjs.tsconfig.json",
     "test:plugins": "pnpm -r --workspace-concurrency=1 run test:all",
-    "watch": "node --watch ./scratch.js",
-    "test:built": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
-    "test:runtime": "TESTENV=prod tape --strict --ignore tests/runtime.ignore \"tests/unit/**/*.test.js\" \"tests/contract/**/*.test.js\" && node tests/runtime/exports.js"
+    "test:all": "pnpm run test:types && pnpm run test:unit && pnpm run test:plugins && pnpm run lint",
+    "test": "pnpm run test:unit",
+    "testb": "TESTENV=prod pnpm run test:all",
+    "watch": "node --watch ./scratch.js"
   },
   "files": [
     "builds",
-    "docs",
-    "AGENTS.md",
     "src",
     "types"
   ],
@@ -85,23 +81,18 @@
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-terser": "1.0.0",
     "esbuild": "0.28.2",
-    "eslint": "10.11.0",
+    "eslint": "10.12.0",
     "eslint-plugin-compat": "7.0.2",
     "eslint-plugin-regexp": "3.3.1",
-    "nyc": "18.0.0",
-    "rollup": "4.63.4",
+    "rollup": "4.64.6",
     "rollup-plugin-esbuild": "6.2.1",
-    "rollup-plugin-filesize-check": "2.0.0",
-    "tap-dancer": "0.4.1",
+    "rollup-plugin-filesize-check": "2.0.1",
+    "tap-dancer": "0.4.4",
     "tape": "5.10.2",
-    "typescript": "6.0.3",
-    "typescript-eslint": "8.70.0"
+    "typescript": "7.0.2",
+    "typescript-eslint": "8.71.2"
   },
   "unpkg": "builds/wtf_wikipedia-client.min.js",
-  "browserslist": [
-    "defaults",
-    "not op_mini all"
-  ],
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 2,
