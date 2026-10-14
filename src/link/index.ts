@@ -2,7 +2,7 @@ import Link from './Link.ts'
 import parseLinks from './parse.ts'
 
 //return only rendered text of wiki links
-const removeLinks = function (line) {
+const removeLinks = function (line: string) {
   // [[File:with|Size]]
   line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+)\]\](\w{0,5})/g, '$1')
   return line

@@ -3,7 +3,7 @@ import wtf from '../../lib/index.js'
 import readFile from '../../lib/_cachedPage.js'
 
 test('bluejays table', (t) => {
-  const arr = readFile('bluejays').table(0).data
+  const arr = readFile('Blue-Jays').table(0).data
   t.equal(arr.length, 8, 'table-length-bluejays')
   t.equal(arr[0]['Level'].text(), 'AAA', 'level-col')
   t.equal(arr[0]['Team'].text(), 'Buffalo Bisons', 'team-col')
@@ -13,7 +13,7 @@ test('bluejays table', (t) => {
 })
 
 test('rnli stations', (t) => {
-  const doc = readFile('rnli_stations')
+  const doc = readFile('RNLI-Stations')
   t.equal(doc.categories().length, 5, 'cat-length')
 
   const intro = doc.section(0)

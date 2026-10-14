@@ -2,7 +2,7 @@ import test from 'tape'
 import readFile from '../../lib/_cachedPage.js'
 
 test('json-output-default', (t) => {
-  const data = readFile('royal_cinema').json()
+  const data = readFile('Royal-Cinema').json()
   t.ok(data.title, 'title-exists')
   t.ok(data.categories, 'categories-exists')
   t.ok(data.sections, 'sections-exists')
@@ -25,7 +25,7 @@ test('json-output-options', (t) => {
 
     plaintext: true,
   }
-  const data = readFile('royal_cinema').json(options)
+  const data = readFile('Royal-Cinema').json(options)
   t.ok(!data.title, 'title-gone')
   t.ok(!data.categories, 'categories-gone')
   t.ok(!data.citations, 'citations-gone')
@@ -38,7 +38,7 @@ test('json-output-options', (t) => {
 })
 
 test('section-output', (t) => {
-  const doc = readFile('royal_cinema')
+  const doc = readFile('Royal-Cinema')
   const data = doc.section(0).json({
     links: false,
     formatting: false,
@@ -52,7 +52,7 @@ test('section-output', (t) => {
 })
 
 test('sentence-output', (t) => {
-  const doc = readFile('royal_cinema')
+  const doc = readFile('Royal-Cinema')
   const sen = doc.sentence()
   let data = sen.json()
   t.ok(data.text, 'text')

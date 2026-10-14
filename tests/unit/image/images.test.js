@@ -64,7 +64,7 @@ test('gallery-template', (t) => {
 })
 
 test('from-infobox', (t) => {
-  const doc = readFile('jodie_emery')
+  const doc = readFile('Jodie-Emery')
   t.equal(
     doc.infobox(0).image(0).thumb(),
     'https://wikipedia.org/wiki/Special:Redirect/file/Marc_Emery_and_Jodie_Emery.JPG?width=300',

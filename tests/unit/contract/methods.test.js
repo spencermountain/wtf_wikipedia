@@ -1,24 +1,15 @@
 /* eslint-disable max-nested-callbacks */
 import test from 'tape'
-import fs from 'node:fs'
-import path from 'node:path'
-import wtf from '../lib/index.js'
-import { fileURLToPath } from 'node:url'
+import wtf from '../../lib/index.js'
+import { allPages, readPage } from '../../_examples/index.js'
 
 // the api contract: every public method, run against every cached page,
 // checked against the return-shape promised in types/index.d.ts.
 // a parser change that makes a method throw, or return the wrong shape,
 // fails here with the page name - no matter which page triggers it.
 
-const dir = path.dirname(fileURLToPath(import.meta.url))
-const cacheDir = path.join(dir, '../cache')
-const pages = fs
-  .readdirSync(cacheDir)
-  .filter((f) => f.endsWith('.txt'))
-  .map((f) => f.replace(/\.txt$/, ''))
-
-const parsed = pages.map((page) => {
-  const str = fs.readFileSync(path.join(cacheDir, page + '.txt'), 'utf8')
+const parsed = allPages.map((page) => {
+  const str = readPage(page)
   return { page, doc: wtf(str) }
 })
 

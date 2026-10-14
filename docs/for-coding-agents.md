@@ -1,6 +1,6 @@
 # Working on this repo (for coding agents)
 
-Instructions for making changes to wtf_wikipedia itself. For *using* the
+Instructions for making changes to wtf_wikipedia itself. For _using_ the
 library, see the other docs in this folder.
 
 ## Layout
@@ -16,14 +16,13 @@ src/                   the parser, in TypeScript (erasable-syntax only — node 
   _fetch/              wtf.fetch implementation
   index.ts             entry: builds `wtf`, wires extend()
 types/                 HAND-WRITTEN declarations: index.d.ts (ESM) + index.d.cts (CJS)
-tests/                 tape tests: unit/<subject>/ dirs + contract/ + golden/ (see tests/README.md)
+tests/                 tape tests: unit/<subject>/ dirs + contract/ (see tests/README.md)
                        live-network tests are tests/fetch/*.fetch.js (opt-in)
 plugins/               13 plugin packages + plugins/wikis/* — each self-contained
                        (own package.json, src/, tests/, types/, node_modules)
 builds/                rollup output — generated, never edit
 scratch.js             playground file
 ```
-
 
 Per-plugin tests run inside the plugin dir: `cd plugins/classify && npm test`.
 

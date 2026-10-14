@@ -2,7 +2,7 @@ import test from 'tape'
 import readFile from '../../lib/_cachedPage.js'
 
 test('royal_cinema page', (t) => {
-  const doc = readFile('royal_cinema')
+  const doc = readFile('Royal-Cinema')
   t.equal(doc.infobox().template(), 'venue', 'venue template')
   t.equal(doc.section().sentences().length, 10, 'sentence-length')
   t.equal(doc.categories().length, 4, 'cat-length')
@@ -13,7 +13,7 @@ test('royal_cinema page', (t) => {
 })
 
 test('toronto_star page', (t) => {
-  const doc = readFile('toronto_star')
+  const doc = readFile('Toronto-Star')
   t.equal(doc.infobox().data.publisher.text(), 'John D. Cruickshank', 'publisher.text')
   t.equal(doc.infobox().template(), 'newspaper', 'newspaper template')
   const section = doc.section('history')
@@ -24,7 +24,7 @@ test('toronto_star page', (t) => {
 })
 
 test('toronto_star with list', (t) => {
-  const doc = readFile('toronto_star')
+  const doc = readFile('Toronto-Star')
   t.equal(doc.isRedirect(), false, 'not-redirect')
   t.equal(doc.isDisambig(), false, 'not-disambig')
   t.equal(doc.infobox().data.publisher.text(), 'John D. Cruickshank', 'publisher.text')
@@ -37,8 +37,8 @@ test('toronto_star with list', (t) => {
   t.end()
 })
 
-test('jodie_emery', (t) => {
-  const doc = readFile('jodie_emery')
+test('Jodie-Emery', (t) => {
+  const doc = readFile('Jodie-Emery')
   t.equal(doc.isRedirect(), false, 'not-redirect')
   t.equal(doc.infobox().data.nationality.text(), 'Canadian', 'nationality')
   t.equal(doc.infobox().template(), 'person', 'person template')
@@ -49,8 +49,8 @@ test('jodie_emery', (t) => {
   t.end()
 })
 
-test('statoil', (t) => {
-  const doc = readFile('statoil')
+test('Statoil', (t) => {
+  const doc = readFile('Statoil')
   t.equal(doc.isRedirect(), false, 'not-redirect')
   t.equal(doc.infobox().data.namn.text(), 'Statoil ASA', 'name')
   t.equal(doc.infobox().type(), 'verksemd', 'template')
@@ -63,7 +63,7 @@ test('statoil', (t) => {
 })
 
 test('raith rovers', (t) => {
-  const doc = readFile('raith_rovers')
+  const doc = readFile('Raith-Rovers')
   t.equal(doc.isRedirect(), false, 'not-redirect')
   t.equal(doc.infobox(0).data.clubname.text(), 'Raith Rovers', 'clubname')
   t.equal(doc.categories().length, 10, 'cat-length')

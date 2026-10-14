@@ -1,14 +1,10 @@
+import { readPage } from '../../_examples/index.js'
 import test from 'tape'
 import wtf from '../../lib/index.js'
-import fs from 'node:fs'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-const dir = path.dirname(fileURLToPath(import.meta.url))
 
 //title
 test('Tile - get - first sentence', (t) => {
-  const str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Charlie-Milstead.txt'), 'utf8')
+  const str = readPage('Charlie-Milstead')
   const doc = wtf(str)
   t.equal(doc.title(), 'Charles Frank Milstead', 'the title equals the fist bolded text')
   t.end()
@@ -589,7 +585,11 @@ test('links - get - if the clue is a number return the link at that index', (t) 
 })
 
 test('links - get - if the clue is a string return the link with that page', (t) => {
-  t.deepEqual(page.links('fun').map((l) => l.page()), ['Fun'], 'case-insensitive match')
+  t.deepEqual(
+    page.links('fun').map((l) => l.page()),
+    ['Fun'],
+    'case-insensitive match'
+  )
   t.end()
 })
 
@@ -600,7 +600,10 @@ test('links - get - if the clue is any other type then return all links', (t) =>
 
 //interwiki
 test('interwiki - get - return only the interwiki links', (t) => {
-  t.deepEqual(page.interwiki().map((l) => l.json()), [{ type: 'interwiki', wiki: 'fr', page: 'Ville' }])
+  t.deepEqual(
+    page.interwiki().map((l) => l.json()),
+    [{ type: 'interwiki', wiki: 'fr', page: 'Ville' }]
+  )
   t.end()
 })
 
@@ -608,22 +611,28 @@ test('interwiki - get - return only the interwiki links', (t) => {
 test('lists - get - return all lists on the page', (t) => {
   t.deepEqual(
     page.lists().map((l) => l.lines().map((s) => s.text())),
-    [
-      ['one fish', 'two fish'],
-      ['Other page'],
-    ]
+    [['one fish', 'two fish'], ['Other page']]
   )
   t.end()
 })
 
 test('lists - get - if the clue is a number return the list at that index', (t) => {
-  t.deepEqual(page.list(1).lines().map((s) => s.text()), ['Other page'])
+  t.deepEqual(
+    page
+      .list(1)
+      .lines()
+      .map((s) => s.text()),
+    ['Other page']
+  )
   t.end()
 })
 
 //tables
 test('tables - get - return all tables', (t) => {
-  t.deepEqual(page.tables().map((tb) => tb.keyValue()), [[{ name: 'jane', age: '40' }]])
+  t.deepEqual(
+    page.tables().map((tb) => tb.keyValue()),
+    [[{ name: 'jane', age: '40' }]]
+  )
   t.end()
 })
 
@@ -653,7 +662,10 @@ test('templates - get - if the clue is a string return templates of that name', 
 
 //references -- same as citations
 test('references - get - return all references', (t) => {
-  t.deepEqual(page.references().map((r) => r.title()), ['Some Ref'])
+  t.deepEqual(
+    page.references().map((r) => r.title()),
+    ['Some Ref']
+  )
   t.end()
 })
 
@@ -663,7 +675,10 @@ test('references - get - if the clue is a number return the reference at that in
 })
 
 test('citations - get - is an alias of references', (t) => {
-  t.deepEqual(page.citations().map((r) => r.title()), ['Some Ref'])
+  t.deepEqual(
+    page.citations().map((r) => r.title()),
+    ['Some Ref']
+  )
   t.equal(page.citation().title(), 'Some Ref')
   t.end()
 })
@@ -681,7 +696,10 @@ test('coordinates - get - if the clue is a number return the coordinate at that 
 
 //infoboxes
 test('infoboxes - get - return all infoboxes', (t) => {
-  t.deepEqual(page.infoboxes().map((i) => i.type()), ['person'])
+  t.deepEqual(
+    page.infoboxes().map((i) => i.type()),
+    ['person']
+  )
   t.end()
 })
 
@@ -693,7 +711,7 @@ test('infoboxes - get - field access', (t) => {
 
 //text
 test('text - get - get the text version of the document', (t) => {
-  const str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Remote-Data-Services.txt'), 'utf8')
+  const str = readPage('Remote-Data-Services')
   const doc = wtf(str)
   const expected =
     'Remote Data Services (RDS, formerly known as Advanced Data Connector or ADC) is a Microsoft technology used in conjunction with ActiveX Data Objects (ADO) that allowed the retrieval of a set of data from a database server, which the client then altered in some way and then sent back to the server for further processing. With the popular adoption of Transact-SQL, which extends SQL with such programming constructs as loops and conditional statements, this became less necessary and it was eventually deprecated in Microsoft Data Access Components version 2.7. Microsoft produced SOAP Toolkit 2.0, which allows clients to do this via an open XML-based standard.\n\n\n * MSDN Remote Data Service (RDS) description'
@@ -710,7 +728,7 @@ test('text - get - enpty string for redirects', (t) => {
 
 //plaintext -- same as text
 test('plaintext - get - get the plaintext version of the document', (t) => {
-  const str = fs.readFileSync(path.join(dir, '../../', 'cache', 'Remote-Data-Services.txt'), 'utf8')
+  const str = readPage('Remote-Data-Services')
   const doc = wtf(str)
   const expected =
     'Remote Data Services (RDS, formerly known as Advanced Data Connector or ADC) is a Microsoft technology used in conjunction with ActiveX Data Objects (ADO) that allowed the retrieval of a set of data from a database server, which the client then altered in some way and then sent back to the server for further processing. With the popular adoption of Transact-SQL, which extends SQL with such programming constructs as loops and conditional statements, this became less necessary and it was eventually deprecated in Microsoft Data Access Components version 2.7. Microsoft produced SOAP Toolkit 2.0, which allows clients to do this via an open XML-based standard.\n\n\n * MSDN Remote Data Service (RDS) description'

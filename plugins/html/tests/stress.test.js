@@ -1,93 +1,10 @@
 import test from 'tape'
 import wtf from './_lib.js'
-import fs from 'node:fs'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-const dir = path.dirname(fileURLToPath(import.meta.url))
-
-function from_file(page) {
-  let file = '../../../tests/cache/' + page + '.txt'
-  file = path.join(dir, file)
-  const str = fs.readFileSync(file, 'utf8')
-  return wtf(str)
-}
-
-const pages = [
-  '2008-British-motorcycle-Grand-Prix',
-  'AACTA-Award-for-Outstanding-Achievement-in-Short-Film-Screen-Craft',
-  'Alanine—oxo-acid-transaminase',
-  'Alexander-Y-Type',
-  'Allen-R.-Morris',
-  'al_Haytham',
-  'Alsea-(company)',
-  'Altimont-Butler',
-  'Antique-(band)',
-  'Anwar_Kamal_Khan',
-  'Arts_Club_of_Chicago',
-  'BBDO',
-  'Bazooka',
-  'Bodmin',
-  'Bradley-(community),-Lincoln-County,-Wisconsin',
-  'Britt-Morgan',
-  'Canton-of-Etaples',
-  'Charlie-Milstead',
-  'Chemical-biology',
-  'Clint-Murchison-Sr.',
-  'Damphu-drum',
-  'Direct-representation',
-  'Dollar-Point,-California',
-  'Elizabeth-Gilbert',
-  'Ewelina-Setowska-Dryk',
-  'Goryeo-ware',
-  'Gregory-Serper',
-  'HMS-Irresistible',
-  'Harry-McPherson',
-  'History-of-rugby-union-matches-between-Scotland-and-Wales',
-  'Irina-Saratovtseva',
-  'Jerry-Mumphrey',
-  'K.-Nicole-Mitchell',
-  'Keilwelle',
-  'Liste-der-argentinischen-Botschafter-in-Chile',
-  'Magnar-Saetre',
-  'Mark-Behr',
-  'Maurische-Netzwuhle',
-  'Mozilla-Firefox',
-  'Neil-McLean-(saxophonist)',
-  'RNDIS',
-  'Remote-Application-Programming-Interface',
-  'Remote-Data-Objects',
-  'Remote-Data-Services',
-  'Routing-and-Remote-Access-Service',
-  'Runtime-Callable-Wrapper',
-  'Sara-C.-Bisel',
-  'Senate_of_Pakistan',
-  'Terrence-Murphy-(American-football)',
-  'Teymanak-e-Olya',
-  'The-Atlas-(newspaper)',
-  'The-Field-of-Waterloo',
-  'Tour-EP-(Band-of-Horses-EP)',
-  'University-of-Nevada,-Reno-Arboretum',
-  'Wendy-Mogel',
-  'africaans',
-  'anarchism',
-  'bluejays',
-  'earthquakes',
-  'jodie_emery',
-  'list',
-  'raith_rovers',
-  // 'redirect',
-  'rnli_stations',
-  'royal_cinema',
-  'statoil',
-  'julia_kristeva',
-  'toronto',
-  'toronto_star'
-]
+import { allPages, readPage } from '../../../tests/_examples/index.js'
 
 test('try all pages', (t) => {
-  pages.forEach((page) => {
-    const doc = from_file(page)
+  allPages.forEach((page) => {
+    const doc = wtf(readPage(page))
     const html = doc.html()
     t.ok(html && html.length > 5, page)
   })

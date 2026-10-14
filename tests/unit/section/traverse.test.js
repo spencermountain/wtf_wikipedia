@@ -2,7 +2,7 @@ import test from 'tape'
 import readFile from '../../lib/_cachedPage.js'
 
 test('traverse sections', (t) => {
-  const doc = readFile('toronto')
+  const doc = readFile('Toronto')
   t.equal(doc.sections().length, 35, 'init section count')
 
   //start with history

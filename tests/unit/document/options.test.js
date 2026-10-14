@@ -2,13 +2,13 @@ import test from 'tape'
 import readFile from '../../lib/_cachedPage.js'
 
 test('royal_cinema options', (t) => {
-  const doc = readFile('royal_cinema')
+  const doc = readFile('Royal-Cinema')
   t.equal(doc.images().length, 1, 'image-length')
   t.equal(doc.categories().length, 4, 'category-length')
   t.equal(doc.citations().length, 4, 'citations-length')
   t.equal(doc.infoboxes().length, 1, 'infoboxes-length')
 
-  const data = readFile('royal_cinema').json({
+  const data = readFile('Royal-Cinema').json({
     categories: false,
     citations: false,
     images: false,
@@ -23,15 +23,15 @@ test('royal_cinema options', (t) => {
 
 test('other-pages', (t) => {
   const pages = [
-    'earthquakes',
+    'Earthquakes-List',
     'United-Kingdom',
-    'Chemical-biology',
-    'University-of-Nevada,-Reno-Arboretum',
-    'Clint-Murchison-Sr.',
+    'Chemical-Biology',
+    'University-Of-Nevada-Reno-Arboretum',
+    'Clint-Murchison-Sr',
     'Wendy-Mogel',
-    'Damphu-drum',
-    'Direct-representation',
-    'al_Haytham',
+    'Damphu-Drum',
+    'Direct-Representation',
+    'Al-Haytham',
   ]
   pages.forEach((page) => {
     const doc = readFile(page)
