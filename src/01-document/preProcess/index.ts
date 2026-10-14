@@ -14,20 +14,8 @@ function preProcess(wiki) {
   //horizontal rule
   wiki = wiki.replaceAll('----', '')
   //formatting for templates-in-templates...
-  wiki = wiki.replaceAll('{{}}', ' – ')
-  wiki = wiki.replaceAll('{{\\}}', ' / ')
-  // some html escaping
-  wiki = wiki.replaceAll('&nbsp;', ' ')
-  wiki = wiki.replaceAll('&ndash;', '–')
-  wiki = wiki.replaceAll('&mdash;', '—')
-  wiki = wiki.replaceAll('&amp;', '&')
-  wiki = wiki.replaceAll('&quot;', '"')
-  wiki = wiki.replaceAll('&apos;', "'")
-  wiki = wiki.replaceAll('&copy;', '©')
-  wiki = wiki.replaceAll('&reg;', '®')
-  wiki = wiki.replaceAll('&trade;', '™')
-  // wiki = wiki.replace(/&lt;/g, '<')
-  // wiki = wiki.replace(/&gt;/g, '>')
+  wiki = wiki.replace(/\{\{\}\}/g, ' – ')
+  wiki = wiki.replace(/\{\{\\\}\}/g, ' / ')
 
   //give it the inglorious send-off it deserves..
   wiki = kill_xml(wiki)

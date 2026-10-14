@@ -1,19 +1,8 @@
-import { trim_whitespace } from '../_lib/helpers.ts'
+import postprocess from '../_lib/postprocess.ts'
 import parseLinks from '../link/index.ts'
 import parseFmt from './formatting.ts'
 import Sentence from './Sentence.ts'
 import sentenceParser from './parse.ts'
-
-function postprocess(line) {
-  //remove empty parentheses (sometimes caused by removing templates)
-  line = line.replace(/\([,;: ]*\)/g, '')
-  //these semi-colons in parentheses are particularly troublesome
-  line = line.replace(/\( *(; ?)+/g, '(')
-  //dangling punctuation
-  line = trim_whitespace(line)
-  line = line.replace(/(^|[^ ]) +\.$/, '$1.')
-  return line
-}
 
 function fromText(str) {
   let obj = {

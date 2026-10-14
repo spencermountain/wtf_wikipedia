@@ -8,6 +8,10 @@ test('inline text', (t) => {
       to: `education of [the] students`
     },
     {
+      from: `education of <nowiki>{{the}}</nowiki> students`,
+      to: `education of {{the}} students`
+    },
+    {
       from: `in ({{Baseball year|1902}})`,
       to: `in (1902)`
     },

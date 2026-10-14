@@ -1,4 +1,6 @@
 import parse_interwiki from './interwiki.ts'
+import postprocess from '../_lib/postprocess.ts'
+
 const ignore_links =
   /^(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ].*?)?\]/g
@@ -91,6 +93,13 @@ const parse_links = function (str) {
   if (links.length === 0) {
     return undefined
   }
+
+  for (const link of links) {
+    if (typeof link.text === 'string') {
+      link.text = postprocess(link.text)
+    }
+  }
+
   return links
 }
 export default parse_links
