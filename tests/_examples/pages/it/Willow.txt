@@ -1,0 +1,134 @@
+{{Nd||Salix (disambigua)}}
+{{Nd||Salice (disambigua)|Salice}}
+{{nd|la dinastia franca|Dinastia salica|Salici}}
+{{Tassobox
+|nome = ''Salix''
+|statocons = 
+|intervallo = {{Intervallo geologico|55|0|Eocene-Recente}}
+|immagine = Salix alba11.jpg
+|didascalia = ''[[Salix × sepulcralis]]''
+<!-- CLASSIFICAZIONE: -->|dominio = [[Eukaryota]]
+|regno = [[Plantae]]
+|sottoregno = [[Tracheobionta]]
+|superdivisione = [[Spermatophyta]]
+|divisione = [[Magnoliophyta]]
+|classe = [[Magnoliopsida]]
+|sottoclasse = [[Dilleniidae]]
+|ordine = [[Salicales]]
+|famiglia = [[Salicaceae]]
+|genere = '''Salix'''
+|specie = <!-- CLASSIFICAZIONE APG IV -->
+|FIL? = x
+|regnoFIL = [[Plantae]]
+|clade1 = [[Angiosperme]]
+|clade2 = [[Mesangiosperme]]
+|clade3 = [[Eudicotiledoni]]
+|clade4 = [[Eudicotiledoni centrali]]
+|clade5 = [[Superrosidi]]
+|clade6 = [[Rosidi]]
+|clade7 = [[Eurosidi]]
+|clade8 = [[COM (clade)|COM]]
+|ordineFIL = [[Malpighiales]]
+|famigliaFIL = [[Salicaceae]]
+|sottofamigliaFIL = 
+|tribùFIL = 
+|sottotribùFIL = 
+|genereFIL = '''Salix'''
+|genereautoreFIL = [[Linneo|L.]], 1753
+|specieFIL = <!-- NOMENCLATURA BINOMIALE: -->
+|biautore = 
+|binome = 
+|bidata = <!-- ALTRO: -->
+|sinonimi = 
+|nomicomuni = 
+|suddivisione = [[Specie]]
+|suddivisione_testo = vedi [[Specie di Salix|Specie di ''Salix'']]
+}}
+'''''Salix''''' <small>[[Linneo|L.]], 1753</small> è un [[genere (tassonomia)|genere]] di [[Plantae|piante]] appartenente alla [[famiglia (tassonomia)|famiglia]] delle [[Salicaceae|Salicacee]]<ref name=POWO/>. Originario dell'[[Europa]], [[Asia]] e [[Nord America]], comprende oltre 450 specie di alberi, arbusti e piante perenni legnose o fruticose, generalmente a foglia caduca; le specie arboree arrivano ai 20 metri di altezza.
+
+== Etimologia ==
+Il [[lingua latina|latino]] ''salix'', ''-icis'' risale a una [[radici del protoindoeuropeo|radice indoeuropea]] con alternanza *''səlik'' (in latino), *''selik'' (nel [[lingua greca antica|greco]] ἑλίκη ''helíkē''), *''sol''(''i'')''k'' (nell'area germanica<ref name="devoto">{{cita libro | cognome=Devoto | nome=Giacomo | titolo=Avviamento all'etimologia italiana | editore=Mondadori | città=Milano | anno=1979}}</ref> cfr. [[alto tedesco antico|antico alto tedesco]] ''salaha'', [[lingua tedesca|tedesco]] ''Salweide'', [[antico inglese|anglosassone]] ''sealh''<ref name="dei">{{cita libro | cognome=Battisti | nome=Carlo | coautori=Giovanni Alessio | titolo=Dizionario etimologico italiano | editore=Barbera | città=Firenze | anno=1950–57}}</ref>); la voce latina è collegata anche con l'[[lingua irlandese|irlandese]] ''sail''<ref name="devoto" /><ref name="dei" />.
+
+Nei dialetti italiani il nome della pianta è perlopiù derivato dall'[[accusativo]] ''salicem'' in forma sincopata ''salce'' (''salice'' è un [[latinismo]])<ref name="devoto" />, con passaggio alla declinazione in -''o'' (''salcio'')<ref name="devoto" /> e spesso in forma femminile: [[dialetto abruzzese|abruzzese]] ''sàucia'', [[dialetti del Lazio|laziale]] ''sarcia'' o ''sàucia'', [[isola d'Elba|elbano]] ''salgo'', [[Pitigliano|pitiglianese]] ''la salce''<ref name="dei" />; il [[lingua ligure|ligure]] ha il maschile ''saxo''. In area [[lingue romanze|romanza]], da ''saliceus'' derivano il [[solandro]] ''salécia'', il [[dialetto bolognese|bolognese]] ''salìz'', il [[lingua francese|francese]] ''saule'', il [[lingua occitana|provenzale]] ''saletz''; dalla forma tarda *''salicārius'' il [[lingua catalana|catalano]] ''salguer'', il [[lingua portoghese|portoghese]] ''salgueiro'', lo [[lingua spagnola|spagnolo]] ''salguera'', il [[dialetto veneziano|veneziano]] ''salghèr'', il [[lingua friulana|friulano]] ''salgàr'' (cfr. i cognomi italianizzati ''Salgari'' e ''Saligari''); da *''salicum'' il [[lingua rumena|rumeno]] ''sargǎ'', il [[dialetto guascone|guascone]] ''saligo'', ''ligo'', lo spagnolo ''sarga''.
+
+== Tassonomia ==
+{{vedi anche|Specie di Salix}}
+Il genere comprende oltre 450 [[specie]].<ref name=POWO>{{cita web |lingua=en |titolo=Salix|sito=Plants of the World Online |editore=Royal Botanic Gardens, Kew |url=https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:325916-2#children|accesso=18/12/2022}}</ref>
+=== Specie presenti in Italia ===
+Le specie spontanee della nostra flora sono poco più di 30, molte di difficile identificazione grazie alla notevole facilità con cui si formano ibridi con caratteristiche intermedie, tra le più note ricordiamo:
+[[File:Salix Alba.jpg|thumb|Salici bianchi in inverno - [[Filicaja]] - [[Montaione]] ([[Provincia di Firenze|FI]])]]
+* ''[[Salix alba]]'' <small>[[Linneo|L.]]</small> - salice bianco
+* ''[[Salix caprea]]'' <small>L.</small> - salicone o salcio di montagna
+* ''[[Salix eleagnos]]'' <small> Scop.</small> - salice ripaiolo
+* ''[[Salix myrsinites]]'' <small>L.</small>
+* ''Salix matsudanica''
+* ''[[Salix helvetica]]'' <small>Vill.</small>
+*  ''[[Salix herbacea]]'' <small>L.</small> 
+* ''[[Salix reticulata]]'' <small>L.</small>
+* ''[[Salix retusa]]'' <small>L.</small>
+* ''[[Salix purpurea]]'' <small>L.</small> - salice rosso obrillo
+* ''[[Salix cinerea]]'' <small>L.</small> - salice cinerino
+[[File:Salice Piangente (182751723).jpeg|thumb|160px|''Salix babilonica'']]
+Numerose specie esotiche si sono acclimatate in Italia tra cui:
+* ''[[Salix viminalis]]'' <small>L.</small> 
+* ''[[Salix babylonica]]'' <small>L.</small> - salice piangente
+
+== Usi ==
+[[File:Willow1.jpg|thumb|right|Salice nell'aspetto invernale]]
+* Come [[pianta ornamentale]] nei giardini o per decorare grandi vasche, stagni e le rive dei corsi d'acqua.
+* I vinchi vengono impiegati in [[agricoltura]] per legare le [[vitis|viti]], mentre i [[Vincastro|vincastri]] sono utilizzati per realizzare cesti, stuoie, oggetti vari.
+* Il [[legno]] bianco rosato, tenero, leggero, pieghevole, poco resistente, si presta per realizzare casse da imballaggio, attrezzi e sculture, per la produzione di truciolati e cellulosa, utilizzato come combustibile (apprezzato soprattutto nella fase di accensione) e per fornire un carbone per la preparazione della polvere pirica.
+* La  [[Corteccia (botanica)|corteccia]] di quasi tutte le specie contiene:
+** [[tannino|tannini]] che vengono utilizzati per la concia del pellame;
+** salicina (v. sotto).
+* Le foglie come foraggio per gli ovini.
+
+=== Proprietà medicinali ===
+{{Disclaimer|medico}}
+Le foglie e la corteccia del salice sono menzionati in antichi testi medici [[egizi]] del [[II millennio a.C.]] ([[papiro Ebers]], [[papiro Edwin Smith]]). Il celebre medico greco [[Ippocrate di Coo|Ippocrate]] ne descrisse nel [[V secolo a.C.]] le proprietà [[Antidolorifico|antidolorifiche]] e [[Antinfiammatorio|antinfiammatorie]], ribadite e ulteriormente studiate da altri medici antichi, come [[Dioscoride Pedanio|Dioscoride]] e [[Gaio Plinio Secondo|Plinio]]<ref>{{cita web|url=http://www.minerva.unito.it/Storia/aspirina/Aspirina.html|titolo=Storia dell'aspirina|accesso=9 dicembre 2009|urlarchivio=https://web.archive.org/web/20100210114736/http://www.minerva.unito.it/Storia/aspirina/Aspirina.html|dataarchivio=10 febbraio 2010|urlmorto=sì}}</ref>.
+
+In modo meno documentato, le foglie e la corteccia del salice furono usati da molti popoli, anche primitivi, come gli [[Indiani d'America]] e gli [[Ottentotti]], nonché dalla [[Medicina medievale|medicina popolare medioevale]].
+
+La [[Scuola medica salernitana]], come già Dioscoride, attribuiva al salice proprietà anti[[Afrodisiaco|afrodisiache]].
+
+Nel [[1763]] il reverendo inglese [[Edward Stone]] studiò le proprietà antimalariche della corteccia di salice. Benché fosse in errore nell'attribuire affinità tra il salice e il [[chinino]], i suoi risultati dimostrarono inequivocabilmente le proprietà antifebbrili della corteccia di salice.
+
+Nell'[[XIX secolo|Ottocento]] i progressi della chimica permisero di isolare il principio attivo contenuto nella corteccia del salice: la [[salicina]], isolata allo stato puro per la prima volta da [[Henri Leroux]] nel [[1828]]. (Rimandiamo alla voce [[acido acetilsalicilico]] per la storia dell'aspirina, chimicamente molto affine alla salicina).
+
+Vengono utilizzate a scopo medicinale le specie ''S. alba'', ''S. caprea'', ''S. purpurea'', ''S. aurita'' e ''S. nigra''.
+* Lo sciroppo, il decotto, il vino medicato, la polvere ricavata dall'essiccazione della corteccia di ramoscelli di 2-3 anni, hanno proprietà astringenti, curative del reumatismo cronico, antisettiche e febbrifughe;
+* Il decotto per uso esterno viene utilizzato per irrigazioni, impacchi e bagni antireumatici;
+* Il decotto degli amenti fioriti raccolti in marzo-aprile ha proprietà calmanti e anafrodisiache;
+* Il carbone vegetale ricavato dal legno ha proprietà assorbenti e carminative.
+
+== Metodi di coltivazione ==
+{{vedi anche|Vincheto}}
+Sono piante rustiche di facile ambientazione, e a rapida crescita, gradiscono terreno fertile ed umido.
+
+La moltiplicazione avviene con la [[semina]], per [[talea]] e con la [[margotta]].
+
+== Note ==
+<references/>
+
+== Voci correlate ==
+* [[Arboricoltura]]
+* [[Pianta ornamentale]]
+* [[Pianta medicinale]]
+* [[Specie botaniche in Italia]]
+* [[Aspirina]]
+
+== Altri progetti ==
+{{interprogetto|etichetta=salice|preposizione=sul|q_etichetta=salice|q=salice|wikt=salice}}
+
+== Collegamenti esterni ==
+* {{Collegamenti esterni}}
+
+{{Controllo di autorità}}
+{{Portale|botanica}}
+
+[[Categoria:Salicaceae]]
+[[Categoria:Piante medicinali e officinali]]
+[[Categoria:Alberi ornamentali]]
+[[Categoria:Legnami]]
+[[Categoria:Taxa classificati da Linneo]]
+[[Categoria:Taxa descritti nel 1753]]

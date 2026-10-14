@@ -1,0 +1,82 @@
+{{olika betydelser}}
+{{Konstverk
+|    titel = Stjärnenatt<br><small>(''Stjärnenatt i Saint-Rémy''<br>[[nederländska]]: ''De sterrennacht'')</small>
+|  filnamn = VanGogh-starry night ballance1.jpg
+| bildstorlek =
+| konstnär = [[Vincent van Gogh]]
+|       år = 1889
+|      typ = olja på [[målarduk|duk]]
+|     höjd = 73 
+|    bredd = 92 
+|    plats = [[Museum of Modern Art]], [[New York]]
+}}
+'''''Stjärnenatt''''' (även ''Stjärnenatt i Saint-Rémy'',<ref name=ne-vvg/> original ''De sterrennacht'') är en [[Målning (konst)|målning]] av den [[Nederländerna|nederländske]] [[Postimpressionism|postimpressionistiske]] konstnären [[Vincent van Gogh]] från [[Konståret 1889|1889]]. Tavlan, som föreställer en nattlig sydfransk vy innan gryningen med en virvlande natthimmel, är ett av van Goghs mest kända verk. Sedan 1941 har tavlan varit del av den permanenta utställningen vid [[Museum of Modern Art]]<ref>[https://www.moma.org/collection/works/79802 Stjärnenatt på Museum of Modern Art]</ref> i [[New York]].
+
+== Historik och tema ==
+=== Bakgrund ===
+Målningen avbildar den nattliga vyn utanför fönstret från van Goghs rum på sanatoriet i [[Saint-Rémy-de-Provence]].<ref name=":0">{{Webbref|titel=Vincent van Gogh. The Starry Night. Saint Rémy, June 1889 {{!}} MoMA|url=https://www.moma.org/collection/works/79802|verk=The Museum of Modern Art|hämtdatum=2026-03-25|språk=en}}</ref> Konstnären hade på egen begäran tagits in på nervhemmet i maj. Hemmet, som inhystes i ett före detta [[kloster]], var främst inriktat mot välbärgade personer, och det var mindre än halvfullt när van Gogh anlände. Därigenom kunde han inte bara få ett sovrum på övervåningen utan även ett rum på första våningen som han använde som [[ateljé]].
+
+Under det år som van Gogh stannade på nervhemmet fortsatte han den flitiga produktion av målningar som han påbörjat under sin vistelse i [[Arles]]. Under maj 1889 målade han ''[[Irisar (målning)|Irisar]]'', i september samma år sitt blå självporträtt. ''Stjärnenatt'' kom till runt eller strax före 18 juni, eftersom han nämner målningen i ett brev till brodern [[Theo van Gogh (konsthandlare)|Theo]] som daterats till detta datum. 
+
+=== Motiv ===
+''Stjärnenatt'' målades dagtid<ref name=":0" /> i den fönsterlösa<ref name=":1">{{Webbref|titel=Van Gogh’s ‘Starry Night’ Swirls Are Surprisingly Accurate, Say Physicists|url=https://news.artnet.com/art-world/van-gogh-starry-night-atmospheric-swirls-physics-2538558|verk=Artnet News|datum=2024-09-18|hämtdatum=2026-03-25|språk=en-US|författare=Whiddington, Richard}}</ref> ateljén på bottenvåningen. Vyn över landskapet har dock identifierats som från hans sovrum, vilket vette mot öster. Denna utsikt användes i sammanlagt inte mindre än 21 olika van&nbsp;Gogh-målningar. Han avbildade vyn vid olika tidpunkter under dagen och under olika väderförhållanden, inklusive soluppgången, månens uppgång, soldränkta dagar, mulna dagar, blåsiga dagar och vid minst ett tillfälle vid regn.
+
+Personalen på hemmet tillät inte van Gogh att måla i sitt sovrum, men han hade där möjlighet att göra skisser i tusch eller kolstift. Så småningom började han göra sina tavlor utifrån tidigare målningar med samma vy. Gemensamt för alla dessa målningar är den diagonala linjen som kommer in från höger, en linje som motsvarar de låga kullarna i [[Chaîne des Alpilles]]. I 15 av 21 målningar syns [[cypress]]er bortom den [[Gärdesgård|stengärdesgård]] som avgränsar [[vete|vetefältet]]. ''Stjärnenatt'' är den enda av de 21 målningarna som presenterar en nattlig vy från sovrumsfönstret och där han även lagt till en fiktiv by.<ref name=":1" />
+
+Den virvlande natthimlen är tydligt framträdande i målningen,<ref name=":0" /> där månen i höger bildkant är i [[nedan]]. van Gogh lade in den blå färgen, dramatiserade 14<ref name=":1" /> nattliga objekt och tillfogade ett emotionellt laddat bildspråk till både natten och naturen.<ref name=":0" />
+
+[[File:Van Gogh Starry Night Drawing.jpg|mini|''Cypresser i stjärnenatt'', en [[teckning (konst)|teckning]] av van Gogh gjord i juni 1889 efter den då färdiga tavlan.]]
+
+== Proveniens ==
+[[File:Starry-night-in-moma-gallery.jpg|mini|Tavlan där den hänger på [[Museum of Modern Art]] i [[New York]].]]
+Efter att först ha varit avvaktande sände van Gogh ''Stjärnenatt'' till Paris och brodern [[Theo van Gogh (konsthandlare)|Theo]]. Detta skedde 28 september 1889, och med på transporten var också nio eller tio andra av Vincents målningar.{{sfn|Pickvance|1986|p=106}}
+
+Theo van Gogh avled mindre än sex månader efter brodern, i januari 1891. Theos änka [[Johanna van Gogh-Bonger|Jo]] blev därefter förvaltare av Vincent van Goghs kvarlåtenskap. 1900 sålde hon ''Stjärnenatt'' till poeten [[Julien Leclercq]], som i sin tur året därpå sålde tavlan vidare till [[Paul Gauguin|Gauguins]] vän [[Émile Schuffenecker]].
+
+Därefter återköpte Jo målningen från Schuffenecker, innan hon 1906 på nytt sålde den – denna gång till Oldezeel-galleriet i [[Rotterdam]]. Tavlan var i Rotterdambon Georgette P. van Stolks ägo från 1906 och fram till att hon 1938 sålde den till den internationella konsthandlaren [[Paul Rosenberg]]. Via Rosenberg förvärvade [[Museum of Modern Art]] ''Stjärnenatt'', och sedan 1941 tillhör målningen museets permanenta utställning.<ref name=moma-prov/>
+
+=== Kronologi ===
+*1889–1891 – [[Theo van Gogh (konsthandlare)|Theo van Gogh]]
+*1891–1900 – [[Johanna van Gogh-Bonger]]
+*1900–? – [[Julien Leclerq]]
+*?–? – [[Émile Schuffenecker]]
+*?–1906 – Johanna van Gogh-Bonger
+*1906 – Oldezeel-galleriet, Rotterdam
+*1906–1938 – Georgette P. van Stolk, Rotterdam
+*1938–? – [[Paul Rosenberg]], [[New York]]/[[Paris]]
+*?–idag – [[Museum of Modern Art]], [[New York]]
+
+== Betydelse ==
+Tavlan har allmänt hyllats som van Goghs [[magnum opus]] och har reproducerats många gånger. Nedan syns ett antal bildexempel på reproduktioner och bildreferenser till målningen.
+<gallery>
+Fil:Starry night body painting.jpg|[[Kroppsmålning]], 2008.
+Fil:Expedition 31 crew portrait.jpg|På väggen i [[Johnson Space Center]] (2011).
+Fil:Novi Zagreb graffiti 20121103 0214.JPG|[[Graffiti]] i [[Zagreb]] (2012).
+Fil:Oberhausen - Gasometer - Der schöne Schein - The Starry Night (van Gogh) 02 ies.jpg|Replika av Frank Vincentz, på utställningen "Der schöne Schein'" i [[Oberhausen]] (2015).
+Fil:Elephant in Starry Night.jpg|''Elephant in Starry Night'', multimediamålning och i tusch (2015).
+Fil:Painting Reproduction of Vincent van Gogh's The Starry Night (01).jpg|Reproduktion i [[Bangladesh]] (2015).
+</gallery>
+
+== Referenser ==
+{{enwp|url=https://en.wikipedia.org/w/index.php?title=The_Starry_Night&oldid=801107171|datum=2017-09-17}}
+
+=== Noter ===
+<references>
+<ref name=ne-vvg>{{NE |författare= |titel = uppslagsverk/encyklopedi/lång/vincent-van-gogh |namn= Vincent van Gogh |hämtdatum = 20 september 2017 }}</ref>
+<ref name=moma-prov>{{webbref |efternamn= |url=http://www.moma.org/collection/provenance/provenance_object.php?object_id=79802 |titel= Vincent van Gogh – The Starry Night  |datum= |verk= Museum of Modern Art |hämtdatum= 20 september 2017 |språk=engelska }}</ref>
+</references>
+
+=== Källhänvisningar ===
+*{{Bokref|efternamn1=Pickvance|förnamn1=Ronald |titel=Van Gogh In Saint-Rémy and Auvers'' (exhibition catalog, [[Metropolitan Museum of Art]])'' |utgivningsort=New York |utgivare=Metropolitan Museum of Art, Abrams |år=1986 |isbn=0-87099-477-8 |ref=harv|språk= engelska}}
+*{{webbref |url=http://www.albertboime.com/Articles/Dec1984.pdf |titel=Van Gogh's ''Starry Night'': A History of Matter and a Matter of History |hämtdatum=23 april 2016 |författare= |efternamn=Boime |förnamn=Albert |efternamn2= |förnamn2= |datum= |år= |månad=December 1984 |format={{pdf}} |verk=Arts Magazine |utgivare= |språk=engelska}}
+
+== Externa länkar ==
+* {{commonscat|The Starry Night by van Gogh}}
+{{Modernism}}
+{{Auktoritetsdata}}
+[[Kategori:Målningar av Vincent van Gogh]]
+[[Kategori:1889 i Frankrike]]
+[[Kategori:Målningar 1889]]
+[[Kategori:Målningar på Museum of Modern Art]]
+[[Kategori:Målningar med motiv från Provence]]
+[[Kategori:Landskapsmålningar]]

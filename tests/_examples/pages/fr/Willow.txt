@@ -1,0 +1,407 @@
+{{sous-titre/Taxon|ns1=Salix}}
+{{Homon|Saule (homonymie)|Aubier (homonymie)|Salix (homonymie)}}
+
+{{Taxobox début | végétal | ''Salix'' | Salix_pentandra(01).jpg | Photographie de ''[[Salix pentandra]]''. | classification=Cronquist }}
+{{Taxobox | sous-règne | Tracheobionta }}
+{{Taxobox | division | Magnoliophyta }}
+{{Taxobox | classe | Magnoliopsida }}
+{{Taxobox | sous-classe | Dilleniidae }}
+{{Taxobox | ordre | Salicales }}
+{{Taxobox | famille | Salicaceae }}
+{{Taxobox taxon | végétal | genre | Salix | [[Carl von Linné|L.]], [[1753]] }}
+{{Taxobox phylogénie bandeau | classification=APGIII }}
+{{Taxobox | ordre | Malpighiales }}
+{{Taxobox | famille | Salicaceae }}
+{{Taxobox | tribu | Saliceae }}
+{{Taxobox synonymes |
+{{Boîte déroulante|titre=Liste des synonymes|contenu=
+* ''Amerina'' Raf., Alsogr. Amer.: 15. 1838.
+* ''Amerix'' Raf., Amer. Monthly Mag. & Crit. Rev. 1: 439. 1817.
+* ''Argorips'' Raf., Alsogr. Amer.: 13. 1838.
+* ''Biggina'' Raf., Alsogr. Amer.: 4. 1838.
+* ''Capraea'' Opiz, Seznam: 25. 1852.
+* ''Chalebus'' Raf., Amer. Monthly Mag. & Crit. Rev. 1: 439. 1817.
+* ''Chamitea'' A.Kern., Verh. K. K. Zool.-Bot. Ges. Wien 10: 275. 1860.
+* ''Chosenia'' Nakai, Bot. Mag. (Tokyo) 34: 67. 1920.
+* ''Diamarips'' Raf., Alsogr. Amer.: 15. 1838.
+* ''Diplima'' Raf., Alsogr. Amer.: 13. 1838.
+* ''Diplopia'' Raf., Amer. Monthly Mag. & Crit. Rev. 1: 439. 1817.
+* ''Diplusion'' Raf., Alsogr. Amer.: 15. 1838.
+* ''Disynia'' Raf., Amer. Monthly Mag. & Crit. Rev. 1: 439. 1817.
+* ''Gruenera'' Opiz, Seznam: 48. 1852.
+* ''Knafia'' Opiz, Seznam: 56. 1852.
+* ''Lusekia'' Opiz, Seznam: 61. 1852.
+* ''Melanix'' Raf., Amer. Monthly Mag. & Crit. Rev. 1: 439. 1817.
+* ''Nectolis'' Raf., Alsogr. Amer.: 15. 1838.
+* ''Nectopix'' Raf., Alsogr. Amer.: 14. 1838.
+* ''Nectusion'' Raf., Alsogr. Amer.: 14. 1838.
+* ''Nestylix'' Raf., Alsogr. Amer.: 15. 1838.
+* ''Oisodix'' Raf., Alsogr. Amer.: 13. 1838.
+* ''Opodix'' Raf., Amer. Monthly Mag. & Crit. Rev. 1: 439. 1817.
+* ''Pleiarina'' (L.) Raf., Alsogr. Amer.: 15. 1838.
+* ''Psatherips'' Raf., Alsogr. Amer.: 15. 1838.
+* ''Ripselaxis'' Raf., Alsogr. Amer.: 14. 1838.
+* ''Ripsoctis'' Raf., Alsogr. Amer.: 15. 1838.
+* ''Sokolofia'' Raf., Alsogr. Amer.: 14. 1838.
+* ''Telesmia'' Raf., Alsogr. Amer.: 15. 1838.
+* ''× Toisochosenia'' Kimura, Sci. Rep. Tohoku Imp. Univ., Ser. 4, Biol. 11: 247. 1936.
+* ''Toisusu'' Kimura, Bot. Mag. (Tokyo) 42: 288. 1928.
+* ''Urnectis'' Raf., Alsogr. Amer.: 14. 1838.
+* ''Usionis'' Raf., Alsogr. Amer.: 14. 1838.
+* ''Vetrix'' Raf., Amer. Monthly Mag. & Crit. Rev. 1: 439. 1817.
+* ''Vimen'' Raf., Amer. Monthly Mag. & Crit. Rev. 1: 439. 1817. }} }}
+{{Taxobox fin}}
+[[Fichier:Woerden Gravensloot.JPG|vignette|Les saules font partie des essences décoratives utilisées en zone tempérée, ils supportent la taille.]]
+
+Le '''saule''' ('''''Salix''''') est un [[Genre (biologie)|genre]] de [[plante]]s à fleurs de la famille des Salicacées (''[[Salicaceae]]''). Il comprend {{nobr|360 [[espèce]]s}} environ, réparties à travers le monde, principalement dans les zones fraîches et humides des régions tempérées et froides de l'[[hémisphère nord]]. Ce sont des [[arbre]]s, des [[arbuste]]s ou des [[arbrisseau]]x.
+
+* Une rangée régulière de saules est dénommée une '''saulée'''<ref>[http://dictionnaire.reverso.net/francais-definitions/saul%C3%A9e « Saulée » dans le Dictionnaire français – Définitions et synonymes].</ref>.
+* Une '''saulaie''' est un endroit où poussent des saules, tout comme une ''saussaie'', terme vieilli et régional.
+
+== Étymologie ==
+Le terme français ''saule'' est issu du [[Francique (langue morte)|vieux bas francique]] ''*salha'' (cf. vieil anglais ''salh'', vieux haut allemand ''salaha''), héritier du [[germanique]] ''*salχaz''<ref group=Note>Voir également l'origine du mot [[Gaule]] pour l'évolution phonétique.</ref>{{,}}<ref>[[Albert Dauzat]], J. Dubois, H. Mitterand, ''Larousse étymologique'', éditions Larousse.</ref>. Le français ''saule'', le germanique ''salχaz'' et l'anglais ''willow'' sont issus de la même [[racine indo-européenne]] ''wel'' signifiant « rouler, tourner », allusion à la flexibilité du bois et l'utilisation des pousses et des branches pour tisser des paniers, fabriquer des clôtures<ref>{{Ouvrage|langue=en|auteur1=Paul Friedrich|titre=Proto-Indo-European Trees|éditeur=[[University of Chicago Press]]|année=1970|passage=56|isbn=}}.</ref>.
+
+Si la racine est la même (''*sal-''), il ne continue donc pas le latin ''salix'', [[accusatif]] ''salĭcem'', lequel est en revanche à l'origine des formes d'ancien français ''saus'' et ''sausse'' (conservés dans certains dialectes) et de ''saussaie'' (qui vient de ''salicetu'') « endroit planté de saules, saulaie » (en toponymie {{page h'|Saussay}}, [[La Saussaye|Saussaye]], [[Sauchay]], [[Le Saulchoy|Saulchoy]], etc.).
+
+== Caractères généraux ==
+[[Fichier:Salix udensis 'Sekka' trunc 01 by Line1.JPG|vignette|gauche|La ''cire'' blanche du saule et une [[lenticelle]].]]
+[[Fichier:Catkin at BBG (78267).jpg|vignette|alt=Deux poussées duveteuses couvertes de poils blancs avec une élancée jaune sur le côté.|Le [[chaton (botanique)|chaton]] de saule.]]
+Les saules sont des espèces [[Ligneux|ligneuses]] de taille très variée, allant de grands arbres de plus de 20 mètres de haut ([[Salix alba|Saule blanc]]) à des sous-arbrisseaux poussant en espalier en épousant la forme du sol ([[Salix retusa|Saule à feuilles émoussées]] par exemple).
+
+Les feuilles sont simples, caduques, alternes, ovales ou lancéolées, entières ou plus ou moins dentées, souvent alternes (à l'exception notamment du [[Salix purpurea|Saule pourpre]]), avec un [[pétiole]] parfois accompagné d'un [[stipule]]. Les fleurs sont réunies en chatons dressés, mâles ou femelles, portés par des pieds différents (plantes [[dioécie|dioïques]]). Chaque fleur est portée par un [[nectaire (botanique)|nectaire]], qui correspond au [[périanthe]], et protégée par une [[bractée]] ciliée.
+
+La fleur mâle, minuscule, comporte deux à cinq [[étamine]]s. La fleur femelle ne comprend qu'un seul [[ovaire (botanique)|ovaire]], uniloculaire mais à deux [[carpelle]]s.
+
+Fleurs mâles et femelles sont rassemblées en [[Chaton (botanique)|chatons]] caractéristiques.
+
+Les fleurs femelles fécondées forment des capsules à deux valves, qui libèrent des graines cotonneuses. Les saules peuvent être anémochores (pollinisés par le vent) ou entomochores (pollinisés par les insectes).
+
+Les nombreux hybrides rendent souvent la détermination difficile.
+
+La plupart des saules se couvrent à l'[[automne]] d'une [[cire]] blanche qui les protège pendant l'[[hiver]]. Comme toutes les cires, celle-ci est [[Hydrophobie (physique)|hydrophobe]], c'est-à-dire qu'elle ne laisse pas passer l'eau. Cette propriété protège l'arbre de la [[déshydratation (chimie)|déshydratation]] pendant l'hiver mais rend aussi la [[respiration]] plus difficile. Pour résoudre ce problème, l'arbre est équipé de [[lenticelle]]s.
+
+Les saules sont connus pour s'hybrider facilement.
+
+== Écologie et distribution ==
+[[Fichier:Willow in the Red Zone, Christchurch, New Zealand.jpg|vignette|alt=Branches d'un arbre, l'ensemble tirant sur le rouge. Un tronc envoie vers le ciel une multitude de branches qui s'étalent sur le ciel, et sur la photo. |Un Salix 'Chrysocoma' éclairé par le couchant, près de l'[[Avon (Nouvelle-Zélande)|Avon]] ([[Nouvelle-Zélande]]). Août 2019.]]
+En Europe, les saules ont des graines parmi les plus petites des espèces ligneuses, d'un millimètre de longueur pour 0.2 millimètre de largeur<ref>{{Article|auteur1=Steffen Boch|titre=Weiden – Pioniergehölze mit grossem ökologischem Wert|périodique=Zürcher Wald|volume=2022|numéro=2|pages=29|date=avril 2022|lire en ligne=https://www.researchgate.net/publication/359788390_Weiden_-_Pioniergeholze_mit_grossem_okologischem_Wert/link/624e8fdacf60536e2348c494/download|format=pdf}}</ref>. Ces petites graines ne contiennent que peu de tissus nutritifs, sont très sensibles à la déshydratation et ont donc besoin d'habitats ouverts et peu concurrentiels avec un apport constant d'humidité lors de la germination. Pour cette raison, la plupart des espèces de saules sont des espèces dites pionnières. Saules et bouleaux sont les premiers arbres à coloniser les [[friche]]s, surtout les berges de rivières et les zones alluviales, mais aussi les coupes forestières. En effet, le saule a besoin d'un terrain nu et de beaucoup de lumière ; l'eau est un caractère important pour son développement. Il est plutôt [[wikt:acidicline|acidicline]] et s'installe sur des sols à [[pH]] allant de {{nobr|5,5 à 7,5}}. Il préfère les sols légers et humides tels que les alluvions des bords de cours d'eau.
+
+Les saules occupent un large éventail de milieux naturels : dunes, bas-marais, tourbières, pelouses alpines, combes à neige, couloirs d’avalanches, forêts claires. Ils sont particulièrement abondants et marquent le paysage des zones alluviales et des bords de rivières.
+
+Les quelque {{nobr|360 espèces}} de saules recensées dans le monde sont principalement distribuées dans les régions froides et tempérées de l'hémisphère nord, mais quelques espèces sont présentes dans les régions tropicales et l'hémisphère sud tempéré.
+
+== Liste des sous-taxons ==
+* ''[[Salix subg. Chamaetia]]''
+* ''[[Salix subg. Chosenia]]''
+* ''[[Salix subg. Longifoliae]]''
+* ''[[Salix subg. Salix]]''
+* ''[[Salix subg. Vetrix]]''
+
+=== Principales espèces ===
+
+{{colonnes|nombre=3|taille=25|
+# ''[[Salix acutifolia]]'' Willd.
+# ''[[Salix aegyptiaca]]'' [[Carl von Linné|L.]] - Saule d'Égypte
+# ''[[Salix alaxensis]]'' (Andersson) Coville - Saule d'Alaska
+# ''[[Salix alba]]'' L. - [[Saule blanc]]
+# ''[[Salix amplexicaulis]]'' Bory & Chaub.
+# ''[[Salix amygdaloides]]'' Andersson - [[Salix amygdaloides|Saule à feuilles de pêcher]]
+# ''[[Salix apennina]]'' A.K.Skvortsov - [[Salix apennina|Saule des Apennins]]
+# ''[[Salix apoda]]'' Trautv.
+# ''[[Salix appendiculata]]'' [[Vill.]]
+# ''[[Salix arbuscula]]'' L.
+# ''[[Salix arctica]]'' [[Pall.]]
+# ''[[Salix argyracea]]'' E.L.Wolf
+# ''[[Salix arizonica]]'' Dorn - Saule d'Arizona
+# ''[[Salix armenorossica]]'' A.K.Skvortsov - Saule d'Arménie
+# ''[[Salix atrocinerea]]'' Brot. − [[Salix atrocinerea|Saule roux]]
+# ''[[Salix aurita]]'' [[Carl von Linné|L.]] - [[Salix aurita|Petit marsault]]
+# ''[[Salix babylonica]]'' L. - [[Saule pleureur]]
+# ''[[Salix balfouriana]]'' C.K.Schneid.
+# ''[[Salix barclayi]]'' Andersson
+# ''[[Salix bebbiana]]'' Sarg.
+# ''[[Salix bicolor]]'' Willd. - Saule bicolore
+# ''[[Salix bikouensis]]'' Y.L.Chou
+# ''[[Salix bonplandiana]]'' Kunth - Saule de Bonpland
+# ''[[Salix brachycarpa]]'' Nutt.
+# ''[[Salix breviserrata]]'' Flod.
+# ''[[Salix burjatica]]'' Nasarow
+# ''[[Salix burqinensis]]'' Chang Y. Yang
+# ''[[Salix caesia]]'' Vill.
+# ''[[Salix calliantha]]'' J.Kern.
+# ''[[Salix calodendron]]''
+# ''[[Salix candida]]'' Flüggé ex Willd.
+# ''[[Salix cantabrica]]'' Rech.f. - Saule de Cantabrique
+# ''[[Salix capensis]]'' Thunb.
+# ''[[Salix capitata]]''  Y.L.Chou & Skvortsov
+# ''[[Salix caprea]]'' [[Carl von Linné|L.]] - [[Saule marsault]]
+# ''[[Salix capusii]]''  Franch.
+# ''[[Salix carmanica]]''  Bornm.
+# ''[[Salix caroliniana]]''  Michx. - saule de Caroline
+# ''[[Salix caspica]]''  [[Pall.]]
+# ''[[Salix cavaleriei]]''  [[Hector Léveillé|H.Lév.]]
+# ''[[Salix chaenomeloides]]''  Kimura
+# ''[[Salix cinerea]]''  [[Carl von Linné|L.]] - [[Saule cendré]]
+# ''[[Salix cordata]]''  Michx. - Saule à feuilles en forme de cœur
+# ''[[Salix daphnoides]]'' Vill. - Saule daphné
+# ''[[Saule discolore|Salix discolor]]'' Muhl.
+# ''[[Salix drummondiana]]'' Barratt ex Hook. - Saule de Drummond
+# ''[[Salix elaeagnos]]'' Scop.
+# ''[[Salix eriocephala]]'' Michx.
+# ''[[Salix excelsa]]''  [[Samuel Gottlieb Gmelin|S.G.Gmel.]]
+# ''[[Salix exigua]]''  Nutt.
+# ''[[Salix fargesii]]''  Burkill - Saule de Farges
+# ''[[Salix floderusii]]''  Nakai
+# ''[[Salix exigua|Salix fluviatilis]]''  <small>Nutt. (syn. Salix exigua var. sessilifolia)</small>
+# ''[[Salix foetida]]''  [[Johann Christoph Schleicher|Schleich.]] ex [[DC.]] - Saule fétide
+# ''[[Salix fragilis]]'' L. - [[Saule fragile]]
+# ''[[Salix geyeriana]]'' [[Nils Johan Andersson|Andersson]] - Saule de Geyer
+# ''[[Salix gilgiana]]''  ([[Karl Otto von Seemen|Seemen]])
+# ''[[Salix glabra]]''  Scop., Saule glabre
+# ''[[Salix glauca]]''  [[Carl von Linné|L.]] - Saule glauque
+# ''[[Salix glaucosericea]]''  Flod.
+# ''[[Salix gooddingii]]''  C.R.Ball - Saule de Gooding
+# ''[[Salix gordejevii]]''  Y.L.Chang & Skvortsov
+# ''[[Salix graciliglans]]'' Nakai
+# ''[[Salix gracilistyla]]'' Miq.
+# ''[[Salix hastata]]''  [[Carl von Linné|L.]]
+# ''[[Salix hegetschweileri]]'' Heer
+# ''[[Salix helvetica]]''  Vill. - Saule suisse
+# ''[[Salix herbacea]]''  [[Carl von Linné|L.]] - [[Salix herbacea|Saule herbacé]]
+# ''[[Salix hookeriana]]''  Barratt ex Hook. - saule de Hooker
+# ''[[Salix humboldtiana]]''  Willd. - [[Salix humboldtiana|Saule du Chili]]
+# ''[[Salix humilis]]''  Marshall
+# ''[[Salix hylematica]]''  [[Camillo Karl Schneider|C.K.Schneid.]]
+# ''[[Salix integra]]''  [[Thunb.]]
+# ''[[Salix irrorata]]''  Andersson
+# ''[[Salix japonica]]''  Thunb. - Saule du Japon
+# ''[[Salix jessoensis]]''  Seemen - Saule de Jesso
+# ''[[Salix koreensis]]''  Andersson - Saule de Corée
+# ''[[Salix koriyanagi]]''  Kimura ex Goerz
+# ''[[Salix laevigata]]'' Bebb - Saule rouge
+# ''[[Salix laggeri]]''  Wimm. - Saule de Lagger
+# ''[[Salix lanata]]''  L. - Saule laineux
+# ''[[Salix lapponum]]''  L. - Saule des Lapons
+# ''[[Salix lasiolepis]]''  Benth.
+# ''[[Salix lemmonii]]''  Bebb
+# ''[[Salix lindleyana]]''  Wallace ex Andersson
+# ''[[Salix linearistipularis]]''  (Franch.) K. S. Hao
+# ''[[Salix longiflora]]'' Andersson
+# ''[[Salix longistamina]]'' Z. Wang & P. Y. Fu
+# ''[[Salix lucida]]'' Muhl.
+# ''[[Salix luctuosa]]'' [[Hector Léveillé|H.Lév.]]
+# ''[[Salix magnifica]]'' Hemsl., Saule magnifique
+# ''[[Salix matsudana]]'' Koidz. - [[Saule tortueux]]
+# ''[[Salix maximowiczii]]'' Kom. - Saule de Maximowicz
+# ''[[Salix medwedewii]]'' Dode - Saule de Medwedew
+# ''[[Salix melanopsis]]'' Nutt.
+# ''[[Salix microstachya]]'' [[Turcz.]]
+# ''[[Salix mielichhoferi]]'' Saut., syn. de ''[[Salix myrsinites]]''
+# ''[[Salix miyabeana]]'' Seemen
+# ''[[Salix moupinensis]]'' Franch.
+# ''[[Salix muscina]]''  Dode ex Flod.
+# ''[[Salix myricoides]]''  Muhl. - Saule tamaris
+# ''[[Salix myrsinifolia]]'' Salisb. - [[Saule noircissant]]
+# ''[[Salix myrsinites]]''  L., syn. de ''[[Salix mielichhoferi]]'' Tausch ex Anderss.
+# ''[[Salix myrtilloides]]''  L. - Saule fausse myrtille
+# ''[[Salix neowilsonii]]''  W.P.Fang
+# ''[[Salix nigra]]''  Marshall - [[Saule noir]] (Amérique du Nord)
+# ''[[salix reticulata|Salix nivalis]]'' Hook. - Saule des neiges, syn. de ''[[Salix reticulata]]''
+# ''[[Salix pantosericea]]'' Goerz
+# ''[[Salix paraplesia]]''  [[Camillo Karl Schneider|C.K.Schneid.]]
+# ''[[Salix pauciflora]]''  Koidz.
+# ''[[Salix pedicellata]]''  Desf.
+# ''[[Salix pellita]]''  Andersson
+# ''[[Salix pentandra]]''  L.
+# ''[[Salix petiolaris]]''  Sm., syn. de ''Salix sericea''
+# ''[[Salix phlebophylla]]''  Andersson
+# ''[[Salix phylicifolia]]''  L.
+# ''[[Salix planifolia]]''  Pursh
+# ''[[Salix polaris]]''  Wahlenb.
+# ''[[Salix psammophila]]''  Z. Wang & Chang Y. Yang
+# ''[[Salix purpurea]]''  L. - [[Saule pourpre]]
+# ''[[Salix pyrenaica]]''  Gouan - [[Saule des Pyrénées]]
+# ''[[Salix pyrifolia]]''  Andersson
+# ''[[Salix pyrolifolia]]''  Ledeb.
+# ''[[Salix rehderiana]]''  C.K.Schneid.
+# ''[[Salix repens]]''  L. - [[Saule rampant]]
+# ''[[Salix reptans]]''  Rupr.
+# ''[[Salix reticulata]]''  L.
+# ''[[Salix retusa]]''  L. - Saule à feuilles rétuses
+# ''[[Salix retusa|Salix retusoides]]'' J.Kern., syn. de ''Salix retusa''<ref name="GBIF">[https://www.gbif.org/species/5583334 GBIF taxonomy.]</ref>
+# ''[[Salix rorida]]''  Lacksch.
+# ''[[Salix rosmarinifolia]]''  L. - Saule à feuilles de romarin
+# ''[[Salix sajanensis]]''  Nasarow
+# ''[[Salix salviifolia]]''  Brot.
+# ''[[Salix schwerinii]]''  E.L.Wolf
+# ''[[Salix scouleriana]]''  Barratt ex Hook.
+# ''[[Salix sericea]]''  Marshall, syn. de ''Salix petiolaris''
+# ''[[Salix serissima]]''  (L.H.Bailey) Fernald
+# ''[[Salix serpyllifolia]]''  Scop. - Saule à feuilles de [[serpolet]]
+# ''[[Salix silesiaca]]''  Willd.
+# ''[[Salix sitchensis]]''  C.A.Sanson ex Bong.
+# ''[[Salix siuzevii]]''  Seemen
+# ''[[Salix starkeana]]''  Willd.
+# ''[[Salix subopposita]]''  Miq.
+# ''[[Salix subserrata]]''  Willd.
+# ''[[Salix suchowensis]]''  W.C.Cheng
+# ''[[Salix sungkianica]]''  Y.L.Chou & Skvortsov
+# ''[[Salix taxifolia]]''  Kunth - Saule à feuilles d'[[Taxus|if]]
+# ''[[Salix tenuijulis]]''  Ledeb.
+# ''[[Salix tetrasperma]]''  Roxb.
+# ''[[Salix triandra]]''  L. - [[Saule à trois étamines]]
+# ''[[Salix turanica]]''  Nasarow
+# ''[[Salix udensis]]''  Trautv. & C.A.Mey.
+# ''[[Salix uva-ursi]]''  Pursh
+# ''[[Salix variegata]]''  Franch.
+# ''[[Salix viminalis]]''  L. - [[Saule des vanniers]] ou [[Osier vert]]
+# ''[[Salix vulpina]]''  Andersson - Saule des renards
+# ''[[Salix waldsteiniana]]''  Willd. - Saule de Waldstein
+# ''[[Salix wallichiana]]''  Andersson
+# ''[[Salix wilhelmsiana]]''  [[M.Bieb.]]
+# ''[[Salix wilsonii]]''  Seemen - Saule de Wilson
+# ''[[Salix yezoalpina]]''  Koidz.
+}}
+
+== Les ''Salix'' et l'humain ==
+[[Fichier:Wappen Widen AG.svg|vignette|200px|Blason de [[Widen (Argovie)|Widen]], [[canton d'Argovie]].]]
+
+=== Utilisation ===
+* [[Fichier:Saule têtard le long de la Scarpe à Marchiennes.jpg|vignette|Saule têtard le long de la [[Scarpe]] à [[Marchiennes]].]]Les saules sont cultivés principalement pour l'ornement, notamment le [[saule pleureur]], de loin le plus connu dans les parcs et jardins.
+* Certaines espèces fournissent du [[bois]], apprécié notamment pour la fabrication de manches d'[[outil]]s, de perches et des rameaux flexibles utilisés en [[vannerie]] ([[osier (matériau)|osier]]). Particulièrement droites et solides, ''[[Salix calodendron]]'', ''[[Salix cinerea]]'', ''[[Salix caprea]]'', ''[[Salix viminalis]]'' et leurs mélanges sont utilisées pour la fabrication des [[fusain]]s d'artistes.
+* Les feuilles et l'[[écorce]] de saule sont connues depuis l'[[Antiquité]] pour leurs vertus curatives. Les [[Sumériens]] utilisent les feuilles de saule en décoction comme antidouleur. [[Hippocrate]] conseille une préparation à partir des feuilles et l'écorce du saule blanc pour soulager les douleurs et les fièvres. Au {{s-|XVIII}}, pour le pasteur [[Edward Stone (ecclésiastique)|Edward Stone]], l'écorce de saule lui rappelle le [[Histoire de l'écorce de quinquina|quinquina]]<ref>À ne pas confondre avec le « [[Histoire de l'écorce de quinquina|quinquina]] français », nom d'un mélange à base d'écorce de chêne, de racine de gentiane et de camomille, mentionné par le vétérinaire [[Onésime Delafond]] en 1844. Cf {{Ouvrage|auteur1=Onésime Delafond|titre=Traité de thérapeutique générale vétérinaire|éditeur=Labé|année=1844|passage=163}}.</ref> au même goût amer dû à sa richesse en tanins (15 %). Il lui donne une indication supplémentaire contre les rhumatismes en recourant à la [[théorie des signatures]]<ref>{{Ouvrage|auteur1=Claude Bohuon|auteur2=Claude Monneret|titre=Fabuleux hasards. Histoire de la découverte de médicaments|éditeur=[[EDP Sciences]]|année=2012|passage=24|isbn=}}.</ref>. En [[1829]], un pharmacien français, [[Pierre-Joseph Leroux]], après avoir fait bouillir de la poudre d'écorce de [[saule blanc]] dans de l'eau, concentre sa préparation<ref>La tisane d'écorce séchée est toujours utilisée contre les refroidissements, les maux de tête. L'écorce peut également être macérée dans du vin (50 g d'écorce dans un litre de vin) pendant une semaine. Ce vin [[Aliment tonique|tonique]] est {{Citation|utilisé (deux verres à bordeaux par jour) dans l'[[anorexie]], l'insuffisance digestive, les [[gastralgie]]s avec hyperacidité, la [[diarrhée]] chronique, la [[leucorrhée]]}}. Cf {{Lien web |auteur=[[Pierre Lieutaghi]] |titre=Saule blanc |url=https://www.universalis.fr/encyclopedie/saule-blanc/ |site=universalis.fr |consulté le=16 avril 2019}}.</ref>. Il en résulte des cristaux solubles qu'il baptise [[salicyline]] (du latin ''salix''). En [[1853]], un chimiste alsacien nommé [[Charles Frédéric Gerhardt]] réussit, à partir de la [[salicyline]], à synthétiser l'[[acide acétylsalicylique]] qui est commercialisé en 1899 sous le nom d'[[aspirine]]. Les rameaux de 2-3 ans ont en effet une écorce riche en [[salicyline]], [[hétéroside]] se dédoublant par hydrolyse en glucose et {{lien|fr=alcool salicylique|lang=en|trad=Salicyl alcohol}} (alcool orthoxybenzoïque ou saligénol). Ce dernier, par oxydation, donne l'aldéhyde, puis l'acide salicylique. {{Citation|Par ses composants, l'écorce de saule est un peu une aspirine végétale, moins active sans doute que l'acide acétylsalicylique de synthèse, cependant douée d'un réel pouvoir antithermique et [[wikt:antinévralgique|antinévralgique]], auxquels s'ajoutent des effets toniques et astringents<ref>{{Lien web |auteur=[[Pierre Lieutaghi]] |titre=Saule blanc |url=https://www.universalis.fr/encyclopedie/saule-blanc/ |site=universalis.fr |consulté le=16 avril 2019}}.</ref>}}.
+* Les feuilles des saules, riches en [[vitamine C]], sont comestibles, mais elles ne sont pas d'un goût agréable. Les jeunes pousses du [[saule blanc]] peuvent être ajoutées crues aux salades, ou cuites en légumes. Celles des autres espèces sont trop amères pour pouvoir être consommées. Les propriétés médicinales des feuilles<ref group=Note>Il existe des médicaments appelés « Feuille de saule » qui visent à éliminer les cors aux pieds. Ces produits ne contiennent pas de saule blanc, mais de l’acide salicylique destiné à brûler les cors. </ref> et des chatons<ref group=Note>La tisane astringente obtenue par [[infusion]] de feuilles (40 grammes de plante pour un litre d'eau soit 10 ml par tasse d'eau bouillante, donnant une tisane encore plus amère), de chatons favorise le sommeil.</ref> sont utilisés en usage externe ([[antispasmodique]], [[sédatif]] nerveux, [[anaphrodisiaque]])<ref>{{Ouvrage|auteur1=[[François Couplan]], Eva Styner|titre=Guide des plantes sauvages comestibles et toxiques|éditeur=[[Delachaux et Niestlé]]|année=1994|passage=61|isbn=}}.</ref>.
+* Avant l'invention de l'[[auxine]] de synthèse, on se servait de l'[[eau de saule]] pour faciliter le [[bouturage]] de tous types de plantes.
+* La salicine peut aussi être utilisée pour [[wikt:tanner|tanner]] le cuir.
+* D'après [[Expédition de La Pérouse|Lapérouse]] les aborigènes [[Aïnous (ethnie du Japon et de Russie)|Aïnous]] utilisaient les fils de l'écorce de saule pour tisser des toiles<ref>{{Ouvrage
+|langue=fr
+|auteur1=Lapérouse
+|titre=Le voyage de Lapérouse annoté par J.B.B. de Lesseps
+|sous-titre=De Brest à Botany Bay
+|lieu=Escourbias
+|éditeur=Pôles d'images
+|collection=fac similé de 1831
+|année=2005
+|pages totales=208
+|passage=126
+|isbn=2-915561-05-2
+|lire en ligne=https://fr.wikisource.org/wiki/Voyage_de_La_P%C3%A9rouse_autour_du_monde
+|consulté le=4 août 2017
+}}.</ref>. D'après le missionnaire John Bachelor, ces mêmes indigènes fabriquaient des sortes de peignes en saule pour relever leur moustache quand ils buvaient du vin<ref>{{Ouvrage
+|langue=en
+|auteur1=John Batchelor
+|titre=The Ainu of Japan
+|lieu=Londres
+|éditeur=Religious Tract Society
+|année=1892
+|pages totales=341
+|passage=78
+|lire en ligne=https://archive.org/details/ainujapanreligi00batcgoog
+|consulté le=6 août 2017
+}}.</ref>.
+* Selon le phytothérapeute Paul Goetz, les chatons de saule contiennent des traces de substance [[Œstrogène|œstrogènique]]<ref>{{Ouvrage|auteur=Paul Goetz|année=2007|titre=La phytothérapie|sous-titre=Santé par les plantes|date=25 février 2010|éditeur=[[Reader's Digest|Selection Reader's Digest]]|lieu=Cachan|page=206|isbn=978-2-7098-2119-3}}.</ref>.
+*Le saule qui accepte très bien la taille en tétard fut beaucoup utilisé comme bois énergie, aujourd'hui le bois issu de ce type de taille encore très répandu est essentiellement broyé et utilisé pour pailler jardins et potagers<ref>{{Lien web |langue=en |auteur=Kris De Decker |titre=How to Make Biomass Energy Sustainable Again |url=https://solar.lowtechmagazine.com/2020/09/how-to-make-biomass-energy-sustainable-again.html |site=LOW←TECH MAGAZINE |date=2020-09-20 |consulté le=2021-11-05}}.</ref>.
+
+=== Symbolique, religion et superstitions ===
+{{Section à sourcer|date=février 2015}}
+* Dans la mythologie orientale, le saule est symbole d'immortalité<ref>{{Lien web |titre=Le symbolisme des arbres |url=https://web.archive.org/web/20200420143451/http://blogs.paris.fr/casepasseaujardin/2015/10/30/arbres-et-symboles-surprenants-a-travers-epoques-et-cultures/ |site=paris.fr via [[Internet Archive]] |archive-date=20 avril 2020}}.</ref>.
+* Les branches de saule ou '''''Arava''''' sont aussi l'une des [[quatre espèces]]  utilisées dans [[Souccot|la fête juive des cabanes]]. Il représente entre autres l'un des rangs des dirigeants de la génération à savoir les scribes des juges, ou l'un des organes du corps à savoir la bouche.
+* ''Artemis Lygodesma'' [Artémis du saule] était l'[[épithète]] d'Artémis à [[Sparte]]. En outre, les branches de saule étaient utilisées dans plusieurs rituels grecs<ref>(en){{Ouvrage| nom=Bremmer Jan N. |année=2008|titre= ''Greek Religion and Culture, the Bible and the Ancient Near East''|éditeur=Brill, Pays-Bas|page=187}}.</ref>.
+* Chez les [[Civilisation inca|incas]], la [[Axomama|Saramama]], déesse du [[maïs]], était associée au saule<ref>(en) ''Handbook of Inca Mythology'' par Paul Richard Steele, Catherine J. Allen.</ref>.
+* ''Sail'' / saule est le nom d'une lettre de l'[[ogham|alphabet ogham]]ique. Cette lettre est [[glose|glosé]]e ''li n-aimbi'' ce qui voudrait dire "couleur des morts"<ref>George Calder, Auraicept na n-éces, The Scholars Primer, being the texts of the ogham tract from the [[Livre de Ballymote|Book of Ballymote]] and the {{Lien|trad=Yellow Book of Lecan}}, and the text of the Trefhocul from the Book of Leinster..., John Grant, Edinburgh 1917</ref>.
+* Chez les [[Germains]], le « salix » était symbole de mort. Des sorcières habiteraient dans la cime des saules. On faisait alors des flûtes en bois de saule pour chasser le diable. (Grimm)
+* En [[Vaudou|religion vaudou]], on noue les branches de saules pour bloquer une personne.
+* Une gerbe de '''branches de saule''' était utilisée par les [[scythes]] pour prédire l'avenir. Les Enarei (une classe différente) utilisaient plutôt des morceaux d'écorce de [[tilleul]]<ref>Macaulay (1904:317); Christian (1998:148).</ref>.
+* Le [[phénix]] vivrait dans le [[benben]] d'[[Héliopolis (Égypte)|Héliopolis]] ou dans le saule sacré.
+* En [[Cantabrie]], cueillir des branches de saule au lever du soleil du [[solstice d'été]] porterait chance.
+* Chez les [[Pomos]], le dieu [[Coyote]] créa des humains (avec des griffes) à partir de branches de saule et de [[cornouiller]].
+
+=== Littérature ===
+Le saule jouit d'un ambassadeur célèbre : [[Alfred de Musset]], qui appréciait cet arbre. Les vers ci-dessous sont extraits du poème ''Lucie'', ils sont placés en tête et en fin de ce poème<ref>''Classiques Larousse'', « Alfred de Musset – Pages choisies I (poésie) », {{page|33}}.</ref>. Voici l'extrait :
+
+{{citation bloc|Mes chers amis, quand je mourrai,<br> Plantez un saule au cimetière. <br> J’aime son feuillage éploré ; <br> La pâleur m’en est douce et chère, <br> Et son ombre sera légère <br> À la terre où je dormirai}}
+
+''[[Le Vent dans les saules (roman)|Le Vent dans les saules]]'' (''{{lang|en|The wind in the willows}}'') est un roman de [[Kenneth Grahame]] paru en 1908 et adapté en bande dessinées par [[Michel Plessix]] entre 1996 à 2001 (voir ''[[Le Vent dans les saules (bande dessinée)]]'').
+
+Les saules de [[Grand-Pré]] ont inspiré un roman de René Verville, ''Le Saule de Grand-Pré''. Selon la légende, les saules marquent la présence de villages d'[[Acadiens]] [[Déportation des Acadiens|déportés]]<ref>{{Lien web |langue=en |auteur=Société Promotion Grand-Pré |titre=La transformation physique du paysage en symbole |url=https://web.archive.org/web/20210119150811/http://www.paysagedegrand-pre.ca/un-siegravecle-de-tourisme-drsquoagriculture-et-un-lieu-de-meacutemoire-mdash-de-1907-agrave-lrsquoeacutepoque-actuelle.html |site=paysagedegrand-pre.ca via [[Internet Archive]] |consulté le=25 juin 2014 |archive-date=19 janvier 2021}}.</ref>.
+
+Le dicton {{Citation|suspendre sa harpe (ou sa [[lyre]]) dans les saules}} indique une période de [[deuil]], ce qui remonte au [[Psaume 137 (136)|psaume 137]] :
+{{citation bloc|Sur les bords des fleuves de Babylone, nous étions assis et nous pleurions, en nous souvenant de Sion. <br> Aux saules de la contrée nous avions suspendu nos harpes.}}
+
+Dans le [[Livre de Taliesin]] ({{s-|XIII}} / {{s-|XIV}}) et le poème ''Cad Goddeu'' (« la Bataille des Arbres ») ({{s-|VI}}), le saule et le [[sorbier]] sont décrits comme des arbres qui {{Citation|tardent à entrer en [[lice]]}}.
+
+Le roman de [[Shan Sa]] parle de cet arbre dans ''Les Quatre Vies du saule.''
+
+=== Aspects culturels ===
+
+==== Au Japon ====
+Dans le jeu de cartes traditionnel japonais [[Hanafuda]], des branches de saule sont représentées sur la série des 4 cartes du mois de novembre (décembre dans la version coréenne).
+
+== Insectes se nourrissant de saule ==
+Les chenilles des [[papillon]]s de nuit ([[hétérocère]]s) suivants (classés par famille) se nourrissent de '''saule''' :
+{{colonnes|taille=25|* [[Nemophora metallica|adèle de la scabieuse]] (Adelidae),
+* [[Cabera pusaria|cabère virginale]],
+* [[cidarie à bandes vertes]],
+* [[Eulithis|cidarie du peuplier]],
+* [[crocale aglosse]],
+* [[grande naïade]],
+* [[numérie poudrée]],
+* [[phalène ondulée]] (Geometridae),
+* [[bombyx de l'aubépine]],
+* [[bombyx du chêne]],
+* [[bombyx feuille de l'yeuse]],
+* [[feuille-morte du chêne]] (Lasiocampidae),
+* [[bombyx disparate]] (Lymantriidae),
+* [[Dysgonia algira|passagère]] (Dysgonia algira),
+* [[xanthie noisette]],
+* [[xyline du chêne]] (Noctuidae),
+* [[bois veiné]],
+* [[bombyx dictaeoïde]],
+* [[bucéphale (papillon)|bucéphale]],
+* [[demi-lune grise]],
+* [[Dromadaire (lépidoptère)|notodonte dromadaire]],
+* [[Porcelaine (papillon)|porcelaine]],
+* [[vinule]] (Notodontidae),
+* [[polyphème d'Amérique]] (Saturniidae),
+* [[sphinx demi-paon]],
+* [[Laothoe populi|sphinx du peuplier]] (Sphingidae).}}
+(Voir aussi ces papillons sur le Wiktionnaire)
+
+[[Fichier:Galle sur salix dunensis (3).jpg|vignette|gauche|La [[rose des saules]], galle causée par [[Rabdophaga rosaria]].]]
+Certaines [[Cecidomyia rosaria|Cécidomiyes]] induisent des galles en forme de rosette sur les bourgeons terminaux de nombreux saules.
+
+== Champignon parasite ==
+*''[[Phellinus trivialis]]'' est un champignon parasite qui se développe sur le tronc des Saules.
+*''[[Melampsora]]'', la Rouille du Saule sur les feuilles des Saules.
+
+== Notes et références ==
+=== Notes ===
+{{Références|group=Note}}
+
+=== Références ===
+{{Références|colonnes=2|taille=35}}
+
+== Voir aussi ==
+=== Articles connexes ===
+* [[Acide acétylsalicylique]]
+
+=== Bibliographie ===
+*   Brochet D (2016) ''Le saule, la plante aux mille pouvoirs'', éditions de Terran, {{date-|avril 2016}}, 256 pages, {{ISBN|9782359810561}}.
+* Abassi M, Lamhamedi M.S, Hachani C & Béjaoui Z (2018) ''[https://mffp.gouv.qc.ca/documents/forets/recherche/Can-J-For-Res-48-599-609.pdf Évaluation morpho-physiologique de trois clones de Salix des zones semi-arides soumis à un excès de zinc en conditions hydroponiques]''. Canadian Journal of Forest Research, 48(5), 599-609.
+
+{{Autres projets
+|commons=Category:Salix
+}}
+=== Liens externes ===
+* {{BioLib|taxon|38917|''Salix'' L.}}
+* {{CatalogueofLife|7BWB|''Salix'' L.|consulté le=22.6.2024}}
+* {{ITIS|22476|''Salix'' L.}}
+* {{NCBI|40685|''Salix''}}
+
+{{Portail|botanique}}
+
+[[Catégorie:Salicaceae (Cronquist)]]
+[[Catégorie:Salix| ]]
+[[Catégorie:Genre de Salicaceae|+]]
+[[Catégorie:Genre d'arbres et arbustes (nom vernaculaire)]]
+[[Catégorie:Plante dioïque]]

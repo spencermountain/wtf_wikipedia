@@ -61,8 +61,9 @@
     "test": "pnpm run test:unit",
     "test:unit": "tape --strict \"tests/unit/**/*.test.js\" | tap-dancer",
     "test:types": "tsc -p ./tests/types && tsc -p ./tests/types/node10.tsconfig.json && tsc -p ./tests/types/plugins.tsconfig.json && tsc -p ./tests/types/plugins-cjs.tsconfig.json",
+    "test:fetch": "tape --strict \"tests/fetch/**/*.test.js\" | tap-dancer",
     "test:plugins": "pnpm -r --workspace-concurrency=1 run test",
-    "test:all": "pnpm run test:types && pnpm run test:unit && pnpm run test:plugins && pnpm run lint",
+    "test:all": "pnpm run test:types && pnpm run test:fetch && pnpm run test:unit && pnpm run test:plugins && pnpm run lint",
     "test:hmm": "tape --strict \"tests/_hmm/**/*.hmm.js\" | tap-dancer",
     "testb": "TESTENV=prod pnpm run test:all"
   },

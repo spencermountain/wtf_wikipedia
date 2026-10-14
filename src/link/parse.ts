@@ -4,7 +4,7 @@ import postprocess from '../_lib/postprocess.ts'
 const ignore_links =
   /^(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i
 const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ].*?)?\]/g
-const link_reg = /\[\[(.{0,1600}?)\]\]([a-z]+)?/gi //allow dangling suffixes - "[[flanders]]s"
+const link_reg = /\[\[((?:\[[^[\]\r\n]*\]|[^[\]\r\n]){0,1600})\]\]([a-z]+)?/gi //allow dangling suffixes - "[[flanders]]s"
 
 const external_links = function (links, str) {
   str.replace(external_link, function (raw, protocol, link, text) {

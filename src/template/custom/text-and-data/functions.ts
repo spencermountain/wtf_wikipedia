@@ -286,15 +286,14 @@ let templates = {
     if (ties) {
       wins += ties / 2
     }
-    let num = percentage({
-      numerator: wins,
-      denominator: games,
-      decimals: 1,
-    })
-    if (num === null) {
+    if (!Number.isFinite(wins) || !Number.isFinite(games) || games <= 0) {
       return ''
     }
-    return `.${num * 10}`
+    const result = (wins / games).toFixed(3)
+    if (obj.leading_zero === 'y') {
+      return result
+    }
+    return result.replace(/^0\./, '.')
   },
 
   winlosspct: (tmpl, list) => {

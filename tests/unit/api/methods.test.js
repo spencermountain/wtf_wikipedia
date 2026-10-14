@@ -3,35 +3,37 @@ import test from 'tape'
 import wtf from '../../lib/index.js'
 import { allPages, readPage } from '../../_examples/index.js'
 
-// the api contract: every public method, run against every cached page,
-// checked against the return-shape promised in types/index.d.ts.
-// a parser change that makes a method throw, or return the wrong shape,
-// fails here with the page name - no matter which page triggers it.
+// Smoke-check no-argument return shapes on sampled instances from every cached page.
+// Focused tests cover arguments, mutations, and exact parsed values.
 
 const parsed = allPages.map((page) => {
   const str = readPage(page)
   return { page, doc: wtf(str) }
 })
 
+const isObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v)
+const isModel = (v) => isObject(v) && typeof v.json === 'function' && typeof v.text === 'function'
+
 const is = {
   array: (v) => Array.isArray(v),
   string: (v) => typeof v === 'string',
   boolean: (v) => typeof v === 'boolean',
-  object: (v) => v !== null && typeof v === 'object',
+  object: isObject,
   'string|null': (v) => v === null || typeof v === 'string',
   'string|undefined': (v) => v === undefined || typeof v === 'string',
   'string|number|null': (v) => v === null || typeof v === 'string' || typeof v === 'number',
-  'number|null': (v) => v === null || typeof v === 'number',
-  number: (v) => typeof v === 'number',
-  'item|null': (v) => v === null || (typeof v === 'object' && v !== undefined),
+  'number|null': (v) => v === null || Number.isFinite(v),
+  number: Number.isFinite,
+  'item|null': (v) => v === null || isObject(v),
+  'model|null': (v) => v === null || isModel(v),
+  'models|null': (v) => v === null || (Array.isArray(v) && v.every(isModel)),
   json: (v) => {
     JSON.stringify(v) // must not throw (no cycles)
-    return v !== null && v !== undefined
+    return isObject(v) || Array.isArray(v)
   },
-  any: () => true,
 }
 
-// { methodName: expected-shape } - [name, arg] to call with an argument
+// { methodName: expected-shape } for no-argument calls
 const contracts = {
   Document: {
     title: 'string|null',
@@ -68,23 +70,23 @@ const contracts = {
     citations: 'array',
     coordinates: 'array',
     category: 'string|null',
-    section: 'item|null',
-    paragraph: 'item|null',
-    sentence: 'item|null',
-    image: 'item|null',
-    link: 'item|null',
-    list: 'item|null',
-    table: 'item|null',
-    template: 'item|null',
-    reference: 'item|null',
-    citation: 'item|null',
+    section: 'model|null',
+    paragraph: 'model|null',
+    sentence: 'model|null',
+    image: 'model|null',
+    link: 'model|null',
+    list: 'model|null',
+    table: 'model|null',
+    template: 'model|null',
+    reference: 'model|null',
+    citation: 'model|null',
     coordinate: 'item|null',
-    infobox: 'item|null',
+    infobox: 'model|null',
     text: 'string',
     plaintext: 'string',
     json: 'json',
     wikitext: 'string',
-    // .debug() prints to console, .category(clue) returns a string - special-cased below
+    // .debug() prints to console and is omitted.
   },
   Section: {
     title: 'string',
@@ -103,25 +105,25 @@ const contracts = {
     images: 'array',
     references: 'array',
     citations: 'array',
-    sentence: 'item|null',
-    paragraph: 'item|null',
-    link: 'item|null',
-    table: 'item|null',
-    template: 'item|null',
-    infobox: 'item|null',
+    sentence: 'model|null',
+    paragraph: 'model|null',
+    link: 'model|null',
+    table: 'model|null',
+    template: 'model|null',
+    infobox: 'model|null',
     coordinate: 'item|null',
-    list: 'item|null',
-    image: 'item|null',
-    reference: 'item|null',
-    citation: 'item|null',
-    parent: 'item|null',
-    children: 'any', // Section[] | null
-    nextSibling: 'item|null',
-    next: 'item|null',
-    previousSibling: 'item|null',
-    previous: 'item|null',
-    lastSibling: 'item|null',
-    last: 'item|null',
+    list: 'model|null',
+    image: 'model|null',
+    reference: 'model|null',
+    citation: 'model|null',
+    parent: 'model|null',
+    children: 'models|null',
+    nextSibling: 'model|null',
+    next: 'model|null',
+    previousSibling: 'model|null',
+    previous: 'model|null',
+    lastSibling: 'model|null',
+    last: 'model|null',
     text: 'string',
     json: 'json',
     wikitext: 'string',
@@ -135,12 +137,12 @@ const contracts = {
     images: 'array',
     links: 'array',
     interwiki: 'array',
-    sentence: 'item|null',
-    reference: 'item|null',
-    citation: 'item|null',
-    list: 'item|null',
-    image: 'item|null',
-    link: 'item|null',
+    sentence: 'model|null',
+    reference: 'model|null',
+    citation: 'model|null',
+    list: 'model|null',
+    image: 'model|null',
+    link: 'model|null',
     text: 'string',
     json: 'json',
     wikitext: 'string',
@@ -150,7 +152,7 @@ const contracts = {
     interwiki: 'array',
     bolds: 'array',
     italics: 'array',
-    link: 'item|null',
+    link: 'model|null',
     bold: 'string|null',
     italic: 'string|null',
     isEmpty: 'boolean',
@@ -188,8 +190,8 @@ const contracts = {
     type: 'string',
     template: 'string',
     keyValue: 'object',
-    image: 'item|null',
-    images: 'item|null',
+    image: 'model|null',
+    images: 'model|null',
     links: 'array',
     coordinates: 'item|null',
     text: 'string',
@@ -255,16 +257,17 @@ Object.keys(contracts).forEach((cls) => {
           let got
           try {
             got = obj[name]()
+            if (check(got) !== true) {
+              failures.push(`${entry.page}: got ${typeof got} ${JSON.stringify(got)?.slice(0, 60)}`)
+            }
           } catch (e) {
             failures.push(`${entry.page}: threw "${e.message}"`)
             return
           }
-          if (check(got) !== true) {
-            failures.push(`${entry.page}: got ${typeof got} ${JSON.stringify(got)?.slice(0, 60)}`)
-          }
         })
       })
       const msg = `${cls}.${name}() → ${kind}  (${count} calls)`
+      t.ok(count > 0, `${cls}.${name}() has sampled instances`)
       t.ok(failures.length === 0, failures.length === 0 ? msg : `${msg} — ${failures.slice(0, 3).join(' | ')}`)
     })
     t.end()

@@ -1,0 +1,355 @@
+{{出典の明記| date = 2024年12月}}
+{{Infobox Musician <!--Wikipedia:ウィキプロジェクト 音楽家を参照-->
+| 名前 = レディオヘッド
+| native_name = Radiohead
+| 画像 = Radiohead.jpg
+| 画像説明 = 左からトム、ジョニー、コリン、エド、フィル
+| 画像補正 = yes
+| 背景色 = band
+| 別名 = オン・ア・フライデー<!-- 旧名や前身バンドを含む活動時に使用した別名義を記載。通称や略称ではありません。 -->
+| 出身地 = {{ENG}} [[オックスフォードシャー]][[アビンドン＝オン＝テムズ]]
+| ジャンル = {{Hlist-comma|[[オルタナティヴ・ロック]]<ref>{{cite web2 |last= Robinson |first= Will |date= 2016-01-12 |title= Sam Smith on Thom Yorke, Radiohead's Spectre song |url= https://ew.com/article/2016/01/12/sam-smith-thom-yorke-spectre-radiohead/ |website= EW.com |publisher= Dotdash Meredith |accessdate= 2024-08-29 }}</ref><ref>{{cite web2 |last= Young |first= Alex |date= 2016-01-21 |title= Radiohead will tour in 2016 |url= https://consequence.net/2016/01/radiohead-will-tour-in-2016/ |website= consequence.net |publisher= Consequence Holdings |accessdate= 2024-08-29 }}</ref>|[[アート・ポップ]]<ref>{{cite web2 |last= Hogan |first= Marc |date= 2017-03-20 |title= Exit Music: How Radiohead's OK Computer Destroyed the Art-Pop Album in Order to Save It |url= https://pitchfork.com/features/ok-computer-at-20/10038-exit-music-how-radioheads-ok-computer-destroyed-the-art-pop-album-in-order-to-save-it/ |work= Pitchfork |publisher = Condé Nast |accessdate= 2024-08-29 }}</ref>|[[アート・ロック]]<ref name="allmusic">{{cite web2 |last= Erlewine |first= Stephen Thomas |authorlink= スティーヴン・トマス・アールワイン |title= Radiohead Biography |url= {{AllMusic|artist|radiohead-mn0000326249#biography|pure_url=yes}} |website= [[オールミュージック|AllMusic]] |publisher= Netaktion |accessdate= 2020-12-13 }}</ref><ref>{{cite web2 |title= Radiohead Biography |url= https://www.rollingstone.com/music/artists/radiohead#biography |work= [[ローリング・ストーン|Rolling Stone]] |accessdate= 2024-08-29 |url-status= live |archiveurl= https://web.archive.org/web/20180612162156/https://www.rollingstone.com/music/artists/radiohead#biography |archivedate= 2018-06-12 }}</ref><ref>{{cite web2 |last= Lahann |first= Michael |date= 2016-05-02 |title= All surprises: Radiohead and the art of the unconventional album release |url= https://www.theguardian.com/music/musicblog/2016/may/02/all-surprises-radiohead-and-art-of-unconventional-album-release |work= [[ガーディアン|The Guardian]] |publisher= Guardian News & Media |accessdate= 2024-08-29 }}</ref>|[[エレクトロニカ]]<ref>{{cite web2 |date= 2013-06-14 |title= Ranked: Radiohead |url= https://www.undertheradarmag.com/lists/ranked_radiohead/ |work= [[:en:Under the Radar|Under the Radar]] |accessdate= 2024-08-29 }}</ref>|[[エクスペリメンタル・ロック]]<ref>{{cite web2 |last= Iadarola 
+ |first= Alexander |date= 2016-05-11 |title= Why We're Happy Holly Herndon Is Touring with Radiohead |url= https://thump.vice.com/en_us/article/radiohead-tour-holly-herndon-shabazz-palaces |work= Thump |publisher= Vice Media |accessdate= 2024-08-29 |url-status= live |archiveurl= https://web.archive.org/web/20160512131123/https://thump.vice.com/en_us/article/radiohead-tour-holly-herndon-shabazz-palaces |archivedate= 2016-05-12 }}</ref>|[[プログレッシブ・ロック]]{{R|allmusic}}}}
+| 活動期間 = [[1991年]] - 
+| レーベル = {{Plainlist|
+* {{Hlist-comma|{{Flagicon|UK}} [[パーロフォン]]|[[XLレコーディングス|XL]]}}
+* {{Hlist-comma|{{Flagicon|USA}} [[キャピトル・レコード|キャピトル]]|[[ATOレコード|TBD]]}}
+* {{Hlist-comma|{{Flagicon|JPN}} [[EMIミュージック・ジャパン|東芝EMI]]|[[ホステス・エンタテインメント|ホステス]]}}
+}}
+| 事務所 =
+| 共同作業者 = 
+| 公式サイト = [https://www.radiohead.com/ Radiohead Public Library]
+| メンバー = {{Plainlist|
+* [[トム・ヨーク]]
+* [[ジョニー・グリーンウッド]]
+* [[コリン・グリーンウッド]]
+* [[エド・オブライエン]]
+* [[フィル・セルウェイ]]
+}}
+| 旧メンバー =
+}}
+'''レディオヘッド'''（{{Lang-en|''Radiohead''}}）は、[[イギリス]]の[[バンド (音楽)#ロックバンド|ロックバンド]]。1985年に前身にあたるバンドを結成。1992年のメジャー・デビュー以降、外部ミュージシャンの起用は多いものの、同じパーマネント・メンバーで活動している。
+
+彼らのルーツである[[ポストパンク]]や[[オルタナティヴ・ロック]]の大枠に、[[ポストロック]]や[[電子音楽]]、[[ジャズ]]、[[クラシック音楽|クラシック]]、[[現代音楽]]などを混交した多彩な音楽性や、アルバムごとの急進的な実験性・変化が特徴。また、ソロ活動も盛んである。
+
+2010年12月に[[ローリング・ストーン]]誌が発表した「歴史上最も偉大な100組のアーティスト」（100 Greatest Artists of All Time）において第73位<ref>{{Cite web |title=100 Greatest Artists |url=https://www.rollingstone.com/music/music-lists/100-greatest-artists-147446/talking-heads-49251/ |website=Rolling Stone |date=2010-12-03 |access-date=2024-12-22 |language=en-US}}</ref>。2011年時点でアルバム総売上は3,000万枚を超えている<ref>{{Cite web |title=BBC - Press Office - BBC Worldwide takes exclusive Radiohead performance to the world |url=https://www.bbc.co.uk/pressoffice/bbcworldwide/worldwidestories/pressreleases/2011/05_may/radiohead.shtml |website=www.bbc.co.uk |access-date=2024-12-22 |language=en-GB}}</ref>。2019年に[[ロックの殿堂]]入り<ref name=":0" />。
+
+== 来歴 ==
+{{Infobox YouTube personality
+| name = Radiohead
+| channel_name = Radiohead
+| channel_direct_url = @Radiohead
+| location = イギリス
+| years_active = [[2005年]] -
+| genre = 音楽
+| subscribers = 542万人
+| views = 53億0875万4577回
+| stats_update = {{dts|2026-10-11}}
+}}[[Image:abingdonschool.jpg|thumb|right|メンバーが通っていたアビンドン・スクール]]
+[[オックスフォード]]郊外の[[アビンドン＝オン＝テムズ]]にある男子全寮制[[パブリックスクール]]のアビンドン・スクールでメンバー5人は出会う。それぞれ別のバンドで活動したのち、1985年にバンド「'''オン・ア・フライデー'''（{{Lang-en|''On A Friday''}}）」を結成。ジョニー以外のメンバーはスクールを卒業後オックスフォードを離れ、バンドは解散状態になる。
+
+1991年、大学を卒業したメンバーがオックスフォードに戻り、バンドを再結成する。同年にEMI傘下の[[パーロフォン]]とメジャー契約し、バンド名をレディオヘッドに変更する。1992年にEP『Drill』でメジャーデビュー。翌年、1stアルバム『[[パブロ・ハニー]]』からのシングル『[[クリープ (レディオヘッドの曲)|クリープ]]』が若者から熱烈な支持を受け、世界的なヒットとなる。この当時はUSオルタナティヴ・ロック、UK[[シューゲイザー]]などの影響が頻繁に語られるような、トリプルギターにベース、ドラムという比較的オーソドックスなロックバンドであった。
+
+ギターロックをより押し進めつつも[[アンプラグド|アコースティック]]ソングや[[サイケデリック・ロック]]からの影響を昇華した2ndアルバム『[[ザ・ベンズ]]』（1995年）により、人気を不動のものとする。この作品からプロデューサーのナイジェル・ゴッドリッチと組むようになる。
+
+この頃から次第にロックミュージック以外の音楽と接近していき、メンバー各自が様々な楽器を使い分けるようになる。1996年明けには[[映画音楽]]・サイケデリック・[[トリップ・ホップ]]などからの影響をシングルのB面や限定シングルカット「Lucky」などに表出し始め、1997年にはそれらの実験的な試みの結晶ともいえる3rdアルバム『[[OK コンピューター]]』（1997年）を発表。このアルバムは全世界で大きな評価を獲得し、1990年代のポップ・ミュージックを代表する金字塔としばしば評される出世作となる。
+
+アルバムの世界的な成功により名声を得たメンバーだったが、評価を得たそれらのサウンドを捨て去り、当時[[ポップミュージック]]の分野ではほぼ手つかずのジャンルであったエレクトロニカ・現代音楽などに大きく傾倒。長いスタジオ作業の果てに「商業的自殺」<ref>[[ピッチフォーク・メディア|ピッチフォーク]]・ガイドの『キッド A』レビューより、当時の反応。</ref>とも言われた4thアルバム『[[キッド A]]』（2000年）を発表し、大方の予想を裏切り再度成功を収める。実験的な電子音楽とバンド・サウンドを融合させ、前作『OK コンピューター』からの劇的な変化を遂げた作品となった。
+
+翌年には『キッド A』と同時期に制作された5thアルバム『[[アムニージアック]]』（2001年）を発表。1920年代の[[スウィング・ジャズ]]を取り入れるなど、ジャンルに捕われない音楽性をより明確にした。同年に初の公式ライブアルバム『I Might Be Wrong - Live Recordings』を発表した。
+
+6thアルバム『[[ヘイル・トゥ・ザ・シーフ]]』（2003年）では、これまでの実験性を包括したうえで改めてバンドサウンドに立ち返った。このアルバムを最後に[[EMI]]との契約を終了。契約金額で折り合わなかったことが理由と報じられている<ref>[https://barks.jp/news/603369/ レディオヘッド、EMIと決別した理由] Barks 2008年1月2日</ref>。同年、ジョニーが初のソロ作品としてテレビ・ドキュメンタリー『Bodysong』のサウンドトラックを発表。翌2006年にトムが初のソロ・アルバム『[[ジ・イレイザー]]』を発表。
+
+2005年から新作に向けた活動が再開され、2006年には欧米でのツアーも行われた。2007年10月1日、公式ブログにて7thアルバム『[[イン・レインボウズ]]』を発表。期間限定の専用サイトを通じ、[[MP3]]形式で先行ダウンロード販売が行われた。購入価格は買い手が自由に決める方式となっていた<ref>[https://www.itmedia.co.jp/news/article/0711/06/1071106044/ 「価格はあなた次第」のレディオヘッド新作、幾らで売れた？] ITmedia 2007年11月6日</ref>。同時に、豪華版のディスクボックス（ダウンロード版と同内容のDisc1にDisc2を加えた2枚組CD、同内容のアナログ盤2枚、ブックレット、化粧箱で構成される）も40ポンド定額でリリースされ、2007年12月3日より発送開始となった。その後、TBDレコード（[[北アメリカ]]のみ）、ホステス・エンタテインメント（日本のみ）、XLレコーディングス（それ以外の全世界）と契約し、通常のCDフォーマットでもリリースされた（内容はダウンロード版、豪華版Disc1と同様）。
+
+2008年に初のベスト・アルバム『[[ザ・ベスト・オブ]]』と同タイトルのベストDVDをリリース。バンド自身は曲順やアートワークなどの制作全般に関わっておらず、EMIが残されたアルバム契約を消化するために行われた。
+
+2009年より、トムが[[レッド・ホット・チリ・ペッパーズ]]の[[フリー (ミュージシャン)|フリー]]、ナイジェル・ゴッドリッチらと共に新バンド「[[アトムス・フォー・ピース]]」（ソロ・アルバムの曲名が由来）を結成。セットリストはソロアルバムの曲を中心に、他バンドのカバーや新曲をちりばめたようなもので、各所でライブを精力的に行っている。
+
+2010年よりフィルがソロ・アルバム『Familial』を発表。また、[[フジロックフェスティバル]]にアトムス・フォー・ピースが出演した。
+
+2011年2月14日、公式サイトにて8thアルバム『[[ザ・キング・オブ・リムズ]]』の完成を発表。専用サイトにて、アルバムダウンロード（MP3又WAV）と豪華版ニュースペーパー・アルバムの予約受付を開始した。7月4日には『ザ・キング・オブ・リムズ』のリミックスシリーズの発売が決定。完全生産限定12インチ・アナログシングル（輸入盤のみ）と、デジタル・シングルでの発売となる。「リトル・バイ・リトル」と「ロータス・フラワー」のリミックスが収録された。
+
+2011年春、2013年夏、2015年夏と断続的にスタジオ入りが報じられており<ref>[https://barks.jp/news/654539/ レディオヘッド「あまり先のことは考えないことにした」] Barks 2011年3月7日</ref><ref>[https://barks.jp/news/690592/ レディオヘッド、2013年夏にも通算9枚目の新作スタジオ・アルバム制作開始] Barks 2013年2月18日</ref>、ジョニーはインタビューで新作には未発表曲の「Lift」が収録される予定だと答えている<ref>[https://rockinon.com/news/detail/125956 ジョニー・グリーンウッド、レディオヘッド新作の進捗状況を語る] RO69 2015年6月18日</ref>。
+
+2015年、映画『[[007 スペクター]]』の主題歌候補として「スペクター」を制作したが、最終的に[[サム・スミス]]の楽曲が起用され、本楽曲は使用されなかった<ref>[https://英語日常会話.jp/11724.html BBCを英語で読む「ボンド映画の主題歌になれなかった名曲たち」（９）]</ref>。
+
+2016年に9thアルバム『[[ア・ムーン・シェイプト・プール]]』が発表された。前述の「Lift」は収録されなかったが、1995年以降ライブで披露されてきた「True Love Waits」の初のスタジオ音源が収録された。
+
+2019年に[[ロックの殿堂]]入り<ref name=":0">{{Cite web|和書|title=ロキシー、ゾンビーズ、ジャネット、ロックの殿堂入りに喜びのコメント|url=https://barks.jp/news/831538/|publisher=[[BARKS]]|date=2018-12-14|accessdate=2019-02-02}}</ref>。
+
+2018年8月1日のフィラデルフィア公演以降、長らくバンドとしての新曲発表やライブは行われず活動休止状態となっていたが、2025年11月からは7年ぶりのライブとなるUK＆ヨーロッパツアーが開催される。
+
+2027年5月～6月にはオーストラリアと日本で合計21本のツアーを開催する予定。
+
+== 音楽的な影響 ==
+メンバーは、[[ジョイ・ディヴィジョン]]や[[マガジン (イギリスのバンド)|マガジン]]、[[スージー・アンド・ザ・バンシーズ]]<ref>{{Cite web|url=http://citizeninsane.eu/media/uk/bbc/07/i01a_2006-08-21a_bbcrad6.htm|title=Interview with Thom Yorke|accessdate=2006-08-26|author=Lamacq, Steve|publisher=BBC 6 Music radio|quote=My best gig in Oxford ever though, was Siouxsie and the Banshees [...] they were absolutely... they were just amazing [...] the band were like, they were really, really exciting [...] Siouxsie and the Banshees were just genius}}</ref> <ref>{{Cite web|url=http://pitchfork.com/features/interview/7489-radiohead/|title=Radiohead interview|accessdate=2008-03-21|author=Dombal, Ryan|publisher=Pitchfork.com|quote=Colin Greenwood: In rehearsals yesterday, Thom, Ed and I were running through a Siouxsie and the Banshees cover called "Happy House" and Jonny [Greenwood]-- the young one-- was like, "What the fuck is this?" And we're like, You know, Siouxsie and the Banshees! Check out ''Juju'' [ Siouxsie and the Banshees' 1981 album]}}</ref> <ref>{{Cite web|url=https://alltuntun.wordpress.com/2011/09/02/%E2%80%9Cuno-tiene-que-encontrar-su-voz%E2%80%9D/#more-849and|title=You’ve got to find a voice [Radiohead Ed O'Brien interview]|accessdate=2011-09-02|author=Casandra Scaroni, Samuel Dietz.|publisher=Alltuntun|quote=I was very lucky because I grew up in an era... It was the post-punk era, so you had a lot of music like Siouxsie and the Banshees... it was a great era of music, you'd been listening to the charts or tape them on a cassette recorder so you’d have... "Spellbound" by Siouxsie And The Banshees,|archiveurl=https://archive.is/HDjYI|archivedate=2018-09-01}}</ref>、[[U2]]といったポストパンクや、[[ピクシーズ]]や[[R.E.M.]]や[[ソニック・ユース]]といったオルタナティヴ・ロックに早くから影響を受けてきた。トムは小学生の頃には[[クイーン (バンド)|クイーン]]などを好み、[[エルヴィス・コステロ]]なども聴いていた<ref name="RANDALL">
+{{Citation
+  | last = Randall
+  | first = Mac
+  | title = The Golden Age of Radiohead
+  | magazine = [[:en:Guitar World|Guitar World]]
+  | date = 1998-04-01
+}}</ref><ref name="ROSS">。
+{{Citation
+ |last         = Ross
+ |first        = Alex
+ |title        = The Searchers
+ |newspaper    = [[The New Yorker]]
+ |date         = 2001-08-20
+ |url          = http://www.therestisnoise.com/2004/04/mahler_1.html
+ |accessdate   = 2007-12-24
+ |archiveurl   = https://web.archive.org/web/20080214053947/http://www.therestisnoise.com/2004/04/mahler_1.html
+ |archivedate  = 2008年2月14日
+ |deadlinkdate = 2017年9月
+}}</ref><ref name="REYNOLDS">
+{{Citation
+  | last = Reynolds
+  | first = Simon
+  | author-link = :en:Simon Reynolds
+  | title = Walking on Thin Ice
+  | magazine = [[:en:The Wire (magazine)|The Wire]]
+  | year = 2001
+  |date=June 2001}}</ref>。1990年代半ばには[[マッシヴ・アタック]]や[[DJシャドウ]]などのエレクトロ[[ヒップホップ]]からの影響をうかがわせ、それらは『[[OK コンピューター]]』に顕著である<ref>
+{{citation
+  | first=Ian
+  | last=Gillespie
+  | title=It all got very surreal
+  | date=1997-08-17
+  | newspaper =[[:en:London Free Press|London Free Press]]
+  | accessdate = 2007-05-05}}</ref>。『OK コンピューター』には[[マイルス・デイヴィス]]、[[エンニオ・モリコーネ]]などや、[[ビートルズ]]や[[ビーチ・ボーイズ]]、[[ピンク・フロイド]]などからの参照が見受けられ、メンバーもそれを公言している<ref name="RANDALL"/><ref name="LAUNCH">
+{{Citation
+ |last         = DiMartino
+ |first        = Dave
+ |title        = Give Radiohead Your Computer
+ |magazine     = [[:en:Yahoo! Music|LAUNCH]]
+ |date         = 1997-05-02
+ |url          = http://music.yahoo.com/read/interview/12048024
+ |accessdate   = 2007-12-21
+ |archiveurl   = https://web.archive.org/web/20070814183856/http://music.yahoo.com/read/interview/12048024
+ |archivedate  = 2007年8月14日
+ |deadlinkdate = 2017年9月
+}}</ref>。
+
+『[[キッド A]]』で、メンバーはグリッチや[[環境音楽|アンビエント]]などの[[エレクトロニカ]]の手法に関心を見せ、[[ワープ・レコーズ]]の[[オウテカ]]や[[エイフェックス・ツイン]]といったアーティストの音楽性に接近していった。またそれ以降、[[モダン・ジャズ]]の[[アリス・コルトレーン]]やマイルス・ディヴィス、[[チャールズ・ミンガス]]、[[アート・ブレイキー]]なども好んで参照し、[[カン (バンド)|カン]]、[[ノイ!]]、[[クラフトワーク]]などの[[クラウトロック]]の影響も顕著である。特にジョニーはいわゆる[[現代音楽]]や、[[オリヴィエ・メシアン]]、[[クシシュトフ・ペンデレツキ]] などの独特の方法論を持った音楽家からの影響も大きい<ref>
+{{citation
+  | first=Lauren
+  | last=Zoric
+  | title=Fitter, Happier, More Productive
+  | date=2000-10-01
+  | magazine = [[:en:Juice (magazine)|Juice]]
+  | accessdate = 2007-05-03
+}}</ref>。
+
+基本的に作詞、作曲の[[クレジットタイトル|クレジット]]はメンバー全員（Radiohead）となっている。曲の大枠や[[デモ]]の多くを作るのはトムであるが、そこからさらに議論を重ねてそこに肉付けしたり、逆に削ったりすることで楽曲の元を作っているからである。録音についても[[声部|パート]]別に順ぐり[[録音]]したりするのではなく、メンバー全員と[[プロデューサー]]で[[編曲|アレンジ]]を議論し、個々がパートにとらわれずに音楽を作っている。パートごとの演奏者もまちまちで、あまり問題とされない。[[ストリングス]]や[[ブラスバンド]]主体の曲などでは、楽隊を呼んで録音するため、そもそもメンバーが譜面やアレンジを指示するだけで演奏しないこともあり得る。歌詞については、基本的にほぼ全てがトムによって作詞・推敲される<ref name="ECCLES">。
+{{citation
+  | last=Eccleston
+  | first=Danny
+  | date=2000-10-01
+  | magazine =[[Q (雑誌)|Q]]
+  | accessdate = 2007-12-23
+}}</ref>。
+
+レディオヘッドの音楽スタイルから影響を受けたアーティストとしては、[[ミューズ (バンド)|ミューズ]]、[[コールドプレイ]]、[[トラヴィス (バンド)|トラヴィス]]、[[ソンバー]]<ref name="rockin'on">
+{{citation
+  | last=Kokawa 
+  | first=Shino
+  | date=2025-07-30
+  | url = https://rockinon.com/blog/rockinon/212610
+  | magazine =[[rockin'on]]
+  | accessdate = 2025-10-12
+}}</ref>などが挙げられる。
+
+== アートワーク ==
+グラフィック・アーティストの[[スタンリー・ドンウッド]]は、『[[ザ・ベンズ]]』以降、レディオヘッドの全作品のアートワークを手がけている。彼はトム・ヨークの大学時代からの友人であり、トムの社会活動にも一緒に参加している。
+
+基本的にアートワークはアルバムごとに一定のテーマが決められている。[[シングル]]のジャケットやツアーでのグッズなど、次のアルバムをリリースするまではそのテーマに沿ったものが作成される。
+* Slowly Downward 公式サイト
+* トム・ヨークもDr.Tchock名義でアートワークに参加している。
+
+== メンバー ==
+{| class="wikitable" style="text-align: center;"
+! 名前 !! プロフィール !! 担当楽器
+|-
+| '''[[トム・ヨーク]]'''<br />（{{Lang-en|''Thomas Edward Yorke''}}）
+| {{生年月日と年齢|1968|10|7}}<br />{{ENG}} [[ノーサンプトンシャー]]
+| [[ボーカル]]<br />[[ギター]]<br />[[ピアノ]]<br />[[キーボード (楽器)|キーボード]]
+|-
+| '''[[ジョニー・グリーンウッド]]'''<br />（{{Lang-en|''Jonathan Richard Gordon Greenwood''}}）
+| {{生年月日と年齢|1971|11|5}}<br />{{ENG}} [[オックスフォード]]
+| ギター<br />キーボード<br />[[オンド・マルトノ]]<br />[[ストリングス]]
+|-
+| '''[[コリン・グリーンウッド]]'''<br />（{{Lang-en|''Colin Charles Greenwood''}}）
+| {{生年月日と年齢|1969|6|26}}<br />{{ENG}} オックスフォード
+| [[ベース (弦楽器)|ベース]]<br />[[サンプリング]]<ref group="注" name="sampling">サンプリングに関しては各アルバムのクレジットにも明記されている。</ref>
+|-
+| '''[[エド・オブライエン]]'''<br />（{{Lang-en|''Edward John O'Brien''}}）
+| {{生年月日と年齢|1968|4|15}}<br />{{ENG}} オックスフォード
+| [[ギター]]<br />サンプリング<ref group="注" name="sampling" /><br />[[コーラス (ポピュラー音楽)|コーラス]]
+|-
+| '''[[フィル・セルウェイ]]'''<br />（{{Lang-en|''Philip James Selway''}}）
+| {{生年月日と年齢|1967|5|23}}<br />{{ENG}} [[オックスフォードシャー]]
+| [[ドラムセット|ドラムス]]<br />[[パーカッション]]
+|-
+|}
+
+== ディスコグラフィ ==
+{{Main|レディオヘッドの作品}}
+
+=== スタジオ・アルバム ===
+*『[[パブロ・ハニー]]』 - ''Pablo Honey''（1993年）
+*『[[ザ・ベンズ]]』 - ''The Bends''（1995年）
+*『[[OK コンピューター]]』 - ''OK Computer''（1997年）
+*『[[キッド A]]』 - ''Kid A''（2000年）
+*『[[アムニージアック]]』 - ''Amnesiac''（2001年）
+*『[[ヘイル・トゥ・ザ・シーフ]]』 - ''Hail To The Thief''（2003年）
+*『[[イン・レインボウズ]]』 - ''In Rainbows''（2007年）
+*『[[ザ・キング・オブ・リムズ]]』 - ''The King Of Limbs''（2011年）
+*『[[ア・ムーン・シェイプト・プール]]』 - ''A Moon Shaped Pool''（2016年）
+
+=== ダウンロード・シングル ===
+レディオヘッドの作品には、ダウンロードのみで発表された楽曲（アートワークも含む）も存在する。
+* "Harry Patch (In Memory Of)"（2009年）価格は1[[スターリング・ポンド|ポンド]]で、売上は[[チャリティー]]に寄付された。
+* "These Are My Twisted Words"（2009年）フリーダウンロード。
+* "Burn The Witch"（2016年）
+* "Daydreaming"（2016年）
+
+== コラボレーション ==
+=== トム・ヨーク ===
+* '''[[スパークルホース]]'''
+** [[ピンク・フロイド]]の楽曲「Wish You Were Here」（1997年）にバッキングボーカルで参加。
+* '''Drugstore'''
+** アルバム『White Magic for Lovers』（1998年）の楽曲「El President」にボーカルで参加。
+* '''[[PJ ハーヴェイ]]'''（1998年）
+** アルバム『Stories From The City, Stories From The Sea』の楽曲「This Mess We're In」にボーカルで参加。
+* '''[[アンクル (音楽プロジェクト)|U.N.K.L.E.]]'''
+** アルバム『Psyence Fiction』（1998年）の楽曲「Rabbit in Your Headlights」にボーカルで参加。
+* '''映画『[[ベルベット・ゴールドマイン]]』サウンドトラック'''
+** トムとジョニーが参加した"Venus in Furs"というバンド名義で[[ロキシー・ミュージック]]の楽曲をカバー（1998年）。
+* '''[[ビョーク]]'''
+** アルバム『Selma Songs』（2000年）の楽曲「I've Seen It All」にボーカルで参加。
+* '''[[モードセレクター]]'''
+** アルバム『Happy Birthday』（2007年）の楽曲「The White Flash」にボーカルで参加。
+* '''[[フライング・ロータス]]'''
+** アルバム『Until The Quiet Comes』（2012年）の楽曲「Electric Candyman」にボーカルで参加。
+
+=== ジョニー・グリーンウッド ===
+* '''[[ペイヴメント]]'''
+** アルバム『Terror Twilight』（1999年）にハーモニカで参加。
+* '''[[ブライアン・フェリー]]'''
+** アルバム『Frantic』（2002年）の楽曲「Hiroshima...」にギターで参加。
+* '''[[ハリー・ポッター]]'''
+** ドラマーの[[フィル・セルウェイ]]と共に、映画「[[ハリー・ポッターと炎のゴブレット]]」に、魔法使いのロックバンド「ウィアード・シスターズ」のギタリストとして出演し、サウンドトラックの演奏にも参加。
+
+=== その他のメンバー ===
+* '''[[エイジアン・ダブ・ファウンデーション]]'''
+** エド・オブライエンがアルバム『Enemy Of The Enemy』（2003年）の楽曲「1000 Mirrors」などにギターで参加。
+
+=== トリビュート・アルバム ===
+* Helping Hand『Tribute To Radiohead』(2013年)
+** 日本の[[kilk records]]よりリリースされた国内アーティストによるトリビュート。
+
+== 社会問題に関する活動 ==
+レディオヘッドのメンバーは[[社会問題]]に関心が強く、これまでに多くのキャンペーンに関わってきた。
+* '''チャリティー・アルバム『HELP』'''(1996年)
+** [[ユーゴスラビア紛争]]による[[ボスニア・ヘルツェゴビナ]]戦災孤児を救済するため、[[ブライアン・イーノ]]が呼びかけたチャリティー・キャンペーン。イギリスの数多くのミュージシャンが参加し、レディオヘッドも楽曲『Lucky』を提供した。
+* '''チベタン・フリーダム・コンサート''' (1997年 - 1998年)
+** [[チベット]]への中国の侵略・[[人権]]問題を訴えるため、[[ビースティ・ボーイズ]]のアダム・ヤウクが呼びかけたキャンペーン。トムとジョニーが第2回と第3回に参加している。
+* '''ジュビリー2000''' (2000年)
+** 途上国の債務帳消しを訴えた国際的なキャンペーン。[[U2]]の[[ボノ]]や[[坂本龍一]]らとともに、トム・ヨークも賛同した。
+* '''Band Aid 20『Do They Know It's Christmas?』'''(2004年)
+** [[ボブ・ゲルドフ]]が呼びかけた[[バンド・エイド]]20のチャリティー・ソングにトムとジョニーが参加した。
+* '''MAKE POVERTY HISTORY''' (2005年)
+* '''Friend of the Earth "THE BIG ASK"''' (2005年)
+** [[イギリス政府]]の[[地球温暖化]]に関する政策の変更を訴えるキャンペーン。
+* '''チャリティー・アルバム『HELP: A Day In The Life』'''(2005年)
+** 上記『HELP』からの10周年を記念したキャンペーン。レディオヘッドは新曲『I Want None Of This』を提供した。
+* '''イギリスの自殺予防団体「サマリタンズ」'''
+** フィル・セルウェイが学生時代から支援しており、チャリティー・オークションやチャリティー・マラソンなどに参加している。
+* '''MTV EXIT 反人身取引キャンペーン'''
+** 人身取引をなくすキャンペーンをMTVと実施。人身取引の実態を映す「All I Need」プロモーションビデオをリリース。
+* '''Japan tour 2008（Make THE RULEキャンペーン）''' (2008年)
+** 2005年のTHE BIG ASKと同様、ライブ会場で日本のMAKE THE RULEキャンペーンの署名活動を呼びかけた。
+
+== その他 ==
+{{雑多な内容の箇条書き|date=2024年12月22日 (日) 21:31 (UTC)|section=1}}
+* バンド名は[[トーキング・ヘッズ]]のアルバム『[[トゥルー・ストーリーズ (アルバム)|True Stories]]』の収録曲「Radio Head('''ラジオ ヘッド''')」に由来<ref>{{Cite book|和書 |title=教養としてのロック名盤ベスト100 |date=2019年9月20日 |publisher=光文社 |page=123 |isbn=9784334044251}}</ref>。
+* 1991年に、オリジナル・メンバーはトム、コリン、エドの3人でメジャー契約するまでは「On a Friday」というバンド名だった。バンドが毎週金曜日に練習していたことに由来する。名付け親は、コリン・グリーンウッド（初期プロデューサーの一人[[ポール・コルデリー]]によれば「インディー感の強すぎるバンド名だったので、逆にそのまま過ぎてインディーシーンでは浮いていた」らしい）。
+* トム・ヨークの弟アンディ・ヨークもミュージシャン。Unbelievable Truthというバンド・ソロで活動。
+* 未発表曲が非常に多いバンドとしても有名。ライブで演奏していても音源化がされていない曲は数え切れないほど存在する。逆に、完全に新規の曲だけでアルバムが作られることは一度もなく、今のところキャリアの全オリジナルアルバムには、リリース以前のライブで披露されていた曲が必ず1曲以上収録されている。その中には、以前ライブで演奏されていたアレンジとは全く違ったアレンジで収録されるものも多い。
+* 有名になる前の[[シガー・ロス]]や[[スパークルホース]]等を前座に率いたこともあり、これがきっかけとなりシガー・ロスは世界的に名が知られることとなった。
+* 2001年にアメリカのアニメ『[[サウスパーク]]』のエピソード「[[カートマン・レクターの鬼畜晩餐会]]」に、メンバー全員が本人役で声の出演をした。レディオヘッド・ファンの少年に実際に会いに行くという役回りであった。
+* メンバー全員[[Macintosh|Mac]]ユーザーである。特にトムは、自身の[[フェンダー・テレキャスター・デラックス|テレキャスター・デラックス]]にMacのステッカーを貼っている。
+* コリンを除いた4人は[[ベジタリアン]]である。
+* 世界的なバンドであるにもかかわらず、私生活などが[[ゴシップ]]誌などでほとんど取りざたされない。特に家族関係の話題については、多くのインタビューでなるべく黙秘する。トム・ヨークは以前Q誌において「[[タブロイド]]雑誌なんてすべて廃刊して、[[パパラッチ]]は全員交通事故で死ねばいい」という発言を残したこともある。
+* 2012年6月16日、[[カナダ]]・[[トロント]]郊外で行なわれる予定だった野外ライブは、屋外ステージが開演前に突然崩落。メンバーに被害はなかったが、スタッフ1名が死亡するなどし、ライブが中止となった。
+
+=== 日本との関係 ===
+* トムとジョニーは、一時期日本語を学んでおり、[[カーオーディオ]]で日本語学習のテープを流していた。来日中のジョニーは片言の日本語をよく話し、トムはライブで「ドウモ」と上手い発音で挨拶することでも有名。2003年のサマーソニック出演時のアンコールにおいて、「クリープ」を演奏した後、大団円の打ち上げ花火が上がる中、トムは「コンバンワ！」とまるで今から始めるかのようなMCをしたことがある。
+* トムは、[[渋谷]]や[[原宿]]での洋服をたくさん買うという。
+* 音楽誌「BUZZ」2001年11月号では、来日中のジョニーが世界的な[[オンド・マルトノ]]奏者である[[原田節]]と対談している。
+* 2006年2月から8月まで放送されたテレビアニメ『[[Ergo Proxy]]』のエンディングテーマに「Paranoid Android」が起用された（2023年7月現在、唯一のアニメソングでもある）。
+* 2007年12月10日には、mixiに公認のアカウントで参加している。
+* 2010年、映画『[[告白 (2010年の映画)|告白]]』の主題歌に「Last Flowers」が起用された。
+* 2019年、映画『[[彼女は夢で踊る]]』の挿入歌に「Creep」が起用された。
+
+=== 来日公演 ===
+* [[1994年]]6月 クラブチッタ川崎など
+* [[1995年]]6月 [[渋谷公会堂]]など
+* [[1998年]]1月 [[赤坂ブリッツ]]など
+** 1998年、『OK コンピューター』リリースに伴うジャパンツアーは北は仙台から南は福岡までを巡り、これまでのツアー最多となる8か所10公演が行われた。ツアーは宮城からスタートしたが、序盤は記録的な大雪に見舞われ、移動が困難になった。ドラムのフィル・セルウェイが風邪を引いたため、終盤の福岡でのライブからアコースティックセットが組み込まれるなどのトラブルが起こった。
+** またこのツアーには「Meeting People Is Easy」の製作スタッフが同行しており、福岡でのライブ前のサウンドチェックで演奏された未発表曲「Follow me around」が収録された他、日本で撮影された映像が「Palo Alto」のビデオクリップ（MTVなど一部の局で放送）に用いられている。7thアルバム『イン・レインボウズ』に収録された楽曲「Nude」は、1月23日の赤坂ブリッツでのライブで初めて披露された。
+
+* [[2001年]]9月-10月
+** [[大阪城ホール]] 9月29日（再追加公演）、30日
+** [[日本武道館]] 10月2日（追加公演）
+** [[横浜アリーナ]] 10月3日、4日（再々追加公演）
+** 『キッド A』、『アムニージアック』を引っ提げて行われたこの来日公演は当初、「大阪（9月30日）・横浜（10月3日）でそれぞれ1日のみ」とアナウンスされていたため、チケットは早々と完売した。しかし、日本武道館での追加公演のアナウンスを皮切りに、大阪での再追加公演、横浜での再々追加公演が次々に発表されたために混乱を招き、結果的に各会場共にアリーナ席でも当日券が買えるほどチケットは余ってしまった。また、奇しくもこの来日の直前に[[ニューヨーク]]で[[アメリカ同時多発テロ事件]]が起こったため、大阪公演ではトム・ヨークによる[[ジョージ・ウォーカー・ブッシュ|ブッシュ大統領]]への「この盗人の猿野郎!」という批判ともとれるメッセージと共に、[[カン (バンド)|カン]]の「ザ・シーフ（＝盗人）」をカバーした。なお、10月4日の横浜公演はツアーの最終公演であったため、トム・ヨークがMCにて発した「This Is Final Show」というセリフを解散宣言だと勘違いした人も少なからずいた。
+
+* [[2003年]]8月 [[サマーソニック]]2003 [[千葉マリンスタジアム]]、[[WTCオープンエアスタジアム]]
+** 日本でのライブとしては初の[[祭|フェスティバル]]参加となったこの公演は、そもそも会場規模が大きく人気も高いフェスであり、日本公演で初めて[[プロショット]]のライブ映像が残された。大阪・東京両日のトリとして参加、東京公演の[[アンコール]]後に、セットリストに予定のなかった「[[クリープ (レディオヘッドの曲)|クリープ]]」を演奏した（セットリストにない曲を演奏すること自体はしばしばある）。バンドの演奏の調子自体も非常に良く、前述のサプライズなどもあり、しばしばサマーソニックや日本のロックフェスにおけるトップギグとしてメディアで取り上げられることも多い。
+
+* [[2004年]]4月 Japan Tour 2004 [[インテックス大阪]]、[[幕張メッセ]]
+* [[2008年]]10月 Japan Tour 2008 [[大阪市中央体育館]]、[[さいたまスーパーアリーナ]]、[[東京国際フォーラム]]・ホールA（追加公演）
+** 2008年、『イン・レインボウズ』世界ツアーの中での来日となったこの公演は、当初は前2会場しかアナウンスされていなかったものの、一般発売後早々とチケットは完売し、追加の東京国際フォーラムでの公演も含めて過去の来日公演の中で最も多くの動員数を記録した。5日のさいたまスーパーアリーナでの公演は[[WOWOW]]やネット上で放送され、特にネット上のものは「冒頭曲『15 Step』のカメラワークを見る側が自由にいじることのできる」サービスが提供され、話題を集めた。ちなみに、この年の世界ツアーでバンドが演奏した曲目数は全オリジナルアルバム曲と未発表曲、B面曲合わせて150曲以上にのぼり、セットリストは毎日のように様変わりしていた。
+*[[2012年]]7月29日　[[フジロックフェスティバル|FUJI ROCK FESTIVAL]]に出演。
+*[[2016年]]8月20日（大阪)、21日（千葉）にて行われたサマーソニック2016に出演。
+*[[2027年]]6月8日、9日、11日、12日、13日 RADIOHEAD JAPAN 2027 GMOアリーナさいたま
+**約11年ぶりの来日公演で、日本での単独公演は約19年ぶりである。
+
+== 脚注 ==
+{{脚注ヘルプ}}
+=== 注釈 ===
+{{Notelist2}}
+
+=== 出典 ===
+{{Reflist}}
+
+== 参考文献 ==
+* 『エグジット・ミュージック - レディオヘッド・ストーリー』 Mac Randall著 丸山京子訳 シンコー・ミュージック刊
+* 『music life』1997年6月号 シンコー・ミュージック刊
+* 『CROSSBEAT FILE Vol.2 レディオヘッド』シンコー・ミュージック刊
+
+== 外部リンク ==
+{{commons|Radiohead|レディオヘッド}}
+* {{Official website|https://www.radiohead.com/|Radiohead Public Library}}
+* {{Official website|http://hostess.co.jp/artists/radiohead/|Radiohead}} - [[ホステス・エンタテインメント|Hostess Entertainment Unlimited]]
+* {{Twitter|radiohead|Radiohead}}
+* {{Facebook|radiohead|Radiohead}}
+* {{YouTube channel|radiohead|Radiohead}}
+* {{MusicBrainz artist|id=a74b1b7f-71a5-4011-9441-d0b5e4122711|name=Radiohead}}
+
+{{レディオヘッド}}
+{{Normdaten}}
+{{DEFAULTSORT:れていおへつと}}
+[[Category:レディオヘッド|*]]
+[[Category:イングランドのオルタナティヴ・ロック・バンド]]
+[[Category:エクスペリメンタル・ロック・バンド]]
+[[Category:エレクトロニック・ミュージシャン]]
+[[Category:グラミー賞受賞者]]
+[[Category:ロックの殿堂入りの人物]]
+[[Category:EMIグループのアーティスト]]
+[[Category:キャピトル・レコードのアーティスト]]
+[[Category:兄弟姉妹の音楽グループ]]
+[[Category:フジロック・フェスティバル出演者]]
+[[Category:サマーソニック出演者]]

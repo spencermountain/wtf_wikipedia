@@ -96,9 +96,6 @@ test('remove styling in link text', (t) => {
 test('tricksy-links', (t) => {
   const doc = wtf(`[[US]]9999.2`)
   t.equal(doc.text(), 'US9999.2', 'link-nospace')
-  //   const doc = wtf('then [[John Entwistle|John [Entwistle]]] and I');
-  //   t.equal(doc.link().page, 'John Entwistle', 'page without bracket');
-  //   t.equal(doc.link().text, 'John [Entwistle]', 'text with bracket');
   t.end()
 })
 

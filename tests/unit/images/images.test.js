@@ -81,7 +81,6 @@ test('img-alt', (t) => {
   t.equal(img.url, 'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png', 'image')
   t.equal(img.caption, 'The Wikipede edits Myriapoda.', 'caption')
   t.equal(img.alt, 'A cartoon centipede detailed description.', 'alt')
-  // t.equal(img.links[0].page, 'Myriapoda', 'links'); //todo: support links in captions again!
   t.end()
 })
 

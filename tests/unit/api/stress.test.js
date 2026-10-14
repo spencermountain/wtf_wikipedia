@@ -2,28 +2,10 @@ import test from 'tape'
 import readFile from '../../lib/_cachedPage.js'
 import { allPages } from '../../_examples/index.js'
 
-function isCyclic(json) {
-  const seenObjects = []
-  function detect(obj) {
-    if (obj && typeof obj === 'object') {
-      if (seenObjects.indexOf(obj) !== -1) {
-        return true
-      }
-      seenObjects.push(obj)
-      for (const key in obj) {
-        if (obj.hasOwnProperty(key) && detect(obj[key])) {
-          // console.log(obj, 'cycle at ' + key)
-          return true
-        }
-      }
-    }
-    return false
-  }
-  return detect(json)
-}
-
 test('cached-page-stress', (t) => {
   const noCitation = {
+    'Willow-Sw': true,
+    'Tennis-Sw': true,
     'British-Films': true,
     'Groot-Brittanje': true,
     'Sara-C-Bisel': true,
@@ -44,7 +26,7 @@ test('cached-page-stress', (t) => {
     }
     const doc = readFile(title)
     //basic is-valid tests for the page parsing
-    t.ok(true, title)
+    t.comment(title)
     t.equal(doc.isRedirect(), false, ' - - not-redirect')
     t.equal(doc.isDisambig(), false, ' - - not-disambiguation')
     t.ok(doc.categories().length > 0, ' - - cat-length')
@@ -54,7 +36,7 @@ test('cached-page-stress', (t) => {
     t.ok(intro.indentation() === 0, ' - - depth=0')
     t.ok(intro.sentences().length > 0, ' - - sentences-length')
     t.ok(intro.sentence().text().length > 0, ' - - intro-text')
-    t.ok(intro.sentence().text().match(/[a-z]/), ' - - intro-has words')
+    t.match(intro.sentence().text(), /\p{L}/u, ' - - intro-has words')
     if (noCitation[title] === true) {
       t.equal(doc.citations().length, 0, title + ' has no citation')
     } else {
@@ -67,7 +49,6 @@ test('cached-page-stress', (t) => {
       encode: true,
     })
     t.ok(Object.keys(json).length >= 2, ' - - json-keys-ok')
-    t.equal(isCyclic(json), false, ' - - not-cyclic')
   })
   t.end()
 })

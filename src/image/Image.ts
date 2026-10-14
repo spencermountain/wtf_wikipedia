@@ -1,4 +1,5 @@
 import toJson from './toJson.ts'
+import normalizeFile from './_lib.ts'
 const server = 'wikipedia.org'
 
 const encodeTitle = function (file) {
@@ -29,7 +30,7 @@ class Image {
   }
 
   file() {
-    let file = this.data.file || ''
+    let file = normalizeFile(this.data.file || '')
     if (file) {
       const regFile = /^(image|file):/i
       if (!regFile.test(file)) {// if there's no 'File:', add it

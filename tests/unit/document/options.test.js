@@ -10,13 +10,13 @@ test('royal_cinema options', (t) => {
 
   const data = readFile('Royal-Cinema').json({
     categories: false,
-    citations: false,
+    references: false,
     images: false,
     infoboxes: false,
   })
   t.equal(data.images, undefined, 'post-image-length')
   t.equal(data.categories, undefined, 'post-category-length')
-  t.equal(data.citations, undefined, 'post-citations-length')
+  t.equal(data.references, undefined, 'post-references-length')
   t.equal(data.infoboxes, undefined, 'post-infoboxes-length')
   t.end()
 })

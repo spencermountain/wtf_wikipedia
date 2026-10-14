@@ -1,0 +1,1081 @@
+{{Coord|51.43374|-0.214059|type:landmark|format=dms|display=title}}
+{{En-tête label|BA|année=2013}}
+{{Voir homonymes|Wimbledon}}
+{{Infobox Compétition sportive
+ | charte             = tennis
+ | titre              = Tournoi de Wimbledon
+ | image              = Logo Wimbledon.svg
+ | upright            = 0.5
+ | légende            = Logo du tournoi de Wimbledon.
+ | création           = [[1877 en sport|1877]]
+ | disparition        = 
+ | organisateur       = [[All England Lawn Tennis and Croquet Club|AELTC]]
+ | nombre d'éditions  = 139 <small>(en 2026)</small>
+ | catégorie          = [[Grand Chelem (tennis)|Grand Chelem]]
+ | périodicité        = Annuelle (juin-juillet)
+ | participants       = {{homme}} {{nombre|128|joueurs}} en simple, {{nombre|128|joueurs}} en qualification et {{nombre|64|équipes}} en double<br /> {{femme}} {{nombre|128|joueuses}} en simple, {{nombre|104|joueuses}} en qualification et {{nombre|64|équipes}} en double<br /> {{nombre|48|équipes}} en double mixte
+ | statut des joueurs = [[Sport professionnel|Professionnel]]<br/>(depuis [[1968 en sport|1968]])
+ | surface            = [[Surfaces de jeu au tennis#Gazon|Gazon]] ({{Ext (sport)}})
+ | directeur          = Sally Bolton
+ | dotation           = {{unité|53500000|£}} <small>(2025)</small>
+ | affluence          = {{formatnum:532651}}<ref>{{Lien web|langue=en|url=https://www.wimbledon.com/en_GB/atoz/faq_and_facts_and_figures.html|titre=Facts and Figures|site=wimbledon.com|consulté le=7 décembre 2023}}.</ref> <small>(2023)</small>
+ | site web           = [http://www.wimbledon.com wimbledon.com]
+ | plus titré         = {{homme}} {{SUI-d}} [[Roger Federer]] (8) {{-}} {{femme}} {{USA-d}} [[Martina Navrátilová]] (9)
+ | tenant             = {{homme}} {{ITA-d}} [[Jannik Sinner]] <small>(2026)</small> {{-}} {{femme}} {{CZE-d}} [[Linda Nosková]] <small>(2026)</small>
+ | Saison en cours    = Tournoi de Wimbledon 2026 {{!}} Wimbledon 2026
+}}
+[[Fichier:Wimbledon 1877.jpg|thumb|290px|La première édition du tournoi, en 1877.]]
+Le '''tournoi de Wimbledon''' ou '''''{{langue|en|The Championships}}''''', souvent abrégé par métonymie en '''Wimbledon''', est un tournoi de [[tennis]] se déroulant annuellement dans le [[Wimbledon (Londres)|quartier éponyme]] du [[borough londonien de Merton]] dans la banlieue sud-ouest de [[Londres]]. Joué depuis le {{date|3 juillet 1877}}, il est le plus ancien tournoi de tennis au monde<ref>{{Lien web |titre=James Dwight - International Tennis Hall of Fame |url=https://www.tennisfame.com/hall-of-famers/inductees/dr-james-dwight |site=tennisfame.com |consulté le=2021-05-02}}.</ref>{{,}}{{note|Toutefois un tournoi de tennis informel s'était tenu en août 1876 dans la propriété de William Appleton à Nahant aux États-Unis.}}. Il est depuis ses débuts organisé par l{{'}}''{{langue|en|[[All England Lawn Tennis and Croquet Club]]}}'', un club sportif anglais. D'abord uniquement ouvert aux hommes, il s'ouvre aux femmes en [[1884]]. À partir de [[Ère Open (tennis)|1968]] et comme tous les autres tournois, il s'ouvre aux professionnels. Aux côtés du simple messieurs et du simple dames se déroulent aussi des compétitions de double messieurs, double dames et double mixte. Le tournoi fait partie de la catégorie des tournois du [[Grand Chelem (tennis)|Grand Chelem]] au nombre de quatre : l'[[Open d'Australie]], [[Internationaux de France de tennis | Roland-Garros]], Wimbledon et l'[[US Open de tennis]]. Ce sont les tournois de tennis les plus importants et Wimbledon est souvent considéré comme le plus prestigieux d'entre eux par ceux qui se fondent sur l'histoire.
+
+Se jouant sur deux semaines, de la dernière semaine de juin à la première semaine de juillet, il est le point culminant de la très courte saison sur [[Surfaces de jeu au tennis#Gazon|gazon]]. En effet, c'est actuellement le dernier tournoi du Grand Chelem et le dernier tournoi important à se jouer sur cette surface. De fait, Wimbledon a longtemps été le temple du tennis offensif en opposition aux tournois sur [[terre battue]] notamment et les joueurs pratiquant le [[service-volée]] tels [[John McEnroe]], [[Pete Sampras]], [[Boris Becker]] ou [[Martina Navrátilová]] font partie des joueurs les plus titrés de l'[[ère Open]]. Toutefois, un changement dans la composition du gazon en [[2001 en tennis|2001]] a modifié les caractéristiques de celui-ci, accroissant notamment la hauteur des rebonds. Depuis lors, des joueurs au tempérament plus défensif parviennent à s'exprimer de plus en plus à Wimbledon tandis que le service-volée est de moins en moins pratiqué.
+
+== Historique ==
+=== Débuts ===
+==== Premières éditions ====
+[[Fichier:Broers Renshaw.jpg|vignette|gauche|En remportant à eux deux huit titres en simple et cinq titres en double dans la décennie 1880, les frères Renshaw restent des figures marquantes de l'histoire de Wimbledon.]]
+
+Les origines du tournoi de Wimbledon sont intimement liées avec les origines du tennis. Si celui-ci tire ses racines du [[jeu de paume]], on date souvent son apparition en [[1874]], date à laquelle le major gallois [[Walter Clopton Wingfield]] publie un brevet connu sous le nom de ''{{langue|en|A Portable Court of Playing Tennis}}'' le {{date|23 février 1874}}, qui codifie la nouvelle discipline. Celle-ci bénéficie ensuite d'une médiatisation relativement importante pour l'époque et se répand partout dans les îles Britanniques<ref>{{harvsp|Collins|2010|p=3-5}}</ref>.
+
+Il ne faut que trois ans pour que le ''{{langue|en|[[All England Lawn Tennis and Croquet Club|All England Croquet Club]]}}'', un club sportif anglais fondé en [[1868]], s’intéresse à cette nouvelle discipline. Il prend alors le nom de ''{{langue|en|All England Lawn Tennis And Croquet Club}}'' et décide de mettre en place un tournoi dès 1877, un an après la toute première compétition de tennis, créée par l'Américain [[James Dwight]] à [[Nahant]], dans le [[Massachusetts]] <ref>{{Lien web |langue=en-US |titre=The Longest-Serving USTA President....James Dwight |url=http://www.worldtennismagazine.com/archives/13645 |site=World Tennis Magazine |date=2016-11-17 |consulté le=2021-05-02}}.</ref>. En outre, la même année, le brevet de Wingfield expire. De nouvelles règles, jusqu'ici administrées par le [[Marylebone Cricket Club]], sont établies lors de la réunion. Celles-ci ont résisté au temps et les règles actuelles sont similaires, excepté pour des détails tels que la hauteur du filet et des poteaux et la distance du filet à la ligne du service<ref group="Note">Ces deux aspects sont finalement réglés en [[1882]].</ref>. La première édition du ''{{langue|en|Lawn Tennis Championships}}'' (championnat de tennis sur gazon) est un succès et réunit {{nobr|22 participants}}. [[Spencer Gore]] en devient le premier vainqueur et gagna 12 [[Guinée (monnaie)|guinées]]. Environs {{nobr|200 spectateurs}} payèrent un [[shilling]] chacun pour assister à la finale<ref name="COL">{{harvsp|Collins|2010|p=8}}</ref>{{,}}<ref>{{Lien web|langue=en|auteur=Ron Atkin|url=http://www.wimbledon.com/en_GB/history/index.html|titre=The First Championships|éditeur=Site officiel de Wimbledon|consulté le=3 janvier 2013}}.</ref>.
+
+À l’époque, c’est le système du [[Lexique du tennis#C|challenge round]] qui est en vigueur. Ce terme désigne, pour une édition donnée, le match opposant le vainqueur de l'édition précédente au vainqueur d'un tableau à élimination directe réunissant tous les autres joueurs. Ainsi, Spencer Gore défend son titre en 1878 contre [[Frank Hadow]], un propriétaire de plantations venant du [[Sri Lanka]] qui profite de ses vacances pour tester le tennis à Wimbledon. Ce dernier remporte le tournoi en utilisant entre autres le [[Lexique du tennis#L|lob]] pour surprendre ses adversaires au filet, une technique jamais utilisée jusque-là<ref>{{harvsp|Collins|2010|p=8-9}}</ref>. Malgré ce surprenant succès, il décide de ne pas défendre son titre l’année suivante et c’est [[John Hartley]] qui remporte le trophée en 1879 et 1880. L'édition 1879 est aussi marquée par l’apparition du double messieurs qui se joue toutefois à [[Oxford]] jusqu’en 1884.
+
+==== Des frères Renshaw aux frères Doherty ====
+[[Fichier:Arthur gore at wimbledon, 1901.jpg|thumb|gauche|alt=Photo d'Arthur Gore à Wimbledon en 1901|Arthur Gore à Wimbledon en 1901.]]
+
+L’[[Tournoi de Wimbledon 1881|édition 1881]] voit l’arrivée des frères Renshaw qui vont profondément marquer le tournoi. C’est notamment le cas de [[William Renshaw]] qui remporte le tournoi en écrasant Hartley 6-0, 6-1, 6-1 en seulement {{unité|37|minutes}}. Il conserve son titre six ans jusqu’en 1886, ce qui reste encore aujourd’hui un record. Il s’impose trois fois contre Lawford et deux fois contre son frère [[Ernest Renshaw|Ernest]]. Profitant de son absence, Lawford parvient à s’imposer en 1887 mais s’incline dès l’année suivante contre Ernest Renshaw qui gagne là son unique titre à Wimbledon. Son frère, battu pour la première fois à Wimbledon en 1888 récupère sa couronne l’année suivante en battant Ernest une troisième fois en finale. Lors du match précédent, William Renshaw s’était imposé 3-6, 5-7, 8-6, 10-8, 8-6 contre [[Harold Barlow|Harry Barlow]] après avoir sauvé six balles de match et avoir été mené 5-2 dans le quatrième set et 5-0 dans le cinquième<ref>{{harvsp|Collins|2010|p=9}}</ref>. Avec sept titres, il fut le détenteur du record de titres du tournoi, conjointement avec [[Pete Sampras]] depuis l’[[Tournoi de Wimbledon 2000|an 2000]] jusqu'à la huitième victoire de [[Roger Federer]] en [[Tournoi de Wimbledon 2017|2017]]. En outre, il s’impose à cinq reprises en double avec son frère en 1884, 1885, 1886, 1888 et 1889. William Renshaw voit sa domination se terminer définitivement en 1890, battu par [[Willoughby Hamilton]], celui-là même qui l’avait battu pour la première fois en 1888. En plus de révolutionner la pratique du tennis, les succès des frères Renshaw attisent un grand intérêt du public pour le tennis<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/history/index.html|titre=William Renshaw|éditeur=Site officiel de Wimbledon|consulté le=14 juin 2012}}.</ref>.
+
+[[Fichier:Doherty Brothers.jpg|thumb|alt=Les frères Doherty posant en tenue de tennis|En remportant huit titres en double et neuf titres en simple, les frères Doherty écrasent la concurrence le temps d'une décennie à Wimbledon.]]
+
+Cet engouement ne survit pas au départ des frères Renshaw. En effet, dans le courant des années 1890, le tennis connaît un certain désintérêt du fait de la concurrence de nouveaux sports comme le [[cyclisme]]<ref name="COL"/>. Cela n'empêche pas le tournoi de Wimbledon de perdurer et de voir les succès des frères Baddeley en double et de [[Wilfred Baddeley]] en simple en 1891, 1892 et 1895. Lors de ses deux premiers titres, Wilfred Baddeley bat [[Joshua Pim]] qui parvient à prendre sa revanche en 1893 et 1894. Toutefois, en 1895, le désintérêt du public pour le tennis se fait durement ressentir et pour la première fois, le tournoi est déficitaire. Toutefois, ces difficultés ne durent pas plus de quelques années et au tournant du {{s|XX}}, la situation est bien plus fructueuse. Dans le même temps, c'est une nouvelle fratrie qui s'illustre, celle des Doherty. L'aîné, [[Reginald Frank Doherty]], remporte le tournoi en 1897, 1898, 1899 et 1900. Il est finalement stoppé par [[Arthur Gore]] en 1901 avant d'être vengé par son frère [[Hugh Lawrence Doherty|Lawrence]] qui bat Gore en 1902. En tout, Lawrence Doherty remporte le tournoi à cinq reprises de 1902 à 1906 dont trois fois face à [[Frank Riseley]]. Enfin, les deux frères réussissent l'exploit de remporter le double huit fois de 1897 à 1900 et de 1902 à 1905. À eux deux, les frères Doherty tiennent une grande part dans le renouveau populaire du tennis après quelques années difficiles<ref>{{Lien web|langue=en|auteur=Ron Atkin|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Doherty Brothers|éditeur=Site officiel de Wimbledon|consulté le=4 janvier 2013}}.</ref>.
+
+La dizaine d'éditions qui précède le début de la [[Première Guerre mondiale]] est caractérisée par l'internationalisation progressive du tournoi. Ainsi, [[Norman Brookes]] qui s'était distingué en devenant le premier finaliste non britannique du tournoi en 1905 devient le premier vainqueur non britannique de Wimbledon en 1907, en battant Arthur Gore (Lawrence Doherty ne défendant pas son titre). Gore parvient à prendre sa revanche l'année suivante et conserve le trophée trois années de suite, avant d'être vaincu en [[1910]] par [[Anthony Wilding]], un autre Australien. Ce dernier remporte par la suite le tournoi en 1911, 1912 et 1913. Il acquiert sa dernière victoire face à l'Américain [[Maurice McLoughlin]] lors de la première finale de Wimbledon sans représentant britannique. La dernière édition qui précède de quelques semaines le début de la Première Guerre mondiale est remportée par Norman Brookes qui remporte son troisième titre huit ans après son dernier succès<ref>{{harvsp|Collins|2010|p=14}}</ref>.
+
+==== Entrée des dames ====
+[[Fichier:Dorothea Douglass.jpg|thumb|left|Avec sept titres, Dorothea Chambers est la joueuse la plus titrée de la période 1884-1914. Elle remporte aussi la première édition du double féminin en 1913 aux côtés de Charlotte Cooper.]]
+[[Fichier:Wimbledon ladies' doubles final 1906.jpg|vignette|Finale du double féminin, Wimbledon, 1906. D'une part, [[Blanche Bingley|Blanche Bingley-Hillyard]] (1863-1946) et [[May Sutton]] (1886-1975), d'autre part [[Charlotte Cooper|Charlotte Cooper-Sterry]] (1870-1966) et [[Agnes Morton]] (1872-1952).]]
+En [[1879]], l{{'}}''{{langue|en|Irish Championships}}'' se distingue en devenant le premier tournoi de tennis à introduire une épreuve de simple dames dès sa première édition. À cette occasion, May Langrishe, âgée de seulement {{unité|14|ans}}, devient la première femme à remporter un tournoi féminin de tennis. Wimbledon décide de s'ouvrir aux femmes cinq ans plus tard en 1884 et c'est [[Maud Watson]] qui s'impose face à sa sœur aînée<ref>{{Lien web|langue=en|auteur=Ron Atkin|url=http://aeltc2011.wimbledon.com/125th-championships/history/championships-snapshots/ladies-championships.html|titre=Open to Ladies|éditeur=AELTC2011|consulté le=17 juin 2012}}.</ref>. Il faut par la suite attendre [[Tournoi de Wimbledon 2001|2001]] et la finale entre [[Serena Williams]] et [[Venus Williams]] pour qu'une finale de Wimbledon oppose de nouveau deux sœurs l'une contre l'autre. Maud Watson conserve son titre l'année suivante contre [[Blanche Bingley]]. Cette dernière qui prend sa revanche l'année suivante devient l'une des premières grandes joueuses de tennis en remportant six titres londoniens en 1886, 1889, 1894, 1897, 1899 et 1900. Elle a entretenu une grande rivalité avec [[Charlotte Cooper]] qu'elle a rencontrée à quatre reprises en finale pour trois victoires. La domination de Blanche Bingley a cependant été mise à mal par l'arrivée de [[Lottie Dod]] qui l'a battue en finale à cinq reprises (1887, 1888, 1889, 1891 et 1892). Malgré quatre défaites en finale (trois contre Bingley et une contre [[Muriel Robb]] en 1901), Charlotte Cooper parvient à remporter le tournoi en 1895, 1896, 1898, 1901 et 1908 à l'âge de 38 ans. Les années 1900-1914 sont surtout marquées par la prédominance de [[Dorothea Douglass Chambers]] vainqueur en 1903, 1904, 1906, 1910, 1911, 1913 et 1914. Elle entretient notamment une rivalité avec l'Américaine [[May Sutton]] qu'elle rencontre en finale en 1905, 1906 et 1907 mais qui la défait en 1905 et 1907. En s'imposant en 1905, May Sutton devient donc la première championne non britannique du tournoi de simple dames de Wimbledon et la seule non britannique à avoir remporté le tournoi entre 1884 et 1914 puisque les éditions 1909 et 1912 sont remportées respectivement par [[Dora Boothby]] et [[Ethel Thomson Larcombe|Ethel Thompson]]<ref>{{Lien web|langue=en|auteur=Dian Imhoff|url=http://www.wimbledon.com/en_GB/history/index.html|titre=May Sutton|éditeur=Site officiel de Wimbledon|consulté le=4 janvier 2013}}.</ref>. Enfin, l'année 1913 voit l'apparition du double dames et du double mixte, peu avant que le déclenchement de la [[Première Guerre mondiale]] ne contraigne le tournoi à fermer ses portes le temps du conflit.
+
+=== Époque de changement ===
+==== Naissance d'un tournoi moderne ====
+Le tournoi de Wimbledon reprend dès [[1919]] et le ''{{langue|en|challenge round}}'' oppose l'Australien [[Gerald Patterson]] à son compatriote Norman Brooke âgé de {{unité|41|ans}}. Il a alors l'occasion de devenir le vainqueur le plus vieux du tournoi mais doit concéder la défaite. Patterson ne garde son titre qu'un an et est battu l'année suivante par l'Américain [[Bill Tilden]]. Ce dernier, joueur en pleine ascension, se défait dans le match précédent du [[japon]]ais [[Zenzo Shimizu]] sur le score de 6-4, 6-4, 13-11 alors qu'il était largement mené dans chaque set (4-1 dans les deux premiers et 5-2 dans le troisième). Ces retournements de situation deviennent rapidement la signature de l'Américain qui conserve son titre l'année suivante en battant [[Brian Norton]] après avoir été mené deux manches à rien<ref>{{harvsp|Collins|2010|p=20-23}}</ref>.
+
+L'année [[1922]] marque un tournant majeur dans l'histoire du tournoi pour deux raisons. D'une part, l'exiguïté de plus en plus patente des installations de Worple Road conduit les organisateurs à décider de déménager. Ils achètent un terrain de cinq hectares près de Church Road qui est encore aujourd'hui le lieu de résidence du tournoi<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Wimbledon Moves to Church Road|éditeur=Site officiel du tournoi|consulté le=18 juin 2012}}.</ref>. À cette nouvelle adresse, un nouveau court central est construit pour satisfaire à la popularité croissante du tournoi. Enfin, deuxième changement d'importance, la politique du ''{{langue|en|challenge round}}'' considérée comme anachronique, est abolie à la suite d'un vote des joueurs ({{nombre|91|favorables}} au changement contre {{nombre|27|opposés}})<ref>{{Lien web|langue=en|auteur=Ron Atkin|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Challenge Round Abolished|éditeur=Site officiel de Wimbledon|consulté le=3 janvier 2013}}.</ref>. Dès lors, le tenant du titre est contraint de participer au tournoi comme n'importe quel autre joueur. Cependant, Bill Tilden décide de ne pas faire le déplacement et Gerald Patterson en profite pour reprendre sa couronne.
+
+==== Irruption des Français ====
+[[Fichier:SuzanneLenglen.jpg|thumb|left|alt=Photographie en noir et blanc de Suzanne Lenglen en pleine séquence de jeu à Wimbledon|Suzanne Lenglen à Wimbledon en 1925. Par son style et son palmarès, la joueuse française a profondément marqué l'histoire du tennis féminin.]]
+
+Chez les femmes, l'après-guerre est marquée par l'arrivée en trombe de [[Suzanne Lenglen]], qui remporte l'édition de 1919 à {{unité|20|ans}} et au terme d'une finale très disputée (10-8, 4-6, 9-7). La jeune Française devient rapidement l'une des premières stars du tennis féminin mondial. Elle confirme son hégémonie en conservant son titre en [[1920]], [[1921]], [[1922]] et [[1923]] malgré l'abolition du ''challenge round''. Finalement, affaiblie par la [[Ictère|jaunisse]], elle est contrainte de déclarer forfait lors de l'[[Tournoi de Wimbledon 1924|édition 1924]], remportée par la Britannique [[Kitty McKane]]<ref>{{harvsp|Collins|2010|p=28-29}}</ref>. Lors de cette édition, c'est chez les hommes que les Français se distinguent avec la victoire de [[Jean Borotra]] contre [[René Lacoste]], deux des futurs Quatre Mousquetaires.
+
+L'édition 1925 voit la revanche de Lacoste contre Borotra. Cette rivalité n'empêche pas les deux joueurs de s'imposer en double messieurs contre [[Jacques Brugnon]] et [[Henri Cochet]], les deux autres Mousquetaires. Chez les dames Suzanne Lenglen remporte son dernier titre en simple à Wimbledon et parvient aussi à s'imposer en double dames et en double mixte aux côtés de Jean Borotra<ref>{{harvsp|Collins|2010|p=30-31}}</ref>. À l'exception de l'Américaine [[Elizabeth Ryan]], partenaire de double de Suzanne Lenglen, les vainqueurs des cinq compétitions du tournoi de Wimbledon 1925 sont tous français. L'année suivante Lenglen se retire en plein tournoi à la suite d'un conflit avec l'organisation du tournoi et entame une carrière professionnelle peu après. Elle ne peut plus alors concourir dans le tournoi de Wimbledon réservé aux amateurs<ref group="Note">Suzanne Lenglen reste donc invaincue à Wimbledon avec six titres et deux forfaits en 1924 et 1926.</ref>. De nouveau, c'est Kitt McKane qui s'impose en son absence. Chez les hommes, la domination française reste vivace avec le deuxième titre en simple de Jean Borotra et la victoire de Jacques Brugnon et Henri Cochet en double. L'[[Tournoi de Wimbledon 1927|année suivante]], c'est Henri Cochet qui s'impose contre Borotra et devient le troisième Mousquetaire à remporter un titre en simple à Wimbledon. La valse des Français continue en [[Tournoi de Wimbledon 1928|1928]] avec la victoire de René Lacoste contre Cochet et en [[Tournoi de Wimbledon 1929|1929]] avec la victoire de ce dernier contre Borotra<ref>{{harvsp|Collins|2010|p=37-38}}</ref>.
+
+L'hégémonie française est finalement vaincue en 1930 par le retour de Bill Tilden qui remporte à {{unité|37|ans}}, son troisième titre londonien, contre [[Wilmer Allison]]<ref>{{harvsp|Collins|2010|p=40}}</ref>.
+
+==== Naissance du Grand Chelem ====
+
+L'[[Tournoi de Wimbledon 1931|édition 1931]] est marquée par un fait unique dans l'histoire de Wimbledon. En effet, [[Frank Shields]] se tord la cheville à la fin de sa demi-finale gagnée contre [[Jean Borotra|Borotra]] et l'équipe américaine de [[Coupe Davis]] lui demande de déclarer forfait pour la finale, en vue de récupérer pour le match entre le Royaume-Uni et les États-Unis ayant lieu quelques jours plus tard. Obtempérant, Shields laisse donc le trophée à son compatriote [[Sidney Wood]]. C'est la seule fois dans l'histoire du tournoi qu'une finale n'est pas jouée du fait de l'abandon d'un des deux joueurs<ref>{{harvsp|Collins|2010|p=43}}</ref>. En 1932, c'est [[Ellsworth Vines]] qui s'impose et devient peu après le deuxième joueur de l'histoire à remporter Wimbledon et l'US Open dans la même année après Tilden en 1921. Sa performance est cependant dépassée dès l'année suivante par l'Australien [[Jack Crawford]]. Ce dernier remporte l'[[Open d'Australie]] en janvier et décide de partir en [[Europe]] jouer les principaux tournois dont les Internationaux de France de tennis et Wimbledon. Il remporte les deux en battant Vines à Wimbledon lors d'une finale exceptionnelle par son niveau de jeu et son suspense (4-6, 11-9, 6-2, 2-6, 6-4)<ref>{{harvsp|Collins|2010|p=49}}</ref>. Crawford a alors gagné les trois titres majeurs de la saison lorsqu'il se présente à l'US Open. La presse se passionne alors pour son exploit et utilise pour la première fois le terme de « Grand Chelem » pour faire référence au fait de gagner les quatre titres majeurs du tennis dans la même saison. Toutefois, fatigué, Crawford rend les armes en finale de l'US Open face au Britannique [[Fred Perry]] et l'expression de Grand Chelem disparaît quelques années des journaux, au contraire de Fred Perry. Ce dernier devient en effet en 1934 le premier britannique à remporter le tournoi de Wimbledon depuis 1909, en battant à nouveau Jack Crawford. Il conserve son titre les deux années suivantes en battant [[Gottfried von Cramm]] à deux reprises. Finalement, le départ de Fred Perry pour le circuit professionnel en [[1937]] permet à d'autres joueurs d'espérer la victoire à Wimbledon<ref>{{Lien web|langue=en|auteur=Ron Atkin|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Fred Perry's Third Title|éditeur=Site officiel du tournoi|consulté le=19 juin 2012}}.</ref>. C'est l'[[États-Unis|Américain]] [[Donald Budge]] qui en profite le mieux et parvient à s'imposer. Lui aussi se destine à court terme à une carrière professionnelle mais décide avant cela de réaliser une dernière année sur le circuit amateur, espérant notamment remporter les quatre tournois majeurs. Avant de se présenter à Wimbledon en [[1938]], il a gagné l'Open d'Australie et les Internationaux de France de tennis. Grand favori du tournoi londonien, il s'impose sans perdre le moindre set. Cette performance est d'autant plus marquante qu'il remporte aussi le tournoi en double et en double mixte, tout comme l'année précédente. Il se retrouve donc dans la même situation que Jack Crawford quelques années auparavant avec trois succès dans les trois tournois majeurs du tennis avant l'US Open. Le terme de « Grand Chelem » réapparaît alors et devient une réalité avec la victoire de Budge en finale de l'US Open<ref group="Note">Avec ses succès à Wimbledon et à l'US Open 1937, Donald Budge a donc remporté six tournois du Grand Chelem consécutivement, ce qui reste toujours un record.</ref>. C'est réellement à partir de cette date que la notion de Grand Chelem s'ancre définitivement dans le domaine du tennis et les quatre tournois majeurs adoptent rapidement la dénomination de tournoi du Grand Chelem, alors même que l'expression désigne seulement le fait de remporter les quatre tournois majeurs dans la même année<ref>{{Lien web|langue=en|auteur=Bud Collins|url=http://www.budcollinstennis.com/?p=1067|titre=Grand Slam: The Correct Terminology|éditeur=Site officiel de Bud Collins|date=29 août 2009|consulté le=19 juin 2012|brisé le = 2024-02-14}}.</ref>.
+
+[[Fichier:Bundesarchiv Bild 102-07878, Helen Wills Moody.jpg|upright=0.7|thumb|left|alt=Photographie en noir et blanc d'Eheln Wills Moody accoudée au filet|Avec huit titres, Helen Wills Moody est la détentrice du record de titres en simple jusqu'à l'avènement de [[Martina Navrátilová]] dans les années 1980.]]
+
+Chez les femmes, le départ de Lenglen pour une carrière professionnelle est immédiatement suivi en 1927 par l'irruption d'[[Helen Wills]]. Celle-ci va à son tour profondément marquer le tournoi par sa domination au moins aussi impressionnante que celle de Lenglen, contre qui elle avait perdu à [[Cannes]] l'année précédente au cours de leur seule confrontation<ref>{{harvsp|Collins|2010|p=32-33}}</ref>. Lors de ses deux premiers titres, elle se défait en finale de [[Lilí Álvarez]], déjà finaliste en 1926 et qui ne parviendra jamais à remporter le moindre titre à Wimbledon. Wills enrichit sa collection en 1929 en remportant les trois compétitions auxquelles elle participe (simple dames, double dames et double mixte), tout comme en 1927. Pour la deuxième année consécutive, elle remporte trois des quatre titres majeurs, l'Open d'Australie lui manquant à chaque fois. Après un nouveau succès en simple et en double en 1930, elle décide de ne pas s'aligner en 1931. L'[[Allemagne|Allemande]] [[Cilly Aussem]] en profite pour remporter le tournoi, pourtant promis à [[Helen Jacobs]] finaliste en 1929 qui est finalement éliminée en demi-finale<ref>{{harvsp|Collins|2010|p=44}}</ref>. Toutefois, dès son retour en 1932, Helen Wills Moody s'impose facilement, ne perdant que {{nombre|13|jeux}} en {{nombre|12|sets}} joués et se défaisant de sa rivale Helen Jacobs en finale sur le score de 6-3, 6-1. L'année suivante, elle remporte son sixième titre londonien contre [[Dorothy Round]]. En [[1934]], Helen Wills est de nouveau absente du tournoi et, une nouvelle fois, Helen Jacobs ne parvient pas à remporter le titre à la suite de sa défaite en finale contre la Britannique Dorothy Round. C'est alors la première fois depuis 1909 que les deux tournois de simple de Wimbledon sont remportés par des Anglais (avec la victoire de Fred Perry) chez les hommes et les deux vainqueurs sont présentés au roi [[George V du Royaume-Uni|George V]] pour être félicités<ref>{{harvsp|Collins|2010|p=51}}</ref>. Toutefois, la domination de Wills Moody se fait ressentir dès son retour en [[Tournoi de Wimbledon 1935|1935]] contre Helen Jacobs qui perd à cette occasion sa quatrième finale à Wimbledon. Absente des deux futures éditions, Helen Wills Moody remporte son huitième et dernier titre à Wimbledon en [[1938]]. À l'exception de sa finale perdue en 1924 contre Suzanne Lenglen, elle n'a pas perdu un seul match à Wimbledon. Quant à Helen Jacobs, elle finit par s'imposer en [[Tournoi de Wimbledon 1936|1936]] au terme d'une finale accrochée contre [[Hilde Sperling|Hilde Krahwinkel Sperling]] (6-2, 4-6, 7-5). Ce fut là son unique titre à Wimbledon, ne parvenant pas à détrôner Wills Moody lors d'une nouvelle finale entre les deux Helen en 1938. L'[[Tournoi de Wimbledon 1939|édition de 1939]] est remportée par les Américains [[Bobby Riggs]] chez les hommes et [[Alice Marble]] chez les femmes, peu avant que l'Europe ne sombre dans un [[Seconde Guerre mondiale|nouveau conflit mondial]] qui contraint les organisateurs à suspendre le tournoi jusqu'en [[1946]]. Durant la guerre, les installations sont utilisées par l'armée et le court central est endommagé par une bombe allemande en [[1940]] qui détruit près de {{formatnum:1200}} sièges<ref>{{Lien web|langue=en|auteur=Barry Newcombe|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Centre Court Bombed|éditeur=Site officiel de Wimbledon|consulté le=21 juin 2012}}.</ref>.
+
+=== Grand Chelem amateur ===
+
+Avec la fin de la Seconde Guerre mondiale en 1945, la plupart des tournois dont Wimbledon reprennent dès 1946. Toutefois, les dirigeants du tennis se refusent à mettre fin à la fracture entre le circuit amateur<ref group="Note">Le terme amateur signifie que les joueurs ne gagnaient pas de récompenses en fonction de leurs parcours dans les différents tournois. Toutefois, ils étaient souvent payés par leurs fédérations ou par les tournois qui leur offraient de l'argent en échange de leur participation.</ref> et le circuit professionnel qui regroupe quelques-uns des meilleurs joueurs du monde. Si cette division existait dès les années 1930, elle ne fait que s'amplifier après la guerre avec la croissance du circuit professionnel<ref>{{harvsp|Collins|2010|p=79}}</ref>. En outre, les meilleurs joueurs quittant le circuit amateur après quelques années (comme Fred Perry ou Donald Budge juste avant la guerre), ce que l'on appelle de plus en plus couramment les tournois du Grand Chelem opposent donc de moins en moins l'élite du tennis mondial. S'ils gardent leur statut de tournois majeurs du circuit amateur, les vainqueurs de la période allant de 1946 à 1968 n'ont pas la même aura que ceux ayant gagné après 1968, date à laquelle les deux circuits s'unissent et où les meilleurs joueurs reviennent jouer les tournois du grand chelem.
+
+==== Domination américaine ====
+[[Fichier:Franck Sedgman.jpg|thumb|alt=Photo en noir et blanc de profil de Franck Sedgman en costume|En remportant le simple, le double et le double mixte, Sedgman est l'un des principaux joueurs à s'illustrer à Wimbledon dans les premières années de l'après-guerre.]]
+
+Les premières éditions de l'après-guerre sont marquées par une certaine instabilité. Les anciens grands joueurs de la fin des années 1930 ont pris de l'âge ou sont partis sur le circuit professionnel tandis que la nouvelle génération n'a pas pu mûrir, faute de tournois. En [[1946]], les organisateurs de Wimbledon hésitent même à reprendre le tournoi en raison des dégâts occasionnés par le bombardement en 1940 et qui n'ont pas été effacés. Malgré les conditions difficiles, le tournoi a finalement lieu<ref>{{harvsp|Collins|2010|p=81}}</ref>. L'édition est marquée par la chute de nombreux favoris lors des premiers tours et par la victoire inattendue du Français [[Yvon Petra]] au terme d'un match serré (6-2, 6-4, 7-9, 5-7, 6-4) contre [[Tom Brown (tennis)|Tom Brown]], le grandissime favori. Les éditions suivantes voient la domination des joueurs américains. En 1947, le tennis se retrouve un leader en la personne de [[Jack Kramer]] qui remporte le tournoi sans perdre un set et expédie la finale en seulement {{unité|48|minutes}} sur le score de 6-1, 6-3, 6-2 contre Tom Brown. Comme beaucoup après lui, Kramer quitte rapidement le circuit amateur après y avoir fait ses preuves. De fait, il ne défend pas son titre en 1948 et c'est [[Bob Falkenburg]] qui s'impose. Comme l'indique le score de la finale (7-5, 0-6, 6-2, 3-6, 7-5), Falkenburg avait tendance à laisser filer certaines manches du fait d'une incapacité à mobiliser son énergie sur de longues durées en raison d'un [[Myxœdème|mixœdème]]<ref>{{harvsp|Collins|2010|p=87}}</ref>. En 1949, c'est l'Américain [[Ted Schroeder]] qui s'impose. Surnommé ''Lucky Schroeder'' pour sa capacité à remonter des situations compromises, il en fait la démonstration tout au long du tournoi. Ainsi, il remonte à deux reprises un déficit de deux manches à rien, d'abord au premier tour puis en quart de finale contre [[Frank Sedgman]] où il parvient aussi à sauver deux balles de match. En tout, sur sept matchs, il en gagne quatre au terme des cinq manches<ref>{{Lien web|langue=en|auteur=Barry Newcombe|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Ted Schroeder|éditeur=Site officiel de Wimbledon|consulté le=23 juin 2012}}.</ref>. L'année suivante, [[Budge Patty]] réalise le doublé Internationaux de France de tennis-Wimbledon. [[Dick Savitt]], un autre Américain, s'empare du trophée en [[1951]] tandis qu'en double, Frank Sedgman et [[Ken McGregor]] s'imposent et sont en route pour le Grand Chelem qu'ils accomplissent en remportant l'US Open deux mois plus tard. En 1952, l'Australien Sedgman finit par gagner le trophée en simple après deux finales perdues (1949, 1950) tandis qu'il s'impose de nouveau en double et en double mixte<ref>{{harvsp|Collins|2010|p=98-99}}</ref>. Il ne faut qu'un an aux Américains pour retrouver leur mainmise sur le tournoi avec la victoire de [[Vic Seixas]]. En 1954, [[Jaroslav Drobný]] devient le deuxième gaucher à s'imposer à Wimbledon après Norman Brookes en 1907<ref>{{harvsp|Collins|2010|p=103-104}}</ref>. Enfin, en 1955, [[Tony Trabert]] est le dernier représentant de la vague américaine qui a dominé Wimbledon lors des premières années d'après-guerre. En effet, il offre aux États-Unis leur septième titre en dix éditions à la suite de sa victoire en finale contre [[Kurt Nielsen]].
+
+Chez les femmes, la domination américaine est encore plus impressionnante et s'exprime dès la reprise du tournoi en 1946 avec la victoire de [[Pauline Betz]], l'une des joueuses ayant connu le plus de succès sur les quelques tournois américains s'étant joués durant la guerre. L'année suivante, c'est [[Margaret Osborne duPont|Margaret Osborne]] qui s'impose face à [[Doris Hart]]. Cette dernière est de nouveau battue en 1948 par [[Louise Brough]], la finaliste de l'édition 1946. Brough entame alors une domination de trois ans. En 1949, elle s'impose face à Margaret Osborne lors d'une finale haletante conclue sur le score de 10-8, 1-6, 10-8. L'édition 1950 oppose les mêmes protagonistes pour le même résultat (6-1, 3-6, 6-1 pour Louise Brough). Toutefois, si les deux joueuses s'affrontent en simple, elles s'associent en double pour remporter leur troisième titre consécutif et leur quatrième en tout (le premier date de 1946). Enfin, Louise Brough remporte aussi son quatrième titre en double mixte. L'année 1952 consacre la double finaliste malheureuse Doris Hart face à [[Shirley Fry]]. À nouveau, ce sont les deux finalistes en simple qui remportent le double. Cette année 1951 voit aussi l'apparition sur le devant de la scène d'une nouvelle Américaine du nom de [[Maureen Connolly]]. Elle ne tarde pas à s'affirmer sur le tournoi de Wimbledon qu'elle remporte l'année suivante face à Louise Brough<ref name="Collins">{{harvsp|Collins|2010|p=99}}</ref>. En 1953, alors qu'elle n'a que 18 ans, Connolly remporte à Wimbledon son troisième titre du Grand Chelem de l'année. Elle est alors en route pour réaliser le premier Grand Chelem de l'histoire féminin, ce qu'elle réussit en remportant l'US Open. Elle confirme sa domination à Londres en défaisant Louise Brough en finale pour la deuxième fois. Toutefois, c'est là son dernier titre à Wimbledon car peu avant l'US Open, elle se blesse gravement lors d'une chute à cheval et doit mettre fin à sa carrière alors qu'elle n'a pas {{unité|20|ans}}<ref name="Collins"/>. Son bilan à Wimbledon est de 18 victoires pour aucune défaite. Cette retraite prématurée permet à Louise Brough de s'imposer une quatrième et dernière fois face à [[Beverly Baker|Beverly Baker Fleitz]] en 1955. En définitive, en dix éditions, les Américaines ont monopolisé l'ensemble des places en finale du simple féminin. Toutefois, en double, un petit événement se produit puisque les quatre finalistes sont toutes britanniques alors qu'aucune non-Américaine n'était parvenue à ce stade de la compétition depuis 1946<ref>{{harvsp|Collins|2010|p=106}}</ref>.
+
+==== Ère australienne ====
+[[Fichier:Lew Hoad Cropped.jpg|thumb|left|alt=Photographie en noir et blanc de Lew Hoad en costume|Lew Hoad.]]
+
+En 1956, l'arrivée de [[Lew Hoad]] sur le devant de la scène marque le début de la domination des Australiens dans le monde du tennis. Après avoir battu [[Ken Rosewall]] à l'Open d'Australie, il réédite sa performance à Wimbledon. Ayant aussi gagné les Internationaux de France de tennis, il se trouve alors dans la position idéale pour réaliser le Grand Chelem mais Rosewall l'en empêche en finale de l'US Open. L'année suivante, il joue son dernier tournoi amateur à Wimbledon et défend son titre avec succès face à [[Ashley Cooper]]. Ce dernier émerge véritablement en [[1958]] en remportant Wimbledon et en réalisant le [[Petit Chelem de tennis|Petit Chelem]] (il lui manque les Internationaux de France)<ref>{{Lien web|langue=en|auteur=Barry Newcombe|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Ashley Cooper v Neale Fraser|éditeur=Site officiel de Wimbledon|consulté le=12 janvier 2013}}.</ref>. En 1959, le tennis voit l'irruption du [[Pérou|Péruvien]] [[Alex Olmedo]]. Celui-ci devient le premier joueur sud-américain à remporter le tournoi de Wimbledon face à l'Australien [[Rod Laver]]. Dès l'année suivante, [[Neale Fraser]] rétablit la domination australienne sur le tournoi en battant Laver. En demi-finale, Fraser passe pourtant très près de l'élimination. Mené 6-4, 3-6, 6-4, 15-15 par [[Butch Buchholz]], il sauve quatre balles de match avant que son adversaire abandonne à cause de crampes<ref>{{harvsp|Collins|2010|p=118}}</ref>. Laver finit par s'imposer l'année suivante face à [[Chuck McKinley]]. Néanmoins, c'est l'année suivante qu'il établit sa domination sur le tennis masculin. Après avoir remporté l'Open d'Australie et les [[Internationaux de France de tennis 1962|Internationaux de France]] de tennis, il écrase le tournoi de Wimbledon qu'il gagne sans perdre un set. En remportant peu après l'US Open, il devient le deuxième homme à réaliser le Grand Chelem après Donald Budge. L'année suivante, il rejoint le circuit professionnel, et Chuck McKinley devient le premier Américain à remporter le tournoi depuis 1955. Il bat en finale l'Australien [[Fred Stolle]]. L'année 1964 est marquée par la rivalité entre Stolle et [[Roy Emerson]], un autre Australien. Ils se rencontrent en finales de l'Open d'Australie, de Wimbledon et de l'US Open qui se terminent toutes par des victoires d'Emerson. En [[Tournoi de Wimbledon 1965|1965]], Stolle échoue pour la troisième et dernière fois en finale de Wimbledon, il est à nouveau battu par Emerson. L'année 1966 consacre la première victoire d'un joueur [[Espagne|espagnol]] dans le tournoi avec le succès de [[Manuel Santana|Manolo Santana]] contre [[Dennis Ralston]]<ref>{{harvsp|Collins|2010|p=136}}</ref>. Enfin, en 1967, l'Australien [[John Newcombe]] s'impose dans un tournoi marqué par la chute de nombreuses têtes de série dans les premiers tours.
+
+Chez les femmes, on ne peut pas véritablement parler de domination australienne. Au contraire, les Américaines restent les joueuses les plus dominantes dans le tournoi mais leur domination presque totale depuis 1946 commence à s'effriter. Ainsi, si l'Américaine Shirley Fry parvient à s'imposer, elle bat en finale la Britannique [[Angela Buxton]], la première non-Américaine à parvenir à ce stade de la compétition depuis 1946. L'année 1957 voit l'apparition sur le devant de la scène d'[[Althea Gibson]] qui remporte le tournoi face à [[Darlene Hard]] et devient la première [[Afro-Américains|afro-américaine]] à réaliser une telle performance. Elle garde son titre en [[1958]] face à la Britannique [[Angela Mortimer]]. Toutefois, le monopole américain est brisé en 1959 avec le succès de la [[Brésil]]ienne [[Maria Bueno]], confirmant la suprématie sud-américaine sur Wimbledon avec la victoire d'Olmeda chez les hommes. L'édition 1960 confirme l'internationalisation du tournoi car aucune Américaine ne parvient en demi-finale et que la finale oppose Maria Bueno à la [[Afrique du Sud|Sud-Africaine]] [[Sandra Reynolds]], pour un deuxième succès de la Brésilienne. Atteinte d'[[hépatite]] en 1961, Maria Bueno ne peut défendre son titre à Wimbledon. C'est Angela Mortimer qui parvient à s'imposer et devient à cette occasion la première Britannique à remporter le titre depuis 1937. Finalement, les Américaines parviennent à reconquérir le trophée en 1962 avec la victoire de la jeune [[Karen Hantze|Karen Hantze Susman]] qui ne perd pas le moindre set durant le tournoi<ref>{{harvsp|Collins|2010|p=124}}</ref>. L'édition 1963 voit l'arrivée au premier plan de deux joueuses pleines d'avenir avec la victoire de l'Australienne [[Margaret Smith Court|Margaret Smith]] sur l'Américaine [[Billie Jean King|Billie Jean Moffitt]]. Toutefois, l'année suivante, Maria Bueno remet la main sur le trophée au terme d'une finale serrée face à Margaret Smith (6-4, 7-9, 6-3), se vengeant ainsi de sa défaite en finale aux Internationaux de France de tennis, quelques semaines plus tôt. L'Australienne prend sa revanche l'année suivante. En 1966, elle est défaite en demi-finale par Billie Jean, la gagnante du tournoi. Celle qui s'appelle désormais Billie Jean King confirme sa domination sur le tournoi en conservant son titre en 1967. Elle réalise même le triplé en s'imposant aussi en double dames et en double mixte<ref>{{harvsp|Collins|2010|p=140}}</ref>.
+
+=== Ère Open ===
+En 1966 des pourparlers s'engagent entre les dirigeants de Wimbledon et [[Jack Kramer]] alors promoteur de tennis professionnel pour organiser un tournoi professionnel dans le « Temple » l'année suivante. Un mois et demi après le tournoi traditionnel amateur de Wimbledon, [[BBC Two|BBC2]] commandite un tournoi professionnel de huit joueurs du 25 au {{date|28 août 1967}}<ref>{{Lien web|auteur=Steve Tignor|url=https://www.tennis.com/news/articles/1967-wimbledon-professional-tennis-finally-comes-amateur-game-hallowed-lawn|titre=1967: With the Wimbledon Pro event, professional tennis finally comes to the amateur game’s most hallowed lawn|site=tennis.com|date=17 juin 2022}}.</ref>. Ce tournoi rencontrant un très vif succès auprès du public et des téléspectateurs, le président de Wimbledon, [[Herman David]] décide à l'automne 1967 que le prochain Wimbledon traditionnel serait « Open » c’est-à-dire ouvert aux joueurs professionnels<ref>{{Lien web|auteur=Joel Drucker|url=https://www.tennis.com/news/articles/on-this-day-wimbledon-moves-towards-open-tennis-in-1967|titre=On This Day: Wimbledon moves towards Open Tennis in 1967|site=tennis.com|date=5 octobre 2021}}.</ref>. Le {{date|30 mars 1968}}, la [[Fédération internationale de tennis|Fédération internationale]] accepte qu'une dizaine de tournois soient ouverts à tous les joueurs dont Wimbledon. La distinction entre circuits amateur et professionnel est définitivement abolie, ouvrant donc les portes de Wimbledon et des autres tournois majeurs aux joueurs et joueuses professionnels. Ainsi, ces compétitions deviennent à nouveau les événements majeurs de la saison, courtisées par l'ensemble des compétiteurs<ref>{{harvsp|Collins|2010|p=143}}</ref>.
+
+==== Retour des meilleurs joueurs ====
+Dès l'[[Tournoi de Wimbledon 1968|édition 1968]], d'anciens joueurs du circuit amateur reviennent sur le gazon de Wimbledon à l'image de [[Ken Rosewall]], [[Rod Laver]] ou [[Pancho Gonzales]] après plusieurs années d'« exil » dans les tournois professionnels. Cette édition est marquée par l'hécatombe des principales têtes de série comme Gonzales, Rosewall, [[Lew Hoad]] ou encore [[John Newcombe]] à des stades précoces de la compétition<ref>{{harvsp|Collins|2010|p=146}}</ref>. La finale confirme cependant la continuation de la domination australienne avec l'opposition entre Rod Laver et [[Tony Roche]], deux anciens du circuit professionnel. Finalement, six ans après son Grand Chelem amateur, Rod Laver devient le premier vainqueur du tournoi de Wimbledon de l'ère Open. Toutefois, c'est l'année suivante qu'il se distingue. En effet, il défend avec succès son titre contre John Newcombe après être passé proche de l'élimination au deuxième tour contre [[Premjit Lall]] (mené deux manches à rien). Il signe là son troisième succès majeur de l'année après avoir remporté l'Open d'Australie et Roland-Garros. Deux mois plus tard, il boucle le Grand Chelem en remportant l'US Open, ce qui fait de lui le seul joueur à avoir réalisé une telle performance dans l'histoire de l'ère Open. En [[Tournoi de Wimbledon 1970|1970]], Laver est éliminé dès le quatrième tour mais cela n'empêche pas l'Australie de triompher à nouveau avec la victoire de John Newcombe, aux dépens de Rosewall. Il conserve son titre en [[Tournoi de Wimbledon 1971|1971]] face à l'Américain [[Stan Smith]]. Smith parvient finalement à l'emporter en 1972 au terme d'une finale haletante face au [[Roumanie|Roumain]] [[Ilie Năstase]] (4-6, 6-3, 6-3, 4-6, 7-5)<ref>{{Lien web|langue=en|auteur=Henry Wancke|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Stan Smith v Ilie Nastase|éditeur=Site officiel de Wimbledon|consulté le=4 janvier 2013}}.</ref>. Cette édition est aussi marquée par un changement d'importance avec l'introduction du [[jeu décisif]] aussi appelé tie break. Ce dernier est joué en cas d'égalité à huit partout pour éviter qu'une manche ne se prolonge excessivement. Les joueurs jouent alors un jeu dans lequel le premier arrivé à douze points avec deux points d'écart l'emporte. Toutefois, en cas de cinquième manche (ou de troisième manche chez les femmes), la règle précédente subsiste et le vainqueur est le premier à l'emporter avec deux jeux d'écart. Après quelques années d'expérimentations de diverses formules, la règle définitive est adoptée, le jeu décisif se jouant en cas d'égalité à six partout et le vainqueur est le premier à remporter sept points avec deux points d'écart<ref>{{harvsp|Collins|2010|p=164}}</ref>. Quant à Newcombe, du fait de son engagement auprès du [[World Championship Tennis|circuit WCT]], il est banni par l'[[Fédération internationale de tennis|ITF]] et ne peut défendre son titre. Ce conflit démontre que l'harmonisation entre les circuits amateurs et professionnels n'est pas encore acquise comme le confirme l'année suivante le boycott des joueurs américains et donc de Stan Smith. Le [[Tchécoslovaquie|Tchécoslovaque]] [[Jan Kodeš]] en profite pour s'imposer contre le [[Union des républiques socialistes soviétiques|Soviétique]] [[Alex Metreveli]]. L'[[Saison 1974 de l'ATP|année 1974]] est marquée par l'explosion de [[Jimmy Connors]] qui remporte l'Open d'Australie, l'US Open mais aussi Wimbledon après être passé à deux points de l'élimination contre Dent au deuxième tour. En finale, il rencontre le vétéran Ken Rosewall âgé de {{unité|39|ans}} qui joue sa quatrième finale du tournoi. Toutefois, ce dernier se refuse encore à lui et il rentre dans l'histoire en étant le joueur ayant joué le plus de finales à Wimbledon sans parvenir à le remporter. En 1975, Connors ne parvient pas à conserver son titre à la suite de sa défaite en finale face à [[Arthur Ashe]]<ref>{{Lien web|langue=en|auteur=Mark Winters|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Arthur Ashe wins Wimbledon|éditeur=Site officiel de Wimbledon|consulté le=2 janvier 2013}}.</ref>.
+
+Sur le circuit féminin, l'ouverture aux joueurs professionnels n'empêche pas Billie Jean King de remporter une troisième couronne de suite. Néanmoins, l'année suivante et pour le plus grand plaisir du public, la Britannique [[Ann Haydon-Jones]] met fin pour un temps à la domination de l'Américaine en la battant en finale. La performance de la joueuse anglaise est d'autant plus marquante qu'elle se débarrasse en demi-finale de l'Australienne Margaret Smith Court, vainqueur de l'Open d'Australie et du tournoi de Roland-Garros, sur le score de 10-12, 6-3, 6-2. Si les espoirs de Grand Chelem pour Smith Court sont annihilés pour l'année 1969, elle repart sur les mêmes bases en 1970. Après avoir remporté l'US Open en 1969, elle s'empare des titres du Grand Chelem en Australie et en France. Cette fois-ci, elle ne craque pas à Wimbledon et s'impose face à Billie Jean King sur le score de 14-12, 11-9 après un combat long de deux heures et demie<ref>{{harvsp|Collins|2010|p=154-155}}</ref>. En remportant l'US Open peu après, elle réalise donc le deuxième Grand Chelem du tennis féminin et confirme la domination des Australiens sur le monde du tennis, après le Grand Chelem de Rod Laver en 1969. Les Australiennes sont de nouveau aux avant-postes l'année suivante mais Smith Court doit céder son titre à sa compatriote [[Evonne Goolagong]]. Billie Jean King finit par récupérer son trône en 1972 face à la tenante du titre. L'année suivante, alors qu'elle se distingue lors de la [[Billie Jean King#La « bataille des sexes »|bataille des Sexes]] et plus généralement, par son combat en faveur du tennis féminin<ref>{{harvsp|Collins|2010|p=167}}</ref>, elle remporte une quatrième couronne à Wimbledon face à la jeune et prometteuse [[Chris Evert]]. Cette dernière stoppe en effet Smith Court en demi-finale alors que celle-ci tentait de s'acheminer vers un deuxième Grand Chelem<ref>{{harvsp|Collins|2010|p=170}}</ref>. Il ne faut qu'un an à Evert pour remporter le titre, la même année que son compagnon Jimmy Connors. En 1975, Billie Jean King fait un retour en force en battant Evert en demi-finale après avoir remonté un déficit de trois jeux à zéro lors du troisième set et d'expédier la finale 6-0, 6-1 face à Goolagong.
+
+==== Années Borg ====
+[[Fichier:Björn Borg.jpg|thumb|left|upright=0.7|alt=Gros plan sur [[Björn Borg]] au cours d'un match de tennis|Avec cinq titres consécutifs à Wimbledon, Borg établit une performance exceptionnelle, finalement égalée par [[Roger Federer]] en [[Tournoi de Wimbledon 2007|2007]]. (En 1992 au Copperfield Racquet and Health Club, Houston, Texas)]]
+
+L’année 1976 voit l’arrivée à Wimbledon du Suédois [[Björn Borg]] déjà deux fois titré à Roland-Garros et dont le jeu de fond de court s’accommode plus à la terre battue qu’au gazon. Toutefois, cela ne l’empêche pas de remporter le trophée sans perdre un set et malgré une blessure aux [[Muscles abdominaux antérolatéraux|abdominaux]]<ref>{{Lien web|langue=en|auteur=Henry Wancke|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Bjorn Borg v Ilie Nastase|éditeur=Site officiel du tournoi|consulté le=20 juin 2012}}.</ref>. Ce succès est le premier d’une série inédite de cinq titres consécutifs. Il bat ainsi [[Vitas Gerulaitis]] en demi-finale et Jimmy Connors en finale au terme de deux matchs très accrochés qui lui permettent de triompher lors de l’édition 1977 du centenaire du tournoi. La bataille entre les deux joueurs pour la suprématie sur le tennis mondial se prolonge l’année suivante mais de nouveau Borg s’impose à Wimbledon lors d’une finale à sens unique. L’année suivante, c’est face à un autre Américain, [[Roscoe Tanner]], que Borg s’impose. Enfin, en 1980, il conquiert sa cinquième couronne au terme d’un [[Finale du simple messieurs du tournoi de Wimbledon 1980|match époustouflant]] par son niveau de jeu et sa dramaturgie contre [[John McEnroe]] (1-6, 7-5, 6-3, 6-7 (16-18), 8-6)<ref>{{harvsp|Collins|2010|p=200}}</ref>. En plus d’établir un record de titres consécutifs à Wimbledon, Borg s’illustre aussi en parvenant à remporter trois années de suite Roland Garros et Wimbledon (1978, 1979, 1980). Une performance qui n’avait jamais été réalisée jusque-là dans l’ère Open du fait des différences importantes entre les deux surfaces et du peu de temps d’adaptation dont disposent les joueurs entre les deux tournois. Finalement, l’ère suédoise à Wimbledon se termine en 1981 lorsque McEnroe parvient à prendre sa revanche sur Borg. Deux mois plus tard, à la suite de sa quatrième défaite en finale de l’US Open et après avoir perdu sa place de numéro un mondial, Borg décide de mettre fin à sa carrière à seulement {{unité|25|ans}}<ref>{{Lien web|langue=en|url=http://www.atpworldtour.com/Tennis/Players/Bo/B/Bjorn-Borg.aspx|titre=Biographie de Bjorn Borg|éditeur=Site de l'ATP|consulté le=3 janvier 2013}}.</ref>.
+
+==== Navrátilová à la conquête de Wimbledon ====
+[[Fichier:Navratilova and Sukova.JPG|thumb|upright=0.7|alt=Gros plan sur Navralitova (à gauche) et Sukova (à droite) lors d'un match de double du tournoi des Légendes en 2009 à Wimbledon|Navratilova (à gauche) à Wimbledon en 2009.]]
+
+En remportant son premier titre à Wimbledon en 1978, la joueuse tchécoslovaque<ref group="Note">Originaire de [[Tchécoslovaquie]], elle est déchue de sa nationalité en 1975 pour avoir quitté le pays et s'être réfugié aux États-Unis. Elle obtient la nationalité américaine en 1981.</ref> [[Martina Navrátilová]] établit une nouvelle ère de domination sur le tournoi. En effet, là où son adversaire en finale et grande rivale, [[Chris Evert]], préfère la terre battue de Roland Garros, Navrátilová fait de Wimbledon son jardin. Grâce à son jeu de service-volée relativement rare chez les femmes, elle possède les armes pour maîtriser la surface. L'édition suivante ne fait que confirmer cet état de fait avec un nouveau revers de Chris Evert en finale. En [[Simple dames du tournoi de Wimbledon 1980|1980]], Chris Evert finit par dominer Navrátilová en demi-finale mais perd pour la troisième fois de suite en finale, cette fois-ci face à Evanne Goolagong. Evert finit par remporter son troisième titre à Wimbledon en [[Simple dames du tournoi de Wimbledon 1981|1981]] lorsqu'elle bat [[Hana Mandlíková]] (la tombeuse de Navrátilová au tour précédent) en finale. En [[Simple dames du tournoi de Wimbledon 1982|1982]], le tournoi est marqué par le retour en force de Billie Jean King pourtant âgée de {{unité|38|ans}} mais qui parvient à se hisser jusqu'en demi-finale où elle est battue par Chris Evert. Cette dernière échoue en finale pour la troisième fois face à Navrátilová qui retrouve le chemin de la victoire. Ce titre est alors le premier d'une impressionnante et inégalée série de six titres consécutifs pour la joueuse récemment naturalisée américaine. En [[Simple dames du tournoi de Wimbledon 1983|1983]], au cours d'une année sensationnelle ({{nombre|16|tournois}} gagnés sur {{nombre|17|joués}}), Navrátilová écrase le tournoi de Wimbledon et [[Andrea Jaeger]] en finale (6-3, 6-0)<ref>{{harvsp|Collins|2010|p=215}}</ref>. Les deux années suivantes, Navrátilová et Chris Evert qui se disputent la suprématie sur le tennis féminin se rencontrent pour la cinquième et la sixième fois en finale de Wimbledon. Ces deux confrontations ne font que confirmer la domination de Navrátilová sur gazon avec deux nouvelles victoires. En [[Simple dames du tournoi de Wimbledon 1986|1986]], Evert est éliminée en demi-finale par Hana Mandlikova qui ne parvient pas plus à déstabiliser la mainmise de Navrátilová sur Wimbledon. Enfin, en [[Simple dames du tournoi de Wimbledon 1987|1987]], Navrátilová bat le record de cinq titres consécutifs établi par Suzanne Lenglen en remportant son sixième titre de suite. À cette occasion, elle égale aussi le record de huit titres d'Helen Wills Moody. En finale, elle prend sa revanche sur la jeune [[Steffi Graf]] qui venait de la battre en finale des [[Internationaux de France de tennis 1987|Internationaux de France de tennis]]<ref>{{harvsp|Collins|2010|p=236}}</ref>. Toutefois, malgré cette victoire, Navrátilová commence à sentir l'arrivée d'une nouvelle génération avec la perte de sa place de numéro un mondiale quelques semaines plus tard, au profit de Graf. Au cours de cette même période, Navrátilová parvient à remporter le tournoi de double à sept reprises en double (en 1976 aux côtés d'Evert, en 1979 avec Billie Jean King, puis de 1981 à 1984 et enfin en 1986 avec [[Pam Shriver]]).
+
+==== Années 1980 ====
+[[Fichier:BECKER Boris-24x30-.jpg|vignette|upright=0.7|gauche|alt=Gros plan sur le visage de Boris Becker|Avec trois titres et quatre finales, Boris Becker est l'un des joueurs marquants de la deuxième partie des années 1980.]]
+
+Après son triomphe face à Borg, McEnroe doit faire face à une autre icône du tennis de l'époque en la personne de [[Jimmy Connors]], alors âgé de 30 ans et qui parvient à battre son cadet au terme d'un combat en cinq manches. Toutefois, il ne faut qu'un an à McEnroe pour reconquérir son trône londonien à la suite de sa victoire en finale contre le surprenant néo-zélandais [[Chris Lewis (tennis)|Chris Lewis]], classé à la {{91e|place}} et premier joueur non-tête de série depuis [[Wilhelm Bungert]] en 1967, à atteindre la finale de Wimbledon. L'année suivante confirme la domination de McEnroe qui écrase le monde du tennis avec {{nombre|82|victoires}} pour seulement trois défaites. Wimbledon n'échappe pas à l’appétit de McEnroe qui l'emporte 6-1, 6-1, 6-2 sur un Jimmy Connors impuissant. Toutefois, l'ère McEnroe touche à sa fin dès l'[[Saison 1985 de l'ATP|année suivante]] tandis qu'une nouvelle génération tente de se faire une place au soleil. L'[[Allemagne|Allemand]] [[Boris Becker]] y [[Tournoi de Wimbledon 1985|parvient]] en remportant Wimbledon à seulement {{unité|17|ans}} et {{nombre|227|jours}}<ref>{{Lien web|langue=en|url=http://tennis.sporting99.com/wimbledon/records.html|titre=Wimbledon Records|consulté le=13 janvier 2013}}.</ref>. Il devient alors simultanément le plus jeune vainqueur de l'histoire, le premier joueur non-tête de série à remporter le tournoi depuis l'instauration des têtes de série en [[1927]] et le premier Allemand à s'imposer à Wimbledon<ref>{{harvsp|Collins|2010|p=224-225}}</ref>{{,}}<ref>{{Lien web|auteur=Barry Newcombe|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Becker|éditeur=Site officiel du tournoi|consulté le=23 juin 2012}}.</ref>. La puissance de l'Allemand s'adapte particulièrement bien aux conditions rapides du tournoi londonien et lui permet de conserver son titre en [[Tournoi de Wimbledon 1986|1986]] face au Tchèque [[Ivan Lendl]], lors de la centième édition du tournoi. Malgré ses efforts pour dompter le gazon, Ivan Lendl ne parvient toujours pas à remporter Wimbledon l'année suivante et doit concéder une nouvelle défaite en finale face à l'Australien [[Pat Cash]]<ref>{{Lien web|langue=en|auteur=Alexandra Willis|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Pat Cash|éditeur=Site officiel de Wimbledon|consulté le=23 juin 2012}}.</ref>. Jamais plus le joueur tchèque ne parviendra aussi près de la victoire dans ce tournoi du grand chelem. L'année 1988 est marquée par la domination de [[Mats Wilander]] qui parvient à remporter l'Open d'Australie, les Internationaux de France de tennis et l'US Open mais échoue en quart de finale à Wimbledon contre [[Miloslav Mečíř]], ce qui met fin à ses espoirs de grand chelem. Le même Mecir est stoppé en demi-finale par un autre [[Suède|Suédois]], [[Stefan Edberg]], après avoir pourtant mené deux manches à rien. Edberg s'impose finalement en finale contre Becker, permettant à la Suède de gagner tous les Grands Chelems de l'année 1988. En [[Saison 1989 de l'ATP|1989]], Wimbledon est le théâtre de la revanche entre Becker et Edberg qui tourne à l'avantage du premier. Finalement, en [[Tournoi de Wimbledon 1990|1990]] et pour la troisième fois consécutive, la conquête du trophée oppose Becker à Edberg. Au terme de leur finale la plus accrochée, c'est Stefan Edberg qui s'impose sur le score de 6-2, 6-2, 3-6, 3-6, 6-4<ref>{{Lien web|langue=en|auteur=Alexandra Willis|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Boris Becker v Stefan Edberg|éditeur=Site officiel de Wimbledon|consulté le=3 janvier 2013}}.</ref>. Malgré une nouvelle finale l'[[Tournoi de Wimbledon 1991|année suivante]] contre [[Michael Stich]] puis plus tard en 1995, contre Pete Sampras, Becker ne s'imposera plus à Wimbledon.
+
+==== Domination de Steffi Graf ====
+
+[[Fichier:Steffi Graf (Wimbledon 2009) 7.jpg|vignette|upright=1|alt=Photographie de Steffi Graf lors du tournoi des légendes de Wimbledon en 2009|Steffi Graf au tournoi des légendes de Wimbledon en 2009.]]
+
+Dès 1988, [[Steffi Graf]] parvient à imposer sa loi au tennis féminin en détrônant notamment Navratilova en finale de Wimbledon<ref>{{Lien web|langue=en|auteur=Alexandra Willis|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Steffi Graf wins maiden title|éditeur=Site officiel de Wimbledon|consulté le=3 janvier 2013}}.</ref>. C’est alors la première défaite de Navratilova sur le gazon londonien depuis son élimination en demi-finale en 1981. Au-delà de ce succès, Graf signe dans la même année l’un des plus grands exploits de l’histoire du tennis en réalisant le Grand Chelem doré qui désigne le fait de gagner les quatre titres du Grand Chelem en plus du titre olympique. L’année suivante, Graf parvient à nouveau à battre Navratilova en finale et perd lors de ce match son seul set du tournoi. L’Américaine réussit toutefois un dernier coup d’éclat avec son succès à Wimbledon en 1990. En signant son neuvième titre, elle bat le vieux record d’Helen Wills Moody et reste à ce jour la joueuse la plus titrée en simple à Wimbledon, mais aussi en double avec sept titres<ref>{{Lien web|auteur=Alexandra Willis|url=http://www.wimbledon.com/en_GB/history/index.html|titre=A record for Navratilova|éditeur=Site officiel de Wimbledon|consulté le=2 janvier 2013}}.</ref>. Graf battue en demi-finale par [[Zina Garrison]] retrouve son trône dès [[Tournoi de Wimbledon 1991|1991]]. Cette édition est marquée notamment par le retrait de [[Monica Seles]] sans raisons apparentes alors qu’elle venait de gagner l’Open d’Australie et Roland-Garros<ref>{{harvsp|Collins|2010|p=254}}</ref>. Cette absence permet à Steffi Graf de reprendre brièvement la place de numéro un mondiale qu’elle avait perdue quelques mois plus tôt. L’année suivante, Graf et Seles sont toutes les deux présentes au tournoi. Lorsqu’elles se retrouvent en finale, Seles reste sur une victoire très serrée en finale de Roland-Garros contre Graf mais sur le gazon londonien, c’est bien l’Allemande qui s’impose sans difficultés sur le score de 6-2, 6-1. De nouveau, le tournoi de Wimbledon est le seul Grand Chelem à se refuser à Seles. L’année suivante, alors que Monica Seles voit sa carrière en grande partie brisée par un coup de poignard reçu à Hambourg, Graf reprend le leadership du tennis féminin en s’imposant pour la cinquième fois à Wimbledon contre [[Jana Novotná]]. Cette dernière menait pourtant 4-1 dans le troisième set et avait l’occasion de mener 5-1 avant de s’effondrer<ref>{{harvsp|Collins|2010|p=265}}</ref>. En [[Tournoi de Wimbledon 1994|1994]], Graf se présente à Wimbledon avec le statut de favorite mais elle chute à la surprise générale dès le premier tour du tournoi face à [[Lori McNeil]]<ref>{{Lien web|langue=en|auteur=Alexandra Willis|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Steffi Graf v Lori McNeil|éditeur=Site officiel de Wimbledon|consulté le=3 janvier 2013}}.</ref>. C’est la première fois que la tête de série numéro un et la tenante du titre est éliminée dès son entrée en lice. En finale, c’est [[Conchita Martínez]] qui s’impose face à Navratilova alors âgée de 37 ans. Malgré sa déconvenue, Steffi Graf conquiert encore deux titres à Wimbledon en [[Tournoi de Wimbledon 1995|1995]] et [[Tournoi de Wimbledon 1996|1996]] face à [[Arantxa Sánchez Vicario]]. En [[Simple dames du tournoi de Wimbledon 1997|1997]], la domination de Graf finit par s'effriter. Blessée, elle ne peut défendre son titre à Wimbledon et c'est la jeune [[Martina Hingis]] qui s'impose face à Jana Novotná<ref>{{harvsp|Collins|2010|p=283}}</ref>. Novotna prend sa revanche l'[[Simple dames du tournoi de Wimbledon 1998|année suivante]] en éliminant Hingis en demi-finale puis en battant la Française [[Nathalie Tauziat]] en finale. Graf, battue dès le troisième tour, parvient à se hisser en finale en 1999 pour sa dernière participation. Toutefois, elle ne peut s'imposer face à [[Lindsay Davenport]].
+
+==== Ère Sampras ====
+À l'image de la plupart des tournois hors terre battue, Wimbledon est le théâtre de l'hégémonie américaine sur le tennis entre 1992 et 2000. Celle-ci débute avec la victoire d'[[Andre Agassi]] en 1992. Ce succès est d'autant plus surprenant qu'Agassi n'est pas un spécialiste du jeu sur gazon et n'avait jamais remporté de titres du grand chelem jusque-là. Lors du tournoi, il s'impose notamment contre les anciens vainqueurs [[Boris Becker]] et [[John McEnroe]] lors de la dernière demi-finale en grand chelem de ce dernier<ref>{{harvsp|Collins|2010|p=261}}</ref>. Toutefois, ce n'est pas Agassi qui va marquer de son empreinte le tournoi. Trop inconstant et pas assez rompu au jeu sur gazon, il cède rapidement sa place à son compatriote [[Pete Sampras]] qui conquiert la première de ses sept couronnes londoniennes en [[Tournoi de Wimbledon 1993|1993]], après avoir battu Agassi en quart de finale puis [[Jim Courier]] en finale. Les années suivantes ne font que confirmer la domination de l'Américain sur le gazon puisqu'il remporte Wimbledon en 1994 contre Ivanisevic, en [[Tournoi de Wimbledon 1995|1995]] contre Boris Becker, en [[Tournoi de Wimbledon 1997|1997]] contre [[Cédric Pioline]], en [[Tournoi de Wimbledon 1998|1998]] à nouveau contre Ivanisevic, en [[Tournoi de Wimbledon 1999|1999]] contre Agassi et finalement en [[Tournoi de Wimbledon 2000|2000]] contre [[Patrick Rafter]]. Ainsi, en huit éditions, Sampras n'est arrêté qu'une seule fois par le [[Pays-Bas|Néerlandais]] [[Richard Krajicek]] en quart de finale de l'[[Tournoi de Wimbledon 1996|édition 1996]]. Krajicek devient quelques jours plus tard le premier Néerlandais à remporter un titre du grand chelem en s'imposant contre [[MaliVai Washington]]<ref>{{harvsp|Collins|2010|p=280}}</ref>. Au total, avec sept titres à Wimbledon, Pete Sampras est, avant que Roger Federer ne remporte son {{8e}} tournoi en 2017, le joueur le plus titré en simple messieurs de l'histoire du tournoi depuis la lointaine époque de William Renshaw<ref group="Note">Il convient de préciser que la performance de Renshaw a été facilitée par l'existence du système du ''[[Lexique du tennis#C|challenge round]]'' qui l'a avantagé lors de cinq de ses titres.</ref>.
+
+==== Vers un nouveau gazon et un nouveau jeu ====
+[[Fichier:Federer vs. Safin.jpg|thumb|alt=Roger Federer au service sur le Court Central de Wimbledon|Avec cinq titres consécutifs entre 2003 et 2007, [[Roger Federer]] égale la performance de [[Björn Borg]] entre 1977 et 1981. Federer a remporté huit fois le tournoi au total<ref>{{Lien web|titre=Record eighth title for Federer|url=http://www.wimbledon.com/en_GB/news/articles/2017-07-16/2017-07-16_record_eighth_title_for_federer.html|site=wimbledon.com|consulté le=2017-07-16}}.</ref>{{,}}<ref>{{Article|langue=fr-CH|titre=Wimbledon: Roger Federer sacré pour la 8e fois, un record!|périodique=[[Radio télévision suisse|RTSSport.ch]] | date=17 juillet 2017 |lire en ligne=https://www.rts.ch/sport/tennis/wimbledon/8780916-wimbledon-roger-federer-sacre-pour-la-8e-fois-un-record.html|consulté le=2017-07-16}}</ref>.]]
+[[Fichier:Isner-Mahut-Lahyani_next_to_scoreboard.jpg|thumb|Photo du tableau d'affichage et des protagonistes lors du match entre [[John Isner]] et [[Nicolas Mahut]] lors du [[tournoi de Wimbledon 2010]] qui reste le plus long de l'histoire du tennis avec une durée totale de 11h5 étalée sur trois jours. C'est l'un des événements les plus marquants des dernières éditions du tournoi.]]
+
+L'édition 2001 est marquée par un changement d'importance. En effet, les organisateurs décident de modifier la composition du gazon pour le rendre plus résistant. Il s'avère aussi que cette nouvelle surface est plus lente et rend le sol plus dur, et donc les rebonds plus importants. Dès lors, les attaquants qui monopolisaient jusque-là les titres à Londres voient leur domination menacée. Toutefois, c'est encore un spécialiste de cette école offensive qui s'impose. Le [[Croatie|Croate]] Goran Ivanisevic, déjà trois fois finalistes, parvient à remporter le tournoi face à [[Patrick Rafter]] lors d'une finale reportée au lundi du fait de la pluie. Cette victoire est d'autant plus surprenante que le Croate avait sombré au classement. Classé {{125e}} à la veille du tournoi, il ne put y participer qu'en profitant d'une invitation offerte par le tournoi<ref>{{Lien web|langue=en|url=http://sportsillustrated.cnn.com/tennis/2001/wimbledon/news/2001/07/09/wimbledon_monday_ap/|titre=Ivanisevic takes out Rafter in five-set thriller|éditeur=CNN Sports Illustrated|date=9 juillet 2001|consulté le=3 janvier 2013}}.</ref>.
+
+==== Un nouveau roi : Roger Federer ====
+Le quadruple tenant du titre et septuple vainqueur [[Pete Sampras]] est pour sa part défait dès les huitièmes de finale par le jeune espoir [[Roger Federer]]<ref>{{Lien web|url=https://www.lequipe.fr/Tennis/Actualites/2001-sampras-federer/296162|titre=2001, Federer-Sampras|éditeur=L'équipe|date=4 juillet 2012|consulté le=3 janvier 2013}}.</ref>. L'Américain est alors au crépuscule de sa carrière. L'année suivante symbolise pour sa part l'impact du changement de la surface et le déclin progressif des grands attaquants. En effet, la finale oppose [[Lleyton Hewitt]] à [[David Nalbandian]], deux joueurs de fond de court qui n'utilisent à aucun moment le service-volée lors de la finale. L'[[Australie]]n s'impose et conforte sa place de numéro un mondial. L'année 2003 consacre la naissance d'un nouveau maître des lieux en la personne du Suisse Roger Federer qui s'impose lors d'une finale qui remet brièvement au goût du jour le style offensif<ref>{{Lien web|langue=en|auteur=Greg Boeck|url=http://usatoday30.usatoday.com/sports/tennis/wimb/2003-07-06-roundup_x.htm|titre=Federer too crisp for Philippoussis in Wimbledon final|éditeur=USA Today|date=6 juillet 2003|consulté le=3 janvier 2013}}.</ref>. Federer conserve sa couronne cinq années de suite face à l'[[États-Unis|Américain]] [[Andy Roddick]] en [[Tournoi de Wimbledon 2004|2004]] et [[Tournoi de Wimbledon 2005|2005]], puis face à son grand rival [[Rafael Nadal]] en [[Tournoi de Wimbledon 2006|2006]] et [[Tournoi de Wimbledon 2007|2007]]. Il égale alors la série de cinq titres consécutifs de [[Björn Borg]]. Il finit par céder en [[Tournoi de Wimbledon 2008|2008]] lors d'une finale d'anthologie contre Rafael Nadal qui se termine juste avant que la nuit n'interrompe le match sur le score de 6-4, 6-4, 6-7(5-7), 6-7(8-10), 9-7. Il parvient toutefois à récupérer le trophée l'année suivante contre Andy Roddick lors d'une finale qui reste à ce jour la plus longue en nombre de jeux (le cinquième set est remporté par Federer sur le score de 16-14). En plus de cette victoire, il dépasse Pete Sampras en nombre de victoires en grand chelem. L'Espagnol Rafael Nadal, absent de l'édition 2009 parvient à remporter une nouvelle fois le tournoi en [[2010]]. Cette édition est aussi marquée par le [[Match Isner - Mahut lors du tournoi de Wimbledon 2010|match entre John Isner et Nicolas Mahut]] au premier tour qui se termine après {{heure|11|05}} de jeu sur le score improbable de 6-4, 3-6, 6-7 (7-9), 7-6 (7-3), 70-68 et bat le record du match le plus long qui ait jamais été joué ainsi que plusieurs autres records. En [[Tournoi de Wimbledon 2011|2011]], c'est le [[Serbie|Serbe]] [[Novak Djokovic]] qui s'impose face à l'Espagnol. C'est à l'occasion de cette finale qu'il s'empare de la place de numéro un mondial<ref>{{Lien web|langue=en|auteur=Piers Newberry|url=https://www.bbc.co.uk/sport/0/tennis/14006575|titre=Wimbledon 2011: Novak Djokovic beats Rafael Nadal in final|éditeur=BBC Sport|date=3 juillet 2011|consulté le=24 juin 2012}}.</ref>. Enfin, en [[Simple messieurs du tournoi de Wimbledon 2012|2012]], la finale oppose Roger Federer à [[Andy Murray]] qui devient à cette occasion le premier Britannique à atteindre la finale depuis 1938<ref>{{Lien web|auteur=Sophie Dorgan|url=https://www.lequipe.fr/Tennis/Actualites/Murray-fait-tomber-tsonga/296780|titre=Murray fait tomber Tsonga|site=[[L'Équipe]]|citation=Bunny Austin est le dernier finaliste britannique. C'était en 1938. Fred Perry est le dernier vainqueur en 1936.|en ligne le=6 juillet 2012|consulté le= 8 juillet 2012}}.</ref>. Toutefois, il est battu par Federer qui égale ainsi Renshaw et Sampras avec un septième titre à Wimbledon et redevient numéro un mondial grâce à ce succès<ref>{{Lien web|langue=en|auteur=Sophie Dorgan
+|url=https://www.lequipe.fr/Tennis/Actualites/Federer-toujours-vert/297233|titre=Federer toujours vert|site=[[L'Équipe]]|en ligne le=8 juillet 2012|consulté le= 8 juillet 2012}}.</ref>. Après avoir perdu les éditions [[Tournoi de Wimbledon 2014|2014]] et [[Tournoi de Wimbledon 2015|2015]] contre Novak Djokovic, [[Roger Federer]] soulève son {{8e}} titre (record simple homme) lors de l'édition [[Tournoi de Wimbledon 2017|2017]] pour un {{19e}} titre du [[Grand Chelem de tennis|Grand-Chelem]].
+La finale de 2019, remportée par Novak Djokovic contre Roger Federer après avoir sauvé 2 balles de matchs, fut la plus longue de l'histoire du tournoi. En 2020, pour la première fois depuis la seconde guerre mondiale, une édition de Wimbledon est annulée en raison de la [[pandémie de Covid-19]]. C'est le seul tournoi du Grand Chelem à ne pas se tenir et il ne peut être reporté à l'automne, en raison notamment des spécificités liées au gazon. L'édition 2021 voit elle un nouveau succès pour Novak Djokovic, face à [[Matteo Berretini]], qui le place dans la situation inédite depuis 1968 de pouvoir réaliser le Grand Chelem calendaire. Il conserve son titre en [[Tournoi de Wimbledon 2022|2022]], alors que le tournoi est interdit aux joueurs russes et biélorusses en raison de la [[Invasion de l'Ukraine par la Russie|guerre en Ukraine]] et privé de points ATP.
+[[Fichier:Serena Williams Serve Wimbledon.JPG|vignette|gauche|alt=Serena Williams au service à Wimbledon|Serena Williams à Wimbledon.]]
+
+Chez les femmes, le changement de la surface est moins bouleversant. En effet, du fait d'une puissance moindre au service, ce coup est moins décisif et le service-volée, si courant dans le tennis masculin, est moins utilisé. Le début des années 2000 est surtout marqué par l'irruption des [[sœurs Williams]] sur le devant de la scène. Ainsi, lors de l'édition de l'an 2000, [[Venus Williams]] s'impose à seulement vingt ans contre la tenante du titre [[Lindsay Davenport]]. C'est le premier des titres gagnés par Venus et sa sœur [[Serena Williams|Serena]] lors de la décennie 2000. En [[Simple dames du tournoi de Wimbledon 2001|2001]], Venus conserve son titre face à la jeune [[Justine Henin]], tombeuse de [[Jennifer Capriati]] au tour précédent. Les deux années suivantes confirment la domination absolue des Williams sur le tennis féminin et notamment à Wimbledon puisque les deux finales de 2002 et de 2003 opposent les deux sœurs. Serena en sort à chaque fois vainqueur. La domination des deux Américaines se fait aussi ressentir en double puisqu'elles remportent le trophée en 2000 et 2002. Toutefois en 2004, leur domination est mise à mal par une jeune russe de 17 ans du nom de [[Maria Sharapova]] qui s'empare du trophée après avoir gagné la finale sur le score de 6-1, 6-4 face à Serena Williams<ref>{{Lien web|langue=en|auteur=Drew Lilley|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Maria Sharapova|éditeur=Site officiel du tournoi|consulté le=24 juin 2012}}.</ref>. Venus, battue dès le deuxième tour en 2004 rétablit la domination américaine sur le tournoi anglais l'[[Tournoi de Wimbledon 2005|année suivante]] en se défaisant notamment de Sharapova puis de Lindsay Davenport au cours d'une finale particulièrement serrée (4-6, 7-6 (7-4), 9-7) d'une durée record de deux heures et {{unité|46|minutes}}. À cette occasion, Venus Williams devient la première joueuse à remporter le tournoi après avoir sauvé une balle de match en finale depuis {{unité|70|ans}}<ref>{{harvsp|Collins|2010|p=318}}</ref>{{,}}<ref>{{Lien web|langue=en|auteur=Drew Lilley|url=http://www.wimbledon.com/en_GB/history/index.html|titre=Venus Williams v. Lindsay Davenport|éditeur=Site officiel de Wimbledon|consulté le=20 juin 2012}}.</ref>. L'année suivante voit la victoire d'[[Amélie Mauresmo]] qui devient la première française à remporter Wimbledon depuis Suzanne Lenglen en 1925, en battant une seconde fois Justine Henin après sa victoire à l'Open d'Australie en janvier<ref>{{Lien web|auteur=Thomas Bonnet|url=http://www.eurosport.fr/tennis/wimbledon/2006/mauresmo-au-pantheon_sto913926/story.shtml|titre=Mauresmo a tout d'une grande|éditeur=Eurosport|date=8 juillet 2006|consulté le=20 juin 2012}}.</ref>. En [[Simple dames du tournoi de Wimbledon 2007|2007]] et [[Simple dames du tournoi de Wimbledon 2008|2008]], Venus Williams signe ses deux derniers succès à Wimbledon en s'imposant notamment face à sa sœur en 2008, pour la première fois en trois finales dans le tournoi. Néanmoins, elle ne parvient pas à rééditer cette performance puisque l'[[Simple dames du tournoi de Wimbledon 2009|année suivante]], c'est de nouveau Serena qui la prive d'un autre titre. Cette dernière gagne son quatrième titre londonien lors de l'[[Simple dames du tournoi de Wimbledon 2010|édition suivante]] et le neuvième titre des sœurs Williams en onze éditions<ref>{{Lien web|auteur=Julien Carrasco|url=http://www.eurosport.fr/tennis/wimbledon/2010/serena-epanouie_sto2385315/story.shtml|titre=Serena épanouie pour la {{4e}} fois|éditeur=Eurosport|date=3 juillet 2010|consulté le=20 juin 2012}}.</ref>. L'édition de 2011 a été remportée par [[Petra Kvitová]], premier succès en Grand Chelem de la jeune joueuse tchèque. Serena Williams reprend son titre en 2012, s'adjugeant alors son cinquième Wimbledon, égalant sa sœur Venus. Plus encore que chez les hommes, l'édition 2013 du tournoi féminin est marquée par de nombreuses surprises avec l'élimination de Maria Sharapova (numéro trois mondiale) et le forfait de [[Victoria Azarenka]] (numéro deux mondiale) dès la première semaine tandis que la numéro un mondiale et tenante du titre est vaincue dès les huitièmes-de-finale par [[Sabine Lisicki]]. Cette dernière parvient ensuite à battre la numéro quatre mondiale [[Agnieszka Radwańska]] mais échoue en finale contre la Française [[Marion Bartoli]].
+
+L'édition 2020 est annulée à cause de la [[pandémie de maladie à coronavirus de 2019-2020]]. C'est la première fois que cela arrive depuis la [[Seconde Guerre mondiale]].
+
+Le {{date|9 octobre 2024}}, il est annoncé que les juges de ligne seront remplacés par une technologie d’arbitrage électronique sur l’ensemble des courts à partir du tournoi de 2025<ref>{{Lien web |titre=Wimbledon brings in electronic line calling for 2025 |url=https://www.bbc.com/sport/tennis/articles/ce3zg3y23v7o |site=bbc |date=9 Octobre 2024}}</ref>{{,}}<ref>{{Lien web |titre=Wimbledon: All England club to replace all 300 line judges after 147 years with electronic system next year |url=https://www.skysports.com/tennis/news/12110/13230764/wimbledon-championships-all-england-club-to-replace-all-300-line-judges-after-147-years-with-electronic-system-next-year |site=sky sports |date=9 Octobre 2024}}</ref>.
+
+== Spécificités et traditions ==
+[[Fichier:The Royal Gallery at Centre Court, Wimbledon.jpg|thumb|left|alt=Places réservées à la famille royale et à leurs invités sur le Court central|Box royal du Court central.]]
+
+Au-delà d'être le plus ancien tournoi de tennis du monde, le tournoi de Wimbledon possède plusieurs particularités qui le distinguent des autres tournois de tennis. Parmi ces traditions encore en vigueur figure l'obligation pour les joueurs de jouer dans des tenues majoritairement de couleur blanche<ref>{{Lien web|auteur=Jacques Petit|url=https://www.lemonde.fr/idees/chronique/2011/06/27/les-hommes-en-blanc-de-wimbledon_1541168_3232.html|titre=Les Hommes en Blanc de Wimbledon|éditeur=Le Monde|date=27 juin 2011|consulté le=25 mai 2012}}.</ref>. Cette obligation remonte à [[1963]] bien que les joueurs jouent en blanc depuis les premières éditions du tournoi<ref name="WTA">{{Lien web|langue=en|url=http://www.wtatennis.com/page/OffCourtNews/Read/0,,12781~2383146,00.html|titre=Top 10 Wimbledon Traditions|éditeur=WTA|date=28 juin 2011|consulté le=25 mai 2012|brisé le = 2024-02-14}}.</ref>. Cette obligation ne concerne pas les sous-vêtements pouvant être visibles<ref>{{Lien web|url=http://www.lepoint.fr/actualites-insolites/2007-06-28/wimbledon-manque-voir-rouge-avec-les-dessous-de-golovin/918/0/190020|titre=Wimbledon manque de voir rouge avec les dessous de Golovin|éditeur=Le Point|date=28 juin 2007|consulté le=25 mai 2012}}.</ref>.
+
+Une autre tradition du tournoi est le ''{{langue|en|Sunday Off}}'', c'est-à-dire l'absence de match lors du premier dimanche du tournoi<ref>{{Lien web|url=http://www.rds.ca/wimbledon/chroniques/250802.html|titre=Le dimanche reste sacré à Wimbledon|éditeur=RDS.ca|date=29 avril 2008|consulté le=25 mai 2012}}.</ref>. Pour certains, la raison de cette suspension des activités est un accord ancien entre le ''{{langue|en|All England Lawn Tennis and Croquet Club}}'' et les habitants du voisinage. Cela permet en effet à ces derniers de jouir d'une {{citation|journée sans foules, embouteillages et ainsi se détendre}}<ref name="La">{{Lien web|url=http://www.lalibre.be/sports/tennis/pourquoi-ne-joue-t-on-pas-le-premier-dimanche-de-wimbledon-51d02bd7357028fef4eb30c2|titre=Pourquoi ne joue-t-on pas le premier dimanche de Wimbledon|éditeur=Lalibre.be|date=30 juin 2013|consulté le=2 juillet 2013}}.</ref>. Pour d'autres, cela s'explique par la nécessité de préserver le gazon piétiné durant la première semaine<ref name="LesEchos">{{Lien web|titre=Wimbledon, gazon béni|auteur=Isabelle Lesniak|url=https://www.lesechos.fr/week-end/business-story/enquetes/030415254364-wimbledon-gazon-beni-2098799.php|date=30 juin 2017|site=[[Les Échos]]|consulté le=10 juillet 2017}}.</ref>. Les joueurs et joueuses encore présents dans le tournoi ont tout de même le droit de s’entraîner, mais pas à n'importe quel moment : {{citation|Les vestiaires ouvrent plus tard, vers 10 heures du matin seulement alors que la salle de gym ferme plus tôt, vers 17 heures}}<ref name="La"/>. Cette tradition a souffert quatre exceptions en [[1991]], [[1997]], [[2004]] et [[2016]] à cause d'importants retards dans la programmation dus aux intempéries qui ont obligé les organisateurs à faire jouer des matchs le dimanche<ref>{{Lien web|url=http://fr.tennistemple.com/actualite/wimbledon-2011-pas-de-match-dimanche_11307.html|titre=Pas de match dimanche|éditeur=Tennistemple|date=25 juin 2011|consulté le=25 mai 2012}}.</ref>. On parle alors de ''{{langue|en|People's Sunday}}''<ref>{{Lien web|langue=en|auteur=Caroline Cheese|url=http://news.bbc.co.uk/sport2/hi/tennis/3841475.stm|titre=Wimbledon hosts Sunday play|éditeur=BBC Sport|date=26 juin 2004|consulté le=5 janvier 2013}}.</ref>. Cette suspension du dimanche est suivie par le ''{{langue|en|Crazy Monday}}'' (lundi fou) au cours duquel les organisateurs font jouer tous les huitièmes de finale des simples<ref name="La"/>. À partir de l'édition 2022, le ''Sunday Off'' disparaît<ref>{{Lien web|langue=en|url=https://www.lequipe.fr/Tennis/Actualites/-sunday-open-une-premiere-historique-a-wimbledon/1341712|titre=Sundy Open : une première historique à Wimbledon|éditeur=L'Equipe|consulté le=3 juillet 2022}}.</ref>.
+
+Le court central possède la spécificité de contenir un box royal accueillant les membres de la famille royale et leurs invités lors des matchs depuis [[1922]]. Jusqu'en [[2003]], les joueurs devaient obligatoirement s'incliner devant le box à leur entrée sur le court en cas de présence d'un membre de la famille royale. Toutefois, depuis 2003, cette obligation n'est plus de mise, sauf en cas de présence du monarque ou du [[prince de Galles]]<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/news/media-centre/royal-box|titre=The Royal Box|éditeur=Site officiel du tournoi|consulté le=25 mai 2012}}.</ref>. La dernière visite d'[[Élisabeth II]] remonte à [[Tournoi de Wimbledon 2010|2010]], 33 ans après sa visite précédente en 1977<ref>{{Lien web|langue=en|titre=Queen returns to Wimbledon after 33 years|url=https://www.bbc.com/news/10399688|date=24 juin 2010|site=[[BBC News]]|consulté le=10 juillet 2017}}.</ref>.
+
+L'absence presque totale de publicité dans l'enceinte des différents courts est aussi une autre particularité du tournoi. Seules quelques exceptions sont admises comme [[Rolex]], qui peut afficher son logo sur les tableaux d'affichage de sa conception, et [[Slazenger]]<ref name="Sponsor">{{Lien web|langue=en|auteur=John Reynolds|url=http://www.campaignlive.co.uk/article/1136663/wimbledon-queue-attracts-sponsors|titre=Wimbledon Queue Attracts Sponsors|éditeur=Marketing Magazine|date=15 juin 2012|consulté le=24 juin 2012}}.</ref>.
+
+[[Fichier:Eva Asderaki.jpg|thumb|alt=Arbitre revêtue de la tenue des différents acteurs du tournoi depuis 2006|Depuis 2006, les différents acteurs du tournoi (arbitres, ramasseurs, officiels) portent des tenues bleues et crème en lieu et place de la tenue vert foncé traditionnelle.]]
+
+Les [[fraise (fruit)|fraises]] à la crème sont un autre symbole du tournoi et sont massivement consommées par les spectateurs. Selon certaines sources, cette tradition est introduite par le roi [[George V du Royaume-Uni|George V]] ; pour d'autres, c'est dès [[1877]] que ces fruits sont consommés<ref>{{Lien web|langue=en|auteur=Thomas Vinciguerra|url=https://www.nytimes.com/2006/07/02/weekinreview/02basicB.html|titre=Where the Strawberries Are a Smash|éditeur=NY times|date=2 juillet 2006|consulté le=15 juin 2012}}.</ref>. Ces dernières années, ce sont environ {{unité|28|tonnes}} de fraises et {{unité|7000|litres}} de crème qui sont utilisées durant les treize jours que dure le tournoi<ref name="LesEchos"/>.
+
+Depuis près de soixante ans, les différents corps des [[forces armées britanniques]] envoient des volontaires participer à la bonne tenue du tournoi (vérifier que les spectateurs ont bien leur ticket, les guider dans les gradins, etc.). Chaque année, ce sont autour de {{nombre|300|militaires}} qui sont présents<ref>{{Lien web|langue=en|url=http://www.bfbs.com/news/uk/armed-forces-donate-time-work-wimbledon-48989.html|titre=Armed Forces donate time to work at Wimbledon|éditeur=British Forces News|date=24 juin 2011|consulté le=12 janvier 2013|brisé le = 2024-02-14}}.</ref>.
+
+Certaines traditions ou spécificités n'ont pas survécu à l'épreuve du temps. Ainsi, jusqu'en 2009, le nom des joueuses sur le tableau d'affichage était précédé de la mention ''{{langue|en|Miss}}'' ou ''Mrs'' selon qu'elles étaient ou non mariées. Or, le nom des joueurs n'était pas précédé de la mention ''{{langue|en|Mr}}''. Pour mettre fin à ce qui a progressivement été considéré comme une inégalité, seuls le prénom et le nom des joueuses figurent sur le tableau d'affichage depuis 2009. Toutefois, l'arbitre utilise encore les dénominations ''Mr'', ''{{langue|en|Miss}}'', ''Mrs'' lorsqu'il annonce le nom du joueur ou de la joueuse qui fait appel à l'arbitrage vidéo<ref name="WTA"/>.
+
+La tenue des arbitres, des ramasseurs de balles et des officiels du tournoi a elle aussi évolué. Jusqu'en 2006, ils ne portaient que des vêtements comprenant du vert foncé, l'une des deux couleurs officielles du tournoi depuis 1909 avec le violet. Depuis, les vestes de couleur verte ont été abandonnées au profit de vestes bleu marine et crèmes conçues par [[Ralph Lauren]], le designer officiel du tournoi<ref>{{Lien web|langue=en|url=http://www.thedailymeal.com/5-classic-wimbledon-traditions-slideshow-1#nogo|titre=5 Classic Wimbledon Traditions|éditeur=The Daily Meal|consulté le=15 juin 2012}}.</ref>.
+
+Les vainqueurs des tournois de simple messieurs et de simple dames deviennent automatiquement des membres honoraires du ''{{langue|en|All England Lawn Tennis and Croquet Club}}'', l'organisateur du tournoi<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/about_aeltc/201205091336559042288.html|titre=About Wimbledon|éditeur=Site officiel de Wimbledon|consulté le=2 janvier 2013}}.</ref>. En outre, depuis 1986, chaque joueur ou joueuse ayant atteint les quarts de finale du tournoi de simple, les demi-finales du tournoi de double dames ou de doubles messieurs ou la finale du tournoi de double mixte deviennent membres d'un club particulier appelé ''{{langue|en|The Last Eight Club}}''<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/news/articles/2015-07-08/a_day_in_the_life_the_last_8_club.html|titre=A day in the life: the Last 8 Club|éditeur=site officiel de Wimbledon|date=8 juillet 2015|consulté le=10 juillet 2017}}.</ref>.
+
+Enfin, il est de coutume que le vainqueur de la dernière édition du simple messieurs ouvre le programme sur le Court Central le premier lundi du tournoi<ref>{{Lien web|url=http://www.lepoint.fr/sport/wimbledon-ouverture-en-douceur-pour-djokovic-et-sharapova-25-06-2012-1477459_26.php|titre=Wimbledon: ouverture en douceur pour Djokovic et Sharapova |éditeur=Le Point|date=25 juin 2012|consulté le=5 janvier 2013}}.</ref>.
+
+== Primes et points ==
+Selon leurs résultats dans les différentes épreuves, les participants au tournoi remportent des primes (''{{langue|en|prize money}}'') d'importances diverses ainsi qu'un certain nombre de points dans les différents classements existants (classement de simple messieurs, de simple dames, de double messieurs et de double dames). Les premières primes apparaissent en 1968 lorsque le tournoi s'ouvre aux professionnels et la dotation est de {{unité|26150|£}}<ref>{{Lien web|langue=en|url=http://www.dailymail.co.uk/sport/article-185771/Wimbledon-facts-figures.html|titre=Wimbledon: Some Facts and Figures|éditeur=Daily Mail|consulté le=12 janvier 2013}}.</ref>. Depuis l'édition [[2007]], les primes sont de valeur égale pour les femmes et pour les hommes<ref>{{Lien web|langue=en|url=http://www.dailytimes.com.pk/default.asp?page=2007%5C02%5C23%5Cstory_23-2-2007_pg2_11|titre=Wimbledon serves up equal pay for women|éditeur=Daily Times|date=23 février 2007|consulté le=16 juin 2012}}.</ref>. En 2012, à la suite de la pression des joueurs et d'une réunion entre les organisateurs de plusieurs tournois et certains joueurs à [[Tournoi de tennis d'Indian Wells|Indian Wells]], les primes des tournois de simple sont revalorisées de 10,3 % en moyenne. Cette hausse touche plus particulièrement les primes gagnées à la suite d'une élimination précoce du tournoi<ref>{{Lien web|langue=en|url=https://www.bbc.co.uk/sport/0/tennis/17826924|titre=Wimbledon will increase extra prize money from 2012|éditeur=BBC Sport|date=24 avril 2012|consulté le=16 juin 2012}}.</ref>. Ainsi, un joueur perdant au {{1er|tour}} en 2012 gagne une prime dont la somme est supérieure de 26,3 % à celle de 2011. Au contraire, la récompense du vainqueur du tournoi n'augmente que de 4,5 %<ref name="Primes">{{Lien web|langue=en|url=http://www.wimbledon.com/pdf/Wimbledon_Prize_Money_2015.pdf|titre=Prize Money and Finance|éditeur=Site officiel du tournoi|consulté le=8 juillet 2015}}.</ref>. Les primes des tournois de qualification des simples messieurs et dames sont aussi revalorisées de 21,4 %. Pour l'édition 2013 du tournoi, l'organisation procède à une nouvelle revalorisation des prix de 40 %. De nouveau, l'effort porte principalement sur les qualifications et les premiers tours du tournoi ; ainsi les perdants lors des trois premiers tours voient leurs gains revalorisés de 60 %. Cependant, les vainqueurs bénéficient aussi d'une augmentation de leurs gains<ref>{{Lien web|url=https://www.lequipe.fr/Tennis/Actualites/Un-prize-money-record/365713|titre=Augmentation du prize money|éditeur=L'équipe|date=23 avril 2013|consulté le=8 juin 2013}}.</ref>. En 2018, la dotation financière s'élève à 34 millions de livres. Les chiffres ci-dessous concernent l'édition 2018 du tournoi.
+
+=== Points ===
+{| class="wikitable alternance" style="text-align:center;"
+|+ Tableau des points ATP et WTA<ref>{{Lien web|langue=en|url=http://www.atpworldtour.com/Rankings/Rankings-FAQ.aspx|titre=Rankings FAQ|éditeur=atpworldtour.com|consulté le=16 juin 2017}}.</ref>{{,}}<ref>{{Lien web|langue=en|url=http://www.wtatennis.com/sites/default/files/rules2017.pdf|titre=Rules 2017|éditeur=wtatennis.com|page=210|consulté le=16 juin 2017|brisé le = 2024-02-14}}.</ref>{{,}}<ref>{{Lien web |langue=en |titre=ATP Official Rulebook {{!}} ATP Tour {{!}} Tennis |url=http://www.atptour.com/en/corporate/rulebook |site=ATP Tour |consulté le=2026-07-15}}</ref>
+|-
+|
+! scope=col | Simple messieurs (ATP)
+! scope=col | Double messieurs (ATP)
+! scope=col | Simple dames (WTA)
+! scope=col | Double dames (WTA)
+|-
+! scope=row | Vainqueur
+|{{formatnum:2000}}
+|{{formatnum:2000}}
+|{{formatnum:2000}}
+|{{formatnum:2000}}
+|-
+! scope=row | Finaliste
+|1300
+|{{formatnum:1200}}
+|{{formatnum:1300}}
+|{{formatnum:1300}}
+|-
+! scope=row | Demi-finaliste
+|800
+|720
+|780
+|780
+|-
+! scope=row | Quart de finaliste
+|400
+|360
+|430
+|430
+|-
+! scope=row | Huitième de finaliste
+|200
+|180
+|240
+|240
+|-
+! scope=row | Troisième tour
+|100
+| –
+|130
+| –
+|-
+! scope=row | Deuxième tour
+|50
+|90
+|70
+|130
+|-
+! scope=row | Premier tour
+|10
+|0
+|10
+|10
+|}
+
+=== Primes ===
+==== Tableau principal ====
+{| class="wikitable alternance" style="text-align:center;"
+|+ Dotations en 2018 (en livres)<ref name="PrizeMoney2018">{{Lien web|langue=en|url=http://www.wimbledon.com/pdf/2018_Prize_Money.pdf|format=pdf|titre=Prize Money 2018|éditeur=wimbledon.com|consulté le=18 juillet 2018}}.</ref>
+|-
+|
+! scope=col | Simple
+! scope=col | Double
+! scope=col | Double mixte
+|-
+! scope=row | Victoire
+|{{formatnum:2250000}}
+|{{formatnum:450000}}
+|{{formatnum:110000}}
+|-
+! scope=row | Finale
+|{{formatnum:1125000}}
+|{{formatnum:225000}}
+|{{formatnum:55000}}
+|-
+! scope=row | Demi-finale
+|{{formatnum:562000}}
+|{{formatnum:112000}}
+|{{formatnum:27500}}
+|-
+! scope=row | Quart de finale
+|{{formatnum:281000}}
+|{{formatnum:56000}}
+|{{formatnum:13750}}
+|-
+! scope=row | Huitième de finale
+|{{formatnum:163000}}
+|rowspan=2|{{formatnum:29000}}
+|rowspan=2|{{formatnum:6500}}
+|-
+! scope=row | Troisième tour
+|{{formatnum:100000}}
+|-
+! scope=row | Deuxième tour
+|{{formatnum:63000}}
+|{{formatnum:17750}}
+|{{formatnum:3250}}
+|-
+! scope=row | Premier tour
+|{{formatnum:39000}}
+|{{formatnum:11500}}
+|{{formatnum:1625}}
+|-
+! scope=row | Total
+|{{formatnum:13039000}}
+|{{formatnum:2007000}}
+|{{formatnum:405000}}
+|}
+
+==== Tableau de qualification ====
+Les chiffres ci-dessous concernent les primes et les points ATP et WTA remportés par les participants aux tournois de qualification de l'édition 2018 :
+
+{| class="wikitable alternance gauche" style="text-align:center"
+|+ En simple<ref name="PrizeMoney2018"/>, 
+|-
+! scope=col | Tour
+! scope=col | Prime
+! scope=col | Points ATP<br />(messieurs)
+! scope=col | Points WTA<br />(dames)
+|-
+! scope=row | Qualifié
+| -<ref group="Note" name="N1">En cas de qualification, le joueur reçoit la dotation financière allouée à son dernier tour dans le tableau principal. Quant aux points, il reçoit le nombre de points de son dernier tour plus un bonus de 25 (ATP) ou 40 (WTA) points.</ref>
+| +30
+| +40
+|-
+! scope=row | Troisième tour
+| {{Unité|19500|£}}
+| 16
+| 30
+|-
+! scope=row | Deuxième tour
+| {{Unité|9750|£}}
+| 8
+| 20
+|-
+! scope=row | Premier tour
+| {{Unité|4875|£}}
+| 0
+| 2
+|}
+
+{{clr|left}}
+
+== Organisation ==
+[[Fichier:Flickr - Carine06 - Covers on.jpg|thumb|left|alt=Une bâche en train d'être dépliée sur un terrain pour le protéger de la pluie|Une bâche en train d'être dépliée pour protéger le terrain de la pluie. Cette dernière perturbe très souvent l'organisation du tournoi, obligeant parfois à des reports de matchs.]]
+
+À la différence des trois autres tournois du grand chelem, le tournoi de Wimbledon n'est pas organisé par une fédération nationale mais par un club privé, le ''{{langue|en|All England Lawn Tennis and Croquet Club}}''. Il est le troisième tournoi du grand chelem à être joué dans l'année après l'Open d'Australie en janvier et les Internationaux de France de tennis entre la fin mai et le début du mois de juin. Comme ces deux tournois ainsi que l'US Open, le tournoi de Wimbledon est inscrit au calendrier de l'[[ATP World Tour|ATP]] (qui gère le circuit professionnel masculin) et de la [[WTA Tour|WTA]] (qui gère le circuit professionnel féminin) mais n'est pas un événement organisé par ces deux organisations. En effet, les tournois du grand chelem sont des événements de l'[[Fédération internationale de tennis|ITF]] (la fédération internationale de tennis)<ref>{{Lien web|langue=en|url=http://www.itftennis.com/media/108139/108139.pdf|titre=ITF - The Constitution|éditeur=ITF|consulté le=6 janvier 2013}}.</ref>. Le tournoi de Wimbledon se déroule sur treize jours d'un lundi à un dimanche entre fin juin et début juillet. Depuis 2015, il se joue trois semaines après la fin des Internationaux de France de tennis (au lieu de deux semaines auparavant)<ref>{{Lien web|langue=en|auteur=Mike Dickson|url=http://www.dailymail.co.uk/sport/tennis/article-2176113/Wimbledon-moved-week-2015.html|titre=Wimbledon will be held back one week from 2015 to aid grass-court season preparations|éditeur=Daily Mail|date=19 juillet 2012|consulté le=1 janvier 2013}}.</ref>{{,}}<ref>{{Lien web|langue=en|url=http://espn.go.com/tennis/story/_/id/8180654/wimbledon-pushes-2015-start-date-back|titre=Wimbledon changes 2015 start date|éditeur=ESPN Tennis|consulté le=1 janvier 2013}}.</ref> et constitue le moment clé de la courte saison sur gazon qui dure cinq semaines. Lors des trois semaines qui séparent les deux tournois du Grand Chelem, plusieurs tournois sur gazon classés dans la catégorie des [[ATP World Tour 250|ATP 250]] ou [[ATP World Tour 500|ATP 500]] sont joués en guise de préparation. Parmi eux, les tournois de [[Tournoi de tennis de Halle|Halle]] et du [[Tournoi de tennis du Queen's|Queen's]] ayant lieu deux semaines après les Internationaux de France sont les plus prisés des meilleurs joueurs.
+
+=== Format des différentes compétitions ===
+[[Fichier:Doubles match on outside court at Wimbledon 1988 - geograph.org.uk - 2473163.jpg|thumb|alt=Match de double masculin en 1988|Match de double masculin à Wimbledon en 1988.]]
+
+Cinq compétitions principales se déroulent durant les deux semaines de compétitions tandis que d'autres compétitions ont lieu à partir de la deuxième semaine du tournoi, après que les premiers tours des compétitions principales ont été joués, ce qui permet de libérer les courts annexes. Voici la liste des compétitions présentes au tournoi de Wimbledon<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/scores/draws/ms/index.html|titre=Draws and Schedule|éditeur=Site officiel de Wimbledon|consulté le=3 janvier 2013}}.</ref> :
+* simple messieurs (''{{langue|en|Gentlemen's Single}}''<ref group="Note">Le tournoi de Wimbledon est le seul à utiliser les appellations ''{{langue|en|Gentlemen}}'' et ''{{langue|en|Ladies}}''. Les autres tournois utilisent les termes ''{{langue|en|Men}}'' et ''{{langue|en|Women}}''.</ref>) ;
+* simple dames (''{{langue|en|Ladies' Single}}'') ;
+* double messieurs (''{{langue|en|Gentlemen's Double}}'') ;
+* double dames (''{{langue|en|Ladies' Double}}'') ;
+* double mixte(''{{langue|en|Mixed Double}}'') ;
+* simple garçons (''{{langue|en|Boys' Single}}'') ;
+* simple filles (''{{langue|en|Girls' Single}}'') ;
+* double garçons (''{{langue|en|Boys' Double}}'') ;
+* double filles (''{{langue|en|Girls' Double}}'') ;
+* double messieurs en fauteuil (''{{langue|en|Gentlemen's Wheelchair}}'') ;
+* double dames en fauteuil (''{{langue|en|Ladies' Wheelchair}}'') ;
+* double messieurs senior plus de {{unité|35|ans}} (''{{langue|en|Gentlemen's Invitation Double}}'') ;
+* double dames senior (''{{langue|en|Ladies' Invitation Double}}'') ;
+* double messieurs senior plus de {{unité|45|ans}} (''{{langue|en|Gentlemen's Senior Invitation Double}}'').
+
+==== Compétitions principales ====
+[[Fichier:Goran Ivanisevic serve Wimbledon 2004 (cropped).jpg|thumb|left|alt=Goran Ivanisevic au service à Wimbledon|[[Goran Ivanišević]] est à ce jour le seul joueur à avoir remporté le tournoi de Wimbledon après avoir bénéficié d'une invitation en simple messieurs. C'était en 2001.]]
+
+Les cinq compétitions principales du tournoi (simple messieurs, simple dames, doubles messieurs, double dames et double mixte) ont des formats différents. Les deux tournois de simple opposent {{nombre|128|joueurs}} sur sept tours, les deux tournois de double opposent {{nombre|64|équipes}} (soit {{nombre|128|joueurs}}) sur six tours et le tournoi de double mixte oppose {{nombre|48|équipes}} (soit {{nombre|96|joueurs}}) sur six tours<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/scores/draws/ws/index.html|titre=Ladies' Single Draw|éditeur=Site officiel de Wimbledon|consulté le=25 juin 2012}}.</ref>. Le tournoi de double mixte de Wimbledon est le seul à opposer {{nombre|48|équipes}}, les tournois mixtes des autres grands chelems n'opposent que {{nombre|32|équipes}} sur cinq tours. Certains matchs du tableau de double messieurs se sont joués plusieurs fois en deux sets gagnants depuis 1968 ([[Ère Open (tennis)|ère Open]]) : en 1982 pour tous les tours sauf la demi-finale (sic) ; en 1987 pour les {{1er}} et {{2e|tours}} ; en 1991, 1997 et 1998 pour les trois premiers tours ; en 2004 pour les quatre premiers tours et en 2011 uniquement pour le premier tour.
+
+Parmi tous ces joueurs ou équipes, certains entrent directement dans le tableau principal grâce à leurs classements dans les différentes disciplines<ref group="Note">104 entrants directs pour le simple messieurs, {{nombre|107|entrantes}} directes pour le simple dames, 56 équipes pour le double dames, 55 équipes pour le simple messieurs et 43 équipes pour le double mixte.</ref> tandis que d’autres rentrent grâce à des [[Wild card (tennis)|invitations]] ou un [[Lexique du tennis#Q|tournoi de qualification]]. Les invitations sont délivrées à la discrétion de l’organisation du tournoi à des joueurs britanniques ou à des joueurs ayant eu de bons résultats passés dans le tournoi mais dont le classement ne leur permet plus d’intégrer le tableau principal directement<ref name="C">{{Lien web|langue=en|url=http://aeltc2011.wimbledon.com/visiting-wimbledon/visitor-guide/index.html|titre=Competing|éditeur=Site officiel du tournoi de Wimbledon|consulté le=25 mai 2012}}.</ref>{{,}}<ref group="Note">La liste des joueurs et équipes entrants directement dans le tableau principal est établie six semaines avant le début du tournoi. C'est donc le classement à ce moment de l'année qui est utilisé pour sélectionner les joueurs.</ref>. Les invitations sont réparties ainsi : huit pour le simple messieurs, sept pour le simple dames, cinq pour le double messieurs, quatre pour le double dames et quatre pour le double mixte.
+
+Parmi les joueurs ou équipes entrant directement dans le tableau principal, les mieux classés bénéficient du statut de tête de série depuis [[1927]] (32 dans les tournois de simple<ref group="Note">Avant 2001, les têtes de série étaient au nombre de 16.</ref> et seize dans les tournois de double<ref group="Note">Les 16 têtes de série du tournoi de double mixte sont [[Bye|exemptées]] de premier tour.</ref>). À la différence de tous les autres tournois de tennis, le classement (en simple et en double) n’est pas le seul critère permettant de déterminer les têtes de série. En effet, depuis un accord passé avec l'ATP en 2002, le classement est pondéré en fonction des résultats passés des joueurs sur gazon, et notamment à Wimbledon<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/news/articles/2013-06-19/201306191371633190432.html|titre=Seedings announced for the Championships 2013|éditeur=Site officiel de Wimbledon|consulté le=19 juin 2013}}.</ref>. Ainsi, lors de l’édition 2010, le numéro un mondial [[Rafael Nadal]] est tête de série numéro deux ; la tête de série numéro un étant occupée par le numéro deux mondial [[Roger Federer]], le vainqueur de l'[[Tournoi de Wimbledon 2009|édition précédente]]<ref>{{Lien web|url=http://www.eurosport.fr/tennis/wimbledon/2010/federer-le-fait-du-prince_sto2364776/story.shtml|titre=Federer, le fait du prince|éditeur=Eurosport|date=16 juin 2010|consulté le=25 mai 2012}}.</ref>. Pour déterminer les têtes de série, l'organisation du tournoi se base sur le classement ATP du lundi précédant le début du tournoi et rajoute aux points de chaque joueur les points qu'ils ont remporté lors des tournois sur gazon des douze mois qui précédent et 75 % des points gagnés lors du meilleur tournoi sur gazon des douze mois d'encore avant<ref>{{Lien web|langue=en|url=http://www.bbc.co.uk/dna/606/A70123088|titre=Wimbledon Seeding Formula (men)|éditeur=BBC|date=14 juin 2010|consulté le=8 juin 2013|brisé le = 2024-02-14}}.</ref>. Chez les femmes, l'ordre des têtes de série reprend généralement le classement WTA mais l'organisation se réserve la possibilité d'y faire des ajustements dans certains cas. Depuis [[1977]], date à laquelle les invitations sont introduites, [[Goran Ivanišević]] en 2001 est le seul joueur (hommes et femmes confondus) à avoir remporté le tournoi après avoir reçu une ''{{langue|en|Wild-Card}}''. Il est aussi l'un des deux seuls joueurs avec [[Boris Becker]] en [[1985]] à s'être imposé sans avoir le statut de tête de série<ref name="C"/>. En [[Double messieurs du tournoi de Wimbledon 2012|2012]], la paire [[Jonathan Marray]]-[[Frederik Nielsen]] devient la première équipe invitée à remporter le tournoi de double messieurs<ref>{{Lien web|langue=en|auteur=Matt Fitzgerald|url=http://www.atpworldtour.com/News/Tennis/2012/07/27/Wimbledon-Doubles-Final-Marray-Nielsen-Finish-Off-Magical-Run.aspx|titre=Marray/Nielsen Triumph In Magical Wimbledon Run|éditeur=Site officiel de l'ATP|date=7 juillet 2012|consulté le=4 janvier 2013}}.</ref>.
+
+Les matchs se jouent au meilleur des cinq manches pour le simple et le double messieurs. Wimbledon est le dernier tournoi avec la [[Coupe Davis]] où les matchs de double se jouent au meilleur des cinq manches<ref>{{Lien web|auteur=Myrtille Rambion|url=http://www.lexpress.fr/actualite/sport/meme-en-double-wimbledon-cultive-sa-difference_902755.html|titre=Même en double, Wimbledon cultive sa différence|éditeur=L'Express|date=29 juin 2010|consulté le=2 janvier 2013}}.</ref>. Toutefois, en 2011, les matchs de double du premier tour se sont joués au meilleur des trois manches en raison des retards causés par les intempéries<ref>{{Lien web|langue=en|url=http://www.atpworldtour.com/News/Tennis/2011/06/25/Wimbledon-Thursday-Doubles-Bopanna-Qureshi-Lose-Thriller.aspx|titre=Cabal-Farah Outlast Indo-Pak Express 21-19 In Final Set |éditeur=Site officiel de Wimbledon|consulté le=5 janvier 2013}}.</ref>. Que ce soit en simple ou en double, un [[jeu décisif]] est susceptible d'être joué à la fin de toutes les manches en cas d'égalité à six jeux partout sauf en cas de dernière manche. Dans cette situation, la manche se poursuit jusqu'à ce qu'un joueur gagne par deux jeux d'écart. Depuis l'édition 2019, une nouvelle règle instaure finalement un ultime jeu décisif si le score de douze jeux partout est atteint<ref>{{Lien web |langue=fr-FR |prénom=Par E. B. Le 19 octobre 2018 |nom=à 15h47 |titre=Le tournoi de Wimbledon instaure le jeu décisif à 12-12 au cinquième set |url=https://www.leparisien.fr/sports/tennis/le-tournoi-de-wimbledon-instaure-le-jeu-decisif-a-12-12-au-cinquieme-set-19-10-2018-7923264.php |site=leparisien.fr |date=2018-10-19 |consulté le=2021-06-28}}.</ref>. En 2022, un super jeu décisif (à 10 points) est instauré pour plus de cohérence avec les autres tournois du Grand Chelem. Quant aux tournois de simple et de double féminins ainsi que le tournoi de double mixte, les matchs se jouent au meilleur des trois manches avec jeu décisif dans toutes les manches sauf en cas de manche décisive.
+
+==== Tournois de qualification ====
+Les tournois de qualification opposent les équipes et joueurs dont le classement ne leur permet pas d'intégrer directement le tableau principal. Ils se déroulent au ''{{langue|en|Bank of England Tennis Centre}}'' à [[Roehampton]] la semaine précédant le début du tournoi<ref name="C"/>{{,}}<ref>{{Lien web|langue=en|url=https://www.bankofenglandsportscentre.co.uk/uploads/documents/welcomebookletm_122315.pdf|titre=Bank of England Sport Centre Welcome Booklet|date=décembre 2011|consulté le=4 juin 2012}}.</ref>. En simple messieurs, il oppose {{nombre|128|joueurs}} répartis dans {{nombre|16|groupes}}. Parmi ces {{nombre|128|joueurs}}, neuf sont invités et les {{nombre|32|meilleurs}} sont têtes de série. Chaque groupe compte huit joueurs dont deux têtes de série<ref group="Note">Les deux têtes de série de chaque groupe ne peuvent pas se rencontrer avant le dernier match.</ref>. Ces huit joueurs s'opposent lors d'un tournoi à élimination directe en trois tours. Les matchs se déroulent au meilleur des trois manches sauf le dernier match qui se déroule au meilleur des cinq manches. En cas d'égalité à six partout en fin de manche, un jeu décisif est joué sauf lors de la cinquième manche<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/scores/draws/qs/r3s1.html|titre=Gentlemen's Qualifying Singles Draw|éditeur=Site officiel de Wimbledon|consulté le=1 janvier 2013}}.</ref>. Le tournoi de qualification du simple dames oppose {{nombre|104|joueuses}} réparties dans {{nombre|13|groupes}}. Parmi ces {{nombre|104|joueuses}}, huit sont invitées et les {{nombre|24|meilleures}} sont têtes de série. Chaque groupe compte huit joueuses dont deux têtes de série. Elles s'opposent lors d'un tournoi à élimination directe en trois tours. Les matchs se déroulent au meilleur des trois manches avec jeu décisif dans toutes les manches sauf lors de la troisième manche<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/scores/draws/us/index.html|titre=Ladies' Qualifying Singles Draw|éditeur=Site officiel de Wimbledon|consulté le=1 janvier 2013}}.</ref>.
+
+Enfin, les tournois de qualification du double messieurs et du double dames opposent chacun {{nombre|16|équipes}} dont huit têtes de série et deux équipes invitées. Elles sont réparties en quatre groupes de quatre équipes dont deux têtes de série. Dans chacun des groupes, les quatre équipes s'opposent lors d'un tournoi à élimination directe sur deux tours. Les matchs se jouent au meilleur des trois manches avec jeu décisif dans toutes les manches sauf lors de la troisième manche. Le tournoi de Wimbledon est le seul tournoi de tennis où se déroulent des tournois de qualification pour les épreuves de double messieurs et double dames<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/scores/draws/ud/index.html|titre=Ladies' Qualifying Doubles Draw|éditeur=Site officiel de Wimbledon|consulté le=3 janvier 2013}}.</ref>{{,}}<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/scores/draws/qd/index.html|titre=Gentlemen's Qualifying Doubles Draw|éditeur=Site officiel de Wimbledon|consulté le=3 janvier 2013}}.</ref>.
+
+Un joueur ou une équipe ayant perdu au dernier tour du tournoi de qualification peut espérer être repêché en cas de forfait d'un joueur engagé dans le tournoi principal. On parle alors de ''{{langue|en|[[Lexique du tennis#L|Lucky Loser]]}}''. Les finalistes sont départagés en fonction de leur classement.
+
+=== Autres compétitions ===
+[[Fichier:Wimbledon 2005 (25).JPG|thumb|left|alt=Partie de tennis handisport à Wimbledon|Partie de tennis handisport à Wimbledon en 2005.]]
+
+En plus des compétitions principales décrites ci-dessus qui se déroulent sur deux semaines, d'autres compétitions ont lieu à partir de la deuxième semaine du tournoi. Parmi celles-ci figurent quatre tournois juniors (simple garçons, simple filles, double garçons, double filles) ouverts aux joueurs âgés de 12 à {{unité|17|ans}} au {{1er|janvier}}<ref>{{Lien web|langue=en|url=http://www.itftennis.com/juniors/organisation/rules-regulations.aspx|titre=Rules & Regulations|éditeur=ITF Tennis - Juniors|consulté le=19 juin 2012}}.</ref>. Le tournoi junior de Wimbledon figure parmi les grands rendez-vous du calendrier junior avec les trois autres tournois du grand chelem et l'[[Orange Bowl (tennis)|Orange Bowl]]<ref>{{Lien web|langue=en|url=http://www.itftennis.com/juniors/tournaments/grand-slams/overview.aspx|titre=Circuit Info|éditeur=ITF Tennis - Juniors|consulté le=18 juin 2012}}.</ref>.
+
+[[Fichier:Bahrami joking with Fleming.jpg|thumb|alt=Bahrami et Fleming plaisantant sur un des courts de Wimbledon|[[Mansour Bahrami]] et [[Peter Fleming (tennis)|Peter Fleming]] plaisantant lors de la compétition senior du [[tournoi de Wimbledon 2010]].]]
+
+Les tournois de simple garçons et de simple filles se tiennent respectivement depuis [[1947]] et [[1948]] et les tournois de double garçons et double filles ont été créés en [[1982]]<ref>{{Lien web|langue=en|url=http://www.itftennis.com/juniors/tournaments/grand-slams/wimbledon.aspx|titre=Wimbledon|éditeur=ITF Tennis - Juniors|consulté le=18 juin 2012}}.</ref>. Les tournois de simple réunissent {{nombre|64|joueurs}} chacun dont {{nombre|16|têtes}} de série dans un tableau à élimination directe en six tours. Parmi ces {{nombre|64|joueurs}}, huit bénéficient d'invitations et huit sont issus des qualifications<ref group="Note">Les qualifications se déroulent à Roehampton, sur le même site que les qualifications des tournois principaux, lors de la première semaine du tournoi de Wimbledon.</ref>{{,}}<ref name="ITFJ">{{Lien web|langue=en|url=http://www.itftennis.com/juniors/tournaments/tournament/info.aspx?tournamentid=1100026987|titre=The Junior Championships, Wimbledon|éditeur=Site de l'ITF|consulté le=12 janvier 2013}}.</ref>. Les matchs se jouent au meilleur des trois manches avec jeu décisif dans les deux premières manches. Les tournois de double opposent {{nombre|32|équipes}} dont huit têtes de série dans un tableau à élimination directe en cinq tours. Parmi les {{nombre|32|équipes}}, cinq sont invitées par l'organisation du tournoi. Il n'existe pas de tournois de qualification pour les doubles juniors<ref name="ITFJ"/>. Les matchs se jouent au meilleur des trois manches avec jeu décisif dans les deux premières manches. La troisième manche est jouée sous la forme d'un [[Jeu décisif|super tie break]]. Le tournoi de simple garçons a notamment été remporté par [[Stefan Edberg]], [[Roger Federer]] ou [[Ivan Lendl]] et le tournoi de simple filles par [[Martina Hingis]] ou [[Amélie Mauresmo]].
+
+Le tournoi de Wimbledon organise deux compétitions de [[tennis en fauteuil roulant|tennis handisport]] en double messieurs et en double dames. Quatre équipes concourent dans chacun des deux tableaux qui durent trois jours<ref>{{Lien web|langue=en|url=http://www.itftennis.com/wheelchair/news/articles/wimbledon-doubles-entries-announced.aspx|titre=Wimbledon Doubles entries announced|éditeur=ITF.com|date=12 juin 2012|consulté le=18 juin 2012}}.</ref>. Avec les trois autres grands chelems, le tournoi de Wimbledon est le plus important tournoi de double handisport de l'année<ref>{{Lien web|langue=en|url=http://www.itftennis.com/wheelchair/tournaments/circuit-info.aspx|titre=Circuit Info|éditeur=ITF Tennis - Wheelchair|consulté le=18 juin 2012}}.</ref>. Toutefois, il n'existe aucune compétition de simple handisport à la différence de l'Open d'Australie, de Roland-Garros et de l'US Open. En effet, la surface en gazon rend les déplacements en fauteuil roulant plus compliqués<ref>{{Lien web|langue=en|auteur=Eben Harrell|url=http://newsfeed.time.com/2011/07/01/esther-vergeer-hits-wimbledon-meet-the-worlds-most-dominant-athlete/|titre=Esther Vergeer Hits Wimbledon: Meet the World’s Most Dominant Athlete|éditeur=Newsfeed|date=1 juillet 2011|consulté le=3 janvier 2013}}.</ref>.
+
+Enfin, il existe trois compétitions de double seniors ou ''{{langue|en|Invitational Doubles}}'' auxquelles participent d'anciens grands joueurs à la retraite. Chez les hommes, il existe deux catégories, celle des joueurs de plus de 35 et celle des joueurs de plus de 45 ans. Chez les femmes, seule la catégorie des plus 35 ans existe. Les participants à ces tournois sont en général d'anciens vainqueurs en grand chelem en simple ou en double. D'anciens joueurs britanniques participent aussi à ces tournois même si leur palmarès n'est pas équivalent à celui des autres participants. Pour les trois tableaux, le format est le même. Huit équipes sont invitées et sont réparties en deux groupes de quatre (on parle de [[Lexique du tennis#R|round robin]]). Les deux vainqueurs de chaque poule se rencontrent en finale. Les matchs se jouent au meilleur des trois manches. En cas de manche décisive, un [[jeu décisif|super tie break]] est joué<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/scores/draws/od/index.html|titre=Invitational Doubles|éditeur=Site officiel de Wimbledon|consulté le=3 janvier 2013}}.</ref>. Du fait que ces compétitions n'ont qu'un enjeu limité, les rencontres s'apparentent parfois à des matchs exhibition où les joueurs n'hésitent pas à faire différentes fantaisies<ref>{{Lien web|langue=en|auteur=Barney Ronay|url=http://www.guardian.co.uk/sport/2011/jun/29/wimbledon-2011-martina-navratilova-veterans|titre=Wimbledon 2011: Martina Navratilova provides essential link to the past|éditeur=The Guardian|date=29 juin 2011|consulté le=3 janvier 2013}}.</ref>.
+
+=== Courts et surface ===
+==== Surface ====
+[[Fichier:Wimbledon Court 1.jpg|thumb|alt=Vue d'ensemble du terrain du Court numéro un|Le gazon de Wimbledon a été l'objet d'une modification de sa composition en [[2001]] qui a entraîné un changement sensible de ses caractéristiques et du jeu pratiqué.]]
+
+Le tournoi de Wimbledon se joue depuis sa création sur [[Surfaces de jeu au tennis#Gazon|gazon]], la première surface utilisée en tennis. Depuis que l'[[US Open de tennis|US Open]] a abandonné cette surface en [[1974]] et que l'[[Open d'Australie]] a fait de même en [[1988]], Wimbledon est le seul grand chelem à se jouer sur cette surface. Toutefois, si le gazon a toujours été utilisé, sa composition a changé en {{date|septembre 2000}} avec l'adoption d'un gazon composé à 100 % de ''{{langue|en|[[Ray-grass anglais|Perennial Rye Grass]]}}'' (ou ray-grass vivace). Avant cette date, le gazon de Wimbledon était composé à 70 % de ''{{langue|en|Rye Grass}}'' et à 30 % de ''{{langue|en|[[Festuca rubra|Creeping Red Fescue]]}}'' (ou fétuque rouge traçante)<ref name="GC">{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/behind_the_scenes/201205091336574386704.html|titre=Grass Courts|éditeur=Site officiel de Wimbledon|consulté le=25 mai 2012}}.</ref>. De fait, le gazon londonien est actuellement plus compact, plus résistant et plus sensible aux effets. L'une des caractéristiques du ''{{langue|en|Perennial Rye Grass}}'' étant de maintenir des conditions sèches et de rendre le sol plus dur<ref>{{Lien web|auteur=Laurent Trupiano|url=http://www.welovetennis.fr/wimbledon/12786-un-gazon-qui-a-vraiment-change|titre=Un gazon qui a vraiment changé|éditeur=Welovetennis|date=23 juin 2009|consulté le=4 juin 2012}}.</ref>. Avant, cette surface était réputée pour sa rapidité et ses rebonds bas du fait de la mollesse du sol, ce qui la plaçait à l'opposé des caractéristiques de la [[terre battue]], qui sont la lenteur et la hauteur des rebonds particulièrement sensibles aux effets [[Tennis#Le lift|liftés]]. Actuellement, le gazon est plus lent et le rebond plus haut<ref name="NYT">{{Lien web|langue=en|auteur=John Martin|url=https://www.nytimes.com/2010/07/04/sports/tennis/04grass.html|titre=At Wimbledon, Grass is green but slower|éditeur=New York Times|date=3 juillet 2010|consulté le=25 mai 2012}}.</ref>. Ainsi, là où le gazon a toujours été le lieu d'expression par excellence des joueurs offensifs et notamment des serveurs-volleyeurs (stratégie consistant à monter immédiatement au filet après le service), le jeu pratiqué aujourd'hui à Wimbledon est plus proche des conditions de jeu classiques, avec notamment la prédominance des échanges du fond de court. Le service-volée a pour sa part presque disparu et la finale de 2003 est à ce jour la dernière à avoir opposé deux spécialistes de cette stratégie<ref name="RDS"/>{{,}}<ref group="Note">Le vainqueur de l'édition 2003, Roger Federer, se tourne par la suite vers une stratégie privilégiant les échanges de fond de court.</ref>. Depuis [[1995]], le gazon est coupé à une hauteur de huit millimètres<ref name="GC"/>.
+
+[[Fichier:Wimbledon AELTC centre court 2009 - geograph.org.uk - 1375619.jpg|thumb|gauche|alt=Vue d'ensemble du Court Central et du toit en position ouverte servant éventuellement à couvrir le terrain|Le Court Central dispose d'un toit amovible depuis 2009.]]
+
+Selon les organisateurs, ce changement a pour objet d'améliorer la résistance du gazon, pour éviter que celui-ci ne soit en trop mauvais état à la fin du tournoi du fait de la généralisation des grands gabarits et de réduire les faux rebonds<ref name="RDS">{{Lien web|url=http://www.rds.ca/wimbledon/chroniques/182146.html|titre=Lent comme... le gazon de Wimbledon|éditeur=RDS.ca|date=27 juin 2005|consulté le=25 mai 2012}}.</ref>{{,}}<ref name="NYT"/>. Toutefois, cette modification s'inscrit aussi dans une volonté d'uniformiser les conditions de jeu, en procédant notamment à un ralentissement de la surface<ref>{{Lien web|auteur=Yannick Cochennec|url=http://www.slate.fr/story/23359/wimbledon-une-herbe-qui-rend-moins-speed|titre=À Wimbledon, une herbe qui rend moins speed|éditeur=Slate|date=21 juin 2010|consulté le=4 juin 2012}}.</ref>. Ce changement est en partie expliqué par la volonté de réduire la domination des grands serveurs devenue de plus en plus importante du fait de l'évolution du matériel permettant de servir bien plus fort<ref>{{Lien web|langue=en|auteur=Mark Hodgkinson|url=http://www.thetennisspace.com/on-court/wimbledon-groundsman-its-a-myth-that-the-grass-is-slower/|titre=It's a myth that the grass is slower|éditeur=The Tennis Space|date=20 juin 2012|consulté le=20 juin 2012}}.</ref>. Si certains joueurs comme [[Lleyton Hewitt]]<ref name="RDS"/> relativisent ce ralentissement, d'autres joueurs au tempérament plus offensif l'ont fustigé. [[Tim Henman]] indique dès 2002, {{citation|Je suis bien sur du gazon et pourtant c’est le court le plus lent sur lequel j’ai joué cette année}}. En [[2011]], [[Andy Murray]] a confirmé cette observation en mettant l'accent sur l'importance des conditions météo : {{citation|Beaucoup de joueurs qui n'étaient pas performants sur gazon il y a quatre ou cinq ans jouent bien mieux, maintenant. Il y a beaucoup plus de longs échanges et les joueurs de fond de court ont plus de chances de créer la surprise. Surtout si le temps est à la pluie. Quand il fait froid, ces courts sont parmi les plus lents de l'année. Sans exagération aucune}}<ref>{{Lien web|auteur=Rémi Cap-Vert|url=http://www.welovetennis.fr/wimbledon/36734-murray-les-courts-sont-lents|titre=Murray : « Les courts sont lents »|éditeur=welovetennis|date=20 juin 2011|consulté le=25 mai 2012}}.</ref>. Pour sa part, [[Roger Federer]] fait le constat suivant : {{citation|L’année où j’ai joué ici contre Sampras, je volleyais sur 80 % de mes premières balles et 50 % des secondes. Et je me souviens d’avoir parlé de ça un jour avec Wayne Ferreira (mon partenaire de double cette année-là). Il montait alors au filet sur toutes ses premières balles et 50 % de ses deuxièmes alors qu’à la fin de sa carrière, il ne le faisait plus du tout sur ses deuxièmes balles et seulement sur la moitié de ses premières}}<ref>{{Lien web|auteur=Isabelle Musy|url=http://www.letemps.ch/Facet/print/Uuid/3b06bbec-83c0-11df-ae59-bd561b9deaf4/La_lente_%C3%A9volution_du_gazon|titre=La lente évolution du gazon|éditeur=Le Temps|date=30 juin 2010|consulté le=25 mai 2012|brisé le = 2024-02-14}}.</ref>. Enfin, Eddie Seaward, le directeur de l'entretien des courts à Wimbledon conteste le ralentissement. Selon lui, la seule différence réside dans la hauteur du rebond plus haut du fait de la dureté plus grande du sol<ref>{{Lien web|auteur=Pauline Dahlem|url=http://www.welovetennis.fr/wimbledon/51137-le-gazon-n-est-pas-plus-lent|titre=Le gazon n'est pas plus lent !|éditeur=Welovetennis|date=20 juin 2012|consulté le=4 janvier 2013}}.</ref>. Au-delà de ce simple changement figure aussi l'évolution plus globale du tennis vers un jeu moins porté vers la volée mais aussi, une plus grande facilité à tirer des [[Lexique du tennis#P|passing-shots]] grâce aux cordages modernes. Selon [[Michael Stich]], c'est avant tout cette prédilection pour le jeu de fond de court qui explique le déclin du service-volée<ref>{{Lien web|auteur=Myrtille Rambion|url=http://www.liberation.fr/sports/0101576778-il-y-a-de-l-eau-dans-le-gazon|titre=Il y a de l'eau dans le gazon|date=29 juin 2009|brisé le = 2024-02-14}}.</ref>. Enfin, l'adoption de balles plus lourdes (donc plus lentes) a aussi été mise en exergue<ref>{{Lien web|auteur=Nicolas Cerbelle|url=http://www.lefigaro.fr/tennis/2009/06/24/02004-20090624ARTSPO00476-un-gazon-qui-fait-parler.php|titre=Un gazon qui fait parler|éditeur=Le Figaro|date=24 juin 2009|consulté le=25 mai 2012}}.</ref>.
+
+==== Courts ====
+[[Fichier:Court 1.jpg|thumb|alt=Le Court numéro un|Le Court numéro un.]]
+[[Fichier:Court 15 Wimbledon.JPG|thumb|left|alt=Un des courts annexes de Wimbledon (sans tribunes)|Le court numéro 15, l'un des nombreux courts annexes du tournoi.]]
+[[Fichier:The decision of In or Out with the help of Technology at Wimbledon.jpg|thumb|left|alt=Gros plan sur l'écran du radar Hawk-Eye montrant que la balle a légèrement touché la ligne|En 2007, Wimbledon adopte le système vidéo ''{{langue|en|[[Hawk-Eye]]}}''. Ici, la mention ''{{langue|en|IN}}'' signifie que la balle a touché la ligne et est donc valable.]]
+[[Fichier:Henman Hill rear.jpg|thumb|alt=Vue de l'écran géant accolé au Court numéro un et des spectateurs installés sur l'{{langue|en|Aorangi Terrace}}|L' ''{{langue|en|Aorangi Terrace}}'' aussi connue sous le nom d'''Henman Hill'' voire de ''Murray Mound''.]]
+
+Le tournoi de Wimbledon se dispute actuellement sur les terrains de l'''{{langue|en|All England Lawn Tennis Club}}'', à l'Ouest de [[Wimbledon Park]], abritant un complexe tennistique de {{nombre|19|courts}} sur gazon utilisés lors de la compétition ainsi que de {{nombre|22|autres}} courts sur gazon à [[Henman Hill]] (officciellement ''{{langue|en|Aorangi Terrace}}'') utilisés pour l'entraînement. Il s'étend sur une superficie totale de {{unité|17|hectares}}. Parmi ces {{nombre|19|courts}}, le Court central (ou [[Centre Court]]) et le Court {{numéro|1}} sont les deux plus importants du tournoi. Le premier construit en [[1922]] a une capacité de {{nombre|15000|places}} et dispose d'un toit rétractable depuis [[2009]]. Cela permet aux matchs principaux de continuer à se jouer en cas d'intempéries ou du manque de lumière. Ainsi, les matchs peuvent continuer jusqu'à {{unité|23|heures}}, ce qui a parfois été critiqué car le tournoi de Wimbledon se distingue par l'absence de sessions de nuit<ref>{{Lien web|auteur=Myrtille Rambion|url=http://www.lexpress.fr/actualite/sport/tennis/wimbledon-le-toit-du-centre-court-pose-questions_1133405.html|titre=Wimbledon: le toit du Centre Court pose questions|éditeur=L'Express|date=2 juillet 2012|consulté le=4 janvier 2013}}.</ref>. Une autre controverse porte sur l'effet de la présence du toit lorsqu'il est déployé sur les conditions de jeu qui deviennent alors proches de celles d'un tournoi ''{{langue|en|indoor}}'' alors que le tournoi de Wimbledon est un tournoi ''{{langue|en|outdoor}}'' (c'est-à-dire se jouant en extérieur)<ref>{{Lien web|langue=en|auteur=Simon Briggs|url=http://www.dnaindia.com/sport/report_roger-federer-can-win-an-indoor-wimbledon-reckons-henman_1705455.|titre=Roger Federer can win an 'indoor' Wimbledon reckons Henman|date=22 juin 2012|consulté le=4 janvier 2013}}.</ref>{{,}}<ref>{{Lien web|langue=en|auteur=Peter Stanford|url=https://www.telegraph.co.uk/sport/tennis/wimbledon/9381145/Is-the-Centre-Court-roof-the-real-star-of-Wimbledon-2012.html|titre=Is the Centre Court roof the real star of Wimbledon 2012?|éditeur=The Telegraph|date=7 juillet 2012|consulté le=4 janvier 2013}}.</ref>. Malgré ces critiques, les organisateurs du tournoi ont annoncé en août 2018 la construction d'un toit rétractable sur le Court numéro un pour l'édition 2019, pour un montant de 71 millions de livres<ref>{{Lien web|url=http://www.welovetennis.fr/wimbledon/65350-wimbledon-se-couvre|auteur=Maxime Autechaud|titre=Wimbledon se couvre|éditeur=Welovetennis|date=23 avril 2013|consulté le=25 avril 2013}}.</ref>{{,}}<ref>[http://www.eurosport.fr/tennis/wimbledon/2017/wimbledon-finance-un-toit-pour-son-court-n.1_sto6289402/story.shtml Wimbledon finance un toit pour son Court n°1], ''Eurosport'', 15 août 2017</ref>.
+
+Le Court numéro un ouvert en [[1997]] possède une capacité de {{nombre|11429|places}}. Il a remplacé le précédent Court numéro un bâti en [[1928]] et qui disposait d'une capacité de {{nombre|7328|places}}. Parmi les courts secondaires, on peut mentionner le Court numéro deux ouvert en [[2009]] et qui peut accueillir {{nombre|4000|spectateurs}}. Il remplace l'ancien Court numéro deux qui devient alors le Court numéro trois. Il a été reconstruit pour l'édition 2011 et peut accueillir {{nombre|2000|personnes}}<ref>{{Lien web|url=http://www.welovetennis.fr/wimbledon/36469-un-show-court-tout-neuf-pour-2011|titre=Un show court tout neuf pour 2011|date=13 juin 2011|consulté le=5 janvier 2013}}.</ref>. L'ancien court numéro deux était connu sous l'appellation de {{citation|cimetière des champions}} en raison du grand nombre de favoris, d'outsiders ou d'anciens vainqueurs qui y ont été battus ([[Boris Becker]], [[Serena Williams]], [[John McEnroe]], [[Pete Sampras]], [[Martina Hingis]], [[Andre Agassi]] ou [[Venus Williams]])<ref name="BBC">{{Lien web|langue=en|url=http://news.bbc.co.uk/sport2/hi/tennis/4088464.stm|titre=Wimbledon 2006 Guide|éditeur=BBC|consulté le=28 mai 2012}}.</ref>. En tout, l'ensemble des courts peut accueillir {{nombre|38500|spectateurs}}<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/behind_the_scenes/index.html|titre=Behind the Scenes|éditeur=Site officiel de Wimbledon|consulté le=24 juin 2012}}.</ref>.
+
+Depuis l'[[Tournoi de Wimbledon 2007|édition 2007]], le court central et le court numéro un disposent du [[Hawk-Eye]], un système vidéo permettant de vérifier si la balle a ou non rebondi dans les limites du terrain. En 2015, les courts numéros 2, 3, 12 et 18 sont aussi équipés de ce système<ref name="FF">{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/atoz/faq_and_facts_and_figures.html|titre=Facts and Figures|éditeur=Site officiel de Wimbledon|consulté le=26 mars 2017}}.</ref>. Chaque joueur bénéficie de trois possibilités de faire appel au {{langue|en|Hawk-Eye}} par set (on parle de challenge). En cas de jeu décisif, chaque joueur se voit rajouter une possibilité supplémentaire d'y recourir.
+
+En plus des stades, le complexe recouvre aussi une petite butte (l'''{{langue|en|Aorangi Terrace}}'') permettant aux personnes n'ayant pas de tickets d'assister aux matchs diffusés sur un grand écran derrière le Court numéro un. Cette butte possède plusieurs surnoms en rapport avec les joueurs britanniques les plus susceptibles de remporter le tournoi. Ainsi, à l'époque où [[Tim Henman]] était le numéro un britannique, cette butte fut surnommée ''Henman Hill'' dans l'espoir qu'il remporte le tournoi. Depuis qu'il a pris sa retraite et qu'[[Andy Murray]] est devenu le nouveau numéro un britannique, ce lieu est parfois baptisé ''Murray's Mount''<ref name="BBC"/>. Le ''{{langue|en|Millenium Building}}'' construit en 2000 sert à entreposer le matériel des joueurs et des membres du club ainsi qu'à accueillir les journalistes comme centre de presse<ref>{{Lien web|langue=en|url=http://www.dailymail.co.uk/sport/tennis/article-1028413/The-wider-view-Wimbledon-youve-seen-before.html|titre=The wider view: Wimbledon as you've never seen it before {{!}} DailyMail on Facebook|éditeur=Daily Meal|date=22 juin 2008|consulté le=12 janvier 2013}}.</ref>{{,}}<ref name="BBC"/>.
+
+=== Officiels et ramasseurs ===
+[[Fichier:Ball girl.jpg|thumb|gauche|alt=Une ramasseuse de balles|Une ramasseuse de balles.]]
+
+==== Arbitres et officiels ====
+[[Fichier:No 3 Court (Wimbledon).jpg|thumb|alt=Deux arbitres posant devant le Court numéro trois|Les arbitres Carlos Ramos et Enique Molina sur le Court 3 en [[Tournoi de Wimbledon 2011|2011]].]]
+
+Les officiels officiant lors du tournoi sont autour de 360 ([[Lexique du tennis#A|arbitres de chaise, juges de ligne]] et officiels agissant en dehors des courts). Parmi eux, 270 sont des membres de l'''{{langue|en|Association of British Tennis Officials}}'' (Association des officiels de tennis britannique) et 60 sont des arbitres opérant sur le circuit international (ce chiffre comprend les six arbitres de chaise officiant sur les quatre tournois du Grand Chelem). Si chaque match est arbitré par un seul arbitre de chaise, le nombre de juges de ligne varie selon les courts. Ainsi, sur le Court Central et sur les Courts un, deux, trois et dix-huit, neuf juges de ligne sont présents tandis que sur les autres courts, ils sont seulement sept. Chaque court est couvert par deux équipes de juges de ligne se relayant toutes les {{unité|75|minutes}}<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/behind_the_scenes/201205091336567903897.html|titre=Umpires|éditeur=Site officiel de Wimbledon|consulté le=24 juin 2012}}.</ref>.
+
+Les juges de ligne disparaissent toutefois du tournoi, à partir de l'édition 2025<ref>{{Lien web |auteur=Timothée Thomas-Collignon |titre=« Une évolution inévitable » : pourquoi les juges de lignes ont-ils été supprimés à Wimbledon ? |url=https://www.lequipe.fr/Tennis/Actualites/-une-evolution-inevitable-pourquoi-les-juges-de-lignes-ont-ils-ete-supprimes-a-wimbledon/1572602 |date=24 juin 2025 |périodique=L'Équipe |consulté le=25 juillet 2026}}.</ref>.
+
+==== Ramasseurs de balles ====
+Depuis [[1946]], les ramasseurs de balles sont des volontaires issus de diverses écoles dont la liste évolue selon époques. Dans les années 1920 et 1930, ils venaient exclusivement de Shaftesbury Homes. Actuellement, les ramasseurs viennent de {{nombre|28|écoles}}. Les filles sont acceptées depuis [[1977]] et il existe des équipes mixtes depuis [[1980]]. Chaque équipe est composée de six ramasseurs. Quatre équipes officient sur le Court central et le Court numéro un, six officient sur les autres courts importants et les autres officient sur les courts annexes. L'âge moyen des ramasseurs est de quinze ans et ils sont sélectionnés en fonction de leur connaissance du tennis et de leurs aptitudes physiques. Pour chaque édition, ce sont {{nombre|250|ramasseurs}} qui sont sélectionnés parmi {{nombre|750|candidats}}. 160 de ces ramasseurs sont issus d'une sélection comprenant {{nombre|540|candidats}} venant des différentes écoles participantes. Les {{nombre|90|autres}} sont sélectionnés parmi {{nombre|160|ramasseurs}} ayant officié l'année précédente. Ils ont pour mission principale de ramasser les balles à chaque fois qu'un point est joué et de les transmettre au joueur en train de servir<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/about_aeltc/201205091336572473808.html|titre=Ball Boys & Girls|éditeur=Site officiel de Wimbledon|consulté le=24 juin 2012}}.</ref>.
+
+=== Trophées ===
+[[Fichier:Wimbledon trophies.jpg|thumb|alt=Les trophées de simple messieurs (une coupe) et de simple dames (un plateau d'argent)|Les trophées du simple dames (en haut) et du simple messieurs.]]
+
+Le trophée masculin actuel date de [[1887]]. Il remplace la ''{{langue|en|Challenge Cup}}'' (1884-1886) qui remplace elle-même la ''{{langue|en|Field Cup}}'' (1877-1883) qui sont toutes les deux devenues la propriété de [[William Renshaw]]. En effet, le joueur qui parvenait à remporter le tournoi à trois reprises devenait le détenteur de la coupe. Pour parer à toute nouvelle perte, l'organisation décide qu'aucun autre joueur ne peut devenir le propriétaire de la coupe, quel que soit son nombre de succès. Le trophée actuel mesure {{unité|47|centimètres}} de hauteur et {{unité|19|centimètres}} de diamètre. Les vainqueurs du tournoi reçoivent une réplique miniature de la coupe. Sur le trophée figure l'ensemble des noms des vainqueurs du tournoi depuis 1877 ainsi que la mention ''{{langue|en|The All England Lawn Tennis Club Single Handed Championship of the World}}''<ref name="Tr">{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/behind_the_scenes/201205091336568697615.html|titre=The Trophies|éditeur=Site officiel du tournoi|consulté le=26 mai 2012}}.</ref>. Le trophée est surmonté par un petit ananas en or dont la raison de l'inclusion reste un mystère<ref>{{Lien web|langue=en|url=https://edition.cnn.com/2011/SPORT/tennis/06/07/tennis.wimbledon.unusual.facts/index.html|titre=Nine things you didn't know about Wimbledon |auteur=Paul Gittings|en ligne le=21 juin 2011|consulté le=24 août 2012|site=[[Cable News Network|CNN]]}}.</ref>.
+
+Le trophée du simple dames, parfois connu sous le nom de ''{{langue|en|Rosewater Dish}}'' ou ''{{langue|en|Venus Rosewater Dish}}'', est un plateau d'argent récompensant la gagnante depuis 1886. Il est décoré de plusieurs scènes mythologiques. De 1949 à 2006, les vainqueurs reçoivent une réplique plus petite d'un diamètre de huit pouces. Depuis 2007, cette réplique a été agrandie et est maintenant d'un diamètre de 14 pouces<ref name="Tr"/>. Les vainqueurs des compétitions de double reçoivent chacun une coupe en argent. Celle du double dames existant depuis 1949 est connue sous le nom de ''{{langue|en|The Duchess of Kent Challenge Cup}}''. Les finalistes des différentes compétitions reçoivent un plateau en argent. Tous ces trophées sont remis par le duc de Kent<ref name="Tr"/>.
+
+=== Lutte contre le dopage ===
+Comme tous les autres tournois reconnus ou organisés par l'[[Fédération internationale de tennis|ITF]], le tournoi de Wimbledon est concerné par le TADP (''{{langue|en|Tennis Anti-Doping Programm}}'' ou Programme antidopage en tennis). Ce programme est chargé de mettre en œuvre les différents contrôles antidopage pendant et hors des tournois depuis [[1993]]<ref>{{Lien web|langue=en|url=http://www.itftennis.com/antidoping/about/index.asp|titre=The Tennis Anti-Doping Programm|éditeur=ITF Tennis - Anti-Doping|consulté le=24 juin 2012}}.</ref>. Les dernières statistiques rendues publiques font état de {{nombre|137|contrôles}} antidopage urinaires lors du [[tournoi de Wimbledon 2010]] dont 68 chez les hommes et chez les femmes et {{nombre|36|contrôles}} sanguins (19 chez les hommes et 17 chez les femmes). Avec {{nombre|173|contrôles}} en 2010, c'est le tournoi du Grand Chelem qui a fait l'objet du plus faible nombre de contrôles (177 à l'[[US Open de tennis 2010|US Open]], 185 aux [[Internationaux de France de tennis 2010|Internationaux de France]] et 189 à l'[[Open d'Australie 2010|Open d'Australie]])<ref>{{Lien web|langue=en|url=http://www.itftennis.com/shared/medialibrary/pdf/original/IO_56345_original.PDF|titre=2010 Testing Summary|éditeur=ITF Tennis - Anti-Doping|date=8 avril 2011|consulté le=24 juin 2012|brisé le = 2024-02-14}}.</ref>. En [[Tournoi de Wimbledon 2009|2009]], {{nombre|158|contrôles}} urinaires et {{nombre|33|contrôles}} sanguins avaient été effectués<ref>{{Lien web|langue=en|url=http://www.itftennis.com/shared/medialibrary/pdf/original/IO_47085_original.PDF|titre=2009 Testing Statistics Summary|éditeur=ITF Tennis - Anti-Doping|date=22 février 2010|consulté le=24 juin 2012|brisé le = 2024-02-14}}.</ref> (97 chez les hommes et 94 chez les femmes) et en [[Tournoi de Wimbledon 2008|2008]], 179 contrôles urinaires et 34 contrôles sanguins avaient été conduits (113 chez les hommes et 100 chez les femmes)<ref>{{Lien web|langue=en|url=http://www.itftennis.com/shared/medialibrary/pdf/original/IO_39959_original.PDF|titre=2008 Testing Statistics Summary|éditeur=ITF Tennis - Anti-Doping|date=13 mars 2009|consulté le=24 juin 2012|brisé le = 2024-02-14}}.</ref>. En [[2007]], l'ancienne gagnante du tournoi [[Martina Hingis]] a fait l'objet d'un contrôle positif à la [[cocaïne]] durant le tournoi<ref>{{Lien web|url=http://www.liberation.fr/actualite/010117930-martina-hingis-positive-a-la-cocaine|titre=Martina Hingis positive à la cocaïne|éditeur=Libération|date=1 novembre 2007|consulté le=24 juin 2012|brisé le = 2024-02-14}}.</ref>{{,}}<ref>{{Lien web|langue=en|auteur=Mark Hodgkinson|url=https://www.telegraph.co.uk/sport/othersports/drugsinsport/2324752/Martina-Hingis-admits-to-positive-cocaine-test.html|titre=Martina Hingis admits to positive cocaine test|éditeur=The Telegraph|date=2 novembre 2007|consulté le=24 juin 2012}}.</ref>.
+
+== Aspects économiques ==
+=== Spectateurs et affluence ===
+[[Fichier:Wimbledon Queue Bridge.JPG|thumb|Le pont utilisé lors de la « queue » situé juste avant le lieu où sont vendues les places.]]
+
+Le tournoi de Wimbledon est le seul tournoi du Grand Chelem à offrir des places pour les matchs du jour même sur le Court Central, le Court Numéro un et le Court numéro deux. Pour chaque court, ce sont {{nombre|500|places}} qui sont disponibles le jour même. Cette règle ne s'applique pas pour les matchs ayant lieu sur le Court Central lors des quatre derniers jours du tournoi pour lesquels toutes les places sont vendues préalablement. Du fait du nombre relativement faible de places disponibles et de la demande très importante, il est souvent nécessaire de faire la queue dès la veille et des espaces sont donc disponibles pour les personnes campant sur le site de Wimbledon. Cette pratique étant souvent considérée comme une des nombreuses traditions propres à Wimbledon<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/tickets/201205091336565749973.html|titre=About the Queue|éditeur=Site officiel de Wimbledon|consulté le=26 juin 2012}}.</ref>.
+
+L'année [[1932]] est la première lors de laquelle l'affluence est comptabilisée. En tout, ce sont {{nombre|219000|personnes}} qui assistent à cette édition. La barre des {{formatnum:250000}} est dépassée en [[1949]] et celle des {{formatnum:300000}} est atteinte en [[1967]]<ref name="ATC10">{{Lien web|langue=en|url=http://aeltc2010.wimbledon.org/en_GB/about/history/attendance.html|titre=Attendance|éditeur=AELTC2010|consulté le=25 juin 2012}}.</ref>. Le record d'affluence pour un tournoi est de {{nombre|511043|spectateurs}} lors de l'[[Tournoi de Wimbledon 2009|édition 2009]]. Pour une seule journée, le record d'affluence est {{formatnum:45955}} personnes le premier jeudi de l'édition 2009<ref>{{Lien web|langue=en|url=http://www.sportsbusinessdaily.com/Daily/Issues/2009/06/Issue-192/Events-Attractions/Wimbledon-Posts-Attendance-Record-For-Each-Of-First-Two-Days.aspx|titre=Wimbledon Posts Attendance Record For Each Of First Two Days|éditeur=Sports Business|date=24 juin 2009|consulté le=26 juin 2012|brisé le = 2024-02-14}}.</ref>. Le tableau ci-dessous renseigne sur les affluences lors des éditions de ces dernières années :
+
+{| class="wikitable alternance"
+|+
+|-
+! scope=col | Année
+! scope=col | Affluence<ref name="FF"/>{{,}}<ref name="ATC10"/>
+|-
+! scope=row | [[2019]]
+| {{formatnum:500397}}
+|-
+! scope=row | [[2018]]
+| {{formatnum:473169}}
+|-
+! scope=row | [[2017]]
+| {{formatnum:473372}}
+|-
+! scope=row | [[2016]]
+| {{formatnum:493928}}
+|-
+! scope=row | [[2015]]
+| -
+|-
+! scope=row | [[2014]]
+| {{formatnum:491084}}
+|-
+! scope=row | [[2013]]
+| -
+|-
+! scope=row | [[2012]]
+| {{formatnum:484805}}
+|-
+! scope=row | [[2011]]
+| {{formatnum:494761}}
+|-
+! scope=row | [[2010]]
+| {{formatnum:489946}}
+|-
+! scope=row | [[2009]]
+| {{formatnum:511043}}
+|-
+! scope=row | [[2008]]
+| {{formatnum:475812}}
+|-
+! scope=row | [[2007]]
+| -
+|-
+! scope=row | [[2006]]
+| {{formatnum:447126}}
+|-
+! scope=row | [[2005]]
+| {{formatnum:467191}}
+|-
+! scope=row | [[2004]]
+| {{formatnum:451208}}
+|}
+
+=== Couverture télévisuelle ===
+Depuis [[1937]], la [[British Broadcasting Corporation|BBC]] retransmet le tournoi au Royaume-Uni. La retransmission est partagée entre deux chaînes, [[BBC One]] et [[BBC Two]]. La compagnie bénéficie des droits de diffusion du tournoi jusqu'en [[2014]]. Le {{date|1 juillet 1967}}, le sixième jour de l'édition du tournoi fait l'objet de la première diffusion en couleur de l'histoire de la télévision britannique<ref>{{Lien web|langue=en|url=http://www.tvhistory.btinternet.co.uk/html/first_colour_programme.html|titre=Britain's First Colour Television Programme|éditeur=British TV History|consulté le=26 juin 2012}}.</ref>. À l'époque de la [[British Sky Broadcasting|British Satellite Broadcasting]], la chaîne sportive de ce groupe fournissait une couverture télévisuelle supplémentaire à ses abonnés. L'un des commentateurs les plus connus de la chaîne était [[Dan Maskell]] surnommé {{citation|la voix du tennis}} jusqu'à sa retraite en [[1991]]<ref>{{Lien web|langue=en|auteur=Bill Edwards|url=https://www.independent.co.uk/news/people/obituary-dan-maskell-1562915.html|titre=Obituary - Dan Maskell|éditeur=The Independent|date=11 décembre 1992|consulté le=5 janvier 2013}}.</ref>. Parmi les autres commentateurs réguliers figurent les anciens joueurs britanniques [[Greg Rusedski]], [[Andrew Castle]], [[Tim Henman]] et [[Annabel Croft]] ainsi que d'autres joueurs invités comme [[Boris Becker]], [[John McEnroe]], [[Jimmy Connors]] et [[Tracy Austin]]. Les finales du tournoi ont l'obligation d'être retransmises en direct et dans leur totalité sur des chaînes de [[télévision hertzienne]] (BBC, [[ITV (réseau de télévision)|ITV]], [[Channel 4]] ou [[Channel 5 (chaîne de télévision)|Channel 5]]). Le reste du tournoi doit être retransmis par des stations terrestres.
+
+Au total, neuf courts disposent d'une couverture télévisuelle (sept lors de la deuxième semaine), une centaine de caméras sont utilisées sur les différents terrains et près de 120 commentateurs peuvent prendre place au sen du Court Central<ref name="TV">{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/about_aeltc/201205091336585368259.html|titre=Television|éditeur=Site officiel de Wimbledon|consulté le=6 janvier 2013}}.</ref>. En 2010, {{unité|10702|heures}} ont été diffusées à travers {{nombre|187|pays}}. Le Royaume-Uni est de loin le premier marché avec 204 millions de téléspectateurs cumulés sur l'ensemble du tournoi devant les États-Unis avec 123 millions de téléspectateurs. Aux États-Unis, ce sont les chaînes [[National Broadcasting Company|NBC]] pour la télévision terrestre et [[ESPN]] pour la télévision par satellite qui se chargent de la diffusion du tournoi<ref name="TV"/>. En [[France]], c'est la chaîne [[Canal+]] qui détient les droits de diffusion jusqu'en [[2013]]<ref>{{Lien web|url=http://www.sport-tv.org/article-droits-tv-wimbledon-sur-les-antennes-du-groupe-canal-jusqu-en-2013-53486550.html|titre=Wimbledon sur les antennes de Canal+ jusqu'en 2013|éditeur=Sport-TV|consulté le=6 janvier 2013}}.</ref>. En 2011, Canal+ a battu plusieurs records pour un match de tennis dont celui de la meilleure audience pour un match du Grand Chelem lors de la finale du tournoi masculin suivie par {{nombre|750000|abonnés}} en moyenne et celui de la meilleure audience moyenne pour une édition du tournoi de Wimbledon<ref>{{Lien web|url=http://enpleinelucarne.net/2011/07/record-d%E2%80%99audience-6248|titre=Record d'audience pour la finale de Wimbledon sur Canal+|éditeur=En pleine lucarne|consulté le=26 juin 2012}}.</ref>. Mais de 2014 à 2018, [[BeIN Sport]] diffusera les matchs de [[Masters 1000]] ainsi que Wimbledon<ref name="ContratBeIn">{{Lien web|url=https://www.lequipe.fr/Medias/Actualites/Wimbledon-sur-bein-sport-jusqu-en-2018/415310|titre=Wimbledon sur beIN Sport jusqu'en 2018|éditeur=L'Equipe|date=7 novembre 2013|consulté le=29 mai 2014}}.</ref>.
+Les audiences globales cumulées de l'édition 2012 sont estimées à 869 millions de personnes pour un total de {{unité|15388|heures}} de diffusion à travers le monde<ref>{{Lien web|langue=en|url=http://issuu.com/re-media/docs/wimbledon-highlights|titre=Wimbledon Highlights|éditeur=Issuu|date=12 septembre 2012|consulté le=6 janvier 2013}}.</ref>. Lors de la finale de l'édition 2012, le pic d'audience au Royaume-Uni est de 16,9 millions de téléspectateurs juste derrière le record qui est de 17,3 millions de téléspectateurs lors de la finale de 1980 opposant John McEnroe à Björn Borg<ref name="TV"/>.
+
+=== Radio Wimbledon ===
+Cette station de [[radiodiffusion|radio]] créée en [[1992]] commence à émettre le vendredi qui précède le début du tournoi. Elle opère sous une ''{{langue|en|Restricted Service License}}'' (une licence concernant uniquement les stations de radio et de télé couvrant un événement particulier). Les présentateurs principaux sont Sam Lloyd et Ali Barton. Ils se relaient tous les quatre heures jusqu'au dernier match de la journée. Parmi les reporters et les consultants figurent Gigi Salmon, Nick Lestor, Rupert Bell, Bigel Bidmead, Guy Swindells, Lucie Ahl et Helen Whitaker. Cette station fournit plusieurs interviews des différents joueurs ainsi qu'une couverture des différents matchs en cours. Depuis quelques années, Radio Wimbledon a acquis une deuxième fréquence consacrée uniquement aux matchs du Court Central. Enfin, en 2007, une troisième fréquence assure la couverture du Court Numéro un. Radio Wimbledon est disponible dans une aire de cinq miles (huit kilomètres) autour du All-England Club ainsi que sur le site internet de Wimbledon<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/interactive/index.html|titre=Radio Wimbledon|éditeur=Site officiel de Wimbledon|consulté le=23 juin 2012}}.</ref>.
+
+=== Sponsors et partenaires ===
+Si le tournoi de Wimbledon se distingue par l'absence presque totale de toute marque publicitaire au sein des courts, elle possède plusieurs partenaires commerciaux. L'un des principaux est [[Slazenger]] qui fournit les balles du tournoi depuis [[1902]]<ref>{{Lien web|langue=en|url=http://www.slazenger.com/tennis/|titre=Slazenger - Tennis|éditeur=Site officiel de Slazenger|consulté le=16 juin 2012}}.</ref>. C'est à l'heure actuelle le plus ancien partenariat commercial dans le domaine du sport<ref>{{Lien web|langue=en|url=http://aeltc2010.wimbledon.org/en_GB/about/officialsuppliers/slazenger.html|titre=Slazenger - Official Ball|éditeur=AELTC 2010|consulté le=16 juin 2012}}.</ref>. En 2010, c'est un total de {{nombre|52000|balles}} qui ont été utilisées durant toute la durée du tournoi. Depuis [[1986]], les balles sont de couleur jaune<ref>{{Lien web|langue=en|url=http://news.bbc.co.uk/sportacademy/hi/sa/tennis/features/newsid_2997000/2997504.stm|titre=Having a ball at Wimbledon|éditeur=BBC Ball Academy|consulté le=5 janvier 2013}}.</ref>. [[Rolex]] est pour sa part le chronométreur officiel du tournoi depuis [[1978]]. En [[2012]], le partenariat a été reconduit pour dix années supplémentaires<ref>{{Lien web|auteur=Michel Jeannot|url=http://www.wthejournal.com/news/view/rolex-dix-ans-supplementaires-a-wimbledon|titre=Rolex - Dix ans supplémentaires à Wimbledon|éditeur=W The Journal|date=11 mai 2012|consulté le=16 juin 2012}}.</ref>. Le tournoi est aussi associé à [[International Business Machines|IBM]] qui se charge notamment de la mesure de la vitesse des services et de fournir les statistiques sur les différents matchs joués tout au long de la compétition. Les autres partenaires du tournoi sont [[Évian (eau minérale)|Évian]] (depuis 2008), [[Hertz]] (depuis [[1995]]), [[G4S]] (qui se charge de la sécurité du tournoi depuis [[1998]]), [[Lanson International]] (depuis [[2001]]), [[Ralph Lauren]] (qui conçoit les tenues des officiels, arbitres et ramasseurs de balles depuis [[2006]]), [[Lavazza]] (depuis [[2011]]), [[Jacob's Creek]] (depuis 2011), [[HSBC]] (depuis 2008), [[Sony]] (depuis 2011) et [[Robinsons]] (depuis [[1935]])<ref>{{Lien web|langue=en|url=http://www.wimbledon.com/en_GB/suppliers/index.html|titre=Official Suppliers|éditeur=Site officiel de Wimbledon|consulté le=17 juin 2012}}.</ref>. À partir de 2012, un espace destiné aux partenaires du tournoi est ouvert à proximité de l'endroit où les gens font la queue pour obtenir d'éventuels tickets. C'est la première fois que les sponsors peuvent s'afficher dans l'enceinte du tournoi<ref name="Sponsor"/>.
+
+== Palmarès ==
+* [[Palmarès du simple dames du tournoi de Wimbledon|Simple dames]] - ''{{Lien|fr=Venus Rosewater Dish|lang=en}}''.
+* [[Palmarès du simple messieurs du tournoi de Wimbledon|Simple messieurs]] - ''[[Wimbledon Trophy]]''.
+* [[Palmarès du double dames du tournoi de Wimbledon|Double dames]]
+* [[Palmarès du double messieurs du tournoi de Wimbledon|Double messieurs]]
+* [[Palmarès du double mixte du tournoi de Wimbledon|Double mixte]]
+
+<gallery style="font-size:100%;" widths="240" heights="175">
+Fichier:Venus Rosewater Dish (Wimbledon - Women's single).svg|<center>Représentation du ''Venus Rosewater Dish''.</center>
+Fichier:Wimbledon Trophy (Wimbledon - Gentlemen's single).svg|<center>Représentation du ''Wimbledon Trophy''.</center>
+</gallery>
+
+== Titres par nations (simple messieurs) ==
+{{col-début}}
+{{col-2}}
+=== Avant l'Ère Open ===
+{| class="sortable wikitable" style="font-size: 85%"
+|-bgcolor="#CCCCCC"
+|'''Pays'''
+|'''Titres'''
+|'''Premier'''
+|'''Dernier'''
+|-bgcolor="gold"
+|{{Royaume-Uni}}
+|align="center" |'''35'''
+|[[1877]]
+|[[1936]]
+|-bgcolor="#EFEFEF"
+|{{États-Unis}}
+|align="center" |'''18'''
+|[[1920]]
+|[[1963]]
+|-
+|{{Australie}}
+|align="center" | '''15'''
+|[[1907]]
+|[[1967]]
+|-bgcolor="#EFEFEF"
+|{{France}}
+|align="center" | '''7'''
+|[[1924]]
+|[[1946]]
+|-
+|{{Nouvelle-Zélande}}
+|align="center" | '''4'''
+|[[1910]]
+|[[1913]]
+|-bgcolor="#EFEFEF"
+|{{Égypte}}
+|align="center" | '''1'''
+|[[1954]]
+|[[1954]]
+|-
+|{{Espagne}}
+|align="center" | '''1'''
+|[[1966]]
+|[[1966]]
+|}
+{{col-2}}
+
+=== Ère Open ===
+{| class="sortable wikitable" style="font-size: 90%"
+|-bgcolor="#CCCCCC"
+|'''Pays'''
+|'''Titres'''
+|'''Premier'''
+|'''Dernier'''
+|-bgcolor="gold"
+|{{États-Unis}}
+|align="center" |'''15'''
+|[[1972]]
+|[[2000]]
+|-bgcolor="#EFEFEF"
+|{{Suisse}}
+|align="center" | '''8'''
+|[[2003]]
+|[[2017]]
+|-
+|{{Suède}}
+|align="center" |'''7'''
+|[[1976]]
+|[[1990]]
+|-bgcolor="#EFEFEF"
+|{{Serbie}}
+|align="center" | '''7'''
+|[[2011]]
+|[[2022]]
+|-
+|-bgcolor="#EFEFEF"
+|{{Australie}}
+|align="center" | '''6'''
+|[[1968]]
+|[[2002]]
+|-
+|{{Allemagne}}
+|align="center" | '''4'''
+| [[1985]]
+| [[1991]]
+|-
+|{{Espagne}}
+|align="center" | '''4'''
+|[[2008]]
+|[[2024]]
+|-bgcolor="#EFEFEF"
+|{{Royaume-Uni}}
+|align="center" |'''2'''
+|[[2013]]
+|[[2016]]
+|-
+|{{Italie}}
+|align="center" | '''2'''
+|[[2025]]
+|[[2026]]
+|-
+|{{Tchécoslovaquie}}
+|align="center" | '''1'''
+|[[1973]]
+|[[1973]]
+|-bgcolor="#EFEFEF"
+|{{Pays-Bas}}
+|align="center" | '''1'''
+|[[1996]]
+|[[1996]]
+|-
+|{{Croatie}}
+|align="center" | '''1'''
+|[[2001]]
+|[[2001]]
+|}
+{{Col-fin}}
+
+== Titres par nations (simple dames) ==
+{{col-début}}
+{{col-2}}
+
+=== Avant l'Ère Open ===
+{| class="sortable wikitable" style="font-size: 90%"
+|-bgcolor="#CCCCCC"
+|'''Pays'''
+|'''Titres'''
+|'''Premier'''
+|'''Dernier'''
+|- bgcolor="gold"
+|{{Royaume-Uni}}
+|align="center" |'''34'''
+|[[1884]]
+|[[1961]]
+|-bgcolor="#EFEFEF"
+|{{États-Unis}}
+|align="center" |'''28'''
+|[[1905]]
+|[[1967]]
+|-
+|{{France}}
+|align="center" | '''6'''
+|[[1919]]
+|[[1925]]
+|-bgcolor="#EFEFEF"
+|{{Brésil}}
+|align="center" | '''3'''
+|[[1959]]
+|[[1964]]
+|-
+|{{Australie}}
+|align="center" | '''2'''
+| [[1963]]
+| [[1965]]
+|-bgcolor="#EFEFEF"
+|{{Allemagne}}
+|align="center" | '''1'''
+|[[1931]]
+|[[1931]]
+|}
+{{col-2}}
+
+=== Ère Open ===
+{| class="sortable wikitable" style="font-size: 90%"
+|-bgcolor="#CCCCCC"
+|'''Pays'''
+|'''Titres'''
+|'''Premier'''
+|'''Dernier'''
+|-bgcolor="gold"
+|{{États-Unis}}
+|align="center" |'''27'''
+|[[1968]]
+|[[2016]]
+|-bgcolor="#EFEFEF"
+|{{Allemagne}}
+|align="center" |'''8'''
+|[[1988]]
+|[[2018]]
+|-
+|{{République tchèque}}
+|align="center" | '''6'''
+|[[1998]]
+|[[2026]]
+|-bgcolor="#EFEFEF"
+|{{Australie}}
+|align="center" | '''4'''
+|[[1970]]
+|[[2021]]
+|-
+|{{Royaume-Uni}}
+|align="center" |'''2'''
+|[[1969]]
+|[[1977]]
+|-bgcolor="#EFEFEF"
+|{{Tchécoslovaquie}}
+|align="center" | '''2'''
+|[[1978]]
+|[[1979]]
+|-
+|{{Espagne}}
+|align="center" | '''2'''
+| [[1994]]
+| [[2017]]
+|-bgcolor="#EFEFEF"
+|{{France}}
+|align="center" | '''2'''
+|[[2006]]
+|[[2013]]
+|-
+|{{Suisse}}
+|align="center" | '''1'''
+|[[1997]]
+|[[1997]]
+|-bgcolor="#EFEFEF"
+|{{Roumanie}}
+|align="center" | '''1'''
+|[[2019]]
+|[[2019]]
+|-
+|{{Russie}}
+|align="center" | '''1'''
+|[[2004]]
+|[[2004]]
+|-
+|{{Kazakhstan}}
+|align="center" | '''1'''
+|[[2022]]
+|[[2022]]
+|}
+{{Col-fin}}
+
+== Records ==
+
+{| class="wikitable" style="font-size: 85%"
+|-
+! scope="col"|Record<ref>{{harvsp|Collins|2010|p=442-451}}</ref>
+! scope="col"|Période
+! scope="col"|Joueur(s)
+! scope="col"|Nombre
+! scope="col"|Années victorieuses
+|-
+|colspan=5 align="center"|'''''Messieurs depuis 1877'''''
+|-
+| rowspan="2" |Plus grand nombre de titres en simple messieurs
+| Avant 1968
+| {{GBR-d}} [[William Renshaw]]<ref name="RSF">{{Lien web|url=http://www.eurosport.fr/tennis/wimbledon/2012/federer-encore-un-record_sto3339434/story.shtml|titre=Federer plus fort que Sampras|éditeur=Eurosport|date=7 juillet 2012|consulté le=5 janvier 2013}}.</ref>
+| 7
+| 1881-1886, 1889
+|-
+|Après 1968
+| {{SUI-d}} [[Roger Federer]]<ref name="RSF" />
+| 8
+| 2003-2007, 2009, 2012, 2017
+|-n
+ 
+
+|rowspan=3|Plus grand nombre de titres consécutifs en simple messieurs
+| Avant 1968
+| {{GBR-d}} [[William Renshaw]]<ref group="Note">Du temps de Renshaw, le tenant du titre ne jouait que la finale, cette politique fut abolie en 1922.</ref>
+| 6
+| 1881-1886
+|-
+|rowspan=2| Après 1968
+| {{SWE-d}} [[Björn Borg]]
+| 5
+| 1976-1980
+|-
+| {{SUI-d}} [[Roger Federer]]
+| 5
+| 2003-2007
+|-
+|rowspan=2|Plus grand nombre de titres en double messieurs
+| Avant 1968
+| {{GBR-d}} [[Reginald Frank Doherty]] et [[Hugh Lawrence Doherty]]
+| 8
+| 1897-1901, 1903-1905
+|-
+| Après 1968
+| {{AUS-d}} [[Todd Woodbridge]]
+| 9
+| 1993-1997, 2000 (avec [[Mark Woodforde]]), <br />2002-2004 (avec [[Jonas Björkman]])
+|-
+|rowspan=2|Plus grand nombre de titres consécutifs en double messieurs
+| Avant 1968
+| {{GBR-d}} [[Reginald Frank Doherty]] et [[Hugh Lawrence Doherty]]
+| 5
+| 1897-1901
+|-
+| Après 1968
+| {{AUS-d}} [[Todd Woodbridge]] et [[Mark Woodforde]]
+| 5
+| 1993-1997
+|-
+|rowspan=2|Plus grand nombre de titres en double mixtes - Messieurs
+| Avant 1968
+| {{AUS-d}} [[Ken Fletcher]]
+{{USA-d}} [[Vic Seixas]]
+| 4
+| 1963, 1965-1966, 1968 (avec [[Margaret Smith Court|Margaret Court]])
+1953-1956 (3 avec [[Doris Hart]], 1 avec [[Shirley Fry|Shirley Fry Irvin]])
+|-
+| Après 1968
+| {{AUS-d}} [[Owen Davidson]]
+| 4
+| 1967, 1971, 1973-1974 (avec [[Billie Jean King]])
+|-
+|rowspan=2|Plus de tournois (total : simples, doubles, mixtes) - Messieurs
+| Avant 1968
+| {{GBR-d}} [[Hugh Lawrence Doherty]]
+| 13
+| 1897-1906 (5 simples, 8 doubles)
+|-
+| Après 1968
+| {{AUS-d}} [[Todd Woodbridge]]
+| 9
+| 1993-2004 (9 doubles)
+|-
+|rowspan=3|Vainqueur du simple, double et mixte la même année
+|rowspan=3|Avant 1968
+| {{USA-d}} [[Donald Budge]]
+| rowspan="8" | 1
+| 1937
+|-
+| {{USA-d}} [[Bobby Riggs]]
+| 1939
+|-
+| {{AUS-d}} [[Frank Sedgman]]
+|1952
+|-
+| rowspan="5" |Vainqueur du simple sans perdre le moindre set - Messieurs
+| rowspan="3" |Avant 1968
+| {{USA-d}} [[Donald Budge]]
+| 1938
+|-
+| {{USA-d}} [[Tony Trabert]]
+| 1955
+|-
+| {{USA-d}} [[Chuck McKinley]]
+|1963
+|-
+| rowspan="2" | Après 1968
+| {{SWE-d}} [[Björn Borg]]
+|1976
+|-
+| {{SUI-d}} [[Roger Federer]]<ref>{{lien web |auteur=ats/savi |titre=Wimbledon: Roger Federer sacré pour la 8e fois, un record! |url=http://www.rts.ch/sport/tennis/wimbledon/8780916-wimbledon-roger-federer-sacre-pour-la-8e-fois-un-record.html |site=rts.ch |en ligne le=16 juillet 2017 |consulté le=17 juillet 2017}}.</ref>
+|2017
+|-
+|colspan=5 align="center"|'''''Dames depuis 1884'''''
+|-
+|rowspan=2|Plus grand nombre de titres en simple dames
+| Avant 1968
+| {{USA-d}} [[Helen Wills]]
+| 8
+| 1927-1930, 1932-1933, 1935, 1938
+|-
+| Après 1968
+| {{TCH-d}}/{{USA-d}} [[Martina Navrátilová]]
+| 9
+| 1978-1979, 1982-1987, 1990
+|-
+|rowspan=2|Plus grand nombre de titres consécutifs en simple dames
+| Avant 1968
+| {{FRA-d}} [[Suzanne Lenglen]]
+| 5
+| 1919-1923
+|-
+| Après 1968
+| {{TCH-d}}/{{USA-d}} [[Martina Navrátilová]]
+| 6
+| 1982-1987
+|-
+|rowspan=3|Plus grand nombre de titres en double dames
+|rowspan=2|Avant 1968
+| {{USA-d}} [[Elizabeth Ryan]]
+| 12
+| 1914 (avec [[Agnes Morton|Agatha Morton]]),<br />1919-1923, 1925 (avec [[Suzanne Lenglen]]),<br />1926 (avec [[Mary Kendall Browne|Mary Browne]]),<br />1927, 1930 (avec [[Helen Wills]]),<br />1933-1934 (avec [[Simone Mathieu]])
+|-
+| {{USA-d}} [[Billie Jean King]]
+| 10
+| 1961-1962 (avec [[Karen Hantze|Karen Hantze Susman]]),<br />1965 (avec [[Maria Bueno]]),<br />1967-1968, 1970-1971, 1973 (avec [[Rosie Casals]]),<br />1972 (avec [[Betty Stöve]]),<br />1979 (avec [[Martina Navrátilová]])
+|-
+| Après 1968
+| {{TCH-d}}/{{USA-d}} [[Martina Navrátilová]]
+| 7
+| 1976 (avec [[Chris Evert]]),<br />1979 (avec [[Billie Jean King]]),<br />1981-1984, 1986 (avec [[Pam Shriver]])
+|-
+|rowspan=2|Plus grand nombre de titres consécutifs en double dames
+| Avant 1968
+| {{FRA-d}} [[Suzanne Lenglen]] et {{USA-d}} [[Elizabeth Ryan]]
+| 5
+| 1919-1923
+|-
+| Après 1968
+| {{TCH-d}}/{{USA-d}} [[Martina Navrátilová]] et {{USA-d}} [[Pam Shriver]]<br /><br />{{URS-d}}/{{BLR (1991-1995)-d}}/{{BLR-d}} [[Natasha Zvereva]]
+| 4
+| 1981-1984
+1991 (avec [[Larisa Savchenko-Neiland|Larisa Neiland]]),<br />1992-1994 ([[Gigi Fernández]])
+|-
+|rowspan=2|Plus grand nombre de titres en double mixtes - Dames
+| Avant 1968
+| {{USA-d}} [[Elizabeth Ryan]]
+| 7
+| 1919, 1921, 1923 (avec [[Randolph Lycett]]),<br />1927 (avec [[Francis Hunter]]),<br />1928 (avec [[Patrick Spence]]),<br />1930 (avec [[Jack Crawford]]),<br />1932 (avec [[Enrique Maier]])
+|-
+| Après 1968
+| {{TCH-d}}/{{USA-d}} [[Martina Navrátilová]]
+| 4
+| 1985 (avec [[Paul McNamee]]),<br />1993 (avec [[Mark Woodforde]]),<br />1995 (avec [[Jonathan Stark]]),<br />2003 (avec [[Leander Paes]])
+|-
+|rowspan=3|Plus de tournois (total : simples, doubles, mixtes) - Dames
+|rowspan=2|Avant 1968
+| {{USA-d}} [[Billie Jean King]]
+| 20
+| 1961-1979 (six simples, dix doubles, quatre mixtes)
+|-
+| {{USA-d}} [[Elizabeth Ryan]]
+| 19
+| 1914-1934 (douze doubles, sept mixtes)
+|-
+| Après 1968
+| {{TCH-d}}/{{USA-d}} [[Martina Navrátilová]]
+| 20
+| 1976-2003 (neuf simples, sept doubles, quatre mixtes)
+|-
+|colspan=5 align=center|'''''Divers'''''
+|-
+|colspan=2|Le plus de matchs joués (hommes)<ref>{{harvsp|Collins|2010|p=550}}</ref>
+| {{FRA-d}} [[Jean Borotra]]
+| 223
+|
+|-
+|colspan=2|Le plus de matchs joués (femmes)
+| {{TCH-d}}/{{USA-d}} [[Martina Navrátilová]]
+| 326
+|
+|-
+|colspan=2|Perdants du plus grand nombre de finales en simples (hommes ou femmes)
+| {{USA-d}} [[Chris Evert]] <br />{{GBR-d}} [[Blanche Bingley|Blanche Bingley Hillyard]]
+| 7
+|
+|-
+|colspan=2|Vainqueur le moins bien classé (hommes ou femmes)<ref name="Goran">{{harvsp|Collins|2010|p=693-694}}</ref>
+| {{CRO-d}} [[Goran Ivanišević]]
+| {{125e}}
+| 2001
+|-
+|colspan=2|Le seul invité (wild-card) vainqueur (hommes ou femmes)<ref name="Goran"/>
+| {{CRO-d}} [[Goran Ivanišević]]
+|
+| 2001
+|-
+|colspan=2|Vainqueur le moins bien classé (femmes)
+| {{TCH-d}} [[Markéta Vondroušová]]
+| {{42e}}
+|2023
+|-
+|colspan=2|Plus jeune vainqueur (hommes)
+| {{GER-d}} [[Boris Becker]]
+|17 ans et 227 jours
+|1985
+|-
+|colspan=2|Plus jeune vainqueur (femmes)<ref>{{harvsp|Collins|2010|p=571}}</ref>
+| {{GBR-d}} [[Lottie Dod]]
+|15 ans et 10 mois
+|1887
+|-
+|colspan=2|Plus jeune vainqueur en double (femmes)
+| {{SUI-d}}[[Martina Hingis]]
+|15 ans et 282 jours
+|1996
+|-
+|colspan=2|Plus jeune vainqueur en double (hommes)
+| {{USA-d}} [[Dennis Ralston]]
+|17 ans et 341 jours
+|1960
+|-
+|colspan=2|Plus vieux vainqueur en simple (hommes)
+| {{GBR-d}} [[Arthur Gore]]
+|41 ans et 182 jours
+|1909
+|-
+|colspan=2|Plus vieille vainqueur en simple (femmes)
+| {{GBR-d}} [[Charlotte Cooper|Charlotte Cooper Sterry]]
+|37 ans et 282 jours
+|1908
+|-
+|-
+|colspan=2|Finale la plus longue (hommes ou femmes)<ref name="RSF2"/>
+| {{SRB-d}} [[Novak Djokovic]] contre {{SUI-d}} [[Roger Federer]]
+|{{Heure|4|57|durée=oui}}
+|2019
+|-
+|colspan=2|Finale la plus courte (hommes ou femmes)
+| {{GBR-d}} [[William Renshaw]] contre {{GBR-d}} [[John Hartley]]
+|{{Heure|0|37|durée=oui}}
+|1881
+|-
+
+|colspan=2|Set décisif le plus long en finale (hommes ou femmes)<ref name="RSF2">{{Lien web |langue=FR |titre=Wimbledon : Novak Djokovic vient à bout de Roger Federer pour remporter son 16e Grand Chelem au terme d'une finale exceptionnelle |url=https://www.lequipe.fr/Tennis/Actualites/Wimbledon-novak-djokovic-vient-a-bout-de-roger-federer-pour-remporter-son-16e-grand-chelem-au-terme-d-une-finale-exceptionnelle/1040094 |site=lequipe.fr |date= }}.</ref>
+| {{SUI-d}} [[Roger Federer]] contre {{USA-d}} [[Andy Roddick]]
+|{{Heure|1|35|durée=oui}}
+|2009
+|-
+|colspan=2|Match le plus long (hommes ou femmes)<ref name="guinness">{{Lien web|langue=en|url=http://community.guinnessworldrecords.com/_Records-a-Wimbledon/blog/2411422/7691.html|titre=Records a Wimbledon!|id=guinnessworldrecords.com |date=24 juin 2010 |site=guinnessworldrecords.com |éditeur=Guinness World Records| en ligne le=24 juin 2010| consulté le=28 juin 2010|brisé le = 2024-02-14}}.</ref>
+| {{FRA-d}} [[Nicolas Mahut]] contre {{USA-d}} [[John Isner]]
+|{{Heure|11|05|durée=oui}}
+|2010
+|-
+|colspan=2|Set le plus long (hommes ou femmes)<ref name="guinness"/>
+| {{FRA-d}} [[Nicolas Mahut]] contre {{USA-d}} [[John Isner]]
+|68-70
+|2010
+|-
+|colspan=2|Plus petit nombre de jeux lors de la finale
+| {{GBR-d}} [[William Renshaw]] contre {{GBR-d}} [[John Hartley]] <br />{{GBR-d}} [[Fred Perry]] contre {{GER-d}} [[Gottfried von Cramm]]
+|20
+|1881 <br /> 1936
+|}
+
+== Galerie ==
+<gallery>
+The Crowd at Centre Court, Wimbledon.jpg|Les spectateurs sur le Court Central.
+The Centre Court, Wimbledon.jpg|Le Court Central.
+The longest match ever played at Wimbledon.jpg|Le plus long match jamais joué à Wimbledon.
+The Wimbledon Shop.jpg|The Wimbledon Shop.
+The instructions to Non Ticket Holders at Wimbledon.jpg|Instructions aux personnes ne possédant pas de tickets.
+Wimbledon scoreboard.jpg|Le ''{{langue|en|Score Board}}'' (tableau d'affichage du score).
+Wimbledon order of play.jpg|Le programme des matchs.
+Centre Court Wimbledon 1.jpg|Le Court Central.
+Court 4 Wimbledon.JPG|Le Court numéro 4.
+Court 19 Wimbledon.JPG|Le Court numéro 19.
+Court 17 Wimbledon.JPG|Le Court numéro 17.
+Score board Wimbledon.jpg|Le ''{{langue|en|Score Board}}'' (tableau d'affichage du score).
+Logo Wimbledon (?-2010).svg|Le logo de Wimbledon depuis 2011.
+</gallery>
+
+== Notes et références ==
+=== Notes ===
+{{Références|groupe=Note}}
+
+=== Références ===
+{{Références}}
+
+== Voir aussi ==
+{{Autres projets
+|commons = Category:Wimbledon Championships
+}}
+
+=== Bibliographie ===
+* {{Ouvrage|langue=en|prénom1=Bud|nom1=Collins|lien auteur1=Bud Collins|titre=The Bud Collins History of Tennis : An Authoritative Encyclopedia and Record Book|éditeur=New Chapter Press|année=2010|isbn=}}.
+* {{Ouvrage|langue=en|prénom1=Neil|nom1=Harman|titre=Wimbledon 2012|sous-titre=The Official Story of the Championships|éditeur=Vision Sports Publishing Ltd|année=2012|pages totales=160|isbn=978-1-907637-64-3}}.
+
+=== Articles connexes ===
+* {{langue|en|[[Centre Court]]}} (le court central)
+
+=== Liens externes ===
+{{Liens}}
+* {{en}} [http://aeltc2009.wimbledon.org/en_GB/about/history/index.html Histoire du tournoi, sur le site officiel]
+* {{Profil Tournoi ATP|wimbledon|540|Tournoi de Wimbledon}}
+
+{{Palette|TournoisGrandChelem|Tournois de Wimbledon|Champions du simple messieurs de Wimbledon|Championnes du simple dames de Wimbledon|Champions du double messieurs de Wimbledon|Championnes du double dames de Wimbledon|Championnes du double mixte de Wimbledon}}
+{{Portail|Londres|tennis}}
+{{Bon article|vote=BA|oldid=87947310|date=26 janvier 2013}}
+
+[[Catégorie:Tournoi de Wimbledon| 00]]
+[[Catégorie:Fondation en 1877]]

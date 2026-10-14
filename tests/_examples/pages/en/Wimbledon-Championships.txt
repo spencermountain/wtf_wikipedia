@@ -1,0 +1,1367 @@
+{{Short description|Annual tennis tournament held in London}}
+{{Unreliable sources|date=August 2026}}
+{{Use British English|date=June 2023}}
+{{Use dmy dates|date=February 2024}}
+{{Infobox GrandSlamTournaments
+| Name = Wimbledon Championships
+| Last = 2026 Wimbledon Championships
+| Last alias = 2026 Wimbledon
+| Current = 
+| Current alias = 
+| Logo = [[file:Wimbledon.svg|frameless|upright=0.8]]
+| Bar Color = #C9E190
+| Founded = {{start date and age|df=yes|1877}}
+| Editions = 139 ([[2026 Wimbledon Championships|2026]])
+| City = [[Wimbledon, London]]
+| Country = England (United Kingdom)
+| Venue = [[All England Lawn Tennis and Croquet Club]]<br /> Worple Road (1877–1921)<br /> Church Road (since 1922)
+| Surface = [[Grass court|Grass]] outdoors{{efn|name=roof|Except [[Centre Court]] & [[No. 1 Court]] during rain; each having a [[retractable roof]]}}
+| Prize Money = [[Pound sterling|£]]64,200,000 (2026)
+| Men Draw = {{abbr|S|Singles}} (128{{abbr|Q|Qualification}}) / 64{{abbr|D|Doubles}} (16{{abbr|Q|Qualification}}){{efn|name=draw|In the main draws, there are 128 singles players (S) and 64 doubles teams (D), and there are 128 and 16 entrants in the respective qualifying (Q) draws.}}
+| Men Current = [[Jannik Sinner]] (singles)<br />[[Harri Heliövaara]] <br /> [[Henry Patten]] (doubles)
+| Men Most S = [[Roger Federer]] (8)
+| Men Most D = [[Todd Woodbridge]] (9)
+| Women Draw = {{abbr|S|Singles}} (128{{abbr|Q|Qualification}}) / 64{{abbr|D|Doubles}} (16{{abbr|Q|Qualification}})
+| Women Current = [[Linda Nosková]] (singles) <br /> [[Guo Hanyu]] <br /> [[Kristina Mladenovic]] (doubles)
+| Women Most S = [[Martina Navratilova]] (9)
+| Women Most D = [[Elizabeth Ryan]] (12)
+| Mixed Draw = 32
+| Mixed Current = [[Marcelo Arévalo]]<br />[[Jeļena Ostapenko]]
+| Mixed Most M = [[Leander Paes]] (4)<br /> [[Vic Seixas]] (4)<br /> [[Owen Davidson]] (4)<br /> [[Ken Fletcher]] (4)
+| Mixed Most F = [[Elizabeth Ryan]] (7)
+| Web site = https://www.wimbledon.com
+| Notes =
+}}
+
+The '''Wimbledon Championships''', commonly called '''Wimbledon''',{{efn|name=Title|Formally known as '''The Championships, Wimbledon'''}} is a [[tennis]] tournament organised annually in [[Wimbledon, London]], by the [[All England Lawn Tennis and Croquet Club]] in collaboration with the [[Lawn Tennis Association]]. It is chronologically the third of the four [[Grand Slam (tennis)|Grand Slam]] tennis events each year, held after the [[Australian Open]] and the [[French Open]] and before the [[US Open (tennis)|US Open]]. It is the oldest tennis tournament in the world and is widely regarded as the most prestigious.<ref>{{cite news| title = Traditional Final: It's Nadal and Federer| work = The New York Times| date = 7 May 2008| first = Christopher| last = Clarey| quote = Federer said[:] 'I love playing with him, especially here at Wimbledon, the most prestigious tournament we have.'| url = https://www.nytimes.com/2008/07/05/sports/tennis/05wimbledon.html?ref=tennis| access-date = 17 July 2008| archive-date = 16 April 2009| archive-url = https://web.archive.org/web/20090416045905/http://www.nytimes.com/2008/07/05/sports/tennis/05wimbledon.html?ref=tennis| url-status = live}}</ref><ref>{{cite encyclopedia| editor  = Will Kaufman & Heidi Slettedahl Macpherson| encyclopedia = Britain and the Americas| title = Tennis|year = 2005| publisher=[[ABC-CLIO]]| volume=1 : Culture, Politics, and History| isbn = 1-85109-431-8| page=958|quote = this first tennis championship, which later evolved into the Wimbledon Tournament ... continues as the world's most prestigious event.}}</ref><ref>{{cite news|url=https://news.bbc.co.uk/sport1/hi/tennis/8121289.stm|title=Djokovic describes Wimbledon as "the most prestigious event"|publisher=BBC News|date=26 June 2009|access-date=14 September 2010|archive-date=15 April 2021|archive-url=https://web.archive.org/web/20210415233957/http://news.bbc.co.uk/sport1/hi/tennis/8121289.stm|url-status=live}}</ref><ref>{{cite news|title=Wimbledon Tennis 2013: Why Historic Tournament Is Most Prestigious Grand GMR Slam|url=https://bleacherreport.com/articles/1683533-wimbledon-tennis-2013-why-historic-tournament-is-most-prestigious-grand-slam|access-date=25 June 2013|newspaper=bleacherreport|date=24 June 2013|author-first1=Ryan |author-last1=Rudnansky|archive-date=29 June 2013|archive-url=https://web.archive.org/web/20130629020918/http://bleacherreport.com/articles/1683533-wimbledon-tennis-2013-why-historic-tournament-is-most-prestigious-grand-slam|url-status=live}}</ref><ref>{{cite magazine|title=What Is The Most Prestigious Grand Slam Tennis Tournament?|url=https://www.forbes.com/sites/monteburke/2012/05/30/what-is-the-most-prestigious-grand-slam-tennis-tournament/|magazine=Forbes|access-date=25 June 2013|author-first1=Monte |author-last1=Burke|date=30 May 2012|quote=It seems pretty clear that of the four tennis Grand Slam events—Wimbledon and the French, Australian and U.S. Opens—the former is by far the most prestigious one.|archive-date=3 July 2013|archive-url=https://web.archive.org/web/20130703063000/http://www.forbes.com/sites/monteburke/2012/05/30/what-is-the-most-prestigious-grand-slam-tennis-tournament/|url-status=live}}</ref> 
+
+Wimbledon has been held since 1877 and is played on outdoor [[grass court]]s; it is the only tennis major still played on grass, the traditional surface. It is also the only major that retains a night-time [[curfew]] for logistical reasons, with matches continuing until 23:00 [[British Summer Time|BST]] under [[floodlight]]ing since 2009.<ref>{{Cite news |url=https://www.independent.co.uk/sport/tennis/wimbledon-curfew-why-what-time-b2573585.html |title=What time is the Wimbledon curfew? |last=Rathborn |first=Jack |date=30 June 2025 |work=[[The Independent]] |access-date=12 July 2025 |issn=1741-9743 |archive-url=https://web.archive.org/web/20250702064842/https://www.independent.co.uk/sport/tennis/wimbledon-curfew-why-what-time-b2573585.html |archive-date=2 July 2025 |url-status=live}}</ref>
+
+The tournament traditionally takes place over two weeks in late June and early July, starting either on the last Monday in June or the first Monday in July and culminating with the Ladies' and Gentlemen's Singles Finals, scheduled for the Saturday and Sunday at the end of the second week. Five major events are held each year, with additional junior and invitational competitions also taking place. The tournament was not held during [[World War II]], and was cancelled [[2020 Wimbledon Championships|in 2020]] due to the [[COVID-19 pandemic]]. Line judges were replaced by electronic calling systems [[2025 Wimbledon Championships|in 2025]].
+
+Wimbledon traditions include a strict all-white dress code for competitors, and royal patronage. [[Strawberry#Culinary use|Strawberries and cream]] are traditionally consumed at the tournament,<ref>{{cite news|title=Wimbledon's strawberries and cream has Tudor roots|url=https://news.bbc.co.uk/local/surrey/hi/people_and_places/newsid_8756000/8756132.stm|agency=BBC|date=9 June 2015|access-date=2 December 2017|archive-date=8 October 2021|archive-url=https://web.archive.org/web/20211008145707/http://news.bbc.co.uk/local/surrey/hi/people_and_places/newsid_8756000/8756132.stm|url-status=live}}</ref> in latter years accompanied by [[champagne]].<ref>{{Cite web|url=https://www.foodandwine.com/wimbledon-champagne-cork-pop-warning-referee-7558685|title=Please Don't Pop a Champagne Cork During a Tennis Match|work=Food & Wine|access-date=30 June 2024|archive-date=30 June 2024|archive-url=https://web.archive.org/web/20240630120538/https://www.foodandwine.com/wimbledon-champagne-cork-pop-warning-referee-7558685|url-status=dead}}</ref> Unlike other tournaments, advertising is minimal and low-key from official suppliers such as [[Slazenger]] and [[Rolex]]. The relationship with Slazenger is the world's longest-running sporting sponsorship, providing balls for the tournament since 1902.<ref>{{cite news |title=A 115-year-old tale of sport's surviving sponsorships |url=https://www.insidesport.in/115-year-old-tale-surviving-sports-sponsorships/ |date=15 October 2017 |access-date=31 August 2022 |work=[[Inside Sport]] |archive-date=29 May 2023 |archive-url=https://web.archive.org/web/20230529030947/https://www.insidesport.in/115-year-old-tale-surviving-sports-sponsorships/ |url-status=dead }}</ref>
+
+==History==
+
+===Beginning===
+<section begin=GrandSlamArticle/>
+[[File:Spencer gore.jpg|thumb|150px|[[Spencer Gore (sportsman)|Spencer Gore]], the winner of the [[1877 Wimbledon Championship|inaugural Wimbledon Championship]]]]
+The [[All England Lawn Tennis and Croquet Club]] is a private club founded on 23 July 1868, originally as "The All England Croquet Club". Its first ground was at Nursery Road off Worple Road, Wimbledon.<ref>[http://www.thenorthernecho.co.uk/features/4462679.Anyone_for_a_game_of_sphairistik___/ "Anyone for a game of sphairistiké?"] {{Webarchive|url=https://web.archive.org/web/20150705212917/http://www.thenorthernecho.co.uk/features/4462679.Anyone_for_a_game_of_sphairistik___/ |date=5 July 2015 }} 41, ''[[The Northern Echo]]'', 27 June 2009, accessed 8 July 2009</ref>
+
+In 1876, [[Tennis|lawn tennis]], a game devised by Major [[Walter Clopton Wingfield]]<ref>{{Cite web |author-first1=Alexandre|author-last1=Sokolowski|date=16 October 2023 |title=October 16, 1833: The day the man who invented lawn tennis – Walter Clopton Wingfield – was born |url=https://www.tennismajors.com/others-news/october-16-1833-the-day-walter-clopton-winfield-the-man-who-invented-lawn-tennis-was-born-298750.html |access-date=31 January 2024 |website=Tennis Majors |language=en-US |archive-date=31 January 2024 |archive-url=https://web.archive.org/web/20240131065926/https://www.tennismajors.com/others-news/october-16-1833-the-day-walter-clopton-winfield-the-man-who-invented-lawn-tennis-was-born-298750.html |url-status=live }}</ref> a year or so earlier as an outdoor version of [[real tennis]] and originally given the name ''Sphairistikè'' (Ancient Greek for "skill in playing at ball"), was added to the activities of the club. In spring 1877, the club was renamed "The All England Croquet and Lawn Tennis Club" and signalled its change of name by instituting the first Lawn Tennis Championship. A new code of laws, replacing the code administered by the [[Marylebone Cricket Club]], was drawn up for the event. Today's rules are similar except for details such as the height of the net and posts and the distance of the service line from the net.
+
+The inaugural [[1877 Wimbledon Championship]] started on 9 July 1877 and the Gentlemen's Singles was the only event held. 22 men paid a [[Guinea (coin)|guinea]] to enter the tournament, which was to be held over five days. The rain delayed it four more days and thus, on 19 July 1877, the final was played. [[Spencer Gore (sportsman)|Spencer Gore]], an [[List of Old Harrovians|Old Harrovian]] [[Rackets (sport)|rackets]] player, defeated [[William Marshall (tennis)|William Marshall]] 6–1, 6–2 and 6–4 in 48 minutes. Gore was presented with the silver challenge cup, valued at 25 guineas and donated by the sports magazine ''[[The Field (magazine)|The Field]]'', as well as a prize money of 12 guineas. About 200 spectators paid one [[shilling]] each to watch the final.<ref>{{cite web|url=http://www.wimbledon.org/en_GB/about/history/1877.html|title=1877 Wimbledon Championships|access-date=5 October 2010|publisher=Wimbledon.org|first=Ron|last=Atkin|url-status=dead|archive-url=https://web.archive.org/web/20101221222928/http://www.wimbledon.org/en_GB/about/history/1877.html|archive-date=21 December 2010}}</ref>
+
+<noinclude>The lawns at the ground were arranged so that the principal court was in the middle with the others arranged around it, hence the title "[[Centre Court]]".{{efn|A Centre Court did not yet exist during the first four years of the championship.<ref name=little>{{cite book|last=Little|first=Alan|title=Wimbledon Compendium 2011|year=2011|publisher=All England Lawn Tennis & Croquet Club|location=London|isbn=978-1-899039-36-4|pages=9, 102|edition=21st}}</ref>|name=centrecourt}} The name was retained when the Club moved in 1922 to the present site in Church Road, although no longer a true description of its location.<ref>{{cite web|author1=Malin Lundin|title=Throwback Thursday: The New Wimbledon|url=http://www.wimbledon.com/en_GB/news/articles/2015-03-12/20150312_throwback_thursday_twins_in_tennis.html|publisher=[[AELTC]]|access-date=4 January 2017|date=12 March 2015|archive-date=4 January 2017|archive-url=https://web.archive.org/web/20170104091359/http://www.wimbledon.com/en_GB/news/articles/2015-03-12/20150312_throwback_thursday_twins_in_tennis.html|url-status=live}}</ref> However, in 1980 four new courts were brought into commission on the north side of the ground, which meant the Centre Court was once more correctly described. The opening of the new No. 1 Court in 1997 emphasised the description.
+
+[[File:1884 wimbledon ladies program.jpg|thumb|left|Ladies [[1884 Wimbledon Championships|Championship, 1884]]. First prize, awarded to [[Maud Watson]], was a silver flower-basket worth 20 [[guinea (British coin)|guineas]].]]
+By 1882, activity at the club was almost exclusively confined to lawn tennis and that year the word "croquet" was dropped from the title. However, for sentimental reasons it was restored in 1899.</noinclude>
+
+In 1884, the club added the [[List of Wimbledon ladies' singles champions|Ladies' Singles]] competition and the [[List of Wimbledon gentlemen's doubles champions|Gentlemen's Doubles]] was transferred from the Oxford University Lawn Tennis Club. [[List of Wimbledon ladies' doubles champions|Ladies' doubles]] and [[List of Wimbledon mixed doubles champions|mixed doubles]] events were added in 1913. The first black player to compete at Wimbledon was [[Bertrand Clark|Bertrand Milbourne Clark]], an amateur from Jamaica, in 1924.<ref name="Bauckham">{{cite web |last1=Bauckham |first1=Jon |title=I'm related to the first black tennis player to play at Wimbledon |url=https://www.whodoyouthinkyouaremagazine.com/real-stories/im-related-to-the-first-black-tennis-player-to-play-at-wimbledon/ |website=Who Do You Think You Are Magazine |access-date=1 June 2021 |date=1 July 2020 |archive-date=2 June 2021 |archive-url=https://web.archive.org/web/20210602214004/https://www.whodoyouthinkyouaremagazine.com/real-stories/im-related-to-the-first-black-tennis-player-to-play-at-wimbledon/ |url-status=live }}</ref>
+
+Until 1922, the reigning champion had to play only in the final, against whoever had won through to challenge them. As with the other three ''Major or Grand Slam'' events, Wimbledon was contested by top-ranked amateur players; professional players were prohibited from participating. This changed with the advent of the [[History of tennis|open era]] in 1968. No British man won the singles event at Wimbledon between [[Fred Perry]] in 1936 and [[Andy Murray]] in 2013, while no British woman has won since [[Virginia Wade]] in 1977, although [[Annabel Croft]] and [[Laura Robson (tennis)|Laura Robson]] won the Girls' Championship in [[1984 Wimbledon Championships|1984]] and [[2008 Wimbledon Championships|2008]] respectively. The Championship was first televised in 1937.
+
+Though formally called "The Championships, Wimbledon", depending on sources the event is also known as "The All England Lawn Tennis Championships", the "Wimbledon Championships" or usually just "Wimbledon". From 1912 to 1924, the tournament was recognised by the [[International Lawn Tennis Federation]] as the "World Grass Court Championships".<section end=GrandSlamArticle/>
+
+In the period of 1915–1918, no tournament was organised due to World War I. During World War II, the tournament was not held in the period 1940–1945. On 11 October 1940 one bomb hit a corner of the competitors' stand of the Centre Court. The championships did go ahead in 1946 even though the damage meant that 1,200 seats were lost. The organisers were unable to repair the damaged section until 1947 and the Centre Court was fully restored and renovated for the 1949 edition.<ref>{{cite web|title=History – 1940s|url=https://www.wimbledon.com/en_GB/aboutwimbledon/history_1940s.html|publisher=[[AELTC]]|access-date=3 December 2017|archive-date=13 August 2017|archive-url=https://web.archive.org/web/20170813015421/http://www.wimbledon.com/en_GB/aboutwimbledon/history_1940s.html|url-status=live}}</ref>
+
+In 1946 and 1947 Wimbledon was held before the [[French Championships]]. It was thus the second [[Grand Slam (tennis)|Grand Slam]] tennis event of the year.
+
+===21st century===
+Wimbledon is widely considered the world's premier tennis tournament and the priority of the club is to maintain its leadership. To that end a long-term plan was unveiled in 1993, intended to improve the quality of the event for spectators, players, officials and neighbours.<ref>{{cite web|title=Long Term Plan|url=http://www.wimbledon.com/about/long-term-plan|publisher=[[AELTC]]|access-date=4 April 2012|url-status=dead|archive-url=https://web.archive.org/web/20120315213309/http://www.wimbledon.com/about/long-term-plan|archive-date=15 March 2012}}</ref> Stage one (1994–1997) of the plan was completed for the 1997 championships and involved building the new No. 1 Court in Aorangi Park, a broadcast centre, two extra grass courts and a tunnel under the hill linking Church Road and Somerset Road. Stage two (1997–2009) involved the removal of the old No. 1 Court complex to make way for the new Millennium Building, providing extensive facilities for players, press, officials and members, and the extension of the West Stand of the Centre Court with 728 extra seats. Stage three (2000–2011) was completed with the construction of an entrance building, club staff housing, museum, bank and ticket office.<ref>[http://www.wimbledon.com/heritage/history/championships-history] {{webarchive|url=https://web.archive.org/web/20120601051854/http://www.wimbledon.com/heritage/history/championships-history|date=1 June 2012}}</ref>
+
+A new retractable roof was built in time for the 2009 championships, marking the first time that rain did not stop play for a lengthy time on [[Centre Court]]. The Club tested the new roof at an event called ''A Centre Court Celebration'' on Sunday, 17 May 2009, which featured exhibition matches involving [[Andre Agassi]], [[Steffi Graf]], [[Kim Clijsters]], and [[Tim Henman]]. The first Championship match to take place under the roof was the completion of the fourth round women's singles match between [[Dinara Safina]] and [[Amélie Mauresmo]].  The first match to be played in its entirety under the new roof took place between [[Andy Murray]] and [[Stanislas Wawrinka]] on 29 June 2009. Murray was also involved in the match completed latest in the day at Wimbledon, which ended at 11:02{{nbsp}}pm in a victory over [[Marcos Baghdatis]] at Centre Court in the third round of the 2012 Championships. The [[2012 Wimbledon Championships – Men's singles|2012 Gentlemen's Singles]] Final on 8 July 2012, between [[Roger Federer]] and Murray, was the first singles final to be partially played under the roof, which was activated during the third set.{{efn|name=monday_final|To date only four finals were played on a Monday due to rain: [[1919 Wimbledon Championships|1919]], [[1922 Wimbledon Championships|1922]], [[1988 Wimbledon Championships|1988]], and [[2001 Wimbledon Championships|2001]].}}
+
+A new 4,000-seat [[No. 2 Court]] was built on the site of the old No. 13 Court in time for the 2009 Championships.<ref>[http://www.wimbledon.org/en_GB/news/articles/2009-06-11/200906111244725616916.html New Court No. 2] {{webarchive |url=https://web.archive.org/web/20090620004403/http://www.wimbledon.org/en_GB/news/articles/2009-06-11/200906111244725616916.html |date=20 June 2009 }}</ref>  A new 2,000-seat [[No. 3 Court (Wimbledon)|No. 3 Court]] was built on the site of the old No. 2 and No. 3 Courts.<ref>{{cite web|url=http://blog.wimbledon.org/2010/03/26/the-new-court-3 |title=The New Court 3 |publisher=Blog.wimbledon.org |access-date=14 September 2010 |url-status=dead |archive-url=https://web.archive.org/web/20100803031905/http://blog.wimbledon.org/2010/03/26/the-new-court-3/ |archive-date=3 August 2010 }}</ref>
+
+On 1 August 2011, the All England Club transferred all of its assets relating to The Championships to a separate though wholly owned subsidiary, The All England Lawn Tennis Club (Championships) Limited, also known as AELTC. Since that time, the club's activities have been formally conducted separately from those of The Championships.<ref>{{cite web |url=https://www.wimbledon.com/en_GB/atoz/about_aeltc.html |title=About the AELTC |publisher=The All England Lawn Tennis & Croquet Club |access-date=19 October 2018 |archive-date=14 October 2018 |archive-url=https://web.archive.org/web/20181014032709/http://www.wimbledon.com/en_GB/atoz/about_aeltc.html |url-status=live }}</ref>
+
+In 2012, the All England Club hosted the [[Tennis at the 2012 Summer Olympics|Summer Olympic Games]] and became the first Olympic grass court tournament since tennis was reintroduced as an Olympic sport and the first to be held at a Grand Slam venue in the Open era.<ref name="Tennis at the 2012 London Games">{{cite web |url=http://www.olympictennis.net |title=Olympic Tennis |publisher=UK Media Limited |url-status=dead |archive-url=https://web.archive.org/web/20130612121743/http://olympictennis.net/ |archive-date=12 June 2013 }}</ref>
+
+In April 2013, Wimbledon unveiled its 'Master Plan', a vision in which to improve the championships over the next 10–15 years. This was in large part due to other [[Grand Slam (tennis)|Grand Slam]] tournaments such as the [[French Open]] and [[Australian Open]] also announcing expansion and re-development plans.<ref>{{cite web|url=https://www.rolandgarros.com/en-us/article/roland-garros-redevelopment-under-way-lenglen-chatrier-court-18|title=First glimpse of future-facing Roland-Garros – Roland-Garros – The 2018 French Open official site|website=www.rolandgarros.com|access-date=5 January 2019|archive-date=25 November 2018|archive-url=https://web.archive.org/web/20181125204335/https://www.rolandgarros.com/en-us/article/roland-garros-redevelopment-under-way-lenglen-chatrier-court-18|url-status=live}}</ref><ref>{{cite web|url=https://www.tennis.com.au/about-tennis-australia/melbourne-park-redevelopment,%20https://www.tennis.com.au/about-tennis-australia/melbourne-park-redevelopment|title=Melbourne Park Redevelopment|website=Tennis Australia|access-date=5 January 2019}}{{Dead link|date=December 2025 |bot=InternetArchiveBot }}</ref> Aspects of the master plan included new player and media facilities, expansion of the No.1 court including a new retractable roof, new catering and hospitality areas, additional floor to the museum building, construction of an underground car park and new indoor courts and also a total reconfiguration of the site including the relocation of a number of practice, clay and championship courts.<ref>{{cite web|url=https://www.wimbledon.com/en_GB/aboutwimbledon/master_plan.html|title=The Championships, Wimbledon 2018|website=wimbledon.com|access-date=5 January 2019|archive-date=6 January 2019|archive-url=https://web.archive.org/web/20190106010429/https://www.wimbledon.com/en_GB/aboutwimbledon/master_plan.html|url-status=live}}</ref>
+
+Part of the plan also includes acquiring the land of the adjacent [[Wimbledon Park]] Golf club for £65&nbsp;million, so that the tournament qualifying matches can be played on site.
+<ref>{{cite news|url=https://www.theguardian.com/uk-news/2018/dec/13/wimbledon-to-expand-after-golf-club-members-vote-to-sell-for-65m|title=Wimbledon to expand after golf club members vote to sell for £65m|last=Neate|first=Rupert|date=13 December 2018|work=The Guardian|access-date=5 January 2019|issn=0261-3077|archive-date=5 January 2019|archive-url=https://web.archive.org/web/20190105064733/https://www.theguardian.com/uk-news/2018/dec/13/wimbledon-to-expand-after-golf-club-members-vote-to-sell-for-65m|url-status=live}}</ref>
+
+On 19 October 2018, it was announced that a tie-break will be played if the score reaches 12–12 in the final set of any match; this will apply to all competitions including in qualifying, singles, and doubles.
+<ref name="bbc-tiebreak-2019">{{cite news|url=https://www.bbc.com/sport/tennis/45913728|title=Wimbledon: Final set tie-breaks to be introduced in 2019|publisher=BBC Sport|date=19 October 2018|access-date=19 October 2018|archive-date=17 May 2019|archive-url=https://web.archive.org/web/20190517075518/https://www.bbc.com/sport/tennis/45913728|url-status=live}}</ref><ref>{{cite web|url=http://www.wimbledon.com/en_GB/news/articles/2018-10-19/aeltc_announces_introduction_of_final_set_tiebreak.html|title=AELTC announces introduction of final set tie-break|publisher=Wimbledon|date=19 October 2018|access-date=19 October 2018|archive-date=19 October 2018|archive-url=https://web.archive.org/web/20181019150309/http://www.wimbledon.com/en_GB/news/articles/2018-10-19/aeltc_announces_introduction_of_final_set_tiebreak.html|url-status=live}}</ref>  In a related statement, it was announced that starting at the 2019 Championships, quad wheelchair competitions would become a permanent event.<ref name=":0">{{cite web|url=http://www.wimbledon.com/en_GB/news/articles/2018-11-09/aeltc_announces_referee_designate_and_championships_enhancements.html|title=AELTC announces Referee Designate and Championships enhancements AELTC confirms Referee succession and issues Championships updates.|date=9 November 2018|access-date=23 November 2018|archive-date=23 November 2018|archive-url=https://web.archive.org/web/20181123154429/http://www.wimbledon.com/en_GB/news/articles/2018-11-09/aeltc_announces_referee_designate_and_championships_enhancements.html|url-status=live}}</ref>
+
+[[File:Wimbledon Centre Court (May 15, 2019).jpg|thumb|467x467px|Centre Court at Wimbledon in May 2019]]
+
+As a result of the [[COVID-19 pandemic in the United Kingdom|COVID-19 global pandemic]], the All England Club announced on 1 April 2020 that the entire grass-court season was to be cancelled as a public safety precaution until June 2021, marking the first time a Wimbledon tournament would not be played since World War II.<ref>{{cite news |last1=Fuller |first1=Russell |title=Wimbledon cancelled due to coronavirus – where does that leave tennis in 2020? |work=BBC Sport |url=https://www.bbc.co.uk/sport/tennis/52104196 |access-date=1 April 2020 |archive-date=23 June 2020 |archive-url=https://web.archive.org/web/20200623172822/https://www.bbc.co.uk/sport/tennis/52104196 |url-status=live }}</ref> Club officials considered playing the tournament [[Behind closed doors (sport)|behind closed doors]], but this was ruled out in part because at least 5,000 people–including ballboys, officials, coaches, maintenance, and security–would have still needed to be on site to hold a functioning tournament. Former player and current All England Club board member Tim Henman told the [[Tennis Channel]] of the US that the board had carefully considered holding a closed-door Wimbledon. However, the sheer number of people who still would have needed to be on site led the board to realise "that wasn't going to be a workable option".<ref>{{cite news|url=https://www.tennis.com/pro-game/2020/04/tim-henman-takes-us-behind-curtain-aeltc-wimbledon-cancellation-covid-19-insurance/88375/|title=Behind the curtain: Henman on AELTC's decision to cancel Wimbledon|author1=Cale Hammond|publisher=[[Tennis Channel]]|date=13 April 2020|access-date=29 April 2020|archive-date=28 April 2020|archive-url=https://web.archive.org/web/20200428065238/https://www.tennis.com/pro-game/2020/04/tim-henman-takes-us-behind-curtain-aeltc-wimbledon-cancellation-covid-19-insurance/88375/|url-status=live}}</ref>  Prior to the start of the 2003 tournament, the club began paying an annual insurance premium of £1.61m ($2&nbsp;million) to cover losses from cancellation of Wimbledon in the event of a worldwide pandemic as a result of the [[2002–2004 SARS outbreak|SARS outbreak]]; it would receive an insurance payment of £114&nbsp;million ($141&nbsp;million) for the 2020 cancellation on expected losses of around £250&nbsp;million ($312&nbsp;million).<ref>{{cite web |title=Wimbledon cancelled due to coronavirus – where does that leave tennis in 2020? |url=https://www.tennis365.com/grand-slam/wimbledon/wimbledon-set-to-receive-114m-insurance-payout-after-cancellation-of-tournament-report/ |website=Tennis 365 |date=9 April 2020 |access-date=12 April 2020 |archive-date=12 April 2020 |archive-url=https://web.archive.org/web/20200412162027/https://www.tennis365.com/grand-slam/wimbledon/wimbledon-set-to-receive-114m-insurance-payout-after-cancellation-of-tournament-report/ |url-status=live }}</ref> 
+
+In April 2022, due to the [[2022 Russian invasion of Ukraine]], the All England Club announced that Russian and Belarusian players [[Wimbledon ban on Russian and Belarusian players|would be prohibited from competing]] in the tournament. Unlike the [[Association of Tennis Professionals|ATP]] and WTA, participation as neutral athletes is also prohibited.<ref>{{Cite news |date=20 April 2022 |title=Russian players to be barred from competing at Wimbledon – report |work=Reuters |url=https://www.reuters.com/lifestyle/sports/russian-players-be-barred-competing-wimbledon-report-2022-04-20/ |access-date=20 April 2022 |archive-date=20 April 2022 |archive-url=https://web.archive.org/web/20220420053141/https://www.reuters.com/lifestyle/sports/russian-players-be-barred-competing-wimbledon-report-2022-04-20/ |url-status=live }}</ref> On 20 May 2022, the ATP, ITF, and WTA announced that they will not award ranking points for the tournament, as they considered the prohibition unilateral, and constituted discrimination against players based on nationality.<ref>{{Cite web |date=20 May 2022 |title=ATP, WTA pull Wimbledon points over Russia ban |url=https://www.espn.com/tennis/story/_/id/33952469/atp-men-tennis-tour-award-ranking-points-wimbledon-russia-ban |access-date=21 May 2022 |website=ESPN.com |language=en |archive-date=20 May 2022 |archive-url=https://web.archive.org/web/20220520230404/https://www.espn.com/tennis/story/_/id/33952469/atp-men-tennis-tour-award-ranking-points-wimbledon-russia-ban |url-status=live }}</ref> On 31 March 2023, the ban on Russian and Belarusian players was lifted by the All England Club.<ref>{{Cite news |title=Wimbledon lifts ban on Russian & Belarusian players |language=en-GB |work=BBC Sport |url=https://www.bbc.com/sport/tennis/64933565 |access-date=31 March 2023 |archive-date=31 March 2023 |archive-url=https://web.archive.org/web/20230331154600/https://www.bbc.com/sport/tennis/64933565 |url-status=live }}</ref>
+
+On 9 October 2024, it was announced that line judges would be replaced by electronic line calling technology on all courts starting at the 2025 tournament.<ref name=line>{{cite web|url=https://www.bbc.co.uk/sport/tennis/articles/ce3zg3y23v7o|title=Wimbledon brings in electronic line calling for 2025|date=9 October 2024 |publisher=BBC Sport|accessdate=9 October 2024}}</ref><ref name= tech>{{cite web|url=https://www.skysports.com/tennis/news/12110/13230764/wimbledon-championships-all-england-club-to-replace-all-300-line-judges-after-147-years-with-electronic-system-next-year|title=All England club to replace all 300 line judges after 147 years with electronic system next year|work=Sky Sports |accessdate=9 October 2024}}</ref>
+
+==Events==
+Wimbledon consists of five main events, four junior events and seven invitation events.<ref>{{cite web|url=http://www.wimbledon.com/championships/competing |title=Wimbledon Event Guide |publisher=wimbledon.org |access-date=12 November 2010 |url-status=dead |archive-url=https://web.archive.org/web/20110811091625/http://www.wimbledon.com/championships/competing |archive-date=11 August 2011 }}</ref>
+
+===Main events===
+The five main events, and the number of players (or teams, in the case of doubles) are:
+* Gentlemen's Singles (128)
+* Ladies' Singles (128)
+* Gentlemen's Doubles (64)
+* Ladies' Doubles (64)
+* Mixed Doubles (32)
+
+===Junior events===
+The four junior events and the number of players or teams are:
+* Boys' Singles (64)
+* Girls' Singles (64)
+* Boys' Doubles (32)
+* Girls' Doubles (32)
+No mixed doubles event is held at this level
+
+===Invitation events===
+The seven invitational events and the number of pairs are:
+* Gentlemen's Invitation Doubles (8 pairs Round Robin){{efn|name=gentlemen_invitation_doubles|The men who are eligible for the Gentlemen's Invitation Doubles are 35 years old and older.}}
+* Ladies' Invitation Doubles (8 pairs Round Robin)
+* Senior Gentlemen's Invitation Doubles (8 pairs Round Robin){{efn|name=senior_gentlemen_invitation_doubles|The men who are eligible for the Senior Gentlemen's Invitation Doubles are 45 years old and older.}}
+* Gentlemen's Wheelchair Singles<ref>{{cite web|title=Wimbledon announces Wheelchair Tennis Singles events from 2016|url=http://www.wimbledon.com/en_GB/news/articles/2015-07-12/wimbledon_announces_wheelchair_tennis_singles_events_from_2016.html|website=www.wimbledon.com|publisher=[[AELTC]]|access-date=6 June 2016|date=12 July 2015|archive-date=1 December 2018|archive-url=https://web.archive.org/web/20181201152854/http://www.wimbledon.com/en_GB/news/articles/2015-07-12/wimbledon_announces_wheelchair_tennis_singles_events_from_2016.html|url-status=live}}</ref>
+* Ladies' Wheelchair Singles
+* Gentlemen's Wheelchair Doubles (4 pairs)<ref name="Wheelchair">There are no age limits for the Wheelchair Doubles events.</ref>
+* Ladies' Wheelchair Doubles (4 pairs)<ref name="Wheelchair" />
+
+===Match formats===
+Matches in the Gentlemen's Singles are best-of-five sets. In 2023 it was decided that Gentlemen's Doubles match formats will be changed from best-of-five sets to best-of-three sets due to complaints from partaking players;<ref>{{Cite web |date= |title=Wimbledon Cut Men's Doubles Matches To Best-Of-Three Sets From Best-Of-Five Sets Following Nick Kyrgios Criticism |url=https://www.eurosport.com/geoblocking.shtml |access-date=3 July 2023 |website=www.eurosport.com |archive-date=23 March 2023 |archive-url=https://web.archive.org/web/20230323204914/https://www.eurosport.com/geoblocking.shtml |url-status=live }}</ref> all other events are best-of-three sets. Up to and including the 2018 tournament, a tiebreak game was played if the score reached 6–all in any set except the fifth (in a five-set match) or the third (in a three-set match), in which case a two-game lead was needed.  Since 2019, a final set tiebreak game is played if the score in the final set reaches 12–all.<ref name="bbc-tiebreak-2019" /> In 2022 it was decided all matches would have a final set tiebreak once the match reached 6–6, with a champions tiebreak taking place meaning the winner needs to get to 10 points and win by two points.<ref>{{cite web |title=Grand Slam tournaments jointly announce 10-point final set tie-break at six games all |url=https://www.wimbledon.com/en_GB/news/articles/2022-03-16/grand_slam_tournaments_jointly_announce_10point_final_set_tiebreak_at_six_games_all.html |website=Wimbledon |publisher=AELTC |date=16 March 2022 |access-date=5 July 2023 |archive-date=31 May 2022 |archive-url=https://web.archive.org/web/20220531185234/https://www.wimbledon.com/en_GB/news/articles/2022-03-16/grand_slam_tournaments_jointly_announce_10point_final_set_tiebreak_at_six_games_all.html |url-status=live }}</ref><ref>{{cite web |title=Ten-point final set tie-breaker to be trialled at all Grand Slams |url=https://www.bbc.com/sport/tennis/60762185 |website=BBC Sport |date=16 March 2022 |access-date=5 July 2023 |archive-date=23 March 2023 |archive-url=https://web.archive.org/web/20230323040148/https://www.bbc.com/sport/tennis/60762185 |url-status=live }}</ref> If the score is 9–9 play continues until one player wins by two points.
+
+All events are [[single-elimination tournament]]s,{{efn|name=single_elimination|In a single-elimination tournament, a losing player or team is eliminated from the tournament.}} except for the Gentlemen's, Senior Gentlemen's and the Ladies' Invitation Doubles, which are [[round-robin tournament]]s.
+
+Up to 1921, the winners of the previous year's competition (except in the Ladies' Doubles and Mixed Doubles) were automatically granted [[Bye (sports)|byes]] into the final round (then known as the challenge round). This led to many winners retaining their titles in successive years, as they were able to rest while their opponent competed from the start of the competition. Since 1922, the prior year's champions were required to play all the rounds, like other tournament competitors.
+
+==Schedule==
+Each year the tournament begins on the last Monday in June or first Monday in July, two weeks after the [[Queen's Club Championships]], which is one of the men's major warm-up tournaments, together with the [[Halle Open]], which is held in [[Halle, North Rhine-Westphalia|Halle, Germany]], during the same week. Other grass-court tournaments before Wimbledon are [[Eastbourne International|Eastbourne]], Great Britain, and [[Rosmalen Grass Court Championships|Rosmalen]] in the Netherlands, both combining mixed events. The other women's warm-up tournament for Wimbledon is [[Birmingham Classic (tennis)|Birmingham]], also in Great Britain. The  men's event outside Europe before Wimbledon was the [[Antalya Open]] in Turkey. The only grass-court tournament scheduled after the Championships is the [[Hall of Fame Tennis Championships]] at [[Newport, Rhode Island]], USA, which takes place the week after Wimbledon.
+
+Since 2015, the championships have begun one week later than in previous years, extending the gap between the tournament and the [[French Open]] from two to three weeks.<ref>{{cite web|title=Wimbledon Championships moved back a week from 2015|url=https://www.bbc.co.uk/sport/tennis/18913701|publisher=BBC|access-date=1 September 2012|date=19 July 2012|archive-date=31 August 2012|archive-url=https://web.archive.org/web/20120831070309/http://www.bbc.co.uk/sport/0/tennis/18913701|url-status=live}}</ref> Additionally the [[Stuttgart Open]] men's tournament converted to a grass surface and was rescheduled from July to June, extending the grass court season.
+Wimbledon is scheduled for 14 days, beginning on a Monday and ending on a Sunday. Before 1982 it ended a day earlier, with the women's singles final on the Friday and the men's singles final on the Saturday.<ref>{{cite news | agency=Associated Press | title=Wimbledon Switches To Sunday Men's Final | work=[[The New York Times]] | date=17 October 1981 | url=https://www.nytimes.com/1981/10/17/sports/wimbledon-switches-to-sunday-men-s-final.html | access-date=2 July 2019 | archive-date=1 December 2018 | archive-url=https://web.archive.org/web/20181201141927/https://www.nytimes.com/1981/10/17/sports/wimbledon-switches-to-sunday-men-s-final.html | url-status=live }}</ref> The five main events span both weeks, but the junior and invitational events are held mainly during the second week.  
+
+Traditionally, unlike the other three tennis Grand Slams, there was no play on the "Middle Sunday", which was considered a rest day.  However, rain had forced play on the Middle Sunday four times, in 1991, 1997, 2004 and 2016. On the first of these four occasions, Wimbledon staged a "People's Sunday", with unreserved seating and readily available, inexpensive tickets, allowing those with more limited means to sit on the show courts.
+
+In 2022, on the centenary of the tournament's move to its current site, routine scheduled play began on the "Middle Sunday".<ref name="ms">{{cite web |title=Middle Sunday makes grand entrance |url=https://www.wimbledon.com/en_GB/news/articles/2022-07-03/middle_sunday_makes_grand_entrance.html |website=The Championships, Wimbledon Official Website |access-date=7 July 2024}}</ref> This was attributed to advances in grass technology and maintenance meaning the courts no longer required a day of recovery mid-tournament.<ref name="ms" />
+
+Before 2022, the second Monday at Wimbledon was often called "Manic Monday", because it was the busiest day with the last-16 matches for both men's and women's singles. Fans had a pick of watching on a single day any of the best 32 players left, which was also unique in a Grand Slam singles competition.<ref>{{cite news |url=https://www.independent.co.uk/sport/tennis/wimbledon/wimbledon-2017-manic-monday-what-is-it-court-times-roger-federer-andy-murray-rafael-nadal-novak-a7833151.html |title=Wimbledon 2017: What is Manic Monday |date=12 July 2017 |work=The Independent |access-date=15 September 2017 |archive-date=21 August 2017 |archive-url=https://web.archive.org/web/20170821011636/http://www.independent.co.uk/sport/tennis/wimbledon/wimbledon-2017-manic-monday-what-is-it-court-times-roger-federer-andy-murray-rafael-nadal-novak-a7833151.html |url-status=live }}</ref>
+
+From 2025, Wimbledon is the only remaining Grand Slam championship starting on a traditional Monday schedule.<ref>{{cite web|url=https://www.forbes.com/sites/manasipathak-1/2025/01/30/us-open-to-expand-main-draw-to-15-days-in-2025-with-sunday-start/|title=U.S. Open To Expand Main Draw To 15 Days In 2025 With Sunday Start|work=[[Forbes]]|last=Pathak|first=Manasi|date=January 30, 2025|access-date=February 1, 2025}}</ref>
+
+==Curfew==
+Unlike the other three majors, all matches have to finish before 11:00pm since 2009 to avoid an overtime late night finish. Wimbledon is the only Grand Slam that retains a night-time curfew. The curfew is in place to protect local residents from late-night disturbances. When the roof was built on Centre Court—something that allowed matches to continue at night under the lights—the local Merton Council put the time limit into place when granting planning permission for the roof.<ref>{{Cite web |url=https://www.express.co.uk/sport/tennis/1788320/Wimbledon-curfew-11pm-Novak-Djokovic-Rafael-Nadal |title=Wimbledon curfew: Why do players have to leave the court at 11pm? |work=[[Daily Express|The Express]] |date=6 July 2023 |access-date=6 July 2023 |archive-date=7 July 2023 |archive-url=https://web.archive.org/web/20230707162014/https://www.express.co.uk/sport/tennis/1788320/Wimbledon-curfew-11pm-Novak-Djokovic-Rafael-Nadal |url-status=live }}</ref>
+A statement from Wimbledon in 2018 read: "The 11pm curfew is a Planning Condition applied to balance the consideration of the local residents with the scale of an international tennis event that takes place in a residential area. The challenge of transport connectivity and getting visitors home safely is also a key consideration."<ref>{{Cite web |url=https://www.express.co.uk/sport/tennis/1788379/Wimbledon-crowd-boo-Stefanos-Tsitsipas-Andy-Murray |title=Wimbledon crowd boo Stefanos Tsitsipas as Andy Murray match reaches curfew |work=[[Daily Express|The Express]]  |date=6 July 2023 |access-date=6 July 2023 |archive-date=7 July 2023 |archive-url=https://web.archive.org/web/20230707162738/https://www.express.co.uk/sport/tennis/1788379/Wimbledon-crowd-boo-Stefanos-Tsitsipas-Andy-Murray |url-status=live }}</ref>
+
+==Players and seeding==
+Both the men's and ladies' singles consist of 128 players.<ref>{{cite web|title=FAQ: Facts and Figures|url=http://www.wimbledon.com/en_GB/about_aeltc/201205091336574376496.html|publisher=Wimbledon|access-date=27 May 2015|url-status=dead|archive-url=https://web.archive.org/web/20150419022018/http://www.wimbledon.com/en_GB/about_aeltc/201205091336574376496.html|archive-date=19 April 2015}}</ref> Players and doubles pairs are admitted to the main events on the basis of their international rankings, with 104 direct entries into the men's and 108 into the ladies' competitions. Both tournaments have 8 [[wild card (tennis)|wild card]] entrants, with the remainder in each made up of qualifiers. Since the 2001 tournament, 32 players have been given [[Seed (sports)|seedings]] in the Gentlemen's and Ladies' singles, 16 teams in the doubles events. The system of seeding was introduced during the [[1924 Wimbledon Championships]]. This was a simplified version allowing countries to nominate four players who were placed in different quarters of the draw. This system was replaced for the [[1927 Wimbledon Championships]] and from then on players were seeded on merit. The first players to be seeded as no. 1 were [[René Lacoste]] and [[Helen Wills]].<ref name=compendium2013>{{cite book|last=Little|first=Alan|title=2013 Wimbledon Compendium|edition=23rd|date=2013|publisher=The All England Lawn Tennis and Croquet Club|location=London|pages=163, 164, 200|isbn=978-1-899039-40-1}}</ref>
+
+The Committee of Management decide which players receive wildcards. Usually, wild cards are players who have performed well during previous tournaments or would stimulate public interest in Wimbledon by participating. The only wild card to win the Gentlemen's Singles Championship was [[Goran Ivanišević]] in 2001. Players and pairs who neither have high enough rankings nor receive wild cards may participate in a qualifying tournament held one week before Wimbledon at the [[Bank of England]] Sports Ground in [[Roehampton]]. The singles qualifying competitions are three-round events. From 2019 singles qualification will increase to 128 players and no doubles qualification will occur.<ref name=":0" /> Previously the same-sex doubles competitions lasted for only two rounds. There is no qualifying tournament for Mixed Doubles. The furthest that any qualifier has progressed in a Singles tournament is the semi-final round: [[John McEnroe]] in 1977 (Gentlemen's Singles), [[Vladimir Voltchkov]] in 2000 (Gentlemen's Singles), and [[Alexandra Stevenson]] in 1999 (Ladies' Singles).{{citation needed|date=July 2022}}
+
+Players are admitted to the junior tournaments upon the recommendations of their national tennis associations, on their [[World Tennis]] world rankings and, in the case of the singles events, on the basis of a qualifying competition. The Committee of Management determines which players may enter the four invitational events.
+
+The Committee seeds the top players and pairs on the basis of their rankings, but it could change the seedings based on a player's previous grass court performance. Since 2002 a seeding committee has not been required for the Gentlemen's Singles following an agreement with the ATP, and since the [[2021 Wimbledon Championships|2021 tournament]], the seeding has followed the same process as the ATP rankings.<ref name=seeding2021>{{Cite web|last=Jonathan|title=Wimbledon Drops Grass Court Seeding Formula For 2021 – peRFect Tennis|url=https://www.perfect-tennis.com/wimbledon-drops-grass-court-seeding-formula-for-2021/|access-date=25 June 2021|website=perfect-tennis.com|date=10 July 2020 |archive-date=25 June 2021|archive-url=https://web.archive.org/web/20210625105318/https://www.perfect-tennis.com/wimbledon-drops-grass-court-seeding-formula-for-2021/|url-status=live}}</ref>  From 2002 to 2019, the top 32 players (according to the ATP rankings) were seeded according to a formula that more heavily weighted previous grass-court tournaments: ATP Entry System Position points + 100% points earned for all grass court tournaments in the past 12 months + 75% points earned for the best grass court tournament in the 12 months before that.<ref name=seedingexplained>{{cite news |last=Tebbutt |first=Tom |date=16 June 2010 |title=Explaining Wimbledon's seeding method |url=https://www.theglobeandmail.com/sports/more-sports/explaining-wimbledons-seeding-method/article4322158/ |newspaper=The Globe and Mail |access-date=17 June 2016 |archive-date=11 March 2016 |archive-url=https://web.archive.org/web/20160311065105/http://www.theglobeandmail.com/sports/more-sports/explaining-wimbledons-seeding-method/article4322158/ |url-status=live }}</ref><ref name=seeding-medium>{{cite web |url=https://medium.com/the-sports-niche/all-you-need-to-know-about-the-seeding-methodology-used-in-wimbledon-2019-in-depth-data-driven-6f9a3f32e058 |title=All you need to know about the seeding methodology used in Wimbledon 2019 – In depth data driven discussion about the method and its effectiveness |last=Jayasinghe |first=Indika |work=Medium |date=30 June 2019 |access-date=30 June 2021 |archive-date=27 June 2021 |archive-url=https://web.archive.org/web/20210627124111/https://medium.com/the-sports-niche/all-you-need-to-know-about-the-seeding-methodology-used-in-wimbledon-2019-in-depth-data-driven-6f9a3f32e058 |url-status=live }}</ref> 
+
+A majority of the entrants are unseeded. Only two unseeded players have won the Gentlemen's Singles: [[Boris Becker]] in 1985 and Goran Ivanišević in 2001. In 1985 there were only 16 seeds and Becker was ranked 20th; Ivanišević was ranked 125th when he won as a Wild Card entrant, although he had previously been a finalist three times, and been ranked no. 2 in the world; his low ranking was due to having been hampered by a persistent shoulder injury for three years, which had only just cleared up. In 1996, the title was won by [[Richard Krajicek]], who was originally unseeded (ranked 17th, and only 16 players were seeded) but was promoted to a seeded position (still with the number 17) when Thomas Muster withdrew before the tournament. In 2023, the Ladies' Singles title was captured for the first time by an unseeded player, [[Markéta Vondroušová]], who ranked 42 in the world.<ref>{{cite news |last1=Tumaini |first1=Carayol |title=Unseeded Marketa Vondrousova stuns Ons Jabeur to win Wimbledon title |url=https://www.theguardian.com/sport/2023/jul/15/unseeded-marketa-vondrousova-stuns-ons-jabeur-to-win-wimbledon-title |access-date=15 July 2023 |work=The Observer |archive-date=27 August 2023 |archive-url=https://web.archive.org/web/20230827112715/https://www.theguardian.com/sport/2023/jul/15/unseeded-marketa-vondrousova-stuns-ons-jabeur-to-win-wimbledon-title |url-status=live }}</ref> Previously, the lowest seeded female champion was [[Venus Williams]], who won in 2007 as the 23rd seed; Williams was returning from an injury that had prevented her playing in previous tournaments, giving her a lower ranking than she would normally have had. Unseeded pairs have won the doubles titles on numerous occasions; the 2005 Gentlemen's Doubles champions were not only unseeded, but also (for the first time ever) qualifiers.
+
+==Grounds==
+[[File:cmglee Wimbledon Championships venue aerial.jpg|thumb|right|Aerial view of the grounds]]
+{{Main|All England Lawn Tennis and Croquet Club}}
+
+Since 2001, the courts used for Wimbledon have been sown with 100% [[ryegrass|perennial ryegrass]]. Prior to 2001 a combination of 70% ryegrass and 30% [[Creeping Red Fescue]] was used. The change was made to improve durability and strengthen the sward to better withstand the increasing wear of the modern game.<ref>{{cite web|title=Wimbledon grass |url=http://www.wimbledon.com/en_GB/about_aeltc/201205091336575251545.html |publisher=Wimbledon Championship |access-date=7 February 2015 |url-status=dead |archive-url=https://web.archive.org/web/20130507105351/http://www.wimbledon.com/en_GB/about_aeltc/201205091336575251545.html |archive-date= 7 May 2013 }}</ref>
+
+The main show courts, [[Centre Court]] and [[No. 1 Court (Wimbledon)|No. 1 Court]], are normally used for only two weeks a year, during the Championships, but play can extend into a third week in exceptional circumstances. The remaining 17 courts are regularly used for other events hosted by the club. The show courts were in action for the second time in three months in 2012 as Wimbledon hosted the tennis events of the [[2012 Summer Olympics|2012 Olympic Games]]. One of the show courts is also used for home ties for the [[Great Britain Davis Cup team|Great Britain teams]] in the [[Davis Cup]] on occasions.
+
+Wimbledon is the only remaining [[Grand Slam (tennis)|Grand Slam]] event played on natural grass courts. At one time, all the Majors, except the French Open, were played on grass. The [[US Open (tennis)|US Open]] abandoned grass in 1975 for [[green clay]] and the Australian Open did so in 1988 for [[hard court]]s; the US Open eventually adopted hard courts as well.
+
+From 1877 until 1921, the club's grounds were situated on four acres of meadowland in central Wimbledon between Worple Road and the railway line. In 1908, this venue hosted the tennis events for the [[Tennis at the 1908 Summer Olympics|1908 Summer Olympic Games]].  As the attendance at the Championships grew, it became obvious before the First World War that the 8,000 ground capacity at Worple Road was inadequate, and so the Club started looking for a new site. It eventually settled on an area of land off Church Road, to the north of Wimbledon town centre, and moved to its new home in 1922. At the time the relocation was regarded as something of a financial gamble, costing as it did approximately £140,000. After the Club moved to the current site in Church Road, the old Worple Road ground then became the [[Wimbledon High School]] playing field, which it remains today.
+
+The principal court at Church Road, Centre Court, was inaugurated in 1922. The new venue was substantially larger and was needed to meet the ever-growing public demand. 
+[[File:Wimbledon order of play.jpg|thumb|left|The order of play for all courts is displayed on boards around the grounds.]]
+
+Due to the possibility of rain during Wimbledon, a retractable roof was installed prior to the 2009 Championship. It is designed to close/open fully in 20 minutes and will be closed primarily to protect play from inclement (and, if necessary, extremely hot) weather during The Championships.<ref>{{cite web |url=http://www.wimbledon.com/en_GB/about_aeltc/201205091336573017483.html |title=Wimbledon – Centre Court roof |publisher=[[AELTC]] |access-date=1 September 2012 |archive-date=7 May 2013 |archive-url=https://web.archive.org/web/20130507072507/http://www.wimbledon.com/en_GB/about_aeltc/201205091336573017483.html |url-status=live }}</ref> Whilst the roof is being opened or closed, play is suspended. The first time the roof was closed during a Wimbledon Championship match was on Monday 29 June 2009, involving [[Amélie Mauresmo]] and [[Dinara Safina]]. The first full match played and completed under the roof featured [[Andy Murray]] and [[Stan Wawrinka]], played on the same date.
+
+The court has a capacity of 14,979. At its south end is the [[Royal Box, Centre Court|Royal Box]], from which members of the Royal Family and other dignitaries watch matches. Centre Court usually hosts the finals and semifinals of the main events, as well as many matches in the earlier rounds involving top-seeded players or local favourites.
+
+The second most important court is No. 1 Court. The court was constructed in 1997 to replace the old No.1 Court, which was adjacent to Centre Court.  The old No.1 Court was demolished because its capacity for spectators was too low. The court was said to have had a unique, more intimate atmosphere and was a favourite of many players. Construction of a new retractable roof on the No.1 Court began after the 2017 Championships and was completed in time for the 2019 championships. The capacity of the stadium also rose by 900 to 12,345.<ref>{{cite web|url=https://www.forbes.com/sites/timnewcomb/2019/06/11/wimbledons-new-no1-court-roof-marks-2019-stadium-changes/#44f3501c667f|title=New No. 1 Court Roof Among Stadium Changes For Wimbledon 2019|work=Forbes|date=11 June 2019|access-date=16 June 2019|archive-date=18 April 2021|archive-url=https://web.archive.org/web/20210418070918/https://www.forbes.com/sites/timnewcomb/2019/06/11/wimbledons-new-no1-court-roof-marks-2019-stadium-changes/#44f3501c667f|url-status=live}}</ref>
+
+Since 2009, a new [[No. 2 Court (Wimbledon)|No. 2 Court]] has been used at Wimbledon with a capacity for 4,000 people. To obtain [[planning permission]], the playing surface is around 3.5m below ground level, ensuring that the single-storey structure is only about 3.5m above ground level, and thus not affecting local views.<ref name="Wim 18">{{cite web |url=https://www.aeltc.com/cms/media/pressreleases/no2_24_04_07.aspx |title=Tickets – 2013 Wimbledon Championships Website – Official Site by IBM |publisher=[[AELTC]].com |access-date=6 July 2013 |archive-date=7 July 2011 |archive-url=https://web.archive.org/web/20110707091716/https://www.aeltc.com/cms/media/pressreleases/no2_24_04_07.aspx |url-status=live }}</ref> Plans to build on the current site of Court 13 were dismissed due to the high capacity of games played at the 2012 Olympic Games. The old No.2 Court has been renamed as [[No. 3 Court (Wimbledon)|No.3 Court]]. The old No.2 Court was known as the "Graveyard of Champions" because many highly seeded players were eliminated there during early rounds over the years, including [[Ilie Năstase]], [[John McEnroe]], [[Boris Becker]], [[Andre Agassi]], [[Pete Sampras]], [[Martina Hingis]], [[Venus Williams]], [[Serena Williams]] and [[Maria Sharapova]].<ref>{{cite web |url=http://wimbledontennis.wordpress.com/2009/05/26/how-the-graveyard-of-champions-got-its-name/ |title=How the 'Graveyard of champions' got its name |date=26 May 2009 |publisher=Blog.wimbledon.org |access-date=11 December 2014 |archive-date=10 July 2014 |archive-url=https://web.archive.org/web/20140710110908/http://wimbledontennis.wordpress.com/2009/05/26/how-the-graveyard-of-champions-got-its-name/ |url-status=live }}</ref> The court has a capacity of 2,192 + 770 standing. In 2011 a new No.3 Court and a new Court 4 were unveiled on the sites of the old No.2 and 3 courts.<ref>{{cite web |url=http://www.aeltc.com/cms/debentures/about/longtermplan.aspx |title=Wimbledon Debentures – About Debentures – The Long Term Plan |publisher=[[AELTC]].com |access-date=26 July 2010 |url-status=dead |archive-url=https://web.archive.org/web/20110608080457/http://www.aeltc.com/cms/debentures/about/longtermplan.aspx |archive-date=8 June 2011 }}</ref>
+[[File:Wimbledon court No. 1.JPG|thumb|View from seats of Wimbledon Court No. 1]]
+Because of the summer climate in southern England, Wimbledon employs 'Court Attendants' each year, who work to maintain court conditions. Their principal responsibility is to ensure that the courts are quickly covered when it begins to rain, so that play can resume as quickly as possible once the referees decide to uncover the courts. The outer court attendants are mainly university students working to make summer money. Centre Court is covered by full-time groundstaff, however.
+
+At the northern end of the grounds is a giant television screen on which important matches are broadcast to fans inside the grounds without tickets to the relevant court. Fans watch from a gently inclined area of grass officially known as the [[Aorangi Terrace]]. When British players do well at Wimbledon, this area attracts fans for them, and is often renamed after them by the press: [[Greg Rusedski]]'s followers convened at "Rusedski Ridge", and [[Tim Henman]] has had the hill nicknamed [[Henman Hill]]. As both of them have now retired and Andy Murray is the most successful current British player, the hill is occasionally referred to as "Murray Mound" or "[[Murrayfield Stadium|Murrayfield]]", as a reference to his Scottish heritage and the Scottish rugby ground of the same name, but this has largely failed to catch on – the area is still often referred to as Henman Hill.{{citation needed|date=July 2022}} None of these nicknames are the official name.
+
+===1913 suffragette terror attack===
+{{see also|Suffragette bombing and arson campaign}}
+An attempt was made to destroy the grounds in 1913, during the [[suffragette bombing and arson campaign]]. The [[suffragettes]], as part of their campaign for women's votes before the First World War, had begun carrying out politically motivated [[arson]] and bombings across the country.<ref>{{cite news |title=Suffragettes, violence and militancy |url=https://www.bl.uk/votes-for-women/articles/suffragettes-violence-and-militancy |access-date=25 September 2021 |work=British Library |archive-date=10 September 2021 |archive-url=https://web.archive.org/web/20210910203912/https://www.bl.uk/votes-for-women/articles/suffragettes-violence-and-militancy |url-status=live }}</ref> On the night of 27 February 1913, a suffragette woman "between the ages of 30–35" was arrested within the grounds, after being spotted by a groundsman climbing over a hedge at around midnight.<ref name="Kay">{{cite journal |last1=Kay |first1=Joyce |title=It Wasn't Just Emily Davison! Sport, Suffrage and Society in Edwardian Britain |journal=The International Journal of the History of Sport |date=2008 |volume=25 |issue=10 |page=1342 |doi=10.1080/09523360802212271 |s2cid=154063364 |url=https://www.tandfonline.com/doi/full/10.1080/09523360802212271 |access-date=25 September 2021 |archive-date=25 September 2021 |archive-url=https://web.archive.org/web/20210925163025/https://www.tandfonline.com/doi/full/10.1080/09523360802212271 |url-status=live |url-access=subscription }}</ref> She was found to have with her some [[kerosene|paraffin]] and wood shavings, for the purpose of setting fires in the grounds.<ref name="Kay"/> The woman refused to give her name or any information to the police and was later sentenced to two months' imprisonment.<ref name="Kay"/>
+
+===Bank of England Sports Centre===
+
+The qualifying matches, prior to the main draw, take place at the [[Bank of England Ground|Bank of England Sports Ground]], in [[Roehampton]], {{convert|3.6|mi|km|1}} from the All England Club.<ref>{{cite web |url=http://www.wimbledon.com/en_GB/atoz/qualifying.html |title=Qualifying – Information on The Championships Qualifying Competition |publisher=Wimbledon |access-date=1 July 2017 |archive-date=17 June 2017 |archive-url=https://web.archive.org/web/20170617102906/http://www.wimbledon.com/en_GB/atoz/qualifying.html |url-status=live }}</ref>
+
+==Traditions==
+[[File:Wimbledon Court 10 2004 RJL.JPG|thumb|Court 10. On the outside courts there is no reserved seating.]]
+
+Social commentator [[Ellis Cashmore]] describes Wimbledon as having "a [[David Niven]]-ish propriety", in trying to conform to the standards of behaviour regarded as common in the 1950s. Writer [[Peter York]] sees the event as representing a particular white, upper middle class, affluent type of Britishness, describing the area of Wimbledon as "a southern, well off, late-Victorian suburb with a particular social character". Cashmore has criticised the event for being "remote and insulated" from the changing multicultural character of modern Britain, describing it as "nobody's idea of all-things-British".<ref name="cnn">{{cite web|url=https://edition.cnn.com/2012/06/25/sport/tennis/tennis-wimbledon-preview-york-olympics-identity/index.html|title=Game, set and match: What Wimbledon says about the British|author-first1=James |author-last1=Montague|website=CNN|date=25 June 2012|access-date=2 July 2017|archive-date=23 August 2017|archive-url=https://web.archive.org/web/20170823223444/http://edition.cnn.com/2012/06/25/sport/tennis/tennis-wimbledon-preview-york-olympics-identity/index.html|url-status=live}}</ref>{{importance inline|date=July 2022}}
+
+===Ball boys and ball girls===
+In the championship games, [[ball boy]]s and girls, known as BBGs, have a brief that a good BBG "should not be seen. They should blend into the background and get on with their jobs quietly."<ref>{{Deprecated archive|url=https://archive.today/20130114062047/http://www.telegraph.co.uk/core/Content/displayPrintable.jhtml?xml=/arts/2006/06/29/ftballs29.xml&site=6&page=0|title=Strawberries, cream and BBGs}}. ''The Daily Telegraph'' (London), 29 June 2006.</ref>
+
+From 1947 ball boys were recruited from Goldings,<ref>{{cite web |url=http://www.goldonian.org/wimbledon/goldings_ballboys.htm |title=Goldings Ballboys |publisher=Goldonian.org |date=26 June 2004 |access-date=14 September 2010 |archive-date=11 June 2015 |archive-url=https://web.archive.org/web/20150611085753/http://www.goldonian.org/wimbledon/goldings_ballboys.htm |url-status=live }}</ref> the only [[Barnardos]] school to provide them. Prior to this, from the 1920s onwards, the ball boys came from [[Anthony Ashley-Cooper, 7th Earl of Shaftesbury|The Shaftesbury Children's Home]].
+[[File:Wimbledon ballgirl 2007.jpg|thumb|left|Wimbledon ball girl at the net, in the 2007 edition]]
+Since 1969, BBGs have been drawn from local schools. Traditionally, [[Wandsworth School|Wandsworth Boys School]] in Sutherland Grove, Southfields and Mayfield Girls School on [[West Hill, Wandsworth|West Hill]] in Wandsworth (only Southfields remains extant), were the schools of choice for selection of BBGs. This was possibly owing to their proximity to the club. Since 2008 they have been drawn from schools in the London boroughs of [[London Borough of Merton|Merton]], [[London Borough of Sutton|Sutton]], [[Royal Borough of Kingston upon Thames|Kingston]], and [[London Borough of Wandsworth|Wandsworth]], as well as from [[Surrey]].<ref name=BBG>{{cite web|title=Ball Boys and Ball Girls|url=http://www.wimbledon.com/en_GB/atoz/ball_boys_and_ball_girls.html|website=www.wimbledon.com|publisher=[[AELTC]]|access-date=4 January 2017|archive-date=5 September 2015|archive-url=https://web.archive.org/web/20150905081225/http://www.wimbledon.com/en_GB/atoz/ball_boys_and_ball_girls.html|url-status=live}}</ref> BBGs have an average age of 15, being drawn from the school years [[Year Nine|nine]] and [[Year Ten|ten]].<ref name="Official Site">[https://www.wimbledon.com/en_GB/atoz/ball_boys_and_ball_girls.html Official site] {{Webarchive|url=https://web.archive.org/web/20220705191221/https://www.wimbledon.com/en_GB/atoz/ball_boys_and_ball_girls.html |date=5 July 2022 }} BBGs at The Championships</ref> They serve for one, or if re-selected, for up to five tournaments, up to year thirteen.<ref>[http://www.wimbledon.com/en_GB/about_aeltc/201205091336572473808.html Official site] {{webarchive|url=https://web.archive.org/web/20130507113749/http://www.wimbledon.com/en_GB/about_aeltc/201205091336572473808.html |date=7 May 2013 }} About the Ball Boys and Girls</ref>
+
+Starting in 2005, BBGs work in teams of six, two at the net, four at the corners, and teams rotate one hour on court, one hour off, (two hours depending on the court) for the day's play.<ref name="Official Site" /> Teams are not told which court they will be working on the day, to ensure the same standards across all courts. With the expansion of the number of courts, and lengthening the tennis day, as of 2008, the number of BBGs required is around 250. Starting on the second Wednesday, the number of BBGs is reduced due to the decrease in the number of matches per day, leaving around 80 on the final Sunday. Each BBG receives a certificate, a can of used balls, a group photograph and a programme when leaving. BBG service is paid, with a total of £160-£250 being paid to each ball boy or girl after the 13-day period, depending on the number of days served, around £17 per day. Every BBG keeps their kit. BBG places are split 50:50 between boys and girls, with girls having been included since 1977, appearing on centre court since 1985.<ref>{{cite web|title=About Wimbledon – Behind the scenes – Ball boys and ball girls|url=http://www.wimbledon.com/en_GB/behind_the_scenes/201205091336567795051.html|publisher=[[AELTC]]|access-date=1 September 2012|archive-date=13 September 2021|archive-url=https://web.archive.org/web/20210913132931/https://www.wimbledon.com/en_GB/behind_the_scenes/201205091336567795051.html|url-status=live}}</ref>
+
+Prospective BBGs are first nominated by their school representative, to be considered for selection. To be selected, a candidate must pass written tests on the rules of tennis, and pass fitness, mobility and other suitability tests, against initial preliminary instruction material. Successful candidates then commence a training phase, starting in February, in which the final BBGs are chosen through continual assessment. As of 2008, this training intake was 300. The training includes weekly sessions of physical, procedural and theoretical instruction, to ensure that the BBGs are fast, alert, self-confident and adaptable to situations. As of 2011, early training occurs at the Wimbledon All England Lawn Tennis Club Community Centre, before moving to  the Wimbledon All England Lawn Tennis Club Covered Courts, to the side of the Grounds, and then to outside courts (8, 9, 10) the week before the Championships to ensure that BBGs gain a feel of the grass court.{{citation needed|date=July 2022}}
+
+===Umpires===
+[[File:Wimbledon umpires (9288797574).jpg | thumb | right | Umpires Magdi Somat and [[Carlos Bernardes]] between Wimbledon matches in 2013]]
+At The Championships at Wimbledon, forty-two chair umpires are assigned each day and usually work two matches a day. They use tablet computers to score each match and these scores are displayed on the scoreboards and on wimbledon.com.<ref>{{cite web |title=Umpires |url=https://www.wimbledon.com/en_GB/atoz/umpires.html |website=www.wimbledon.com |access-date=2 March 2023 |archive-date=2 March 2023 |archive-url=https://web.archive.org/web/20230302005701/https://www.wimbledon.com/en_GB/atoz/umpires.html |url-status=live }}</ref> Line umpires worked in teams of nine or seven. Teams of nine umpires worked the Centre Court and Court numbers 1, 2, 3, 12, and 18 with the remaining teams of seven working the other courts. These teams rotated, working sixty minutes on the court and then sixty minutes off.
+
+In 2007 a new technology called Hawk-Eye was introduced.<ref>{{Cite news |date=23 May 2007 |title=Hawk-Eye to make Wimbledon debut |language=en-GB |work=BBC Sport |url=https://news.bbc.co.uk/sport2/hi/tennis/6684409.stm |access-date=21 July 2023 |archive-date=21 July 2023 |archive-url=https://web.archive.org/web/20230721114526/http://news.bbc.co.uk/sport2/hi/tennis/6684409.stm |url-status=live }}</ref> This technology showed whether the ball bounced in bounds or out. Wimbledon started using this technology but continued to use line umpires as well. However the players were only allowed to ask to see this 3 times during one set.<ref>{{cite web |last1=Addicott |first1=Adam |title=EXCLUSIVE: Wimbledon Says No To Replacing Line Umpires With Hawk-Eye, But Others Say Yes |url=https://www.ubitennis.net/2021/07/exclusive-wimbledon-says-no-to-replacing-line-umpires-with-hawk-eye-but-others-say-yes/ |website=UBITENNIS |access-date=1 March 2023 |date=9 July 2021 |archive-date=2 March 2023 |archive-url=https://web.archive.org/web/20230302005709/https://www.ubitennis.net/2021/07/exclusive-wimbledon-says-no-to-replacing-line-umpires-with-hawk-eye-but-others-say-yes/ |url-status=live }}</ref>
+
+Line umpires and the ability to challenge calls made during a match were axed, starting from the 2025 Championships, due to the professional tennis tours adopting the Hawk-Eye Live technology from the 2025 season for any tournament capable of supporting it, bringing an end to the 147 years of traditional scenes of line umpires walking to and from the courts during matches. The only umpire on the court will now be the chair umpire, although the new role of match assistants will be created to escort players to the bathroom or take their racquets to the stringer.<ref name=line/><ref name= tech/>
+
+===Colours and uniforms===
+[[File:Wimbledon Grojean 2004 RJL.JPG|thumb|[[Sébastien Grosjean]] takes a shot on Court 18 during the [[2004 Wimbledon Championships|2004 Championships]].]]
+Dark green and purple are the traditional Wimbledon colours. However, all tennis players participating in the tournament are required to wear all-white or at least almost all-white clothing, a long-time tradition at Wimbledon.<ref>{{cite web|title=Game and All Set for a Match: Wimbledon and our Inner Tennis Player|url=http://www.thegreenrooms.net/research-and-articles/game-and-all-set-for-a-match-wimbledon-and-our-inner-tennis-player/|publisher=The Green Rooms|access-date=15 January 2014}}</ref>{{New archival link needed|date=April 2026}}{{efn|name=clothing_guidelines|Guidelines regarding the prominently-white clothing rule include no solid mass of colouring; coloured trims not to exceed 1{{nbsp}}cm; shirt or dress backs to be totally white; all other items of clothing, including shorts, shirts, caps, headbands, socks, and shoe uppers to be predominantly white. In 2023 rules first allowed all female players, included but not limited to in the girls' singles junior event, to wear non-white underwear; the new rule allows "solid, mid/dark-coloured undershorts, provided they are no longer than their shorts or skirt".<ref name="auto">{{Cite news|url=https://www.nytimes.com/athletic/4634722/2023/07/02/wimbledon-period-all-white-dress-code/|title=Wimbledon are relaxing their all-white dress code to ease the stress of women's periods|first1=Nancy|last1=Froston|first2=Charlie|last2=Eccleshare|work=The New York Times |date=17 October 2023 |via=NYTimes.com}}</ref><ref>{{cite news | url=http://www.wimbledon.com/en_GB/atoz/clothing_and_equipment.html | work=Wimbledon | title=Clothing and equipment | access-date=12 July 2016 | url-status=dead | archive-url=https://web.archive.org/web/20160712041512/http://www.wimbledon.com/en_GB/atoz/clothing_and_equipment.html | archive-date=12 July 2016 | df=dmy-all }}</ref>}} This rule was put in place in 1963, when the tournament's first dress code was enforced.<ref>{{Cite web |first=Tim |last=Newcomb |url=https://www.forbes.com/sites/timnewcomb/2019/06/24/whats-with-wimbledons-white-rule-and-how-do-brands-approach-design/ |title=What's With Wimbledon's White Rule, And How Do Brands Approach Designing For Tennis Players? |website=Forbes |access-date=24 June 2019 |archive-date=6 October 2022 |archive-url=https://web.archive.org/web/20221006125700/https://www.forbes.com/sites/timnewcomb/2019/06/24/whats-with-wimbledons-white-rule-and-how-do-brands-approach-design/?sh=30ef7ad3a8fd |url-status=live}}</ref> Wearing white clothing with some colour accents is also acceptable, provided the colour scheme is not that of an identifiable commercial brand logo (the outfitter's brand logo being the sole exception). Controversy followed [[Martina Navratilova]]'s wearing branding for "Kim" cigarettes in 1982. In 2023 rules first allowed all female players, included but not limited to in the girls' singles junior event, to wear non-white underwear; the new rule allows "solid, mid/dark-coloured undershorts, provided they are no longer than their shorts or skirt".<ref name="auto"/> Green clothing was worn by the chair umpire, linesmen, ball boys and ball girls until the 2005 Championships; however, beginning with the 2006 Championships, officials, ball boys and ball girls were dressed in new navy blue- and cream-coloured uniforms from American designer [[Ralph Lauren]].
+
+===Referring to players===
+By tradition, the "Men's" and "Women's" competitions are referred to as "Gentlemen's" and "Ladies'" competitions at Wimbledon. The junior competitions are referred to as the "Boys'" and "Girls'" competitions.
+
+Prior to 2009, female players were referred to by the title "Miss" or "Mrs" on scoreboards. On the Wimbledon's Champions Board, married female players were referred to by their husband's name up until 2019. For the first time during the 2009 tournament, players were referred to on scoreboards by both their first and last names.<ref>{{cite news|title=Why has Wimbledon dropped 'Miss'?|url=https://news.bbc.co.uk/2/hi/uk_news/magazine/8126223.stm|work=BBC|date=30 June 2009|access-date=28 February 2015|archive-date=3 July 2009|archive-url=https://web.archive.org/web/20090703043116/http://news.bbc.co.uk/2/hi/uk_news/magazine/8126223.stm|url-status=live}}</ref>
+
+The title "Mr" is not used for male players who are professionals on scoreboards but is retained for amateurs, although chair umpires refer to players as "Mr" when they use the replay challenge. The chair umpire will say "Mr <surname> is challenging the call..." and "Mr. <surname> has X challenges remaining." Up until 2018, the chair umpire said "Miss"/"Mrs" <surname> when announcing the score of the Ladies' matches. However, the chair umpire no longer calls "Miss"/"Mrs" <surname> when announcing the score, since 2019.<ref>{{cite news |url=https://www.nytimes.com/2019/07/01/sports/wimbledon-wedded-to-tradition-steps-into-the-present.html |title=Wimbledon, Wedded to Tradition, Steps into the Present |author-first1=Ben |author-last1=Rothenberg |date=1 July 2019 |work=The New York Times |access-date=1 July 2019 |archive-date=1 July 2019 |archive-url=https://web.archive.org/web/20190701124402/https://www.nytimes.com/2019/07/01/sports/wimbledon-wedded-to-tradition-steps-into-the-present.html |url-status=live }}</ref> As of the 2022 edition of the tournament, the use of Mr, Miss and Mrs was eliminated: players are now referred to by their names, as written on the scoreboard by the umpire at all points in a match.
+
+If a match is being played with two competitors of the same surname (e.g. Venus and Serena Williams, Bob and Mike Bryan), the chair umpire will specify to whom they are referring by stating the player's first name and surname during announcements (e.g. "Game, Venus Williams", "Advantage, Mike Bryan").
+
+===Royal family===
+[[File:The Royal Gallery at Centre Court, Wimbledon.jpg|thumb|right|The Royal Gallery at Centre Court, Wimbledon]]
+Previously, players bowed or curtsied to members of the [[British royal family|royal family]] seated in the [[Royal Box, Centre Court|Royal Box]] upon entering or leaving Centre Court. However, in 2003, All England Club president [[Prince Edward, Duke of Kent]] decided to discontinue the tradition. Now, players are required to bow or curtsy only if the [[Prince of Wales]] or the [[List of British monarchs|King]] is present,<ref>{{cite web |url=http://www.wimbledon.com/en_GB/about_aeltc/201205091336583247824.html |title=Wimbledon – The Royal Box |publisher=[[AELTC]] |website=www.wimbledon.com |access-date=28 August 2014 |archive-date=3 September 2014 |archive-url=https://web.archive.org/web/20140903092323/http://www.wimbledon.com/en_GB/about_aeltc/201205091336583247824.html |url-status=live }}</ref> as was in practice during the 2010 Championships when [[Elizabeth II]] was in attendance at Wimbledon on 24 June.<ref>{{cite news |last=Eden |first=Richard |url=https://www.telegraph.co.uk/sport/tennis/andymurray/7728927/Advantage-Andy-Murray-as-the-Queen-visits-Wimbledon.html |title=Advantage Andy Murray as the Queen visits Wimbledon |work=The Daily Telegraph |date=15 May 2010 |access-date=26 July 2010 |location=London |url-status=dead |archive-url=https://web.archive.org/web/20100524010028/http://www.telegraph.co.uk/sport/tennis/andymurray/7728927/Advantage-Andy-Murray-as-the-Queen-visits-Wimbledon.html |archive-date=24 May 2010 }}</ref>
+On 27 June 2012, Roger Federer said in his post-match interview that he and his opponent had been asked to bow towards the Royal Box as [[Charles III|Prince Charles]] and [[Queen Camilla|his wife]] were present, saying that it was not a problem for him.<ref>{{cite news | url=https://www.espn.com/tennis/wimbledon12/story/_/id/8101137/wimbledon-2012-roger-federer-wins-prince-charles | work=ESPN | title=Roger Federer advances to 3rd round | date=27 June 2012 | access-date=20 August 2012 | archive-date=15 July 2016 | archive-url=https://web.archive.org/web/20160715003829/http://espn.go.com/tennis/wimbledon12/story/_/id/8101137/wimbledon-2012-roger-federer-wins-prince-charles | url-status=live }}</ref>
+
+===Services stewards===
+[[File:Wimbledon_scoreboard.jpg|thumb|right|A Royal Marines Commando as a services steward in 2005]]
+
+Prior to the Second World War, members of the [[Brigade of Guards]] and retired members of the [[Royal Artillery]] performed the role of stewards. In 1946 the AELTC offered employment to wartime servicemen returning to civilian life during their demobilisation leave. Initially, this scheme extended only to the [[Royal Navy]], followed by the [[British Army]] in 1947 and the [[Royal Air Force]] in 1949. In 1965 [[London Fire Brigade]] members joined the ranks of stewards.<ref>{{cite web|url=https://www.facebook.com/ArmyWestMidlands/posts/590494050995421  |archive-url=https://ghostarchive.org/iarchive/facebook/550154565029370/590494050995421 |archive-date=26 February 2022 |url-access=limited|title=Follow my blog as a steward at Wimbledon |publisher=Army West Midlands }}{{cbignore}}</ref> The service stewards, wearing uniform, are present in Centre Court and No.'s 1, 2, 3, 12 and 18 courts.<ref>{{cite news |last=Hamilton |first=Leigh |url=https://www.gov.uk/government/news/wimbledon-fans-show-pride-in-armed-forces |title=Wimbledon fans show pride in Armed Forces |work=Defence News |date=2 July 2010 |access-date=10 July 2016 |location=London |archive-date=19 August 2016 |archive-url=https://web.archive.org/web/20160819044914/https://www.gov.uk/government/news/wimbledon-fans-show-pride-in-armed-forces |url-status=live }}</ref> In 2015, 595 Service and London Fire Brigade stewards attended.<ref>{{cite web |url=http://www.wimbledon.com/en_GB/atoz/faq_and_facts_and_figures.html |title=Wimbledon – Facts and Figures |publisher=[[AELTC]] |website=www.wimbledon.com |access-date=10 July 2016 |archive-date=14 June 2015 |archive-url=https://web.archive.org/web/20150614124314/http://www.wimbledon.com/en_GB/atoz/faq_and_facts_and_figures.html |url-status=live }}</ref> Only enlisted members of the Armed Forces may apply for the role, which must be taken as leave, and half of each year's recruits must have stewarded at Wimbledon before. The AELTC pays a subsistence allowance to servicemen and women working as stewards to defray their accommodation costs for the period of the Championships. The Service Stewards are not to be confused with the 185 Honorary Stewards.
+
+===Tickets===
+[[File:WimbledonResaleTicket2016.jpg|thumb|right|Wimbledon operates a ticket resale system where returned Show Court tickets can be purchased.<ref>{{cite web|title=Ticket Resale Kiosk|url=http://www.wimbledon.com/en_GB/atoz/ticket_resale_kiosk.html|website=www.wimbledon.com|publisher=[[AELTC]]|access-date=21 August 2016|archive-date=22 August 2016|archive-url=https://web.archive.org/web/20160822235013/http://www.wimbledon.com/en_GB/atoz/ticket_resale_kiosk.html|url-status=live}}</ref> All proceeds go to charity.<ref>{{cite web|title=Ticket Resale – where does it go?|url=http://www.wimbledon.com/en_GB/news/articles/2015-07-27/ticket_resale_where_does_it_go.html|website=www.wimbledon.com|publisher=[[AELTC]]|access-date=21 August 2016|date=27 July 2015|archive-date=22 August 2016|archive-url=https://web.archive.org/web/20160822220419/http://www.wimbledon.com/en_GB/news/articles/2015-07-27/ticket_resale_where_does_it_go.html|url-status=live}}</ref>]]
+[[File:All England Lawn Tennis Ground Ltd 1930.jpg|thumb|Debenture of the All England Lawn Tennis Ground Ltd., issued 20th August 1930]]
+
+The majority of centre and show court tickets sold to the general public have since 1924 been made available by a public ballot that the All England Lawn Tennis and Croquet Club holds at the start of the year.<ref>{{cite web|title=Ballot|url=http://www.wimbledon.com/en_GB/tickets/201205091336562669724.html|publisher=[[AELTC]]|access-date=25 January 2013|url-status=dead|archive-url=https://web.archive.org/web/20130219172911/http://www.wimbledon.com/en_GB/tickets/201205091336562669724.html|archive-date=19 February 2013}}</ref> The ballot has always been substantially oversubscribed. Successful applicants are selected at random by a computer.<ref>{{cite web|title=Tickets|url=http://www.wimbledon.com/en_GB/tickets/index.html|publisher=[[AELTC]]|access-date=1 September 2012|archive-date=24 September 2022|archive-url=https://web.archive.org/web/20220924142452/https://www.wimbledon.com/en_GB/tickets/index.html|url-status=live}}</ref> The most recent figures from 2011 suggested there were four applicants to every ballot ticket. Applications must be posted to arrive at the AELTC by the last day of December in the year prior to the tournament. Seats and days are allocated randomly and ballot tickets are not transferable.
+
+The All England Club, through its subsidiary The All England Lawn Tennis Ground plc, issues [[Debenture (sport)|debentures]] to tennis fans every five years to raise funds for capital expenditure. Fans who invest thus in the club receive a pair of tickets for every day of the Wimbledon Championships for the five years the investment lasts.<ref>{{cite web|url=http://www.aeltc.com/cms/debentures/about/About.aspx |title=Wimbledon Debentures – About Debentures – About Wimbledon Debentures |publisher=[[AELTC]].com |access-date=26 July 2010 |url-status=dead |archive-url=https://web.archive.org/web/20100723005314/http://www.aeltc.com/cms/debentures/about/About.aspx |archive-date=23 July 2010 }}</ref> Only debenture holders are permitted to sell on their tickets to third parties and demand for debentures has increased in recent{{when|date=July 2022}} years, to such an extent that they are even traded on the [[London Stock Exchange]].{{citation needed|date=July 2022}}
+
+Wimbledon and the French Open are the only Grand Slam tournaments where fans without tickets for play can queue up and still get seats on the three show courts on the day of the match.<ref>{{cite web|url=http://rolandgarros.fft-tickets.com/uk/information/ticket-info/evening-visitors|title=Evening Visitors|archive-url=https://web.archive.org/web/20130910231145/http://rolandgarros.fft-tickets.com/uk/information/ticket-info/evening-visitors|archive-date=10 September 2013|url-status=usurped|access-date=1 June 2013|website=Billetterie Roland-Garros 2013}}</ref> Sequentially numbered queue cards were introduced in 2003. From 2008, there is a single queue, allotted about 500 seats for each court. When they join the queue, fans are handed queue cards. Anyone who then wishes to leave the queue temporarily, even if in possession of a queue card, must agree their position with the others nearby in the queue or a steward.
+
+To get access to the show courts, fans normally have to queue overnight.<ref>{{cite web |url=http://blog.nationmultimedia.com/natee/2007/07/16/entry-1 |title=Natee's Blog |work=[[The Nation (Thailand)|The Nation]] |access-date=6 July 2013 |url-status=dead |archive-url=https://web.archive.org/web/20110714160621/http://blog.nationmultimedia.com/natee/2007/07/16/entry-1 |archive-date=14 July 2011 }}</ref>{{better source needed|reason=blog|date=April 2026}} This is done by fans from all over the world and, although considered vagrancy,{{citation needed|date=May 2024}} is part of the Wimbledon experience in itself. The All-England Club allows overnight queuing and provides toilet and water facilities for campers. Early in the morning when the line moves towards the Grounds, stewards walk along the line and hand out wristbands that are colour-coded to the specific court. The wrist band (and payment) is exchanged at the ticket office for the ticket when the grounds open. General admission to the grounds gives access to the outer courts and is possible without queuing overnight. Tickets returned by people leaving early go on sale at 2:30{{nbsp}}pm and the money goes to charity. Queuing for the show courts ends after the quarter finals have been completed.{{citation needed|date=April 2026}}
+
+At 2.40pm on Day Seven (Monday 28 June) of the [[2010 Wimbledon Championships|2010 Championships]], the one-millionth numbered Wimbledon queue card was handed out to Rose Stanley from South Africa.<ref>{{cite web|title=The Championships – Day Nine Diary|url=http://www.atpworldtour.com/News/Tennis/2010/06/Wimbledon/Wimbledon-Diary-Day-Nine.aspx|website=www.atpworldtour.com|publisher=ATP|date=29 June 2010|access-date=28 February 2015|archive-date=2 April 2015|archive-url=https://web.archive.org/web/20150402132333/http://www.atpworldtour.com/News/Tennis/2010/06/Wimbledon/Wimbledon-Diary-Day-Nine.aspx|url-status=live}}</ref><ref>{{cite web|author1=John Martin|title=For Many Wimbledon Fans, the Waiting Is Not the Hardest Part|url=http://straightsets.blogs.nytimes.com/2010/07/03/for-many-wimbledon-fans-the-wait-is-worth-it/|website=[[The New York Times]]|date=3 July 2010|access-date=28 February 2015|archive-date=2 April 2015|archive-url=https://web.archive.org/web/20150402222351/http://straightsets.blogs.nytimes.com/2010/07/03/for-many-wimbledon-fans-the-wait-is-worth-it/|url-status=live}}</ref>
+
+[[File:1994 “I’ve queued at Wimbledon” sticker.jpg | thumb | right | A 1994 “I’ve queued at Wimbledon” sticker]]
+
+===Sponsorship===
+Unlike other tournaments, advertising from major brands is minimal and low key, from suppliers such as [[IBM]], [[Rolex]] and [[Slazenger]].<ref>{{Cite web |title=Information about Official suppliers to The Championships. |url=https://www.wimbledon.com/en_GB/atoz/official_suppliers.html |access-date=26 June 2022 |website=Wimbledon.com |quote=The Club has always sought to retain the unique image and character of The Championships and has successfully achieved this over many years by developing long-term mutually beneficial Official Supplier agreements with a range of blue-chip brands, as well as specifically not commercialising the Grounds overtly. |archive-date=26 June 2022 |archive-url=https://web.archive.org/web/20220626012232/https://www.wimbledon.com/en_GB/atoz/official_suppliers.html |url-status=live }}</ref><ref>{{Cite news |last=Rothenberg |first=Ben |date=9 July 2017 |title=Wimbledon in Style for Marketers, Bringing a Reverent Hush to Their Ads |language=en-US |work=The New York Times |url=https://www.nytimes.com/2017/07/09/business/media/marketing-advertising-at-wimbledon.html |access-date=26 June 2022 |issn=0362-4331 |archive-date=26 June 2022 |archive-url=https://web.archive.org/web/20220626202538/https://www.nytimes.com/2017/07/09/business/media/marketing-advertising-at-wimbledon.html |url-status=live }}</ref> Wimbledon is notable for the longest running sponsorship in sports history due to its association with Slazenger who have supplied all tennis balls for the tournament since 1902.<ref>{{cite web|title=At 113 Years and Counting, Slazenger Maintains the Longest Sponsorship in Sports|url=http://www.sesponsorshipgroup.com/sponsorship-figures/2015/11/3/at-113-years-and-counting-slazenger-maintains-the-longest-sponsorship-in-sports|publisher=S&E Sponsorship Group|date=4 November 2015|url-status=dead|archive-url=https://web.archive.org/web/20160617070504/http://www.sesponsorshipgroup.com/sponsorship-figures/2015/11/3/at-113-years-and-counting-slazenger-maintains-the-longest-sponsorship-in-sports|archive-date=17 June 2016}}</ref> Between 1935 and 2021, Wimbledon had a sponsorship deal with [[Robinsons (drink)|Robinsons]] [[Squash (drink)|fruit squash]] – one of the longest sponsorships in sport.<ref>{{Cite web |date=24 June 2022 |title=Robinsons and Wimbledon end 86-year partnership |url=https://www.theguardian.com/business/2022/jun/24/robinsons-and-wimbledon-end-86-year-partnership |access-date=26 June 2022 |website=the Guardian |language=en |quote=Squash brand’s sponsorship deal with tennis championships was one of the longest in sport |archive-date=25 June 2022 |archive-url=https://web.archive.org/web/20220625215147/https://www.theguardian.com/business/2022/jun/24/robinsons-and-wimbledon-end-86-year-partnership |url-status=live }}</ref>
+
+Starting in 2024, [[Emirates (airline)|Emirates]] started sponsoring Wimbledon for the first time alongside the [[Australian Open]], [[French Open]] and the [[US Open (tennis)|US Open]] tennis championships.
+
+===Strawberries and cream===
+[[File:Strawberries and cream Wimbledon 2014.jpg| thumb|right | Strawberries and cream at Wimbledon]]
+[[Strawberry|Strawberries]] and cream are traditionally eaten by spectators at Wimbledon and have become culturally synonymous with the tournament. The origin of this tradition has been said to derive from a visit King [[Henry VIII]] paid to his Lord Chancellor, Cardinal Thomas Wolsey, whose home was at Hampton Court, about six miles from Wimbledon, when the chancellor's cook is rumoured to have served wild strawberries and cream as a dessert. Since the King ate it, the dessert gained popularity.<ref>{{cite news |last1=Miller |first1=Ben |title=Why do fans at Wimbledon eat strawberries and cream and drink Pimm's? |url=https://www.sportingnews.com/us/tennis/news/wimbledon-tradition-strawberries-and-cream-pimms/xqadlsnevufm1vufjfkstiyr |access-date=28 February 2023 |work=www.sportingnews.com |date=10 July 2022 |language=en |archive-date=28 February 2023 |archive-url=https://web.archive.org/web/20230228220934/https://www.sportingnews.com/us/tennis/news/wimbledon-tradition-strawberries-and-cream-pimms/xqadlsnevufm1vufjfkstiyr |url-status=live }}</ref> In 2017, fans consumed 34,000{{nbsp}}kg (33 imperial tons) of British strawberries and 10,000 litres (2,200 imperial gallons) of cream. In 2019, 191,930 portions of strawberries and cream were served at The Championships at Wimbledon.<ref>{{cite web |title=Facts and Figures |url=https://www.wimbledon.com/en_GB/atoz/faq_and_facts_and_figures.html |website=www.wimbledon.com |access-date=28 February 2023 |archive-date=29 June 2023 |archive-url=https://web.archive.org/web/20230629210943/https://www.wimbledon.com/en_GB/atoz/faq_and_facts_and_figures.html |url-status=live }}</ref>
+
+===The Wimbledon champions' dinner and ball===
+
+The Wimbledon Champions' Dinner, formerly known as the Champions' Ball, is an event organised after the end of each edition of the Wimbledon Championships and it consists of a dinner and a dance between the Men's and Women's singles winners. A picture of them with their respective trophies is also taken at this event.<ref>{{Cite web |title=A fitting end: Through the years at the Wimbledon champions' dinner |url=https://www.wtatennis.com/photos/1719758/a-fitting-end-through-the-years-at-the-wimbledon-champions-dinner |access-date=2025-03-27 |website=Women's Tennis Association |language=en}}</ref><ref name="2024_champions_dinner">{{Cite web|title=2024 Champions Dinner |url=https://www.wimbledon.com/en_GB/news/galleries/2024-07-15/2024-07-15_the_2024_champions_dinner.html |access-date=2025-03-27 |website=www.wimbledon.com}}</ref><ref>{{Cite web|title=2023 Champions Dinner |url=https://www.wimbledon.com/en_GB/news/galleries/2023-07-17/2023-07-17_the_2023_wimbledon_champions_dinner.html |access-date=2025-03-27 |website=www.wimbledon.com}}</ref><ref>{{Cite web |title=PHOTOS: Carlos Alcaraz, Barbora Krejcikova sparkle at Wimbledon Champions Dinner |url=https://www.tennis.com/baseline/articles/photos-carlos-alcaraz-barbora-krejcikova-dance-at-wimbledon-champions-dinner-louis-vuitton-rolex-rado |access-date=2025-03-27 |website=Tennis.com |language=en}}</ref>
+
+In later years, the dance tradition became not mandatory and sporadically returned in some editions of the tournament,<ref name="Facts and Figures / FAQ">{{Cite web |title=Facts and Figures / FAQ|url=https://www.wimbledon.com/en_GB/atoz/faq_and_facts_and_figures.html |access-date=2025-04-08 |website=www.wimbledon.com}}</ref> notably, in 2015, [[Novak Djokovic]] and [[Serena Williams]] danced together to the [[Bee Gees]]' "Night Fever" at the dinner, evoking the spirit of the original Champions' Ball.<ref>{{cite magazine | url=https://time.com/3955622/serena-williams-novak-djokovic-dance/ | title=Watch Serena Williams and Novak Djokovic Dance to the BeeGees | magazine=Time | date=13 July 2015 }}</ref> In 2018, Djokovic invited [[Angelique Kerber]] to dance at the dinner.<ref>{{cite web | url=https://www.youtube.com/watch?v=EXPNsyL2bRw | title=Novak Djokovic and Angelique Kerber dance at Champions' Dinner | website=[[YouTube]] | date=16 July 2018 }}</ref>
+
+In 2024, the champions [[Carlos Alcaraz]] and [[Barbora Krejčíková]] also danced together.<ref name="2024_champions_dinner" /><ref>{{Cite web |last=Krishnan |first=Shivom |date=2024-07-16 |title="I totally get why Iga Swiatek don't wanna win"- Fans react hilariously to Carlos Alcaraz and Barbora Krejcikova's dance at Wimbledon Champions' Ball |url=https://www.sportskeeda.com/tennis/news-i-totally-get-iga-swiatek-don-t-wanna-win-fans-react-hilariously-carlos-alcaraz-barbora-krejcikova-s-dance-wimbledon-champions-ball |access-date=2025-04-08 |website=www.sportskeeda.com |language=en-us}}</ref>
+
+In 1977, the dinner was rescheduled to the middle Saturday of the tournament, which resulted in the end of the formal champions' dance tradition.<ref name="Facts and Figures / FAQ"/> 
+
+In recent years, the Champions' Dinner has been hosted at The Lawn, a hospitality venue located on the grounds of The Wimbledon Club, across from the All England Lawn Tennis and Croquet Club. It gathers players, their families, and distinguished guests to celebrate the tournament's champions.<ref name="Facts and Figures / FAQ"/> 
+
+In 2021, the Champions' Dinner was canceled due to COVID-19 restrictions, marking a rare interruption in the tradition.<ref>{{Cite web |last=Edmonds |first=Lizzie |date=2021-07-08 |title=Wimbledon Champions Ball dinner axed due to Covid |url=https://www.standard.co.uk/news/london/wimbledon-champions-ball-cancelled-covid-restrictions-b944762.html |access-date=2025-04-08 |website=The Standard |language=en}}</ref>
+
+===Balls===
+
+[[File:Grass court season is here! (18161963964).jpg|thumb| A [[2015 Wimbledon Championships]] tennis ball manufactured by Slazenger]] 
+Since [[1902 Wimbledon Championships|1902, the Wimbledon Championships]] have used tennis balls manufactured by [[Slazenger]] and in already several decades now made in [[Mariveles]], [[Bataan]], [[Philippines]]. The company has been the official supplier for the tournament ever since, making this the longest-running sponsorship deal in sport.<ref name="SlazengerAboutUs">{{cite web |date= |title=About Us |url=https://www.slazenger.com/customerservices/otherinformation/aboutus |access-date=6 July 2025 |website=Slazenger }}</ref>
+
+==Media coverage and attendance==
+{{main|List of Wimbledon broadcasters}}
+
+===Radio Wimbledon===
+{{Main|Radio Wimbledon}}
+
+Until 2011, when its contract ended,<ref>{{cite news|url=http://www.swlondoner.co.uk/radio-wimbledon-lose-rights-to-broadcast-wimbledon-tennis-championships/|title=Radio Wimbledon lose rights to broadcast Wimbledon tennis Championships|first=Nicolas|last=Atkin|date=23 September 2011|access-date=16 September 2018|newspaper=South West Londoner|archive-date=15 June 2017|archive-url=https://web.archive.org/web/20170615034236/http://www.swlondoner.co.uk/radio-wimbledon-lose-rights-to-broadcast-wimbledon-tennis-championships/|url-status=live}}</ref> Radio Wimbledon could be heard within a five-mile radius on 87.7 [[FM broadcasting|FM]], and also online. It operated under a [[restricted service licence]]. Presenters included Sam Lloyd and Ali Barton. Typically, they worked alternate four-hour shifts until the end of the last match of the day. Reporters and commentators included [[Gigi Salmon]], Nick Lestor, Rupert Bell, Nigel Bidmead, Guy Swindells, Lucie Ahl, Nadine Towell and Helen Whitaker. Often, they reported from the "Crow's Nest", an elevated building housing the Court 3 and 4 scoreboards which affords views of most of the outside courts. Regular guests included Sue Mappin. In later years, Radio Wimbledon acquired a second low-power FM frequency (within the grounds only) of 96.3 FM for uninterrupted Centre Court commentary, and, from 2006, a third for coverage from No. 1 Court on 97.8 FM. Hourly news bulletins and travel (using [[Radio Data System|RDS]]) were also broadcast.
+
+Radio Wimbledon's theme tune is called "Purple and Green" and has been used since 1996, when it was composed by British composer Tony Cox.
+
+===Television coverage===
+
+Beginning with the [[2018 Wimbledon Championships|2018 tournament]], an in-house operation known as Wimbledon Broadcasting Services (WBS) has served as the official host broadcaster of the tournament, replacing [[BBC Sport]]. Despite this, commentary teams for the show courts are often provided by the BBC, including [[Andrew Cotter]], [[Andrew Castle]], and much of the production talent involved in producing the world feed for WBS are provided from the BBC.<ref>{{Cite news|url=http://www.sportspromedia.com/news/wimbledon-to-launch-in-house-host-broadcaster|title=Wimbledon to launch in-house host broadcaster|access-date=3 July 2018|archive-date=19 July 2018|archive-url=https://web.archive.org/web/20180719020946/http://www.sportspromedia.com/news/wimbledon-to-launch-in-house-host-broadcaster|url-status=live}}</ref>
+
+====United Kingdom====
+[[File:Wimbledon Championships Canary Wharf.jpg|thumb|right|People watching the Championships' broadcast in [[Canary Wharf]]]]
+{{Further|Timeline of tennis on UK television}}
+Since 1937 the [[BBC Sport|BBC]] has broadcast the tournament on television in the United Kingdom.<ref>{{cite web|author1=Sarah Kirkham|title=Throwback Thursday: The first Wimbledon on television|url=http://www.wimbledon.com/en_GB/news/articles/2015-02-05/throwback_thursday_the_first_wimbledon_on_television.html|website=www.wimbledon.com|publisher=[[All England Lawn Tennis Club|AELTC]]|date=5 February 2015|url-status=dead|archive-url=https://web.archive.org/web/20150205210241/http://www.wimbledon.com/en_GB/news/articles/2015-02-05/throwback_thursday_the_first_wimbledon_on_television.html|archive-date=5 February 2015}}</ref>{{efn|name=bbccoverage|During the first year of television coverage in 1937 the BBC used two cameras at the Centre Court to transmit matches for a maximum of half an hour a day. The first match to be broadcast was between [[Bunny Austin]] and [[George Lyttleton-Rogers]].<ref name=little2013>{{cite book|last=Little|first=Alan|title=Wimbledon Compendium 2013|year=2013|publisher=All England Lawn Tennis & Croquet Club|location=London|isbn=978-1-899039-40-1|page=483|edition=23}}</ref>}} Between 1956 and 1968, the Championships were also covered by [[ITV (TV network)|ITV]], but since 1969 the BBC has had a monopoly. The matches covered are primarily split between its two main terrestrial channels, [[BBC One]] and [[BBC Two]], and their Red Button service. This can result in live matches being moved across all 3 channels. The BBC holds the broadcast rights for Wimbledon until 2027.<ref>{{Cite news|title=BBC extends Wimbledon broadcast deal|publisher=BBC Sport|url=https://www.bbc.co.uk/sport/tennis/57779791|access-date=9 July 2021|archive-date=9 July 2021|archive-url=https://web.archive.org/web/20210709115119/https://www.bbc.co.uk/sport/tennis/57779791|url-status=live}}</ref>  During the days of [[British Satellite Broadcasting]], its sports channel carried extra coverage of Wimbledon for subscribers. One of the most notable British commentators was [[Dan Maskell]], who was known as the BBC's "voice of tennis" until his retirement in 1991. [[John Barrett (tennis)|John Barrett]] succeeded him in that role until he retired in 2006. Current commentators working for the BBC at Wimbledon include British ex-players [[Andrew Castle]], [[John Lloyd (tennis)|John Lloyd]], [[Tim Henman]], [[Greg Rusedski]], [[Samantha Smith (tennis)|Samantha Smith]] and [[Mark Petchey]]; tennis legends such as [[John McEnroe]], [[Tracy Austin]], [[Boris Becker]] and [[Lindsay Davenport]]; and general sports commentators including [[David Mercer (broadcaster)|David Mercer]], [[Barry Davies]], [[Andrew Cotter]] and [[Nick Mullins]]. The coverage is presented by [[Clare Balding]]. Previous BBC presenters include [[Des Lynam]], [[David Vine]], [[John Inverdale]], [[Sue Barker]] and [[Harry Carpenter]].
+
+The Wimbledon Finals are obliged to be shown live and in full on terrestrial television (BBC, ITV, Channel 4, or Channel 5) by government mandate. Highlights of the rest of the tournament must be provided by terrestrial stations; live coverage (excepting the finals) may be sought by satellite or cable TV.<ref>{{cite web |url=http://www.culture.gov.uk/PDF/sport_on_television.pdf |title=Coverage of Sport on Television |publisher=[[Department for Culture, Media and Sport|DCMS]] |access-date=26 July 2010 |url-status=dead |archive-url=https://web.archive.org/web/20100415173542/http://www.culture.gov.uk/PDF/sport_on_television.pdf |archive-date=15 April 2010 }}</ref>
+
+The BBC was forced to apologise after many viewers complained about "over-talking" by its commentary team during the TV coverage of the event in 2011. It said in a statement that views on commentary were subjective but that they "do appreciate that over-talking can irritate our audience". The BBC added that it hoped it had achieved "the right balance" across its coverage and was "of course sorry if on occasion you have not been satisfied". Tim Henman and John McEnroe were among the ex-players commentating.<ref>{{cite news|title=BBC sorry for 'over-talking' Wimbledon commentators|url=https://www.bbc.co.uk/news/entertainment-arts-14026985|publisher=BBC|access-date=5 July 2011|date=5 July 2011|archive-date=5 July 2011|archive-url=https://web.archive.org/web/20110705112511/http://www.bbc.co.uk/news/entertainment-arts-14026985|url-status=live}}</ref>
+
+Wimbledon was also involved in a piece of television history, when on 1 July 1967 the first official [[colour television]] broadcast took place in the UK. Four hours live coverage of the [[1967 Wimbledon Championships|1967 Championships]] was shown on BBC Two, which was the first television channel in Europe to regularly broadcast in colour. Footage of that historic match no longer survives, however, the Gentlemen's Final of that year is still held in the BBC archives because it was the first Gentlemen's Final transmitted in colour. The tennis balls used were traditionally white, but were switched to yellow in 1986 to make them stand out for colour television.<ref>{{cite web|url=https://www.watches2u.com/blog/wimbledon-facts.html|title=Wimbledon Facts|website=www.watches2u.com|access-date=2 May 2019|archive-date=2 May 2019|archive-url=https://web.archive.org/web/20190502092344/https://www.watches2u.com/blog/wimbledon-facts.html|url-status=live}}</ref> Since 2007, Wimbledon matches have been transmitted in [[High-definition television|high-definition]], originally on the BBC's free-to-air channel [[BBC HD]], with continual live coverage during the tournament of Centre Court and Court No. 1 as well as an evening highlights show ''[[Today at Wimbledon]]''.  Coverage is now shown on BBC One and Two's HD feeds. Beginning 2018, all centre court matches are televised in [[4K resolution|4K]] [[Ultra-high-definition television|ultra-high-definition]].<ref>{{Cite news|url=https://www.techradar.com/how-to/wimbledon-in-4k-the-best-ways-to-catch-the-tennis-action-in-ultra-hd|title=Wimbledon in 4K: the best ways to catch the tennis action in Ultra HD|work=TechRadar|access-date=3 July 2018|archive-date=3 July 2018|archive-url=https://web.archive.org/web/20180703051152/https://www.techradar.com/how-to/wimbledon-in-4k-the-best-ways-to-catch-the-tennis-action-in-ultra-hd|url-status=live}}</ref>
+
+The BBC's opening theme music for Wimbledon since 1972 was composed by [[Keith Mansfield]] and is titled "Light and Tuneful". A piece titled "A Sporting Occasion" is the traditional closing theme. The final notes of this theme are regularly used to end BBC One and BBC Two Wimbledon transmissions. For the end of broadcast at the conclusion of the tournament a montage set to popular music is traditionally used instead. Mansfield also composed the piece "World Champion", used by NBC during intervals (change-overs, set breaks, etc.) and at the close of broadcasts throughout the tournament.
+
+====Ireland====
+In Ireland, [[RTÉ]] broadcast the tournament during the 1980s and 1990s on their second channel [[RTÉ Two]], they also provided highlights of the games in the evening. The commentary provided was given by Matt Doyle a former Irish-American professional tennis player and Jim Sherwin a former RTÉ newsreader. Caroline Murphy was the presenter of the programme. RTÉ made the decision in 1998 to discontinue broadcasting the tournament due to falling viewing figures and the large number of viewers watching on the BBC.<ref>{{cite news|url=https://www.irishtimes.com/newspaper/sport/1998/0708/98070800158.html|title=Tennis – set for change?|date=8 July 1998|newspaper=The Irish Times|access-date=22 June 2010|archive-date=9 February 2012|archive-url=https://web.archive.org/web/20120209091624/http://www.irishtimes.com/newspaper/sport/1998/0708/98070800158.html|url-status=live}}</ref> From 2005 until 2014 [[TG4]] Ireland's Irish-language broadcaster provided coverage of the tournament. Live coverage was provided in the [[Irish language]] while they broadcast highlights in English at night.<ref>{{cite web|url=http://www.tg4.ie/bearla/corp/pr/2009/0620-1.asp |title=TG4'S SUCCESSFUL TENNIS COVERAGE TO CONTINUE WITH WIMBLEDON 2009 |date=20 June 2009 |publisher=TG4 |access-date=2 June 2010 |url-status=dead |archive-url=https://web.archive.org/web/20100218210514/http://www.tg4.ie/bearla/corp/pr/2009/0620-1.asp |archive-date=18 February 2010 }}</ref>
+
+In 2015 Wimbledon moved to pay TV broadcaster [[Setanta Sports]] under a 3-year agreement.<ref>{{cite web|url=http://www.setanta.com/ie/big-summer-of-sport-on-setanta/|title=Big summer of sport on Setanta|work=Setanta Sports|url-status=dead|archive-url=https://web.archive.org/web/20150612105325/http://www.setanta.com/ie/big-summer-of-sport-on-setanta/|archive-date=12 June 2015}}</ref> Its successor, [[Eir Sport]], took over broadcasting rights in Ireland until its demise in 2021.
+
+====Americas====
+In the United States, [[American Broadcasting Company|ABC]] began showing taped highlights of the Wimbledon Gentlemen's Singles Final in the 1960s on its ''[[Wide World of Sports (U.S. TV series)|Wide World of Sports]]'' series. [[NBC]] began a 43-year run of covering Wimbledon in 1969, with same-day taped (and often edited) coverage of the Gentlemen's Singles Final. In 1979, the network began carrying the Gentlemen's Singles Final live, and in 1982, the Ladies' Singles Final. For the next few decades, NBC aired "Breakfast at Wimbledon" specials on weekends.<ref>{{cite web|url=http://www.nbcsports.com/our-history#decade_5|title=NBC Sports establishes "Breakfast at Wimbledon"|website=NBC Sports History Page|access-date=6 August 2017|archive-date=6 August 2017|archive-url=https://web.archive.org/web/20170806140431/http://www.nbcsports.com/our-history#decade_5|url-status=live}}</ref> Live coverage started early in the morning (the US being a minimum of 5 hours behind the UK) and continued well into the afternoon, interspersed with commentary and interviews from [[Bud Collins]]. Collins was dismissed by NBC in 2007, but was promptly hired by [[ESPN]], the cable home for The Championships in the States. For many years NBC's primary Wimbledon host was veteran broadcaster [[Dick Enberg]].{{citation needed|date=July 2026}}
+
+From 1975 to 1999, premium channel [[HBO]] carried weekday coverage of Wimbledon. Hosts included [[Jim Lampley]], [[Billie Jean King]], [[Martina Navratilova]], [[John Lloyd (tennis)|John Lloyd]] and [[Barry MacKay (tennis)|Barry MacKay]] among others.<ref>HBO Guides, program schedules, 1975 to 1999</ref> [[ESPN]] took over as the cable-television partner in 2003.<ref>{{cite news |title=ESPN, Wimbledon come to terms |url=https://www.upi.com/Sports_News/2003/04/14/ESPN-Wimbledon-come-to-terms/27281050341777/ |work=UPI |access-date=12 July 2019 |archive-date=12 July 2019 |archive-url=https://web.archive.org/web/20190712175032/https://www.upi.com/Sports_News/2003/04/14/ESPN-Wimbledon-come-to-terms/27281050341777/ |url-status=live }}</ref>
+
+The AELTC grew frustrated with NBC's policy of waiting to begin its quarterfinal and semifinal coverage until after the conclusion of ''[[Today (NBC program)|Today]]'' at 10 a.m. local, as well as broadcasting live only to the [[Eastern Time Zone]] and using [[broadcast delay|tape-delay]] in all others. NBC also held over high-profile matches for delayed broadcast in its window, regardless of any ongoing matches. In one notorious incident in [[2009 Wimbledon Championships – Men's singles|2009]], ESPN2's coverage of the [[Tommy Haas]]–[[Novak Djokovic]] quarterfinal was forced off the air nationwide when it ran past 10 a.m. Eastern, after which NBC showed the conclusion of the match on tape only after presenting the previous [[Ivo Karlović]]–[[Roger Federer]] quarterfinal in full.<ref>{{cite news |last1=Sandomir |first1=Richard |title=Why Wimbledon Switched to ESPN From NBC |url=https://www.nytimes.com/2011/07/06/sports/tennis/why-wimbledon-switched-to-espn-from-nbc.html |work=The New York Times |date=5 July 2011 |access-date=12 July 2019 |archive-date=12 July 2019 |archive-url=https://web.archive.org/web/20190712175028/https://www.nytimes.com/2011/07/06/sports/tennis/why-wimbledon-switched-to-espn-from-nbc.html |url-status=live }}</ref> Beginning with the 2012 tournament, coverage moved to ESPN and [[ESPN2]], marking the second major tennis championship (after the Australian Open) where live coverage is exclusively on pay television, while [[ESPN Deportes]] provides coverage in Spanish. The Finals are also broadcast tape-delayed on [[American Broadcasting Company|ABC]].<ref>{{cite news | url=http://straightsets.blogs.nytimes.com/2011/07/03/espn-reaches-deal-to-carry-wimbledon/ | work=The New York Times | first=Richard | last=Sandomir | title=ESPN Reaches Deal to Carry Wimbledon | date=3 July 2011 | access-date=4 July 2011 | archive-date=6 July 2011 | archive-url=https://web.archive.org/web/20110706071938/http://straightsets.blogs.nytimes.com/2011/07/03/espn-reaches-deal-to-carry-wimbledon/ | url-status=live }}</ref> On 9 July 2021, ESPN and the AELTC reached an agreement to extend ESPN's coverage for 12 years, beginning 2024 until 2035. This agreement included live coverage of the middle weekend on ABC starting in 2022, following the announcement that play would occur on the middle Sunday, historically a rest day.<ref>{{Cite web|date=9 July 2021|title=ESPN, AELTC Sign 12-Year Agreement to Extend Exclusive Relationship for The Championships, Wimbledon through 2035|url=https://espnpressroom.com/us/press-releases/2021/07/espn-aeltc-sign-12-year-agreement-to-extend-exclusive-relationship-for-the-championships-wimbledon-through-2035/|access-date=10 July 2021|website=ESPN Press Room U.S.|archive-date=10 July 2021|archive-url=https://web.archive.org/web/20210710060118/https://espnpressroom.com/us/press-releases/2021/07/espn-aeltc-sign-12-year-agreement-to-extend-exclusive-relationship-for-the-championships-wimbledon-through-2035/|url-status=live}}</ref>
+
+Taped coverage using the world feed is aired in primetime and overnights on [[Tennis Channel]] and is branded ''Wimbledon Primetime''.
+
+In Canada, coverage of Wimbledon is exclusively carried by [[The Sports Network|TSN]] and [[RDS Info|RDS]], which are co-owned by Bell Media and ESPN. Prior to 2012, [[CBC Television]] and [[Canadian Broadcasting Corporation|SRC]] were the primary broadcaster of Wimbledon for Canada, and its live coverage of the tournament predated "Breakfast at Wimbledon" by over a decade, Canada being at least four hours from its fellow [[Commonwealth realms|Commonwealth realm]].
+
+In Mexico, the [[Televisa]] family of networks has aired Wimbledon since the early 1960s.  Presently, most weekend matches are broadcast through [[Canal 5 (Televisa Network)|Canal 5]] with the weekday matches broadcast on the [[Televisa Deportes Network]].  As Mexico is six hours behind the U.K., some Canal 5 affiliates air the weekend matches as the first program of the day after [[sign-on]].  Although Mexico had begun broadcasting in colour in 1962, Wimbledon continued to air in black and white in Mexico until colour television came to the United Kingdom in 1967.
+
+In most of the remainder of Latin America, Wimbledon airs on [[ESPN Latin America|ESPN]], as do the other Grand Slam tournaments. In Brazil, [[SporTV]] had exclusive rights to the broadcast, but now it only airs on [[ESPN (Brazil)|ESPN]] and [[Disney+]].
+
+====Other countries====
+In several European countries, Wimbledon is shown live on [[Eurosport 1]], [[Eurosport 2]] and the Eurosport Player. Although there are some exceptions, as in Denmark, where the Danish [[TV2 (Denmark)|TV2]] holds the right to show matches until 2022 and in Italy where [[Sky Sport (Italy)|Sky Sport]] and [[SuperTennis]] holds the rights to show live matches until 2022. In the Netherlands Center Court is shown live on Eurosport 1 and all other courts are shown live on the Eurosport Player. But Court One is covered live on [[Ziggo Sport]]/[[Ziggo Sport Select]]. Wimbledon has been exclusively broadcast on [[Sky Sport (Germany)|Sky Sport]] in Germany since 2007.<ref>{{cite web|url=https://satvision.de/aktuelles-und-news/sky-verlangert-exklusiv-rechte-fur-wimbledon-7421|title=Weiter nur im Pay-TV: Wimbledon läuft bis 2022 exklusiv bei Sky|trans-title=Only on pay TV: Wimbledon runs exclusively on Sky until 2022|date=13 December 2018|access-date=4 June 2022|work=Tennis Magazin|language=de|archive-url=https://web.archive.org/web/20220604083828/https://www.tennismagazin.de/news/wimbledon-bis-2022-exklusiv-bei-sky/|archive-date=4 June 2022|url-status=live}}</ref> In December 2018, Sky extended its contract for Austria, Germany and Switzerland until 2022.<ref>{{cite web|url=https://www.skysportaustria.at/sky-uebertraegt-wimbledon-bis-2022-live-und-exklusiv/|title=Sky überträgt Wimbledon bis 2022 live und exklusiv|trans-title=Sky will broadcast Wimbledon live and exclusively until 2022|date=13 December 2018|access-date=5 June 2022|publisher=Sky Sport Austria|language=de|archive-url=https://web.archive.org/web/20201203081617/https://www.skysportaustria.at/sky-uebertraegt-wimbledon-bis-2022-live-und-exklusiv/|archive-date=3 December 2020|url-status=live}}</ref>
+
+In Australia, the free-to-air [[Nine Network]] covered Wimbledon for almost 40 years but decided to drop their broadcast following the 2010 tournament, citing declining ratings and desire to use money saved to bid on other sports coverage. In April 2011, it was announced that the [[Seven Network]], the then-host broadcaster of the Australian Open, along with its sister channel [[7Two]] would broadcast the event from 2011. Pay television network [[Fox Sports (Australia)|Fox Sports Australia]] also covered the event. Free-to-air coverage returned to Nine Network in 2021. In India and its Subcontinental region, it is broadcast on [[Star Sports (Indian TV network)|Star Sports]]. In Pakistan it is broadcast on [[PTV Sports]].
+
+Coverage is free-to-air in New Zealand through [[TVNZ One]], beginning each night at 11 pm (midday in London).  In 2017 their new channel, [[TVNZ Duke]] (also free-to-air), carried an alternative to the main feed, including (for example) matches on outside courts involving New Zealand players.
+
+[[Fox Sports Asia]] held broadcasting rights across Southeast Asia from 1992 until network's shutdown in 2021. [[SPOTV]] currently holds broadcasting rights across Southeast Asia.
+
+Most matches are also available for viewing through internet betting websites and other live streaming services, as television cameras are set up to provide continuous coverage on nearly all the courts.
+
+==Trophies, prize money and ranking points==
+
+===Trophies===
+[[File:Wimbledon trophies.jpg|thumb|The Ladies' (top) and Gentlemen's singles trophies]]
+The Gentlemen's Singles champion is presented with a silver gilt cup 18.5{{nbsp}}inches (about 47{{nbsp}}cm) in height and 7.5{{nbsp}}inches (about 19{{nbsp}}cm) in diameter. The trophy is decorated with a variety of symbols, including a miniature gold pineapple. The trophy has been awarded since 1887 and bears the inscription: "All England Lawn Tennis Club Single Handed Championship of the World". The actual trophy remains the property of the All England Club in their museum, so the champion receives a three-quarter size replica of the Cup bearing the names of all past Champions (height 13.5 inches, 34{{nbsp}}cm).<ref name="wimbledon_trophies">{{cite web|title=Trophies|url=http://www.wimbledon.com/en_GB/atoz/trophies.html|website=www.wimbledon.com|publisher=[[AELTC]]|access-date=21 August 2016|archive-date=26 August 2016|archive-url=https://web.archive.org/web/20160826030432/http://www.wimbledon.com/en_GB/atoz/trophies.html|url-status=live}}</ref>
+
+The Ladies' Singles champion is presented with a sterling silver salver commonly known as the "[[Venus Rosewater Dish]]", or simply the "Rosewater Dish". The salver, which is 18.75{{nbsp}}inches (about 48{{nbsp}}cm) in diameter, is decorated with figures from mythology.  The actual dish remains the property of the All England Club in their museum, so the champion receives a miniature replica bearing the names of all past Champions. From 1949 to 2006 the replica was 8 inches in diameter, and since 2007 it has been a three-quarter size replica with a diameter of 13.5 inches.<ref name="wimbledon_trophies" />
+[[File:All England Club museum trophies, Wimbledon - 30049459673.jpg | thumb|right| The various trophies contested at the Wimbledon championships being displayed at the All England Club museum]]
+The winner of the Gentlemen's Doubles, Ladies' Doubles, and Mixed Doubles events receive silver cups. A trophy is awarded to each player in the Doubles pair, unlike the other [[Grand Slam (tennis)|Grand Slam]] tournaments where the winning Doubles duo shares a single trophy. The Gentlemen's Doubles silver challenge cup was originally from the Oxford University Lawn Tennis Club and donated to the All England Club in 1884. The Ladies' Doubles Trophy, a silver cup and cover known as The Duchess of Kent Challenge Cup, was presented to the All England Club in 1949 by The Duchess of Kent. The Mixed Doubles Trophy is a silver challenge cup and cover presented to the All England Club by the family of two-time Wimbledon doubles winner [[Sydney Howard Smith|Sydney Smith]].<ref name="wimbledon_trophies" /><ref>{{cite web|title=Wimbledon – Behind the Scenes – Trophies|url=http://www.wimbledon.com/en_GB/behind_the_scenes/201205091336568697615.html|archive-url=https://web.archive.org/web/20180721073058/http://www.wimbledon.com/en_GB/behind_the_scenes/201205091336568697615.html|url-status=dead|archive-date=21 July 2018|publisher=[[AELTC]]|access-date=1 September 2012}}</ref>
+
+[[File:Woodbridge Wimbledon 2004.jpg|thumb|[[Todd Woodbridge]] holding the Gentlemen's doubles silver challenge cup in 2004]]
+
+The runner-up in each event receives an inscribed silver plate. The trophies are usually presented by the Patron of the All England Club, [[Catherine, Princess of Wales|The Princess of Wales]].
+
+===Prize money===
+Prize money was first awarded in [[1968 Wimbledon Championships|1968]], the year that professional players were allowed to compete in the Championships for the first time. Total prize money was £26,150; the winner of the men's title earned £2,000 ({{Inflation|UK|2000|1968|r=-2|fmt=eq|cursign=£}}) while the women's singles champion received £750 ({{Inflation|UK|750|1968|r=-2|fmt=eq|cursign=£}}){{Inflation-fn|UK|df=y}}.<ref>{{cite web |url=https://www.wimbledon.com/en_GB/about_wimbledon/prize_money_and_finance.html |title=Prize Money and Finance |publisher=AELTC |access-date=11 October 2020 |archive-date=26 October 2020 |archive-url=https://web.archive.org/web/20201026073237/https://www.wimbledon.com/en_GB/about_wimbledon/prize_money_and_finance.html |url-status=live }}</ref><ref>{{cite book|title=BP Year Book of World Tennis|year=1969|publisher=Ward Lock & Co. Ltd.|location=London, Sydney|oclc=502175694|editor=John Barrett|page=52}}</ref> In 2007, Wimbledon and the French Open became the last grand slam tournaments to award unequal prize money to women and men.<ref>{{cite web|url=http://aeltc2009.wimbledon.org/en_GB/about/guide/prizemoney.html |title=The Championships, Wimbledon 2009 – 2009 Prize money |publisher=[[AELTC]]|access-date=26 July 2010 |url-status=dead |archive-url=https://web.archive.org/web/20090612100018/http://aeltc2009.wimbledon.org/en_GB/about/guide/prizemoney.html |archive-date=12 June 2009 }}</ref><ref>{{cite news |url=https://news.bbc.co.uk/sport2/hi/tennis/6385295.stm |title=Wimbledon pays equal prize money |publisher=BBC Sport |date=22 February 2007 |access-date=3 August 2019 |archive-date=26 May 2016 |archive-url=https://web.archive.org/web/20160526105903/http://news.bbc.co.uk/sport2/hi/tennis/6385295.stm |url-status=live }}</ref><ref>{{Cite news|date=16 March 2007|title=French Open to award equal prize money|work=Reuters|url=https://www.reuters.com/article/us-tennis-french-prizes-idUSL169764320070316|access-date=12 July 2020|archive-date=8 August 2020|archive-url=https://web.archive.org/web/20200808232752/https://www.reuters.com/article/us-tennis-french-prizes-idUSL169764320070316|url-status=live}}</ref>
+{|class="wikitable" 
+|-
+!Year
+!Gentlemen's singles
+!Gentlemen's doubles (pair)
+!Ladies' singles
+!Ladies' doubles (pair)
+!Mixed doubles (pair)
+!Total for tournament
+|-
+|[[1968 Wimbledon Championships|1968]]
+|£2,000
+|£800
+|£750
+|£500
+|£450
+|£26,150
+|-
+|1969
+|£3,000
+|£1,000
+|£1,500
+|£600
+|£500
+|£33,370
+|-
+|1970
+|£3,000
+|£1,000
+|£1,500
+|£600
+|£500
+|£41,650
+|-
+|1971
+|£3,750
+|£750
+|£1,800
+|£450
+|£375
+|£37,790
+|-
+|1972
+|£5,000
+|£1,000
+|£3,000
+|£600
+|£500
+|£50,330
+|-
+|1973
+|£5,000
+|£1,000
+|£3,000
+|£600
+|£500
+|£52,400
+|-
+|1974
+|£10,000
+|£2,000
+|£7,000
+|£1,200
+|£1,000
+|£97,100
+|-
+|1975
+|£10,000
+|£2,000
+|£7,000
+|£1,200
+|£1,000
+|£114,875
+|-
+|1976
+|£12,500
+|£3,000
+|£10,000
+|£2,400
+|£2,000
+|£157,740
+|-
+|1977
+|£15,000
+|£6,000
+|£13,500
+|£5,200
+|£3,000
+|£222,540
+|-
+|1978
+|£19,000
+|£7,500
+|£17,100
+|£6,500
+|£4,000
+|£279,023
+|-
+|1979
+|£20,000
+|£8,000
+|£18,000
+|£6,930
+|£4,200
+|£277,066
+|-
+|1980
+|£20,000
+|£8,400
+|£18,000
+|£7,276
+|£4,420
+|£293,464
+|-
+|1981
+|£21,600
+|£9,070
+|£19,400
+|£7,854
+|£4,770
+|£322,136
+|-
+|1982
+|£41,667
+|£16,666
+|£37,500
+|£14,450
+|£6,750
+|£593,366
+|-
+|1983
+|£66,600
+|£26,628
+|£60,000
+|£23,100
+|£12,000
+|£978,211
+|-
+|1984
+|£100,000
+|£40,000
+|£90,000
+|£34,700
+|£18,000
+|£1,461,896
+|-
+|1985
+|£130,000
+|£47,500
+|£117,000
+|£41,100
+|£23,400
+|£1,934,760
+|-
+|1986
+|£140,000
+|£48,500
+|£126,000
+|£42,060
+|£25,200
+|£2,119,780
+|-
+|1987
+|£155,000
+|£53,730
+|£139,500
+|£46,500
+|£27,900
+|£2,470,020
+|-
+|1988
+|£165,000
+|£57,200
+|£148,500
+|£49,500
+|£29,700
+|£2,612,126
+|-
+|1989
+|£190,000
+|£65,870
+|£171,000
+|£56,970
+|£34,200
+|£3,133,749
+|-
+|1990
+|£230,000
+|£94,230
+|£207,000
+|£81,510
+|£40,000
+|£3,819,730
+|-
+|1991
+|£240,000
+|£98,330
+|£216,000
+|£85,060
+|£41,720
+|£4,010,970
+|-
+|1992
+|£265,000
+|£108,570
+|£240,000
+|£93,920
+|£46,070
+|£4,416,820
+|-
+|1993
+|£305,000
+|£124,960
+|£275,000
+|£108,100
+|£53,020
+|£5,048,450
+|-
+|1994
+|£345,000
+|£141,350
+|£310,000
+|£122,200
+|£60,000
+|£5,682,170
+|-
+|1995
+|£365,000
+|£149,540
+|£328,000
+|£129,300
+|£63,500
+|£6,025,550
+|-
+|1996
+|£392,500
+|£160,810
+|£353,000
+|£139,040
+|£68,280
+|£6,465,910
+|-
+|1997
+|£415,000
+|£170,030
+|£373,500
+|£147,010
+|£72,200
+|£6,884,952
+|-
+|1998
+|£435,000
+|£178,220
+|£391,500
+|£154,160
+|£75,700
+|£7,207,590
+|-
+|1999
+|£455,000
+|£186,420
+|£409,500
+|£167,770
+|£79,180
+|£7,595,330
+|-
+|2000
+|£477,500
+|£195,630
+|£430,000
+|£176,070
+|£83,100
+|£8,056,480
+|-
+|2001
+|£500,000
+|£205,000
+|£462,500
+|£189,620
+|£87,000
+|£8,525,280
+|-
+|2002
+|£525,000
+|£210,000
+|£486,000
+|£194,250
+|£88,500
+|£8,825,320
+|-
+|2003
+|£575,000
+|£210,000
+|£535,000
+|£194,250
+|£88,500
+|£9,373,990
+|-
+|2004
+|£602,500
+|£215,000
+|£560,500
+|£200,000
+|£90,000
+|£9,707,280
+|-
+|2005
+|£630,000
+|£218,500
+|£600,000
+|£203,250
+|£90,000
+|£10,085,510
+|-
+|2006
+|£655,000
+|£220,690
+|£625,000
+|£205,280
+|£90,000
+|£10,378,710
+|-
+|2007
+|£700,000
+|£222,900
+|£700,000
+|£222,900
+|£90,000
+|£11,282,710
+|-
+|2008
+|£750,000
+|£230,000
+|£750,000
+|£230,000
+|£92,000
+|£11,812,000
+|-
+|2009
+|£850,000
+|£230,000
+|£850,000
+|£230,000
+|£92,000
+|£12,550,000
+|-
+|2010
+|£1,000,000
+|£240,000
+|£1,000,000
+|£240,000
+|£92,000
+|£13,725,000
+|-
+|2011
+|£1,100,000
+|£250,000
+|£1,100,000
+|£250,000
+|£92,000
+|£14,600,000
+|-
+|2012
+|£1,150,000
+|£260,000
+|£1,150,000
+|£260,000
+|£92,000
+|£16,060,000
+|-
+|2013
+|£1,600,000
+|£300,000
+|£1,600,000
+|£300,000
+|£92,000
+|£22,560,000
+|-
+|2014
+|£1,760,000
+|£325,000
+|£1,760,000
+|£325,000
+|£96,000
+|£25,000,000
+|-
+|2015
+|£1,880,000
+|£340,000
+|£1,880,000
+|£340,000
+|£100,000
+|£26,750,000
+|-
+|2016
+|£2,000,000
+|£350,000
+|£2,000,000
+|£350,000
+|£100,000
+|£28,100,000
+|-
+|2017
+|£2,200,000
+|£400,000
+|£2,200,000
+|£400,000
+|£100,000
+|£31,600,000
+|-
+|2018
+|£2,250,000
+|£450,000
+|£2,250,000
+|£450,000
+|£110,000
+|£34,000,000
+|-
+|2019
+|£2,350,000
+|£540,000
+|£2,350,000
+|£540,000
+|£116,000
+|£38,000,000
+|-
+|2021
+|£1,700,000
+|£480,000
+|£1,700,000
+|£480,000
+|£100,000
+|£35,016,000
+|-
+|2022
+|£2,000,000
+|£540,000
+|£2,000,000
+|£540,000
+|£124,000
+|£40,350,000
+|-
+|2023
+|£2,350,000
+|£600,000
+|£2,350,000
+|£600,000
+|£128,000
+|£44,700,000
+|-
+|2024
+|£2,700,000
+|£650,000
+|£2,700,000
+|£650,000
+|£130,000
+|£50,000,000
+|-
+|2025
+|£3,000,000
+|£680,000
+|£3,000,000
+|£680,000
+|£135,000
+|£53,550,000
+|-
+|2026
+|£3,600,000
+|£760,000
+|£3,600,000
+|£760,000
+|£148,000
+|£64,200,000
+|}
+The bulk of the increases in 2012 were given to players losing in earlier rounds.<ref name=":3">{{cite news |url=https://www.independent.co.uk/sport/tennis/wimbledon-announce-increase-in-prize-money-for-losers-7675794.html |title=Wimbledon announce increase in prize money for losers |work=The Independent |date=24 April 2012 |access-date=10 July 2012 |location=London |first=Martyn |last=Herman |archive-date=26 April 2012 |archive-url=https://web.archive.org/web/20120426192230/http://www.independent.co.uk/sport/tennis/wimbledon-announce-increase-in-prize-money-for-losers-7675794.html |url-status=live }}</ref> This move was in response to the growing angst among lower-ranked players concerning the inadequacy of their pay. [[Sergiy Stakhovsky]], a member of the [[Association of Tennis Professionals#Organizational structure|ATP Player Council]] and who was at the time ranked 68th, was among the most vocal in the push for higher pay for players who bow out in the earlier rounds. In an interview Stakhovsky intimated that it is not uncommon for lower-ranked players to be in financial debt after playing certain tour events, if they had a poor result.<ref>{{cite web |url=http://sport.lb.ua/tennis/2012/04/04/144337_sergey_stahovskiy_bolshie.html |script-title=ru:Сергей Стаховский: большие заработки теннисистов – это иллюзия Источник |work=LB.ua |date=4 April 2012 |author-first1=Eugene |author-last1=Shvets |trans-title=Sergiy Stakhovsky: big earnings tennis players – it is an illusion |language=ru |access-date=3 November 2012 |archive-date=8 November 2012 |archive-url=https://web.archive.org/web/20121108182017/http://sport.lb.ua/tennis/2012/04/04/144337_sergey_stahovskiy_bolshie.html |url-status=live }}</ref> In 2013 the losers in the earlier singles rounds of the tournament saw a highest 62% increase in their pay while the total prize money of the doubles increased by 22%.The prize money for participants of the qualifying matches saw an increase of 41%.<ref>{{cite web |title=Wimbledon announces 40 per cent prize money increase for 2013 Championships |url=http://www.atpworldtour.com/News/Tennis/2013/04/17/Wimbledon-2013-Prize-Money-Increase.aspx |url-status=live |archive-url=https://web.archive.org/web/20130622193232/http://www.atpworldtour.com/News/Tennis/2013/04/17/Wimbledon-2013-Prize-Money-Increase.aspx |archive-date=22 June 2013 |access-date=25 June 2013 |publisher=ATP World Tour}}</ref>
+
+{| class="wikitable" style="font-size:90%;text-align:center"
+|-
+|+ 2025 Gentlemen's & Ladies' prize money<ref>{{cite web |date= |title=The Championships, Wimbledon, 2025 Prize Money |url=https://www.wimbledon.com/pdf/Wimbledon_Prize_Money_2025.pdf |access-date=13 June 2025 |archive-date=13 June 2025 |archive-url=https://web.archive.org/web/20250613005328/https://www.wimbledon.com/pdf/Wimbledon_Prize_Money_2025.pdf |url-status=live}}</ref> 
+| style="width:130px; background:#eaeaed;" |'''Event'''
+| style="width:80px; background:lime;" |'''W'''
+| style="width:85px; background:thistle;" |F
+| style="width:85px; background:#ff0;" |SF
+| style="width:85px; background:#ffebcd;" |QF
+| style="width:85px; background:#afeeee;" |Round of 16
+| style="width:85px; background:#afeeee;" |Round of 32
+| style="width:85px; background:#afeeee;" |Round of 64
+| style="width:85px; background:#afeeee;" |{{nowrap|Round of 128<sup>1</sup>}}
+| style="width:85px;" |Q3
+| style="width:85px;" |Q2
+| style="width:85px;" |Q1
+|-
+| style="background:#f3f3f3;" |'''Singles'''
+|£3,000,000
+|£1,520,000
+|£775,000
+|£400,000
+|£240,000
+|£152,000
+|£99,000
+|£66,000
+|£41,500
+|£26,000
+|£15,500
+|-
+| style="background:#f3f3f3;" |'''Doubles'''
+|£680,000
+|£345,000
+|£174,000
+|£87,500
+|£43,750
+|£26,000
+|£16,500
+|{{n/a}}||{{n/a}}||{{n/a}}||{{n/a}}
+|-
+|}
+: ''Doubles prize money is per team.''
+
+===Ranking points===
+Ranking points for the [[ATP rankings|ATP]] and [[WTA rankings|WTA]] have varied at Wimbledon through the years but at present,
+individual players receive the following points:
+
+{|class=wikitable style=font-size:90%;text-align:center
+|-
+|width=200 colspan=2 bgcolor=#eaeaea|'''Event'''
+|width=80 bgcolor=lime|'''W'''
+|width=85 bgcolor=#D8BFD8|F
+|width=85 bgcolor=#FFFF00|SF
+|width=85 bgcolor=#ffebcd|QF
+| style="width:85px; background:#afeeee;" |R16
+| style="width:85px; background:#afeeee;" |R32
+| style="width:85px; background:#afeeee;" |R64
+| style="width:85px; background:#afeeee;" |R128
+|-
+!rowspan=2|Singles
+|bgcolor=#f3f3f3|Gentlemen 
+| rowspan="2" |2000
+|1300
+|800
+|400
+|200
+|100
+|50
+|10
+|-
+|bgcolor=#f3f3f3|Ladies
+|1300
+|780
+|430
+|240
+|130
+|70
+|10
+|-
+!rowspan=2|Doubles
+|bgcolor=#f3f3f3|Gentlemen
+| rowspan="2" |2000
+|1200
+|720
+|360
+|180
+|90
+|0
+| –
+|-
+|bgcolor=#f3f3f3|Ladies
+|1300
+|780
+|430
+|240
+|130
+|10
+| –
+|-
+|}
+
+== Champions ==
+
+===Past champions===
+* [[List of Wimbledon gentlemen's singles champions|Gentlemen's singles]]
+* [[List of Wimbledon ladies' singles champions|Ladies' singles]]
+* [[List of Wimbledon gentlemen's doubles champions|Gentlemen's doubles]]
+* [[List of Wimbledon ladies' doubles champions|Ladies' doubles]]
+* [[List of Wimbledon mixed doubles champions|Mixed doubles]]
+* [[List of Wimbledon champions|All champions]]
+
+=== Current champions ===
+{| class="center toccolours"
+|+ '''2025/2026 Wimbledon Championships'''
+|
+<gallery mode="packed" heights="199">
+File: Jannik Sinner Wimbledon 2026 trophy (cropped-2).jpg|'''[[Jannik Sinner]]''', the 2026 gentlemen's singles champion.
+File:Noskova RGQ22 (9) (52129787314).jpg|'''[[Linda Nosková]]''', the 2026 ladies' singles champion.
+File:Harri Heliövaara (2023 DC Open) 01.jpg|'''[[Harri Heliövaara]]''' was part of the 2026 winning men's doubles team.
+File:Henry Patten (2023 Cary) 02 (cropped).jpg|'''[[Henry Patten]]''' was part of the 2026 winning men's doubles team.
+File:Guo Hanyu 2026 Wimbledon (cropped).jpg|'''[[Guo Hanyu]]''' was part of the 2026 winning women's doubles team.
+File: Kristina Mladenovic 2026 Wimbledon (cropped).jpg|'''[[Kristina Mladenovic]]''' was part of the 2026 winning women's doubles team.
+File:Arevalo RG19 (24) (48199356311).jpg|'''[[Marcelo Arévalo]]''' was part of the 2026 winning mixed doubles team.
+File:Ostapenko RG22 (4) (52144317609).jpg|'''[[Jeļena Ostapenko]]''' was part of the 2026 winning mixed doubles team.
+</gallery>
+|}
+
+===Most recent finals===
+{| class="wikitable plainrowheaders nowrap"
+|-
+!width=130|[[2026 Wimbledon Championships|2026 Event]]
+!width=170|Champion
+!width=170|Runner-up
+!width=220|Score
+|-
+!scope="row"| [[2026 Wimbledon Championships – Men's singles|Gentlemen's singles]]
+|{{flagicon|ITA}} [[Jannik Sinner]] || {{flagicon|GER}} [[Alexander Zverev]] || 6–7<sup>(7–9)</sup>, 7–6<sup>(7–2)</sup>, 6–3, 6–4
+|-
+!scope="row"| [[2026 Wimbledon Championships – Women's singles|Ladies' singles]]
+|{{flagicon|CZE}} [[Linda Nosková]] || {{flagicon|CZE}} [[Karolína Muchová]] ||  6–2, 5–7, 6–3
+|-
+!scope="row"| [[2026 Wimbledon Championships – Men's doubles|Gentlemen's doubles]]
+|{{flagicon|FIN}} [[Harri Heliövaara]] <br /> {{flagicon|GBR}} [[Henry Patten]] || {{flagicon|ESA}} [[Marcelo Arévalo]] <br /> {{flagicon|CRO}} [[Mate Pavić]] || 7–6<sup>(7–4)</sup>, 7–6<sup>(7–3)</sup>
+|-
+!scope="row"| [[2026 Wimbledon Championships – Women's doubles|Ladies' doubles]]
+|{{flagicon|CHN}} [[Guo Hanyu]]<br />{{flagicon|FRA}} [[Kristina Mladenovic]] || {{flagicon|CAN}} [[Gabriela Dabrowski]]<br />{{flagicon|BRA}} [[Luisa Stefani]] || 6–3, 7–5
+|-
+!scope="row"| [[2026 Wimbledon Championships – Mixed doubles|Mixed doubles]]
+|{{flagicon|ESA}} [[Marcelo Arévalo]] <br /> {{flagicon|LAT}} [[Jeļena Ostapenko]] || {{flagicon|AUS}} [[Marc Polmans]] <br /> {{flagicon|AUS}} [[Storm Hunter]]  || 4–6, 7–5, 6–2
+|}
+
+==Records==
+[[File:Roger Federer (26 June 2009, Wimbledon) 3 cropped.jpg|thumb|right|200px|[[Roger Federer]], the all-time record holder in men's singles]]
+[[File:Navratilova-PragueOpen2006-05 cropped.jpg|thumb|right|upright|200px|[[Martina Navratilova]], the all-time record holder in women's singles]]
+
+===Gentlemen since 1877===
+{| class="wikitable"
+! Record
+! Era
+! style="width:12em;" | Player(s)
+! Count
+! Winning years
+|-
+|rowspan=2| '''Most singles titles'''
+|[[History of tennis#Tournaments and tours of the Amateur Era|Amateur Era]]
+| {{flagicon|GBR}} [[William Renshaw]]
+| 7
+| 1881–1886, 1889
+|-
+|[[Open Era]]
+|{{flagicon|SUI}} [[Roger Federer]]
+| 8
+| 2003–2007, 2009, 2012, 2017
+|-
+|rowspan=2|'''Most consecutive singles titles'''
+|nowrap|Amateur Era
+| {{flagicon|GBR}} [[William Renshaw]]{{efn|name=renshaw|In Renshaw's era, the defending champion was exempt from playing in the main draw, playing only in the final. This policy was abolished in 1922.}}
+| 6
+| 1881–1886
+|-
+| Open Era
+|{{flagicon|SWE}} [[Björn Borg]] <br /> {{flagicon|SUI}} [[Roger Federer]]
+| 5
+| 1976–1980 <br />  2003–2007
+|-
+|rowspan=2|'''Most doubles titles'''
+|Amateur Era
+| {{flagicon|GBR}} [[Reginald Doherty]] <br /> {{flagicon|GBR}} [[Laurence Doherty]]
+| 8
+| 1897–1901, 1903–1905
+|-
+| Open Era
+| {{flagicon|AUS}} [[Todd Woodbridge]]
+| 9
+| 1993–1997, 2000 (with [[Mark Woodforde]]), 2002–2004 (with [[Jonas Björkman]])
+|-
+|rowspan=2|'''Most consecutive doubles titles'''
+|Amateur Era
+| {{flagicon|GBR}} [[Reginald Doherty]] <br /> {{flagicon|GBR}} [[Laurence Doherty]]
+| rowspan="2" | 5
+| 1897–1901
+|-
+| Open Era
+| {{flagicon|AUS}} [[Todd Woodbridge]] <br /> {{flagicon|AUS}} [[Mark Woodforde]]
+| 1993–1997
+|-
+|rowspan=2|'''Most mixed doubles titles'''
+|Amateur Era
+| {{flagicon|AUS}} [[Ken Fletcher]] <br /> {{flagicon|USA}} [[Vic Seixas]]
+| rowspan="2" | 4
+| 1963, 1965–1966, 1968 (with [[Margaret Court]]) <br /> 1953–1956 (3 with [[Doris Hart]], 1 with [[Shirley Fry Irvin]])
+|-
+| Open Era
+| {{flagicon|AUS}} [[Owen Davidson]] <br /> {{flagicon|IND}} [[Leander Paes]]
+| 1967, 1971, 1973–1974 (with [[Billie Jean King]]) <br /> 1999 (with [[Lisa Raymond]]), 2003 (with [[Martina Navratilova]]), 2010 (with [[Cara Black]]), 2015 (with [[Martina Hingis]])
+|-
+|rowspan=2|'''Most Championships'''<br>'''<small>(singles, doubles & mixed doubles)</small>'''
+| Amateur Era
+| {{flagicon|GBR}} [[Laurence Doherty]]
+| 13
+| 1897–1906 (5 singles, 8 doubles)
+|-
+| Open Era
+| {{flagicon|AUS}} [[Todd Woodbridge]]
+| 10
+| 1993–2004 (9 doubles, 1 mixed doubles)
+|}
+
+===Ladies since 1884===
+{| class="wikitable sortable" style="font-size:1.00em; line-height:1.5em;"
+! Record
+! Era
+! style="width:14em;" | Player(s)
+! Count
+! Winning years
+|-
+|rowspan=2|'''Most singles titles'''
+|[[History of tennis#Tournaments and tours of the Amateur Era|Amateur Era]]
+| {{flagicon|USA}} [[Helen Wills Moody|Helen Wills]]
+| 8
+| 1927–1930, 1932–1933, 1935, 1938
+|-
+|[[Open Era]]
+| {{flagicon|USA}} [[Martina Navratilova]]
+| 9
+| 1978–1979, 1982–1987, 1990
+|-
+|rowspan=2|'''Most consecutive singles titles'''
+|nowrap|Amateur Era
+| {{flagicon|FRA}} [[Suzanne Lenglen]]
+| 5
+| 1919–1923
+|-
+| Open Era
+| {{flagicon|USA}} [[Martina Navratilova]]
+| 6
+| 1982–1987
+|-
+|rowspan=2|'''Most doubles titles'''
+|Amateur Era
+| {{flagicon|USA}} [[Elizabeth Ryan]]
+| 12
+| 1914 (with [[Agatha Morton]]), 1919–1923, 1925 (with [[Suzanne Lenglen]]), 1926 (with [[Mary Browne]]), 1927, 1930 (with [[Helen Wills Moody|Helen Wills]]), 1933–1934 (with [[Simonne Mathieu]])
+|-
+| Open Era
+| {{flagicon|USA}} [[Martina Navratilova]]
+| 7
+| 1976 (with [[Chris Evert]]), 1979 (with [[Billie Jean King]]), 1981–1984, 1986 (with [[Pam Shriver]])
+|-
+|rowspan=2|'''Most consecutive doubles titles'''
+|Amateur Era
+| {{flagicon|FRA}} [[Suzanne Lenglen]] <br /> {{flagicon|USA}} [[Elizabeth Ryan]]
+| 5
+| 1919–1923
+|-
+| Open Era
+|{{flagicon|USA}} [[Martina Navratilova]] <br /> {{flagicon|USA}} [[Pam Shriver]]
+{{flagicon|URS}}/{{flagicon|BLR|1991}}/{{flagicon|BLR}} [[Natasha Zvereva]]
+| 4
+| 1981–1984
+1991 (with [[Larisa Neiland]]), 1992–1994 (with [[Gigi Fernández]])
+|-
+|rowspan=2|'''Most mixed doubles titles'''
+|Amateur Era
+| {{flagicon|USA}} [[Elizabeth Ryan]]
+| 7
+| 1919, 1921, 1923 (with [[Randolph Lycett]]), 1927 (with [[Francis Hunter|Frank Hunter]]), 1928 (with [[Patrick Spence]]), 1930 (with [[Jack Crawford (tennis)|Jack Crawford]]), 1932 (with [[Enrique Maier]])
+|-
+| Open Era
+| {{flagicon|USA}} [[Martina Navratilova]]
+| 4
+| 1985 (with [[Paul McNamee]]), 1993 (with [[Mark Woodforde]]), 1995 (with [[Jonathan Stark (tennis)|Jonathan Stark]]), 2003 (with [[Leander Paes]])
+|-
+|rowspan=3|'''Most Championships'''<br>'''<small>(singles, doubles & mixed doubles)</small>'''
+|Amateur Era
+| {{flagicon|USA}} [[Elizabeth Ryan]]
+| 19
+| 1914–34 (12 doubles, 7 mixed doubles)
+|-
+| Open Era
+| {{flagicon|USA}} [[Martina Navratilova]]
+| 20
+| 1976–2003 (9 singles, 7 doubles, 4 mixed doubles)
+|-
+| Combined
+| {{flagicon|USA}} [[Billie Jean King]]
+| 20
+| 1961–79 (6 singles, 10 doubles, 4 mixed doubles)
+|}
+
+=== Miscellaneous ===
+[[File:Plaque on Wimbledon Court No. 18 to commemorate the longest match in tennis history between John Isner and Nicolas Mahut on 22-24 June 2010.jpg|thumb|250px|Commemorative plaque at Court 18 marking the longest tennis match in history]]
+{| class="wikitable sortable" style="font-size:1.00em; line-height:1.5em;"
+! Record
+! M/W
+! Player(s)
+! Details
+! Year(s)
+|-
+| rowspan="2"|'''Unseeded champions'''
+|Men
+|{{flagicon|GER}} [[Boris Becker]]<br>{{flagicon|CRO}} [[Goran Ivanišević]]
+|Ranked 20th<br>Ranked 125th
+| [[1985 Wimbledon Championships – Men's singles|1985]]<br>[[2001 Wimbledon Championships – Men's singles|2001]]
+|-
+|Women
+|{{flagicon|TCH}} [[Markéta Vondroušová]]
+| Ranked 42nd
+| [[2023 Wimbledon Championships – Women's singles|2023]]
+|-
+| rowspan="2"|'''Youngest singles champion'''
+|Men
+| {{flagicon|GER}} [[Boris Becker]]
+|17 years 7 months
+|[[1985 Wimbledon Championships – Men's singles|1985]]
+|-
+|Women
+|{{flagicon|GBR}} [[Lottie Dod]]
+|15 years 9 months
+|[[1887 Wimbledon Championships – Ladies' singles|1887]]
+|-
+| rowspan="2"|'''Oldest singles champion'''
+|Men
+|{{flagicon|UK}} [[Arthur Gore (tennis)|Arthur Gore]]
+|41 years 6 months
+|[[1909 Wimbledon Championships – Men's singles|1909]]
+|-
+|Women
+|{{flagicon|UK}} [[Charlotte Cooper (tennis)|Charlotte Cooper]]
+|37 years 9 months
+|[[1908 Wimbledon Championships – Women's singles|1908]]
+|-
+| rowspan="2"|'''Lowest-ranked winner'''
+|Men
+| {{flagicon|CRO}} [[Goran Ivanišević]]
+| 125th
+|[[2001 Wimbledon Championships – Men's singles|2001]]
+|-
+|Women
+| {{flagicon|TCH}} [[Markéta Vondroušová]]
+| 42nd
+|[[2023 Wimbledon Championships – Women's singles|2023]]
+|-
+| rowspan="2"|'''Singles winning %'''
+|Men
+| {{flagicon|SWE}} [[Björn Borg]]
+| 92.72% (51–4)
+|1973–1981 ([[Open era]])
+|-
+|Women
+| {{flagicon|FRG}} [[Steffi Graf]]
+| 90.36% (74–7)
+| 1984–1999 (Open era)
+|-
+| rowspan="2"|'''Singles match wins'''
+|Men
+| {{flagicon|SER}} [[Novak Djokovic]]
+|107
+|2005–2026 (Open era)
+|-
+|Women
+|{{flagicon|TCH}}/{{flagicon|USA}} [[Martina Navratilova]]
+|120
+|1973–2004 (Open era)
+|-
+| rowspan="2"|'''Most matches played'''
+|Men
+| {{flagicon|FRA}} [[Jean Borotra]]
+| 223
+|1922–39, 1948–64
+|-
+|Women
+| {{flagicon|TCH}}/{{flagicon|USA}} [[Martina Navratilova]]
+| 326
+|1973–2006
+|-
+| rowspan="2"|'''Most consecutive events played'''
+|Men
+| {{flagicon|GBR}} [[Arthur Gore (tennis)|Arthur Gore]]<ref>{{cite web|title=Hall of Famers – Arthur Gore|url=https://www.tennisfame.com/hall-of-famers/inductees/arthur-gore/|website=www.tennisfame.com|publisher=International tennis Hall of Fame|access-date=2 April 2016|archive-date=28 March 2016|archive-url=https://web.archive.org/web/20160328104330/https://www.tennisfame.com/hall-of-famers/inductees/arthur-gore/|url-status=live}}</ref>
+| 30
+|1888–1922
+|-
+|Women
+| {{flagicon|GBR}} [[Virginia Wade]]<ref name="consecutive Wimbledons">{{cite news|url=https://www.telegraph.co.uk/sport/tennis/rogerfederer/10926645/Wimbledon-2014-Britains-Jamie-Delgado-smashes-record-with-23rd-consecutive-All-England-Club-appearance.html |archive-url=https://ghostarchive.org/archive/20220111/https://www.telegraph.co.uk/sport/tennis/rogerfederer/10926645/Wimbledon-2014-Britains-Jamie-Delgado-smashes-record-with-23rd-consecutive-All-England-Club-appearance.html |archive-date=11 January 2022 |url-access=subscription |url-status=live|title=Wimbledon 2014: Britain's Jamie Delgado smashes record with 23rd consecutive All England Club appearance|newspaper=Telegraph|date=25 June 2014}}{{cbignore}}</ref>
+| 26
+|1960–1985
+|-
+| rowspan="2"|'''Longest match by time'''
+|Men
+| {{flagicon|USA}} [[John Isner]] vs <br />{{flagicon|FRA}} [[Nicolas Mahut]]
+|[[Isner–Mahut match at the 2010 Wimbledon Championships|11hrs 5mins]]
+|2010
+|-
+|Women
+|{{flagicon|USA}} [[Chanda Rubin]] vs <br />{{flagicon|CAN}} [[Patricia Hy-Boulais]]
+|3hrs 45mins<ref>{{cite web |url=http://www.worldtennismagazine.com/archives/3922 |title=Schiavone-Kuznetsova Epic is Second-Longest Ever Women's Match |publisher=World Tennis Magazine |date=23 January 2011 |access-date=8 June 2012 |archive-date=24 March 2012 |archive-url=https://web.archive.org/web/20120324001307/http://www.worldtennismagazine.com/archives/3922 |url-status=live }}</ref>
+|1995
+|-
+| rowspan="2"|'''Longest final by time'''
+|Men
+| {{flagicon|SRB}} [[Novak Djokovic]] vs <br />{{flagicon|SUI}} [[Roger Federer]]
+|[[2019 Wimbledon Championships – Men's singles final|4hrs 57mins]]
+|2019
+|-
+|Women
+|{{flagicon|USA}} [[Lindsay Davenport]] vs <br />{{flagicon|USA}} [[Venus Williams]]
+|2hrs 45mins
+|2005
+|-
+| rowspan="2"|'''Winners of both<br>junior and senior singles'''
+|Men
+|{{flagicon|SWE}} [[Björn Borg]]<br />{{flagicon|AUS}} [[Pat Cash]]<br />{{flagicon|SWE}} [[Stefan Edberg]]<br />{{flagicon|SUI}} [[Roger Federer]]
+|1972<br />1982<br />1983<br />1998
+|1976–80 inclusive<br />1987<br />1988, 1990<br />2003–07, 2009, 2012, 2017
+|-
+|Women
+|{{flagicon|USA}} [[Karen Hantze]]<br />{{flagicon|UK}} [[Ann Haydon]]<br />{{flagicon|SUI}} [[Martina Hingis]]<br />{{flagicon|FRA}} [[Amélie Mauresmo]]<br />{{flagicon|AUS}} [[Ashleigh Barty]]<br />{{flagicon|POL}} [[Iga Świątek]]
+|1960<br />1956<br />1994<br />1996<br />2011<br />2018
+|1962<br />1969 (under married name Jones)<br />1997<br />2006<br />2021<br>2025
+|}
+
+==See also==
+{{Portal|Tennis|London}}
+* [[2012 Summer Olympics venues]]
+* [[List of British finalists at Grand Slam tennis tournaments]]
+* [[Wimbledon (film)|''Wimbledon'' (film)]]
+* [[Wimbledon Effect]]
+
+===Lists of champions===
+*[[List of Wimbledon champions]] (all events)
+**[[List of Wimbledon gentlemen's singles champions]]
+**[[List of Wimbledon ladies' singles champions]]
+**[[List of Wimbledon gentlemen's doubles champions]] 
+**[[List of Wimbledon ladies' doubles champions]]
+**[[List of Wimbledon mixed doubles champions]]
+*[[List of Wimbledon singles finalists during the Open Era]], records and statistics
+
+===Other Grand Slam tournaments===
+*[[Australian Open]]
+*[[French Open]]
+*[[US Open (tennis)|US Open]]
+
+==Notes==
+{{Notelist}}
+
+==References==
+
+{{Reflist}}
+
+==Further reading==
+{{Refbegin}}
+* {{Cite book
+ | author-link1=John Barrett (tennis)
+ | author-last1=Barrett
+ | author-first1=John
+ | year=2001
+ | title=Wimbledon – The Official History of The Championships
+ | publisher=CollinsWillow
+ | isbn=978-0-00-711707-9
+ | oclc=49691980}}
+* {{Cite book
+ | author=[[Max Robertson|Robertson, Max]]
+ | year=1977
+ | title=Wimbledon 1877–1977
+ | publisher=Arthur Barker
+ | isbn=978-0-213-16643-4
+ | oclc=461807313}}
+* {{Cite book
+ | author=Tingay, Lance
+ | year=1977
+ | title=100 years of Wimbledon
+ | publisher=Guinness Superlatives
+ | isbn=978-0-900424-71-7
+ | oclc=3630554}}
+{{Refend}}
+
+==External links==
+{{Wikiquote}}
+{{Commons category}}
+* {{Official website}}
+
+{{S-start}}
+{{s-bef|before=[[French Open]]}}
+{{s-ttl|title=[[Grand Slam (tennis)|Grand Slam Tournament]]|years='''June–July'''}}
+{{s-aft|after=[[US Open (tennis)|US Open]]}}
+{{S-end}}
+
+{{Wimbledon championships}}
+{{Grand Slam Tournaments}}
+{{tennis box}}
+{{Grand Slam champions}}
+{{All England Lawn Tennis and Croquet Club}}
+{{Authority control}}
+
+[[Category:Wimbledon Championships| ]]
+[[Category:1877 establishments in England]]
+[[Category:1877 establishments in the United Kingdom]]
+[[Category:Annual events in London]]
+[[Category:Annual sporting events in the United Kingdom]]
+[[Category:Grand Slam (tennis) tournaments|Wimbledon]]
+[[Category:Grass court tennis tournaments]]
+[[Category:July in sports]]
+[[Category:Major tennis tournaments]]
+[[Category:Culture of the United Kingdom]]
+[[Category:Recurring sporting events established in 1877]]
+[[Category:Sport in the London Borough of Merton]]
+[[Category:Tennis tournaments in London]]
+[[Category:Wimbledon, London|Championships]]
+[[Category:National and multi-national tennis tournaments]]
+[[Category:Events at the All England Lawn Tennis and Croquet Club]]
+[[Category:International sports competitions in London]]

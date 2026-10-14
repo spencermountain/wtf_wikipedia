@@ -1,0 +1,310 @@
+{{otheruses|テニスの国際大会|その他|ウィンブルドン}}
+{{テニスグランドスラム
+| Name = ウィンブルドン選手権
+| Current = 
+| Bar Color = #C0D077
+| City = [[マートン区]][[ウィンブルドン (ロンドン)|ウィンブルドン]]
+| Country = {{Flagicon|GBR}} イギリス
+| Venue = [[オールイングランド・ローンテニス・アンド・クローケー・クラブ]]
+| Surface = 芝 / 屋外
+| Men Draw = 128S (128Q) / 64D (16Q)
+| Women Draw = 128S (96Q) / 64D (16Q)
+| Mixed Draw = 48D
+| Prize Money = [[スターリング・ポンド|£]]50,000,000 (2024)
+| Web site = https://www.wimbledon.com/
+| Notes =
+}}
+[[ファイル:Centre Court roof.jpg|thumb|250px|屋根が設置されたセンターコート（2010年）]]
+'''ウィンブルドン選手権'''（ウィンブルドンせんしゅけん、{{lang-en|Wimbledon Championships}}）は、[[イギリス]]・[[ロンドン]]の[[ウィンブルドン (ロンドン)|ウィンブルドン]]で開催される[[テニス]]の[[グランドスラム (テニス)|4大国際大会]]の一つである。
+
+== 概要 ==
+{{出典の明記|date=2020年4月|section=1}}
+本大会の名称は、以前は「The Lawn Tennis Championships on Grass」であった。この名称が短縮され、現在は「The Championships」と呼ばれる<ref>Barry Lorge[http://sports.espn.go.com/sports/tennis/wimbledon05/news/story?id=2090997 「At its roots, Wimbledon is about the grass」]『ESPN TENNIS』　[[ESPN]] Internet Ventures、2011年11月11日閲覧。</ref>。日本語では便宜上「全英オープン」と呼ばれる場合もある。<!-- なお、英語で「''The Open''」または「''The Open Championship''」と言えば、[[全英オープン_(ゴルフ)|全英オープンゴルフ]]を指すのが一般的である。 -->
+
+毎年[[オールイングランド・ローンテニス・アンド・クローケー・クラブ]]を会場とし、原則として6月最終月曜日から2週の日程で開催される<ref group="注">2017年は7月第1週の月曜日から大会が開始されている。</ref>。
+
+試合や練習の際には白いウェアを着用する事が義務付けられている事も伝統となっており、これは1884年の同選手権女子シングルス部門の初代優勝者である[[モード・ワトソン]]（[[イングランド]]）が白で揃えたウェアを着用していた事に由来する。この規定は色だけにとどまらず、ウェアの形状にも及んでいる。[[1985年ウィンブルドン選手権|1985年]]大会で[[全身タイツ]]のようなウェアを着て試合を行った{{仮リンク|アン・ホワイト|en|Anne White}}は翌日にはそのウェアの使用を禁止されている<ref>[https://web.archive.org/web/20080509011744/http://vault.sportsillustrated.cnn.com/vault/article/magazine/MAG1019841/index.htm Anne White With an unintentional fashion statement, she left her mark on tennis] SI Vault July 31, 2000【Internet Archives】</ref>{{refnest|group="注"|但し、同じ会場で[[2012年]]に行われた[[ロンドンオリンピック (2012年)|ロンドンオリンピック]]の期間だけは特殊例として、各国のナショナルチーム、あるいは[[国旗]]の色のテニスウェアの着用、並びにスタンド最前列のフェンスのカラー化（通常は緑色だが、この大会期間中は大会シンボルカラーの[[紫色]]と[[桃色]]をあしらった横断幕を使用）が認められた<ref>{{Cite news|title=ウィンブルドンとオリンピック 10の違い◇ロンドンオリンピック|newspaper=Tennis 365|date=2012-07-26|url=https://t52.tennis365.net/news/today/201207/93058.html|agency=Fubic Corporation|accessdate=2017-07-03}}</ref>。}}。
+
+優勝決定後の表彰式の準備の手際の良さも見どころの一つである。優勝者には、クラブ会長・[[エドワード (ケント公)|ケント公爵エドワード王子]]から[[トロフィー]]が授与される。
+
+イギリスでは[[ロイヤルアスコット開催]]（[[競馬]]）、[[ヘンリー・ロイヤル・レガッタ]]、並びにこの大会が終わる7月下旬に開催される[[全英オープン (ゴルフ)|全英オープン選手権（ゴルフ）]]と並ぶ社交界最大のイベント、かつイギリスの夏の最高峰のイベントとして知られている。
+
+===ミドル・サンデー===
+開催期間中の第1週と第2週の中間に位置する日曜日をミドル・サンデーと呼び、この日を休養日として設ける伝統がある。この伝統は一貫して遵守されてきたが、1991年にミドル・サンデーに試合が行われた。雨天による日程の消化不良が深刻化したためだった。1997年と2004年、2016年も同様の理由からミドル・サンデーに試合が行われた。
+
+2022年よりミドル・サンデーは廃止となり、14日間のイベントに変更。これにより、男女シングルス4回戦全試合を行っていたマニック・マンデーは日曜日と月曜日に分散される<ref>{{Cite news|url=https://www.afpbb.com/articles/-/3344317|title=ウィンブルドン、22年から伝統の休養日廃止へ|newspaper=AFPBB News|agency=AFP|date=2021-04-28|accessdate=2021-06-27}}</ref>。
+
+このミドルサンデーの休催廃止の背景には、芝生のメンテナンスの向上をあげている。ウィンブルドンは天然芝のコートであり、試合ごとに芝生が剥げるなどの損傷が著しくなるため、1日のメンテナンスを挟んで、後半戦に備えてきたが、オール・イングランドクラブ会長のヒューイットは、「ここ数年で天然芝コートの保全技術が向上してきたため、休養日を設けることなく、特にセンターコートをケアできるようになった<ref>[https://web.archive.org/web/20210705075714/https://www.jiji.com/jc/article?k=2021070500694&g=spo 休養日の伝統に幕　「ミドルサンデー」今年限り―ウィンブルドンテニス 2021年07月05日16時45分]（時事通信）</ref>」としており、4回戦（男女合計16試合）を大挙開催する「マニックマンデー（興奮の月曜日）」の日程も、他のメジャー3大会と同様に2日間に分けて開催し、選手の体力的な負担の軽減にもつなげられるとしている。
+
+== 歴史 ==
+[[ファイル:1897 Wimbledon Championships.jpg|サムネイル|1897年大会]]
+[[ファイル:Blanche hillyard vs charlotte cooper sterry at the 1901 Wimbledon final.jpg|サムネイル|1901年大会の女子ファイナル]]
+[[1877年ウィンブルドン選手権|第1回大会]]は、センターコートに置いてあった芝生の手入れ用のローラー ([[:en:Roller (agricultural tool)|en]]) が老朽化したため新しくする資金集めを目的に、[[1877年]]7月9日から始まった。種目は男子シングルスのみで、21人のアマチュア選手が出場した。このときに、コートの広さや得点方法など、さまざまなルールが決められた。初チャンピオンとなった[[スペンサー・ゴア]]には25[[ギニー]]のトロフィーが贈られた<ref name="repo1">{{Cite web |url=https://www.history.com/this-day-in-history/wimbledon-tournament-begins |title=1877 Wimbledon tournament begins |access-date=2017-07-03 |publisher=A&E Television Networks |date=2009-11-24 |website=HISTORY |language=en |archive-url= |archive-date= }}</ref>。
+
+[[1884年]]に女子シングルスと、それまで[[オックスフォード]]で開催されていた全英男子ダブルスがウィンブルドンで開催されるようになった。[[1913年]]には、女子ダブルスと混合ダブルスが加えられ、[[1968年]]にはプロ選手の参加が認められた<ref name="repo1"/>。
+
+[[2009年]]には[[センターコート]]に引き込み式屋根 (retractable roof<ref>{{Cite web |url=http://www.wimbledon.com/about/long-term-plan |title=LONG TERM PLAN |access-date=2011-11-11 |publisher=AELTC |website=Wimbledon.com |language=en |archive-url=https://web.archive.org/web/20120119161423/https://www.wimbledon.com/about/long-term-plan |archive-date=2012-01-19 |url-status=dead|url-status-date=2022-05}}</ref>) が設置され、同年6月29日、[[ディナラ・サフィナ]]対[[アメリ・モレスモ]]の試合において初めて使用された<ref>{{Cite news|title=サフィナが8強入り 開閉式屋根は初稼動、ウィンブルドン選手権|newspaper=AFPBB News|date=2009-06-30|url=https://www.afpbb.com/articles/-/2616489|access-date=2022-05-29|agency=AFP|archive-url=|archive-date=}}</ref>。屋根は午後4時39分より動き始め、4時46分までには完全に閉じられた。午後5時19分、屋根が閉じた後初めてのプレーがモレスモのサーブにより開始された<ref>{{Cite web |url=http://www.wimbledon.com/heritage/125-championships/wimbledon-memories/safina-mauresmo |title=THE ROOF IS CLOSED |access-date=2011-11-11 |author=Alix Ramsay |publisher=AELTC |date= |website=Wimbledon.com |language=en |archive-url= |archive-date= |url-status=dead|url-status-date=2022-05}}</ref>。<!--雨天中断時および再開時のシート貼り及び撤収作業は、屋根がついてからは見られなくなった{{要検証|date=2011年11月}}。--><!-- 公式サイトの映像によれば、コートカバー (court cover) が引き込み式屋根と共に映っている（http://www.wimbledon.com/visiting/tours/virtual-tours/virtual-centre-court 参照）。公式サイトの屋根設置前の見解（タイトル：「Long Term Plan」）によれば、「雨で屋根が閉められる場合、閉める作業が行われている間はコートカバーが通例の方法で芝を保護する。」とある。 (If the roof is being closed for rain, court covers will protect the grass in the usual way while closure is in progress. [http://aeltc2010.wimbledon.org/en_GB/about/guide/longtermplan.html]) --><!--しかし、他のコートには屋根が無いため引き続き雨天中断の際のシート設置・撤去作業がなされているため、シートは各コートに設置されている。-->
+
+2015年より、それまで2週間だった[[全仏オープン]]との間隔が、初めて3週間に引き伸ばされて開催されることとなった{{要出典|date=2022年5月}}。
+
+2020年は[[SARSコロナウイルス2|新型コロナウイルス]]の感染拡大により中止された<ref>{{Cite web |url=https://www.wimbledon.com/en_GB/news/articles/2020-04-01/cancellation_of_the_championships_2020.html |title=Cancellation of The Championships 2020 |access-date=2020-08-09 |publisher=AELTC |date=2020-04-01 |website=Wimbledon.com |language=en |archive-url= |archive-date= }}</ref><ref>{{Cite news|title=Wimbledon cancelled due to coronavirus - where does that leave tennis in 2020?|url=https://www.bbc.com/sport/tennis/52104196|work=BBC Sport|date=2020-04-01|language=en}}</ref>{{refnest|group=注|オープン化以降初の中止<ref>{{Cite news|title=全米オープン会場が「臨時病院」に テニス界も前途多難|newspaper=朝日新聞デジタル|date=2020-04-03|url=https://www.asahi.com/articles/ASN433J8NN42UTQP01D.html|access-date=2020-04-03|archive-url=|archive-date=}}</ref>。また、戦争以外の理由で中止となるのは1877年の第1回大会以来初めて<ref>{{Cite news|title=ウィンブルドン、７５年ぶり中止 戦争以外で初―テニス|newspaper=時事ドットコム|date=2020-04-02|url=https://www.jiji.com/jc/article?k=2020040200019&g=spo|access-date=2020-08-09|agency=時事通信社|archive-url=https://web.archive.org/web/20200403232837/https://www.jiji.com/jc/article?k=2020040200019&g=spo|archive-date=2020-04-03}}</ref>。}}。大会中止は、第2次世界大戦後初のことだった。同年7月10日、[[オールイングランド・ローンテニス・アンド・クローケー・クラブ|オールイングランド・ローンテニス・クラブ]]（AELTC）は男子シングルスのシードについて、2021年から世界ランキングのみを基準にすると発表した<ref>{{Cite web |url=https://www.wimbledon.com/en_GB/news/articles/2020-07-10/aeltc_announces_prize_money_in_lieu_of_championships_2020_alongside_initial_decisions_for_the_championships_2021.html |title=AELTC Announces Prize Money in Lieu of Championships 2020 and Initial Decisions for 2021 |access-date=2020-08-09 |publisher=AELTC |date=2020-07-10 |website=Wimbledon.com |language=en |archive-url= |archive-date= }}</ref><ref>{{Cite news|title=中止のウィンブルドン、選手に「賞金」　保険で資金捻出|newspaper=日本経済新聞 電子版|date=2020-07-11|url=https://www.nikkei.com/article/DGXLSSXK51359_Q0A710C2000000/|access-date=2020-08-09|agency=共同通信社|archive-url=|archive-date=}}</ref>。<!-- 男子シングルスでは、2002年から芝コートの大会の実績を考慮してシード順を決める方式が用いられていた。 -->
+
+2022年4月、大会を主催するAELTCは、[[2022年ロシアのウクライナ侵攻|ロシアによるウクライナ侵攻]]が勃発したことを受け、侵攻当事国の[[ロシア]]と同国を支援する[[ベラルーシ]]の両国選手についてエントリーを拒否し、大会から除外することを発表した。これにより、当時の世界ランキング男子2位の[[ダニール・メドベージェフ]]、同8位の[[アンドレイ・ルブレフ]]、女子4位の[[アリーナ・サバレンカ]]などが出場不可能となった<ref>{{Cite news|title=ロシアとベラルーシの選手除外　ウィンブルドンテニス|newspaper=時事ドットコム|date=2022-04-21|url=https://web.archive.org/web/20220529120557/https://www.jiji.com/jc/article?k=2022042001133|access-date=2022-05-29|agency=時事通信社|archive-url=|archive-date=}}</ref><ref>{{Cite news|title=ウインブルドン主催者がロシア選手の除外を正式発表「露政権の利益、受け入れられない」|newspaper=デイリースポーツ online|date=2022-04-20|url=https://www.daily.co.jp/general/2022/04/20/0015236623.shtml|access-date=2022-05-29|archive-url=|archive-date=}}</ref><ref name=":0">{{Cite news|title=テニスのウィンブルドン、ロシアとベラルーシ選手の出場を禁止|newspaper=BBCニュース|date=2022-04-21|url=https://www.bbc.com/japanese/61173239|access-date=2022-04-22|archive-url=|archive-date=}}</ref>。
+
+これに対し、各運営団体や選手から非難の声が上がった。[[男子プロテニス協会|ATP]]と[[女子テニス協会|WTA]]は、決定を「国籍に基づく差別」「合意違反に当たる」として批判した<ref>{{Cite news|title=ロシアなど除外は「不公平」 ATPとWTAがウィンブルドンに反発|newspaper=AFPBB News|date=2022-04-21|url=https://www.afpbb.com/articles/-/3401302|access-date=2022-04-22|agency=AFP|archive-url=|archive-date=}}</ref>。当時世界1位の[[ノバク・ジョコビッチ]]やOGの[[マルチナ・ナブラチロワ]]、[[ビリー・ジーン・キング]]などが反対を明言した<ref name=":0" /><ref>{{Cite web|和書|url=https://news.tennis365.net/news/today/202204/135943.html |title=露選手らへ「差別はしない」 |access-date=2022-04-22 |date=2022-04-22 |website=tennis365.net }}</ref><ref>{{Cite web|和書|url=https://news.tennis365.net/news/today/202204/135953.html |title=元女王「追放は支持できない」 |access-date=2022-04-22 |date=2022-04-22 |website=tennis365.net |archive-url= |archive-date= }}</ref>。侵攻されているウクライナの女子選手[[エリナ・スビトリナ]]は、「出場禁止は望んでいないこと」とコメントしたが、同時に政治的踏み絵をさせるべきとした<ref>{{Cite web|和書|url=https://www.huffingtonpost.jp/entry/story_jp_62635204e4b00b4e017e7434 |title=「沈黙が裏切りとなる時が来た」ロシア選手のウィンブルドン出場拒否めぐり、ウクライナ選手が訴えたこと |access-date=2022-05-21 |date=2022-04-23 |website=ハフポスト |archive-url= |archive-date= }}</ref>。排除対象となるロシア選手のうち、男子8位の[[アンドレイ・ルブレフ]]は「完全な差別だ」と非難し、賞金寄付等の別の道を提言した<ref>{{Cite web|和書|url=https://tennisclassic.jp/article/detail/4439?page=1 |title=「完全な差別だ！」ロシアのルブレフが、ウィンブルドンのエントリー拒否を批判  |access-date=2022-04-22 |date=2022-04-22 |website=テニスクラシック・ウェブ |archive-url= |archive-date= }}</ref>。[[ダリア・カサトキナ]]は「残念」「大会よりも人の命のほうが断然大事」と発言した<ref>{{Cite web|和書|url=https://tennismagazine.jp/article/detail/20170 |title=「大会よりも人命のほうが断然大事」ウインブルドンから排除されたロシアのカサキナ |access-date=2022-04-22 |date=2022-04-22 |website=テニスマガジンONLINE |archive-url= |archive-date= }}</ref>。
+
+5月20日、ATPおよびWTAは声明を発表し、ウィンブルドン選手権について「公平性を欠く」「あしき前例となる」と指摘し、世界ランキングのポイントを付与しないことを明らかにした<ref>{{Cite news|title=ウィンブルドンに世界ランキングポイント付与せず テニス協会|newspaper=NHKニュース|date=2022-05-21|url=https://web.archive.org/web/20220521020033/https://www3.nhk.or.jp/news/html/20220521/k10013636421000.html|access-date=2022-05-21|archive-url=|archive-date=}}</ref><ref name=":1">{{Cite news|title=ウィンブルドンはポイント付与せず ロシアなど除外「公平性に反す」|newspaper=朝日新聞デジタル|date=2022-05-21|url=https://www.asahi.com/articles/ASQ5P36CZQ5PUTQP001.html|access-date=2022-05-21|archive-url=|archive-date=}}</ref>。[[国際テニス連盟|ITF]]も、車いす部門およびジュニア部門にポイントを付与しないとした。主催者は「とても残念でならない」との声明を出し、英政府が出した指針の影響が強かったと強調した<ref name=":1" />。ポイント不付与もまた選手から不満の声があがった。また、結果として、大会4連覇を成し遂げたジョコビッチが7位に落ち、当時世界1位のロシア人選手である[[ダニール・メドベージェフ]]を利するという皮肉になった。[[センターコート]]100周年ながら前代未聞の大会となった中<ref>{{Cite web|和書|title=ウィンブルドン・センターコート100年の歴史を振り返る |url=https://wowowtennisworld.jp/ |website=WOWOWテニスワールド |access-date=2022-07-16}}</ref><ref>{{Cite web|和書|title=【ウィンブルドン問題】最古の歴史と伝統を誇る前代未聞の非公式戦、１カ月半で態度が豹変／上 |url=https://www.nikkansports.com/sports/news/202206260000499.html |website=nikkansports.com |access-date=2022-07-18}}</ref>、車いす男子シングルスでは[[国枝慎吾]]が制し、生涯グランドスラムを達成した。翌年以降は中立性を取り戻し、ポイント付与も復活した<ref>{{Cite news |title=テニスのウィンブルドン大会、今年はロシアとベラルーシの選手出場認める |url=https://www.bbc.com/japanese/65146017 |work=BBCニュース |access-date=2024-06-23 |language=ja}}</ref>。
+
+== 過去10年のシングルス優勝者 ==
+{| class="wikitable"
+! 年 
+! style="width: 25%;" | 男子 
+! style="width: 25%;" | 女子 
+! 備考
+|-
+! [[2017年ウィンブルドン選手権|2017]]
+| {{Flagicon|SUI}} [[ロジャー・フェデラー]]
+| {{Flagicon|ESP}} [[ガルビネ・ムグルサ]]
+| フェデラーが、男子シングルス歴代最多優勝 (8回目)。<br/>ムグルサは初優勝。
+|-
+! [[2018年ウィンブルドン選手権|2018]]
+| {{Flagicon|SRB}} [[ノバク・ジョコビッチ]]
+| {{Flagicon|GER}} [[アンゲリク・ケルバー]]
+| ジョコビッチは3年ぶり4回目の優勝。<br/>ケルバーは初優勝。
+|-
+! [[2019年ウィンブルドン選手権|2019]]
+| {{Flagicon|SRB}} [[ノバク・ジョコビッチ]]
+| {{Flagicon|ROU}} [[シモナ・ハレプ]]
+| ジョコビッチは2年連続5回目の優勝。<br/>ハレプは初優勝。
+|-
+! 2020
+| colspan="3" style="text-align: center; background-color: #e0e0e0;" | 開催なし
+|-
+! [[2021年ウィンブルドン選手権|2021]]
+| {{Flagicon|SRB}} [[ノバク・ジョコビッチ]]
+| {{Flagicon|AUS}} [[アシュリー・バーティ]]
+| ジョコビッチは大会3連覇。<br/>バーティは豪女子選手として41年ぶりの優勝。
+|-
+! [[2022年ウィンブルドン選手権|2022]]
+| {{Flagicon|SRB}} [[ノバク・ジョコビッチ]]
+| {{Flagicon|KAZ}} [[エレーナ・リバキナ]] || ジョコビッチが大会4連覇。<br/>リバキナは4大大会初優勝。
+|-
+! [[2023年ウィンブルドン選手権|2023]]
+| {{Flagicon|ESP}} [[カルロス・アルカラス]]
+| {{Flagicon|CZE}} [[マルケタ・ボンドロウソバ]]
+| アルカラスは初優勝。<br/>ボンドロウソバはノーシードでの4大大会初優勝。
+|-
+! [[2024年ウィンブルドン選手権|2024]]
+| {{Flagicon|ESP}} [[カルロス・アルカラス]] 
+| {{Flagicon|CZE}} [[バルボラ・クレイチコバ]]
+| アルカラスは連覇達成。<br/>クレイチコバは初優勝。
+|-
+! [[2025年ウィンブルドン選手権|2025]]
+| {{Flagicon|ITA}} [[ヤニック・シナー]]
+| {{Flagicon|POL}} [[イガ・シフィオンテク]]
+| シナーは初優勝。<br/>シフィオンテクは初優勝。
+|-
+! [[2026年ウィンブルドン選手権|2026]]
+| {{Flagicon|ITA}} [[ヤニック・シナー]]
+| {{Flagicon|CZE}} [[リンダ・ノスコバ]]
+| シナーは連覇達成。<br/>ノスコバは4大大会初優勝。
+|}
+
+== 記録 ==
+=== 男子（1877年 - ） ===
+{| class="wikitable"
+!記録名!!時代<ref group="注" name="1968年>[[1968年]]にオープン化制度が創設されてプロ選手の出場が解禁されたため、多くの記録はこの年の前後で分けられる。</ref>!!選手名!!style="white-space:nowrap"|記録値!!年代
+|-
+|rowspan="2"|シングルス<br />最多優勝回数||style="white-space:nowrap"|1968年以前||{{Flagicon|GBR}} [[ウィリアム・レンショー]]||7回||1881年 - 1886年、1889年
+|-
+|1968年以後||{{Flagicon|SUI}} [[ロジャー・フェデラー]]||8回||2003年 - 2007年、2009年、2012年、2017年
+|-
+|rowspan="3"|シングルス<br />最多連続優勝回数||1968年以前||{{Flagicon|GBR}} [[ウィリアム・レンショー]]<ref group="注">レンショーの時代にはディフェンディング・チャンピオンは予選に参加せず、決勝戦のみ出場した。この規定は、[[1922年]]に廃止された。</ref>||6回||1881年 - 1886年
+|-
+|rowspan="2"|1968年以後||{{Flagicon|SWE}} [[ビョルン・ボルグ]]||rowspan="2"|5回||1976年 - 1980年
+|-
+|{{Flagicon|SUI}} [[ロジャー・フェデラー]]||2003年 - 2007年
+|-
+|rowspan="2"|ダブルス<br />最多優勝回数||1968年以前||{{Flagicon|GBR}} [[レジナルド・ドハティー]]<br />{{Flagicon|GBR}} [[ローレンス・ドハティー]]||8回||1897年 - 1901年、1903年 - 1905年
+|-
+|1968年以後||{{Flagicon|AUS}} [[トッド・ウッドブリッジ]]||9回||1993年 - 1997年、2000年（いずれも[[マーク・ウッドフォード]]組）、<br />2002年 - 2004年（[[ヨナス・ビョークマン]]組）
+|-
+|rowspan="2"|ダブルス<br />最多連続優勝回数||1968年以前||{{Flagicon|GBR}} [[レジナルド・ドハティー]]<br />{{Flagicon|GBR}} [[ローレンス・ドハティー]]|| rowspan="2" |5回||1897年 - 1901年
+|-
+|1968年以後||{{Flagicon|AUS}} [[トッド・ウッドブリッジ]]<br />{{Flagicon|AUS}} [[マーク・ウッドフォード]]||1993年 - 1997年
+|-
+|rowspan="3"|混合ダブルス<br />最多優勝回数||rowspan="2"|1968年以前||{{Flagicon|AUS}} [[ケン・フレッチャー]]|| rowspan="3" |4回||1963年、1965年 - 1966年、1968年（[[マーガレット・スミス・コート]]組）
+|-
+|{{Flagicon|USA}} [[ビック・セイシャス]]||1953年 - 1956年（[[ドリス・ハート]]組で3回、[[シャーリー・フライ]]組で1回）
+|-
+|1968年以後||style="white-space:nowrap"|{{Flagicon|AUS}} [[オーウェン・デビッドソン]]||1967年、1971年、1973年 - 1974年（いずれも[[ビリー・ジーン・キング]]組）
+|-
+|rowspan="2" style="white-space:nowrap"|最多優勝回数<br />（シングルス、ダブ<br />ルス、混合の合計）||1968年以前||{{Flagicon|GBR}} [[ウィリアム・レンショー]]||14回||1880年 - 1889年（シングルス7回、ダブルス7回）
+|-
+|1968年以後||{{Flagicon|AUS}} [[トッド・ウッドブリッジ]]||9回||1993年 - 2004年（ダブルス9回）
+|}
+
+=== 優勝回数ランキング ===
+{| class="wikitable"
+|-
+! 選手 !! 回数
+|-
+| {{flagicon|SUI}} [[ロジャー・フェデラー]] || 8
+|-
+| {{flagicon|GBR}} [[ウィリアム・レンショー]] || rowspan="3" | 7
+|-
+| {{flagicon|USA}} [[ピート・サンプラス]]
+|-
+| {{Flagicon|SRB}} '''[[ノバク・ジョコビッチ]]'''
+|-
+| {{flagicon|GBR}} [[ローレンス・ドハティー]] || rowspan="2" | 5
+|-
+| {{flagicon|SWE}} [[ビヨン・ボルグ]] 
+|-
+|}
+
+=== 女子（1884年 - ） ===
+{| class="wikitable"
+!記録名!!時代<ref group="注" name="1968年"/>!!選手名!!style="white-space:nowrap"|記録値!!年代
+|-
+|rowspan="2"|シングルス<br />最多優勝回数||style="white-space:nowrap"|1968年以前||style="white-space:nowrap"|{{Flagicon|USA}} [[ヘレン・ウィルス・ムーディ]]||8回||1927年 - 1930年、1932年 - 1933年、1935年、1938年
+|-
+|1968年以後||{{Flagicon|TCH}}/{{Flagicon|USA}} [[マルチナ・ナブラチロワ]]||9回||1978年 - 1979年、1982年 - 1987年、1990年
+|-
+|rowspan="2"|シングルス<br />最多連続優勝回数||1968年以前||{{Flagicon|FRA}} [[スザンヌ・ランラン]]||5回||1919年 - 1923年
+|-
+|1968年以後||{{Flagicon|TCH}}/{{Flagicon|USA}} [[マルチナ・ナブラチロワ]]||6回||1982年 - 1987年
+|-
+|rowspan="3"|ダブルス<br />最多優勝回数||rowspan="2"|1968年以前||{{Flagicon|USA}} [[エリザベス・ライアン]]||12回||1914年（[[アグネス・モートン]]組）、1919年 - 1923年、1925年（[[スザンヌ・ランラン]]組）、1926年（[[メアリー・ブラウン]]組）、<br />1927年、1930年（[[ヘレン・ウィルス・ムーディ]]組）、1933年 - 1934年（[[シモーヌ・マチュー]]組）
+|-
+|{{Flagicon|USA}} [[ビリー・ジーン・キング]]||10回||1961年 - 1962年（[[カレン・サスマン]]組）、1965年（[[マリア・ブエノ]]組）、<br />1967年 - 1968年、1970年 - 1971年、1973年（[[ロージー・カザルス]]組）、1972年（[[ベティ・ストーブ]]組）、1979年（[[マルチナ・ナブラチロワ]]組）
+|-
+|1968年以後||{{Flagicon|TCH}}/{{Flagicon|USA}} [[マルチナ・ナブラチロワ]]||7回||1976年（[[クリス・エバート]]組）、1979年（[[ビリー・ジーン・キング]]組）、1981年 - 1984年、1986年（[[パム・シュライバー]]組）
+|-
+|rowspan="3"|ダブルス<br />最多連続優勝回数||1968年以前||{{Flagicon|FRA}} [[スザンヌ・ランラン]]<br />{{Flagicon|USA}} [[エリザベス・ライアン]]||5回||1919年 - 1923年
+|-
+|rowspan="2"|1968年以後||{{Flagicon|TCH}}/{{Flagicon|USA}} [[マルチナ・ナブラチロワ]]<br />{{Flagicon|USA}} [[パム・シュライバー]]||rowspan="2"|4回||1981年 - 1984年
+|-
+|{{Flagicon|Belarus}}/{{Flagicon|SSR}} [[ナターシャ・ズベレワ]]||1991年（[[ラリサ・ネーランド]]）、1992年 - 1994年（[[ジジ・フェルナンデス]]）
+|-
+|rowspan="2"|混合ダブルス<br />最多優勝回数||1968年以前||{{Flagicon|USA}} [[エリザベス・ライアン]]||7回||1919年、1921年、1923年（[[ランドルフ・ライセット]]組）、1927年（[[フランシス・ハンター]]組）、<br />1928年（[[パトリック・スペンス]]組）、 1930年（[[ジャック・クロフォード]]組）、1932年（[[エンリケ・マイヤー]]組）
+|-
+|1968年以後||{{Flagicon|TCH}}/{{Flagicon|USA}} [[マルチナ・ナブラチロワ]]||4回||1985年（[[ポール・マクナミー]]）、1993年（[[マーク・ウッドフォード]]）、1995年（[[ジョナサン・スターク]]）、2003年（[[リーンダー・パエス]]）
+|-
+|rowspan="3" style="white-space:nowrap"|最多優勝回数<br />（シングルス、ダブ<br />ルス、混合の合計）||rowspan="2"|1968年以前||{{Flagicon|USA}} [[ビリー・ジーン・キング]]||20回||1961年 - 1979年（シングルス6回、ダブルス10回、混合4回）
+|-
+|{{Flagicon|USA}} [[エリザベス・ライアン]]||19回||1914年 - 1934年（ダブルス12回、混合7回）
+|-
+|1968年以後||{{Flagicon|TCH}}/{{Flagicon|USA}} [[マルチナ・ナブラチロワ]]||20回||1976年 - 2003年（シングルス9回、ダブルス7回、混合4回）
+|}
+
+=== その他 ===
+{| class="wikitable"
+!記録名!!選手名!!記録値!!年代
+|-
+|シングルス最多勝利数（男子）||style="white-space:nowrap"|{{Flagicon|SRB}} [[ノバク・ジョコビッチ]]||107勝||2005年 - 
+|-
+|シングルス最多勝利数（女子）||style="white-space:nowrap"|{{Flagicon|TCH}}/{{Flagicon|USA}} [[マルチナ・ナブラチロワ]]||120勝||1973年 - 2004年
+|-
+|シングルス最多決勝進出回数（男子）||style="white-space:nowrap"|{{Flagicon|SUI}} [[ロジャー・フェデラー]]||12回||2003年 - 2019年
+|-
+|シングルス最多決勝進出回数（女子）||style="white-space:nowrap"|{{Flagicon|UK}}[[ブランチ・ビングリー]]||13回||1885年 - 1901年
+|-
+|最多試合数（男子）||{{Flagicon|FRA}} [[ジャン・ボロトラ]]||223戦||1922年 – 1939年、1948年 – 1964年
+|-
+|最多試合数（女子）||style="white-space:nowrap"|{{Flagicon|TCH}}/{{Flagicon|USA}} [[マルチナ・ナブラチロワ]]||326戦||
+|-
+|rowspan="2"|シングルス最多準優勝回数<br />（男子・女子）||{{Flagicon|UK}} [[ブランチ・ビングリー]]||rowspan="2"|7回||1885年、1887年 - 1888年、1891年 - 1893年、1901年
+|-
+||{{Flagicon|USA}}[[クリス・エバート]]||1973年、1978年 - 1980年、1982年、1984年 - 1985年
+|-
+|優勝者の最低世界ランキング<br />（男子）||{{Flagicon|CRO}} [[ゴラン・イワニセビッチ]]||125位||2001年
+|-
+|style="white-space:nowrap"|ワイルドカード（主催者推薦）<br />の優勝者（男子・女子）||{{Flagicon|CRO}} [[ゴラン・イワニセビッチ]]||||2001年
+|-
+|優勝者の最低世界ランキング（女子）||{{Flagicon|USA}} [[ビーナス・ウィリアムズ]]||style="white-space:nowrap"|31位<br />（第23シード）||2007年
+|-
+|最年少優勝者（男子）||{{Flagicon|GER}} [[ボリス・ベッカー]]||17歳||1985年
+|-
+||最年少優勝者（女子シングルス）||{{Flagicon|GBR}} [[ロッティ・ドッド]]||15歳||1887年
+|-
+|最年少優勝者（女子ダブルス）||{{Flagicon|SUI}} [[マルチナ・ヒンギス]]||15歳||1996年
+|-
+|最長試合時間決勝戦（男子）||{{Flagicon|USA}} [[ジョン・マッケンロー]]<br />{{Flagicon|GER}} [[ミヒャエル・シュティヒ]]<br />対<br />{{Flagicon|USA}} [[ジム・グラブ]]<br />{{Flagicon|USA}} [[リッチー・レネバーグ]]||5時間1分||1992年、男子ダブルス
+|-
+|最長試合時間（男子）||{{Flagicon|USA}} [[ジョン・イスナー]]<br />対<br />{{Flagicon|FRA}} [[ニコラ・マユ]]||11時間5分||2010年、男子シングルス<br />―最終第5セットがゲームカウント59-59で2日目の日没サスペンデッド（中断）となった。第5セットは最終的に70-68となりイスナーが勝利した。
+|-
+|最多ゲーム数決勝戦（男子）||{{Flagicon|USA}} [[ジョン・マッケンロー]]<br />{{Flagicon|GER}} [[ミヒャエル・シュティヒ]]<br />対<br />{{Flagicon|USA}} [[ジム・グラブ]]<br />{{Flagicon|USA}} [[リッチー・レネバーグ]]||83ゲーム||1992年、男子ダブルス
+|-
+|最多ゲーム数（男子）||{{Flagicon|USA}} [[ジョン・イスナー]]<br />対<br />{{Flagicon|FRA}} [[ニコラ・マユ]]||183ゲーム||2010年、男子シングルス
+|-
+|最長試合時間決勝戦（女子）||{{Flagicon|USA}} [[リンゼイ・ダベンポート]]<br />対<br />{{Flagicon|USA}} [[ビーナス・ウィリアムズ]]||2時間45分||2005年、女子シングルス
+|}
+
+== 優勝者一覧 ==
+* [[ウィンブルドン選手権男子シングルス優勝者一覧]]
+* [[ウィンブルドン選手権女子シングルス優勝者一覧]]
+* [[ウィンブルドン選手権男子ダブルス優勝者一覧]]
+* [[ウィンブルドン選手権女子ダブルス優勝者一覧]]
+* [[ウィンブルドン選手権混合ダブルス優勝者一覧]]
+* [[全英オープン (車いすテニス)]]
+
+== 日本人出場選手 ==
+日本人選手がいつごろから参加したのかは不明<ref name=jta4>[https://www.jta-tennis.or.jp/Portals/0/resources/museum/11/%EF%BD%90%EF%BD%84%EF%BD%86/JO_NGJO_04.pdf　グランドスラムへの挑戦－１ウィンブルドン　最古で最高のグランドスラム大会]</ref>。1920年には[[清水善造]]が日本人初のウィンブルドン出場選手としてオールカマー制度の決勝（現準決勝）に進出、翌1921年にはオールカマー制度準決勝進出、世界4位になる<ref name=jta>[https://www.jta-tennis.or.jp/history/tabid/252/Default.aspx　日本テニスの年表]日本テニス協会</ref>。1931年に全仏選手権でベスト4に進出した[[佐藤次郎]]がウィンブルドンでベスト8に進出し、翌1932年にはベスト4進出、1933年にはシングルでベスト4、[[布井良助]]と組んだダブルスでは決勝進出して世界3位になる<ref name=jta/>。1934年には[[三木龍喜]]が混合でイギリス人の[[ドロシー・ラウンド]]と組んで優勝、4大大会日本人初のタイトルとなる<ref name=jta/>。
+
+戦後は、1954年に[[加茂幸子]]が日本女子選手として初出場し、シングルス3回戦まで進出した<ref name=jta4/>。1969年に[[沢松和子]]が全仏選手権とともにジュニアで優勝、1975年には日系米国人の[[アン・キヨムラ]]と組んでダブルスで優勝<ref name=jta/>。1995年に[[松岡修造]]が日本男子62年ぶりのベスト8進出、翌1996年に[[伊達公子]]が日本女子初のベスト4進出<ref name=jta/>。2000年には全米選手権で優勝した[[杉山愛]]とフランス人の[[ジュリー・アラール・デキュジス]]ペアが準優勝<ref name=jta/>。杉山は2002年にベルギーの[[キム・クライシュテルス]]と組んで準優勝、同ペアは翌2003年に全仏、ウィンブルドンともに優勝した<ref name=jta/>。2004年に杉山はシングルで日本女子史上2人目のベスト8進出<ref name=jta/>。近年では[[錦織圭]]が2008年に初出場、2018年、2019年にベスト8となった<ref name=jta/>。
+<gallery>
+File:Shimizu zenzo.jpg|清水善造
+File:Three Japanese tennis players, Sato, Harada and Nunoi, 1932 in Sydney.jpg|佐藤次郎(左)と布井良助（右）
+File:Ryuki Miki 1929.jpg|三木龍喜
+File:Date Krumm WMQ15 (6) (19957512391).jpg|伊達公子
+File:Ai Sugiyama at the 2009 Wimbledon Championships 01.jpg|杉山愛
+File:Kei Nishikori 1, Wimbledon 2013 - Diliff.jpg|錦織圭
+</gallery>
+
+== テレビ放送 ==
+{{出典の明記|date=2011年11月|section=1}}
+[[英国放送協会|BBC]]が[[1937年]]からウィンブルドン選手権の放送を担当しており<ref>{{citeweb|url=https://www.bbc.com/historyofthebbc/anniversaries/june/wimbledon-first-televised|title=Wimbledon first televised - History of the BBC|website=bbc.com|accessdate=01 apr 2020}}</ref>、[[2005年]]の実績では全チャンネルで約900時間を放送した。また、{{要出典範囲|決勝戦は必ず試合終了まで生中継しなければならない|date=2020年4月}}。
+
+2024年現在、日本ではWOWOWが衛星放送権を、NHKが地上波放送権を持つ<ref>{{Cite web |url=https://www.wimbledon.com/en_GB/atoz/tv_schedules.html |title=TV COVERAGE AND SCHEDULES |access-date=2024-06-13}}</ref>
+
+過去の放送権については、日本ではシングルスは[[テレビ朝日]]（～1986年。当時の放送時間は準決勝までは深夜枠にて、女子のシングルス決勝は土曜日のニュース最終版終了後の深夜枠にて衛星中継、男子シングルス決勝は「[[日曜洋画劇場]]」を休止して衛星生中継で放送していた<ref group="注">年度によっては準キー局の朝日放送（現：[[朝日放送テレビ]]）のアナウンサーも実況を担当していた。</ref>。途中ニュース最終版などの挿入による中断あり）→[[日本放送協会|NHK]]（1987年以降～）、ダブルスは[[GAORA]]で長年放送されていた。シングルスは[[NHKデジタル衛星ハイビジョン]]で全日程生中継され[[2003年]]まではNHK衛星第1テレビ（年によっては衛星第2テレビ）でも大半の試合を生中継していたが、年々NHKがウィンブルドン放送を担当する時間は大幅に減少していき、[[2008年]]からはNHKに替わって[[WOWOW]]がウインブルドンの衛星放送権を獲得している{{要出典|date=2020年4月}}。
+
+NHKは地上波[[NHK総合テレビジョン|総合テレビ]]のみでの放送となり、毎日24時台～4時15分の日付起点時間までの終夜体制で録画中継を行う。生中継は一旦廃止されたものの[[2012年]]から男子シングルス決勝と女子シングルス決勝の生中継が復活した。また大会終了から1週間後に衛星第1でシングルスの決勝戦を2時間程度にまとめた録画版を放送している（2009年の男子は試合が長引いたので3時間程度のものになった）。
+
+原則、総合テレビでの放送だが、FIFAワールドカップなどのスポーツ中継（2010年、2014年）との重複、大雨などの自然災害による突発的な特番（2023年）、[[第22回参議院議員通常選挙|参議院議員通常選挙]]<ref group="注">[[政見放送]]の開催などによる。</ref>の政見放送などの事由で総合テレビで中継が出来ない場合は、[[NHK教育テレビジョン|教育テレビ]]（Eテレ）で放送を行う場合もある。
+
+2015年は通常の中継の他、インターネットでも配信を行った<ref>[https://www.daily.co.jp/newsflash/general/2015/06/17/0008131019.shtml 錦織のウィンブルドン、全生中継検討] デイリースポーツ 2015年6月17日</ref>。また、2022年からは[[NHK ONE (テレビ配信)|NHKプラス]]によるインターネットでの同時配信も行われている。なお、日本勢の注目の試合についてはサブチャンネル「マルチ編成」を活用して放送する場合がある。
+
+== トロフィー ==
+[[Image:Wimbledon trophies.jpg|200px|thumb|ウィンブルドントロフィー]]
+男子シングルスの優勝トロフィー[[スターリングシルバー]]製の高さ18.5インチ（約47cm）、直径7.5インチ（約19cm）のカップが1887年以来授与されている。実物はオールイングランドクラブの所有物でありオールイングランドクラブの博物館に保管されているため、優勝者に授与されるのは実物の3/4の大きさ（高さ13.5インチ）の、過去の全ての優勝者の名前を刻印したカップである<ref name="wimbledon_trophies">{{cite web|title=Trophies|url=http://www.wimbledon.com/en_GB/atoz/trophies.html|website=www.wimbledon.com|publisher=[[オールイングランド・ローンテニス・アンド・クローケー・クラブ]]|accessdate=2017年7月15日}}</ref>。
+
+女子シングルスの優勝トロフィーは1886年以来スターリングシルバー製の直径約18.75インチ（約48cm）大皿「ヴィーナス・ローズウォーター・ディッシュ」([[:en:Venus Rosewater Dish|en]])（略称：ローズウォーター・ディッシュ）である。男子シングルの優勝カップ同様に現物はオールイングランドクラブの所有物でありオールイングランドクラブの博物館に保管されているため、優勝者に授与されるのは過去の全ての優勝者の名前が刻印されたミニチュアのレプリカである。 レプリカの直径は1949年から2006年までは8インチで、2007年以降は実物の3/4の大きさの13.5インチである<ref name="wimbledon_trophies" />。
+
+男子ダブルス、レディースダブルス、ミックスダブルスの優勝者はシルバーカップを受け取る。ダブルスの優勝デュオ1組に対し一つのトロフィーが与えられる他の世界四大大会とは違い、優勝デュオの各個人に一つずつトロフィーが授与される。男子ダブルスの優勝カップは元々は[[オックスフォード大学]]のローンテニスクラブの物で1884年にオールイングランドクラブに寄付された。女子ダブルスの優勝カップは1949年に当時の[[ケント公爵]]夫人からオールイングランドクラブに下賜されたため「ケント公爵夫人のカップ」と呼ばれている。ミックスダブルスの優勝カップは[[シドニー・スミス (テニス選手)|シドニー・スミス]]の家族によってオールイングランドクラブに贈呈された<ref name="wimbledon_trophies" /><ref>{{cite web|title=Wimbledon – Behind the Scenes – Trophies|url=http://www.wimbledon.com/en_GB/behind_the_scenes/201205091336568697615.html|publisher=[[オールイングランド・ローンテニス・アンド・クローケー・クラブ]]|accessdate=2017年7月15日}}</ref>。これらの優勝トロフィーは数か月間オールイングランドクラブの博物館に展示される。
+
+各部門の準優勝者には銀製の銘板が贈られる。各トロフィーは通常はオールイングランドクラブの長であるケント公によって授与される。
+
+== 脚注 ==
+{{脚注ヘルプ}}
+=== 注釈 ===
+{{Reflist|group="注"}}
+=== 出典 ===
+{{Reflist|2}}
+
+== 関連項目 ==
+* [[ウィンブルドン現象]]
+
+== 外部リンク ==
+* [https://www.wimbledon.com/ ウィンブルドン選手権公式サイト]{{en icon}}
+
+{{ウィンブルドン選手権}}
+{{テニスグランドスラム大会優勝者一覧}}
+{{プロテニス競技大会}}
+{{authority control}}
+{{DEFAULTSORT:ういんふるとんせんしゆけん}}
+[[Category:ウィンブルドン選手権|*]]
+[[Category:BBCのテレビ番組]]
+[[Category:1877年開始のイベント]]
+[[Category:グラスコートのテニス大会]]

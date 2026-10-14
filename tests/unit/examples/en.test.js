@@ -486,6 +486,19 @@ test('RNLI-Stations', (t) => {
   t.end()
 })
 
+test('Radiohead', (t) => {
+  const doc = wtf(readPage('Radiohead'))
+  t.match(doc.text(), /Radiohead/, 'band name')
+  t.match(doc.text(), /OK Computer/, 'landmark album')
+  t.ok(
+    doc.links().some((link) => link.page() === 'Thom Yorke'),
+    'lead singer link'
+  )
+  t.ok(doc.section('History'), 'biography or references section')
+  t.ok(doc.references().length > 0, 'sources for the band history')
+  t.end()
+})
+
 test('Raith-Rovers', (t) => {
   const doc = wtf(readPage('Raith-Rovers'))
   t.equal(doc.infobox().get('clubname').text(), 'Raith Rovers', 'club name')
@@ -769,5 +782,31 @@ test('University-Of-Nevada-Reno-Arboretum', (t) => {
   )
   t.equal(doc.coordinate().lat, 39.54583, 'latitude')
   t.equal(doc.coordinate().lon, -119.81667, 'longitude')
+  t.end()
+})
+
+test('Willow', (t) => {
+  const doc = wtf(readPage('Willow'))
+  t.match(doc.text(), /Salix/, 'Latin genus name')
+  t.ok(
+    doc.links().some((link) => link.page() === 'Salix alba'),
+    'botanical link'
+  )
+  t.ok(doc.section('Description'), 'botanical section')
+  t.ok(doc.images().length > 0, 'willow illustrations')
+  t.ok(doc.categories().length > 0, 'botanical categories')
+  t.end()
+})
+
+test('Wimbledon-Championships', (t) => {
+  const doc = wtf(readPage('Wimbledon-Championships'))
+  t.match(doc.text(), /1877/, 'first tournament year')
+  t.ok(
+    doc.links().some((link) => link.page() === 'All England Lawn Tennis and Croquet Club'),
+    'tennis or venue link'
+  )
+  t.ok(doc.section('History'), 'tournament history or programme section')
+  t.ok(doc.tables().length > 0, 'tournament records tables')
+  t.ok(doc.references().length > 0, 'tournament sources')
   t.end()
 })

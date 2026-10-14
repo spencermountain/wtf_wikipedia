@@ -1,0 +1,26 @@
+{{Infobox football biography
+    | name        = Boudewijn Zenden
+    | image       = Zenden.jpg
+    | image_size  = 260
+    | caption     = Zenden in 2005, playing for Liverpool
+    | fullname    = Boudewijn Zenden
+    | birth_date  = {{Birth date and age|1976|08|15|df=yes}}
+    | birth_place = [[Maastricht]], [[Netherlands]]
+    | height      = {{convert|1.68|m|abbr=on}}<ref>http://www.soccerbase.com/players/player.sd?player_id=12662</ref>
+    | position    = [[Midfielder]]
+    | currentclub =
+    | youthyears1 = 1985–1987 |youthclubs1 = [[MVV]]
+    | youthyears2 = 1987–1993 |youthclubs2 = [[PSV Eindhoven|PSV]]
+    | years1      = 1993–1998 |clubs1 = [[PSV Eindhoven|PSV]]                         |caps1 = 112 |goals1 = 32
+    | years2      = 1998–2001 |clubs2 = [[FC Barcelona|Barcelona]]                    |caps2 = 64  |goals2 = 2
+    | years3      = 2001–2004 |clubs3 = [[Chelsea F.C.|Chelsea]]                      |caps3 = 43  |goals3 = 4
+    | years4      = 2003–2004 |clubs4 = → [[Middlesbrough F.C.|Middlesbrough]] (loan) |caps4 = 31  |goals4 = 4
+    | years5      = 2004–2005 |clubs5 = [[Middlesbrough F.C.|Middlesbrough]]          |caps5 = 36  |goals5 = 5
+    | years6      = 2005–2007 |clubs6 = [[Liverpool F.C.|Liverpool]]                  |caps6 = 23  |goals6 = 2
+    | years7      = 2007–2009 |clubs7 = [[Olympique de Marseille|Marseille]]          |caps7 = 54  |goals7 = 6
+    | years8      = 2009–2011 |clubs8 = [[Sunderland A.F.C|Sunderland]]               |caps8 = 47  |goals8 = 4
+    | totalcaps   = 410 |totalgoals = 59
+    | nationalyears1 = 1997–2004 |nationalteam1 = [[Netherlands national football team|Netherlands]] |nationalcaps1 = 54 |nationalgoals1 = 7
+    | manageryears1  = 2012–2013 |managerclubs1 = [[Chelsea F.C.|Chelsea]] (assistant manager)
+    | manageryears2  = 2013– |managerclubs2 = [[Jong PSV]] (assistant manager)
+  }}

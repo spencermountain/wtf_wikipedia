@@ -1,0 +1,368 @@
+{{Infobox settlement|name=Toronto|official_name=City of Toronto|settlement_type=[[List of cities in Ontario|Thành phố]] ([[List of municipalities in Ontario#Single-tier municipalities|single-tier]]) và [[List of cities in Canada#Capital cities|thủ phủ tỉnh]]<!-- Consensus see: [[Wikipedia talk:WikiProject Ontario/Archive 1#City infoboxes: "tier" or "conventional" municipal statuses (or both)?]] -->|image_skyline={{multiple image
+| border            = infobox
+| total_width       = 280
+| perrow            = 1/2/2/2
+| caption_align     = center
+| image1            = Toronto Skyline from Snake Island, February 28 2026 (08).jpg<!--Please don't change without consensus in article talk page-->
+| caption1          = [[List of tallest buildings in Toronto|Đường chân trời]] [[Trung tâm Toronto]] và [[Tháp CN]]
+| image2            = Ontario Legislative Building, Toronto, South view 20170417 1.jpg<!--Please don't change without consensus in article talk page-->
+| caption2          = [[Tòa nhà Lập pháp Ontario]]
+| image3            = Nathan Phillips Square (33343114810).jpg<!--Please don't change without consensus in article talk page-->
+| caption3          = [[Toronto Sign]] và [[Tòa thị chính Toronto]]
+| image4            = Toronto - ON - Humber Bay und Humber Bay Arch Bridge.jpg<!--Please don't change without consensus in article talk page-->
+| caption4          = [[Humber Bay Arch Bridge]]
+| image5            = Casa Loma (23170005321).jpg<!--Please don't change without consensus in article talk page-->
+| caption5          = [[Casa Loma]]
+| image6            = Royal Ontario Museum in Fall 2021.jpg
+| caption6          = [[Bảo tàng Hoàng gia Ontario]]
+| image7            = Scarborough bluffs -b.jpg
+| caption7          = [[Scarborough Bluffs]]
+}}|image_size=250px|image_flag=Toronto Flag.svg|flag_size=125px|flag_link=Flag of Toronto|image_seal=Coat of arms of Toronto.png|seal_type=Coat of arms|seal_size=95px|seal_link=Coat of arms of Toronto|image_blank_emblem=Toronto, City of.svg|blank_emblem_type=Biểu trưng|blank_emblem_size=140px|etymology=Từ [[tiếng Mohawk]] {{lang|iro|tkaronto}} ('cây trong nước ở đó'), tên gọi của một con kênh giữa [[Hồ Simcoe]] và [[Hồ Couchiching]]|nicknames=[[Name of Toronto#Nicknames|See list]]|motto=Diversity Our Strength<ref>{{cite web |url=https://www.toronto.ca/city-government/awards-tributes/tributes/history-of-city-symbols/ |website=www.toronto.ca |title=History of City Symbols |publisher=City of Toronto |year=2020 |access-date=October 27, 2020 |archive-date=August 12, 2021 |archive-url=https://web.archive.org/web/20210812134238/https://www.toronto.ca/city-government/awards-tributes/tributes/history-of-city-symbols/ |url-status=live |last1=Toronto |first1=City of }}</ref><ref>{{cite book |title=The Social Construction of Diversity: Recasting the Master Narrative of Industrial Nations |url=https://archive.org/details/socialconstructi0000unse_p1m3 |last1=Harzig |first1=Christiane |last2=Juteau |first2=Danielle |author2-link=Danielle Juteau |last3=Schmitt |first3=Irina |publisher=Berghahn Books |year=2006 |isbn=978-1-57181-376-3 |page=[https://archive.org/details/socialconstructi0000unse_p1m3/page/310 310] |quote=In reflecting and capturing this sense of the city, one of the first actions of the newly amalgamated Toronto City Council in 1998 was to adopt "Diversity Our Strength" as its official motto. }}</ref>{{efn|The motto is typically rendered without punctuation, while the city's coat of arms uses [[Bullet (typography)|typographical bullets]] to space the words used in the motto. However, some sources from the municipal government of Toronto use punctuation to describe the motto as "Diversity, Our Strength."<ref>{{Cite web |url=https://www.toronto.ca/city-government/accessibility-human-rights/equity-diversity-inclusion/ |title=Equity, Diversity & Inclusion |author=City of Toronto Government |work=City of Toronto |date=August 18, 2017 |access-date=October 27, 2020 |archive-date=October 9, 2020 |archive-url=https://web.archive.org/web/20201009135713/https://www.toronto.ca/city-government/accessibility-human-rights/equity-diversity-inclusion/ |url-status=live }}</ref>}}|mapframe=yes|mapframe-zoom=9|mapframe-wikidata=yes|mapframe-point=none|mapframe-stroke-width=1|coordinates={{coord|43|39|09|N|79|22|54|W|region:CA-ON_type:city|display=inline,title}}|pushpin_map=Ontario#Canada#North America|pushpin_mapsize=250px|pushpin_map_caption=Vị trí của Toronto tại Ontario##Vị trí của Toronto tại Canada##Vị trí của Toronto tại Bắc Mỹ|subdivision_type=Quốc gia|subdivision_name=[[Canada]]|subdivision_type1=[[Tỉnh bang và lãnh thổ của Canada|Tỉnh bang]]|subdivision_name1=[[Ontario]]|subdivision_type2=[[List of regions of Canada|Vùng]]|subdivision_name2=[[Nam Ontario]]|parts_type=[[Amalgamation of Toronto|Communities]]|parts={{hlist|[[East York]]|[[Etobicoke]]|[[North York]]|[[Old Toronto]]|[[Scarborough, Ontario|Scarborough]]|[[York, Ontario|York]]}}|established_title=Thành lập|established_date={{start date and age|1793|08|27}} (với tên gọi [[York, Thượng Canada|York]])|established_title1=[[Municipal corporation|Hợp nhất]]|established_date1={{start date and age|1834|03|06}} (với tên gọi Toronto)|established_title2=[[List of census divisions of Ontario|Changed division]]|established_date2={{start date and age|1953|01|20}} (từ [[York County, Ontario|York County]] thành [[Metropolitan Toronto]])|established_title3=[[Merger (politics)|Amalgamated]]|established_date3={{start date and age|1998|01|01}}|government_type=[[List of municipalities in Ontario#Single-tier municipalities|Single-tier municipality]] với một [[chính quyền thị trưởng-hội đồng]]|governing_body=[[Hội đồng Thành phố Toronto]]|leader_title=[[Thị trưởng Toronto|Thị trưởng]]|leader_name=[[Olivia Chow]]|leader_title1=[[Phó Thị trưởng Toronto|Phó Thị trưởng luật định]]|leader_name1=[[Ausma Malik]]|unit_pref=Metric|total_type=Tổng cộng|area_footnotes=<ref name=CityPop/><ref name=UAPop/><ref name=CMAPop />|area_magnitude=|area_total_km2=631.10|area_urban_km2=1829.05|area_blank1_title=[[Census Metropolitan Area|CMA]]|area_blank1_km2=5902.75|elevation_min_m=76.5|population_as_of=[[Điều tra dân số Canada 2021|2021]]|population_footnotes=<ref name=CityPop>{{cite web |title=Population and dwelling counts, for Canada, provinces and territories, and census subdivisions (municipalities), 2021 and 2016 censuses – 100% data |url=https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810000202 |publisher=Statistics Canada |date=9 February 2022 |access-date=28 April 2025 |archive-date=February 9, 2022 |archive-url=https://web.archive.org/web/20220209152451/https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810000202 |url-status=live }}</ref><ref name=UAPop>{{cite web |title=Population and dwelling counts, for Canada and population centres, 2021 and 2016 censuses – 100% data |url=https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810001101 |publisher=Statistics Canada |date=9 February 2022 |access-date=28 April 2025 |archive-date=November 25, 2022 |archive-url=https://web.archive.org/web/20221125190326/http://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810001101 |url-status=live }}</ref><ref name=CMAPop>{{cite web |title=Population and dwelling counts, for Canada, provinces and territories, census metropolitan areas and census agglomerations, 2021 and 2016 censuses – 100% data |url=https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810000501 |publisher=Statistics Canada |date=9 February 2022 |access-date=28 April 2025 |archive-date=March 27, 2022 |archive-url=https://web.archive.org/web/20220327085922/https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810000501 |url-status=live }}</ref>|population_rank={{ubl|[[List of the largest municipalities in Canada by population|1]] tại Canada|[[List of North American cities by population|4]] tại [[Bắc Mỹ]]}}|population_density_km2=4,427.8|population_total=2,794,356<!--Please don't change until the 2026 Canadian Census is released per [[WP:CANPOP]]-->|population_blank1_title=[[Census Metropolitan Area|CMA]]|population_blank1=6,202,225<!--Please don't change until the 2026 Canadian Census is released per [[WP:CANPOP]]--> ([[List of census metropolitan areas and agglomerations in Canada|1st]])|population_blank2_title=[[Golden Horseshoe|Vùng]]|population_blank2=9,765,188<!--Please don't change until the 2026 Canadian Census is released per [[WP:CANPOP]]-->|pop_est_as_of=2025<!--This is permitted per [[WP:CANPOP]]-->|population_est=3,271,830<!--This is permitted per [[WP:CANPOP]]--><ref name="statscanestimates">{{Cite web|url=https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710015201|title=Population estimates, July 1, by census division, 2021 boundaries|date=January 14, 2026|access-date=January 31, 2026|publisher=[[Statistics Canada]]|archive-date=February 7, 2026|archive-url=https://web.archive.org/web/20260207151950/https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710015201|url-status=live}}</ref>|population_demonym=Torontonian|population_note=|demographics_type2=GDP {{Nobold|(Danh nghĩa, 2022)}}|demographics2_footnotes=<ref>{{Cite web |last=Government of Canada |first=Statistics Canada |date=November 27, 2024 |title=Gross domestic product (GDP) at basic prices, by census metropolitan area (CMA) |url=https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3610046801 |access-date=November 29, 2024 |website=www150.statcan.gc.ca}}</ref>|demographics2_title1=[[Census geographic units of Canada|CMA]]|demographics2_info1={{CAD|522.4{{nbsp}}billion|link=yes}}|demographics2_title2=Bình quân đầu người|demographics2_info2={{CAD|79249{{nbsp}}|link=yes}}|postal_code_type=Postal code span|postal_code=[[List of postal codes of Canada: M|M]]|area_codes=[[Area codes 416, 647, 437, and 942|416, 647, 437, 942]]|unemployment_rate=|timezone=[[Eastern Standard Time|EST]]|utc_offset=−05:00|timezone_DST=[[Eastern Daylight Time|EDT]]|utc_offset_DST=−04:00|blank_name_sec2=Khí hậu|blank_info_sec2=[[Khí hậu lục địa ẩm]] mùa hè nóng (Dfa){{efn|[[Warm-summer humid continental climate|Mùa hè ấm]] (Dfb) trước [[biến đổi khí hậu]]}}|website={{Official URL}}}}
+
+'''Toronto'''{{efn|{{IPAc-en|audio=EN-Toronto.ogg|t|ə|ˈ|r|ɒ|n|t|oʊ|}} {{respell|tə|RON|toh}};<ref>{{Cite web|url=https://www.ahdictionary.com/word/search.html?q=Toronto |title=American Heritage Dictionary entry: Toronto |website=[[American Heritage Dictionary]] |publisher=[[HarperCollins]] |archive-url=https://web.archive.org/web/20221129045055/https://www.ahdictionary.com/word/search.html?q=Toronto |archive-date=29 November 2022 |url-status=live |access-date=4 August 2025}}</ref> {{IPA|en-CA|təˈɹɒnoʊ|local}} {{respell|tə|RON|oh}}, {{IPA|en-CA|ˈtɹɒnoʊ|also}} {{respell|TRON|oh}}<ref>{{cite web |last=Bergin |first=Caitlin |url=https://cla-acl.ca/pdfs/resumes-2022-abstracts/Bergin.pdf |title=Chranna? Turono? Toe-ron-toe? Sociophonetic perception in the pronunciation of "Toronto" |archive-url=https://web.archive.org/web/20220701021907/https://cla-acl.ca/pdfs/resumes-2022-abstracts/Bergin.pdf |archive-date=July 1, 2022 |publisher=Carleton University }}</ref><ref>{{cite book |last=Crystal |first=David |year=1995 |title=Cambridge Encyclopedia of the English Language |url=https://archive.org/details/cambridgeencyclo00crys |location=New York |publisher=Cambridge University Press |page=341 }}</ref><ref>{{cite journal |last1=Gallinger |first1=Zack |last2=Motskin |first2=Arik |url=http://www.the10and3.com/this-is-how-canada-talks/ |title=This is How Canada Talks |archive-url=https://web.archive.org/web/20180414082027/http://www.the10and3.com/this-is-how-canada-talks/ |archive-date=April 14, 2018 |journal=The 10 and 3 |date=August 24, 2017 }}</ref>}} là thành phố đông dân nhất tại [[Canada]] và là tỉnh lỵ của tỉnh [[Ontario]]. Thành phố nằm ở Nam [[Ontario]], tại bờ phía tây bắc của [[hồ Ontario]]. Năm 2012, chính quyền Toronto công bố ước tính dân số là 2.791.140, là thành phố đông dân thứ tư tại Bắc Mỹ và là thành phố đông dân nhất trong [[Chuỗi đô thị Vùng Ngũ Đại Hồ]].<ref>{{Chú thích web|tác giả=Friday, ngày 18 tháng 4 năm 2014 7:40 PM EDT Facebook Twitter RSS |url=http://www.thestar.com/news/city_hall/2013/03/05/torontos_population_overtakes_chicago.html |tiêu đề=Toronto's population overtakes Chicago &#124; Toronto Star |nhà xuất bản=Thestar.com |ngày tháng=ngày 5 tháng 3 năm 2013 |ngày truy cập=ngày 18 tháng 4 năm 2014}}</ref><ref>{{Chú thích web|họ=Peat |tên=Don |url=http://www.torontosun.com/2013/03/05/toronto-now-fourth-largest-city-in-north-america |tiêu đề=Toronto now fourth largest city in North America &#124; Toronto & GTA &#124; News |nhà xuất bản=Toronto Sun |ngày truy cập=ngày 18 tháng 4 năm 2014}}</ref> Khu vực đại đô thị thống kê (CMA) có dân số là 5.583.064,<ref name="SC2011cma">{{SCref |unit=cma |535}}</ref> và khu vực Đại Toronto (GTA) có dân số là 6.054.191 theo điều tra dân số năm 2011.<ref name="2011censusdiv">{{Chú thích web | url = http://www12.statcan.gc.ca/census-recensement/2011/dp-pd/hlt-fst/pd-pl/Table-Tableau.cfm?LANG=Eng&T=702&PR=35&S=51&O=A&RPP=25| tiêu đề = Population and dwelling counts, for population centres, 2011 and 2006 censuses|work=[[Statistics Canada]], 2011 Census of Population|ngày tháng = ngày 8 tháng 2 năm 2011|ngày truy cập =ngày 8 tháng 2 năm 2007}}</ref> Toronto nằm tại trung tâm của khu vực Đại Toronto, và của khu vực dân cư đông đúc Golden Horseshoe tại miền Nam Ontario. Dân cư thế giới và quốc tế của thành phố<ref name="diverse_city">{{chú thích sách|authors=Janine Flew; Humphries, Lynn; Press, Limelight; McPhee, Margaret|title = The Children's Visual World Atlas|publisher=Fog City Press|year = 2004|location = Sydney, Australia|page = 76|url =|id =|isbn = 1-74089-317-4 }}</ref> phản ánh vai trò của Toronto là một điểm đến quan trọng của những người nhập cư tới Canada.<ref name="toronto_diversity" /> Toronto là một trong những thành phố đa văn hóa, quốc tế nhất trên thế giới, với khoảng 49% dân số sinh bên ngoài Canada.<ref name="diverse_city" /><ref name="toronto_diversity">{{Chú thích web|url=http://www.cic.gc.ca/english/policy/fed-prov/can-ont-toronto-mou.html|tiêu đề=Canada-Ontario-Toronto Memorandum of Understanding on Immigration and Settlement (electronic version)|tác giả=Citizenship and Immigration Canada|ngày tháng=September 2006|ngày truy cập=ngày 1 tháng 3 năm 2007|url lưu trữ=https://web.archive.org/web/20070311043934/http://www.cic.gc.ca/english/policy/fed-prov/can-ont-toronto-mou.html|ngày lưu trữ=2007-03-11|url-status=dead}}</ref><ref name="facts_of_Toronto">{{Chú thích web|url = http://allabout-toronto.com/|tiêu đề = City of Toronto, Ontario|ngày truy cập = ngày 6 tháng 7 năm 2007|archive-date = 2007-09-29|archive-url = https://web.archive.org/web/20070929162756/http://allabout-toronto.com/|url-status = bot: unknown}}</ref>
+
+Lịch sử Toronto bắt đầu vào cuối thế kỷ 18 khi Vương thất Anh Quốc mua đất từ người bản địa. Khu định cư được thiết lập tại đây mang tên là York, và được Phó Thống đốc John Graves Simcoe chọn làm [[thủ đô]] của [[Thượng Canada]]. Thành phố bị cướp phá trong [[Chiến tranh Hoa Kỳ - Anh Quốc (1812)|Chiến tranh Hoa Kỳ - Anh Quốc]] năm 1812. Năm 1834, York trở thành một thành phố và đổi tên sang Toronto. Thành phố bị thiệt hại do hai đại hỏa hoạn vào năm 1849 và 1904. Từ năm 1954, thành phố có những đợt mở rộng ranh giới thông qua sáp nhập các đô thị xung quanh, lần gần đây nhất là vào năm 1998.
+
+Toronto là trung tâm tài chính lớn nhất của Canada, là nơi đặt trụ sở [[Sở giao dịch chứng khoán Toronto]] và năm ngân hàng lớn nhất của Canada. Những ngành nghề hàng đầu của thành phố là tài chính, dịch vụ doanh nghiệp, viễn thông, hàng không vũ trụ, giao thông, truyền thông, nghệ thuật, xuất bản, sản xuất phần mềm, nghiên cứu y tế, giáo dục, du lịch và kỹ thuật.<ref name=TorontoEconomy>[http://www.toronto.ca/ City of Toronto] (2007) – [http://www.toronto.ca/invest-in-toronto/tor_overview.htm Toronto economic overview], [http://www.toronto.ca/invest-in-toronto/clusteroverview.htm Key industry clusters] và [http://www.toronto.ca/invest-in-toronto/pdf/economy.pdf A Diversified Economy] {{Webarchive|url=https://web.archive.org/web/20081228054128/http://www.toronto.ca/invest-in-toronto/pdf/economy.pdf |date = ngày 28 tháng 12 năm 2008}}. Truy cập 2007-03-01.</ref><ref>{{Chú thích web|url=http://www.toronto.ca/business_publications/tocompetes.htm|tiêu đề=Toronto Competes|tác giả=ICF Consulting|ngày tháng=February 2000|ngày truy cập=ngày 1 tháng 3 năm 2007|archive-date = ngày 27 tháng 1 năm 2007 |archive-url=https://web.archive.org/web/20070127122238/http://www.toronto.ca/business_publications/tocompetes.htm|url-status=dead}}</ref> Toronto được GaWC xếp hạng là một [[Thành phố toàn cầu|thành phố toàn cầu hạng alpha]] và đứng hàng đầu thế giới về Chỉ số trung tâm tài chính toàn cầu.<ref>"[http://mail.architexturez.net/+/In-Enaction/archive/msg00800.shtml What makes a global city?] {{Webarchive|url=https://web.archive.org/web/20130207105717/http://mail.architexturez.net/%2B/In-Enaction/archive/msg00800.shtml |date = ngày 7 tháng 2 năm 2013}}", (2007)</ref><ref>[http://www.citymayors.com/economics/financial-cities.html Citymayors.com], ''[[Toronto Star]]'' (2004). Truy cập 2007-07-08.</ref> Toronto cũng luôn được xếp là một trong những thành phố dễ sống nhất theo xếp hạng của Đơn vị tin tức kinh tế học và Điều tra chất lượng sinh hoạt Mercer.<ref name=best>{{chú thích báo|url=http://www.cnn.com/2005/WORLD/europe/10/04/eui.survey/index.html|title=Vancouver is 'best city to live'|publisher=CNN|date=ngày 5 tháng 10 năm 2005|access-date =ngày 5 tháng 3 năm 2007}}</ref><ref name=quality>{{Chú thích web|url=http://www.mercerhr.com/attachment.dyn?idContent=1216315&filePath=/attachments/English/QOL_Survey2006_table.pdf|định dạng=PDF|tiêu đề=Mercer 2006 Quality of Living Survey|tác giả=Mercer Human Resource Consulting|năm=2006|ngày truy cập=ngày 5 tháng 3 năm 2007|archive-date=2008-06-25|archive-url=https://web.archive.org/web/20080625002953/http://www.mercerhr.com/attachment.dyn?idContent=1216315&filePath=%2Fattachments%2FEnglish%2FQOL_Survey2006_table.pdf|url-status=dead}}</ref>
+
+== Tên gọi ==
+
+== Lịch sử ==
+Khi những người châu Âu lần đầu đến địa điểm mà nay là Toronto, người [[Iroquois]] cư trú tại khu vực lân cận,<ref>{{chú thích sách|last=Myrvold|first=Myrvold|title=The people of Scarborough: a history|url=https://archive.org/details/peopleofscarboro0000myrv|year=1997|publisher=City of Scarborough Public Library Board|location=Toronto|isbn=0968308600|pages=[https://archive.org/details/peopleofscarboro0000myrv/page/12 12]–18}}</ref> lúc đó người Iroquois đã thay thế [[người Wyandot]] vốn chiếm giữ khu vực trong hàng thế kỷ trước khoảng 1500.<ref>Xem R. F. Williamson, ed., ''Toronto: An Illustrated History of its First 12,000 Years'' (Toronto: James Lorimer, 2008), ch. 2, phần đề cập đến di chỉ Mantle.</ref> Tên gọi ''Toronto'' có bắt nguồn từ ''tkaronto'' trong tiếng Iroquois, nghĩa là "nơi những cái cây mọc trong nước".<ref name=etymology>{{Chú thích web|url=http://geonames.nrcan.gc.ca/education/toronto_e.php|tiêu đề=The real story of how Toronto got its name|nhà xuất bản=[[Natural Resources Canada]] (2005)|ngày truy cập=ngày 8 tháng 12 năm 2006|archive-date = ngày 9 tháng 12 năm 2011 |archive-url=https://web.archive.org/web/20111209114921/http://geonames.nrcan.gc.ca/education/toronto_e.php}}</ref> Điều này ám chỉ đến phần cực bắc của nơi mà hiện là [[hồ Simcoe]], nơi người Huron trồng cây nhỏ để quây cá. Một tuyến đường chuyển tải từ hồ Ontario đến [[hồ Huron]] chạy qua điểm này, khiến tên gọi được sử dụng phổ biến. Trong thập niên 1660, người Iroquois thiết lập hai làng trong khu vực mà nay là Toronto, Ganatsekwyagon bên bờ sông Rouge và Teiaiagon bên bờ sông Humber. Đến năm 1701, [[người Mississauga]] thay thế người Iroquois, người Iroquois từ bỏ khu vực Toronto vào cuối [[Các cuộc chiến tranh Hải ly]].<ref>{{chú thích sách|last=Schmalz|first=Peter S.|title=The Ojibwa of Southern Ontario|url=https://archive.org/details/ojibwaofsouthern0000schm|year=1991|publisher=University of Toronto Press{{!}}|location=Toronto|isbn=978-0802067784}}</ref>[[Tập tin:GooderhamAndWorts1800s.jpg|nhỏ|Tòa nhà [[Gooderham và Worts]] khoảng thế kỉ 19. Nhà máy chưng cất này đã trở thành nhà máy sản xuất rượu whisky lớn nhất thế giới vào thập niên 1860.]]Năm 1750, các thương nhân người Pháp lập nên pháo đài Rouillé tại nơi mà nay là khu vực Triển Lãm, song từ bỏ vào năm 1759.<ref name="rouille">[http://schools.tdsb.on.ca/jarvisci/toronto/rouille.htm Fort Rouillé] {{Webarchive|url=https://web.archive.org/web/20120913004442/http://schools.tdsb.on.ca/jarvisci/toronto/rouille.htm |date = ngày 13 tháng 9 năm 2012}}, Jarvis Collegiate Institute (2006). Truy cập 2006-12-08.</ref> Trong [[Cách mạng Mỹ]], khu vực tiếp nhận một dòng người Anh định cư trung thành với Đế quốc chạy đến các vùng đất hoang ở phía bắc hồ Ontario. Năm 1787, Anh Quốc dàn xếp mua đất với người Mississauga, do đó củng cố trên một phần tư triệu acres (1000&nbsp;km²) đất tại khu vực Toronto.<ref name="British">[http://www.toronto.ca/culture/history/history-natives-newcomers.htm Natives and newcomers, 1600–1793], City of Toronto (2006). Truy cập 2006-12-08.</ref>
+
+Năm 1793, Thống đốc [[John Graves Simcoe]] thiết lập đô thị [[York, Upper Canada|York]] trên khu định cư sẵn có, đặt tên theo [[Vương tử Frederick, Công tước xứ York và Albany]]. Simcoe chọn York để thay thế [[Niagara-on-the-Lake|Newark]] trong vai trò thủ đô của [[Thượng Canada]],<ref>{{Chú thích web|url=http://www.ontario.ca/en/your_government/004690|tiêu đề=History of Ontario's Legislative Buildings|nhà xuất bản=Government of Ontario|ngày truy cập=ngày 13 tháng 7 năm 2007|archive-date = ngày 22 tháng 10 năm 2009 |archive-url=https://web.archive.org/web/20091022083250/http://www.ontario.ca/en/your_government/004690|url-status=dead}}</ref> tin rằng địa điểm mới sẽ có khả năng phòng thủ tốt hơn trước khả năng bị Hoa Kỳ tiến công.<ref name="[[Fort York]]">{{Chú thích web|url=http://www.fortyork.ca|tiêu đề=Welcome to the birthplace of Toronto|nhà xuất bản=Friends of Fort York (2006)|ngày truy cập=ngày 8 tháng 12 năm 2006}}</ref> Pháo đài York được xây dựng tại lối vào cảng tự nhiên của thị trấn, được một bán đảo bãi cát dài bảo vệ.
+
+[[Tập tin:Toronto 1894large.jpg|left|thumb|Bản đồ Toronto, 1894]]
+Năm 1813, trong khuôn khổ [[Chiến tranh Hoa Kỳ - Anh Quốc (1812)|Chiến tranh Hoa Kỳ - Anh Quốc]], [[trận York]] kết thúc với kết quả lực lượng Hoa Kỳ chiếm và cướp bóc thị trấn.<ref>{{Chú thích web|url=http://www.udata.com/users/hsbaker/york.htm|url lưu trữ=https://web.archive.org/web/20070820093114/http://www.udata.com/users/hsbaker/york.htm|ngày lưu trữ=2007-08-20|tiêu đề=Battle of York|ngày truy cập=ngày 10 tháng 7 năm 2007|url-status=live}}</ref> Binh sĩ Hoa Kỳ phá hủy hầu hết phái đài York và phóng hỏa tòa nhà nghị viện trong thời gian chiếm đóng. Việc Hoa Kỳ cướp phá York là một động cơ chính khiến quân Anh [[Trận đốt cháy Washington|đốt cháy Washington]] sau đó. York được hợp nhất tổ chức thành thành phố Toronto vào ngày 6 tháng 3 năm 1834.
+
+Dân số Toronto đương thời chỉ có 9.000, trong đó có những nô lệ da đen chạy trốn, một số người trong số đó do những người trung thành với Đế quốc đưa đến.<ref name=black>[http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=53c9757ae6b31410VgnVCM10000071d60f89RCRD&vgnextchannel=6c21226b48c21410VgnVCM10000071d60f89RCRD Black history at the City of Toronto Archives] {{Webarchive|url=https://web.archive.org/web/20140202183847/http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=53c9757ae6b31410VgnVCM10000071d60f89RCRD&vgnextchannel=6c21226b48c21410VgnVCM10000071d60f89RCRD |date=2014-02-02 }}, City of Toronto (2009). Truy cập 2009-03-13.</ref> Chế độ nô lệ bị cấm hoàn toàn tại Thượng Canada vào năm 1834. Chính trị gia cải lương [[William Lyon Mackenzie]] trở thành thị trưởng đầu tiên của Toronto và lãnh đạo [[Nổi dậy Thượng Canada]] vào năm 1837 nhằm chống chính phủ thực dân Anh Quốc song không thành công. Thành phố phát triển nhanh chóng suốt thời gan còn lại của thế kỷ 19, với vị thế là một điểm đến chính của những người nhập cư tới Canada. Dòng dân nhập cư đáng kể đầu tiên xuất hiện khi [[Nạn đói Ireland (1845–1852)|nạn đói khoai tây Ireland]] đưa một lượng lớn người Ireland đến thành phố, một số người trong đó chỉ cư trú tạm thời tại Toronto và hầu hết họ là tín đồ [[Công giáo La Mã]]. Đến năm 1851, dân cư sinh tại Ireland trở thành dân tộc đơn lẻ lớn nhất trong thành phố. Những người Ireland nhập cư theo Tin Lành có số lượng ít hơn, cộng đồng này được dân cư người Scotland và Anh cư trú từ trước hoan nghênh, khiến Orange Order có ảnh hưởng đáng kể và kéo dài đối với xã hội Toronto.
+
+Toronto từng hai lần là thủ đô của [[tỉnh Canada]] thống nhất: lần đầu từ năm 1849 đến năm 1852 sau bất ổn tại [[Montréal]], và trong giai đoạn 1856–1858.<ref>{{Chú thích web|url=http://www.statoids.com/uca.html |tiêu đề=Canada Provinces |nhà xuất bản=Statoids.com |ngày truy cập=ngày 17 tháng 4 năm 2010}}</ref> Do là thủ đô của Thượng Canada từ năm 1793, Toronto trở thành tỉnh lị của tỉnh Ontario sau khi tỉnh này được hình thành chính thức vào năm 1867. Do có vị thế là tỉnh lị, thành phố là nơi đặt tòa nhà chính phủ, dinh thự của phó vương đại diện cho quyền lực của vương thất tại Ontario.
+
+[[Tập tin:Yonge Street crowd celebrating the end of the Boer War.jpg|thumb|left|Phố Yonge vào năm 1900]]
+Trong thế kỷ 19, một hệ thống cống quy mô lớn được xây dựng, và các phố được chiếu sáng thường xuyên bằng đèn khí. Các tuyến đường sắt đường dài được xây dựng, trong đó một tuyến được hoàn thành vào năm 1854 liên kết Toronto với các hồ thượng trong Ngũ Đại Hồ. Đường sắt xuất hiện làm tăng mạnh số người nhập cư đến, thương nghiệp và công nghiệp, cùng với các thuyền hơi nước và thuyền hai buồm hồ Ontario cập cảng từ trước góp phần biến Toronto trở thành một cửa ngõ lớn kết nối thế giới với vùng nội địa của lục địa Bắc Mỹ. Toronto trở thành trung tâm cất rượu cồn lớn nhất tại Bắc Mỹ; nhà máy cất rượu Gooderham and Worts trở thành nhà máy whiskey lớn nhất thế giới vào thập niên 1860. Phát triển hạ tầng cảng và đường sắt tạo thuận lợi cho xuất khẩu gỗ và nhập khẩu than Pennsylvania. Đại hỏa hoạn năm 1904 phá hủy một phần lớn khu trung tâm Toronto, song thành phố nhanh chóng tái thiết. Đại hỏa hoạn khiến các luật an toàn cháy nổi thêm nghiêm ngặt và phát triển sở cứu hỏa của thành phố.
+
+Bắt đầu từ cuối thế kỷ 19 cho đến đầu thế kỷ 20, thành phố tiếp nhận các nhóm nhập cư mới, đặc biệt là người Đức, người Pháp, người Ý, và người Do Thái đến từ Đông Ấu. Tiếp nối ngay sau họ là những người Hoa, người Nga, người Ba Lan, và những người nhập cư Đông Âu khác. Giống như người Ireland đến từ trước, nhiều người nhập cư sống trong những khu vực tồi tàn đông đúc. Mặc dù có tốc độ tăng trưởng nhanh chóng, song cho đến thập niên 1920, dân số và tầm quan trọng kinh tế của Toronto tại Canada vẫn đứng thứ hai sau [[Montréal]]. Tuy nhiên, đến năm 1934 thì [[sở giao dịch chứng khoán Toronto]] trở thành sở giao dịch chứng khoán lớn nhất toàn quốc.
+
+Sau [[Chiến tranh thế giới thứ hai]], những người tị nạn hậu quả chiến tranh từ châu Âu và Trung Quốc đến Toronto để tìm kiếm công việc, cũng như các lao động xây dựng, chủ yếu là từ Ý và Bồ Đào Nha. Sau khi bãi bỏ những chính sách nhập cư dựa trên chủng tộc vào cuối thập niên 1960, người nhập cư đến Toronto từ khắp nơi trên thế giới. Dân số Toronto tăng lên trên một triệu vào năm 1951 khi ngoại ô hóa quy mô lớn bắt đầu, và tăng gấp đôi lên hai triệu vào năm 1971. Đến thập niên 1980, Toronto vượt qua Montréal để trở thành thành phố đông dân nhất và trung tâm kinh tế chủ yếu của Canada. Trong thời gian này, một phần là do tính chất bất xác định chính trị do sự nổi lên của [[Trưng cầu dân ý độc lập Québec, 1995|phong trào chủ quyền Québec]], nhiều công ty quốc gia và đa quốc gia chuyển trụ sở chính của họ ra khỏi Montréal đến Toronto và các thành phố ở [[miền Tây Canada]].<ref>[http://www.findarticles.com/p/articles/mi_qa3683/is_200201/ai_n9069631/pg_1 Westward ho? The shifting geography of corporate power in Canada] {{Webarchive|url=https://web.archive.org/web/20130902121900/http://www.findarticles.com/p/articles/mi_qa3683/is_200201/ai_n9069631/pg_1 |date = ngày 2 tháng 9 năm 2013}}, Journal of Canadian Studies (2002). Truy cập 2007-01-14.</ref>
+
+Năm 1954, thành phố Toronto và 12 đô thị xung quanh liên hiệp thành một chính quyền khu vực được gọi là [[Metropolitan Toronto]].<ref>[http://www.e-laws.gov.on.ca/html/repealedstatutes/english/elaws_rep_statutes_90m62_e.htm Municipality of Metropolitan Toronto Act], Government of Ontario (2000). Truy cập 2006-12-29.</ref> Bùng nổ kinh tế hậu chiến dẫn đến phát triển ngoại ô nhanh chóng, và người ta cho là một chiến lược sử dụng đất phối hợp và chia sẻ các dịch vụ sẽ tạo ra hiệu quả lớn hơn cho khu vực. Chính quyền khu vực đô thị bắt đầu quản lý những dịch vụ vượt qua ranh giới các đô thị, trong đó có xa lộ, cảnh sát, nước và giao thông công cộng. Một nửa thế kỷ sau đại hỏa hoạn năm 1904, thành phố lại chịu tai họa khi [[bão Hazel]] đem theo gió mạnh và lũ quét. Trong khu vực Toronto có 81 người thiệt mạng và gần 1.900 gia đình bị mất nhà, bão gây thiệt hại kinh tế 25&nbsp;triệu $.<ref name=hurricane>[http://www.collectionscanada.gc.ca/sos/002028-3200-e.html SOS! Canadian Disasters] Library and Archives Canada (2006). Truy cập 2008-12-19.</ref>
+
+Năm 1967, bảy đô thị nhỏ nhất của Metropolitan Toronto được hợp nhất với các đô thị lân cận lớn hơn, tạo ra một kết cấu gồm sáu đô thị: đô thị cũ Toronto, East York, Etobicoke, North York, Scarborough, và York. Năm 1998, chính phủ tỉnh Ontario giải thể chính quyền đại đô thị, toàn bộ sáu đô thị được hợp nhất thành một đô thị đơn nhất, hình thành thành phố Toronto hiện nay. Toronto dự kiến tổ chức [[Đại hội Thể thao liên châu Mỹ]] vào năm 2015.
+==Địa lý==
+[[Tập tin:Toronto Landsat.jpg|thumb|Hình ảnh vệ tinh của Toronto do [[Landsat 7]] của NASA chụp vào năm 2004.]]
+Toronto có diện tích {{convert|630|km2|sqmi|0}},<ref name=population>[http://www12.statcan.ca/english/census01/products/standard/popdwell/Table-CSD-P.cfm?PR=35&T=2&SR=1&S=3&O=D Population statistics and land area] {{Webarchive|url=https://web.archive.org/web/20070317191603/http://www12.statcan.ca/english/census01/products/standard/popdwell/Table-CSD-P.cfm?PR=35&T=2&SR=1&S=3&O=D |date=2007-03-17 }}, Statistics Canada (2001). Truy cập 2006-12-05.</ref> khoảng cách bắc-nam tối đa là {{convert|21|km|mi}} và khoảng cách đông-tây tối đa là {{convert|43|km|mi|0|abbr=on}}. Thành phố có {{convert|46|km|mi|0|adj=on}} bờ hồ Ontario. [[Quần đảo Toronto]] và [[Port Lands]] kéo dài vào trong hồ, che chắn phần nào cho [[cảng Toronto]] ở phía nam lõi trung tâm đô thị.<ref name="northwest">{{Chú thích web
+|url=http://www.toronto.ca/attractions/getting_here.htm
+|tiêu đề=Getting Here
+|work=Visiting Toronto
+|nhà xuất bản=City of Toronto
+|ngày truy cập=ngày 14 tháng 2 năm 2008
+|archive-date=2007-07-05
+|archive-url=https://web.archive.org/web/20070705224859/http://www.toronto.ca/attractions/getting_here.htm
+|url-status=dead
+}}</ref> Ranh giới của Toronto giới hạn bởi là hồ Ontario ở phía nam, sông Etobicoke và tỉnh lộ 427 ở phía tây, đại lộ Steeles ở phía bắc và sông Rouge cùng đường Scarborough-Pickering Townline ở phía đông.
+
+Thành phố bị ba sông cùng nhiều chi lưu của chúng cắt ngang: [[sông Humber (Ontario)|sông Humber]] ở cực tây và [[sông Don (Ontario)|sông Don]] ở phía đông khu trung tâm gần [[cảng Toronto]], và sông Rouge tạo thành ranh giới phía đông của thành phố. Cảng Toronto được hình thành một cách tự nhiên nhờ trầm tích tích tụ từ các dòng nước trong hồ tạo nên quần đảo Toronto. Nhiều sông suối chảy từ phía bắc hướng đến hồ bào mòn địa hình thành những vùng khe núi lớn có cây cối rậm rạp, tạo ra các địa điểm lý tưởng để hình thành những công viên và đường tản bộ tiêu khiển. Tuy nhiên, các khe núi cũng gây trở ngại cho thiết kế ô vuông của thành phố, dẫn đến việc nhiều đại lộ kết thúc ở một bên khe núi và tiếp tục ở bên khác. Những khe núi sâu tỏ ra hữu dụng trong việc thoát nước khi có mưa lớn.
+[[File:View from CN Tower Toronto CA 2052 (4025465031).jpg|nhỏ|Góc bên phải của hình là [[First Canadian Place]], tòa nhà cao nhất Canada (cho đến năm 2022) với chiều cao 298m (tính đến mái nhà)]]
+Trong [[Thời kỳ băng hà cuối cùng|kỷ băng hà cuối]], phần hạ của Toronto ở bên dưới hồ băng Iroquois. Ngày nay, một loạt vách đứng đánh dấu ranh giới cũ của hồ. Mặc dù có những khe núi sâu, Toronto không có địa hình đối núi đáng kể, song độ cao tăng dần khi ra xa hồ. Độ cao biến đổi từ {{convert|75|m|ft|0}} trên mực nước biển tại bờ hồ Ontario đến {{convert|209|m|ft|0|abbr=on}} trên mực nước biển gần [[Đại học York]] ở phần cực bắc của thành phố tại nơi giao cắt giữa phố Keele và đại lộ Steeles.<ref>{{Chú thích web
+|url=http://www.toronto.ca/toronto_facts/geography.htm
+|tiêu đề=City of Toronto: Toronto Facts, Toronto's geography
+|nhà xuất bản=Toronto.ca
+|ngày tháng=ngày 23 tháng 10 năm 2000
+|ngày truy cập=ngày 6 tháng 12 năm 2009}}</ref> Phần lớn diện tích đất liền bờ hồ hiện nay đối diện với cảng Toronto được lấp đất nhân tạo vào cuối thế kỷ 19, phần lớn [[Port Lands]] nằm lân cận cũng là do lấp đất. Quần đảo Toronto nguyên là một mũi đất song một cơn bão vào năm 1858 đã cắt đứt kết nối của nó với đại lục, tạo ra một kênh mà sau này được các tàu sử dụng để tiếp cận bến tàu.
+
+=== Khí hậu ===
+Toronto có [[khí hậu lục địa ẩm]], với mùa hè ấm, ẩm và mùa đông lạnh. Thành phố trải qua bốn mùa riêng biệt, chênh lệch nhiệt độ giữa các ngày là đáng kể, đặc biệt là khi thời tiết lạnh. Do đô thị hóa và nằm sát hồ, Toronto có chênh lệch nhiệt độ ngày đêm khá thấp. Không gian đô thị đông đúc khiến cho ban đêm ấm hơn quanh năm và trong mùa đông không lạnh như khu vực xung quanh (đặc biệt là ở phía bắc của thành phố); tuy nhiên, thành phố có thể mát hơn đáng kể vào nhiều chiều mùa xuân và đầu hè do ảnh hưởng của gió thổi từ hồ. Những ảnh hưởng thủy vực quy mô nhỏ khác lên khí hậu Toronto gồm có tuyết hiệu ứng hồ, sương mù, và [[trễ mùa]].
+
+Trong mùa đông, Toronto đôi khi bất chợt có nhiệt độ dưới {{convert|-10|C|F|0|abbr=on}}, thường khiến cảm thấy lạnh hơn do phong hàn. Bão tuyết, thỉnh thoảng kèm với đóng băng và mưa, có thể phá hỏng lịch trình làm việc và lữ hành, tuyết rơi thành đống có thể xuất hiện từ tháng 11 đến giữa tháng 4. Tuy nhiên, cũng có thể xuất hiện những khoản thời gian thời tiết ôn hòa trong hầu hết mùa đông, làm tan những đóng tuyết. Những tháng mùa hè có đặc trưng là thời tiết ẩm kéo dài, nhiệt độ thường dao động trong khoảng {{convert|23|to|31|C|F|0|abbr=on}}, nhiệt độ ban ngày thỉnh thoảng vượt quá {{convert|35|C|F|0|abbr=on}} kèm theo độ ẩm cao khiến cảm thấy ngột ngạt. Mùa xuân và mùa thu thường có nhiệt độ ôn hòa hoặc mát, các giai đoạn khô và ẩm xen kẽ.
+
+Toronto có lượng mưa phân bố kha đều trong năm, song mùa hè thường là mùa mưa nhiều nhất, nhất là trong các cơn dông. Có những giai đoạn thời tiết khô, song tình hình hiếm khi giống như hạn hán. Lượng [[giáng thủy]] trung bình năm là khoảng {{convert|831|mm|in|1|abbr=on}}, với lượng tuyết trung bình năm là khoảng {{convert|122|cm|in|0|abbr=on}}. Toronto có trung bình 2.066 giờ nắng mỗi năm, hay 45% số giờ ban ngày, biến động giữa 28% trong tháng 12 đến 60% trong tháng 7.
+{{Toronto weatherbox}}
+
+== Kinh tế ==
+Toronto là một trung tâm quốc tế về kinh doanh và tài chính, thường được xem là thủ đô tài chính của Canada. Các ngân hàng và các hãng môi giới tập trung cao độ tại Bay Street, tại Financial District. [[Sở giao dịch chứng khoán Toronto]] là sở giao dịch chứng khoán lớn thứ bảy trên thế giới theo tư bản hóa thị trường (2006). Năm thể chế tài chính lớn nhất của Canada, được gọi chung là Big Five, có các văn phòng quốc gia tại Toronto.<ref name=TorontoEconomy/>
+
+Thành phố là một trung tâm quan trọng đối với truyền thông, xuất bản, viễn thông, công nghệ thông tin và sản xuất phim; là nơi đặt trụ sở của Bell Media, Rogers Communications, và Torstar. Các công ty nổi bật khác của Canada trong khu vực Đại Toronto gồm có Magna International, Celestica, Manulife Financial, Sun Life Financial, và Hudson's Bay Company, và các công ty và hãng điều hành khách sạn lớn như [[Four Seasons Hotels and Resorts|Four Seasons Hotels]] và [[Fairmont Hotels and Resorts]].
+
+Mặc dù phần lớn các hoạt động sản xuất trong khu vực diễn ra bên ngoài giới hạn của thành phố, song Toronto thiếp tục là một điểm bán buôn và phân phối của khu vực công nghiệp. Vị trí chiến lược của thành phố khi nằm dọc theo [[Hành lang thành phố Quebec-Windsor]] và có các liên kết đường bộ và đường sắt hỗ trợ cho các ngành sản xuất xe mô tô, gang, thép, thực phẩm, máy móc, hóa chất và giấy. Việc hoàn tất hải đạo Saint Lawrence vào năm 1959 khiến các tàu có thể tiếp cận Ngũ Đại Hồ từ Đại Tây Dương.
+
+==Nhân khẩu==
+{{Historical populations|1834|9252|1841|14249|1851|30776|1861|44821|1871|56092|1881|86415|1891|144023|1901|238080|1911|381383|1921|521893|1931|856955|1941|951549|1951|1176622|1961|1824481|1971|2089729|1976|2124291|1981|2137395|1986|2192721|1991|2275771|[[1996 Canadian census|1996]]|2385421|[[2001 Canadian census|2001]]|2481494|[[2006 Canadian census|2006]]|2503281|[[2011 Canadian census|2011]]|2615060|[[2016 Canadian census|2016]]|2731571|[[2021 Canadian census|2021]]|2794356|title=Lịch sử dân số Toronto|type=Canada|align=right|width=|state=|shading=|percentages=|footnote=|source=<ref>{{cite web |title=Toronto Population |url=https://canadapopulation.org/toronto-population/ |website=Canada Population |access-date=June 3, 2019 |archive-date=June 3, 2019 |archive-url=https://web.archive.org/web/20190603012705/https://canadapopulation.org/toronto-population/ |url-status=live }}</ref><ref>{{Cite web |url=https://www.canadiana.ca/view/oocihm.9_08070/88?r=0&s=1 |title=Census of Canada, 1890–91 = Recensement du Cana... – Canadiana Online |website=www.canadiana.ca |access-date=January 22, 2021 |archive-date=January 28, 2021 |archive-url=https://web.archive.org/web/20210128045203/https://www.canadiana.ca/view/oocihm.9_08070/88?r=0&s=1 |url-status=live }}</ref><ref>{{cite web |url=http://www.canadiana.ca/view/oocihm.9_08061/422?r=0&s=1 |title=Census of Canada, 1880–81 = Recensement du Canada, 1880–81 |website=canadiana.ca |page=406 |access-date=July 15, 2020 |archive-date=July 16, 2020 |archive-url=https://web.archive.org/web/20200716020847/http://www.canadiana.ca/view/oocihm.9_08061/422?r=0&s=1 |url-status=live }}</ref><ref>{{cite web |url=http://www.canadiana.ca/view/oocihm.9_01612/46?r=0&s=1 |title=Census of the Canadas, 1860–61 |website=canadiana.com |page=78 |access-date=July 15, 2020 |archive-date=July 16, 2020 |archive-url=https://web.archive.org/web/20200716093346/http://www.canadiana.ca/view/oocihm.9_01612/46?r=0&s=1 |url-status=live }}</ref><ref>{{cite web |url=http://www.canadiana.ca/view/oocihm.9_01608/65?r=0&s=1 |title=Census of the Canadas, 1851-2 |website=canadiana.ca |page=A38 |access-date=July 15, 2020 |archive-date=July 16, 2020 |archive-url=https://web.archive.org/web/20200716022331/http://www.canadiana.ca/view/oocihm.9_01608/65?r=0&s=1 |url-status=live }}</ref><ref>{{Cite web |url=https://www.canadiana.ca/view/oocihm.9_08059/218?r=0&s=2 |title=Censuses of Canada, 1665 to 1871 : statistics o... – Canadiana Online |website=www.canadiana.ca |access-date=January 22, 2021 |archive-date=January 29, 2021 |archive-url=https://web.archive.org/web/20210129213124/https://www.canadiana.ca/view/oocihm.9_08059/218?r=0&s=2 |url-status=live }}</ref>}}Theo kết quả [[2021 Canadian census|điều tra dân số năm 2021]], dân số của Toronto là 2.794.356 người sinh sống tại 1.160.892 trong tổng số 1.253.238 nhà ở riêng, tăng 2,3% so với dân số năm 2016 là 2.731.571 người. Diện tích đất của thành phố là {{convert|631,1|km2|sqmi|abbr=on}}, mật độ dân số là {{Pop density|2794356|631.1|km2|sqmi|prec=1}} vào năm 2021.<ref name="2021census">{{cite web |date=February 9, 2022 |title=Population and dwelling counts: Canada, provinces and territories, census divisions and census subdivisions (municipalities), Ontario |url=https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810000203&geocode=A000235 |url-status=live |archive-url=https://web.archive.org/web/20220512141434/https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810000203&geocode=A000235 |archive-date=May 12, 2022 |access-date=March 27, 2022 |publisher=[[Statistics Canada]]}}</ref>
+
+Theo [[Chương trình Phát triển Liên Hợp Quốc|Chương trình Phát triển của Liên Hợp Quốc]], Toronto là thành phố có tỷ lệ dân số sinh ở nước ngoài cao thứ hai trên thế giới, sau [[Miami]], Florida. Không có dân tộc hay văn hóa này chiếm ưu thế trong dân số nhập cư của Toronto, khiến nó nằm trong số những thành phố đa văn hóa nhất trên thế giới.<ref name="2006diversity">{{chú thích báo|url=http://www.thestar.com/News/GTA/article/282694|title=A city of unmatched diversity|author=Francine Kopun|author2=Nicholas Keung |work=Toronto Star|date=ngày 5 tháng 12 năm 2007|access-date =ngày 7 tháng 10 năm 2008}}</ref> Mỗi năm có trên 100.000 người nhập cư đến khu vực Đại Toronto.<ref>"[http://www.theglobeandmail.com/news/national/time-to-lead/multiculturalism/a-few-frank-words-about-immigration/article1746816 "A few frank words about immigration"], ''The Globe and Mail''. ngày 7 tháng 10 năm 2010; accessed ngày 8 tháng 2 năm 2014.</ref>
+
+=== Dân tộc ===
+{| class="wikitable sortable mw-collapsible"
+|+Thành phần dân tộc của Thành phố Toronto (2001−2021)
+! rowspan="2" |Dân tộc
+! colspan="2" |2021<ref>{{Cite web |last=Government of Canada |first=Statistics Canada |date=February 9, 2022 |title=Profile table, Census Profile, 2021 Census of Population - Toronto, City (C) [Census subdivision], Ontario |url=https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E |url-status=live |archive-url=https://web.archive.org/web/20220209134619/https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E |archive-date=February 9, 2022 |access-date=September 6, 2023 |website=www12.statcan.gc.ca}}</ref>
+! colspan="2" |2016
+! colspan="2" |2011
+! colspan="2" |2006
+! colspan="2" |2001
+|-
+!Dân số
+!<abbr>%</abbr>
+!Dân số
+!<abbr>%</abbr>
+!Dân số
+!<abbr>%</abbr>
+!Dân số
+!<abbr>%</abbr>
+!Dân số
+!<abbr>%</abbr>
+|-
+|[[European Canadians|Người gốc Âu]]
+|1,201,075
+|43.5%
+|1,282,750
+|47.66%
+|1,292,365
+|50.17%
+|1,300,330
+|52.51%
+|1,394,310
+|56.75%
+|-
+|[[South Asian Canadians|Người gốc Nam Á]]
+|385,440
+|13.96%
+|338,965
+|12.59%
+|317,100
+|12.31%
+|298,370
+|12.05%
+|253,920
+|10.34%
+|-
+|[[East Asian Canadians|Người gốc Đông Á]]
+|351,625
+|12.73%
+|354,510
+|13.17%
+|327,930
+|12.73%
+|329,260
+|13.3%
+|301,060
+|12.25%
+|-
+|[[Black Canadians|Người gốc Phi]]
+|265,005
+|9.6%
+|239,850
+|8.91%
+|218,160
+|8.47%
+|208,555
+|8.42%
+|204,075
+|8.31%
+|-
+|[[Southeast Asia|Người gốc Đông Nam Á]]
+|224,260
+|8.12%
+|194,360
+|7.22%
+|179,270
+|6.96%
+|140,050
+|5.66%
+|120,330
+|4.9%
+|-
+|[[Middle Eastern Canadians|Người gốc Trung Đông]]
+|111,360
+|4.03%
+|96,355
+|3.58%
+|79,155
+|3.07%
+|65,240
+|2.63%
+|59,560
+|2.42%
+|-
+|[[Latin American Canadians|Người gốc Mỹ Latinh]]
+|92,455
+|3.35%
+|77,160
+|2.87%
+|71,205
+|2.76%
+|64,855
+|2.62%
+|54,350
+|2.21%
+|-
+|[[Indigenous peoples in Canada|Người bản địa]]
+|22,925
+|0.83%
+|23,065
+|0.86%
+|19,265
+|0.75%
+|13,605
+|0.55%
+|11,370
+|0.46%
+|-
+|Dân tộc khác / [[Multiracial people|người đa chủng tộc]]
+|107,135
+|3.88%
+|84,650
+|3.14%
+|71,590
+|2.78%
+|56,295
+|2.27%
+|57,840
+|2.35%
+|-
+!Tổng cộng: Không phải gốc Âu hoặc bản địa
+!1,537,280
+!55.7%
+!1,385,850
+!51.5%
+!1,264,410
+!49.1%
+!1,162,625
+!47%
+!1,062,505
+!42.8%
+|-
+!Tổng số lượng phản hồi
+!2,761,285
+!98.82%
+!2,691,665
+!98.54%
+!2,576,025
+!98.51%
+!2,476,565
+!98.93%
+!2,456,805
+!99.01%
+|-
+!Tổng dân số
+!2,794,356
+!100%
+!2,731,571
+!100%
+!2,615,060
+!100%
+!2,503,281
+!100%
+!2,481,494
+!100%
+|-
+| colspan="15" |Ghi chú: Số lượng tổng cộng vượt 100% vì một người có thể chọn hơn 1 dân tộc
+|}
+=== Tôn giáo ===
+Năm 2011, 54,1% dân số Toronto theo [[Kitô giáo]], là tôn giáo lớn nhất tại thành phố. 28,2% dân số là tín đồ Công giáo, tiếp đến là Tin Lành (11,9%), Chính thống giáo (4,3%), và những hệ phái Kitô giáo khác (9,7%). Thành phố có một số lượng đáng kể các tín đồ [[phong trào Giám Lý]], thỉnh thoảng được gọi là Roma của phong trào Giám lý. Những tôn giáo khác tại thành phố gồm có Hồi giáo (8,2%), Ấn Độ giáo (5,6%), Do Thái giáo (3,8%), Phật giáo (2,7%), và [[Sikh giáo]] (0,8%). 24,2% dân số không tôn giáo.<ref name="www12.statcan.gc.ca">{{Chú thích web|url=http://www12.statcan.gc.ca/nhs-enm/2011/dp-pd/prof/details/page.cfm?Lang=E&Geo1=CSD&Code1=3520005&Data=Count&SearchText=Toronto&SearchType=Begins&SearchPR=01&A1=All&B1=All&GeoLevel=PR&GeoCode=3520005&TABID=1 |tiêu đề=National Household Survey (NHS) Profile, 2011 |nhà xuất bản=2.statcan.gc.ca |ngày truy cập=ngày 18 tháng 4 năm 2014}}</ref>
+
+Tiếng Anh là ngôn ngữ chiếm ưu thế trong dân cư Toronto, nhưng nhiều ngôn ngữ khác có số lượng người nói bản ngữ ở mức đáng kể.<ref name="lan3">[http://www12.statcan.ca:80/english/census06/data/topics/RetrieveProductTable.cfm?ALEVEL=3&APATH=3&CATNO=&DETAIL=0&DIM=&DS=99&FL=0&FREE=0&GAL=0&GC=99&GK=NA&GRP=1&IPS=&METH=0&ORDER=1&PID=89189&PTYPE=88971&RL=0&S=1&SUB=0&ShowAll=No&StartRow=1&Temporal=2006&Theme=70&VID=0&VNAMEE=&VNAMEF=&GID=838003 Various Languages Spoken – Toronto] {{Webarchive|url=https://web.archive.org/web/20200408053330/https://www12.statcan.gc.ca/census-recensement/2006/dp-pd/tbt/Rp-eng.cfm?LANG=E&APATH=3&DETAIL=0&DIM=0&FL=A&FREE=0&GC=0&GID=838003&GK=0&GRP=1&PID=89189&PRID=0&PTYPE=88971,97154&S=0&SHOWALL=0&SUB=0&Temporal=2006&THEME=70&VID=0&VNAMEE=&VNAMEF=|date=2020-04-08}} [[Census metropolitan area|CMA]], Statistics Canada (2006); truy cập 9 tháng 9 năm 2009.</ref> Các phương ngôn tiếng Hoa và tiếng Ý là những ngôn ngữ được nói phổ biến thứ nhì và thứ ba trong công việc.<ref name="lan">[http://www12.statcan.ca/english/census01/products/highlight/LanguageWork/Page.cfm?Lang=E&Geo=CMA&View=2&Table=1&Code=535&Sort=2&B1=&B2=1 Language used at work by mother tongue in Toronto] {{Webarchive|url=https://web.archive.org/web/20080421124848/http://www12.statcan.ca/english/census01/products/highlight/LanguageWork/Page.cfm?Lang=E&Geo=CMA&View=2&Table=1&Code=535&Sort=2&B1=&B2=1|date=2008-04-21}} [[Census metropolitan area|CMA]], Statistics Canada (2001). Truy cập 2006-12-05.</ref><ref name=lang2>[http://www12.statcan.ca/english/census01/products/highlight/LanguageWork/Page.cfm?Lang=E&Geo=CSD&View=4&Code=3520005&Table=1&StartRec=1&Sort=5&B1=Toronto&B2=1 Language used at work by mother tongue (City of Toronto)] {{Webarchive|url=https://web.archive.org/web/20080421122342/http://www12.statcan.ca/english/census01/products/highlight/LanguageWork/Page.cfm?Lang=E&Geo=CSD&View=4&Code=3520005&Table=1&StartRec=1&Sort=5&B1=Toronto&B2=1 |date=2008-04-21 }}, Statistics Canada (2001); truy cập 2006-12-05.</ref> Dịch vụ khẩn cấp [[9-1-1]] của thành phố được trang bị để đáp ứng trên 150 ngôn ngữ.<ref name="911service">{{Chú thích web|tiêu đề =City of Toronto: Emergency Services– 9–1–1 = EMERGENCY in any language|nhà xuất bản=City of Toronto|url=http://www.toronto.ca/emerg/911.htm|ngày truy cập =ngày 5 tháng 1 năm 2007}}</ref>
+
+== Giáo dục ==
+{{chính|Giáo dục ở Toronto}}[[Tập tin:Old Vic in UofT.jpg|phải|nhỏ|Tòa nhà chính của [[Victoria College]] thuộc Viện [[Đại học Toronto]]]][[Đại học Toronto]] (UT), thành lập năm [[1827]], là đại học xưa nhất của tỉnh bang Ontario và là viện nghiên cứu công lập hàng đầu ở đây. UT còn dẫn đầu thế giới về nghiên cứu y sinh và sở hữu hệ thống thư viện lớn thứ ba ở Bắc Mỹ, chỉ sau [[Đại học Harvard]] và [[Đại học Yale]]. Ngoài ra, [[Đại học York]] ở phía bắc Toronto cũng sở hữu một thư viện luật lớn nhất trong [[Khối Thịnh vượng chung Anh]]. Thành phố này cũng là quê hương của các [[Đại học Ryerson]], [[Cao đẳng Mỹ thuật và Thiết kế Ontario]] và [[Đại học Guelph-Humber]].
+
+Có năm trường [[cao đẳng cộng đồng]] có cấp phát văn bằng ở Toronto là: [[Cao đẳng Seneca]], [[Cao đẳng Humber]], [[Cao đẳng Centennial]], [[Cao đẳng Sheridan]] và [[Cao đẳng George Brown]]. Ở thành phố [[Oshawa]]—nằm gần đó, được xem là một phần của [[Vùng Đại Toronto]]—có trường [[Cao đẳng Durham]] và [[Đại học Viện Công nghệ Ontario]] (''University of Ontario Institute of Technology'').
+
+[[Thư viện Công cộng Toronto]] là một hệ thống thư viện lớn nhất Canada, gồm có 99 chi nhánh với hơn 11 triệu mục.<ref>"[http://www.oclc.org/news/releases/20069.htm Toronto Public Library contributes 63 millionth record]" [[Online Computer Library Center|OCLC]] (2006-02-03). Truy nhập 2007-07-08.</ref>
+
+== Giao thông ==
+[[Tập tin:Union Station, Toronto.jpg|nhỏ|phải|200px|Ga Union]]
+
+Toronto có các mạng lưới đường bộ, đường sắt và hàng không tập trung ở Nam Ontario. Có nhiều hình thức giao thông trong thành phố Toronto, bao gồm đường cao tốc và giao thông công cộng. Toronto cũng có một mạng lưới đường dành cho xe đạp rộng khắp thành phố.
+
+=== Giao thông công cộng ===
+
+Hệ thống giao thông công cộng chính của Toronto được vận hành bởi Ủy ban Giao thông Toronto (TTC). Trụ cột quan trọng của mạng lưới giao thông công cộng là hệ thống tàu điện ngầm Toronto, bao gồm ba tuyến vận chuyển nhanh bằng đường sắt chạy qua thành phố. Tuyến tàu điện ngầm nhẹ cũng tồn tại, phục vụ riêng cho quận phía đông của Scarborough, nhưng một cuộc thảo luận đang được tiến hành để thay thế nó bằng một tuyến đường sắt nặng.
+
+TTC cũng vận hành một mạng lưới xe buýt và xe điện rộng khắp, với tuyến sau phục vụ tại trung tâm thành phố và xe buýt cung cấp dịch vụ cho nhiều nơi trong thành phố không được phục vụ bởi mạng lưới tàu điện ngầm thưa thớt. Xe buýt và xe điện TTC sử dụng cùng một hệ thống giá vé như tàu điện ngầm, và nhiều ga tàu điện ngầm cung cấp một khu vực trả tiền vé để chuyển giữa xe lửa và xe mặt nước.
+
+Đã có nhiều kế hoạch mở rộng tàu điện ngầm và triển khai các tuyến đường sắt nhẹ, nhưng nhiều nỗ lực đã bị cản trở bởi những lo ngại về ngân sách. Kể từ tháng 7 năm 2011, công việc duy nhất liên quan đến tàu điện ngầm là tàu điện ngầm Spadina (tuyến 1) mở rộng về phía bắc của ga Sheppard West (tên trước đây là Downsview) đến Trung tâm Vaughan Metropolitan ở Vaughan, ngoại ô phía bắc Toronto. Đến tháng 11 năm 2011, việc xây dựng trên Tuyến 5 Eglinton bắt đầu. Tuyến 5 dự kiến hoàn thành vào năm 2021. Năm 2015, chính quyền thành phố Ontario hứa sẽ tài trợ cho Tuyến 6 Finch West, dự kiến hoàn thành vào năm 2023.
+
+=== Sân bay ===
+Được mệnh danh là sân bay bận rộn nhất Canada, [[Sân bay quốc tế Toronto Pearson|Sân bay Quốc tế Toronto Pearson]] (YYZ) nằm giữa ranh giới phía tây thành phố Toronto với thành phố ngoại ô Mississauga. Sân bay bắt đầu chuyên chở hành khách vào tháng 6 năm 2015.
+
+==Tội phạm==
+
+Với tỷ lệ tội phạm rất thấp, Toronto là một trong những thành phố an toàn nhất ở [[Bắc Mỹ]]. Chẳng hạn, năm 2007, tỷ lệ giết người ở Toronto là 3,3 trên 100.000 người, so với [[Atlanta]] (19,7), [[Boston]] (10.3), Los Angeles (10.0), [[Thành phố New York]] (6.3), [[Vancouver]] (3.1) và [[Montreal]] (2.6). Tỷ lệ trộm cướp của Toronto cũng ở mức thấp, với 207,1 vụ cướp trên 100.000 dân, so với [[Los Angeles]] (348,5), [[Vancouver]] (266,2), [[Thành phố New York]] (265,9) và [[Montreal]] (235,3). Toronto cũng có tỷ lệ trộm cắp xe tương đương với một số thành phố của [[Hoa Kỳ]].
+
+== Thành phố kết nghĩa ==
+{{chính|Các thành phố kết nghĩa của Toronto}}
+;Các thành phố cộng tác:
+
+{{col div}}
+* [[Chicago]], [[Illinois]], Hoa Kỳ (1991)<ref name="relationships">{{Chú thích web|url=https://www.toronto.ca/business-economy/business-operation-growth/international-alliance-program/|title=International Alliance Program|date=July 14, 2017|website=City of Toronto|language=en-CA|access-date=June 23, 2019|archive-url=https://web.archive.org/web/20190623170347/https://www.toronto.ca/business-economy/business-operation-growth/international-alliance-program/|archive-date=June 23, 2019|url-status=live}}</ref>
+* [[Trùng Khánh]], Trung Quốc (1986)<ref name="relationships"/>
+* [[Frankfurt]], Đức (1989)<ref name="relationships"/>
+* [[Milano]], Ý (2003)<ref name="relationships"/>
+{{col div end}}
+
+;Các thành phố bằng hữu:
+
+{{col div}}
+* [[Thành phố Hồ Chí Minh]], Việt Nam (2006)<ref name="relationships"/>
+* [[Kyiv]], Ukraina (1992)<ref name="relationships"/>
+* [[Quito]], Ecuador (2006)<ref name="relationships"/>
+* [[Rio de Janeiro]], Brazil (2015)<ref name="relationships"/>
+* [[Sagamihara]], Nhật Bản (1991)<ref name="relationships"/>
+* [[Warsaw]], Ba Lan (1990)<ref name="relationships"/>
+{{col div end}}
+
+== Xem thêm ==
+* [[Liên hoan phim quốc tế Toronto]]
+* [[Hội đồng Giáo dục Toronto]]
+* [[Toronto City Hall|Tòa thị chính Toronto]]
+* [[Bảo tàng Hoàng gia Ontario]]
+
+== Ghi chú ==
+<references group="lower-alpha" />
+
+== Tham khảo ==
+{{tham khảo|30em}}
+
+=== Thư mục ===
+{{refbegin|30em}}
+*{{Chú thích sách|url=https://books.google.com/books?id=dW69d3qY9h8C&pg=PA21|title=City Branding: Theory and Cases|last=Dinnie|first=Keith|publisher=Palgrave Macmillan|year=2011|isbn=978-0-230-24185-5}}
+* {{Chú thích sách|url=https://books.google.com/books?id=Y9wIBVb8Q9AC&pg=PA154|title=Competitive Cities: Succeeding in the Global Economy|last=Duffy|first=Hazel|publisher=Taylor & Francis|year=2004|isbn=978-0-203-36231-0}}
+* {{Chú thích sách|title=Toronto's Distillery District: history by the lake|last=Gibson|first=Sally|publisher=Cityscape Holdings Inc. and Dundee Distillery District (GP) Commercial Inc.|year=2008|isbn=978-0-9809905-0-8}}
+* {{Chú thích sách|title=Toronto in 1810|last=Hounsom|first=Eric Wilfrid|publisher=Ryerson Press|year=1970|isbn=978-0-7700-0311-1|location=Toronto}}
+* {{Chú thích sách|title=Cosmopolitanism and Place: Spatial Forms in Contemporary Anglophone Literature|last=Johansen Aase|first=Emily|publisher=Palgrave Macmillan|year=2014|isbn=978-1-137-40266-0|location=New York City, NY, USA}}
+* {{Chú thích sách|title=Historical Essays on Upper Canada: New Perspectives|url=https://archive.org/details/historicalessays0000unse|last1=Johnson|first1=James Keith|last2=Wilson|first2=Bruce G.|publisher=McGill-Queen's Press|year=1989|isbn=978-0-88629-070-2}}
+* {{Chú thích sách|title=The people of Scarborough : a history|url=https://archive.org/details/peopleofscarboro0000myrv|last1=Myrvold|first1=Barbara|last2=Fahey|first2=Curtis|publisher=Scarborough Public Library Board|year=1997|isbn=978-0-9683086-0-8|location=Scarborough, Ont.}}
+* {{Chú thích sách|title=Robertson's Landmarks of Toronto: A Collection of Historical Sketches of the Old Town of York from 1792 Until 1837, and of Toronto from 1834 to 1894|url=https://archive.org/details/cihm_13082|last=Robertson|first=John Ross|publisher=J. Ross Robertson|year=1894|location=Toronto}}
+*{{Chú thích sách|url=https://archive.org/details/ojibwaofsouthern0000schm|title=The Ojibwa of Southern Ontario|last=Schmalz|first=Peter S.|publisher=University of Toronto Press{{!}}|year=1991|isbn=978-0-8020-6778-4|location=Toronto|url-access=registration}}
+*{{Chú thích sách|title=Toronto: An Illustrated History of its First 12,000 Years|publisher=James Lorimer|year=2008|editor-last=Williamson|editor-first=R. F.|location=Toronto, Ontario}}
+
+{{refend}}
+
+== Đọc thêm ==
+{{refbegin|30em}}
+* {{Chú thích sách|url=https://books.google.com/books?id=9INeDSqwJ1MC&q=Toronto&pg=PA1|title=Toronto: The Unknown City|last1=Akler|first1=Howard|last2=Hood|first2=Sarah|publisher=Arsenal Pulp Press|year=2003|isbn=978-1-55152-146-6}}
+* {{Chú thích bách khoa toàn thư|title=Toronto|encyclopedia=[[The Canadian Encyclopedia]]|publisher=Historica Foundation of Canada|url=http://www.thecanadianencyclopedia.com/index.cfm?PgNm=TCE&Params=A1ARTA0008050|access-date=December 3, 2005|last=Careless|first=J.M.S.|author-link=J. M. S. Careless|archive-url=https://web.archive.org/web/20060103123419/http://www.thecanadianencyclopedia.com/index.cfm?PgNm=TCE&Params=A1ARTA0008050|archive-date=January 3, 2006|url-status=dead}}
+* {{Chú thích sách|url=https://books.google.com/books?id=7V5-PlPhwnAC&q=Toronto&pg=PP1|title=Toronto to 1918: An Illustrated History|last=Careless|first=J. M. S|publisher=J. Lorimer and National Museum of Man|year=1984|isbn=978-0-88862-665-3}}
+* {{Chú thích web|url=https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&output=nl&msid=105047441964785653381.0000011358da39f6cf7dd|title=Ultimate Inline Skating Guide to Toronto v1.5|year=2007|format=Google Earth|access-date=July 7, 2007}}
+* {{Chú thích sách|url=https://books.google.com/books?id=ToQcKz0DFM4C&q=Toronto&pg=PP1|title=Toronto: the way we were|last=Filey|first=Mike|publisher=[[Dundurn Press]]|year=2008|isbn=978-1-55002-842-3|author-link=Mike Filey}}
+* {{Chú thích sách|url=https://archive.org/details/accidentalcitytr00fulf|title=Accidental city: the transformation of Toronto|last=Fulford|first=Robert|publisher=Macfarlane, Walter & Ross|year=1995|isbn=978-0-921912-91-0|location=Toronto|url-access=registration}} Also {{ISBN|1-55199-010-5}} (paperback).
+* {{Chú thích sách|url=https://books.google.com/books?id=EF2uN3v0i9gC|title=Unplanned Suburbs: Toronto's American Tragedy, 1900 to 1950|last=Harris|first=Richard|date=October 7, 1999|publisher=JHU Press|isbn=978-0-8018-6282-3}}
+* The novel "[[In the Skin of a Lion]]" by [[Michael Ondaatje]] depicts Toronto in the 1920s, giving prominence to the construction of Toronto landmarks, such as the [[Prince Edward Viaduct]] and the [[R. C. Harris Water Treatment Plant]], and focusing on the lives of the immigrant workers.
+* {{Chú thích sách|title=Funk & Wagnalls New Encyclopedia|last1=Phillips|first1=Robert|last2=Bram|first2=Leon|last3=Dickey|first3=Norma|publisher=Funk & Wagnalls|year=1971|isbn=978-0-8343-0025-5|volume=23|location=New York}}
+* {{Chú thích sách|url=https://books.google.com/books?id=aiUZMOypNB4C&q=Naming%20Canada%3A%20stories%20about%20Canadian%20place%20names&pg=PP1|title=Naming Canada: stories about Canadian place names|last=Rayburn|first=Alan|publisher=University of Toronto Press|year=2001|isbn=978-0-8020-8293-0|edition=2nd|location=Toronto}}
+* {{Chú thích web|url=http://www12.statcan.ca/english/profil01/CP01/Details/Page.cfm?Lang=E&Geo1=CSD&Code1=3520005&Geo2=PR&Code2=35&Data=Count&SearchText=toronto&SearchType=Begins&SearchPR=01&B1=All&Custom=|title=Toronto|author=Statistics Canada|year=2003|work=Statistics Canada. 2002. 2001 Community Profiles.|publisher=[[Statistics Canada]] Catalogue no. 93F0053XIE|archive-url=https://web.archive.org/web/20171022220053/http://www12.statcan.ca/english/profil01/CP01/Details/Page.cfm?Lang=E&Geo1=CSD&Code1=3520005&Geo2=PR&Code2=35&Data=Count&SearchText=toronto&SearchType=Begins&SearchPR=01&B1=All&Custom=|archive-date=October 22, 2017|url-status=dead|access-date=December 3, 2005}}
+* {{Chú thích web|url=http://www.toronto.ca/economic_profile/index.htm|title=Toronto's Economic Profile|author=City of Toronto|publisher=City of Toronto|archive-url=https://web.archive.org/web/20060619141654/http://www.toronto.ca/economic_profile/index.htm|archive-date=June 19, 2006|url-status=dead|access-date=May 30, 2006}}
+* {{Chú thích sách|url=https://books.google.com/books?id=dcyQvnb0EiEC|title=Suburb, slum, urban village: transformations in Toronto's Parkdale neighbourhood, 1875–2002|last=Whitzman|first=Carolyn|publisher=UBC Press|year=2009|isbn=978-0-7748-1535-2}}
+{{refend}}
+
+== Liên kết ngoài ==
+
+* {{official website}}
+{{Authority control}}
+
+[[Thể loại:Khởi đầu năm 1834 ở Canada]]
+[[Thể loại:Khu dân cư trên Tuyến hỏa xa ngầm]]
+[[Thể loại:Toronto]]
+[[Thể loại:Thành phố ở Ontario]]
+[[Thể loại:Khu dân cư thành lập năm 1793]]

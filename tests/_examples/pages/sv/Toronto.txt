@@ -1,0 +1,222 @@
+{{olika betydelser}}
+{{Geobox|Settlement
+<!-- *** Mallhuvud *** -->|name               = Toronto
+|native_name        = 
+|other_name         = 
+|category           = Stad
+<!-- *** Namn **** -->|etymology          = 
+|official_name      = 
+|motto              = Diversity Our Strength
+|nickname           = <!-- *** Bild *** -->
+|image              = Toronto Montage 2020.jpg
+|image_caption      = 
+|flag               = Flag of Toronto, Canada.svg
+|symbol             = Blason ville ca Toronto (Ontario).svg
+<!-- *** Länder, regioner mm *** -->|country            = Kanada
+|country_flag       = true
+|state              = [[Ontario]]
+|state_type         = Provins
+|region             = 
+|region_type        = 
+|district           = 
+|district_type      = 
+|municipality       = 
+|municipality_type  = <!-- *** Delar, objekt inom området *** -->
+|part               = 
+|landmark           = 
+|river              = <!-- *** Läge *** -->
+|location           = 
+|elevation          = 76
+|lat_d              = 43
+|lat_m              = 42
+|lat_s              = 59.72
+|lat_NS             = N
+|long_d             = 79
+|long_m             = 20
+|long_s             = 26.47
+|long_EW            = W
+|highest            = 
+|highest_elevation  = 
+|lowest             = 
+|lowest_elevation   = <!-- *** Dimensioner *** -->
+|length             = 
+|length_orientation = 
+|width              = 
+|width_orientation  = 
+|area               = 630
+|area_land          = 
+|area_water         = 
+|area_urban         = 1749
+|area_metro         = 7125
+<!-- *** Befolkning *** -->|population         = 2794356
+|population_date    = 2021
+|population_urban   = 4753120
+|population_metro   = 6202225
+|population_municipal = 
+|population_density = 3972
+|population_urban_density = 
+|population_metro_density = 
+|population_municipal_density = <!-- *** Historia och administration *** -->
+|established        = 1793
+|date               = 27 augusti
+|government         = 
+|government_location = 
+|government_region  = 
+|government_state   = 
+|mayor              = Olivia Chow
+|mayor_party        = 
+|leader             = <!-- *** Koder ***  -->
+|timezone           = [[Eastern Standard Time|EST]]
+|utc_offset         = -05:00
+|timezone_DST       = EDT
+|utc_offset_DST     = -04:00
+|postal_code        = M1A - M9Z
+|area_code          = 
+|code               = <!-- *** Fria fält *** -->
+|free               = 
+|free_type          = 
+|free1              = 
+|free1_type         = <!-- *** Kartor *** -->
+|map                = {{Kartposition Kanada Ontario|bild1}}
+|map_caption        = Torontos geografiska läge i Ontario.
+|map_locator        = Ontario
+|map2               = Ontario in Canada.svg
+|map2_caption       = Ontario i Kanada.
+<!-- *** Webbplatser *** -->|website            = http://www.toronto.ca
+<!-- *** Fotnoter *** -->|footnotes          = 
+}}
+
+[[Fil:Rogers Center-restitched.jpg|miniatyr|höger|[[CN Tower]]]]
+
+'''Toronto''' är den största staden i [[Kanada]] och provinshuvudstad i [[Ontario]]. [[2021]] hade Toronto 2&nbsp;794&nbsp;356<ref name="STATCAN Places"> , invånarantal för administrativa enheter och deras tätorter och landbygdsområden vid folkräkningen den 11 maj 2021</ref> invånare och totalt 6&nbsp;202&nbsp;225<ref name="STATCAN Metropolitan Areas">[https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/page.cfm?Lang=E&SearchText=toronto&DGUIDlist=2021S0503535&GENDERlist=1&STATISTIClist=1&HEADERlist=0 Statistics Canada] , ytor (landareal) och invånarantal för storstadsområden vid folkräkningen den 11 maj 2021</ref> i storstadsregionen. Staden är ett av de viktigaste finans- och handelcentrumen i Kanada och [[Nordamerika]]. Staden har mer än 80 etniska tillhörigheter och över 100 skilda språk, vilket även gör staden till en av de mest multikulturella i världen.
+
+Fram till [[1970-talet]] var Toronto Kanadas näst största stad, efter [[Montréal]]. Torontos ekonomiska tillväxt stärktes av [[Saint Lawrence Seaway]] [[1959]] vilket gjorde det möjligt för större skepp att ta sig till de [[Stora sjöarna]].
+
+I Toronto finns världens näst högsta fristående byggnad [[CN Tower]].
+
+== Historia ==
+{{huvudartikel|Torontos historia}}
+
+Den första [[Europa|europeiska]] närvaron i Toronto etablerades av [[Frankrike|franska]] handelsmän vid [[Fort Rouillé]] år [[1750]]. Den första stora inströmningen av européer var av lojalister som flydde den [[amerikanska revolutionen]] under mitten till slutet av [[1780]]-talet. Toronto växte sakta under de kommande åren och användes av britterna främst som en krigsbas. När viceguvernören [[John Graves Simcoe]] flyttade huvudstaden i [[Upper Canada]] från [[Niagara-on-the-Lake|Newark]] till Toronto år [[1793]] döpte han om staden till York. Runt sekelskiftet 1800 var staden fortfarande mycket liten, mindre än [[Kingston, Ontario|Kingston]], och hade troligtvis inte mer än ca hundra invånare. York erövrades av amerikanerna under [[1812 års krig]]. Stadens kapitulation, som framförhandlades av [[John Strachan]], ledde till att stadens främsta byggnader brändes ner av amerikanska soldater. Efter kriget växte staden fortare vilket höll i sig under [[1800-talet]] då det blev en av huvuddestinationerna för immigranter till Kanada. Den [[6 mars]] [[1834]] tog staden York tillbaka namnet Toronto. Stadens bebyggelse blev hjälpt av gasdrivna gatulampor och kloaker. Staden växte ännu snabbare när den länkades med järnväg till övre Stora sjöarna år [[1854]]. Under 1870-talet nådde industrialiseringen staden och hjälpte Toronto att försäkra sin plats som en huvudort i den nya kanadensiska konfederationen. Under den andra halvan av [[1900-talet]] strömmade immigranter in i staden, och efter 1970 gick staden om [[Montréal]] som Kanadas mest folkrika stad. Under denna tid gick stadens banker och växelkontor om dem i Montréal. <!-- Det här avsnittet är obegripligt, vad betyder det? Detta hände under en tid då Kanada hade sänt hem mycket av sina förråd och borgenhandel från London, vilket tvingade etableringarna i staden till en inrikes handelsplats. Handelsmarknaden, som, fram till tidiga 1960-talet, främst kapitaliserade högrisk vågspel, expanderade för att bli en av världens största växlingsplatser. -->
+
+== Geografi och klimat ==
+Staden Toronto täcker en area på 631,10<ref name="STATCAN Land Areas">[https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/page.cfm?Lang=E&SearchText=toronto&DGUIDlist=2021S0503535&GENDERlist=1&STATISTIClist=1&HEADERlist=0 Statistics Canada] , ytor (landareal) och invånarantal för provinser, territorier och kommuner vid folkräkningen den 11 maj 2021</ref> km² och avgränsas av [[Ontariosjön]] i söder, [[Etobicoke Creek]] och [[Highway 427]] i väst, [[Steeles Avenue]] i norr och [[Rouge River (Ontario)|Rouge River]] i öst. Förutom Etobicoke Creek och Rouge River, skärs staden av de två största floderna och deras biflöden, [[Humberfloden (Ontario)|Humberfloden]] i väst och [[Don River (vattendrag i Kanada)|Don River]] strax öster om stadskärnan. Flodravinerna är skyddade och utgör centralt belägna skogsområden för rekreation. Toronto är en rutnätsstad, men många av de öst-västliga gatorna avbryts av ravinerna, bland annat de stora genomfarterna [[Finch Avenue]], [[Leslie Street]], [[Lawrence Avenue]], [[St. Clair Avenue]] och [[Keele Street]]. Många andra som [[Bloor Street]]–[[Danforth Avenue]] kräver stora broar för att komma över de stora ravinerna.
+
+Torontos klimat är dämpat av den sydliga belägenheten i Kanada vid Ontariosjön; klimatet är bland de mildaste i hela Kanada öster om [[Klippiga bergen]]. Det dagliga vädret är mycket varierande, speciellt under vintermånaderna. Milda perioder inträffar ofta under vintern (temperaturer som ändras mellan 5 och 10&nbsp;°C, fast varmare är inte ovanligt) vilket gör att snön smälter på marken. Därför finns det även under vintern snöfria perioder. Det är vanligtvis två eller tre riktigt kalla perioder varje år, där de högsta temperaturerna ligger mellan –10&nbsp;°C och –20&nbsp;°C, och de lägsta kan nå ner till –30&nbsp;°C, vilket ofta inträffar i samband med vindar. Den lägsta temperaturen någonsin registrerades vid [[Toronto Pearson International Airport]] och var –31,3&nbsp;°C den [[4 januari]] [[1981]], och den kallaste vindkylan var –44,7&nbsp;°C samma dag. Medeltemperaturen i januari är som högst –2,1&nbsp;°C och den lägsta är –10,5&nbsp;°C. Inne i stadscentrum är medeltemperaturen –7,3°C.
+
+== Ekonomi och kommunikationer ==
+[[Fil:Toronto Financial District August 2017.jpg|miniatyr|Korsningen av Bay street och King Street rymmer Kanadas tre högsta skyskrapor och kontor åt flera av landets största banker.]]
+[[Fil:Toronto-cityhall.jpg|miniatyr|höger|[[Toronto City Hall]], [[stadshus]]et.]]
+
+Toronto är ett kommersiellt, distributionellt, finansiellt och industriellt centrum. Staden är bank- och växlingcentrum i landet, och är Kanadas främsta grosshandels- och distributionsplats. Dess betydelse som hamn ökade efter öppnandet av [[Saint Lawrence Seaway]], men har sedan avsmalningen har hamnen blivit obrukbar. Ontarios rikedom på råmaterial och vattenkraft har gjort Toronto till en ledande industristad.
+
+Fram till [[1970-talet]] hade Toronto den näst största ekonomin i Kanada, efter den [[Montréal]]. Den ekonomiska tillväxten i Toronto stimulerades främst av den politiska instabiliteten i provinsen [[Québec]], kombinerat med utvecklingen av den automatiserade industrin, exploateringen av de stora mineralresurserna i inlandet och byggandet av Saint Lawrence Seaway år [[1959]], vilket tillät skepp åka till [[Stora sjöarna]] från [[Atlanten]] via [[Montréal]].
+
+Som företagsstad och finansiell huvudstad är Toronto ett av världens största finansiella centrum. I staden finns [[Toronto Stock Exchange]] (TSX), den tredje största [[börs]]en i Nordamerika, och den sjätte största i världen. TSX har lett Nordamerikas börser genom att vara den andra att handla elektroniskt och den första som själv börsnoterades; under det senaste årtiondet, har den även gått om flera stora börser i världen. Torontos finansiella industri är baserad i [[Bay Street]], landets motsvarighet till [[Wall Street]] i [[New York]].
+
+=== Transport ===
+{{huvudartikel|Transport i Toronto}}
+[[Fil:Toronto Railway August 2017 01.jpg|miniatyr|Ett GO-tåg lämnar [[Torontos centralstation]] med [[CN Tower]] och Torontos finansdistrikt i bakgrunden.]]
+Toronto har Nordamerikas tredje största [[kollektivtrafik]]system (mätt i antal resenärer) efter [[New York]] och [[Mexico City]]. 
+
+Kanadas viktigaste flygplats, [[Toronto Pearson International Airport]] (YYZ), ligger på stadens västra gräns mot [[Mississauga]]. Staden har också en mindre trafikflygplats, kallad [[Toronto City Centre Airport]] (oftast kallad Island Airport) belägen på [[Toronto Islands]] som mestadels har inrikesflyg och ett fåtal linjer till ett fåtal närliggande större städer i USA.
+
+Ontarios provinsregering sköter den regionala tåg- och busstrafiken i storstadsområdet genom företaget [[GO Transit]] som kopplar samman [[Union Station, Toronto|Union Station]] med närliggande städer och förorter. 38 tåg på sju tåglinjer kör 179 turer, och kör över 160&nbsp;000 passagerare varje dag. Utöver till tågtrafiken finns det 288 busslinjer som kör runt och utanför staden. Stadsägda [[Toronto Transit Commission]] (TTC) sköter kollektivtrafiken i staden. Ryggraden i kollektivtrafiken är [[Torontos tunnelbana|stadens tunnelbana]], som inkluderar den U-formade norr-söder Yonge-University-Spadina-linjen, den öst-västliga Bloor-Danforth-linjen, den öst-västliga Sheppard-linjen i norr, samt Scarborough RT-linjen som går genom den östra delen av staden (Scarborough). TTC sköter också ett stort nätverk av bussar och [[Torontos spårväg|spårvagnstrafik (''streetcars'')]].
+
+== Demografi ==
+[[Fil:Toronto Downtown Core at Night.jpg|höger|miniatyr|Nattlig vy över staden.]]
+Toronto är en av de mest multikulturella städerna i världen, enligt [[FN]]. År [[2004]], rankade [[UNDP]] Toronto som nummer två, efter [[Miami]], på "Lista över världens städer med högsta procentenhet för utlandsfödda invånare"<ref>[http://news.bbc.co.uk/2/hi/americas/3898795.stm "Miami tops 'foreign-born' cities".] BBC.co.uk, 2004-07-15. Läst 23 februari 2013. {{en}}</ref>. Dock är Toronto mer multikulturell än Miami, eftersom de flesta som bor där är [[hispano]]. Toronto rankades också före [[Los Angeles]], [[Vancouver]], [[New York]], [[Singapore]] och [[Sydney]]. Resultaten efter detta har gjort att flera etniska kvarter har uppstått i staden.
+
+Toronto har en multikulturell mosaik. Folkräkningen [[2001]] bedömde att 42,8&nbsp;procent av Torontos befolkning tillhör en synlig minoritet. I mars [[2005]] förutsade [[Statistics Canada]] att den synliga minoriteten kommer både vara en majoritet i Toronto och [[Vancouver]] år [[2012]].
+
+År [[1900]] kom Torontos invånare främst från [[Storbritannien]] och [[Irland]]. Under [[1900-talet]] har en stor andel invandring ändrat stadens demografi och det finns nu personer från många etniska och nationella tillhörigheter i staden. Områden som [[Koreatown]], [[Malta Village]], [[Chinatown]], [[Little Jamaica]], [[Little India]], [[Greektown]], [[Portugal Village]], [[Corso Italia]], Augusta Avenue (latino/portugisiskt), Little Mogadishu och [[Little Italy, Toronto|Little Italy]] är några exempel på stora förändringar i invånarnas ursprung.
+
+Religiösa tillhörigheter är [[Romersk-katolska kyrkan|romerska katoliker]] (33,4&nbsp;procent), [[Anglikanska kyrkogemenskapen|anglikaner]] (6,9&nbsp;procent), [[United Church of Canada]] (6,9&nbsp;procent) [[Pentekostalism|pingstvänner]], [[Baptism|baptister]], [[Sjundedagsadventisterna|sjundedagsadventister]] och [[Church of God]] (15&nbsp;procent), [[Islam|muslimer]] 5,5&nbsp;procent, [[Judendom|judar]] 4,2&nbsp;procent, [[Hinduism|hinduer]] (4,1&nbsp;procent), [[Sikhism|sikhister]] (3&nbsp;procent), [[Buddhism|buddhister]] 3&nbsp;procent, [[rastafari]] mindre än 1&nbsp;procent. Tolv&nbsp;procent av befolkningen anser sig inte ha någon tro.
+
+[[Engelska]] är det största talade språket i Toronto, men även [[kinesiska]], [[portugisiska]], [[tamil]], [[persiska]], [[spanska]], [[punjabi]] och [[italienska]] talas. Italienska är nummer två, efter engelska, på listan över språk talade på jobbet.
+
+=== Stad och storstadsområde ===
+[[Fil:Toronto by Sentinel-2.jpg|miniatyr|höger|Satellitbild över Toronto tagen av [[Copernicus Sentinel-2]] från 2018.]]
+[[Fil:Toronto map.png|miniatyr|vänster|Karta över Toronto med omgivningar med gränserna för de tidigare städerna innan sammanslagningen 1998.]]
+
+Dagens Toronto bildades [[1998]] då ''City of Toronto'' slogs samman med de fem närliggande kommunerna [[East York]], [[Etobicoke]], [[North York]], [[Scarborough, Ontario|Scarborough]] och [[York, Ontario|York]]. Den är Kanadas största stad med 2&nbsp;794&nbsp;356<ref name="STATCAN Places" /> invånare ([[2021]]) på en yta av 631,10<ref name="STATCAN Land Areas" /> km². Kommunerna som bildade dagens Toronto hade tidigare ingått i regionkommunen Metropolitan Toronto, som bildades 1954.
+
+Torontos urbaniserade område har 6&nbsp;202&nbsp;225<ref name="STATCAN Urban Areas">[https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/page.cfm?Lang=E&GENDERlist=1&STATISTIClist=1&HEADERlist=0&DGUIDlist=2021A00053520005&SearchText=toronto Statistics Canada] , ytor (landareal) och invånarantal för urbaniserade områden vid folkräkningen den 11 maj 2021</ref> invånare (2021) på en yta av 5&nbsp;902,75<ref name="STATCAN Urban Areas" /> km². Detta omfattar flera stora förorter, bland annat [[Brampton, Ontario|Brampton]], [[Markham, Ontario|Markham]], [[Mississauga]], [[Oakville, Ontario|Oakville]], [[Richmond Hill, Ontario|Richmond Hill]] och [[Vaughan, Ontario|Vaughan]]. Hela [[storstadsområde]]t (''Toronto Census Metropolitan Area'') täcker ett betydligt större område, vilket även inkluderar stora delar glesbygd, och har 6&nbsp;202&nbsp;225<ref name="STATCAN Metropolitan Areas"/> invånare (2021) på en yta av totalt 5&nbsp;902,75<ref name="STATCAN Metropolitan Areas" /> km². 
+
+Befolkningsökningen per år mellan 2016 och 2021 låg på 4,6&nbsp;procent<ref name="STATCAN Places" /> för staden, 2,3&nbsp;procent<ref name="STATCAN Urban Areas" /> för det urbaniserade området, samt 1,77&nbsp;procent<ref name="STATCAN Metropolitan Areas" /> för hela storstadsområdet. 
+
+Toronto är det geopolitiska Nordamerikas (norr om [[Mexiko]]) fjärde största stad, efter [[New York]], [[Los Angeles]] och [[Chicago]].
+
+{| class="wikitable"
+!Nr
+!Stad
+!Delstat/Provins
+!Stadskärna
+!Storstadsområde
+|-
+|1
+|[[New York]]
+|[[New York]], [[USA]] 
+|8&nbsp;143&nbsp;197 
+|18&nbsp;818&nbsp;536 
+|-
+|2
+|[[Los Angeles]]
+|[[Kalifornien]], [[USA]]
+|3&nbsp;844&nbsp;829  
+|12&nbsp;950&nbsp;129
+|-
+|3
+|[[Chicago]]
+|[[Illinois]], [[USA]] 
+| 2&nbsp;842&nbsp;518
+| 9&nbsp;505&nbsp;748
+|-
+|4
+| Toronto
+|[[Ontario]], [[Kanada]]
+| 2&nbsp;794&nbsp;356
+| 6&nbsp;202&nbsp;225 
+|-
+|5
+|[[Houston]] 
+|[[Texas]], [[USA]] 
+| 2&nbsp;016&nbsp;582 
+| 5&nbsp;539&nbsp;949
+|-
+|}
+
+== Kultur ==
+Toronto är en stad med många museer, teatrar, gallerier, festivaler, komediklubbar, händelser och sportarrangemang. Den klassas oftast som Kanadas främsta kulturcentrum.
+
+Staden är hem för [[Canadian Opera Company]], den största producenten av opera i Kanada och den sjätte största i Nordamerika; och Toronto Symphony Orchestra som spelar vid [[Roy Thomson|Roy Thomson Hall]]. Den är också hem för [[Royal Ontario Museum]], Four Seasons Centre for the Performing Arts, Torontos operahus; Hummingbird Centre, Massey Hall, Canadian National Exhibition, Ontario Science Centre, Museum of Contemporary Art, Cinematheque Ontario, Toronto Centre for the Arts och Elgin and Winter Garden Theatre. [[Kanadas Walk of Fame]] består av framgångsrika kanadensare i stjärnor framför Roy Thomson Hall, Princess of Wales Theatre, och Royal Alexandra Theatre. Ontario Place ligger på tre vackert utformade öar i Lake Ontario. Den har åkattraktioner och innehåller världens första permanenta [[IMAX]] filmteater, kallad Cinesphere.
+
+I förstaden [[Vaughan]] 25 kilometer norr om Torontos stadskärna finns sedan 1981 nöjesparken [[Canada's Wonderland]]. 
+
+=== Media ===
+Toronto är det engelskspråkiga Kanadas mediehuvudstad. Den är hem för två av de nationella tidningarna ([[The Globe and Mail]] och [[National Post]]), tillsammans med [[Toronto Star]], vilken har den högsta cirkuleringen av någon annan kanadensisk tidning, tillsammans med andra dagstidningar på [[engelska]] och [[kinesiska]]. Flera TV-kanaler har också sin bas i Toronto, bland annat den nationella [[public service]] bolaget [[Canadian Broadcasting Corporation|CBC]]. En mängd USA-finansierade långfilmer, tv-filmer och tv-serier spelas in i och kring Toronto, något som ibland benämns som "[[Hollywood North]]".
+
+=== Sport ===
+[[Fil:Air Canada Centre from CN Tower.jpg|höger|miniatyr|[[Air Canada Centre]], utsikt från CN Tower.]]
+* [[NHL]]-laget [[Toronto Maple Leafs]] ([[Hockey]])
+* [[American Hockey League|AHL]]-laget [[Toronto Marlies]] ([[Hockey]])
+* [[Major League Baseball|MLB]]-laget [[Toronto Blue Jays]] ([[Baseball]])
+* [[National Basketball Association|NBA]]-laget [[Toronto Raptors]] ([[Basket]])
+* [[Canadian Football League|CFL]]-laget [[Toronto Argonauts]] ([[Kanadensisk fotboll]])
+* [[National Lacrosse League|NLL]]-laget [[Toronto Rock Lacrosse]] ([[Lacrosse]])
+* [[Major League Soccer|MLS]]-laget [[Toronto FC]] ([[Fotboll]])
+* OWL-laget Toronto Defiant ([[E-sport]])
+
+== Referenser ==
+<references/>
+
+== Externa länkar ==
+* {{commonscat WD}}
+* [http://www.toronto.ca City of Toronto] - Officiell webbplats
+* [http://www.city.toronto.on.ca/torontomaps Toronto maps] kartor över staden
+* [http://www.toronto.ca/ttc/ Toronto Transit Commission] Stadens kollektivtrafik
+{{Auktoritetsdata}}
+[[Kategori:Toronto| ]]
+[[Kategori:Orter i Ontario]]
+[[Kategori:Enhetskommuner i Ontario]]
+[[Kategori:Folkräkningsområden i Ontario]]

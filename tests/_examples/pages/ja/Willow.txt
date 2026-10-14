@@ -1,0 +1,286 @@
+{{Otheruses|樹木|その他の用法|柳}}
+{{出典の明記|date=2011年5月}}
+{{生物分類表
+|名称 = ヤナギ属
+|色 = lightgreen
+|画像 = [[ファイル:Yanagi.jpg|250px]]
+|画像キャプション = 開花中の[[シダレヤナギ]] ''S. babylonica''
+|分類体系 = [[APG III]]
+|界 = [[植物界]] {{Sname||Plantae}}
+|門階級なし = [[被子植物]] {{Sname||angiosperms}}
+|綱階級なし = [[真正双子葉類]] {{Sname||eudicots}}
+|亜綱階級なし = [[バラ類]] {{Sname||rosids}}
+|上目階級なし = [[真正バラ類I]] {{Sname||eurosids I}}
+|目 = [[キントラノオ目]] {{Sname||Malpighiales}}
+|科 = [[ヤナギ科]] {{Sname||Salicaceae}}
+|属 = '''ヤナギ属''' {{Snamei||Salix}}
+|学名 = {{Snamei|Salix}} {{Taxonomist|L.}}
+|和名 = ヤナギ属
+|英名 = [[:en:Willow|Willow]] 
+|下位分類名 = 種
+|下位分類 = * 本文参照
+}}
+'''ヤナギ'''（'''柳'''、'''栁'''、'''楊'''、{{lang-en|Willow}}）は、[[ヤナギ科]]'''ヤナギ属'''の[[木|樹木]]の総称。「風見草」「遊び草」の別名もある<ref>{{Cite book|和書 |title=366日 誕生花の本 |date=1990-11-30 |publisher=日本ヴォーグ社 |page=260 |author=瀧井康勝|ISBN=4-529-02039-8}}</ref>。世界に約400種近くあり、主に[[北半球]]に分布する。日本では、ヤナギと言えば一般に[[シダレヤナギ]]を指すことが多い。ここではヤナギ属全般について記す。
+
+== 特徴 ==
+樹木の中で最も特色のある属のひとつで、湿潤から乾燥まで、高温から低温まで、幅広い環境条件に適応し、種類が極めて多いのが特色である<ref name="辻井1995">{{Cite book|和書|author =[[辻井達一]]|title =日本の樹木|date =1995-04-25|publisher =[[中央公論社]]|series =中公新書|isbn =4-12-101238-0|pages =58}}</ref>。主に[[温帯]]に生育し、[[寒帯]]にもある。高山や[[ツンドラ]]では、ごく背の低い、地を這うような樹木となる。日本では水辺に生育する種が多いが、山地に生育するものも少なくない。
+
+種類が多いため、形態的な差異も多様である<ref name="辻井1995"/>。落葉性の[[木本]]であり、高木から低木、ごく背が低く、這うものまである<ref name="辻井1995"/>。高木性のものはさらに直立性のものと枝垂れ性のものがあり、灌木性のものは低地性のものと高山性のものに区別される<ref name="辻井1995"/>。
+
+葉は[[互生]]、まれに[[対生]]。托葉を持ち、葉柄は短い。葉身は単葉で線形、披針形、卵形など変化が多い。
+
+雌雄異株で、花は尾状[[花序]]、いわゆる「ヤナギの猫」と形容される小さい花が集まった穂になるのが特徴で<ref name="辻井1995"/>、枯れるときには花序全体がぽろりと落ちる。ただし、外見的には雄花の花序も雌花の花序もさほど変わらない。雄花は雄しべが数本、雌花は雌しべがあるだけで、花弁はない。代わりに小さい苞や腺体というものがあり、これらに綿毛を生じて、穂全体が綿毛に包まれたように見えるものが多い。すべて[[虫媒花]]、ただし[[ケショウヤナギ]]属をヤナギ属に含める場合はこの限りではない。
+
+冬芽は1枚のカバーのような鱗片に包まれ、これがすっぽりと取れたり、片方に割れ目を生じてはずれたりする特徴がある。これは、本来は2枚の鱗片であったものが融合したものと考えられる。[[果実]]は蒴果で、種子は小さく柳絮（りゅうじょ）と呼ばれ、綿毛を持っており風に乗って散布される。
+
+中国において4月～5月頃の風物詩となっており、古くから漢詩等に詠まれる[[柳絮]]だが、近年では、[[大気汚染]]や火災の誘発、[[アレルゲン]]になるという理由で、公害の一種として認識されている<ref>{{Cite web |url=https://www.baidu.com/link?url=maxNFJelvkhYSIpxUh6hn4AKZVi5LLcUe9Np2S3RjPVGpLjnUSu2fZNIxQP_q6rTauIeb5pWqdfXuphXP_vgXfmpO4AtrIQkjtdrA8yt7h7&wd=&eqid=b89da6700000a4da000000066434fca0 |title=漫天柳絮的春天，请小心过敏 |access-date=2023/04/11}}</ref>。
+
+日本においては、目立つほど綿毛を形成しない種が多い。しかし、日本においても意図的に移入された大陸品種の柳があり、柳絮を飛ばす様子を見ることができる。
+
+== 表記 ==
+ヤナギの漢字表記には「柳」と「楊」があるが、枝が垂れ下がる種類（シダレヤナギやウンリュウヤナギなど）には「柳」、枝が立ち上がる種類（ネコヤナギやイヌコリヤナギなど）には「楊」の字を当てる<ref name="ken0229">{{Cite web|和書 |url=https://www.miyakanken.co.jp/column1/1360 |title=No.40 ネコヤナギ（猫柳） |publisher=株式会社 宮城環境保全研究所 |accessdate=2025-04-21}}</ref>。これらは[[万葉集]]でも区別されている{{R|ken0229}}<ref>{{Cite web |url=https://www.543life.com/content/shun/post20210217.html?srsltid=AfmBOooSm8bs5Herdnr7SWLYEL9yB0YR-VbNKejZUuKcl-hXdGB55NuI |title=ネコヤナギ |access-date=2025-04-21 |date=2021-02-17 |publisher=新日本カレンダー株式会社 |website=旬のもの｜暦生活｜日本の季節を楽しむ暮らし}}</ref>。
+
+== ヤナギの種類 ==
+ヨーロッパ全土には約450種のヤナギが自生しているが、共通点が多く、1つのグループとしてまとまっているため、異種交配も珍しくない{{Sfn|ドローリ|2019|p=28}}。川沿いなどに生える[[セイヨウシロヤナギ]]（''Salix alba''）がよく知られ、成木になると樹高30メートルにもなり、葉は細長く最初は毛が生えているので、遠くから見ると銀灰色をしている{{Sfn|ドローリ|2019|p=28}}。
+
+日本では、ヤナギといえば、[[街路樹]]、[[公園樹]]の[[シダレヤナギ]]が代表的であるが、[[生け花]]では幹がくねったウンリュウヤナギや冬芽から顔を出す花穂が銀白色の毛で目立つ[[ネコヤナギ]]がよく知られている。柳の葉といえば一般的にシダレヤナギの細長いものが連想されるが、円形ないし卵円形の葉を持つ種もある。[[マルバヤナギ]]（アカメヤナギ）がその代表で、野生で普通に[[里山]]にあり、都市部の[[公園]]にも紛れ込んでいる。
+
+実際には、一般の人々が考えるよりヤナギの種類は多く、しかも身近に分布しているものである。やや自然の残った河原であれば、必ず何等かのヤナギが生育し、山地や高原にも生育する種がある。それらはネコヤナギやシダレヤナギとは一見とても異なった姿をしており、結構な大木になるものもある。さらには高山やツンドラでは、地を這うような草より小さいヤナギも存在するが、綿毛状の花穂や綿毛をもつ種子などの特徴は共通している。
+
+ただし、その[[同定]]は極めて困難である。日本には30種を軽く越えるヤナギ属の種がある。これらは全て雌雄異株である。花が春に咲き、その後で葉が伸びて来るもの、葉と花が同時に生じるもの、展葉後に開花するものがある。同定のためには雄花の特徴、雌花の特徴、葉の特徴を知る必要がある。しかも、自然界でも雑種が簡単にできるらしいのである。
+
+=== 主な種 ===
+{{hidden begin|titlestyle = background-color:lightgreen|title = 主な種を表示するには右の [表示] をクリックしてください。}}
+主な種を下記に記す<ref>{{Cite web|title=YList　植物和名-学名インデックス:簡易検索結果（Salix）|url=http://ylist.info/ylist_simple_search.php?any_field=Salix&family=&species=&capital=0&family_order=0&family_disp_type=1&spec_order=0&list_type=0&search=%E6%A4%9C%E7%B4%A2|website=|access-date=2025-09-13|publisher=米倉浩司・梶田忠 (2003-)　「BG Plants 和名−学名インデックス」（YList）}}</ref>。
+{{Columns-list|2|
+* {{Snamei||Salix acutifolia}} [[カスピエゾヤナギ]]　
+* {{Snamei||Salix aegyptiaca}} [[ペルシャバッコヤナギ]]
+* {{Snamei||Salix alba}} [[セイヨウシロヤナギ]]
+* {{Snamei||Salix amygdaloides}} [[アメリカマルバヤナギ]]
+* {{Snamei||Salix aquilonia}} [[チシマヤナギ]]
+* {{Snamei||Salix arbutifolia}} [[ケショウヤナギ]] ([[シノニム|Syn.]] {{Snamei|Chosenia arbutifolia}})
+* {{Snamei||Salix aurita}} [[ユスラバヤナギ]]
+* {{Snamei||Salix babylonica}} [[シダレヤナギ]]
+** {{Snamei|Salix babylonica}} f. {{Snamei|rokkaku}} ロッカクヤナギ
+** {{Snamei||Salix babylonica}} f. {{Snamei|seiko}}　 セイコヤナギ
+* {{Snamei||Salix berberifolia}} [[メギヤナギ]]
+* {{Snamei||Salix bicarpa}} [[タカネヤナギ]]
+* {{Snamei||Salix blinii}} [[タンナミネヤナギ]]
+* {{Snamei||Salix brachypoda}} [[ヌマキヌヤナギ]]
+* {{Snamei||Salix caprea}} [[バッコヤナギ]]
+* {{Snamei||Salix cardiophylla}} [[トカチヤナギ]]
+** {{Snamei|Salix cardiophylla}} var. {{Snamei|urbaniana}} [[オオバヤナギ]] (Syn. {{Snamei|Toisusu urbaniana}})
+* {{Snamei||Salix chaenomeloides}} [[マルバヤナギ]]
+* {{Snamei||Salix chamissonis}} [[チシマイワヤナギ]]
+* {{Snamei||Salix dahurica}} [[ホソバモウコヤナギ]]
+* {{Snamei||Salix daphnoides}} [[セイヨウエゾヤナギ]]
+* {{Snamei||Salix dependens}} [[イヌシダレヤナギ]]
+* {{Snamei||Salix divaricata}}
+** {{Snamei|Salix divaricata}} var. {{Snamei|metaformosa}} [[チャボヤナギ]]
+* {{Snamei||Salix dolichostyla}}
+** {{Snamei|Salix dolichostyla}} ssp. {{Snamei|dolichostyla}} [[シロヤナギ]]
+** {{Snamei|Salix dolichostyla}} ssp. {{Snamei|serissifolia}} [[コゴメヤナギ]]
+** {{Snamei|Salix dolichostyla}} ssp. {{Snamei|serissifolia}} f. {{Snamei|pendula}} シダレコゴメヤナギ
+* {{Snamei||Salix eriocarpa}} [[ジャヤナギ]]
+* {{Snamei||Salix fragilis}} [[ポッキリヤナギ]]
+* {{Snamei||Salix fulvopubescens}} [[アリサンヤナギ]]
+** {{Snamei|Salix fulvopubescens}} var. {{Snamei|doii}} ウスバヤナギ
+* {{Snamei||Salix fuscescens}} [[ミヤマヤチヤナギ]]
+** {{Snamei|Salix fuscescens}} ssp. {{Snamei|poronaica}} オオヤチマメヤナギ
+* {{Snamei||Salix futura}} [[オオキツネヤナギ]]
+* {{Snamei||Salix futura}} f. {{Snamei|rufa}} アカゲオオキツネヤナギ
+* {{Snamei||Salix glabra}} [[セイヨウミヤマヤナギ]]
+* {{Snamei||Salix gracilistyla}} [[ネコヤナギ]]
+** {{Snamei|Salix gracilistyla}} f. {{Snamei|melanostachys}} クロヤナギ
+** {{Snamei|Salix gracilistyla}} f. {{Snamei|pendula}} シダレネコヤナギ
+** {{Snamei|Salix gracilistyla}} f. {{Snamei|variegata}} フイリネコヤナギ
+** {{Snamei|Salix gracilistyla}} var. {{Snamei|graciliglans}} チョウセンネコヤナギ
+* {{Snamei||Salix hallaisanensis}} [[タンナヤナギ]]
+* {{Snamei||Salix hukaoana}} [[ユビソヤナギ]]
+* {{Snamei||Salix humboldtiana}} - 半常緑高木。南北アメリカの川沿いに自生。
+* {{Snamei||Salix integra}} [[イヌコリヤナギ]]
+** {{Snamei|Salix integra}} f. {{Snamei|albovariegata}} フイリイヌコリヤナギ
+** {{Snamei|Salix integra}} f. {{Snamei|pendula}} シダレイヌコリヤナギ
+* {{Snamei||Salix ishidoyana}} [[タケシマヤナギ]]
+* {{Snamei||Salix japonica}} [[シバヤナギ]]
+* {{Snamei||Salix kangensis}} [[コウカイヤナギ]]
+** {{Snamei|Salix kangensis}} f. {{Snamei|leiocarpa}} ホウオウヤナギ
+* {{Snamei||Salix kimurana }} [[キムラヤナギ]]
+* {{Snamei||Salix kochiana}} [[マンシュウコリヤナギ]]
+* {{Snamei||Salix koriyanagi}} [[コリヤナギ]]
+* {{Snamei||Salix kusanoi}} [[スイシャヤナギ]]
+* {{Snamei||Salix matsudana}} [[ペキンヤナギ]]
+** {{Snamei|Salix matsudana}} 'Tortuosa' ウンリュウヤナギ
+* {{Snamei||Salix microstachya}}
+** {{Snamei|Salix microstachya}} var. {{Snamei|bordensis}} キヌゲコリヤナギ
+* {{Snamei||Salix miyabeana}} [[エゾノカワヤナギ]]
+** {{Snamei|Salix miyabeana}} ssp. {{Snamei|gymnolepis}} カワヤナギ
+*** {{Snamei|Salix miyabeana}} ssp. {{Snamei|gymnolepis}} f. {{Snamei|pendula}} シダレカワヤナギ
+* {{Snamei||Salix morrisonicola}} [[ニイタカミネヤナギ]]
+* {{Snamei||Salix mucronata}} [[サフサフヤナギ]] - 半常緑。[[南アフリカ]]において伝統的に薬として広く用いられてきた。
+* {{Snamei||Salix myrtilloides}} [[コウアンヌマヤナギ]]
+** {{Snamei|Salix myrtilloides}} var. {{Snamei|manshurica}} ヌマヤナギ
+* {{Snamei||Salix nakamurana}} [[レンゲイワヤナギ]]
+** {{Snamei|Salix nakamurana}} f. {{Snamei|eriocarpa}} ケタカネイワヤナギ
+** {{Snamei|Salix nakamurana}} ssp. {{Snamei|kurilensis}} ヒダカミネヤナギ
+** {{Snamei|Salix nakamurana}} ssp. {{Snamei|yezoalpina}} エゾノタカネヤナギ
+** {{Snamei|Salix nakamurana}} ssp. {{Snamei|yezoalpina}} f. {{Snamei|neoreticulata}} イヌマルバヤナギ
+* {{Snamei||Salix nigra}} [[アメリカポッキリヤナギ]]
+* {{Snamei||Salix nummularia}} [[エゾマメヤナギ]]
+** {{Snamei|Salix nummularia}} f. {{Snamei|hebecarpa}} キヌゲエゾマメヤナギ
+* {{Snamei||Salix okamotoana}} [[ミヤマバッコヤナギ]]
+* {{Snamei||Salix pentandra}} [[セイヨウテリハヤナギ]]
+* {{Snamei||Salix pierotii}} [[オオタチヤナギ]]
+** {{Snamei|Salix pierotii}} f. {{Snamei|auricomans}} レンギョウヤナギ
+* {{Snamei||Salix polaris}} [[チシママメヤナギ]]
+* {{Snamei||Salix pseudolasiogyne}} [[コウライシダレヤナギ]]
+* {{Snamei||Salix pseudopentandra}} [[テリハヤナギ]]
+* {{Snamei||Salix purpurea}} [[セイヨウコリヤナギ]]
+* {{Snamei||Salix reinii}} [[ミヤマヤナギ]]
+** {{Snamei|Salix reinii}} f. {{Snamei|eriocarpa }} キヌゲミヤマヤナギ
+** {{Snamei|Salix reinii}} f. {{Snamei|pendula}} シダレミネヤナギ
+** {{Snamei|Salix reinii}} ssp. {{Snamei|tontomussirensis}} シママルバヤナギ
+* {{Snamei||Salix rorida}} [[エゾヤナギ]]
+** {{Snamei||Salix rorida}} f. {{Snamei|pendula}} シダレエゾヤナギ
+** {{Snamei||Salix rorida}} f. {{Snamei|roridiformis}} コエゾヤナギ
+* {{Snamei||Salix rupifraga}} [[コマイワヤナギ]] 
+** {{Snamei|Salix rupifraga}} f. {{Snamei|eriocarpa}} ケコマイワヤナギ
+* {{Snamei||Salix saxatilis}} [[ケコバヤナギ]]
+* {{Snamei||Salix schwerinii}} [[エゾノキヌヤナギ]]
+** {{Snamei|Salix schwerinii}} 'Kinuyanagi' キヌヤナギ
+* {{Snamei||Salix sericeocinerea}} [[オオミネヤナギ]]
+** {{Snamei||Salix sericeocinerea}} f. {{Snamei|lanata}} オオミネケヤナギ
+* {{Snamei||Salix shiraii}} [[シライヤナギ]]
+** {{Snamei||Salix shiraii}} var. {{Snamei|kenoensis}} チチブヤナギ
+* {{Snamei||Salix sieboldiana}} [[ヤマヤナギ]]
+** {{Snamei|Salix sieboldiana}} var. {{Snamei|doiana}} サツマヤナギ
+* {{Snamei||Salix sphenophylla}} [[チシマタカネヤナギ]]
+* {{Snamei||Salix subopposita}} [[ノヤナギ]]
+* {{Snamei||Salix sugawarana}} [[ススヤヤナギ]]
+* {{Snamei||Salix tagawana}} [[タガワヤナギ]]
+* {{Snamei||Salix taiwanalpina}} [[ナンコミネヤナギ]]
+* {{Snamei||Salix takasagoalpina}} [[タカサゴヤナギ]]
+* {{Snamei||Salix taraikensis}} [[タライカヤナギ]]
+* {{Snamei||Salix tatewakii}} [[チョロナイヤナギ]]
+* {{Snamei||Salix tetrasperma}} [[テンジクヤナギ]]
+* {{Snamei||Salix triandra}} [[セイヨウタチヤナギ]]
+** {{Snamei|Salix triandra}} ssp. {{Snamei|nipponica}} タチヤナギ
+* {{Snamei||Salix udensis}} [[オノエヤナギ]]
+* {{Snamei||Salix viminalis}} [[セイヨウキヌヤナギ]]
+* {{Snamei||Salix vulpina}} [[キツネヤナギ]]
+** {{Snamei|Salix vulpina}} ssp. {{Snamei|alopochroa}} サイコクキツネヤナギ
+* {{Snamei||Salix warburgii}} [[タイワンアカメヤナギ]]
+* {{Snamei||Salix xerophila}}
+** {{Snamei|Salix xerophila}} f. {{Snamei|manshurica}} ハイイロヤナギ
+** {{Snamei|Salix xerophila}} var. {{Snamei|fuscescens}} チャイロミネヤナギ
+* {{Snamei|Salix yoshinoi}} [[ヨシノヤナギ]]
+
+==== 雑種 ====
+* {{Snamei|Salix}} x {{Snamei|algista}} トウゲヤナギ
+* {{Snamei|Salix}} x {{Snamei|ampherista}} ハコダテヤナギ
+** {{Snamei|Salix}} x {{Snamei|ampherista}} nothosubsp. {{Snamei|yamatoensis}} ヤマトヤナギ
+* {{Snamei|Salix}} x {{Snamei|arakiana}} ナガバノネコヤナギ
+* {{Snamei|Salix}} x {{Snamei|chrysocoma}} コガネシダレ
+* {{Snamei|Salix}} x {{Snamei|cremnophila }} ネコシバヤナギ
+* {{Snamei|Salix}} x {{Snamei|eriocataphylla}} シグレヤナギ
+* {{Snamei|Salix}} x {{Snamei|eriocataphylloides}} ナスノシグレヤナギ
+* {{Snamei|Salix}} x {{Snamei|euerata}} カワオノエヤナギ
+* {{Snamei|Salix}} x {{Snamei|gracilistyloides}} [[ロッコウヤナギ]]
+* {{Snamei|Salix}} x {{Snamei|hapala}} イヌカワヤナギ
+* {{Snamei|Salix}} x {{Snamei|hatusimae}} チクゼンヤナギ
+* {{Snamei|Salix}} x {{Snamei|hayatana}} リュウゾウジヤナギ
+* {{Snamei|Salix}} x {{Snamei|hiraoana}} [[ヒラオヤナギ]]
+** {{Snamei|Salix}} x {{Snamei|hiraoana}} nothosubsp. {{Snamei|tsugaluensis}} ツガルヤナギ
+* {{Snamei|Salix}} x {{Snamei|hisauchiana}} フジヤナギ
+* {{Snamei|Salix}} x {{Snamei|ikenoana}} イケノヤナギ
+* {{Snamei|Salix}} x {{Snamei|iwahisana}} イワヒサヤナギ
+* {{Snamei|Salix}} x {{Snamei|japopina}} シバキツネヤナギ
+* {{Snamei|Salix}} x {{Snamei|kamikotica}} カミコウチヤナギ
+* {{Snamei|Salix}} x {{Snamei|kawamurana}} ミョウジンヤナギ
+* {{Snamei|Salix}} x {{Snamei|koidzumii}} トヨハラヤナギ
+* {{Snamei|Salix}} x {{Snamei|koiei}} コイエヤナギ
+* {{Snamei|Salix}} x {{Snamei|lasiogyne}} シロシダレヤナギ
+** {{Snamei|Salix}} x {{Snamei|lasiogyne}} nothosubsp. {{Snamei|yuhkii}} ユウキシダレ
+* {{Snamei|Salix}} x {{Snamei|leucopithecia}} フリソデヤナギ
+* {{Snamei|Salix}} x {{Snamei|matsumurae}} オクヤマサルコ
+* {{Snamei|Salix}} x {{Snamei|mictostemon}} ワケノカワヤナギ
+* {{Snamei|Salix}} x {{Snamei|nasuensis}} ナスノイワヤナギ
+* {{Snamei|Salix}} x {{Snamei|paramushirensis}} チシマオノエヤナギ
+* {{Snamei|Salix}} x {{Snamei|pedionoma}} バッコキヌヤナギ
+* {{Snamei|Salix}} x {{Snamei|pseudopaludicola}} オオミヤマヤチヤナギ
+* {{Snamei|Salix}} x {{Snamei|sendaica}} センダイヤナギ
+** {{Snamei|Salix}} x {{Snamei|sendaica}} nothosubsp. {{Snamei|ultima}} コンゴウバッコヤナギ
+* {{Snamei|Salix}} x {{Snamei|sigemitui}} フカオヤナギ
+* {{Snamei|Salix}} x {{Snamei|sirakawensis}} コセキヤナギ
+* {{Snamei|Salix}} x {{Snamei|sugayana}} スガヤヤナギ
+* {{Snamei|Salix}} x {{Snamei|sumiyosensis}} [[スミヨシヤナギ]]
+* {{Snamei|Salix}} x {{Snamei|thaymasta}} ミヤコヤナギ
+* {{Snamei|Salix}} x {{Snamei|turumatii}} ヒタチヤナギ
+* {{Snamei|Salix caprea}} x {{Snamei|S. hukaoana}} ドアイヤナギ
+* {{Snamei|Salix gracilistyla}} x {{Snamei|S. schwerinii}} ネコヤナギ × エゾノキヌヤナギ
+}}
+{{hidden end}}
+
+== 植生 ==
+ヤナギは水分の多い土壌を好み、よく川岸や湿地などに、生えている。自然状態の[[河川敷]]では、[[河畔林]]として大規模に生育していることがある。これは出水時に上流の河川敷から[[流木]]化したものが下流で堆積し、自然の[[茎伏せ]]の状態で一斉に生育するためである。
+
+川の[[侵食]]を防ぐため川岸に植林される。オーストラリア南部でも入植時に護岸目的で植林されたが、侵略的[[外来種]]（{{ill2|国家的に深刻な雑草|en|Weeds of National Significance}}）として認定され、在来の樹木への置き換えが進んでいる<ref>[https://pir.sa.gov.au/biosecurity/weeds_and_pest_animals/weeds_in_sa/weeds_of_national_significance_wons Weeds of National Significance (WoNS)] 南オーストラリア政府</ref>。繁殖力もさることながら、川の流れを阻害したり、秋には葉を大量に落とし、葉が分解されることで水質を悪化させ環境を激変させることが、オーストラリア政府の関心をひいている。
+
+== 人の利用 ==
+=== 道具と植栽 ===
+[[挿し木]]で容易に増えることから、[[治山]]などの[[土留]]工、伏工ではヤナギの木杭や止め釘を用い、緑化を進める基礎とすることがある。
+
+ヨーロッパでは、先史時代からヤナギの枝を使って、籠や舟の肋材、フェンス、魚を捕るための罠を編むのに使われてきた{{Sfn|ドローリ|2019|p=28}}。そのため、昔のヨーロッパの水路の土手には、細工用のヤナギを育てる畑が広がっていた{{Sfn|ドローリ|2019|p=28}}。[[ベネルクス三国]]ではヤナギが繁茂し、代表的な田園風景になっており、ここでのヤナギは樹高を抑えるために短く剪定されて幹の先端はこぶ状になり、そこから長い若枝がたくさん出ている{{Sfn|ドローリ|2019|p=29}}。何世紀にもわたり地域の人々に枝を供給し、境界線の目印となり、絵画のモチーフとしても繰り返し描かれた{{Sfn|ドローリ|2019|p=29}}。また[[ベルギー]]の人々にとって、刈り込まれたヤナギはベルギー人の象徴だとも言う{{Sfn|ドローリ|2019|p=29}}。
+
+またヤナギは[[歯磨き]]用の[[歯木]]として用いられた。多くの種が歯木として使用されたが、中国や日本では楊柳（[[カワヤナギ]]）の枝から作ったことから、楊枝（ようじ）と呼ばれた。そこから歯を掃除するための爪楊枝や、[[歯ブラシ]]としての房楊枝となった。
+
+=== 薬用 ===
+ヤナギは[[非ステロイド性抗炎症薬|解熱鎮痛薬]]として古くから用いられてきた歴史がある。[[シュメール]]時代の粘土板には[[疼痛]]の薬として記述され、古代エジプト人はヤナギの葉から作られたポーション（薬）を痛み止めとして、発熱や頭痛の治療に使用した{{Sfn|ドローリ|2019|p=29}}<ref>{{cite web|url=http://www.nobelprizes.com/nobel/medicine/aspirin.html|title=An aspirin a day keeps the doctor at bay: The world's first blockbuster drug is a hundred years old this week|publisher=[[ノーベル財団]] |access-date=2021-11-19}}</ref>。紀元前400年ごろには[[ヒポクラテス]]が[[リウマチ]]患者にヤナギの樹皮を処方していた{{Sfn|ドローリ|2019|p=29}}。中世ヨーロッパでは、ヤナギの解熱作用を示す記録が残されている{{Sfn|ドローリ|2019|p=29}}。中国では、ヤナギの小枝をかんで歯の痛みを抑えていたとされる<ref>{{Cite web|title=コラム アスピリンとヤナギの木|website=薬が「発熱」と「痛み」を抑える仕組み 薬が作用する仕組み Vol.2|publisher=住友ファーマ株式会社|url=https://www.sumitomo-pharma.co.jp/sukoyaka/medicine/medicineworks/article6/|access-date=2025-09-13}}</ref>。日本でも「柳で作った楊枝を使うと歯がうずかない」と言われ沈痛作用について伝承されていた。19世紀には[[生理活性物質]]の[[サリシン]]が柳から分離され、より薬効が高い[[サリチル酸]]を得る方法が発見されている{{Sfn|ドローリ|2019|p=29}}。その後[[アスピリン]]も合成され、年間1000億錠も消費される鎮痛解熱薬が誕生した{{Sfn|ドローリ|2019|p=29}}。現在では、サリシンは体内でサリチル酸に[[代謝]]される<ref>{{cite journal|title=Biosynthesis and metabolism of β-d-salicin: A novel molecule that exerts biological function in humans and plants|journal=Biotechnology Reports|volume=4|year=2014|pmid=28626665|doi=10.1016/j.btre.2014.08.005|url=https://pmc.ncbi.nlm.nih.gov/articles/PMC5466123/}}</ref>ことがわかっている。また、葉には多量の[[ビタミンC]]が含まれている。
+
+=== 文化・風習・言葉 ===
+ギリシャ神話では、太陽神[[ヘーリオス]]の息子パエトンは太陽の戦車を御しきれず、世界中に大火災を発生させ、怒った[[ゼウス]]の雷で撃ち落とされた。パエトンの姉妹の[[ヘーリアデス]]たちは彼の死を悲しみ、悲嘆のあまり柳に変身した。
+
+シダレヤナギ（''Salix babylonica''）は、英語では Weeping Willow（ウィーピング・ウィロウ）、つまり「泣いているヤナギ」と訳せる{{Sfn|ドローリ|2019|p=28}}。この名前は、[[旧約聖書]]・[[詩編137]]「[[バビロン捕囚]]」の一編「バビロンの川のほとりに座り、われらは泣いた。シオンを思って。われらの竪琴は、川のほとりのヤナギの木に掛けた」の誤訳が元になっている{{Sfn|ドローリ|2019|p=28}}。ただし、ここで謡われている木は、正しくはヤナギではなく[[コトカケヤナギ]]（''Populus euphratica''）という[[ポプラ]]の一種である{{Sfn|ドローリ|2019|p=28}}。またシダレヤナギの学名 ''Salix babylonica'' と、琴掛柳の名もこれにちなんでいる<ref>{{Cite web |url=https://kotobank.jp/word/%E7%90%B4%E6%8E%9B%E6%9F%B3-2039323 |title=琴掛柳 |access-date=2025-04-21 |publisher=[[コトバンク]]}}</ref>。
+
+そういった迷信から、中世ヨーロッパでは数世紀にわたって、ヤナギの枝で編んだ花輪や帽子を身につけて喪に服す習慣があった{{Sfn|ドローリ|2019|p=28}}。ここから、ヤナギが暗示する悲しみに求愛を拒絶する気持ちが含まれるようになり、英語で「ヤナギをまとう」（wearing the willow）と言えば、恋人を失った女性がほかの男性を拒絶することを意味するようになった{{Sfn|ドローリ|2019|p=28}}。
+
+[[空海]]が中国を訪れていた時代には、[[長安]]では旅立つ人に柳の枝を折って手渡し送る習慣があった。この文化は、漢詩などにも広く詠まれ、[[王維]]の有名な送別詩「元二の安西に使するを送る」においても背景になっている。「客舎青青 柳色新たなり」の句について、勝部孝三は、「柳」と「留」（どちらも音はリウ）が通じることから、柳の枝を環にしたものを渡すことが、当時中国において、旅人への餞の慣習であったと解説している。「還」と「環」（どちらも音はホワン）が通じて、また帰ってくることを願う意味が込められているわけである<ref>勝部孝三『桃源詩話』国文社, 1987年11月25日初版, pp.21‐22</ref>。
+
+=== 日本人とヤナギ ===
+* 植栽木として、川や池の周りに植えられた実績があり、先人が考えた[[水害]]防止対策といえる。これは柳が湿潤を好み、強靭かつ張りのある根を持つこと、また倒れて埋没しても再び発芽してくる逞しい生命力に注目したことによる。[[時代劇]]に出てくるお堀端の「しだれ柳」の楚々とした風情は、[[怪談]]噺につきものとなった。
+* 古く奈良時代以前から奈伎良（ナギラ）とも呼ばれた。
+* 柳の枝を生糸で編んで作った箱を柳筥(やないばこ)といい、[[神道]]では重要な[[神具]]である。柳筥に[[神鏡]]を納めたり、また柳筥に[[短冊]]を乗せたりもするもので、奈良時代から皇室や神社で使用され続けている<ref>神社本庁『神社有職故実』1951年7月15日発行全129頁中24頁</ref>。
+* 「好いた水仙、好かれた柳」水仙を男、柳を女に見立て、互いに深く愛し合う仲をいうことわざになっている<ref>{{Cite web |url=https://imidas.jp/proverb/detail/X-02-C-13-1-0006.html |title=好いた水仙　好かれた柳 |access-date=2025-04-21 |publisher=情報・知識＆オピニオン imidas - [[イミダス]] |website=会話で使えることわざ辞典}}</ref>。
+* かつて[[吉原遊廓|吉原遊郭]]の入口に植えられた柳には、「見返り柳」の通称がつけられた。遊郭から帰る客が、名残惜しげに振り返る様子から、この名がついたと伝わっている<ref>{{Cite web |url=https://www.sankei.com/article/20221107-SA3H4XOECRIORE5YSLP4ALEXIA/ |title=【浅草物語】吉原遊郭　面影なき街に「見返り柳」　江戸文化の発信地、震災では悲劇も |access-date=2024-09-13 |publisher=[[産経新聞]] |date=2022-11-07}}</ref>。
+* [[花札]]では[[旧暦11月|11月]]の絵柄として、「柳に[[小野道風]]」、「柳に[[ツバメ|燕]]」、「柳に[[短冊]]」、[[かす|カス]]（鬼札）が描かれる。
+
+== 脚注 ==
+{{脚注ヘルプ}}
+{{Reflist}}
+
+== 参考文献 ==
+* {{Cite book|和書|author =ジョナサン・ドローリ|title =世界の樹木をめぐる80の物語|date=2019-12-01|publisher =[[柏書房]]|translator=三枝小夜子|isbn=978-4-7601-5190-5|ref={{SfnRef|ドローリ|2019}} }}
+
+== 関連項目 ==
+{{Sisterlinks|柳
+ | wikt = やなぎ
+ | n = no
+}}
+* [[ヤナギ科]]
+* [[河畔林]]
+* [[萌芽更新]]
+* [[治山]]
+* [[新潟市]]（柳都という別名を持つ）
+* [[東北大学植物園]]
+* [[木村有香]]
+
+==外部リンク==
+* [https://www.seinan-gu.ac.jp/shokubutsu/list_search/923.html セイヨウシロヤナギ／柳、川柳] - 聖書植物園 Biblical Botanical Garden [[西南学院大学]]
+
+{{Taxonbar|from1=Q36050}}
+{{Normdaten}}
+{{plant-stub}}
+{{デフォルトソート:やなき}}
+[[Category:木]]
+[[Category:ヤナギ属|*やなき]]
+[[Category:春の季語]]

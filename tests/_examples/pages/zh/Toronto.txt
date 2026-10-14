@@ -1,0 +1,526 @@
+{{NoteTA
+|G1 = 地名
+|G2 = CA Places
+|1 = zh:標準漢語; zh-cn:普通话; zh-hk:普通話; zh-tw:國語; zh-sg:华语;
+|2 = zh-hk:佐治;zh-tw:喬治;zh-cn:乔治;
+}}
+{{Infobox City
+|name                   = 多倫多
+|native_name            = Toronto
+|official_name          = 多伦多市<br>City of Toronto
+|settlement_type        = [[安大略省行政区划|市（单层次）]]
+|nickname               = 會議之城
+|motto                  = 多元化我们的力量（Diversity Our Strength ）
+| image_skyline            = {{multiple image
+| border            = infobox
+| total_width       = 280
+| perrow            = 1/2/2/2
+| caption_align     = center
+| image1            = CC 2022-06-18 193-Pano (cropped) 01.jpg<!--Please don't change without consensus in article talk page-->
+| caption1          = [[多倫多市中心]]與[[加拿大國家電視塔]]
+| image2            = Ontario Legislative Building, Toronto, South view 20170417 1.jpg<!--Please don't change without consensus in article talk page-->
+| caption2          = [[安大略省议会大楼]]
+| image3            = Nathan Phillips Square (33343114810).jpg<!--Please don't change without consensus in article talk page-->
+| caption3          = [[多倫多市政廳]]與3D多倫多標誌
+| image4            = Toronto - ON - Humber Bay und Humber Bay Arch Bridge.jpg<!--Please don't change without consensus in article talk page-->
+| caption4          = 漢伯灣拱橋
+| image5            = Casa Loma (23170005321).jpg<!--Please don't change without consensus in article talk page-->
+| caption5          = [[卡萨罗马城堡]]
+| image6            = Royal Ontario Museum in Fall 2021.jpg
+| caption6          = [[皇家安大略博物館]]
+| image7            = Scarborough bluffs -b.jpg
+| caption7          = {{link-en|士嘉堡公園|Scarborough Bluffs}}
+}}
+| image_size               = 280px
+| image_caption            = 
+|image_flag             = Toronto Flag.svg
+|image_seal             = Coat of arms of Toronto.svg
+|logo             = [[File:Toronto,_City_of.svg]]
+|pushpin_map              = Canada Ontario
+|mapsize                = 
+|map_caption            = 多倫多位于[[安大略省]]之位
+|subdivision_type       = [[國家]]
+|subdivision_name       = {{CAN}}
+|subdivision_type1      = [[加拿大行政區劃|省]]
+|subdivision_name1      = {{flag|Ontario}}
+|subdivision_type2      = 
+|subdivision_name2      = 
+|leader_title           = [[多倫多市長|市長]]
+|leader_name            = [[鄒至蕙]]
+|leader_title1           = 市议会
+|leader_name1            = [[多伦多市议会]]
+|City_board_type        = 
+|City_board_title1      = 
+|City_board_name1       = 
+|City_board_name2       =
+|City_board_name3       =
+|City_board_name4       =
+|City_board_name5       =
+|City_board_name6       =
+|City_board_name7       =
+|City_board_name8       =
+|City_board_name9       =
+|City_board_name10      =
+|City_board_name11      =
+|City_board_name12      =
+|found_title            = 成立
+|found_date             = 1834年3月6日
+|area_magnitude         = 
+|area_total_km2        = 1749
+|area_total_sq_mi =   = 
+|area_land              = 
+|area_water_km2 =
+|area_water_sq_mi =
+|area_water_percent     = 
+|area_urban_km2 = 630.20
+|area_urban_sq_mi =
+|area_metro_km2 = 7125
+|area_metro_sq_mi =
+|population_as_of       = 2021
+|population_note        = 
+|population_total       = 2,794,356
+|population_metro       = 6,202,225
+|population_region       = 9,765,188
+|population_density     = 4,434.1
+|population_density_mi2 = 
+|timezone               = [[北美東部時區|東部標準時間]]
+|utc_offset             = -5
+|timezone_DST           = [[北美東部時區|東部日光節約時間]]
+|utc_offset_DST         = -4
+|latd= 43|latm= 39|lats= |latNS= N
+|longd= 79|longm= 23|longs= |longEW= W
+|elevation              = 
+|elevation_ft           = 
+|website                = [http://toronto.ca/ 多倫多市官方網頁]
+|footnotes              = 
+}}
+'''多伦多'''{{註釋|加拿大華人舊譯作'''圖麟都'''<ref>{{cite web|url=http://www.tkpss.edu.hk/v2/040_publications/040-070_writing/collection/article/2014/act/00-02.pdf|title=念（第十四期）．意義人生|archiveurl=https://web.archive.org/web/20230324225847/http://www.tkpss.edu.hk/v2/040_publications/040-070_writing/collection/article/2014/act/00-02.pdf|archivedate=2023-03-24|access-date=2023-03-24|dead-url=no}}</ref><ref>{{cite web|url=http://easyca.ca/archives/321534|title=《唐人街拾零》别有風情|archiveurl=https://web.archive.org/web/20230324230141/http://easyca.ca/archives/321534|archivedate=2023-03-24|access-date=2023-03-24|dead-url=no}}</ref>（或源自[[四邑]]華人<ref>{{cite web|url=http://the-sun.on.cc/cnt/news/20091005/00418_010.html|title=亂世達觀：此名不可改|archiveurl=https://web.archive.org/web/20190910213855/http://the-sun.on.cc/cnt/news/20091005/00418_010.html|archivedate=2019-09-10|access-date=2023-03-24|dead-url=no}}</ref>）、'''都朗度'''<ref>{{Cite web|date=1930-10-07|title=大漢公報|url=https://chinesetimes.lib.sfu.ca/ctimes-65333/page-4|via=西門菲莎大學圖書館|access-date=2023-08-16|archive-date=2023-08-16|archive-url=https://web.archive.org/web/20230816113205/https://chinesetimes.lib.sfu.ca/ctimes-65333/page-4|dead-url=no}}</ref>、'''度郎度'''<ref>{{引網|url=http://hk.news.yahoo.com/%E6%AC%A1%E9%81%8E%E7%9D%87%E6%99%92-300-%E8%88%8A%E5%A0%B1%E7%B4%99%E5%BB%A3%E5%91%8A-064919564.html|title=一次過睇晒！300＋舊報紙廣告|website=hk.news.yahoo.com|language=zh-Hant-HK|access-date=2020-07-22|archive-url=https://web.archive.org/web/20230225012141/http://hk.news.yahoo.com/%E6%AC%A1%E9%81%8E%E7%9D%87%E6%99%92-300-%E8%88%8A%E5%A0%B1%E7%B4%99%E5%BB%A3%E5%91%8A-064919564.html|archivedate=2023-02-25|dead-url=no}}</ref><ref>{{cite web|url=http://www.discuss.com.hk/viewthread.php?tid=27450227|title=五十年代泛美飛加拿大賣三千幾蚊|archiveurl=https://web.archive.org/web/20230324224449/http://www.discuss.com.hk/viewthread.php?tid=27450227|archivedate=2023-03-24|access-date=2023-03-24|dead-url=no}}</ref>、'''多朗多'''<ref>{{cite news |url=http://cfcnews.com/15479/%E6%B8%A5%E5%A4%AA%E5%8D%8E%E6%97%A9%E6%9C%9F%E5%8D%8E%E4%BA%BA-%E5%91%A8%E7%9B%B8/ |title=渥太華早期華人——周相 |archiveurl=https://web.archive.org/web/20220520114427/http://cfcnews.com/15479/%E6%B8%A5%E5%A4%AA%E5%8D%8E%E6%97%A9%E6%9C%9F%E5%8D%8E%E4%BA%BA-%E5%91%A8%E7%9B%B8/ |archivedate=2022-05-20 |language=zh-cn |accessdate=2023-03-24 |dead-url=no }}</ref><ref>{{cite book |url=http://www.rcils.nccu.edu.tw/%E9%BB%83%E5%89%9B%EF%BC%9A%E4%B8%AD%E5%8A%A0%E4%BD%BF%E9%A0%98%E5%8F%8A%E5%AF%A6%E8%B3%AA%E9%97%9C%E4%BF%82%E5%BB%BA%E5%88%B6%E5%8F%B2%EF%BC%8819092020%EF%BC%89/ |archive-url=https://web.archive.org/web/20230313154917/http://www.rcils.nccu.edu.tw/%E9%BB%83%E5%89%9B%EF%BC%9A%E4%B8%AD%E5%8A%A0%E4%BD%BF%E9%A0%98%E5%8F%8A%E5%AF%A6%E8%B3%AA%E9%97%9C%E4%BF%82%E5%BB%BA%E5%88%B6%E5%8F%B2%EF%BC%8819092020%EF%BC%89/ |archive-date=2023-03-13 |title=黃剛：中加使領及實質關係建制史（1909~2020） |editor-last=黃 |editor-first=剛 |translator-last=李 |translator-first=宗芬 |language=zh-tw |date=2021年1月 |format=微軟 Word |access-date=2023-02-24 |at=段落17.0, 18.0, 附錄八 |dead-url=no }}</ref>等，今通行「多倫多」，簡稱「多市」。}}（{{langx|en|Toronto}}）是[[加拿大]][[安大略省]][[首府]]，也是加拿大最大的城市，坐落在[[安大略湖]]西北岸的[[南安大略]]地区。根据2021年的加拿大人口普查，多伦多市人口达2,794,356人，为加拿大最大城市。多伦多市是[[大多伦多地区]]的核心地区，也是安大略省南部人口稠密区（称作“[[金馬蹄地區]]”）的一部分。<ref>（561,258）、[[荷顿区]]（439,256）、[[皮尔区]]（1,159,405），以及[[约克区]](892,712)4个自治区。这些人口数据取自{{cite web|title=Population and dwelling counts, for Canada, provinces and territories, and census divisions, 2006 and 2001 censuses - 100% data|url=http://www12.statcan.ca/english/census06/data/popdwell/Table.cfm?T=702&PR=35&SR=1&S=3&O=D|date=2007-03-13|archive-url=https://web.archive.org/web/20070906235914/http://www12.statcan.ca/english/census06/data/popdwell/Table.cfm?T=702&PR=35&SR=1&S=3&O=D|archive-date=2007-09-06|accessdate=2007-03-18|publisher=加拿大统计|dead-url=yes}}</ref><ref name="Provstat">这些大多伦多地区自治区的数据表格被列在了{{cite web
+ |url         = http://www.fin.gov.on.ca/english/economy/demographics/projections/2007/
+ |title       = Ontario Population Projections Update, 2005-2031 Ontario and Its 49 Census Divisions
+ |publisher   = 安大略省政府财政部
+ |date        = 2006-04
+ |accessdate  = 2007-03-18
+ |quote       = The Greater Toronto Area (GTA), comprising the City of Toronto and the regional municipalities of Durham, Halton, Peel and York,&nbsp;...
+ |deadurl     = yes
+ |archiveurl  = https://web.archive.org/web/20070613215519/http://www.fin.gov.on.ca/english/economy/demographics/projections/2007/
+ |archivedate = 2007-06-13
+}}</ref><ref name="2006CensGGH">{{cite web
+|url= http://www12.statcan.ca/english/census06/analysis/popdwell/subprov4.cfm#ggh
+|title= Portrait of the Canadian Population in 2006: Subprovincial population dynamics, Greater Golden Horseshoe
+|work= 加拿大统计2006年人口普查
+|date= 2007-03-13
+|accessdate= 2007-03-13
+|archive-date= 2007-03-15
+|archive-url= https://web.archive.org/web/20070315195135/http://www12.statcan.ca/english/census06/analysis/popdwell/Subprov4.cfm#ggh
+|dead-url= yes
+}}</ref>都會区有6,202,225名居民，<ref name="2006censuspop">{{cite web
+|url = http://www12.statcan.ca/english/census06/data/popdwell/Table.cfm?T=702&PR=35&S=0&O=A&RPP=25
+|title = Population and dwelling counts, for Canada, census metropolitan areas, census agglomerations and census subdivisions (municipalities), 2006 and 2001 censuses - 100% data
+|work = 加拿大统计2006年人口普查
+|date = 2007-03-13
+|accessdate = 2007-03-19
+|archive-date = 2009-02-14
+|archive-url = https://web.archive.org/web/20090214113858/http://www12.statcan.ca/english/census06/data/popdwell/Table.cfm?T=702&PR=35&S=0&O=A&RPP=25
+|dead-url = no
+}}</ref>而覆蓋範圍較廣的大多倫多地區則有9,765,188名居民。<ref name="Provstat" />作為加拿大的经济中心，多伦多是一個[[世界级城市]]，<ref>"[http://mail.architexturez.net/+/In-Enaction/archive/msg00800.shtml What makes a global city?] {{Wayback|url=http://mail.architexturez.net/+/In-Enaction/archive/msg00800.shtml |date=20130207105717 }}", (2007)</ref>也是世界上最大的[[金融中心]]之一。<ref>"[http://www.citymayors.com/economics/financial-cities.html] {{Wayback|url=http://www.citymayors.com/economics/financial-cities.html|date=20171022160018}}"。多倫多星報 (2004)。于2007年7月8日查阅。</ref><ref>"[http://www.forbes.com/2008/07/15/economic-growth-gdp-biz-cx_jz_0715powercities_slide_11.html?thisSpeed=30000 Toronto (#10)] {{Wayback|url=http://www.forbes.com/2008/07/15/economic-growth-gdp-biz-cx_jz_0715powercities_slide_11.html?thisSpeed=30000 |date=20090214023803 }}"，"[https://web.archive.org/web/20080805013141/http://www.forbes.com/business/2008/07/15/economic-growth-gdp-biz-cx_jz_0715powercities.html World's Most Economically Powerful Cities.]" ''[[福布斯]]'' (2008). Retrieved on 2008-10-31.</ref>多伦多在经济上的领先地位在于[[金融]]、商业服务、[[电信]]、[[航太]]、[[交通运输]]、[[傳播媒體|媒体]]、[[艺术]]、[[电影]]、[[电视]]製作、[[出版]]、[[软件]]、[[医药]]研究、[[教育]]、[[旅游]]、[[体育运动|体育]]等产业。<ref name="多伦多经济">[http://www.toronto.ca/ City of Toronto] {{Wayback|url=http://www.toronto.ca/ |date=20110304201823 }} (2007) - [http://www.toronto.ca/invest-in-toronto/tor_overview.htm Toronto economic overview] {{Wayback|url=http://www.toronto.ca/invest-in-toronto/tor_overview.htm |date=20110806044257 }}、 [http://www.toronto.ca/invest-in-toronto/clusteroverview.htm Key industry clusters] {{Wayback|url=http://www.toronto.ca/invest-in-toronto/clusteroverview.htm |date=20070930031343 }} 和 [http://www.toronto.ca/invest-in-toronto/pdf/economy.pdf A Diversified Economy] {{Wayback|url=http://www.toronto.ca/invest-in-toronto/pdf/economy.pdf |date=20081228054128 }}。于2007年3月1日查阅</ref><ref>{{cite web|url=http://www.toronto.ca/business_publications/tocompetes.htm|title=Toronto Competes|author=ICF咨询|accessdate=2007-03-01|date=2000年2月|deadurl=yes|archiveurl=https://web.archive.org/web/20070127122238/http://www.toronto.ca/business_publications/tocompetes.htm|archivedate=2007-01-27}}</ref>[[多伦多证券交易所]]是世界第七大交易所，总部设于市内，有多数加拿大公司在这里上市。
+
+多伦多的[[世界主义|国际性]]人口<ref name=diverse_city>{{cite book
+|last = Flew
+|first = Janine
+|authorlink =
+|coauthors = Humphries, Lynn ; Press, Limelight ; McPhee, Margaret
+|title = The Children's Visual World Atlas
+|publisher = Fog City Press
+|year = 2004
+|location = [[悉尼]]
+|pages = 76
+|url =
+|doi =
+|id =
+|isbn = 1 740893 17 4 }}</ref>体现出它是前往加拿大移民的重要落腳点。<ref name="toronto_diversity">{{cite web
+|url=http://www.cic.gc.ca/english/policy/fed-prov/can-ont-toronto-mou.html
+|title=Canada-Ontario-Toronto Memorandum of Understanding on Immigration and Settlement (电子版)
+|author=加拿大市民和移民组织
+|date=2006-09
+|accessdate=2007-03-01
+|archiveurl=https://web.archive.org/web/20070311043934/http://www.cic.gc.ca/english/policy/fed-prov/can-ont-toronto-mou.html
+|archivedate=2007-03-11
+|deadurl=yes
+}}</ref>而市内49%的人口是在加拿大以外诞生<ref name=facts_of_Toronto>{{cite web
+|url = http://allabout-toronto.com/
+|title = City of Toronto, Ontario
+|publisher = 
+|date = 
+|accessdate = 2007-07-06
+|deadurl = yes
+|archiveurl = https://web.archive.org/web/20070929162756/http://allabout-toronto.com/
+|archivedate = 2007-09-29
+}}</ref>，也造就多伦多成為世上种族最多样化的城市之一。目前多伦多的低犯罪率、洁净的环境、高生活水准、以及对多样文化的包容性，令該市被多个经济学智囊团列为世界上最宜居的城市之一。<ref name="最佳">{{cite news
+|url=http://www.cnn.com/2005/WORLD/europe/10/04/eui.survey/index.html
+|title=Vancouver is 'best city to live'
+|publisher=[[CNN]]
+|date=2005-10-05
+|accessdate=2007-03-05
+|archive-date=2017-11-18
+|archive-url=https://web.archive.org/web/20171118174003/http://www.cnn.com/2005/WORLD/europe/10/04/eui.survey/index.html
+|dead-url=no
+}}</ref><ref name="品质">{{cite web
+|url=http://www.mercerhr.com/attachment.dyn?idContent=1216315&filePath=/attachments/English/QOL_Survey2006_table.pdf
+|format=PDF
+|title=Mercer 2006 Quality of Living Survey
+|author=Mercer Human Resource Consulting
+|year=2006年
+|accessdate=2007-03-05
+|archive-date=2008-06-25
+|archive-url=https://web.archive.org/web/20080625002953/http://www.mercerhr.com/attachment.dyn?idContent=1216315&filePath=%2Fattachments%2FEnglish%2FQOL_Survey2006_table.pdf
+|dead-url=yes
+}}</ref>另一方面，多伦多于2006年被列为加拿大生活成本最高的城市。<ref>{{cite news
+|first=Eric
+|last=Beauchesne
+|title=Toronto pegged as priciest place to live in Canada
+|publisher=CanWest News Service
+|date=2006-06-24
+|url=http://www.canada.com/vancouversun/news/story.html?id=245b1dc8-1b43-46cb-bd84-6e78ab8a5afb&k=54140
+|accessdate=2007-03-05
+|archive-date=2009-12-27
+|archive-url=https://web.archive.org/web/20091227122715/http://www.canada.com/vancouversun/news/story.html?id=245b1dc8-1b43-46cb-bd84-6e78ab8a5afb&k=54140
+|dead-url=no
+}}</ref>
+
+1/3的加拿大人居住在距多伦多两小时车程的郊区。加拿大大约1/6的[[就业]]机会在该市。多伦多当地的[[华侨|華僑]]及[[華裔]]人口多达四十萬，相當於加拿大全國約百分之一的人口，該城市也是加拿大華人最多的城市。除此之外也有大量世界各地的移民，加拿大安大略省多倫多市的人口統計資料使多倫多成為世界上最多元文化和多種族的城市之一。2016年，該市居民的51.5％屬於明顯的少數族裔，而2011年這一比例為49.1％，和1981年為13.6％。多倫多還建立了多個社區，例如[[多伦多华埠|多倫多華埠]]、[[意大利大街 (多倫多)|意大利大街]]、小意大利、芝蘭印度街、希臘城、韓國城、小牙買加、小葡萄牙和朗士華（小波蘭），以慶祝該市的多元文化主義的成功。
+
+== 历史 ==
+{{main|多伦多历史}}
+[[File:Toronto 1894large.jpg|thumb|left|多伦多1894年地图]]
+
+在[[欧洲]]人最初到达现在多伦多的位置时，附近有[[休伦]]部落居住。该部落在当时已经替代了从前1500年就在此居住的[[易洛魁族]]。“Toronto”可能是由[[易洛魁语系]]词汇''tkaronto''（表示“有生长在水中的大树的地方”）派生而来。<ref name="语源">{{cite web|url=http://geonames.nrcan.gc.ca/education/toronto_e.php|title=The real story of how Toronto got its name|publisher=[[加拿大自然资源部]] (2005)|accessdate=2006-12-08|deadurl=yes|archiveurl=https://web.archive.org/web/20061016222541/http://geonames.nrcan.gc.ca/education/toronto_e.php|archivedate=2006-10-16}}</ref>这是指現時[[锡姆科湖]]的北端，休伦族人种植了树苗來包圍鱼群的地方。从安大略湖到[[休伦湖]]的一条[[水陆联运]]的路线由此而过，叫做{{link-en|多伦多运输线|Toronto Carrying-Place Trail}}，将这个名字广为传播。
+
+1750年，[[法国]]商人在今日[[加拿大博覽會]]（CNE）會場的位置建立了一個要塞（Fort Rouillé），但在1759年将它废弃了。<ref name=rouille>[http://schools.tdsb.on.ca/jarvisci/toronto/rouille.htm Fort Rouillé] {{Wayback|url=http://schools.tdsb.on.ca/jarvisci/toronto/rouille.htm |date=20120913004442 }}, Jarvis Collegiate Institute (2006)。于2006年12月8日查阅。</ref>
+
+在[[美国独立战争]]期间，忠于帝国的殖民者逃亡到安大略湖北面的未开发地区定居。1787年，英国人同土著{{link-en|密西沙加人|Mississaugas of the Credit First Nation}}商定购买相當於現時多伦多市和約克區的地區，因此在多伦多地区得到了多于25万[[英亩]]（约1000平方千米）的土地。<ref name="英国人">[http://www.toronto.ca/culture/history/history-natives-newcomers.htm Natives and newcomers, 1600-1793] {{Wayback|url=http://www.toronto.ca/culture/history/history-natives-newcomers.htm |date=20070306111515 }}，多伦多市(2006)。于2006年12月08日查阅。</ref>
+
+1793年，總督[[约翰·格雷夫·锡姆科]]在已有的定居点上建立了[[约克 (上加拿大)|约克]]鎮，以约克和奥尔巴尼公爵弗雷德里克王子命名。为了减低来自[[美国]]的军事威胁，锡姆科亦決定把[[上加拿大]]的首府從與美國[[尼亞加拉河|一河之隔]]的[[濱湖尼亞加拉|纽华克]]遷至約克。<ref>{{Cite web
+|url=http://www.gov.on.ca/ont/portal/!ut/p/.cmd/cs/.ce/7_0_A/.s/7_0_252/_s.7_0_A/7_0_252/_l/en?docid=004690
+|title=History of Ontario's Legislative Buildings
+|publisher=安大略省政府
+|accessdate=2007-07-13
+|archive-date=2007-08-12
+|archive-url=https://web.archive.org/web/20070812144053/http://www.gov.on.ca/ont/portal/!ut/p/.cmd/cs/.ce/7_0_A/.s/7_0_252/_s.7_0_A/7_0_252/_l/en?docid=004690
+|dead-url=yes
+}}</ref><ref name="[[Fort York]]">{{cite web
+|url=http://www.fortyork.ca
+|title=Welcome to the birthplace of Toronto
+|publisher=Friends of Fort York (2006)
+|accessdate=2006-12-08
+|archive-date=2011-02-21
+|archive-url=https://web.archive.org/web/20110221234140/http://www.fortyork.ca/
+|dead-url=no
+}}</ref>由沙石沖積而成的長形半島屏蔽了一個天然港口，而當局亦於港口的西端入口處修築了約克堡（Fort York）。鎮民的聚居點則集中於港口的東端。
+
+[[1812年戰爭]]期間，美軍於1813年奪得約克鎮，大肆擄掠，並在佔據約克鎮的五天内差不多完全毀掉約克堡和燒毀議會大樓。<ref>{{cite web|url=http://www.udata.com/users/hsbaker/york.htm|title=Battle of York|accessdate=2007-07-10|deadurl=yes|archiveurl=https://web.archive.org/web/20070820093114/http://www.udata.com/users/hsbaker/york.htm|archivedate=2007-08-20}}</ref>
+
+約克鎮於1834年3月6日正式成為多倫多市，當時的人口只有九千，包括逃難過來的美國的[[非洲裔]]奴隸。<ref name=black>[http://www.toronto.ca/blackhistory/victorian_exhibit.htm City of Toronto, Black History] {{Wayback|url=http://www.toronto.ca/blackhistory/victorian_exhibit.htm |date=20070930032735 }}, City of Toronto (2002). Retrieved on 2007-07-07.</ref>
+
+[[威廉·萊昂·麥肯齊]]成為多市首位市長，並於1837年的[[上加拿大起義]]中帶領人民反抗英國殖民政府，但卻不成功。多倫多在19世紀餘下的時間迅速增長，並成為抵加移民的重要落腳點。[[愛爾蘭大飢荒]]令大量愛爾蘭人在1846年至1849年間湧入多倫多，而[[愛爾蘭人]]更於1851年成為市内最大的族裔。
+
+加拿大聯合省的首府曾兩度置於多倫多：第一次是介乎1849年至1852年，[[蒙特婁]]市發生騷亂後遷都至此；第二次是介乎1856年至1858年。其後政府遷都至[[魁北克城]]，直至1866年（[[加拿大聯邦]]正式成立前一年）才遷都至現時首都[[渥太華]]。<ref>{{cite web|url=http://www.statoids.com/uca.html|title=Provinces of Canada|accessdate=2007-07-10|archive-date=2018-09-29|archive-url=https://web.archive.org/web/20180929074540/http://www.statoids.com/uca.html|dead-url=no|website=Statoids.com}}</ref>[[安大略省]]於1867年成立，並定都多倫多。
+
+[[File:Toronto Harbour, 1919.jpg|thumb|多倫多港口一景（1919年）]]
+[[File:1920 Toronto QueenSt from OldCityHall.jpg|thumb|從[[多倫多舊市政廳|舊市政廳]]望向[[皇后街 (多倫多)|皇后街]]（1920年）]]
+
+多倫多的污水系統於19世紀成形，街道電力照明亦投入服務。長途鐵路綫相繼落成，而數家鐵路公司亦合資於市中心興建第一座[[多倫多聯合車站|聯合車站]]。鐵路為多倫多帶來另一股移民潮，亦令多倫多成為通向北美洲内陸的重要門戶。市政府於1891年把市内公共交通的經營權批予多倫多鐵路公司，而馬車路綫亦於同年被[[多倫多路面電車系統|路面電車]]取代。市内公共交通系統於1921年交予公營的[[多倫多公車局]]營運。
+
+1904年的多倫多大火摧毀了市中心大部份地段，損失逾一千萬[[加元]]，但多倫多很快便重建起來，當局並因此通過更嚴厲的防火條例和為消防隊伍增聘人手。半個世紀後，多倫多於1954年受[[颶風]]黑素爾蹂躪，造成81人死亡，1900多個家庭無家可歸，損失逾二千五百萬加元。<ref name=hurricane>[http://www.collectionscanada.gc.ca/sos/002028-3200-e.html SOS! Canadian Disasters] {{Wayback|url=http://www.collectionscanada.gc.ca/sos/002028-3200-e.html |date=20110614215507 }} Library and Archives Canada (2006). Retrieved on 2008-12-19.</ref>
+
+從19世紀末至20世紀初湧入多倫多的移民主要是[[德國人]]、[[意大利人]]和來自東歐的[[猶太人]]。[[華人]]、[[俄羅斯人]]、[[波蘭人]]和其他東歐國家的移民後來相繼抵達。縱使人口增長迅速，直至1920年代，多倫多的人口和經濟影響力還是不及歷史較悠久的[[蒙特婁]]，但[[多倫多證券交易所]]卻於1934年成為全國最大的交易所。
+
+[[二戰]]後，來自東歐的難民，以及華人、意大利人和[[葡萄牙人]]陸續抵達。加拿大政府於1960年代末取消含有[[種族歧視]]成份的移民法後，更多移民從世界各個角落抵達多倫多。多倫多的人口於1951年越過一百萬大關，更於1971年增至二百萬人。而很多全國和跨國企業於1980年代有見於[[魁北克]]政局不穩，紛紛把總部從蒙特婁遷至多倫多和加拿大西部其他城市，也造就多倫多於1980年代取代蒙特婁成為全國最大城市和金融中心。<ref>[http://www.findarticles.com/p/articles/mi_qa3683/is_200201/ai_n9069631/pg_1 Westward ho? The shifting geography of corporate power in Canada] {{Wayback|url=http://www.findarticles.com/p/articles/mi_qa3683/is_200201/ai_n9069631/pg_1 |date=20130902121900 }}, Journal of Canadian Studies (2002). Retrieved on 2007-01-14.</ref>
+
+另一方面，二戰後的移民潮令多倫多的市郊衛星城鎮迅速增長，而為了更有效管理和協調土地和其他資源的分配，多倫多市和十二個周邊城鎮於1954年脫離[[約克區|約克縣]]，並組成[[大多倫多市]]（{{lang|en|Municipality of Metropolitan Toronto}}），相當於[[安大略省行政區劃]]的區（{{lang|en|Regional Municipality}}）或縣（{{lang|en|County}}），為省以下的一級區劃。<ref>[http://www.e-laws.gov.on.ca/DBLaws/RepealedStatutes/English/90m62_e.htm Municipality of Metropolitan Toronto Act] {{Wayback|url=http://www.e-laws.gov.on.ca/DBLaws/RepealedStatutes/English/90m62_e.htm |date=20040428011825 }}, Government of Ontario (2000). Retrieved on 2006-12-29.</ref>大多市政府負責管理涉及多個城鎮的事務，包括公路維修、食水供應、污水處理和公共交通等。大多市内的城鎮區劃於1967年進行整固後下分為五個市（City）以及一個市區（Borough）：
+* {{link-en|舊多倫多市|Old Toronto}}
+* {{link-en|東約克 (安大略省)|East York|東約克}}
+* [[怡陶碧谷]]
+* [[士嘉堡]]
+* [[北約克]]
+* {{link-en|約克 (安大略省)|York, Ontario|約克}}
+
+1998年1月1日，六個行政區合併為新的多倫多市，大多市相應取消，從此以後多倫多市成為直屬省的一個市。
+
+== 地理 ==
+[[File:Toronto downtown aerial.jpg|right|thumb|多倫多高空景觀]]
+多倫多市的面積約630平方公里（243平方英里），位處[[安大略湖]]的西北岸，約有46公里（29英里）長的湖岸綫。多倫多市西臨[[密西沙加市]]，北鄰[[旺市]]和[[萬錦市]]，東接[[皮克靈市]]。多倫多市屬於安大略省的一級行政區，地位與縣（{{lang|en|county}}）或自治區（{{lang|en|regional municipality}}）相同，並與[[皮爾區]]、[[荷頓區]]、[[約克區]]和[[杜林區]]組成全加拿大最大的都會區——[[大多倫多地區]]（{{lang|en|Greater Toronto Area}}，簡稱GTA）。
+
+=== 氣候 ===
+由于多伦多地处加拿大的南部，属于[[溫帶大陸性濕潤氣候]]，夏天湿润，冬天寒冷。城市四季分明，每天的气温变化明显，尤其是在寒冷的季节。在城市化和邻近安大略湖的影響下，多伦多的日夜温差相对较小。密集的市区使得其夜间温度较高，冬天也没有周边的地区（尤其是城市北边）那么冷。不过，受安大略湖的影响，在多数春天和初夏的下午和傍晚可以明显的感受到凉意。
+
+多伦多的冬天有时会突然降温至攝氏零下10度或以下，寒风之下常常感觉还要冷一些。暴风雪有时会夹杂着冰雨，令市民的通勤和旅遊行程受阻，而在11月到4月中旬期间随时都有可能下一场大雪。然而，冬季間中亦會出現攝氏5到12度的温和气温，偶然亦會錄得更高的气温，令积雪融化。夏天的多伦多是典型的湿润气候，温度普遍介乎攝氏23到31度，白天的温度偶尔会超过35度，伴随较高的湿度在炎热的天气下会让人感觉闷热。春天和秋天是过渡季节，温暖或凉爽的气温伴随着干燥和潮湿周期变换。
+
+多伦多的降雨量全年分布相对均匀，但夏天常常是最潮湿的季节，暴雨带来大量的降水。有时也会很干燥，但持續乾旱的天气很少见。年平均降水是834mm, 年平均降雪大约133cm。多伦多的平均日照时间是2038小时。白天时间占44%。12月是27%，6月是59%。
+
+{{Infobox Weather
+|single_line= Yes
+|metric_first = Yes
+|location = 多倫多Annex區 (1971-2000)
+|Jan_Hi_°C = -1.1
+|Feb_Hi_°C = -0.2
+|Mar_Hi_°C = 4.6
+|Apr_Hi_°C = 11.3
+|May_Hi_°C = 18.5
+|Jun_Hi_°C = 23.5
+|Jul_Hi_°C = 26.4
+|Aug_Hi_°C = 25.3
+|Sep_Hi_°C = 20.7
+|Oct_Hi_°C = 13.8
+|Nov_Hi_°C = 7.4
+|Dec_Hi_°C = 1.8
+|Year_Hi_°C = 12.7
+|Jan_Lo_°C = -7.3
+|Feb_Lo_°C = -6.3
+|Mar_Lo_°C = -2
+|Apr_Lo_°C = 3.8
+|May_Lo_°C = 9.9
+|Jun_Lo_°C = 14.8
+|Jul_Lo_°C = 17.9
+|Aug_Lo_°C = 17.3
+|Sep_Lo_°C = 13.2
+|Oct_Lo_°C = 7.3
+|Nov_Lo_°C = 2.2
+|Dec_Lo_°C = -3.7
+|Year_Lo_°C = 5.6
+|Jan_Precip_mm = 61.2
+|Feb_Precip_mm = 50.5
+|Mar_Precip_mm = 66.1
+|Apr_Precip_mm = 69.6
+|May_Precip_mm = 73.3
+|Jun_Precip_mm = 71.5
+|Jul_Precip_mm = 67.5
+|Aug_Precip_mm = 79.6
+|Sep_Precip_mm = 83.4
+|Oct_Precip_mm = 64.7
+|Nov_Precip_mm = 75.7
+|Dec_Precip_mm = 71
+|Year_Precip_mm = 834
+|Jan_Rain_mm = 29.1    |Jan_Snow_cm = 38.2
+|Feb_Rain_mm = 26.2    |Feb_Snow_cm = 26.6
+|Mar_Rain_mm = 42      |Mar_Snow_cm = 22
+|Apr_Rain_mm = 63.2    |Apr_Snow_cm = 6
+|May_Rain_mm = 73.3    |May_Snow_cm = 0
+|Jun_Rain_mm = 71.5    |Jun_Snow_cm = 0
+|Jul_Rain_mm = 67.5    |Jul_Snow_cm = 0
+|Aug_Rain_mm = 79.6    |Aug_Snow_cm = 0
+|Sep_Rain_mm = 83.4    |Sep_Snow_cm = 0
+|Oct_Rain_mm = 64.7    |Oct_Snow_cm = 0.1
+|Nov_Rain_mm = 67.3    |Nov_Snow_cm = 8.1
+|Dec_Rain_mm = 41.9    |Dec_Snow_cm = 32.2
+|Year_Rain_mm = 709.8  |Year_Snow_cm = 133.1
+|Jan_Sun= 88.3
+|Feb_Sun= 110.3
+|Mar_Sun= 156.3
+|Apr_Sun= 185.4
+|May_Sun= 229.1
+|Jun_Sun= 256.2
+|Jul_Sun= 276.2
+|Aug_Sun= 241.3
+|Sep_Sun= 188
+|Oct_Sun= 148.4
+|Nov_Sun= 83.6
+|Dec_Sun= 74.7
+|Year_Sun= 2037.6
+|source =[http://www.climate.weatheroffice.ec.gc.ca/climate_normals/results_e.html?Province=ALL&StationName=toronto&SearchType=BeginsWith&LocateBy=Province&Proximity=25&ProximityFrom=City&StationNumber=&IDType=MSC&CityName=&ParkName=&LatitudeDegrees=&LatitudeMinutes=&LongitudeDegrees=&LongitudeMinutes=&NormalsClass=A&SelNormals=&StnId=5051 Environment Canada]
+|accessdate = 2009-03-20
+}}
+
+== 经济 ==
+[[File:多伦多夜景.jpg|thumb|多倫多天际线|881x881px|none]][[File:Toronto - ON - Toronto Skyline2.jpg|thumb|292x292px|多倫多市中心及金融區]]
+[[File:Toronto from above at night.jpg|thumb|293x293px|多倫多金融區夜景]]
+
+多伦多是加拿大的金融中心。[[多伦多证券交易所]]（{{lang|en|Toronto Stock Exchange - TSX}}）是加拿大最大的证券交易所，而[[加拿大五大銀行]]的總部皆位於多倫多。<ref name="多伦多经济" />
+
+此外，多倫多也是多家傳媒、通訊、零售和酒店公司的總部所在，當中包括[[羅渣士通訊集團]]、[[宏利金融]]、[[哈德遜灣公司]]和[[四季酒店]]。
+
+根据[[加拿大統計局|加拿大統計署]]的调查，[[大多倫多地區|多伦多都會區]]的GDP約为4422億加元<ref name="Government of Canada">{{Cite web|last=Government of Canada|first=Statistics Canada|date=2017-01-27|title=Gross domestic product (GDP) at basic prices, by census metropolitan area (CMA)|url=https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3610046801|access-date=2023-09-18|website=www150.statcan.gc.ca|archive-date=2021-01-22|archive-url=https://web.archive.org/web/20210122184338/https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3610046801|dead-url=no}}</ref>，人均GDP為62873加元<ref name="Government of Canada"/>。作为全球金融中心之一，加拿大的金融机构集中於多倫多。银行和证券公司在[[卑街|貝街]]上集中，构成了多伦多的[[金融区|金融區]]。除了拥有市值位居世界第7位的[[多伦多证券交易所]]之外，加拿大[[加拿大五大銀行|五大银行]]的总部都设在多伦多。根据[[全球金融中心指数]]2017年3月的调查，多倫多是世界第10位的金融中心，在加拿大的城市中排名第一<ref>{{Cite web|title=The GlobalFinancial Centres Index 33|url=https://www.longfinance.net/media/documents/GFCI_33_Report_2023.03.23_v1.1.pdf|access-date=2023-09-18|archive-date=2023-06-09|archive-url=https://web.archive.org/web/20230609213414/https://www.longfinance.net/media/documents/GFCI_33_Report_2023.03.23_v1.1.pdf|dead-url=no}}</ref>。
+
+作为大众媒体、出版、电信、信息工程、电影制作行业的重要据点，多倫多是[[汤森路透|湯森路透公司]]、[[CTV電視網]]、[[羅渣士通訊集團|罗杰斯通信]]、[[康力斯娛樂|康力斯娱乐]]、[[天弘科技]]等公司的總部。除此之外，多倫多有代表性的加拿大企业有[[四季酒店]]、[[费尔蒙酒店集团|费尔蒙酒店]]、[[哈德逊湾公司]](HBC)、[[宏利金融]]。
+
+虽然制造业大多以市外为据点，但多伦多在批发和流通产业中仍然是重要的据点。连接[[魁北克省|魁北克]]和[[温莎 (安大略省)|温莎]]的道路和铁路路线网在沿途的汽车产业、钢铁、食品、机械、化学、造纸业的生产中起着重要的要素，1959年建成的[[圣劳伦斯河]]路使在五大湖和大西洋上乘船航行成為可能。
+
+== 人口 ==
+{{Historical populations|1834|9252|1841|14249|1851|30776|1861|44821|1871|56092|1881|86415|1891|144023|1901|238080|1911|381383|1921|521893|1931|856955|1941|951549|1951|1176622|1961|1824481|1971|2089729|1976|2124291|1981|2137395|1986|2192721|1991|2275771|[[1996 Canadian census|1996]]|2385421|[[2001 Canadian census|2001]]|2481494|[[2006 Canadian census|2006]]|2503281|[[2011 Canadian census|2011]]|2615060|[[2016 Canadian census|2016]]|2731571|[[2021 Canadian census|2021]]|2794356|title=多伦多历史人口|type=Canada|align=left|width=200px|state=|shading=|percentages=|footnote=|source=<ref>{{cite web |title=Toronto Population |url=https://canadapopulation.org/toronto-population/ |website=Canada Population |access-date=June 3, 2019 |archive-date=June 3, 2019 |archive-url=https://web.archive.org/web/20190603012705/https://canadapopulation.org/toronto-population/ |url-status=live}}</ref><ref>{{Cite web |url=https://www.canadiana.ca/view/oocihm.9_08070/88?r=0&s=1 |title=Census of Canada, 1890–91 = Recensement du Cana... – Canadiana Online |website=www.canadiana.ca |access-date=January 22, 2021 |archive-date=January 28, 2021 |archive-url=https://web.archive.org/web/20210128045203/https://www.canadiana.ca/view/oocihm.9_08070/88?r=0&s=1 |url-status=live}}</ref><ref>{{cite web |url=http://www.canadiana.ca/view/oocihm.9_08061/422?r=0&s=1 |title=Census of Canada, 1880–81 = Recensement du Canada, 1880–81 |website=canadiana.ca |page=406 |access-date=July 15, 2020 |archive-date=July 16, 2020 |archive-url=https://web.archive.org/web/20200716020847/http://www.canadiana.ca/view/oocihm.9_08061/422?r=0&s=1 |url-status=live}}</ref><ref>{{cite web |url=http://www.canadiana.ca/view/oocihm.9_01612/46?r=0&s=1 |title=Census of the Canadas, 1860–61 |website=canadiana.com |page=78 |access-date=July 15, 2020 |archive-date=July 16, 2020 |archive-url=https://web.archive.org/web/20200716093346/http://www.canadiana.ca/view/oocihm.9_01612/46?r=0&s=1 |url-status=live}}</ref><ref>{{cite web |url=http://www.canadiana.ca/view/oocihm.9_01608/65?r=0&s=1 |title=Census of the Canadas, 1851-2 |website=canadiana.ca |page=A38 |access-date=July 15, 2020 |archive-date=July 16, 2020 |archive-url=https://web.archive.org/web/20200716022331/http://www.canadiana.ca/view/oocihm.9_01608/65?r=0&s=1 |url-status=live}}</ref><ref>{{Cite web |url=https://www.canadiana.ca/view/oocihm.9_08059/218?r=0&s=2 |title=Censuses of Canada, 1665 to 1871 : statistics o... – Canadiana Online |website=www.canadiana.ca |access-date=January 22, 2021 |archive-date=January 29, 2021 |archive-url=https://web.archive.org/web/20210129213124/https://www.canadiana.ca/view/oocihm.9_08059/218?r=0&s=2 |url-status=live}}</ref>}}
+
+多倫多是世界上最[[多元文化]]的城市之一。
+
+2004年，[[聯合國發展計畫]]（{{lang|en|UNDP}}）在其最高比率外地出生人口的[[城市]]名單中將多倫多排在第二位，僅次於[[美國]]的[[邁阿密]]。其排名都比其他多元文化城市或國家（如[[洛杉磯]]、[[溫哥華]]、[[紐约]]和[[新加坡]]等）要高。其中主要外來人口來源地包括[[中國大陸]]、[[香港]]、[[印度]]、[[日本]]、[[台灣]]、[[韓國]]、[[菲律賓]]等。
+
+多倫多充滿著多元文化的特色。2001年，加拿大人口普查顯示42.8%的多倫多人口是有色人種。
+
+大多數的多倫多白人報稱他們的[[族群|族裔背景]]為[[英格蘭]]、[[蘇格蘭]]或[[愛爾蘭]]。
+
+== 交通 ==
+[[File:401atDVP.jpg|thumb|當河谷園林公路以西的一段401號省道，共有14條行車線]]
+[[File:Union Station, Toronto.jpg|thumb|[[多倫多市中心|市中心]][[多倫多聯合車站|聯合車站]]是多倫多的-{zh:公交;zh-hans:公交;zh-hant:公共運輸;zh-tw:公共運輸;zh-hk:公共運輸;}-網絡樞鈕]]
+
+=== 機場 ===
+{{main|大多伦多地区机场}}
+[[多倫多皮爾遜國際機場]]（[[ICAO]]代碼：CYYZ，[[IATA]]代碼：YYZ）坐落多倫多市和[[密西沙加]]市之間，是全國最繁忙的機場。此外，坐落於[[多倫多群島]]的[[比利·畢曉普多倫多市機場]]（又稱多倫多市中心機場）也提供有限度的民航服務。
+
+=== 高速公路 ===
+安大略省有數條省級[[高速公路]]貫穿多倫多市，包括：[[安大略400號省道|400號省道]]、[[安大略401號省道|401號省道]]、[[安大略404號省道|404號省道]]、[[安大略409號省道|409號省道]]、[[安大略427號省道|427號省道]]和[[伊利沙伯皇后道]]。當中401號省道是全國最繁忙的高速公路，也是全世界最繁忙的高速公路之一<ref>{{cite web
+| url = http://ogov.newswire.ca/ontario/GPOE/2002/08/06/c0057.html?lmatch=&lang=_e.html
+| title = Ontario government investing $401 million to upgrade Highway 401
+| publisher = Ontario Ministry of Transportation
+| date = 2002-08-06
+| accessdate = 2007-03-18
+| quote = Highway 401 is one of the busiest highways in the world and represents a vital link in Ontario's transportation infrastructure, carrying more than 400,000 vehicles per day through Toronto.
+| deadurl = yes
+| archiveurl = https://web.archive.org/web/20030507162458/http://ogov.newswire.ca/ontario/GPOE/2002/08/06/c0057.html?lmatch=&lang=_e.html
+| archivedate = 2003-05-07
+}}</ref><ref>{{cite web
+| url = http://www.urbanplanet.org/forums/index.php?showtopic=3459
+| title = GTA Economy Dinged by Every Crash on the 401 - North America's Busiest Freeway
+| author = Brian Gray
+| publisher = Toronto Sun, transcribed at Urban Planet
+| date = 2004-04-10
+| accessdate = 2007-03-18
+| quote = The "phenomenal" number of vehicles on Hwy. 401 as it cuts through Toronto makes it the busiest freeway in the world...
+| archive-date = 2009-12-27
+| archive-url = https://web.archive.org/web/20091227131438/http://www.urbanplanet.org/forums/index.php?showtopic=3459
+| dead-url = yes
+}}</ref>。
+
+此外，多市政府亦自行興建了數條市級高速公路，包括：[[當河谷園林公路]]、[[嘉甸拿高速公路]]和[[艾倫道]]。嘉甸拿公路在多市西端與伊利沙伯皇后道連接，通往密西沙加、[[哈密爾頓 (安大略省)|咸美頓]]和[[尼亞加拉瀑布]]等地；當河谷園林公路則在多市北端與404號省道連接，通往萬錦和紐馬克特。
+
+=== 高速铁路 ===
+[[安大略高速鐵路]]计划十年后将安大略省伦敦和安大略省多伦多的车程控制在一个半小时内（兩地相距約191公里，車程約為2小時），目前项目暂停状态。
+
+=== 公共交通 ===
+[[多倫多公車局]]在多市範圍内提供公共交通服務，是北美洲繼[[紐約市]]和[[墨西哥城]]後第三大市營-{zh:公交;zh-hans:公交;zh-hant:公共運輸;zh-tw:公共運輸;zh-hk:公共運輸;}-系統<ref name=TTCstats>[http://www.ctv.ca/servlet/ArticleNews/story/CTVNews/1122072619227_40/?hub=CTVNewsAt11 Toronto transit chief says searches unlikely] {{Wayback|url=http://www.ctv.ca/servlet/ArticleNews/story/CTVNews/1122072619227_40/?hub=CTVNewsAt11 |date=20080124080650 }} (2005). Retrieved on 2007-02-03.</ref>。運輸局旗下的[[多倫多地鐵]]系統是整個網絡的骨幹，共有3條[[重型鐵路系統|重鐵線]]、2條[[輕軌系統|輕軌線]]和1條建設中的[[中運量|輕鐵線]]，2010年第一季平均工作日乘客量為每天948,100人次<ref name="APTA">{{cite web|url=http://www.apta.com/resources/statistics/Documents/Ridership/2010_q1_ridership_APTA.pdf|publisher=American Public Transportation Association|title=APTA transit ridership report, First Quarter, 2010|page=33|date=2010-06-01|format=PDF|accessdate=2010-07-06|archive-url=https://web.archive.org/web/20100704121336/http://www.apta.com/resources/statistics/Documents/Ridership/2010_q1_ridership_APTA.pdf|archive-date=2010-07-04|dead-url=yes}}</ref>。此外，運輸局還負責營運市内的[[巴士快速交通系統|公車]]和[[多倫多路面電車系統|路面電車]]系統。
+
+另一方面，安省政府也為大多倫多地區提供[[通勤鐵路]]和公車服務。由省政府營運的[[GO運輸|GO運輸系統]]共有七條通勤鐵路線和多條接駁公車路線。
+
+== 文化娱乐 ==
+[[File:Shiny buildings in Toronto.jpg|thumb|261x261px|羅伊湯姆森音樂廳]]
+[[國王街 (多倫多)|多]]伦多是[[多元文化]]的聚集中心，有很多剧场和表演艺术中心，除了50多个芭蕾舞和舞蹈团体之外，还有6个歌剧团体和2个交响乐团。{{link-en|加拿大国立芭蕾舞团|National Ballet of Canada}}、{{link-en|加拿大歌剧公司|Canadian Opera Company}}、[[多伦多交响乐团]]等是代表。作为公演会场的主要剧场有四季中心、[[萊湯遜音樂廳|-{zh-cn:罗伊·汤姆森音乐厅;zh-hk:萊湯遜音樂廳;zh-tw:羅伊·湯姆森音樂廳}-]]、[[威爾斯王妃劇院|威尔士王妃剧院]]、[[皇家亞歷珊卓劇院]]、{{link-en|梅西大厅（加拿大）|Massey Hall|梅西大厅}}、多伦多表演艺术中心、埃尔金剧场、温有塔加登剧场、蜂鸟中心等。安大略广场有世界上第一个常设IMAX剧场Cinesphere，此外还有成为室外型大规模演唱会会场的莫尔森安菲剧场。每年夏天在[[海柏公園|海柏公园]]有被称为“Dream in High Park”的当地人气活动，在公园内的圆形剧场里由Canstage上演莎士比亚剧。沿着[[皇帝街 (多倫多)|-{zh-cn:国王街;zh-hk:皇帝街;zh-tw:國王街}-]]和西姆科街交叉口的人行道上，有嵌入了星星的{{link-en|加拿大名人堂|Canada's Walk of Fame}}，是为了纪念取得巨大成就的加拿大人而制作的，与[[好萊塢星光大道|好莱坞星光大道]]相比有所不同。
+[[File:Hockey Hall of Fame, Toronto (27900037335).jpg|thumb|266x266px|冰球名人堂]]
+{{link-en|釀酒廠區|Distillery District}}的步行街，除了精品店、美术馆、餐厅、艺术家的工作室之外，还有小[[酿酒|酿酒厂]]和舞台艺术剧场青年中心。
+
+每年舉行的文化節目包括6月的[[LGBT]][[骄傲游行|驕傲遊行]]活動[[多倫多驕傲月]]，[[夏季]]的{{link-en|加勒比節|Caribana}}，而世界五大[[电影节|影展]]之一<ref>{{Cite web|last=Staff|first=Variety|date=2007-09-08|title=50 unmissable film festivals|url=https://variety.com/2007/film/markets-festivals/50-unmissable-film-festivals-1117971644/|access-date=2023-09-18|website=Variety|language=en-US|archive-date=2021-03-08|archive-url=https://web.archive.org/web/20210308203152/https://variety.com/2007/film/markets-festivals/50-unmissable-film-festivals-1117971644/|dead-url=no}}</ref>的[[多倫多國際電影節]]則在9月舉行。
+
+=== 图书馆 ===
+* [[多伦多公共图书馆]]是加拿大最大，世界第一繁忙的公共图书馆系统，[[香港公共图书馆]]為第二。分馆遍布多伦多各居民区。图书可外借，图书证免费。部分图书馆提供免费[[无线上网]]服务（需要在办理图书卡之后方可使用）。图书馆更有将部分图书、杂志及音乐上网，供市民免费借阅。
+*[[多伦多参考图书馆]]（Toronto Reference Library）是多伦多市最大的公立图书馆，书籍只供馆内阅读，不外借。是多伦多公共图书馆的一部分。
+
+=== 公园及康樂 ===
+多伦多市内绿化环境良好，公园遍布市内，为市民提供免费的休闲散步体操场所。遍布全市的社区中心提供多种休闲娱乐活动。
+
+== 旅游 ==
+[[File:Crystal.view.from.west.JPG|right|thumb|位于市中心的[[皇家安大略博物馆]]（Royal Ontario Museum）]]
+[[File:Old Toronto City Hall.jpg|right|thumb|[[多倫多舊市政廳]]]]
+
+* [[多伦多群岛]]：568英亩的公园，由湖边乘渡轮可到。
+* [[安省遊樂宮]]（{{lang|en|Ontario Place}}）
+* [[加拿大國家電視塔|CN電視塔]]（{{lang|en|CN Tower}}）：加拿大CN電視塔，同时作观光用途。塔高553米，是世界上最高的自立式建筑结构。
+* [[羅渣士中心]]（{{lang|en|Rogers Centre}}）：前稱天虹體育場（{{lang|en|SkyDome}}），世界上第一个拥有可开启屋顶的[[体育场]]。
+* {{link-en|國家展覽中心 (加拿大)|Exhibition Place|國家展覽中心}}（{{lang|en|Exhibition Place}}）
+* [[彌敦菲臘廣場]]（{{lang|en|Nathan Phillips Square}}）
+* [[央-登打士广场]]（{{lang|en|Yonge-Dundas Square}}）
+* [[皇家安大略博物馆]]（{{lang|en|Royal Ontario Museum}}）
+* [[安大略美术馆]]（{{lang|en|Art Gallery of Ontario}}）
+* [[冰球名人堂]]（{{lang|en|Hockey Hall of Fame}}）
+* [[多伦多动物园]]（{{lang|en|Toronto Zoo}}）
+* [[卡萨罗马城堡]]（{{lang|en|Casa Loma}}）
+* [[豐業銀行體育館]]（{{lang|en|Scotiabank Arena}}）：前稱加拿大航空中心（{{lang|en|Air Canada Centre}}）
+* [[多伦多滨水区]]（{{lang|en|Toronto waterfront}}）
+*   多伦多远郊各地
+** [[尼亚加拉瀑布]]（{{lang|en|Niagara Falls}}）
+** [[滨湖尼亚加拉]]（{{lang|en|Niagara-on-the-Lake}}）：[[萧伯纳]]剧院所在地。
+** [[圣雅各 (安大略省)|圣雅各布]]（{{lang|en|St. Jacobs}}）
+** [[哈密尔頓 (安大略省)|咸美頓]]（{{lang|en|Hamilton}}）：皇家植物园（{{lang|en|Royal Botanical Gardens}}）所在地。
+** [[埃文河]]上的[[斯特拉特福 (安大略)|斯特拉特福]]（{{lang|en|Stratford on Avon}}）：[[莎士比亚剧院]]所在地
+** 千岛群岛（{{lang|en|Thousand Islands}}）
+** {{link-en|三千岛区|Thirty Thousand Islands}}（{{lang|en|Three Thousand Islands}}）
+** {{link-en|科灵伍德|Collingwood, Ontario}}（{{lang|en|Collingwood}}）
+** [[阿尔冈金省立公园|阿岗昆省立公园]]（{{lang|en|Algonquin Provincial Park}}）
+** [[马斯科卡区|马斯科卡]]（{{lang|en|Muskoka}}）： [[白求恩]]纪念馆所在地。
+
+== 教育 ==
+* 多倫多市內的大學：
+**[[多倫多大學]]（{{lang|en|University of Toronto}}，简称{{lang|en| U of T}}）：共有三座校園，分別位於市中心（聖佐治校園）、[[密西沙加]]（位於市外）和[[士嘉堡]]（[[多倫多大學士嘉堡分校]]）
+** [[约克大学 (加拿大)|約克大學]]（{{lang|en|York University}}，简称{{lang|en| YorkU}}）：共有三座校園，主校區為基爾校園，法語校區為格蘭登校園和位於市外的萬錦校園
+** [[多倫多都會大學]] ( Toronto Metropolitan University 简称 TMU )（前稱「懷雅遜大學」［{{lang|en|Ryerson University}}］）
+** [[安大略艺术设计大学]]（{{lang|en|OCAD University}}）
+** [[安省法文大學]]（{{lang|fr|Université de l'Ontario français}}） 
+* 多倫多市內的學院：
+** {{link-en|喬治布朗學院|George Brown College}}
+** [[辛力加學院]]
+** [[百年理工學院]]
+** [[漢博學院]]
+多倫多市內的公立中小學以主要授課語言和宗教背景分為四個類別，並由數間不同機構營運：
+* [[多倫多公校教育局]]（{{lang|en|Toronto District School Board}}，簡稱{{lang|en|TDSB}}）：負責營運市內的英語公立中小學，當中包括451間小學和102間中學
+* [[多倫多天主教教育局]]（{{lang|en|Toronto Catholic District School Board}}，簡稱{{lang|en|TCDSB}}）：負責營運市內的英語天主教公立中小學
+* 維亞蒙德教育局（{{lang|fr|Conseil scolaire Viamonde}}）：負責營運市內的法語公立中小學
+* 中南部天主教教育局（{{lang|fr|Conseil scolaire de district catholique Centre-Sud}}）：負責營運市內的法語天主教公立中小學。此外，市內還有數間私立中小學。
+
+== 医疗 ==
+多伦多居民享受免费公立医疗，包括内科、外科、妇产科、儿科、眼科、耳鼻喉科等全科免费公立医疗。著名的医院包括：
+* [[多倫多全科醫院|多伦多全科医院]]（{{lang|en|Toronto General Hospital}}）
+* [[聖米高醫院 (多倫多)|聖米高醫院]]（{{lang|en|St. Michael's Hospital}}）
+* [[多倫多病童醫院|多伦多病童医院]]（{{lang|en|Toronto Hospital for Sick Children}}）
+* [[多倫多復康科醫院]]（{{lang|en|Toronto Rehabilitation Institute}}）
+* [[多倫多慈恩醫院]]（{{lang|en|Toronto Grace Health Centre}}）
+* [[西乃山醫院]]（{{lang|en|Mount Sinai Hospital}}）
+* [[新寧醫院|新寧健康科學中心]]（{{lang|en|Sunnybrook Health Science Center}}）
+* [[北約克全科醫院|北约克全科医院]]（{{lang|en|North York General Hospital}}）
+* [[士嘉堡全科醫院|士嘉堡全科医院]]（{{lang|en|Scarborough General Hospital}}）
+
+== 傳媒 ==
+[[File:CBC Centre.JPG|thumb|200px|加拿大CBC電視的總部－加拿大廣播中心]]
+
+多倫多是全國最大的傳媒市場<ref>[http://www.mediajobsearchcanada.com/mjsc_press.asp Media Job Search Canada] {{Wayback|url=http://www.mediajobsearchcanada.com/mjsc_press.asp |date=20150414113224 }} Media Job Search Canada (2003). Retrieved on 2007-05-08</ref>，亦是北美繼[[紐約市]]、[[洛杉磯]]和[[芝加哥]]後的第四大媒體中心。[[多倫多星報|《多倫多星報》]]和《{{link-en|多倫多太陽報|Toronto Sun}}》是市内的主要報章，而全國性報章《[[環球郵報]]》和《[[国民邮报|國民郵報]]》的總部亦設於多市内。[[加拿大廣播公司電視|CBC電視]]、[[CTV電視網]]、[[環球電視 (加拿大)|環球電視]]和[[Citytv]]、{{link-en|CP24電視|CP24|CP24}}均在多倫多設有分台；而多市亦是[[加拿大廣播公司電視]]和CTV電視網的總部所在。
+
+在多元文化媒體方面，《[[星島日報]]》、《[[明報]]》和《[[北美世界日報|世界日報]]》均有發行加東版，而其它於市内發行的中文報章包括總部位於[[萬錦]]的《{{link-en|現代日報 (加拿大)|Today Daily News (Toronto)|現代日報}}》。[[多元文化電視台]]（OMNI Television）以[[粵語]]、[[國語 (中華民國)|國語]]和[[意大利語]]製作新聞報道，而[[新時代傳媒集團]]旗下的兩條有綫電視頻道（以粵語為主的[[新時代電視]]和以國語為主的[[城市電視]]）均可在大多地區內接收。[[加拿大中文電台]]的多倫多分台在AM1430播放，部份節目亦於FM88.9播出；而AM1540 CHIN電台在下午時段則以「A1中文電台」的名義進行粵語廣播。中文網絡媒體的有約克論壇（Yorkbbs）和廣播線（Ears Online）。
+
+== 体育 ==
+多倫多擁有知名的[[多倫多藍鳥]][[棒球]]隊（{{lang|en|Blue Jays}}），曾两次奪得[[美國職棒大聯盟]][[世界大赛]]冠軍，其主場是可開合上蓋的[[罗渣士中心]]球场（{{lang|en|Rogers Centre}}）。
+
+多倫多亦擁有[[NBA]][[多倫多猛龍隊]]（{{lang|en|Toronto Raptors}}；或譯「暴龍隊」、「猛龍隊」、「速龍隊」或「恐鳥隊」）和北美[[國家冰球聯盟]]（NHL）六大創會球會之一的[[多倫多楓葉隊]]（{{lang|en|Toronto Maple Leafs}}）。1999年落成的[[加航中心]]，2019年起更名為加拿大豐業銀行體育館（{{lang|en|Scotiabank Arena}}）是暴龍隊及楓葉隊的主場所在地。[[多倫多FC]]於2007年加盟[[美國職業足球大聯盟]]（MLS），是第一支加盟MLS的加拿大球隊，其主場位於[[BMO球場]]。
+
+== 人物 ==
+{{main category|多伦多人}}
+
+== 友好城市 ==
+* {{CHN}} [[重庆]]
+* {{USA}} [[芝加哥]]
+* {{GER}} [[法兰克福]]
+* {{ITA}} [[米兰]]
+* {{BRA}} [[聖保羅 (巴西)|圣保罗]]
+* {{VNM}} [[胡志明市]]
+* {{UKR}} [[基辅]]
+* {{ECU}} [[基多]]
+* {{JPN}} [[相模原]]
+* {{POL}} [[华沙]]
+* {{NLD}} [[阿姆斯特丹]]
+* {{MEX}} [[墨西哥城]]
+
+== 经济贸易文化交流合作 ==
+* {{CHN}} [[成都]]
+* {{CHN}} [[深圳]]
+
+== 註釋 ==
+<references group="註" />
+
+== 參考文獻 ==
+{{reflist|2}}
+
+== 外部链接 ==
+{{commons|Toronto}}
+* [http://www.toronto.ca/ 多伦多官方网站]{{Wayback|url=http://www.toronto.ca/ |date=20110304201823 }}
+* Google Maps上的 [http://maps.google.ca/maps?f=q&hl=en&q=Toronto,+ON&ie=UTF8&z=12&om=1 多伦多地图]{{Wayback|url=http://maps.google.ca/maps?f=q&hl=en&q=Toronto,+ON&ie=UTF8&z=12&om=1 |date=20120118075035 }}
+
+{{大多倫多地區}}
+{{加拿大各省和領地首府}}
+{{泛美运动会举办城市}}
+{{Authority control}}
+{{Coord|43|39|N|79|23|W|display=title|type:city}}
+
+[[Category:多倫多| ]]
+[[Category:安大略省城市]]

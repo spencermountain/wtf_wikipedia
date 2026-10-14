@@ -1,0 +1,637 @@
+{{Competizione sportiva
+|nome = Torneo di Wimbledon
+|logo = Wimbledon.svg
+|dimensioni logo = 
+|altri nomi = The Championships
+|sport = Tennis
+|tipologia = 
+|categoria = 
+|confederazione = ITF
+|nazione = {{GBR}}
+|luogo = [[Wimbledon (Londra)|Wimbledon]], [[Londra]]
+|impianto = [[All England Lawn Tennis and Croquet Club]]
+|superficie = [[Campo da tennis#Erba|Erba]]
+|organizzatore = 
+|direttore = 
+|motto = 
+|titolo = 
+|cadenza = Annuale
+|apertura = 
+|chiusura = 
+|discipline = Singolare maschile e femminile, doppio maschile, femminile e misto, juniores maschile e femminile
+|partecipanti = 
+|sito = [http://www.wimbledon.com www.wimbledon.com]
+|fondazione = 1877
+|numero edizioni = 139 <small>(2026)</small>
+|detentore = {{Bandiera|ITA}} [[Jannik Sinner]]
+|detentrice = {{Bandiera|CZE}} [[Linda Nosková]]
+|detentori = {{Bandiera|GBR}} [[Henry Patten]]<br />{{Bandiera|FIN}} [[Harri Heliövaara]]
+|detentrici = {{Bandiera|CHN}} [[Guo Hanyu]]<br /> {{Bandiera|FRA}} [[Kristina Mladenovic]]
+|maggiori titoli = <u>Singolare maschile</u>: {{Bandiera|CHE}} [[Roger Federer]] (8) <br/> <u>Singolare femminile</u>: {{Bandiera|CZE}} / {{Bandiera|USA}} [[Martina Navrátilová]] (9) <br/><u> Doppio maschile</u>: {{Bandiera|AUS}} [[Todd Woodbridge]] (9) <br/> <u>Doppio femminile</u>: {{Bandiera|USA}} [[Elizabeth Ryan]] (12) <br/> <u>Doppio misto</u>: {{Bandiera|USA}} [[Elizabeth Ryan]] (7)
+|ultima edizione = Torneo di Wimbledon 2026
+|stagione attuale = 
+|prossima edizione = Torneo di Wimbledon 2027
+|trofeo = 
+|nome trofeo = Trofeo maschile: Gentlemen's Single Trophy
+Trofeo femminile: Venus Rosewater Dish
+|formato = Eliminazione diretta da 7 turni (64esimi fino alla finale)
+|estinzione = 
+}}
+Il '''Torneo di Wimbledon''', anche noto solo come '''Wimbledon''' ({{Inglese|The Wimbledon Championships}}; o solamente ''The'' ''Championships'') è il più antico evento nello sport del [[tennis]] nonché il più prestigioso. Terzo torneo del [[Grande Slam (tennis)|Grande Slam]] in ordine cronologico annuale, preceduto dall'[[Australian Open]] e dagli [[Open di Francia]] e seguito dagli [[US Open (tennis)|US Open]], è l'unico Major ad essere giocato sull'erba. Si tiene annualmente tra giugno e luglio presso il sobborgo [[Londra|londinese]] di [[Wimbledon (Londra)|Wimbledon]] ({{IPA|[ˈwɪmbəldən]|en}}) in due settimane, iniziando, secondo la tradizione, cinque settimane prima del primo lunedì di agosto.<ref name="tenniscircus.com">{{Cita web|autore=Anna Lamarina|url=http://www.tenniscircus.com/around-the-net/le-15-curiosita-su-wimbledon-che-potreste-non-sapere/|titolo=15 curiosità su Wimbledon che potreste non sapere|data=27 giugno 2016}}</ref>
+
+== Storia ==
+=== Dalle origini alla prima guerra mondiale ===
+==== Prime edizioni ====
+[[File:Broers Renshaw.jpg|thumb|left|Vincendo 8 titoli in singolo e 5 di doppio, i fratelli Renshaw rimangono figure di primo piano nella storia di Wimbledon.]]
+Le origini del Torneo di Wimbledon sono intimamente legate alle origini del [[tennis]]. Questo ha le sue radici nel [[Pallacorda|jeu de paume]], comparso nel 1874, quando il maggiore gallese [[Walter Wingfield Clopton]] pubblicò un brevetto conosciuto col nome di ''A Portable Court of Playing Tennis'' il 23 febbraio 1874 che stabiliva le regole della nuova disciplina.<ref>{{cita|Collins 2010|pp. 3-5}}.</ref>
+
+Ci vollero solo tre anni perché l'All England Lawn Croquet Club, un club sportivo inglese fondato nel 1868, si interessasse a questa nuova disciplina. Il club cambiò il nome in ''[[All England Lawn Tennis and Croquet Club]]'' e decise di istituire un [[Torneo di Wimbledon 1877|torneo nel 1877]], anno in cui scadde il brevetto di Wingfield. Nel corso di una riunione del [[Marylebone Cricket Club]] furono stabilite le nuove regole. Queste sono perdurate nel tempo e le regole attuali sono simili alle originali tranne che per qualche dettaglio, quali l'altezza della rete e la distanza della rete dalla linea di servizio. La prima edizione dei ''Lawn Tennis Championships'' (campionati di tennis su erba) ebbe un grande successo e riunì 22 partecipanti. [[Spencer Gore]] fu il primo vincitore, nonché uno degli inventori del metodo di gioco della [[Tennis|volée]].<ref name="tenniscircus.com"/> Circa 200 spettatori pagarono uno scellino ciascuno per guardare la finale.<ref>{{cita|Collins 2010|p. 8}}.</ref>
+
+Nelle prime edizioni, fino al [[Torneo di Wimbledon 1922|1922]], era in vigore il sistema del ''challenge round'': il campione uscente veniva opposto in finale al vincitore del torneo preliminare senza giocare nessuna partita. Così [[Spencer Gore]] difese il suo titolo nel [[Torneo di Wimbledon 1878|1878]] contro [[Frank Hadow]], un proprietario di piantagioni dello [[Sri Lanka]], che aveva approfittato di una vacanza per testare il suo [[tennis]] a Wimbledon. Hadow vinse il torneo utilizzando tra gli altri il pallonetto, sorprendendo i suoi avversari a rete con una tecnica mai utilizzata fino ad allora.<ref>{{cita|Collins 2010|pp. 8-9}}.</ref> Nonostante questo sorprendente successo, decise di non difendere il suo titolo l'anno successivo e fu il tennista e sacerdote [[John Hartley]] a vincere il trofeo nel [[Torneo di Wimbledon 1879|1879]] e nel [[Torneo di Wimbledon 1880|1880]]. L'edizione del 1879 fu la prima che vede disputarsi il torneo di doppio maschile, che però si giocò a [[Oxford]] fino al 1884.
+
+==== Dai fratelli Renshaw ai fratelli Doherty ====
+[[File:Arthur gore at wimbledon, 1901.jpg|thumb|[[Arthur Gore]] a Wimbledon nel 1901.]]
+
+L'[[Torneo di Wimbledon 1881|edizione 1881]] ha visto l'arrivo dei fratelli Renshaw che segneranno profondamente il torneo. È il caso di [[William Renshaw]] che vinse il torneo dominando Hartley per 6-0, 6-1, 6-1 in soli 37 minuti. Egli conservò il suo titolo per sei anni fino al [[Torneo di Wimbledon 1886|1886]], stabilendo un record di continuità che detiene fino ad oggi. Vinse tre volte contro Lawford e due volte contro il fratello Ernest. Approfittando della sua assenza, Lawford riuscì a vincere nel [[Torneo di Wimbledon 1887|1887,]] ma perse [[Torneo di Wimbledon 1888|l'anno successivo]] contro [[Ernest Renshaw]], che vinse il suo unico titolo a Wimbledon. Suo fratello, battuto per la prima volta a Wimbledon nel 1888, riprese la corona [[Torneo di Wimbledon 1889|l'anno seguente,]] battendo per la terza volta in finale Ernest. Nella sfida precedente, William Renshaw aveva vinto il torneo degli sfidanti rimontando uno svantaggio di 3-6, 5-7, 0-5 e vincendo al quinto set.<ref>{{cita|Collins 2010|p. 9}}.</ref> Con sette titoli, era il detentore del record di maggior numero di trofei vinti nel singolare maschile, insieme a [[Pete Sampras]] che ottenne la sua ultima vittoria nel [[Torneo di Wimbledon 2000|2000]], e a [[Roger Federer]] che ha superato il record, vincendo il suo ottavo titolo nel 2017. Inoltre vinse cinque volte in doppio con il fratello nel [[Torneo di Wimbledon 1884|1884]], [[Torneo di Wimbledon 1885|1885]], [[Torneo di Wimbledon 1886|1886]], [[Torneo di Wimbledon 1888|1888]] e [[Torneo di Wimbledon 1889|1889]]. Il suo dominio si concluse definitivamente nel [[Torneo di Wimbledon 1890|1890]], quando venne sconfitto da [[Willoughby Hamilton]], l'uomo che lo batté per la prima volta nel [[Torneo di Wimbledon 1888|1888]]. Oltre a rivoluzionare il gioco, i fratelli Renshaw suscitarono grande interesse del pubblico verso il [[tennis]].
+
+[[File:Doherty Brothers.jpg|thumb|Vincendo otto titoli in doppio e nove in singolare, i fratelli Doherty dominarono per un decennio a Wimbledon.]]
+Questa infatuazione, però, non sopravvisse al ritiro dei fratelli Renshaw. Infatti, durante il 1890, il tennis conobbe un certo disinteresse a causa della concorrenza di nuovi sport come il [[ciclismo]]. A Wimbledon si registrò il successo dei fratelli Baddeley nel doppio e di [[Wilfred Baddeley]] in singolare nel [[Torneo di Wimbledon 1891|1891]], [[Torneo di Wimbledon 1892|1892]] e [[Torneo di Wimbledon 1895|1895]]. Wilfred Baddeley sconfisse [[Joshua Pim]] che riuscì a prendersi la rivincita nel [[Torneo di Wimbledon 1893|1893]] e nel [[Torneo di Wimbledon 1894|1894]], tuttavia, nel [[Torneo di Wimbledon 1895|1895]], la mancanza di interesse del pubblico verso il tennis si acuì e per la prima volta il torneo andò in deficit. Tuttavia, queste difficoltà non durarono più di un paio di anni a cavallo del [[XX secolo]]. Nello stesso tempo, un'altra coppia di fratelli dominò il tennis mondiale: i Doherty. Il maggiore, [[Reginald Doherty]], vinse il torneo nel [[Torneo di Wimbledon 1897|1897]], [[Torneo di Wimbledon 1898|1898]], [[Torneo di Wimbledon 1899|1899]] e [[Torneo di Wimbledon 1900|1900]] e fu sconfitto da [[Arthur Gore]] nel [[Torneo di Wimbledon 1901|1901]], prima di essere vendicato da suo fratello Laurence che sconfisse Gore nel [[Torneo di Wimbledon 1902|1902]]. In totale [[Laurence Doherty]] vinse il torneo cinque volte tra il 1902 e il 1906, tre volte contro [[Frank Riseley]]. Infine i fratelli riuscirono nell'impresa di vincere il doppio otto volte dal [[Torneo di Wimbledon 1897|1897]] al [[Torneo di Wimbledon 1900|1900,]] e dal [[Torneo di Wimbledon 1902|1902]] al [[Torneo di Wimbledon 1905|1905]]. I Doherty furono protagonisti indiscussi della famosa rinascita del tennis dopo alcuni anni difficili.
+
+Le dieci edizioni prima dell'inizio della [[prima guerra mondiale]] si caratterizzarono per la progressiva internazionalizzazione del torneo. Così l'australiano [[Norman Brookes]], che si era distinto diventando il primo finalista non britannico del torneo nel [[Torneo di Wimbledon 1905|1905]], divenne il primo giocatore non britannico a vincere a Wimbledon nel [[Torneo di Wimbledon 1907|1907]], battendo [[Arthur Gore]] (Laurence Doherty non difese il suo titolo). Gore riuscì ad ottenere la sua rivincita [[Torneo di Wimbledon 1908|l'anno successivo]] e a mantenere il trofeo per tre anni consecutivi, prima di essere sconfitto nel [[Torneo di Wimbledon 1910|1910]] da [[Anthony Wilding]], un altro australiano. Quest'ultimo vinse il torneo più tardi nel [[Torneo di Wimbledon 1911|1911]], [[Torneo di Wimbledon 1912|1912]] e nel [[Torneo di Wimbledon 1913|1913]] quando ottenne la sua ultima vittoria contro l'americano [[Maurice McLoughlin]] alla prima finale di Wimbledon senza un rappresentante britannico. [[Torneo di Wimbledon 1914|L'ultima edizione]] disputata appena un paio di settimane prima dell'inizio della prima guerra mondiale fu vinta da [[Norman Brookes]], che raccolse il suo terzo titolo, otto anni dopo il suo precedente successo.<ref>{{cita|Collins 2010|p. 14}}.</ref>
+
+==== Il debutto delle donne ====
+[[File:Dorothea Douglass.jpg|thumb|left|Con sette titoli, [[Dorothea Douglass Chambers]] è la giocatrice con il maggior numero di vittorie nel periodo 1884-1914. Ha anche vinto il doppio femminile inaugurale del 1913 al fianco di [[Charlotte Cooper]].]]
+Nel 1879 gli [[Irish Open|Irish Championships]] furono il primo torneo di tennis ad introdurre il singolare femminile fin dalla sua prima edizione. In quella occasione, [[May Langrishe]], ad appena 14 anni, diventò la prima donna a vincere un torneo di tennis femminile. Wimbledon decise di aprirsi alle donne cinque anni più tardi nel [[Torneo di Wimbledon 1884|1884]], e fu [[Maud Watson]] a vincere contro la sorella Lilian. Questa particolare coincidenza si è ripetuta nel [[Torneo di Wimbledon 2001|2001]] nella finale tra [[Serena Williams|Serena]] e [[Venus Williams]]. Maud Watson conservò il suo titolo [[Torneo di Wimbledon 1885|l'anno seguente]] contro [[Blanche Bingley]]. Quest'ultima si prese la rivincita [[Torneo di Wimbledon 1886|l'anno successivo]] diventando una delle prime grandi giocatrici di tennis della storia vincendo sei titoli a [[Londra]], nel [[Torneo di Wimbledon 1886|1886]], [[Torneo di Wimbledon 1889|1889]], [[Torneo di Wimbledon 1894|1894]], [[Torneo di Wimbledon 1897|1897]], [[Torneo di Wimbledon 1899|1899]] e [[Torneo di Wimbledon 1900|1900]], accendendo anche la prima grande rivalità della storia del tennis femminile con [[Charlotte Cooper]]. Il dominio di Blanche Bingley, però, fu minato dall'arrivo di [[Charlotte Dod|Lottie Dod]] che arrivò in finale cinque volte ([[Torneo di Wimbledon 1887|1887]], [[Torneo di Wimbledon 1888|1888]], [[Torneo di Wimbledon 1889|1889]], [[Torneo di Wimbledon 1891|1891]] e [[Torneo di Wimbledon 1892|1892]]).
+
+Nonostante le quattro sconfitte in finale (tre contro Bingley e una contro [[Muriel Robb]] nel [[Torneo di Wimbledon 1901|1901]]), Charlotte Cooper riuscì a vincere il torneo nel [[Torneo di Wimbledon 1895|1895]], [[Torneo di Wimbledon 1896|1896]], [[Torneo di Wimbledon 1898|1898]], [[Torneo di Wimbledon 1901|1901]] e nel [[Torneo di Wimbledon 1908|1908]] all'età di 38 anni. Gli anni dal 1900 al 1914 furono segnati dalle vittorie di [[Dorothea Douglass Chambers]] nel [[Torneo di Wimbledon 1903|1903]], [[Torneo di Wimbledon 1904|1904]], [[Torneo di Wimbledon 1906|1906]], [[Torneo di Wimbledon 1910|1910]], [[Torneo di Wimbledon 1911|1911]], [[Torneo di Wimbledon 1913|1913]] e nel [[Torneo di Wimbledon 1914|1914]], rivale dell'americana [[May Sutton]] che la incontrò in finale nel [[Torneo di Wimbledon 1905|1905]], [[Torneo di Wimbledon 1906|1906]], e [[Torneo di Wimbledon 1907|1907]] con 2 sconfitte nel 1905 e 1907. Vincendo nel 1905, la Sutton divenne la prima tennista non britannica a vincere Wimbledon tra il 1884 e il 1914. Infine, Il [[Torneo di Wimbledon 1913|1913]] vide la nascita del doppio femminile e del doppio misto, poco prima dello scoppio della prima guerra mondiale, che costrinse il torneo a chiudere i battenti.
+
+=== Tempo di cambiamento ===
+==== La nascita del tennis moderno ====
+Il torneo riaprì i battenti nel [[Torneo di Wimbledon 1919|1919,]] e in finale si contrapposero l'australiano [[Gerald Patterson]] e il 41enne suo connazionale [[Brooke Norman]], con l'opportunità per quest'ultimo di diventare il più vecchio vincitore del torneo, ma venne sconfitto. Patterson conservò il suo titolo per un anno e [[Torneo di Wimbledon 1920|l'anno successivo]] fu sconfitto dall'americano [[Bill Tilden]], che aveva vinto il torneo preliminare contro il giapponese [[Shimizu Zenzou]] con il punteggio di 6-4, 6-4, 13-11. L'americano conservò il suo titolo [[Torneo di Wimbledon 1921|l'anno seguente]], battendo [[Brian Norton]] dopo aver perso i primi due set ma rimontando fino al 4-6, 2-6, 6-1, 6-0, 7-5 finale.<ref>{{cita|Collins 2010|pp. 20-23}}.</ref>
+
+L'anno [[Torneo di Wimbledon 1922|1922]] segna una tappa importante nella storia del torneo per due motivi: da un lato, l'esiguità delle strutture sempre più fatiscenti di [[Worple Road]] portò gli organizzatori a spostare la sede del torneo. Questi comprarono cinque ettari di terreno vicino a [[Church Road]] e vi spostarono la sede, dove rimane ancora oggi. Venne costruito un nuovo campo centrale per soddisfare la crescente popolarità del torneo. Il secondo grande cambiamento fu l'abolizione dell'anacronistico ''challenge round'', a seguito di una votazione dei giocatori (91 a favore del cambiamento contro 27 contrari). Pertanto, il detentore del titolo fu costretto a partecipare al torneo come qualsiasi altro giocatore. Tuttavia quell'anno Bill Tilden non partecipò e [[Gerald Patterson]] conquistò il titolo.
+
+==== L'irruzione dei francesi: Suzanne Lenglen e i 4 moschettieri ====
+[[File:SuzanneLenglen.jpg|thumb|left|[[Suzanne Lenglen]] a Wimbledon nel 1925]]
+In campo femminile il dopoguerra è stato segnato dall'arrivo di [[Suzanne Lenglen]] che vinse l'edizione [[Torneo di Wimbledon 1919|1919]] a vent'anni in una finale molto combattuta (10-8, 4-6, 9-7). La giovane francese divenne rapidamente una delle prime stelle del tennis femminile mondiale. Confermò la sua egemonia conservando il titolo nel [[Torneo di Wimbledon 1920|1920]], [[Torneo di Wimbledon 1921|1921]], [[Torneo di Wimbledon 1922|1922]] e [[Torneo di Wimbledon 1923|1923]], nonostante l'abolizione del ''challenge round''. Infine indebolita da [[ittero]], fu costretta a rinunciare all'edizione [[Torneo di Wimbledon 1924|1924]], vinta dall'inglese [[Kitty McKane]].<ref>{{cita|Collins 2010|pp. 28-29}}.</ref> In questa edizione in campo maschile si registrò la vittoria francese di [[Jean Borotra]] contro [[René Lacoste]], due dei futuri ''[[I quattro moschettieri (tennis)|Quattro moschettieri]]''.
+
+Nell'[[Torneo di Wimbledon 1925|edizione 1925]] Lacoste si prese la rivincita su Borotra. Questa rivalità non impedì ai due giocatori di vincere nel doppio maschile contro [[Jacques Brugnon]] ed [[Henri Cochet]], gli altri due ''moschettieri''. Nelle donne [[Suzanne Lenglen]] vinse il suo ultimo titolo di singolare a Wimbledon e riuscì anche a vincere nel doppio femminile e doppio misto insieme a [[Jean Borotra]].<ref>{{cita|Collins 2010|pp. 30-31}}.</ref> Con l'eccezione dell'americana [[Elizabeth Ryan]], compagna di doppio di Lenglen, i vincitori delle cinque specialità a Wimbledon nel 1925 furono tutti francesi. [[Torneo di Wimbledon 1926|L'anno seguente]] la francese si ritirò dal tennis amatoriale, iniziando la carriera professionale poco dopo, di fatto non potendo più competere a Wimbledon che era riservato ai dilettanti. Ancora una volta [[Kitty McKane]] s'impose approfittando della sua assenza. Negli uomini il dominio francese rimase vivo con il secondo titolo nel singolo di Borotra e le due vittorie di Brugnon ed Cochet. [[Torneo di Wimbledon 1927|L'anno seguente]] fu Cochet a vincere contro Borotra e divenne il terzo moschettiere a vincere un titolo di singolare a Wimbledon. La supremazia dei francesi proseguì nel [[Torneo di Wimbledon 1928|1928]] con la vittoria di Lacoste contro Cochet, e nel [[Torneo di Wimbledon 1929|1929]] con la vittoria di quest'ultimo contro Borotra.<ref>{{cita|Collins 2010|pp. 37-38}}.</ref>
+L'egemonia francese finì definitivamente nel [[Torneo di Wimbledon 1930|1930]] con il ritorno di [[Bill Tilden]], che vinse il torneo per la terza volta battendo in finale, a 37 anni, [[Wilmer Allison]].
+
+==== La nascita del Grande Slam ====
+[[Torneo di Wimbledon 1931|L'edizione 1931]] è segnata da un evento unico nella storia di Wimbledon. Infatti, [[Frank Shields]] si infortunò alla caviglia alla fine della sua semifinale contro Borotra. La [[squadra statunitense di Coppa Davis]] gli chiese di rinunciare alla finale, per recuperare in vista della partita tra il Regno Unito e gli Stati Uniti che si sarebbe tenuta pochi giorni dopo. Shields lasciò quindi il trofeo al suo connazionale [[Sidney Wood]]. Questa è l'unica volta nella storia di una finale del torneo, in cui non si è giocato a causa dell'abbandono di uno dei due giocatori.<ref>{{cita|Collins 2010|p. 43}}.</ref> Nel [[Torneo di Wimbledon 1932|1932]] [[Ellsworth Vines]] divenne il secondo giocatore nella storia a vincere Wimbledon e gli [[U.S. National Championships]] nello stesso anno, dopo Tilden nel 1921. La sua prestazione fu superata l'anno seguente dall'australiano [[Jack Crawford]], che vinse l'[[Australian Championships 1933|Australian Championships]] a gennaio e decise di andare in [[Europa]] a giocare i tornei più importanti, tra cui gli [[Internazionali di Francia 1933|Internazionali di Francia]] e il [[Torneo di Wimbledon 1933|Torneo di Wimbledon]]. Li vinse entrambi, battendo Vines a Wimbledon durante una finale eccezionale per il livello di gioco e l'incertezza (4-6, 11-9, 6-2, 2-6, 6-4).<ref>{{cita|Collins 2010|p. 49}}.</ref>
+
+Crawford aveva vinto i tre titoli principali di quella stagione, quando si presentò agli [[U.S. National Championships 1933|U.S. National Championships]]. La stampa, appassionata del suo talento, utilizzò per la prima volta il termine "[[Grande Slam (tennis)|Grande Slam]]" per riferirsi alla conquista dei quattro titoli più importanti nel tennis nella stessa stagione. Tuttavia, stanco, Crawford si arrese nella finale degli U.S. National Championships contro [[Fred Perry]]. Quest'ultimo fu, nel [[Torneo di Wimbledon 1934|1934]], il primo britannico a vincere Wimbledon dal 1909, battendo di nuovo Crawford. Egli conservò il suo titolo nei successivi due anni, sconfiggendo due volte [[Gottfried von Cramm]]. Perry decise poi di aderire ad un circuito professionistico nel 1937. L'americano [[Donald Budge]], prima di intraprendere la carriera da professionista, decise di disputare con l'intenzione di vincere tutti i Major dell'anno. Prima di partecipare al torneo di Wimbledon nel 1938, vinse l'Australian Championships e gli Internazionali di Francia. Vinse il torneo di Londra senza perdere un solo set conquistando anche il torneo di doppio e doppio misto, come l'anno precedente. Budge si trovò nella stessa situazione di Jack Crawford pochi anni prima, con tre vittorie nei tre più importanti tornei di tennis prima degli U.S. National Championships. Il termine "Grande Slam" riapparve e divenne una realtà con la vittoria di Budge agli U.S. National Championships.
+
+[[File:Bundesarchiv Bild 102-07878, Helen Wills Moody.jpg|upright=0.7|thumb|left|Con otto titoli, Helen Wills Moody ha detenuto il record di titoli in singolare fino all'avvento di [[Martina Navrátilová]] nel 1980.]]
+
+In campo femminile l'inizio della carriera professionistica della Lenglen è immediatamente seguita nel 1927 dall'arrivo di [[Helen Wills]]. Questa a sua volta segnerà profondamente il torneo con il suo dominio impressionante come quello della Lenglen, contro cui aveva perso a [[Cannes]] l'anno precedente nella loro unica sfida.<ref>{{cita|Collins 2010|pp. 32-33}}.</ref> Per conquistare i primi due titoli, sconfisse in finale [[Lilí Álvarez]], già finalista nel [[Torneo di Wimbledon 1926|1926]] e mai vincente nel singolare a Wimbledon. La Wills nel [[Torneo di Wimbledon 1929|1929]] vinse tutti e tre gli eventi in cui aveva partecipato (singolare femminile, doppio femminile e doppio misto), come nel [[Torneo di Wimbledon 1927|1927]], per il secondo anno consecutivo, vinse tre dei quattro titoli principali, mancando sempre l'Australian Championships. Dopo gli ulteriori successi in singolare e in doppio nel [[Torneo di Wimbledon 1930|1930]], decise di non partecipare nel [[Torneo di Wimbledon 1931|1931]], anno in cui la tedesca [[Cilli Aussem]] vinse contro [[Hilde Krahwinkel]]. Tuttavia, al suo ritorno nel [[Torneo di Wimbledon 1932|1932]], Helen Wills Moody vinse facilmente perdendo solo 13 giochi in 12 set disputati, battendo in finale la sua rivale [[Helen Hull Jacobs|Helen Jacobs]] con il punteggio di 6-3, 6-1. [[Torneo di Wimbledon 1933|L'anno seguente]] vinse il suo sesto titolo contro la londinese [[Dorothy Round]].
+
+Nel [[Torneo di Wimbledon 1934|1934]] Helen Wills è di nuovo assente dal torneo e ancora una volta Helen Jacobs non riesce a vincere il titolo, dopo aver perso in finale contro Dorothy Round. Quella fu la prima volta dal 1909 che i due vincitori del singolare furono presentati al re [[Giorgio V del Regno Unito|Giorgio V]] per le congratulazioni di rito.<ref>{{cita|Collins 2010|p. 51}}.</ref> Tuttavia, il predominio di Wills Moody si fa sentire al suo ritorno nel [[Torneo di Wimbledon 1935|1935]] contro Helen Jacobs, che perde in questa occasione la sua quarta finale di Wimbledon. Assente per due edizioni, Wills Moody vince il suo ottavo e ultimo titolo a Wimbledon nel [[Torneo di Wimbledon 1938|1938]] e con l'eccezione della finale persa nel [[Torneo di Wimbledon 1924|1924]] contro [[Suzanne Lenglen]], non ha perso una sola partita a Wimbledon. Per quanto riguarda Helen Jacobs, questa finalmente riuscì a dominare nel [[Torneo di Wimbledon 1936|1936]] quando vinse in finale contro [[Hilde Sperling Krahwinkel]] per 6-2, 4-6, 7-5, nel suo unico titolo a Wimbledon, non riuscendo mai a spodestare Wills Moody. L'edizione [[Torneo di Wimbledon 1939|1939]] fu vinta dagli americani [[Bobby Riggs]] tra gli uomini e tra le donne da [[Alice Marble]], poco prima che l'[[Europa]] scivolasse in un nuovo conflitto globale che costrinse gli organizzatori a sospendere il torneo fino al 1946. Durante la guerra, l'impianto venne utilizzato dall'esercito e il [[Centre Court]] fu danneggiato da una bomba tedesca nel 1940 distruggendo quasi 1.200 posti.<ref>{{Cita web |url=https://www.tennismajors.com/wimbledon-news/on-this-day-october-11-1940-wimbledon-bombed-during-world-war-ii-297649.html |titolo=October 11, 1940: The day Wimbledon was bombed during World War II |autore=Alexandre Sokolowski |sito=Tennis Majors |data=11 ottobre 2023 |accesso=17 luglio 2024 |lingua=en}}</ref>
+
+=== Grande Slam Amatoriale ===
+Dopo la seconda guerra mondiale, nel 1945, la maggior parte dei tornei, tra cui Wimbledon, erano riservati ai tennisti amatoriali: gli organizzatori dei principali tornei rifiutavano di porre fine alla divisione tra circuito amatoriale e il tour professionista che includeva alcuni dei migliori giocatori del mondo. Questa divisione nata nel 1930 si amplificò solo dopo la guerra con la crescita del circuito professionistico.<ref>{{cita|Collins 2010|p. 79}}.</ref> I migliori giocatori spesso lasciavano il circuito amatoriale dopo pochi anni, come già fecero [[Donald Budge]] e [[Fred Perry]] prima della guerra. Questa situazione perdurò fino al 1968, quando i giocatori professionisti furono ammessi ai tornei del Grande Slam.
+
+==== Dominio americano ====
+[[File:Franck Sedgman.jpg|thumb|Vincendo singolare, doppio e doppio misto, [[Frank Sedgman|Sedgman]] è il giocatore che meglio si distingue a Wimbledon nei primi anni del dopoguerra.]]
+
+Le prime edizioni del dopoguerra furono segnati dall'instabilità. Gli ex grandi giocatori della fine del 1930 erano invecchiati o diventati professionisti, mentre la nuova generazione non poté maturare a causa della mancanza di tornei. Nel [[Torneo di Wimbledon 1946|1946]], gli organizzatori di Wimbledon esitarono a riprendere il torneo, a causa dei danni provocati dai bombardamenti nel 1940 che non furono subito riparati. Nonostante le condizioni difficili il torneo finalmente riprese ad essere disputato.<ref>{{cita|Collins 2010|p. 81}}.</ref> L'edizione fu segnata dalla sconfitta di molti favoriti nei primi turni e l'inaspettata vittoria del francese [[Yvon Petra]] dopo un primo incontro vinto per 6-2, 6-4, 7-9, 5-7, 6-4 contro il grande favorito [[Tom Brown (tennista)|Tom Brown]]. Le edizioni successive videro il predominio dei giocatori americani. Nel [[Torneo di Wimbledon 1947|1947]] si affermò [[Jack Kramer]], che vinse il torneo senza perdere un set e vincendo la finale in soli 48 minuti con il punteggio di 6-1, 6-3, 6-2 contro [[Tom Brown (tennista)|Tom Brown]]. Come molti dopo di lui, Kramer lasciò rapidamente il circuito amatoriale, non difendendo il suo titolo nel [[Torneo di Wimbledon 1948|1948]] che fu vinto da [[Bob Falkenburg]]. Come indicato nel punteggio della finale: 7-5, 0-6, 6-2, 3-6, 7-5, Falkenburg aveva delle altalenanti pause, per via dell'incapacità di dosare le sue energie su lunghi periodi a causa della [[mixedema]].<ref>{{cita|Collins 2010|p. 87}}.</ref>
+
+Nel [[Torneo di Wimbledon 1949|1949]] vinse l'americano [[Ted Schroeder]], soprannominato ''Lucky Ted'' per la sua capacità -dimostrata in tutto il torneo- di uscire da situazioni ormai compromesse.<ref>{{Cita web|url=https://www.tennisfame.com/hall-of-famers/inductees/ted-schroeder |titolo=Ted Schroeder: Biography - Career highlights - Grand Slam |sito= International Tennis Hall of Fame |accesso=17 luglio 2024 |lingua=en}}</ref> Egli andò sotto due volte di due set a 0, prima nel turno inaugurale e nei quarti di finale contro [[Frank Sedgman]], dove riuscì a salvare anche due match point. [[Torneo di Wimbledon 1950|L'anno seguente]] [[Budge Patty]] riusc nella doppietta [[Open di Francia|Internazionali di Francia]]-Wimbledon. [[Dick Savitt]], un altro americano, vinse il trofeo nel [[Torneo di Wimbledon 1951|1951]], mentre nel doppio, [[Frank Sedgman]] e [[Ken McGregor]] vinsero il titolo completando il Grande Slam con la vittoria agli U.S. National Championships due mesi dopo. Nel [[Torneo di Wimbledon 1952|1952]] l'australiano Sedgman vinse il trofeo dopo due finali perse (1949, 1950). Ci volle solo un anno perché gli americani riconquistassero il loro dominio sul torneo con la vittoria di [[Vic Seixas]]. Nel [[Torneo di Wimbledon 1954|1954]] [[Jaroslav Drobný (tennista)|Jaroslav Drobný]] diventa il secondo mancino a vincere Wimbledon dopo [[Norman Brookes]] nel 1907.<ref>{{cita|Collins 2010|pp. 103-104}}.</ref> Infine, nel [[Torneo di Wimbledon 1955|1955]], [[Tony Trabert]] diventa l'ultimo rappresentante della supremazia americana che ha dominato Wimbledon nei primi anni dopo la seconda guerra mondiale. Infatti, egli fornisce agli [[Stati Uniti d'America|Stati Uniti]] il loro settimo titolo in dieci edizioni dopo la vittoria nella finale contro [[Kurt Nielsen]].
+
+In campo femminile, il dominio americano è ancora più impressionante e parte alla ripresa del torneo nel [[Torneo di Wimbledon 1946|1946]] con la vittoria di [[Pauline Betz]], una delle giocatrici che aveva avuto più successo in alcuni tornei americani disputati durante la guerra. [[Torneo di Wimbledon 1947|L'anno seguente]] fu [[Margaret Osborne]] a vincere contro [[Doris Hart]]. Quest'ultima fu battuta nel [[Torneo di Wimbledon 1948|1948]] da [[Louise Brough]], la finalista dell'edizione 1946. Brough stabilì un dominio di anni. Nel [[Torneo di Wimbledon 1949|1949]] vinse contro Margaret Osborne durante una finale mozzafiato conclusa con un punteggio di 10-8, 1-6, 10-8. Nell'edizione [[Torneo di Wimbledon 1950|1950]] le finaliste furono le stesse dell'anno precedente e si concluse col punteggio di 6-1, 3-6, 6-1 a favore di Louise Brough. Tuttavia, nonostante le giocatrici si contendessero il titolo del singolare, queste erano compagne nel doppio, e insieme ottennero il loro terzo titolo consecutivo e quarto assoluto (il primo nel 1946). Brough vinse 4 titoli nel doppio misto. Nel [[Torneo di Wimbledon 1952|1952]] arrivarono in finale [[Doris Hart]] e [[Shirley Fry]]. Nel [[Torneo di Wimbledon 1951|1951]] ci fu la comparsa dell'americana [[Maureen Connolly]]. Non ci volle molto perché si affermasse a Wimbledon vincendo l'anno successivo contro Louise Brough.<ref name="Collins">{{cita|Collins 2010|p. 99}}.</ref> Nel [[Torneo di Wimbledon 1953|1953]] quando aveva solo 18 anni, la Connolly vinse Wimbledon come terzo titolo del Grande Slam dell'anno. Riuscì poi a completare il Grande Slam vincendo anche gli U.S. National Championships. Confermò il suo dominio sconfiggendo Louise Brough in finale per la seconda volta. Tuttavia questo fu il suo ultimo titolo di Wimbledon, in quanto poco prima degli U.S. National Championships, fu gravemente ferita in una caduta da cavallo e dovette terminare la sua carriera quando aveva appena 20 anni.<ref>{{Cita web |url=https://www.tennismajors.com/wta-tour-news/july-20-1954-the-day-maureen-connolly-teenage-star-suffered-a-career-ending-injury-276372.html#:~:text=Career%2Dending%20accident%2C%20retirement%20at,pm%20with%20a%20terrible%20accident.|titolo=July 20, 1954: The day teen star Maureen Connolly suffered a tragic, career-ending injury |autore= Alexandre Sokolowski |sito=Tennis Major |data=20 luglio 2022 |accesso= 17 luglio 2024 |lingua=en}}</ref> Il suo record a Wimbledon è di 18 vittorie senza nessuna sconfitta. Brough s'impone per la quarta e ultima volta vincendo su [[Beverly Baker Fleitz]] nel [[Torneo di Wimbledon 1955|1955]]. In dieci edizioni le americane hanno monopolizzato tutte le finali del singolare femminile.<ref>{{cita|Collins 2010|p. 106}}.</ref>
+
+==== L'era australiana ====
+[[File:Lew Hoad Cropped.jpg|thumb|left|[[Lew Hoad]]]]
+
+Nel [[Torneo di Wimbledon 1956|1956]] l'arrivo di [[Lew Hoad]] segna l'inizio del dominio degli australiani nel mondo del tennis. Dopo aver battuto [[Ken Rosewall]] agli Australian Championships, questi ha riproposto la sua performance a Wimbledon. Avendo vinto anche gli Internazionali di Francia si ritrova così in una posizione perfetta per raggiungere il Grande Slam, ma Rosewall glielo impedisce battendolo nella finale degli U.S. National Championships. [[Torneo di Wimbledon 1957|L'anno successivo]] giocò il suo ultimo torneo amatoriale a Wimbledon difendendo il titolo contro [[Ashley Cooper]]. Nel [[Torneo di Wimbledon 1959|1959]] emerge il peruviano [[Alex Olmedo]], primo giocatore sudamericano a vincere Wimbledon. [[Torneo di Wimbledon 1960|L'anno seguente]] [[Neale Fraser]] ripristina il dominio australiano del torneo sconfiggendo in finale [[Rod Laver]]. In semifinale, però, Fraser è molto vicino all'eliminazione. Neale sul punteggio di 6-4, 3-6, 6-4, 15-15 contro [[Butch Buchholz]], salva quattro match point prima che il suo avversario si arrendesse per i crampi.<ref>{{cita|Collins 2010|p. 118}}.</ref> Laver dominò [[Torneo di Wimbledon 1961|l'anno successivo]] contro [[Chuck McKinley]]. [[Torneo di Wimbledon 1962|L'anno seguente]] questi riuscì a dominare il tennis maschile. Dopo aver vinto l'Australian Championships e gli Internazionali di Francia, dominò a Wimbledon senza perdere un set. Vincendo poco dopo gli U.S. National Championships, divenne il secondo uomo a realizzare il Grande Slam dopo [[Donald Budge]]. [[Torneo di Wimbledon 1963|L'anno successivo]] si unì al circuito professionale, e [[Chuck McKinley]] divenne il primo americano a vincere il torneo dal 1955 battendo in finale l'australiano [[Fred Stolle]]. [[Torneo di Wimbledon 1964|L'anno 1964]] è stato caratterizzato dalla rivalità tra Stolle e [[Roy Emerson]], un altro australiano. Si incontrarono nella finale degli Australian Championships, a Wimbledon e negli U.S. National Championships, ma a vincere fu sempre Emerson. Nel [[Torneo di Wimbledon 1965|1965]] Stolle fallisce per la terza e ultima volta nella finale di Wimbledon, e viene battuto di nuovo da Emerson. Il [[Torneo di Wimbledon 1966|1966]] è l'anno della prima vittoria di un giocatore spagnolo nel torneo con il successo di [[Manolo Santana]] contro [[Dennis Ralston]]. Infine, nel [[Torneo di Wimbledon 1967|1967]] vinse il torneo l'australiano [[John Newcombe]].
+
+Tra le donne non si può davvero parlare di dominio australiano. Infatti sono le americane a dominare il torneo, ma il loro dominio quasi totale che perdura dal 1946 comincia a sgretolarsi. L'americana [[Shirley Fry]] riesce a vincere battendo in finale la britannica [[Angela Buxton]], diventando la prima non americana a raggiungere questo traguardo dal 1946. Il [[Torneo di Wimbledon 1957|1957]] vede la comparsa di [[Althea Gibson]], che vince il torneo contro [[Darlene Hard]], e diventa la prima afro-americana a raggiungere tale prestazione. Conserva il suo titolo nel [[Torneo di Wimbledon 1958|1958]] contro [[Angela Mortimer]]. Tuttavia il monopolio americano è interrotto nel [[Torneo di Wimbledon 1959|1959]] dal successo della brasiliana [[Maria Bueno]], confermando il primato sudamericano con la vittoria di Wimbledon di Olmeda tra gli uomini. L'edizione [[Torneo di Wimbledon 1960|1960]] conferma l'internazionalizzazione del torneo perché nessun americano raggiunge la semifinale e la finale oppone Maria Bueno alla sudafricana [[Sandra Reynolds]] per la seconda vittoria della brasiliana. A causa dell'epatite contratta nel [[Torneo di Wimbledon 1961|1961]] Maria Bueno non riesce a difendere il suo titolo a Wimbledon.<ref>{{Cita web |url=https://www.independent.co.uk/news/obituaries/maria-bueno-dead-wimbledon-brazil-tennis-winner-champion-a8400956.html |titolo=Maria Bueno: Four-time Wimbledon winner who became a Brazilian tennis legend |autore= Martin Childs |sito=The independent |data=3 luglio 2018 |accesso= 17 luglio 2024 |lingua=en}}</ref> [[Angela Mortimer]] riesce ad imporsi in questa occasione diventando la prima britannica a vincere il titolo dal 1937. Infine, le americane riuscirono a riconquistare il trofeo nel [[Torneo di Wimbledon 1962|1962]] con la vittoria della giovane [[Karen Susman Hantze]], che non perse un solo set durante tutto il torneo.<ref>{{cita|Collins 2010|p. 124}}.</ref> L'edizione del [[Torneo di Wimbledon 1963|1963]] ha visto il debutto di due future campionesse: l'australiana [[Margaret Smith Court|Margaret Smith]] e l'americana [[Billie Jean Moffitt]]. [[Torneo di Wimbledon 1962|L'anno successivo]] Maria Bueno mette le mani sul trofeo dopo una finale combattuta contro Margaret Smith (6-4, 7-9, 6-3), vendicando così la sua sconfitta in finale agli Internazionali di Francia un paio di settimane prima. L'australiana si prende la sua rivincita [[Torneo di Wimbledon 1963|l'anno successivo]]. Nel [[Torneo di Wimbledon 1966|1966]] a vincere è [[Billie Jean King]], che nel [[Torneo di Wimbledon 1967|1967]] riuscirà a vincere tutte e tre le specialità a cui partecipa.<ref>{{cita|Collins 2010|p. 140}}.</ref>
+
+=== L'era Open ===
+L'anno 1968 fu un punto di svolta nella storia del tennis e spesso simboleggia la data di nascita del tennis moderno. Infatti la distinzione tra i circuiti amatoriali e professionali viene finalmente abolita, aprendo così le porte a Wimbledon e altri tornei importanti ai giocatori professionisti.
+
+==== Il ritorno dei migliori giocatori ====
+Dall'edizione del [[Torneo di Wimbledon 1968|1968]] gli ex giocatori del circuito amatoriale tornano a calpestare l'erba di Wimbledon. Tra questi ci sono [[Ken Rosewall]], [[Rod Laver]] e [[Pancho Gonzales]] dopo diversi anni di "esilio" nei tornei professionali. Questa edizione è segnata dalla prematura eliminazione dei primi turni di Gonzales, Rosewall, [[Lew Hoad]] e [[John Newcombe]].<ref>{{cita|Collins 2010|p. 146}}.</ref> Tuttavia la finale conferma la continuazione del dominio australiano con il confronto tra [[Rod Laver]] e [[Tony Roche]], due ex del circuito professionale. A prevalere sarà Rod Laver che sei anni dopo il suo primo Grande Slam diventa il primo vincitore di Wimbledon dell'Era Open. Tuttavia è [[Torneo di Wimbledon 1969|nell'anno successivo]] che si distingue maggiormente. Difende con successo il suo titolo contro [[John Newcombe]], dopo essere andato vicino alla eliminazione al secondo turno contro [[Premjit Lall]]. Firma il suo terzo grande successo dell'anno dopo aver vinto l'Australian Open e il Roland Garros. Due mesi dopo completa il Grande Slam vincendo gli US Open, facendo di lui il primo e a tutt'oggi anche l'unico giocatore ad aver raggiunto tale performance nella storia dell'era Open. Nel [[Torneo di Wimbledon 1970|1970]] Laver è eliminato al quarto turno, ma questo non impedisce all'[[Australia]] di trionfare ancora una volta con la vittoria di [[John Newcombe]] a spese di Rosewall. Egli conserva il suo titolo nel [[Torneo di Wimbledon 1971|1971]] contro l'americano [[Stan Smith]], che dovrà attendere [[Torneo di Wimbledon 1972|l'anno successivo]] per vincere, grazie ad un'emozionante finale contro il rumeno [[Ilie Năstase]] (4-6, 6-3, 6-3, 4-6, 7-5). Questa edizione segna anche un cambiamento importante con l'introduzione del [[tie-break]]. Ad aggiudicarsi il set è il giocatore che per primo riesce a vincere almeno 12 punti e 2 in più dell'avversario.
+
+Tuttavia questa regola non è valida per il set decisivo sia in campo maschile che in campo femminile. Dopo vari cambiamenti il tie-break verrà giocato sul punteggio di 6-6 e ad aggiudicarsi il set sarà il giocatore che per primo riuscirà a vincere almeno 7 punti e 2 in più dell'avversario.<ref>{{cita|Collins 2010|p. 164}}.</ref> Per quanto riguarda Newcombe, a causa del suo impegno nel circuito [[World Championship Tennis|WCT]], non può difendere il suo titolo. Questo conflitto dimostra che la riunificazione tra i circuiti amatoriali e professionali non è ancora maturo, come conferma [[Torneo di Wimbledon 1973|l'anno successivo]] il boicottaggio di molti giocatori a causa della squalifica di [[Nikola Pilić]]. Il cecoslovacco [[Jan Kodeš]] vince il titolo contro il sovietico [[Alex Metreveli]]. [[Torneo di Wimbledon 1974|L'anno 1974]] è stato caratterizzato dall'esplosione di [[Jimmy Connors]], che aveva vinto l'Australian Open. In finale incontra il veterano [[Ken Rosewall]], trentanovenne, che gioca la sua quarta finale del torneo. Tuttavia, perde ancora passando alla storia come il giocatore che ha giocato più finali a Wimbledon, senza riuscire mai a vincere. Nel [[Torneo di Wimbledon 1975|1975]], Connors non riesce a conservare il suo titolo perdendo in finale contro [[Arthur Ashe]].
+
+Nel circuito femminile, l'apertura alle professioniste non impedisce a [[Billie Jean King]] di vincere il terzo titolo consecutivo. Tuttavia, l'anno successivo per la gioia del pubblico, [[Ann Haydon-Jones]] mette fine ad un periodo di dominio, battendo in finale l'americana. Smith Court, nel [[Torneo di Wimbledon 1970|1970]], dopo aver vinto gli US Open nel 1969, vince i titoli del Grande Slam in Australia e Francia. Questa volta riesce a vincere pure a Wimbledon battendo Billie Jean King con il punteggio di 14-12, 11-9 dopo una lunga lotta di 2 ore.<ref>{{cita|Collins 2010|pp. 154-155}}.</ref> Vincendo lo US Open poco dopo, Smith Court conquista il secondo Grande Slam del tennis femminile e conferma il predominio degli australiani sul mondo del tennis dopo il Grande Slam di Rod Laver nel 1969. Gli australiani sono di nuovo in prima linea [[Torneo di Wimbledon 1971|l'anno successivo]], ma Smith Court deve cedere il titolo alla sua connazionale [[Evonne Goolagong]]. Billie Jean King riconquista finalmente il titolo nel [[Torneo di Wimbledon 1972|1972]]. [[Torneo di Wimbledon 1973|L'anno seguente]] impegnata nella [[Battaglia dei sessi (tennis)#Bobby Riggs - Billie Jean King (20 settembre 1973)|battaglia dei sessi]] e più in generale per la lotta per il tennis femminile, vince la quarta corona di Wimbledon di fronte alla giovane promettente [[Chris Evert]].<ref>{{cita|Collins 2010|p. 170}}.</ref> Ci vuole solo un anno perché la Evert vinca il titolo, lo stesso anno del suo compagno Jimmy Connors. Nel [[Torneo di Wimbledon 1975|1975]] Billie Jean King vince sconfiggendo in rimonta Evert in semifinale e Goolagong in finale per 6-0, 6-1.
+
+==== Il dominio di Borg ====
+[[File:Björn Borg.jpg|thumb|left|upright=0.7|Con cinque titoli consecutivi a Wimbledon, [[Björn Borg]] realizza un record storico, eguagliato da [[Roger Federer]] nel 2007.]]
+
+[[Torneo di Wimbledon 1976|L'anno 1976]] vede l'arrivo a Wimbledon dello svedese [[Björn Borg]], già due volte protagonista al Roland Garros, il cui gioco da fondo campo si adatta di più alla terra rossa che all'[[Campo da tennis#Erba|erba]]. Tuttavia ciò non gli impedisce di vincere il trofeo senza perdere un set e nonostante un infortunio agli addominali. Questo successo è il primo di una serie di cinque titoli consecutivi. Batte infatti [[Vitas Gerulaitis]] in semifinale e [[Jimmy Connors]] in finale, dopo due partite molto combattute che gli permettono di trionfare nell'edizione [[Torneo di Wimbledon 1977|1977]], centenario del torneo. La battaglia tra i due giocatori per la supremazia nel tennis mondiale continua [[Torneo di Wimbledon 1978|l'anno successivo]], ma è ancora una volta Borg a trionfare. [[Torneo di Wimbledon 1979|L'anno seguente]] si trova ad affrontare un altro americano, [[Roscoe Tanner]]. Infine, nel [[Torneo di Wimbledon 1980|1980]], conquista il suo quinto titolo dopo una partita mozzafiato contro [[John McEnroe]] (1-6, 7-5, 6-3, 6<sup>(16)</sup>-7 , 8-6).<ref>{{cita|Collins 2010|p. 200}}.</ref> Oltre a stabilire un record per titoli consecutivi a Wimbledon, Borg riesce nell'impresa di vincere per tre anni di fila Roland Garros e Wimbledon (1978, 1979, 1980). Una performance che non era mai stata realizzata nell'era Open, a causa delle differenze significative tra le due superfici e il breve tempo di adattamento per i giocatori fra i due tornei. Infine l'era svedese termina a Wimbledon nel [[Torneo di Wimbledon 1981|1981]], quando McEnroe riesce a vendicarsi di Borg. Due mesi più tardi, dopo la quarta sconfitta nella finale degli US Open e dopo aver perso il suo posto come numero uno del mondo, Borg decide di concludere la sua carriera a soli 25 anni.
+
+==== Martina Navratilova alla conquista di Wimbledon ====
+[[File:MartinaNavratilovaSept2011.jpg|thumb|[[Martina Navratilova]], vincitrice a Wimbledon per 9 volte.]]
+Con la vittoria del suo primo titolo a [[Torneo di Wimbledon 1978|Wimbledon nel 1978]], la giocatrice cecoslovacca [[Martina Navrátilová]] inizia il suo dominio nel torneo. Con il suo [[Serve & Volley]], raro nelle donne, domina sull'erba. L'americana [[Chris Evert]] vince il suo terzo titolo a Wimbledon nel [[Torneo di Wimbledon 1981|1981]]. Nel [[Torneo di Wimbledon 1982|1982]] il torneo è caratterizzato dal ritorno di Billie Jean King, che, a 38 anni, riesce ad arrivare alle semifinali dove viene battuta da Evert. Quest'ultima non riesce a vincere in finale per la terza volta contro la Navratilova, nel primo di una stringa impressionante e senza precedenti di sei titoli consecutivi. L'edizione del [[Torneo di Wimbledon 1983|1983]] si disputa nel corso di un grande anno (16 tornei vinti su 17 giocati) per Navratilova, che domina la finale di Wimbledon contro [[Andrea Jaeger]] (6-3, 6-0).<ref>{{cita|Collins 2010|p. 215}}.</ref> Nei due anni seguenti Navratilova ed Evert si contendono la supremazia del tennis femminile per la quinta e la sesta volta nella finale di Wimbledon. Entrambi gli scontri confermano il dominio di Navratilova sull'erba con altrettante vittorie. Nel [[Torneo di Wimbledon 1986|1986]] Evert viene eliminata in semifinale da [[Hana Mandlíková]]. Infine, nel [[Torneo di Wimbledon 1987|1987]], Navratilova batte il record di cinque titoli consecutivi stabilito da [[Suzanne Lenglen]], vincendo il suo sesto titolo consecutivo. In questa occasione eguaglia il record di otto titoli di Helen Wills Moody. In finale si vendica della giovane [[Steffi Graf]], che l'aveva battuta nella finale degli Open di Francia.<ref>{{cita|Collins 2010|p. 236}}.</ref> Tuttavia, nonostante questa vittoria, Navratilova comincia a sentire l'arrivo di una nuova generazione, con la perdita del suo posto di numero uno al mondo un paio di settimane più tardi a favore della stessa Graf. Durante questo stesso periodo Navratilova riesce a vincere il doppio sette volte con tre diverse compagne (nel 1976 insieme a Evert, nel 1979 con Billie Jean King, nel 1981-1984 e nel 1986 con [[Pam Shriver]]).
+
+==== Anni ottanta ====
+[[File:BECKER Boris-24x30-.jpg|upright=0.7|thumb|left|Con tre titoli e quattro finali, [[Boris Becker]] è uno dei giocatori più vittoriosi nella seconda metà degli [[anni 1980]]]]
+Dopo il suo trionfo su Borg, [[John McEnroe]] affronta un'altra icona del tennis, [[Jimmy Connors]], che a 30 anni riesce a battere McEnroe dopo una finale conclusasi al quinto set. Tuttavia, ci vuole solo un anno perché questi riconquisti il suo trono di Londra dopo la sua vittoria nella finale contro il sorprendente neozelandese [[Chris Lewis]], numero 97 del mondo e primo giocatore non testa di serie da [[Wilhelm Bungert]] nel 1967 a raggiungere la finale di Wimbledon. [[Torneo di Wimbledon 1984|L'anno seguente]] si conferma il predominio di McEnroe, che domina letteralmente il mondo del tennis con 82 vittorie e solo 3 sconfitte. McEnroe trionfa ancora a Wimbledon vincendo la finale per 6-1, 6-1, 6-2 contro Jimmy Connors. Tuttavia, l'era di McEnroe sta per finire con la nascita di una nuova generazione di tennisti. Il tedesco [[Boris Becker]] vince a Wimbledon a soli 17 anni e 227 giorni, diventando il più giovane vincitore nella storia, il primo giocatore non testa di serie a vincere il torneo dopo l'introduzione delle teste di serie nel 1927 e il primo tedesco a vincere a Wimbledon.<ref>{{cita|Collins 2010|pp. 224-225}}.</ref> La potenza del tedesco è particolarmente adatta all'erba di Wimbledon e gli permette di conservare il suo titolo nel [[Torneo di Wimbledon 1986|1986]] contro il ceco [[Ivan Lendl]].
+
+Nonostante i suoi sforzi per dominare sull'erba, Lendl non riesce a vincere Wimbledon [[Torneo di Wimbledon 1987|l'anno successivo]] e deve subire un'altra sconfitta in finale dall'australiano [[Pat Cash]]. Il giocatore ceco terminerà la sua carriera senza il trofeo londinese nel suo palmares. Il [[Torneo di Wimbledon 1988|1988]] è caratterizzato dal dominio di [[Mats Wilander]], che riesce a vincere l'Australian Open, il Roland Garros e gli US Open, ma esce nei quarti di finale a Wimbledon contro [[Miloslav Mečíř]]. Un altro svedese, [[Stefan Edberg]], riesce a vincere a Wimbledon battendo in finale Becker, permettendo alla [[Svezia]] di vincere tutte le prove del Grande Slam del 1988. Nel [[Torneo di Wimbledon 1989|1989]] Wimbledon è stato il teatro della rivincita tra Becker e Edberg, che si è risolta a favore del primo. Infine nel [[Torneo di Wimbledon 1990|1990]], per la terza volta consecutiva, la conquista del trofeo vede opporsi Becker e Edberg. A vincere è Stefan Edberg con il punteggio di 6-2, 6-2, 3-6, 3-6, 6-4. Nonostante un'altra finale giocata [[Torneo di Wimbledon 1991|l'anno successivo]] contro [[Michael Stich]] e più tardi, nel [[Torneo di Wimbledon 1995|1995]], Becker non riuscirà più a vincere a Wimbledon.
+
+==== Anni novanta ====
+
+===== il dominio di Steffi Graf =====
+[[File:Steffi Graf (Wimbledon 2009) 7.jpg|upright=0.7|thumb|[[Steffi Graf]] a Wimbledon nel 2009.]]
+
+Nel [[Torneo di Wimbledon 1988|1988]] [[Steffi Graf]] è riuscita a imporre il suo dominio nel tennis femminile, battendo Navratilova nella finale di Wimbledon. Questa è la prima sconfitta di Navratilova sull'erba di Londra dopo aver perso in semifinale nel [[Torneo di Wimbledon 1981|1981]]. Al di là di questo successo, Graf firma nello stesso anno una delle più grandi imprese nella storia del tennis, vincendo il ''Grande Slam d'Oro''. [[Torneo di Wimbledon 1989|L'anno seguente]] Graf riesce ancora una volta a battere Navratilova in finale. Tuttavia l'americana riesce a vincere nel [[Torneo di Wimbledon 1990|1990]], conquistando il suo nono titolo, battendo il record di Helen Wills Moody e stabilendo un nuovo record che perdura ancora oggi. Graf vince anche nel [[Torneo di Wimbledon 1991|1991]]. Questa edizione è particolarmente importante perché segnata dal ritiro di [[Monica Seles]] senza un apparente motivo valido, dopo aver vinto l'Australian Open e Roland Garros. Questa assenza permette a Steffi Graf di riconquistare il posto di numero uno del mondo perso un paio di mesi prima. L'[[Torneo di Wimbledon 1992|anno seguente]] Graf e Seles sono entrambe presenti al torneo. Quando si trovano in finale è la tedesca a prevalere col punteggio di 6-2, 6-1. Anche in questo caso Wimbledon è l'unico torneo del Grande Slam che la Seles non riuscirà mai a vincere. Nel [[Torneo di Wimbledon 1993|1993]], quando Monica Seles vede compromessa la sua carriera per una pugnalata ricevuta nel torneo di Amburgo, Graf vince per la quinta volta contro [[Jana Novotná]], nonostante quest'ultima stesse conducendo 4-1 nel terzo set e avesse avuto l'opportunità di guidare 5-1 prima essere sconfitta.<ref>{{cita|Collins 2010|p. 265}}.</ref>
+
+Nel [[Torneo di Wimbledon 1994|1994]] Graf arriva a Wimbledon con i favori del pronostico, ma perde contro [[Lori McNeil]] al primo turno. Questa è la prima volta che il campione o la campionessa in carica e la prima testa di serie perde nel suo match di apertura. In finale è [[Conchita Martínez]] a vincere contro la trentasettenne Navratilova. Nonostante la sua delusione, Steffi Graf vince ancora due titoli a Wimbledon nel [[Torneo di Wimbledon 1995|1995]] e nel [[Torneo di Wimbledon 1996|1996]] contro [[Arantxa Sánchez Vicario]]. Nel [[Torneo di Wimbledon 1997|1997]] il dominio di Graf finisce. A vincere è la giovane [[Martina Hingis]] che sconfigge in finale Jana Novotná.<ref>{{Cita|Collins 2010|p. 283}}.</ref> Questa si prende la sua rivincita [[Torneo di Wimbledon 1998|l'anno successivo]] eliminando Hingis in semifinale e poi battendo la francese [[Nathalie Tauziat]] in finale. Steffi Graf, battuta nel terzo turno, riesce a raggiungere la finale nel [[Torneo di Wimbledon 1999|1999]] alla sua ultima partecipazione. Tuttavia perde contro [[Lindsay Davenport]].
+
+===== L'era Sampras =====
+[[File:Pete Sampras at the 1992 Thriftway ATP Championships.jpg|thumb|left|upright=0.7|[[Pete Sampras]], vincitore a Wimbledon di 7 titoli nel singolare]]
+Proprio come la maggior parte dei tornei su erba, Wimbledon è il teatro dell'egemonia statunitense tra il 1992 e il 2000. Si inizia con la vittoria di [[Andre Agassi]] nel [[Torneo di Wimbledon 1992|1992]]. Questo successo è sorprendente perché Agassi non è uno specialista dell'erba, e non aveva mai vinto un titolo del Grande Slam. Agassi non riuscirà più a vincere a Wimbledon lasciando la strada a [[Pete Sampras]], che conquista nel [[Torneo di Wimbledon 1993|1993]] il primo dei sette titoli a [[Londra]], dopo aver battuto Agassi nei quarti di finale e [[Jim Courier]] in finale. Negli anni successivi conferma il suo predominio sull'erba di Wimbledon battendo nel [[Torneo di Wimbledon 1994|1994]] Ivanišević, nel [[Torneo di Wimbledon 1995|1995]] [[Boris Becker]], nel [[Torneo di Wimbledon 1997|1997]] [[Cédric Pioline|Pioline]], nel [[Torneo di Wimbledon 1998|1998]] di nuovo Ivanišević, nel [[Torneo di Wimbledon 1999|1999]] Agassi e infine nel [[Torneo di Wimbledon 2000|2000]] [[Patrick Rafter]]. In otto edizioni Sampras ha perso una sola volta contro l'olandese [[Richard Krajicek]] nei quarti di finale dell'[[Torneo di Wimbledon 1996|edizione 1996]]. Krajicek diventerà il primo olandese a vincere un titolo del Grande Slam battendo [[MaliVai Washington]].<ref>{{cita|Collins 2010|p. 280}}.</ref> Con un totale di sette titoli a Wimbledon, Pete Sampras raggiunge [[William Renshaw]] e ottiene il record di numero di vittorie nel singolare maschile. Il record sarà poi superato da [[Roger Federer]] nel 2017.
+
+==== Anni duemila: Il dominio di Roger Federer ====
+L'edizione del [[Torneo di Wimbledon 2001|2001]] è caratterizzata da un grande cambiamento. Infatti, gli organizzatori decidono di modificare la composizione dell'erba per renderla più lenta. Pertanto gli attaccanti che finora avevano monopolizzato i titoli a Londra, vedono minacciato il loro predominio. Tuttavia è ancora uno specialista di questa scuola offensiva a vincere. Il croato [[Goran Ivanišević]], già tre volte finalista, riesce a conquistare il titolo contro [[Patrick Rafter]] durante una finale spostata a lunedì a causa della pioggia. Questa vittoria è sorprendente perché è il primo successo della [[Croazia]] e la prima vittoria nel torneo di una wildcard, dato che Ivanišević occupava la 125ª posizione nella classifica alla vigilia del torneo.
+[[File:Roger Federer (26 June 2009, Wimbledon).jpg|thumb|upright|[[Roger Federer]], dominatore dal 2003 al 2007]] Il quattro volte campione in carica e sette volte vincitore, Pete Sampras è a sua volta sconfitto agli ottavi dalla giovane promessa [[Roger Federer]] col punteggio di 7-6<sup>(7)</sup>, 5-7, 6-4, 6<sup>(2)</sup>-7, 7-5. L'americano è ormai al crepuscolo della sua carriera. [[Torneo di Wimbledon 2002|L'anno seguente]] perde contro [[George Bastl]] nel [[No. 2 Court|campo numero 2]] famoso per essere soprannominato il "''cimitero dei campioni"''. La finale del [[Torneo di Wimbledon 2002|2002]] è tra [[David Nalbandian|Nalbandian]] e [[Lleyton Hewitt|Hewitt]], due giocatori di fondo campo: a vincere è l'australiano.
+Nel [[Torneo di Wimbledon 2003|2003]] inizia il dominio di Federer, che vince il torneo per 8 volte (5 consecutive), l'ultima nel 2017. Per conquistare la prima vittoria batte in finale [[Mark Philippoussis|Philippoussis]]. Nel [[Torneo di Wimbledon 2004|2004]] lo svizzero sconfigge in finale [[Andy Roddick]]. Finale e vittoria che viene replicata l'[[Torneo di Wimbledon 2005|anno successivo]], stavolta senza perdere un set.
+In finale nel [[Torneo di Wimbledon 2006|2006]] si incontrano per la prima di tre finali consecutive [[Roger Federer]] e [[Rafael Nadal]]: i due daranno vita ad una delle più grandi [[Rivalità Federer-Nadal|rivalità sportive]] della storia del tennis. Nelle prime due occasioni si impone Federer. Nel [[Torneo di Wimbledon 2009|2009]], il detentore del titolo Rafael Nadal rinuncia a partecipare al torneo per un infortunio al ginocchio, dopo la sua prima sconfitta della carriera all'[[Open di Francia 2009|Open di Francia]] per mano di [[Robin Söderling]]. Federer arriva ancora una volta in finale, dove affronta per la terza volta, dopo il 2004 e il 2005, Andy Roddick, in un match molto combattuto protrattosi fino al 5º set, e vinto dallo svizzero col punteggio di 5--7, 7-6, 7-6, 3-6, 16-14.
+
+==== La più grande partita mai vista ====
+[[File:Roger Federer and Rafael Nadal at the 2006 Wimbledon Championships.jpg|thumb|[[Roger Federer]] e [[Rafael Nadal]] sul [[Centre Court]].]]
+Fu [[John McEnroe]], plurivincitore dei Championships, a definire la finale tra Roger Federer e Rafael Nadal «la più grande mai vista» («the greatest ever seen»).<ref name= telegr /> Nel [[Torneo di Wimbledon 2008|2008]] a contendersi il titolo del singolare maschile a Wimbledon sono per la terza edizione consecutiva Roger Federer e Rafael Nadal. Lo spagnolo era uscito sconfitto nelle sfide del torneo di Londra, al contrario di [[Parigi]] nel [[Open di Francia|torneo del Roland Garros]], dove il mancino aveva sempre prevalso sullo svizzero. Il 6 luglio 2008 Nadal vince i primi 2 combattuti set ed è sul punto di aggiudicarsi il 3º set e con esso l'incontro ma la pioggia interrompe il gioco. La partita riprende dopo qualche decina di minuti: Federer rientra in gara e vince il 3º parziale al [[tie-break]]. Nel 4º set l'elvetico vince ancora al [[tie-break]], dopo una clamorosa rimonta che include l'annullamento di due match point, portando il conteggio dei set a 2 pari. Federer sembra in miglior condizione che Nadal ma, quando lo spagnolo sta per capitolare, ancora una volta la pioggia interrompe la partita. Alla ripresa, Nadal riassume la guida del gioco e si porta sul 6-6. Nel 5º set non è previsto il [[tie-break]], e la partita prosegue fino al 7-7. A questo punto lo spagnolo passa avanti portandosi all' 8-7, e vincendo il set e l'incontro per 9-7. La partita dura complessivamente 4 ore e 48 minuti, ma per le varie interruzioni per [[pioggia]] si è protratta dalle 3 del pomeriggio fino alle 10 e 30 di sera.<ref name= telegr >{{Cita web|url=https://www.telegraph.co.uk/sport/tennis/wimbledon/2305019/Wimbledon-2008-John-McEnroe-hails-Rafael-Nadal-victory-as-greatest-final-ever.html|titolo=Wimbledon 2008: John McEnroe hails Rafael Nadal victory as greatest final ever|lingua=en|accesso=29 agosto 2014}}</ref><ref>{{Cita web|url=http://www.tennis.com/players/2012/07/top-5-wimbledon-finals-no-1-nadal-federer/37141/|titolo=Top 5 Wimbledon Finals: No. 1, Nadal d. Federer|lingua=en|accesso=29 agosto 2014}}</ref><ref>{{cita web|url=http://www.wimbledon.com/en_GB/news/articles/2014-07-16/remembering_federer_v_nadal_2008_-_the_umpires_view.html|titolo=Remembering Federer v Nadal 2008 - the umpire's view|lingua=en|urlarchivio=https://web.archive.org/web/20150317205346/http://www.wimbledon.com/en_GB/news/articles/2014-07-16/remembering_federer_v_nadal_2008_-_the_umpires_view.html|urlmorto=sì}}</ref>
+
+==== I primi dieci anni del duemila: il dominio delle Sorelle Williams ====
+[[File:Flickr - Tim Schofield - IMG 2785.jpg|thumb|upright|left|[[Venus Williams]] vincitrice di 5 edizioni del torneo.]]
+Le sorelle [[Venus Williams|Venus]] e [[Serena Williams]], entrambe vincitrici di questo torneo (5 titoli Venus, 7 titoli Serena) sono le protagoniste dei primi anni duemila. Si sono incontrate in finale quattro volte: nel [[Torneo di Wimbledon 2002|2002]], (prima volta che due sorelle si affrontano in finale a Wimbledon dal 1884) nel [[Torneo di Wimbledon 2003|2003]], nel [[Torneo di Wimbledon 2008|2008]] e nel [[Torneo di Wimbledon 2009|2009]]. Tra il 2000 e il 2010, sono arrivate in finale quattro volte senza perdere un set, e solo nel [[Torneo di Wimbledon 2006|2006]] nessuna delle due è arrivata in finale. Complessivamente hanno vinto 12 piatti d'argento in singolare e 6 coppe in doppio, e nel primo decennio del millennio hanno ceduto il titolo solo nel [[Torneo di Wimbledon 2004|2004]] alla diciassettenne russa [[Marija Šarapova]], e nel [[Torneo di Wimbledon 2006|2006]] a [[Amélie Mauresmo]], primo trionfo di una francese dal 1925, che ha sconfitto in finale la belga [[Justine Henin]]. Nel [[Torneo di Wimbledon 2005|2005]] Venus Williams gioca contro [[Lindsay Davenport]] la finale più lunga del torneo, durata di 2 ore e 46 minuti. Nel [[Torneo di Wimbledon 2011|2011]] conquista il titolo [[Petra Kvitová]], alla prima vittoria in uno Slam, che supera in finale la Šarapova in due set. [[Serena Williams]] torna a vincere il torneo nel [[Torneo di Wimbledon 2012|2012]] battendo in finale [[Agnieszka Radwańska]], dominando al servizio con un totale di 102 [[Ace (sport)|ace]], nuovo record per il torneo.<ref name="compendium">{{cita web|url=https://www.wimbledon.com/pdf/Wimbledon%20Compendium%202023.pdf|titolo=The Wimbledon Compendium 2023|lingua=en|p=233|accesso=30 agosto 2023}}</ref> Nel [[Torneo di Wimbledon 2013|2013]] è invece la sorpresa [[Marion Bartoli]], che, dopo la finale persa nel 2007, riesce ad imporsi su [[Sabine Lisicki]], uscita vincente negli ottavi dal match contro la detentrice del torneo, [[Serena Williams]]. Questo sarà anche l'ultima partecipazione al torneo di Bartoli, dato che si ritirerà un mese dopo.<ref>{{Cita news|lingua=en|url=https://www.bbc.com/sport/tennis/23707662|titolo=Wimbledon champion Marion Bartoli announces her retirement|pubblicazione=BBC Sport|data=15 agosto 2013|accesso=17 luglio 2024}}</ref> Nel [[Torneo di Wimbledon 2014|2014]] è ancora la ceca Kvitova ad alzare il trofeo più importante, imponendosi su [[Eugenie Bouchard]] in due set, prima finale assoluta per una canadese. Dopo due anni di assenza, Serena Williams torna a conquistare il titolo nel 2015, battendo la sorpresa del torneo [[Garbiñe Muguruza]]. L'[[Torneo di Wimbledon 2016 - Singolare femminile|anno dopo]] conferma il titolo, sconfiggendo in finale [[Angelique Kerber]], ottenendo il settimo successo a Church Road. Ma questi saranno gli ultimi titoli per le sorelle Williams. Una nuova generazione è già pronta a prenderne il posto.
+
+==== Anni dieci del duemila ====
+
+===== L'ascesa di Đjoković =====
+Il [[Torneo di Wimbledon 2010|2010]] vede trionfare per la seconda volta [[Rafael Nadal]], capace di imporsi sul ceco [[Tomáš Berdych]], che era riuscito nell'impresa di eliminare ai quarti di finale il campione uscente [[Roger Federer]]. Nel [[Torneo di Wimbledon 2011|2011]] è ancora una volta Nadal a raggiungere la finale, dove però è costretto a cedere al serbo [[Novak Đoković|Novak Đjoković]] con il punteggio di 6-4, 6-1, 1-6, 6-3, che oltre al titolo toglierà anche la prima posizione del ranking mondiale al rivale. Nell'edizione [[Torneo di Wimbledon 2012|2012]] il serbo viene eliminato in semifinale dal sei volte campione Federer, che riuscirà a impossessarsi del settimo trofeo (record assoluto condiviso con [[Pete Sampras]] e [[William Renshaw]]) ai danni della promessa britannica [[Andy Murray]]. Con questa vittoria Federer torna al primo posto del ranking mondiale, eguagliando e poi battendo definitivamente il 16 luglio di tale anno il record di settimane alla posizione numero 1 precedentemente posseduto da [[Pete Sampras]] (286). Nel [[Torneo di Wimbledon 2013|2013]] Andy Murray batte in finale il nº 1 del mondo [[Novak Đoković|Novak Đjoković]]: è la prima volta, dopo 77 anni, che un britannico vince Wimbledon dai tempi di [[Fred Perry]] nel [[Torneo di Wimbledon 1936|1936.]] Dopo il 2011 Novak Đjoković torna al successo sull'erba londinese nel [[Torneo di Wimbledon 2014|2014,]] trionfando su [[Roger Federer]] al termine di una partita combattuta finita con il punteggio di 6<sup>(7)</sup>-7, 6-4, 7-6<sup>(4)</sup>, 5-7, 6-4. Nel [[Torneo di Wimbledon 2015|2015]] Đjoković ottiene il terzo successo, battendo in finale nuovamente Federer. Il [[Torneo di Wimbledon 2016|2016]] è un altro anno fortunato sull'erba per il tennista scozzese, che riesce a trionfare per la seconda volta allo slam londinese, dopo quella del 2013. Nel [[Torneo di Wimbledon 2017|2017]] a Wimbledon la storia si ripete ancora con Federer che conquista il suo ottavo titolo, stabilendo il nuovo record del maggior numero di titoli vinti in singolare maschile a Wimbledon (8), battendo [[Marin Čilić|Marin Cilic]]. Nel [[Torneo di Wimbledon 2018|2018]] e nel [[Torneo di Wimbledon 2019|2019]] Đjoković conquista il titolo per la quarta e quinta volta, superando rispettivamente [[Kevin Anderson (tennista)|Kevin Anderson]] in tre set e Federer in una battaglia di quasi cinque ore. Il tennista serbo si ripete nel [[Torneo di Wimbledon 2021|2021]] sconfiggendo in finale [[Matteo Berrettini]] (primo italiano in una finale a Wimbledon), e nel [[Torneo di Wimbledon 2022|2022]] battendo il tennista australiano e specialista al servizio, [[Nick Kyrgios]], portando a sette il numero dei suoi titoli a Wimbledon.
+
+===== La maratona Isner-Mahut nel 2010 =====
+{{vedi anche|Partita Isner–Mahut del torneo di Wimbledon 2010}}
+
+Il 24 giugno 2010 il match tra [[John Isner]] e [[Nicolas Mahut]] supera tutti i record della storia del tennis per durata dell'incontro, numero di game giocati e di ace conseguiti in un match. Dopo l'interruzione del primo giorno per mancanza di luce, l'incontro viene disputato fino a raggiungere il quinto set con 59 game per parte, ma viene nuovamente sospeso per lo stesso motivo. Alla fine vince Isner, 70 a 68 al quinto set, dopo più di 11 ore di gioco. Precedentemente a questo incontro, il record di durata apparteneva alla sfida tra [[Pancho Gonzales]] e [[Charles Pasarell|Charlie Pasarel]].
+
+==== Post Big 3 era: il fenomeno Carlos Alcaraz e i successi di Sinner ====
+Nel [[Torneo di Wimbledon 2023|2023]] il ventenne [[Carlos Alcaraz]] sconfigge il trentaseienne Đjoković in cinque set (1-6, 7-6, 6-1, 3-6, 6-4) e mantiene il primo posto in classifica raggiunto all'età di 19 anni e 4 mesi, stabilendo così il record di tennista più giovane ad esserci mai riuscito.<ref>{{Cita web|lingua=it|autore=Pellegrino Dell'Anno|url=https://www.ubitennis.com/blog/2022/09/12/us-open-new-york-e-latp-incoronano-il-loro-nuovo-re-alcaraz-supera-ruud-primo-slam-e-piu-giovane-n-1-di-sempre/|titolo=US Open: New York, e l'ATP, incoronano il loro nuovo re. Alcaraz supera Ruud, primo Slam e più giovane n.1 di sempre|sito=Ubitennis|data=12 settembre 2022|accesso=14 luglio 2026}}</ref> La stagione sull'erba dello spagnolo ricomincia nuovamente dallo Slam londinese, in cui non riesce tuttavia a difendere il titolo e, dopo essersi aggiudicato il primo set, perde la finale in rimonta contro il suo rivale [[Jannik Sinner]] (primo italiano nella storia a vincere il Championship).<ref>{{Cita web|lingua=it|autore=Agenzia ANSA|url=https://www.ansa.it/sito/notizie/sport/2025/07/13/wimbledon-sinner-nella-storia-batte-alcaraz-in-4-set-e-trionfa-sullerba-di-londra_84f81dc2-bf17-401c-8ea3-f1022a70135f.html|titolo=Wimbledon: Sinner nella storia, batte Alcaraz in 4 set e trionfa sull'erba di Londra - Notizie - Ansa.it|sito=Agenzia ANSA|data=13 luglio 2025|accesso=14 luglio 2026}}</ref> Nel [[Torneo di Wimbledon 2026 - Singolare maschile|2026]], l'altoatesino conferma il titolo, in virtù del trionfo nell'atto conclusivo contro [[Alexander Zverev]] in quattro set (6-7, 7-6, 6-3, 6-4), torneo a cui [[Carlos Alcaraz]] è costretto a rinunciare per infortunio al polso.<ref>{{Cita web|lingua=it|url=https://www.ilmessaggero.it/sport/tennis/alcaraz_infortunio_come_sta_salta_stagione_ultime_notizie-9505016.html|titolo=Alcaraz e l'infortunio, come sta? Dalla Spagna sono sicuri: «Rischia uno stop di sei mesi»|data=30 aprile 2026|accesso=14 luglio 2026}}</ref><ref>{{Cita web|lingua=it|url=https://www.gazzetta.it/Tennis/atp/slam/wimbledon/19-05-2026/alcaraz-salto-anche-wimbledon.shtml|titolo=Calvario Alcaraz: "Il polso sta guarendo, ma dovrò saltare anche Wimbledon"|sito=La Gazzetta dello Sport|accesso=14 luglio 2026}}</ref>
+
+===== Turnover femminile =====
+Nel [[Torneo di Wimbledon 2017|2017]], assente [[Serena Williams]] per gravidanza, il titolo viene conquistato dalla spagnola [[Garbiñe Muguruza|Garbine Muguruza]] contro la trentasettenne [[Venus Williams]]. Nel [[Torneo di Wimbledon 2018|2018]] la tedesca [[Angelique Kerber]] batte in finale Serena Williams, rientrante dalla nascita della prima figlia. L'[[Torneo di Wimbledon 2019|anno successivo]] sarà la rumena [[Simona Halep]] a prevalere sulla Williams con un'eccezionale prestazione in campo, commettendo solo 3 errori gratuiti in un incontro terminato per 6-2, 6-2.
+
+Nel 2020 il torneo non viene disputato per la prima volta dalle due Guerre Mondiali a causa della [[Pandemia di COVID-19|pandemia di covid-19]].<ref>{{Cita web|url=https://sport.sky.it/tennis/2020/04/01/wimbledon-2020-cancellato-coronavirus|titolo=Wimbledon 2020 cancellato per l'emergenza coronavirus: prima volta dal 1945|data=1º aprile 2020}}</ref>
+
+Le giocatrici di tocco diventano protagoniste a Wimbledon nel [[Torneo di Wimbledon 2021|2021]] con [[Ashleigh Barty]] che vince il titolo imponendosi in finale su [[Karolína Plíšková|Karolina Pliskova]]. Negli anni successivi sale alla ribalta la tunisina [[Ons Jabeur]], altra specialista delle palle corte, disputando due finali consecutive nel [[Torneo di Wimbledon 2022|2022]] e nel [[Torneo di Wimbledon 2023|2023]]. Esce sconfitta, da favorita della viglia, in entrambe le occasioni; nel 2022 perde contro [[Elena Rybakina]], che non può ricevere punti a causa della decisione di ATP e WTA di non distribuirne in opposizione all'esclusione da parte dell'All England Club dei tennisti russi e bielorussi a causa dell'[[invasione russa dell'Ucraina del 2022]];<ref name="ubi2004">{{Cita web|url=https://www.ubitennis.com/blog/2022/05/20/ufficiale-niente-punti-atp-a-wimbledon/|titolo=UFFICIALE: niente punti ATP e WTA a Wimbledon|autore=Di Lorito, Paolo|data=20 maggio 2022}}</ref> nel 2023 Jabeur perde in finale dalla ceca [[Markéta Vondroušová|Marketa Vondrousova]], prima tennista di sempre a trionfare senza essere testa di serie. L'edizione del [[Torneo di Wimbledon 2024|2024]], la prima senza alcuna delle sorelle Williams nel tabellone principale, viene aggiudicata da [[Barbora Krejčíková]], settima vincitrice differente in sette edizioni consecutive. Nel 2025 c’è un’altra vincitrice: [[Iga Świątek]]. Che batte nettamente [[Amanda Anisimova]] per 6-0, 6-0.
+
+== Eventi ==
+Ci sono cinque eventi principali a Wimbledon: [[Torneo di Wimbledon (singolare maschile)|singolare maschile]], [[Torneo di Wimbledon (singolare femminile)|singolare femminile]], [[Torneo di Wimbledon (doppio maschile)|doppio maschile]], [[Torneo di Wimbledon (doppio femminile)|doppio femminile]] e [[Torneo di Wimbledon (doppio misto)|doppio misto]]. In aggiunta esiste un torneo junior con sei categorie: singolare e doppio maschile e femminile, riservati ai ragazzi tra i 14 e i 18 anni,<ref>{{Cita web|url=https://www.wimbledon.com/en_GB/atoz/juniors.html|titolo=Juniors}}</ref> e un torneo ad inviti diviso in singolare maschile under 14 e singolare femminile under 14.
+Riguardo ai tornei ad inviti si giocano anche il doppio maschile, femminile e misto.
+Infine si giocano il singolare maschile in carrozzina, singolare femminile in carrozzina, quad singolare, doppio maschile in carrozzina, doppio femminile in carrozzina e quad doppio.
+
+Le partite del singolare maschile sono al meglio dei cinque set, tutte le altre al meglio dei tre (anche il doppio maschile, dal 2023<ref>{{Cita web|titolo=Wimbledon si adegua agli altri Slam: nel 2023 doppio maschile al meglio dei tre set|url=https://sport.sky.it/tennis/2023/01/25/wimbledon-2023-nuove-regole-doppio-tre-set}}</ref>). Tutti i tornei sono ad eliminazione diretta; sfuggono a questa regola i doppi per invito e le categorie under 14, che prevedono un girone all'italiana.
+
+Fino al 1921 era in vigore il cosiddetto ''Challenge Round'', vale a dire l'ammissione diretta alla finale dei vincitori dell'edizione precedente, eccetto che per i tornei di doppio femminile e misto. Poiché si creava un vantaggio pregiudiziale, la regola venne abolita per votazione degli stessi tennisti.
+
+== I campi ==
+[[File:Centre Court Wimbledon 2009.JPG|thumb|Il nuovo [[Centre Court]] dotato di tetto.]]
+Il campo principale viene chiamato ''[[Centre Court]]'' ed è lì che si svolgono sempre gli incontri finali del torneo; attualmente può ospitare {{formatnum:14979}} spettatori seduti. A causa della natura imprevedibile del tempo britannico durante il torneo, un [[tetto]] retraibile è stato installato ed utilizzato a partire dall'edizione del 2009: eviterà interruzioni molto lunghe del torneo. Questo tetto è stato sfruttato per la prima volta il 29 giugno 2009, quando l'incontro degli ottavi femminili tra [[Dinara Safina]] e [[Amélie Mauresmo]] è stato interrotto da un acquazzone nel corso del secondo set, ma è potuto riprendere dopo meno di tre quarti d'ora.
+
+Il [[No. 1 Court|Campo N. 1]] fu soggetto a una notevole ristrutturazione nel 1997; era in origine adiacente al ''Centre Court'' ma venne sostituito da una nuova [[Arena (edificio)|arena]] con un maggior numero di posti per gli spettatori. Come il Centre Court, anche il campo N. 1 ospita alcuni degli incontri più importanti, come i quarti di finale del torneo di singolo.
+
+Il vecchio [[No. 2 Court|Campo N. 2]], demolito e ricostruito dopo l'edizione [[Torneo di Wimbledon 2008|2008]], portava il soprannome de "Il cimitero dei campioni" poiché era lì che, nel corso degli anni, molti dei tennisti più quotati e favoriti per la vittoria del torneo subirono sconfitte inaspettate, soprattutto nei primi turni.<ref>{{Cita web|url = http://wimbledon.tennis.it/cera-una-volta-il-cimitero-dei-campioni/|titolo = C'ERA UNA VOLTA IL CIMITERO DEI CAMPIONI|accesso = 6 luglio 2015|urlarchivio = https://web.archive.org/web/20150707154400/http://wimbledon.tennis.it/cera-una-volta-il-cimitero-dei-campioni/|urlmorto = sì}}</ref>
+
+== Tradizioni ==
+Verde e viola sono i colori tradizionali del torneo di Wimbledon. Le giocatrici donne vengono sempre appellate con "Miss" o "Mrs" durante il gioco (ad esempio quando il giudice di sedia dichiara il punteggio). I professionisti uomini invece vengono indicati solo con il cognome, mentre i dilettanti sono chiamati col titolo "Mr".
+
+Il torneo è sempre seguito da vari membri della Famiglia Reale che siedono nel ''Royal Box'', ed era una regola scritta fino al 2003 che i giocatori all'entrata ed uscita dal campo si rivolgessero al ''Box'' facendo un inchino con la testa o mezzo busto. L'All England Club ha eliminato questa regola e il saluto Reale è fatto su volontaria decisione dei singoli partecipanti al torneo. Ad oggi rimane però ancora l'obbligo dell'inchino se è presente il Sovrano regnante e consorte e il Principe di Galles e consorte.
+
+Durante il torneo, un falcone di nome Rufus sorvola i campi dalle nove di mattina per oltre un’ora prima dell’apertura dei cancelli per allontanare i [[Columba livia|piccioni]], che potrebbero distrarre i giocatori e danneggiare l’erba.<ref>{{Cita web|autore=Vanni Gibertini|url=https://www.ubitennis.com/blog/2018/07/06/laltro-falco-di-wimbledon-che-non-guarda-le-partite/amp/ |titolo=L’altro falco di Wimbledon che non guarda le partite|data=6 luglio 2018}}</ref>
+
+Il torneo inizia ogni anno sei settimane prima del primo lunedì di agosto e dura due settimane. Tradizionalmente non si gioca nel "middle Sunday", anche se per quattro volte nella storia del torneo (l'ultima nel 2016) la pioggia ha costretto a giocare in quel giorno. Tutti gli incontri degli ottavi di finale singolare e doppio (maschile e femminile) e doppio misto vengono quindi disputati nel "manic Monday", ovvero il lunedì della seconda settimana. Nell'edizione del 2022 si è programmato di giocare regolarmente anche nella "middle Sunday". Durante la prima settimana si disputano i primi turni del tabellone, mentre nella seconda si giocano ottavi, quarti, semifinali e finale.
+
+I tennisti e le tenniste devono indossare divise e scarpe di colore bianco in onore alla tradizione dei primi giocatori inglesi, che utilizzavano quel colore in segno di eleganza, poca vistosità e perché era quello che mascherava meglio la sudorazione durante il gioco. Accenni o dettagli di altri colori, in particolare con riferimento allo sponsor tecnico, sono tuttavia accettati, purché minimi.
+
+Per venire incontro alle necessità delle tenniste, a partire dall'edizione del [[Torneo di Wimbledon 2023|2023]] è concesso alle giocatrici di indossare biancheria colorata sotto il consueto completo bianco. Questa scelta riduce lo stress delle giocatrici relativo a possibili macchie dovute alle [[Mestruazione|mestruazioni]], che sul tessuto bianco sarebbero più evidenti.<ref>{{Cita web|url=https://www.ubitennis.com/blog/2023/07/05/biancheria-colorata-a-wimbledon-un-cambiamento-epocale-nel-tennis-femminile/|titolo=Biancheria colorata a Wimbledon: un cambiamento epocale nel tennis femminile|autore=https://www.facebook.com/ubitennis|sito=Ubitennis|data=5 luglio 2023|lingua=it|accesso=17 luglio 2023}}</ref>
+
+== Premi per i vincitori ==
+[[File:Wimbledon trophies.jpg|thumb|I trofei dei tornei singolari a Wimbledon]]
+Il vincitore del torneo maschile dal 1887 è premiato con una coppa d'argento dorato alta circa 47{{nbsp}}cm per 19{{nbsp}}cm di diametro, istoriata con motivi floreali, tra cui un piccolo ananas in cima. Il cartiglio sulla coppa reca l'epigrafe ''All England Lawn Tennis Club Single Handed Championship of the World''. Il trofeo originale è usato solo per la premiazione ufficiale ed è custodito dall'All England Club; il vincitore porta con sé una replica di 3/4 dell'originale, alta 34{{nbsp}}cm. Sul trofeo vengono via via incisi i nomi dei vincitori: esaurito lo spazio sulla coppa vera e propria, è stato aggiunto un basamento rialzato.<ref name="wimbledon_trophies">{{cita web|titolo=Trophies|url=http://www.wimbledon.com/en_GB/atoz/trophies.html|editore=[[AELTC]]|accesso=21 agosto 2016|urlarchivio=https://web.archive.org/web/20160826030432/http://www.wimbledon.com/en_GB/atoz/trophies.html|urlmorto=}}</ref>
+
+La vincitrice del torneo femminile riceve il ''[[Venus Rosewater Dish]]'' (o ''Rosewater Dish''), un piatto d'argento da 48{{nbsp}}cm di diametro, decorato con un bassorilievo a tema mitologico. Anche questo trofeo è ottocentesco ed è custodito dall'All England Club; la vincitrice porta con sé una copia in scala ridotta.<ref name="wimbledon_trophies" />
+[[File:All England Club museum trophies, Wimbledon - 30049459673.jpg| thumb|I trofei in palio a Wimbledon esposti al museo dell'All England Club]]
+I vincitori del doppio maschile, del doppio femminile e del doppio misto ricevono delle coppe d'argento. Nel doppio, a differenza degli altri tornei del [[Grande Slam (tennis)|Grande Slam]], in cui la coppia vincitrice condivide un unico trofeo, a ciascun giocatore della coppia viene assegnato un trofeo personale. La coppa d'argento per il doppio maschile proveniva originariamente dall'Oxford University Lawn Tennis Club e fu donata all'All England Club nel 1884. Il trofeo per il doppio femminile, una coppa d'argento con coperchio nota come ''The Duchess of Kent Challenge Cup'', fu donato all'All England Club nel 1949 da [[Marina di Grecia|Marina, duchessa di Kent]]. Il trofeo per il doppio misto è una coppa d'argento con coperchio donata all'All England Club dalla famiglia di [[Sydney Howard Smith|Sydney Smith]], due volte vincitore del doppio a Wimbledon.<ref name="wimbledon_trophies" /><ref>{{cita web|titolo=Wimbledon – Behind the Scenes – Trophies|url=http://www.wimbledon.com/en_GB/behind_the_scenes/201205091336568697615.html|urlarchivio=https://web.archive.org/web/20180721073058/http://www.wimbledon.com/en_GB/behind_the_scenes/201205091336568697615.html|urlmorto=si|editore=[[AELTC]]|accesso=1º settembre 2012}}</ref>
+[[File:Woodbridge Wimbledon 2004.jpg|thumb|[[Todd Woodbridge]] con il trofeo del doppio maschile, 2004]]
+I finalisti perdenti di tutti i tornei ricevono un piatto d'argento decorato. La premiazione è tipicamente affidata al ''patron'' dell'All England Club, la [[principessa di Galles]].
+
+Dal 2007 il torneo di Wimbledon prevede un montepremi uguale sia per il torneo maschile che quello femminile.<ref>{{Cita web |url=https://www.tennismajors.com/wimbledon-news/february-22-2007-the-day-wimbledon-finally-announced-it-would-award-equal-pay-323512.html |titolo=February 22, 2007: The day Wimbledon finally announced it would award equal prize money |lingua=en |autore= Steve Tignor |editore=Tennis Majors |data=22 febbraio 2024 |accesso=17 luglio 2024}}</ref>
+
+== Albo d'oro ==
+* [[Albo d'oro del singolare maschile del torneo di Wimbledon|Singolare maschile]]
+* [[Albo d'oro del singolare femminile del torneo di Wimbledon|Singolare femminile]]
+* [[Albo d'oro del doppio maschile del torneo di Wimbledon|Doppio maschile]]
+* [[Albo d'oro del doppio femminile del torneo di Wimbledon|Doppio femminile]]
+* [[Albo d'oro del doppio misto del torneo di Wimbledon|Doppio misto]]
+* [[Albo d'oro del torneo di Wimbledon juniores|Torneo juniores]]
+
+== Primati del Torneo ==
+{| class="wikitable" style="font-size: 85%"
+|-
+! '''Record''' 
+! '''Periodo''' 
+! '''Giocatore(i)''' 
+! '''Numero''' 
+! '''Anno'''
+|-
+|colspan=5 style="background: #c0d077;"|'''''Uomini dal 1877'''''
+|-
+|rowspan=2|Maggior numero di titoli singolare maschile
+| Prima del 1968:
+| {{Bandiera|GBR}} [[William Renshaw]]
+| 7
+| 1881, 1882, 1883, 1884, 1885, 1886, 1889
+|-
+| Dopo il 1968:
+|{{Bandiera|CHE}} [[Roger Federer]]
+| 8
+| 2003, 2004, 2005, 2006, 2007, 2009, 2012, 2017
+|-
+|rowspan=2|Maggior numero di titoli consecutivi singolare maschile
+| Prima del 1968:
+| {{Bandiera|GBR}} [[William Renshaw]] (con la formula del Challenge Round)
+| 6
+| 1881-1886
+|-
+| Dopo il 1968:
+|{{Bandiera|SWE}} [[Björn Borg]]<br /><br />{{Bandiera|CHE}} [[Roger Federer]]
+| 5
+| 1976-1980<br /><br />2003-2007
+|-
+|rowspan=2|Maggior numero di titoli doppio maschile
+| Prima del 1968:
+| {{Bandiera|GBR}} [[Reginald Doherty]]<br /><br />{{Bandiera|GBR}} [[Laurence Doherty]]
+| 8
+| 1897, 1898, 1899, 1900, 1901, 1903, 1904, 1905 con [[Laurence Doherty]]<br /><br />1897, 1898, 1899, 1900, 1901, 1903, 1904, 1905 con [[Reginald Doherty]]
+|-
+| Dopo il 1968:
+| {{Bandiera|AUS}} [[Todd Woodbridge]]
+| 9
+| 1993, 1994, 1995, 1996, 1997, 2000 con [[Mark Woodforde]]<br />2002, 2003, 2004 con [[Jonas Björkman]]
+|-
+|rowspan=2|Maggior numero di titoli consecutivi doppio maschile
+| Prima del 1968:
+| {{Bandiera|GBR}} [[Reginald Doherty]]<br /><br />{{Bandiera|GBR}} [[Laurence Doherty]]
+| 5
+| 1897-1901 con [[Laurence Doherty]]<br /><br />1897-1901 con [[Reginald Doherty]]
+|-
+| Dopo il 1968:
+| {{Bandiera|AUS}} [[Todd Woodbridge]]<br /><br />{{Bandiera|AUS}} [[Mark Woodforde]]
+| 5
+| 1993-1997 con [[Mark Woodforde]]<br /><br />1993-1997 con [[Todd Woodbridge]]
+|-
+|rowspan=2|Maggior numero di titoli doppio misto - uomini
+| Prima del 1968:
+| {{Bandiera|USA}} [[Vic Seixas]]<br /><br />{{Bandiera|AUS}} [[Ken Fletcher]]
+| 4
+| 1953, 1954, 1955 con [[Doris Hart]]<br />1956 con [[Shirley Fry Irvin]]<br /><br />1963, 1965, 1966, 1968 con [[Margaret Smith Court]]
+|-
+| Dopo il 1968:
+| {{Bandiera|AUS}} [[Owen Davidson]]
+| 4
+| 1967, 1971, 1973, 1974 con [[Billie Jean King]]
+|-
+|rowspan=2|Maggior numero di titoli consecutivi doppio misto - uomini
+| Prima del 1968:
+| {{Bandiera|USA}} [[Vic Seixas]]
+| 4
+| 1953-1955 con [[Doris Hart]]<br />1956 con [[Shirley Fry Irvin]])
+|-
+| Dopo il 1968:
+| {{Bandiera|AUS}} [[Owen Davidson]]<br /><br />{{Bandiera|GBR}} [[John Lloyd (tennista)|John Lloyd]]<br /><br />{{Bandiera|CZE}} [[Cyril Suk]]<br /><br />{{Bandiera|GBR}} [[Neal Skupski]]
+| 2
+| 1973-1974 con [[Billie Jean King]]<br /><br />1983-1984 con [[Wendy Turnbull]]<br /><br />1996-1997 con [[Helena Suková]]<br /><br />2021-2022 con [[Desirae Krawczyk]]
+|-
+|rowspan=2|Maggior numero di titoli complessivi (singolare, doppio, misto) - uomini
+| Prima del 1968:
+| {{Bandiera|GBR}} [[William Renshaw]]
+| 14
+| 1880-1889 (7 singolare, 7 doppio)
+|-
+| Dopo il 1968:
+| {{Bandiera|AUS}} [[Todd Woodbridge]]
+| 9
+| 1993-2004 (9 doppio)
+|-
+|colspan=5 style="background: #c0d077;"|'''''Donne dal 1884'''''
+|-
+|rowspan=2|Maggior numero di titoli singolare femminile
+| Prima del 1968:
+| {{Bandiera|USA}} [[Helen Wills Moody|Helen Wills]]
+| 8
+| 1927, 1928, 1929, 1930, 1932, 1933, 1935, 1938
+|-
+| Dopo il 1968:
+| {{Bandiera|CSK}}/{{Bandiera|USA}} [[Martina Navrátilová]]
+| 9
+| 1978, 1979, 1982, 1983, 1984, 1985, 1986, 1987, 1990
+|-
+|rowspan=2|Maggior numero di titoli consecutivi singolare femminile
+| Prima del 1968:
+| {{Bandiera|FRA}} [[Suzanne Lenglen]]
+| 5
+| 1919-1923
+|-
+| Dopo il 1968:
+| {{Bandiera|USA}} [[Martina Navrátilová]]
+| 6
+| 1982-1987
+|-
+|rowspan=2|Maggior numero di titoli doppio femminile
+|Prima del 1968:
+| {{Bandiera|USA}} [[Elizabeth Ryan]]
+| 12
+| 1914 con [[Agnes Morton]]<br />1919, 1920, 1921, 1922, 1923, 1925 con [[Suzanne Lenglen]]<br />1926 con [[Mary Browne]]<br />1927, 1930 con [[Helen Wills Moody|Helen Wills]]<br />1933, 1934 con [[Simonne Mathieu]]
+|-
+| Dopo il 1968:
+| {{Bandiera|CSK}}/{{Bandiera|USA}} [[Martina Navrátilová]]
+| 7
+| 1976 con [[Chris Evert]]<br />1979 con [[Billie Jean King]]<br />1981, 1982, 1983, 1984, 1986 con [[Pam Shriver]]
+|-
+|rowspan=2|Maggior numero di titoli consecutivi doppio femminile
+| Prima del 1968:
+| {{Bandiera|USA}} [[Elizabeth Ryan]]
+| 6
+| 1914 con [[Agnes Morton]]<br />(1915-1918 non disputato a causa della prima guerra mondiale)<br />1919-1923 con [[Suzanne Lenglen]]
+|-
+| Dopo il 1968:
+|{{Bandiera|USA}} [[Martina Navrátilová]]<br /><br />{{Bandiera|USA}} [[Pam Shriver]]<br /><br />{{Bandiera|URS}}/{{Bandiera|BLR 1991-1995}} [[Nataša Zvereva]]
+| 4
+| 1981-1984 con [[Pam Shriver]]<br /><br />1981-1984 con [[Martina Navrátilová]]<br /><br />1991 con [[Larisa Neiland]]<br />1992-1994 con [[Gigi Fernández]]
+|-
+|rowspan=2|Maggior numero di titoli doppio misto - donne
+| Prima del 1968:
+| {{Bandiera|USA}} [[Elizabeth Ryan]]
+| 7
+| 1919, 1921, 1923 con [[Randolph Lycett]]<br />1927 con [[Francis Hunter|Frank Hunter]]<br />1928 con [[Patrick Spence]]<br />1930 con [[Jack Crawford]]<br />1932 con [[Enrique Maier]]
+|-
+| Dopo il 1968:
+| {{Bandiera|CSK}}/{{Bandiera|USA}} [[Martina Navrátilová]]
+| 4
+| 1985 con [[Paul McNamee]]<br />1993 con [[Mark Woodforde]]<br />1995 con [[Jonathan Stark]]<br />2003 con [[Leander Paes]]
+|-
+|rowspan=2|Maggior numero di titoli consecutivi doppio misto - donne
+| Prima del 1968:
+| {{Bandiera|USA}} [[Doris Hart]]
+| 5
+| 1951-1952 con [[Frank Sedgman]]<br />1953-1955 con [[Vic Seixas]]
+|-
+| Dopo il 1968:
+| {{Bandiera|USA}} [[Billie Jean King]]<br /><br />{{Bandiera|AUS}} [[Wendy Turnbull]]<br /><br />{{Bandiera|CZE}} [[Helena Suková]]<br /><br />{{Bandiera|USA}} [[Desirae Krawczyk]]
+| 2
+| 1973-1974 con [[Owen Davidson]]<br /><br />1983-1984 con [[John Lloyd (tennista)|John Lloyd]]<br /><br />1996-1997 con [[Cyril Suk]]<br /><br />2021-2022 con [[Neal Skupski]]
+|-
+|rowspan=3|Maggior numero di titoli complessivi (singolare, doppio, misto) - donne
+|rowspan=2|Prima del 1968:
+| {{Bandiera|USA}} [[Billie Jean King]]
+| 20
+| 1961-79 (6 singolare, 10 doppio, 4 misto)
+|-
+| {{Bandiera|USA}} [[Elizabeth Ryan]]
+| 19
+| 1914-34 (12 doppio, 7 misto)
+|-
+| Dopo il 1968:
+| {{Bandiera|CSK}}/{{Bandiera|USA}} [[Martina Navrátilová]]
+| 20
+| 1976-2003 (9 singolare, 7 doppio, 4 misto)
+|-
+|colspan=5 style="background: #c0d077;"|'''''Vari'''''
+|-
+|colspan=2|Maggior numero di game vinti in finale
+| {{Bandiera|USA}} [[Andy Roddick]]
+| 39
+|2009
+|-
+|colspan=2|Maggior numero di match giocati (uomini)
+| {{Bandiera|FRA}} [[Jean Borotra]]
+| 223
+|1922-1964
+|-
+|colspan=2|Maggior numero di match giocati (donne)
+| {{Bandiera|CSK}}/{{Bandiera|USA}} [[Martina Navrátilová]]
+| 326
+| 1973-2006
+|-
+|colspan=2|Maggior numero di sconfitte in finale (uomini)
+| {{Bandiera|GBR}} [[Herbert Lawford]]<br /><br />{{Bandiera|GBR}} [[Arthur Gore]]
+| 5
+| 1880, 1884, 1885, 1886, 1888<br /><br />1899, 1902, 1907, 1910, 1912
+|-
+|colspan=2|Maggior numero di sconfitte in finale (donne)
+| {{Bandiera|GBR}} [[Blanche Bingley Hillyard]]<br /><br />{{Bandiera|USA}} [[Chris Evert]]
+| 7
+| 1885, 1887, 1888, 1891, 1892, 1893, 1901<br /><br />1973, 1978, 1979, 1980, 1982, 1984, 1985
+|-
+|colspan=2|Vincitore col minor ranking (uomini)
+| {{Bandiera|HRV}} [[Goran Ivanišević]]
+| 125º (non testa di serie con una [[Wild card (sport)|wild card]])
+| 2001
+|-
+|colspan=2|Vincitrice col minor ranking (donne)
+| {{Bandiera|CZE}} [[Markéta Vondroušová]]
+| 42º (non testa di serie)
+| 2023
+|-
+|colspan=2|Vincitore più giovane (Singolare maschile)
+| {{Bandiera|FRG}} [[Boris Becker]]
+|17 anni e 227 giorni
+|1985
+|-
+|-
+|colspan=2|Vincitore più vecchio (Singolare maschile)
+| {{Bandiera|GBR}} [[Arthur Gore]]
+|41 anni e 182 giorni
+|1909
+|-
+|colspan=2|Vincitore più giovane (Doppio maschile)
+| {{Bandiera|USA}} [[Dennis Ralston]]
+|17 anni e 341 giorni
+|1960
+|-
+|-
+|colspan=2|Vincitore più vecchio (Doppio maschile)
+| {{Bandiera|USA}} [[Gardnar Mulloy]]
+|43 anni e 226 giorni
+|1957
+|-
+|colspan=2|Vincitore più giovane (Doppio misto)
+| {{Bandiera|AUS}} [[Rod Laver]]
+|20 anni e 328 giorni
+|1959
+|-
+|-
+|colspan=2|Vincitore più vecchio (Doppio misto)
+| {{Bandiera|USA}} [[Sherwood Stewart]]
+|42 anni e 28 giorni
+|1988
+|-
+|colspan=2|Vincitrice più giovane (Singolare femminile)
+| {{Bandiera|GBR}} [[Lottie Dod]]
+|15 anni e 285 giorni
+|1887
+|-
+|colspan=2|Vincitrice più vecchia (Singolare femminile)
+| {{Bandiera|GBR}} [[Charlotte Cooper Sterry]]
+|37 anni e 282 giorni
+|1908
+|-
+|colspan=2|Vincitrice più giovane (Doppio femminile)
+| {{Bandiera|CHE}} [[Martina Hingis]]
+|15 anni e 282 giorni
+|1996
+|-
+|-
+|colspan=2|Vincitrice più vecchia (Doppio femminile)
+| {{Bandiera|USA}} [[Elizabeth Ryan]]
+|42 anni e 152 giorni
+|1934
+|-
+|colspan=2|Vincitrice più giovane (Doppio misto)
+| {{Bandiera|USA}} [[Serena Williams]]
+|16 anni e 282 giorni
+|1998
+|-
+|colspan=2|Vincitrice più vecchia (Doppio misto)
+| {{Bandiera|USA}} [[Martina Navrátilová]]
+|46 anni e 261 giorni
+|2003
+|-
+|-
+|colspan=2|Debuttante più giovane (Singolare maschile)
+| {{Bandiera|USA}} [[Sidney Wood]]
+|15 anni e 231 giorni
+|1927
+|-
+|-
+|colspan=2|Debuttante più vecchio (Singolare maschile)
+| {{Bandiera|GBR}} [[Josiah Ritchie]]
+|55 anni e 247 giorni
+|1926
+|-
+|colspan=2|Debuttante più giovane (Doppio maschile)
+| {{Bandiera|USA}} [[Sidney Wood]]
+|15 anni e 234 giorni
+|1927
+|-
+|-
+|colspan=2|Debuttante più vecchio (Doppio maschile)
+| {{Bandiera|FRA}} [[Jean Borotra]]
+|65 anni e 317 giorni
+|1964
+|-
+|colspan=2|Debuttante più vecchio (Doppio misto)
+| {{Bandiera|FRA}} [[Jean Borotra]]
+|64 anni e 320 giorni
+|1963
+|-
+|colspan=2|Debuttante più giovane (Singolare femminile)
+| {{Bandiera|USA}} [[Jennifer Capriati]]
+|14 anni e 90 giorni
+|1990
+|-
+|colspan=2|Debuttante più vecchia (Singolare femminile)
+| {{Bandiera|GBR}} [[Madeline O'Neill]]
+|54 anni e 304 giorni
+|1922
+|-
+|colspan=2|Debuttante più giovane (Doppio femminile)
+| {{Bandiera|USA}} [[Jennifer Capriati]]
+|14 anni e 92 giorni
+|1990
+|-
+|colspan=2|Testa di serie più giovane (Singolare maschile)
+| {{Bandiera|SWE}} [[Björn Borg]]
+|17 anni e 19 giorni
+|1973
+|-
+|colspan=2|Testa di serie più giovane (Singolare femminile)
+| {{Bandiera|USA}} [[Jennifer Capriati]]
+|14 anni e 89 giorni
+|1990
+|-
+|-
+|colspan=2|Nazione più vincente (Singolare maschile)
+| {{USA}}
+|33 titoli
+|
+|-
+|colspan=2|Nazione più vincente (Singolare femminile)
+| {{USA}}
+|50 titoli
+|
+|-
+|colspan=2|Finale maschile più lunga per durata
+| {{Bandiera|CHE}} [[Roger Federer]] vs<br />{{Bandiera|SRB}} [[Novak Đoković]]
+|4 ore 57 minuti
+|2019
+|-
+|colspan=2|Finale maschile più lunga per nr di games
+| {{Bandiera|CHE}} [[Roger Federer]] vs<br />{{Bandiera|USA}} [[Andy Roddick]]
+|77 games<br />5–7, 7–6<sup>(6)</sup>, 7–6<sup>(5)</sup>, 3–6, 16–14
+|2009
+|-
+|colspan=2|Match maschile più lungo per durata e per nr di games
+| {{Bandiera|USA}} [[John Isner]] vs<br />{{Bandiera|FRA}} [[Nicolas Mahut]]
+|11 ore 5 minuti<br />(primo turno)<br />6-4, 3-6, <sup>(7)</sup>6-7, 7-6<sup>(5)</sup>, 70-68 (183 games)
+|2010
+|-
+|colspan=2|Finale femminile più lunga per durata
+|{{Bandiera|USA}} [[Lindsay Davenport]] vs<br />{{Bandiera|USA}} [[Venus Williams]]
+|2 ore 45 minuti
+|2005
+|-
+|colspan=2|Finale femminile più corta per durata
+|{{Bandiera|POL}} [[Iga Świątek]] vs<br />{{Bandiera|USA}} [[Amanda Anisimova]]
+|58 minuti
+|2025
+|-
+|colspan=2|Match femminile più lungo per durata
+|{{Bandiera|USA}} [[Chanda Rubin]] vs<br />{{Bandiera|CAN}} [[Patricia Hy-Boulais]]
+|3 ore 45 minuti<br />(secondo turno)<br />7-6<sup>(4)</sup>, <sup>(5)</sup>6-7, 17-15
+|1995
+|}
+
+== Galleria d'immagini ==
+<gallery>
+File:The Royal Gallery at Centre Court, Wimbledon.jpg|Il ''Royal Box''
+File:The Crowd at Centre Court, Wimbledon.jpg|Pubblico a Wimbledon
+File:Centre Court Wimbledon 1.jpg|Il [[Centre Court|campo centrale]]
+File:The decision of In or Out with the help of Technology at Wimbledon.jpg|Intervento dell'[[Hawk-Eye]] per decidere un punto
+File:The longest match ever played at Wimbledon.jpg|Placca in onore del [[Incontro Isner-Mahut del torneo di Wimbledon 2010|match più lungo nella storia del tennis]]
+File:The Wimbledon Shop.jpg|Negozio ufficiale
+File:The instructions to Non Ticket Holders at Wimbledon.jpg|Istruzioni per chi non è già in possesso del biglietto
+File:Wimbledon scoreboard.jpg|Tabellone
+File:Wimbledon order of play.jpg|Ordine di gioco
+File:Wimbledon Court 1.jpg|Il [[No. 1 Court|Campo Nr. 1]]
+File:Wimbledon Court 2.jpg|Il [[No. 2 Court|Campo Nr. 2]]
+File:Court 4 Wimbledon.JPG|Campo 4
+File:Court 19 Wimbledon.JPG|Campo 19
+File:Court 15 Wimbledon.JPG|Campo 15
+File:Court 17 Wimbledon.JPG|Campo 17
+</gallery>
+
+== Note ==
+<references/>
+
+== Bibliografia ==
+* {{cita libro|cognome=Collins|nome=Bud|titolo=The Bud Collins History of Tennis: An Authoritative Encyclopedia and Record Book|url=https://archive.org/details/budcollinshistor0000coll|editore=New Chapter Press|anno=2010|isbn=978-1-937559-38-0|lingua=en|cid=Collins 2010}}
+* {{cita libro|cognome=Neil|nome=Harman|titolo=Wimbledon 2012: The Official Story of the Championships|url=https://archive.org/details/wimbledon2012off0000harm|editore=Vision Sports Publishing Ltd|anno=2012|isbn=978-1-907637-64-3|lingua=en}}
+
+== Altri progetti ==
+{{interprogetto|n=Andy Murray & Serena Williams Re e Regina di Wimbledon|q|q_preposizione=sul}}
+
+== Collegamenti esterni ==
+* {{Collegamenti esterni}}
+
+{{Tornei del Grande Slam}}
+{{Torneo di Wimbledon}}
+{{Controllo di autorità}}
+{{Portale|tennis}}
+
+[[Categoria:Torneo di Wimbledon| ]]

@@ -1,5 +1,6 @@
 import parse from '../../parse/toJSON/index.ts'
 import strip from '../../parse/toJSON/_strip.ts'
+import roundNumber from './_lib.ts'
 import { titlecase, percentage, toOrdinal } from '../_lib.ts'
 export default {
   //https://en.wikipedia.org/wiki/Template:Ra
@@ -893,22 +894,16 @@ export default {
     return Number(data.a) + Number(data.b)
   },
   round: (tmpl) => {
-    let data = parse(tmpl, ['val', 'decimals'])
-    let n = Number(data.val)
-    //todo: handle decimal place
-    return Math.round(n) || ''
+    const data = parse(tmpl, ['val', 'decimals'])
+    return roundNumber(data.val, data.decimals, Math.round)
   },
   rounddown: (tmpl) => {
-    let data = parse(tmpl, ['val', 'decimals'])
-    let n = Number(data.val)
-    //todo: handle decimal place
-    return Math.floor(n) || ''
+    const data = parse(tmpl, ['val', 'decimals'])
+    return roundNumber(data.val, data.decimals, Math.floor)
   },
   roundup: (tmpl) => {
-    let data = parse(tmpl, ['val', 'decimals'])
-    let n = Number(data.val)
-    //todo: handle decimal place
-    return Math.ceil(n) || ''
+    const data = parse(tmpl, ['val', 'decimals'])
+    return roundNumber(data.val, data.decimals, Math.ceil)
   },
   parity: (tmpl) => {
     let data = parse(tmpl, ['val', 'even', 'odd'])
@@ -969,12 +964,11 @@ export default {
   },
   'order of magnitude': (tmpl) => {
     let data = parse(tmpl, ['val'])
-    let num = parseInt(data.val, 10)
-    //todo: support decimal forms
-    if (num || num === 0) {
-      return String(num).length - 1
+    const num = Math.abs(Number(data.val))
+    if (!Number.isFinite(num) || num === 0) {
+      return '0'
     }
-    return '0'
+    return String(Math.floor(Math.log10(num)))
   },
   'percent and number': (tmpl) => {
     let data = parse(tmpl, ['number', 'total', 'decimals'])

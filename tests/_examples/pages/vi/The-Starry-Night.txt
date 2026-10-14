@@ -1,0 +1,47 @@
+{{Infobox artwork
+| image_file=Van Gogh - Starry Night - Google Art Project.jpg
+| title=Đêm đầy sao
+| alt= A painting of a scene at night with 11 swirly stars and a bright yellow crescent moon. In the background there are hills, in the middle ground there is a moonlit town with a church that has an elongated steeple, and in the foreground there is the dark green silhouette of a cypress tree.
+| artist=[[Vincent van Gogh]]
+| year=1889
+| type=[[Tranh sơn dầu|Sơn dầu trên vải]]
+| accession= 472,1941
+| height_metric=73.7
+| width_metric=92.
+
+| metric_unit=cm
+| height_imperial=29
+| width_imperial =36¼
+| imperial_unit=in
+| city= Thành phố New York
+| museum=[[Museum of Modern Art|Bảo tàng Nghệ thuật Hiện đại]] ([[Jacob Baart de la Faille|F612]], [[Jan Hulsker|JH1731]]) <ref name=brooks>{{chú thích web |url=http://www.vggallery.com/painting/p_0612.htm|title=Starry Night | author=Brooks, D |date= |work=The Vincent van Gogh Gallery, endorsed by Van Gogh Museum, Amsterdam | publisher=David Brooks (self-published) |access-date=ngày 19 tháng 2 năm 2012}}</ref>
+}}
+
+'''''Đêm đầy sao''''' ({{langx|nl|De sterrennacht}}) là một bức tranh của họa sĩ [[hậu ấn tượng]] người [[Hà Lan]] [[Vincent Van Gogh|Vincent van Gogh]]. Được vẽ vào tháng 6 năm 1889, bức tranh miêu tả khung cảnh bên ngoài cửa sổ phòng bệnh của ông ở [[Saint-Rémy-de-Provence]], miền Nam nước [[Pháp]] về đêm, mặc dù ông đã vẽ bức tranh vào ban ngày qua trí nhớ.<ref>{{chú thích báo|last=|first=Pi Uy|date=ngày 8 tháng 4 năm 2013|title=Hơn 100 năm nhìn lại những kiệt tác làm nên "Vincent Van Gogh"|work=Dân trí|location=Hà Nội|url=https://dantri.com.vn/van-hoa/hon-100-nam-nhin-lai-nhung-kiet-tac-lam-nen-vincent-van-gogh-1365834595.htm|access-date=ngày 23 tháng 7 năm 2013}}</ref> ''Đêm đầy sao'' nằm trong bộ sưu tập của [[Museum of Modern Art|Bảo tàng Nghệ thuật Hiện đại]] ở thành phố New York, một phần trong [[Lillie P. Bliss#Di vật của Lillie P. Bliss|Di vật của Lillie P. Bliss]], từ năm 1941. Bức tranh Đêm đầy sao là một trong những tác phẩm nổi tiếng nhất của Van Gogh, đánh dấu bước ngoặt mang tính quyết định chuyển sang sự tự do sáng tạo to lớn hơn trong nghệ thuật của ông.<ref name="Lieberman37">Lieberman, William S. (1980). ''Modern masters: European paintings from the Museum of Modern Art''. New York: Metropolitan Museum of Art. p. 37. ISBN 0870992465</ref>
+
+== Nguồn gốc ==
+[[Tập tin:Starry Night Over the Rhone.jpg|trái|nhỏ|''[[Đêm đầy sao trên sông Rhone]]'', 1888, sơn dầu trên vải]]
+Trong một bức thư gửi [[Emile Bernard]] vào tháng 4 năm 1888, Van Gogh bộc lộ mong muốn vẽ bầu trời về đêm, và hỏi rằng liệu ông có thể đạt được điều đó bằng cách vẽ thiên nhiên như các họa sĩ [[Trường phái ấn tượng]].
+
+Tháng 9 năm 1888, trước khi bị suy nhược và phải nhập viện ở [[Arles]] vào tháng 12, Van Gogh đã vẽ ''[[Đêm đầy sao trên sông Rhone]]'' vào ban đêm dưới ánh đèn gas.
+
+Tháng 5 năm 1889, Van Gogh quyết định vào nhà thương điên Saint-Rémy, nơi ông sống trong suốt năm tiếp theo. Trong thời gian ở đây ông đã vẽ rất nhiều, cho dù bị gián đoạn bởi những lần lên cơn.<ref>Gogh, Vincent van, and Bruce Bernard (2000). ''Vincent by himself''. London: Little, Brown. p. 13. ISBN 0316855065</ref> Được gợi hứng từ cảnh vật xung quanh nhà thương điên, ông vẽ ''Đêm đầy sao'' vào tháng 6 năm 1889. Khác với ''[[Đêm đầy sao trên sông Rhone]]'', bức tranh này được vẽ vào ban ngày qua trí nhớ. Giữa tháng 9 năm 1889, sau một cuộc khủng hoảng nặng nề bắt đầu từ giữa tháng 7 cho đến hết tháng 8, ông nghĩ là sẽ bao gồm ''Đêm đầy sao'' trong lô tác phẩm tiếp theo được gửi cho em trai ông, Theo ở [[Paris]].<ref name=letter607>Letter [http://webexhibits.org/vangogh/letter/20/607.htm Webexhibits.org] {{Webarchive|url=https://web.archive.org/web/20160304103800/http://www.webexhibits.org/vangogh/letter/20/607.htm |date=2016-03-04 }}, 607</ref> Nhằm giảm chi phí vận chuyển, ông giữ lại ba tác phẩm, trong đó có ''Đêm đầy sao''. Chúng được gửi tới Paris trong lần chuyển hàng tiếp theo.<ref>Letter [http://webexhibits.org/vangogh/letter/20/608.htm Webexhibits.org], 608</ref> Khi Theo không báo tin ngay lập tức rằng bức tranh đã tới nơi, Vincent hỏi thăm một lần nữa và cuối cùng đã nhận được lời nhận xét của Theo về tác phẩm.<ref>Letter [http://webexhibits.org/vangogh/letter/20/609.htm 609]</ref><ref>Letter [http://webexhibits.org/vangogh/letter/20/T19.htm Webexhibits.org], T19</ref>
+
+=== Chủ đề ===
+Phần chính giữa cho thấy ngôi làng Saint-Rémy dưới một bầu trời cuộn xoáy, dưới góc nhìn từ nhà thương điên hướng về phía bắc. Dãy [[Alpilles]] ở bên phải phù hợp với góc nhìn này, nhưng có ít mối liên hệ giữa khung cảnh thật với những ngọn đồi ở giữa, có vẻ như chúng được lấy từ một phần khác của cảnh vật xung quanh, về phía nam của [[nhà thương điên]]. [[Họ Hoàng đàn|Cây Hoàng đàn]] ở bên trái đã được thêm vào [[bố cục]] của bức tranh.<ref>[http://www.moma.org/collection/browse_results.php?object_id=79802 MOMA.org] The Museum of Modern Art maintains the traditional identification of a cypress tree.</ref> Một điều đáng chú ý là Van Gogh đã thay đổi vị trí của chòm sao [[Đại Hùng]] từ phía bắc sang phía nam, ông cũng đã làm điều này trong bức ''Đêm đầy sao trên sông Rhone''.
+
+== Chú thích ==
+{{tham khảo}}
+
+== Tham khảo ==
+* {{Citation |last=Boime |first=Albert |authorlink=Albert Boime |title=Van Gogh: Sternennacht: Kunstgeschichte im Detail |language=de |trans-title=Van Gogh: Starry Night: Art History in Detail |isbn=3-634-23015-0 |year=1996 |publisher=Systhema Verlag |oclc=80645605 }}. Originally published by the Voyager Company, NY, as "Vincent Van Gogh: Starry night, a history of matter, a matter of history."
+
+== Liên kết ngoài ==
+{{Thể loại Commons|Starry Night}}
+*{{MoMAobject|79802}}
+*[http://www.googleartproject.com/museums/moma/the-starry-night ''Đêm đầy sao''] trên [[Google Art Project]]
+*[http://smarthistory.org/blog/6/van-goghs-starry-night-at-moma smARThistory: ''Đêm đầy sao'' của van Gogh] {{Webarchive|url=https://web.archive.org/web/20070709104546/http://smarthistory.org/blog/6/van-goghs-starry-night-at-moma |date=2007-07-09 }}
+*[http://www.oes.org/page2/7194~Starry_Night-Vincent_vanGogh_Starry_Starry_Night_Don_McLean.html Nghiên cứu đa phương tiện về van Gogh, McLean và Sexton]
+
+[[Thể loại:Tranh vẽ của Vincent van Gogh]]
+[[Thể loại:Tranh vẽ năm 1889]]
