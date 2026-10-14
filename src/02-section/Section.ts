@@ -126,7 +126,8 @@ class Section {
       .filter((val) => val !== undefined) //filter out all the undefined from the flattened empty arrays
 
     if (typeof clue === 'string') {
-      let link = arr.find((o) => o.page().toLowerCase() === clue.toLowerCase())
+      const target = clue.toLowerCase()
+      const link = arr.find((link) => link.page()?.toLowerCase() === target)
       return link === undefined ? [] : [link]
     }
 

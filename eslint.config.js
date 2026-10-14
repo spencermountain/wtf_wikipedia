@@ -1,4 +1,4 @@
-import * as regexpPlugin from "eslint-plugin-regexp"
+import * as regexpPlugin from 'eslint-plugin-regexp'
 import tseslint from 'typescript-eslint'
 
 export default [
@@ -20,7 +20,7 @@ export default [
         __filename: 'readonly',
         fetch: 'readonly',
         URL: 'readonly',
-      }
+      },
     },
     // custom rules setup
     rules: {
@@ -62,7 +62,7 @@ export default [
       'regexp/prefer-d': 'off',
       'regexp/no-unused-capturing-group': 'off',
       'regexp/no-super-linear-move': 'warn',
-    }
+    },
   },
   {
     files: ['**/*.{ts,mts,cts,tsx}'],
@@ -78,5 +78,5 @@ export default [
       'no-use-before-define': 'off',
       '@typescript-eslint/no-use-before-define': 'warn',
     },
-  }
+  },
 ]
