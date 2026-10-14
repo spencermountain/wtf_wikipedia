@@ -291,9 +291,9 @@ test('microsoft currency parsing', function (t) {
 }}
   `
   const infobox = wtf(microsoft).infobox().data
-  t.equal(infobox.revenue.text(), 'US$89.95 billion', 'revenue =' + infobox.revenue.text)
-  t.equal(infobox.operating_income.text(), 'US$22.27 billion', 'operating_income =' + infobox.operating_income.text)
-  t.equal(infobox.net_income.text(), 'US$21.20 billion', 'net_income =' + infobox.net_income.text)
+  t.equal(infobox.revenue.text(), 'US$89.95\xa0billion', 'revenue =' + infobox.revenue.text)
+  t.equal(infobox.operating_income.text(), 'US$22.27\xa0billion', 'operating_income =' + infobox.operating_income.text)
+  t.equal(infobox.net_income.text(), 'US$21.20\xa0billion', 'net_income =' + infobox.net_income.text)
   t.end()
 })
 

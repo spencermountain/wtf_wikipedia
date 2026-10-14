@@ -697,7 +697,7 @@ test('interwiki - get - if the clue is any other type then return all interwiki'
 test('lists - get - return all lists on the page', (t) => {
   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'anarchism.txt'), 'utf-8')
   let doc = wtf(str)
-  const expected = [1926, 815, 4907, 2246]
+  const expected = [1896, 815, 4907, 2246]
   t.deepEqual(
     doc.lists().map((l) => JSON.stringify(l.json()).length),
     expected,
@@ -716,7 +716,7 @@ test('lists - get - if the clue is a number return the lists at that index', (t)
 test('lists - get - if the clue is any other type then return all lists', (t) => {
   let str = fs.readFileSync(path.join(dir, '../', 'cache', 'anarchism.txt'), 'utf-8')
   let doc = wtf(str)
-  const expected = [1926, 815, 4907, 2246]
+  const expected = [1896, 815, 4907, 2246]
   t.deepEqual(
     doc.lists('string').map((l) => JSON.stringify(l.json()).length),
     expected,

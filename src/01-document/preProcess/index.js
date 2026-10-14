@@ -16,18 +16,6 @@ function preProcess(wiki) {
   //formatting for templates-in-templates...
   wiki = wiki.replace(/\{\{\}\}/g, ' – ')
   wiki = wiki.replace(/\{\{\\\}\}/g, ' / ')
-  // some html escaping
-  wiki = wiki.replace(/&nbsp;/g, ' ')
-  wiki = wiki.replace(/&ndash;/g, '–')
-  wiki = wiki.replace(/&mdash;/g, '—')
-  wiki = wiki.replace(/&amp;/g, '&')
-  wiki = wiki.replace(/&quot;/g, '"')
-  wiki = wiki.replace(/&apos;/g, "'")
-  wiki = wiki.replace(/&copy;/g, '©')
-  wiki = wiki.replace(/&reg;/g, '®')
-  wiki = wiki.replace(/&trade;/g, '™')
-  // wiki = wiki.replace(/&lt;/g, '<')
-  // wiki = wiki.replace(/&gt;/g, '>')
 
   //give it the inglorious send-off it deserves..
   wiki = kill_xml(wiki)
