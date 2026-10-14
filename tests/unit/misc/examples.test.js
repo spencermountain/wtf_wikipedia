@@ -546,7 +546,7 @@ test('Sara-C-Bisel', (t) => {
 test('Senate-Of-Pakistan', (t) => {
   const doc = wtf(readPage('Senate-Of-Pakistan'))
   t.equal(doc.infobox().type(), 'legislature', 'legislature infobox')
-  t.equal(doc.infobox().get('name').text(), 'Senate of Pakistan', 'legislature name')
+  t.equal(doc.infobox().get('name').text(), 'Senate of Pakistan ایوانِ بالا پاکستان', 'English and Urdu legislature name')
   t.match(doc.text(), /upper legislative chamber/i, 'legislative role')
   t.ok(doc.links().some((link) => link.page() === 'Pakistan'), 'country link')
   t.ok(doc.tables().length > 0, 'parliamentary data tables')
@@ -605,6 +605,7 @@ test('The-Field-Of-Waterloo', (t) => {
 
 test('Toronto', (t) => {
   const doc = wtf(readPage('Toronto'))
+  t.deepEqual(doc.coordinate(), { template: 'infobox/lat-long', lat: 43.7, lon: -79.4 }, 'city coordinates')
   t.equal(doc.title(), 'Toronto', 'city title')
   t.ok(doc.links().some((link) => link.page() === 'Ontario'), 'province link')
   t.ok(doc.section('History'), 'city history section')

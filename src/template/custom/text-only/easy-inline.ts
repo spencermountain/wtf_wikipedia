@@ -16,6 +16,7 @@ let templates = {
 
 //templates that we simply grab their insides as plaintext
 let zeros = [
+  'nastaliq',
   'defn',
   'lino', //https://en.wikipedia.org/wiki/'Linum',
   'finedetail', //https://en.wikipedia.org/wiki/'Finedetail',
