@@ -3,15 +3,14 @@
   "compilerOptions": {
     "target": "es2022",
     "module": "commonjs",
-    "moduleResolution": "node10",
     "ignoreDeprecations": "6.0",
     "strict": true,
     "noEmit": true,
     "skipLibCheck": false,
     "types": [],
     "paths": {
-      "wtf_wikipedia": ["../.."]
-    }
+      "wtf_wikipedia": ["../.."],
+    },
   },
-  "files": ["./cjs.cts"]
+  "files": ["./cjs.cts"],
 }

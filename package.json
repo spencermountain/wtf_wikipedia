@@ -53,17 +53,17 @@
   },
   "packageManager": "pnpm@12.5.1",
   "scripts": {
+    "watch": "node --watch ./scratch.js",
     "version": "node ./scripts/version.js",
     "build": "node ./scripts/version.js && rollup -c",
     "build:all": "pnpm run build && pnpm -r run build",
     "lint": "eslint .",
+    "test": "pnpm run test:unit",
     "test:unit": "tape --strict \"tests/unit/**/*.test.js\" | tap-dancer",
     "test:types": "tsc -p ./tests/types && tsc -p ./tests/types/node10.tsconfig.json && tsc -p ./tests/types/plugins.tsconfig.json && tsc -p ./tests/types/plugins-cjs.tsconfig.json",
-    "test:plugins": "pnpm -r --workspace-concurrency=1 run test:all",
+    "test:plugins": "pnpm -r --workspace-concurrency=1 run test",
     "test:all": "pnpm run test:types && pnpm run test:unit && pnpm run test:plugins && pnpm run lint",
-    "test": "pnpm run test:unit",
-    "testb": "TESTENV=prod pnpm run test:all",
-    "watch": "node --watch ./scratch.js"
+    "testb": "TESTENV=prod pnpm run test:all"
   },
   "files": [
     "builds",

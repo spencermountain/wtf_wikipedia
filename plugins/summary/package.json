@@ -25,8 +25,7 @@
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
     "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
-    "test:built": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
-    "test:all": "pnpm run build && pnpm test && pnpm run test:built",
+    "testb": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
     "version": "node ./scripts/version.js"
   },
   "files": [
