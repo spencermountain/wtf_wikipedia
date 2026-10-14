@@ -22,6 +22,7 @@ export default [
   'immagine', //it
   'larawan', //tl
   'lêer', //af
+  'picha', //sw
   'plik', //pl
   'restr', //br
   'slika', //bs

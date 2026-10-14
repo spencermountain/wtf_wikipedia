@@ -51,12 +51,17 @@ class Infobox {
   }
 
   image() {
-    let s = this.data.image || this.data.image2 || this.data.logo || this.data.image_skyline || this.data.image_flag
+    const s = this.data.image || this.data.image2 || this.data.logo || this.data.image_skyline
+      || this.data.image_flag || this.data.image_file || this.data['画像']
     if (!s) {
       return null
     }
     let obj = s.json()
     let file = obj.text
+    // Keep the filename when localized image markup parses as a labeled link.
+    if (s.wikitext().trim().startsWith('[[')) {
+      file = s.wikitext()
+    }
     obj.file = file
     obj.text = ''
     obj.caption = this.data.caption

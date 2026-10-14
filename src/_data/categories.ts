@@ -50,7 +50,6 @@ export default [
   'setensele', //	nso
   'sokajy', //	mg
   'sumut', // atassuseq	kl
-  'thể', // loại	vi
   'turkum', //	uz
   'категорија',
   'категория', //	ru
