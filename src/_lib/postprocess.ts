@@ -7,7 +7,7 @@ function postprocess(line) {
   line = line.replace(/\( *(; ?)+/g, '(')
   //dangling punctuation
   line = trim_whitespace(line)
-  line = line.replace(/ +\.$/, '.')
+  line = line.replace(/ \.$/, '.')
 
   // handle HTML entities
   line = line.replace(/&nbsp;/g, '\xa0')

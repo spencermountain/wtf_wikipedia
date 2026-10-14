@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 declare class Image {
   alt(): string
   caption(): string
@@ -216,33 +215,6 @@ declare class Sentence {
   wikitext(): string
 }
 
-export default wtf
-
-// The classes below are exposed for typing and plugin development only.
-// At runtime the default export (`wtf`) is a function carrying just
-// .fetch/.extend/.plugin/.version — the classes are NOT attached to it.
-// Import them as types: `import type { Document } from 'wtf_wikipedia'`.
-export type {
-  Document,
-  Section,
-  Infobox,
-  Template,
-  Table,
-  Reference,
-  Paragraph,
-  Image,
-  Link,
-  List,
-  Sentence,
-  DocumentOptions,
-  TemplateJson,
-  LinkJson,
-  ImageJson,
-  Coordinate,
-  Models,
-  Plugin,
-}
-
 type FetchOptions = {
   path?: string | undefined
   wiki?: string | undefined
@@ -258,11 +230,11 @@ type FetchOptions = {
 
 type FetchCallback<T> = (...args: [err: Error, result: null] | [err: null, result: FetchResult<T>]) => void
 
-declare function fetch<T extends string | number | string[] | number[] | URL>(
+type Fetch = <T extends string | number | string[] | number[] | URL>(
   title: T,
   options?: FetchOptions | string | undefined, // a string is a language-code, like 'en'
   callback?: FetchCallback<T>
-): Promise<FetchResult<T>>
+) => Promise<FetchResult<T>>
 
 type FetchResult<T> = T extends unknown[] ? Document[] : Document | null
 
@@ -360,9 +332,9 @@ type Plugin = (models: Models, templates: Record<string, unknown>, infoboxes: Re
  */
 export interface Wtf {
   (wiki: string, options?: DocumentOptions): Document
-  fetch: typeof fetch
-  extend: typeof extend
-  plugin: typeof extend
+  fetch: Fetch
+  extend: Extend
+  plugin: Extend
   version: string
 }
 
@@ -415,4 +387,31 @@ declare namespace wtf {
 }
 /* eslint-enable @typescript-eslint/no-shadow */
 
-declare function extend(fn: Plugin): Wtf
+type Extend = (fn: Plugin) => Wtf
+
+export default wtf
+
+// The classes below are exposed for typing and plugin development only.
+// At runtime the default export (`wtf`) is a function carrying just
+// .fetch/.extend/.plugin/.version — the classes are NOT attached to it.
+// Import them as types: `import type { Document } from 'wtf_wikipedia'`.
+export type {
+  Document,
+  Section,
+  Infobox,
+  Template,
+  Table,
+  Reference,
+  Paragraph,
+  Image,
+  Link,
+  List,
+  Sentence,
+  DocumentOptions,
+  TemplateJson,
+  LinkJson,
+  ImageJson,
+  Coordinate,
+  Models,
+  Plugin,
+}

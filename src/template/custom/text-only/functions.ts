@@ -3,6 +3,12 @@ import strip from '../../parse/toJSON/_strip.ts'
 import roundNumber from './_lib.ts'
 import { titlecase, percentage, toOrdinal } from '../_lib.ts'
 export default {
+  transliteration: (tmpl) => {
+    let obj = parse(tmpl, ['1', '2', '3'])
+    // With a scheme in parameter 2, the text moves to parameter 3.
+    return obj['3'] ?? obj['2'] ?? ''
+  },
+
   //https://en.wikipedia.org/wiki/Template:Ra
   ra: (tmpl) => {
     let obj = parse(tmpl, ['hours', 'minutes', 'seconds'])

@@ -12,9 +12,8 @@ const smartReplace = function (all, text, result) {
   if (typeof all === 'number') {
     all = String(all)
   }
-  text = escapeRegExp(text)
   //try a word-boundary replace
-  const reg = new RegExp('\\b' + text + '\\b')
+  const reg = new RegExp('\\b' + escapeRegExp(text) + '\\b')
   if (reg.test(all) === true) {
     all = all.replace(reg, result)
   } else {

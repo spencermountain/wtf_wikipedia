@@ -12,6 +12,9 @@ const linkToFile = /^\[\[:/
 const imgLayouts = {
   thumb: true,
   thumbnail: true,
+  frame: true,
+  framed: true,
+  frameless: true,
   border: true,
   right: true,
   left: true,
@@ -56,8 +59,11 @@ const oneImage = function (img, doc) {
     if (imgData.alt) {
       obj.alt = imgData.alt.text()
     }
-    //remove 'thumb' and things
-    arr = arr.filter((str) => Object.hasOwn(imgLayouts, str.text()) === false)
+    // Layout and size options may follow the caption.
+    arr = arr.filter((str) => {
+      let text = str.text().trim()
+      return !Object.hasOwn(imgLayouts, text) && !/^(?:\d+(?:x\d+)?|x\d+)px$/.test(text)
+    })
     if (arr.at(-1)) {
       obj.caption = arr.at(-1)
     }

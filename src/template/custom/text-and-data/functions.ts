@@ -114,8 +114,13 @@ let templates = {
     let obj = parse(tmpl, ['english', 'kanji', 'romaji', 'extra'])
     list.push(obj)
     let str = obj.english || obj.romaji || ''
-    if (obj.kanji) {
-      str += ` (${obj.kanji})`
+    let details = obj.kanji || ''
+    // Footnote extras should not become inline text.
+    if (obj.extra && obj.template !== 'nihongo foot') {
+      details = [details, obj.extra].filter(Boolean).join('; ')
+    }
+    if (details) {
+      str += ` (${details})`
     }
     return str
   },

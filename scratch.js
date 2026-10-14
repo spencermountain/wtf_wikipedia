@@ -1,15 +1,9 @@
-import wtf from './src/index.ts'
-import plg from './plugins/i18n/src/index.js'
-import { readPage } from './tests/_examples/index.js'
-wtf.plugin(plg)
+import Block from './src/Block/Block.js'
 
-// const str = readPage('Charlie-Milstead')
-const str = `
-[[Thể loại:Khởi đầu năm 1834 ở Canada]]
-[[Thể loại:Khu dân cư trên Tuyến hỏa xa ngầm]]
-[[Thể loại:Toronto]]
-[[Thể loại:Thành phố ở Ontario]]
-[[Thể loại:Khu dân cư thành lập năm 1793]]
-  `
-const doc = wtf(str)
-console.log(doc.categories())
+// The section has already expanded templates and extracted references.
+const block = new Block(
+  "Visit '''[[New York City|New York]]'''. Then visit [[New York (state)|New York]] &amp; ''[[Boston]]''."
+)
+
+console.log(block.text())
+console.dir(block.json(), { depth: null })

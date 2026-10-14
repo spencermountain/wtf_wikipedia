@@ -94,11 +94,11 @@ class Section {
     return this.depth()
   }
 
-  sentences(clue?) {
+  sentences(_clue?) {
     return this.paragraphs().flatMap((p) => p.sentences())
   }
 
-  paragraphs(clue?) {
+  paragraphs(_clue?) {
     return this._paragraphs || []
   }
 
@@ -132,7 +132,7 @@ class Section {
     return arr
   }
 
-  tables(clue?) {
+  tables(_clue?) {
     return this._tables || []
   }
 
@@ -157,7 +157,7 @@ class Section {
     return arr
   }
 
-  coordinates(clue?) {
+  coordinates(_clue?) {
     let arr = [...this.templates('coord'), ...this.templates('coor')]
     let list = arr.map((tmpl) => tmpl.json())
     //try to get coord from infoboxes
@@ -169,7 +169,7 @@ class Section {
     return list
   }
 
-  lists(clue?) {
+  lists(_clue?) {
     let arr = this.paragraphs().flatMap((p) => p.lists())
     return arr
   }
@@ -179,12 +179,12 @@ class Section {
     return arr
   }
 
-  images(clue?) {
+  images(_clue?) {
     let arr = this.paragraphs().flatMap((p) => p.images())
     return arr
   }
 
-  references(clue?) {
+  references(_clue?) {
     return this._references || []
   }
 

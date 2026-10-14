@@ -1,51 +1,64 @@
 <!--
-#### [11.0.0 ]
-- **[change]** - target ES2022 in core and image builds; use native modern collection, object, string, and regex features
-- **[fix]** - preserve namespace ID 0 and accept numeric namespaces in public types
-- **[fix]** - preserve infobox coordinates on the equator and prime meridian
-- **[fix]** - own-property checks tolerate shadowed methods and null-prototype objects
-- **[fix]** - API fetchList handles an empty batch result without reducing an empty array
-- **[breaking]** - use native fetch, drop support for (ancient) Node 12–16
-- **[new]** - .json('sm/md/lg') methods
-- **[fix]** - typescript type issues
-- **[fix]** - choose coordinate name 'lon' vs 'lng'
-- **[new]** - typescript declarations for all bundled plugins
-- **[change]** - classify plugin's empty result uses the same shape (root/details keys)
-- **[change]** - singular methods (.section(), .link()...) return null on a miss, on every class (some returned undefined)
-- **[fix]** - .interwiki() returned every link, instead of just interwiki links
-- **[fix]** - section .previousSibling() returned the raw previous section, instead of the actual sibling
-- **[fix]** - paragraph .references()/.citations() crashed on reference-less paragraphs
-- **[fix]** - .title() could return undefined instead of null
-- **[fix]** - link .json() no longer includes an undefined text key
+####
 
 -->
 
+#### [11.0.0 ] Oct 2026
+
+- target Node 18, ES2022:
+  - **[breaking]** - use native fetch
+  - **[fix]** - typescript declarations for all bundled plugins
+  - **[fix]** - use cleaner own-property checks
+
+* coordinates
+  - **[fix]** - preserve coordinates on the equator and prime meridian
+  - **[fix]** - choose coordinate name 'lon' vs 'lng'
+
+* Plugins:
+  - **[change]** - classify plugin's empty result uses the same shape (root/details keys)
+
+* Misc Issues:
+  - **[fix]** #358: HTML links containing parentheses and brackets now render.
+  - **[fix]** #572: Transliteration text and nihongo extra text are retained.
+  - **[fix]** #303: Image captions survive reordered size and layout options.
+  - **[fix]** #599: Keep template list values in their table cells
+  - **[fix]** - .interwiki() returned every link, instead of just interwiki links
+  - **[fix]** - section .previousSibling() returned the raw previous section, instead of the actual sibling
+  - **[fix]** - paragraph .references()/.citations() crashed on reference-less paragraphs
+  - **[fix]** - .title() could return undefined instead of null
+  - **[fix]** - link .json() no longer includes an undefined text key
+  - **[fix]** - API fetchList handles an empty batch result without reducing an empty array
+
+---
+
 #### 10.5.0 [Jun 2026]
+
 - **[fix]** - typescript type issues
 - **[fix]** - x-site html validation fix #600
 - **[change]** - replace postinstall script to avoid pnpm warning
 - **[update]** - dependencies
 - **[update]** - plugin dependencies
 
-
 #### 10.4.2 [May 2026]
+
 - **[fix]** - wdl template #595
 - **[fix]** - xml parsing issue
 - **[update]** - dependencies
 
 #### 10.4.1 [Dec 2025]
+
 - **[fix]** - bare citation template parsing #591
 - **[fix]** - array input in wtf.fetch #590
 - **[fix]** - support longer citations #589
 - **[new]** - more obscure html escaping
-- **[new]** - add infobox coordinates method #588 
+- **[new]** - add infobox coordinates method #588
 - **[update]** - dependencies
 
-
 #### 10.4.0 [Feb 2025]
-- **[update]** -  export esm/require syntax
-- **[update]** -  #581 - use export default to fix ESM incompatibility
-- **[new]** -  #585 Support 'as of' template
+
+- **[update]** - export esm/require syntax
+- **[update]** - #581 - use export default to fix ESM incompatibility
+- **[new]** - #585 Support 'as of' template
 - **[fix]** - readme typos
 - **[update]** - dependencies
 

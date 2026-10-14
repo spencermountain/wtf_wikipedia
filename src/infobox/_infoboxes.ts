@@ -14,6 +14,7 @@ export default {
   subspeciesbox: true,
   'starbox short': true,
   taxobox: true,
+  '生物分類表': true, //ja taxobox
   nhlteamseason: true,
   'asian games bid': true,
   'canadian federal election results': true,
