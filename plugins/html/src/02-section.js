@@ -7,17 +7,17 @@ const defaults = {
 }
 
 const doSection = function (options) {
-  options = Object.assign({}, defaults, options)
+  options = { ...defaults, ...options }
   let html = ''
   //make the header
   if (options.headers === true && this.title()) {
-    let num = 1 + this.depth()
+    const num = 1 + this.depth()
     html += '  <h' + num + '>' + this.title() + '</h' + num + '>'
     html += '\n'
   }
   //put any images under the header
   if (options.images === true) {
-    let imgs = this.images()
+    const imgs = this.images()
     if (imgs.length > 0) {
       html += imgs.map((image) => image.html(options)).join('\n')
     }

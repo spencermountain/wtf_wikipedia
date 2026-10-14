@@ -1,10 +1,10 @@
 import { mappings } from '../../schema/_data-fns.js'
 
 const byInfobox = function (doc) {
-  let infoboxes = doc.infoboxes()
-  let found = []
+  const infoboxes = doc.infoboxes()
+  const found = []
   for (let i = 0; i < infoboxes.length; i++) {
-    let inf = infoboxes[i]
+    const inf = infoboxes[i]
     let type = inf.type()
 
     type = type.toLowerCase()
@@ -12,7 +12,7 @@ const byInfobox = function (doc) {
     type = type.replace(/ /g, '_')
     type = type.trim()
 
-    if (mappings.infoboxes.hasOwnProperty(type)) {
+    if (Object.hasOwn(mappings.infoboxes, type)) {
       found.push({ type: mappings.infoboxes[type], reason: type })
     }
   }

@@ -1,6 +1,6 @@
 import schema from './index.js'
 
-let mappings = {
+const mappings = {
   categories: {},
   descriptions: {},
   infoboxes: {},
@@ -8,7 +8,7 @@ let mappings = {
   templates: {},
   titles: {},
 }
-let patterns = {
+const patterns = {
   categories: [],
   descriptions: [],
   infoboxes: [],
@@ -29,7 +29,7 @@ const doNode = function (node) {
     node.categories.mapping.forEach((str) => {
       mappings.categories[str] = node.id
     })
-    node.descriptions.mapping = node.descriptions.mapping || []
+    node.descriptions.mapping ||= []
     node.descriptions.mapping.forEach((str) => {
       mappings.descriptions[str] = node.id
     })

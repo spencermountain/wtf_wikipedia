@@ -2,7 +2,7 @@ import test from 'tape'
 import wtf from './_lib.js'
 
 test('barrie', function (t) {
-  let str = `'''[[Barrie]]''' is a city in Ontario, Canada.
+  const str = `'''[[Barrie]]''' is a city in Ontario, Canada.
 
 '''Barrie''' may also refer to:
 
@@ -13,8 +13,8 @@ test('barrie', function (t) {
 * [[Barrie (company)]], fashion company owned by Chanel
 * [[Little Barrie]], British band`
 
-  let doc = wtf(str)
-  let res = doc.disambiguation()
+  const doc = wtf(str)
+  const res = doc.disambiguation()
   t.equal(res.text, 'Barrie', 'text')
   t.equal(res.main, 'Barrie', 'main')
   t.equal(res.pages.length, 6, '6-pages')
@@ -23,7 +23,7 @@ test('barrie', function (t) {
 })
 
 test('barry', function (t) {
-  let str = `'''Barry''' may refer to:
+  const str = `'''Barry''' may refer to:
 {{TOC right}}
 
 ==People and fictional characters==
@@ -85,8 +85,8 @@ test('barry', function (t) {
 {{Disambiguation|geo}}
 `
 
-  let doc = wtf(str)
-  let res = doc.disambiguation()
+  const doc = wtf(str)
+  const res = doc.disambiguation()
   t.equal(res.text, 'Barry', 'text')
   t.equal(res.main, null, 'main')
   t.equal(res.pages.length, 32, '32-pages')

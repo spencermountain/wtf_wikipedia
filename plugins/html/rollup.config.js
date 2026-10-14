@@ -1,38 +1,31 @@
+import { readFileSync } from 'node:fs'
+import terser from '@rollup/plugin-terser'
 import commonjs from '@rollup/plugin-commonjs'
-import { terser } from 'rollup-plugin-terser'
 import sizeCheck from 'rollup-plugin-filesize-check'
 
-import { version } from './package.json'
-console.log('\n 📦  - running rollup..\n')
+const { name, version } = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'))
+const banner = `/*! ${name} ${version} MIT */`
 
-const name = 'wtf-plugin-html'
-const banner = `/* ${name} ${version}  MIT */`
-export default [
-  // ===  es-module ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
-    plugins: [
-      commonjs(),
-    ]
-  },
-
-  // === .js ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfHtml', sourcemap: false }],
-    plugins: [
-      commonjs(),
-    ]
-  },
-  // ===  min.js ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.min.js`, format: 'umd', name: 'wtfHtml', sourcemap: false }],
-    plugins: [
-      commonjs(),
-      terser(),
-      sizeCheck({ expect: 10, warn: 10 })
-    ]
-  }
-]
+export default {
+  input: 'src/index.js',
+  plugins: [commonjs()],
+  output: [
+    {
+      banner,
+      file: `builds/${name}.mjs`,
+      format: 'esm',
+    },
+    {
+      banner,
+      file: `builds/${name}.cjs`,
+      format: 'cjs',
+    },
+    {
+      banner,
+      file: `builds/${name}.min.js`,
+      format: 'umd',
+      name: 'wtfHtml',
+      plugins: [terser(), sizeCheck({ expect: 10, warn: 10 })],
+    },
+  ],
+}

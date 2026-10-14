@@ -1,3 +1,4 @@
+import version from './_version.js'
 import citation from './data/citation.js'
 import coord from './data/coord.js'
 import flag from './data/flag.js'
@@ -19,7 +20,7 @@ import citeWeb from './data/cite_web.js'
 import commonsCat from './data/commons_cat.js'
 import startDate from './data/start_date.js'
 
-let mapping = {
+const mapping = {
   citation,
   coord,
   flag,
@@ -53,4 +54,6 @@ const plugin = function (_models, templates) {
     })
   })
 }
+plugin.version = version
+
 export default plugin

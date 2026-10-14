@@ -52,8 +52,8 @@ const fromCategory = function (doc) {
 
   // sort them by most words
   cats = cats.sort((a, b) => {
-    let aWords = a.split(' ').length
-    let bWords = b.split(' ').length
+    const aWords = a.split(' ').length
+    const bWords = b.split(' ').length
     if (aWords > bWords) {
       return -1
     } else if (aWords < bWords) {

@@ -1,14 +1,14 @@
 // is there a good image of this
 const mainImage = function () {
-  let box = this.infobox()
+  const box = this.infobox()
   if (box) {
-    let img = box.image()
+    const img = box.image()
     if (img) {
       return img
     }
   }
-  let s = this.section()
-  let imgs = s.images()
+  const s = this.section()
+  const imgs = s.images()
   if (imgs.length === 1) {
     return imgs[0]
   }

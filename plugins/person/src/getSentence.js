@@ -1,16 +1,16 @@
 import spacetime from 'spacetime'
 
 const parseSentence = function (doc) {
-  let s = doc.sentence()
+  const s = doc.sentence()
   if (!s) {
     return null
   }
   let txt = s.text() || ''
-  let paren = txt.match(/\(.*\)/)
-  if (!paren || !paren[0]) {
+  const paren = txt.match(/^[^(\r\n\u2028\u2029]*(\(.*\))/m)
+  if (!paren || !paren[1]) {
     return null
   }
-  txt = paren[0] || ''
+  txt = paren[1] || ''
   txt = txt.trim()
   txt = txt.replace(/^\(/, '')
   txt = txt.replace(/\)$/, '')
@@ -25,8 +25,8 @@ const parseSentence = function (doc) {
   }
   // try for just birth date in parentheses
   if (split[0]) {
-    let str = split[0].replace(/^(born|ne) (c\.)?/, '')
-    let d = spacetime(str)
+    const str = split[0].replace(/^(born|ne) (c\.)?/, '')
+    const d = spacetime(str)
     if (d.isValid()) {
       return {
         birth: str,

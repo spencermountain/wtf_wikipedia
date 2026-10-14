@@ -8,18 +8,14 @@ const playerStats = function (doc) {
     return players
   }
 
-  s.children().forEach((c) => {
-    c.tables().forEach((t) => {
-      players = players.concat(t.keyValue())
-    })
-  })
-  let res = {
+  players = s.children().flatMap((c) => c.tables().flatMap((t) => t.keyValue()))
+  const res = {
     batters: [],
     pitchers: [],
   }
   players.forEach((p) => {
-    let rbi = p.RBI || p.rbi
-    let hr = p.HR || p.hr
+    const rbi = p.RBI || p.rbi
+    const hr = p.HR || p.hr
     if (rbi !== undefined || hr !== undefined) {
       res.batters.push(p)
     } else {

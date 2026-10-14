@@ -1,39 +1,31 @@
+import { readFileSync } from 'node:fs'
+import terser from '@rollup/plugin-terser'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import { terser } from 'rollup-plugin-terser'
-import resolve from '@rollup/plugin-node-resolve' //import compromise
-import { version } from './package.json'
-console.log('\n 📦  - running rollup..\n')
 
-const name = 'wtf-plugin-sports'
-const banner = `/*! ${name} ${version}  MIT */`
-export default [
-  // ===  es-module ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.mjs`, format: 'esm' }],
-    plugins: [
-      resolve(),
-      commonjs(),
-    ]
-  },
+const { name, version } = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'))
+const banner = `/*! ${name} ${version} MIT */`
 
-  // === .js ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.cjs`, format: 'umd', name: 'wtfSports', sourcemap: false }],
-    plugins: [
-      resolve(),
-      commonjs(),
-    ]
-  },
-  // ===  min.js ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: `builds/${name}.min.js`, format: 'umd', name: 'wtfSports', sourcemap: false }],
-    plugins: [
-      resolve(),
-      commonjs(),
-      terser(),
-    ]
-  }
-]
+export default {
+  input: 'src/index.js',
+  plugins: [nodeResolve(), commonjs()],
+  output: [
+    {
+      banner,
+      file: `builds/${name}.mjs`,
+      format: 'esm',
+    },
+    {
+      banner,
+      file: `builds/${name}.cjs`,
+      format: 'cjs',
+    },
+    {
+      banner,
+      file: `builds/${name}.min.js`,
+      format: 'umd',
+      name: 'wtfSports',
+      plugins: [terser()],
+    },
+  ],
+}

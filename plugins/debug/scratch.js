@@ -3,7 +3,7 @@ import plg from './src/index.js'
 wtf.extend(plg)
 
 wtf.fetch('Harry Potter').then((doc) => {
-  let isBad = doc.isBad()
+  const isBad = doc.isBad()
   if (!isBad) {
     console.log(doc.title(), '👍\n\n')
   } else {

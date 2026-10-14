@@ -18,11 +18,11 @@ const doTable = function (options) {
   if (!this || this.length === 0) {
     return md
   }
-  let rows = this.data
-  let keys = Object.keys(rows[0])
+  const rows = this.data
+  const keys = Object.keys(rows[0])
   //first, grab the headers
   //remove auto-generated number keys
-  let headers = keys.map((k) => {
+  const headers = keys.map((k) => {
     if (/^col[0-9]/.test(k) === true) {
       return ''
     }
@@ -35,7 +35,7 @@ const doTable = function (options) {
   md += rows
     .map((row) => {
       //each column..
-      let arr = keys.map((k) => {
+      const arr = keys.map((k) => {
         if (!row[k]) {
           return ''
         }

@@ -1,14 +1,15 @@
 import { patterns, mappings } from '../../schema/_data-fns.js'
 import byPattern from '../_byPattern.js'
-const paren = /\((.*)\)$/
+// Start once per line; the closing parenthesis must still end the whole title.
+const paren = /^[^(\r\n\u2028\u2029]*\((.*)\)(?![\s\S])/m
 
 const byTitle = function (doc) {
-  let title = doc.title()
+  const title = doc.title()
   if (!title) {
     return []
   }
   //look at parentheses like 'Tornado (film)'
-  let m = title.match(paren)
+  const m = title.match(paren)
   if (!m) {
     return []
   }
@@ -18,12 +19,12 @@ const byTitle = function (doc) {
   inside = inside.trim()
 
   //look at known parentheses
-  if (mappings.titles.hasOwnProperty(inside)) {
+  if (Object.hasOwn(mappings.titles, inside)) {
     return [{ type: mappings.titles[inside], reason: inside }]
   }
 
   // look at regex
-  let match = byPattern(title, patterns.titles)
+  const match = byPattern(title, patterns.titles)
   if (match) {
     return [{ type: match, reason: title }]
   }

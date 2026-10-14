@@ -10,7 +10,7 @@ function delay(time) {
 }
 
 test('test-formats', async function (t) {
-  let arr = [
+  const arr = [
     'Billy_Steele',
     `? (Enuff Z'nuff album)`,
     // `& Juliet`,
@@ -20,7 +20,7 @@ test('test-formats', async function (t) {
     `https://muppet.fandom.com/wiki/Debra_Spinney`,
   ]
   for (const a of arr) {
-    let doc = await wtf.fetch(a)
+    const doc = await wtf.fetch(a)
     await delay(100)
     t.equal(doc.links().length > 1, true, a + ' links')
   }

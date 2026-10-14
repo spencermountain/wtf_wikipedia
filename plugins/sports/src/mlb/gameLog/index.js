@@ -21,11 +21,8 @@ const doTable = function (rows = []) {
 }
 
 const doSection = function (section) {
-  let tables = section.tables()
-  //do all subsection, too
-  section.children().forEach(s => {
-    tables = tables.concat(s.tables())
-  })
+  // Include the section's own tables and all subsections.
+  let tables = [section, ...section.children()].flatMap((s) => s.tables())
   //try to find a game log template
   if (tables.length === 0) {
     tables = section.templates('mlb game log section') || section.templates('mlb game log month') || section.templates('game log section')
@@ -40,30 +37,27 @@ const doSection = function (section) {
 const gameLog = function (doc) {
   let games = []
   // grab the generated section called 'Game Log'
-  let section = doc.section('game log') || doc.section('game log and schedule') || doc.section('regular season') || doc.section('season') || doc.section('schedule') || doc.section('schedule and results')
+  const section = doc.section('game log') || doc.section('game log and schedule') || doc.section('regular season') || doc.section('season') || doc.section('schedule') || doc.section('schedule and results')
   if (!section) {
     console.warn('no game log section for: \'' + doc.title() + '\'')
     return games
   }
-  let tables = doSection(section)
-  tables.forEach((table) => {
-    let arr = doTable(table.data)
-    games = games.concat(arr)
-  })
+  const tables = doSection(section)
+  games = tables.flatMap((table) => doTable(table.data))
   games = addWinner(games)
   return games
 }
 
 const postSeason = function (doc) {
-  let series = []
+  const series = []
   //ok, try postseason, too
-  let section = doc.section('postseason game log') || doc.section('postseason') || doc.section('playoffs') || doc.section('playoff')
+  const section = doc.section('postseason game log') || doc.section('postseason') || doc.section('playoffs') || doc.section('playoff')
   if (!section) {
     return series
   }
-  let tables = doSection(section)
+  const tables = doSection(section)
   tables.forEach((table) => {
-    let arr = doTable(table)
+    const arr = doTable(table)
     series.push(arr)
   })
   //tag them as postseason

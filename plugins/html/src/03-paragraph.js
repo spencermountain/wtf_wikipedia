@@ -3,7 +3,7 @@ const defaults = {
 }
 
 const toHtml = function (options) {
-  options = Object.assign({}, defaults, options)
+  options = { ...defaults, ...options }
   let html = ''
   if (options.sentences === true) {
     html += this.sentences()

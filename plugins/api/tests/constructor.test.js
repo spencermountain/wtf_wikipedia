@@ -1,16 +1,16 @@
 import test from 'tape'
 import wtf from './_lib.js'
 
-const opts = {
-  'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
-}
-
 test('smoketests', function (t) {
   t.equal(typeof wtf.getRandomCategory, 'function', 'has randomCategory method')
   t.equal(typeof wtf.getCategoryPages, 'function', 'has getCategory method')
   t.equal(typeof wtf.getTemplatePages, 'function', 'has getTemplate method')
   t.end()
 })
+
+const opts = {
+  'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
+}
 
 test('randomCategory', (t) => {
   t.plan(1)
@@ -35,7 +35,7 @@ test('getTemplate', (t) => {
 
 test('wtf.fetchList', (t) => {
   t.plan(3)
-  let arr = ['Marina Gilardoni', 'Jessica Kilian', 'Tanja Morel']
+  const arr = ['Marina Gilardoni', 'Jessica Kilian', 'Tanja Morel']
   wtf.fetchList(arr, opts).then(function (docs) {
     docs.forEach((doc) => {
       t.ok(doc.sentence().text(), `got ${doc.title()}`)

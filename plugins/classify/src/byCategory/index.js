@@ -2,7 +2,7 @@ import { patterns, mappings } from '../../schema/_data-fns.js'
 import byPattern from '../_byPattern.js'
 
 const byCategory = function (doc) {
-  let found = []
+  const found = []
   let cats = doc.categories()
   // clean them up a bit
   cats = cats.map((cat) => {
@@ -15,12 +15,12 @@ const byCategory = function (doc) {
   for (let i = 0; i < cats.length; i++) {
     const category = cats[i]
     // try our 1-to-1 mapping
-    if (mappings.categories.hasOwnProperty(category)) {
+    if (Object.hasOwn(mappings.categories, category)) {
       found.push({ type: mappings.categories[category], reason: category })
       continue
     }
     // loop through our patterns
-    let match = byPattern(category, patterns.categories)
+    const match = byPattern(category, patterns.categories)
     if (match) {
       found.push({ type: match, reason: category })
     }

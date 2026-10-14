@@ -21,7 +21,7 @@
     <img src="https://img.shields.io/npm/v/wtf_wikipedia.svg?style=flat-square" />
   </a>
   <a href="https://bundlephobia.com/result?p=wtf_wikipedia">
-    <img src="https://img.shields.io/bundlephobia/min/wtf_wikipedia" />
+    <img src="https://badgen.net/bundlejs/min/wtf_wikipedia" />
   </a>
   </div>
 </div>
@@ -219,7 +219,7 @@ this library supports many **_recursive shenanigans_**, depreciated and **obscur
   from **File:XYZ.png** filenames
 - Properly resolve dynamic templates like _{{CURRENTMONTH}}_ and _{{CONVERT ..}}_
 - Parse **images**, **headings**, and **categories**
-- converts 'DMS-formatted' **_(59°12\'7.7"N)_** geo-coordinates to lat/lng
+- converts 'DMS-formatted' **_(59°12\'7.7"N)_** geo-coordinates to lat/lon
 - parse and combine citation and reference metadata
 - Eliminate xml, latex, css, and table-sorting cruft
 
@@ -409,6 +409,7 @@ see [wtf-plugin-api](./plugins/api)
 
 ## Tutorials
 
+- [Markdown docs](./docs) - plain-text documentation, written for LLMs and coding agents
 - [Gentle Introduction](https://observablehq.com/@spencermountain/wtf_wikipedia-tutorial?collection=@spencermountain/wtf_wikipedia) - Getting NBA Team data
 - [Parsing tables](https://observablehq.com/@spencermountain/parsing-wikipedia-tables) - getting all Apollo Astronauts as JSON
 - [Parsing Timezones](https://observablehq.com/@spencermountain/parsing-timezones-from-wikipedia)
@@ -440,7 +441,7 @@ doc.summary()
 wtf.extend(require('wtf-plugin-person'))
 doc = await wtf.fetch('David Bowie')
 doc.birthDate()
-// {year:1947, date:8, month:1}
+// {year:1947, date:8, month:0}
 
 wtf.extend(require('wtf-plugin-i18n'))
 doc = await wtf.fetch('Ziggy Stardust', 'fr')
@@ -648,6 +649,18 @@ wtf.extend((models) => {
 
 let doc = await wtf.fetch('Stephen Harper')
 doc.isPerson()
+```
+
+### TypeScript:
+
+type declarations are included:
+
+```ts
+import wtf from 'wtf_wikipedia'
+import type { Document, Section } from 'wtf_wikipedia'
+
+let doc = wtf(wikiText) // a Document
+let secs: Section[] = doc.sections()
 ```
 
 ### Adding new templates:

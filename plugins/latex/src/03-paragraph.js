@@ -3,7 +3,7 @@ const defaults = {
 }
 
 const toLatex = function (options) {
-  options = Object.assign({}, defaults, options)
+  options = { ...defaults, ...options }
   let out = ''
   if (options.sentences === true) {
     out += '\n\n% BEGIN Paragraph\n'

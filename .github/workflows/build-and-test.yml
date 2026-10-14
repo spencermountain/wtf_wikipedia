@@ -5,25 +5,38 @@ on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [18.x, 22.x]
-
+        node-version: [24.x, 26.x]
     steps:
-      - uses: actions/checkout@v2
-
-      - name: use node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: npm install, build, lint, and test
+          cache: pnpm
+      - name: Install, build, lint, and test
         run: |
-          npm install
-          npm run build
-          npm run lint
-          npm run testb
-          npm run test:fetch
+          pnpm install --frozen-lockfile
+          pnpm run test:all
         env:
           CI: true
+
+  minimum-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+          cache: pnpm
+      - name: Build published artifacts with development tools
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run build:all
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.0.0'
+      - name: Verify built packages on the minimum supported Node
+        run: npm run test:runtime

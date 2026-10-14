@@ -3,7 +3,7 @@ import wtf from './_lib.js'
 
 test('random', (t) => {
   t.plan(1)
-  let p = wtf.getRandomPage({
+  const p = wtf.getRandomPage({
     follow_redirects: false,
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
   })

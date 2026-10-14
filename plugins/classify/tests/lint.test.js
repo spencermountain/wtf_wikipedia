@@ -15,22 +15,22 @@ test('schema-lint', function (t) {
       t.ok(obj.titles, `${obj.name} has titles`)
       // no spaces allowed in infoboxes
       obj.infoboxes.mapping.forEach(k => {
-        if (k.match(/ /)) {
+        if (/ /.test(k)) {
           t.ok(false, `${obj.name} has infobox '${k}'`)
         }
       })
       // no spaces allowed in templates
       obj.templates.mapping.forEach(k => {
-        if (k.match(/_/)) {
+        if (/_/.test(k)) {
           t.ok(false, `${obj.name} has templates '${k}'`)
         }
       })
       // categories use spaces
       obj.categories.mapping.forEach(k => {
-        if (k.match(/_/)) {
+        if (/_/.test(k)) {
           t.ok(false, `${obj.name} has category '${k}'`)
         }
-        if (k.match(/[A-Z]/)) {
+        if (/[A-Z]/.test(k)) {
           t.ok(false, `${obj.name} uppercase category '${k}'`)
         }
       })
@@ -43,7 +43,7 @@ test('schema-lint', function (t) {
 
 
 test('no-dupe-templates', function (t) {
-  let all = new Set()
+  const all = new Set()
   const validate = function (obj, isRoot) {
     if (!isRoot) {
       (obj.templates.mapping || []).forEach(k => {
@@ -60,7 +60,7 @@ test('no-dupe-templates', function (t) {
 })
 
 test('no-dupe-infoboxes', function (t) {
-  let all = new Set()
+  const all = new Set()
   const validate = function (obj, isRoot) {
     if (!isRoot) {
       (obj.infoboxes.mapping || []).forEach(k => {
@@ -77,7 +77,7 @@ test('no-dupe-infoboxes', function (t) {
 })
 
 test('no-dupe-categories', function (t) {
-  let all = new Set()
+  const all = new Set()
   const validate = function (obj, isRoot) {
     if (!isRoot) {
       (obj.categories.mapping || []).forEach(k => {

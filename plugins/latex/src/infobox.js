@@ -12,7 +12,7 @@ const defaults = {
 
 //
 const infobox = function (options) {
-  options = Object.assign({}, defaults, options)
+  options = { ...defaults, ...options }
   let out = '\n \\vspace*{0.3cm} % Info Box\n\n'
   out += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n'
   out += '  \\hline  %horizontal line\n'
@@ -21,8 +21,8 @@ const infobox = function (options) {
     if (dontDo[k] === true) {
       return
     }
-    let s = this.data[k]
-    let val = s.latex(options)
+    const s = this.data[k]
+    const val = s.latex(options)
     out += '  % ---------- \n'
     out += '      ' + k + ' & \n'
     out += '      ' + val + '\\\\ \n'

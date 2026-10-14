@@ -10,12 +10,12 @@ function delay(time) {
 }
 
 test('test-array', async function (t) {
-  let arr = [
+  const arr = [
     ['Toronto', 'Montreal'],
     ['R', 'π'],
   ]
   for (const a of arr) {
-    let docs = await wtf.fetch(a).catch(Error)
+    const docs = await wtf.fetch(a).catch(Error)
     await delay(100)
     t.equal(docs.length, a.length, 'all-docs ')
   }

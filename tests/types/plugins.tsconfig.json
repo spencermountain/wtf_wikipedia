@@ -1,0 +1,19 @@
+{
+  // checks the bundled plugins' type declarations against the local ./types
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": false,
+    "types": [],
+    "paths": {
+      "wtf_wikipedia": ["../../types/index.d.ts"],
+      "wtf-plugin-html": ["../../plugins/html/types/index.d.ts"],
+      "wtf-plugin-api": ["../../plugins/api/types/index.d.ts"],
+      "wtf-plugin-sports": ["../../plugins/sports/types/index.d.ts"]
+    }
+  },
+  "files": ["./plugins.mts"]
+}

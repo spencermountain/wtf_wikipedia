@@ -1,8 +1,8 @@
 
 const topk = function (arr) {
-  let obj = {}
+  const obj = {}
   arr.forEach((a) => {
-    obj[a] = obj[a] || 0
+    obj[a] ||= 0
     obj[a] += 1
   })
   let res = Object.keys(obj).map((k) => [k, obj[k]])
@@ -18,7 +18,7 @@ const topk = function (arr) {
 }
 
 const parse = function (cat) {
-  let split = cat.split(/\//)
+  const split = cat.split(/\//)
   return {
     root: split[1],
     second: split[2],
@@ -27,24 +27,25 @@ const parse = function (cat) {
 }
 
 const getScore = function (detail) {
-  let types = []
+  const types = []
   Object.keys(detail).forEach((k) => {
     detail[k].forEach((obj) => {
       types.push(parse(obj.type))
     })
   })
   // find top parent
-  let roots = types.map((obj) => obj.root).filter((s) => s)
-  let tops = topk(roots)
+  const roots = types.map((obj) => obj.root).filter((s) => s)
+  const tops = topk(roots)
   let top = tops[0]
   if (!top) {
     return {
-      detail: detail,
+      root: null,
       type: null,
       score: 0,
+      details: detail,
     }
   }
-  let root = top[0]
+  const root = top[0]
   // score as % of results
   let score = top[1] / types.length
   // punish low counts

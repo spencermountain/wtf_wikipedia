@@ -16,7 +16,7 @@ const birthDate = function (doc) {
   }
 
   // try to get year from 'Category:1955 births'
-  let year = byCategory(doc)
+  const year = byCategory(doc)
   if (year) {
     return { year: year }
   }

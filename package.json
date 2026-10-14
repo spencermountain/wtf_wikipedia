@@ -1,17 +1,12 @@
 {
   "name": "wtf_wikipedia",
-  "description": "parse wikiscript into json",
   "version": "10.5.0",
+  "description": "parse wikiscript into json",
+  "license": "MIT",
+  "repository": "github:spencermountain/wtf_wikipedia",
+  "homepage": "https://huh.wiki",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
   "type": "module",
-  "main": "src/index.js",
-  "module": "builds/wtf_wikipedia.mjs",
-  "unpkg": "builds/wtf_wikipedia-client.min.js",
-  "browser": "builds/wtf_wikipedia-client.min.js",
-  "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/spencermountain/wtf_wikipedia.git"
-  },
   "exports": {
     ".": {
       "browser": {
@@ -26,7 +21,7 @@
       },
       "import": {
         "types": "./types/index.d.ts",
-        "default": "./src/index.js"
+        "default": "./builds/wtf_wikipedia.mjs"
       },
       "require": {
         "types": "./types/index.d.cts",
@@ -34,44 +29,49 @@
       },
       "default": {
         "types": "./types/index.d.ts",
-        "default": "./src/index.js"
+        "default": "./builds/wtf_wikipedia.mjs"
       }
     },
     "./package.json": "./package.json"
   },
-  "publishConfig": {
-    "provenance": true
+  "main": "./builds/wtf_wikipedia.cjs",
+  "module": "./builds/wtf_wikipedia.mjs",
+  "browser": "./builds/wtf_wikipedia-client.min.js",
+  "types": "./types/index.d.cts",
+  "bin": {
+    "wtf_wikipedia": "./cli.js"
   },
   "man": [
     "./builds/man/wtf_wikipedia.1"
   ],
-  "types": "types/index.d.ts",
-  "scripts": {
-    "build": "node ./scripts/version.js && rollup -c",
-    "build:all": "node ./scripts/buildAll.js",
-    "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' npm run test && npm run test:fetch",
-    "lint": "eslint ./src/ ./plugins ./tests",
-    "prepare": "node ./scripts/install-plugins.js",
-    "start": "node ./scripts/demo.js",
-    "test": "NODE_NO_WARNINGS=1 tape ./tests/**/*.test.js | tap-dancer",
-    "testb": "TESTENV=prod npm run test",
-    "test:fetch": "tape ./tests/fetch/*.test.js | tap-dancer",
-    "test:integration": "tape ./tests/integration/*.test.js | tap-dancer",
-    "watch": "node --watch ./scratch.js"
-  },
-  "bin": {
-    "wtf_wikipedia": "cli.js"
-  },
+  "sideEffects": false,
   "engines": {
     "node": ">=18.0.0"
   },
-  "sideEffects": false,
-  "browserslist": [
-    "defaults",
-    "not op_mini all"
-  ],
+  "publishConfig": {
+    "provenance": true
+  },
+  "packageManager": "pnpm@12.5.1",
+  "scripts": {
+    "build": "node ./scripts/version.js && rollup -c",
+    "version": "node ./scripts/version.js",
+    "build:all": "pnpm run build && pnpm -r run build",
+    "check": "tsc --noEmit",
+    "test:types": "tsc -p ./tests/types && tsc -p ./tests/types/node10.tsconfig.json && tsc -p ./tests/types/plugins.tsconfig.json && tsc -p ./tests/types/plugins-cjs.tsconfig.json",
+    "coverage": "nyc -r lcov -n 'src/**/*' -n 'plugins/**/*' pnpm test",
+    "lint": "eslint .",
+    "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
+    "test:all": "pnpm run build && pnpm run lint && pnpm run check && pnpm run test:types && pnpm test && pnpm run test:built && pnpm run test:plugins",
+    "test:plugins": "pnpm -r --workspace-concurrency=1 run test:all",
+    "goldens:update": "UPDATE_GOLDENS=1 pnpm test",
+    "watch": "node --watch ./scratch.js",
+    "test:built": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
+    "test:runtime": "TESTENV=prod tape --strict --ignore tests/runtime.ignore \"tests/unit/**/*.test.js\" \"tests/contract/**/*.test.js\" && node tests/runtime/exports.js"
+  },
   "files": [
     "builds",
+    "docs",
+    "AGENTS.md",
     "src",
     "types"
   ],
@@ -81,28 +81,33 @@
     "wikipedia markup",
     "wikiscript"
   ],
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "29.0.3",
+    "@rollup/plugin-node-resolve": "16.0.3",
+    "@rollup/plugin-terser": "1.0.0",
+    "esbuild": "0.28.2",
+    "eslint": "10.11.0",
+    "eslint-plugin-compat": "7.0.2",
+    "eslint-plugin-regexp": "3.3.1",
+    "nyc": "18.0.0",
+    "rollup": "4.63.4",
+    "rollup-plugin-esbuild": "6.2.1",
+    "rollup-plugin-filesize-check": "2.0.0",
+    "tap-dancer": "0.4.1",
+    "tape": "5.10.2",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.70.0"
+  },
+  "unpkg": "builds/wtf_wikipedia-client.min.js",
+  "browserslist": [
+    "defaults",
+    "not op_mini all"
+  ],
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 2,
     "semi": false,
     "singleQuote": true,
     "printWidth": 120
-  },
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "29.0.3",
-    "@rollup/plugin-node-resolve": "16.0.3",
-    "@rollup/plugin-terser": "1.0.0",
-    "eslint": "10.5.0",
-    "eslint-plugin-compat": "7.0.2",
-    "eslint-plugin-regexp": "3.1.0",
-    "nyc": "18.0.0",
-    "rollup": "4.62.2",
-    "shelljs": "0.10.0",
-    "tap-dancer": "0.3.4",
-    "tape": "5.10.2"
-  },
-  "eslintIgnore": [
-    "builds/*.js"
-  ],
-  "license": "MIT"
+  }
 }

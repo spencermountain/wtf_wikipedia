@@ -13,7 +13,7 @@ const params = {
 }
 
 const randomCategory = function (options = {}, http) {
-  options = Object.assign({}, defaults, options)
+  options = { ...defaults, ...options }
   let url = `https://${options.lang}.wikipedia.org/${options.path}?`
   if (options.domain) {
     url = `https://${options.domain}/${options.path}?`
@@ -23,8 +23,8 @@ const randomCategory = function (options = {}, http) {
   return http(url, headers)
     .then((res) => {
       try {
-        let o = res.query.pages
-        let key = Object.keys(o)[0]
+        const o = res.query.pages
+        const key = Object.keys(o)[0]
         return o[key].title
       } catch (e) {
         throw e

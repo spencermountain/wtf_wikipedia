@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import makeUrl from '../../../../src/_fetch/makeUrl.js'
-import makeHeaders from '../../../../src/_fetch/_headers.js'
+import makeUrl from '../../../../src/_fetch/makeUrl.ts'
+import makeHeaders from '../../../../src/_fetch/_headers.ts'
 import parse from './parse.js'
 
 const methodsProps = { // the accepted methdos and the iiprop (imageinfo prop (URL parameter)) needed for each method
@@ -33,7 +33,7 @@ class InvalidMethod extends Error {
  */
 function fetchImages(methods = "", images = []) {
 
-  const isDoc = images.length ? true : false // whether the call is from a Document(".images()") or an Image
+  const isDoc = images.length > 0 ? true : false // whether the call is from a Document(".images()") or an Image
   let titles // will be a string or an array of strings
   let iiprop // will be a string
   const userAgent = isDoc ? this['_userAgent'] : this.data['_userAgent']

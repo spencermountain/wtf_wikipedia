@@ -1,4 +1,6 @@
-import wtf from '../../../src/index.js'
+import src from '../../../src/index.ts'
+import build from 'wtf_wikipedia'
+const wtf = process.env.TESTENV === 'prod' ? build : src
 import plg from './plugin.js'
 import test from 'tape'
 wtf.plugin(plg)

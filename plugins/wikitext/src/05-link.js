@@ -12,7 +12,7 @@ const toWiki = function () {
     page += `#${this.anchor()}`
   }
 
-  let str = this.text() || ''
+  const str = this.text() || ''
   if (str && str.toLowerCase() !== page.toLowerCase()) {
     return `[[${page}|${str}]]`
   }

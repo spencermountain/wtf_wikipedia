@@ -19,11 +19,11 @@ const findPivot = function (s) {
   if (!m.found) {
     return null
   }
-  let f = s.splitOn(m)
-  let verb = f.eq(1)
+  const f = s.splitOn(m)
+  const verb = f.eq(1)
   // grab the article from the pivot, before any mutation -
   // in compromise v14, .remove() shifts the other views' pointers
-  let article = verb.match(`(a|an|the|any)? of?`)
+  const article = verb.match(`(a|an|the|any)? of?`)
   return {
     before: f.eq(0),
     verb: verb,

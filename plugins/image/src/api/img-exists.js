@@ -12,8 +12,8 @@ const imgExists = function (callback) {
   })
     .then(resp => {
       //support callback non-promise form
-      let status = String(resp.status) || ''
-      let bool = /^[23]/.test(status)
+      const status = String(resp.status) || ''
+      const bool = /^[23]/.test(status)
       if (callback) {
         callback(null, bool)
       }

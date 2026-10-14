@@ -1,3 +1,4 @@
+import version from './_version.js'
 import doc from './01-doc.js'
 import section from './02-section.js'
 import paragraph from './03-paragraph.js'
@@ -23,4 +24,6 @@ const plugin = function (models) {
   models.List.prototype.makeWikitext = list
   models.Reference.prototype.makeWikitext = reference
 }
+plugin.version = version
+
 export default plugin

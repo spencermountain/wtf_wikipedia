@@ -1,6 +1,6 @@
 //
 const toLatex = function () {
-  let alt = this.alt()
+  const alt = this.alt()
   let out = '\\begin{figure}'
   out += '\n\\includegraphics[width=\\linewidth]{' + this.thumb() + '}'
   out += '\n\\caption{' + alt + '}'

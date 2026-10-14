@@ -1,3 +1,4 @@
+import version from './_version.js'
 import byInfobox from './byInfobox/index.js'
 import byCategory from './byCategory/index.js'
 import byTemplate from './byTemplate/index.js'
@@ -10,8 +11,8 @@ import score from './score.js'
 const plugin = function (models) {
   //add a new method to main class
   models.Doc.prototype.classify = function () {
-    let doc = this
-    let res = {}
+    const doc = this
+    const res = {}
 
     //dont classify these
     if (skipPage(doc)) {
@@ -38,4 +39,6 @@ const plugin = function (models) {
     return score(res)
   }
 }
+plugin.version = version
+
 export default plugin

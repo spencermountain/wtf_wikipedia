@@ -1,0 +1,6 @@
+packages:
+  - 'plugins/*'
+  # - 'plugins/wikis/*'
+
+allowBuilds:
+  esbuild: true

@@ -1,3 +1,4 @@
+import version from './_version.js'
 import doc from './01-doc.js'
 import section from './02-section.js'
 import paragraph from './03-paragraph.js'
@@ -22,4 +23,6 @@ const plugin = function (models) {
   models.Reference.prototype.latex = reference
   models.Table.prototype.latex = table
 }
+plugin.version = version
+
 export default plugin

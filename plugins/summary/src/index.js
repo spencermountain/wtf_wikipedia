@@ -1,3 +1,4 @@
+import version from './_version.js'
 import nlp from 'compromise'
 import fromTemplate from './template/index.js'
 import fromSentence from './sentence/index.js'
@@ -19,9 +20,9 @@ const seemsGood = function (txt, options) {
 const plugin = function (models) {
   // add a new method to main class
   models.Doc.prototype.summary = function (options) {
-    let doc = this
-    options = options || {}
-    options = Object.assign({}, defaults, options)
+    const doc = this
+    options ||= {}
+    options = { ...defaults, ...options }
 
     // generate from {{short description}} template
     let txt = ''
@@ -53,20 +54,20 @@ const plugin = function (models) {
     } else if (this.sentence(0)) {
       txt = this.sentence(0).text()
     }
-    let doc = nlp(txt)
-    let found = doc.match('(#Pronoun|#Article)').eq(0).text().toLowerCase()
+    const doc = nlp(txt)
+    const found = doc.match('(#Pronoun|#Article)').eq(0).text().toLowerCase()
     return found || 'it'
   }
 
   // was event in past? is person dead?
   models.Doc.prototype.tense = function () {
-    let txt = this.sentence() ? this.sentence().text() : ''
-    let doc = nlp(txt)
-    let copula = doc.match('#Copula+').first()
+    const txt = this.sentence() ? this.sentence().text() : ''
+    const doc = nlp(txt)
+    const copula = doc.match('#Copula+').first()
     if (copula.has('was')) {
       return 'Past'
     }
-    let vb = doc.verbs(0)
+    const vb = doc.verbs(0)
     if (vb.has('#PastTense')) {
       return 'Past'
     }
@@ -76,4 +77,6 @@ const plugin = function (models) {
     return 'Present'
   }
 }
+plugin.version = version
+
 export default plugin

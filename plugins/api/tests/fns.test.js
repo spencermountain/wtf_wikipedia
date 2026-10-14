@@ -1,32 +1,32 @@
 import test from 'tape'
 import wtf from './_lib.js'
 
-const opts = {
-  'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
-}
-
 test('smoketests', function (t) {
-  let doc = wtf('')
+  const doc = wtf('')
   t.equal(typeof doc.getRedirects, 'function', 'has getRedirects method')
   t.equal(typeof doc.getIncoming, 'function', 'has getIncoming method')
   t.equal(typeof doc.getPageViews, 'function', 'has getPageViews method')
   t.end()
 })
 
+const opts = {
+  'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
+}
+
 test('getPageViews', (t) => {
   t.plan(1)
-  let doc = wtf('', opts)
+  const doc = wtf('', opts)
   doc.title('Toronto Raptors')
   doc.lang('en')
   doc.getPageViews().then(function (byDate) {
-    let dates = Object.keys(byDate)
+    const dates = Object.keys(byDate)
     t.ok(dates.length > 5, `got pageViews for ${dates.length} days`)
   })
 })
 
 test('getRedirects', (t) => {
   t.plan(1)
-  let doc = wtf('', opts)
+  const doc = wtf('', opts)
   doc.title('Toronto Raptors')
   doc.lang('en')
   doc.getRedirects().then(function (links) {
@@ -36,7 +36,7 @@ test('getRedirects', (t) => {
 
 test('incomingLinks', (t) => {
   t.plan(1)
-  let doc = wtf('', opts)
+  const doc = wtf('', opts)
   doc.title('Marty Embry')
   doc.lang('en')
   doc.getIncoming().then(function (links) {

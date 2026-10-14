@@ -16,15 +16,15 @@ const post = function (s) {
 
 // let count = 0
 const doSentence = function (doc, options) {
-  let sentence = doc.sentence(0)
+  const sentence = doc.sentence(0)
   if (!sentence) {
     return ''
   }
-  let txt = sentence.text()
-  let s = nlp(txt)
+  const txt = sentence.text()
+  const s = nlp(txt)
   preProcess(s)
 
-  let pivot = findPivot(s)
+  const pivot = findPivot(s)
   // if we can't pivot it properly, don't bother
   if (!pivot || !pivot.verb || !pivot.verb.found) {
     return ''

@@ -1,5 +1,5 @@
 const toWiki = function (options) {
-  let rows = this.data
+  const rows = this.data
   let wiki = `{| class="wikitable"\n`
 
   // draw headers
@@ -15,7 +15,7 @@ const toWiki = function (options) {
   rows.forEach((o) => {
     wiki += '|-\n'
     Object.keys(o).forEach((k) => {
-      let val = o[k].wikitext(options)
+      const val = o[k].wikitext(options)
       wiki += '| ' + val + '\n'
     })
   })

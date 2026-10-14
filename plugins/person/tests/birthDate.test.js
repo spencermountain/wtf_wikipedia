@@ -21,28 +21,28 @@ test('sentence-birthDate', (t) => {
 })
 
 test('template-birthDate', (t) => {
-  let str = `{{Infobox officeholder
+  const str = `{{Infobox officeholder
     | predecessor  = [[Cyril Leeder]]
     | birth_date   = {{birth year and age|1956}}
     | birth_place  = [[Etobicoke]], [[Ontario]], Canada
     | alma_mater   = [[Ryerson University]] and [[University of Saskatchewan]]
     | nationality  = Canadian
   }}`
-  let doc = wtf(str)
-  let date = doc.birthDate()
+  const doc = wtf(str)
+  const date = doc.birthDate()
   t.equal(date.year, 1956, 'birth year and age')
   t.end()
 })
 
 test('category-birthDate', (t) => {
-  let doc = wtf(`hello [[Category:1952 births]]    [[Category:Living people]]`)
-  let date = doc.birthDate()
+  const doc = wtf(`hello [[Category:1952 births]]    [[Category:Living people]]`)
+  const date = doc.birthDate()
   t.equal(date.year, 1952, 'Category:1952 births')
   t.end()
 })
 
 test('infobox-deathdate', (t) => {
-  let str = `{{Infobox golfer
+  const str = `{{Infobox golfer
     | name              = Billy Casper
     | image             = Billy Casper (cropped).jpg{{!}}border
     | imagesize         = <!-- e.g. 250px (default is 200px) -->
@@ -55,7 +55,7 @@ test('infobox-deathdate', (t) => {
     | death_place       = [[Springville, Utah]]
   }}`
 
-  let doc = wtf(str)
+  const doc = wtf(str)
 
   t.equal(doc.infobox().get('birth_date').text(), 'June 24, 1931', 'birth')
   t.equal(doc.infobox().get('death_date').text(), 'February 7, 2015', 'death')

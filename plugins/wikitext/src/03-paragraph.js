@@ -1,8 +1,8 @@
 const defaults = {}
 
 const toWiki = function (options) {
-  options = options || {}
-  options = Object.assign({}, defaults, options)
+  options ||= {}
+  options = { ...defaults, ...options }
   let text = ''
 
   // do images

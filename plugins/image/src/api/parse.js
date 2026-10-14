@@ -7,7 +7,7 @@
  */
 const parseImage = function (fetchedImage) {
   // if the data is missing return empty object
-  if (fetchedImage.hasOwnProperty('missing')) {
+  if (Object.hasOwn(fetchedImage, 'missing')) {
     return {}
   }
 
@@ -16,10 +16,11 @@ const parseImage = function (fetchedImage) {
   return { // add the data for the properties that exists
     ...(metaData && {
       licenseRes: {
-        license: metaData.LicenseShortName && metaData.LicenseShortName.value || "",
-        artist: metaData.Artist && metaData.Artist.value || "",
-        credit: metaData.Credit && metaData.Credit.value || "",
-        attributionRequired: metaData.AttributionRequired && metaData.AttributionRequired.value || ""
+        license: (metaData.LicenseShortName && metaData.LicenseShortName.value) || '',
+        artist: (metaData.Artist && metaData.Artist.value) || '',
+        credit: (metaData.Credit && metaData.Credit.value) || '',
+        attributionRequired:
+          (metaData.AttributionRequired && metaData.AttributionRequired.value) || ''
       }
     }),
     ...(url && { existsRes: true })

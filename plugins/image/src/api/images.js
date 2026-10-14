@@ -1,37 +1,11 @@
 import fetch from './fetch.js'
 
 /**
- * The old "images" method
- * @callback oldMethod
- * @param {number} [clue]
- * @returns {Object[]} an array of images or a single image
- */
-
-/**
  * Redefines the "images" method. When the user wants to call certain methods (that make requests)
  * for all the images; it calls the api once for all the images, then redefines those methods which
  * now only return the already fetched response.
- * 
- * @param {oldMethod} oldMethod
- * @returns {newMethod}
  */
-
 const images = function (oldMethod) {
-
-  /**
-   * @typedef imagesOptions
-   * @property {string | string[]} batch specifies the methods to be rquested beforehand in one API call
-   */
-
-  /**
-   * The new "images" method.
-   * 
-   * @function newMethod
-   * @param {number | imagesOptions} [clue]
-   * @returns {Promise<Object[]> | Object[]} an array of images or a single image
-   */
-
-  const newMethod = function (clue) { // "this" refers to the document
 
     // adds userAgent to each image, to use for methods that call the API.
     const addUserAgent = function (imgs) {
@@ -40,6 +14,10 @@ const images = function (oldMethod) {
         return i
       })
     }
+
+  const newMethod = function (clue) {
+    // "this" refers to the document
+
     let imagesArr
 
     // return a single image (oldMethod accepts a number clue)

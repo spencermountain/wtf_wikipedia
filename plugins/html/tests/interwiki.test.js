@@ -2,9 +2,9 @@ import test from 'tape'
 import wtf from './_lib.js'
 
 test('expand external interwiki link', (t) => {
-  let str = `[[heroeswiki:cool]]`
-  let doc = wtf(str)
-  let html = doc.link().html()
+  const str = `[[heroeswiki:cool]]`
+  const doc = wtf(str)
+  const html = doc.link().html()
 
   t.equal(
     html,
@@ -15,10 +15,10 @@ test('expand external interwiki link', (t) => {
 })
 
 test('expand internal interwiki link', (t) => {
-  let str = `[[fr:cool]]`
-  let doc = wtf(str)
+  const str = `[[fr:cool]]`
+  const doc = wtf(str)
 
-  let href = doc.link().html()
+  const href = doc.link().html()
   t.equal(
     href,
     '<a class="link" href="http://fr.wikipedia.org/wiki/cool">cool</a>',

@@ -3,9 +3,9 @@ import playerStats from './playerStats.js'
 import { season as _season, postseason } from './gameLog/index.js'
 
 const parseTitle = function (season = '') {
-  let num = season.match(/[0-9]+/) || []
-  let year = Number(num[0]) || season
-  let team = season.replace(/[0-9–]+/, '').replace(/_/g, ' ').replace(' season', '')
+  const num = season.match(/[0-9]+/) || []
+  const year = Number(num[0]) || season
+  const team = season.replace(/[0-9–]+/, '').replace(/_/g, ' ').replace(' season', '')
   return {
     year: year,
     season: season,
@@ -30,12 +30,12 @@ const parseRoster = function (doc, res) {
 
 //this is just a table in a '2008 draft picks' section
 const draftPicks = function (doc) {
-  let want = /\bdraft\b/i
-  let s = doc.sections().find(sec => want.test(sec.title()))
+  const want = /\bdraft\b/i
+  const s = doc.sections().find(sec => want.test(sec.title()))
   if (!s) {
     return []
   }
-  let table = s.tables()[0]
+  const table = s.tables()[0]
   if (!table) {
     return []
   }
@@ -47,7 +47,7 @@ const parsePage = function (doc) {
   if (!doc) {
     return {}
   }
-  let res = parseTitle(doc.title() || '')
+  const res = parseTitle(doc.title() || '')
   res.games = _season(doc)
   res.postseason = postseason(doc)
   //grab the roster/draft data

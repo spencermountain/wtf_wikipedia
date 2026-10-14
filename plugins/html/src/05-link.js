@@ -1,5 +1,5 @@
 const toHtml = function () {
-  let classNames = 'link'
+  const classNames = 'link'
   let href = this.href() || ''
   href = href.replace(/ /g, '_')
   //use the url as the text, for bare external links like [https://foo.com]

@@ -6,12 +6,12 @@ const defaultOptions = {
 }
 
 async function fetchCategories(t, cat, options) {
-  let results = await wtf.getCategoryPages(cat, {
+  const results = await wtf.getCategoryPages(cat, {
     ...defaultOptions,
     ...options
   })
-  let pages = results.filter(({ type }) => type == 'page')
-  let subcats = results.filter(({ type }) => type == 'subcat')
+  const pages = results.filter(({ type }) => type == 'page')
+  const subcats = results.filter(({ type }) => type == 'subcat')
   t.equal(
     pages.length + subcats.length,
     results.length,

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import wtf from './src/index.js'
+import wtf from './builds/wtf_wikipedia.mjs'
 let args = process.argv.slice(2)
 
 const modes = {
@@ -15,7 +15,7 @@ args = args.filter((arg) => {
   return true
 })
 
-let title = args.join(' ')
+const title = args.join(' ')
 if (!title) {
   throw new Error('Usage: wtf_wikipedia Toronto Blue Jays --plaintext')
 }

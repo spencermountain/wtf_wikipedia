@@ -1,10 +1,11 @@
 import spacetime from 'spacetime'
 // regexes
-const regJustYear = /^(?:c\.\s*)?(\d+)\s*(bc|bce|ad|ce)?$/i
-const regInaccurate = /((\d+)\s*(or|–|\/)\s*(\d+))\s*(?:bc|bce|ad|ce)?\b/gi
+const regJustYear = /^(?:c\.\s*)?(?=(\d+))\1\s*(bc|bce|ad|ce)?$/i
+
+const regInaccurate = /(?<!\d)((\d+)\s*(or|–|\/)\s*(\d+))\s*(?:bc|bce|ad|ce)?\b/gi
 const regRangeSeparator = /–/
 const regUptoSecondMill = /\b(\d{1,3})\s*(bc|bce|ad|ce)?$|\b(\d+)\s*(bc|bce)$/i
-const regBCE = /(\d+)\s*(bc|bce)\b/i
+const regBCE = /(?<!\d)(\d+)\s*(bc|bce)\b/i
 
 const findAverage = function (arr) {
   return arr.reduce((partialSum, n) => partialSum + n) / arr.length
@@ -15,7 +16,7 @@ const parseDate = function (str) {
     return null
   }
   // remove parentheses
-  str = str.replace(/\(.*\)/, '')
+  str = str.replace(/(^[^(\r\n\u2028\u2029]*)\(.*\)/m, '$1')
   str = str.trim()
   // check for inaccurate dates such as "20 or 21 July 356 BC", "c. 1155/1162", "183–181 BC"
   let inaccurateOriginal
@@ -30,14 +31,14 @@ const parseDate = function (str) {
       removeIndexes.forEach(i => onlyNumbers.splice(i, 1))
       onlyNumbers = onlyNumbers.map(i => Number(i))
       // if it's a range, replace with the average rounded down, otherwise with the minimum
-      if (arr[3].match(regRangeSeparator)) {
+      if (regRangeSeparator.test(arr[3])) {
         const avg = findAverage(onlyNumbers)
-        if (arr[0].match(regBCE)) {
+        if (regBCE.test(arr[0])) {
           str = str.replace(arr[1], Math.ceil(avg))
         } else {
           str = str.replace(arr[1], Math.floor(avg))
         }
-      } else if (arr[0].match(regBCE)) {
+      } else if (regBCE.test(arr[0])) {
         str = str.replace(arr[1], Math.max(...onlyNumbers))
       } else {
         str = str.replace(arr[1], Math.min(...onlyNumbers))
@@ -47,8 +48,8 @@ const parseDate = function (str) {
   // just the year
   const justYear = str.match(regJustYear)
   // parse the full date; return null if unsuccessful
-  let s = spacetime(str)
-  let res = {
+  const s = spacetime(str)
+  const res = {
     year: s.year(),
     month: s.month(),
     date: s.date()
@@ -59,7 +60,7 @@ const parseDate = function (str) {
         value: inaccurateOriginal
       })
     }
-    if (str.match(regBCE)) {
+    if (regBCE.test(str)) {
       res.year = -parseInt(justYear[1], 10)
     } else {
       res.year = parseInt(justYear[1], 10)
@@ -73,7 +74,7 @@ const parseDate = function (str) {
     // trick spacetime to get the month and day correctly by replacing the year with 1000
     str = str.replace(UptoSecondMill[0], "1000")
     // assign the real year
-    year = UptoSecondMill.input.match(regBCE) ? -Number(UptoSecondMill[1]) : Number(UptoSecondMill[1])
+    year = regBCE.test(UptoSecondMill.input) ? -Number(UptoSecondMill[1]) : Number(UptoSecondMill[1])
   }
 
   const epoch = { // epoch is returned when unsuccessful 

@@ -1,21 +1,26 @@
 {
   "name": "wtf-plugin-wiktionary",
-  "description": "plugin for wtf_wikipedia",
   "version": "0.1.0",
+  "description": "plugin for wtf_wikipedia",
+  "license": "MIT",
+  "repository": "github:spencermountain/wtf_wikipedia",
+  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/wikis/wiktionary",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
   "type": "module",
   "main": "./plugin.js",
-  "author": "Spencer Kelly (spencermountain)",
-  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/wikis/wiktionary",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/spencermountain/wtf_wikipedia.git"
-  },
+  "types": "./types/index.d.ts",
   "scripts": {
-    "test": "tape ./**/*.test.js | tap-dancer",
-    "testb": "TESTENV=prod tape ./**/*.test.js | tap-dancer"
+    "test": "tape ./*.test.js | tap-dancer",
+    "testb": "TESTENV=prod tape ./*.test.js | tap-dancer",
+    "version": "node ./scripts/version.js",
+    "build": "node ./scripts/version.js"
+  },
+  "devDependencies": {
+    "tap-dancer": "0.3.4",
+    "tape": "5.10.2",
+    "wtf_wikipedia": "10.5.0"
   },
   "peerDependencies": {
-    "wtf_wikipedia": ">=9.0.0"
-  },
-  "license": "MIT"
+    "wtf_wikipedia": ">=10.5.0"
+  }
 }

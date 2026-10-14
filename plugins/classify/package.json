@@ -1,48 +1,48 @@
 {
   "name": "wtf-plugin-classify",
+  "version": "3.0.0",
   "description": "basic classifier for wikipedia articles",
-  "version": "2.1.0",
+  "license": "MIT",
+  "repository": "github:spencermountain/wtf_wikipedia",
+  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/classify#readme",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
   "type": "module",
-  "main": "./src/index.js",
-  "unpkg": "./builds/wtf-plugin-classify.min.js",
-  "module": "./builds/wtf-plugin-classify.mjs",
   "exports": {
     ".": {
-      "import": "./src/index.js",
-      "require": "./builds/wtf-plugin-classify.cjs"
+      "import": {
+        "types": "./types/index.d.ts",
+        "default": "./builds/wtf-plugin-classify.mjs"
+      },
+      "require": {
+        "types": "./types/index.d.cts",
+        "default": "./builds/wtf-plugin-classify.cjs"
+      }
     }
   },
-  "author": "Spencer Kelly (spencermountain)",
-  "homepage": "https://github.com/spencermountain/wtf_wikipedia/plugins/classify#readme",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/spencermountain/wtf_wikipedia.git"
-  },
+  "main": "./builds/wtf-plugin-classify.cjs",
+  "module": "./builds/wtf-plugin-classify.mjs",
+  "types": "./types/index.d.cts",
+  "sideEffects": false,
   "scripts": {
-    "watch": "amble ./scratch.js",
-    "test": "tape ./tests/**/*.test.js | tap-dancer",
+    "build": "node ./scripts/version.js && rollup -c",
+    "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
+    "test:built": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
+    "test:all": "pnpm run build && pnpm test && pnpm run test:built",
     "fetch:test": "node ./tests/fetch-test.js",
-    "testb": "TESTENV=prod tape ./tests/**/*.test.js | tap-dancer",
-    "build": "rollup -c",
-    "schema": "node ./schema/_print.js"
+    "schema": "node ./schema/_print.js",
+    "version": "node ./scripts/version.js"
   },
-  "prettier": {
-    "trailingComma": "es5",
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true,
-    "printWidth": 100
+  "files": [
+    "builds",
+    "schema",
+    "src",
+    "types"
+  ],
+  "devDependencies": {
+    "wtf_wikipedia": "workspace:*"
   },
   "peerDependencies": {
     "wtf_wikipedia": ">=9.0.0"
   },
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "29.0.3",
-    "rollup": "4.62.2",
-    "rollup-plugin-filesize-check": "1.2.0",
-    "rollup-plugin-terser": "7.0.2",
-    "tap-dancer": "0.3.4",
-    "tape": "5.10.2"
-  },
-  "license": "MIT"
+  "unpkg": "./builds/wtf-plugin-classify.min.js"
 }

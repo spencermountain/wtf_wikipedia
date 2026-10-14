@@ -6,8 +6,8 @@ test('sentence-isAlive', (t) => {
   // let doc = wtf(str)
   // t.equal(doc.isAlive(), true, 'circa-template')
 
-  let str = `'''David Jones''' (8 January 1947 – 10 January 2016), known professionally as David`
-  let doc = wtf(str)
+  const str = `'''David Jones''' (8 January 1947 – 10 January 2016), known professionally as David`
+  const doc = wtf(str)
   t.equal(doc.isAlive(), false, 'both-dates')
   t.end()
 })
@@ -24,7 +24,7 @@ test('template-isAlive', (t) => {
 })
 
 test('category-isAlive', (t) => {
-  let doc = wtf(`hello [[Category:1952 births]]    [[Category:Living people]]`)
+  const doc = wtf(`hello [[Category:1952 births]]    [[Category:Living people]]`)
   t.equal(doc.isAlive(), true, 'Category:Living people')
   t.end()
 })

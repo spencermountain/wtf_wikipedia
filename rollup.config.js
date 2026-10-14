@@ -1,49 +1,42 @@
-import commonjs from '@rollup/plugin-commonjs'
 import terser from '@rollup/plugin-terser'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
+import esbuild from 'rollup-plugin-esbuild'
+import sizeCheck from 'rollup-plugin-filesize-check'
 
-console.log('\n 📦  - running rollup..\n')
+const banner = '/*! spencermountain/wtf_wikipedia  MIT */'
 
-const banner = '/*! wtf_wikipedia  MIT */'
-export default [
-  // === server-side .mjs (typescript)===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: 'builds/wtf_wikipedia.mjs', format: 'esm' }],
-    plugins: [
-      commonjs()
-    ],
-  },
-
-  // === server-side .js ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: 'builds/wtf_wikipedia.cjs', format: 'umd', name: 'wtf' }],
-    plugins: [
-      commonjs()
-    ],
-  },
-
-  // === client-side min.js ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: 'builds/wtf_wikipedia-client.min.js', format: 'umd', name: 'wtf', sourcemap: false }],
-    plugins: [
-      nodeResolve({
-        browser: true
-      }),
-      commonjs(),
-      terser(),
-    ],
-  },
-  // === client-side .mjs ===
-  {
-    input: 'src/index.js',
-    output: [{ banner: banner, file: 'builds/wtf_wikipedia-client.mjs', format: 'esm', name: 'wtf', sourcemap: false }],
-    plugins: [
-      nodeResolve({ browser: true }),
-      commonjs(),
-      terser(),
-    ],
-  },
-]
+export default {
+  input: 'src/index.ts',
+  plugins: [esbuild({ target: 'es2022' })],
+  output: [
+    {
+      banner,
+      file: 'builds/wtf_wikipedia.mjs',
+      format: 'esm',
+    },
+    {
+      banner,
+      file: 'builds/wtf_wikipedia.cjs',
+      format: 'cjs',
+    },
+    {
+      banner,
+      file: 'builds/wtf_wikipedia-client.min.js',
+      format: 'umd',
+      name: 'wtf',
+      plugins: [
+        terser(),
+        sizeCheck({
+          expect: 141,
+          warn: 10, // acceptable (+/-)
+          throw: 25, // unacceptable (+/-)
+        }),
+      ],
+    },
+    {
+      banner,
+      file: 'builds/wtf_wikipedia-client.mjs',
+      format: 'esm',
+      plugins: [terser()],
+    },
+  ],
+}

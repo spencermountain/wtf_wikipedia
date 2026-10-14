@@ -1,4 +1,6 @@
-/* wtf-plugin-markdown 1.0.1  MIT */
+/*! wtf-plugin-markdown 1.0.1 MIT */
+var version = '1.0.1';
+
 const defaults$4 = {
   redirects: true,
   infoboxes: true,
@@ -7,7 +9,7 @@ const defaults$4 = {
 };
 //we should try to make this look like the wikipedia does, i guess.
 const softRedirect = function (doc) {
-  let link = doc.redirectTo();
+  const link = doc.redirectTo();
   let href = link.page;
   href = './' + href.replace(/ /g, '_');
   if (link.anchor) {
@@ -18,8 +20,8 @@ const softRedirect = function (doc) {
 
 //turn a Doc object into a markdown string
 const toMarkdown$6 = function (options) {
-  options = Object.assign({}, defaults$4, options);
-  let data = this;
+  options = { ...defaults$4, ...options };
+  const data = this;
   let md = '';
   //if it's a redirect page, give it a 'soft landing':
   if (options.redirects === true && this.isRedirect() === true) {
@@ -57,7 +59,7 @@ const defaults$3 = {
 };
 
 const doSection = function (options) {
-  options = Object.assign({}, defaults$3, options);
+  options = { ...defaults$3, ...options };
   let md = '';
 
   //make the header
@@ -71,7 +73,7 @@ const doSection = function (options) {
 
   //put any images under the header
   if (options.images === true) {
-    let images = this.images();
+    const images = this.images();
     if (images.length > 0) {
       md += images.map((img) => img.markdown()).join('\n');
       md += '\n';
@@ -80,7 +82,7 @@ const doSection = function (options) {
 
   //make a markdown table
   if (options.tables === true) {
-    let tables = this.tables();
+    const tables = this.tables();
     if (tables.length > 0) {
       md += '\n';
       md += tables.map((table) => table.markdown(options)).join('\n');
@@ -90,7 +92,7 @@ const doSection = function (options) {
 
   //make a markdown bullet-list
   if (options.lists === true) {
-    let lists = this.lists();
+    const lists = this.lists();
     if (lists.length > 0) {
       md += lists.map((list) => list.markdown(options)).join('\n');
       md += '\n';
@@ -117,7 +119,7 @@ const defaults$2 = {
 };
 
 const toMarkdown$5 = function (options) {
-  options = Object.assign({}, defaults$2, options);
+  options = { ...defaults$2, ...options };
   let md = '';
   if (options.sentences === true) {
     md += this.sentences().reduce((str, s) => {
@@ -144,7 +146,7 @@ const smartReplace = function (all, text, result) {
   }
   text = escapeRegExp(text);
   //try a word-boundary replace
-  let reg = new RegExp('\\b' + text + '\\b');
+  const reg = new RegExp('\\b' + text + '\\b');
   if (reg.test(all) === true) {
     all = all.replace(reg, result);
   } else {
@@ -162,13 +164,13 @@ const defaults$1 = {
 
 //create links, bold, italic in markdown
 const toMarkdown$4 = function (options) {
-  options = Object.assign({}, defaults$1, options);
+  options = { ...defaults$1, ...options };
   let md = this.text();
   //turn links back into links
   if (options.links === true) {
     this.links().forEach((link) => {
-      let mdLink = link.markdown();
-      let str = link.text() || link.page();
+      const mdLink = link.markdown();
+      const str = link.text() || link.page();
       md = smartReplace(md, str, mdLink);
     });
   }
@@ -187,10 +189,11 @@ const toMarkdown$4 = function (options) {
 
 // add `[text](href)` to the text
 const toMarkdown$3 = function () {
-  let href = this.href();
+  let href = this.href() || '';
   href = href.replace(/ /g, '_');
   // href = encodeURIComponent(href)
-  let str = this.text() || this.page();
+  //use the url as the text, for bare external links like [https://foo.com]
+  const str = this.text() || this.page() || this.site() || '';
   return '[' + str + '](' + href + ')'
 };
 
@@ -206,9 +209,9 @@ const toMarkdown$2 = function () {
 
 //center-pad each cell, to make the table more legible
 const pad = (str, cellWidth) => {
-  str = str || '';
+  str ||= '';
   str = String(str);
-  cellWidth = cellWidth || 15;
+  cellWidth ||= 15;
   let diff = cellWidth - str.length;
   diff = Math.ceil(diff / 2);
   for (let i = 0; i < diff; i += 1) {
@@ -234,7 +237,7 @@ const defaults = {
 
 // render an infobox as a table with two columns, key + value
 const doInfobox = function (options) {
-  options = Object.assign({}, defaults, options);
+  options = { ...defaults, ...options };
   let md = '|' + pad('', 35) + '|' + pad('', 30) + '|\n';
   md += '|' + pad('---', 35) + '|' + pad('---', 30) + '|\n';
   //todo: render top image here (somehow)
@@ -242,11 +245,11 @@ const doInfobox = function (options) {
     if (dontDo[k] === true) {
       return
     }
-    let key = '**' + k + '**';
-    let s = this.data[k];
+    const key = '**' + k + '**';
+    const s = this.data[k];
     let val = s.markdown(options);
     //markdown is more newline-sensitive than wiki
-    val = val.split(/\n/g).join(', ');
+    val = val.replaceAll('\n', ', ');
     md += '|' + pad(key, 35) + '|' + pad(val, 30) + ' |\n';
   });
   return md
@@ -256,7 +259,7 @@ const doInfobox = function (options) {
 const toMarkdown$1 = function (options) {
   return this.lines()
     .map((s) => {
-      let str = s.markdown(options);
+      const str = s.markdown(options);
       return ' * ' + str
     })
     .join('\n')
@@ -303,11 +306,11 @@ const doTable = function (options) {
   if (!this || this.length === 0) {
     return md
   }
-  let rows = this.data;
-  let keys = Object.keys(rows[0]);
+  const rows = this.data;
+  const keys = Object.keys(rows[0]);
   //first, grab the headers
   //remove auto-generated number keys
-  let headers = keys.map((k) => {
+  const headers = keys.map((k) => {
     if (/^col[0-9]/.test(k) === true) {
       return ''
     }
@@ -320,7 +323,7 @@ const doTable = function (options) {
   md += rows
     .map((row) => {
       //each column..
-      let arr = keys.map((k) => {
+      const arr = keys.map((k) => {
         if (!row[k]) {
           return ''
         }
@@ -345,5 +348,6 @@ const plugin = function (models) {
   models.List.prototype.markdown = toMarkdown$1;
   models.Reference.prototype.markdown = toMarkdown;
 };
+plugin.version = version;
 
 export { plugin as default };

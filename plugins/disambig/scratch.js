@@ -5,7 +5,7 @@ import plg from './src/index.js'
 wtf.extend(plg)
 
 wtf.fetch('spencer').then((doc) => {
-  let res = doc.disambig()
+  const res = doc.disambig()
   console.log(res)
 })
 /*
