@@ -23,6 +23,7 @@
   - **[fix]** - #303 Image captions survive reordered size and layout options.
   - **[fix]** - #599 Keep template list values in their table cells
   - **[fix]** - #303 Image caption parsing
+  - **[fix]** - #324 Equals signs in nested templates
   - **[fix]** - .interwiki() returned every link, instead of just interwiki links
   - **[fix]** - section .previousSibling() returned the raw previous section, instead of the actual sibling
   - **[fix]** - paragraph .references()/.citations() crashed on reference-less paragraphs

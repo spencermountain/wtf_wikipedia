@@ -5,6 +5,7 @@ import postprocess from '../_lib/postprocess.ts'
 // Match the existing inline pipeline, without sentence splitting.
 const parse = (wiki) => {
   const data = { wiki, text: wiki }
+  // Preserve the existing order: link labels, text cleanup, then formatting.
   parseLinks(data)
   data.text = postprocess(data.text)
   const parsed = parseFormatting(data)
