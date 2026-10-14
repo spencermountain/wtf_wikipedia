@@ -27,7 +27,6 @@ let zeros = [
   'rnd',
   'date', //Explictly-set dates - https://en.wikipedia.org/wiki/'Date',
   'taste',
-  'monthname',
   'baseball secondary style',
   'nowrap',
   'nobr',

@@ -125,8 +125,8 @@ test('interwiki', (t) => {
   const obj = wtf(str)
   t.equal(obj.section().interwiki()[0].page(), 'Radiohead', 'interwiki-link')
   t.equal(obj.section().interwiki()[0].wiki(), 'wikinews', 'interwiki-link')
-  t.equal(obj.categories().length, 1, 'cat-length')
-  t.equal(obj.category(0), 'Films', 'cat-match')
+  t.equal(obj.categories().length, 1, 'interwiki: cat-length')
+  t.equal(obj.category(0), 'Films', 'interwiki: cat-match')
   t.end()
 })
 

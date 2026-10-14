@@ -21,6 +21,10 @@ const months = [
 
 //date- templates we support
 export default {
+  monthname: (tmpl) => {
+    const obj = parse(tmpl, ['month'])
+    return months[Number(obj.month) - 1] || ''
+  },
   currentday: () => {
     let d = new Date()
     return String(d.getDate())
@@ -167,7 +171,7 @@ export default {
   //https://en.wikipedia.org/wiki/Template:Time
   time: () => {
     let d = new Date()
-    let obj = ymd([d.getFullYear(), d.getMonth(), d.getDate()])
+    let obj = ymd([d.getFullYear(), d.getMonth() + 1, d.getDate()])
     return toText(obj)
   },
 

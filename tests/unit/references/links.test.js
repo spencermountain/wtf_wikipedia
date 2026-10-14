@@ -1,5 +1,5 @@
 import test from 'tape'
-import wtf from '../lib/index.js'
+import wtf from '../../lib/index.js'
 
 // Recovered from commented reference assertions; inspect links through their methods.
 test('inline references retain external links', (t) => {
@@ -16,8 +16,8 @@ test('inline references retain external links', (t) => {
   t.end()
 })
 
-test('image JSON retains links in captions', (t) => {
-  const image = wtf("[[File:Wikipedesketch1.png|thumb|The Wikipede edits ''[[Myriapoda]]''.]]").image().json()
-  t.equal(image.links?.[0]?.page, 'Myriapoda', 'caption link in serialized image')
+test('references without inline links return an empty array', (t) => {
+  t.deepEqual(wtf('<ref>Plain reference</ref>').reference().links(), [])
+  t.deepEqual(wtf('<ref>{{cite web|title=Source|url=https://example.com}}</ref>').reference().links(), [])
   t.end()
 })

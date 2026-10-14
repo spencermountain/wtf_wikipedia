@@ -23,7 +23,7 @@ const toJson = function (img, options) {
   if (options.caption !== false && img.data.caption) {
     json.caption = img.caption()
     if (options.links !== false && img.data.caption.links()) {
-      json.links = img.links()
+      json.links = img.links().map((link) => link.json())
     }
   }
   if (options.alt !== false && img.data.alt) {

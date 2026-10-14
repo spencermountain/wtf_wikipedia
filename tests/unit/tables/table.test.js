@@ -14,7 +14,7 @@ test('bluejays table', (t) => {
 
 test('rnli stations', (t) => {
   const doc = readFile('RNLI-Stations')
-  t.equal(doc.categories().length, 5, 'cat-length')
+  t.equal(doc.categories().length, 5, 'table-cat-length')
 
   const intro = doc.section(0)
   t.equal(intro.title(), '', 'intro-title')

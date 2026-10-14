@@ -27,28 +27,26 @@ test('cached-page-stress', (t) => {
     const doc = readFile(title)
     //basic is-valid tests for the page parsing
     t.comment(title)
-    t.equal(doc.isRedirect(), false, ' - - not-redirect')
-    t.equal(doc.isDisambig(), false, ' - - not-disambiguation')
-    t.ok(doc.categories().length > 0, ' - - cat-length')
-    t.ok(doc.sections().length > 0, ' - - section-length')
+    t.equal(doc.isRedirect(), false, `${title}:not-redirect`)
+    t.equal(doc.isDisambig(), false, `${title}:not-disambiguation`)
+    t.ok(doc.categories().length > 0, `${title}:cat-length`)
+    t.ok(doc.sections().length > 0, `${title}:section-length`)
     const intro = doc.section()
-    t.ok(intro.title() === '', ' - - intro-title-empty')
-    t.ok(intro.indentation() === 0, ' - - depth=0')
-    t.ok(intro.sentences().length > 0, ' - - sentences-length')
-    t.ok(intro.sentence().text().length > 0, ' - - intro-text')
-    t.match(intro.sentence().text(), /\p{L}/u, ' - - intro-has words')
+    t.ok(intro.title() === '', `${title}:intro-title-empty`)
+    t.ok(intro.indentation() === 0, `${title}:depth=0`)
+    t.ok(intro.sentences().length > 0, `${title}:sentences-length`)
+    t.ok(intro.sentence().text().length > 0, `${title}:intro-text`)
+    t.match(intro.sentence().text(), /\p{L}/u, `${title}:intro-has words`)
     if (noCitation[title] === true) {
-      t.equal(doc.citations().length, 0, title + ' has no citation')
+      t.equal(doc.citations().length, 0, `${title}:no-citation`)
     } else {
-      t.ok(doc.citations().length > 0, title + ' has a citation')
+      t.ok(doc.citations().length > 0, `${title}:citation`)
     }
     const text = doc.text()
-    t.ok(text.length > 40, ' - - text-length')
+    t.ok(text.length > 40, `${title}:text-length`)
 
-    const json = doc.json({
-      encode: true,
-    })
-    t.ok(Object.keys(json).length >= 2, ' - - json-keys-ok')
+    const json = doc.json({ encode: true })
+    t.ok(Object.keys(json).length >= 2, `${title}:json-keys-ok`)
   })
   t.end()
 })

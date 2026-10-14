@@ -1,7 +1,6 @@
 import { images } from '../_data/i18n.ts'
 import Image from './Image.ts'
 import parseTemplate from '../template/parse/toJSON/index.ts'
-import { fromText as parseSentence } from '../04-sentence/index.ts'
 import nested_find from './nested_find.ts'
 //regexes:
 const isFile = new RegExp('(' + images.join('|') + '):', 'i')
@@ -51,16 +50,16 @@ const oneImage = function (img, doc) {
 
     //https://en.wikipedia.org/wiki/Wikipedia:Extended_image_syntax
     //- [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
-    let imgData: any = parseTemplate(img)
+    let imgData: any = parseTemplate(img, [], 'raw')
     let arr = imgData.list || []
     //parse-out alt text, if explicitly given
     if (imgData.alt) {
-      obj.alt = imgData.alt
+      obj.alt = imgData.alt.text()
     }
     //remove 'thumb' and things
-    arr = arr.filter((str) => Object.hasOwn(imgLayouts, str) === false)
+    arr = arr.filter((str) => Object.hasOwn(imgLayouts, str.text()) === false)
     if (arr.at(-1)) {
-      obj.caption = parseSentence(arr.at(-1))
+      obj.caption = arr.at(-1)
     }
     return new Image(obj)
   }

@@ -22,7 +22,7 @@ class Reference {
   }
 
   links() {
-    return [] //nah, skip these.
+    return this.data.inline?.links() || []
   }
 
   text() {
