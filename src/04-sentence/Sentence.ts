@@ -34,7 +34,7 @@ class Sentence {
     return this.links().filter((l) => l.type() === 'interwiki')
   }
 
-  bolds(clue?) {
+  bolds() {
     if (this.data && this.data.fmt && this.data.fmt.bold) {
       return this.data.fmt.bold || []
     }
@@ -49,7 +49,7 @@ class Sentence {
     return arr[0] || null
   }
 
-  italics(clue?) {
+  italics() {
     if (this.data && this.data.fmt && this.data.fmt.italic) {
       return this.data.fmt.italic || []
     }

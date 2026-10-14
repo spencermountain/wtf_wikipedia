@@ -90,7 +90,7 @@
     "rollup-plugin-filesize-check": "2.0.1",
     "tap-dancer": "0.4.4",
     "tape": "5.10.2",
-    "typescript": "7.0.2",
+    "typescript": "~6.0.3",
     "typescript-eslint": "8.71.2"
   },
   "unpkg": "builds/wtf_wikipedia-client.min.js",

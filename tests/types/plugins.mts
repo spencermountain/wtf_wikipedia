@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // type-only test for the bundled plugins' declarations
 import wtf from 'wtf_wikipedia'
 import htmlPlugin from 'wtf-plugin-html'

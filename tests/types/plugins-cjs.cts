@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 // type-only test: the plugins' require() declarations (index.d.cts) compile
 // and export the right shapes. (the full consumer flow is exercised in plugins.mts)
 import type { Plugin } from 'wtf_wikipedia'

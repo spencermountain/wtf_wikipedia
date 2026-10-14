@@ -121,14 +121,12 @@ class Section {
       arr.push(list.links())
     })
 
-    arr = arr
-      .flat()
-      .filter((val) => val !== undefined) //filter out all the undefined from the flattened empty arrays
+    arr = arr.flat().filter((val) => val !== undefined) //filter out all the undefined from the flattened empty arrays
 
     if (typeof clue === 'string') {
       const target = clue.toLowerCase()
-      const link = arr.find((link) => link.page()?.toLowerCase() === target)
-      return link === undefined ? [] : [link]
+      const found = arr.find((link) => link.page()?.toLowerCase() === target)
+      return found === undefined ? [] : [found]
     }
 
     return arr

@@ -1,9 +1,26 @@
+/* eslint-disable no-console,no-duplicate-imports */
+
 // type-only test - compiled by `npm run test:types`, never executed
 import wtf from 'wtf_wikipedia'
 import type {
-  Document, Section, Infobox, Template, Table, Reference, Paragraph,
-  Image, Link, List, Sentence, DocumentOptions, TemplateJson, LinkJson,
-  ImageJson, Coordinate, Models, Plugin,
+  Document,
+  Section,
+  Infobox,
+  Template,
+  Table,
+  Reference,
+  Paragraph,
+  Image,
+  Link,
+  List,
+  Sentence,
+  DocumentOptions,
+  TemplateJson,
+  LinkJson,
+  ImageJson,
+  Coordinate,
+  Models,
+  Plugin,
 } from 'wtf_wikipedia'
 
 // ---- the factory ----
@@ -76,19 +93,33 @@ const tName: string | undefined = tj.template
 console.log(col, rows, kvRows, lineText, page, b, file, refTitle, tName)
 
 // ---- fetch overloads ----
-wtf.fetch('Toronto').then((d) => { if (d && !Array.isArray(d)) console.log(d.title()) })
+wtf.fetch('Toronto').then((d) => {
+  if (d && !Array.isArray(d)) console.log(d.title())
+})
 wtf.fetch('Toronto', 'fr').then((d) => d && console.log(d))
-wtf.fetch(['Toronto', 'Vancouver'], { follow_redirects: false, origin: '*' }).then((ds: Document[]) => console.log(ds.length))
-wtf.fetch(64646, { lang: 'en' }, (err, d) => { console.log(err, d) })
+wtf
+  .fetch(['Toronto', 'Vancouver'], { follow_redirects: false, origin: '*' })
+  .then((ds: Document[]) => console.log(ds.length))
+wtf.fetch(64646, { lang: 'en' }, (err, d) => {
+  console.log(err, d)
+})
 
 // ---- plugin authoring ----
 declare module 'wtf_wikipedia' {
-  interface Document { shout(): string }
-  interface Sentence { shout(): string }
+  interface Document {
+    shout(): string
+  }
+  interface Sentence {
+    shout(): string
+  }
 }
 const shout: Plugin = (models: Models, templates, infoboxes) => {
-  models.Doc.prototype.shout = function () { return this.text().toUpperCase() }
-  models.Sentence.prototype.shout = function () { return this.text().toUpperCase() }
+  models.Doc.prototype.shout = function () {
+    return this.text().toUpperCase()
+  }
+  models.Sentence.prototype.shout = function () {
+    return this.text().toUpperCase()
+  }
   templates['my-tmpl'] = () => ''
   infoboxes['my-box'] = true
   models.http('https://example.com').then((res: unknown) => console.log(res))

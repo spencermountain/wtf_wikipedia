@@ -24,7 +24,7 @@ class Paragraph {
     })
   }
 
-  sentences(clue?) {
+  sentences() {
     return this.data.sentences || []
   }
 
@@ -32,7 +32,7 @@ class Paragraph {
     return getNth(this.sentences(clue), clue)
   }
 
-  references(clue?) {
+  references() {
     return this.data.references || []
   }
 
@@ -48,7 +48,7 @@ class Paragraph {
     return getNth(this.citations(clue), clue)
   }
 
-  lists(clue?) {
+  lists() {
     return this.data.lists || []
   }
 
@@ -56,7 +56,7 @@ class Paragraph {
     return getNth(this.lists(clue), clue)
   }
 
-  images(clue?) {
+  images() {
     return this.data.images || []
   }
 
@@ -64,7 +64,7 @@ class Paragraph {
     return getNth(this.images(clue), clue)
   }
 
-  links(clue?) {
+  links(clue) {
     let arr = this.sentences().flatMap((s) => s.links(clue))
     if (typeof clue === 'string') {
       //grab a specific link like .links('Fortnight')

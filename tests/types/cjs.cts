@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // type-only test for the require() entrypoint (types/index.d.cts)
 import wtf = require('wtf_wikipedia')
 

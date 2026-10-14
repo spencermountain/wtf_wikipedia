@@ -1,4 +1,4 @@
-
+/* eslint-disable no-use-before-define */
 declare class Image {
   alt(): string
   caption(): string
@@ -244,29 +244,27 @@ export type {
 }
 
 type FetchOptions = {
-  path?: string | undefined;
-  wiki?: string | undefined;
-  domain?: string | undefined;
-  follow_redirects?: boolean | undefined;
-  lang?: string | undefined;
-  origin?: string | undefined;
-  noOrigin?: boolean | undefined;
-  userAgent?: string | undefined;
-  "User-Agent"?: string | undefined;
-  "Api-User-Agent"?: string | undefined;
-};
+  path?: string | undefined
+  wiki?: string | undefined
+  domain?: string | undefined
+  follow_redirects?: boolean | undefined
+  lang?: string | undefined
+  origin?: string | undefined
+  noOrigin?: boolean | undefined
+  userAgent?: string | undefined
+  'User-Agent'?: string | undefined
+  'Api-User-Agent'?: string | undefined
+}
 
-type FetchCallback<T> = (...args: [err: Error, result: null] | [err: null, result: FetchResult<T>]) => void;
+type FetchCallback<T> = (...args: [err: Error, result: null] | [err: null, result: FetchResult<T>]) => void
 
 declare function fetch<T extends string | number | string[] | number[] | URL>(
   title: T,
   options?: FetchOptions | string | undefined, // a string is a language-code, like 'en'
   callback?: FetchCallback<T>
-): Promise<FetchResult<T>>;
+): Promise<FetchResult<T>>
 
-type FetchResult<T> = T extends unknown[]
-  ? Document[]
-  : Document | null;
+type FetchResult<T> = T extends unknown[] ? Document[] : Document | null
 
 /** options for `wtf(text, options)` - metadata about the page, all optional */
 type DocumentOptions = {
