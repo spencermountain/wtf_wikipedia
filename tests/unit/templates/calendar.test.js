@@ -27,6 +27,6 @@ test('monthname converts numeric months', (t) => {
 test('time template handles January', (t) => {
   mock.timers.enable({ apis: ['Date'], now: new Date('2024-01-15T12:00:00Z') })
   t.teardown(() => mock.timers.reset())
-  t.equal(wtf('{{time|MST|dst=no}}').text(), 'January 15, 2024')
+  t.equal(wtf('{{time|MST|dst=no}}').text(), 'January 15, 2024', 'January standard time')
   t.end()
 })

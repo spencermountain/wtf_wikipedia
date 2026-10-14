@@ -379,15 +379,15 @@ test('categories - get - if the clue is not a number return the list of categori
 })
 
 //sections
-test('sections - get - should initially be []', (t) => {
+test('sections - get - should initially be an empty collection', (t) => {
   const doc = wtf('')
-  t.deepEqual(doc.sections(), [], 'the sections equals []')
+  t.ok(doc.sections().isEmpty(), 'the sections collection is empty')
   t.end()
 })
 
 test('sections - get - if the sections is in the option. ignore it', (t) => {
   const doc = wtf('', { sections: ['Q42'] })
-  t.deepEqual(doc.sections(), [], 'the sections equals []')
+  t.ok(doc.sections().isEmpty(), 'the sections collection is empty')
   t.end()
 })
 
@@ -430,7 +430,8 @@ const page = wtf(PAGE)
 test('sections - get - if the clue is a undefined / unset return the list of sections', (t) => {
   t.deepEqual(
     page.sections().map((s) => s.title()),
-    ['', 'History', 'Early days', 'Career', 'See also']
+    ['', 'History', 'Early days', 'Career', 'See also'],
+    'section titles'
   )
   t.end()
 })
@@ -441,25 +442,25 @@ test('sections - get - if the clue is a number return the section at that index'
 })
 
 test('sections - get - if the clue is a string return the section of that title', (t) => {
-  t.equal(page.section('History').sentence().text(), 'The city was founded in 1904.')
+  t.equal(page.section('History').sentence().text(), 'The city was founded in 1904.', 'section lookup sentence')
   t.end()
 })
 
 test('sections - get - string clue is case-insensitive', (t) => {
-  t.equal(page.section('HISTORY').title(), 'History')
+  t.equal(page.section('HISTORY').title(), 'History', 'case-insensitive title')
   t.end()
 })
 
 //paragraphs
-test('paragraphs - get - should initially be []', (t) => {
+test('paragraphs - get - should initially be an empty collection', (t) => {
   const doc = wtf('')
-  t.deepEqual(doc.paragraphs(), [], 'the paragraphs equals []')
+  t.ok(doc.paragraphs().isEmpty(), 'the paragraphs collection is empty')
   t.end()
 })
 
 test('paragraphs - get - if the paragraphs is in the option. ignore it', (t) => {
   const doc = wtf('', { paragraphs: ['Q42'] })
-  t.deepEqual(doc.paragraphs(), [], 'the paragraphs equals []')
+  t.ok(doc.paragraphs().isEmpty(), 'the paragraphs collection is empty')
   t.end()
 })
 
@@ -473,36 +474,37 @@ test('paragraphs - get - if the clue is a undefined / unset return the list of p
       'Nested text here.\n * one fish\n * two fish',
       'Career text goes here. See Ville too.',
       '\n * Other page',
-    ]
+    ],
+    'paragraph texts'
   )
   t.end()
 })
 
 test('paragraph - get - if the clue is a number return the paragraph at that index', (t) => {
-  t.equal(page.paragraph(1).text(), 'The city was founded in 1904. It grew quickly.')
+  t.equal(page.paragraph(1).text(), 'The city was founded in 1904. It grew quickly.', 'indexed paragraph text')
   t.end()
 })
 
 test('paragraph - get - if the clue is unset or undefined return the first paragraph', (t) => {
-  t.equal(page.paragraph().text(), 'Testville is a small test page. It has two sentences.')
+  t.equal(page.paragraph().text(), 'Testville is a small test page. It has two sentences.', 'first paragraph text')
   t.end()
 })
 
-test('paragraph - get - if the clue is not a number return the first paragraph', (t) => {
-  t.equal(page.paragraph('string').text(), 'Testville is a small test page. It has two sentences.')
+test('paragraph - get - unsupported selector returns null', (t) => {
+  t.equal(page.paragraph('string'), null, 'unsupported paragraph selector')
   t.end()
 })
 
 //sentences
-test('sentences - get - should initially be []', (t) => {
+test('sentences - get - should initially be an empty collection', (t) => {
   const doc = wtf('')
-  t.deepEqual(doc.sentences(), [], 'the sentences equals []')
+  t.ok(doc.sentences().isEmpty(), 'the sentences collection is empty')
   t.end()
 })
 
 test('sentences - get - if the sentences is in the option. ignore it', (t) => {
   const doc = wtf('', { sentences: ['Q42'] })
-  t.deepEqual(doc.sentences(), [], 'the sentences equals []')
+  t.ok(doc.sentences().isEmpty(), 'the sentences collection is empty')
   t.end()
 })
 
@@ -518,55 +520,57 @@ test('sentences - get - if the clue is a undefined / unset return the list of se
       'Nested text here.',
       'Career text goes here.',
       'See Ville too.',
-    ]
+    ],
+    'sentence texts'
   )
   t.end()
 })
 
 test('sentences - get - if the clue is a number return the sentence at that index', (t) => {
-  t.equal(page.sentence(1).text(), 'It has two sentences.')
+  t.equal(page.sentence(1).text(), 'It has two sentences.', 'indexed sentence text')
   t.end()
 })
 
-test('sentences - get - if the clue is a string (not number) return all the sentences', (t) => {
-  t.equal(page.sentences('string').length, page.sentences().length, 'string clue returns all')
+test('sentences - get - unsupported string selector returns an empty collection', (t) => {
+  t.ok(page.sentences('string').isEmpty(), 'unsupported string selector returns no sentences')
   t.end()
 })
 
 test('sentence - get - should return the first sentence', (t) => {
-  t.equal(page.sentence().text(), 'Testville is a small test page.')
+  t.equal(page.sentence().text(), 'Testville is a small test page.', 'first sentence text')
   t.end()
 })
 
 //images
-test('images - get - should initially be []', (t) => {
+test('images - get - should initially be an empty collection', (t) => {
   const doc = wtf('')
-  t.deepEqual(doc.images(), [], 'the images equals []')
+  t.ok(doc.images().isEmpty(), 'the images collection is empty')
   t.end()
 })
 
 test('images - get - if the images is in the option. ignore it', (t) => {
   const doc = wtf('', { images: ['Q42'] })
-  t.deepEqual(doc.images(), [], 'the images equals []')
+  t.ok(doc.images().isEmpty(), 'the images collection is empty')
   t.end()
 })
 
 test('images - get - finds inline, and gallery images', (t) => {
   t.deepEqual(
     page.images().map((i) => i.file()),
-    ['File:Crest.jpg', 'File:Second.jpg']
+    ['File:Crest.jpg', 'File:Second.jpg'],
+    'image filenames'
   )
   t.end()
 })
 
 test('images - get - if the clue is a number return the image at that index', (t) => {
-  t.equal(page.image(1).file(), 'File:Second.jpg')
+  t.equal(page.image(1).file(), 'File:Second.jpg', 'indexed image filename')
   t.end()
 })
 
 test('image - get - return the first image on the page', (t) => {
-  t.equal(page.image().file(), 'File:Crest.jpg')
-  t.equal(page.image().url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg')
+  t.equal(page.image().file(), 'File:Crest.jpg', 'first image filename')
+  t.equal(page.image().url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg', 'first image URL')
   t.end()
 })
 
@@ -574,13 +578,14 @@ test('image - get - return the first image on the page', (t) => {
 test('links - get - return all links on the page', (t) => {
   t.deepEqual(
     page.links().map((l) => l.page()),
-    ['Rome', 'quickly', 'Fun', 'Ville', 'Other page']
+    ['Rome', 'quickly', 'Fun', 'Ville', 'Other page'],
+    'link targets'
   )
   t.end()
 })
 
 test('links - get - if the clue is a number return the link at that index', (t) => {
-  t.equal(page.link(1).page(), 'quickly')
+  t.equal(page.link(1).page(), 'quickly', 'indexed link target')
   t.end()
 })
 
@@ -593,8 +598,8 @@ test('links - get - if the clue is a string return the link with that page', (t)
   t.end()
 })
 
-test('links - get - if the clue is any other type then return all links', (t) => {
-  t.equal(page.links([]).length, page.links().length)
+test('links - get - unsupported selector returns an empty collection', (t) => {
+  t.ok(page.links([]).isEmpty(), 'unsupported selector returns no links')
   t.end()
 })
 
@@ -602,7 +607,8 @@ test('links - get - if the clue is any other type then return all links', (t) =>
 test('interwiki - get - return only the interwiki links', (t) => {
   t.deepEqual(
     page.interwiki().map((l) => l.json()),
-    [{ type: 'interwiki', wiki: 'fr', page: 'Ville' }]
+    [{ type: 'interwiki', wiki: 'fr', page: 'Ville' }],
+    'interwiki JSON'
   )
   t.end()
 })
@@ -611,7 +617,8 @@ test('interwiki - get - return only the interwiki links', (t) => {
 test('lists - get - return all lists on the page', (t) => {
   t.deepEqual(
     page.lists().map((l) => l.lines().map((s) => s.text())),
-    [['one fish', 'two fish'], ['Other page']]
+    [['one fish', 'two fish'], ['Other page']],
+    'list lines'
   )
   t.end()
 })
@@ -622,7 +629,8 @@ test('lists - get - if the clue is a number return the list at that index', (t) 
       .list(1)
       .lines()
       .map((s) => s.text()),
-    ['Other page']
+    ['Other page'],
+    'indexed list lines'
   )
   t.end()
 })
@@ -631,13 +639,14 @@ test('lists - get - if the clue is a number return the list at that index', (t) 
 test('tables - get - return all tables', (t) => {
   t.deepEqual(
     page.tables().map((tb) => tb.keyValue()),
-    [[{ name: 'jane', age: '40' }]]
+    [[{ name: 'jane', age: '40' }]],
+    'table values'
   )
   t.end()
 })
 
 test('tables - get - if the clue is a number return the table at that index', (t) => {
-  t.deepEqual(page.table(0).keyValue(), [{ name: 'jane', age: '40' }])
+  t.deepEqual(page.table(0).keyValue(), [{ name: 'jane', age: '40' }], 'indexed table values')
   t.end()
 })
 
@@ -645,18 +654,19 @@ test('tables - get - if the clue is a number return the table at that index', (t
 test('templates - get - return all templates', (t) => {
   t.deepEqual(
     page.templates().map((te) => te.json().template),
-    ['coord', 'gallery']
+    ['coord', 'gallery'],
+    'template names'
   )
   t.end()
 })
 
 test('templates - get - if the clue is a number return the template at that index', (t) => {
-  t.deepEqual(page.template(0).json(), { display: 'title', template: 'coord', lat: 43.65, lon: -79.38 })
+  t.deepEqual(page.template(0).json(), { display: 'title', template: 'coord', lat: 43.65, lon: -79.38 }, 'indexed template JSON')
   t.end()
 })
 
 test('templates - get - if the clue is a string return templates of that name', (t) => {
-  t.equal(page.templates('coord').length, 1)
+  t.equal(page.templates('coord').length, 1, 'named template count')
   t.end()
 })
 
@@ -664,33 +674,35 @@ test('templates - get - if the clue is a string return templates of that name', 
 test('references - get - return all references', (t) => {
   t.deepEqual(
     page.references().map((r) => r.title()),
-    ['Some Ref']
+    ['Some Ref'],
+    'reference titles'
   )
   t.end()
 })
 
 test('references - get - if the clue is a number return the reference at that index', (t) => {
-  t.equal(page.reference(0).title(), 'Some Ref')
+  t.equal(page.reference(0).title(), 'Some Ref', 'indexed reference title')
   t.end()
 })
 
 test('citations - get - is an alias of references', (t) => {
   t.deepEqual(
     page.citations().map((r) => r.title()),
-    ['Some Ref']
+    ['Some Ref'],
+    'citation titles'
   )
-  t.equal(page.citation().title(), 'Some Ref')
+  t.equal(page.citation().title(), 'Some Ref', 'first citation title')
   t.end()
 })
 
 //coordinates
 test('coordinates - get - return all coordinates', (t) => {
-  t.deepEqual(page.coordinates(), [{ display: 'title', template: 'coord', lat: 43.65, lon: -79.38 }])
+  t.deepEqual(page.coordinates(), [{ display: 'title', template: 'coord', lat: 43.65, lon: -79.38 }], 'coordinates')
   t.end()
 })
 
 test('coordinates - get - if the clue is a number return the coordinate at that index', (t) => {
-  t.equal(page.coordinate(0).lat, 43.65)
+  t.equal(page.coordinate(0).lat, 43.65, 'indexed latitude')
   t.end()
 })
 
@@ -698,14 +710,15 @@ test('coordinates - get - if the clue is a number return the coordinate at that 
 test('infoboxes - get - return all infoboxes', (t) => {
   t.deepEqual(
     page.infoboxes().map((i) => i.type()),
-    ['person']
+    ['person'],
+    'infobox types'
   )
   t.end()
 })
 
 test('infoboxes - get - field access', (t) => {
-  t.equal(page.infobox().get('name').text(), 'Jane Doe')
-  t.deepEqual(page.infobox().keyValue(), { name: 'Jane Doe', age: '44' })
+  t.equal(page.infobox().get('name').text(), 'Jane Doe', 'infobox name')
+  t.deepEqual(page.infobox().keyValue(), { name: 'Jane Doe', age: '44' }, 'infobox values')
   t.end()
 })
 

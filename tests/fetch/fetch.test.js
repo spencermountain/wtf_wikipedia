@@ -9,17 +9,17 @@ test('fetch-as-promise', async (t) => {
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
   })
   t.ok(doc.sections().length > 0, 'promise returned document')
-  t.equal(doc.language(), 'en')
-  t.equal(doc.title(), 'Tony Hawk')
-  t.equal(doc.pageID(), 87474)
-  t.equal(doc.wikidata(), 'Q295020')
-  t.notEqual(doc.revisionID(), null)
-  t.notEqual(doc.timestamp(), null)
-  t.notEqual(doc.description(), null)
+  t.equal(doc.language(), 'en', 'language')
+  t.equal(doc.title(), 'Tony Hawk', 'page title')
+  t.equal(doc.pageID(), 87474, 'page ID')
+  t.equal(doc.wikidata(), 'Q295020', 'Wikidata ID')
+  t.notEqual(doc.revisionID(), null, 'revision ID')
+  t.notEqual(doc.timestamp(), null, 'timestamp')
+  t.notEqual(doc.description(), null, 'description')
 })
 
 test('promise rejects on error if no callback', async (t) => {
-  await assert.rejects(wtf.fetch('https://example.com', 'en'), { name: 'Error', message: /^HTTP \d+/ })
+  await assert.rejects(wtf.fetch('https://example.com', 'en'), { name: 'Error', message: /^HTTP \d+/ }, 'HTTP error rejects promise')
   t.pass('request rejects with an HTTP error')
 
   t.end()
@@ -28,9 +28,9 @@ test('promise rejects on error if no callback', async (t) => {
 test("if callback supplied, error scenario calls errback and doesn't reject promise", async (t) => {
   t.plan(3)
   await wtf.fetch('https://example.com', 'en', (err, data) => {
-    t.equal(data, null)
-    t.equal(err.name, 'Error')
-    t.match(err.message, /^HTTP \d+/)
+    t.equal(data, null, 'no callback data on error')
+    t.equal(err.name, 'Error', 'callback error name')
+    t.match(err.message, /^HTTP \d+/, 'callback HTTP error message')
   })
 
   t.end()

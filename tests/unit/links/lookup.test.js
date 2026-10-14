@@ -7,17 +7,17 @@ test('named link lookup skips external links', (t) => {
 
   t.equal(doc.links().some((link) => link.type() === 'external'), true, 'external link is retained')
   t.equal(doc.links('target')[0].page(), 'Target', 'document lookup ignores case')
-  t.equal(doc.links('TARGET')[0].text(), 'first', 'document lookup keeps the first match')
+  t.deepEqual(doc.links('TARGET').map((link) => link.text()), ['first', 'second'], 'document lookup retains all matches in order')
   t.equal(section.links('target')[0].page(), 'Target', 'section lookup ignores case')
-  t.equal(section.links('TARGET')[0].text(), 'first', 'section lookup keeps the first match')
-  t.deepEqual(doc.links('Missing'), [], 'missing document target returns no matches')
-  t.deepEqual(section.links('Missing'), [], 'missing section target returns no matches')
+  t.deepEqual(section.links('TARGET').map((link) => link.text()), ['first', 'second'], 'section lookup retains all matches in order')
+  t.ok(doc.links('Missing').isEmpty(), 'missing document target returns no matches')
+  t.ok(section.links('Missing').isEmpty(), 'missing section target returns no matches')
   t.end()
 })
 
 test('named link lookup handles sections containing only external links', (t) => {
   const doc = wtf('[https://example.com source]')
-  t.deepEqual(doc.links('Missing'), [], 'document lookup returns no matches')
-  t.deepEqual(doc.section().links('Missing'), [], 'section lookup returns no matches')
+  t.ok(doc.links('Missing').isEmpty(), 'document lookup returns no matches')
+  t.ok(doc.section().links('Missing').isEmpty(), 'section lookup returns no matches')
   t.end()
 })

@@ -25,13 +25,14 @@ test('date template json', (t) => {
 
 test('start date json keeps parsed data', (t) => {
   const json = wtf('{{start date|1976|4|1}}').templates()[0].json()
-  t.equal(json.template, 'date')
+  t.equal(json.template, 'date', 'template name')
   t.deepEqual(json.data, {
     year: '1976',
     month: '4',
     date: '1',
     template: 'start date',
     text: 'April 1, 1976',
-  })
+  },
+    'parsed date fields')
   t.end()
 })

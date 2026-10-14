@@ -8,6 +8,12 @@ declare const wtf: Esm['default']
 
 // re-expose the class types so CJS consumers can write `wtf.Document`, mirroring ESM.
 declare namespace wtf {
+  export type Collection<T extends { json: (...args: any[]) => any; text: (...args: any[]) => string; wikitext: () => string }> = import('./index.js', { with: { 'resolution-mode': 'import' } }).Collection<T>
+  export type LinkCollection = import('./index.js', { with: { 'resolution-mode': 'import' } }).LinkCollection
+  export type SectionCollection = import('./index.js', { with: { 'resolution-mode': 'import' } }).SectionCollection
+  export type TemplateCollection = import('./index.js', { with: { 'resolution-mode': 'import' } }).TemplateCollection
+  export type InfoboxCollection = import('./index.js', { with: { 'resolution-mode': 'import' } }).InfoboxCollection
+
   export type Document = import('./index.js', { with: { 'resolution-mode': 'import' } }).Document
   export type Section = import('./index.js', { with: { 'resolution-mode': 'import' } }).Section
   export type Infobox = import('./index.js', { with: { 'resolution-mode': 'import' } }).Infobox

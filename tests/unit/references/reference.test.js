@@ -109,7 +109,7 @@ test('double template', (t) => {
 })
 
 test('Named-Footnote-Template', (t) => {
-  t.equal(wtf(`hello {{refn|group=groupname|name=name|Contents of the footnote}} world`).plaintext(), 'hello world')
+  t.equal(wtf(`hello {{refn|group=groupname|name=name|Contents of the footnote}} world`).plaintext(), 'hello world', 'footnote omitted from text')
   t.end()
 })
 

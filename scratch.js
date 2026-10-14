@@ -1,4 +1,5 @@
 import Block from './src/Block/Block.js'
+import wtf from './src/index.ts'
 
 // Ordinary templates are expanded; reference tags stay until Block parses them.
 const block = new Block(
@@ -7,8 +8,14 @@ Then visit [[New York (state)|New York]] &amp; ''[[Boston]]''.<ref>A second sour
 Return to New York.<ref name="guide"/>`
 )
 
-console.log(block.text())
-console.dir(block.json(), { depth: null })
-// Sentence blocks retain links and formatting, but no citations.
-console.dir(block.sentences().map((sentence) => sentence.json()), { depth: null })
-console.log('Original block citations:', block.citations().length)
+// console.log(block.text())
+// console.dir(block.json(), { depth: null })
+// // Sentence blocks retain links and formatting, but no citations.
+// console.dir(
+//   block.sentences().map((sentence) => sentence.json()),
+//   { depth: null }
+// )
+// console.log('Original block citations:', block.citations().length)
+
+const doc = wtf('')
+console.log(doc.sections())

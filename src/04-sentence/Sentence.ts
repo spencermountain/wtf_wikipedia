@@ -1,3 +1,4 @@
+import Collection from '../collection/Collection.js'
 import toJSON from './toJson.ts'
 
 //where we store the formatting, link, date information
@@ -11,29 +12,20 @@ class Sentence {
     })
   }
 
-  links(n?) {
-    let arr = this.data.links || []
-    if (typeof n === 'string') {
-      //grab a link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = arr.find((o) => o.page === n)
-      return link === undefined ? [] : [link]
-    }
-    return arr
+  links(selector?) {
+    const items = this.data.links || []
+    return Collection.from(items).select(selector)
   }
 
-  link(clue) {
-    let arr = this.links(clue)
-    if (typeof clue === 'number') {
-      return arr[clue] || null
-    }
-    return arr[0] || null
+  link(selector?) {
+    return this.links(selector)[0] ?? null
   }
 
-  interwiki() {
-    return this.links().filter((l) => l.type() === 'interwiki')
+  interwiki(selector?) {
+    return this.links().filter(link => link.type() === 'interwiki').select(selector)
   }
 
+  // TODO: Formatting values are strings, not model collections.
   bolds() {
     if (this.data && this.data.fmt && this.data.fmt.bold) {
       return this.data.fmt.bold || []
@@ -42,13 +34,14 @@ class Sentence {
   }
 
   bold(clue) {
-    let arr = this.bolds(clue)
+    let arr = this.bolds()
     if (typeof clue === 'number') {
       return arr[clue] || null
     }
     return arr[0] || null
   }
 
+  // TODO: Formatting values are strings, not model collections.
   italics() {
     if (this.data && this.data.fmt && this.data.fmt.italic) {
       return this.data.fmt.italic || []
@@ -57,7 +50,7 @@ class Sentence {
   }
 
   italic(clue) {
-    let arr = this.italics(clue)
+    let arr = this.italics()
     if (typeof clue === 'number') {
       return arr[clue] || null
     }

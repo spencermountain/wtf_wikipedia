@@ -42,7 +42,8 @@ test('section - title / depth / indentation / index', (t) => {
     ['Early days', 1, 1, 2],
     ['Career', 0, 0, 3],
     ['See also', 0, 0, 4],
-  ])
+  ],
+    'section heading properties')
   t.end()
 })
 
@@ -50,7 +51,8 @@ test('section - sentences', (t) => {
   const sec = doc.section('History')
   t.deepEqual(
     sec.sentences().map((s) => s.text()),
-    ['The city was founded in 1904.', 'It grew quickly.', 'A second paragraph, with a link here.']
+    ['The city was founded in 1904.', 'It grew quickly.', 'A second paragraph, with a link here.'],
+    'sentence texts'
   )
   t.equal(sec.sentence(1).text(), 'It grew quickly.', 'sentence by index')
   t.equal(sec.sentence().text(), 'The city was founded in 1904.', 'first sentence')
@@ -74,7 +76,8 @@ test('section - links', (t) => {
   const sec = doc.section('History')
   t.deepEqual(
     sec.links().map((l) => l.page()),
-    ['Rome', 'quickly', 'Fun']
+    ['Rome', 'quickly', 'Fun'],
+    'link targets'
   )
   t.equal(sec.link(1).page(), 'quickly', 'link by index')
   t.equal(sec.links('rome')[0].page(), 'Rome', 'link by name, case-insensitive')
@@ -84,7 +87,11 @@ test('section - links', (t) => {
 
 test('section - tables', (t) => {
   const sec = doc.section('Early days')
-  t.deepEqual(sec.tables().map((tb) => tb.keyValue()), [[{ name: 'jane', age: '40' }]])
+  t.deepEqual(
+    sec.tables().map((tb) => tb.keyValue()),
+    [[{ name: 'jane', age: '40' }]],
+    'table values'
+  )
   t.deepEqual(sec.table(0).keyValue(), [{ name: 'jane', age: '40' }], 'table by index')
   t.equal(doc.section('Career').table(), null, 'no tables is null')
   t.end()
@@ -94,27 +101,28 @@ test('section - templates', (t) => {
   const sec = doc.section(0)
   t.deepEqual(
     sec.templates().map((tm) => tm.json()),
-    [{ display: 'title', template: 'coord', lat: 43.65, lon: -79.38 }]
+    [{ display: 'title', template: 'coord', lat: 43.65, lon: -79.38 }],
+    'template JSON'
   )
   t.equal(sec.templates('coord').length, 1, 'templates by name')
   t.equal(sec.template('coord').json().lat, 43.65, 'template by name')
-  t.deepEqual(doc.section('History').templates(), [], 'no templates')
+  t.ok(doc.section('History').templates().isEmpty(), 'no templates')
   t.end()
 })
 
 test('section - infoboxes', (t) => {
   const sec = doc.section(0)
-  t.equal(sec.infoboxes().length, 1)
-  t.equal(sec.infobox().type(), 'person')
-  t.equal(sec.infobox().get('name').text(), 'Jane Doe')
-  t.deepEqual(sec.infobox().keyValue(), { name: 'Jane Doe', age: '44' })
+  t.equal(sec.infoboxes().length, 1, 'infobox count')
+  t.equal(sec.infobox().type(), 'person', 'infobox type')
+  t.equal(sec.infobox().get('name').text(), 'Jane Doe', 'infobox name')
+  t.deepEqual(sec.infobox().keyValue(), { name: 'Jane Doe', age: '44' }, 'infobox values')
   t.equal(doc.section('Career').infobox(), null, 'no infobox is null')
   t.end()
 })
 
 test('section - coordinates', (t) => {
   const sec = doc.section(0)
-  t.deepEqual(sec.coordinates(), [{ display: 'title', template: 'coord', lat: 43.65, lon: -79.38 }])
+  t.deepEqual(sec.coordinates(), [{ display: 'title', template: 'coord', lat: 43.65, lon: -79.38 }], 'coordinates')
   t.equal(sec.coordinate().lat, 43.65, 'first coordinate')
   t.equal(doc.section('Career').coordinate(), null, 'no coordinates is null')
   t.end()
@@ -124,7 +132,8 @@ test('section - lists', (t) => {
   const sec = doc.section('Early days')
   t.deepEqual(
     sec.lists().map((l) => l.lines().map((s) => s.text())),
-    [['one fish', 'two fish']]
+    [['one fish', 'two fish']],
+    'list lines'
   )
   t.equal(sec.list(0).lines().length, 2, 'list by index')
   t.equal(doc.section('Career').list(), null, 'no lists is null')
@@ -135,43 +144,63 @@ test('section - images', (t) => {
   const sec = doc.section('Early days')
   t.deepEqual(
     sec.images().map((i) => [i.file(), i.caption()]),
-    [['File:Crest.jpg', 'the crest']]
+    [['File:Crest.jpg', 'the crest']],
+    'image filenames and captions'
   )
-  t.equal(sec.image().url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg')
+  t.equal(sec.image().url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg', 'image URL')
   t.equal(doc.section('Career').image(), null, 'no images is null')
-  t.deepEqual(doc.section(0).images(), [], 'infobox-only section has no images')
+  t.ok(doc.section(0).images().isEmpty(), 'infobox-only section has no images')
   t.end()
 })
 
 test('section - references', (t) => {
   const sec = doc.section('Early days')
-  t.deepEqual(sec.references().map((r) => r.title()), ['Some Ref'])
+  t.deepEqual(
+    sec.references().map((r) => r.title()),
+    ['Some Ref'],
+    'reference titles'
+  )
   t.equal(sec.citation().title(), 'Some Ref', 'citation alias')
   t.equal(doc.section('Career').reference(), null, 'no references is null')
   t.end()
 })
 
 test('section - interwiki', (t) => {
-  t.deepEqual(doc.section('History').interwiki(), [], 'internal links are not interwiki')
+  t.ok(doc.section('History').interwiki().isEmpty(), 'internal links are not interwiki')
   const d2 = wtf('==Also==\nsee [[Rome]] and [[fr:Paris]] here.')
   t.deepEqual(
-    d2.section('Also').interwiki().map((l) => l.json()),
+    d2
+      .section('Also')
+      .interwiki()
+      .map((l) => l.json()),
     [{ type: 'interwiki', wiki: 'fr', page: 'Paris' }],
     'interwiki links only'
   )
-  t.deepEqual(d2.interwiki().map((l) => l.page()), ['Paris'], 'doc-level too')
+  t.deepEqual(
+    d2.interwiki().map((l) => l.page()),
+    ['Paris'],
+    'doc-level too'
+  )
   t.end()
 })
 
 // navigation
 test('section - children / parent', (t) => {
   const hist = doc.section('History')
-  t.deepEqual(hist.children().map((s) => s.title()), ['Early days'])
-  t.equal(hist.children('early days').title(), 'Early days', 'child by name, case-insensitive')
-  t.deepEqual(hist.sections().map((s) => s.title()), ['Early days'], 'sections is an alias')
-  t.equal(doc.section('Early days').parent().title(), 'History')
+  t.deepEqual(
+    hist.children().map((s) => s.title()),
+    ['Early days'],
+    'child titles'
+  )
+  t.equal(hist.child('early days').title(), 'Early days', 'child by name, case-insensitive')
+  t.deepEqual(
+    hist.sections().map((s) => s.title()),
+    ['Early days'],
+    'sections is an alias'
+  )
+  t.equal(doc.section('Early days').parent().title(), 'History', 'parent title')
   t.equal(hist.parent(), null, 'top-level section has no parent')
-  t.deepEqual(doc.section('Career').children(), [], 'no children')
+  t.ok(doc.section('Career').children().isEmpty(), 'no children')
   t.end()
 })
 
@@ -179,7 +208,7 @@ test('section - siblings', (t) => {
   t.equal(doc.section('History').nextSibling().title(), 'Career', 'nextSibling skips own children')
   t.equal(doc.section('History').next().title(), 'Career', 'next is an alias')
   t.equal(doc.section('Career').previousSibling().title(), 'History', 'previousSibling skips deeper sections')
-  t.equal(doc.section('See also').previousSibling().title(), 'Career')
+  t.equal(doc.section('See also').previousSibling().title(), 'Career', 'previous sibling title')
   t.equal(doc.section('Early days').lastSibling(), null, 'a first-child has no previous sibling')
   t.equal(doc.section('See also').nextSibling(), null, 'last section has no nextSibling')
   t.end()
@@ -188,13 +217,14 @@ test('section - siblings', (t) => {
 // output
 test('section - text / json / wikitext', (t) => {
   const sec = doc.section('Career')
-  t.equal(sec.text(), 'Career text goes here.')
-  t.equal(sec.wikitext(), '\nCareer text goes here.\n')
+  t.equal(sec.text(), 'Career text goes here.', 'section text')
+  t.equal(sec.wikitext(), '\nCareer text goes here.\n', 'section wikitext')
   t.deepEqual(sec.json(), {
     title: 'Career',
     depth: 0,
     paragraphs: [{ sentences: [{ text: 'Career text goes here.' }] }],
-  })
+  },
+    'section JSON')
   t.end()
 })
 

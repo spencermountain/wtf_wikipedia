@@ -14,11 +14,11 @@ test('Font-Size-Templates', (t) => {
 })
 
 test('Small-Template-Content', (t) => {
-  t.equal(wtf(`hello {{small|2 February}}`).plaintext(), 'hello 2 February')
+  t.equal(wtf(`hello {{small|2 February}}`).plaintext(), 'hello 2 February', 'small text')
   t.end()
 })
 
 test('Block-Indent-Content', (t) => {
-  t.equal(wtf(`{{block indent |1=The material to be indented here. May include markup, paragraph breaks, etc.}}`).plaintext(), 'The material to be indented here. May include markup, paragraph breaks, etc.')
+  t.equal(wtf(`{{block indent |1=The material to be indented here. May include markup, paragraph breaks, etc.}}`).plaintext(), 'The material to be indented here. May include markup, paragraph breaks, etc.', 'block indent text')
   t.end()
 })

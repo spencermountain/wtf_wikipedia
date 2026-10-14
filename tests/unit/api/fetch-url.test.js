@@ -91,7 +91,7 @@ tests.forEach(({ options, url }) => {
         t.equal(requests.length, 0, 'no request is sent')
       } else {
         await wtf.fetch(options.title, options)
-        t.equal(requests[0].url, url)
+        t.equal(requests[0].url, url, 'request URL')
       }
     })
     t.end()

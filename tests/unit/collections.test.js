@@ -1,0 +1,55 @@
+import test from 'tape'
+import wtf from '../../src/index.ts'
+import Collection from '../../src/collection/Collection.js'
+import LinkCollection from '../../src/collection/LinkCollection.js'
+
+test('collections: consistent link selection and output', t => {
+  const doc = wtf('[[Toronto]] and [[Ottawa]].\n\n== Places ==\n[[Toronto]] again.')
+  const links = doc.links()
+  t.ok(Array.isArray(links), 'collections remain arrays')
+  t.ok(links instanceof LinkCollection, 'links have a specialized collection')
+  t.deepEqual(links.pages(), ['Toronto', 'Ottawa', 'Toronto'], 'preserve order and duplicates')
+  t.deepEqual(doc.links('toronto').pages(), ['Toronto', 'Toronto'], 'string selection retains all matches')
+  t.deepEqual(doc.links(1).pages(), ['Ottawa'], 'numeric selector addresses the whole document')
+  t.equal(doc.link(1).page(), 'Ottawa', 'singular selector is applied once')
+  t.equal(doc.link('missing'), null, 'singular miss')
+  t.deepEqual(doc.links('missing').json(), [], 'plural miss supports JSON')
+  t.equal(doc.links('missing').text(), '', 'empty text')
+  t.equal(doc.links('missing').wikitext(), '', 'empty wikitext')
+  ;[-1, 100, 0.5].forEach(index => {
+    t.deepEqual(doc.links(index).json(), [], `missing index ${index}`)
+  })
+  t.equal(links.json().length, 3, 'JSON has one entry per model')
+  t.equal(links.text(), 'Toronto\nOttawa\nToronto', 'collection text joins item output')
+  t.ok(!(links.json() instanceof Collection), 'JSON is a plain array')
+  t.ok(!(links.map(link => link.page()) instanceof Collection), 'map produces a plain array')
+  t.ok(!(links.flatMap(link => [link.page()]) instanceof Collection), 'flatMap produces a plain array')
+  t.ok(links.filter(link => link.page() === 'Toronto') instanceof LinkCollection, 'filter preserves subclass')
+  t.ok(links.slice(1) instanceof LinkCollection, 'slice preserves subclass')
+  t.deepEqual(links.slice(1).select('Toronto').pages(), ['Toronto'], 'selection remains chainable')
+  links.pop()
+  t.equal(doc.links().length, 3, 'changing returned membership does not change document')
+  t.end()
+})
+
+test('collections: tree accessors share selection behavior', t => {
+  const doc = wtf('[[Toronto]] and [[Ottawa]].\n\n== Places ==\n[[Montreal]].\n\n=== More ===\n[[Quebec]].')
+  const section = doc.section(0)
+  const paragraph = section.paragraph(0)
+  const sentence = paragraph.sentence(0)
+  ;[section, paragraph, sentence].forEach(model => {
+    t.deepEqual(model.links(1).pages(), ['Ottawa'], 'numeric selection at each level')
+    t.equal(model.link(1).page(), 'Ottawa', 'singular selection at each level')
+    t.deepEqual(model.links('toronto').pages(), ['Toronto'], 'string selection at each level')
+  })
+  t.deepEqual(doc.sections('Places').map(s => s.title()), ['Places'], 'section title selection')
+  t.deepEqual(doc.section('Places').children('More').map(s => s.title()), ['More'], 'children use collections')
+  t.deepEqual(doc.section('More').children().json(), [], 'empty child collection')
+  t.equal(doc.paragraphs(0).json().length, 1, 'paragraph output')
+  t.equal(doc.sentences(0).json().length, 1, 'sentence output')
+  t.deepEqual(wtf('').references().json(), [], 'empty references')
+  t.deepEqual(wtf('').images().json(), [], 'empty images')
+  t.deepEqual(wtf('').templates().json(), [], 'empty templates')
+  t.deepEqual(wtf('').infoboxes().json(), [], 'empty infoboxes')
+  t.end()
+})

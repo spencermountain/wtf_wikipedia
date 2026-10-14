@@ -17,10 +17,10 @@ test('fetch filters missing pages and preserves document metadata', async (t) =>
     const docs = await wtf.fetch(['Example', 'Missing'])
     t.equal(docs.length, 1, 'missing pages are filtered')
     t.equal(docs[0].text(), 'hello', 'shadowed hasOwnProperty is harmless')
-    t.equal(docs[0].title(), 'Example')
-    t.equal(docs[0].pageID(), 1)
-    t.equal(docs[0].wikidata(), 'Q12')
-    t.equal(docs[0].description(), 'general greeting')
+    t.equal(docs[0].title(), 'Example', 'page title')
+    t.equal(docs[0].pageID(), 1, 'page ID')
+    t.equal(docs[0].wikidata(), 'Q12', 'Wikidata ID')
+    t.equal(docs[0].description(), 'general greeting', 'description')
   })
   t.end()
 })
@@ -40,11 +40,11 @@ test('fetch preserves single and array result shapes', async (t) => {
   await mockFetch({ query: { pages: { 1: page } } }, async () => {
     const docs = await wtf.fetch([1])
     t.ok(Array.isArray(docs), 'array input returns an array')
-    t.equal(docs.length, 1)
+    t.equal(docs.length, 1, 'result count')
     for (const input of ['Example', 1]) {
       const doc = await wtf.fetch(input)
       t.equal(Array.isArray(doc), false, 'scalar input returns one document')
-      t.equal(doc.text(), 'hello')
+      t.equal(doc.text(), 'hello', 'single result text')
     }
   })
   t.end()

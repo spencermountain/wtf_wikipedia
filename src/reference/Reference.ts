@@ -1,3 +1,4 @@
+import Collection from '../collection/Collection.js'
 import encodeObj from '../_lib/encode.ts'
 
 //also called 'citations'
@@ -21,8 +22,9 @@ class Reference {
     return data.title || data.encyclopedia || data.author || ''
   }
 
-  links() {
-    return this.data.inline?.links() || []
+  links(selector?) {
+    const items = this.data.inline?.links() || []
+    return Collection.from(items).select(selector)
   }
 
   text() {

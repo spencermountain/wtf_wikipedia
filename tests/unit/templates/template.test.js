@@ -5,8 +5,8 @@ test('glossary of professional wrestling', (t) => {
   const glossary = `{{term|1=A-show}}
   {{defn|1= A wrestling event where a company's biggest draws wrestle.<ref name=torch/>}}`
   const o = wtf(glossary).sections()[0].sentences()
-  t.equal(o[0].data.text, 'A-show:')
-  t.equal(o[1].data.text, `A wrestling event where a company's biggest draws wrestle.`)
+  t.equal(o[0].data.text, 'A-show:', 'first glossary entry')
+  t.equal(o[1].data.text, `A wrestling event where a company's biggest draws wrestle.`, 'second glossary entry')
   t.end()
 })
 
@@ -17,16 +17,16 @@ test('boloZenden infobox', (t) => {
     | nationalyears1 = 1997–2004 |nationalteam1 = [[Netherlands national football team|Netherlands]] |nationalcaps1 = 54 |nationalgoals1 = 7
   }}`
   const o = wtf(boloZenden).infobox().data
-  t.equal(o.years1.text(), '1993–1998')
-  t.equal(o.clubs1.text(), 'PSV')
-  t.equal(o.youthyears1.text(), '1985–1987')
-  t.equal(o.youthclubs1.text(), 'MVV')
-  t.equal(o.nationalyears1.text(), '1997–2004')
-  t.equal(o.nationalteam1.text(), 'Netherlands')
-  t.equal(o.nationalteam1.link().page(), 'Netherlands national football team')
-  t.equal(o.nationalteam1.link().text(), 'Netherlands')
-  t.equal(o.nationalcaps1.text(), '54')
-  t.equal(o.nationalgoals1.text(), '7')
+  t.equal(o.years1.text(), '1993–1998', 'club years')
+  t.equal(o.clubs1.text(), 'PSV', 'club name')
+  t.equal(o.youthyears1.text(), '1985–1987', 'youth years')
+  t.equal(o.youthclubs1.text(), 'MVV', 'youth club')
+  t.equal(o.nationalyears1.text(), '1997–2004', 'national years')
+  t.equal(o.nationalteam1.text(), 'Netherlands', 'national team text')
+  t.equal(o.nationalteam1.link().page(), 'Netherlands national football team', 'national team target')
+  t.equal(o.nationalteam1.link().text(), 'Netherlands', 'national team label')
+  t.equal(o.nationalcaps1.text(), '54', 'national caps')
+  t.equal(o.nationalgoals1.text(), '7', 'national goals')
   t.end()
 })
 
@@ -38,10 +38,10 @@ test('hurricane infobox', (t) => {
   | Hurricane season=[[2002 Atlantic hurricane season]]
 }}`
   const o = wtf(hurricane).infobox().data
-  t.equal(o.name.text(), 'Tropical Storm Edouard')
-  t.equal(o.dissipated.text(), 'September 6, 2002')
-  t.equal(o['hurricane season'].text(), '2002 Atlantic hurricane season')
-  t.equal(o.areas.link().page(), 'Florida')
+  t.equal(o.name.text(), 'Tropical Storm Edouard', 'hurricane name')
+  t.equal(o.dissipated.text(), 'September 6, 2002', 'dissipation date')
+  t.equal(o['hurricane season'].text(), '2002 Atlantic hurricane season', 'hurricane season')
+  t.equal(o.areas.link().page(), 'Florida', 'affected area target')
   t.end()
 })
 
@@ -59,7 +59,7 @@ test('bluejays table', (t) => {
 |}
   `
   const arr = wtf(bluejays).table(0).data
-  t.equal(arr.length, 2)
+  t.equal(arr.length, 2, 'table row count')
   t.equal(arr[0]['Number'].text(), '1', 'number')
   t.equal(arr[0]['Date'].text(), 'April 6', 'date')
   t.equal(arr[0]['Team'].text(), '@ Twins', 'team')

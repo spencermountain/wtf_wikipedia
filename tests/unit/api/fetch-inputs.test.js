@@ -30,8 +30,8 @@ tests.forEach((testCase) => {
     await mockFetch({ query: { pages: {} } }, async (requests) => {
       await wtf.fetch(testCase.test)
       const url = new URL(requests[0].url)
-      t.equal(url.hostname, testCase.domain)
-      t.equal(url.searchParams.get('titles'), testCase.title)
+      t.equal(url.hostname, testCase.domain, 'API hostname')
+      t.equal(url.searchParams.get('titles'), testCase.title, 'page title parameter')
     })
     t.end()
   })

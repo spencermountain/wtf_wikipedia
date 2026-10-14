@@ -41,17 +41,17 @@ test('expand external interwiki link', (t) => {
   str = `[[ThisIsNotAWiki:text]]`
   doc = wtf(str)
   obj = doc.link().json()
-  t.notEqual(obj.type, 'interwiki')
+  t.notEqual(obj.type, 'interwiki', 'unknown wiki prefix')
 
   str = `[[ThisIsNotAWiki:en:text]]`
   doc = wtf(str)
   obj = doc.link().json()
-  t.notEqual(obj.type, 'interwiki')
+  t.notEqual(obj.type, 'interwiki', 'unknown wiki with language prefix')
 
   str = `[[wikipedia:ThisIsNotALanguage:text]]`
   doc = wtf(str)
   obj = doc.link().json()
-  t.notEqual(obj.type, 'interwiki')
+  t.notEqual(obj.type, 'interwiki', 'unknown language prefix')
 
   t.end()
 })

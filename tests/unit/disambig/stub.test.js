@@ -25,7 +25,7 @@ test('not stub', function (t) {
   const arr = [`{{not-stub-man}}`, `{{토막}}`, `{{??}}`, `{{s}}`, ``]
   arr.forEach((str) => {
     const doc = wtf('foo bar ' + str + ' and so on')
-    t.equal(doc.isStub(), false, str)
+    t.equal(doc.isStub(), false, str || 'no stub template')
   })
   t.end()
 })

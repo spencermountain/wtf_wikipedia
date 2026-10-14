@@ -1,3 +1,4 @@
+import Collection from '../collection/Collection.js'
 /* eslint-disable no-console */
 import sectionMap from './_sectionMap.ts'
 import toJSON from './toJson.ts'
@@ -177,6 +178,7 @@ class Document {
     return isDisambig(this)
   }
 
+  // TODO: Categories contain strings, not models. Keep the existing array API for now.
   categories(clue?) {
     let arr = this._categories || []
     if (typeof clue === 'number') {
@@ -192,32 +194,17 @@ class Document {
       sec._doc = this
     })
 
-    //grab a specific section, by its title
-    if (typeof clue === 'string') {
-      let str = clue.toLowerCase().trim()
-      return arr.filter((s) => {
-        return s.title().toLowerCase() === str
-      })
-    } else if (typeof clue === 'number') {
-      return [arr[clue]]
-    }
-    return arr
+    return Collection.from(arr).select(clue)
   }
 
-  paragraphs(clue?) {
-    let arr = this.sections().flatMap((s) => s.paragraphs())
-    if (typeof clue === 'number') {
-      return [arr[clue]]
-    }
-    return arr
+  paragraphs(selector?) {
+    const items = this.sections().flatMap(section => section.paragraphs())
+    return Collection.from(items).select(selector)
   }
 
-  sentences(clue?) {
-    let arr = this.sections().flatMap((sec) => sec.sentences())
-    if (typeof clue === 'number') {
-      return [arr[clue]]
-    }
-    return arr
+  sentences(selector?) {
+    const items = this.sections().flatMap(section => section.sentences())
+    return Collection.from(items).select(selector)
   }
 
   // searches the whole page, including infobox and gallery templates, for images
@@ -244,46 +231,51 @@ class Document {
         })
       }
     })
-    if (typeof clue === 'number') {
-      return [arr[clue]]
-    }
-    return arr
+    // TODO: Image filename string selectors are not implemented.
+    return Collection.from(arr).select(clue)
   }
 
-  links(clue?) {
-    return sectionMap(this, 'links', clue)
+  links(selector?) {
+    const items = this.sections().flatMap(section => section.links())
+    return Collection.from(items).select(selector)
   }
 
-  interwiki(clue?) {
-    return sectionMap(this, 'interwiki', clue)
+  interwiki(selector?) {
+    const items = this.sections().flatMap(section => section.interwiki())
+    return Collection.from(items).select(selector)
   }
 
+  // TODO: List collections have nested JSON. Keep the existing array API for now.
   lists(clue?) {
     return sectionMap(this, 'lists', clue)
   }
 
+  // TODO: Table collections have nested JSON. Keep the existing array API for now.
   tables(clue?) {
     return sectionMap(this, 'tables', clue)
   }
 
-  templates(clue?) {
-    return sectionMap(this, 'templates', clue)
+  templates(selector?) {
+    const items = this.sections().flatMap(section => section.templates())
+    return Collection.from(items).select(selector)
   }
 
-  references(clue?) {
-    return sectionMap(this, 'references', clue)
+  references(selector?) {
+    const items = this.sections().flatMap(section => section.references())
+    return Collection.from(items).select(selector)
   }
 
   citations(clue?) {
     return this.references(clue)
   }
 
+  // TODO: Coordinates contain plain data, not models. Keep the existing array API for now.
   coordinates(clue?) {
     return sectionMap(this, 'coordinates', clue)
   }
 
   infoboxes(clue?) {
-    let arr = sectionMap(this, 'infoboxes', clue)
+    let arr = this.sections().flatMap(section => section.infoboxes())
     //sort them by biggest-first
     arr = arr.sort((a, b) => {
       if (Object.keys(a.data).length > Object.keys(b.data).length) {
@@ -292,7 +284,7 @@ class Document {
       return 1
     })
 
-    return arr
+    return Collection.from(arr).select(clue)
   }
 
   text(options?) {
@@ -360,19 +352,19 @@ class Document {
     return this.categories(clue)[0] || null
   }
   section(clue?) {
-    return this.sections(clue)[0] || null
+    return this.sections(clue)[0] ?? null
   }
   paragraph(clue?) {
-    return this.paragraphs(clue)[0] || null
+    return this.paragraphs(clue)[0] ?? null
   }
   sentence(clue?) {
-    return this.sentences(clue)[0] || null
+    return this.sentences(clue)[0] ?? null
   }
   image(clue?) {
-    return this.images(clue)[0] || null
+    return this.images(clue)[0] ?? null
   }
   link(clue?) {
-    return this.links(clue)[0] || null
+    return this.links(clue)[0] ?? null
   }
   list(clue?) {
     return this.lists(clue)[0] || null
@@ -381,19 +373,19 @@ class Document {
     return this.tables(clue)[0] || null
   }
   template(clue?) {
-    return this.templates(clue)[0] || null
+    return this.templates(clue)[0] ?? null
   }
   reference(clue?) {
-    return this.references(clue)[0] || null
+    return this.references(clue)[0] ?? null
   }
   citation(clue?) {
-    return this.citations(clue)[0] || null
+    return this.citations(clue)[0] ?? null
   }
   coordinate(clue?) {
     return this.coordinates(clue)[0] || null
   }
   infobox(clue?) {
-    return this.infoboxes(clue)[0] || null
+    return this.infoboxes(clue)[0] ?? null
   }
 
   // aliases

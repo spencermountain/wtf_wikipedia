@@ -16,7 +16,7 @@ test('infobox image markup is normalized to a filename', (t) => {
 
 test('infobox image options do not leak into filenames', (t) => {
   const doc = wtf('{{Infobox company|image=[[File:Company logo.png|thumb|200px|A logo]]}}')
-  t.equal(doc.image().file(), 'File:Company_logo.png')
-  t.equal(doc.image().url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Company_logo.png')
+  t.equal(doc.image().file(), 'File:Company_logo.png', 'filename excludes options')
+  t.equal(doc.image().url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Company_logo.png', 'URL excludes options')
   t.end()
 })

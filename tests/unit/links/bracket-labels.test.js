@@ -15,7 +15,8 @@ test('bracketed labels preserve suffixes and adjacent links', (t) => {
   t.deepEqual(doc.links().map((link) => [link.page(), link.text()]), [
     ['Target', 'item [note]s'],
     ['Next', 'next'],
-  ])
-  t.equal(doc.text(), 'item [note]s and next')
+  ],
+    'link targets and labels')
+  t.equal(doc.text(), 'item [note]s and next', 'text retains suffixes')
   t.end()
 })

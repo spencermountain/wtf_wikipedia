@@ -50,8 +50,8 @@ console.log(cats, secs, sec, sens, sen, imgs, infos, tmpls, coords, opts2, title
 
 // ---- section navigation + singulars ----
 if (sec) {
-  const kids: Section[] | null = sec.children()
-  const kid: Section | null | undefined = sec.children('Early life')
+  const kids: wtf.SectionCollection = sec.children()
+  const kid: Section | null = sec.child('Early life')
   const p: Paragraph | null = sec.paragraph(0)
   const tm: Template | null = sec.template('coord')
   const rf: Reference | null = sec.reference(0)

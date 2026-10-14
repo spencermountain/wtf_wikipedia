@@ -1,3 +1,4 @@
+import Collection from '../collection/Collection.js'
 import toJSON from './toJson.ts'
 import setDefaults from '../_lib/setDefaults.ts'
 import parseTable from '../table/index.ts'
@@ -94,12 +95,12 @@ class Section {
     return this.depth()
   }
 
-  sentences(_clue?) {
-    return this.paragraphs().flatMap((p) => p.sentences())
+  sentences(selector?) {
+    return Collection.from(this.paragraphs().flatMap(p => p.sentences())).select(selector)
   }
 
-  paragraphs(_clue?) {
-    return this._paragraphs || []
+  paragraphs(selector?) {
+    return Collection.from(this._paragraphs || []).select(selector)
   }
 
   links(clue?) {
@@ -123,40 +124,23 @@ class Section {
 
     arr = arr.flat().filter((val) => val !== undefined) //filter out all the undefined from the flattened empty arrays
 
-    if (typeof clue === 'string') {
-      const target = clue.toLowerCase()
-      const found = arr.find((link) => link.page()?.toLowerCase() === target)
-      return found === undefined ? [] : [found]
-    }
-
-    return arr
+    return Collection.from(arr).select(clue)
   }
 
+  // TODO: Table collections have nested JSON; keep plain arrays for now.
   tables(_clue?) {
     return this._tables || []
   }
 
-  templates(clue?) {
-    let arr = this._templates || []
-    // arr = arr.map((t) => t.json())
-    if (typeof clue === 'string') {
-      clue = clue.toLowerCase()
-      return arr.filter((o) => o.data.template === clue || o.data.name === clue)
-    }
-
-    return arr
+  templates(selector?) {
+    return Collection.from(this._templates || []).select(selector)
   }
 
-  infoboxes(clue?) {
-    let arr = this._infoboxes || []
-    if (typeof clue === 'string') {
-      clue = clue.replace(/^infobox /i, '')
-      clue = clue.trim().toLowerCase()
-      return arr.filter((info) => info._type === clue)
-    }
-    return arr
+  infoboxes(selector?) {
+    return Collection.from(this._infoboxes || []).select(selector)
   }
 
+  // TODO: Coordinates are plain data, not model collections.
   coordinates(_clue?) {
     let arr = [...this.templates('coord'), ...this.templates('coor')]
     let list = arr.map((tmpl) => tmpl.json())
@@ -169,23 +153,22 @@ class Section {
     return list
   }
 
+  // TODO: List collections have nested JSON; keep plain arrays for now.
   lists(_clue?) {
     let arr = this.paragraphs().flatMap((p) => p.lists())
     return arr
   }
 
-  interwiki() {
-    let arr = this.paragraphs().flatMap((p) => p.interwiki())
-    return arr
+  interwiki(selector?) {
+    return Collection.from(this.paragraphs().flatMap(p => p.interwiki())).select(selector)
   }
 
-  images(_clue?) {
-    let arr = this.paragraphs().flatMap((p) => p.images())
-    return arr
+  images(selector?) {
+    return Collection.from(this.paragraphs().flatMap(p => p.images())).select(selector)
   }
 
-  references(_clue?) {
-    return this._references || []
+  references(selector?) {
+    return Collection.from(this._references || []).select(selector)
   }
 
   //transformations
@@ -269,9 +252,13 @@ class Section {
     return this.lastSibling()
   }
 
+  child(selector?) {
+    return this.children(selector)[0] ?? null
+  }
+
   children(clue?) {
     if (!this._doc) {
-      return null
+      return new Collection()
     }
 
     let sections = this._doc.sections()
@@ -288,10 +275,7 @@ class Section {
         }
       }
     }
-    if (typeof clue === 'string') {
-      return children.find((s) => s.title().toLowerCase() === clue.toLowerCase())
-    }
-    return children
+    return Collection.from(children).select(clue)
   }
 
   sections(clue?) {
@@ -336,23 +320,23 @@ class Section {
   }
 
   // singular aliases
-  sentence(clue?) {
-    return getNth(this.sentences(clue), clue)
+  sentence(selector?) {
+    return this.sentences(selector)[0] ?? null
   }
-  paragraph(clue?) {
-    return getNth(this.paragraphs(clue), clue)
+  paragraph(selector?) {
+    return this.paragraphs(selector)[0] ?? null
   }
-  link(clue?) {
-    return getNth(this.links(clue), clue)
+  link(selector?) {
+    return this.links(selector)[0] ?? null
   }
   table(clue?) {
     return getNth(this.tables(clue), clue)
   }
-  template(clue?) {
-    return getNth(this.templates(clue), clue)
+  template(selector?) {
+    return this.templates(selector)[0] ?? null
   }
-  infobox(clue?) {
-    return getNth(this.infoboxes(clue), clue)
+  infobox(selector?) {
+    return this.infoboxes(selector)[0] ?? null
   }
   coordinate(clue?) {
     return getNth(this.coordinates(clue), clue)
@@ -360,14 +344,14 @@ class Section {
   list(clue?) {
     return getNth(this.lists(clue), clue)
   }
-  image(clue?) {
-    return getNth(this.images(clue), clue)
+  image(selector?) {
+    return this.images(selector)[0] ?? null
   }
-  reference(clue?) {
-    return getNth(this.references(clue), clue)
+  reference(selector?) {
+    return this.references(selector)[0] ?? null
   }
-  citation(clue?) {
-    return getNth(this.citations(clue), clue)
+  citation(selector?) {
+    return this.citations(selector)[0] ?? null
   }
 }
 export default Section

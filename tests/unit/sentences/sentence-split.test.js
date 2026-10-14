@@ -79,7 +79,7 @@ test('parse_categories', (t) => {
     ['[[categoría:Tony Danza|metadata]]  ', ['Tony Danza']],
   ].forEach((a) => {
     const cats = wtf(a[0]).categories()
-    t.deepEqual(cats, a[1])
+    t.deepEqual(cats, a[1], 'parsed categories')
   })
   t.end()
 })
@@ -97,7 +97,7 @@ test('parse_image', (t) => {
     const arr = wtf(a[0])
       .images()
       .map((o) => o.file())
-    t.deepEqual(arr[0], a[1])
+    t.deepEqual(arr[0], a[1], 'parsed image')
   })
   t.end()
 })

@@ -1,3 +1,4 @@
+import Collection from '../collection/Collection.js'
 import toJson from './toJson.ts'
 import normalizeFile from './_lib.ts'
 const server = 'wikipedia.org'
@@ -59,11 +60,9 @@ class Image {
     return ''
   }
 
-  links() {
-    if (this.data.caption) {
-      return this.data.caption.links()
-    }
-    return []
+  links(selector?) {
+    const items = this.data.caption?.links() || []
+    return Collection.from(items).select(selector)
   }
 
   url() {

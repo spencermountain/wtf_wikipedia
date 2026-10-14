@@ -1,3 +1,4 @@
+import Collection from '../collection/Collection.js'
 import setDefaults from '../_lib/setDefaults.ts'
 import toJson from './toJson.ts'
 const defaults = {}
@@ -25,17 +26,12 @@ class Table {
     })
   }
 
-  links(n?) {
-    let links = this.data.flatMap((row) => Object.keys(row).flatMap((key) => row[key].links()))
-    if (typeof n === 'string') {
-      //grab a link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = links.find((o) => o.page() === n)
-      return link === undefined ? [] : [link]
-    }
-    return links
+  links(selector?) {
+    const items = this.data.flatMap(row => Object.keys(row).flatMap(key => row[key].links()))
+    return Collection.from(items).select(selector)
   }
 
+  // TODO: Row/column projections remain plain arrays.
   get(keys?) {
     // normalize mappings
     let have = this.data[0] || {}

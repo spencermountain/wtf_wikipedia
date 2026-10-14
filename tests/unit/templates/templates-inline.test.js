@@ -215,7 +215,7 @@ test('start-date in infobox', (t) => {
 })
 
 test('Template-Link-Labels', (t) => {
-  t.equal(wtf(`{{ill|Joke|fr|Blague|hu|Vicc|de|Witz}}`).plaintext(), 'Joke')
-  t.equal(wtf(`{{tiw|Hatnote}}`).plaintext(), 'Hatnote')
+  t.equal(wtf(`{{ill|Joke|fr|Blague|hu|Vicc|de|Witz}}`).plaintext(), 'Joke', 'interlanguage link label')
+  t.equal(wtf(`{{tiw|Hatnote}}`).plaintext(), 'Hatnote', 'template link label')
   t.end()
 })

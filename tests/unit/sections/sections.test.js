@@ -21,7 +21,7 @@ test('catch indented first sentence', function (t) {
   const str = `:hello one
 ok now you start`
   const doc = wtf(str)
-  t.equal(doc.text(), 'ok now you start\n * hello one')
+  t.equal(doc.text(), 'ok now you start\n * hello one', 'indented sentence text')
   t.end()
 })
 

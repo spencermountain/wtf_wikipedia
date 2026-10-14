@@ -1,3 +1,4 @@
+import Collection from '../collection/Collection.js'
 import toJson from './toJson.ts'
 import Image from '../image/Image.ts'
 import { isArray } from '../_lib/helpers.ts'
@@ -39,15 +40,9 @@ class Infobox {
     return this.type()
   }
 
-  links(n?) {
-    let arr = Object.values(this.data).flatMap((sentence: Sentence) => sentence.links())
-    if (typeof n === 'string') {
-      //grab a link like .links('Fortnight')
-      n = n.charAt(0).toUpperCase() + n.substring(1) //titlecase it
-      let link = arr.find((o) => o.page() === n)
-      return link === undefined ? [] : [link]
-    }
-    return arr
+  links(selector?) {
+    const items = Object.values(this.data).flatMap((sentence: Sentence) => sentence.links())
+    return Collection.from(items).select(selector)
   }
 
   image() {
@@ -69,10 +64,12 @@ class Infobox {
     return new Image(obj)
   }
 
+  // TODO: Preserve this legacy singular alias until its return shape is reviewed.
   images() {
     return this.image()
   }
 
+  // TODO: Mixed scalar/array lookup results are outside the collection API for now.
   get(keys?) {
     let allKeys = Object.keys(this.data)
     if (typeof keys === 'string') {
@@ -122,6 +119,7 @@ class Infobox {
     )
   }
 
+  // TODO: Plain coordinate data remains outside the collection API.
   coordinates() {
     // loop through i18n latitude and longitude properties
     for (let i = 0; i < latLngs.length; i += 1) {

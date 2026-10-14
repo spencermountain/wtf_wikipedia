@@ -4,7 +4,7 @@ import wtf from '../../lib/index.js'
 test('infobox degree/minute coordinates accept blank seconds', (t) => {
   const doc = wtf('{{Infobox settlement|latd=43|latm=42|lats=|latNS=N|longd=79|longm=24|longs=|longEW=W}}')
   const expected = { template: 'infobox/lat-long', lat: 43.7, lon: -79.4 }
-  t.deepEqual(doc.infobox().coordinates(), expected)
+  t.deepEqual(doc.infobox().coordinates(), expected, 'blank seconds coordinates')
   t.deepEqual(doc.coordinates(), [expected], 'document exposes infobox coordinates')
   t.end()
 })
@@ -19,7 +19,7 @@ test('infobox underscored coordinates include seconds and hemisphere signs', (t)
 test('infobox coordinates default missing minutes and seconds to zero', (t) => {
   const doc = wtf('{{Infobox settlement|latd=-33|longd=151}}')
   t.equal(doc.coordinate().lat, -33, 'signed degrees work without a hemisphere')
-  t.equal(doc.coordinate().lon, 151)
+  t.equal(doc.coordinate().lon, 151, 'missing minutes longitude')
   const zero = wtf('{{Infobox settlement|latd=0|longd=0}}')
   t.equal(zero.coordinate().lat, 0, 'zero is a valid latitude')
   t.equal(zero.coordinate().lon, 0, 'zero is a valid longitude')
@@ -28,14 +28,14 @@ test('infobox coordinates default missing minutes and seconds to zero', (t) => {
 
 test('hemisphere signs are not applied twice', (t) => {
   const doc = wtf('{{Infobox settlement|latd=-33|latNS=S|longd=-79|longEW=W}}')
-  t.equal(doc.coordinate().lat, -33)
-  t.equal(doc.coordinate().lon, -79)
+  t.equal(doc.coordinate().lat, -33, 'signed latitude')
+  t.equal(doc.coordinate().lon, -79, 'signed longitude')
   t.end()
 })
 
 test('decimal infobox coordinates take precedence', (t) => {
   const doc = wtf('{{Infobox settlement|latitude=10|longitude=20|latd=43|latm=42|longd=79|longEW=W}}')
-  t.deepEqual(doc.coordinate(), { template: 'infobox/lat-long', lat: 10, lon: 20 })
+  t.deepEqual(doc.coordinate(), { template: 'infobox/lat-long', lat: 10, lon: 20 }, 'decimal coordinates')
   t.end()
 })
 

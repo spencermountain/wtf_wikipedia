@@ -1,17 +1,10 @@
+import Collection from '../collection/Collection.js'
 import toJSON from './toJson.ts'
 import setDefaults from '../_lib/setDefaults.ts'
 const defaults = {
   sentences: true,
   lists: true,
   images: true,
-}
-
-//return the first, or n-th element of an array
-const getNth = function (arr, clue) {
-  if (typeof clue === 'number') {
-    return arr[clue] || null
-  }
-  return arr[0] || null
 }
 
 class Paragraph {
@@ -24,64 +17,60 @@ class Paragraph {
     })
   }
 
-  sentences() {
-    return this.data.sentences || []
+  sentences(selector?) {
+    return Collection.from(this.data.sentences || []).select(selector)
   }
 
-  sentence(clue) {
-    return getNth(this.sentences(clue), clue)
+  sentence(selector?) {
+    return this.sentences(selector)[0] ?? null
   }
 
-  references() {
-    return this.data.references || []
+  references(selector?) {
+    return Collection.from(this.data.references || []).select(selector)
   }
 
-  reference(clue) {
-    return getNth(this.references(clue), clue)
+  reference(selector?) {
+    return this.references(selector)[0] ?? null
   }
 
   citations(clue) {
     return this.references(clue)
   }
 
-  citation(clue) {
-    return getNth(this.citations(clue), clue)
+  citation(selector?) {
+    return this.citations(selector)[0] ?? null
   }
 
+  // TODO: List collections have nested JSON; keep plain arrays for now.
   lists() {
     return this.data.lists || []
   }
 
-  list(clue) {
-    return getNth(this.lists(clue), clue)
+  list(selector?) {
+    const items = this.lists()
+    return items[selector ?? 0] ?? null
   }
 
-  images() {
-    return this.data.images || []
+  images(selector?) {
+    return Collection.from(this.data.images || []).select(selector)
   }
 
-  image(clue) {
-    return getNth(this.images(clue), clue)
+  image(selector?) {
+    return this.images(selector)[0] ?? null
   }
 
-  links(clue) {
-    let arr = this.sentences().flatMap((s) => s.links(clue))
-    if (typeof clue === 'string') {
-      //grab a specific link like .links('Fortnight')
-      clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
-      let link = arr.find((o) => o.page() === clue)
-      return link === undefined ? [] : [link]
-    }
-    return arr || []
+  links(selector?) {
+    const items = this.sentences().flatMap(s => s.links())
+    return Collection.from(items).select(selector)
   }
 
-  link(clue) {
-    return getNth(this.links(clue), clue)
+  link(selector?) {
+    return this.links(selector)[0] ?? null
   }
 
-  interwiki() {
-    let arr = this.sentences().flatMap((s) => s.interwiki())
-    return arr || []
+  interwiki(selector?) {
+    const items = this.sentences().flatMap(s => s.interwiki())
+    return Collection.from(items).select(selector)
   }
 
   text(options?) {

@@ -1,3 +1,4 @@
+import Collection from '../collection/Collection.js'
 import setDefaults from '../_lib/setDefaults.ts'
 const defaults = {}
 
@@ -25,19 +26,13 @@ class List {
     })
   }
 
-  lines() {
-    return this.data
+  lines(selector?) {
+    return Collection.from(this.data).select(selector)
   }
 
-  links(clue?) {
-    let links = this.lines().flatMap((s) => s.links())
-    if (typeof clue === 'string') {
-      //grab a link like .links('Fortnight')
-      clue = clue.charAt(0).toUpperCase() + clue.substring(1) //titlecase it
-      let link = links.find((o) => o.page() === clue)
-      return link === undefined ? [] : [link]
-    }
-    return links
+  links(selector?) {
+    const items = this.lines().flatMap(s => s.links())
+    return Collection.from(items).select(selector)
   }
 
   json(options?) {

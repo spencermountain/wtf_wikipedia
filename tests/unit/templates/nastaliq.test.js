@@ -17,6 +17,6 @@ test('Nastaliq preserves text inside an infobox', (t) => {
 })
 
 test('empty Nastaliq templates contribute no text', (t) => {
-  t.equal(wtf('Before {{nastaliq|}} after.').text(), 'Before after.')
+  t.equal(wtf('Before {{nastaliq|}} after.').text(), 'Before after.', 'empty Nastaliq text')
   t.end()
 })

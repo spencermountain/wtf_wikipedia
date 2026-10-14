@@ -9,7 +9,7 @@ test('image JSON retains links in captions', (t) => {
 
 test('image JSON can omit caption links', (t) => {
   const image = wtf('[[File:Example.png|thumb|A [[caption]]]]').image()
-  t.equal(image.json({ links: false }).links, undefined)
+  t.equal(image.json({ links: false }).links, undefined, 'caption links omitted')
   t.equal(image.json().links[0].page, 'caption', 'options do not mutate subsequent output')
   t.equal(image.links()[0].page(), 'caption', 'image API still returns Link objects')
   t.end()
