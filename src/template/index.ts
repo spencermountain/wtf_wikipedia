@@ -33,8 +33,10 @@ const allTemplates = function (wiki, doc) {
         removeIt(node.parent, body, out)
       }
     }
-    removeIt(obj, obj.body, obj.wiki)
-    wiki = wiki.replace(obj.body, obj.wiki)
+    // Expanded equals signs are value text, not outer parameter assignments.
+    let value = String(obj.wiki).replace(/=/g, '&#61;')
+    removeIt(obj, obj.body, value)
+    wiki = wiki.replace(obj.body, obj.parent ? value : obj.wiki)
   }
   //kick it off
   nested.forEach((node) => parseNested(node, null))

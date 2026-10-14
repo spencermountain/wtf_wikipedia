@@ -7,3 +7,4 @@ const block = new Block(
 
 console.log(block.text())
 console.dir(block.json(), { depth: null })
+console.dir(block.sentences().map((sentence) => sentence.json()), { depth: null })

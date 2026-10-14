@@ -1,4 +1,5 @@
 import parse from './_lib.js'
+import splitSentences from '../04-sentence/parse.ts'
 
 // Input has already had templates and references processed by its section.
 class Block {
@@ -18,6 +19,11 @@ class Block {
     return this.#wiki
   }
 
+  sentences() {
+    // Split wikitext so each block can retain its links and formatting.
+    return splitSentences(this.#wiki).map((wiki) => new Block(wiki))
+  }
+
   // Keep the parsed data private when exposing individual records.
   links() {
     return this.#data.links.map((link) => ({ ...link }))
@@ -29,10 +35,6 @@ class Block {
 
   formatting() {
     return this.#data.formatting.map((span) => ({ ...span }))
-  }
-
-  isEmpty() {
-    return this.text().length === 0
   }
 
   json() {
