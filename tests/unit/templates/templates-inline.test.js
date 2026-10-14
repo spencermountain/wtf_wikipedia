@@ -285,3 +285,9 @@ test('start-date in infobox', function (t) {
   t.equal(json.term_end.text, 'January 11, 2023', 'term_end')
   t.end()
 })
+
+test('Template-Link-Labels', (t) => {
+  t.equal(wtf(`{{ill|Joke|fr|Blague|hu|Vicc|de|Witz}}`).plaintext(), 'Joke')
+  t.equal(wtf(`{{tiw|Hatnote}}`).plaintext(), 'Hatnote')
+  t.end()
+})

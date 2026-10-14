@@ -42,3 +42,34 @@ test('table.keyValue aliases agree', (t) => {
   t.deepEqual(tb.keyval(), expected)
   t.end()
 })
+
+test('Table-Columns-And-Wikitext', (t) => {
+  const str = `{| class="wikitable"
+|-
+! Header 1
+! Header 2
+! Header 3
+|-
+| row 1, cell 1
+| row 1, cell 2
+| row 1, cell 3
+|-
+| row 2, cell 1
+| row 2, cell 2
+| row 2, cell 3
+|-
+| row 3, cell 1
+| row 3, cell 2
+| row 3, cell 3
+|}`
+  const doc = wtf(str)
+  let data = doc.table().get('header 2')
+  t.deepEqual(data, ['row 1, cell 2', 'row 2, cell 2', 'row 3, cell 2'])
+
+  data = doc.table().get(['header 2', 'asdf', 'Header 1'])
+  t.equal(data.length, 3, 'still three')
+  t.equal(Object.keys(data).length, 3, 'three keys')
+
+  t.equal(doc.table().wikitext(), str, 'table-wikitext')
+  t.end()
+})

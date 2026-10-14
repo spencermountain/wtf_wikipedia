@@ -91,3 +91,23 @@ oh yeah
   t.equal(title, 'hello world', 'inline section template')
   t.end()
 })
+
+test('Short-Section-Headings', (t) => {
+  const str = `
+hello
+===gdbserver===
+hi there
+
+===x===
+Displays memory at the specified virtual address using the specified format.
+
+===xp===
+here too
+  `
+  const sections = wtf(str).sections()
+  t.equal(sections[1].title(), 'gdbserver', 'first heading exists')
+  t.equal(sections[2].title(), 'x', 'x exists')
+  t.equal(sections[3].title(), 'xp', 'xp exists')
+  t.equal(sections[4], undefined, 'foo doesnt exist')
+  t.end()
+})

@@ -160,3 +160,13 @@ test('as of template', (t) => {
   })
   t.end()
 })
+
+test('Date-Template-Text', (t) => {
+  t.equal(wtf(`{{date|June 8 2018|mdy}}`).plaintext(), 'June 8 2018')
+  t.equal(wtf(`{{dts|July 1, 1867}}`).plaintext(), 'July 1, 1867')
+  t.equal(wtf(`{{dts|2024|Jun|12}}`).plaintext(), 'Jun 12 2024')
+  t.equal(wtf(`{{dts|-200}}`).plaintext(), '200 BC')
+  t.equal(wtf(`{{dts|2020-10-15|format=dm}}`).plaintext(), '2020-10-15')
+  t.equal(wtf(`{{dts|2000-03-02|abbr=on}}`).plaintext(), '2000-03-02')
+  t.end()
+})

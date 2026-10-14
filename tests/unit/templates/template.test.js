@@ -324,3 +324,11 @@ test('german ones', function (t) {
   t.equal(wtf(str).text(), 'Buchstaben Q, W, E, R, T und Z', 'letters')
   t.end()
 })
+
+test('Template-Text-And-Wikitext', (t) => {
+  const doc = wtf(`* {{USS|Barry}}, four US destroyers`)
+  const tmpl = doc.template()
+  t.equal(tmpl.wikitext(), '{{USS|Barry}}', 'tmpl wikitext')
+  t.equal(tmpl.text(), `USS Barry`, 'tmpl text')
+  t.end()
+})

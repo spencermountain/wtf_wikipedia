@@ -109,3 +109,17 @@ test('double template', (t) => {
   t.equal((arr[1] || {}).last, 'Walker', here + 'parsed prop #2')
   t.end()
 })
+
+test('Named-Footnote-Template', (t) => {
+  t.equal(wtf(`hello {{refn|group=groupname|name=name|Contents of the footnote}} world`).plaintext(), 'hello world')
+  t.end()
+})
+
+test('Reference-Text-And-Wikitext', (t) => {
+  const str = `<ref>{{cite web|title=The princess of pot|url=http://thewalrus.ca/the-princess-of-pot/}}</ref>`
+  const doc = wtf(`the end.` + str)
+  const tmpl = doc.reference()
+  t.equal(tmpl.wikitext(), str, 'ref wikitext')
+  t.equal(tmpl.text(), ``, 'ref text')
+  t.end()
+})
