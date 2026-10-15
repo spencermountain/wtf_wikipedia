@@ -30,7 +30,7 @@ const imgLayouts = {
 }
 
 //images are usually [[image:my_pic.jpg]]
-const oneImage = function (img) {
+const parseImgString = function (img: string) {
   let m = img.match(file_reg)
   if (m === null || !m[2]) {
     return null
@@ -76,7 +76,7 @@ const parseImages = function (paragraph: ParagraphData) {
   matches.forEach(function (s) {
     if (isFile.test(s) === true) {
       paragraph.images ||= []
-      let img = oneImage(s)
+      let img = parseImgString(s)
       if (img) {
         paragraph.images.push(img)
         wiki = wiki.replace(s, '')
@@ -86,4 +86,7 @@ const parseImages = function (paragraph: ParagraphData) {
   paragraph.remaining = wiki
   return paragraph
 }
+
+export { parseImgString }
+
 export default parseImages

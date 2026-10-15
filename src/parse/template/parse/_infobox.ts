@@ -1,4 +1,4 @@
-import infoboxList from '../../infobox/_infoboxes.ts'
+import infoboxList from './_infoboxes.ts'
 import { infoboxes } from '../../../_data/i18n.ts'
 const i18nReg = new RegExp('^(subst.)?(' + infoboxes.join('|') + ')(?=:| |\n|$)', 'i')
 infoboxes.forEach((name) => {
@@ -13,7 +13,7 @@ const yearIn = /^year in [A-Z]/i
 //some known ones from
 //https://en.wikipedia.org/wiki/Wikipedia:List_of_infoboxes
 //and https://en.wikipedia.org/wiki/Category:Infobox_templates
-const isInfobox = function (name) {
+const isInfobox = function (name: string) {
   //known
   if (Object.hasOwn(infoboxList, name) === true) {
     return true

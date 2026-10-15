@@ -1,3 +1,4 @@
+import type { LinkData } from '../../types/index.ts'
 import wikis from '../../_data/interwiki.ts'
 
 const defaults = {
@@ -5,22 +6,17 @@ const defaults = {
 }
 
 class Link {
-  declare data: any
+  #data: LinkData
 
-  constructor(data) {
-    data ||= {}
-    data = { ...defaults, ...data }
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    })
+  constructor(data: LinkData) {
+    this.#data = { ...defaults, ...data }
   }
 
   text(str?) {
     if (str !== undefined) {
-      this.data.text = str
+      this.#data.text = str
     }
-    let txt = this.data.text || this.data.page || ''
+    let txt = this.#data.text || this.#data.page || ''
     // remove bold/italics
     txt = txt.replace(/'{2,}/g, '')
     return txt
@@ -28,8 +24,8 @@ class Link {
 
   json() {
     let obj: any = {}
-    if (this.data.text !== undefined) {
-      obj.text = this.data.text
+    if (this.#data.text !== undefined) {
+      obj.text = this.#data.text
     }
     obj.type = this.type()
     if (obj.type === 'internal') {
@@ -48,43 +44,43 @@ class Link {
   }
 
   wikitext() {
-    let txt = this.data.raw || ''
+    let txt = this.#data.raw || ''
     return txt
   }
 
   page(str?) {
     if (str !== undefined) {
-      this.data.page = str
+      this.#data.page = str
     }
-    return this.data.page
+    return this.#data.page
   }
 
   anchor(str?) {
     if (str !== undefined) {
-      this.data.anchor = str
+      this.#data.anchor = str
     }
-    return this.data.anchor || ''
+    return this.#data.anchor || ''
   }
 
   wiki(str?) {
     if (str !== undefined) {
-      this.data.wiki = str
+      this.#data.wiki = str
     }
-    return this.data.wiki
+    return this.#data.wiki
   }
 
   type(str?) {
     if (str !== undefined) {
-      this.data.type = str
+      this.#data.type = str
     }
-    return this.data.type
+    return this.#data.type
   }
 
   site(str?) {
     if (str !== undefined) {
-      this.data.site = str
+      this.#data.site = str
     }
-    return this.data.site
+    return this.#data.site
   }
 
   //create a url for any type of link

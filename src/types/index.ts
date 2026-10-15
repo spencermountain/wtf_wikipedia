@@ -6,7 +6,10 @@ export interface TemplateData {
   nested?: boolean
 }
 
-export interface InfoboxData extends TemplateData {}
+export interface InfoboxData extends TemplateData {
+  type: string
+  // data?: object[]
+}
 export interface ReferenceData extends TemplateData {}
 
 export type ImageData = {

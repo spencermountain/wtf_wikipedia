@@ -1,4 +1,4 @@
-import { fromText as parseSentence } from '../03-sentences/index.ts'
+import parseSentence from '../../sentences/index.ts'
 import type { ParagraphData } from '../../../types/index.ts'
 const list_reg = /^[#*:;|]+/
 const bullet_reg = /^\*+[^:,|]{4}/
@@ -53,7 +53,7 @@ const parseList = function (paragraph: ParagraphData) {
       let sub = grabList(lines, i)
       if (sub.length > 0) {
         i += sub.length - 1
-        sub = sub.filter((s) => s.data.text !== '')
+        sub = sub.filter((s) => s.text !== '')
         lists.push(sub)
       }
     } else {

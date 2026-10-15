@@ -1,8 +1,5 @@
 import { trim_whitespace } from '../../_lib/helpers.ts'
-import { fromText as parseSentence } from '../../03-paragraph/03-sentences/index.ts'
-// import parseReferences from '../../API/reference/index.ts'
-// import getTemplates from '../../API/template/find/01-nested.ts'
-// import parseTemplates from '../../API/template/parse/index.ts'
+import parseSentence from '../../sentences/index.ts'
 const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/ //eslint-disable-line
 // Commit to the first opening delimiter on each line before looking for its end.
 // const hasTemplate = /^(?=(.*?\{\{))\1.+?\}\}/m
@@ -23,7 +20,7 @@ const parseHeading = function (heading: string) {
     return { title: '', depth: 0 }
   }
 
-  title = parseSentence(title).text()
+  title = parseSentence(title).text
   //trim leading/trailing whitespace
   title = trim_whitespace(title)
   // count number of == characters to determine depth

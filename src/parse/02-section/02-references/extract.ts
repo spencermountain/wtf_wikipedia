@@ -1,5 +1,5 @@
 import parse from '../../template/parse/toJSON/index.ts'
-import { fromText as parseSentence } from '../../03-paragraph/03-sentences/index.ts'
+import parseSentence from '../../sentences/index.ts'
 import getTemplates from '../../template/find/02-flat.ts'
 
 // Keep the existing limits for plain, self-closing, and attributed references.

@@ -5,7 +5,7 @@ import { isArray } from '../../parse/_lib/helpers.ts'
 import Sentence from '../04-sentence/Sentence.ts'
 import latLngs from '../../_data/lat-lngs.ts'
 import dmsCoordinates from './_lib.ts'
-import type { InfoxboxData } from '../../types/index.ts'
+import type { InfoboxData } from '../../types/index.ts'
 
 const normalize = (str = '') => {
   str = str.toLowerCase()
@@ -15,10 +15,10 @@ const normalize = (str = '') => {
 
 //a formal key-value data table about a topic
 class Infobox {
-  #data: InfoxboxData
+  #data: InfoboxData
   #wiki: string
 
-  constructor(obj: InfoxboxData, wiki: string) {
+  constructor(obj: InfoboxData, wiki: string) {
     this.#data = obj.data
     this.#wiki = wiki
   }

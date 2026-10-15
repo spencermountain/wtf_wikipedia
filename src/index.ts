@@ -15,13 +15,12 @@ import {
   Reference,
   Table,
   Template,
-  templates,
   infoboxes,
 } from './API/index.ts'
 
 //the main 'factory' exported method
-const wtf = function (wiki, options) {
-  const data = parse(wiki, options)
+const wtf = function (wiki: string, options?: object) {
+  const data = parse(wiki)
   return new Document(data, options)
 }
 

@@ -1,21 +1,21 @@
 //remove the top/bottom off the template
 import strip from './_strip.ts'
 import fmtName from './_fmtName.ts'
-import { fromText as parseSentence } from '../../../04-sentence/index.ts'
+import parseSentence from '../../../sentences/index.ts'
 import pipeSplitter from './01-pipe-splitter.ts'
 import keyMaker from './02-keyMaker.ts'
 import cleanup from './03-cleanup.ts'
 
 const makeFormat = function (str, fmt) {
-  let s = parseSentence(str)
+  let sentence = parseSentence(str)
   //support various output formats
   if (fmt === 'json') {
-    return s.json()
+    return sentence
   } else if (fmt === 'raw') {
-    return s
+    return sentence
   }
   //default to flat text
-  return s.text()
+  return sentence.text
 }
 
 const parser = function (tmpl, order = [], fmt?: string) {

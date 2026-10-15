@@ -1,27 +1,7 @@
-import postprocess from '../../_lib/postprocess.ts'
-import parseLinks from './links/index.ts'
-import parseFmt from './formatting.ts'
+import fromText from '../../sentences/index.ts'
 import sentenceParser from './parse.ts'
-import type { ParagraphData, SentenceData } from '../../../types/index.ts'
 
-function fromText(str: string) {
-  let sentence: SentenceData = {
-    text: str,
-    wiki: str,
-    links: [],
-    fmt: {
-      bold: [],
-      italic: [],
-    },
-  }
-  //pull-out the [[links]]
-  parseLinks(sentence)
-  sentence.text = postprocess(sentence.text)
-  //pull-out the bolds and ''italics''
-  sentence = parseFmt(sentence)
-  //pull-out things like {{start date|...}}
-  return sentence
-}
+import type { ParagraphData } from '../../../types/index.ts'
 
 //used for consistency with other class-definitions
 const byParagraph = function (paragraph: ParagraphData) {
@@ -36,5 +16,4 @@ const byParagraph = function (paragraph: ParagraphData) {
   paragraph.sentences = sentences
   return paragraph
 }
-
-export { fromText, byParagraph }
+export default byParagraph

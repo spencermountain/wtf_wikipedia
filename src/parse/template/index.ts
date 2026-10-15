@@ -1,7 +1,7 @@
 import findTemplates from './find/01-nested.ts'
 import parseTemplate from './parse/index.ts'
 import sortOut from './sortOut.ts'
-import type { TemplateData } from '../../../types/index.ts'
+import type { TemplateData } from '../../types/index.ts'
 
 // return a flat list of all {{templates}}
 const allTemplates = function (wiki: string) {

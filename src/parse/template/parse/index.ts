@@ -8,7 +8,6 @@ const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 //this gets all the {{template}} objects and decides how to parse them
 const parseTemplate = function (tmpl) {
-  console.log(tmpl)
   let name = tmpl.name
   // dont bother with some junk templates
   if (ignore.has(name) === true) {

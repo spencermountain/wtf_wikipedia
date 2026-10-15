@@ -1,6 +1,4 @@
-import Infobox from '../infobox/Infobox.ts'
-import Reference from '../reference/Reference.ts'
-import Template from './Template.ts'
+import type { TemplateData } from '../../types/index.ts'
 const isCitation = /^(cite |citation)/i
 
 const referenceTypes = {
@@ -11,7 +9,7 @@ const referenceTypes = {
 }
 
 // split Infoboxes from templates and references
-const sortOut = function (templates) {
+const sortOut = function (templates: TemplateData[]) {
   let res = {
     infoboxes: [],
     references: [],
@@ -23,18 +21,22 @@ const sortOut = function (templates) {
     let kind = json.template || json.type || json.name
     // is it a Reference?
     if (referenceTypes[kind] === true || isCitation.test(kind) === true) {
-      res.references.push(new Reference(json, obj.wiki))
+      json.wiki = obj.wiki
+      res.references.push(json)
       return
     }
     // is it an Infobox?
     if (json.template === 'infobox' && json.subbox !== 'yes') {
       // json.domain = domain //infoboxes need this for images, i guess
       json.data ||= {} //validate it a little
-      res.infoboxes.push(new Infobox(json, obj.wiki))
+      json.wiki = obj.wiki
+      res.infoboxes.push(json)
       return
     }
     // otherwise, it's just a template
-    res.others.push(new Template(json, obj.text, obj.wiki))
+    json.text = obj.text
+    json.wiki = obj.wiki
+    res.others.push(json)
   })
   return res
 }

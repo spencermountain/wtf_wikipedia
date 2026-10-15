@@ -1,6 +1,7 @@
-import { fromText as parseSentence } from '../../03-paragraph/03-sentences/index.ts'
-import Image from '../../../API/image/Image.ts'
-import type { SectionData } from '../../../types/index.ts'
+import parseSentence from '../../sentences/index.ts'
+import type { SectionData, ImageData } from '../../../types/index.ts'
+import { parseImgString } from '../../03-paragraph/02-images/index.ts'
+
 //okay, <gallery> is a xml-tag, with newline-separated data, somehow pivoted by '|'...
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
 //- not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
@@ -12,12 +13,8 @@ const parseGallery = function (section: SectionData) {
     //parse the line, which has an image and sometimes a caption
     images = images.map((str) => {
       let arr = str.split(/\|/)
-      let obj = {
-        file: arr[0].trim(),
-        lang: doc.lang(),
-        domain: doc.domain(),
-      }
-      let img: any = new Image(obj).json()
+      const file = arr[0].trim()
+      let img: ImageData = parseImgString(file)
       let caption = arr.slice(1).join('|')
       if (caption !== '') {
         img.caption = parseSentence(caption)

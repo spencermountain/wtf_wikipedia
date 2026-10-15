@@ -1,7 +1,7 @@
-import languages from '../../../../_data/languages.ts'
+import languages from '../../../_data/languages.ts'
 //some colon symbols are valid links, like `America: That place`
 //so we have to whitelist allowable interwiki links
-import interwikis from '../../../../_data/interwiki.ts'
+import interwikis from '../../../_data/interwiki.ts'
 //add language prefixes too..
 Object.keys(languages).forEach((k) => {
   interwikis[k] = k + '.wikipedia.org/wiki/$1'

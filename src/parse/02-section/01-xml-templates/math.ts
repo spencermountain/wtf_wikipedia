@@ -1,4 +1,4 @@
-import { fromText as parseSentence } from '../../03-paragraph/03-sentences/index.ts'
+import parseSentence from '../../sentences/index.ts'
 import type { SectionData } from '../../../types/index.ts'
 //parse out math and chem templates - e.g. xml <math>y=mx+b</math>
 //https://en.wikipedia.org/wiki/Help:Displaying_a_formula

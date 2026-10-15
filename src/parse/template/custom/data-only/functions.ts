@@ -1,5 +1,6 @@
 import parse from '../../parse/toJSON/index.ts'
-import Image from '../../API/image/Image.ts'
+import { parseImgString } from '../../../03-paragraph/02-images/index.ts'
+
 import { getLang, sisterProjects, toNumber } from '../_lib.ts'
 
 export default {
@@ -154,11 +155,7 @@ export default {
     let obj = parse(tmpl)
     let images = (obj.list || []).filter((line) => /^ *File ?:/.test(line))
     images = images.map((file) => {
-      let img = {
-        file: file,
-      }
-      // todo: add lang and domain information
-      return new Image(img).json()
+      return parseImgString(file)
     })
     obj = {
       template: 'gallery',

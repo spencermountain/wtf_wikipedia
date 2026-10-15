@@ -1,5 +1,5 @@
 import parseLinks from './parse.ts'
-import type { LinkData } from '../../../../types/index'
+import type { LinkData } from '../../../types/index'
 
 //return only rendered text of wiki links
 const removeLinks = function (line: string) {
