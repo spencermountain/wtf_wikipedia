@@ -15,7 +15,10 @@ export type ImageData = {
   alt?: string
   caption?: string
 }
-export type ListData = string[]
+export type ListData = {
+  items: string[]
+  wiki: string
+}
 
 export type SentenceData = {
   text: string

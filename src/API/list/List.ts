@@ -1,5 +1,6 @@
 import Collection from '../collection/Collection.js'
 import setDefaults from '../_lib/setDefaults.ts'
+import type { ListData } from '../../types/index.ts'
 const defaults = {}
 
 const toText = (list, options?) => {
@@ -12,22 +13,16 @@ const toText = (list, options?) => {
 }
 
 class List {
-  declare data: any
-  declare wiki: string
+  #data: ListData
+  #wiki: string
 
-  constructor(data, wiki = '') {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    })
-    Object.defineProperty(this, 'wiki', {
-      enumerable: false,
-      value: wiki,
-    })
+  constructor(data: ListData, wiki: string) {
+    this.#data = data
+    this.#wiki = wiki
   }
 
   lines(selector?) {
-    return Collection.from(this.data).select(selector)
+    return Collection.from(this.#data.items).select(selector)
   }
 
   links(selector?) {
@@ -41,11 +36,11 @@ class List {
   }
 
   text() {
-    return toText(this.data)
+    return toText(this.#data.items)
   }
 
   wikitext() {
-    return this.wiki || ''
+    return this.#wiki || ''
   }
 }
 

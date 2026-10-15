@@ -1,5 +1,5 @@
-import List from './List.ts'
-import { fromText as parseSentence } from '../04-sentence/index.ts'
+import { fromText as parseSentence } from '../../../API/04-sentence/index.ts'
+import type { ParagraphData } from '../../../types/index.ts'
 const list_reg = /^[#*:;|]+/
 const bullet_reg = /^\*+[^:,|]{4}/
 const number_reg = /^ ?#[^:,|]{4}/
@@ -43,7 +43,7 @@ const grabList = function (lines, i) {
   return sub
 }
 
-const parseList = function (paragraph) {
+const parseList = function (paragraph: ParagraphData) {
   let wiki = paragraph.wiki
   let lines = wiki.split(/\n/g)
   let lists = []
@@ -60,7 +60,13 @@ const parseList = function (paragraph) {
       theRest.push(lines[i])
     }
   }
-  paragraph.lists = lists.map((list) => new List(list, wiki))
-  paragraph.wiki = theRest.join('\n')
+  paragraph.lists = lists.map((list) => {
+    return {
+      items: list,
+      wiki,
+    }
+  })
+  paragraph.remaining = theRest.join('\n')
+  return paragraph
 }
 export default parseList

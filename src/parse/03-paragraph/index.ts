@@ -1,5 +1,5 @@
 import parseImage from '../../API/image/index.ts'
-import parseList from '../../API/list/index.ts'
+import parseList from './01-lists/index.ts'
 import { byParagraph as parseSentences } from '../../API/04-sentence/index.ts'
 import type { SectionData, ParagraphData } from '../../types/index.ts'
 const twoNewLines = /\r?\n\r?\n/
