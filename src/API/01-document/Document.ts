@@ -1,17 +1,13 @@
-import Collection from '../collection/Collection.js'
 /* eslint-disable no-console */
+import Collection from '../collection/Collection.js'
 import sectionMap from './_sectionMap.ts'
 import toJSON from './toJson.ts'
 import isDisambig from './isDisambig.ts'
+import Section from '../02-section/Section.ts'
 import isStub from './isStub.ts'
 import setDefaults from '../_lib/setDefaults.ts'
 import Image from '../image/Image.ts'
 import type { PageData } from '../../types/index.ts'
-
-// import { isRedirect, parse } from '../../parse/00-isRedirect/redirects.ts'
-// import preProcess from './preProcess/index.ts'
-// import parseSection from '../02-section/index.ts'
-// import parseCategories from './categories.ts'
 
 const defaults = {
   tables: true,
@@ -142,11 +138,8 @@ class Document {
 
   sections(clue?) {
     let arr = this.#data.sections || []
-    arr.forEach((sec) => {
-      // link-up parent and child
-      sec._doc = this
-    })
-    return Collection.from(arr).select(clue)
+    const res = arr.map((section) => new Section(section))
+    return Collection.from(res).select(clue)
   }
 
   paragraphs(selector?) {

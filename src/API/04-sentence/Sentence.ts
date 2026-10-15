@@ -24,6 +24,9 @@ class Sentence {
       .select(selector)
   }
 
+  fmt() {
+    return this.#data.fmt || {}
+  }
   // TODO: Formatting values are strings, not model collections.
   bolds() {
     if (this.#data && this.#data.fmt && this.#data.fmt.bold) {

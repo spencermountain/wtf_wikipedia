@@ -23,10 +23,10 @@ const toJSON = function (s, options) {
     }
   }
   if (options.links && s.links().length > 0) {
-    data.links = s.links().map((l) => l.json())
+    data.links = s.links()
   }
-  if (options.formatting && s.data.fmt) {
-    data.formatting = s.data.fmt
+  if (options.formatting && s.fmt()) {
+    data.formatting = s.fmt()
   }
   return data
 }

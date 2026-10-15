@@ -1,6 +1,7 @@
 import Collection from '../collection/Collection.js'
 import toJSON from './toJson.ts'
 import setDefaults from '../_lib/setDefaults.ts'
+import Paragraph from '../03-paragraph/Paragraph.ts'
 import type { SectionData } from '../../types/index.ts'
 
 const defaults = {
@@ -43,7 +44,8 @@ class Section {
   }
 
   paragraphs(selector?) {
-    return Collection.from(this.#data.paragraphs || []).select(selector)
+    const arr = this.#data.paragraphs || []
+    return arr.map((p) => new Paragraph(p))
   }
 
   links(clue?) {

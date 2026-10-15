@@ -10,7 +10,7 @@ const byParagraph = function (paragraph: ParagraphData) {
   //sentence objects
   sentences = sentences.map(fromText)
   //remove :indented first line, as it is often a disambiguation
-  if (sentences[0] && sentences[0].text() && sentences[0].text()[0] === ':') {
+  if (sentences[0] && sentences[0].text && sentences[0].text[0] === ':') {
     sentences = sentences.slice(1)
   }
   paragraph.sentences = sentences

@@ -31,8 +31,9 @@ class List {
   }
 
   json(options?) {
-    options = setDefaults(options, defaults)
-    return this.lines().map((s) => s.json(options))
+    return this.#data.items
+    // options = setDefaults(options, defaults)
+    // return this.lines().map((s) => s.json(options))
   }
 
   text() {

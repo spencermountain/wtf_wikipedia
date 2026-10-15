@@ -1,5 +1,7 @@
 import Collection from '../collection/Collection.js'
 import toJSON from './toJson.ts'
+import Sentence from '../04-sentence/Sentence.ts'
+import List from '../list/List.ts'
 import setDefaults from '../_lib/setDefaults.ts'
 import type { ParagraphData } from '../../types/index.ts'
 
@@ -17,7 +19,8 @@ class Paragraph {
   }
 
   sentences(selector?) {
-    return Collection.from(this.#data.sentences || []).select(selector)
+    const arr = this.#data.sentences || []
+    return arr.map((s) => new Sentence(s))
   }
 
   sentence(selector?) {
@@ -26,7 +29,8 @@ class Paragraph {
 
   // TODO: List collections have nested JSON; keep plain arrays for now.
   lists() {
-    return this.#data.lists || []
+    const arr = this.#data.lists || []
+    return arr.map((l) => new List(l))
   }
 
   list(selector?) {

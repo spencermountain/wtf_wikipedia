@@ -3,6 +3,9 @@ import { readPage } from './tests/_examples/index.js'
 
 // const str = readPage('Radiohead')
 const str = `===Albums listed chronologically===
+
+oka cool this [[works]]
+
 *''[[The Techno Rose of Blighty]]'' (1991, Creation Records)
 *''[[Out (In Essence)]]'' (1991, Circa/Virgin)
 *''[[Six Wheels on My Wagon]]'' (1993, Circa)
@@ -17,5 +20,5 @@ const str = `===Albums listed chronologically===
 `
 const doc = wtf(str)
 
-console.log(doc.sections())
+console.log(doc.paragraphs().json())
 // console.log(block.links())
