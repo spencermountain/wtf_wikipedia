@@ -25,5 +25,5 @@ const str = `===Albums listed chronologically===
 `
 const doc = wtf(str)
 
-console.log(doc.links())
+console.log(doc.sections())
 // console.log(block.links())

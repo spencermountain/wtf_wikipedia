@@ -6,6 +6,7 @@ import parseParagraphs from '../03-paragraph/index.ts'
 import parseTemplates from '../template/index.ts'
 import parseReferences from '../reference/index.ts'
 import parseStartEndTemplates from './start-to-end/index.ts'
+import type { SectionData } from '../../types/index.ts'
 
 const defaults = {
   tables: true,
@@ -25,35 +26,19 @@ const getNth = function (arr, clue) {
 
 //the Section class represents the == title == sections of an article
 class Section {
-  declare _doc: any
-  declare _title: string
-  declare _depth: number
-  declare _wiki: string
-  declare _templates: any[]
-  declare _tables: any[]
-  declare _infoboxes: any[]
-  declare _references: any[]
-  declare _paragraphs: any[]
+  #data: SectionData
+  // declare _doc: any
+  // declare _title: string
+  // declare _depth: number
+  // declare _wiki: string
+  // declare _templates: any[]
+  // declare _tables: any[]
+  // declare _infoboxes: any[]
+  // declare _references: any[]
+  // declare _paragraphs: any[]
 
-  constructor(data, doc) {
-    let props = {
-      doc: doc,
-      title: data.title || '',
-      depth: data.depth,
-      wiki: data.wiki || '',
-      templates: [],
-      tables: [],
-      infoboxes: [],
-      references: [],
-      paragraphs: [],
-    }
-    Object.keys(props).forEach((k) => {
-      Object.defineProperty(this, '_' + k, {
-        enumerable: false,
-        writable: true,
-        value: props[k],
-      })
-    })
+  constructor(data: SectionData, doc) {
+    this.#data = data
 
     //parse-out <template></template>' and {{start}}...{{end}} templates
     const startEndTemplates = parseStartEndTemplates(this, doc)

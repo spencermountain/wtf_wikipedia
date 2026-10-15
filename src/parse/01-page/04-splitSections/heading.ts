@@ -1,5 +1,6 @@
-import { trim_whitespace } from '../_lib/helpers.ts'
-import { fromText as parseSentence } from '../../API/04-sentence/index.ts'
+import { trim_whitespace } from '../../_lib/helpers.ts'
+import { fromText as parseSentence } from '../../../API/04-sentence/index.ts'
+import type { SectionData } from '../../../types/index.ts'
 // import parseReferences from '../../API/reference/index.ts'
 // import getTemplates from '../../API/template/find/01-nested.ts'
 // import parseTemplates from '../../API/template/parse/index.ts'
@@ -18,9 +19,8 @@ const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/ //eslint-disable-line
 
 //estimates the depth of a section and normalizes its title
 const parseHeading = function (heading: string) {
-  let section = {
+  let section: SectionData = {
     title: '',
-    heading,
     depth: 0,
     wiki: '',
   }

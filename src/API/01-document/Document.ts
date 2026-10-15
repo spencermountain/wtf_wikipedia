@@ -6,9 +6,11 @@ import isDisambig from './isDisambig.ts'
 import isStub from './isStub.ts'
 import setDefaults from '../_lib/setDefaults.ts'
 import Image from '../image/Image.ts'
+import type { PageData } from '../../types/index.ts'
+
 // import { isRedirect, parse } from '../../parse/00-isRedirect/redirects.ts'
 // import preProcess from './preProcess/index.ts'
-import parseSection from '../02-section/index.ts'
+// import parseSection from '../02-section/index.ts'
 // import parseCategories from './categories.ts'
 
 const defaults = {
@@ -21,44 +23,16 @@ class Document {
   #data: any
   #options: any
 
-  constructor(data, options) {
+  constructor(data: PageData, options) {
     options ||= {}
     this.#options = options
     this.#data = data
-    let userAgent = options.userAgent || options['User-Agent'] || options['Api-User-Agent']
-    userAgent ||= 'User of the wtf_wikipedia library'
-    let props = {
-      title: options.title || null,
-      type: 'page',
-      userAgent,
-      redirectTo: null,
-      wiki: data.wiki || '',
-      categories: [],
-      sections: [],
-      coordinates: [],
-      templateFallbackFn: options.templateFallbackFn || null,
-      revisionID: options.revisionID || null,
-      timestamp: options.timestamp || null,
-      description: options.description || null,
-      wikidata: options.wikidata || null,
-      pageImage: options.pageImage || null,
-      pageID: options.pageID || options.id || null,
-      namespace: options.namespace ?? options.ns ?? null,
-      lang: options.lang || options.language || null,
-      domain: options.domain || null,
-    }
   }
 
-  // if no title is set, guess it from a bolded phrase in the first sentence
-  title(str?) {
-    //use like a setter
-    if (str !== undefined) {
-      this._title = str
-      return str
-    }
-    //if we have it already
-    if (this._title) {
-      return this._title
+  get title() {
+    // if we have it already
+    if (this.#data.title) {
+      return this.#data.title
     }
     //guess the title of this page from first sentence bolding
     let guess = null
@@ -68,78 +42,102 @@ class Document {
     }
     return guess
   }
-
-  pageID(id?) {
-    if (id !== undefined) {
-      this._pageID = id
-    }
-    return this._pageID || null
+  set title(str) {
+    this.#data.title = str
   }
 
-  wikidata(id?) {
-    if (id !== undefined) {
-      this._wikidata = id
-    }
-    return this._wikidata || null
+  get pageID() {
+    return this.#data.pageId || null
+  }
+  set pageID(str) {
+    this.#data.pageId = str
+  }
+  get wikidata() {
+    return this.#data.wikidata || null
+  }
+  set wikidata(str) {
+    this.#data.wikidata = str
+  }
+  get domain() {
+    return this.#data.domain || null
+  }
+  set domain(str) {
+    this.#data.domain = str
+  }
+  get language() {
+    return this.#data.lang || null
+  }
+  set language(str) {
+    this.#data.lang = str
+  }
+  get namespace() {
+    return this.#data.namespace || null
+  }
+  set namespace(str) {
+    this.#data.namespace = str
+  }
+  get revisionID() {
+    return this.#data.revisionID || null
+  }
+  set revisionID(str) {
+    this.#data.revisionID = str
+  }
+  get timestamp() {
+    return this.#data.timestamp || null
+  }
+  set timestamp(str) {
+    this.#data.timestamp = str
+  }
+  get description() {
+    return this.#data.description || null
+  }
+  set description(str) {
+    this.#data.description = str
+  }
+  get _pageImage() {
+    return this.#data._pageImage || null
+  }
+  set _pageImage(str) {
+    this.#data._pageImage = str
   }
 
-  domain(str?) {
-    if (str !== undefined) {
-      this._domain = str
-    }
-    return this._domain || null
+  // don'y allow setting thesese
+  wikitext() {
+    return this.#data.wiki || ''
   }
-
-  language(lang?) {
-    if (lang !== undefined) {
-      this._lang = lang
-    }
-    return this._lang || null
+  options() {
+    return this._options
   }
 
   // falls back to 'en' and 'wikipedia.org' when language or domain are missing
   url() {
-    let title = this.title()
+    let title = this.#data.title
     if (!title) {
       return null
     }
-    let lang = this.language() || 'en'
-    let domain = this.domain() || 'wikipedia.org'
+    let lang = this.#data.lang || 'en' //sorry
+    let domain = this.#data.domain || 'wikipedia.org'
     //replace blank to underscore
     title = title.replace(/ /g, '_')
     title = encodeURIComponent(title)
     return `https://${lang}.${domain}/wiki/${title}`
   }
 
-  namespace(ns?) {
-    if (ns !== undefined) {
-      this._namespace = ns
-    }
-    return this._namespace ?? null
-  }
-
   isRedirect() {
-    return this._type === 'redirect'
+    return Boolean(this.#data.isRedirect)
   }
   isStub() {
     return isStub(this)
   }
-
   redirectTo() {
-    return this._redirectTo
+    return this.#data.redirectTo
   }
-
   isDisambiguation() {
     return isDisambig(this)
   }
 
-  // TODO: Categories contain strings, not models. Keep the existing array API for now.
-  categories(clue?) {
-    let arr = this._categories || []
-    if (typeof clue === 'number') {
-      return [arr[clue]]
-    }
-    return arr
+  categories() {
+    return this.#data.categories || []
   }
 
   sections(clue?) {
@@ -148,7 +146,6 @@ class Document {
       // link-up parent and child
       sec._doc = this
     })
-
     return Collection.from(arr).select(clue)
   }
 
@@ -256,10 +253,6 @@ class Document {
     return toJSON(this, options)
   }
 
-  wikitext() {
-    return this._wiki || ''
-  }
-
   debug() {
     console.log('\n')
     this.sections().forEach((sec) => {
@@ -272,39 +265,9 @@ class Document {
     return this
   }
 
-  revisionID(id?) {
-    if (id !== undefined) {
-      this._revisionID = id
-    }
-    return this._revisionID || null
-  }
-  timestamp(str?) {
-    if (str !== undefined) {
-      this._timestamp = str
-    }
-    return this._timestamp || null
-  }
-  description(str?) {
-    if (str !== undefined) {
-      this._description = str
-    }
-    return this._description || null
-  }
-  pageImage(str?) {
-    if (str !== undefined) {
-      this._pageImage = str
-    }
-    let file = this._pageImage || null
-    return new Image({ file })
-  }
-
-  options() {
-    return this._options
-  }
-
   // singular aliases
-  category(clue?) {
-    return this.categories(clue)[0] || null
+  category() {
+    return this.categories()[0] || null
   }
   section(clue?) {
     return this.sections(clue)[0] ?? null
