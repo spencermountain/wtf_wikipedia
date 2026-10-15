@@ -1,27 +1,32 @@
-import postprocess from '../_lib/postprocess.ts'
-import parseLinks from '../link/index.ts'
+import postprocess from '../../_lib/postprocess.ts'
+import parseLinks from './links/index.ts'
 import parseFmt from './formatting.ts'
-import Sentence from './Sentence.ts'
 import sentenceParser from './parse.ts'
+import type { ParagraphData, SentenceData } from '../../../types/index.ts'
 
-function fromText(str) {
-  let obj = {
-    wiki: str,
+function fromText(str: string) {
+  let sentence: SentenceData = {
     text: str,
+    wiki: str,
+    links: [],
+    fmt: {
+      bold: [],
+      italic: [],
+    },
   }
   //pull-out the [[links]]
-  parseLinks(obj)
-  obj.text = postprocess(obj.text)
+  parseLinks(sentence)
+  sentence.text = postprocess(sentence.text)
   //pull-out the bolds and ''italics''
-  obj = parseFmt(obj)
+  sentence = parseFmt(sentence)
   //pull-out things like {{start date|...}}
-  return new Sentence(obj)
+  return sentence
 }
 
 //used for consistency with other class-definitions
-const byParagraph = function (paragraph) {
+const byParagraph = function (paragraph: ParagraphData) {
   //array of texts
-  let sentences = sentenceParser(paragraph.wiki)
+  let sentences = sentenceParser(paragraph.remaining)
   //sentence objects
   sentences = sentences.map(fromText)
   //remove :indented first line, as it is often a disambiguation
@@ -29,6 +34,7 @@ const byParagraph = function (paragraph) {
     sentences = sentences.slice(1)
   }
   paragraph.sentences = sentences
+  return paragraph
 }
 
 export { fromText, byParagraph }

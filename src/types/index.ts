@@ -20,10 +20,17 @@ export type ListData = {
   wiki: string
 }
 
+export type LinkData = {
+  text: string
+  type?: string
+  page?: string
+  wiki: string
+}
+
 export type SentenceData = {
   text: string
   wiki: string
-  links: object[]
+  links: LinkData[]
   fmt: {
     bold?: string[]
     italic?: string[]

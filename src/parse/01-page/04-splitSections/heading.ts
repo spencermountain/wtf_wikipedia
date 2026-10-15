@@ -1,5 +1,5 @@
 import { trim_whitespace } from '../../_lib/helpers.ts'
-import { fromText as parseSentence } from '../../../API/04-sentence/index.ts'
+import { fromText as parseSentence } from '../../03-paragraph/03-sentences/index.ts'
 // import parseReferences from '../../API/reference/index.ts'
 // import getTemplates from '../../API/template/find/01-nested.ts'
 // import parseTemplates from '../../API/template/parse/index.ts'

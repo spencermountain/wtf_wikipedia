@@ -1,13 +1,5 @@
-import Block from './src/API/Block/Block.js'
 import wtf from './src/index.ts'
 import { readPage } from './tests/_examples/index.js'
-
-// Ordinary templates are expanded; reference tags stay until Block parses them.
-const block = new Block(
-  `Visit '''[[New York City|New York]]'''.<ref name="guide">{{cite book|title=City Guide|author=Jane Smith}}</ref>
-Then visit [[new york (state)|New York]] &amp; ''[[Boston]]''.<ref>A second source. With its own sentences.</ref>
-Return to New York.<ref name="guide"/>`
-)
 
 // const str = readPage('Radiohead')
 const str = `===Albums listed chronologically===

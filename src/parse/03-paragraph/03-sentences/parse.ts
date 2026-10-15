@@ -14,7 +14,7 @@ const hasWord = /\p{Letter}/iu
 
 // Try only the first non-whitespace position in each remaining line. If it
 // cannot reach sentence punctuation, later starts on that line cannot either.
-const splitPunctuation = function (text) {
+const splitPunctuation = function (text: string) {
   const sentence = /(\S.+?[.!?]"?)(?=\s|$)/y
   let splits = []
   let end = 0
@@ -69,7 +69,7 @@ const isBalanced = function (str) {
   return true
 }
 
-const sentence_parser = function (text) {
+const sentence_parser = function (text: string) {
   let sentences = []
   //first do a greedy-split..
   let chunks = []
@@ -103,7 +103,7 @@ const sentence_parser = function (text) {
   }
 
   //detection of non-sentence chunks
-  const isSentence = function (hmm) {
+  const isSentence = function (hmm: string) {
     if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg) || hmm.match(circa_reg)) {
       return false
     }

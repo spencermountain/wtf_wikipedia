@@ -1,4 +1,4 @@
-import { fromText as parseSentence } from '../../../../API/04-sentence/index.ts'
+import { fromText as parseSentence } from '../../../03-paragraph/03-sentences/index.ts'
 import findRows from './_findRows.ts'
 import handleSpans from './_spans.ts'
 const isHeading = /^!/

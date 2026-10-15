@@ -1,5 +1,7 @@
+import type { SentenceData } from '../../../types/index.ts'
+
 //handle the bold/italics
-const formatting = function (obj) {
+const formatting = function (obj: SentenceData) {
   let bolds = []
   let italics = []
   let wiki = obj.text || ''

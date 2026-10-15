@@ -1,4 +1,4 @@
-import { fromText } from '../04-sentence/index.ts'
+import { fromText } from '../../parse/03-paragraph/03-sentences/index.ts'
 import type { TemplateData } from '../../types/index.ts'
 
 class Template {

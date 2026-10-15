@@ -1,4 +1,4 @@
-import { fromText as parseSentence } from '../../../API/04-sentence/index.ts'
+import { fromText as parseSentence } from '../../03-paragraph/03-sentences/index.ts'
 import Image from '../../../API/image/Image.ts'
 import type { SectionData } from '../../../types/index.ts'
 //okay, <gallery> is a xml-tag, with newline-separated data, somehow pivoted by '|'...

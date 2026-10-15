@@ -1,5 +1,5 @@
 import parse_interwiki from './interwiki.ts'
-import postprocess from '../_lib/postprocess.ts'
+import postprocess from '../../../_lib/postprocess.ts'
 
 const ignore_links =
   /^(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i
@@ -84,7 +84,7 @@ const internal_links = function (links, str) {
 }
 
 //grab an array of internal links in the text
-const parse_links = function (str) {
+const parse_links = function (str: string) {
   let links = []
   //first, parse external links
   links = external_links(links, str)

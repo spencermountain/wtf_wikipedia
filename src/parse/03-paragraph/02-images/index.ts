@@ -1,7 +1,7 @@
-import { images } from '../../_data/i18n.ts'
-import Image from './Image.ts'
-import parseTemplate from '../../parse/template/parse/toJSON/index.ts'
+import { images } from '../../../_data/i18n.ts'
+import parseTemplate from '../../template/parse/toJSON/index.ts'
 import nested_find from './nested_find.ts'
+import type { ParagraphData, ImageData } from '../../../types/index.ts'
 //regexes:
 const isFile = new RegExp('(' + images.join('|') + '):', 'i')
 let fileNames = `(${images.join('|')})`
@@ -30,7 +30,7 @@ const imgLayouts = {
 }
 
 //images are usually [[image:my_pic.jpg]]
-const oneImage = function (img, doc) {
+const oneImage = function (img) {
   let m = img.match(file_reg)
   if (m === null || !m[2]) {
     return null
@@ -40,12 +40,9 @@ const oneImage = function (img, doc) {
   }
   let file = `${m[1]}:${m[2] || ''}`
   if (file) {
-    let obj: any = {
+    let obj: ImageData = {
       file: file,
-      lang: doc._lang,
-      domain: doc._domain,
       wiki: img,
-      pluginData: {},
     }
     //try to grab other metadata, too
     img = img.replace(/^\[\[/, '')
@@ -67,25 +64,26 @@ const oneImage = function (img, doc) {
     if (arr.at(-1)) {
       obj.caption = arr.at(-1)
     }
-    return new Image(obj)
+    return obj
   }
   return null
 }
 
-const parseImages = function (paragraph, doc) {
-  let wiki = paragraph.wiki
+const parseImages = function (paragraph: ParagraphData) {
+  let wiki = paragraph.remaining
   //parse+remove scary '[[ [[]] ]]' stuff
   let matches = nested_find(wiki)
   matches.forEach(function (s) {
     if (isFile.test(s) === true) {
       paragraph.images ||= []
-      let img = oneImage(s, doc)
+      let img = oneImage(s)
       if (img) {
         paragraph.images.push(img)
         wiki = wiki.replace(s, '')
       }
     }
   })
-  paragraph.wiki = wiki
+  paragraph.remaining = wiki
+  return paragraph
 }
 export default parseImages

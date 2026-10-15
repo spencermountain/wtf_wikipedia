@@ -1,4 +1,4 @@
-import { fromText as parseSentence } from '../../../API/04-sentence/index.ts'
+import { fromText as parseSentence } from '../03-sentences/index.ts'
 import type { ParagraphData } from '../../../types/index.ts'
 const list_reg = /^[#*:;|]+/
 const bullet_reg = /^\*+[^:,|]{4}/
@@ -44,7 +44,7 @@ const grabList = function (lines, i) {
 }
 
 const parseList = function (paragraph: ParagraphData) {
-  let wiki = paragraph.wiki
+  let wiki = paragraph.remaining
   let lines = wiki.split(/\n/g)
   let lists = []
   let theRest = []

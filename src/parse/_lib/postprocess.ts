@@ -1,4 +1,4 @@
-import { trim_whitespace } from '../../parse/_lib/helpers.ts'
+import { trim_whitespace } from './helpers.ts'
 
 function postprocess(line) {
   //remove empty parentheses (sometimes caused by removing templates)

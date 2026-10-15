@@ -1,6 +1,7 @@
 import Collection from '../collection/Collection.js'
 import toJson from './toJson.ts'
-import normalizeFile from './_lib.ts'
+import normalizeFile from '../../parse/03-paragraph/02-images/_lib.ts'
+import type { ImageData } from '../../types/index.ts'
 const server = 'wikipedia.org'
 
 const encodeTitle = function (file) {
@@ -21,20 +22,18 @@ const makeSrc = function (file) {
 
 //the class for our image generation functions
 class Image {
-  declare data: any
+  #data: ImageData
 
-  constructor(data) {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    })
+  constructor(data: ImageData) {
+    this.#data = data
   }
 
   file() {
-    let file = normalizeFile(this.data.file || '')
+    let file = normalizeFile(this.#data.file || '')
     if (file) {
       const regFile = /^(image|file):/i
-      if (!regFile.test(file)) {// if there's no 'File:', add it
+      if (!regFile.test(file)) {
+        // if there's no 'File:', add it
         file = `File:${file}`
       }
       file = file.trim()
@@ -47,28 +46,28 @@ class Image {
   }
 
   alt() {
-    let str = this.data.alt || this.data.file || ''
+    let str = this.#data.alt || this.#data.file || ''
     str = str.replace(/^(file|image):/i, '')
     str = str.replace(/\.(jpg|jpeg|png|gif|svg)/i, '')
     return str.replace(/_/g, ' ')
   }
 
   caption() {
-    if (this.data.caption) {
-      return this.data.caption.text()
+    if (this.#data.caption) {
+      return this.#data.caption.text()
     }
     return ''
   }
 
   links(selector?) {
-    const items = this.data.caption?.links() || []
+    const items = this.#data.caption?.links() || []
     return Collection.from(items).select(selector)
   }
 
   url() {
     // let lang = 'en' //this.language() || 'en' //hmm: get actual language?
     let fileName = makeSrc(this.file())
-    let domain = this.data.domain || server
+    let domain = this.#data.domain || server
     let path = `wiki/Special:Redirect/file`
     return `https://${domain}/${path}/${fileName}`
   }
@@ -104,7 +103,7 @@ class Image {
   }
 
   wikitext() {
-    return this.data.wiki || ''
+    return this.#data.wiki || ''
   }
 }
 

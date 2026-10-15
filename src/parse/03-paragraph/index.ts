@@ -1,6 +1,6 @@
-import parseImage from '../../API/image/index.ts'
+import parseImage from './02-images/index.ts'
 import parseList from './01-lists/index.ts'
-import { byParagraph as parseSentences } from '../../API/04-sentence/index.ts'
+import { byParagraph as parseSentences } from './03-sentences/index.ts'
 import type { SectionData, ParagraphData } from '../../types/index.ts'
 const twoNewLines = /\r?\n\r?\n/
 
@@ -20,11 +20,11 @@ const parseParagraphs = function (section: SectionData) {
       images: [],
     }
     //parse the lists
-    parseList(paragraph)
+    paragraph = parseList(paragraph)
     //parse images
-    parseImage(paragraph)
+    paragraph = parseImage(paragraph)
     //parse the sentences
-    parseSentences(paragraph)
+    paragraph = parseSentences(paragraph)
     return paragraph
   })
   section.remaining = wiki
