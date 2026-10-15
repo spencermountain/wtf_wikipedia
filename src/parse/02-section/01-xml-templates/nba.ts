@@ -1,4 +1,4 @@
-import tableParser from '../../table/parse/index.ts'
+import tableParser from '../../../API/table/parse/index.ts'
 const keys = {
   coach: ['team', 'year', 'g', 'w', 'l', 'w-l%', 'finish', 'pg', 'pw', 'pl', 'pw-l%'],
   player: ['year', 'team', 'gp', 'gs', 'mpg', 'fg%', '3p%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
@@ -6,8 +6,8 @@ const keys = {
 }
 
 //https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
-const parseNBA = function (catcher) {
-  catcher.text = catcher.text.replace(
+const parseNBA = function (section) {
+  section.remaining = section.remaining.replace(
     /\{\{nba (coach|player|roster) statistics start(.+?)\{\{s-end\}\}/gis,
     (tmpl, name) => {
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
@@ -24,7 +24,7 @@ const parseNBA = function (catcher) {
         return row
       })
 
-      catcher.templates.push({
+      section.templates.push({
         template: 'NBA ' + name + ' statistics',
         data: rows,
       })
@@ -33,5 +33,6 @@ const parseNBA = function (catcher) {
       return ''
     }
   )
+  return section
 }
 export default parseNBA

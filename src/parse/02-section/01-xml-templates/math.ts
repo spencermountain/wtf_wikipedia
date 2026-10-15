@@ -1,12 +1,12 @@
-import { fromText as parseSentence } from '../../04-sentence/index.ts'
+import { fromText as parseSentence } from '../../../API/04-sentence/index.ts'
 
 //parse out math and chem templates - e.g. xml <math>y=mx+b</math>
 //https://en.wikipedia.org/wiki/Help:Displaying_a_formula
-const parseMath = function (catcher) {
-  catcher.text = catcher.text.replace(/<math([^>]*)>(.*?)<\/math>/gs, (_, attrs, inside) => {
+const parseMath = function (section) {
+  section.remaining = section.remaining.replace(/<math([^>]*)>(.*?)<\/math>/gs, (_, attrs, inside) => {
     //clean it up a little?
     let formula = parseSentence(inside).text()
-    catcher.templates.push({
+    section.templates.push({
       template: 'math',
       formula: formula,
       raw: inside,
@@ -22,8 +22,8 @@ const parseMath = function (catcher) {
   })
 
   //try chemistry version too
-  catcher.text = catcher.text.replace(/<chem([^>]*)>(.*?)<\/chem>/gs, (_, attrs, inside) => {
-    catcher.templates.push({
+  section.remaining = section.remaining.replace(/<chem([^>]*)>(.*?)<\/chem>/gs, (_, attrs, inside) => {
+    section.templates.push({
       template: 'chem',
       data: inside,
     })
@@ -31,5 +31,6 @@ const parseMath = function (catcher) {
     //return empty string to remove the template from the wiki text
     return ''
   })
+  return section
 }
 export default parseMath

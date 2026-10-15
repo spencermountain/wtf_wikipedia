@@ -1,10 +1,10 @@
-import { fromText as parseSentence } from '../../04-sentence/index.ts'
-import Image from '../../image/Image.ts'
+import { fromText as parseSentence } from '../../../API/04-sentence/index.ts'
+import Image from '../../../API/image/Image.ts'
 //okay, <gallery> is a xml-tag, with newline-separated data, somehow pivoted by '|'...
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
 //- not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
-const parseGallery = function (catcher, doc, section) {
-  catcher.text = catcher.text.replace(/<gallery([^>]*)>(.+)<\/gallery>/gs, (_, _attrs, inside) => {
+const parseGallery = function (section) {
+  section.remaining = section.remaining.replace(/<gallery([^>]*)>(.+)<\/gallery>/gs, (_, _attrs, inside) => {
     let images = inside.split(/\n/g)
     images = images.filter((str) => str && str.trim() !== '')
 
@@ -26,7 +26,7 @@ const parseGallery = function (catcher, doc, section) {
 
     //add it to our templates list
     if (images.length > 0) {
-      catcher.templates.push({
+      section.templates.push({
         template: 'gallery',
         images: images,
         pos: section.title,
@@ -36,5 +36,6 @@ const parseGallery = function (catcher, doc, section) {
     //return empty string to remove the template from the wiki text
     return ''
   })
+  return section
 }
 export default parseGallery

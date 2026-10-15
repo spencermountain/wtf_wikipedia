@@ -1,6 +1,5 @@
 import { trim_whitespace } from '../../_lib/helpers.ts'
 import { fromText as parseSentence } from '../../../API/04-sentence/index.ts'
-import type { SectionData } from '../../../types/index.ts'
 // import parseReferences from '../../API/reference/index.ts'
 // import getTemplates from '../../API/template/find/01-nested.ts'
 // import parseTemplates from '../../API/template/parse/index.ts'
@@ -19,21 +18,16 @@ const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/ //eslint-disable-line
 
 //estimates the depth of a section and normalizes its title
 const parseHeading = function (heading: string) {
-  let section: SectionData = {
-    title: '',
-    depth: 0,
-    wiki: '',
-  }
   let [_, prefix, title] = heading.match(heading_reg) || []
   if (!prefix || !title) {
-    return section
+    return { title: '', depth: 0 }
   }
 
   title = parseSentence(title).text()
   //trim leading/trailing whitespace
-  section.title = trim_whitespace(title)
+  title = trim_whitespace(title)
   // count number of == characters to determine depth
-  section.depth = prefix.length - 2
+  let depth = prefix.length - 2
 
   //amazingly, you can see inline {{templates}} in this text, too
   // if (hasTemplate.test(title)) {
@@ -44,7 +38,7 @@ const parseHeading = function (heading: string) {
   // parseReferences(obj)
   // title = obj._wiki
 
-  return section
+  return { title, depth }
 }
 
 export default parseHeading

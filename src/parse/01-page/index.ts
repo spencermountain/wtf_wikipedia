@@ -4,9 +4,8 @@ import parseCategories from './02-categories/index.ts'
 import parseSections from './04-splitSections/index.ts'
 import type { PageData } from '../../types/index.ts'
 
-const parsePage = function (input: string) {
-  let data: PageData = { wikitext: input }
-  let wiki = input
+const parsePage = function (wiki: string) {
+  let data: PageData = { wikitext: wiki, remaining: wiki }
 
   //1. detect if redirect page
   if (isRedirect(wiki)) {
@@ -15,17 +14,17 @@ const parsePage = function (input: string) {
     // (they can have categories)
     let res = parseCategories(wiki)
     data.categories = res.categories
-    wiki = res.wiki
+    data.remaining = res.wiki
     return data
   }
   //2. cleanup wiki text
-  wiki = preProcess(wiki)
+  data.remaining = preProcess(wiki)
   // 3. pluck categories from the bottom
-  let res = parseCategories(wiki)
+  let res = parseCategories(data.remaining)
   data.categories = res.categories
-  wiki = res.wiki
+  data.remaining = res.wiki
   // 4. split by section
-  data.sections = parseSections(wiki)
+  data.sections = parseSections(data.remaining)
   return data
 }
 

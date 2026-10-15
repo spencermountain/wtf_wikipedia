@@ -1,16 +1,16 @@
-import parseTemplates from '../../template/index.ts'
+import parseTemplates from '../../../API/template/index.ts'
 
 //parses out the `Election_box` template - a non-traditional template, for some reason
 //https://en.wikipedia.org/wiki/Template:Election_box
-const parseElection = function (catcher, doc) {
-  catcher.text = catcher.text.replace(/\{\{election box begin(.+?)\{\{election box end\}\}/gis, (tmpl) => {
+const parseElection = function (section) {
+  section.remaining = section.remaining.replace(/\{\{election box begin(.+?)\{\{election box end\}\}/gis, (tmpl) => {
     let data = {
       _wiki: tmpl,
       _templates: [],
     }
 
     //put it through our full template parser..
-    parseTemplates(data, doc)
+    parseTemplates(data)
 
     //okay, pull it apart into something sensible..
     let templates = data._templates.map((t) => t.json())
@@ -20,7 +20,7 @@ const parseElection = function (catcher, doc) {
     let summary = templates.find((t) => t.template === 'election box gain' || t.template === 'election box hold') || {}
 
     if (candidates.length > 0 || summary) {
-      catcher.templates.push({
+      section.templates.push({
         template: 'election box',
         title: start.title,
         candidates: candidates,
@@ -31,6 +31,7 @@ const parseElection = function (catcher, doc) {
     //return empty string to remove the template from the wiki text
     return ''
   })
+  return section
 }
 
 export default parseElection

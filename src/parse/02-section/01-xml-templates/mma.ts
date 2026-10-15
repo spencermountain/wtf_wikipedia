@@ -1,9 +1,9 @@
-import tableParser from '../../table/parse/index.ts'
+import tableParser from '../../../API/table/parse/index.ts'
 let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes']
 
 //https://en.wikipedia.org/wiki/Template:MMA_record_start
-const parseMMA = function (catcher) {
-  catcher.text = catcher.text.replace(/\{\{mma record start.+?\{\{end\}\}/gis, (tmpl) => {
+const parseMMA = function (section) {
+  section.remaining = section.remaining.replace(/\{\{mma record start.+?\{\{end\}\}/gis, (tmpl) => {
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
     tmpl = tmpl.replace(/\{\{end\}\}/i, '')
 
@@ -17,7 +17,7 @@ const parseMMA = function (catcher) {
       return row
     })
 
-    catcher.templates.push({
+    section.templates.push({
       template: 'mma record start',
       data: rows,
     })
@@ -25,5 +25,6 @@ const parseMMA = function (catcher) {
     //return empty string to remove the template from the wiki text
     return ''
   })
+  return section
 }
 export default parseMMA
