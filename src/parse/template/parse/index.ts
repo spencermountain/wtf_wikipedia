@@ -2,12 +2,13 @@ import ignore from './_ignore.ts'
 import { isInfobox, fmtInfobox } from './_infobox.ts'
 import templates from '../custom/index.ts'
 import toJSON from './toJSON/index.ts'
-import { isArray, isObject } from '../../../parse/_lib/helpers.ts'
+import { isArray, isObject } from '../../_lib/helpers.ts'
 
 const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 //this gets all the {{template}} objects and decides how to parse them
-const parseTemplate = function (tmpl, doc) {
+const parseTemplate = function (tmpl) {
+  console.log(tmpl)
   let name = tmpl.name
   // dont bother with some junk templates
   if (ignore.has(name) === true) {
@@ -57,15 +58,7 @@ const parseTemplate = function (tmpl, doc) {
       // let json = toJSON(tmpl.body)
       //(tmpl, list, alias, doc)
       let arr = []
-      let txt = templates[name](tmpl.body, arr, toJSON, null, doc)
-      return [txt, arr[0]]
-    }
-  }
-  //if set, try using the global template fallback parser
-  if (doc && doc._templateFallbackFn) {
-    let arr = []
-    let txt = doc._templateFallbackFn(tmpl.body, arr, toJSON, null, doc)
-    if (txt !== null) {
+      let txt = templates[name](tmpl.body, arr, toJSON, null)
       return [txt, arr[0]]
     }
   }

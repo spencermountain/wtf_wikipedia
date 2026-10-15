@@ -1,5 +1,5 @@
 import parse from '../../parse/toJSON/index.ts'
-import Image from '../../../image/Image.ts'
+import Image from '../../API/image/Image.ts'
 import { getLang, sisterProjects, toNumber } from '../_lib.ts'
 
 export default {

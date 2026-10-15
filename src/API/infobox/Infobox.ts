@@ -5,6 +5,7 @@ import { isArray } from '../../parse/_lib/helpers.ts'
 import Sentence from '../04-sentence/Sentence.ts'
 import latLngs from '../../_data/lat-lngs.ts'
 import dmsCoordinates from './_lib.ts'
+import type { InfoxboxData } from '../../types/index.ts'
 
 const normalize = (str = '') => {
   str = str.toLowerCase()
@@ -14,26 +15,16 @@ const normalize = (str = '') => {
 
 //a formal key-value data table about a topic
 class Infobox {
-  declare _type: string
-  declare domain: string
-  declare data: any
-  declare wiki: string
+  #data: InfoxboxData
+  #wiki: string
 
-  constructor(obj, wiki) {
-    this._type = obj.type
-    this.domain = obj.domain
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: obj.data,
-    })
-    Object.defineProperty(this, 'wiki', {
-      enumerable: false,
-      value: wiki,
-    })
+  constructor(obj: InfoxboxData, wiki: string) {
+    this.#data = obj.data
+    this.#wiki = wiki
   }
 
   type() {
-    return this._type
+    return this.#data.type
   }
 
   template() {
@@ -41,19 +32,19 @@ class Infobox {
   }
 
   links(selector?) {
-    const items = Object.values(this.data).flatMap((sentence: Sentence) => sentence.links())
+    const items = Object.values(this.#data).flatMap((sentence: Sentence) => sentence.links())
     return Collection.from(items).select(selector)
   }
 
   image() {
     const s =
-      this.data.image ||
-      this.data.image2 ||
-      this.data.logo ||
-      this.data.image_skyline ||
-      this.data.image_flag ||
-      this.data.image_file ||
-      this.data['画像']
+      this.#data.image ||
+      this.#data.image2 ||
+      this.#data.logo ||
+      this.#data.image_skyline ||
+      this.#data.image_flag ||
+      this.#data.image_file ||
+      this.#data['画像']
     if (!s) {
       return null
     }
@@ -65,8 +56,8 @@ class Infobox {
     }
     obj.file = file
     obj.text = ''
-    obj.caption = this.data.caption
-    obj.domain = this.domain // add domain information for image
+    obj.caption = this.#data.caption
+    // obj.domain = this.domain // add domain information for image
     return new Image(obj)
   }
 
@@ -77,13 +68,13 @@ class Infobox {
 
   // TODO: Mixed scalar/array lookup results are outside the collection API for now.
   get(keys?) {
-    let allKeys = Object.keys(this.data)
+    let allKeys = Object.keys(this.#data)
     if (typeof keys === 'string') {
       let key = normalize(keys)
       for (let i = 0; i < allKeys.length; i += 1) {
         let tmp = normalize(allKeys[i])
         if (key === tmp) {
-          return this.data[allKeys[i]]
+          return this.#data[allKeys[i]]
         }
       }
       return new Sentence()
@@ -95,7 +86,7 @@ class Infobox {
         for (let i = 0; i < allKeys.length; i += 1) {
           let tmp = normalize(allKeys[i])
           if (k === tmp) {
-            return this.data[allKeys[i]]
+            return this.#data[allKeys[i]]
           }
         }
         return new Sentence()
@@ -114,14 +105,14 @@ class Infobox {
   }
 
   wikitext() {
-    return this.wiki || ''
+    return this.#wiki || ''
   }
 
   keyValue() {
     return Object.fromEntries(
-      Object.keys(this.data)
-        .filter((k) => this.data[k])
-        .map((k) => [k, this.data[k].text()])
+      Object.keys(this.#data)
+        .filter((k) => this.#data[k])
+        .map((k) => [k, this.#data[k].text()])
     )
   }
 

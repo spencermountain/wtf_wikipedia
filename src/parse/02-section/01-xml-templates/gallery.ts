@@ -1,9 +1,10 @@
 import { fromText as parseSentence } from '../../../API/04-sentence/index.ts'
 import Image from '../../../API/image/Image.ts'
+import type { SectionData } from '../../../types/index.ts'
 //okay, <gallery> is a xml-tag, with newline-separated data, somehow pivoted by '|'...
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
 //- not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
-const parseGallery = function (section) {
+const parseGallery = function (section: SectionData) {
   section.remaining = section.remaining.replace(/<gallery([^>]*)>(.+)<\/gallery>/gs, (_, _attrs, inside) => {
     let images = inside.split(/\n/g)
     images = images.filter((str) => str && str.trim() !== '')

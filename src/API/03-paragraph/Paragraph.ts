@@ -1,6 +1,8 @@
 import Collection from '../collection/Collection.js'
 import toJSON from './toJson.ts'
 import setDefaults from '../_lib/setDefaults.ts'
+import type { ParagraphData } from '../../types/index.ts'
+
 const defaults = {
   sentences: true,
   lists: true,
@@ -8,42 +10,23 @@ const defaults = {
 }
 
 class Paragraph {
-  declare data: any
+  #data: ParagraphData
 
-  constructor(data) {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    })
+  constructor(data: ParagraphData) {
+    this.#data = data
   }
 
   sentences(selector?) {
-    return Collection.from(this.data.sentences || []).select(selector)
+    return Collection.from(this.#data.sentences || []).select(selector)
   }
 
   sentence(selector?) {
     return this.sentences(selector)[0] ?? null
   }
 
-  references(selector?) {
-    return Collection.from(this.data.references || []).select(selector)
-  }
-
-  reference(selector?) {
-    return this.references(selector)[0] ?? null
-  }
-
-  citations(clue) {
-    return this.references(clue)
-  }
-
-  citation(selector?) {
-    return this.citations(selector)[0] ?? null
-  }
-
   // TODO: List collections have nested JSON; keep plain arrays for now.
   lists() {
-    return this.data.lists || []
+    return this.#data.lists || []
   }
 
   list(selector?) {
@@ -52,7 +35,7 @@ class Paragraph {
   }
 
   images(selector?) {
-    return Collection.from(this.data.images || []).select(selector)
+    return Collection.from(this.#data.images || []).select(selector)
   }
 
   image(selector?) {

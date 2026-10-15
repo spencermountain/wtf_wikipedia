@@ -5,7 +5,7 @@ import parseSections from './04-splitSections/index.ts'
 import type { PageData } from '../../types/index.ts'
 
 const parsePage = function (wiki: string) {
-  let data: PageData = { wikitext: wiki, remaining: wiki }
+  let data: PageData = { wikitext: wiki, remaining: wiki, sections: [], categories: [] }
 
   //1. detect if redirect page
   if (isRedirect(wiki)) {

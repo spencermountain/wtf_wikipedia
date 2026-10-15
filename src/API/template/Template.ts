@@ -1,36 +1,28 @@
 import { fromText } from '../04-sentence/index.ts'
+import type { TemplateData } from '../../types/index.ts'
 
 class Template {
-  declare data: any
-  declare _text: string
-  declare wiki: string
+  #data: TemplateData
+  #text: string
+  #wiki: string
 
-  constructor(data, text = '', wiki = '') {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    })
-    Object.defineProperty(this, '_text', {
-      enumerable: false,
-      value: text,
-    })
-    Object.defineProperty(this, 'wiki', {
-      enumerable: false,
-      value: wiki,
-    })
+  constructor(data: TemplateData, text = '', wiki = '') {
+    this.#data = data
+    this.#text = text
+    this.#wiki = wiki
   }
 
   text() {
-    let str = this._text || ''
+    let str = this.#text || ''
     return fromText(str).text()
   }
 
   json() {
-    return this.data || {}
+    return this.#data || {}
   }
 
   wikitext() {
-    return this.wiki || ''
+    return this.#wiki || ''
   }
 }
 

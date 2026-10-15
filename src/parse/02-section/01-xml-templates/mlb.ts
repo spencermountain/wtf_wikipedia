@@ -1,4 +1,5 @@
-import tableParser from '../../../API/table/parse/index.ts'
+import tableParser from '../04-tables/parse/index.ts'
+import type { SectionData } from '../../../types/index.ts'
 //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
 
 //this is pretty nuts
@@ -15,7 +16,8 @@ const whichHeadings = function (tmpl) {
   }
   return headings
 }
-const parseMlb = function (section) {
+
+const parseMlb = function (section: SectionData) {
   section.remaining = section.remaining.replace(/\{\{mlb game log /gi, '{{game log ')
   section.remaining = section.remaining.replace(
     /\{\{game log (section|month).+?\{\{game log (section|month) end\}\}/gis,

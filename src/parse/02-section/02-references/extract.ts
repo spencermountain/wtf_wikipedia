@@ -1,10 +1,10 @@
-import parse from '../template/parse/toJSON/index.ts'
-import { fromText as parseSentence } from '../04-sentence/index.ts'
-import Reference from './Reference.ts'
-import getTemplates from '../template/find/02-flat.ts'
+import parse from '../../template/parse/toJSON/index.ts'
+import { fromText as parseSentence } from '../../../API/04-sentence/index.ts'
+import getTemplates from '../../template/find/02-flat.ts'
 
 // Keep the existing limits for plain, self-closing, and attributed references.
-const referencePattern = / ?<ref>(.{0,4000}?)<\/ref> ?| ?<ref [^>]{0,200}?\/> ?| ?<ref [^>]{0,200}>(.{0,1800}?)<\/ref> ?/gis
+const referencePattern =
+  / ?<ref>(.{0,4000}?)<\/ref> ?| ?<ref [^>]{0,200}?\/> ?| ?<ref [^>]{0,200}>(.{0,1800}?)<\/ref> ?/gis
 const namePattern = /\bname\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s/>]+))/i
 const groupPattern = /\bgroup\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s/>]+))/i
 
@@ -20,20 +20,24 @@ const hasCitation = (str) => {
 
 const parseBody = (text, wiki) => {
   // A single ref tag may contain several structured citation templates.
-  const references = getTemplates(text).filter(hasCitation).map((template) => {
-    const data = parse(template)
-    data.type = data.template.replace(/cite /, '')
-    data.template = 'citation'
-    return new Reference(data, wiki)
-  })
+  const references = getTemplates(text)
+    .filter(hasCitation)
+    .map((template) => {
+      const data = parse(template)
+      data.type = data.template.replace(/cite /, '')
+      data.template = 'citation'
+      data.wiki = wiki
+      return data
+    })
   if (references.length === 0) {
     // Without a citation template, retain the body as formatted inline text.
-    references.push(new Reference({
+    references.push({
       template: 'citation',
       type: 'inline',
       data: {},
       inline: parseSentence(text) || {},
-    }, wiki))
+      wiki,
+    })
   }
   return references
 }

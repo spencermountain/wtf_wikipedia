@@ -1,9 +1,10 @@
 import findTemplates from './find/01-nested.ts'
 import parseTemplate from './parse/index.ts'
 import sortOut from './sortOut.ts'
+import type { TemplateData } from '../../../types/index.ts'
 
 // return a flat list of all {{templates}}
-const allTemplates = function (wiki, doc) {
+const allTemplates = function (wiki: string) {
   let list = []
   //nested data-structure of templates
   let nested = findTemplates(wiki)
@@ -15,16 +16,17 @@ const allTemplates = function (wiki, doc) {
       obj.children.forEach((ch) => parseNested(ch, obj))
     }
     //parse template into json, return replacement wikitext
-    let [text, json] = parseTemplate(obj, doc)
+    let [text, json] = parseTemplate(obj)
     obj.wiki = text
     if (json) {
-      list.push({
+      let template: TemplateData = {
         name: obj.name,
         wiki: obj.body,
         nested: Boolean(obj.parent),
         text: text,
         json: json,
-      })
+      }
+      list.push(template)
     }
     //remove the text from every parent
     const removeIt = function (node, body, out) {
@@ -44,27 +46,21 @@ const allTemplates = function (wiki, doc) {
   nested.forEach((node) => {
     wiki = wiki.replace(node.body, node.wiki)
   })
-  return { list: list, wiki: wiki }
+  return { templates: list, remaining: wiki }
 }
 
 //find + parse all templates in the section
-const process = function (section, doc) {
+const process = function (wiki: string) {
   // find+parse them all
-  let { list, wiki } = allTemplates(section._wiki, doc)
+  let { templates, remaining } = allTemplates(wiki)
   // split-out references and infoboxes
-  let domain = doc ? doc._domain : null
-  let { infoboxes, references, templates } = sortOut(list, domain)
-
-  //sort-out the templates we decide to keep
-  section._infoboxes ||= []
-  section._references ||= []
-  section._templates ||= []
-
-  section._infoboxes = section._infoboxes.concat(infoboxes)
-  section._references = section._references.concat(references)
-  section._templates = section._templates.concat(templates)
-
-  section._wiki = wiki
+  const { infoboxes, references, others } = sortOut(templates)
+  return {
+    infoboxes,
+    references,
+    templates: others,
+    remaining,
+  }
 }
 
 export default process

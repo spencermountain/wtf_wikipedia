@@ -1,6 +1,7 @@
 import Collection from '../collection/Collection.js'
 import setDefaults from '../_lib/setDefaults.ts'
 import toJson from './toJson.ts'
+import type { TableData } from '../../types/index.ts'
 const defaults = {}
 
 const normalize = function (key = '') {
@@ -12,41 +13,43 @@ const normalize = function (key = '') {
 }
 
 class Table {
-  declare data: any
-  declare _wiki: string
+  #data: TableData
+  #wiki: string
 
-  constructor(data, wiki = '') {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    })
-    Object.defineProperty(this, '_wiki', {
-      enumerable: false,
-      value: wiki,
-    })
+  constructor(data: TableData, wiki: string = '') {
+    this.#data = data
+    this.#wiki = wiki
+  }
+
+  get data() {
+    return this.#data
+  }
+
+  get _wiki() {
+    return this.#wiki
   }
 
   links(selector?) {
-    const items = this.data.flatMap((row) => Object.keys(row).flatMap((key) => row[key].links()))
+    const items = this.#data.flatMap((row) => Object.keys(row).flatMap((key) => row[key].links()))
     return Collection.from(items).select(selector)
   }
 
   // TODO: Row/column projections remain plain arrays.
   get(keys?) {
     // normalize mappings
-    let have = this.data[0] || {}
+    let have = this.#data[0] || {}
     let mapping = Object.fromEntries(Object.keys(have).map((k) => [normalize(k), k]))
     // string gets a flat-list
     if (typeof keys === 'string') {
       let key = normalize(keys)
       key = mapping[key] || key
-      return this.data.map((row) => {
+      return this.#data.map((row) => {
         return row[key] ? row[key].text() : null
       })
     }
     // array gets obj-list
     keys = keys.map(normalize).map((k) => mapping[k] || k)
-    return this.data.map((row) => {
+    return this.#data.map((row) => {
       return Object.fromEntries(keys.map((k) => [k, row[k] ? row[k].text() : '']))
     })
   }
@@ -71,7 +74,7 @@ class Table {
 
   json(options?) {
     options = setDefaults(options, defaults)
-    return toJson(this.data, options)
+    return toJson(this.#data, options)
   }
 
   text() {

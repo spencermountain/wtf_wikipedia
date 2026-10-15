@@ -1,8 +1,9 @@
-import tableParser from '../../../API/table/parse/index.ts'
+import tableParser from '../04-tables/parse/index.ts'
+import type { SectionData } from '../../../types/index.ts'
 let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes']
 
 //https://en.wikipedia.org/wiki/Template:MMA_record_start
-const parseMMA = function (section) {
+const parseMMA = function (section: SectionData) {
   section.remaining = section.remaining.replace(/\{\{mma record start.+?\{\{end\}\}/gis, (tmpl) => {
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
     tmpl = tmpl.replace(/\{\{end\}\}/i, '')

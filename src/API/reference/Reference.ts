@@ -1,29 +1,24 @@
 import Collection from '../collection/Collection.js'
 import encodeObj from '../_lib/encode.ts'
+import type { ReferenceData } from '../../types/index.ts'
 
 //also called 'citations'
 class Reference {
-  declare data: any
-  declare wiki: string
+  #data: ReferenceData
+  #wiki: string
 
-  constructor(data, wiki) {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    })
-    Object.defineProperty(this, 'wiki', {
-      enumerable: false,
-      value: wiki,
-    })
+  constructor(data: ReferenceData, wiki: string) {
+    this.#data = data
+    this.#wiki = wiki
   }
 
   title() {
-    let data = this.data
+    let data = this.#data
     return data.title || data.encyclopedia || data.author || ''
   }
 
   links(selector?) {
-    const items = this.data.inline?.links() || []
+    const items = this.#data.inline?.links() || []
     return Collection.from(items).select(selector)
   }
 
@@ -32,11 +27,11 @@ class Reference {
   }
 
   wikitext() {
-    return this.wiki || ''
+    return this.#wiki || ''
   }
 
   json(options: any = {}) {
-    let json = this.data || {}
+    let json = this.#data || {}
     //encode them, for mongodb
     if (options.encode === true) {
       json = { ...json }

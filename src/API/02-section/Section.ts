@@ -1,11 +1,6 @@
 import Collection from '../collection/Collection.js'
 import toJSON from './toJson.ts'
 import setDefaults from '../_lib/setDefaults.ts'
-import parseTable from '../table/index.ts'
-import parseParagraphs from '../03-paragraph/index.ts'
-import parseTemplates from '../template/index.ts'
-import parseReferences from '../reference/index.ts'
-// import parseStartEndTemplates from './start-to-end/index.ts'
 import type { SectionData } from '../../types/index.ts'
 
 const defaults = {

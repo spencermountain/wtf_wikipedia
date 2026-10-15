@@ -1,6 +1,6 @@
 import { images } from '../../_data/i18n.ts'
 import Image from './Image.ts'
-import parseTemplate from '../template/parse/toJSON/index.ts'
+import parseTemplate from '../../parse/template/parse/toJSON/index.ts'
 import nested_find from './nested_find.ts'
 //regexes:
 const isFile = new RegExp('(' + images.join('|') + '):', 'i')

@@ -1,3 +1,42 @@
+export interface TemplateData {
+  wiki: string // original wiki text
+  text: string // remaining output text
+  name: string
+  json: object
+  nested?: boolean
+}
+
+export interface InfoboxData extends TemplateData {}
+export interface ReferenceData extends TemplateData {}
+
+export type ImageData = {
+  file: string
+  wiki: string
+  alt?: string
+  caption?: string
+}
+export type ListData = string[]
+
+export type SentenceData = {
+  text: string
+  wiki: string
+  links: object[]
+  fmt: {
+    bold?: string[]
+    italic?: string[]
+  }
+}
+
+export type ParagraphData = {
+  wiki: string
+  remaining: string
+  sentences: SentenceData[]
+  images: ImageData[]
+  lists: ListData[]
+}
+
+export type TableData = string[][]
+
 export interface SectionData {
   title: string
   depth: number
@@ -5,11 +44,11 @@ export interface SectionData {
   index: number
   remaining: string
 
-  templates: any[]
-  tables: any[]
-  infoboxes: any[]
-  references: any[]
-  paragraphs: any[]
+  templates: TemplateData[]
+  infoboxes: InfoboxData[]
+  references: ReferenceData[]
+  tables: TableData[]
+  paragraphs: ParagraphData[]
 }
 
 export interface PageData {
@@ -27,8 +66,8 @@ export interface PageData {
   revisionId?: number
 
   // parsed values
+  sections: SectionData[]
+  categories: string[]
   isRedirect?: boolean
   redirectTo?: string
-  categories?: string[]
-  sections?: SectionData[]
 }

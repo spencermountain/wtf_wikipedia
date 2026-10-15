@@ -1,19 +1,16 @@
 import Collection from '../collection/Collection.js'
 import toJSON from './toJson.ts'
-
+import type { SentenceData } from '../../types/index.ts'
 //where we store the formatting, link, date information
 class Sentence {
-  declare data: any
+  #data: SentenceData
 
-  constructor(data = {}) {
-    Object.defineProperty(this, 'data', {
-      enumerable: false,
-      value: data,
-    })
+  constructor(data: SentenceData) {
+    this.#data = data
   }
 
   links(selector?) {
-    const items = this.data.links || []
+    const items = this.#data.links || []
     return Collection.from(items).select(selector)
   }
 
@@ -22,13 +19,15 @@ class Sentence {
   }
 
   interwiki(selector?) {
-    return this.links().filter(link => link.type() === 'interwiki').select(selector)
+    return this.links()
+      .filter((link) => link.type() === 'interwiki')
+      .select(selector)
   }
 
   // TODO: Formatting values are strings, not model collections.
   bolds() {
-    if (this.data && this.data.fmt && this.data.fmt.bold) {
-      return this.data.fmt.bold || []
+    if (this.#data && this.#data.fmt && this.#data.fmt.bold) {
+      return this.#data.fmt.bold || []
     }
     return []
   }
@@ -43,8 +42,8 @@ class Sentence {
 
   // TODO: Formatting values are strings, not model collections.
   italics() {
-    if (this.data && this.data.fmt && this.data.fmt.italic) {
-      return this.data.fmt.italic || []
+    if (this.#data && this.#data.fmt && this.#data.fmt.italic) {
+      return this.#data.fmt.italic || []
     }
     return []
   }
@@ -60,9 +59,9 @@ class Sentence {
   text(str?) {
     if (str !== undefined && typeof str === 'string') {
       //set the text?
-      this.data.text = str
+      this.#data.text = str
     }
-    return this.data.text || ''
+    return this.#data.text || ''
   }
 
   plaintext(str?) {
@@ -74,11 +73,11 @@ class Sentence {
   }
 
   wikitext() {
-    return this.data.wiki || ''
+    return this.#data.wiki || ''
   }
 
   isEmpty() {
-    return this.data.text === ''
+    return this.#data.text === ''
   }
 }
 

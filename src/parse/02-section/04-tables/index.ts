@@ -1,13 +1,14 @@
 import parseTable from './parse/index.ts'
-import Table from './Table.ts'
+import type { SectionData } from '../../../types/index.ts'
+
 //const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70k chars.
 const openReg = /^\s*\{\|/
 const closeReg = /^\s*\|\}/
 
 //tables can be recursive, so looky-here.
-const findTables = function (section) {
+const findTables = function (section: SectionData) {
   let list = []
-  let wiki = section._wiki
+  let wiki = section.remaining
   let lines = wiki.split('\n')
   let stack = []
   for (let i = 0; i < lines.length; i += 1) {
@@ -37,15 +38,16 @@ const findTables = function (section) {
       wiki = wiki.replace(str, '')
       let data = parseTable(str)
       if (data && data.length > 0) {
-        tables.push(new Table(data, str))
+        tables.push(data)
       }
     }
   })
 
   if (tables.length > 0) {
-    section._tables = tables
+    section.tables = tables
   }
-  section._wiki = wiki
+  section.remaining = wiki
+  return section
 }
 
 export default findTables

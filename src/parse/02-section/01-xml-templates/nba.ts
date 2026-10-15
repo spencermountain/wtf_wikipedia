@@ -1,4 +1,5 @@
-import tableParser from '../../../API/table/parse/index.ts'
+import tableParser from '../04-tables/parse/index.ts'
+import type { SectionData } from '../../../types/index.ts'
 const keys = {
   coach: ['team', 'year', 'g', 'w', 'l', 'w-l%', 'finish', 'pg', 'pw', 'pl', 'pw-l%'],
   player: ['year', 'team', 'gp', 'gs', 'mpg', 'fg%', '3p%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
@@ -6,7 +7,7 @@ const keys = {
 }
 
 //https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
-const parseNBA = function (section) {
+const parseNBA = function (section: SectionData) {
   section.remaining = section.remaining.replace(
     /\{\{nba (coach|player|roster) statistics start(.+?)\{\{s-end\}\}/gis,
     (tmpl, name) => {
