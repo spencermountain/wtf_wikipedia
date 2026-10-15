@@ -1,4 +1,4 @@
-import Block from './src/Block/Block.js'
+import Block from './src/API/Block/Block.js'
 import wtf from './src/index.ts'
 import { readPage } from './tests/_examples/index.js'
 

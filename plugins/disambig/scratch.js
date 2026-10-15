@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import wtf from '../../src/index.js'
+import wtf from '../../src/API/index.js'
 import plg from './src/index.js'
 wtf.extend(plg)
 

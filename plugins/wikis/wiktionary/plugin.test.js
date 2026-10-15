@@ -1,4 +1,4 @@
-import src from '../../../src/index.ts'
+import src from '../../../src/API/index.ts'
 import build from 'wtf_wikipedia'
 const wtf = process.env.TESTENV === 'prod' ? build : src
 import plg from './plugin.js'
