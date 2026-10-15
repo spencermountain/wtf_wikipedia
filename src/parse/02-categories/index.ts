@@ -3,7 +3,7 @@ import { categories as _categories } from '../../_data/i18n.ts'
 const cat_reg = new RegExp('\\[\\[(' + _categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'gi')
 const cat_remove_reg = new RegExp('^\\[\\[:?(' + _categories.join('|') + '):', 'gi')
 
-const parse_categories = function (wiki) {
+const parse_categories = function (wiki: string) {
   const categories = []
   let tmp = wiki.match(cat_reg) //regular links
   if (tmp) {
@@ -17,6 +17,6 @@ const parse_categories = function (wiki) {
     })
   }
   const newWiki = wiki.replace(cat_reg, '')
-  return [categories, newWiki]
+  return { categories, wiki: newWiki }
 }
 export default parse_categories

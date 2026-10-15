@@ -1,4 +1,4 @@
-import setDefaults from '../../_lib/setDefaults.ts'
+import setDefaults from '../_lib/setDefaults.ts'
 
 const defaults = {
   sentences: true,

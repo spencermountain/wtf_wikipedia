@@ -1,5 +1,5 @@
 import Collection from '../collection/Collection.js'
-import setDefaults from '../../_lib/setDefaults.ts'
+import setDefaults from '../_lib/setDefaults.ts'
 const defaults = {}
 
 const toText = (list, options?) => {

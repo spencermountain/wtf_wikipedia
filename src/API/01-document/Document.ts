@@ -4,12 +4,12 @@ import sectionMap from './_sectionMap.ts'
 import toJSON from './toJson.ts'
 import isDisambig from './isDisambig.ts'
 import isStub from './isStub.ts'
-import setDefaults from '../../_lib/setDefaults.ts'
+import setDefaults from '../_lib/setDefaults.ts'
 import Image from '../image/Image.ts'
-import { isRedirect, parse } from './redirects.ts'
-import preProcess from './preProcess/index.ts'
+// import { isRedirect, parse } from '../../parse/00-isRedirect/redirects.ts'
+// import preProcess from './preProcess/index.ts'
 import parseSection from '../02-section/index.ts'
-import parseCategories from './categories.ts'
+// import parseCategories from './categories.ts'
 
 const defaults = {
   tables: true,
@@ -18,29 +18,13 @@ const defaults = {
 }
 
 class Document {
-  declare _options: any
-  declare _title: string | null
-  declare _type: string
-  declare _userAgent: string
-  declare _redirectTo: any
-  declare _wiki: string
-  declare _categories: string[]
-  declare _sections: any[]
-  declare _coordinates: any[]
-  declare _templateFallbackFn: Function | null
-  declare _revisionID: number | null
-  declare _timestamp: string | null
-  declare _description: string | null
-  declare _wikidata: string | null
-  declare _pageImage: string | null
-  declare _pageID: number | null
-  declare _namespace: string | number | null
-  declare _lang: string | null
-  declare _domain: string | null
+  #data: any
+  #options: any
 
-  constructor(wiki, options) {
+  constructor(data, options) {
     options ||= {}
-    this._options = options
+    this.#options = options
+    this.#data = data
     let userAgent = options.userAgent || options['User-Agent'] || options['Api-User-Agent']
     userAgent ||= 'User of the wtf_wikipedia library'
     let props = {
@@ -48,7 +32,7 @@ class Document {
       type: 'page',
       userAgent,
       redirectTo: null,
-      wiki: wiki || '',
+      wiki: data.wiki || '',
       categories: [],
       sections: [],
       coordinates: [],
@@ -63,35 +47,6 @@ class Document {
       lang: options.lang || options.language || null,
       domain: options.domain || null,
     }
-
-    Object.keys(props).forEach((k) => {
-      Object.defineProperty(this, '_' + k, {
-        enumerable: false,
-        writable: true,
-        value: props[k],
-      })
-    })
-
-    //detect if page is just redirect, and return it
-    if (isRedirect(this._wiki) === true) {
-      this._type = 'redirect'
-      this._redirectTo = parse(this._wiki)
-      const [categories, newWiki] = parseCategories(this._wiki)
-      this._categories = categories
-      this._wiki = newWiki
-      return
-    }
-
-    //give ourselves a little head-start
-    this._wiki = preProcess(this._wiki)
-
-    //pull-out [[category:whatevers]]
-    const [categories, newWiki] = parseCategories(this._wiki)
-    this._categories = categories
-    this._wiki = newWiki
-
-    //parse all the headings, and their texts/sentences
-    this._sections = parseSection(this)
   }
 
   // if no title is set, guess it from a bolded phrase in the first sentence
@@ -188,7 +143,7 @@ class Document {
   }
 
   sections(clue?) {
-    let arr = this._sections || []
+    let arr = this.#data.sections || []
     arr.forEach((sec) => {
       // link-up parent and child
       sec._doc = this

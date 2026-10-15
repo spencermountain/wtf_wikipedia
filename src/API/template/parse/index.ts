@@ -2,7 +2,7 @@ import ignore from './_ignore.ts'
 import { isInfobox, fmtInfobox } from './_infobox.ts'
 import templates from '../custom/index.ts'
 import toJSON from './toJSON/index.ts'
-import { isArray, isObject } from '../../../_lib/helpers.ts'
+import { isArray, isObject } from '../../../parse/_lib/helpers.ts'
 
 const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 

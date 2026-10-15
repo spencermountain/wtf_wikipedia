@@ -1,4 +1,4 @@
-import encodeObj from '../../_lib/encode.ts'
+import encodeObj from '../_lib/encode.ts'
 //
 const toJson = function (tables, options) {
   return tables.map((table) => {

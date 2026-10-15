@@ -1,6 +1,6 @@
 import Collection from '../collection/Collection.js'
 import toJSON from './toJson.ts'
-import setDefaults from '../../_lib/setDefaults.ts'
+import setDefaults from '../_lib/setDefaults.ts'
 const defaults = {
   sentences: true,
   lists: true,

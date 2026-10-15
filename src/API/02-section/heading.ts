@@ -1,4 +1,4 @@
-import { trim_whitespace } from '../../_lib/helpers.ts'
+import { trim_whitespace } from '../../parse/_lib/helpers.ts'
 import { fromText as parseSentence } from '../04-sentence/index.ts'
 import parseReferences from '../reference/index.ts'
 import getTemplates from '../template/find/01-nested.ts'

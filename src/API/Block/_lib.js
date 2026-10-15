@@ -1,6 +1,6 @@
 import parseLinks from '../link/index.ts'
 import parseFormatting from '../04-sentence/formatting.ts'
-import postprocess from '../../_lib/postprocess.ts'
+import postprocess from '../_lib/postprocess.ts'
 
 // Match the existing inline pipeline, without sentence splitting.
 const parse = (wiki) => {

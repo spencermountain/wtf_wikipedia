@@ -1,5 +1,5 @@
-import setDefaults from '../../_lib/setDefaults.ts'
-import encodeObj from '../../_lib/encode.ts'
+import setDefaults from '../_lib/setDefaults.ts'
+import encodeObj from '../_lib/encode.ts'
 
 const defaults = {
   headers: true,

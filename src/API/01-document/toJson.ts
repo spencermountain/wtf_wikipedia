@@ -1,4 +1,4 @@
-import setDefaults from '../../_lib/setDefaults.ts'
+import setDefaults from '../_lib/setDefaults.ts'
 
 // handy preset outputs, like `.json('md')`
 const sizes = {

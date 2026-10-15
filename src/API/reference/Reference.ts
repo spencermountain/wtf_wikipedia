@@ -1,5 +1,5 @@
 import Collection from '../collection/Collection.js'
-import encodeObj from '../../_lib/encode.ts'
+import encodeObj from '../_lib/encode.ts'
 
 //also called 'citations'
 class Reference {

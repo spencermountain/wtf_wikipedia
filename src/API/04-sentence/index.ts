@@ -1,4 +1,4 @@
-import postprocess from '../../_lib/postprocess.ts'
+import postprocess from '../_lib/postprocess.ts'
 import parseLinks from '../link/index.ts'
 import parseFmt from './formatting.ts'
 import Sentence from './Sentence.ts'

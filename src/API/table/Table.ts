@@ -1,5 +1,5 @@
 import Collection from '../collection/Collection.js'
-import setDefaults from '../../_lib/setDefaults.ts'
+import setDefaults from '../_lib/setDefaults.ts'
 import toJson from './toJson.ts'
 const defaults = {}
 
