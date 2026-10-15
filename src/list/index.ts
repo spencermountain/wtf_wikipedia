@@ -60,7 +60,7 @@ const parseList = function (paragraph) {
       theRest.push(lines[i])
     }
   }
-  paragraph.lists = lists.map((l) => new List(l, wiki))
+  paragraph.lists = lists.map((list) => new List(list, wiki))
   paragraph.wiki = theRest.join('\n')
 }
 export default parseList

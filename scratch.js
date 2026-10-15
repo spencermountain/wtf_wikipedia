@@ -1,21 +1,29 @@
 import Block from './src/Block/Block.js'
 import wtf from './src/index.ts'
+import { readPage } from './tests/_examples/index.js'
 
 // Ordinary templates are expanded; reference tags stay until Block parses them.
 const block = new Block(
   `Visit '''[[New York City|New York]]'''.<ref name="guide">{{cite book|title=City Guide|author=Jane Smith}}</ref>
-Then visit [[New York (state)|New York]] &amp; ''[[Boston]]''.<ref>A second source. With its own sentences.</ref>
+Then visit [[new york (state)|New York]] &amp; ''[[Boston]]''.<ref>A second source. With its own sentences.</ref>
 Return to New York.<ref name="guide"/>`
 )
 
-// console.log(block.text())
-// console.dir(block.json(), { depth: null })
-// // Sentence blocks retain links and formatting, but no citations.
-// console.dir(
-//   block.sentences().map((sentence) => sentence.json()),
-//   { depth: null }
-// )
-// console.log('Original block citations:', block.citations().length)
+// const str = readPage('Radiohead')
+const str = `===Albums listed chronologically===
+*''[[The Techno Rose of Blighty]]'' (1991, Creation Records)
+*''[[Out (In Essence)]]'' (1991, Circa/Virgin)
+*''[[Six Wheels on My Wagon]]'' (1993, Circa)
+*''[[The Peel Sessions (Fluke album)|The Peel Sessions]]'' (1994, Strange Fruit)
+*''[[Oto (album)|Oto]]'' (1995, Circa)
+*''[[Risotto (album)|Risotto]]'' (1997, Circa/Virgin/Astralwerks)
+*''Xmas Demos'' (2000, Virgin)
+*''[[Progressive History X]]'' (2001, Circa)
+*''Progressive History XXX'' (2002, Circa)
+*''[[Puppy (Fluke album)|Puppy]]'' (2003, One Little Indian)
+*''The Second Bite'' (2026, Surface Records)
+`
+const doc = wtf(str)
 
-const doc = wtf('')
-console.log(doc.sections())
+console.log(doc.list().lines())
+// console.log(block.links())
