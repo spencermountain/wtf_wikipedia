@@ -146,7 +146,7 @@ class Document {
     let arr = sectionMap(this, 'images', null)
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
-      let img = info.image()
+      let img = info.image
       if (img) {
         arr.unshift(img) //put it at the top
       }

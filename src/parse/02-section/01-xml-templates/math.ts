@@ -5,7 +5,7 @@ import type { SectionData } from '../../../types/index.ts'
 const parseMath = function (section: SectionData) {
   section.remaining = section.remaining.replace(/<math([^>]*)>(.*?)<\/math>/gs, (_, attrs, inside) => {
     //clean it up a little?
-    let formula = parseSentence(inside).text()
+    let formula = parseSentence(inside).text
     section.templates.push({
       template: 'math',
       formula: formula,

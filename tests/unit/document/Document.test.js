@@ -13,14 +13,14 @@ test('Tile - get - first sentence', (t) => {
 test('Tile - get - no bold in sentence ', (t) => {
   const str = 'no bold in first sentence'
   const doc = wtf(str)
-  t.equal(doc.title(), null, 'the title equals null')
+  t.equal(doc.title, null, 'the title equals null')
   t.end()
 })
 
 test('Tile - get - return null if there are no sentences', (t) => {
   const str = ''
   const doc = wtf(str)
-  t.equal(doc.title(), null, 'the title equals null')
+  t.equal(doc.title, null, 'the title equals null')
   t.end()
 })
 
@@ -28,7 +28,7 @@ test('Tile - get / set - if the title is already set than get it from internal o
   const str = 'no bold in first sentence'
   const doc = wtf(str)
   doc.title('some title')
-  t.equal(doc.title(), 'some title', 'the title equals the set title')
+  t.equal(doc.title, 'some title', 'the title equals the set title')
   t.end()
 })
 

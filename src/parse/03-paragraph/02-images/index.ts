@@ -58,11 +58,11 @@ const parseImgString = function (img: string) {
     let arr = imgData.list || []
     //parse-out alt text, if explicitly given
     if (imgData.alt) {
-      obj.alt = imgData.alt.text()
+      obj.alt = imgData.alt.text
     }
     // Layout and size options may follow the caption.
-    arr = arr.filter((str) => {
-      let text = str.text().trim()
+    arr = arr.filter((item) => {
+      let text = item.text.trim()
       return !Object.hasOwn(imgLayouts, text) && !/^(?:\d+(?:x\d+)?|x\d+)px$/.test(text)
     })
     if (arr.at(-1)) {

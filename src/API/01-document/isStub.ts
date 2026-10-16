@@ -3,8 +3,7 @@ let allStubs = new Set(stubs)
 
 const isStub = function (doc) {
   // check for a {{disambig}} template
-  let templates = doc.templates().map((tmpl) => tmpl.json())
-
+  let templates = doc.templates().map((tmpl) => tmpl)
   return templates.some((t) => {
     let name = t.template || ''
     // try i18n templates like 'stubo'

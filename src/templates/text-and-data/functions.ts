@@ -71,9 +71,9 @@ let templates = {
   },
 
   // https://en.wikipedia.org/wiki/Template:Title_year
-  'title year': (tmpl, _list, _alias, _parse, doc) => {
+  'title year': (tmpl, _list, _alias, _parse, info) => {
     let obj = parse(tmpl, ['match', 'nomatch', 'page'])
-    let title = obj.page || doc.title()
+    let title = obj.page || info?.title
     if (title) {
       let m = title.match(/\b[0-9]{4}\b/) //parse the year out of the title's name
       if (m) {
@@ -84,9 +84,9 @@ let templates = {
   },
 
   // https://en.wikipedia.org/wiki/Template:Title_century
-  'title century': (tmpl, _list, _alias, _parse, doc) => {
+  'title century': (tmpl, _list, _alias, _parse, info?) => {
     let obj = parse(tmpl, ['match', 'nomatch', 'page'])
-    let title = obj.page || doc.title()
+    let title = obj.page || info?.title
     if (title) {
       let m = title.match(/\b([0-9]+)(st|nd|rd|th)\b/) //parse the century out of the title's name
       if (m) {
@@ -97,9 +97,9 @@ let templates = {
   },
 
   // https://en.wikipedia.org/wiki/Template:Title_decade
-  'title decade': (tmpl, _list, _alias, _parse, doc) => {
+  'title decade': (tmpl, _list, _alias, _parse, info?) => {
     let obj = parse(tmpl, ['match', 'nomatch', 'page'])
-    let title = obj.page || doc.title()
+    let title = obj.page || info?.title
     if (title) {
       let m = title.match(/\b([0-9]+)s\b/) //parse the decade out of the title's name
       if (m) {

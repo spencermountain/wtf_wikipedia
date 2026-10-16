@@ -19,7 +19,7 @@ const headings = {
 
 //additional table-cruft to remove before parseLine method
 const cleanText = function (str) {
-  str = parseSentence(str).text()
+  str = parseSentence(str).text
   //anything before a single-pipe is styling, so remove it
   if (str.match(/\|/)) {
     str = str.replace(/^.*?\| ?/m, '') //class="unsortable"|title
@@ -94,7 +94,7 @@ const parseRow = function (arr, headers) {
   arr.forEach((str, i) => {
     let h = headers[i] || 'col' + (i + 1)
     let s = parseSentence(str)
-    s.text(cleanText(s.text()))
+    s.text = cleanText(s.text)
     row[h] = s
   })
   return row
@@ -108,7 +108,7 @@ const firstRowHeader = function (rows) {
   let headers = rows[0].slice(0)
   headers = headers.map((h) => {
     h = h.replace(/^! */, '')
-    h = parseSentence(h).text()
+    h = parseSentence(h).text
     h = cleanText(h)
     h = h.toLowerCase()
     return h
