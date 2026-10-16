@@ -3,7 +3,7 @@ import makeUrl from './makeUrl.ts'
 import getResult from './getResult.ts'
 import parseDoc from './parseDoc.ts'
 import makeHeaders from './_headers.ts'
-import { isArray } from '../../parse/_lib/helpers.ts'
+import { isArray } from '../../_lib/helpers.ts'
 const isUrl = /^https?:\/\//
 
 //the mediawiki api only allows 50 titles or pageids per request

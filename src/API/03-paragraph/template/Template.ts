@@ -1,4 +1,3 @@
-import fromText from '../../../parse/sentences/index.ts'
 import type { TemplateData } from '../../../types/index.ts'
 
 class Template {
@@ -13,8 +12,7 @@ class Template {
   }
 
   text() {
-    let str = this.#text || ''
-    return fromText(str).text
+    return this.#text || ''
   }
 
   json() {

@@ -1,4 +1,4 @@
-import { trim_whitespace } from '../../_lib/helpers.ts'
+import { trim_whitespace } from '../../../_lib/helpers.ts'
 import parseSentence from '../../sentences/index.ts'
 const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/ //eslint-disable-line
 // Commit to the first opening delimiter on each line before looking for its end.

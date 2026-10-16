@@ -1,4 +1,4 @@
-import { images } from '../../../_data/i18n.ts'
+import { images } from '../../../_data/i18n/index.ts'
 
 const namespace = new RegExp(`^(?:${images.join('|')}):`, 'i')
 

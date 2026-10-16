@@ -10,6 +10,5 @@ import List from './03-paragraph/list/List.ts'
 import Reference from './03-paragraph/reference/Reference.ts'
 import Table from './03-paragraph/table/Table.ts'
 import Template from './03-paragraph/template/Template.ts'
-import infoboxes from '../parse/templates/parse/_infoboxes.ts'
 
-export { Document, Section, Paragraph, Sentence, Image, Infobox, Link, List, Reference, Table, Template, infoboxes }
+export { Document, Section, Paragraph, Sentence, Image, Infobox, Link, List, Reference, Table, Template }

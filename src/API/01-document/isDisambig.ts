@@ -1,4 +1,4 @@
-import { disambig_titles, disambig_templates } from '../../_data/i18n.ts'
+import { disambig_titles, disambig_templates } from '../../_data/i18n/index.ts'
 import alt_disambig from './_disambig.ts'
 const mayAlsoReg = /. may (also )?refer to\b/i
 

@@ -1,7 +1,8 @@
-import { images } from '../../../_data/i18n.ts'
+import { images } from '../../../_data/i18n/index.ts'
 import parseTemplate from '../../templates/parse/toJSON/index.ts'
 import nested_find from './nested_find.ts'
 import type { ParagraphData, ImageData } from '../../../types/index.ts'
+import normalizeFile from './normalize.ts'
 //regexes:
 const isFile = new RegExp('(' + images.join('|') + '):', 'i')
 let fileNames = `(${images.join('|')})`
@@ -40,6 +41,9 @@ const parseImgString = function (img: string) {
   }
   let file = `${m[1]}:${m[2] || ''}`
   if (file) {
+    // clean up the file name a bit
+    file = normalizeFile(file)
+
     let obj: ImageData = {
       file: file,
       wiki: img,

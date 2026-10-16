@@ -1,5 +1,5 @@
-import infoboxList from './_infoboxes.ts'
-import { infoboxes } from '../../../_data/i18n.ts'
+import infoboxList from '../../../_data/infoboxes.ts'
+import { infoboxes } from '../../../_data/i18n/index.ts'
 const i18nReg = new RegExp('^(subst.)?(' + infoboxes.join('|') + ')(?=:| |\n|$)', 'i')
 infoboxes.forEach((name) => {
   infoboxList[name] = true

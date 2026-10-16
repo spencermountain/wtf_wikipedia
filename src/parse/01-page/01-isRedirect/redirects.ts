@@ -1,4 +1,4 @@
-import { redirects } from '../../../_data/i18n.ts'
+import { redirects } from '../../../_data/i18n/index.ts'
 import parseLink from '../../sentences/links/parse.ts'
 
 //pulls target link out of redirect page

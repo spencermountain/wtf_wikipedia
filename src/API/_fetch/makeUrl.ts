@@ -1,4 +1,4 @@
-import { isArray } from '../../parse/_lib/helpers.ts'
+import { isArray } from '../../_lib/helpers.ts'
 
 const isInterWiki =
   /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/

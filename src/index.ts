@@ -2,6 +2,9 @@ import fetch from './API/_fetch/index.ts'
 import version from './_version.ts'
 import http from './API/_lib/fetch.ts'
 import parse from './parse/index.ts'
+import templates from './templates/index.ts'
+import infoboxes from './_data/infoboxes.ts'
+
 import type { DocInfo } from './types/index.ts'
 import {
   Document,
@@ -15,7 +18,6 @@ import {
   Reference,
   Table,
   Template,
-  infoboxes,
 } from './API/index.ts'
 
 //the main 'factory' exported method

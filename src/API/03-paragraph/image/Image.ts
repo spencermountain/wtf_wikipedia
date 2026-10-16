@@ -1,5 +1,4 @@
 import toJson from './toJson.ts'
-import normalizeFile from '../../../parse/03-paragraph/02-images/_lib.ts'
 import type { ImageData } from '../../../types/index.ts'
 const server = 'wikipedia.org'
 
@@ -28,7 +27,7 @@ class Image {
   }
 
   file() {
-    let file = normalizeFile(this.#data.file || '')
+    let file = this.#data.file || ''
     if (file) {
       const regFile = /^(image|file):/i
       if (!regFile.test(file)) {
