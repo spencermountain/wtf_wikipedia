@@ -256,12 +256,6 @@ importers:
         specifier: workspace:*
         version: link:../..
 
-  plugins/image:
-    devDependencies:
-      wtf_wikipedia:
-        specifier: workspace:*
-        version: link:../..
-
   plugins/latex:
     devDependencies:
       wtf_wikipedia:
@@ -298,12 +292,6 @@ importers:
       compromise:
         specifier: 14.15.1
         version: 14.15.1
-    devDependencies:
-      wtf_wikipedia:
-        specifier: workspace:*
-        version: link:../..
-
-  plugins/wikitext:
     devDependencies:
       wtf_wikipedia:
         specifier: workspace:*

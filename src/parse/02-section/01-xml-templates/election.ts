@@ -1,4 +1,4 @@
-import parseTemplates from '../../template/index.ts'
+import parseTemplates from '../../templates/index.ts'
 import type { SectionData } from '../../../types/index.ts'
 
 //parses out the `Election_box` template - a non-traditional template, for some reason

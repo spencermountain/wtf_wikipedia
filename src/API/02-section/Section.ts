@@ -1,4 +1,3 @@
-import Collection from '../collection/Collection.js'
 import toJSON from './toJson.ts'
 import setDefaults from '../_lib/setDefaults.ts'
 import Paragraph from '../03-paragraph/Paragraph.ts'
@@ -39,16 +38,16 @@ class Section {
     return this.#data.depth || 0
   }
 
-  sentences(selector?) {
-    return Collection.from(this.paragraphs().flatMap((p) => p.sentences())).select(selector)
+  sentences() {
+    return this.paragraphs().flatMap((p) => p.sentences())
   }
 
-  paragraphs(selector?) {
+  paragraphs() {
     const arr = this.#data.paragraphs || []
     return arr.map((p) => new Paragraph(p))
   }
 
-  links(clue?) {
+  links() {
     let arr = []
 
     this.infoboxes().forEach((templ) => {
@@ -69,24 +68,24 @@ class Section {
 
     arr = arr.flat().filter((val) => val !== undefined) //filter out all the undefined from the flattened empty arrays
 
-    return Collection.from(arr).select(clue)
+    return arr
   }
 
   // TODO: Table collections have nested JSON; keep plain arrays for now.
-  tables(_clue?) {
+  tables() {
     return this.#data.tables || []
   }
 
-  templates(selector?) {
-    return Collection.from(this.#data.templates || []).select(selector)
+  templates() {
+    return this.#data.templates || []
   }
 
-  infoboxes(selector?) {
-    return Collection.from(this.#data.infoboxes || []).select(selector)
+  infoboxes() {
+    return this.#data.infoboxes || []
   }
 
   // TODO: Coordinates are plain data, not model collections.
-  coordinates(_clue?) {
+  coordinates() {
     let arr = [...this.templates('coord'), ...this.templates('coor')]
     let list = arr.map((tmpl) => tmpl.json())
     //try to get coord from infoboxes
@@ -99,21 +98,21 @@ class Section {
   }
 
   // TODO: List collections have nested JSON; keep plain arrays for now.
-  lists(_clue?) {
+  lists() {
     let arr = this.paragraphs().flatMap((p) => p.lists())
     return arr
   }
 
-  interwiki(selector?) {
-    return Collection.from(this.paragraphs().flatMap((p) => p.interwiki())).select(selector)
+  interwiki() {
+    return this.paragraphs().flatMap((p) => p.interwiki())
   }
 
-  images(selector?) {
-    return Collection.from(this.paragraphs().flatMap((p) => p.images())).select(selector)
+  images() {
+    return this.paragraphs().flatMap((p) => p.images())
   }
 
-  references(selector?) {
-    return Collection.from(this.#data.references || []).select(selector)
+  references() {
+    return this.#data.references || []
   }
 
   //outputs
@@ -136,43 +135,8 @@ class Section {
   indentation() {
     return this.depth()
   }
-  citations(clue?) {
-    return this.references(clue)
-  }
-
-  // singular aliases
-  sentence(selector?) {
-    return this.sentences(selector)[0] ?? null
-  }
-  paragraph(selector?) {
-    return this.paragraphs(selector)[0] ?? null
-  }
-  link(selector?) {
-    return this.links(selector)[0] ?? null
-  }
-  table(clue?) {
-    return getNth(this.tables(clue), clue)
-  }
-  template(selector?) {
-    return this.templates(selector)[0] ?? null
-  }
-  infobox(selector?) {
-    return this.infoboxes(selector)[0] ?? null
-  }
-  coordinate(clue?) {
-    return getNth(this.coordinates(clue), clue)
-  }
-  list(clue?) {
-    return getNth(this.lists(clue), clue)
-  }
-  image(selector?) {
-    return this.images(selector)[0] ?? null
-  }
-  reference(selector?) {
-    return this.references(selector)[0] ?? null
-  }
-  citation(selector?) {
-    return this.citations(selector)[0] ?? null
+  citations() {
+    return this.references()
   }
 }
 export default Section

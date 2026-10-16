@@ -1,4 +1,3 @@
-import Collection from '../collection/Collection.js'
 import toJSON from './toJson.ts'
 import Sentence from '../04-sentence/Sentence.ts'
 import List from '../list/List.ts'
@@ -18,13 +17,9 @@ class Paragraph {
     this.#data = data
   }
 
-  sentences(selector?) {
+  sentences() {
     const arr = this.#data.sentences || []
     return arr.map((s) => new Sentence(s))
-  }
-
-  sentence(selector?) {
-    return this.sentences(selector)[0] ?? null
   }
 
   // TODO: List collections have nested JSON; keep plain arrays for now.
@@ -33,31 +28,18 @@ class Paragraph {
     return arr.map((l) => new List(l))
   }
 
-  list(selector?) {
-    const items = this.lists()
-    return items[selector ?? 0] ?? null
+  images() {
+    return this.#data.images || []
   }
 
-  images(selector?) {
-    return Collection.from(this.#data.images || []).select(selector)
-  }
-
-  image(selector?) {
-    return this.images(selector)[0] ?? null
-  }
-
-  links(selector?) {
+  links() {
     const items = this.sentences().flatMap((s) => s.links())
-    return Collection.from(items).select(selector)
+    return items[0] ?? null
   }
 
-  link(selector?) {
-    return this.links(selector)[0] ?? null
-  }
-
-  interwiki(selector?) {
+  interwiki() {
     const items = this.sentences().flatMap((s) => s.interwiki())
-    return Collection.from(items).select(selector)
+    return items[0] ?? null
   }
 
   text(options?) {
@@ -71,13 +53,12 @@ class Paragraph {
     return str
   }
 
-  json(options?) {
-    options = setDefaults(options, defaults)
-    return toJSON(this, options)
+  json() {
+    return toJSON(this, {})
   }
 
   wikitext() {
-    return this.data.wiki
+    return this.#data.wiki
   }
 }
 

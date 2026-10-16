@@ -20,5 +20,5 @@ oka cool this [[works]]
 `
 const doc = wtf(str)
 
-console.log(doc.paragraphs().json())
+console.log(doc.sections()[0].json())
 // console.log(block.links())

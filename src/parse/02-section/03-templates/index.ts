@@ -1,4 +1,4 @@
-import parse from '../../template/index.ts'
+import parse from '../../templates/index.ts'
 import type { SectionData } from '../../../types/index.ts'
 
 // simple wrapper around the template parser

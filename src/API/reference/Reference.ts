@@ -1,4 +1,3 @@
-import Collection from '../collection/Collection.js'
 import encodeObj from '../_lib/encode.ts'
 import type { ReferenceData } from '../../types/index.ts'
 
@@ -17,9 +16,9 @@ class Reference {
     return data.title || data.encyclopedia || data.author || ''
   }
 
-  links(selector?) {
+  links() {
     const items = this.#data.inline?.links() || []
-    return Collection.from(items).select(selector)
+    return items
   }
 
   text() {

@@ -1,5 +1,5 @@
 import { images } from '../../../_data/i18n.ts'
-import parseTemplate from '../../template/parse/toJSON/index.ts'
+import parseTemplate from '../../templates/parse/toJSON/index.ts'
 import nested_find from './nested_find.ts'
 import type { ParagraphData, ImageData } from '../../../types/index.ts'
 //regexes:

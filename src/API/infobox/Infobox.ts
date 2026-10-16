@@ -1,4 +1,3 @@
-import Collection from '../collection/Collection.js'
 import toJson from './toJson.ts'
 import Image from '../image/Image.ts'
 import { isArray } from '../../parse/_lib/helpers.ts'
@@ -18,8 +17,8 @@ class Infobox {
   #data: InfoboxData
   #wiki: string
 
-  constructor(obj: InfoboxData, wiki: string) {
-    this.#data = obj.data
+  constructor(data: InfoboxData, wiki: string) {
+    this.#data = data
     this.#wiki = wiki
   }
 
@@ -31,9 +30,8 @@ class Infobox {
     return this.type()
   }
 
-  links(selector?) {
-    const items = Object.values(this.#data).flatMap((sentence: Sentence) => sentence.links())
-    return Collection.from(items).select(selector)
+  links() {
+    return Object.values(this.#data).flatMap((sentence: Sentence) => sentence.links())
   }
 
   image() {

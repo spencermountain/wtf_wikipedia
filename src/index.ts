@@ -1,4 +1,4 @@
-import fetch from './_fetch/index.ts'
+import fetch from './API/_fetch/index.ts'
 import version from './_version.ts'
 import http from './API/_lib/fetch.ts'
 import parse from './parse/index.ts'

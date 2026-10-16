@@ -1,10 +1,9 @@
-import Collection from '../collection/Collection.js'
 import toJson from './toJson.ts'
 import normalizeFile from '../../parse/03-paragraph/02-images/_lib.ts'
 import type { ImageData } from '../../types/index.ts'
 const server = 'wikipedia.org'
 
-const encodeTitle = function (file) {
+const encodeTitle = function (file: string) {
   let title = file.replace(/^(image|file?):/i, '')
   //titlecase it
   title = title.charAt(0).toUpperCase() + title.substring(1)
@@ -14,7 +13,7 @@ const encodeTitle = function (file) {
 }
 
 //the wikimedia image url is a little silly:
-const makeSrc = function (file) {
+const makeSrc = function (file: string) {
   let title = encodeTitle(file)
   title = encodeURIComponent(title)
   return title
@@ -59,9 +58,8 @@ class Image {
     return ''
   }
 
-  links(selector?) {
-    const items = this.#data.caption?.links() || []
-    return Collection.from(items).select(selector)
+  links() {
+    return this.#data.caption?.links() || []
   }
 
   url() {
@@ -76,13 +74,8 @@ class Image {
     return this.url()
   }
 
-  thumbnail(size?) {
-    size ||= 300
+  thumbnail(size: number = 300) {
     return this.url() + '?width=' + size
-  }
-
-  thumb(size?) {
-    return this.thumbnail(size)
   }
 
   format() {

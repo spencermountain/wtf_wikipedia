@@ -1,8 +1,5 @@
-import Collection from '../collection/Collection.js'
-import setDefaults from '../_lib/setDefaults.ts'
 import toJson from './toJson.ts'
 import type { TableData } from '../../types/index.ts'
-const defaults = {}
 
 const normalize = function (key = '') {
   key = key.toLowerCase()
@@ -29,9 +26,9 @@ class Table {
     return this.#wiki
   }
 
-  links(selector?) {
+  links() {
     const items = this.#data.flatMap((row) => Object.keys(row).flatMap((key) => row[key].links()))
-    return Collection.from(items).select(selector)
+    return items
   }
 
   // TODO: Row/column projections remain plain arrays.
@@ -54,8 +51,8 @@ class Table {
     })
   }
 
-  keyValue(options?) {
-    let rows = this.json(options)
+  keyValue() {
+    let rows = this.json()
     rows.forEach((row) => {
       Object.keys(row).forEach((k) => {
         row[k] = row[k].text
@@ -64,17 +61,8 @@ class Table {
     return rows
   }
 
-  keyvalue(options?) {
-    return this.keyValue(options)
-  }
-
-  keyval(options?) {
-    return this.keyValue(options)
-  }
-
-  json(options?) {
-    options = setDefaults(options, defaults)
-    return toJson(this.#data, options)
+  json() {
+    return toJson(this.#data, {})
   }
 
   text() {

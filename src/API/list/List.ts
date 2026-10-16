@@ -1,7 +1,4 @@
-import Collection from '../collection/Collection.js'
-import setDefaults from '../_lib/setDefaults.ts'
 import type { ListData } from '../../types/index.ts'
-const defaults = {}
 
 const toText = (list, options?) => {
   return list
@@ -21,19 +18,16 @@ class List {
     this.#wiki = wiki
   }
 
-  lines(selector?) {
-    return Collection.from(this.#data.items).select(selector)
-  }
-
-  links(selector?) {
-    const items = this.lines().flatMap((s) => s.links())
-    return Collection.from(items).select(selector)
-  }
-
-  json(options?) {
+  lines() {
     return this.#data.items
-    // options = setDefaults(options, defaults)
-    // return this.lines().map((s) => s.json(options))
+  }
+
+  links() {
+    return this.lines().flatMap((s) => s.links())
+  }
+
+  json() {
+    return this.#data.items
   }
 
   text() {

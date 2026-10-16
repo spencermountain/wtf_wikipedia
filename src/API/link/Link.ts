@@ -12,10 +12,7 @@ class Link {
     this.#data = { ...defaults, ...data }
   }
 
-  text(str?) {
-    if (str !== undefined) {
-      this.#data.text = str
-    }
+  text() {
     let txt = this.#data.text || this.#data.page || ''
     // remove bold/italics
     txt = txt.replace(/'{2,}/g, '')
@@ -44,42 +41,27 @@ class Link {
   }
 
   wikitext() {
-    let txt = this.#data.raw || ''
+    let txt = this.#data.wiki || ''
     return txt
   }
 
-  page(str?) {
-    if (str !== undefined) {
-      this.#data.page = str
-    }
+  page() {
     return this.#data.page
   }
 
-  anchor(str?) {
-    if (str !== undefined) {
-      this.#data.anchor = str
-    }
+  anchor() {
     return this.#data.anchor || ''
   }
 
-  wiki(str?) {
-    if (str !== undefined) {
-      this.#data.wiki = str
-    }
+  wiki() {
     return this.#data.wiki
   }
 
-  type(str?) {
-    if (str !== undefined) {
-      this.#data.type = str
-    }
+  type() {
     return this.#data.type
   }
 
-  site(str?) {
-    if (str !== undefined) {
-      this.#data.site = str
-    }
+  site() {
     return this.#data.site
   }
 
