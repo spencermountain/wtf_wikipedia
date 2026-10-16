@@ -1,6 +1,6 @@
 import toJSON from './toJson.ts'
-import Sentence from '../04-sentence/Sentence.ts'
-import List from '../list/List.ts'
+import Sentence from './sentence/Sentence.ts'
+import List from './list/List.ts'
 import setDefaults from '../_lib/setDefaults.ts'
 import type { ParagraphData } from '../../types/index.ts'
 

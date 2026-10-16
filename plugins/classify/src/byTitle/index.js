@@ -4,7 +4,7 @@ import byPattern from '../_byPattern.js'
 const paren = /^[^(\r\n\u2028\u2029]*\((.*)\)(?![\s\S])/m
 
 const byTitle = function (doc) {
-  const title = doc.title()
+  const title = doc.title
   if (!title) {
     return []
   }

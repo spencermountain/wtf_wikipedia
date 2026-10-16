@@ -7,21 +7,10 @@ import { fileURLToPath } from 'node:url'
 const dir = path.dirname(fileURLToPath(import.meta.url))
 // ;(async () => {
 //   let cat = await wtf.randomCategory()
-//   console.log(cat, '\n\n')
-//   wtf.parseCategory(cat).then((res) => {
-//     res.docs.forEach((doc) => {
-//       console.log(doc.sentence().text())
-//       // console.log(padEnd(doc.title(), 26) + '       ' + doc.summary({ article: false }) || '-')
-//     })
-//   })
-// })()
 
 test('first-sentence cleanup summary', (t) => {
   const abs = path.join(dir, './texts.txt')
-  const arr = fs
-    .readFileSync(abs)
-    .toString()
-    .split(/\r?\n/).filter(Boolean)
+  const arr = fs.readFileSync(abs).toString().split(/\r?\n/).filter(Boolean)
 
   let count = 0
   arr.forEach((txt) => {

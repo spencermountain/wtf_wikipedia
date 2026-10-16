@@ -2,7 +2,7 @@ import fetch from './API/_fetch/index.ts'
 import version from './_version.ts'
 import http from './API/_lib/fetch.ts'
 import parse from './parse/index.ts'
-
+import type { DocInfo } from './types/index.ts'
 import {
   Document,
   Section,
@@ -19,9 +19,9 @@ import {
 } from './API/index.ts'
 
 //the main 'factory' exported method
-const wtf = function (wiki: string, options?: object) {
+const wtf = function (wiki: string, info?: DocInfo) {
   const data = parse(wiki)
-  return new Document(data, options)
+  return new Document(data, info)
 }
 
 const models = {

@@ -1,5 +1,5 @@
 import toJson from './toJson.ts'
-import type { TableData } from '../../types/index.ts'
+import type { TableData } from '../../../types/index.ts'
 
 const normalize = function (key = '') {
   key = key.toLowerCase()

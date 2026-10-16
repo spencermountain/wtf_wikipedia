@@ -397,7 +397,7 @@ fetches a random wikipedia article, from a given language or domain
 ```js
 wtf.extend(require('wtf-plugin-api'))
 wtf.random().then((doc) => {
-  console.log(doc.title(), doc.categories())
+  console.log(doc.title, doc.categories())
   //'Whistling'  ['Oral communication', 'Vocal skills']
 })
 ```

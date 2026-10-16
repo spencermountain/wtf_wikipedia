@@ -1,4 +1,4 @@
-import type { ListData } from '../../types/index.ts'
+import type { ListData } from '../../../types/index.ts'
 
 const toText = (list, options?) => {
   return list

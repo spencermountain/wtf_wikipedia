@@ -223,15 +223,7 @@ const doSection$1 = function (section) {
 
 //get games of regular season
 const gameLog = function (doc) {
-  let games = [];
-  // grab the generated section called 'Game Log'
-  const section = doc.section('game log') || doc.section('game log and schedule') || doc.section('regular season') || doc.section('season') || doc.section('schedule') || doc.section('schedule and results');
-  if (!section) {
-    console.warn('no game log section for: \'' + doc.title() + '\'');
-    return games
-  }
-  const tables = doSection$1(section);
-  games = tables.flatMap((table) => doTable(table.data));
+
   games = addWinner$1(games);
   return games
 };
@@ -299,15 +291,7 @@ const draftPicks = function (doc) {
 };
 
 //grab game-data from a MLB team's wikipedia page:
-const parsePage = function (doc) {
-  if (!doc) {
-    return {}
-  }
-  const res = parseTitle$1(doc.title() || '');
-  res.games = season(doc);
-  res.postseason = postseason(doc);
-  //grab the roster/draft data
-  res.roster = parseRoster$1(doc, res);
+
   res.draftPicks = draftPicks(doc);
   //get the per-player statistics
   res.playerStats = playerStats(doc);
@@ -572,15 +556,7 @@ const parseRoster = function (doc) {
   });
   players = players.filter((o) => o && o.name && o.name !== 'Total');
   return players
-};
 
-//
-const parse = function (doc) {
-  const meta = parseTitle(doc.title());
-  const res = {
-    team: meta.team,
-    year: meta.year,
-    page: meta.season,
     roster: parseRoster(doc),
     season: parseInfobox(doc),
   };

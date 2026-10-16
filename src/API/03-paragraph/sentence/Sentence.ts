@@ -1,5 +1,5 @@
 import toJSON from './toJson.ts'
-import type { SentenceData } from '../../types/index.ts'
+import type { SentenceData } from '../../../types/index.ts'
 //where we store the formatting, link, date information
 class Sentence {
   #data: SentenceData

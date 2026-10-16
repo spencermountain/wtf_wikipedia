@@ -166,15 +166,7 @@ const makeUrl$3 = function (title, options, append) {
   url += toUrlParams(params$4);
   url += `&titles=${normalize(title)}`;
   return url
-};
 
-const getPageViews = function (doc, options, http) {
-  options = { ...defaults, ...options };
-  const url = makeUrl$3(doc.title(), options);
-  const headers = makeHeaders(options);
-  return http(url, headers).then((res) => {
-    const pages = Object.keys(res.query.pages || {});
-    if (pages.length === 0) {
       return []
     }
     return res.query.pages[pages[0]].pageviews || []

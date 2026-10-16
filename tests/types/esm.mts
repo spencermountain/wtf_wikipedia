@@ -41,7 +41,7 @@ const coords: Coordinate[] = doc.coordinates()
 const opts2: DocumentOptions = doc.options()
 const viaNs: wtf.Document = doc // namespace-style type access
 console.log(viaNs)
-const title: string | null = doc.title()
+const title: string | null = doc.title
 const url: string | null = doc.url()
 const plain: string = doc.plaintext()
 const j = doc.json('sm')

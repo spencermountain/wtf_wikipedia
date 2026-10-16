@@ -2,7 +2,7 @@ import test from 'tape'
 import wtf from '../../../plugins/api/tests/_lib.js'
 
 const opts = {
-  'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
+  'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
 }
 
 test('randomCategory', async (t) => {
@@ -24,10 +24,3 @@ test('getTemplate', async (t) => {
 })
 
 test('wtf.fetchList', async (t) => {
-  t.plan(3)
-  const arr = ['Marina Gilardoni', 'Jessica Kilian', 'Tanja Morel']
-  const docs = await wtf.fetchList(arr, opts)
-  docs.forEach((doc) => {
-    t.ok(doc.sentence().text(), `got ${doc.title()}`)
-  })
-})

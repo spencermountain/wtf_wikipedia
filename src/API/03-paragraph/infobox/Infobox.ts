@@ -1,10 +1,10 @@
 import toJson from './toJson.ts'
 import Image from '../image/Image.ts'
-import { isArray } from '../../parse/_lib/helpers.ts'
-import Sentence from '../04-sentence/Sentence.ts'
-import latLngs from '../../_data/lat-lngs.ts'
+import { isArray } from '../../../parse/_lib/helpers.ts'
+import Sentence from '../sentence/Sentence.ts'
+import latLngs from '../../../_data/lat-lngs.ts'
 import dmsCoordinates from './_lib.ts'
-import type { InfoboxData } from '../../types/index.ts'
+import type { InfoboxData } from '../../../types/index.ts'
 
 const normalize = (str = '') => {
   str = str.toLowerCase()

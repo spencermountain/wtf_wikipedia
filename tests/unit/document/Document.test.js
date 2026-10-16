@@ -6,7 +6,7 @@ import wtf from '../../lib/index.js'
 test('Tile - get - first sentence', (t) => {
   const str = readPage('Charlie-Milstead')
   const doc = wtf(str)
-  t.equal(doc.title(), 'Charles Frank Milstead', 'the title equals the fist bolded text')
+  t.equal(doc.title, 'Charles Frank Milstead', 'the title equals the fist bolded text')
   t.end()
 })
 
@@ -661,7 +661,11 @@ test('templates - get - return all templates', (t) => {
 })
 
 test('templates - get - if the clue is a number return the template at that index', (t) => {
-  t.deepEqual(page.template(0).json(), { display: 'title', template: 'coord', lat: 43.65, lon: -79.38 }, 'indexed template JSON')
+  t.deepEqual(
+    page.template(0).json(),
+    { display: 'title', template: 'coord', lat: 43.65, lon: -79.38 },
+    'indexed template JSON'
+  )
   t.end()
 })
 

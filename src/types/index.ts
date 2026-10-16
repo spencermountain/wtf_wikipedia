@@ -84,3 +84,18 @@ export interface PageData {
   isRedirect?: boolean
   redirectTo?: string
 }
+
+// Passed information from fetch/dumpster to use in the API
+export interface DocInfo {
+  title?: string
+  pageId?: number
+  wikidata?: number
+  domain?: string
+  lang?: string
+  namespace?: string
+  revisionId?: number
+  version?: string
+  timestamp?: string
+  description?: string
+  pageImage?: string
+}

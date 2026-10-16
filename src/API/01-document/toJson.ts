@@ -61,7 +61,7 @@ const toJSON = function (doc, options) {
   let data: any = {}
 
   if (options.title) {
-    data.title = doc.title()
+    data.title = doc.title
   }
 
   // present only if true

@@ -3462,15 +3462,7 @@ const fromSection = function (doc) {
   return found
 };
 
-// Start once per line; the closing parenthesis must still end the whole title.
-const paren$1 = /^[^(\r\n\u2028\u2029]*\((.*)\)(?![\s\S])/m;
 
-const byTitle = function (doc) {
-  const title = doc.title();
-  if (!title) {
-    return []
-  }
-  //look at parentheses like 'Tornado (film)'
   const m = title.match(paren$1);
   if (!m) {
     return []
@@ -3515,15 +3507,7 @@ const skip = {
 };
 // Start once per line; the closing parenthesis must still end the whole title.
 const paren = /^[^(\r\n\u2028\u2029]*\((.*)\)(?![\s\S])/m;
-const listOf = /^list of ./;
-const disambig = /\(disambiguation\)/;
 
-const skipPage = function (doc) {
-  const title = doc.title() || '';
-
-  //look at parentheses like 'Tornado (film)'
-  const m = title.match(paren);
-  if (!m) {
     return null
   }
   let inside = m[1] || '';

@@ -1,5 +1,5 @@
-import type { LinkData } from '../../types/index.ts'
-import wikis from '../../_data/interwiki.ts'
+import type { LinkData } from '../../../types/index.ts'
+import wikis from '../../../_data/interwiki.ts'
 
 const defaults = {
   type: 'internal',

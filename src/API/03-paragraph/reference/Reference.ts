@@ -1,5 +1,5 @@
-import encodeObj from '../_lib/encode.ts'
-import type { ReferenceData } from '../../types/index.ts'
+import encodeObj from '../../_lib/encode.ts'
+import type { ReferenceData } from '../../../types/index.ts'
 
 //also called 'citations'
 class Reference {

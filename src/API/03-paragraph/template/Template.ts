@@ -1,5 +1,5 @@
-import fromText from '../../parse/sentences/index.ts'
-import type { TemplateData } from '../../types/index.ts'
+import fromText from '../../../parse/sentences/index.ts'
+import type { TemplateData } from '../../../types/index.ts'
 
 class Template {
   #data: TemplateData

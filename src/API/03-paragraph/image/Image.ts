@@ -1,6 +1,6 @@
 import toJson from './toJson.ts'
-import normalizeFile from '../../parse/03-paragraph/02-images/_lib.ts'
-import type { ImageData } from '../../types/index.ts'
+import normalizeFile from '../../../parse/03-paragraph/02-images/_lib.ts'
+import type { ImageData } from '../../../types/index.ts'
 const server = 'wikipedia.org'
 
 const encodeTitle = function (file: string) {

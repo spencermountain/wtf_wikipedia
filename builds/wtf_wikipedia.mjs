@@ -200,15 +200,7 @@ const toJSON$2 = function (doc, options) {
     options = sizes[options] || sizes.md
     isPreset = true
   } else {
-    options = setDefaults(options, defaults$b)
-  }
-  let data = {}
-  if (options.title) {
-    data.title = doc.title()
-  }
-  if (doc.isRedirect() === true) {
-    data.isRedirect = true
-    data.redirectTo = doc.redirectTo()
+
     data.sections = []
   }
   if (doc.isStub() === true) {
@@ -1399,15 +1391,7 @@ const isDisambig = function (doc) {
   let templates = doc.templates().map((tmpl) => tmpl.json())
   let found = templates.find((obj) => {
     return templates$d.has(obj.template) || i18n_templates.has(obj.template)
-  })
-  if (found) {
-    return true
-  }
-  let title = doc.title()
-  if (title && inTitle.test(title) === true) {
-    return true
-  }
-  let notDisamb = templates.find((obj) => notDisambig.has(obj.template))
+
   if (notDisamb) {
     return false
   }
@@ -7665,39 +7649,15 @@ let templates$3 = {
     obj.list ||= []
     let lines = obj.list.map((str, i) => `${i + 1}. ${str}`)
     return lines.join('\n\n')
-  },
-  // https://en.wikipedia.org/wiki/Template:Title_year
-  'title year': (tmpl, _list, _alias, _parse, doc) => {
-    let obj = parser(tmpl, ['match', 'nomatch', 'page'])
-    let title = obj.page || doc.title()
-    if (title) {
-      let m = title.match(/\b[0-9]{4}\b/)
-      if (m) {
-        return m[0]
+
       }
     }
     return obj.nomatch || ''
-  },
-  // https://en.wikipedia.org/wiki/Template:Title_century
-  'title century': (tmpl, _list, _alias, _parse, doc) => {
-    let obj = parser(tmpl, ['match', 'nomatch', 'page'])
-    let title = obj.page || doc.title()
-    if (title) {
-      let m = title.match(/\b([0-9]+)(st|nd|rd|th)\b/)
-      if (m) {
-        return m[1] || ''
+
       }
     }
     return obj.nomatch || ''
-  },
-  // https://en.wikipedia.org/wiki/Template:Title_decade
-  'title decade': (tmpl, _list, _alias, _parse, doc) => {
-    let obj = parser(tmpl, ['match', 'nomatch', 'page'])
-    let title = obj.page || doc.title()
-    if (title) {
-      let m = title.match(/\b([0-9]+)s\b/)
-      if (m) {
-        return m[1] || ''
+
       }
     }
     return obj.nomatch || ''

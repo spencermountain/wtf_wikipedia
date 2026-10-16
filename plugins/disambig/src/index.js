@@ -43,14 +43,6 @@ const getMain = function (s) {
   if (!m || m.index > 20) {
     return null
   }
-  return link.page()
-}
-
-const getTitle = function (doc) {
-  let title = doc.title() || ''
-  title = title.replace(/ \(disambig|disambiguation\)$/, '')
-  return title
-}
 
 const addMethod = function (models) {
   // parse a disambiguation page into an array of pages

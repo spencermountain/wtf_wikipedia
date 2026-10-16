@@ -32,7 +32,7 @@ const isDisambig = function (doc) {
     return true
   }
   // check for (disambiguation) in title
-  let title = doc.title()
+  let title = doc.title
   if (title && inTitle.test(title) === true) {
     return true
   }
@@ -42,7 +42,8 @@ const isDisambig = function (doc) {
     return false
   }
   //try 'may refer to' on first line for en-wiki?
-  if (byText(doc.sentence(0)) === true || byText(doc.sentence(1)) === true) {
+  const str = doc.sentences()[0]?.text()
+  if (str && mayAlsoReg.test(str) === true) {
     return true
   }
   return false

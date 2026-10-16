@@ -4,96 +4,89 @@ import toJSON from './toJson.ts'
 import isDisambig from './isDisambig.ts'
 import Section from '../02-section/Section.ts'
 import isStub from './isStub.ts'
-import setDefaults from '../_lib/setDefaults.ts'
-import Image from '../image/Image.ts'
-import type { PageData } from '../../types/index.ts'
-
-const defaults = {
-  tables: true,
-  lists: true,
-  paragraphs: true,
-}
+import Image from '../03-paragraph/image/Image.ts'
+import type { PageData, DocInfo } from '../../types/index.ts'
 
 class Document {
-  #data: any
-  #options: any
-
-  constructor(data: PageData, options) {
-    options ||= {}
-    this.#options = options
+  #data: PageData
+  #info: DocInfo
+  constructor(data: PageData, info?: DocInfo) {
     this.#data = data
+    this.#info = info || {}
+    this.#info.lang = this.#info.lang ?? 'en' //(sorry)
+    this.#info.domain = this.#info.domain ?? 'wikipedia.org'
   }
 
   get title() {
     // if we have it already
-    if (this.#data.title) {
-      return this.#data.title
+    if (this.#info.title) {
+      return this.#info.title
     }
     //guess the title of this page from first sentence bolding
     let guess = null
     let sen = this.sentences()[0]
     if (sen) {
-      guess = sen.bold() || null
+      guess = sen.fmt?.bold || null
     }
     return guess
   }
   set title(str) {
-    this.#data.title = str
+    this.#info.title = str
   }
 
   get pageID() {
-    return this.#data.pageId || null
+    return this.#info.pageId || null
   }
   set pageID(str) {
-    this.#data.pageId = str
+    this.#info.pageId = str
   }
   get wikidata() {
-    return this.#data.wikidata || null
+    return this.#info.wikidata || null
   }
   set wikidata(str) {
-    this.#data.wikidata = str
+    this.#info.wikidata = str
   }
   get domain() {
-    return this.#data.domain || null
+    return this.#info.domain || null
   }
   set domain(str) {
-    this.#data.domain = str
+    this.#info.domain = str
   }
   get language() {
-    return this.#data.lang || null
+    return this.#info.lang || null
   }
   set language(str) {
-    this.#data.lang = str
+    this.#info.lang = str
   }
   get namespace() {
-    return this.#data.namespace || null
+    return this.#info.namespace || null
   }
   set namespace(str) {
-    this.#data.namespace = str
+    this.#info.namespace = str
   }
   get revisionID() {
-    return this.#data.revisionID || null
+    return this.#info.revisionId || null
   }
   set revisionID(str) {
-    this.#data.revisionID = str
+    this.#info.revisionId = str
   }
   get timestamp() {
-    return this.#data.timestamp || null
+    return this.#info.timestamp || null
   }
   set timestamp(str) {
-    this.#data.timestamp = str
+    this.#info.timestamp = str
   }
   get description() {
-    return this.#data.description || null
+    return this.#info.description || null
   }
   set description(str) {
-    this.#data.description = str
+    this.#info.description = str
   }
-  get _pageImage() {
-    return this.#data._pageImage || null
+  get pageImage() {
+    return this.#info._pageImage || null
   }
-  set _pageImage(str) {
-    this.#data._pageImage = str
+  set pageImage(str) {
+    this.#info._pageImage = str
   }
 
   // don'y allow setting thesese
@@ -106,12 +99,12 @@ class Document {
 
   // falls back to 'en' and 'wikipedia.org' when language or domain are missing
   url() {
-    let title = this.#data.title
+    let title = this.#info.title
     if (!title) {
       return null
     }
-    let lang = this.#data.lang || 'en' //sorry
-    let domain = this.#data.domain || 'wikipedia.org'
+    let lang = this.#info.lang || 'en' //sorry
+    let domain = this.#info.domain || 'wikipedia.org'
     //replace blank to underscore
     title = title.replace(/ /g, '_')
     title = encodeURIComponent(title)
@@ -226,18 +219,17 @@ class Document {
     return arr
   }
 
-  text(options?) {
-    options = setDefaults(options, defaults)
+  text() {
     //nah, skip these.
     if (this.isRedirect() === true) {
       return ''
     }
-    let arr = this.sections().map((sec) => sec.text(options))
+    let arr = this.sections().map((sec) => sec.text())
     return arr.join('\n\n')
   }
 
-  json(options?) {
-    return toJSON(this, options)
+  json() {
+    return toJSON(this, {})
   }
 
   debug() {
