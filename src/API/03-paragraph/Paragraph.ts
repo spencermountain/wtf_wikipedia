@@ -28,13 +28,11 @@ class Paragraph {
   }
 
   links() {
-    const items = this.sentences().flatMap((s) => s.links())
-    return items[0] ?? null
+    return this.sentences().flatMap((s) => s.links())
   }
 
   interwiki() {
-    const items = this.sentences().flatMap((s) => s.interwiki())
-    return items[0] ?? null
+    return this.sentences().flatMap((s) => s.interwiki())
   }
 
   text() {

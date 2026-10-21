@@ -5,8 +5,9 @@ import type { SectionData } from '../../../types/index.ts'
 const sectionTemplates = (section: SectionData) => {
   const { infoboxes, references, templates, remaining } = parse(section.remaining)
   section.infoboxes = infoboxes
-  section.references = references
-  section.templates = templates
+  // Keep references and special templates extracted by earlier stages.
+  section.references.push(...references)
+  section.templates.push(...templates)
   section.remaining = remaining
   return section
 }

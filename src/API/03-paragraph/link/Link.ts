@@ -24,7 +24,7 @@ class Link {
     if (obj.type === 'internal') {
       obj.page = this.page()
     } else if (obj.type === 'interwiki') {
-      obj.wiki = this.wiki()
+      obj.interwiki = this.interwiki()
       obj.page = this.page()
     } else {
       obj.site = this.site()
@@ -53,6 +53,10 @@ class Link {
     return this.#data.wiki
   }
 
+  interwiki() {
+    return this.#data.interwiki
+  }
+
   type() {
     return this.#data.type
   }
@@ -73,10 +77,15 @@ class Link {
     let url = ''
 
     if (type === 'interwiki') {
-      let wiki = this.wiki()
+      const destination = this.interwiki()
+      const wiki = typeof destination === 'string' ? destination : destination?.wiki
       url = 'https://en.wikipedia.org/wiki/$1'
       if (Object.hasOwn(wikis, wiki)) {
-        url = 'http://' + wikis[this.wiki()]
+        url = 'http://' + wikis[wiki]
+        // Qualified language prefixes override the project's default language.
+        if (typeof destination === 'object') {
+          url = url.replace('://en.', `://${destination.lang}.`)
+        }
       }
       url = url.replace(/\$1/g, page)
     } else {

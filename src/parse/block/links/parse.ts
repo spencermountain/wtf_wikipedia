@@ -47,6 +47,7 @@ const internal_links = function (links, str) {
     // }
     //remove anchors from end [[toronto#history]]
     let obj: any = {
+      type: 'internal',
       page: link,
       wiki: wiki,
     }
@@ -56,7 +57,7 @@ const internal_links = function (links, str) {
     })
     //grab any fr:Paris parts
     obj = parse_interwiki(obj)
-    if (obj.wiki) {
+    if (obj.interwiki) {
       obj.type = 'interwiki'
     }
     if (txt !== null && txt !== obj.page) {

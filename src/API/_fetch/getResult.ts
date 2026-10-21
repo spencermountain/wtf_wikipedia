@@ -43,10 +43,10 @@ const getResult = function (data, options: any = {}) {
     let meta = {
       ...options,
       title: page.title,
-      pageID: page.pageid,
+      pageId: page.pageid,
       namespace: page.ns,
       domain,
-      revisionID,
+      revisionId: revisionID,
       timestamp,
       pageImage: page.pageprops['page_image_free'],
       wikidata: page.pageprops.wikibase_item,

@@ -7,9 +7,10 @@ import type { SectionData } from '../../types/index.ts'
 
 //the Section class represents the == title == sections of an article
 class Section {
-  #data: SectionData
+  #data: Partial<SectionData>
 
-  constructor(data: SectionData) {
+  // Missing lookups return a usable empty section without adding it to the document.
+  constructor(data: Partial<SectionData> = {}) {
     this.#data = data
   }
 
@@ -18,7 +19,7 @@ class Section {
   }
 
   index() {
-    return this.#data.index || ''
+    return this.#data.index ?? null
   }
   depth() {
     return this.#data.depth || 0
@@ -118,7 +119,7 @@ class Section {
 
   // aliases
   wikitext() {
-    return this.#data.wiki
+    return this.#data.wiki || ''
   }
   indentation() {
     return this.depth()

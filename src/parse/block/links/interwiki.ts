@@ -25,13 +25,13 @@ const parseInterwiki = function (obj) {
       if (Object.hasOwn(interwikis, wiki) === false || Object.hasOwn(languages, lang) === false) {
         return obj
       }
-      obj.wiki = { wiki: wiki, lang: lang }
+      obj.interwiki = { wiki: wiki, lang: lang }
     } else {
       // [[fr:cool]]
       if (Object.hasOwn(interwikis, site) === false) {
         return obj
       }
-      obj.wiki = site
+      obj.interwiki = site
     }
     obj.page = m[2]
   }

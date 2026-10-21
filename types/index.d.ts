@@ -85,7 +85,7 @@ declare class Document {
   redirectTo(): Record<string, unknown> | null
   references(clue?: number): Collection<Reference>
   reference(clue?: number): Reference | null
-  section(clue?: string | number): Section | null
+  section(clue?: string | number): Section
   sections(clue?: string | number): SectionCollection
   sentence(clue?: number): Sentence | null
   sentences(selector?: number): Collection<Sentence>
@@ -218,7 +218,8 @@ declare class Link {
   wikitext(): string
   page(str?: string): string
   anchor(str?: string): string
-  wiki(str?: string): string | undefined
+  wiki(): string
+  interwiki(): string | { wiki: string; lang: string } | undefined
   type(str?: string): string
   site(str?: string): string
   href(): string
@@ -304,7 +305,7 @@ type LinkJson = {
   text?: string
   type: 'internal' | 'interwiki' | 'external'
   page?: string
-  wiki?: string
+  interwiki?: string | { wiki: string; lang: string }
   site?: string
   anchor?: string
 }

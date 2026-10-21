@@ -59,7 +59,7 @@ class Document {
     this.#info.lang = str
   }
   get namespace() {
-    return this.#info.namespace || null
+    return this.#info.namespace ?? null
   }
   set namespace(str) {
     this.#info.namespace = str
@@ -131,6 +131,15 @@ class Document {
   sections() {
     let arr = this.#data.sections || []
     return arr.map((section) => new Section(section))
+  }
+
+  section(clue: string | number = 0): Section {
+    const sections = this.sections()
+    if (typeof clue === 'string') {
+      const title = clue.trim().toLowerCase()
+      return sections.find((section) => section.title().trim().toLowerCase() === title) ?? new Section()
+    }
+    return sections[clue] ?? new Section()
   }
 
   paragraphs() {

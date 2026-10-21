@@ -5,6 +5,7 @@ export type LinkData = {
   anchor?: string
   site?: string
   wiki: string
+  interwiki?: string | { wiki: string; lang: string }
 }
 
 export interface BlockData {
