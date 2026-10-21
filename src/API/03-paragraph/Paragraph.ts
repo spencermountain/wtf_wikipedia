@@ -1,7 +1,6 @@
 import toJSON from './toJson.ts'
 import Sentence from './sentence/Sentence.ts'
 import Image from './image/Image.ts'
-import Infobox from '../02-section/infobox/Infobox.ts'
 import List from './list/List.ts'
 import type { ParagraphData } from '../../types/index.ts'
 

@@ -1,10 +1,11 @@
-import toJSON from './toJson.ts'
-import type { Block } from '../../../types/index.ts'
+import Block from '../../Block/Block.ts'
+import type { BlockData } from '../../../types/index.ts'
 
-class Sentence {
-  #data: Block
+class Sentence extends Block {
+  #data: BlockData
 
-  constructor(data: Block) {
+  constructor(data: BlockData) {
+    super(data)
     this.#data = data
   }
 
@@ -15,41 +16,6 @@ class Sentence {
 
   interwiki() {
     return this.links().filter((link) => link.type === 'interwiki')
-  }
-
-  fmt() {
-    return this.#data.fmt || {}
-  }
-  // TODO: Formatting values are strings, not model collections.
-  bolds() {
-    if (this.#data && this.#data.fmt && this.#data.fmt.bold) {
-      return this.#data.fmt.bold || []
-    }
-    return []
-  }
-
-  // TODO: Formatting values are strings, not model collections.
-  italics() {
-    if (this.#data && this.#data.fmt && this.#data.fmt.italic) {
-      return this.#data.fmt.italic || []
-    }
-    return []
-  }
-
-  text() {
-    return this.#data.text || ''
-  }
-
-  json(options?) {
-    return toJSON(this, options)
-  }
-
-  wikitext() {
-    return this.#data.wiki || ''
-  }
-
-  isEmpty() {
-    return this.#data.text === ''
   }
 }
 

@@ -17,26 +17,21 @@ const sortOut = function (templates: TemplateData[]) {
   }
   //remove references and infoboxes from our list
   templates.forEach((obj) => {
-    let json = obj.json
-    let kind = json.template || json.type || json.name
+    let json = obj.data || {}
+    let kind = obj.template || obj.type || obj.name
     // is it a Reference?
     if (referenceTypes[kind] === true || isCitation.test(kind) === true) {
-      json.wiki = obj.wiki
-      res.references.push(json)
+      res.references.push(obj)
       return
     }
     // is it an Infobox?
-    if (json.template === 'infobox' && json.subbox !== 'yes') {
+    if (json.template === 'infobox' && json?.subbox !== 'yes') {
       // json.domain = domain //infoboxes need this for images, i guess
-      json.data ||= {} //validate it a little
-      json.wiki = obj.wiki
-      res.infoboxes.push(json)
+      res.infoboxes.push(obj)
       return
     }
     // otherwise, it's just a template
-    json.text = obj.text
-    json.wiki = obj.wiki
-    res.others.push(json)
+    res.others.push(obj)
   })
   return res
 }

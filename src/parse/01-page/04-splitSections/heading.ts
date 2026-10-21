@@ -1,5 +1,5 @@
 import { trim_whitespace } from '../../../_lib/helpers.ts'
-import parseSentence from '../../sentences/index.ts'
+import parseBlock from '../../block/index.ts'
 const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/ //eslint-disable-line
 // Commit to the first opening delimiter on each line before looking for its end.
 // const hasTemplate = /^(?=(.*?\{\{))\1.+?\}\}/m
@@ -20,7 +20,7 @@ const parseHeading = function (heading: string) {
     return { title: '', depth: 0 }
   }
 
-  title = parseSentence(title).text
+  title = parseBlock(title).text
   //trim leading/trailing whitespace
   title = trim_whitespace(title)
   // count number of == characters to determine depth

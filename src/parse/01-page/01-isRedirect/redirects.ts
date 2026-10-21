@@ -1,5 +1,5 @@
 import { redirects } from '../../../_data/i18n/index.ts'
-import parseLink from '../../sentences/links/parse.ts'
+import parseLink from '../../block/links/parse.ts'
 
 //pulls target link out of redirect page
 const REDIRECT_REGEX = new RegExp('^[ \n\t]*?#(' + redirects.join('|') + ') *?(\\[\\[.{2,180}?\\]\\])', 'i')

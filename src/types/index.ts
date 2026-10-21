@@ -1,4 +1,4 @@
-export interface Block {
+export interface BlockData {
   text: string
   wiki: string
   links: LinkData[]
@@ -13,6 +13,7 @@ export interface TemplateData {
   wiki?: string // original wiki text
   text?: string // remaining output text
   name?: string
+  type?: string
   data?: object
   nested?: boolean
 }
@@ -44,7 +45,7 @@ export type LinkData = {
 export type ParagraphData = {
   wiki: string
   remaining: string
-  sentences: Block[]
+  sentences: BlockData[]
   images: ImageData[]
   lists: ListData[]
 }

@@ -1,6 +1,4 @@
-import toJson from './toJson.ts'
 import Image from '../../03-paragraph/image/Image.ts'
-import { isArray } from '../../../_lib/helpers.ts'
 import Sentence from '../../03-paragraph/sentence/Sentence.ts'
 import latLngs from '../../../_data/lat-lngs.ts'
 import dmsCoordinates from './_lib.ts'
@@ -65,41 +63,24 @@ class Infobox {
   }
 
   // TODO: Mixed scalar/array lookup results are outside the collection API for now.
-  get(keys?) {
+  get(want: string) {
     let allKeys = Object.keys(this.#data)
-    if (typeof keys === 'string') {
-      let key = normalize(keys)
-      for (let i = 0; i < allKeys.length; i += 1) {
-        let tmp = normalize(allKeys[i])
-        if (key === tmp) {
-          return this.#data[allKeys[i]]
-        }
+    let key = normalize(want)
+    for (let i = 0; i < allKeys.length; i += 1) {
+      let tmp = normalize(allKeys[i])
+      if (key === tmp) {
+        return this.#data[allKeys[i]]
       }
-      return new Sentence()
     }
-    if (isArray(keys)) {
-      // support array-input
-      keys = keys.map(normalize)
-      return keys.map((k) => {
-        for (let i = 0; i < allKeys.length; i += 1) {
-          let tmp = normalize(allKeys[i])
-          if (k === tmp) {
-            return this.#data[allKeys[i]]
-          }
-        }
-        return new Sentence()
-      })
-    }
-    return new Sentence()
+    return null
   }
 
   text() {
     return ''
   }
 
-  json(options?) {
-    options ||= {}
-    return toJson(this, options)
+  json() {
+    return this.#data
   }
 
   wikitext() {

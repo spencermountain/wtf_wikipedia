@@ -20,6 +20,7 @@ const allTemplates = function (wiki: string) {
     obj.wiki = text
     if (json) {
       let template: TemplateData = {
+        template: obj.name,
         name: obj.name,
         wiki: obj.body,
         nested: Boolean(obj.parent),

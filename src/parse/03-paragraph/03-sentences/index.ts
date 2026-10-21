@@ -1,4 +1,4 @@
-import fromText from '../../sentences/index.ts'
+import fromText from '../../block/index.ts'
 import sentenceParser from './parse.ts'
 
 import type { ParagraphData } from '../../../types/index.ts'

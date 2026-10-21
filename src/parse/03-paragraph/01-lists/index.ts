@@ -1,20 +1,22 @@
-import parseSentence from '../../sentences/index.ts'
-import type { ParagraphData } from '../../../types/index.ts'
+import parseBlock from '../../block/index.ts'
+import type { ParagraphData, BlockData } from '../../../types/index.ts'
+
 const list_reg = /^[#*:;|]+/
 const bullet_reg = /^\*+[^:,|]{4}/
 const number_reg = /^ ?#[^:,|]{4}/
 
 // does it start with a bullet point or something?
-const isList = function (line) {
+const isList = function (line: string) {
   return list_reg.test(line) || bullet_reg.test(line) || number_reg.test(line)
 }
 
 //make bullets/numbers into human-readable *'s
-const cleanList = function (list) {
+const cleanList = function (lines: string[]) {
   let number = 1
-  list = list.filter((l) => l)
-  for (let i = 0; i < list.length; i++) {
-    let line = list[i]
+  const list: BlockData[] = []
+  lines = lines.filter((l) => l)
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i]
     //add # numberings formatting
     if (line.match(number_reg)) {
       line = line.replace(/^ ?#*/, number + ') ')
@@ -24,23 +26,22 @@ const cleanList = function (list) {
       number = 1
       line = line.replace(list_reg, '')
     }
-    list[i] = parseSentence(line)
+    list.push(parseBlock(line))
   }
   return list
 }
 
-const grabList = function (lines, i) {
-  let sub = []
+const grabList = function (lines: string[], i: number) {
+  let subset = []
   for (let o = i; o < lines.length; o++) {
     if (isList(lines[o])) {
-      sub.push(lines[o])
+      subset.push(lines[o])
     } else {
       break
     }
   }
   // sub = sub.filter((a) => a && has_word.test(a))
-  sub = cleanList(sub)
-  return sub
+  return cleanList(subset)
 }
 
 const parseList = function (paragraph: ParagraphData) {

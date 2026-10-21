@@ -1,4 +1,4 @@
-import parseSentence from '../../../sentences/index.ts'
+import parseBlock from '../../../block/index.ts'
 import findRows from './_findRows.ts'
 import handleSpans from './_spans.ts'
 const isHeading = /^!/
@@ -19,7 +19,7 @@ const headings = {
 
 //additional table-cruft to remove before parseLine method
 const cleanText = function (str) {
-  str = parseSentence(str).text
+  str = parseBlock(str).text
   //anything before a single-pipe is styling, so remove it
   if (str.match(/\|/)) {
     str = str.replace(/^.*?\| ?/m, '') //class="unsortable"|title
@@ -93,7 +93,7 @@ const parseRow = function (arr, headers) {
   let row = {}
   arr.forEach((str, i) => {
     let h = headers[i] || 'col' + (i + 1)
-    let s = parseSentence(str)
+    let s = parseBlock(str)
     s.text = cleanText(s.text)
     row[h] = s
   })
@@ -108,7 +108,7 @@ const firstRowHeader = function (rows) {
   let headers = rows[0].slice(0)
   headers = headers.map((h) => {
     h = h.replace(/^! */, '')
-    h = parseSentence(h).text
+    h = parseBlock(h).text
     h = cleanText(h)
     h = h.toLowerCase()
     return h

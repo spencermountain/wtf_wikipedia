@@ -1,4 +1,4 @@
-import parseSentence from '../../sentences/index.ts'
+import parseBlock from '../../block/index.ts'
 import type { SectionData, ImageData } from '../../../types/index.ts'
 import { parseImgString } from '../../03-paragraph/02-images/index.ts'
 
@@ -17,7 +17,7 @@ const parseGallery = function (section: SectionData) {
       let img: ImageData = parseImgString(file)
       let caption = arr.slice(1).join('|')
       if (caption !== '') {
-        img.caption = parseSentence(caption)
+        img.caption = parseBlock(caption)
       }
       return img
     })

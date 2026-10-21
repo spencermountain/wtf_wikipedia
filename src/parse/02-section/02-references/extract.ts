@@ -1,5 +1,5 @@
 import parse from '../../templates/parse/toJSON/index.ts'
-import parseSentence from '../../sentences/index.ts'
+import parseBlock from '../../block/index.ts'
 import getTemplates from '../../templates/find/02-flat.ts'
 
 // Keep the existing limits for plain, self-closing, and attributed references.
@@ -35,7 +35,7 @@ const parseBody = (text, wiki) => {
       template: 'citation',
       type: 'inline',
       data: {},
-      inline: parseSentence(text) || {},
+      inline: parseBlock(text) || {},
       wiki,
     })
   }

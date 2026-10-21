@@ -1,7 +1,7 @@
-import type { Block } from '../../types/index.ts'
+import type { BlockData } from '../../types/index.ts'
 
 //handle the bold/italics
-const formatting = function (obj: Block) {
+const formatting = function (obj: BlockData) {
   let bolds = []
   let italics = []
   let wiki = obj.text || ''
