@@ -10,7 +10,7 @@ after`
 // {{fbicon|GER|name=GER}}
 const doc = wtf(str)
 
-console.log(doc.text())
+// console.log(doc.text())
 // console.log(doc.sections()[0].json())
 // console.log('title', doc.title)
 // console.log('wikitext', doc.wikitext())
@@ -39,4 +39,4 @@ console.log(doc.text())
 // console.log('redirect', doc.redirect())
 // console.log('links', doc.links())
 // console.log('text', doc.text())
-// console.log('json', doc.json())
+console.log('json', doc.json())
