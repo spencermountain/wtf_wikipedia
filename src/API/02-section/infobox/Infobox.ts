@@ -15,9 +15,8 @@ class Infobox {
   #data: InfoboxData
   #wiki: string
 
-  constructor(data: InfoboxData, wiki: string) {
+  constructor(data: InfoboxData) {
     this.#data = data
-    this.#wiki = wiki
   }
 
   type() {

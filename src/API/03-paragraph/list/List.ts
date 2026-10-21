@@ -13,7 +13,7 @@ class List {
   }
 
   links() {
-    return this.lines().flatMap((s) => s.links())
+    return this.lines().flatMap((s) => s.links)
   }
 
   json() {
@@ -24,7 +24,7 @@ class List {
     const items = this.#data.items
     return items
       .map((s) => {
-        let str = s.text()
+        let str = s.text
         return ' * ' + str
       })
       .join('\n')

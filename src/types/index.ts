@@ -11,7 +11,7 @@ export interface BlockData {
 export interface TemplateData {
   template: string
   wiki?: string // original wiki text
-  text?: string // remaining output text
+  text?: string // BlockData?
   name?: string
   type?: string
   data?: object
@@ -28,10 +28,11 @@ export type ImageData = {
   file: string
   wiki: string
   alt?: string
-  caption?: string
+  domain?: string
+  caption?: BlockData
 }
 export type ListData = {
-  items: string[]
+  items: BlockData[]
   wiki: string
 }
 
@@ -39,6 +40,8 @@ export type LinkData = {
   text: string
   type?: string
   page?: string
+  anchor?: string
+  site?: string
   wiki: string
 }
 
@@ -53,7 +56,7 @@ export type ParagraphData = {
 export type TableData = string[][]
 
 export interface SectionData {
-  title: string
+  title: string //BlockData
   depth: number
   wiki: string
   index: number

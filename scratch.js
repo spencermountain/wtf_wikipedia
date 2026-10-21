@@ -2,14 +2,15 @@ import wtf from './src/index.ts'
 import { readPage } from './tests/_examples/index.js'
 
 // const str = readPage('United-Kingdom')
-const str = `
+const str = ` ### hello [[world]]
   {{Start date and age|2019|12|18}}
 
 The '''City of New York''', often called '''New York City'''
 `
 const doc = wtf(str)
+console.log(doc.text())
+console.log(doc.sections()[0].json())
 console.log(doc.templates()[0].json())
-// console.log(doc.text())
 // console.log(doc.sections()[0].json())
 // console.log('title', doc.title)
 // console.log('wikitext', doc.wikitext())

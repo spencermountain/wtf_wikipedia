@@ -2,14 +2,15 @@ import findTemplates from './find/01-nested.ts'
 import parseTemplate from './parse/index.ts'
 import sortOut from './sortOut.ts'
 import type { TemplateData } from '../../types/index.ts'
+import type { NestedNode } from './types.ts'
 
 // return a flat list of all {{templates}}
 const allTemplates = function (wiki: string) {
   let list = []
   //nested data-structure of templates
-  let nested = findTemplates(wiki)
+  let nested: NestedNode[] = findTemplates(wiki)
   //recursive template-parser
-  const parseNested = function (obj, parent) {
+  const parseNested = function (obj: NestedNode, parent?: NestedNode) {
     obj.parent = parent
     //do tail-first recursion
     if (obj.children && obj.children.length > 0) {
@@ -23,14 +24,14 @@ const allTemplates = function (wiki: string) {
         template: obj.name,
         name: obj.name,
         wiki: obj.body,
-        nested: Boolean(obj.parent),
+        // nested: Boolean(obj.parent),
         text: text,
         data: json,
       }
       list.push(template)
     }
     //remove the text from every parent
-    const removeIt = function (node, body, out) {
+    const removeIt = function (node: NestedNode, body: string, out: string) {
       if (node.parent) {
         node.parent.body = node.parent.body.replace(body, out)
         removeIt(node.parent, body, out)

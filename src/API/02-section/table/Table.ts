@@ -1,4 +1,3 @@
-import toJson from './toJson.ts'
 import type { TableData } from '../../../types/index.ts'
 
 const normalize = function (key = '') {

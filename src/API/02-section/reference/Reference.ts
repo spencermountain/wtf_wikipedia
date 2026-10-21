@@ -11,7 +11,7 @@ class Reference {
   }
 
   title() {
-    let data = this.#data
+    let data = this.#data || {}
     return data.title || data.encyclopedia || data.author || ''
   }
 

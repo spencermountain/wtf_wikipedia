@@ -1,19 +1,9 @@
-import toJSON from './toJson.ts'
-import setDefaults from '../_lib/setDefaults.ts'
 import Table from './table/Table.ts'
 import Reference from './reference/Reference.ts'
 import Infobox from './infobox/Infobox.ts'
 import Template from './template/Template.ts'
 import Paragraph from '../03-paragraph/Paragraph.ts'
 import type { SectionData } from '../../types/index.ts'
-
-const defaults = {
-  tables: true,
-  references: true,
-  paragraphs: true,
-  templates: true,
-  infoboxes: true,
-}
 
 //the Section class represents the == title == sections of an article
 class Section {
@@ -116,21 +106,19 @@ class Section {
   }
 
   //outputs
-  text(options?) {
-    options = setDefaults(options, defaults)
+  text() {
     return this.paragraphs()
-      .map((p) => p.text(options))
+      .map((p) => p.text())
       .join('\n\n')
   }
 
-  json(options?) {
-    options = setDefaults(options, defaults)
-    return toJSON(this, options)
+  json() {
+    return this.#data
   }
 
   // aliases
   wikitext() {
-    return this._wiki
+    return this.#data.wiki
   }
   indentation() {
     return this.depth()

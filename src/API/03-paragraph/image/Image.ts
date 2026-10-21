@@ -1,4 +1,3 @@
-import toJson from './toJson.ts'
 import type { ImageData } from '../../../types/index.ts'
 const server = 'wikipedia.org'
 
@@ -52,13 +51,13 @@ class Image {
 
   caption() {
     if (this.#data.caption) {
-      return this.#data.caption.text()
+      return this.#data.caption.text
     }
     return ''
   }
 
   links() {
-    return this.#data.caption?.links() || []
+    return this.#data.caption?.links || []
   }
 
   url() {
@@ -85,9 +84,8 @@ class Image {
     return null
   }
 
-  json(options?) {
-    options ||= {}
-    return toJson(this, options)
+  json() {
+    return this.#data
   }
 
   text() {

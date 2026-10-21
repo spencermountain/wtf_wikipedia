@@ -1,8 +1,9 @@
 import findFlat from './02-flat.ts'
 import getName from '../parse/toJSON/_getName.ts'
+import type { NestedNode } from '../types.ts'
 const hasTemplate = /\{\{/
 
-const parseTemplate = function (tmpl) {
+const parseTemplate = function (tmpl: string): NestedNode {
   // this is some unexplained Lua thing
   return {
     body: tmpl,
@@ -11,21 +12,21 @@ const parseTemplate = function (tmpl) {
   }
 }
 
-const doEach = function (obj) {
+const doEach = function (obj: NestedNode) {
   // peel-off top-level
-  let wiki = obj.body.substr(2)
+  let wiki = obj.body.slice(2)
   wiki = wiki.replace(/\}\}$/, '')
 
   // get our child templates
-  obj.children = findFlat(wiki)
-  obj.children = obj.children.map(parseTemplate)
+  const list = findFlat(wiki)
+  obj.children = list.map(parseTemplate)
 
   if (obj.children.length === 0) {
     return obj
   }
   // recurse through children
   obj.children.forEach((ch) => {
-    let inside = ch.body.substr(2)
+    let inside = ch.body.slice(2)
     if (hasTemplate.test(inside)) {
       return doEach(ch) //keep going
     }
@@ -35,7 +36,7 @@ const doEach = function (obj) {
 }
 
 // return a nested structure of all templates
-const findTemplates = function (wiki) {
+const findTemplates = function (wiki: string) {
   let list = findFlat(wiki)
   list = list.map(parseTemplate)
   list = list.map(doEach)
