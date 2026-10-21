@@ -25,7 +25,7 @@ class Table {
   }
 
   links() {
-    const items = this.#data.flatMap((row) => Object.keys(row).flatMap((key) => row[key].links()))
+    const items = this.#data.flatMap((row) => Object.keys(row).flatMap((key) => row[key].links))
     return items
   }
 

@@ -5,7 +5,7 @@ import isDisambig from './isDisambig.ts'
 import Section from '../02-section/Section.ts'
 import isStub from './isStub.ts'
 import Image from '../03-paragraph/image/Image.ts'
-import type { PageData, DocInfo } from '../../types/index.ts'
+import type { PageData, DocInfo, ImageData } from '../../types/index.ts'
 
 class Document {
   #data: PageData
@@ -143,18 +143,29 @@ class Document {
 
   // searches the whole page, including infobox and gallery templates, for images
   images() {
-    let arr = sectionMap(this, 'images', null)
+    let arr = []
+    // grab image from fetch/dumpster metadata
+    if (this.#info.pageImage) {
+      const imgdata: ImageData = {
+        file: this.#info.pageImage,
+        wiki: '',
+      }
+      const img = new Image(imgdata)
+      arr.push(img)
+    }
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
       let img = info.image
       if (img) {
-        arr.unshift(img) //put it at the top
+        arr.push(img) //put it at the top
       }
     })
+    arr = arr.concat(sectionMap(this, 'images', null))
     //look for 'gallery' templates, too
     this.templates().forEach((obj) => {
-      if (obj.data.template === 'gallery') {
-        obj.data.images.forEach((img) => {
+      const data = obj.json()
+      if (data.template === 'gallery') {
+        data.images.forEach((img) => {
           if (!(img instanceof Image)) {
             img.language = this.language
             img.domain = this.domain
@@ -164,7 +175,6 @@ class Document {
         })
       }
     })
-    // TODO: Image filename string selectors are not implemented.
     return arr
   }
 

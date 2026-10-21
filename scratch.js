@@ -16,7 +16,7 @@ The '''City of New York''', often called '''New York City'''
 `
 const doc = wtf(str, meta)
 // console.log(doc.text())
-console.log(doc.images())
+console.log(doc.images()[0].json())
 // console.log(doc.sections()[2].title())
 // console.log(doc.templates()[0].json())
 // console.log(doc.sections()[0].json())

@@ -53,7 +53,7 @@ test('may refer to', function (t) {
   const doc = wtf(str)
   t.equal(doc.isDisambiguation(), true, 'is-disambiguation')
   t.equal(doc.links().length, 4, 'links')
-  t.equal(doc.link().page(), 'Park Place (TV series)', 'first-link')
+  t.equal(doc.links()[0].page(), 'Park Place (TV series)', 'first-link')
   t.end()
 })
 

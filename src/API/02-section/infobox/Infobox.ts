@@ -28,7 +28,7 @@ class Infobox {
   }
 
   links() {
-    return Object.values(this.#data).flatMap((sentence: Sentence) => sentence.links())
+    return Object.values(this.#data).flatMap((block) => block.links)
   }
 
   image() {

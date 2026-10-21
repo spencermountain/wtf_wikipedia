@@ -31,12 +31,12 @@ test('cached-page-stress', (t) => {
     t.equal(doc.isDisambig(), false, `${title}:not-disambiguation`)
     t.ok(doc.categories().length > 0, `${title}:cat-length`)
     t.ok(doc.sections().length > 0, `${title}:section-length`)
-    const intro = doc.section()
+    const intro = doc.sections()[0]
     t.ok(intro.title() === '', `${title}:intro-title-empty`)
     t.ok(intro.indentation() === 0, `${title}:depth=0`)
     t.ok(intro.sentences().length > 0, `${title}:sentences-length`)
-    t.ok(intro.sentence().text().length > 0, `${title}:intro-text`)
-    t.match(intro.sentence().text(), /\p{L}/u, `${title}:intro-has words`)
+    t.ok(intro.sentences()[0].text().length > 0, `${title}:intro-text`)
+    t.match(intro.sentences()[0].text(), /\p{L}/u, `${title}:intro-has words`)
     if (noCitation[title] === true) {
       t.equal(doc.citations().length, 0, `${title}:no-citation`)
     } else {
