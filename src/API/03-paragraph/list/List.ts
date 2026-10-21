@@ -1,21 +1,11 @@
 import type { ListData } from '../../../types/index.ts'
 
-const toText = (list, options?) => {
-  return list
-    .map((s) => {
-      let str = s.text(options)
-      return ' * ' + str
-    })
-    .join('\n')
-}
-
 class List {
   #data: ListData
   #wiki: string
 
-  constructor(data: ListData, wiki: string) {
+  constructor(data: ListData) {
     this.#data = data
-    this.#wiki = wiki
   }
 
   lines() {
@@ -31,7 +21,13 @@ class List {
   }
 
   text() {
-    return toText(this.#data.items)
+    const items = this.#data.items
+    return items
+      .map((s) => {
+        let str = s.text()
+        return ' * ' + str
+      })
+      .join('\n')
   }
 
   wikitext() {

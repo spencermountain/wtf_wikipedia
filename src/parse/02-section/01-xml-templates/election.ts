@@ -5,16 +5,8 @@ import type { SectionData } from '../../../types/index.ts'
 //https://en.wikipedia.org/wiki/Template:Election_box
 const parseElection = function (section: SectionData) {
   section.remaining = section.remaining.replace(/\{\{election box begin(.+?)\{\{election box end\}\}/gis, (tmpl) => {
-    let data = {
-      _wiki: tmpl,
-      _templates: [],
-    }
-
     //put it through our full template parser..
-    parseTemplates(data)
-
-    //okay, pull it apart into something sensible..
-    let templates = data._templates.map((t) => t.json())
+    const { templates } = parseTemplates(tmpl)
 
     let start = templates.find((t) => t.template === 'election box') || {}
     let candidates = templates.filter((t) => t.template === 'election box candidate')
@@ -23,9 +15,11 @@ const parseElection = function (section: SectionData) {
     if (candidates.length > 0 || summary) {
       section.templates.push({
         template: 'election box',
-        title: start.title,
-        candidates: candidates,
-        summary: summary.data,
+        data: {
+          title: start.title,
+          candidates: candidates,
+          summary: summary.data,
+        },
       })
     }
 

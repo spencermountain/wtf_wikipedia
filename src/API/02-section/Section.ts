@@ -2,6 +2,8 @@ import toJSON from './toJson.ts'
 import setDefaults from '../_lib/setDefaults.ts'
 import Table from './table/Table.ts'
 import Reference from './reference/Reference.ts'
+import Infobox from './infobox/Infobox.ts'
+import Template from './template/Template.ts'
 import Paragraph from '../03-paragraph/Paragraph.ts'
 import type { SectionData } from '../../types/index.ts'
 
@@ -72,11 +74,13 @@ class Section {
   }
 
   templates() {
-    return this.#data.templates || []
+    const arr = this.#data.templates || []
+    return arr.map((t) => new Template(t))
   }
 
   infoboxes() {
-    return this.#data.infoboxes || []
+    const arr = this.#data.infoboxes || []
+    return arr.map((t) => new Infobox(t))
   }
 
   // TODO: Coordinates are plain data, not model collections.

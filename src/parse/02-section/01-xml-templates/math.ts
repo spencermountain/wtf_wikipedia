@@ -8,7 +8,7 @@ const parseMath = function (section: SectionData) {
     let formula = parseSentence(inside).text
     section.templates.push({
       template: 'math',
-      formula: formula,
+      data: { formula: formula },
       wiki: inside,
     })
 

@@ -1,11 +1,10 @@
 import postprocess from '../_lib/postprocess.ts'
 import parseLinks from './links/index.ts'
 import parseFmt from './formatting.ts'
-import sentenceParser from '../03-paragraph/03-sentences/parse.ts'
-import type { SentenceData } from '../../types/index.ts'
+import type { Block } from '../../types/index.ts'
 
 function fromText(str: string) {
-  let sentence: SentenceData = {
+  let sentence: Block = {
     text: str,
     wiki: str,
     links: [],

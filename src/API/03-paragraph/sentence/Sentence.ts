@@ -1,10 +1,10 @@
 import toJSON from './toJson.ts'
-import type { SentenceData } from '../../../types/index.ts'
-//where we store the formatting, link, date information
-class Sentence {
-  #data: SentenceData
+import type { Block } from '../../../types/index.ts'
 
-  constructor(data: SentenceData) {
+class Sentence {
+  #data: Block
+
+  constructor(data: Block) {
     this.#data = data
   }
 

@@ -1,7 +1,17 @@
+export interface Block {
+  text: string
+  wiki: string
+  links: LinkData[]
+  fmt: {
+    bold: string[]
+    italic: string[]
+  }
+}
+
 export interface TemplateData {
-  wiki: string // original wiki text
   template: string
-  text: string // remaining output text
+  wiki?: string // original wiki text
+  text?: string // remaining output text
   name?: string
   data?: object
   nested?: boolean
@@ -31,20 +41,10 @@ export type LinkData = {
   wiki: string
 }
 
-export type SentenceData = {
-  text: string
-  wiki: string
-  links: LinkData[]
-  fmt: {
-    bold: string[]
-    italic: string[]
-  }
-}
-
 export type ParagraphData = {
   wiki: string
   remaining: string
-  sentences: SentenceData[]
+  sentences: Block[]
   images: ImageData[]
   lists: ListData[]
 }

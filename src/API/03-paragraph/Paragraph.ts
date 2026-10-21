@@ -1,14 +1,9 @@
 import toJSON from './toJson.ts'
 import Sentence from './sentence/Sentence.ts'
+import Image from './image/Image.ts'
+import Infobox from '../02-section/infobox/Infobox.ts'
 import List from './list/List.ts'
-import setDefaults from '../_lib/setDefaults.ts'
 import type { ParagraphData } from '../../types/index.ts'
-
-const defaults = {
-  sentences: true,
-  lists: true,
-  images: true,
-}
 
 class Paragraph {
   #data: ParagraphData
@@ -29,7 +24,8 @@ class Paragraph {
   }
 
   images() {
-    return this.#data.images || []
+    const arr = this.#data.images || []
+    return arr.map((i) => new Image(i))
   }
 
   links() {
@@ -42,10 +38,9 @@ class Paragraph {
     return items[0] ?? null
   }
 
-  text(options?) {
-    options = setDefaults(options, defaults)
+  text() {
     let str = this.sentences()
-      .map((s) => s.text(options))
+      .map((s) => s.text())
       .join(' ')
     this.lists().forEach((list) => {
       str += '\n' + list.text()

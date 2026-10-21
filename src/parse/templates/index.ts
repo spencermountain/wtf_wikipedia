@@ -24,7 +24,7 @@ const allTemplates = function (wiki: string) {
         wiki: obj.body,
         nested: Boolean(obj.parent),
         text: text,
-        json: json,
+        data: json,
       }
       list.push(template)
     }
