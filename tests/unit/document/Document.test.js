@@ -55,190 +55,190 @@ test('pageID - get / set - if the pageID is set then it should return the same '
 //revisionID
 test('revisionID - get - should initially be null', (t) => {
   const doc = wtf('')
-  t.equal(doc.revisionID(), null, 'the revisionID equals null')
+  t.equal(doc.revisionID, null, 'the revisionID equals null')
   t.end()
 })
 
 test('revisionID - get - if the revisionID is already set than get it from internal object', (t) => {
   const doc = wtf('', { revisionID: 1 })
-  t.equal(doc.revisionID(), 1, 'the revisionID equals 1')
+  t.equal(doc.revisionID, 1, 'the revisionID equals 1')
   t.end()
 })
 
 test('revisionID - get / set - if the revisionID is set then it should return the same ', (t) => {
   const doc = wtf('')
   doc.revisionID(1)
-  t.equal(doc.revisionID(), 1, 'the revisionID equals 1')
+  t.equal(doc.revisionID, 1, 'the revisionID equals 1')
   t.end()
 })
 
 //wikidata
 test('wikidata - get - should initially be null', (t) => {
   const doc = wtf('')
-  t.equal(doc.wikidata(), null, 'the wikidata equals null')
+  t.equal(doc.wikidata, null, 'the wikidata equals null')
   t.end()
 })
 
 test('wikidata - get - if the wikidata is already set than get it from internal object', (t) => {
   const doc = wtf('', { wikidata: 'Q42' })
-  t.equal(doc.wikidata(), 'Q42', "the wikidata equals 'Q42'")
+  t.equal(doc.wikidata, 'Q42', "the wikidata equals 'Q42'")
   t.end()
 })
 
 test('wikidata - get / set - if the wikidata is set then it should return the same ', (t) => {
   const doc = wtf('')
   doc.wikidata('Q42')
-  t.equal(doc.wikidata(), 'Q42', "the wikidata equals 'Q42'")
+  t.equal(doc.wikidata, 'Q42', "the wikidata equals 'Q42'")
   t.end()
 })
 
 //domain
 test('domain - get - should initially be null', (t) => {
   const doc = wtf('')
-  t.equal(doc.domain(), null, 'the null equals undefined')
+  t.equal(doc.domain, null, 'the null equals undefined')
   t.end()
 })
 
 test('domain - get - if the domain is already set than get it from internal object', (t) => {
   const doc = wtf('', { domain: 'wikidata.org' })
-  t.equal(doc.domain(), 'wikidata.org', "the domain equals 'wikidata.org'")
+  t.equal(doc.domain, 'wikidata.org', "the domain equals 'wikidata.org'")
   t.end()
 })
 
 test('domain - get / set - if the domain is set then it should return the same ', (t) => {
   const doc = wtf('')
   doc.domain('wikidata.org')
-  t.equal(doc.domain(), 'wikidata.org', "the domain equals 'wikidata.org'")
+  t.equal(doc.domain, 'wikidata.org', "the domain equals 'wikidata.org'")
   t.end()
 })
 
 //language  - Same test as lang
 test('language - get - should initially be null', (t) => {
   const doc = wtf('')
-  t.equal(doc.language(), null, 'the language equals null')
+  t.equal(doc.language, null, 'the language equals null')
   t.end()
 })
 
 test('language - get - if the language is already set than get it from internal object', (t) => {
   const doc = wtf('', { language: 'nl' })
-  t.equal(doc.language(), 'nl', "the language equals 'nl'")
+  t.equal(doc.language, 'nl', "the language equals 'nl'")
   t.end()
 })
 
 test('language - get / set - if the language is set then it should return the same ', (t) => {
   const doc = wtf('')
   doc.language('nl')
-  t.equal(doc.language(), 'nl', "the language equals 'nl'")
+  t.equal(doc.language, 'nl', "the language equals 'nl'")
   t.end()
 })
 
 //lang - Same test as language
 test('lang - get - should initially be null', (t) => {
   const doc = wtf('')
-  t.equal(doc.lang(), null, 'the lang equals null')
+  t.equal(doc.lang, null, 'the lang equals null')
   t.end()
 })
 
 test('lang - get - if the lang is already set than get it from internal object', (t) => {
   const doc = wtf('', { language: 'nl' })
-  t.equal(doc.lang(), 'nl', "the lang equals 'nl'")
+  t.equal(doc.lang, 'nl', "the lang equals 'nl'")
   t.end()
 })
 
 test('lang - get / set - if the lang is set then it should return the same ', (t) => {
   const doc = wtf('')
   doc.lang('nl')
-  t.equal(doc.lang(), 'nl', "the lang equals 'nl'")
+  t.equal(doc.lang, 'nl', "the lang equals 'nl'")
   t.end()
 })
 
 //url
 test('url - get - if there is no title return null', (t) => {
   const doc = wtf('')
-  t.equal(doc.url(), null, 'the url equals null')
+  t.equal(doc.url, null, 'the url equals null')
   t.end()
 })
 
 test('url - get - if lang and domain are undefined then default to en.wikipedia.org', (t) => {
   const doc = wtf('', { title: 'Barack Obama' })
-  t.equal(doc.url(), 'https://en.wikipedia.org/wiki/Barack_Obama', 'the url equals the right page')
+  t.equal(doc.url, 'https://en.wikipedia.org/wiki/Barack_Obama', 'the url equals the right page')
   t.end()
 })
 
 test('url - get - if lang and domain are set then use them', (t) => {
   const doc = wtf('', { title: 'Barack Obama', language: 'military', domain: 'wikia.org' })
-  t.equal(doc.url(), 'https://military.wikia.org/wiki/Barack_Obama', 'the url equals the right page')
+  t.equal(doc.url, 'https://military.wikia.org/wiki/Barack_Obama', 'the url equals the right page')
   t.end()
 })
 
 //namespace  - same test as ns
 test('namespace - get - should initially be null', (t) => {
   const doc = wtf('')
-  t.equal(doc.namespace(), null, 'the namespace equals null')
+  t.equal(doc.namespace, null, 'the namespace equals null')
   t.end()
 })
 
 test('namespace - get - if the namespace is already set than get it from internal object', (t) => {
   const doc = wtf('', { ns: 'talk' })
-  t.equal(doc.namespace(), 'talk', "the namespace equals 'talk'")
+  t.equal(doc.namespace, 'talk', "the namespace equals 'talk'")
   t.end()
 })
 
 test('namespace - get - if the namespace is already set the other way than get it from internal object', (t) => {
   const doc = wtf('', { namespace: 'talk' })
-  t.equal(doc.namespace(), 'talk', "the namespace equals 'talk'")
+  t.equal(doc.namespace, 'talk', "the namespace equals 'talk'")
   t.end()
 })
 
 test('namespace - get / set - if the namespace is set then it should return the same ', (t) => {
   const doc = wtf('')
   doc.namespace('talk')
-  t.equal(doc.namespace(), 'talk', "the namespace equals 'talk'")
+  t.equal(doc.namespace, 'talk', "the namespace equals 'talk'")
   t.end()
 })
 
 //ns - same test as namespace
 test('ns - get - should initially be null', (t) => {
   const doc = wtf('')
-  t.equal(doc.ns(), null, 'the ns equals null')
+  t.equal(doc.ns, null, 'the ns equals null')
   t.end()
 })
 
 test('ns - get - if the ns is already set than get it from internal object', (t) => {
   const doc = wtf('', { ns: 'talk' })
-  t.equal(doc.ns(), 'talk', "the ns equals 'talk'")
+  t.equal(doc.namespace, 'talk', "the ns equals 'talk'")
   t.end()
 })
 
 test('ns - get - if the ns is already set the other way than get it from internal object', (t) => {
   const doc = wtf('', { ns: 'talk' })
-  t.equal(doc.ns(), 'talk', "the ns equals 'talk'")
+  t.equal(doc.namespace, 'talk', "the ns equals 'talk'")
   t.end()
 })
 
 test('ns - get / set - if the ns is set then it should return the same ', (t) => {
   const doc = wtf('')
   doc.ns('talk')
-  t.equal(doc.ns(), 'talk', "the ns equals 'talk'")
+  t.equal(doc.namespace, 'talk', "the ns equals 'talk'")
   t.end()
 })
 
 //isRedirect
 test('isRedirect - get - should initially be false', (t) => {
   const doc = wtf('')
-  t.equal(doc.isRedirect(), false, 'the isRedirect equals false')
+  t.equal(doc.isRedirect, false, 'the isRedirect equals false')
   t.end()
 })
 
 test('isRedirect - get - if the type of page is should default to page and return false', (t) => {
   const doc = wtf('', { type: 'redirect' })
-  t.equal(doc.isRedirect(), false, 'the empty-string isRedirect equals false')
+  t.equal(doc.isRedirect, false, 'the empty-string isRedirect equals false')
   t.end()
 })
 
 test('isRedirect - get - if the page is a redirect than return true', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.equal(doc.isRedirect(), true, 'the DOORVERWIJZING isRedirect equals true')
+  t.equal(doc.isRedirect, true, 'the DOORVERWIJZING isRedirect equals true')
   t.end()
 })
 

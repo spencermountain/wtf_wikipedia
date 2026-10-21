@@ -7,18 +7,18 @@ import keyMaker from './02-keyMaker.ts'
 import cleanup from './03-cleanup.ts'
 
 const makeFormat = function (str, fmt) {
-  let sentence = parseBlock(str)
+  let block = parseBlock(str)
   //support various output formats
   if (fmt === 'json') {
-    return sentence
+    return block
   } else if (fmt === 'raw') {
-    return sentence
+    return block
   }
   //default to flat text
-  return sentence.text
+  return block.text
 }
 
-const parser = function (tmpl, order = [], fmt?: string) {
+const parser = function (tmpl: string, order = [], fmt?: string) {
   //remove {{}}'s and split based on pipes
   tmpl = strip(tmpl || '')
   let arr = pipeSplitter(tmpl)

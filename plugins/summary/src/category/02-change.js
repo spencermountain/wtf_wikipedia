@@ -4,7 +4,7 @@ const useAn = function (str) {
   const a_regexs = [
     /^onc?e/i, //'wu' sound of 'o'
     /^u[bcfhjknq-t][aeiou]/i, // 'yu' sound for hard 'u'
-    /^eul/i
+    /^eul/i,
   ]
   for (let i = 0; i < a_regexs.length; i++) {
     if (a_regexs[i].test(str)) {
@@ -21,7 +21,10 @@ const useAn = function (str) {
 // 'American songwriters' to 'an American songwriter'
 const changeCat = function (cat, options) {
   const c = nlp(cat)
-  const hadCapital = c.terms().out('array').map((w) => /^[A-Z]/.test(w))
+  const hadCapital = c
+    .terms()
+    .out('array')
+    .map((w) => /^[A-Z]/.test(w))
   c.nouns().toSingular()
   // compromise-14 lowercases words when it singularizes them - restore our capitals
   const terms = c.terms()
@@ -35,7 +38,6 @@ const changeCat = function (cat, options) {
     let article = 'A'
     // let noun = c.nouns(0)
     if (useAn(cat) === true) {
-      // console.log(c.nouns(0))
       // article = c.nouns(0).json({ terms: false })[0].article || article
       article = 'An'
     }

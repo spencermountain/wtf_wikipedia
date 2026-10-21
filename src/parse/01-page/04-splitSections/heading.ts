@@ -1,17 +1,5 @@
-import { trim_whitespace } from '../../../_lib/helpers.ts'
 import parseBlock from '../../block/index.ts'
 const heading_reg = /^(={1,6})(.{1,200}?)={1,6}$/ //eslint-disable-line
-// Commit to the first opening delimiter on each line before looking for its end.
-// const hasTemplate = /^(?=(.*?\{\{))\1.+?\}\}/m
-
-// const doInlineTemplates = function (wiki, doc?) {
-//   let list = getTemplates(wiki)
-//   list.forEach((item) => {
-//     let [txt] = parseTemplates(item, doc)
-//     wiki = wiki.replace(item.body, txt)
-//   })
-//   return wiki
-// }
 
 //estimates the depth of a section and normalizes its title
 const parseHeading = function (heading: string) {
@@ -19,23 +7,12 @@ const parseHeading = function (heading: string) {
   if (!prefix || !title) {
     return { title: '', depth: 0 }
   }
-
-  title = parseBlock(title).text
-  //trim leading/trailing whitespace
-  title = trim_whitespace(title)
   // count number of == characters to determine depth
   let depth = prefix.length - 2
+  const block = parseBlock(title.trim())
+  block.wiki = heading
 
-  //amazingly, you can see inline {{templates}} in this text, too
-  // if (hasTemplate.test(title)) {
-  // title = doInlineTemplates(title)
-  // }
-  //same for references (i know..)
-  // let obj = { _wiki: title }
-  // parseReferences(obj)
-  // title = obj._wiki
-
-  return { title, depth }
+  return { block, depth }
 }
 
 export default parseHeading

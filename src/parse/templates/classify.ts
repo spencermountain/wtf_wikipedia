@@ -25,7 +25,7 @@ const sortOut = function (templates: TemplateData[]) {
       return
     }
     // is it an Infobox?
-    if (json.template === 'infobox' && json?.subbox !== 'yes') {
+    if (obj.template === 'infobox' && json?.subbox !== 'yes') {
       // json.domain = domain //infoboxes need this for images, i guess
       res.infoboxes.push(obj)
       return

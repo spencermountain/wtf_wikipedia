@@ -56,7 +56,7 @@ export type ParagraphData = {
 export type TableData = string[][]
 
 export interface SectionData {
-  title: string //BlockData
+  title: BlockData
   depth: number
   wiki: string
   index: number

@@ -128,9 +128,6 @@ const parseCoor = function (tmpl) {
   return obj
 }
 
-//console.log(parseDms([57, 18, 22, 'N']));
-//console.log(parseDms([4, 27, 32, 'W']));
-
 export default parseCoor
 // {{Coor title dms|dd|mm|ss|N/S|dd|mm|ss|E/W|template parameters}}
 // {{Coor title dec|latitude|longitude|template parameters}}

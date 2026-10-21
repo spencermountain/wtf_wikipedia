@@ -4,7 +4,11 @@ import parseFmt from './formatting.ts'
 import type { BlockData } from '../../types/index.ts'
 
 function fromText(str: string): BlockData {
-  let sentence: BlockData = {
+  if (typeof str !== 'string') {
+    console.error(str)
+    throw new Error('str must be a string', str)
+  }
+  let block: BlockData = {
     text: str,
     wiki: str,
     links: [],
@@ -14,12 +18,12 @@ function fromText(str: string): BlockData {
     },
   }
   //pull-out the [[links]]
-  parseLinks(sentence)
-  sentence.text = postprocess(sentence.text)
+  parseLinks(block)
+  block.text = postprocess(block.text)
   //pull-out the bolds and ''italics''
-  sentence = parseFmt(sentence)
+  block = parseFmt(block)
   //pull-out things like {{start date|...}}
-  return sentence
+  return block
 }
 
 export default fromText

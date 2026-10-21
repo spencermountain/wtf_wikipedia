@@ -57,12 +57,6 @@ const doSentence = function (doc, options) {
   if (isGood(after, options)) {
     return post(after)
   }
-  // console.log(after.text())
-  // count += 1
-  // console.log(count)
-  // console.log(after.match('#PastTense').text())
-  // console.log(after.text())
-  // console.log('\n')
   return ''
 }
 export default doSentence

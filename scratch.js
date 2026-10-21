@@ -1,16 +1,24 @@
 import wtf from './src/index.ts'
 import { readPage } from './tests/_examples/index.js'
+let str = ''
 
-// const str = readPage('United-Kingdom')
-const str = ` ### hello [[world]]
-  {{Start date and age|2019|12|18}}
+const meta = {
+  pageImage: 'Grand_Bend_2.JPG',
+}
+// str = readPage('United-Kingdom')
+// str =
+// '[[File:Stonehenge, Condado de Wiltshire, Inglaterra, 2014-08-12, DD 18.JPG|thumb|[[Stonehenge]], in [[Wiltshire]], was erected around 2500 BC]]'
+str = `hello
+==hello [[world]]==
+{{Start date and age|2019|12|18}}
 
 The '''City of New York''', often called '''New York City'''
 `
-const doc = wtf(str)
-console.log(doc.text())
-console.log(doc.sections()[0].json())
-console.log(doc.templates()[0].json())
+const doc = wtf(str, meta)
+// console.log(doc.text())
+console.log(doc.images())
+// console.log(doc.sections()[2].title())
+// console.log(doc.templates()[0].json())
 // console.log(doc.sections()[0].json())
 // console.log('title', doc.title)
 // console.log('wikitext', doc.wikitext())

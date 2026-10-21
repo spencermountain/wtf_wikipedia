@@ -14,7 +14,7 @@ class Section {
   }
 
   title() {
-    return this.#data.title || ''
+    return this.#data.title?.text || ''
   }
 
   index() {

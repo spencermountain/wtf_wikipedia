@@ -123,5 +123,3 @@ const toTextBritish = function (date) {
 }
 
 export { toText, toTextBritish, ymd }
-
-// console.log(toText(ymd([2018, 3, 28])));

@@ -1,12 +1,12 @@
 import findTemplates from './find/01-nested.ts'
 import parseTemplate from './parse/index.ts'
-import sortOut from './sortOut.ts'
+import classify from './classify.ts'
 import type { TemplateData } from '../../types/index.ts'
 import type { NestedNode } from './types.ts'
 
 // return a flat list of all {{templates}}
 const allTemplates = function (wiki: string) {
-  let list = []
+  let final = []
   //nested data-structure of templates
   let nested: NestedNode[] = findTemplates(wiki)
   //recursive template-parser
@@ -17,18 +17,16 @@ const allTemplates = function (wiki: string) {
       obj.children.forEach((ch) => parseNested(ch, obj))
     }
     //parse template into json, return replacement wikitext
-    let [text, json] = parseTemplate(obj)
-    obj.wiki = text
+    let [text, json] = parseTemplate(obj.body, obj.name)
     if (json) {
       let template: TemplateData = {
+        ...json,
         template: obj.name,
         name: obj.name,
         wiki: obj.body,
-        // nested: Boolean(obj.parent),
         text: text,
-        data: json,
       }
-      list.push(template)
+      final.push(template)
     }
     //remove the text from every parent
     const removeIt = function (node: NestedNode, body: string, out: string) {
@@ -38,9 +36,9 @@ const allTemplates = function (wiki: string) {
       }
     }
     // Expanded equals signs are value text, not outer parameter assignments.
-    let value = String(obj.wiki).replace(/=/g, '&#61;')
+    let value = String(text).replace(/=/g, '&#61;')
     removeIt(obj, obj.body, value)
-    wiki = wiki.replace(obj.body, obj.parent ? value : obj.wiki)
+    wiki = wiki.replace(obj.body, obj.parent ? value : text)
   }
   //kick it off
   nested.forEach((node) => parseNested(node, null))
@@ -48,7 +46,7 @@ const allTemplates = function (wiki: string) {
   nested.forEach((node) => {
     wiki = wiki.replace(node.body, node.wiki)
   })
-  return { templates: list, remaining: wiki }
+  return { templates: final, remaining: wiki }
 }
 
 //find + parse all templates in the section
@@ -56,7 +54,7 @@ const process = function (wiki: string) {
   // find+parse them all
   let { templates, remaining } = allTemplates(wiki)
   // split-out references and infoboxes
-  const { infoboxes, references, others } = sortOut(templates)
+  const { infoboxes, references, others } = classify(templates)
   return {
     infoboxes,
     references,

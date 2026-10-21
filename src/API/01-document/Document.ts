@@ -154,11 +154,10 @@ class Document {
     //look for 'gallery' templates, too
     this.templates().forEach((obj) => {
       if (obj.data.template === 'gallery') {
-        obj.data.images ||= []
         obj.data.images.forEach((img) => {
           if (!(img instanceof Image)) {
-            img.language = this.language()
-            img.domain = this.domain()
+            img.language = this.language
+            img.domain = this.domain
             img = new Image(img)
           }
           arr.push(img)
@@ -233,13 +232,13 @@ class Document {
   }
 
   debug() {
-    console.log('\n')
+    console.log('\n') // eslint-disable-line no-console
     this.sections().forEach((sec) => {
       let indent = ' - '
       for (let i = 0; i < sec.depth(); i += 1) {
         indent = ' -' + indent
       }
-      console.log(indent + (sec.title() || '(Intro)'))
+      console.log(indent + (sec.title() || '(Intro)')) // eslint-disable-line no-console
     })
     return this
   }
