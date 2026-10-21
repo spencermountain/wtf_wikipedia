@@ -78,20 +78,20 @@ const toJSON = function (doc, options) {
   }
 
   // metadata
-  if (options.pageID && doc.pageID()) {
-    data.pageID = doc.pageID()
+  if (options.pageID && doc.pageID) {
+    data.pageID = doc.pageID
   }
-  if (options.wikidata && doc.wikidata()) {
-    data.wikidata = doc.wikidata()
+  if (options.wikidata && doc.wikidata) {
+    data.wikidata = doc.wikidata
   }
-  if (options.revisionID && doc.revisionID()) {
-    data.revisionID = doc.revisionID()
+  if (options.revisionID && doc.revisionID) {
+    data.revisionID = doc.revisionID
   }
-  if (options.timestamp && doc.timestamp()) {
-    data.timestamp = doc.timestamp()
+  if (options.timestamp && doc.timestamp) {
+    data.timestamp = doc.timestamp
   }
   if (options.description) {
-    let desc = doc.description()
+    let desc = doc.description
     // for presets, fall-back to the first sentence when the wikidata description is missing
     if (!desc && isPreset && doc.sentence()) {
       desc = doc.sentence().text()

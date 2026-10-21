@@ -26,7 +26,7 @@ class Document {
     let guess = null
     let sen = this.sentences()[0]
     if (sen) {
-      guess = sen.fmt?.bold || null
+      guess = sen.bolds()[0] || null
     }
     return guess
   }
@@ -83,10 +83,10 @@ class Document {
     this.#info.description = str
   }
   get pageImage() {
-    return this.#info._pageImage || null
+    return this.#info.pageImage || null
   }
   set pageImage(str) {
-    this.#info._pageImage = str
+    this.#info.pageImage = str
   }
 
   // don'y allow setting thesese

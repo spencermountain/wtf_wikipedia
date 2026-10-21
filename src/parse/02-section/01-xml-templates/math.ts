@@ -9,7 +9,7 @@ const parseMath = function (section: SectionData) {
     section.templates.push({
       template: 'math',
       formula: formula,
-      raw: inside,
+      wiki: inside,
     })
 
     //should we at least try to render it in plaintext? :/
@@ -26,6 +26,7 @@ const parseMath = function (section: SectionData) {
     section.templates.push({
       template: 'chem',
       data: inside,
+      wiki: inside,
     })
 
     //return empty string to remove the template from the wiki text

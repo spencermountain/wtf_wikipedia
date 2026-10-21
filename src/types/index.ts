@@ -1,8 +1,9 @@
 export interface TemplateData {
   wiki: string // original wiki text
+  template: string
   text: string // remaining output text
-  name: string
-  json: object
+  name?: string
+  data?: object
   nested?: boolean
 }
 
@@ -35,8 +36,8 @@ export type SentenceData = {
   wiki: string
   links: LinkData[]
   fmt: {
-    bold?: string[]
-    italic?: string[]
+    bold: string[]
+    italic: string[]
   }
 }
 
@@ -66,7 +67,7 @@ export interface SectionData {
 
 export interface PageData {
   // original text input
-  wikitext: string
+  wiki: string
   remaining: string
 
   // optional data from api/dumpster

@@ -1,4 +1,4 @@
-import type { SentenceData } from '../../../types/index.ts'
+import type { SentenceData } from '../../types/index.ts'
 
 //handle the bold/italics
 const formatting = function (obj: SentenceData) {
@@ -30,11 +30,9 @@ const formatting = function (obj: SentenceData) {
   //pack it all up..
   obj.text = wiki
   if (bolds.length > 0) {
-    obj.fmt ||= {}
     obj.fmt.bold = bolds
   }
   if (italics.length > 0) {
-    obj.fmt ||= {}
     obj.fmt.italic = italics
   }
   return obj

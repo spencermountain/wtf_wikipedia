@@ -13,9 +13,8 @@ class Table {
   #data: TableData
   #wiki: string
 
-  constructor(data: TableData, wiki: string = '') {
+  constructor(data: TableData) {
     this.#data = data
-    this.#wiki = wiki
   }
 
   get data() {
@@ -47,7 +46,7 @@ class Table {
     // array gets obj-list
     keys = keys.map(normalize).map((k) => mapping[k] || k)
     return this.#data.map((row) => {
-      return Object.fromEntries(keys.map((k) => [k, row[k] ? row[k].text() : '']))
+      return Object.fromEntries(keys.map((k) => [k, row[k] || '']))
     })
   }
 
@@ -62,7 +61,7 @@ class Table {
   }
 
   json() {
-    return toJson(this.#data, {})
+    return this.#data
   }
 
   text() {

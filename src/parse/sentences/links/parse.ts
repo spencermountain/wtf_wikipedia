@@ -7,13 +7,13 @@ const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500
 const link_reg = /\[\[((?:\[[^[\]\r\n]*\]|[^[\]\r\n]){0,1600})\]\]([a-z]+)?/gi //allow dangling suffixes - "[[flanders]]s"
 
 const external_links = function (links, str) {
-  str.replace(external_link, function (raw, protocol, link, text) {
+  str.replace(external_link, function (wiki, protocol, link, text) {
     text ||= ''
     links.push({
       type: 'external',
       site: protocol + link,
       text: text.trim(),
-      raw: raw,
+      wiki: wiki,
     })
     return text
   })
@@ -22,7 +22,7 @@ const external_links = function (links, str) {
 
 const internal_links = function (links, str) {
   //regular links
-  str.replace(link_reg, function (raw, s, suffix) {
+  str.replace(link_reg, function (wiki, s, suffix) {
     let txt = null
     //make a copy of original
     let link = s
@@ -48,7 +48,7 @@ const internal_links = function (links, str) {
     //remove anchors from end [[toronto#history]]
     let obj: any = {
       page: link,
-      raw: raw,
+      wiki: wiki,
     }
     obj.page = obj.page.replace(/#(.*)/, (a, b) => {
       obj.anchor = b

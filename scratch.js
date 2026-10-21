@@ -1,15 +1,11 @@
 import wtf from './src/index.ts'
 import { readPage } from './tests/_examples/index.js'
 
-// const pageStr = readPage('United-Kingdom')
-const str = `
-before
-[[working]]
-{{profit}}
-after`
+const str = readPage('United-Kingdom')
+// const str = `[[Doug Ford#Personal Life]]`
 // {{fbicon|GER|name=GER}}
 const doc = wtf(str)
-
+console.log(doc.references()[0])
 // console.log(doc.text())
 // console.log(doc.sections()[0].json())
 // console.log('title', doc.title)
@@ -27,11 +23,11 @@ const doc = wtf(str)
 // console.log('interwiki', doc.interwiki())
 // console.log('lists', doc.lists())
 // console.log('tables', doc.tables())
-// console.log('templates', doc.templates())
 // console.log('references', doc.references())
 // console.log('citations', doc.citations())
 // console.log('coordinates', doc.coordinates())
-// console.log('infoboxes', doc.infoboxes())
+// console.log('templates', doc.templates())
+// console.log('infoboxes', doc.infobox())
 // console.log('debug', doc.debug())
 // console.log('infobox', doc.infobox())
 // console.log('isDisambig', doc.isDisambig())
@@ -39,4 +35,4 @@ const doc = wtf(str)
 // console.log('redirect', doc.redirect())
 // console.log('links', doc.links())
 // console.log('text', doc.text())
-console.log('json', doc.json())
+// console.log('json', doc.json())

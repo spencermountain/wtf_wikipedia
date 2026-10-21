@@ -6,7 +6,15 @@ const skip = {
 }
 // Start once per line; the closing parenthesis must still end the whole title.
 const paren = /^[^(\r\n\u2028\u2029]*\((.*)\)(?![\s\S])/m
+const listOf = /^list of ./
+const disambig = /\(disambiguation\)/
 
+const skipPage = function (doc) {
+  const title = doc.title() || ''
+
+  //look at parentheses like 'Tornado (film)'
+  const m = title.match(paren)
+  if (!m) {
     return null
   }
   let inside = m[1] || ''

@@ -1,5 +1,7 @@
 import toJSON from './toJson.ts'
 import setDefaults from '../_lib/setDefaults.ts'
+import Table from './table/Table.ts'
+import Reference from './reference/Reference.ts'
 import Paragraph from '../03-paragraph/Paragraph.ts'
 import type { SectionData } from '../../types/index.ts'
 
@@ -9,14 +11,6 @@ const defaults = {
   paragraphs: true,
   templates: true,
   infoboxes: true,
-}
-
-//return the first, or n-th element of an array
-const getNth = function (arr, clue) {
-  if (typeof clue === 'number') {
-    return arr[clue] || null
-  }
-  return arr[0] || null
 }
 
 //the Section class represents the == title == sections of an article
@@ -73,7 +67,8 @@ class Section {
 
   // TODO: Table collections have nested JSON; keep plain arrays for now.
   tables() {
-    return this.#data.tables || []
+    const arr = this.#data.tables || []
+    return arr.map((t) => new Table(t))
   }
 
   templates() {
@@ -112,7 +107,8 @@ class Section {
   }
 
   references() {
-    return this.#data.references || []
+    const arr = this.#data.references || []
+    return arr.map((r) => new Reference(r))
   }
 
   //outputs

@@ -1,5 +1,5 @@
-import makeHeaders from './_headers.js'
-import { normalize, defaults, toUrlParams } from './_fns.js'
+import makeHeaders from './_headers.ts'
+import { normalize, defaults, toUrlParams } from './_fns.ts'
 
 const params = {
   action: 'query',
@@ -20,7 +20,15 @@ const makeUrl = function (title, options, append) {
     url += append
   }
   return url
+}
 
+const getPageViews = function (doc, options, http) {
+  options = { ...defaults, ...options }
+  const url = makeUrl(doc.title(), options)
+  const headers = makeHeaders(options)
+  return http(url, headers).then((res) => {
+    const pages = Object.keys(res.query.pages || {})
+    if (pages.length === 0) {
       return []
     }
     return res.query.pages[pages[0]].pageviews || []

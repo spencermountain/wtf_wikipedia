@@ -6,9 +6,8 @@ class Reference {
   #data: ReferenceData
   #wiki: string
 
-  constructor(data: ReferenceData, wiki: string) {
+  constructor(data: ReferenceData) {
     this.#data = data
-    this.#wiki = wiki
   }
 
   title() {
