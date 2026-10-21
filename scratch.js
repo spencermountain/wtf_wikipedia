@@ -5,7 +5,6 @@ let str = ''
 const meta = {
   pageImage: 'Grand_Bend_2.JPG',
 }
-// str = readPage('United-Kingdom')
 str = '[[Stonehenge]], in [[Wiltshire]], was erected around 2500 BC'
 str = `
 '''Park Place''' may refer to:
@@ -19,6 +18,7 @@ str = `
 * [[Park Place (Vancouver)]], a skyscraper
 * [[Park Place Mall]], Lethbridge, Alberta
 `
+str = readPage('United-Kingdom')
 // str = `hello
 // ==hello [[world]]==
 // {{Start date and age|2019|12|18}}
@@ -27,10 +27,13 @@ str = `
 // `
 const doc = wtf(str, meta)
 // console.log(doc.text())
-console.log(doc.links()[0])
+// console.log(doc.links()[0])
 // console.log(doc.images()[0].json())
 // console.log(doc.sections()[2].title())
-// console.log(doc.templates()[0].json())
+const found = doc.template('main srticle')
+console.log('found', found.json())
+// found.forEach((t) => console.log(t.json()))
+// doc.templates().forEach((t) => console.log(t.json()))
 // console.log(doc.sections()[0].json())
 // console.log('title', doc.title)
 // console.log('wikitext', doc.wikitext())

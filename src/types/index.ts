@@ -62,7 +62,6 @@ export interface SectionData {
   wiki: string
   index: number
   remaining: string
-
   templates: TemplateData[]
   infoboxes: InfoboxData[]
   references: ReferenceData[]

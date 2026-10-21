@@ -3,17 +3,15 @@ import Reference from './reference/Reference.ts'
 import Infobox from './infobox/Infobox.ts'
 import Template from './template/Template.ts'
 import Paragraph from '../03-paragraph/Paragraph.ts'
-import type { SectionData } from '../../types/index.ts'
+import type { SectionData, BlockData } from '../../types/index.ts'
 
 //the Section class represents the == title == sections of an article
 class Section {
-  #data: Partial<SectionData>
+  #data: SectionData
 
-  // Missing lookups return a usable empty section without adding it to the document.
-  constructor(data: Partial<SectionData> = {}) {
+  constructor(data: SectionData) {
     this.#data = data
   }
-
   title() {
     return this.#data.title?.text || ''
   }
@@ -25,6 +23,9 @@ class Section {
     return this.#data.depth || 0
   }
 
+  sentence() {
+    return this.paragraphs()[0]?.sentence()
+  }
   sentences() {
     return this.paragraphs().flatMap((p) => p.sentences())
   }
@@ -64,9 +65,15 @@ class Section {
     return arr.map((t) => new Table(t))
   }
 
-  templates() {
-    const arr = this.#data.templates || []
-    return arr.map((t) => new Template(t))
+  template(clue?: string) {
+    return this.templates(clue)[0] ?? Template.empty()
+  }
+  templates(clue?: string) {
+    let arr = this.#data.templates.map((t) => new Template(t))
+    if (clue) {
+      return arr.filter((t) => t.type === clue)
+    }
+    return arr
   }
 
   infoboxes() {
@@ -117,6 +124,10 @@ class Section {
     return this.#data
   }
 
+  isEmpty() {
+    return Object.keys(this.#data).length === 0
+  }
+
   // aliases
   wikitext() {
     return this.#data.wiki || ''
@@ -126,6 +137,21 @@ class Section {
   }
   citations() {
     return this.references()
+  }
+
+  static empty() {
+    return new Section({
+      title: {} as BlockData,
+      depth: 0,
+      wiki: '',
+      index: 0,
+      remaining: '',
+      templates: [],
+      infoboxes: [],
+      references: [],
+      tables: [],
+      paragraphs: [],
+    })
   }
 }
 export default Section

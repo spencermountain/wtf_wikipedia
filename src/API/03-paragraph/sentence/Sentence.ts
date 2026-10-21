@@ -10,6 +10,15 @@ class Sentence extends Block {
     this.#data = data
   }
 
+  static empty() {
+    // Only this factory bypasses the required fields for a missing sentence.
+    return new Sentence({} as BlockData)
+  }
+
+  isEmpty() {
+    return Object.keys(this.#data).length === 0
+  }
+
   links() {
     const items = this.#data.links || []
     return items.map((item) => new Link(item))

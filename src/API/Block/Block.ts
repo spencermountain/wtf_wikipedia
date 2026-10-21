@@ -12,10 +12,10 @@ class Block {
     return this.#data.fmt || {}
   }
   bolds() {
-    return this.#data.fmt.bold || []
+    return this.#data.fmt?.bold || []
   }
   italics() {
-    return this.#data.fmt.italic || []
+    return this.#data.fmt?.italic || []
   }
   text() {
     return this.#data.text || ''

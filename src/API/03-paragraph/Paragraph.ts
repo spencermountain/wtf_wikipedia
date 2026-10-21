@@ -11,6 +11,9 @@ class Paragraph {
     this.#data = data
   }
 
+  sentence() {
+    return this.sentences()[0] || Sentence.empty()
+  }
   sentences() {
     const arr = this.#data.sentences || []
     return arr.map((s) => new Sentence(s))

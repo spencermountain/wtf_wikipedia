@@ -3,6 +3,7 @@ import sectionMap from './_sectionMap.ts'
 import toJSON from './toJson.ts'
 import isDisambig from './isDisambig.ts'
 import Section from '../02-section/Section.ts'
+import Template from '../02-section/template/Template.ts'
 import isStub from './isStub.ts'
 import Image from '../03-paragraph/image/Image.ts'
 import type { PageData, DocInfo, ImageData } from '../../types/index.ts'
@@ -135,17 +136,20 @@ class Document {
 
   section(clue: string | number = 0): Section {
     const sections = this.sections()
-    if (typeof clue === 'string') {
-      const title = clue.trim().toLowerCase()
-      return sections.find((section) => section.title().trim().toLowerCase() === title) ?? new Section()
+    if (typeof clue === 'number') {
+      return sections[clue] ?? Section.empty()
     }
-    return sections[clue] ?? new Section()
+    const found = sections.find((section) => section.title().trim().toLowerCase() === clue.trim().toLowerCase())
+    return found ?? Section.empty()
   }
 
   paragraphs() {
     return this.sections().flatMap((section) => section.paragraphs())
   }
 
+  sentence() {
+    return this.sections()[0].sentence()
+  }
   sentences() {
     return this.sections().flatMap((section) => section.sentences())
   }
@@ -171,19 +175,19 @@ class Document {
     })
     arr = arr.concat(sectionMap(this, 'images', null))
     //look for 'gallery' templates, too
-    this.templates().forEach((obj) => {
-      const data = obj.json()
-      if (data.template === 'gallery') {
-        data.images.forEach((img) => {
-          if (!(img instanceof Image)) {
-            img.language = this.language
-            img.domain = this.domain
-            img = new Image(img)
-          }
-          arr.push(img)
-        })
-      }
-    })
+    // this.templates().forEach((obj) => {
+    //   const data = obj.json()
+    //   if (data.template === 'gallery') {
+    //     data.images.forEach((img) => {
+    //       if (!(img instanceof Image)) {
+    //         img.language = this.language
+    //         img.domain = this.domain
+    //         img = new Image(img)
+    //       }
+    //       arr.push(img)
+    //     })
+    //   }
+    // })
     return arr
   }
 
@@ -205,8 +209,14 @@ class Document {
     return sectionMap(this, 'tables', null)
   }
 
-  templates() {
+  template(clue?: string) {
+    return this.templates(clue)[0] ?? Template.empty()
+  }
+  templates(clue?: string) {
     const items = this.sections().flatMap((sec) => sec.templates())
+    if (clue) {
+      return items.filter((t) => t.type === clue)
+    }
     return items
   }
 

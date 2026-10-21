@@ -105,6 +105,8 @@ declare class Document {
 }
 
 declare class Section {
+  static empty(): Section
+  isEmpty(): boolean
   child(selector?: string | number): Section | null
   children(selector?: string | number): SectionCollection
   citations(clue?: number): Collection<Reference>
@@ -234,6 +236,7 @@ declare class List {
 }
 
 declare class Sentence {
+  static empty(): Sentence
   bold(clue?: number): string | null
   bolds(clue?: number): string[]
   interwiki(selector?: string | number): LinkCollection

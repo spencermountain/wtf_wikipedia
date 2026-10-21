@@ -10,6 +10,9 @@ class Template {
     this.#text = text
     this.#wiki = wiki
   }
+  get type() {
+    return this.#data.template || this.#data.name
+  }
 
   text() {
     return this.#text || ''
@@ -21,6 +24,14 @@ class Template {
 
   wikitext() {
     return this.#wiki || ''
+  }
+  isEmpty() {
+    return Object.keys(this.#data).length === 0
+  }
+  static empty() {
+    return new Template({
+      template: '',
+    })
   }
 }
 
