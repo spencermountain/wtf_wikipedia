@@ -64,7 +64,7 @@ test('by title', function (t) {
 * [[Park Place (Vancouver)]], a skyscraper
   `
   const doc = wtf(str)
-  doc.title('Park Place (disambiguation)')
+  doc.title = 'Park Place (disambiguation)'
   t.equal(doc.isDisambiguation(), true, 'is-disambiguation')
   t.end()
 })
@@ -89,7 +89,7 @@ test('by i18n title', function (t) {
 * [[Park Place (Vancouver)]], a skyscraper
   `
   const doc = wtf(str)
-  doc.title('Park Place (توضيح)')
+  doc.title = 'Park Place (توضيح)'
   t.equal(doc.isDisambiguation(), true, 'is-disambiguation')
   t.end()
 })

@@ -1,3 +1,12 @@
+export type LinkData = {
+  text: string
+  type?: string
+  page?: string
+  anchor?: string
+  site?: string
+  wiki: string
+}
+
 export interface BlockData {
   text: string
   wiki: string
@@ -33,15 +42,6 @@ export type ImageData = {
 }
 export type ListData = {
   items: BlockData[]
-  wiki: string
-}
-
-export type LinkData = {
-  text: string
-  type?: string
-  page?: string
-  anchor?: string
-  site?: string
   wiki: string
 }
 

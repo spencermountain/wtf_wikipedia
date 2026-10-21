@@ -1,15 +1,11 @@
 import type { LinkData } from '../../../types/index.ts'
 import wikis from '../../../_data/interwiki.ts'
 
-const defaults = {
-  type: 'internal',
-}
-
 class Link {
   #data: LinkData
 
   constructor(data: LinkData) {
-    this.#data = { ...defaults, ...data }
+    this.#data = data
   }
 
   text() {

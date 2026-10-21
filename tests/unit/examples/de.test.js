@@ -22,7 +22,7 @@ test('BBDO', (t) => {
 
 test('Bazooka', (t) => {
   const doc = wtf(readPage('Bazooka'))
-  t.equal(doc.title(), 'Bazooka', 'Bazooka: weapon name')
+  t.equal(doc.title, 'Bazooka', 'Bazooka: weapon name')
   t.ok(
     doc.images().some((image) => /Bazookas[ _]Korea\.jpg$/.test(image.file())),
     'Bazooka: Korean War photograph'
@@ -40,7 +40,7 @@ test('Bazooka', (t) => {
 
 test('HMS-Irresistible', (t) => {
   const doc = wtf(readPage('HMS-Irresistible'))
-  t.equal(doc.title(), 'HMS Irresistible', 'HMS-Irresistible: ship name')
+  t.equal(doc.title, 'HMS Irresistible', 'HMS-Irresistible: ship name')
   t.ok(
     doc.links().some((link) => link.page() === 'Royal Navy'),
     'HMS-Irresistible: navy link'
@@ -66,7 +66,7 @@ test('Keilwelle', (t) => {
     doc.images().some((image) => /Keilprofil-6K-Detail\.JPG$/.test(image.file())),
     'Keilwelle: shaft profile detail illustration'
   )
-  t.equal(doc.title(), 'Keilwellen', 'Keilwelle: mechanical component name')
+  t.equal(doc.title, 'Keilwellen', 'Keilwelle: mechanical component name')
   t.match(doc.text(), /Welle/, 'Keilwelle: shaft description')
   t.ok(doc.categories().length > 0, 'Keilwelle: engineering categories')
   t.ok(doc.section('Keilwellen-Verbindungen'), 'Keilwelle: Keilwellen-Verbindungen section')

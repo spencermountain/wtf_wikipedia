@@ -47,7 +47,7 @@ const getMain = function (s) {
 }
 
 const getTitle = function (doc) {
-  let title = doc.title() || ''
+  let title = doc.title
   title = title.replace(/ \(disambig|disambiguation\)$/, '')
   return title
 }

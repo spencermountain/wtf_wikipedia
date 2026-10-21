@@ -6,17 +6,29 @@ const meta = {
   pageImage: 'Grand_Bend_2.JPG',
 }
 // str = readPage('United-Kingdom')
-// str =
-// '[[File:Stonehenge, Condado de Wiltshire, Inglaterra, 2014-08-12, DD 18.JPG|thumb|[[Stonehenge]], in [[Wiltshire]], was erected around 2500 BC]]'
-str = `hello
-==hello [[world]]==
-{{Start date and age|2019|12|18}}
+str = '[[Stonehenge]], in [[Wiltshire]], was erected around 2500 BC'
+str = `
+'''Park Place''' may refer to:
+{{TOC right}}
 
-The '''City of New York''', often called '''New York City'''
+== Media ==
+* [[Park Place (TV series)|Park Place]], a 1981 CBS sitcom
+
+== Places ==
+* [[Park Place (Ontario)]], a park in the city of Barrie
+* [[Park Place (Vancouver)]], a skyscraper
+* [[Park Place Mall]], Lethbridge, Alberta
 `
+// str = `hello
+// ==hello [[world]]==
+// {{Start date and age|2019|12|18}}
+//
+// The '''City of New York''', often called '''New York City'''
+// `
 const doc = wtf(str, meta)
 // console.log(doc.text())
-console.log(doc.images()[0].json())
+console.log(doc.links()[0])
+// console.log(doc.images()[0].json())
 // console.log(doc.sections()[2].title())
 // console.log(doc.templates()[0].json())
 // console.log(doc.sections()[0].json())

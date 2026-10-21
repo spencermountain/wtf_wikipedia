@@ -1,5 +1,6 @@
 import Block from '../../Block/Block.ts'
 import type { BlockData } from '../../../types/index.ts'
+import Link from '../link/Link.ts'
 
 class Sentence extends Block {
   #data: BlockData
@@ -11,11 +12,12 @@ class Sentence extends Block {
 
   links() {
     const items = this.#data.links || []
-    return items
+    return items.map((item) => new Link(item))
   }
 
   interwiki() {
-    return this.links().filter((link) => link.type === 'interwiki')
+    const links = this.#data.links || []
+    return links.filter((link) => link.type === 'interwiki')
   }
 }
 

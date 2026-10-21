@@ -1,4 +1,5 @@
 import type { ListData } from '../../../types/index.ts'
+import Link from '../link/Link.ts'
 
 class List {
   #data: ListData
@@ -13,7 +14,9 @@ class List {
   }
 
   links() {
-    return this.lines().flatMap((s) => s.links)
+    const out = []
+    this.lines().forEach((s) => s.links.forEach((obj) => out.push(new Link(obj))))
+    return out
   }
 
   json() {

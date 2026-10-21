@@ -1,4 +1,5 @@
 import type { TableData } from '../../../types/index.ts'
+import Link from '../../03-paragraph/link/Link.ts'
 
 const normalize = function (key = '') {
   key = key.toLowerCase()
@@ -25,8 +26,15 @@ class Table {
   }
 
   links() {
-    const items = this.#data.flatMap((row) => Object.keys(row).flatMap((key) => row[key].links))
-    return items
+    const links = []
+    this.#data.forEach((row) =>
+      Object.keys(row).forEach((key) =>
+        row[key].links.forEach((link) => {
+          links.push(new Link(link))
+        })
+      )
+    )
+    return links
   }
 
   // TODO: Row/column projections remain plain arrays.

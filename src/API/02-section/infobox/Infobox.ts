@@ -1,5 +1,5 @@
 import Image from '../../03-paragraph/image/Image.ts'
-import Sentence from '../../03-paragraph/sentence/Sentence.ts'
+import Link from '../../03-paragraph/link/Link.ts'
 import latLngs from '../../../_data/lat-lngs.ts'
 import dmsCoordinates from './_lib.ts'
 import type { InfoboxData } from '../../../types/index.ts'
@@ -28,7 +28,8 @@ class Infobox {
   }
 
   links() {
-    return Object.values(this.#data).flatMap((block) => block.links)
+    return [] //todo
+    // return Object.values(this.#data).flatMap((block) => block.links.map((obj) => new Link(obj)))
   }
 
   image() {
