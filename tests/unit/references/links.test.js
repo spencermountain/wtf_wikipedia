@@ -17,7 +17,7 @@ test('inline references retain external links', (t) => {
     const links = wtf(input)
       .references()[0]
       .links()
-      .map((link) => link.site())
+      .map((link) => link.href())
     t.ok(links.includes(url), 'reference retains ' + url)
   })
   t.end()

@@ -9,13 +9,13 @@ test('fetch-as-promise', async (t) => {
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
   })
   t.ok(doc.sections().length > 0, 'promise returned document')
-  t.equal(doc.language(), 'en', 'language')
-  t.equal(doc.title(), 'Tony Hawk', 'page title')
-  t.equal(doc.pageID(), 87474, 'page ID')
-  t.equal(doc.wikidata(), 'Q295020', 'Wikidata ID')
-  t.notEqual(doc.revisionID(), null, 'revision ID')
-  t.notEqual(doc.timestamp(), null, 'timestamp')
-  t.notEqual(doc.description(), null, 'description')
+  t.equal(doc.language, 'en', 'language')
+  t.equal(doc.title, 'Tony Hawk', 'page title')
+  t.equal(doc.pageID, 87474, 'page ID')
+  t.equal(doc.wikidata, 'Q295020', 'Wikidata ID')
+  t.notEqual(doc.revisionID, null, 'revision ID')
+  t.notEqual(doc.timestamp, null, 'timestamp')
+  t.notEqual(doc.description, null, 'description')
 })
 
 test('promise rejects on error if no callback', async (t) => {
