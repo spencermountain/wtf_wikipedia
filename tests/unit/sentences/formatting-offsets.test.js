@@ -6,7 +6,10 @@ const cases = [
     name: 'repeated text has distinct offsets',
     wiki: "same '''same''' same '''same'''",
     text: 'same same same same',
-    bolds: [{ text: 'same', start: 5, end: 9 }, { text: 'same', start: 15, end: 19 }],
+    bolds: [
+      { text: 'same', start: 5, end: 9 },
+      { text: 'same', start: 15, end: 19 },
+    ],
     italics: [],
   },
   {
@@ -66,11 +69,14 @@ cases.forEach(({ name, wiki, text, bolds, italics }) => {
     t.equal(sentence.text(), text, 'plain text')
     t.deepEqual(sentence.bolds(), bolds, 'bold spans')
     t.deepEqual(sentence.italics(), italics, 'italic spans')
-    t.deepEqual(sentence.json().bolds, bolds, 'JSON bold spans')
-    t.deepEqual(sentence.json().italics, italics, 'JSON italic spans')
-    sentence.bolds().concat(sentence.italics()).forEach((span) => {
-      t.equal(text.slice(span.start, span.end), span.text, 'exclusive end matches slice')
-    })
+    t.deepEqual(sentence.json().bolds, bolds.length ? bolds : undefined, 'JSON bold spans')
+    t.deepEqual(sentence.json().italics, italics.length ? italics : undefined, 'JSON italic spans')
+    sentence
+      .bolds()
+      .concat(sentence.italics())
+      .forEach((span) => {
+        t.equal(text.slice(span.start, span.end), span.text, 'exclusive end matches slice')
+      })
     t.end()
   })
 })

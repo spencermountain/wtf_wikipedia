@@ -26,14 +26,10 @@ str = readPage('United-Kingdom')
 // The '''City of New York''', often called '''New York City'''
 // `
 str = `
-'''Park Place''' is cool:
-* [[Park Place (Ontario)]], a park in the city of Barrie
-* [[Park Place (Vancouver)]], a skyscraper
-* [[Park Place Mall]], Lethbridge, Alberta
-{{disambiguation}}
+  [[Wikipedia:Bug reports and feature requests]]
 `
 const doc = wtf(str, meta)
-console.log(doc.isDisambiguation())
+console.log(doc.links()[0].json())
 // const table = doc.tables()[0]
 // console.log(table.getRows(['Name', 'team']))
 // console.log(table.getRows('Name'))

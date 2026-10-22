@@ -40,7 +40,7 @@ test('redirect-extra-stuff', (t) => {
 }}`)
   t.equal(doc.isRedirect(), true, 'isredirect')
   t.equal(doc.redirectsTo().page, 'Bug reports and feature requests', 'redirectsto')
-  t.equal(doc.redirectsTo().wiki, 'wikipedia', 'interwiki redirect')
+  t.equal(doc.redirectsTo().project, 'wikipedia', 'interwiki redirect')
   t.end()
 })
 

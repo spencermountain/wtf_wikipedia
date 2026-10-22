@@ -40,15 +40,15 @@ test('pageID - get - should initially be null', (t) => {
 })
 
 test('pageID - get - if the pageID is already set than get it from internal object', (t) => {
-  const doc = wtf('', { pageID: 1 })
+  const doc = wtf('', { pageId: 1 })
   t.equal(doc.pageID, 1, 'the pageID equals 1')
   t.end()
 })
 
 test('pageID - get / set - if the pageID is set then it should return the same ', (t) => {
   const doc = wtf('')
-  doc.pageID = 1
-  t.equal(doc.pageID, 1, 'the pageID equals 1')
+  doc.pageID = 2
+  t.equal(doc.pageID, 2, 'the pageID equals 2')
   t.end()
 })
 
@@ -60,7 +60,7 @@ test('revisionID - get - should initially be null', (t) => {
 })
 
 test('revisionID - get - if the revisionID is already set than get it from internal object', (t) => {
-  const doc = wtf('', { revisionID: 1 })
+  const doc = wtf('', { revisionId: 1 })
   t.equal(doc.revisionID, 1, 'the revisionID equals 1')
   t.end()
 })
@@ -93,9 +93,9 @@ test('wikidata - get / set - if the wikidata is set then it should return the sa
 })
 
 //domain
-test('domain - get - should initially be null', (t) => {
+test('domain - get - defaults to wikipedia.org', (t) => {
   const doc = wtf('')
-  t.equal(doc.domain, null, 'the null equals undefined')
+  t.equal(doc.domain, 'wikipedia.org', 'default domain')
   t.end()
 })
 
@@ -112,15 +112,15 @@ test('domain - get / set - if the domain is set then it should return the same '
   t.end()
 })
 
-//language  - Same test as lang
-test('language - get - should initially be null', (t) => {
+//language
+test('language - get - defaults to en', (t) => {
   const doc = wtf('')
-  t.equal(doc.language, null, 'the language equals null')
+  t.equal(doc.language, 'en', 'default language')
   t.end()
 })
 
 test('language - get - if the language is already set than get it from internal object', (t) => {
-  const doc = wtf('', { language: 'nl' })
+  const doc = wtf('', { lang: 'nl' })
   t.equal(doc.language, 'nl', "the language equals 'nl'")
   t.end()
 })
@@ -132,46 +132,26 @@ test('language - get / set - if the language is set then it should return the sa
   t.end()
 })
 
-//lang - Same test as language
-test('lang - get - should initially be null', (t) => {
-  const doc = wtf('')
-  t.equal(doc.lang, null, 'the lang equals null')
-  t.end()
-})
-
-test('lang - get - if the lang is already set than get it from internal object', (t) => {
-  const doc = wtf('', { language: 'nl' })
-  t.equal(doc.lang, 'nl', "the lang equals 'nl'")
-  t.end()
-})
-
-test('lang - get / set - if the lang is set then it should return the same ', (t) => {
-  const doc = wtf('')
-  doc.lang = 'nl'
-  t.equal(doc.lang, 'nl', "the lang equals 'nl'")
-  t.end()
-})
-
 //url
 test('url - get - if there is no title return null', (t) => {
   const doc = wtf('')
-  t.equal(doc.url, null, 'the url equals null')
+  t.equal(doc.url(), null, 'the url equals null')
   t.end()
 })
 
 test('url - get - if lang and domain are undefined then default to en.wikipedia.org', (t) => {
   const doc = wtf('', { title: 'Barack Obama' })
-  t.equal(doc.url, 'https://en.wikipedia.org/wiki/Barack_Obama', 'the url equals the right page')
+  t.equal(doc.url(), 'https://en.wikipedia.org/wiki/Barack_Obama', 'the url equals the right page')
   t.end()
 })
 
 test('url - get - if lang and domain are set then use them', (t) => {
-  const doc = wtf('', { title: 'Barack Obama', language: 'military', domain: 'wikia.org' })
-  t.equal(doc.url, 'https://military.wikia.org/wiki/Barack_Obama', 'the url equals the right page')
+  const doc = wtf('', { title: 'Barack Obama', lang: 'military', domain: 'wikia.org' })
+  t.equal(doc.url(), 'https://military.wikia.org/wiki/Barack_Obama', 'the url equals the right page')
   t.end()
 })
 
-//namespace  - same test as ns
+//namespace
 test('namespace - get - should initially be null', (t) => {
   const doc = wtf('')
   t.equal(doc.namespace, null, 'the namespace equals null')
@@ -179,12 +159,6 @@ test('namespace - get - should initially be null', (t) => {
 })
 
 test('namespace - get - if the namespace is already set than get it from internal object', (t) => {
-  const doc = wtf('', { ns: 'talk' })
-  t.equal(doc.namespace, 'talk', "the namespace equals 'talk'")
-  t.end()
-})
-
-test('namespace - get - if the namespace is already set the other way than get it from internal object', (t) => {
   const doc = wtf('', { namespace: 'talk' })
   t.equal(doc.namespace, 'talk', "the namespace equals 'talk'")
   t.end()
@@ -197,48 +171,22 @@ test('namespace - get / set - if the namespace is set then it should return the 
   t.end()
 })
 
-//ns - same test as namespace
-test('ns - get - should initially be null', (t) => {
-  const doc = wtf('')
-  t.equal(doc.ns, null, 'the ns equals null')
-  t.end()
-})
-
-test('ns - get - if the ns is already set than get it from internal object', (t) => {
-  const doc = wtf('', { ns: 'talk' })
-  t.equal(doc.namespace, 'talk', "the ns equals 'talk'")
-  t.end()
-})
-
-test('ns - get - if the ns is already set the other way than get it from internal object', (t) => {
-  const doc = wtf('', { ns: 'talk' })
-  t.equal(doc.namespace, 'talk', "the ns equals 'talk'")
-  t.end()
-})
-
-test('ns - get / set - if the ns is set then it should return the same ', (t) => {
-  const doc = wtf('')
-  doc.ns = 'talk'
-  t.equal(doc.namespace, 'talk', "the ns equals 'talk'")
-  t.end()
-})
-
 //isRedirect
 test('isRedirect - get - should initially be false', (t) => {
   const doc = wtf('')
-  t.equal(doc.isRedirect, false, 'the isRedirect equals false')
+  t.equal(doc.isRedirect(), false, 'the isRedirect equals false')
   t.end()
 })
 
 test('isRedirect - get - if the type of page is should default to page and return false', (t) => {
   const doc = wtf('', { type: 'redirect' })
-  t.equal(doc.isRedirect, false, 'the empty-string isRedirect equals false')
+  t.equal(doc.isRedirect(), false, 'the empty-string isRedirect equals false')
   t.end()
 })
 
 test('isRedirect - get - if the page is a redirect than return true', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.equal(doc.isRedirect, true, 'the DOORVERWIJZING isRedirect equals true')
+  t.equal(doc.isRedirect(), true, 'the DOORVERWIJZING isRedirect equals true')
   t.end()
 })
 
@@ -763,24 +711,24 @@ test('plaintext - get - enpty string for redirects', (t) => {
 //debug
 //we need something like sinon for mocking the console.log
 
-//singular-methods
-test('plurals / singular - all should exist', (t) => {
+//content accessors
+test('supported content accessors exist', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  const singels = [
+  const accessors = [
     'section',
     'infobox',
     'sentence',
-    'citation',
-    'reference',
-    'coordinate',
-    'table',
-    'list',
-    'link',
-    'image',
+    'citations',
+    'references',
+    'coordinates',
+    'tables',
+    'lists',
+    'links',
+    'images',
     'template',
-    'category',
+    'categories',
   ]
-  singels.forEach((s) => {
+  accessors.forEach((s) => {
     t.equal(typeof doc[s], 'function', 'every function needs to be defined. also ' + s)
   })
   t.end()

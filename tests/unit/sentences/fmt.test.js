@@ -6,13 +6,29 @@ test('bold/italics', (t) => {
 
 	She is '''''very''''' good`
   let sentence = wtf(str).sentence(0)
-  t.deepEqual(sentence.bolds(), ['K. Nicole Mitchell'], 'one bold')
-  t.deepEqual(sentence.italics(), ['currently'], 'one italic')
+  t.deepEqual(
+    sentence.bolds().map((b) => b.text),
+    ['K. Nicole Mitchell'],
+    'one bold'
+  )
+  t.deepEqual(
+    sentence.italics().map((b) => b.text),
+    ['currently'],
+    'one italic'
+  )
   t.equal(sentence.links().length, 1, 'one link')
 
   sentence = wtf(str).sentence(1)
-  t.deepEqual(sentence.bolds(), ['very'], 'two bold')
-  t.deepEqual(sentence.italics(), ['very'], 'two italic')
+  t.deepEqual(
+    sentence.bolds().map((b) => b.text),
+    ['very'],
+    'two bold'
+  )
+  t.deepEqual(
+    sentence.italics().map((b) => b.text),
+    ['very'],
+    'two italic'
+  )
   t.end()
 })
 
@@ -28,7 +44,11 @@ test('inline mixquotes test', (t) => {
   const str = `this is ''''four'''' and this is '''''five'''''`
   const sentence = wtf(str).sentences()[0]
   // t.deepEqual(sentence.bolds, ['five', '\'four\''], 'two bold');
-  t.deepEqual(sentence.italics(), ['five'], 'five is italic')
+  t.deepEqual(
+    sentence.italics().map((b) => b.text),
+    ['five'],
+    'five is italic'
+  )
   t.end()
 })
 
