@@ -11,7 +11,6 @@ const normalize = function (key = '') {
 
 class Table {
   #data: TableData
-  #wiki: string
 
   constructor(data: TableData) {
     this.#data = data
@@ -39,10 +38,11 @@ class Table {
   rows() {
     // simplify data into one string per cell
     return this.#data.rows.map((row) => {
+      const result = {}
       Object.keys(row).forEach((key) => {
-        row[key] = row[key].text || ''
+        result[key] = row[key].text || ''
       })
-      return row
+      return result
     })
   }
   // return only the requested cols
@@ -84,7 +84,7 @@ class Table {
     return ''
   }
   wikitext() {
-    return this.#wiki || ''
+    return this.#data.wiki || ''
   }
 }
 

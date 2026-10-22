@@ -29,13 +29,13 @@ test('arenas table', (t) => {
 |-
 |}`
   const doc = wtf(str)
-  let rows = doc.tables()[0].keyValue()
-  rows = rows.filter((r) => r.Arena)
+  let rows = doc.tables()[0].rows()
+  rows = rows.filter((r) => r.arena)
   t.equal(rows.length, 2, 'two rows')
-  t.equal(rows[0].Team, 'Boston Bruins', 'got team')
-  t.equal(rows[0].Arena, 'Boston Garden', 'got arena')
-  t.equal(rows[1].Team, 'Boston Bruins', 'got team 2')
-  t.equal(rows[1].Arena, 'Boston Arena', 'got arena 2')
+  t.equal(rows[0].team, 'Boston Bruins', 'got team')
+  t.equal(rows[0].arena, 'Boston Garden', 'got arena')
+  t.equal(rows[1].team, 'Boston Bruins', 'got team 2')
+  t.equal(rows[1].arena, 'Boston Arena', 'got arena 2')
   t.end()
 })
 
@@ -62,11 +62,11 @@ test('double-header baseball game', (t) => {
 |147||September 14||@ [[2018 Philadelphia Phillies season|Phillies]] || 2–14 || [[Zach Eflin|Eflin]] (10–7) || '''[[Wei-Yin Chen|Chen]]''' (6–11) || — || 21,671 || 57–90 || L4
 |}`
   const doc = wtf(str)
-  const rows = doc.tables()[0].keyValue()
+  const rows = doc.tables()[0].rows()
   t.equal(rows.length, 4, 'all rows')
-  t.equal(rows[0].Attendance, '20,423', '1')
-  t.equal(rows[1].Attendance, '22,640', '2')
-  t.equal(rows[2].Attendance, '22,640', '3')
-  t.equal(rows[3].Attendance, '21,671', '4')
+  t.equal(rows[0].attendance, '20,423', '1')
+  t.equal(rows[1].attendance, '22,640', '2')
+  t.equal(rows[2].attendance, '22,640', '3')
+  t.equal(rows[3].attendance, '21,671', '4')
   t.end()
 })

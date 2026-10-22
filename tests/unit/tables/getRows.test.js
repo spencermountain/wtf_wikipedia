@@ -32,10 +32,10 @@ test('table.getRows - array selects columns in requested order', (t) => {
 
 test('table.getRows - object includes enabled columns', (t) => {
   t.deepEqual(table().getRows({ Name: true, Team: false, Points: true }), [
-    { Name: 'jane', Points: '12' },
-    { Name: 'maya', Points: '0' },
-    { Name: 'alex', Points: '7' },
-  ], 'disabled columns are omitted and original headers are retained')
+    { name: 'jane', points: '12' },
+    { name: 'maya', points: '0' },
+    { name: 'alex', points: '7' },
+  ], 'disabled columns are omitted and normalized headers are used')
   t.end()
 })
 
@@ -54,9 +54,9 @@ test('table.getRows - missing columns preserve requested shape', (t) => {
     ['alex', undefined],
   ], 'missing array column retains its position')
   t.deepEqual(table().getRows({ Missing: true }), [
-    { Missing: undefined },
-    { Missing: undefined },
-    { Missing: undefined },
+    { missing: undefined },
+    { missing: undefined },
+    { missing: undefined },
   ], 'missing object column retains its key')
   t.end()
 })
@@ -70,9 +70,9 @@ test('table.getRows - repeated selections retain cell text', (t) => {
     ['7', 'alex'],
   ], 'array selection after string selection')
   t.deepEqual(tb.getRows({ Team: true }), [
-    { Team: 'us' },
-    { Team: 'ca' },
-    { Team: '' },
+    { team: 'us' },
+    { team: 'ca' },
+    { team: '' },
   ], 'object selection after array selection')
   t.end()
 })

@@ -25,19 +25,19 @@ str = readPage('United-Kingdom')
 //
 // The '''City of New York''', often called '''New York City'''
 // `
-
-str = `{| class="wikitable"
-! Name !! Team !! Points
-|-
-| [[jane]] || us || 12
-|-
-| maya || ca || 15
-|}`
+str = `
+'''Park Place''' is cool:
+* [[Park Place (Ontario)]], a park in the city of Barrie
+* [[Park Place (Vancouver)]], a skyscraper
+* [[Park Place Mall]], Lethbridge, Alberta
+{{disambiguation}}
+`
 const doc = wtf(str, meta)
-const table = doc.tables()[0]
+console.log(doc.isDisambiguation())
+// const table = doc.tables()[0]
 // console.log(table.getRows(['Name', 'team']))
 // console.log(table.getRows('Name'))
-console.log(table.getRows())
+// console.log(table.getRows())
 // console.log(table.json().rows)
 // console.log(doc.links().map((l) => l.json()))
 // console.log(doc.images()[0].json())

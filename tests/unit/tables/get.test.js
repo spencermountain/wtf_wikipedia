@@ -9,29 +9,29 @@ const TABLE = `{| class="wikitable"
 | maya || ca || 15
 |}`
 
-test('table.get - one column, case-insensitive', (t) => {
+test('table.getRows - one column, case-insensitive', (t) => {
   const tb = wtf(TABLE).tables()[0]
-  t.deepEqual(tb.getRows('name'), [{ name: 'jane' }, { name: 'maya' }], 'lowercase column lookup')
-  t.deepEqual(tb.getRows('POINTS'), [{ points: '12' }, { points: '15' }], 'uppercase column lookup')
+  t.deepEqual(tb.getRows('name'), ['jane', 'maya'], 'lowercase column lookup')
+  t.deepEqual(tb.getRows('POINTS'), ['12', '15'], 'uppercase column lookup')
   t.end()
 })
 
-test('table.get - several columns give row-objects, keyed by real header', (t) => {
+test('table.getRows - several columns give arrays in requested order', (t) => {
   const tb = wtf(TABLE).tables()[0]
   t.deepEqual(
     tb.getRows(['name', 'points']),
     [
-      { Name: 'jane', Points: '12' },
-      { Name: 'maya', Points: '15' },
+      ['jane', '12'],
+      ['maya', '15'],
     ],
     'multiple column rows'
   )
   t.end()
 })
 
-test('table.get - a missing column is null per-row', (t) => {
+test('table.getRows - a missing column is undefined per row', (t) => {
   const tb = wtf(TABLE).tables()[0]
-  t.deepEqual(tb.getRows('nope'), [{ nope: null }, { nope: null }], 'missing column values')
+  t.deepEqual(tb.getRows('nope'), [undefined, undefined], 'missing column values')
   t.end()
 })
 
@@ -55,12 +55,16 @@ test('Table-Columns-And-Wikitext', (t) => {
 | row 3, cell 3
 |}`
   const doc = wtf(str)
-  let data = doc.tables()[0].get('header 2')
+  let data = doc.tables()[0].getRows('header 2')
   t.deepEqual(data, ['row 1, cell 2', 'row 2, cell 2', 'row 3, cell 2'], 'table columns')
 
-  data = doc.tables()[0].get(['header 2', 'asdf', 'Header 1'])
+  data = doc.tables()[0].getRows(['header 2', 'asdf', 'Header 1'])
   t.equal(data.length, 3, 'still three')
-  t.equal(Object.keys(data).length, 3, 'three keys')
+  t.deepEqual(data, [
+    ['row 1, cell 2', undefined, 'row 1, cell 1'],
+    ['row 2, cell 2', undefined, 'row 2, cell 1'],
+    ['row 3, cell 2', undefined, 'row 3, cell 1'],
+  ], 'requested column order and missing values')
 
   t.equal(doc.tables()[0].wikitext(), str, 'table-wikitext')
   t.end()

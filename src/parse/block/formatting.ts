@@ -6,10 +6,18 @@ const shift = (offset: number, start: number, length: number) => {
 
 // Keep earlier spans aligned as later passes remove nested markers.
 const remove = (block: BlockData, start: number, length: number) => {
-  block.bolds.concat(block.italics).forEach((span) => {
-    span.start = shift(span.start, start, length)
-    span.end = shift(span.end, start, length)
-  })
+  if (block.bolds) {
+    block.bolds.forEach((span) => {
+      span.start = shift(span.start, start, length)
+      span.end = shift(span.end, start, length)
+    })
+  }
+  if (block.italics) {
+    block.italics.forEach((span) => {
+      span.start = shift(span.start, start, length)
+      span.end = shift(span.end, start, length)
+    })
+  }
 }
 
 const parse = (block: BlockData, pattern: RegExp, trim: number, groups: ('bolds' | 'italics')[]) => {
