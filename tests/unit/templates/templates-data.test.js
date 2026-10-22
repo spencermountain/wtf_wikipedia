@@ -185,15 +185,15 @@ test('election', function (t) {
    world`
   const doc = wtf(str)
   t.equal(doc.templates().length, 1, 'found one template')
-  const tmpl = doc.template().json() || {}
-  t.equal(tmpl.template, 'election box', 'template name')
-  t.equal(tmpl.candidates.length, 2, 'two candidates')
+  const tmpl = doc.templates()[0].json() || {}
+  t.equal(tmpl.data.template, 'election box', 'template name')
+  t.equal(tmpl.data.candidates.length, 2, 'two candidates')
   t.end()
 })
 
 test('test-flexible-format', function (t) {
   let doc = wtf(`hello {{Hollywood Walk of Fame|Alan Alda}} world`)
-  let tmpl = doc.template().json() || {}
+  let tmpl = doc.templates()[0].json() || {}
   t.equal(tmpl.template, 'hollywood walk of fame', 'template1')
   t.equal(tmpl.name, 'Alan Alda', 'name1')
   t.equal(doc.text(), 'hello world', 'text1')
@@ -201,7 +201,7 @@ test('test-flexible-format', function (t) {
 
   //other format
   doc = wtf(`hello {{Hollywood Walk of Fame|name = Alan Alda}} world`)
-  tmpl = doc.template().json() || {}
+  tmpl = doc.templates()[0].json() || {}
   t.equal(tmpl.template, 'hollywood walk of fame', 'template2')
   t.equal(tmpl.name, 'Alan Alda', 'name2')
   t.equal(doc.text(), 'hello world', 'text2')
@@ -213,13 +213,13 @@ test('covid-1', function (t) {
   const str = `
   {{Medical cases chart
     |numwidth=mw
-    
+
     |disease=Green Flu
     |location=Savannah|location2=Georgia|location3=United States
     |outbreak=2009 Green Flu outbreak
-    
+
     |recoveries=n
-    
+
     |data=
     2009-04-13;;;42;;;42;firstright1=y
     2009-04-14;;;356;;;356;+748%

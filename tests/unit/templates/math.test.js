@@ -23,13 +23,13 @@ test('math-simple', (t) => {
   str = `<math display="inline">sum_{i=0}^infty 2^{-i}</math>`
   doc = wtf(str)
   tmpl = doc.template().json() || {}
-  t.ok(tmpl.formula.length > 10, 'tmpl formula2')
+  t.ok(tmpl.data.formula.length > 10, 'tmpl formula2')
   t.equal(doc.text(), '', 'no text output2')
 
   str = `<math>	ext{geometric series:}quad sum_{i=0}^infty 2^{-i}=2 </math>`
   doc = wtf(str)
   tmpl = doc.template().json() || {}
-  t.ok(tmpl.formula.length > 10, 'tmpl formula3')
+  t.ok(tmpl.data.formula.length > 10, 'tmpl formula3')
   t.equal(doc.text(), '', 'no text output3')
   t.end()
 })
@@ -41,8 +41,8 @@ test('math-infobox', (t) => {
 | notation   ={{math|''A'' ~ ''CW<sub>p</sub>''('''<math>\Gamma</math>''', ''n'')}}
 | mean       =<math>\operatorname{E}[A]=n\Gamma</math>
 }}
-   
-In [[statistics]], the '''complex Wishart distribution''' is a version of the [[Wishart distribution]]. 
+
+In [[statistics]], the '''complex Wishart distribution''' is a version of the [[Wishart distribution]].
 `
   const doc = wtf(str)
   const want = `In statistics, the complex Wishart distribution is a version of the Wishart distribution.`
@@ -59,7 +59,7 @@ test('math-weirder', (t) => {
   </math>`
   const doc = wtf(str)
   const tmpl = doc.template().json() || {}
-  t.ok(tmpl.formula.length > 10, 'tmpl formula')
+  t.ok(tmpl.data.formula.length > 10, 'tmpl formula')
   t.equal(doc.text(), '', 'no text output')
   t.end()
 })

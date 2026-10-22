@@ -194,7 +194,7 @@ test('tricky-based-on', (t) => {
   const doc = wtf(str)
   t.equal(doc.templates().length, 1, 'found one template')
   t.equal(doc.text(), 'Jurassic Park by Michael Crichton', 'formatted title and author')
-  const data = doc.template().json()
+  const data = doc.templates()[0].json().data || {}
   t.equal(data.template, 'based on', 'template name')
   t.equal(data.title, 'Jurassic Park', 'title')
   t.equal(data.author, 'Michael Crichton', 'author')
@@ -202,13 +202,13 @@ test('tricky-based-on', (t) => {
 })
 
 test('start-date in infobox', (t) => {
-  const str = ` 
+  const str = `
 {{Infobox officeholder
 |term_start   = {{start date|2022|May|6}}
 |term_end     = {{end date|2023|January|11}}
 }}`
   const doc = wtf(str)
-  const json = doc.infobox().json()
+  const json = doc.infobox().json().data
   t.equal(json.term_start.text, 'May 6, 2022', 'term_start')
   t.equal(json.term_end.text, 'January 11, 2023', 'term_end')
   t.end()

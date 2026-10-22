@@ -76,7 +76,7 @@ test('support-nowrap-in-infobox', (t) => {
 | chiffre = {{nobr|912 millions}}
 }}`
   const infobox = wtf(str).infobox()
-  const data = infobox.json()
+  const data = infobox.json().data
   t.equal(data.name.text, 'Albert Einstein', 'got infobox datad')
   t.equal(data.spouse.text, 'Elsa Löwenthal (m. 1919-1936)', 'got tricky marriage value')
   t.equal(data.chiffre.text, '912 millions', 'got infobox nobr')
@@ -110,7 +110,7 @@ test('austria-hungary', (t) => {
     'got-plaintext'
   )
   t.equal(doc.template('for').json().list[1], 'Austria–Hungary relations', 'nested emdash')
-  t.equal(doc.links('budapest')[0].page(), 'Budapest', 'got Budapest link')
+  t.equal(doc.links('budapest')[0]?.page, 'Budapest', 'got Budapest link')
   t.equal(
     doc.templates('short description')[0].json().description,
     'Constitutional monarchic union from 1867 to October 1918',

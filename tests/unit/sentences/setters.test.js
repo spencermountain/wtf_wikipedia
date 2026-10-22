@@ -10,8 +10,8 @@ test('sentence text setter', (t) => {
 
 test('sentence formatting misses are null', (t) => {
   const s = wtf('no formatting here.').sentences()[0]
-  t.equal(s.bold(), null, 'missing bold')
-  t.equal(s.italic(), null, 'missing italic')
+  t.equal(s.bolds()[0], null, 'missing bold')
+  t.equal(s.italics()[0], null, 'missing italic')
   t.equal(s.links()[0], undefined, 'missing link')
   t.deepEqual(s.bolds(), [], 'empty bold collection')
   t.deepEqual(s.italics(), [], 'empty italic collection')
