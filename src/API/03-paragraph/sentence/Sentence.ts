@@ -19,11 +19,6 @@ class Sentence extends Block {
     return Object.keys(this.#data).length === 0
   }
 
-  links() {
-    const items = this.#data.links || []
-    return items.map((item) => new Link(item))
-  }
-
   interwiki() {
     const links = this.#data.links || []
     return links.filter((link) => link.type === 'interwiki')

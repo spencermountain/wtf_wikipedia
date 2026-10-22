@@ -27,7 +27,7 @@ class Document {
     let guess = null
     let sen = this.sentences()[0]
     if (sen) {
-      guess = sen.bolds()[0] || null
+      guess = sen.bolds()[0]?.text || null
     }
     return guess
   }

@@ -17,14 +17,18 @@ export interface ExternalLinkData extends LinkData {
   site?: string
 }
 
+export interface FormattingData {
+  text: string
+  start: number
+  end: number
+}
+
 export interface BlockData {
   text: string
   wiki: string
   links: LinkData[]
-  fmt: {
-    bold: string[]
-    italic: string[]
-  }
+  bolds: FormattingData[]
+  italics: FormattingData[]
 }
 
 export interface TemplateData {

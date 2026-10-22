@@ -1,4 +1,5 @@
 import type { BlockData } from '../../types/index.ts'
+import Link from '../03-paragraph/link/Link.ts'
 
 class Block {
   #data: BlockData
@@ -6,16 +7,14 @@ class Block {
     this.#data = data
   }
   links() {
-    return this.#data.links || []
-  }
-  fmt() {
-    return this.#data.fmt || {}
+    const items = this.#data.links || []
+    return items.map((item) => new Link(item))
   }
   bolds() {
-    return this.#data.fmt?.bold || []
+    return this.#data.bolds || []
   }
   italics() {
-    return this.#data.fmt?.italic || []
+    return this.#data.italics || []
   }
   text() {
     return this.#data.text || ''

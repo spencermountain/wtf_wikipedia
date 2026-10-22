@@ -27,7 +27,7 @@ community that has levels`
 test('inline mixquotes test', (t) => {
   const str = `this is ''''four'''' and this is '''''five'''''`
   const sentence = wtf(str).sentences()[0]
-  // t.deepEqual(sentence.fmt.bold, ['five', '\'four\''], 'two bold');
+  // t.deepEqual(sentence.bolds, ['five', '\'four\''], 'two bold');
   t.deepEqual(sentence.italics(), ['five'], 'five is italic')
   t.end()
 })
@@ -51,6 +51,6 @@ test('links-with-ticks', (t) => {
   const doc = wtf(`hello '''[[Palme d'Or]]''' world`)
   t.equal(doc.text(), `hello Palme d'Or world`, 'text')
   t.equal(doc.links()[0].page(), `Palme d'Or`, 'link')
-  t.equal(doc.sentence(0).data.fmt.bold[0], `Palme d'Or`, 'fmt-bold')
+  t.equal(doc.sentence(0).data.bolds[0], `Palme d'Or`, 'fmt-bold')
   t.end()
 })

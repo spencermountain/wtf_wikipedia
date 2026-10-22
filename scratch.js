@@ -27,30 +27,15 @@ str = readPage('United-Kingdom')
 // `
 
 str = `
-[[Paris]]
-[[Help:Contents]]
-[[fr:Paris]]
-[[:fr:Paris]]
-[[:fr:Paris|Paris]]
-[[wikt:word]]
-[[wiktionary:word]]
-[[wikt:fr:bonjour]]
-[[commons:Category:Paris]]
-[[w:en:Paris]]
-[[doi:10.1000/182]]
-
-[[Paris#History]]
-[[Paris#History|History of Paris]]
-[[:fr:Paris#Histoire|History of Paris]]
-
 {{ill|English title|fr|French title}}
 {{interlanguage link|English title|fr|French title}}
 {{ill|English title|fr|French title|de|German title}}
 `
-str = `[[paris]]`
+str = `hello '''world''' there`
+str = `hello <b>world</b> there`
 const doc = wtf(str, meta)
-// console.log(doc.text())
-console.log(doc.links().map((l) => l.json()))
+console.log(doc.sentence().json())
+// console.log(doc.links().map((l) => l.json()))
 // console.log(doc.images()[0].json())
 // console.log(doc.sections()[2].title())
 // const found = doc.template('main srticle')

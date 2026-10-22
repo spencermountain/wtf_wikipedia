@@ -237,11 +237,11 @@ declare class List {
 declare class Sentence {
   static empty(): Sentence
   bold(clue?: number): string | null
-  bolds(clue?: number): string[]
+  bolds(clue?: number): { text: string; start: number; end: number }[]
   interwiki(selector?: string | number): LinkCollection
   isEmpty(): boolean
   italic(clue?: number): string | null
-  italics(clue?: number): string[]
+  italics(clue?: number): { text: string; start: number; end: number }[]
   json(options?: object): Record<string, unknown>
   link(clue?: string | number): Link | null
   links(selector?: string | number): LinkCollection
